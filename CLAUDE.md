@@ -228,7 +228,7 @@ These two secrets are read by `post-queued-comments.yml` directly, not the `clau
 | `PICO_ID` | `e6647c15673a2438`, the Pico W's `machine.unique_id()`. Namespaces the `command/picow/<id>/as7341/read` and `color-mixing/picow/<id>/as7341` topics. Must match the `PICO_ID` in that board's `my_secrets.py`, or the Space and the sensor talk past each other in silence. |
 | `H2D_IP` / `H2D_ACCESS_CODE` / `H2D_SERIAL` | Bambu Lab H2D printer, LAN mode: address, access code and serial. The IP is on the lab LAN, not the tailnet, so connect from a Pi. |
 | `A1_MINI_IP` / `A1_MINI_ACCESS_CODE` / `A1_MINI_SERIAL` | The same for the Bambu Lab A1 mini. |
-| `BAMBU_USERNAME` / `BAMBU_PASSWORD` | Bambu Lab cloud account login, for driving Bambu Studio itself. While a printer is bound to the cloud, its firmware refuses LAN MQTT control commands that Bambu's own apps did not sign (start, pause *and* stop), raising HMS `0500-0500-0001-0007`. Status, camera and SD-card upload still work over LAN. Studio signs its own commands, so the route that keeps cloud mode is Studio logged in as this account, which means GUI automation. Expect it to look like the Onshape browser work below: a display on a Pi, driven over SSH. See [PR #234](https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-5852693148). |
+| `BAMBU_USERNAME` / `BAMBU_PASSWORD` / `BAMBU_TOTP_SEED` | Bambu Lab cloud account login and its authenticator seed. **Not** in `claude.yml`: environment secrets of `bambu-print`, used only by `claude-print.yml` (`@claude-print`, each run approved by a member of `bambu-print-approvers`). See [Printing on the lab's Bambu Lab printers](#printing-on-the-labs-bambu-lab-printers-claude-print). |
 | `CUBXL_PI_PASSWORD` | Sudo password for the Pi 5 that fronts the CubXL, separate from the stream-cam Pis. `CUBXL_PI_USERNAME` and `CUBXL_PI_HOSTNAME` are repo **variables**, not secrets. The username has to be, since its value is three characters and appears as a substring of `byu-vcl` — exactly the masking trap noted above. The hostname is one by choice: a tailnet name confers no access on its own, and it already appears in that Pi's tag name in `claude.yml`, so keeping it secret bought nothing but inconsistency. |
 
 **Onshape browser work will probably need to be screen automation on a Pi, over SSH.**
@@ -422,6 +422,52 @@ it behaves normally. Verify the MQTT path with the board on its own power, not o
 
 Board backups (including the pre-existing `my_secrets.py`) are on the Pi under
 `~/pico-backups/<timestamp>/`, and the board keeps its own `my_secrets.py.bak`.
+
+## Printing on the lab's Bambu Lab printers (`@claude-print`)
+
+A plain `@claude` run cannot log in to the lab's Bambu Lab account, so it cannot send a print.
+While a printer is bound to Bambu's cloud, its firmware refuses LAN start/pause/stop commands
+that Bambu's own apps did not sign (HMS `0500-0500-0001-0007`), so sending a print means Bambu
+Studio logged in as the lab account. Only [`claude-print.yml`](.github/workflows/claude-print.yml)
+gets that login:
+
+- **A person starts it** with `@claude-print` in a comment or a new issue, in place of
+  `@claude`. Claude's own comments can't start it.
+- **A person approves it.** The run waits in the `bambu-print` environment until a member of
+  [`bambu-print-approvers`](https://github.com/orgs/vertical-cloud-lab/teams/bambu-print-approvers)
+  approves it (the run's page → **Review deployments**, or GitHub Mobile). The workflow posts
+  the link in the thread. An approver may approve their own request. Approvers: read the
+  request first, because an approved run holds the whole login.
+- **Its secrets** are `BAMBU_USERNAME`, `BAMBU_PASSWORD` and `BAMBU_TOTP_SEED`, all environment
+  secrets of `bambu-print`. They are not repo secrets and are not in `claude.yml`.
+- **Second factor: an authenticator code, computed on the runner.** The account has
+  authenticator-app 2-step verification, so Studio's login asks for a 6-digit code after the
+  password. The workflow installs `bambu-totp`, which computes the current code from the seed.
+  Type the code and the password through stdin so neither reaches argv, a log or a screenshot:
+  `bambu-totp | DISPLAY=:99 xdotool type --delay 90 --file -`, and
+  `printenv BAMBU_PASSWORD | DISPLAY=:99 xdotool type --delay 90 --file -`. Never print, post,
+  commit or screenshot these values or a code.
+- **Never ask for, relay or post an e-mailed Bambu verification code.** Bambu accepts the
+  account's e-mail address plus a current e-mailed code as a complete login, with no password,
+  even when 2-step verification is on
+  ([robot-arms PR 10](https://github.com/vertical-cloud-lab/robot-arms/pull/10#issuecomment-6140001145),
+  [ha-bambulab PR 2058](https://github.com/greghesp/ha-bambulab/pull/2058)). A code posted in a
+  thread is the account until it expires. If Studio asks for an e-mailed code instead of the
+  authenticator code, stop and say so in the thread.
+- **Prepare in a plain `@claude` run; send in `@claude-print`.** Slicing, plate checks, and
+  status and camera over LAN from a Pi need no login. End the prep run by asking the person to
+  comment `@claude-print` naming the exact file (branch and path) and printer, so the approver
+  can see what they are approving.
+- **Studio GUI details** are in byu-vcl's runbook, `bambu/studio/README.md` on
+  [byu-vcl PR 234](https://github.com/vertical-cloud-lab/byu-vcl/pull/234)'s branch: setup,
+  the login page, Send, and watching a print. Its "e-mail code" section is superseded by this
+  one. The authenticator prompt is a different dialog from the e-mail-code one, so find its
+  field from a screenshot rather than reusing `wait_code.py`'s click positions.
+- **Rotating** (if the seed or password may have leaked): on bambulab.com, turn 2-step
+  verification off and on again to get a new seed (everyone who logs in to the account
+  re-scans it), change the password, then update the three secrets in the `bambu-print`
+  environment of every repo that has one: byu-vcl, robot-arms, powder-doser,
+  tensegrity-optimization and caliber.
 
 ## Hugging Face Spaces
 

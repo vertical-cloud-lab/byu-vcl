@@ -1,0 +1,126 @@
+name: Claude Code (print)
+
+# The only workflow that can log in to the lab's Bambu Lab account, and so the
+# only one that can send a print. Plain @claude runs do not get the login; see
+# "Printing on the lab's Bambu Lab printers" in CLAUDE.md.
+#
+# The account has authenticator-app 2-step verification. The run computes the
+# current code from BAMBU_TOTP_SEED, so nobody relays an e-mailed code. That
+# also means an approved run holds BOTH login factors, hence the gates:
+#   1. The `if:` below: only @claude-print, and never from a bot. The action
+#      also refuses anyone without write access to this repo.
+#   2. The `bambu-print` environment holds the secrets and waits for one member
+#      of the vertical-cloud-lab/bambu-print-approvers team to approve each run
+#      (Actions tab -> the waiting run -> Review deployments, or GitHub Mobile).
+#      Admins cannot bypass it. This is the gate that holds even if someone
+#      edits this file, since main is unprotected.
+#   3. The environment only deploys from main, so a workflow pushed on any
+#      other branch cannot read its secrets.
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+  issues:
+    types: [opened]
+
+jobs:
+  # Runs without the environment, so the thread hears at once that the print is
+  # waiting on an approver rather than seeing nothing until someone approves.
+  announce:
+    if: |
+      github.event.sender.type != 'Bot' && (
+        (github.event_name != 'issues' && contains(github.event.comment.body, '@claude-print')) ||
+        (github.event_name == 'issues' && (contains(github.event.issue.body, '@claude-print') || contains(github.event.issue.title, '@claude-print')))
+      )
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+      - name: Say the run is waiting for approval
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NUMBER: ${{ github.event.issue.number || github.event.pull_request.number }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          ACTOR: ${{ github.actor }}
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/issues/$NUMBER/comments" --silent -f body="$(cat <<EOF
+          Print run for @$ACTOR is **waiting for approval** from a member of [\`bambu-print-approvers\`](https://github.com/orgs/vertical-cloud-lab/teams/bambu-print-approvers).
+
+          Approvers: read the request first. The approved run can log in to the lab's Bambu account. Then open [the run]($RUN_URL), click **Review deployments**, tick \`bambu-print\`, and click **Approve and deploy**. Nothing happens until someone does.
+          EOF
+          )"
+
+  claude-print:
+    if: |
+      github.event.sender.type != 'Bot' && (
+        (github.event_name != 'issues' && contains(github.event.comment.body, '@claude-print')) ||
+        (github.event_name == 'issues' && (contains(github.event.issue.body, '@claude-print') || contains(github.event.issue.title, '@claude-print')))
+      )
+    runs-on: ubuntu-latest
+    environment: bambu-print
+    timeout-minutes: 180
+    permissions:
+      contents: read
+      pull-requests: read
+      issues: read
+      id-token: write
+      actions: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0        # all branches, so a sliced file on any branch can be sent
+          filter: blob:none
+
+      # bambu-totp writes the account's current 6-digit authenticator code to
+      # stdout, computed from BAMBU_TOTP_SEED the way a phone app does it
+      # (RFC 6238: SHA-1, 30 s, 6 digits). Pipe it straight into the GUI:
+      #   bambu-totp | DISPLAY=:99 xdotool type --delay 90 --file -
+      # Inside the last 5 s of a window it waits for the next one, so the code
+      # cannot roll over between typing and submitting.
+      - name: Install the TOTP helper
+        run: |
+          mkdir -p "$HOME/.local/bin"
+          cat > "$HOME/.local/bin/bambu-totp" <<'PY'
+          #!/usr/bin/env python3
+          import base64, hashlib, hmac, os, struct, sys, time
+          seed = os.environ.get("BAMBU_TOTP_SEED", "").replace(" ", "").upper()
+          if not seed:
+              sys.exit("BAMBU_TOTP_SEED is not set")
+          key = base64.b32decode(seed + "=" * (-len(seed) % 8))
+          if 30 - time.time() % 30 < 5:
+              time.sleep(30 - time.time() % 30 + 1)
+          digest = hmac.new(key, struct.pack(">Q", int(time.time()) // 30), hashlib.sha1).digest()
+          offset = digest[-1] & 0x0F
+          code = (struct.unpack(">I", digest[offset:offset + 4])[0] & 0x7FFFFFFF) % 10**6
+          sys.stdout.write(f"{code:06d}")
+          PY
+          chmod +x "$HOME/.local/bin/bambu-totp"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+      - name: Run Claude Code
+        uses: anthropics/claude-code-action@v1
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Environment secrets (bambu-print): the lab's Bambu cloud login, both
+          # factors. Type them through stdin; never print, post or commit them.
+          BAMBU_USERNAME: ${{ secrets.BAMBU_USERNAME }}
+          BAMBU_PASSWORD: ${{ secrets.BAMBU_PASSWORD }}
+          BAMBU_TOTP_SEED: ${{ secrets.BAMBU_TOTP_SEED }}
+          # Repo secrets, to pick the right printer in Studio. Empty in repos
+          # that do not set them.
+          H2D_SERIAL: ${{ secrets.H2D_SERIAL }}
+          A1_MINI_SERIAL: ${{ secrets.A1_MINI_SERIAL }}
+          BASH_DEFAULT_TIMEOUT_MS: "900000"
+          BASH_MAX_TIMEOUT_MS: "3600000"
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          trigger_phrase: "@claude-print"
+          additional_permissions: |
+            actions: read
+          claude_args: |
+            --model opus --effort max
+            --permission-mode bypassPermissions
