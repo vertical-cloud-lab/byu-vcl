@@ -1,0 +1,2 @@
+# Tested 2026-10-10 with Python 3.12; the analysis itself uses only the standard library plus matplotlib.
+matplotlib==3.11.2

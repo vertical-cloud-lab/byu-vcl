@@ -1,0 +1,17 @@
+{
+  "upload_type": "software",
+  "title": "Labour-cost analysis for \"Replication, not fabrication: documentation is the rate-limiting step for democratized self-driving labs\"",
+  "description": "Script and outputs behind Figure 1 and Tables 3-4 of the Perspective. labor_cost_analysis.py derives each contributed project's break-even wage (the loaded hourly rate at which build labour equals the bill of materials), labour shares and a rate-sensitivity sweep, using only the self-reported cost-to-reproduce and time-to-reproduce figures in the paper's Table 1. Outputs: table1-derived.csv, sensitivity.csv, fig1-labour-vs-bom.png.",
+  "creators": [
+    {"name": "Baird, Sterling G.", "affiliation": "Brigham Young University; Acceleration Consortium, University of Toronto"},
+    {"name": "Leavitt, Seth", "affiliation": "Brigham Young University"},
+    {"name": "Pelkie, Brenden", "affiliation": "University of Washington"}
+  ],
+  "license": "MIT",
+  "access_right": "open",
+  "keywords": ["self-driving labs", "open hardware", "laboratory automation", "documentation", "cost analysis"],
+  "related_identifiers": [
+    {"relation": "isSupplementTo", "identifier": "10.26434/chemrxiv-2025-zhkrf", "scheme": "doi"}
+  ],
+  "notes": "Mint from the final commit used for submission. Add the article DOI as isSupplementTo on publication. Creators list to be confirmed by the corresponding author (sign-off SGB-4)."
+}
