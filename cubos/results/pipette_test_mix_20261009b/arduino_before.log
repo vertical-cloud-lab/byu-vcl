@@ -1,0 +1,4 @@
+             connect          dt=  3.767s  ok
+21:39:02.495 STATUS           dt=  0.009s  OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+21:39:02.504 cap sensor       dt=  0.004s  OK:{"value1":0}
+21:39:02.508 EMAG_OFF         dt=  0.004s  OK:{"msg":"Electromagnet off"}

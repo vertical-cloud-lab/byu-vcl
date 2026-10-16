@@ -1,0 +1,156 @@
+[
+  {
+    "tag": "step02_decap",
+    "camera": "cam0_csi0",
+    "name": "imx708_wide",
+    "file": "step02_decap__cam0_csi0.jpg",
+    "dt_s": 0.65,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-10-12T12:44:23",
+    "error": null
+  },
+  {
+    "tag": "step02_decap",
+    "camera": "cam1_csi1",
+    "name": "imx708_wide",
+    "file": "step02_decap__cam1_csi1.jpg",
+    "dt_s": 0.63,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-10-12T12:44:23",
+    "error": null
+  },
+  {
+    "tag": "step03_pick_up_tip",
+    "camera": "cam0_csi0",
+    "name": "imx708_wide",
+    "file": "step03_pick_up_tip__cam0_csi0.jpg",
+    "dt_s": 0.62,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-10-12T12:44:32",
+    "error": null
+  },
+  {
+    "tag": "step03_pick_up_tip",
+    "camera": "cam1_csi1",
+    "name": "imx708_wide",
+    "file": "step03_pick_up_tip__cam1_csi1.jpg",
+    "dt_s": 0.62,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-10-12T12:44:33",
+    "error": null
+  },
+  {
+    "tag": "step04_mix",
+    "camera": "cam0_csi0",
+    "name": "imx708_wide",
+    "file": "step04_mix__cam0_csi0.jpg",
+    "dt_s": 0.62,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-10-12T12:45:20",
+    "error": null
+  },
+  {
+    "tag": "step04_mix",
+    "camera": "cam1_csi1",
+    "name": "imx708_wide",
+    "file": "step04_mix__cam1_csi1.jpg",
+    "dt_s": 0.63,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-10-12T12:45:20",
+    "error": null
+  },
+  {
+    "tag": "step08_move",
+    "camera": "cam0_csi0",
+    "name": "imx708_wide",
+    "file": "step08_move__cam0_csi0.jpg",
+    "dt_s": 0.7,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-10-12T12:45:43",
+    "error": null
+  },
+  {
+    "tag": "step08_move",
+    "camera": "cam1_csi1",
+    "name": "imx708_wide",
+    "file": "step08_move__cam1_csi1.jpg",
+    "dt_s": 0.62,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-10-12T12:45:44",
+    "error": null
+  },
+  {
+    "tag": "step70_move",
+    "camera": "cam0_csi0",
+    "name": "imx708_wide",
+    "file": "step70_move__cam0_csi0.jpg",
+    "dt_s": 0.65,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-10-12T12:46:15",
+    "error": null
+  },
+  {
+    "tag": "step70_move",
+    "camera": "cam1_csi1",
+    "name": "imx708_wide",
+    "file": "step70_move__cam1_csi1.jpg",
+    "dt_s": 0.62,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-10-12T12:46:15",
+    "error": null
+  },
+  {
+    "tag": "step71_drop_tip",
+    "camera": "cam0_csi0",
+    "name": "imx708_wide",
+    "file": "step71_drop_tip__cam0_csi0.jpg",
+    "dt_s": 0.63,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-10-12T12:46:27",
+    "error": null
+  },
+  {
+    "tag": "step71_drop_tip",
+    "camera": "cam1_csi1",
+    "name": "imx708_wide",
+    "file": "step71_drop_tip__cam1_csi1.jpg",
+    "dt_s": 0.6,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-10-12T12:46:28",
+    "error": null
+  },
+  {
+    "tag": "step72_cap",
+    "camera": "cam0_csi0",
+    "name": "imx708_wide",
+    "file": "step72_cap__cam0_csi0.jpg",
+    "dt_s": 0.63,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-10-12T12:46:36",
+    "error": null
+  },
+  {
+    "tag": "step72_cap",
+    "camera": "cam1_csi1",
+    "name": "imx708_wide",
+    "file": "step72_cap__cam1_csi1.jpg",
+    "dt_s": 0.62,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-10-12T12:46:36",
+    "error": null
+  }
+]

@@ -1,0 +1,24 @@
+[
+  {
+    "tag": "testshot",
+    "camera": "cam0_csi0",
+    "name": "imx708_wide",
+    "file": "testshot__cam0_csi0.jpg",
+    "dt_s": 0.74,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-10-06T15:16:51",
+    "error": null
+  },
+  {
+    "tag": "testshot",
+    "camera": "cam1_csi1",
+    "name": "imx708_wide",
+    "file": "testshot__cam1_csi1.jpg",
+    "dt_s": 0.66,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-10-06T15:16:52",
+    "error": null
+  }
+]
