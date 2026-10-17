@@ -1,0 +1,752 @@
+{
+ "model": {
+  "E_MPa_in_run": 3500.0,
+  "poisson": 0.35,
+  "element": "C3D20R (C3D15 where a quad would not form)",
+  "mesh_mm": {
+   "arm": 0.25,
+   "strip": 1.0
+  },
+  "nlgeom": true,
+  "boundary": "strip top face held; symmetry on the clip's centre plane and the extrude's mid-plane; the narrowest point of the opening moved outward by (D - opening)/2 through the depth"
+ },
+ "materials": {
+  "PLA": {
+   "E_MPa": 3500,
+   "allowable_once": 0.02,
+   "allowable_repeated": 0.012
+  },
+  "PETG": {
+   "E_MPa": 2000,
+   "allowable_once": 0.035,
+   "allowable_repeated": 0.02
+  },
+  "Nylon (PA12/PA6, unfilled)": {
+   "E_MPa": 1500,
+   "allowable_once": 0.06,
+   "allowable_repeated": 0.035
+  },
+  "TPU 95A": {
+   "E_MPa": 30,
+   "allowable_once": 0.3,
+   "allowable_repeated": 0.2
+  }
+ },
+ "versions": {
+  "rebuild": {
+   "part_volume_mm3": 8208.41
+  },
+  "printed": {
+   "part_volume_mm3": 7804.47
+  }
+ },
+ "clips": [
+  {
+   "version": "rebuild",
+   "clip": "large",
+   "bore_mm": 11.0,
+   "depth_mm": 10.0,
+   "opening_mm": 4.86,
+   "opening_pct_of_bore": 44.2,
+   "lip_spread_at_bore_mm": 3.07,
+   "nodes": 35823,
+   "layers": 6,
+   "elements": 7620,
+   "curve": [
+    {
+     "t": 0.1,
+     "D_mm": 5.474149558406944,
+     "lip_mm": 0.3069916911996142,
+     "max_tensile_strain": 0.005040368811278501,
+     "at": [
+      -16.28,
+      -6.51
+     ],
+     "max_compressive_strain": -0.005943206923942498,
+     "at_c": [
+      -17.08,
+      -5.08
+     ],
+     "force_per_arm_N_PLA": 7.022522
+    },
+    {
+     "t": 0.2,
+     "D_mm": 6.088132940806173,
+     "lip_mm": 0.6139833823992285,
+     "max_tensile_strain": 0.009951852291594794,
+     "at": [
+      -16.28,
+      -6.51
+     ],
+     "max_compressive_strain": -0.011753302615861648,
+     "at_c": [
+      -17.08,
+      -5.08
+     ],
+     "force_per_arm_N_PLA": 13.726524
+    },
+    {
+     "t": 0.3,
+     "D_mm": 6.702116323205401,
+     "lip_mm": 0.9209750735988425,
+     "max_tensile_strain": 0.014746953471475421,
+     "at": [
+      -16.28,
+      -6.51
+     ],
+     "max_compressive_strain": -0.01744508106041365,
+     "at_c": [
+      -17.08,
+      -5.08
+     ],
+     "force_per_arm_N_PLA": 20.15714
+    },
+    {
+     "t": 0.4,
+     "D_mm": 7.31609970560463,
+     "lip_mm": 1.227966764798457,
+     "max_tensile_strain": 0.019436892033634953,
+     "at": [
+      -16.28,
+      -6.51
+     ],
+     "max_compressive_strain": -0.023032097807846853,
+     "at_c": [
+      -17.08,
+      -5.08
+     ],
+     "force_per_arm_N_PLA": 26.35388
+    },
+    {
+     "t": 0.5,
+     "D_mm": 7.930083088003858,
+     "lip_mm": 1.534958455998071,
+     "max_tensile_strain": 0.024031886221302017,
+     "at": [
+      -16.28,
+      -6.51
+     ],
+     "max_compressive_strain": -0.028526414550297835,
+     "at_c": [
+      -17.08,
+      -5.08
+     ],
+     "force_per_arm_N_PLA": 32.35214
+    },
+    {
+     "t": 0.6,
+     "D_mm": 8.544066470403086,
+     "lip_mm": 1.841950147197685,
+     "max_tensile_strain": 0.028541027044177245,
+     "at": [
+      -16.28,
+      -6.51
+     ],
+     "max_compressive_strain": -0.03393963397024595,
+     "at_c": [
+      -17.08,
+      -5.08
+     ],
+     "force_per_arm_N_PLA": 38.18384
+    },
+    {
+     "t": 0.7,
+     "D_mm": 9.158049852802314,
+     "lip_mm": 2.148941838397299,
+     "max_tensile_strain": 0.032972810849462166,
+     "at": [
+      -16.28,
+      -6.51
+     ],
+     "max_compressive_strain": -0.039281924781114176,
+     "at_c": [
+      -17.08,
+      -5.08
+     ],
+     "force_per_arm_N_PLA": 43.87796
+    },
+    {
+     "t": 0.8,
+     "D_mm": 9.772033235201544,
+     "lip_mm": 2.455933529596914,
+     "max_tensile_strain": 0.037334887567211886,
+     "at": [
+      -16.28,
+      -6.51
+     ],
+     "max_compressive_strain": -0.044563189905670354,
+     "at_c": [
+      -17.08,
+      -5.08
+     ],
+     "force_per_arm_N_PLA": 49.4611
+    },
+    {
+     "t": 0.9,
+     "D_mm": 10.386016617600772,
+     "lip_mm": 2.762925220796528,
+     "max_tensile_strain": 0.041634508833666366,
+     "at": [
+      -16.28,
+      -6.51
+     ],
+     "max_compressive_strain": -0.04979250187329737,
+     "at_c": [
+      -17.08,
+      -5.08
+     ],
+     "force_per_arm_N_PLA": 54.95804
+    },
+    {
+     "t": 1.0,
+     "D_mm": 11.0,
+     "lip_mm": 3.069916911996142,
+     "max_tensile_strain": 0.04587825470022222,
+     "at": [
+      -16.28,
+      -6.51
+     ],
+     "max_compressive_strain": -0.05497844097349874,
+     "at_c": [
+      -17.08,
+      -5.08
+     ],
+     "force_per_arm_N_PLA": 60.392
+    }
+   ]
+  },
+  {
+   "version": "rebuild",
+   "clip": "small",
+   "bore_mm": 7.0,
+   "depth_mm": 5.0,
+   "opening_mm": 2.6,
+   "opening_pct_of_bore": 37.1,
+   "lip_spread_at_bore_mm": 2.2,
+   "nodes": 14030,
+   "layers": 3,
+   "elements": 2589,
+   "curve": [
+    {
+     "t": 0.1,
+     "D_mm": 3.0400000000000014,
+     "lip_mm": 0.21999999999999995,
+     "max_tensile_strain": 0.005808358411961111,
+     "at": [
+      10.09,
+      -5.96
+     ],
+     "max_compressive_strain": -0.0062151807548162154,
+     "at_c": [
+      9.58,
+      -5.08
+     ],
+     "force_per_arm_N_PLA": 2.590216
+    },
+    {
+     "t": 0.2,
+     "D_mm": 3.4800000000000013,
+     "lip_mm": 0.4399999999999999,
+     "max_tensile_strain": 0.011413217310602774,
+     "at": [
+      10.09,
+      -5.96
+     ],
+     "max_compressive_strain": -0.012228151863867793,
+     "at_c": [
+      9.58,
+      -5.08
+     ],
+     "force_per_arm_N_PLA": 5.023542
+    },
+    {
+     "t": 0.3,
+     "D_mm": 3.920000000000001,
+     "lip_mm": 0.6599999999999998,
+     "max_tensile_strain": 0.016835023517071397,
+     "at": [
+      10.09,
+      -5.96
+     ],
+     "max_compressive_strain": -0.018084847029785953,
+     "at_c": [
+      9.58,
+      -5.08
+     ],
+     "force_per_arm_N_PLA": 7.323838
+    },
+    {
+     "t": 0.4,
+     "D_mm": 4.360000000000001,
+     "lip_mm": 0.8799999999999998,
+     "max_tensile_strain": 0.022091788931816354,
+     "at": [
+      10.09,
+      -5.96
+     ],
+     "max_compressive_strain": -0.023804905243543274,
+     "at_c": [
+      9.58,
+      -5.08
+     ],
+     "force_per_arm_N_PLA": 9.511492
+    },
+    {
+     "t": 0.5,
+     "D_mm": 4.800000000000001,
+     "lip_mm": 1.0999999999999996,
+     "max_tensile_strain": 0.027199652117057237,
+     "at": [
+      10.09,
+      -5.96
+     ],
+     "max_compressive_strain": -0.029399749720878835,
+     "at_c": [
+      9.58,
+      -5.08
+     ],
+     "force_per_arm_N_PLA": 11.604306
+    },
+    {
+     "t": 0.6,
+     "D_mm": 5.24,
+     "lip_mm": 1.3199999999999996,
+     "max_tensile_strain": 0.03217303386424546,
+     "at": [
+      10.09,
+      -5.96
+     ],
+     "max_compressive_strain": -0.03488447030385342,
+     "at_c": [
+      9.58,
+      -5.08
+     ],
+     "force_per_arm_N_PLA": 13.617936
+    },
+    {
+     "t": 0.7,
+     "D_mm": 5.68,
+     "lip_mm": 1.5399999999999994,
+     "max_tensile_strain": 0.03702481712954586,
+     "at": [
+      10.09,
+      -5.96
+     ],
+     "max_compressive_strain": -0.0402724129707661,
+     "at_c": [
+      9.58,
+      -5.08
+     ],
+     "force_per_arm_N_PLA": 15.566296
+    },
+    {
+     "t": 0.8,
+     "D_mm": 6.120000000000001,
+     "lip_mm": 1.7599999999999996,
+     "max_tensile_strain": 0.04176686319361038,
+     "at": [
+      10.09,
+      -5.96
+     ],
+     "max_compressive_strain": -0.04557616816799455,
+     "at_c": [
+      9.58,
+      -5.08
+     ],
+     "force_per_arm_N_PLA": 17.461902
+    },
+    {
+     "t": 0.9,
+     "D_mm": 6.5600000000000005,
+     "lip_mm": 1.9799999999999993,
+     "max_tensile_strain": 0.0464098977495726,
+     "at": [
+      10.09,
+      -5.96
+     ],
+     "max_compressive_strain": -0.05080699886556116,
+     "at_c": [
+      9.58,
+      -5.08
+     ],
+     "force_per_arm_N_PLA": 19.316148
+    },
+    {
+     "t": 1.0,
+     "D_mm": 7.0,
+     "lip_mm": 2.1999999999999993,
+     "max_tensile_strain": 0.05096369848591739,
+     "at": [
+      10.09,
+      -5.96
+     ],
+     "max_compressive_strain": -0.05597559485086489,
+     "at_c": [
+      9.58,
+      -5.08
+     ],
+     "force_per_arm_N_PLA": 21.13956
+    }
+   ]
+  },
+  {
+   "version": "printed",
+   "clip": "large",
+   "bore_mm": 12.75,
+   "depth_mm": 7.0,
+   "opening_mm": 7.2,
+   "opening_pct_of_bore": 56.5,
+   "lip_spread_at_bore_mm": 2.775,
+   "nodes": 20217,
+   "layers": 4,
+   "elements": 3880,
+   "curve": [
+    {
+     "t": 0.1,
+     "D_mm": 7.755000000000006,
+     "lip_mm": 0.2774999999999998,
+     "max_tensile_strain": 0.0024801020615196874,
+     "at": [
+      -15.98,
+      -6.03
+     ],
+     "max_compressive_strain": -0.0027398749537318077,
+     "at_c": [
+      -16.31,
+      -5.06
+     ],
+     "force_per_arm_N_PLA": 0.8839554
+    },
+    {
+     "t": 0.2,
+     "D_mm": 8.310000000000006,
+     "lip_mm": 0.5549999999999996,
+     "max_tensile_strain": 0.004914108077565852,
+     "at": [
+      -15.98,
+      -6.03
+     ],
+     "max_compressive_strain": -0.005438353172406401,
+     "at_c": [
+      -16.31,
+      -5.06
+     ],
+     "force_per_arm_N_PLA": 1.7420844
+    },
+    {
+     "t": 0.3,
+     "D_mm": 8.865000000000006,
+     "lip_mm": 0.8324999999999992,
+     "max_tensile_strain": 0.007305849380372606,
+     "at": [
+      -15.98,
+      -6.03
+     ],
+     "max_compressive_strain": -0.00809971840395633,
+     "at_c": [
+      -16.31,
+      -5.06
+     ],
+     "force_per_arm_N_PLA": 2.577842
+    },
+    {
+     "t": 0.4,
+     "D_mm": 9.420000000000005,
+     "lip_mm": 1.1099999999999992,
+     "max_tensile_strain": 0.009658858233896896,
+     "at": [
+      -15.98,
+      -6.03
+     ],
+     "max_compressive_strain": -0.01072793989886202,
+     "at_c": [
+      -16.31,
+      -5.06
+     ],
+     "force_per_arm_N_PLA": 3.394392
+    },
+    {
+     "t": 0.5,
+     "D_mm": 9.975000000000005,
+     "lip_mm": 1.3874999999999988,
+     "max_tensile_strain": 0.011976409029726728,
+     "at": [
+      -15.98,
+      -6.03
+     ],
+     "max_compressive_strain": -0.013326761362970105,
+     "at_c": [
+      -16.31,
+      -5.06
+     ],
+     "force_per_arm_N_PLA": 4.194676
+    },
+    {
+     "t": 0.6,
+     "D_mm": 10.530000000000003,
+     "lip_mm": 1.6649999999999985,
+     "max_tensile_strain": 0.014261561047765908,
+     "at": [
+      -15.98,
+      -6.03
+     ],
+     "max_compressive_strain": -0.01589964138278331,
+     "at_c": [
+      -16.31,
+      -5.06
+     ],
+     "force_per_arm_N_PLA": 4.981452
+    },
+    {
+     "t": 0.7,
+     "D_mm": 11.085000000000003,
+     "lip_mm": 1.9424999999999983,
+     "max_tensile_strain": 0.01651714919488253,
+     "at": [
+      -15.98,
+      -6.03
+     ],
+     "max_compressive_strain": -0.018450043152548237,
+     "at_c": [
+      -16.31,
+      -5.06
+     ],
+     "force_per_arm_N_PLA": 5.757324
+    },
+    {
+     "t": 0.8,
+     "D_mm": 11.640000000000004,
+     "lip_mm": 2.2199999999999984,
+     "max_tensile_strain": 0.018745936541815528,
+     "at": [
+      -15.98,
+      -6.03
+     ],
+     "max_compressive_strain": -0.02098103059079793,
+     "at_c": [
+      -16.31,
+      -5.06
+     ],
+     "force_per_arm_N_PLA": 6.524774
+    },
+    {
+     "t": 0.9,
+     "D_mm": 12.195000000000002,
+     "lip_mm": 2.497499999999998,
+     "max_tensile_strain": 0.020950349990774882,
+     "at": [
+      -15.98,
+      -6.03
+     ],
+     "max_compressive_strain": -0.02349563282375745,
+     "at_c": [
+      -16.31,
+      -5.06
+     ],
+     "force_per_arm_N_PLA": 7.28619
+    },
+    {
+     "t": 1.0,
+     "D_mm": 12.750000000000002,
+     "lip_mm": 2.7749999999999977,
+     "max_tensile_strain": 0.023132930122019623,
+     "at": [
+      -15.98,
+      -6.03
+     ],
+     "max_compressive_strain": -0.02599682412989105,
+     "at_c": [
+      -16.31,
+      -5.06
+     ],
+     "force_per_arm_N_PLA": 8.043894
+    }
+   ]
+  },
+  {
+   "version": "printed",
+   "clip": "small",
+   "bore_mm": 8.75,
+   "depth_mm": 2.0,
+   "opening_mm": 5.88,
+   "opening_pct_of_bore": 67.2,
+   "lip_spread_at_bore_mm": 1.435,
+   "nodes": 10369,
+   "layers": 2,
+   "elements": 1736,
+   "curve": [
+    {
+     "t": 0.1,
+     "D_mm": 6.167000000000004,
+     "lip_mm": 0.1434999999999998,
+     "max_tensile_strain": 0.002925038768708541,
+     "at": [
+      9.65,
+      -6.06
+     ],
+     "max_compressive_strain": -0.0033076268653115803,
+     "at_c": [
+      9.28,
+      -5.07
+     ],
+     "force_per_arm_N_PLA": 0.4510908
+    },
+    {
+     "t": 0.2,
+     "D_mm": 6.454000000000003,
+     "lip_mm": 0.2869999999999996,
+     "max_tensile_strain": 0.005811081085196518,
+     "at": [
+      9.65,
+      -6.06
+     ],
+     "max_compressive_strain": -0.0065775173246338985,
+     "at_c": [
+      9.28,
+      -5.07
+     ],
+     "force_per_arm_N_PLA": 0.8934006
+    },
+    {
+     "t": 0.3,
+     "D_mm": 6.741000000000003,
+     "lip_mm": 0.4304999999999993,
+     "max_tensile_strain": 0.008660775075743754,
+     "at": [
+      9.65,
+      -6.06
+     ],
+     "max_compressive_strain": -0.009812477878508107,
+     "at_c": [
+      9.28,
+      -5.07
+     ],
+     "force_per_arm_N_PLA": 1.3279424
+    },
+    {
+     "t": 0.4,
+     "D_mm": 7.028000000000002,
+     "lip_mm": 0.5739999999999992,
+     "max_tensile_strain": 0.011476634402680125,
+     "at": [
+      9.65,
+      -6.06
+     ],
+     "max_compressive_strain": -0.01301517126946136,
+     "at_c": [
+      9.28,
+      -5.07
+     ],
+     "force_per_arm_N_PLA": 1.7556736
+    },
+    {
+     "t": 0.5,
+     "D_mm": 7.315000000000002,
+     "lip_mm": 0.7174999999999989,
+     "max_tensile_strain": 0.0142610184528972,
+     "at": [
+      9.65,
+      -6.06
+     ],
+     "max_compressive_strain": -0.01618818543086778,
+     "at_c": [
+      9.28,
+      -5.07
+     ],
+     "force_per_arm_N_PLA": 2.177504
+    },
+    {
+     "t": 0.6,
+     "D_mm": 7.602000000000002,
+     "lip_mm": 0.8609999999999987,
+     "max_tensile_strain": 0.01701623686895718,
+     "at": [
+      9.65,
+      -6.06
+     ],
+     "max_compressive_strain": -0.019333779387841678,
+     "at_c": [
+      9.28,
+      -5.07
+     ],
+     "force_per_arm_N_PLA": 2.594302
+    },
+    {
+     "t": 0.7,
+     "D_mm": 7.889000000000001,
+     "lip_mm": 1.0044999999999984,
+     "max_tensile_strain": 0.019744327782721595,
+     "at": [
+      9.65,
+      -6.06
+     ],
+     "max_compressive_strain": -0.02245453495156554,
+     "at_c": [
+      9.28,
+      -5.07
+     ],
+     "force_per_arm_N_PLA": 3.006904
+    },
+    {
+     "t": 0.8,
+     "D_mm": 8.176000000000002,
+     "lip_mm": 1.1479999999999984,
+     "max_tensile_strain": 0.02244746300307565,
+     "at": [
+      9.65,
+      -6.06
+     ],
+     "max_compressive_strain": -0.025552459631235744,
+     "at_c": [
+      9.28,
+      -5.07
+     ],
+     "force_per_arm_N_PLA": 3.416114
+    },
+    {
+     "t": 0.9,
+     "D_mm": 8.463000000000001,
+     "lip_mm": 1.291499999999998,
+     "max_tensile_strain": 0.02512757942976042,
+     "at": [
+      9.65,
+      -6.06
+     ],
+     "max_compressive_strain": -0.028629726341078004,
+     "at_c": [
+      9.28,
+      -5.07
+     ],
+     "force_per_arm_N_PLA": 3.822718
+    },
+    {
+     "t": 1.0,
+     "D_mm": 8.75,
+     "lip_mm": 1.4349999999999978,
+     "max_tensile_strain": 0.027786535225404033,
+     "at": [
+      9.65,
+      -6.06
+     ],
+     "max_compressive_strain": -0.03168857153117381,
+     "at_c": [
+      9.28,
+      -5.07
+     ],
+     "force_per_arm_N_PLA": 4.227476
+    }
+   ]
+  }
+ ],
+ "mesh_check": {
+  "printed large, 0.15 mm mesh": {
+   "max_tensile_strain": 0.0231,
+   "at": [
+    -15.98,
+    -6.03
+   ],
+   "max_compressive_strain": -0.03142,
+   "force_per_arm_N_PLA": 8.03
+  }
+ }
+}
