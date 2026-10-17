@@ -1,0 +1,109 @@
+{
+  "company": "Intrepid Labs",
+  "slug": "intrepid-labs",
+  "hq": "Toronto, Canada",
+  "country": "CA",
+  "founded": "2023",
+  "category": "self-driving lab",
+  "focus": "AI + robotic self-driving lab (Valiant) for drug-formulation development; University of Toronto spinout",
+  "status": "active",
+  "website": "https://www.intrepidlabs.tech",
+  "funding": [
+    {
+      "date": "2023",
+      "round": "Pre-seed (Radical lists investment year 2023; unannounced until 2025-05)",
+      "amount_usd_m": 4.0,
+      "original_amount": "USD 4M",
+      "type": "equity",
+      "lead_investors": [
+        "Radical Ventures"
+      ],
+      "source": "https://radical.vc/portfolio/intrepid-labs/"
+    },
+    {
+      "date": "2025-05-12",
+      "round": "Seed",
+      "amount_usd_m": 7.0,
+      "original_amount": "USD 7M",
+      "type": "equity",
+      "lead_investors": [
+        "Avant Bio"
+      ],
+      "source": "https://www.osler.com/en/about-us/representative-work/intrepid-labs/"
+    }
+  ],
+  "headcount": [
+    {
+      "date": "2026-10-09",
+      "value": null,
+      "low": 1,
+      "high": 10,
+      "method": "other",
+      "note": "size band on the University of Toronto Entrepreneurship startup job board (date of last update unknown; a search-index copy showed 11-50)",
+      "source": "https://jobs.entrepreneurs.utoronto.ca/companies/intrepid-labs-2-e3db58f4-bb86-403c-8430-f8d64448d0fe"
+    }
+  ],
+  "postings": [],
+  "current_openings": {
+    "date": "2026-10-09",
+    "count": 0,
+    "by_function": {},
+    "titles": [],
+    "source": "https://jobs.entrepreneurs.utoronto.ca/companies/intrepid-labs-2-e3db58f4-bb86-403c-8430-f8d64448d0fe"
+  },
+  "people": [
+    {
+      "name": "Christine Allen",
+      "title": "Co-founder and CEO",
+      "function": "leadership",
+      "seniority": "founder",
+      "start": "2023",
+      "start_basis": "founder; company founded 2023 per BiopharmaTrend; CEO in 2025-05 launch coverage",
+      "end": null,
+      "background": "University of Toronto professor and pharmaceutical-formulation researcher",
+      "source": "https://www.biopharmatrend.com/news/torontos-intrepid-labs-emerges-with-11m-and-ai-driven-platform-to-rebuild-drug-formulation-rd-1239/"
+    },
+    {
+      "name": "Alán Aspuru-Guzik",
+      "title": "Co-founder",
+      "function": "leadership",
+      "seniority": "founder",
+      "start": "2023",
+      "start_basis": "named on founding team in 2025-05 launch coverage",
+      "end": null,
+      "background": "University of Toronto professor running AI-chemistry / self-driving-lab groups",
+      "source": "https://thelogic.co/briefing/toronto-ai-drug-developer-intrepid-launches-with-us7m-in-seed-funding/"
+    },
+    {
+      "name": "Pauric Bannigan",
+      "title": "Co-founder and CSO",
+      "function": "lab-automation",
+      "seniority": "founder",
+      "start": "2023",
+      "start_basis": "listed as founder by Radical Ventures; named in 2025-05 launch coverage",
+      "end": null,
+      "background": "PhD (Dr.); lab automation and pharmaceutical formulation",
+      "source": "https://radical.vc/portfolio/intrepid-labs/"
+    },
+    {
+      "name": "Riley Hickman",
+      "title": "Co-founder and R&D Director",
+      "function": "ml-research",
+      "seniority": "founder",
+      "start": "2023",
+      "start_basis": "listed as founder by Radical Ventures; named in 2025-05 launch coverage",
+      "end": null,
+      "background": "PhD (Dr.); AI-driven experiment optimisation",
+      "source": "https://radical.vc/portfolio/intrepid-labs/"
+    }
+  ],
+  "staff_roles": [],
+  "departures": [],
+  "notes": [
+    "Total disclosed funding USD 11M (4M pre-seed + 7M seed). Pre-seed date was not disclosed; it was revealed only at the 2025-05-12 stealth exit.",
+    "Platform stack: Andromeda active-learning engine, Eunomia orchestration and Robotica hardware, together marketed as Valiant. Resident at J&J JLABS and in the Vector Institute FastLane programme; claims eight commercial agreements including two top-10 pharma companies.",
+    "No ATS board found (tokens intrepidlabs, intrepid-labs, intrepidlabsinc); the company website lists only the CEO and no careers page; the U of T startup job board shows no openings.",
+    "No OpenAlex institution record. Wayback and LinkedIn bands were skipped for time and Wayback slowness.",
+    "Acceleration Consortium link is via the founders (Aspuru-Guzik directs it); the U of T Entrepreneurship page does not state an accelerator affiliation."
+  ]
+}

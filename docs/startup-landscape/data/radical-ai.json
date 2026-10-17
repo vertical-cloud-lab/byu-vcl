@@ -1,0 +1,31 @@
+{
+ "company": "Radical AI", "slug": "radical-ai", "hq": "New York (Brooklyn Navy Yard), US", "country": "US",
+ "founded": "2024",
+ "category": "self-driving lab",
+ "focus": "Closed-loop autonomous lab plus AI for discovering and making new inorganic materials (~100 AI-driven experiments/day planned)",
+ "status": "active", "website": "https://www.radical-ai.com",
+ "funding": [
+  {"date": "2025-07-21", "round": "Series Seed+", "amount_usd_m": 55.0, "original_amount": "USD 55M", "type": "equity", "lead_investors": ["RTX Ventures"], "source": "https://pulse2.com/radical-ai-55-million-series-seed-raised-for-advancing-materials-research/"},
+  {"date": "2026-01-27", "round": "NY Excelsior Jobs Program tax credits (performance-based, up to)", "amount_usd_m": 2.0, "original_amount": "up to USD 2M, tied to 115 new jobs; USD 4M lab project", "type": "grant", "lead_investors": ["Empire State Development"], "source": "https://www.governor.ny.gov/news/governor-hochul-celebrates-radical-ai-establishing-new-yorks-first-fully-autonomous-materials"}
+ ],
+ "headcount": [
+  {"date": "2026-01-27", "value": 34, "low": null, "high": null, "method": "press", "note": "'about 34 scientists, engineers and technologists'; company committed to create 115 new jobs at the Brooklyn Navy Yard lab", "source": "https://www.governor.ny.gov/news/governor-hochul-celebrates-radical-ai-establishing-new-yorks-first-fully-autonomous-materials"}
+ ],
+ "postings": [],
+ "current_openings": {"date": "2026-10-09", "count": null, "by_function": {}, "titles": [], "source": "https://www.radical-ai.com/"},
+ "people": [
+  {"name": "Joseph F. Krause", "title": "CEO and Co-founder", "function": "leadership", "seniority": "founder", "start": "2024-01", "start_basis": "co-founder; company founding year per secondary report (month unknown)", "end": null, "background": null, "source": "https://www.governor.ny.gov/news/governor-hochul-celebrates-radical-ai-establishing-new-yorks-first-fully-autonomous-materials"},
+  {"name": "Jorge Colindres", "title": "Co-founder (title not confirmed)", "function": "leadership", "seniority": "founder", "start": "2024-01", "start_basis": "secondary coverage of the 2025 seed round names him as co-leading the company", "end": null, "background": null, "source": "https://finder.techleap.nl/news/feed/radical-ai-secures-55m-seed-funding"}
+ ],
+ "staff_roles": [],
+ "departures": [],
+ "notes": [
+  "Partial profile written in a ~5-minute budget; coverage is thin.",
+  "Other participants in the Seed+ round: NVentures (NVIDIA), Noa, Infinite Capital, Eni (Eni Next), AlleyCorp.",
+  "Founding year 2024 is from one secondary report and is not verified; no Form D search was done.",
+  "Careers link on radical-ai.com points to a third-party page (nodi.global); no public ATS board found (Ashby/Greenhouse/Lever tokens radical-ai, radicalai, radical returned nothing; a Workable account 'radical-ai' exists with 0 jobs and may be unrelated).",
+  "LinkedIn slug 'radical-ai' is a DIFFERENT company (Denver CO, founded 2020, 2-10 employees). Do not use it. The company's own slug is 'radicalai'; its Wayback CDX query timed out.",
+  "Fast Company (2026) reports the lab moving from Manhattan to a larger Brooklyn Navy Yard space and one campaign finding ~300 novel compositions in 16 weeks: https://www.fastcompany.com/91543082/in-this-manhattan-lab-ai-designs-materials-from-scratch",
+  "Not done: team-page Wayback history, OpenAlex, Form D, posting history, leadership beyond the founders."
+ ]
+}

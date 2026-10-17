@@ -1,0 +1,281 @@
+{
+  "company": "Orbital Materials (now Orbital Industries)",
+  "slug": "orbital-materials",
+  "hq": "London, UK",
+  "country": "UK",
+  "founded": "2022",
+  "category": "AI-for-materials (computational)",
+  "focus": "Generative AI and ML interatomic potentials (Linus, Orb) for porous materials, sorbents and data-centre cooling fluids, plus a Princeton NJ wet lab; rebranded 2026 toward AI data-centre hardware",
+  "status": "active",
+  "website": "https://www.orbitalindustries.com",
+  "funding": [
+    {
+      "date": "2023-07",
+      "round": "Seed",
+      "amount_usd_m": 4.8,
+      "original_amount": "USD 4.8M",
+      "type": "equity",
+      "lead_investors": [
+        "Fly Ventures",
+        "Compound"
+      ],
+      "source": "https://techcrunch.com/2024/02/21/this-startup-is-using-ai-to-discover-new-materials/"
+    },
+    {
+      "date": "2024-02-21",
+      "round": "Series A",
+      "amount_usd_m": 16.0,
+      "original_amount": "USD 16M",
+      "type": "equity",
+      "lead_investors": [
+        "Radical Ventures"
+      ],
+      "source": "https://techcrunch.com/2024/02/21/this-startup-is-using-ai-to-discover-new-materials/"
+    },
+    {
+      "date": "2024-10-22",
+      "round": "Strategic (NVentures)",
+      "amount_usd_m": null,
+      "original_amount": "undisclosed",
+      "type": "equity",
+      "lead_investors": [
+        "NVentures (NVIDIA)"
+      ],
+      "source": "https://www.globenewswire.com/news-release/2024/10/22/2966994/0/en/Orbital-Materials-to-Advance-Materials-and-Climate-Technologies-with-AI-Using-Investment-from-NVentures.html"
+    },
+    {
+      "date": "2026-05-28",
+      "round": "Series B",
+      "amount_usd_m": 50.0,
+      "original_amount": "USD 50M (reported as GBP 37M)",
+      "type": "equity",
+      "lead_investors": [
+        "Plural"
+      ],
+      "source": "https://fortune.com/2026/05/28/exclusive-orbital-industries-raises-50-million-series-b-funding-round-ai-to-discover-exotic-new-materials/"
+    }
+  ],
+  "headcount": [
+    {
+      "date": "2023-12-31",
+      "value": 5,
+      "low": null,
+      "high": null,
+      "method": "registry",
+      "note": "UK subsidiary Orbital Materials Ltd only; average monthly employees incl. directors, 16-month first period 2 Sep 2022 to 31 Dec 2023 (comparative in FY2024 accounts)",
+      "source": "https://find-and-update.company-information.service.gov.uk/company/14332843/filing-history/MzQ3NDQxMzcwMWFkaXF6a2N4/document?format=pdf&download=0",
+      "partial": true
+    },
+    {
+      "date": "2024-02-21",
+      "value": 13,
+      "low": null,
+      "high": null,
+      "method": "press",
+      "note": "'a team of 13 people' at the Series A (whole company)",
+      "source": "https://techcrunch.com/2024/02/21/this-startup-is-using-ai-to-discover-new-materials/"
+    },
+    {
+      "date": "2024-12-31",
+      "value": 8,
+      "low": null,
+      "high": null,
+      "method": "registry",
+      "note": "UK subsidiary only; average monthly employees incl. directors, FY2024",
+      "source": "https://find-and-update.company-information.service.gov.uk/company/14332843/filing-history/MzQ3NDQxMzcwMWFkaXF6a2N4/document?format=pdf&download=0",
+      "partial": true
+    },
+    {
+      "date": "2025-12-31",
+      "value": 8,
+      "low": null,
+      "high": null,
+      "method": "registry",
+      "note": "UK subsidiary only; average monthly employees incl. directors, FY2025",
+      "source": "https://find-and-update.company-information.service.gov.uk/company/14332843/filing-history/MzU0MTI0MDY2MWFkaXF6a2N4/document?format=pdf&download=0",
+      "partial": true
+    },
+    {
+      "date": "2026-05-28",
+      "value": 50,
+      "low": null,
+      "high": null,
+      "method": "press",
+      "note": "'about 50 people' across London and San Francisco at the Series B (whole company)",
+      "source": "https://fortune.com/2026/05/28/exclusive-orbital-industries-raises-50-million-series-b-funding-round-ai-to-discover-exotic-new-materials/"
+    }
+  ],
+  "postings": [
+    {
+      "period": "2025Q2",
+      "new_postings": 7,
+      "method": "wayback-cdx",
+      "source": "https://web.archive.org/web/*/jobs.ashbyhq.com/orbitalmaterials*"
+    },
+    {
+      "period": "2025Q3",
+      "new_postings": 2,
+      "method": "wayback-cdx",
+      "source": "https://web.archive.org/web/*/jobs.ashbyhq.com/orbitalmaterials*"
+    },
+    {
+      "period": "2025Q4",
+      "new_postings": 9,
+      "method": "wayback-cdx",
+      "source": "https://web.archive.org/web/*/jobs.ashbyhq.com/orbitalmaterials*"
+    },
+    {
+      "period": "2026Q1",
+      "new_postings": 6,
+      "method": "wayback-cdx",
+      "source": "https://web.archive.org/web/*/jobs.ashbyhq.com/orbitalmaterials*"
+    },
+    {
+      "period": "2026Q2",
+      "new_postings": 5,
+      "method": "wayback-cdx",
+      "source": "https://web.archive.org/web/*/jobs.ashbyhq.com/orbitalindustries*"
+    },
+    {
+      "period": "2026Q3",
+      "new_postings": 6,
+      "method": "ats",
+      "source": "https://jobs.ashbyhq.com/orbitalindustries"
+    }
+  ],
+  "current_openings": {
+    "date": "2026-10-09",
+    "count": 7,
+    "by_function": {
+      "ml-research": 1,
+      "software-eng": 3,
+      "lab-automation": 1,
+      "materials-science": 1,
+      "business-ops": 1
+    },
+    "titles": [
+      "Machine Learning Research Engineer (AI, London)",
+      "Senior Backend Engineer (AI, London)",
+      "Forward Deployed Engineer (AI, London)",
+      "Forward Deployed Engineering Lead (AI, London)",
+      "Test Engineer (Direct-to-Chip, San Francisco)",
+      "Prototype Researcher (Direct-to-Chip, San Francisco)",
+      "Communications Lead (Commercial & Marketing, London)"
+    ],
+    "source": "https://jobs.ashbyhq.com/orbitalindustries"
+  },
+  "people": [
+    {
+      "name": "Jonathan Godwin",
+      "title": "Co-founder and CEO",
+      "function": "leadership",
+      "seniority": "founder",
+      "start": "2022-09",
+      "start_basis": "company incorporated 2 Sep 2022; UK director appointment 14 Oct 2022 (Companies House)",
+      "end": null,
+      "background": "Former Google DeepMind researcher (about five years on AI for science and advanced materials)",
+      "source": "https://find-and-update.company-information.service.gov.uk/company/14332843/officers"
+    },
+    {
+      "name": "James Gin-Pollock",
+      "title": "Co-founder and CTO",
+      "function": "leadership",
+      "seniority": "founder",
+      "start": "2022-09",
+      "start_basis": "UK director from incorporation, 2 Sep 2022 (Companies House)",
+      "end": null,
+      "background": "Repeat AI founder; previously sold a company to Shutterstock (Fortune)",
+      "source": "https://fortune.com/2026/05/28/exclusive-orbital-industries-raises-50-million-series-b-funding-round-ai-to-discover-exotic-new-materials/"
+    },
+    {
+      "name": "Daniel Miodovnik",
+      "title": "Co-founder and COO; company secretary",
+      "function": "leadership",
+      "seniority": "founder",
+      "start": "2022-09",
+      "start_basis": "UK director from incorporation, 2 Sep 2022; secretary from 14 Nov 2022 (Companies House)",
+      "end": null,
+      "background": "Commercial and business-development lead per investor note (credited with multi-year contracts such as AWS); no public degree details found",
+      "source": "https://find-and-update.company-information.service.gov.uk/company/14332843/officers"
+    },
+    {
+      "name": "Simon Weston",
+      "title": "Scientific advisor",
+      "function": "materials-science",
+      "seniority": "advisor",
+      "start": "2024-07",
+      "start_basis": "press release 30 Jul 2024",
+      "end": null,
+      "background": "Materials scientist; former Chief Science Officer at Climeworks; earlier research and programme roles at ExxonMobil; 2024 ACS Chemistry of Materials award",
+      "source": "https://www.globenewswire.com/news-release/2024/07/30/2920925/0/en/Award-Winning-Material-Inventor-Joins-as-Advisor-for-AI-Innovator-of-Climate-Technologies.html"
+    }
+  ],
+  "staff_roles": [
+    {
+      "title": "Associate Director (press contact)",
+      "function": "business-ops",
+      "first_seen": "2024-07",
+      "last_seen": null,
+      "background": "not stated",
+      "source": "https://www.globenewswire.com/news-release/2024/07/30/2920925/0/en/Award-Winning-Material-Inventor-Joins-as-Advisor-for-AI-Innovator-of-Climate-Technologies.html"
+    },
+    {
+      "title": "Process Engineering - Data Center Cooling (job posting)",
+      "function": "materials-science",
+      "first_seen": "2025-05",
+      "last_seen": null,
+      "background": "job ad: process/chemical engineering for data-centre cooling fluids",
+      "source": "https://web.archive.org/web/20250518133738/https://jobs.ashbyhq.com/orbitalmaterials/3ba2ea88-8f62-4204-8453-8f288f3db4d6?utm_source=Impact+Ventures+job+board&utm_medium=getro.com&gh_src=Impact+Ventures+job+board"
+    },
+    {
+      "title": "Researcher, Chemistry (onsite, new lab outside Princeton NJ; zeolite/MOF synthesis and testing)",
+      "function": "materials-science",
+      "first_seen": "2025-05",
+      "last_seen": null,
+      "background": "job ad: synthetic chemistry of porous materials, working with computational chemists, ML researchers and chemical engineers",
+      "source": "https://jobs.toyota.ventures/companies/orbital-materials/jobs/51707162-researcher-chemistry"
+    },
+    {
+      "title": "Researcher, Generative Models / Simulation (hybrid London or Princeton)",
+      "function": "ml-research",
+      "first_seen": "2025",
+      "last_seen": null,
+      "background": "job ad: ML for atomistic simulation",
+      "source": "https://jobs.compound.vc/companies/orbital-materials/jobs/51641785-researcher-generative-models-simulation"
+    },
+    {
+      "title": "Researcher (x3, quoted on About page)",
+      "function": "ml-research",
+      "first_seen": "2026-10",
+      "last_seen": null,
+      "background": "not stated",
+      "source": "https://www.orbitalindustries.com/about"
+    }
+  ],
+  "departures": [
+    {
+      "who": "Niamh Patricia Gavin",
+      "title": "Director and secretary (incorporation)",
+      "date": "2022-11",
+      "basis": "Companies House TM01/TM02, 14 Nov 2022; appears to be a formation-agent nominee (same firm as the corporate secretary), not an operating role",
+      "source": "https://find-and-update.company-information.service.gov.uk/company/14332843/officers"
+    },
+    {
+      "who": "The Briars Group Limited",
+      "title": "Corporate secretary (service provider)",
+      "date": "2024-01",
+      "basis": "Companies House TM02, 31 Jan 2024",
+      "source": "https://find-and-update.company-information.service.gov.uk/company/14332843/filing-history"
+    }
+  ],
+  "notes": [
+    "Companies House 14332843 is the UK operating subsidiary; its accounts name Orbital Materials Inc. (USA) as parent and controlling party. Equity was raised at the US parent, so there are no SH01 allotments in the UK filings and the UK headcount (5, 8, 8) understates the group.",
+    "No SEC Form D found: EDGAR full-text search for 'Orbital Materials' and 'Orbital Industries' (forms=D) and the company-name search returned nothing.",
+    "Seed amount ($4.8M, July 2023) is from secondary databases (Dealroom-type profiles); TechCrunch's '~$21M total' after the $16M A is consistent with it. Leads Fly Ventures and Compound are named as 'returning Seed leads' in the Series A release.",
+    "Total disclosed equity about $71M (Resilience Media, May 2026); NVentures amount undisclosed.",
+    "Rebranded from Orbital Materials to Orbital Industries by May 2026; orbitalmaterials.com 301-redirects to orbitalindustries.com. Products now pitched at AI data centres (PFAS-free immersion-cooling fluid, modular high-density compute platform 'Orbital IT'), with a multi-year AWS partnership; offices London and San Francisco, earlier R&D lab near Princeton NJ.",
+    "OpenAlex has no institution record; works search on the raw affiliation string finds 10 works and 5 distinct Orbital-affiliated authors (2023-2026), a weak lower bound.",
+    "Current openings function mapping: Test Engineer -> lab-automation (hardware test), Prototype Researcher -> materials-science (cooling hardware prototypes).",
+    "Captured postings: 29 distinct Ashby posting IDs under jobs.ashbyhq.com/orbitalmaterials (board root first captured Nov 2024, first posting captured May 2025) and /orbitalindustries (from Feb 2026; same IDs carried over). Most captures come via VC portfolio job boards (Toyota, Radical, Compound, Impact Ventures), so this is a lower bound. 2026Q3 count is from Ashby publishedAt on the live board. Before Ashby the company used a Notion job board (orbitalmaterials.notion.site), not checked."
+  ]
+}

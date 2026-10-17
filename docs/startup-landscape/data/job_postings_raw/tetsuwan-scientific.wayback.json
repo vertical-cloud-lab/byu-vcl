@@ -1,0 +1,23 @@
+{
+ "captures": {
+  "jobs.ashbyhq.com/tetsuwan": [
+   {
+    "urlkey": "com,ashbyhq,jobs)/tetsuwan/ad583fec-dc0a-4b6c-8171-416403a0e7ed",
+    "first": "20260627153405",
+    "last": "20260627153405",
+    "n": 1,
+    "original": "https://jobs.ashbyhq.com/tetsuwan/ad583fec-dc0a-4b6c-8171-416403a0e7ed"
+   }
+  ]
+ },
+ "board_captures": {},
+ "postings": [],
+ "spans": {
+  "ad583fec-dc0a-4b6c-8171-416403a0e7ed": {
+   "first": "20260627153405",
+   "last": "20260627153405",
+   "n": 1,
+   "url": "https://jobs.ashbyhq.com/tetsuwan/ad583fec-dc0a-4b6c-8171-416403a0e7ed"
+  }
+ }
+}

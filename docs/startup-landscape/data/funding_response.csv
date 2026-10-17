@@ -1,0 +1,79 @@
+company,date,round,amount_usd_m,postings_6mo_before,postings_6mo_after,team_before,team_before_date,team_after,team_after_date
+Aionics,2023-10-14,Seed (reported cumulative),3.5,,,,,,
+Aionics,2024-05-06,Seed extension (Form D first sale; amended 2025-10),7.3,,,,,,
+Aionics,2026-03-31,Unannounced equity/options (Form D),0.5,,,,,,
+Altrove,2024-07-03,Pre-seed,4.0,,,,,12,2025-02-20
+Altrove,2025-10-31,Seed,10.0,,,12,2025-02-20,,
+Atinary Technologies,2023-10-03,Seed,5.0,0,0,,,17,2024-07-07
+Atinary Technologies,2026-08-14,Strategic minority investment,,0,4,22,2025-11-03,,
+Chemify,2022-02-14,Seed,,0,0,0,2021-12-31,15,2022-12-31
+Chemify,2023-08-02,Series A (announced with seed as USD 43M total),43.0,0,0,15,2022-12-31,79,2024-12-31
+Chemify,2025-10-21,Series B,50.0,0,30,79,2024-12-31,200,2026-10-09
+Chemify,2025-12-12,"Series B1 extension (allotments 12 Dec 2025, 24 Feb 2026, 24 Jul 2026 per SH01; accounts say 27 Jul)",,11,26,79,2024-12-31,200,2026-10-09
+Citrine Informatics,2016-05-09,Series A (Form D first sale; announced 2017-06-08 as $7.6M),8.76,0,0,9,2016-04-16,14,2016-10-23
+Citrine Informatics,2019-06-28,Series B (Form D first sale; announced 2019-10-10 as $20M),20.95,0,0,,,,
+Citrine Informatics,2020-10-23,Series B extension (Form D first sale),12.35,0,1,,,,
+Citrine Informatics,2022-10-28,Series C (Form D first sale; announced 2023-01-04 as $16M),16.0,0,0,,,84,2024-02-13
+Citrine Informatics,2023-09-15,Unannounced equity (Form D),5.0,0,0,,,69,2024-12-12
+Citrine Informatics,2025-01-24,Unannounced equity/options (Form D),2.6,0,0,69,2024-12-12,68,2026-07-21
+CuspAI,2024-06-18,Seed,30.0,0,0,,,30,2025-09-10
+CuspAI,2025-09-10,Series A,100.0,0,4,30,2025-09-10,85,2026-08-27
+CuspAI,2026-07-20,Series B,450.0,5,11,30,2025-09-10,85,2026-08-27
+"Deep Principle (深度原理, Hangzhou Deep Principle Technology Co., Ltd.)",2024-06-05,Seed,10,,,,,,
+"Deep Principle (深度原理, Hangzhou Deep Principle Technology Co., Ltd.)",2024-10-15,Seed+,,,,,,,
+"Deep Principle (深度原理, Hangzhou Deep Principle Technology Co., Ltd.)",2024-11-15,Seed++,,,,,,,
+"Deep Principle (深度原理, Hangzhou Deep Principle Technology Co., Ltd.)",2025-03-15,Pre-A (strategic),,,,,,,
+"Deep Principle (深度原理, Hangzhou Deep Principle Technology Co., Ltd.)",2025-11-24,Series A,14,,,,,,
+"Deep Principle (深度原理, Hangzhou Deep Principle Technology Co., Ltd.)",2026-03-15,Series A+,,,,,,,
+"Deep Principle (深度原理, Hangzhou Deep Principle Technology Co., Ltd.)",2026-07-14,Series A3 (closes A series),,,,,,,
+"DP Technology (深势科技, Beijing DP Technology Co., Ltd.)",2020-08-10,Angel,,,,,,,
+"DP Technology (深势科技, Beijing DP Technology Co., Ltd.)",2021-03-05,Pre-A,,,,,,,
+"DP Technology (深势科技, Beijing DP Technology Co., Ltd.)",2021-08-05,Series A,,,,,,,
+"DP Technology (深势科技, Beijing DP Technology Co., Ltd.)",2022-01-17,Series B,,,,,,,
+"DP Technology (深势科技, Beijing DP Technology Co., Ltd.)",2023-08-22,Series B+ (new round),97,,,,,,
+"DP Technology (深势科技, Beijing DP Technology Co., Ltd.)",2024-10-15,Series B++,,,,,,317,2025-03-11
+"DP Technology (深势科技, Beijing DP Technology Co., Ltd.)",2025-12-24,Series C,114,,,317,2025-03-11,,
+Dunia Innovations,2024-10-23,Seed/Series A (sources differ),11.5,0,0,,,54,2026-03-26
+Emerald Cloud Lab,2010-09-22,"Seed / first priced round (Form D, as Emerald Therapeutics)",5.0,,,,,,
+Emerald Cloud Lab,2012-03-23,Unnamed equity (Form D),1.0,,,,,,
+Emerald Cloud Lab,2014-02-07,Series B,5.61,,,,,,
+Emerald Cloud Lab,2015-09-28,Series C,20.5,,,,,,
+Emerald Cloud Lab,2019-09-24,Series B (aggregator),,,,,,104,2020-09-19
+Emerald Cloud Lab,2022-06-03,Series C (aggregator),66.0,,,89,2021-12-07,107,2023-07-20
+Emerald Cloud Lab,2024-04-29,Series B extension (aggregator),,,,107,2023-07-20,96,2025-09-02
+Entalpic,2024-09-04,Seed,9.4,,,,,25,2025-12-31
+Intrepid Labs,2023-07-01,Pre-seed (Radical lists investment year 2023; unannounced until 2025-05),4.0,,,,,,
+Intrepid Labs,2025-05-12,Seed,7.0,,,,,,
+Kebotix,2018-07-23,Seed (Form D first sale),5.06,,,,,,
+Kebotix,2020-04-02,Series A (announced April 2020 as $11.4M),11.39,,,,,,
+Kebotix,2023-03-29,Unannounced equity (Form D),2.21,,,,,,
+Kebotix,2024-07-22,Unannounced equity (Form D),5.0,,,,,,
+Lila Sciences,2025-03-10,Seed (committed capital),200.0,0,0,,,326,2026-03-12
+Lila Sciences,2025-09-17,Series A,235.0,0,29,101,2025-03-13,550,2026-10-01
+Lila Sciences,2025-10-14,Series A extension,115.0,0,29,101,2025-03-13,550,2026-10-01
+Materials Nexus (MatNex),2022-04-15,Pre-seed (accelerator / angel allotments),,,,3,2021-12-31,4,2022-12-31
+Materials Nexus (MatNex),2023-07-26,Seed,2.6,,,4,2022-12-31,17,2024-12-31
+Materials Nexus (MatNex),2025-01-17,Unannounced round (SH01 allotments 17 and 20 Jan 2025; Caplight lists a Series A on 21 Feb 2025),,,,17,2024-12-31,27,2025-12-31
+"Matlantis Corporation (formerly Preferred Computational Chemistry, PFCC)",2021-06-01,JV formation (paid-in capital),2.8,,,,,,
+"Matlantis Corporation (formerly Preferred Computational Chemistry, PFCC)",2024-06-03,Business-and-capital alliance (Mitsubishi joins as shareholder),,,,,,46,2025-07-01
+Mattiq (formerly Stoicheia),2020-12-18,"Seed (as Stoicheia, Inc.)",5.0,,,,,,
+Mattiq (formerly Stoicheia),2022-07-15,Unnamed equity (Form D),9.1,,,,,,
+Mattiq (formerly Stoicheia),2024-12-12,Unnamed equity (Form D),4.5,,,,,,
+Medra,2025-09-11,Seed (announced on leaving stealth),11.0,0,0,,,,
+Medra,2025-12-11,Series A,52.0,0,6,,,,
+Mitra Chem,2021-11-17,Series A,20.0,,,,,,
+Mitra Chem,2023-08-15,Series B first close (of $60M round),40.0,,,,,,
+Orbital Materials (now Orbital Industries),2023-07-15,Seed,4.8,0,0,,,13,2024-02-21
+Orbital Materials (now Orbital Industries),2024-02-21,Series A,16.0,0,0,13,2024-02-21,,
+Orbital Materials (now Orbital Industries),2024-10-22,Strategic (NVentures),,0,0,13,2024-02-21,,
+Orbital Materials (now Orbital Industries),2026-05-28,Series B,50.0,11,6,50,2026-05-28,,
+Periodic Labs,2025-09-30,Seed,300.0,12,6,,,88,2026-08-30
+Polymerize (Polymerize Pte Ltd),2020-10-15,Seed,0.59,,,,,,
+Polymerize (Polymerize Pte Ltd),2022-05-25,Series A,4.2,,,,,,
+Polymerize (Polymerize Pte Ltd),2024-09-24,Series A-II (strategic),,,,,,,
+Polymerize (Polymerize Pte Ltd),2025-03-27,Strategic (undisclosed),,,,,,,
+Radical AI,2025-07-21,Series Seed+,55.0,,,,,34,2026-01-27
+Telescope Innovations,2022-11-10,Non-brokered private placement,1.08,,,,,,
+Telescope Innovations,2025-09-15,"Private placement, tranche 1 (LIFE exemption)",3.75,,,,,,
+Telescope Innovations,2025-10-15,"Private placement, tranche 2",0.93,,,,,,
+Tetsuwan Scientific,2024-11-19,Pre-seed,2.7,0,0,,,,

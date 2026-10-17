@@ -1,0 +1,52 @@
+{
+ "captures": {
+  "jobs.entrepreneurs.utoronto.ca/companies/intrepid-labs-2-e3db58f4-bb86-403c-8430-f8d64448d0fe": [
+   {
+    "urlkey": "ca,utoronto,entrepreneurs,jobs)/companies/intrepid-labs-2-e3db58f4-bb86-403c-8430-f8d64448d0fe",
+    "first": "20260114111416",
+    "last": "20260614104145",
+    "n": 2,
+    "original": "https://jobs.entrepreneurs.utoronto.ca/companies/intrepid-labs-2-e3db58f4-bb86-403c-8430-f8d64448d0fe"
+   }
+  ],
+  "radical.getro.com/companies/intrepid-labs": []
+ },
+ "board_captures": {
+  "jobs.entrepreneurs.utoronto.ca/companies/intrepid-labs-2-e3db58f4-bb86-403c-8430-f8d64448d0fe": [
+   [
+    "20260114111416",
+    "https://jobs.entrepreneurs.utoronto.ca/companies/intrepid-labs-2-e3db58f4-bb86-403c-8430-f8d64448d0fe"
+   ],
+   [
+    "20260614104145",
+    "https://jobs.entrepreneurs.utoronto.ca/companies/intrepid-labs-2-e3db58f4-bb86-403c-8430-f8d64448d0fe"
+   ]
+  ]
+ },
+ "postings": [
+  {
+   "company": "intrepid-labs",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260114111416/https://jobs.entrepreneurs.utoronto.ca/companies/intrepid-labs-2-e3db58f4-bb86-403c-8430-f8d64448d0fe",
+   "url": "https://jobs.entrepreneurs.utoronto.ca/companies/intrepid-labs-2-e3db58f4-bb86-403c-8430-f8d64448d0fe",
+   "first_seen": "20260114111416",
+   "last_seen": "20260114111416",
+   "n_captures": 1,
+   "title": "University of Toronto Entrepreneurship Job Board",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "intrepid-labs",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260614104145/https://jobs.entrepreneurs.utoronto.ca/companies/intrepid-labs-2-e3db58f4-bb86-403c-8430-f8d64448d0fe",
+   "url": "https://jobs.entrepreneurs.utoronto.ca/companies/intrepid-labs-2-e3db58f4-bb86-403c-8430-f8d64448d0fe",
+   "first_seen": "20260614104145",
+   "last_seen": "20260614104145",
+   "n_captures": 1,
+   "title": "University of Toronto Entrepreneurship Job Board",
+   "text": "",
+   "generic": true
+  }
+ ]
+}

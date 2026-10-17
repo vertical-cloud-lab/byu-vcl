@@ -1,0 +1,107 @@
+{
+ "captures": {
+  "www.materialsnexus.com/jobs/": [
+   {
+    "urlkey": "com,materialsnexus)/jobs/scientific-software-developer",
+    "first": "20220713203017",
+    "last": "20220713203017",
+    "n": 1,
+    "original": "https://www.materialsnexus.com/jobs/scientific-software-developer"
+   },
+   {
+    "urlkey": "com,materialsnexus)/jobs/materials-informatician",
+    "first": "20221013095019",
+    "last": "20221013095019",
+    "n": 1,
+    "original": "https://www.materialsnexus.com/jobs/materials-informatician"
+   }
+  ],
+  "www.materialsnexus.com/careers": [
+   {
+    "urlkey": "com,materialsnexus)/careers",
+    "first": "20240315114328",
+    "last": "20240613074746",
+    "n": 3,
+    "original": "https://www.materialsnexus.com/careers"
+   }
+  ]
+ },
+ "board_captures": {
+  "materialsnexus.com/careers": [
+   [
+    "20240315114328",
+    "https://www.materialsnexus.com/careers"
+   ],
+   [
+    "20240419232903",
+    "https://www.materialsnexus.com/careers"
+   ]
+  ]
+ },
+ "postings": [
+  {
+   "company": "materials-nexus",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20220713203017/https://www.materialsnexus.com/jobs/scientific-software-developer",
+   "url": "https://www.materialsnexus.com/jobs/scientific-software-developer",
+   "first_seen": "20220713203017",
+   "last_seen": "20220713203017",
+   "n_captures": 1,
+   "title": "Scientific Software Developer",
+   "text": "Scientific Software Developer\n21 Jun\nWritten By Robert Forrest\nAbout Materials Nexus\nAt Materials Nexus, we care passionately about the state of the world and its future, and are determined to make the world a better place for generations to come. For us, this means reducing global CO2 emissions by enabling new green materials with reduced emissions and improved performance. By harnessing the power of machine learning and quantum mechanics, we are building a revolutionary new material discovery platform that can vastly accelerate the development of new materials compared with traditional experimental approaches.\nThe role\nWe are looking to grow our development team with a talented scientific software developer to play a significant hands-on role expanding our platform’s capabilities in exciting new directions. This will include enhancing machine learning algorithms, predicting further promising classes of novel materials, and performing detailed atomistic modelling of candidate systems. The ideal candidate for this role would be a scientist with experience in software development, keen to build impactful tools for materials science leading directly to environmental benefits.\nWe are a dynamic seed-stage start-up, and you would be one of our first employees joining our vibrant and diverse team. This role would be a step in at the ground floor; an opportunity coming with fast-moving goals and focuses, and significant responsibility which will evolve as our company grows. You would work closely with our Chief Technology Officer, Robert Forrest, and our Chief Scientific Officer, Dr Jon Pillow, who are leading our platform development strategy.\nThis role would initially involve working from home, but we are actively looking to set up an office near the London-Cambridge corridor for hybrid working. We offer a benefits package that includes 34 days annual leave, a pension scheme, and a company stock option scheme. The starting salary would be competitive and negotiable.\nResponsibilities\n- Develop general-purpose tools for data-driven materials modelling, tackling challenges across a wide range of material classes and applications in an agile environment.\n- Design and orchestrate workflows of high-throughput calculations, leveraging the tools you develop.\n- Interface with our cloud-based high-performance computing environments to maximise the efficiency of calculations.\n- Implement development best-practices, including documentation and automated testing of our codebase.\n- Collaborate with our science team to identify goals for platform development, opening new avenues for scientific investigation.\n- Take on more responsibility and control as we grow as a company and scale up our technology.\nSkills\nRequired\n- Minimum 2.1 degree in a Physical Science, Computer Science, or a related field.\n- MSc in a Physical Science, Computer Science, or a related field, or equivalent industrial experience.\n- Excellent working knowledge of scientific principles and appreciation of their application to materials challenges.\n- Knowledge of the usage, implementation, and theoretical background, of computational atomistic modelling techniques (e.g., molecular dynamics, density functional theory). Proven track record of using this knowledge to successfully complete projects.\n- Proven track record of coding in Python for technical applications.\n- Experience using development collaboration tools for large multi-developer projects (e.g., git).\n- You must be comfortable quickly adapting to new situations, learning new skills, and working independently as a self-starter.\n- You will have an inquiring mind, an aptitude for creative thinking and problem solving, and a proactive, methodical, and organised approach.\n- Excellent communicator, able to effectively convey information to technical and non-technical colleagues in both written and verbal formats.\n- Proven track record of ability to work effectively in a team.\n- Appreciation of the needs, priorities, and challenges faced by a start-up company.\nUseful\n- Ability in JavaScript, Fortran, or C++\n- Understanding of containerisation technology (e.g., Docker)\n- Experience in application of machine learning (e.g., use of TensorFlow to train models)\n- Understanding of issues in material sustainability and commitment to addressing them\n- PhD in a Physical Science, Computer Science, or a related field\nApply!\nscience technology development\nRobert Forrest",
+   "generic": true,
+   "posting_id": "materialsnexus.com/jobs/scientific-software-developer"
+  },
+  {
+   "company": "materials-nexus",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20221013095019/https://www.materialsnexus.com/jobs/materials-informatician",
+   "url": "https://www.materialsnexus.com/jobs/materials-informatician",
+   "first_seen": "20221013095019",
+   "last_seen": "20221013095019",
+   "n_captures": 1,
+   "title": "Materials Informatician",
+   "text": "Materials Informatician\n11 Oct\nWritten By Robert Forrest\nAbout Us\nAt Materials Nexus, we care passionately about the state of the world and its future, and are determined to make the world a better place for generations to come. For us, this means discovering new green materials with improved performance and reduced environmental impact. By harnessing the power of machine learning and quantum mechanics, we are building a revolutionary new material discovery platform that can vastly accelerate the development of new materials compared with traditional experimental approaches.\nRole\nWe are looking to grow our materials discovery team with a talented data scientist to play a significant hands-on role expanding our capabilities in exciting new directions. This will include interfacing with our growing material property dataset, building analytical tools to improve our understanding of this data, and generating machine-learning models to predict further promising classes of novel materials. The ideal candidate for this role would be a scientist with experience in software development, keen to build impactful tools for materials science leading directly to environmental benefits.\nWe are a dynamic seed-stage start-up, and you would be one of our first employees joining a vibrant and diverse team. This role would be a step in at the ground floor; an opportunity coming with fast-moving goals and focuses, and significant responsibility which will evolve as our company grows. You would work closely with our Chief Technology Officer, Robert Forrest, and our Chief Scientific Officer, Dr Jon Pillow, who are leading our platform development strategy.\nThis role would initially involve working from home or in our shared office space in central London, but we are actively looking to set up a permanent office near the London-Cambridge corridor. We offer a benefits package that includes 34 days annual leave, a pension scheme, and a company stock option scheme. The starting salary would be competitive and negotiable.\nResponsibilities\n- Drive the development of our materials informatics capabilities, applying data science and machine-learning to infer understanding from our datasets and predict novel materials.\n- Develop general-purpose analytical and predictive tools applicable across a wide range of material classes and applications.\n- Utilise our platform to design and orchestrate workflows of high-throughput material property calculations, growing our large dataset of material properties.\n- Collaborate with our science team to identify goals for platform development, opening new avenues for scientific investigation.\n- Take on more responsibility and control as we grow as a company and scale up our technology.\nRequirements\n- Minimum 2.1 degree in a Physical Science, Computer Science, or a related field.\n- MSc in a Physical Science, Computer Science, or a related field, or equivalent professional experience.\n- Right to live and work in the UK without sponsorship.\n- Excellent working knowledge of scientific principles and appreciation of their application to materials challenges and materials discovery.\n- Knowledge and understanding of the mathematical foundations of machine-learning and data science.\n- Extensive practical experience in application of machine-learning and data science to materials problems (e.g., use of TensorFlow to train models of physical properties).\n- Experience in computational modelling of materials, and prediction of material properties (e.g., use of density-functional theory or molecular dynamics)\n- Proven track record of coding in Python for technical applications.\n- Experience using development collaboration tools for large multi-developer projects (e.g., git).\n- You must be comfortable quickly adapting to new situations, learning new skills, and working independently as a self-starter.\n- You have an inquiring mind, an aptitude for creative thinking and problem solving, and a proactive, methodical, and organised approach.\n- Excellent communicator, able to effectively convey information to technical and non-technical colleagues in both written and verbal formats.\n- Proven track record of ability to work effectively in a team.\n- Appreciation of the needs, priorities, and challenges faced by a start-up company.\nUseful\n- Ability in JavaScript, Fortran, or C++.\n- Experience deploying models in a cloud environment.\n- Understanding of containerisation technology (e.g., Docker).\n- Understanding of issues in material sustainability and commitment to addressing them.\n- PhD in a Physical Science, Computer Science, or a related field.\n- Peer-reviewed publications on relevant topics.\nApply!\nscience technology development machine-learning data science\nRobert Forrest",
+   "generic": true,
+   "posting_id": "materialsnexus.com/jobs/materials-informatician"
+  },
+  {
+   "company": "materials-nexus",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20240315114328/https://www.materialsnexus.com/careers",
+   "url": "https://www.materialsnexus.com/careers",
+   "first_seen": "20240315114328",
+   "last_seen": "20240315114328",
+   "n_captures": 1,
+   "title": "Vacancies",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "materials-nexus",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20240419232903/https://www.materialsnexus.com/careers",
+   "url": "https://www.materialsnexus.com/careers",
+   "first_seen": "20240419232903",
+   "last_seen": "20240419232903",
+   "n_captures": 1,
+   "title": "Vacancies",
+   "text": "",
+   "generic": true
+  }
+ ],
+ "spans": {
+  "materialsnexus.com/jobs/scientific-software-developer": {
+   "first": "20220713203017",
+   "last": "20220713203017",
+   "n": 1,
+   "url": "https://www.materialsnexus.com/jobs/scientific-software-developer"
+  },
+  "materialsnexus.com/jobs/materials-informatician": {
+   "first": "20221013095019",
+   "last": "20221013095019",
+   "n": 1,
+   "url": "https://www.materialsnexus.com/jobs/materials-informatician"
+  }
+ }
+}

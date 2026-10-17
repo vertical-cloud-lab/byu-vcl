@@ -1,0 +1,233 @@
+{
+  "company": "Mattiq (formerly Stoicheia)",
+  "slug": "mattiq",
+  "hq": "Chicago, US",
+  "country": "US",
+  "founded": "2020",
+  "category": "AI + high-throughput experimentation",
+  "focus": "Chip-based nanoparticle 'Megalibraries' (Mirkin polymer-pen lithography) plus high-throughput characterization and ML, first for low-iridium electrocatalysts; now pitched as a ground-truth materials data engine",
+  "status": "active",
+  "website": "https://mattiq.com",
+  "funding": [
+    {
+      "date": "2020-12-18",
+      "round": "Seed (as Stoicheia, Inc.)",
+      "amount_usd_m": 5.0,
+      "original_amount": "USD 4,999,987 sold; 17 investors (Form D)",
+      "type": "equity",
+      "lead_investors": [
+        "not stated; backers named in launch release include Kairos Ventures, Louis A. Simpson, Craig Mundie, David Walt, Joe Allison, Hugh Evans, Wally Loewenbaum, J. Todd Mitchell"
+      ],
+      "source": "https://www.sec.gov/Archives/edgar/data/1843720/000184372021000001/primary_doc.xml"
+    },
+    {
+      "date": "2022-07-15",
+      "round": "Unnamed equity (Form D)",
+      "amount_usd_m": 9.1,
+      "original_amount": "USD 9,102,606 sold of 9,186,219 offered; 19 investors",
+      "type": "equity",
+      "lead_investors": [
+        "not stated (Material Impact's Carmichael Roberts joined the board)"
+      ],
+      "source": "https://www.sec.gov/Archives/edgar/data/1843720/000184372022000002/primary_doc.xml"
+    },
+    {
+      "date": "2024-12-12",
+      "round": "Unnamed equity (Form D)",
+      "amount_usd_m": 4.5,
+      "original_amount": "USD 4,499,999 sold of 5,524,999 offered; 2 investors",
+      "type": "equity",
+      "lead_investors": [
+        "not stated (CS Venture's Quinten Stevens joined the board)"
+      ],
+      "source": "https://www.sec.gov/Archives/edgar/data/1843720/000184372024000002/primary_doc.xml"
+    }
+  ],
+  "headcount": [
+    {
+      "date": "2023-03-26",
+      "value": null,
+      "low": 17,
+      "high": null,
+      "method": "team-page",
+      "note": "17 distinct /team/<name> profile URLs captured by Wayback by 2023-03, mixing staff, board and advisors (several are well-known academics). Not a staff count.",
+      "source": "https://web.archive.org/web/20230326051720/https://mattiq.com/our-team",
+      "partial": true
+    },
+    {
+      "date": "2026-10-09",
+      "value": null,
+      "low": 5,
+      "high": null,
+      "method": "team-page",
+      "note": "Live homepage lists 8 'founders, board & leadership', 5 of them operating executives (CEO, CTO, CCO, two directors). Leadership only, so a floor.",
+      "source": "https://mattiq.com/",
+      "partial": true
+    }
+  ],
+  "postings": [],
+  "current_openings": {
+    "date": "2026-10-09",
+    "count": 0,
+    "by_function": {},
+    "titles": [],
+    "source": "https://mattiq.com/"
+  },
+  "people": [
+    {
+      "name": "Chad A. Mirkin",
+      "title": "Scientific Founder & Director (executive officer on Form Ds)",
+      "function": "materials-science",
+      "seniority": "founder",
+      "start": "2020-12",
+      "start_basis": "Executive officer and director on first Form D (first sale 2020-12-18)",
+      "end": null,
+      "background": "Northwestern chemistry professor; inventor of polymer-pen lithography and Megalibraries",
+      "source": "https://www.sec.gov/Archives/edgar/data/1843720/000184372021000001/primary_doc.xml"
+    },
+    {
+      "name": "Andrey Ivankin",
+      "title": "Co-Founder & CTO",
+      "function": "materials-science",
+      "seniority": "founder",
+      "start": "2023-03",
+      "start_basis": "Team profile URL first captured 2023-03 (co-founder, so likely from 2020)",
+      "end": null,
+      "background": "PhD (per 'Dr.' on site); details not read",
+      "source": "https://mattiq.com/"
+    },
+    {
+      "name": "Louis Simpson",
+      "title": "Director",
+      "function": "leadership",
+      "seniority": "board",
+      "start": "2020-12",
+      "start_basis": "Director on 2020 Form D; named seed backer",
+      "end": "2022-07",
+      "background": "Investor",
+      "source": "https://www.sec.gov/Archives/edgar/data/1843720/000184372021000001/primary_doc.xml"
+    },
+    {
+      "name": "Alex Andrianapoulis (spelling as filed)",
+      "title": "Director",
+      "function": "leadership",
+      "seniority": "board",
+      "start": "2020-12",
+      "start_basis": "Director on 2020 Form D",
+      "end": "2022-07",
+      "background": "not stated",
+      "source": "https://www.sec.gov/Archives/edgar/data/1843720/000184372021000001/primary_doc.xml"
+    },
+    {
+      "name": "Jeff Erhardt",
+      "title": "CEO & Director",
+      "function": "leadership",
+      "seniority": "exec",
+      "start": "2022-07",
+      "start_basis": "Executive officer and director on Form D (first sale 2022-07-15)",
+      "end": "2026-10",
+      "background": "not verified in sources read",
+      "source": "https://www.sec.gov/Archives/edgar/data/1843720/000184372022000002/primary_doc.xml"
+    },
+    {
+      "name": "Carmichael Roberts",
+      "title": "Director & Investor (Material Impact)",
+      "function": "leadership",
+      "seniority": "board",
+      "start": "2022-07",
+      "start_basis": "Director on 2022 Form D",
+      "end": null,
+      "background": "Co-founder of Material Impact",
+      "source": "https://www.sec.gov/Archives/edgar/data/1843720/000184372022000002/primary_doc.xml"
+    },
+    {
+      "name": "Duane Dickson",
+      "title": "Chief Commercial Officer",
+      "function": "business-ops",
+      "seniority": "exec",
+      "start": "2024-10",
+      "start_basis": "Appointment post first captured 2024-10-05",
+      "end": null,
+      "background": "not read",
+      "source": "https://web.archive.org/web/20241005162940/https://mattiq.com/mattiq-appoints-duane-dickson-as-chief-commercial-officer"
+    },
+    {
+      "name": "Quinten Stevens",
+      "title": "Director & Investor (CS Venture)",
+      "function": "leadership",
+      "seniority": "board",
+      "start": "2024-12",
+      "start_basis": "Director on 2024 Form D",
+      "end": null,
+      "background": "Investor, CS Venture",
+      "source": "https://www.sec.gov/Archives/edgar/data/1843720/000184372024000002/primary_doc.xml"
+    },
+    {
+      "name": "Ben Schlatka",
+      "title": "CEO & Director",
+      "function": "leadership",
+      "seniority": "exec",
+      "start": "2026-10",
+      "start_basis": "Listed as CEO on live site 2026-10-09; Erhardt was still CEO in Jan 2025, so the change falls between",
+      "end": null,
+      "background": "not verified",
+      "source": "https://mattiq.com/"
+    },
+    {
+      "name": "Alex Mantis",
+      "title": "Director of Data & AI",
+      "function": "ml-research",
+      "seniority": "director",
+      "start": "2026-10",
+      "start_basis": "Listed on live site (start date unknown)",
+      "end": null,
+      "background": "not stated",
+      "source": "https://mattiq.com/"
+    },
+    {
+      "name": "Carolin Wahl",
+      "title": "Director of R&D",
+      "function": "materials-science",
+      "seniority": "director",
+      "start": "2026-10",
+      "start_basis": "Listed on live site (start date unknown)",
+      "end": null,
+      "background": "PhD (per 'Dr.' on site)",
+      "source": "https://mattiq.com/"
+    }
+  ],
+  "staff_roles": [],
+  "departures": [
+    {
+      "who": "Jeff Erhardt",
+      "title": "CEO & Director",
+      "date": "2026-10",
+      "basis": "CEO in the 2025-01-30 Heraeus release and on the 2024-12 Form D; replaced by Ben Schlatka on the live site by 2026-10 (exact date unknown)",
+      "source": "https://www.heraeus-precious-metals.com/en/company/press-and-news/mattiq-and-heraeus-partner-to-advance-electrocatalyst-innovation/"
+    },
+    {
+      "who": "Louis Simpson",
+      "title": "Director",
+      "date": "2022-07",
+      "basis": "On 2020 Form D, absent from 2022 Form D",
+      "source": "https://www.sec.gov/Archives/edgar/data/1843720/000184372022000002/primary_doc.xml"
+    },
+    {
+      "who": "Alex Andrianapoulis",
+      "title": "Director",
+      "date": "2022-07",
+      "basis": "On 2020 Form D, absent from 2022 Form D",
+      "source": "https://www.sec.gov/Archives/edgar/data/1843720/000184372022000002/primary_doc.xml"
+    }
+  ],
+  "notes": [
+    "Renamed: EDGAR shows Stoicheia, Inc. from 2021-02-10 to 2022-07-29, then Mattiq, Inc. (CIK 1843720, Delaware, incorporated 2020). A 'stoicheia-rebrand-to-mattiq' post was captured 2023-03.",
+    "HQ moved from Skokie, IL (8140 McCormick Blvd in 2020, 8045 Lamon Ave in 2022) to 400 N. Aberdeen St, Chicago (2024 Form D). A 'new headquarters in Chicago's downtown deep science hub' post was captured 2024-03.",
+    "Form D total: about USD 18.6M across three offerings (2020, 2022, 2024). No priced round has been publicly announced since the USD 5M seed in Jan 2021.",
+    "Non-dilutive funding exists but amounts were not retrieved: a DOE HPC4EI award (captured 2023-09) and a 'pipeline of grant wins' post (captured 2023-09).",
+    "Strategic partner: Heraeus Precious Metals, a low-iridium PEM electrocatalyst partnership announced 2025-01-30 and first announced as a collaboration in 2023. The site cites 1,000+ h electrolyzer validation and a 60% iridium reduction.",
+    "Wayback: one CDX listing of mattiq.com/* succeeded. A second CDX query for /our-team timed out after about 12 minutes, so no team-page snapshots were read and no staff headcount timeline exists. The /careers page was captured 2023-03 but not read.",
+    "Current openings: no public Ashby, Greenhouse, Lever, Workable or Recruitee board for 'mattiq', and the live site has no careers page (only a 'Join the mission' contact link). Counted as 0 listed openings.",
+    "OpenAlex has no institution record for Mattiq. Northwestern papers (2025 TRI iridium-alternative work, 2026 megalibrary SHG screening) credit Mattiq collaborators and disclose Mirkin's financial interest."
+  ]
+}

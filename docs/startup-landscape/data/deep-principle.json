@@ -1,0 +1,36 @@
+{
+  "company": "Deep Principle (深度原理, Hangzhou Deep Principle Technology Co., Ltd.)",
+  "slug": "deep-principle",
+  "hq": "Hangzhou, China",
+  "country": "CN",
+  "founded": "2023",
+  "category": "AI-for-materials (computational)",
+  "focus": "Generative AI for chemical reactions and materials (OA-ReactDiff, React-OT), Mira 'AI scientist' agent and an autonomous high-throughput lab (AI Materials Factory)",
+  "status": "active",
+  "website": null,
+  "funding": [
+    {"date": "2024-06-05", "round": "Seed", "amount_usd_m": 10, "original_amount": "nearly USD 10M (近千万美元)", "type": "equity", "lead_investors": ["Linear Capital (线性资本)"], "source": "https://www.36kr.com/p/2805123343611527"},
+    {"date": "2024-10", "round": "Seed+", "amount_usd_m": null, "original_amount": "undisclosed", "type": "equity", "lead_investors": ["Hillhouse Ventures (高瓴创投)"], "source": "https://pitchhub.36kr.com/project/3076756360556162"},
+    {"date": "2024-11", "round": "Seed++", "amount_usd_m": null, "original_amount": "undisclosed", "type": "equity", "lead_investors": ["Vertex Ventures China (祥峰投资)"], "source": "https://pitchhub.36kr.com/project/3076756360556162"},
+    {"date": "2025-03", "round": "Pre-A (strategic)", "amount_usd_m": null, "original_amount": "CNY 100M-class (亿元级)", "type": "equity", "lead_investors": ["Lenovo Capital (联想创投)", "Legend Star (联想之星)", "Jinqiu Fund (锦秋基金)"], "source": "https://pitchhub.36kr.com/project/3076756360556162"},
+    {"date": "2025-11-24", "round": "Series A", "amount_usd_m": 14, "original_amount": "CNY >100M (超亿元)", "type": "equity", "lead_investors": ["Alibaba Entrepreneurs Fund Greater Bay Area fund (戈壁大湾区)", "Ant Group"], "source": "https://www.36kr.com/p/3572789930465415"},
+    {"date": "2026-03", "round": "Series A+", "amount_usd_m": null, "original_amount": "undisclosed", "type": "equity", "lead_investors": [], "source": "https://pitchhub.36kr.com/project/3076756360556162"},
+    {"date": "2026-07-14", "round": "Series A3 (closes A series)", "amount_usd_m": null, "original_amount": "undisclosed; cumulative ~CNY 1bn (~USD 140M) across seven rounds", "type": "equity", "lead_investors": ["Futeng Capital (孚腾资本)"], "source": "https://news.pedaily.cn/202607/566266.shtml"}
+  ],
+  "headcount": [],
+  "postings": [],
+  "current_openings": {"date": "2026-10-09", "count": null, "by_function": {}, "titles": [], "source": null},
+  "people": [
+    {"name": "Jia Haojun (贾皓钧)", "title": "Co-founder and CEO", "function": "leadership", "seniority": "founder", "start": "2023-12", "start_basis": "founded in Boston at end of 2023 (Chuangyebang via Wenxuecity); Chinese entity registered 2024-02-21", "end": null, "background": "PhD physical chemistry, MIT; ex-Dow Chemical core R&D (AI for catalyst formulation and reaction-pathway prediction)", "source": "https://www.36kr.com/p/2805123343611527"},
+    {"name": "Duan Chenru (段辰儒)", "title": "Co-founder and CTO", "function": "leadership", "seniority": "founder", "start": "2023-12", "start_basis": "co-founder at founding", "end": null, "background": "PhD physical chemistry, MIT; ex-Microsoft research scientist (computational chemistry and AI for chemical/materials clients)", "source": "https://www.36kr.com/p/2805123343611527"},
+    {"name": "Zhang Luyang (张露阳)", "title": "COO", "function": "business-ops", "seniority": "exec", "start": "2024-09", "start_basis": "joined September 2024 per Chuangyebang profile", "end": null, "background": null, "source": "https://www.wenxuecity.com/news/2026/07/18/126712451.html"}
+  ],
+  "staff_roles": [],
+  "departures": [],
+  "notes": [
+    "Covered quickly at the end of the time budget: funding and leadership only. No headcount, job-posting or Wayback data collected.",
+    "Seven rounds in about 2.5 years, cumulative ~CNY 1bn per Pedaily (2026-07); disclosed amounts are only the ~USD 10M seed and the >CNY 100M Series A. Seed investors included DP Technology (深势科技) and XtalPi (晶泰科技) as strategic investors.",
+    "HQ is ambiguous: 36Kr PitchHub registry entity is Hangzhou (registered 2024-02-21); Chuangyebang (2026-07) says the Chinese entity is in Shenzhen; the company started in Boston in late 2023.",
+    "Founding year given as 2023 (Boston); some sources say 2024 (Chinese entity)."
+  ]
+}
