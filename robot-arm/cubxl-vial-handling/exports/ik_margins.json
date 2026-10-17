@@ -1,0 +1,90 @@
+{
+ "tcp_120mm": {
+  "handle post, 45 deg": {
+   "radius_m": 0.519,
+   "height_m": 0.1166,
+   "reachable": true,
+   "min_margin_deg": 54.6,
+   "q_deg": [
+    89.8,
+    111.8,
+    -77.1,
+    0.6,
+    15.3,
+    89.1
+   ]
+  },
+  "nearest vial (slot 1), 45 deg": {
+   "radius_m": 0.387,
+   "height_m": 0.1166,
+   "reachable": true,
+   "min_margin_deg": 44.0,
+   "q_deg": [
+    89.7,
+    88.0,
+    -44.0,
+    2.3,
+    6.0,
+    -92.4
+   ]
+  },
+  "farthest vial (slot 9), 45 deg": {
+   "radius_m": 0.651,
+   "height_m": 0.1166,
+   "reachable": true,
+   "min_margin_deg": 19.8,
+   "q_deg": [
+    89.8,
+    143.4,
+    -134.7,
+    0.2,
+    41.3,
+    89.6
+   ]
+  }
+ },
+ "tcp_162mm": {
+  "handle post, 45 deg": {
+   "radius_m": 0.519,
+   "height_m": 0.1166,
+   "reachable": true,
+   "min_margin_deg": 51.4,
+   "q_deg": [
+    89.8,
+    104.0,
+    -72.4,
+    0.5,
+    18.5,
+    89.2
+   ]
+  },
+  "nearest vial (slot 1), 45 deg": {
+   "radius_m": 0.387,
+   "height_m": 0.1166,
+   "reachable": true,
+   "min_margin_deg": 42.2,
+   "q_deg": [
+    89.6,
+    78.7,
+    -42.2,
+    1.2,
+    13.6,
+    -91.3
+   ]
+  },
+  "farthest vial (slot 9), 45 deg": {
+   "radius_m": 0.651,
+   "height_m": 0.1166,
+   "reachable": true,
+   "min_margin_deg": 31.8,
+   "q_deg": [
+    89.8,
+    132.8,
+    -120.9,
+    0.2,
+    38.1,
+    89.7
+   ]
+  }
+ }
+}

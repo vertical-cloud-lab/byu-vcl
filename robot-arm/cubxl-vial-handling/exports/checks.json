@@ -1,0 +1,275 @@
+{
+ "frame": "carrier frame of parts.py; gripper posed at 45 degrees along the carrier",
+ "assembly": {
+  "clashes": [],
+  "designed_contacts": [
+   {
+    "a": "carrier half A",
+    "b": "vial 1",
+    "overlap_mm3": 74.061,
+    "designed": "tight-fit pocket: the fingers squeeze the vial (Cubware's design, 0.57 mm on radius)"
+   },
+   {
+    "a": "carrier half A",
+    "b": "vial 2",
+    "overlap_mm3": 74.061,
+    "designed": "tight-fit pocket: the fingers squeeze the vial (Cubware's design, 0.57 mm on radius)"
+   },
+   {
+    "a": "carrier half A",
+    "b": "vial 3",
+    "overlap_mm3": 74.061,
+    "designed": "tight-fit pocket: the fingers squeeze the vial (Cubware's design, 0.57 mm on radius)"
+   },
+   {
+    "a": "carrier half A",
+    "b": "vial 4",
+    "overlap_mm3": 74.061,
+    "designed": "tight-fit pocket: the fingers squeeze the vial (Cubware's design, 0.57 mm on radius)"
+   },
+   {
+    "a": "carrier half B",
+    "b": "vial 6",
+    "overlap_mm3": 74.061,
+    "designed": "tight-fit pocket: the fingers squeeze the vial (Cubware's design, 0.57 mm on radius)"
+   },
+   {
+    "a": "carrier half B",
+    "b": "vial 7",
+    "overlap_mm3": 74.061,
+    "designed": "tight-fit pocket: the fingers squeeze the vial (Cubware's design, 0.57 mm on radius)"
+   },
+   {
+    "a": "carrier half B",
+    "b": "vial 8",
+    "overlap_mm3": 74.061,
+    "designed": "tight-fit pocket: the fingers squeeze the vial (Cubware's design, 0.57 mm on radius)"
+   },
+   {
+    "a": "carrier half B",
+    "b": "vial 9",
+    "overlap_mm3": 74.061,
+    "designed": "tight-fit pocket: the fingers squeeze the vial (Cubware's design, 0.57 mm on radius)"
+   }
+  ],
+  "ok": true
+ },
+ "offset_plates": {
+  "plate_0": {
+   "clashes": [],
+   "designed_contacts": [],
+   "ok": true
+  },
+  "plate_x+1mm": {
+   "clashes": [],
+   "designed_contacts": [],
+   "ok": true
+  },
+  "plate_x+2mm": {
+   "clashes": [],
+   "designed_contacts": [],
+   "ok": true
+  },
+  "plate_x+3mm": {
+   "clashes": [],
+   "designed_contacts": [],
+   "ok": true
+  },
+  "plate_x+4mm": {
+   "clashes": [],
+   "designed_contacts": [],
+   "ok": true
+  },
+  "plate_y+1mm": {
+   "clashes": [],
+   "designed_contacts": [],
+   "ok": true
+  },
+  "plate_y+2mm": {
+   "clashes": [],
+   "designed_contacts": [],
+   "ok": true
+  },
+  "plate_y+3mm": {
+   "clashes": [],
+   "designed_contacts": [],
+   "ok": true
+  },
+  "plate_y+4mm": {
+   "clashes": [],
+   "designed_contacts": [],
+   "ok": true
+  },
+  "plate_yaw+2deg": {
+   "clashes": [],
+   "designed_contacts": [],
+   "ok": true
+  },
+  "plate_yaw-2deg": {
+   "clashes": [],
+   "designed_contacts": [],
+   "ok": true
+  },
+  "plate_yaw+4deg": {
+   "clashes": [],
+   "designed_contacts": [],
+   "ok": true
+  },
+  "plate_yaw-4deg": {
+   "clashes": [],
+   "designed_contacts": [],
+   "ok": true
+  }
+ },
+ "gripper": {
+  "open": {
+   "clashes": [],
+   "designed_contacts": [],
+   "ok": true
+  },
+  "vial": {
+   "clashes": [],
+   "designed_contacts": [],
+   "ok": true
+  },
+  "post": {
+   "clashes": [],
+   "designed_contacts": [],
+   "ok": true
+  }
+ },
+ "grasps": {
+  "post, closed": {
+   "clashes": [],
+   "designed_contacts": [],
+   "ok": true,
+   "insert_to_post_gap_mm": {
+    "upper insert": 0.439,
+    "lower insert": 0.439
+   }
+  },
+  "post, open at the grasp": {
+   "clashes": [],
+   "designed_contacts": [],
+   "ok": true
+  },
+  "post, open, 30 mm back": {
+   "clashes": [],
+   "designed_contacts": [],
+   "ok": true
+  },
+  "post, open, 60 mm back": {
+   "clashes": [],
+   "designed_contacts": [],
+   "ok": true
+  },
+  "vial 1, closed": {
+   "clashes": [],
+   "designed_contacts": [],
+   "ok": true,
+   "insert_to_vial_gap_mm": {
+    "upper insert": 0.5,
+    "lower insert": 0.5
+   },
+   "gripper_to_neighbour_vials_mm": {
+    "vial 2": 8.35
+   }
+  },
+  "vial 1, open, 30 mm back": {
+   "clashes": [],
+   "designed_contacts": [],
+   "ok": true
+  },
+  "vial 4, closed": {
+   "clashes": [],
+   "designed_contacts": [],
+   "ok": true,
+   "insert_to_vial_gap_mm": {
+    "upper insert": 0.5,
+    "lower insert": 0.5
+   },
+   "gripper_to_neighbour_vials_mm": {
+    "vial 3": 8.35
+   }
+  },
+  "vial 4, open, 30 mm back": {
+   "clashes": [],
+   "designed_contacts": [],
+   "ok": true
+  },
+  "vial 6, closed": {
+   "clashes": [],
+   "designed_contacts": [],
+   "ok": true,
+   "insert_to_vial_gap_mm": {
+    "upper insert": 0.5,
+    "lower insert": 0.5
+   },
+   "gripper_to_neighbour_vials_mm": {
+    "vial 7": 8.35
+   }
+  },
+  "vial 6, open, 30 mm back": {
+   "clashes": [],
+   "designed_contacts": [],
+   "ok": true
+  },
+  "vial 9, closed": {
+   "clashes": [],
+   "designed_contacts": [],
+   "ok": true,
+   "insert_to_vial_gap_mm": {
+    "upper insert": 0.5,
+    "lower insert": 0.5
+   },
+   "gripper_to_neighbour_vials_mm": {
+    "vial 8": 8.35
+   }
+  },
+  "vial 9, open, 30 mm back": {
+   "clashes": [],
+   "designed_contacts": [],
+   "ok": true
+  }
+ },
+ "ok": true,
+ "grip_states": {
+  "open": {
+   "apex_from_axis": 27.5,
+   "carriage_travel": 0.812,
+   "stock_opening": 60.0
+  },
+  "vial": {
+   "apex_from_axis": 19.799,
+   "carriage_travel": -6.889,
+   "stock_opening": 44.6
+  },
+  "post": {
+   "apex_from_axis": 12.021,
+   "carriage_travel": -14.667,
+   "stock_opening": 29.04
+  },
+  "vial, no pads": {
+   "apex_from_axis": 19.092,
+   "carriage_travel": -7.596,
+   "stock_opening": 43.18
+  },
+  "post, no pads": {
+   "apex_from_axis": 11.314,
+   "carriage_travel": -15.374,
+   "stock_opening": 27.63
+  }
+ },
+ "rib": {
+  "with pads": {
+   "vial_clearance": 0.899,
+   "rib_into_groove": 1.379,
+   "rib_to_groove_floor": 1.121
+  },
+  "no pads": {
+   "vial_clearance": 0.192,
+   "rib_into_groove": 2.086,
+   "rib_to_groove_floor": 0.414
+  }
+ }
+}
