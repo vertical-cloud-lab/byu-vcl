@@ -76,14 +76,14 @@ GANTRY_DY = 60.0  # the X beam's front face is 60 mm behind the capper axis
 BEAM_X = (-120.0, 480.0)
 
 ORANGE = (235, 104, 52)
-NO_OUTLINE = ("tip0_", "tips1", "liq:", "vcap:", "pad", "oring", "cupliq:", "tubes", "slots", "pstat_face")
+NO_OUTLINE = ("tip0_", "tips1", "liq:", "vcap:", "pad", "oring", "cupliq:", "tubes", "slots", "pstat_face", "eyelets", "holdmag", "ecap:pogo", "ecap:coil", "ecap:holdsteel", "ecap:ref", "ecap:carrier")
 ORANGE_HEX = "#eb6834"
 C = {  # material colours
     "table": "#e9e7e1", "deck": "#e4ebee", "slot": "#c2ccd2", "alu": "#c3c6c9", "alu_dark": "#9fa4a8", "blue": "#2456a6",
     "black": "#2b2b2b", "petg": "#dedbd2", "petg_dark": "#c8c3b5",
     "tray": "#f4efe6", "lid": "#e9a47c", "glass": "#e8f1f6", "capbody": "#efe9e2", "steel": "#8d9196", "fkm": "#1d1d1d",
     "cuni": "#b89a8a", "nab": "#c39b55", "ded": "#c08a62", "ptfe": "#f7f7f5", "pt": "#c7c9cc",
-    "agcl": "#e9e6df", "tip": "#f2f2ee", "tube": "#f4f4f0", "pip": "#2f2f2f", "pip_shaft": "#e7e7e3", "pip_top": "#4a4a4a",
+    "agcl": "#e9e6df", "tip": "#f2f2ee", "tube": "#f4f4f0", "pip": "#1c1c1c", "pip_shaft": "#e7e7e3", "pip_top": "#4a4a4a",
     "brass": "#c9a64a", "pstat": "#2f4a6b", "asw": "#9cc7e8", "sulf": "#e6d58a", "acid": "#f3f0e6",
     "water": "#d9ecf7", "mount": "#9c9b97",
 }
@@ -223,33 +223,41 @@ class Scene:
         add = self.add
         # coupon tray (printed) with four stations: S1 C71500 Cu-Ni, S2 C95800 NAB, S3 DED pad, S4 PTFE blank
         x0, y0, x1, y1 = base.TRAY["rect"]
-        tray = cad_mesh("coupon_tray")
-        tp = self.cad.get("coupon_tray", {})
-        if tray is not None and tp:
-            ox, oy, oz = tp.get("deck_offset", [0, 0, 0])
-            add("tray", tray.translate((ox, oy, oz), inplace=False), group="tray", color=C["tray"])
+        materials = ["cuni", "nab", "ded", "ptfe"]
+        self.cad_ok = cad_mesh("well_lid") is not None and cad_mesh("coupon_tray_minus_s1") is not None
+        if self.cad_ok:
+            W0 = lambda i: (S_X[i], S_Y, FACE_Z)  # noqa: E731  (well frame W -> deck)
+            add("tray", cad_mesh("coupon_tray_minus_s1"), group="tray", color=C["tray"])
+            add("tray_s1", cad_mesh("tray_station").translate(W0(0), inplace=False), group="tray", color=C["tray"])
+            add("tray_s1_sec", cad_mesh("tray_station_section").translate(W0(0), inplace=False), group="tray", color=C["tray"])
+            lid_parts = [("lid", "well_lid", C["lid"]), ("oring", "face_oring_006", C["fkm"]), ("pads", "lid_pads", "#c47a45"),
+                         ("eyelets", "lid_eyelets", C["brass"]), ("holdmag", "lid_hold_magnets", "#9a9ea3")]
+            for i in range(4):
+                stem = "coupon_20x20x6" if i < 3 else "ptfe_blank"
+                grp = "blank" if i == 3 else "coupons"
+                for suffix in (("", "_section") if i == 0 else ("",)):
+                    key = f"coupon{i}{suffix}"
+                    add(key, cad_mesh(stem + suffix).translate(W0(i), inplace=False), group=grp, color=C[materials[i]],
+                        specular=0.6 if i < 3 else 0.1, specular_power=30)
+                for k, stem2, col in lid_parts:
+                    for suffix in (("", "_section") if i == 0 else ("",)):
+                        add(f"{k}{i}{suffix}", cad_mesh(stem2 + suffix).translate(W0(i), inplace=False), group="lids", color=col,
+                            lighting=k != "oring", specular=0.6 if k in ("eyelets", "holdmag", "pads") else 0.15)
+            self.sec_pairs = [("tray_s1", "tray_s1_sec"), ("coupon0", "coupon0_section")] + [(f"{k}0", f"{k}0_section") for k, _, _ in lid_parts]
         else:
             add("tray", box(x0, y0, 0, x1, y1, FACE_Z), group="tray", color=C["tray"], smooth_shading=False)
-        lid_full, lid_sec = cad_mesh("well_lid"), cad_mesh("well_lid_section")
-        or_full, or_sec = cad_mesh("oring_006"), cad_mesh("oring_006_section")
-        lid_prof = [(A_SPOT, 1.42), (3.45, 1.42), (3.45, 0.0), (8.0, 0.0), (8.0, 6.0), (R_BORE, 6.0), (R_BORE, Z_STEP), (A_SPOT, Z_STEP)]
-        oring = [(2.4 + 0.94 * math.cos(t), 0.71 + 0.70 * math.sin(t)) for t in np.linspace(0, 2 * math.pi, 28, endpoint=False)]
-        coupon_prof = [(0.0, -3.0), (6.0, -3.0), (6.0, 0.0), (0.0, 0.0)]
-        materials = ["cuni", "nab", "ded", "ptfe"]
-        for i, sx in enumerate(S_X):
-            cut = i == 0
-            sweep, start = (CUT_SWEEP, CUT0) if cut else (360.0, 0.0)
-            lm = (lid_sec if cut else lid_full)
-            lm = lm if lm is not None else revolve(lid_prof, sweep, start)
-            add(f"lid{i}", lm.translate((sx, S_Y, FACE_Z), inplace=False), group="lids", color=C["lid"])
-            om = (or_sec if cut else or_full)
-            om = om if om is not None else revolve(oring, sweep, start)
-            add(f"oring{i}", om.translate((sx, S_Y, FACE_Z), inplace=False), group="lids", color=C["fkm"], lighting=False)
-            grp = "blank" if i == 3 else "coupons"
-            add(f"coupon{i}", revolve(coupon_prof, sweep, start).translate((sx, S_Y, FACE_Z + 0.01), inplace=False), group=grp,
-                color=C[materials[i]], specular=0.6 if i < 3 else 0.1, specular_power=30)
-            for px in (sx - 11, sx + 11):  # reference / counter pads
-                add(f"pad{i}{px}", box(px - 1.5, S_Y - 3, LID_TOP - 0.01, px + 1.5, S_Y + 3, LID_TOP + 0.6), group="lids", color=C["brass"], specular=0.6)
+            lid_prof = [(A_SPOT, 1.42), (3.45, 1.42), (3.45, 0.0), (8.0, 0.0), (8.0, 6.0), (R_BORE, 6.0), (R_BORE, Z_STEP), (A_SPOT, Z_STEP)]
+            oring = [(2.4 + 0.94 * math.cos(t), 0.71 + 0.70 * math.sin(t)) for t in np.linspace(0, 2 * math.pi, 28, endpoint=False)]
+            coupon_prof = [(0.0, -3.0), (6.0, -3.0), (6.0, 0.0), (0.0, 0.0)]
+            for i, sx in enumerate(S_X):
+                sweep, start = (CUT_SWEEP, CUT0) if i == 0 else (360.0, 0.0)
+                add(f"lid{i}", revolve(lid_prof, sweep, start).translate((sx, S_Y, FACE_Z), inplace=False), group="lids", color=C["lid"])
+                add(f"oring{i}", revolve(oring, sweep, start).translate((sx, S_Y, FACE_Z), inplace=False), group="lids", color=C["fkm"], lighting=False)
+                add(f"coupon{i}", revolve(coupon_prof, sweep, start).translate((sx, S_Y, FACE_Z + 0.01), inplace=False), group="blank" if i == 3 else "coupons",
+                    color=C[materials[i]], specular=0.6 if i < 3 else 0.1, specular_power=30)
+                for px in (sx - 11, sx + 11):  # reference / counter pads
+                    add(f"pad{i}{px}", box(px - 1.5, S_Y - 3, LID_TOP - 0.01, px + 1.5, S_Y + 3, LID_TOP + 0.6), group="lids", color=C["brass"], specular=0.6)
+            self.sec_pairs = []
 
         # Ben's 9-position holder (STEP), rotated so its positions run +Y from y 35
         holder = step_mesh("9VialHolder20mL_TightFit", 4.0, 8).rotate_z(180, inplace=False).translate((deck_cu.HOLDER_X, deck_cu.HOLDER_Y[0], 0), inplace=False)
@@ -293,7 +301,7 @@ class Scene:
         for name, (cx, cy) in deck_cu.CUPS.items():
             add(f"cup:{name}", pv.Cylinder(center=(cx, cy, 22.5), direction=(0, 0, 1), radius=7.5, height=45, resolution=40), group="cups",
                 color=C["glass"], opacity=0.4, specular=0.6)
-            add(f"cupliq:{name}", pv.Cylinder(center=(cx, cy, 17), direction=(0, 0, 1), radius=6.6, height=32, resolution=40), group="cups",
+            add(f"cupliq:{name}", pv.Cylinder(center=(cx, cy, 22), direction=(0, 0, 1), radius=6.6, height=40, resolution=40), group="cups",
                 color=C["asw"] if "ASW" in name else (C["water"] if "DI" in name else "#d8d2ea"), opacity=0.8)
         tw = deck_cu.TIP_WASTE
         add("tipwaste", pv.Cylinder(center=(*tw["c"], tw["top"] / 2), direction=(0, 0, 1), radius=tw["r"], height=tw["top"], resolution=48),
@@ -312,7 +320,7 @@ class Scene:
         axis = (63.17, -6.53)  # bore axis of the STEP, fitted; after the flip y -> -y
         mount = mount.translate((-axis[0], -axis[1], -mount.bounds[4] - MAGNET_HANG), inplace=False)
         parts = [
-            ("toolplate", box(-55, 25, 28, 82, 29, 168), C["black"], "toolplate"),
+            ("toolplate", box(-55, 25, 28, 82, 29, 168), "#45484c", "toolplate"),
             ("zplate", box(-36, 29, 40, 36, GANTRY_DY - 24, 165), C["alu"], "toolplate"),
             ("mount", mount, C["mount"], "capper"),
             ("magnet", pv.Cylinder(center=(0, 0, -MAGNET_HANG + 10.5), direction=(0, 0, 1), radius=12.5, height=20, resolution=48), C["steel"], "capper"),
@@ -323,6 +331,9 @@ class Scene:
             ("camera", box(CAM_OFF[0] - 11, CAM_OFF[1] - 11, 8, CAM_OFF[0] + 11, CAM_OFF[1] + 11, 34), "#3a3a3a", "camera"),
             ("lens", pv.Cylinder(center=(CAM_OFF[0], CAM_OFF[1], 6.5), direction=(0, 0, 1), radius=5.0, height=3.0, resolution=24), "#111111", "camera"),
             ("cam_arm", box(CAM_OFF[0] - 5, CAM_OFF[1] + 11, 20, CAM_OFF[0] + 5, 25, 34), "#3a3a3a", "camera"),
+            ("uno", box(-52, 21.5, 104, -14, 25, 158), "#1f6fae", "driver"),
+            ("tmc", box(-46, 19.5, 112, -24, 21.5, 138), "#8b1d2c", "driver"),
+            ("shield", box(-50, 20.0, 142, -18, 21.5, 156), "#2e7d4f", "driver"),
         ]
         self.head_keys = []
         for k, m, col, grp in parts:
@@ -334,37 +345,27 @@ class Scene:
         # the vial cap carried on the magnet (shown only while a stock is open)
         add("carried_vcap", self.vial_cap_mesh, color="#e3e1da")
 
-    # ---- the electrode cap. Local origin: centre of the skirt's underside (rests on the lid top), z up.
+    # ---- the electrode cap. Local origin (CAD frame C): centre of the skirt's underside, z up.
     def build_ecap(self):
-        parts = {}
-        names = {"body": ("electrode_cap_section", C["capbody"]), "disc": ("steel_disc_section", C["steel"]),
-                 "capillary": ("capillary_section", C["agcl"]), "coil": ("pt_coil_section", C["pt"]), "pogo": ("pogo_pins", C["brass"]),
-                 "gasket": ("oring_016_section", "#3a3a3a")}
-        for k, (stem, col) in names.items():
-            m = cad_mesh(stem)
-            if m is not None:
-                parts[k] = (m, col)
-        if "body" not in parts:  # fall back to the revolved sketch of the previous version
-            cap_prof = [(1.0, 0.0), (11.5, 0.0), (11.5, -0.01), (13.0, -0.01), (13.0, 4.0), (9.0, 4.0), (9.0, 14.8), (1.0, 14.8)]
-            parts = {
-                "body": (revolve(cap_prof, CUT_SWEEP, CUT0), C["capbody"]),
-                "gasket": (revolve([(8.9, -0.35), (10.3, -0.35), (10.3, 0.0), (8.9, 0.0)], CUT_SWEEP, CUT0), "#3a3a3a"),
-                "disc": (revolve([(0.0, 14.8), (6.0, 14.8), (6.0, 16.0), (0.0, 16.0)], CUT_SWEEP, CUT0), C["steel"]),
-                "capillary": (revolve([(0.0, -CAP_PROTRUDE), (1.0, -CAP_PROTRUDE), (1.0, 14.8), (0.0, 14.8)], CUT_SWEEP, CUT0), C["agcl"]),
-            }
-            coil = []
-            for turn in range(5):
-                zc = 2.4 + 0.4 * turn - 6.0
-                th = np.radians(np.linspace(CUT0 + 4, CUT0 + CUT_SWEEP - 4, 80))
-                pts = np.c_[2.6 * np.cos(th), 2.6 * np.sin(th), np.full_like(th, zc)]
-                coil.append(pv.Spline(pts, 120).tube(radius=0.125, n_sides=10))
-            parts["coil"] = (pv.merge(coil), C["pt"])
-            parts["pogo"] = (pv.merge([pv.Cylinder(center=(sx, 0, 1.5), direction=(0, 0, 1), radius=0.5, height=4.2, resolution=12) for sx in (-11, 11)]), C["brass"])
-        self.ecap_parts = parts
+        names = [("body", "electrode_cap", C["capbody"]), ("disc", "steel_disc", C["steel"]), ("carrier", "electrode_carrier", "#d9d6cf"),
+                 ("ref", "ag_agcl_ref", C["agcl"]), ("coil", "pt_coil", C["pt"]), ("pogo", "cap_pogo_pins", C["brass"]),
+                 ("holdsteel", "cap_hold_steel", C["steel"])]
+        if self.cad_ok and cad_mesh("electrode_cap") is not None:
+            for k, stem, col in names:
+                for suffix, grp in (("", "ecap"), ("_section", "ecap_sec")):
+                    m = cad_mesh(stem + suffix)
+                    if m is not None:
+                        self.add(f"{grp}:{k}", m, group=grp, color=col, specular=0.5 if k in ("disc", "coil", "pogo", "holdsteel") else 0.15)
+            return
+        cap_prof = [(1.0, 0.0), (11.5, 0.0), (11.5, -0.01), (13.0, -0.01), (13.0, 4.0), (9.0, 4.0), (9.0, 14.8), (1.0, 14.8)]
+        parts = {
+            "body": (revolve(cap_prof, CUT_SWEEP, CUT0), C["capbody"]),
+            "disc": (revolve([(0.0, 14.8), (6.0, 14.8), (6.0, 16.0), (0.0, 16.0)], CUT_SWEEP, CUT0), C["steel"]),
+            "capillary": (revolve([(0.0, -CAP_PROTRUDE), (1.0, -CAP_PROTRUDE), (1.0, 14.8), (0.0, 14.8)], CUT_SWEEP, CUT0), C["agcl"]),
+        }
         for k, (m, col) in parts.items():
-            self.add(f"ecap:{k}", m, group="ecap", color=col, specular=0.5 if k in ("disc", "coil", "pogo") else 0.15)
-        info = self.cad.get("electrode_cap", {})
-        self.cap_height = float(info.get("height_above_skirt_mm", 16.0))
+            self.add(f"ecap:{k}", m, group="ecap", color=col, specular=0.15)
+        self.groups["ecap_sec"] = []
 
     # ---- the liquid in S1's well: O2 on one cut face, dissolved Cu on the other
     def load_field(self):
@@ -474,8 +475,11 @@ class Scene:
         for k in self.head_keys:
             self.actors[k].user_matrix = Mh
             self.actors[k].visibility = True
+        close = bool(st.get("closeup"))
         for k in self.groups["ecap"]:
-            self.actors[k].visibility = True
+            self.actors[k].visibility = not close
+        for k in self.groups.get("ecap_sec", []):
+            self.actors[k].visibility = close
         for k in self.groups["gantry"]:
             self.actors[k].user_matrix = T(0, hy, 0)
         for k in self.groups["xcar"]:
@@ -489,7 +493,7 @@ class Scene:
         # electrode cap
         where = st["ecap"]
         Mc = T(hx, hy, hz - CAP_HANG + CAP_PROTRUDE) if where == "head" else T(*where)
-        for k in self.groups["ecap"]:
+        for k in self.groups["ecap"] + self.groups.get("ecap_sec", []):
             self.actors[k].user_matrix = Mc
         for name in self.vials:
             self.actors[f"vcap:{name}"].visibility = st["open_vial"] != name
@@ -511,11 +515,17 @@ class Scene:
         for grp, keys in self.groups.items():
             if grp in ("gantry", "xcar"):
                 continue
-            moving = grp == "ecap" or grp in ("capper", "pipette", "camera", "toolplate")
             for k in keys:
                 a = self.actors[k]
-                keep = k in self.head_keys or grp == "ecap" or k.startswith(("tip0_", "vcap:"))
-                a.visibility = (a.visibility if keep else True) and grp not in hidden
+                moving = k in self.head_keys or grp in ("ecap", "ecap_sec")
+                keep = k in self.head_keys or grp in ("ecap", "ecap_sec") or k.startswith(("tip0_", "vcap:"))
+                vis = True
+                for full, sec in self.sec_pairs:
+                    if k == full:
+                        vis = not close
+                    elif k == sec:
+                        vis = close
+                a.visibility = (a.visibility if keep else vis) and grp not in hidden and (grp != "ecap_sec" or "ecap" not in hidden)
                 dz = drops.get(grp, 0.0)
                 a.user_matrix = T(0, 0, dz) @ (np.array(a.user_matrix) if moving else np.eye(4))
         if "tubes" in hidden:
@@ -646,7 +656,7 @@ def build_story(t0):
     park, rinse1, rinse2 = deck_cu.CUPS["park cup"], deck_cu.CUPS["rinse 1 (DI)"], deck_cu.CUPS["rinse 2 (ASW)"]
     tube1 = (base.TUBE_X[0], base.TUBE_Y[0])
     tw = deck_cu.TIP_WASTE["c"]
-    s.ev(tip_on=False, tip_liq=False, tips_taken=set(), ecap=(park[0], park[1], 45.0 + CAP_PROTRUDE), open_vial=None,
+    s.ev(tip_on=False, tip_liq=False, tips_taken=set(), ecap=(park[0], park[1], 45.0), open_vial=None,
          well_ul=0.0, sim_t=0.0, tube_ul=0.0, capped=False, active=None)
     wide = RUN_WIDE
     s.cam(s.t, *OVERVIEW, angle=30)
@@ -718,48 +728,49 @@ def build_story(t0):
     s.camera_to(S1[0], S1[1])
     s.wait(1.6)
 
-    s.caption("5  The capper carries the electrode cap (leak-free Ag/AgCl, Pt coil) from its park cup and presses it onto S1's boss; an FKM O-ring seals it")
+    s.caption("5  The capper carries the electrode cap (leak-free Ag/AgCl, Pt coil) from its park cup and sets it over S1's boss: 0.12 mm clearance, no O-ring, two small lid magnets hold it")
     s.cam(s.t + 0.8, (430, -330, 400), (165, 215, 35), angle=30)
     s.act("capper", (park[0], park[1], 45.0, 9.0), "picks up the electrode cap")
-    s.capper_to(park[0], park[1], 45.0 + CAP_PROTRUDE + 16.0)
+    s.capper_to(park[0], park[1], 45.0 + 16.0)
     s.ev(ecap="head")
     s.wait(0.25)
     s.move(0.4, z=TRAVEL)
-    s.act("capper", (S1[0], S1[1], LID_TOP, 9.0), "presses the cap onto S1")
+    s.act("capper", (S1[0], S1[1], LID_TOP, 9.0), "sets the cap over S1's boss")
     s.capper_to(S1[0], S1[1], LID_TOP + 16.0)
     s.ev(ecap=(S1[0], S1[1], LID_TOP), capped=True)
     s.wait(0.25)
     s.move(0.4, z=TRAVEL)
 
     t_meas0 = s.t + 1.6
-    close_cam = ((S1[0] + 1.5, S1[1] - 27, FACE_Z + 8.5), (S1[0], S1[1], FACE_Z + 3.4))
+    close_cam = ((S1[0] + 2.2, S1[1] - 20, FACE_Z + 7.5), (S1[0], S1[1], FACE_Z + 2.6))
     s.act("pstat", None, "OCP, LPR, hold: the head is free")
     s.cam(s.t + 1.6, *close_cam, angle=30)
     s.travel(PARK[0], PARK[1], 1.2)
     meas = 10.0
     s.caption("6  Measured with the cap on: OCP 30 min, LPR ±10 mV, rest 5 min, +50 mV hold 10 min, OCP 5 min. The head is free meanwhile", meas + 1.6)
     s.wait(t_meas0 + meas - s.t)
-    t_last = float(np.load(HERE / "sim_well_fields.npz")["trace_t"][-1])
+    fields = HERE / "sim_well_hf_fields.npz"
+    t_last = float(np.load(fields if fields.exists() else HERE / "sim_well_fields.npz")["trace_t"][-1])
     s.events.append((t_meas0, {"sim_ramp": (t_meas0 + 0.6, t_meas0 + meas - 0.4, 0.0, t_last)}))
     s.cam(s.t + 0.2, *close_cam, angle=30)
     s.cam(s.t + 1.6, (480, -380, 430), (165, 160, 35), angle=30)
     s.measure = (t_meas0, t_meas0 + meas)
 
     s.travel_dur = 0.6
-    s.caption("7  The magnet pulls the cap off S1; it is dipped in DI water, then seawater, and parked")
-    s.act("capper", (S1[0], S1[1], LID_TOP, 9.0), "pulls the cap off S1")
+    s.caption("7  The magnet lifts the cap off S1 (about 2.4 N against the lid magnets); it is dipped in DI water, then seawater, and parked")
+    s.act("capper", (S1[0], S1[1], LID_TOP, 9.0), "lifts the cap off S1")
     s.capper_to(S1[0], S1[1], LID_TOP + 16.0)
     s.ev(ecap="head", capped=False)
     s.wait(0.2)
     s.move(0.35, z=TRAVEL)
     for cup, what in ((rinse1, "dips the cap in DI water"), (rinse2, "dips the cap in seawater")):
         s.act("capper", (cup[0], cup[1], 45.0, 9.0), what)
-        s.capper_to(cup[0], cup[1], 45.0 + CAP_PROTRUDE + 16.0 - 8.0)
-        s.wait(0.25)
+        s.capper_to(cup[0], cup[1], 45.0 + 16.0)
+        s.wait(0.3)
         s.move(0.35, z=TRAVEL)
     s.act("capper", (park[0], park[1], 45.0, 9.0), "parks the cap")
-    s.capper_to(park[0], park[1], 45.0 + CAP_PROTRUDE + 16.0)
-    s.ev(ecap=(park[0], park[1], 45.0 + CAP_PROTRUDE))
+    s.capper_to(park[0], park[1], 45.0 + 16.0)
+    s.ev(ecap=(park[0], park[1], 45.0))
     s.wait(0.2)
     s.move(0.35, z=TRAVEL)
 
@@ -900,6 +911,7 @@ HEAD_TOOLS = [  # group, label, anchor relative to the head origin
     ("capper", "Electromagnetic capper", (0, -16, -16)),
     ("pipette", "P20 pipette", (PIP[0] + 17, PIP[1] - 13, 100)),
     ("camera", "Head camera", (CAM_OFF[0] - 11, CAM_OFF[1] - 11, 20)),
+    ("driver", "Arduino + TMC2209 driver", (-33, 19.5, 130)),
 ]
 DROP, HOLD = 0.55, 1.15
 
@@ -922,7 +934,7 @@ class Placement:
 
     def state(self, t):
         st = {"t": t, "head": self.head, "tip_on": False, "tip_liq": False, "tips_taken": set(),
-              "ecap": (deck_cu.CUPS["park cup"][0], deck_cu.CUPS["park cup"][1], 45.0 + CAP_PROTRUDE), "open_vial": None,
+              "ecap": (deck_cu.CUPS["park cup"][0], deck_cu.CUPS["park cup"][1], 45.0), "open_vial": None,
               "sim_t": 0.0, "tube_ul": 0.0, "level": 0.0, "hidden": set(), "drop": {}, "lit": ()}
         for ts, grp, lab, anc, tool in self.items:
             if t < ts:
@@ -947,7 +959,7 @@ class Placement:
                 continue
             f = F0 + 0.4 * (np.array(anc, float) - F0)
             c.append((ts + 0.25, (f + 0.8 * (P0 - F0), f, up, 30.0)))
-        tool_cam = ((hx - 200, hy - 400, 270), (hx + 10, hy, 95))
+        tool_cam = ((hx - 270, hy - 560, 370), (hx + 10, hy, 135))
         c.append((self.t_tools - 0.2, (np.array(tool_cam[0], float), np.array(tool_cam[1], float), up, 30.0)))
         c.append((self.t1 - 0.3, (np.array(tool_cam[0], float) + (25, 0, 0), np.array(tool_cam[1], float), up, 30.0)))
         c.append((self.t1 + 0.9, (np.array(RUN_WIDE[0], float), np.array(RUN_WIDE[1], float), up, 30.0)))
@@ -1039,7 +1051,7 @@ PREP_CARDS = [
       "Keep a sample of each powder lot for oxygen by inert-gas fusion"],
      "protocol.md §1, §7; c1-04, c1-05, c1-10", "ded"),
     ("2  Specimens", "cut, polish, clean, check",
-     ["Section pieces at least 15 mm across, room for two -006 wells",
+     ["Cut 20 × 20 mm pieces, up to 6 mm thick, to fit the tray pocket (1 and 3 mm shims for thinner ones)",
       "Mount, grind and polish (SOP #258): SiC to P2400, 1 µm diamond, 0.04 µm colloidal silica; leave a bare metal back",
       "Clean: ethanol ultrasonic bath, ultrapure-water rinse, dry nitrogen",
       "EDS or XRF away from the wells; photograph each footprint, and a pore sends it to a separate set",
@@ -1062,7 +1074,7 @@ AFTER_CARD = ("After the night", "the liquid and the spot",
               ["Cap the acidified tubes and weigh them: the recovered volume and the dilution",
                "Dilute 10× and run ICP-MS with a collision cell (read ⁶⁵Cu): Cu, Ni, Fe and Mn on every tube, Al on NAB",
                "Compare dissolved metal with the charge passed; the gap stayed in the film or replated",
-               "Photograph each spot and take it to SEM/EDS. A ring of attack at the O-ring edge is crevice attack, not pitting"],
+               "Photograph each spot and take it to SEM/EDS. A ring of attack just inside the O-ring is reverse crevice attack, not pitting"],
               "protocol.md §4, §6", "icp")
 CARD_DUR = 6.0
 
@@ -1245,7 +1257,7 @@ class Video:
 
 def empty_state(t, hide_all=True):
     st = {"t": t, "head": PLACE_HEAD, "tip_on": False, "tip_liq": False, "tips_taken": set(),
-          "ecap": (deck_cu.CUPS["park cup"][0], deck_cu.CUPS["park cup"][1], 45.0 + CAP_PROTRUDE), "open_vial": None,
+          "ecap": (deck_cu.CUPS["park cup"][0], deck_cu.CUPS["park cup"][1], 45.0), "open_vial": None,
           "sim_t": 0.0, "tube_ul": 0.0, "level": 0.0, "lit": ()}
     st["hidden"] = {g for g, _, _ in DECK_MODULES} | {g for g, _, _ in HEAD_TOOLS} if hide_all else set()
     return st
@@ -1406,7 +1418,7 @@ class Renderer:
 
 OUTRO_LINES = [
     "One spot: about 67 min of deck time, 9 tubes and 17 tips a night",
-    "Deck check: 118 tool-down events, 0 collisions (deck_cu.py)",
+    "Deck check with the CAD cap: 118 tool-down events, 0 collisions (deck_cu.py)",
     "CAD of the cap, lid and tray: alloy-corrosion/copper/cad/",
     "Well simulation: alloy-corrosion/copper/sim_well_hf.py",
     "github.com/vertical-cloud-lab/byu-vcl/pull/278",
@@ -1418,14 +1430,43 @@ def gif_frame(img):
     return Image.fromarray(img).resize((GW, GH), Image.LANCZOS)
 
 
+def named_stills(v):
+    s = v.story
+    return {"photo": 3.0, "overview": v.place.t_tools - 0.4, "placement": v.place.items[3][0] + DROP + 0.5,
+            "tools": v.place.items[-4][0] + DROP + 0.6, "prep": v.t_prep[0] + 2 * CARD_DUR + 5.0, "fill": s.fill_still,
+            "closeup": s.measure[1] - 0.5, "acid": [c[0] for c in s.captions if c[2].startswith("9 ")][0] + 3.0}
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--stills", default="", help="comma-separated times in seconds to save as PNG stills, no video")
-    ap.add_argument("--out", default=str(HERE / "cubxl-cu-spot.mp4"))
+    ap.add_argument("--part", default="", help="i/n: render the i-th of n equal frame ranges to /tmp/cubxl_seg_i.mp4")
+    ap.add_argument("--assemble", type=int, default=0, help="n: join /tmp/cubxl_seg_*.mp4 and build the GIF")
     args = ap.parse_args()
-    r = Renderer()
-    v = r.v
+    v = Video()
     n = int(math.ceil(v.total * FPS))
+    gif_ranges = [(v.place.t0, v.place.t1), (v.t_run[0], v.t_run[1])]
+    gif_dir = Path(tempfile.gettempdir()) / "cubxl_gif"
+    if args.assemble:
+        import subprocess
+        import imageio_ffmpeg
+        lst = Path(tempfile.gettempdir()) / "cubxl_segs.txt"
+        lst.write_text("".join(f"file '{Path(tempfile.gettempdir()) / f'cubxl_seg_{i}.mp4'}'\n" for i in range(args.assemble)))
+        subprocess.run([imageio_ffmpeg.get_ffmpeg_exe(), "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", str(lst),
+                        "-c", "copy", "-movflags", "+faststart", str(HERE / "cubxl-cu-spot.mp4")], check=True)
+        frames = [Image.open(f).convert("RGB") for f in sorted(gif_dir.glob("*.png"))]
+        if not frames:
+            print("assembled; no GIF frames in this range", flush=True)
+            return
+        sheet = Image.new("RGB", (GW, GH * 6))
+        for i, j in enumerate(np.linspace(0, len(frames) - 1, 6).astype(int)):
+            sheet.paste(frames[j], (0, GH * i))
+        pal = sheet.quantize(colors=128, method=Image.Quantize.MEDIANCUT)
+        gq = [g.quantize(palette=pal, dither=Image.Dither.NONE) for g in frames]
+        gq[0].save(HERE / "cubxl-cu-spot.gif", save_all=True, append_images=gq[1:], duration=100, loop=0, optimize=True)
+        print("assembled", n, "frames;", len(frames), "GIF frames", flush=True)
+        return
+    r = Renderer()
     print(f"{v.total:.1f} s, {n} frames; run {v.t_run[0]:.1f}-{v.t_run[1]:.1f} s; field from {r.scene.field_src}", flush=True)
     stills = [float(x) for x in args.stills.split(",") if x.strip()]
     if stills:
@@ -1433,15 +1474,17 @@ def main():
             Image.fromarray(r.frame(t)).save(f"/tmp/cubxl_cu_still_{t:06.2f}.png")
             print("still", t, flush=True)
         return
+    k0, k1, out = 0, n, HERE / "cubxl-cu-spot.mp4"
+    if args.part:
+        i, m = (int(x) for x in args.part.split("/"))
+        k0, k1 = n * i // m, n * (i + 1) // m
+        out = Path(tempfile.gettempdir()) / f"cubxl_seg_{i}.mp4"
+    gif_dir.mkdir(exist_ok=True)
     import imageio.v2 as imageio
-    writer = imageio.get_writer(args.out, fps=FPS, codec="libx264", quality=None,
-                                ffmpeg_params=["-crf", "22", "-preset", "slow", "-pix_fmt", "yuv420p", "-movflags", "+faststart"])
-    gif = []
-    s = v.story
-    named = {"overview": v.place.t1 - 0.2, "placement": v.place.items[3][0] + DROP + 0.5, "tools": v.place.items[-3][0] + DROP + 0.6,
-             "prep": v.t_prep[0] + 2 * CARD_DUR + 5.0, "fill": s.fill_still, "closeup": s.measure[1] - 0.5, "photo": 3.0}
-    gif_ranges = [(v.place.t0, v.place.t1), (v.t_run[0], v.t_run[1])]
-    for k in range(n):
+    writer = imageio.get_writer(out, fps=FPS, codec="libx264", quality=None, macro_block_size=8,
+                                ffmpeg_params=["-crf", "21", "-preset", "slow", "-pix_fmt", "yuv420p", "-g", "60"])
+    named = named_stills(v)
+    for k in range(k0, k1):
         t = k / FPS
         img = r.frame(t)
         writer.append_data(img)
@@ -1449,17 +1492,11 @@ def main():
             if k == int(round(ts * FPS)):
                 Image.fromarray(img).save(HERE / f"cubxl-cu-{name}.png", optimize=True)
         if k % 10 == 0 and any(a <= t < b for a, b in gif_ranges):
-            gif.append(gif_frame(img))
-        if k % 150 == 0:
+            gif_frame(img).save(gif_dir / f"{k:05d}.png")
+        if (k - k0) % 150 == 0:
             print("frame", k, "of", n, flush=True)
     writer.close()
-    sheet = Image.new("RGB", (GW, GH * 6))
-    for i, j in enumerate(np.linspace(0, len(gif) - 1, 6).astype(int)):
-        sheet.paste(gif[j], (0, GH * i))
-    pal = sheet.quantize(colors=128, method=Image.Quantize.MEDIANCUT)
-    gq = [g.quantize(palette=pal, dither=Image.Dither.NONE) for g in gif]
-    gq[0].save(HERE / "cubxl-cu-spot.gif", save_all=True, append_images=gq[1:], duration=100, loop=0, optimize=True)
-    print("done", flush=True)
+    print("done", k0, k1, flush=True)
 
 
 if __name__ == "__main__":

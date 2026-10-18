@@ -11,12 +11,12 @@
  },
  "travel_clearance_mm": {
   "pipette tip end at travel": 87.0,
-  "electrode cap tips at travel": 87.0,
+  "electrode cap tips at travel": 86.2,
   "tallest deck item": 71.0
  },
  "hang_mm": {
   "capper": 16.0,
-  "capper+cap": 35.0,
+  "capper+cap": 35.8,
   "pipette": 35.0,
   "pipette_bare": 0.0
  },

@@ -1,0 +1,343 @@
+{
+ "sources": "(each is stated again next to its number in the JSON):\n- O-ring load: Lindley's formula for a ring section squeezed between flat plates,\n  F/L = E d (1.25 e^1.5 + 50 e^6), with E from Shore A hardness by Gent's relation,\n  E [MPa] = 0.0981 (56 + 7.62336 S) / (0.137505 (254 - 2.54 S)). FKM 70-80 A, 75 A nominal.\n- AS568 tolerances for the -006 and -016 (cross-section 0.070 +/- 0.003 in) and printed\n  gland dimensions to +/- 0.05 mm after a calibration print (an assumption).\n- Electromagnet: the uxcell / Adafruit P25/20 (25 x 20 mm, 5 V, 0.3 A, centre pole 12 mm,\n  rated \"5 kg minimum\" holding: Adafruit product 3873). No gap curve is published for it, so\n  the shape of the curve is taken from the same-size Eclipse Magnetics M52172 (25 x 20 mm,\n  15 kg at zero gap on a 3 mm armature; its datasheet table, normalised). A thin steel disc\n  saturates: the flux from the centre pole crosses the disc's rim at r = 6 mm, so the disc\n  carries at most B_sat 2 pi r t; force scales with flux squared.\n- Hold-down magnets: supermagnete S-04-02-N, 4 x 2 mm N45, 4.12 N on a thick steel plate.\n- Vapour transport: water vapour in air D = 0.25 cm2/s, saturated vapour 19.4 g/m3 at 22 C,\n  room RH 40 %. Air viscosity 1.81e-5 Pa s, density 1.2 kg/m3.",
+ "E_MPa_by_shore_A_gent": {
+  "70": 5.52,
+  "75": 7.05,
+  "80": 9.35
+ },
+ "a_face_seal_AS568_006": {
+  "squeeze_pct": {
+   "nominal": 21.3,
+   "min": 14.9,
+   "max": 27.3
+  },
+  "gland_fill_pct": 80.8,
+  "stretch_pct": 0.0,
+  "free_OD_mm": 6.46,
+  "counterbore_d_mm": 7.3,
+  "squeezed_section": "stadium of equal area, 1.40 mm tall: contact on the metal r 2.00-2.68 mm, inner bulge at r 1.30 mm",
+  "seal_length_mm": 14.7,
+  "force_N": {
+   "70A_nominal": 18.5,
+   "70A_min": 10.0,
+   "70A_max": 29.9,
+   "75A_nominal": 23.6,
+   "75A_min": 12.8,
+   "75A_max": 38.2,
+   "80A_nominal": 31.3,
+   "80A_min": 17.0,
+   "80A_max": 50.7
+  },
+  "two_M3_screws": {
+   "preload_each_N_for_2x_the_worst_case_ring_load": 50.7,
+   "torque_mNm_at_K_0.2": 30.4,
+   "note": "finger-tight with a hex key; heat-set M3 inserts in PETG hold several hundred N"
+  },
+  "lid_bow_mm_upper_bound": {
+   "PETG_E_2000MPa": 0.089,
+   "PETG_creep_E_1000MPa_overnight": 0.179,
+   "squeeze_mm": 0.38
+  },
+  "wetted_spot": {
+   "ring_centre_radius_mm": 2.34,
+   "contact_half_width_mm": {
+    "stadium_equal_area": 0.339,
+    "hertz_line_contact_with_lindley_load": 0.44,
+    "geometric_chord_upper_bound": 0.55
+   },
+   "wetted_radius_mm": [
+    1.79,
+    2.001
+   ],
+   "wetted_area_cm2": [
+    0.1007,
+    0.1258
+   ],
+   "nominal_area_from_ID_cm2": 0.066,
+   "ratio_to_nominal": [
+    1.52,
+    1.9
+   ],
+   "ring_can_shift_off_axis_mm": 0.271,
+   "meaning": "the liquid wets the metal out to the inner edge of the ring's contact, not to the ring's ID: the annulus between is a thin crevice under the ring's curved inner face"
+  }
+ },
+ "b_radial_seal_AS568_016": {
+  "gland_depth_mm": 1.55,
+  "groove_width_mm": 2.4,
+  "groove_bottom_d_mm": 19.1,
+  "squeeze_pct": {
+   "nominal": 12.9,
+   "min": 6.1,
+   "max": 19.2
+  },
+  "gland_fill_pct": 66.9,
+  "ID_interference_pct": 2.56,
+  "OD_vs_groove_bottom_mm": 0.06,
+  "guidance": "squeeze 10-16 % is Parker's reciprocating-seal range for 0.070 in sections; static radial glands run 16-30 %",
+  "normal_force_N_75A": {
+   "nominal": 36.8,
+   "min": 11.4,
+   "max": 70.8
+  },
+  "normal_force_N_70_80A_nominal": [
+   28.8,
+   48.8
+  ],
+  "friction_N": {
+   "mu0.2_breakaway1.0": {
+    "nominal": 7.4,
+    "min": 2.3,
+    "max": 14.2
+   },
+   "mu0.2_breakaway1.5": {
+    "nominal": 11.0,
+    "min": 3.4,
+    "max": 21.2
+   },
+   "mu0.2_breakaway2.0": {
+    "nominal": 14.7,
+    "min": 4.5,
+    "max": 28.3
+   },
+   "mu0.4_breakaway1.0": {
+    "nominal": 14.7,
+    "min": 4.5,
+    "max": 28.3
+   },
+   "mu0.4_breakaway1.5": {
+    "nominal": 22.1,
+    "min": 6.8,
+    "max": 42.5
+   },
+   "mu0.4_breakaway2.0": {
+    "nominal": 29.4,
+    "min": 9.1,
+    "max": 56.6
+   },
+   "mu0.6_breakaway1.0": {
+    "nominal": 22.1,
+    "min": 6.8,
+    "max": 42.5
+   },
+   "mu0.6_breakaway1.5": {
+    "nominal": 33.1,
+    "min": 10.2,
+    "max": 63.7
+   },
+   "mu0.6_breakaway2.0": {
+    "nominal": 44.1,
+    "min": 13.6,
+    "max": 84.9
+   }
+  },
+  "insertion_push_N_mu0.2_to_0.6_nominal": [
+   7.4,
+   22.1
+  ],
+  "extraction_pull_N_range": [
+   2.3,
+   84.9
+  ]
+ },
+ "magnet_P25_20": {
+  "model": "F = 50 N x min(disc saturation, gap curve); gap curve normalised from Eclipse M52172 (25 x 20 mm)",
+  "gap_curve_normalised": {
+   "0.00mm": 1.0,
+   "0.09mm": 0.34,
+   "0.18mm": 0.147,
+   "0.27mm": 0.08,
+   "0.36mm": 0.053,
+   "0.59mm": 0.027,
+   "1.00mm": 0.013
+  },
+  "rated_flux_uWb": 89.3,
+  "disc_saturation_factor": {
+   "0.5mm": 0.114,
+   "0.8mm": 0.292,
+   "1.0mm": 0.456,
+   "1.5mm": 1.0,
+   "2.0mm": 1.0
+  },
+  "available_N": {
+   "disc_0.5mm": {
+    "gap_0.00mm": 5.7,
+    "gap_0.05mm": 5.7,
+    "gap_0.09mm": 5.7,
+    "gap_0.18mm": 5.7,
+    "gap_0.36mm": 2.7,
+    "gap_1.00mm": 0.7
+   },
+   "disc_1.0mm": {
+    "gap_0.00mm": 22.8,
+    "gap_0.05mm": 22.8,
+    "gap_0.09mm": 17.0,
+    "gap_0.18mm": 7.3,
+    "gap_0.36mm": 2.7,
+    "gap_1.00mm": 0.7
+   },
+   "disc_1.5mm": {
+    "gap_0.00mm": 50.0,
+    "gap_0.05mm": 31.7,
+    "gap_0.09mm": 17.0,
+    "gap_0.18mm": 7.3,
+    "gap_0.36mm": 2.7,
+    "gap_1.00mm": 0.7
+   }
+  }
+ },
+ "cap_mass": {
+  "cap_body_petg_g": 8.52,
+  "carrier_petg_g": 0.17,
+  "steel_disc_g": 3.95,
+  "reference_g_assumed": 0.3,
+  "pt_coil_g": 0.1,
+  "pogo_pins_g_assumed": 0.2,
+  "hold_steel_g": 0.22,
+  "total_g": 13.46,
+  "oring_cap_body_petg_g": 8.25
+ },
+ "oring_cap_pull_margin_available_over_needed": {
+  "disc_0.5mm_gap_0.00mm": {
+   "nominal_mu0.4_breakaway1.5": 0.26,
+   "worst_mu0.6_breakaway2_max_squeeze": 0.07,
+   "best_mu0.2_min_squeeze": 2.37
+  },
+  "disc_0.5mm_gap_0.09mm": {
+   "nominal_mu0.4_breakaway1.5": 0.26,
+   "worst_mu0.6_breakaway2_max_squeeze": 0.07,
+   "best_mu0.2_min_squeeze": 2.37
+  },
+  "disc_0.5mm_gap_0.18mm": {
+   "nominal_mu0.4_breakaway1.5": 0.26,
+   "worst_mu0.6_breakaway2_max_squeeze": 0.07,
+   "best_mu0.2_min_squeeze": 2.37
+  },
+  "disc_1.0mm_gap_0.00mm": {
+   "nominal_mu0.4_breakaway1.5": 1.03,
+   "worst_mu0.6_breakaway2_max_squeeze": 0.27,
+   "best_mu0.2_min_squeeze": 9.5
+  },
+  "disc_1.0mm_gap_0.09mm": {
+   "nominal_mu0.4_breakaway1.5": 0.77,
+   "worst_mu0.6_breakaway2_max_squeeze": 0.2,
+   "best_mu0.2_min_squeeze": 7.07
+  },
+  "disc_1.0mm_gap_0.18mm": {
+   "nominal_mu0.4_breakaway1.5": 0.33,
+   "worst_mu0.6_breakaway2_max_squeeze": 0.09,
+   "best_mu0.2_min_squeeze": 3.05
+  },
+  "disc_1.5mm_gap_0.00mm": {
+   "nominal_mu0.4_breakaway1.5": 2.25,
+   "worst_mu0.6_breakaway2_max_squeeze": 0.59,
+   "best_mu0.2_min_squeeze": 20.81
+  },
+  "disc_1.5mm_gap_0.09mm": {
+   "nominal_mu0.4_breakaway1.5": 0.77,
+   "worst_mu0.6_breakaway2_max_squeeze": 0.2,
+   "best_mu0.2_min_squeeze": 7.07
+  },
+  "disc_1.5mm_gap_0.18mm": {
+   "nominal_mu0.4_breakaway1.5": 0.33,
+   "worst_mu0.6_breakaway2_max_squeeze": 0.09,
+   "best_mu0.2_min_squeeze": 3.05
+  }
+ },
+ "recommended_clearance_cap": {
+  "radial_clearance_mm": 0.12,
+  "land_length_mm": 3.2,
+  "clearance_0.07mm": {
+   "evaporation_uL_per_h": 1.01,
+   "pct_of_150uL_per_63min": 0.71,
+   "headspace_RH_pct": 92.8
+  },
+  "clearance_0.12mm": {
+   "evaporation_uL_per_h": 1.6,
+   "pct_of_150uL_per_63min": 1.12,
+   "headspace_RH_pct": 88.7
+  },
+  "clearance_0.17mm": {
+   "evaporation_uL_per_h": 2.11,
+   "pct_of_150uL_per_63min": 1.47,
+   "headspace_RH_pct": 85.2
+  },
+  "clearance_0.22mm": {
+   "evaporation_uL_per_h": 2.54,
+   "pct_of_150uL_per_63min": 1.78,
+   "headspace_RH_pct": 82.1
+  },
+  "no_cap_evaporation_uL_per_h": 6.05,
+  "press_on_dP_Pa_at_5mm_s": 8.3,
+  "press_on_dP_Pa_at_20mm_s": 33.2,
+  "hold_down": {
+   "per_magnet_N_at_contact_supplier": 4.12,
+   "derating_assumed": "x0.35-0.5 for the 0.4 mm skin plus 0.05 mm, x0.8 for 2 mm of steel, x0.7 for a 3 mm slug on a 4 mm magnet",
+   "two_magnets_N": [
+    1.62,
+    2.31
+   ],
+   "cap_weight_N": 0.132,
+   "pin_force_total_N_max_half_the_weakest_hold_down": 0.81,
+   "rule": "pick spring pins of at most 0.4 N each at the seated stroke (0.93 mm), so the magnets hold the cap down with a factor of 2; P75-class pins can be 1 N or more, so measure before use",
+   "electromagnet_must_lift_N": 2.44,
+   "electromagnet_margin_disc1mm": {
+    "gap_0.00mm": 9.4,
+    "gap_0.09mm": 7.0,
+    "gap_0.18mm": 3.0,
+    "gap_0.36mm": 1.1
+   },
+   "clocking": "the two magnets pull the cap's steel slugs into line, so the pins land on the +/-30 deg pads; 0 and 180 deg are both stable, so set the cap's index mark by hand at the park cup"
+  }
+ },
+ "oring_cap_press_on_transient": {
+  "trapped_stroke_mm": 2.97,
+  "headspace_seated_uL": 261.0,
+  "headspace_at_engagement_uL": 877.0,
+  "no_vent": {
+   "pressure_rise_bar": 2.38,
+   "force_on_cap_N": 49.4,
+   "consequence": "the cap needs that much extra push and springs back off when the magnet lets go"
+  },
+  "with_vent_dP_kPa_at_5mm_s": 0.57,
+  "with_vent_force_on_cap_N_at_5mm_s": 0.12,
+  "with_vent_dP_kPa_at_20mm_s": 3.83,
+  "with_vent_force_on_cap_N_at_20mm_s": 0.79,
+  "face_seal_holds": "yes: a squeezed O-ring face seal holds far more than a few kPa; the risk without the vent is the cap popping, not a leak"
+ },
+ "d_geometry": {
+  "reference_tip_above_metal_mm": 3.0,
+  "cap_edge_to_neighbour_lid_edge_mm": 0.5,
+  "cap_edge_to_neighbour_pads_mm": 0.5,
+  "flange_overhang_above_neighbour_lid_top_mm": 12.0,
+  "mount_IR_housing_inner_faces_from_axis_mm": 17.0,
+  "cap_flange_radius_mm": 14.0,
+  "clearance_to_IR_housings_mm": 3.0,
+  "vial_cap_outer_d_mm": 28.0,
+  "IR_beam": "crosses the magnet axis just below the magnet face (PANDA-film Fig. 2B); the cap's 28 mm flange and 25 mm body are solid there, as a vial cap is",
+  "carried_below_carriage_mm": {
+   "pogo_pin_tips_free": 33.4,
+   "reference_tip": 35.0,
+   "coil_bottom": 35.725,
+   "carrier_legs_bottom_lowest": 35.8
+  },
+  "seated_lowest_parts_above_metal_mm": {
+   "carrier_legs": 2.2,
+   "coil": 2.275,
+   "throat_top": 1.6
+  },
+  "interference_mm3": {
+   "cap_vs_lid": 0.0,
+   "oring_cap_vs_lid": 0.0,
+   "carrier_vs_lid": 0.0,
+   "carrier_vs_cap": 0.0,
+   "reference_vs_lid": 0.0,
+   "coil_vs_lid": 0.0,
+   "coil_vs_carrier": 0.0,
+   "face_oring_vs_lid": 0.0,
+   "face_oring_vs_coupon": 0.0,
+   "lid_vs_coupon": 0.0,
+   "pins_drawn_free_vs_lid": 0.992
+  }
+ }
+}

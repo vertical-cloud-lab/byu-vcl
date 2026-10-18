@@ -44,21 +44,30 @@ CUPS = {"rinse 2 (ASW)": (30.0, 245.0), "rinse 1 (DI)": (60.0, 245.0), "park cup
 TIP_WASTE = {"c": (385.0, 150.0), "r": 15.0, "top": 50.0}  # the full holder now covers (335, 40)
 STATION_ROLE = {1: "specimen", 2: "specimen", 3: "specimen", 4: "PTFE blank (fixture and carry-over blanks)"}
 
-# The electrode cap for copper: the reference tip 3.0 mm above the metal (cap B in sim_well.py),
-# and an FKM gasket under the skirt so the cap seals the headspace. Its outside is unchanged,
-# so the hang below the capper is the aluminium plan's.
+# The electrode cap for copper is the CAD in cad/ (cad_cu_cell.py, cad_parts.json): reference tip 3.0 mm
+# above the metal (cap B in sim_well.py), a 0.12 mm clearance skirt over the lid's 16 mm boss, a 28 mm
+# flange like the vial caps. Carried, its lowest points (the carrier's coil legs) hang 35.8 mm below the
+# carriage: magnet face 16, cap 16, legs 3.8 below the skirt. They sit 2.2 mm above the metal when seated.
+CAP_HANG = 16.0 + 16.0 + 3.8
+CAP_RADIUS = 14.0
+CAP_LOWEST_ABOVE_SKIRT = -3.8
 
 
 def apply():
     base.STOCK_VIALS = dict(STOCKS)
     base.CUPS = dict(CUPS)
     base.TIP_WASTE = dict(TIP_WASTE)
-    # the copper cap's electrodes protrude 3.0 mm below the skirt, not 4.5, so it hangs 1.5 mm less
-    base.HANG["capper+cap"] = 16.0 + 16.0 + 3.0
+    # the copper cap's lowest point is 3.8 mm below the skirt, not the aluminium cap's 4.5
+    base.HANG["capper+cap"] = CAP_HANG
+    base.RADIUS["capper+cap"] = CAP_RADIUS
     al_obstacles, al_events = base.obstacles, base.events
 
     def obstacles():
-        obs = al_obstacles()
+        obs = []
+        for name, kind, geom, top in al_obstacles():
+            if name.startswith("electrode cap on S"):
+                geom = (geom[0], geom[1], CAP_RADIUS)
+            obs.append((name, kind, geom, top))
         obs.append(("vial holder", "rect", HOLDER_RECT, HOLDER_TOP))
         for name, (cx, cy) in SPARE.items():
             obs.append((f"vial {name}", "circle", (cx, cy, base.VIAL_R), base.VIAL_CAP_TOP))
@@ -71,7 +80,7 @@ def apply():
             if label.startswith(("pipette draws", "capper decaps")):
                 targets = set(targets) | {"vial holder"}
             if label.startswith("capper sets electrode cap on"):
-                z += 1.5  # electrode tips 3.0 mm above the metal (or 3.0 mm into a cup), not 1.5 / 4.5
+                z += 4.5 + CAP_LOWEST_ABOVE_SKIRT  # lowest point 3.8 mm below the skirt, not the aluminium cap's 4.5
             out.append((label, tool, xy, z, targets, other, cap_on))
         # acid from above the rim of each filled tube, with the night's one acid tip
         for tx in base.TUBE_X:

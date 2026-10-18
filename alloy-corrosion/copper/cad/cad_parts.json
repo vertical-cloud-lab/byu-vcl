@@ -1,0 +1,604 @@
+{
+ "units": "mm",
+ "frames": {
+  "W": "W: well frame, origin on the well axis at the coupon face; deck = W + (station_x, 240, 20)",
+  "C": "C: cap frame, origin at the centre of the skirt underside; seated on a lid, C = W + (0, 0, 6.0); carried, C = carriage + (0, 0, -(16 + 16))",
+  "D": "D: CubOS deck frame (Ben's 2026-10-02 calibration), use as is"
+ },
+ "section_versions": "*_section.stl: the 90 degree wedge facing -y removed (polar angles 225..315 deg about the part's own well axis), kept -45..225 deg; boolean cuts, so the cut faces are closed. tray_station_section is about S1's axis.",
+ "placement": {
+  "W_to_deck": "deck = W + (station_x, 240.0, 20.0); stations_x = [185.0, 210.0, 235.0, 260.0]",
+  "C_seated_to_deck": "deck = C + (station_x, 240.0, 26.0)",
+  "C_carried": "C origin = carriage reference - 32.0 (magnet face 16 below the carriage, cap top 16 above C origin)",
+  "lowest_point_carried_C": -3.8,
+  "reference_tip_C": -3.0,
+  "coil_bottom_C": -3.725,
+  "carrier_legs_bottom_C": -3.8
+ },
+ "heights": {
+  "coupon_face_W": 0.0,
+  "lid_top_W": 6.0,
+  "boss_top_W": 10.0,
+  "pads_top_W": 6.07,
+  "cap_ceiling_C": 4.3,
+  "cap_flange_C": 12.0,
+  "cap_rim_C": 15.37,
+  "recess_floor_C": 14.87,
+  "magnet_contact_plane_C": 16.0,
+  "cap_outer_d": 25.0,
+  "cap_flange_d": 28.0,
+  "tray_top_D": 19.5,
+  "pocket_floor_D": 14.0,
+  "lid_top_D": 26.0,
+  "cap_top_seated_D": 42.0
+ },
+ "face_oring_section_rz": [
+  [
+   2.001,
+   1.4
+  ],
+  [
+   1.8645,
+   1.3865
+  ],
+  [
+   1.7332,
+   1.3467
+  ],
+  [
+   1.6121,
+   1.282
+  ],
+  [
+   1.5061,
+   1.195
+  ],
+  [
+   1.419,
+   1.0889
+  ],
+  [
+   1.3543,
+   0.9679
+  ],
+  [
+   1.3145,
+   0.8366
+  ],
+  [
+   1.301,
+   0.7
+  ],
+  [
+   1.3145,
+   0.5634
+  ],
+  [
+   1.3543,
+   0.4321
+  ],
+  [
+   1.419,
+   0.3111
+  ],
+  [
+   1.5061,
+   0.205
+  ],
+  [
+   1.6121,
+   0.118
+  ],
+  [
+   1.7332,
+   0.0533
+  ],
+  [
+   1.8645,
+   0.0135
+  ],
+  [
+   2.001,
+   0.0
+  ],
+  [
+   2.679,
+   0.0
+  ],
+  [
+   2.8155,
+   0.0135
+  ],
+  [
+   2.9468,
+   0.0533
+  ],
+  [
+   3.0679,
+   0.118
+  ],
+  [
+   3.1739,
+   0.205
+  ],
+  [
+   3.261,
+   0.3111
+  ],
+  [
+   3.3257,
+   0.4321
+  ],
+  [
+   3.3655,
+   0.5634
+  ],
+  [
+   3.379,
+   0.7
+  ],
+  [
+   3.3655,
+   0.8366
+  ],
+  [
+   3.3257,
+   0.9679
+  ],
+  [
+   3.261,
+   1.0889
+  ],
+  [
+   3.1739,
+   1.195
+  ],
+  [
+   3.0679,
+   1.282
+  ],
+  [
+   2.9468,
+   1.3467
+  ],
+  [
+   2.8155,
+   1.3865
+  ],
+  [
+   2.679,
+   1.4
+  ]
+ ],
+ "face_oring_contact_on_metal_r": [
+  2.001,
+  2.679
+ ],
+ "face_oring_inner_bulge_r": 1.301,
+ "radial_oring_seated_section_rz": [
+  [
+   8.0,
+   1.806
+  ],
+  [
+   8.0149,
+   1.6548
+  ],
+  [
+   8.059,
+   1.5094
+  ],
+  [
+   8.1306,
+   1.3754
+  ],
+  [
+   8.227,
+   1.2579
+  ],
+  [
+   8.3444,
+   1.1616
+  ],
+  [
+   8.4784,
+   1.0899
+  ],
+  [
+   8.6238,
+   1.0458
+  ],
+  [
+   8.775,
+   1.031
+  ],
+  [
+   8.9262,
+   1.0458
+  ],
+  [
+   9.0716,
+   1.0899
+  ],
+  [
+   9.2056,
+   1.1616
+  ],
+  [
+   9.323,
+   1.2579
+  ],
+  [
+   9.4194,
+   1.3754
+  ],
+  [
+   9.491,
+   1.5094
+  ],
+  [
+   9.5351,
+   1.6548
+  ],
+  [
+   9.55,
+   1.806
+  ],
+  [
+   9.55,
+   2.194
+  ],
+  [
+   9.5351,
+   2.3452
+  ],
+  [
+   9.491,
+   2.4906
+  ],
+  [
+   9.4194,
+   2.6246
+  ],
+  [
+   9.323,
+   2.7421
+  ],
+  [
+   9.2056,
+   2.8384
+  ],
+  [
+   9.0716,
+   2.9101
+  ],
+  [
+   8.9262,
+   2.9542
+  ],
+  [
+   8.775,
+   2.969
+  ],
+  [
+   8.6238,
+   2.9542
+  ],
+  [
+   8.4784,
+   2.9101
+  ],
+  [
+   8.3444,
+   2.8384
+  ],
+  [
+   8.227,
+   2.7421
+  ],
+  [
+   8.1306,
+   2.6246
+  ],
+  [
+   8.059,
+   2.4906
+  ],
+  [
+   8.0149,
+   2.3452
+  ],
+  [
+   8.0,
+   2.194
+  ]
+ ],
+ "parameters": {
+  "face_oring_id": 2.9,
+  "face_oring_cs": 1.78,
+  "cbore_d": 7.3,
+  "cbore_h": 1.4,
+  "throat_d": 2.9,
+  "throat_top": 1.6,
+  "bore_d": 8.0,
+  "lid_top": 6.0,
+  "lid_x": 24.0,
+  "lid_y": 35.0,
+  "boss_d": 16.0,
+  "boss_h": 4.0,
+  "boss_chamfer": 0.8,
+  "clamp_y": 14.0,
+  "clamp_hole": 3.4,
+  "clamp_cbore_d": 6.5,
+  "clamp_cbore_h": 3.2,
+  "pad_r": [
+   10.0,
+   12.0
+  ],
+  "pad_half_angle": 30.0,
+  "foil_t": 0.07,
+  "tail_x": [
+   9.5,
+   11.5
+  ],
+  "eyelet_y": 15.0,
+  "eyelet_x": 10.0,
+  "eyelet_hole": 1.6,
+  "eyelet_flange_d": 2.8,
+  "eyelet_flange_t": 0.2,
+  "hold_r": 10.3,
+  "hold_angles": [
+   60.0,
+   240.0
+  ],
+  "hold_mag_d": 4.0,
+  "hold_mag_h": 2.0,
+  "hold_skin": 0.4,
+  "hold_steel_d": 3.0,
+  "hold_steel_h": 2.0,
+  "cap_d": 25.0,
+  "flange_d": 28.0,
+  "flange_z": 12.0,
+  "cap_top": 16.0,
+  "recess_d": 25.4,
+  "recess_h": 0.5,
+  "disc_t": 1.0,
+  "glue_t": 0.13,
+  "skirt_clear": 0.12,
+  "ceiling_z": 4.3,
+  "socket_d": 6.0,
+  "socket_h": 3.0,
+  "ref_d": 2.0,
+  "ref_tip_w": 3.0,
+  "ref_top_c": 13.6,
+  "coil_r": 2.625,
+  "coil_wire": 0.25,
+  "coil_z_w": [
+   2.4,
+   2.8,
+   3.2,
+   3.6,
+   4.0
+  ],
+  "leg_r": [
+   2.75,
+   3.25
+  ],
+  "leg_w": 0.8,
+  "leg_bottom_w": 2.2,
+  "leg_angles": [
+   30.0,
+   150.0,
+   270.0
+  ],
+  "pin_r": 11.0,
+  "pin_angles": [
+   0.0,
+   180.0
+  ],
+  "pin_barrel_d": 1.02,
+  "pin_plunger_d": 0.74,
+  "pin_protrude": 1.0,
+  "pin_top_c": 10.0,
+  "rad_oring_id": 15.6,
+  "rad_oring_cs": 1.78,
+  "gland_depth": 1.55,
+  "groove_w": 2.4,
+  "groove_z": [
+   0.9,
+   3.3
+  ],
+  "vent_d": 0.3,
+  "vent_r": 5.0,
+  "tray_rect": [
+   170.0,
+   220.0,
+   275.0,
+   260.0
+  ],
+  "tray_top": 19.5,
+  "face_z": 20.0,
+  "stations_x": [
+   185.0,
+   210.0,
+   235.0,
+   260.0
+  ],
+  "station_y": 240.0,
+  "pocket": 20.6,
+  "pocket_floor": 14.0,
+  "insert_d": 4.0,
+  "insert_h": 6.0,
+  "we_pin_hole": 1.4,
+  "bus_w": 4.0,
+  "bus_h": 3.0,
+  "bus_y": [
+   240.0,
+   255.0
+  ],
+  "exit_x": 222.5,
+  "coupon": [
+   20.0,
+   20.0,
+   6.0
+  ]
+ },
+ "parts": {
+  "well_lid": {
+   "frame": "W",
+   "what": "printed PETG; one per station; boss top at W z 10.0, lid top 6.0",
+   "step": "well_lid.step",
+   "stl": "well_lid.stl",
+   "section_stl": "well_lid_section.stl"
+  },
+  "lid_pads": {
+   "frame": "W",
+   "what": "copper-foil pads (3M 1181) at r 10-12, +/-30 deg about +x (CE) and -x (RE), tails to the eyelets",
+   "step": "lid_pads.step",
+   "stl": "lid_pads.stl",
+   "section_stl": "lid_pads_section.stl"
+  },
+  "lid_eyelets": {
+   "frame": "W",
+   "what": "brass eyelets, 1.6 mm, at (+/-10, 15)",
+   "step": "lid_eyelets.step",
+   "stl": "lid_eyelets.stl",
+   "section_stl": "lid_eyelets_section.stl"
+  },
+  "lid_hold_magnets": {
+   "frame": "W",
+   "what": "two 4 x 2 mm NdFeB discs under a 0.4 mm skin at r 10.3, 60 and 240 deg",
+   "step": "lid_hold_magnets.step",
+   "stl": "lid_hold_magnets.stl",
+   "section_stl": "lid_hold_magnets_section.stl"
+  },
+  "face_oring_006": {
+   "frame": "W",
+   "what": "AS568-006 FKM squeezed to 1.40 mm in the counterbore (assembly shape)",
+   "step": "face_oring_006.step",
+   "stl": "face_oring_006.stl",
+   "section_stl": "face_oring_006_section.stl"
+  },
+  "electrode_cap": {
+   "frame": "C",
+   "what": "recommended: 0.12 mm clearance skirt, no O-ring; disc top (magnet contact) at C z 16.0",
+   "step": "electrode_cap.step",
+   "stl": "electrode_cap.stl",
+   "section_stl": "electrode_cap_section.stl"
+  },
+  "electrode_cap_oring": {
+   "frame": "C",
+   "what": "alternative: AS568-016 radial seal in the skirt, 0.3 mm vent",
+   "step": "electrode_cap_oring.step",
+   "stl": "electrode_cap_oring.stl",
+   "section_stl": "electrode_cap_oring_section.stl"
+  },
+  "electrode_carrier": {
+   "frame": "C",
+   "what": "press-fits into the cap; reference guide and three coil legs",
+   "step": "electrode_carrier.step",
+   "stl": "electrode_carrier.stl",
+   "section_stl": "electrode_carrier_section.stl"
+  },
+  "steel_disc": {
+   "frame": "C",
+   "what": "25.3 x 1.0 mm low-carbon steel on 0.13 mm 3M 468MP",
+   "step": "steel_disc.step",
+   "stl": "steel_disc.stl",
+   "section_stl": "steel_disc_section.stl"
+  },
+  "ag_agcl_ref": {
+   "frame": "C",
+   "what": "2.0 mm leak-free Ag/AgCl, tip at C z -3.0 (W z 3.0), top at C z 13.6",
+   "step": "ag_agcl_ref.step",
+   "stl": "ag_agcl_ref.stl",
+   "section_stl": "ag_agcl_ref_section.stl"
+  },
+  "pt_coil": {
+   "frame": "C",
+   "what": "0.25 mm Pt, five rings at W z 2.4-4.0, r 2.625, lead to the carrier",
+   "step": "pt_coil.step",
+   "stl": "pt_coil.stl",
+   "section_stl": "pt_coil_section.stl"
+  },
+  "cap_pogo_pins": {
+   "frame": "C",
+   "what": "P75-B1 class, at (+/-11, 0); drawn free (1.0 mm out); seated they compress to the pad",
+   "step": "cap_pogo_pins.step",
+   "stl": "cap_pogo_pins.stl",
+   "section_stl": "cap_pogo_pins_section.stl"
+  },
+  "cap_hold_steel": {
+   "frame": "C",
+   "what": "3 x 2 mm steel slugs in the skirt underside at r 10.3 (recommended cap only)",
+   "step": "cap_hold_steel.step",
+   "stl": "cap_hold_steel.stl",
+   "section_stl": "cap_hold_steel_section.stl"
+  },
+  "radial_oring_016_seated": {
+   "frame": "C",
+   "what": "AS568-016 squeezed on the boss (O-ring cap, seated)",
+   "step": "radial_oring_016_seated.step",
+   "stl": "radial_oring_016_seated.stl",
+   "section_stl": "radial_oring_016_seated_section.stl"
+  },
+  "radial_oring_016_free": {
+   "frame": "C",
+   "what": "AS568-016 in its groove (O-ring cap, carried)",
+   "step": "radial_oring_016_free.step",
+   "stl": "radial_oring_016_free.stl",
+   "section_stl": "radial_oring_016_free_section.stl"
+  },
+  "coupon_20x20x6": {
+   "frame": "W",
+   "what": "a sectioned piece, face at W z 0",
+   "step": "coupon_20x20x6.step",
+   "stl": "coupon_20x20x6.stl",
+   "section_stl": "coupon_20x20x6_section.stl"
+  },
+  "ptfe_blank": {
+   "frame": "W",
+   "what": "S4 blank, 20 mm PTFE disc, 6 mm thick",
+   "step": "ptfe_blank.step",
+   "stl": "ptfe_blank.stl",
+   "section_stl": "ptfe_blank_section.stl"
+  },
+  "shim_1mm": {
+   "frame": "W (place at W z -6 for the pocket floor)",
+   "what": "1 mm shim under a thinner piece",
+   "step": "shim_1mm.step",
+   "stl": "shim_1mm.stl"
+  },
+  "shim_3mm": {
+   "frame": "W (place at W z -6 for the pocket floor)",
+   "what": "3 mm shim under a thinner piece",
+   "step": "shim_3mm.step",
+   "stl": "shim_3mm.stl"
+  },
+  "coupon_tray": {
+   "frame": "D",
+   "what": "printed PETG tray, 105 x 40 x 19.5 mm, four stations",
+   "step": "coupon_tray.step",
+   "stl": "coupon_tray.stl"
+  },
+  "tray_spring_pins": {
+   "frame": "D",
+   "what": "WE pins under each pocket and pad pins under each lid's eyelets",
+   "step": "tray_spring_pins.step",
+   "stl": "tray_spring_pins.stl"
+  },
+  "tray_station": {
+   "frame": "W",
+   "what": "the S1 block of the tray (x 170-197.5 in D), for the section view",
+   "step": "tray_station.step",
+   "stl": "tray_station.stl",
+   "section_stl": "tray_station_section.stl"
+  },
+  "coupon_tray_minus_s1": {
+   "frame": "D",
+   "what": "the tray without the S1 block; add tray_station(_section) at S1",
+   "step": "coupon_tray_minus_s1.step",
+   "stl": "coupon_tray_minus_s1.stl"
+  }
+ }
+}
