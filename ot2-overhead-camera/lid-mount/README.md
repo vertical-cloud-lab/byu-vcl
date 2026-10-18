@@ -305,8 +305,10 @@ y +54.7) and zoom to about 14 mm. Both slots then fit, at about 100 px across a 
 1. Home the robot (the gantry parks at the back right, out of view) and put a plate in
    the slot you picked.
 2. Put the mount on the lid above that slot, with the arrow on the base pointing at the door.
-3. Start [`camera/preview_server.py`](camera/preview_server.py) on the camera's Pi and slide
-   the mount until the plate is centred and square in the preview. Zoom first, then focus.
+3. Watch the camera, either on the public [YouTube stream](https://www.youtube.com/playlist?list=PLdKz1vXA-rfQ)
+   (since 2026-10-18, 5–20 s behind; see [`camera/stream/`](camera/stream/README.md)) or, with the
+   stream stopped, on [`camera/preview_server.py`](camera/preview_server.py) over the tailnet, and slide
+   the mount until the plate is centred and square in the picture. Zoom first, then focus.
    It is #84's [preview server](https://github.com/vertical-cloud-lab/byu-vcl/blob/e949ad0/ot2-overhead-camera/README.md#5-zoom-and-focus-live-preview)
    with the whole sensor in view; #84's own shows a 16:9 crop. Other ways to see the feed are
    in [`camera/README.md`](camera/README.md).

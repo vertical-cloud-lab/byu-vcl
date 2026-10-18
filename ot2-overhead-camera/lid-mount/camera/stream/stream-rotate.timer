@@ -1,0 +1,10 @@
+[Unit]
+Description=Rotate the YouTube broadcast every 8 h (05:00, 13:00, 21:00 local)
+
+[Timer]
+OnCalendar=*-*-* 05,13,21:00:00
+AccuracySec=1min
+Persistent=false
+
+[Install]
+WantedBy=timers.target
