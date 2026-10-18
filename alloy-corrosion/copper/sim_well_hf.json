@@ -1,0 +1,463 @@
+{
+ "constants": {
+  "C_O2_sat_mM": 0.21,
+  "D_cm2_s": {
+   "O2": 1.9e-05,
+   "Cu1": 8e-06,
+   "Cu2": 7e-06,
+   "TA": 1.1e-05,
+   "Al": 5e-06
+  },
+  "kappa_S_cm": 0.053,
+  "Cl_M": 0.546,
+  "gamma_1": 0.75,
+  "E0_CuCl2_Cu_V_SHE": 0.2317,
+  "logK_Cu2O_to_CuCl2": 8.132,
+  "E_Cu2O_Cu_pH8p2_V_SCE": -0.2541,
+  "CuCl2_sat_Cu2O_pH8p2_uM": 41.74,
+  "k_ox_CuI_air_per_s": 0.004556,
+  "CuI_half_life_air_s": 152.1,
+  "CuI_speciation": {
+   "frac_Cu+": 7.424e-06,
+   "frac_CuCl0": 0.001141,
+   "frac_CuCl2-": 0.3932,
+   "frac_CuCl3_2-": 0.6057
+  },
+  "TA0_mM": 2.864,
+  "buffer_capacity_mM_per_pH_at_8p2": 0.94,
+  "K0_cm_s": 0.01,
+  "alpha_c": 0.5,
+  "b_c_mV_dec": 118.3,
+  "b_Al_mV_dec": 60.0,
+  "C_dl_uF_cm2": 30.0,
+  "k_p_hom_per_s": 0.01,
+  "k_p_surf_cm_s": 0.0001,
+  "k_CuII_red_cm_s": 0.001,
+  "oring": {
+   "squeezed_height_mm": 1.4000000000000001,
+   "squeeze_pct": 21.3,
+   "flat_contact_inner_r_mm": 2.001,
+   "section_innermost_r_mm": 1.301,
+   "flat_width_mm": 0.6779
+  }
+ },
+ "geometry": {
+  "nominal_area_cm2": 0.06605,
+  "wetted_area_exact_cm2": 0.1258,
+  "wetted_over_nominal": 1.904
+ },
+ "convection": {
+  "L_cm": 0.44,
+  "Ra_critical_rigid_free_infinite_layer": 1101,
+  "thermal_bottom_heated_dT_0.1K": 156.6,
+  "thermal_bottom_heated_dT_1.0K": 1566.5,
+  "solutal_O2_V28": 313.0,
+  "solutal_O2_V32": -75.9,
+  "solutal_Cu_100uM_stabilising": -12872.7
+ },
+ "check_cottrell": {
+  "30s": 1.0134,
+  "120s": 1.0037,
+  "300s": 1.0015,
+  "600s": 1.0008
+ },
+ "calibration": {
+  "C70600": {
+   "name": "90/10 Cu-Ni",
+   "x_Cu": 0.877,
+   "k_O2_cm_s_at_-0.25V_SCE": 6.6207e-05,
+   "i_Al0_A_cm2": 0.0,
+   "gamma_star_mol_cm2": 4.6349e-09,
+   "gamma_star_nm_Cu2O": 0.553,
+   "target_Rp_ohm_cm2": 6000.0,
+   "model_Rp_at_t_cal_ohm_cm2": 5987,
+   "t_cal_h": 3.0,
+   "target_E_corr_V_SCE": null,
+   "model_E_corr_at_t_cal_V_SCE": -0.2202,
+   "model_i_corr_uA_cm2": {
+    "0.1h": 3.87,
+    "0.5h": 3.559,
+    "1h": 3.383,
+    "3h": 2.953,
+    "4.4h": 2.771
+   },
+   "target_tau_h": 4.4,
+   "model_decay_at_tau": 0.7138,
+   "target_decay_at_tau": 0.7138,
+   "literature_E_corr_V_SCE": "-0.220 to -0.233 (Mantzavinos 2001, ASW 20 C, via Edison c1-03)"
+  },
+  "C71500": {
+   "name": "70/30 Cu-Ni",
+   "x_Cu": 0.666,
+   "k_O2_cm_s_at_-0.25V_SCE": 5.0588e-05,
+   "i_Al0_A_cm2": 0.0,
+   "gamma_star_mol_cm2": 2.633e-09,
+   "gamma_star_nm_Cu2O": 0.314,
+   "target_Rp_ohm_cm2": 8300.0,
+   "model_Rp_at_t_cal_ohm_cm2": 8256,
+   "t_cal_h": 3.0,
+   "target_E_corr_V_SCE": null,
+   "model_E_corr_at_t_cal_V_SCE": -0.2172,
+   "model_i_corr_uA_cm2": {
+    "0.1h": 2.932,
+    "0.5h": 2.687,
+    "1h": 2.527,
+    "3h": 2.164,
+    "3.5h": 2.106
+   },
+   "target_tau_h": 3.5,
+   "model_decay_at_tau": 0.7155,
+   "target_decay_at_tau": 0.7155
+  },
+  "C95800": {
+   "name": "NAB",
+   "x_Cu": 0.713,
+   "k_O2_cm_s_at_-0.25V_SCE": 0.00010407,
+   "i_Al0_A_cm2": 8.5926e-06,
+   "gamma_star_mol_cm2": 4.6349e-09,
+   "gamma_star_nm_Cu2O": 0.553,
+   "target_Rp_ohm_cm2": 2079.0,
+   "model_Rp_at_t_cal_ohm_cm2": 2079,
+   "t_cal_h": 1.0,
+   "target_E_corr_V_SCE": -0.262,
+   "model_E_corr_at_t_cal_V_SCE": -0.262,
+   "model_i_corr_uA_cm2": {
+    "0.1h": 9.049,
+    "0.5h": 8.958,
+    "1h": 8.85,
+    "3h": 8.476,
+    "30.0h": 6.411
+   },
+   "target_tau_h": 30.0,
+   "model_decay_at_tau": 0.7082,
+   "target_decay_at_tau": 0.7081
+  }
+ },
+ "grid": {
+  "cells_liquid": 10222,
+  "metal_cells": 99,
+  "first_cell_um": 4.0,
+  "wetted_area_resolved_cm2": 0.11946,
+  "liquid_uL": 150.0,
+  "liquid_height_mm": 4.564
+ },
+ "wells": {
+  "C70600": {
+   "E_corr_30min_mV_SCE": -227.5,
+   "E_corr_30min_bulk_mV_SCE": -231.5,
+   "E_corr_shift_well_minus_bulk_mV": {
+    "1min": 5.9,
+    "5min": 9.0,
+    "15min": 6.7,
+    "30min": 4.0
+   },
+   "i_corr_30min_uA_cm2_wetted_area": 1.91,
+   "i_corr_30min_uA_cm2_nominal_area": 3.454,
+   "i_corr_30min_bulk_uA_cm2": 3.617,
+   "i_corr_ratio_well_over_bulk_30min": 0.528,
+   "Rp_well_nominal_area_ohm_cm2": 2767,
+   "Rp_well_wetted_area_ohm_cm2": 5005,
+   "Rp_bulk_ohm_cm2": 4111,
+   "Rp_ratio_nominal_over_bulk": 0.673,
+   "Rp_ratio_wetted_over_bulk": 1.218,
+   "hold_current_uA": [
+    0.5041,
+    7.2658
+   ],
+   "hold_mean_uA_cm2_wetted": 8.552,
+   "hold_mean_bulk_uA_cm2": 19.984,
+   "hold_ratio_well_over_bulk": 0.428,
+   "hold_charge_mC": 0.613,
+   "anodic_charge_mC": 1.4293,
+   "net_charge_mC": 0.6177,
+   "cu_dissolved_ng": 941.2,
+   "cu_in_liquid_ng": {
+    "CuI": 78.5,
+    "CuII": 93.7,
+    "Cu2O_suspended": 312.6
+   },
+   "cu_in_film_ng": 456.4,
+   "cu_to_tube_ng": 484.8,
+   "cu_in_150uL_ug_L": 3232.2,
+   "cu_in_320uL_tube_ug_L": 1515.1,
+   "fraction_of_dissolved_cu_reaching_tube": 0.515,
+   "cu_as_charge_mC_if_CuI": 0.7361,
+   "mass_balance_error_pct": -0.0,
+   "crevice_share_of_anodic_current": {
+    "OCP_30min": 0.34,
+    "LPR_end": 0.336,
+    "hold_end": 0.199
+   },
+   "crevice_share_of_cathodic_current": {
+    "OCP_30min": 0.331,
+    "LPR_end": 0.329,
+    "hold_end": 0.25
+   },
+   "O2_pct_sat_centre_30min": 52.2,
+   "O2_pct_sat_crevice_r1p7_30min": 36.2,
+   "pH_centre": {
+    "OCP_30min": 8.297,
+    "hold_end": 7.194,
+    "end": 7.533
+   },
+   "pH_crevice_r1p7": {
+    "OCP_30min": 8.283,
+    "hold_end": 7.007,
+    "end": 7.359
+   },
+   "dissolved_cu_at_metal_uM": {
+    "OCP_30min": 80.2,
+    "hold_end": 534.9
+   },
+   "dissolved_cu_in_crevice_uM": {
+    "OCP_30min": 80.6,
+    "hold_end": 697.0
+   },
+   "max_ohmic_nonuniformity_on_metal_uV": {
+    "OCP_30min": 0.17,
+    "LPR_end": 25.17,
+    "hold_end": 35.7
+   },
+   "counter_O2_used_nmol": 1.615,
+   "double_layer_charge_in_LPR_pct": 0.67
+  },
+  "C71500": {
+   "E_corr_30min_mV_SCE": -221.5,
+   "E_corr_30min_bulk_mV_SCE": -229.3,
+   "E_corr_shift_well_minus_bulk_mV": {
+    "1min": 6.5,
+    "5min": 11.0,
+    "15min": 9.9,
+    "30min": 7.9
+   },
+   "i_corr_30min_uA_cm2_wetted_area": 1.649,
+   "i_corr_30min_uA_cm2_nominal_area": 2.983,
+   "i_corr_30min_bulk_uA_cm2": 2.708,
+   "i_corr_ratio_well_over_bulk_30min": 0.609,
+   "Rp_well_nominal_area_ohm_cm2": 3223,
+   "Rp_well_wetted_area_ohm_cm2": 5828,
+   "Rp_bulk_ohm_cm2": 5397,
+   "Rp_ratio_nominal_over_bulk": 0.597,
+   "Rp_ratio_wetted_over_bulk": 1.08,
+   "hold_current_uA": [
+    0.4657,
+    5.5063
+   ],
+   "hold_mean_uA_cm2_wetted": 7.732,
+   "hold_mean_bulk_uA_cm2": 14.703,
+   "hold_ratio_well_over_bulk": 0.526,
+   "hold_charge_mC": 0.5542,
+   "anodic_charge_mC": 1.2632,
+   "net_charge_mC": 0.5579,
+   "cu_dissolved_ng": 831.9,
+   "cu_in_liquid_ng": {
+    "CuI": 66.8,
+    "CuII": 87.6,
+    "Cu2O_suspended": 268.6
+   },
+   "cu_in_film_ng": 408.8,
+   "cu_to_tube_ng": 423.0,
+   "cu_in_150uL_ug_L": 2820.0,
+   "cu_in_320uL_tube_ug_L": 1321.9,
+   "fraction_of_dissolved_cu_reaching_tube": 0.509,
+   "cu_as_charge_mC_if_CuI": 0.6423,
+   "mass_balance_error_pct": -0.0,
+   "crevice_share_of_anodic_current": {
+    "OCP_30min": 0.35,
+    "LPR_end": 0.347,
+    "hold_end": 0.226
+   },
+   "crevice_share_of_cathodic_current": {
+    "OCP_30min": 0.338,
+    "LPR_end": 0.335,
+    "hold_end": 0.258
+   },
+   "O2_pct_sat_centre_30min": 59.5,
+   "O2_pct_sat_crevice_r1p7_30min": 45.3,
+   "pH_centre": {
+    "OCP_30min": 8.291,
+    "hold_end": 7.306,
+    "end": 7.627
+   },
+   "pH_crevice_r1p7": {
+    "OCP_30min": 8.279,
+    "hold_end": 7.04,
+    "end": 7.411
+   },
+   "dissolved_cu_at_metal_uM": {
+    "OCP_30min": 75.5,
+    "hold_end": 443.8
+   },
+   "dissolved_cu_in_crevice_uM": {
+    "OCP_30min": 76.3,
+    "hold_end": 652.7
+   },
+   "max_ohmic_nonuniformity_on_metal_uV": {
+    "OCP_30min": 0.14,
+    "LPR_end": 21.79,
+    "hold_end": 34.54
+   },
+   "counter_O2_used_nmol": 1.458,
+   "double_layer_charge_in_LPR_pct": 0.79
+  },
+  "C95800": {
+   "E_corr_30min_mV_SCE": -290.9,
+   "E_corr_30min_bulk_mV_SCE": -262.7,
+   "E_corr_shift_well_minus_bulk_mV": {
+    "1min": -4.1,
+    "5min": -13.5,
+    "15min": -23.2,
+    "30min": -28.1
+   },
+   "i_corr_30min_uA_cm2_wetted_area": 2.797,
+   "i_corr_30min_uA_cm2_nominal_area": 5.059,
+   "i_corr_30min_bulk_uA_cm2": 8.957,
+   "i_corr_ratio_well_over_bulk_30min": 0.312,
+   "Rp_well_nominal_area_ohm_cm2": 3411,
+   "Rp_well_wetted_area_ohm_cm2": 6169,
+   "Rp_bulk_ohm_cm2": 1946,
+   "Rp_ratio_nominal_over_bulk": 1.753,
+   "Rp_ratio_wetted_over_bulk": 3.17,
+   "hold_current_uA": [
+    1.9062,
+    3.4349
+   ],
+   "hold_mean_uA_cm2_wetted": 16.647,
+   "hold_mean_bulk_uA_cm2": 54.518,
+   "hold_ratio_well_over_bulk": 0.305,
+   "hold_charge_mC": 1.1932,
+   "anodic_charge_mC": 2.3937,
+   "net_charge_mC": 1.1957,
+   "cu_dissolved_ng": 22.1,
+   "cu_in_liquid_ng": {
+    "CuI": 4.0,
+    "CuII": 9.3,
+    "Cu2O_suspended": 0.0
+   },
+   "cu_in_film_ng": 8.8,
+   "cu_to_tube_ng": 13.3,
+   "cu_in_150uL_ug_L": 88.6,
+   "cu_in_320uL_tube_ug_L": 41.5,
+   "fraction_of_dissolved_cu_reaching_tube": 0.6,
+   "cu_as_charge_mC_if_CuI": 0.0202,
+   "mass_balance_error_pct": -0.0,
+   "crevice_share_of_anodic_current": {
+    "OCP_30min": 0.445,
+    "LPR_end": 0.438,
+    "hold_end": 0.442
+   },
+   "crevice_share_of_cathodic_current": {
+    "OCP_30min": 0.248,
+    "LPR_end": 0.256,
+    "hold_end": 0.313
+   },
+   "O2_pct_sat_centre_30min": 23.7,
+   "O2_pct_sat_crevice_r1p7_30min": 8.6,
+   "pH_centre": {
+    "OCP_30min": 8.29,
+    "hold_end": 5.795,
+    "end": 6.164
+   },
+   "pH_crevice_r1p7": {
+    "OCP_30min": 7.919,
+    "hold_end": 2.791,
+    "end": 5.578
+   },
+   "dissolved_cu_at_metal_uM": {
+    "OCP_30min": 7.6,
+    "hold_end": 49.9
+   },
+   "dissolved_cu_in_crevice_uM": {
+    "OCP_30min": 7.2,
+    "hold_end": 48.4
+   },
+   "max_ohmic_nonuniformity_on_metal_uV": {
+    "OCP_30min": 10.28,
+    "LPR_end": 32.58,
+    "hold_end": 216.19
+   },
+   "counter_O2_used_nmol": 3.11,
+   "double_layer_charge_in_LPR_pct": 0.9,
+   "al_released_ng": 220.0,
+   "al_in_320uL_tube_ug_L": 687.4
+  }
+ },
+ "cathodic_hold_C71500": {
+  "cu_in_liquid_before_ng": 404.8,
+  "cu_in_liquid_after_10min_ng": 329.9,
+  "replated_pct": 18.5,
+  "cathodic_current_density_end_uA_cm2_wetted": -4.05,
+  "pH_centre_end": 8.562
+ },
+ "sensitivity_C71500": {
+  "CuI_oxidation_10x_slower": {
+   "E_corr_30min_mV_SCE": -224.7,
+   "Rp_well_nominal_area_ohm_cm2": 3377,
+   "hold_mean_uA_cm2_wetted": 7.332,
+   "cu_to_tube_ng": 368.7,
+   "fraction_of_dissolved_cu_reaching_tube": 0.526,
+   "O2_pct_sat_centre_30min": 65.4
+  },
+  "film_share_beta_0.1": {
+   "k_O2": 5.6816e-05,
+   "gamma_star": 7.4936e-10,
+   "E_corr_30min_mV_SCE": -213.6,
+   "E_corr_30min_bulk_mV_SCE": -221.6,
+   "Rp_well_nominal_area_ohm_cm2": 3940,
+   "Rp_bulk_ohm_cm2": 5780,
+   "hold_mean_uA_cm2_wetted": 7.413,
+   "cu_to_tube_ng": 511.5,
+   "cu_in_film_ng": 308.3,
+   "fraction_of_dissolved_cu_reaching_tube": 0.624
+  },
+  "film_share_beta_0.6": {
+   "k_O2": 4.0647e-05,
+   "gamma_star": 7.7775e-09,
+   "E_corr_30min_mV_SCE": -230.2,
+   "E_corr_30min_bulk_mV_SCE": -241.4,
+   "Rp_well_nominal_area_ohm_cm2": 2610,
+   "Rp_bulk_ohm_cm2": 5680,
+   "hold_mean_uA_cm2_wetted": 7.295,
+   "cu_to_tube_ng": 254.0,
+   "cu_in_film_ng": 530.6,
+   "fraction_of_dissolved_cu_reaching_tube": 0.324
+  }
+ },
+ "check_grid_C71500": {
+  "h": {
+   "E_corr_30min_mV_SCE": -221.5,
+   "Rp_well_nominal_area_ohm_cm2": 3223,
+   "hold_mean_uA_cm2_wetted": 7.732,
+   "cu_dissolved_ng": 831.9,
+   "cu_to_tube_ng": 423.0,
+   "cu_in_film_ng": 408.8,
+   "O2_pct_sat_centre_30min": 59.5
+  },
+  "h_over_2": {
+   "E_corr_30min_mV_SCE": -221.5,
+   "Rp_well_nominal_area_ohm_cm2": 3205,
+   "hold_mean_uA_cm2_wetted": 7.638,
+   "cu_dissolved_ng": 835.9,
+   "cu_to_tube_ng": 423.8,
+   "cu_in_film_ng": 412.1,
+   "O2_pct_sat_centre_30min": 59.4
+  },
+  "wetted_area_cm2": {
+   "h": 0.11946,
+   "h_over_2": 0.1213
+  },
+  "crevice_share_OCP": {
+   "h": 0.35,
+   "h_over_2": 0.355
+  }
+ },
+ "old_sim_well_capB": {
+  "E_ocp_end_mV_vs_bulk": -9.0,
+  "Rp_ratio_well_over_bulk": 1.37,
+  "anodic_hold_well_over_bulk": 0.686,
+  "cu_dissolved_ng": 1038.9,
+  "O2_at_spot_centre_end_of_OCP_pct_sat": 54.4,
+  "replated_pct": 51.3
+ },
+ "runtime_s": 870
+}

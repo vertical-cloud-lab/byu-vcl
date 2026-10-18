@@ -843,7 +843,8 @@ def build_story(t0):
 
 
 def run_state(s, t):
-    st = {"t": t}
+    st = {"t": t, "tip_on": False, "tip_liq": False, "tips_taken": set(), "open_vial": None, "capped": False,
+          "ecap": (deck_cu.CUPS["park cup"][0], deck_cu.CUPS["park cup"][1], 45.0)}
     for te, kw in s.events:
         if te <= t + 1e-9:
             for k, v in kw.items():
@@ -1046,7 +1047,7 @@ PREP_CARDS = [
     ("1  Stock material", "the alloys",
      ["Wrought C71500 (70/30 Cu–Ni) and C70600 (90/10) bar, and cast C95800 NAB: the references the well is calibrated on",
       "DED pads and repairs from one pre-alloyed powder feed, by blown-powder laser DED",
-      "Build wide pads: a well that sits in one zone needs at least 4 mm of sound deposit",
+      "Build wide pads: a well that sits in one zone needs at least 5 mm of sound deposit",
       "Log each piece: build plane (XY or XZ), build height, track centre or overlap",
       "Keep a sample of each powder lot for oxygen by inert-gas fusion"],
      "protocol.md §1, §7; c1-04, c1-05, c1-10", "ded"),
@@ -1317,8 +1318,8 @@ class Renderer:
         self.v = Video()
         self.scene = Scene()
         self.inset, self.xpix = make_trace_inset(self.scene)
-        self.cb_o2 = make_colorbar(self.scene.cmap_o2, 0, 1, "O₂, fraction of air saturation (left face)")
-        self.cb_cu = make_colorbar(self.scene.cmap_cu, *self.scene.cu_clim, "dissolved Cu, µM (right face)")
+        self.cb_o2 = make_colorbar(self.scene.cmap_o2, 0, 1, "O₂, fraction of air saturation (right face)")
+        self.cb_cu = make_colorbar(self.scene.cmap_cu, *self.scene.cu_clim, "dissolved Cu, µM (left face)")
         self._front_frame = None
 
     def render3d(self, st, cam):
@@ -1401,14 +1402,15 @@ class Renderer:
             im.paste(sc.inset, (x0, y0))
             xp, ytop, ybot = sc.xpix(sim_t)
             d.line([x0 + xp, y0 + ytop, x0 + xp, y0 + ybot], fill=ORANGE + (255,), width=2)
-            im.paste(sc.cb_o2, (16, H - 80 - sc.cb_o2.size[1] - 12))
-            im.paste(sc.cb_cu, (16 + sc.cb_o2.size[0] + 10, H - 80 - sc.cb_cu.size[1] - 12))
+            im.paste(sc.cb_cu, (16, H - 80 - sc.cb_cu.size[1] - 12))
+            im.paste(sc.cb_o2, (16 + sc.cb_cu.size[0] + 10, H - 80 - sc.cb_o2.size[1] - 12))
             mins = sim_t / 60
             d.rectangle([14, 92, 420, 152], fill=(252, 252, 251, 215))
             d.text((24, 98), f"t = {mins:4.1f} min   {phase_of(mins)}", font=font(22, True), fill=INK)
             d.text((24, 128), "AS568-006 spot, 150 µL seawater, reference tip 3 mm up", font=font(12), fill=INK2)
             for text, xyz in (("2 mm Ag/AgCl capillary", (S1[0], S1[1], FACE_Z + 8)), ("Pt coil", (S1[0] - 2.6, S1[1] - 0.2, FACE_Z + 3.2)),
-                              ("FKM O-ring", (S1[0] + 2.3, S1[1] - 0.5, FACE_Z + 0.9)), ("2.90 mm spot (C71500)", (S1[0] + 0.4, S1[1] - 1.3, FACE_Z + 0.15))):
+                              ("FKM O-ring, squeezed 21 %", (S1[0] + 2.3, S1[1] - 0.5, FACE_Z + 0.9)),
+                              ("C71500, wetted to Ø4.0 mm (ID 2.90)", (S1[0] + 0.4, S1[1] - 1.3, FACE_Z + 0.15))):
                 x, y = sc.scene.project(xyz)
                 if 0 < x < W and 0 < y < H:
                     d.text((x + 6, y - 8), text, font=font(13), fill=INK, stroke_width=3, stroke_fill=(252, 252, 251))
@@ -1445,7 +1447,7 @@ def main():
     args = ap.parse_args()
     v = Video()
     n = int(math.ceil(v.total * FPS))
-    gif_ranges = [(v.place.t0, v.place.t1), (v.t_run[0], v.t_run[1])]
+    gif_ranges = [(v.t_run[0], v.t_run[1])]
     gif_dir = Path(tempfile.gettempdir()) / "cubxl_gif"
     if args.assemble:
         import subprocess

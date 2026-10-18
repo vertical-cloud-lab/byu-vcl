@@ -18,7 +18,7 @@ Positions are in the CubOS deck frame of Ben's 2026-10-02 calibration, as in
 | Headline result | E_pit and E_rp from cyclic polarization | OCP, R_p, the charge of a potential hold, and ICP-MS of the used liquid. Cyclic polarization only on spare spots ([c1-02], [c1-04], [c1-09]) |
 | Main chemistry metric | ICP of the tubes in the 2027 batch | ICP-MS of every spot, acidified in the tube at once ([c1-03]) |
 | Electrolyte axis | chloride, 0.006–0.6 M NaCl | sulfide dose against exposure history, in fixed substitute ocean water ([c1-06]) |
-| Cell | open well, cap resting on the lid | the cap seals the well, with a pinhole vent ([c1-01]) |
+| Cell | open well, cap resting on the lid | the cap nearly seals the well: a 0.12 mm clearance skirt over the lid's boss, 1.6 µL of water lost an hour ([c1-01], [`cad/`](cad/README.md)) |
 | Each piece's second well | a repeat | an OCP-only companion, for the free-corrosion release and an undisturbed film ([c1-06]) |
 | First experiment | 8 spots on one reference coupon | the well against a bulk cell, on C71500 and C95800, at three O-ring sizes ([c1-01]) |
 
@@ -60,17 +60,21 @@ changes.
 | Part | What | Why |
 | --- | --- | --- |
 | Tray | Stations S1–S3 at x 185 / 210 / 235, y 240 hold the pieces; S4 at x 260 holds a PTFE blank disk with the same lid. Coupon face at z 20, lid top at z 26 | S4 is the fixture and carry-over blank (§6) |
-| Well | FKM O-ring AS568-006, ID 2.90 mm, cross-section 1.78 mm: **0.0661 cm²**. An 8 mm bore above it holds 150 µL | The O-ring's inner edge sets the area. Measure the real area from the attack ring after the test |
+| Well | FKM O-ring AS568-006, ID 2.90 mm, cross-section 1.78 mm, squeezed 21 % in a 7.30 × 1.40 mm counterbore: **0.0661 cm² nominal, 0.101–0.126 cm² wetted**. An 8 mm bore above it holds 150 µL | The squeezed ring touches the metal only from r ≈ 1.8–2.0 mm, so the liquid wets 1.5–1.9 times the ID's area, including a thin crevice under the ring ([`cad/README.md`](cad/README.md)). Measure the real area from the attack ring after every test, and report current densities on that area. In [`sim_well_hf.py`](sim_well_hf.md) the crevice carries about 35 % of the anodic current at open circuit on Cu–Ni and 45 % on NAB |
 | Calibration wells only | AS568-008 (ID 4.47 mm, 0.157 cm², 10 mm bore) and -010 (ID 6.07 mm, 0.289 cm², 12 mm bore), each in its own lid, same FKM compound as the -006 | Three sizes against a bulk cell (§5) |
-| Cap seal | An FKM AS568-016 O-ring (ID 15.60 mm, cross-section 1.78 mm) in the cap's skirt seals radially on a Ø16 mm boss around each well. A 0.3 mm pinhole vent goes through the cap top | This is the humidified lid c1-01 asks for. The roughly 80 µL headspace saturates, and the vent loses about 0.025 µL of water an hour. The headspace holds 18 times the well's dissolved O₂, so the seal does not starve the well. The vent stops the cap pumping liquid as it goes on and comes off |
+| Cap seal | No O-ring. The cap's skirt slides over a Ø16 mm boss around each well with 0.12 mm radial clearance; two 4 × 2 mm magnets in the lid pull on two steel slugs in the skirt and hold it down at an estimated 1.6–2.3 N ([`cad/`](cad/README.md)) | This is the humidified lid c1-01 asks for: the headspace sits near 89 % RH, and water escapes through the gap at 1.6 µL/h, 1.1 % of the well in a 63 min spot (6.1 µL/h with no cap). The surface stays in contact with room air, so it stays air-saturated. A radial AS568-016 seal was the first design. Its pull-off force (2.3–85 N with tolerances and friction) is too close to what the electromagnet can pull on a 1 mm disc (about 23 N), so it is kept only as a fallback (`electrode_cap_oring`, which needs its 0.3 mm vent) |
 | Reference | Leak-free Ag/AgCl, ≤ 2 mm, through the cap. Tip **3.0 mm above the metal, in the bore**, not 1.5 mm down in the O-ring's throat as in the aluminum cap | In [`sim_well.py`](sim_well.py) (cap B) the raised tip gives 22 % more O₂ at the spot after 30 min than the 1.5 mm tip, with the current density uniform within 1.4 %. Its uncompensated resistance is 60 Ω in seawater: 4 mV of iR at a 1 mA/cm² reversal, about 0.1 mV in LPR, and under 0.3 mV in the anodic hold. Check it against the master reference each night (*choose* a limit, e.g. ±5 mV) and log the offset |
 | Counter | Pt coil around the reference, as for aluminum | During an anodic step the Pt is the cathode, and it can plate out dissolved copper and carry it to the next well ([c1-01]). The carry-over blank (§6) measures this |
 
 Notes:
 
-- **The gantry presses the cap on and the magnet pulls it off**, as with vial caps. The radial
-  seal's friction must stay well below the magnet's rated 50 N. Check it on the bench before the
-  cap goes on the deck (step 2 of [`cubxl-setup.md` §9][setup-first]).
+- **The gantry sets the cap down and the magnet lifts it off** against about 2.4 N (the hold-down
+  magnets and two pogo pins of at most 0.4 N each): a margin of 9 at contact. The price is approach
+  height: jog the decap height to the disc top within about ±0.15 mm, not PANDA-film's ±3 mm. The two
+  hold-down magnets also clock the cap, but 180° is stable too and swaps the reference and counter
+  pads, so set the index mark by hand at the park cup; the OCP window at step 3 catches a reversed
+  cap. Measure the lift force, the magnet's pull on the real disc, and the water loss on the bench
+  before the cap goes on the deck ([`cad/README.md`](cad/README.md), "Still needs a bench test").
 - **Expect a ring of attack just inside the O-ring.** Copper alloys show reverse crevice corrosion:
   attack collects on the open surface at the crevice mouth, not inside it ([c1-01]). Photograph
   each spot before and after. A ring at the O-ring edge is not pitting, and not a feature of the
@@ -174,11 +178,13 @@ Notes:
   assumed Stern–Geary B is unreliable for these alloys ([c1-03], [`queries.py`][queries]). LPR
   currents span 13 nA (50 kΩ·cm²) to 1.7 µA (400 Ω·cm²) on a -006 well (`lpr`).
 - **Set the hold potential against the reference, not against the well's own OCP**, once the
-  bulk cell (§5) has given each reference alloy's E_corr. The well's slower oxygen supply pulls
-  its OCP down, by 9 mV after 30 min at 5 µA/cm² in [`sim_well.py`](sim_well.py), so "OCP + 50 mV"
-  in the well is a smaller anodic push than in the bulk cell: the simulated hold current is 0.69
-  of the bulk cell's. At a fixed potential the anodic current depends on the metal, not on the
-  oxygen. Until the bulk-cell E_corr exists, OCP + 50 mV is the placeholder.
+  bulk cell (§5) has given each reference alloy's E_corr. The well's own OCP is biased. In
+  [`sim_well_hf.py`](sim_well_hf.md) it reads +4.0 and +7.9 mV from the bulk cell's on C70600 and
+  C71500 (the copper that piles up near the metal outweighs the slower oxygen supply) and −28.1 mV on
+  NAB, where the oxygen supply wins. The simulated "OCP + 50 mV" hold passes 0.30–0.53 of the
+  bulk cell's current. At a fixed potential the current no longer depends on the oxygen supply,
+  though in the still well it still depends on how fast dissolved copper diffuses away. Until the
+  bulk-cell E_corr exists, OCP + 50 mV is the placeholder.
 - **The anodic hold stands in for a galvanic couple** until the ZRA test (§7) measures a real
   couple potential, which then replaces the +50 mV. At the fresh-surface corrosion currents in
   the answers, 1–11 µA/cm², the 10 min hold passes 0.2–2.8 mC. That puts 1–12 mg/L of Cu into the
@@ -191,12 +197,15 @@ Notes:
   deck cannot do ([c1-06]).
 
 **The companion well** (the second well on each piece): the same fill and 63 min of contact, OCP
-only, collected and acidified the same way. It gives the free-corrosion release by ICP-MS, and an
+only, collected and acidified the same way. It matters more than it looked: in
+[`sim_well_hf.py`](sim_well_hf.md) the +50 mV hold acidifies the spot to pH 7.2–7.3 on Cu–Ni and 5.8 on NAB
+(from Cu₂O formation and Al hydrolysis), against 8.3 at open circuit, so the OCP after the hold reads
+a disturbed surface. It gives the free-corrosion release by ICP-MS, and an
 unpolarized film for SEM or XPS ([c1-06]). The difference between the two tubes is what the
 polarization did.
 
 **Cathodic holds go on separate spots**, collected the same way, because a cathodic step replates
-dissolved Cu(I) onto the spot (in [`sim_well.py`](sim_well.py), a −300 mV hold for 10 min after the anodic hold put 51 % of the dissolved Cu back on the spot). The cathodic-protection series holds NAB at
+dissolved Cu(I) onto the spot: a −300 mV hold for 10 min after the anodic hold puts 18.5 % of the dissolved Cu back on C71500 in [`sim_well_hf.py`](sim_well_hf.md), and 51 % in the first-order [`sim_well.py`](sim_well.py), which kept all of it as Cu(I) at the metal. The cathodic-protection series holds NAB at
 several potentials (*choose* a bracket around a measured in-service propeller potential; [c1-02])
 for a fixed time, then measures Al, Cu, Ni, Fe and Mn in each tube. The potential at which Al
 release stops is the one that stops NAB's selective-phase attack. Edison found no published value
@@ -228,7 +237,7 @@ calibration is the first experiment and a result in its own right.
   release rates give 22–44 µg/L of Cu in 200 mL, measurable without dilution (`bulk_cell`).
 - **What it decides:** whether the well's bias is small next to the spot-to-spot SD. If E_corr or
   R_p trend with O-ring size, the trend is the artifact and the bulk cell is the anchor.
-  [`sim_well.py`](sim_well.py) gives the size to expect if oxygen supply is the only difference. After 30 min the well's i_corr is 0.93, 0.87, 0.71, 0.51 and 0.31 of the bulk cell's for bulk i_corr of 1, 2, 5, 10 and 20 µA/cm², E_corr reads 2 to 31 mV more negative, and R_p reads 1.37 times higher at 5 µA/cm². **The O-ring sizes will not show this:** at 5 µA/cm² the -006, -008 and -010 wells give 0.71, 0.70 and 0.69, because the 4 mm column of liquid sets the oxygen supply, not the spot. A flat size trend does not clear the well. Only the bulk cell can.
+  [`sim_well_hf.py`](sim_well_hf.md) gives the size to expect with copper's own chemistry. After 30 min the well's i_corr is 0.53, 0.61 and 0.31 of the bulk cell's for C70600, C71500 and C95800, E_corr reads +4.0, +7.9 and −28.1 mV from the bulk cell's, and R_p on the wetted area reads 1.22, 1.08 and 3.17 times the bulk cell's (0.67, 0.60 and 1.75 on the nominal area). The area matters more than the chemistry: report R_p on the wetted area, measured from the attack ring. The first-order [`sim_well.py`](sim_well.py), with oxygen supply as the only difference, had the well's i_corr at 0.93 down to 0.31 of the bulk cell's for bulk i_corr of 1 to 20 µA/cm². **In that model the O-ring sizes will not show the bias:** at 5 µA/cm² the -006, -008 and -010 wells give 0.71, 0.70 and 0.69, because the 4 mm column of liquid sets the oxygen supply, not the spot. A flat size trend does not clear the well. Only the bulk cell can.
 - **The finish and delay arms** of §1 run on the same reference coupons, after the size series:
   a SiC-only arm and a diamond-only arm against the baseline, and timed air-ageing ([c1-05]).
 - **Cost in deck time:** about 4 nights per alloy for 8 spots at each of the three sizes, plus 8
@@ -261,6 +270,10 @@ calibration is the first experiment and a result in its own right.
 
   The fresh-surface rate is 1.8–3.5 µA/cm² of Cu(I). A one-hour test on a freshly polished spot
   measures the initial release, about 100 times the mature film's ([c1-03]).
+- **Expect about half the copper in the tube.** In [`sim_well_hf.py`](sim_well_hf.md), 0.51–0.52 of the copper
+  oxidised on Cu–Ni reaches the tube as Cu(I), Cu(II) or suspended Cu₂O; the rest stays on the metal
+  as Cu₂O film. That split rests on an assumed film share (0.32–0.62 of it reaches the tube for 60 %
+  and 10 %), so the measured split is a result, not a check.
 - **Report the dissolution current from ICP-MS next to the charge passed**:
   i_M = n F m_M / (M_M A t). Here m_M is the mass of element M found, M_M its molar mass, n its charge, A
   the area and t the contact time. Edison found no published charge-to-dissolved-metal balance for
@@ -278,8 +291,10 @@ calibration is the first experiment and a result in its own right.
   zone (HAZ) and substrate ([c1-04]).
 - **Each well sits wholly inside one zone**, with clearance equal to the well's wetted radius plus
   the placement tolerance ([c1-04]). With a ±0.5 mm placement tolerance (*choose* once measured),
-  a zone must be 3.9 mm wide at a -006 well, 5.5 mm at -008 and 7.1 mm at -010 (`wells`). So a
-  repair coupon needs at least 4 mm of sound deposit in the section: wide pads.
+  a zone must be 3.9 mm wide at a -006 well, 5.5 mm at -008 and 7.1 mm at -010 if the O-ring's ID
+  sets the wetted edge (`wells`). The squeezed ring wets out to r ≈ 2.0 mm on a -006
+  ([`cad/README.md`](cad/README.md)), which makes it 5.0 mm. So a repair coupon needs at least 5 mm
+  of sound deposit in the section: wide pads.
 - **A NAB HAZ under 1 mm wide** (Ding 2016, via [c1-05]) cannot be isolated by a 2.9 mm well.
   That needs a smaller capillary cell, validated separately ([c1-05]).
 - **A well that crosses the fusion line** is labelled "coupled mixed-area" and is never reported as
