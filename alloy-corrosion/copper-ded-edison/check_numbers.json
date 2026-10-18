@@ -1,0 +1,83 @@
+{
+  "Cu2O_mC_per_cm2_per_nm": {
+    "computed": 0.809,
+    "edison_c1_10": 0.81,
+    "agrees": true
+  },
+  "CuO_mC_per_cm2_per_nm": {
+    "computed": 1.531,
+    "edison_c1_10": 2.1,
+    "agrees": false
+  },
+  "Cu2O_1nm_uC_per_well": [
+    56.6,
+    105.2
+  ],
+  "Cu2O_1nm_seconds_at_25uA_cm2": 32.4,
+  "O2_inventory_nmol": 37.5,
+  "O2_inventory_mC_4e": 14.47,
+  "O2_inventory_minutes": {
+    "1uA_cm2_on_0.07cm2": 3446,
+    "1uA_cm2_on_0.13cm2": 1855,
+    "5uA_cm2_on_0.07cm2": 689,
+    "5uA_cm2_on_0.13cm2": 371,
+    "11uA_cm2_on_0.07cm2": 313,
+    "11uA_cm2_on_0.13cm2": 169
+  },
+  "c1_01_total_currents_as_uA_cm2": {
+    "5uA": [
+      71,
+      38
+    ],
+    "10uA": [
+      143,
+      77
+    ]
+  },
+  "O2_limiting_uA_cm2_still_liquid": {
+    "1min": 31.4,
+    "5min": 14.1,
+    "30min": 5.7,
+    "60min": 4.1
+  },
+  "O2_limiting_uA_cm2_bulk_delta_0p2_to_0p5mm": [
+    96,
+    39
+  ],
+  "O2_inventory_seconds_at_reversal_current": {
+    "1mA_cm2_on_0.07cm2": 207,
+    "1mA_cm2_on_0.13cm2": 111,
+    "10mA_cm2_on_0.07cm2": 21,
+    "10mA_cm2_on_0.13cm2": 11
+  },
+  "counter_mM_per_mC_in_150uL": 0.0691,
+  "chloride_rise_pct_for_loss_uL": {
+    "15": 11,
+    "30": 25,
+    "50": 50
+  },
+  "sulfide_half_life_h_from_10_to_1p2_mg_L_in_24h": 7.8,
+  "spot_current_uA_at_reversal": {
+    "1mA_cm2": [
+      70,
+      130
+    ],
+    "3mA_cm2": [
+      210,
+      390
+    ],
+    "10mA_cm2": [
+      700,
+      1300
+    ]
+  },
+  "spot_current_uA_at_38uA_cm2": [
+    2.7,
+    4.9
+  ],
+  "nozzle_1mm_L_per_min": {
+    "2.7": 0.127,
+    "6.4": 0.302,
+    "8.3": 0.391
+  }
+}
