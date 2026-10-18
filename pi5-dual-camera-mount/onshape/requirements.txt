@@ -1,0 +1,2 @@
+requests
+cadquery>=2.4   # features.py replays the feature list and imports ../cad/mount.py
