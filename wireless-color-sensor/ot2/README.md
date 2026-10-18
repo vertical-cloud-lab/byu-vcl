@@ -1659,6 +1659,22 @@ paper, 15:26–17:23 MDT, with the paint pipetted in between. Write-up:
 
 ![the two methods against the published ranges](background-subtraction-2026-10-14.png)
 
+## 2026-10-18 — which opaque plate to buy: Corning 3915, solid black (no motion)
+
+Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202) by @sgbaird: specific
+products for the 10-14 fix (an opaque-walled plate), looked up from the Pi. Write-up:
+[`plates-to-buy-2026-10-18.md`](plates-to-buy-2026-10-18.md).
+
+- **Corning 3915:** solid black, flat bottom, not treated, nonsterile, no lid, 360 µL. It's in the
+  stock `corning_96_wellplate_360ul_flat` definition, and Corning's drawing gives it the same
+  dimensions as the clear plate, so positions and z 92 carry over.
+- **Single plates for a first test:** $8.45 each, Antibodies Inc. (ICT SKU 266). **Case of 100:**
+  $476.00 at Government Scientific Source (in stock); $435–469 elsewhere, but on order, lead time
+  unknown, or (Corning direct) an estimated ship date of 2027-01-31.
+- Not recommended: 3912 white (more cross-talk), 3631 black/clear bottom (only with a light panel under
+  the plate), generic plates (unknown height). Amazon, Fisher and Sigma refused the Pi, so their prices
+  weren't read.
+
 ## Calibrating with the Opentrons UI instead of hand-tuned offsets
 
 Suggested on [#197](https://github.com/vertical-cloud-lab/byu-vcl/issues/197) by
