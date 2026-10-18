@@ -8,9 +8,9 @@ powder-based", cross-referencing
 
 **Status: run, 2026-10-18.** All ten tasks succeeded: submitted 01:19–01:20 UTC, finished
 between 01:39 and 01:53. An earlier attempt the same night (00:48–00:51 UTC) got `403 Forbidden`
-from Edison's login. When this was re-run, the same secret passed Edison's credential check, so
-the earlier failure was on Edison's side or has since been fixed. The [synthesis](#what-came-back)
-is below. Each answer is in [`batch1/`](batch1/) and each full trajectory in [`raw/`](raw/).
+from Edison's login. On the re-run, `EDISON_PLATFORM_API_KEY` passed Edison's credential check.
+Nothing here records whether the secret was replaced in between or the fault was Edison's. The
+[synthesis](#what-came-back) is below. Each answer is in [`batch1/`](batch1/) and each full trajectory in [`raw/`](raw/).
 
 | File | What it is |
 | --- | --- |
@@ -58,41 +58,44 @@ than quoted, it comes from [`check_numbers.py`](check_numbers.py).
 
 ### The short version
 
-1. **Nobody has done this yet, but the open space is narrow** (c1-08). No publication combines
-   robotic or gantry corrosion testing of additively made or weld-repaired copper alloys with
+1. **Nobody seems to have done this yet, but the open space is narrow** (c1-08). Edison found no
+   publication that combines robotic or gantry corrosion testing of additively made or weld-repaired copper alloys with
    element-resolved analysis of the used liquid. Each half has been done separately. A defensible
    claim is *automated, zone-resolved, chemistry-linked tests of single-feed copper-alloy DED
    deposits and repairs*. Automation, O-ring cells and copper-alloy jets are not new.
 2. **Cyclic polarization should not be the headline result for copper alloys** (c1-02, c1-04,
-   c1-09). Cu–Ni and NAB corrode actively under a film, and most of the curves that have been
-   published show no clear pitting range. Lead with OCP, the measured LPR slope, and holds at
+   c1-09). Cu–Ni and NAB corrode actively under a film rather than pitting from a passive state.
+   In the closest additive study (wire-arc NAB, Shahriari 2023), most samples showed no clear
+   pitting range. Lead with OCP, the measured LPR slope, and holds at
    measured service potentials. Run cyclic polarization only on spare spots, labelled as a
    destructive test.
 3. **ICP of the used liquid becomes the main metric, if the sample is handled right** (c1-03).
    Acidify each sample as soon as it is collected, or Cu(I) plates back out or precipitates. Use
    ICP-MS, not ICP-OES. Copper alloys dissolve non-congruently: Ni, Fe and Al stay behind in the
    film. So the liquid alone undercounts them, and the spot needs EDS or XRF too.
-4. **The chloride series does not carry over.** For naval copper alloys, the useful axis is
-   sulfide dose against exposure history, in a fixed seawater background (c1-06).
+4. **The chloride series is not the right axis for copper.** For naval copper alloys, the useful
+   axis is sulfide dose against exposure history, in a fixed seawater background (c1-06).
 5. **A 3–4 mm well cannot isolate a heat-affected zone narrower than 1 mm** (c1-04, c1-05,
    c1-09). Repair coupons need wide pads, wells placed wholly inside a zone, and a separate
    two-piece galvanic test.
-6. **No study has calibrated a small well against a bulk cell for Cu–Ni or NAB** (c1-01).
+6. **Edison found no study that calibrates a small well against a bulk cell for Cu–Ni or NAB**
+   (c1-01).
    That makes calibration against wrought C71500 and cast C95800 the first experiment, not an
    optional one.
 
 ### By question
 
-**c1-01, small-cell artifacts.** There are no published Ecorr, Rp or breakdown data for Cu–Ni,
-NAB, copper or brass across electrolyte volumes from 10 µL to over 100 mL. The artifacts are each
+**c1-01, small-cell artifacts.** Edison found no published Ecorr, Rp or breakdown data for
+Cu–Ni, NAB, copper or brass across electrolyte volumes from 10 µL to over 100 mL. The artifacts are each
 known separately, and together they are unquantified:
 
 - **Reverse crevice corrosion.** On copper alloys, attack collects on the open surface just
   outside a crevice mouth, not inside it. On 70Cu–30Ni in seawater it took two months (Lu 2005,
   a thesis). So a ring of attack at the inner edge of the O-ring is expected, and should not be
   read as pitting or as a feature of the deposit.
-- **Pt counter.** The Pt counter collects copper during anodic scans, and carries it to the next
-  well.
+- **Pt counter.** During an anodic scan the Pt counter is the cathode, so it can plate out
+  dissolved copper and carry it to the next well. How much, in a microlitre seawater cell, has
+  not been measured.
 - **Counter pH.** Each mC passed through the counter makes 0.069 mM of base or acid in 150 µL.
 - **Evaporation.** Losing 15 µL of the 150 µL raises chloride by 11%.
 
@@ -140,8 +143,9 @@ property with its own naval meaning (antifouling). The answer's sample handling:
 
 **c1-04, repair zones.** Xing 2023 measured a TIG-welded 90–10 Cu–Ni with a Ni-rich filler. The
 HAZ was anodic to the weld, at 4.43 µA/cm² coupled current at first in 5 m/s seawater, and its
-pits reached 4–7 µm after 30 days. For NAB there is no zone-by-zone map of a matched-alloy laser
-DED repair, and no measured deposit-to-cast galvanic current. That is a gap the lab could fill.
+pits reached 4–7 µm after 30 days. For NAB, Edison found no zone-by-zone map of a matched-alloy
+laser DED repair, and no measured deposit-to-cast galvanic current. That is a gap the lab could
+fill.
 
 How to place the wells:
 
@@ -152,8 +156,8 @@ How to place the wells:
   ammeter (ZRA), at area ratios of 1:1 and small anode to large cathode.
 - Keep Pt-counter products and reference leakage out of the ICP sample.
 
-**c1-05, specimen preparation.** No study gives a number for how much the finish shifts Ecorr or
-Rp of C71500 or C95800, whether SiC, diamond or colloidal silica. So the finish, and the delay
+**c1-05, specimen preparation.** Edison found no number for how much the finish (SiC, diamond or
+colloidal silica) shifts Ecorr or Rp of C71500 or C95800. So the finish, and the delay
 from polishing to immersion, become variables to test, not settled choices. Other points:
 
 - Ding 2016 (wire-arc NAB on cast NAB) found reheated bands about 200 µm thick and a HAZ in the
@@ -191,7 +195,8 @@ NaCl at 2.7–8.3 m/s, which is 0.13–0.39 L/min:
 It takes a sealed, pumped head, not an open well. Each run makes hundreds of mL of effluent,
 which needs timed fractions for ICP. This is a separate module, after the static test works.
 
-**c1-08, precedent.** The answer to "has anyone done this?" is no, with these near misses:
+**c1-08, precedent.** Edison's answer to "has anyone done this?" is no, with these near misses.
+It says itself that this is a search result, not proof.
 
 | Work | What it did | What it did not do |
 | --- | --- | --- |
@@ -205,8 +210,9 @@ which needs timed fractions for ICP. This is a separate module, after the static
 Joress 2022 is not in this plan's [references](../references.md) yet. It bears on the aluminum
 plan's novelty statement too.
 
-**c1-09, rapid-solidification stand-ins.** These are not yet shown to work. No same-alloy study
-compares laser surface melting (LSM) or a single track with a multilayer blown-powder deposit.
+**c1-09, rapid-solidification stand-ins.** These are not yet shown to work. Edison found no
+same-alloy study that compares laser surface melting (LSM) or a single track with a multilayer
+blown-powder deposit.
 The best direct evidence is Tang 2004, on cast Mn–Ni–Al bronze (C95700) in 3.5% NaCl:
 
 | Surface | 12 h mass loss |
@@ -227,9 +233,9 @@ it has a galvanostatic mode. The method:
 - It needs deaerated liquid and an isolated counter, so it runs on a separate spot, not in the
   open corrosion well.
 
-There is no calibration for Cu₂(OH)₃Cl or for Ni, Fe and Mn oxides, and Al₂O₃ does not reduce
-in water at all. Nobody has measured powder oxide this way: the cavity-electrode work cited was
-on oxygen-reduction catalysts. So inert-gas fusion stays the oxygen assay for powder.
+Edison found no calibration for Cu₂(OH)₃Cl or for Ni, Fe and Mn oxides, and Al₂O₃ does not
+reduce in water at all. It found no measurement of powder oxide this way: the cavity-electrode
+work it cites was on oxygen-reduction catalysts. So inert-gas fusion stays the oxygen assay for powder.
 
 ### Corrections to Edison
 
