@@ -94,3 +94,14 @@ video in the playlist is the live one. That is the way to watch the feed while p
 zooming or focusing the mount: YouTube adds 5–20 s of delay, so move, wait, look. The set-up,
 settings and how to operate it are in [`stream/README.md`](stream/README.md). The stream holds
 the camera, so `preview_server.py` and `rpicam-still` need it stopped first.
+
+**First frames, 04:34–04:38 UTC: black.** Frames were pulled from the live stream on the Pi
+(`yt-dlp -g` for the HLS address, then `ffmpeg -frames:v 1`) with the OT-2's rail lights
+switched on for 20–40 s at a time (no run active, lights off again afterwards). The robot's own
+camera saw a lit deck in the same seconds (mean luma 111 of 255,
+[picture](frames/2026-10-18/ot2_camera_0438Z_lights_on.jpg)); the stream frame was black
+(mean luma 1.1, [frame](frames/2026-10-18/stream_frame_0438Z_lights_on.jpg)), with and without
+the lights. That is the 15 Oct 17:39 UTC situation again: the lens is capped, the iris is closed,
+or the blackout cover is over it. Check those at the robot. The stream shows the deck the moment
+the lens is clear; nothing needs restarting. The orientation (`CAMERA_VFLIP`/`HFLIP`) could not be
+judged for the same reason and is still at the default.

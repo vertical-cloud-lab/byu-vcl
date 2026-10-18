@@ -119,3 +119,4 @@ output. Nothing else on the Pi was changed; CubOS kept running throughout.
 | Cost on the Pi 5 | ffmpeg about 18 % of one core, rpicam-vid negligible; 45 °C, `throttled=0x0`, load 0.16 with CubOS idle |
 | Upload | 4.5 MB acknowledged by YouTube in the first 40 s (about 0.9 Mbit/s with the lab dark; expect more with the lights on) |
 | Watchdog | no entries; the 180 s start-up grace applied |
+| Picture | Black, with the OT-2's rail lights on or off, while the robot's own camera saw a lit deck. The lens is covered or stopped down again (see [`../README.md`](../README.md#2026-10-18-streaming-to-youtube)); nothing on the Pi's side. The flips are untested until it clears |
