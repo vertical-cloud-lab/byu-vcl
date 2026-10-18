@@ -21,6 +21,7 @@ commits. Nothing in it has been bought, built or tested.
 | [`plot_current_ranges.py`](plot_current_ranges.py) → [`current-ranges.png`](current-ranges.png) | The chart in §5 |
 | [`references.md`](references.md) | Every reference, what it supports, and what was read (abstract, full text or metadata) |
 | [`copper-ded-edison/`](copper-ded-edison/README.md) | Ten follow-up Edison questions for the copper version: naval Cu–Ni and NAB made by blown-powder DED. Run 2026-10-18; answers, trajectories and a synthesis with corrections |
+| [`copper/`](copper/README.md) | The copper version: protocol, specimens, BOM delta, a simulation of oxygen and copper transport in the well against a bulk cell, the copper deck check, and a 3D animation of one spot on the CubXL |
 | [`cubxl-setup.md`](cubxl-setup.md) | What it looks like on the CubXL: head, deck layout, a night step by step, electronics, the powder doser's (non-)role |
 | [`plot_deck_layout.py`](plot_deck_layout.py) → [`deck-layout.png`](deck-layout.png), [`deck-layout-check.json`](deck-layout-check.json) | The deck and head figure, and a static tool-shadow check of every planned tool-down event |
 | [`bom.csv`](bom.csv) | Bill of materials by phase, with price, source and date seen |

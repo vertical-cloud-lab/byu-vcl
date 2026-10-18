@@ -433,6 +433,9 @@ def main():
             "lpr_current_range_nA": [round(float(Is.min()) * 1e9, 1), round(float(Is.max()) * 1e9, 1)],
             "anodic_hold_current_uA": [round(float(rec["I"][hold].min()) * 1e6, 3), round(float(rec["I"][hold].max()) * 1e6, 3)],
             "anodic_hold_charge_mC": round(q_hold * 1e3, 3),
+            # the bulk cell held at its own E_corr + 50 mV, for comparison
+            "anodic_hold_bulk_uA_cm2": round((kin.ia(0.05) - kin.bulk_ic(0.05)) * 1e6, 2),
+            "anodic_hold_well_over_bulk": round(float(rec["I"][hold].mean()) / m.A / (kin.ia(0.05) - kin.bulk_ic(0.05)), 3),
             "anodic_charge_total_mC": round(q_all * 1e3, 3),
             "cu_dissolved_ng": round(cu_mol * 63.546 * 1e9, 1),
             "cu_in_150uL_ug_L": round(cu_mol * 63.546 * 1e6 / 150e-6, 1),

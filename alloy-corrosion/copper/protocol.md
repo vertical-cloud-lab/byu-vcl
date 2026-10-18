@@ -120,6 +120,13 @@ Deck positions used below (all proposals, to be re-jogged):
 - **Tip rules, so no stock is contaminated.** Dispense from above the meniscus, so a tip that has
   touched well liquid never goes back into a stock. A tip that has touched a sulfide stock never
   goes back into the ASW. With ASW first and sulfide last, one fill tip per well satisfies both.
+- **Expect the still well to flatten the sulfide response.** The sulfide doses raise i_corr in
+  bulk cells several times over (8.44 to 87.39 µA/cm² on 70/30 Cu–Ni at 10 ppm, Yuan 2007, via
+  [c1-06]). The well cannot supply oxygen for that: [`sim_well.py`](sim_well.py) caps the
+  oxygen-limited current near 6.6 µA/cm² after 30 min, and a metal at 20 µA/cm² in the bulk
+  cell reads 0.31 of it in the well. So the dose-response at open circuit will be compressed at
+  the top. Read the series from the anodic hold at a fixed potential, which oxygen does not limit,
+  and from ICP-MS, and run the 1 and 10 mg/L doses in the bulk cell too.
 - **Measure sulfide at the start and the end of the night**, on each stock ([c1-06]). Use
   methylene blue (the CHEMets K-9510 kit reads 0–1 and 1–10 mg/L, with a 0.05 mg/L detection
   limit) or a sulfide ISE. The kit comes with a 25 mL sample cup, so test the parent batch at the
@@ -166,6 +173,12 @@ Notes:
 - **Report R_p, not a corrosion rate.** The cathodic branch is limited by oxygen transport, and an
   assumed Stern–Geary B is unreliable for these alloys ([c1-03], [`queries.py`][queries]). LPR
   currents span 13 nA (50 kΩ·cm²) to 1.7 µA (400 Ω·cm²) on a -006 well (`lpr`).
+- **Set the hold potential against the reference, not against the well's own OCP**, once the
+  bulk cell (§5) has given each reference alloy's E_corr. The well's slower oxygen supply pulls
+  its OCP down, by 9 mV after 30 min at 5 µA/cm² in [`sim_well.py`](sim_well.py), so "OCP + 50 mV"
+  in the well is a smaller anodic push than in the bulk cell: the simulated hold current is 0.69
+  of the bulk cell's. At a fixed potential the anodic current depends on the metal, not on the
+  oxygen. Until the bulk-cell E_corr exists, OCP + 50 mV is the placeholder.
 - **The anodic hold stands in for a galvanic couple** until the ZRA test (§7) measures a real
   couple potential, which then replaces the +50 mV. At the fresh-surface corrosion currents in
   the answers, 1–11 µA/cm², the 10 min hold passes 0.2–2.8 mC. That puts 1–12 mg/L of Cu into the

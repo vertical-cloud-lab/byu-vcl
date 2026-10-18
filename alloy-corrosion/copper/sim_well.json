@@ -396,6 +396,8 @@
     1.384
    ],
    "anodic_hold_charge_mC": 0.823,
+   "anodic_hold_bulk_uA_cm2": 32.03,
+   "anodic_hold_well_over_bulk": 0.648,
    "anodic_charge_total_mC": 1.508,
    "cu_dissolved_ng": 993.5,
    "cu_in_150uL_ug_L": 6623.4,
@@ -418,6 +420,8 @@
     1.465
    ],
    "anodic_hold_charge_mC": 0.871,
+   "anodic_hold_bulk_uA_cm2": 32.03,
+   "anodic_hold_well_over_bulk": 0.686,
    "anodic_charge_total_mC": 1.577,
    "cu_dissolved_ng": 1038.9,
    "cu_in_150uL_ug_L": 6926.3,
