@@ -1,0 +1,28 @@
+phase,item,role,qty,unit_price_usd,ext_price_usd,source,price_checked,status,note
+A,Coupon tray with 4 stations and lids (PETG or ASA),holds 4 polished pieces; pogo pin under each; lid presses 1-2 FKM O-ring wells per piece,1,0,0,print in-house (H2D or A1 mini),2026-10-17,design,footprint 105 x 40 x 26 mm; see cubxl-setup.md section 3
+A,Electrode probe holder for the head,holds the reference capillary and the Pt coil 50 mm in front of the pipette; tips level with the pipette tip end,1,0,0,print in-house,2026-10-17,design,offset (+55 -39) from the capper is the assumption behind deck-layout-check.json
+A,Tube rack 2 x 8 for 0.5 mL tubes (max 32 mm tall),collects each spot's used electrolyte plus rinse for ICP,1,0,0,print in-house,2026-10-17,design,must stay under 43 mm so the capper clears it during tip pickup
+A,Second panda 2 x 15 tip rack,48 tips for a 16-spot night; Ben's rack holds 30,1,0,0,print in-house (panda_2x15_tip_rack),2026-10-17,design,placed at deck x 95-115 so the capper clears it; see check
+A,Tip waste cup,disposal for used tips; drop happens at travel height,1,0,0,print in-house,2026-10-17,design,
+A,FKM (Viton) O-rings AS568-006 (2.9 mm ID x 1.78 mm),sets the exposed area (0.071 cm2 at 3 mm); not silicone,50,0.047,2.35,theoringstore.com,2026-10-13,to buy,$10 minimum order; metric 4 x 1.5 mm at $0.06 for the 4 mm well
+A,Pogo pins P75-B1 (10 pack),working-electrode contact to the bare back of each piece,1,4.95,4.95,Adafruit 2430,2026-10-17,to buy,out of stock on 2026-10-17; any 1 mm spring pin works (Mill-Max or Digi-Key)
+A,Shielded cable and 2 mm / 4 mm plugs,WE bus from the tray; RE and CE leads on the head,1,15,15,Digi-Key or lab stock,,estimate,keep the RE/CE leads under 15 cm
+A,0.5 mL polypropylene tubes (500),one per spot; capped by hand in the morning,1,25,25,Fisher or VWR,,estimate,polypropylene not glass: glass is a Si source
+A,NaCl ACS reagent (500 g),0.6 / 0.06 / 0.006 M stocks,1,30,30,Chem Stores,,estimate,
+A,20 mL vials with magnetic caps,three stocks and DI water; the capper opens and closes them,4,0,0,on hand (capper module),2026-10-17,on hand,Ben's 28 mm holder; caps top out at 71 mm
+A,4 mL vials,probe rinse and wet parking for the reference,2,0,0,on hand or Chem Stores,,on hand,uncapped; rim about 45 mm
+A,Opentrons 20 uL tips,3 per spot (two for filling from two stocks; one to collect),1 box,60,60,Opentrons,,estimate,a 960-tip box covers about 20 nights
+A,Dummy cell (resistor + capacitor),checks the potentiostat and the CubOS driver before any coupon,1,5,5,IO Rodeo dummy-cell design or a 10 kohm + 1 uF pair,,estimate,
+A,Borrowed potentiostat,bench shakedown (S0) and a first R0 at the bench,1,0,0,Porter's lab; or #26's 'borrow one from someone at BYU',,to ask,2026 only; the buy is phase B
+A,Borrowed leak-free reference,shakedown only,1,0,0,Porter's lab,,to ask,
+B,EmStat Pico module (ESPICO-ALL) + UART-USB bridge,potentiostat on the head: 100 nA range at 5.5 pA; autoranging; OCP; EIS; runs from the Pi,1,580,580,Digi-Key ESPICO-ALL ($580 on 2026-09-28 per #231; $522 at Dasenic on 2026-10-17),2026-10-17,option B1,needs a MethodSCRIPT host on the Pi; CubOS driver names it but is untested on it
+B,EmStat Pico development kit (ESPICO-DK),same module on a USB board with cell cables; dual channel,1,1800,1800,Digi-Key ESPICO-DK (about $1800 on 2026-10-17),2026-10-17,option B2,buy this instead of B1 if nobody wants to build the UART board
+B,MYSTAT build,alternative: +-200 mA DC potentiostat; 22-bit ADC; 2 uA lowest range,1,340,340,#231 estimate (2026-09-28),2026-09-28,option B3,no EIS; few weeks of student time; CubOS driver to write
+B,Leak-free Ag/AgCl mini-reference 1-2 mm (Innovative Instruments LF-1 / LF-2 or WPI Dri-Ref 2 mm),reference that does not leak KCl into a 150 uL well,1,250,250,quote (vendor pages are price-on-request from the runner),,estimate,ask Porter's lab which they use; a fritted Ossila Ag/AgCl is 110 GBP but leaks
+B,Master reference electrode (standard fritted Ag/AgCl),checks the working reference before each night; never goes in a well,1,110,110,Ossila C2015B1 (110 GBP),2026-10-17,to buy,or borrow
+B,Pt wire 0.25 mm for the counter coil,counter electrode; several times the well area,1,184,184,Advent PT5434 (0.1 m),2026-10-17,to buy,Ossila's finished Pt counter is $247; Porter's lab may have offcuts for free
+B,Opentrons 20 uL tips (second box),,1,60,60,Opentrons,,estimate,
+B,4-channel relay board (optional),selects which station's pogo pin is the WE if wells are ever pre-filled,1,10,10,Amazon or Adafruit,,optional,not needed while only the tested well is wet
+C,Conductivity kit (Atlas K 1.0),checks each stock batch,1,229.99,229.99,atlas-scientific.com (priced 2026-09-14 on #213),2026-09-14,shared with #213,or a borrowed meter
+C,pH probe,checks stocks; needed for the pH series (M1),1,0,0,#148 thread,,shared,
+C,Constant-current source with >= 20 V compliance,anodizing (N1) only,1,0,0,not priced,,later,

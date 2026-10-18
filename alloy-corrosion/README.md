@@ -21,6 +21,9 @@ commits. Nothing in it has been bought, built or tested.
 | [`plot_current_ranges.py`](plot_current_ranges.py) → [`current-ranges.png`](current-ranges.png) | The chart in §5 |
 | [`references.md`](references.md) | Every reference, what it supports, and what was read (abstract, full text or metadata) |
 | [`copper-ded-edison/`](copper-ded-edison/README.md) | Ten follow-up Edison questions for the copper version: naval Cu–Ni and NAB made by blown-powder DED. Written, not yet run |
+| [`cubxl-setup.md`](cubxl-setup.md) | What it looks like on the CubXL: head, deck layout, a night step by step, electronics, the powder doser's (non-)role |
+| [`plot_deck_layout.py`](plot_deck_layout.py) → [`deck-layout.png`](deck-layout.png), [`deck-layout-check.json`](deck-layout-check.json) | The deck and head figure, and a static tool-shadow check of every planned tool-down event |
+| [`bom.csv`](bom.csv) | Bill of materials by phase, with price, source and date seen |
 
 ## In short
 
@@ -51,6 +54,10 @@ commits. Nothing in it has been bought, built or tested.
   and has to drop its 1 mV/s minimum scan rate either way (§5).
 - **2026, with no ME Orders:** keep the pieces, print the clamp, write the CubOS changes against
   its simulation driver, and borrow a potentiostat for a bench shakedown. Buy in January (§8).
+- **On the CubXL** ([`cubxl-setup.md`](cubxl-setup.md)): the electrodes travel in a magnetic cap
+  that the existing capper moves between a park cup and four tray stations, so no new tool goes on
+  the head and the head is free during each measurement. A head-mounted probe failed the tool-shadow
+  check against Ben's tip racks.
 
 ## 1. How the electrochemistry connects to the alloy work
 
@@ -352,6 +359,9 @@ CubOS has a simulation driver, so all three can be written and tested before any
 arrives.
 
 ## 6. What to buy, borrow or print
+
+The deck and head layout, and the full bill of materials by phase, are in
+[`cubxl-setup.md`](cubxl-setup.md) and [`bom.csv`](bom.csv). The short version:
 
 | Item | Source and price (2026-10-13) | Note |
 | --- | --- | --- |

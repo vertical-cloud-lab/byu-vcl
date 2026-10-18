@@ -1,0 +1,1107 @@
+{
+ "events_checked": 99,
+ "events_with_problems": 0,
+ "tightest_pass_mm": {},
+ "travel_clearance_mm": {
+  "pipette tip end at travel": 87.0,
+  "electrode cap tips at travel": 85.5,
+  "tallest deck item": 71.0
+ },
+ "hang_mm": {
+  "capper": 16.0,
+  "capper+cap": 36.5,
+  "pipette": 35.0,
+  "pipette_bare": 0.0
+ },
+ "events": [
+  {
+   "event": "pipette in S1 well y235.5",
+   "tool": "pipette",
+   "other": "capper",
+   "carriage_z": 56.0,
+   "gantry_xy": [
+    130.0,
+    224.5
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette in S1 well y244.5",
+   "tool": "pipette",
+   "other": "capper",
+   "carriage_z": 56.0,
+   "gantry_xy": [
+    130.0,
+    233.5
+   ],
+   "problems": []
+  },
+  {
+   "event": "capper sets electrode cap on S1",
+   "tool": "capper+cap",
+   "other": "pipette_bare",
+   "carriage_z": 58.0,
+   "gantry_xy": [
+    185.0,
+    240.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette in S2 well y235.5",
+   "tool": "pipette",
+   "other": "capper",
+   "carriage_z": 56.0,
+   "gantry_xy": [
+    155.0,
+    224.5
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette in S2 well y244.5",
+   "tool": "pipette",
+   "other": "capper",
+   "carriage_z": 56.0,
+   "gantry_xy": [
+    155.0,
+    233.5
+   ],
+   "problems": []
+  },
+  {
+   "event": "capper sets electrode cap on S2",
+   "tool": "capper+cap",
+   "other": "pipette_bare",
+   "carriage_z": 58.0,
+   "gantry_xy": [
+    210.0,
+    240.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette in S3 well y235.5",
+   "tool": "pipette",
+   "other": "capper",
+   "carriage_z": 56.0,
+   "gantry_xy": [
+    180.0,
+    224.5
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette in S3 well y244.5",
+   "tool": "pipette",
+   "other": "capper",
+   "carriage_z": 56.0,
+   "gantry_xy": [
+    180.0,
+    233.5
+   ],
+   "problems": []
+  },
+  {
+   "event": "capper sets electrode cap on S3",
+   "tool": "capper+cap",
+   "other": "pipette_bare",
+   "carriage_z": 58.0,
+   "gantry_xy": [
+    235.0,
+    240.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette in S4 well y235.5",
+   "tool": "pipette",
+   "other": "capper",
+   "carriage_z": 56.0,
+   "gantry_xy": [
+    205.0,
+    224.5
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette in S4 well y244.5",
+   "tool": "pipette",
+   "other": "capper",
+   "carriage_z": 56.0,
+   "gantry_xy": [
+    205.0,
+    233.5
+   ],
+   "problems": []
+  },
+  {
+   "event": "capper sets electrode cap on S4",
+   "tool": "capper+cap",
+   "other": "pipette_bare",
+   "carriage_z": 58.0,
+   "gantry_xy": [
+    260.0,
+    240.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette draws 0.6 M NaCl",
+   "tool": "pipette",
+   "other": "capper",
+   "carriage_z": 70.0,
+   "gantry_xy": [
+    263.0,
+    90.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "capper decaps 0.6 M NaCl",
+   "tool": "capper",
+   "other": "pipette_bare",
+   "carriage_z": 87.0,
+   "gantry_xy": [
+    318.0,
+    101.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette draws 0.06 M NaCl",
+   "tool": "pipette",
+   "other": "capper",
+   "carriage_z": 70.0,
+   "gantry_xy": [
+    263.0,
+    123.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "capper decaps 0.06 M NaCl",
+   "tool": "capper",
+   "other": "pipette_bare",
+   "carriage_z": 87.0,
+   "gantry_xy": [
+    318.0,
+    134.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette draws 0.006 M NaCl",
+   "tool": "pipette",
+   "other": "capper",
+   "carriage_z": 70.0,
+   "gantry_xy": [
+    263.0,
+    156.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "capper decaps 0.006 M NaCl",
+   "tool": "capper",
+   "other": "pipette_bare",
+   "carriage_z": 87.0,
+   "gantry_xy": [
+    318.0,
+    167.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette draws DI water",
+   "tool": "pipette",
+   "other": "capper",
+   "carriage_z": 70.0,
+   "gantry_xy": [
+    263.0,
+    189.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "capper decaps DI water",
+   "tool": "capper",
+   "other": "pipette_bare",
+   "carriage_z": 87.0,
+   "gantry_xy": [
+    318.0,
+    200.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "capper sets electrode cap on rinse cup",
+   "tool": "capper+cap",
+   "other": "pipette_bare",
+   "carriage_z": 77.0,
+   "gantry_xy": [
+    60.0,
+    245.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "capper sets electrode cap on park cup",
+   "tool": "capper+cap",
+   "other": "pipette_bare",
+   "carriage_z": 77.0,
+   "gantry_xy": [
+    90.0,
+    245.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette fills tube (176,28)",
+   "tool": "pipette",
+   "other": "capper",
+   "carriage_z": 75.0,
+   "gantry_xy": [
+    121.0,
+    17.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette fills tube (176,46)",
+   "tool": "pipette",
+   "other": "capper",
+   "carriage_z": 75.0,
+   "gantry_xy": [
+    121.0,
+    35.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette fills tube (188,28)",
+   "tool": "pipette",
+   "other": "capper",
+   "carriage_z": 75.0,
+   "gantry_xy": [
+    133.0,
+    17.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette fills tube (188,46)",
+   "tool": "pipette",
+   "other": "capper",
+   "carriage_z": 75.0,
+   "gantry_xy": [
+    133.0,
+    35.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette fills tube (200,28)",
+   "tool": "pipette",
+   "other": "capper",
+   "carriage_z": 75.0,
+   "gantry_xy": [
+    145.0,
+    17.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette fills tube (200,46)",
+   "tool": "pipette",
+   "other": "capper",
+   "carriage_z": 75.0,
+   "gantry_xy": [
+    145.0,
+    35.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette fills tube (212,28)",
+   "tool": "pipette",
+   "other": "capper",
+   "carriage_z": 75.0,
+   "gantry_xy": [
+    157.0,
+    17.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette fills tube (212,46)",
+   "tool": "pipette",
+   "other": "capper",
+   "carriage_z": 75.0,
+   "gantry_xy": [
+    157.0,
+    35.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette fills tube (224,28)",
+   "tool": "pipette",
+   "other": "capper",
+   "carriage_z": 75.0,
+   "gantry_xy": [
+    169.0,
+    17.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette fills tube (224,46)",
+   "tool": "pipette",
+   "other": "capper",
+   "carriage_z": 75.0,
+   "gantry_xy": [
+    169.0,
+    35.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette fills tube (236,28)",
+   "tool": "pipette",
+   "other": "capper",
+   "carriage_z": 75.0,
+   "gantry_xy": [
+    181.0,
+    17.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette fills tube (236,46)",
+   "tool": "pipette",
+   "other": "capper",
+   "carriage_z": 75.0,
+   "gantry_xy": [
+    181.0,
+    35.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette fills tube (248,28)",
+   "tool": "pipette",
+   "other": "capper",
+   "carriage_z": 75.0,
+   "gantry_xy": [
+    193.0,
+    17.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette fills tube (248,46)",
+   "tool": "pipette",
+   "other": "capper",
+   "carriage_z": 75.0,
+   "gantry_xy": [
+    193.0,
+    35.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette fills tube (260,28)",
+   "tool": "pipette",
+   "other": "capper",
+   "carriage_z": 75.0,
+   "gantry_xy": [
+    205.0,
+    17.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette fills tube (260,46)",
+   "tool": "pipette",
+   "other": "capper",
+   "carriage_z": 75.0,
+   "gantry_xy": [
+    205.0,
+    35.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 1 (Ben's) (291.3,89.0)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    236.3,
+    78.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 1 (Ben's) (282.8,89.0)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    227.8,
+    78.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 1 (Ben's) (291.3,97.5)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    236.3,
+    86.5
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 1 (Ben's) (282.8,97.5)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    227.8,
+    86.5
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 1 (Ben's) (291.3,106.0)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    236.3,
+    95.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 1 (Ben's) (282.8,106.0)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    227.8,
+    95.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 1 (Ben's) (291.3,114.5)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    236.3,
+    103.5
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 1 (Ben's) (282.8,114.5)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    227.8,
+    103.5
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 1 (Ben's) (291.3,123.0)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    236.3,
+    112.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 1 (Ben's) (282.8,123.0)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    227.8,
+    112.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 1 (Ben's) (291.3,131.5)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    236.3,
+    120.5
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 1 (Ben's) (282.8,131.5)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    227.8,
+    120.5
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 1 (Ben's) (291.3,140.0)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    236.3,
+    129.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 1 (Ben's) (282.8,140.0)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    227.8,
+    129.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 1 (Ben's) (291.3,148.5)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    236.3,
+    137.5
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 1 (Ben's) (282.8,148.5)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    227.8,
+    137.5
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 1 (Ben's) (291.3,157.0)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    236.3,
+    146.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 1 (Ben's) (282.8,157.0)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    227.8,
+    146.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 1 (Ben's) (291.3,165.5)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    236.3,
+    154.5
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 1 (Ben's) (282.8,165.5)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    227.8,
+    154.5
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 1 (Ben's) (291.3,174.0)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    236.3,
+    163.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 1 (Ben's) (282.8,174.0)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    227.8,
+    163.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 1 (Ben's) (291.3,182.5)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    236.3,
+    171.5
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 1 (Ben's) (282.8,182.5)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    227.8,
+    171.5
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 1 (Ben's) (291.3,191.0)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    236.3,
+    180.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 1 (Ben's) (282.8,191.0)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    227.8,
+    180.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 1 (Ben's) (291.3,199.5)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    236.3,
+    188.5
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 1 (Ben's) (282.8,199.5)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    227.8,
+    188.5
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 1 (Ben's) (291.3,208.0)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    236.3,
+    197.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 1 (Ben's) (282.8,208.0)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    227.8,
+    197.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 2 (108.0,89.0)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    53.0,
+    78.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 2 (99.5,89.0)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    44.5,
+    78.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 2 (108.0,97.5)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    53.0,
+    86.5
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 2 (99.5,97.5)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    44.5,
+    86.5
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 2 (108.0,106.0)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    53.0,
+    95.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 2 (99.5,106.0)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    44.5,
+    95.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 2 (108.0,114.5)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    53.0,
+    103.5
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 2 (99.5,114.5)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    44.5,
+    103.5
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 2 (108.0,123.0)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    53.0,
+    112.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 2 (99.5,123.0)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    44.5,
+    112.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 2 (108.0,131.5)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    53.0,
+    120.5
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 2 (99.5,131.5)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    44.5,
+    120.5
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 2 (108.0,140.0)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    53.0,
+    129.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 2 (99.5,140.0)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    44.5,
+    129.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 2 (108.0,148.5)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    53.0,
+    137.5
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 2 (99.5,148.5)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    44.5,
+    137.5
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 2 (108.0,157.0)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    53.0,
+    146.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 2 (99.5,157.0)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    44.5,
+    146.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 2 (108.0,165.5)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    53.0,
+    154.5
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 2 (99.5,165.5)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    44.5,
+    154.5
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 2 (108.0,174.0)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    53.0,
+    163.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 2 (99.5,174.0)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    44.5,
+    163.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 2 (108.0,182.5)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    53.0,
+    171.5
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 2 (99.5,182.5)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    44.5,
+    171.5
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 2 (108.0,191.0)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    53.0,
+    180.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 2 (99.5,191.0)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    44.5,
+    180.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 2 (108.0,199.5)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    53.0,
+    188.5
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 2 (99.5,199.5)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    44.5,
+    188.5
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 2 (108.0,208.0)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    53.0,
+    197.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette picks tip rack 2 (99.5,208.0)",
+   "tool": "pipette_bare",
+   "other": "capper",
+   "carriage_z": 59.0,
+   "gantry_xy": [
+    44.5,
+    197.0
+   ],
+   "problems": []
+  },
+  {
+   "event": "pipette drops tip",
+   "tool": "pipette",
+   "other": "capper",
+   "carriage_z": 95.0,
+   "gantry_xy": [
+    280.0,
+    29.0
+   ],
+   "problems": []
+  }
+ ]
+}
