@@ -1,0 +1,128 @@
+# One record per copper-alloy corrosion spot. Copy, fill in, and keep next to the raw potentiostat
+# files. Adapted from ../record-template.yaml for protocol.md (the copper version).
+# Blanks get a record of their own (role: stock_blank | fixture_blank | carryover_blank) and are
+# linked from every spot of the same night by ID.
+
+spot_id:            # e.g. <specimen_id>-<well>-<yyyymmdd>
+night_id:           # e.g. cu-<yyyymmdd>; links the spot to that night's blanks and stock checks
+test_matrix_row:    # id from test-matrix.csv (S0, R1, R2, R3, F1, D1, D2, P1, L1, S1, CP1, X1)
+role:               # main | companion | cathodic_hold | cyclic_spare | stock_blank | fixture_blank | carryover_blank
+
+specimen:
+  specimen_id:
+  alloy:            # C71500 | C70600 | C95800 | DED Cu-Ni | DED NAB | ...
+  form:             # wrought | cast | DED pad | DED repair | LSM | single track | splat | skull
+  lot:              # bar heat / mill certificate number, or the DED build ID and powder lot
+  composition_cert: # wt% from the mill certificate or the powder certificate; null if none
+  composition_eds:  # Cu, Ni, Al, Fe, Mn (and Cr) wt% measured on this face away from the wells (mean, SD, n); or XRF
+  face:             # XY (a layer) | XZ (contains the build direction) | n/a for wrought and cast
+  face_build_height_mm:
+  track_position:   # track centre | overlap | n/a
+  zone:             # deposit | fusion zone | HAZ | substrate | coupled mixed-area | n/a
+  zone_width_mm:    # at the well; must be >= 2 x (wetted radius + placement tolerance), protocol section 7
+  footprint_set:    # intrinsic | pore (from the pre-test screen, protocol section 1 step 6)
+  footprint_images: # microscope and CubXL camera images of the footprint before sealing
+  history:          # fresh | prefilmed-then-sulfided | sulfided-then-clean
+  history_steps:    # list of {liquid_batch, sulfide_mg_L, hours, temperature_C}, made off the deck
+
+preparation:
+  polished_by:
+  final_steps:      # e.g. "P2400 SiC; 1 um diamond; 0.05 um colloidal silica"
+  cleaning:         # e.g. "ethanol ultrasonic 2 min; ultrapure water; N2"
+  polish_finished:  # ISO time
+  dry_finished:     # ISO time
+  first_fill:       # ISO time; the delay follows from these three
+  storage:          # desiccator | air | ...
+  storage_temperature_C:
+  storage_RH_pct:
+  etched_sister_section: # ID of the phase-map section for NAB, if any
+
+cell:
+  tray_station:     # S1 | S2 | S3 | S4 (PTFE blank)
+  well_index:       # a | b
+  lid_version:
+  oring_size:       # AS568-006 | -008 | -010
+  oring_compound:   # e.g. FDA brown Viton 75 (FDABV75006)
+  oring_lot:
+  area_cm2:         # nominal from the ID; and the measured area from the attack ring, after
+  volume_uL: 150
+  cap_version:
+  cap_seal_oring:   # AS568-016
+  reference_id:
+  reference_tip_above_metal_mm: 3.0
+  reference_offset_mV:  # against the master reference, measured before this night
+  counter: Pt coil
+  counter_cleaned:  # ISO time of the last off-deck clean (between alloys)
+
+electrolyte:
+  background:       # ASTM D1141 without heavy metals; batch ID
+  background_pH:
+  background_icp_blank_id:  # the stock blank's record
+  sulfide_target_mg_L:      # 0 | 0.01 | 0.1 | 1 | 10
+  stocks_uL:                # {ASW: 135, S0.1: 15} etc., with the stock batch IDs
+  sulfide_stock_ids:
+  sulfide_measured_start_mg_L:   # each stock, methylene blue or ISE, with the method
+  sulfide_measured_end_mg_L:
+  dissolved_O2_mg_L:        # of the batch before filling, if measured
+  temperature_C:
+
+potentiostat:
+  model:
+  serial:
+  firmware:
+  current_range:    # fixed range(s), or "autorange"
+
+steps:
+  ocp:        {duration_s: 1800, sample_period_s: 1}
+  lpr:        {from_mV_vs_ocp: -10, to_mV_vs_ocp: 10, rate_mV_s: 0.167}
+  rest:       {duration_s: 300}
+  hold:       {kind: anodic, mV_vs_ocp: 50, duration_s: 600, charge_cap_mC: 3}  # or kind: cathodic, mV_vs_ref
+  ocp_after:  {duration_s: 300}
+  cpp:        null  # spare spots only: {start_mV_vs_ocp: -50, rate_mV_s: 1, reverse_at_uA_cm2: 1000, stop: "E_corr"}
+
+results:
+  E_corr_mV_vs_ref:
+  ocp_drift_mV_per_min:
+  Rp_ohm_cm2:
+  hold_mean_uA:
+  hold_charge_mC:
+  hold_stopped_on_charge: false
+  E_after_hold_mV_vs_ref:
+  cpp_charge_mC:    # spare spots only
+
+collected:
+  tube_id:
+  tube_tare_mg:
+  tube_gross_mg:    # after collection, rinse and acid
+  recovered_uL:     # from the masses, less the acid
+  rinse_uL: 150
+  acid: {lot:, molarity_M: 1.0, volume_uL: 20}
+  collected_at:     # ISO time; the liquid contact time follows from first_fill
+
+icp_ms:
+  lab:              # e.g. the campus Agilent 8900
+  run_id:
+  dilution_factor:  # beyond the tube; e.g. 10
+  isotopes:         # e.g. 65Cu, 60Ni, 56Fe (collision cell), 55Mn, 27Al, 52Cr
+  ug_L_in_tube:     {Cu:, Ni:, Fe:, Mn:, Al:, Cr:}
+  ng_per_spot:      {Cu:, Ni:, Fe:, Mn:, Al:, Cr:}   # blank-corrected
+  ug_cm2_day:       {Cu:, Ni:, Fe:, Mn:, Al:, Cr:}
+  dissolution_current_uA_cm2: {Cu_n1:, Cu_n2:, Ni:, Al:}  # i = n F m / (M A t)
+  charge_passed_mC: # the hold's (and the CPP's) charge, for the balance
+  blanks:           {stock: , fixture: , carryover: }   # their spot_ids
+
+validity:
+  leak_free_at_fill: true
+  ocp_drift_ok:
+  lpr_linear_ok:
+  hold_under_charge_cap:
+  recovered_volume_ok:
+  reverse_crevice_ring:   # seen | not seen: expected at the O-ring edge, not pitting (c1-01)
+  bubbles_seen:           # cathodic holds
+  notes:
+
+post_test:
+  spot_images:      # head camera after; microscope; SEM later
+  eds_or_xrf_of_spot:  # Ni, Fe, Al held in the film (c1-03)
+
+raw_files:          # potentiostat exports, camera images
