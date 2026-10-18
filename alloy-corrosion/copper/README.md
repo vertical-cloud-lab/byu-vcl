@@ -3,19 +3,23 @@
 Written 2026-10-18 for Sterling's request on [PR #278](https://github.com/vertical-cloud-lab/byu-vcl/pull/278):
 a copper version of the corrosion plan, built from the list of changes that the
 [copper Edison batch](../copper-ded-edison/README.md#what-changes-in-the-plan-for-copper) produced,
-with a 3D animation at real dimensions where they exist, and simulations to go with it. The
+with a video at real dimensions where they exist, printable CAD of the cell, and simulations to
+go with it. The
 targets are naval Cu–Ni (C70600, C71500) and nickel–aluminium bronze (C95800), as wrought or cast
 references and as single-feed blown-powder laser DED deposits and repairs. It builds on the
 aluminum plan ([`../README.md`](../README.md), [`../protocol.md`](../protocol.md),
 [`../cubxl-setup.md`](../cubxl-setup.md)) and changes only what copper changes.
 
-**Nothing here has been bought, built or run.** The animation is a proposal drawn at the CubXL's
-real coordinates. The simulations are models with stated assumptions, not measurements.
+**Nothing here has been bought, built or run.** The video is a proposal drawn at the CubXL's
+real coordinates. The CAD has not been printed. The simulations are models with stated
+assumptions, not measurements.
 
-![One copper spot on the CubXL, animated](cubxl-cu-spot.gif)
+![One copper spot on the CubXL: the run, with the working tool outlined](cubxl-cu-spot.gif)
 
-Full resolution: [`cubxl-cu-spot.mp4`](cubxl-cu-spot.mp4) (1280 × 720, 30 fps, 56 s). The GIF
-above is the same render at 640 × 360 and twice real time, with its own shorter overlay.
+**[The video on YouTube](https://youtu.be/CTQMzOfOmBI)** (2 min 22 s): the real CubXL, the model, every module and tool
+placed with its name, the prep done by hand, one spot, and what happens after the night. The file
+is [`cubxl-cu-spot.mp4`](cubxl-cu-spot.mp4) (1280 × 720, 30 fps); the GIF above is its run chapter
+at 640 × 360. Chapters and sources are in §1.
 
 | File | What it is |
 | --- | --- |
@@ -24,9 +28,12 @@ above is the same render at 640 × 360 and twice real time, with its own shorter
 | [`record-template.yaml`](record-template.yaml) | The per-spot record, with tube masses, acid lot, sulfide checks and ICP-MS results |
 | [`bom-delta.csv`](bom-delta.csv) | What copper adds to [`../bom.csv`](../bom.csv), with prices seen 2026-10-18 |
 | [`copper_numbers.py`](copper_numbers.py) → [`copper_numbers.json`](copper_numbers.json) | Every computed number in the protocol |
-| [`sim_well.py`](sim_well.py) → [`sim_well.json`](sim_well.json), [`sim_well.png`](sim_well.png), [`sim_well_fields.npz`](sim_well_fields.npz) | The well simulation (§2) and the fields the animation draws |
+| [`cad/`](cad/README.md) | CadQuery CAD of the electrode cap, carrier, well lid, squeezed O-ring, pads and coupon tray (STEP and STL), and the O-ring, magnet, vapour and fit checks |
+| [`sim_well_hf.py`](sim_well_hf.py) → [`sim_well_hf.json`](sim_well_hf.json), [`sim_well_hf.png`](sim_well_hf.png), [`sim_well_hf_fields.npz`](sim_well_hf_fields.npz); write-up [`sim_well_hf.md`](sim_well_hf.md) | The well simulated with copper's own chemistry, per alloy, with the squeezed O-ring's crevice (§2.7). The fields the video draws |
+| [`sim_well.py`](sim_well.py) → [`sim_well.json`](sim_well.json), [`sim_well.png`](sim_well.png), [`sim_well_fields.npz`](sim_well_fields.npz) | The first-order well simulation: oxygen transport only, placeholder kinetics (§2.1–2.6) |
 | [`deck_cu.py`](deck_cu.py) → [`deck-check-cu.json`](deck-check-cu.json) | The copper deck, and the aluminum plan's tool-shadow check rerun on it (§3) |
-| [`render_cubxl_cu.py`](render_cubxl_cu.py) → [`cubxl-cu-spot.mp4`](cubxl-cu-spot.mp4), [`cubxl-cu-spot.gif`](cubxl-cu-spot.gif), stills | The animation (§1) |
+| [`render_cubxl_cu.py`](render_cubxl_cu.py) → [`cubxl-cu-spot.mp4`](cubxl-cu-spot.mp4), [`cubxl-cu-spot.gif`](cubxl-cu-spot.gif), stills | The video (§1) |
+| [`media/cubxl-empty-ben-2026-06-26.jpg`](media/cubxl-empty-ben-2026-06-26.jpg) | Ben's photo of the empty CubXL from [#133](https://github.com/vertical-cloud-lab/byu-vcl/issues/133), which opens the video |
 
 ## In short
 
@@ -34,63 +41,107 @@ above is the same render at 640 × 360 and twice real time, with its own shorter
   so the headline results are OCP, the LPR slope, the charge of a potential hold, and ICP-MS of
   every spot's liquid, acidified in its tube at once. Cyclic polarization moves to spare spots.
   The electrolyte axis becomes sulfide dose in fixed substitute ocean water. The electrode cap now
-  seals the well. The first experiment is the well against a bulk cell on C71500 and C95800
+  nearly seals the well. The first experiment is the well against a bulk cell on C71500 and C95800
   ([protocol](protocol.md)).
-- **The still well starves the metal of oxygen, and the simulation says by how much.** After 30 min
-  the most oxygen the spot can get is 6.6 µA/cm², against 32–81 µA/cm² in a bulk cell. For the
-  same metal, the well's i_corr is 0.93 of the bulk cell's at 1 µA/cm², 0.71 at 5 and 0.31 at 20,
-  E_corr reads 2–31 mV more negative, and R_p reads 1.37 times higher at 5 µA/cm² (§2.3).
-- **Two consequences that the Edison answers do not draw.** Changing the O-ring size will not
-  reveal this bias: -006, -008 and -010 wells give 0.71, 0.70 and 0.69, because the 4 mm column of
-  liquid sets the oxygen supply, not the spot. Only the bulk cell can calibrate the well. And the
-  sulfide series will look flattened at its top, since sulfide-polluted copper alloys corrode
-  faster in bulk cells than the well can feed. Hold at a fixed potential, which oxygen does not
-  limit, and read ICP-MS (§2.3).
-- **A cathodic step replates the copper the ICP-MS sample is meant to catch:** 51 % of the
-  dissolved Cu went back on the spot in 10 min at −300 mV. Cathodic holds go on separate spots
-  (§2.4).
+- **The CAD changed the cap** ([`cad/`](cad/README.md)). The first draft's radial AS568-016 seal
+  needs 2.3–85 N to pull off, against about 23 N of electromagnet pull on a 1 mm steel disc, so it
+  would not reliably come off. The recommended cap has no O-ring: a 0.12 mm clearance skirt over
+  the lid's 16 mm boss loses 1.6 µL of water an hour (1.1 % of the well per spot), and two
+  4 × 2 mm magnets in the lid hold it down. The electromagnet lifts it against about 2.4 N, a
+  margin of 9, if the decap height is jogged to ±0.15 mm. The cap weighs 13.5 g and fits the
+  capper as a vial cap does.
+- **The squeezed O-ring wets almost twice its nominal area.** It touches the metal only from
+  r ≈ 2.0 mm, so 0.126 cm² is wet, not 0.0661, and a thin crevice under the ring carries 35 % of
+  the anodic current at open circuit (45 % on NAB). On C71500, R_p normalised by the nominal area
+  reads 0.60 of the bulk cell's, and by the wetted area 1.08: the area choice is a bigger error than
+  anything the well does to the chemistry. Report on the wetted area, measured from the attack ring
+  ([`sim_well_hf.md`](sim_well_hf.md), [`cad/README.md`](cad/README.md)).
+- **With copper's own chemistry, the well's bias depends on the alloy** ([`sim_well_hf.md`](sim_well_hf.md),
+  each alloy's bulk cell calibrated to published R_p, decay times and, for NAB, E_corr). On Cu–Ni the
+  copper that piles up near the metal outweighs the slower oxygen supply: E_corr reads 4–8 mV *more
+  positive* than in the bulk cell, not 9 mV more negative as the first-order model had it. On NAB
+  the oxygen supply wins: −28 mV, and R_p 1.75 times the bulk cell's even on the nominal area. After
+  30 min the well's i_corr is 0.53, 0.61 and 0.31 of the bulk cell's for C70600, C71500 and C95800,
+  and the +50 mV hold passes 0.30–0.53 of its current. So NAB against Cu–Ni in the well needs the
+  bulk-cell calibration first.
+- **About half the copper oxidised reaches the tube**, 0.51–0.52 on Cu–Ni, and the rest stays as
+  Cu₂O film. The split rests on an assumed film share (0.32–0.62 for 60 % and 10 %), so ICP-MS is a
+  lower bound and the measured charge-to-copper balance is a result. The anodic hold acidifies the
+  spot to pH 7.2–7.3 on Cu–Ni and 5.8 on NAB, which is why the companion OCP-only well matters.
+- **A cathodic step replates 18.5 % of the dissolved copper** on C71500 in 10 min at −300 mV, since by
+  then most of it is Cu(II) or suspended Cu₂O. The first-order model said 51 %. Either way, cathodic
+  holds go on separate spots (§2.4, §2.7).
+- **The first-order model's oxygen findings still stand as bounds** (§2.2–2.3): after 30 min the most
+  oxygen the spot can get is 6.6 µA/cm², against 32–81 µA/cm² in a bulk cell. Changing the O-ring
+  size will not reveal the oxygen bias, because the 4 mm column of liquid sets the supply, and the
+  sulfide series will look flattened at its top. Hold at a fixed potential and read ICP-MS.
 - **The reference tip moves up**, from 1.5 mm above the metal in the O-ring's throat to 3.0 mm in
   the bore. That gives 22 % more oxygen at 30 min and a current density uniform to 1.4 %, for an
   uncompensated resistance of 60 Ω: 4 mV at a 1 mA/cm² reversal and under 0.3 mV in LPR and holds
-  (§2.5).
+  (§2.5). With the electrolyte potential solved every step, the ohmic non-uniformity on the metal is
+  under 0.04 mV on Cu–Ni and 0.2 mV on NAB.
 - **The deck** keeps the aluminum layout, puts the stocks in Ben's real 9-position holder, adds an
   acid vial, a seawater rinse cup and a PTFE blank station, and moves the tip waste. The
-  tool-shadow check passes 118 tool-down events with no collision, after it caught one real
-  collision in the first draft (§3).
+  tool-shadow check, rerun with the CAD cap (35.8 mm hang, 28 mm flange), passes 118 tool-down
+  events with no collision (§3).
 
-## 1. The animation
+## 1. The video
 
-One main spot on station S1, compressed to 56 s. In order: pick up a tip; the capper lifts the
-seawater stock's cap and the P20 builds the well (shown as one transfer for seven); sulfide last;
-drop the tip; the capper carries the electrode cap from its park cup to S1; a close-up in section
-while the potentiostat runs OCP, LPR, rest, a +50 mV hold and OCP (52 min of simulated time,
-coloured by the oxygen field from `sim_well.py`, with the simulated current trace); cap off to the
-rinse and park cups; a new tip moves the liquid into tube 1; the acid tip adds 20 µL of 1 M HNO₃.
+**[Watch it on YouTube](https://youtu.be/CTQMzOfOmBI)** (unlisted, 2 min 22 s), or the file:
+[`cubxl-cu-spot.mp4`](cubxl-cu-spot.mp4) (1280 × 720, 30 fps). The GIF above is the run
+alone, at 640 × 360 and about three times the video's speed.
+
+| Time | Chapter |
+| --- | --- |
+| 0:00 | **The real CubXL, empty**: Ben's photo from [#133](https://github.com/vertical-cloud-lab/byu-vcl/issues/133) (2026-06-26) |
+| 0:04 | **The same machine as a model**, from the photo's side, turning to the working view |
+| 0:09 | **Deck modules, one at a time**, each with a short name: coupon tray, specimens, PTFE blank, well lids, stock holder, stocks, two tip racks, ICP-MS tubes, rinse and park cups, electrode cap, tip waste, potentiostat, electrode bus |
+| 0:33 | **Tools on the gantry head**: electromagnetic capper, P20 pipette, head camera, the Arduino + TMC2209 pipette driver |
+| 0:42 | **Before the night, off the deck**: stock alloys and DED pads, specimen prep, seawater, sulfide and acid, tubes and the reference check |
+| 1:06 | **One spot**: tip, seawater, sulfide last, tip off, leak check, electrode cap on, the measurement in section, cap off and rinsed, collection, acid, image |
+| 2:11 | **After the night**: ICP-MS of the tubes, SEM/EDS of the spots |
+| 2:17 | Summary |
+
+**Which tool is working.** The CubXL's head is rigid: the capper, the pipette and the camera ride
+together, 55 mm apart, so every tool goes down whenever one does. In the run the tool doing the
+work is outlined in orange and lit in the "working now" panel at the top left, its target on the
+deck is ringed, and a label says what it is doing. During the measurement the potentiostat is lit
+and the head is shown free.
 
 | | Where it comes from |
 | --- | --- |
-| **Exact models** | Ben's 9-position 20 mL holder, the 16 mm magnetic vial cap and the PAW-V2 electromagnet mount: the STEP files in [`modules/electromagnetic-capper/cad/`](https://github.com/vertical-cloud-lab/byu-vcl/tree/9e37bb1/modules/electromagnetic-capper/cad), meshed by gmsh as they are. The AS568-006 O-ring (ID 2.90 mm, cross-section 1.78 mm, drawn compressed to 1.42 mm in its groove) |
-| **Exact numbers** | Every deck position, the tool offsets (pipette +55, +11; camera −40, +10), the magnet face 16 mm below the carriage, the 35 mm tip, travel at z 122, the working volume, tip-rack, vial and cap heights: Ben's 2026-10-02 gantry and deck files, through [`deck_cu.py`](deck_cu.py) and [`../plot_deck_layout.py`](../plot_deck_layout.py) |
-| **Computed** | The oxygen field in the well and the current trace: [`sim_well.py`](sim_well.py), cap B |
-| **Schematic, right footprint** | The gantry beam and carriage, the P20 body, the camera, the printed tray and lids, the cables, the 25 mm electromagnet inside the mount. The electrode cap is the proposal of [`../cubxl-setup.md` §3](../cubxl-setup.md#3-the-head-what-is-on-it-and-why-nothing-is-added) with the copper changes, drawn in section |
+| **Real** | The opening photo. Frame proportions checked against frames of the channel's [setup](https://youtu.be/XUobYYZ1vzQ) and [calibration](https://youtu.be/Kr37dRIVfqo) videos, pulled through the stream-cam Pi |
+| **Exact models** | Ben's 9-position 20 mL holder, the magnetic vial cap and the PAW-V2 electromagnet mount (the STEP files in [`modules/electromagnetic-capper/cad/`](../../modules/electromagnetic-capper/cad/), meshed by gmsh), and the new electrode cap, carrier, electrodes, well lids, squeezed O-ring, pads and coupon tray from [`cad/`](cad/README.md) |
+| **Exact numbers** | Deck positions, tool offsets (pipette +55, +11; camera −40, +10), the magnet face 16 mm below the carriage, the 35 mm tip, travel at z 122, the working volume 361 × 278 × 122 mm: Ben's 2026-10-02 gantry and deck files, through [`deck_cu.py`](deck_cu.py) |
+| **Computed** | The O₂ field (left cut face), the dissolved-Cu field (right cut face) and the current trace in the close-up: [`sim_well_hf.py`](sim_well_hf.md), C71500 on S1 |
+| **Schematic** | The PROVerXL 4030 V2 frame, gantry, carriage and tool plate, the P20 body, the camera and the driver boards: right proportions, not measured |
 
-Motion is eased between real waypoints at real carriage heights, but timing is not to scale: a
-gantry move takes about a second, the fill is shown once for seven transfers, and the 52 min
-measurement takes 9 s. The STEP mount's bore axis was fitted from its mesh (x 63.2, y 6.5 in the
-file's own frame) and the mount is drawn open end down, magnet face at the capper's tool point.
+Motion is eased between real waypoints at real carriage heights, but the timing is compressed: a
+gantry move takes about a second, a fill is shown as one transfer for seven, and the 52 min
+measurement takes 10 s.
 
-To render it again (about 4 min on the runner's four cores):
+To render it again (about 15 min on the runner's four cores, in two parallel halves):
 
 ```bash
-pip install numpy scipy matplotlib pyvista vtk gmsh imageio imageio-ffmpeg pillow
-python sim_well.py                      # writes sim_well_fields.npz, which the render reads
-xvfb-run -a python render_cubxl_cu.py   # or --frames 0,900 for stills
+pip install numpy scipy matplotlib pyvista vtk gmsh imageio imageio-ffmpeg pillow cadquery
+python cad/cad_cu_cell.py               # the CAD parts the render reads
+python sim_well_hf.py                   # writes sim_well_hf_fields.npz (else sim_well_fields.npz is used)
+for i in 0 1; do xvfb-run -a python render_cubxl_cu.py --part $i/2 & done; wait
+python render_cubxl_cu.py --assemble 2  # joins the halves, builds the GIF
+xvfb-run -a python render_cubxl_cu.py --stills 12,95   # or just stills, at these seconds
 ```
 
-Stills from the same render: [`cubxl-cu-overview.png`](cubxl-cu-overview.png),
-[`cubxl-cu-fill.png`](cubxl-cu-fill.png), [`cubxl-cu-closeup.png`](cubxl-cu-closeup.png).
+Stills: [real CubXL](cubxl-cu-photo.png), [placing the lids](cubxl-cu-placement.png),
+[deck](cubxl-cu-overview.png), [tools](cubxl-cu-tools.png), [a prep card](cubxl-cu-prep.png),
+[filling](cubxl-cu-fill.png), [close-up](cubxl-cu-closeup.png), [acid](cubxl-cu-acid.png).
 
 ## 2. What the simulations say
+
+Two models. §2.1–2.6 are the first-order [`sim_well.py`](sim_well.py): oxygen transport with
+placeholder Tafel kinetics, one generic metal. §2.7 is [`sim_well_hf.py`](sim_well_hf.md), which
+adds copper's own chemistry, calibrates each alloy and resolves the O-ring's crevice. Where they
+disagree, the second one's numbers are the ones to plan with; the first-order oxygen limits still
+bound what the well can supply.
 
 ![Well transport simulation](sim_well.png)
 
@@ -207,6 +258,35 @@ A still, sealed 150 µL well should have little convection, but a warm deck coul
 would make the real bias smaller than §2.3. The kinetics are placeholders until the bulk cell
 measures them, which is the point of measuring them.
 
+### 2.7 Copper's own chemistry, per alloy
+
+[`sim_well_hf.py`](sim_well_hf.py) (write-up: [`sim_well_hf.md`](sim_well_hf.md)) solves the same
+well with Cu + 2Cl⁻ ⇌ CuCl₂⁻ + e⁻ nearly reversible, so copper that accumulates throttles
+dissolution; a Cu₂O film fitted to each alloy's published decay of i_corr; Cu(I) oxidised by O₂
+(t½ 152 s) and Cu(II) reduced back at the metal; Cu₂O precipitating in the liquid; a carbonate and
+borate buffer for pH; a 30 µF/cm² double layer; the electrolyte potential every step; NAB's second
+anodic path through its Al- and Fe-rich phases; and the squeezed AS568-006 with its crevice resolved
+to 4 µm. Each alloy's bulk cell is calibrated first (R_p within 0.5 % of each target; C70600's
+E_corr, not fitted, comes out at −220 mV SCE against −220 to −233 mV measured).
+
+![The well with copper's own chemistry](sim_well_hf.png)
+
+| | C70600 | C71500 | C95800 (NAB) |
+| --- | --- | --- | --- |
+| E_corr at 30 min, well − bulk | +4.0 mV | +7.9 mV | −28.1 mV |
+| i_corr at 30 min, well ÷ bulk | 0.53 | 0.61 | 0.31 |
+| R_p, well ÷ bulk: nominal / wetted area | 0.67 / 1.22 | 0.60 / 1.08 | 1.75 / 3.17 |
+| +50 mV hold current, well ÷ bulk | 0.43 | 0.53 | 0.30 |
+| Crevice share of the anodic current, OCP | 34 % | 35 % | 45 % |
+| pH at the spot centre after the hold | 7.2 | 7.3 | 5.8 |
+| Share of the oxidised Cu reaching the tube | 0.52 | 0.51 | 0.60 (plus 0.69 mg/L of Al) |
+
+Checks: Cottrell within 1.3 % at 30 s and 0.1 % at 600 s; copper mass balance closed to below 0.001 %; h
+against h/2 changes E_corr by under 0.1 mV and R_p by 0.6 %. Natural convection is subcritical
+unless the deck heats the tray by about 1 K from below, so log the deck temperature. What it
+leaves out (Ni, Fe and Mn films, CuCl and Cu₂(OH)₃Cl, the counter's chlorine, sulfide) is listed in
+[`sim_well_hf.md`](sim_well_hf.md#what-it-still-leaves-out).
+
 ## 3. The deck for copper
 
 Same frame and stations as [`../cubxl-setup.md` §4](../cubxl-setup.md#4-the-deck). What changes,
@@ -256,8 +336,10 @@ points at the EmStat Pico dev kit over the bare module.
 
 1. Everything in [`../cubxl-setup.md` §9](../cubxl-setup.md#9-what-to-do-first) still comes first:
    jog the slot mapping, print the tray and cap, `validate_setup`, the dummy cell.
-2. Print the sealed cap with the AS568-016 skirt seal and check on the bench that the magnet still
-   pulls it off.
+2. Print the cap, carrier, lids and tray from [`cad/`](cad/README.md). On the bench, measure the
+   force to lift the clearance cap off a lid and the electromagnet's pull on the real disc at
+   shimmed gaps, weigh a capped well's water loss over 2 h, and dye-check the wetted area under the
+   squeezed O-ring (the list in [`cad/README.md`](cad/README.md#still-needs-a-bench-test)).
 3. Buy the D1141 seawater and the C71500 and C95800 bars, and run the calibration: three well sizes
    on the CubXL against the 1 cm² bench cell, at least 8 spots each over 2 nights. The simulation
    predicts what the bias should look like; the data decide whether it is real.
