@@ -15,7 +15,7 @@ real coordinates. The simulations are models with stated assumptions, not measur
 ![One copper spot on the CubXL, animated](cubxl-cu-spot.gif)
 
 Full resolution: [`cubxl-cu-spot.mp4`](cubxl-cu-spot.mp4) (1280 × 720, 30 fps, 56 s). The GIF
-above is the same video at 640 × 360 and 10 fps.
+above is the same render at 640 × 360 and twice real time, with its own shorter overlay.
 
 | File | What it is |
 | --- | --- |

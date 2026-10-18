@@ -120,7 +120,7 @@ class Scene:
     def __init__(self):
         pv.global_theme.allow_empty_mesh = True
         self.pl = pv.Plotter(off_screen=True, window_size=(W, H), lighting="light_kit")
-        self.pl.set_background("#eeede8", top="#fcfcfb")
+        self.pl.set_background("#f6f5f1")
         self.pl.enable_anti_aliasing("fxaa")
         self.actors = {}
         self.build_static()
@@ -761,6 +761,59 @@ def overlay(img, scene, story, t, st, inset, xpix, cbar):
     return np.asarray(im)
 
 
+def wrap(d, text, fnt, width):
+    words, lines, cur = text.split(), [], ""
+    for w_ in words:
+        trial = (cur + " " + w_).strip()
+        if d.textlength(trial, font=fnt) <= width:
+            cur = trial
+        else:
+            lines.append(cur)
+            cur = w_
+    lines.append(cur)
+    return lines
+
+
+def overlay_gif(raw, scene, story, t, st, inset, xpix, cbar):
+    """The GIF's own overlay at GW x GH, so its text stays readable."""
+    im = Image.fromarray(raw).resize((GW, GH), Image.LANCZOS)
+    d = ImageDraw.Draw(im, "RGBA")
+    f_title, f_cap, f_lab = font(13, True), font(12), font(10)
+    d.rectangle([0, 0, GW, 20], fill=(252, 252, 251, 230))
+    d.text((8, 4), "Copper corrosion on the CubXL: one spot (proposal)", font=f_title, fill=(11, 11, 11))
+    cap = [c for c in story.captions if c[0] <= t + 1e-9]
+    if cap:
+        lines = wrap(d, cap[-1][2], f_cap, GW - 16)
+        hb = 8 + 15 * len(lines)
+        d.rectangle([0, GH - hb, GW, GH], fill=(252, 252, 251, 235))
+        for i, line in enumerate(lines):
+            d.text((8, GH - hb + 4 + 15 * i), line, font=f_cap, fill=(11, 11, 11))
+    m0, m1 = story.measure
+    if m0 + 0.8 <= t <= m1 + 0.1:
+        sim_t = st["sim_t"] if st["sim_t"] < 1e8 else float(scene.trace_t[-1])
+        mins = sim_t / 60
+        phase = "OCP" if mins < 30 else "LPR" if mins < 32 else "rest" if mins < 37 else "+50 mV hold" if mins < 47 else "OCP"
+        d.rectangle([8, 26, 214, 48], fill=(252, 252, 251, 220))
+        d.text((14, 29), f"t = {mins:4.1f} min  {phase}", font=font(14, True), fill=(11, 11, 11))
+        small = inset.resize((inset.size[0] * 55 // 100, inset.size[1] * 55 // 100), Image.LANCZOS)
+        x0, y0 = GW - small.size[0] - 6, GH - 40 - small.size[1]
+        im.paste(small, (x0, y0))
+        xp, ytop, ybot = xpix(sim_t)
+        d.line([x0 + xp * 0.55, y0 + ytop * 0.55, x0 + xp * 0.55, y0 + ybot * 0.55], fill=(235, 104, 52, 255), width=2)
+        cb = cbar.resize((cbar.size[0] * 60 // 100, cbar.size[1] * 60 // 100), Image.LANCZOS)
+        im.paste(cb, (6, GH - 40 - cb.size[1]))
+    elif t < 3.4 or t > story.total - 2.8:
+        for text, xyz in LABELS:
+            x, y = scene.project(xyz)
+            x, y = x * GW / W, y * GH / H
+            if 0 < x < GW and 26 < y < GH - 30:
+                d.text((x, y), text.replace("\n", " "), font=f_lab, fill=(11, 11, 11), anchor="ms", stroke_width=2, stroke_fill=(252, 252, 251))
+    return im
+
+
+GW, GH, GIF_STEP = 640, 360, 6  # every 6th frame at 10 fps: twice real time
+
+
 # ------------------------------------------------------------------ main
 def main():
     ap = argparse.ArgumentParser()
@@ -792,17 +845,21 @@ def main():
         st = state_at(story, t)
         scene.set_state(st)
         scene.set_camera(cam_at(story, t))
-        img = overlay(scene.frame(), scene, story, t, st, inset, xpix, cbar)
+        raw = scene.frame()
+        img = overlay(raw, scene, story, t, st, inset, xpix, cbar)
         writer.append_data(img)
         for name, ts in (("overview", 2.9), ("fill", story.fill_still), ("closeup", story.measure[1] - 0.5)):
             if k == int(round(ts * FPS)):
                 Image.fromarray(img).save(HERE / f"cubxl-cu-{name}.png", optimize=True)
-        if k % 3 == 0:
-            gif_frames.append(Image.fromarray(img).resize((640, 360), Image.LANCZOS))
+        if k % GIF_STEP == 0:
+            gif_frames.append(overlay_gif(raw, scene, story, t, st, inset, xpix, cbar))
         if k % 100 == 0:
             print("frame", k, flush=True)
     writer.close()
-    pal = gif_frames[len(gif_frames) // 2].quantize(colors=160, method=Image.Quantize.MEDIANCUT)
+    sheet = Image.new("RGB", (GW, GH * 6))
+    for i, j in enumerate(np.linspace(0, len(gif_frames) - 1, 6).astype(int)):
+        sheet.paste(gif_frames[j], (0, GH * i))
+    pal = sheet.quantize(colors=96, method=Image.Quantize.MEDIANCUT)
     gq = [g.quantize(palette=pal, dither=Image.Dither.NONE) for g in gif_frames]
     gq[0].save(HERE / "cubxl-cu-spot.gif", save_all=True, append_images=gq[1:], duration=100, loop=0, optimize=True)
     # one still per scene for the README
