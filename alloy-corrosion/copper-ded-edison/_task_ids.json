@@ -1,0 +1,62 @@
+{
+  "c1-01-small-cell-artifacts-cu": {
+    "batch": 1,
+    "task_id": "3b467e17-0d18-4f39-bcc0-ea31409b87bd",
+    "job": "LITERATURE_HIGH",
+    "submitted": "2026-10-18T01:19:44Z"
+  },
+  "c1-02-dc-sequence-for-cu": {
+    "batch": 1,
+    "task_id": "6780e82f-75ad-4e6d-bcc6-1d7d4c81e1c8",
+    "job": "LITERATURE",
+    "submitted": "2026-10-18T01:19:59Z"
+  },
+  "c1-03-element-resolved-dissolution-cu": {
+    "batch": 1,
+    "task_id": "45bee772-225f-417b-b6e6-ab3631ffd309",
+    "job": "LITERATURE_HIGH",
+    "submitted": "2026-10-18T01:20:01Z"
+  },
+  "c1-04-zone-resolved-repair-electrochem": {
+    "batch": 1,
+    "task_id": "8615ce8a-6a59-4dd1-b44c-7e3fc3b832b3",
+    "job": "LITERATURE",
+    "submitted": "2026-10-18T01:20:03Z"
+  },
+  "c1-05-specimen-prep-surface-state-cu": {
+    "batch": 1,
+    "task_id": "a5b11125-a660-4aac-8d39-7d801a6578c3",
+    "job": "LITERATURE",
+    "submitted": "2026-10-18T01:20:03Z"
+  },
+  "c1-06-electrolyte-series-naval": {
+    "batch": 1,
+    "task_id": "505fcd13-7172-4cbd-bb62-7f7c37a64ce6",
+    "job": "LITERATURE",
+    "submitted": "2026-10-18T01:20:05Z"
+  },
+  "c1-07-mini-jet-flow-cell-cu": {
+    "batch": 1,
+    "task_id": "2e6fd2b4-00d1-4d16-ba36-0c879952bc24",
+    "job": "LITERATURE",
+    "submitted": "2026-10-18T01:20:06Z"
+  },
+  "c1-08-precedent-automated-cu-corrosion": {
+    "batch": 1,
+    "task_id": "003141e8-ee2f-4876-a291-b97aed16bc46",
+    "job": "PRECEDENT",
+    "submitted": "2026-10-18T01:20:07Z"
+  },
+  "c1-09-rapid-solidification-proxies-cu": {
+    "batch": 1,
+    "task_id": "235c810c-380a-4154-88be-bb5e315f0ebe",
+    "job": "LITERATURE",
+    "submitted": "2026-10-18T01:20:08Z"
+  },
+  "c1-10-coulometric-oxide-reduction-cu": {
+    "batch": 1,
+    "task_id": "89ec074c-6d1b-42a3-9f97-25c1aced8bb6",
+    "job": "LITERATURE",
+    "submitted": "2026-10-18T01:20:09Z"
+  }
+}
