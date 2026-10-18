@@ -20,6 +20,7 @@ commits. Nothing in it has been bought, built or tested.
 | [`corrosion_numbers.py`](corrosion_numbers.py) → [`corrosion_numbers.json`](corrosion_numbers.json) | Every computed number here: currents, charges, volumes, times, the spread's excess Si |
 | [`plot_current_ranges.py`](plot_current_ranges.py) → [`current-ranges.png`](current-ranges.png) | The chart in §5 |
 | [`references.md`](references.md) | Every reference, what it supports, and what was read (abstract, full text or metadata) |
+| [`copper-ded-edison/`](copper-ded-edison/README.md) | Ten follow-up Edison questions for the copper version: naval Cu–Ni and NAB made by blown-powder DED. Written, not yet run |
 
 ## In short
 
