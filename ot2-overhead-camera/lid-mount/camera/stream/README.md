@@ -110,3 +110,12 @@ only package added); `~/ac-training-lab` is an upstream sparse checkout with `de
 by this one; `requests` is in `…/picam/venv`. The Lambda URL was copied from the atomizer cam's
 `my_secrets.py` straight into this Pi's over SSH, so it never passed through the session's
 output. Nothing else on the Pi was changed; CubOS kept running throughout.
+
+| | |
+| --- | --- |
+| Started | 2026-10-18 04:32:24 UTC. The Lambda's `end` found nothing to end; `create` returned the broadcast within 10 s and filed it in `PLdKz1vXA-rfQ` (`playlist_add_status: added`) |
+| First broadcast | [`VUPZWQcTFWg`](https://www.youtube.com/watch?v=VUPZWQcTFWg), *OT-2 stream hqcam-ot2-lid, 2026-10-18 UTC 04:32*, public |
+| Pipeline | `rpicam-vid --codec yuv420 --mode 2028:1520 1536x1152 @ 10 fps` → `ffmpeg -f rawvideo … libx264 ultrafast, -r 10 -g 20` → RTMP. ffmpeg logged `Input #1, rawvideo … 1536x1152, 10 tbr` and `Output #0 … 1536x1152, 10 fps` |
+| Cost on the Pi 5 | ffmpeg about 18 % of one core, rpicam-vid negligible; 45 °C, `throttled=0x0`, load 0.16 with CubOS idle |
+| Upload | 4.5 MB acknowledged by YouTube in the first 40 s (about 0.9 Mbit/s with the lab dark; expect more with the lights on) |
+| Watchdog | no entries; the 180 s start-up grace applied |
