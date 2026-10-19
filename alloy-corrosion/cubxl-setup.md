@@ -167,6 +167,11 @@ labware:
 
 ## 7. Bill of materials
 
+**To build it, use [`bom/README.md`](bom/README.md)** (2026-10-19). It is one list for both alloys,
+with a STEP file for every printed part and a checked link for every bought part. The electrode
+cap there is the CAD version: its reference sits 3.0 mm above the metal, not 1.5 mm, and each lid
+has one well. The tables below are the original plan.
+
 The full list with sources and dates is [`bom.csv`](bom.csv). Prices seen on 2026-10-17 from the
 runner unless noted; several vendor pages (Innovative Instruments, WPI, Digi-Key, McMaster) are
 price-on-request or block the runner, so those rows are estimates to confirm from the Pi or by

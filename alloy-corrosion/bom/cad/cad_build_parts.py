@@ -55,8 +55,11 @@ TUBE_X, TUBE_Y, TUBE_RECT = [176.0 + 12.0 * k for k in range(8)], (28.0, 46.0), 
 RACK2_A1, RACK2_A2, PITCH, ROWS = (108.0, 89.0), (99.5, 89.0), 8.5, 15
 
 # Tube and tip fits. Measured values replace these; print the fit strips first.
-TUBE = dict(body_d=8.0, hole_d=8.4, below_rim=29.0, plate_top=31.0)  # 0.5 mL PP tube hanging by its rim
-TIP = dict(hole_d=5.0, plate_top=64.7)  # Opentrons 20 uL tip; its collar rests on the plate, top at about 66
+# Eppendorf Safe-Lock 0.5 mL (technical data sheet): 7.8 mm OD under a 2 mm rim of about 9.6 mm, 30 mm rim top to tip.
+# Plate top 30 puts the rims at 32, the tube-rack top the deck checks use; the tips clear the base by 0 to 1 mm.
+TUBE = dict(body_d=7.8, hole_d=8.2, below_rim=28.0, plate_top=30.0)  # 0.5 mL PP tube hanging by its rim
+# Opentrons 20 uL tip: 39.2 mm long, 3.27 mm ID at the top (labware definition); its OD and collar are not published.
+TIP = dict(hole_d=5.0, plate_top=64.7)  # the collar rests on the plate; tip tops at about Ben's 66
 
 
 # ------------------------------------------------------------------ parts
@@ -183,7 +186,7 @@ def bench_cell():
     screws = [(sx * 17.0, sy * 17.0) for sx in (-1, 1) for sy in (-1, 1)]
     for x, y in screws:
         body = body.cut(cyl(P["insert_d"], -1, 6.0, x, y))  # M3 heat-set inserts from below, 2 mm under the liquid
-    # clamp plate: coupon pocket on top, WE spring pin through its floor, M3 x 10 from below
+    # clamp plate: coupon pocket on top, WE spring pin through its floor, M3 x 8 from below in 5 mm counterbores
     plate = boxs(-23, -23, -8.0, 23, 23, 0)
     q = P["pocket"] / 2
     plate = plate.cut(boxs(-q, -q, -6.0, q, q, 1))
@@ -194,8 +197,8 @@ def bench_cell():
     plate = plate.cut(boxs(-2.0, -2.0, -9, 2.0, 24, -8.0 + 3.0))  # wire channel out to the +y edge
     for x, y in screws:
         plate = plate.cut(cyl(3.4, -9, 1, x, y))
-        plate = plate.cut(cyl(6.5, -9, -8.0 + 3.2, x, y))
-    # loose cover: a 70 mm disc with a 4 mm skirt; holes for a 12 mm and a 6 mm electrode, the counter lead, a vent
+        plate = plate.cut(cyl(6.5, -9, -8.0 + 5.0, x, y))  # 3 mm under the head: an M3 x 8 engages 5 mm
+    # loose cover: a 70 mm disc with a 4 mm skirt; holes for a 10 mm graphite counter, a 6 mm reference, a spare, a vent
     cover = cyl(70.0, h, h + 3.0).fuse(cyl(70.0, h - 4.0, h + 0.01).cut(cyl(2 * r_out + 0.8, h - 5, h + 1))).clean()
     for d, x, y in ((12.5, 0, 12.0), (6.5, -14.0, -6.0), (4.0, 14.0, -6.0), (2.0, 0, -20.0)):
         cover = cover.cut(cyl(d, h - 1, h + 4, x, y))
@@ -204,7 +207,8 @@ def bench_cell():
         "oring": "AS568-013", "oring_id": idd, "cbore_d": cbore_d, "cbore_h": cbore_h,
         "squeeze_pct": round(100 * (CS - cbore_h) / CS, 1), "nominal_area_cm2": round(math.pi / 4 * idd ** 2 / 100, 3),
         "inner_d": 2 * r_in, "height": h, "floor": floor, "fill_ml_to_10mm_below_rim": round(vol_ml),
-        "screws": "4 x M3 x 10 into heat-set inserts at (+/-17, +/-17)"}
+        "screws": "4 x M3 x 8 into heat-set inserts at (+/-17, +/-17)",
+        "cover_holes": "12.5 mm: graphite counter (10 mm rod); 6.5 mm: reference (Ossila C2015B1 is 6 mm); 4.0 mm: spare; 2.0 mm: vent"}
 
 
 # ------------------------------------------------------------------ the ledge check
@@ -270,8 +274,8 @@ def main():
                                             "bench only", 0.02, {"hole_d": ds})
     body, plate, cover, m = bench_cell()
     parts["bench_cell_body"] = export("bench_cell_body", body, "250 mL flat cell, AS568-013 window in the floor", "bench", 0.03, m)
-    parts["bench_cell_clamp"] = export("bench_cell_clamp", plate, "clamp plate: 20 x 20 coupon pocket, WE spring pin, 4 x M3", "bench")
-    parts["bench_cell_cover"] = export("bench_cell_cover", cover, "loose cover: 12.5 and 6.5 mm electrode holes, counter lead, vent", "bench")
+    parts["bench_cell_clamp"] = export("bench_cell_clamp", plate, "clamp plate: 20 x 20 coupon pocket, WE spring pin, 4 x M3 x 8", "bench")
+    parts["bench_cell_cover"] = export("bench_cell_cover", cover, "loose cover: 10 mm counter and 6 mm reference holes, a spare, a vent", "bench")
     meta = {"units": "mm", "made_by": "cad_build_parts.py (CadQuery " + cq.__version__ + ")", "ledge_check": ledge_check(),
             "fits_to_measure": {"tube": TUBE, "tip": TIP}, "parts": parts}
     (HERE / "build_parts.json").write_text(json.dumps(meta, indent=1) + "\n")

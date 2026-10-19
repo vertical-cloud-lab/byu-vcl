@@ -35,10 +35,10 @@
  },
  "fits_to_measure": {
   "tube": {
-   "body_d": 8.0,
-   "hole_d": 8.4,
-   "below_rim": 29.0,
-   "plate_top": 31.0
+   "body_d": 7.8,
+   "hole_d": 8.2,
+   "below_rim": 28.0,
+   "plate_top": 30.0
   },
   "tip": {
    "hole_d": 5.0,
@@ -174,9 +174,9 @@
    "bbox_mm": [
     96.0,
     34.0,
-    31.02
+    30.02
    ],
-   "volume_cm3": 19.11,
+   "volume_cm3": 18.98,
    "tube_xy": [
     [
      176.0,
@@ -243,8 +243,8 @@
      46.0
     ]
    ],
-   "plate_top_z": 31.0,
-   "hole_d": 8.4,
+   "plate_top_z": 30.0,
+   "hole_d": 8.2,
    "labels": true
   },
   "tip_rack_2x15": {
@@ -337,24 +337,25 @@
    "height": 90.0,
    "floor": 8.0,
    "fill_ml_to_10mm_below_rim": 204,
-   "screws": "4 x M3 x 10 into heat-set inserts at (+/-17, +/-17)"
+   "screws": "4 x M3 x 8 into heat-set inserts at (+/-17, +/-17)",
+   "cover_holes": "12.5 mm: graphite counter (10 mm rod); 6.5 mm: reference (Ossila C2015B1 is 6 mm); 4.0 mm: spare; 2.0 mm: vent"
   },
   "bench_cell_clamp": {
    "step": "bench_cell_clamp.step",
    "stl": "bench_cell_clamp.stl",
-   "what": "clamp plate: 20 x 20 coupon pocket, WE spring pin, 4 x M3",
+   "what": "clamp plate: 20 x 20 coupon pocket, WE spring pin, 4 x M3 x 8",
    "place": "bench",
    "bbox_mm": [
     46.0,
     46.0,
     8.01
    ],
-   "volume_cm3": 13.46
+   "volume_cm3": 13.28
   },
   "bench_cell_cover": {
    "step": "bench_cell_cover.step",
    "stl": "bench_cell_cover.stl",
-   "what": "loose cover: 12.5 and 6.5 mm electrode holes, counter lead, vent",
+   "what": "loose cover: 10 mm counter and 6 mm reference holes, a spare, a vent",
    "place": "bench",
    "bbox_mm": [
     70.07,

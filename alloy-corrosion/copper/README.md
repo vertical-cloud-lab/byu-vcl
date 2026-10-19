@@ -330,7 +330,8 @@ kit ($141), trace-metal HNO₃ ($238), FKM O-rings in three sizes plus the cap s
 and three alloy bars on quote. Priced items come to about $650. ICP-MS has no BYU rate found yet;
 ASU's $37 a sample is the benchmark. The potentiostat question is unchanged, except that the
 copper plan wants a galvanostatic mode (oxide coulometry) and a second channel for the ZRA, which
-points at the EmStat Pico dev kit over the bare module.
+points at the EmStat Pico dev kit over the bare module. The build list for both alloys, with a STEP file
+for every printed part and a checked link for every bought part, is [`../bom/`](../bom/README.md).
 
 ## 5. What to do first
 

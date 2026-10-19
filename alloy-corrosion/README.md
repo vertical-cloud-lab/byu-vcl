@@ -24,7 +24,8 @@ commits. Nothing in it has been bought, built or tested.
 | [`copper/`](copper/README.md) | The copper version: protocol, specimens, BOM delta, a simulation of oxygen and copper transport in the well against a bulk cell, the copper deck check, and a 3D animation of one spot on the CubXL |
 | [`cubxl-setup.md`](cubxl-setup.md) | What it looks like on the CubXL: head, deck layout, a night step by step, electronics, the powder doser's (non-)role |
 | [`plot_deck_layout.py`](plot_deck_layout.py) → [`deck-layout.png`](deck-layout.png), [`deck-layout-check.json`](deck-layout-check.json) | The deck and head figure, and a static tool-shadow check of every planned tool-down event |
-| [`bom.csv`](bom.csv) | Bill of materials by phase, with price, source and date seen |
+| [`bom.csv`](bom.csv) | Bill of materials by phase, with price, source and date seen (the 2026-10-17 plan) |
+| [`bom/`](bom/README.md) | **What to print and buy to build it**, for both alloys: a STEP file for every printed part, a checked link for every bought part, and the v2 well lid |
 
 ## In short
 
@@ -362,7 +363,8 @@ arrives.
 ## 6. What to buy, borrow or print
 
 The deck and head layout, and the full bill of materials by phase, are in
-[`cubxl-setup.md`](cubxl-setup.md) and [`bom.csv`](bom.csv). The short version:
+[`cubxl-setup.md`](cubxl-setup.md) and [`bom.csv`](bom.csv). To build it, use [`bom/`](bom/README.md):
+STEP files for every printed part and checked links for every bought part. The short version:
 
 | Item | Source and price (2026-10-13) | Note |
 | --- | --- | --- |

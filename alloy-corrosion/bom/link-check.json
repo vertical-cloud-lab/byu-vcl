@@ -1,0 +1,521 @@
+{
+ "runs": {
+  "runner": {
+   "when_utc": "2026-10-19 22:05",
+   "results": {
+    "https://www.theoringstore.com/store/index.php?main_page=product_info&cPath=367_2040_2039&products_id=38308": {
+     "ids": [
+      "B01"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.theoringstore.com/store/index.php?main_page=product_info&cPath=367_72_77&products_id=3342": {
+     "ids": [
+      "B01"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.theoringstore.com/store/index.php?main_page=product_info&cPath=367_2040_2039&products_id=38310": {
+     "ids": [
+      "B02"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.theoringstore.com/store/index.php?main_page=product_info&cPath=367_2040_2039&products_id=38312": {
+     "ids": [
+      "B03"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.theoringstore.com/store/index.php?main_page=product_info&cPath=367_2040_2039&products_id=38315": {
+     "ids": [
+      "B04"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.theoringstore.com/store/index.php?main_page=product_info&cPath=367_86_91&products_id=4016": {
+     "ids": [
+      "B04"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.theoringstore.com/store/index.php?main_page=product_info&cPath=367_86_91&products_id=4019": {
+     "ids": [
+      "B05"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.digikey.com/en/products/detail/same-sky-formerly-cui-devices/CPG-37-TH-TR/25666017": {
+     "ids": [
+      "B06"
+     ],
+     "status": 403,
+     "final_url": null
+    },
+    "https://www.sameskydevices.com/product/interconnect/connectors/pogo-pins/cpg-37-th-tr": {
+     "ids": [
+      "B06"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.adafruit.com/product/2430": {
+     "ids": [
+      "B07"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://totalelement.com/products/4mm-x-2mm-neodymium-rare-earth-permanent-disc-magnets-n52-250-pack": {
+     "ids": [
+      "B08"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.supermagnete.de/eng/disc-magnets-neodymium/disc-magnet-4mm-2mm_S-04-02-N": {
+     "ids": [
+      "B08"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://totalelement.com/products/1-inch-steel-disc-with-3m-adhesive-blank-metal-strike-plates-50-pack": {
+     "ids": [
+      "B09"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://totalelement.com/products/1-inch-steel-disc-blank-metal-strike-plates-250-pack": {
+     "ids": [
+      "B09"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.mcmaster.com/88625K62/": {
+     "ids": [
+      "B10"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.digikey.com/en/products/detail/3m/1181-X-1-4/30708": {
+     "ids": [
+      "B11"
+     ],
+     "status": 403,
+     "final_url": null
+    },
+    "https://www.acehardware.com/departments/hardware/metal-sheets-and-rods/brass-rods/5172754": {
+     "ids": [
+      "B12"
+     ],
+     "status": 403,
+     "final_url": null
+    },
+    "https://www.3djake.com/ruthex/threaded-insert-m3-100-pieces": {
+     "ids": [
+      "B13"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.amazon.com/dp/B08BCRZZS3": {
+     "ids": [
+      "B13"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.mcmaster.com/91292A112/": {
+     "ids": [
+      "B14"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.adafruit.com/product/1446": {
+     "ids": [
+      "B15"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.adafruit.com/product/2517": {
+     "ids": [
+      "B16"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.showmecables.com/belden-9534-4-conductors-24-awg-shielded-pvc-computer-cable-for-eia-rs-232": {
+     "ids": [
+      "B17"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.adafruit.com/product/4874": {
+     "ids": [
+      "B18"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.2in.com/products/reference/reference.html": {
+     "ids": [
+      "B19"
+     ],
+     "status": 429,
+     "final_url": null
+    },
+    "https://wpiinc.com/products/sdr2-super-dri-ref-reference-electrode": {
+     "ids": [
+      "B19"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.ossila.com/products/ag-agcl-reference-electrode": {
+     "ids": [
+      "B20"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.advent-rm.com/en-gb/products/pure-metals/platinum/form/wire/line/pt5434": {
+     "ids": [
+      "B21"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.sigmaaldrich.com/US/en/product/aldrich/349402": {
+     "ids": [
+      "B21"
+     ],
+     "status": "TimeoutError",
+     "final_url": null
+    },
+    "https://us.chemicalstore.com/carbon-electrode-graphite-rod-high-purity-density-and-conductivity-10-mm-x-100-mm": {
+     "ids": [
+      "B22"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.digikey.com/en/products/detail/palmsens-bv/ESPICO-ALL/12817917": {
+     "ids": [
+      "B23"
+     ],
+     "status": 403,
+     "final_url": null
+    },
+    "https://www.palmsens.com/product/oem-emstat-pico-module/": {
+     "ids": [
+      "B23"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.digikey.com/en/products/detail/hammond-manufacturing/1590B/131015": {
+     "ids": [
+      "B24"
+     ],
+     "status": 403,
+     "final_url": null
+    },
+    "https://www.digikey.com/en/products/detail/palmsens-bv/ESPICO-DK/12817919": {
+     "ids": [
+      "B25"
+     ],
+     "status": 403,
+     "final_url": null
+    },
+    "https://www.palmsens.com/product/oem-emstat-pico-development-kit/": {
+     "ids": [
+      "B25"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.digikey.com/en/products/detail/yageo/MFP-25BRD52-10K/2058797": {
+     "ids": [
+      "B26"
+     ],
+     "status": 403,
+     "final_url": null
+    },
+    "https://www.digikey.com/en/products/detail/panasonic-industry/ECQ-E1105KF/56380": {
+     "ids": [
+      "B26"
+     ],
+     "status": 403,
+     "final_url": null
+    },
+    "https://github.com/matthew-yates/MYSTAT": {
+     "ids": [
+      "B27"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://zenodo.org/records/4252476": {
+     "ids": [
+      "B27"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.adafruit.com/product/284": {
+     "ids": [
+      "B28"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://shop.metallographic.com/products/pdaa-01p12": {
+     "ids": [
+      "B29"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://shop.metallographic.com/products/wma-1001": {
+     "ids": [
+      "B30"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://shop.metallographic.com/products/atl-3012": {
+     "ids": [
+      "B31"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://shop.metallographic.com/products/si-100a": {
+     "ids": [
+      "B32"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://shop.metallographic.com/products/np-7012": {
+     "ids": [
+      "B33"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://us.store.bambulab.com/products/petg-hf": {
+     "ids": [
+      "B34"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.prusa3d.com/product/prusament-petg-jet-black-1kg/": {
+     "ids": [
+      "B34"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://opentrons.com/products/opentrons-20-l-tips-160-racks-800-refills": {
+     "ids": [
+      "B35"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.fishersci.com/shop/products/snap-cap-microcentrifuge-safe-lock-tubes/p-194501": {
+     "ids": [
+      "B36"
+     ],
+     "status": 403,
+     "final_url": null
+    },
+    "https://www.fishersci.com/shop/products/sodium-chloride-crystalline-certified-acs-fisher-chemical-6/S271500": {
+     "ids": [
+      "B37"
+     ],
+     "status": 403,
+     "final_url": null
+    },
+    "https://www.sigmaaldrich.com/US/en/product/sigald/s9888": {
+     "ids": [
+      "B37"
+     ],
+     "status": "TimeoutError",
+     "final_url": null
+    },
+    "https://www.govsci.com/product-detail/Ricca--Chemical/8363-1/EA": {
+     "ids": [
+      "B38"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.calpaclab.com/synthetic-seawater-4-liter/rcc-r8363000-4a": {
+     "ids": [
+      "B38"
+     ],
+     "status": 200,
+     "final_url": "https://www.cplabsafety.com/synthetic-seawater-4-liter/rcc-r8363000-4a"
+    },
+    "https://www.sigmaaldrich.com/US/en/product/sigald/208043": {
+     "ids": [
+      "B39"
+     ],
+     "status": "TimeoutError",
+     "final_url": null
+    },
+    "https://catalog.aquaphoenixsci.com/products/testing-supplies/test-kits/k-9510-sulfide-total-soluble": {
+     "ids": [
+      "B40"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.govsci.com/product-detail/Fisher--Scientific/A509P500/EA/": {
+     "ids": [
+      "B41"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.fishersci.com/shop/products/nitric-acid-tracemetal-grade-fisher-chemical-3/A509P500": {
+     "ids": [
+      "B41"
+     ],
+     "status": 403,
+     "final_url": null
+    },
+    "https://www.govsci.com/product-detail/VWR--Scientific/89049-170/CS/": {
+     "ids": [
+      "B42"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.vwr.com/us/en/product/4648943/vwr-sterile-metal-free-centrifuge-tubes-pp": {
+     "ids": [
+      "B42"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.onlinemetals.com/en/buy/copper/1-inch-od-copper-nickel-round-bar-715/pid/mp-00059842": {
+     "ids": [
+      "B43"
+     ],
+     "status": 403,
+     "final_url": null
+    },
+    "https://www.farmerscopper.com/copper-nickel-715-c715-c71500.html": {
+     "ids": [
+      "B43"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.onlinemetals.com/en/buy/copper-nickel-round-bar": {
+     "ids": [
+      "B44"
+     ],
+     "status": 403,
+     "final_url": null
+    },
+    "https://www.farmerscopper.com/copper-nickel-706-c706-c70600.html": {
+     "ids": [
+      "B44"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.atlasbronze.com/C95800-Product-Sheet-s/473874.htm": {
+     "ids": [
+      "B45"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.anchorbronze.com/c95800": {
+     "ids": [
+      "B45"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.mcmaster.com/8546K15/": {
+     "ids": [
+      "B46"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.zoro.com/chicago-latrobe-135-degree-heavy-duty-jobber-length-drill-chicago-latrobe-150asp-steam-oxide-hss-rhsrhc-no-46-45716/i/G1828906/": {
+     "ids": [
+      "B47"
+     ],
+     "status": 403,
+     "final_url": null
+    },
+    "https://www.protool-ltd.co.uk/products/3332700": {
+     "ids": [
+      "B48"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://github.com/vertical-cloud-lab/byu-vcl/blob/f1b4666/modules/electromagnetic-capper/BOM.md": {
+     "ids": [
+      "H01",
+      "H04"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.fishersci.com/shop/products/clear-voa-glass-vials-0-125in-septa/12-100-112": {
+     "ids": [
+      "H03"
+     ],
+     "status": 403,
+     "final_url": null
+    },
+    "https://www.testequity.com/product/388CH155-19-155": {
+     "ids": [
+      "H05"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://github.com/vertical-cloud-lab/byu-vcl/blob/157ab1e/SOP/sem-eds-polishing-sop.md": {
+     "ids": [
+      "H07"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://atlas-scientific.com/kits/conductivity-k-1-0-kit/": {
+     "ids": [
+      "H09"
+     ],
+     "status": 200,
+     "final_url": null
+    }
+   }
+  }
+ }
+}

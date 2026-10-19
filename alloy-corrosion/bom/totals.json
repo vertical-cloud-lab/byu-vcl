@@ -1,0 +1,28 @@
+{
+ "printed_parts": 18,
+ "buy_rows": 48,
+ "unpriced": [
+  "B10 Drill rod 3 mm O1 tool steel; 3 ft",
+  "B45 C95800 nickel-aluminium bronze; continuous-cast ba",
+  "B46 PTFE rod 3/4 in; 1 ft (the S4 blank: cut 6 mm disc",
+  "B48 7 mm flat-bottom drill or 7 mm 2-flute flat end mi"
+ ],
+ "core": {
+  "both_hardware_and_consumables_excl_tips": 288.11,
+  "tips_if_none_on_hand": 530.0,
+  "electrodes_both": 642.0,
+  "aluminium_only": 83.65,
+  "copper_only": 1122.93,
+  "copper_optional": 788.0
+ },
+ "potentiostat_options": {
+  "1_emstat_pico_module_with_box_and_dummy_cell": 593.45,
+  "1_plus_usb_serial_adapter": 608.2,
+  "2_emstat_pico_dev_kit": 1921.36,
+  "3_mystat_parts_and_dummy_cell": 227.81
+ },
+ "aluminium_start": {
+  "phase_A_shakedown_borrowed_potentiostat": 371.76,
+  "plus_electrodes_and_option_1": 1607.21
+ }
+}

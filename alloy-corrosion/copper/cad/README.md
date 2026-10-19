@@ -5,6 +5,14 @@ the [copper protocol](../protocol.md) §2 asked for before anything is built. No
 been printed or bench-tested. Every number below comes from [`cad_check.py`](cad_check.py) →
 [`cad_check.json`](cad_check.json); every dimension from [`cad_cu_cell.py`](cad_cu_cell.py).
 
+**Print the v2 well lid, not `well_lid.step`** (found 2026-10-19, making the [BOM](../../bom/README.md)).
+Here the AS568-006 seals against a 0.2 mm printed ledge between the counterbore and the 8 mm
+bore. As an annular plate that ledge sees about 200 MPa at the nominal 23.6 N, four times PETG's
+yield, and would lift 0.66 mm, more than the ring's 0.38 mm squeeze.
+[`well_lid_v2_006.step`](../../bom/cad/well_lid_v2_006.step) adds a 0.4 mm step under the bore,
+so the ceiling is 0.6 mm thick (about 24 MPa). It still clears the carrier's legs, by 0.2 mm. The files in this
+folder are unchanged, so the simulations and the animation still match them.
+
 ![Station S1 in section with the cap seated, and the parts exploded](cad_preview.png)
 
 ![The seated station cut through the well axis, with dimensions](cad_section.png)
