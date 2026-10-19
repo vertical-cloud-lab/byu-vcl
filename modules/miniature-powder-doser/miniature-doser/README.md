@@ -233,9 +233,9 @@ the doser's weight, which way the magnets face, and what they pull on.
   of that in practice, so 10 to 20 N for the pair: 5 to 10 times the 2 N. Side-on, friction would give perhaps a
   quarter of that, which is marginal.
 - **Reach in Y:** the tip trails the capper by about 94 mm here. The doser's row is the whole Y travel, 234 mm,
-  which takes 8 vials at Ben's 33 mm pitch. The tools reach 234 − 94 = 140 mm of it, or 5 vials. The back 3 vials
-  get powder but can't be capped or pipetted. If the Y travel went back to the 309 mm it was before 2026-09-26, 7
-  of 10 vials would be in reach.
+  which takes 8 vials at 33 mm, about the spacing of Ben's `vial_1` and `vial_2`. The tools reach 234 − 94 = 140 mm
+  of it, or 5 vials. The back 3 vials get powder but can't be capped or pipetted. Every mm of Y travel adds a mm of
+  shared row: GRBL allowed 309 mm until 2026-09-26 (`$131`), and with that 7 of 10 vials would be in reach.
 - **The offset is what to measure first.** It is the distance from the capper's axis to the front face of the
   gantry's beam, plus a few mm. Every mm of it is a mm of shared row lost. Pointing the capillary forwards, as drawn,
   keeps it small. Turned side-on, the doser's 142 mm width would add about 60 mm.
