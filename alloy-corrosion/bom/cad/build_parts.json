@@ -1,0 +1,367 @@
+{
+ "units": "mm",
+ "made_by": "cad_build_parts.py (CadQuery 2.8.0)",
+ "ledge_check": {
+  "model": "annular Kirchhoff plate, clamped at r 3.8 (between the 3.65 counterbore wall and the 4.0 bore), free at the inner edge, the O-ring's reaction as a ring load at its centre radius 2.34; PETG E 2 GPa, nu 0.38; yield about 50 MPa",
+  "squeeze_mm": 0.38,
+  "v1_0.2mm": {
+   "low": {
+    "edge_stress_MPa": 84.296,
+    "lift_at_ring_mm": 0.278
+   },
+   "nominal": {
+    "edge_stress_MPa": 198.939,
+    "lift_at_ring_mm": 0.655
+   },
+   "high": {
+    "edge_stress_MPa": 429.911,
+    "lift_at_ring_mm": 1.416
+   }
+  },
+  "v2_0.6mm": {
+   "low": {
+    "edge_stress_MPa": 9.999,
+    "lift_at_ring_mm": 0.011
+   },
+   "nominal": {
+    "edge_stress_MPa": 23.597,
+    "lift_at_ring_mm": 0.027
+   },
+   "high": {
+    "edge_stress_MPa": 50.993,
+    "lift_at_ring_mm": 0.058
+   }
+  }
+ },
+ "fits_to_measure": {
+  "tube": {
+   "body_d": 8.0,
+   "hole_d": 8.4,
+   "below_rim": 29.0,
+   "plate_top": 31.0
+  },
+  "tip": {
+   "hole_d": 5.0,
+   "plate_top": 64.7
+  }
+ },
+ "parts": {
+  "well_lid_v2_006": {
+   "step": "well_lid_v2_006.step",
+   "stl": "well_lid_v2_006.stl",
+   "what": "well lid v2 for AS568-006",
+   "place": "W frame: on the coupon face; deck = W + (station x, 240, 20)",
+   "bbox_mm": [
+    24.0,
+    35.0,
+    10.04
+   ],
+   "volume_cm3": 5.02,
+   "oring": "AS568-006",
+   "oring_id": 2.9,
+   "cbore_d": 7.3,
+   "cbore_h": 1.4,
+   "throat_d": 2.9,
+   "neck_d": 4.0,
+   "neck_z": [
+    1.6,
+    2.0
+   ],
+   "squeeze_pct": 21.3,
+   "nominal_area_cm2": 0.0661
+  },
+  "well_lid_v2_008": {
+   "step": "well_lid_v2_008.step",
+   "stl": "well_lid_v2_008.stl",
+   "what": "well lid v2 for AS568-008",
+   "place": "W frame: on the coupon face; deck = W + (station x, 240, 20)",
+   "bbox_mm": [
+    24.0,
+    35.0,
+    10.04
+   ],
+   "volume_cm3": 4.99,
+   "oring": "AS568-008",
+   "oring_id": 4.47,
+   "cbore_d": 8.87,
+   "cbore_h": 1.4,
+   "throat_d": 4.47,
+   "neck_d": 4.47,
+   "neck_z": [
+    1.6,
+    2.0
+   ],
+   "squeeze_pct": 21.3,
+   "nominal_area_cm2": 0.1569
+  },
+  "well_lid_v2_010": {
+   "step": "well_lid_v2_010.step",
+   "stl": "well_lid_v2_010.stl",
+   "what": "well lid v2 for AS568-010",
+   "place": "W frame: on the coupon face; deck = W + (station x, 240, 20)",
+   "bbox_mm": [
+    24.0,
+    35.0,
+    10.04
+   ],
+   "volume_cm3": 4.95,
+   "oring": "AS568-010",
+   "oring_id": 6.07,
+   "cbore_d": 10.47,
+   "cbore_h": 1.4,
+   "throat_d": 6.07,
+   "neck_d": 6.07,
+   "neck_z": [
+    1.6,
+    2.0
+   ],
+   "squeeze_pct": 21.3,
+   "nominal_area_cm2": 0.2894
+  },
+  "cup_block_3": {
+   "step": "cup_block_3.step",
+   "stl": "cup_block_3.stl",
+   "what": "rinse 2, rinse 1 and park cups with the lid's boss",
+   "place": "D frame, as is",
+   "bbox_mm": [
+    92.0,
+    28.0,
+    49.03
+   ],
+   "volume_cm3": 70.64,
+   "positions_xy": [
+    [
+     30.0,
+     245.0
+    ],
+    [
+     60.0,
+     245.0
+    ],
+    [
+     90.0,
+     245.0
+    ]
+   ],
+   "roles": [
+    "rinse 2 (ASW)",
+    "rinse 1 (DI)",
+    "park (reference storage)"
+   ],
+   "seat_z": 45.0,
+   "boss_top_z": 49.0,
+   "reservoir": "8.0 mm bore from z 8.0",
+   "fill_ul_to_2mm_below_boss_top": 1960,
+   "electrodes_lowest_z_seated": 41.2
+  },
+  "tip_waste_cup": {
+   "step": "tip_waste_cup.step",
+   "stl": "tip_waste_cup.stl",
+   "what": "tip waste, 30 mm, top z 50",
+   "place": "D frame at the copper deck's (385, 150); the aluminium deck's is (335, 40)",
+   "bbox_mm": [
+    44.04,
+    44.06,
+    50.07
+   ],
+   "volume_cm3": 10.86
+  },
+  "tube_rack_2x8": {
+   "step": "tube_rack_2x8.step",
+   "stl": "tube_rack_2x8.stl",
+   "what": "2 x 8 rack for open 0.5 mL tubes",
+   "place": "D frame, as is",
+   "bbox_mm": [
+    96.0,
+    34.0,
+    31.02
+   ],
+   "volume_cm3": 19.11,
+   "tube_xy": [
+    [
+     176.0,
+     28.0
+    ],
+    [
+     188.0,
+     28.0
+    ],
+    [
+     200.0,
+     28.0
+    ],
+    [
+     212.0,
+     28.0
+    ],
+    [
+     224.0,
+     28.0
+    ],
+    [
+     236.0,
+     28.0
+    ],
+    [
+     248.0,
+     28.0
+    ],
+    [
+     260.0,
+     28.0
+    ],
+    [
+     176.0,
+     46.0
+    ],
+    [
+     188.0,
+     46.0
+    ],
+    [
+     200.0,
+     46.0
+    ],
+    [
+     212.0,
+     46.0
+    ],
+    [
+     224.0,
+     46.0
+    ],
+    [
+     236.0,
+     46.0
+    ],
+    [
+     248.0,
+     46.0
+    ],
+    [
+     260.0,
+     46.0
+    ]
+   ],
+   "plate_top_z": 31.0,
+   "hole_d": 8.4,
+   "labels": true
+  },
+  "tip_rack_2x15": {
+   "step": "tip_rack_2x15.step",
+   "stl": "tip_rack_2x15.stl",
+   "what": "second 2 x 15 tip rack (Ben's 138 x 20 footprint)",
+   "place": "D frame, as is",
+   "bbox_mm": [
+    20.0,
+    138.0,
+    64.7
+   ],
+   "volume_cm3": 48.81,
+   "rect": [
+    93.75,
+    79.5,
+    113.75,
+    217.5
+   ],
+   "a1": [
+    108.0,
+    89.0
+   ],
+   "a2": [
+    99.5,
+    89.0
+   ],
+   "plate_top_z": 64.7,
+   "hole_d": 5.0
+  },
+  "fit_strip_tube": {
+   "step": "fit_strip_tube.step",
+   "stl": "fit_strip_tube.stl",
+   "what": "tube fit test: holes 7.8, 8.0, 8.2, 8.4, 8.6, 8.8 mm",
+   "place": "bench only",
+   "bbox_mm": [
+    76.0,
+    14.0,
+    3.02
+   ],
+   "volume_cm3": 2.22,
+   "hole_d": [
+    7.8,
+    8.0,
+    8.2,
+    8.4,
+    8.6,
+    8.8
+   ]
+  },
+  "fit_strip_tip": {
+   "step": "fit_strip_tip.step",
+   "stl": "fit_strip_tip.stl",
+   "what": "tip fit test: holes 4.2, 4.4, 4.6, 4.8, 5.0, 5.2, 5.4 mm",
+   "place": "bench only",
+   "bbox_mm": [
+    63.5,
+    14.0,
+    3.01
+   ],
+   "volume_cm3": 2.28,
+   "hole_d": [
+    4.2,
+    4.4,
+    4.6,
+    4.8,
+    5.0,
+    5.2,
+    5.4
+   ]
+  },
+  "bench_cell_body": {
+   "step": "bench_cell_body.step",
+   "stl": "bench_cell_body.stl",
+   "what": "250 mL flat cell, AS568-013 window in the floor",
+   "place": "bench",
+   "bbox_mm": [
+    66.06,
+    66.09,
+    90.13
+   ],
+   "volume_cm3": 74.06,
+   "oring": "AS568-013",
+   "oring_id": 10.82,
+   "cbore_d": 15.22,
+   "cbore_h": 1.4,
+   "squeeze_pct": 21.3,
+   "nominal_area_cm2": 0.919,
+   "inner_d": 60.0,
+   "height": 90.0,
+   "floor": 8.0,
+   "fill_ml_to_10mm_below_rim": 204,
+   "screws": "4 x M3 x 10 into heat-set inserts at (+/-17, +/-17)"
+  },
+  "bench_cell_clamp": {
+   "step": "bench_cell_clamp.step",
+   "stl": "bench_cell_clamp.stl",
+   "what": "clamp plate: 20 x 20 coupon pocket, WE spring pin, 4 x M3",
+   "place": "bench",
+   "bbox_mm": [
+    46.0,
+    46.0,
+    8.01
+   ],
+   "volume_cm3": 13.46
+  },
+  "bench_cell_cover": {
+   "step": "bench_cell_cover.step",
+   "stl": "bench_cell_cover.stl",
+   "what": "loose cover: 12.5 and 6.5 mm electrode holes, counter lead, vent",
+   "place": "bench",
+   "bbox_mm": [
+    70.07,
+    70.1,
+    7.13
+   ],
+   "volume_cm3": 12.41
+  }
+ }
+}
