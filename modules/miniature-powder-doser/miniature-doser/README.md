@@ -301,6 +301,36 @@ the outlet-up park, so the leak question in the one-servo section becomes a benc
 - The masses (nothing has been weighed), whether the magnets run warm when left on for a whole run, and whether being
   towed shakes powder out.
 
+### The whole run, as a video
+
+![](cubxl_shuttle_workflow.gif)
+
+The GIF is the run at about 3× the video's speed. The video,
+[`cubxl_shuttle_workflow.mp4`](cubxl_shuttle_workflow.mp4), is 1 min 41 s at 1280 × 720 and is laid out like
+[PR 278](https://github.com/vertical-cloud-lab/byu-vcl/pull/278)'s copper-corrosion video.
+[`cubxl_shuttle_video.py`](cubxl_shuttle_video.py) draws it from `cubxl_shuttle.py`'s model, and
+[`cubxl_shuttle_workflow.json`](cubxl_shuttle_workflow.json) has its chapters and captions, with their times.
+
+| Time | Chapter |
+|---|---|
+| 0:00 | **The real CubXL**: Ben's photo of it empty (#133), his sketch of the idea and his photo of the right Y rail (both from this PR), in [`media/`](media) |
+| 0:05 | **The same machine as a model**, seen from the photo's side, turning to the working view |
+| 0:10 | **The doser's parts, one at a time**, each with a name: the vial row, the rail, the dock, the shuttle, the doser and the magnets. Then the tab on the gantry, and the capper and pipette on the head |
+| 0:27 | **Before the run, by hand**: load the auger and weigh the cartridge, calibrate on the bench, tare the vials, check the coupling and the board |
+| 0:51 | **The run**: home onto the docked shuttle, magnets on, tow to vial 1 outlet up, tilt, dose 20 mg, back to park. Then 50, 100 and 200 mg into vials 2 to 4 and 50 mg into vial 6. Then the head runs past in front, the doser goes back to the dock, and the magnets let go |
+| 1:30 | **After the run**: weigh the vials and the cartridge |
+| 1:36 | Summary |
+
+In the run:
+- the part doing the work is outlined in orange and lit in the "working now" panel (the gantry, the magnets, the tilt
+  servo, the auger and vibration motor, or the head);
+- its target is ringed;
+- the dose log and the heaps in the vials follow the estimates above: about 380 mg per turn, 10 mg/s and 1.2 g/cm³,
+  with the heaps drawn at an assumed 30° angle of repose;
+- doses longer than 2.6 s are sped up, by up to 8×, and the label says how much.
+
+The vials stay open while the doser works the row, because its body trails over the vials behind the tip.
+
 ## Where it was first drawn: inside the atomizer chamber
 
 [`ods_c_gravity.gif`](../ods-lpbf-gifs/out/ods_c_gravity.gif) (5 fps; [`ods_c_gravity.mp4`](../ods-lpbf-gifs/out/mp4/ods_c_gravity.mp4) has every frame, and
@@ -336,7 +366,8 @@ none of that is needed:** PR 176's printed parts, its normal NEMA 11 and its boa
 [`module_views.py`](module_views.py) draws `module_views.png` and `module_turntable.gif`. Its docstring has the
 checkout and install commands. [`tilt_views.py`](tilt_views.py) draws `tilt_views.png` and `tilt_motion.gif` the same
 way, from `doser_cad.tilt_meshes`. [`cubxl_shuttle.py`](cubxl_shuttle.py) draws `cubxl_shuttle_views.png` and
-`cubxl_shuttle.gif`, and also needs Cubware's `PandaDeck.step` (its docstring has the command). They need the doser's STEP from the powder-doser repo, cadquery-ocp 7.9 (8.0 moved
+`cubxl_shuttle.gif`, and also needs Cubware's `PandaDeck.step` (its docstring has the command). [`cubxl_shuttle_video.py`](cubxl_shuttle_video.py) draws
+`cubxl_shuttle_workflow.mp4`, its GIF and its JSON from the same model, and also needs imageio-ffmpeg. They need the doser's STEP from the powder-doser repo, cadquery-ocp 7.9 (8.0 moved
 `TDF_LabelSequence`) and pyvista 0.49. [`doser_cad.py`](../ods-lpbf-gifs/doser_cad.py) reads the STEP once (about 10 s) and caches the
 meshes in `.cache/`. [`nose_insets.py`](../ods-lpbf-gifs/nose_insets.py) draws the cutaway; it takes its fonts from the atomizer GIFs' helper module, so to
 run it on its own, swap `gifkit.font` for PIL's `ImageFont.truetype`. The chamber GIF's scene code (`ods_gifs.py`) is
