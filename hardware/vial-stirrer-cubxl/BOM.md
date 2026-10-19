@@ -9,6 +9,7 @@ the pipette, rather than by its own XIAO RP2040. See
 for the wiring and the firmware.
 
 **Status: designed, not built.** Nothing has been printed, wired, flashed or run.
+Once the parts are in, [`BUILD.md`](BUILD.md) is the step-by-step build guide.
 
 Prices and stock were checked from the CubXL Pi on **2026-10-19**. The raw results are in
 [`vendor_lookup_20261019.json`](../../outputs/issue-169-magnetic-stirrer/vendor_lookup_20261019.json).
@@ -65,7 +66,7 @@ pocket, which is where the junction board (item 10) goes.
 
 About 46 cm³ in all, under 60 g of PETG even at 100% infill.
 
-For the coupling test in README risk 1, also print **spacer discs**, Ø27.2 mm × 1, 2
+For the coupling test in README risk 1, also print **spacer discs**, Ø27 mm × 1, 2
 and 3 mm, to go under the vial. Any slicer can make these as a cylinder primitive.
 
 ## 3. Already on the CubXL or in lab stock
@@ -76,6 +77,8 @@ and 3 mm, to go under the vial. Any slicer can make these as a cylinder primitiv
 | Adafruit Proto Shield v5, if it is on the Uno ([capper BOM](../../modules/electromagnetic-capper/BOM.md) item 4) | Solder the JST-XH socket's leads to 5V, GND, D2 and D10 |
 | Male–male jumper wires (capper BOM item 10, Adafruit 4482) | Instead of the proto shield: one pin each into the Uno's 5V, GND, D2 and D10 headers |
 | CA glue, hot glue, heat shrink, 26 AWG hookup wire | Keys, magnets, carrier, Hall sensor and its 60 mm leads |
+| 100 nF ceramic capacitor | Across the Hall sensor's VDD and GND, as Melexis recommends ([`BUILD.md`](BUILD.md#circuit)) |
+| 10 nF ceramic capacitor | Only if the measured rpm reads above 0 with the fan off: D2 to GND at the Uno |
 | Soldering iron | Wiring, and pressing in the heat-set inserts |
 
 ## 4. Not needed when the Uno drives it

@@ -13,10 +13,11 @@ numbers that matter most (coupling, the Hall signal) are estimates until a first
 build. The vial cup is the exception: it is copied from the 9-vial holder already in
 use on the deck.
 
-**To build one:** the bill of materials, with links and prices from 2026-10-19, is
-[`BOM.md`](BOM.md), and the printed parts are in [`step/`](step) and [`stl/`](stl). It
-can be driven by the [CubXL's Arduino Uno](#driving-it-from-the-cubxls-arduino-uno),
-the one that already runs the capper and the pipette, instead of its own XIAO RP2040.
+**To build one:** follow [`BUILD.md`](BUILD.md), the step-by-step build guide. The bill
+of materials, with links and prices from 2026-10-19, is [`BOM.md`](BOM.md), and the
+printed parts are in [`step/`](step) and [`stl/`](stl). It can be driven by the
+[CubXL's Arduino Uno](#driving-it-from-the-cubxls-arduino-uno), the one that already runs
+the capper and the pipette, instead of its own XIAO RP2040.
 
 ![Assembled on the CubXL deck](img/assembled.png)
 
@@ -40,6 +41,7 @@ the one that already runs the capper and the pipette, instead of its own XIAO RP
 | [`build_onshape.py`](build_onshape.py) | Pushes the FeatureScript to Onshape, rebuilds, renders every step, exports the STLs and STEP files |
 | [`onshape/render_steps.json`](onshape/render_steps.json) | Camera and caption for each render |
 | [`onshape/document.json`](onshape/document.json) | Onshape document ids |
+| [`BUILD.md`](BUILD.md) | Build guide for the Uno-driven version: printing, keys, inserts, magnets, wiring, bench checks, assembly, flashing the Uno, first spins, the deck file |
 | [`BOM.md`](BOM.md) | Bill of materials for the Uno-driven version: parts to buy with links and prices, parts to print |
 | [`step/`](step) | Printed parts as STEP: `base`, `vial_holder`, `magnet_carrier`, `deck_key` (print two), plus `vial_stirrer_assembly.step`, the whole stirrer for fit checks |
 | [`stl/`](stl) | The same printed parts as STL. Both sets are in assembly position, which is also each part's print orientation |
@@ -209,6 +211,10 @@ same rails, and the cable leaves through the USB-C notch in the −X wall (13 mm
   off, the cable is picking up the stepper drives: add 10 nF from D2 to GND at the Uno.
 - **The gate sees 5 V,** so the IRLZ44N is fully on, with more margin than at 3.3 V.
 - **A JST-XH pair near the Uno** (BOM item 9) lets the stirrer come off the deck.
+- **A 100 nF capacitor across the sensor's VDD and GND** is what Melexis recommends
+  ([datasheet](https://www.melexis.com/-/media/files/documents/datasheets/us1881-datasheet-melexis.pdf),
+  Application Comments). [`BUILD.md`](BUILD.md#circuit) puts one on the junction board,
+  from lab stock.
 - **Power** comes from the Uno's 5V, which comes from the Pi over USB. If the Uno resets
   when the fan kicks, feed the fan from the electromagnet's 5 V supply instead, with the
   grounds joined.
@@ -349,6 +355,8 @@ centre, and the bar sits where the tip goes.
 
 ## Assembly
 
+The steps in brief. [`BUILD.md`](BUILD.md) has them in full, with the checks between them.
+
 ![Assembly steps](img/assembly_steps.gif)
 
 | | |
@@ -356,7 +364,7 @@ centre, and the bar sits where the tip goes.
 | ![](img/step01_keys.png) | **1. Glue the two deck keys into the base.** Superglue each key's triangular nub into its 2.1 mm pocket under the base. Glue both while the base sits in two deck slots, so the keys end up exactly 25 mm apart. |
 | ![](img/step02_inserts.png) | **2. Press in eight M3 heat-set inserts.** Use a soldering iron at the insert maker's temperature: four go in the fan posts and four in the corner posts. Keep them square, as the fan screws pull straight down into them. |
 | ![](img/step03_electronics.png) | **3. Wire the electronics, then drop them in.** Solder per the wiring diagram, leaving about 60 mm of lead for the Hall sensor. The XIAO's USB-C goes into the notch in the −X wall, and the rails and the stop locate the board. In the Uno version the junction board sits in the same place and the cable leaves through the notch; tie it to the board for strain relief. The MOSFET and diode lie flat on the +X side, held with a dab of hot glue. |
-| ![](img/step04_fan.png) | **4. Seat the fan, rotor side up.** It goes on the four posts with the label side up, so the hub faces the vial. Run its leads to the MOSFET. |
+| ![](img/step04_fan.png) | **4. Seat the fan, rotor side up.** It goes on the four posts with the side **without** the motor's struts up, so the spinning hub faces the vial. Don't go by the sticker: many fans carry it on the strut side. Run its leads to the MOSFET. |
 | ![](img/step05_fan_screws.png) | **5. Four M3 × 16 screws through the fan.** Tighten them snug only, since the fan frame is plastic. Screwed down, the fan can't be lifted by the magnets, which happened on one Pioreactor ([forum 781](https://forum.pioreactor.com/t/self-test-failure-the-fan-stirring-is-spinning-but-no-rpms-were-measured/781/4)). |
 | ![](img/step06_magnets.png) | **6. Magnets into the carrier, carrier onto the hub.** One magnet goes north up and one south up; check with a third magnet, which one attracts and the other repels. CA the magnets into the pockets and the carrier onto the hub, centred: a misaligned drive makes the bar walk. |
 | ![](img/step07_holder.png) | **7. Glue in the Hall sensor, lower the vial holder.** Glue the US1881 flat on the pocket ceiling at −X, branded face down, beside (not over) the magnets' path. Lay its leads in the groove. Spin the fan by hand before closing up: nothing may touch the carrier. |
@@ -400,8 +408,9 @@ bottom with 1.6 mm glass. magpylib puts the horizontal field at the axis of a
    Another's stirring stopped at random at 200–250 rpm, which staff put down to the
    magnets sitting too close to the heater board
    ([forum 789](https://forum.pioreactor.com/t/stirring-randomly-stops/789/4)).
-   It is cheap to test: print Ø27.6 mm spacer discs, 1, 2 and 3 mm thick, to go under
-   the vial, and try each.
+   It is cheap to test: print Ø27 mm spacer discs, 1, 2 and 3 mm thick, to go under
+   the vial, and try each. (The cup narrows upward, to Ø27.3 mm at 3 mm, so a Ø27.6 mm
+   disc would not reach the floor.)
 2. **A fan-side rpm is not the bar's rpm.** The Hall sensor measures the magnets. The
    Edison coupling summary is explicit that drive feedback cannot see the bar slip.
    Confirm coupling by eye or on camera through the slots between the fingers; the
