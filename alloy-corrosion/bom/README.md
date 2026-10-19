@@ -110,8 +110,8 @@ same rules. The cup block pauses at z 44.6 for its six magnets, same pole up as 
 
 One table per group. **For** says which plan needs the row; *option*, *optional* and *fallback* rows
 are not in the totals unless chosen. Two parts substitute for what the CAD draws:
-- **The cap's spring pins.** B06 replaces the drawn P75 pins, which are about 1 N each, three times
-  the cap's 0.4 N limit. Its barrel is 1.25 mm, so open the bottom 2.2 mm of the cap's two pin holes
+- **The cap's spring pins.** B06 replaces the drawn P75 pins. Those are about 1 N each, more than
+  twice the cap's 0.4 N limit. Its barrel is 1.25 mm, so open the bottom 2.2 mm of the cap's two pin holes
   to 1.3 mm. Set the pin 0.2 mm recessed, so it sits at mid-stroke when the cap is seated.
 - **The lid's brass eyelets** are 6 mm pins cut from B12 rod. No 1.6 mm rivet long enough for a 6 mm
   lid turned up.
@@ -223,12 +223,13 @@ are not in the totals unless chosen. Two parts substitute for what the CAD draws
 ## How this was checked, and what wasn't
 
 - **Links.** [`check_links.py`](check_links.py) fetched every URL in the CSV from the GitHub runner
-  on 2026-10-19 22:05 UTC and wrote [`link-check.json`](link-check.json). **54 of 73 returned 200.** The
-  rest were blocked or timed out from a datacenter IP: 2in.com, acehardware.com, digikey.com, fishersci.com, onlinemetals.com, sigmaaldrich.com, zoro.com. For the Digi-Key rows,
-  a fetch tool read the product page itself (part, price and stock). For the Fisher, Sigma,
-  OnlineMetals, Ace and Zoro rows, the price is from a search-engine snippet, and the CSV says so.
-  Running `python check_links.py --label pi --only-blocked` from a lab Pi rechecks just those rows
-  from a residential IP. I didn't.
+  and wrote [`link-check.json`](link-check.json). **54 of 73 returned 200.** I refetched the other 19
+  from the CubXL Pi's residential IP, and only the Innovative Instruments page (rate-limited from
+  the runner) came back 200. Digi-Key, Fisher, OnlineMetals, Ace and Zoro return 403 to any script,
+  and Sigma times out. That is bot protection, not a broken link. For the Digi-Key rows, a fetch
+  tool read the product page itself: part, price and stock. For the Fisher, Sigma, OnlineMetals, Ace
+  and Zoro rows, the price is from a search-engine snippet, and the CSV's `link_check` column says
+  so. Open those in a browser before ordering.
 - **Parts.** The research turned up several corrections to the earlier BOMs:
   - Adafruit's P75-B1 pins are back in stock, but no P75 pin states a force under the cap's 0.4 N
     limit. B06 does, at 30 gf.

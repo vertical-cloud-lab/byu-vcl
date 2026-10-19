@@ -516,6 +516,145 @@
      "final_url": null
     }
    }
+  },
+  "pi": {
+   "when_utc": "2026-10-19 22:10",
+   "note": "only the URLs that did not return 200 from the runner, refetched from the CubXL Pi (residential IP) with the same urllib request",
+   "results": {
+    "https://www.digikey.com/en/products/detail/same-sky-formerly-cui-devices/CPG-37-TH-TR/25666017": {
+     "ids": [
+      "B06"
+     ],
+     "status": 403,
+     "final_url": null
+    },
+    "https://www.digikey.com/en/products/detail/3m/1181-X-1-4/30708": {
+     "ids": [
+      "B11"
+     ],
+     "status": 403,
+     "final_url": null
+    },
+    "https://www.acehardware.com/departments/hardware/metal-sheets-and-rods/brass-rods/5172754": {
+     "ids": [
+      "B12"
+     ],
+     "status": 403,
+     "final_url": null
+    },
+    "https://www.2in.com/products/reference/reference.html": {
+     "ids": [
+      "B19"
+     ],
+     "status": 200,
+     "final_url": null
+    },
+    "https://www.sigmaaldrich.com/US/en/product/aldrich/349402": {
+     "ids": [
+      "B21"
+     ],
+     "status": "TimeoutError",
+     "final_url": null
+    },
+    "https://www.digikey.com/en/products/detail/palmsens-bv/ESPICO-ALL/12817917": {
+     "ids": [
+      "B23"
+     ],
+     "status": 403,
+     "final_url": null
+    },
+    "https://www.digikey.com/en/products/detail/hammond-manufacturing/1590B/131015": {
+     "ids": [
+      "B24"
+     ],
+     "status": 403,
+     "final_url": null
+    },
+    "https://www.digikey.com/en/products/detail/palmsens-bv/ESPICO-DK/12817919": {
+     "ids": [
+      "B25"
+     ],
+     "status": 403,
+     "final_url": null
+    },
+    "https://www.digikey.com/en/products/detail/yageo/MFP-25BRD52-10K/2058797": {
+     "ids": [
+      "B26"
+     ],
+     "status": 403,
+     "final_url": null
+    },
+    "https://www.digikey.com/en/products/detail/panasonic-industry/ECQ-E1105KF/56380": {
+     "ids": [
+      "B26"
+     ],
+     "status": 403,
+     "final_url": null
+    },
+    "https://www.fishersci.com/shop/products/snap-cap-microcentrifuge-safe-lock-tubes/p-194501": {
+     "ids": [
+      "B36"
+     ],
+     "status": 403,
+     "final_url": null
+    },
+    "https://www.fishersci.com/shop/products/sodium-chloride-crystalline-certified-acs-fisher-chemical-6/S271500": {
+     "ids": [
+      "B37"
+     ],
+     "status": 403,
+     "final_url": null
+    },
+    "https://www.sigmaaldrich.com/US/en/product/sigald/s9888": {
+     "ids": [
+      "B37"
+     ],
+     "status": "TimeoutError",
+     "final_url": null
+    },
+    "https://www.sigmaaldrich.com/US/en/product/sigald/208043": {
+     "ids": [
+      "B39"
+     ],
+     "status": "TimeoutError",
+     "final_url": null
+    },
+    "https://www.fishersci.com/shop/products/nitric-acid-tracemetal-grade-fisher-chemical-3/A509P500": {
+     "ids": [
+      "B41"
+     ],
+     "status": 403,
+     "final_url": null
+    },
+    "https://www.onlinemetals.com/en/buy/copper/1-inch-od-copper-nickel-round-bar-715/pid/mp-00059842": {
+     "ids": [
+      "B43"
+     ],
+     "status": 403,
+     "final_url": null
+    },
+    "https://www.onlinemetals.com/en/buy/copper-nickel-round-bar": {
+     "ids": [
+      "B44"
+     ],
+     "status": 403,
+     "final_url": null
+    },
+    "https://www.zoro.com/chicago-latrobe-135-degree-heavy-duty-jobber-length-drill-chicago-latrobe-150asp-steam-oxide-hss-rhsrhc-no-46-45716/i/G1828906/": {
+     "ids": [
+      "B47"
+     ],
+     "status": 403,
+     "final_url": null
+    },
+    "https://www.fishersci.com/shop/products/clear-voa-glass-vials-0-125in-septa/12-100-112": {
+     "ids": [
+      "H03"
+     ],
+     "status": 403,
+     "final_url": null
+    }
+   }
   }
  }
 }

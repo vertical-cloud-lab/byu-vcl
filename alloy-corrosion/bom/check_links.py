@@ -1,8 +1,9 @@
 """Check that every buy link in bom.csv still resolves, and record what came back.
 
 Writes link-check.json: per URL, the HTTP status, the final URL after redirects and the time.
-Several vendors (Digi-Key, McMaster-Carr, Mouser) answer a datacenter IP with 403 whatever the
-page; `--label` names where the check ran so a later run from a residential IP can be told apart.
+Digi-Key, Fisher, OnlineMetals, Ace and Zoro answer a script with 403, and Sigma never answers:
+from the runner and from the CubXL Pi's residential IP alike (2026-10-19), so that is bot
+protection, not a broken link. `--label` names where a run happened.
 
     python check_links.py                      # from wherever you are
     python check_links.py --label pi --only-blocked   # rerun just the 403s, e.g. from a lab Pi
