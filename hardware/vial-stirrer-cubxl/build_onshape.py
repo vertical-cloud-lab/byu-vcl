@@ -1,17 +1,18 @@
 #!/usr/bin/env python3
 """Rebuild the single-vial stirrer in Onshape from ``onshape/vial_stirrer.fs``
-and pull the renders and printable meshes back into this folder.
+and pull the renders, printable meshes and STEP files back into this folder.
 
 The whole model is one FeatureScript feature, so the Onshape document is
 disposable: this script uploads the FeatureScript to the document's Feature
 Studio, puts one instance of the feature in the Part Studio, renders every
-assembly step with Onshape's own renderer, and exports the printed parts.
+assembly step with Onshape's own renderer, and exports the printed parts
+(STL and STEP) plus a STEP of the whole stirrer.
 
 Needs an Onshape API key pair with write access to the document, in
 ``ONSHAPE_ACCESS_KEY`` / ``ONSHAPE_SECRET_KEY`` (cad.onshape.com). Nothing is
 printed about the keys.
 
-    python build_onshape.py                # upload, render all steps, export STLs
+    python build_onshape.py                # upload, render all steps, export STLs and STEP files
     python build_onshape.py --no-render    # upload and rebuild only
     python build_onshape.py --new          # make a fresh document first
 """
@@ -34,6 +35,7 @@ DOC_FILE = HERE / "onshape" / "document.json"
 STEPS_FILE = HERE / "onshape" / "render_steps.json"
 IMG = HERE / "img"
 STL = HERE / "stl"
+STEP = HERE / "step"
 
 BASE = "https://cad.onshape.com/api/v6"
 HEADERS = {"Accept": "application/json;charset=UTF-8; qs=0.09", "Content-Type": "application/json"}
@@ -211,11 +213,48 @@ def export_stl(api: Onshape, doc: dict) -> None:
         print("exported", f"{stem}.stl", len(r.content), "bytes", flush=True)
 
 
+def translate_step(api: Onshape, doc: dict, part_ids: list, out: pathlib.Path) -> None:
+    """One STEP file of the given parts, through Onshape's translation service."""
+    did, wid, ps = doc["did"], doc["wid"], doc["partstudio"]
+    r = api.post(f"partstudios/d/{did}/w/{wid}/e/{ps}/translations",
+                 json={"formatName": "STEP", "storeInDocument": False, "partIds": ",".join(part_ids)})
+    r.raise_for_status()
+    tid = r.json()["id"]
+    for _ in range(150):
+        t = api.get(f"translations/{tid}").json()
+        if t["requestState"] != "ACTIVE":
+            break
+        time.sleep(2)
+    if t["requestState"] != "DONE":
+        raise SystemExit(f"STEP translation for {out.name} ended {t['requestState']}: {t.get('failureReason')}")
+    r = api.get(f"documents/d/{did}/externaldata/{t['resultExternalDataIds'][0]}", headers={"Accept": "application/octet-stream"})
+    r.raise_for_status()
+    out.write_bytes(r.content)
+    print("exported", out.name, len(r.content), "bytes", flush=True)
+
+
+def export_step(api: Onshape, doc: dict) -> None:
+    """A STEP file per printed part, and one of the whole stirrer (every part but the deck section and the sample)."""
+    did, wid, ps = doc["did"], doc["wid"], doc["partstudio"]
+    STEP.mkdir(exist_ok=True)
+    parts = api.get(f"parts/d/{did}/w/{wid}/e/{ps}").json()
+    done = set()
+    for p in parts:
+        stem = next((v for k, v in PRINTED.items() if p["name"].startswith(k)), None)
+        if not stem or stem in done:
+            continue
+        done.add(stem)
+        translate_step(api, doc, [p["partId"]], STEP / f"{stem}.step")
+    whole = [p["partId"] for p in parts if not p["name"].startswith(("CubXL+ deck plate", "Sample"))]
+    translate_step(api, doc, whole, STEP / "vial_stirrer_assembly.step")
+
+
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--new", action="store_true", help="create a fresh Onshape document first")
     ap.add_argument("--no-render", action="store_true")
     ap.add_argument("--no-stl", action="store_true")
+    ap.add_argument("--no-step", action="store_true")
     ap.add_argument("--only", default="", help="comma-separated frame keys to re-render (skips the sheet and GIF)")
     a = ap.parse_args()
     api = Onshape()
@@ -224,6 +263,8 @@ if __name__ == "__main__":
     set_feature(api, doc, spec, 0)
     if not a.no_stl:
         export_stl(api, doc)
+    if not a.no_step:
+        export_step(api, doc)
     if not a.no_render:
         render(api, doc, spec, set(filter(None, a.only.split(","))) or None)
     print("document:", doc["url"])

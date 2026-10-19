@@ -8,6 +8,42 @@ applied casually.
 Upstream: [`BU-KABlab/PANDA_Arduino`](https://github.com/BU-KABlab/PANDA_Arduino)
 @ `228615b` ("fixed mixing function for pipette", 2025-08-27).
 
+## 2026-10-19: a stirrer image is built and committed but **not flashed**
+
+`panda_vcl_p20gen2_tic796_fastmove_spread_stir_20261019.hex` is the 10-07 image plus the
+single-vial magnetic stirrer
+([`../../hardware/vial-stirrer-cubxl/`](../../hardware/vial-stirrer-cubxl/README.md#driving-it-from-the-cubxls-arduino-uno)),
+from [`panda-arduino-stirrer.patch`](panda-arduino-stirrer.patch). The board still runs
+the 10-07 image. Nothing changes for the capper or the pipette until this is flashed, and
+it should not be flashed before a stirrer has been built.
+
+| | |
+| --- | --- |
+| new files | `include/Stirrer.h`, `src/Stirrer.cpp` |
+| new commands | `CMD_STIR = 30` (`30,<rpm>[,<seconds>]`, `30,0` stops) and `CMD_STIR_STATUS = 31` |
+| pins | **D10** fan PWM (OC1B) and **D2** Hall sensor (INT0). The firmware used neither |
+| Timer1 | phase-correct PWM, TOP = ICR1 = 625, clk/64: **200 Hz**, the Pioreactor's fan frequency. Nothing else in this firmware uses Timer1: `setupMagnet()` only touches it when `EMAG` is 9 or 10, and `EMAG` is 11 (Timer2). D9, the limit switch, shares Timer1 but only OC1B is connected, so D9 stays an input |
+| size | flash 17,468 → **20,340** bytes of 32,256; RAM 1,429 → **1,510** of 2,048 |
+
+Built on the Pi from a copy of `~/panda_fw_vcl_tic796_fast_spread` in `/tmp`, which is now
+deleted. Before the patch, the copy rebuilt to the 10-07 image's 17,468 bytes. The patch
+also applies (`git apply --check`) to the tree in place, which was left untouched. A
+runner build from a fresh clone plus the four patches comes to 20,322 bytes, 18 fewer,
+the same gap as without the stirrer, because only the Pi's tree has the vendored, patched
+`lib/TMC2209`. Flash the committed hex, or rebuild on the Pi:
+
+```bash
+cp -r ~/panda_fw_vcl_tic796_fast_spread ~/panda_fw_vcl_stir && cd ~/panda_fw_vcl_stir
+git apply ~/byu-vcl/cubos/firmware/panda-arduino-stirrer.patch
+~/.venvs/pio/bin/pio run -e uno -t upload --upload-port /dev/ttyACM0
+```
+
+Afterwards, check that the capper and the pipette still behave (`pipette_test`), then
+`31` for the stirrer's status. To go back, flash
+`panda_vcl_p20gen2_tic796_fastmove_spread_20261007.hex` with the `avrdude` command at the
+end of this file. Nothing in the patch prints unless a command asks, so `PawduinoLink`'s
+one-reply-per-command framing is unchanged.
+
 ## 2026-10-07: the board runs `panda_vcl_p20gen2_tic796_fastmove_spread_20261007.hex`
 
 Fix B for the TMC2209: the 10-01 image with spreadCycle instead of StealthChop, one line in

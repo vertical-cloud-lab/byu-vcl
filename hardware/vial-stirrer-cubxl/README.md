@@ -13,6 +13,11 @@ numbers that matter most (coupling, the Hall signal) are estimates until a first
 build. The vial cup is the exception: it is copied from the 9-vial holder already in
 use on the deck.
 
+**To build one:** the bill of materials, with links and prices from 2026-10-19, is
+[`BOM.md`](BOM.md), and the printed parts are in [`step/`](step) and [`stl/`](stl). It
+can be driven by the [CubXL's Arduino Uno](#driving-it-from-the-cubxls-arduino-uno),
+the one that already runs the capper and the pipette, instead of its own XIAO RP2040.
+
 ![Assembled on the CubXL deck](img/assembled.png)
 
 | | |
@@ -23,9 +28,9 @@ use on the deck.
 | Drive | Orion OD4010-12HSS fan (the Pioreactor's), 5 V, 200 Hz PWM through a low-side MOSFET |
 | Magnets | 2 × N52, 1/4 × 1/16 in, opposite poles up, 9.8 mm apart (the Pioreactor's) |
 | Speed sensing | US1881 Hall latch beside the magnets, 1 pulse per turn |
-| Controller | Seeed XIAO RP2040, USB-C to the CubXL Pi, MicroPython |
+| Controller | The CubXL's Arduino Uno (D10 PWM, D2 Hall, a stir command added to its PANDA firmware), or a Seeed XIAO RP2040 on its own USB-C |
 | Fasteners | 4 × M3 × 16 and 4 × M3 × 12 socket head screws, 8 × M3 heat-set inserts |
-| Parts cost | about $20–25 per stirrer, after the multi-packs below |
+| Parts cost | about $20 per stirrer once the multi-packs are bought; $101–126 for a first order ([`BOM.md`](BOM.md)) |
 
 ## Contents
 
@@ -35,9 +40,13 @@ use on the deck.
 | [`build_onshape.py`](build_onshape.py) | Pushes the FeatureScript to Onshape, rebuilds, renders every step, exports the STLs |
 | [`onshape/render_steps.json`](onshape/render_steps.json) | Camera and caption for each render |
 | [`onshape/document.json`](onshape/document.json) | Onshape document ids |
-| [`stl/`](stl) | Printed parts, in assembly position: `base`, `vial_holder`, `magnet_carrier`, `deck_key` (print two) |
+| [`BOM.md`](BOM.md) | Bill of materials for the Uno-driven version: parts to buy with links and prices, parts to print |
+| [`step/`](step) | Printed parts as STEP: `base`, `vial_holder`, `magnet_carrier`, `deck_key` (print two), plus `vial_stirrer_assembly.step`, the whole stirrer for fit checks |
+| [`stl/`](stl) | The same printed parts as STL. Both sets are in assembly position, which is also each part's print orientation |
 | [`img/`](img) | Renders: steps 1–10, assembled, exploded, section, contact sheet, GIF |
 | [`firmware/main.py`](firmware/main.py) | MicroPython speed controller for the XIAO RP2040 (untested) |
+| [`../../cubos/firmware/panda-arduino-stirrer.patch`](../../cubos/firmware/panda-arduino-stirrer.patch) | The same controller as two commands in the CubXL Uno's PANDA firmware (compile-checked, not flashed) |
+| [`firmware/uno_sim/`](firmware/uno_sim) | Host-side simulation of that patch's control loop against a fan model, and its output |
 | [`RESEARCH.md`](RESEARCH.md) | What the Pioreactor does, the AC's and other open-source stirrers, design lessons |
 | [`../../outputs/issue-169-magnetic-stirrer/`](../../outputs/issue-169-magnetic-stirrer) | Edison answers and the raw vendor lookups |
 
@@ -128,49 +137,17 @@ the magnet gap. The model uses 27.5 mm.
 
 ## Parts list
 
-Prices and links were looked up from the CubXL Pi on 2026-10-10 (Amazon search pages,
-K&J, Adafruit and the Pioreactor shop; DigiKey and Mouser refuse it). The raw results
-are in [`vendor_lookup_amazon_20261010.json`](../../outputs/issue-169-magnetic-stirrer/vendor_lookup_amazon_20261010.json)
+Moved to [`BOM.md`](BOM.md), which has the parts to buy with links and the prices
+checked from the CubXL Pi on 2026-10-19, the printed parts with their STEP and STL
+files and print orientation, and what is already on the CubXL. It lists the
+Uno-driven version, which needs a cable, a connector pair and a scrap of perfboard in
+place of the XIAO and its USB cable. The 2026-10-10 lookups for the XIAO version are in
+[`vendor_lookup_amazon_20261010.json`](../../outputs/issue-169-magnetic-stirrer/vendor_lookup_amazon_20261010.json)
 and [`…b.json`](../../outputs/issue-169-magnetic-stirrer/vendor_lookup_amazon_20261010b.json).
-Amazon prices move; treat them as of that date.
-
-### Printed
-
-| Part | File | Qty | Volume | Print |
-|---|---|---|---|---|
-| Base | [`base.stl`](stl/base.stl) | 1 | 23.8 cm³ | Floor down. The key pockets are on the bed face |
-| Vial holder | [`vial_holder.stl`](stl/vial_holder.stl) | 1 | 17.1 cm³ | Flange down, so the fingers print upright as in the 9-vial holder. The 1.2 mm floor bridges the Ø27 mm carrier pocket underneath; support it if the bridge sags |
-| Magnet carrier | [`magnet_carrier.stl`](stl/magnet_carrier.stl) | 1 | 0.8 cm³ | Pockets up |
-| Deck key | [`deck_key.stl`](stl/deck_key.stl) | 2 | 2.3 cm³ | Nub up. Fix elephant's foot first; Cubware says to |
-
-The STLs come out of Onshape in assembly position, so rotate them in the slicer. PETG
-or better: the Pioreactor prints its bottom holder in PC-CF, and its forum reports PLA
-warping at high temperature.
-
-### Bought
-
-| # | Part | Qty | Source (2026-10-10) | Price | Notes |
-|---|---|---|---|---|---|
-| 1 | Fan, Orion **OD4010-12HSS**, 40 × 40 × 10.5 mm, 12 V, 2-wire | 1 | [Amazon B00JJ402HY](https://www.amazon.com/dp/B00JJ402HY) (Digi-Key 1053-1205-ND) | $7.43 | The Pioreactor's fan. Run at 5 V |
-| 2 | Magnet, N52 disc, **1/4 × 1/16 in** | 2 | [K&J D41-N52](https://www.kjmagnetics.com/d41-n52-neodymium-disc-magnet), or [Amazon B0DGG2Y6F7](https://www.amazon.com/dp/B0DGG2Y6F7) (200) | $0.32 each, or $23.99 | The Pioreactor's size |
-| 3 | Stir bar, PTFE, **15 × 6 mm** with pivot ring | 1 | [Pioreactor SKU 2046](https://pioreactor.com/products/15x6mm-ptfe-stir-bar), or [Amazon B074FX1XJ2](https://www.amazon.com/dp/B074FX1XJ2) (10, plain) | $2.24, or $14.99 | The Pioreactor's 20 mL bar is 3 × 12 mm; this is their 40 mL bar, sturdier for paint |
-| 4 | Seeed **XIAO RP2040** | 1 | [Amazon B09NNVNW7M](https://www.amazon.com/dp/B09NNVNW7M), or [Seeed](https://www.seeedstudio.com/XIAO-RP2040-v1-0-p-5026.html) | $9.99 | 21 × 17.5 mm, USB-C, MicroPython |
-| 5 | N-MOSFET, **IRLZ44N**, TO-220 | 1 | Capper BOM spares, or [Amazon B0FPQC8SV8](https://www.amazon.com/dp/B0FPQC8SV8) (12) | $6.99 | [Adafruit 355](https://www.adafruit.com/product/355) (IRLB8721, $2.25) also works |
-| 6 | Schottky diode, **1N5819**, DO-41 | 1 | [Amazon B079KG1TN2](https://www.amazon.com/dp/B079KG1TN2) (100) | $7.99 | Flyback across the fan |
-| 7 | Hall latch, Melexis **US1881**, TO-92UA | 1 | [Amazon B0D2XX9HY7](https://www.amazon.com/dp/B0D2XX9HY7) (20) | $9.99 | 3.5–24 V, BOP ≤ 9.5 mT ([datasheet](https://www.melexis.com/-/media/files/documents/datasheets/us1881-datasheet-melexis.pdf)) |
-| 8 | Resistors: 100 Ω ×1, 10 kΩ ×2 | 3 | Lab stock | — | Gate, gate pull-down, Hall pull-up |
-| 9 | Heat-set insert, **M3 × 5.7 mm** (ruthex RX-M3x5.7) | 8 | [Amazon B08BCRZZS3](https://www.amazon.com/dp/B08BCRZZS3) (100) | $9.99 | Ø4.0 mm holes, 6.5 mm deep |
-| 10 | Socket head screw kit, **M3, 304 stainless**, 6–30 mm | 1 kit | [Amazon B0D4L6QRZB](https://www.amazon.com/dp/B0D4L6QRZB) (Taiss, 540 pcs, 8 lengths) | $9.99 | Uses M3 × 12 and M3 × 16 |
-| 11 | USB-A to USB-C cable, 1 ft | 1 | [Amazon B07F17X6CP](https://www.amazon.com/dp/B07F17X6CP) (2) | $3.99 | To the CubXL Pi |
-| 12 | CA glue, 26 AWG hookup wire, heat shrink | — | Lab stock | — | Keys, magnets, carrier, Hall sensor |
-
-Per stirrer, from those packs: fan $7.43, magnets $0.64, bar $2.24, XIAO ~$5–10,
-MOSFET, diode and Hall latch ~$1.20, inserts and screws ~$1, filament ~$1.50: about
-**$20–25**.
 
 ## Fasteners
 
-All M3, all from the two kits above. Use **stainless** screws. Two of the Pioreactor's
+All M3, all from two kits ([`BOM.md`](BOM.md) items 11 and 12). Use **stainless** screws. Two of the Pioreactor's
 stirring faults trace to magnets pulling on steel nearby: grinding when the magnets
 catch on the screws, and stalls when they sit too close to the heater board's steel
 standoffs.
@@ -185,7 +162,127 @@ The fan-screw heads sit about 12 mm outside the magnets' path, in pockets under 
 holder. Glue holds the rest: the deck keys, the magnets, the carrier on the hub and the
 Hall sensor.
 
-## Wiring
+## Driving it from the CubXL's Arduino Uno
+
+The Uno that runs the capper and the pipette can drive one stirrer as well (PANDA
+firmware, see [`cubos/firmware/`](../../cubos/firmware/README.md)). Its firmware uses
+D3–D7, D9, D11 and A0–A4. What is left is enough for the stirrer:
+
+| Stirrer signal | Uno pin | Why that pin |
+|---|---|---|
+| Fan PWM, to the MOSFET gate | **D10** | The only free hardware-PWM pin. It is on Timer1, which nothing else in the firmware uses (the electromagnet is on D11, Timer2), so Timer1 can run at the Pioreactor's 200 Hz. D9, the pipette limit switch, shares Timer1 but stays a plain input |
+| Hall sensor | **D2** | INT0, the free external interrupt |
+| Supply | **5V** and **GND** | The fan draws well under 0.1 A at 5 V, a little more during the 0.5 s start kick |
+
+D8, D12, D13 and A5 stay free. A second stirrer would need software PWM and a
+pin-change interrupt on those, which the patch below does not do.
+
+**Check before wiring:** the firmware leaves D2 and D10 alone, but nothing here records
+whether anything is soldered to them on the Uno or its shield. Look first.
+
+### Wiring, Uno version
+
+The circuit is the XIAO version's with the controller moved off the stirrer. The
+resistors go on a scrap of perfboard cut to the XIAO's 21 × 17.5 mm, which sits on the
+same rails, and the cable leaves through the USB-C notch in the −X wall (13 mm wide).
+
+```
+  Uno        cable, 22 AWG x 4        stirrer
+  ---        -----------------        -------
+  5V   ------ 1 ----------------+---- fan red (+)
+                                +---- 1N5819 cathode
+                                +---- US1881 pin 1 (VDD)
+                                +---- 10 k ---+
+  D2   ------ 4 ------------------------------+---- US1881 pin 3 (OUT)
+  D10  ------ 3 ------ 100 R ---+---- IRLZ44N gate (pin 1)
+                                +---- 10 k ---+
+  GND  ------ 2 ------------------------------+---- IRLZ44N source (pin 3), US1881 pin 2 (GND)
+
+                     fan black (-) ---- 1N5819 anode ---- IRLZ44N drain (pin 2, tab)
+```
+
+- **The gate pull-down stays on the stirrer,** at the MOSFET, so the fan is held off
+  while the cable is unplugged or the Uno is resetting.
+- **The Hall pull-up now goes to 5 V.** The Uno is a 5 V part, so the 3.3 V caveat of
+  the XIAO version goes away. The firmware also turns on D2's internal pull-up, but over
+  1.5 m of cable the 10 kΩ is what counts. If the measured rpm reads high with the fan
+  off, the cable is picking up the stepper drives: add 10 nF from D2 to GND at the Uno.
+- **The gate sees 5 V,** so the IRLZ44N is fully on, with more margin than at 3.3 V.
+- **A JST-XH pair near the Uno** (BOM item 9) lets the stirrer come off the deck.
+- **Power** comes from the Uno's 5V, which comes from the Pi over USB. If the Uno resets
+  when the fan kicks, feed the fan from the electromagnet's 5 V supply instead, with the
+  grounds joined.
+
+### Firmware, Uno version
+
+[`panda-arduino-stirrer.patch`](../../cubos/firmware/panda-arduino-stirrer.patch) adds
+`Stirrer.h` and `Stirrer.cpp` to the PANDA firmware, plus two commands. It applies on
+top of the three patches already on the board (the 2026-10-07 image), and it ports the
+XIAO firmware's control loop:
+
+- 200 Hz PWM;
+- one Hall pulse per turn;
+- the additive P loop, each update clamped to ±7.5 % duty;
+- a kick from rest, and pause-then-kick on a stall, giving up after five.
+
+| Send | Reply |
+|---|---|
+| `30,600` | `OK:{"msg":"Stirring","v":[600.00]}`. Runs until stopped; rpm is clamped to 100–2000 |
+| `30,600,300` | `OK:{"msg":"Stirring","v":[600.00,300.00]}`. Stops itself after 300 s |
+| `30,0` | `OK:{"msg":"Stirrer off"}` |
+| `31` | `OK:{"target":600,"setpoint":600,"rpm":600.0,"duty":0.229,"stalled":0,"left_s":-1}` |
+
+Two things differ from the XIAO version, because the board is shared:
+
+- **Nothing blocks and nothing is printed unprompted.** Every line on this port answers
+  a command, so a stall shows up only as `"stalled":1` in the status reply.
+- **A plunger move holds up the loop.** The firmware's pipette moves block for their
+  whole duration. The PWM and the pulse count carry on in hardware, so the fan keeps its
+  duty. Only the next speed correction, and the end of a kick or a timed run, wait for
+  the move to finish.
+
+**What was checked:**
+
+- It builds with PlatformIO on the CubXL Pi, from a copy of the tree the board's
+  2026-10-07 image was built from. Flash goes from 17,468 to 20,340 of 32,256 bytes, and
+  RAM from 1,429 to 1,510 of 2,048. The image is committed as
+  [`panda_vcl_p20gen2_tic796_fastmove_spread_stir_20261019.hex`](../../cubos/firmware/panda_vcl_p20gen2_tic796_fastmove_spread_stir_20261019.hex).
+- [`firmware/uno_sim/`](firmware/uno_sim) runs `Stirrer.cpp` on the host against a fan
+  model. It settles at 600 and at 1200 rpm, a timed run stops on time, and a jammed fan
+  is stopped and flagged as stalled after five kicks
+  ([output](firmware/uno_sim/sim_output.txt)).
+- Speed resolution is 30 rpm: one pulse per turn, counted over 2 s.
+
+**It has not been flashed.** Flashing replaces the firmware the capper and the pipette
+run on. Do it once a stirrer is built, with nothing holding the port, then run
+`pipette_test` again. [`cubos/firmware/README.md`](../../cubos/firmware/README.md#2026-10-19-a-stirrer-image-is-built-and-committed-but-not-flashed)
+has the flash and restore commands.
+
+### From the host
+
+```python
+from cubos.instruments.controllers.pawduino import PawduinoLink
+uno = "/dev/serial/by-id/usb-Arduino__www.arduino.cc__0043_03535343335351018130-if00"
+link = PawduinoLink.acquire(uno, 115200)
+link.connect()
+print(link.send_command(30, 600, 300))   # 600 rpm for 5 min
+print(link.send_command(31))             # status
+print(link.send_command(30, 0))          # stop
+```
+
+**Opening the port resets the Uno,** which stops the stirrer, and the pipette has to
+home again. So a script cannot start the stirrer and leave it running into a CubOS run.
+Stirring during a protocol has to go over the link CubOS already holds, and CubOS has no
+stir command yet. The obvious shape for one is a copy of its `set_lights`:
+
+- a stirrer instrument whose `pawduino` vendor shares `PawduinoLink.acquire()` with the
+  capper and the pipette;
+- a `set_stirrer` protocol step taking `rpm`, `seconds` or `off`;
+- run teardown turning the stirrer off, as it does the lights.
+
+That is not written yet.
+
+## Wiring, XIAO version
 
 ```
                      USB-C VBUS (5 V)
@@ -217,7 +314,7 @@ Hall sensor.
   pulses, the SS49E linear sensor has the same pinout and footprint; read it on an
   ADC pin with a software threshold.
 
-## Firmware and the host side
+## Firmware and the host side, XIAO version
 
 [`firmware/main.py`](firmware/main.py) is MicroPython for the XIAO. It mirrors the
 Pioreactor's `stirring.py`:
@@ -258,7 +355,7 @@ centre, and the bar sits where the tip goes.
 |---|---|
 | ![](img/step01_keys.png) | **1. Glue the two deck keys into the base.** Superglue each key's triangular nub into its 2.1 mm pocket under the base. Glue both while the base sits in two deck slots, so the keys end up exactly 25 mm apart. |
 | ![](img/step02_inserts.png) | **2. Press in eight M3 heat-set inserts.** Use a soldering iron at the insert maker's temperature: four go in the fan posts and four in the corner posts. Keep them square, as the fan screws pull straight down into them. |
-| ![](img/step03_electronics.png) | **3. Wire the electronics, then drop them in.** Solder per the wiring diagram, leaving about 60 mm of lead for the Hall sensor. The XIAO's USB-C goes into the notch in the −X wall, and the rails and the stop locate the board. The MOSFET and diode lie flat on the +X side, held with a dab of hot glue. |
+| ![](img/step03_electronics.png) | **3. Wire the electronics, then drop them in.** Solder per the wiring diagram, leaving about 60 mm of lead for the Hall sensor. The XIAO's USB-C goes into the notch in the −X wall, and the rails and the stop locate the board. In the Uno version the junction board sits in the same place and the cable leaves through the notch; tie it to the board for strain relief. The MOSFET and diode lie flat on the +X side, held with a dab of hot glue. |
 | ![](img/step04_fan.png) | **4. Seat the fan, rotor side up.** It goes on the four posts with the label side up, so the hub faces the vial. Run its leads to the MOSFET. |
 | ![](img/step05_fan_screws.png) | **5. Four M3 × 16 screws through the fan.** Tighten them snug only, since the fan frame is plastic. Screwed down, the fan can't be lifted by the magnets, which happened on one Pioreactor ([forum 781](https://forum.pioreactor.com/t/self-test-failure-the-fan-stirring-is-spinning-but-no-rpms-were-measured/781/4)). |
 | ![](img/step06_magnets.png) | **6. Magnets into the carrier, carrier onto the hub.** One magnet goes north up and one south up; check with a third magnet, which one attracts and the other repels. CA the magnets into the pockets and the carrier onto the hub, centred: a misaligned drive makes the bar walk. |
@@ -327,8 +424,9 @@ bottom with 1.6 mm glass. magpylib puts the horizontal field at the axis of a
 ```bash
 pip install requests pillow
 export ONSHAPE_ACCESS_KEY=... ONSHAPE_SECRET_KEY=...    # cad.onshape.com key with write access
-python hardware/vial-stirrer-cubxl/build_onshape.py           # upload, rebuild, export STLs, render
-python hardware/vial-stirrer-cubxl/build_onshape.py --only section --no-stl   # one render
+python hardware/vial-stirrer-cubxl/build_onshape.py           # upload, rebuild, export STLs and STEP, render
+python hardware/vial-stirrer-cubxl/build_onshape.py --only section --no-stl --no-step   # one render
+python hardware/vial-stirrer-cubxl/build_onshape.py --no-render --no-stl     # STEP files only
 python hardware/vial-stirrer-cubxl/build_onshape.py --new     # into a fresh document
 ```
 
