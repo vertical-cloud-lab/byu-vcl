@@ -1,8 +1,0 @@
-[Unit]
-Description=Start a fresh YouTube broadcast (restart device.service) so no broadcast runs past YouTube's 12 h archive limit
-# The other stream-cam Pis reboot at 05:00, 13:00 and 21:00 for this. This Pi
-# also runs CubOS and the OT-2 link, so only the stream is restarted.
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/systemctl restart device.service

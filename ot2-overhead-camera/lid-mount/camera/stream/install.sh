@@ -32,11 +32,19 @@ chmod 600 "$PICAM/my_secrets.py"
 echo "4/6 systemd units"
 sed -e "s|@USER@|$(id -un)|g" -e "s|@HOME@|$HOME|g" "$HERE/device.service.in" > /tmp/device.service
 sudo_ install -m 644 /tmp/device.service /etc/systemd/system/device.service
-sudo_ install -m 755 "$HERE/stream-watchdog.sh" /usr/local/bin/stream-watchdog.sh
-for u in stream-watchdog.service stream-watchdog.timer stream-rotate.service stream-rotate.timer; do
+for s in stream-watchdog.sh stream-reboot.sh; do
+  sudo_ install -m 755 "$HERE/$s" /usr/local/bin/$s
+done
+for u in stream-watchdog.service stream-watchdog.timer stream-reboot.service stream-reboot.timer; do
   sudo_ install -m 644 "$HERE/$u" /etc/systemd/system/$u
 done
+sudo_ install -m 644 "$HERE/stream-reboot-inhibit.rules" /etc/polkit-1/rules.d/50-stream-reboot-inhibit.rules
 rm -f /tmp/device.service
+# stream-reboot replaced stream-rotate (a restart of the stream only) on 2026-10-19
+if [ -f /etc/systemd/system/stream-rotate.timer ]; then
+  sudo_ systemctl disable --now stream-rotate.timer >/dev/null 2>&1 || true
+  sudo_ rm -f /etc/systemd/system/stream-rotate.timer /etc/systemd/system/stream-rotate.service
+fi
 
 echo "5/6 NetworkManager (campus Wi-Fi ARP conflicts; Wi-Fi power save)"
 sudo_ install -m 644 "$HERE/no-ipv4-acd.conf" /etc/NetworkManager/conf.d/no-ipv4-acd.conf
@@ -45,5 +53,5 @@ sudo_ nmcli general reload conf
 
 echo "6/6 enable"
 sudo_ systemctl daemon-reload
-sudo_ systemctl enable stream-watchdog.timer stream-rotate.timer device.service >/dev/null 2>&1
-echo "done. Start with: sudo systemctl start stream-watchdog.timer stream-rotate.timer device.service"
+sudo_ systemctl enable stream-watchdog.timer stream-reboot.timer device.service >/dev/null 2>&1
+echo "done. Start with: sudo systemctl start stream-watchdog.timer stream-reboot.timer device.service"
