@@ -4,7 +4,9 @@ The camera is the HQ Camera (IMX477) with the 8–50 mm zoom, on the Pi 5 that s
 mount's deck. On the tailnet it is the Pi behind `RPI_STREAM_CAM_HOSTNAME`, which also runs
 CubOS and reaches the OT-2 over its wired link. Only one program can hold the camera at a time,
 so stop the stream (`sudo systemctl stop device.service`) before a preview or a still, and start
-it again afterwards; see [`stream/README.md`](stream/README.md).
+it again afterwards; see [`stream/README.md`](stream/README.md). The Pi reboots at 05:00, 13:00
+and 21:00 local time, which takes the stream off the air for under a minute; a preview or still
+that is running holds the reboot off ([Reboots](stream/README.md#reboots)).
 
 | Way | Needs | Good for |
 |---|---|---|

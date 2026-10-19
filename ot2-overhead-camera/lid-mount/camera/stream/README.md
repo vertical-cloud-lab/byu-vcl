@@ -13,9 +13,10 @@ It runs the same client as the other stream cams, the Acceleration Consortium
 [picam `device.py`](https://ac-training-lab.readthedocs.io/en/latest/devices/picam.html)
 (`rpicam-vid` piped into `ffmpeg`, which pushes RTMP to a broadcast the lab's
 [streaming Lambda](https://github.com/vertical-cloud-lab/streamingLambda) creates), with the same
-watchdog. What differs is the Pi: this is the Pi 5 behind `RPI_STREAM_CAM_HOSTNAME`, which also
-runs CubOS and the OT-2's wired link, so it is not rebooted and the stream is niced. The general
-notes on the stream cams are in `docs/stream-cams.md` on `main`.
+watchdog. What differs is the Pi: this is the Pi 5 behind `RPI_STREAM_CAM_HOSTNAME`, which is
+also the OT-2's only link and where jobs that drive the robot run. So the stream is niced, and the
+Pi's scheduled reboot waits while the robot or the camera is in use ([Reboots](#reboots)). The
+general notes on the stream cams are in `docs/stream-cams.md` on `main`.
 
 ## Files here
 
@@ -25,7 +26,8 @@ notes on the stream cams are in `docs/stream-cams.md` on `main`.
 | `my_secrets_example.py` | `…/picam/my_secrets.py`, mode 600 | Every setting, with the Lambda URL left blank |
 | `device.service.in` | `/etc/systemd/system/device.service` | The service, with `Nice=5` added. `install.sh` fills in the user and home |
 | `stream-watchdog.sh`, `.service`, `.timer` | `/usr/local/bin`, `/etc/systemd/system` | The same watchdog as the other stream cams: restarts the service after 3 minutes with no RTMP bytes acknowledged, or when systemd has given up, at most 6 times in 24 h |
-| `stream-rotate.service`, `.timer` | `/etc/systemd/system` | Restarts `device.service` at 05:00, 13:00 and 21:00 local, so no broadcast runs past YouTube's 12 h archive limit. The other stream cams reboot for this; this Pi must not |
+| `stream-reboot.sh`, `.service`, `.timer` | `/usr/local/bin`, `/etc/systemd/system` | Reboots the Pi at 05:00, 13:00 and 21:00 local, as the other stream cams do, so no broadcast runs past YouTube's 12 h archive limit. Waits while the OT-2 or the camera is in use; see [Reboots](#reboots). Until 2026-10-19 this was `stream-rotate`, which restarted only `device.service` |
+| `stream-reboot-inhibit.rules` | `/etc/polkit-1/rules.d/50-stream-reboot-inhibit.rules` | Lets the Pi's user hold the reboot off for a long job with `systemd-inhibit`, over SSH and without sudo |
 | `no-ipv4-acd.conf`, `wifi-powersave-off.conf` | `/etc/NetworkManager/conf.d/` | The two fixes the other stream cams carry. This Pi had logged 21 campus ARP conflicts (`conflict detected … with host 00:00:00:00:00:00`), the start of the outage described in [streamingLambda#9](https://github.com/vertical-cloud-lab/streamingLambda/issues/9) |
 | `install.sh` | | Does all of the above on a fresh Pi, with the sudo password on stdin |
 
@@ -82,9 +84,9 @@ rpicam-still -n -t 3000 -o still.jpg
 sudo -S -p '' systemctl start device.service <<< "$RPI_STREAM_CAM_PASSWORD"
 ```
 
-**Stop it for a while.** `systemctl stop device.service` is enough; also
-`systemctl stop stream-rotate.timer` if the stop should outlast the next 8 h mark, or the
-timer will start it again.
+**Stop it for a while.** `systemctl stop device.service` stops it until the next reboot (05:00,
+13:00 or 21:00 local), which starts it again. To keep it off through reboots, use
+`systemctl disable --now device.service`, and `enable --now` to bring it back.
 
 **Playlist.** The Lambda adds each broadcast to the first playlist whose title contains
 `OT2 overhead`, now *OT2 overhead Livestreams Playlist*. If that playlist is renamed or deleted,
@@ -98,6 +100,65 @@ it worked.
 `WORKFLOW_NAME = "OT-2"` again, and ending the `OT2 overhead` broadcast by hand first, because
 on start the device only ends broadcasts that match its new name:
 `venv/bin/python -c "from device import call_lambda; call_lambda('end', 'hqcam-ot2-lid', 'OT2 overhead')"`.
+
+## Reboots
+
+`stream-reboot.timer` reboots the Pi at 05:00, 13:00 and 21:00 local time (America/Boise, so
+11:00, 19:00 and 03:00 UTC while daylight saving lasts, an hour later in winter), the slots the
+other stream cams reboot in. Every boot starts a fresh broadcast, so none runs past YouTube's
+12 h archive limit, and the Pi starts clean. Each reboot takes the stream, the Pi's tailnet
+connection and the OT-2's link down for under a minute: on the test reboot the Pi was back on
+the tailnet and the OT-2 answering 31 s after the trigger, and YouTube was receiving the new
+broadcast after 50 s ([record](#reboots-set-up-2026-10-19)).
+
+Until 2026-10-19 this Pi only restarted the stream, to spare CubOS and the OT-2 link. Neither
+reason holds now. The CubXL hardware is on its own Pi; `cubos.service` still runs here, with
+nothing attached. The OT-2's USB-Ethernet adapter is in a black USB 2.0 port (`1-2`,
+480 Mbit/s), not the USB 3 port where it failed to come up after the cold boot of 2026-09-25
+([`wireless-color-sensor/ot2/README.md`](https://github.com/vertical-cloud-lab/byu-vcl/blob/b31a75d/wireless-color-sensor/ot2/README.md?plain=1#L110-L147)
+on `main`).
+
+Jobs that drive the OT-2 run on this Pi, so `stream-reboot.sh` checks first, and waits while
+
+| It waits while | Seen as |
+| --- | --- |
+| something here is moving the robot | the OT-2 has a maintenance run. `ot2ctl.py` and the scan scripts hold one from start to finish |
+| a protocol is running on the robot | the robot's current run is anything but `idle`, `succeeded`, `failed` or `stopped` |
+| someone is previewing or taking stills | `device.service` is stopped and something holds `/dev/media*` or `/dev/video*` |
+| any other job asked it to | a `systemd-inhibit` shutdown lock is held |
+
+It checks again every 10 min. After 3 h it gives up on that slot: it restarts only the stream,
+which still starts a fresh broadcast, and leaves the reboot to the next slot. A robot that doesn't
+answer is nothing to wait for. A slot less than an hour after boot is skipped. A Pi 5 without an
+RTC battery boots with the clock it had at shutdown, so after a long power cut the first NTP
+correction would otherwise make a slot that passed while it was off fire at once.
+
+**Keep the Pi up through a long job** (a download, or anything else that doesn't hold a
+maintenance run) by starting it under a lock. The lock goes when the job ends, however it ends:
+
+```bash
+systemd-inhibit --what=shutdown --why="atomizer archive download" python3 fetch.py
+```
+
+`stream-reboot-inhibit.rules` lets the Pi's user take that lock over SSH without sudo; polkit
+otherwise answers `Interactive authentication required`. A reboot run by hand as root ignores it.
+
+**See what it would do, and what it did:**
+
+```bash
+sudo /usr/local/bin/stream-reboot.sh --check   # would reboot now / would hold off: … / would skip this slot
+systemctl list-timers stream-reboot.timer
+journalctl -t stream-reboot -n 20 --no-pager      # this boot only
+cat /var/lib/stream-reboot/history               # every decision, across reboots
+```
+
+journald on this Pi is volatile (Raspberry Pi OS's `40-rpi-volatile-storage.conf`), so a
+reboot wipes the journal, including the line that announced it. Hence the history file, which
+keeps the last 300 lines. `uptime -s` gives the time of the last boot.
+
+**No reboots for a while:** `sudo systemctl stop stream-reboot.timer` lasts until the next boot,
+`disable --now` until it is enabled again. Without reboots, something else has to start a new
+broadcast at least every 12 h.
 
 ## What changed in `device.py`
 
@@ -171,7 +232,7 @@ touched.
 | 16:24–16:34 | Off-air tests on the Pi, which found the three raw-path problems in [What changed in `device.py`](#what-changed-in-devicepy) and gave the figures below |
 | 16:34 | Live as `OT2 overhead`, 2880 × 2160 from `4056:3040`: [`fJ5g69i3HPM`](https://www.youtube.com/watch?v=fJ5g69i3HPM). The Lambda created *OT2 overhead Livestreams Playlist* (`PLM4VC4X_7XKQ`), then failed to add the broadcast to it (HTTP 409, `SERVICE_UNAVAILABLE`). YouTube showed it as upcoming for 4.5 min before it went live |
 | 16:39 | One restart to fill the playlist: [`uf8urr9T1lg`](https://www.youtube.com/watch?v=uf8urr9T1lg), `playlist_add_status: added`, live within about a minute |
-| 16:43 | 1920 × 1440 from `2028:1520` (below): [`_4GnZiE6pug`](https://www.youtube.com/watch?v=_4GnZiE6pug), added to the playlist. Current until the 13:00 MDT slot of `stream-reboot.timer` (which replaced `stream-rotate.timer` the same morning, in `27038eb`); it starts again with the same settings |
+| 16:43 | 1920 × 1440 from `2028:1520` (below): [`_4GnZiE6pug`](https://www.youtube.com/watch?v=_4GnZiE6pug), added to the playlist. Current until the test reboot at 16:50, after which the same settings came back as [`A2SwVZgreMA`](https://www.youtube.com/watch?v=A2SwVZgreMA); see [Reboots set up, 2026-10-19](#reboots-set-up-2026-10-19) |
 
 **Why 1920 × 1440 and not 2160 lines.** The Lambda creates every broadcast with
 `latencyPreference: "Low"`, and YouTube's latency page says of Low and Ultra-low latency alike:
@@ -216,3 +277,37 @@ since, against `0x0` at 16:21. There have been none since the stream went live. 
 4.85 V with the 2160-line stream running and 4.96 V at 1440. The official 27 W supply holds
 about 5.1 V; check what this Pi is plugged into before giving it more work, and don't benchmark
 on it flat out.
+
+## Reboots set up, 2026-10-19
+
+Asked on [#234](https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-6271876140):
+reboot after all, accepting a short loss of the OT-2 connection, now that CubXL runs on its own
+Pi. Done from a `@claude` session over Tailscale SSH, at the same time as the change record
+above; this session left `device.service` and `my_secrets.py` alone and waited for that one to
+finish before rebooting.
+
+| UTC | |
+| --- | --- |
+| 16:24–16:33 | Read-only first. No root or user crontab. `cubos.service` active since boot (9 days), with no requests logged and no USB serial device attached; the CubXL Arduino and CH340 are on the CubXL Pi. The OT-2's adapter on `1-2` at 480 Mbit/s, the robot answering, no maintenance run, no protocol run since July |
+| 16:35 | `stream-reboot.*` installed, `stream-rotate.*` disabled and deleted. Next slot 13:00 MDT (19:00 UTC) |
+| 16:36–16:45 | Checks without rebooting, below. The polkit rule went in after the first lock test failed with `Interactive authentication required` |
+| 16:50:15 | Test reboot through the timer's own path, `systemctl start stream-reboot.service`, after `--check` said *would reboot now* |
+| +9 s | Pi off the tailnet |
+| +31 s | Back, with a new boot ID. The OT-2 answered `/health` with 200 at the first try: `eth1` on `1-2` at 480 Mbit/s, `carrier on` 4 s after the kernel started, then 5 of 5 pings |
+| +46 s | `device.service` started at boot with the settings above (1920 × 1440, 3 fps, `2028:1520`). The Lambda ended `_4GnZiE6pug` and created [`A2SwVZgreMA`](https://www.youtube.com/watch?v=A2SwVZgreMA), *OT2 overhead stream hqcam-ot2-lid, 2026-10-19 UTC 16:50*, in `PLM4VC4X_7XKQ` |
+| +50 s | YouTube acknowledging RTMP bytes; the channel listed the broadcast live by 16:52 |
+| After | `cubos.service`, `tailscaled` and NetworkManager active, no failed units. `stream-reboot.timer` next at 13:00 MDT. No campus ARP conflicts logged. `throttled=0x0`, `EXT5V` 4.89 V, no under-voltage during the boot. A frame pulled from the live broadcast on the Pi at 16:53:37 (`yt-dlp -g -f 270`, then `ffmpeg -live_start_index -1 -frames:v 1`) carried a timestamp 15 s old and was otherwise black ([frame](../frames/2026-10-19/stream_frame_1653Z_after_reboot.jpg)): the lens is still covered |
+
+**Checks without rebooting**, `sudo stream-reboot.sh --check`:
+
+| Situation | Answer |
+| --- | --- |
+| Nothing held | *would reboot now* |
+| A `systemd-inhibit --what=shutdown` lock taken by the Pi's user over SSH | *would hold off: a shutdown inhibitor is held* |
+| `device.service` stopped and `/dev/media0` held open | *would hold off: the camera is in use outside device.service* |
+| Up less than an hour (just after the test reboot) | *would skip this slot* |
+| A stand-in OT-2 server on the runner: a maintenance run, or a protocol run that is `running`, `paused`, `finishing` or `awaiting-recovery` | *would hold off* |
+| The same: a protocol run that is `idle`, `succeeded`, `failed` or `stopped`, no current run, or no answer | *would reboot now* |
+
+Against the stand-in, the whole script also held off at every re-check, then restarted only
+`device.service` at its time limit, and wrote every decision to its history file.

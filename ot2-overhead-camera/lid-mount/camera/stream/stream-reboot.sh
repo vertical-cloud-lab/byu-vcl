@@ -29,8 +29,14 @@ SERVICE=device.service
 RECHECK_SEC=600
 GIVE_UP_SEC=10800
 MIN_UPTIME_SEC=3600
+HIST=/var/lib/stream-reboot/history   # journald on this Pi is volatile; this survives reboots
 
-log() { logger -t stream-reboot "$1"; echo "$1"; }
+log() {
+    logger -t stream-reboot "$1"; echo "$1"
+    mkdir -p "${HIST%/*}"
+    echo "$(date -u +%FT%TZ) $1" >> "$HIST"
+    tail -n 300 "$HIST" > "$HIST.tmp" && mv "$HIST.tmp" "$HIST"
+}
 
 # Print why the reboot should wait, or nothing. A robot that doesn't answer
 # (off, or the link is down) is nothing to wait for.
