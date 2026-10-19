@@ -195,6 +195,95 @@ Fixed at 35°, the module rides outlet down with powder in its capillary wheneve
   at 45°), so the head needs room there.
 - The horn's screws, how the cheeks fix to the cradle, and any end stops aren't drawn.
 
+## Towed by the gantry: the doser parked in a back corner
+
+@benwhitney5463's sketch ([PR 274](https://github.com/vertical-cloud-lab/byu-vcl/pull/274), 2026-10-16): the doser
+lives in the back right corner of the CubXL. Electromagnets on its side hold it to the gantry while the gantry moves in
+Y, so it rides behind the tools and doses into vials in one row along Y. Below, the one-servo variant is drawn on a
+stand-in of the CubXL: only the deck, Cubware's `PandaDeck.step`, is real. [`cubxl_shuttle.py`](cubxl_shuttle.py)
+draws both images.
+
+![](cubxl_shuttle_views.png)
+
+![](cubxl_shuttle.gif)
+
+**It looks plausible, with three changes to the sketch.** The forces are all small. What needs care is what carries
+the doser's weight, which way the magnets face, and what they pull on.
+
+1. **Run the doser on its own rail, and don't hang it on the magnets.** A magnet holds well in pull and poorly in
+   shear, and an electromagnet lets go when its power is cut. Hung from one, the doser would drop onto the vials at an
+   e-stop. On a short miniature rail along the right side, the rail carries the weight and fixes X and Z. The magnets
+   only have to pull it along in Y, and with the power off it stays where it is.
+2. **Face the magnets along Y, not sideways.** A steel tab on the gantry's right upright sits in front of the
+   magnets. Moving back, the tab pushes the shuttle by contact. Moving forwards, it pulls through the magnets, in the
+   direction they hold best, and the contact face sets the doser's Y. Face-on, it needs no locating pin. Side-on, the
+   magnets would hold in Y by friction alone, and the upright would rub across their faces whenever the gantry moved
+   without the doser, unless a gap were left, which costs most of the force.
+3. **Give them steel to pull on.** The gantry's plates look like aluminium in Ben's photo, so the tab is a plain
+   low-carbon steel plate screwed to the upright.
+
+**The numbers, all estimates:**
+
+- **What has to be towed:** about 0.7 kg. That is the one-servo doser's estimated 0.41 kg, plus the shuttle and
+  magnets.
+- **The force:** 0.7 kg × 300 mm/s² (the controller's limit, `$120` to `$122`) is 0.2 N. The rail carriage's drag
+  adds about 1 N, so call it 2 N.
+- **The magnets:** two [Adafruit 3873](https://www.adafruit.com/product/3873) (P25/20). Each is 25 × 20 mm and
+  55 g, draws 0.3 A at 5 V, and is rated 5 kg, about 49 N, on flat steel. Adafruit says to expect a fifth to a tenth
+  of that in practice, so 10 to 20 N for the pair: 5 to 10 times the 2 N. Side-on, friction would give perhaps a
+  quarter of that, which is marginal.
+- **Reach in Y:** the tip trails the capper by about 94 mm here. The doser's row is the whole Y travel, 234 mm,
+  which takes 8 vials at Ben's 33 mm pitch. The tools reach 234 − 94 = 140 mm of it, or 5 vials. The back 3 vials
+  get powder but can't be capped or pipetted. If the Y travel went back to the 309 mm it was before 2026-09-26, 7
+  of 10 vials would be in reach.
+- **The offset is what to measure first.** It is the distance from the capper's axis to the front face of the
+  gantry's beam, plus a few mm. Every mm of it is a mm of shared row lost. Pointing the capillary forwards, as drawn,
+  keeps it small. Turned side-on, the doser's 142 mm width would add about 60 mm.
+- **Reach in X:** one row, on the auger's axis. The doser and its shuttle take a strip about 170 mm wide along the
+  right side.
+- **Height:** the doser has no Z axis, but its tilt servo works as one. From park (−10°) to 35°, the tip drops
+  36 mm, so it travels high and dips to dose. Every vial in the row has to be the same height.
+- **The body trails over the row, and that costs height.** Parked outlet up, the cradle's back end drops, and it
+  still has to clear the rims of the vials behind. That leaves the tip about 17 mm above the 20 mL vials' rims at
+  35°, or 10 mm at 45°, the steepest tilt PR 176's DEM covers. Capped vials behind it add their caps' height.
+  Turned side-on, with its body over the strip beside the row, the doser could dose from about 5 mm, but the extra
+  60 mm of offset would leave 3 vials in the tools' reach instead of 5.
+- **Under the beam:** the doser's highest point, the stepper's end at 35°, is about 175 mm above the deck. The
+  beam's underside has to be higher than that. It hasn't been measured.
+
+**Why it stays out of the way:**
+
+- Behind the beam's front face, the doser is clear of the head at any X. The X carriage, Z axis, backboard and tools
+  are all in front of that face.
+- Docked, it sits behind the tools' whole Y range, where no tool goes anyway.
+- The tab can only push the doser back or pull it forwards, so the gantry can never get behind it. Ben's "always
+  behind the tools" is then a property of the mechanism.
+- While it is coupled, every Y move takes it along, so its strip along the right side has to stay clear.
+- Homing drives the gantry to +Y, the back in this drawing. The dock has to be where homing leaves the doser, with
+  a little spring in its stop. Otherwise homing pushes the shuttle into the stop before the switch trips.
+
+**Control and wiring:**
+
+- The doser's own board switches the magnets, through a logic-level MOSFET with a flyback diode.
+- A switch at the dock and a switch or Hall sensor at the coupling face tell CubOS where the doser is before it moves.
+- The doser's cable follows it, in a small drag chain from the dock along the rail.
+- In CubOS it would be a new instrument type: an offset of about +94 mm in Y, a fixed X, and Y moves only. That
+  isn't written.
+
+**Alternatives to weigh it against:** a fixed station, with vials brought to it; a third tool on the head, which
+reaches any XY but adds mass to the head and uses up Z; and the doser on its own Y axis, with a leadscrew or belt.
+That could dose while the gantry works elsewhere, but it costs a motor, a driver and homing. The tow gets the gantry's
+Y for two magnets and a rail.
+
+**Not checked, for this version:**
+
+- The CubXL's geometry. The frame, gantry, head and tools are boxes and cylinders sized from Ben's photo, SainSmart's
+  PROVerXL 4030 travel and the gantry config. Where CubOS's (0, 0) sits on the deck, the beam's depth and height, and
+  how far the capper sits in front of the beam are guesses. So are the 94 mm offset and the room under the beam.
+- Whether the right Y beam's inner face has room for the rail, and how the tab fixes to the upright.
+- The masses. Nothing has been weighed. Whether the magnets run warm when they stay on for a whole run.
+- Whether being towed shakes powder out. This is the one-servo variant's park-angle question, now on a moving shuttle.
+
 ## Where it was first drawn: inside the atomizer chamber
 
 [`ods_c_gravity.gif`](../ods-lpbf-gifs/out/ods_c_gravity.gif) (5 fps; [`ods_c_gravity.mp4`](../ods-lpbf-gifs/out/mp4/ods_c_gravity.mp4) has every frame, and
@@ -229,7 +318,8 @@ none of that is needed:** PR 176's printed parts, its normal NEMA 11 and its boa
 
 [`module_views.py`](module_views.py) draws `module_views.png` and `module_turntable.gif`. Its docstring has the
 checkout and install commands. [`tilt_views.py`](tilt_views.py) draws `tilt_views.png` and `tilt_motion.gif` the same
-way, from `doser_cad.tilt_meshes`. It needs the doser's STEP from the powder-doser repo, cadquery-ocp 7.9 (8.0 moved
+way, from `doser_cad.tilt_meshes`. [`cubxl_shuttle.py`](cubxl_shuttle.py) draws `cubxl_shuttle_views.png` and
+`cubxl_shuttle.gif`, and also needs Cubware's `PandaDeck.step` (its docstring has the command). They need the doser's STEP from the powder-doser repo, cadquery-ocp 7.9 (8.0 moved
 `TDF_LabelSequence`) and pyvista 0.49. [`doser_cad.py`](../ods-lpbf-gifs/doser_cad.py) reads the STEP once (about 10 s) and caches the
 meshes in `.cache/`. [`nose_insets.py`](../ods-lpbf-gifs/nose_insets.py) draws the cutaway; it takes its fonts from the atomizer GIFs' helper module, so to
 run it on its own, swap `gifkit.font` for PIL's `ImageFont.truetype`. The chamber GIF's scene code (`ods_gifs.py`) is
