@@ -16,8 +16,8 @@ Amazon prices change, so check them again when you order.
 
 ## 1. Parts to buy (ME order)
 
-All of these come from one Amazon cart, except the two cheaper alternatives in the
-notes column.
+All twelve can go in one Amazon cart. The notes column gives other vendors where they
+are cheaper or carry the same part.
 
 | # | Part | Per stirrer | Order | Pack | Price | Notes |
 |---|---|---|---|---|---|---|
@@ -36,7 +36,8 @@ notes column.
 
 **Cost.** All twelve packs come to **$126.32**. That drops to **$101.35** if the
 MOSFET, the diode and the resistors come from the capper's leftovers and lab stock. Once
-the packs are bought, each further stirrer costs about **$20**, mostly the fan. For more
+the packs are bought, each further stirrer costs about **$20**, of which the fan is $7.43
+and 1.5 m of cable about $4. For more
 stirrers, the fan (one each), the stir bars (ten to a pack) and the cable (10 ft covers
 about two) run out first; the other packs last for ten or more.
 

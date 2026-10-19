@@ -37,7 +37,7 @@ the one that already runs the capper and the pipette, instead of its own XIAO RP
 | Path | What |
 |---|---|
 | [`onshape/vial_stirrer.fs`](onshape/vial_stirrer.fs) | The whole model as one FeatureScript feature. All dimensions are constants at the top |
-| [`build_onshape.py`](build_onshape.py) | Pushes the FeatureScript to Onshape, rebuilds, renders every step, exports the STLs |
+| [`build_onshape.py`](build_onshape.py) | Pushes the FeatureScript to Onshape, rebuilds, renders every step, exports the STLs and STEP files |
 | [`onshape/render_steps.json`](onshape/render_steps.json) | Camera and caption for each render |
 | [`onshape/document.json`](onshape/document.json) | Onshape document ids |
 | [`BOM.md`](BOM.md) | Bill of materials for the Uno-driven version: parts to buy with links and prices, parts to print |
@@ -45,7 +45,7 @@ the one that already runs the capper and the pipette, instead of its own XIAO RP
 | [`stl/`](stl) | The same printed parts as STL. Both sets are in assembly position, which is also each part's print orientation |
 | [`img/`](img) | Renders: steps 1–10, assembled, exploded, section, contact sheet, GIF |
 | [`firmware/main.py`](firmware/main.py) | MicroPython speed controller for the XIAO RP2040 (untested) |
-| [`../../cubos/firmware/panda-arduino-stirrer.patch`](../../cubos/firmware/panda-arduino-stirrer.patch) | The same controller as two commands in the CubXL Uno's PANDA firmware (compile-checked, not flashed) |
+| [`../../cubos/firmware/panda-arduino-stirrer.patch`](../../cubos/firmware/panda-arduino-stirrer.patch) | The same controller as two commands in the CubXL Uno's PANDA firmware. Built, image committed, not flashed |
 | [`firmware/uno_sim/`](firmware/uno_sim) | Host-side simulation of that patch's control loop against a fan model, and its output |
 | [`RESEARCH.md`](RESEARCH.md) | What the Pioreactor does, the AC's and other open-source stirrers, design lessons |
 | [`../../outputs/issue-169-magnetic-stirrer/`](../../outputs/issue-169-magnetic-stirrer) | Edison answers and the raw vendor lookups |
@@ -217,7 +217,7 @@ same rails, and the cable leaves through the USB-C notch in the −X wall (13 mm
 
 [`panda-arduino-stirrer.patch`](../../cubos/firmware/panda-arduino-stirrer.patch) adds
 `Stirrer.h` and `Stirrer.cpp` to the PANDA firmware, plus two commands. It applies on
-top of the three patches already on the board (the 2026-10-07 image), and it ports the
+top of the three patches behind the board's current image (2026-10-07), and it ports the
 XIAO firmware's control loop:
 
 - 200 Hz PWM;
@@ -270,8 +270,8 @@ print(link.send_command(31))             # status
 print(link.send_command(30, 0))          # stop
 ```
 
-**Opening the port resets the Uno,** which stops the stirrer, and the pipette has to
-home again. So a script cannot start the stirrer and leave it running into a CubOS run.
+**Opening the port resets the Uno,** which stops the stirrer along with everything else
+on the board. So a script cannot start the stirrer and leave it running into a CubOS run.
 Stirring during a protocol has to go over the link CubOS already holds, and CubOS has no
 stir command yet. The obvious shape for one is a copy of its `set_lights`:
 
