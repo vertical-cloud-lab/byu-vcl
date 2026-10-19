@@ -11,9 +11,11 @@ LAMBDA_FUNCTION_URL = "https://..."
 CAM_NAME = "hqcam-ot2-lid"
 
 # Matched (case-insensitive substring) against broadcast titles to end the
-# previous broadcast, and against playlist titles to file the new one. "OT-2"
-# files into the existing "OT-2 Livestreams Playlist" (PLdKz1vXA-rfQ).
-WORKFLOW_NAME = "OT-2"
+# previous broadcast, and against playlist titles to file the new one.
+# "OT2 overhead" files into "OT2 overhead Livestreams Playlist" (PLM4VC4X_7XKQ),
+# which the Lambda created for it on 2026-10-19. No hyphen on purpose: with
+# "OT-2" in this camera's titles, any camera started as "OT-2" would end them.
+WORKFLOW_NAME = "OT2 overhead"
 
 PRIVACY_STATUS = "public"  # "private", "public" or "unlisted"
 
@@ -26,15 +28,18 @@ CAMERA_ROTATION = 0
 # A preset ("144p" ... "1080p", all 16:9) or "WIDTHxHEIGHT". The HQ Camera's
 # sensor is 4:3, and a 16:9 output crops its field to 16:9, which at 8 mm zoom
 # cuts off the front and back rows of deck slots. 4:3 keeps the whole field.
-# With CAMERA_CODEC = "yuv420" the width must be a multiple of 64.
-RESOLUTION = "1536x1152"
-FRAME_RATE = 10
+# 1920x1440: YouTube serves this camera's broadcasts live at up to 1440x1080,
+# since the Lambda asks for Low latency, which has no 4K. 2160 lines cost
+# twice the CPU for nothing more live; see README.md, 2026-10-19.
+RESOLUTION = "1920x1440"
+FRAME_RATE = 3
 
 # Burn lab local time (top left) into every frame. Forces an ffmpeg re-encode.
 TIMESTAMP_OVERLAY = True
 
-# Full-field binned mode of the IMX477. Without it libcamera may pick a
-# cropped mode for a small output.
+# The IMX477's full-field binned mode, which the ISP scales to RESOLUTION.
+# Without it libcamera may pick a cropped mode. Above 2028 wide, use the
+# full-resolution "4056:3040" (up to 11.7 fps).
 SENSOR_MODE = "2028:1520"
 
 # Optional. None or 0 for a sharp picture; see docs/stream-cams.md on main.
@@ -46,3 +51,9 @@ CAMERA_CODEC = "yuv420"
 
 # Only used with CAMERA_CODEC = "h264": the camera encoder's bit rate.
 BITRATE = 4000000
+
+# ffmpeg's libx264 encode. "veryfast" halves the upload of "ultrafast" for
+# about 1.5x the CPU: 0.65 of a Pi 5 core at 1920x1440 and 3 fps. MAX_BITRATE caps the upload
+# (bit/s, 2 s buffer); None leaves it uncapped.
+X264_PRESET = "veryfast"
+MAX_BITRATE = 4000000

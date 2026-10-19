@@ -8,7 +8,7 @@ it again afterwards; see [`stream/README.md`](stream/README.md).
 
 | Way | Needs | Good for |
 |---|---|---|
-| **Live, anywhere: the YouTube stream** in the [OT-2 Livestreams Playlist](https://www.youtube.com/playlist?list=PLdKz1vXA-rfQ) (public, since 2026-10-18; see [`stream/`](stream/README.md)) | Nothing | Watching the deck from anywhere, with YouTube's 5–20 s of delay. Full 4:3 field at 1536 × 1152, 10 fps, timestamp top left |
+| **Live, anywhere: the YouTube stream** in the [OT2 overhead Livestreams Playlist](https://www.youtube.com/playlist?list=PLM4VC4X_7XKQ) (public, since 2026-10-18; its own playlist since 2026-10-19; see [`stream/`](stream/README.md)) | Nothing | Watching the deck from anywhere, with YouTube's 5–20 s of delay. Full 4:3 field at 1920 × 1440, 3 fps, timestamp top left |
 | **Live, in a browser:** [`preview_server.py`](preview_server.py) on the Pi, then open the address it prints | The viewing device on the lab's tailnet, and someone with SSH to the Pi to start it (or a comment asking `@claude` to start it) | Positioning and focusing the mount |
 | **Live, on a monitor at the robot:** `rpicam-hello -t 0 --viewfinder-mode 2028:1520:12:P` | A monitor on the Pi's micro-HDMI port, plus a keyboard or an SSH session to start it | Positioning while standing at the OT-2, with no network in the loop |
 | **One full-resolution still:** a comment asking `@claude` for a still from the lid camera | Nothing | Checking the result. Measurements should come from these: 4056 × 3040 px |
@@ -88,9 +88,11 @@ In July a misplaced adapter ring is why the camera wouldn't focus (#84). The num
 
 ## 2026-10-18: streaming to YouTube
 
-The camera now streams around the clock as `device.service` on the Pi, public, into the
-[OT-2 Livestreams Playlist](https://www.youtube.com/playlist?list=PLdKz1vXA-rfQ); the newest
-video in the playlist is the live one. That is the way to watch the feed while positioning,
+The camera now streams around the clock as `device.service` on the Pi, public. Until
+2026-10-19 16:24 UTC it went into the
+[OT-2 Livestreams Playlist](https://www.youtube.com/playlist?list=PLdKz1vXA-rfQ); since then it has
+its own, [OT2 overhead Livestreams Playlist](https://www.youtube.com/playlist?list=PLM4VC4X_7XKQ),
+at 1920 × 1440 and 3 fps. The newest video in the playlist is the live one. That is the way to watch the feed while positioning,
 zooming or focusing the mount: YouTube adds 5–20 s of delay, so move, wait, look. The set-up,
 settings and how to operate it are in [`stream/README.md`](stream/README.md). The stream holds
 the camera, so `preview_server.py` and `rpicam-still` need it stopped first.

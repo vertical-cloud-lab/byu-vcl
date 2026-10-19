@@ -44,12 +44,27 @@ except ImportError:
 #   through libav, which needs "--libav-format h264" and writes to "pipe:1".
 # "yuv420": raw frames to ffmpeg, which does the only encode. No second
 #   encode and no intermediate bit rate, at the cost of ffmpeg always
-#   re-encoding. The width must be a multiple of 64, or the frames carry
-#   stride padding that ffmpeg cannot see.
+#   re-encoding. Each row arrives padded to a multiple of 128 pixels
+#   (2880 wide comes as 2944); ffmpeg reads the padded width and crops.
 try:
     from my_secrets import CAMERA_CODEC
 except ImportError:
     CAMERA_CODEC = "h264"
+
+# Optional settings; older my_secrets.py files may not define them. They
+# apply whenever ffmpeg encodes (filters on, or CAMERA_CODEC = "yuv420").
+# X264_PRESET: libx264's speed/size trade-off. "ultrafast" suits a Zero 2 W;
+#   on a Pi 5 at 2160 lines and 3 fps, "veryfast" halves the upload.
+# MAX_BITRATE: optional cap in bit/s (VBV, with a 2 s buffer); None leaves
+#   libx264's constant-quality default uncapped.
+try:
+    from my_secrets import X264_PRESET
+except ImportError:
+    X264_PRESET = "ultrafast"
+try:
+    from my_secrets import MAX_BITRATE
+except ImportError:
+    MAX_BITRATE = None
 
 # Resolution mappings for YouTube-compatible resolutions
 RESOLUTION_MAP = {
@@ -89,6 +104,8 @@ def start_stream(
     pixelate_blocks=None,
     bitrate=None,
     codec="h264",
+    x264_preset="ultrafast",
+    max_bitrate=None,
 ):
     """
     Starts the libcamera -> ffmpeg pipeline and returns two Popen objects:
@@ -115,6 +132,9 @@ def start_stream(
             Defaults to 1 Mbit/s, the value every picam used before this.
         codec: "h264" (camera encodes) or "yuv420" (raw frames, ffmpeg
             does the only encode). See CAMERA_CODEC above.
+        x264_preset: libx264 preset whenever ffmpeg encodes.
+        max_bitrate: Optional cap (bit/s) on ffmpeg's encode, with a 2 s
+            buffer. None leaves it uncapped.
     """
     # Get the available camera command
     camera_cmd = get_camera_command()
@@ -247,6 +267,20 @@ def start_stream(
     ]
     if codec == "yuv420":
         # Raw frames: tell ffmpeg their layout, since a pipe has no header.
+        # rpicam-vid pads each row to a multiple of 128 pixels (measured on
+        # the Pi 5: 1536 arrives as 1536, 2880 as 2944, with zeros on the
+        # right), so read the padded width and crop the padding off first.
+        stride_width = -(-cam_width // 128) * 128
+        # The frames are full-range sYCC (BT.601 matrix, levels 0-255), as
+        # libcamera reports ("YUV420/sYCC"). Players take untagged HD video as
+        # limited-range BT.709, so convert first, or shadows and highlights clip.
+        raw_filters = [
+            "scale=in_range=pc:out_range=tv"
+            ":in_color_matrix=bt601:out_color_matrix=bt709"
+        ]
+        if stride_width != cam_width:
+            raw_filters.insert(0, f"crop={cam_width}:{cam_height}:0:0")
+        video_filters[:0] = raw_filters
         ffmpeg_cmd.extend(
             [
                 "-f",
@@ -254,7 +288,7 @@ def start_stream(
                 "-pix_fmt",
                 "yuv420p",
                 "-video_size",
-                f"{cam_width}x{cam_height}",
+                f"{stride_width}x{cam_height}",
                 "-framerate",
                 str(framerate),
             ]
@@ -278,7 +312,7 @@ def start_stream(
                 "-c:v",
                 "libx264",
                 "-preset",
-                "ultrafast",
+                x264_preset,
                 # ffmpeg guesses the input frame rate from the pipe, and at
                 # low rates the guess is off (1.5 fps for a 2 fps camera),
                 # so pin the output to the camera's rate.
@@ -288,6 +322,24 @@ def start_stream(
                 str(framerate * 2),
             ]
         )
+        if max_bitrate:
+            ffmpeg_cmd.extend(
+                ["-maxrate", str(max_bitrate), "-bufsize", str(2 * max_bitrate)]
+            )
+        if codec == "yuv420":
+            # Tag what the scale filter above produced.
+            ffmpeg_cmd.extend(
+                [
+                    "-colorspace",
+                    "bt709",
+                    "-color_primaries",
+                    "bt709",
+                    "-color_trc",
+                    "bt709",
+                    "-color_range",
+                    "tv",
+                ]
+            )
     else:
         ffmpeg_cmd.extend(["-c:v", "copy"])
 
@@ -313,10 +365,10 @@ def start_stream(
         ]
     )
 
-    # Start camera process, capturing its output in a pipe
-    p1 = subprocess.Popen(
-        libcamera_cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT
-    )
+    # Start camera process, capturing its output in a pipe. Its log goes to
+    # our stderr (the journal), not into the pipe: there, libcamera's ~2 KB of
+    # start-up log would sit ahead of the first raw frame and shift every frame.
+    p1 = subprocess.Popen(libcamera_cmd, stdout=subprocess.PIPE)
 
     # Start ffmpeg, reading from p1's stdout
     p2 = subprocess.Popen(ffmpeg_cmd, stdin=p1.stdout, stderr=subprocess.STDOUT)
@@ -408,11 +460,6 @@ if __name__ == "__main__":
         raise ValueError(
             f"Invalid CAMERA_CODEC '{CAMERA_CODEC}'. Allowed options: h264, yuv420"
         )
-    if CAMERA_CODEC == "yuv420" and width % 64:
-        raise ValueError(
-            f"RESOLUTION width {width} must be a multiple of 64 with CAMERA_CODEC "
-            f"'yuv420', or the raw frames carry stride padding"
-        )
 
     # Validate pixelation
     if PIXELATE_BLOCKS is not None and (
@@ -421,6 +468,15 @@ if __name__ == "__main__":
         raise ValueError(
             f"Invalid PIXELATE_BLOCKS '{PIXELATE_BLOCKS}'. "
             f"Must be a positive integer (e.g., 32), or 0 or None for none"
+        )
+
+    # Validate the encoder cap
+    if MAX_BITRATE is not None and (
+        not isinstance(MAX_BITRATE, int) or MAX_BITRATE <= 0
+    ):
+        raise ValueError(
+            f"Invalid MAX_BITRATE '{MAX_BITRATE}'. "
+            f"Must be a positive integer in bit/s (e.g., 4000000), or None"
         )
 
     # For 90/270 rotation, output is portrait (swapped dimensions)
@@ -439,6 +495,7 @@ if __name__ == "__main__":
     print(f"Sensor mode: {SENSOR_MODE or 'auto'}")
     print(f"Camera codec: {CAMERA_CODEC}")
     print(f"Camera bitrate: {BITRATE or 1000000} bit/s")
+    print(f"x264 preset: {X264_PRESET}, cap: {MAX_BITRATE or 'none'} bit/s")
     print(f"Timestamp overlay: {'enabled' if TIMESTAMP_OVERLAY else 'disabled'}")
     if PIXELATE_BLOCKS:
         print(f"Pixelation: {PIXELATE_BLOCKS} blocks along the long side")
@@ -473,6 +530,8 @@ if __name__ == "__main__":
             pixelate_blocks=PIXELATE_BLOCKS,
             bitrate=BITRATE,
             codec=CAMERA_CODEC,
+            x264_preset=X264_PRESET,
+            max_bitrate=MAX_BITRATE,
         )
         print("Stream started")
         interrupted = False

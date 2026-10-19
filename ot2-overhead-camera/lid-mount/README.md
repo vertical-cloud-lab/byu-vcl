@@ -305,7 +305,7 @@ y +54.7) and zoom to about 14 mm. Both slots then fit, at about 100 px across a 
 1. Home the robot (the gantry parks at the back right, out of view) and put a plate in
    the slot you picked.
 2. Put the mount on the lid above that slot, with the arrow on the base pointing at the door.
-3. Watch the camera, either on the public [YouTube stream](https://www.youtube.com/playlist?list=PLdKz1vXA-rfQ)
+3. Watch the camera, either on the public [YouTube stream](https://www.youtube.com/playlist?list=PLM4VC4X_7XKQ)
    (since 2026-10-18, 5–20 s behind; see [`camera/stream/`](camera/stream/README.md)) or, with the
    stream stopped, on [`camera/preview_server.py`](camera/preview_server.py) over the tailnet, and slide
    the mount until the plate is centred and square in the picture. Zoom first, then focus.
