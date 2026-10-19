@@ -200,89 +200,106 @@ Fixed at 35°, the module rides outlet down with powder in its capillary wheneve
 @benwhitney5463's sketch ([PR 274](https://github.com/vertical-cloud-lab/byu-vcl/pull/274), 2026-10-16): the doser
 lives in the back right corner of the CubXL. Electromagnets on its side hold it to the gantry while the gantry moves in
 Y, so it rides behind the tools and doses into vials in one row along Y. Below, the one-servo variant is drawn on a
-stand-in of the CubXL: only the deck, Cubware's `PandaDeck.step`, is real. [`cubxl_shuttle.py`](cubxl_shuttle.py)
-draws both images.
+stand-in of the CubXL, now placed from Ben's measurements of 2026-10-19 and his photo of the right Y rail. Only the
+deck, Cubware's `PandaDeck.step`, is real CAD. [`cubxl_shuttle.py`](cubxl_shuttle.py) draws both images and prints the
+clearances.
 
 ![](cubxl_shuttle_views.png)
 
 ![](cubxl_shuttle.gif)
 
-**It looks plausible, with three changes to the sketch.** The forces are all small. What needs care is what carries
-the doser's weight, which way the magnets face, and what they pull on.
+**Ben's measurements** (with the backboard moved out of the way, and in brackets with it in place):
 
-1. **Run the doser on its own rail, and don't hang it on the magnets.** A magnet holds well in pull and poorly in
-   shear, and an electromagnet lets go when its power is cut. Hung from one, the doser would drop onto the vials at an
-   e-stop. On a short miniature rail along the right side, the rail carries the weight and fixes X and Z. The magnets
-   only have to pull it along in Y, and with the power off it stays where it is.
-2. **Face the magnets along Y, not sideways.** A steel tab on the gantry's right upright sits in front of the
-   magnets. Moving back, the tab pushes the shuttle by contact. Moving forwards, it pulls through the magnets, in the
-   direction they hold best, and the contact face sets the doser's Y. Face-on, it needs no locating pin. Side-on, the
-   magnets would hold in Y by friction alone, and the upright would rub across their faces whenever the gantry moved
-   without the doser, unless a gap were left, which costs most of the force.
-3. **Give them steel to pull on.** The gantry's plates look like aluminium in Ben's photo, so the tab is a plain
-   low-carbon steel plate screwed to the upright.
+| | |
+|---|---|
+| The deck's right edge to the right Y rail, in X | 38 mm |
+| The beam's front face to the capper's axis, in Y | 115 mm (65 mm to the backboard's front face) |
+| The deck to the beam's underside, in Z | 148 mm (120 mm to the bottom of the head's block) |
 
-**The numbers, all estimates:**
+The model also assumes a beam 40 mm deep (a SainSmart review of the 4030 V2 lists its X axis as a 40 × 80 mm profile
+with the ball screw inside), vial rims 75 mm above the deck, and where CubOS's (0, 0) sits on the plate.
 
-- **What has to be towed:** about 0.7 kg. That is the one-servo doser's estimated 0.41 kg, plus the shuttle and
-  magnets.
-- **The force:** 0.7 kg × 300 mm/s² (the controller's limit, `$120` to `$122`) is 0.2 N. The rail carriage's drag
-  adds about 1 N, so call it 2 N.
-- **The magnets:** two [Adafruit 3873](https://www.adafruit.com/product/3873) (P25/20). Each is 25 × 20 mm and
-  55 g, draws 0.3 A at 5 V, and is rated 5 kg, about 49 N, on flat steel. Adafruit says to expect a fifth to a tenth
-  of that in practice, so 10 to 20 N for the pair: 5 to 10 times the 2 N. Side-on, friction would give perhaps a
-  quarter of that, which is marginal.
-- **Reach in Y:** the tip trails the capper by about 94 mm here. The doser's row is the whole Y travel, 234 mm,
-  which takes 8 vials at 33 mm, about the spacing of Ben's `vial_1` and `vial_2`. The tools reach 234 − 94 = 140 mm
-  of it, or 5 vials. The back 3 vials get powder but can't be capped or pipetted. Every mm of Y travel adds a mm of
-  shared row: GRBL allowed 309 mm until 2026-09-26 (`$131`), and with that 7 of 10 vials would be in reach.
-- **The offset is what to measure first.** It is the distance from the capper's axis to the front face of the
-  gantry's beam, plus a few mm. Every mm of it is a mm of shared row lost. Pointing the capillary forwards, as drawn,
-  keeps it small. Turned side-on, the doser's 142 mm width would add about 60 mm.
-- **Reach in X:** one row, on the auger's axis. The doser and its shuttle take a strip about 170 mm wide along the
-  right side.
-- **Height:** the doser has no Z axis, but its tilt servo works as one. From park (−10°) to 35°, the tip drops
-  36 mm, so it travels high and dips to dose. Every vial in the row has to be the same height.
-- **The body trails over the row, and that costs height.** Parked outlet up, the cradle's back end drops, and it
-  still has to clear the rims of the vials behind. That leaves the tip about 17 mm above the 20 mL vials' rims at
-  35°, or 10 mm at 45°, the steepest tilt PR 176's DEM covers. Capped vials behind it add their caps' height.
-  Turned side-on, with its body over the strip beside the row, the doser could dose from about 5 mm, but the extra
-  60 mm of offset would leave 3 vials in the tools' reach instead of 5.
-- **Under the beam:** the doser's highest point, the stepper's end at 35°, is about 175 mm above the deck. The
-  beam's underside has to be higher than that. It hasn't been measured.
+**It still fits, with less to spare.** The doser has to stay behind the beam's front face, and under the beam it has to
+stay below 148 mm. The previous version guessed the beam's height, and the doser reached about 175 mm. It still does,
+but only at its back end, which sits behind a 40 mm beam:
 
-**Why it stays out of the way:**
+- **Under the beam:** 8 mm of clearance at the worst pose between park (−10°) and dosing (35°). Behind the beam, the
+  stepper's end reaches 174 mm. The servo can go to its 45° limit without touching the beam.
+- **The head's block doesn't limit the head's X travel.** The block reaches 50 mm in front of the beam and hangs to
+  120 mm, but no part of the doser is ever in front of the beam's front face. The block passes in front of the doser at
+  any X, and the animation runs the head to its right end to show it. This holds only if nothing on the X carriage
+  reaches behind the beam's front face below the beam. Ben's photo doesn't show the back of the carriage.
+- **The offset grew:** the tip trails the capper by 129 mm at 35° (it was a guessed 94 mm). The doser's row is still
+  the whole Y travel, 234 mm, which takes 8 vials at 33 mm. The tools reach 105 mm of it, so 4 vials can be dosed and
+  also capped or pipetted (it was 5).
+- **Over the rims:** at 35°, the tip is 17 mm above the rims, as before.
 
-- Behind the beam's front face, the doser is clear of the head at any X. The X carriage, Z axis, backboard and tools
-  are all in front of that face.
-- Docked, it sits behind the tools' whole Y range, where no tool goes anyway.
-- The tab can only push the doser back or pull it forwards, so the gantry can never get behind it. Ben's "always
-  behind the tools" is then a property of the mechanism.
-- While it is coupled, every Y move takes it along, so its strip along the right side has to stay clear.
-- Homing drives the gantry to +Y, the back in this drawing. The dock has to be where homing leaves the doser, with
-  a little spring in its stop. Otherwise homing pushes the shuttle into the stop before the switch trips.
+**The fit is tight, so it depends on two numbers that weren't measured.** Clearance under the beam at the worst pose,
+in mm, where 4 mm is the target:
 
-**Control and wiring:**
+| Park, dose | Rims at 75 mm, beam 40 mm deep | Beam 60 mm deep | Rims at 83 mm, beam 40 mm deep |
+|---|---|---|---|
+| −10°, 35° (as drawn) | 8.3 | −1.6 | 0.3 |
+| 0°, 22.5° | 15.4 | 8.4 | 7.4 |
 
-- The doser's own board switches the magnets, through a logic-level MOSFET with a flyback diode.
-- A switch at the dock and a switch or Hall sensor at the coupling face tell CubOS where the doser is before it moves.
-- The doser's cable follows it, in a small drag chain from the dock along the rail.
-- In CubOS it would be a new instrument type: an offset of about +94 mm in Y, a fixed X, and Y moves only. That
-  isn't written.
+Ben's deck file gives his vials a height of 83 mm. If their rims really are 83 mm above the deck, or the beam is deeper
+than about 48 mm, the doser should park level and dose at 22.5°, the shallow end of the range in which PR 176's DEM
+gives a full dose per turn. Then the tip is 19 mm over the rims and 124 mm behind the capper. Parking level gives up
+the outlet-up park, so the leak question in the one-servo section becomes a bench test.
 
-**Alternatives to weigh it against:** a fixed station, with vials brought to it; a third tool on the head, which
-reaches any XY but adds mass to the head and uses up Z; and the doser on its own Y axis, with a leadscrew or belt.
-That could dose while the gantry works elsewhere, but it costs a motor, a driver and homing. The tow gets the gantry's
-Y for two magnets and a rail.
+**What the measurements changed in the drawing:**
+
+1. **The shuttle's rail moved onto the deck.** The 38 mm gap holds the gantry's own side plate: in the photo, the
+   inner plate runs between the deck and the rail and carries the wheels. A rail on the Y rail's inner face would be in
+   the plate's way. `PandaDeck.step` has no slots outboard of x = 458 mm, so an MGN12 rail (12 mm wide) screws down in
+   that 22 mm strip, outside the tools' reach. It runs 285 mm along the deck's right edge, and the carriage docks
+   against a stop at the deck's back edge.
+2. **The doser hangs from a side frame, not from a top plate.** The one-servo bracket's top plate would sit about
+   163 mm up, above the beam's underside. Instead, the shuttle's side plate carries the hinge screw (in place of the
+   −x arm), the servo's frame carries the other side, and a cross-member joins them behind the module's sweep. That
+   is behind the beam, where there is height.
+3. **The magnets and the tab moved down and in.** The tab is bolted to the inner face of the gantry's side plate, in
+   line with the beam's front face, and reaches 27 mm in, to just over the deck's edge. The magnets sit on a block on the
+   shuttle's foot, 34 and 62 mm up, faces forwards. They work as before: moving back, the tab pushes the shuttle;
+   moving forwards, it pulls through the magnets.
+4. **Docked, the frame sticks out behind the machine.** At the back of its travel, the doser's frame reaches about
+   105 mm past the deck's back edge, 110 to 145 mm up. That space has to be clear of cables and the wall.
+
+**The rest of the reasoning still holds** (from the 2026-10-16 version):
+
+- **Run the doser on its own rail, and don't hang it on the magnets.** A magnet holds well in pull and poorly in
+  shear, and an electromagnet lets go when its power is cut. Hung from one, the doser would drop onto the vials at an
+  e-stop. On a rail, the rail carries the weight and fixes X and Z, and with the power off the doser stays put.
+- **Face the magnets along Y, and give them steel to pull on.** Face-on, the contact face sets the doser's Y, and the
+  gantry's plates are aluminium, so the tab is low-carbon steel.
+- **Forces:** about 0.7 kg towed, at the controller's 300 mm/s² (`$120` to `$122`), is 0.2 N. With about 1 N of drag
+  from the rail's carriage, call it 2 N. Two [Adafruit 3873](https://www.adafruit.com/product/3873) magnets (P25/20,
+  5 V, 0.3 A, rated 5 kg each) give 10 to 20 N at the fifth to tenth of the rating Adafruit says to expect.
+- **Height:** the doser has no Z axis, but its tilt servo works as one. From park (−10°) to 35°, the tip drops 36 mm.
+  Every vial in the row has to be the same height.
+- **Homing** drives the gantry to +Y, the back. The dock has to be where homing leaves the doser, with a little
+  spring in its stop.
+- **Control and wiring:** the doser's own board switches the magnets through a logic-level MOSFET with a flyback
+  diode. A switch at the dock and a switch or Hall sensor at the coupling tell CubOS where the doser is. The cable
+  follows the shuttle in a small drag chain. In CubOS it would be a new instrument type with a Y offset of about
+  +129 mm, a fixed X and Y moves only. That isn't written.
+- **Alternatives:** a fixed station, with vials brought to it; a third tool on the head, which reaches any XY but adds
+  mass to the head and uses up Z; or the doser on its own Y axis, which costs a motor, a driver and homing.
+
+**Four measurements would settle the fit:**
+
+1. The beam's depth, front face to back face. The model takes 40 mm. Past about 48 mm, the drawn angles leave less
+   than 4 mm under the beam.
+2. Whether anything on the X carriage (its wheels, or the block) reaches behind the beam's front face below the beam.
+3. The height of the rims of the vials to be dosed, above the deck.
+4. The free room behind the machine at the back right corner, 110 to 145 mm up.
 
 **Not checked, for this version:**
 
-- The CubXL's geometry. The frame, gantry, head and tools are boxes and cylinders sized from Ben's photo, SainSmart's
-  PROVerXL 4030 travel and the gantry config. Where CubOS's (0, 0) sits on the deck, the beam's depth and height, and
-  how far the capper sits in front of the beam are guesses. So are the 94 mm offset and the room under the beam.
-- Whether the right Y beam's inner face has room for the rail, and how the tab fixes to the upright.
-- The masses. Nothing has been weighed. Whether the magnets run warm when they stay on for a whole run.
-- Whether being towed shakes powder out. This is the one-servo variant's park-angle question, now on a moving shuttle.
+- Everything but the deck and Ben's three numbers. The frame, gantry, head and tools are boxes and cylinders.
+- Whether the MGN12 rail can be screwed into the polycarbonate deck's edge strip, or needs a stiffening bar under it.
+- The masses (nothing has been weighed), whether the magnets run warm when left on for a whole run, and whether being
+  towed shakes powder out.
 
 ## Where it was first drawn: inside the atomizer chamber
 
