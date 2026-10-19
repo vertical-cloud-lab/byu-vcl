@@ -4,7 +4,8 @@ PR #232's drawing (atomizer-charge/cad/drawings/charge_parts.pdf) is the design:
 1.875" deep and a .375" plug.  The cups and plugs actually made are Gage's 2.750" cup with a
 1/2" drill 2.25" deep and Ronnie's .5625" plug with a #60 vent, and new ones are made to match
 them, so this sheet follows those.  One US-Letter landscape sheet, third-angle projection,
-inches with [mm].  Printed at 100 %, the cup is 1:1 and the plug 3:1.
+inches with [mm].  Printed at 100 %, the cup is 1:1 and the plug 3:1.  How to make them (order
+of operations, tools, speeds, record sheet) is in ../process-sheet/, which this sheet agrees with.
 
 Usage:  python cup_plug.py      (writes cup_plug.pdf and cup_plug.png next to it)
 """
@@ -27,13 +28,13 @@ MM = 25.4
 # ---------------------------------------------------------------------------
 # Sizes, inches.  As made unless the comment says otherwise.
 # ---------------------------------------------------------------------------
-STOCK_D = 0.750  # McMaster 1640T16, 6063; OD left as received (+/-.014")
+STOCK_D = 0.750  # McMaster 1640T16, 6063-T52; OD left as received (+/-.014")
 BLANK_L = 3.000  # the sawn blanks (#277, Oct 14)
 CUP_L = 2.750  # Gage, #222: both ends faced
 BORE_D = 0.500  # 1/2" drill
-DEPTH = 2.25  # Gage, #222: "2.25 in (cone-shaped end)".  Taken to the drill point, which is
-# where it lands if the tailstock is zeroed with the point touching the face.  If it was to the
-# full diameter, the bore is .15 deeper and holds ~0.8 g more powder (composition_spread.py, #232).
+DEPTH = 2.25  # Gage, #222: "2.25 in (cone-shaped end)".  To full diameter, as in #232's CAD, the
+# drawing convention and ../process-sheet/: the point goes on to 2.40.  Nobody recorded which way the
+# first cups were measured; to the point would be .15 shallower, ~0.8 g less powder room.
 POINT_DEG = 118.0  # general-purpose drill point
 PLUG_L = 0.5625  # Ronnie, #222
 FIRST_PLUG_D = 0.508  # the first plugs, turned for their own cups: a reference, not a size to reuse
@@ -57,9 +58,8 @@ def point_h(d: float) -> float:
 
 
 def cup_mass_g(bore: float, depth: float = DEPTH) -> float:
-    """6063 cup, nominal stock, bore to depth at the point; chamfers ignored (< 0.01 g)."""
-    h = point_h(bore)
-    hole = math.pi * (bore / 2) ** 2 * ((depth - h) + h / 3)
+    """6063 cup, nominal stock, bore to depth at full diameter plus the point; chamfers ignored."""
+    hole = math.pi * (bore / 2) ** 2 * (depth + point_h(bore) / 3)
     return (math.pi * (STOCK_D / 2) ** 2 * CUP_L - hole) * MM**3 / 1000 * RHO_6063
 
 
@@ -73,7 +73,7 @@ def plug_mass_g(d: float, length: float) -> float:
 def cup_outline(bore=BORE_D):
     """The cut face of the cup: one U-shaped region, open end at x = CUP_L."""
     R, r, c, rc = STOCK_D / 2, bore / 2, EDGE_CHAMFER, RIM_CHAMFER
-    x_full, x_apex = CUP_L - DEPTH + point_h(bore), CUP_L - DEPTH
+    x_full, x_apex = CUP_L - DEPTH, CUP_L - DEPTH - point_h(bore)
     top = [(0, R - c), (c, R), (CUP_L - c, R), (CUP_L, R - c), (CUP_L, r + rc), (CUP_L - rc, r), (x_full, r)]
     return top + [(x_apex, 0)] + [(x, -y) for x, y in reversed(top)]
 
@@ -228,7 +228,7 @@ def draw_cup(ax):
     R, r = STOCK_D / 2, BORE_D / 2
     v = View(ax, 1.70, 6.40, CUP_SCALE)
     v.section(cup_outline())
-    x_full = CUP_L - DEPTH + point_h(BORE_D)
+    x_full = CUP_L - DEPTH
     for x in (x_full, CUP_L - RIM_CHAMFER):  # circular edges seen inside the bore, beyond the cut
         v.line([(x, -r), (x, r)], lw=THICK * 0.75)
     v.axis(0, CUP_L)
@@ -238,10 +238,10 @@ def draw_cup(ax):
     vdim(ax, v.p(0.0, -R), v.p(0.0, R), left - 0.30, f"Ø{fin(STOCK_D)} [{STOCK_D * MM:.2f}]\n"
          "STOCK, AS RECEIVED")
     leader(ax, v.p(1.55, r), (left + 0.55, top + 0.40),
-           f"Ø{fin(BORE_D)} (1/2) DRILL, {DEPTH:.2f} [{DEPTH * MM:.2f}] DEEP TO THE POINT\n"
-           f"{POINT_DEG:.0f}° DRILL POINT  ·  MEASURE THE BORE: NOTE 2")
-    leader(ax, v.p(CUP_L - RIM_CHAMFER / 2, r + RIM_CHAMFER / 2), (right + 0.30, top + 0.14),
-           f"{fin(RIM_CHAMFER)} × 45°\nBORE MOUTH")
+           f"Ø{fin(BORE_D)} (1/2) DRILL, {DEPTH:.2f} [{DEPTH * MM:.2f}] DEEP TO FULL Ø\n"
+           f"{POINT_DEG:.0f}° POINT REACHES {DEPTH + point_h(BORE_D):.2f}  ·  MEASURE THE BORE: NOTE 2")
+    leader(ax, v.p(CUP_L - RIM_CHAMFER / 2, r + RIM_CHAMFER / 2), (right + 0.24, top + 0.14),
+           f"{fin(RIM_CHAMFER)} × 45° MAX\nBORE MOUTH")
     leader(ax, v.p(EDGE_CHAMFER / 2, -R + EDGE_CHAMFER / 2), (left - 0.62, bottom - 0.30),
            f"{fin(EDGE_CHAMFER)} × 45°\nBOTH ENDS", ha="right")
     label(ax, left - 0.08, top + 0.14, "BOTTOM", fs=6.2, color=GREY, box=False, ha="right")
@@ -255,7 +255,7 @@ def draw_cup(ax):
     cutting_plane(ax, cx, cy, R * CUP_SCALE + 0.24, "A")
     ax.text(cx, cy - R - 0.42, "END VIEW", ha="center", va="top", fontsize=6.6, color=GREY)
 
-    view_title(ax, (left + right) / 2, bottom - 0.55, "CUP  ·  SECTION A-A  ·  1:1",
+    view_title(ax, (left + right) / 2, bottom - 0.55, "CUP (P2)  ·  SECTION A-A  ·  1:1",
                f"FROM A {fin(BLANK_L)} BLANK: FACE ABOUT .125 OFF EACH END")
 
 
@@ -281,8 +281,8 @@ def draw_plug(ax):
          f"THE FIRST ONES: Ø{fin(FIRST_PLUG_D)},\nFOR THEIR CUPS. MEASURE!")
     leader(ax, v.p(LEADIN_L / 2, -r + li_r / 2), (left - 0.50, bottom - 0.24),
            f"{fin(LEADIN_L)} × {LEADIN_DEG:.0f}° LEAD-IN\n(TAPER THE NOSE)", ha="right")
-    leader(ax, v.p(PLUG_L - PLUG_CHAMFER / 2, r - PLUG_CHAMFER / 2), (right + 0.22, top + 0.26),
-           f"{fin(PLUG_CHAMFER)} × 45°")
+    leader(ax, v.p(PLUG_L - PLUG_CHAMFER / 2, r - PLUG_CHAMFER / 2), (right + 0.16, top + 0.26),
+           f"{fin(PLUG_CHAMFER)} × 45° MAX")
     label(ax, left - 0.08, top + 0.16, "NOSE: GOES IN FIRST", fs=6.2, color=GREY, box=False, ha="right")
     label(ax, right + 0.10, bottom - 0.06, "TOP: THE PARTED FACE", fs=6.2, color=GREY, box=False, ha="left")
 
@@ -302,10 +302,10 @@ def draw_plug(ax):
            (cx - 0.70, cy + r * s + 0.60), f"#60 (Ø{fin(VENT_D)}) THRU, ON CENTER\nTHE AIR VENT (NOTE 5)")
     leader(ax, (cx + xe * 0.55, cy - hw * s), (cx + 0.92, cy - r * s - 0.68),
            "OPTIONAL, PRESS RUNS ONLY (NOTE 8):\n"
-           f"CHANNEL ≈{fin(CHANNEL_W, 2)} WIDE × {fin(CHANNEL_DEPTH, 2)} DEEP ACROSS\n"
-           "THE TOP, THROUGH THE VENT (HACKSAW)", ha="right")
+           f"CHANNEL ≈{fin(CHANNEL_DEPTH, 2)} DEEP ACROSS THE TOP, THROUGH\n"
+           "THE VENT: ONE HACKSAW KERF OR 1/16 END MILL", ha="right")
 
-    view_title(ax, (left + right) / 2 - 0.10, bottom - 0.55, "PLUG  ·  SECTION B-B  ·  3:1",
+    view_title(ax, (left + right) / 2 - 0.10, bottom - 0.55, "PLUG (P3)  ·  SECTION B-B  ·  3:1",
                "ONE PER CUP, MADE AFTER ITS CUP")
 
 
@@ -315,7 +315,7 @@ def draw_assembly(ax):
     v = View(ax, 6.75, 6.40, 1.0)
     v.section(cup_outline())
     x_nose = CUP_L - PLUG_L
-    x_full, x_apex = CUP_L - DEPTH + point_h(BORE_D), CUP_L - DEPTH
+    x_full, x_apex = CUP_L - DEPTH, CUP_L - DEPTH - point_h(BORE_D)
     powder = [(x_apex, 0), (x_full, r), (x_nose, r), (x_nose, -r), (x_full, -r)]
     pts = [v.p(x, y) for x, y in powder]
     ax.add_patch(Polygon(pts, closed=True, fc="#f1ede4", hatch="....", lw=0, edgecolor="#9a8f78", zorder=2))
@@ -335,24 +335,24 @@ def draw_assembly(ax):
 
 
 NOTES = [
-    "MATERIAL: 6063 ALUMINUM ROD, Ø3/4 (McMASTER 1640T16), FROM THE 3.000 SAWN BLANKS. LEAVE THE OD AS "
+    "MATERIAL: 6063-T52 ALUMINUM ROD, Ø3/4 (McMASTER 1640T16), FROM THE 3.000 SAWN BLANKS. LEAVE THE OD AS "
     "RECEIVED.",
-    "MAKE THE CUP FIRST. MEASURE ITS BORE AT THE MOUTH WITH A TELESCOPING GAGE AND A MICROMETER (CALIPERS "
-    "AREN'T FINE ENOUGH), AND TURN ITS PLUG TO THAT +.0005. NEVER OVER +.0008: A TIGHTER PLUG PERMANENTLY "
+    "MAKE THE CUP FIRST. MEASURE ITS BORE IN THE TOP 1/2 WITH A TELESCOPING GAGE AND A MICROMETER, TWICE, "
+    "90° APART, AND TURN ITS PLUG TO THE AVERAGE +.0005. NEVER OVER +.0008: A TIGHTER PLUG PERMANENTLY "
     "STRETCHES THE CUP WALL.",
-    "ONE PLUG PER CUP: THEY ARE NOT INTERCHANGEABLE. BAG EACH PAIR TOGETHER AND LABEL THE BAG. NO MARKER, "
-    "SCRIBING OR STAMPS ON THE PARTS.",
-    "FACE THE OPEN END FIRST AND DRILL FROM IT, THEN FLIP THE BLANK AND FACE THE BOTTOM TO LENGTH. THE 2.25 "
-    "DEPTH IS TO THE DRILL POINT: ZERO THE TAILSTOCK WHEN THE POINT TOUCHES THE FACE.",
+    "ONE PLUG PER CUP: THEY ARE NOT INTERCHANGEABLE, AND A PLUG GOES INTO ITS CUP ONCE, AFTER FILLING. BAG EACH "
+    "PAIR TOGETHER AND LABEL THE BAG. NO MARKER, SCRIBING OR STAMPS ON THE PARTS.",
+    "ORDER OF OPERATIONS, TOOLS, SPEEDS AND THE RECORD SHEET: SEE THE PROCESS SHEETS, "
+    "atomizer-charge/process-sheet/ (PR #277).",
     "EVERY PLUG GETS THE #60 VENT. THE FURNACE IS PUMPED DOWN BEFORE MELTING, AND WITHOUT A VENT THE AIR UNDER "
     "THE PLUG HAS TO ESCAPE THROUGH THE POWDER.",
     "CUT DRY OR WITH LIGHT OIL. NO WATER-SOLUBLE COOLANT, AND NO FILES, EMERY OR SCOTCH-BRITE: RESIDUE AND GRIT "
     "END UP IN THE MELT. BRUSH STEEL AND BRASS CHIPS OFF THE LATHE FIRST.",
-    "FLUSH THE BORE WITH 99% IPA, SWAB IT, FLUSH AGAIN AND LET IT DRY. WEIGH EACH PART TO 0.01 g AND WRITE "
-    "THE MASSES ON THE BAG.",
-    "HYDRAULIC-PRESS RUNS ONLY: DRILL 31/64, THEN REAM OR BORE TO .500 SO THE BORE IS STRAIGHT AND SMOOTH, AND "
-    "CUT THE CHANNEL. THAT PLUG SLIDES IN RATHER THAN PRESSING IN, AND ITS CLEARANCE ISN'T SET YET: ASK BEFORE "
-    "MAKING ONE.",
+    "FLUSH THE BORE WITH 99% IPA, SWAB IT AND FLUSH AGAIN; DRY AT 80 °C FOR 30 MIN. WEIGH EACH PART TO 0.01 g "
+    "AND WRITE THE MASSES ON THE BAG.",
+    "HYDRAULIC-PRESS RUNS ONLY: DRILL 31/64, THEN REAM TO .500 SO THE BORE IS STRAIGHT AND SMOOTH, AND CUT THE "
+    "CHANNEL. THAT PLUG SLIDES IN RATHER THAN PRESSING IN, AND ITS CLEARANCE ISN'T SET YET: ASK STERLING "
+    "BEFORE MAKING ONE.",
 ]
 
 
@@ -375,7 +375,8 @@ def draw_variants(ax, x, y, w):
         ("FOR", "ALL RUNS SO FAR", "HIGH-POWDER RUNS (#264)"),
         ("CUP BORE", f"Ø{fin(BORE_D)} (1/2) DRILL", f"Ø{fin(THIN_BORE_D)} (5/8) DRILL, AFTER THE 1/2"),
         ("CUP WALL", f"{fin((STOCK_D - BORE_D) / 2)}", f"{fin((STOCK_D - THIN_BORE_D) / 2, 4)}"),
-        ("BORE DEPTH", f"{DEPTH:.2f} TO THE POINT", f"{DEPTH:.2f} TO THE POINT"),
+        ("BORE DEPTH", f"{DEPTH:.2f} TO FULL Ø (POINT AT {DEPTH + point_h(BORE_D):.2f})",
+         f"{DEPTH:.2f} TO FULL Ø (POINT AT {DEPTH + point_h(THIN_BORE_D):.2f})"),
         ("PLUG LENGTH", f"{fin(PLUG_L, 4)} (9/16)", f"{fin(THIN_PLUG_L)} (1/4)"),
         ("PLUG Ø", f"CUP BORE +{fin(FIT[0], 4)} (+{fin(FIT[1], 4)} MAX)", f"CUP BORE +{fin(FIT[0], 4)}, NO MORE"),
         ("MASS, CUP / PLUG (REF)", f"≈{cup_mass_g(BORE_D):.0f} g / {plug_mass_g(FIRST_PLUG_D, PLUG_L):.1f} g",
@@ -383,7 +384,7 @@ def draw_variants(ax, x, y, w):
     ]
     cols = [x, x + 1.45, x + 1.45 + (w - 1.45) * 0.47, x + w]
     rh = 0.165
-    ax.text(x, y + 0.08, "TWO VERSIONS: ANYTHING NOT LISTED IS THE SAME FOR BOTH", fontsize=7.6, weight="bold",
+    ax.text(x, y + 0.08, "TWO VERSIONS: ALL ELSE IS THE SAME", fontsize=7.6, weight="bold",
             color=INK, va="bottom")
     for i, row in enumerate(rows):
         yt = y - i * rh
@@ -426,15 +427,15 @@ def draw_title_block(ax, x0, y0, x1, y1):
     cell(x0, rows[1], "SCALE", "CUP 1:1, PLUG 3:1, ON LETTER AT 100 %", fs=6.4)
     cell(c2, rows[1], "UNITS", "INCH [mm]", fs=6.4)
     cell(x0, rows[2], "MATERIAL  ·  FINISH",
-         "6063 ALUMINUM ROD, Ø3/4 (McMASTER 1640T16)  ·  AS MACHINED, DEGREASED", fs=6.0)
+         "6063-T52 ALUMINUM ROD, Ø3/4 (McMASTER 1640T16)  ·  AS MACHINED, DEGREASED", fs=6.0)
     cell(x0, rows[3], "UNLESS OTHERWISE SPECIFIED",
          ".XX ±.01   .XXX ±.005   ANGLES ±1°   BREAK SHARP EDGES .005-.015   DO NOT SCALE",
          fs=6.0)
     line(ax, [(c2, rows[5]), (c2, rows[4])], lw=0.5)
     cell(x0, rows[4], "DRAWN", "CLAUDE (AI) FOR R. GUYMON, 2026-10-19", fs=6.0)
     cell(c2, rows[4], "CHECKED", "", fs=6.0)
-    ax.text(x0 + 0.06, (y0 + rows[5]) / 2, "SIZES AS MADE (#222); FIT AND THIN WALL FROM PR #232  ·  "
-            "SOURCE: atomizer-charge/drawing/cup_plug.py", fontsize=5.0, color=GREY, va="center")
+    ax.text(x0 + 0.06, (y0 + rows[5]) / 2, "HOW TO MAKE THEM: atomizer-charge/process-sheet/  ·  "
+            "THIS SHEET'S SOURCE: atomizer-charge/drawing/cup_plug.py", fontsize=5.0, color=GREY, va="center")
 
 
 def draw_revisions(ax, x0, y1, x1):
