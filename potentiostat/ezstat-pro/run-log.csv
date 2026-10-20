@@ -1,0 +1,1 @@
+run_id,date,time,operator,run,load,load_measured_ohm,technique,control_mode,current_range,auto_range,pretreat_time_s,pretreat_V,initial_V,vertex1_V,vertex2_V,final_V,segments,scan_rate_V_per_s,initial_current_A,pulse_amplitude_A,pulse_width_s,relaxation_s,sampling_interval_s,other_settings,nuvdt_file,csv_file,photo,result,notes
