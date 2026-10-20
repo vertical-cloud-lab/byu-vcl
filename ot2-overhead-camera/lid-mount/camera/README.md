@@ -132,6 +132,7 @@ are in the stream's [change record](stream/README.md#change-record-2026-10-20).
 ```bash
 ssh <pi> 'curl -s localhost:8081/still' > still.jpg      # from a machine on the tailnet
 python3 measure_still.py still.jpg                       # where it is looking, and what to move
+python3 measure_still.py still.jpg --plate 7             # zoomed in on a plate: from its 96 wells
 ```
 
 ### Where it is looking now
@@ -142,6 +143,10 @@ Measured by [`measure_still.py`](measure_still.py) from a full-resolution still 
 ([still](frames/2026-10-20/still_0358Z_lit.jpg), OT-2 rail lights on for 10 s, no run active). It
 finds the rails in the gaps around slots 5 and 8 and fits them to Opentrons' slot pitch: 0.07 mm
 rms. Numbers in [`../exports/lid_camera_setup.json`](../exports/lid_camera_setup.json).
+`--plate 7` measures from the plate's own wells instead, which is what works once the camera is
+zoomed in and the rails are out of view. On this still it found 95 of the 96 rims (0.38 mm rms)
+and agrees with the rails: turned 1.45°, picture centre 126 mm right and 29 mm in front of the
+plate ([render](../renders/lid_camera_plate.jpg), [numbers](../exports/lid_camera_plate.json)).
 
 **The goal is one plate, close up.** The mount was designed to look straight down at the one
 96-well plate being measured, at about 25 mm of zoom ([README §3](../README.md#3-where-on-the-lid)).
