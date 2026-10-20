@@ -66,6 +66,36 @@ try:
 except ImportError:
     MAX_BITRATE = None
 
+# Optional settings; older my_secrets.py files may not define them.
+# CAMERA_SOURCE: "rpicam-vid", as on every other picam, or "picamera2": picam_source.py
+#   next to this file, one picamera2 process that writes the same raw frames
+#   (needs CAMERA_CODEC = "yuv420") and, while the stream runs, serves
+#   full-resolution stills on 127.0.0.1:STILL_PORT. That is option A of
+#   borysgroup/streamingLambda#9: rpicam-still can't open a camera that
+#   rpicam-vid holds, but one process can serve both from the same frames.
+# STILL_SIZE: "WIDTHxHEIGHT" of those stills; None for the sensor mode's size.
+# SETUP_OVERLAY: draw a centre cross and the live focus score on the stream,
+#   for lining the camera up and focusing it (picamera2 source only).
+try:
+    from my_secrets import CAMERA_SOURCE
+except ImportError:
+    CAMERA_SOURCE = "rpicam-vid"
+try:
+    from my_secrets import STILL_PORT
+except ImportError:
+    STILL_PORT = 8081
+try:
+    from my_secrets import STILL_SIZE
+except ImportError:
+    STILL_SIZE = None
+try:
+    from my_secrets import SETUP_OVERLAY
+except ImportError:
+    SETUP_OVERLAY = False
+
+# Where picam_source.py writes the focus score for the overlay (tmpfs).
+OVERLAY_FILE = "/dev/shm/picam-overlay.txt"
+
 # Resolution mappings for YouTube-compatible resolutions
 RESOLUTION_MAP = {
     "144p": (256, 144),
@@ -106,6 +136,10 @@ def start_stream(
     codec="h264",
     x264_preset="ultrafast",
     max_bitrate=None,
+    camera_source="rpicam-vid",
+    still_port=8081,
+    still_size=None,
+    setup_overlay=False,
 ):
     """
     Starts the libcamera -> ffmpeg pipeline and returns two Popen objects:
@@ -135,6 +169,12 @@ def start_stream(
         x264_preset: libx264 preset whenever ffmpeg encodes.
         max_bitrate: Optional cap (bit/s) on ffmpeg's encode, with a 2 s
             buffer. None leaves it uncapped.
+        camera_source: "rpicam-vid", or "picamera2" for picam_source.py,
+            which also serves stills on 127.0.0.1:still_port. See
+            CAMERA_SOURCE above.
+        still_port: Port for those stills.
+        still_size: Optional "WIDTHxHEIGHT" for the stills.
+        setup_overlay: Centre cross and live focus score on the stream.
     """
     # Get the available camera command
     camera_cmd = get_camera_command()
@@ -190,6 +230,30 @@ def start_stream(
 
     # Add output parameters last
     libcamera_cmd.extend(["-o", output_target])  # Output to stdout (pipe)
+
+    if camera_source == "picamera2":
+        # The same raw frames from one picamera2 process, which also serves
+        # stills. It runs under the system python3, which has picamera2.
+        libcamera_cmd = [
+            "/usr/bin/python3",
+            os.path.join(os.path.dirname(os.path.abspath(__file__)), "picam_source.py"),
+            "--size",
+            f"{cam_width}x{cam_height}",
+            "--framerate",
+            str(framerate),
+            "--port",
+            str(still_port),
+        ]
+        if sensor_mode:
+            libcamera_cmd.extend(["--sensor-mode", sensor_mode])
+        if still_size:
+            libcamera_cmd.extend(["--still-size", still_size])
+        if CAMERA_VFLIP:
+            libcamera_cmd.append("--vflip")
+        if CAMERA_HFLIP:
+            libcamera_cmd.append("--hflip")
+        if setup_overlay:
+            libcamera_cmd.extend(["--overlay-file", OVERLAY_FILE])
 
     # Build video filter chain for ffmpeg
     video_filters = []
@@ -247,6 +311,26 @@ def start_stream(
         )
         video_filters.append(timestamp_filter)
 
+    # Setup aids: a thin cross through the middle of the frame, to line the
+    # deck up on, and the focus score picam_source.py writes once a frame,
+    # under the timestamp. drawtext rereads the file for every frame.
+    if setup_overlay and camera_source == "picamera2":
+        fontsize = max(16, (width if rotation in (90, 270) else height) // 20)
+        with open(OVERLAY_FILE, "w") as f:
+            f.write("focus ...")
+        video_filters.extend(
+            [
+                "drawbox=x=0:y=ih/2-1:w=iw:h=3:color=orange@0.8:t=fill",
+                "drawbox=x=iw/2-1:y=0:w=3:h=ih:color=orange@0.8:t=fill",
+                f"drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+                f":fontsize={fontsize}"
+                f":fontcolor=white"
+                f":box=1:boxcolor=black@0.5:boxborderw=5"
+                f":x=10:y={30 + fontsize}"
+                f":textfile={OVERLAY_FILE}:reload=1",
+            ]
+        )
+
     # Second: ffmpeg command
     ffmpeg_cmd = [
         "ffmpeg",
@@ -271,6 +355,8 @@ def start_stream(
         # the Pi 5: 1536 arrives as 1536, 2880 as 2944, with zeros on the
         # right), so read the padded width and crop the padding off first.
         stride_width = -(-cam_width // 128) * 128
+        if camera_source == "picamera2":
+            stride_width = cam_width  # picam_source.py removes the padding
         # The frames are full-range sYCC (BT.601 matrix, levels 0-255), as
         # libcamera reports ("YUV420/sYCC"). Players take untagged HD video as
         # limited-range BT.709, so convert first, or shadows and highlights clip.
@@ -461,6 +547,15 @@ if __name__ == "__main__":
             f"Invalid CAMERA_CODEC '{CAMERA_CODEC}'. Allowed options: h264, yuv420"
         )
 
+    # Validate the camera source
+    if CAMERA_SOURCE not in ("rpicam-vid", "picamera2"):
+        raise ValueError(
+            f"Invalid CAMERA_SOURCE '{CAMERA_SOURCE}'. "
+            f"Allowed options: rpicam-vid, picamera2"
+        )
+    if CAMERA_SOURCE == "picamera2" and CAMERA_CODEC != "yuv420":
+        raise ValueError('CAMERA_SOURCE = "picamera2" needs CAMERA_CODEC = "yuv420"')
+
     # Validate pixelation
     if PIXELATE_BLOCKS is not None and (
         not isinstance(PIXELATE_BLOCKS, int) or PIXELATE_BLOCKS < 0
@@ -494,6 +589,10 @@ if __name__ == "__main__":
     print(f"Using frame rate: {FRAME_RATE} fps")
     print(f"Sensor mode: {SENSOR_MODE or 'auto'}")
     print(f"Camera codec: {CAMERA_CODEC}")
+    print(f"Camera source: {CAMERA_SOURCE}")
+    if CAMERA_SOURCE == "picamera2":
+        print(f"Stills: 127.0.0.1:{STILL_PORT}/still, {STILL_SIZE or 'sensor mode size'}")
+        print(f"Setup overlay: {'on' if SETUP_OVERLAY else 'off'}")
     print(f"Camera bitrate: {BITRATE or 1000000} bit/s")
     print(f"x264 preset: {X264_PRESET}, cap: {MAX_BITRATE or 'none'} bit/s")
     print(f"Timestamp overlay: {'enabled' if TIMESTAMP_OVERLAY else 'disabled'}")
@@ -532,6 +631,10 @@ if __name__ == "__main__":
             codec=CAMERA_CODEC,
             x264_preset=X264_PRESET,
             max_bitrate=MAX_BITRATE,
+            camera_source=CAMERA_SOURCE,
+            still_port=STILL_PORT,
+            still_size=STILL_SIZE,
+            setup_overlay=SETUP_OVERLAY,
         )
         print("Stream started")
         interrupted = False
@@ -546,6 +649,13 @@ if __name__ == "__main__":
             print("Terminating processes..")
             p1.terminate()
             p2.terminate()
+            # Let the camera process exit, and so release the camera, before
+            # the next start tries to open it.
+            try:
+                p1.wait(timeout=10)
+            except subprocess.TimeoutExpired:
+                p1.kill()
+                p1.wait()
             print("Processes terminated.")
             if interrupted:
                 break
