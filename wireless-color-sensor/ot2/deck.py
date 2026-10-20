@@ -24,6 +24,13 @@ SLOT_Y_SIZE = 86.0
 LABWARE_X_SIZE = 127.76
 LABWARE_Y_SIZE = 85.48
 
+# The standard 96 layout of corning_96_wellplate_360ul_flat (and of
+# opentrons_96_tiprack_300ul): A1 at (14.38, 74.24) from the labware's
+# front-left corner, 9 mm between wells, rows A-H running towards the front.
+WELL_A1 = (14.38, 74.24)
+WELL_PITCH = 9.0
+WELL_ROWS = "ABCDEFGH"
+
 
 def slot_origin(slot):
     try:
@@ -41,6 +48,32 @@ def in_slot(slot, dx, dy):
     """Absolute deck (x, y) for a point ``(dx, dy)`` from the slot's front-left corner."""
     ox, oy = slot_origin(slot)
     return (ox + dx, oy + dy)
+
+
+def well_xy(slot, name):
+    """Nominal deck (x, y) of well <name> in a standard 96 layout in <slot>."""
+    row = WELL_ROWS.index(name[0].upper()) if name and name[0].upper() in WELL_ROWS else -1
+    col = int(name[1:]) - 1 if name[1:].isdigit() else -1
+    if not (0 <= row < 8 and 0 <= col < 12):
+        raise ValueError(f"no well {name}")
+    return in_slot(slot, WELL_A1[0] + WELL_PITCH * col, WELL_A1[1] - WELL_PITCH * row)
+
+
+def well_at(slot, x, y, tol=0.5):
+    """The well of a standard 96 layout in <slot> centred within ``tol`` mm of (x, y), or ``None``.
+
+    A reading or a dispense is tied to the well it physically happened over,
+    not to a label typed alongside it.
+    """
+    ox, oy = slot_origin(slot)
+    col = round((x - ox - WELL_A1[0]) / WELL_PITCH)
+    row = round((WELL_A1[1] - (y - oy)) / WELL_PITCH)
+    if not (0 <= row < 8 and 0 <= col < 12):
+        return None
+    cx, cy = in_slot(slot, WELL_A1[0] + WELL_PITCH * col, WELL_A1[1] - WELL_PITCH * row)
+    if abs(x - cx) > tol or abs(y - cy) > tol:
+        return None
+    return f"{WELL_ROWS[row]}{col + 1}"
 
 
 def which_slot(x, y):

@@ -39,6 +39,17 @@ gone, so the "pick-up" took nothing and the bare nozzle, 51 mm higher than
 the tip end the robot was placing, never reached the paint. Check the tip
 in the first photo over the vial before going in.
 
+Since 2026-10-20, paint goes only into a well that has been read empty first.
+@sgbaird on PR #202 (10-18): "we should be taking a background spectrum for
+the same well prior to dispensing ... regardless of whether or not we use it.
+We should have that as a backup for all experiments, always." Pass the
+``readings.jsonl`` of the enclosure trip that read the wells empty
+(``enclosure_height_cal.py``'s ``background`` command) with ``--backgrounds``.
+A loaded tip is refused at ``well`` and at ``dispense`` for a well with no
+such reading, taken over that well of a plate in --plate-slot within the last
+--background-max-age-h hours. ``--skip-background-check`` goes without (a
+refill, or a well that already holds paint), and the log says so each time.
+
 Builds on ``tip_cal.py`` (the pick-up and the plate wells, tested 2026-09-29)
 and runs the same way: ON the Pi that holds the robot link, under nohup, one
 step at a time through a command file (``echo 'look 330 50 120' > cmd.tmp &&
@@ -80,10 +91,12 @@ gantry homes.
 from __future__ import annotations
 
 import argparse
+import json
 import os
 import sys
 import time
 import traceback
+from datetime import datetime, timezone
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
@@ -119,16 +132,72 @@ def in_plate(x, y, slot):
     return ox <= x <= ox + 127.76 and oy <= y <= oy + 85.48
 
 
+def backgrounds(paths, plate_slot, max_age_h, now=None):
+    """Empty-well readings by well, from ``enclosure_height_cal.py``'s readings.jsonl files.
+
+    A row counts for well W only if the driver recorded it over W of a plate in
+    ``plate_slot`` (its ``well`` field comes from the nozzle's position, not
+    from the tag) and it was meant as a background: written by ``background``
+    (``role: background``), or by ``read n empty-W`` as on 2026-10-14. A row
+    older than ``max_age_h`` hours is taken to belong to another plate.
+    """
+    now = now or datetime.now(timezone.utc)
+    out = {}
+    for path in paths:
+        try:
+            with open(path) as fh:
+                lines = fh.readlines()
+        except OSError:
+            continue
+        for line in lines:
+            try:
+                r = json.loads(line)
+                t = datetime.fromisoformat(r["t_response_utc"].replace("Z", "+00:00"))
+            except (ValueError, KeyError, AttributeError, TypeError):
+                continue
+            well = r.get("well")
+            if not well or r.get("plate_slot") != plate_slot:
+                continue
+            if r.get("role") != "background" and r.get("label") != f"empty-{well}":
+                continue
+            if not 0 <= (now - t).total_seconds() <= max_age_h * 3600:
+                continue
+            out.setdefault(well, []).append({"path": path, "t": t, "total": r.get("total"),
+                                              "z": (r.get("pos") or [None] * 3)[2],
+                                              "settings": r.get("settings")})
+    return out
+
+
 class Transfer(TipCal):
     def __init__(self, args):
         super().__init__(args)
         self.primed = False
         self.wet = False             # this tip has been in paint
         self.picked = []
+        self.checked = None          # the last well whose background was confirmed
 
     # -- helpers ---------------------------------------------------------------
     def refuse(self, msg):
         raise ValueError(msg)
+
+    def check_background(self, well):
+        """Paint only into a well read empty first (PR #202, 2026-10-18)."""
+        a = self.args
+        if a.skip_background_check:
+            self.log(f"{well}: no empty-well background check (--skip-background-check)")
+            return
+        rows = backgrounds(a.backgrounds, a.plate_slot, a.background_max_age_h).get(well)
+        if not rows:
+            self.checked = None
+            self.refuse(f"{well} has no empty-well background in {' '.join(a.backgrounds)}: "
+                        f"read it empty first (enclosure_height_cal.py: background), "
+                        f"or rerun with --skip-background-check")
+        if self.checked != well:
+            last = max(rows, key=lambda r: r["t"])
+            self.log(f"{well}: {len(rows)} empty-well background reading(s), the last at "
+                     f"{last['t']:%Y-%m-%d %H:%M:%S} UTC, nozzle z {last['z']}, "
+                     f"settings {last['settings']}")
+            self.checked = well
 
     def same_xy(self, x, y, tol=0.01):
         return self.pos is not None and abs(self.pos[0] - x) <= tol and abs(self.pos[1] - y) <= tol
@@ -296,17 +365,26 @@ class Transfer(TipCal):
         self.log(f"aspirated {vol:g} uL at {rate:g} uL/s (holding {self.aspirated:g})")
         self.photo(f"aspirated{vol:g}")
 
+    def well(self, name, h):
+        """tip_cal's ``well``, refused before it moves if paint is aboard and <name> was never read empty."""
+        if self.tip and self.aspirated:
+            self.check_background(name)
+        super().well(name, h)
+
     def dispense_all(self, rate):
         if not self.tip or self.aspirated <= 0:
             self.refuse("nothing to dispense")
+        # Within 3 mm of a well's centre: its rim is 3.43 mm out.
+        well = tip_cal.deck.well_at(self.args.plate_slot, self.pos[0], self.pos[1], tol=3.0)
         if not in_plate(self.pos[0], self.pos[1], self.args.plate_slot) \
-                or self.pos[2] > PLATE_TOP_Z + 2.0:
+                or self.pos[2] > PLATE_TOP_Z + 2.0 or well is None:
             self.refuse("dispense only inside a plate well")
+        self.check_background(well)
         vol = self.aspirated
         self.robot.command("dispenseInPlace", {"pipetteId": self.robot.pipette_id,
                                                 "volume": vol, "flowRate": rate}, timeout=180)
         self.aspirated = 0.0
-        self.log(f"dispensed {vol:g} uL at {rate:g} uL/s")
+        self.log(f"dispensed {vol:g} uL at {rate:g} uL/s into {well}")
         self.photo(f"dispensed{vol:g}")
 
     def blowout(self):
@@ -439,13 +517,34 @@ def main():
     p.add_argument("--vial-floor", type=float, default=20.0,
                    help="lowest tip end allowed outside the plate (vial floors are at z ~3)")
     p.add_argument("--timeout", type=float, default=900.0)
+    p.add_argument("--backgrounds", nargs="+", default=[], metavar="READINGS_JSONL",
+                   help="readings.jsonl of the enclosure trip that read the wells empty "
+                        "(enclosure_height_cal.py: background). Paint goes only into a well "
+                        "with an empty reading in one of these")
+    p.add_argument("--background-max-age-h", type=float, default=12.0,
+                   help="an empty reading older than this is taken to be another plate's")
+    p.add_argument("--skip-background-check", action="store_true",
+                   help="dispense without an empty reading (a refill, or a well that already "
+                        "holds paint); the log says so at every dispense")
     p.add_argument("--simulate", action="store_true")
     args = p.parse_args()
+    if not args.backgrounds and not args.skip_background_check:
+        p.error("paint goes only into wells that were read empty first: pass --backgrounds "
+                "<trip folder>/readings.jsonl, or --skip-background-check to go without")
+    for path in args.backgrounds:
+        if not os.path.isfile(path):
+            p.error(f"--backgrounds {path}: no such file")
     args.well = "A1"
     tr = Transfer(args)
     tr.log(f"start: rack slot {args.rack_slot}, plate slot {args.plate_slot}, travel z "
            f"{args.travel_z}, rim z {args.rim_z}, nudge z {args.nudge_z}, vial floor "
            f"{args.vial_floor}, rack top {RACK_TOP_Z:.2f}")
+    if args.skip_background_check:
+        tr.log("empty-well backgrounds: NOT checked (--skip-background-check)")
+    else:
+        found = backgrounds(args.backgrounds, args.plate_slot, args.background_max_age_h)
+        tr.log(f"empty-well backgrounds in {' '.join(args.backgrounds)}: "
+               + (", ".join(f"{w} ({len(v)})" for w, v in sorted(found.items())) or "none yet"))
     try:
         tr.run()
     except Exception:  # noqa: BLE001
