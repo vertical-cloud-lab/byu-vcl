@@ -18,7 +18,7 @@ guide can be fixed.
 | Stage | What | Where the time goes |
 |---|---|---|
 | [0](#0-before-you-start) | Parts, tools, three measurements | |
-| [1](#1-print-the-parts) | Print five parts, check them | Printing |
+| [1](#1-print-the-parts) | Print five parts and three spacer discs, check them | Printing |
 | [2](#2-glue-the-deck-keys-into-the-base) | Deck keys into the base, glued on the deck | Glue cure |
 | [3](#3-press-in-the-heat-set-inserts) | Eight heat-set inserts | |
 | [4](#4-glue-the-magnets-into-the-carrier) | Two magnets, opposite poles up | Glue cure |
@@ -77,9 +77,10 @@ before printing or gluing anything.
    the blades. Don't go by the sticker; many fans carry it on the strut side. Measure how
    far the hub's face stands above (+) or below (−) the frame's top face. The model
    assumes 0. The carrier turns 1.1 mm under the vial holder's floor, so a hub that
-   stands proud eats into that gap. If it is more than 0.4 mm proud, sand the excess off
-   the carrier's flat underside before you glue it on in [stage 6](#6-assemble). The
-   carrier has 1.55 mm of plastic under its magnet pockets; keep at least 1 mm.
+   stands proud eats into that gap. If it is more than 0.4 mm proud, sand the carrier's
+   flat underside down by the amount over 0.4 mm before you glue it on in
+   [stage 6](#6-assemble). The carrier has 1.55 mm of plastic under its magnet pockets;
+   keep at least 1 mm.
 2. **The vial's outside diameter, within 2 mm of its bottom.** The cup's rigid ring is
    Ø27.6 mm at the floor. A vial up to that size sits on the floor; a bigger one stops on
    the ring about 2 mm higher, which also adds 2 mm between the magnets and the bar.
@@ -155,7 +156,7 @@ in the corner posts.
 
 1. Practise on a scrap PETG print first. Use the iron temperature the insert maker gives
    for PETG; too hot and the insert sinks crooked or too deep.
-2. Set the insert on the hole, knurled end down, and press it in straight with the iron.
+2. Stand the insert upright on the hole and press it in straight with the iron.
 3. Stop when its top is level with the post top, or up to 0.2 mm below. A proud insert
    tilts the fan or the holder. Pressing a flat piece of metal on it while it's warm sets
    it flush and square.
@@ -195,26 +196,25 @@ Identify every part before soldering anything.
 
 ### Circuit
 
-The README's Uno wiring, plus a 100 nF capacitor across the Hall sensor's supply, as
-Melexis recommends:
+The README's Uno wiring:
 
 ```
-  Uno       cable      in the stirrer
-  ---       -----      --------------
-  5V   ----- 1 ---+---- fan red (+)
-                  +---- 1N5819 cathode (banded end)
-                  +---- US1881 pin 1 (VDD)
-                  +---- 100 nF ------------------------------+
-                  +---- 10 k (Hall pull-up) ---+             |
-  D2   ----- 4 --------------------------------+---- US1881 pin 3 (OUT)
-  D10  ----- 3 ---- 100 R ---+---------------------- IRLZ44N pin 1 (gate)
-                             +---- 10 k (gate pull-down) ---+
-  GND  ----- 2 -----------------------------------+---------+----+
-                                                   |              |
-                          US1881 pin 2 (GND) ------+    IRLZ44N pin 3 (source)
+  Uno        cable, 22 AWG x 4        stirrer
+  ---        -----------------        -------
+  5V   ------ 1 ----------------+---- fan red (+)
+                                +---- 1N5819 cathode (banded end)
+                                +---- US1881 pin 1 (VDD)
+                                +---- 10 k ---+
+  D2   ------ 4 ------------------------------+---- US1881 pin 3 (OUT)
+  D10  ------ 3 ------ 100 R ---+---- IRLZ44N gate (pin 1)
+                                +---- 10 k ---+
+  GND  ------ 2 ------------------------------+---- IRLZ44N source (pin 3), US1881 pin 2 (GND)
 
-             fan black (-) ---- 1N5819 anode ---- IRLZ44N pin 2 (drain, and the tab)
+                     fan black (-) ---- 1N5819 anode ---- IRLZ44N drain (pin 2, tab)
 ```
+
+plus a 100 nF capacitor from 5V to GND where the sensor's VDD and GND wires land on the
+board, as Melexis recommends.
 
 The same circuit as six nodes. Tick each one off as you solder it:
 
@@ -245,9 +245,9 @@ side of the stop, under the fan, tab toward +X.
 
 1. Cut the perfboard to 8 × 7 holes (about 21 × 17.5 mm): score along a row of holes and
    snap it. Check it sits on the rails.
-2. **Keep everything flat.** The fan sits about 4 mm above the board's top, so lay the
-   resistors, the capacitor and the diode flat. Nothing should stand more than 3.5 mm
-   above the board.
+2. **Keep everything low.** The fan's underside is only about 3.5 mm above the top of a
+   1.6 mm perfboard. Lay the resistors, the capacitor and the diode flat, keep the joints
+   and wire links underneath short, and keep everything on top under 3 mm.
 3. Put the four cable connections at the −X (notch) end and the fan, MOSFET and Hall
    connections at the +X end.
 4. Solder the three resistors, the 100 nF and the diode, and join the nodes in the table
@@ -326,8 +326,8 @@ the bench.
 |---|---|
 | <img src="img/step04_fan.png" width="300"> | **Board and fan.** Slide the junction board onto the rails against the stop, cable out through the notch, and put the zip tie on. Lay the MOSFET flat on the floor at +X with a dab of hot glue, its tab touching nothing. Set the fan on the four short posts **rotor side up** (the side without struts), with its leads to the board. |
 | <img src="img/step05_fan_screws.png" width="300"> | **Four M3 × 16 through the fan** into the post inserts. Snug only; the frame is plastic. Screwed down, the magnets can't lift the fan, which happened on one Pioreactor. Spin the blades by hand: nothing touches them. |
-| <img src="img/step06_magnets.png" width="300"> | **Carrier onto the hub.** If [Measure first](#measure-first) found the hub more than 0.4 mm proud, sand the carrier's underside now. Peel any sticker off the hub and scuff it with 400 grit. Glue the carrier on, magnets up, with a thin layer of gel CA or 5-minute epoxy, **centred**: measure from the carrier's edge to the frame's round opening at four points 90° apart, and get them within about 0.3 mm. Off centre, the bar walks round the vial, the fan shakes, and the carrier may touch the sensor, which sits only 0.8 mm outside the carrier's edge. **Check:** the carrier's top stands about 3.3 mm above the fan frame's top face. The holder's floor will be 4.3 mm above it, so over 3.8 mm leaves less than 0.5 mm, before any sag. |
-| <img src="img/step07_holder.png" width="300"> | **Hall sensor into the holder.** Turn the holder upside down. The recess ceiling is the underside of the vial floor, and a groove runs from the recess out to one side. Glue the sensor flat on the ceiling where the groove meets the recess: marked face toward you (so it faces down once the holder is the right way up), plain back on the ceiling, leads lying in the groove. **Push it outward against the recess wall**, so its inner edge is clear of the carrier's path. Tack the leads into the groove with a dab of glue. |
+| <img src="img/step06_magnets.png" width="300"> | **Carrier onto the hub.** If [Measure first](#measure-first) found the hub more than 0.4 mm proud, sand the carrier's underside now, before the glue. Peel any sticker off the hub and scuff it with 400 grit. Glue the carrier on, magnets up, with a thin layer of gel CA or 5-minute epoxy, **centred**: measure from the carrier's edge to the frame's round opening at four points 90° apart, and get them within about 0.3 mm. Off centre, the bar walks round the vial, the fan shakes, and the carrier may touch the sensor, which sits only 0.8 mm outside the carrier's edge. **Check:** the carrier's top stands about 3.3 mm above the fan frame's top face. The underside of the holder's floor will be 4.3 mm above that face, so a carrier top over 3.8 mm leaves less than 0.5 mm of gap, before any sag. |
+| <img src="img/step07_holder.png" width="300"> | **Hall sensor into the holder.** Turn the holder upside down. The recess ceiling is the underside of the vial floor, and a groove runs from the recess out to one side. Glue the sensor flat on the ceiling at the groove's mouth: marked face toward you (so it faces down once the holder is the right way up), plain back on the ceiling, leads lying in the groove. **Line its lead edge up with the edge of the round recess**, as the circle runs on either side of the groove. The 3 mm body then sits just inside the recess, its inner edge about 0.8 mm outside the carrier's path. There is no wall to push it against at the groove, so don't let it slide out along the groove: the further out, the weaker the signal. Tack the leads into the groove with a dab of glue. |
 | <img src="img/step08_holder_screws.png" width="300"> | **Holder on, four M3 × 12 screws.** The holder fits on four ways round, and only one is right: **the groove goes over the cable notch** (the wall without vents). Lower it on and fold the Hall leads down the inside of that wall into the gap between the fan and the wall. Before the screws: the flange sits flat on the walls all round, with no wire trapped under it. Then the screws go through the flange corners into the corner inserts. |
 
 **Check, now that it is closed:**
@@ -355,8 +355,8 @@ The commands below are the ones that flashed the 10-07 image
 read the board back first, confirm it is the image you expect, then write.
 
 1. Make sure no CubOS run is going and nothing has the Uno's port open. Opening it resets
-   the board. Write `~/cubxl_runs/HOLD`, with the reason on its first line, so no agent
-   session starts a run meanwhile.
+   the board. Write `~/cubxl_runs/HOLD` (a name for yourself on the first line, the reason
+   underneath), so no agent session starts a run meanwhile.
 2. Update a checkout of this branch on the Pi. `~/byu-vcl-pipette` was on it as of 10-12;
    `git pull` it.
 3. Run:
@@ -487,7 +487,7 @@ comes up with the cap, see README [risk 3](README.md#risks-and-open-questions).
 | The Uno resets, or the Pi loses its port, when the fan starts | The 0.5 s start kick pulls the Uno's 5 V down | Feed the fan from the electromagnet's 5 V supply instead, with the grounds joined |
 | Something gets hot as soon as the fan is switched on | The diode is backwards, shorting 5 V through the MOSFET | Banded end to 5V |
 | `rpm` is above 0 with the fan stopped | Noise picked up on the Hall line over the cable | 10 nF from D2 to GND at the Uno. Keep the cable away from the stepper wiring |
-| A tick or a scrape once a turn | The carrier touches the sensor or the holder's floor | Re-centre the carrier, push the sensor out to the wall, sand the carrier's underside |
+| A tick or a scrape once a turn | The carrier touches the sensor or the holder's floor | Re-centre the carrier, move the sensor out by up to 0.5 mm, or sand the carrier's underside |
 | Grinding | The magnets are pulling on steel: a screw that isn't stainless, or a tool left nearby | Stainless screws only |
 | The bar wanders round the vial | Carrier off centre, or too fast | Re-centre; lower the rpm |
 | The bar jerks and won't speed up smoothly | Coupling too strong | A spacer disc under the vial |
