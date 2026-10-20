@@ -15,6 +15,15 @@ guide can be fixed.
 
 ![Exploded view](img/exploded.png)
 
+The assembly, one part per step (stages 2–8):
+
+![The assembly, one part per step](img/assembly_steps.gif)
+
+To pause on: [the same steps on YouTube](https://www.youtube.com/watch?v=YQJY8HC4F-w) (unlisted, with
+a chapter per step), or [`img/assembly_steps.mp4`](img/assembly_steps.mp4). The video's side
+panel gives each step's instruction from this guide. The junction board in it is drawn to
+this guide's dimensions, but where its parts sit is only a suggestion.
+
 | Stage | What | Where the time goes |
 |---|---|---|
 | [0](#0-before-you-start) | Parts, tools, three measurements | |

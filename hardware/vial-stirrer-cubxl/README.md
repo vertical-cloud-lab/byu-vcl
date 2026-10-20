@@ -39,13 +39,14 @@ the capper and the pipette, instead of its own XIAO RP2040.
 |---|---|
 | [`onshape/vial_stirrer.fs`](onshape/vial_stirrer.fs) | The whole model as one FeatureScript feature. All dimensions are constants at the top |
 | [`build_onshape.py`](build_onshape.py) | Pushes the FeatureScript to Onshape, rebuilds, renders every step, exports the STLs and STEP files |
+| [`assembly_video.py`](assembly_video.py) | Renders the assembly as a video, a GIF and a contact sheet, one part per step, from the Onshape model's parts |
 | [`onshape/render_steps.json`](onshape/render_steps.json) | Camera and caption for each render |
 | [`onshape/document.json`](onshape/document.json) | Onshape document ids |
 | [`BUILD.md`](BUILD.md) | Build guide for the Uno-driven version: printing, keys, inserts, magnets, wiring, bench checks, assembly, flashing the Uno, first spins, the deck file |
 | [`BOM.md`](BOM.md) | Bill of materials for the Uno-driven version: parts to buy with links and prices, parts to print |
 | [`step/`](step) | Printed parts as STEP: `base`, `vial_holder`, `magnet_carrier`, `deck_key` (print two), plus `vial_stirrer_assembly.step`, the whole stirrer for fit checks |
 | [`stl/`](stl) | The same printed parts as STL. Both sets are in assembly position, which is also each part's print orientation |
-| [`img/`](img) | Renders: steps 1–10, assembled, exploded, section, contact sheet, GIF |
+| [`img/`](img) | Onshape's renders (steps 1–10 of the XIAO version, assembled, exploded, section, contact sheet), and the assembly video, GIF and contact sheet of the Uno version |
 | [`firmware/main.py`](firmware/main.py) | MicroPython speed controller for the XIAO RP2040 (untested) |
 | [`../../cubos/firmware/panda-arduino-stirrer.patch`](../../cubos/firmware/panda-arduino-stirrer.patch) | The same controller as two commands in the CubXL Uno's PANDA firmware. Built, image committed, not flashed |
 | [`firmware/uno_sim/`](firmware/uno_sim) | Host-side simulation of that patch's control loop against a fan model, and its output |
@@ -426,7 +427,27 @@ centre, and the bar sits where the tip goes.
 
 The steps in brief. [`BUILD.md`](BUILD.md) has them in full, with the checks between them.
 
-![Assembly steps](img/assembly_steps.gif)
+![The assembly, one part per step](img/assembly_steps.gif)
+
+**A version to pause on:** [on YouTube](https://www.youtube.com/watch?v=YQJY8HC4F-w) (unlisted), or
+[`img/assembly_steps.mp4`](img/assembly_steps.mp4) (1920 × 1080, 3 min 10 s, 30 MB). Both have a
+chapter for each step. They show BUILD.md's build of the Uno-driven version in 15 steps, one
+part per step:
+
+- Each step holds twice: first with its parts beside their places and a dashed line from each
+  to where it goes, then in place.
+- The parts a step adds are orange, or amber for a second kind of part. The side panel gives
+  the step's instruction from BUILD.md, its tool and its stage.
+- The Onshape model has the XIAO RP2040 in the controller pocket, so the junction board, its
+  parts and the cable are drawn by the script instead. Where the parts sit on the board is
+  only indicative; BUILD.md's netlist is what counts.
+- The bar turning at the end is only an illustration. Nothing has been built or run.
+
+[`img/assembly_steps_sheet.png`](img/assembly_steps_sheet.png) shows where each step ends. The
+video and the GIF come from [`assembly_video.py`](assembly_video.py), in the lab's style for
+assembly videos (the OT-2 lid mount's, on
+[PR #234](https://github.com/vertical-cloud-lab/byu-vcl/pull/234)). The renders below are
+Onshape's, and show the XIAO version.
 
 | | |
 |---|---|
@@ -509,6 +530,15 @@ python hardware/vial-stirrer-cubxl/build_onshape.py           # upload, rebuild,
 python hardware/vial-stirrer-cubxl/build_onshape.py --only section --no-stl --no-step   # one render
 python hardware/vial-stirrer-cubxl/build_onshape.py --no-render --no-stl     # STEP files only
 python hardware/vial-stirrer-cubxl/build_onshape.py --new     # into a fresh document
+```
+
+The assembly video and GIF read the parts from the same document (read-only, so any key
+pair that can see it). They also need PyVista, ffmpeg and a virtual display:
+
+```bash
+pip install pyvista pillow requests    # and: apt install ffmpeg xvfb
+xvfb-run -a -s "-screen 0 1920x1080x24" python hardware/vial-stirrer-cubxl/assembly_video.py --stills   # held frames, to /tmp
+xvfb-run -a -s "-screen 0 1920x1080x24" python hardware/vial-stirrer-cubxl/assembly_video.py            # MP4, GIF and sheet
 ```
 
 The feature has three inputs: `step` (0 = assembled, 1–10 = the assembly steps),

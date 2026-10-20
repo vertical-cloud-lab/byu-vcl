@@ -180,7 +180,7 @@ def render(api: Onshape, doc: dict, spec: dict, only: set | None = None) -> None
     set_feature(api, doc, spec, 0)
     if only:
         return
-    # contact sheet and GIF of the numbered steps
+    # contact sheet of the numbered steps (the animated GIF comes from assembly_video.py)
     cols = cfg.get("sheet_cols", 4)
     tw, th = cfg["width"] // 2, (cfg["height"] + cap) // 2
     rows = (len(seq) + cols - 1) // cols
@@ -188,8 +188,6 @@ def render(api: Onshape, doc: dict, spec: dict, only: set | None = None) -> None
     for i, f in enumerate(seq):
         sheet.paste(Image.open(f).resize((tw, th), Image.LANCZOS), ((i % cols) * tw, (i // cols) * th))
     sheet.save(IMG / "assembly_steps.png", optimize=True)
-    frames = [Image.open(f).convert("RGB").resize((tw, th), Image.LANCZOS).convert("P", palette=Image.ADAPTIVE, colors=160) for f in seq]
-    frames[0].save(IMG / "assembly_steps.gif", save_all=True, append_images=frames[1:], duration=1800, loop=0, optimize=True)
 
 
 def export_stl(api: Onshape, doc: dict) -> None:
@@ -255,7 +253,7 @@ if __name__ == "__main__":
     ap.add_argument("--no-render", action="store_true")
     ap.add_argument("--no-stl", action="store_true")
     ap.add_argument("--no-step", action="store_true")
-    ap.add_argument("--only", default="", help="comma-separated frame keys to re-render (skips the sheet and GIF)")
+    ap.add_argument("--only", default="", help="comma-separated frame keys to re-render (skips the contact sheet)")
     a = ap.parse_args()
     api = Onshape()
     doc = new_document(api) if a.new else json.loads(DOC_FILE.read_text())
