@@ -19,7 +19,7 @@ In order, from the note:
 1. **The argon tank was empty** when checked, so it was swapped before anything else.
 2. **The ultrasonic stack was rebuilt for a small Mo plate and the 1.5:1 booster.** This
    is the configuration the repeatability plan calls for (1.5:1 booster, fixed amplitude,
-   Mo or CF plates; [plan](https://github.com/vertical-cloud-lab/byu-vcl/issues/261#issuecomment-6216453097)).
+   Mo or CF plates; sgbaird's plan on [#261](https://github.com/vertical-cloud-lab/byu-vcl/issues/261)).
    Oct 8 used CF with the 1.5:1 booster and only dripped. Ronnie's Oct 9 note says the slow,
    steady drip seen on Oct 8 would probably have atomized on a Mo plate. Oct 21 is the
    first test of that.
