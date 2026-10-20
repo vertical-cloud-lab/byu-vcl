@@ -37,10 +37,22 @@ FRAME_RATE = 3
 # Burn lab local time (top left) into every frame. Forces an ffmpeg re-encode.
 TIMESTAMP_OVERLAY = True
 
-# The IMX477's full-field binned mode, which the ISP scales to RESOLUTION.
-# Without it libcamera may pick a cropped mode. Above 2028 wide, use the
-# full-resolution "4056:3040" (up to 11.7 fps).
-SENSOR_MODE = "2028:1520"
+# The IMX477's full-resolution mode, which the ISP scales to RESOLUTION for
+# the stream and keeps whole for stills (CAMERA_SOURCE = "picamera2"). Without
+# a mode libcamera may pick a cropped one. With CAMERA_SOURCE = "rpicam-vid"
+# and up to 2028 wide, the full-field binned "2028:1520" is less noisy.
+SENSOR_MODE = "4056:3040"
+
+# "picamera2": picam_source.py, one process that feeds the stream and serves
+# full-resolution stills on 127.0.0.1:STILL_PORT while it runs. Needs
+# CAMERA_CODEC = "yuv420". "rpicam-vid" is what every other picam runs.
+CAMERA_SOURCE = "picamera2"
+STILL_PORT = 8081
+# Smaller stills, "WIDTHxHEIGHT"; None for the sensor mode's size.
+STILL_SIZE = None
+# A centre cross and the live focus score on the stream, for lining the
+# camera up. False once it is centred and focused.
+SETUP_OVERLAY = True
 
 # Optional. None or 0 for a sharp picture; see docs/stream-cams.md on main.
 PIXELATE_BLOCKS = None

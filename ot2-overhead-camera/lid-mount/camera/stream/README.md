@@ -13,7 +13,9 @@ It runs the same client as the other stream cams, the Acceleration Consortium
 [picam `device.py`](https://ac-training-lab.readthedocs.io/en/latest/devices/picam.html)
 (`rpicam-vid` piped into `ffmpeg`, which pushes RTMP to a broadcast the lab's
 [streaming Lambda](https://github.com/vertical-cloud-lab/streamingLambda) creates), with the same
-watchdog. What differs is the Pi: this is the Pi 5 behind `RPI_STREAM_CAM_HOSTNAME`, which is
+watchdog. Since 2026-10-20 the camera end is [`picam_source.py`](picam_source.py), one picamera2
+process that feeds ffmpeg the same raw frames and also takes full-resolution stills while the
+stream runs ([change record](#change-record-2026-10-20)). What differs is the Pi: this is the Pi 5 behind `RPI_STREAM_CAM_HOSTNAME`, which is
 also the OT-2's only link and where jobs that drive the robot run. So the stream is niced, and the
 Pi's scheduled reboot waits while the robot or the camera is in use ([Reboots](#reboots)). The
 general notes on the stream cams are in `docs/stream-cams.md` on `main`.
@@ -23,6 +25,7 @@ general notes on the stream cams are in `docs/stream-cams.md` on `main`.
 | File | Goes to | What |
 | --- | --- | --- |
 | `device.py` | `~/ac-training-lab/src/ac_training_lab/picam/device.py` | The atomizer cam's patched `device.py` (upstream `87a3ccb` plus `SENSOR_MODE`, `--flush`, `-r`, pixelation) plus optional settings for this Pi: `RESOLUTION = "WIDTHxHEIGHT"`, `CAMERA_CODEC`, `BITRATE`, `X264_PRESET`, `MAX_BITRATE`. See [What changed in `device.py`](#what-changed-in-devicepy) |
+| `picam_source.py` | next to `device.py` | Since 2026-10-20. The camera end of the stream when `CAMERA_SOURCE = "picamera2"`: one picamera2 process writes the stream's raw frames to ffmpeg and serves 4056 × 3040 stills, a status report and focus scores on `127.0.0.1:8081`. Runs under the system `python3`, which has picamera2 |
 | `my_secrets_example.py` | `…/picam/my_secrets.py`, mode 600 | Every setting, with the Lambda URL left blank |
 | `device.service.in` | `/etc/systemd/system/device.service` | The service, with `Nice=5` added. `install.sh` fills in the user and home |
 | `stream-watchdog.sh`, `.service`, `.timer` | `/usr/local/bin`, `/etc/systemd/system` | The same watchdog as the other stream cams: restarts the service after 3 minutes with no RTMP bytes acknowledged, or when systemd has given up, at most 6 times in 24 h |
@@ -40,7 +43,11 @@ general notes on the stream cams are in `docs/stream-cams.md` on `main`.
 | `PRIVACY_STATUS` | `"public"` | As asked in #234 |
 | `RESOLUTION` | `"1920x1440"` | Since 2026-10-19 (was `"1536x1152"`). 4:3, the sensor's shape, so the whole sensor: read from the camera on 2026-10-18, a 4:3 output uses `ScalerCrop (2, 0)/4052x3040`, while `1280x720` uses `(0, 380)/4056x2280`, which at 8 mm zoom cuts off the front and back rows of slots (the crop [`preview_server.py`](../preview_server.py) also avoids). 1440 lines is the most that comes back out of YouTube for this stream: the Lambda creates every broadcast at Low latency, which YouTube [does not offer at 4K](https://support.google.com/youtube/answer/7444635), and a 2880 × 2160 test stream was served live at 1440 × 1080 at most, with 1920 × 1440 at the top of its archive. See [the 2026-10-19 record](#change-record-2026-10-19) |
 | `FRAME_RATE` | `3` | Since 2026-10-19 (was `10`). The deck changes slowly; 3 fps leaves room for the larger frame |
-| `SENSOR_MODE` | `"2028:1520"` | The IMX477's full-field binned mode, `(0, 0)/4056x3040`, which the ISP scales to the output. Up to 2028 wide it is the one to use: binning halves the noise. A 2880 × 2160 output needs `"4056:3040"`, the full-resolution mode (up to 11.7 fps) |
+| `SENSOR_MODE` | `"4056:3040"` | Since 2026-10-20 (was `"2028:1520"`, the full-field binned mode). The full-resolution mode, so that stills are 4056 × 3040; the ISP scales the same readout to 1920 × 1440 for the stream. Both modes cover the whole sensor, `(0, 0)/4056x3040`. Up to 10 fps here. With `CAMERA_SOURCE = "rpicam-vid"`, go back to `"2028:1520"`: binning halves the noise |
+| `CAMERA_SOURCE` | `"picamera2"` | New 2026-10-20. `picam_source.py` instead of `rpicam-vid`, so that stills can be taken while the stream runs. Needs `CAMERA_CODEC = "yuv420"`. `"rpicam-vid"` (the default) puts it back as it was |
+| `STILL_PORT` | `8081` | New 2026-10-20. Where `picam_source.py` listens, on `127.0.0.1` only |
+| `STILL_SIZE` | not set | New 2026-10-20. `"WIDTHxHEIGHT"` for smaller stills; unset gives the sensor mode's size |
+| `SETUP_OVERLAY` | `True` | New 2026-10-20, for lining the camera up. An orange cross through the middle of the picture and, under the timestamp, `focus N (best M in 2 min)`. Set it `False` once the mount is centred and focused ([steps](../README.md#lining-it-up-zoom-focus-centre-square-lock)) |
 | `CAMERA_CODEC` | `"yuv420"` | The Pi 5 has no hardware H.264 encoder: `--codec h264` goes through libav in software, so the stream would be encoded twice (once at the camera's bit rate, once by ffmpeg for the overlay). Raw frames to ffmpeg mean one encode and no intermediate bit rate. 1920×1440 at 3 fps is 12 MB/s through the pipe, nothing for a Pi 5. The raw path needed three fixes on 2026-10-19; see [What changed in `device.py`](#what-changed-in-devicepy) |
 | `TIMESTAMP_OVERLAY` | `True` | Lab local time top left, as on the other cams; it is the clock for reading archives back |
 | `CAMERA_VFLIP` / `HFLIP` / `ROTATION` | `False` / `False` / `0` | Not yet checked against the deck. If the picture is upside down, set both flips `True` (free, in the sensor) and restart once |
@@ -74,7 +81,17 @@ cd ~/ac-training-lab/src/ac_training_lab/picam && sed -i 's/^CAMERA_VFLIP = .*/C
 sudo -S -p '' systemctl restart device.service <<< "$RPI_STREAM_CAM_PASSWORD"
 ```
 
-**Take a full-resolution still.** The stream holds the camera, so stop it first, then start it
+**Take a full-resolution still, while it streams** (`CAMERA_SOURCE = "picamera2"`). About 0.3 s,
+and the stream carries on. The JPEG carries EXIF, and the `X-Still-Metadata` header has the
+exposure, gain, colour gains and Lux. `/status` has the frame rate, dropped frames and the focus
+scores (a 3 × 3 grid over the picture).
+
+```bash
+curl -s localhost:8081/still > still.jpg
+curl -s localhost:8081/status
+```
+
+**Take a still the old way** (`CAMERA_SOURCE = "rpicam-vid"`). The stream holds the camera, so stop it first, then start it
 again (which makes a new broadcast). The watchdog leaves a stopped unit alone; it only acts on
 a failed or stalled one.
 
@@ -311,3 +328,47 @@ finish before rebooting.
 
 Against the stand-in, the whole script also held off at every re-check, then restarted only
 `device.service` at its time limit, and wrote every decision to its history file.
+
+## Change record, 2026-10-20
+
+Asked on [#234](https://github.com/vertical-cloud-lab/byu-vcl/pull/234): point-and-shoot in tandem
+with the stream, from the same camera, as tried in
+[borysgroup/streamingLambda#9](https://github.com/borysgroup/streamingLambda/issues/9). Its
+option A (one picamera2 process: `main` for stills, `lores` for the stream) ran 8 h live to YouTube
+on a Pi Zero 2 W with 0 restarts and 95/95 stills
+([PR #10](https://github.com/borysgroup/streamingLambda/pull/10)). Done from a `@claude` session
+over Tailscale SSH. `device.py` and `my_secrets.py` were backed up first, to
+`~/device.py.bak-2026-10-20` and `~/my_secrets.py.bak-2026-10-20` (mode 600). Nothing was
+installed: Raspberry Pi OS already has picamera2 0.3.36 and simplejpeg for the system `python3`.
+
+**What is different from option A on the Zero 2 W.** A Pi 5 has no hardware H.264 encoder, so
+there is no `H264Encoder` and no `CircularOutput` clip buffer: `picam_source.py` writes raw
+YUV420 frames, the layout `rpicam-vid --codec yuv420` gave `device.py` but with the row padding
+removed, and ffmpeg does the one encode exactly as before. The colour space is set to sYCC, as
+`rpicam-vid` used (picamera2's video default is limited-range Rec.709, which `device.py`'s range
+conversion would have stretched). Frames go to ffmpeg through a 3-frame queue in their own
+thread, so a stalled upload can hold up only the stream, never the stills; the queue drops the
+oldest frame rather than block.
+
+| UTC | |
+| --- | --- |
+| 03:52:03–03:52:37 | Off-air test, `device.service` stopped: `picam_source.py` alone for 24 s. 65 frames at 3.00 fps, 2 stills of 4056 × 3040, the overlay file written. The stream was back at 03:52:37 with the old settings |
+| 03:53:28 | Restarted with `CAMERA_SOURCE = "picamera2"`, `SENSOR_MODE = "4056:3040"`, `SETUP_OVERLAY = True`: broadcast [`gG60vgFErDw`](https://www.youtube.com/watch?v=gG60vgFErDw), *OT2 overhead stream hqcam-ot2-lid, 2026-10-20 UTC 03:53*, added to `PLM4VC4X_7XKQ` |
+| 03:54 | Three stills while streaming: 273, 326 and 307 ms each, 1.7 MB. 120 frames, 0 dropped, 2.98 fps |
+| 03:58 | A still with the OT-2's rail lights on (no run active; on at 03:58:25, off at 03:58:35, once auto exposure had settled): [`../frames/2026-10-20/still_0358Z_lit.jpg`](../frames/2026-10-20/still_0358Z_lit.jpg), measured in [`../README.md`](../README.md#where-it-is-looking-now) |
+| 04:01 | A frame pulled back from the live broadcast shows the cross and the focus score ([frame](../frames/2026-10-20/stream_frame_0400Z_setup_overlay.jpg)) |
+
+| While streaming, 03:54 | `rpicam-vid` + ffmpeg (2026-10-19) | `picam_source.py` + ffmpeg |
+| --- | --- | --- |
+| Stream | 1920 × 1440, 3 fps, from `2028:1520` | 1920 × 1440, 3 fps, from `4056:3040` |
+| Camera process | negligible | 11 % of one core (frame copy and focus scores), 150 MB |
+| ffmpeg | 0.65 of a core | 0.39 of a core (dark lab) |
+| SoC | 48 °C | 46 °C, `throttled=0x0`, `EXT5V` 4.89 V |
+| Stills | stop the stream, `rpicam-still`, start it again: a new broadcast | `curl localhost:8081/still`: 0.3 s, same broadcast |
+
+**To go back:** in `my_secrets.py`, `CAMERA_SOURCE = "rpicam-vid"` and `SENSOR_MODE = "2028:1520"`,
+then restart once. Or restore both backups.
+
+**Not tested yet:** longer than the 8 h between reboots on this Pi (each reboot starts it fresh,
+which is also what the Zero 2 W run covered); recovery from an upload stall, which only the
+watchdog's restart covers, as before.
