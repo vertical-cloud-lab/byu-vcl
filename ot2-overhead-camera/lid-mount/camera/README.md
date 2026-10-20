@@ -143,56 +143,74 @@ Measured by [`measure_still.py`](measure_still.py) from a full-resolution still 
 finds the rails in the gaps around slots 5 and 8 and fits them to Opentrons' slot pitch: 0.07 mm
 rms. Numbers in [`../exports/lid_camera_setup.json`](../exports/lid_camera_setup.json).
 
-| | Now | Wanted |
+**The goal is one plate, close up.** The mount was designed to look straight down at the one
+96-well plate being measured, at about 25 mm of zoom ([README §3](../README.md#3-where-on-the-lid)).
+From 2026-10-15 these notes steered toward the 8 mm whole-deck view instead, and the first version
+of the steps below (03:40 UTC tonight) lined the camera up for that: a third of the resolution, and
+short of the ~100 px across a well that #84's options doc asks for to measure intensity. The target
+is now the colour-mixing plate in **slot 7**, where PR #202's runs keep it (it is there in the still
+above), filling the picture with about 5 mm of deck either side:
+
+| | Now (03:58 UTC) | Target |
 |---|---|---|
-| Zoom | about **9.15 mm**: 9.5 px/mm, a field of 427 × 320 mm at the deck | 8 mm, the wide stop: about 489 × 366 mm |
-| Centre of the picture | **16 mm behind and 5.5 mm left** of the deck centre (the middle of the rail between slots 5 and 8) | on it, to within about 3 mm |
+| Zoom | about **9.15 mm**: 417 × 313 mm at the plate's top | **27.7 mm**: 138 × 103 mm |
+| In a still (4056 × 3040) | 9.7 px/mm, **67 px** across a well | 29.4 px/mm, **202 px** across a well |
+| On the stream (1920 × 1440) | 4.6 px/mm, 32 px across a well | 14 px/mm, 96 px across a well |
+| Centre of the picture | **127 mm right and 29 mm in front** of the plate's centre | on it, to within about 2 mm |
 | Rotation | **+1.4°** (the rails slope down to the right) | under 0.5° |
-| Slots in view | 4–9 whole; 10–12 91–99 %; 1–3 only 56–62 % | all 12 whole |
 
-The 12 slots span 393 × 357.5 mm. At 8 mm that leaves only about 4 mm to spare in front of
-slots 1–3 and behind 10–12, so the centring and the rotation matter: at 1.4° the corners of the
-deck move ±4.8 mm up or down the picture. At 9.2 mm, no position fits all 12: the field is 37 mm
-short front to back.
+5 mm either side is tighter than the 12–14 mm that 25 mm leaves (README §3), because the live
+stream now places the mount to a millimetre or two. It still allows for the plate sitting a
+millimetre off in its slot and for the last fraction of a degree of rotation. Another margin is
+`setup_video.py --margin`.
 
-### Lining it up: zoom, focus, centre, square, lock
+### Lining it up over the plate: slide, zoom, focus, centre and square, lock
 
 ![Setup steps](../renders/setup_steps.gif)
 
-Labelled video to pause on: [YouTube](https://www.youtube.com/watch?v=ZStu8aZcogI) (unlisted, 1:33, a chapter per step) or [`../renders/setup_steps.mp4`](../renders/setup_steps.mp4); made by [`../cad/setup_video.py`](../cad/setup_video.py) from the measured start, so it can be re-rendered after the next still.
+Labelled video to pause on: [YouTube](https://www.youtube.com/watch?v=a5qfAB4CNxU) (unlisted, 1:34, a chapter per step) or
+[`../renders/setup_steps.mp4`](../renders/setup_steps.mp4); made by
+[`../cad/setup_video.py`](../cad/setup_video.py) from the measured start, so it can be re-rendered
+after the next still (`--slot` for another slot's plate). The whole-deck version of 03:40 UTC
+([YouTube](https://www.youtube.com/watch?v=ZStu8aZcogI)) is superseded.
 
 **Before you start.** Turn the room lights and the OT-2's rail lights on: the focus score is noise
 in the dark. Open the stream on a phone (the newest video in the
 [OT2 overhead Livestreams Playlist](https://www.youtube.com/playlist?list=PLM4VC4X_7XKQ)). While
-`SETUP_OVERLAY = True` it shows an **orange cross** through the middle of the picture and, under the
-timestamp, **`focus N (best M in 2 min)`**: a sharpness score for the middle of the full-resolution
-picture, worked out for every frame. YouTube is 5–20 s behind, so after each change wait about
-20 s before you judge.
+`SETUP_OVERLAY = True` it shows an **orange cross** through the middle of the picture; an **orange
+box** (`SETUP_BOX`, since 2026-10-20 05:57 UTC) where the plate's outline lands when the zoom is
+right; and, under the timestamp, **`focus N (best M in 2 min)`**, a sharpness score for the middle
+of the full-resolution picture, worked out for every frame. YouTube is 5–20 s behind, so after each
+change wait about 20 s before you judge.
 
-1. **Zoom out to the wide stop.** Loosen the zoom thumbscrew, turn the zoom ring toward **W** until
-   it stops, and tighten the thumbscrew. Everything in the picture gets smaller, and goes soft:
-   this lens is varifocal, so zoom moves focus.
-2. **Focus.** Open the iris fully (toward 1.4) to make the sharpest point easy to find. Turn the
+1. **Slide the mount over the plate.** Lift the tape and slide the **whole mount** about
+   **127 mm to the left and 29 mm toward the back** (seen from the door), with the arrow on the base
+   still pointing at the door, until the cross lands on the middle of the plate: between wells D6,
+   D7, E6 and E7. Within about 5 mm is enough for now. On the lid that puts the lens axis about
+   123 mm right of the line through the two left window screws and 231 mm behind the line through
+   the two front ones (slot 7 in [README §3](../README.md#3-where-on-the-lid)).
+2. **Zoom in until the plate fills the box.** Loosen the zoom thumbscrew and turn the zoom ring
+   toward **T** until the plate's left and right edges reach the box's sides, at about 27–28 mm.
+   Tighten the thumbscrew. If the plate runs out of the box on one side as it grows, slide the
+   mount a little that way. The picture goes soft: this lens is varifocal, so zoom moves focus.
+3. **Focus.** Open the iris fully (toward 1.4) to make the sharpest point easy to find. Turn the
    focus ring about 1/16 of a turn, wait, read the score; keep going while it rises, and when it
-   falls go back to the best. Tighten the focus thumbscrew. Then close the iris to about f/4 for
-   depth of field; the auto exposure makes up the light. Only compare scores under the same light.
-3. **Centre.** Lift the tape and slide the **whole mount** about **16 mm toward the door and 5.5 mm
-   to the right** (seen from the door), until the cross's horizontal line lies on the rail between
-   slots 5 and 8 and its vertical line runs down the middle of slots 2, 5, 8 and 11, halfway
-   between the rails either side. On the lid that puts the lens axis halfway between the left and
-   right window screws and 186 mm behind the line through the two front ones ([§3](../README.md#3-where-on-the-lid)).
-4. **Square.** Turn the mount **clockwise, seen from above, by about 1.4°**: about 2.7 mm across
-   the base's 112 mm width. Stop when the horizontal line runs parallel to the rail. Keep the cross
-   on the deck centre while you turn.
+   falls go back to the best. Tighten the focus thumbscrew. Then close the iris to about **f/8**:
+   the depth of field is then about 24 mm, enough for the wells' rims and the paint 11 mm below them
+   to be sharp together. The auto exposure makes up the light.
+4. **Centre and square.** Nudge the mount until the plate sits evenly in the box, with the same
+   strip of deck at its left and right and at its top and bottom. Then turn it **clockwise, seen
+   from above, by about 1.4°** (a tab's tip moves about 1.8 mm) until the plate's edges run
+   parallel to the box. At this zoom 1 mm of deck is 14 px on the stream, so small moves.
 5. **Lock and check.** Tighten all three thumbscrews, tape the base down
    ([phase 1](../README.md#4-install-phase-1-tape-no-cutting)), and comment
-   `@claude take a still with the lid camera and measure it`. `measure_still.py` reports what is
-   left to move and which slots are wholly in view. Done when all 12 are, the centre is within
-   about 3 mm and the rotation under 0.5°. Then ask for `SETUP_OVERLAY = False`, which takes the
-   cross and the score off the stream.
+   `@claude take a still with the lid camera and measure it`. `measure_still.py --plate 7` fits the
+   plate's 96 wells and reports what is left to move. Done when the plate's centre is within about
+   2 mm of the picture's centre and the rotation is under 0.5°. Then ask for
+   `SETUP_OVERLAY = False`, which takes the cross, the box and the score off the stream.
 
-If the wide stop doesn't fit all 12 slots even when centred and square, the lens doesn't reach
-8 mm: keep the slot you image whole and let the outer edge of the front or back row go, or fit
-a wider lens (the 6 mm CS-mount lens for the HQ Camera would see about 640 × 480 mm from here).
+If the protocol moves the plate to another slot, the mount moves with it: slot 8 is the nearest
+to where the mount is now (about 29 mm toward the back and 5.5 mm to the right). The box fits any
+SBS-footprint plate of about the same height.
 
 ![The live stream with the setup overlay, 04:00 UTC](frames/2026-10-20/stream_frame_0400Z_setup_overlay.jpg)

@@ -187,11 +187,14 @@ def deck_colour(start: dict) -> tuple[int, int, int]:
     return tuple(int(c) for c in np.median(patch, axis=0))
 
 
-def deck_texture(start: dict, target: tuple[float, float]) -> tuple[np.ndarray, np.ndarray]:
+def deck_texture(start: dict, target: tuple[float, float],
+                 shown: tuple[float, float] | None = None) -> tuple[np.ndarray, np.ndarray]:
     """Today's deck from straight above, TEX_S px/mm: slots, rails, engraved numbers, labware.
 
     Returns the deck, and the top of the plate centred on `target` as RGBA (transparent
-    elsewhere): the camera draws that layer 14.35 mm above the deck, where it is."""
+    elsewhere): the camera draws that layer 14.35 mm above the deck, where it is. `shown` is where
+    the still shows the plate's centre, if not on `target`: off the lens axis the lens's distortion
+    moves it a few mm, and the plate's layer is taken from there."""
     s = TEX_S
     deck = deck_colour(start)
     plate = tuple(max(0, c - 6) for c in deck)
@@ -282,7 +285,10 @@ def deck_texture(start: dict, target: tuple[float, float]) -> tuple[np.ndarray, 
             # middle: a point there lands at c + k (M p - c), c the picture's centre.
             k = Z_PIN / (Z_PIN - Z_PLATE)
             c = np.array([4056 / 2, 3040 / 2])
-            plate = with_still(drawn, path, np.hstack([k * m[:, :2], (k * m[:, 2] + (1 - k) * c)[:, None]]))
+            mp = np.hstack([k * m[:, :2], (k * m[:, 2] + (1 - k) * c)[:, None]])
+            if shown is not None:
+                mp[:, 2] += mp[:, :2] @ (np.array(shown) - target)
+            plate = with_still(drawn, path, mp)
     # Only the plate's footprint, 1 mm proud so a plate a little off the slot's centre stays whole.
     mask = np.zeros(img.shape[:2], np.uint8)
     out = plate_outline(target) + np.array([[-1, 1], [1, 1], [1, -1], [-1, -1]])
@@ -832,8 +838,8 @@ def load_start() -> dict:
 
 
 def plate_centre(cfg: dict, slot: int) -> tuple[float, float]:
-    """The plate's centre, deck mm: the slot's centre, unless measure_still.py --plate has fitted the
-    plate's wells in the same still as the rails, which puts it where it really sits."""
+    """Where the still shows the plate's centre, deck mm, by the rails' fit: the slot's centre, unless
+    measure_still.py --plate has fitted the plate's wells in the same still."""
     if not (PLATE_FIT.exists() and cfg.get("still_to_deck")):
         return SLOTS[slot]
     fit = json.loads(PLATE_FIT.read_text())
@@ -988,14 +994,15 @@ def make_steps(cfg: dict, slot: int, target: tuple[float, float],
     return steps, s0, box
 
 
-def run(stills_only: bool, slot: int, margin: float) -> None:
+def run(stills_only: bool, slot: int, margin: float, plate_at: tuple[float, float] | None = None) -> None:
     cfg = load_start()
-    target = plate_centre(cfg, slot)
+    target = SLOTS[slot]
+    shown = plate_at or plate_centre(cfg, slot)
     steps, s0, box = make_steps(cfg, slot, target, margin)
-    deck = Deck(*deck_texture(cfg, target))
+    deck = Deck(*deck_texture(cfg, target, shown))
     ft, _ = target_zoom(margin)
     print("start:", {k: cfg[k] for k in ("focal_mm", "axis_offset_mm", "rotation_deg", "source")})
-    print(f"target: the plate in slot {slot} at ({target[0]:.1f}, {target[1]:.1f}) mm on the deck, "
+    print(f"target: the plate in slot {slot}, shown at ({shown[0]:.1f}, {shown[1]:.1f}) mm in the still, "
           f"{margin:g} mm either side: zoom {ft:.2f} mm, box {box[0]:.4f} x {box[1]:.4f} of the picture")
 
     mp4 = Frames(MP4, deck, steps, s0, slot, target, box)
@@ -1113,5 +1120,7 @@ if __name__ == "__main__":
     ap.add_argument("--slot", type=int, default=SLOT, help="the slot the plate is in (default %(default)s)")
     ap.add_argument("--margin", type=float, default=MARGIN,
                     help="mm of deck to leave left and right of the plate (default %(default)s)")
+    ap.add_argument("--plate-at", help="X,Y: where the still shows the plate's centre, deck mm by the rails' fit, "
+                                        "if not where a measure_still.py --plate fit or the slot's centre puts it")
     a = ap.parse_args()
-    run(a.stills, a.slot, a.margin)
+    run(a.stills, a.slot, a.margin, tuple(float(v) for v in a.plate_at.split(",")) if a.plate_at else None)
