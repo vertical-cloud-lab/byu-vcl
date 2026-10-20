@@ -11,8 +11,8 @@ Buy a **Harris 9296SS-250-580** (Harris item 3302689), **$553.19 at
 [Weldingmart](https://weldingmart.com/products/harris-9296ss-250-580-two-stage-argon-helium-nitrogen-regulator-3302689)**
 (listed 2026-10-20). Also buy a **1/4" NPT male × 6 mm push-to-connect** fitting for the outlet.
 
-It's the same regulator as the borrowed one, the same body, range, outlet and flow, with a
-stainless-steel diaphragm instead of neoprene. Buying the identical
+It's the borrowed model with a stainless-steel diaphragm instead of neoprene: same body, range,
+outlet and flow rating. Buying the identical
 **9296-250-580** (item 3302609, $516.00 at
 [Weldingmart](https://weldingmart.com/products/harris-9296-250-580-general-purpose-two-stage-argon-helium-nitrogen-regulator-3302609))
 is also fine. Steer clear of the 125 psi versions (see [below](#what-to-buy)).
@@ -36,8 +36,8 @@ In practice that means:
   run at the very top of its spring.
 - **CGA 580 inlet.**
 - **Preferably a stainless-steel diaphragm,** for 5N argon. Neoprene lets a little air and
-  moisture through into the gas. The plastic line to the machine lets in more than a diaphragm
-  does, so this matters less than the first three points.
+  moisture through into the gas. The plastic line to the machine probably lets in more than the
+  diaphragm does, so this matters less than the first three points.
 
 ## The borrowed regulator
 
@@ -72,7 +72,7 @@ Both 250 psi versions share the following, from Weldingmart's spec tables:
 | --- | --- | --- | --- |
 | **9296SS-250-580** (recommended) | 3302689 | stainless steel | **$553.19** |
 | 9296-250-580 (same as the borrowed one) | 3302609 | neoprene | $516.00 |
-| ~~9296-125-580 / 9296SS-125-580~~ | 3302608 / 3302688 | neoprene / stainless | $448.36 / $500.75 |
+| 9296-125-580 / 9296SS-125-580 (not recommended) | 3302608 / 3302688 | neoprene / stainless | $448.36 / $500.75 |
 
 **Why not the 125 psi versions.** 116 psi is 93 % of their range. Their outlet is also a
 5/8"-18 RH inert-gas hose thread rather than 1/4" NPT, which needs another adapter before a push
@@ -89,9 +89,9 @@ regulator on the cylinder now.
 
 - **Airgas** lists the plain version as
   [HCL3302609](https://www.airgas.com/product/Gas-Equipment/Regulators/Specialty-Gas-Regulators/p/HCL3302609),
-  but doesn't sell it online, and the price is hidden. The nearest store is in Salt Lake City.
-- **Locally:** Norco has a branch in Orem. Nick suggested Norco for a Victor two-stage regulator
-  in [#41](https://github.com/vertical-cloud-lab/byu-vcl/issues/41#issuecomment-4284403253).
+  but doesn't sell it online, and the price is hidden.
+- **Locally:** Nick suggested Norco for a Victor two-stage regulator; the contact is in
+  [#41](https://github.com/vertical-cloud-lab/byu-vcl/issues/41#issuecomment-4284403253).
   Ask them for the 9296SS-250-580 or an equivalent: a two-stage regulator with a CGA 580 inlet
   that reaches at least 150 psi and has a stainless diaphragm.
 - **Nick**, who orders the argon, may be able to add it to a gas order.
@@ -108,14 +108,14 @@ regulator on the cylinder now.
   tape off the first thread so shreds can't get into the regulator. Leak-check with Snoop at
   8 bar.
 - **Before returning the borrowed regulator:** check whose push fitting is in its outlet now.
-  Kevin supplied the push fittings for the install (9/17 call). If it's ours, move it to the new
-  regulator.
+  On the 9/17 call, Kevin was to supply the push fittings for the compressed air, so this one may
+  be ours as well. If it is, move it to the new regulator.
 
 ## The Amazon regulator
 
-Nothing in this repo records which regulator was bought on Amazon or what was wrong with it. I
-searched the issues, PRs, comments, meeting transcripts and training-video transcripts. The only
-trace is a 26 Sept comment on
+Nothing in this repo records which regulator was bought on Amazon or what was wrong with it.
+The issues, PRs, comments, meeting transcripts and training-video transcripts were all searched
+for it. The only trace is a 26 Sept comment on
 [PR #232](https://github.com/vertical-cloud-lab/byu-vcl/pull/232#issuecomment-5845793220) asking
 whether "that regulator came in yet". Most Amazon "argon regulators" are welding flowmeter
 regulators. These are preset to about 50 psi, and only the flow can be adjusted, often to no more
