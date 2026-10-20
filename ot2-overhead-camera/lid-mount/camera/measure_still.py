@@ -222,7 +222,7 @@ def main() -> None:
     cv2.arrowedLine(vis, (int(uc), int(vc)), (int(du), int(dv)), (42, 98, 212), 8, tipLength=0.25)
     text = (f"picture centre (orange) is {abs(off[1]):.0f} mm {'behind' if off[1] > 0 else 'in front of'} and "
             f"{abs(off[0]):.0f} mm {'left' if off[0] < 0 else 'right'} of the deck centre (blue); "
-            f"turned {rot:+.1f} deg; zoom about {focal:.1f} mm")
+            f"turned {rot:+.1f} deg; zoom about {focal:.2f} mm")
     band = vis[PX[1] - 150:, :].astype(np.float32)
     vis[PX[1] - 150:, :] = (band * 0.35).astype(np.uint8)
     cv2.putText(vis, text, (40, PX[1] - 50), cv2.FONT_HERSHEY_SIMPLEX, 2.0, (255, 255, 255), 5, cv2.LINE_AA)

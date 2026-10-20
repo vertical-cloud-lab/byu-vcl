@@ -145,7 +145,7 @@ rms. Numbers in [`../exports/lid_camera_setup.json`](../exports/lid_camera_setup
 
 | | Now | Wanted |
 |---|---|---|
-| Zoom | about **9.2 mm**: 9.5 px/mm, a field of 427 × 320 mm at the deck | 8 mm, the wide stop: about 489 × 366 mm |
+| Zoom | about **9.15 mm**: 9.5 px/mm, a field of 427 × 320 mm at the deck | 8 mm, the wide stop: about 489 × 366 mm |
 | Centre of the picture | **16 mm behind and 5.5 mm left** of the deck centre (the middle of the rail between slots 5 and 8) | on it, to within about 3 mm |
 | Rotation | **+1.4°** (the rails slope down to the right) | under 0.5° |
 | Slots in view | 4–9 whole; 10–12 91–99 %; 1–3 only 56–62 % | all 12 whole |

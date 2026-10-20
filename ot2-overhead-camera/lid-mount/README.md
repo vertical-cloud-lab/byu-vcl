@@ -312,6 +312,9 @@ y +54.7) and zoom to about 14 mm. Both slots then fit, at about 100 px across a 
    It is #84's [preview server](https://github.com/vertical-cloud-lab/byu-vcl/blob/e949ad0/ot2-overhead-camera/README.md#5-zoom-and-focus-live-preview)
    with the whole sensor in view; #84's own shows a 16:9 crop. Other ways to see the feed are
    in [`camera/README.md`](camera/README.md).
+   For the whole-deck view, follow [Lining it up](camera/README.md#lining-it-up-zoom-focus-centre-square-lock)
+   (2026-10-20): the stream shows a centre cross and a live focus score, and a full-resolution
+   still, taken while it streams, says how many millimetres are left to move.
 4. Tape the four tabs down.
 
 At this stage it images **through the window**. The collar keeps room light off the patch
