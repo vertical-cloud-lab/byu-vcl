@@ -76,6 +76,10 @@ except ImportError:
 # STILL_SIZE: "WIDTHxHEIGHT" of those stills; None for the sensor mode's size.
 # SETUP_OVERLAY: draw a centre cross and the live focus score on the stream,
 #   for lining the camera up and focusing it (picamera2 source only).
+# SETUP_BOX: (width, height) as fractions of the picture: with the setup
+#   overlay, a centred box where the plate's outline should land once the zoom
+#   is right. (0.927, 0.828) leaves 5 mm of deck either side of a 96-well
+#   plate (../../cad/setup_video.py, target_zoom). None for no box.
 try:
     from my_secrets import CAMERA_SOURCE
 except ImportError:
@@ -92,6 +96,10 @@ try:
     from my_secrets import SETUP_OVERLAY
 except ImportError:
     SETUP_OVERLAY = False
+try:
+    from my_secrets import SETUP_BOX
+except ImportError:
+    SETUP_BOX = None
 
 # Where picam_source.py writes the focus score for the overlay (tmpfs).
 OVERLAY_FILE = "/dev/shm/picam-overlay.txt"
@@ -140,6 +148,7 @@ def start_stream(
     still_port=8081,
     still_size=None,
     setup_overlay=False,
+    setup_box=None,
 ):
     """
     Starts the libcamera -> ffmpeg pipeline and returns two Popen objects:
@@ -175,6 +184,8 @@ def start_stream(
         still_port: Port for those stills.
         still_size: Optional "WIDTHxHEIGHT" for the stills.
         setup_overlay: Centre cross and live focus score on the stream.
+        setup_box: Optional (width, height), fractions of the picture: a
+            centred box drawn with the setup overlay. See SETUP_BOX above.
     """
     # Get the available camera command
     camera_cmd = get_camera_command()
@@ -330,6 +341,12 @@ def start_stream(
                 f":textfile={OVERLAY_FILE}:reload=1",
             ]
         )
+        if setup_box:
+            bw, bh = setup_box
+            video_filters.append(
+                f"drawbox=x=iw*{(1 - bw) / 2:.5f}:y=ih*{(1 - bh) / 2:.5f}"
+                f":w=iw*{bw:.5f}:h=ih*{bh:.5f}:color=orange@0.8:t=3"
+            )
 
     # Second: ffmpeg command
     ffmpeg_cmd = [
@@ -592,7 +609,7 @@ if __name__ == "__main__":
     print(f"Camera source: {CAMERA_SOURCE}")
     if CAMERA_SOURCE == "picamera2":
         print(f"Stills: 127.0.0.1:{STILL_PORT}/still, {STILL_SIZE or 'sensor mode size'}")
-        print(f"Setup overlay: {'on' if SETUP_OVERLAY else 'off'}")
+        print(f"Setup overlay: {'on' if SETUP_OVERLAY else 'off'}, box: {SETUP_BOX or 'none'}")
     print(f"Camera bitrate: {BITRATE or 1000000} bit/s")
     print(f"x264 preset: {X264_PRESET}, cap: {MAX_BITRATE or 'none'} bit/s")
     print(f"Timestamp overlay: {'enabled' if TIMESTAMP_OVERLAY else 'disabled'}")
@@ -635,6 +652,7 @@ if __name__ == "__main__":
             still_port=STILL_PORT,
             still_size=STILL_SIZE,
             setup_overlay=SETUP_OVERLAY,
+            setup_box=SETUP_BOX,
         )
         print("Stream started")
         interrupted = False

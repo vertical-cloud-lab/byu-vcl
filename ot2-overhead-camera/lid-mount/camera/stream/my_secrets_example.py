@@ -53,6 +53,10 @@ STILL_SIZE = None
 # A centre cross and the live focus score on the stream, for lining the
 # camera up. False once it is centred and focused.
 SETUP_OVERLAY = True
+# With it, a centred box (fractions of the picture's width and height) where
+# the plate's outline lands at the right zoom: 5 mm of deck either side of a
+# 96-well plate. None for no box.
+SETUP_BOX = (0.927, 0.828)
 
 # Optional. None or 0 for a sharp picture; see docs/stream-cams.md on main.
 PIXELATE_BLOCKS = None

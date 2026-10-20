@@ -47,7 +47,8 @@ general notes on the stream cams are in `docs/stream-cams.md` on `main`.
 | `CAMERA_SOURCE` | `"picamera2"` | New 2026-10-20. `picam_source.py` instead of `rpicam-vid`, so that stills can be taken while the stream runs. Needs `CAMERA_CODEC = "yuv420"`. `"rpicam-vid"` (the default) puts it back as it was |
 | `STILL_PORT` | `8081` | New 2026-10-20. Where `picam_source.py` listens, on `127.0.0.1` only |
 | `STILL_SIZE` | not set | New 2026-10-20. `"WIDTHxHEIGHT"` for smaller stills; unset gives the sensor mode's size |
-| `SETUP_OVERLAY` | `True` | New 2026-10-20, for lining the camera up. An orange cross through the middle of the picture and, under the timestamp, `focus N (best M in 2 min)`. Set it `False` once the mount is centred and focused ([steps](../README.md#lining-it-up-zoom-focus-centre-square-lock)) |
+| `SETUP_OVERLAY` | `True` | New 2026-10-20, for lining the camera up. An orange cross through the middle of the picture and, under the timestamp, `focus N (best M in 2 min)`. Set it `False` once the mount is centred and focused ([steps](../README.md#lining-it-up-over-the-plate-slide-zoom-focus-centre-and-square-lock)) |
+| `SETUP_BOX` | `(0.927, 0.828)` | New 2026-10-20 05:57 UTC, drawn only with `SETUP_OVERLAY`. A centred orange box, as fractions of the picture's width and height, where a 96-well plate's outline lands when the zoom is right: 5 mm of deck either side of the plate, about 27.7 mm of zoom ([`setup_video.py`](../../cad/setup_video.py) `target_zoom`). Not set, or `None`: no box |
 | `CAMERA_CODEC` | `"yuv420"` | The Pi 5 has no hardware H.264 encoder: `--codec h264` goes through libav in software, so the stream would be encoded twice (once at the camera's bit rate, once by ffmpeg for the overlay). Raw frames to ffmpeg mean one encode and no intermediate bit rate. 1920×1440 at 3 fps is 12 MB/s through the pipe, nothing for a Pi 5. The raw path needed three fixes on 2026-10-19; see [What changed in `device.py`](#what-changed-in-devicepy) |
 | `TIMESTAMP_OVERLAY` | `True` | Lab local time top left, as on the other cams; it is the clock for reading archives back |
 | `CAMERA_VFLIP` / `HFLIP` / `ROTATION` | `False` / `False` / `0` | Not yet checked against the deck. If the picture is upside down, set both flips `True` (free, in the sensor) and restart once |
@@ -372,3 +373,21 @@ then restart once. Or restore both backups.
 **Not tested yet:** longer than the 8 h between reboots on this Pi (each reboot starts it fresh,
 which is also what the Zero 2 W run covered); recovery from an upload stall, which only the
 watchdog's restart covers, as before.
+
+## Change record, 2026-10-20 (2): the plate box
+
+Asked on [#234](https://github.com/vertical-cloud-lab/byu-vcl/pull/234): the camera is meant to look
+at one well plate at high resolution, not the whole deck, so the line-up steps now zoom in until
+the plate in slot 7 fills the picture ([steps](../README.md#lining-it-up-over-the-plate-slide-zoom-focus-centre-and-square-lock)).
+`device.py` gained `SETUP_BOX`: with the setup overlay, ffmpeg draws one more `drawbox`, a centred
+orange outline at `(0.927, 0.828)` of the picture, which is where the plate's outline lands at the
+target zoom. The filter was checked first on the runner, on the 03:58 still scaled to 1920 × 1440:
+the box's edges landed on pixels 70–1848 across and 122–1314 down, as computed.
+
+| UTC | |
+| --- | --- |
+| 05:56 | `device.py` and `picam_source.py` on the Pi checked against `62040c6` (same SHA-256); `device.py` and `my_secrets.py` backed up to `~/device.py.bak-2026-10-20b` and `~/my_secrets.py.bak-2026-10-20b` (mode 600) |
+| 05:57 | New `device.py` copied over (SHA-256 checked) and `SETUP_BOX = (0.927, 0.828)` added to `my_secrets.py`; `device.service` restarted. 30 s later: ffmpeg running with the new `drawbox`, 90 frames at 3 fps, 0 dropped |
+| 06:00 | A frame pulled back from the new broadcast, [`0M_zLHzlR1s`](https://www.youtube.com/watch?v=0M_zLHzlR1s) (*OT2 overhead stream hqcam-ot2-lid, 2026-10-20 UTC 05:57*, in `PLM4VC4X_7XKQ`), shows the box with the cross and the score ([frame](../frames/2026-10-20/stream_frame_0600Z_plate_box.jpg)) |
+
+**To go back:** `SETUP_BOX = None` (or delete the line) and restart once; or restore both backups.
