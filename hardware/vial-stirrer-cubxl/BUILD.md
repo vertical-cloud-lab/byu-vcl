@@ -312,9 +312,11 @@ the bench.
 
 1. **PWM (pin 3) left open: the fan must not turn.** If it does, the gate pull-down or the
    MOSFET's pins are wrong. Stop and fix it.
-2. **Touch pin 3 to pin 1: the fan runs at full speed.** Write down the current; the README
-   expects well under 0.1 A. If the supply hits its limit instead, the diode is in
-   backwards.
+2. **Touch pin 3 to pin 1: the fan runs at full speed.** Write down the current, and the
+   peak as it starts. Orion rates the fan at 0.07 A (0.09 A max) at 12 V, so at 5 V the
+   stirrer should draw under 0.1 A, the figure the Pioreactor budgets for its fan
+   ([README](README.md#current-draw-and-power)). If the supply hits its limit instead, the
+   diode is in backwards.
 3. **Hall: meter between pin 4 and pin 2.** Bring one face of the spare magnet up to the
    sensor's marked face, then the other face. The reading flips between about 0 V and
    about 5 V, and stays where it is when the magnet goes away: it is a latch. If it never
@@ -433,6 +435,9 @@ following.** The bar shows through the slots between the fingers, and from above
    settled in about 12 s; a real fan will differ. Then 1200 rpm for 30 s.
 2. **Water.** About 10 mL of water and the stir bar in a vial, pushed down into the cup
    past the fingers. 300 rpm for 60 s: the bar lies flat in the middle and turns smoothly.
+   **Check:** `rpm` still settles near 300, and `stalled` stays 0. The bar's own field
+   works against the Hall signal, so a sensor that toggled cleanly without a vial can stop
+   toggling with one in (README, [Wiring, XIAO version](README.md#wiring-xiao-version)).
 3. **Find where the bar lets go.** Go up in steps (600, 900, 1200, 1500, 2000), 30 s each,
    and watch the bar. It is coupled while it turns smoothly in the centre. When it
    chatters, wobbles or stops while the fan keeps going, it has decoupled. Note the
@@ -482,6 +487,7 @@ comes up with the cap, see README [risk 3](README.md#risks-and-open-questions).
 | Symptom | Likely cause | What to do |
 |---|---|---|
 | The fan runs in bursts for about 12 s, then stops, and `31` says `"stalled":1` | No Hall pulses reach D2: wiring, a dead sensor, both magnets the same pole up. Or the fan really is jammed | Redo the Hall test in [stage 6](#6-assemble). Spin the fan through a vent |
+| As above, but only with a vial and bar in: without one, `rpm` reads fine | The coupled bar's field cancels part of the Hall signal, and what is left is under the sensor's trip point | Re-glue the sensor closer to the carrier, keeping 0.5 mm clear of it: each 0.5 mm is worth about 4 mT. A spacer disc barely helps here (about 0.6 mT for 1 mm). Failing that, the SS49E linear sensor (README) |
 | The fan never runs | The gate isn't driven: the PWM lead isn't on D10, the MOSFET's pins are wrong, or the board still has the old firmware | If `31` gets an error reply, the board has the old firmware. Otherwise meter from the gate to GND while `31` shows a duty above 0: a DC meter reads about duty × 5 V |
 | The fan runs flat out whatever you send | Drain and source shorted (a damaged MOSFET), or the gate tied to 5V | Bench check, stage 5 |
 | The Uno resets, or the Pi loses its port, when the fan starts | The 0.5 s start kick pulls the Uno's 5 V down | Feed the fan from the electromagnet's 5 V supply instead, with the grounds joined |
@@ -503,8 +509,9 @@ README's estimates can be replaced with measurements:
 - The vial's outside diameter at the bottom, and whether it sits on the floor.
 - The deck plate's thickness, and whether the keys bottom out.
 - The holder recess depth (sag).
-- The fan's current at 5 V, full speed.
+- The fan's current at 5 V, full speed, and its peak when it starts.
 - Whether the Hall output toggles cleanly, and whether `rpm` ever reads above 0 with the fan off.
+- Whether `rpm` kept reading with a vial and bar in, or stalled only then.
 - With 10 mL of water: the highest smooth rpm with no spacer and with each spacer, and which spacer you kept.
 - Whether the Uno ever reset when the fan started.
 - Whether the stirrer lifted when a cap came off.

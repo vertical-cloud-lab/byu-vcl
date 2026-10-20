@@ -50,6 +50,7 @@ the capper and the pipette, instead of its own XIAO RP2040.
 | [`../../cubos/firmware/panda-arduino-stirrer.patch`](../../cubos/firmware/panda-arduino-stirrer.patch) | The same controller as two commands in the CubXL Uno's PANDA firmware. Built, image committed, not flashed |
 | [`firmware/uno_sim/`](firmware/uno_sim) | Host-side simulation of that patch's control loop against a fan model, and its output |
 | [`RESEARCH.md`](RESEARCH.md) | What the Pioreactor does, the AC's and other open-source stirrers, design lessons |
+| [`analysis/field_check.py`](analysis/field_check.py) | magpylib check of the field at the Hall sensor (with and without a coupled bar) and at the bar, and its [output](analysis/field_check_output.txt) |
 | [`../../outputs/issue-169-magnetic-stirrer/`](../../outputs/issue-169-magnetic-stirrer) | Edison answers and the raw vendor lookups |
 
 The Onshape document is
@@ -64,15 +65,23 @@ document.
 
 The Pioreactor 20 mL holds the same class of vial (27.5 × 57.4 mm) and stirs it the
 same way, so its proven choices are kept. Sources are in [`RESEARCH.md`](RESEARCH.md).
+The table was rechecked on 2026-10-20 against the v1.5 parts list, `stirring.py` and
+`config.example.ini` at
+[`89dc54e`](https://github.com/Pioreactor/pioreactor/blob/89dc54ee/core/pioreactor/background_jobs/stirring.py)
+(the stirring code is unchanged since the `0ae14c0` cited in RESEARCH, apart from log
+text), and the Pioreactor docs.
 
 | | Pioreactor v1.5 | This stirrer | Why |
 |---|---|---|---|
-| Fan | Orion OD4010-12HSS, 12 V 2-wire, run at 5 V | same | Their part. A 12 V fan at 5 V tops out lower, which suits stirring |
-| Magnets | 2 × 0.250 × 0.060 in, opposite poles, 9.8 mm apart | 2 × 1/4 × 1/16 in N52, 9.8 mm apart | same |
+| Fan | Orion OD4010-12HSS, 12 V 2-wire, on the HAT's PWM rail, which is the Pi's 5 V unless an external supply is fitted | same, from the Uno's 5 V | Their part. A 12 V fan at 5 V tops out lower, which suits stirring. Orion rates it for 10.8–13.2 V, so both run it below its rated range; the start kick is what gets it going |
+| Magnets | 2 × neodymium, 0.250 × 0.060 in, grade not given, opposite poles, 9.8 mm apart | 2 × 1/4 × 1/16 in (0.0625 in) N52, 9.8 mm apart | The same size. N52 is this design's choice |
 | Magnet holder | Ø24 × 3.23 mm, pockets Ø6.66 × 1.675 mm open to the vial | Ø19, same thickness and pockets | Smaller, to leave room for the Hall sensor |
+| Stir bar | PTFE, 3 × 12 mm | PTFE, 15 × 6 mm ([`BOM.md`](BOM.md) item 3) | **Not the Pioreactor's.** The 9.8 mm magnet spacing suits bars about 12 mm long. The thicker bar's centre sits 1.5 mm higher, in 17.5 mT against 29 mT for a 3 × 12 mm bar (magpylib). Try both in the coupling test |
 | Drive | Software PWM at 200 Hz; a low-side MOSFET (BSS316N footprint on the HAT, inferred from its STEP) | 200 Hz hardware PWM, IRLZ44N | IRLZ44Ns are already in the capper BOM |
-| Speed sensing | DRV5021A3 Hall switch over the magnets, on the heater board | US1881 Hall latch beside the magnets | No heater board here, so nothing sits over the magnets |
-| Control | Additive P loop (Kp 0.005), kick from rest and on stall, on the Pi | Same structure, on the XIAO, plus a setpoint ramp | Self-contained over USB; ramping is the literature's advice |
+| Speed sensing | DRV5021A3 Hall switch over the magnets, on the heater board; 1 pulse per turn | US1881 Hall latch beside the magnets; 1 pulse per turn | No heater board here, so nothing sits over the magnets. Beside them, a coupled bar weakens the signal ([Hall signal](#wiring-xiao-version)) |
+| Measuring rpm | Mean time between Hall edges, over 1–5 s, so the reading is not quantized | Pulses counted over 2 s, so it moves in 30 rpm steps | Simpler. Timing the edges, as the Pioreactor does, would remove the steps (not done yet) |
+| Control | Additive P loop (Kp 0.005 %/rpm, each update clamped to ±7.5 points), updated every 23 s. 100 % for 0.5 s at start. On a stall: 0 % for 0.75 s, 100 % for 0.75 s, then at most 60 %. Never gives up | Same structure, updated every 2 s, plus a setpoint ramp. Both kicks are 0.5 s at 100 %. Stops after five stalls in a row | Self-contained over USB; ramping is the literature's advice |
+| Lowest speed | About 125 rpm: "Target RPMs below 125 have a tendency to stall" | Accepts down to 100 rpm | Expect stalls below about 125 rpm here too |
 | Magnet face to vial bottom | about 7 mm (estimated from their CAD) | 2.4 mm (1.2 air + 1.2 print) | No heater board. See the coupling note under Risks |
 | Mounting | Pi HAT faceplate | Two Cubware deck keys | CubXL deck |
 
@@ -149,10 +158,11 @@ and [`…b.json`](../../outputs/issue-169-magnetic-stirrer/vendor_lookup_amazon_
 
 ## Fasteners
 
-All M3, all from two kits ([`BOM.md`](BOM.md) items 11 and 12). Use **stainless** screws. Two of the Pioreactor's
-stirring faults trace to magnets pulling on steel nearby: grinding when the magnets
-catch on the screws, and stalls when they sit too close to the heater board's steel
-standoffs.
+All M3, all from two kits ([`BOM.md`](BOM.md) items 11 and 12). Use **stainless** screws. The
+Pioreactor keeps steel away from its magnets: the v1.5 parts list has brass screws
+nearest them, and nylon standoffs and nuts. Its grinding fault is mechanical, the
+magnets striking the screw heads above them. Its staff put random stalls down to the
+magnets sitting too close to the heater board, which carries two steel standoffs.
 
 | Fastener | Qty | Joins | Engagement |
 |---|---|---|---|
@@ -174,7 +184,7 @@ D3–D7, D9, D11 and A0–A4. What is left is enough for the stirrer:
 |---|---|---|
 | Fan PWM, to the MOSFET gate | **D10** | The only free hardware-PWM pin. It is on Timer1, which nothing else in the firmware uses (the electromagnet is on D11, Timer2), so Timer1 can run at the Pioreactor's 200 Hz. D9, the pipette limit switch, shares Timer1 but stays a plain input |
 | Hall sensor | **D2** | INT0, the free external interrupt |
-| Supply | **5V** and **GND** | The fan draws well under 0.1 A at 5 V, a little more during the 0.5 s start kick |
+| Supply | **5V** and **GND** | About 0.1 A for the whole stirrer, at most. See [Current draw](#current-draw-and-power) |
 
 D8, D12, D13 and A5 stay free. A second stirrer would need software PWM and a
 pin-change interrupt on those, which the patch below does not do.
@@ -215,9 +225,9 @@ same rails, and the cable leaves through the USB-C notch in the −X wall (13 mm
   ([datasheet](https://www.melexis.com/-/media/files/documents/datasheets/us1881-datasheet-melexis.pdf),
   Application Comments). [`BUILD.md`](BUILD.md#circuit) puts one on the junction board,
   from lab stock.
-- **Power** comes from the Uno's 5V, which comes from the Pi over USB. If the Uno resets
-  when the fan kicks, feed the fan from the electromagnet's 5 V supply instead, with the
-  grounds joined.
+- **Power** comes from the Uno's 5V, which comes from the Pi over USB. There is room for
+  it ([Current draw](#current-draw-and-power)). If the Uno resets when the fan kicks,
+  feed the fan from the electromagnet's 5 V supply instead, with the grounds joined.
 
 ### Firmware, Uno version
 
@@ -288,6 +298,51 @@ stir command yet. The obvious shape for one is a copy of its `set_lights`:
 
 That is not written yet.
 
+## Current draw and power
+
+Worked out on 2026-10-20 from the datasheets, the Pioreactor's docs and a read-only look
+at the CubXL Pi. Nothing has been measured on a stirrer yet; the bench check in
+[`BUILD.md`](BUILD.md#bench-check) measures the fan.
+
+| Load on the Uno's 5 V | Current | Source |
+|---|---|---|
+| Fan, running | **Under 0.1 A.** Orion rates the OD4010-12HSS at 0.07 A typical, 0.09 A max, **at 12 V**. At 5 V it draws less. The Pioreactor's power page budgets 0.1 A for its stirring motor | [Orion datasheet](https://assets.testequity.com/te1/Documents/pdf/orion/OrionFans_DCFan_OD4010-05HSS_Datasheet_0125.pdf) (rev. 6/19/2024), [Pioreactor](https://github.com/Pioreactor/docs.pioreactor/blob/1ddc606/user-guide/03-Extending%20your%20Pioreactor/09-external-power.md) |
+| Fan, 0.5 s start kick | Not given by Orion | Measure it in the bench check |
+| US1881 | 5 mA max | [Datasheet](https://www.melexis.com/-/media/files/documents/datasheets/us1881-datasheet-melexis.pdf), table 3 |
+| Hall pull-up, gate pull-down | 0.5 mA each: the pull-up while the output is low, the pull-down while the fan is on | 10 kΩ at 5 V |
+| Gate charging, from D10 | About 40 mA peak for under a microsecond, twice per PWM period; under 10 µA on average | 5 V across 100 Ω plus the pin's ~25 Ω; IRLZ44N gate charge |
+| **Whole stirrer** | **About 0.1 A at most** | |
+
+Where it comes from, and what else shares it:
+
+- **The Uno's 5 V pin**, from USB through the board's 500 mA resettable fuse. Already on
+  that rail: the Uno itself (about 50 mA), the TMC2209's logic supply (`VDD`) and, if
+  fitted, the capper's IR line-break sensor (about 20 mA). With the stirrer that is
+  about 0.2 A. The electromagnet has its own 5 V supply.
+- **The NeoPixel lights are the one load that could overrun it.** PANDA's lights
+  schematic powers the 24-pixel RGBW ring from the Uno's 5 V too, and the firmware sets
+  brightness 150 of 255. Fully lit in all four colours, the ring alone could draw about
+  1 A. The CubXL configs here never turn the lights on, and an unlit pixel draws about
+  1 mA. Don't run the lights bright while the stirrer runs off USB.
+- **The CubXL Pi has plenty of room.** Read on 2026-10-20: a Pi 5 on a 5 A supply with
+  `usb_max_current_enable=1`, which allows 1.6 A across its USB-A ports. Only the Uno
+  (it declares 100 mA) and the CH340 (98 mA) are plugged in. `vcgencmd get_throttled`
+  is `0x0` after 11 days up, and the 5 V input reads 5.13 V.
+- **If the Uno is ever powered from its barrel jack**, its 5 V comes from the onboard
+  regulator instead, and at 12 V in, the stirrer's 0.1 A adds 0.7 W of heat there.
+  Then take the fan's 5 V from the electromagnet's supply, with the grounds joined.
+- **Losses are negligible.** The cable is 0.16 Ω out and back (1.5 m of 22 AWG), so
+  16 mV at 0.1 A. The IRLZ44N is 25 mΩ at 5 V on the gate: 0.25 mW. Nothing on the
+  junction board gets warm.
+- **The gate resistor.** With 100 Ω, the charging peak is about 40 mA, the ATmega328P's
+  per-pin limit, though only for a fraction of a microsecond. The capper's 200 Ω halves
+  it, and at 200 Hz the slower edges cost nothing. Either works.
+- **Below its rated voltage.** Orion rates this fan for 10.8–13.2 V, and it runs here at
+  about 5.0 V, as on a Pioreactor without an external supply. So starting from rest
+  relies on the 0.5 s kick, as on the Pioreactor. Don't swap in the 5 V version
+  (OD4010-05HSS) without rechecking: Orion gives it 0.10 A typical, 0.30 A max, and
+  8000 rpm at 5 V.
+
 ## Wiring, XIAO version
 
 ```
@@ -319,6 +374,20 @@ That is not written yet.
   That is about twice the US1881's worst-case 9.5 mT trip point. If a build misses
   pulses, the SS49E linear sensor has the same pinout and footprint; read it on an
   ADC pin with a software threshold.
+- **Two things eat into that margin** (rechecked 2026-10-20 with the CAD's numbers,
+  [`analysis/field_check.py`](analysis/field_check.py)):
+  - **Placement.** Melexis gives the element 1.40–1.58 mm in from the package's top
+    edge and 0.43–0.46 mm under its face, depending on where it was made, which puts
+    it at ±18–20 mT. Each 0.5 mm further from the carrier costs about 4 mT: ±16 mT at
+    0.5 mm out, ±13 mT at 1 mm.
+  - **A coupled stir bar works against it.** Beside the magnets the sensor reads their
+    return field. The bar's poles sit over the opposite magnets, so their field at the
+    sensor points the other way. Modelling the bar's core as a 3–4 mm × 10–12 mm magnet
+    (its size isn't published) gives ±12–18 mT with a vial and bar in place, and ±6–11
+    mT with the sensor also 1 mm out, which straddles the 9.5 mT trip point. The
+    Pioreactor's sensor sits over the magnets' path, between them and the bar, where the
+    bar's field adds instead. So check the rpm with a vial and bar in
+    ([`BUILD.md`](BUILD.md#8-first-spins) stage 8), not only on the bench.
 
 ## Firmware and the host side, XIAO version
 
@@ -420,13 +489,16 @@ bottom with 1.6 mm glass. magpylib puts the horizontal field at the axis of a
    vials weigh the holder down. If the grip is more than the stirrer weighs (~80–100 g),
    the whole stirrer comes up with it. PANDA-BEAR has a slide-lock that hooks under the
    plate (`Pill_Slider` + `PillRetainingPin`) if that happens.
-4. **Hall margin** is an estimate (±19 mT against a ≤ 9.5 mT trip point). See Wiring
+4. **Hall margin** is an estimate (±19 mT against a ≤ 9.5 mT trip point), and a coupled
+   stir bar shrinks it, perhaps to the trip point. See Wiring, XIAO version, for both and
    for the SS49E fallback.
 5. **Not measured:** the deck plate (10 mm per the STEP, 9 mm recommended by PANDA-BEAR),
    the Orion hub height (modelled flush with the frame, ±0.5 mm on the fan's 10.5 mm),
    and Ben's vials' actual OD and bottom (see "Vial size" above).
-6. **Heating** is unknown. The fan is rated 0.72 W at 12 V and runs here at 5 V. If
-   temperature matters, measure the liquid with the stirrer on and off.
+6. **Heating** is unknown. The fan is rated 0.84 W (1.08 W max) at 12 V, and at 5 V it
+   uses under 0.5 W. Even if all of that reached 10 mL of water, which it won't, that
+   would be about 0.7 °C a minute. If temperature matters, measure the liquid with the
+   stirrer on and off.
 
 ## Rebuilding the CAD
 

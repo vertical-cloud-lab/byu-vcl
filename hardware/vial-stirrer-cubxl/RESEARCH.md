@@ -14,6 +14,12 @@ Pinned sources:
 - hardware: [`Pioreactor/hardware@ca40a91`](https://github.com/Pioreactor/hardware/tree/ca40a91e728801b139b1086853f7cf74ce76def9) (CC BY-SA 4.0)
 - docs: [`Pioreactor/docs.pioreactor@6e07789`](https://github.com/Pioreactor/docs.pioreactor/tree/6e0778995487c8e9aec60bfac6ea168bef312be4)
 
+Rechecked on 2026-10-20 against the software at
+[`89dc54e`](https://github.com/Pioreactor/pioreactor/tree/89dc54ee), the docs at
+[`1ddc606`](https://github.com/Pioreactor/docs.pioreactor/tree/1ddc606) and the v1.5
+parts list. Since `0ae14c0`, `stirring.py` has changed only in two log messages, so the
+line links below still describe its behaviour.
+
 The v1.5 parts list is on [Printables 1471620](https://www.printables.com/model/1471620).
 Its mechanical parts are published as meshes only (no STEP), under the Open Community
 License v1. The v1.1 files ([Printables 863347](https://www.printables.com/model/863347-pioreactor-20ml-v11-printable-parts))
@@ -22,15 +28,16 @@ v1.5 mesh, not copied.
 
 | | Pioreactor v1.5 (20 mL) | Source |
 |---|---|---|
-| Fan | Orion **OD4010-12HSS**: 40 × 40 × 10.5 mm, 12 V, 0.07 A, 2-wire (no tach), sleeve bearing, holes Ø3.5 on 32 mm | v1.5 BOM; [forum 628](https://forum.pioreactor.com/t/ordering-information-for-cables-schematic-for-pioreactor-hat/628/2) |
+| Fan | Orion **OD4010-12HSS**: 40 × 40 × 10.5 mm, 2-wire (no tach), sealed sleeve bearing, holes Ø3.5 on 32 mm. Orion: 12 V rated, 10.8–13.2 V range, 0.07 A typ, 0.09 A max, 0.84 W, 8000 rpm. Staff: "just a two wire 5 to 12V 40mm fan" | v1.5 BOM; [Orion datasheet](https://assets.testequity.com/te1/Documents/pdf/orion/OrionFans_DCFan_OD4010-05HSS_Datasheet_0125.pdf) (rev. 6/19/2024; older listings say 6000 rpm, 0.1 A); [forum 628](https://forum.pioreactor.com/t/ordering-information-for-cables-schematic-for-pioreactor-hat/628/2) |
+| Fan supply | PWM channels 1–4 run off the Pi's 5 V unless a barrel-jack supply (up to 18 V) is switched in with the shunt. Power budget: "the stirring motor uses 0.1 A" | [external power](https://github.com/Pioreactor/docs.pioreactor/blob/1ddc606/user-guide/03-Extending%20your%20Pioreactor/09-external-power.md) |
 | Why 2-wire | "slightly cheaper… fits into the design of the existing PWM outputs… The hall sensor setup we use is basically what a 3-or 4-pin fan does, too." | [forum 288](https://forum.pioreactor.com/t/why-did-you-choose-to-use-a-2-pin-fan-instead-of-a-3-or-4-pin-fan/288/2) |
-| Magnets | 2 × neodymium, 0.250 × 0.060 in, "two magnets of opposite orientation" | v1.5 BOM; [dev log 8](https://pioreactor.com/blogs/pioreactor/pioreactor-development-log-8) |
+| Magnets | 2 × neodymium, 0.250 × 0.060 in (no grade given), "two magnets of opposite orientation" | v1.5 BOM; [dev log 8](https://pioreactor.com/blogs/pioreactor/pioreactor-development-log-8) |
 | Magnet holder | Printed, Ø24.0 × 3.23 mm, 1.55 mm floor, pockets Ø6.66 × 1.675 mm open to the vial, **9.8 mm** centre to centre (measured from the mesh) | `magnet_holder.3mf`, Printables 1471620 |
-| Stir bars | 20 mL: PTFE 3 × 12 mm. 40 mL: 15 × 6 mm with pivot ring. "maximum length of a stir bar is 20mm" | [shop 2003](https://pioreactor.com/products/3-mm-ptfe-stir-bar), [shop 2046](https://pioreactor.com/products/15x6mm-ptfe-stir-bar), [FAQ](https://github.com/Pioreactor/docs.pioreactor/blob/6e0778995487c8e9aec60bfac6ea168bef312be4/user-guide/99-common-questions.mdx#L145-L171) |
+| Stir bars | 20 mL: PTFE 3 × 12 mm, the one in the v1.5 parts list. 40 mL: 15 × 6 mm with pivot ring. "maximum length of a stir bar is 20mm" | [shop 2003](https://pioreactor.com/products/3-mm-ptfe-stir-bar), [shop 2046](https://pioreactor.com/products/15x6mm-ptfe-stir-bar), [FAQ](https://github.com/Pioreactor/docs.pioreactor/blob/6e0778995487c8e9aec60bfac6ea168bef312be4/user-guide/99-common-questions.mdx#L145-L171) |
 | Vial | 20 mL borosilicate, 27.5 mm OD, 57.4 mm tall, 24-400 thread | [shop](https://pioreactor.com/products/20ml-glass-vial) |
 | Drive | PWM channel 1 = GPIO17, software PWM, `pwm_hz=200`, from the Pi's 5 V | [pwm.py](https://github.com/Pioreactor/pioreactor/blob/0ae14c035c8a7ae1e52f273872a46ed3fd036b1c/core/pioreactor/utils/pwm.py#L96-L114), [config](https://github.com/Pioreactor/pioreactor/blob/0ae14c035c8a7ae1e52f273872a46ed3fd036b1c/packaging/shared-assets/pioreactor/config.example.ini#L26-L37), [external power](https://github.com/Pioreactor/docs.pioreactor/blob/6e0778995487c8e9aec60bfac6ea168bef312be4/user-guide/03-Extending%20your%20Pioreactor/09-external-power.md#L9-L37) |
 | Driver circuit | HAT schematic not published. Its STEP shows BSS316N-footprint N-MOSFETs with a diode beside each 2-pin output, so a low-side switch plus flyback (inferred) | [HAT v1.2.step](https://github.com/Pioreactor/hardware/blob/ca40a91e728801b139b1086853f7cf74ce76def9/CAD/HAT/HAT%20v1.2.step) |
-| Speed sensing | Not the fan's tach. A TI **DRV5021A3** Hall switch on the heater board, under the vial, 5.3 mm off centre, over the magnets' path. Open drain to GPIO21, falling edges, **1 pulse per turn** (checked by filming the bar) | [heater BOM](https://github.com/Pioreactor/hardware/blob/ca40a91e728801b139b1086853f7cf74ce76def9/heater_20ml/Heater_Jan_0824_Public/Assembly/Bill%20of%20Materials-Heater%28DEV%29.xlsx), [stirring.py L57-76](https://github.com/Pioreactor/pioreactor/blob/0ae14c035c8a7ae1e52f273872a46ed3fd036b1c/core/pioreactor/background_jobs/stirring.py#L57-L76), [issue 432](https://github.com/Pioreactor/pioreactor/issues/432) |
+| Speed sensing | Not the fan's tach. A TI **DRV5021A3** Hall switch on the heater board, under the vial, 5.3 mm off centre, over the magnets' path. Open drain to GPIO21, falling edges, **1 pulse per turn** (checked by filming the bar). rpm is the mean time between edges over max(1, min(10 / rev-per-s, 5)) s, not a pulse count (`RpmFromFrequency`). The heater board also carries two steel M2.5 standoffs (Würth 9774030151R) | [heater BOM](https://github.com/Pioreactor/hardware/blob/ca40a91e728801b139b1086853f7cf74ce76def9/heater_20ml/Heater_Jan_0824_Public/Assembly/Bill%20of%20Materials-Heater%28DEV%29.xlsx), [stirring.py L57-76](https://github.com/Pioreactor/pioreactor/blob/0ae14c035c8a7ae1e52f273872a46ed3fd036b1c/core/pioreactor/background_jobs/stirring.py#L57-L76), [issue 432](https://github.com/Pioreactor/pioreactor/issues/432) |
 | Control | Target 500 rpm by default, start at 30 % duty, Kp 0.005 (Ki = Kd = 0). The PID output is *added* to the duty each update, clamped to ±7.5 points, every 23 s. Range 0–2000 rpm; ~125 rpm practical floor | [config L110-113](https://github.com/Pioreactor/pioreactor/blob/0ae14c035c8a7ae1e52f273872a46ed3fd036b1c/packaging/shared-assets/pioreactor/config.example.ini#L110-L113), [stirring.py L286-298](https://github.com/Pioreactor/pioreactor/blob/0ae14c035c8a7ae1e52f273872a46ed3fd036b1c/core/pioreactor/background_jobs/stirring.py#L286-L298) |
 | Start and stall | 100 % for 0.5 s at start. At 0 rpm: 0 % for 0.75 s, 100 % for 0.75 s, then min(1.01 × estimate, 60 %) "to avoid the death spiral" | [stirring.py L448-523](https://github.com/Pioreactor/pioreactor/blob/0ae14c035c8a7ae1e52f273872a46ed3fd036b1c/core/pioreactor/background_jobs/stirring.py#L448-L523) |
 | Stack | Plastic floor 1.055 mm under the heater board; magnet faces ~1.1 mm below the holder, ~3.9 mm below the Hall, ~6.8 mm plus thermal pad below the vial (estimated from the meshes) | Printables meshes |
@@ -40,7 +47,7 @@ and the forum), with what this design does about each:
 
 | Problem | Design response |
 |---|---|
-| Grinding: the magnets catch on the M3 screws above them | Screw heads ~12 mm outside the magnets' path; stainless screws |
+| Grinding: the magnets strike the 4 mm screws above them (brass M2.5 in v1.5) | Screw heads ~12 mm outside the magnets' path; stainless screws |
 | Random stops at 200–250 rpm; staff suspect magnets too close to the heater board ([789](https://forum.pioreactor.com/t/stirring-randomly-stops/789/4)) | No board or steel over the magnets; spacer discs if needed |
 | The magnets pulled the fan base up once spacers were removed ([781](https://forum.pioreactor.com/t/self-test-failure-the-fan-stirring-is-spinning-but-no-rpms-were-measured/781/4)) | Fan screwed to posts |
 | RPM reads 0 with the fan spinning: magnets too far from the sensor | Latch beside the carrier, estimated ±19 mT at it against ≤ 9.5 mT to trip |
