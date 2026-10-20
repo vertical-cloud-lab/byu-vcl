@@ -7,8 +7,8 @@ linear-sweep and pulse voltammetry, battery cycling, potential steps, a
 galvanostat mode and step impedance spectroscopy (SIS) (manual p. 9).
 
 This folder holds the runbook (this file), the [run log](run-log.csv), two
-PowerShell scripts for the Windows PC, and [`results/`](results/) for the
-exported data.
+PowerShell scripts for the Windows PC, a script that checks the first runs, and
+[`results/`](results/) for the exported data.
 
 Manual: [EZware Operating Manual, EZware 7.0 (2013)](https://www.nuvant.com/sites/default/files/2022-05/EZware-2013-Manual-compressed2.pdf),
 which NuVant lists for EZstats from April 2013 on. Page numbers below are the
@@ -151,7 +151,7 @@ run log, since the check is against that value rather than the label.
 |---|---|---|---|
 | R1 | 1 kΩ. Working and working sense on one end, reference and counter on the other (manual p. 103) | **Technique → Sweep Techniques → Cyclic Voltammetry.** Pretreatment 2 s at −0.5 V; initial −0.5 V; vertex 1 +0.5 V; vertex 2 −0.5 V; 4 segments (two cycles); final −0.5 V; 50 mV/s. **Method → General Settings**: potentiostat current range 10 mA, no auto-range. *Cell ON After Measurement* unticked | A straight line through zero, ±0.5 mA at ±0.5 V, and both cycles on top of each other. Slope within 1 % of 1/R from the meter |
 | R2 | 10 kΩ, same wiring | Same CV, with current range 100 µA | ±50 µA, slope within 1 % |
-| R3 | Dummy cell: 1 kΩ in series with (10 kΩ in parallel with 1 µF). Working and working sense on the 1 kΩ end, reference and counter on the other | **Technique → Step Techniques → Step Impedance Spectroscopy** (runs at controlled current). Initial current 0 A; pulse amplitude 50 µA; pulse width 0.1 s; relaxation 0.5 s; sampling interval as short as it allows (1 ms or less) | At the pulse edge the potential jumps 50 mV (the 1 kΩ), then rises to about 0.55 V with a 10 ms time constant. EZware's SIS analysis (manual p. 90) gives Rs ≈ 1 kΩ, Rct ≈ 10 kΩ, Cdl ≈ 1 µF |
+| R3 | Dummy cell: 1 kΩ in series with (10 kΩ in parallel with 1 µF). Working and working sense on the 1 kΩ end, reference and counter on the other | **Technique → Step Techniques → Step Impedance Spectroscopy** (runs at controlled current). Initial current 0 A; pulse amplitude 50 µA; pulse width 0.1 s; relaxation 0.5 s; sampling interval as short as it allows, ideally 0.01 ms | At the pulse edge the potential jumps 50 mV (the 1 kΩ), then rises to about 0.55 V with a 10 ms time constant. EZware's SIS analysis (manual p. 90) gives Rs ≈ 1 kΩ, Rct ≈ 10 kΩ, Cdl ≈ 1 µF. With 1 ms sampling, only the 0.55 V plateau and the 10 ms time constant can be checked: the 50 mV jump can't be told apart from the start of the rise |
 
 - R1 is NuVant's own instrument check (manual p. 103). If it fails, the
   instrument or software is at fault, not a cell.
@@ -173,7 +173,18 @@ run log, since the check is against that value rather than the label.
 4. Put the files in `results/<YYYYMMDD>_<short-name>/` on this PR's branch
    ([how](results/README.md)), or attach a zip to a comment on the PR.
 5. Mention Claude in a comment on the PR. It will check the runs against the
-   "passes if" column and plot them.
+   "passes if" column and plot them with
+   [`analysis/check_dummy_runs.py`](analysis/check_dummy_runs.py), which anyone
+   can run too (Python with numpy and matplotlib):
+   ```
+   python analysis/check_dummy_runs.py R1 results/20261021_dummy-loads/20261021-R1.csv --r-ohm 998.7
+   python analysis/check_dummy_runs.py R3 results/20261021_dummy-loads/20261021-R3.csv
+   ```
+   It finds the time, potential and current columns by name, reads units such
+   as "(mA)" from the header, and writes a `.check.png` plot and a
+   `.check.json` summary next to each CSV. It was tested on made-up data, since
+   no EZware export exists yet; if the real column names trip it up, it has
+   options to name the columns.
 
 ## 5. Safety (manual pp. 26–35)
 
