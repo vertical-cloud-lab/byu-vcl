@@ -1209,3 +1209,22 @@ For the **plunger** it is one of only two remaining candidates, the other being
 the coil path downstream of its output terminals. The one route by which the
 driver could affect the gantry is shared power, not signals — see
 [`cubos/docs/opentrons-pipette-wiring.md`](docs/opentrons-pipette-wiring.md) §15.
+
+## 2026-10-20 — `pipette_test` on the CubXL: 12/12, using #269's trio
+
+Full write-up: [`cubos/results/pipette_test_20261020/`](results/pipette_test_20261020/README.md).
+
+Ben asked here for the pipette test to be run. It ran 12/12 in 135 s (campaign 139),
+and it was a repeat of the 2026-10-07 run: the same 45 `G01`s line for line, every
+step and every plunger command within 0.01 s of the 10-07 times, and a post-run
+plunger `HOME` of +0.00 mm, so no steps were lost.
+
+**It did not use this branch's `pipette_test` configs, and they should not be run.**
+The pipette work moved to [#269](https://github.com/vertical-cloud-lab/byu-vcl/pull/269)
+on 2026-09-21, and since then the controller was recalibrated (travel now 364 / 281 /
+125, and `$21=1`) and Ben re-measured the gantry and deck files on 10-02. This
+branch's `cub_xl_ben_pipette_capper.yaml` and `ben_6vials_tiprack.yaml` still describe
+the machine as of 09-18. CubOS would refuse them at connect, because the travel
+extents are in its critical-settings check. The run used #269's
+`cub_xl_ben_3_instrument.yaml` + `ben_2vials_tiprack.yaml` + `pipette_test.yaml`
+through #269's `cubxl_run.py`, which is how every run since 10-02 has been done.
