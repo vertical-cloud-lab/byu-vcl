@@ -1,28 +1,33 @@
 #!/usr/bin/env python3
-"""Centring, zooming and focusing the lid camera, as a video to pause on and as a GIF.
+"""Lining the lid camera up over one 96-well plate, as a video to pause on and as a GIF.
 
     python setup_video.py            # the MP4, the GIF, the contact sheet and the chapter list
     python setup_video.py --stills   # only the frame each step ends on, to /tmp/setup_video_stills
+    python setup_video.py --slot 5   # another slot's plate; --margin sets the deck left beside it
 
 Writes ../renders/setup_steps.mp4 (1920 x 1080, a chapter per step), ../renders/setup_steps.gif
 (960 px wide, small enough to show in a GitHub comment), ../renders/setup_steps_sheet.png (where
 each step ends) and ../exports/setup_steps_chapters.txt (the chapters, for a YouTube description).
 
-Left, the OT-2 deck from above, under the top window: the slots and today's labware, the mount's
-footprint, and the camera's field (the rest of the deck is shaded). Right, what the stream shows,
-through coverage.py's pinhole camera, with a centre cross, the stream's timestamp and a focus
-score. Orange marks what the step changes. The steps: zoom to the wide stop, focus, slide the
-mount until the lens axis is over the deck centre (the middle of the rail between slots 5 and 8),
-square it, then lock it and take a still. The deck is drawn flat: labware heights are ignored.
+The camera is meant to look straight down at one plate, close up: the plate fills the picture's
+width but for MARGIN mm of deck either side (5 mm: about 27.7 mm on the zoom ring, 29 px/mm and
+200 px across a well in a still). Left, the OT-2 deck from above, under the top window: the slots
+and today's labware, the mount's footprint, and the camera's field (the rest of the deck is
+shaded). Right, what the stream shows, through coverage.py's pinhole camera, with the stream's
+setup overlay: the centre cross, the box the plate's outline should fill (SETUP_BOX in
+../camera/stream/device.py), the timestamp and the focus score. Orange marks what the step
+changes. The steps: slide the mount over the plate, zoom in until the plate fills the box, focus,
+centre and square it on the box, then lock it and take a still. The plate's top is drawn at its
+height, 14.35 mm above the deck, so it grows as it should against the deck when the zoom changes;
+everything else is drawn flat.
 
 Where the camera starts comes from ../exports/lid_camera_setup.json, if it exists:
 
-    focal_mm         effective focal length now, in coverage.py's model: the field at the plate
-                     top is SENSOR x (pinhole height - 14.35 mm) / focal_mm
-    axis_offset_mm   [x, y] of the lens axis from the deck centre, deck mm, x to the right and
-                     y toward the back
+    focal_mm         effective focal length now, in coverage.py's model: the field at the deck
+                     is SENSOR x pinhole height / focal_mm
+    axis_offset_mm   [x, y] of the picture's centre from the deck centre (the middle of the rail
+                     between slots 5 and 8), deck mm, x to the right and y toward the back
     rotation_deg     how far the picture is turned, + clockwise on screen (rails run down to the right)
-    target_focal_mm  where the zoom ends up: 8.0, the wide stop
     still_path, still_to_deck   optional: a full still (relative to the lid-mount folder), and the
                      2 x 3 affine from deck mm to its pixels. With both, the still is drawn wherever
                      it reaches and the rest of the deck is drawn; without, it is all drawn.
@@ -46,7 +51,7 @@ import cv2
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
-from coverage import INK2 as INK2_HEX, POSITIONS, SLOT_SIZE, WINDOW_TOP, slot_rect, view, wells
+from coverage import INK2 as INK2_HEX, POSITIONS, WELL_D, WINDOW_TOP, slot_rect, wells
 from lid_mount import EXPORTS, Params
 from ot2_context import PLATE, PUPIL_IN_LENS, SENSOR, SLOTS
 from placement import SCREWS, WINDOW, WINDOW_CENTRE_DECK
@@ -55,7 +60,10 @@ HERE = Path(__file__).resolve().parent
 LID = HERE.parent
 RENDERS = LID / "renders"
 SETUP = EXPORTS / "lid_camera_setup.json"
-FALLBACK = {"focal_mm": 8.8, "axis_offset_mm": [-4.5, 15.0], "rotation_deg": 1.5, "target_focal_mm": 8.0}
+PLATE_FIT = EXPORTS / "lid_camera_plate.json"        # measure_still.py --plate, if it has run
+FALLBACK = {"focal_mm": 8.8, "axis_offset_mm": [-4.5, 15.0], "rotation_deg": 1.5}
+SLOT = 7                        # the colour-mixing plate's slot (PR #202's runs; the 2026-10-20 still)
+MARGIN = 5.0                    # deck left and right of the plate at the target zoom, mm
 
 W, H, FPS = 1920, 1080, 30
 VW = 1360                       # the two views; the step panel takes the rest
@@ -71,12 +79,14 @@ FONTS = Path("/usr/share/fonts/truetype/dejavu")
 P = Params()
 Z_PIN = WINDOW_TOP + P.z_lens_front + PUPIL_IN_LENS       # pinhole above the deck, mm
 CENTRE = POSITIONS["deck centre"][1]                      # middle of the rail between slots 5 and 8
+Z_PLATE = PLATE[2]                                        # the plate's top above the deck, mm
 TAB_TIP = P.base_size / 2 + P.tab_len                     # lens axis to a tape tab's tip, mm
 DEFOCUS = 4.0                                             # blur after zooming, px in a 700 px wide view
 FOCUS_PEAK = 41                                           # the stream's focus number when sharp, for show
 
 # The deck as a picture, TEX_S px per mm; y runs toward the back, so up in the picture.
-TEX_S = 3.0
+# Fine enough for the close-up: the plate fills a 680 px view at about 5 px/mm.
+TEX_S = 6.0
 TEX_X0, TEX_X1, TEX_Y0, TEX_Y1 = -240.0, 640.0, -190.0, 560.0
 TOP_X0, TOP_X1, TOP_Y0 = -62.0, 456.0, -46.0                   # what the top view shows
 TOP_Y1 = TOP_Y0 + (TOP_X1 - TOP_X0) * 512 / 600
@@ -135,9 +145,9 @@ class Cam:
         c = np.array([self.ax, self.ay])
         return np.array([c + a * w / 2 * u + b * h / 2 * v for a, b in ((-1, -1), (1, -1), (1, 1), (-1, 1))])
 
-    def to_picture(self, pts, ow: int, oh: int) -> np.ndarray:
-        """Deck mm (on the deck) to pixels of an ow x oh picture."""
-        w, h = self.field()
+    def to_picture(self, pts, ow: int, oh: int, z: float = 0.0) -> np.ndarray:
+        """Deck mm (on the plane z above the deck) to pixels of an ow x oh picture."""
+        w, h = self.field(z)
         u, v = self.axes()
         d = np.atleast_2d(pts) - [self.ax, self.ay]
         return np.stack([d @ u / w * ow + ow / 2, d @ v / h * oh + oh / 2], axis=1)
@@ -145,15 +155,18 @@ class Cam:
     def score(self) -> float:
         return 1.0 / (1.0 + (self.defocus / 1.2) ** 2)
 
-    def in_view(self) -> dict[int, float]:
-        """The fraction of each slot's outline area that the picture shows."""
-        out = {}
-        for n in range(1, 13):
-            x0, y0, x1, y1 = slot_rect(n)
-            g = np.stack(np.meshgrid(np.linspace(x0, x1, 25), np.linspace(y0, y1, 17)), -1).reshape(-1, 2)
-            q = self.to_picture(g, 1000, 750)
-            out[n] = float(np.mean((q[:, 0] >= 0) & (q[:, 0] <= 1000) & (q[:, 1] >= 0) & (q[:, 1] <= 750)))
-        return out
+    def margins(self, target: tuple[float, float]) -> dict[str, float]:
+        """mm of picture between the plate's outline (its top) and each edge; negative: cut off."""
+        w, h = self.field(Z_PLATE)
+        q = self.to_picture(plate_outline(target), 1.0, 1.0, Z_PLATE)
+        return {"left": q[:, 0].min() * w, "right": (1 - q[:, 0].max()) * w,
+                "back": q[:, 1].min() * h, "front": (1 - q[:, 1].max()) * h}
+
+
+def plate_outline(c: tuple[float, float]) -> np.ndarray:
+    """The plate's four corners, deck mm, clockwise from the back left."""
+    hw, hh = PLATE[0] / 2, PLATE[1] / 2
+    return np.array([(c[0] - hw, c[1] + hh), (c[0] + hw, c[1] + hh), (c[0] + hw, c[1] - hh), (c[0] - hw, c[1] - hh)])
 
 
 # --- the deck, drawn -------------------------------------------------------------------------------
@@ -174,8 +187,11 @@ def deck_colour(start: dict) -> tuple[int, int, int]:
     return tuple(int(c) for c in np.median(patch, axis=0))
 
 
-def deck_texture(start: dict) -> np.ndarray:
-    """Today's deck from straight above, TEX_S px/mm: slots, rails, engraved numbers, labware."""
+def deck_texture(start: dict, target: tuple[float, float]) -> tuple[np.ndarray, np.ndarray]:
+    """Today's deck from straight above, TEX_S px/mm: slots, rails, engraved numbers, labware.
+
+    Returns the deck, and the top of the plate centred on `target` as RGBA (transparent
+    elsewhere): the camera draws that layer 14.35 mm above the deck, where it is."""
     s = TEX_S
     deck = deck_colour(start)
     plate = tuple(max(0, c - 6) for c in deck)
@@ -255,11 +271,24 @@ def deck_texture(start: dict) -> np.ndarray:
     box(cx - PLATE[0] / 2 + 8, cy - PLATE[1] / 2 + 8, cx + PLATE[0] / 2 - 10, cy + PLATE[1] / 2 - 12,
         (232, 232, 230), (150, 150, 150), 0.6)
 
+    drawn = img.copy()
+    plate = img.copy()
     if start.get("still_path") and start.get("still_to_deck"):
         path = LID / start["still_path"]
         if path.exists():
-            img = with_still(img, path, np.array(start["still_to_deck"], float))
-    return img
+            m = np.array(start["still_to_deck"], float)
+            img = with_still(drawn, path, m)
+            # The plate's top is nearer the lens, so the still shows it larger, away from the
+            # middle: a point there lands at c + k (M p - c), c the picture's centre.
+            k = Z_PIN / (Z_PIN - Z_PLATE)
+            c = np.array([4056 / 2, 3040 / 2])
+            plate = with_still(drawn, path, np.hstack([k * m[:, :2], (k * m[:, 2] + (1 - k) * c)[:, None]]))
+    # Only the plate's footprint, 1 mm proud so a plate a little off the slot's centre stays whole.
+    mask = np.zeros(img.shape[:2], np.uint8)
+    out = plate_outline(target) + np.array([[-1, 1], [1, 1], [1, -1], [-1, -1]])
+    cv2.fillPoly(mask, [np.array([tex_xy(x, y) for x, y in out], np.int32)], 255, cv2.LINE_AA, 4)
+    mask = cv2.GaussianBlur(mask, (0, 0), 0.6 * s)
+    return img, np.dstack([plate, mask])
 
 
 def with_still(img: np.ndarray, path: Path, deck_to_still: np.ndarray) -> np.ndarray:
@@ -277,31 +306,40 @@ def with_still(img: np.ndarray, path: Path, deck_to_still: np.ndarray) -> np.nda
 
 
 class Deck:
-    """The deck texture at a few scales, and the camera's view of it."""
+    """The deck and the plate's top at a few scales, and the camera's view of them."""
 
-    def __init__(self, tex: np.ndarray):
-        self.levels = {TEX_S: tex}
-        s, t = TEX_S, tex
+    def __init__(self, tex: np.ndarray, plate: np.ndarray):
+        self.levels = {TEX_S: (tex, plate)}
+        s, t, q = TEX_S, tex, plate
         for _ in range(3):
-            s, t = s / 2, cv2.resize(t, (t.shape[1] // 2, t.shape[0] // 2), interpolation=cv2.INTER_AREA)
-            self.levels[s] = t
+            s = s / 2
+            t = cv2.resize(t, (t.shape[1] // 2, t.shape[0] // 2), interpolation=cv2.INTER_AREA)
+            q = cv2.resize(q, (q.shape[1] // 2, q.shape[0] // 2), interpolation=cv2.INTER_AREA)
+            self.levels[s] = (t, q)
 
-    def level(self, px_per_mm: float) -> tuple[float, np.ndarray]:
+    def level(self, px_per_mm: float) -> tuple[float, np.ndarray, np.ndarray]:
         ok = [s for s in self.levels if s >= px_per_mm]
         s = min(ok) if ok else max(self.levels)
-        return s, self.levels[s]
+        return (s, *self.levels[s])
 
-    def camera(self, cam: Cam, ow: int, oh: int) -> np.ndarray:
-        """What the stream shows, ow x oh, before its overlays."""
-        w, h = cam.field()
-        s, tex = self.level(ow / w)
+    @staticmethod
+    def _warp(tex: np.ndarray, cam: Cam, ow: int, oh: int, s: float, z: float, border) -> np.ndarray:
+        w, h = cam.field(z)
         u, v = cam.axes()
         kx, ky = w / ow, h / oh
         bx, by = (0.5 - ow / 2) * kx, (0.5 - oh / 2) * ky
         m = np.array([[s * u[0] * kx, s * v[0] * ky, s * (cam.ax + u[0] * bx + v[0] * by - TEX_X0)],
                       [-s * u[1] * kx, -s * v[1] * ky, s * (TEX_Y1 - cam.ay - u[1] * bx - v[1] * by)]])
-        out = cv2.warpAffine(tex, m, (ow, oh), flags=cv2.INTER_LINEAR | cv2.WARP_INVERSE_MAP,
-                             borderMode=cv2.BORDER_CONSTANT, borderValue=(78, 80, 84))
+        return cv2.warpAffine(tex, m, (ow, oh), flags=cv2.INTER_LINEAR | cv2.WARP_INVERSE_MAP,
+                              borderMode=cv2.BORDER_CONSTANT, borderValue=border)
+
+    def camera(self, cam: Cam, ow: int, oh: int) -> np.ndarray:
+        """What the stream shows, ow x oh, before its overlays: the deck, then the plate's top."""
+        s, tex, plate = self.level(ow / cam.field(Z_PLATE)[0])
+        out = self._warp(tex, cam, ow, oh, s, 0.0, (78, 80, 84))
+        top = self._warp(plate, cam, ow, oh, s, Z_PLATE, (0, 0, 0, 0))
+        a = top[..., 3:] / 255.0
+        out = (out * (1 - a) + top[..., :3] * a).astype(np.uint8)
         sigma = cam.defocus * ow / 700
         if sigma > 0.05:
             out = cv2.GaussianBlur(out, (0, 0), sigma)
@@ -311,11 +349,13 @@ class Deck:
 
     def top(self, tw: int, th: int) -> np.ndarray:
         """The deck straight from above, with the window and the frame around it."""
-        s, tex = self.level(tw / (TOP_X1 - TOP_X0))
+        s, tex, plate = self.level(tw / (TOP_X1 - TOP_X0))
         k = (TOP_X1 - TOP_X0) / tw
         m = np.array([[s * k, 0, s * (TOP_X0 - TEX_X0)], [0, s * k, s * (TEX_Y1 - TOP_Y1)]])
         img = cv2.warpAffine(tex, m, (tw, th), flags=cv2.INTER_LINEAR | cv2.WARP_INVERSE_MAP)
-        return img
+        top = cv2.warpAffine(plate, m, (tw, th), flags=cv2.INTER_LINEAR | cv2.WARP_INVERSE_MAP)
+        a = top[..., 3:] / 255.0
+        return (img * (1 - a) + top[..., :3] * a).astype(np.uint8)
 
 
 # --- one frame -----------------------------------------------------------------------------------------
@@ -397,13 +437,19 @@ class Step:
     state: Callable[[float], Cam] | None = None
     changing: str = ""               # "field", "mount", "focus", "still": what to colour orange
     number: int = 0
+    move: tuple[Cam, Cam] | None = None   # the mount slides from the first lens axis to the second
+    turn: float = 0.0                # and turns to undo this much picture rotation, deg
+    rings: frozenset = frozenset()   # the lens rings this step uses
+    guide: bool = False              # ring the plate's centre on the stream
 
 
 class Frames:
     """Draws frames for one layout; the static parts are kept between frames."""
 
-    def __init__(self, lay: Layout, deck: Deck, steps: list[Step], start: Cam):
+    def __init__(self, lay: Layout, deck: Deck, steps: list[Step], start: Cam, slot: int,
+                 target: tuple[float, float], box: tuple[float, float]):
         self.lay, self.deck, self.steps, self.start = lay, deck, steps, start
+        self.slot, self.target, self.box = slot, target, box
         tx, ty, tw, th = lay.top
         self.top_base = deck.top(tw, th)
         # Shade what lies outside the window: the OT-2's frame, under the lid's edge.
@@ -442,17 +488,10 @@ class Frames:
         hot = step.changing == "field"
         shade_polys(img, [field_poly], ORANGE if hot else BLUE, 0.12, ORANGE if hot else BLUE,
                     max(2, round(3 * lay.s)))
-        if step.number == 0 or step.changing == "still":
-            frac = cam.in_view()
-            for n, fr in frac.items():
-                x0, y0, x1, y1 = slot_rect(n)
-                poly = tp([(x0, y0), (x1, y0), (x1, y1), (x0, y1)])
-                if step.number == 0 and fr < 0.995:
-                    cv2.polylines(img, [np.round(poly * 16).astype(np.int32)], True, ORANGE,
-                                  max(2, round(3 * lay.s)), cv2.LINE_AA, 4)
-                if step.changing == "still" and cam.checks > (n - 1) / 12 and fr >= 0.995:
-                    cv2.polylines(img, [np.round(poly * 16).astype(np.int32)], True, (40, 170, 80),
-                                  max(2, round(3 * lay.s)), cv2.LINE_AA, 4)
+        # The plate to image, in orange until the still shows it whole.
+        done = step.changing == "still" and cam.checks > 0.5 and min(cam.margins(self.target).values()) > 0
+        cv2.polylines(img, [np.round(tp(plate_outline(self.target)) * 16).astype(np.int32)], True,
+                      (40, 170, 80) if done else ORANGE, max(2, round(3 * lay.s)), cv2.LINE_AA, 4)
         hot = step.changing == "mount"
         shade_polys(img, [tp(mount_outline(cam))], ORANGE if hot else (34, 36, 40), 0.55 if hot else 0.6,
                     (255, 255, 255), max(1, round(1.5 * lay.s)))
@@ -460,7 +499,7 @@ class Frames:
         ap = tp([(cam.ax, cam.ay)])[0]
         cv2.circle(img, tuple(np.round(ap * 16).astype(int)), round(P.lens_clear_ap / 2 * k * 16)
                    if hasattr(P, "lens_clear_ap") else round(20 * k * 16), (90, 90, 95), -1, cv2.LINE_AA, 4)
-        c = tp([CENTRE])[0]
+        c = tp([self.target])[0]
         arm = 12 * lay.s * 1.4
         for d in ((arm, 0), (0, arm)):
             for col, t in (((255, 255, 255), max(3, round(5 * lay.s))), ((0, 0, 0), max(1, round(2 * lay.s)))):
@@ -469,8 +508,9 @@ class Frames:
         cv2.circle(img, tuple(np.round(ap * 16).astype(int)), round(5 * lay.s * 16), (255, 255, 255), -1, cv2.LINE_AA, 4)
         cv2.circle(img, tuple(np.round(ap * 16).astype(int)), round(3.6 * lay.s * 16), ORANGE, -1, cv2.LINE_AA, 4)
 
-        if step.changing == "mount" and step.short.startswith("Centre"):
-            d = np.array(CENTRE) - [self.start.ax, self.start.ay]
+        if step.move:
+            a, b = step.move
+            d = np.array([b.ax - a.ax, b.ay - a.ay])
             n = np.linalg.norm(d)
             if n > 0.5:
                 dirn = d / n
@@ -478,10 +518,10 @@ class Frames:
                 tip = base + np.array([dirn[0], -dirn[1]]) * 70 * lay.s * 1.3
                 arrow(img, base, tip, ORANGE, max(3, round(5 * lay.s)))
                 self.arrow_at = (base + tip) / 2
-        if step.changing == "mount" and step.short.startswith("Square") and abs(self.start.phi) > 0.05:
+        if abs(step.turn) > 0.05:
             cc = tuple(np.round(ap * 16).astype(int))
             r = round((TAB_TIP + 22) * k * 16)
-            sgn = 1 if self.start.phi > 0 else -1          # clockwise on screen to undo + phi
+            sgn = 1 if step.turn > 0 else -1                # clockwise on screen to undo + phi
             a0, a1 = -60, -60 + sgn * 50
             cv2.ellipse(img, cc, (r, r), 0, a0, a1, ORANGE, max(3, round(5 * lay.s)), cv2.LINE_AA, 4)
             e = np.array(ap) + (TAB_TIP + 22) * k * np.array([math.cos(math.radians(a1)), math.sin(math.radians(a1))])
@@ -500,8 +540,8 @@ class Frames:
         bx = to_top(lay, 196.5, TOP_Y0 + 6)[0] - tx
         d.text((bx, th - 6 * lay.s), "FRONT (door)", font=fl, anchor="md", fill=(255, 255, 255))
         d.text((bx, 6 * lay.s), "BACK", font=fl, anchor="ma", fill=(255, 255, 255))
-        if step.changing == "mount" and step.short.startswith("Centre"):
-            dx, dy = np.array(CENTRE) - [self.start.ax, self.start.ay]
+        if step.move and math.hypot(step.move[1].ax - step.move[0].ax, step.move[1].ay - step.move[0].ay) > 0.5:
+            dx, dy = step.move[1].ax - step.move[0].ax, step.move[1].ay - step.move[0].ay
             lab = self.move_text(dx, dy, short=True)
             mid = getattr(self, "arrow_at", tp([(cam.ax, cam.ay)])[0])
             sw = max(2, round(3 * lay.s))
@@ -509,11 +549,14 @@ class Frames:
             lw_, lh_ = bb[2] - bb[0], bb[3] - bb[1]
             x = mid[0] + 22 * lay.s if mid[0] + 22 * lay.s + lw_ < tw - 6 else mid[0] - 22 * lay.s - lw_
             y = min(mid[1] - lh_ / 2, th - lh_ - 34 * lay.s)
+            if abs(step.turn) > 0.05:                    # the turn's label takes the space above: go below
+                below = tp([np.array([cam.ax, cam.ay]) - [TAB_TIP, TAB_TIP + 10]])[0]
+                x, y = below[0], min(below[1], th - lh_ - 34 * lay.s)
             d.multiline_text((max(6, x), y), lab, font=fl, fill=ORANGE, stroke_width=sw, stroke_fill=(0, 0, 0),
                              align="left")
-        if step.changing == "mount" and step.short.startswith("Square") and abs(self.start.phi) > 0.05:
+        if abs(step.turn) > 0.05:
             p = tp([np.array([cam.ax, cam.ay]) + [TAB_TIP + 18, TAB_TIP + 8]])[0]
-            d.text(tuple(p), f"{abs(self.start.phi):.1f}° {self.turn_word()}", font=fl, fill=ORANGE,
+            d.text(tuple(p), f"{abs(step.turn):.1f}° {self.turn_word(step.turn)}", font=fl, fill=ORANGE,
                    stroke_width=max(2, round(3 * lay.s)), stroke_fill=(0, 0, 0))
         return pil
 
@@ -522,19 +565,24 @@ class Frames:
         cx, cy, cw, ch = lay.cam
         img = self.deck.camera(cam, cw, ch)
         s = lay.s
-        guide = step.short.startswith(("Centre", "Square", "Lock"))
+        guide = step.guide
         if guide:
-            c = cam.to_picture([CENTRE], cw, ch)[0]
+            c = cam.to_picture([self.target], cw, ch, Z_PLATE)[0]
             for col, w_ in (((0, 0, 0), max(3, round(5 * s))), ((255, 255, 255), max(1, round(2 * s)))):
                 cv2.circle(img, tuple(np.round(c * 16).astype(int)), round(15 * s * 16), col, w_, cv2.LINE_AA, 4)
-        if step.short.startswith("Square"):
-            a = cam.to_picture([(CENTRE[0] - 200, CENTRE[1]), (CENTRE[0] + 200, CENTRE[1])], cw, ch)
-            mid = a.mean(axis=0)
-            dashed_line(img, (0, mid[1]), (cw, mid[1]), (255, 255, 255), max(2, round(2 * s)), 14, 9)
-        # The stream's own centre mark: two thin orange lines through the middle of the picture.
+        if abs(step.turn) > 0.05:
+            # The plate's back edge, run out across the picture: it should end up level.
+            tx_, ty_ = self.target
+            a = cam.to_picture([(tx_ - 200, ty_ + PLATE[1] / 2), (tx_ + 200, ty_ + PLATE[1] / 2)], cw, ch, Z_PLATE)
+            dashed_line(img, a[0], a[1], (255, 255, 255), max(2, round(2 * s)), 14, 9)
+        # The stream's own setup overlay: two thin orange lines through the middle of the picture,
+        # and the box the plate's outline fills at the target zoom (SETUP_BOX in device.py).
         t_ = max(1, round(2 * s))
         cv2.line(img, (0, round(ch / 2 * 16)), (cw * 16, round(ch / 2 * 16)), ORANGE, t_, cv2.LINE_AA, 4)
         cv2.line(img, (round(cw / 2 * 16), 0), (round(cw / 2 * 16), ch * 16), ORANGE, t_, cv2.LINE_AA, 4)
+        bw_, bh_ = cw * self.box[0], ch * self.box[1]
+        cv2.rectangle(img, (round((cw - bw_) / 2 * 16), round((ch - bh_) / 2 * 16)),
+                      (round((cw + bw_) / 2 * 16), round((ch + bh_) / 2 * 16)), ORANGE, t_, cv2.LINE_AA, 4)
         pil = Image.fromarray(img)
         d = ImageDraw.Draw(pil, "RGBA")
         # Timestamp, top left, as the stream draws it.
@@ -574,9 +622,9 @@ class Frames:
         d.rectangle([x0 + 10 * s, y0 + 34 * s, x0 + 10 * s + (bw - 20 * s) * score, y0 + 48 * s],
                     fill=ORANGE if hot else (120, 200, 120))
         if guide:
-            c = cam.to_picture([CENTRE], cw, ch)[0]
+            c = cam.to_picture([self.target], cw, ch, Z_PLATE)[0]
             if 0 < c[0] < cw and 0 < c[1] < ch:
-                d.text((c[0] + 20 * s, c[1] + 16 * s), "deck centre", font=fs, fill=(255, 255, 255),
+                d.text((c[0] + 20 * s, c[1] + 16 * s), "plate centre", font=fs, fill=(255, 255, 255),
                        stroke_width=max(2, round(3 * s)), stroke_fill=(0, 0, 0))
         if cam.still > 0:
             a = int(255 * min(1.0, cam.still * 1.5))
@@ -589,27 +637,22 @@ class Frames:
         return pil
 
     def move_text(self, dx: float, dy: float, short: bool = False) -> str:
-        parts = []
-        if abs(dy) >= 0.5:
-            parts.append(f"{abs(dy):.0f} mm toward the {'door' if dy < 0 else 'back'}")
-        if abs(dx) >= 0.5:
-            parts.append(f"{abs(dx):.1f} mm {'right' if dx > 0 else 'left'}" if short else
-                         f"{abs(dx):.1f} mm to the {'right' if dx > 0 else 'left'}")
-        return ("slide " if short else "") + (",\n" if short else " and ").join(parts) if parts else "no move"
+        return ("slide " if short else "") + move_words(dx, dy, ",\n" if short else " and ", short)
 
-    def turn_word(self) -> str:
-        return "clockwise" if self.start.phi > 0 else "anticlockwise"
+    @staticmethod
+    def turn_word(phi: float) -> str:
+        return "clockwise" if phi > 0 else "anticlockwise"
 
     def readout(self, cam: Cam, step: Step) -> list[tuple[str, tuple]]:
-        w, h = cam.field()
-        dx, dy = cam.ax - CENTRE[0], cam.ay - CENTRE[1]
+        w, h = cam.field(Z_PLATE)
+        dx, dy = cam.ax - self.target[0], cam.ay - self.target[1]
         zoom_hot = step.changing == "field"
         pos_hot = step.changing == "mount"
-        return [(f"zoom {cam.f:.1f} mm   field {w:.0f} × {h:.0f} mm at the deck   {4056 / w:.1f} px/mm in a still",
-                 ORANGE if zoom_hot else INK),
-                ((f"lens axis {abs(dx):.1f} mm {'right' if dx >= 0 else 'left'}, {abs(dy):.1f} mm "
-                  f"{'behind' if dy >= 0 else 'in front of'} the deck centre" if math.hypot(dx, dy) >= 0.5 else
-                  "lens axis on the deck centre") + f"   turned {cam.phi:+.1f}°",
+        return [(f"zoom {cam.f:.1f} mm   {w:.0f} × {h:.0f} mm at the plate   "
+                 f"{4056 / w * WELL_D:.0f} px across a well in a still", ORANGE if zoom_hot else INK),
+                ((f"lens axis {mm(dx)} mm {'right' if dx >= 0 else 'left'} and {mm(dy)} mm "
+                  f"{'behind' if dy >= 0 else 'in front'} of the plate's centre" if math.hypot(dx, dy) >= 0.5 else
+                  "lens axis on the plate's centre") + f", turned {cam.phi:+.1f}°",
                  ORANGE if pos_hot else INK)]
 
     def rings(self, canvas: Image.Image, d: ImageDraw.ImageDraw, step: Step, box) -> None:
@@ -621,7 +664,7 @@ class Frames:
             self.lens_photo = (photo.resize((round(photo.width * k), y1 - y0), Image.LANCZOS), k)
         photo, k = self.lens_photo
         canvas.paste(photo, (x0, y0))
-        use = {1: {"ZOOM"}, 2: {"IRIS", "FOCUS"}, 5: {"ZOOM", "FOCUS", "IRIS"}}.get(step.number, set())
+        use = step.rings
         rows = [("FOCUS", "near - far", (320, 195)), ("IRIS", "open - close", (264, 263)),
                 ("ZOOM", "tele - wide", (236, 368))]
         tx = x0 + photo.width + 18
@@ -667,7 +710,7 @@ class Frames:
         d.line([(0, 0), (0, H)], fill=(205, 205, 200), width=2)
         x, width = 40, W - VW - 76
         y = 34
-        d.text((x, y), "OT-2 lid camera: centre, zoom, focus", font=font(22), fill=GREY)
+        d.text((x, y), f"OT-2 lid camera: the plate in slot {self.slot}, close up", font=font(22), fill=GREY)
         y += 48
         numbered = [s for s in self.steps if s.number]
         if step.number:
@@ -749,11 +792,12 @@ class Frames:
             d.text((cx, cy - 14), "What the stream shows", font=font(22, True), anchor="ld", fill=INK)
             y = cy + ch + 16
             for text, colour in self.readout(cam, step):
-                d.text((cx, y), text, font=font(19), fill=colour)
+                d.text((cx, y), text, font=font(17), fill=colour)
                 y += 28
             ly = ty + th + 14
             legend = [((34, 36, 40), "the mount's base and tabs"), (BLUE, "the camera's field"),
-                      (ORANGE, "lens axis; this step's change"), ((0, 0, 0), "deck centre (5-8 rail)")]
+                      (ORANGE, "lens axis; the plate; what changes"),
+                      ((0, 0, 0), f"plate centre (slot {self.slot})")]
             for k, (colour, text) in enumerate(legend):
                 lx, lyy = tx + (k % 2) * 320, ly + (k // 2) * 27
                 d.rectangle([lx, lyy + 4, lx + 16, lyy + 20], fill=colour)
@@ -787,36 +831,70 @@ def load_start() -> dict:
     return cfg
 
 
-def make_steps(cfg: dict) -> tuple[list[Step], Cam]:
-    f0, ft = float(cfg["focal_mm"]), float(cfg.get("target_focal_mm", 8.0))
+def plate_centre(cfg: dict, slot: int) -> tuple[float, float]:
+    """The plate's centre, deck mm: the slot's centre, unless measure_still.py --plate has fitted the
+    plate's wells in the same still as the rails, which puts it where it really sits."""
+    if not (PLATE_FIT.exists() and cfg.get("still_to_deck")):
+        return SLOTS[slot]
+    fit = json.loads(PLATE_FIT.read_text())
+    if fit.get("slot") != slot or Path(str(fit.get("still"))).name != Path(str(cfg.get("still_path"))).name:
+        return SLOTS[slot]
+    p = np.array(fit["plate_to_still"], float) @ [0.0, 0.0, 1.0]        # the plate's centre, still px
+    k, c = Z_PIN / (Z_PIN - Z_PLATE), np.array([4056 / 2, 3040 / 2])
+    q = c + (p - c) / k                                                  # a deck point there
+    m = np.array(cfg["still_to_deck"], float)
+    x, y = np.linalg.solve(m[:, :2], q - m[:, 2])
+    return float(x), float(y)
+
+
+def mm(v: float) -> str:
+    return f"{abs(v):.0f}" if abs(v) >= 9.95 else f"{abs(v):.1f}"
+
+
+def move_words(dx: float, dy: float, sep: str = " and ", short: bool = False) -> str:
+    """'127 mm to the left and 29 mm toward the back': how far to slide the mount."""
+    parts = []
+    if abs(dx) >= 0.5:
+        parts.append(f"{mm(dx)} mm {'' if short else 'to the '}{'right' if dx > 0 else 'left'}")
+    if abs(dy) >= 0.5:
+        parts.append(f"{mm(dy)} mm toward the {'door' if dy < 0 else 'back'}")
+    return sep.join(parts) if parts else "not at all"
+
+
+def target_zoom(margin: float) -> tuple[float, tuple[float, float]]:
+    """The focal length that leaves `margin` mm of deck left and right of the plate's top, and the
+    box (fractions of the picture's width and height) that the plate's outline then fills."""
+    dist = Z_PIN - Z_PLATE
+    wt = PLATE[0] + 2 * margin
+    ft = SENSOR[0] * dist / wt
+    return ft, (PLATE[0] / wt, PLATE[1] / (SENSOR[1] * dist / ft))
+
+
+def make_steps(cfg: dict, slot: int, target: tuple[float, float],
+               margin: float) -> tuple[list[Step], Cam, tuple[float, float]]:
+    f0 = float(cfg["focal_mm"])
     ox, oy = (float(v) for v in cfg["axis_offset_mm"])
     rot = float(cfg["rotation_deg"])
     s0 = Cam(CENTRE[0] + ox, CENTRE[1] + oy, f0, rot)
-    w0, h0 = s0.field()
-    wt, ht = replace(s0, f=ft).field()
-    span = (slot_rect(3)[2] - slot_rect(1)[0], slot_rect(10)[3] - slot_rect(1)[1])     # 393 x 357.5 mm
-    margin = (ht - span[1]) / 2                                                      # front and back, mm
-    droop = span[0] / 2 * math.tan(math.radians(abs(rot)))
-    cut = [n for n, fr in s0.in_view().items() if fr < 0.995]
-    frac = s0.in_view()
-
-    def how_cut(ns: list[int]) -> str:
-        """'1–3 only 56–62 % in view, 10–12 91–99 %': each row's cut slots with their range."""
-        parts = []
-        for row in ([1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]):
-            r = [n for n in row if n in ns]
-            if r:
-                lo, hi = (round(100 * min(frac[n] for n in r)), round(100 * max(frac[n] for n in r)))
-                pct = f"{lo}–{hi} %" if lo != hi else f"{lo} %"
-                parts.append(f"{slots_text(r)} {pct}")
-        return "; ".join(parts)
+    ft, box = target_zoom(margin)
+    w0, h0 = s0.field(Z_PLATE)
+    on = replace(s0, ax=target[0], ay=target[1])
+    wt, ht = replace(on, f=ft).field(Z_PLATE)
+    px0, pxt = 4056 / w0 * WELL_D, 4056 / wt * WELL_D
+    # A slide by hand lands a few mm off; step 4 takes that out against the box.
+    rough = replace(s0, ax=target[0] + 3.0, ay=target[1] - 2.5)
+    zoomed = replace(rough, f=ft, defocus=DEFOCUS)
+    focused = replace(zoomed, defocus=0.0)
+    final = replace(focused, ax=target[0], ay=target[1], phi=0.0)
+    edge = final.margins(target)
+    dx, dy = target[0] - s0.ax, target[1] - s0.ay
+    move_s = move_words(dx, dy)
+    turn = Frames.turn_word(rot)
     tip = TAB_TIP * math.tan(math.radians(abs(rot)))
-    after_zoom = replace(s0, f=ft, defocus=DEFOCUS)
-    focused = replace(after_zoom, defocus=0.0)
-    centred = replace(focused, ax=CENTRE[0], ay=CENTRE[1])
-    squared = replace(centred, phi=0.0)
-    final_view = squared.in_view()
-    all_in = [n for n, fr in final_view.items() if fr >= 0.995]
+    wx, wy = target[0] - WINDOW_CENTRE_DECK[0], target[1] - WINDOW_CENTRE_DECK[1]
+    from_left, from_front = wx + SCREWS[0][0] * -1, wy + SCREWS[0][1] * -1        # screws at -x, -y
+    px_stream = 1920 / wt
+    dof = 2 * 8 * 0.0031 * (Z_PIN - Z_PLATE) ** 2 / ft ** 2                       # f/8, two-pixel blur
 
     def lerp(a: Cam, b: Cam, u: float, **kw) -> Cam:
         e = ease(u)
@@ -828,110 +906,100 @@ def make_steps(cfg: dict) -> tuple[list[Step], Cam]:
         return -1.0 + 1.45 * ease(u / 0.62) if u < 0.62 else 0.45 - 0.45 * ease((u - 0.62) / 0.38)
 
     def focus(u: float) -> Cam:
-        c = replace(after_zoom, defocus=DEFOCUS * abs(ring(u)))
-        c.trace = [(ring(v), replace(after_zoom, defocus=DEFOCUS * abs(ring(v))).score())
+        c = replace(zoomed, defocus=DEFOCUS * abs(ring(u)))
+        c.trace = [(ring(v), replace(zoomed, defocus=DEFOCUS * abs(ring(v))).score())
                    for v in np.linspace(0.0, u, max(2, round(120 * u)))]
         return c
 
     def check(u: float) -> Cam:
         flash = max(0.0, 1 - abs(u - 0.18) / 0.08) * 0.85 if 0.1 < u < 0.26 else 0.0
-        return replace(squared, flash=flash, still=ease((u - 0.22) / 0.2), checks=ease((u - 0.35) / 0.6))
-
-    dx, dy = CENTRE[0] - s0.ax, CENTRE[1] - s0.ay
-    move = []
-    if abs(dy) >= 0.5:
-        move.append(f"{abs(dy):.0f} mm toward the {'door' if dy < 0 else 'back'}")
-    if abs(dx) >= 0.5:
-        move.append(f"{abs(dx):.1f} mm to the {'right' if dx > 0 else 'left'}")
-    move_s = " and ".join(move) or "not at all"
-    turn = "clockwise" if rot > 0 else "anticlockwise"
-
-    def slots_text(ns: list[int]) -> str:
-        rows = {1: [1, 2, 3], 4: [10, 11, 12]}
-        out, rest = [], list(ns)
-        for first, row in rows.items():
-            if all(n in rest for n in row):
-                out.append(f"{row[0]}–{row[-1]}")
-                rest = [n for n in rest if n not in row]
-        out += [str(n) for n in rest]
-        return ", ".join(out[:-1]) + (" and " if len(out) > 1 else "") + out[-1] if out else "none"
+        return replace(final, flash=flash, still=ease((u - 0.22) / 0.2), checks=ease((u - 0.35) / 0.6))
 
     stream = "OT2 overhead Livestreams Playlist, youtube.com/playlist?list=PLM4VC4X_7XKQ"
+    where = (f"{mm(oy)} mm {'behind' if oy >= 0 else 'in front of'} and {mm(ox)} mm "
+             f"{'left' if ox <= 0 else 'right'} of the deck centre")
     steps = [
         Step("Where it is now", "Where the camera is now",
-             f"The stream shows about {w0:.0f} × {h0:.0f} mm of the deck, what the zoom gives at about "
-             f"{f0:.1f} mm. The lens axis is {abs(oy):.0f} mm {'behind' if oy >= 0 else 'in front of'} and "
-             f"{abs(ox):.1f} mm {'left' if ox <= 0 else 'right'} of the deck centre, and the picture is turned "
-             f"{abs(rot):.1f}°. Slots partly out of view (orange): {how_cut(cut)} in view.\n"
-             "Zoom first, then focus, then centre and square: zooming moves the focus, and the centre is "
-             "easiest to judge once the whole deck shows.",
-             f"Now: about {w0:.0f} × {h0:.0f} mm of deck, {abs(oy):.0f} mm {'behind' if oy >= 0 else 'in front of'} "
-             f"and {abs(ox):.1f} mm {'left' if ox <= 0 else 'right'} of the deck centre, turned {abs(rot):.1f}°. "
-             f"In view: {how_cut(cut)}.",
-             extra=[("You need", [f"The stream on a phone or laptop: {stream}",
-                                  "Your fingers: the lens's thumbscrews loosen by hand",
-                                  "Painter's tape for the base's four tabs",
-                                  "Ideally two people: one at the robot, one watching the stream"])],
+             f"The stream shows about {w0:.0f} × {h0:.0f} mm at about {f0:.1f} mm of zoom, centred {where}, "
+             f"turned {abs(rot):.1f}°: {px0:.0f} px across a well in a still.\n"
+             f"The goal is the plate in slot {slot} (orange) alone, filling the picture but for about {margin:g} mm "
+             f"of deck either side: about {ft:.1f} mm of zoom and {pxt:.0f} px across a well, three times as many.",
+             f"Now: {w0:.0f} × {h0:.0f} mm of deck at about {f0:.1f} mm zoom, {px0:.0f} px across a well. Goal: "
+             f"the plate in slot {slot} filling the orange box, about {ft:.0f} mm zoom, {pxt:.0f} px across a well.",
+             extra=[("You need", [f"The stream on a phone: {stream}",
+                                  "The room lights and the OT-2's lights on",
+                                  "Painter's tape and a ruler",
+                                  "Ideally two people: one at the robot, one watching"])],
              motion=0.0, state=lambda u: s0),
-        Step("Zoom out", "Zoom out to the wide stop",
-             f"Loosen the zoom ring's thumbscrew and turn the ring toward WIDE until it stops ({ft:g} mm). "
-             f"The field grows from {w0:.0f} × {h0:.0f} to {wt:.0f} × {ht:.0f} mm at the deck. "
-             "This lens is varifocal: zooming moves the focus, so the picture goes soft.",
-             f"Loosen the zoom thumbscrew and turn the zoom ring to WIDE ({ft:g} mm). The view grows to "
-             f"{wt:.0f} × {ht:.0f} mm and goes soft: on this lens, zoom moves focus.",
-             watch="Watch for: the front and back rows coming into view.",
-             motion=6.0, state=lambda u: lerp(s0, after_zoom, u), changing="field", number=1),
-        Step("Focus", "Focus on the deck",
+        Step("Over the plate", f"Slide the mount over slot {slot}",
+             f"Lift the tape and slide the whole mount {move_s}, with the arrow on its base still pointing at "
+             f"the door, until the orange cross lands on the middle of the plate: between wells D6, D7, E6 and "
+             f"E7. Within about 5 mm is enough for now. On the lid, the lens then sits about {from_left:.0f} mm "
+             f"right of the line through the two left window screws and {from_front:.0f} mm behind the line "
+             "through the two front ones.",
+             f"Slide the mount {move_s}, until the cross lands on the middle of the plate in slot {slot}.",
+             watch="Moving the mount moves the picture the opposite way: slide it left and the plate moves "
+                   "right, toward the cross.",
+             motion=6.0, state=lambda u: lerp(s0, rough, u), changing="mount", number=1, move=(s0, on), guide=True),
+        Step("Zoom in", "Zoom in until the plate fills the box",
+             "Loosen the zoom ring's thumbscrew and turn the ring toward T (tele). The plate grows until its "
+             f"outline reaches the stream's orange box: its left and right edges on the box's sides, at about "
+             f"{ft:.1f} mm. The field shrinks from {w0:.0f} × {h0:.0f} to {wt:.0f} × {ht:.0f} mm at the plate. "
+             "Tighten the thumbscrew. The picture goes soft: on this lens, zooming moves the focus.",
+             "Turn the zoom ring toward T until the plate's left and right edges reach the orange box "
+             f"(about {ft:.0f} mm). It goes soft: zoom moves focus.",
+             watch="If the plate runs out of the box on one side as it grows, slide the mount a little that way.",
+             motion=6.0, state=lambda u: lerp(rough, zoomed, u), changing="field", number=2,
+             rings=frozenset({"ZOOM"})),
+        Step("Focus", "Focus on the wells",
              "Open the iris fully, then turn the focus ring slowly. The focus number under the stream's "
-             "timestamp rises, peaks and falls: turn back to the peak, where it matches \"best\", and "
-             "tighten the focus thumbscrew. Then close the iris to about f/4, for more depth of field.",
-             "Open the iris, turn the focus ring slowly: the focus number under the timestamp rises, peaks "
-             "and falls. Go back to the peak and tighten the focus thumbscrew.",
+             "timestamp rises, peaks and falls: turn back to the peak, where it matches \"best\", and tighten "
+             f"the focus thumbscrew. Then close the iris to about f/8. The depth of field is then about "
+             f"{dof:.0f} mm, so the wells' rims and the paint 11 mm below them are sharp together.",
+             "Open the iris, turn the focus ring slowly: the focus number under the timestamp rises, peaks and "
+             "falls. Go back to the peak, tighten the thumbscrew, close the iris to about f/8.",
              watch="The stream runs 5–20 s behind: turn a little, then wait for it to catch up.",
-             motion=12.0, state=focus, changing="focus", number=2),
-        Step("Centre", "Centre the mount over the deck",
-             f"Slide the whole mount {move_s}, until the stream's orange cross sits on the deck centre: "
-             "the middle of the rail between slots 5 and 8. Keep the base flat on the window. "
-             f"At {ft:g} mm the field is only {margin:.1f} mm longer than the slots at the front and at the "
-             "back, so get within about 4 mm.",
-             f"Slide the mount {move_s}, until the orange cross sits on the middle of the rail between "
-             f"slots 5 and 8. Get within about 4 mm: that is all the front and back margin there is.",
-             watch="Moving the mount moves the picture the opposite way: slide it toward the door and the "
-                   "deck moves up the screen.",
-             motion=6.0, state=lambda u: lerp(focused, centred, u), changing="mount", number=3),
-        Step("Square", "Square it to the deck",
-             f"Turn the mount {abs(rot):.1f}° {turn}, seen from above, about the lens: a tab's tip moves "
-             f"{tip:.1f} mm. Stop when the rails between the rows run level across the stream, then check "
-             f"the cross again. It matters: turned {abs(rot):.1f}°, the picture's edges drop {droop:.1f} mm "
-             f"from the middle to the outer slots, more than the {margin:.1f} mm margin.",
-             f"Turn the mount {abs(rot):.1f}° {turn} (seen from above; a tab's tip moves {tip:.1f} mm) until the "
-             f"rails between the rows are level. Left turned, the corner slots lose up to {droop:.1f} mm.",
-             motion=5.0, state=lambda u: lerp(centred, squared, u), changing="mount", number=4),
+             motion=12.0, state=focus, changing="focus", number=3, rings=frozenset({"IRIS", "FOCUS"})),
+        Step("Centre and square", "Centre and square it on the box",
+             "Nudge the mount until the plate sits evenly in the box, with the same strip of deck at its left "
+             f"and right and at its top and bottom. Then turn the mount {abs(rot):.1f}° {turn}, seen from above "
+             f"(a tab's tip moves {tip:.1f} mm), until the plate's edges run parallel to the box. At this zoom "
+             f"1 mm of deck is {px_stream:.0f} px on the stream, so small moves: get within about 2 mm and 0.5°.",
+             f"Nudge the mount until the plate sits evenly in the box, then turn it {abs(rot):.1f}° {turn} "
+             "until the plate's edges run parallel to the box's.",
+             watch="Turn about the lens, so that the plate stays centred; nudge it back if it drifts.",
+             motion=6.0, state=lambda u: lerp(focused, final, u), changing="mount", number=4,
+             move=(focused, final), turn=rot, guide=True),
         Step("Lock and check", "Lock it and take a still",
-             "Tighten the zoom and focus thumbscrews and tape the base down over its four tabs. Then take a "
-             "point-and-shoot still at the full 4056 × 3040 while the stream keeps running, as below. "
-             + (f"All {len(all_in)} slots should be in it." if len(all_in) == 12 else
-                f"Slots {slots_text([n for n in range(1, 13) if n not in all_in])} will still be cut off."),
+             "Tighten all three thumbscrews and tape the base down over its four tabs. Take a 4056 × 3040 "
+             "still while the stream keeps running, and measure it (below). Done when the plate's centre is "
+             f"within about 2 mm of the cross and it is turned under 0.5°: {edge['left']:.0f} mm of deck then "
+             f"shows left and right of it, {edge['back']:.0f} mm front and back. Then ask for "
+             "SETUP_OVERLAY = False, which takes the cross, box and score off the stream.",
              "Tighten the thumbscrews, tape the base down, take a 4056 × 3040 still while the stream runs "
-             "(curl localhost:8081/still on the Pi, or ask @claude). "
-             + ("All 12 slots in frame." if len(all_in) == 12 else ""),
-             watch="If a front or back slot is clipped, slide the mount a few mm that way and check again.",
-             extra=[("Take a still", ["On the Pi: ssh <pi> 'curl -s localhost:8081/still' > still.jpg",
-                                      "Or comment: @claude take a still with the lid camera",
-                                      "camera/measure_still.py turns a still into the mm to move"])],
-             motion=5.0, state=check, changing="still", number=5),
+             f"(curl localhost:8081/still on the Pi, or ask @claude) and measure it: {pxt:.0f} px across a well.",
+             extra=[("Take a still and measure it", [
+                 "Comment: @claude take a still with the lid camera and measure it",
+                 f"Or on the Pi: curl -s localhost:8081/still > still.jpg, then "
+                 f"camera/measure_still.py still.jpg --plate {slot}"])],
+             motion=5.0, state=check, changing="still", number=5, rings=frozenset({"ZOOM", "FOCUS", "IRIS"}),
+             guide=True),
     ]
-    return steps, s0
+    return steps, s0, box
 
 
-def run(stills_only: bool) -> None:
+def run(stills_only: bool, slot: int, margin: float) -> None:
     cfg = load_start()
-    steps, s0 = make_steps(cfg)
-    deck = Deck(deck_texture(cfg))
-    print("start:", {k: cfg[k] for k in ("focal_mm", "axis_offset_mm", "rotation_deg", "target_focal_mm", "source")})
+    target = plate_centre(cfg, slot)
+    steps, s0, box = make_steps(cfg, slot, target, margin)
+    deck = Deck(*deck_texture(cfg, target))
+    ft, _ = target_zoom(margin)
+    print("start:", {k: cfg[k] for k in ("focal_mm", "axis_offset_mm", "rotation_deg", "source")})
+    print(f"target: the plate in slot {slot} at ({target[0]:.1f}, {target[1]:.1f}) mm on the deck, "
+          f"{margin:g} mm either side: zoom {ft:.2f} mm, box {box[0]:.4f} x {box[1]:.4f} of the picture")
 
-    mp4 = Frames(MP4, deck, steps, s0)
-    gif = Frames(GIF, deck, steps, s0)
+    mp4 = Frames(MP4, deck, steps, s0, slot, target, box)
+    gif = Frames(GIF, deck, steps, s0, slot, target, box)
     ends: list[Image.Image] = []
     chapters: list[tuple[int, str]] = []
     gif_frames: list[np.ndarray] = []
@@ -980,7 +1048,7 @@ def run(stills_only: bool) -> None:
         ff.stdin.close()
         ff.wait()
         meta = Path(tempfile.mkstemp(suffix=".txt")[1])
-        lines = [";FFMETADATA1", "title=OT-2 lid camera: centre, zoom, focus"]
+        lines = [";FFMETADATA1", f"title=OT-2 lid camera: the plate in slot {slot}, close up"]
         bounds = [c[0] for c in chapters[1:]] + [n]
         for (c0, name), c1 in zip(chapters, bounds):
             lines += ["[CHAPTER]", f"TIMEBASE=1/{FPS}", f"START={c0}", f"END={c1}", f"title={name}"]
@@ -1016,7 +1084,7 @@ def write_gif(frames: list[np.ndarray], path: Path) -> None:
     src = ["-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{GIF_W}x{GIF_H}", "-r", str(GIF_FPS), "-i", str(raw)]
     pal = raw.with_suffix(".png")
     # The still's photo dithers into a lot of bytes; step down until the GIF is under GIF_MB.
-    for colours, dither in ((256, "bayer:bayer_scale=4"), (128, "bayer:bayer_scale=5"), (96, "none")):
+    for colours, dither in ((256, "bayer:bayer_scale=4"), (128, "bayer:bayer_scale=5"), (96, "none"), (64, "none")):
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", *src, "-vf",
                         f"palettegen=max_colors={colours}:stats_mode=diff", str(pal)], check=True)
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", *src, "-i", str(pal), "-lavfi",
@@ -1042,4 +1110,8 @@ def sheet(ends: list[Image.Image], path: Path) -> None:
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--stills", action="store_true", help="render only the frame each step ends on")
-    run(ap.parse_args().stills)
+    ap.add_argument("--slot", type=int, default=SLOT, help="the slot the plate is in (default %(default)s)")
+    ap.add_argument("--margin", type=float, default=MARGIN,
+                    help="mm of deck to leave left and right of the plate (default %(default)s)")
+    a = ap.parse_args()
+    run(a.stills, a.slot, a.margin)

@@ -277,7 +277,10 @@ the 8 mm whole-deck view, where the near wall hides about 4 mm of a 6.9 mm well.
 
 ![The 8 mm view with the mount over the middle of the deck](renders/wide_view_8mm.png)
 
-**All twelve slots at 8 mm.** Put the lens axis halfway between the left and right screws and
+**All twelve slots at 8 mm**, for reference only: it is not what the camera is for. It gives a third
+of the resolution, 58 px across a well, short of the ~100 px that #84's options doc asks for to
+measure intensity. The [line-up steps](camera/README.md#lining-it-up-over-the-plate-slide-zoom-focus-centre-and-square-lock)
+aim at one plate, close up. For the whole deck, put the lens axis halfway between the left and right screws and
 186.1 mm behind the line through the two front screws. In a full-resolution still every slot
 is then 1,088 × 731 px and every well 58 px across, about 2,700 px inside its opening. By #84's
 options doc that is enough to detect a precipitate (~50 px) but short of the ~100 px it asks
@@ -308,13 +311,14 @@ y +54.7) and zoom to about 14 mm. Both slots then fit, at about 100 px across a 
 3. Watch the camera, either on the public [YouTube stream](https://www.youtube.com/playlist?list=PLM4VC4X_7XKQ)
    (since 2026-10-18, 5–20 s behind; see [`camera/stream/`](camera/stream/README.md)) or, with the
    stream stopped, on [`camera/preview_server.py`](camera/preview_server.py) over the tailnet, and slide
-   the mount until the plate is centred and square in the picture. Zoom first, then focus.
+   the mount until the plate is centred and square in the picture. Slide first, then zoom, then focus.
    It is #84's [preview server](https://github.com/vertical-cloud-lab/byu-vcl/blob/e949ad0/ot2-overhead-camera/README.md#5-zoom-and-focus-live-preview)
    with the whole sensor in view; #84's own shows a 16:9 crop. Other ways to see the feed are
    in [`camera/README.md`](camera/README.md).
-   For the whole-deck view, follow [Lining it up](camera/README.md#lining-it-up-zoom-focus-centre-square-lock)
-   (2026-10-20): the stream shows a centre cross and a live focus score, and a full-resolution
-   still, taken while it streams, says how many millimetres are left to move.
+   Follow [Lining it up over the plate](camera/README.md#lining-it-up-over-the-plate-slide-zoom-focus-centre-and-square-lock)
+   (2026-10-20): the stream shows a centre cross, a box for the plate's outline at the right zoom
+   and a live focus score, and a full-resolution still, taken while it streams, says how many
+   millimetres are left to move.
 4. Tape the four tabs down.
 
 At this stage it images **through the window**. The collar keeps room light off the patch
