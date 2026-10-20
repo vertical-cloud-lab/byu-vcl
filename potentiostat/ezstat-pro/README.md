@@ -19,15 +19,16 @@ manual's.
 The EZstat-Pro is NuVant's analog front end around a National Instruments USB
 data-acquisition board. All the software that talks to it is Windows-only:
 
-- EZware-2013 is a 32-bit Windows program built with LabVIEW 2011 SP1.
+- EZware-2013 is a 32-bit Windows program built with LabVIEW 2011 SP1 (it
+  ships LabVIEW's 11.0.1 analysis library).
 - It needs NI's LabVIEW 2011 Run-Time Engine and NI's NI-DAQmx driver.
 - NI-DAQmx comes for Windows, and for Linux only on x86-64 PCs ("NI-DAQmx for
   Linux/x86 64-bit Architecture"). There is no build for ARM, so the CubXL's
   Raspberry Pi 5 can't load the driver. Plugged into the Pi, the EZstat would
   just be a USB device that nothing can talk to.
 
-Use the Windows PC that came with it (the one with the Watlow EZ-ZONE
-programs), or any Windows laptop you have administrator rights on.
+Use the Windows PC that may have come with it (the one with the Watlow
+EZ-ZONE programs), or any Windows laptop you have administrator rights on.
 
 ## 2. Accounts and subscriptions: none needed
 
@@ -120,6 +121,8 @@ Keep the EZstat's USB cable unplugged from the PC until step 2.
 ### Step 2. Plug in the EZstat: now, and not before
 
 1. Nothing connected to the leads, and the **Cell Enable** button out (off).
+   Metal-cased EZstats have no such button; EZware enables the cell instead
+   (manual p. 32).
 2. Plug the USB cable into the back of the EZstat, but not into the PC yet.
 3. Plug in the power supply, at least 1 ft from the EZstat to keep its noise
    out of the signal (manual p. 36). Press the power switch: it lights green and
