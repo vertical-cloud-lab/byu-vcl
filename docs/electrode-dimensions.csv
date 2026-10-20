@@ -1,0 +1,17 @@
+key,label,role,seg,part,od_mm,length_mm,material,od_published,note,source
+chi104,CHI104 working: 3 mm glassy carbon disc,working,1,Kel-F body; 3 mm GC disc in the end face,6.35,55,polymer,yes,,https://www.chinstruments.com/images/accessories/CHI101_4_gs.png
+chi104,CHI104 working: 3 mm glassy carbon disc,working,2,brass pin,1.6,25,brass,yes,,https://www.chinstruments.com/images/accessories/CHI101_4_gs.png
+chi111,CHI111 reference: Ag/AgCl,reference,1,glass tube; porous Teflon tip at the end,4.0,45,glass,yes,,https://www.chinstruments.com/images/accessories/CHI111_2.png
+chi111,CHI111 reference: Ag/AgCl,reference,2,Teflon cap: lower section,5.8,12,polymer,yes,the drawing gives the cap as 25 mm long and both diameters but not where the step is; 12/13 mm is read off the drawing,https://www.chinstruments.com/images/accessories/CHI111_2.png
+chi111,CHI111 reference: Ag/AgCl,reference,3,Teflon cap: upper section,6.35,13,polymer,yes,see the lower section,https://www.chinstruments.com/images/accessories/CHI111_2.png
+chi111,CHI111 reference: Ag/AgCl,reference,4,pin,1.3,8,brass,yes,,https://www.chinstruments.com/images/accessories/CHI111_2.png
+chi115,CHI115 counter: Pt wire,counter,1,Pt wire,0.5,32,platinum,yes,,https://www.chinstruments.com/images/accessories/CHI115.png
+chi115,CHI115 counter: Pt wire,counter,2,Teflon body,6.35,25,polymer,yes,,https://www.chinstruments.com/images/accessories/CHI115.png
+chi115,CHI115 counter: Pt wire,counter,3,pin,1.3,8,brass,yes,,https://www.chinstruments.com/images/accessories/CHI115.png
+atlas_ref,Atlas Scientific reference: Ag/AgCl,reference,1,borosilicate glass body; ceramic junction; refill hole under a strap at the top,,80,glass,no,diameter not published: measure it,https://files.atlas-scientific.com/reference-electrode%20spec-sheet.pdf
+atlas_ref,Atlas Scientific reference: Ag/AgCl,reference,2,cap,,58,polymer,no,diameter not published: measure it,https://files.atlas-scientific.com/reference-electrode%20spec-sheet.pdf
+atlas_ref,Atlas Scientific reference: Ag/AgCl,reference,3,brass pin,,11.2,brass,no,diameter not published,https://files.atlas-scientific.com/reference-electrode%20spec-sheet.pdf
+basi_mf2052,BASi MF-2052 (RE-5B) reference: Ag/AgCl in 3 M NaCl,reference,1,glass body,6.0,75,glass,yes,connector not dimensioned,https://www.basinc.com/products/MF-2052
+edaq_et072,eDAQ ET072 leakless reference: Ag/AgCl in 3.4 M KCl,reference,1,PEEK shaft,2.0,65,polymer,yes,65 mm is the stated length; 1 mm pin connector,https://www.edaq.com/product_sheets/transducers/ET072_Leakless_Miniature_Ag-AgCl_Reference_Electrode.pdf
+graphite_10,Graphite rod 10 x 100 mm (counter),counter,1,graphite rod,10.0,100,graphite,yes,$4.00 each; in stock 2026-10-20,https://us.chemicalstore.com/carbon-electrode-graphite-rod-high-purity-density-and-conductivity-10-mm-x-100-mm
+hydroflex,Gaskatel HydroFlex (the printed cell's reference),reference,1,PTFE shaft,8.0,80,polymer,yes,the head is 25 mm across and 35 mm tall plus 6 mm for the hydrogen cartridge; 120 mm overall,https://www.gaskatel.com/en/shop/hydrogen-reference-electrode-hydroflex/
