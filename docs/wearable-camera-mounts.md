@@ -13,9 +13,8 @@ figure. Nothing has been bought or tested here yet.
 
 **There is no lighter neck mount.** Every phone neck mount checked lists about 190–310 g before the
 phone goes on. With a 170–230 g phone and a case, that's about 400–600 g hanging from the back of the
-neck, and
-because the phone sits on a stem in front of the chest, it also pulls the band into the neck. That
-weight comes from the design, so changing brands won't fix it. What helps is putting the weight
+neck. Because the phone sits on a stem in front of the chest, it also pulls the band into the neck.
+That weight comes from the design, so changing brands won't fix it. What helps is putting the weight
 somewhere else, or carrying much less of it:
 
 1. **A chest harness**, if you want to keep using phones. Nothing touches the neck; the weight is
@@ -33,9 +32,9 @@ somewhere else, or carrying much less of it:
 | [TELESIN MNM-001](https://www.amazon.com/dp/B0CLRHYNP4), the best seller (2K+ bought last month) | 220 g | no (anti-lost cord only) | $19.95 | 4.3 (3,476) |
 | [PGYTECH CapLock XL](https://www.amazon.com/dp/B0FDQC6NZ6), 30 N MagSafe | 221 g | yes, adjustable | $29.95 | 4.5 (25) |
 | [SmallRig 5127](https://www.amazon.com/dp/B0FL2CGZ9P), 17 N52 magnets, ring included | 193 g (description) / 227 g (spec table) | yes | $27.99 | 4.3 (157) |
-| [NEEWER GP16](https://www.amazon.com/dp/B0D1V5SHZG), 2 rings included | 249 g (8.8 oz) | no | $21.99 | 4.2 (581) |
+| [NEEWER GP16](https://www.amazon.com/dp/B0D1V5SHZG), 2 rings included | 249 g (8.8 oz) | not mentioned | $21.99 | 4.2 (581) |
 | [SEANCHEER H02 "Extended Long"](https://www.amazon.com/dp/B0CWWYW944), 70 cm band, sold as "20% lighter" | 264 g (9.3 oz) | yes | $18.80 | 4.3 (494) |
-| [PGYTECH CapLock](https://www.amazon.com/dp/B0D9BFVFYM), 30 N MagSafe | 310 g | no | $19.77 | 4.0 (48) |
+| [PGYTECH CapLock](https://www.amazon.com/dp/B0D9BFVFYM), 30 N MagSafe | 310 g | not mentioned | $19.77 | 4.0 (48) |
 | [K&F Concept 2-in-1](https://www.amazon.com/dp/B0FTWQG28M), air cushion, 66 cm tube | not listed | yes, 1.5 m | $26.99 | 4.2 (476) |
 
 Amazon's AI review summaries say the same thing about these: comfort is "mixed" on the K&F and the
