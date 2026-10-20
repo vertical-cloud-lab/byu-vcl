@@ -159,7 +159,7 @@ short front to back.
 
 ![Setup steps](../renders/setup_steps.gif)
 
-Labelled video to pause on: [`../renders/setup_steps.mp4`](../renders/setup_steps.mp4).
+Labelled video to pause on: [YouTube](https://www.youtube.com/watch?v=ZStu8aZcogI) (unlisted, 1:33, a chapter per step) or [`../renders/setup_steps.mp4`](../renders/setup_steps.mp4); made by [`../cad/setup_video.py`](../cad/setup_video.py) from the measured start, so it can be re-rendered after the next still.
 
 **Before you start.** Turn the room lights and the OT-2's rail lights on: the focus score is noise
 in the dark. Open the stream on a phone (the newest video in the
