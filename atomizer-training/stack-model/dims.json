@@ -1,0 +1,62 @@
+{
+  "units": "mm, degrees",
+  "frame": "stack frame: z along the axis into the chamber, z = 0 at the Ti sonotrode's tip face (the plate's back face); x along the plate from its hole to its free end; y = z cross x",
+  "dims": {
+    "upper_d": 19.939,
+    "upper_l": 56.642,
+    "plate_l": 119.634,
+    "plate_w": 20.828,
+    "stack_angle": 45.0,
+    "sono_d": 19.939,
+    "plate_t": 2.5,
+    "hole_d": 8.0,
+    "plate_corner_r": 1.0,
+    "sono_flats": 17.0,
+    "conn_r": 4.0,
+    "conn_half": 12.0,
+    "conn_ring": 3.0,
+    "upper_chamfer": 1.2,
+    "hole_e": 9.97
+  },
+  "sources": {
+    "upper_d": "measured, 0.785 in (issue 261, 2026-10-08)",
+    "upper_l": "measured, 2.23 in (issue 261, 2026-10-08)",
+    "plate_l": "measured, 4.71 in, CF and Mo plates (issue 261, 2026-10-08)",
+    "plate_w": "measured, 0.82 in, CF and Mo plates (issue 261, 2026-10-08)",
+    "stack_angle": "measured: the plate 'comes off at a 45 degree angle', square to the stack (issue 261); read as the stack rising at 45 deg with the plate straight down its slope",
+    "hole_e": "from the measurement: the plate's back end is flush with the sonotrodes' edge, so one sonotrode radius",
+    "sono_d": "assumed equal to the upper sonotrode ('the edge of the sonotrodes')",
+    "plate_t": "estimate (CF, video frames); the Mo plate's thickness is not known",
+    "hole_d": "estimate: the M8 connector passes it",
+    "plate_corner_r": "estimate",
+    "sono_flats": "estimate (viz3d)",
+    "conn_r": "M8",
+    "conn_half": "estimate (viz3d)",
+    "conn_ring": "estimate (viz3d)",
+    "upper_chamfer": "estimate"
+  },
+  "measured_in_inches": {
+    "upper_d": 0.785,
+    "upper_l": 2.23,
+    "plate_l": 4.71,
+    "plate_w": 0.82
+  },
+  "set_up": {
+    "stack_angle_deg": 45.0,
+    "plate_clock": "straight down the stack's slope",
+    "stack_position": "adjustable: slides along its axis in the housing on the door"
+  },
+  "landing_window_mm_from_hole": [
+    68.0,
+    108.3
+  ],
+  "landing_window_note": "with the plate straight down the slope and the stream (radius 1.4 mm) in the axis's vertical plane: nearer the hole, the upper sonotrode is in the stream's way",
+  "previous_estimates_2026_10_07": {
+    "upper_d": 20.0,
+    "upper_l": 55.0,
+    "plate_l": 100.0,
+    "plate_w": 20.0,
+    "stack_angle": 40.0,
+    "sono_d": 20.0
+  }
+}

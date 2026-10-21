@@ -1,0 +1,61 @@
+diff --git a/atomizer-training/viz3d/model.py b/atomizer-training/viz3d/model.py
+index e1e6200..ddf0b30 100644
+--- a/atomizer-training/viz3d/model.py
++++ b/atomizer-training/viz3d/model.py
+@@ -123,13 +123,17 @@ VIEWPORT_N = np.array([-0.15, -1.0, 0.40]) / np.linalg.norm([-0.15, -1.0, 0.40])
+ # sonotrode -> the plate, slid onto the connector through an 8 mm hole about 10 mm from one end -> the upper sonotrode,
+ # tungsten alloy (W-Ni-Fe), screwed onto the connector and torqued against the plate (50 N m). So the plate is a cantilever
+ # off the stack's axis, and the upper sonotrode stands out past it on the side the melt lands on. Sources: T5 10:28-11:41
+-# and 25:56, T7 17:23 and 45:41-47:27, the Oct 2 run at 7:41, #261. The sizes are frame estimates scaled by the plate's
+-# 20 mm width; #261 asks for the upper sonotrode, the clocking and the axis-to-nozzle offset to be measured.
+-STACK_ANGLE = 40.0                    # the stack comes in through the door (left wall), rising at 40 deg
+-PLATE_L, PLATE_W, PLATE_T = 100.0, 20.0, 2.5    # carbon fibre (the small CF plate); Mo plates are the same shape
+-HOLE_D, HOLE_E = 8.0, 10.0            # the plate's hole, and its centre's distance from the plate's end
+-SONO_R, SONO_FLATS = 10.0, 17.0       # Ti sonotrode: about 20 mm across, flats 17 mm across at its tip
+-UPPER_R, UPPER_L = 10.0, 55.0         # W-Ni-Fe upper sonotrode: about 20 mm across, 55 mm long
++# and 25:56, T7 17:23 and 45:41-47:27, the Oct 2 run at 7:41, #261. Measured on the machine (#261, 8 Oct): the upper
++# sonotrode (0.785 x 2.23 in), the CF and Mo plates (4.71 x 0.82 in), the hole (the plate's back end is flush with the
++# sonotrodes' edge: "no overhang"), and the set-up: the plate "comes off perpendicular to the stack ... at a 45 degree
++# angle", read as the stack rising at 45 deg with the plate straight down its slope (the Oct 6 viewport photo agrees).
++# Still frame estimates: the plate's thickness (the Mo plate's is unknown), the Ti sonotrode below its tip, the booster,
++# transducer and cover, and where the axis crosses the stream (IMPACT_Z below), which sets how far the stream falls.
++STACK_ANGLE = 45.0                    # the stack comes in through the door (left wall), rising at 45 deg (#261)
++PLATE_L, PLATE_W, PLATE_T = 4.71 * 25.4, 0.82 * 25.4, 2.5   # 119.6 x 20.8 (#261), CF and Mo; 2.5 thick for CF
++SONO_R, SONO_FLATS = 0.785 * 25.4 / 2, 17.0   # Ti sonotrode: as wide as the upper one (the plate lines up with both)
++HOLE_D, HOLE_E = 8.0, SONO_R          # the plate's hole, and its centre's distance from the plate's back end: flush
++UPPER_R, UPPER_L = 0.785 * 25.4 / 2, 2.23 * 25.4   # W-Ni-Fe upper sonotrode: 19.9 across, 56.6 long (#261)
+ CONN_R, CONN_HALF, CONN_RING = 4.0, 12.0, 3.0   # M8 connector: each threaded half, and the 8 mm ring between them
+ AXIS_BEHIND = 40.0      # the axis passes this far behind (+y) the stream: inferred from the training clocking, not measured
+ IMPACT_Z = 981.5        # height of the plate's face where the stream lands in the training set-up (126 mm under the nozzle)
+@@ -148,6 +152,11 @@ class StackSetup:
+ 
+ 
+ SETUPS = {
++    # as the lab runs it (#261, 8 Oct): the plate square to the stack and straight down its slope, the axis in the
++    # stream's vertical plane, and the stack slid back until the stream clears the upper sonotrode. The stream can land
++    # 68 to 108 mm from the hole (nearer, the upper sonotrode is in its way); slide = -75 lands it 75 mm from the hole,
++    # 7 mm clear, with 33 mm of plate below. The stack's position is adjustable, so the slide is a choice
++    "measured": StackSetup(clock=90.0, slide=-75.0, behind=0.0),
+     # the training set-up: the plate level and pointing to the front of the chamber, so with the axis AXIS_BEHIND behind
+     # the stream (the hole-to-mid-plate distance), the stream lands mid-plate, beside the upper sonotrode
+     "training": StackSetup(),
+@@ -159,8 +168,8 @@ SETUPS = {
+ 
+ 
+ def _setup_from_env() -> StackSetup:
+-    """VIZ3D_STACK: a name in SETUPS, or e.g. "clock=90,slide=-31,behind=0". Default: the training set-up."""
+-    v = os.environ.get("VIZ3D_STACK", "training").strip()
++    """VIZ3D_STACK: a name in SETUPS, or e.g. "clock=90,slide=-31,behind=0". Default: the measured set-up."""
++    v = os.environ.get("VIZ3D_STACK", "measured").strip()
+     if v in SETUPS:
+         return SETUPS[v]
+     return StackSetup(**{k.strip(): float(x) for k, x in (kv.split("=") for kv in v.split(",") if kv.strip())})
+@@ -643,7 +652,7 @@ def stack_parts(setup: StackSetup = SETUP) -> list[Part]:
+     def zc(r, z0, z1):                     # a cylinder on the axis from z0 to z1, in the stack's frame
+         return cyl(r, z1 - z0, (0, 0, z0))
+ 
+-    # the plate: 100 x 20 x 2.5, its back face on the tip, hung by the hole HOLE_E from one end
++    # the plate: 119.6 x 20.8 x 2.5, its back face on the tip, hung by the hole HOLE_E from one end
+     plate = cq.Workplane("XY").box(PLATE_L, PLATE_W, PLATE_T, centered=(True, True, False)).edges("|Z").fillet(3.0).val()
+     plate = plate.translate(V(PLATE_L / 2 - HOLE_E, 0, 0)).cut(zc(HOLE_D / 2, -1, PLATE_T + 1))
+     P.append(Part("plate", put(plate), CARBON, "plate", tol=0.1, cut=False))
