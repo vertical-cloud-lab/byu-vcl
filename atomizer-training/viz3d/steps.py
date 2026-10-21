@@ -826,7 +826,7 @@ def anim_06_pour():
         vibrate(True)
         show_g()
     sc.step("5.6", "Once the plate is hot every drop atomizes: droplets fly off the plate, freeze in the argon and "
-            "fall to the cone. The stream lands mid-plate, beside the upper sonotrode, never on it.", 6.0, atomize,
+            "fall to the cone. The stream lands on the plate, never on the upper sonotrode.", 6.0, atomize,
             hold=1.0, live=True, labels=[lab("droplets freeze into powder", M.IMPACT + np.array([90, 0, -40]), 0.70, 0.62)])
     sc.step("5.7", "The powder runs down the cone into the container. Too thin a stream gathers and drips; melt "
             "shooting past the plate means the pressure is too high (the Oct 2 lesson).", 6.0, atomize, hold=1.0, live=True,
@@ -993,8 +993,8 @@ def anim_02_stack():
         slide(sc, -PULL * (1 - window(u, 0.7, 1.0)))
         gauges(sc, status="door closing" if u < 0.66 else "stack in to its mark, clamped")
     sc.step("2c.9", "Run the frequency check now, before closing. Swing the door shut, the stack pulled back if the upper "
-            "sonotrode would catch the opening, then slide it to its mark and clamp it: the stream must land mid-plate, "
-            "beside the upper sonotrode.", 4.5, shut, hold=1.0, cam_to=CAM["door_out"])
+            "sonotrode would catch the opening, then slide it to its mark and clamp it: the stream must land on the "
+            "plate, never on the upper sonotrode.", 4.5, shut, hold=1.0, cam_to=CAM["door_out"])
 
     def clamps(u):
         for c in range(3):
@@ -1686,8 +1686,8 @@ def anim_summary():
 def anim_06b_oct6():
     """What went wrong on Oct 6 (#261): the plate clocked straight down the slope and the stack slid in, so the upper
     sonotrode sat under the stream, caught the melt and dripped it onto the plate; pulled back about 40 mm, the stream
-    cleared it but landed near the plate's free end. Render with VIZ3D_STACK=oct6: that set-up has the axis in line with
-    the stream, which this needs (see model.SETUPS)."""
+    cleared it and landed on the plate (71 mm from the hole and 39 mm from its tip, with the sizes measured on Oct 8).
+    Render with VIZ3D_STACK=oct6: that set-up has the axis in line with the stream, which this needs (see model.SETUPS)."""
     if M.SETUP != M.SETUPS["oct6"]:
         raise SystemExit("06b_oct6 shows the Oct 6 set-up: render it with VIZ3D_STACK=oct6")
     sc = Scene("06b_oct6", "What goes wrong: the upper sonotrode under the stream (Oct 6)")
@@ -1702,9 +1702,12 @@ def anim_06b_oct6():
     add_gas(sc, half=True, furnace=0.7, chamber=0.7)
     hit0, _ = M.landing()                                   # on the upper sonotrode
     back = 40.0
-    hit1, on1 = M.landing(slide=-back)                      # pulled back: near the plate's free end
+    hit1, on1 = M.landing(slide=-back)                      # pulled back: on the plate, past the upper sonotrode
     assert on1 == "plate", on1
     face = M.TIP + M.STACK_DIR * M.PLATE_T
+    # pulled back, how far down the plate the stream lands: 71 mm from the hole and 39 mm from its tip (Oct 8 sizes)
+    from_hole = float((hit1 - (face - M.STACK_DIR * back)) @ M.PLATE_ALONG)
+    from_tip = M.PLATE_L - M.HOLE_E - from_hole
     # where the drips meet the plate, straight under the landing point on the upper sonotrode
     zp = face[2] + (M.STACK_DIR[0] * face[0] + M.STACK_DIR[1] * face[1]) / M.STACK_DIR[2]
     drip_to = np.array([0.0, 0.0, zp])
@@ -1781,7 +1784,8 @@ def anim_06b_oct6():
         set_blob()
         shake(sc, True)
     sc.step("O.3", "About three-quarters of the way through, Gage pulled the stack back about 40 mm. The stream clears the "
-            "upper sonotrode now, but lands near the plate's free end.", 4.0, pull_back, hold=0.8, live=True,
+            f"upper sonotrode now and lands on the plate, {from_hole:.0f} mm from the hole and {from_tip:.0f} mm from its "
+            "tip.", 4.0, pull_back, hold=0.8, live=True,
             labels=[lab("stack pulled back ~40 mm", M.on_axis(60) - M.STACK_DIR * back, 0.06, 0.40)])
 
     def late(u):
@@ -1792,9 +1796,9 @@ def anim_06b_oct6():
         set_blob()
         shake(sc, True)
     sc.step("O.4", "Some of it atomizes now, but most of the melt is already on the upper sonotrode and the plate: very "
-            "little powder (4yghtr). Before closing the door, check the stream will land mid-plate, beside the upper "
-            "sonotrode.", 5.0, late, hold=1.6, live=True, still=True,
-            labels=[lab("lands near the free end", hit1, 0.70, 0.62)])
+            "little powder (4yghtr). Before closing the door, check the stream will land on the plate, never on the "
+            "upper sonotrode.", 5.0, late, hold=1.6, live=True, still=True,
+            labels=[lab(f"lands {from_hole:.0f} mm from the hole", hit1, 0.70, 0.62)])
     return sc.save()
 
 

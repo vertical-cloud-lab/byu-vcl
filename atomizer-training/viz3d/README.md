@@ -14,10 +14,11 @@ and checks those points against the other part's signed distance. Draft 3 had ab
 crucible, holder, insulation, rod and charge going through the fixed sealing-rod arm, the bottom insulation through the
 crucible and the coil, the container rising through the floor, the catch bowl through the chamber wall, and the
 plate swinging through the chamber's corner with the door. Draft 4 had none above 1.5 mm in any of the ten animations.
-Neither does the rebuilt stack (7 Oct), in the ten, `06b_oct6` or the summary at 30 fps
-([`out/collisions.md`](out/collisions.md), [`out/collisions_summary.md`](out/collisions_summary.md)): the one overlap it
-brought, the upper sonotrode catching the door opening as the door swung, is why the stack now slides back in its
-housing while the door swings (see the stack section below). The only overlaps left are parts mounted on each other in the assembled
+Neither does the rebuilt stack (7 Oct), nor the stack with the sizes measured on 8 Oct, in the ten, `06b_oct6` or the
+summary at 30 fps ([`out/collisions.md`](out/collisions.md), [`out/collisions_summary.md`](out/collisions_summary.md),
+both now run with the measured stack): the one overlap the 7 Oct stack brought, the upper sonotrode catching the door
+opening as the door swung, is why the stack now slides back in its housing while the door swings (see the stack section
+below). The only overlaps left are parts mounted on each other in the assembled
 machine (view port in the wall, knob on the lid, HMI on its arm), listed at the top of that report.
 
 **Cutaways come in only when the step needs the inside.** Every animation opens on the closed machine, as the operator
@@ -26,12 +27,14 @@ inside, and close again for outside actions: in the furnace step the lid opens o
 with the nozzle; the chamber goes back to whole to vent and open the door. `load_machine(..., defer=True)` adds both the
 whole and the halved part, and `set_cut()` blends between them.
 
-**The ultrasonic stack is built as the training shows it** (rebuilt 7 Oct, after the Oct 6 run in #261). From the
-transducer out, it goes:
+**The ultrasonic stack is built as the training shows it** (rebuilt 7 Oct, after the Oct 6 run in #261), **with the
+sizes measured on the machine on 8 Oct** ([#261](https://github.com/vertical-cloud-lab/byu-vcl/issues/261#issuecomment-6069616664)).
+From the transducer out, it goes:
 
 1. transducer, booster, then the Ti sonotrode (M10 at its base; M8 and 17 mm wrench flats at its tip);
 2. the double-threaded M8 connector, whose ring hides in the sonotrode's tip, so half of it is in each sonotrode;
-3. the plate, slid onto the connector through an 8 mm hole 10 mm from one end;
+3. the plate, slid onto the connector through an 8 mm hole near one end, so that end is flush with the sonotrodes' edge
+   ("no overhang");
 4. the tungsten-alloy (W–Ni–Fe) upper sonotrode, screwed onto the connector and torqued against the plate (50 N·m).
 
 Sources: [T5 10:28–11:41](https://www.youtube.com/embed/58wJ_Khwgyk?start=628) and
@@ -41,32 +44,56 @@ Sources: [T5 10:28–11:41](https://www.youtube.com/embed/58wJ_Khwgyk?start=628)
 stack's axis, and the upper sonotrode stands out past it on the side the melt lands on. Before this, the model had the
 plate's centre on a stud at the end of the sonotrode, with nothing beyond it.
 
-- **Sizes, in one block at the top of `model.py`.** They are frame estimates scaled by the plate's 20 mm width: plate
-  100 × 20 × 2.5 (carbon fibre), both sonotrodes about Ø20, upper sonotrode 55 long. #261 asks Gage and Ronnie to measure
-  them.
+**The committed renders still show the 7 Oct estimate** (the stack at 40°, a 100 × 20 plate, a Ø20 × 55 upper
+sonotrode and the training set-up): every GIF, still and MP4 that shows the stack, here and in
+[`../ppt/`](../ppt/README.md), and the draft 6 tutorials. They wait for one more measurement, where the axis passes
+under the nozzle (below).
+
+- **Sizes, in one block at the top of `model.py`, measured on 8 Oct.** The plate is 119.6 × 20.8 (4.71 × 0.82 in, the
+  carbon-fibre and Mo plates alike), the upper sonotrode Ø19.9 × 56.6 (0.785 × 2.23 in), the hole's centre one sonotrode
+  radius (10 mm) from the plate's back end, and the stack rises at 45°. Still estimates: the plate's 2.5 mm thickness
+  (carbon fibre; the Mo plate's is unknown), the Ti sonotrode below its tip (taken as wide as the upper one), and the
+  booster, transducer and cover. **The measured stack on its own** is in [`../stack-model/`](../stack-model/README.md)
+  (from `sgbaird/byu-finances`, private, at `9651454`): a CadQuery model with STEP, STL and GLB exports, each
+  dimension's source, two check figures, and the patch that put these numbers into `model.py`.
 - **The two things set by hand are parameters** (`StackSetup`): the plate's clocking about the axis (`clock`, 0 = level
   and pointing to the front) and how far the stack is slid into its housing (`slide`). `behind` is where the axis passes
   the stream. `VIZ3D_STACK` picks a set-up: a name in `SETUPS`, or e.g. `clock=90,slide=-31,behind=0`. Each set-up has its
   own mesh cache.
-- **The default is the training set-up.** The plate is level and points to the front of the chamber, and the axis is
-  40 mm behind the stream. That 40 mm is inferred from the clocking, not measured. The stream lands mid-plate, 40 mm in
-  front of the hole, and clears the upper sonotrode by 28.6 mm. `landing()` works out where the stream first meets the
-  stack for any set-up, and `IMPACT` comes from it.
-- **How touchy that is.** With the plate level, sliding the stack about 8 mm either way puts the stream off the plate's
-  edge, because the plate is only 20 mm wide across the slope.
+- **The default is the measured set-up** (`measured`). In #261 the plate "comes off perpendicular to the stack ... at a
+  45 degree angle". That is read as the stack rising at 45° with the plate square to it and straight down its slope, and
+  the Oct 6 photo through the view port agrees ([`../stack-model/README.md`](../stack-model/README.md) has the
+  reasoning). The axis is in the stream's vertical plane (`behind=0`).
+  - The upper sonotrode then stands over the first part of the plate, so a vertical stream can land only 68 to 108 mm
+    from the hole, 40 mm of plate. Nearer the hole, the upper sonotrode is in its way, as on Oct 6.
+  - The stack's position is adjustable, so the slide is a choice. `slide=-75` lands the stream 75 mm from the hole and
+    35 mm from the plate's tip, 4.5 mm clear of the upper sonotrode.
+  - `landing()` works out where the stream first meets the stack for any set-up, and `IMPACT` comes from it.
+- **How far the stream falls is still an estimate.** The axis passes under the nozzle at `IMPACT_Z` (z = 981.5, 126.5 mm
+  below the nozzle's exit), which is read off video frames. So in `measured` the stream falls 233 mm to the plate. The
+  stack slides along a fixed line, so each millimetre further down the plate is also 1.4 mm lower. A nozzle-tip-to-plate
+  distance from the machine would fix `IMPACT_Z`, and every animation follows it.
+- **The training set-up** (`training`) was the default until the measurements, and is kept for comparison. The plate is
+  level and points to the front of the chamber, and the axis is 40 mm behind the stream (`AXIS_BEHIND`, inferred from
+  that clocking, not measured). The stream lands 40 mm from the hole, 28.6 mm clear of the upper sonotrode; on the
+  measured plate that is 10 mm short of mid-plate. It is touchy: with the plate level, sliding the stack about 10 mm
+  either way takes the stream to the plate's edge.
 - **The Oct 6 failure is `06b_oct6`.** It is rendered with `VIZ3D_STACK=oct6`. The plate is clocked straight down the
   slope and the stack slid in, so the upper sonotrode is under the stream: the melt gathers on it and drips onto the plate.
-  Then the stack is pulled back 40 mm: the stream clears the upper sonotrode and lands near the plate's free end.
-- **The two set-ups do not agree on where the axis is.** With the axis 40 mm behind the stream, no clocking or slide puts
-  the upper sonotrode under the stream: it stays about 30 mm to the side. The photos in #261 show that on Oct 6 it caught
-  the melt, so the axis was then within about 10 mm of the stream, sideways. `oct6` therefore has the axis in line with
-  the stream (`behind=0`). The measurement of the axis-to-nozzle offset asked for in #261 decides which is right; change
-  `AXIS_BEHIND`, and every animation follows.
-- **The door swing points the same way.** With the axis 40 mm behind the stream, the upper sonotrode's far end catches the
-  back edge of the door opening as the door swings (9 mm, `collide.py`). Pulled back 35 mm or more in its housing, it
-  clears. So the animations pull the stack back 40 mm (`PULL` in `steps.py`) before the door opens, and slide it in after
-  the door shuts. The captions say to do that only if the upper sonotrode would catch the opening's edge, because no
-  footage shows it. With the axis in line with the stream, the door swings clear without it.
+  Then the stack is pulled back 40 mm: the stream clears the upper sonotrode and lands on the plate, 71 mm from the hole
+  and 39 mm from its tip.
+- **`oct6` and `measured` agree on where the axis is; the training set-up does not.** Both have the axis in the stream's
+  vertical plane and the plate down the slope, and differ only in how far the stack is slid in (−31 against −75 mm).
+  With the training set-up's axis 40 mm behind the stream, no clocking or slide puts the upper sonotrode under the
+  stream: it stays about 30 mm to the side. The photos in #261 show that on Oct 6 it caught the melt, so the axis was
+  then within about 10 mm of the stream, sideways. If it turns out not to be in line, set `behind` in
+  `SETUPS["measured"]`.
+- **The door swing.** On 7 Oct, with the training set-up's axis 40 mm behind the stream, the upper sonotrode's far end
+  caught the back edge of the door opening as the door swung (9 mm, `collide.py`). Pulled back 35 mm or more in its
+  housing, it cleared, and with the axis in line with the stream (`oct6`) the door swung clear anyway. So the animations
+  pull the stack back 40 mm (`PULL` in `steps.py`) before the door opens, and slide it in after the door shuts, in every
+  set-up. The captions say to do that only if the upper sonotrode would catch the opening's edge, because no footage
+  shows it.
 - **What moves with what.** The connector carries the plate and the upper sonotrode, so all three vibrate together. The
   stack slides in its housing as one group (`stack`), and the protective cover stays bolted on. Droplets bounce off the
   upper sonotrode, and a glowing film on the plate shows where the stream lands.
@@ -125,7 +152,7 @@ invalidates the cache. When two renders run at once, give each its own display (
 | **2c · Ultrasonic stack** (`02_stack`) — last, with the door locked open: transducer → booster (65 N·m) → Ti sonotrode (60 N·m) → into the door housing, short of its mark → connector, plate, upper sonotrode (50 N·m) → scan → wet test → cover → door shut, stack slid to its mark → three star-knob bolts ![](out/02_stack.gif) | **3 · Gas wash** — furnace pumped and back-filled while the chamber holds overpressure, then the chamber, then washes at 250 and 500 °C ![](out/04_gas_wash.gif) |
 | **4 · Melt** — overshoot, melt cues, rods slump into a pool, setpoint down to ~800 °C, 2 min hold ![](out/05_melt.gif) | **5 · Pour and atomize** — vibration, draining pressure, rod up, first drops bounce, turbo, spray off the plate, powder into the container ![](out/06_pour.gif) |
 | **6–8 · End of pour, cool down, collect** — turbo, rod down, stops, cool to ≤400 °C, vent, bolts back, stack pulled back, door open (plate out with it), brush down, clamp halves part, container off ![](out/07_end_cooldown.gif) | **9 · Clean and reset** — brush; upper sonotrode off, then the plate; rod up, pin out, lever up, rod out; thermocouple and insulation out; nut off from below; crucible out to the bench; nozzle check; reassembled in order ![](out/08_clean.gif) |
-| **What goes wrong: the upper sonotrode under the stream (Oct 6)** (`06b_oct6`, `VIZ3D_STACK=oct6`) — the plate clocked straight down the slope and the stack slid in: the stream lands on the upper sonotrode, the melt gathers round it and drips onto the plate; pulled back 40 mm, the stream clears it but lands near the plate's free end ![](out/06b_oct6.gif) | |
+| **What goes wrong: the upper sonotrode under the stream (Oct 6)** (`06b_oct6`, `VIZ3D_STACK=oct6`) — the plate clocked straight down the slope and the stack slid in: the stream lands on the upper sonotrode, the melt gathers round it and drips onto the plate; pulled back 40 mm, the stream clears it and lands on the plate, 71 mm from the hole and 39 mm from its tip ![](out/06b_oct6.gif) | |
 
 **Summary, for slides** (`summary`). This is a whole run in one take of about 44 s: 2a (furnace), 2c (stack and door),
 4 (melt) and 5 (pour). The parts take the same paths, in the same order, as in the four step animations. The fasteners are
@@ -164,7 +191,9 @@ readouts are those used in training ([`../sop.md`](../sop.md)); they are illustr
 
 ## Measured vs. assumed
 
-The proportions were re-measured for draft 3. Nothing has been measured with a rule yet. The sources are:
+The proportions were re-measured from video frames for draft 3. The ultrasonic stack is the only part measured on the
+machine so far (8 Oct, [#261](https://github.com/vertical-cloud-lab/byu-vcl/issues/261#issuecomment-6069616664); see
+[`../stack-model/`](../stack-model/README.md)). The other sources are:
 
 - **720p frames** of the training videos, pulled through the stream-cam Pi with `../tools/hls_sections.py`:
   - front, low: `9kn-HhXCr1o` 25:00;
@@ -193,7 +222,7 @@ near the frame edges were not used.
 | Outlet, cone, valve, container under the rounded end; container bottom ~60 mm off the floor. Flange clamp in two halves that part to release it | Frames (`58wJ_Khwgyk` 77:00, 3:22–3:52), render | Position observed; sizes assumed |
 | Splash protection: a round dish whose rim lies in the container's top flange, not a plate in the chamber. Catch bowl: a ring round the outlet on the chamber floor | `58wJ_Khwgyk` 2:17–2:57 (the disc pressed into the container's flange, before the container goes on), 6:42–6:52 (the bowl on the chamber floor through the open door) | Disc observed; the bowl's place is a guess |
 | Door: U-shaped (flat top, round bottom), 236 × 340, nearly the whole left face, **hinged at its front edge**, opening towards the operator. Three swing bolts with star knobs at the back edge, on brackets on the back face; each swings back about its pivot before the door can open. Small sight glass | Open door in `58wJ_Khwgyk` 25:00 and `FDRTt68Vfvo` 45:00: the stack's transducer end points at the camera, which a back-edge hinge would turn towards the frame. In `58wJ_Khwgyk` 77:00 the knobs are on the edge away from the view port. Draft 3 had it the other way round | Observed; size scaled |
-| Ultrasonic stack through the door's lower half at 40°. Ti sonotrode → M8 connector → plate (100 × 20 × 2.5 carbon fibre, hung by an 8 mm hole 10 mm from one end) → W–Ni–Fe upper sonotrode Ø20 × 55. 40 kHz, booster 1.5:1, torques 65 / 60 / 50 N·m. Training set-up: plate level, pointing to the front; the axis 40 mm behind the stream; the stream lands mid-plate, 28.6 mm clear of the upper sonotrode | Quote, O&MM, SOP; angle from the front and side frames (35–45°); the build order and parts from `58wJ_Khwgyk` 10:28–11:41 and `FDRTt68Vfvo` 45:41–47:27; the photos in #261 | Torques and the order documented; sizes are frame estimates (scaled by the plate's 20 mm width); the axis offset and clocking inferred. #261 asks for them to be measured |
+| Ultrasonic stack through the door's lower half at 45°. Ti sonotrode → M8 connector → plate (119.6 × 20.8 × 2.5 carbon fibre, hung by an 8 mm hole whose centre is one sonotrode radius, 10 mm, from its back end) → W–Ni–Fe upper sonotrode Ø19.9 × 56.6. 40 kHz, booster 1.5:1, torques 65 / 60 / 50 N·m. Default set-up (`measured`): the plate square to the stack and straight down its slope, the axis in the stream's vertical plane, the stack slid back so the stream lands 75 mm from the hole, 4.5 mm clear of the upper sonotrode | Measured on the machine on 8 Oct ([#261](https://github.com/vertical-cloud-lab/byu-vcl/issues/261#issuecomment-6069616664)): the upper sonotrode (0.785 × 2.23 in), the plates (4.71 × 0.82 in), the hole (the plate's back end flush with the sonotrodes' edge) and the 45°; the Oct 6 view-port photo in #261 for the clocking; quote, O&MM, SOP; the build order and parts from `58wJ_Khwgyk` 10:28–11:41 and `FDRTt68Vfvo` 45:41–47:27. Details in [`../stack-model/`](../stack-model/README.md) | Sizes and angle measured; torques and the order documented; the clocking read from the measurement and the photo. Still estimates: the plate's thickness, the Ti sonotrode below its tip, the booster, transducer and cover, and where the axis passes under the nozzle (`IMPACT_Z`), which sets the stream's 233 mm fall |
 | View port: 12-sided cover on the front face under the furnace, tilted down at the plate | Front-left frames | Observed; size scaled |
 | Furnace body Ø270 on the chamber's top plate, which reaches 40 mm past the chamber's left face under the body; faceted lid (R 152, reaching over the deck round the lever post) hinged on the left, turning round its pin on a bracket; coil leads on the left; connector plate at the back left | Frames (`wRc8p2_FnJo` 35:06–37:44, 41:00, 47:00; `1F9_4ccwhss` 5:16), render | Observed; proportions scaled |
 | Sealing-rod lever: a flat bar on a clevis at the top of a pneumatic post at the right of the deck. It swings up, past vertical, to clear the opening, and comes down over the adapter's top stub, where a safety pin holds it. The post's piston lifts lever and rod 12 mm to pour. The lever sits 89 mm above the crucible rim (#222 had 47) | `1F9_4ccwhss` 1:18–1:42 (raised while the insulation goes in), 2:02–2:20 (rod in, lever down, "we move the sealing rod down … now we can add the material"), 4:12–4:44 (down, with the charge going in beside it); `wRc8p2_FnJo` 36:24 (rod up, pin out, rod out) | Mechanism observed; sizes scaled |
@@ -214,5 +243,10 @@ When anything is measured, change the constants at the top of `model.py`; every 
   plate turns out to sit deeper, the door cannot swing on a plain vertical hinge, and the hinge needs another look.
 - The furnace body is drawn round. In the frames, its deck runs back towards the frame round the lever post and the
   brass pre-filter, and the lid covers that too. The model's lid is a slightly larger hexagon instead.
+- Three things about the stack are not measured yet: where its axis passes under the nozzle (`IMPACT_Z`, which sets
+  how far the stream falls), how far the stack can slide in its housing, and a photo along the axis to confirm the
+  plate's clocking (straight down the slope).
+- The fixed camera views were framed for the 7 Oct landing point. `CAM["pour"]` in `steps.py` looks at z = 1030, and in
+  `measured` the stream lands at z = 875, so check the framing at the next render.
 - The rod adapter's top stub and the lever's eye are simplified; the safety pin is implied, not drawn.
 - No lettering on any part ("BLUE POWER", "aus500", "GU 500 AMA"); the HMI screen is placeholder rectangles.

@@ -157,8 +157,9 @@ SETUPS = {
     # 68 to 108 mm from the hole (nearer, the upper sonotrode is in its way); slide = -75 lands it 75 mm from the hole,
     # 7 mm clear, with 33 mm of plate below. The stack's position is adjustable, so the slide is a choice
     "measured": StackSetup(clock=90.0, slide=-75.0, behind=0.0),
-    # the training set-up: the plate level and pointing to the front of the chamber, so with the axis AXIS_BEHIND behind
-    # the stream (the hole-to-mid-plate distance), the stream lands mid-plate, beside the upper sonotrode
+    # the training set-up, as inferred on 7 Oct before the measurements: the plate level and pointing to the front of
+    # the chamber, and the axis AXIS_BEHIND behind the stream (the estimated 100 mm plate's hole-to-mid-plate distance),
+    # so the stream lands 40 mm from the hole, beside the upper sonotrode (10 mm short of mid-plate on the measured plate)
     "training": StackSetup(),
     # Oct 6 (#261): the plate clocked straight down the slope, with the stack slid in far enough that the upper sonotrode
     # is under the stream. With the axis 40 mm behind the stream no clocking or slide can do that (the upper sonotrode
@@ -169,7 +170,7 @@ SETUPS = {
 
 def _setup_from_env() -> StackSetup:
     """VIZ3D_STACK: a name in SETUPS, or e.g. "clock=90,slide=-31,behind=0". Default: the measured set-up."""
-    v = os.environ.get("VIZ3D_STACK", "measured").strip()
+    v = os.environ.get("VIZ3D_STACK", "").strip() or "measured"     # set but empty is the default too, not StackSetup()
     if v in SETUPS:
         return SETUPS[v]
     return StackSetup(**{k.strip(): float(x) for k, x in (kv.split("=") for kv in v.split(",") if kv.strip())})
@@ -554,8 +555,8 @@ def chamber_parts() -> list[Part]:
     P.append(Part("viewport_flange", along(vp, VIEWPORT - VIEWPORT_N * 6, VIEWPORT_N), FLANGE, "chamber", tol=0.3))
     P.append(Part("viewport_glass", along(cyl(45, 6), VIEWPORT + VIEWPORT_N * 4, VIEWPORT_N), GLASS, "chamber",
                   opacity=0.8, tol=0.2))
-    # door on the left face, hinged at its front edge; the stack goes through its lower half at 40 deg, in a housing whose
-    # bore passes the sonotrode's KF50 flange, the booster and the transducer
+    # door on the left face, hinged at its front edge; the stack goes through its lower half at STACK_ANGLE, in a
+    # housing whose bore passes the sonotrode's KF50 flange, the booster and the transducer
     door = u_shape(DOOR_W, DOOR_Z[0], DOOR_Z[1], x0 - DOOR_T, DOOR_T)
     door = door.fuse(u_shape(DOOR_W - 50, DOOR_Z[0] + 25, DOOR_Z[1] - 25, x0 - DOOR_T - 10, 10))
     door = door.cut(along(cyl(40, 200), PORT - STACK_DIR * 100, STACK_DIR))      # the stack crosses the door plane at PORT

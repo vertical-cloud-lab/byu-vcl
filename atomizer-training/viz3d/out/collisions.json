@@ -5,18 +5,18 @@
    "b": "oring",
    "depth": 2.5,
    "at": [
-    -116,
-    -56,
-    1342
+    -127,
+    -21,
+    1343
    ]
   },
   {
    "a": "furnace_body",
    "b": "tc_plug",
-   "depth": 8.6,
+   "depth": 8.4,
    "at": [
-    66,
-    83,
+    65,
+    84,
     1345
    ]
   },
@@ -27,13 +27,13 @@
    "at": [
     -135,
     -5,
-    1324
+    1322
    ]
   },
   {
    "a": "lever_clevis",
    "b": "lever_pin",
-   "depth": 2.6,
+   "depth": 2.7,
    "at": [
     112,
     -7,
@@ -53,21 +53,21 @@
   {
    "a": "hood",
    "b": "hood_knob",
-   "depth": 4.6,
+   "depth": 4.5,
    "at": [
-    104,
+    105,
     -20,
-    1464
+    1463
    ]
   },
   {
    "a": "chamber",
    "b": "viewport_flange",
-   "depth": 22.1,
+   "depth": 21.9,
    "at": [
-    -38,
+    2,
     -120,
-    1082
+    1098
    ]
   },
   {
@@ -75,8 +75,8 @@
    "b": "feet",
    "depth": 2.0,
    "at": [
-    609,
-    -95,
+    607,
+    532,
     110
    ]
   },
@@ -86,8 +86,8 @@
    "depth": 3.0,
    "at": [
     633,
-    207,
-    1398
+    210,
+    1393
    ]
   },
   {
@@ -97,7 +97,7 @@
    "at": [
     745,
     50,
-    1409
+    1407
    ]
   },
   {
@@ -105,9 +105,9 @@
    "b": "hmi_screen",
    "depth": 18.8,
    "at": [
-    745,
+    746,
     51,
-    1414
+    1412
    ]
   },
   {
@@ -332,7 +332,7 @@
     },
     {
      "label": "2c.4",
-     "caption": "With the splash disc already in and the door locked open, slide the stack into the door's housing, not yet to its mark, and fit both clamps without touching the safety cover.",
+     "caption": "With the splash disc already in and the door locked open, slide the stack into the door's housing, short of its mark for now, and fit both clamps without touching the safety cover.",
      "start_frame": 211,
      "end_frame": 277
     },
@@ -362,7 +362,7 @@
     },
     {
      "label": "2c.9",
-     "caption": "Run the frequency check now, before closing. Swing the door shut with the stack still pulled back, so the upper sonotrode clears the opening, then slide it in to its mark and clamp it: the stream will land mid-plate, beside the upper sonotrode.",
+     "caption": "Run the frequency check now, before closing. Swing the door shut, the stack pulled back if the upper sonotrode would catch the opening, then slide it to its mark and clamp it: the stream must land on the plate, never on the upper sonotrode.",
      "start_frame": 597,
      "end_frame": 679
     },
@@ -500,7 +500,7 @@
     },
     {
      "label": "5.6",
-     "caption": "Once the plate is hot every drop atomizes: droplets fly off the plate, freeze in the argon and fall to the cone. The stream lands mid-plate, beside the upper sonotrode, never on it.",
+     "caption": "Once the plate is hot every drop atomizes: droplets fly off the plate, freeze in the argon and fall to the cone. The stream lands on the plate, never on the upper sonotrode.",
      "start_frame": 289,
      "end_frame": 393
     },
@@ -542,13 +542,13 @@
     },
     {
      "label": "O.3",
-     "caption": "About three-quarters of the way through, Gage pulled the stack back about 40 mm. The stream clears the upper sonotrode now, but lands near the plate's free end.",
+     "caption": "About three-quarters of the way through, Gage pulled the stack back about 40 mm. The stream clears the upper sonotrode now and lands on the plate, 71 mm from the hole and 39 mm from its tip.",
      "start_frame": 183,
      "end_frame": 254
     },
     {
      "label": "O.4",
-     "caption": "Some of it atomizes now, but most of the melt is already on the upper sonotrode and the plate: very little powder (4yghtr). Before closing the door, check the stream will land mid-plate, beside the upper sonotrode.",
+     "caption": "Some of it atomizes now, but most of the melt is already on the upper sonotrode and the plate: very little powder (4yghtr). Before closing the door, check the stream will land on the plate, never on the upper sonotrode.",
      "start_frame": 255,
      "end_frame": 353
     }
@@ -584,7 +584,7 @@
     },
     {
      "label": "7.3",
-     "caption": "Swing the three bolts back, pull the stack back in its housing so the upper sonotrode clears the opening, and open the door: the plate comes out with it. The chamber and cone are water-cooled and wet; the furnace parts are still hot.",
+     "caption": "Swing the three bolts back and open the door: the plate comes out with it. If the upper sonotrode would catch the opening's edge, pull the stack back in its housing first. The chamber and cone are water-cooled and wet; the furnace parts are still hot.",
      "start_frame": 263,
      "end_frame": 345
     },
