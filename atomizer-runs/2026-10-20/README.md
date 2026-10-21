@@ -26,7 +26,7 @@ off the frames.
 | V1 | [10/20/2026 Atomizer set up Video 1](https://youtu.be/7c8iHQInI_A) | 24:46 | 14:35:35–15:00:21 | Argon found empty and the cylinder swapped; furnace inspected and cleaned; stack taken out; booster swap started at the bench |
 | V2 | [10/20/2026 Atomizer Set Up Video 2](https://youtu.be/vPhZTvfIu7s) | 14:13 | 15:02:16–15:16:28 | Booster swap continued; bench scan; a housing O-ring found off and refitted |
 | V3 | [10/20/2026 Atomizer Set Up Video 3](https://youtu.be/OFS_PLxoV94) | 25:41 | 15:19:50–15:45:30 | Stack torqued, put into the door, plate on, rescanned; rods and furnace; regulator set; powder container wiped and clamped |
-| V4 | [10/20/2026 Atomizer Set Up Video 4](https://youtu.be/Ev9WMscAetw) | 4:21 | 15:48:09–15:52:29 | Container valve; argon; which alloy the rods are; cold purge started on the HMI |
+| V4 | [10/20/2026 Atomizer Set Up Video 4](https://youtu.be/Ev9WMscAetw) | 4:21 | 15:48:09–15:52:29 | Container valve; argon; the storage closet; cold purge started on the HMI |
 | | [`z13xp1AcKag`](https://www.youtube.com/watch?v=z13xp1AcKag), *atomizer stream picam-ot2, 2026-10-20 UTC 19:02* | live until 21:00 | 13:02:47 on | The room from the ceiling, 144p at 2 fps, 128 × 72 blocks ([`docs/stream-cams.md`](../../docs/stream-cams.md#pixelation)). Pulled every 2 s from 13:24:47 to 16:17:33 |
 | | [`VSM60ulrHVM`](https://www.youtube.com/watch?v=VSM60ulrHVM), *… 2026-10-20 UTC 11:00* | 7:58:46 | 05:01–13:02 | The same; sampled once a minute from 07:56. The room is empty in every sample |
 
@@ -111,12 +111,13 @@ European time and runs about 3 minutes slow.
   ([V3 12:16](https://youtu.be/OFS_PLxoV94?t=736)), scanned 39 665 Hz before the purge
   ([V4 2:36](https://youtu.be/Ev9WMscAetw?t=156)). The SOP says the reverse (1.5:1) booster
   reads under 40 kHz and that this is acceptable for short runs ([T7 41:40](https://www.youtube.com/embed/FDRTt68Vfvo?start=2500)).
-- **Which alloy is loaded is open.** *"I think we're ready for these rods"*
+- **The charge is not identified on camera.** *"I think we're ready for these rods"*
   ([V3 17:08](https://youtu.be/OFS_PLxoV94?t=1028)); the rods are wiped with a paper towel and
-  go into the furnace at [V3 19:00](https://youtu.be/OFS_PLxoV94?t=1140). In V4, in the storage
-  closet: *"All 40-47?" — "Yeah, I believe most of them are. It says exactly on it if it is or
-  not"* ([V4 2:14](https://youtu.be/Ev9WMscAetw?t=134)). The repeatability plan is 6063. How many
-  rods, and their mass, are not on camera.
+  go into the furnace at [V3 19:00](https://youtu.be/OFS_PLxoV94?t=1140). Their label, number
+  and mass are not shown. The repeatability plan is 6063. (In V4, at the storage closet, someone
+  asks which jar to take from: *"All 40-47?" — "Yeah, I believe most of them are. It says exactly
+  on it if it is or not"* ([V4 2:13](https://youtu.be/Ev9WMscAetw?t=133)). That reads as being
+  about the powder jars from the earlier 4047 runs, not the charge.)
 - **The purge was started at the end, then the room was left.** HMI at
   [V4 2:36–3:02](https://youtu.be/Ev9WMscAetw?t=156): chamber 72 then 140 mbar, then vacuum pump and
   vacuum valve, −35 mbar and falling toward the −850 mbar setpoint; O2 1000 ppm, the display's
@@ -172,7 +173,7 @@ European time and runs about 3 minutes slow.
 | 15:43:49 | [V3 23:58](https://youtu.be/OFS_PLxoV94?t=1438) | *"Definitely a leak in here somewhere"* |
 | 15:43:58–15:45:10 | [V3 24:08](https://youtu.be/OFS_PLxoV94?t=1448) | Under the machine at the powder container: towel wetted from the squeeze bottle, flange and fittings wiped, clamped |
 | 15:48:09–15:48:54 | [V4 0:00](https://youtu.be/Ev9WMscAetw?t=0) | Seated at the container's lower valve, tightening a clamp |
-| 15:50:02–15:50:32 | [V4 1:53](https://youtu.be/Ev9WMscAetw?t=113) | *"Which jar it's from?" … "All 40-47?"*; into the closet |
+| 15:50:02–15:50:32 | [V4 1:53](https://youtu.be/Ev9WMscAetw?t=113) | At the storage closet with someone taking material: *"Do you know which jar it's from?" … "All 40-47?" — "Yeah, I believe most of them are"* |
 | 15:50:45–15:51:11 | [V4 2:36](https://youtu.be/Ev9WMscAetw?t=156) | HMI: 72 → 140 mbar, vacuum pump, −35 mbar |
 | 15:52:29 | | V4 ends; room empty on the stream from 15:53 |
 | 15:56–15:59 | YouTube | V1–V4 uploaded |
@@ -199,7 +200,7 @@ and Gage's [daily SOP](https://github.com/vertical-cloud-lab/byu-vcl/blob/8981f5
 | Plate on at 50 N·m with a counter-hold | ◐ | Plate on at [V3 10:08](https://youtu.be/OFS_PLxoV94?t=608); torque wrench on it at [V3 14:12](https://youtu.be/OFS_PLxoV94?t=852), with an open-end wrench as counter-hold at [V3 16:00](https://youtu.be/OFS_PLxoV94?t=960). The setting is not said or legible |
 | Rescan, then wet test over the whole plate | ◐ | Rescan ✔; no wet test seen |
 | Plate positioned so the melt lands high, mid-plate | – | Not checked on camera. This is the step that failed on Oct 2, 6 and 8 |
-| Clean feedstock, ≤20 mm, 250–300 g, 6063 for the baseline | ◐ | Rods wiped with a paper towel before loading ([V3 19:00](https://youtu.be/OFS_PLxoV94?t=1140)); not weighed on camera; alloy questioned, *"All 40-47?"* ([V4 2:14](https://youtu.be/Ev9WMscAetw?t=134)) |
+| Clean feedstock, ≤20 mm, 250–300 g, 6063 for the baseline | ◐ | Rods wiped with a paper towel before loading ([V3 19:00](https://youtu.be/OFS_PLxoV94?t=1140)); their alloy, number and mass are not on camera |
 | Furnace lid closed, no hiss | – | Not seen clearly |
 | Container and seals wiped (with IPA per the SOP), clamped | ✔ | Done in response to the leak, [V3 24:08](https://youtu.be/OFS_PLxoV94?t=1448), [V4 0:08](https://youtu.be/Ev9WMscAetw?t=8) |
 | Leak found and fixed before the washes | ◐ | Found from the HMI at 15:43 (*"definitely a leak"*); container seals cleaned and reclamped; the re-test is not filmed |
@@ -232,7 +233,7 @@ Settings to hold, from the plan and the Oct 8 notes:
 
 | Setting | Value |
 | --- | --- |
-| Alloy | Al 6063: **check the rods**, since 4047 came up on Oct 20 |
+| Alloy | Al 6063: confirm the label on the rods already loaded (not shown on Oct 20) |
 | Plate | small Mo |
 | Booster | 1.5:1 (reverse) |
 | Amplitude | 90 (set it; on Oct 6 it was left at 50) |
@@ -242,7 +243,7 @@ Settings to hold, from the plan and the Oct 8 notes:
 
 Before the pour:
 
-- [ ] Confirm the rods are 6063 and weigh the charge.
+- [ ] Confirm the loaded rods are 6063, and record their number and mass.
 - [ ] Check the nozzle exit for frozen globs, and get out whatever was left stuck in the
       furnace on Oct 20.
 - [ ] Wet test the plate, then check the stream's landing point on it.
@@ -266,7 +267,7 @@ During and after:
   chamber hold −850 mbar after reclamping?
 - What was stuck in the furnace (V1 11:20), and is it still there?
 - What was cracking at V3 14:06: the plate, the catch bowl, or something else?
-- Are the rods 6063 or 4047, and how many went in?
+- Which rods went in (alloy, how many, total mass)?
 - What did the regulator read after the swap, and what is the cylinder's purity?
 - Who was at the machine at 13:29–13:41, and was the stack torqued in the vise?
 - Was the chamber left under vacuum, under argon, or vented overnight?
@@ -274,7 +275,9 @@ During and after:
 ## Reproducing
 
 Videos: as for Oct 8 ([`../README.md`](../README.md#getting-the-videos) on PR #268), on the
-CubXL Pi into `~/ytframes/atomizer-2026-10-20/`, 871 MB.
+CubXL Pi into `~/ytframes/atomizer-2026-10-20/`, 871 MB. The stream segments are kept beside
+them in `~/ytframes/oct20/` (124 MB), with the fetch script as `~/ytframes/live_dvr_fetch.py`.
+Nothing else on that Pi was changed: no sudo, no services, the existing `~/.venvs/ytframes`.
 
 Stream: the live broadcast's 144p HLS segments were fetched by media-sequence number on
 the same Pi with [`tools/live_dvr_fetch.py`](tools/live_dvr_fetch.py), since a live
