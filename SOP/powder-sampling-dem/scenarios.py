@@ -173,14 +173,6 @@ def load_bed(sim):
     sim.hj, sim.hxi, sim.wp, sim.wxi = b["hj"].copy(), b["hxi"].copy(), b["wp"].copy(), b["wxi"].copy()
 
 
-def freeze_outer(sim, r_keep=8 * mm):
-    """Freeze the bed far from a tool on the axis (it barely moves there) so the run is quicker."""
-    far = (sim.mode == FREE) & (np.hypot(sim.x[:, 0], sim.x[:, 1]) > r_keep)
-    sim.v[far] = 0
-    sim.w[far] = 0
-    sim.mode[far] = ASLEEP
-
-
 def bed_top_at_axis(sim, r=2.5 * mm):
     x = sim.x
     sel = (sim.mode != DEAD) & (np.hypot(x[:, 0], x[:, 1]) < r)
@@ -252,16 +244,17 @@ def corer(piston_mode):
     sim = Sim()
     load_bed(sim)
     top = bed_top_at_axis(sim)
-    freeze_outer(sim)
     z_clear = H_JAR + 1.5 * mm
     v_in = 30 * mm  # m/s
     t_in0 = 0.12
-    t_in1 = t_in0 + (z_clear - 0.15 * mm) / v_in
+    z_surf = top + 1 * mm
+    t_air = t_in0 + (z_clear - z_surf) / (80 * mm)  # quicker through the air
+    t_in1 = t_air + (z_surf - 0.15 * mm) / v_in
     t_lift0 = t_in1 + 0.12
     t_lift1 = t_lift0 + 0.5
     t_move1 = t_lift1 + 0.4
     t_down1 = t_move1 + 0.3
-    tip = [(0.0, (0, 0, z_clear)), (t_in0, (0, 0, z_clear)), (t_in1, (0, 0, 0.15 * mm)),
+    tip = [(0.0, (0, 0, z_clear)), (t_in0, (0, 0, z_clear)), (t_air, (0, 0, z_surf)), (t_in1, (0, 0, 0.15 * mm)),
            (t_lift0, (0, 0, 0.15 * mm)), (t_lift1, (0, 0, z_clear + 1 * mm)),
            (t_move1, (X_TRAY, 0, z_clear + 1 * mm)), (t_down1, (X_TRAY, 0, 3.0 * mm))]
     state = dict(t_ext0=None, t_ext1=None, piston_rel=None)
@@ -412,16 +405,18 @@ def thief():
     sim = Sim()
     load_bed(sim)
     top = bed_top_at_axis(sim)
-    freeze_outer(sim)
     tip_floor = 0.2 * mm
     ports = [tip_floor + NOSE + 0.6 * mm + k * (top - tip_floor - NOSE - 0.6 * mm - PORT_H) / 2 for k in range(3)]
     z_clear = H_JAR + 1 * mm
     t_in0, v_in = 0.1, 30 * mm
-    t_in1 = t_in0 + (z_clear - tip_floor) / v_in
+    z_surf = top + 1 * mm
+    t_air = t_in0 + (z_clear - z_surf) / (80 * mm)  # quicker through the air
+    t_in1 = t_air + (z_surf - tip_floor) / v_in
     t_open = t_in1 + 0.1
     t_close = t_open + 0.45
     t_out1 = t_close + 0.1 + (H_JAR + 2 * mm) / (40 * mm)
-    keys = [(0, (0, 0, z_clear)), (t_in0, (0, 0, z_clear)), (t_in1, (0, 0, tip_floor)), (t_close + 0.1, (0, 0, tip_floor)),
+    keys = [(0, (0, 0, z_clear)), (t_in0, (0, 0, z_clear)), (t_air, (0, 0, z_surf)), (t_in1, (0, 0, tip_floor)),
+            (t_close + 0.1, (0, 0, tip_floor)),
             (t_out1, (0, 0, z_clear + 3 * mm))]
 
     def pose(t):
@@ -462,6 +457,10 @@ def thief():
     cap_rel = {int(i): (sim.x[i] - path(sim.t, keys)).tolist() for c in captured for i in c}
     for c in captured:
         sim.mode[c] = DEAD  # they ride out inside the thief (drawn that way in the animation)
+    rest = sim.mode == FREE
+    sim.v[rest] = 0
+    sim.w[rest] = 0
+    sim.mode[rest] = ASLEEP  # not scored any more; frozen so pulling the thief out costs nothing
     run_phase(sim, rec, t_out1 - sim.t + 0.2, "close the ports and pull the thief out")
     extra = dict(bed_depth_axis_mm=top / mm, ports_mm=[p / mm for p in ports])
     rec.save("thief", extra=dict(captured=[c.tolist() for c in captured], capture_t=t_close, cap_rel=cap_rel,
@@ -559,6 +558,53 @@ def spoon():
 
 
 # ---------------------------------------------------------------------------
+# Scrape off whole layers (idealised)
+
+
+def peel():
+    """Scrape the whole surface down a thin layer at a time; swab the centre at three depths.
+
+    Idealised: powder above the scraping level just disappears, so this is the best case for
+    scraping off layers, not a model of a particular tool.
+    """
+    sim = Sim()
+    load_bed(sim)
+    top = bed_top_at_axis(sim)
+    sim.tools = jar_tools()
+    rec = Recorder(sim)
+    v_cut = 12 * mm
+    targets = [top * 5 / 6, top / 2, top / 6]
+    names = ["top sample", "middle sample", "bottom sample"]
+    state = dict(z0=top + 1 * mm, t0=0.0, zt=top + 1 * mm)
+
+    def z_cut(t):
+        return max(state["zt"], state["z0"] - v_cut * (t - state["t0"]))
+
+    def scrape(s):
+        above = (s.mode == FREE) & (s.x[:, 2] > z_cut(s.t))
+        s.mode[above] = DEAD
+
+    run_phase(sim, rec, 0.1, "scrape the whole surface down, a thin layer at a time")
+    samples, taken = [], []
+    for k, zt in enumerate(targets):
+        state.update(z0=z_cut(sim.t), t0=sim.t, zt=zt)
+        run_phase(sim, rec, (state["z0"] - zt) / v_cut, f"scrape down to the {names[k].split()[0]} third", hook=scrape)
+        run_phase(sim, rec, 0.12, f"swab the middle of the fresh surface ({names[k]})", hook=scrape)
+        r = np.hypot(sim.x[:, 0], sim.x[:, 1])
+        near = (sim.mode == FREE) & (r < 3 * mm)
+        ztop = (sim.x[near, 2] + sim.rad[near]).max()
+        sel = np.where(near & (sim.x[:, 2] + sim.rad > ztop - 1.1 * mm))[0]
+        samples.append(dict(name=names[k], **tally(sim, sel)))
+        taken.append(sel)
+        sim.mode[sel] = DEAD
+    run_phase(sim, rec, 0.1, "three swabs taken")
+    extra = dict(bed_depth_axis_mm=top / mm, cut_mm=[t / mm for t in targets])
+    rec.save("peel", extra=dict(taken=[t.tolist() for t in taken], **extra))
+    save_result("peel", samples, "Idealised: powder above the scraping level is removed; the sample is the top "
+                "particle layer within 3 mm of the axis.", extra=extra)
+
+
+# ---------------------------------------------------------------------------
 # Pour along a line
 
 
@@ -615,5 +661,5 @@ if __name__ == "__main__":
     what = sys.argv[1]
     t0 = time.time()
     {"fill": fill, "open_tube": lambda: corer(False), "piston": lambda: corer(True), "thief": thief, "spoon": spoon,
-     "pour": pour}[what]()
+     "peel": peel, "pour": pour}[what]()
     print(f"{what} done in {time.time() - t0:.0f} s", flush=True)

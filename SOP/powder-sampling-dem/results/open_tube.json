@@ -1,0 +1,98 @@
+{
+  "scenario": "open_tube",
+  "groups": [
+    "bottom third",
+    "middle third",
+    "top third",
+    "sweepings"
+  ],
+  "samples": [
+    {
+      "name": "first third laid (bottom)",
+      "n": 198,
+      "counts": [
+        112,
+        64,
+        21,
+        1
+      ],
+      "mean_label": 0.3505504462901597
+    },
+    {
+      "name": "second third (middle)",
+      "n": 198,
+      "counts": [
+        48,
+        81,
+        60,
+        9
+      ],
+      "mean_label": 0.5138882327052717
+    },
+    {
+      "name": "last third laid (top)",
+      "n": 198,
+      "counts": [
+        29,
+        25,
+        111,
+        33
+      ],
+      "mean_label": 0.6681033289992399
+    }
+  ],
+  "notes": "Core laid out along the tray, then split into thirds by particle count along the line. Recovery = core height in the tube at the floor / bed depth at the axis.",
+  "core_particles": 620,
+  "core_recovery": 0.972348584821663,
+  "bed_depth_axis_mm": 15.458925220594395,
+  "core_top_mm": 17.827655872114068,
+  "line_x_mm": [
+    22.318952642164064,
+    57.16614603599322
+  ],
+  "core_tally": {
+    "n": 620,
+    "counts": [
+      217,
+      170,
+      189,
+      44
+    ],
+    "mean_label": 0.4942099106143881
+  },
+  "sliced_in_tube": [
+    {
+      "name": "bottom slice",
+      "n": 207,
+      "counts": [
+        185,
+        21,
+        0,
+        1
+      ],
+      "mean_label": 0.1946638180256476
+    },
+    {
+      "name": "middle slice",
+      "n": 207,
+      "counts": [
+        32,
+        132,
+        42,
+        1
+      ],
+      "mean_label": 0.5221589615078179
+    },
+    {
+      "name": "top slice",
+      "n": 206,
+      "counts": [
+        0,
+        17,
+        147,
+        42
+      ],
+      "mean_label": 0.7671253845509385
+    }
+  ]
+}

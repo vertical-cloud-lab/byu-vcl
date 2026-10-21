@@ -1,0 +1,51 @@
+{
+  "scenario": "thief",
+  "groups": [
+    "bottom third",
+    "middle third",
+    "top third",
+    "sweepings"
+  ],
+  "samples": [
+    {
+      "name": "bottom port",
+      "n": 27,
+      "counts": [
+        0,
+        25,
+        2,
+        0
+      ],
+      "mean_label": 0.5219413580246913
+    },
+    {
+      "name": "middle port",
+      "n": 12,
+      "counts": [
+        0,
+        0,
+        12,
+        0
+      ],
+      "mean_label": 0.8543750000000001
+    },
+    {
+      "name": "top port",
+      "n": 1,
+      "counts": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "mean_label": 0.43720613318657575
+    }
+  ],
+  "notes": "Particles inside each port when it closed.",
+  "bed_depth_axis_mm": 15.458925220594395,
+  "ports_mm": [
+    3.8,
+    8.329462610297197,
+    12.858925220594394
+  ]
+}

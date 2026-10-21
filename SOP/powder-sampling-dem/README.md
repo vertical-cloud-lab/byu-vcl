@@ -46,12 +46,62 @@ made last lies at the top. A sampling method is good if each sample keeps its ow
   * **Spoonula:** a 9 × 5 mm spoon with 0.9 mm lips. It digs in at 40°, 52° and 62° (steeper for the
     deeper layers, to stay inside the jar), levels off, and lifts out. Each scoop is aimed at the
     middle of one third of the depth on the axis, one after another in the same spot.
-  * **Pour along a line:** the jar tilts over its rim to 150° over 3 s while moving along a tray at
-    20 mm/s, 10 mm above it. The line is then split into thirds, and also into nine bins.
+  * **Scrape off whole layers (idealised):** everything above a level that moves down at 12 mm/s is
+    removed, pausing at the middle of each third (on the axis) to swab the top layer of particles
+    within 3 mm of the axis.
+  * **Pour along a line:** the jar tilts over its rim to 150° over 2.6 s while moving along a tray at
+    20 mm/s, with the rim 10 mm above it. The line is then split into thirds, and also into nine bins.
 * **Scoring** ([`summary.py`](summary.py)): each sample's share of particles from each third, and
   **drift kept** = (mean making time of the top sample − that of the bottom sample) ÷ (the same for
   the true top and bottom thirds). 100 % means a steady Si drift during the run would be measured in
   full, and 0 % means the samples are all the same mixture.
+
+## Results
+
+![summary](media/summary.png)
+
+Animations: [`media/`](media/) has a GIF for each method, and [`all-methods.mp4`](media/all-methods.mp4) runs them
+all in a row at full resolution (`render.py` also writes an MP4 per method; those aren't committed). The numbers are in [`results/`](results/) ([`summary.md`](results/summary.md) is the
+table version of the chart).
+
+| Method | Top sample from the top third | Middle | Bottom | Drift kept |
+| --- | ---: | ---: | ---: | ---: |
+| Scrape off whole layers, swab the centre (idealised) | 100 % | 100 % | 100 % | 115 %* |
+| Piston corer, core sliced in the tube | 77 % | 68 % | 89 % | 87 % |
+| Open tube, core sliced in the tube | 71 % | 64 % | 89 % | 86 % |
+| Piston corer, core laid out on a tray | 67 % | 47 % | 70 % | 70 % |
+| Open tube, core laid out on a tray | 56 % | 41 % | 57 % | 48 % |
+| Pour along a line, split in thirds | 34 % | 32 % | 46 % | 23 % |
+| Spoonula, one spoonful per depth in the same spot | 45 % (n = 11) | 7 % | 11 % | 1 % |
+| Three-port thief | 0 % (n = 1) | 0 % (n = 12) | 0 % (n = 27) | −13 % |
+
+\* Over 100 % because each swab is a thin slice from near the middle of its third, so the swabs are
+further apart in time than the thirds' averages are.
+
+What happened in each:
+
+* **Tubes.** Pushed to the floor of this shallow bed (15 mm deep, about two bore diameters), the open
+  tube's core came out 3 % short and the piston corer's not at all. Short cores are a problem in deep
+  beds: Susana (2012, via Edison) measured 60 % recovery for a 15 mm tube pushed 150 mm into lactose.
+  Inside the tube both cores were still layered. Most of the mixing happened when the core was pushed
+  out onto a moving tray, where later powder rolled over earlier powder. Slicing the core into thirds
+  while it is still in the tube kept 86-87 % of the drift, against 48-70 % for laying it out.
+* **Thief.** The rod dragged powder down along its sides, so the bottom port filled with middle-third
+  powder and the middle port with top-third powder. The ports took in 27, 12 and 1 particles. This is
+  the failure the layered-bed experiments report for side-port thieves (Muzzio et al. 1997).
+* **Spoonula, one spoonful per depth.** The first scoop, near the surface, held only 11 particles. Each
+  deeper scoop went in through the layers above and lifted them out with it, and the hole filled from
+  the sides in between. The middle scoop was 66 % top third and 28 % sweepings.
+* **Scraping off whole layers** (idealised: the scraped powder just disappears, and the swab takes the
+  top layer of particles within 3 mm of the axis). Every swab came entirely from its intended third.
+  The swab has to be at the centre: the layers slope down toward the wall, so a horizontal surface
+  near the wall is younger powder than at the centre.
+* **Pour along a line.** The jar tilted at a steady rate, but the powder came out in a few avalanches
+  within about a second, so the line piled up into a heap, and later powder buried earlier powder. The
+  first ninth of the line was 53 % top third and 11 % sweepings. After that the mean making time fell
+  slowly along the line, from 0.52 to 0.34 (the true range is 0 to 1), and rose again in the last ninth.
+* **Sweepings.** In the filled jar, a swab of the untouched surface at the centre (the top layer of
+  particles within 3 mm of the axis) would be 16 of 18 particles sweepings, not the end of the run.
 
 ## What it can and can't tell us
 
@@ -75,8 +125,9 @@ made last lies at the top. A sampling method is good if each sample keeps its ow
 ```
 pip install numba numpy scipy matplotlib pillow imageio imageio-ffmpeg
 python scenarios.py fill                                  # ~2 min on 4 cores
-python scenarios.py open_tube    # also piston, thief, spoon, pour (each 5-15 min)
-python render.py fill open_tube piston thief spoon pour  # media/*.gif, media/*.mp4
+python scenarios.py open_tube    # also piston, thief, spoon, peel, pour (each 5-30 min)
+python core_slices.py open_tube piston                    # score the tube cores as if sliced in the tube
+python render.py fill open_tube piston thief spoon peel pour  # media/<name>.gif and .mp4
 python render.py --combined                               # media/all-methods.mp4
 python summary.py                                         # media/summary.png, results/summary.md
 ```

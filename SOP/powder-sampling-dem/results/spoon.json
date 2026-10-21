@@ -1,0 +1,51 @@
+{
+  "scenario": "spoon",
+  "groups": [
+    "bottom third",
+    "middle third",
+    "top third",
+    "sweepings"
+  ],
+  "samples": [
+    {
+      "name": "scoop 1 (top)",
+      "n": 11,
+      "counts": [
+        0,
+        0,
+        5,
+        6
+      ],
+      "mean_label": 0.6816234068038818
+    },
+    {
+      "name": "scoop 2 (middle)",
+      "n": 123,
+      "counts": [
+        0,
+        8,
+        81,
+        34
+      ],
+      "mean_label": 0.7606499995275557
+    },
+    {
+      "name": "scoop 3 (bottom)",
+      "n": 121,
+      "counts": [
+        13,
+        35,
+        66,
+        7
+      ],
+      "mean_label": 0.6769483055658398
+    }
+  ],
+  "notes": "Particles on the spoon when it cleared the jar.",
+  "bed_depth_axis_mm": 15.458925220594395,
+  "blade_z_mm": [
+    12.882437683828663,
+    7.7294626102971975,
+    2.5764875367657325
+  ]
+}

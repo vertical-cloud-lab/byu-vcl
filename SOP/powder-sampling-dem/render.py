@@ -39,6 +39,7 @@ TITLES = {
     "piston": "Piston corer: piston held at the surface",
     "thief": "Three-port sampling thief",
     "spoon": "Spoonula, one scoop per layer",
+    "peel": "Scrape off whole layers (idealised)",
     "pour": "Pour along a line, sample along it",
 }
 
@@ -315,7 +316,7 @@ class Run:
     def camera(self, f, w, h):
         n = self.name
         if n == "pour":
-            eye, tgt = orbit([34 * mm, -24 * mm, 2 * mm], 150 * mm, -12, 34)
+            eye, tgt = orbit([26 * mm, -16 * mm, 9 * mm], 178 * mm, -16, 26)
             return Camera(eye, tgt, 36, w, h)
         if n in ("open_tube", "piston"):
             k = self.tool_index("tube")
@@ -397,6 +398,8 @@ class Run:
         d.text((int(24 * s), int(58 * s)), str(self.caption[f]), font=fr, fill=(60, 60, 70))
         d.text((w - int(250 * s), int(22 * s)), f"t = {self.t[f]:.2f} s (simulated)", font=fs, fill=(90, 90, 100))
         y0 = h - int(122 * s)
+        d.rounded_rectangle([int(12 * s), y0 - int(10 * s), int(330 * s), y0 + int(112 * s)], radius=int(8 * s),
+                            fill=(255, 255, 255, 215))
         for k in range(4):
             yy = y0 + int(k * 26 * s)
             c = tuple(int(255 * v) for v in GROUP_RGB[k])
@@ -443,9 +446,31 @@ def frames_for(run, every=1, hold_s=2.0, fps=25, w=W, h=H):
 
 
 def write_gif(frames, path, fps):
-    pal = frames[len(frames) // 2].convert("P", palette=Image.ADAPTIVE, colors=128)
-    q = [fr.quantize(palette=pal, dither=Image.Dither.NONE) for fr in frames]
+    # One palette for the whole GIF: 104 colours from several frames, plus the group colours at
+    # 24 shades pinned exactly, so the legend and the particles keep their colours in every frame.
+    w, h = frames[0].size
+    pick = np.linspace(0, len(frames) - 1, 6).astype(int)
+    mosaic = Image.new("RGB", (w, h * len(pick)))
+    for j, k in enumerate(pick):
+        mosaic.paste(frames[k].convert("RGB"), (0, j * h))
+    base = mosaic.quantize(colors=104, method=Image.Quantize.MEDIANCUT).getpalette()[: 104 * 3]
+    pinned = []
+    for c in GROUP_RGB:
+        for shade in (0.35, 0.5, 0.65, 0.8, 0.9, 1.0):
+            pinned += [int(255 * min(1.0, v * shade)) for v in c]
+    pal = Image.new("P", (1, 1))
+    pal.putpalette(base + pinned + [0, 0, 0] * (256 - 104 - len(pinned) // 3))
+    q = [fr.convert("RGB").quantize(palette=pal, dither=Image.Dither.NONE) for fr in frames]
     q[0].save(path, save_all=True, append_images=q[1:], duration=int(1000 / fps), loop=0, optimize=True)
+
+
+def gif_from_mp4(name, size=(800, 500), fps=20, hold=50):
+    rd = imageio.get_reader(os.path.join(MEDIA, f"{name}.mp4"))
+    frames = [Image.fromarray(f).resize(size, Image.LANCZOS) for f in rd]
+    rd.close()
+    frames = frames[: len(frames) - 75] + [frames[-1]] * hold
+    write_gif(frames, os.path.join(MEDIA, f"{name}.gif"), fps)
+    print(name, "gif", os.path.getsize(os.path.join(MEDIA, f"{name}.gif")) // 1024, "KB", flush=True)
 
 
 def write_mp4(frames, path, fps):
@@ -467,16 +492,28 @@ def title_card(text, sub, w=W, h=H):
 
 def main(args):
     os.makedirs(MEDIA, exist_ok=True)
+    if args and args[0] == "--gif-from-mp4":
+        for n in args[1:]:
+            gif_from_mp4(n)
+        return
     if args and args[0] == "--combined":
-        names = args[1:] or ["fill", "open_tube", "piston", "thief", "spoon", "pour"]
+        # stitch the per-method MP4s together with a title card before each
+        names = args[1:] or ["fill", "open_tube", "piston", "thief", "spoon", "peel", "pour"]
         fps = 30
-        allf = [title_card("Sampling a layered powder jar: DEM", "colour = when the powder was made; "
-                           "the question is which method keeps top, middle and bottom apart")] * 75
-        for n in names:
-            run = Run(n)
-            allf += [title_card(TITLES[n], "")] * 30
-            allf += frames_for(run, every=1, hold_s=2.5, fps=fps)
-        write_mp4(allf, os.path.join(MEDIA, "all-methods.mp4"), fps)
+        with imageio.get_writer(os.path.join(MEDIA, "all-methods.mp4"), fps=fps, codec="libx264", quality=7,
+                                pixelformat="yuv420p", macro_block_size=8) as wtr:
+            card = np.asarray(title_card("Sampling a layered powder jar (DEM)",
+                                         "colour = when the powder was made; which method keeps the layers apart?"))
+            for _ in range(75):
+                wtr.append_data(card)
+            for n in names:
+                card = np.asarray(title_card(TITLES[n], ""))
+                for _ in range(30):
+                    wtr.append_data(card)
+                rd = imageio.get_reader(os.path.join(MEDIA, f"{n}.mp4"))
+                for fr in rd:
+                    wtr.append_data(fr)
+                rd.close()
         return
     for n in args:
         run = Run(n)

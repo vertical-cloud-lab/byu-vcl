@@ -1,0 +1,51 @@
+{
+  "scenario": "peel",
+  "groups": [
+    "bottom third",
+    "middle third",
+    "top third",
+    "sweepings"
+  ],
+  "samples": [
+    {
+      "name": "top sample",
+      "n": 37,
+      "counts": [
+        0,
+        0,
+        37,
+        0
+      ],
+      "mean_label": 0.9019346846846847
+    },
+    {
+      "name": "middle sample",
+      "n": 39,
+      "counts": [
+        0,
+        39,
+        0,
+        0
+      ],
+      "mean_label": 0.4842286324786325
+    },
+    {
+      "name": "bottom sample",
+      "n": 36,
+      "counts": [
+        36,
+        0,
+        0,
+        0
+      ],
+      "mean_label": 0.13509259259259257
+    }
+  ],
+  "notes": "Idealised: powder above the scraping level is removed; the sample is the top particle layer within 3 mm of the axis.",
+  "bed_depth_axis_mm": 15.458925220594395,
+  "cut_mm": [
+    12.882437683828663,
+    7.7294626102971975,
+    2.5764875367657325
+  ]
+}
