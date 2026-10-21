@@ -30,6 +30,13 @@ data-acquisition board. All the software that talks to it is Windows-only:
 Use the Windows PC that may have come with it (the one with the Watlow
 EZ-ZONE programs), or any Windows laptop you have administrator rights on.
 
+That PC runs Windows 7, which no longer gets security updates, so it stays off
+BYU's network and the internet. Its Ethernet port is cabled to the CubXL Pi
+(des4) and nothing else, and the Pi forwards Remote Desktop to it from the
+tailnet ([setup on #231](https://github.com/vertical-cloud-lab/byu-vcl/issues/231#issuecomment-6327249004)).
+The Pi only passes that traffic along. The EZstat's USB cable still goes into
+the PC.
+
 ## 2. Accounts and subscriptions: none needed
 
 | Software | Cost and accounts |
@@ -90,17 +97,31 @@ installs nothing. It's about 2 GB, so if the lab PC has no internet, run it on
 any Windows laptop and carry the folder over on a USB stick. Or use the links
 in the table and check each file with `certutil -hashfile "<file>" SHA256`.
 
+**Downloading on a laptop for the Windows 7 PC? Add `-DAQmx 9.7`:**
+```
+powershell -ExecutionPolicy Bypass -File .\get-ezstat-software.ps1 -DAQmx 9.7
+```
+Otherwise the script picks the NI-DAQmx for the Windows it's running on, so a
+Windows 10 or 11 laptop would fetch 14.5.1. On Windows 7, 9.7 is the supported
+version, and the one the manual names. The set is then about 1.9 GB.
+
 ## 4. Steps
 
 ### Step 0. Check the PC (5 minutes; changes nothing)
 
 1. Open [`windows/check-ezstat-pc.ps1`](windows/check-ezstat-pc.ps1) on GitHub,
-   click **Download raw file**, and save it on the PC.
-2. In that folder, Shift + right-click → **Open PowerShell window here**, and run:
+   click **Download raw file**, and save it on the PC. The Windows 7 PC is
+   offline, so download it on a laptop and bring it over on a USB stick, or
+   copy it across in Remote Desktop.
+2. In that folder, Shift + right-click → **Open command window here** (Windows 7)
+   or **Open PowerShell window here** (Windows 10 or 11), and run:
    ```
    powershell -ExecutionPolicy Bypass -File .\check-ezstat-pc.ps1
    ```
 3. It copies its report to the clipboard. Paste it into a comment on the PR.
+   - Over Remote Desktop, the clipboard is shared, so paste it on your laptop.
+   - Sitting at the offline PC, paste it into Notepad and save it to the USB
+     stick.
 
 It reports the Windows version, admin rights, Secure Boot and Memory integrity,
 any NuVant, NI and Watlow software with versions, where EZware is installed, any
@@ -136,7 +157,9 @@ Keep the EZstat's USB cable unplugged from the PC until step 2.
    **Done**. If it asks for the model, choose **EZstat-Pro**: the wrong model
    stops it working properly (manual p. 43).
 7. For the session, turn off sleep and Windows Update. If the PC freezes, the
-   cell can stay on, uncontrolled (manual p. 26).
+   cell can stay on, uncontrolled (manual p. 26). For Remote Desktop, leave
+   sleep off for good (`powercfg -change -standby-timeout-ac 0`): a sleeping
+   PC stops answering it.
 
 ### Step 3. First runs, on dummy loads (no chemistry)
 
