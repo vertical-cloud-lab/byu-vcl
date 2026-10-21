@@ -67,9 +67,19 @@ European time and runs about 3 minutes slow.
 ## What the footage shows
 
 - **The four steps in Gage's note are all on camera**, in this order: argon (14:36–14:41),
-  furnace (14:42–14:53), booster swap (14:54–15:16, then torqued 15:20–15:25), stack into the
-  door (15:27–15:30). The leak itself is not: nothing filmed shows which seal leaked or how it
-  was found.
+  furnace (14:42–14:50), stack out (14:50–14:53), booster swap (14:54–15:16, then 15:20–15:25),
+  stack into the door and plate on (15:27–15:36), rods into the furnace (15:38), and the leak
+  (15:43).
+- **The leak was found at start-up and chased to the powder container.** After setting the
+  regulator, the HMI reads a chamber pressure of 8 then 5 mbar with the −850 mbar *chamber
+  prepare* setpoint showing ([V3 23:52](https://youtu.be/OFS_PLxoV94?t=1432)), and Gage says
+  *"Definitely a leak in here somewhere"* ([V3 23:58](https://youtu.be/OFS_PLxoV94?t=1438),
+  15:43:49). He goes straight under the machine to the powder container's lower valve, wets a
+  towel from the IPA bottle, wipes the container's flange and fittings and clamps them
+  ([V3 24:08–25:20](https://youtu.be/OFS_PLxoV94?t=1448)), and tightens the lower clamp again
+  at [V4 0:08](https://youtu.be/Ev9WMscAetw?t=8). That points at the container's flange or valve
+  seal, but he doesn't say what he found. Whether the chamber then held vacuum is not filmed:
+  V4 ends with it at −35 mbar and falling (15:51:11).
 - **The argon really was empty.** *"Might be out of argon … I think we're definitely out"*
   ([V1 0:33](https://youtu.be/7c8iHQInI_A?t=33)). The regulator moves from cylinder
   …461 to …866 ([V1 5:18](https://youtu.be/7c8iHQInI_A?t=318)), and the empty one is capped
@@ -83,8 +93,8 @@ European time and runs about 3 minutes slow.
   [24:30](https://youtu.be/7c8iHQInI_A?t=1470)). After the bench scan Gage finds it: *"You know
   what's not good is when you discover a seal. It's supposed to be inside this after you put it
   together"* ([V2 9:27](https://youtu.be/vPhZTvfIu7s?t=567)), and refits it (V2 10:12–13:48).
-  That was 15:11–15:16, before the stack went into the door, so it is probably not the leak he
-  hit on start-up, but it is the kind of miss that would be one.
+  That was 15:11–15:16, before the stack went into the door, so it is not the start-up leak,
+  but it is the kind of miss that would be one.
 - **Something was left stuck in the furnace.** *"Looks like there's some aluminum down at the
   bottom of that thing"*, tweezers did not get it ([V1 6:51](https://youtu.be/7c8iHQInI_A?t=411)),
   then *"Well, that's kind of stuck for now … We'll get it out eventually when we need to"*
@@ -100,11 +110,12 @@ European time and runs about 3 minutes slow.
   ([V3 12:16](https://youtu.be/OFS_PLxoV94?t=736)), scanned 39 665 Hz before the purge
   ([V4 2:36](https://youtu.be/Ev9WMscAetw?t=156)). The SOP says the reverse (1.5:1) booster
   reads under 40 kHz and that this is acceptable ([T7 41:40](https://www.youtube.com/embed/FDRTt68Vfvo?start=2500)).
-- **Which alloy is loaded is open.** Gage mentions *"four of these rods"*
-  ([V3 15:42](https://youtu.be/OFS_PLxoV94?t=942)). In V4, fetching them: *"All 40-47?" —
-  "Yeah, I believe most of them are. It says exactly on it if it is or not"*
-  ([V4 2:14](https://youtu.be/Ev9WMscAetw?t=134)). The repeatability plan is 6063. The charge
-  was not weighed on camera.
+- **Which alloy is loaded is open.** *"I think we're ready for these rods"*
+  ([V3 17:08](https://youtu.be/OFS_PLxoV94?t=1028)); the rods are wiped with a paper towel and
+  go into the furnace at [V3 19:00](https://youtu.be/OFS_PLxoV94?t=1140). In V4, in the storage
+  closet: *"All 40-47?" — "Yeah, I believe most of them are. It says exactly on it if it is or
+  not"* ([V4 2:14](https://youtu.be/Ev9WMscAetw?t=134)). The repeatability plan is 6063. How many
+  rods, and their mass, are not on camera.
 - **The purge was started at the end, then the room was left.** HMI at
   [V4 2:36–3:02](https://youtu.be/Ev9WMscAetw?t=156): chamber 72 then 140 mbar, then vacuum pump and
   vacuum valve, −35 mbar and falling toward the −850 mbar setpoint; O2 1000 ppm, the display's
@@ -151,10 +162,14 @@ European time and runs about 3 minutes slow.
 | 15:31:18–15:32:06 | [V3 11:28](https://youtu.be/OFS_PLxoV94?t=688) | Rescan, F nominal 39 645.0 Hz |
 | 15:33:56 | [V3 14:06](https://youtu.be/OFS_PLxoV94?t=846) | *"This one is cracking. I think that means we should get a new one"* |
 | 15:34:02–15:34:26 | [V3 14:12](https://youtu.be/OFS_PLxoV94?t=852) | Torque wrench on the plate |
-| 15:35:26–15:35:58 | [V3 15:36](https://youtu.be/OFS_PLxoV94?t=936) | Rods: *"four of these rods"* |
-| 15:36:30–15:40:30 | [V3 16:40](https://youtu.be/OFS_PLxoV94?t=1000) | Furnace open; consumables from the boxes |
+| 15:35:50 | [V3 16:00](https://youtu.be/OFS_PLxoV94?t=960) | Torque wrench and an open-end wrench (counter-hold) at the plate |
+| 15:36:58 | [V3 17:08](https://youtu.be/OFS_PLxoV94?t=1028) | *"I think we're ready for these rods"* |
+| 15:37:50–15:38:50 | [V3 18:00](https://youtu.be/OFS_PLxoV94?t=1080) | Consumables box; rods wiped with a paper towel and into the furnace |
+| 15:41:50 | [V3 22:00](https://youtu.be/OFS_PLxoV94?t=1320) | Reads the checklist on the phone |
 | 15:42:54–15:43:10 | [V3 23:04](https://youtu.be/OFS_PLxoV94?t=1384) · stream | Regulator and cylinder valve set; crouched at the cylinders on the stream |
-| 15:43:58–15:45:10 | [V3 24:08](https://youtu.be/OFS_PLxoV94?t=1448) | Powder container flange wiped and clamped |
+| 15:43:42–15:43:44 | [V3 23:52](https://youtu.be/OFS_PLxoV94?t=1432) | HMI: chamber 8, then 5 mbar; O2 1000 ppm (display ceiling) |
+| 15:43:49 | [V3 23:58](https://youtu.be/OFS_PLxoV94?t=1438) | *"Definitely a leak in here somewhere"* |
+| 15:43:58–15:45:10 | [V3 24:08](https://youtu.be/OFS_PLxoV94?t=1448) | Under the machine at the powder container: IPA on a towel, flange and fittings wiped, clamped |
 | 15:48:09–15:48:54 | [V4 0:00](https://youtu.be/Ev9WMscAetw?t=0) | Seated at the container's lower valve, tightening a clamp |
 | 15:50:02–15:50:32 | [V4 1:53](https://youtu.be/Ev9WMscAetw?t=113) | *"Which jar it's from?" … "All 40-47?"*; into the closet |
 | 15:50:45–15:51:11 | [V4 2:36](https://youtu.be/Ev9WMscAetw?t=156) | HMI: 72 → 140 mbar, vacuum pump, −35 mbar |
@@ -171,21 +186,22 @@ and Gage's [daily SOP](https://github.com/vertical-cloud-lab/byu-vcl/blob/8981f5
 
 | Step | | Evidence |
 | --- | --- | --- |
-| Turn on recording cameras | ◐ | 69 min of phone video between 14:35 and 15:52. Not filmed: 13:29–13:41, 15:00–15:02, 15:16–15:19, 15:45–15:48, and whatever happened with the leak. The phone was short of space again ([V2 0:02](https://youtu.be/vPhZTvfIu7s?t=2)) |
+| Turn on recording cameras | ◐ | 69 min of phone video between 14:35 and 15:52. Not filmed: 13:29–13:41, 15:00–15:02, 15:16–15:19, 15:45–15:48, and whether the chamber held vacuum after the leak fix. The phone was short of space again ([V2 0:02](https://youtu.be/vPhZTvfIu7s?t=2)) |
 | Argon on, 5N, regulator at 8 bar; at most two cylinders, not manifolded | ◐ | Empty cylinder found and swapped ✔; two cylinders in the booth, the empty one capped ✔. Purity and the delivery pressure are not legible in any frame. The 8 bar (116 psi) setting needs checking on Oct 21 |
 | Water, vacuum pump oil, filters | – | Not filmed |
 | Compressed air, power, HMI login | ✔ | *"Turn on my air pressure"* [V1 0:33](https://youtu.be/7c8iHQInI_A?t=33); login [V2 5:30](https://youtu.be/vPhZTvfIu7s?t=330) |
 | Furnace: clean, nozzle clear, crucible snug | ◐ | Inspected and brushed out (14:42–14:53). Aluminium at the bottom that tweezers could not reach, and something left *"stuck for now"*. Light through the nozzle not seen. BN coat not seen |
-| Booster swap: threads cleaned with IPA, housing seals seated, 65 / 60 N·m in a soft-jawed vise ([T7](https://www.youtube.com/embed/FDRTt68Vfvo?start=1983), [T5 13:30](https://www.youtube.com/embed/58wJ_Khwgyk?start=810)) | ◐ | IPA bottle on the bench; a torque wrench used ([V3 2:40](https://youtu.be/OFS_PLxoV94?t=160)). The housing O-ring was left off, then caught and refitted ✔ (above). No vise is in any frame: the transducer stands on the bench, held by hand. Torque values are not said |
+| Booster swap: threads cleaned with IPA, housing seals seated, 65 / 60 N·m in a soft-jawed vise ([T7](https://www.youtube.com/embed/FDRTt68Vfvo?start=1983), [T5 13:30](https://www.youtube.com/embed/58wJ_Khwgyk?start=810)) | ◐ | IPA bottle and a torque wrench on the bench throughout ([V3 1:00](https://youtu.be/OFS_PLxoV94?t=60)). The housing O-ring was left off, then caught and refitted ✔ (above). No vise is in any frame: the transducer stands on the bench, held by hand, and the joints torqued to 65 / 60 are not clearly in frame. Torque values are not said |
 | Transducer cover, cable locked, air on | ◐ | Hoses and cable connected at [V3 9:04](https://youtu.be/OFS_PLxoV94?t=544); the cover is not clearly visible |
 | Bench scan: one peak, a little over 40 kHz (under 40 is normal with the reverse booster) | ✔ | 39 562.5 Hz on the bench, 39 645.0 Hz installed, 39 665 Hz before the purge |
 | Splash disc, door O-ring checked, stack in, both clamps | ◐ | Stack in and clamped (15:27–15:30); the door O-ring check is not seen |
-| Plate on at 50 N·m with a counter-hold | ◐ | Plate on at [V3 10:08](https://youtu.be/OFS_PLxoV94?t=608); torque wrench on it at [V3 14:12](https://youtu.be/OFS_PLxoV94?t=852). The setting is not said or legible |
+| Plate on at 50 N·m with a counter-hold | ◐ | Plate on at [V3 10:08](https://youtu.be/OFS_PLxoV94?t=608); torque wrench on it at [V3 14:12](https://youtu.be/OFS_PLxoV94?t=852), with an open-end wrench as counter-hold at [V3 16:00](https://youtu.be/OFS_PLxoV94?t=960). The setting is not said or legible |
 | Rescan, then wet test over the whole plate | ◐ | Rescan ✔; no wet test seen |
 | Plate positioned so the melt lands high, mid-plate | – | Not checked on camera. This is the step that failed on Oct 2, 6 and 8 |
-| Clean feedstock, ≤20 mm, 250–300 g, 6063 for the baseline | ◐ | Four rods ([V3 15:42](https://youtu.be/OFS_PLxoV94?t=942)); not weighed on camera; alloy questioned, *"All 40-47?"* ([V4 2:14](https://youtu.be/Ev9WMscAetw?t=134)) |
+| Clean feedstock, ≤20 mm, 250–300 g, 6063 for the baseline | ◐ | Rods wiped with a paper towel before loading ([V3 19:00](https://youtu.be/OFS_PLxoV94?t=1140)); not weighed on camera; alloy questioned, *"All 40-47?"* ([V4 2:14](https://youtu.be/Ev9WMscAetw?t=134)) |
 | Furnace lid closed, no hiss | – | Not seen clearly |
-| Container and seals wiped, clamped | ✔ | [V3 24:08](https://youtu.be/OFS_PLxoV94?t=1448), [V4 0:08](https://youtu.be/Ev9WMscAetw?t=8) |
+| Container and seals wiped with IPA, clamped | ✔ | Done in response to the leak, [V3 24:08](https://youtu.be/OFS_PLxoV94?t=1448), [V4 0:08](https://youtu.be/Ev9WMscAetw?t=8) |
+| Leak found and fixed before the washes | ◐ | Found from the HMI at 15:43 (*"definitely a leak"*); container seals cleaned and reclamped; the re-test is not filmed |
 | Cold wash started | ✔ | [V4 2:36](https://youtu.be/Ev9WMscAetw?t=156), then not filmed |
 | Upload videos titled *M/D/YYYY …*, post the parameters in #261 | ✔ | Uploaded 15:56–15:59; note posted 16:07 |
 
@@ -242,10 +258,11 @@ During and after:
 
 ## Open questions for Gage
 
-- Which seal leaked, and how was it found? Was it before or after the 15:50 pump-down?
+- The leak at 15:43: was it the powder container's flange or its lower valve, and did the
+  chamber hold −850 mbar after reclamping?
 - What was stuck in the furnace (V1 11:20), and is it still there?
 - What was cracking at V3 14:06: the plate, the catch bowl, or something else?
-- Are the four rods 6063 or 4047?
+- Are the rods 6063 or 4047, and how many went in?
 - What did the regulator read after the swap, and what is the cylinder's purity?
 - Who was at the machine at 13:29–13:41, and was the stack torqued in the vise?
 - Was the chamber left under vacuum, under argon, or vented overnight?

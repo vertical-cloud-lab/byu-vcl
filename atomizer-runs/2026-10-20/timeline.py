@@ -23,6 +23,7 @@ EVENTS = [  # (MDT, label), all read off the phone videos at their aligned times
     ("15:26:30", "stack into\nthe door"),
     ("15:32:06", "scan\n39 645 Hz"),
     ("15:42:54", "regulator\nset"),
+    ("15:43:49", "\"definitely a\nleak\""),
     ("15:50:45", "pump-down\nstarted"),
 ]
 

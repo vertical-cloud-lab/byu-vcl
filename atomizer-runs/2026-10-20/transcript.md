@@ -3,7 +3,9 @@
 Whisper large-v3-turbo on the YouTube audio of each video (`faster-whisper`, int8, VAD on). Gage mostly
 works without talking, so this is sparse; times are segment starts, and long silences can make a
 segment's start early. MDT is the video time plus the start found in [`alignment.json`](alignment.json).
-Side conversations are summarised rather than transcribed.
+Side conversations are summarised rather than transcribed. The V3 lines from 14:06 on are from a word-level pass
+(`word_timestamps`, VAD threshold 0.3), which recovered *"for these rods"* (the segment pass heard "four") and
+*"definitely a leak in here somewhere"*, which the segment pass dropped.
 
 ## V1 [`7c8iHQInI_A`](https://youtu.be/7c8iHQInI_A), from 14:35:35 MDT
 
@@ -77,7 +79,10 @@ Side conversations are summarised rather than transcribed.
 | --- | --- | --- |
 | [3:18](https://youtu.be/OFS_PLxoV94?t=198) | 15:23:08 | (side conversation about mixing powders in the melt, not set-up) |
 | [14:06](https://youtu.be/OFS_PLxoV94?t=846) | 15:33:56 | This one is cracking. I think that means we should get a new one. (Time from a word-level pass; the VAD pass ran this into one long segment starting at 11:34.) |
-| [15:42](https://youtu.be/OFS_PLxoV94?t=942) | 15:35:32 | you're good four of these rods do this thing in here somewhere |
+| [15:42](https://youtu.be/OFS_PLxoV94?t=942) | 15:35:32 | No, you're good. |
+| [17:08](https://youtu.be/OFS_PLxoV94?t=1028) | 15:36:58 | I think we're ready for these rods |
+| [19:37](https://youtu.be/OFS_PLxoV94?t=1177) | 15:39:27 | to do this thing. |
+| [23:58](https://youtu.be/OFS_PLxoV94?t=1438) | 15:43:49 | Definitely a leak in here somewhere. |
 
 ## V4 [`Ev9WMscAetw`](https://youtu.be/Ev9WMscAetw), from 15:48:09 MDT
 
