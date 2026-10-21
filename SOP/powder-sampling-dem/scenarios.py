@@ -173,6 +173,14 @@ def load_bed(sim):
     sim.hj, sim.hxi, sim.wp, sim.wxi = b["hj"].copy(), b["hxi"].copy(), b["wp"].copy(), b["wxi"].copy()
 
 
+def freeze_outer(sim, r_keep=8 * mm):
+    """Freeze the bed far from a tool on the axis (it barely moves there) so the run is quicker."""
+    far = (sim.mode == FREE) & (np.hypot(sim.x[:, 0], sim.x[:, 1]) > r_keep)
+    sim.v[far] = 0
+    sim.w[far] = 0
+    sim.mode[far] = ASLEEP
+
+
 def bed_top_at_axis(sim, r=2.5 * mm):
     x = sim.x
     sel = (sim.mode != DEAD) & (np.hypot(x[:, 0], x[:, 1]) < r)
@@ -244,6 +252,7 @@ def corer(piston_mode):
     sim = Sim()
     load_bed(sim)
     top = bed_top_at_axis(sim)
+    freeze_outer(sim)
     z_clear = H_JAR + 1.5 * mm
     v_in = 30 * mm  # m/s
     t_in0 = 0.12
@@ -403,6 +412,7 @@ def thief():
     sim = Sim()
     load_bed(sim)
     top = bed_top_at_axis(sim)
+    freeze_outer(sim)
     tip_floor = 0.2 * mm
     ports = [tip_floor + NOSE + 0.6 * mm + k * (top - tip_floor - NOSE - 0.6 * mm - PORT_H) / 2 for k in range(3)]
     z_clear = H_JAR + 1 * mm
@@ -482,24 +492,24 @@ def spoon():
         n_start = n_end - l_dig * np.array([math.cos(angk), 0, -math.sin(angk)])
         n_air = np.array([n_start[0], 0, z_air + 3 * mm])
         if k:
-            nose_keys.append((t - 0.3, n_air))
-            ang_keys.append((t - 0.3, angk))
+            nose_keys.append((t - 0.2, n_air))
+            ang_keys.append((t - 0.2, angk))
         else:
             nose_keys.append((0.0, n_air))
             ang_keys.append((0.0, angk))
         nose_keys.append((t, n_start))
         ang_keys.append((t, angk))
-        t_dig = t + 0.35
-        t_lev = t_dig + 0.3
-        t_lift = t_lev + 0.35
-        t_away = t_lift + 0.25
+        t_dig = t + 0.3
+        t_lev = t_dig + 0.25
+        t_lift = t_lev + 0.3
+        t_away = t_lift + 0.2
         n_lev = n_end + np.array([3 * mm, 0, 0])
         n_up = np.array([n_lev[0], 0, z_air])
         n_away = n_up + np.array([26 * mm, 0, 0])
         nose_keys += [(t_dig, n_end), (t_lev, n_lev), (t_lift, n_up), (t_away, n_away)]
         ang_keys += [(t_dig, angk), (t_lev, 0.0), (t_lift, 0.0), (t_away, 0.0)]
         scoop_t.append(dict(t0=t, dig=t_dig, lev=t_lev, lift=t_lift, away=t_away, z=zk))
-        t = t_away + 0.5  # the hole slumps while the spoon goes back over the jar
+        t = t_away + 0.4  # the hole slumps while the spoon goes back over the jar
 
     def blade_pose(t):
         nose = path(t, nose_keys)
@@ -561,7 +571,7 @@ def pour():
     lip0 = np.array([0.0, -(R_JAR + T_WALL), lip_z])
     origin0 = np.array([0.0, 0.0, drop])
     v_line = 20 * mm
-    t0, t1 = 0.15, 3.2
+    t0, t1 = 0.15, 2.75
     phi_max = math.radians(150)
 
     def phi(t):
@@ -585,7 +595,7 @@ def pour():
     rec = Recorder(sim)
     run_phase(sim, rec, t0, "jar at the back edge of a grounded tray")
     run_phase(sim, rec, t1 - t0, "tilt slowly while moving along: the top comes out first")
-    run_phase(sim, rec, 0.5, "let it settle")
+    run_phase(sim, rec, 0.4, "let it settle")
     on_plate = np.where((sim.mode == FREE) & (sim.x[:, 2] > -0.5 * mm) & (sim.x[:, 2] < 6 * mm) &
                         (sim.x[:, 1] < y_back))[0]
     xs = sim.x[on_plate, 0]

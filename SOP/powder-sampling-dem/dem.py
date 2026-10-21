@@ -548,6 +548,9 @@ class Sim:
         self.group = np.zeros(n0, np.int64)
         self.label = np.zeros(n0)
         self.tools = []
+        # particles that leave this box (fell off a tray, say) are removed, or the neighbour grid
+        # would grow without bound as they fall
+        self.bounds = (np.array([-0.2, -0.2, -0.04]), np.array([0.2, 0.2, 0.2]))
         self._alloc_hist(n0)
 
     def _alloc_hist(self, n):
@@ -629,6 +632,10 @@ class Sim:
             k = min(chunk, nsteps - done)
             h = k * self.dt
             arrays = self.tool_arrays(self.t, h)
+            lo, hi = self.bounds
+            gone = (self.mode != DEAD) & np.any((self.x < lo) | (self.x > hi), axis=1)
+            if gone.any():
+                self.mode[gone] = DEAD
             if hook is not None:
                 hook(self)
             run_steps(k, self.x, self.v, self.w, self.rad, mass, inertia, self.mode, self.extf,
