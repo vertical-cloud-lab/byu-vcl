@@ -300,16 +300,20 @@ tapped. Ranges are the Aluminum Association limits for 6063 and 4047 taken at bo
 
 The ± is whether the 2.25" was measured to the drill tip or to full diameter.
 
-| ID | Powder, wt% | Cup | 4047 per cup | Si, wt% | Mg, wt% |
-|---|---|---|---|---|---|
-| `gnvr` | 0 | 6063 only (the #261 repeats) | — | 0.20–0.60 | 0.45–0.90 |
-| `gd4e` | 7.5 | As made, ~35 % full | 3.1 g | 1.0–1.5 | 0.42–0.84 |
-| `8mmz` | 15 | As made, ~77 % full | 6.8 g | 1.8–2.5 | 0.38–0.78 |
-| `wf6g` | 22.5 | Thin, ~49 % full | 7.8 g | 2.6–3.4 | 0.35–0.72 |
-| `k2ka` | 30 | Thin, ~72 % full | 11.5 g | 3.4–4.3 | 0.32–0.66 |
+| ID | Powder, wt% | Cup | 4047 per cup | Si, wt% | Mg, wt% | Made (as of 2026-10-20) |
+|---|---|---|---|---|---|---|
+| `gnvr` | 0 | 6063 only (the #261 repeats) | — | 0.20–0.60 | 0.45–0.90 | no bag needed |
+| `gd4e` | 7.5 | As made, ~35 % full | 3.1 g | 1.0–1.5 | 0.42–0.84 | 1 cup, 3.0432 g dosed |
+| `8mmz` | 15 | As made, ~77 % full | 6.8 g | 1.8–2.5 | 0.38–0.78 | 1 cup, 6.5676 g dosed |
+| `wf6g` | 22.5 | Thin, ~49 % full | 7.8 g | 2.6–3.4 | 0.35–0.72 | no: no thin cups yet |
+| `k2ka` | 30 | Thin, ~72 % full | 11.5 g | 3.4–4.3 | 0.32–0.66 | no: no thin cups yet |
 
 The IDs are random, lowercase, and leave out `0 o 1 l i` so a printed label can't be misread. They go on the
-labelmaker tags on each bag of dosed cups (stored in the metal cabinet inside the enclosure, PR #232).
+labelmaker tags on each bag of dosed cups (stored in the metal cabinet inside the enclosure, PR #232). Only
+`gd4e` and `8mmz` have bags: one as-made cup each, dosed on the powder doser
+([powder-doser#186](https://github.com/vertical-cloud-lab/powder-doser/issues/186)). A full as-made cup tops out
+at 18.6 wt%, so `wf6g` and `k2ka` wait for thin cups to be machined. Livestream snippets of the doses are in
+[`dosing-livestream/`](dosing-livestream/).
 
 - The Si ranges don't overlap even at the spec extremes. The Mg ranges all overlap, so this is a Si spread.
 - The Oct 2 run (u23y78, a full as-made cup) sits at ~18.6 wt%: Si 2.2–2.9, Mg 0.37–0.75.
