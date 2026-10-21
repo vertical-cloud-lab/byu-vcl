@@ -37,6 +37,37 @@ tailnet ([setup on #231](https://github.com/vertical-cloud-lab/byu-vcl/issues/23
 The Pi only passes that traffic along. The EZstat's USB cable still goes into
 the PC.
 
+### What a Claude session can see from des4 (2026-10-21)
+
+A CI session can reach the PC but can't log in to it, so it can't check the
+software or the EZstat. No Claude session has the PC's Windows password.
+
+| | |
+|---|---|
+| PC | `JPorter-PC`, Windows 7 Professional SP1 (build 7601). It's in a workgroup, not a BYU domain, so it uses local accounts. Its clock was within 1 s of UTC |
+| Open ports | Remote Desktop (3389) only. File sharing (139, 445), RPC (135) and WinRM (5985, 5986) are closed, so there's no way in without a Remote Desktop login |
+| Remote Desktop | NLA is offered but not required, so a client gets to the Windows login screen without a password |
+| EZstat | Not plugged into des4 (`lsusb` shows no National Instruments device), which is right. Seeing it on the PC needs a login |
+
+To reach the login screen from a runner, tunnel through des4 (Tailscale SSH
+allows `-L`), then run FreeRDP:
+
+```bash
+ssh -N -L 127.0.0.1:13389:192.168.231.10:3389 "$CUBXL_PI_USERNAME@$CUBXL_PI_HOSTNAME" &
+xfreerdp /v:127.0.0.1:13389 /sec:tls /tls-seclevel:0 /cert:ignore /size:1024x768
+```
+
+- **FreeRDP 2 on Ubuntu 24.04 needs `/tls-seclevel:0` for this PC.** Without it
+  the handshake fails with `ERRCONNECT_TLS_CONNECT_FAILED`: Windows 7's TLS is
+  too old for OpenSSL 3's default level.
+- **Given no user name, xfreerdp offers the runner's login name,** so the login
+  screen shows a `runner` tile ([screenshot](images/2026-10-21-pc-login-screen-from-ci.png)).
+  That isn't an account on the PC.
+- **To log in, a session would need the Windows user name and password** as
+  secrets in `claude.yml`'s `env:` block. Feed the password to xfreerdp with
+  `/from-stdin` rather than `/p:`, which would put it in the process list. That
+  part is untested, since there's no password to test with.
+
 ## 2. Accounts and subscriptions: none needed
 
 | Software | Cost and accounts |
