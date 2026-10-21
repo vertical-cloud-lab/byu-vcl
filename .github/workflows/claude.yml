@@ -149,6 +149,11 @@ jobs:
       # No Bambu Lab cloud login here: it lives in the bambu-print environment,
       # reachable only through @claude-print (claude-print.yml), with each run
       # approved by a member of bambu-print-approvers. See CLAUDE.md.
+      # Windows login for the EZstat Pro's PC (#231), Remote Desktop to
+      # 192.168.231.10. Runners get no tailnet grant to it, so connect from
+      # the CubXL Pi, which is cabled to it (see CLAUDE.md)
+      POTENTIOSTAT_PC_USERNAME: ${{ secrets.POTENTIOSTAT_PC_USERNAME }}
+      POTENTIOSTAT_PC_PASSWORD: ${{ secrets.POTENTIOSTAT_PC_PASSWORD }}
       # Allow long-blocking foreground commands (e.g., Edison polling)
       BASH_DEFAULT_TIMEOUT_MS: "900000" # 15 min default per Bash call
       BASH_MAX_TIMEOUT_MS: "3600000" # 60 min ceiling per Bash call
