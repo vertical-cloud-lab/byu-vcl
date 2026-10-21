@@ -25,11 +25,13 @@ MEDIA = os.path.join(HERE, "media")
 RES = os.path.join(HERE, "results")
 mm = 1e-3
 
-GROUP_RGB = np.array([[0.20, 0.42, 0.80],   # made first: bottom third
-                      [0.96, 0.75, 0.20],   # middle third
-                      [0.83, 0.24, 0.27],   # made last: top third
-                      [0.64, 0.64, 0.66]],  # sweepings
-                     np.float32)
+def _hex(h):
+    return [int(h[i:i + 2], 16) / 255 for i in (1, 3, 5)]
+
+
+# validated with the dataviz skill's palette checker (light mode, adjacent pairs)
+GROUP_HEX = ["#2a78d6", "#eda100", "#e34948", "#6250d6"]
+GROUP_RGB = np.array([_hex(h) for h in GROUP_HEX], np.float32)  # bottom, middle, top third, sweepings
 GROUP_TXT = ["made first (bottom third)", "middle third", "made last (top third)", "sweepings"]
 TITLES = {
     "fill": "Filling the jar: colour = when the powder was made",
@@ -481,8 +483,8 @@ def main(args):
         frames = [run.frame(f) for f in range(run.F)]
         last = run.frame(run.F - 1, result=True)
         write_mp4(frames + [last] * 75, os.path.join(MEDIA, f"{n}.mp4"), 30)
-        gif = [fr.resize((800, 500), Image.LANCZOS) for fr in frames[::2] + [last] * 30]
-        write_gif(gif, os.path.join(MEDIA, f"{n}.gif"), 12)
+        gif = [fr.resize((800, 500), Image.LANCZOS) for fr in frames + [last] * 50]
+        write_gif(gif, os.path.join(MEDIA, f"{n}.gif"), 20)
         print(n, run.F, "frames;", os.path.getsize(os.path.join(MEDIA, f"{n}.gif")) // 1024, "KB gif,",
               os.path.getsize(os.path.join(MEDIA, f"{n}.mp4")) // 1024, "KB mp4", flush=True)
 
