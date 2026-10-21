@@ -1,0 +1,11 @@
+{
+ "stream": {"video_id": "z13xp1AcKag", "file": "144p (itag 269) live-DVR segments sq 517-5700, concatenated",
+            "offset_0_mdt": "13:24:47", "clock_check": "280 of 346 overlay crops legible; all give 13:24:46-13:24:47 (stream_clock.csv)"},
+ "videos": {
+  "7c8iHQInI_A": {"name": "Video 1", "stream_offset_s": 4248.0, "r": 0.462, "runner_up_r": 0.225, "halves_offset_s": [4248.5, 4248.0], "start_mdt": "14:35:35", "end_mdt": "15:00:21"},
+  "vPhZTvfIu7s": {"name": "Video 2", "stream_offset_s": 5849.0, "r": 0.723, "runner_up_r": 0.323, "halves_offset_s": [5849.0, 5849.0], "start_mdt": "15:02:16", "end_mdt": "15:16:28"},
+  "OFS_PLxoV94": {"name": "Video 3", "stream_offset_s": 6903.0, "r": 0.791, "runner_up_r": 0.228, "halves_offset_s": [6903.0, 6903.5], "start_mdt": "15:19:50", "end_mdt": "15:45:30"},
+  "Ev9WMscAetw": {"name": "Video 4", "stream_offset_s": 8602.5, "r": 0.592, "runner_up_r": 0.477, "halves_offset_s": [8602.5, 8113.0], "start_mdt": "15:48:09", "end_mdt": "15:52:29",
+                  "note": "weak peak (260 s video). The second-half alternative, 8113 s (15:40), falls inside Video 3, so 8602.5 s is the only consistent offset; the stream shows Gage crouched at the cylinders at 15:49, as Video 4 does at 0:52-1:37"}
+ }
+}
