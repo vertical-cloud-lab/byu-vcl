@@ -1,0 +1,226 @@
+{
+  "what": "Stir module printed parts, all on one plate: base, vial holder, magnet carrier, 2 x deck key",
+  "request": "https://github.com/vertical-cloud-lab/byu-vcl/pull/269#issuecomment-6327192394",
+  "requested_by": "benwhitney5463",
+  "run": "https://github.com/vertical-cloud-lab/byu-vcl/actions/runs/39680910714",
+  "workflow": "claude-print.yml (@claude-print), environment bambu-print",
+  "approved_by": "benwhitney5463",
+  "go": {
+    "by": "benwhitney5463",
+    "text": "plate clear",
+    "utc": "2026-10-21T22:16:26Z",
+    "comment": "https://github.com/vertical-cloud-lab/byu-vcl/pull/269#issuecomment-6327754756",
+    "after_seeing": "20261021T220322Z_camera.jpg (posted with the request for the go at 22:04:54Z)"
+  },
+  "source": {
+    "branch": "claude/issue-169-20261009-2151",
+    "commit": "ed84bba",
+    "files_md5": {
+      "hardware/vial-stirrer-cubxl/stl/base.stl": "82b3d4c73a789917fefa4493142a9d8d",
+      "hardware/vial-stirrer-cubxl/stl/vial_holder.stl": "e4e45a74133971c48ffc2f1ab2fd3925",
+      "hardware/vial-stirrer-cubxl/stl/magnet_carrier.stl": "84c241f7db03fb13f88b4eb47cdedc00",
+      "hardware/vial-stirrer-cubxl/stl/deck_key.stl": "f03baeb4e8f444d003b271e421e47a75"
+    },
+    "orientation": "as in the STLs (BUILD.md stage 1: they are already in print orientation); Studio dropped each to the bed",
+    "layout": "Studio auto-arrange; bounding boxes on the 180 x 180 mm bed (mm, X then Y)",
+    "bboxes": {
+      "base": [
+        107.9,
+        91.0,
+        163.9,
+        147.0
+      ],
+      "vial_holder": [
+        107.9,
+        33.0,
+        163.9,
+        89.0
+      ],
+      "magnet_carrier": [
+        88.1,
+        80.5,
+        107.1,
+        99.5
+      ],
+      "deck_key_1": [
+        96.1,
+        101.1,
+        105.9,
+        125.9
+      ],
+      "deck_key_2": [
+        96.1,
+        54.1,
+        105.9,
+        78.9
+      ]
+    }
+  },
+  "slicer": {
+    "app": "Bambu Studio 02.08.02.61 (AppImage) on the CI runner, bundled profiles (the 2.8.0.6 configuration update was cancelled)",
+    "printer_preset": "Bambu Lab A1 mini 0.4 nozzle",
+    "process_preset": "0.20mm Standard @BBL A1M",
+    "filament_preset": "Bambu PETG Basic @BBL A1M 0.4 nozzle (GFG00), white",
+    "plate": "Textured PEI Plate",
+    "changed_in_gui": {
+      "global": {
+        "wall_loops": "2 -> 4",
+        "sparse_infill_density": "15% -> 30%",
+        "elefant_foot_compensation": "0 -> 0.15 mm"
+      },
+      "magnet_carrier_only": {
+        "sparse_infill_density": "100%",
+        "sparse_infill_pattern": "grid -> rectilinear (Studio: grid can't do 100%)"
+      },
+      "why": "BUILD.md stage 1: PETG, at least 4 walls, 30 % infill or more, elephant-foot compensation, magnet carrier at 100 %, no supports"
+    },
+    "left_at_preset": {
+      "enable_support": 0,
+      "brim_type": "auto_brim (chose no brim)",
+      "enable_circle_compensation": 0,
+      "nozzle_temperature": 245,
+      "textured_plate_temp": 70
+    }
+  },
+  "estimates": {
+    "total": "1h 40m 36s (6036 s)",
+    "model": "1h 34m 33s",
+    "first_layer_s": 310,
+    "layers": 110,
+    "max_z_mm": 22.0,
+    "filament_g": 42.41,
+    "filament_m": 14.1,
+    "warnings": [
+      "not_support_traditional_timelapse (expected; timelapse off)"
+    ]
+  },
+  "send": {
+    "printer": "Thumbelina, the A1 Mini (Bambu Lab A1 mini, 0.4 mm)",
+    "route": "Bambu Studio on the runner, logged in to the lab's Bambu account (password + authenticator code), sent through Bambu's cloud",
+    "job_name": "stir_module_parts",
+    "plate": "Textured PEI",
+    "ams_mapping": "project filament 3 (PETG Basic, white) -> AMS Lite A4 (0-based 3)",
+    "timelapse": false,
+    "auto_bed_leveling": true,
+    "flow_dynamics_calibration": true
+  },
+  "sent_file": {
+    "path": "stir_module_parts.gcode.3mf",
+    "how": "copied from /tmp/bamboo_model/.../Metadata/.<pid>.0.3mf, which Studio writes at Send; only DesignerUserId blanked",
+    "plate_1_gcode_md5": "9d1850c4405d54b5aa2235d449fbdcba",
+    "matches_studio_slice": true
+  },
+  "printer_before": {
+    "utc": "2026-10-21T22:17:14Z",
+    "state": "idle, no HMS alerts (Studio Device page)",
+    "nozzle_c": 21,
+    "bed_c": 21,
+    "ams_lite": {
+      "A1": "PLA Basic, dark blue",
+      "A2": "empty",
+      "A3": "PLA Basic, black",
+      "A4": "PETG Basic, white"
+    }
+  },
+  "timeline_utc": [
+    [
+      "21:42:08",
+      "request (@claude-print)"
+    ],
+    [
+      "21:42:12",
+      "run created, waiting for approval"
+    ],
+    [
+      "21:44",
+      "approved; session starts"
+    ],
+    [
+      "21:47-21:50",
+      "Studio set up: certificate prompt, wizard, plug-in, beta prompts, configuration update cancelled"
+    ],
+    [
+      "21:50:35",
+      "Log In pressed"
+    ],
+    [
+      "21:50:53",
+      "authenticator code typed (bambu-totp)"
+    ],
+    [
+      "21:50:54",
+      "Confirm; logged in, A1 mini selected by Studio"
+    ],
+    [
+      "21:52",
+      "Device page: idle, PETG Basic in A4, camera frame"
+    ],
+    [
+      "21:53-22:02",
+      "Sync info, STLs imported, settings set, sliced (re-sliced at 22:02:05 after a stray key press set the carrier to filament 1; set back to 3)"
+    ],
+    [
+      "22:03:22",
+      "frame for the go"
+    ],
+    [
+      "22:04:54",
+      "go asked for in the thread"
+    ],
+    [
+      "22:16:26",
+      "go: plate clear (benwhitney5463)"
+    ],
+    [
+      "22:17:14",
+      "fresh Device-page check and frame: idle, plate unchanged"
+    ],
+    [
+      "22:18:00",
+      "Send"
+    ],
+    [
+      "22:18:47",
+      "heatbed preheating; Studio's finish estimate 23:58"
+    ],
+    [
+      "22:19-22:21",
+      "PETG loaded from A4; flush at 270 C (file's start G-code)"
+    ],
+    [
+      "22:24",
+      "auto bed leveling, then flow dynamics calibration"
+    ],
+    [
+      "22:26:00",
+      "layer 1 (245 C / 70 C)"
+    ],
+    [
+      "22:31:07",
+      "layer 2"
+    ],
+    [
+      "22:53:47",
+      "layer 14, 33 %"
+    ],
+    [
+      "23:24:07",
+      "layer 37, 63 %"
+    ],
+    [
+      "23:27:48",
+      "paused on layer 42 (66 %) by the printer: 'AMS lite filament spool or filament may be stuck' [1200-8010 232721]; nozzle 245 C, bed 70 C"
+    ],
+    [
+      "23:29:22",
+      "thread told what to check at A4 and how to resume or stop; Resume not pressed by the run"
+    ],
+    [
+      "23:40:55",
+      "still paused; nozzle cooled to 42 C by the printer, bed held at 70 C"
+    ]
+  ],
+  "watching": "Studio's Device page, OCR every 10 s and a camera frame every 20-120 s (watch_a1m.py, an A1 mini copy of bambu/studio/watch_studio.py from PR #234)",
+  "recording": "the runner's screen was recorded; claude-print.yml has no YouTube token, so it was not uploaded",
+  "outcome": "paused at layer 42/110 by an AMS Lite stuck-filament warning (HMS 1200-8010 232721); see README for the state at the end of the run"
+}
