@@ -323,9 +323,10 @@ prompt, their rule has to move *above* the check rule.
 
 The Pi itself: Debian 13 (trixie) on arm64, Tailscale 1.86.2 with `--ssh`, one
 `sudo`-capable user (in `dialout`, so serial ports need no sudo). It is joined over **wifi
-only** (`eth0` is down), so moving it out of range of that SSID takes it off the tailnet
-until it is given credentials for the new network. Its tailnet name and IP survive the move;
-nothing else does.
+only**, so moving it out of range of that SSID takes it off the tailnet until it is given
+credentials for the new network. Its tailnet name and IP survive the move; nothing else does.
+`eth0` is not an uplink: since 21 October 2026 it is a private cable to the EZstat-Pro's
+Windows PC (see below).
 
 **The CubXL hardware is attached; the software is not (as of 12 September 2026).** Two USB
 serial devices, both part of the CubXL:
@@ -347,6 +348,15 @@ Nothing CubXL-specific is installed yet: no non-stock services, nothing listenin
 tailnet grant to this Pi is `tcp:22` only — a control service bound to `0.0.0.0` is
 unreachable from CI until its port is added to the `tag:rpi-5-des4` grant, and the safer
 default is to bind it to `127.0.0.1` and reach it over SSH.
+
+**des4 is also the router for the EZstat-Pro's Windows 7 PC (since 21 October 2026).** The PC
+is cabled to des4's `eth0` and nothing else. des4 is `192.168.231.1` (NetworkManager profile
+`ezstat-pc-link`), and the PC is `192.168.231.10` with no gateway, which keeps it off BYU's
+network and the internet. des4 forwards IPv4 (`/etc/sysctl.d/99-ezstat-pc-router.conf`) and
+advertises `192.168.231.10/32` to the tailnet, so people can Remote Desktop to the PC once that
+route is approved. Don't put `eth0` back on DHCP or turn forwarding off without reading
+[`docs/ezstat-pc-remote-access.md`](docs/ezstat-pc-remote-access.md), which has the setup, the
+checks and the undo. From a CI runner, reach the PC by SSHing to des4 and connecting from there.
 
 **Reaching the Pico W.** The sensor board plugs into the OT-2 stream-cam Pi over USB and is
 driven with `mpremote`, installed there as a venv at `~/.venvs/mpremote/bin/mpremote`
