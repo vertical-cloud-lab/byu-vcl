@@ -56,6 +56,10 @@ the archive once the broadcast ends at 21:00 MDT.
    cylinders on the stream from 14:36:58 to 14:42:58, while V1 shows the swap, and seated at
    the bench from 14:54 to 15:22, while V1–V3 show the booster work there.
 
+Review sheets put a phone frame every 15–60 s beside the stream frame of the same instant,
+whose burned-in clock can be read in the inset: [V1](review/v1.jpg), [V2](review/v2.jpg),
+[V3](review/v3.jpg), [V4](review/v4.jpg).
+
 The HMI's own clock is not usable as-is: its scan plot is stamped 23:28:40–23:28:48 at
 [V3 12:16](https://youtu.be/OFS_PLxoV94?t=736) (15:32 MDT), so it reads roughly Central
 European time and runs about 3 minutes slow.
@@ -72,6 +76,8 @@ European time and runs about 3 minutes slow.
   and left chained beside it, two cylinders in the booth in all
   ([V3 21:12](https://youtu.be/OFS_PLxoV94?t=1272)). Gage's estimate: *"probably done 10 runs
   … around 10 runs for one argon tank"* ([V1 5:37](https://youtu.be/7c8iHQInI_A?t=337)).
+  [`argon.md`](argon.md) reads the cylinder gauge across Sep 30, Oct 6 and Oct 20 and finds the
+  runs account for only about two thirds of the cylinder.
 - **A seal was left out of the booster housing, and caught.** A black O-ring sits on the bench
   while the housing goes onto the booster ([V1 23:48](https://youtu.be/7c8iHQInI_A?t=1428),
   [24:30](https://youtu.be/7c8iHQInI_A?t=1470)). After the bench scan Gage finds it: *"You know
@@ -83,6 +89,12 @@ European time and runs about 3 minutes slow.
   bottom of that thing"*, tweezers did not get it ([V1 6:51](https://youtu.be/7c8iHQInI_A?t=411)),
   then *"Well, that's kind of stuck for now … We'll get it out eventually when we need to"*
   ([V1 11:20](https://youtu.be/7c8iHQInI_A?t=680)). The frames don't show what is stuck.
+- **Something is cracking.** At the open chamber door, just before the plate is torqued:
+  *"This one is cracking. I think that means we should get a new one"*
+  ([V3 14:06](https://youtu.be/OFS_PLxoV94?t=846), 15:33:56). In frame are the stack, the
+  plate and the white catch bowl inside the chamber; which one he means is not clear. If it is
+  the Mo plate, the SOP notes a cracked plate may not run twice
+  ([T5 72:18](https://www.youtube.com/embed/58wJ_Khwgyk?start=4338)).
 - **Three scans, all just under 40 kHz:** F nominal 39 562.5 Hz on the bench
   ([V2 6:36](https://youtu.be/vPhZTvfIu7s?t=396)), 39 645.0 Hz once installed
   ([V3 12:16](https://youtu.be/OFS_PLxoV94?t=736)), scanned 39 665 Hz before the purge
@@ -137,6 +149,8 @@ European time and runs about 3 minutes slow.
 | 15:19:50–15:24:54 | [V3 0:00](https://youtu.be/OFS_PLxoV94?t=0) | Torque wrench at the bench; checks the phone at 15:20:54 |
 | 15:26:30–15:30:14 | [V3 6:40](https://youtu.be/OFS_PLxoV94?t=400) · stream | Stack carried in, into the door, clamps and hoses, plate on |
 | 15:31:18–15:32:06 | [V3 11:28](https://youtu.be/OFS_PLxoV94?t=688) | Rescan, F nominal 39 645.0 Hz |
+| 15:33:56 | [V3 14:06](https://youtu.be/OFS_PLxoV94?t=846) | *"This one is cracking. I think that means we should get a new one"* |
+| 15:34:02–15:34:26 | [V3 14:12](https://youtu.be/OFS_PLxoV94?t=852) | Torque wrench on the plate |
 | 15:35:26–15:35:58 | [V3 15:36](https://youtu.be/OFS_PLxoV94?t=936) | Rods: *"four of these rods"* |
 | 15:36:30–15:40:30 | [V3 16:40](https://youtu.be/OFS_PLxoV94?t=1000) | Furnace open; consumables from the boxes |
 | 15:42:54–15:43:10 | [V3 23:04](https://youtu.be/OFS_PLxoV94?t=1384) · stream | Regulator and cylinder valve set; crouched at the cylinders on the stream |
@@ -166,7 +180,7 @@ and Gage's [daily SOP](https://github.com/vertical-cloud-lab/byu-vcl/blob/8981f5
 | Transducer cover, cable locked, air on | ◐ | Hoses and cable connected at [V3 9:04](https://youtu.be/OFS_PLxoV94?t=544); the cover is not clearly visible |
 | Bench scan: one peak, a little over 40 kHz (under 40 is normal with the reverse booster) | ✔ | 39 562.5 Hz on the bench, 39 645.0 Hz installed, 39 665 Hz before the purge |
 | Splash disc, door O-ring checked, stack in, both clamps | ◐ | Stack in and clamped (15:27–15:30); the door O-ring check is not seen |
-| Plate on at 50 N·m with a counter-hold | ◐ | Plate on at [V3 10:08](https://youtu.be/OFS_PLxoV94?t=608); the torque is not said |
+| Plate on at 50 N·m with a counter-hold | ◐ | Plate on at [V3 10:08](https://youtu.be/OFS_PLxoV94?t=608); torque wrench on it at [V3 14:12](https://youtu.be/OFS_PLxoV94?t=852). The setting is not said or legible |
 | Rescan, then wet test over the whole plate | ◐ | Rescan ✔; no wet test seen |
 | Plate positioned so the melt lands high, mid-plate | – | Not checked on camera. This is the step that failed on Oct 2, 6 and 8 |
 | Clean feedstock, ≤20 mm, 250–300 g, 6063 for the baseline | ◐ | Four rods ([V3 15:42](https://youtu.be/OFS_PLxoV94?t=942)); not weighed on camera; alloy questioned, *"All 40-47?"* ([V4 2:14](https://youtu.be/Ev9WMscAetw?t=134)) |
@@ -230,6 +244,7 @@ During and after:
 
 - Which seal leaked, and how was it found? Was it before or after the 15:50 pump-down?
 - What was stuck in the furnace (V1 11:20), and is it still there?
+- What was cracking at V3 14:06: the plate, the catch bowl, or something else?
 - Are the four rods 6063 or 4047?
 - What did the regulator read after the swap, and what is the cylinder's purity?
 - Who was at the machine at 13:29–13:41, and was the stack torqued in the vise?

@@ -76,7 +76,7 @@ Side conversations are summarised rather than transcribed.
 | Video | MDT | Said |
 | --- | --- | --- |
 | [3:18](https://youtu.be/OFS_PLxoV94?t=198) | 15:23:08 | (side conversation about mixing powders in the melt, not set-up) |
-| [11:34](https://youtu.be/OFS_PLxoV94?t=694) | 15:31:24 | goodness this one is cracking that means we should get a new one fortunately now |
+| [14:06](https://youtu.be/OFS_PLxoV94?t=846) | 15:33:56 | This one is cracking. I think that means we should get a new one. (Time from a word-level pass; the VAD pass ran this into one long segment starting at 11:34.) |
 | [15:42](https://youtu.be/OFS_PLxoV94?t=942) | 15:35:32 | you're good four of these rods do this thing in here somewhere |
 
 ## V4 [`Ev9WMscAetw`](https://youtu.be/Ev9WMscAetw), from 15:48:09 MDT
