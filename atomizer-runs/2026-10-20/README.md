@@ -75,7 +75,7 @@ European time and runs about 3 minutes slow.
   prepare* setpoint showing ([V3 23:52](https://youtu.be/OFS_PLxoV94?t=1432)), and Gage says
   *"Definitely a leak in here somewhere"* ([V3 23:58](https://youtu.be/OFS_PLxoV94?t=1438),
   15:43:49). He goes straight under the machine to the powder container's lower valve, wets a
-  towel from the IPA bottle, wipes the container's flange and fittings and clamps them
+  paper towel from the squeeze bottle on the bench, wipes the container's flange and fittings and clamps them
   ([V3 24:08–25:20](https://youtu.be/OFS_PLxoV94?t=1448)), and tightens the lower clamp again
   at [V4 0:08](https://youtu.be/Ev9WMscAetw?t=8). That points at the container's flange or valve
   seal, but he doesn't say what he found. Whether the chamber then held vacuum is not filmed:
@@ -98,7 +98,8 @@ European time and runs about 3 minutes slow.
 - **Something was left stuck in the furnace.** *"Looks like there's some aluminum down at the
   bottom of that thing"*, tweezers did not get it ([V1 6:51](https://youtu.be/7c8iHQInI_A?t=411)),
   then *"Well, that's kind of stuck for now … We'll get it out eventually when we need to"*
-  ([V1 11:20](https://youtu.be/7c8iHQInI_A?t=680)). The frames don't show what is stuck.
+  ([V1 11:20](https://youtu.be/7c8iHQInI_A?t=680)), while probing the bottom of the open furnace's
+  insulation sleeve with a rod. The frames don't show what is stuck.
 - **Something is cracking.** At the open chamber door, just before the plate is torqued:
   *"This one is cracking. I think that means we should get a new one"*
   ([V3 14:06](https://youtu.be/OFS_PLxoV94?t=846), 15:33:56). In frame are the stack, the
@@ -109,7 +110,7 @@ European time and runs about 3 minutes slow.
   ([V2 6:36](https://youtu.be/vPhZTvfIu7s?t=396)), 39 645.0 Hz once installed
   ([V3 12:16](https://youtu.be/OFS_PLxoV94?t=736)), scanned 39 665 Hz before the purge
   ([V4 2:36](https://youtu.be/Ev9WMscAetw?t=156)). The SOP says the reverse (1.5:1) booster
-  reads under 40 kHz and that this is acceptable ([T7 41:40](https://www.youtube.com/embed/FDRTt68Vfvo?start=2500)).
+  reads under 40 kHz and that this is acceptable for short runs ([T7 41:40](https://www.youtube.com/embed/FDRTt68Vfvo?start=2500)).
 - **Which alloy is loaded is open.** *"I think we're ready for these rods"*
   ([V3 17:08](https://youtu.be/OFS_PLxoV94?t=1028)); the rods are wiped with a paper towel and
   go into the furnace at [V3 19:00](https://youtu.be/OFS_PLxoV94?t=1140). In V4, in the storage
@@ -169,7 +170,7 @@ European time and runs about 3 minutes slow.
 | 15:42:54–15:43:10 | [V3 23:04](https://youtu.be/OFS_PLxoV94?t=1384) · stream | Regulator and cylinder valve set; crouched at the cylinders on the stream |
 | 15:43:42–15:43:44 | [V3 23:52](https://youtu.be/OFS_PLxoV94?t=1432) | HMI: chamber 8, then 5 mbar; O2 1000 ppm (display ceiling) |
 | 15:43:49 | [V3 23:58](https://youtu.be/OFS_PLxoV94?t=1438) | *"Definitely a leak in here somewhere"* |
-| 15:43:58–15:45:10 | [V3 24:08](https://youtu.be/OFS_PLxoV94?t=1448) | Under the machine at the powder container: IPA on a towel, flange and fittings wiped, clamped |
+| 15:43:58–15:45:10 | [V3 24:08](https://youtu.be/OFS_PLxoV94?t=1448) | Under the machine at the powder container: towel wetted from the squeeze bottle, flange and fittings wiped, clamped |
 | 15:48:09–15:48:54 | [V4 0:00](https://youtu.be/Ev9WMscAetw?t=0) | Seated at the container's lower valve, tightening a clamp |
 | 15:50:02–15:50:32 | [V4 1:53](https://youtu.be/Ev9WMscAetw?t=113) | *"Which jar it's from?" … "All 40-47?"*; into the closet |
 | 15:50:45–15:51:11 | [V4 2:36](https://youtu.be/Ev9WMscAetw?t=156) | HMI: 72 → 140 mbar, vacuum pump, −35 mbar |
@@ -200,7 +201,7 @@ and Gage's [daily SOP](https://github.com/vertical-cloud-lab/byu-vcl/blob/8981f5
 | Plate positioned so the melt lands high, mid-plate | – | Not checked on camera. This is the step that failed on Oct 2, 6 and 8 |
 | Clean feedstock, ≤20 mm, 250–300 g, 6063 for the baseline | ◐ | Rods wiped with a paper towel before loading ([V3 19:00](https://youtu.be/OFS_PLxoV94?t=1140)); not weighed on camera; alloy questioned, *"All 40-47?"* ([V4 2:14](https://youtu.be/Ev9WMscAetw?t=134)) |
 | Furnace lid closed, no hiss | – | Not seen clearly |
-| Container and seals wiped with IPA, clamped | ✔ | Done in response to the leak, [V3 24:08](https://youtu.be/OFS_PLxoV94?t=1448), [V4 0:08](https://youtu.be/Ev9WMscAetw?t=8) |
+| Container and seals wiped (with IPA per the SOP), clamped | ✔ | Done in response to the leak, [V3 24:08](https://youtu.be/OFS_PLxoV94?t=1448), [V4 0:08](https://youtu.be/Ev9WMscAetw?t=8) |
 | Leak found and fixed before the washes | ◐ | Found from the HMI at 15:43 (*"definitely a leak"*); container seals cleaned and reclamped; the re-test is not filmed |
 | Cold wash started | ✔ | [V4 2:36](https://youtu.be/Ev9WMscAetw?t=156), then not filmed |
 | Upload videos titled *M/D/YYYY …*, post the parameters in #261 | ✔ | Uploaded 15:56–15:59; note posted 16:07 |
@@ -212,7 +213,8 @@ and Gage's [daily SOP](https://github.com/vertical-cloud-lab/byu-vcl/blob/8981f5
   each, or the spread across runs will be partly a spread in set-up.
 - **The leak goes straight into O2.** O2 has been the slowest thing to bring down (Oct 6
   went from 19 to 140 ppm during the run; Oct 8 needed three gas washes at 500 °C to reach
-  25–26 ppm). Record the O2 after each wash, and at the start and end of the pour.
+  25–26 ppm). On Oct 20 the leak showed on the HMI at start-up, before any wash. Record the O2
+  after each wash, and at the start and end of the pour.
 - **The stack was rebuilt, so the landing point has to be checked again.** Three runs in a
   row (Oct 2, 6, 8) failed where the melt meets the plate, and no landing check is on the
   Oct 20 footage. Before heating, check where the stream will land: high on the plate's face
@@ -222,7 +224,7 @@ and Gage's [daily SOP](https://github.com/vertical-cloud-lab/byu-vcl/blob/8981f5
 - **Set-up is eating the run days.** From the first video to the purge was 1 h 15 min, and
   the afternoon started earlier. Bartosz budgets about 1 h per aluminium run including prep
   and cleaning ([T5 21:50](https://www.youtube.com/embed/58wJ_Khwgyk?start=1310)). The
-  biggest single block on Oct 20 was the booster swap, 14:54–15:30 including the O-ring redo.
+  biggest single block on Oct 20 was the booster swap, 14:54–15:25 including the O-ring redo.
 
 ## For the Oct 21 run
 
@@ -246,7 +248,9 @@ Before the pour:
 - [ ] Wet test the plate, then check the stream's landing point on it.
 - [ ] Argon regulator at 8 bar; note the cylinder pressure.
 - [ ] Start the ultrasonic system **before** opening the sealing pin (missed on Oct 6).
-- [ ] Note which seal leaked on Oct 20 and how it was fixed.
+- [ ] Before the first wash, pump down and check the chamber holds −850 mbar (the Oct 20 leak
+      fix was not re-tested on camera). [`argon.md`](argon.md) has a leak-down check for the gas side.
+- [ ] Look at whatever was "cracking" on Oct 20 (V3 14:06) and replace it if needed.
 
 During and after:
 
