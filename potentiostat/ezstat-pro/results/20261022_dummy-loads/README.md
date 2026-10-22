@@ -9,7 +9,7 @@ from des4, 21:31–21:45 UTC. Nobody was at the PC.
 | Instrument | NuVant EZstat-Pro, serial `EZST15073101 V2`, metal case. Board NI USB-6221 (OEM) "Dev1", serial 1A801CD, last calibrated 2015-07-16 |
 | PC | Windows 7 Professional SP1, EZware 7.1.16.1025, LabVIEW Run-Time 2011 SP1 (11.0.448.0), NI-DAQmx 9.7.0 ([PC check](../../pc-check-2026-10-22.md)) |
 | Load | A 10 kΩ resistor. White clip (reference, counter stacked on it) on one end, black clip (working, working sense) on the other, green clip (ground) free, on paper on the EZstat's top ([photo](20261022-R2-wiring.jpg)) |
-| Meter | Neoteck NT8233D Pro, 2000 counts: **10.00 kΩ** on its 20 kΩ range. Listings give ±(0.8 % + 2 digits) there, so ±100 Ω, ±1.0 % |
+| Meter | Neoteck NT8233D Pro, 2000 counts: **10.00 kΩ** on its 20 kΩ range. Listings for the same meter under other names give ±(0.8 % + 2 digits) there, so ±100 Ω, ±1.0 %. Neoteck's own figure, in the meter's manual, wasn't found online |
 
 ## R2 result
 

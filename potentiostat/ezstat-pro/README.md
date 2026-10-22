@@ -460,9 +460,11 @@ run log, since the check is against that value rather than the label. Note the
 meter's model too: a handheld meter's own resistance accuracy is often 0.2–1 %,
 not far off the 1 % pass band.
 
-The bench meter is a **Neoteck NT8233D Pro** (2000 counts). Listings give
-±(0.8 % + 2 digits) on its 200 Ω–200 kΩ ranges: ±100 Ω at 10.00 kΩ, ±10 Ω
-at 1.000 kΩ, so **±1.0 %, as wide as the pass band.** Against it, the 1 %
+The bench meter is a **Neoteck NT8233D Pro** (2000 counts). Neoteck's own
+figure wasn't found online; listings for the same pocket 8233D Pro meter under
+other names (MS8233D Pro, and the similar PEAKMETER PM8233A) give ±(0.8 % +
+2 digits) on 200 Ω–200 kΩ, and the meter's manual will say for certain. That
+is ±100 Ω at 10.00 kΩ and ±10 Ω at 1.000 kΩ: **±1.0 %, as wide as the pass band.** Against it, the 1 %
 check can't resolve an EZstat error from a meter error. Give the checker
 `--meter-pct 1.0` and it also reports whether the fit is within 1 % plus the
 meter's error. For a decisive check, use 0.1 % resistors, or measure on a bench
