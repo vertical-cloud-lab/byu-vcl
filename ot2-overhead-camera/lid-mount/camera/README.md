@@ -267,7 +267,9 @@ or near WIDE, and the blur was no smaller. At that end the focus ring moves the 
 tenths of a millimetre, so blur that large points at the lens sitting at the wrong distance from
 the sensor: the lens backed out of its thread (0.8 mm a turn), the C–CS adapter, or the camera's
 own back-focus ring. While the iris was shut (20:59:22–37) the score read 450–778; that is sensor
-noise over a near-black picture, not focus. The numbers, and the score every 3 s, are in
+noise over a near-black picture, not focus. By 21:15 the plate was in the middle of the picture
+at about 16 mm and the edge spread had fallen to 243 px, still soft but closing in
+([still](frames/2026-10-22/still_2115Z_closer.jpg)). The numbers, and the score every 3 s, are in
 [`frames/2026-10-22/blur_2026-10-22.json`](frames/2026-10-22/blur_2026-10-22.json).
 
 ### Setting the zoom, iris and focus rings

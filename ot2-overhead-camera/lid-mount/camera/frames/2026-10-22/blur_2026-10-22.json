@@ -40,6 +40,35 @@
    "exposure_us": 17326,
    "gain": 1.5,
    "lux": 158.4
+  },
+  "still_2115Z_closer.jpg": {
+   "taken_utc": "2026-10-22T21:15:24Z",
+   "what": "the colour-mixing plate in the middle of the picture, about 16 mm zoom (plate about 2240 of 4056 px wide; 1224 px at 9.02 mm); still soft",
+   "edge_10_90_px_full_res": 243,
+   "note": "plate's left edge, rows 1900-2300",
+   "focus": {
+    "centre": 7.0,
+    "best_2min": 38.5,
+    "grid": [
+     [
+      2.4,
+      2.8,
+      2.6
+     ],
+     [
+      2.0,
+      7.0,
+      6.0
+     ],
+     [
+      2.4,
+      7.9,
+      6.4
+     ]
+    ]
+   },
+   "exposure_us": 37969,
+   "lux": 107.0
   }
  },
  "reading": "A 10-90 % edge width of 400-560 px is a blur circle of roughly 700-900 px, 1.1-1.4 mm on the 1.55 um pixels. In focus on 2026-10-20 at about 9 mm the centre score was 34 (still_0358Z_lit.json); here it is 2-7. At WIDE the focus ring moves the image only a few tenths of a mm (thin lens, 8-9 mm, infinity to the 0.20 m minimum), so blur this large at WIDE points at the lens-to-sensor distance: the lens backed out of its thread, the C-CS adapter, or the camera's back-focus ring.",
