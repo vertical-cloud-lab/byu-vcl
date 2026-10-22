@@ -1,0 +1,11 @@
+{
+  "posts": [
+    {
+      "id": "2026-10-22-bambu-approval-emails-issue",
+      "type": "issue",
+      "key": "ISSUE_EMAILS",
+      "title": "claude-print approval requests email all 20 bambu-print-approvers",
+      "body_file": "new-issue.md"
+    }
+  ]
+}
