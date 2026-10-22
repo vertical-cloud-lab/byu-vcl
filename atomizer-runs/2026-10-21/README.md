@@ -412,11 +412,11 @@ task IDs in [`edison/_task_ids.json`](edison/_task_ids.json); full trajectories 
 ## Reproducing
 
 Video: on the CubXL Pi, as for Oct 8 ([`../README.md`](../README.md#getting-the-videos) on PR
-#268), into `~/ytframes/atomizer-2026-10-21/` (516 MB).
+#268), into `~/ytframes/atomizer-2026-10-21/` (494 MiB on disk).
 
 Stream: the live broadcast's 144p segments were fetched by media-sequence number on the same Pi
 with [`../2026-10-20/tools/live_dvr_fetch.py`](../2026-10-20/tools/live_dvr_fetch.py)
-(`udS2Xt0a7zQ 269 0 7200`, kept in `~/ytframes/oct21/live/`, 115 MB). Segments 0–64 had already
+(`udS2Xt0a7zQ 269 0 7200`, kept in `~/ytframes/oct21/live/`, 146 MiB on disk). Segments 0–64 had already
 aged out; offset 0 of the joined file is 13:03:23.
 
 ```bash
