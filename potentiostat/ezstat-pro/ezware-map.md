@@ -14,6 +14,7 @@ Checked on 2026-10-22 for [#231](https://github.com/vertical-cloud-lab/byu-vcl/i
 - **What happened:** LabVIEW's loader asked for `nilvaiu.dll`, NI-DAQmx's LabVIEW interface (§1). If you skip it, the main window opens but is a dead shell.
 - **The fix:** install NI-DAQmx 9.7. **Done on 2026-10-22, 02:19–02:42 UTC**, after this map was made: a Claude session installed it from des4 and restarted the PC ([runbook](README.md#installing-from-des4-with-nobody-at-the-pc)). §1 and §2 describe the PC before that.
 - **Since then (03:00 UTC):** EZware starts with no `nilvaiu.dll` prompt. It shows its version in the title, its own menus, a working Run arrow, and all three windows. It says no instrument is selected yet, which is Tools → Configure (runbook step 2). It was closed with File → Exit, without configuring or running anything.
+- **Configured (03:54 UTC):** Tools → Configure listed *Dev1 – USB-6221 (OEM)*, and EZware identified the EZstat-Pro without asking for the model. It now opens on Dev1 with the EZstat-pro logo ([runbook step 2](README.md#step-2-plug-in-the-ezstat-now-and-not-before), [details](pc-settings-2026-10-22.md)). In 7.1 the [Configure Instrument] window has only the device list, Check for new device and DONE, not p. 42's TCC and MFC tables. Its menus need the keyboard over Remote Desktop: arrow keys, then Enter.
 
   ![EZware 7.1.16.1025 starting normally, 2026-10-22](images/2026-10-22-ezware-starts.png)
 

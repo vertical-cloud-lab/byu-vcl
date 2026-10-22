@@ -116,6 +116,31 @@ scripts/ezstat-pc-rdp/drive.sh stop
   wrong password hasn't been tried, so its output is unknown.
 - **Don't commit desktop screenshots.** The desktop shows other people's folder
   names, and this repo is public. Crop to the window you need.
+- **In EZware's menus, use the keyboard.** A click on a menu's title opens it,
+  but neither hovering nor clicking chose an item (2026-10-22). The arrow keys
+  then Enter always worked: Down from the title goes to the first item, Up to
+  the last, so File → Up → Enter is Exit. Screenshot before pressing Enter.
+  Buttons and lists in its dialogs do take clicks. Never send Ctrl+E (cell
+  on/off) or Ctrl+A (abort) to EZware.
+- **Mind what's under a dialog.** Help → Instrument Info's OK button sits over
+  the main window's Potentiostat button, which switches modes. Click OK once,
+  or press Enter.
+
+### What des4's cameras see of the EZstat (2026-10-22)
+
+Only a corner, maybe. des4 has two cameras. Camera 0 is the CubXL's overhead
+deck camera, served by `deckcam` on `127.0.0.1:8743` (`/snapshot.jpg` is one
+1280 × 720 frame; while nobody is watching,
+`rpicam-still --camera 0 --width 4608 --height 2592` gives the full sensor).
+Its frame ends at the CubXL's Genmitsu controller. At the bottom-right edge is
+the corner of a beige box, the colour of the EZstat's plastic case (manual
+p. 36), though it could as well be its beige power supply. Camera 1 looks
+along the deck. Neither shows the EZstat's front panel, power light, Cell
+Enable button or leads, so a remote session still can't see whether the leads
+are connected. Aiming camera 0 further towards that corner, or adding a
+camera, would.
+
+![The overhead deck camera at 03:43 UTC; the red box is the beige corner](images/2026-10-22-deckcam-ezstat-corner.jpg)
 
 ## 2. Accounts and subscriptions: none needed
 
@@ -327,10 +352,28 @@ deleted afterwards. The PC keeps its copy in `Downloads\ezstat-software\NIDAQ970
 6. Open EZware. Choose **Tools → Configure**, highlight the device, click
    **Done**. If it asks for the model, choose **EZstat-Pro**: the wrong model
    stops it working properly (manual p. 43).
-7. For the session, turn off sleep and Windows Update. If the PC freezes, the
-   cell can stay on, uncontrolled (manual p. 26). For Remote Desktop, leave
-   sleep off for good (`powercfg -change -standby-timeout-ac 0`): a sleeping
-   PC stops answering it.
+7. Turn off sleep and Windows Update for good. If the PC freezes, or restarts
+   for an update mid-run, the cell can stay on, uncontrolled (manual p. 26),
+   and a sleeping PC stops answering Remote Desktop.
+   [`windows/set-sleep-and-updates.ps1`](windows/set-sleep-and-updates.ps1)
+   does both: it reports by default, and with `-Apply` it makes the changes as
+   administrator (one UAC prompt) and reports again.
+
+**Result on the lab PC, 2026-10-22** (a Claude session over Remote Desktop,
+03:49–04:01 UTC, with the EZstat already plugged in and on;
+[details](pc-settings-2026-10-22.md)):
+
+| Item | Result |
+|---|---|
+| 6. Configure | The list showed **Dev1 – USB-6221 (OEM)**. After **DONE** there was no model prompt: EZware identified the EZstat-Pro itself. Its titles now end in *Dev1*, the EZstat-pro logo shows, and Messages reads *Hardware Initialized and Running* ([screenshot](images/2026-10-22-ezware-configured.png)). Help → Instrument Info gives *DAQ card SN: 1A801CD*, NI MAX's serial |
+| It sticks | Closed and reopened, EZware comes straight up on Dev1. The choice is in `%LOCALAPPDATA%\NuVant\EZware\Instr_config\EZstat_general_conf.xml`, in the Windows user's own profile, so **another Windows account has to repeat item 6** |
+| Idle reading | Cell OFF, Potentiostat, 10 mA – 1 A range: **Cell Potential 10.65 V, Cell Current 0 A**, steady. That looks like an input with nothing on the leads, sitting at the top of its range. Unconfirmed at the bench. With R1's resistor connected and the cell still off, it should drop to near 0 V |
+| 7. Sleep | Never sleep or hibernate, in all four power plans, plugged in and on battery. USB selective suspend off, so Windows can't power down the EZstat's board. Hibernation off. Start → Sleep still works if someone picks it |
+| 7. Windows Update | It had been set to **install updates automatically**, with its service running and 430 MB of downloaded updates waiting. Now: never check, Automatic Updates disabled by policy, no automatic restart with someone logged on, and the service stopped and disabled |
+
+To install a Windows update by hand later (an `.msu` from a USB stick), first
+set the service back with `sc config wuauserv start= demand` as administrator:
+`wusa` won't install while it's disabled. Disable it again afterwards.
 
 ### Step 3. First runs, on dummy loads (no chemistry)
 
