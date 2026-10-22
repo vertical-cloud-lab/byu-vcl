@@ -1,0 +1,146 @@
+{
+  "what": "Deck key fit test: the stirrer's deck key at three nub interferences (0.05, 0.10 and 0.15 mm a side), one of each, on one plate",
+  "request": "https://github.com/vertical-cloud-lab/byu-vcl/pull/269#issuecomment-6351246877",
+  "request_text": "@claude-print print the deck keys (one each size- 0.05mm, 0.10mm and 0.15mm)",
+  "requested_by": "benwhitney5463",
+  "run": "https://github.com/vertical-cloud-lab/byu-vcl/actions/runs/39854021725",
+  "workflow": "claude-print.yml (@claude-print), environment bambu-print",
+  "approved_by": "benwhitney5463",
+  "printer_choice": "A1 mini: the request named no printer; the base whose pockets the keys go into was printed on the A1 mini in the same PETG (print/2026-10-21-a1mini/)",
+  "go": {
+    "by": "benwhitney5463",
+    "text": "plate clear",
+    "utc": "2026-10-22T21:23:43Z",
+    "comment": "https://github.com/vertical-cloud-lab/byu-vcl/pull/269#issuecomment-6351626889",
+    "after_seeing": "20261022T211049Z_camera.jpg, posted with the request for the go at 21:23:21Z; the request listed: plate empty and Textured PEI, bed path clear, the PETG in A4 turning freely, someone able to reach the printer"
+  },
+  "source": {
+    "branch": "claude/issue-169-20261009-2151",
+    "commit": "ecde470",
+    "files_md5": {
+      "hardware/vial-stirrer-cubxl/stl/key_fit_test/deck_key_press_0.05.stl": "fc2bb14d3cd7b228053a834a42651613",
+      "hardware/vial-stirrer-cubxl/stl/deck_key.stl": "462fbe911a1bfff18ac24213c470d81d",
+      "hardware/vial-stirrer-cubxl/stl/key_fit_test/deck_key_press_0.15.stl": "6aff1a7fec1234f1419761297a23f1ad"
+    },
+    "imported_as": "deck_key_press_0.05.stl, deck_key_press_0.10.stl (a byte-identical copy of stl/deck_key.stl, renamed so the three names line up), deck_key_press_0.15.stl; as three objects, not one object with parts",
+    "orientation": "nub up, as in the STLs; Studio placed each turned 180 degrees about Z (nub point toward +Y, dimples toward -Y), which changes nothing for a part symmetric about its long axis",
+    "layout": "Studio's Arrange, 10 mm spacing, no auto-rotate; bounding boxes on the 180 x 180 mm bed from the file's plate_1.json (mm, X then Y)",
+    "bboxes": {
+      "deck_key_press_0.15": [101.3, 77.61, 111.1, 102.39],
+      "deck_key_press_0.10": [121.1, 77.61, 130.9, 102.39],
+      "deck_key_press_0.05": [140.9, 77.61, 150.7, 102.39]
+    },
+    "gcode_label_ids": {"158": "deck_key_press_0.05", "180": "deck_key_press_0.10", "202": "deck_key_press_0.15"}
+  },
+  "slicer": {
+    "app": "Bambu Studio 02.08.02.61 (AppImage) on the CI runner, bundled profiles (the 2.8.0.6 configuration update was cancelled)",
+    "printer_preset": "Bambu Lab A1 mini 0.4 nozzle (set by Sync info from the printer; the empty project had started as an A1)",
+    "process_preset": "0.20mm Standard @BBL A1M",
+    "filament_preset": "Bambu PETG Basic @BBL A1M 0.4 nozzle (GFG00), white, project filament 3 (filaments synced from the AMS Lite: 1 PLA Basic dark blue, 2 PLA Basic black, 3 PETG Basic white)",
+    "plate": "Textured PEI Plate",
+    "changed_in_gui": {
+      "global": {
+        "wall_loops": "2 -> 4",
+        "sparse_infill_density": "15% -> 30%",
+        "elefant_foot_compensation": "0 -> 0.15 mm"
+      },
+      "objects": "all three set from filament 1 (PLA) to filament 3 (PETG) with Change Filament",
+      "why": "BUILD.md stage 1: PETG, at least 4 walls, 30 % infill or more, elephant-foot compensation, no supports; the same settings as print/2026-10-21-a1mini"
+    },
+    "left_at_preset": {
+      "enable_support": 0,
+      "brim_type": "auto_brim (made no brim)",
+      "enable_circle_compensation": 0,
+      "layer_height_mm": 0.2,
+      "nozzle_temperature": 245,
+      "textured_plate_temp": 70
+    },
+    "checked_in_config_block": "wall_loops = 4, sparse_infill_density = 30%, elefant_foot_compensation = 0.15, enable_support = 0, curr_bed_type = Textured PEI Plate, printer_settings_id = Bambu Lab A1 mini 0.4 nozzle"
+  },
+  "gcode_checks": {
+    "how": "check_slice.py on deck_key_fit_test.gcode.3mf; output in check_slice_output.txt",
+    "nub_corner_to_flat_A_mm": {"0.05": 6.943, "0.10": 7.042, "0.15": 7.141},
+    "nub_across_corners_B_mm": {"0.05": 7.659, "0.10": 7.758, "0.15": 7.856},
+    "model_A_B_mm": {"0.05": [6.95, 7.67], "0.10": [7.05, 7.77], "0.15": [7.15, 7.87]},
+    "nub_layers_measured": "z 10.2-11.6, the 8 layers below the 0.3 mm lead-in",
+    "dimples": {"0.05": 1, "0.10": 2, "0.15": 3},
+    "dimples_how": "each a hole in the pill's top two layers (z 9.8 and 10.0) ringed by an outer-wall loop drawn as arcs; the loops' centres are 1.1 or 2.2 mm apart along X, 8.5 mm from the key's centre",
+    "first_layer_footprint_mm": [9.0, 23.97],
+    "first_layer_note": "outer-wall centrelines of the 9.8 x 24.77 mm pill: half the 0.5 mm first-layer line width and the 0.15 mm elephant-foot compensation in from each side",
+    "features": "no brim, skirt, support or prime tower",
+    "start_gcode": "M620 S2A (load filament 3, 0-based 2, from the AMS), M412 S1, M190 S70, M109 S245"
+  },
+  "estimates": {
+    "total": "23m 36s (prediction 1416 s)",
+    "model": "17m 33s (G-code header); the GUI showed 16m 43s plus 6m 3s prepare",
+    "first_layer_s": 52,
+    "layers": 60,
+    "max_z_mm": 12.0,
+    "filament_g": 5.64,
+    "filament_m": 1.87,
+    "warnings": ["not_support_traditional_timelapse (expected; timelapse off)"]
+  },
+  "send": {
+    "printer": "Thumbelina, the A1 Mini (Bambu Lab A1 mini, 0.4 mm)",
+    "route": "Bambu Studio on the runner, logged in to the lab's Bambu account (password + authenticator code), sent through Bambu's cloud",
+    "job_name": "deck_key_fit_test",
+    "plate": "Textured PEI",
+    "ams_mapping": "project filament 3 (PETG Basic, white) -> AMS Lite A4",
+    "timelapse": false,
+    "auto_bed_leveling": true,
+    "flow_dynamics_calibration": true
+  },
+  "sent_file": {
+    "path": "deck_key_fit_test.gcode.3mf",
+    "how": "copied from /tmp/bamboo_model/.../Metadata/.<pid>.0.3mf, which Studio writes at Send; only DesignerUserId blanked",
+    "plate_1_gcode_md5": "1a127d4b3d5777b323a13e0f62563dfb",
+    "matches_studio_slice": true,
+    "file_md5_after_blanking": "f9fe3c2f1fcc65ff49c4a09f5b496a10"
+  },
+  "printer_before": {
+    "utc": "2026-10-22T21:24:28Z",
+    "state": "idle after the last job (stir_module_parts, 100 %, Finished), no HMS alerts (Studio Device page and Assistant (HMS))",
+    "nozzle_c": 21,
+    "bed_c": 22,
+    "ams_lite": {
+      "A1": "PLA Basic, dark blue",
+      "A2": "empty",
+      "A3": "PLA Basic, black",
+      "A4": "PETG Basic, white"
+    }
+  },
+  "timeline_utc": [
+    ["21:02:50", "request (@claude-print)"],
+    ["21:02:53", "run created and approved (benwhitney5463)"],
+    ["21:06-21:08", "Studio set up: certificate prompt, wizard, plug-in, beta prompts, configuration update cancelled"],
+    ["21:09:17", "Log In pressed"],
+    ["21:09:34", "authenticator code typed (bambu-totp)"],
+    ["21:09:35", "Confirm; logged in, A1 mini selected by Studio"],
+    ["21:10:25", "Device page: idle, no HMS alerts, heaters off, PETG Basic in A4"],
+    ["21:10:49", "camera frame (20261022T211049Z_camera.jpg)"],
+    ["21:11-21:18", "Sync info, AMS filaments synced, three STLs imported, arranged, set to PETG, settings set, sliced (21:18:10)"],
+    ["21:22:56", "frame and plate layout pushed (e83d3be)"],
+    ["21:23:21", "go asked for in the thread"],
+    ["21:23:43", "go: plate clear (benwhitney5463)"],
+    ["21:24:28", "fresh Device-page check and frame: idle, plate unchanged"],
+    ["21:25:16", "Send"],
+    ["21:25:54", "downloaded; bed heating to 70 (preheat had shown 65, the PLA value, during the download), nozzle to 170"],
+    ["21:26-21:28", "filament change: PETG loaded from A4 (nozzle read up to 257 C)"],
+    ["21:28:29", "vibration compensation"],
+    ["21:29-21:30", "waiting for the bed to reach 70"],
+    ["21:31:16", "auto bed leveling"],
+    ["21:32:11", "flow dynamics calibration"],
+    ["21:32:56", "layer 1 (245 C / 70 C)"],
+    ["21:37:55", "layer 19"],
+    ["21:43:22", "layer 41"],
+    ["21:49:05", "layer 60/60"],
+    ["21:49:16", "job panel: Finished, 'Printing' label gone"],
+    ["21:49:27", "bed target 0; nozzle target 0 by 21:49:49"],
+    ["21:50:00", "the three keys on the plate, gantry parked high (20261022T215000Z_finished.jpg)"],
+    ["21:51:07-21:51:41", "keys taken off the plate by someone in the lab"],
+    ["21:53:18", "plate empty"]
+  ],
+  "watching": "Studio's Device page, OCR about every 11 s and a camera crop each time (watch_a1m.py, an A1 mini copy of PR #234's bambu/studio/watch_studio.py); no new windows, no pause, no HMS alert; the HMS list was empty after the print",
+  "recording": "the runner's screen was recorded in 1 min segments; the segments covering the login were deleted at once and the rest was not kept: claude-print.yml has no YouTube token. timelapse.mp4 / timelapse.gif are the watcher's camera crops from layer 1 (21:32:56) to 21:51:41, one about every 11 s, room blurred",
+  "outcome": "finished: layer 60/60 and Finished at 21:49:16, 24.0 min after Send against Studio's 23 min 36 s; no pause, dialog or HMS alert. The keys were taken off the plate by 21:51:41. Fit reported by benwhitney5463 at 22:01:17 UTC: the 0.05 mm key is the best fit, to be used for all future stir module prints (https://github.com/vertical-cloud-lab/byu-vcl/pull/269#issuecomment-6352266215)"
+}

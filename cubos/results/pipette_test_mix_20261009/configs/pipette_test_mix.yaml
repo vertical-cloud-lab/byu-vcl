@@ -1,0 +1,125 @@
+# pipette_test_mix.yaml -- pipette_test.yaml with `mix` in place of step 4's
+# `aspirate` and step 8's `blowout`. @benwhitney5463 asked for it on issue
+# #169, 2026-10-09 21:17Z. Every other step, position and comment below is
+# pipette_test.yaml's, verbatim; see that file's header for their history.
+#
+# Both mixes keep the replaced step's plane, height -35.0, and the 20 uL the
+# aspirate used. With the rims at deck Z 56 in ben_2vials_tiprack.yaml, that
+# puts the tip end at deck Z 21 and the gantry at Z 56. cycles: 3 is CubOS's
+# default, written out.
+#
+# What one cycle sends (PipetteInstrument.mix at CubOS 496819c; the
+# OpentronsPipette driver does not override it):
+#
+#   ASPIRATE 20 -> G01 Z57 (up 1 mm) -> DISPENSE 20 -> ASPIRATE 20
+#               -> G01 Z56 (back down) -> DISPENSE 20
+#
+# On the flashed PANDA firmware (src/Pipette.cpp), ASPIRATE first moves the
+# plunger to PRIME_POSITION 28.0, then up 20 x 1.34 = 26.8 mm to 1.2 mm.
+# DISPENSE ignores its volume and moves to BLOWOUT_POSITION 32.5. So each
+# stroke runs 32.5 -> 1.2 mm and back, a full blowout every time. The first
+# ASPIRATE in vial_1 starts from 0.0, where pick_up_tip leaves the plunger, so
+# on its way down to prime it pushes ~21 uL of air out through the tip into
+# vial_1, as step 4's aspirate always has.
+#
+# Nothing is carried from vial_1 to vial_2: each mix ends on a DISPENSE, with
+# the plunger at 32.5. drop_tip then moves it to 46.5 and back to 28.0, as
+# before.
+
+positions:
+  park_position: [206.0, 25.0, 115.0]
+  pipette_park:  [258.0, 25.0, 86.0]   # CHANGED 2026-09-08 (was 182.0):
+                                       # Ben moved both parks to the near-Y
+                                       # end of the deck. Pipette frame, so
+                                       # gantry (206, 13, 122).
+
+protocol:
+  - home:
+
+  # 1. Park the pipette first (base-protocol convention): explicit travel_z
+  #    so the transit out of the homed corner is modeled, well away from the
+  #    vial column and the tip rack.
+  - move:
+      instrument: vial_capper_decapper
+      position: park_position
+      travel_z: 115
+
+  # 2. Open vial_1 while the nozzle is still bare.
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_1
+
+  - pick_up_tip:
+      position: tip_rack.A1
+
+  # 4. CHANGED: mix in vial_1, was `aspirate` 20 uL.
+  - mix:
+      position: vial_1
+      volume_ul: 20.0
+      cycles: 3
+      height: -35.0
+  - move: 
+      instrument: pipette
+      position: pipette_park
+      travel_z: 86
+
+
+
+  # 6. Close vial_1, then decap+cap the remaining five vials (no pipette
+  #    insertion -- see TIP-ON INVARIANT in the header for why none can
+  #    honestly follow the hand removal).
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_1
+
+  # --- vial 2 ---
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_2
+
+  # 8. CHANGED: mix in vial_2, was `blowout`.
+  - mix:
+      position: vial_2
+      volume_ul: 20.0
+      cycles: 3
+      height: -35.0
+
+  - drop_tip:
+        position: tip_rack.A1
+
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_2
+
+#   # --- vial 3 ---
+#   - decap:
+#       instrument: vial_capper_decapper
+#       vial: vial_3
+
+#   - cap:
+#       instrument: vial_capper_decapper
+#       vial: vial_3
+
+#   # --- vial 4 ---
+#   - decap:
+#       instrument: vial_capper_decapper
+#       vial: vial_4
+
+#   - cap:
+#       instrument: vial_capper_decapper
+#       vial: vial_4
+
+#   # --- vial 5 ---
+#   - decap:
+#       instrument: vial_capper_decapper
+#       vial: vial_5
+
+#   - cap:
+#       instrument: vial_capper_decapper
+#       vial: vial_5
+
+
+  # Modeled with the tip still attached (nothing runnable clears it); the
+  # home pose validates in-bounds, and the nozzle is physically bare by now.
+  - home:
