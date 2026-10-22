@@ -17,7 +17,7 @@ Checked on 2026-10-22 for [#231](https://github.com/vertical-cloud-lab/byu-vcl/i
 What *is* accessible:
 
 1. **The full menu structure**, taken from the program itself (§3).
-   - 10 technique families with 38 techniques. The manual documents 8 of them.
+   - 10 technique families with 38 techniques. The manual documents 8 of them, and 8 others are probably stripped out of the menu as unfinished.
    - Recipes: sequences of methods.
    - Custom waveforms from a CSV file.
    - Self-test, iR compensation and data analysis.
@@ -72,14 +72,14 @@ Double-clicking the desktop's **EZware-2013** shortcut:
 | NI-DAQmx | `nicaiu.dll` and `nilvaiu.dll` are absent from `System32` and `SysWOW64`. All that's left of 9.7.5 is its help: `National Instruments\NI-DAQ\docs\*.chm` ([screenshot](images/ezware-2026-10-22/09-registry-nidaq-leftovers.png)) |
 | LabVIEW 2013 | Installed in `National Instruments\LabVIEW 2013`, with licence files for the Base, Full and Professional editions, App Builder and Student. Someone has used it here: `Documents\LabVIEW Data` holds `VIObjCache`, `Probes` and similar. Whether it's still activated isn't known: `nilm.exe` in `Shared\License Manager\Bin` (dated 2010) opened no window when launched |
 | Python | Not installed (`where python py pythonw` found nothing). There's a `Documents\Python Scripts` folder from 2024 |
-| NuVant data or settings | None. `dir /s` found no `*.nuv*` under `C:\Users` or `C:\ProgramData`, and no `*NuVant*` under `C:\ProgramData`. So nothing from an earlier EZware install survives here |
+| NuVant data or settings | `dir /s` found no `*.nuv*` files under `C:\Users` or `C:\ProgramData`, and nothing named `*NuVant*` under `C:\ProgramData`. I didn't look for a `NuVant\EZware` folder under the user profile, where EZware may keep its settings (§3.8) |
 
 ## 3. Map of EZware 7.1, cross-referenced with the manual
 
 ### Sources and caveats
 
 - **Menus** come from the run-time menu files (`.rtm`) inside the exe, read offline. The bracketed names are their tags.
-- **Techniques:** the menu file is only a template. The program also holds a list of 36 techniques, and the menu adds two more (Extended Time Base and Corrosion Inhibition Tests), 38 in all (§3.3). Some listed techniques aren't in the template, so they're presumably added at start-up; `RecipeManagement/MainMenuSupportedMethods.vi` is the likely place. Which ones the EZstat-Pro offers can only be seen once EZware runs. The manual says techniques a model can't do are greyed out (p. 8).
+- **Techniques:** the menu file is only a template. The program's internal method list has 38 techniques (§3.3). Some aren't in the template, so they're presumably added at start-up. `MainMenuSupportedMethods.vi` and `RecipeSupportedMethods.vi` both start with a separate list of 8 (the four stripping techniques, RDE, hydrodynamic modulation, triple-pulse time base and A.C. impedance), and `Utilities/Remove_UndevelopedMenuItems.vi` acts on the Technique menu. So those 8 are probably removed as unfinished. That's an inference: the program's diagrams are stripped. Which techniques the EZstat-Pro offers can only be seen once EZware runs. The manual says techniques a model can't do are greyed out (p. 8).
 - **The manual's screenshots are of EZware 6.0** (title *NuVant EZware V.6.0.13.0121*). Its menus differ in places from 7.1's.
 
 ### 3.1 Windows
@@ -118,7 +118,7 @@ The menu file marks some items as disabled to start with: the whole Data menu, R
 
 ### 3.3 Techniques
 
-The program's list ("Lists all Supported methods", with method codes CV, LSV, … GalPC), plus the two techniques only the menu has, against the manual and the menu template. "Not in template" means the technique is in the program's list but not in the menu file, so presumably added at start-up. The manual's 6.0 screenshots do show DPV and NPV in the menu:
+The program's internal method list (codes CV, LSV, … CorrInh, ExtTB), against the manual and the menu template. "Not in template" means the technique is in the program's list but not in the menu file, so presumably added at start-up. The manual's 6.0 screenshots do show DPV and NPV in the menu. **Probably unfinished** marks the 8 that are probably removed (see above):
 
 | Family | Technique | Manual | In 7.1's menu template | CubOS method |
 |---|---|---|---|---|
@@ -137,15 +137,15 @@ The program's list ("Lists all Supported methods", with method codes CV, LSV, �
 | Square wave | Barker Square Wave Voltammetry/Polarography | — | Not in template | |
 | | Osteryoung Square Wave Voltammetry | — | ✓ | |
 | AC | AC Voltammetry/Polarography; Phase Selective, Second Harmonic, Triangular Wave and Diff. Triangular Wave AC Voltammetry/Polarography (5) | — | Family only, no items in it | |
-| Stripping | Barker Square Wave, Diff. Pulse, Linear Sweep and Osteryoung Square Wave Stripping Voltammetry (4) | Greyed out in p. 46's screenshot | ✓ | |
-| Corrosion | Corrosion Inhibition Tests: OCV monitoring plus periodic corrosion-resistance measurements | — | ✓ (menu only; not in the 6.0 menu) | `run_OCP`-like (see below) |
-| Hydrodynamic | Rotating Disk Electrode; Hydrodynamic Modulation | Greyed out in p. 46's screenshot | ✓ | |
-| Time base | Time Base; Extended Time Base (menu only); Diff. Pulse Time Base; Triple Pulse Time Base | — | ✓ | `run_CA` / `run_CP` (long holds) |
+| Stripping | Barker Square Wave, Diff. Pulse, Linear Sweep and Osteryoung Square Wave Stripping Voltammetry (4) | Greyed out in p. 46's screenshot | ✓, **probably unfinished** | |
+| Corrosion | Corrosion Inhibition Tests: OCV monitoring plus periodic corrosion-resistance measurements | — | ✓ (not in the 6.0 menu) | `run_OCP`-like (see below) |
+| Hydrodynamic | Rotating Disk Electrode; Hydrodynamic Modulation | Greyed out in p. 46's screenshot | ✓, **probably unfinished** | |
+| Time base | Time Base; Extended Time Base; Diff. Pulse Time Base; Triple Pulse Time Base (**probably unfinished**) | — | ✓ | `run_CA` / `run_CP` (long holds) |
 | Energy sources | Battery | p. 58 | ✓ | |
 | | Fuel Cell | — | ✓ | |
 | MISC | Programmable Potential Waveform – Hold/Ramp/Step | pp. 54–57 | ✓ | |
 | | Custom ASCII | — | ✓ | |
-| | Bulk Electrolysis with Coulometry; Electrocapillary Measurement; A.C. Impedance; Galvanostatic Polarization Curve | — | ✓, except Galvanostatic Polarization Curve: not in template | |
+| | Bulk Electrolysis with Coulometry; Electrocapillary Measurement; A.C. Impedance (**probably unfinished**); Galvanostatic Polarization Curve | — | ✓, except Galvanostatic Polarization Curve: not in template | |
 
 **What some of the undocumented techniques do**, from the program's built-in help (`HelpMessagesForMethods.vi`) and parameter labels:
 
@@ -163,6 +163,8 @@ The program's list ("Lists all Supported methods", with method codes CV, LSV, �
 - **Corrosion Inhibition Test:** *"Use Open Circuit Monitoring – Idle in OCV"*, a log interval and a monitoring time. It also measures corrosion resistance every N minutes, with a polarization range [mV], a scan rate [mV/min] and an option to subtract solution resistance. Its open-circuit monitoring is the closest match to CubOS's `run_OCP`.
 - **"Use OCV instead"** in the sweep methods: *"the Open Circuit Voltage is measured and the scan starts from there."*
 - **Scan rate ≤ 0.1 V/s** is needed for current auto-ranging (the program's help and p. 44).
+- **Source modes:** Potentiostat, Galvanostat, Constant Load and Constant Power.
+- **Input limits the program enforces** include *"Pulse amplitude is out of range: 10-100mV!"* and *"Pretreatment time out of Range. Use 1 - 10000s."* Out-of-range values are *"Coerced!"*
 
 **Not in this program:** EIS. This EZstat is the plain EZstat-Pro, and EIS lives in the separate EZware-EIS program, which needs the EZstat-Pro EIS model (p. 62). The menu's *A.C. Impedance* entry and the program's EIS data-collection VIs are there, but whether the plain Pro offers them can only be seen once it runs.
 
@@ -243,7 +245,27 @@ The window also has:
   | Galvanostat | ±100 µA, ±1 mA, ±100 mA, ±1 A | ±1 µA, ±100 µA, ±10 mA, ±1 A |
   | Potentiostat | ±1 µA, ±100 µA, ±10 mA, ±1 A | ±1 µA, ±100 µA, ±10 mA, ±1 A |
 
-  EZware 7.1's own range labels are `10nA ~ 1uA`, `1uA ~ 100uA`, `100uA ~ 10mA` and `10mA ~ 1A`, matching the potentiostat ranges. Read the galvanostat ranges off EZware once it runs.
+  NuVant's 2013 LabVIEW driver settles it for this generation. Its EZstat-pro tables give potentiostat ranges of 10 nA–1 µA, 1–100 µA, 100 µA–10 mA and 10 mA–1 A, and galvanostat ranges of 1–100 µA, 0.1–1 mA, 1–100 mA and 0.1–1 A, as in the **2013 manual**. EZware 7.1's own labels are `10nA ~ 1uA`, `1uA ~ 100uA`, `100uA ~ 10mA` and `10mA ~ 1A`. The ranges' feedback resistors are 499 kΩ, 45.4 kΩ, 499 Ω and 9.09 Ω (potentiostat) and 100 kΩ, 10 kΩ, 100 Ω and 9.09 Ω (galvanostat).
+- **Self-test needs the leads off and a physical Cell Enable switch on.** The program's prompt: *"Please disconnect the electrode cables before running the selft test. Turn the manual "Cell Enable" switch ON. Press OK when ready."*
+
+### 3.8 Files EZware reads and writes
+
+From the program's strings (offline):
+
+- **`.nuvdt`** is EZware's own format, for methods, recipes and their data (storage types `method`, `recipe`, `methodDATA` and `recipeDATA`). It's a text header (`NUVANT_VERSION:1`, `NBLOCKS:`, `DATAID:`, `DATA_TYPE:`, `NLINES:` …) followed by blocks.
+- **CSV export columns:**
+
+  ```
+  "Loop#","Step #","Absolute Time","Relative Time [HH:MM:SS]","Relative time [s]","Potential","Current","WE2 Potential","WE2 Current","WE1 SP","WE2 SP","Inhibitor","Corrosion Potential","Corrosion Current","Corrosion Resistance","Solution Resistance"
+  ```
+
+  The Data Configuration dialog picks which of them go out (p. 80).
+- **Custom ASCII** reads its waveform from `*.csv` or `*.txt`.
+- **Settings are XML:** `EZstat_general_conf.xml`, `SNGL.mthd.cfg.xml`, and per-instrument `<n>_general_conf.xml` / `<n>_mthd_cfg.xml`.
+  - They live in `Instr_config` and `Instr_InUse` folders under `NuVant/EZware`, below a Windows system folder whose type the stripped program doesn't reveal.
+  - `Instr_InUse/<n>.dat` is a lock file, so two copies of EZware can't drive one instrument.
+  - User files default to an `EZware_user_Files` folder.
+- **Two menu items go to the internet,** which this PC can't reach: Help → Check for updates (fetches `nuvant.com/downloads/NuVant_software_versions.txt`) and Help → User Manual (opens `nuvant.com/pdfs/EZware-2013%20Manual.pdf`). Expect both to time out. Use the manual linked at the top of this page instead.
 
 ## 4. Manual vs program: what the manual doesn't cover
 
@@ -265,6 +287,36 @@ The manual's own instrument check (p. 103) is still the first thing to run once 
 | **4. NI-DAQmx directly** | e.g. Python's `nidaqmx` package, with NuVant's line assignments from the driver | NI-DAQmx, Python on the PC (not installed), and the line map | Most flexible, most risk. Get the cell-enable and range lines wrong and the hardware does something unintended. It also needs an x86 Windows (or Linux x86) host, since NI-DAQmx has no ARM build, so it can't move to the Pi |
 
 **Custom ASCII is the easiest way to run arbitrary programs** through any of these. Write the waveform as a CSV, point the method at it, and run it.
+
+### What NuVant's LabVIEW driver says about the hardware
+
+The driver (`EZstat_2013.12.04.LV10.0.zip`, LabVIEW 2010) still has its block diagrams, with no password, so these come from its case structures, not guesses. They're for the 2013 driver; EZware 7.1 carries a 2016 copy whose diagrams are stripped and which may differ (below).
+
+**EZstat-pro lines on the USB-6221:**
+
+| Function | Line or channel |
+|---|---|
+| Cell enable/disable | `port0/line0` |
+| External switch | `port0/line1` |
+| Galvanostat/potentiostat switch | `port1/line0` (PFI0) |
+| Galvanostat range select (2 lines) | `port1/line1:2` |
+| Potentiostat range select (2 lines) | `port1/line3:4` |
+| Current interrupt control | `port1/line7` |
+| Potentiostat 4th-range compensation | `port2/line0` |
+| Self-test switch | `port2/line1` |
+| Trigger | `port2/line6` (PFI14) |
+| Current interrupt disable | `port2/line7` |
+| Model-ID inputs | `port0/line4:7` |
+| WE potential setpoint | AO0 ("Output Voltage 1"); AO1 is "Output Voltage 2" (WE2) |
+| Inputs | ai0 galvanostat current, ai1 WE voltage (normal gain), ai2 WE voltage (high gain), ai3 potentiostat current; RSE |
+
+- **Range lines** (diagram comment): both off = range 1, the finest; first on = 2; second on = 3; both on = 4, the coarsest.
+- **Reset** (`EZstat_Reset.vi`): *"Disables the Cell, puts the EZstat device in Potentiostat mode and selects the Potentiostat current circuit in Range 4 … The analog ouput is placed in 0 voltage."*
+- **Changing mode disables the cell** (`Change_Instrument_Mode_SafeWay.vi`). *"The user should actively change the Cell to enable."*
+- **No feedback, no watchdog.** *"The state of the Cell Enable switch is software kept. It does not have a feedback from the hardware."* EZware links no DAQmx watchdog or power-up-state VIs, so if it dies with the cell on, the line and AO0 presumably hold their last values. That's the manual's p. 26 warning, seen from the inside.
+- **EZware 7.1's copy differs in places** (inferred from its constants): the 4th-range line becomes an "Activation Switch Safety", current interrupt may move to `port1/line5`, and `port1/line6:7` become "User DIO 1/2", matching the back-panel P1.6/P1.7 (p. 36).
+
+**So route 4 is feasible but not to be improvised.** Confirm the 7.1 line map first (with NuVant, or against a running EZware), and always reset to the state above on exit. Don't probe the lines with NI MAX's Test Panels: they can drive the outputs.
 
 ## 6. Next steps
 
@@ -292,8 +344,9 @@ The manual's own instrument check (p. 103) is still the first thing to run once 
 - **Typing paths:** paths with `(x86)` were typed as `C:\PROGRA~2\…` short names instead.
 - **Disconnecting:** `drive.sh stop` kills `xfreerdp3`. That's a disconnect (exit 145), not a log-off (exit 2), so the Windows session stays signed in.
 - **Redaction:** screenshots were cropped to the windows that matter. `redact_png.py` (from [`c2a80a1`](https://github.com/vertical-cloud-lab/byu-vcl/blob/c2a80a1/scripts/ezstat-pc-rdp/redact_png.py)) found no username in any of them.
-- **The offline inventory** came from the archived installer ([#291 §3](https://github.com/vertical-cloud-lab/byu-vcl/blob/20af078/potentiostat/ezstat-pro/README.md#3-software), SHA-256 `5f8e8cd4…93349101`), unpacked with 7-Zip on a CI runner and never run.
-  - The `.rtm` menu files and the technique list were read from the LabVIEW resources inside `EZWare-2013.exe`.
+- **The offline inventory** came from the archived installer ([#291 §3](https://github.com/vertical-cloud-lab/byu-vcl/blob/20af078/potentiostat/ezstat-pro/README.md#3-software), SHA-256 `5f8e8cd4…93349101`) and the archived driver (2,679,135 bytes, SHA-256 `851138d1…a644408ee`). Both were unpacked on a CI runner and never run.
+  - The installer holds only `install.msi` and `data.cab`; neither the LabVIEW Run-Time nor NI-DAQmx is bundled.
+  - `EZWare-2013.exe` embeds its 1,154 VIs and controls in a scrambled ZIP. Its scrambling (a rotate/XOR keyed on the CRC-32 polynomial) was undone to list them and read their front-panel text, menus and constants. Block diagrams are stripped from the exe, but not from the driver.
 
 **Timeline (UTC, 2026-10-22):**
 
