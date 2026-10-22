@@ -27,9 +27,9 @@ narration, with wall-clock times, is in [`transcript.md`](transcript.md).
 - **Up to the pour, the run went well.**
   - The chamber held pressure at the cold wash: *"sounds like it's holding pressure, so that's
     good"* ([5:38](https://youtu.be/p6Itg-ngMZA?t=338), 13:39:46). So the Oct 20 leak fix held.
-  - O2 was 11–15 ppm through the 500 °C washes and the melt, and 15 ppm at the pour
-    ([28:11](https://youtu.be/p6Itg-ngMZA?t=1691)). That is the lowest of any run so far
-    (Oct 6: 19 rising to 140; Oct 8: 25–26).
+  - O2 read 11–14 ppm after the first 500 °C wash and 13–15 ppm through the melt, with 15 ppm
+    at the pour ([28:11](https://youtu.be/p6Itg-ngMZA?t=1691)). An extra wash briefly raised it
+    to 25. That is the lowest of any run so far (Oct 6: 19 rising to 140; Oct 8: 25–26).
   - The melt followed the SOP: setpoint 1000 °C at 13:56:45; *"It's starting to sink. I'm going
     to bring this down to 800 degrees"* at 13:59:07; 810–812 °C held for about 2 min.
 - **The pour is where it went wrong, and the camera didn't see it.**
@@ -40,8 +40,8 @@ narration, with wall-clock times, is in [`transcript.md`](transcript.md).
   - For about 1.5 min Gage is bent over at the chamber door on the stream, and in the phone
     frames his hand reaches toward the transducer end of the stack. The collar phone points at
     the floor mat throughout, so neither the plate nor the stream is ever in frame.
-  - The generator was off by 14:06:04 (736 °C, 0.0 on the power read-out). So the pour lasted at
-    most 3.5 min, about 1 g/s for 169 g.
+  - The generator was off by 14:06:04 (736 °C, both output readings at 0.0). So the pour lasted
+    at most 3.5 min, about 1 g/s for 169 g.
 - **Gage's verdict, on camera:**
   - *"We gotta figure out a way to measure where the plate is in there because it's ridiculous …
     you're wasting so much material every time"* ([35:54](https://youtu.be/p6Itg-ngMZA?t=2154), 14:10:02).
@@ -139,9 +139,9 @@ Review sheets put a phone frame every 40 s beside the stream frame of the same i
   is melting pressure, below the chamber's 150 mbar.
 - *"About 2 minutes for it to mix up"* ([26:41](https://youtu.be/p6Itg-ngMZA?t=1601)), then
   *"20 more seconds, 15 parts per million"* (14:02:19).
-- The generator keypad labels the pour button **Graining Pressure**
-  ([26:46](https://youtu.be/p6Itg-ngMZA?t=1606), figure below). That settles the open question in
-  the SOP about whether the HMI says "draining" or "graining".
+- The pour button on the generator keypad is labelled **Graining Pressure**
+  ([26:46](https://youtu.be/p6Itg-ngMZA?t=1606), figure below). That answers the SOP's open
+  question about the label, which captions had heard as "graining", "grading" and "draining".
 
 **The pour (14:02:33 to about 14:06).**
 - 14:02:33: *"graining pressure, sealing rod, bring it up a little bit, this turbo pressure."*
@@ -154,7 +154,8 @@ Review sheets put a phone frame every 40 s beside the stream frame of the same i
 - 14:04:09–14:05:37: standing at the front of the machine (the generator panel and the furnace
   shelf), then at the front viewport again ([30:45–31:40](https://youtu.be/p6Itg-ngMZA?t=1845)).
   At 14:04:08–14:04:48 he is reading the SOP on the phone that lies on the furnace shelf.
-- 14:06:04: generator at 736 °C, 0.0, so it has been stopped; melting pressure back on (0.12 bar)
+- 14:06:04: generator at 736 °C with both output readings at 0.0, so it has been stopped; melting
+  pressure back on (0.12 bar)
   ([31:56](https://youtu.be/p6Itg-ngMZA?t=1916)). Sealing rod down and ultrasonics stop are not seen.
 - 14:06:55: *"Dude."* Then two minutes of typing on the phone at the machine.
 
@@ -330,8 +331,15 @@ Gage asked whether the 4047 left over from these runs could be melted again.
   - Log revert as its own powder ID, with its mass and the runs it came from.
   - Clean it the same way as rods, and keep thin splats and powder out, since they carry the most
     oxide.
-- The literature question (oxygen and inclusion pickup on re-melting) is the second Edison query
-  below.
+- **The literature agrees, with a caution about form**
+  ([Edison answer](edison/q2-reusing-al-si-atomization-scrap-as-feedstock-answer.md)):
+  - Clean, same-alloy, dense returns can be re-melted, but they are not equivalent to bar stock.
+  - The oxide comes in on the surface. A 3 nm alumina skin is about 320 ppm O on a 30 µm particle.
+    A 0.1 mm splat carries about 100 times the skin per kilogram of a 100 mm bar, and powder about
+    3,300 times. So the dense bowl puddle from Oct 21 is the best revert, wall splats are worse,
+    and powder should not go back in.
+  - No source sets a maximum revert fraction. It has to be qualified by measuring the powder's
+    oxygen, the yield and whether the nozzle keeps flowing, against virgin-rod runs.
 
 ## For the next run
 
@@ -393,8 +401,10 @@ task IDs in [`edison/_task_ids.json`](edison/_task_ids.json); full trajectories 
   - **A Mo sonotrode on the rePowder is documented,** for a high-entropy alloy (Goncharov et al.
     2026, [doi:10.3390/met16030318](https://doi.org/10.3390/met16030318)).
 - **Reusing Al–Si scrap as feedstock**
-  ([`q2-…`](edison/_task_ids.json)): still running when this was written; it is fetched into
-  [`edison/`](edison/) when it finishes.
+  ([answer](edison/q2-reusing-al-si-atomization-scrap-as-feedstock-answer.md)): summarised under
+  [Reusing the Al 4047 waste](#reusing-the-al-4047-waste). One more benchmark comes out of it.
+  Ingot-fed AlSi10Mg *gas* atomization (Marinucci 2023, a thesis) collected 62–88 % of each charge
+  as powder, but only 34–43 % of the charge fell in the usable 20–50 µm band.
 
 ## Reproducing
 
