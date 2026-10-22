@@ -331,6 +331,91 @@ In the run:
 
 The vials stay open while the doser works the row, because its body trails over the vials behind the tip.
 
+## In a mix-and-measure workflow (Dr. Porter, #213)
+
+@benwhitney5463 asked (PR 274, 2026-10-22) how the towed doser fits the workflow discussed with Dr. Porter: make
+solutions, then measure their conductivity and spectra. The background is in #213 and in PR 270's
+`docs/cubxl-electrochem-first-use-cases.md`. That doc's §5 lists what a powder module should be checked against. This
+section answers it for the towed doser. **None of it has been tried.**
+
+**Why powder instead of stock solutions.**
+- Porter's two syringes, high-salt and low-salt, reach only the line between them. Six stock vials reach a simplex,
+  but nothing more concentrated than the strongest stock.
+- Dosing the salt as a solid and then the water reaches any concentration up to saturation. Water-in-salt LiTFSI
+  (about 21 mol/kg) can only be made that way.
+- Two weighings, salt then water, give the molality directly. That gravimetric truth is what makes a blind test set
+  trustworthy.
+
+**One sample:**
+1. Weigh the empty vial.
+2. Dose each salt in turn, batched by salt across the row.
+3. Add water by weight. The P20 is too small; PR 270 counts 460 transfers for a 9 mL dip-probe sample. That needs the
+   300 µL head or a pump.
+4. Cap and stir until conductivity stops drifting, which shows the salt has dissolved.
+5. Measure: a conductivity dip probe, then a spectrum. For the spectrum, the AS7341 sees Cu–Cl, the OpenRAMAN tip
+   dock sees nitrate and sulfate, and Porter's ATR sees LiTFSI.
+6. Log the masses and readings. His model then picks the next composition.
+
+**What the doses look like,** per gram of water, for PR 270's model chemistries:
+
+| Salt | Range, mol/kg | Salt per g of water | Takes up water from air? |
+|---|---|---|---|
+| LiTFSI | 1 to 21 | 0.29 to 6.0 g | strongly |
+| LiNO₃ | 0.1 to 10 | 7 to 690 mg | yes |
+| NaNO₃ | 0.1 to 5 | 8.5 to 425 mg | slightly |
+| MgSO₄ (anhydrous) | 0.1 to 2.5 | 12 to 300 mg | yes, to hydrates |
+| LiCl (for Cu–Cl) | 1 to 10 | 42 to 424 mg | deliquescent |
+| CuCl₂·2H₂O | 0.01 to 0.5 | 1.7 to 85 mg | deliquescent in damp air |
+
+- **The doser's step is coarse at the low end.** PR 176 fed salt at about 113 mg per turn on its bench
+  (powder-doser#186). The towed doser keeps PR 176's flight, so expect about the same.
+- **Below about 20 mg, a solid dose is mostly the last partial turn.** Make the dilute end from a concentrate the
+  CubXL makes from powder, diluted by pipette.
+- **The bench also stalled on two salt doses** (2026-10-15). Whether the hopper was empty, bridged or caked wasn't
+  settled. So step one is the same as for the alloy work: prove each salt on the bench, with the capillary bench tests
+  above.
+
+### Changing powders automatically
+
+**Make the cartridge the unit of change.** The cartridge is the tube from outlet to cap, with its flight, gear, collar
+and capillary: 123 mm long, 25 mm across (46 mm at the gear). It holds about 12 g half full. The drive stays on the
+shuttle: the NEMA 11 and pinion, the tilt servo, the cradle and the vibration motor. With the brackets cut into clips,
+as in Plan B, a swap is lift out, drop in. That covers PR 270's checklist:
+
+- **Cleaning between powders goes away.** Nothing the powder touches is shared between powders. Cleaning happens off
+  the machine.
+- **Identity:** a tag on each cartridge, an AprilTag or RFID (powder-doser#133), read at the dock.
+- **Inventory:** weigh each cartridge before and after a run, on the 0.1 mg balance.
+- **Moisture:** in storage, a plug on the capillary and the cap on the tube, with desiccant. Load hygroscopic salts
+  just before a run; the glove box is the long-term answer for LiTFSI.
+
+**Four ways to make the swap, from least to most machine:**
+
+| | How it swaps | Adds | Powders | Fits the towed layout? |
+|---|---|---|---|---|
+| **1. By hand, at the dock** | Lift the cartridge out of its clips, drop in the next, weigh both | nothing | one at a time; batch by salt across the row | yes |
+| **2. A lift at the dock** | Shelves on a lead screw behind the back right corner. The lift brings an empty shelf under the docked doser, rises to take its cartridge, and pulls it out of clips that open downwards. It then brings the next cartridge up into them. The gantry's homing already parks the doser there | 1 stepper and lead screw, shelf latches | 3 to 5 | probably: the docked frame already sticks out 105 mm behind the deck. Not drawn |
+| **3. A turret on the shuttle** | 3 cartridges on a revolver, indexed by a servo. The bottom one meshes with the pinion | 1 servo and a detent, about 0.2 kg | 3 | no: the doser clears the beam by 8 mm, and a turret adds about 45 mm of height |
+| **4. Onto the head, with a stack on the deck** | Plan B's mechanism at this size. The head's X, Y and Z clip onto cartridges on shelves; the 123 mm cartridges allow about three stacks side by side | the head mount | about 9 | no: it gives up the towed layout, competes with the capper and pipette for the head, and adds about 0.4 kg to it |
+
+- **Start with 1.** Batched by salt, a row of 8 vials needs one swap per salt, not one per vial. That is enough for a
+  first blind test set, which is PR 270's phase 0.
+- **Build 2 if the loop is to run unattended.** It keeps the towed doser's point: the head and its tools stay free.
+- **4 is Plan B at small scale.** If both plans go ahead, one clip-and-shelf design can serve both.
+
+**Weighing, for this workflow:**
+- **By hand first:** weigh each vial on the 0.1 mg balance after each salt and after the water. The doser fills open-loop
+  by turns.
+- **Then a balance under the row:** a single-point load cell under the strip of 8 vials, about 0.3 kg. It closes the
+  loop to roughly ±10 mg, which is 1 % at 1 g but not at 20 mg.
+- **For mg doses:** an analytical balance at one dosing position, with vials brought to it. That means by hand, or by
+  the vial arm in PR 272.
+
+## Plan B: filling Al charge cups for the alloy workflow
+
+Ben's other idea, a doser close to PR 176's size on the head that clips into a stack of cartridges and fills about 50
+of the atomizer's charge cups, is in [`../alloy-cubxl/`](../alloy-cubxl/README.md), with its specs and a model.
+
 ## Where it was first drawn: inside the atomizer chamber
 
 [`ods_c_gravity.gif`](../ods-lpbf-gifs/out/ods_c_gravity.gif) (5 fps; [`ods_c_gravity.mp4`](../ods-lpbf-gifs/out/mp4/ods_c_gravity.mp4) has every frame, and
