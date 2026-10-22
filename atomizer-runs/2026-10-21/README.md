@@ -361,16 +361,40 @@ Gage asked whether the 4047 left over from these runs could be melted again.
 
 ## Literature search (Edison Scientific)
 
-Three queries were submitted at 02:12 UTC on Oct 22
-([`edison/queries.json`](edison/queries.json), task IDs in
-[`edison/_task_ids.json`](edison/_task_ids.json)):
+Three queries were submitted at 02:12 UTC on Oct 22 ([`edison/queries.json`](edison/queries.json);
+task IDs in [`edison/_task_ids.json`](edison/_task_ids.json); full trajectories beside the answers).
 
-1. how the melt's landing point on a vibrating plate, and the stream itself, govern yield, and
-   how ultrasonic atomizers set and check alignment;
-2. re-melting Al–Si atomization scrap as feedstock;
-3. precedent for ultrasonic atomization of AlSi12 or AlSi10Mg on a Mo plate.
-
-Answers are added to [`edison/`](edison/) when they are fetched.
+- **Landing point and plate position**
+  ([answer](edison/q1-landing-point-and-plate-position-answer.md)):
+  - **Nothing published says where the stream should land, or how precisely.** There is no
+    landing tolerance, no flow limit per unit area or per watt, and no mass balance for any
+    ultrasonically atomized Al alloy. Those numbers have to come from our own runs, which is
+    what weighing everything and logging the stack position give.
+  - **Where the melt lands does matter.** High-displacement, antinode-like regions of a horn can
+    move about twice as far as the rest, and that is where droplet ejection starts (Prasanna et
+    al. 2024, [doi:10.48550/arxiv.2309.15012](https://doi.org/10.48550/arxiv.2309.15012)). So the
+    goal is a repeatable landing point in a strong region, which no single rule of thumb pins down.
+  - **The 3D Lab ATO sidesteps the problem.** It melts wire directly on the sonotrode. Bałasz et
+    al. (2023, [doi:10.5604/01.3001.0016.3393](https://doi.org/10.5604/01.3001.0016.3393)) link
+    separate melt-and-pour designs, like the rePowder, with splashing and interrupted atomization.
+- **Precedent: AlSi12 on a Mo plate**
+  ([answer](edison/q3-precedent-ultrasonic-atomization-alsi12-on-molybdenum-answer.md)):
+  - **No report has all of it.** Yankin et al. (2025,
+    [doi:10.1038/s41598-025-06086-7](https://doi.org/10.1038/s41598-025-06086-7)) atomized AlSi12
+    wire on an ATO Lab+ (35 kHz, 75–80 % amplitude). About 75 % of their powder passed 63 µm.
+    That is a size fraction, not a yield.
+  - **The only rePowder paper on an Al alloy turned 19–50 % of the feed into powder.** It is
+    Jedynak et al. (2024, [doi:10.21741/9781644903131-17](https://doi.org/10.21741/9781644903131-17)),
+    on AlSi9Mg with 20 vol % SiC, induction-melted at 1100 °C. Even good runs on this machine
+    may convert only about half the charge, so yield has to be weighed every time to be compared.
+  - **Their pour pressure was much higher.** They used a 300–500 mbar feed pressure difference.
+    Our 0.19 bar against the 150 mbar chamber is about 40 mbar, if the two are read that way.
+    Their melt was a stiffer composite, though, so this doesn't transfer directly.
+  - **A Mo sonotrode on the rePowder is documented,** for a high-entropy alloy (Goncharov et al.
+    2026, [doi:10.3390/met16030318](https://doi.org/10.3390/met16030318)).
+- **Reusing Al–Si scrap as feedstock**
+  ([`q2-…`](edison/_task_ids.json)): still running when this was written; it is fetched into
+  [`edison/`](edison/) when it finishes.
 
 ## Reproducing
 
