@@ -173,7 +173,8 @@ def check(c: dict) -> list:
     hole_bottom = c["Z_FAN0"] - INSERT_HOLE_D
     seat = hole_bottom + 0.5 + COMPACT["SCREW_L"]
     add("M3 x 20: counterbore depth (mm)", top - seat, 0.0, 0 < top - seat < c["FLANGE_T"] - 2.0)
-    add("M3 x 20: thread in the insert (mm)", c["Z_FAN0"] - (seat - COMPACT["SCREW_L"]), c["INSERT_L"])
+    add("M3 x 20: reach below the insert top, vs. the insert (mm)", c["Z_FAN0"] - (seat - COMPACT["SCREW_L"]),
+        c["INSERT_L"])
     add("M3 x 20: tip above the hole floor (mm)", seat - COMPACT["SCREW_L"] - hole_bottom, 0.3)
     return out
 

@@ -159,8 +159,8 @@ model's numbers ([output](analysis/deck_tiling_output.txt)).
 
 Everything else stays as it is, every height included. The margins: the fan, at the top
 of its tolerance, has 0.15 mm a side inside the walls. The Hall and fan leads have a 2.6 mm
-gap to go down, and the board clears the wall by 0.8 mm. Each screw has 6.0 mm of thread in
-its 5.7 mm insert, with its tip 0.5 mm above the hole floor. With every key anywhere in its
+gap to go down, and the board clears the wall by 0.8 mm. Each screw reaches through the whole
+5.7 mm insert, with its tip 0.5 mm above the hole floor. With every key anywhere in its
 0.1 mm of slot play, neighbours stay at least 0.5 mm apart in X and 0.7 mm in Y.
 
 What else changes:

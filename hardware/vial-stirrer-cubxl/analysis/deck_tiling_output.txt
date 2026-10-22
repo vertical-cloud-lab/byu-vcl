@@ -43,7 +43,7 @@ Compact layout, checked in plan (and the one screw that changes):
   ok  cable notch clear of the diode (mm)                                   7.00   (need >= 0.50)
   ok  cable notch wide enough for the cable (mm)                            8.00   (need >= 6.00)
   ok  M3 x 20: counterbore depth (mm)                                       3.00   (need >= 0.00)
-  ok  M3 x 20: thread in the insert (mm)                                    6.00   (need >= 5.70)
+  ok  M3 x 20: reach below the insert top, vs. the insert (mm)              6.00   (need >= 5.70)
   ok  M3 x 20: tip above the hole floor (mm)                                0.50   (need >= 0.30)
 
 Gap to the neighbour with every key anywhere in its slot's 0.1 mm play (worst case):
