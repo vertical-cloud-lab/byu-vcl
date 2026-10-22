@@ -179,7 +179,8 @@ def stack(occupied=(True, True, True)):
     x_cap = x_out - (287.4 - D.OUTLET[1])               # the cap's end: PR 176's tube is 252 mm, outlet face to cap
     yb = STACK_Y + 26.0
     out.append((box((x_cap - 14.0, x_out + 22.0), (yb, yb + 8.0), (0.0, LEVELS[-1] + 34.0)), ALU, 0.3))   # back wall
-    out.append((box((x_cap - 14.0, x_out + 22.0), (STACK_Y - 24.0, yb + 8.0), (0.0, 8.0)), ALU, 0.3))     # foot
+    out.append((box((x_cap - 14.0, x_out + 22.0), (STACK_Y + 16.0, yb + 8.0), (0.0, 8.0)), ALU, 0.3))     # foot,
+    #                                                       behind the clips: they come within 9 mm of the deck
     for k, z in enumerate(LEVELS):
         out.append((box((x_out - 12.0, x_out + 22.0), (STACK_Y - 4.0, yb), (z - 26.0, z - 13.0)), ALU, 0.3))
         out.append((box((x_out + 1.0, x_out + 5.0), (STACK_Y - 13.0, yb), (z - 14.0, z + 14.0)), (0.2, 0.2, 0.22), 0.2))

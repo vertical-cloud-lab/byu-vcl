@@ -54,6 +54,13 @@ measurements of 2026-10-19.
 
 **The geometry works.** One stack of three powders, 50 cups and every pose fit inside the head's reach and its Z
 travel. Each powder keeps its own tube, flight and outlet, so nothing the powder touches is shared between powders.
+
+- **Checked in the model** (distances from the drive's vertices to the other parts' surfaces):
+  - at every shelf, clipped on, lifted and backed out, the drive stays at least 3 mm from the stack's other
+    cartridges and frame;
+  - at the bottom shelf, the brackets pass 9 mm over the deck;
+  - while filling a corner cup and a middle one, the doser stays at least 13 mm from the neighbouring cups.
+
 Three things limit it, in order of how much they matter.
 
 1. **The doser has to keep feeding 4047 first.** On the bench, PR 176's tube fed 4047 at 60 to 80 mg per turn while it
