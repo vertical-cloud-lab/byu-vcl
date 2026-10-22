@@ -71,15 +71,15 @@ loop on its own; PowerPoint loops a video only if *Loop until Stopped* is ticked
 | --- | --- | --- | --- |
 | 0 · Tour of the machine | [`00_machine.mp4`](videos/animations/00_machine.mp4) (6.3 MB) | [`00_machine_no_text.mp4`](videos/animations/00_machine_no_text.mp4) (5.5 MB) | 0:30.6 |
 | 1 · Utilities on | [`01_utilities.mp4`](videos/animations/01_utilities.mp4) (4.2 MB) | [`01_utilities_no_text.mp4`](videos/animations/01_utilities_no_text.mp4) (3.9 MB) | 0:27.5 |
-| 2a · Furnace prep and loading | [`03_furnace_load.mp4`](videos/animations/03_furnace_load.mp4) (9.8 MB) | [`03_furnace_load_no_text.mp4`](videos/animations/03_furnace_load_no_text.mp4) (8.7 MB) | 1:02.7 |
+| 2a · Furnace prep and loading | [`03_furnace_load.mp4`](videos/animations/03_furnace_load.mp4) (9.7 MB) | [`03_furnace_load_no_text.mp4`](videos/animations/03_furnace_load_no_text.mp4) (8.8 MB) | 1:02.7 |
 | 2b · Chamber: splash disc, container, catch bowl | [`03b_chamber.mp4`](videos/animations/03b_chamber.mp4) (1.3 MB) | [`03b_chamber_no_text.mp4`](videos/animations/03b_chamber_no_text.mp4) (1.1 MB) | 0:19.2 |
-| 2c · Ultrasonic stack and the door | [`02_stack.mp4`](videos/animations/02_stack.mp4) (4.2 MB) | [`02_stack_no_text.mp4`](videos/animations/02_stack_no_text.mp4) (3.4 MB) | 0:50.4 |
-| 3 · Gas wash | [`04_gas_wash.mp4`](videos/animations/04_gas_wash.mp4) (1.1 MB) | [`04_gas_wash_no_text.mp4`](videos/animations/04_gas_wash_no_text.mp4) (0.7 MB) | 0:39.5 |
+| 2c · Ultrasonic stack and the door | [`02_stack.mp4`](videos/animations/02_stack.mp4) (4.1 MB) | [`02_stack_no_text.mp4`](videos/animations/02_stack_no_text.mp4) (3.3 MB) | 0:50.4 |
+| 3 · Gas wash | [`04_gas_wash.mp4`](videos/animations/04_gas_wash.mp4) (1.2 MB) | [`04_gas_wash_no_text.mp4`](videos/animations/04_gas_wash_no_text.mp4) (0.7 MB) | 0:39.5 |
 | 4 · Melt | [`05_melt.mp4`](videos/animations/05_melt.mp4) (2.0 MB) | [`05_melt_no_text.mp4`](videos/animations/05_melt_no_text.mp4) (1.7 MB) | 0:27.2 |
-| 5 · Pour and atomize | [`06_pour.mp4`](videos/animations/06_pour.mp4) (7.6 MB) | [`06_pour_no_text.mp4`](videos/animations/06_pour_no_text.mp4) (7.4 MB) | 0:44.7 |
-| What goes wrong: the upper sonotrode under the stream (Oct 6), new | [`06b_oct6.mp4`](videos/animations/06b_oct6.mp4) (1.9 MB) | [`06b_oct6_no_text.mp4`](videos/animations/06b_oct6_no_text.mp4) (1.6 MB) | 0:23.6 |
-| 6–8 · End of pour, cool down, collect | [`07_end_cooldown.mp4`](videos/animations/07_end_cooldown.mp4) (3.3 MB) | [`07_end_cooldown_no_text.mp4`](videos/animations/07_end_cooldown_no_text.mp4) (3.1 MB) | 0:39.0 |
-| 9 · Clean and reset | [`08_clean.mp4`](videos/animations/08_clean.mp4) (7.5 MB) | [`08_clean_no_text.mp4`](videos/animations/08_clean_no_text.mp4) (7.1 MB) | 0:44.4 |
+| 5 · Pour and atomize | [`06_pour.mp4`](videos/animations/06_pour.mp4) (6.8 MB) | [`06_pour_no_text.mp4`](videos/animations/06_pour_no_text.mp4) (6.6 MB) | 0:44.7 |
+| What goes wrong: the upper sonotrode under the stream (Oct 6) | [`06b_oct6.mp4`](videos/animations/06b_oct6.mp4) (1.9 MB) | [`06b_oct6_no_text.mp4`](videos/animations/06b_oct6_no_text.mp4) (1.6 MB) | 0:23.6 |
+| 6–8 · End of pour, cool down, collect | [`07_end_cooldown.mp4`](videos/animations/07_end_cooldown.mp4) (3.4 MB) | [`07_end_cooldown_no_text.mp4`](videos/animations/07_end_cooldown_no_text.mp4) (3.1 MB) | 0:39.0 |
+| 9 · Clean and reset | [`08_clean.mp4`](videos/animations/08_clean.mp4) (7.4 MB) | [`08_clean_no_text.mp4`](videos/animations/08_clean_no_text.mp4) (7.0 MB) | 0:44.4 |
 
 ![A frame from each animation](animations_sheet.jpg)
 
@@ -115,7 +115,8 @@ python build_ppt.py upload summary --ref <pushed sha>   # unlisted, upload-only 
 the captions' times for the description from `script.md`.
 
 The clean renders took 13 minutes for the two single steps, run side by side on four cores, and 7 minutes for the
-summary. With `VIZ3D_HD=1`, all ten animations took 52 minutes, four at a time on four cores. To change the wording, edit `captions.py` and rerun
+summary. With `VIZ3D_HD=1`, all ten animations took 52 minutes, four at a time on four cores. The 22 Oct re-render
+(all eleven with `VIZ3D_HD=1`, the summary clean, and the GIFs) took about 70 minutes, four at a time. To change the wording, edit `captions.py` and rerun
 `build_ppt.py`; the renders are reused. A caption's time is given as an offset into one of the animation's sub-steps
 (their frames are in `../viz3d/out/clean/<name>.json`). Moving one means changing that offset, or the motion in
 `../viz3d/steps.py`.
