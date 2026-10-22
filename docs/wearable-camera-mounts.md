@@ -9,6 +9,9 @@ Prices, ratings and stock below were read from Amazon US on **2026-10-20**, from
 rather than a CI runner (see [How this was gathered](#how-this-was-gathered)). Weights are each listing's own
 figure. Nothing has been bought or tested here yet.
 
+For camera glasses, and for smart glasses that are also safety eyewear, see
+[smart-safety-glasses.md](smart-safety-glasses.md).
+
 ## Short version
 
 **There is no lighter neck mount.** Every phone neck mount checked lists about 190–310 g before the

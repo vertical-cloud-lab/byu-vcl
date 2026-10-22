@@ -48,7 +48,10 @@ for i, item in enumerate(args.items):
               f"{shlex.quote(url)}")
     path = os.path.join(args.outdir, name + ".html.gz")
     with open(path, "wb") as f:
-        r = subprocess.run(["ssh", "-o", "ConnectTimeout=20", "-o", "BatchMode=yes", host, remote],
+        # accept-new: a fresh runner has no known_hosts entry for the Pi, and the
+        # tailnet has already authenticated the peer by its WireGuard key
+        r = subprocess.run(["ssh", "-o", "ConnectTimeout=20", "-o", "BatchMode=yes",
+                            "-o", "StrictHostKeyChecking=accept-new", host, remote],
                            stdout=f, stderr=subprocess.DEVNULL, timeout=90)
     print(f"[{i + 1}/{len(args.items)}] rc={r.returncode} {os.path.getsize(path):>7} B  {name}", flush=True)
     if i + 1 < len(args.items):

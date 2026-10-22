@@ -17,6 +17,9 @@ def clean(s):
     s = re.sub(r"<(script|style)[^>]*>.*?</\1>", " ", s, flags=re.S)
     return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", s))).strip()
 
+OWN_IDS = ['id="productTitle"', 'id="feature-bullets"', 'id="productOverview_feature_div"',
+           'id="productDescription"', 'id="aplus"', 'id="prodDetails"', 'id="detailBullets_feature_div"']
+
 def field(doc, label):
     # table layout: <th ...> Item Weight </th> <td ...> 7.8 ounces </td>
     m = re.search(r"<th[^>]*>\s*" + label + r"\s*</th>\s*<td[^>]*>(.*?)</td>", doc, re.S | re.I)
@@ -31,6 +34,9 @@ for p in sys.argv[1:]:
     out = {"file": p.rsplit("/", 1)[-1]}
     if "captcha" in doc.lower()[:20000] and "productTitle" not in doc:
         out["error"] = "captcha"
+        print(json.dumps(out)); continue
+    if re.search(r"<title>\s*Page Not Found", doc[:3000]):
+        out["error"] = "page not found (listing removed)"
         print(json.dumps(out)); continue
     t = re.search(r'id="productTitle"[^>]*>(.*?)</span>', doc, re.S)
     out["title"] = clean(t.group(1)) if t else ""
@@ -57,13 +63,28 @@ for p in sys.argv[1:]:
     rows = re.findall(r'<th[^>]*prodDetSectionEntry[^>]*>(.*?)</th>\s*<td[^>]*>(.*?)</td>', doc, re.S)
     for k, v in rows:
         k = clean(k)
-        if re.search(r"weight|dimension|material|capacity", k, re.I):
+        if re.search(r"weight|dimension|material|capacity|video|resolution|battery|special feature|lens|standard", k, re.I):
             out["tbl:" + k] = clean(v)[:120]
     fb = re.search(r'id="feature-bullets"(.*?)</ul>', doc, re.S)
     if fb:
         out["bullets"] = [clean(x)[:400] for x in re.findall(r"<li[^>]*>(.*?)</li>", fb.group(1), re.S)][:7]
+    if not out.get("bullets") and 'id="feature-bullets"' in doc:
+        # some listings (e.g. Ray-Ban Meta Gen 3) put "About this item" outside a <ul>
+        about = clean(doc[doc.find('id="feature-bullets"'):][:20000])
+        out["about"] = about.split("Product Description")[0][:2500]
     # any explicit gram / ounce figures anywhere in the description text
     body = clean(doc)
     out["mass_mentions"] = sorted(set([m.group(0) for m in re.finditer(r"(?:[Ww]eigh\w*|[Gg]ram\w*|[Ll]ightweight)[^.]{0,60}?\d{1,4}(?:\.\d+)?\s?(?:g|grams|oz|ounces|lbs?)\b", body)]))[:15]
     out["N_mentions"] = sorted(set(re.findall(r"\b\d{1,3}(?:\.\d+)?\s?N\b(?![a-z0-9])", body)))[:10]
+    # Sentences from the listing's own sections only: the rest of the page is
+    # sponsored and related products, whose titles are full of "Z87" too.
+    own = " ".join(clean(doc[doc.find(">", i) + 1:i + 40000]) for i in (doc.find(k) for k in OWN_IDS) if i > 0)
+    lis = [clean(x) for x in re.findall(r"<li[^>]*>(.*?)</li>", fb.group(1), re.S)] if fb else []
+    sents = [s.strip() for s in re.split(r"(?<!\d)[.!?](?!\d)", own)] + lis
+    sents = list(dict.fromkeys(s for s in sents if s and "›" not in s and "Sponsored" not in s))
+    # eye-protection claims (seller's own words; nothing here is a certificate)
+    out["safety_mentions"] = [s[:300] for s in sents if re.search(r"Z87|ANSI|EN\s?166|16321|CSA Z94|splash", s)][:8]
+    # clip-length limits, e.g. "record videos up to 10 minutes"
+    out["video_length_mentions"] = [s[:300] for s in sents if re.search(r"video|record", s, re.I)
+                                    and re.search(r"\b\d{1,3}\s?(?:min|mins|minutes|hours?)\b", s, re.I)][:8]
     print(json.dumps(out))
