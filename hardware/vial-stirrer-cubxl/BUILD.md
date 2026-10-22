@@ -28,7 +28,7 @@ this guide's dimensions, but where its parts sit is only a suggestion.
 |---|---|---|
 | [0](#0-before-you-start) | Parts, tools, three measurements | |
 | [1](#1-print-the-parts) | Print five parts and three spacer discs, check them | Printing |
-| [2](#2-glue-the-deck-keys-into-the-base) | Deck keys into the base, glued on the deck | Glue cure |
+| [2](#2-press-the-deck-keys-into-the-base) | Deck keys pressed into the base | |
 | [3](#3-press-in-the-heat-set-inserts) | Eight heat-set inserts | |
 | [4](#4-glue-the-magnets-into-the-carrier) | Two magnets, opposite poles up | Glue cure |
 | [5](#5-wire-the-electronics) | Junction board, Hall sensor, cable, bench check | Soldering |
@@ -44,7 +44,7 @@ this guide's dimensions, but where its parts sit is only a suggestion.
 | | Item | Qty | From |
 |---|---|---|---|
 | Printed | Base, vial holder, magnet carrier | 1 each | [`step/`](step) or [`stl/`](stl), see [stage 1](#1-print-the-parts) |
-| Printed | Deck key | 2 | same |
+| Printed | Deck key | 2, plus one each of the two fit-test keys | same, and [`stl/key_fit_test/`](stl/key_fit_test) |
 | Printed | Spacer discs, Ø27 × 1, 2 and 3 mm (for the coupling test) | 1 each | a cylinder in any slicer |
 | Bought | Orion OD4010-12HSS fan | 1 | BOM item 1 |
 | Bought | N52 magnets, 1/4 × 1/16 in | 2, plus 1 spare for checking poles | BOM item 2 |
@@ -109,7 +109,7 @@ print orientation, so a slicer only has to drop them onto the bed.
 | [Base](step/base.step) | 1 | Floor down | The key pockets are in the bed face. Elephant's foot closes them up |
 | [Vial holder](step/vial_holder.step) | 1 | Flange down | The fingers print upright, as in the 9-vial holder. The Ø27 mm recess under the floor is a bridge; print it without supports, since support marks would eat into the 1.1 mm gap |
 | [Magnet carrier](step/magnet_carrier.step) | 1 | Pockets up | 100 % infill. It has to come out flat |
-| [Deck key](step/deck_key.step) | 2 | Nub up | Elephant's foot on the bottom edge makes it bind in the deck slot |
+| [Deck key](step/deck_key.step) | 2 | Nub up | Elephant's foot on the bottom edge makes it bind in the deck slot. The nub is a press fit in the base, 0.10 mm a side. Print one each of [`deck_key_press_0.05`](stl/key_fit_test/deck_key_press_0.05.stl) and [`_0.15`](stl/key_fit_test/deck_key_press_0.15.stl) with them, for the fit test in [stage 2](#2-press-the-deck-keys-into-the-base) |
 | Spacer discs | 3 | Flat | Ø27 mm, 1, 2 and 3 mm thick. The cup narrows by 3°, to Ø27.3 mm at 3 mm up, so a Ø27.6 mm disc would stop short of the floor |
 
 Settings, as Cubware gives them for its keyed deck parts: at least 4 walls, 30 % infill
@@ -125,8 +125,9 @@ and about 1 h 41 min. The first try's file and settings are in
 
 - [ ] **Each key** slides into a deck slot with no force and lifts back out. It has 0.1 mm a
   side. If it binds, take the bottom edge off with a knife or sandpaper.
-- [ ] **Each key's nub** drops all the way into its pocket under the base. If not, trim the
-  first-layer lip round the pocket.
+- [ ] **Each key's nub** starts in its pocket under the base by hand, and needs a firm press
+  to go further. The pocket's first layer is a little wider and the nub's top is chamfered,
+  so it should start square. If it won't start, trim any first-layer lip round the pocket.
 - [ ] **A vial** pushes down into the holder's cup, and the four fingers spring out and grip
   it.
 - [ ] **The holder's recess** (the round pocket under the cup) is 3.8 mm deep at its centre,
@@ -135,30 +136,35 @@ and about 1 h 41 min. The first try's file and settings are in
   0.6 mm.
 - [ ] **The eight insert holes** in the base are round and open, Ø4.0 mm.
 
-## 2. Glue the deck keys into the base
+## 2. Press the deck keys into the base
 
 <img src="img/step01_keys.png" width="380">
 
-The pockets fix where each key sits but leave it a couple of degrees to turn, which is
-enough to bind in the slot. So glue them with the base sitting on the deck, and the slots
-line them up. Cubware's holders are keyed the same way.
+Each key's nub is 0.10 mm a side bigger than its pocket, so it presses in and needs no glue
+([sizes](README.md#the-key-nub-and-pocket)). A pressed-in triangle can't turn, so the key
+ends up square to the base. Until 2026-10-22 the nub was 0.10 mm smaller than the pocket
+and was glued in with the base on the deck, so that the slots lined the keys up.
 
-1. Pick **two adjacent slots in one row** (25 mm apart in X), ideally where the stirrer will
-   live. Decide which way the cable will leave: it comes out of the base's one wall
-   without vents.
-2. Drop a key into each slot, nub up. If the slots are open underneath, put tape across
-   their undersides first so the keys sit flush with the top. Turn each key so its nub's
-   single point faces the same way as the point of the triangular pocket above it.
-3. Dry run: lower the base onto the nubs. It should sit flat on the deck. Lift it off.
-4. Put a **small** drop of gel CA into each pocket, not onto the nub. Thin CA wicks into the
-   0.1 mm gap round the key and can glue it to the deck, and CA fumes leave a white bloom
-   on polycarbonate.
-5. Lower the base straight down onto the nubs, press it flat for 30 s, wait a few minutes,
-   then lift it straight up. Both keys come up with it.
-6. Let it cure fully. Cubware says the same for its holders, since the keys are what hold
-   it on the deck.
+1. **Fit test**, if you printed the 0.05 and 0.15 keys as well. Tell them apart by the
+   dimples in the top face of the pill: one per 0.05 mm, so 1, 2 or 3. Press each into a
+   pocket by hand and pull it out again. Keep the tightest one that still goes all the way
+   home by hand, or with a vise. It should need a firm press and not come out with a light
+   tug. Print a second of that one.
+2. Turn each key so the nub's single point faces the same way as the triangular pocket's
+   point. The dimples are then at the end away from the point.
+3. Stand both keys on the bench, nub up, with the base on top and a nub started in each
+   pocket. Press the base down over each key in turn, with a thumb on the floor inside right
+   above the key, until the base's underside meets the key's top face. If a thumb isn't
+   enough, squeeze base and key together in a vise or clamp, with a flat block on each side.
+4. Check there's no gap between the base and either key's top face.
 
-**Check:** the base drops into the two slots and lifts out freely, and sits flat.
+If even the 0.15 key is loose, glue it as before: a **small** drop of gel CA in the pocket
+(not on the nub, and not thin CA, which wicks), with the keys sitting in two adjacent deck
+slots so the slots line them up. Then post what you measured on #269.
+
+**Check:** on the deck, the base drops into two adjacent slots (25 mm apart in X) and lifts
+out freely with both keys, and sits flat. If a key binds in its slot, it went in turned:
+pull it out with pliers and press it in again.
 
 ## 3. Press in the heat-set inserts
 
@@ -521,6 +527,8 @@ README's estimates can be replaced with measurements:
 - The fan's hub height against the frame face, and whether the carrier needed sanding.
 - The vial's outside diameter at the bottom, and whether it sits on the floor.
 - The deck plate's thickness, and whether the keys bottom out.
+- Which fit-test key you kept (count its dimples), and how hard it was to press in. If you
+  have calipers, A and B (corner to flat, across corners) of a pocket and of each nub.
 - The holder recess depth (sag).
 - The fan's current at 5 V, full speed, and its peak when it starts.
 - Whether the Hall output toggles cleanly, and whether `rpm` ever reads above 0 with the fan off.

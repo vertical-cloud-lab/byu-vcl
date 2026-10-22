@@ -26,6 +26,14 @@ and the nozzle cooled. To finish the parts, free or replace the PETG in A4 and r
 the touchscreen. Otherwise, stop the print there. It stopped at 8.4 mm of the 22 mm, with 33 min
 of printing left by Studio's count.
 
+**Afterwards (2026-10-22): the print finished, but the keys were loose in the base.**
+@benwhitney5463 [reported](https://github.com/vertical-cloud-lab/byu-vcl/pull/269#issuecomment-6347704198)
+that it finished, and that the deck keys were a clearance fit in the base's triangular
+pockets. That is what the model asked for: Cubware's nub, 0.10 mm smaller than the pocket
+all round, meant to be glued. This G-code reproduces both outlines to 0.01 mm. The key now
+has a press-fit nub, 0.10 mm a side bigger than the pocket, so only the keys need
+reprinting. See [The key nub and pocket](../../README.md#the-key-nub-and-pocket).
+
 | | |
 |---|---|
 | Parts | base, vial holder, magnet carrier, 2 × deck key, from [`stl/`](../../stl) at `ed84bba`, each as it sits in its STL (already its print orientation) |

@@ -76,10 +76,14 @@ const Z_TOP = Z_VIAL + CUP_H;
 
 // ---- CubXL+ deck (Cubware PandaDeck.step, from PANDA-BEAR) ----------------
 // 10 mm polycarbonate plate with 10 x 25 mm pill slots (R5 ends), long axis
-// along deck Y, on a 25 mm (X) x 45 mm (Y) grid. Holders locate with glued-in
-// pill keys (Cubware 9VialHolder-key.step): 9.8 x 24.8 mm (R4.9 ends, centres
-// 15 apart), 10 mm tall, with a 2 mm rounded-triangle nub that is glued into a
-// 2.1 mm pocket in the holder. Two keys here, one slot column apart.
+// along deck Y, on a 25 mm (X) x 45 mm (Y) grid. Holders locate with pill keys
+// (Cubware 9VialHolder-key.step): 9.8 x 24.8 mm (R4.9 ends, centres 15 apart),
+// 10 mm tall, with a 2 mm rounded-triangle nub in a 2.1 mm pocket in the holder.
+// Two keys here, one slot column apart.
+// Cubware's nub has R1.0 corners, 0.1 mm clear of the pocket all round, and is
+// glued in. Printed that way (2026-10-21) the keys were a clearance fit, so the
+// nub is now the pocket grown by keyPress (a feature parameter, default 0.10 mm):
+// a press fit. The pocket is unchanged, so the printed base still takes it.
 const BOARD_T = 10.0;
 const SLOT_W = 10.0;
 const SLOT_C = 15.0;          // slot / key end-centre spacing
@@ -89,8 +93,10 @@ const KEY_W = 9.8;
 const KEY_L = 10.0;
 const KEY_X = 12.5;           // keys at x = +-12.5: the vial sits midway between two columns
 const NUB_H = 2.0;
-const NUB_R = 1.0;            // key nub corner radius; the pocket uses 1.1
-const TRI_R = 3.1;            // circumradius of the nub's sharp triangle
+const POCKET_R = 1.1;         // pocket corner radius (Cubware's), 2.1 mm deep
+const TRI_R = 3.1;            // circumradius of the nub's and the pocket's sharp triangle
+const NUB_LEAD = 0.3;         // 45 deg lead-in chamfer round the top of the nub
+const MARK_STEP = 0.05;       // one dimple on the key's top face per 0.05 mm of interference
 
 // ---- assembly sequence -------------------------------------------------------
 const S_BASE = 1;
@@ -273,8 +279,8 @@ function makeBase(context is Context, id is Id) returns Query
                 qCreatedBy(id + "ch0", EntityType.BODY), qCreatedBy(id + "ch1", EntityType.BODY), qCreatedBy(id + "ch2", EntityType.BODY), qCreatedBy(id + "ch3", EntityType.BODY),
                 qCreatedBy(id + "usb", EntityType.BODY), qCreatedBy(id + "vy0", EntityType.BODY), qCreatedBy(id + "vy1", EntityType.BODY), qCreatedBy(id + "vy2", EntityType.BODY),
                 qCreatedBy(id + "vx0", EntityType.BODY), qCreatedBy(id + "vx1", EntityType.BODY), qCreatedBy(id + "vx2", EntityType.BODY),
-                mkNub(context, id + "pocket1", -KEY_X, 0, -0.01, NUB_H + 0.1, NUB_R + 0.1),
-                mkNub(context, id + "pocket2", KEY_X, 0, -0.01, NUB_H + 0.1, NUB_R + 0.1)]);
+                mkNub(context, id + "pocket1", -KEY_X, 0, -0.01, NUB_H + 0.1, POCKET_R),
+                mkNub(context, id + "pocket2", KEY_X, 0, -0.01, NUB_H + 0.1, POCKET_R)]);
     mkSub(context, id + "s2", qSubtraction(qCreatedBy(id, EntityType.BODY), cuts), cuts);
     const q = qCreatedBy(id, EntityType.BODY);
     mkLook(context, q, "Base (printed)", color(0.27, 0.29, 0.33));
@@ -553,13 +559,41 @@ function makeBoard(context is Context, id is Id) returns Query
     return q;
 }
 
-function makeKey(context is Context, id is Id, cx is number) returns Query
+// press: interference per side between the nub and the pocket, mm
+function makeKey(context is Context, id is Id, cx is number, press is number) returns Query
 {
     const pill = mkPill(context, id + "pill", cx, 0, KEY_W, SLOT_C, -KEY_L, 0.01);
-    const nub = mkNub(context, id + "nub", cx, 0, 0, NUB_H, NUB_R);
+    const nub = mkNub(context, id + "nub", cx, 0, 0, NUB_H, POCKET_R + press);
     mkUnite(context, id + "u", qUnion([pill, nub]));
+    var top = [];
+    for (var e in evaluateQuery(context, qOwnedByBody(qCreatedBy(id, EntityType.BODY), EntityType.EDGE)))
+    {
+        const bb = evBox3d(context, { "topology" : e });
+        if (abs(bb.minCorner[2] / millimeter - NUB_H) < 0.001 && abs(bb.maxCorner[2] / millimeter - NUB_H) < 0.001)
+        {
+            top = append(top, e);
+        }
+    }
+    setVariable(context, "keyLead", "failed");
+    try silent
+    {
+        opChamfer(context, id + "lead", { "entities" : qUnion(top), "chamferType" : ChamferType.EQUAL_OFFSETS,
+                                          "width" : NUB_LEAD * millimeter, "tangentPropagation" : true });
+        setVariable(context, "keyLead", "edges " ~ size(top));
+    }
+    // dimples at the far end from the nub's point, so fit-test keys can be told apart
+    const n = round(press / MARK_STEP);
+    var marks = [];
+    for (var k = 0; k < n; k += 1)
+    {
+        marks = append(marks, mkCyl(context, id + ("mark" ~ k), cx + (k - (n - 1) / 2) * 2.2, 8.5, -0.4, 0.5, 0.6));
+    }
+    if (n > 0)
+    {
+        mkSub(context, id + "sm", qSubtraction(qCreatedBy(id, EntityType.BODY), qUnion(marks)), qUnion(marks));
+    }
     const q = qCreatedBy(id, EntityType.BODY);
-    mkLook(context, q, "Deck key (printed, Cubware 9VialHolder-key)", color(0.92, 0.92, 0.88));
+    mkLook(context, q, "Deck key (printed, Cubware 9VialHolder-key, press-fit nub)", color(0.92, 0.92, 0.88));
     return q;
 }
 
@@ -577,6 +611,9 @@ export const vialStirrer = defineFeature(function(context is Context, id is Id, 
 
         annotation { "Name" : "Section at y = 0" }
         definition.section is boolean;
+
+        annotation { "Name" : "Deck key nub interference per side (mm)" }
+        isReal(definition.keyPress, { (unitless) : [-0.2, 0.10, 0.5] } as RealBoundSpec);
     }
     {
         setVariable(context, "dbg", "start");
@@ -587,8 +624,8 @@ export const vialStirrer = defineFeature(function(context is Context, id is Id, 
         groups = append(groups, [makeBoard(context, id + "board"), 0, 0, -48]);
         setVariable(context, "dbg", "board");
         groups = append(groups, [makeBase(context, id + "base"), S_BASE, 0, 0]);
-        const k1 = makeKey(context, id + "key1", -KEY_X);
-        const k2 = makeKey(context, id + "key2", KEY_X);
+        const k1 = makeKey(context, id + "key1", -KEY_X, definition.keyPress);
+        const k2 = makeKey(context, id + "key2", KEY_X, definition.keyPress);
         groups = append(groups, [qUnion([k1, k2]), S_BASE, -16, -20]);
         setVariable(context, "dbg", "base");
         var ins = [];

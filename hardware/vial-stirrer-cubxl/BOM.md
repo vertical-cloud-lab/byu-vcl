@@ -56,7 +56,7 @@ so a slicer only has to drop them onto the bed.
 | Base | [`step/base.step`](step/base.step) | [`stl/base.stl`](stl/base.stl) | 1 | 23.8 cm³ | Floor down. The key pockets are on the bed face |
 | Vial holder | [`step/vial_holder.step`](step/vial_holder.step) | [`stl/vial_holder.stl`](stl/vial_holder.stl) | 1 | 17.1 cm³ | Flange down, so the fingers print upright as in the 9-vial holder. The 1.2 mm floor bridges the Ø27 mm carrier pocket; support it if the bridge sags |
 | Magnet carrier | [`step/magnet_carrier.step`](step/magnet_carrier.step) | [`stl/magnet_carrier.stl`](stl/magnet_carrier.stl) | 1 | 0.8 cm³ | Pockets up |
-| Deck key | [`step/deck_key.step`](step/deck_key.step) | [`stl/deck_key.stl`](stl/deck_key.stl) | **2** | 2.3 cm³ each | Nub up. Fix elephant's foot first; Cubware says to |
+| Deck key | [`step/deck_key.step`](step/deck_key.step) | [`stl/deck_key.stl`](stl/deck_key.stl) | **2** | 2.3 cm³ each | Nub up. Fix elephant's foot first; Cubware says to. The nub presses into the base, 0.10 mm a side. For a fit test, also one each of [`deck_key_press_0.05.stl`](stl/key_fit_test/deck_key_press_0.05.stl) and [`deck_key_press_0.15.stl`](stl/key_fit_test/deck_key_press_0.15.stl) |
 
 [`step/vial_stirrer_assembly.step`](step/vial_stirrer_assembly.step) is the whole
 stirrer as 39 solids: the printed parts, the bought parts modelled from their datasheet
@@ -76,7 +76,7 @@ and 3 mm, to go under the vial. Any slicer can make these as a cylinder primitiv
 | Arduino Uno R3, running the PANDA firmware | Drives the stirrer, with [`panda-arduino-stirrer.patch`](../../cubos/firmware/panda-arduino-stirrer.patch) applied. Uses D2, D10, 5V and GND |
 | Adafruit Proto Shield v5, if it is on the Uno ([capper BOM](../../modules/electromagnetic-capper/BOM.md) item 4) | Solder the JST-XH socket's leads to 5V, GND, D2 and D10 |
 | Male–male jumper wires (capper BOM item 10, Adafruit 4482) | Instead of the proto shield: one pin each into the Uno's 5V, GND, D2 and D10 headers |
-| CA glue, hot glue, heat shrink, 26 AWG hookup wire | Keys, magnets, carrier, Hall sensor and its 60 mm leads |
+| CA glue, hot glue, heat shrink, 26 AWG hookup wire | Magnets, carrier, Hall sensor and its 60 mm leads. The keys press in; glue them only if they are loose |
 | 100 nF ceramic capacitor | Across the Hall sensor's VDD and GND, as Melexis recommends ([`BUILD.md`](BUILD.md#circuit)) |
 | 10 nF ceramic capacitor | Only if the measured rpm reads above 0 with the fan off: D2 to GND at the Uno |
 | Soldering iron | Wiring, and pressing in the heat-set inserts |

@@ -48,7 +48,7 @@ the capper and the pipette, instead of its own XIAO RP2040.
 | [`BUILD.md`](BUILD.md) | Build guide for the Uno-driven version: printing, keys, inserts, magnets, wiring, bench checks, assembly, flashing the Uno, first spins, the deck file |
 | [`BOM.md`](BOM.md) | Bill of materials for the Uno-driven version: parts to buy with links and prices, parts to print |
 | [`step/`](step) | Printed parts as STEP: `base`, `vial_holder`, `magnet_carrier`, `deck_key` (print two), plus `vial_stirrer_assembly.step`, the whole stirrer for fit checks |
-| [`stl/`](stl) | The same printed parts as STL. Both sets are in assembly position, which is also each part's print orientation |
+| [`stl/`](stl) | The same printed parts as STL. Both sets are in assembly position, which is also each part's print orientation. [`stl/key_fit_test/`](stl/key_fit_test) has the deck key at two more nub interferences, for a fit test |
 | [`print/`](print) | Print records. [`2026-10-21-a1mini/`](print/2026-10-21-a1mini/README.md): all five parts on one A1 mini plate in white PETG Basic, sent from Bambu Studio by an `@claude-print` run. It has the file the printer ran, the settings and a camera timelapse |
 | [`img/`](img) | Onshape's renders (steps 1–10 of the XIAO version, assembled, exploded, section, contact sheet), and the assembly video, GIF and contact sheet of the Uno version |
 | [`firmware/main.py`](firmware/main.py) | MicroPython speed controller for the XIAO RP2040 (untested) |
@@ -56,6 +56,7 @@ the capper and the pipette, instead of its own XIAO RP2040.
 | [`firmware/uno_sim/`](firmware/uno_sim) | Host-side simulation of that patch's control loop against a fan model, and its output |
 | [`RESEARCH.md`](RESEARCH.md) | What the Pioreactor does, the AC's and other open-source stirrers, design lessons |
 | [`analysis/field_check.py`](analysis/field_check.py) | magpylib check of the field at the Hall sensor (with and without a coupled bar) and at the bar, and its [output](analysis/field_check_output.txt) |
+| [`analysis/key_fit.py`](analysis/key_fit.py) | The deck key's nub against the base's pocket, in the model, the STLs and the printed G-code; draws [`img/key_fit.png`](img/key_fit.png). Its [output](analysis/key_fit_output.txt) |
 | [`../../outputs/issue-169-magnetic-stirrer/`](../../outputs/issue-169-magnetic-stirrer) | Edison answers and the raw vendor lookups |
 
 The Onshape document is
@@ -102,10 +103,12 @@ held by gravity
 
 - **Two keys, 25 mm apart in X**, so they sit in adjacent slot columns of one row. One key
   would already locate the stirrer; two cut its rotational play.
-- The keys are Cubware's: same pill, same 2 mm rounded-triangle nub (equilateral,
-  3.1 mm circumradius, R1.0 corners, one corner toward −Y), glued into 2.1 mm pockets
-  with R1.1 corners. [`stl/deck_key.stl`](stl/deck_key.stl) is that key, and Cubware's
-  own `9VialHolder-key.stl` fits the same pockets.
+- The keys are Cubware's pill. Each has a 2 mm rounded-triangle nub (equilateral,
+  3.1 mm circumradius before rounding, one corner toward −Y) that goes into a 2.1 mm
+  pocket with R1.1 corners under the base. Cubware's nub has R1.0 corners and is glued in.
+  Ours has R1.2 corners since 2026-10-22, so it **presses in** with 0.10 mm of interference
+  a side; see [The key nub and pocket](#the-key-nub-and-pocket). Cubware's own
+  `9VialHolder-key.stl` still fits the same pockets, glued.
 - **Where the vial ends up:** midway between the two slot columns, on a row centre.
   With the slot centres inferred from Ben's deck file (vial_1 at (136.668, 45) sits
   over a slot centre), that is about **X = 149.2 + 25n, Y = 45 + 45m** in deck
@@ -118,6 +121,42 @@ held by gravity
   45 × 70 mm.
 - The deck plate's real thickness hasn't been measured. The STEP says 10 mm, and the
   keys are 10 mm like Cubware's, which already work on this deck.
+
+## The key nub and pocket
+
+The first print (2026-10-21) had Cubware's nub, 0.10 mm smaller than the pocket all round,
+and @benwhitney5463 found the keys loose in the base. Since 2026-10-22 the nub is the
+pocket grown by 0.10 mm all round, a press fit, so the keys need no glue and stay in the
+base. The pocket hasn't changed, so the base already printed takes the new keys.
+
+![The key nub against the pocket](img/key_fit.png)
+
+| mm | Pocket in the base | Nub printed 2026-10-21 | Nub from 2026-10-22 |
+|---|---|---|---|
+| A: corner to the opposite flat | 6.85 | 6.65 | **7.05** |
+| B: across two corners, parallel to a flat | 7.57 | 7.37 | **7.77** |
+| Corner radius | 1.1 | 1.0 | **1.2** |
+| Straight length of each flat | 5.37 | 5.37 | 5.37 |
+| Centre to flat / to corner | 2.65 / 4.20 | 2.55 / 4.10 | 2.75 / 4.30 |
+| Depth / height | 2.1 | 2.0 | 2.0, with a 0.3 mm × 45° lead-in round the top |
+| Fit, each side | | 0.10 clearance | **0.10 interference** |
+
+- **What was printed matched the model.** The outer walls in the G-code the A1 mini ran
+  (`print/2026-10-21-a1mini/`), plus or minus half their line width, give the pocket as
+  6.85 × 7.57 mm and the nub as 6.64 × 7.36 mm. The pocket's first layer is 0.15 mm a side
+  wider, from the elephant-foot compensation, which helps the new nub start.
+  [`analysis/key_fit.py`](analysis/key_fit.py) measures all of this and draws the figure
+  ([output](analysis/key_fit_output.txt)).
+- **0.10 mm is a starting point, not a measured fit.** Guides for 0.4 mm nozzles put press
+  fits at about 0.05–0.15 mm a side ([Sovol](https://www.sovol3d.com/blogs/news/fdm-3d-printing-tolerances-clearances-how-to-design-parts-that-fit)), and how tight one comes out depends on the printer and
+  the filament. So [`stl/key_fit_test/`](stl/key_fit_test) has the same key at 0.05 and
+  0.15 mm (A 6.95 and 7.15, B 7.67 and 7.87). Print one of each with the 0.10 key and keep
+  the one that needs a firm press and doesn't come out with a light tug.
+- **Telling them apart:** each key has small dimples in its top face, at the end away from
+  the nub's point, one per 0.05 mm of interference. The 0.10 key has two.
+- **Changing it:** the interference is the feature's `keyPress` parameter, set by
+  `KEY_PRESS` in [`build_onshape.py`](build_onshape.py). Then rerun
+  `build_onshape.py --no-render`. A `keyPress` of −0.10 gives Cubware's nub back.
 
 ## The vial cup, copied from the 9-vial holder
 
@@ -176,8 +215,8 @@ magnets sitting too close to the heater board, which carries two steel standoffs
 | M3 × 5.7 mm brass heat-set insert | 8 | In the base: 4 fan posts, 4 corner posts | Ø4.0 × 6.5 mm holes |
 
 The fan-screw heads sit about 12 mm outside the magnets' path, in pockets under the vial
-holder. Glue holds the rest: the deck keys, the magnets, the carrier on the hub and the
-Hall sensor.
+holder. The deck keys are a press fit. Glue holds the rest: the magnets, the carrier on
+the hub and the Hall sensor.
 
 ## Driving it from the CubXL's Arduino Uno
 
@@ -455,7 +494,7 @@ Onshape's, and show the XIAO version.
 
 | | |
 |---|---|
-| ![](img/step01_keys.png) | **1. Glue the two deck keys into the base.** Superglue each key's triangular nub into its 2.1 mm pocket under the base. Glue both while the base sits in two deck slots, so the keys end up exactly 25 mm apart. |
+| ![](img/step01_keys.png) | **1. Press the two deck keys into the base.** Each key's triangular nub is a press fit in its 2.1 mm pocket under the base, 0.10 mm a side, so it needs no glue. With no play in the pocket, the keys end up square to the base and 25 mm apart. |
 | ![](img/step02_inserts.png) | **2. Press in eight M3 heat-set inserts.** Use a soldering iron at the insert maker's temperature: four go in the fan posts and four in the corner posts. Keep them square, as the fan screws pull straight down into them. |
 | ![](img/step03_electronics.png) | **3. Wire the electronics, then drop them in.** Solder per the wiring diagram, leaving about 60 mm of lead for the Hall sensor. The XIAO's USB-C goes into the notch in the −X wall, and the rails and the stop locate the board. In the Uno version the junction board sits in the same place and the cable leaves through the notch; tie it to the board for strain relief. The MOSFET and diode lie flat on the +X side, held with a dab of hot glue. |
 | ![](img/step04_fan.png) | **4. Seat the fan, rotor side up.** It goes on the four posts with the side **without** the motor's struts up, so the spinning hub faces the vial. Don't go by the sticker: many fans carry it on the strut side. Run its leads to the MOSFET. |

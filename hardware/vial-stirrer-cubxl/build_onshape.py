@@ -15,6 +15,8 @@ printed about the keys.
     python build_onshape.py                # upload, render all steps, export STLs and STEP files
     python build_onshape.py --no-render    # upload and rebuild only
     python build_onshape.py --new          # make a fresh document first
+    python build_onshape.py --no-render --no-step --key-fit 0.05,0.15
+                                           # also deck keys at other nub interferences, for a fit test
 """
 
 from __future__ import annotations
@@ -36,6 +38,8 @@ STEPS_FILE = HERE / "onshape" / "render_steps.json"
 IMG = HERE / "img"
 STL = HERE / "stl"
 STEP = HERE / "step"
+KEY_FIT = STL / "key_fit_test"
+KEY_PRESS = 0.10   # deck key nub interference per side, mm; the FeatureScript's default too
 
 BASE = "https://cad.onshape.com/api/v6"
 HEADERS = {"Accept": "application/json;charset=UTF-8; qs=0.09", "Content-Type": "application/json"}
@@ -99,18 +103,20 @@ def upload(api: Onshape, doc: dict) -> dict:
     return specs[0]
 
 
-def params(step: int, exploded: bool = False, section: bool = False) -> list:
+def params(step: int, exploded: bool = False, section: bool = False, key_press: float = KEY_PRESS) -> list:
     return [
         {"btType": "BTMParameterQuantity-147", "isInteger": True, "value": step, "units": "", "expression": str(step), "parameterId": "step"},
         {"btType": "BTMParameterBoolean-144", "value": exploded, "parameterId": "exploded"},
         {"btType": "BTMParameterBoolean-144", "value": section, "parameterId": "section"},
+        {"btType": "BTMParameterQuantity-147", "isInteger": False, "value": key_press, "units": "", "expression": f"{key_press:g}", "parameterId": "keyPress"},
     ]
 
 
-def set_feature(api: Onshape, doc: dict, spec: dict, step: int = 0, exploded: bool = False, section: bool = False) -> None:
+def set_feature(api: Onshape, doc: dict, spec: dict, step: int = 0, exploded: bool = False, section: bool = False,
+                key_press: float = KEY_PRESS) -> None:
     did, wid, ps = doc["did"], doc["wid"], doc["partstudio"]
     feat = {"btType": "BTMFeature-134", "featureType": spec["featureType"], "name": "Single-vial stirrer",
-            "namespace": spec["namespace"], "parameters": params(step, exploded, section)}
+            "namespace": spec["namespace"], "parameters": params(step, exploded, section, key_press)}
     feats = api.get(f"partstudios/d/{did}/w/{wid}/e/{ps}/features").json()["features"]
     mine = [f for f in feats if f.get("featureType") == spec["featureType"]]
     if mine:
@@ -190,6 +196,19 @@ def render(api: Onshape, doc: dict, spec: dict, only: set | None = None) -> None
     sheet.save(IMG / "assembly_steps.png", optimize=True)
 
 
+def part_stl(api: Onshape, doc: dict, part_id: str, out: pathlib.Path) -> None:
+    did, wid, ps = doc["did"], doc["wid"], doc["partstudio"]
+    r = api.get(f"parts/d/{did}/w/{wid}/e/{ps}/partid/{part_id}/stl",
+                # 0.02 mm chord keeps the fits; a finer angle only multiplies triangles on the 0.3 mm rounds
+                params={"mode": "binary", "units": "millimeter", "angleTolerance": 0.15, "chordTolerance": 0.02},
+                headers={"Accept": "application/vnd.onshape.v1+octet-stream"}, allow_redirects=False)
+    if r.status_code in (302, 307):
+        r = api.get(r.headers["Location"], headers={"Accept": "application/vnd.onshape.v1+octet-stream"})
+    r.raise_for_status()
+    out.write_bytes(r.content)
+    print("exported", out.relative_to(HERE), len(r.content), "bytes", flush=True)
+
+
 def export_stl(api: Onshape, doc: dict) -> None:
     did, wid, ps = doc["did"], doc["wid"], doc["partstudio"]
     STL.mkdir(exist_ok=True)
@@ -200,15 +219,20 @@ def export_stl(api: Onshape, doc: dict) -> None:
         if not stem or stem in done:
             continue
         done.add(stem)
-        r = api.get(f"parts/d/{did}/w/{wid}/e/{ps}/partid/{p['partId']}/stl",
-                    # 0.02 mm chord keeps the fits; a finer angle only multiplies triangles on the 0.3 mm rounds
-                    params={"mode": "binary", "units": "millimeter", "angleTolerance": 0.15, "chordTolerance": 0.02},
-                    headers={"Accept": "application/vnd.onshape.v1+octet-stream"}, allow_redirects=False)
-        if r.status_code in (302, 307):
-            r = api.get(r.headers["Location"], headers={"Accept": "application/vnd.onshape.v1+octet-stream"})
-        r.raise_for_status()
-        (STL / f"{stem}.stl").write_bytes(r.content)
-        print("exported", f"{stem}.stl", len(r.content), "bytes", flush=True)
+        part_stl(api, doc, p["partId"], STL / f"{stem}.stl")
+
+
+def export_key_fit(api: Onshape, doc: dict, spec: dict, presses: list) -> None:
+    """Deck keys at other nub interferences, for printing side by side with the default one."""
+    did, wid, ps = doc["did"], doc["wid"], doc["partstudio"]
+    KEY_FIT.mkdir(exist_ok=True)
+    try:
+        for v in presses:
+            set_feature(api, doc, spec, 0, key_press=v)
+            key = next(p for p in api.get(f"parts/d/{did}/w/{wid}/e/{ps}").json() if p["name"].startswith("Deck key (printed"))
+            part_stl(api, doc, key["partId"], KEY_FIT / f"deck_key_press_{v:.2f}.stl")
+    finally:
+        set_feature(api, doc, spec, 0)
 
 
 def translate_step(api: Onshape, doc: dict, part_ids: list, out: pathlib.Path) -> None:
@@ -254,6 +278,7 @@ if __name__ == "__main__":
     ap.add_argument("--no-stl", action="store_true")
     ap.add_argument("--no-step", action="store_true")
     ap.add_argument("--only", default="", help="comma-separated frame keys to re-render (skips the contact sheet)")
+    ap.add_argument("--key-fit", default="", help="comma-separated nub interferences (mm per side) for extra deck-key STLs")
     a = ap.parse_args()
     api = Onshape()
     doc = new_document(api) if a.new else json.loads(DOC_FILE.read_text())
@@ -263,6 +288,8 @@ if __name__ == "__main__":
         export_stl(api, doc)
     if not a.no_step:
         export_step(api, doc)
+    if a.key_fit:
+        export_key_fit(api, doc, spec, [float(v) for v in a.key_fit.split(",")])
     if not a.no_render:
         render(api, doc, spec, set(filter(None, a.only.split(","))) or None)
     print("document:", doc["url"])
