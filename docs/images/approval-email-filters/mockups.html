@@ -1,0 +1,456 @@
+<!doctype html>
+<!--
+  Drawn mock-ups (not screenshots) of the Gmail filter and Outlook rule screens,
+  with the #299 values filled in. Render with render.py; each <section class="frame">
+  becomes one PNG named after its id.
+-->
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 20px; background: #e9ebee; font-family: Lato, "Liberation Sans", sans-serif; color: #1f1f1f; font-size: 14px; }
+  .frame { background: #fff; border: 1px solid #c9ccd1; border-radius: 10px; padding: 0 0 10px; margin: 0 0 30px; position: relative; overflow: hidden; }
+  .cap { background: #24292f; color: #fff; padding: 9px 16px; font-size: 15px; }
+  .cap b { color: #ffd33d; }
+  .foot { color: #6b7280; font-size: 11.5px; padding: 6px 16px 0; font-style: italic; }
+  .stage { position: relative; padding: 22px 26px 8px; }
+  .rel { position: relative; }
+
+  /* callouts */
+  .hl { box-shadow: 0 0 0 3px #d93025; border-radius: 6px; }
+  .n { position: absolute; width: 26px; height: 26px; border-radius: 50%; background: #d93025; color: #fff; font: 700 15px/26px Lato, sans-serif; text-align: center; z-index: 5; box-shadow: 0 1px 3px rgba(0,0,0,.35); }
+  .tip { position: absolute; color: #b3261e; font: 700 12.5px/1.25 Lato, sans-serif; white-space: nowrap; z-index: 5; }
+
+  /* ---------- Gmail ---------- */
+  .gm-bar { display: flex; align-items: center; gap: 18px; }
+  .gm-brand { width: 120px; color: #444746; font-size: 21px; display: flex; align-items: center; gap: 12px; }
+  .gm-brand .m { color: #c5221f; font-weight: 700; }
+  .gm-search { flex: 0 0 700px; height: 46px; background: #e9eef6; border-radius: 23px; display: flex; align-items: center; padding: 0 10px 0 14px; gap: 10px; }
+  .gm-search svg { width: 22px; height: 22px; fill: #444746; flex: none; }
+  .gm-q { flex: 1; font-size: 14px; white-space: nowrap; overflow: hidden; }
+  .gm-tune { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .gm-panel { margin: 4px 0 0 138px; width: 700px; background: #fff; border-radius: 4px; box-shadow: 0 2px 6px rgba(60,64,67,.3), 0 1px 2px rgba(60,64,67,.2); padding: 14px 22px 16px; }
+  .gm-row { display: flex; align-items: flex-end; height: 38px; }
+  .gm-row label { width: 120px; color: #444746; font-size: 13.5px; padding-bottom: 6px; }
+  .gm-in { flex: 1; border-bottom: 1px solid #c4c7c5; padding: 0 0 6px 2px; min-height: 26px; font-size: 14px; }
+  .gm-sel { border-bottom: 1px solid #c4c7c5; padding: 0 22px 6px 2px; margin-right: 14px; color: #1f1f1f; position: relative; font-size: 13.5px; }
+  .gm-sel:after { content: "\25BE"; position: absolute; right: 4px; color: #5f6368; }
+  .gm-checks { display: flex; gap: 28px; margin: 16px 0 0; color: #1f1f1f; font-size: 13.5px; }
+  .cb { display: inline-block; width: 16px; height: 16px; border: 2px solid #5f6368; border-radius: 2px; vertical-align: -3px; margin-right: 8px; background: #fff; }
+  .cb.on { background: #0b57d0; border-color: #0b57d0; position: relative; }
+  .cb.on:after { content: ""; position: absolute; left: 3px; top: 0px; width: 5px; height: 9px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+  .gm-actions { display: flex; justify-content: flex-end; align-items: center; gap: 22px; margin-top: 12px; }
+  .gm-link { color: #0b57d0; font-weight: 700; font-size: 14px; padding: 8px 10px; }
+  .gm-btn { background: #0b57d0; color: #fff; border-radius: 4px; padding: 9px 22px; font-weight: 700; font-size: 14px; }
+  .gm-head { display: flex; align-items: center; gap: 12px; color: #5f6368; font-size: 13.5px; padding: 2px 0 12px; border-bottom: 1px solid #e3e3e3; }
+  .gm-head .arrow { font-size: 20px; color: #444746; }
+  .gm-when { color: #444746; font-size: 13.5px; margin: 12px 0 6px; }
+  .gm-opt { height: 31px; display: flex; align-items: center; font-size: 14px; }
+  .gm-opt .sub { color: #0b57d0; margin-left: 8px; }
+  .gm-dd { display: inline-block; border: 1px solid #c4c7c5; border-radius: 4px; padding: 3px 26px 3px 9px; margin-left: 8px; position: relative; font-size: 13.5px; background: #fff; }
+  .gm-dd:after { content: "\25BE"; position: absolute; right: 8px; color: #5f6368; }
+  .dialog { position: absolute; background: #fff; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,.28); padding: 18px 20px 16px; }
+  .dialog h4 { margin: 0 0 12px; font-size: 18px; font-weight: 400; color: #1f1f1f; }
+  .dialog .lbl { font-size: 13px; color: #444746; margin: 4px 0 6px; }
+  .box { border: 1px solid #747775; border-radius: 4px; padding: 7px 9px; font-size: 14px; background: #fff; }
+  .flat-btn { display: inline-block; padding: 7px 14px; font-weight: 700; color: #0b57d0; font-size: 14px; }
+  .arrow-line { position: absolute; border-top: 2px dashed #d93025; z-index: 4; }
+
+  /* ---------- Outlook (web / new) ---------- */
+  .ol-top { display: flex; align-items: center; gap: 16px; height: 48px; background: #0f6cbd; color: #fff; padding: 0 14px; border-radius: 6px 6px 0 0; }
+  .ol-top .waffle { font-size: 18px; letter-spacing: -2px; opacity: .95; }
+  .ol-top .name { font-weight: 700; font-size: 16px; width: 120px; }
+  .ol-top .search { flex: 1; max-width: 420px; height: 32px; background: #fff; border-radius: 4px; color: #616161; display: flex; align-items: center; padding: 0 10px; font-size: 13.5px; gap: 8px; }
+  .ol-top .icons { margin-left: auto; display: flex; gap: 14px; align-items: center; }
+  .ol-top .icons > span { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 4px; font-size: 17px; }
+  .ol-top svg { width: 20px; height: 20px; fill: #fff; }
+  .ol-shell { border: 1px solid #d1d1d1; border-radius: 6px; background: #f5f5f5; }
+  .ol-modal { margin: 18px 30px 22px; background: #fff; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,.18); }
+  .ol-modal-h { display: flex; justify-content: space-between; padding: 14px 18px 6px; font-size: 20px; font-weight: 700; }
+  .ol-modal-h span { font-weight: 400; color: #424242; }
+  .ol-cols { display: flex; min-height: 390px; }
+  .ol-nav1 { width: 190px; padding: 6px 10px; border-right: 1px solid #e0e0e0; }
+  .ol-nav2 { width: 200px; padding: 6px 10px; border-right: 1px solid #e0e0e0; }
+  .ol-item { padding: 7px 10px; border-radius: 4px; font-size: 14px; color: #242424; }
+  .ol-item.sel { background: #ebf3fc; font-weight: 700; color: #0f6cbd; }
+  .ol-ss { border: 1px solid #d1d1d1; border-radius: 4px; padding: 5px 8px; color: #707070; font-size: 13px; margin: 2px 0 8px; }
+  .ol-main { flex: 1; padding: 6px 22px; }
+  .ol-main h3 { font-size: 18px; margin: 6px 0 14px; }
+  .ol-primary { display: inline-block; background: #0f6cbd; color: #fff; border-radius: 4px; padding: 7px 16px; font-weight: 700; font-size: 14px; }
+  .ol-secondary { display: inline-block; background: #fff; color: #242424; border: 1px solid #d1d1d1; border-radius: 4px; padding: 6px 16px; font-weight: 700; font-size: 14px; }
+  .ol-addrule { color: #0f6cbd; font-weight: 700; font-size: 14px; display: inline-flex; gap: 6px; align-items: center; padding: 4px 6px; }
+  .ol-hint { color: #8a8a8a; font-style: italic; font-size: 13px; margin-top: 18px; }
+  .ol-pane { padding: 10px 30px 4px; }
+  .ol-crumb { color: #616161; font-size: 13px; margin-bottom: 6px; }
+  .ol-step { display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 700; margin: 18px 0 9px; }
+  .bluenum { width: 26px; height: 26px; border-radius: 50%; background: #0f6cbd; color: #fff; font: 700 14px/26px Lato, sans-serif; text-align: center; }
+  .ol-field { border: 1px solid #d1d1d1; border-bottom: 1px solid #616161; border-radius: 4px; padding: 6px 10px; font-size: 14px; background: #fff; height: 34px; display: flex; align-items: center; }
+  .ol-drop { position: relative; padding-right: 30px; width: 250px; }
+  .ol-drop:after { content: "\2304"; position: absolute; right: 10px; top: 2px; color: #424242; font-size: 16px; }
+  .ol-cond { display: flex; gap: 12px; align-items: center; margin: 0 0 10px 36px; }
+  .chip { display: inline-flex; align-items: center; gap: 8px; background: #ebebeb; border-radius: 4px; padding: 4px 8px; font-size: 13.5px; }
+  .chip i { font-style: normal; color: #616161; }
+  .ol-link { color: #0f6cbd; font-size: 14px; margin: 2px 0 0 36px; }
+  .ol-check { display: flex; align-items: center; gap: 8px; margin: 20px 0 0; font-size: 14px; }
+  .cbo { display: inline-block; width: 18px; height: 18px; border-radius: 3px; background: #0f6cbd; position: relative; }
+  .cbo:after { content: ""; position: absolute; left: 6px; top: 2px; width: 5px; height: 10px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+  .ol-btns { display: flex; gap: 10px; margin: 22px 0 6px; }
+  .ol-rule-row { display: flex; align-items: center; gap: 14px; border: 1px solid #e0e0e0; border-radius: 6px; padding: 12px 14px; margin-top: 16px; }
+  .toggle { width: 40px; height: 20px; border-radius: 10px; background: #0f6cbd; position: relative; flex: none; }
+  .toggle:after { content: ""; position: absolute; right: 4px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: #fff; }
+  .ol-rule-row .nm { font-size: 14.5px; font-weight: 700; }
+  .ol-rule-row .acts { margin-left: auto; display: flex; gap: 6px; }
+  .ol-rule-row .acts > span { width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: 4px; color: #424242; }
+  .ol-rule-row svg { width: 18px; height: 18px; fill: #424242; }
+  .tooltip { position: absolute; background: #242424; color: #fff; font-size: 12.5px; border-radius: 4px; padding: 5px 9px; white-space: nowrap; }
+
+  /* ---------- Classic Outlook (Windows dialogs) ---------- */
+  .win { background: #fff; border: 1px solid #7a7a7a; box-shadow: 0 6px 18px rgba(0,0,0,.2); font-family: "Liberation Sans", sans-serif; font-size: 13px; color: #000; }
+  .win-title { display: flex; justify-content: space-between; align-items: center; padding: 7px 10px 7px 12px; font-size: 13px; }
+  .win-title .x { font-size: 16px; color: #333; }
+  .win-body { padding: 4px 14px 12px; }
+  .win-q { margin: 2px 0 8px; }
+  .win-list { border: 1px solid #a0a0a0; height: auto; padding: 2px 0; position: relative; }
+  .win-list .r { padding: 2.5px 6px; display: flex; align-items: center; gap: 6px; }
+  .win-list .r.sel { background: #cce8ff; }
+  .wcb { display: inline-block; width: 13px; height: 13px; border: 1px solid #333; background: #fff; position: relative; flex: none; }
+  .wcb.on:after { content: ""; position: absolute; left: 3.5px; top: 0px; width: 4px; height: 8px; border: solid #000; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+  .u { color: #0066cc; text-decoration: underline; }
+  .win-desc { border: 1px solid #a0a0a0; padding: 6px 8px; line-height: 1.6; min-height: 92px; }
+  .win-btns { display: flex; justify-content: flex-end; gap: 8px; margin-top: 12px; }
+  .wbtn { border: 1px solid #adadad; background: #e1e1e1; padding: 4px 0; width: 82px; text-align: center; }
+  .wbtn.def { border: 2px solid #0078d7; padding: 3px 0; }
+  .win-in { border: 1px solid #7a7a7a; padding: 4px 6px; background: #fff; }
+  .win-scroll { position: absolute; right: 0; top: 0; bottom: 0; width: 15px; background: #f0f0f0; border-left: 1px solid #ddd; }
+  .win-scroll:after { content: ""; position: absolute; left: 3px; right: 3px; top: 40%; height: 40px; background: #c2c2c2; }
+</style>
+</head>
+<body>
+
+<!-- ======================= GMAIL 1 ======================= -->
+<section class="frame" id="gmail-1" style="width: 900px">
+  <div class="cap"><b>Gmail</b> &middot; steps 1&ndash;4: search for the approval emails, then make a filter from that search</div>
+  <div class="stage" style="padding-bottom: 18px">
+    <div class="gm-bar">
+      <div class="gm-brand"><span>&#9776;</span><span><span class="m">M</span> Gmail</span></div>
+      <div class="gm-search hl rel">
+        <span class="n" style="left:-13px; top:-15px">1</span>
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <span class="gm-q">from:notifications@github.com "requested your review to deploy to an environment"</span>
+        <span class="gm-tune rel" style="box-shadow: 0 0 0 3px #d93025">
+          <span class="n" style="right:-16px; top:-19px">2</span>
+          <svg viewBox="0 0 24 24"><path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"/></svg>
+        </span>
+      </div>
+    </div>
+    <span class="tip" style="left: 168px; top: 76px">&#8593; paste this, press Enter, and check the list shows the approval emails</span>
+    <span class="tip" style="left: 676px; top: 4px">Show search options &#8594;</span>
+
+    <div class="gm-panel" style="margin-top: 26px">
+      <div class="rel hl" style="padding: 0 6px; margin: 0 -6px">
+        <span class="n" style="left:-36px; top: 34px">3</span>
+        <div class="gm-row"><label>From</label><div class="gm-in">notifications@github.com</div></div>
+        <div class="gm-row"><label>To</label><div class="gm-in"></div></div>
+        <div class="gm-row"><label>Subject</label><div class="gm-in"></div></div>
+        <div class="gm-row"><label>Has the words</label><div class="gm-in">"requested your review to deploy to an environment"</div></div>
+      </div>
+      <div class="gm-row"><label>Doesn't have</label><div class="gm-in"></div></div>
+      <div class="gm-row"><label>Size</label><span class="gm-sel">greater than</span><div class="gm-in" style="flex: 0 0 120px; margin-right: 14px"></div><span class="gm-sel">MB</span></div>
+      <div class="gm-row"><label>Date within</label><span class="gm-sel">1 day</span><div class="gm-in" style="flex: 0 0 200px"></div></div>
+      <div class="gm-row"><label>Search</label><span class="gm-sel">All Mail</span></div>
+      <div class="gm-checks"><span><span class="cb"></span>Has attachment</span><span><span class="cb"></span>Don't include chats</span></div>
+      <div class="gm-actions">
+        <span class="gm-link hl rel"><span class="n" style="left:-30px; top:4px">4</span>Create filter</span>
+        <span class="gm-btn">Search</span>
+      </div>
+    </div>
+    <span class="tip" style="left: 20px; top: 210px; white-space: normal; width: 110px">already filled in from your search; leave them as they are</span>
+  </div>
+  <div class="foot">Drawn mock-up of Gmail's search options, not a screenshot. The labels match Gmail, but the layout and colours on your screen may differ a little.</div>
+</section>
+
+<!-- ======================= GMAIL 2 ======================= -->
+<section class="frame" id="gmail-2" style="width: 900px">
+  <div class="cap"><b>Gmail</b> &middot; steps 5&ndash;8: choose what the filter does</div>
+  <div class="stage" style="height: 520px">
+    <div class="gm-panel" style="margin: 0; width: 560px; position: absolute; left: 50px; top: 18px">
+      <div class="gm-head"><span class="arrow">&#8592;</span><span>from:(notifications@github.com) "requested your review to deploy to an environment"</span></div>
+      <div class="gm-when">When a message is an exact match for your search criteria:</div>
+      <div class="gm-opt"><span class="rel hl" style="padding: 2px 8px 2px 4px; margin-left: -4px"><span class="n" style="left:-38px; top:0px">5</span><span class="cb on"></span>Skip the Inbox (Archive it)</span></div>
+      <div class="gm-opt"><span class="cb"></span>Mark as read</div>
+      <div class="gm-opt"><span class="cb"></span>Star it</div>
+      <div class="gm-opt"><span class="rel hl" style="padding: 2px 4px 2px 4px; margin-left: -4px"><span class="n" style="left:-38px; top:2px">6</span><span class="cb on"></span>Apply the label: <span class="gm-dd">bambu-print</span></span></div>
+      <div class="gm-opt"><span class="cb"></span>Forward it <span class="sub">add forwarding address</span></div>
+      <div class="gm-opt"><span class="cb"></span>Delete it</div>
+      <div class="gm-opt"><span class="cb"></span>Never send it to Spam</div>
+      <div class="gm-opt"><span class="cb"></span>Always mark it as important</div>
+      <div class="gm-opt"><span class="cb"></span>Never mark it as important</div>
+      <div class="gm-opt"><span class="cb"></span>Categorize as: <span class="gm-dd">Choose category...</span></div>
+      <div class="gm-opt" style="margin-top: 6px"><span class="rel hl" style="padding: 2px 8px 2px 4px; margin-left: -4px"><span class="n" style="left:-38px; top:0px">7</span><span class="cb on"></span>Also apply filter to <b>&nbsp;6&nbsp;</b> matching conversations.</span></div>
+      <div class="gm-actions" style="margin-top: 14px"><span class="gm-btn hl rel"><span class="n" style="left:-36px; top:4px">8</span>Create filter</span></div>
+    </div>
+
+    <!-- New label dialog -->
+    <div class="arrow-line" style="left: 330px; top: 222px; width: 318px"></div>
+    <div class="dialog" style="left: 648px; top: 120px; width: 220px">
+      <h4>New label</h4>
+      <div class="lbl">Please enter a new label name:</div>
+      <div class="box">bambu-print</div>
+      <div class="lbl" style="margin-top: 12px"><span class="cb" style="width: 14px; height: 14px"></span>Nest label under:</div>
+      <div class="box" style="color: #8a8a8a; font-size: 13px">Please select a parent...</div>
+      <div style="text-align: right; margin-top: 12px"><span class="flat-btn">Cancel</span><span class="flat-btn" style="box-shadow: 0 0 0 3px #d93025; border-radius: 6px">Create</span></div>
+    </div>
+    <span class="tip" style="left: 648px; top: 64px; white-space: normal; width: 230px">first time only: open <i>Choose label&hellip;</i>, pick <i>New label&hellip;</i> at the bottom, type the name, Create</span>
+    <span class="tip" style="left: 628px; top: 395px; white-space: normal; width: 250px">the number is however many approval emails you already have; ticking it tidies those up too</span>
+  </div>
+  <div class="foot">Drawn mock-up of Gmail's filter options, not a screenshot. The labels match Gmail, but the layout and colours on your screen may differ a little.</div>
+</section>
+
+<!-- ======================= OUTLOOK 1 ======================= -->
+<section class="frame" id="outlook-1" style="width: 900px">
+  <div class="cap"><b>Outlook on the web / new Outlook</b> &middot; steps 1&ndash;4: open Settings &rsaquo; Mail &rsaquo; Rules</div>
+  <div class="stage">
+    <div class="ol-shell">
+      <div class="ol-top">
+        <span class="waffle">&#8942;&#8942;&#8942;</span>
+        <span class="name">Outlook</span>
+        <span class="search"><svg viewBox="0 0 24 24" style="fill:#616161; width:16px; height:16px"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>Search</span>
+        <span class="icons">
+          <span class="rel" style="box-shadow: 0 0 0 3px #ffd33d, 0 0 0 6px #d93025">
+            <span class="n" style="left:-34px; top:3px">1</span>
+            <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+          </span>
+          <span style="background:#5b9bd5; border-radius:50%; font-size:12px; font-weight:700">AB</span>
+        </span>
+      </div>
+      <div class="ol-modal">
+        <div class="ol-modal-h">Settings <span>&#10005;</span></div>
+        <div class="ol-cols">
+          <div class="ol-nav1">
+            <div class="ol-ss">Search settings</div>
+            <div class="ol-item">Accounts</div>
+            <div class="ol-item">General</div>
+            <div class="ol-item sel hl rel"><span class="n" style="right:-14px; top:4px">2</span>Mail</div>
+            <div class="ol-item">Calendar</div>
+            <div class="ol-item">People</div>
+          </div>
+          <div class="ol-nav2">
+            <div class="ol-item">Layout</div>
+            <div class="ol-item">Compose and reply</div>
+            <div class="ol-item">Attachments</div>
+            <div class="ol-item sel hl rel"><span class="n" style="right:-14px; top:4px">3</span>Rules</div>
+            <div class="ol-item">Sweep</div>
+            <div class="ol-item">Junk email</div>
+            <div class="ol-item">Customize actions</div>
+            <div class="ol-item">Sync email</div>
+            <div class="ol-item">Message handling</div>
+            <div class="ol-item">Forwarding</div>
+          </div>
+          <div class="ol-main">
+            <h3>Rules</h3>
+            <span class="ol-addrule hl rel"><span class="n" style="right:-34px; top:2px">4</span><b style="font-size:18px">+</b> Add new rule</span>
+            <div class="ol-hint">(any rules you already have are listed here)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot">Drawn mock-up of Outlook's settings, not a screenshot. The menu names match Microsoft's help pages, but the layout and colours on your screen may differ, and the list of settings may be longer.</div>
+</section>
+
+<!-- ======================= OUTLOOK 2 ======================= -->
+<section class="frame" id="outlook-2" style="width: 900px">
+  <div class="cap"><b>Outlook on the web / new Outlook</b> &middot; steps 5&ndash;8: fill in the rule and save it</div>
+  <div class="stage">
+    <div class="ol-pane" style="border: 1px solid #e0e0e0; border-radius: 8px; padding: 14px 30px 10px 44px">
+      <div class="ol-crumb">Settings &rsaquo; Mail &rsaquo; Rules</div>
+      <div class="ol-step"><span class="bluenum">1</span>Name your rule</div>
+      <div class="rel" style="margin-left: 36px; width: 360px">
+        <div class="ol-field hl">bambu-print approvals</div>
+        <span class="n" style="left:-74px; top:4px">5</span>
+      </div>
+
+      <div class="ol-step"><span class="bluenum">2</span>Add a condition</div>
+      <div class="rel hl" style="margin: 0 0 0 30px; padding: 8px 6px 2px; width: 760px">
+        <span class="n" style="left:-68px; top:28px">6</span>
+        <div class="ol-cond" style="margin-left: 0"><div class="ol-field ol-drop">Sender address includes</div><span class="chip">notifications@github.com <i>&#10005;</i></span></div>
+        <div class="ol-cond" style="margin-left: 0"><div class="ol-field ol-drop">Subject or body includes</div><span class="chip">requested your review to deploy to an environment <i>&#10005;</i></span></div>
+      </div>
+      <div class="ol-link">Add another condition</div>
+
+      <div class="ol-step"><span class="bluenum">3</span>Add an action</div>
+      <div class="rel hl" style="margin: 0 0 0 30px; padding: 8px 6px 0; width: 540px">
+        <span class="n" style="left:-68px; top:10px">7</span>
+        <div class="ol-cond" style="margin-left: 0"><div class="ol-field ol-drop">Move to</div><div class="ol-field ol-drop" style="width: 230px">bambu-print</div></div>
+      </div>
+      <div class="ol-link">Add another action</div>
+      <div class="ol-link" style="margin-top: 14px">Add an exception</div>
+
+      <div class="ol-check"><span class="cbo"></span>Stop processing more rules <svg viewBox="0 0 24 24" style="width:17px; height:17px; fill:#0f6cbd; vertical-align:-3px"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 18.5a8.5 8.5 0 1 1 0-17 8.5 8.5 0 0 1 0 17zM11 10h2v7h-2zm0-3h2v2h-2z"/></svg></div>
+      <div class="ol-btns"><span class="ol-primary hl rel"><span class="n" style="left:-40px; top:4px">8</span>Save</span><span class="ol-secondary">Discard</span></div>
+    </div>
+    <span class="tip" style="left: 262px; top: 294px">pick each from the drop-down, then type the text and press Enter; no quotation marks</span>
+    <span class="tip" style="left: 618px; top: 404px; white-space: normal; width: 230px">your bambu-print folder, or Archive if you didn't make one</span>
+    <span class="tip" style="left: 300px; top: 484px">&#8592; leave this as it is</span>
+  </div>
+  <div class="foot">Drawn mock-up of Outlook's rule editor, not a screenshot. The names match Microsoft's help pages, but the layout on your screen may differ.</div>
+</section>
+
+<!-- ======================= OUTLOOK 3 ======================= -->
+<section class="frame" id="outlook-3" style="width: 900px">
+  <div class="cap"><b>Outlook on the web / new Outlook</b> &middot; step 9: run the rule once on the emails you already have</div>
+  <div class="stage" style="padding-top: 30px">
+    <div class="ol-pane" style="border: 1px solid #e0e0e0; border-radius: 8px; padding: 14px 30px 20px">
+      <div class="ol-crumb">Settings &rsaquo; Mail &rsaquo; Rules</div>
+      <h3 style="font-size:18px; margin: 4px 0 10px">Rules</h3>
+      <span class="ol-addrule"><b style="font-size:18px">+</b> Add new rule</span>
+      <div class="ol-rule-row">
+        <span class="toggle"></span>
+        <span class="nm">bambu-print approvals</span>
+        <span class="acts">
+          <span class="rel" style="box-shadow: 0 0 0 3px #d93025">
+            <span class="tooltip" style="left: -30px; top: -34px">Run rule now</span>
+            <span class="n" style="left:-36px; top:4px">9</span>
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+          <span><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span>
+          <span><svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg></span>
+          <span><svg viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg></span>
+          <span><svg viewBox="0 0 24 24"><path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"/></svg></span>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="foot">Drawn mock-up, not a screenshot. Microsoft documents a "Run rule now" button next to each rule; if yours has none, move the old emails by hand (see the steps).</div>
+</section>
+
+<!-- ======================= CLASSIC 1 ======================= -->
+<section class="frame" id="classic-1" style="width: 900px">
+  <div class="cap"><b>Classic Outlook for Windows</b> &middot; steps 2&ndash;4: the two conditions</div>
+  <div class="stage" style="height: 500px">
+    <div class="win" style="position: absolute; left: 50px; top: 16px; width: 520px">
+      <div class="win-title"><span>Rules Wizard</span><span class="x">&#10005;</span></div>
+      <div class="win-body">
+        <div class="win-q">Which condition(s) do you want to check?</div>
+        <div style="margin-bottom: 4px">Step 1: Select condition(s)</div>
+        <div class="win-list">
+          <div class="win-scroll"></div>
+          <div class="r"><span class="wcb"></span>sent to <span class="u">people or public group</span></div>
+          <div class="r"><span class="wcb"></span>with <span class="u">specific words</span> in the body</div>
+          <div class="r sel rel hl" style="margin-right: 18px"><span class="n" style="left:-44px; top:-2px">2</span><span class="wcb on"></span>with <span class="u">specific words</span> in the subject or body</div>
+          <div class="r"><span class="wcb"></span>with <span class="u">specific words</span> in the message header</div>
+          <div class="r"><span class="wcb"></span>with <span class="u">specific words</span> in the recipient's address</div>
+          <div class="r sel rel hl" style="margin-right: 18px"><span class="n" style="left:-44px; top:-2px">2</span><span class="wcb on"></span>with <span class="u">specific words</span> in the sender's address</div>
+          <div class="r"><span class="wcb"></span>assigned to <span class="u">category</span> category</div>
+          <div class="r"><span class="wcb"></span>which is an Out of Office message</div>
+          <div class="r"><span class="wcb"></span>which has an attachment</div>
+        </div>
+        <div style="margin: 10px 0 4px">Step 2: Edit the rule description (click an underlined value)</div>
+        <div class="win-desc rel">
+          Apply this rule after the message arrives<br>
+          with <span class="u rel" style="box-shadow: 0 0 0 2px #d93025; border-radius: 3px"><span class="n" style="left:-62px; top:-4px; width:22px; height:22px; line-height:22px; font-size:13px">3</span>requested your review to deploy to an environment</span> in the subject or body<br>
+          and with <span class="u rel" style="box-shadow: 0 0 0 2px #d93025; border-radius: 3px"><span class="n" style="left:-90px; top:-4px; width:22px; height:22px; line-height:22px; font-size:13px">3</span>notifications@github.com</span> in the sender's address
+        </div>
+        <div class="win-btns"><span class="wbtn">Cancel</span><span class="wbtn">&lt; Back</span><span class="wbtn def hl rel"><span class="n" style="left:-4px; top:-32px">4</span>Next &gt;</span><span class="wbtn">Finish</span></div>
+      </div>
+    </div>
+
+    <!-- Search Text dialog -->
+    <div class="win" style="position: absolute; left: 592px; top: 92px; width: 280px">
+      <div class="win-title"><span>Search Text</span><span class="x">&#10005;</span></div>
+      <div class="win-body">
+        <div style="margin-bottom: 4px">Specify words or phrases to search for in the subject or body:</div>
+        <div style="display: flex; gap: 6px"><div class="win-in" style="flex: 1; color: #777">&nbsp;</div><span class="wbtn" style="width: 58px; box-shadow: 0 0 0 2px #d93025">Add</span></div>
+        <div style="margin: 8px 0 4px">Search list:</div>
+        <div style="display: flex; gap: 6px"><div class="win-in" style="flex: 1; height: 58px; font-size: 12px">"requested your review to deploy to an environment"</div><span class="wbtn" style="width: 58px; align-self: flex-start">Remove</span></div>
+        <div class="win-btns"><span class="wbtn def" style="box-shadow: 0 0 0 2px #d93025">OK</span><span class="wbtn">Cancel</span></div>
+      </div>
+    </div>
+    <span class="tip" style="left: 592px; top: 338px; white-space: normal; width: 280px">click each underlined value in turn: type the phrase (or the address), click Add, then OK</span>
+  </div>
+  <div class="foot">Drawn mock-up of classic Outlook's Rules Wizard, not a screenshot. The wording matches Outlook; your list is longer and scrolls.</div>
+</section>
+
+<!-- ======================= CLASSIC 2 ======================= -->
+<section class="frame" id="classic-2" style="width: 900px">
+  <div class="cap"><b>Classic Outlook for Windows</b> &middot; steps 5&ndash;6: the action</div>
+  <div class="stage" style="height: 470px">
+    <div class="win" style="position: absolute; left: 50px; top: 16px; width: 520px">
+      <div class="win-title"><span>Rules Wizard</span><span class="x">&#10005;</span></div>
+      <div class="win-body">
+        <div class="win-q">What do you want to do with the message?</div>
+        <div style="margin-bottom: 4px">Step 1: Select action(s)</div>
+        <div class="win-list">
+          <div class="win-scroll"></div>
+          <div class="r"><span class="wcb"></span>stop processing more rules</div>
+          <div class="r sel rel hl" style="margin-right: 18px"><span class="n" style="left:-44px; top:-2px">5</span><span class="wcb on"></span>move it to the <span class="u">specified</span> folder</div>
+          <div class="r"><span class="wcb"></span>assign it to the <span class="u">category</span> category</div>
+          <div class="r"><span class="wcb"></span>delete it</div>
+          <div class="r"><span class="wcb"></span>permanently delete it</div>
+          <div class="r"><span class="wcb"></span>move a copy to the <span class="u">specified</span> folder</div>
+          <div class="r"><span class="wcb"></span>forward it to <span class="u">people or public group</span></div>
+        </div>
+        <div style="margin: 10px 0 4px">Step 2: Edit the rule description (click an underlined value)</div>
+        <div class="win-desc">
+          Apply this rule after the message arrives<br>
+          with <span class="u">requested your review to deploy to an environment</span> in the subject or body<br>
+          and with <span class="u">notifications@github.com</span> in the sender's address<br>
+          move it to the <span class="u rel" style="box-shadow: 0 0 0 2px #d93025; border-radius: 3px"><span class="n" style="left:-120px; top:-4px; width:22px; height:22px; line-height:22px; font-size:13px">6</span>bambu-print</span> folder
+        </div>
+        <div class="win-btns"><span class="wbtn">Cancel</span><span class="wbtn">&lt; Back</span><span class="wbtn def">Next &gt;</span><span class="wbtn">Finish</span></div>
+      </div>
+    </div>
+
+    <!-- folder picker -->
+    <div class="win" style="position: absolute; left: 610px; top: 70px; width: 250px">
+      <div class="win-title"><span>Rules and Alerts</span><span class="x">&#10005;</span></div>
+      <div class="win-body">
+        <div style="margin-bottom: 4px">Choose a folder:</div>
+        <div class="win-in" style="height: 150px; line-height: 1.7; padding-left: 8px">
+          &#9662; you@example.com<br>
+          &nbsp;&nbsp;&nbsp;&#9662; Inbox<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="background:#cce8ff; padding: 1px 4px">bambu-print</span><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Drafts<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sent Items
+        </div>
+        <div class="win-btns"><span class="wbtn def" style="width: 60px">OK</span><span class="wbtn" style="width: 60px">Cancel</span><span class="wbtn" style="width: 60px; box-shadow: 0 0 0 2px #d93025">New...</span></div>
+      </div>
+    </div>
+    <span class="tip" style="left: 610px; top: 330px; white-space: normal; width: 250px">pick your folder, or click New... to make one called bambu-print, then OK. Then click Next twice (no exceptions)</span>
+  </div>
+  <div class="foot">Drawn mock-up of classic Outlook's Rules Wizard, not a screenshot. Your folder list will be your own.</div>
+</section>
+
+<!-- ======================= CLASSIC 3 ======================= -->
+<section class="frame" id="classic-3" style="width: 900px">
+  <div class="cap"><b>Classic Outlook for Windows</b> &middot; step 7: name it, run it on the emails you already have, finish</div>
+  <div class="stage" style="height: 430px">
+    <div class="win" style="position: absolute; left: 50px; top: 16px; width: 560px">
+      <div class="win-title"><span>Rules Wizard</span><span class="x">&#10005;</span></div>
+      <div class="win-body">
+        <div class="win-q">Finish rule setup.</div>
+        <div style="margin-bottom: 4px">Step 1: Specify a name for this rule</div>
+        <div class="win-in rel hl" style="width: 300px"><span class="n" style="left:-44px; top:-3px">7</span>bambu-print approvals</div>
+        <div style="margin: 12px 0 4px">Step 2: Setup rule options</div>
+        <div style="line-height: 1.9">
+          <span class="rel hl" style="padding: 1px 6px 1px 2px"><span class="n" style="left:-46px; top:-3px">7</span><span class="wcb on" style="vertical-align: -2px; margin-right: 6px"></span>Run this rule now on messages already in "Inbox"</span><br>
+          <span class="wcb on" style="vertical-align: -2px; margin-right: 6px"></span>Turn on this rule<br>
+          <span class="wcb" style="vertical-align: -2px; margin-right: 6px"></span>Create this rule on all accounts
+        </div>
+        <div style="margin: 10px 0 4px">Step 3: Review rule description (click an underlined value to edit)</div>
+        <div class="win-desc">
+          Apply this rule after the message arrives<br>
+          with <span class="u">requested your review to deploy to an environment</span> in the subject or body<br>
+          and with <span class="u">notifications@github.com</span> in the sender's address<br>
+          move it to the <span class="u">bambu-print</span> folder
+        </div>
+        <div class="win-btns"><span class="wbtn">Cancel</span><span class="wbtn">&lt; Back</span><span class="wbtn">Next &gt;</span><span class="wbtn def hl rel"><span class="n" style="left:-4px; top:-32px">7</span>Finish</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot">Drawn mock-up of classic Outlook's Rules Wizard, not a screenshot.</div>
+</section>
+
+</body>
+</html>
