@@ -16,10 +16,15 @@ branch. `claude-print.yml` doesn't join the tailnet, so there was no LAN pre-fli
 printer was checked and watched from Studio's Device page instead, as on the H2D on
 2026-10-08.
 
-**Outcome: paused at layer 42 of 110 (66 %).** At 23:27 UTC the printer paused itself on an
-AMS Lite warning, *AMS lite filament spool or filament may be stuck* [1200-8010 232721].
-Until then it had printed cleanly at 245 °C / 70 °C. The run didn't press *Resume*, since a
-person has to look at the spool first. It was still paused at the last check in the timeline below.
+**Outcome: paused at layer 42 of 110 (66 %), and still paused when the run ended.** At
+23:27 UTC the printer paused itself on an AMS Lite warning: *AMS lite filament spool or
+filament may be stuck* [1200-8010 232721]. Its HMS list narrowed that to *AMS lite slot 4
+filament may be tangled or stuck*. Until then it had printed cleanly at 245 °C / 70 °C. The
+run didn't press *Resume*, because someone has to look at the spool first. Nobody replied
+before the run ended at about 00:40 UTC. The printer was left paused, with the bed at 70 °C
+and the nozzle cooled. To finish the parts, free or replace the PETG in A4 and resume from
+the touchscreen. Otherwise, stop the print there. It stopped at 8.4 mm of the 22 mm, with 33 min
+of printing left by Studio's count.
 
 | | |
 |---|---|
@@ -63,6 +68,8 @@ from its front edge, past the Safety Zone sticker. The room is blurred in every 
 | 23:27:48 | **Paused** on layer 42, 66 %: *AMS lite filament spool or filament may be stuck* [1200-8010 232721] ([warning](20261021T232748Z_ams_warning.png)). Nozzle 245 °C, bed 70 °C |
 | 23:29:22 | Thread told: what to check at slot A4, and how to resume or stop |
 | 23:40:55 | Still paused. The printer had let the nozzle cool to 42 °C and kept the bed at 70 °C ([job panel](20261021T234055Z_paused_job_panel.png)) |
+| 23:58 | HMS list: *AMS lite slot 4 filament may be tangled or stuck* ([screenshot](20261021T235800Z_hms.png)) |
+| 00:08–00:30 | Still paused, no reply in the thread. The run ended with the printer paused |
 
 ## Files
 
@@ -72,6 +79,8 @@ from its front edge, past the Safety Zone sticker. The room is blurred in every 
 | [`print.json`](print.json) | Source files and their MD5s, the part positions, the settings changed in the GUI, the Send options, estimates, the timeline, the go |
 | [`plate_layout.png`](plate_layout.png) | Top view of every extrusion move in the slice, shaded by height |
 | `*_camera.jpg`, `*_L*.jpg` | Camera frames from Studio's Device page |
+| [`timelapse.mp4`](timelapse.mp4), [`timelapse.gif`](timelapse.gif) | The camera from 22:21:30, after homing, to the pause, one frame per 6 s taken from the runner's screen recording. The MP4 is 1024 × 658 at 30 fps (22 s), the GIF 360 px at 8 fps. Room blurred, UTC clock bottom right |
+| [`20261021T235800Z_hms.png`](20261021T235800Z_hms.png) | The HMS entry on Studio's *Assistant (HMS)* page |
 | [`20261021T232748Z_ams_warning.png`](20261021T232748Z_ams_warning.png) | Studio's copy of the printer's warning when it paused |
 | [`20261021T234055Z_paused_job_panel.png`](20261021T234055Z_paused_job_panel.png) | Studio's job panel while paused: 66 %, layer 42/110, the resume button and the AMS Lite message |
 
@@ -85,11 +94,20 @@ from its front edge, past the Safety Zone sticker. The room is blurred in every 
   150, the light grey "/" in "67 /70" read as a 1, giving a bed target of 170 °C. A threshold
   of 220 with a digits-and-slash whitelist read it right. The watcher also now needs three
   readings in a row over a limit before it stops.
-- **Number keys set filament in Prepare.** With an object selected in the 3D view, pressing
-  1–9 assigns that filament to it. Pressing "1" for a top view moved the magnet carrier to
-  PLA, and Studio warned "PLA and PETG filaments detected in the mixture". It was set back to
-  PETG and re-sliced before Send. In the object list, typed digits go to a search box instead.
+- **Number keys set an object's filament.** With an object selected, pressing a digit in
+  the 3D view assigns that filament to it, in Preview as well as Prepare. Pressing "1" for a
+  top view moved the magnet carrier to PLA, and Studio warned "PLA and PETG filaments
+  detected in the mixture". It was set back to PETG and re-sliced before Send. In the object
+  list, typed digits go to a search box instead.
 - **Grid infill can't do 100 %.** Setting the carrier to 100 % brings up a notice, and the
   object's pattern becomes rectilinear.
 - **Elephant-foot compensation is 0 in Bambu's A1 mini processes**, where most other Bambu
   processes have 0.15 mm. `BUILD.md` asks for it, so check it after picking the preset.
+- **Check the spool, not only the filament type.** The pre-print checks covered the AMS
+  contents and asked a person to confirm about 45 g was left. They didn't cover whether the
+  spool turns freely. The AMS Lite stopped this print at 66 % with slot 4 "tangled or stuck".
+  The reason is unknown until someone looks: the spool's end, a tangle, or a spool that
+  binds.
+- **No session can watch past 180 min.** A pause near the end of a run can outlast it. The
+  touchscreen and Bambu Handy are then the only ways to resume or stop, so say who holds
+  them before Send.

@@ -218,9 +218,17 @@
     [
       "23:40:55",
       "still paused; nozzle cooled to 42 C by the printer, bed held at 70 C"
+    ],
+    [
+      "23:58",
+      "HMS list: 'AMS lite slot 4 filament may be tangled or stuck'"
+    ],
+    [
+      "00:08-00:30",
+      "still paused, no reply in the thread; the run ended with the printer paused (bed 70 C, nozzle cooled)"
     ]
   ],
   "watching": "Studio's Device page, OCR every 10 s and a camera frame every 20-120 s (watch_a1m.py, an A1 mini copy of bambu/studio/watch_studio.py from PR #234)",
-  "recording": "the runner's screen was recorded; claude-print.yml has no YouTube token, so it was not uploaded",
-  "outcome": "paused at layer 42/110 by an AMS Lite stuck-filament warning (HMS 1200-8010 232721); see README for the state at the end of the run"
+  "recording": "the runner's screen was recorded but not kept: claude-print.yml has no YouTube token. timelapse.mp4 / timelapse.gif are the camera pane from that recording, 22:21:30 to the pause, one frame per 6 s, room blurred",
+  "outcome": "paused by the printer at layer 42/110 (66 %, 8.4 mm of 22 mm) on an AMS Lite warning, HMS 1200-8010 232721 'AMS lite filament spool or filament may be stuck' / 'AMS lite slot 4 filament may be tangled or stuck'; not resumed by the run; still paused when the run ended"
 }

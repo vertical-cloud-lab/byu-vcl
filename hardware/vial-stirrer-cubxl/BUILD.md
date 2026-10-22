@@ -117,6 +117,10 @@ or more, and first-layer or XY compensation for elephant's foot before you judge
 keys fit ([Cubware well plate holder README](https://github.com/Ursa-Laboratories/Cubware/blob/352aa95/cubxl_plus/labware/well_plate_holder/README.md#printing)).
 At 4 walls, the 2 mm of plastic round each insert hole is close to solid.
 
+These settings on the lab's A1 mini, all five parts on one plate, come to 42 g of PETG
+and about 1 h 41 min. The first try's file and settings are in
+[`print/2026-10-21-a1mini/`](print/2026-10-21-a1mini/README.md).
+
 **Check the prints before going on:**
 
 - [ ] **Each key** slides into a deck slot with no force and lifts back out. It has 0.1 mm a

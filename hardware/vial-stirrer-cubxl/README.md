@@ -8,7 +8,10 @@ the vial, a Hall sensor counting turns, and a closed speed loop. Asked for by
 @sgbaird on [PR #269](https://github.com/vertical-cloud-lab/byu-vcl/pull/269), after
 @benwhitney5463's question on [#169](https://github.com/vertical-cloud-lab/byu-vcl/issues/169).
 
-**Status: designed, not built.** Nothing here has been printed, wired or run. The
+**Status: designed, not built.** The printed parts went to the lab's A1 mini on
+2026-10-21, all on one plate in PETG. That print paused at layer 42 of 110 on an AMS Lite
+warning and was still paused when the run that sent it ended
+([print record](print/2026-10-21-a1mini/README.md)). Nothing has been wired or run. The
 numbers that matter most (coupling, the Hall signal) are estimates until a first
 build. The vial cup is the exception: it is copied from the 9-vial holder already in
 use on the deck.
@@ -46,6 +49,7 @@ the capper and the pipette, instead of its own XIAO RP2040.
 | [`BOM.md`](BOM.md) | Bill of materials for the Uno-driven version: parts to buy with links and prices, parts to print |
 | [`step/`](step) | Printed parts as STEP: `base`, `vial_holder`, `magnet_carrier`, `deck_key` (print two), plus `vial_stirrer_assembly.step`, the whole stirrer for fit checks |
 | [`stl/`](stl) | The same printed parts as STL. Both sets are in assembly position, which is also each part's print orientation |
+| [`print/`](print) | Print records. [`2026-10-21-a1mini/`](print/2026-10-21-a1mini/README.md): all five parts on one A1 mini plate in white PETG Basic, sent from Bambu Studio by an `@claude-print` run. It has the file the printer ran, the settings and a camera timelapse |
 | [`img/`](img) | Onshape's renders (steps 1–10 of the XIAO version, assembled, exploded, section, contact sheet), and the assembly video, GIF and contact sheet of the Uno version |
 | [`firmware/main.py`](firmware/main.py) | MicroPython speed controller for the XIAO RP2040 (untested) |
 | [`../../cubos/firmware/panda-arduino-stirrer.patch`](../../cubos/firmware/panda-arduino-stirrer.patch) | The same controller as two commands in the CubXL Uno's PANDA firmware. Built, image committed, not flashed |
