@@ -42,6 +42,7 @@ $t0 = Get-Date
 $p = Start-Process -FilePath $setup -ArgumentList $switches -WorkingDirectory $dir -Verb RunAs -PassThru
 $p.WaitForExit()
 $code = $p.ExitCode
+if ($code -eq $null) { $code = '(not reported)' }   # PowerShell 2.0 with -Verb RunAs
 # In case setup.exe hands over to a second copy of itself and exits early.
 while (Get-Process -Name setup -ErrorAction SilentlyContinue) {
     if (((Get-Date) - $t0).TotalMinutes -gt 120) { Log 'still running after 120 min; stopped waiting'; break }

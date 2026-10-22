@@ -45,7 +45,7 @@ the PC.
 | Open ports | Remote Desktop (3389) only. File sharing (139, 445), RPC (135) and WinRM (5985, 5986) are closed, so there's no way in without a Remote Desktop login |
 | Remote Desktop | NLA is offered but not required, so a client gets to the Windows login screen without a password ([screenshot](images/2026-10-21-pc-login-screen-from-ci.png)) |
 | Login | `POTENTIOSTAT_PC_USERNAME` / `POTENTIOSTAT_PC_PASSWORD`, passed to `@claude` runs since #294. The account is a member of Administrators, behind UAC: windows start without admin rights, and installers need **Run as administrator** |
-| EZstat | Its board is a **USB-6221 OEM** (`USB\VID_3923&PID_72E0`), plugged into the PC. Not plugged into des4, which is right |
+| EZstat | Its board is a **USB-6221 OEM** (`USB\VID_3923&PID_72E0`), plugged into the PC. Not plugged into des4, which is right. Since 2026-10-22 it has its driver: NI MAX lists it as **NI USB-6221 (OEM) "Dev1"**, status Present ([screenshot](images/2026-10-22-nimax-usb-6221-dev1.png)) |
 
 The first check over Remote Desktop is in [`pc-check-2026-10-21.md`](pc-check-2026-10-21.md);
 what it means is under [step 0](#step-0-check-the-pc-5-minutes-changes-nothing).
@@ -168,9 +168,10 @@ SHA-256, and that the NI installers carry a code signature.
   the PC.
 - **The board inside is a USB-6221 OEM** (NI M Series, 16-bit, 250 kS/s),
   as Windows on the lab PC reported it on 2026-10-21. Not a USB-621x, as
-  this runbook first guessed from the spec. NuVant's 2013 manual names NI-DAQmx
-  9.7 for its EZstats, so 9.7 should drive it. Neither readme's device list has
-  been checked for it.
+  this runbook first guessed from the spec. NI-DAQmx 9.7.0 drives it: its
+  driver file `nixswv.inf` lists `USB\VID_3923&PID_72E0` as *USB-6221 (OEM)*,
+  and the lab PC's board has worked with it since 2026-10-22. 14.5.1 hasn't
+  been checked.
 
 **To download:** run [`windows/get-ezstat-software.ps1`](windows/get-ezstat-software.ps1).
 It picks the NI-DAQmx for the PC's Windows version, saves everything to
@@ -223,21 +224,84 @@ NI-DAQmx is missing.
 | NI MAX | 5.5.1 |
 | The EZstat | Windows sees a **USB-6221 OEM** with **problem code 28**, "the drivers for this device are not installed" |
 
-So on this PC, step 1 is NI-DAQmx alone. Unplug the EZstat's USB cable first,
-run the installer as administrator, restart, then plug it back in (step 2).
-NI-PAL 14.0 and NI-VISA 14.0.1 from 2019 are already there. They are newer
-than the ones NI-DAQmx 9.7 bundles, and NI's installers normally keep the newer
-version. If 9.7's installer objects to them anyway, use 14.5.1, which supports
-Windows 7 and LabVIEW 2011 too.
+So on this PC, step 1 was NI-DAQmx alone. A Claude session installed it from
+des4 on 2026-10-22, with the EZstat left plugged in, then restarted the PC
+([how](#installing-from-des4-with-nobody-at-the-pc)). NI-PAL 14.0 and NI-VISA
+14.0.1 from 2019 were already there, newer than the ones NI-DAQmx 9.7 bundles;
+the installer didn't object to them, and kept them.
+
+**Result after the install and restart, 2026-10-22** ([report](pc-check-2026-10-22.md)):
+
+| | |
+|---|---|
+| NI-DAQmx | **9.7.0**, in the registry and the programs list |
+| The EZstat's board | **Working.** Device Manager error code 0 (was 28), status OK, NI's kernel driver `nixsrkw` loaded. Nobody unplugged it |
+| NI MAX | **NI USB-6221 (OEM) "Dev1"**, serial 01A801CD, status Present ([screenshot](images/2026-10-22-nimax-usb-6221-dev1.png)). EZware's Tools → Configure should offer `Dev1` |
+| Everything else | Nothing removed: the report has only additions. EZware, Run-Time 2011 SP1 and NI MAX 5.5.1 are as they were. The installer also added the older LabVIEW Run-Times it bundles (8.2.1, 2009 SP1, 2010 SP1) |
+| Calibration | The board's last external calibration and self-calibration were both on 2015-07-16, and NI recommended the next external one for 2016-07-16. R1 and R2 in step 3 will show whether it still meets the 1 % slope check |
+
+**9.7.0 does know this board.** Its driver file `nixswv.inf` (in
+`Products\NI-DAQmx_Core\MIO\nimioi64.cab`, dated 2013-02-08) lists
+`USB\VID_3923&PID_72E0` as *USB-6221 (OEM)*.
 
 ### Step 1. Install what's missing, in this order (manual p. 40)
 
-Keep the EZstat's USB cable unplugged from the PC until step 2.
+Keep the EZstat's USB cable unplugged from the PC until step 2. If it's already
+plugged in, and Device Manager shows the board with code 28 ("the drivers for
+this device are not installed"), leave it: install, restart, and Windows finds
+the board's new driver as it starts up. That's what happened on the lab PC on
+2026-10-22. The manual's order only matters so that Windows finds the driver
+the first time it sees the board; a restart gives it another look. A restart
+also disables the cell (§5).
 
 1. Run `LVRTE2011SP1std.exe` with the default options. Restart.
 2. Unzip the NI-DAQmx zip and run `setup.exe` inside it, with the default
    options. Restart.
 3. Run `Ins EZware-2013 v.7.1.16.1025.exe`. No restart needed.
+
+#### Installing from des4, with nobody at the PC
+
+The PC is offline, so des4 does the downloading. This is how NI-DAQmx 9.7.0
+went onto the lab PC on 2026-10-22, and works for any installer in §3.
+
+1. **On des4:** download at a capped rate, since des4 is on Wi-Fi, check the
+   hash against §3, unzip into a new folder, and write a manifest of every file:
+   ```bash
+   mkdir -p ~/ezrdp/nidaqmx970/share && cd ~/ezrdp/nidaqmx970
+   curl -fL --limit-rate 4M -C - -O https://download.ni.com/support/softlib/multifunction_daq/nidaqmx/9.7.0/NIDAQ970f0.zip
+   sha256sum NIDAQ970f0.zip      # 2bbf32fd...f854f084f
+   mkdir share/NIDAQ970f0 && (cd share/NIDAQ970f0 && unzip -q ../../NIDAQ970f0.zip)
+   (cd share/NIDAQ970f0 && find . -type f -print0 | sort -z | xargs -0 sha256sum | sed 's#  \./#  #') > share/NIDAQ970f0.sha256
+   ```
+   At 4 MB/s the 1.67 GB took 6 min 38 s. Put
+   [`windows/stage-from-des4.ps1`](windows/stage-from-des4.ps1) and
+   [`windows/install-nidaqmx.ps1`](windows/install-nidaqmx.ps1) in `share/`
+   with Windows line endings (`sed 's/$/\r/'`).
+2. **Log in** with `RDP_SHARE` set to that `share` folder
+   ([above](#driving-the-pc-from-a-claude-session)), and check nobody else is
+   on the PC.
+3. **Copy and check:** Win+R,
+   `cmd /c powershell -NoProfile -ExecutionPolicy Bypass -File \\tsclient\ez\stage-from-des4.ps1 > \\tsclient\ez\stage.out 2>&1`.
+   It copies the folder to `Downloads\ezstat-software\` and checks every file's
+   SHA-256: 1,241 files in 66 s, then about 2 min to hash them.
+4. **Install:** the same with `install-nidaqmx.ps1`. Windows asks for admin
+   approval: check that the prompt names *National Instruments Installer*,
+   verified publisher *National Instruments Corporation*, then press Alt+Y. It
+   runs NI's `setup.exe /qb /AcceptLicenses yes /r:n`: default features, a
+   progress bar and no questions. Those are the switches the installer's own
+   help text documents. It doesn't mention `/log` or `/disableNotificationCheck`,
+   so they weren't used. It took 23.5 min, including 6 min with the bar
+   stopped at 65% and the PC nearly idle, probably waiting out a network
+   timeout, since the PC has no internet.
+   PowerShell 2.0's `Start-Process -Verb RunAs` returns no exit code, so the
+   script reports the version in the registry instead.
+5. **Check nobody else is on the PC, then restart** from the session:
+   `cmd /c shutdown /r /t 10`. It needs no admin approval. This ends the
+   Remote Desktop session too. The lab PC was back on port 3389 2.5 min later.
+   Log in again and rerun the [PC check](windows/check-ezstat-pc.ps1).
+
+des4 keeps the checked zip in `~/ezrdp/nidaqmx970/`; the unzipped copy there was
+deleted afterwards. The PC keeps its copy in `Downloads\ezstat-software\NIDAQ970f0`.
 
 ### Step 2. Plug in the EZstat: now, and not before
 

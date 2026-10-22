@@ -12,7 +12,7 @@ Checked on 2026-10-22 for [#231](https://github.com/vertical-cloud-lab/byu-vcl/i
 
 - **Why:** NI-DAQmx, the driver for the NI USB-6221 board inside the EZstat, isn't installed.
 - **What happens:** LabVIEW's loader asks for `nilvaiu.dll`, NI-DAQmx's LabVIEW interface (§1). If you skip it, the main window opens but is a dead shell.
-- **The fix:** install NI-DAQmx 9.7 at the bench. That's step 1 of [PR #291's runbook](https://github.com/vertical-cloud-lab/byu-vcl/blob/20af078/potentiostat/ezstat-pro/README.md), and [its latest comment](https://github.com/vertical-cloud-lab/byu-vcl/pull/291) gives the exact steps.
+- **The fix:** install NI-DAQmx 9.7. **Done on 2026-10-22, 02:19–02:42 UTC**, after this map was made: a Claude session installed it from des4 and restarted the PC ([runbook](README.md#installing-from-des4-with-nobody-at-the-pc)). §1 and §2 describe the PC before that, and EZware hasn't been opened since.
 
 What *is* accessible:
 
@@ -320,7 +320,7 @@ The driver (`EZstat_2013.12.04.LV10.0.zip`, LabVIEW 2010) still has its block di
 
 ## 6. Next steps
 
-1. **Install NI-DAQmx 9.7 at the bench.** Follow [#291's step 1](https://github.com/vertical-cloud-lab/byu-vcl/blob/20af078/potentiostat/ezstat-pro/README.md): unplug the EZstat's USB, run the installer as administrator, restart, then plug the EZstat back in.
+1. ~~**Install NI-DAQmx 9.7 at the bench.**~~ Done remotely from des4 on 2026-10-22, with the EZstat left plugged in and a restart in place of unplugging it ([runbook](README.md#installing-from-des4-with-nobody-at-the-pc)).
 2. **Then comment `@claude`** to rerun this mapping live. With EZware running, a session can:
    - open each Technique submenu
    - screenshot every recipe editor and General Method Settings
