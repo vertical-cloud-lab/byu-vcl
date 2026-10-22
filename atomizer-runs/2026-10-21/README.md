@@ -29,7 +29,7 @@ narration, with wall-clock times, is in [`transcript.md`](transcript.md).
     good"* ([5:38](https://youtu.be/p6Itg-ngMZA?t=338), 13:39:46). So the Oct 20 leak fix held.
   - O2 read 11–14 ppm after the first 500 °C wash and 13–15 ppm through the melt, with 15 ppm
     at the pour ([28:11](https://youtu.be/p6Itg-ngMZA?t=1691)). An extra wash briefly raised it
-    to 25. That is the lowest of any run so far (Oct 6: 19 rising to 140; Oct 8: 25–26).
+    to 25. That is the lowest of any recorded run so far (Oct 6: 19 rising to 140; Oct 8: 25–26).
   - The melt followed the SOP: setpoint 1000 °C at 13:56:45; *"It's starting to sink. I'm going
     to bring this down to 800 degrees"* at 13:59:07; 810–812 °C held for about 2 min.
 - **The pour is where it went wrong, and the camera didn't see it.**
@@ -55,8 +55,11 @@ narration, with wall-clock times, is in [`transcript.md`](transcript.md).
 - **This is the fourth pour in a row lost where the melt meets the plate.** Oct 2: too far and
   too fast. Oct 6: on the upper sonotrode. Oct 8: dripped off a carbon-fibre plate at low
   amplitude. Oct 21: Gage says the plate was in the wrong place until corrected.
-  - Oct 21 was the combination Bartosz recommended after Oct 8: a Mo plate, the 1.5:1 booster
-    and the slow 0.19 bar drip. So the combination isn't ruled out.
+  - Oct 21 was the combination the Oct 8 debrief pointed to: a Mo plate, the 1.5:1 booster and
+    the slow 0.19 bar drip. Bartosz had said the 1.5:1 booster doesn't work with a CF plate, and
+    that slow, steady drips are ideal. Ronnie expected the same drip onto Mo *"would've probably
+    been perfect"* ([#261](https://github.com/vertical-cloud-lab/byu-vcl/issues/261#issuecomment-6088484430)).
+    So the combination isn't ruled out.
   - The one thing nobody set was where the melt lands. The stack had been rebuilt on Oct 20, and
     the height was judged by eye: *"We really need a laser pointer … I'm thinking though, we're
     gonna be okay today, I think that's a good height"* ([1:35](https://youtu.be/p6Itg-ngMZA?t=95)).
@@ -108,9 +111,9 @@ Review sheets put a phone frame every 40 s beside the stream frame of the same i
   good"*, then vacuum to −100 mbar ([3:24–7:26](https://youtu.be/p6Itg-ngMZA?t=204)).
 
 **Heated washes (13:44–13:57).**
-- The furnace reads about 380 °C at 13:44 and 500 °C by 13:50 (generator display; *"500 degrees
-  Celsius right now"*, [17:14](https://youtu.be/p6Itg-ngMZA?t=1034)). A separate 250 °C wash is
-  not said and not legible.
+- The generator is heating by 13:44 (its temperature digits are in glare) and the furnace is at
+  500 °C by 13:50: *"500 degrees Celsius right now"* ([17:14](https://youtu.be/p6Itg-ngMZA?t=1034)).
+  A separate 250 °C wash is not said and not legible.
 - O2, read on the HMI or said aloud:
 
   | MDT | Chamber | Furnace | O2 | Source |
@@ -118,7 +121,7 @@ Review sheets put a phone frame every 40 s beside the stream frame of the same i
   | 13:52:08 | −1 mbar (refilling) | 500 °C | 32 ppm | HMI ([18:00](https://youtu.be/p6Itg-ngMZA?t=1080)); a reading during backfill, not under gas |
   | 13:52:23 | 150 mbar | 500 °C | 14 ppm | said, [18:15](https://youtu.be/p6Itg-ngMZA?t=1095) |
   | 13:53:54 | 147 mbar | 500 °C | 11 ppm | HMI ([19:46](https://youtu.be/p6Itg-ngMZA?t=1186)) |
-  | 13:56:08 | 145 mbar | 500 °C | 25 ppm | HMI ([22:00](https://youtu.be/p6Itg-ngMZA?t=1320)), after an extra furnace and chamber wash |
+  | 13:56:08 | 145 mbar | 500 °C | 25 ppm | HMI ([22:00](https://youtu.be/p6Itg-ngMZA?t=1320)), after the extra wash (*"a whole new cycle"*) |
   | 13:59:22 | | 810 °C | 13 ppm | said, [25:14](https://youtu.be/p6Itg-ngMZA?t=1514) |
   | 14:01:03 | | 812 °C | 14 ppm | said, [26:55](https://youtu.be/p6Itg-ngMZA?t=1615) |
   | 14:02:19 | 150 mbar | 811 °C | 15 ppm | said, [28:11](https://youtu.be/p6Itg-ngMZA?t=1691), at the pour |
@@ -127,8 +130,8 @@ Review sheets put a phone frame every 40 s beside the stream frame of the same i
   help us"* ([22:15](https://youtu.be/p6Itg-ngMZA?t=1335)). This matches the SOP: a fourth wash
   only if O2 is still high.
 - The argon line: *"It's 116 PSI"* ([19:50](https://youtu.be/p6Itg-ngMZA?t=1190)), said at the
-  cylinder. That is 8.0 bar, the SOP's regulator setting, and the first time it has been stated
-  on camera. The cylinder pressure itself is not read out.
+  cylinder. That is 8.0 bar, the SOP's regulator setting, which the Oct 20 record could not read
+  off the gauge. The cylinder pressure itself is not read out.
 
 **Melt (13:56–14:02).**
 - Setpoint 1000 °C at 13:56:45 (the generator reads 499 °C at
@@ -191,9 +194,9 @@ prepared the atomizer for tomorrow's run"*.
 | 13:35:43–13:36:06 | [1:35](https://youtu.be/p6Itg-ngMZA?t=95) | *"We really need a laser pointer … I think that's a good height"* |
 | 13:36:10–13:37:05 | [2:02](https://youtu.be/p6Itg-ngMZA?t=122) | Power on, SOP on the phone, HMI login, *"I'm going to do a test"* |
 | 13:37:32–13:41:34 | [3:24](https://youtu.be/p6Itg-ngMZA?t=204) | Cold wash; *"holding pressure"*; vacuum to −100 mbar |
-| 13:44:08 | [10:00](https://youtu.be/p6Itg-ngMZA?t=600) | Furnace about 380 °C, heating |
+| 13:44:08 | [10:00](https://youtu.be/p6Itg-ngMZA?t=600) | Generator heating (temperature in glare) |
 | 13:50:25–13:56:15 | [16:17](https://youtu.be/p6Itg-ngMZA?t=977) · stream | Visitor; Gage explains the washes; second person on the stream 13:51–13:56 |
-| 13:52:08–13:53:54 | [18:00](https://youtu.be/p6Itg-ngMZA?t=1080) | 500 °C wash: 32 ppm while refilling, then 14 and 11 ppm; extra wash started 13:52:36 |
+| 13:52:08–13:53:54 | [18:00](https://youtu.be/p6Itg-ngMZA?t=1080) | 500 °C wash: 32 ppm while refilling, then 14 ppm; an extra furnace wash from 13:52:36; 11 ppm at 13:53:54 |
 | 13:56:08–13:56:39 | [22:00](https://youtu.be/p6Itg-ngMZA?t=1320) | 25 ppm after it; *"one more cycle didn't really help us"* |
 | 13:56:45 | [22:37](https://youtu.be/p6Itg-ngMZA?t=1357) | Setpoint 1000 °C |
 | 13:59:07 | [24:59](https://youtu.be/p6Itg-ngMZA?t=1499) | *"Starting to sink"*; setpoint 800 °C |
@@ -290,8 +293,8 @@ what the training says.
   ([T5 28:46](https://www.youtube.com/embed/58wJ_Khwgyk?start=1726),
   [T5 60:27](https://www.youtube.com/embed/58wJ_Khwgyk?start=3627)). That last step is meant as a
   trim, not a search.
-- **Not the configuration.** Mo plate, 1.5:1 booster and a slow 0.19 bar drip is what Bartosz
-  said *"would've probably been perfect"* after Oct 8. O2 was the best yet. The melt temperature
+- **Not the configuration.** Mo plate, 1.5:1 booster and a slow 0.19 bar drip is the set-up the
+  Oct 8 debrief expected to work. O2 was the best yet. The melt temperature
   is 10–30 °C above his 780–800 °C. Amplitude 100 is above his ~90, which suits the
   amplitude-starved reverse booster.
 - **The small charge left no margin.** At about 1 g/s, 169 g is under 3 minutes of pour. The
