@@ -239,6 +239,9 @@ the installer didn't object to them, and kept them.
 | NI MAX | **NI USB-6221 (OEM) "Dev1"**, serial 01A801CD, status Present ([screenshot](images/2026-10-22-nimax-usb-6221-dev1.png)). EZware's Tools → Configure should offer `Dev1` |
 | Everything else | Nothing removed: the report has only additions. EZware, Run-Time 2011 SP1 and NI MAX 5.5.1 are as they were. The installer also added the older LabVIEW Run-Times it bundles (8.2.1, 2009 SP1, 2010 SP1) |
 | Calibration | The board's last external calibration and self-calibration were both on 2015-07-16, and NI recommended the next external one for 2016-07-16. R1 and R2 in step 3 will show whether it still meets the 1 % slope check |
+| The restart | Windows last started at 02:44:42 UTC, two minutes after setup finished, and nothing is waiting for another restart ([check](nidaqmx-check-2026-10-22.md)) |
+| NI-DAQmx's own list | Its C library lists **Dev1: USB-6221 (OEM)**, serial 0x1A801CD (the same number as in the USB device ID), not simulated. `nilvaiu.dll`, the file EZware couldn't find, is there, 32- and 64-bit |
+| EZware | **Starts properly** (03:00 UTC). The `nilvaiu.dll` prompt is gone. It shows its version in the title, its own menus and all three windows ([screenshot](images/2026-10-22-ezware-starts.png)). It says no instrument is selected yet, which is step 2.6. Closed with File → Exit, without configuring or running anything |
 
 **9.7.0 does know this board.** Its driver file `nixswv.inf` (in
 `Products\NI-DAQmx_Core\MIO\nimioi64.cab`, dated 2013-02-08) lists
@@ -298,7 +301,11 @@ went onto the lab PC on 2026-10-22, and works for any installer in §3.
 5. **Check nobody else is on the PC, then restart** from the session:
    `cmd /c shutdown /r /t 10`. It needs no admin approval. This ends the
    Remote Desktop session too. The lab PC was back on port 3389 2.5 min later.
-   Log in again and rerun the [PC check](windows/check-ezstat-pc.ps1).
+   Log in again and rerun the [PC check](windows/check-ezstat-pc.ps1). For a
+   closer look at the driver, run [`windows/check-nidaqmx.ps1`](windows/check-nidaqmx.ps1)
+   the same way. It reports when Windows last started, whether it's still
+   waiting for a restart, NI-DAQmx's DLLs, and the devices NI-DAQmx lists,
+   through property reads only.
 
 des4 keeps the checked zip in `~/ezrdp/nidaqmx970/`; the unzipped copy there was
 deleted afterwards. The PC keeps its copy in `Downloads\ezstat-software\NIDAQ970f0`.

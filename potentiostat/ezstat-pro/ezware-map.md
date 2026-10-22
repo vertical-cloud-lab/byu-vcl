@@ -8,11 +8,14 @@ Checked on 2026-10-22 for [#231](https://github.com/vertical-cloud-lab/byu-vcl/i
 
 ## Short answer
 
-**EZware can't run on this PC yet, so nothing in it is usable today.**
+**When this map was made, EZware couldn't run on this PC, so nothing in it was usable. Since NI-DAQmx went in, it starts properly.**
 
-- **Why:** NI-DAQmx, the driver for the NI USB-6221 board inside the EZstat, isn't installed.
-- **What happens:** LabVIEW's loader asks for `nilvaiu.dll`, NI-DAQmx's LabVIEW interface (§1). If you skip it, the main window opens but is a dead shell.
-- **The fix:** install NI-DAQmx 9.7. **Done on 2026-10-22, 02:19–02:42 UTC**, after this map was made: a Claude session installed it from des4 and restarted the PC ([runbook](README.md#installing-from-des4-with-nobody-at-the-pc)). §1 and §2 describe the PC before that, and EZware hasn't been opened since.
+- **Why:** NI-DAQmx, the driver for the NI USB-6221 board inside the EZstat, wasn't installed.
+- **What happened:** LabVIEW's loader asked for `nilvaiu.dll`, NI-DAQmx's LabVIEW interface (§1). If you skip it, the main window opens but is a dead shell.
+- **The fix:** install NI-DAQmx 9.7. **Done on 2026-10-22, 02:19–02:42 UTC**, after this map was made: a Claude session installed it from des4 and restarted the PC ([runbook](README.md#installing-from-des4-with-nobody-at-the-pc)). §1 and §2 describe the PC before that.
+- **Since then (03:00 UTC):** EZware starts with no `nilvaiu.dll` prompt. It shows its version in the title, its own menus, a working Run arrow, and all three windows. It says no instrument is selected yet, which is Tools → Configure (runbook step 2). It was closed with File → Exit, without configuring or running anything.
+
+  ![EZware 7.1.16.1025 starting normally, 2026-10-22](images/2026-10-22-ezware-starts.png)
 
 What *is* accessible:
 
