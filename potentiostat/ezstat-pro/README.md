@@ -125,6 +125,14 @@ scripts/ezstat-pc-rdp/drive.sh stop
 - **Mind what's under a dialog.** Help → Instrument Info's OK button sits over
   the main window's Potentiostat button, which switches modes. Click OK once,
   or press Enter.
+- **Click a window's title bar before its fields.** In an inactive EZware
+  window, the first click only activates it, and the keys after it go to
+  whatever has focus. On 2026-10-22 that was the editor's **?** button: Enter
+  pressed it, and its Help Tip window then blocked the editor until it was
+  closed with its X, pressed and released slowly.
+- **To set a number,** click in the field, then End, Shift+Home, type, Tab.
+  Screenshot the editor afterwards: a field that didn't take still shows its
+  old value.
 
 ### What des4's cameras see of the EZstat (2026-10-22)
 
@@ -452,7 +460,15 @@ run log, since the check is against that value rather than the label. Note the
 meter's model too: a handheld meter's own resistance accuracy is often 0.2–1 %,
 not far off the 1 % pass band.
 
-On 2026-10-22 the bench had a 10 kΩ but no 1 kΩ, so **R2 goes first.** Its
+The bench meter is a **Neoteck NT8233D Pro** (2000 counts). Listings give
+±(0.8 % + 2 digits) on its 200 Ω–200 kΩ ranges: ±100 Ω at 10.00 kΩ, ±10 Ω
+at 1.000 kΩ, so **±1.0 %, as wide as the pass band.** Against it, the 1 %
+check can't resolve an EZstat error from a meter error. Give the checker
+`--meter-pct 1.0` and it also reports whether the fit is within 1 % plus the
+meter's error. For a decisive check, use 0.1 % resistors, or measure on a bench
+meter of 0.05 % or better.
+
+On 2026-10-22 the bench had a 10 kΩ but no 1 kΩ, so **R2 went first.** Its
 resistor measured 10.00 kΩ.
 
 | Run | Load and wiring | Recipe | Passes if |
@@ -474,12 +490,43 @@ resistor measured 10.00 kΩ.
 - Write down any field EZware shows that isn't listed here, such as a sampling
   interval for the CV, and keep its default.
 
+**In EZware 7.1 (2026-10-22):**
+
+- **The CV editor has no sampling field.** EZware sampled every 40 ms (2 mV at
+  50 mV/s) and didn't record the pretreatment.
+- **General Method Settings starts with auto-range on all four ranges.** In
+  *Potentiostat Current Auto Range*, all four boxes (1A, 10mA, 100uA, 1uA) were
+  ticked. For a fixed range, pick it in *Potentiostat Default Current Range*
+  and untick the other three boxes.
+- **Start asks for the `.nuvdt` file first.** The run begins after you name
+  it. It goes in `Documents\EZware_user_Files`, under a date-and-time name by
+  default, and is written when the run ends.
+
+**Result, R2, 2026-10-22** (a Claude session over Remote Desktop, 21:37 UTC;
+[files and analysis](results/20261022_dummy-loads/README.md)):
+
+| Check | Result |
+|---|---|
+| Wiring, cell off | −0.06 to −0.16 mV, down from 10.65 V with nothing connected |
+| Line, offset, both cycles | Straight (R² 0.999997). −49.6 / +49.4 µA at −0.5 / +0.5 V. Offset −0.24 µA. Cycles 10,108.0 and 10,107.9 Ω |
+| Slope | **10,108 Ω, +1.08 %** from the meter's 10.00 kΩ. **Fails the 1 % check by 0.08 points**, but is within 1 % plus the meter's ±1.0 %. Fitting against the potential EZware applied, not the one it measured, gives 10,093 Ω, so the gap lies between the EZstat's current reading and the meter |
+| ±50 mV range | Below about 50 mV the potential input switches to its ±50 mV range, which reads 0.94 % low against the setpoint and the ±10 V range. It shows as steps in the residuals at ±50 mV |
+
+![R2 in EZware: during the run and after it](images/2026-10-22-r2-main-window.png)
+
+![R2's recipe in EZware: the CV editor and General Method Settings](images/2026-10-22-r2-recipe.png)
+
 ### Step 4. Save every run and add it here
 
 1. **File → Save** as `<run_id>.nuvdt`. That's EZware's own format, and it keeps
    the recipe (manual p. 79).
 2. **Tools → File Export → Data Configuration**: tick time, potential and current,
    plus anything else offered. Then **File → Export as** `<run_id>.csv`.
+   Both are in the [Display Cell Data] window. In 7.1 the dialog offers five
+   columns and ticks only Voltage and Current, so tick the three time columns
+   too. Export as opens in EZware's program folder, so give a full path. A
+   remote session can type `\\tsclient\ez\<run_id>.csv` to write straight into
+   des4's share.
 3. Fill in a row of [`run-log.csv`](run-log.csv). Use run IDs like
    `20261021-R1`.
 4. Put the files in `results/<YYYYMMDD>_<short-name>/` on this PR's branch
@@ -493,9 +540,10 @@ resistor measured 10.00 kΩ.
    python analysis/check_dummy_runs.py R3 results/20261021_dummy-loads/20261021-R3.csv
    ```
    It finds the time, potential and current columns by name, reads units such
-   as "(mA)" from the header, and writes a `.check.png` plot and a
-   `.check.json` summary next to each CSV. It was tested on made-up data, since
-   no EZware export exists yet; if the real column names trip it up, it has
+   as "(mA)" or "[V]" from the header, and writes a `.check.png` plot and a
+   `.check.json` summary next to each CSV. Since 2026-10-22 it reads EZware
+   7.1's export as it comes. The first real export broke it, because its two
+   text time columns weren't numbers. If a future export trips it up, it has
    options to name the columns.
 
 ## 5. Safety (manual pp. 26–37)

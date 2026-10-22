@@ -264,6 +264,8 @@ From the program's strings (offline):
   ```
 
   The Data Configuration dialog picks which of them go out (p. 80).
+
+  **What a CV export actually holds (R2, 2026-10-22):** the dialog, titled *Configure Exported Data*, offered five columns: Absolute Time, Relative Time [HH:MM:SS], Relative Time [s], Voltage and Current. Only the last two were ticked. With all five ticked, the header was `"Absolute Time", "Relative Time HH:MM:SS", "Relative Time [s]", "Cell Potential[V]", "Cell Current[A]"`, with fields separated by `", "`. The first two columns are text, for example `3:37:24.160 PM 10/22/2026`. It also has *Sign Change* boxes for voltage and current, both off ([R2's files](results/20261022_dummy-loads/README.md)).
 - **Custom ASCII** reads its waveform from `*.csv` or `*.txt`.
 - **Settings are XML:** `EZstat_general_conf.xml`, `SNGL.mthd.cfg.xml`, and per-instrument `<n>_general_conf.xml` / `<n>_mthd_cfg.xml`.
   - They live in `Instr_config` and `Instr_InUse` folders under `NuVant/EZware`, below a Windows system folder whose type the stripped program doesn't reveal.

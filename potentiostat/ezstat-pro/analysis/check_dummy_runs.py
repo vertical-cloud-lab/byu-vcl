@@ -16,6 +16,7 @@ e.g. "Current (mA)". Override with --t-col/--v-col/--i-col (0-based index or
 exact header text) and --i-unit if the guess is wrong.
 
     python check_dummy_runs.py R1 ../results/20261021_dummy-loads/20261021-R1.csv --r-ohm 998.7
+    python check_dummy_runs.py R2 ../results/20261022_dummy-loads/20261022-R2.csv --r-ohm 10000 --meter-pct 1.0
     python check_dummy_runs.py R3 ../results/20261021_dummy-loads/20261021-R3.csv
 
 Writes <csv>.check.png and <csv>.check.json next to the CSV and prints a summary.
@@ -46,21 +47,32 @@ def _is_number(s):
         return False
 
 
+def _n_numbers(cells):
+    return sum(_is_number(c.strip()) for c in cells if c.strip())
+
+
 def read_table(path):
-    """Return (header, rows) from the first row followed by numeric rows."""
+    """Return (header, rows) from the first row followed by numeric rows.
+
+    A data row needs two numeric cells, not all: EZware's export writes its
+    "Absolute Time" and "Relative Time HH:MM:SS" columns as text, such as
+    "3:37:24.160 PM 10/22/2026". Text cells become NaN.
+    """
     text = Path(path).read_text(encoding="utf-8-sig", errors="replace")
     dialect = csv.excel_tab if text.count("\t") > text.count(",") else csv.excel
-    lines = [r for r in csv.reader(text.splitlines(), dialect) if any(c.strip() for c in r)]
+    # EZware writes ", " between fields, so skip the space before each quote.
+    lines = [r for r in csv.reader(text.splitlines(), dialect, skipinitialspace=True)
+             if any(c.strip() for c in r)]
     for k in range(len(lines) - 2):
         head = [c.strip() for c in lines[k]]
         nxt = lines[k + 1:k + 3]
         if (sum(not _is_number(c) for c in head if c) >= 2
-                and all(len(r) >= 2 and all(_is_number(c) for c in r if c.strip()) for r in nxt)):
+                and all(len(r) >= 2 and _n_numbers(r) >= 2 for r in nxt)):
             rows = []
             for r in lines[k + 1:]:
                 cells = [c.strip() for c in r]
-                if cells and all(_is_number(c) for c in cells if c):
-                    rows.append([float(c) if c else np.nan for c in cells])
+                if _n_numbers(cells) >= 2:
+                    rows.append([float(c) if _is_number(c) else np.nan for c in cells])
             width = max(len(r) for r in rows)
             data = np.full((len(rows), width), np.nan)
             for i, r in enumerate(rows):
@@ -107,18 +119,21 @@ def load(path, args, need_time):
     out = {"header": header, "V": data[:, iv] * v_scale, "I": data[:, ii] * i_scale,
            "columns": {"V": header[iv], "I": header[ii]}, "units": {"V": v_unit, "I": i_unit}}
     if need_time:
-        it = find_column(header, args.t_col, [r"time", r"^t\b"], "t")
+        # EZware: "Relative Time [s]", not "Absolute Time" (text, NaN here).
+        it = find_column(header, args.t_col, [r"time\s*[\(\[]\s*m?s\s*[\)\]]", r"time", r"^t\b"], "t")
         t_scale, t_unit = unit_of(header[it], "s")
         out["t"] = data[:, it] * (t_scale or 1.0)
         out["columns"]["t"], out["units"]["t"] = header[it], t_unit
     ok = np.isfinite(out["V"]) & np.isfinite(out["I"])
+    if need_time:
+        ok &= np.isfinite(out["t"])
     for k in ("V", "I", "t"):
         if k in out:
             out[k] = out[k][ok]
     return out
 
 
-def check_resistor(d, r_ohm, tol):
+def check_resistor(d, r_ohm, tol, meter_pct=None):
     V, I = d["V"], d["I"]
     A = np.column_stack([V, np.ones_like(V)])
     (g, i0), *_ = np.linalg.lstsq(A, I, rcond=None)
@@ -132,6 +147,10 @@ def check_resistor(d, r_ohm, tol):
         res["R_meter_ohm"] = r_ohm
         res["deviation_pct"] = 100 * (r_fit - r_ohm) / r_ohm
         res["pass"] = bool(abs(res["deviation_pct"]) <= tol)
+        if meter_pct is not None:
+            # The meter's own error widens what the comparison can resolve.
+            res["meter_accuracy_pct"] = meter_pct
+            res["pass_within_meter_accuracy"] = bool(abs(res["deviation_pct"]) <= tol + meter_pct)
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(6, 6), sharex=True,
                                    gridspec_kw={"height_ratios": [3, 1]})
     ax1.plot(V, I * 1e3, ".", ms=2, label="data")
@@ -237,6 +256,9 @@ def main():
     p.add_argument("run", choices=["R1", "R2", "R3"])
     p.add_argument("csv")
     p.add_argument("--r-ohm", type=float, help="multimeter reading of the resistor (R1, R2)")
+    p.add_argument("--meter-pct", type=float,
+                   help="the meter's accuracy at that reading, in percent (R1, R2): also reports"
+                        " whether the fit is within tolerance plus this")
     p.add_argument("--rs", type=float, default=1000.0, help="R3 series resistor, ohm")
     p.add_argument("--rct", type=float, default=10000.0, help="R3 parallel resistor, ohm")
     p.add_argument("--cdl", type=float, default=1e-6, help="R3 capacitor, F")
@@ -252,7 +274,8 @@ def main():
         res, fig = check_sis(d, {"Rs": args.rs, "Rct": args.rct, "Cdl": args.cdl},
                              args.tol if args.tol is not None else 5.0)
     else:
-        res, fig = check_resistor(d, args.r_ohm, args.tol if args.tol is not None else 1.0)
+        res, fig = check_resistor(d, args.r_ohm, args.tol if args.tol is not None else 1.0,
+                                  args.meter_pct)
     res = {"run": args.run, "csv": str(args.csv), "columns": d["columns"], "units": d["units"], **res}
     fig.suptitle(f"{Path(args.csv).name}: {args.run}")
     fig.tight_layout()
