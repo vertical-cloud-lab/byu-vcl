@@ -12,7 +12,7 @@ Checked on 2026-10-22 for [#231](https://github.com/vertical-cloud-lab/byu-vcl/i
 
 - **Why:** NI-DAQmx, the driver for the NI USB-6221 board inside the EZstat, isn't installed.
 - **What happens:** LabVIEW's loader asks for `nilvaiu.dll`, NI-DAQmx's LabVIEW interface (§1). If you skip it, the main window opens but is a dead shell.
-- **The fix:** install NI-DAQmx 9.7 at the bench. That's step 2 of [PR #291's runbook](https://github.com/vertical-cloud-lab/byu-vcl/blob/20af078/potentiostat/ezstat-pro/README.md).
+- **The fix:** install NI-DAQmx 9.7 at the bench. That's step 1 of [PR #291's runbook](https://github.com/vertical-cloud-lab/byu-vcl/blob/20af078/potentiostat/ezstat-pro/README.md), and [its latest comment](https://github.com/vertical-cloud-lab/byu-vcl/pull/291) gives the exact steps.
 
 What *is* accessible:
 
@@ -35,7 +35,7 @@ Double-clicking the desktop's **EZware-2013** shortcut:
 
    ![](images/ezware-2026-10-22/01-nilvaiu-prompt.png)
 
-2. **Load errors follow, one per missing piece.** They name `DevNamesToTextT.vi` (part of NI-DAQmx), and then EZware's own `ActiveDevicesCurrentlyUsedByEZware.vi`, `GetActiveDevices.vi` and `DataCollection_EZware.vi`. The last one reads:
+2. **Load errors follow, one per VI that calls NI-DAQmx.** They name four of EZware's own VIs: `DevNamesToTextT.vi` and `GetActiveDevices.vi` from NuVant's EZstat driver library, then `ActiveDevicesCurrentlyUsedByEZware.vi` and `DataCollection_EZware.vi`. The last dialog reads:
 
    > Missing external function nilvaiu.\*:get632:C in VI EZstat Basic-8_channelName.vi.
    > Missing subVI DataCollection_EZware.vi in VI Main.vi.
@@ -92,10 +92,10 @@ Double-clicking the desktop's **EZware-2013** shortcut:
 | [Method General Configuration], `MethodGeneralConfiguration.vi` | Edit Single Method → Method → General Method Settings | Electrode area, default current range and auto-range set, thermocouple and mass-flow use, AUX control | pp. 44–45 |
 | [Configure Instrument], `EZstatConfigureInstrument.vi` | Tools → Configure | Pick the NI device (e.g. *Dev4 – USB-6221 (OEM)*), plus TCC and MFC channel tables | p. 42 |
 | [Model Selection] | After Configure, on older units | Pick the model. Newer units are identified automatically | p. 43 |
-| Recipe editor, `RecipeEditor.vi` and `RecipeLineEdit.vi` | Recipe → Create/Modify | Build a sequence of methods | Not documented |
+| Recipe editor, `RecipeEditor.vi` and `RecipeLineEdit.vi` | Probably Recipe → Create/Modify | Build a sequence of methods | Not documented |
 | [Analyze Data] (Data Analyser) | Display Cell Data → Data → Analyze Selected | Baselines, peak area, Tafel and corrosion fits, step impedance | pp. 81–102 |
 | [Step Impedance Calculator] | Analyze Data → Analysis → Impedance Analysis | Equivalent-circuit values from a step-impedance run | pp. 90–93 |
-| AUX peripherals | Recipe → AUX Ctrl | Temperature controller and mass-flow controller set-up | Not documented |
+| AUX peripherals | Probably Recipe → AUX Ctrl | Temperature controller and mass-flow controller set-up | Not documented |
 | Self-test, `SelfTestUI.vi` | Operate → Self-test Hardware | Hardware self-test with a report | Not documented |
 | Oscilloscope (service) | Not in the menus | A NuVant service view | Not documented |
 
@@ -112,7 +112,7 @@ Double-clicking the desktop's **EZware-2013** shortcut:
 | **Window** | Open windows | — |
 | **Help** | User Manual (Ctrl+H) · Instrument Info · Check for updates · About… | — |
 
-Menu files ship some items disabled, and the program enables them at run time: the whole Data menu, Recipe → Display, Immediate Purge/Stir, Clean Electrode, and File → Save.
+The menu file marks some items as disabled to start with: the whole Data menu, Recipe → Display, Immediate Purge/Stir, Clean Electrode, and File → Save. Presumably the program enables them when they apply.
 
 **Keyboard shortcuts that matter for a remote session:** **Ctrl+E toggles the cell**, Ctrl+R runs the method, and Ctrl+A aborts. Never send Ctrl+E by accident. In particular, don't use Ctrl+A to "select all" in this window.
 
@@ -230,12 +230,12 @@ The window also has:
 
 - **Cell enable is in software only on metal-cased EZstats.** Plastic-cased ones also have a front-panel Cell Enable switch that must be pressed in (p. 30). Check which case this one has.
 - **Exiting EZware disables the cell**, and so do a PC shutdown, a reboot or a power cut. But *"in event of a PC system STOP … the load may remain in an 'ON' but uncontrolled state"* (pp. 26, 30). So turn off sleep and Windows Update before long runs.
-- **The back-panel I/O connector**, on plastic-cased units (p. 36):
+- **The back-panel I/O connector** (p. 36):
   - pin 1: analog out AO1
   - pin 2: analog in AI5
   - pins 3–4: digital lines P1.6 and P1.7
 
-  All four are on the same USB-6221, and EZware controls them. They could carry a trigger to or from the CubXL.
+  These are lines of the USB-6221 itself (*"without the addition of other DAQ cards"*), driven from EZware or LabVIEW. They could carry a trigger to or from the CubXL.
 - **Current ranges disagree between NuVant's documents.**
 
   | Mode | 2013 manual (p. 9) | 2022 spec sheet |
@@ -251,7 +251,7 @@ The window also has:
 - **The Recipe menu**, meaning sequences of methods run with Operate → Run Recipe, and its editor.
 - **Most of the Operate menu:** iR Compensation, Self-test Hardware, Run Options, Ext. Source Ctr., and Cell ON/OFF (Ctrl+E).
 - **The Data menu** and Help → Instrument Info / Check for updates.
-- **Version differences.** The manual's screenshots are of 6.0. 7.1 adds Corrosion Studies to the Technique menu and moves Stripping and Hydrodynamic from greyed out to present. Whether they're enabled depends on the model.
+- **Version differences.** The manual's screenshots are of 6.0. 7.1's menu adds Corrosion Studies. Stripping and Hydrodynamic, greyed out in the 6.0 screenshot, have items in 7.1's template; whether they're enabled depends on the model.
 
 The manual's own instrument check (p. 103) is still the first thing to run once EZware works. It's #291's R1: a 1 kΩ resistor, CV from −0.5 to +0.5 V, giving a straight line through ±0.5 mA.
 
