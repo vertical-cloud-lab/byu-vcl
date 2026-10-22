@@ -128,19 +128,43 @@ scripts/ezstat-pc-rdp/drive.sh stop
 
 ### What des4's cameras see of the EZstat (2026-10-22)
 
-Only a corner, maybe. des4 has two cameras. Camera 0 is the CubXL's overhead
-deck camera, served by `deckcam` on `127.0.0.1:8743` (`/snapshot.jpg` is one
-1280 × 720 frame; while nobody is watching,
-`rpicam-still --camera 0 --width 4608 --height 2592` gives the full sensor).
-Its frame ends at the CubXL's Genmitsu controller. At the bottom-right edge is
-the corner of a beige box, the colour of the EZstat's plastic case (manual
-p. 36), though it could as well be its beige power supply. Camera 1 looks
-along the deck. Neither shows the EZstat's front panel, power light, Cell
-Enable button or leads, so a remote session still can't see whether the leads
-are connected. Aiming camera 0 further towards that corner, or adding a
-camera, would.
+des4 has two cameras. Camera 0 is the CubXL's overhead deck camera, served by
+`deckcam` on `127.0.0.1:8743` (`/snapshot.jpg` is one 1280 × 720 frame; while
+nobody is watching, `rpicam-still --camera 0 --width 4608 --height 2592` gives
+the full sensor). Camera 1 looks along the deck and doesn't show the EZstat.
+
+**At 03:43 UTC, only a corner, maybe.** Camera 0's frame ended at the CubXL's
+Genmitsu controller. At the bottom-right edge was the corner of a beige box,
+the colour of the EZstat's plastic case (manual p. 36).
 
 ![The overhead deck camera at 03:43 UTC; the red box is the beige corner](images/2026-10-22-deckcam-ezstat-corner.jpg)
+
+**At 18:25 UTC, its top and all five leads.** Ben moved the EZstat into
+camera 0's view and laid the leads on top of it, and confirmed their labels:
+the black ones WORKING and WORKING SENSE, red COUNTER, white REFERENCE, green
+GROUND. Each lead ends in a stackable banana plug, with a push-on clip in
+front. They're already paired the way R1–R3 need:
+
+| Clip | Plugs on it |
+|---|---|
+| Black | WORKING SENSE, stacked into the back of WORKING |
+| White | REFERENCE, with COUNTER (red) stacked into its back |
+| Green | GROUND, on its own |
+
+The camera sees only the top, so the front panel (power light, Cell Enable,
+the electrode connector) is still out of view. A small black box with a
+cable gland also sits on top. The reference and working-sense wires seem to
+run into it, so it may be part of the electrode cable; not confirmed.
+
+![Camera 0 at 18:25 UTC, with the leads labelled](images/2026-10-22-deckcam-ezstat-leads.jpg)
+
+**Where it is now covers the CubXL's E-stop.** The EZstat sits on the
+Genmitsu controller. In the 03:43 frame the controller's Resume, Pause and
+Reset buttons and its red E-stop are in plain view. At 18:25 only the Speed
+knob and part of the Resume label show. The manual also asks for nothing on
+top of the EZstat (p. 28); see §5.
+
+![Last night and now, same part of the frame: the E-stop is under the EZstat](images/2026-10-22-deckcam-estop-covered.jpg)
 
 ## 2. Accounts and subscriptions: none needed
 
@@ -378,10 +402,25 @@ set the service back with `sc config wuauserv start= demand` as administrator:
 ### Step 3. First runs, on dummy loads (no chemistry)
 
 **Leads** (manual pp. 31 and 35): counter red, reference white, working black,
-working sense black (the second black one), ground green. Work out which black
-lead is which and label them first. Connect only with the cell disabled, in the
-order ground, reference, counter, working sense, working. Disconnect in the
-reverse order.
+working sense black (the second black one), ground green. On this EZstat each
+lead is labelled with its name (checked at the bench, 2026-10-22). Connect only
+with the cell disabled, in the order ground, reference, counter, working sense,
+working. Disconnect in the reverse order.
+
+For R1–R3, each pair shares one clip: working sense stacked into the back of
+working, and counter into the back of reference. That's how they were left on
+2026-10-22 ([picture](#what-des4s-cameras-see-of-the-ezstat-2026-10-22)). The
+manual asks for both: "If no reference electrode is used, the reference lead
+must be connected to the counter electrode lead" (p. 31), and working sense goes
+with working (p. 103). So the order above becomes the white clip, then the black
+clip. Ground isn't used for a dummy load, so leave the green clip free. Lay the
+load on something that doesn't conduct, with no clip touching another clip or
+anything metal.
+
+**Wiring check, with the cell still off.** With nothing on the leads, EZware
+reads Cell Potential 10.65 V (2026-10-22). With R1's resistor clipped on, it
+should read about 0 V, since no current flows with the cell off. If it still
+reads about 10.65 V, check the clips before going on.
 
 **Parts:** 1 kΩ and 10 kΩ resistors (1 %), a 1 µF film capacitor, a
 multimeter. Measure each resistor with the multimeter and write the value in the
@@ -426,13 +465,19 @@ run log, since the check is against that value rather than the label.
    no EZware export exists yet; if the real column names trip it up, it has
    options to name the columns.
 
-## 5. Safety (manual pp. 26–35)
+## 5. Safety (manual pp. 26–37)
 
 - Never connect or disconnect a lead while the cell is enabled.
 - Don't leave a run unattended. A shutdown, restart or power cut disables the
   cell, but a frozen PC can leave it on and uncontrolled.
-- Plug the power supply into an earthed outlet. Leave 2 in of space behind the
-  EZstat and 3 in at the sides, and put nothing on top of it.
+- Plug the power supply into an earthed outlet, with its cord where someone can
+  pull it out (p. 28). Keep the power supply at least 1 ft from the EZstat
+  (p. 36).
+- Stand the EZstat on a flat, hard surface, with 2 in of space behind and above
+  it, 3 in at the sides, nothing in front of it, and nothing on top of it
+  (pp. 28 and 37). Its fan is at the back.
+- Don't stand it on the CubXL's Genmitsu controller. That covers the gantry's
+  E-stop, as it did on 2026-10-22 ([pictures](#what-des4s-cameras-see-of-the-ezstat-2026-10-22)).
 - Use only the cables that came with it.
 
 ## 6. After the dummy loads
