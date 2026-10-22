@@ -318,7 +318,10 @@ y +54.7) and zoom to about 14 mm. Both slots then fit, at about 100 px across a 
    Follow [Lining it up over the plate](camera/README.md#lining-it-up-over-the-plate-slide-zoom-focus-centre-and-square-lock)
    (2026-10-20): the stream shows a centre cross, a box for the plate's outline at the right zoom
    and a live focus score, and a full-resolution still, taken while it streams, says how many
-   millimetres are left to move.
+   millimetres are left to move. For the rings themselves (which is which, the thumbscrews, and
+   what to check if no setting is sharp) see
+   [Setting the zoom, iris and focus rings](camera/README.md#setting-the-zoom-iris-and-focus-rings)
+   and its [video](renders/lens_rings.mp4) (2026-10-22).
 4. Tape the four tabs down.
 
 At this stage it images **through the window**. The collar keeps room light off the patch

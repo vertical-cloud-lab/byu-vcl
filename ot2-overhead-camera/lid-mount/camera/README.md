@@ -194,13 +194,16 @@ change wait about 20 s before you judge.
    D7, E6 and E7. Within about 5 mm is enough for now. On the lid that puts the lens axis about
    123 mm right of the line through the two left window screws and 231 mm behind the line through
    the two front ones (slot 7 in [README §3](../README.md#3-where-on-the-lid)).
-2. **Zoom in until the plate fills the box.** Loosen the zoom thumbscrew and turn the zoom ring
-   toward **T** until the plate's left and right edges reach the box's sides, at about 27–28 mm.
+2. **Zoom in until the plate fills the box.** First focus at the WIDE end (step 3), then loosen
+   the zoom thumbscrew and push it toward **TELE** a few millimetres at a time, refocusing after
+   each, until the plate's left and right edges reach the box's sides, at about 27–28 mm.
    Tighten the thumbscrew. If the plate runs out of the box on one side as it grows, slide the
-   mount a little that way. The picture goes soft: this lens is varifocal, so zoom moves focus.
-3. **Focus.** Open the iris fully (toward 1.4) to make the sharpest point easy to find. Turn the
-   focus ring about 1/16 of a turn, wait, read the score; keep going while it rises, and when it
-   falls go back to the best. Tighten the focus thumbscrew. Then close the iris to about **f/8**:
+   mount a little that way. Each zoom move makes the picture go soft: this lens is varifocal, so
+   zoom moves focus ([how to set the rings](#setting-the-zoom-iris-and-focus-rings)).
+3. **Focus.** Set the iris about halfway (about f/4). Fully open, the sharp zone is so thin that a
+   stream running 5–20 s behind skips past it (this replaces "open the iris fully", 2026-10-22).
+   Nudge the focus thumbscrew 1–2 mm, wait about 20 s, read the score; keep going while it rises,
+   and when it falls go back one nudge. Tighten the focus thumbscrew. Then close the iris to about **f/8**:
    the depth of field is then about 24 mm, enough for the wells' rims and the paint 11 mm below them
    to be sharp together. The auto exposure makes up the light.
 4. **Centre and square.** Nudge the mount until the plate sits evenly in the box, with the same
@@ -251,3 +254,47 @@ afterwards; the timer goes with it. A reboot of the Pi before then drops the tim
 lights on. The lights coming on probably also put a one-frame spike of 28 into the overlay's
 "best in 2 min", while the picture stayed the same. A light switching on or off, or a hand in
 view, can do that, so trust a score that holds for a few seconds.
+
+## 2026-10-22, 20:54–21:10 UTC: blurry at every ring setting
+
+![Sharp on 20 Oct; blurred zoomed in and at WIDE on 22 Oct](frames/2026-10-22/blur_2026-10-22.jpg)
+
+While the mount was moved over slot 7 and the rings were turned (20:54–21:10 UTC), stills from
+the stream's camera process stayed far out of focus. A sharp edge was spread over 400–560 px, a
+blur circle of roughly 1.1–1.4 mm on the sensor, and the centre focus score was 2–7, against 34
+when the camera was sharp on 20 Oct. By 21:10 the corners had gone dark, which puts the zoom at
+or near WIDE, and the blur was no smaller. At that end the focus ring moves the image only a few
+tenths of a millimetre, so blur that large points at the lens sitting at the wrong distance from
+the sensor: the lens backed out of its thread (0.8 mm a turn), the C–CS adapter, or the camera's
+own back-focus ring. While the iris was shut (20:59:22–37) the score read 450–778; that is sensor
+noise over a near-black picture, not focus. The numbers, and the score every 3 s, are in
+[`frames/2026-10-22/blur_2026-10-22.json`](frames/2026-10-22/blur_2026-10-22.json).
+
+### Setting the zoom, iris and focus rings
+
+![How to set the zoom, iris and focus rings](../renders/lens_rings.gif)
+
+Video to pause on: [YouTube](https://www.youtube.com/watch?v=n70VlKjrlQc) (unlisted, a chapter per
+step) or [`../renders/lens_rings.mp4`](../renders/lens_rings.mp4); where each step ends:
+[`../renders/lens_rings_sheet.png`](../renders/lens_rings_sheet.png). Made by
+[`../cad/lens_video.py`](../cad/lens_video.py). The picture in it is the 20 Oct still, cropped for
+the zoom and blurred for focus; where focus lands on the ring at each zoom is only an illustration.
+
+From the camera down the rings are **focus** (NEAR / FAR), **iris** (OPEN / CLOSE) and **zoom**
+(TELE / WIDE), the big ribbed ring just above the window. Each thumbscrew rides between the two
+words printed on the barrel, which read upside down because the lens hangs front-down. Loosen a
+thumbscrew about a turn (don't take it out), push it toward the word you want, and retighten it
+finger tight. The stream runs 5–20 s behind the lens, so make one small move, then wait.
+
+1. **Zoom to the WIDE end first.** Focus is easiest to find there, and the camera was sharp there
+   on 20 Oct.
+2. **Iris about halfway** (about f/4), not fully open.
+3. **Focus in small nudges:** 1–2 mm at the thumbscrew, then wait about 20 s. Keep going while the
+   picture and the focus number get better; when they get worse, go back one nudge.
+4. **Zoom in a little, refocus, repeat:** a few millimetres toward TELE, then refocus as in 3, until
+   the plate fills the orange box (about 27–28 mm).
+5. **Iris to about f/8, then tighten all three thumbscrews.**
+6. **Never sharp, even at WIDE?** Then no ring can fix it. Hold the camera board still and try to turn
+   the whole lens body; if it moves, screw it back in until snug. Check that the one C–CS adapter is
+   screwed fully into the camera, and that the camera's own back-focus ring (just above the adapter)
+   is locked by its small screw.
