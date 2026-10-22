@@ -15,7 +15,7 @@
    "step": 1,
    "sequence": true,
    "title": "1  Press the two deck keys into the base",
-   "caption": "Print the base and two deck keys. Each key's triangular nub is a press fit\nin its 2.1 mm pocket under the base, 0.10 mm a side: no glue."
+   "caption": "Print the base and two deck keys. Each key's triangular nub is a press fit\nin its 2.1 mm pocket under the base, 0.05 mm a side: no glue."
   },
   {
    "key": "step02_inserts",

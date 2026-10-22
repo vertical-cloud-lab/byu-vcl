@@ -44,7 +44,7 @@ this guide's dimensions, but where its parts sit is only a suggestion.
 | | Item | Qty | From |
 |---|---|---|---|
 | Printed | Base, vial holder, magnet carrier | 1 each | [`step/`](step) or [`stl/`](stl), see [stage 1](#1-print-the-parts) |
-| Printed | Deck key | 2, plus one each of the two fit-test keys | same, and [`stl/key_fit_test/`](stl/key_fit_test) |
+| Printed | Deck key, the 0.05 mm press fit | 2 | same |
 | Printed | Spacer discs, Ø27 × 1, 2 and 3 mm (for the coupling test) | 1 each | a cylinder in any slicer |
 | Bought | Orion OD4010-12HSS fan | 1 | BOM item 1 |
 | Bought | N52 magnets, 1/4 × 1/16 in | 2, plus 1 spare for checking poles | BOM item 2 |
@@ -109,7 +109,7 @@ print orientation, so a slicer only has to drop them onto the bed.
 | [Base](step/base.step) | 1 | Floor down | The key pockets are in the bed face. Elephant's foot closes them up |
 | [Vial holder](step/vial_holder.step) | 1 | Flange down | The fingers print upright, as in the 9-vial holder. The Ø27 mm recess under the floor is a bridge; print it without supports, since support marks would eat into the 1.1 mm gap |
 | [Magnet carrier](step/magnet_carrier.step) | 1 | Pockets up | 100 % infill. It has to come out flat |
-| [Deck key](step/deck_key.step) | 2 | Nub up | Elephant's foot on the bottom edge makes it bind in the deck slot. The nub is a press fit in the base, 0.10 mm a side. Print one each of [`deck_key_press_0.05`](stl/key_fit_test/deck_key_press_0.05.stl) and [`_0.15`](stl/key_fit_test/deck_key_press_0.15.stl) with them, for the fit test in [stage 2](#2-press-the-deck-keys-into-the-base) |
+| [Deck key](step/deck_key.step) | 2 | Nub up | Elephant's foot on the bottom edge makes it bind in the deck slot. The nub is a press fit in the base, 0.05 mm a side, the best fit of the [2026-10-22 fit test](print/2026-10-22-a1mini-keys/README.md). Each key has one dimple in its top face |
 | Spacer discs | 3 | Flat | Ø27 mm, 1, 2 and 3 mm thick. The cup narrows by 3°, to Ø27.3 mm at 3 mm up, so a Ø27.6 mm disc would stop short of the floor |
 
 Settings, as Cubware gives them for its keyed deck parts: at least 4 walls, 30 % infill
@@ -120,7 +120,7 @@ At 4 walls, the 2 mm of plastic round each insert hole is close to solid.
 These settings on the lab's A1 mini, all five parts on one plate, come to 42 g of PETG
 and about 1 h 41 min. The first try's file and settings are in
 [`print/2026-10-21-a1mini/`](print/2026-10-21-a1mini/README.md). The three fit-test keys
-alone take 24 min and 6 g ([`print/2026-10-22-a1mini-keys/`](print/2026-10-22-a1mini-keys/README.md)).
+alone took 24 min and 6 g ([`print/2026-10-22-a1mini-keys/`](print/2026-10-22-a1mini-keys/README.md)).
 
 **Check the prints before going on:**
 
@@ -141,27 +141,30 @@ alone take 24 min and 6 g ([`print/2026-10-22-a1mini-keys/`](print/2026-10-22-a1
 
 <img src="img/step01_keys.png" width="380">
 
-Each key's nub is 0.10 mm a side bigger than its pocket, so it presses in and needs no glue
-([sizes](README.md#the-key-nub-and-pocket)). A pressed-in triangle can't turn, so the key
-ends up square to the base. Until 2026-10-22 the nub was 0.10 mm smaller than the pocket
-and was glued in with the base on the deck, so that the slots lined the keys up.
+Each key's nub is 0.05 mm a side bigger than its pocket, so it presses in and needs no glue
+([sizes](README.md#the-key-nub-and-pocket)). That is the best fit of three sizes, 0.05, 0.10
+and 0.15 mm, printed in PETG on the lab's A1 mini on 2026-10-22. A pressed-in triangle can't
+turn, so the key ends up square to the base. Until 2026-10-22 the nub was 0.10 mm smaller
+than the pocket and was glued in with the base on the deck, so that the slots lined the keys
+up.
 
-1. **Fit test**, if you printed the 0.05 and 0.15 keys as well. Tell them apart by the
-   dimples in the top face of the pill: one per 0.05 mm, so 1, 2 or 3. Press each into a
-   pocket by hand and pull it out again. Keep the tightest one that still goes all the way
-   home by hand, or with a vise. It should need a firm press and not come out with a light
-   tug. Print a second of that one.
-2. Turn each key so the nub's single point faces the same way as the triangular pocket's
-   point. The dimples are then at the end away from the point.
-3. Stand both keys on the bench, nub up, with the base on top and a nub started in each
+1. Turn each key so the nub's single point faces the same way as the triangular pocket's
+   point. The dimple is then at the end away from the point.
+2. Stand both keys on the bench, nub up, with the base on top and a nub started in each
    pocket. Press the base down over each key in turn, with a thumb on the floor inside right
    above the key, until the base's underside meets the key's top face. If a thumb isn't
    enough, squeeze base and key together in a vise or clamp, with a flat block on each side.
-4. Check there's no gap between the base and either key's top face.
+3. Check there's no gap between the base and either key's top face, and that neither key
+   comes out with a light tug.
 
-If even the 0.15 key is loose, glue it as before: a **small** drop of gel CA in the pocket
-(not on the nub, and not thin CA, which wicks), with the keys sitting in two adjacent deck
-slots so the slots line them up. Then post what you measured on #269.
+**If the keys are loose,** which is most likely with another printer or filament, redo the
+fit test: print one each of the 0.10 and 0.15 mm keys in
+[`stl/key_fit_test/`](stl/key_fit_test), told apart by their dimples (one per 0.05 mm, so 2
+or 3). Press each into a pocket by hand and pull it out again. Keep the tightest one that
+still goes all the way home by hand, or with a vise, and print a second of it. If even the
+0.15 key is loose, glue it as before: a **small** drop of gel CA in the pocket (not on the
+nub, and not thin CA, which wicks), with the keys sitting in two adjacent deck slots so the
+slots line them up. Then post what you measured on #269.
 
 **Check:** on the deck, the base drops into two adjacent slots (25 mm apart in X) and lifts
 out freely with both keys, and sits flat. If a key binds in its slot, it went in turned:
@@ -528,8 +531,6 @@ README's estimates can be replaced with measurements:
 - The fan's hub height against the frame face, and whether the carrier needed sanding.
 - The vial's outside diameter at the bottom, and whether it sits on the floor.
 - The deck plate's thickness, and whether the keys bottom out.
-- Which fit-test key you kept (count its dimples), and how hard it was to press in. If you
-  have calipers, A and B (corner to flat, across corners) of a pocket and of each nub.
 - The holder recess depth (sag).
 - The fan's current at 5 V, full speed, and its peak when it starts.
 - Whether the Hall output toggles cleanly, and whether `rpm` ever reads above 0 with the fan off.

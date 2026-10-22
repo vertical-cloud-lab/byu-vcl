@@ -15,7 +15,7 @@ printed about the keys.
     python build_onshape.py                # upload, render all steps, export STLs and STEP files
     python build_onshape.py --no-render    # upload and rebuild only
     python build_onshape.py --new          # make a fresh document first
-    python build_onshape.py --no-render --no-step --key-fit 0.05,0.15
+    python build_onshape.py --no-render --no-step --key-fit 0.10,0.15
                                            # also deck keys at other nub interferences, for a fit test
 """
 
@@ -39,7 +39,7 @@ IMG = HERE / "img"
 STL = HERE / "stl"
 STEP = HERE / "step"
 KEY_FIT = STL / "key_fit_test"
-KEY_PRESS = 0.10   # deck key nub interference per side, mm; the FeatureScript's default too
+KEY_PRESS = 0.05   # deck key nub interference per side, mm; the FeatureScript's default too (fit test, 2026-10-22)
 
 BASE = "https://cad.onshape.com/api/v6"
 HEADERS = {"Accept": "application/json;charset=UTF-8; qs=0.09", "Content-Type": "application/json"}

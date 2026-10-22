@@ -4,8 +4,9 @@ the G-code the A1 mini ran on 2026-10-21, and a drawing of the fit (img/key_fit.
 
 Both outlines are a rounded equilateral triangle: a sharp triangle of 3.1 mm circumradius,
 one corner toward -Y, grown by the corner radius r. The pocket has r = 1.1 (Cubware's). The
-key printed on 2026-10-21 had r = 1.0, 0.10 mm clear all round, and came out loose. The
-key from 2026-10-22 has r = 1.2, 0.10 mm bigger than the pocket all round.
+key printed on 2026-10-21 had r = 1.0, 0.10 mm clear all round, and came out loose. Keys with
+r = 1.15, 1.2 and 1.25 (0.05, 0.10 and 0.15 mm bigger than the pocket all round) were printed
+on 2026-10-22, and the 0.05 one fit best, so that is the key to print.
 
 G-code sizes are the outer-wall toolpaths plus or minus half their line width (a pocket
 wall's centreline runs half a line width into the material, a nub's half a line width in
@@ -13,7 +14,7 @@ from its edge).
 
     python analysis/key_fit.py    # prints the table in key_fit_output.txt, writes img/key_fit.png
 
-Needs numpy, trimesh (with networkx), shapely and matplotlib.
+Needs numpy, trimesh (with networkx, scipy and rtree), shapely and matplotlib.
 """
 
 from __future__ import annotations
@@ -31,7 +32,7 @@ GCODE_3MF = HERE / "print" / "2026-10-21-a1mini" / "stir_module_parts.gcode.3mf"
 TRI_R = 3.1          # sharp triangle's circumradius, mm
 POCKET_R = 1.1       # pocket corner radius
 OLD_R = 1.0          # key printed 2026-10-21
-NEW_R = 1.2          # key from 2026-10-22 (keyPress 0.10)
+NEW_R = 1.15         # key to print, the best of the 2026-10-22 fit test (keyPress 0.05)
 CORNERS = (-90, 30, 150)   # corner directions, degrees; the flats face the opposite ways
 
 
@@ -77,7 +78,7 @@ def stl_sizes() -> list:
             pts = np.array(ring.coords)
             if abs(abs(pts[:, 0].mean()) - 12.5) < 2 and abs(pts[:, 1].mean()) < 3:
                 rows.append((f"base.stl pocket at x = {pts[:, 0].mean():+.1f}, z = 1.0", *sizes(pts)))
-    for name in ("deck_key.stl", "key_fit_test/deck_key_press_0.05.stl", "key_fit_test/deck_key_press_0.15.stl"):
+    for name in ("deck_key.stl", "key_fit_test/deck_key_press_0.10.stl", "key_fit_test/deck_key_press_0.15.stl"):
         for z in (1.0, 1.95):
             pts = np.vstack([np.array(p.exterior.coords) for p in section(HERE / "stl" / name, z)])
             rows.append((f"{name} nub, z = {z}", *sizes(pts)))
@@ -209,10 +210,11 @@ def draw(out: pathlib.Path) -> None:
     az.text(-1.45, yp + 0.19, "base", fontsize=9.5, color=INK2, va="center")
     az.text(1.45, yp - 0.012, "pocket wall", fontsize=9.5, color=INK, ha="right", va="top")
     az.text(1.45, yo - 0.012, "nub printed 10-21", fontsize=9.5, color=OLD, ha="right", va="top")
-    az.text(1.45, yn + 0.012, "new nub", fontsize=9.5, color=NEW, ha="right", va="bottom")
-    for y0, y1, label, c in ((yo, yp, "0.10 clearance (loose)", OLD), (yp, yn, "0.10 interference (press)", NEW)):
+    az.text(1.45, yn + 0.012, "nub to print", fontsize=9.5, color=NEW, ha="right", va="bottom")
+    for y0, y1, label, c in ((yo, yp, "0.10 clearance (loose)", OLD), (yp, yn, "0.05 interference (press)", NEW)):
         az.annotate("", (-0.75, y0), (-0.75, y1), arrowprops=dict(arrowstyle="<->", color=c, lw=1, shrinkA=0, shrinkB=0))
-        az.text(-0.7, (y0 + y1) / 2, " " + label, fontsize=9.5, color=INK, va="center")
+        az.text(-0.7, (y0 + y1) / 2, " " + label, fontsize=9.5, color=INK, va="center",
+                bbox=dict(fc=SURF, ec="none", pad=0.5))
     az.set_xlim(-1.5, 1.5)
     az.set_ylim(yo - 0.12, yp + 0.27)
     az.axis("off")
@@ -224,7 +226,7 @@ def draw(out: pathlib.Path) -> None:
     head = ("", "A", "B", "corner R", "fit, a side")
     rows = [("pocket in the base", m["pocket"], "1.1", "", INK),
             ("nub printed 10-21", m["old"], "1.0", "0.10 clear", OLD),
-            ("new nub", m["new"], "1.2", "0.10 press", NEW)]
+            ("nub to print", m["new"], "1.15", "0.05 press", NEW)]
     for j, h in enumerate(head):
         at.text(cols[j], 0.92, h, ha="left" if j == 0 else "right", fontsize=9.5, color=INK2, transform=at.transAxes)
     at.plot([0, 1], [0.84, 0.84], color=MUTED, lw=0.6, transform=at.transAxes)
@@ -235,11 +237,12 @@ def draw(out: pathlib.Path) -> None:
         for j, cell in enumerate(cells):
             at.text(cols[j] + (0.045 if j == 0 else 0), y, cell, ha="left" if j == 0 else "right", fontsize=9.5, color=INK,
                     fontweight="bold" if c == NEW and j in (1, 2, 3) else "normal", transform=at.transAxes)
-    at.text(0.0, 0.08, "Fit-test keys: 0.05 (A 6.95, B 7.67) and 0.15 (A 7.15, B 7.87), in stl/key_fit_test/.\n"
-            "Dimples on the key's top face: one per 0.05 mm of interference.", fontsize=8.8, color=INK2,
+    at.text(0.0, 0.08, "Also in the 2026-10-22 fit test: 0.10 (A 7.05, B 7.77) and 0.15 (A 7.15, B 7.87),\n"
+            "in stl/key_fit_test/. Dimples on the top face, one per 0.05 mm: the key to print has one.",
+            fontsize=8.8, color=INK2,
             transform=at.transAxes, va="bottom")
 
-    fig.suptitle("Deck key nub in the base's key pocket: from 0.10 mm clearance to a 0.10 mm press fit",
+    fig.suptitle("Deck key nub in the base's key pocket: from 0.10 mm clearance to a 0.05 mm press fit",
                  x=0.02, y=0.975, ha="left", fontsize=13, fontweight="bold", color=INK)
     fig.text(0.02, 0.025, "Pocket 2.1 mm deep, so the printed base takes the new key. Nub 2.0 mm tall, with a 0.3 mm "
              "lead-in chamfer round its top.\nCalipers: A with one jaw on a flat and the other on the opposite corner; "
@@ -249,7 +252,8 @@ def draw(out: pathlib.Path) -> None:
 
 if __name__ == "__main__":
     print("Model (mm)               corner-to-flat  across-corners  flat  centre-to-flat  centre-to-corner")
-    for name, r in (("pocket, R1.1", POCKET_R), ("nub printed 10-21, R1.0", OLD_R), ("new nub, R1.2", NEW_R)):
+    for name, r in (("pocket, R1.1", POCKET_R), ("nub printed 10-21, R1.0", OLD_R), ("nub to print, R1.15", NEW_R),
+                    ("0.10 fit-test nub, R1.2", 1.2), ("0.15 fit-test nub, R1.25", 1.25)):
         d = model(r)
         print(f"  {name:24s} {d['corner_to_flat']:6.3f}         {d['across_corners']:6.3f}       {d['flat']:5.3f}    "
               f"{d['centre_to_flat']:5.3f}          {d['centre_to_corner']:5.3f}")

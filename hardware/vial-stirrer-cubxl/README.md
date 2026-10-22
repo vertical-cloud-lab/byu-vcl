@@ -12,8 +12,9 @@ the vial, a Hall sensor counting turns, and a closed speed loop. Asked for by
 2026-10-21, all on one plate in PETG. That print paused at layer 42 of 110 on an AMS Lite
 warning, was resumed, and finished
 ([print record](print/2026-10-21-a1mini/README.md)). Its deck keys were loose in the base,
-so the key now has a press-fit nub. The three fit-test keys were printed on 2026-10-22
-([print record](print/2026-10-22-a1mini-keys/README.md)). Nothing has been wired or run. The
+so the key now has a press-fit nub. Of three sizes printed on 2026-10-22
+([print record](print/2026-10-22-a1mini-keys/README.md)), the 0.05 mm one fit best, so it is
+the key to print from now on. Nothing has been wired or run. The
 numbers that matter most (coupling, the Hall signal) are estimates until a first
 build. The vial cup is the exception: it is copied from the 9-vial holder already in
 use on the deck.
@@ -49,9 +50,9 @@ the capper and the pipette, instead of its own XIAO RP2040.
 | [`onshape/document.json`](onshape/document.json) | Onshape document ids |
 | [`BUILD.md`](BUILD.md) | Build guide for the Uno-driven version: printing, keys, inserts, magnets, wiring, bench checks, assembly, flashing the Uno, first spins, the deck file |
 | [`BOM.md`](BOM.md) | Bill of materials for the Uno-driven version: parts to buy with links and prices, parts to print |
-| [`step/`](step) | Printed parts as STEP: `base`, `vial_holder`, `magnet_carrier`, `deck_key` (print two), plus `vial_stirrer_assembly.step`, the whole stirrer for fit checks |
-| [`stl/`](stl) | The same printed parts as STL. Both sets are in assembly position, which is also each part's print orientation. [`stl/key_fit_test/`](stl/key_fit_test) has the deck key at two more nub interferences, for a fit test |
-| [`print/`](print) | Print records. [`2026-10-21-a1mini/`](print/2026-10-21-a1mini/README.md): all five parts on one A1 mini plate in white PETG Basic, sent from Bambu Studio by an `@claude-print` run. It has the file the printer ran, the settings and a camera timelapse. [`2026-10-22-a1mini-keys/`](print/2026-10-22-a1mini-keys/README.md): the deck key at 0.05, 0.10 and 0.15 mm, for the fit test, the same way |
+| [`step/`](step) | Printed parts as STEP: `base`, `vial_holder`, `magnet_carrier`, `deck_key` (the 0.05 mm press fit; print two), plus `vial_stirrer_assembly.step`, the whole stirrer for fit checks |
+| [`stl/`](stl) | The same printed parts as STL. Both sets are in assembly position, which is also each part's print orientation. [`stl/key_fit_test/`](stl/key_fit_test) has the deck keys at 0.10 and 0.15 mm, the two sizes from the fit test that aren't printed by default |
+| [`print/`](print) | Print records. [`2026-10-21-a1mini/`](print/2026-10-21-a1mini/README.md): all five parts on one A1 mini plate in white PETG Basic, sent from Bambu Studio by an `@claude-print` run. It has the file the printer ran, the settings and a camera timelapse. [`2026-10-22-a1mini-keys/`](print/2026-10-22-a1mini-keys/README.md): the deck key at 0.05, 0.10 and 0.15 mm, for the fit test, the same way. 0.05 fit best |
 | [`img/`](img) | Onshape's renders (steps 1–10 of the XIAO version, assembled, exploded, section, contact sheet), and the assembly video, GIF and contact sheet of the Uno version |
 | [`firmware/main.py`](firmware/main.py) | MicroPython speed controller for the XIAO RP2040 (untested) |
 | [`../../cubos/firmware/panda-arduino-stirrer.patch`](../../cubos/firmware/panda-arduino-stirrer.patch) | The same controller as two commands in the CubXL Uno's PANDA firmware. Built, image committed, not flashed |
@@ -109,8 +110,9 @@ held by gravity
 - The keys are Cubware's pill. Each has a 2 mm rounded-triangle nub (equilateral,
   3.1 mm circumradius before rounding, one corner toward −Y) that goes into a 2.1 mm
   pocket with R1.1 corners under the base. Cubware's nub has R1.0 corners and is glued in.
-  Ours has R1.2 corners since 2026-10-22, so it **presses in** with 0.10 mm of interference
-  a side; see [The key nub and pocket](#the-key-nub-and-pocket). Cubware's own
+  Ours has R1.15 corners, so it **presses in** with 0.05 mm of interference a side, the
+  best of three sizes tried on 2026-10-22; see
+  [The key nub and pocket](#the-key-nub-and-pocket). Cubware's own
   `9VialHolder-key.stl` still fits the same pockets, glued.
 - **Where the vial ends up:** midway between the two slot columns, on a row centre.
   With the slot centres inferred from Ben's deck file (vial_1 at (136.668, 45) sits
@@ -185,41 +187,50 @@ What else changes:
 ## The key nub and pocket
 
 The first print (2026-10-21) had Cubware's nub, 0.10 mm smaller than the pocket all round,
-and @benwhitney5463 found the keys loose in the base. Since 2026-10-22 the nub is the
-pocket grown by 0.10 mm all round, a press fit, so the keys need no glue and stay in the
-base. The pocket hasn't changed, so the base already printed takes the new keys.
+and @benwhitney5463 found the keys loose in the base. So the nub became the pocket grown all
+round, a press fit, and keys at 0.05, 0.10 and 0.15 mm a side were printed on 2026-10-22, in
+the base's PETG on the same A1 mini ([record](print/2026-10-22-a1mini-keys/README.md)). Ben
+found the **0.05 mm key the best fit**
+([#269](https://github.com/vertical-cloud-lab/byu-vcl/pull/269#issuecomment-6352266215)), so
+it is the deck key for every stir module print from now on: [`stl/deck_key.stl`](stl/deck_key.stl)
+and [`step/deck_key.step`](step/deck_key.step). The STL is the same file, byte for byte, as
+the 0.05 key that was printed. The keys need no glue and stay in the base. The pocket hasn't
+changed, so the base already printed takes them.
 
 ![The key nub against the pocket](img/key_fit.png)
 
-| mm | Pocket in the base | Nub printed 2026-10-21 | Nub from 2026-10-22 |
-|---|---|---|---|
-| A: corner to the opposite flat | 6.85 | 6.65 | **7.05** |
-| B: across two corners, parallel to a flat | 7.57 | 7.37 | **7.77** |
-| Corner radius | 1.1 | 1.0 | **1.2** |
-| Straight length of each flat | 5.37 | 5.37 | 5.37 |
-| Centre to flat / to corner | 2.65 / 4.20 | 2.55 / 4.10 | 2.75 / 4.30 |
-| Depth / height | 2.1 | 2.0 | 2.0, with a 0.3 mm × 45° lead-in round the top |
-| Fit, each side | | 0.10 clearance | **0.10 interference** |
+| mm | Pocket in the base | Nub printed 2026-10-21 | **Nub to print** | Also tried 2026-10-22 |
+|---|---|---|---|---|
+| A: corner to the opposite flat | 6.85 | 6.65 | **6.95** | 7.05, 7.15 |
+| B: across two corners, parallel to a flat | 7.57 | 7.37 | **7.67** | 7.77, 7.87 |
+| Corner radius | 1.1 | 1.0 | **1.15** | 1.2, 1.25 |
+| Straight length of each flat | 5.37 | 5.37 | 5.37 | 5.37 |
+| Centre to flat / to corner | 2.65 / 4.20 | 2.55 / 4.10 | 2.70 / 4.25 | 2.75 / 4.30, 2.80 / 4.35 |
+| Depth / height | 2.1 | 2.0 | 2.0, with a 0.3 mm × 45° lead-in round the top | the same |
+| Fit, each side | | 0.10 clearance | **0.05 interference** | 0.10, 0.15 interference |
 
 - **What was printed matched the model.** The outer walls in the G-code the A1 mini ran
   (`print/2026-10-21-a1mini/`), plus or minus half their line width, give the pocket as
   6.85 × 7.57 mm and the nub as 6.64 × 7.36 mm. The pocket's first layer is 0.15 mm a side
-  wider, from the elephant-foot compensation, which helps the new nub start.
+  wider, from the elephant-foot compensation, which helps a press-fit nub start. The
+  fit-test keys' G-code gives their A as 6.94, 7.04 and 7.14 mm
+  ([check](print/2026-10-22-a1mini-keys/README.md#checked-in-the-g-code)).
   [`analysis/key_fit.py`](analysis/key_fit.py) measures all of this and draws the figure
   ([output](analysis/key_fit_output.txt)).
-- **0.10 mm is a starting point, not a measured fit.** Guides for 0.4 mm nozzles put press
-  fits at about 0.05–0.15 mm a side ([Sovol](https://www.sovol3d.com/blogs/news/fdm-3d-printing-tolerances-clearances-how-to-design-parts-that-fit)), and how tight one comes out depends on the printer and
-  the filament. So [`stl/key_fit_test/`](stl/key_fit_test) has the same key at 0.05 and
-  0.15 mm (A 6.95 and 7.15, B 7.67 and 7.87). Print one of each with the 0.10 key and keep
-  the one that needs a firm press and doesn't come out with a light tug. One of each was
-  printed on the A1 mini on 2026-10-22, in the base's PETG
-  ([record](print/2026-10-22-a1mini-keys/README.md)). Their G-code gives A as 6.94, 7.04
-  and 7.14 mm. How they fit hasn't been reported yet.
+- **0.05 mm was chosen on one printer and one filament:** the lab's A1 mini and white Bambu
+  PETG Basic, with `BUILD.md`'s settings, which include 0.15 mm of elephant-foot
+  compensation. How tight a press fit comes out depends on all three. Guides for 0.4 mm
+  nozzles put press fits at about 0.05–0.15 mm a side
+  ([Sovol](https://www.sovol3d.com/blogs/news/fdm-3d-printing-tolerances-clearances-how-to-design-parts-that-fit)).
+  If keys from another printer or filament come out loose, the 0.10 and 0.15 mm keys are in
+  [`stl/key_fit_test/`](stl/key_fit_test) for the same fit test
+  ([`BUILD.md` stage 2](BUILD.md#2-press-the-deck-keys-into-the-base)).
 - **Telling them apart:** each key has small dimples in its top face, at the end away from
-  the nub's point, one per 0.05 mm of interference. The 0.10 key has two.
+  the nub's point, one per 0.05 mm of interference. The key to print has one.
 - **Changing it:** the interference is the feature's `keyPress` parameter, set by
-  `KEY_PRESS` in [`build_onshape.py`](build_onshape.py). Then rerun
-  `build_onshape.py --no-render`. A `keyPress` of −0.10 gives Cubware's nub back.
+  `KEY_PRESS` in [`build_onshape.py`](build_onshape.py), 0.05 since the fit test. Then rerun
+  `build_onshape.py --no-render`; adding `--key-fit 0.10,0.15` also writes the fit-test keys.
+  A `keyPress` of −0.10 gives Cubware's nub back.
 
 ## The vial cup, copied from the 9-vial holder
 
@@ -557,7 +568,7 @@ Onshape's, and show the XIAO version.
 
 | | |
 |---|---|
-| ![](img/step01_keys.png) | **1. Press the two deck keys into the base.** Each key's triangular nub is a press fit in its 2.1 mm pocket under the base, 0.10 mm a side, so it needs no glue. With no play in the pocket, the keys end up square to the base and 25 mm apart. |
+| ![](img/step01_keys.png) | **1. Press the two deck keys into the base.** Each key's triangular nub is a press fit in its 2.1 mm pocket under the base, 0.05 mm a side, so it needs no glue. With no play in the pocket, the keys end up square to the base and 25 mm apart. |
 | ![](img/step02_inserts.png) | **2. Press in eight M3 heat-set inserts.** Use a soldering iron at the insert maker's temperature: four go in the fan posts and four in the corner posts. Keep them square, as the fan screws pull straight down into them. |
 | ![](img/step03_electronics.png) | **3. Wire the electronics, then drop them in.** Solder per the wiring diagram, leaving about 60 mm of lead for the Hall sensor. The XIAO's USB-C goes into the notch in the −X wall, and the rails and the stop locate the board. In the Uno version the junction board sits in the same place and the cable leaves through the notch; tie it to the board for strain relief. The MOSFET and diode lie flat on the +X side, held with a dab of hot glue. |
 | ![](img/step04_fan.png) | **4. Seat the fan, rotor side up.** It goes on the four posts with the side **without** the motor's struts up, so the spinning hub faces the vial. Don't go by the sticker: many fans carry it on the strut side. Run its leads to the MOSFET. |

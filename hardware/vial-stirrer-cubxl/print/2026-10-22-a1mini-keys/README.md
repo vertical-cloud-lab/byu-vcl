@@ -4,11 +4,17 @@ The stirrer's [deck key](../../README.md#the-key-nub-and-pocket) at all three nu
 interferences, one of each, on one plate, for the fit test in
 [`BUILD.md` stage 2](../../BUILD.md#2-press-the-deck-keys-into-the-base):
 
-| Key | File | Nub interference, each side | Nub A / B in the model (mm) | Dimples |
+| Key | File now | Nub interference, each side | Nub A / B in the model (mm) | Dimples |
 |---|---|---|---|---|
-| 0.05 | [`stl/key_fit_test/deck_key_press_0.05.stl`](../../stl/key_fit_test/deck_key_press_0.05.stl) | 0.05 mm | 6.95 / 7.67 | 1 |
-| 0.10 | [`stl/deck_key.stl`](../../stl/deck_key.stl) | 0.10 mm | 7.05 / 7.77 | 2 |
+| **0.05, fit best** | [`stl/deck_key.stl`](../../stl/deck_key.stl) | 0.05 mm | 6.95 / 7.67 | 1 |
+| 0.10 | [`stl/key_fit_test/deck_key_press_0.10.stl`](../../stl/key_fit_test/deck_key_press_0.10.stl) | 0.10 mm | 7.05 / 7.77 | 2 |
 | 0.15 | [`stl/key_fit_test/deck_key_press_0.15.stl`](../../stl/key_fit_test/deck_key_press_0.15.stl) | 0.15 mm | 7.15 / 7.87 | 3 |
+
+The files came from `ecde470`, where the 0.10 key was `stl/deck_key.stl` and the 0.05 key
+`stl/key_fit_test/deck_key_press_0.05.stl`. After the fit test the 0.05 key became
+`stl/deck_key.stl` and the 0.10 key moved to `stl/key_fit_test/`, each byte for byte (the
+MD5s in [`print.json`](print.json) still match), so the links above go to where each file is
+now.
 
 They were printed in **white Bambu PETG Basic** (AMS Lite slot A4) on Textured PEI, on the
 same printer and filament as the base whose pockets they go into
@@ -27,8 +33,14 @@ checked and watched from Studio's Device page.
 
 **Outcome: finished, with no pause, dialog or HMS alert.** Sent at 21:25:16 UTC, first layer at
 21:32:56, layer 60/60 at 21:49:05, and *Finished* at 21:49:16: 24.0 min after Send, against
-Studio's 23 min 36 s. The keys were taken off the plate by 21:51:41. **How they fit hasn't
-been reported yet.**
+Studio's 23 min 36 s. The keys were taken off the plate by 21:51:41.
+
+**Result: the 0.05 mm key fit best.** @benwhitney5463
+[reported](https://github.com/vertical-cloud-lab/byu-vcl/pull/269#issuecomment-6352266215)
+that it was the best fit of the three, and to stick with it for all future stir module
+prints. So it is now the default deck key: `keyPress` is 0.05 in the model, and
+`stl/deck_key.stl` and `step/deck_key.step` are that key
+([README](../../README.md#the-key-nub-and-pocket)).
 
 | Before Send, 21:24:28 UTC | Finished, 21:50:00 UTC |
 |---|---|

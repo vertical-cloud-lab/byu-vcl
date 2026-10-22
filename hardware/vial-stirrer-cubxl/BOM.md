@@ -56,7 +56,7 @@ so a slicer only has to drop them onto the bed.
 | Base | [`step/base.step`](step/base.step) | [`stl/base.stl`](stl/base.stl) | 1 | 23.8 cm³ | Floor down. The key pockets are on the bed face |
 | Vial holder | [`step/vial_holder.step`](step/vial_holder.step) | [`stl/vial_holder.stl`](stl/vial_holder.stl) | 1 | 17.1 cm³ | Flange down, so the fingers print upright as in the 9-vial holder. The 1.2 mm floor bridges the Ø27 mm carrier pocket; support it if the bridge sags |
 | Magnet carrier | [`step/magnet_carrier.step`](step/magnet_carrier.step) | [`stl/magnet_carrier.stl`](stl/magnet_carrier.stl) | 1 | 0.8 cm³ | Pockets up |
-| Deck key | [`step/deck_key.step`](step/deck_key.step) | [`stl/deck_key.stl`](stl/deck_key.stl) | **2** | 2.3 cm³ each | Nub up. Fix elephant's foot first; Cubware says to. The nub presses into the base, 0.10 mm a side. For a fit test, also one each of [`deck_key_press_0.05.stl`](stl/key_fit_test/deck_key_press_0.05.stl) and [`deck_key_press_0.15.stl`](stl/key_fit_test/deck_key_press_0.15.stl) |
+| Deck key | [`step/deck_key.step`](step/deck_key.step) | [`stl/deck_key.stl`](stl/deck_key.stl) | **2** | 2.3 cm³ each | Nub up. Fix elephant's foot first; Cubware says to. The nub presses into the base, 0.05 mm a side, the best fit of the [2026-10-22 fit test](print/2026-10-22-a1mini-keys/README.md). Keep printing this one. The 0.10 and 0.15 mm keys are in [`stl/key_fit_test/`](stl/key_fit_test), in case another printer or filament comes out loose |
 
 [`step/vial_stirrer_assembly.step`](step/vial_stirrer_assembly.step) is the whole
 stirrer as 39 solids: the printed parts, the bought parts modelled from their datasheet

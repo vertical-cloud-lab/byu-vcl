@@ -142,5 +142,5 @@
   ],
   "watching": "Studio's Device page, OCR about every 11 s and a camera crop each time (watch_a1m.py, an A1 mini copy of PR #234's bambu/studio/watch_studio.py); no new windows, no pause, no HMS alert; the HMS list was empty after the print",
   "recording": "the runner's screen was recorded in 1 min segments; the segments covering the login were deleted at once and the rest was not kept: claude-print.yml has no YouTube token. timelapse.mp4 / timelapse.gif are the watcher's camera crops from layer 1 (21:32:56) to 21:51:41, one about every 11 s, room blurred",
-  "outcome": "finished: layer 60/60 and Finished at 21:49:16, 24.0 min after Send against Studio's 23 min 36 s; no pause, dialog or HMS alert. The keys were taken off the plate by 21:51:41. Fit not yet reported"
+  "outcome": "finished: layer 60/60 and Finished at 21:49:16, 24.0 min after Send against Studio's 23 min 36 s; no pause, dialog or HMS alert. The keys were taken off the plate by 21:51:41. Fit reported by benwhitney5463 at 22:01:17 UTC: the 0.05 mm key is the best fit, to be used for all future stir module prints (https://github.com/vertical-cloud-lab/byu-vcl/pull/269#issuecomment-6352266215)"
 }

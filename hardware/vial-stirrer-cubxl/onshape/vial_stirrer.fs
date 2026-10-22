@@ -82,8 +82,10 @@ const Z_TOP = Z_VIAL + CUP_H;
 // Two keys here, one slot column apart.
 // Cubware's nub has R1.0 corners, 0.1 mm clear of the pocket all round, and is
 // glued in. Printed that way (2026-10-21) the keys were a clearance fit, so the
-// nub is now the pocket grown by keyPress (a feature parameter, default 0.10 mm):
-// a press fit. The pocket is unchanged, so the printed base still takes it.
+// nub is now the pocket grown by keyPress (a feature parameter): a press fit.
+// The pocket is unchanged, so the printed base still takes it. Of 0.05, 0.10
+// and 0.15 mm printed in PETG on the A1 mini (2026-10-22), 0.05 fit best, so
+// that is the default.
 const BOARD_T = 10.0;
 const SLOT_W = 10.0;
 const SLOT_C = 15.0;          // slot / key end-centre spacing
@@ -613,7 +615,7 @@ export const vialStirrer = defineFeature(function(context is Context, id is Id, 
         definition.section is boolean;
 
         annotation { "Name" : "Deck key nub interference per side (mm)" }
-        isReal(definition.keyPress, { (unitless) : [-0.2, 0.10, 0.5] } as RealBoundSpec);
+        isReal(definition.keyPress, { (unitless) : [-0.2, 0.05, 0.5] } as RealBoundSpec);
     }
     {
         setVariable(context, "dbg", "start");
