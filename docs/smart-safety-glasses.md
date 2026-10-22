@@ -1,9 +1,9 @@
 # Camera and AR glasses for filming lab work
 
 Issue [#290](https://github.com/vertical-cloud-lab/byu-vcl/issues/290), following on from
-[wearable-camera-mounts.md](wearable-camera-mounts.md). Gage didn't find the chest-harness idea
-much better than the current neck mount: "Something like a small camera attached to safety glasses
-would be ideal, then it's not a big phone on the chest." This page looks at Meta-style camera
+[wearable-camera-mounts.md](wearable-camera-mounts.md). Gage didn't think the ULANZI CM028 chest
+harness would be much different from the current neck mount: "Something like a small camera
+attached to safety glasses would be ideal, then it's not a big phone on the chest." This page looks at Meta-style camera
 glasses, and at smart glasses sold as safety eyewear, for filming bench work.
 
 Prices, ratings and stock below were read from Amazon US on **2026-10-22**, from the CubXL Pi
@@ -29,8 +29,8 @@ What fits depends on the eye protection the work needs:
    - **[OHO camera glasses](https://www.amazon.com/dp/B0H1WGMPQW), $78.88**, are a cheap way to
      try the idea. They record 1080p for about 60 minutes, and the listing claims
      "ANSI/ISEA Z87.1-2015 Impact Resistant". Reviews are mixed, and the Z87.1 claim is the
-     seller's. Before wearing them as eye protection, check that the frame and lenses are actually
-     stamped "Z87" (see [below](#why-the-safety-rating-matters)).
+     seller's. Before wearing them as eye protection, check the frame and lenses for a "Z87"
+     stamp (see [below](#why-the-safety-rating-matters)).
 2. **Chemical splash (goggles required):** no glasses-style product here claims splash
    protection. What can work is **camera glasses with clear lenses worn under over-the-glasses
    (OTG) splash goggles**, e.g. [Ray-Ban Meta Gen 2](https://www.amazon.com/dp/B0FLYDJHB4) ($379)
@@ -40,7 +40,7 @@ What fits depends on the eye protection the work needs:
    and wear a 53 g camera on your forehead: the Insta360 GO Ultra from Option 2 in
    [wearable-camera-mounts.md](wearable-camera-mounts.md#option-2-a-tiny-wearable-camera-instead-of-a-phone)
    on its [Easy Clip Headband](https://www.amazon.com/dp/B0FHHFF2SN) ($19.99, 4.4 from 111
-   ratings). That's as close to eye level as a camera gets without being part of the eyewear.
+   ratings). That puts the camera just above your eyes without touching the eyewear.
 3. **Not worth it:** side shields for Ray-Ban Meta (they aren't safety-rated); Lucyd Armor
    (Z87.1-rated, but it has no camera); and RealWear Navigator 520 (a 270 g headset, unavailable
    on Amazon).
@@ -63,7 +63,8 @@ clips, and one $90 pair lets you set the clip length anywhere from 15 s to 12 mi
   "D3" for droplet and splash protection
   ([ANSI](https://blog.ansi.org/ansi-isea-z87-1-2020-safety-glasses-eye-protection/),
   [Safety Glasses USA](https://safetyglassesusa.com/blog/what-does-ansi-z87-1-certified-mean/)).
-  Whatever a listing says, if the frame and lenses aren't stamped, the glasses aren't compliant.
+  The markings have to be permanent, on the frame or lenses, so if there's no Z87 stamp on the
+  eyewear, it isn't compliant, whatever the listing says.
 - The same OSHA rule lets people who wear prescription glasses put compliant eyewear *over* them,
   as long as it doesn't disturb the glasses underneath. Camera glasses under OTG goggles are the
   same arrangement.
@@ -75,14 +76,14 @@ clips, and one $90 pair lets you set the clip length anywhere from 15 s to 12 mi
 | Product | Safety rating (maker's claim) | Camera | Weight | Price | Notes |
 | --- | --- | --- | --- | --- | --- |
 | [Iristick.G3](https://iristick.com/) | EN 16321, ANSI Z87 | two cameras, centred between the eyes | 95 g | €2,275 excl. VAT, "while stock lasts" ([pricing](https://iristick.com/pricing/)) | Runs from an iPhone or Android phone over USB-C. Remote-assist app free; Teams €365/yr; SDK €1,000/yr. Six-week trial €1,000. |
-| Iristick.G2 (earlier model) | ANSI Z87 / EN 166 ([2020 datasheet](https://www.quad.de/media/50/fb/a7/1653403727/IRISTICK_DE.pdf), line-wide) | camera plus optical zoom | 78 g ([spec sheet](https://www.quad.de/media/66/97/03/1653403744/spec-sheet-Iristick.G2-EU-industry.pdf)) | €1,975 | |
+| Iristick.G2 (earlier model) | "certified safety glasses" ([2021 spec sheet](https://www.quad.de/media/66/97/03/1653403744/spec-sheet-Iristick.G2-EU-industry.pdf)) | camera plus optical zoom | 78 g (same sheet) | €1,975 | |
 | [Vuzix Blade 2](https://vuzix.com/products/vuzix-blade-2-smart-glasses) | ANSI Z87.1 | 8 MP autofocus, 1080p30 | not published | $1,289.99 ([ChannelXR](https://channelxr.com/products/vuzix-blade-2-smart-glasses)); $1,299.99 MSRP ([SHI](https://www.shi.com/product/45587499/Vuzix-Blade-2-Smart-glasses)) | Standalone Android 11, with a see-through display. Amazon's listing for the earlier Z87.1 Blade ([B08K9D97CK](https://www.amazon.com/dp/B08K9D97CK)) now returns "Page Not Found". |
 | [RealWear Navigator 520](https://shop.realwear.com/pages/realwear-navigator-520-specifications) | none itself; worn with safety glasses or a hard hat | 48 MP, 1080p60 | 270 g | [Amazon](https://www.amazon.com/dp/B0BZ3QN297): currently unavailable | Voice-controlled headset with a display arm. Heavier on the head than anything else here. |
 | [Vuzix M400 Starter Kit](https://www.amazon.com/dp/B087QSPFT9) | none on the listing (the kit includes "Safety Glasses Frames") | monocular camera and display | not listed | Amazon: currently unavailable | Clips onto the included frames, a headband or a hat. |
 
-These are built for remote assistance and work instructions in factories, so recording goes
-through the maker's app or SDK rather than a camera roll. Iristick's trial is the cheapest way to
-find out whether that suits making lab videos.
+These are built for remote assistance and work instructions in factories, not for making videos,
+so check how footage gets off the device before buying. Iristick's trial is the cheapest way to
+find out whether one suits making lab videos.
 
 ## Meta-style camera glasses (not safety eyewear)
 
@@ -144,19 +145,20 @@ over it has to be tried on.
 ## The AR part: displays, and getting video into our own software
 
 - **Displays.** Meta Ray-Ban Display, Rokid Glasses, Vuzix Blade 2 and RealWear show text in
-  front of one eye, which could put protocol steps in view while your hands are busy. None of the
-  consumer ones is safety eyewear, and Meta caps a *recording of the display* at one minute
+  your field of view, which could put protocol steps in view while your hands are busy. None of
+  the consumer ones is safety eyewear, and Meta caps a *recording of the display* at one minute
   ([Meta help](https://www.meta.com/help/ai-glasses/951708387778102/)).
 - **Meta's Wearables Device Access Toolkit** lets your own iOS or Android app use the camera of
-  Ray-Ban Meta, Meta Ray-Ban Display and Oakley Meta glasses. It's still a developer preview: you
-  can build and share builds inside your own organisation, but only selected partners can
-  publish to app stores
+  Ray-Ban Meta (Gen 1 and 2), Meta Ray-Ban Display, Oakley Meta HSTN and Oakley Meta Vanguard.
+  It's still a developer preview: you can build and share builds inside your own organisation,
+  but only selected partners can publish to app stores
   ([Meta](https://developers.meta.com/blog/introducing-meta-wearables-device-access-toolkit/),
   [pub.dev](https://pub.dev/packages/flutter_meta_wearables_dat/versions/0.6.0),
   [status as of 2026-09](https://vr.org/articles/meta-glasses-three-tiers-wearables-toolkit-publishing-connect-2026)).
   For lab use, building inside your own organisation is enough. This is the route if POV video
-  should land straight in an experiment record, the way the stream-cam overlays do now, without
-  the 3-minute cap.
+  should go straight into an experiment record. Twitch has tried it for hands-free POV
+  livestreaming ([Auganix](https://www.auganix.org/?p=17923)), which suggests a stream isn't
+  bound by the 3-minute clip cap; that hasn't been checked here.
 - **Mentra Live** runs an open-source OS with an SDK and an app store, and livestreams to YouTube.
 - **Iristick** sells an SDK (€1,000/yr after three months).
 
