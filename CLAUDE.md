@@ -505,12 +505,13 @@ truncation.
   camera: `ROOM_CAM_*` there, Pi `rpi-zero2w-ex3f`, `tag:rpi-zero2w-ex3f`.
 - It no longer carries `tag:stream-cam-test`, so this repo's runners can't reach it, and
   `OT2_STREAM_CAM_*` here name a Pi CI can't SSH to.
-- **The OT-2 is not on that Pi.** Sterling confirmed on 2026-10-22 that the robot is wired to the
-  Pi behind `RPI_STREAM_CAM_HOSTNAME` (`rpi-5-stream-cam-2wp0`, still `tag:stream-cam-test`), so
-  this repo keeps its path to the OT-2. That makes "Reaching the OT-2" above out of date where it
-  names `OT2_STREAM_CAM_HOSTNAME`.
-- **The Pico W is unverified.** "Reaching the Pico W" puts the sensor on the old OT-2 stream-cam
-  Pi. If it is still plugged into `rpi-zero2w-ex3f`, this repo's CI can't reach it.
+- **The OT-2 and the Pico W are not on that Pi.** Sterling confirmed on 2026-10-22:
+  - the robot is wired to the Pi behind `RPI_STREAM_CAM_HOSTNAME`, which is
+    `rpi-5-stream-cam-2wp0` and still has `tag:stream-cam-test`;
+  - the color sensor, when it's connected, plugs into that same Pi.
+  This repo keeps its path to both. "Reaching the OT-2" and "Reaching the Pico W" above are out of
+  date where they say the OT-2 stream-cam Pi (`OT2_STREAM_CAM_HOSTNAME`); read them as
+  `RPI_STREAM_CAM_*`.
 - Its stream notes (pixelation, the overlay patch, reading the archive back) are now in
   [digital-alloy-lab's `CLAUDE.md`](https://github.com/vertical-cloud-lab/digital-alloy-lab/blob/main/CLAUDE.md).
 - **One lesson applies to every picam here.** At a low resolution or frame rate, `rpicam-vid`
