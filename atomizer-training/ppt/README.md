@@ -14,6 +14,12 @@ All ten animations are also here as they are, without captions or narration: see
 | The ultrasonic stack and the door (`02_stack`, draft 2: the rebuilt stack): transducer, booster, sonotrode, into the door, then the connector, the plate hung by its end and the upper sonotrode at 50 N·m, scan, wet test, cover, door shut, stack slid to its mark, bolted | Draft 2: https://www.youtube.com/watch?v=6LTmL_qm2Eo (superseded and private: draft 1, the old stack, [8lBR11fgznI](https://www.youtube.com/watch?v=8lBR11fgznI)) | [`videos/02_stack.mp4`](videos/02_stack.mp4) | 0:51 |
 | The pour (`06_pour`, draft 2: the rebuilt stack): the melt held near 800 °C, vibration on and the furnace pressure up, the sealing rod lifted, a turbo push to heat the plate, every drop atomizing, the powder into the container | Draft 2: https://www.youtube.com/watch?v=JAXKQTDq2zg (superseded and private: draft 1, the old stack, [21oFnNmzd3E](https://www.youtube.com/watch?v=21oFnNmzd3E)) | [`videos/06_pour.mp4`](videos/06_pour.mp4) | 0:46 |
 
+**The MP4s here show the stack measured on 8 Oct** ([#261](https://github.com/vertical-cloud-lab/byu-vcl/issues/261#issuecomment-6069616664)):
+re-rendered on 22 Oct, with the stack at 45° and the stream landing 75 mm down the 119.6 × 20.8 plate
+([`../viz3d/README.md`](../viz3d/README.md)). Their timing, captions and narration are unchanged. **The uploads in the
+table are the 7 Oct versions** and still show the earlier estimate. The new versions are not uploaded yet;
+`captions.py` titles them as the next drafts (the summary's draft 4, the others' draft 3).
+
 [`script.md`](script.md) lists every caption with when it is up, its spoken line and how long that line takes, with a
 frame from each. The upload log, with the commit each description links to, is [`uploads.json`](uploads.json).
 

@@ -19,7 +19,7 @@ END_HOLD = 1.0           # s the last frame is held after the animation ends
 
 CLIPS = {
     "03_furnace_load": {
-        "title": "Atomizer slide clip: loading the furnace (draft 2)",
+        "title": "Atomizer slide clip: loading the furnace (draft 3)",
         "summary": "The furnace step of tutorial 1, cut for a slide: the lid and lever, the crucible into the coil, "
                    "the graphite nut from below, insulation, thermocouple, sealing rod, the charge and the lid.",
         "lines": [
@@ -48,7 +48,7 @@ CLIPS = {
         ],
     },
     "02_stack": {
-        "title": "Atomizer slide clip: the ultrasonic stack and the door (draft 2)",
+        "title": "Atomizer slide clip: the ultrasonic stack and the door (draft 3)",
         "summary": "The ultrasonic-stack step of tutorial 1, cut for a slide: transducer, booster and sonotrode with "
                    "their torques, into the door, then the connector, the plate hung by its end and the tungsten upper "
                    "sonotrode torqued against it, the scan and wet test, the cover, then the door shut and bolted.",
@@ -78,7 +78,7 @@ CLIPS = {
         ],
     },
     "06_pour": {
-        "title": "Atomizer slide clip: the pour (draft 2)",
+        "title": "Atomizer slide clip: the pour (draft 3)",
         "summary": "The pour step of tutorial 2, cut for a slide: the melt held near 800 °C, the vibration on and the "
                    "furnace pressure raised above the chamber's, the sealing rod lifted, a turbo push to heat the plate, "
                    "then every drop atomizing and the powder running down into the container.",
@@ -105,7 +105,7 @@ CLIPS = {
         ],
     },
     "summary": {
-        "title": "Atomizer slide clip: from loading to powder in 45 seconds (draft 3)",
+        "title": "Atomizer slide clip: from loading to powder in 45 seconds (draft 4)",
         "summary": "A whole run in one condensed take, for a slide: the graphite crucible into the induction coil, the "
                    "sealing rod and the charge, the ultrasonic stack into the chamber door, then melting under argon, "
                    "the coil's pulses stirring the melt up the sealing rod, and pouring onto the vibrating plate, which "
