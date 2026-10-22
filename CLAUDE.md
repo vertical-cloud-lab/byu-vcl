@@ -499,24 +499,25 @@ secrets, since they are public identifiers. `YT_FALLBACK_VIDEO_ID` is the embed 
 the API is unavailable. Note the playlist ID is unusually short — that is genuine, not a
 truncation.
 
-**The `picam-ot2` camera now shows the atomizer room, not the OT-2.** As of 2026-10-01 that
-camera (the Pi behind `OT2_STREAM_CAM_HOSTNAME`) streams 144p at 2 fps under workflow
-`atomizer`. Since 19:55 MDT it is also pixelated on the Pi (`PIXELATE_BLOCKS` in its
-`my_secrets.py`, another local `device.py` patch), so that it shows activity rather than
-detail: 32×18 solid blocks at first, 128×72 (2×2 px at 144p) since 22:59 MDT. The overlay is
-drawn afterwards and stays sharp. Its broadcasts
-are titled *atomizer stream picam-ot2, …* and go into the *atomizer Livestreams Playlist*
-(`PLeosQpHvsjiY`), not the OT-2 playlist above. Its settings, change log
-and the archive tooling's 720p assumptions are in [`docs/stream-cams.md`](docs/stream-cams.md),
-along with how the Lambda matches a workflow name to playlists. The match is by substring,
-which matters before renaming one.
-
-**On that camera, the overlay is only a clock from 2026-10-01 18:52 MDT.** Without
-`rpicam-vid --flush`, ffmpeg received frames in 4 KB batches. At 240p and 2 fps the overlay
-stood still for 3–4 s, then jumped, and a third of the frames were copies. The Pi's
-`device.py` now has `--flush` and `-flags low_delay`, a local patch like `SENSOR_MODE`,
-which leaves the overlay about one frame behind capture. Any picam at a low resolution or
-frame rate needs the same patch, and it is worth upstreaming to `ac-training-lab`.
+**The `picam-ot2` camera moved to digital-alloy-lab on 2026-10-22.**
+- Since 2026-10-01 the Pi behind `OT2_STREAM_CAM_HOSTNAME` has streamed the atomizer room
+  (workflow `atomizer`, the *atomizer Livestreams Playlist*). It is now digital-alloy-lab's room
+  camera: `ROOM_CAM_*` there, Pi `rpi-zero2w-ex3f`, `tag:rpi-zero2w-ex3f`.
+- It no longer carries `tag:stream-cam-test`, so this repo's runners can't reach it, and
+  `OT2_STREAM_CAM_*` here name a Pi CI can't SSH to.
+- **The OT-2 and the Pico W are not on that Pi.** Sterling confirmed on 2026-10-22:
+  - the robot is wired to the Pi behind `RPI_STREAM_CAM_HOSTNAME`, which is
+    `rpi-5-stream-cam-2wp0` and still has `tag:stream-cam-test`;
+  - the color sensor, when it's connected, plugs into that same Pi.
+  This repo keeps its path to both. "Reaching the OT-2" and "Reaching the Pico W" above are out of
+  date where they say the OT-2 stream-cam Pi (`OT2_STREAM_CAM_HOSTNAME`); read them as
+  `RPI_STREAM_CAM_*`.
+- Its stream notes (pixelation, the overlay patch, reading the archive back) are now in
+  [digital-alloy-lab's `CLAUDE.md`](https://github.com/vertical-cloud-lab/digital-alloy-lab/blob/main/CLAUDE.md).
+- **One lesson applies to every picam here.** At a low resolution or frame rate, `rpicam-vid`
+  needs `--flush`, plus `-flags low_delay` on ffmpeg. Without them ffmpeg gets frames in 4 KB
+  batches: at 240p and 2 fps the overlay stood still for 3–4 s, then jumped, and a third of the
+  frames were copies. It's worth upstreaming to `ac-training-lab`.
 
 **Reading the livestream archive back.** Two things cost a session to find, both in
 `wireless-color-sensor/ot2/`:
