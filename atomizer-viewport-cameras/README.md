@@ -57,6 +57,21 @@ The rePowder reference summary from #232 (`repowder-reference.zip`) agrees where
 (Indutherm C015/C016). Bartosz: the view ports are hardened glass, the furnace window glass-ceramic
 ([T5 25:10](https://www.youtube.com/embed/58wJ_Khwgyk?start=1510)). It does not dimension any window.
 
+### Other sources, checked 22 October
+
+- **The stack was measured on 8 October** ([#261](https://github.com/vertical-cloud-lab/byu-vcl/issues/261#issuecomment-6069616664)).
+  Those numbers came over from `sgbaird/byu-finances` into PR #255's
+  [`atomizer-training/stack-model/`](https://github.com/vertical-cloud-lab/byu-vcl/tree/2aa95a6/atomizer-training/stack-model)
+  as a CadQuery model. Only the stack's angle reaches outside the chamber, so it is the one number that changes here:
+  `stack_angle` is now the measured 45°, not 40°. The left unit now clears the stack by 61.5 mm instead of 60.3, and
+  nothing else moved. The plate (119.6 × 20.8 mm) and the upper sonotrode (Ø19.9 × 56.6 mm) are inside the chamber,
+  where no mount goes.
+- **There is no better Onshape model of the machine.** The only other rePowder in the lab's Onshape is in vcl-shared ›
+  Lab Models › *Lab equipment (48a9e11)*. It is a rough model built to the 1000 × 800 × 1600 mm spec envelope, and its
+  own README says #255's model replaces it. #255's CadQuery model, which this design is built from, is still the most
+  detailed model of the machine, and it isn't in Onshape.
+- **digital-alloy-lab has no machine dimensions**, only proposal and literature text about the rePowder.
+
 ### What to measure (for @ronnie-guymon)
 
 **[`measure/guide/HOW-TO-MEASURE.md`](measure/guide/HOW-TO-MEASURE.md)** has eight sheets, one per area of the
@@ -99,7 +114,7 @@ A split collar clamps the sight glass ring with one M4 screw. A Camera Module 3 
 behind it and a 5 in Touch Display 2 facing the operator. This is the side view of the nozzle and the plate: the
 one that shows whether the stream lands on the plate or on the sonotrode, which was the 6 October failure. It goes
 where the operator stands to adjust the stack, so it has the biggest picture (active area 110 × 62 mm). The unit
-rides on the door. Its nearest point to the stack is 60 mm. In the model it ends about 30 mm short of the hinge
+rides on the door. Its nearest point to the stack is 61.5 mm. In the model it ends about 30 mm short of the hinge
 line, but the swing with the door open hasn't been checked against the blue frame (`showOpenDoor` in the feature
 shows it).
 
@@ -166,7 +181,8 @@ FeatureScript and adds or updates the four features. [`export.py`](onshape/expor
 views, and [`evalfs.py`](onshape/evalfs.py) evaluates a FeatureScript snippet in the Part Studio.
 
 The whole job took 50 API calls, out of the company's 2,500 a year. They are logged, without bodies, in
-[`onshape/evidence/calls.jsonl`](onshape/evidence/calls.jsonl).
+[`onshape/evidence/calls.jsonl`](onshape/evidence/calls.jsonl). On 22 October, 20 more: 15 to search the company's
+documents and folders for another rePowder model (not logged there), and 5 to set `stack_angle` and re-export (logged).
 
 Two things worth knowing if you script Onshape:
 
@@ -188,7 +204,7 @@ with part names, and writes [`exports/checks.json`](exports/checks.json) and the
 - **Clearances:**
   - front unit's top: 5.9 mm above the LED cover's top (the foot bracket is ≈20 mm above it);
   - top unit: 152 mm from the closed lid, 118 mm from the fully open one;
-  - left unit: 60 mm from the stack.
+  - left unit: 61.5 mm from the stack at its measured 45° (60.3 mm at the earlier 40°).
 
 | Printed part | Bounding box (mm) | cm³ | g (PETG) |
 |---|---|---|---|

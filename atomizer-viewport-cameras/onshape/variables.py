@@ -46,7 +46,7 @@ VARIABLES: list[tuple[str, float, str, str]] = [
     ("lp_ring_d", 65, "mm", "Sight glass ring / nut OD. 58wJ_Khwgyk 77:25; +-15. KF40 clamp or a small threaded sight glass: check."),
     ("lp_protrusion", 30, "mm", "Ring out from the door's outer face. 9kn-HhXCr1o 25:06 (profile); +-10."),
     ("lp_glass_d", 45, "mm", "Sight glass clear diameter. +-12."),
-    ("stack_angle", 40, "deg", "Ultrasonic stack below horizontal, leaving the door. #255 (35-45 from frames)."),
+    ("stack_angle", 45, "deg", "Ultrasonic stack below horizontal, leaving the door. Measured 45 (#261, 8 Oct; PR #255's atomizer-training/stack-model/dims.json). Was 40, from frames."),
     ("stack_z", 885, "mm", "Height where the stack's axis crosses the door's outer face (~130 below the sight glass)."),
     ("stack_d", 60, "mm", "Stack (transducer housing) outer diameter outside the door. Guess."),
     # --- furnace lid and its window (on the lid's front facet)
