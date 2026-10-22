@@ -37,36 +37,70 @@ tailnet ([setup on #231](https://github.com/vertical-cloud-lab/byu-vcl/issues/23
 The Pi only passes that traffic along. The EZstat's USB cable still goes into
 the PC.
 
-### What a Claude session can see from des4 (2026-10-21)
-
-A CI session can reach the PC but can't log in to it, so it can't check the
-software or the EZstat. No Claude session has the PC's Windows password.
+### The PC, as a Claude session sees it (2026-10-21)
 
 | | |
 |---|---|
-| PC | `JPorter-PC`, Windows 7 Professional SP1 (build 7601). It's in a workgroup, not a BYU domain, so it uses local accounts. Its clock was within 1 s of UTC |
+| PC | `JPorter-PC`, Windows 7 Professional SP1 (build 7601), 64-bit, PowerShell 2.0. It's in a workgroup, not a BYU domain, so it uses local accounts. Its clock was within 1 s of UTC |
 | Open ports | Remote Desktop (3389) only. File sharing (139, 445), RPC (135) and WinRM (5985, 5986) are closed, so there's no way in without a Remote Desktop login |
-| Remote Desktop | NLA is offered but not required, so a client gets to the Windows login screen without a password |
-| EZstat | Not plugged into des4 (`lsusb` shows no National Instruments device), which is right. Seeing it on the PC needs a login |
+| Remote Desktop | NLA is offered but not required, so a client gets to the Windows login screen without a password ([screenshot](images/2026-10-21-pc-login-screen-from-ci.png)) |
+| Login | `POTENTIOSTAT_PC_USERNAME` / `POTENTIOSTAT_PC_PASSWORD`, passed to `@claude` runs since #294. The account is a member of Administrators, behind UAC: windows start without admin rights, and installers need **Run as administrator** |
+| EZstat | Its board is a **USB-6221 OEM** (`USB\VID_3923&PID_72E0`), plugged into the PC. Not plugged into des4, which is right |
 
-To reach the login screen from a runner, tunnel through des4 (Tailscale SSH
-allows `-L`), then run FreeRDP:
+The first check over Remote Desktop is in [`pc-check-2026-10-21.md`](pc-check-2026-10-21.md);
+what it means is under [step 0](#step-0-check-the-pc-5-minutes-changes-nothing).
+
+### Driving the PC from a Claude session
+
+The runner can't reach `192.168.231.10` itself, so the Remote Desktop client
+runs **on des4**, on a virtual display, and the session drives it over SSH.
+des4 has FreeRDP 3 and Xvfb. `~/ezrdp/` on des4 holds the rest, copied from
+[`des4/`](des4/) here: `x` runs `xdotool` on that display, and `shot` saves a
+screenshot. `xdotool` isn't installed: `apt-get download xdotool libxdo3 libxtst6`
+and `dpkg -x` each into `~/ezrdp/xdo`, no `sudo` (2026-10-21).
 
 ```bash
-ssh -N -L 127.0.0.1:13389:192.168.231.10:3389 "$CUBXL_PI_USERNAME@$CUBXL_PI_HOSTNAME" &
-xfreerdp /v:127.0.0.1:13389 /sec:tls /tls-seclevel:0 /cert:ignore /size:1024x768
+# 1. A virtual display. Tailscale SSH holds a session open while anything it
+#    started is still running, so wrap every launch in `timeout`.
+timeout 15 ssh "$CUBXL_PI_USERNAME@$CUBXL_PI_HOSTNAME" 'mkdir -p /tmp/ezrdp-fb;
+  setsid Xvfb :99 -screen 0 1280x800x24 -fbdir /tmp/ezrdp-fb -nolisten tcp </dev/null >~/ezrdp/xvfb.log 2>&1 &'
+
+# 2. Log in. Every argument goes over stdin, one per line, so the password is
+#    never in a process list. /drive shares des4's ~/ezrdp/share as \\tsclient\ez.
+printf '%s\n' /v:192.168.231.10 "/u:$POTENTIOSTAT_PC_USERNAME" "/p:$POTENTIOSTAT_PC_PASSWORD" \
+  /cert:tofu /tls:seclevel:0 /sec:nla /size:1280x800 "/drive:ez,/home/<des4 user>/ezrdp/share" \
+  /kbd:layout:0x409 -wallpaper /log-level:WARN |
+  timeout 15 ssh "$CUBXL_PI_USERNAME@$CUBXL_PI_HOSTNAME" \
+  'exec 3<&0; DISPLAY=:99 setsid xfreerdp3 /args-from:stdin <&3 >~/ezrdp/rdp.log 2>&1 &'
+
+# 3. Run something: Win+R, type the command (from stdin), Enter. Results go to
+#    \\tsclient\ez, which is ~/ezrdp/share on des4.
+printf '%s' 'cmd /c powershell -NoProfile -ExecutionPolicy Bypass -File \\tsclient\ez\check-ezstat-pc.ps1 > \\tsclient\ez\report.txt 2>&1' |
+  ssh "$CUBXL_PI_USERNAME@$CUBXL_PI_HOSTNAME" '~/ezrdp/x key super+r; sleep 2; ~/ezrdp/x type --delay 40 --file -; ~/ezrdp/x key Return'
+
+# 4. Look: shot writes a PNG on des4; copy it back and view it.
+ssh "$CUBXL_PI_USERNAME@$CUBXL_PI_HOSTNAME" '~/ezrdp/shot /tmp/s.png >&2 && cat /tmp/s.png' > s.png
+
+# 5. Leave: stopping the client disconnects without logging off.
+ssh "$CUBXL_PI_USERNAME@$CUBXL_PI_HOSTNAME" 'pkill -x xfreerdp3; pkill -x Xvfb'
 ```
 
-- **FreeRDP 2 on Ubuntu 24.04 needs `/tls-seclevel:0` for this PC.** Without it
-  the handshake fails with `ERRCONNECT_TLS_CONNECT_FAILED`: Windows 7's TLS is
-  too old for OpenSSL 3's default level.
-- **Given no user name, xfreerdp offers the runner's login name,** so the login
-  screen shows a `runner` tile ([screenshot](images/2026-10-21-pc-login-screen-from-ci.png)).
-  That isn't an account on the PC.
-- **To log in, a session would need the Windows user name and password** as
-  secrets in `claude.yml`'s `env:` block. Feed the password to xfreerdp with
-  `/from-stdin` rather than `/p:`, which would put it in the process list. That
-  part is untested, since there's no password to test with.
+- **A login takes over the PC's only desktop.** Windows 7 allows one session at
+  a time, so whoever is at the PC is locked out until the session ends.
+- **Disconnect, don't log off.** Stopping the client leaves the Windows session
+  and its programs running, with the PC at its lock screen. Whoever logs in at
+  the PC with the same account gets that session back. Logging off would close
+  whatever they had open.
+- **`/tls:seclevel:0` is required.** Without it OpenSSL 3 refuses Windows 7's
+  TLS (`ERRCONNECT_TLS_CONNECT_FAILED`). FreeRDP 3 logs a parse error for that
+  line but applies it. FreeRDP 2 on a runner spells it `/tls-seclevel:0`.
+- **To test the login without taking over the desktop, add `/auth-only`.** It
+  logs Kerberos errors (expected, as this is a workgroup PC) and *Authentication
+  only, exit status 1*, yet got as far as licensing with the right password.
+  With NLA the PC goes on to licensing only after it accepts the password. A
+  wrong password hasn't been tried, so its output is unknown.
+- **Don't commit desktop screenshots.** The desktop shows other people's folder
+  names, and this repo is public. Crop to the window you need.
 
 ## 2. Accounts and subscriptions: none needed
 
@@ -117,9 +151,11 @@ SHA-256, and that the NI installers carry a code signature.
   Core isolation) can stop old drivers from loading. The PC check reports
   whether it's on. Whether to turn it off is a decision for whoever looks after
   the PC.
-- The EZstat-Pro's 16-bit, 250 kS/s spec matches NI's USB-621x boards (NI
-  6210/11/12/15/16/18), which both NI-DAQmx readmes list. That's an inference:
-  NI MAX will show which board is actually inside (step 2).
+- **The board inside is a USB-6221 OEM** (NI M Series, 16-bit, 250 kS/s),
+  as Windows on the lab PC reported it on 2026-10-21. Not a USB-621x, as
+  this runbook first guessed from the spec. NuVant's 2013 manual names NI-DAQmx
+  9.7 for its EZstats, so 9.7 should drive it. Neither readme's device list has
+  been checked for it.
 
 **To download:** run [`windows/get-ezstat-software.ps1`](windows/get-ezstat-software.ps1).
 It picks the NI-DAQmx for the PC's Windows version, saves everything to
@@ -160,6 +196,24 @@ EZware data files (`*.nuvdt`) and their dates, and any NI USB device plugged in.
 
 If EZware, Run-Time 2011 and an NI-DAQmx that supports LabVIEW 2011 are all
 there, skip step 1 and don't update anything.
+
+**Result on the lab PC, 2026-10-21** ([report](pc-check-2026-10-21.md)): only
+NI-DAQmx is missing.
+
+| Needed | Found |
+|---|---|
+| EZware-2013 | 7.1.16.1025, installed 2026-10-20, in `C:\Program Files (x86)\EZware-2013 v.7.1.16.1025\` |
+| LabVIEW Run-Time 2011 SP1 | 11.0.448.0, installed 2013 (Run-Times 2012 SP1, 2013 and 2014 too) |
+| NI-DAQmx | **Missing.** Only *NI-DAQmx/LabVIEW shared documentation 9.7.5* is left, and no driver version in the registry |
+| NI MAX | 5.5.1 |
+| The EZstat | Windows sees a **USB-6221 OEM** with **problem code 28**, "the drivers for this device are not installed" |
+
+So on this PC, step 1 is NI-DAQmx alone. Unplug the EZstat's USB cable first,
+run the installer as administrator, restart, then plug it back in (step 2).
+NI-PAL 14.0 and NI-VISA 14.0.1 from 2019 are already there. They are newer
+than the ones NI-DAQmx 9.7 bundles, and NI's installers normally keep the newer
+version. If 9.7's installer objects to them anyway, use 14.5.1, which supports
+Windows 7 and LabVIEW 2011 too.
 
 ### Step 1. Install what's missing, in this order (manual p. 40)
 

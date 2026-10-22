@@ -1,0 +1,3 @@
+#!/bin/sh
+# Screenshot of the Xvfb display: shot <out.png> [x y w h] (a crop, in pixels)
+exec python3 "$HOME/ezrdp/xwd2png.py" /tmp/ezrdp-fb/Xvfb_screen0 "$@"
