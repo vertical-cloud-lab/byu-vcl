@@ -422,6 +422,12 @@ reads Cell Potential 10.65 V (2026-10-22). With R1's resistor clipped on, it
 should read about 0 V, since no current flows with the cell off. If it still
 reads about 10.65 V, check the clips before going on.
 
+**Cell Enable is a button at the bench.** On this plastic-cased EZstat the cell
+is on only while the Cell Enable button is pressed in *and* EZware has enabled
+the cell, and the button lights only then (p. 32). A remote session can't press
+it. Someone at the bench presses it in once the clips are on, and out again
+when the run ends, before touching a clip.
+
 **Parts:** 1 kΩ and 10 kΩ resistors (1 %), a 1 µF film capacitor, a
 multimeter. Measure each resistor with the multimeter and write the value in the
 run log, since the check is against that value rather than the label.
