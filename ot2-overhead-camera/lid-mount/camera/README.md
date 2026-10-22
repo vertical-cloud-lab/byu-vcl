@@ -219,3 +219,35 @@ to where the mount is now (about 29 mm toward the back and 5.5 mm to the right).
 SBS-footprint plate of about the same height.
 
 ![The live stream with the setup overlay, 04:00 UTC](frames/2026-10-20/stream_frame_0400Z_setup_overlay.jpg)
+
+## 2026-10-22, 20:46 UTC: live, far out of focus
+
+Asked on [#234](https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-6350897923)
+for the live broadcast, to line the camera up over the plate in slot 7. The stream was up from
+the 19:00 UTC scheduled reboot as [`c4p-guvavJA`](https://www.youtube.com/watch?v=c4p-guvavJA)
+(public, in the playlist, with the cross, the box and the focus score), with no frames dropped.
+Frames pulled back from YouTube ran 12–14 s behind the camera.
+
+The picture was a featureless grey blur
+([frame](frames/2026-10-22/stream_frame_2049Z_lights_on.jpg)): focus score 3–6, against 22–34
+when the deck was sharp on 2026-10-20. That is far blurrier than the out-of-focus wide view of
+15 Oct, where the labware could still be made out, so the zoom has most likely been turned toward
+T without refocusing. The OT-2's own camera showed the same layout as on 18 Oct, with the plate in
+slot 7 ([picture](frames/2026-10-22/ot2_camera_2050Z.jpg)). The numbers are in
+[`frames_2046Z.json`](frames/2026-10-22/frames_2046Z.json).
+
+**Rail lights for the line-up.** Under room light alone the camera saw 6 lux and ran at its
+maximum gain, where the focus score is mostly noise. Nobody at the robot can switch the rail
+lights, since the OT-2 answers only the Pi. So they went on at 20:48:51 UTC, with no run active
+(104 lux, gain 2.5). A transient timer on the Pi switches them off at 23:00 UTC (17:00 MDT):
+
+```bash
+systemd-run --user -G --unit=ot2-rail-lights-off --on-calendar="2026-10-22 23:00:00 UTC" \
+    /usr/bin/python3 /tmp/ot2-rail-lights-off.py
+```
+
+The script leaves the lights alone if a maintenance or protocol run is active, and deletes itself
+afterwards; the timer goes with it. A reboot of the Pi before then drops the timer and leaves the
+lights on. The lights coming on probably also put a one-frame spike of 28 into the overlay's
+"best in 2 min", while the picture stayed the same. A light switching on or off, or a hand in
+view, can do that, so trust a score that holds for a few seconds.
