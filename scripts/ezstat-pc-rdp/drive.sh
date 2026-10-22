@@ -5,7 +5,9 @@
 # POTENTIOSTAT_PC_USERNAME and POTENTIOSTAT_PC_PASSWORD in the environment.
 #
 #   drive.sh start [MAX_S]      copy the helper to the Pi and connect
-#                               (MAX_S: hard stop, default 1800 s)
+#                               (MAX_S: hard stop, default 1800 s). With
+#                               RDP_SHARE=<folder on the Pi>, the PC sees that
+#                               folder as \\tsclient\ez, for copying files over
 #   drive.sh shot NAME          screenshot to $state/png/NAME.png (raw, unredacted)
 #   drive.sh x ARGS...          xdotool ARGS on the session, e.g.
 #                               `x key alt+f`, `x mousemove 40 30 click 1`
@@ -61,6 +63,7 @@ start)
         /size:1280x800 \
         /kbd:layout:0x409 \
         -clipboard \
+        ${RDP_SHARE:+"/drive:ez,$RDP_SHARE"} \
         /log-level:WARN |
         ssh_pi "bash $d/pi_drive.sh start $d $max_s" 2>&1 | redact
     ;;

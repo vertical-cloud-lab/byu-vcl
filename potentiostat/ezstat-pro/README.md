@@ -41,7 +41,7 @@ the PC.
 
 | | |
 |---|---|
-| PC | `JPorter-PC`, Windows 7 Professional SP1 (build 7601), 64-bit, PowerShell 2.0. It's in a workgroup, not a BYU domain, so it uses local accounts. Its clock was within 1 s of UTC |
+| PC | Windows 7 Professional SP1 (build 7601), 64-bit, PowerShell 2.0. It's in a workgroup, not a BYU domain, so it uses local accounts. Its clock was within 1 s of UTC |
 | Open ports | Remote Desktop (3389) only. File sharing (139, 445), RPC (135) and WinRM (5985, 5986) are closed, so there's no way in without a Remote Desktop login |
 | Remote Desktop | NLA is offered but not required, so a client gets to the Windows login screen without a password ([screenshot](images/2026-10-21-pc-login-screen-from-ci.png)) |
 | Login | `POTENTIOSTAT_PC_USERNAME` / `POTENTIOSTAT_PC_PASSWORD`, passed to `@claude` runs since #294. The account is a member of Administrators, behind UAC: windows start without admin rights, and installers need **Run as administrator** |
@@ -53,38 +53,53 @@ what it means is under [step 0](#step-0-check-the-pc-5-minutes-changes-nothing).
 ### Driving the PC from a Claude session
 
 The runner can't reach `192.168.231.10` itself, so the Remote Desktop client
-runs **on des4**, on a virtual display, and the session drives it over SSH.
-des4 has FreeRDP 3 and Xvfb. `~/ezrdp/` on des4 holds the rest, copied from
-[`des4/`](des4/) here: `x` runs `xdotool` on that display, and `shot` saves a
-screenshot. `xdotool` isn't installed: `apt-get download xdotool libxdo3 libxtst6`
-and `dpkg -x` each into `~/ezrdp/xdo`, no `sudo` (2026-10-21).
+runs **on des4**, on a virtual display, and the session drives it over SSH with
+[`scripts/ezstat-pc-rdp/`](../../scripts/ezstat-pc-rdp/). `drive.sh` runs on
+the runner and copies `pi_drive.sh` to a temporary folder on des4 for each
+session. des4 has FreeRDP 3 and Xvfb. `xdotool` isn't installed, but unpacked
+in `~/ezrdp/xdo` (`apt-get download xdotool libxdo3 libxtst6`, then `dpkg -x`
+each, no `sudo`, 2026-10-21).
 
 ```bash
-# 1. A virtual display. Tailscale SSH holds a session open while anything it
-#    started is still running, so wrap every launch in `timeout`.
-timeout 15 ssh "$CUBXL_PI_USERNAME@$CUBXL_PI_HOSTNAME" 'mkdir -p /tmp/ezrdp-fb;
-  setsid Xvfb :99 -screen 0 1280x800x24 -fbdir /tmp/ezrdp-fb -nolisten tcp </dev/null >~/ezrdp/xvfb.log 2>&1 &'
+# Screenshots need numpy and Pillow. drive.sh runs Python with -I, which skips
+# user site-packages, so put them in a venv.
+python3 -m venv /tmp/ezvenv && /tmp/ezvenv/bin/pip install numpy pillow
+export PY=/tmp/ezvenv/bin/python
 
-# 2. Log in. Every argument goes over stdin, one per line, so the password is
-#    never in a process list. /drive shares des4's ~/ezrdp/share as \\tsclient\ez.
-printf '%s\n' /v:192.168.231.10 "/u:$POTENTIOSTAT_PC_USERNAME" "/p:$POTENTIOSTAT_PC_PASSWORD" \
-  /cert:tofu /tls:seclevel:0 /sec:nla /size:1280x800 "/drive:ez,/home/<des4 user>/ezrdp/share" \
-  /kbd:layout:0x409 -wallpaper /log-level:WARN |
-  timeout 15 ssh "$CUBXL_PI_USERNAME@$CUBXL_PI_HOSTNAME" \
-  'exec 3<&0; DISPLAY=:99 setsid xfreerdp3 /args-from:stdin <&3 >~/ezrdp/rdp.log 2>&1 &'
+# 1. Log in. The credentials reach xfreerdp3 over stdin, never in a process
+#    list. 3300 is a hard stop in seconds, after which the client is killed
+#    (a disconnect, not a log-off). RDP_SHARE is optional: the PC then sees
+#    that des4 folder as \\tsclient\ez.
+RDP_SHARE="/home/$CUBXL_PI_USERNAME/ezrdp/share" scripts/ezstat-pc-rdp/drive.sh start 3300
 
-# 3. Run something: Win+R, type the command (from stdin), Enter. Results go to
-#    \\tsclient\ez, which is ~/ezrdp/share on des4.
-printf '%s' 'cmd /c powershell -NoProfile -ExecutionPolicy Bypass -File \\tsclient\ez\check-ezstat-pc.ps1 > \\tsclient\ez\report.txt 2>&1' |
-  ssh "$CUBXL_PI_USERNAME@$CUBXL_PI_HOSTNAME" '~/ezrdp/x key super+r; sleep 2; ~/ezrdp/x type --delay 40 --file -; ~/ezrdp/x key Return'
+# 2. Run something: Win+R, type, Enter, wait, screenshot. One step per line;
+#    see pi_seq.sh. The PNG lands in /tmp/ezmap/png/s1-a.png, and the
+#    script's output in the share, on des4.
+printf '%s\n' 'key super+r' 'sleep 2' \
+  't cmd /c powershell -NoProfile -ExecutionPolicy Bypass -File \\tsclient\ez\check-ezstat-pc.ps1 > \\tsclient\ez\check.out 2>&1' \
+  'key Return' 'sleep 60' 'shot a' | scripts/ezstat-pc-rdp/drive.sh seq s1
 
-# 4. Look: shot writes a PNG on des4; copy it back and view it.
-ssh "$CUBXL_PI_USERNAME@$CUBXL_PI_HOSTNAME" '~/ezrdp/shot /tmp/s.png >&2 && cat /tmp/s.png' > s.png
-
-# 5. Leave: stopping the client disconnects without logging off.
-ssh "$CUBXL_PI_USERNAME@$CUBXL_PI_HOSTNAME" 'pkill -x xfreerdp3; pkill -x Xvfb'
+# 3. Leave: this disconnects without logging off, and cleans up on des4.
+scripts/ezstat-pc-rdp/drive.sh stop
 ```
 
+- **Check who's on the PC before doing anything.** `query user` and
+  `query session` list every Windows session, and `tasklist /v` what's
+  running. Run them with `cmd /c ... > \\tsclient\ez\who.txt` and read the file
+  on des4. On 2026-10-22 ours was the only session, with the PC's own screen at
+  the login prompt.
+- **`(` and `)` don't arrive.** FreeRDP drops them from Xvfb's keymap. Type them
+  as `key shift+9` and `key shift+0`, or better, put the commands in a `.ps1` in
+  the share and type only the `-File` line.
+- **Copying files to the PC goes through the share.** robocopy from
+  `\\tsclient\ez` ran at about 30 MB/s over the 1 Gbit/s cable: 1,241 files,
+  1.95 GB, in 66 s ([`windows/stage-from-des4.ps1`](windows/stage-from-des4.ps1)).
+  The slow part is des4's own download, over its Wi-Fi.
+- **PowerShell's `Add-Content` writes nothing to `\\tsclient`**, and raises no
+  error (2026-10-22). `[IO.File]::AppendAllText`, robocopy's `/LOG:` and
+  `cmd`'s `>` all do write there. A `powershell -File` window closes when the
+  script ends, taking its output with it, so start scripts as
+  `cmd /c powershell ... > \\tsclient\ez\<name>.out 2>&1`.
 - **A login takes over the PC's only desktop.** Windows 7 allows one session at
   a time, so whoever is at the PC is locked out until the session ends.
 - **Disconnect, don't log off.** Stopping the client leaves the Windows session

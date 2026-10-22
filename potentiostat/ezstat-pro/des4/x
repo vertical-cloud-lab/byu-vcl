@@ -1,4 +1,0 @@
-#!/bin/sh
-# xdotool on the Xvfb display that holds the Remote Desktop session (unpacked, not installed).
-export DISPLAY=:99 LD_LIBRARY_PATH="$HOME/ezrdp/xdo/usr/lib/aarch64-linux-gnu"
-exec "$HOME/ezrdp/xdo/usr/bin/xdotool" "$@"
