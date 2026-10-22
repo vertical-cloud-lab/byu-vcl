@@ -380,7 +380,8 @@ section answers it for the towed doser. **None of it has been tried.**
 **Make the cartridge the unit of change.** The cartridge is the tube from outlet to cap, with its flight, gear, collar
 and capillary: 123 mm long, 25 mm across (46 mm at the gear). It holds about 12 g half full. The drive stays on the
 shuttle: the NEMA 11 and pinion, the tilt servo, the cradle and the vibration motor. With the brackets cut into clips,
-as in Plan B, a swap is lift out, drop in. That covers PR 270's checklist:
+as in Plan B ([PR 297](https://github.com/vertical-cloud-lab/byu-vcl/pull/297)), a swap is lift out, drop in. That
+covers PR 270's checklist:
 
 - **Cleaning between powders goes away.** Nothing the powder touches is shared between powders. Cleaning happens off
   the machine.
@@ -414,7 +415,10 @@ as in Plan B, a swap is lift out, drop in. That covers PR 270's checklist:
 ## Plan B: filling Al charge cups for the alloy workflow
 
 Ben's other idea, a doser close to PR 176's size on the head that clips into a stack of cartridges and fills about 50
-of the atomizer's charge cups, is in [`../alloy-cubxl/`](../alloy-cubxl/README.md), with its specs and a model.
+of the atomizer's charge cups, moved to its own PR,
+[PR 297](https://github.com/vertical-cloud-lab/byu-vcl/pull/297), with its specs and a model. Its files go in
+`../alloy-cubxl/`. Its script imports `cubxl_shuttle.py` and `module_views.py` from this folder, so a change to
+either can break it.
 
 ## Where it was first drawn: inside the atomizer chamber
 
