@@ -118,6 +118,9 @@ European time and runs about 3 minutes slow.
   asks which jar to take from: *"All 40-47?" — "Yeah, I believe most of them are. It says exactly
   on it if it is or not"* ([V4 2:13](https://youtu.be/Ev9WMscAetw?t=133)). That reads as being
   about the powder jars from the earlier 4047 runs, not the charge.)
+  *Update, Oct 21:* Gage's run note gives the charge as 169 g of Al 4047
+  ([#261](https://github.com/vertical-cloud-lab/byu-vcl/issues/261#issuecomment-6326014905)), so the
+  exchange may have been about the charge after all. See [`../2026-10-21/`](../2026-10-21/README.md).
 - **The purge was started at the end, then the room was left.** HMI at
   [V4 2:36–3:02](https://youtu.be/Ev9WMscAetw?t=156): chamber 72 then 140 mbar, then vacuum pump and
   vacuum valve, −35 mbar and falling toward the −850 mbar setpoint; O2 1000 ppm, the display's

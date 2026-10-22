@@ -1,0 +1,23 @@
+{
+ "stream": {
+  "video_id": "udS2Xt0a7zQ",
+  "file": "144p (itag 269) live-DVR segments sq 65-3000, concatenated (sq 0-64 had aged out)",
+  "offset_0_mdt": "13:03:23",
+  "clock_check": "65 of 196 overlay crops legible; every one up to 14:28:53 gives 13:03:23, from 14:31:02 on 13:03:32 (a 9 s step after the run) (stream_clock.csv)"
+ },
+ "videos": {
+  "p6Itg-ngMZA": {
+   "name": "Video 1",
+   "stream_offset_s": 1845.0,
+   "r": 0.804,
+   "runner_up_r": 0.23,
+   "halves_offset_s": [
+    1845.0,
+    1845.0
+   ],
+   "start_mdt": "13:34:08",
+   "end_mdt": "14:14:02",
+   "check": "the phone's own clock reads 2:06 in frame at 32:45 (14:06:53), and Gage says '2:10' at 36:33 (14:10:41)"
+  }
+ }
+}

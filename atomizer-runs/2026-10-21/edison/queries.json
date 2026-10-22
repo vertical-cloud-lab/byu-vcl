@@ -1,0 +1,21 @@
+{
+  "issue": 261,
+  "pr": 292,
+  "tasks": [
+    {
+      "slug": "q1-landing-point-and-plate-position",
+      "job_type": "LITERATURE_HIGH",
+      "query": "Context: a laboratory ultrasonic metal atomizer (AMAZEMET rePowder). An induction-melted charge in a boron-nitride-coated graphite crucible is pushed by an argon overpressure of about 0.2 bar through a 0.5-0.7 mm graphite nozzle as a free-falling stream onto a small consumable plate (molybdenum, or carbon-fibre-reinforced carbon) screwed to the tip of a 40 kHz sonotrode stack; droplets fly off the plate inside an argon-filled chamber and solidify. The trainer's rule is that the melt must land 'as high as possible without going over the top, in the middle' of the plate. The plate holder can move up, down, left and right, but there is no fixture, so the landing point is set by eye through a viewport and changes every time the stack is rebuilt. Four of our last five aluminium runs (Al 6063 and Al 4047 = AlSi12, 810-850 C, molybdenum and CFC plates, 1:1 and 1.5:1 boosters) gave little or no powder because the melt landed in the wrong place: short of the plate, too high on the upper sonotrode, or on a frozen lump at the plate tip, where it built up and dripped off. On 2026-10-21 a 169 g AlSi12 charge at 810 C on a small Mo plate at full generator amplitude with the 1.5:1 booster gave very little powder after the operator spent much of the pour correcting the set-up. Question: from the peer-reviewed and patent literature on ultrasonic atomization of liquids and liquid metals on vibrating plates and sonotrode tips, (1) how does the impact position of a liquid stream on a vibrating plate or horn tip (relative to vibration antinodes and nodes and to the plate edges, for flexural and longitudinal modes) affect the local amplitude, the atomization efficiency, the droplet size distribution and the fraction of liquid that runs off, splashes or freezes; (2) which stream parameters (free-fall height, stream diameter, flow rate as set by the overpressure and nozzle bore, impact velocity, superheat) give stable thin-film atomization rather than flooding, splashing or freezing, with quantitative limits such as the maximum flow rate per unit vibrating area or per watt of acoustic power; (3) how reported ultrasonic metal atomizers (3D Lab ATO and AMAZEMET rePowder work by Zrodowski, Kalicki, Wysocki and co-workers; Lierke; Bauckhage; Rai; university rigs) align the nozzle and sonotrode and set or verify the landing point, and what tolerances they quote; (4) reported yields (fraction of the charge collected as powder, and fraction within 20-63 um) for aluminium alloys such as AlSi10Mg, AlSi12 and 6xxx alloys, and where the rest goes (crucible skull, deposits on the plate, splats on chamber walls). Give quantitative values with citations."
+    },
+    {
+      "slug": "q2-reusing-al-si-atomization-scrap-as-feedstock",
+      "job_type": "LITERATURE",
+      "query": "In metal powder production by atomization (gas, ultrasonic or centrifugal) and in aluminium casting, what happens when atomization waste of an Al-Si alloy such as Al 4047 / AlSi12 or AlSi10Mg (splats and frozen lumps from the atomizer plate and chamber walls, crucible skull, and oversize or off-specification powder) is re-melted and used as feedstock for another run? Summarize the quantitative effects on melt oxygen and hydrogen content, oxide film (bifilm) inclusions, melt fluidity, nozzle clogging, the oxygen content and morphology (satellites, irregular particles) of the resulting powder, and yield. Give the recommended practices (cleaning, the maximum fraction of revert, degassing or fluxing, removing fines, drying) and how much more oxide a high-surface-area feedstock such as powder or thin splats carries than bar stock. Cite sources with numbers."
+    },
+    {
+      "slug": "q3-precedent-ultrasonic-atomization-alsi12-on-molybdenum",
+      "job_type": "PRECEDENT",
+      "query": "Has anyone reported ultrasonic atomization (sonotrode or vibrating-plate atomization, for example an AMAZEMET rePowder or 3D Lab ATO Lab) of the near-eutectic aluminium-silicon alloy AlSi12 (Al 4047) or of AlSi10Mg using a molybdenum sonotrode plate, and if so what melt temperature, superheat, overpressure, vibration amplitude and powder yield were used?"
+    }
+  ]
+}
