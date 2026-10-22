@@ -44,10 +44,11 @@ Sources: [T5 10:28–11:41](https://www.youtube.com/embed/58wJ_Khwgyk?start=628)
 stack's axis, and the upper sonotrode stands out past it on the side the melt lands on. Before this, the model had the
 plate's centre on a stud at the end of the sonotrode, with nothing beyond it.
 
-**The committed renders still show the 7 Oct estimate** (the stack at 40°, a 100 × 20 plate, a Ø20 × 55 upper
-sonotrode and the training set-up): every GIF, still and MP4 that shows the stack, here and in
-[`../ppt/`](../ppt/README.md), and the draft 6 tutorials. They wait for one more measurement, where the axis passes
-under the nozzle (below).
+**Every committed render shows the measured stack** (re-rendered 22 Oct with the `measured` set-up, `06b_oct6` with
+`oct6`): the GIFs, stills and hero images here, and every MP4 in [`../ppt/`](../ppt/README.md). How far the stream
+falls still rests on the frame estimate of where the axis passes under the nozzle (below), so measuring that means
+rendering again. The draft 6 tutorials and the slide clips on YouTube still show the 7 Oct estimate (the stack at
+40°, a 100 × 20 plate, a Ø20 × 55 upper sonotrode and the training set-up); they have not been rebuilt or re-uploaded.
 
 - **Sizes, in one block at the top of `model.py`, measured on 8 Oct.** The plate is 119.6 × 20.8 (4.71 × 0.82 in, the
   carbon-fibre and Mo plates alike), the upper sonotrode Ø19.9 × 56.6 (0.785 × 2.23 in), the hole's centre one sonotrode
@@ -246,7 +247,8 @@ When anything is measured, change the constants at the top of `model.py`; every 
 - Three things about the stack are not measured yet: where its axis passes under the nozzle (`IMPACT_Z`, which sets
   how far the stream falls), how far the stack can slide in its housing, and a photo along the axis to confirm the
   plate's clocking (straight down the slope).
-- The fixed camera views were framed for the 7 Oct landing point. `CAM["pour"]` in `steps.py` looks at z = 1030, and in
-  `measured` the stream lands at z = 875, so check the framing at the next render.
+- The pour and stream close-ups (`CAM["pour"]` and `CAM["stream"]` in `steps.py`) were framed for the 7 Oct landing
+  point, z = 1030. For the 22 Oct render they were re-aimed lower, because in `measured` the stream lands at z = 875 and
+  the plate hangs down to z = 851. If `IMPACT_Z` changes, check them again with `PREVIEW=1`.
 - The rod adapter's top stub and the lever's eye are simplified; the safety pin is implied, not drawn.
 - No lettering on any part ("BLUE POWER", "aus500", "GU 500 AMA"); the HMI screen is placeholder rectangles.

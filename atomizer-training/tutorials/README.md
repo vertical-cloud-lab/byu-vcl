@@ -15,6 +15,12 @@ the trainer's clips) is cut as in draft 5, except three real-footage picks swapp
 [the draft 5 review](real-footage.md#review-of-draft-5-frames-at-20-50-and-80--of-every-pick) suggested: the nut from
 below, the star knobs and the rescan. The water test and the respirators are still to look at.
 
+**The animations have moved on since draft 6.** On 22 Oct they were re-rendered with the stack's sizes measured on 8 Oct
+([#261](https://github.com/vertical-cloud-lab/byu-vcl/issues/261#issuecomment-6069616664)): the stack at 45°, the
+119.6 × 20.8 plate hanging straight down its slope and the stream landing 75 mm from its hole
+([`../viz3d/README.md`](../viz3d/README.md)). Draft 6 still has the 7 Oct stack, so every 3D animation segment in it
+changes in the next build.
+
 ## How each tutorial is put together
 
 Every tutorial has the same shape, so the four read as one series:

@@ -32,9 +32,9 @@ CAM = {
     "furnace_top": [(-360, -900, 1800), (0, 0, 1335), (0, 0, 1)],
     "furnace_sec": [(-330, -820, 1430), (5, 0, 1262), (0, 0, 1)],
     "column": [(-820, -2750, 1120), (70, 0, 860), (0, 0, 1)],
-    "pour": [(-620, -1720, 1200), (10, 0, 1030), (0, 0, 1)],
+    "pour": [(-620, -1720, 1140), (10, 0, 970), (0, 0, 1)],        # framed for the measured set-up's plate (z 851-934)
     "chamber": [(-900, -2200, 1000), (110, 0, 760), (0, 0, 1)],
-    "stream": [(-380, -1050, 1080), (5, 0, 1030), (0, 0, 1)],
+    "stream": [(-420, -1155, 1060), (5, 0, 1005), (0, 0, 1)],      # the rod lifting to the plate's free end, and the spray
     "wash": [(-640, -2050, 1280), (70, 0, 1000), (0, 0, 1)],
     "container": [(-750, -2050, 950), (220, -120, 340), (0, 0, 1)],
     "door_out": [(-1750, -700, 1200), (-160, -40, 930), (0, 0, 1)],
@@ -797,7 +797,7 @@ def anim_06_pour():
         show_g()
     sc.step("5.4", "Sealing rod UP: the melt stream falls onto the plate. The first drops usually bounce off: a "
             "cold, dry plate does not wet.", 3.0, rod_up, hold=1.0, live=True, cam_to=CAM["stream"],
-            labels=[lab("sealing rod up", (0, -6, M.Z_CR + 70), 0.70, 0.22),
+            labels=[lab("sealing rod up", (0, -6, M.Z_CR + 50), 0.70, 0.22),
                     lab("melt stream", (0, 0, 1000), 0.70, 0.45)])
 
     def turbo(u):
@@ -948,7 +948,7 @@ def anim_02_stack():
     sc.step("2c.5", "With the stack in the housing, in the training's order: the M8 connector into the sonotrode until "
             "its ring hides, the plate onto it through the hole near its end, then the tungsten upper sonotrode, "
             "torqued against the plate to 50 N\u00b7m, counter-holding with a 17 mm wrench.", 6.8, plate_on, hold=1.2,
-            labels=[lab("plate, carbon fibre 100 \u00d7 20,\nhung by its end", w(M.PLATE_C + M.PLATE_ALONG * 25 + back),
+            labels=[lab("plate, carbon fibre 120 \u00d7 21,\nhung by its end", w(M.PLATE_C + M.PLATE_ALONG * 25 + back),
                         0.06, 0.66),
                     lab("upper sonotrode,\ntungsten alloy", w(M.UPPER_END + back), 0.70, 0.25),
                     lab("M8 connector", w(M.TIP + M.STACK_DIR * 6 + back), 0.70, 0.62)])
@@ -966,7 +966,7 @@ def anim_02_stack():
             n = per_frame(6)
             r = mist.rng
             # over the plate's face, clear of the upper sonotrode on its hole
-            p = pw[None, :] + pa[None, :] * r.uniform(-26, 47, n)[:, None] + pc[None, :] * r.uniform(-9, 9, n)[:, None]
+            p = pw[None, :] + pa[None, :] * r.uniform(-36, 56, n)[:, None] + pc[None, :] * r.uniform(-9, 9, n)[:, None]
             v = sd[None, :] * r.uniform(150, 700, n)[:, None] + r.normal(0, 150, (n, 3))
             mist.p = np.vstack([mist.p, p])
             mist.v = np.vstack([mist.v, v])
