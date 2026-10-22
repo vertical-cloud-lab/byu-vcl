@@ -300,3 +300,63 @@ finger tight. The stream runs 5–20 s behind the lens, so make one small move, 
    the whole lens body; if it moves, screw it back in until snug. Check that the one C–CS adapter is
    screwed fully into the camera, and that the camera's own back-focus ring (just above the adapter)
    is locked by its small screw.
+
+## 2026-10-22, 21:47 UTC: focus at the end of its travel, still blurred
+
+![The plate fills the frame at about 27 mm, but every well is smeared into a triangle](frames/2026-10-22/blur_triangle_2147Z.jpg)
+
+@mcwilliams03 reported the focus thumbscrew at the end of its travel with the picture still
+blurred, and the iris closed down to make it look less soft. A still taken while the stream ran
+([full frame](frames/2026-10-22/still_2147Z_plate_fills_frame.jpg)) has the zoom close to the
+target: the plate fills the frame at about 28–29 px/mm, about 27 mm. But every well is smeared
+from 196 px to a rounded triangle about 330 px across. The triangle is the half-closed iris's
+shape, the signature of defocus. The camera is at its exposure and gain limits (66.7 ms, gain
+15.8), so the overlay's focus score is now mostly noise. The numbers are in
+[`frames/2026-10-22/focus_end_2147Z.json`](frames/2026-10-22/focus_end_2147Z.json).
+
+**No ring on the lens can cause this.** If the lens is seated at the standard C-mount spacing, the
+plate lies inside the focus ring's travel at every zoom. At 27 mm it sits about a third of the way
+from FAR to NEAR, using Waveshare's 0.20 m minimum focus distance. At 21:10, at a wide zoom, the blur
+circle was 1.3 mm. That needs at least 1.8 mm of defocus, even at f/1.4, and at 8–12 mm no focus
+setting gives more than 0.2–0.5 mm. So the distance from the lens to the sensor (flange back, in
+broadcast terms) has changed since the sharp stills of 20 Oct. The ribbon cable to the Pi can't
+blur a picture; a bad one gives no frames or broken ones.
+
+### If focus runs out: check the lens-to-sensor spacing
+
+![Between the deck and the lens, in Tim's photo of 2026-10-09](frames/2026-10-22/lens_stack_2026-10-09_photo.jpg)
+
+From the deck down, the stack is: the camera board, then the camera's mount with its knurled
+**back-focus ring** (held by a small **lock screw**), then **one 5 mm C–CS adapter**, then the
+lens's own thread. Every turn of a thread is 0.79 mm.
+
+**Support the lens before turning anything**: if it has backed out, it may be held by only a
+turn or two above the window.
+
+1. **Note which word the focus thumbscrew stopped at.**
+   - **FAR:** the lens is too far from the sensor, so even at FAR it focuses nearer than the plate.
+   - **NEAR:** the lens is too close to the sensor, so it can't focus as near as the plate.
+2. **Measure the gap** from the deck's underside down to the thin silver ring where the lens's own
+   barrel starts. In the CAD it is **24.4 mm** with one adapter and everything screwed fully in,
+   good to about a millimetre. Each extra millimetre there puts the lens a millimetre too far from
+   the sensor. About 29 mm means two adapters are stacked; about 19 mm means there is no adapter.
+3. **For FAR (or a gap of 26 mm or more):**
+   - Hold the camera's mount (just under the deck) still and screw the whole lens in until it is
+     snug. Turn it like a bulb into a ceiling socket: clockwise looking up at it, so the side facing
+     you moves to your right. This takes up whichever joint has backed out.
+   - Remove a second adapter if there is one. The lens and the camera each came with one.
+   - Loosen the lock screw (small flat screwdriver), screw the back-focus ring in until it stops,
+     and retighten the screw.
+4. **For NEAR (or a gap of 22 mm or less):**
+   - Fit the one adapter if it's missing.
+   - If the adapter is there and everything is snug, use the back-focus ring as a spacer: loosen
+     the lock screw, unscrew the ring half a turn, refocus, and repeat until the plate comes sharp
+     with the focus thumbscrew clear of NEAR. Then tighten the lock screw. This is the broadcast
+     flange-back adjustment.
+5. **Refocus with the iris open.** Open the iris fully, so focus is easiest to see and the
+   triangles become round, and keep the rail lights on. Move the focus from FAR toward NEAR in
+   1–2 mm nudges, waiting about 15 s after each. Then close the iris to about f/5.6–8 and tighten
+   all three thumbscrews.
+
+Don't close the iris to hide blur while focusing. It makes the sharp point harder to find, and it
+drives the camera to its gain limit, where the stream is noisy and the focus score is noise.
