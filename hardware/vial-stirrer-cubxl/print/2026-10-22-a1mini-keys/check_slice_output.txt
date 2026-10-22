@@ -1,0 +1,4 @@
+{"label_id": 158, "name": "0.05 key", "footprint_layer1_mm": [141.3, 78.01, 150.3, 101.99], "footprint_size_mm": [9.0, 23.97], "nub_A_mm": 6.943, "nub_B_mm": 7.659, "nub_layers": 8, "dimples": {"z 9.8, y -8.5": [0.0], "z 10.0, y -8.5": [0.0]}, "dimple_count": 1}
+{"label_id": 180, "name": "0.10 key", "footprint_layer1_mm": [121.5, 78.01, 130.5, 101.99], "footprint_size_mm": [9.0, 23.97], "nub_A_mm": 7.042, "nub_B_mm": 7.758, "nub_layers": 8, "dimples": {"z 9.8, y -8.5": [-1.1, 1.1], "z 10.0, y -8.5": [-1.1, 1.1]}, "dimple_count": 2}
+{"label_id": 202, "name": "0.15 key", "footprint_layer1_mm": [101.7, 78.01, 110.7, 101.99], "footprint_size_mm": [9.0, 23.97], "nub_A_mm": 7.141, "nub_B_mm": 7.856, "nub_layers": 8, "dimples": {"z 9.8, y -8.5": [-2.2, 0.0, 2.2], "z 10.0, y -8.5": [-2.2, 0.0, 2.2]}, "dimple_count": 3}
+wrote plate_layout.png

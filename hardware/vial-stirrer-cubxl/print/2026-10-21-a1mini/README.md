@@ -32,7 +32,9 @@ that it finished, and that the deck keys were a clearance fit in the base's tria
 pockets. That is what the model asked for: Cubware's nub, 0.10 mm smaller than the pocket
 all round, meant to be glued. This G-code reproduces both outlines to 0.01 mm. The key now
 has a press-fit nub, 0.10 mm a side bigger than the pocket, so only the keys need
-reprinting. See [The key nub and pocket](../../README.md#the-key-nub-and-pocket).
+reprinting. See [The key nub and pocket](../../README.md#the-key-nub-and-pocket). The three
+fit-test keys were printed on this printer in the same PETG on 2026-10-22
+([`../2026-10-22-a1mini-keys/`](../2026-10-22-a1mini-keys/README.md)).
 
 | | |
 |---|---|
