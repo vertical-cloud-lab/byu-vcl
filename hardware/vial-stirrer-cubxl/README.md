@@ -57,6 +57,7 @@ the capper and the pipette, instead of its own XIAO RP2040.
 | [`RESEARCH.md`](RESEARCH.md) | What the Pioreactor does, the AC's and other open-source stirrers, design lessons |
 | [`analysis/field_check.py`](analysis/field_check.py) | magpylib check of the field at the Hall sensor (with and without a coupled bar) and at the bar, and its [output](analysis/field_check_output.txt) |
 | [`analysis/key_fit.py`](analysis/key_fit.py) | The deck key's nub against the base's pocket, in the model, the STLs and the printed G-code; draws [`img/key_fit.png`](img/key_fit.png). Its [output](analysis/key_fit_output.txt) |
+| [`analysis/deck_tiling.py`](analysis/deck_tiling.py) | Whether stirrers can sit side by side on the deck's slot grid, and a 49 × 44 mm layout that can, checked in plan; draws [`img/deck_tiling.png`](img/deck_tiling.png) and [`img/deck_tiling_plan.png`](img/deck_tiling_plan.png). Its [output](analysis/deck_tiling_output.txt) |
 | [`../../outputs/issue-169-magnetic-stirrer/`](../../outputs/issue-169-magnetic-stirrer) | Edison answers and the raw vendor lookups |
 
 The Onshape document is
@@ -121,6 +122,63 @@ held by gravity
   45 × 70 mm.
 - The deck plate's real thickness hasn't been measured. The STEP says 10 mm, and the
   keys are 10 mm like Cubware's, which already work on this deck.
+
+## Side by side on the deck
+
+@benwhitney5463 asked on 2026-10-22 whether the stirrers can be made small enough to sit
+side by side, in X and in Y. **They can, but not as built: the parts fit, the base
+doesn't.** [`analysis/deck_tiling.py`](analysis/deck_tiling.py) checks this from the
+model's numbers ([output](analysis/deck_tiling_output.txt)).
+
+![Today's stirrers and compact ones on the same patch of deck](img/deck_tiling.png)
+
+- **The grid sets the spacing.** Cubware's deck has its slots in 18 columns 25 mm apart
+  and 10 rows 45 mm apart, the same across the whole 480 × 490 mm plate. A stirrer's keys
+  take two adjacent columns of one row, so two stirrers can be no closer than two columns
+  (50 mm) in X and one row (45 mm) in Y. To sit that close with 1 mm between them, a
+  stirrer has to fit in 49 × 44 mm.
+- **Today it is 56 × 56 mm,** so it takes three columns and two rows: one stirrer per
+  75 × 90 mm. A 49 × 44 mm one takes 50 × 45 mm, so three fit where one does now.
+- **What makes it 56 mm** is the four corner posts for the holder's M3 × 12 screws, at
+  ±23.5 mm, outside the fan, and the 4.5 mm walls round them. What they hold is smaller:
+  the fan is 40 ± 0.5 mm (Orion's drawing), the cup Ø33.4, and the keys and the parts under
+  the fan stay within ±22.6 mm in X and ±12.4 mm in Y.
+
+![A compact stirrer in plan](img/deck_tiling_plan.png)
+
+**A 49 × 44 mm layout.** It has been checked in plan, not modelled:
+
+- The base and the holder's flange are 49 × 44 mm, with 1.6 mm walls.
+- The corner posts, their four inserts and the four M3 × 12 go. The fan's four screws
+  become M3 × 20, which the BOM's kit has. They pass through the flange and the fan into the
+  same post inserts, with their heads in 3 mm counterbores, so one set of screws holds both.
+- The flange rests on the fan's corners on 0.5 mm pads, which keeps today's 0.5 mm gap over
+  the rotor.
+- The junction board's stop moves 0.5 mm toward +X.
+- The cable notch moves from the −X wall to the −Y wall.
+
+Everything else stays as it is, every height included. The margins: the fan, at the top
+of its tolerance, has 0.15 mm a side inside the walls. The Hall and fan leads have a 2.6 mm
+gap to go down, and the board clears the wall by 0.8 mm. Each screw has 6.0 mm of thread in
+its 5.7 mm insert, with its tip 0.5 mm above the hole floor. With every key anywhere in its
+0.1 mm of slot play, neighbours stay at least 0.5 mm apart in X and 0.7 mm in Y.
+
+What else changes:
+
+- **One Uno drives one stirrer.** D10 is its only free hardware-PWM pin. For several, use
+  the XIAO RP2040 version, one per stirrer, each on its own USB, or one RP2040 board for all
+  of them, with a PWM pin and a Hall input for each.
+- **Cables.** With 1 mm between stirrers, a cable can only leave from a side that faces out
+  of the block. With the notch on −Y, and each stirrer turned so that side faces out, a block
+  two rows deep and any number of columns long works. A third row's cables would have to go
+  up or down through the deck, which hasn't been worked out.
+- **The fan's ±0.5 mm thickness moves the vial instead of the magnet gap.** The carrier and
+  the holder would then both sit on the fan, so the gap between the magnets and the bar no
+  longer depends on how thick the fan is. The vial height does, so teach it.
+- **Vials end up 50 mm apart in X and 45 mm in Y.** The 9-vial holder has them 33 mm apart,
+  so the capper and the pipette get more room, not less.
+- **It is about 30 % smaller in plan, so lighter.** That makes risk 3 below, the capper
+  lifting the stirrer with the vial, a little more likely.
 
 ## The key nub and pocket
 

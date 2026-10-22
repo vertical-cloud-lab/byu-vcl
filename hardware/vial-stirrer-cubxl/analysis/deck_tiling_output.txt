@@ -1,0 +1,55 @@
+CubXL+ deck: 480 x 490 mm, 18 slot columns 25 mm apart from X = 27.5, 10 rows 45 mm apart
+  re-read from PandaDeck.step: 18 columns, X 27.5..452.5, pitch 25.000-25.000; 10 rows, pitch 45.000-45.000
+  A stirrer's two keys take adjacent columns of one row; the vial sits midway between them.
+
+Printed parts today (STL bounds, mm):
+  base         56.0 x 56.0 x 20.0
+  vial_holder  56.0 x 56.0 x 22.0
+
+What sets today's footprint, half-widths from the centre (mm):      X       Y
+  base walls and holder flange (FOOT / 2)                         28.00   28.00
+  corner posts for the holder's M3 x 12s (POST + boss)            27.50   27.50
+  cavity inside the walls (CAV / 2)                               23.50   23.50
+  Hall-lead groove end (makeHolder)                               22.80    2.60
+  electronics under the fan (board to MOSFET tab; diode)          22.60   10.85
+  fan at +0.5 tolerance                                           20.25   20.25
+  fan posts (FAN_PITCH / 2 + boss)                                20.00   20.00
+  keys (KEY_X + KEY_W / 2; (SLOT_C + KEY_W) / 2)                  17.40   12.40
+  vial cup (CUP_OD / 2)                                           16.70   16.70
+
+Pitch on the grid, leaving a 1 mm gap:
+  today    56 x 56 mm: every 3 columns x every 2 row(s) = one per 75 x 90 mm; 30 on the whole plate if nothing else were on it
+  compact  49 x 44 mm: every 2 columns x every 1 row(s) = one per 50 x 45 mm; 90 on the whole plate if nothing else were on it
+
+Compact layout, checked in plan (and the one screw that changes):
+  ok  X: footprint + gap fits 2 columns (mm)                                1.00   (need >= 1.00)
+  ok  Y: footprint + gap fits 1 row (mm)                                    1.00   (need >= 1.00)
+  ok  fan at +0.5 tolerance inside the walls, Y side (mm a side)            0.15   (need >= 0.10)
+  ok  fan at +0.5 tolerance inside the walls, at the corners (mm)           0.15   (need >= 0.10)
+  ok  Hall and fan leads: gap from fan (+0.5) to the -X wall (mm)           2.65   (need >= 2.00)
+  ok  junction board inside the walls (mm)                                  0.80   (need >= 0.20)
+  ok  junction board clear of the fan posts (mm)                            3.10   (need >= 0.20)
+  ok  MOSFET inside the walls (mm)                                          1.30   (need >= 0.20)
+  ok  MOSFET clear of the fan posts (mm)                                    7.00   (need >= 0.20)
+  ok  diode inside the walls (mm)                                           9.55   (need >= 0.20)
+  ok  diode clear of the fan posts (mm)                                     4.53   (need >= 0.20)
+  ok  stop inside the walls (mm)                                           15.40   (need >= 0.20)
+  ok  stop clear of the fan posts (mm)                                     14.53   (need >= 0.20)
+  ok  Hall groove ends inside the walls (mm)                                0.10   (need >= 0.00)
+  ok  keys inside the footprint (mm)                                        7.10   (need >= 0.00)
+  ok  counterbores: wall to the flange edge (mm)                            2.75   (need >= 1.20)
+  ok  counterbores: wall to the cup (mm)                                    2.68   (need >= 1.20)
+  ok  cable notch clear of the -X,-Y fan post (mm)                          1.00   (need >= 0.50)
+  ok  cable notch clear of the diode (mm)                                   7.00   (need >= 0.50)
+  ok  cable notch wide enough for the cable (mm)                            8.00   (need >= 6.00)
+  ok  M3 x 20: counterbore depth (mm)                                       3.00   (need >= 0.00)
+  ok  M3 x 20: thread in the insert (mm)                                    6.00   (need >= 5.70)
+  ok  M3 x 20: tip above the hole floor (mm)                                0.50   (need >= 0.30)
+
+Gap to the neighbour with every key anywhere in its slot's 0.1 mm play (worst case):
+  X         0.53 mm
+  Y         0.69 mm
+  diagonal  5.27 mm
+
+0 check(s) failed
+wrote img/deck_tiling.png, img/deck_tiling_plan.png
