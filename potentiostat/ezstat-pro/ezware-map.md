@@ -234,7 +234,7 @@ The window also has:
 
 ### 3.7 Hardware facts the software depends on
 
-- **Cell enable is in software only on metal-cased EZstats.** Plastic-cased ones also have a front-panel Cell Enable switch that must be pressed in (p. 30). Check which case this one has.
+- **Cell enable is in software only on metal-cased EZstats.** Plastic-cased ones also have a front-panel Cell Enable switch that must be pressed in (p. 30). **This one is metal-cased:** its front panel has a Power button and no other switch (checked at the bench, 2026-10-22). So EZware's Cell ON/OFF is the only thing that turns the cell on, and nothing on the instrument shows the cell's state.
 - **Exiting EZware disables the cell**, and so do a PC shutdown, a reboot or a power cut. But *"in event of a PC system STOP … the load may remain in an 'ON' but uncontrolled state"* (pp. 26, 30). So turn off sleep and Windows Update before long runs.
 - **The back-panel I/O connector** (p. 36):
   - pin 1: analog out AO1
@@ -250,7 +250,7 @@ The window also has:
   | Potentiostat | ±1 µA, ±100 µA, ±10 mA, ±1 A | ±1 µA, ±100 µA, ±10 mA, ±1 A |
 
   NuVant's 2013 LabVIEW driver settles it for this generation. Its EZstat-pro tables give potentiostat ranges of 10 nA–1 µA, 1–100 µA, 100 µA–10 mA and 10 mA–1 A, and galvanostat ranges of 1–100 µA, 0.1–1 mA, 1–100 mA and 0.1–1 A, as in the **2013 manual**. EZware 7.1's own labels are `10nA ~ 1uA`, `1uA ~ 100uA`, `100uA ~ 10mA` and `10mA ~ 1A`. The ranges' feedback resistors are 499 kΩ, 45.4 kΩ, 499 Ω and 9.09 Ω (potentiostat) and 100 kΩ, 10 kΩ, 100 Ω and 9.09 Ω (galvanostat).
-- **Self-test needs the leads off and a physical Cell Enable switch on.** The program's prompt: *"Please disconnect the electrode cables before running the selft test. Turn the manual "Cell Enable" switch ON. Press OK when ready."*
+- **Self-test needs the leads off and a physical Cell Enable switch on.** The program's prompt: *"Please disconnect the electrode cables before running the selft test. Turn the manual "Cell Enable" switch ON. Press OK when ready."* This EZstat has no such switch, so only the first part applies to it.
 
 ### 3.8 Files EZware reads and writes
 

@@ -135,7 +135,7 @@ the full sensor). Camera 1 looks along the deck and doesn't show the EZstat.
 
 **At 03:43 UTC, only a corner, maybe.** Camera 0's frame ended at the CubXL's
 Genmitsu controller. At the bottom-right edge was the corner of a beige box,
-the colour of the EZstat's plastic case (manual p. 36).
+the colour of the EZstat's case.
 
 ![The overhead deck camera at 03:43 UTC; the red box is the beige corner](images/2026-10-22-deckcam-ezstat-corner.jpg)
 
@@ -143,7 +143,7 @@ the colour of the EZstat's plastic case (manual p. 36).
 camera 0's view and laid the leads on top of it, and confirmed their labels:
 the black ones WORKING and WORKING SENSE, red COUNTER, white REFERENCE, green
 GROUND. Each lead ends in a stackable banana plug, with a push-on clip in
-front. They're already paired the way R1–R3 need:
+front. They're already paired the way R1–R3 need, and were unchanged at 21:17:
 
 | Clip | Plugs on it |
 |---|---|
@@ -151,20 +151,29 @@ front. They're already paired the way R1–R3 need:
 | White | REFERENCE, with COUNTER (red) stacked into its back |
 | Green | GROUND, on its own |
 
-The camera sees only the top, so the front panel (power light, Cell Enable,
-the electrode connector) is still out of view. A small black box with a
-cable gland also sits on top. The reference and working-sense wires seem to
-run into it, so it may be part of the electrode cable; not confirmed.
+**It's the metal-cased EZstat-Pro, with no Cell Enable button.** Its front
+panel has a Power button and no other switch (Ben, at the bench, 2026-10-22).
+That's the metal-cased model in the manual (p. 30, Figure 1, bottom): its
+electrode connector is a 15-pin socket, and EZware alone turns its cell on and
+off (p. 32). The top that camera 0 sees, painted sheet metal with stamped vent
+slots and screws, fits. From above, the camera can't see the front panel.
 
-![Camera 0 at 18:25 UTC, with the leads labelled](images/2026-10-22-deckcam-ezstat-leads.jpg)
+**The black box is part of the electrode cable.** The REFERENCE and WORKING
+SENSE leads connect to it, and it connects back into the EZstat's electrode
+connector (Ben, 2026-10-22). Leave it in place. The manual wants counter,
+reference, working sense and working all connected (p. 35), and only the
+cables supplied with the instrument used (p. 29). A resistor run that passes
+checks the box along with the rest of the cable.
 
-**Where it is now covers the CubXL's E-stop.** The EZstat sits on the
-Genmitsu controller. In the 03:43 frame the controller's Resume, Pause and
-Reset buttons and its red E-stop are in plain view. At 18:25 only the Speed
-knob and part of the Resume label show. The manual also asks for nothing on
-top of the EZstat (p. 28); see §5.
+![Camera 0 at 21:17 UTC: the paired clips and the black box](images/2026-10-22-deckcam-leads-2117.jpg)
 
-![Last night and now, same part of the frame: the E-stop is under the EZstat](images/2026-10-22-deckcam-estop-covered.jpg)
+**The CubXL's E-stop is beside it, not under it.** Seen from camera 0, the
+EZstat now hides the Genmitsu controller's Resume, Pause and Reset buttons and
+its red E-stop, which were in plain view at 03:43. A Claude session took that
+to mean the EZstat was covering them. It isn't: Ben confirmed at the bench
+(2026-10-22) that they're right next to it and all within reach. Only the
+camera's view of them is lost, so a remote session can't see whether the E-stop
+is pressed.
 
 ## 2. Accounts and subscriptions: none needed
 
@@ -361,9 +370,9 @@ deleted afterwards. The PC keeps its copy in `Downloads\ezstat-software\NIDAQ970
 
 ### Step 2. Plug in the EZstat: now, and not before
 
-1. Nothing connected to the leads, and the **Cell Enable** button out (off).
-   Metal-cased EZstats have no such button; EZware enables the cell instead
-   (manual p. 32).
+1. Nothing connected to the leads. Plastic-cased EZstats have a **Cell
+   Enable** button: have it out (off). This one is metal-cased and has no such
+   button; EZware alone enables the cell (manual p. 32).
 2. Plug the USB cable into the back of the EZstat, but not into the PC yet.
 3. Plug in the power supply, at least 1 ft from the EZstat to keep its noise
    out of the signal (manual p. 36). Press the power switch: it lights green and
@@ -391,7 +400,7 @@ deleted afterwards. The PC keeps its copy in `Downloads\ezstat-software\NIDAQ970
 |---|---|
 | 6. Configure | The list showed **Dev1 – USB-6221 (OEM)**. After **DONE** there was no model prompt: EZware identified the EZstat-Pro itself. Its titles now end in *Dev1*, the EZstat-pro logo shows, and Messages reads *Hardware Initialized and Running* ([screenshot](images/2026-10-22-ezware-configured.png)). Help → Instrument Info gives *DAQ card SN: 1A801CD*, NI MAX's serial |
 | It sticks | Closed and reopened, EZware comes straight up on Dev1. The choice is in `%LOCALAPPDATA%\NuVant\EZware\Instr_config\EZstat_general_conf.xml`, in the Windows user's own profile, so **another Windows account has to repeat item 6** |
-| Idle reading | Cell OFF, Potentiostat, 10 mA – 1 A range: **Cell Potential 10.65 V, Cell Current 0 A**, steady. That looks like an input with nothing on the leads, sitting at the top of its range. Unconfirmed at the bench. With R1's resistor connected and the cell still off, it should drop to near 0 V |
+| Idle reading | Cell OFF, Potentiostat, 10 mA – 1 A range: **Cell Potential 10.65 V, Cell Current 0 A**, steady. That looks like an input with nothing on the leads, sitting at the top of its range. Unconfirmed at the bench. With a resistor connected and the cell still off, it should drop to near 0 V |
 | 7. Sleep | Never sleep or hibernate, in all four power plans, plugged in and on battery. USB selective suspend off, so Windows can't power down the EZstat's board. Hibernation off. Start → Sleep still works if someone picks it |
 | 7. Windows Update | It had been set to **install updates automatically**, with its service running and 430 MB of downloaded updates waiting. Now: never check, Automatic Updates disabled by policy, no automatic restart with someone logged on, and the service stopped and disabled |
 
@@ -414,23 +423,37 @@ manual asks for both: "If no reference electrode is used, the reference lead
 must be connected to the counter electrode lead" (p. 31), and working sense goes
 with working (p. 103). So the order above becomes the white clip, then the black
 clip. Ground isn't used for a dummy load, so leave the green clip free. Lay the
-load on something that doesn't conduct, with no clip touching another clip or
-anything metal.
+load on paper or plastic, with no clip touching another clip or anything metal.
+The EZstat's case is metal, screws included, so not straight on its top.
 
 **Wiring check, with the cell still off.** With nothing on the leads, EZware
-reads Cell Potential 10.65 V (2026-10-22). With R1's resistor clipped on, it
+reads Cell Potential 10.65 V (2026-10-22). With a resistor clipped on, it
 should read about 0 V, since no current flows with the cell off. If it still
 reads about 10.65 V, check the clips before going on.
 
-**Cell Enable is a button at the bench.** On this plastic-cased EZstat the cell
-is on only while the Cell Enable button is pressed in *and* EZware has enabled
-the cell, and the button lights only then (p. 32). A remote session can't press
-it. Someone at the bench presses it in once the clips are on, and out again
-when the run ends, before touching a clip.
+**There's no Cell Enable button: EZware alone switches the cell.** On this
+metal-cased EZstat the cell is on whenever EZware has turned it on (p. 32), and
+nothing on the instrument shows it. The Power button's light means power only.
+(An earlier version of this runbook assumed the plastic-cased model, whose
+Cell Enable button has to be pressed in as well.) So:
+
+- A remote session can run a method from start to finish, with nobody pressing
+  anything.
+- Before touching a clip, make sure EZware shows Cell OFF, or isn't running:
+  exiting EZware disables the cell (p. 32). While a Claude session is logged
+  in, the PC's own screen shows only its lock screen, so wait until the session
+  says the cell is off. A session ends each run with the cell off and EZware
+  closed.
+- In an emergency, the Power button switches the whole EZstat off.
 
 **Parts:** 1 kΩ and 10 kΩ resistors (1 %), a 1 µF film capacitor, a
 multimeter. Measure each resistor with the multimeter and write the value in the
-run log, since the check is against that value rather than the label.
+run log, since the check is against that value rather than the label. Note the
+meter's model too: a handheld meter's own resistance accuracy is often 0.2–1 %,
+not far off the 1 % pass band.
+
+On 2026-10-22 the bench had a 10 kΩ but no 1 kΩ, so **R2 goes first.** Its
+resistor measured 10.00 kΩ.
 
 | Run | Load and wiring | Recipe | Passes if |
 |---|---|---|---|
@@ -438,9 +461,13 @@ run log, since the check is against that value rather than the label.
 | R2 | 10 kΩ, same wiring | Same CV, with current range 100 µA | ±50 µA, slope within 1 % |
 | R3 | Dummy cell: 1 kΩ in series with (10 kΩ in parallel with 1 µF). Working and working sense on the 1 kΩ end, reference and counter on the other | **Technique → Step Techniques → Step Impedance Spectroscopy** (runs at controlled current). Initial current 0 A; pulse amplitude 50 µA; pulse width 0.1 s; relaxation 0.5 s; sampling interval as short as it allows, ideally 0.01 ms | At the pulse edge the potential jumps 50 mV (the 1 kΩ), then rises to about 0.55 V with a 10 ms time constant. EZware's SIS analysis (manual p. 90) gives Rs ≈ 1 kΩ, Rct ≈ 10 kΩ, Cdl ≈ 1 µF. With 1 ms sampling, only the 0.55 V plateau and the 10 ms time constant can be checked: the 50 mV jump can't be told apart from the start of the rise |
 
-- R1 is NuVant's own instrument check (manual p. 103). If it fails, the
-  instrument or software is at fault, not a cell.
-- R2 checks a second current range.
+- R1 and R2 are each NuVant's own instrument check (manual p. 103), which asks
+  for "a resistor", of no particular value. If one fails, the instrument or
+  software is at fault, not a cell.
+- R2 checks the 100 µA current range, R1 the 10 mA one, so either can go
+  first. R2 needs only its own resistor; R1 and R3 both need the 1 kΩ.
+- With 10 kΩ, nothing in R2 can overheat: even at the EZstat's ±25 V
+  compliance limit (p. 9), the resistor carries 2.5 mA and 63 mW.
 - R3 checks the galvanostat and the step-impedance analysis. Without EIS, SIS is
   this instrument's way to measure solution resistance from a current step, which
   is what a conductivity reading needs (Block B in #231).
@@ -473,17 +500,21 @@ run log, since the check is against that value rather than the label.
 
 ## 5. Safety (manual pp. 26–37)
 
-- Never connect or disconnect a lead while the cell is enabled.
+- Never connect or disconnect a lead while the cell is enabled. On this
+  EZstat, only EZware shows whether it is (step 3).
 - Don't leave a run unattended. A shutdown, restart or power cut disables the
-  cell, but a frozen PC can leave it on and uncontrolled.
+  cell, but a frozen PC can leave it on and uncontrolled. This EZstat has no
+  Cell Enable button to cut it off by hand, only Power.
 - Plug the power supply into an earthed outlet, with its cord where someone can
   pull it out (p. 28). Keep the power supply at least 1 ft from the EZstat
   (p. 36).
 - Stand the EZstat on a flat, hard surface, with 2 in of space behind and above
   it, 3 in at the sides, nothing in front of it, and nothing on top of it
   (pp. 28 and 37). Its fan is at the back.
-- Don't stand it on the CubXL's Genmitsu controller. That covers the gantry's
-  E-stop, as it did on 2026-10-22 ([pictures](#what-des4s-cameras-see-of-the-ezstat-2026-10-22)).
+- Keep the CubXL's E-stop and its Resume, Pause and Reset buttons within
+  reach. Where the EZstat has stood since 2026-10-22, they're right beside
+  it, though hidden from the overhead camera ([pictures](#what-des4s-cameras-see-of-the-ezstat-2026-10-22)).
+- Its case is metal: keep clips and bare resistor leads off it.
 - Use only the cables that came with it.
 
 ## 6. After the dummy loads
