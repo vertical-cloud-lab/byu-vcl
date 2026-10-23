@@ -360,3 +360,67 @@ turn or two above the window.
 
 Don't close the iris to hide blur while focusing. It makes the sharp point harder to find, and it
 drives the camera to its gain limit, where the stream is noisy and the focus score is noise.
+
+## 2026-10-23, 18:08 UTC: focus ran out at NEAR, with the stack at its shortest
+
+![What to turn, and why the lens needs 5 mm more room](frames/2026-10-23/back_focus_fix.png)
+
+@timothy-commins found the focus thumbscrew stopped at **NEAR**, and the gap from the deck to the
+lens's silver rim at **about 16 mm, with no way to make it shorter**. He asked whether the knurled
+piece could come off. A still taken while the stream ran
+([half resolution](frames/2026-10-23/still_1808Z_focus_at_near.jpg)) hasn't changed since 21:47 the
+day before: the plate fills the frame at about 27 mm, and every well is still smeared into the iris's
+triangle. Exposure and gain are at their limits with the rail lights on, so the iris is still well
+closed. The numbers are in [`frames/2026-10-23/still_1808Z.json`](frames/2026-10-23/still_1808Z.json).
+[`back_focus_fix.py`](back_focus_fix.py) draws the figure.
+
+**Both readings say the lens sits too close to the sensor:**
+
+- **The ring stopped at NEAR.** Focusing nearer moves the picture further behind the lens, and NEAR
+  is the end of the ring that moves it furthest. If the plate is still soft there, the picture is
+  forming behind the sensor, so the lens needs more distance from the sensor, not less.
+- **The stack is at its shortest.** A stack that can't get shorter means the knurled back-focus
+  ring is screwed fully in.
+  - Tim's 9 Oct photo shows no C–CS adapter between that ring and the lens's silver rim.
+  - In that state the lens sits at the 12.5 mm CS flange distance. A C-mount lens is built for
+    17.53 mm, so it is 5.0 mm too close.
+  - Raspberry Pi's drawing puts the ring's face 14.4 mm in front of the camera board. That is
+    **16.4 mm from the board's back**, which matches Tim's 16 mm, and about 19.7 mm from the deck
+    plate itself.
+  - With one adapter, the same two gaps are about 21.5 and 24.8 mm.
+- **How it got there:** on 20 Oct the deck was sharp at the wide end, which can't happen 5 mm short.
+  So the ring must have been backed out to make up for the missing adapter, as Seth did in July
+  ([#84](https://github.com/vertical-cloud-lab/byu-vcl/pull/84#issuecomment-5049822601): "the
+  adapter ring was pushed in too far"). It has been screwed back in since. It is easy to take for
+  one of the lens's own rings.
+
+**Don't take the knurled ring off.** The lens screws into it, and taking spacing out would move the
+lens further the wrong way.
+
+### The fix: 5 mm more between the lens and the sensor
+
+Support the lens throughout.
+
+1. **Best: fit one C–CS adapter.** It is a plain black threaded ring about 5 mm thick; the camera
+   and the lens each shipped with one.
+   - Unscrew the lens: counter-clockwise looking up, so the side facing you moves to your left.
+   - Screw the adapter into the knurled ring until it seats.
+   - Screw the lens into the adapter until it is snug.
+   - Leave the ring screwed fully in and its lock screw tight, so the spacing can't drift.
+2. **Without an adapter: use the knurled ring as the spacer.**
+   - Loosen its lock screw 1–2 turns.
+   - Grip the ring itself, not the lens, and turn it so it moves down, away from the deck. For a
+     normal thread that is counter-clockwise looking up; if the gap shrinks, turn it the other way.
+   - Stop when the gap has grown by about 5 mm (Tim's 16 mm to about 21 mm). The ring covers 12.5 to
+     22.4 mm of back focus
+     ([product brief](https://datasheets.raspberrypi.com/hq-camera/hq-camera-product-brief.pdf)),
+     so 5 mm out is mid-range.
+   - Retighten the lock screw.
+3. **Refocus.**
+   - Open the iris fully.
+   - Start the focus thumbscrew at FAR and nudge it toward NEAR, waiting about 15 s for the stream
+     each time. At about 27 mm zoom the plate should come sharp about a third of the way from FAR.
+   - Close the iris to about f/8 and tighten all three thumbscrews.
+
+If the plate now comes sharp only at FAR, the spacing is too long: back the ring in a little. If
+it's never sharp, post the new gap.
