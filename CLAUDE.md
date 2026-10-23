@@ -455,10 +455,35 @@ gets that login:
   [ha-bambulab PR 2058](https://github.com/greghesp/ha-bambulab/pull/2058)). A code posted in a
   thread is the account until it expires. If Studio asks for an e-mailed code instead of the
   authenticator code, stop and say so in the thread.
-- **Prepare in a plain `@claude` run; send in `@claude-print`.** Slicing, plate checks, and
-  status and camera over LAN from a Pi need no login. End the prep run by asking the person to
-  comment `@claude-print` naming the exact file (branch and path) and printer, so the approver
-  can see what they are approving.
+- **Prepare in a plain `@claude` run; send in `@claude-print`.** Slicing, and status and
+  camera over LAN from a Pi, need no login. End the prep run by asking the person to comment
+  `@claude-print` naming the exact file (branch and path) and printer, so the approver can see
+  what they are approving.
+- **Nobody replies `plate clear` any more (sgbaird, 2026-10-23).** The print run reads the
+  plate itself and gives people a window to stop it. This replaces the person's go in rule 1
+  and §4.1 of byu-vcl's `bambu/README.md`, which an older branch may still show.
+  1. **A fresh frame comes first.** Before slicing, exporting or anything else, log in to
+     Studio, open the printer on the Device page, and save its camera still. Commit it and put
+     it at the top of the tracking comment with its UTC time, the printer's state, the file and
+     printer you are about to print, the plate type it was sliced for, and your own read of the
+     plate. Anyone watching the thread can then cancel the run within minutes of approving it.
+  2. **Judge the plate yourself.** Go only if the frame is bright enough to tell and shows
+     nothing but the plate, the toolhead's shadow and the base sticker. If it is dark, if
+     anything is on the plate, or if you can't tell, don't send: say what you see and wait for
+     a person. That is the one case that needs a reply.
+  3. **Wait at least 5 minutes** after the frame is posted, doing the rest of the prep
+     meanwhile, and poll the thread for new comments. Any comment asking to stop, wait or
+     change something holds the send; act on it. With no reply, send. A go from someone with
+     write access ends the wait early.
+  4. **Take another frame right before Send.** If the plate looks different, post it and start
+     the 5 minutes again.
+  5. **Still list what a person could check,** as suggestions rather than something to reply
+     to: the plate type, room for the bed to travel, and someone near the printer. The rest of
+     the runbook stands: an idle printer with no HMS alert, working hours, the recording, and
+     watching the print. In `print.json`, record the go as the frame, when the wait ended, and
+     any replies.
+
+  People replying should leave out `@claude` and `@claude-print`, which start another run.
 - **Studio GUI details** are in byu-vcl's runbook, `bambu/studio/README.md` on
   [byu-vcl PR 234](https://github.com/vertical-cloud-lab/byu-vcl/pull/234)'s branch: setup,
   the login page, Send, and watching a print. Its "e-mail code" section is superseded by this
