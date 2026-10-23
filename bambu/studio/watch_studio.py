@@ -25,6 +25,12 @@ ENV = dict(os.environ, DISPLAY=":99")
 REG = {"nozL": (1368, 158, 1480, 192), "nozR": (1368, 208, 1480, 242), "bed": (1350, 262, 1480, 292),
        "chamber": (1350, 317, 1480, 347), "job": (420, 895, 1300, 1012)}
 CAM = (274, 136, 1298, 794)
+# The A1 mini's Device page (2026-10-23) has one nozzle and no chamber: its nozzle line sits where
+# the H2D's left nozzle is and its bed line where the H2D's right nozzle is. WATCH_LAYOUT=a1mini
+# selects that; BED_TARGET is the bed temperature the file sets (55 on the H2D, 65 on the A1 mini).
+if os.environ.get("WATCH_LAYOUT") == "a1mini":
+    REG = {"nozL": (1340, 158, 1480, 192), "bed": (1340, 208, 1480, 246), "job": REG["job"]}
+BED_TARGET = int(os.environ.get("BED_TARGET", 55))
 
 def ocr(img, box, psm=6):
     c = img.crop(box)
@@ -52,10 +58,10 @@ while time.time() - t0 < MINUTES * 60:
     img = Image.open(full).convert("RGB")
     rec = {"utc": now}
     for k in ("nozL", "nozR", "bed", "chamber"):
-        rec[k] = temps(ocr(img, REG[k], 7))
+        rec[k] = temps(ocr(img, REG[k], 7)) if k in REG else None
     job = re.sub(r"\s+", " ", ocr(img, REG["job"]))
     rec["job"] = job
-    m = re.search(r"Layer[:;]?\s*(\d+)\s*/\s*(\d+)", job); rec["layer"] = [int(m.group(1)), int(m.group(2))] if m else None
+    m = re.search(r"Layer[:;.,]?\s*(\d+)\s*/\s*(\d+)", job); rec["layer"] = [int(m.group(1)), int(m.group(2))] if m else None
     m = re.search(r"(\d{1,3})\s*%", job); rec["percent"] = int(m.group(1)) if m else None
     cam = img.crop(CAM); st = ImageStat.Stat(ImageOps.grayscale(cam))
     rec["cam_luma"], rec["cam_std"] = round(st.mean[0], 1), round(st.stddev[0], 1)
@@ -74,15 +80,16 @@ while time.time() - t0 < MINUTES * 60:
     if new:
         img.save(f"{OUT}/dialog_{now}.png"); code, why = 20, f"new window(s): {new}"; break
     for k, hi in (("nozL", 260), ("nozR", 260), ("bed", 80)):
-        if rec[k] and (rec[k][0] > hi or rec[k][1] > hi):
+        # The current reading only: on the A1 mini page OCR reads the bed's "41 /65" as "41 165".
+        if rec[k] and rec[k][0] > hi:
             code, why = 20, f"hard limit: {k}={rec[k]}"; break
     if code == 20:
         break
     if saw_print and rec["layer"] and rec["layer"][0] >= 2:
         if rec["nozL"] and rec["nozL"][1] not in (0, 220) and rec["nozL"][1] < 260:
             print(f"{now} note: left nozzle target {rec['nozL'][1]} (file says 220)", flush=True)
-        if rec["bed"] and rec["bed"][1] not in (0, 55):
-            print(f"{now} note: bed target {rec['bed'][1]} (file says 55)", flush=True)
+        if rec["bed"] and rec["bed"][1] not in (0, BED_TARGET):
+            print(f"{now} note: bed target {rec['bed'][1]} (file says {BED_TARGET})", flush=True)
     if saw_print and rec["percent"] == 100 and not re.search(r"Pr\w{0,2}nt\w{0,3}g", job):  # OCR gives "Printng" too
         img.save(f"{OUT}/finished_{now}.png"); cam.save(f"{OUT}/frames/{now}_finished.jpg", quality=90)
         code, why = 0, "job shows finished"; break
