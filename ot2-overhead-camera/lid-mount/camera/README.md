@@ -533,3 +533,53 @@ spot. The auto white balance held still to 0.1 % through the sweep, so the numbe
    fit the second.
 3. **Zoom out** until the plate's outline fills the orange box. More spacing also makes the picture
    bigger. Then finish with the focus thumbscrew, and turn the knurled ring up if it overshoots.
+
+## 2026-10-23, 20:42 UTC: before adding spacing, zoom out, and mind the window
+
+@timothy-commins read the sweep the same way: turn 0 is the sharpest, so the lens needs another
+spacer. Two things limit how far that goes, and one of them may make it unnecessary.
+
+- **Only about 6 mm more fits under the deck.** The CAD puts the lens front 11.5 mm above the
+  window's top face with the stack at C-mount spacing (17.53 mm). With no C–CS ring and the knurled
+  ring all the way out the stack is 22.4 mm, so the front is already 4.9 mm lower, about 6.6 mm up:
+
+  | Stack | Lens to sensor | Lens front above the window |
+  |---|---|---|
+  | Today: no spacer, knurled ring all the way out | 22.4 mm | 6.6 mm |
+  | One 5 mm C–CS ring, knurled ring all the way out | 27.4 mm | 1.6 mm |
+  | Two 5 mm rings, knurled ring all the way out | 32.5 mm | **−3.4 mm: pushes on the window** |
+  | Two 5 mm rings, knurled ring 2.5 turns up | 28.0 mm | 1.1 mm |
+
+  So any stack tops out near 28 mm, about 5.6 mm more than today, unless the deck is raised.
+  Printed risers between the post tops and the deck would do that, held with the lab drawer's
+  M3 × 18 (for 8 mm risers) or M3 × 25 (for 15 mm). The lens front's height rests on the estimated
+  4.5 mm of thread behind the flange, so allow a millimetre or two. After fitting a spacer, set the
+  mount down on the window gently: if the base rocks instead of sitting flat, the lens is touching;
+  turn the knurled ring up a turn.
+- **The zoom is set too long.** At turn 0 the wells are 357 px apart (39.7 px/mm), so the frame
+  covers 102 × 77 mm and the plate's 12 columns do not fit. The orange box needs 29.4 px/mm, so the
+  picture is already 35 % too big, and it grows as it sharpens. The well spacing grew 24 % between
+  the ring all the way in (18:08) and all the way out (turn 0), which puts the exit pupil about
+  52 mm in front of the sensor, so another 5–11 mm of spacing would add 10–21 %. Sharp at today's
+  zoom, the plate would be at 43–48 px/mm, a focal length of about 39–42 mm. The box needs about
+  27 mm. The 22 Oct estimate of 27 mm came from a picture taken with the ring all the way in, which
+  was blurred and so a quarter to a third smaller than a sharp one.
+- **A shorter zoom needs less spacing.** For a plate about 60 cm away a lens needs f²/(u − f) beyond
+  its infinity setting: 2.8 mm at 40 mm, 1.2 mm at 27 mm. This lens bears that out: on 20 Oct it was
+  sharp at about 9 mm zoom with a stack of at most 22.4 mm (the 9 Oct photo shows no C–CS ring), yet
+  at about 40 mm it falls short at 22.4 mm.
+
+### What to do
+
+1. **Now, without buying anything:** zoom towards WIDE until all 12 columns sit inside the orange
+   box with a little room to spare; the picture grows again as it sharpens. Turn the knurled ring all
+   the way out and lock it. Then nudge the focus thumbscrew from NEAR towards FAR, waiting about 15 s
+   for the stream after each nudge.
+   - **Sharpest somewhere in between:** stop there. No spacer needed.
+   - **Sharpest at FAR, still soft:** too much spacing now. Turn the knurled ring up a turn at a time
+     and refocus.
+   - **Sharpest at NEAR, still soft:** go to step 2.
+2. **Fit one 5 mm C–CS ring** between the knurled ring and the lens, check that the base sits flat
+   on the window, and focus again. Zoom so that the plate fills the box, then refocus.
+3. **Still sharpest at NEAR with the ring fitted:** the deck has to go up before more spacing can go
+   in. Ask `@claude` for the risers.
