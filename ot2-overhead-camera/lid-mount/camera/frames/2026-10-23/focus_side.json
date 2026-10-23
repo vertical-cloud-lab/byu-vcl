@@ -1,0 +1,414 @@
+{
+ "summary": {
+  "18:08": {
+   "votes": {
+    "up": 4,
+    "down": 0,
+    "round": 0
+   },
+   "rms_up_over_down": [
+    0.84,
+    0.893,
+    0.545,
+    0.621
+   ],
+   "spot_rms_radius_px_median": 137.4
+  },
+  "18:54": {
+   "votes": {
+    "up": 0,
+    "down": 4,
+    "round": 0
+   },
+   "rms_up_over_down": [
+    1.016,
+    1.02,
+    1.009,
+    1.02
+   ],
+   "spot_rms_radius_px_median": 70.0
+  },
+  "19:04": {
+   "votes": {
+    "up": 0,
+    "down": 4,
+    "round": 0
+   },
+   "rms_up_over_down": [
+    1.002,
+    1.064,
+    1.008,
+    1.01
+   ],
+   "spot_rms_radius_px_median": 69.0
+  }
+ },
+ "stills": {
+  "18:08": {
+   "still": "still_1808Z_focus_at_near.jpg",
+   "state": "ring screwed fully in, focus thumbscrew at NEAR",
+   "wells": [
+    {
+     "paint": "yellow",
+     "x": 907,
+     "y": 1867,
+     "best": "up",
+     "fits": {
+      "up": {
+       "rms": 5.03,
+       "disc_radius_px": 142.6,
+       "spot_side_px": 306.5,
+       "extra_softness_sigma_px": 71.5,
+       "spot_rms_radius_px": 134.4
+      },
+      "down": {
+       "rms": 5.99,
+       "disc_radius_px": 168.9,
+       "spot_side_px": 168.6,
+       "extra_softness_sigma_px": 69.8,
+       "spot_rms_radius_px": 110.1
+      },
+      "round": {
+       "rms": 5.852,
+       "disc_radius_px": 169.1,
+       "spot_side_px": 318.3,
+       "extra_softness_sigma_px": 41.7,
+       "spot_rms_radius_px": 109.2
+      }
+     }
+    },
+    {
+     "paint": "red",
+     "x": 1779,
+     "y": 1856,
+     "best": "up",
+     "fits": {
+      "up": {
+       "rms": 3.662,
+       "disc_radius_px": 152.5,
+       "spot_side_px": 294.2,
+       "extra_softness_sigma_px": 63.2,
+       "spot_rms_radius_px": 123.3
+      },
+      "down": {
+       "rms": 4.099,
+       "disc_radius_px": 169.0,
+       "spot_side_px": 116.5,
+       "extra_softness_sigma_px": 72.4,
+       "spot_rms_radius_px": 107.8
+      },
+      "round": {
+       "rms": 4.066,
+       "disc_radius_px": 167.5,
+       "spot_side_px": 283.2,
+       "extra_softness_sigma_px": 51.3,
+       "spot_rms_radius_px": 109.3
+      }
+     }
+    },
+    {
+     "paint": "yellow",
+     "x": 621,
+     "y": 2437,
+     "best": "up",
+     "fits": {
+      "up": {
+       "rms": 3.12,
+       "disc_radius_px": 98.7,
+       "spot_side_px": 415.4,
+       "extra_softness_sigma_px": 58.0,
+       "spot_rms_radius_px": 145.2
+      },
+      "down": {
+       "rms": 5.729,
+       "disc_radius_px": 169.2,
+       "spot_side_px": 267.2,
+       "extra_softness_sigma_px": 47.9,
+       "spot_rms_radius_px": 102.7
+      },
+      "round": {
+       "rms": 5.378,
+       "disc_radius_px": 162.6,
+       "spot_side_px": 245.5,
+       "extra_softness_sigma_px": 62.1,
+       "spot_rms_radius_px": 112.9
+      }
+     }
+    },
+    {
+     "paint": "red",
+     "x": 1207,
+     "y": 2437,
+     "best": "up",
+     "fits": {
+      "up": {
+       "rms": 2.481,
+       "disc_radius_px": 104.8,
+       "spot_side_px": 403.6,
+       "extra_softness_sigma_px": 55.4,
+       "spot_rms_radius_px": 140.4
+      },
+      "down": {
+       "rms": 3.997,
+       "disc_radius_px": 163.5,
+       "spot_side_px": 7.2,
+       "extra_softness_sigma_px": 77.7,
+       "spot_rms_radius_px": 109.8
+      },
+      "round": {
+       "rms": 3.989,
+       "disc_radius_px": 164.2,
+       "spot_side_px": 289.7,
+       "extra_softness_sigma_px": 50.0,
+       "spot_rms_radius_px": 109.5
+      }
+     }
+    }
+   ]
+  },
+  "18:54": {
+   "still": "still_1854Z_ring_all_the_way_out.jpg",
+   "state": "knurled ring all the way out",
+   "wells": [
+    {
+     "paint": "yellow",
+     "x": 629,
+     "y": 2013,
+     "best": "down",
+     "fits": {
+      "up": {
+       "rms": 5.059,
+       "disc_radius_px": 158.5,
+       "spot_side_px": 36.1,
+       "extra_softness_sigma_px": 43.9,
+       "spot_rms_radius_px": 63.0
+      },
+      "down": {
+       "rms": 4.981,
+       "disc_radius_px": 158.5,
+       "spot_side_px": 150.5,
+       "extra_softness_sigma_px": 31.7,
+       "spot_rms_radius_px": 62.4
+      },
+      "round": {
+       "rms": 5.058,
+       "disc_radius_px": 158.5,
+       "spot_side_px": 98.1,
+       "extra_softness_sigma_px": 40.5,
+       "spot_rms_radius_px": 63.9
+      }
+     }
+    },
+    {
+     "paint": "red",
+     "x": 1697,
+     "y": 2002,
+     "best": "down",
+     "fits": {
+      "up": {
+       "rms": 3.152,
+       "disc_radius_px": 145.4,
+       "spot_side_px": 20.8,
+       "extra_softness_sigma_px": 50.0,
+       "spot_rms_radius_px": 70.9
+      },
+      "down": {
+       "rms": 3.091,
+       "disc_radius_px": 145.6,
+       "spot_side_px": 120.0,
+       "extra_softness_sigma_px": 43.2,
+       "spot_rms_radius_px": 70.3
+      },
+      "round": {
+       "rms": 3.11,
+       "disc_radius_px": 145.8,
+       "spot_side_px": 186.2,
+       "extra_softness_sigma_px": 32.9,
+       "spot_rms_radius_px": 71.1
+      }
+     }
+    },
+    {
+     "paint": "red",
+     "x": 1001,
+     "y": 2717,
+     "best": "down",
+     "fits": {
+      "up": {
+       "rms": 3.159,
+       "disc_radius_px": 148.1,
+       "spot_side_px": 46.4,
+       "extra_softness_sigma_px": 48.9,
+       "spot_rms_radius_px": 70.4
+      },
+      "down": {
+       "rms": 3.131,
+       "disc_radius_px": 148.3,
+       "spot_side_px": 120.0,
+       "extra_softness_sigma_px": 42.9,
+       "spot_rms_radius_px": 69.9
+      },
+      "round": {
+       "rms": 3.155,
+       "disc_radius_px": 148.2,
+       "spot_side_px": 37.9,
+       "extra_softness_sigma_px": 49.2,
+       "spot_rms_radius_px": 70.4
+      }
+     }
+    },
+    {
+     "paint": "yellow",
+     "x": 293,
+     "y": 2716,
+     "best": "down",
+     "fits": {
+      "up": {
+       "rms": 5.789,
+       "disc_radius_px": 146.4,
+       "spot_side_px": 116.8,
+       "extra_softness_sigma_px": 44.4,
+       "spot_rms_radius_px": 71.2
+      },
+      "down": {
+       "rms": 5.677,
+       "disc_radius_px": 145.9,
+       "spot_side_px": 166.4,
+       "extra_softness_sigma_px": 36.0,
+       "spot_rms_radius_px": 70.0
+      },
+      "round": {
+       "rms": 5.741,
+       "disc_radius_px": 146.0,
+       "spot_side_px": 13.7,
+       "extra_softness_sigma_px": 50.6,
+       "spot_rms_radius_px": 71.7
+      }
+     }
+    }
+   ]
+  },
+  "19:04": {
+   "still": "still_1904Z_ring_all_the_way_out.jpg",
+   "state": "the same, after the Pi's 13:00 MDT reboot",
+   "wells": [
+    {
+     "paint": "yellow",
+     "x": 629,
+     "y": 2013,
+     "best": "down",
+     "fits": {
+      "up": {
+       "rms": 5.113,
+       "disc_radius_px": 158.7,
+       "spot_side_px": 38.0,
+       "extra_softness_sigma_px": 44.0,
+       "spot_rms_radius_px": 63.2
+      },
+      "down": {
+       "rms": 5.103,
+       "disc_radius_px": 158.7,
+       "spot_side_px": 52.4,
+       "extra_softness_sigma_px": 43.4,
+       "spot_rms_radius_px": 63.2
+      },
+      "round": {
+       "rms": 5.111,
+       "disc_radius_px": 158.7,
+       "spot_side_px": 97.0,
+       "extra_softness_sigma_px": 40.7,
+       "spot_rms_radius_px": 64.1
+      }
+     }
+    },
+    {
+     "paint": "red",
+     "x": 1697,
+     "y": 2002,
+     "best": "down",
+     "fits": {
+      "up": {
+       "rms": 3.226,
+       "disc_radius_px": 145.3,
+       "spot_side_px": 108.4,
+       "extra_softness_sigma_px": 45.6,
+       "spot_rms_radius_px": 71.7
+      },
+      "down": {
+       "rms": 3.032,
+       "disc_radius_px": 145.9,
+       "spot_side_px": 209.4,
+       "extra_softness_sigma_px": 21.9,
+       "spot_rms_radius_px": 67.9
+      },
+      "round": {
+       "rms": 3.175,
+       "disc_radius_px": 146.2,
+       "spot_side_px": 222.0,
+       "extra_softness_sigma_px": 21.8,
+       "spot_rms_radius_px": 71.1
+      }
+     }
+    },
+    {
+     "paint": "red",
+     "x": 1001,
+     "y": 2717,
+     "best": "down",
+     "fits": {
+      "up": {
+       "rms": 3.24,
+       "disc_radius_px": 148.5,
+       "spot_side_px": 33.8,
+       "extra_softness_sigma_px": 49.4,
+       "spot_rms_radius_px": 70.5
+      },
+      "down": {
+       "rms": 3.214,
+       "disc_radius_px": 148.4,
+       "spot_side_px": 118.1,
+       "extra_softness_sigma_px": 43.3,
+       "spot_rms_radius_px": 70.1
+      },
+      "round": {
+       "rms": 3.242,
+       "disc_radius_px": 148.5,
+       "spot_side_px": 59.9,
+       "extra_softness_sigma_px": 48.6,
+       "spot_rms_radius_px": 70.8
+      }
+     }
+    },
+    {
+     "paint": "yellow",
+     "x": 293,
+     "y": 2716,
+     "best": "down",
+     "fits": {
+      "up": {
+       "rms": 5.877,
+       "disc_radius_px": 145.8,
+       "spot_side_px": 17.0,
+       "extra_softness_sigma_px": 51.0,
+       "spot_rms_radius_px": 72.3
+      },
+      "down": {
+       "rms": 5.817,
+       "disc_radius_px": 145.6,
+       "spot_side_px": 175.4,
+       "extra_softness_sigma_px": 35.6,
+       "spot_rms_radius_px": 71.4
+      },
+      "round": {
+       "rms": 5.879,
+       "disc_radius_px": 145.8,
+       "spot_side_px": 90.6,
+       "extra_softness_sigma_px": 48.3,
+       "spot_rms_radius_px": 73.1
+      }
+     }
+    }
+   ]
+  }
+ }
+}

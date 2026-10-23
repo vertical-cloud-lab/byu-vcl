@@ -424,3 +424,56 @@ Support the lens throughout.
 
 If the plate now comes sharp only at FAR, the spacing is too long: back the ring in a little. If
 it's never sharp, post the new gap.
+
+## 2026-10-23, 18:54 UTC: ring all the way out, much sharper, probably just past focus
+
+![The same red well at 18:08 and 18:54 UTC, with the fitted blur spot](frames/2026-10-23/focus_side.png)
+
+@timothy-commins backed the knurled ring all the way out, finding the picture better the further
+it went, and asked for another extender. Two stills taken while the stream ran
+([18:54](frames/2026-10-23/still_1854Z_ring_all_the_way_out.jpg) and, after the Pi's scheduled
+13:00 MDT reboot, [19:04](frames/2026-10-23/still_1904Z_ring_all_the_way_out.jpg), unchanged) show:
+
+- **Much sharper.** The blur spot's rms radius is about 70 px, half the 137 px of 18:08. The wells'
+  rims and the gaps between them show, but it isn't sharp yet.
+- **A third bigger.** The well pitch is 348 px (38.7 px/mm, 105 × 79 mm in view), against 261 px on
+  22 Oct. Moving the lens away from the sensor magnifies the picture, and a 9.9 mm move (the ring's
+  12.5–22.4 mm travel) accounts for all of it if the zoom wasn't touched.
+- **Probably just past focus.** [`focus_side.py`](focus_side.py) fits each paint-filled well as a
+  disc blurred by a triangular spot, apex up or down. At 18:08 (picture behind the sensor) all four
+  wells fit apex up, by 12–83 %. Today all eight fits lean apex down, the iris's shape turned over,
+  which is what happens once the picture forms in front of the sensor. The lean is only 0.2–6 %, so
+  on its own it is a hint. What makes it likely is the alternative: if the spot hadn't turned over,
+  halving it with a 9.9 mm move would leave about 10 mm still to add, which would focus this lens on
+  something 7–12 cm away rather than the plate at 60 cm. Turned over, the picture is about 3.3 mm in
+  front of the sensor, so the right spot for the ring is about two thirds of the way out. The numbers
+  are in [`frames/2026-10-23/still_1854Z.json`](frames/2026-10-23/still_1854Z.json) and
+  [`focus_side.json`](frames/2026-10-23/focus_side.json).
+
+**So don't add a spacer to the ring as it is now unless step 1 below says the lens is still too
+close.** If it is past focus, a spacer moves the lens further the wrong way.
+
+### Settling it at the robot, then finishing
+
+Watch the stream, keep the rail lights on, and wait about 15 s after each move.
+
+1. **Which way?** Nudge the focus thumbscrew 2–3 mm.
+   - Sharper towards **FAR**, or blurrier towards NEAR: the lens is too far from the sensor. Go to 2.
+   - Sharper towards **NEAR**: the lens is still too close. Go to 3.
+2. **Too far (the likely case):** set the focus thumbscrew at FAR. Loosen the ring's lock screw and
+   turn the knurled ring back in (the lens moves up, towards the deck) about 1 mm at a time, about
+   3 mm in all. By Tim's measure that is a deck-to-silver-rim gap of about 22–23 mm, from 16 mm fully
+   in. Then nudge the focus from FAR towards NEAR until it is sharpest, and tighten the lock screw.
+3. **Still too close:** the ring has no travel left, so fit one 5 mm C–CS ring between the knurled
+   ring and the lens, and focus again from FAR.
+
+**A 5 mm C–CS ring is worth having either way.** With the knurled ring all the way out, the lens
+hangs from the last few turns of its thread, where it can wobble or tilt. In case 2 the same lens
+position comes from the C–CS ring plus the knurled ring only 1–2 mm out from fully in, with the
+lock screw holding it mid-thread. The camera and the lens each normally come with one, so check
+their boxes first. Otherwise any 5 mm "C to CS" spacer ring fits, for example
+[this one on Amazon](https://www.amazon.com/dp/B09STVLLVY) ($6.99, 4.4 stars from 42 ratings on
+2026-10-23).
+
+Once it is sharp, close the iris to about f/8 and tighten all the thumbscrews. Then ask `@claude`
+for a still to check it.
