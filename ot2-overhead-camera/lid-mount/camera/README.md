@@ -427,6 +427,10 @@ it's never sharp, post the new gap.
 
 ## 2026-10-23, 18:54 UTC: ring all the way out, much sharper, probably just past focus
 
+> **Corrected at 20:28 UTC:** the turn-by-turn sweep [below](#2026-10-23-20162028-utc-one-still-per-turn-of-the-knurled-ring)
+> shows the lens was still too close with the ring all the way out, not past focus. The advice in
+> this section to turn the ring back in is wrong; add spacing instead.
+
 ![The same red well at 18:08 and 18:54 UTC, with the fitted blur spot](frames/2026-10-23/focus_side.png)
 
 @timothy-commins backed the knurled ring all the way out, finding the picture better the further
@@ -477,3 +481,55 @@ their boxes first. Otherwise any 5 mm "C to CS" spacer ring fits, for example
 
 Once it is sharp, close the iris to about f/8 and tighten all the thumbscrews. Then ask `@claude`
 for a still to check it.
+
+## 2026-10-23, 20:16–20:28 UTC: one still per turn of the knurled ring
+
+![Sharpness after each turn, and the paint wells' blur in each still](frames/2026-10-23/back_focus_sweep.png)
+
+@timothy-commins started with the knurled ring all the way out and turned it up, towards the deck,
+one whole turn at a time: 5.5 turns to the top. The focus thumbscrew stayed near NEAR throughout,
+and the rail lights were on. After each turn he posted the turn number on
+[#234](https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-6373840191), and a
+full-resolution still was taken while the stream ran. The 1600 px copies are in
+[`frames/2026-10-23/back_focus_sweep/`](frames/2026-10-23/back_focus_sweep/).
+[`back_focus_sweep.py`](back_focus_sweep.py) measures them and draws the figure. The numbers are in
+[`back_focus_sweep.json`](frames/2026-10-23/back_focus_sweep.json).
+
+| Turn | 0 (start) | 1 | 2 | 3 | 4 | 5 | 5.5 (top) |
+|---|---|---|---|---|---|---|---|
+| Sharpness | **79** | 57 | 44 | 38 | 38 | 37 | 33 |
+
+Sharpness is the red and yellow wells' colour contrast against the grey plate's brightness. A
+well is a uniform disc, so once the blur spot is bigger than a well its colour is spread over the
+spot. The auto white balance held still to 0.1 % through the sweep, so the numbers compare.
+
+- **The start is the sharpest, and every turn up is blurrier.** The picture also shrinks as the
+  ring goes up: at the start only the plate's front edge is in view, and at the top the whole plate
+  fits with room around it. So turning up moves the lens towards the sensor.
+- **So the picture forms behind the sensor at every ring position.** If it formed in front, moving
+  the lens towards the sensor would sharpen it first. In turns 0–2, before the wells run together,
+  the blur spot is also a triangle with its apex up, as at 18:08 with the ring all the way in.
+- **The lens needs more room than the ring's whole travel gives,** with the focus thumbscrew near
+  NEAR. Very roughly, 1/√sharpness (about proportional to the spot's diameter while the spot is
+  bigger than a well) extrapolates to zero about 6 turns beyond all the way out. If 5.5 turns is the
+  ring's whole 12.5–22.4 mm travel, that is about 11 mm. Take it as 5–15 mm.
+- **The 18:54 reading was wrong.** It rested on fits that leaned the turned-over way by only
+  0.2–6 %. The 19:04 still was sharper than this sweep's start, with the ring in about the same place
+  (the picture is the same size to within 3 %), because the iris was narrower: with the rail lights on both
+  times, the camera now needs a sixth of the exposure (49.96 ms × 3.39 against 66.65 ms × 15.52). A
+  wider iris turns the same focus error into a bigger blur.
+- **Open question:** this doesn't fit a C-mount lens on the HQ Camera. With the ring all the way
+  out, the stack is 4.9 mm longer than a C-mount lens needs, which should overshoot rather than fall
+  short. So the lens or the stack isn't what the drawings assume. A side photo of the stack beside a
+  ruler would show which.
+- **The iris thumbscrew** broke off at 20:06 UTC. Until it is replaced, set the iris by gripping its
+  ring.
+
+### Next: add spacing between the knurled ring and the lens
+
+1. **Get two 5 mm C–CS rings,** or a C-mount extension tube set. One may not be enough.
+2. **Fit one** between the knurled ring and the lens, keep the ring all the way out, and ask
+   `@claude` for a still. If it is sharper but the wells' blur is still a triangle with its apex up,
+   fit the second.
+3. **Zoom out** until the plate's outline fills the orange box. More spacing also makes the picture
+   bigger. Then finish with the focus thumbscrew, and turn the knurled ring up if it overshoots.
