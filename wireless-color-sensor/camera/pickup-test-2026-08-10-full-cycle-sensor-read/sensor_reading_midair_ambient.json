@@ -1,0 +1,19 @@
+{
+  "sensor_data": {
+    "ch583": 1063,
+    "ch670": 610,
+    "ch510": 671,
+    "ch410": 75,
+    "ch620": 1084,
+    "ch470": 296,
+    "ch550": 945,
+    "ch440": 273
+  },
+  "command": {
+    "Y": 0,
+    "B": 0,
+    "R": 0
+  },
+  "experiment_id": "add87c43-7d21-4cd2-ba0f-4700ca6c6c84",
+  "_label": "midair_carry_ambient"
+}
