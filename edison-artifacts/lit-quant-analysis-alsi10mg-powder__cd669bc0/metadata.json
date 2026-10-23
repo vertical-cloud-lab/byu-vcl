@@ -1,0 +1,9 @@
+{
+  "task_id": "cd669bc0-0b4b-4b1f-8e32-7b5ec8aa474e",
+  "kind": "LITERATURE_HIGH",
+  "task_type": "PQATaskResponse",
+  "status": "success",
+  "job_name": "job-futurehouse-paperqa3-high",
+  "created_at": "2026-04-18 02:20:17.653125+00:00",
+  "query_summary": "Quantitative compositional analysis of aluminum alloy bulk powder materials, specifically AlSi10Mg additive manufacturing powder. Cover:\n1. Best practices for quantitative EDS (Energy Dispersive X-ray Spectroscopy) compositional analysis of Al-Si-Mg alloy powders\n2. Challenges in detecting trace Mg "
+}
