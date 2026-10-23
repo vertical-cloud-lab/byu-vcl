@@ -467,8 +467,8 @@ Watch the stream, keep the rail lights on, and wait about 15 s after each move.
 3. **Still too close:** the ring has no travel left, so fit one 5 mm C–CS ring between the knurled
    ring and the lens, and focus again from FAR.
 
-**A 5 mm C–CS ring is worth having either way.** With the knurled ring all the way out, the lens
-hangs from the last few turns of its thread, where it can wobble or tilt. In case 2 the same lens
+**A 5 mm C–CS ring is worth having either way.** With the knurled ring all the way out, it is at the
+end of its travel, with fewer turns of thread holding the lens, so the lens can wobble or tilt. In case 2 the same lens
 position comes from the C–CS ring plus the knurled ring only 1–2 mm out from fully in, with the
 lock screw holding it mid-thread. The camera and the lens each normally come with one, so check
 their boxes first. Otherwise any 5 mm "C to CS" spacer ring fits, for example
