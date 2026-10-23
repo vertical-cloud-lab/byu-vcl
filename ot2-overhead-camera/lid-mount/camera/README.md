@@ -399,6 +399,10 @@ lens further the wrong way.
 
 ### The fix: 5 mm more between the lens and the sensor
 
+> **Corrected at 21:20 UTC:** the knurled ring on its own moves the lens only about 5 mm, so
+> option 2's ring all the way out is the end of its travel, not mid-range. It gives about the same
+> spacing as option 1. See [below](#2026-10-23-2120-utc-a-ccs-ring-fits-and-the-knurled-ring-gives-only-about-5-mm).
+
 Support the lens throughout.
 
 1. **Best: fit one C–CS adapter.** It is a plain black threaded ring about 5 mm thick; the camera
@@ -484,6 +488,10 @@ for a still to check it.
 
 ## 2026-10-23, 20:16–20:28 UTC: one still per turn of the knurled ring
 
+> **Corrected at 21:20 UTC:** the knurled ring's whole travel is about 5 mm, not 9.9 mm. So the
+> spacing still missing is about 5 mm (2.5–7.5), not 11 mm (5–15), and the open question below
+> has an answer. See [below](#2026-10-23-2120-utc-a-ccs-ring-fits-and-the-knurled-ring-gives-only-about-5-mm).
+
 ![Sharpness after each turn, and the paint wells' blur in each still](frames/2026-10-23/back_focus_sweep.png)
 
 @timothy-commins started with the knurled ring all the way out and turned it up, towards the deck,
@@ -536,6 +544,10 @@ spot. The auto white balance held still to 0.1 % through the sweep, so the numbe
 
 ## 2026-10-23, 20:42 UTC: before adding spacing, zoom out, and mind the window
 
+> **Checked at 21:20 UTC:** the table below assumes 9.9 mm of knurled-ring travel and a lens
+> 4.5 mm shorter than Waveshare's drawing. The two errors nearly cancel, so its answer stands: one
+> C–CS ring fits and a second doesn't. The corrected table is [below](#2026-10-23-2120-utc-a-ccs-ring-fits-and-the-knurled-ring-gives-only-about-5-mm).
+
 @timothy-commins read the sweep the same way: turn 0 is the sharpest, so the lens needs another
 spacer. Two things limit how far that goes, and one of them may make it unnecessary.
 
@@ -583,3 +595,82 @@ spacer. Two things limit how far that goes, and one of them may make it unnecess
    on the window, and focus again. Zoom so that the plate fills the box, then refocus.
 3. **Still sharpest at NEAR with the ring fitted:** the deck has to go up before more spacing can go
    in. Ask `@claude` for the risers.
+
+## 2026-10-23, 21:20 UTC: a C–CS ring fits, and the knurled ring gives only about 5 mm
+
+![Where a C–CS ring goes, on Tim's photo of 20:06 UTC](frames/2026-10-23/c_cs_ring_where.jpg)
+
+@timothy-commins asked whether [Amazon B09STVLLVY](https://www.amazon.com/dp/B09STVLLVY) would screw
+onto the spacer already on the camera. [`c_cs_ring.py`](c_cs_ring.py) draws the figure from a crop
+of his photo.
+
+- **It fits.** The listing (read 2026-10-23) is a pack of two aluminium C-to-CS rings for $6.99: 30
+  mm across, a 25 mm threaded bore and 5 mm of spacing. Its "9 mm" thickness includes the threaded
+  end, about 4 mm, which goes inside the part it screws into. The threaded end screws into the
+  knurled ring where the lens is now, and the lens screws into the ring, 5 mm further from the
+  sensor. The listing's side photo shows two rings screwed together.
+- **The spacer already attached is the camera's own knurled back-focus ring.** No C–CS ring is
+  fitted: in the 20:06 photo the lens's silver rim sits right against the knurled ring, as it did on
+  9 Oct.
+- **Both boxes should hold one.** Raspberry Pi's
+  [product brief](https://datasheets.raspberrypi.com/hq-camera/hq-camera-product-brief.pdf) says the
+  CS-mount HQ Camera "ships with a C- to CS-mount adapter", and Waveshare lists a "C-CS adapter" in
+  [this lens's package](https://www.waveshare.com/8-50mm-Zoom-Lens-for-Pi.htm).
+
+**The knurled ring alone moves the lens only about 5 mm.** Earlier sections read the brief's "Back
+focus length of lens: 12.5mm–22.4mm (CS Mount variant)" as the knurled ring's own travel. It can't
+be: the same brief says "C-mount lenses require the use of the C-CS adapter included with this
+variant", and a C-mount lens needs only 17.53 mm. So the range includes the 5 mm adapter: about
+12.5–17.4 mm without it and 17.5–22.4 mm with it. Two things at the robot agree:
+
+- With the ring all the way out, the 20:06 photo shows 4.3–5.5 mm of its thread below the camera
+  body, scaled from the lens's 36.6 mm diameter at its silver rim.
+- The whole travel took 5.5 turns, about 0.9 mm a turn: an ordinary fine thread, not 1.8 mm.
+
+That answers the sweep's open question. With no C–CS ring and the knurled ring all the way out, the
+lens sits at the 17.53 mm it is built for, or just short of it, not 4.9 mm beyond. Even so it can't
+focus on the plate at today's zoom of about 40 mm, so Waveshare's 0.2 m minimum focus distance
+probably doesn't hold at the long end. At 0.9 mm a turn the sweep's "about 6 turns" of missing
+spacing is about 5 mm (2.5–7.5), which one C–CS ring with the knurled ring turned out covers.
+
+**The lens is 4.5 mm longer than the CAD model.** [Waveshare's drawing](https://www.waveshare.com/img/devkit/accBoard/8-50mm-Zoom-Lens-for-Pi/8-50mm-Zoom-Lens-for-Pi-details-size.jpg)
+gives 68.30 mm from the front to the flange, plus a 5.00 mm thread behind the flange.
+[`cad/lid_mount.py`](../cad/lid_mount.py) counts a 4.5 mm thread inside the 68.3 mm, so its lens
+front sits 4.5 mm too high. With both corrections, and the deck as printed, the lens front sits
+this far above the window, to about a millimetre:
+
+| Stack | Lens to sensor | Lens front above the window |
+|---|---|---|
+| Today: no C–CS ring, knurled ring all the way out | about 17.4 mm | about 7 mm |
+| One C–CS ring, knurled ring fully in (the stack as designed) | 17.5 mm | about 7 mm |
+| One C–CS ring, knurled ring all the way out | about 22.4 mm | **about 2 mm** |
+| Two C–CS rings, knurled ring fully in | about 22.5 mm | about 2 mm |
+| Two C–CS rings, knurled ring all the way out | about 27.4 mm | **−3 mm: pushes on the window** |
+
+The photo agrees with the first row: the gold ring, about 17 mm from the lens front on Waveshare's
+drawing, sits a few millimetres above the collar's rim, which is 20 mm above the window. A second
+ring gains about a millimetre at most before the lens reaches the window, so it is a spare. The CAD model isn't
+changed here: it builds the stack up from the lens front, so correcting the lens alone would move
+the printed parts.
+
+### Fitting the C–CS ring
+
+Support the lens throughout.
+
+1. **Zoom** so that the plate's outline fits the orange box ([What to do](#what-to-do), step 1). A
+   shorter zoom needs less spacing.
+2. **Fit the ring.** Lift the mount off the window. Unscrew the lens from the knurled ring:
+   counter-clockwise looking up. Screw the ring's threaded end into the knurled ring by hand until
+   it seats, then screw the lens into the ring until it is snug. If a thread binds, back it off and
+   start again rather than forcing it: aluminium threads gall.
+3. **Start with the knurled ring screwed fully in**, with its lock screw loosened. That puts the lens
+   where it is now.
+4. **Turn the knurled ring out one turn at a time**, about 0.9 mm each, and ask `@claude` for a still
+   after each turn, as in the 20:16 sweep. Stop at the sharpest, finish with the focus thumbscrew,
+   and tighten the lock screw.
+5. **Set the mount down gently.** With the knurled ring all the way out, the lens front is only
+   about 2 mm above the window. If the base rocks instead of sitting flat, the lens is touching:
+   turn the knurled ring in a turn.
+
+If it is still sharpest with the knurled ring all the way out, the deck has to go up before more
+spacing can go in. Ask `@claude` for the risers.
