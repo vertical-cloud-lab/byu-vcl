@@ -674,3 +674,45 @@ Support the lens throughout.
 
 If it is still sharpest with the knurled ring all the way out, the deck has to go up before more
 spacing can go in. Ask `@claude` for the risers.
+
+## 2026-10-23, 23:10 UTC: a printed C–CS ring, to use until the bought one arrives
+
+![Half-section of the printed ring, both variants, with the lens's and the knurled ring's threads](../renders/c_cs_spacer.png)
+
+@sgbaird approved buying [B09STVLLVY](https://www.amazon.com/dp/B09STVLLVY) and asked for a printed copy in
+the meantime ([#234](https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-6376202869)).
+[`cad/c_cs_spacer.py`](../cad/c_cs_spacer.py) models it from the listing's sizes: 30 mm across,
+5 mm of spacing and a 4 mm threaded end, 9 mm in all, with C-mount 1"-32 UN threads at both ends.
+The threads are a mesh, the basic 60° profile moved by a radial clearance. Two variants are
+printed side by side, so one of them should fit first time:
+
+| Ring | Marks on the rim | Male end (into the knurled ring) | Female bore (the lens goes in) |
+|---|---|---|---|
+| **A**, tighter | one notch | 0.12 mm under basic, per side | 0.22 mm over basic |
+| **B**, looser | two notches | 0.22 mm under | 0.32 mm over |
+
+The female side gets more because printed holes come out small: about 0.09 mm per side at this
+size in Bambu's own model ([slice/README.md](../slice/README.md#will-it-fit-first-time)), plus a
+few hundredths from the layer steps on the 30° flanks.
+
+**Before fitting it, cut out the disc.** The ring prints lens face down. Its threaded end is narrower
+than the female bore under it, so a 0.4 mm disc is bridged across the top of the bore to build
+the end on. Cut the disc out with a hobby knife, running the blade round the inside of the
+threaded end, and pick out any strands. Otherwise the camera sees plastic.
+
+**Fitting it** (as in [Fitting the C–CS ring](#fitting-the-ccs-ring), above):
+
+1. **Try A first.** Screw its threaded end into the knurled ring by hand. If it binds within the
+   first turn, back it out and use B; don't force PLA into the aluminium thread.
+2. **Screw the lens into the ring** until its silver rim is snug against the ring's face.
+   - The ring has 4.6 mm of female thread, not 5.0: the roof under the threaded end takes the rest.
+     Waveshare's drawing gives the lens 5.00 mm of thread. If the lens stops before its rim
+     seats, it is touching that roof. Stop there; don't tighten further. The gap, up to 0.4 mm,
+     adds to the spacing.
+   - The real ring has the same limit, for the same reason: a male and a female 1"-32 thread can't
+     share the same height of a ring.
+3. **Then as before:** knurled ring screwed fully in, then out a turn at a time with a still after
+   each, and set the mount down gently.
+
+**It's a stopgap.** PLA creeps when it's warm, and the lens hangs from this thread next to the Pi 5.
+Swap in the aluminium ring when it arrives.
