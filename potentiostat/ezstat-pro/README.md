@@ -570,5 +570,142 @@ resistor measured 10.00 kΩ.
 ## 6. After the dummy loads
 
 Next come the chemistry runs from the 15 and 19 October plans in #231: the
-ferricyanide CV (Block C), and the U of U probe (Block B). For the probe, use
-SIS and reversing constant-current steps in place of EIS.
+U of U probe (Block B, below) and the ferricyanide CV (Block C).
+
+### The U of U four-point probe (Block B)
+
+On 2026-10-23 Dr. Porter offered his lab's four-point conductivity probe:
+platinum electrodes printed on wafers, made for his lab by the University of
+Utah, *"so this is not ideal, but we got good conductivity numbers using
+them."* He has written instructions for it, which haven't reached this repo
+yet, and sent a drawing of how his lab mounts it
+([on #291](https://github.com/vertical-cloud-lab/byu-vcl/pull/291#issuecomment-6376217402)).
+Until the instructions arrive, this section is a plan. Where they differ,
+follow them.
+
+**The drawing matches the flow cell he described to Ben on 14 September**
+([video, 07:33–11:51](https://youtu.be/RKp4XslErJo?t=453)). The chip lies face
+down on a gasket on his ATR-FTIR. Electrolyte flows through a channel cut in
+that gasket, under the electrodes and over the ATR's diamond, so the infrared
+spectrum and the conductivity come from the same liquid at the same moment.
+From the drawing:
+
+- Four electrodes in a row across the channel: the **outer pair 3 mm apart**,
+  the **inner pair 2 mm apart**, centred on the 2 mm diamond.
+- Two 1 mm holes through the chip, 6 mm apart, outside the electrodes. Liquid
+  comes in through one and leaves through the other.
+- The bottom gasket's eye-shaped cutout is the channel, so the gasket's
+  thickness sets how deep the liquid is. A round top gasket, 27 mm across, with
+  two holes, sits between the chip and a flow-cell block that the ATR's clamp
+  presses down.
+
+There's no ATR at the CubXL. The drawing is the map of the electrodes, and the
+template for a CubXL holder later.
+
+**Wiring.** The outer pair carries the current and the inner pair measures the
+voltage: *"two of the electrodes are for applying a fixed current, and two are
+for measuring"* (Dr. Porter, 14 Sep). The EZstat drives current from working
+to counter and measures between working sense and reference (pp. 31, 35), so:
+
+| Lead | Electrode |
+|---|---|
+| WORKING (black) | Outer, side A |
+| WORKING SENSE (black) | Inner, side A |
+| REFERENCE (white) | Inner, side B |
+| COUNTER (red) | Outer, side B |
+| GROUND (green) | Not connected |
+
+![Which EZstat lead goes to which electrode of the probe](images/2026-10-23-probe-wiring.png)
+
+- **Undo the pairs used for R2.** Each lead now goes to its own electrode. With
+  separate working and working sense leads, all four must be connected (p. 31).
+- **Working and working sense on the same side.** Across from each other, the
+  reading has the wrong sign, and in potentiostat mode the EZstat would then
+  push the cell as hard as it can.
+- Connect with the cell off (EZware closed, or showing Cell OFF), in the order
+  reference, counter, working sense, working (p. 35). Disconnect in reverse.
+- Clip onto the probe's wires or contact pads, however the instructions say.
+  Not onto the printed platinum, which scratches, and not hard onto the wafer,
+  which cracks.
+
+**Before the first run:**
+
+1. Photograph both sides of the probe and its connections, and post them on
+   #291.
+2. Follow the printed lines by eye from each wire or pad to its electrode, and
+   label them outer A, inner A, inner B, outer B. In the drawing, each side has
+   one line to its outer electrode and one to its inner. Then a dry check with
+   the multimeter, on the wires or pads: no two electrodes connect to each
+   other (the meter reads OL).
+3. KCl standards: 0.01 M (0.746 g/L dried KCl; 1413 µS/cm at 25 °C) and 0.1 M
+   (7.46 g/L; 12.88 mS/cm), or certified bottles. A thermometer: conductivity
+   changes about 2 % per °C.
+4. Optional, no chemistry: run the recipe below on the 10 kΩ, wired as for R2,
+   at ±3 µA. It should read close to R2's 10.0–10.1 kΩ. That checks the recipe,
+   the export and the analysis before the probe.
+
+**Holding the liquid.** The cell constant depends on the shape of the liquid
+between the electrodes, so that shape has to be the same for every run,
+standards and samples alike. All four electrodes must be under liquid, with no
+bubbles on them. Without an ATR, the drawing's stack still works on a glass
+slide in place of the diamond plate: slide, bottom gasket, chip face down,
+filled through one hole until liquid comes out of the other, and held down by a
+clip or a printed clamp. That needs Dr. Porter's gaskets, or ones cut to the
+drawing.
+
+**Recipe.** This EZstat has no EIS, the AC method that conductivity meters use,
+so use DC with reversing current, as planned for Block B on 15 and 19 Oct:
+
+- **Galvanostat mode** (current control), on the 1–100 µA range. Not
+  potentiostat mode, as R2 used: if a sense electrode dries or its clip slips
+  off, a potentiostat drives the outer pair as hard as its current range allows,
+  which can strip printed platinum and make bubbles. In galvanostat mode the
+  current stays at the setpoint.
+- **Technique → MISC → Programmable Potential Waveform – Hold/Ramp/Step**, with
+  each step set to current control (p. 54): +I for 5 s, then −I for 5 s, three
+  times, then 0. Cell ON After Measurement unticked.
+- **Start at I = 1 µA**, then pick I so the inner pair reads 20–40 mV. From the
+  drawing's spacing and a channel 0.1–0.5 mm deep, the inner pair should read
+  roughly 1–60 kΩ in the two standards; R2's 10 kΩ sits in that range.
+  20–40 mV keeps every reading on the EZstat's ±50 mV input range, with its
+  3 µV resolution (p. 9); check in the export that none goes past ±50 mV.
+  R2 found that range and the ±10 V one differ by 0.94 %, so keep all runs,
+  standards and samples, on the same one.
+- **R = (V at +I − V at −I) / 2I**, from the second half of each step.
+  Reversing cancels the inner pair's own offset and any offset in the current,
+  and leaves no net charge at the outer pair.
+- Watch the outer electrodes for bubbles. If any appear, lower I.
+
+**Calibration.** Every probe has its own cell constant, so each one is
+calibrated (Dr. Porter, 14 Sep). K = σ × R for one standard; then
+measure the other as if it were unknown, σ = K / R. If it comes out within a
+few % of its value, reversing DC works on this probe over that range: Block B's
+question, answered against known standards rather than against EIS. Note each
+solution's temperature. R2's open +1.08 % doesn't matter here: a gain error
+cancels when K comes from a standard measured the same way.
+
+**Running it remotely, as for R2.** The probe sits beside the EZstat, in camera
+0's view, on paper or plastic, not on the EZstat's metal case. Someone at the
+bench fills it, checks for bubbles, notes the temperature and comments
+`@claude`. A session logs in from des4 and checks with the cell off that the
+inner pair reads millivolts: about 10.65 V means a sense electrode isn't
+connected or isn't wet. Then it runs the recipe, turns the cell off, closes
+EZware and exports. Rinse with DI water between solutions, then with a little
+of the next one.
+
+**To ask Dr. Porter:**
+
+1. Which electrodes carry the current? This section assumes the outer pair.
+2. What gave your good numbers: which instrument, EIS or DC, and at what
+   frequency or current? Has reversing DC worked on these probes?
+3. Each probe's cell constant, if known, and your calibration solutions.
+4. Can we borrow the gaskets? How much liquid, and what flow rate?
+5. Anything to avoid: solvents, cleaning, a maximum current?
+6. May his instructions and drawing go in this public repo?
+
+**Later, on the CubXL.** Dr. Porter's own setup runs a loop: two syringes,
+high and low salt, mixed in about 15 ratios, each flowed through the chip and
+measured ("dose, measure, dose, measure", 14 Sep). On the CubXL the same loop
+needs a holder like the drawing's, without the ATR, with ports the gantry or a
+pump can fill. And EZware has no programming interface; its Custom ASCII
+technique is the nearest thing ([map, §3.3](ezware-map.md#33-techniques)).
