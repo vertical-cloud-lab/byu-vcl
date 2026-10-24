@@ -572,6 +572,11 @@ resistor measured 10.00 kΩ.
 Next come the chemistry runs from the 15 and 19 October plans in #231: the
 U of U probe (Block B, below) and the ferricyanide CV (Block C).
 
+**From 2026-10-24 the corrosion work for alloys comes first** (Sterling,
+[on #291](https://github.com/vertical-cloud-lab/byu-vcl/pull/291#issuecomment-6379392718)).
+Its checks are in [§7](#7-corrosion-checks-for-the-alloy-work). Block B
+waits until they're done.
+
 ### The U of U four-point probe (Block B)
 
 On 2026-10-23 Dr. Porter offered his lab's four-point conductivity probe:
@@ -709,3 +714,224 @@ measured ("dose, measure, dose, measure", 14 Sep). On the CubXL the same loop
 needs a holder like the drawing's, without the ATR, with ports the gantry or a
 pump can fill. And EZware has no programming interface; its Custom ASCII
 technique is the nearest thing ([map, §3.3](ezware-map.md#33-techniques)).
+
+## 7. Corrosion checks for the alloy work
+
+*Added 2026-10-24.* Copper corrosion testing comes first, ahead of powder
+dosing and spectroscopy ([#298](https://github.com/vertical-cloud-lab/byu-vcl/issues/298)).
+The plan is in [digital-alloy-lab](https://github.com/vertical-cloud-lab/digital-alloy-lab)
+(DAL):
+
+- **The protocol** ([DAL #180](https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/180),
+  [`alloy-corrosion/copper/protocol.md`](https://github.com/vertical-cloud-lab/digital-alloy-lab/blob/81923f2/alloy-corrosion/copper/protocol.md)):
+  - **Alloys:** naval Cu–Ni (C70600, C71500) and nickel–aluminium bronze
+    (NAB, C95800), in substitute ocean water.
+  - **The cell:** a 150 µL O-ring well on the CubXL.
+  - **One spot:** OCP 30 min, then LPR ±10 mV at 0.167 mV/s, OCP 5 min, a
+    hold at E_corr + 50 mV for 10 min, and OCP 5 min. The liquid goes to
+    ICP-MS.
+  - **Its first experiment** (§5 there) is the well against a 1 cm² bench
+    cell, on purchased reference alloys.
+- **The ONR YIP copper draft** ([DAL #117](https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/117),
+  [`cubxl-electrochemistry.md`](https://github.com/vertical-cloud-lab/digital-alloy-lab/blob/a7c4e9a/near-term-submissions/onr-yip/cubxl-electrochemistry.md))
+  names a borrowed potentiostat, Dr. Porter's, as the reference instrument for
+  the flat-cell cross-checks.
+- **DAL's BOM** ([`bom/README.md`](https://github.com/vertical-cloud-lab/digital-alloy-lab/blob/81923f2/alloy-corrosion/bom/README.md))
+  lists "a potentiostat and a leak-free reference for the shakedown" to borrow
+  from his lab (row H08). This EZstat is that potentiostat. It already sits
+  beside the CubXL, and des4 drives both.
+
+**The checks, in the order they unblock DAL's plan.** C1 needs nothing new
+and can run remotely as soon as the 10 kΩ is back on the leads.
+
+| # | Check | Needs | Passes if | Unblocks |
+|---|---|---|---|---|
+| C1 | DAL's sequence on the 10.00 kΩ | R2's wiring | Rp within 3 % of 10.00 kΩ every time; the hold and its charge within 3 %; the method runs through over Remote Desktop and ends with Cell OFF | The method, range and export for C4–C6 |
+| C2 | Low currents: 100 kΩ, 1 MΩ (and 10 MΩ) | Three 1 % resistors | 100 kΩ and 1 MΩ within 5 %; 10 MΩ is recorded, not judged | The well (13 nA–1.7 µA in DAL's protocol); passive aluminium (~1 nA) |
+| C3 | Reference against a master | Two Ag/AgCl references | Within 5 mV of each other, drifting under 1 mV in 10 min | Every potential in C4–C6 |
+| C4 | Shakedown on the C63000 NAB we have | Bench cell, graphite counter, 3.5 % NaCl | Three slices: E_corr SD ≤ 10 mV, log₁₀ Rp SD ≤ 0.15, no attack at the O-ring edge | The lab's first copper corrosion data; a baseline for NAB from the atomizer |
+| C5 | Bench-cell anchor on DAL's reference alloys | C71500, C95800, then C70600; D1141 seawater | C4's limits, with means near the published values | DAL §5's calibration; the ONR draft's reference alloys, measured every round |
+| C6 | One CubXL well against the bench cell | DAL's well lid, 2 mm reference, Pt wire | Not pass/fail: does the well's bias match DAL's simulation? | The first CubXL corrosion spot |
+
+All the limits here are proposals. DAL's protocol leaves its own as *choose*.
+
+### C1. DAL's sequence on the 10.00 kΩ (no chemistry)
+
+Wire as for R2: the 10.00 kΩ between the black and white clips, on paper,
+green clip free. Fix the current range at **1 µA–100 µA** and untick
+auto-range. That's the range a 0.92 cm² bench cell of Cu–Ni or NAB needs:
+from the published Rp values in C5, ±1.1–4.4 µA at ±10 mV. The 10 kΩ gives
+±1.0 µA, the same order.
+
+1. **Technique → Corrosion Studies → Corrosion Inhibition Test** (in 7.1's
+   menu but not in the manual; [map, §3.3](ezware-map.md#33-techniques)).
+   Open-circuit monitoring for 30 min, logged every 1 s, with a
+   corrosion-resistance measurement every 10 min: a polarization range of
+   ±10 mV, a scan rate of 10 mV/min (0.167 mV/s), and solution-resistance
+   subtraction off. If it won't run on this unit, use Linear Sweep Voltammetry
+   from −10 to +10 mV at 0.167 mV/s. On a resistor, OCV is 0, so it's the same
+   sweep.
+2. **Step Techniques → Chrono Amperometry** at +40 mV for 10 min. This stands
+   in for DAL's +50 mV hold. +40 mV keeps the reading below the ±50 mV
+   boundary, where R2's residuals step.
+3. OCV 5 min, then export. In the Data Analyser (Display Cell Data → Data →
+   Analyze Selected), run **Analysis → Corrosion Analysis** on one LPR
+   (p. 102), and note what EZware itself reports.
+
+**Expect:** OCV within ±1 mV of 0 (R2's wiring check read −0.06 to
+−0.16 mV), Rp ≈ 10.0–10.1 kΩ from every sweep, 4.00 µA and 2.40 mC in the hold.
+
+**Why it matters:**
+- It's the first run of EZware's corrosion technique and analysis.
+- At about 45 min, it's the first long run over Remote Desktop. R2's cell was
+  on for 82 s.
+- A Cu–Ni bench cell sits at 6.5–9.0 kΩ (C5), so this resistor is a good
+  stand-in for one.
+
+### C2. Low currents: the CubXL well and passive aluminium
+
+C1's LPR alone on 100 kΩ, 1 MΩ and 10 MΩ: ±100 nA, ±10 nA and ±1 nA. Fix the
+range at **10 nA–1 µA**, which no run has used yet.
+- **Why these values:** DAL's protocol puts LPR currents on its -006 well
+  between 13 nA and 1.7 µA for copper. Passive aluminium goes down to about
+  1 nA (byu-vcl PR #278, now DAL #180).
+- **If the 1 MΩ trace is noisy,** put the resistor in a closed metal box (a
+  cookie tin) and clip the green ground lead to the box.
+- **If 1 MΩ fails,** the well needs a larger O-ring or a more sensitive
+  instrument, such as DAL's EmStat Pico option. Better to know that before
+  printing lids.
+
+### C3. Reference electrode against a master
+
+Two Ag/AgCl references in the same KCl: working and working sense on one,
+reference and counter on the other. OCP only, for 10 min.
+- **Never turn the cell on in this wiring.** It would drive current through a
+  reference electrode's frit.
+- **Repeat it at the start of every bench session,** and log the offset. Keep
+  the master for this check alone.
+- **What it also checks:** it's the first time the reference input, through
+  the black box, sees a real high-impedance electrode.
+- **Parts:** DAL's BOM row B20 is a 6 mm Ag/AgCl, Ossila C2015B1, $165, with no
+  KCl included. Ask Dr. Porter's lab first: it may have references to lend.
+
+### C4. Shakedown on the C63000 NAB we already have
+
+The 3 ft of C63000 NAB bar ([McMaster 8203K41](https://www.mcmaster.com/8203K41/))
+arrived on 2026-10-23 ([DAL #117](https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/117))
+as atomizer feedstock. Three 6 mm slices of it cost under an inch.
+
+- **Cell:** DAL's bench cell, to print:
+  - [`bench_cell_body.step`](https://github.com/vertical-cloud-lab/digital-alloy-lab/blob/81923f2/alloy-corrosion/bom/cad/bench_cell_body.step),
+    250 mL, with an AS568-013 FKM O-ring window of 0.92 cm² in the floor;
+  - [`bench_cell_clamp.step`](https://github.com/vertical-cloud-lab/digital-alloy-lab/blob/81923f2/alloy-corrosion/bom/cad/bench_cell_clamp.step),
+    whose 20 × 20 mm pocket takes a 3/4" slice;
+  - [`bench_cell_cover.step`](https://github.com/vertical-cloud-lab/digital-alloy-lab/blob/81923f2/alloy-corrosion/bom/cad/bench_cell_cover.step).
+
+  Leak-test it overnight with DI water. Counter: a 10 mm graphite rod (BOM
+  B22). Reference: C3's.
+- **Specimen:** face the slice flat, grind wet to P1200 ([the polishing
+  SOP](https://github.com/vertical-cloud-lab/byu-vcl/blob/157ab1e/SOP/sem-eds-polishing-sop.md),
+  #258), rinse with DI water then ethanol, dry, and start within an hour. DAL's
+  protocol treats finish and delay as variables, so keep both the same every
+  time.
+- **Electrolyte:** 3.5 wt % NaCl, i.e. 35 g of reagent NaCl in 965 g of DI
+  water. Open to air, unstirred, at room temperature. Note the temperature.
+- **Wiring:** working and working sense on the specimen's contact, reference
+  and counter on their electrodes, ground free.
+- **Method:** C1's, on the 1 µA–100 µA range: OCP 30 min, LPR ±10 mV at
+  0.167 mV/s, OCP 5 min, hold at E_corr + 50 mV for 10 min, OCP 5 min.
+  Optional: carry on with OCP and an LPR every 30 min up to 3 h, the time the
+  published Rp values are quoted at.
+- **Expect:** on 0.92 cm², about 2.3 kΩ (±4.4 µA at ±10 mV), going by cast
+  C95800's 2.08 kΩ·cm² (C5).
+  - E_corr near cast C95800's −0.26 V vs SCE. That's about −0.22 V against
+    Ag/AgCl in saturated KCl (add 44 mV to an SCE value), or −0.23 V in 3 M
+    KCl (add 31 mV).
+  - C63000 is wrought, so expect the same order, not the same number.
+- **Afterwards:** photograph the spot. Attack under the O-ring's edge
+  (crevice) means the run doesn't count.
+
+**Why it matters:**
+- These are the first copper corrosion data from this lab.
+- It shakes down the cell, the polishing, the method and the analysis before
+  the reference alloys arrive.
+- The as-received bar is the baseline for NAB from the atomizer. Its first
+  copper run's leftovers (skull, splats) can be measured the same way, as DAL's
+  aluminium plan does with each run's leftovers.
+
+### C5. The bench-cell anchor on DAL's reference alloys
+
+C71500 and C95800 first, then C70600 (DAL protocol §5). DAL's BOM:
+- C71500, 1" × 12" at Online Metals, $121.34 (B43);
+- C95800, on quote from Atlas Bronze (B45). It's cast NAB, which is not the
+  same as C63000;
+- C70600: 3/4" × 1 ft at [McMaster 4644N14](https://www.mcmaster.com/4644N14/),
+  $130.26 ([DAL #123](https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/123)),
+  or 1" at Online Metals (B44).
+
+Switch to ASTM D1141 substitute ocean water without heavy metals (Ricca
+8363-1, about $135, B38), so the bench cell and the well share one
+electrolyte. Run C4's method at least 8 times per alloy, over at least two
+days.
+
+**Published values to compare with.** These come from DAL's Edison answers,
+as tabulated for DAL's well simulation. Nobody here has read the papers yet.
+
+| Alloy | Value | Conditions | Source |
+|---|---|---|---|
+| C71500 | Rp 8.3 kΩ·cm² | 3 h, stagnant 3.5 % NaCl. Measured on binary Cu–30Ni (at. %), a stand-in | Metikoš-Huković 2011 |
+| C70600 | Rp 6.0 kΩ·cm² | The same, on binary Cu–10Ni (at. %) | Metikoš-Huković 2011 |
+| C70600 | E_corr −220 to −233 mV vs SCE | Substitute ocean water, 20 °C | Mantzavinos 2001 |
+| C95800 | E_corr −0.260 V vs SCE; R_f + R_ct 2.08 kΩ·cm² | 3.5 % NaCl | Ding 2019 |
+
+That's the table DAL's well simulation is calibrated to
+([`sim_well_hf.md`](https://github.com/vertical-cloud-lab/digital-alloy-lab/blob/81923f2/alloy-corrosion/copper/sim_well_hf.md)).
+DAL's protocol says to report Rp, not a corrosion rate. Oxygen transport limits
+the cathodic branch, so an assumed Stern–Geary constant is unreliable for
+these alloys.
+
+**Why it matters:** the well's bias can only be measured against this anchor.
+In DAL §5's words: "A flat size trend does not clear the well. Only the bulk
+cell can."
+
+### C6. One CubXL well against the bench cell, same potentiostat
+
+**Needs:**
+- DAL's well lid,
+  [`well_lid_v2_006.step`](https://github.com/vertical-cloud-lab/digital-alloy-lab/blob/81923f2/alloy-corrosion/bom/cad/well_lid_v2_006.step).
+  Not the older `copper/cad/well_lid.step`, whose O-ring ledge would bow.
+- The 2 mm leak-free Ag/AgCl reference (B19, on quote) and Pt wire (B21).
+- A slice already measured in the bench cell.
+
+**Run:** the same method in a 150 µL -006 well, filled by hand first, then by
+the gantry. The EZstat's leads reach the deck, and des4 runs CubOS as well as
+the Remote Desktop session to the PC. So one Claude session can fill the well
+and start the method.
+
+**Expect:**
+- **NAB:** DAL's simulation puts the well's E_corr 28 mV below the bench
+  cell's, and its Rp at 1.75 times, on the O-ring's nominal area.
+- **C71500:** E_corr 8 mV above, and Rp 0.60 times.
+- **Area:** report on the wetted area, measured from the attack ring, not on
+  the nominal one. DAL found that choice matters more than the chemistry.
+
+### What this changes for the other checks
+
+- **R2's +1.08 % needn't be settled for corrosion.** Spot-to-spot spread will
+  be far larger, and DAL ranks spots measured the same way. If DAL's dummy
+  cell is ordered anyway, its 0.1 % 10 kΩ settles it for about $2 (B26).
+- **R1 is low priority.** Its 10 mA range only matters for cyclic
+  polarization in the bench cell: 1 mA/cm² on 0.92 cm² is 0.92 mA. DAL keeps
+  cyclic polarization to spare spots.
+- **R3 and SIS are low priority.** Seawater's solution resistance is small
+  next to kΩ of Rp: about 60 Ω in the well, in DAL's simulation.
+- **Block C (ferricyanide CV) isn't needed for corrosion.** C3 checks the
+  reference directly.
+
+### Before C4: two questions
+
+- **For Dr. Porter:** may his EZstat be used for corrosion runs in salt water,
+  and can his lab lend reference electrodes?
+- **Long runs:** DAL's calibration plans overnight runs, but §5 says no
+  unattended runs (manual p. 26). Until that's settled, C4–C6 are daytime runs
+  with someone in the lab.
