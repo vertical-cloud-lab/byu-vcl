@@ -1,5 +1,5 @@
 {
-  "csv": "potentiostat/ezstat-pro/results/20261024_dummy-runs/20261024-D1.csv",
+  "file": "results/20261024_dummy-runs/20261024-D1.csv",
   "columns": {
     "V": "Cell Potential[V]",
     "I": "Cell Current[A]",
