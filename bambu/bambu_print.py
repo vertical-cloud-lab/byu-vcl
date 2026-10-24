@@ -8,7 +8,7 @@ guards here back that procedure up, they don't replace it.
                            over a fresh connection and compare MD5s
   start FILE               start plate N of an uploaded file. Refuses without a
                            preflight JSON under 15 min old for the same file and
-                           plate, and --confirmed-by naming who confirmed the plate
+                           plate, and --confirmed-by naming the frame that showed the plate
                            is clear. --dry-run prints the command without sending it
   watch                    follow a print: log every status change, save a camera
                            frame every --frame-every s, and stop with a non-zero
@@ -211,7 +211,7 @@ def cmd_start(args, printer):
     if (pre.get("plate") or {}).get("file_md5") != plate["file_md5"] or pre["plate"]["plate"] != args.plate:
         problems.append("preflight was run against a different file or plate")
     if not args.confirmed_by:
-        problems.append("--confirmed-by is required: who confirmed the plate is clear and is the sliced plate type")
+        problems.append("--confirmed-by is required: the posted frame showing the plate clear, and when the 5-minute wait for objections ended")
     if args.ams_slot is not None and not any(t["slot"] == str(args.ams_slot) and
                                              t["idx"] in {f["tray_info_idx"] for f in plate["filaments"]}
                                              for t in pre["summary"]["ams_trays"]):
@@ -414,7 +414,7 @@ def main(argv=None):
     ap.add_argument("--plate", type=int, default=1)
     ap.add_argument("--ams-slot", type=int, help="0-based AMS tray for filament 1; omit for the external spool")
     ap.add_argument("--preflight", help="start: the JSON bambu_lan.py preflight --3mf wrote")
-    ap.add_argument("--confirmed-by", help="start: who confirmed the plate is clear (GitHub user)")
+    ap.add_argument("--confirmed-by", help="start: the frame comment showing the plate clear, and when the wait for objections ended")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--3mf", dest="threemf", help="watch: the sliced file, for its temperatures")
     ap.add_argument("--minutes", type=float, default=50, help="watch: time budget (<60 per Bash call)")

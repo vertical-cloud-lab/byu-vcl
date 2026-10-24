@@ -59,19 +59,32 @@ the work:
 
 These come from what went wrong elsewhere, as referenced below. None of them is optional.
 
-1. **A named person says go, every time, after seeing the pre-flight frame.** They confirm
-   four things:
-   - the plate is empty;
-   - it is the plate type the file was sliced for;
-   - the bed has room to travel front and back (the A1 mini moves its bed in Y; the
-     "Safety Zone" label on its base shows the space it needs);
-   - someone can get to the printer while it runs.
+1. **Post a fresh frame first, read the plate yourself, then give people 5 minutes to
+   object.** Nobody has to reply `plate clear` (sgbaird, 2026-10-23, replacing the person's go
+   agreed in
+   [powder-doser#23](https://github.com/vertical-cloud-lab/powder-doser/pull/23#issuecomment-5245817304)):
+   - **The frame comes first.** Before slicing or any other prep, take a camera still (Studio's
+     Device page in a print run, or `preflight` over LAN), commit it, and put it at the top of
+     the tracking comment. Give its UTC time, the printer's state, the file and printer about to
+     print, the plate type it was sliced for, and your own read of the plate. Anyone watching
+     the thread can then cancel the run within minutes.
+   - **Go only if the plate is clearly empty** in a frame bright enough to tell (§2). If it's
+     dark, anything is on the plate, or you can't tell, don't send. Say what you see and wait
+     for a person.
+   - **Wait at least 5 minutes after posting the frame** (§4.1), doing the rest of the prep
+     meanwhile. Any reply asking to stop, wait or change something holds the send. With no
+     reply, send. A go from someone with write access ends the wait early.
+   - **Take another frame right before Send.** If the plate looks different, post it and wait
+     another 5 minutes.
+   - **List the rest as suggestions** for anyone at the printer, not as something to reply to:
+     - it's the plate type the file was sliced for;
+     - the bed has room to travel front and back (the A1 mini moves its bed in Y; the
+       "Safety Zone" label on its base shows the space it needs);
+     - someone can get to the printer while it runs.
 
-   `start` refuses without `--confirmed-by <who>`. This is the agreed rule until a hardware
-   power interlock *and* an automatic camera check both exist
-   ([powder-doser#23](https://github.com/vertical-cloud-lab/powder-doser/pull/23#issuecomment-5245817304)).
-   On the X1E, the rule was ["have a look at the print chamber to make sure nothing is in it
-   first"](https://github.com/AccelerationConsortium/ac-dev-lab/issues/15#issuecomment-2436362366).
+   `start` still refuses without `--confirmed-by`. Pass the frame's comment URL and the time
+   the wait ended. On the X1E, the rule was ["have a look at the print chamber to make sure
+   nothing is in it first"](https://github.com/AccelerationConsortium/ac-dev-lab/issues/15#issuecomment-2436362366).
 2. **Only print a Bambu-sliced 3MF made for this printer, nozzle, plate and filament.**
    `preflight --3mf` checks this. Two "ghost prints" on this A1 mini came from files that were
    wrong in ways the printer never reported (§6).
@@ -105,7 +118,7 @@ These come from what went wrong elsewhere, as referenced below. None of them is 
      - the Send options;
      - Bambu's estimates;
      - the timeline;
-     - who gave the go.
+     - the go: the frame's comment, when the 5-minute wait ended, and any replies.
 
 ## 1. Reaching a printer
 
@@ -154,8 +167,8 @@ data, and frequent `pushall` is known to make the A1/P1 series lag. It then grab
 camera frame and writes a redacted JSON with a verdict:
 - **NO-GO:** a check failed. Don't print.
 - **HUMAN-DECISION:** only warnings remain. Someone has to look.
-- **GO:** everything passed. It can't happen while the plate check is manual, so every print
-  needs a person.
+- **GO:** everything passed. The plate check is always a warning, so in practice the verdict
+  is HUMAN-DECISION, and the plate is settled by reading the frame (rule 1).
 
 | Check | Why |
 |---|---|
@@ -190,13 +203,12 @@ camera frame and writes a redacted JSON with a verdict:
 - Anything standing on the plate would be obvious.
 - It shows a flat or dark object poorly. The toolhead hides part of the back, and the
   toolhead's own shadow looks like a dark patch on the plate.
-- So the frame supports a person's judgement; it doesn't replace it.
 - Comparing against a reference frame of the empty plate was tried in powder-doser, and it
-  reported "not clear" when the bed had simply moved. There is no automatic empty-plate
-  check yet.
-- Before asking for the go, read the frame yourself. Anything more than the plate, the
-  shadow and the base sticker is a NO-GO until a person explains it. In the high view that
-  includes whatever sits behind the bed: ask the person to confirm the bed's path is clear.
+  reported "not clear" when the bed had simply moved. So the check is reading the frame, by
+  the run itself (rule 1), not a pixel comparison.
+- Read it closely. Anything more than the plate, the shadow and the base sticker means don't
+  send until a person explains it. In the high view that includes whatever sits behind the
+  bed: if something there could block the bed's travel, say so and hold.
 
 **The dry run on 2026-09-27** (03:05 and 03:25 UTC; [evidence](evidence/2026-09-27/)):
 
@@ -247,7 +259,7 @@ camera frame and writes a redacted JSON with a verdict:
 ```bash
 python bambu_print.py upload FILE.3mf --printer A1_MINI --via CUBXL_PI
 python bambu_print.py start  FILE.3mf --plate 1 --ams-slot 0 \
-    --preflight preflight/<stamp>_preflight.json --confirmed-by <github-user>   # add --dry-run first
+    --preflight preflight/<stamp>_preflight.json --confirmed-by "<frame comment URL>, no objection by <UTC>"   # add --dry-run first
 ```
 
 **`upload`.**
@@ -357,41 +369,53 @@ python bambu_print.py watch ... --minutes 50 --frame-every 120   # then, repeate
 - **The GitHub token dies at minute 60.** Push and update the thread before then, then
   re-mint it (see CLAUDE.md). `sleep` is blocked in foreground Bash; Python's
   `time.sleep` isn't.
-- **Waiting for a person's go.** Either the triggering comment already contains it (written
-  within the last 30 min by someone who has looked at the printer), or post the frame and
-  poll the thread. Use one foreground Bash call with a long timeout. `DEFAULT_WORKFLOW_TOKEN`
-  still reads after the session token dies.
-- **Ask for the go without `@claude` or `@claude-print`.** A comment that mentions
-  `@claude` starts a new run, and one that mentions `@claude-print` starts a print run. On 2026-10-01 "@claude plate clear" started one, and so did
-  the login code, posted after "@claude". Both runs noticed the running session and stood
-  down without touching the printer
+- **The 5-minute wait** (rule 1). It starts when the frame is in the tracking comment, and it
+  runs while you slice and do the rest of the prep, so it rarely adds time. Poll the thread
+  with the snippet below in one foreground Bash call with a long timeout.
+  `DEFAULT_WORKFLOW_TOKEN` still reads after the session token dies. In a `@claude-print`
+  run, `GH_TOKEN` is the job's own token and lasts the whole job.
+- **Read every reply, from anyone.** The snippet stops on any new comment from a person and
+  prints it. A reply asking to stop, wait or change something holds the send; act on it, post
+  a fresh frame if anything at the printer changed, and wait again. A reply you can't read as
+  a go also holds it.
+- **A go ends the wait early,** but only from someone with write access. Check the
+  commenter's repo permission, not `author_association`. sgbaird's comments show as
+  `CONTRIBUTOR` because org membership is private, so an association check would ignore him.
+- **Replies leave out `@claude` and `@claude-print`.** A comment that mentions `@claude`
+  starts a new run, and one that mentions `@claude-print` starts a print run. On 2026-10-01
+  "@claude plate clear" started one, and so did the login code, posted after "@claude". Both
+  runs noticed the running session and stood down without touching the printer
   ([PR #84](https://github.com/vertical-cloud-lab/byu-vcl/pull/84#issuecomment-5922213756)),
-  but two sessions on one printer would collide. The running
-  session polls the thread and finds plain replies.
+  but two sessions on one printer would collide. The running session polls the thread and
+  finds plain replies.
 - **Which thread.** Lid-mount printing belongs on PR #234
-  ([sgbaird, 2026-10-01](https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-5924717073)),
-  the thread that the snippet below polls. For a request from another thread, change the
-  number in the snippet.
-- **Who can give the go.** Check the commenter's repo permission, not `author_association`.
-  sgbaird's comments show as `CONTRIBUTOR` because org membership is private, so an
-  association check would ignore him:
+  ([sgbaird, 2026-10-01](https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-5924717073)).
+  Set `number` to the thread the run was started from.
 
   ```bash
-  GH_TOKEN=$DEFAULT_WORKFLOW_TOKEN python - <<'EOF'
+  GH_TOKEN=${DEFAULT_WORKFLOW_TOKEN:-$GH_TOKEN} python - <<'EOF'
   import json, subprocess, time
+  from datetime import datetime, timedelta, timezone
   gh = lambda path: json.loads(subprocess.run(["gh", "api", path], capture_output=True, text=True).stdout or "null")
-  repo, since = "vertical-cloud-lab/byu-vcl", "2026-09-27T03:30:00Z"   # when the frame was posted
-  deadline = time.time() + 30 * 60
-  while time.time() < deadline:
-      for c in gh(f"repos/{repo}/issues/234/comments?since={since}") or []:
-          who = c["user"]["login"]
-          if "plate clear" in c["body"].lower() and \
-                  (gh(f"repos/{repo}/collaborators/{who}/permission") or {}).get("permission") in ("admin", "maintain", "write"):
-              print("go from", who, c["html_url"]); raise SystemExit
-      time.sleep(60)
-  print("no go within 30 min: don't print")
+  repo, number = "vertical-cloud-lab/byu-vcl", 234
+  since = "2026-10-23T23:05:00Z"   # when the frame went into the tracking comment
+  end = datetime.fromisoformat(since.replace("Z", "+00:00")) + timedelta(minutes=5)
+  while True:
+      new = [c for c in gh(f"repos/{repo}/issues/{number}/comments?since={since}") or []
+             if c["user"]["type"] != "Bot" and c["created_at"] >= since]
+      for c in new:
+          perm = (gh(f"repos/{repo}/collaborators/{c['user']['login']}/permission") or {}).get("permission")
+          print(f"--- {c['user']['login']} ({perm}) {c['html_url']}\n{c['body'][:2000]}")
+      if new:
+          raise SystemExit("a person replied: read it before sending")
+      if datetime.now(timezone.utc) >= end:
+          print("5 minutes with no reply: send"); break
+      time.sleep(30)
   EOF
   ```
+
+  It reads issue comments only. On a pull request, also look at review comments
+  (`pulls/{number}/comments`) before sending.
 - **Order of work.** Start early in the session and write up while `watch` runs.
 - **If the print will outlast the session:**
   - Say so before starting.
@@ -403,8 +427,8 @@ python bambu_print.py watch ... --minutes 50 --frame-every 120   # then, repeate
 
 - Let the bed cool below ~35 °C. PLA releases from textured PEI when cool: flex the plate.
 - A person removes the part, clears the plate, and dismisses any dialog on the touchscreen.
-- The next print needs a fresh pre-flight and a fresh go. `FINISH` doesn't mean the plate is
-  empty.
+- The next print needs a fresh pre-flight, a fresh frame and its own 5-minute wait. `FINISH`
+  doesn't mean the plate is empty.
 
 ## 6. Failure modes seen in the lab, and what catches them
 
@@ -417,7 +441,7 @@ python bambu_print.py watch ... --minutes 50 --frame-every 120   # then, repeate
 | `start_print()` said `True`, printer showed an error | [ac-dev-lab#147](https://github.com/AccelerationConsortium/ac-dev-lab/issues/147#issuecomment-2671952659) | state-change confirmation |
 | Old `FINISH`/`FAILED` and error codes resent to new clients; state `UNKNOWN` just after connecting | powder-doser#23, ac-dev-lab#147 | wait for data; judge by transitions |
 | `use_ams` false for a job using slot ≥ 2 ran dry; AMS trays are 0-based | powder-doser#23 | slot must hold the sliced `tray_info_idx` |
-| A slice for the High Temp Plate sent while another plate may have been on the printer (never settled) | [powder-doser#23](https://github.com/vertical-cloud-lab/powder-doser/pull/23#issuecomment-5199999496) | the person's go |
+| A slice for the High Temp Plate sent while another plate may have been on the printer (never settled) | [powder-doser#23](https://github.com/vertical-cloud-lab/powder-doser/pull/23#issuecomment-5199999496) | the plate type named in the frame post, for anyone at the printer to check |
 | First object of a batch didn't stick; at 210 °C / 70 °C parts were dragged off | [ac-dev-lab#156](https://github.com/AccelerationConsortium/ac-dev-lab/issues/156#issuecomment-2710740178) | watching the first layer |
 | "Cutter is stuck" 0300-800B after hardware was added near the toolhead | [ac-dev-lab#161](https://github.com/AccelerationConsortium/ac-dev-lab/issues/161#issuecomment-2694655133) | HMS → exit 20 |
 | H2D: extruder overload after an AMS runout switch; wobbling reel stopped a print twice | [tensegrity#96](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/96), [powder-doser#134](https://github.com/vertical-cloud-lab/powder-doser/issues/134#issuecomment-5183033746) | HMS → exit 20 |

@@ -15,9 +15,11 @@ plate 2, the deck ([evidence](../evidence/2026-10-01/deck-studio/README.md); see
 ([evidence](../evidence/2026-10-02/base-studio/README.md); see
 [the fourth run](#fourth-run-plate-1-the-base-2026-10-02)).
 
-Nothing here changes the rules in the runbook. The pre-flight, the person's go and the watching
-all still apply. This route skips `bambu_print.py start`, so its gates are applied by hand: a
-pre-flight under 15 min old, and a camera frame read before Send.
+Nothing here changes the rules in the runbook. The pre-flight, the plate check (a Device-page
+frame posted first, then 5 minutes for anyone to object; no `plate clear` reply) and the
+watching all still apply. This route skips `bambu_print.py start`, so its gates are applied by
+hand: a pre-flight under 15 min old, and a fresh camera frame read before Send. The runs below
+predate 2026-10-23, so they still wait for a person's `plate clear`.
 
 ## Files
 
