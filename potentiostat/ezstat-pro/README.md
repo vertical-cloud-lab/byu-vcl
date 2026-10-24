@@ -792,8 +792,8 @@ from the published Rp values in C5, ±1.1–4.4 µA at ±10 mV. The 10 kΩ gives
 −0.16 mV), Rp ≈ 10.0–10.1 kΩ from every sweep, 4.00 µA and 2.40 mC in the hold.
 
 **Changes from the dummy runs** (2026-10-24, leads open; [results](results/20261024_dummy-runs/README.md)):
-- **One LPR per Corrosion Inhibition Test.** Each LPR is centred on the OCP just measured, as
-  intended. But the `.nuvdt` keeps only the open-circuit points, and the CSV export only the last
+- **One LPR per Corrosion Inhibition Test.** Each LPR is placed around the OCP just measured, not
+  around 0 V, as intended. But the `.nuvdt` keeps only the open-circuit points, and the CSV export only the last
   LPR. So set the monitoring time equal to the measurement interval (30 min each): the one LPR then
   comes at the end, and it's the one exported. "Monitoring time" counts open-circuit time only, so
   the run lasts about 32 min.
@@ -858,7 +858,7 @@ it arrives Friday 30 Oct at the earliest. Faster, in order:
    | Who | Why them | Contact |
    |---|---|---|
    | Quentin Allen, Manufacturing Eng. | Runs ASTM G61 corrosion tests with a Metrohm PGStat 204 and a silver–silver chloride reference ([Bates MS thesis, 2026](https://scholarsarchive.byu.edu/etd/11363)). The closest match to C4, and a good place to check a new electrode against a master | quentin_allen@byu.edu, 801-422-1777, 265 CTB |
-   | Brian Iverson, ME | Ag/AgCl reference with a CHI potentiostat ([2024 paper](https://doi.org/10.1002/gch2.202400021)). Office 360J EB, next to Dr. Porter's 360P | bdiverson@byu.edu, 801-422-7514 |
+   | Brian Iverson, ME | Ag/AgCl reference with a CHI potentiostat ([2024 paper](https://doi.org/10.1002/gch2.202400021)). Office 360J EB, in the same suite as Dr. Porter's 360P | bdiverson@byu.edu, 801-422-7514 |
    | Wally Paxton, Chemistry | An aqueous cyclic-voltammetry lab; on the RAISE board with Dr. Porter | wally.paxton@byu.edu, 801-422-4917, C303 BNSN |
    | Devin Rappleye, ChemE | Four potentiostats for aqueous and molten-salt work, and research on reference electrodes ([PyRO lab](https://pyro.byu.edu/instruments)) | devin_rappleye@byu.edu, 801-422-1611, 330-N EB |
    | Adam Woolley, Chemistry | Aqueous Ag/AgCl reference ([2026 paper](https://doi.org/10.1002/smsc.70249)) | atw33@byu.edu, 801-422-1701, C205 BNSN |
