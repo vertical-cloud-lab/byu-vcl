@@ -132,7 +132,17 @@ scripts/ezstat-pc-rdp/drive.sh stop
   closed with its X, pressed and released slowly.
 - **To set a number,** click in the field, then End, Shift+Home, type, Tab.
   Screenshot the editor afterwards: a field that didn't take still shows its
-  old value.
+  old value. Often the first click in a field only activates the window.
+- **Screenshot before typing a file name at Start.** LSV and the Corrosion
+  Inhibition Test asked for the `.nuvdt` name; Chrono Amperometry didn't
+  (2026-10-24), and the Ctrl+A, name and Enter meant for the prompt went to
+  EZware's main window, where Ctrl+A is Abort. Nothing happened that time.
+  The prompt opens in the last folder used, which may be `\\tsclient\ez`.
+- **A `.cmd` started from `\\tsclient\ez`** shows *Open File – Security
+  Warning* first, and waits for Run. Typing `cmd /c ...` in Win+R doesn't.
+- **Avast may cover the desktop** with a full-screen *"Let's try a restart
+  instead"* window, because its updates fail offline. Its Exit button closes
+  the window only.
 
 ### What des4's cameras see of the EZstat (2026-10-22)
 
@@ -781,6 +791,22 @@ from the published Rp values in C5, ±1.1–4.4 µA at ±10 mV. The 10 kΩ gives
 **Expect:** OCV within ±1 mV of 0 (R2's wiring check read −0.06 to
 −0.16 mV), Rp ≈ 10.0–10.1 kΩ from every sweep, 4.00 µA and 2.40 mC in the hold.
 
+**Changes from the dummy runs** (2026-10-24, leads open; [results](results/20261024_dummy-runs/README.md)):
+- **One LPR per Corrosion Inhibition Test.** Each LPR is centred on the OCP just measured, as
+  intended. But the `.nuvdt` keeps only the open-circuit points, and the CSV export only the last
+  LPR. So set the monitoring time equal to the measurement interval (30 min each): the one LPR then
+  comes at the end, and it's the one exported. "Monitoring time" counts open-circuit time only, so
+  the run lasts about 32 min.
+- **Expect 9 points per LPR.** EZware records one point per 2 mV at any scan rate, and the last two of
+  a sweep never reach the export.
+- **Hold with Extended Time Base, not Chrono Amperometry.** Chrono Amperometry coerced a 120 s step to
+  60 s, and records every 1 ms whatever its sampling field says.
+- **Take the offset off the hold current.** With the leads open, the 1 µA–100 µA range reads
+  −0.146 µA, which is 3.7 % of 4.00 µA, more than the 3 % allowed. Subtract an open-leads reading taken
+  the same day (`check_corrosion_runs.py` reports one), or allow 5 %. Rp is a slope, so it's unaffected.
+- **Check with [`analysis/check_corrosion_runs.py`](analysis/check_corrosion_runs.py)**, which reads
+  the `.nuvdt` as well as the CSV: `--r-ohm 10000` checks Rp and the hold against the resistor.
+
 **Why it matters:**
 - It's the first run of EZware's corrosion technique and analysis.
 - At about 45 min, it's the first long run over Remote Desktop. R2's cell was
@@ -791,7 +817,9 @@ from the published Rp values in C5, ±1.1–4.4 µA at ±10 mV. The 10 kΩ gives
 ### C2. Low currents: the CubXL well and passive aluminium
 
 C1's LPR alone on 100 kΩ, 1 MΩ and 10 MΩ: ±100 nA, ±10 nA and ±1 nA. Fix the
-range at **10 nA–1 µA**, which no run has used yet.
+range at **10 nA–1 µA**. Its first use, on open leads (D1, 2026-10-24), read an
+offset of −0.55 nA with 0.02 nA of noise, so even 10 MΩ's ±1 nA is 50 times the
+noise.
 - **Why these values:** DAL's protocol puts LPR currents on its -006 well
   between 13 nA and 1.7 µA for copper. Passive aluminium goes down to about
   1 nA (byu-vcl PR #278, now DAL #180).
@@ -811,8 +839,76 @@ reference and counter on the other. OCP only, for 10 min.
   the master for this check alone.
 - **What it also checks:** it's the first time the reference input, through
   the black box, sees a real high-impedance electrode.
-- **Parts:** DAL's BOM row B20 is a 6 mm Ag/AgCl, Ossila C2015B1, $165, with no
-  KCl included. Ask Dr. Porter's lab first: it may have references to lend.
+- **What a bad reference looks like:** with nothing between reference and
+  working, the open-circuit reading climbs to volts within minutes (D2). An OCP
+  that reads volts or keeps climbing means the reference isn't wetted or
+  connected.
+- **Parts:** two Ag/AgCl references, and 3 M KCl to fill them. They're likely
+  the slowest thing to get, so the options are below.
+
+#### Getting the two Ag/AgCl references (checked 2026-10-24, 00:00–01:00 MDT)
+
+DAL's BOM row B20, Ossila C2015B1 ($165), ships from the UK: dispatched Monday,
+it arrives Friday 30 Oct at the earliest. Faster, in order:
+
+1. **Borrow from a BYU lab this week.** These labs have published work with an
+   aqueous Ag/AgCl reference or run aqueous potentiostats. Contact details are
+   from BYU's public directories.
+
+   | Who | Why them | Contact |
+   |---|---|---|
+   | Quentin Allen, Manufacturing Eng. | Runs ASTM G61 corrosion tests with a Metrohm PGStat 204 and a silver–silver chloride reference ([Bates MS thesis, 2026](https://scholarsarchive.byu.edu/etd/11363)). The closest match to C4, and a good place to check a new electrode against a master | quentin_allen@byu.edu, 801-422-1777, 265 CTB |
+   | Brian Iverson, ME | Ag/AgCl reference with a CHI potentiostat ([2024 paper](https://doi.org/10.1002/gch2.202400021)). Office 360J EB, next to Dr. Porter's 360P | bdiverson@byu.edu, 801-422-7514 |
+   | Wally Paxton, Chemistry | An aqueous cyclic-voltammetry lab; on the RAISE board with Dr. Porter | wally.paxton@byu.edu, 801-422-4917, C303 BNSN |
+   | Devin Rappleye, ChemE | Four potentiostats for aqueous and molten-salt work, and research on reference electrodes ([PyRO lab](https://pyro.byu.edu/instruments)) | devin_rappleye@byu.edu, 801-422-1611, 330-N EB |
+   | Adam Woolley, Chemistry | Aqueous Ag/AgCl reference ([2026 paper](https://doi.org/10.1002/smsc.70249)) | atw33@byu.edu, 801-422-1701, C205 BNSN |
+   | David Dearden, Chemistry | Teaches CHEM 523, the instrumental-analysis lab, which runs in Winter only, so its kit is idle now | dvd@chem.byu.edu, 801-422-2355, C307 BNSN |
+   | Oliver Johnson, ME | Sterling's MS group (its [alumni list](https://johnson.byu.edu/content/people)). Nothing public shows electrochemistry there, but NSF 1610077 (2016–20) had experimental hydrogen diffusivity in iron, which usually means a permeation cell with references | ojohnson@byu.edu, 801-422-0972, 350M EB |
+   | Dean Wheeler, ChemE chair | May know where retired Prof. John Harb's electrochemistry kit went | dean_wheeler@byu.edu, 801-422-4126, 330-T EB |
+
+   Dr. Porter (jasonporter@byu.edu) is on the RAISE electrochemistry journal's
+   board with Paxton, Rappleye and Wheeler, so he can introduce. A suggested ask:
+   *"Could we borrow two Ag/AgCl reference electrodes (3 M or saturated KCl) for
+   about two weeks, for copper-alloy corrosion tests in 3.5 % NaCl on Dr.
+   Porter's EZstat-Pro? We'll return them refilled and replace anything we
+   damage. If you can't spare them, could we check ours against your master?"*
+2. **Amazon Prime, delivered Sunday 25 or Monday 26 Oct.** Four in-stock 6 mm ×
+   65 mm glass Ag/AgCl electrodes, shipped and sold through Amazon (seller J & D
+   TECH INC), checked from des4: StonyLab
+   [SL000173](https://www.amazon.com/dp/B0CP7M76CF) ($85.99, 3 M KCl type,
+   4.8★ from 10 ratings), [SL000172](https://www.amazon.com/dp/B0D2W2Y2NB)
+   ($69.36, saturated), and Labasics [LB000632](https://www.amazon.com/dp/B0DP2BJ44P)
+   ($68.99) and [LB000634](https://www.amazon.com/dp/B0DP2CZMGP) ($74.59). At
+   00:01 MDT on Saturday, Prime offered Sunday delivery for orders placed within
+   13 h, so by about 1 pm MDT Saturday; otherwise Thursday 29. The 6 mm tube drops
+   through the bench-cell cover's 6 mm hole and the PTFE head rests on top. They're
+   unbranded, with no datasheet and a porous "sand core" frit, so C3 is their
+   quality check. Buy three of one listing: two for C3 and a spare. Ship Sunday
+   deliveries to a home address, since campus buildings are closed.
+3. **A brand-name master by Tuesday 27:** Hanna
+   [HI5311](https://hannainst.com/hi5311-general-purpose-reference-electrode.html),
+   $149.99, double junction, ceramic, 3.5 M KCl, 4 mm banana plug, in stock.
+   Hanna offers Next Day Air on "select products" (check at checkout), and
+   weekend orders go out Monday. Its body diameter
+   isn't published and looks about 12 mm, so use it as C3's master in a beaker,
+   or reprint the cover's hole. Or call Pine on Monday (919-782-8320) for
+   [RREF0021](https://pineresearch.com/products/reference-ag-agcl-standard-single/)
+   (9.5 mm, 4 M KCl with 250 mL of filling solution, in stock, price after login),
+   by next-day air: Tuesday or Wednesday.
+4. **KCl:** none of these come filled. 3 M KCl is 22.4 g of KCl per 100 mL of
+   DI water. BYU's Chem Stores (126 NICB, Mon–Fri 8–5, 801-422-2678,
+   chemstores@chem.byu.edu; manager Todd Fluckiger, toddjf@byu.edu,
+   801-422-6155) sells to faculty accounts and special-orders anything it
+   doesn't stock for $20 an order. It publishes no catalog, so whether it stocks
+   electrodes is a Monday phone call.
+
+Couldn't be checked from the runner or des4: Fisher, Sigma-Aldrich,
+Cole-Parmer, Thomas Scientific, eBay and CH Instruments' price list all blocked
+both. Gamry 930-00015 (9 mm, 76 in stock) says most orders ship within 10 days.
+For C6's 2 mm reference, WPI's DRIREF-2 ($158) and
+[SDR2 Super Dri-Ref](https://wpiinc.com/products/sdr2-super-dri-ref-reference-electrode)
+($219) were both listed as available, shipping by UPS from Florida; the
+Innovative Instruments LF-2 in DAL's BOM has no public price.
 
 ### C4. Shakedown on the C63000 NAB we already have
 
