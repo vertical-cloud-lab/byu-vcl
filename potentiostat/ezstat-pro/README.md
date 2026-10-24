@@ -873,8 +873,8 @@ it arrives Friday 30 Oct at the earliest. Faster, in order:
    Porter's EZstat-Pro? We'll return them refilled and replace anything we
    damage. If you can't spare them, could we check ours against your master?"*
 2. **Amazon Prime, delivered Sunday 25 or Monday 26 Oct.** Four in-stock 6 mm ×
-   65 mm glass Ag/AgCl electrodes, shipped and sold through Amazon (seller J & D
-   TECH INC), checked from des4: StonyLab
+   65 mm glass Ag/AgCl electrodes, shipped by Amazon and sold by J & D TECH INC,
+   checked from des4: StonyLab
    [SL000173](https://www.amazon.com/dp/B0CP7M76CF) ($85.99, 3 M KCl type,
    4.8★ from 10 ratings), [SL000172](https://www.amazon.com/dp/B0D2W2Y2NB)
    ($69.36, saturated), and Labasics [LB000632](https://www.amazon.com/dp/B0DP2BJ44P)
