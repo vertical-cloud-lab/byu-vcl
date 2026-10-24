@@ -1,0 +1,1038 @@
+{
+ "what": "Lid camera stills and focus scores while @mcwilliams03 adjusted the lens rings, 2026-10-22",
+ "how": "curl -s localhost:8081/still and /status on the lid camera Pi, while the stream ran (picam_source.py); stills saved here at half resolution",
+ "stills": {
+  "still_2054Z_zoomed_in_blurred.jpg": {
+   "taken_utc": "2026-10-22T20:54:46Z",
+   "corners_vs_centre": "no vignetting: zoomed well in from WIDE",
+   "edge_10_90_px_full_res": [
+    409,
+    487
+   ],
+   "note": "edge of the dark block at lower right, rows 2200 and 2600"
+  },
+  "still_2110Z_wide_blurred.jpg": {
+   "taken_utc": "2026-10-22T21:10:22Z",
+   "corners_vs_centre": "dark corners (p90 brightness 182 at the centre, 64 at the corners): at or near WIDE",
+   "edge_10_90_px_full_res": 564,
+   "note": "lower edge of the dark block at upper left, columns 400-900",
+   "focus": {
+    "centre": 2.2,
+    "best_2min": 14.3,
+    "grid": [
+     [
+      9.1,
+      2.8,
+      2.5
+     ],
+     [
+      4.1,
+      2.2,
+      2.5
+     ],
+     [
+      2.6,
+      2.0,
+      6.6
+     ]
+    ]
+   },
+   "exposure_us": 17326,
+   "gain": 1.5,
+   "lux": 158.4
+  },
+  "still_2115Z_closer.jpg": {
+   "taken_utc": "2026-10-22T21:15:24Z",
+   "what": "the colour-mixing plate in the middle of the picture, about 16 mm zoom (plate about 2240 of 4056 px wide; 1224 px at 9.02 mm); still soft",
+   "edge_10_90_px_full_res": 243,
+   "note": "plate's left edge, rows 1900-2300",
+   "focus": {
+    "centre": 7.0,
+    "best_2min": 38.5,
+    "grid": [
+     [
+      2.4,
+      2.8,
+      2.6
+     ],
+     [
+      2.0,
+      7.0,
+      6.0
+     ],
+     [
+      2.4,
+      7.9,
+      6.4
+     ]
+    ]
+   },
+   "exposure_us": 37969,
+   "lux": 107.0
+  }
+ },
+ "reading": "A 10-90 % edge width of 400-560 px is a blur circle of roughly 700-900 px, 1.1-1.4 mm on the 1.55 um pixels. In focus on 2026-10-20 at about 9 mm the centre score was 34 (still_0358Z_lit.json); here it is 2-7. At WIDE the focus ring moves the image only a few tenths of a mm (thin lens, 8-9 mm, infinity to the 0.20 m minimum), so blur this large at WIDE points at the lens-to-sensor distance: the lens backed out of its thread, the C-CS adapter, or the camera's back-focus ring.",
+ "dark_scores": "20:59:22-20:59:37 the picture went dark (Lux 0.1-0.3, the iris shut) and the score read 450-778: sensor noise over a near-zero mean, not focus",
+ "poll_every_3s": [
+  {
+   "utc": "20:55:47",
+   "centre": 2.7,
+   "best_2min": 10.5,
+   "exposure_us": 49963,
+   "gain": 2.16,
+   "lux": 97.7
+  },
+  {
+   "utc": "20:55:50",
+   "centre": 2.7,
+   "best_2min": 10.5,
+   "exposure_us": 49963,
+   "gain": 2.16,
+   "lux": 97.7
+  },
+  {
+   "utc": "20:55:53",
+   "centre": 2.7,
+   "best_2min": 10.5,
+   "exposure_us": 49963,
+   "gain": 2.16,
+   "lux": 97.8
+  },
+  {
+   "utc": "20:55:56",
+   "centre": 2.7,
+   "best_2min": 10.5,
+   "exposure_us": 49963,
+   "gain": 2.16,
+   "lux": 98.2
+  },
+  {
+   "utc": "20:55:59",
+   "centre": 2.7,
+   "best_2min": 10.5,
+   "exposure_us": 49963,
+   "gain": 2.16,
+   "lux": 97.9
+  },
+  {
+   "utc": "20:56:02",
+   "centre": 2.7,
+   "best_2min": 10.5,
+   "exposure_us": 49963,
+   "gain": 2.16,
+   "lux": 97.8
+  },
+  {
+   "utc": "20:56:05",
+   "centre": 2.7,
+   "best_2min": 10.5,
+   "exposure_us": 49963,
+   "gain": 2.16,
+   "lux": 97.7
+  },
+  {
+   "utc": "20:56:08",
+   "centre": 2.7,
+   "best_2min": 10.5,
+   "exposure_us": 49963,
+   "gain": 2.16,
+   "lux": 97.8
+  },
+  {
+   "utc": "20:56:11",
+   "centre": 2.7,
+   "best_2min": 10.5,
+   "exposure_us": 49963,
+   "gain": 2.16,
+   "lux": 97.7
+  },
+  {
+   "utc": "20:56:14",
+   "centre": 2.7,
+   "best_2min": 10.5,
+   "exposure_us": 49963,
+   "gain": 2.16,
+   "lux": 97.8
+  },
+  {
+   "utc": "20:56:17",
+   "centre": 2.7,
+   "best_2min": 10.5,
+   "exposure_us": 49963,
+   "gain": 2.16,
+   "lux": 97.8
+  },
+  {
+   "utc": "20:56:20",
+   "centre": 2.7,
+   "best_2min": 10.5,
+   "exposure_us": 49963,
+   "gain": 2.16,
+   "lux": 97.8
+  },
+  {
+   "utc": "20:56:23",
+   "centre": 2.7,
+   "best_2min": 10.5,
+   "exposure_us": 49963,
+   "gain": 2.16,
+   "lux": 98.2
+  },
+  {
+   "utc": "20:56:26",
+   "centre": 2.7,
+   "best_2min": 10.5,
+   "exposure_us": 49963,
+   "gain": 2.16,
+   "lux": 98.4
+  },
+  {
+   "utc": "20:56:29",
+   "centre": 2.7,
+   "best_2min": 10.5,
+   "exposure_us": 49963,
+   "gain": 2.16,
+   "lux": 98.0
+  },
+  {
+   "utc": "20:56:32",
+   "centre": 2.7,
+   "best_2min": 10.5,
+   "exposure_us": 49963,
+   "gain": 2.16,
+   "lux": 97.9
+  },
+  {
+   "utc": "20:56:35",
+   "centre": 2.7,
+   "best_2min": 10.2,
+   "exposure_us": 49963,
+   "gain": 2.16,
+   "lux": 97.8
+  },
+  {
+   "utc": "20:56:38",
+   "centre": 2.7,
+   "best_2min": 10.2,
+   "exposure_us": 49963,
+   "gain": 2.16,
+   "lux": 97.8
+  },
+  {
+   "utc": "20:56:41",
+   "centre": 2.7,
+   "best_2min": 10.2,
+   "exposure_us": 49963,
+   "gain": 2.16,
+   "lux": 97.8
+  },
+  {
+   "utc": "20:56:44",
+   "centre": 2.7,
+   "best_2min": 9.9,
+   "exposure_us": 49963,
+   "gain": 2.16,
+   "lux": 98.0
+  },
+  {
+   "utc": "20:56:47",
+   "centre": 2.7,
+   "best_2min": 9.9,
+   "exposure_us": 49963,
+   "gain": 2.16,
+   "lux": 98.0
+  },
+  {
+   "utc": "20:56:50",
+   "centre": 2.7,
+   "best_2min": 9.9,
+   "exposure_us": 49963,
+   "gain": 2.16,
+   "lux": 98.5
+  },
+  {
+   "utc": "20:56:53",
+   "centre": 7.2,
+   "best_2min": 9.9,
+   "exposure_us": 49963,
+   "gain": 2.16,
+   "lux": 97.4
+  },
+  {
+   "utc": "20:56:56",
+   "centre": 6.8,
+   "best_2min": 8.0,
+   "exposure_us": 49963,
+   "gain": 2.13,
+   "lux": 97.3
+  },
+  {
+   "utc": "20:56:59",
+   "centre": 1.8,
+   "best_2min": 12.5,
+   "exposure_us": 47918,
+   "gain": 2.0,
+   "lux": 126.1
+  },
+  {
+   "utc": "20:57:02",
+   "centre": 4.8,
+   "best_2min": 12.5,
+   "exposure_us": 39489,
+   "gain": 2.0,
+   "lux": 126.5
+  },
+  {
+   "utc": "20:57:05",
+   "centre": 3.3,
+   "best_2min": 12.5,
+   "exposure_us": 39489,
+   "gain": 2.0,
+   "lux": 127.6
+  },
+  {
+   "utc": "20:57:08",
+   "centre": 2.4,
+   "best_2min": 12.5,
+   "exposure_us": 39489,
+   "gain": 2.0,
+   "lux": 129.0
+  },
+  {
+   "utc": "20:57:11",
+   "centre": 4.7,
+   "best_2min": 12.5,
+   "exposure_us": 39489,
+   "gain": 2.0,
+   "lux": 125.7
+  },
+  {
+   "utc": "20:57:14",
+   "centre": 4.1,
+   "best_2min": 12.5,
+   "exposure_us": 38494,
+   "gain": 2.0,
+   "lux": 130.8
+  },
+  {
+   "utc": "20:57:17",
+   "centre": 3.3,
+   "best_2min": 12.5,
+   "exposure_us": 38494,
+   "gain": 2.0,
+   "lux": 130.7
+  },
+  {
+   "utc": "20:57:20",
+   "centre": 2.4,
+   "best_2min": 12.5,
+   "exposure_us": 38190,
+   "gain": 2.0,
+   "lux": 119.3
+  },
+  {
+   "utc": "20:57:24",
+   "centre": 13.7,
+   "best_2min": 13.7,
+   "exposure_us": 49963,
+   "gain": 2.15,
+   "lux": 105.7
+  },
+  {
+   "utc": "20:57:27",
+   "centre": 4.8,
+   "best_2min": 13.7,
+   "exposure_us": 49963,
+   "gain": 2.02,
+   "lux": 105.5
+  },
+  {
+   "utc": "20:57:30",
+   "centre": 3.5,
+   "best_2min": 13.7,
+   "exposure_us": 49963,
+   "gain": 2.02,
+   "lux": 105.0
+  },
+  {
+   "utc": "20:57:33",
+   "centre": 3.0,
+   "best_2min": 13.7,
+   "exposure_us": 49963,
+   "gain": 2.02,
+   "lux": 105.6
+  },
+  {
+   "utc": "20:57:36",
+   "centre": 4.5,
+   "best_2min": 13.7,
+   "exposure_us": 49963,
+   "gain": 2.02,
+   "lux": 102.7
+  },
+  {
+   "utc": "20:57:39",
+   "centre": 3.3,
+   "best_2min": 13.7,
+   "exposure_us": 49963,
+   "gain": 2.02,
+   "lux": 102.8
+  },
+  {
+   "utc": "20:57:42",
+   "centre": 3.9,
+   "best_2min": 13.7,
+   "exposure_us": 49963,
+   "gain": 2.02,
+   "lux": 103.5
+  },
+  {
+   "utc": "20:57:45",
+   "centre": 3.4,
+   "best_2min": 13.7,
+   "exposure_us": 49963,
+   "gain": 2.02,
+   "lux": 103.1
+  },
+  {
+   "utc": "20:57:48",
+   "centre": 6.5,
+   "best_2min": 13.7,
+   "exposure_us": 49963,
+   "gain": 2.02,
+   "lux": 99.8
+  },
+  {
+   "utc": "20:57:51",
+   "centre": 3.8,
+   "best_2min": 13.7,
+   "exposure_us": 49963,
+   "gain": 2.06,
+   "lux": 98.7
+  },
+  {
+   "utc": "20:57:54",
+   "centre": 3.1,
+   "best_2min": 13.7,
+   "exposure_us": 49963,
+   "gain": 2.06,
+   "lux": 98.4
+  },
+  {
+   "utc": "20:57:57",
+   "centre": 2.9,
+   "best_2min": 13.7,
+   "exposure_us": 49963,
+   "gain": 2.06,
+   "lux": 97.2
+  },
+  {
+   "utc": "20:58:00",
+   "centre": 2.7,
+   "best_2min": 13.7,
+   "exposure_us": 49963,
+   "gain": 2.06,
+   "lux": 97.2
+  },
+  {
+   "utc": "20:58:03",
+   "centre": 2.7,
+   "best_2min": 13.7,
+   "exposure_us": 49963,
+   "gain": 2.06,
+   "lux": 97.2
+  },
+  {
+   "utc": "20:58:06",
+   "centre": 2.7,
+   "best_2min": 13.7,
+   "exposure_us": 49963,
+   "gain": 2.06,
+   "lux": 97.2
+  },
+  {
+   "utc": "20:58:09",
+   "centre": 2.6,
+   "best_2min": 13.7,
+   "exposure_us": 49963,
+   "gain": 2.06,
+   "lux": 97.2
+  },
+  {
+   "utc": "20:58:12",
+   "centre": 2.6,
+   "best_2min": 13.7,
+   "exposure_us": 49963,
+   "gain": 2.06,
+   "lux": 98.6
+  },
+  {
+   "utc": "20:58:15",
+   "centre": 5.0,
+   "best_2min": 13.7,
+   "exposure_us": 49963,
+   "gain": 2.04,
+   "lux": 97.9
+  },
+  {
+   "utc": "20:58:18",
+   "centre": 6.4,
+   "best_2min": 13.7,
+   "exposure_us": 49963,
+   "gain": 2.12,
+   "lux": 96.0
+  },
+  {
+   "utc": "20:58:21",
+   "centre": 5.2,
+   "best_2min": 13.7,
+   "exposure_us": 49963,
+   "gain": 2.3,
+   "lux": 88.6
+  },
+  {
+   "utc": "20:58:24",
+   "centre": 5.8,
+   "best_2min": 13.7,
+   "exposure_us": 49963,
+   "gain": 2.27,
+   "lux": 88.4
+  },
+  {
+   "utc": "20:58:27",
+   "centre": 3.6,
+   "best_2min": 13.7,
+   "exposure_us": 49963,
+   "gain": 2.23,
+   "lux": 88.0
+  },
+  {
+   "utc": "20:58:30",
+   "centre": 2.9,
+   "best_2min": 13.7,
+   "exposure_us": 49963,
+   "gain": 2.23,
+   "lux": 88.6
+  },
+  {
+   "utc": "20:58:33",
+   "centre": 4.4,
+   "best_2min": 13.7,
+   "exposure_us": 49963,
+   "gain": 2.2,
+   "lux": 91.8
+  },
+  {
+   "utc": "20:58:36",
+   "centre": 3.2,
+   "best_2min": 13.7,
+   "exposure_us": 49963,
+   "gain": 2.2,
+   "lux": 91.5
+  },
+  {
+   "utc": "20:58:39",
+   "centre": 2.9,
+   "best_2min": 13.7,
+   "exposure_us": 49963,
+   "gain": 2.2,
+   "lux": 91.2
+  },
+  {
+   "utc": "20:58:42",
+   "centre": 2.7,
+   "best_2min": 13.7,
+   "exposure_us": 49963,
+   "gain": 2.2,
+   "lux": 91.2
+  },
+  {
+   "utc": "20:58:45",
+   "centre": 2.7,
+   "best_2min": 13.7,
+   "exposure_us": 49963,
+   "gain": 2.2,
+   "lux": 91.2
+  },
+  {
+   "utc": "20:58:48",
+   "centre": 2.6,
+   "best_2min": 13.7,
+   "exposure_us": 49963,
+   "gain": 2.2,
+   "lux": 91.2
+  },
+  {
+   "utc": "20:58:51",
+   "centre": 2.6,
+   "best_2min": 13.7,
+   "exposure_us": 49963,
+   "gain": 2.2,
+   "lux": 92.2
+  },
+  {
+   "utc": "20:58:54",
+   "centre": 2.6,
+   "best_2min": 13.7,
+   "exposure_us": 49963,
+   "gain": 2.2,
+   "lux": 92.1
+  },
+  {
+   "utc": "20:58:57",
+   "centre": 3.2,
+   "best_2min": 13.7,
+   "exposure_us": 47448,
+   "gain": 2.0,
+   "lux": 149.7
+  },
+  {
+   "utc": "20:59:00",
+   "centre": 17.7,
+   "best_2min": 17.7,
+   "exposure_us": 42833,
+   "gain": 2.0,
+   "lux": 144.0
+  },
+  {
+   "utc": "20:59:04",
+   "centre": 2.1,
+   "best_2min": 17.7,
+   "exposure_us": 39047,
+   "gain": 2.0,
+   "lux": 185.5
+  },
+  {
+   "utc": "20:59:07",
+   "centre": 2.8,
+   "best_2min": 17.7,
+   "exposure_us": 41783,
+   "gain": 2.0,
+   "lux": 152.1
+  },
+  {
+   "utc": "20:59:10",
+   "centre": 4.8,
+   "best_2min": 17.7,
+   "exposure_us": 37610,
+   "gain": 2.0,
+   "lux": 166.2
+  },
+  {
+   "utc": "20:59:13",
+   "centre": 5.1,
+   "best_2min": 17.7,
+   "exposure_us": 37610,
+   "gain": 2.0,
+   "lux": 167.6
+  },
+  {
+   "utc": "20:59:16",
+   "centre": 3.0,
+   "best_2min": 17.7,
+   "exposure_us": 37278,
+   "gain": 2.0,
+   "lux": 169.4
+  },
+  {
+   "utc": "20:59:19",
+   "centre": 7.9,
+   "best_2min": 17.7,
+   "exposure_us": 37278,
+   "gain": 2.0,
+   "lux": 169.5
+  },
+  {
+   "utc": "20:59:22",
+   "centre": 450.8,
+   "best_2min": 453.6,
+   "exposure_us": 38190,
+   "gain": 2.0,
+   "lux": 0.3
+  },
+  {
+   "utc": "20:59:25",
+   "centre": 618.7,
+   "best_2min": 701.8,
+   "exposure_us": 66654,
+   "gain": 14.84,
+   "lux": 0.1
+  },
+  {
+   "utc": "20:59:28",
+   "centre": 692.9,
+   "best_2min": 713.9,
+   "exposure_us": 66654,
+   "gain": 15.52,
+   "lux": 0.1
+  },
+  {
+   "utc": "20:59:31",
+   "centre": 717.1,
+   "best_2min": 746.6,
+   "exposure_us": 66654,
+   "gain": 15.52,
+   "lux": 0.1
+  },
+  {
+   "utc": "20:59:34",
+   "centre": 704.9,
+   "best_2min": 746.6,
+   "exposure_us": 66654,
+   "gain": 15.52,
+   "lux": 0.1
+  },
+  {
+   "utc": "20:59:37",
+   "centre": 749.4,
+   "best_2min": 778.4,
+   "exposure_us": 66654,
+   "gain": 15.52,
+   "lux": 0.1
+  },
+  {
+   "utc": "20:59:40",
+   "centre": 15.9,
+   "best_2min": 778.4,
+   "exposure_us": 66654,
+   "gain": 15.52,
+   "lux": 30.6
+  },
+  {
+   "utc": "20:59:43",
+   "centre": 0.0,
+   "best_2min": 778.4,
+   "exposure_us": 49963,
+   "gain": 3.17,
+   "lux": 244.0
+  },
+  {
+   "utc": "20:59:46",
+   "centre": 0.0,
+   "best_2min": 778.4,
+   "exposure_us": 27883,
+   "gain": 1.5,
+   "lux": 898.4
+  },
+  {
+   "utc": "20:59:49",
+   "centre": 2.1,
+   "best_2min": 778.4,
+   "exposure_us": 9976,
+   "gain": 1.1,
+   "lux": 1324.3
+  },
+  {
+   "utc": "20:59:52",
+   "centre": 3.1,
+   "best_2min": 778.4,
+   "exposure_us": 4753,
+   "gain": 1.0,
+   "lux": 1297.7
+  },
+  {
+   "utc": "20:59:55",
+   "centre": 6.9,
+   "best_2min": 778.4,
+   "exposure_us": 9754,
+   "gain": 1.0,
+   "lux": 1283.2
+  },
+  {
+   "utc": "20:59:58",
+   "centre": 3.2,
+   "best_2min": 778.4,
+   "exposure_us": 9754,
+   "gain": 1.0,
+   "lux": 1193.2
+  },
+  {
+   "utc": "21:00:01",
+   "centre": 4.1,
+   "best_2min": 778.4,
+   "exposure_us": 15668,
+   "gain": 1.5,
+   "lux": 371.2
+  },
+  {
+   "utc": "21:00:04",
+   "centre": 6.0,
+   "best_2min": 778.4,
+   "exposure_us": 22328,
+   "gain": 1.5,
+   "lux": 370.2
+  },
+  {
+   "utc": "21:00:07",
+   "centre": 4.9,
+   "best_2min": 778.4,
+   "exposure_us": 22328,
+   "gain": 1.5,
+   "lux": 369.6
+  },
+  {
+   "utc": "21:00:10",
+   "centre": 4.3,
+   "best_2min": 778.4,
+   "exposure_us": 22328,
+   "gain": 1.5,
+   "lux": 369.2
+  },
+  {
+   "utc": "21:00:13",
+   "centre": 4.0,
+   "best_2min": 778.4,
+   "exposure_us": 22328,
+   "gain": 1.5,
+   "lux": 369.1
+  },
+  {
+   "utc": "21:00:16",
+   "centre": 3.9,
+   "best_2min": 778.4,
+   "exposure_us": 22328,
+   "gain": 1.5,
+   "lux": 369.3
+  },
+  {
+   "utc": "21:00:19",
+   "centre": 3.9,
+   "best_2min": 778.4,
+   "exposure_us": 22328,
+   "gain": 1.5,
+   "lux": 369.2
+  },
+  {
+   "utc": "21:00:22",
+   "centre": 3.7,
+   "best_2min": 778.4,
+   "exposure_us": 22328,
+   "gain": 1.5,
+   "lux": 368.5
+  },
+  {
+   "utc": "21:00:25",
+   "centre": 3.9,
+   "best_2min": 778.4,
+   "exposure_us": 26694,
+   "gain": 1.5,
+   "lux": 197.7
+  },
+  {
+   "utc": "21:00:28",
+   "centre": 6.4,
+   "best_2min": 778.4,
+   "exposure_us": 32553,
+   "gain": 2.0,
+   "lux": 121.9
+  },
+  {
+   "utc": "21:00:31",
+   "centre": 4.9,
+   "best_2min": 778.4,
+   "exposure_us": 46039,
+   "gain": 2.0,
+   "lux": 117.3
+  },
+  {
+   "utc": "21:00:34",
+   "centre": 4.1,
+   "best_2min": 778.4,
+   "exposure_us": 42667,
+   "gain": 2.0,
+   "lux": 118.5
+  },
+  {
+   "utc": "21:00:37",
+   "centre": 3.2,
+   "best_2min": 778.4,
+   "exposure_us": 42667,
+   "gain": 2.0,
+   "lux": 118.7
+  },
+  {
+   "utc": "21:00:41",
+   "centre": 2.9,
+   "best_2min": 778.4,
+   "exposure_us": 42667,
+   "gain": 2.0,
+   "lux": 118.6
+  },
+  {
+   "utc": "21:00:44",
+   "centre": 2.8,
+   "best_2min": 778.4,
+   "exposure_us": 42667,
+   "gain": 2.0,
+   "lux": 116.7
+  },
+  {
+   "utc": "21:00:47",
+   "centre": 2.7,
+   "best_2min": 778.4,
+   "exposure_us": 42667,
+   "gain": 2.0,
+   "lux": 116.0
+  },
+  {
+   "utc": "21:00:50",
+   "centre": 2.7,
+   "best_2min": 778.4,
+   "exposure_us": 42667,
+   "gain": 2.0,
+   "lux": 116.4
+  },
+  {
+   "utc": "21:00:53",
+   "centre": 5.3,
+   "best_2min": 778.4,
+   "exposure_us": 41755,
+   "gain": 2.0,
+   "lux": 122.0
+  },
+  {
+   "utc": "21:00:56",
+   "centre": 6.2,
+   "best_2min": 778.4,
+   "exposure_us": 40374,
+   "gain": 2.0,
+   "lux": 122.3
+  },
+  {
+   "utc": "21:00:59",
+   "centre": 4.0,
+   "best_2min": 778.4,
+   "exposure_us": 40678,
+   "gain": 2.0,
+   "lux": 120.3
+  },
+  {
+   "utc": "21:01:02",
+   "centre": 7.6,
+   "best_2min": 778.4,
+   "exposure_us": 36532,
+   "gain": 2.0,
+   "lux": 143.0
+  },
+  {
+   "utc": "21:01:05",
+   "centre": 6.2,
+   "best_2min": 778.4,
+   "exposure_us": 39738,
+   "gain": 2.0,
+   "lux": 118.2
+  },
+  {
+   "utc": "21:01:08",
+   "centre": 4.2,
+   "best_2min": 778.4,
+   "exposure_us": 42059,
+   "gain": 2.0,
+   "lux": 117.7
+  },
+  {
+   "utc": "21:01:11",
+   "centre": 2.2,
+   "best_2min": 778.4,
+   "exposure_us": 33382,
+   "gain": 2.0,
+   "lux": 154.5
+  },
+  {
+   "utc": "21:01:14",
+   "centre": 4.4,
+   "best_2min": 778.4,
+   "exposure_us": 29983,
+   "gain": 1.76,
+   "lux": 162.8
+  },
+  {
+   "utc": "21:01:17",
+   "centre": 3.4,
+   "best_2min": 778.4,
+   "exposure_us": 29983,
+   "gain": 1.76,
+   "lux": 161.7
+  },
+  {
+   "utc": "21:01:20",
+   "centre": 2.9,
+   "best_2min": 778.4,
+   "exposure_us": 29983,
+   "gain": 1.76,
+   "lux": 163.4
+  },
+  {
+   "utc": "21:01:23",
+   "centre": 2.7,
+   "best_2min": 778.4,
+   "exposure_us": 29983,
+   "gain": 1.76,
+   "lux": 161.9
+  },
+  {
+   "utc": "21:01:26",
+   "centre": 2.6,
+   "best_2min": 778.4,
+   "exposure_us": 29983,
+   "gain": 1.76,
+   "lux": 161.6
+  },
+  {
+   "utc": "21:01:29",
+   "centre": 2.6,
+   "best_2min": 778.4,
+   "exposure_us": 29983,
+   "gain": 1.76,
+   "lux": 162.8
+  },
+  {
+   "utc": "21:01:32",
+   "centre": 2.8,
+   "best_2min": 778.4,
+   "exposure_us": 29983,
+   "gain": 1.76,
+   "lux": 162.7
+  },
+  {
+   "utc": "21:01:35",
+   "centre": 6.9,
+   "best_2min": 778.4,
+   "exposure_us": 29983,
+   "gain": 1.85,
+   "lux": 152.2
+  },
+  {
+   "utc": "21:01:38",
+   "centre": 4.6,
+   "best_2min": 766.0,
+   "exposure_us": 31337,
+   "gain": 2.0,
+   "lux": 150.1
+  },
+  {
+   "utc": "21:01:41",
+   "centre": 3.3,
+   "best_2min": 15.1,
+   "exposure_us": 31337,
+   "gain": 2.0,
+   "lux": 151.3
+  },
+  {
+   "utc": "21:01:44",
+   "centre": 2.9,
+   "best_2min": 15.1,
+   "exposure_us": 31337,
+   "gain": 2.0,
+   "lux": 149.3
+  },
+  {
+   "utc": "21:01:47",
+   "centre": 2.7,
+   "best_2min": 15.1,
+   "exposure_us": 31337,
+   "gain": 2.0,
+   "lux": 149.6
+  }
+ ]
+}

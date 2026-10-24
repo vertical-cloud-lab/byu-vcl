@@ -1,0 +1,93 @@
+{
+  "thread": {
+    "pitch_mm": 0.79375,
+    "basic_major_d": 25.4,
+    "basic_pitch_d": 24.884444251809576,
+    "male_root_d": 24.42617247564031,
+    "female_crest_d": 24.540740419682628
+  },
+  "variants": [
+    {
+      "name": "A",
+      "male_clear": 0.12,
+      "female_clear": 0.22,
+      "od": 30.0,
+      "spacing": 5.0,
+      "roof": 0.4,
+      "spigot": 4.0,
+      "bore": 22.1,
+      "relief": 0.5,
+      "entry": 0.4,
+      "flutes": 30,
+      "flute_depth": 0.25,
+      "notches": 1,
+      "n_theta": 360,
+      "dz": 0.04,
+      "stl": "c_cs_spacer_A.stl",
+      "triangles": 162720,
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_mm3": 1473.04,
+      "mass_g_pla": 1.83,
+      "bounds_mm": [
+        [
+          -15.0,
+          -14.926,
+          0.0
+        ],
+        [
+          14.855,
+          14.926,
+          9.0
+        ]
+      ],
+      "female_thread_depth_mm": 4.6,
+      "male_crest_d": 25.16,
+      "male_root_d": 24.186,
+      "female_crest_d": 24.981,
+      "female_root_d": 25.926,
+      "male_wall_at_root_mm": 1.043
+    },
+    {
+      "name": "B",
+      "male_clear": 0.22,
+      "female_clear": 0.32,
+      "od": 30.0,
+      "spacing": 5.0,
+      "roof": 0.4,
+      "spigot": 4.0,
+      "bore": 22.1,
+      "relief": 0.5,
+      "entry": 0.4,
+      "flutes": 30,
+      "flute_depth": 0.25,
+      "notches": 2,
+      "n_theta": 360,
+      "dz": 0.04,
+      "stl": "c_cs_spacer_B.stl",
+      "triangles": 162720,
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_mm3": 1403.64,
+      "mass_g_pla": 1.74,
+      "bounds_mm": [
+        [
+          -15.0,
+          -14.926,
+          0.0
+        ],
+        [
+          14.855,
+          14.926,
+          9.0
+        ]
+      ],
+      "female_thread_depth_mm": 4.6,
+      "male_crest_d": 24.96,
+      "male_root_d": 23.986,
+      "female_crest_d": 25.181,
+      "female_root_d": 26.126,
+      "male_wall_at_root_mm": 0.943
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+// Let a sudo user keep stream-reboot.sh from rebooting the Pi during a long job,
+// without sudo and over SSH:
+//   systemd-inhibit --what=shutdown --why="<what it is>" <command>
+// Without this rule polkit refuses that outside a local console. Only
+// stream-reboot.sh looks for these locks; a reboot run as root ignores them.
+polkit.addRule(function (action, subject) {
+    if (action.id == "org.freedesktop.login1.inhibit-block-shutdown" &&
+        subject.isInGroup("sudo")) {
+        return polkit.Result.YES;
+    }
+});
