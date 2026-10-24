@@ -27,7 +27,8 @@ pre-flight under 15 min old, and a camera frame read before Send.
 | [`ui.py`](ui.py) | `xdotool` wrapper: smooth pointer moves (they show in a recording), clicks, keys, and `typeenv VAR`, which types a secret from the environment through stdin, so it never appears in argv or a log |
 | [`shot.sh`](shot.sh) | Screenshot of `:99`, to find the next thing to click |
 | `bambu-totp` | Not in this folder: `claude-print.yml` installs it on the runner. Writes the account's current authenticator code to stdout, for piping into `xdotool` (see [Logging in](#logging-in-password-plus-an-authenticator-code)) |
-| [`watch_studio.py`](watch_studio.py) | Watches a print from Studio's Device page when the LAN route is shut (the H2D, 2026-10-08): reads temperatures and layer by OCR every 10 s, saves camera frames, stops on a new dialog, a hard limit, a stall or a blank camera |
+| [`watch_studio.py`](watch_studio.py) | Watches a print from Studio's Device page when the LAN route is shut (the H2D, 2026-10-08; any printer in a `@claude-print` run): reads temperatures and layer by OCR every 10 s, saves camera frames, stops on a new dialog, a hard limit, a stall or a blank camera. `WATCH_LAYOUT=a1mini BED_TARGET=65` for the A1 mini's page |
+| [`cut_recording.py`](cut_recording.py) | Builds the video to publish from the recorder's 5 min segments, by wall-clock time and speed per part, so the login is never in it; blurs the camera pane's upper corners where the room shows, and writes YouTube chapters |
 
 ## Setup (about 2 min on a runner)
 
@@ -334,6 +335,63 @@ What was new:
 - **[Recording](https://www.youtube.com/watch?v=nrGHKqr7TO0)** (10:48). The login and the
   *Update* tab, which shows serial numbers, are cut. The 24× chapter ends at layer 22, so
   layers 23–28 and the end of the print, about 50 s, aren't in it.
+
+## Sixth run: the C–CS spacer rings on the A1 mini (2026-10-23)
+
+Asked for on [PR #234](https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-6376202869)
+as "model the same spacer and print it on the H2D (if available) with very high-quality
+settings". It was the first print from [`claude-print.yml`](../../.github/workflows/claude-print.yml),
+the run that holds the login. The record is in
+[`../evidence/2026-10-23/c-cs-spacer-studio/`](../evidence/2026-10-23/c-cs-spacer-studio/README.md).
+
+| UTC | Step |
+|---|---|
+| 22:42:14 | Request; the run was approved and started at 22:43:27 |
+| 22:51:35 | Recording started, then Studio's first run (wizard, plug-in, *Cancel* on the profile update) |
+| 22:57:55–22:58:47 | Login: e-mail and password, then Bambu asked for the authenticator code, and the first `bambu-totp` code worked |
+| 22:59:43 | Device page, H2D: **paused** at layer 75/1041 of another job with HMS 0300-801E, so not used |
+| 23:00:54 | Device page, A1 mini: idle, no HMS alert, heaters off |
+| 23:04:25 | Camera frame posted, go asked for |
+| 23:05:37 | The go (`plate clear`), after "good to go on A1 mini" from the requester |
+| 23:05–23:09 | *Sync info*, both STLs imported, `0.08mm High Quality @BBL A1M` with 6 walls, black PLA from A3, sliced |
+| 23:10:06 | Fresh Device-page check and frame |
+| 23:10:45 | *Send* |
+| 23:21:06 | Layer 1, after about 10 min of start-up (heating, levelling, flow calibration) |
+| 23:41:20 | Layer 57: the roof bridged across both bores |
+| 23:43:29–23:48:04 | No watcher samples: run in the background, it hit the session's 30 min limit for background commands; restarted in the foreground (the recording ran throughout) |
+| 23:52:53 | Finished: 100 %, layer 111/111, 42.1 min after Send (estimate: 38 min 24 s). No HMS alert or dialog |
+| 23:54:40 | Device page, H2D: its job running again, at layer 81 |
+| 23:55:05 | Signed out of the Bambu account, then Studio closed and its config deleted |
+
+What was new:
+- **No LAN route in a print run.** `claude-print.yml` has no Tailscale step and no `*_IP` or
+  `*_ACCESS_CODE` secrets, so `bambu_lan.py` and `bambu_print.py` can't run there. The pre-flight
+  and the watching happened in Studio, as on the H2D (runbook §11). `watch_studio.py` gained an
+  A1 mini layout for this (`WATCH_LAYOUT=a1mini BED_TARGET=65`): the page has one nozzle line
+  and no chamber line.
+- **The login took under a minute**, from *Login/Register* to the *Synchronise* prompt, with the
+  click positions in [Logging in](#logging-in-password-plus-an-authenticator-code). Nobody had
+  to post anything.
+- **A paused printer shows its error dialog as soon as it's selected.** Picking the H2D on the
+  Device page popped up *Warning: The extrusion motor is overloaded … [0300-801E]*, with
+  *Resume (problem solved)* and *Check Assistant*. Both act on someone else's print, so neither
+  was clicked. Moving the window aside (`wmctrl -r Warning -e 0,1480,860,-1,-1`) and selecting
+  the A1 mini hid it; the job panel's *Clear* wasn't touched either.
+- **The Prepare page started on "Bambu Lab A1", not the mini,** even with the A1 mini selected
+  on the Device page. *Sync info* fixed it (a dialog asks to sync the preset to the connected
+  printer). Press it before importing anything.
+- **Importing:** *Ctrl+I*, then *Ctrl+L* in the file dialog, type the path, *Return*. The
+  second *Ctrl+I* did nothing until the canvas was clicked first.
+- **The AMS sync dialog** (the icon right of the filament list) maps the project's filament to
+  an AMS slot by colour and type. Untick *Add unused AMS filaments to filaments list* to keep a
+  single filament.
+- **OCR on the A1 mini page** reads the bed's "41 /65" as "41 165". The watcher's hard limits
+  now use the current temperature only, and the target is just a note.
+- **No YouTube token in a print run either,** so the cut recording is committed with the
+  evidence, and a plain `@claude` run can upload it.
+  [`cut_recording.py`](cut_recording.py) makes it from the recorder's segments by wall-clock
+  time, so the login can't slip in, and blurs the camera pane's upper corners where the room
+  shows.
 
 ## Recording and keeping the sent file
 

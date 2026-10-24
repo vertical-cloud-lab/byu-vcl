@@ -44,6 +44,13 @@ the work:
 >   [recording](https://www.youtube.com/watch?v=nrGHKqr7TO0). Two things differ from the A1
 >   mini, both in §11: the H2D refused `H2D_ACCESS_CODE` over LAN, so it was checked and watched
 >   from Studio's Device page, and its nozzles are 0.6 mm.
+> - **Sixth print, the first from `@claude-print` (2026-10-23):** two C–CS spacer rings for the
+>   lid camera on the A1 mini, in black PLA Basic at 0.08 mm layers. The H2D was asked for, but it
+>   was paused on another job (§11). Sent from Studio at 23:10:45 UTC, finished at 23:52:53, 42.1 min
+>   later against Studio's 38 min 24 s, with no HMS alert. The login needed nobody: the run computes
+>   the authenticator code. A print run has no tailnet, so the checks and the watching were on
+>   Studio's Device page. [Evidence](evidence/2026-10-23/c-cs-spacer-studio/README.md); the
+>   recording is committed there, since a print run has no YouTube token.
 > - **Its print command** is the payload that started this printer's first programmatic
 >   print from a laptop (powder-doser PR #23, 2026-07-27), when the printer was set up for
 >   Developer Mode.
@@ -601,6 +608,12 @@ A1 mini:
   units. Don't open it while recording, or cut it from the video.
 - **Firmware (2026-10-08):** printer 01.03.00.00, with 01.04.00.00 offered (not updated
   remotely); AMS 2 Pro 04.00.21.87; AMS HT 04.00.21.86.
+- **Check that it's free before planning on it.** On 2026-10-23 it was 11 % into a 1 day 15 h
+  job (`doser_augers_x25_H2D`), paused on HMS 0300-801E ("The extrusion motor is overloaded").
+  Selecting it in Studio opens that error dialog, with *Resume (problem solved)* and *Check
+  Assistant*. Don't click either: they act on someone else's print. Move the window aside and
+  select another printer. The spacer rings went to the A1 mini instead.
+  ([evidence](evidence/2026-10-23/c-cs-spacer-studio/README.md)).
 
 ## Files
 
@@ -617,3 +630,4 @@ A1 mini:
 | [`evidence/2026-10-02/base-studio/`](evidence/2026-10-02/base-studio/README.md) | plate 1, the base, printed from Studio in black PLA: two pre-flights, the file Studio sent (exported mid-print), `print.json`, `watch`'s log and key frames |
 | [`evidence/2026-10-01/deck-studio/`](evidence/2026-10-01/deck-studio/README.md) | plate 2 printed from Studio, asked for on PR #84: two pre-flights (the first in a dark lab), the file the printer ran, `print.json`, `watch`'s log and key frames. Copied from that PR's branch (`cad7af2`) |
 | [`evidence/2026-10-08/deck-h2d-studio/`](evidence/2026-10-08/deck-h2d-studio/README.md) | the new deck printed on the H2D from Studio: the frames before Send, the file Studio uploaded, `print.json`, the Device-page monitor's log and key frames |
+| [`evidence/2026-10-23/c-cs-spacer-studio/`](evidence/2026-10-23/c-cs-spacer-studio/README.md) | two C–CS spacer rings printed on the A1 mini from a `@claude-print` run: the frames before Send, the H2D's paused job, the file Studio uploaded, `print.json`, the monitor's log, key frames and the cut recording |
