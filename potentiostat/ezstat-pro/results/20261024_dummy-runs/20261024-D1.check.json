@@ -1,0 +1,38 @@
+{
+  "csv": "potentiostat/ezstat-pro/results/20261024_dummy-runs/20261024-D1.csv",
+  "columns": {
+    "V": "Cell Potential[V]",
+    "I": "Cell Current[A]",
+    "t": "Relative Time [s]"
+  },
+  "units": {
+    "V": "v",
+    "I": "a",
+    "t": "s"
+  },
+  "points": 9,
+  "sample_interval_s": 11.975999999999999,
+  "ocp": [],
+  "lpr": [
+    {
+      "t_start_s": 0.0,
+      "t_end_s": 95.808,
+      "points": 9,
+      "E_from_V": -0.008815445,
+      "E_to_V": 0.007044516,
+      "E_mid_V": -0.0008854645,
+      "I_at_mid_A": -5.547870124111738e-10,
+      "I_mean_A": -5.546993922222222e-10,
+      "I_sd_A": 2.0490399117710253e-11,
+      "I_range_A": [
+        -5.7650711e-10,
+        -5.0226498e-10
+      ],
+      "slope_S": 1.8983344426334804e-09,
+      "Rp_ohm": 526777567.50424945,
+      "residual_sd_A": 1.8050915479846152e-11,
+      "Rp_resolved": false
+    }
+  ],
+  "hold": []
+}
