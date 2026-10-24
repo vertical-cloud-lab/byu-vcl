@@ -1,0 +1,9 @@
+0:00 Bambu Studio's first start on the runner (the login after it is cut)
+1:34 Device page: the H2D is paused on another job, the A1 mini is idle
+2:35 Modelling the spacer (in the terminal, off screen)
+2:52 The A1 mini's camera: the frame posted for the go
+3:37 Slicing: Sync info, both rings, 0.08 mm High Quality, 6 walls, black PLA
+6:07 Fresh check, then Send at 23:10:45 UTC
+7:57 Start-up: heating, levelling, flow calibration
+8:30 Layers 1 to 111
+9:51 Finished; the H2D's job is running again
