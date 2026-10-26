@@ -783,8 +783,8 @@ and can run remotely as soon as the 10 kΩ is back on the leads.
 
 | # | Check | Needs | Passes if | Unblocks |
 |---|---|---|---|---|
-| C1 | DAL's sequence on the 10.00 kΩ | R2's wiring | Rp within 3 % of 10.00 kΩ every time; the hold and its charge within 3 %; the method runs through over Remote Desktop and ends with Cell OFF | The method, range and export for C4–C6 |
-| C2 | Low currents: 100 kΩ, 1 MΩ (and 10 MΩ) | Three 1 % resistors | 100 kΩ and 1 MΩ within 5 %; 10 MΩ is recorded, not judged | The well (13 nA–1.7 µA in DAL's protocol); passive aluminium (~1 nA) |
+| C1 | DAL's sequence on the 10.00 kΩ | R2's wiring | Rp within 3 % of 10.00 kΩ every time; the hold and its charge within 3 %; the method runs through over Remote Desktop and ends with Cell OFF | The method, range and export for C4–C6. **Passed 2026-10-26** ([below](#c1-dals-sequence-on-the-1000-kω-no-chemistry)) |
+| C2 | Low currents: 100 kΩ, 1 MΩ (and 10 MΩ) | Three resistors, each measured on the meter; 5 % ones will do | 100 kΩ and 1 MΩ within 5 %; 10 MΩ is recorded, not judged | The well (13 nA–1.7 µA in DAL's protocol); passive aluminium (~1 nA) |
 | C3 | Reference against a master | Two Ag/AgCl references | Within 5 mV of each other, drifting under 1 mV in 10 min | Every potential in C4–C6 |
 | C4 | Shakedown on the C63000 NAB we have | Bench cell, graphite counter, 3.5 % NaCl | Three slices: E_corr SD ≤ 10 mV, log₁₀ Rp SD ≤ 0.15, no attack at the O-ring edge | The lab's first copper corrosion data; a baseline for NAB from the atomizer |
 | C5 | Bench-cell anchor on DAL's reference alloys | C71500, C95800, then C70600; D1141 seawater | C4's limits, with means near the published values | DAL §5's calibration; the ONR draft's reference alloys, measured every round |
@@ -802,14 +802,15 @@ from the published Rp values in C5, ±1.1–4.4 µA at ±10 mV. The 10 kΩ gives
 
 1. **Technique → Corrosion Studies → Corrosion Inhibition Test** (in 7.1's
    menu but not in the manual; [map, §3.3](ezware-map.md#33-techniques)).
-   Open-circuit monitoring for 30 min, logged every 1 s, with a
-   corrosion-resistance measurement every 10 min: a polarization range of
-   ±10 mV, a scan rate of 10 mV/min (0.167 mV/s), and solution-resistance
-   subtraction off. If it won't run on this unit, use Linear Sweep Voltammetry
+   Open-circuit monitoring for 20 min, logged every 1 s, with a
+   corrosion-resistance measurement every 20 min (the most it allows): a
+   polarization range of ±10 mV, a scan rate of 10 mV/min (0.167 mV/s), and
+   solution-resistance subtraction off. If it won't run on this unit, use Linear Sweep Voltammetry
    from −10 to +10 mV at 0.167 mV/s. On a resistor, OCV is 0, so it's the same
    sweep.
-2. **Step Techniques → Chrono Amperometry** at +40 mV for 10 min. This stands
-   in for DAL's +50 mV hold. +40 mV keeps the reading below the ±50 mV
+2. **Time Base Techniques → Extended Time Base** at +40 mV for 10 min, in
+   potentiostat mode, with a Cutoff Current Limit of 1E-7 A (see below). This
+   stands in for DAL's +50 mV hold. +40 mV keeps the reading below the ±50 mV
    boundary, where R2's residuals step.
 3. OCV 5 min, then export. In the Data Analyser (Display Cell Data → Data →
    Analyze Selected), run **Analysis → Corrosion Analysis** on one LPR
@@ -821,9 +822,9 @@ from the published Rp values in C5, ±1.1–4.4 µA at ±10 mV. The 10 kΩ gives
 **Changes from the dummy runs** (2026-10-24, leads open; [results](results/20261024_dummy-runs/README.md)):
 - **One LPR per Corrosion Inhibition Test.** Each LPR is placed around the OCP just measured, not
   around 0 V, as intended. But the `.nuvdt` keeps only the open-circuit points, and the CSV export only the last
-  LPR. So set the monitoring time equal to the measurement interval (30 min each): the one LPR then
-  comes at the end, and it's the one exported. "Monitoring time" counts open-circuit time only, so
-  the run lasts about 32 min.
+  LPR. So set the monitoring time equal to the measurement interval: the one LPR then
+  comes at the end, and it's the one exported. "Monitoring time" counts open-circuit time only. The
+  interval tops out at 20 min (C1, 2026-10-26), so 20 min each, and the run lasts about 22 min.
 - **Expect 9 points per LPR.** EZware records one point per 2 mV at any scan rate, and the last two of
   a sweep never reach the export.
 - **Hold with Extended Time Base, not Chrono Amperometry.** Chrono Amperometry coerced a 120 s step to
@@ -833,6 +834,45 @@ from the published Rp values in C5, ±1.1–4.4 µA at ±10 mV. The 10 kΩ gives
   the same day (`check_corrosion_runs.py` reports one), or allow 5 %. Rp is a slope, so it's unaffected.
 - **Check with [`analysis/check_corrosion_runs.py`](analysis/check_corrosion_runs.py)**, which reads
   the `.nuvdt` as well as the CSV: `--r-ohm 10000` checks Rp and the hold against the resistor.
+
+**Result, C1, 2026-10-26: passes, once the range's offset is taken off the hold.** A Claude
+session over Remote Desktop, 19:51–20:54 UTC, with Ben's 10.00 kΩ wired as for R2
+([files and analysis](results/20261026_c1-10k/README.md)):
+
+| Check | Result |
+|---|---|
+| OCP, 20 min | −42 µV, SD 13 µV, no drift |
+| Rp | **10,000 Ω** (+0.004 %), and 9,991 Ω (−0.09 %) in a repeat. EZware's own figure for the repeat: 9,990.6 Ω |
+| +40 mV hold, 10 min | 3.856 µA as measured, −3.5 % from V/R (fails 3 %). **3.9995 µA, +0.13 %**, with the range's −0.144 µA offset taken off. Charge 2.401 mC corrected, against 2.40 |
+| Remote run | Every run ended with Cell OFF; EZware closed at the end |
+
+The 10,000 Ω is agreement within the meter's ±1.0 %, not 0.004 % accuracy: in a ±10 mV LPR, the
+two ~1 % errors R2 found pull opposite ways and nearly cancel.
+
+![C1: OCP, the two LPRs and the hold](results/20261026_c1-10k/20261026-C1-summary.png)
+
+**What C1 found in EZware 7.1:**
+- **The Corrosion Inhibition Test writes its own results**, as `<run name>.csv` next to the
+  `.nuvdt`, with a row for the LPR: time, "Corrosion Potential" and "Corrosion Resistance".
+  Presumably one row per LPR; every run so far had just one. The
+  resistance is 1/slope of a straight-line fit, the same as `check_corrosion_runs.py` gives. The
+  potential is where that line crosses zero current, so it's shifted by the range's offset times
+  Rp (+1.43 mV on the 10 kΩ); take E_corr from the OCP before the LPR instead.
+- **Export LPRs under a different name from the run's.** An export saved, or copied, as
+  `<run name>.csv` replaces EZware's results file without asking. That's how C1's own was lost.
+- **The measurement interval tops out at 20 min**; 30 is coerced to 20 with no message.
+- **A monitoring time shorter than the interval doesn't end the run.** 5 min against 20 was still
+  monitoring at 6 min.
+- **Stopping a Corrosion Inhibition Test with Stop saves nothing**, not even the open-circuit points.
+- **Extended Time Base opens in galvanostat mode, applying 0.1 A.** Pick Potentiostat in Source
+  Mode first. Its potentials are absolute (no "vs OCP"), and it doesn't record the pretreatment.
+- **Its Cutoff Current Limit ends a potentiostatic hold once the current is *below* it**, as a
+  battery charger ends its constant-voltage stage. 1E-5 A ended a 3.86 µA hold after one point.
+  Set it well below the current expected; 1E-7 A worked here.
+- **Check the export's columns every time.** Tools → File Export → Data Configuration had only
+  Voltage and Current ticked; tick the three time columns.
+- **The file prompt takes `%USERPROFILE%\Documents\EZware_user_Files\<name>`**, which keeps the
+  file on the PC when the prompt opens in `\\tsclient\ez`.
 
 **Why it matters:**
 - It's the first run of EZware's corrosion technique and analysis.
@@ -850,6 +890,14 @@ noise.
 - **Why these values:** DAL's protocol puts LPR currents on its -006 well
   between 13 nA and 1.7 µA for copper. Passive aluminium goes down to about
   1 nA (byu-vcl PR #278, now DAL #180).
+- **5 % (gold-band) resistors will do** (asked 2026-10-26). Tolerance only says how far the real
+  value may be from the printed one, and C2 compares the EZstat with the meter's reading, not the
+  colour bands. Listings for the bench meter give ±(0.8 % + 2 digits) up to its 200 kΩ range and
+  ±(1.0 % + 2 digits) on 2 MΩ and 20 MΩ: ±1.0 % at 100 kΩ and ±1.2 % at 1 MΩ and 10 MΩ, well inside
+  C2's 5 %. A 1 % resistor would be known no better than that.
+- **Measure each one off the clips, without holding both ends.** Clipped on, the EZstat's leads are
+  across it too, and a hand across a 1 MΩ or 10 MΩ pulls the reading low. Note each reading and the
+  meter's range.
 - **If the 1 MΩ trace is noisy,** put the resistor in a closed metal box (a
   cookie tin) and clip the green ground lead to the box.
 - **If 1 MΩ fails,** the well needs a larger O-ring or a more sensitive
@@ -963,6 +1011,12 @@ as atomizer feedstock. Three 6 mm slices of it cost under an inch.
   and counter on their electrodes, ground free.
 - **Method:** C1's, on the 1 µA–100 µA range: OCP 30 min, LPR ±10 mV at
   0.167 mV/s, OCP 5 min, hold at E_corr + 50 mV for 10 min, OCP 5 min.
+  - EZware's 20 min cap on the measurement interval means one Corrosion Inhibition Test can't
+    give 30 min of OCP and then a single LPR. Either accept 20 min (C1's 20/20), or set 30 min of
+    monitoring with a 15 min interval: that adds an LPR at 15 min, whose Rp should still reach the
+    results CSV (untested), though only the last LPR's points are exported.
+  - For the hold, read E_corr off the OCP and type E_corr + 0.05 V into Extended Time Base, which
+    takes absolute potentials. Subtract a same-day offset from its current, as C1 did.
   Optional: carry on with OCP and an LPR every 30 min up to 3 h, the time the
   published Rp values are quoted at.
 - **Expect:** on 0.92 cm², about 2.3 kΩ (±4.4 µA at ±10 mV), going by cast
