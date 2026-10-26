@@ -579,13 +579,39 @@ resistor measured 10.00 kΩ.
 
 ## 6. After the dummy loads
 
-Next come the chemistry runs from the 15 and 19 October plans in #231: the
-U of U probe (Block B, below) and the ferricyanide CV (Block C).
+The 15 and 19 October plans in #231 put the chemistry runs next: the U of U
+probe (Block B, below) and the ferricyanide CV (Block C).
 
 **From 2026-10-24 the corrosion work for alloys comes first** (Sterling,
 [on #291](https://github.com/vertical-cloud-lab/byu-vcl/pull/291#issuecomment-6379392718)).
-Its checks are in [§7](#7-corrosion-checks-for-the-alloy-work). Block B
-waits until they're done.
+Its checks are in [§7](#7-corrosion-checks-for-the-alloy-work). Later that
+day he added that "demonstrating atomization is the priority right now", and
+that he wasn't sure it would be wise to try to get a corrosion test done
+([#291](https://github.com/vertical-cloud-lab/byu-vcl/pull/291#issuecomment-6388624186)).
+
+**The corrosion checks don't use the probe, so Block B is on hold** (asked on
+#291, 2026-10-26):
+
+- **It measures the liquid, not the metal.** The corrosion runs (C4–C6)
+  measure an alloy specimen against an Ag/AgCl reference, with a graphite or
+  Pt counter, and C1–C3 check the instrument and the references for them. The
+  probe's four electrodes are platinum, which isn't a stable reference, so
+  none of them can stand in for the references C3–C6 need.
+- **Seawater's own resistance barely touches the corrosion readings:** 60 Ω
+  in the CubXL well, about 0.1 mV during an LPR
+  ([DAL's protocol](https://github.com/vertical-cloud-lab/digital-alloy-lab/blob/81923f2/alloy-corrosion/copper/protocol.md)).
+  To check each electrolyte batch's conductivity,
+  [DAL's BOM](https://github.com/vertical-cloud-lab/digital-alloy-lab/blob/81923f2/alloy-corrosion/bom/README.md)
+  lists a dip probe (row H09), not this one.
+- **It belongs to the conductivity and spectroscopy work with Dr. Porter**
+  ([DAL #148](https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/148)).
+  On 22 October Sterling put the spectroscopy path on hold, perhaps to come
+  back as a BYU IDR grant with Dr. Porter
+  ([#298](https://github.com/vertical-cloud-lab/byu-vcl/issues/298#issuecomment-6352253304)).
+
+Until that restarts, the plan below stands but isn't scheduled. Keep the probe
+dry, packed as it came and away from the salt water, or give it back to Dr.
+Porter: that's Sterling's call.
 
 ### The U of U four-point probe (Block B)
 
@@ -1026,8 +1052,9 @@ and start the method.
 
 ### Before C4: two questions
 
-- **For Dr. Porter:** may his EZstat be used for corrosion runs in salt water,
-  and can his lab lend reference electrodes?
+- **For Dr. Porter:** may his EZstat be used for corrosion runs in salt water?
+  His lab has no reference electrodes to lend ("We do not have reference
+  electrodes", 19 Oct, [#231](https://github.com/vertical-cloud-lab/byu-vcl/issues/231#issuecomment-6273249484)).
 - **Long runs:** DAL's calibration plans overnight runs, but §5 says no
   unattended runs (manual p. 26). Until that's settled, C4–C6 are daytime runs
   with someone in the lab.
