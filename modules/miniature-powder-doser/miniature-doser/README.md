@@ -5,8 +5,10 @@ This is the smallest version of the lab's powder doser drawn so far. It is built
 `claude/issue-172-20261003-2216`, commit `509a0bf`, `cad/text-to-cad/STEP/assembly_servos_above.step`), folded up, with
 a screw-on capillary on the auger's outlet. It was first drawn to fit beside the melt stream inside the rePowder's
 chamber (2026-10-06 and 07), where the doser as built (190 × 261 × 103 mm) has no room. The same module is a candidate
-for the smaller powder-dosing module mentioned for the CubXL (byu-vcl issues 213 and 150): one powder, dispensed in
-varying amounts to a precise spot, with powder changes done by hand.
+for the smaller powder-dosing module mentioned for the CubXL
+([byu-vcl#150](https://github.com/vertical-cloud-lab/byu-vcl/issues/150), and
+[digital-alloy-lab#148](https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/148), which was byu-vcl#213): one
+powder, dispensed in varying amounts to a precise spot, with powder changes done by hand.
 
 This note is the self-contained version of the design. **Everything here is a concept from CAD and estimates. Nothing
 has been built or tested.**
@@ -157,7 +159,7 @@ Fixed at 35°, the module rides outlet down with powder in its capillary wheneve
   alone released nothing. What's loose is what sits below the flight, in the v4 funnel and the capillary. The
   capillary alone holds about 300 mg, close to one pulse.
 - **The gantry's own acceleration is small.** The CubXL's controller limits it to 300 mm/s²
-  ([`$120` to `$122`](../../../cubos/configs/gantry/cub_xl_ben_pipette_capper.yaml#L40)), which tilts the apparent
+  ([`$120` to `$122`](https://github.com/vertical-cloud-lab/byu-vcl/blob/975f7d4/cubos/configs/gantry/cub_xl_ben_pipette_capper.yaml#L40)), which tilts the apparent
   gravity by about 1.8°. The risk is vibration and jolts. A tilted capillary is a vibratory feeder, and in the
   literature its flow starts at about 2.5 m/s² of tube acceleration (1.1 to 3.9; [Edison 02](../doser-atomizer/edison/results/02-steady-low-rate-auger-feeding.md)).
   How hard the head shakes hasn't been measured. An accelerometer on it during a run would show how close that is.
@@ -197,7 +199,7 @@ Fixed at 35°, the module rides outlet down with powder in its capillary wheneve
 
 ## Towed by the gantry: the doser parked in a back corner
 
-@benwhitney5463's sketch ([PR 274](https://github.com/vertical-cloud-lab/byu-vcl/pull/274), 2026-10-16): the doser
+@benwhitney5463's sketch ([byu-vcl PR 274](https://github.com/vertical-cloud-lab/byu-vcl/pull/274), 2026-10-16): the doser
 lives in the back right corner of the CubXL. Electromagnets on its side hold it to the gantry while the gantry moves in
 Y, so it rides behind the tools and doses into vials in one row along Y. Below, the one-servo variant is drawn on a
 stand-in of the CubXL, now placed from Ben's measurements of 2026-10-19 and his photo of the right Y rail. Only the
@@ -307,13 +309,14 @@ the outlet-up park, so the leak question in the one-servo section becomes a benc
 
 The GIF is the run at about 3× the video's speed. The video,
 [`cubxl_shuttle_workflow.mp4`](cubxl_shuttle_workflow.mp4), is 1 min 41 s at 1280 × 720 and is laid out like
-[PR 278](https://github.com/vertical-cloud-lab/byu-vcl/pull/278)'s copper-corrosion video.
+[byu-vcl PR 278](https://github.com/vertical-cloud-lab/byu-vcl/pull/278)'s copper-corrosion video (now in
+[digital-alloy-lab#180](https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/180)).
 [`cubxl_shuttle_video.py`](cubxl_shuttle_video.py) draws it from `cubxl_shuttle.py`'s model, and
 [`cubxl_shuttle_workflow.json`](cubxl_shuttle_workflow.json) has its chapters and captions, with their times.
 
 | Time | Chapter |
 |---|---|
-| 0:00 | **The real CubXL**: Ben's photo of it empty (#133), his sketch of the idea and his photo of the right Y rail (both from this PR), in [`media/`](media) |
+| 0:00 | **The real CubXL**: Ben's photo of it empty ([byu-vcl#133](https://github.com/vertical-cloud-lab/byu-vcl/issues/133)), his sketch of the idea and his photo of the right Y rail (both from byu-vcl PR 274), in [`media/`](media) |
 | 0:05 | **The same machine as a model**, seen from the photo's side, turning to the working view |
 | 0:10 | **The doser's parts, one at a time**, each with a name: the vial row, the rail, the dock, the shuttle, the doser and the magnets. Then the tab on the gantry, and the capper and pipette on the head |
 | 0:27 | **Before the run, by hand**: load the auger and weigh the cartridge, calibrate on the bench, tare the vials, check the coupling and the board |
@@ -331,12 +334,16 @@ In the run:
 
 The vials stay open while the doser works the row, because its body trails over the vials behind the tip.
 
-## In a mix-and-measure workflow (Dr. Porter, #213)
+## In a mix-and-measure workflow (Dr. Porter)
 
-@benwhitney5463 asked (PR 274, 2026-10-22) how the towed doser fits the workflow discussed with Dr. Porter: make
-solutions, then measure their conductivity and spectra. The background is in #213 and in PR 270's
-`docs/cubxl-electrochem-first-use-cases.md`. That doc's §5 lists what a powder module should be checked against. This
-section answers it for the towed doser. **None of it has been tried.**
+@benwhitney5463 asked (byu-vcl PR 274, 2026-10-22) how the towed doser fits the workflow discussed with Dr. Porter:
+make solutions, then measure their conductivity and spectra. The background is in
+[digital-alloy-lab#148](https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/148) (byu-vcl#213 before the
+move) and in the use-case note,
+[`docs/cubxl-electrochem-first-use-cases.md`](https://github.com/vertical-cloud-lab/digital-alloy-lab/blob/3faf7ef/docs/cubxl-electrochem-first-use-cases.md)
+(byu-vcl PR 270, now [digital-alloy-lab#177](https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/177)). Its
+§5 lists what a powder module should be checked against. This section answers it for the towed doser. **None of it
+has been tried.**
 
 **Why powder instead of stock solutions.**
 - Porter's two syringes, high-salt and low-salt, reach only the line between them. Six stock vials reach a simplex,
@@ -349,14 +356,14 @@ section answers it for the towed doser. **None of it has been tried.**
 **One sample:**
 1. Weigh the empty vial.
 2. Dose each salt in turn, batched by salt across the row.
-3. Add water by weight. The P20 is too small; PR 270 counts 460 transfers for a 9 mL dip-probe sample. That needs the
-   300 µL head or a pump.
+3. Add water by weight. The P20 is too small; the use-case note counts 460 transfers for a 9 mL dip-probe sample. That
+   needs the 300 µL head or a pump.
 4. Cap and stir until conductivity stops drifting, which shows the salt has dissolved.
 5. Measure: a conductivity dip probe, then a spectrum. For the spectrum, the AS7341 sees Cu–Cl, the OpenRAMAN tip
    dock sees nitrate and sulfate, and Porter's ATR sees LiTFSI.
 6. Log the masses and readings. His model then picks the next composition.
 
-**What the doses look like,** per gram of water, for PR 270's model chemistries:
+**What the doses look like,** per gram of water, for the use-case note's model chemistries:
 
 | Salt | Range, mol/kg | Salt per g of water | Takes up water from air? |
 |---|---|---|---|
@@ -380,8 +387,8 @@ section answers it for the towed doser. **None of it has been tried.**
 **Make the cartridge the unit of change.** The cartridge is the tube from outlet to cap, with its flight, gear, collar
 and capillary: 123 mm long, 25 mm across (46 mm at the gear). It holds about 12 g half full. The drive stays on the
 shuttle: the NEMA 11 and pinion, the tilt servo, the cradle and the vibration motor. With the brackets cut into clips,
-as in Plan B ([PR 297](https://github.com/vertical-cloud-lab/byu-vcl/pull/297)), a swap is lift out, drop in. That
-covers PR 270's checklist:
+as in Plan B ([byu-vcl PR 297](https://github.com/vertical-cloud-lab/byu-vcl/pull/297)), a swap is lift out, drop in.
+That covers the use-case note's checklist:
 
 - **Cleaning between powders goes away.** Nothing the powder touches is shared between powders. Cleaning happens off
   the machine.
@@ -400,7 +407,7 @@ covers PR 270's checklist:
 | **4. Onto the head, with a stack on the deck** | Plan B's mechanism at this size. The head's X, Y and Z clip onto cartridges on shelves; the 123 mm cartridges allow about three stacks side by side | the head mount | about 9 | no: it gives up the towed layout, competes with the capper and pipette for the head, and adds about 0.4 kg to it |
 
 - **Start with 1.** Batched by salt, a row of 8 vials needs one swap per salt, not one per vial. That is enough for a
-  first blind test set, which is PR 270's phase 0.
+  first blind test set, which is the use-case note's phase 0.
 - **Build 2 if the loop is to run unattended.** It keeps the towed doser's point: the head and its tools stay free.
 - **4 is Plan B at small scale.** If both plans go ahead, one clip-and-shelf design can serve both.
 
@@ -410,15 +417,16 @@ covers PR 270's checklist:
 - **Then a balance under the row:** a single-point load cell under the strip of 8 vials, about 0.3 kg. It closes the
   loop to roughly ±10 mg, which is 1 % at 1 g but not at 20 mg.
 - **For mg doses:** an analytical balance at one dosing position, with vials brought to it. That means by hand, or by
-  the vial arm in PR 272.
+  the vial arm in [byu-vcl PR 272](https://github.com/vertical-cloud-lab/byu-vcl/pull/272).
 
 ## Plan B: filling Al charge cups for the alloy workflow
 
 Ben's other idea, a doser close to PR 176's size on the head that clips into a stack of cartridges and fills about 50
 of the atomizer's charge cups, moved to its own PR,
-[PR 297](https://github.com/vertical-cloud-lab/byu-vcl/pull/297), with its specs and a model. Its files go in
-`../alloy-cubxl/`. Its script imports `cubxl_shuttle.py` and `module_views.py` from this folder, so a change to
-either can break it.
+[byu-vcl PR 297](https://github.com/vertical-cloud-lab/byu-vcl/pull/297), with its specs and a model. Its files go in
+`../alloy-cubxl/`. It is stacked on byu-vcl's branch `claude/issue-150-20261011-0350`, and its script imports
+`cubxl_shuttle.py` and `module_views.py` from that branch's copy of this folder, so a change to either there can
+break it.
 
 ## Where it was first drawn: inside the atomizer chamber
 

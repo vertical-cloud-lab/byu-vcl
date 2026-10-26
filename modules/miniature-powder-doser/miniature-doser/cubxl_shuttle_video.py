@@ -1,9 +1,10 @@
-"""Ben's towed doser on the CubXL, start to finish, as a video in the style of PR 278's cubxl-cu-spot.mp4. Writes
-cubxl_shuttle_workflow.mp4 (1280 x 720, 30 fps), a GIF of the run (640 x 360, about 3x the video's speed), the chapters
-and captions with their times (cubxl_shuttle_workflow.json) and stills, next to this file.
+"""Ben's towed doser on the CubXL, start to finish, as a video in the style of byu-vcl PR 278's cubxl-cu-spot.mp4.
+Writes cubxl_shuttle_workflow.mp4 (1280 x 720, 30 fps), a GIF of the run (640 x 360, about 3x the video's speed), the
+chapters and captions with their times (cubxl_shuttle_workflow.json) and stills, next to this file.
 
 What it shows, in order:
-1. The real CubXL, empty (Ben's photo from #133), Ben's sketch of the idea and his photo of the right Y rail (PR 274).
+1. The real CubXL, empty (Ben's photo from byu-vcl#133), Ben's sketch of the idea and his photo of the right Y rail
+   (byu-vcl PR 274).
 2. cubxl_shuttle.py's model of the same machine, seen from the photo's side, turning to the working view.
 3. Each part the doser adds, then what it needs on the gantry, and the head's tools, placed one at a time with a name.
 4. What is done by hand before a run (cards): load and weigh the auger, calibrate on the bench, tare the vials, check

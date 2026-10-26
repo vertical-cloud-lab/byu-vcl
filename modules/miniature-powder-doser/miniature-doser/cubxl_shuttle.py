@@ -1,5 +1,5 @@
-"""Ben's CubXL idea (PR 274, 2026-10-16): the miniature doser lives in the back right corner of the deck and rides with
-the gantry in Y, held to it by electromagnets, dosing into one row of vials while staying behind the tools.
+"""Ben's CubXL idea (byu-vcl PR 274, 2026-10-16): the miniature doser lives in the back right corner of the deck and
+rides with the gantry in Y, held to it by electromagnets, dosing into one row of vials while staying behind the tools.
 
 A concept sketch, not a design. The doser is the one-servo variant (doser_cad.tilt_meshes), mirrored so its servo faces
 the middle of the deck. A side frame on a shuttle carries it, the shuttle runs on a rail screwed along the deck's right
@@ -31,7 +31,7 @@ DECK_STEP = Path(os.environ.get("PANDA_DECK", "/tmp/PandaDeck.step"))
 DECK = (480.0, 490.0, 10.0)                             # PandaDeck.step's plate; no slots outboard of x = 458
 TRAVEL = (388.0, 233.665)                               # working_volume x, y (cub_xl_ben_pipette_capper.yaml)
 PIPETTE = np.array([54.0, 12.999])                      # the pipette's offset from the capper
-# MEASURED by Ben (PR 274, 2026-10-19), with the backboard moved out of the way (and with it in place):
+# MEASURED by Ben (byu-vcl PR 274, 2026-10-19), with the backboard moved out of the way (and with it in place):
 RAIL_GAP = 38.0                                         # x: the deck's right edge to the right Y rail
 BEAM_AHEAD, HEAD_AHEAD = 115.0, 65.0                    # y: the capper's axis in front of the beam (of the backboard)
 BEAM_UNDER, HEAD_UNDER = 148.0, 120.0                   # z: the beam's (the head block's) underside above the deck
