@@ -605,9 +605,10 @@ that he wasn't sure it would be wise to try to get a corrosion test done
   lists a dip probe (row H09), not this one.
 - **It belongs to the conductivity and spectroscopy work with Dr. Porter**
   ([DAL #148](https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/148)).
-  On 22 October Sterling put the spectroscopy path on hold, perhaps to come
-  back as a BYU IDR grant with Dr. Porter
-  ([#298](https://github.com/vertical-cloud-lab/byu-vcl/issues/298#issuecomment-6352253304)).
+  On 22 October Sterling ranked the spectroscopy work behind copper corrosion
+  and automated dosing ([#298](https://github.com/vertical-cloud-lab/byu-vcl/issues/298)),
+  and suggested putting it on hold, perhaps to come back as a BYU IDR grant
+  with Dr. Porter ([comment](https://github.com/vertical-cloud-lab/byu-vcl/issues/298#issuecomment-6352253304)).
 
 Until that restarts, the plan below stands but isn't scheduled. Keep the probe
 dry, packed as it came and away from the salt water, or give it back to Dr.
