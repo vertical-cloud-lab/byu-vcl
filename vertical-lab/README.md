@@ -2,110 +2,146 @@
 
 Animations of the vertical lift module (VLM) quoted in
 [#53](https://github.com/vertical-cloud-lab/byu-vcl/issues/53), a **Kardex Shuttle XP 500**, holding the lab's own
-equipment on three electrified trays and bringing it to the operator
+equipment on three electrified trays, with a **UR10e on a MiR250** working at its access opening
 ([#303](https://github.com/vertical-cloud-lab/byu-vcl/issues/303)). They follow the org page's
-[`vertical-lab.gif`](https://github.com/vertical-cloud-lab/.github/blob/main/profile/vertical-lab.gif): front storage,
-the extractor and rear storage, with the equipment coming down to an opening. They are built the way the other
-animations across the lab's repos are (rePowder training, sieving, atomizer charge, the doser's assembly): CadQuery
+[`vertical-lab.gif`](https://github.com/vertical-cloud-lab/.github/blob/main/profile/vertical-lab.gif) and are built
+the way the lab's other animations are (rePowder training, sieving, atomizer charge, the doser's assembly): CadQuery
 models tessellated into PyVista, rendered off-screen, text drawn with PIL, written as an MP4 and a GIF. The scene
-framework, [`scene.py`](scene.py), is `atomizer-training/viz3d/scene.py` from #124's branch with the atomizer's own
-loaders taken out.
+framework, [`scene.py`](scene.py), is `atomizer-training/viz3d/scene.py` from #124's branch.
 
-| | GIF (800 × 450, 10 fps) | MP4 (1280 × 720, 15 fps) |
+| Chapter | GIF (800 × 450, 10 fps) | MP4 (1280 × 720, 15 fps) |
 |---|---|---|
-| **Assembly**: base, frame, columns, extractor, trays, cladding; then each tray is loaded through the opening | [`out/vlm_assembly.gif`](out/vlm_assembly.gif) | [`out/mp4/vlm_assembly.mp4`](out/mp4/vlm_assembly.mp4) |
-| **Operation**: trays brought to the operator and put back | [`out/vlm_operation.gif`](out/vlm_operation.gif) | [`out/mp4/vlm_operation.mp4`](out/mp4/vlm_operation.mp4) |
-| **Disassembly**: the same in reverse | [`out/vlm_disassembly.gif`](out/vlm_disassembly.gif) | [`out/mp4/vlm_disassembly.mp4`](out/mp4/vlm_disassembly.mp4) |
-| **All three**, one after the other | | [`out/mp4/vertical_lab_full.mp4`](out/mp4/vertical_lab_full.mp4) |
+| **Assembly**: base, frame, columns, extractor, trays, then the cladding goes on, opaque | [`out/vlm_assembly.gif`](out/vlm_assembly.gif) | [`out/mp4/vlm_assembly.mp4`](out/mp4/vlm_assembly.mp4) |
+| **Loading**: the closed machine, then see-through; every piece of equipment goes onto its tray through the opening, one at a time; the arm rolls up | [`out/vlm_loading.gif`](out/vlm_loading.gif) | [`out/mp4/vlm_loading.mp4`](out/mp4/vlm_loading.mp4) |
+| **Workflow**: the arm doses a powder with the multi-doser and takes the vial to the CubXL, which adds liquid | [`out/vlm_workflow.gif`](out/vlm_workflow.gif) | [`out/mp4/vlm_workflow.mp4`](out/mp4/vlm_workflow.mp4) |
+| **Disassembly**: unloaded one piece at a time, then taken apart | [`out/vlm_disassembly.gif`](out/vlm_disassembly.gif) | [`out/mp4/vlm_disassembly.mp4`](out/mp4/vlm_disassembly.mp4) |
+| **All four**, one after the other | | [`out/mp4/vertical_lab_full.mp4`](out/mp4/vertical_lab_full.mp4) |
 
-![Operation](out/vlm_operation.gif)
+![Workflow](out/vlm_workflow.gif)
 
-![Assembly](out/vlm_assembly.gif)
+![Loading](out/vlm_loading.gif)
 
-![Disassembly](out/vlm_disassembly.gif)
+`out/<name>.json` gives the frame range of every sub-step in the MP4, `out/<name>_still.png` is a still of the last
+view, and [`out/reach.json`](out/reach.json) is the arm study below.
 
-`out/<name>.json` gives the frame range of every sub-step in the MP4, and `out/<name>_still.png` is a still of the
-last view.
+## The workflow
+
+An example run, with every move a real one:
+
+1. **Tray B (powder dosing) comes down.** The extractor pulls it off its supports and carries it down. The shutter at
+   the back of the bay opens to let it through and closes behind it.
+2. **An empty 20 mL vial into the multi-doser.** The UR10e picks it from the rack at the front of the tray, pointing
+   down. It slides the vial level into the cup on the rig's 100 g load cell, under the station, then parks clear.
+3. **Dose.** The carousel indexes powder module 6 to the station (8 chain links per module, run the way powder-doser's
+   leakage study says). The Actuonix P16 lifts the electronics carriage and docks it with the magnet on. The station
+   tilts 30° and turns the auger two revolutions, while the vial fills and the load cell counts 0.512 g. Then it tilts
+   back, reverses one turn at rest and undocks. This is the station's protocol from powder-doser PR #185.
+4. **The vial waits on the robot.** The arm stands the vial in a holder on the MiR's cabinet while the VLM swaps
+   trays. Tray B goes back to its slot and its power.
+5. **Tray A (liquid handling) comes down.** The CubXL's gantry parks at the back. The arm puts the vial in the free
+   seat of the CubXL's rack.
+6. **Liquid, then storage.** The CubXL brings its pipette over the vial and adds the liquid. Tray A goes back up with
+   the vial in it, to a slot that has power, so the CubXL can keep working while it is stored.
+
+Every approach, grasp and retreat is a straight line of the gripper's grasp point, solved with the UR's inverse
+kinematics every frame ([`robot.py`](robot.py)). A move that would need a flip of the arm fails before anything
+renders. The multi-doser moves through its own `layout.placements(State(...))`, so the chain, the carriages, the
+station's linkage, the tilt and the auger turn are its real kinematics.
 
 ## The models, one by one
 
-Every piece is its own model. Where the maker publishes CAD it is used as-is; where the lab has drawn the part, the
-lab's model is used; the VLM is built here because Kardex publishes none.
-
 | In the scene | Model | Where it comes from |
 |---|---|---|
-| Kardex Shuttle XP 500 | [`vlm.py`](vlm.py) | **Built here from published figures** (below). Kardex publishes no CAD, BIM or Revit file for the Shuttle XP, and none of the dealer listings carry one |
-| Opentrons OT-2 (tray A) | Opentrons' reference STEP, "Detailed" | **Vendor CAD**, from [github.com/Opentrons/ot2](https://github.com/Opentrons/ot2), fetched and SHA-256 checked at run time by [`lab_models/vendor.py`](lab_models/vendor.py) |
-| AgileX PiPER with gripper (the operator) | AgileX's arm-plus-gripper STEP | **Vendor CAD**, from AgileX's store CDN, fetched and checked the same way; shown in the pose it ships in |
-| Powder doser (tray B, ×3) | `cad/full-assembly/assembly/full_assembly.glb` | **The lab's own assembly** from powder-doser [PR #170](https://github.com/vertical-cloud-lab/powder-doser/pull/170) (#165): the Fusion 360 parts plus datasheet models of the servos, stepper and solenoid. Fetched at commit `a3bb2a9` and hash-checked by [`lab.py`](lab.py) |
-| A&D HR-100A with the FXi-10 breeze break and AutoTrickler V4 panel (tray B, ×3) | `labware.balance()` | The lab's CadQuery model from #199 (`lab-models/`), from A&D's drawings and the lab's measurements |
+| Kardex Shuttle XP 500 | [`vlm.py`](vlm.py) | **Built here from Kardex's figures** (below). Kardex publishes no CAD, BIM or Revit file for the Shuttle |
+| Multi-doser: chain carousel v2, 13 powder modules, its station, load cell, vial and electronics board (tray B) | [`carousel.py`](carousel.py) over [`multidoser/`](multidoser/) | **The lab's own latest design**, powder-doser [PR #185](https://github.com/vertical-cloud-lab/powder-doser/pull/185) (#128). `multidoser/{params,parts,layout,kinematics}.py` are verbatim copies of `cad/chain-carousel-v2/` at `1c135e0`, its head. Its three reference STEPs (Sam's Oct 13 plate and electronics carriage, the threaded auger, the cap) are fetched at that commit and SHA-256 checked. On the tray its electronics board stands beside the frame, turned 90° |
+| Universal Robots UR10e with a Robotiq 2F-85 gripper | [`ur_arm.py`](ur_arm.py) | **Vendor descriptions**: UR's `Universal_Robots_ROS2_Description` at `81f7c9f` (visual meshes and the calibrated kinematics; FK matches UR's DH table to 3e-7 mm) and PickNik's `ros2_robotiq_gripper` at `a74d007` (2F-85 meshes and linkage). Fetched and hash-checked at run time. The UR3e and UR7e are there too, for the comparison |
+| MiR250 mobile base, with a cabinet for the UR control box | [`props.py`](props.py) | MiR's published size, 800 × 580 × 300 mm; the cabinet's height is a layout choice (it puts the arm's base at 800 mm, under the 833 mm table) |
+| Opentrons OT-2 (tray A) | Opentrons' reference STEP, "Detailed" | **Vendor CAD**, from [github.com/Opentrons/ot2](https://github.com/Opentrons/ot2), fetched and SHA-256 checked by [`lab_models/vendor.py`](lab_models/vendor.py) |
+| CubXL (tray A) | `equipment.cubxl()`, in four pieces | The lab's CadQuery model from #199: the Genmitsu PROVerXL 4030 V2 frame from SainSmart's spec, the rest from lab photos. Split here into frame, gantry, carriage and tools so the gantry moves over its 400 × 300 × 110 mm travel |
 | Bambu Lab H2D and A1 mini (tray C) | `equipment.h2d()`, `equipment.a1_mini()` | The lab's CadQuery models from #199, from Bambu's spec pages and outline drawing. Bambu publishes no CAD |
-| CubXL (tray A) | `equipment.cubxl()` | The lab's CadQuery model from #199: the Genmitsu PROVerXL 4030 V2 frame from SainSmart's spec, the rest from lab photos |
-| AMAZEMET rePowder atomizer, with its argon cylinder, vacuum pump, heat exchanger and lines (beside the VLM, as the blue cabinet is in the org-page GIF) | [`repowder/model.py`](repowder/model.py) | The CadQuery model behind the rePowder training animations (#124): proportioned from the installation and training videos and AMAZEMET's figures, with the ultrasonic stack measured on the machine on 8 Oct. Too tall (1.6 m) for a tray, so it stands on the floor |
+| AMAZEMET rePowder atomizer and its utilities, beside the VLM | [`repowder/model.py`](repowder/model.py) | The CadQuery model behind the rePowder training animations (#124) |
+| Vials and the vial rack | [`props.py`](props.py) | The multi-doser's own 20 mL vial (28 × 61 mm, from its `params.py`); a printed rack like the CubXL's |
 
 [`lab_models/`](lab_models/) is a verbatim copy of `lab-models/cad/{common,equipment,labware,vendor}.py` from #199's
-branch at `7fc56b6` (`claude/issue-199-20260915-0846`, not merged yet), and [`repowder/model.py`](repowder/model.py) one
-of `atomizer-training/viz3d/model.py` from #124's branch at `7757443` (`claude/issue-124-20261003-0335`), so each
-model has one source; the READMEs there give the source of every dimension. Vendor CAD is downloaded into `.cache/`
-and never committed.
-
-Two things in the scene are stand-ins, not models of real parts: **the bridge** that holds each doser over its
-balance (four legs and a plate; the real bridge's ~265 mm leg span is a one-photo estimate in #199), and **the
-PiPER's mobile stand** (a pedestal on castors, height set so the arm's base is level with the opening's counter).
+branch at `7fc56b6`, and [`repowder/model.py`](repowder/model.py) one of `atomizer-training/viz3d/model.py` from #124's
+branch at `7757443`, so each model has one source. Vendor CAD is downloaded into `.cache/` (the carousel's references
+into `multidoser/reference/`) and never committed.
 
 ## The Kardex Shuttle XP 500
 
+The front was rebuilt against Kardex's own Shuttle 500 renders and fact sheet, and against Kardex's order sheet for
+this configuration: "Kardex Shuttle POF Version 16", SHUTTLE-01-500-2450x864. That sheet is hosted by the dealer
+StoreMoreStore ([VLM option 1 specification sheet](https://products.storemorestore.com/hubfs/StoreMoreStore/Kardex-Vertical-Lift-Module/VLM-Option-1-96x34-Light-Specification-Sheet.pdf)).
+
 | | Value | Source |
 |---|---|---|
-| Tray | 2450 × 864 mm | #53: 96.46 × 34.00 in. Kardex sells it as the XP 500-2450x864 |
-| Module footprint | 2780 × 3074 mm | Relevator Group's listing of three XP 500-2450x864 units: "Module width 2 780 mm / 2 450 mm", "Module depth 3 074 mm / 864 mm" |
-| Height | 3950 mm | #53: "less than 13'" (3962 mm). Kardex's Shuttle XP brochure ([on SlideShare](https://www.slideshare.net/slideshow/shuttle-xp-vertical-lift-system/123084721)): unit heights "2,550 to 30,050 mm" in "100 mm steps", so 3950 mm is the tallest under 13 ft |
-| Tray supports | 25 mm pitch | The same brochure: "Storage space pitch 25 mm" for the XP 250/500/700. Drawn every 100 mm, so the picture stays readable |
-| Extractor speed | up to 2.0 m/s vertical, 0.7 m/s in and out | The same brochure: "Vertical speed adjustable up to 2.0 m/s", "Storage/retrieval speed adjustable up to 0.7 m/s". The operation animation keeps to these peak speeds; the loading in the other two runs at about 1.25 times them |
-| Trays | strong 1080 lb, medium 794 lb, light 502 lb | #53 |
-| Electrified trays | power in a slot and at the opening, none in transit | #53. Modula: power "when stored, or again when they arrive at the delivery bay, but not while in motion". Kardex said it had no way to power a tray but offered a quick-connect cord to the device stored on it |
-| Safety shutter | powered | #53 |
-| Power | 208 V, three-phase | #53 |
+| Tray | 2450 × 864 mm | #53: 96.46 × 34.00 in |
+| Module footprint | 2780 × 3074 mm | Relevator Group's listing of XP 500-2450x864 units; the order sheet gives 2780 × 3073 |
+| Height | 3950 mm | #53: "less than 13'"; Shuttle heights step 100 mm from 2550 mm |
+| Access table | 833 mm above the floor | Order sheet: front access table height TH1 |
+| Presented tray | underside at 854 mm, floor top at 855.5-856.5 mm | Order sheet: TH1 + 21, and TH1 + 22.5 / 23 / 23.5 for light / medium / strong trays |
+| Product height through the opening | 727.5 mm, plus 20 mm clearance | Order sheet |
+| Opening | 2500 mm between the side posts; header at 1700 mm | Kardex renders and a real 2450 × 864 unit (about tray + 50 mm); the mouth reads 850-870 mm tall |
+| Look | RAL 7035 panels in about 490 mm bands; white header with the logo and an LED light under it; anthracite posts; slatted side walls in the bay; a blue (RAL 230 60 15) cover under the tray with the LED-Navigator strip; the OPTIC panel on the right post | Order sheet (colours, options); Kardex renders |
+| Safety shutter | at the **back** of the bay, between the presented tray and the shaft; it closes while the extractor moves | Kardex: the operator works on one tray "while the extractor prepares the next tray behind the shutter doors" |
+| Tray supports | 25 mm pitch (drawn every 100 mm) | Kardex: 25 mm storage grid |
+| Speeds | up to 2.0 m/s vertical, 0.7 m/s in and out | Kardex Shuttle XP brochure; the animation keeps to these |
+| Trays | strong 1080 lb, medium 794 lb, light 502 lb; powered in a slot and at the opening, not in transit | #53 |
 
-**Layout choices, not published figures.** Kardex's planning drawings aren't public, so these were chosen to fit the
-lab's equipment and are marked in `vlm.py`:
+**"The large bay opening".** For the Shuttle 250/500, Kardex's documents list no opening called "large". The largest
+is the full-width front opening above, which is what the model now has: 2500 mm wide, at an 833 mm table, taking 727.5 mm
+of product height. Two other options exist. Up to six openings can go on the front and rear. With full tray
+extraction, the tray is pulled out in front of the unit onto a table, for crane loading. Full tray extraction would
+put the whole tray under an open sky for the arm. Worth asking Kardex about if the arm has to reach the back of every
+tray.
 
-- The front-to-back split: front column, shaft and rear column each 864 mm deep, with tray centres 1030 mm apart.
-- The opening: tray floor at 900 mm, 795 mm clear above it so the 662 mm OT-2 goes through, and the tray presented
-  in the front column, 75 mm behind the front panel. A real XP's opening can stand proud of the front.
-- The storage heights: the six slots used are on the 25 mm pitch. The trays use three of them: tray A in R2, tray B
-  in R3, tray C in F1.
-- The extractor's details: a platform on four guide rails, a drive on the roof frame with a cross shaft and two
-  belts, a pull unit along the middle. The XP's real drive and pull mechanism differ in detail.
-- The shutter slides up behind the front panel; the LED bar, light curtains and console are placed as on Kardex's
-  photos, not measured.
+Still layout choices, not published: the front/back split of the columns, the slots the trays use, the extractor's
+details (a platform on four guide rails, a belt drive on the roof frame), and the console's exact size.
 
-## What the animations show
+## The arm: why a UR10e
 
-- **Assembly.** Base frame, posts and roof rails, the two storage columns, the extractor (rails, drive, platform and
-  belts), the three trays, then the cladding with the opening, console and shutter. Then each tray is loaded the way
-  it would be: the extractor brings it to the opening and its equipment goes in through the opening, which is 2570 ×
-  840 mm. The PiPER rolls up last.
-- **Operation.** The PiPER asks for tray B. The extractor pulls it off its supports, carries it down and pushes it
-  into the opening, the shutter opens, and the arm turns to the dosers. Tray B goes back up and tray C comes down.
-  The tray table at the top left shows where each tray is and whether it has power: in a slot or at the opening it
-  does, and while it moves it doesn't.
-- **Disassembly.** The PiPER rolls away, each tray is unloaded through the opening, and the machine comes apart in
-  the reverse order.
+[`reach.py`](reach.py) puts each arm on the MiR250 where the animation parks it: square to the opening, 30 mm off the
+cover's lip, with its base at 800 mm. It then asks the arm's own inverse kinematics three things:
+- can the arm reach the four seats the workflow uses?
+- how much of the presented tray can it reach pointing straight down?
+- how close do its elbow, forearm and wrists come to the opening's header (at 1700 mm)?
 
-**One thing the model shows: the PiPER reaches only the front of a tray.** Its reach is 626 mm, and from a stand
-against the counter its base is about 450 mm from the front edge of the presented tray. So it reaches about the front
-175 mm of the tray. Anything the arm has to handle (vials, plates, the doser outlets) should go along the tray's front
-edge, or the arm needs a rail, or the tray a pull-out at the opening.
+| | Reach, payload | Workflow seats reached (of 4) | Tray reached, gripper down, 100 mm up | Deepest point | Closest approach to the header |
+|---|---|---|---|---|---|
+| UR3e | 500 mm, 3 kg | 2 | 3 % | 100 mm | 496 mm |
+| UR7e | 850 mm, 7.5 kg | 4 | 31 % | 500 mm | 327 mm |
+| **UR10e** | 1300 mm, 12.5 kg | 4 | **83 %** | **800 mm** (the tray is 864 deep) | 118 mm |
+
+No arm ever has to go over the header to reach a point. The header limits none of them, so access decides:
+- The UR10e reaches the tray's full depth across most of its width.
+- The UR7e reaches only the front half near the middle, so everything it handles has to sit along the front edge.
+- The UR3e barely reaches past the lip.
+
+The cost of the UR10e is clearance: its closest approach to the header is 118 mm, against the UR7e's 327 mm.
+
+## Things the model shows
+
+- **The multi-doser is 3.5 mm too tall for the opening.** The chain carousel v2 stands 731 mm on its levelling feet,
+  and Kardex's limit is 727.5 mm of product height plus 20 mm clearance. Turning its four levelling feet down by 4 mm,
+  or a 3-4 mm shorter post, would make it pass Kardex's height check. The animation draws it as designed.
+- **The station's free fall is short.** The station drops the powder about 25 mm from the auger's outlet into the
+  D-cut funnel, behind the rig's front plate. So a camera sees the dose as the tilt, the vial filling and the load
+  cell's count, not as a falling stream.
+- **The vial is captured between its cup and the funnel.** In PR #185 the funnel's spout sits about 5 mm inside the
+  vial's mouth, and the vial stands in an 18 mm cup. An arm can't lift it straight out; here it slides the vial
+  forward a few millimetres while lifting it, which the real funnel would not allow. A robot-served station needs the
+  funnel to clear the mouth, or a cup open at the front.
 
 ## Running it
 
 ```bash
-pip install cadquery pyvista trimesh pillow numpy        # plus ffmpeg and gifsicle on the PATH
-xvfb-run -a python3 animate.py assembly operation disassembly full   # full joins the three MP4s
-PREVIEW=1 xvfb-run -a python3 animate.py operation       # the last frame of each sub-step, to /tmp
+pip install cadquery pyvista trimesh pycollada pillow numpy scipy   # plus ffmpeg and gifsicle on the PATH
+xvfb-run -a python3 animate.py assembly loading workflow disassembly full   # full joins the four MP4s
+PREVIEW=1 xvfb-run -a python3 animate.py workflow        # the last frame of each sub-step, to /tmp
+python3 reach.py                                          # the arm study -> out/reach.json
 ```
 
-The first run downloads the OT-2, PiPER and doser files and tessellates everything (about a minute); the meshes are
-cached in `.cache/` until a source file changes. The three chapters render in about five minutes each on a 4-core
-runner. `VIZ3D_SIZE=1920x1080 VIZ3D_FPS=30` gives a 1080p MP4 with every move taking the same time.
+The first run downloads the OT-2, UR, Robotiq and carousel files and tessellates everything, which takes a few
+minutes. The meshes are cached in `.cache/` until a source file changes. Run the chapters one `xvfb-run` at a time,
+or give each one its own display number (`xvfb-run --server-num=N`): four `-a`s started together can race for the
+same display. `VIZ3D_SIZE=1920x1080 VIZ3D_FPS=30` gives a 1080p MP4 with every move taking the same time.

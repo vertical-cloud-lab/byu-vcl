@@ -1,7 +1,7 @@
 {
  "name": "vlm_disassembly",
  "fps": 15,
- "n_frames": 867,
+ "n_frames": 915,
  "size": [
   1280,
   720
@@ -9,213 +9,267 @@
  "substeps": [
   {
    "label": "1/8",
-   "caption": "Taking it down is the assembly in reverse. The operator's stand rolls away first.",
+   "caption": "Taking it down is the assembly in reverse. The mobile manipulator drives away first.",
    "start_frame": 0,
    "end_frame": 50
   },
   {
    "label": "2/8",
-   "caption": "Unloading tray C (3D printing): it comes to the opening and the equipment goes out through it.",
+   "caption": "Unloading tray C (3D printing): it comes to the opening and the equipment goes out through it, one piece at a time.",
    "start_frame": 51,
    "end_frame": 61
   },
   {
    "label": "2/8",
-   "caption": "Unloading tray C (3D printing): it comes to the opening and the equipment goes out through it.",
+   "caption": "Unloading tray C (3D printing): it comes to the opening and the equipment goes out through it, one piece at a time.",
    "start_frame": 62,
    "end_frame": 86
   },
   {
    "label": "2/8",
-   "caption": "Unloading tray C (3D printing): it comes to the opening and the equipment goes out through it.",
+   "caption": "Unloading tray C (3D printing): it comes to the opening and the equipment goes out through it, one piece at a time.",
    "start_frame": 87,
    "end_frame": 97
   },
   {
    "label": "2/8",
-   "caption": "Unloading tray C (3D printing): it comes to the opening and the equipment goes out through it.",
+   "caption": "Unloading tray C (3D printing): it comes to the opening and the equipment goes out through it, one piece at a time.",
    "start_frame": 98,
-   "end_frame": 120
+   "end_frame": 104
   },
   {
    "label": "2/8",
-   "caption": "Unloading tray C (3D printing): it comes to the opening and the equipment goes out through it.",
-   "start_frame": 127,
-   "end_frame": 140
+   "caption": "Unloading tray C (3D printing): it comes to the opening and the equipment goes out through it, one piece at a time.",
+   "start_frame": 105,
+   "end_frame": 127
   },
   {
    "label": "2/8",
-   "caption": "Unloading tray C (3D printing): it comes to the opening and the equipment goes out through it.",
+   "caption": "Unloading tray C (3D printing): it comes to the opening and the equipment goes out through it, one piece at a time.",
+   "start_frame": 128,
+   "end_frame": 134
+  },
+  {
+   "label": "2/8",
+   "caption": "Unloading tray C (3D printing): it comes to the opening and the equipment goes out through it, one piece at a time.",
    "start_frame": 141,
-   "end_frame": 174
+   "end_frame": 165
   },
   {
    "label": "2/8",
-   "caption": "Unloading tray C (3D printing): it comes to the opening and the equipment goes out through it.",
-   "start_frame": 175,
-   "end_frame": 188
+   "caption": "Unloading tray C (3D printing): it comes to the opening and the equipment goes out through it, one piece at a time.",
+   "start_frame": 166,
+   "end_frame": 190
   },
   {
    "label": "2/8",
-   "caption": "Unloading tray C (3D printing): it comes to the opening and the equipment goes out through it.",
-   "start_frame": 189,
-   "end_frame": 213
+   "caption": "Unloading tray C (3D printing): it comes to the opening and the equipment goes out through it, one piece at a time.",
+   "start_frame": 191,
+   "end_frame": 197
   },
   {
    "label": "2/8",
-   "caption": "Unloading tray C (3D printing): it comes to the opening and the equipment goes out through it.",
-   "start_frame": 214,
-   "end_frame": 224
+   "caption": "Unloading tray C (3D printing): it comes to the opening and the equipment goes out through it, one piece at a time.",
+   "start_frame": 198,
+   "end_frame": 220
   },
   {
    "label": "2/8",
-   "caption": "Unloading tray C (3D printing): it comes to the opening and the equipment goes out through it.",
-   "start_frame": 225,
-   "end_frame": 247
+   "caption": "Unloading tray C (3D printing): it comes to the opening and the equipment goes out through it, one piece at a time.",
+   "start_frame": 221,
+   "end_frame": 229
+  },
+  {
+   "label": "2/8",
+   "caption": "Unloading tray C (3D printing): it comes to the opening and the equipment goes out through it, one piece at a time.",
+   "start_frame": 230,
+   "end_frame": 240
+  },
+  {
+   "label": "2/8",
+   "caption": "Unloading tray C (3D printing): it comes to the opening and the equipment goes out through it, one piece at a time.",
+   "start_frame": 241,
+   "end_frame": 263
   },
   {
    "label": "3/8",
-   "caption": "Unloading tray B (powder dosing): it comes to the opening and the equipment goes out through it.",
-   "start_frame": 252,
-   "end_frame": 276
+   "caption": "Unloading tray B (powder dosing): it comes to the opening and the equipment goes out through it, one piece at a time.",
+   "start_frame": 268,
+   "end_frame": 292
   },
   {
    "label": "3/8",
-   "caption": "Unloading tray B (powder dosing): it comes to the opening and the equipment goes out through it.",
-   "start_frame": 277,
-   "end_frame": 287
+   "caption": "Unloading tray B (powder dosing): it comes to the opening and the equipment goes out through it, one piece at a time.",
+   "start_frame": 293,
+   "end_frame": 303
   },
   {
    "label": "3/8",
-   "caption": "Unloading tray B (powder dosing): it comes to the opening and the equipment goes out through it.",
-   "start_frame": 288,
+   "caption": "Unloading tray B (powder dosing): it comes to the opening and the equipment goes out through it, one piece at a time.",
+   "start_frame": 304,
    "end_frame": 310
   },
   {
    "label": "3/8",
-   "caption": "Unloading tray B (powder dosing): it comes to the opening and the equipment goes out through it.",
-   "start_frame": 317,
-   "end_frame": 330
+   "caption": "Unloading tray B (powder dosing): it comes to the opening and the equipment goes out through it, one piece at a time.",
+   "start_frame": 311,
+   "end_frame": 333
   },
   {
    "label": "3/8",
-   "caption": "Unloading tray B (powder dosing): it comes to the opening and the equipment goes out through it.",
-   "start_frame": 331,
-   "end_frame": 364
+   "caption": "Unloading tray B (powder dosing): it comes to the opening and the equipment goes out through it, one piece at a time.",
+   "start_frame": 334,
+   "end_frame": 340
   },
   {
    "label": "3/8",
-   "caption": "Unloading tray B (powder dosing): it comes to the opening and the equipment goes out through it.",
-   "start_frame": 365,
-   "end_frame": 378
+   "caption": "Unloading tray B (powder dosing): it comes to the opening and the equipment goes out through it, one piece at a time.",
+   "start_frame": 347,
+   "end_frame": 371
   },
   {
    "label": "3/8",
-   "caption": "Unloading tray B (powder dosing): it comes to the opening and the equipment goes out through it.",
-   "start_frame": 379,
+   "caption": "Unloading tray B (powder dosing): it comes to the opening and the equipment goes out through it, one piece at a time.",
+   "start_frame": 372,
+   "end_frame": 396
+  },
+  {
+   "label": "3/8",
+   "caption": "Unloading tray B (powder dosing): it comes to the opening and the equipment goes out through it, one piece at a time.",
+   "start_frame": 397,
    "end_frame": 403
   },
   {
    "label": "3/8",
-   "caption": "Unloading tray B (powder dosing): it comes to the opening and the equipment goes out through it.",
+   "caption": "Unloading tray B (powder dosing): it comes to the opening and the equipment goes out through it, one piece at a time.",
    "start_frame": 404,
-   "end_frame": 414
+   "end_frame": 426
   },
   {
    "label": "3/8",
-   "caption": "Unloading tray B (powder dosing): it comes to the opening and the equipment goes out through it.",
-   "start_frame": 415,
-   "end_frame": 437
+   "caption": "Unloading tray B (powder dosing): it comes to the opening and the equipment goes out through it, one piece at a time.",
+   "start_frame": 427,
+   "end_frame": 435
+  },
+  {
+   "label": "3/8",
+   "caption": "Unloading tray B (powder dosing): it comes to the opening and the equipment goes out through it, one piece at a time.",
+   "start_frame": 436,
+   "end_frame": 446
+  },
+  {
+   "label": "3/8",
+   "caption": "Unloading tray B (powder dosing): it comes to the opening and the equipment goes out through it, one piece at a time.",
+   "start_frame": 447,
+   "end_frame": 469
   },
   {
    "label": "4/8",
-   "caption": "Unloading tray A (liquid handling): it comes to the opening and the equipment goes out through it.",
-   "start_frame": 442,
-   "end_frame": 452
+   "caption": "Unloading tray A (liquid handling): it comes to the opening and the equipment goes out through it, one piece at a time.",
+   "start_frame": 474,
+   "end_frame": 484
   },
   {
    "label": "4/8",
-   "caption": "Unloading tray A (liquid handling): it comes to the opening and the equipment goes out through it.",
-   "start_frame": 453,
-   "end_frame": 477
+   "caption": "Unloading tray A (liquid handling): it comes to the opening and the equipment goes out through it, one piece at a time.",
+   "start_frame": 485,
+   "end_frame": 509
   },
   {
    "label": "4/8",
-   "caption": "Unloading tray A (liquid handling): it comes to the opening and the equipment goes out through it.",
-   "start_frame": 478,
-   "end_frame": 488
+   "caption": "Unloading tray A (liquid handling): it comes to the opening and the equipment goes out through it, one piece at a time.",
+   "start_frame": 510,
+   "end_frame": 520
   },
   {
    "label": "4/8",
-   "caption": "Unloading tray A (liquid handling): it comes to the opening and the equipment goes out through it.",
-   "start_frame": 489,
-   "end_frame": 511
+   "caption": "Unloading tray A (liquid handling): it comes to the opening and the equipment goes out through it, one piece at a time.",
+   "start_frame": 521,
+   "end_frame": 527
   },
   {
    "label": "4/8",
-   "caption": "Unloading tray A (liquid handling): it comes to the opening and the equipment goes out through it.",
-   "start_frame": 518,
-   "end_frame": 531
+   "caption": "Unloading tray A (liquid handling): it comes to the opening and the equipment goes out through it, one piece at a time.",
+   "start_frame": 528,
+   "end_frame": 550
   },
   {
    "label": "4/8",
-   "caption": "Unloading tray A (liquid handling): it comes to the opening and the equipment goes out through it.",
-   "start_frame": 532,
-   "end_frame": 565
+   "caption": "Unloading tray A (liquid handling): it comes to the opening and the equipment goes out through it, one piece at a time.",
+   "start_frame": 551,
+   "end_frame": 557
   },
   {
    "label": "4/8",
-   "caption": "Unloading tray A (liquid handling): it comes to the opening and the equipment goes out through it.",
-   "start_frame": 566,
-   "end_frame": 579
+   "caption": "Unloading tray A (liquid handling): it comes to the opening and the equipment goes out through it, one piece at a time.",
+   "start_frame": 564,
+   "end_frame": 588
   },
   {
    "label": "4/8",
-   "caption": "Unloading tray A (liquid handling): it comes to the opening and the equipment goes out through it.",
-   "start_frame": 580,
-   "end_frame": 604
+   "caption": "Unloading tray A (liquid handling): it comes to the opening and the equipment goes out through it, one piece at a time.",
+   "start_frame": 589,
+   "end_frame": 613
   },
   {
    "label": "4/8",
-   "caption": "Unloading tray A (liquid handling): it comes to the opening and the equipment goes out through it.",
-   "start_frame": 605,
-   "end_frame": 615
+   "caption": "Unloading tray A (liquid handling): it comes to the opening and the equipment goes out through it, one piece at a time.",
+   "start_frame": 614,
+   "end_frame": 620
   },
   {
    "label": "4/8",
-   "caption": "Unloading tray A (liquid handling): it comes to the opening and the equipment goes out through it.",
-   "start_frame": 616,
-   "end_frame": 638
+   "caption": "Unloading tray A (liquid handling): it comes to the opening and the equipment goes out through it, one piece at a time.",
+   "start_frame": 621,
+   "end_frame": 643
+  },
+  {
+   "label": "4/8",
+   "caption": "Unloading tray A (liquid handling): it comes to the opening and the equipment goes out through it, one piece at a time.",
+   "start_frame": 644,
+   "end_frame": 652
+  },
+  {
+   "label": "4/8",
+   "caption": "Unloading tray A (liquid handling): it comes to the opening and the equipment goes out through it, one piece at a time.",
+   "start_frame": 653,
+   "end_frame": 663
+  },
+  {
+   "label": "4/8",
+   "caption": "Unloading tray A (liquid handling): it comes to the opening and the equipment goes out through it, one piece at a time.",
+   "start_frame": 664,
+   "end_frame": 686
   },
   {
    "label": "5/8",
-   "caption": "The cladding, the opening's frame and counter, the console and the shutter come off.",
-   "start_frame": 643,
-   "end_frame": 690
+   "caption": "The cladding, the opening's posts, header and cover, the console and the shutter come off.",
+   "start_frame": 691,
+   "end_frame": 738
   },
   {
    "label": "6/8",
    "caption": "The trays slide out of their slots.",
-   "start_frame": 691,
-   "end_frame": 729
+   "start_frame": 739,
+   "end_frame": 777
   },
   {
    "label": "7/8",
    "caption": "The extractor platform, its drive and its guide rails come out.",
-   "start_frame": 730,
-   "end_frame": 774
+   "start_frame": 778,
+   "end_frame": 822
   },
   {
    "label": "8/8",
    "caption": "The storage columns, the posts and roof rails, and last the base frame.",
-   "start_frame": 775,
-   "end_frame": 808
+   "start_frame": 823,
+   "end_frame": 856
   },
   {
    "label": "8/8",
    "caption": "The storage columns, the posts and roof rails, and last the base frame.",
-   "start_frame": 809,
-   "end_frame": 866
+   "start_frame": 857,
+   "end_frame": 914
   }
  ]
 }

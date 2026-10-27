@@ -1,4 +1,4 @@
-"""Every model in the scene, tessellated once and cached: the VLM and the equipment on its trays.
+"""Every model in the scene, tessellated once and cached: the VLM, the equipment on its trays and the atomizer.
 
 Each entry of ``meshes()`` is one actor: {"mesh", "color", "opacity", "specular", "group"}.
 Parts of one piece of equipment that share a material are merged into one mesh, so the
@@ -6,23 +6,22 @@ scene has a few dozen actors rather than a few hundred.
 
 Where each model comes from:
 
-* Kardex Shuttle XP 500: ``vlm.py``, built here from Kardex's and #53's figures (no vendor CAD exists).
-* Opentrons OT-2 and AgileX PiPER: the vendors' own STEP files, fetched and hash-checked by
-  ``lab_models/vendor.py`` (Opentrons' reference model; AgileX's arm-plus-gripper STEP).
-* Powder doser: the lab's own assembly, ``full_assembly.glb`` from powder-doser's
-  ``cad/full-assembly`` (Fusion 360 parts and datasheet-based purchased parts), fetched at a pinned commit.
-* A&D HR-100A balance with the AutoTrickler V4 panel, Bambu Lab H2D and A1 mini, CubXL:
-  the lab's CadQuery models from #199 (``lab_models/``), built from vendor drawings and specs.
+* Kardex Shuttle XP 500: ``vlm.py``, built here from Kardex's figures and #53's (no vendor CAD exists).
+* Opentrons OT-2: Opentrons' own reference STEP, fetched and hash-checked by ``lab_models/vendor.py``.
+* Bambu Lab H2D and A1 mini, CubXL: the lab's CadQuery models from #199 (``lab_models/``), built from
+  vendor drawings and specs. The CubXL comes in four pieces (frame, gantry, carriage, tools) so it can move.
 * AMAZEMET rePowder atomizer, beside the VLM: the CadQuery model behind the rePowder training
   animations (#124, ``atomizer-training/viz3d/model.py``), copied to ``repowder/model.py``.
+
+Built elsewhere, with their own caches: the multi-doser (``carousel.py``, powder-doser PR #185's own CAD and
+kinematics), the UR10e and its Robotiq 2F-85 (``ur_arm.py``, the makers' ROS 2 descriptions), and the vials,
+rack and MiR250 base (``props.py``).
 """
 from __future__ import annotations
 
 import hashlib
-import io
 import pickle
 import sys
-import urllib.request
 from pathlib import Path
 
 import numpy as np
@@ -35,22 +34,22 @@ CACHE = HERE / ".cache"
 import common as LM      # noqa: E402
 import vlm               # noqa: E402
 
-DOSER = dict(
-    url="https://raw.githubusercontent.com/vertical-cloud-lab/powder-doser/"
-        "{sha}/cad/full-assembly/assembly/full_assembly.glb",
-    sha="a3bb2a92ee78b09cfdc63ce837d1d05ddf46a5da",      # powder-doser PR #170 (#165), 2026-10-02
-    sha256="954e0988a088186d392e6d71860c3483911e7ce2c5b21126bee594074d8dbc63",
-)
+# the CubXL's moving parts (lab_models/equipment.py names); "frame" is everything else. Its rack's sixth vial is left
+# out: that seat takes the vial the arm brings from the multi-doser
+CUBXL_PIECES = {"frame": None,
+                "gantry": ("gantry upright L", "gantry upright R", "gantry beam", "cable chain"),
+                "carriage": ("z carriage", "tool plate", "controller"),
+                "tools": ("pipette", "capper")}
+CUBXL_FREE_SLOT = ("vial 6", "vial 6 cap")
 
 MATS = dict(LM.MATERIALS)
 MATS.update(vlm.MATERIALS)
 MATS["led_off"] = (0.30, 0.32, 0.30, 1.0, 0.5)
 
 
-def _hash_sources() -> str:
+def _hash_sources(*files) -> str:
     h = hashlib.sha256()
-    for f in sorted([HERE / "vlm.py", HERE / "lab.py", *(HERE / "lab_models").glob("*.py"),
-                     *(HERE / "repowder").glob("*.py")]):
+    for f in sorted(files):
         h.update(f.read_bytes())
     return h.hexdigest()[:12]
 
@@ -87,48 +86,6 @@ def _model_entries(model, group: str, tol: float) -> dict:
     return {f"{group}:{mat}": _entry(_merge(ms), mat, group) for mat, ms in by_mat.items()}
 
 
-def _glb_entries(path: Path, group: str) -> dict:
-    """The doser's GLB: trimesh scene -> one mesh per base colour, in mm, z up."""
-    import trimesh
-    sc = trimesh.load(str(path))
-    by_col: dict[tuple, list] = {}
-    for node in sc.graph.nodes_geometry:
-        tf, gname = sc.graph[node]
-        g = sc.geometry[gname].copy()
-        g.apply_transform(tf)
-        col = (0.7, 0.7, 0.7)
-        try:
-            c = g.visual.material.baseColorFactor
-            col = tuple(round(float(x) / (255.0 if max(c[:3]) > 1 else 1.0), 2) for x in c[:3])
-        except Exception:
-            try:
-                c = g.visual.face_colors[0]
-                col = tuple(round(float(x) / 255.0, 2) for x in c[:3])
-            except Exception:
-                pass
-        faces = np.hstack([np.full((len(g.faces), 1), 3), g.faces]).ravel()
-        by_col.setdefault(col, []).append(pv.PolyData(np.asarray(g.vertices, float), faces))
-    out = {}
-    for i, (col, ms) in enumerate(sorted(by_col.items())):
-        out[f"{group}:c{i}"] = dict(mesh=_merge(ms), color=col, opacity=1.0, specular=0.3, group=group,
-                                    material="glb")
-    return out
-
-
-def fetch_doser() -> Path:
-    CACHE.mkdir(exist_ok=True)
-    path = CACHE / "powder_doser_full_assembly.glb"
-    if not path.exists():
-        url = DOSER["url"].format(sha=DOSER["sha"])
-        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-        path.write_bytes(urllib.request.urlopen(req, timeout=300).read())
-    if DOSER["sha256"]:
-        d = hashlib.sha256(path.read_bytes()).hexdigest()
-        if d != DOSER["sha256"]:
-            print(f"warning: {path.name} has sha256 {d}, built against {DOSER['sha256']}")
-    return path
-
-
 # ------------------------------------------------------------------------------------------ build
 def _vlm_entries() -> dict:
     out = {}
@@ -137,13 +94,19 @@ def _vlm_entries() -> dict:
             shape = shape.val() if len(shape.vals()) == 1 else LM.cq.Compound.makeCompound(shape.vals())
         tol = 0.5 if "lamp" in name or "console" in name else 2.0
         out[name] = _entry(to_mesh(shape, tol), mat, group)
+    # the header's lettering, as on Kardex's renders
+    for text, (x, y, z, h) in vlm.logo().items():
+        t = pv.Text3D(text, depth=0.12)
+        b = t.bounds
+        t = t.translate((-b[0], -b[2], -b[4]), inplace=False).scale(h / (b[3] - b[2]), inplace=False)
+        t = t.rotate_x(90, inplace=False).translate((x, y, z), inplace=False)
+        out[f"logo {text}"] = _entry(t.triangulate(), "vlm_logo", "bay")
     return out
 
 
 def _equipment() -> dict:
     """{key: (entries, bbox (xmin, xmax, ymin, ymax, zmin, zmax))} for every equipment model, each in its own frame."""
     import equipment
-    import labware
     import vendor
     eq = {}
 
@@ -155,12 +118,17 @@ def _equipment() -> dict:
               f"bbox {np.round(hi - lo, 1)}", flush=True)
 
     add("ot2", _model_entries(vendor.ot2(), "eq_ot2", 0.6))
-    add("cubxl", _model_entries(equipment.cubxl(), "eq_cubxl", 0.6))
+    # the CubXL in four pieces so its gantry can move: the frame, the gantry (y), the carriage (x), the tools (z)
+    cub = equipment.cubxl(0.5, 0.5, 0.5)
+    for piece, names in CUBXL_PIECES.items():
+        sub = LM.Model(cub.key, cub.title)
+        for p in cub.parts:
+            if (p.name in names) if names else not any(p.name in v for v in CUBXL_PIECES.values() if v) \
+                    and p.name not in CUBXL_FREE_SLOT:
+                sub.parts.append(p)
+        add(f"cubxl_{piece}", _model_entries(sub, f"eq_cubxl_{piece}", 0.6))
     add("h2d", _model_entries(equipment.h2d(), "eq_h2d", 0.6))
     add("a1mini", _model_entries(equipment.a1_mini(), "eq_a1mini", 0.4))
-    add("balance", _model_entries(labware.balance("autotrickler"), "eq_balance", 0.3))
-    add("doser", _glb_entries(fetch_doser(), "eq_doser"))
-    add("piper", _model_entries(vendor.piper(), "eq_piper", 0.4))
     return eq
 
 
@@ -189,14 +157,22 @@ def _repowder() -> dict:
 
 
 def meshes(rebuild: bool = False) -> dict:
-    """{"vlm": {name: entry}, "equipment": {key: (entries, bbox)}}, from the cache when the sources are unchanged."""
+    """{"vlm": {name: entry}, "equipment": {key: (entries, bbox)}, "repowder": {...}}. Each of the three is cached on
+    its own sources, so changing the VLM doesn't re-tessellate the vendor CAD."""
     CACHE.mkdir(exist_ok=True)
-    path = CACHE / f"meshes_{_hash_sources()}.pkl"
-    if path.exists() and not rebuild:
-        return pickle.loads(path.read_bytes())
-    print("tessellating (cached afterwards in", path.name + ")", flush=True)
-    data = {"vlm": _vlm_entries(), "equipment": _equipment(), "repowder": _repowder()}
-    path.write_bytes(pickle.dumps(data))
+    me = HERE / "lab.py"
+    parts = {"vlm": (_vlm_entries, [HERE / "vlm.py", me, HERE / "lab_models" / "common.py"]),
+             "equipment": (_equipment, [me, *(HERE / "lab_models").glob("*.py")]),
+             "repowder": (_repowder, [me, *(HERE / "repowder").glob("*.py")])}
+    data = {}
+    for key, (build, srcs) in parts.items():
+        path = CACHE / f"{key}_{_hash_sources(*srcs)}.pkl"
+        if path.exists() and not rebuild:
+            data[key] = pickle.loads(path.read_bytes())
+            continue
+        print(f"tessellating {key} (cached afterwards in {path.name})", flush=True)
+        data[key] = build()
+        path.write_bytes(pickle.dumps(data[key]))
     return data
 
 

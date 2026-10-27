@@ -48,16 +48,34 @@ SOURCES = {
     "power": "#53: 208 V three-phase",
 }
 
+# --- the access opening, from Kardex's order sheet for this configuration -------------------------------------------
+# "Kardex Shuttle POF Version 16", SHUTTLE-01-500-2450x864 (StoreMoreStore's VLM option 1 specification sheet):
+# front access table (TH1) 833 mm above the floor, the presented tray's underside at TH1 + 21 mm, tray floor top at
+# TH1 + 22.5-23.5 mm, maximum product height 727.5 mm with 20 mm clearance required above it, a single front opening.
+# The look (header with the logo and an LED light under it, anthracite side posts, the blue shutter at the back of the
+# bay, slatted side walls, a blue cover under the tray, the 12 in OPTIC panel on the right post) is from Kardex's
+# Shuttle 500 product renders and fact sheet. Kardex lists no separate "large" opening for the 250/500: the largest
+# is this full-width one (the only bigger option is full tray extraction onto a table in front, for cranes).
+Z_SILL = 833.0          # TH1, the access table
+Z_OPEN = 854.0          # TH1 + 21: tray underside when presented (in the opening, not a storage slot)
+MAX_GOODS_H = 727.5     # maximum product height through the opening, over the tray floor
+GOODS_CLEAR = 20.0      # clearance Kardex requires above it
+OPEN_W = 2500.0         # clear width between the side posts: about tray + 50 mm (renders, a real 2450 x 864 unit)
+Z_OPEN_TOP = 1700.0     # underside of the header, where the LED light is (the mouth reads ~850-870 mm tall)
+OPEN_H = Z_OPEN_TOP - Z_SILL
+HEADER_H = 95.0         # white header band with the logo
+POST_W = 115.0          # anthracite side posts of the opening
+CONSOLE_X = OPEN_W / 2 + POST_W / 2       # the OPTIC panel, on the right post at header height
+CONSOLE_Z = Z_OPEN_TOP - 40.0
+
 # --- layout choices (not published; set so the lab's equipment fits) ------------------------
-T_FLOOR = 25.0          # tray floor, steel
-T_RIM = 50.0            # tray rim on the back and both sides
+T_FLOOR = 3.0           # tray floor (TH1 + 22.5-23.5 - 21: a 1.5-2.5 mm sheet; 3 mm here)
+T_RIM = 50.0            # tray rim on the back and both sides (overall tray height 50-53 mm)
 SKIN = 25.0             # cladding panel thickness
 POST = 70.0             # corner posts
 Y_FRONT, Y_LIFT, Y_REAR = -1030.0, 0.0, 1030.0      # tray centres: front column, extractor, rear column
 Y_OPEN = Y_FRONT        # the opening is a gap in the front column: the tray is presented 75 mm behind the front
-Z_SILL = 880.0          # top of the operation counter under the opening
-Z_OPEN = 900.0          # tray bottom when presented
-Z_OPEN_TOP = 1720.0     # top of the opening: 795 mm clear over the tray floor, for the 662 mm OT-2
+Y_SHUTTER = Y_FRONT + TRAY_D / 2 + 35.0             # the shutter: behind the presented tray, between it and the shaft
 Z_TOP_IN = UNIT_H - 260.0                           # underside of the drive bay
 SLOTS = {               # tray-bottom heights of the storage positions used here, on the 25 mm pitch
     "R1": (Y_REAR, 300.0), "R2": (Y_REAR, 1100.0), "R3": (Y_REAR, 1900.0), "R4": (Y_REAR, 2700.0),
@@ -65,21 +83,29 @@ SLOTS = {               # tray-bottom heights of the storage positions used here
     "open": (Y_OPEN, Z_OPEN),
 }
 for _k, (_y, _z) in SLOTS.items():
-    assert abs(_z / PITCH - round(_z / PITCH)) < 1e-9, _k
+    assert _k == "open" or abs(_z / PITCH - round(_z / PITCH)) < 1e-9, _k
 
 # materials: name -> (r, g, b, opacity, specular)
+RAL7035 = (203 / 255, 208 / 255, 204 / 255)        # light grey panels (Kardex's order sheet: RAL 7035)
+FIR_BLUE = (112 / 255, 150 / 255, 164 / 255)       # shutter and the cover under the tray: RAL 230 60 15 "Silver Fir Blue"
 MATERIALS = {
-    "vlm_skin": (0.86, 0.88, 0.90, 0.16, 0.2),       # cladding, ghosted so the inside shows
-    "vlm_skin_solid": (0.86, 0.88, 0.90, 1.0, 0.2),
+    "vlm_skin": (*RAL7035, 0.16, 0.2),            # cladding; the animation turns it from opaque to ghosted
+    "vlm_skin_solid": (*RAL7035, 1.0, 0.2),
+    "vlm_seam": (0.62, 0.65, 0.64, 0.16, 0.1),    # the joints between the 490 mm panels
     "vlm_frame": (0.23, 0.24, 0.26, 1.0, 0.3),       # anthracite posts and rails
+    "vlm_post": (56 / 255, 62 / 255, 66 / 255, 1.0, 0.3),   # the opening's side posts
+    "vlm_header": (0.90, 0.91, 0.91, 1.0, 0.2),      # white header band over the opening
+    "vlm_logo": (0.20, 0.36, 0.56, 1.0, 0.2),
     "vlm_wall": (0.78, 0.80, 0.83, 0.22, 0.1),       # column side walls (perforated sheet)
+    "vlm_bay": (*RAL7035, 1.0, 0.2),                 # slatted side walls of the bay
     "vlm_rib": (0.66, 0.68, 0.71, 1.0, 0.3),         # tray supports
     "vlm_tray": (0.42, 0.45, 0.50, 1.0, 0.3),        # tray pans
     "vlm_lift": (0.80, 0.18, 0.16, 1.0, 0.3),        # the extractor, picked out in red
     "vlm_rail": (0.62, 0.63, 0.66, 1.0, 0.6),
     "vlm_drive": (0.20, 0.36, 0.62, 1.0, 0.4),
     "vlm_belt": (0.10, 0.10, 0.11, 1.0, 0.2),
-    "vlm_shutter": (0.80, 0.88, 0.95, 0.25, 0.4),
+    "vlm_shutter": (*FIR_BLUE, 0.85, 0.3),
+    "vlm_cover": (*FIR_BLUE, 1.0, 0.3),
     "vlm_led": (0.98, 0.97, 0.88, 1.0, 0.1),
     "vlm_screen": (0.06, 0.08, 0.12, 1.0, 0.8),
     "vlm_counter": (0.18, 0.18, 0.19, 1.0, 0.3),
@@ -127,9 +153,21 @@ def housing() -> dict:
     p["side panel R"] = (box(xo, -yo, 140, xo + SKIN, yo, H), "vlm_skin", "skin_R")
     p["back panel"] = (box(-xo, yo, 140, xo, yo + SKIN, H), "vlm_skin", "skin_back")
     p["roof"] = (box(-xo - SKIN, -yo - SKIN, H, xo + SKIN, yo + SKIN, H + SKIN), "vlm_skin", "skin_top")
-    ow = TRAY_W / 2 + 60                     # half-width of the opening
-    front = box(-xo, -yo - SKIN, 140, xo, -yo, H).cut(box(-ow, -yo - SKIN - 1, Z_SILL, ow, -yo + 1, Z_OPEN_TOP))
+    ow = OPEN_W / 2 + POST_W                 # the opening with its posts
+    front = box(-xo, -yo - SKIN, 140, xo, -yo, H).cut(
+        box(-ow, -yo - SKIN - 1, Z_SILL - 120, ow, -yo + 1, Z_OPEN_TOP + HEADER_H))
     p["front panel"] = (front, "vlm_skin", "skin_front")
+    # panel joints, as on Kardex's renders: horizontal panels about 490 mm tall above the opening and below it
+    seams = {"skin_front": None, "skin_L": None, "skin_R": None}
+    for z in [Z_OPEN_TOP + HEADER_H + 490.0 * i for i in range(1, 8)] + [480.0]:
+        if z > H - 100:
+            continue
+        for grp, b in (("skin_front", box(-xo, -yo - SKIN - 2, z - 3, xo, -yo - SKIN, z + 3)),
+                       ("skin_L", box(-xo - SKIN - 2, -yo, z - 3, -xo - SKIN, yo, z + 3)),
+                       ("skin_R", box(xo + SKIN, -yo, z - 3, xo + SKIN + 2, yo, z + 3))):
+            seams[grp] = b if seams[grp] is None else seams[grp].union(b)
+    for grp, b in seams.items():
+        p[f"{grp} seams"] = (b, "vlm_seam", grp)
     return p
 
 
@@ -223,31 +261,52 @@ def belts() -> dict:
 
 
 def opening() -> dict:
-    """Access opening in the front panel: operation counter, frame, LED light bar, light curtains,
-    the operator console, and the powered safety shutter (behind the panel; the animation lifts it)."""
+    """The access opening as Kardex builds it (renders and fact sheet): anthracite side posts, a white header with the
+    logo and the LED light under it, slatted side walls in the bay, a blue cover under the presented tray with the
+    LED-Navigator strip, the OPTIC panel on the right post, and the safety shutter at the back of the bay, between the
+    presented tray and the shaft (it closes while the extractor moves; the animation lifts it)."""
     p = {}
     yo = -UNIT_D / 2 - SKIN                   # outer face of the front panel
-    ow = TRAY_W / 2 + 60
-    p["operation counter"] = (box(-ow - 80, yo - 160, Z_SILL - 110, ow + 80, yo, Z_SILL), "vlm_counter", "bay")
-    frame = box(-ow - 70, yo - 30, Z_SILL, -ow, yo, Z_OPEN_TOP + 90).union(
-        box(ow, yo - 30, Z_SILL, ow + 70, yo, Z_OPEN_TOP + 90)).union(
-        box(-ow - 70, yo - 30, Z_OPEN_TOP, ow + 70, yo, Z_OPEN_TOP + 90))
-    p["opening frame"] = (frame, "vlm_frame", "bay")
-    p["LED bar"] = (box(-ow + 30, yo - 26, Z_OPEN_TOP - 10, ow - 30, yo + 30, Z_OPEN_TOP), "vlm_led", "bay")
-    cur = box(-ow + 2, yo - 26, Z_SILL + 20, -ow + 16, yo - 4, Z_OPEN_TOP - 30).union(
-        box(ow - 16, yo - 26, Z_SILL + 20, ow - 2, yo - 4, Z_OPEN_TOP - 30))
-    p["light curtains"] = (cur, "vlm_curtain", "bay")
-    # operator console to the right of the opening, tilted back towards the user
-    cx, cz = ow + 330, 1330.0
-    p["console arm"] = (box(ow + 70, yo - 60, cz - 20, cx, yo, cz + 20), "vlm_frame", "console")
-    pan = rbox(330, 40, 250, 8).rotate((0, 0, 0), (1, 0, 0), -15).translate((cx, yo - 70, cz - 100))
+    ow = OPEN_W / 2
+    posts = box(-ow - POST_W, yo - 30, Z_SILL - 120, -ow, yo + 40, Z_OPEN_TOP + HEADER_H).union(
+        box(ow, yo - 30, Z_SILL - 120, ow + POST_W, yo + 40, Z_OPEN_TOP + HEADER_H))
+    p["opening posts"] = (posts, "vlm_post", "bay")
+    p["opening header"] = (box(-ow, yo - 20, Z_OPEN_TOP, ow, yo + 40, Z_OPEN_TOP + HEADER_H), "vlm_header", "bay")
+    p["LED light"] = (box(-ow + 20, yo - 10, Z_OPEN_TOP - 12, ow - 20, yo + 160, Z_OPEN_TOP), "vlm_led", "bay")
+    # the blue cover under the tray, with the LED-Navigator strip along its top; a 50 mm lip, not a counter
+    p["tray cover"] = (box(-ow, yo - 50, Z_SILL - 120, ow, yo + 30, Z_SILL), "vlm_cover", "bay")
+    p["LED-Navigator"] = (box(-ow + 40, yo - 52, Z_SILL - 26, ow - 40, yo - 48, Z_SILL - 14), "vlm_led", "bay")
+    # slatted side walls of the bay (the shelf rails' L-profiles), front panel to shutter
+    yb0, yb1 = -UNIT_D / 2, Y_SHUTTER
+    walls = None
+    for sx in (-1, 1):
+        x0, x1 = sorted((sx * ow, sx * (ow + 12)))
+        w = box(x0, yb0, Z_SILL, x1, yb1, Z_OPEN_TOP)
+        for z in range(int(Z_OPEN + 60), int(Z_OPEN_TOP) - 20, 50):
+            x2, x3 = sorted((sx * ow, sx * (ow - 8)))
+            w = w.union(box(x2, yb0, z, x3, yb1, z + 4))
+        walls = w if walls is None else walls.union(w)
+    p["bay side walls"] = (walls, "vlm_bay", "bay")
+    # the 12 in OPTIC touch panel on the right post, at header height, tilted towards the operator
+    pan = rbox(300, 40, 200, 8).rotate((0, 0, 0), (1, 0, 0), -10).translate((CONSOLE_X, yo - 60, CONSOLE_Z - 100))
     p["console"] = (pan, "vlm_frame", "console")
-    scr = box(-145, -2, 0, 145, 0, 200).rotate((0, 0, 0), (1, 0, 0), -15).translate((cx, yo - 91, cz - 76))
+    scr = box(-130, -2, 0, 130, 0, 165).rotate((0, 0, 0), (1, 0, 0), -10).translate((CONSOLE_X, yo - 81, CONSOLE_Z - 82))
     p["console screen"] = (scr, "vlm_screen", "console")
-    # shutter: behind the front panel, closed here; it slides up behind the panel to open
-    ys = -UNIT_D / 2 + 15
-    p["safety shutter"] = (box(-ow + 20, ys, Z_SILL + 5, ow - 20, ys + 10, Z_OPEN_TOP - 5), "vlm_shutter", "shutter")
+    p["console arm"] = (box(CONSOLE_X - 20, yo - 40, CONSOLE_Z - 20, CONSOLE_X + 20, yo - 30, CONSOLE_Z + 20),
+                        "vlm_frame", "console")
+    # the red switch box under the opening on the right, as on the renders
+    p["switch box"] = (box(ow - 260, yo - 30, 560, ow - 180, yo, 660), "vlm_curtain", "bay")
+    # shutter: at the back of the bay, closed here; it slides up into the front column to open
+    p["safety shutter"] = (box(-ow, Y_SHUTTER - 6, Z_OPEN - 10, ow, Y_SHUTTER + 6, Z_OPEN_TOP + 40), "vlm_shutter",
+                           "shutter")
     return p
+
+
+def logo() -> dict:
+    """'kardex' on the header's left and 'Shuttle 500' on its right, as on the renders (PyVista text, built in lab.py)."""
+    yo = -UNIT_D / 2 - SKIN - 21
+    return {"kardex": (-OPEN_W / 2 + 60, yo, Z_OPEN_TOP + 22, 52.0),
+            "Shuttle 500": (OPEN_W / 2 - 520, yo, Z_OPEN_TOP + 28, 40.0)}
 
 
 def tray(key: str) -> dict:

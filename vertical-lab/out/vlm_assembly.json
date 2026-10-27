@@ -1,233 +1,53 @@
 {
  "name": "vlm_assembly",
  "fps": 15,
- "n_frames": 1159,
+ "n_frames": 413,
  "size": [
   1280,
   720
  ],
  "substeps": [
   {
-   "label": "1/9",
+   "label": "1/7",
    "caption": "The Kardex Shuttle XP 500 quoted in #53, beside the lab's rePowder atomizer: 2450 × 864 mm trays in a 2780 × 3074 mm module, 3950 mm tall to stay under 13 ft. The base frame goes down first, on levelling feet.",
    "start_frame": 0,
    "end_frame": 62
   },
   {
-   "label": "2/9",
+   "label": "2/7",
    "caption": "Posts and roof rails. The posts at the middle of each side mark off the three bays: front storage, the extractor's shaft and rear storage.",
    "start_frame": 63,
    "end_frame": 107
   },
   {
-   "label": "3/9",
+   "label": "3/7",
    "caption": "Storage columns. Trays rest on supports on a 25 mm pitch (drawn every 100 mm here), so a tray takes only the height its equipment needs. The front column leaves a gap for the access opening.",
    "start_frame": 108,
    "end_frame": 164
   },
   {
-   "label": "4/9",
+   "label": "4/7",
    "caption": "The extractor: guide rails in the shaft, the drive on the roof frame (motor, cross shaft, two belt pulleys), then the platform on its belts. It carries one tray at a time.",
    "start_frame": 165,
    "end_frame": 224
   },
   {
-   "label": "5/9",
+   "label": "5/7",
    "caption": "Three electrified trays (#53): strong (1080 lb), medium (794 lb) and light (502 lb). Each has a power strip and a socket; it has power in its slot and at the opening, not while it moves.",
    "start_frame": 225,
    "end_frame": 284
   },
   {
-   "label": "6/9",
-   "caption": "Cladding, the access opening with its light curtains and LED bar, the operator console, and the powered safety shutter behind the front panel. The panels are drawn see-through.",
+   "label": "6/7",
+   "caption": "Cladding in RAL 7035 and the access opening, 2500 mm wide at a 833 mm table: header with the LED light, side posts, the OPTIC panel on the right post, and the powered safety shutter at the back of the bay, which closes whenever the extractor moves.",
    "start_frame": 285,
    "end_frame": 344
   },
   {
-   "label": "7/9",
-   "caption": "Loading tray A (liquid handling): the extractor brings it to the opening and the equipment goes in through it: CubXL, Opentrons OT-2.",
+   "label": "7/7",
+   "caption": "Assembled: from outside, a closed cabinet with one opening. Next: what goes inside.",
    "start_frame": 345,
-   "end_frame": 355
-  },
-  {
-   "label": "7/9",
-   "caption": "Loading tray A (liquid handling): the extractor brings it to the opening and the equipment goes in through it: CubXL, Opentrons OT-2.",
-   "start_frame": 356,
-   "end_frame": 390
-  },
-  {
-   "label": "7/9",
-   "caption": "Loading tray A (liquid handling): the extractor brings it to the opening and the equipment goes in through it: CubXL, Opentrons OT-2.",
-   "start_frame": 391,
-   "end_frame": 401
-  },
-  {
-   "label": "7/9",
-   "caption": "Loading tray A (liquid handling): the extractor brings it to the opening and the equipment goes in through it: CubXL, Opentrons OT-2.",
-   "start_frame": 402,
-   "end_frame": 434
-  },
-  {
-   "label": "7/9",
-   "caption": "Loading tray A (liquid handling): the extractor brings it to the opening and the equipment goes in through it: CubXL, Opentrons OT-2.",
-   "start_frame": 441,
-   "end_frame": 457
-  },
-  {
-   "label": "7/9",
-   "caption": "Loading tray A (liquid handling): the extractor brings it to the opening and the equipment goes in through it: CubXL, Opentrons OT-2.",
-   "start_frame": 458,
-   "end_frame": 505
-  },
-  {
-   "label": "7/9",
-   "caption": "Loading tray A (liquid handling): the extractor brings it to the opening and the equipment goes in through it: CubXL, Opentrons OT-2.",
-   "start_frame": 506,
-   "end_frame": 522
-  },
-  {
-   "label": "7/9",
-   "caption": "Loading tray A (liquid handling): the extractor brings it to the opening and the equipment goes in through it: CubXL, Opentrons OT-2.",
-   "start_frame": 523,
-   "end_frame": 550
-  },
-  {
-   "label": "7/9",
-   "caption": "Loading tray A (liquid handling): the extractor brings it to the opening and the equipment goes in through it: CubXL, Opentrons OT-2.",
-   "start_frame": 551,
-   "end_frame": 561
-  },
-  {
-   "label": "7/9",
-   "caption": "Loading tray A (liquid handling): the extractor brings it to the opening and the equipment goes in through it: CubXL, Opentrons OT-2.",
-   "start_frame": 562,
-   "end_frame": 587
-  },
-  {
-   "label": "8/9",
-   "caption": "Loading tray B (powder dosing): the extractor brings it to the opening and the equipment goes in through it: powder doser on an HR-100A.",
-   "start_frame": 592,
-   "end_frame": 602
-  },
-  {
-   "label": "8/9",
-   "caption": "Loading tray B (powder dosing): the extractor brings it to the opening and the equipment goes in through it: powder doser on an HR-100A.",
-   "start_frame": 603,
-   "end_frame": 630
-  },
-  {
-   "label": "8/9",
-   "caption": "Loading tray B (powder dosing): the extractor brings it to the opening and the equipment goes in through it: powder doser on an HR-100A.",
-   "start_frame": 631,
-   "end_frame": 641
-  },
-  {
-   "label": "8/9",
-   "caption": "Loading tray B (powder dosing): the extractor brings it to the opening and the equipment goes in through it: powder doser on an HR-100A.",
-   "start_frame": 642,
-   "end_frame": 667
-  },
-  {
-   "label": "8/9",
-   "caption": "Loading tray B (powder dosing): the extractor brings it to the opening and the equipment goes in through it: powder doser on an HR-100A.",
-   "start_frame": 674,
-   "end_frame": 690
-  },
-  {
-   "label": "8/9",
-   "caption": "Loading tray B (powder dosing): the extractor brings it to the opening and the equipment goes in through it: powder doser on an HR-100A.",
-   "start_frame": 691,
-   "end_frame": 738
-  },
-  {
-   "label": "8/9",
-   "caption": "Loading tray B (powder dosing): the extractor brings it to the opening and the equipment goes in through it: powder doser on an HR-100A.",
-   "start_frame": 739,
-   "end_frame": 755
-  },
-  {
-   "label": "8/9",
-   "caption": "Loading tray B (powder dosing): the extractor brings it to the opening and the equipment goes in through it: powder doser on an HR-100A.",
-   "start_frame": 756,
-   "end_frame": 783
-  },
-  {
-   "label": "8/9",
-   "caption": "Loading tray B (powder dosing): the extractor brings it to the opening and the equipment goes in through it: powder doser on an HR-100A.",
-   "start_frame": 784,
-   "end_frame": 794
-  },
-  {
-   "label": "8/9",
-   "caption": "Loading tray B (powder dosing): the extractor brings it to the opening and the equipment goes in through it: powder doser on an HR-100A.",
-   "start_frame": 795,
-   "end_frame": 820
-  },
-  {
-   "label": "9/9",
-   "caption": "Loading tray C (3D printing): the extractor brings it to the opening and the equipment goes in through it: Bambu Lab A1 mini, Bambu Lab H2D.",
-   "start_frame": 825,
-   "end_frame": 852
-  },
-  {
-   "label": "9/9",
-   "caption": "Loading tray C (3D printing): the extractor brings it to the opening and the equipment goes in through it: Bambu Lab A1 mini, Bambu Lab H2D.",
-   "start_frame": 853,
-   "end_frame": 863
-  },
-  {
-   "label": "9/9",
-   "caption": "Loading tray C (3D printing): the extractor brings it to the opening and the equipment goes in through it: Bambu Lab A1 mini, Bambu Lab H2D.",
-   "start_frame": 864,
-   "end_frame": 889
-  },
-  {
-   "label": "9/9",
-   "caption": "Loading tray C (3D printing): the extractor brings it to the opening and the equipment goes in through it: Bambu Lab A1 mini, Bambu Lab H2D.",
-   "start_frame": 896,
-   "end_frame": 912
-  },
-  {
-   "label": "9/9",
-   "caption": "Loading tray C (3D printing): the extractor brings it to the opening and the equipment goes in through it: Bambu Lab A1 mini, Bambu Lab H2D.",
-   "start_frame": 913,
-   "end_frame": 960
-  },
-  {
-   "label": "9/9",
-   "caption": "Loading tray C (3D printing): the extractor brings it to the opening and the equipment goes in through it: Bambu Lab A1 mini, Bambu Lab H2D.",
-   "start_frame": 961,
-   "end_frame": 977
-  },
-  {
-   "label": "9/9",
-   "caption": "Loading tray C (3D printing): the extractor brings it to the opening and the equipment goes in through it: Bambu Lab A1 mini, Bambu Lab H2D.",
-   "start_frame": 978,
-   "end_frame": 1005
-  },
-  {
-   "label": "9/9",
-   "caption": "Loading tray C (3D printing): the extractor brings it to the opening and the equipment goes in through it: Bambu Lab A1 mini, Bambu Lab H2D.",
-   "start_frame": 1006,
-   "end_frame": 1016
-  },
-  {
-   "label": "9/9",
-   "caption": "Loading tray C (3D printing): the extractor brings it to the opening and the equipment goes in through it: Bambu Lab A1 mini, Bambu Lab H2D.",
-   "start_frame": 1017,
-   "end_frame": 1042
-  },
-  {
-   "label": "9/9",
-   "caption": "The operator rolls up: an AgileX PiPER arm (AgileX's own STEP) on a mobile stand, its base level with the counter. A person can work the opening the same way.",
-   "start_frame": 1047,
-   "end_frame": 1091
-  },
-  {
-   "label": "9/9",
-   "caption": "Assembled and loaded: liquid handling on tray A, powder dosing on tray B, 3D printing on tray C. Each tray is powered in its slot, so the equipment on it can keep running while it is stored.",
-   "start_frame": 1092,
-   "end_frame": 1158
+   "end_frame": 412
   }
  ]
 }
