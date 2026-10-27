@@ -459,6 +459,16 @@ gets that login:
   camera over LAN from a Pi, need no login. End the prep run by asking the person to comment
   `@claude-print` naming the exact file (branch and path) and printer, so the approver can see
   what they are approving.
+- **Check the installed nozzle diameters before printing.** Read them off the printer, not
+  the slice or an earlier comment: Studio's Device page, or the status report over LAN from
+  a Pi. Check while preparing, before you slice, and again in the `@claude-print` run before
+  Send, and put the diameters in the tracking comment next to the fresh frame.
+  For this repo every installed nozzle must be **0.2 or 0.4 mm** (on the H2D, check both
+  left and right), and the slice must be for the diameter of the nozzle that will print it.
+  tensegrity-optimization prints with 0.6 mm nozzles, so a printer may well still have
+  those in.
+  If a diameter is wrong or you can't read it, don't send (and don't re-slice for the wrong
+  nozzle): say what is installed and wait for a person to swap it.
 - **Nobody replies `plate clear` any more (sgbaird, 2026-10-23).** The print run reads the
   plate itself and gives people a window to stop it. This replaces the person's go in rule 1
   and §4.1 of byu-vcl's `bambu/README.md`, which an older branch may still show.
