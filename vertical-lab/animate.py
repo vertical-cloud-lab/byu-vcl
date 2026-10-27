@@ -42,6 +42,8 @@ CAM_OPEN = [(5200, -7600, 3100), (100, -900, 1450), (0, 0, 1)]
 CAM_LOW = [(7600, -8200, 3900), (0, -500, 1500), (0, 0, 1)]
 
 FLOOR_C = (0.965, 0.965, 0.96)
+REPOWDER_AT = (-3775.0, -1700.0, 0.0)          # its heat exchanger 1.2 m from the VLM's side, a little forward
+REPOWDER_LBL = ("AMAZEMET rePowder atomizer", (REPOWDER_AT[0] + 250, REPOWDER_AT[1] + 400, 1600), (0.10, 0.30))
 
 
 class Lab:
@@ -111,6 +113,10 @@ class Lab:
                 wheels = w if wheels is None else wheels.merge(w)
         sc.add("op/wheels", wheels, (0.12, 0.12, 0.13), "op")
         sc.gmat["op"] = T((*self.op_xy, 0))
+        # the rePowder atomizer and its utilities stand to the left, fronts in line with the VLM's
+        for name, e in data["repowder"].items():
+            sc.add(name, e["mesh"], e["color"], "repowder", opacity=e["opacity"])
+        sc.gmat["repowder"] = T(REPOWDER_AT)
         sc.parent["op_arm"] = "op"
         sc.gmat["op_arm"] = T((0, 0, 900))
         self.apply_state()
@@ -297,10 +303,10 @@ def assembly(data):
     L.show_gauges = False
     L.apply_state()
     n = 9
-    sc.step(f"1/{n}", "The Kardex Shuttle XP 500 quoted in #53: 2450 × 864 mm trays in a 2780 × 3074 mm module, 3950 mm "
-            "tall to stay under 13 ft. The base frame goes down first, on levelling feet.",
+    sc.step(f"1/{n}", "The Kardex Shuttle XP 500 quoted in #53, beside the lab's rePowder atomizer: 2450 × 864 mm trays "
+            "in a 2780 × 3074 mm module, 3950 mm tall to stay under 13 ft. The base frame goes down first, on levelling feet.",
             2.0, slide_in(L, ["base"], (0, 0, 900)), hold=1.2,
-            labels=[("base frame, 2780 × 3074 mm", (V.UNIT_W / 2, -V.UNIT_D / 2, 100), (0.80, 0.80))])
+            labels=[("base frame, 2780 × 3074 mm", (V.UNIT_W / 2, -V.UNIT_D / 2, 100), (0.80, 0.80)), REPOWDER_LBL])
     sc.step(f"2/{n}", "Posts and roof rails. The posts at the middle of each side mark off the three bays: front "
             "storage, the extractor's shaft and rear storage.",
             2.0, slide_in(L, ["posts"], (0, 0, 1800)), hold=1.0,
@@ -365,7 +371,7 @@ def operation(data):
     cap1 = "In a vertical lab the equipment comes to the operator. The PiPER asks for tray B: the extractor pulls it " \
            "off its supports, carries it down and pushes it into the opening."
     sc.step(f"1/{n}", cap1, 1.2, None, hold=0.6,
-            labels=[("rear storage", (V.TRAY_W / 2, V.Y_REAR, 3300), (0.86, 0.22)),
+            labels=[REPOWDER_LBL, ("rear storage", (V.TRAY_W / 2, V.Y_REAR, 3300), (0.86, 0.22)),
                     ("extractor", (V.TRAY_W / 2, 0, LIFT_HOME - 40), (0.88, 0.50)),
                     ("front storage", (V.TRAY_W / 2, V.Y_FRONT, 2700), (0.84, 0.36)),
                     ("access opening", (0, -V.UNIT_D / 2, 1300), (0.20, 0.62))])

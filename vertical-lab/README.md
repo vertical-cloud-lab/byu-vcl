@@ -41,10 +41,13 @@ lab's model is used; the VLM is built here because Kardex publishes none.
 | A&D HR-100A with the FXi-10 breeze break and AutoTrickler V4 panel (tray B, ×3) | `labware.balance()` | The lab's CadQuery model from #199 (`lab-models/`), from A&D's drawings and the lab's measurements |
 | Bambu Lab H2D and A1 mini (tray C) | `equipment.h2d()`, `equipment.a1_mini()` | The lab's CadQuery models from #199, from Bambu's spec pages and outline drawing. Bambu publishes no CAD |
 | CubXL (tray A) | `equipment.cubxl()` | The lab's CadQuery model from #199: the Genmitsu PROVerXL 4030 V2 frame from SainSmart's spec, the rest from lab photos |
+| AMAZEMET rePowder atomizer, with its argon cylinder, vacuum pump, heat exchanger and lines (beside the VLM, as the blue cabinet is in the org-page GIF) | [`repowder/model.py`](repowder/model.py) | The CadQuery model behind the rePowder training animations (#124): proportioned from the installation and training videos and AMAZEMET's figures, with the ultrasonic stack measured on the machine on 8 Oct. Too tall (1.6 m) for a tray, so it stands on the floor |
 
 [`lab_models/`](lab_models/) is a verbatim copy of `lab-models/cad/{common,equipment,labware,vendor}.py` from #199's
-branch at `7fc56b6` (`claude/issue-199-20260915-0846`, not merged yet), so these models have one source; their
-README there gives the source of every dimension. Vendor CAD is downloaded into `.cache/` and never committed.
+branch at `7fc56b6` (`claude/issue-199-20260915-0846`, not merged yet), and [`repowder/model.py`](repowder/model.py) one
+of `atomizer-training/viz3d/model.py` from #124's branch at `7757443` (`claude/issue-124-20261003-0335`), so each
+model has one source; the READMEs there give the source of every dimension. Vendor CAD is downloaded into `.cache/`
+and never committed.
 
 Two things in the scene are stand-ins, not models of real parts: **the bridge** that holds each doser over its
 balance (four legs and a plate; the real bridge's ~265 mm leg span is a one-photo estimate in #199), and **the

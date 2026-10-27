@@ -13,6 +13,8 @@ Where each model comes from:
   ``cad/full-assembly`` (Fusion 360 parts and datasheet-based purchased parts), fetched at a pinned commit.
 * A&D HR-100A balance with the AutoTrickler V4 panel, Bambu Lab H2D and A1 mini, CubXL:
   the lab's CadQuery models from #199 (``lab_models/``), built from vendor drawings and specs.
+* AMAZEMET rePowder atomizer, beside the VLM: the CadQuery model behind the rePowder training
+  animations (#124, ``atomizer-training/viz3d/model.py``), copied to ``repowder/model.py``.
 """
 from __future__ import annotations
 
@@ -47,7 +49,8 @@ MATS["led_off"] = (0.30, 0.32, 0.30, 1.0, 0.5)
 
 def _hash_sources() -> str:
     h = hashlib.sha256()
-    for f in sorted([HERE / "vlm.py", HERE / "lab.py", *(HERE / "lab_models").glob("*.py")]):
+    for f in sorted([HERE / "vlm.py", HERE / "lab.py", *(HERE / "lab_models").glob("*.py"),
+                     *(HERE / "repowder").glob("*.py")]):
         h.update(f.read_bytes())
     return h.hexdigest()[:12]
 
@@ -161,6 +164,30 @@ def _equipment() -> dict:
     return eq
 
 
+def _repowder() -> dict:
+    """The rePowder and its utilities, one mesh per colour, in the model's own frame (front towards -y)."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("repowder_model", HERE / "repowder" / "model.py")
+    rp = importlib.util.module_from_spec(spec)
+    sys.modules["repowder_model"] = rp            # its dataclasses look themselves up there
+    spec.loader.exec_module(rp)
+    by: dict[tuple, list] = {}
+    for p in rp.parts():
+        if p.name == "floor":                     # the training scene's own floor
+            continue
+        m = rp.tess(p.shape, max(p.tol, 0.5))
+        if m is not None:
+            by.setdefault((tuple(round(c, 3) for c in p.color), p.opacity), []).append(m)
+    for name, r in rp.pipe_routes().items():
+        tube = pv.Spline(np.array(r["pts"], float), 120).tube(radius=r["r"], n_sides=14).triangulate()
+        by.setdefault((tuple(round(c, 3) for c in r["color"]), 1.0), []).append(tube)
+    out = {}
+    for i, ((col, op), ms) in enumerate(sorted(by.items())):
+        mesh = pv.merge(ms, merge_points=False) if len(ms) > 1 else ms[0]
+        out[f"repowder:c{i}"] = dict(mesh=mesh, color=col, opacity=op, specular=0.3, group="repowder", material="rp")
+    return out
+
+
 def meshes(rebuild: bool = False) -> dict:
     """{"vlm": {name: entry}, "equipment": {key: (entries, bbox)}}, from the cache when the sources are unchanged."""
     CACHE.mkdir(exist_ok=True)
@@ -168,7 +195,7 @@ def meshes(rebuild: bool = False) -> dict:
     if path.exists() and not rebuild:
         return pickle.loads(path.read_bytes())
     print("tessellating (cached afterwards in", path.name + ")", flush=True)
-    data = {"vlm": _vlm_entries(), "equipment": _equipment()}
+    data = {"vlm": _vlm_entries(), "equipment": _equipment(), "repowder": _repowder()}
     path.write_bytes(pickle.dumps(data))
     return data
 
