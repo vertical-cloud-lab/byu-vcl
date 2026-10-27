@@ -1,0 +1,5 @@
+# tessellated meshes and vendor CAD, rebuilt or re-fetched at run time
+.cache/
+lab_models/.cache/
+out/clean/
+__pycache__/
