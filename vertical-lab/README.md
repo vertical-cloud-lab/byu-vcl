@@ -15,9 +15,11 @@ framework, [`scene.py`](scene.py), is `atomizer-training/viz3d/scene.py` from #1
 | **Loading**: the closed machine, then see-through; every piece of equipment goes onto its tray through the opening, one at a time; the arm rolls up | [`out/vlm_loading.gif`](out/vlm_loading.gif) | [`out/mp4/vlm_loading.mp4`](out/mp4/vlm_loading.mp4) |
 | **Workflow**: the arm doses a powder with the multi-doser and takes the vial to the CubXL, which adds liquid | [`out/vlm_workflow.gif`](out/vlm_workflow.gif) | [`out/mp4/vlm_workflow.mp4`](out/mp4/vlm_workflow.mp4) |
 | **Disassembly**: unloaded one piece at a time, then taken apart | [`out/vlm_disassembly.gif`](out/vlm_disassembly.gif) | [`out/mp4/vlm_disassembly.mp4`](out/mp4/vlm_disassembly.mp4) |
-| **All four**, one after the other | | [`out/mp4/vertical_lab_full.mp4`](out/mp4/vertical_lab_full.mp4) |
+| **All four**, one after the other (4 min 5 s) | [on YouTube](https://www.youtube.com/watch?v=ro-pUo0ie_M) (unlisted, BYU Vertical Cloud Lab channel) | [`out/mp4/vertical_lab_full.mp4`](out/mp4/vertical_lab_full.mp4) |
 
 ![Workflow](out/vlm_workflow.gif)
+
+![The dose: module 6 tilted, the others see-through](out/vlm_workflow_dose.png)
 
 ![Loading](out/vlm_loading.gif)
 
@@ -32,10 +34,12 @@ An example run, with every move a real one:
    the back of the bay opens to let it through and closes behind it.
 2. **An empty 20 mL vial into the multi-doser.** The UR10e picks it from the rack at the front of the tray, pointing
    down. It slides the vial level into the cup on the rig's 100 g load cell, under the station, then parks clear.
-3. **Dose.** The carousel indexes powder module 6 to the station (8 chain links per module, run the way powder-doser's
-   leakage study says). The Actuonix P16 lifts the electronics carriage and docks it with the magnet on. The station
-   tilts 30° and turns the auger two revolutions, while the vial fills and the load cell counts 0.512 g. Then it tilts
-   back, reverses one turn at rest and undocks. This is the station's protocol from powder-doser PR #185.
+3. **Dose.** The carousel indexes powder module 6 to the station: 8 chain links per module, run the way powder-doser's
+   leakage study says. The module is drawn green, as powder-doser's own movie marks one. The Actuonix P16 lifts the
+   electronics carriage and docks it with the magnet on. The docked module rides inside the loop, boxed in by the
+   other twelve, so those are drawn see-through for the dose. The station tilts the module 30°, cap end up, and turns
+   the auger two revolutions while the vial fills and the load cell counts 0.512 g. Then it tilts back, reverses one
+   turn at rest and undocks, as in the station's protocol in powder-doser PR #185.
 4. **The vial waits on the robot.** The arm stands the vial in a holder on the MiR's cabinet while the VLM swaps
    trays. Tray B goes back to its slot and its power.
 5. **Tray A (liquid handling) comes down.** The CubXL's gantry parks at the back. The arm puts the vial in the free

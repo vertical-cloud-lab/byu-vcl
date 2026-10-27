@@ -35,7 +35,7 @@ REFERENCE = {
 }
 SKIP = {"vial"}                  # the animation's own vial (the arm carries it) stands in for the rig's
 HIGHLIGHT = (0.10, 0.65, 0.35)   # powder-doser's render.py marks a module this green
-HL_KEYS = {"sam_mounting_plate", "auger_cap", "armature_tab"}
+HL_KEYS = {"carriage", "sam_mounting_plate", "auger_cap", "armature_tab"}
 FINE = ("sprocket", "pinion")
 COARSE = ("chain", "clevis", "stub", "loc_pin", "magnet", "insert", "eclip", "hall", "m3", "m5", "nut", "tnut", "bolt")
 BUDGET = {"auger": 4000, "auger_cap": 1500, "chain_outer": 240, "chain_inner": 200, "chain_a1": 400}   # triangles per part
@@ -127,14 +127,20 @@ class Carousel:
         pl = CL.placements(CL.State(**self.state))
         self.keys = [p.key for p in pl]
         self.board = board_move(pl)
+        # one actor per (colour, the highlighted module or not, riding a carriage or fixed): the others' modules and
+        # carriages can then be ghosted to show the docked one, which rides inside the loop, boxed in by the rest
         groups: dict[tuple, list[int]] = {}
         for i, p in enumerate(pl):
             if p.key in SKIP:
                 continue
-            col = HIGHLIGHT if (highlight is not None and p.module == highlight and p.key in HL_KEYS) else p.color
-            groups.setdefault(tuple(round(c, 3) for c in col), []).append(i)
+            hl = highlight is not None and p.module == highlight
+            col = HIGHLIGHT if (hl and p.key in HL_KEYS) else p.color
+            groups.setdefault((tuple(round(c, 3) for c in col), hl, p.module >= 0), []).append(i)
         self.actors = []
-        for j, (col, idx) in enumerate(sorted(groups.items())):
+        self.others = []                 # actors of the modules and carriages other than the highlighted one
+        for j, ((col, hl, rides), idx) in enumerate(sorted(groups.items())):
+            if rides and not hl and highlight is not None:
+                self.others.append(f"{prefix}/c{j}")
             polys, n0, slices = [], 0, []
             for i in idx:
                 m = self.parts[pl[i].key]
@@ -162,6 +168,15 @@ class Carousel:
             self.sc.set_mesh(name, mesh)
 
     # --------------------------------------------------------------------------------------- moves
+    def ghost(self, a1: float):
+        """An update(u) that fades the other modules and their carriages to opacity a1 (1: solid)."""
+        a0 = {n: self.sc.base_alpha[n] for n in self.others}
+
+        def up(u):
+            for n in self.others:
+                self.sc.base_alpha[n] = a0[n] + (a1 - a0[n]) * u
+        return up
+
     def to(self, **target):
         """An update(u) that eases the state from now to `target` (numbers only; flags switch at the start)."""
         start = {k: self.state[k] for k in target}

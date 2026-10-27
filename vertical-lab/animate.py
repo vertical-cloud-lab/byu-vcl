@@ -244,6 +244,11 @@ class Lab:
             g.append((f"Tray {k}", f"{state}"))
         self.sc.gauges = g + self.extra_gauges
 
+    def note(self, i, key, text):
+        """Set line i of the workflow's status lines and redraw the table now (not at the next tray move)."""
+        self.extra_gauges[i] = (key, text)
+        self.gauges()
+
     def skin(self, f1):
         """Cladding from opaque (0) to see-through (1)."""
         sc = self.sc
@@ -591,7 +596,7 @@ def workflow(data):
     p_cup = tray_world("B", cup + (0, 0, 32.0))
     cap = f"The {ROBOT_NAME} takes an empty 20 mL vial from the rack at the front of the tray and sets it in the " \
           "multi-doser's cup, on its 100 g load cell under the station."
-    L.extra_gauges[0] = ("Arm", "vial: rack to doser")
+    L.note(0, "Arm", "vial: rack to doser")
     pick(L, rb, f"2/{n}", cap, down(p_rack), down(p_rack + (0, 0, 110)), "vial", cam=CAM_WORK,
          labels=[("vial rack", p_rack + (-120, 0, 60), (0.20, 0.30)),
                  ("multi-doser (powder-doser #185)", p_cup + (0, 150, 420), (0.70, 0.18))])
@@ -602,19 +607,20 @@ def workflow(data):
     rb.release(L.eq_groups["B"][1])
     sc.step(f"2/{n}", cap, 0.9, rb.line_to(level(p_cup + (0, -190, 0))), hold=0.05)
     sc.step(f"2/{n}", cap, 1.2, rb.joint_to(PARK_RAD), hold=0.1, cam_to=CAM_MID)
-    L.extra_gauges[0] = ("Arm", "parked, clear of the doser")
+    L.note(0, "Arm", "parked, clear of the doser")
     # ------------------------------------------------------------------ 3. dose
     cap = f"The carousel indexes powder module {MODULE + 1} (green) to the station, 8 chain links per module, and the " \
           "Actuonix P16 lifts the electronics carriage and docks it under the module's plate, magnet on."
-    L.extra_gauges[1] = ("Doser", f"indexing to module {MODULE + 1}")
+    L.note(1, "Doser", f"indexing to module {MODULE + 1}")
     sc.step(f"3/{n}", cap, 2.6, car.to(shift=car.index_to(MODULE)), hold=0.2, cam_to=CAM_DOSE,
             labels=[(f"module {MODULE + 1}", p_cup + (0, 80, 90), (0.74, 0.20))])
-    L.extra_gauges[1] = ("Doser", f"module {MODULE + 1} docking")
-    sc.step(f"3/{n}", cap, 1.4, car.to(ext=C.DOCK_EXT, magnet_on=True), hold=0.2)
+    L.note(1, "Doser", f"module {MODULE + 1} docking")
+    cap = cap + " The other modules are drawn see-through: the docked one rides inside the loop."
+    sc.step(f"3/{n}", cap, 1.4, both(car.to(ext=C.DOCK_EXT, magnet_on=True), car.ghost(0.18)), hold=0.2)
     cap = f"Module {MODULE + 1} tilts {C.CP.TILT_DOSE_WORLD:.0f}°, cap end up into the loop, and the auger turns through " \
           "the steel pinion: the powder drops through the D-cut funnel into the vial while the load cell counts it. Then " \
           "hold, tilt back, reverse one turn at rest, undock (powder-doser's leakage study)."
-    L.extra_gauges[1] = ("Doser", f"module {MODULE + 1} tilted, dosing")
+    L.note(1, "Doser", f"module {MODULE + 1} tilted, dosing")
     sc.step(f"3/{n}", cap, 1.6, car.to(tilt=C.TILT), hold=0.1)
     spin0 = car.state["spin"]
     st = car.to(spin=spin0 + 2 * math.pi * 2.0)
@@ -628,22 +634,21 @@ def workflow(data):
             sc.set_mesh("stream", pv.PolyData(pts))
         L.powder_h = 14.0 * min(1.0, max(0.0, (u - 0.12) / 0.83))
         L.set_fill()
-        L.extra_gauges[2] = ("Load cell", f"{DOSE_G * min(1.0, max(0.0, (u - 0.12) / 0.83)):.3f} g")
-        L.gauges()
+        L.note(2, "Load cell", f"{DOSE_G * min(1.0, max(0.0, (u - 0.12) / 0.83)):.3f} g")
     sc.parent["stream"] = L.eq_groups["B"][1]
     sc.step(f"3/{n}", cap, 3.6, dose, hold=0.4, live=False)
     sc.alpha["stream"] = 0.0
-    L.extra_gauges[1] = ("Doser", f"module {MODULE + 1} back, undocking")
+    L.note(1, "Doser", f"module {MODULE + 1} back, undocking")
     sc.step(f"3/{n}", cap, 1.2, car.to(tilt=0.0), hold=0.1)
     sc.step(f"3/{n}", cap, 0.8, car.to(spin=spin0 + 2 * math.pi), hold=0.1)
-    sc.step(f"3/{n}", cap, 1.0, car.to(ext=0.0, magnet_on=False), hold=0.2)
-    L.extra_gauges[1] = ("Doser", f"module {MODULE + 1} undocked")
+    sc.step(f"3/{n}", cap, 1.0, both(car.to(ext=0.0, magnet_on=False), car.ghost(1.0)), hold=0.2)
+    L.note(1, "Doser", f"module {MODULE + 1} undocked")
     # ------------------------------------------------------------------ 4. vial to the arm's base, tray B up
     buf = np.array(L.buffer_seat)
     p_buf = (sc.world("amr") @ np.r_[buf + (0, 0, grasp_z), 1.0])[:3]
     cap = f"The arm takes the vial out ({DOSE_G:.3f} g in it) and stands it in the holder on its own base, so the " \
           "VLM can swap trays. Tray B goes back to its slot and its power."
-    L.extra_gauges[0] = ("Arm", "vial: doser to its base")
+    L.note(0, "Arm", "vial: doser to its base")
     sc.step(f"4/{n}", cap, 1.2, rb.joint_to(Tw=level(p_cup + (0, -190, 0))), hold=0.05, cam_to=CAM_WORK)
     sc.step(f"4/{n}", cap, 1.0, rb.line_to(level(p_cup)), hold=0.05)
     sc.step(f"4/{n}", cap, 0.5, rb.grip_to(GRIP_VIAL), hold=0.05)
@@ -652,7 +657,7 @@ def workflow(data):
     sc.step(f"4/{n}", cap, 1.0, rb.line_to(level(p_cup + (0, -190, 6))), hold=0.05)
     place(L, rb, f"4/{n}", cap, down(p_buf), down(p_buf + (0, 0, 120)), "amr")
     sc.step(f"4/{n}", cap, 1.2, rb.joint_to(PARK_RAD), hold=0.1)
-    L.extra_gauges[0] = ("Arm", "parked, vial on its base")
+    L.note(0, "Arm", "parked, vial on its base")
     L.store("B", f"4/{n}", cap, cam=CAM_OPEN)
     # ------------------------------------------------------------------ 5. tray A down, vial into the CubXL
     cap = "Tray A (liquid handling) comes down. The CubXL's gantry is parked at the back, so the arm can put the vial " \
@@ -661,12 +666,12 @@ def workflow(data):
     sc.step(f"5/{n}", cap, 1.0, L.cub_to(x=0.2, y=1.0, z=1.0), hold=0.2)
     slot = (sc.world(L.cub) @ np.r_[CUB_SLOT, 1.0])[:3]          # tray A is at the opening now
     p_slot = slot + (0, 0, grasp_z - 8.0)
-    L.extra_gauges[0] = ("Arm", "vial: base to CubXL")
+    L.note(0, "Arm", "vial: base to CubXL")
     pick(L, rb, f"5/{n}", cap, down(p_buf), down(p_buf + (0, 0, 120)), "vial")
     place(L, rb, f"5/{n}", cap, down(p_slot), down(p_slot + (0, 0, 130)), L.cub,
           labels=[("CubXL: free seat in its rack", p_slot + (0, 0, 40), (0.74, 0.24))])
     sc.step(f"5/{n}", cap, 1.4, rb.joint_to(PARK_RAD), hold=0.1)
-    L.extra_gauges[0] = ("Arm", "parked")
+    L.note(0, "Arm", "parked")
     # ------------------------------------------------------------------ 6. CubXL adds liquid; tray A up
     cap = "The CubXL's gantry brings its pipette over the vial and adds the liquid; the vial stays there for the " \
           "measurement. Tray A goes back to its slot, where it has power, so the CubXL keeps working while it is stored."
@@ -692,7 +697,7 @@ def workflow(data):
     sc.alpha["pipette stream"] = 0.0
     sc.step(f"6/{n}", cap, 1.0, L.cub_to(z=1.0), hold=0.1)
     L.store("A", f"6/{n}", cap, cam=CAM_WIDE)
-    L.extra_gauges[0] = ("Arm", "parked; next request")
+    L.note(0, "Arm", "parked; next request")
     sc.step(f"6/{n}", "Done: the dosed vial is in the CubXL on tray A, in storage and powered. The arm and the opening "
             "are free for the next request.", 1.0, None, hold=2.5, still=True)
     print(f"highest forearm/wrist point {rb.max_z_world:.0f} mm; opening top {V.Z_OPEN_TOP:.0f} mm", flush=True)
