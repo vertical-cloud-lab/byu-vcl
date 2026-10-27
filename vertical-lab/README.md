@@ -99,7 +99,7 @@ edge, or the arm needs a rail, or the tray a pull-out at the opening.
 
 ```bash
 pip install cadquery pyvista trimesh pillow numpy        # plus ffmpeg and gifsicle on the PATH
-xvfb-run -a python3 animate.py assembly operation disassembly
+xvfb-run -a python3 animate.py assembly operation disassembly full   # full joins the three MP4s
 PREVIEW=1 xvfb-run -a python3 animate.py operation       # the last frame of each sub-step, to /tmp
 ```
 

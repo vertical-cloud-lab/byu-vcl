@@ -4,6 +4,7 @@ holding the lab's equipment on three electrified trays.
     xvfb-run -a python3 animate.py assembly      # -> out/vlm_assembly.gif, out/mp4/vlm_assembly.mp4
     xvfb-run -a python3 animate.py operation     # -> out/vlm_operation.gif, ...
     xvfb-run -a python3 animate.py disassembly   # -> out/vlm_disassembly.gif, ...
+    python3 animate.py full                      # -> out/mp4/vertical_lab_full.mp4, the three joined
     PREVIEW=1 xvfb-run -a python3 animate.py assembly   # last frame of each sub-step -> /tmp/preview_*.png
 
 ``lab.py`` tessellates the models once and caches them in ``.cache/``. Every move is a real one:
@@ -430,9 +431,24 @@ def disassembly(data):
     return sc.save()
 
 
+def full():
+    """Join the three MP4s, assembly -> operation -> disassembly, without re-encoding."""
+    import subprocess
+    from scene import OUT
+    parts = [OUT / "mp4" / f"vlm_{c}.mp4" for c in ("assembly", "operation", "disassembly")]
+    lst = OUT / "mp4" / "concat.txt"
+    lst.write_text("".join(f"file '{p.name}'\n" for p in parts))
+    out = OUT / "mp4" / "vertical_lab_full.mp4"
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", str(lst), "-c", "copy",
+                    "-movflags", "+faststart", str(out)], check=True)
+    lst.unlink()
+    return f"vertical_lab_full: {out.stat().st_size / 1e6:.1f} MB"
+
+
 CHAPTERS = {"assembly": assembly, "operation": operation, "disassembly": disassembly}
 
 if __name__ == "__main__":
-    data = lab.meshes()
-    for name in sys.argv[1:] or list(CHAPTERS):
-        print(CHAPTERS[name](data), flush=True)
+    names = sys.argv[1:] or [*CHAPTERS, "full"]
+    data = lab.meshes() if any(n in CHAPTERS for n in names) else None
+    for name in names:
+        print(full() if name == "full" else CHAPTERS[name](data), flush=True)

@@ -1,0 +1,143 @@
+{
+ "name": "vlm_operation",
+ "fps": 15,
+ "n_frames": 594,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/4",
+   "caption": "In a vertical lab the equipment comes to the operator. The PiPER asks for tray B: the extractor pulls it off its supports, carries it down and pushes it into the opening.",
+   "start_frame": 0,
+   "end_frame": 41
+  },
+  {
+   "label": "1/4",
+   "caption": "In a vertical lab the equipment comes to the operator. The PiPER asks for tray B: the extractor pulls it off its supports, carries it down and pushes it into the opening.",
+   "start_frame": 42,
+   "end_frame": 54
+  },
+  {
+   "label": "1/4",
+   "caption": "In a vertical lab the equipment comes to the operator. The PiPER asks for tray B: the extractor pulls it off its supports, carries it down and pushes it into the opening.",
+   "start_frame": 55,
+   "end_frame": 89
+  },
+  {
+   "label": "1/4",
+   "caption": "In a vertical lab the equipment comes to the operator. The PiPER asks for tray B: the extractor pulls it off its supports, carries it down and pushes it into the opening.",
+   "start_frame": 90,
+   "end_frame": 102
+  },
+  {
+   "label": "1/4",
+   "caption": "In a vertical lab the equipment comes to the operator. The PiPER asks for tray B: the extractor pulls it off its supports, carries it down and pushes it into the opening.",
+   "start_frame": 103,
+   "end_frame": 135
+  },
+  {
+   "label": "2/4",
+   "caption": "The shutter opens and the PiPER tends the dosers at the front of the tray. Its 626 mm reach covers the front of the tray, so what it handles goes there.",
+   "start_frame": 142,
+   "end_frame": 159
+  },
+  {
+   "label": "2/4",
+   "caption": "The shutter opens and the PiPER tends the dosers at the front of the tray. Its 626 mm reach covers the front of the tray, so what it handles goes there.",
+   "start_frame": 160,
+   "end_frame": 186
+  },
+  {
+   "label": "2/4",
+   "caption": "The shutter opens and the PiPER tends the dosers at the front of the tray. Its 626 mm reach covers the front of the tray, so what it handles goes there.",
+   "start_frame": 187,
+   "end_frame": 216
+  },
+  {
+   "label": "2/4",
+   "caption": "The shutter opens and the PiPER tends the dosers at the front of the tray. Its 626 mm reach covers the front of the tray, so what it handles goes there.",
+   "start_frame": 217,
+   "end_frame": 235
+  },
+  {
+   "label": "2/4",
+   "caption": "The shutter opens and the PiPER tends the dosers at the front of the tray. Its 626 mm reach covers the front of the tray, so what it handles goes there.",
+   "start_frame": 236,
+   "end_frame": 253
+  },
+  {
+   "label": "3/4",
+   "caption": "Tray B goes back to its slot and power, and the extractor brings tray C (the printers) instead. Trays are unpowered only while they move.",
+   "start_frame": 254,
+   "end_frame": 288
+  },
+  {
+   "label": "3/4",
+   "caption": "Tray B goes back to its slot and power, and the extractor brings tray C (the printers) instead. Trays are unpowered only while they move.",
+   "start_frame": 289,
+   "end_frame": 301
+  },
+  {
+   "label": "3/4",
+   "caption": "Tray B goes back to its slot and power, and the extractor brings tray C (the printers) instead. Trays are unpowered only while they move.",
+   "start_frame": 302,
+   "end_frame": 334
+  },
+  {
+   "label": "3/4",
+   "caption": "Tray B goes back to its slot and power, and the extractor brings tray C (the printers) instead. Trays are unpowered only while they move.",
+   "start_frame": 339,
+   "end_frame": 373
+  },
+  {
+   "label": "3/4",
+   "caption": "Tray B goes back to its slot and power, and the extractor brings tray C (the printers) instead. Trays are unpowered only while they move.",
+   "start_frame": 374,
+   "end_frame": 386
+  },
+  {
+   "label": "3/4",
+   "caption": "Tray B goes back to its slot and power, and the extractor brings tray C (the printers) instead. Trays are unpowered only while they move.",
+   "start_frame": 387,
+   "end_frame": 419
+  },
+  {
+   "label": "3/4",
+   "caption": "Tray B goes back to its slot and power, and the extractor brings tray C (the printers) instead. Trays are unpowered only while they move.",
+   "start_frame": 426,
+   "end_frame": 455
+  },
+  {
+   "label": "4/4",
+   "caption": "Tray C waits at the opening, powered, until the PiPER is done; then it goes back up and the next tray comes down. Experiments run in storage in between.",
+   "start_frame": 456,
+   "end_frame": 474
+  },
+  {
+   "label": "4/4",
+   "caption": "Tray C waits at the opening, powered, until the PiPER is done; then it goes back up and the next tray comes down. Experiments run in storage in between.",
+   "start_frame": 475,
+   "end_frame": 509
+  },
+  {
+   "label": "4/4",
+   "caption": "Tray C waits at the opening, powered, until the PiPER is done; then it goes back up and the next tray comes down. Experiments run in storage in between.",
+   "start_frame": 510,
+   "end_frame": 522
+  },
+  {
+   "label": "4/4",
+   "caption": "Tray C waits at the opening, powered, until the PiPER is done; then it goes back up and the next tray comes down. Experiments run in storage in between.",
+   "start_frame": 523,
+   "end_frame": 555
+  },
+  {
+   "label": "4/4",
+   "caption": "Tray C waits at the opening, powered, until the PiPER is done; then it goes back up and the next tray comes down. Experiments run in storage in between.",
+   "start_frame": 560,
+   "end_frame": 593
+  }
+ ]
+}
