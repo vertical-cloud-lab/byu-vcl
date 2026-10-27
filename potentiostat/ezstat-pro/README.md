@@ -784,7 +784,7 @@ and can run remotely as soon as the 10 kΩ is back on the leads.
 | # | Check | Needs | Passes if | Unblocks |
 |---|---|---|---|---|
 | C1 | DAL's sequence on the 10.00 kΩ | R2's wiring | Rp within 3 % of 10.00 kΩ every time; the hold and its charge within 3 %; the method runs through over Remote Desktop and ends with Cell OFF | The method, range and export for C4–C6. **Passed 2026-10-26** ([below](#c1-dals-sequence-on-the-1000-kω-no-chemistry)) |
-| C2 | Low currents: 100 kΩ, 1 MΩ (and 10 MΩ) | Three resistors, each measured on the meter; 5 % ones will do | 100 kΩ and 1 MΩ within 5 %; 10 MΩ is recorded, not judged | The well (13 nA–1.7 µA in DAL's protocol); passive aluminium (~1 nA) |
+| C2 | Low currents: 100 kΩ, 1 MΩ (and 10 MΩ) | Three resistors, each measured on the meter; 5 % ones will do | 100 kΩ and 1 MΩ within 5 %; 10 MΩ is recorded, not judged | The well (13 nA–1.7 µA in DAL's protocol); passive aluminium (~1 nA). **Passed 2026-10-27** ([below](#c2-low-currents-the-cubxl-well-and-passive-aluminium)) |
 | C3 | Reference against a master | Two Ag/AgCl references | Within 5 mV of each other, drifting under 1 mV in 10 min | Every potential in C4–C6 |
 | C4 | Shakedown on the C63000 NAB we have | Bench cell, graphite counter, 3.5 % NaCl | Three slices: E_corr SD ≤ 10 mV, log₁₀ Rp SD ≤ 0.15, no attack at the O-ring edge | The lab's first copper corrosion data; a baseline for NAB from the atomizer |
 | C5 | Bench-cell anchor on DAL's reference alloys | C71500, C95800, then C70600; D1141 seawater | C4's limits, with means near the published values | DAL §5's calibration; the ONR draft's reference alloys, measured every round |
@@ -903,6 +903,41 @@ noise.
 - **If 1 MΩ fails,** the well needs a larger O-ring or a more sensitive
   instrument, such as DAL's EmStat Pico option. Better to know that before
   printing lids.
+
+**Result, C2, 2026-10-27: passes.** A Claude session over Remote Desktop, 21:28–21:59 UTC, with
+Ben at the bench measuring and swapping the resistors. Each run was C1's repeat (1 min of OCP, one
+±10 mV LPR at 10 mV/min) on the fixed 10 nA–1 µA range
+([files and analysis](results/20261027_c2-low-currents/README.md)):
+
+| Resistor (meter) | Rp, fit to the export | EZware's own Rp | Limit |
+|---|---|---|---|
+| 100 kΩ (99.5 kΩ) | **98,117 Ω, −1.39 %** | 98,117 Ω | 5 % ✅ |
+| 1 MΩ (1.022 MΩ) | **1.0058 MΩ, −1.58 %** | 1.0058 MΩ | 5 % ✅ |
+| 10 MΩ (10.16 MΩ) | 9.891 MΩ, −2.65 %; repeat 10.412 MΩ, +2.48 % | 9.817 and 10.401 MΩ | recorded |
+
+![C2: the four LPRs, and each fit against the meter](results/20261027_c2-low-currents/20261027-C2-summary.png)
+
+- **1 MΩ passes, so the well doesn't need a bigger O-ring or another instrument** for copper's
+  13 nA–1 µA. Above 1 µA it's the 1 µA–100 µA range, which C1 checked.
+- **Both judged resistors read 1.4–1.6 % low,** just outside the meter's ±1.0–1.2 %. The ±50 mV
+  potential range's −0.94 % (R2) would account for most of it, since nothing on this range cancels
+  it as the 1 µA–100 µA range's +1.08 % did in C1. That's an inference from R2.
+- **At 10 MΩ, one LPR gives Rp to ±1–3 %.** The current is ±1 nA and the points scatter by
+  18–52 pA. The two runs average 10.15 MΩ, −0.1 %. That's ample for passive aluminium, since
+  C4's own limit is a log₁₀ Rp SD of 0.15, about ±40 %.
+- **The offset on this range is under 0.2 nA** where the fits cross 0 V (−0.55 nA on open leads in
+  D1). EZware's "Corrosion Potential" moves by that times Rp: +0.8 and +1.0 mV on the 10 MΩ.
+- **EZware didn't centre the 10 MΩ sweeps on the OCP.** They ran about +2.8 to +22.8 mV and then
+  −14.4 to +5.6 mV, with the OCP at −0.06 and −0.02 mV. The 100 kΩ's was centred within 0.2 mV and
+  the 1 MΩ's was 2.1 mV off. The cause is unknown: perhaps a transient at the moment EZware reads
+  the potential to place the sweep, which a high-impedance load would show most. It doesn't matter
+  for a resistor, but on a corroding electrode a sweep from +3 to +23 mV is all anodic. **In C4–C6,
+  check where each LPR actually ran** from its exported points.
+- **The default current range follows the auto-range boxes.** In General Method Settings, choosing
+  10nA ~ 1uA in *Potentiostat Default Current Range* didn't stick while 100uA was the only box
+  ticked. Ticking 1uA and then unticking 100uA switched it by itself.
+- **The export's time columns reset between sessions:** tick them in Data Configuration before the
+  first export of each session.
 
 ### C3. Reference electrode against a master
 
