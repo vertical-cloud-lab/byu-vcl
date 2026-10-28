@@ -3,7 +3,7 @@
    vial_holder  port   17136.7  Onshape   17114.8  port-only   30.1  Onshape-only    8.2  bounds equal: True
 
 2. Compact parts written to stl/compact/
-   base_compact         49.0 x 44.0 x 19.0 mm, z 0.00 to 19.00,  11150.3 mm3, watertight True, 1 body
+   base_compact         49.0 x 44.0 x 19.0 mm, z 0.00 to 19.00,  11288.5 mm3, watertight True, 1 body
    vial_holder_compact  49.0 x 44.0 x 22.03 mm, z 20.00 to 42.03,  11449.4 mm3, watertight True, 1 body
    holder inside r = 16.9: 4651.181 mm3, Onshape's 4651.181 mm3
 

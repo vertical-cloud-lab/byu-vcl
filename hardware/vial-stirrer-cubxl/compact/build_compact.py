@@ -52,6 +52,7 @@ COMPACT = {
     "BOARD_IN": 0.5,          # junction board's rails and stop move this far toward +X
     "WALL_DROP": 1.0,         # base walls end 1 mm under the flange: the holder sits on the fan, not the walls
     "HOLE_DEPTH": 7.5,        # insert holes 1 mm deeper than today's 6.5, so an M3 x 20 never bottoms out
+    # and no vents in the -Y wall, where the cable notch is (make_base)
 }
 
 
@@ -118,7 +119,9 @@ def make_base(compact: bool):
         cuts.append(box(-W / 2 - 1, -6.5, floor - 0.6, -C["CAV"] / 2 + 0.5, 6.5, ztop + 1))  # USB-C notch, -X wall
     for k in range(3):
         z0 = zf0 + 1.5 + k * 3.0
-        cuts.append(box(-13, -D / 2 - 1, z0, 13, D / 2 + 1, z0 + 1.6))      # vents, +-Y walls
+        # vents, +-Y walls. The compact base's -Y wall has the cable notch, which would leave the
+        # bars between that wall's vents attached at one end only, so it has none.
+        cuts.append(box(-13, 0 if compact else -D / 2 - 1, z0, 13, D / 2 + 1, z0 + 1.6))
         cuts.append(box(0, -13, z0, W / 2 + 1, 13, z0 + 1.6))               # vents, +X wall
     cuts.append(nub(-C["KEY_X"], 0, -0.01, C["NUB_H"] + 0.1, C["POCKET_R"]))   # key pockets
     cuts.append(nub(C["KEY_X"], 0, -0.01, C["NUB_H"] + 0.1, C["POCKET_R"]))
