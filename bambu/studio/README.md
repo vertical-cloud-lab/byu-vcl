@@ -395,6 +395,49 @@ What was new:
   time, so the login can't slip in, and blurs the camera pane's upper corners where the room
   shows.
 
+## Seventh run: six more C–CS rings, sliced but not sent (2026-10-28)
+
+Asked for on [PR #234](https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-6474970526):
+"get at least 5 more sizes spaced a bit bigger". The record is in
+[`../evidence/2026-10-28/c-cs-spacer-sizes-studio/`](../evidence/2026-10-28/c-cs-spacer-sizes-studio/README.md).
+It was the first print run under the 2026-10-23 plate rule (frame first, no `plate clear`), and
+it stopped without sending, because the plate was never clear.
+
+| UTC | Step |
+|---|---|
+| 16:43:53 | Request; the run was approved and started by 16:45 |
+| 16:52:32 | Recording started, then Studio's first run |
+| 16:55:10–16:56:10 | Login: password, then the first `bambu-totp` code worked |
+| 16:57:04 | First frame from the Device page: the A1 mini idle, but the previous job's print still on the plate |
+| 16:58:04 | Frame posted in the tracking comment; part removal asked for |
+| 16:58–17:08 | Rings C–H modelled; the 23 Oct G-code checked against the model |
+| 17:08–17:12 | Sliced: *Sync info*, one STL with six bodies, `0.08mm High Quality @BBL A1M`, 6 walls, AMS sync to A3 |
+| 17:16–18:55 | Waiting: the thread polled every 20 s, a frame every 3–4 min, no change on the plate |
+| 17:32 | The sliced plate exported (*Export plate sliced file*) and committed, ready to send |
+| 17:43:50 | The H2D checked read-only: busy, with warning 0700-8010 |
+| 18:55:20 | Stopped at the cutoff stated in the thread; signed out at 18:55:45, Studio closed, its config deleted |
+
+What was new:
+- **An occupied plate, and nobody to tell.** The run can only edit its tracking comment, and
+  GitHub sends no notification for an edit. So a request to clear the plate made there reaches
+  only someone who happens to look at the thread. The person who triggers the run should be ready
+  to check the printer, or say who will.
+- **Studio's live view closes itself** after a few minutes with nothing printing ("Temporarily
+  closed because there is no printing for a while"). Press ▶ again before each frame. When it's
+  closed, the green ▶ sits at (294, 732); while playing, the pane is taller and the button is at
+  (294, 814).
+- **Catching a change on the plate without a reply.** The mean absolute difference between a
+  frame's plate region and the first frame's stayed at 1.5–1.9 of 255 all session. A part being
+  removed would move it far more.
+- **One STL with six bodies** imports as one object, centred on the plate, with no prompt. Its
+  layout then fixes which ring is where, which helps tell the rings apart afterwards.
+- **The token re-mint works in a print run.** `claude-print.yml` has `id-token: write`, and
+  `scripts/refresh_github_app_token.py` (on `main`) re-minted at 17:32, 18:19 and 19:10.
+- **The recorder's segments keep running timestamps.** Without `-reset_timestamps 1`, a
+  Matroska segment reports its end time as its duration (600 s for the second 5 min segment).
+  `cut_recording.py` now subtracts the start time; before, its pieces overlapped and the first cut
+  came out three times too long.
+
 ## Recording and keeping the sent file
 
 Rule 8 of the runbook asks for both. What worked on 2026-09-29:

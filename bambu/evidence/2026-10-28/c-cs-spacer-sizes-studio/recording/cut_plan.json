@@ -1,0 +1,14 @@
+{"day": "2026-10-28",
+ "parts": [
+  {"from": "16:52:40", "to": "16:55:09", "speed": 4, "label": "Bambu Studio's first start on the runner (the login after it is cut)"},
+  {"from": "16:56:20", "to": "16:58:10", "speed": 2, "label": "Device page: the A1 mini is idle, but the previous job's print is still on its plate"},
+  {"from": "16:58:10", "to": "17:08:25", "speed": 32, "label": "Modelling rings C-H and checking the 23 Oct G-code (in the terminal, off screen)"},
+  {"from": "17:08:25", "to": "17:12:40", "speed": 2, "label": "Slicing: Sync info, the six-ring STL, 0.08 mm High Quality, 6 walls, black PLA from A3"},
+  {"from": "17:12:40", "to": "17:16:10", "speed": 2, "label": "A fresh frame and the HMS tab: no alerts, the plate still occupied"},
+  {"from": "17:16:10", "to": "17:31:15", "speed": 48, "label": "Waiting for someone to clear the plate (a frame every 3-4 min)"},
+  {"from": "17:31:15", "to": "17:32:20", "speed": 2, "label": "Exporting the sliced plate, ready to send later"},
+  {"from": "17:32:20", "to": "17:43:40", "speed": 48, "label": "Still waiting"},
+  {"from": "17:43:40", "to": "17:44:50", "speed": 2, "label": "The H2D: busy on another job, with an AMS warning; nothing clicked"},
+  {"from": "17:44:50", "to": "18:55:20", "speed": 64, "label": "Waiting until the 18:55 UTC cutoff; the plate never changed"}
+ ],
+ "blur": [["16:56:20", "17:08:30"], ["17:12:40", "18:55:20"]]}

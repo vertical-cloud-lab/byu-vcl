@@ -27,12 +27,16 @@ def at(hms):
 segs = []
 for p in sorted(glob.glob(os.path.join(SEG_DIR, "raw_*.mkv"))):
     t = dt.datetime.strptime(re.search(r"raw_(\d{8}T\d{6}Z)", p).group(1), "%Y%m%dT%H%M%SZ")
-    out = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of",
+    out = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=start_time,duration", "-of",
                           "csv=p=0", p], capture_output=True, text=True).stdout.strip()
     try:
-        dur = float(out)
+        # The segment muxer keeps the recording's running timestamps unless -reset_timestamps 1 is
+        # given, and a Matroska segment then reports its end time as its duration: 600 for the
+        # second 5 min segment. Taken at face value, segments overlap and pieces repeat.
+        start, end = (float(x) for x in out.split(","))
+        dur = end - start if end > start > 0 else end
     except ValueError:   # the segment still being written has no duration yet
-        dur = (dt.datetime.utcnow() - t).total_seconds() - 5
+        dur = (dt.datetime.now(dt.timezone.utc).replace(tzinfo=None) - t).total_seconds() - 5
     segs.append((t.replace(tzinfo=dt.timezone.utc), dur, p))
 
 

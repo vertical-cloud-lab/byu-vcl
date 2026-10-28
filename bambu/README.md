@@ -51,6 +51,11 @@ the work:
 >   the authenticator code. A print run has no tailnet, so the checks and the watching were on
 >   Studio's Device page. [Evidence](evidence/2026-10-23/c-cs-spacer-studio/README.md); the
 >   recording is committed there, since a print run has no YouTube token.
+> - **Seventh, sliced but not sent (2026-10-28):** six more C–CS rings, C to H, for the A1 mini.
+>   The first Device-page frame showed the previous job's print still on the plate, and it stayed
+>   there until the run's stated cutoff, 18:55 UTC. Nobody replied, perhaps because nobody is
+>   notified of edits to the tracking comment. The sliced plate is committed, ready to send.
+>   [Evidence](evidence/2026-10-28/c-cs-spacer-sizes-studio/README.md).
 > - **Its print command** is the payload that started this printer's first programmatic
 >   print from a laptop (powder-doser PR #23, 2026-07-27), when the printer was set up for
 >   Developer Mode.
@@ -655,3 +660,4 @@ A1 mini:
 | [`evidence/2026-10-01/deck-studio/`](evidence/2026-10-01/deck-studio/README.md) | plate 2 printed from Studio, asked for on PR #84: two pre-flights (the first in a dark lab), the file the printer ran, `print.json`, `watch`'s log and key frames. Copied from that PR's branch (`cad7af2`) |
 | [`evidence/2026-10-08/deck-h2d-studio/`](evidence/2026-10-08/deck-h2d-studio/README.md) | the new deck printed on the H2D from Studio: the frames before Send, the file Studio uploaded, `print.json`, the Device-page monitor's log and key frames |
 | [`evidence/2026-10-23/c-cs-spacer-studio/`](evidence/2026-10-23/c-cs-spacer-studio/README.md) | two C–CS spacer rings printed on the A1 mini from a `@claude-print` run: the frames before Send, the H2D's paused job, the file Studio uploaded, `print.json`, the monitor's log, key frames and the cut recording |
+| [`evidence/2026-10-28/c-cs-spacer-sizes-studio/`](evidence/2026-10-28/c-cs-spacer-sizes-studio/README.md) | six more C–CS rings, sliced for the A1 mini but not sent, as its plate stayed occupied: the frames, the H2D's state, the sliced plate ready to send, the G-code check, `print.json` and the cut recording |
