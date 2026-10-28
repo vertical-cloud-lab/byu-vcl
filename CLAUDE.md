@@ -481,12 +481,12 @@ gets that login:
      nothing but the plate, the toolhead's shadow and the base sticker. If it is dark, if
      anything is on the plate, or if you can't tell, don't send: say what you see and wait for
      a person. That is the one case that needs a reply.
-  3. **Wait at least 5 minutes** after the frame is posted, doing the rest of the prep
+  3. **Wait at least 90 seconds** after the frame is posted, doing the rest of the prep
      meanwhile, and poll the thread for new comments. Any comment asking to stop, wait or
      change something holds the send; act on it. With no reply, send. A go from someone with
      write access ends the wait early.
   4. **Take another frame right before Send.** If the plate looks different, post it and start
-     the 5 minutes again.
+     the 90 seconds again.
   5. **Still list what a person could check,** as suggestions rather than something to reply
      to: the plate type, room for the bed to travel, and someone near the printer. The rest of
      the runbook stands: an idle printer with no HMS alert, working hours, the recording, and
