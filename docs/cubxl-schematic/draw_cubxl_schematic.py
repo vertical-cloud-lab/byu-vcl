@@ -244,7 +244,7 @@ GLASS = "#e9f1f6"
 CAP = "#b8463c"  # cap bodies (printed, PDMS-filled)
 STEEL = "#d2d4d6"  # the steel disc the magnet lifts
 P20 = "#d8d8d8"
-BEIGE = "#e3dccb"  # EZstat Pro case
+PSTAT = "#d5d7da"  # EZstat Pro case
 
 # head pose (capper = reference tool, CubOS offsets from the October yaml)
 VIAL_X = 136.668
@@ -311,7 +311,7 @@ def build():
         for col in (1, 0):
             s.cylinder(tx0 - pitch * col, ty0 + pitch * row, 60, 67, 3.1,
                        color="#fbfbfb", layer=4, lw=0.3, n=24)
-    A["tips"] = (tx0 + 3, ty0 + 3 * pitch, 67)
+    A["tips"] = (tx0 + 10, ty0 + 2 * pitch, 40)
 
     # -- gantry frame: blue side plates, X beam at the back, X motor on the left
     gy = cy + 108  # the beam sits behind the head
@@ -331,12 +331,10 @@ def build():
     hx = 0.5 * (plate_x0 + plate_x1)
     s.box(hx - 40, hx + 40, gy - 75, gy - 30, HEAD_Z - 4, HEAD_Z + 146, color=ALU,
           layer=3)  # Z axis
-    s.box(plate_x0, plate_x1, py_front, gy - 75, HEAD_Z + 41, HEAD_Z + 196,
+    s.box(plate_x0, plate_x1, py_front, gy - 75, HEAD_Z + 50, HEAD_Z + 190,
           color=BLACK_PLA, layer=3)  # tool plate
-    for hxk in np.linspace(plate_x0 + 12, plate_x1 - 12, 7):  # its slots
-        for hzk in np.linspace(HEAD_Z + 60, HEAD_Z + 180, 5):
-            s.line([(hxk, py_front - 0.2, hzk - 5), (hxk, py_front - 0.2, hzk + 5)],
-                   color="#43464a", lw=0.7, layer=3)
+    # (the pegboard's slots are left out: at print size they read as dashes,
+    # and dashes mean "planned" here)
     # Arduino Uno with a proto-shield breadboard (capper and pipette driver)
     s.box(cx - 18, cx + 36, py_front - 4, py_front, HEAD_Z + 100, HEAD_Z + 168,
           color="#2f6db0", layer=3)
@@ -345,7 +343,7 @@ def build():
     A["arduino"] = (cx - 10, py_front - 12, HEAD_Z + 130)
     # cam0 on its mast (deck overview), cam1 at the foot of the plate
     mx = cx - 22
-    s.box(mx - 6, mx + 6, py_front - 10, py_front, HEAD_Z + 196, HEAD_Z + 300,
+    s.box(mx - 6, mx + 6, py_front - 10, py_front, HEAD_Z + 190, HEAD_Z + 300,
           color=BLACK_PLA, layer=3)
     s.box(mx - 15, mx + 15, py_front - 26, py_front, HEAD_Z + 300, HEAD_Z + 326,
           color=BLACK_PLA, layer=3)
@@ -353,10 +351,10 @@ def build():
                n=36)
     A["cam0"] = (mx - 15, py_front - 26, HEAD_Z + 316)
     kx = cx + HEADCAM_DXY[0]
-    s.box(kx - 14, kx + 14, py_front - 22, py_front, HEAD_Z + 36, HEAD_Z + 62,
+    s.box(kx - 14, kx + 14, py_front - 22, py_front, HEAD_Z + 44, HEAD_Z + 70,
           color=BLACK_PLA, layer=3)
-    s.cylinder(kx, py_front - 12, HEAD_Z + 28, HEAD_Z + 36, 6, color=INK, layer=3, n=36)
-    A["cam1"] = (kx - 14, py_front - 22, HEAD_Z + 50)
+    s.cylinder(kx, py_front - 12, HEAD_Z + 36, HEAD_Z + 44, 6, color=INK, layer=3, n=36)
+    A["cam1"] = (kx - 14, py_front - 22, HEAD_Z + 58)
 
     # capper: printed arm, 50 N electromagnet, IR break-beam pair at its mouth
     s.box(cx - 10, cx + 10, cy, py_front, HEAD_Z + 30, HEAD_Z + 48, color=BLACK_PLA,
@@ -370,7 +368,7 @@ def build():
 
     # Opentrons P20 single-channel GEN2 on the right edge, tip on
     px, py = cx + PIPETTE_DXY[0], cy + PIPETTE_DXY[1]
-    s.box(px - 17, px + 17, py - 14, py_front, HEAD_Z + 18, HEAD_Z + 196, color="#3b3d41",
+    s.box(px - 17, px + 17, py - 14, py_front, HEAD_Z + 18, HEAD_Z + 190, color="#3b3d41",
           layer=3)
     s.cylinder(px, py, HEAD_Z - 8, HEAD_Z + 18, 4.6, color="#9a9da2", layer=3, n=36)
     s.cone(px, py, HEAD_Z - 43, HEAD_Z - 8, 3.7, layer=3)
@@ -380,7 +378,7 @@ def build():
     s.box(455, 655, 90, 300, -50, 12, color="#3f4247", layer=5)  # controller
     s.cylinder(625, 110, 12, 24, 9, color="#c8352b", layer=5, n=36)  # E-stop
     A["estop"] = (634, 110, 20)
-    s.box(565, 700, -80, 45, -50, 22, color=BEIGE, layer=5)  # EZstat Pro
+    s.box(565, 700, -80, 45, -50, 22, color=PSTAT, layer=5)  # EZstat Pro
     for k in range(3):  # cell-lead sockets
         s.cylinder(595 + 22 * k, -80, 22, 26, 3.2, color=INK, layer=5, n=24)
     A["pstat"] = (700, -20, 0)
@@ -424,57 +422,79 @@ def deck_slots(s):
 # ---------------------------------------------------------------------------
 # callouts
 # ---------------------------------------------------------------------------
-# (anchor key, label, side, label height as a fraction of the figure,
-#  implemented?)  Evidence for every row: README.md.
-CALLOUTS = [  # each column listed top to bottom
-    ("cam0", "Deck-overview camera", "L", 0, True),
-    ("arduino", "Tool driver (Arduino)", "L", 0, True),
-    ("cam1", "Head camera", "L", 0, True),
-    ("capper", "Magnetic capping and decapping", "L", 0, True),
-    ("irbeam", "IR cap-capture check", "L", 0, True),
-    ("raman", "OpenRAMAN dock (planned)", "L", 0, False),
-    ("vials", "Vials with magnetic caps", "L", 0, True),
-    ("rack", "Printed 9-vial holder", "L", 0, True),
-    ("pipette", "Pipetting (Opentrons P20 GEN2)", "R", 0, True),
-    ("gantry", "CubOS gantry control", "R", 0, True),
-    ("corrosion", "Cu corrosion cell (planned)", "R", 0, False),
-    ("tips", "Tip pickup and ejection", "R", 0, True),
-    ("estop", "Hardware E-stop", "R", 0, True),
-    ("pstat", "Remote-run potentiostat", "R", 0, True),
+# (anchor key, label, side, implemented?). Each column is listed top to
+# bottom, in an order that keeps the leaders from crossing. Evidence for
+# every row: README.md.
+CALLOUTS = [
+    ("cam0", "Deck-overview\ncamera", "L", True),
+    ("cam1", "Head camera", "L", True),
+    ("capper", "Magnetic decapping\nand recapping", "L", True),
+    ("irbeam", "IR cap-capture check", "L", True),
+    ("raman", "OpenRAMAN dock\n(planned)", "L", False),
+    ("vials", "9-vial holder,\nmagnetic caps", "L", True),
+    ("pipette", "Pipetting\n(Opentrons P20 GEN2)", "R", True),
+    ("gantry", "CubOS gantry control,\nremote runs", "R", True),
+    ("corrosion", "Cu corrosion cell\n(planned)", "R", False),
+    ("tips", "Tip pickup and ejection", "R", True),
+    ("estop", "Hardware E-stop", "R", True),
+    ("pstat", "Remote-run\npotentiostat", "R", True),
 ]
 
 FS = 8.0  # label size, pt
+LEADING = 1.12  # line spacing of two-line labels
 DOT = 2.0  # anchor dot, pt
 GAP_IN = 0.05  # label to model, in
 SHOULDER_IN = 0.07  # horizontal stub of each leader, in
-MARGIN_IN = 0.04  # figure edge to label, in
+MARGIN_IN = 0.03  # figure edge to label, in
+PAD_IN = 0.05  # between labels in a column, in
 
 
-def text_width_in(fig, text, **kw):
-    t = fig.text(0, 0, text, fontsize=FS, **kw)
-    w = t.get_window_extent(fig.canvas.get_renderer()).width / fig.dpi
+def text_size_in(fig, text, **kw):
+    t = fig.text(0, 0, text, fontsize=FS, linespacing=LEADING, **kw)
+    bb = t.get_window_extent(fig.canvas.get_renderer())
     t.remove()
-    return w
+    return bb.width / fig.dpi, bb.height / fig.dpi
 
 
-def spread(desired, lo, hi, step):
+def spread(desired, heights, lo, hi, pad):
     """1-D label placement for one column, listed top to bottom.
 
-    Each label sits as close to its anchor's height as it can while keeping
-    the listed order, `step` apart, inside [lo, hi].  The order is set by
-    hand in CALLOUTS so that no two leaders cross.
+    Each label centre sits as close to its anchor's height as it can while
+    keeping the listed order, `pad` clear of its neighbours, inside [lo, hi].
     """
-    order = np.arange(len(desired))
-    y = np.clip(np.asarray(desired, float), lo, hi)
+    y = np.asarray(desired, float).copy()
+    h = np.asarray(heights, float)
+    y[0] = min(y[0], hi - h[0] / 2)
     for i in range(1, len(y)):
-        y[i] = min(y[i], y[i - 1] - step)
-    if len(y) and y[-1] < lo:
-        y[-1] = lo
+        y[i] = min(y[i], y[i - 1] - (h[i - 1] + h[i]) / 2 - pad)
+    if y[-1] - h[-1] / 2 < lo:
+        y[-1] = lo + h[-1] / 2
         for i in range(len(y) - 2, -1, -1):
-            y[i] = max(y[i], y[i + 1] + step)
-    out = np.empty_like(y)
-    out[order] = y
-    return out
+            y[i] = max(y[i], y[i + 1] + (h[i] + h[i + 1]) / 2 + pad)
+    return y
+
+
+def leader(ax, tx, ty, a, side, impl, scale):
+    color = INK if impl else PLANNED
+    ls = "-" if impl else (0, (3.0, 2.0))
+    d = 1 if side == "L" else -1
+    sx, kx = tx + d * 0.02 * scale, tx + d * SHOULDER_IN * scale
+    ax.plot([sx, kx, a[0]], [ty, ty, a[1]], color=color, lw=0.6, ls=ls,
+            solid_joinstyle="round", solid_capstyle="round", zorder=4)
+    ax.plot(*a, "o", ms=DOT, mfc=color, mec="white", mew=0.4, zorder=6)
+
+
+def legend(ax, x, y, scale):
+    """Two-entry key, (x, y) = left end of the top entry, data units."""
+    dy = 1.5 * FS / 72 * scale
+    for k, (impl, text) in enumerate(((True, "Implemented and tested"),
+                                      (False, "Planned (not yet built)"))):
+        yy = y - k * dy
+        color = INK if impl else PLANNED
+        ax.plot([x, x + 0.22 * scale], [yy, yy], color=color, lw=0.6,
+                ls="-" if impl else (0, (3.0, 2.0)), zorder=4)
+        ax.text(x + 0.27 * scale, yy, text, ha="left", va="center", fontsize=FS - 0.5,
+                color=color, style="normal" if impl else "italic", zorder=5)
 
 
 def main():
@@ -485,12 +505,15 @@ def main():
     scene.draw(ax)
     (u0, v0), (u1, v1) = ax.dataLim.get_points()
 
-    rows = [dict(key=k, text=t, side=sd, impl=im, a=uv(anchors[k]))
-            for k, t, sd, _, im in CALLOUTS]
-    w = {sd: max([text_width_in(fig, r["text"]) for r in rows if r["side"] == sd] or [0])
-         for sd in "LR"}
+    rows = []
+    for key, text, side, impl in CALLOUTS:
+        style = "normal" if impl else "italic"
+        w_in, h_in = text_size_in(fig, text, style=style)
+        rows.append(dict(text=text, side=side, impl=impl, style=style, w=w_in, h=h_in,
+                         a=uv(anchors[key])))
+    w = {sd: max(r["w"] for r in rows if r["side"] == sd) for sd in "LR"}
     avail_w = FIG_W_IN - 2 * MARGIN_IN - w["L"] - w["R"] - 2 * (GAP_IN + SHOULDER_IN)
-    avail_h = FIG_H_IN - 0.10
+    avail_h = FIG_H_IN - 0.06
     scale = max((u1 - u0) / avail_w, (v1 - v0) / avail_h)  # screen mm per inch
     left = u0 - (MARGIN_IN + w["L"] + GAP_IN + SHOULDER_IN) * scale
     bottom = 0.5 * (v0 + v1) - 0.5 * FIG_H_IN * scale
@@ -498,26 +521,19 @@ def main():
     ax.set_ylim(bottom, bottom + FIG_H_IN * scale)
     ax.set_aspect("equal")
 
-    step = 1.45 * FS / 72 * scale
-    lo, hi = bottom + 0.08 * scale, bottom + (FIG_H_IN - 0.08) * scale
+    lo, hi = bottom + 0.05 * scale, bottom + (FIG_H_IN - 0.05) * scale
     for sd in "LR":
         sub = [r for r in rows if r["side"] == sd]
-        ys = spread([r["a"][1] for r in sub], lo, hi, step)
+        ys = spread([r["a"][1] for r in sub], [r["h"] * scale for r in sub],
+                    lo, hi, PAD_IN * scale)
+        tx = (u0 - (GAP_IN + SHOULDER_IN) * scale if sd == "L"
+              else u1 + (GAP_IN + SHOULDER_IN) * scale)
         for r, ty in zip(sub, ys):
-            color = INK if r["impl"] else PLANNED
-            ls = "-" if r["impl"] else (0, (3.0, 2.0))
-            if sd == "L":
-                tx = u0 - (GAP_IN + SHOULDER_IN) * scale
-                sx, kx, ha = tx + 0.02 * scale, tx + SHOULDER_IN * scale, "right"
-            else:
-                tx = u1 + (GAP_IN + SHOULDER_IN) * scale
-                sx, kx, ha = tx - 0.02 * scale, tx - SHOULDER_IN * scale, "left"
-            ax.text(tx, ty, r["text"], ha=ha, va="center", fontsize=FS, color=color,
-                    style="normal" if r["impl"] else "italic", zorder=5)
-            a = r["a"]
-            ax.plot([sx, kx, a[0]], [ty, ty, a[1]], color=color, lw=0.6, ls=ls,
-                    solid_joinstyle="round", zorder=4)
-            ax.plot(*a, "o", ms=DOT, mfc=color, mec="white", mew=0.4, zorder=6)
+            ax.text(tx, ty, r["text"], ha="right" if sd == "L" else "left", va="center",
+                    fontsize=FS, linespacing=LEADING, color=INK if r["impl"] else PLANNED,
+                    style=r["style"], ma="right" if sd == "L" else "left", zorder=5)
+            leader(ax, tx, ty, r["a"], sd, r["impl"], scale)
+    legend(ax, left + MARGIN_IN * scale, bottom + 0.27 * scale, scale)
 
     for ext, kw in (("pdf", {}), ("png", {"dpi": 300})):
         fig.savefig(HERE / f"cubxl_schematic.{ext}", **kw)
