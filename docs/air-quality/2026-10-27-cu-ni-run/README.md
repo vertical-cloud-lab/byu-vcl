@@ -8,17 +8,18 @@ graphite crucible newly sprayed with boron nitride, onto a W-dipped carbon-fibre
 ([digital-alloy-lab#219](https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/219#issuecomment-6457884447)).
 People smelled fish in the enclosure and in the lab outside it.
 
-This lines the monitor's per-minute readings up with Gage's five run videos and the room livestream.
+This lines the monitor's per-minute readings up with Gage's five run videos and the enclosure's
+livestream.
 
 ## What the record shows
 
-- **The smell started in the furnace at 500 °C, before anything melted.** At about 16:24 Gage took
-  the furnace from 250 to 500 °C and "cloudy white" smoke filled it: "I can't see the furnace wall."
-  He said "Something smells weird" within the same minute that the monitor's TVOC index jumped from
-  282 to 363. He then ran a gas wash to clear the smoke, and said of the purge: "I can smell, almost
+- **The smell started in the furnace at 500 °C, before anything melted.** Just before 16:24 Gage
+  took the furnace from 250 to 500 °C and "cloudy white" smoke filled it: "I can't see into the
+  furnace." He said "Something smells weird" within the same minute that the monitor's TVOC index
+  jumped from 282 to 363. He then ran a gas wash to clear the smoke, and said of the purge: "I can smell, almost
   smells like fish" (16:30). The TVOC index jumped again a minute later. The smell went on through
-  melting at 1,300 °C (Audrey: "It smells like fish", 16:45) and atomizing ("You can really smell it
-  though, holy cow", 16:51).
+  melting at 1,300 °C ("Is that what the smell is?" "It smells like fish", 16:45) and atomizing
+  ("You can really smell it though, holy cow", 16:51).
 - **The particle alert came at the end of atomizing.** Particle counts started rising at 16:51,
   two minutes into the pour, and peaked at 16:53:45, when the collection cup had just filled. Corrected
   PM2.5 was then 9.0 µg/m³. The alert fired at 16:56, and Gage read it off the monitor on video at
@@ -35,7 +36,7 @@ This lines the monitor's per-minute readings up with Gage's five run videos and 
 - **The TVOC index at its 500 ceiling from 14:05 to 15:10 was alcohol, not the smell.** It began
   with washing the rods and wiping the seal with IPA (Video 1, 19:02 and 24:15), and the set-up and
   run days on 20, 21 and 22 Oct pinned it the same way. The fishy smell only moved the index by 80–170,
-  and not at all while Audrey smelled it during melting. Amines, the usual cause of a fishy smell, are
+  and not at all when it came up again during melting. Amines, the usual cause of a fishy smell, are
   noticeable at a part per billion or less, so a strong smell needn't move a general VOC sensor much.
   The TVOC trace can't measure the smell. At best it times it.
 
@@ -52,17 +53,17 @@ about ±1 min, Video 1 to about ±2 min.
 | MDT | Source | What happened | Monitor |
 | --- | --- | --- | --- |
 | ~13:40 | | People enter the enclosure | CO₂ starts rising from 416 ppm |
-| 13:49 | [V1 2:46](https://youtu.be/Ha7lIHP9X9g?t=166) | The BN-coated crucible is brought in from the other lab's fume hood: "looks way better than it did yesterday … I kept spraying it" | TVOC index 39 → 232 at 13:51 |
+| 13:46–13:50 | [V1 0:07–5:13](https://youtu.be/Ha7lIHP9X9g?t=7) | The BN-coated crucible is fetched from the other lab's fume hood: "looks way better than it did yesterday … I kept spraying it and it just wasn't looking solid". The livestream shows the enclosure empty from 13:46:45 to 13:49:45 and someone back at the bench at 13:50:45 | TVOC index 39 → 232 at 13:51:42 |
 | 14:04 | [V1 19:02](https://youtu.be/Ha7lIHP9X9g?t=1142) | "I need to wash these": the 1.1 kg of rods, cut on the band saw that day | TVOC index 243 → 476 at 14:05 |
 | 14:09 | [V1 24:15](https://youtu.be/Ha7lIHP9X9g?t=1455) | "I'm using some isopropyl alcohol to clean the seal" | TVOC index pinned at 499–500 from 14:15 to about 15:10 |
 | 14:37 | | During cleaning of the chamber parts (V1 46:37–51:27) | Raw PM2.5 4.0, PM10 7.7 µg/m³: the one coarse, dust-like puff of the day |
 | ~15:40–16:19 | [V3 29:29–33:26](https://youtu.be/rM3yT03IIwo?t=1769) | "the heat exchanger was not working for about 40 minutes … finally found a water line that was completely unplugged" | |
-| 16:20–16:24 | [V3 40:29](https://youtu.be/rM3yT03IIwo?t=2429) | Furnace taken from 250 to 500 °C, after the water was back (as Gage tells it at 16:28). "I don't know if it's a boron nitride or something completely vaporized inside the furnace … It's just cloudy white" | |
+| ~16:20–16:24 | [V3 39:16](https://youtu.be/rM3yT03IIwo?t=2356) | Furnace taken from 250 to 500 °C. Gage, on a call at 16:27: "I took the temperature from 250 up to 500 after purging it, and I don't know if it's the boron nitride or something completely vaporized like inside the furnace, so I can't see into the furnace. It's just like cloudy white." The reply: "The boron nitride coating." Gage: "when I was touching it, it seemed perfectly dry" | |
 | 16:24:37 | [V3 36:52](https://youtu.be/rM3yT03IIwo?t=2212) | "Something smells weird." "I wonder if the different smells from the copper and nickel? … it's not warm enough [for] melting it" | TVOC index 282 → 363 at 16:24:44; 0.3 µm count 84 at 16:25:44 |
-| 16:30:25 | [V3 42:40](https://youtu.be/rM3yT03IIwo?t=2560) | "I'm pressing gas wash to remove the cloudy gas that filled the chamber once I brought it to 500 degrees … in this purge, I can smell, almost smells like fish" | TVOC index 241 → 336 at 16:31:45 |
+| 16:30:25 | [V3 42:40](https://youtu.be/rM3yT03IIwo?t=2560) | "… gas washing to remove the cloudy gas that filled the chamber once I brought it up to 500 degrees, so I can see what's in there again … in this purge, I can smell, almost smells like fish" | TVOC index 241 → 336 at 16:31:45 |
 | 16:33:40 | [V4 0:08](https://youtu.be/rJB22OSwkl4?t=8) | "Do one more gas wash" (O₂ 24 ppm) | |
 | 16:39 | [V4 5:23](https://youtu.be/rJB22OSwkl4?t=323) | Setpoint to 1,300 °C: "See if this chamber starts filling up with smoke again from the boron nitride" | |
-| 16:44:50 | [V4 11:18](https://youtu.be/rJB22OSwkl4?t=678) | Charge melting. Audrey: "Is that what the smell is?" "It smells like fish." "I walked out, and then you ran things, and I came back in like, woah, what the heck?" | |
+| 16:44:50 | [V4 11:18](https://youtu.be/rJB22OSwkl4?t=678) | Charge melting. "Is that what the smell is?" "It smells like fish." Someone comes in through the door at 16:44:57 on the livestream, and then: "I walked out, and then you ran things, and I came back in like, woah, what the heck?" | |
 | 16:48 | [V4 14:36](https://youtu.be/rJB22OSwkl4?t=876) | Ultrasonics on (40 kHz, 90 %), graining pressure, turbo pressure held | TVOC index rising from 118 at 16:49:45 |
 | 16:51:07 | [V4 17:37](https://youtu.be/rJB22OSwkl4?t=1057) | Atomizing: "You can really smell it though, holy cow." O₂ 245 ppm | 0.3 µm count rising at 16:51:45 |
 | 16:52:56 | [V4 19:26](https://youtu.be/rJB22OSwkl4?t=1166) | "It's completely full!" Setpoint back to 250 °C | 0.3 µm count 449 (9.0 µg/m³) at 16:53:45; TVOC index 285 at 16:54:45 |
@@ -74,9 +75,9 @@ Audrey's phone recording, Video 5 ([`2brsz-90seg`](https://youtu.be/2brsz-90seg)
 and has the same lines, which is how it is placed. Video 2
 ([`oF_gteb_Pi0`](https://youtu.be/oF_gteb_Pi0)) is fitting the W-dipped plate, some time between
 Videos 1 and 3. The BN coat itself was sprayed the day before, in the other lab's fume hood
-([`GF2Bo60-4z4`](https://youtu.be/GF2Bo60-4z4)), in several passes. Some went on before Gage could
-tell whether the last one had dried ("I can't really like visually tell if it's dry or not so I'm
-going to just spray some more"), and the next day he said "I kept spraying it, but it just wasn't
+([`GF2Bo60-4z4`](https://youtu.be/GF2Bo60-4z4)), in several passes. Some went on before the last
+could be judged dry ("I can't really like visually tell if it's dry or not so I'm
+going to just spray some more"). The next day, in Video 1: "I kept spraying it and it just wasn't
 looking solid".
 
 ## Against the other run days
@@ -103,7 +104,7 @@ little here.
 
 | Candidate | For | Against |
 | --- | --- | --- |
-| **Binder in the fresh BN coat burning off** (most likely) | New today. The smoke appeared at 500 °C, while the charge was still solid, and Gage suspected the coat on the spot. The run plan already expected the binder to burn off on first heating ([digital-alloy-lab#220](https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/220)). The coat was heavy. Momentive's 2015 SDS for this spray ([BN Spray Paint II](https://assets.omega.com/sds/SDS-0039.pdf), sold by Tempco) lists 1–5 % of a quaternary ammonium clay, benzyl(hydrogenated tallow alkyl)dimethylammonium bentonite, to keep the BN suspended. Clays like that break down mainly between about 200 and 500 °C, giving off amines and alkenes ([Xie et al. 2001](https://doi.org/10.1021/cm010305s)), and amines smell of fish | The current SDS that McMaster ships doesn't name the binder ([as read in digital-alloy-lab](https://github.com/vertical-cloud-lab/digital-alloy-lab/blob/23a14ca/near-term-submissions/onr-yip/README.md)). It lists the same solvents, ethanol and acetone, plus a little methanol and MIBK, which are common ethanol denaturants. Under Prop 65 it lists 0.034 % quartz, which fits a clay but doesn't prove it's the same one |
+| **Binder in the fresh BN coat burning off** (most likely) | New today. The smoke appeared at 500 °C, while the charge was still solid, and when Gage asked on a call what it might be, the answer was "The boron nitride coating". The run plan already expected the binder to burn off on first heating ([digital-alloy-lab#220](https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/220)). The coat was heavy. Momentive's 2015 SDS for this spray ([BN Spray Paint II](https://assets.omega.com/sds/SDS-0039.pdf), sold by Tempco) lists 1–5 % of a quaternary ammonium clay, benzyl(hydrogenated tallow alkyl)dimethylammonium bentonite, to keep the BN suspended. Clays like that break down mainly between about 200 and 500 °C, giving off amines and alkenes ([Xie et al. 2001](https://doi.org/10.1021/cm010305s)), and amines smell of fish | The current SDS that McMaster ships doesn't name the binder ([as read in digital-alloy-lab](https://github.com/vertical-cloud-lab/digital-alloy-lab/blob/23a14ca/near-term-submissions/onr-yip/README.md)). It lists the same solvents, ethanol and acetone, plus a little methanol and MIBK, which are common ethanol denaturants. Under Prop 65 it lists 0.034 % quartz, which fits a clay but doesn't prove it's the same one |
 | **Band-saw coolant left on the rods** | Also new today: Gage had just cut the rods ("So I just cut that", V1 0:45). Water-mix metalworking fluids usually contain alkanolamines, which have an ammonia-like, fishy smell | The rods were washed first (V1 19:02). Nobody has said what coolant that saw uses, or whether it used any |
 | W-dipped carbon-fibre plate | New today. Could add to the smell during the pour | It sits below the nozzle and isn't heated until melt lands on it, at 16:49. The smell started 25 min earlier |
 | Running at 1,300 °C | New today | The smell started at 500 °C |
@@ -117,6 +118,30 @@ pump's exhaust and the chamber's vent actually discharge is the first thing to c
 and that one inside the enclosure, there is no reading for the room. That is the case for the second
 monitor, outside the enclosure, and a third in another room.
 
+## The livestream
+
+The enclosure's camera ([`sDPzso4-tP0`](https://www.youtube.com/watch?v=sDPzso4-tP0), 144p and
+pixelated on purpose) can't see into the furnace, and at this resolution it shows no haze in the
+room. What it does confirm is who was where, and when, on the clock it burns into every frame,
+which runs 12 s behind the archive's nominal time. That matches the videos and the monitor:
+
+- **13:46:45–13:49:45:** the enclosure is empty while the crucible is fetched. Someone is back at
+  the bench at 13:50:45, a minute before the TVOC index jumps.
+- **14:14–14:19:** someone sits with a laptop at the bottom of the frame, just before
+  digital-alloy-lab#219 is posted at 14:20:01, which fits Video 1's clock.
+- **16:18–16:19:** someone crouched at the bottom right gets up and goes to the machine, while
+  Video 3 has the water line found and reconnected. From 16:20 to 16:36, through the first smell and
+  the gas wash, there is mostly one person at the atomizer.
+- **16:40:** a second person joins and stays by the machine to film. Video 5 starts at 16:40:50.
+- **16:44:57:** someone comes in through the door at the bottom left. The door was opened while the
+  smell was in the enclosure, which is one way it could have reached the lab.
+
+![Eight livestream frames: the enclosure empty while the crucible is fetched, the laptop before #219, one person at the atomizer as the smell starts, a second person filming, someone coming in, atomizing](livestream_2026-10-27.png)
+
+The frames came from the archive's 2 s fragments, fetched by sequence number on the stream-cam Pi
+with [`livestream_frames_pi.py`](livestream_frames_pi.py), because YouTube won't serve the player
+to a CI runner and the archive offered only DASH right after the broadcast ended.
+
 ## Suggestions
 
 - **Bake out a new coat before loading the charge.** Heat the coated crucible empty to 500–600 °C
@@ -124,7 +149,9 @@ monitor, outside the enclosure, and a third in another room.
   cure it in a furnace in a fume hood. The run plan already asks AMAZEMET whether to gas-wash hotter
   than 500 °C to clear a fresh coat's binder. This run suggests yes.
 - **Spray thin coats and let each one dry.** The can says "successive light coats rather than one
-  heavy coat … allow sufficient drying between coats". The video shows coats going on wet.
+  heavy coat … allow sufficient drying between coats". In the coating video at least one pass went
+  onto a wet coat: "when I'm trying to put more on, it just gets rid of everything that is already
+  there".
 - **Ask Momentive or McMaster for the binder** in 10515K35, or heat a coated coupon by itself in a hood.
 - **Find out what coolant the band saw uses.** Degrease cut rods with detergent and water, then
   alcohol, or saw them dry.
@@ -155,5 +182,6 @@ monitor, outside the enclosure, and a third in another room.
   - **Video 1** (1:00:38) began no later than 13:46. Ronnie's
     [digital-alloy-lab#219](https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/219), posted at
     14:20:01, quotes what was said at 33:07 (the Mo-dipped plate, Edison) and 34:03 (0.19 bar).
-- **The room livestream** is the atomizer stream, picam-ot2, broadcast
-  [`sDPzso4-tP0`](https://www.youtube.com/watch?v=sDPzso4-tP0) (13:01–21:00 MDT).
+- **The livestream** is the atomizer stream, picam-ot2, broadcast
+  [`sDPzso4-tP0`](https://www.youtube.com/watch?v=sDPzso4-tP0) (13:01–21:00 MDT): one frame a minute
+  from 13:30 to 17:30, and one every 10 s from 16:18 to 16:36 and 16:38 to 16:59.

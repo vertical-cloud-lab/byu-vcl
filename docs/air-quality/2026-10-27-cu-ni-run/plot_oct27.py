@@ -31,14 +31,14 @@ videos = [("Video 1", T("13:45"), T("14:45:40")), ("Video 3", T("15:47:45"), T("
           ("Video 4", T("16:33:30"), T("16:58:45")), ("Video 5 (Audrey)", T("16:40:50"), T("16:53:05"))]
 atomizing = (T("16:48:30"), T("16:53:00"))
 events = [  # (time, label); numbered in order
-    (T("13:49"), "BN-coated crucible brought in (V1 ~3:00)"),
+    (T("13:50:30"), "BN-coated crucible brought in (V1 ~5:00)"),
     (T("14:04"), "Cu-Ni rods washed (V1 19:02)"),
     (T("14:09"), "IPA on the seal (V1 24:15)"),
     (T("16:19"), "unplugged cooling-water line reconnected (V3 31:00)"),
     (T("16:24:37"), "500 °C: smoke in the furnace; \"Something smells weird\" (V3 36:52)"),
     (T("16:30:25"), "gas wash to clear it: \"almost smells like fish\" (V3 42:40)"),
     (T("16:39"), "heat to 1,300 °C (V4 5:23)"),
-    (T("16:44:50"), "melting; Audrey: \"It smells like fish\" (V4 11:21)"),
+    (T("16:44:50"), "melting: \"It smells like fish\" (V4 11:21)"),
     (T("16:51:07"), "atomizing: \"You can really smell it though\" (V4 17:37)"),
     (T("16:56:00"), "alert e-mail; \"it smells weird in here\" (V4 23:02)"),
 ]
