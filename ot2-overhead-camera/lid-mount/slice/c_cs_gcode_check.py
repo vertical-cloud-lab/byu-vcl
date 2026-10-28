@@ -17,8 +17,9 @@ It reports, per ring and per thread, the as-sliced minus the modelled radius at 
 and 95th percentile, averaged over the threaded layers. Within a few hundredths of a millimetre
 means the slicer drew the thread as modelled, so any misfit comes from printing, not slicing.
 
-Rings are matched to names by their rim notches (one per letter, A = 1) where the plate has
-more than one ring; the bore of the threaded end gives the centre.
+Rings are found as separate islands on the plate (one object may hold several, as
+c_cs_spacer_sizes_C-H.stl does) and matched to names by their rim notches, one per letter
+(A = 1, ..., H = 8). The plain bore of each ring's threaded end gives its centre.
 """
 from __future__ import annotations
 
@@ -78,6 +79,25 @@ def outer_walls(path):
     return np.vstack(rows)
 
 
+def islands(W):
+    """Label each point with its ring. Rings are told apart by their threaded ends (z 6-8.4 mm),
+    which stand at least 6 mm apart even when the flanges nearly touch: connected cells of a
+    1 mm grid give one island per ring, and every point goes to the nearest island's middle."""
+    from scipy import ndimage
+    E = W[(W[:, 1] > 6.0) & (W[:, 1] < 8.4)][:, 2:4]
+    ij = np.floor(E).astype(int)
+    lo = ij.min(0)
+    grid = np.zeros(tuple(ij.max(0) - lo + 1), bool)
+    grid[tuple((ij - lo).T)] = True
+    lab, n = ndimage.label(ndimage.binary_dilation(grid, iterations=2))
+    pl = lab[tuple((ij - lo).T)]
+    mids = np.array([E[pl == k].mean(0) for k in range(1, n + 1)])
+    d = np.hypot(W[:, 2:3] - mids[:, 0], W[:, 3:4] - mids[:, 1])
+    out = d.argmin(1) + 1
+    out[d.min(1) > 20.0] = 0
+    return out, n
+
+
 def centre(P):
     """Least-squares circle through the plain bore of the threaded end (the inner loop, z 6-8.4)."""
     c0 = P.mean(0)
@@ -99,8 +119,12 @@ def notches(z_rows, cx, cy):
     deep = np.sort(th[rim & (r < r[rim].max() - 0.45)])
     if not len(deep):
         return 0
-    gaps = np.diff(np.concatenate([deep, [deep[0] + 360]]))
-    return int(max(1, np.sum(gaps > 5)))
+    # clusters 5 degrees apart; a lone point (a seam or a wipe) is not a notch
+    cut = np.flatnonzero(np.diff(deep) > 5) + 1
+    groups = np.split(deep, cut)
+    if len(groups) > 1 and groups[0][0] + 360 - groups[-1][-1] <= 5:   # a notch across +-180 degrees
+        groups = [np.concatenate([groups[-1], groups[0]])] + groups[1:-1]
+    return int(sum(len(g) >= 5 for g in groups))
 
 
 def main():
@@ -113,19 +137,22 @@ def main():
     W = outer_walls(a.gcode)
     th = np.linspace(0, 2 * np.pi, 3600, endpoint=False)
     report = {"gcode": Path(a.gcode).name, "rings": {}}
-    for o in sorted(set(W[:, 0].astype(int))):
-        S = W[W[:, 0] == o]
+    lab, n_isl = islands(W)
+    for o in range(1, n_isl + 1):
+        S = W[lab == o]
+        if len(S) < 1000:
+            continue
         m = (S[:, 1] > 6.0) & (S[:, 1] < 8.4)
         cx, cy, rb = centre(S[m][:, 2:4])
         z_rows = {z: S[S[:, 1] == z][:, 2:5] for z in sorted(set(S[:, 1]))}
         n = notches(z_rows, cx, cy)
         name = next((k for k in a.names if spec[k].notches == n), None)
-        rec = {"object_id": int(o), "centre_xy": [round(cx, 3), round(cy, 3)], "notches_seen": n,
+        rec = {"object_id": int(np.median(S[:, 0])), "centre_xy": [round(cx, 3), round(cy, 3)], "notches_seen": n,
                "ring": name, "end_bore_path_r": round(rb, 3),
                "end_bore_path_r_model": round(spec[a.names[0]].bore / 2 + 0.21, 3)}
         if name is None:
             report["rings"][str(o)] = rec
-            print(f"object {o}: {n} notches, no ring of that count among {a.names}")
+            print(f"island at {cx:.1f}, {cy:.1f}: {n} notches, no ring of that count among {a.names}")
             continue
         s = spec[name]
         diffs = {"female": [], "male": []}
@@ -150,7 +177,7 @@ def main():
             rec[k] = {"layers": len(v), "sliced_minus_model_mm_p5_p50_p95": v.mean(0).round(3).tolist(),
                       "worst_abs_mm": round(float(np.abs(v).max()), 3)}
         report["rings"][name] = rec
-        print(f"ring {name} (object {o}, {n} notches, centre {cx:.2f}, {cy:.2f}): "
+        print(f"ring {name} ({n} notches, centre {cx:.2f}, {cy:.2f}): "
               f"female {rec['female']['sliced_minus_model_mm_p5_p50_p95']} over {rec['female']['layers']} layers, "
               f"male {rec['male']['sliced_minus_model_mm_p5_p50_p95']} over {rec['male']['layers']} layers")
     if a.json:
