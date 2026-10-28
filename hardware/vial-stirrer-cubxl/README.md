@@ -14,7 +14,9 @@ warning, was resumed, and finished
 ([print record](print/2026-10-21-a1mini/README.md)). Its deck keys were loose in the base,
 so the key now has a press-fit nub. Of three sizes printed on 2026-10-22
 ([print record](print/2026-10-22-a1mini-keys/README.md)), the 0.05 mm one fit best, so it is
-the key to print from now on. Nothing has been wired or run. The
+the key to print from now on. A [compact 49 × 44 mm version](compact/README.md), so that
+stirrers fit side by side on the deck, went to the A1 mini on 2026-10-28
+([print record](print/2026-10-28-a1mini-compact/README.md)). Nothing has been wired or run. The
 numbers that matter most (coupling, the Hall signal) are estimates until a first
 build. The vial cup is the exception: it is copied from the 9-vial holder already in
 use on the deck.
@@ -52,7 +54,8 @@ the capper and the pipette, instead of its own XIAO RP2040.
 | [`BOM.md`](BOM.md) | Bill of materials for the Uno-driven version: parts to buy with links and prices, parts to print |
 | [`step/`](step) | Printed parts as STEP: `base`, `vial_holder`, `magnet_carrier`, `deck_key` (the 0.05 mm press fit; print two), plus `vial_stirrer_assembly.step`, the whole stirrer for fit checks |
 | [`stl/`](stl) | The same printed parts as STL. Both sets are in assembly position, which is also each part's print orientation. [`stl/key_fit_test/`](stl/key_fit_test) has the deck keys at 0.10 and 0.15 mm, the two sizes from the fit test that aren't printed by default |
-| [`print/`](print) | Print records. [`2026-10-21-a1mini/`](print/2026-10-21-a1mini/README.md): all five parts on one A1 mini plate in white PETG Basic, sent from Bambu Studio by an `@claude-print` run. It has the file the printer ran, the settings and a camera timelapse. [`2026-10-22-a1mini-keys/`](print/2026-10-22-a1mini-keys/README.md): the deck key at 0.05, 0.10 and 0.15 mm, for the fit test, the same way. 0.05 fit best |
+| [`compact/`](compact/README.md), [`stl/compact/`](stl/compact) | The compact 49 × 44 mm base and vial holder, built in CadQuery by `compact/build_compact.py` from `vial_stirrer.fs`'s numbers, and checked against the Onshape parts. STL only |
+| [`print/`](print) | Print records. [`2026-10-21-a1mini/`](print/2026-10-21-a1mini/README.md): all five parts on one A1 mini plate in white PETG Basic, sent from Bambu Studio by an `@claude-print` run. It has the file the printer ran, the settings and a camera timelapse. [`2026-10-22-a1mini-keys/`](print/2026-10-22-a1mini-keys/README.md): the deck key at 0.05, 0.10 and 0.15 mm, for the fit test, the same way. 0.05 fit best. [`2026-10-28-a1mini-compact/`](print/2026-10-28-a1mini-compact/README.md): the compact stirrer's base and holder, a carrier and two 0.05 keys |
 | [`img/`](img) | Onshape's renders (steps 1–10 of the XIAO version, assembled, exploded, section, contact sheet), and the assembly video, GIF and contact sheet of the Uno version |
 | [`firmware/main.py`](firmware/main.py) | MicroPython speed controller for the XIAO RP2040 (untested) |
 | [`../../cubos/firmware/panda-arduino-stirrer.patch`](../../cubos/firmware/panda-arduino-stirrer.patch) | The same controller as two commands in the CubXL Uno's PANDA firmware. Built, image committed, not flashed |
@@ -150,7 +153,10 @@ model's numbers ([output](analysis/deck_tiling_output.txt)).
 
 ![A compact stirrer in plan](img/deck_tiling_plan.png)
 
-**A 49 × 44 mm layout.** It has been checked in plan, not modelled:
+**A 49 × 44 mm layout.** It was checked in plan on 2026-10-22, as below. On 2026-10-28 it was
+modelled and printed ([`compact/`](compact/README.md)). Modelling changed four things: the
+pads became M3 washers, the base walls came down 1 mm, the insert holes went 1 mm deeper, and
+the −Y wall lost its vents. The plan:
 
 - The base and the holder's flange are 49 × 44 mm, with 1.6 mm walls.
 - The corner posts, their four inserts and the four M3 × 12 go. The fan's four screws
