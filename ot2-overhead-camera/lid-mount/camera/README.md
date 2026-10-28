@@ -716,3 +716,72 @@ threaded end, and pick out any strands. Otherwise the camera sees plastic.
 
 **It's a stopgap.** PLA creeps when it's warm, and the lens hangs from this thread next to the Pi 5.
 Swap in the aluminium ring when it arrives.
+
+## 2026-10-28: six more printed rings, C to H, bigger on both ends
+
+![Half-sections of rings C-H](../renders/c_cs_spacer_sizes.png)
+
+@timothy-commins tried A and B on 27 Oct and found both too small on both ends: the threaded end
+in the knurled ring and the bore for the lens
+([#234](https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-6453257144)).
+@sgbaird asked for at least five more sizes, each a bit bigger
+([#234](https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-6474970526)).
+
+**Slicing wasn't the cause.** [`../slice/c_cs_gcode_check.py`](../slice/c_cs_gcode_check.py)
+rebuilds each ring's thread paths from the plate G-code and compares them with the model.
+A and B, from the G-code the A1 mini ran on 23 Oct, came out within 0.007 mm of the model at
+the 5th, 50th and 95th percentile of the radius on every threaded layer
+([result](../../../bambu/evidence/2026-10-23/c-cs-spacer-studio/gcode_check.json)). So they went
+wrong in printing, or in how printed threads meet metal ones, not in slicing.
+
+**The new rings.** They come from the same model ([`../cad/c_cs_spacer.py`](../cad/c_cs_spacer.py)),
+the same printer and the same settings as A and B: the A1 mini, `0.08mm High Quality @BBL A1M`,
+6 walls, black PLA Basic. Only the sizes change. The rim notches give the letter, one per
+letter: A has 1, B 2, and so on up to H with 8.
+
+| Ring | Notches | Threaded end (into the knurled ring), per side | Bore (the lens goes in), per side | On the plate |
+|---|---|---|---|---|
+| A (23 Oct) | 1 | 0.12 mm under basic | 0.22 mm over | |
+| B (23 Oct) | 2 | 0.22 mm under | 0.32 mm over | |
+| **C** | 3 | 0.06 mm under | 0.38 mm over | front left |
+| **D** | 4 | basic | 0.42 mm over | front middle |
+| **E** | 5 | 0.06 mm over | 0.46 mm over | front right |
+| **F** | 6 | 0.12 mm over | 0.50 mm over | back left |
+| **G** | 7 | 0.18 mm over | 0.54 mm over | back middle |
+| **H** | 8 | 0.24 mm over | 0.58 mm over | back right |
+
+- **The threaded end** grows 0.06 mm a side per letter, from just under A's size to well over
+  basic. If the end was loose in the knurled ring, as reported, the snug one should be among the
+  first few.
+- **The bore** grows only 0.04 mm a side per letter. Beyond about 0.33 mm over basic, a bore
+  drawn this way no longer overlaps the crests of the lens's thread, so it only grips if the
+  printed bore comes out that much smaller than drawn. A and B suggest it does. The smaller
+  steps keep the last rings usable either way.
+- **The slice** ([evidence](../../../bambu/evidence/2026-10-28/c-cs-spacer-sizes-studio/)) traces all
+  six within 0.007 mm of the model, and the checker finds each ring's notch count where its
+  letter puts it on the plate.
+
+### Testing them, one end at a time
+
+Test each end on its own, so that one tight end doesn't hide a good fit on the other.
+
+1. **Cut the roof disc out of each ring** first, as for A and B: a hobby knife round the inside of
+   the threaded end, then pick out any strands.
+2. **The threaded end.** With the lens off, screw each ring's narrow threaded end into the knurled
+   ring by hand, starting with C. Note one word for each:
+   - **spins** without catching;
+   - **loose**: it threads in but rocks;
+   - **snug**;
+   - **binds** within the first turn.
+
+   Stop at the first ring that binds, because the bigger ones will too. Don't force PLA into the
+   aluminium thread.
+3. **The bore.** Screw the lens by hand into each ring's wide side, the face with no threaded
+   end, starting with C. Note the same words, and whether the lens's silver rim reaches the ring's
+   face.
+4. **Use the ring that is snug on both ends.** If no ring is, post the best ring for each end
+   (for example "end: D, bore: F"). The next print can combine the two in one ring, and A and B
+   still cover the smaller sizes.
+
+A short video of each try, as @sgbaird asked, shows the fit better than words. As before, these
+are a stopgap until the aluminium ring arrives: PLA creeps when it's warm.
