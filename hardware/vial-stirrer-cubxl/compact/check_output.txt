@@ -1,0 +1,15 @@
+1. This script's today's parts against the Onshape STLs (mm3; differences are tessellation, plus the cup's edge rounds)
+   base         port   23751.5  Onshape   23745.3  port-only    9.3  Onshape-only    3.1  bounds equal: True
+   vial_holder  port   17136.7  Onshape   17114.8  port-only   30.1  Onshape-only    8.2  bounds equal: True
+
+2. Compact parts written to stl/compact/
+   base_compact         49.0 x 44.0 x 19.0 mm, z 0.00 to 19.00,  11150.3 mm3, watertight True, 1 body
+   vial_holder_compact  49.0 x 44.0 x 22.03 mm, z 20.00 to 42.03,  11449.4 mm3, watertight True, 1 body
+   holder inside r = 16.9: 4651.181 mm3, Onshape's 4651.181 mm3
+
+3. Read back off the compact meshes (mm)
+   base outside at z 10: (49.0, 44.0); inside the walls at z 15 (fan pocket): (45.8, 40.8) by construction
+   base wall top z 19.00, holder flange underside z 20.00: 1.00 mm apart, so the holder rests on the fan (z 19.50), through four 0.5 mm M3 washers
+   M3 x 20, with washers: head seat z 23.00, tip z 3.00, 1.50 above the insert hole's floor (z 1.50), 6.00 of thread below the insert's top (insert 5.7)
+   M3 x 20, without washers: head seat z 22.50, tip z 2.50, 1.00 above the insert hole's floor (z 1.50), 6.50 of thread below the insert's top (insert 5.7)
+   counterbores Ø6.5 x 3.0 deep at (+-16, +-16); through holes Ø3.4
