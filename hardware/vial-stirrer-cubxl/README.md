@@ -15,7 +15,7 @@ warning, was resumed, and finished
 so the key now has a press-fit nub. Of three sizes printed on 2026-10-22
 ([print record](print/2026-10-22-a1mini-keys/README.md)), the 0.05 mm one fit best, so it is
 the key to print from now on. A [compact 49 × 44 mm version](compact/README.md), so that
-stirrers fit side by side on the deck, went to the A1 mini on 2026-10-28
+stirrers fit side by side on the deck, was modelled and printed on the A1 mini on 2026-10-28
 ([print record](print/2026-10-28-a1mini-compact/README.md)). Nothing has been wired or run. The
 numbers that matter most (coupling, the Hall signal) are estimates until a first
 build. The vial cup is the exception: it is copied from the 9-vial holder already in
