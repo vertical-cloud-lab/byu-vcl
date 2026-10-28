@@ -88,6 +88,296 @@
       "female_crest_d": 25.181,
       "female_root_d": 26.126,
       "male_wall_at_root_mm": 0.943
+    },
+    {
+      "name": "C",
+      "male_clear": 0.06,
+      "female_clear": 0.38,
+      "od": 30.0,
+      "spacing": 5.0,
+      "roof": 0.4,
+      "spigot": 4.0,
+      "bore": 22.1,
+      "relief": 0.5,
+      "entry": 0.4,
+      "flutes": 30,
+      "flute_depth": 0.25,
+      "notches": 3,
+      "n_theta": 360,
+      "dz": 0.04,
+      "stl": "c_cs_spacer_C.stl",
+      "triangles": 162720,
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_mm3": 1427.98,
+      "mass_g_pla": 1.77,
+      "bounds_mm": [
+        [
+          -15.0,
+          -14.926,
+          0.0
+        ],
+        [
+          14.855,
+          14.926,
+          9.0
+        ]
+      ],
+      "female_thread_depth_mm": 4.6,
+      "male_crest_d": 25.28,
+      "male_root_d": 24.306,
+      "female_crest_d": 25.301,
+      "female_root_d": 26.246,
+      "male_wall_at_root_mm": 1.103
+    },
+    {
+      "name": "D",
+      "male_clear": 0.0,
+      "female_clear": 0.42,
+      "od": 30.0,
+      "spacing": 5.0,
+      "roof": 0.4,
+      "spigot": 4.0,
+      "bore": 22.1,
+      "relief": 0.5,
+      "entry": 0.4,
+      "flutes": 30,
+      "flute_depth": 0.25,
+      "notches": 4,
+      "n_theta": 360,
+      "dz": 0.04,
+      "stl": "c_cs_spacer_D.stl",
+      "triangles": 162720,
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_mm3": 1429.58,
+      "mass_g_pla": 1.77,
+      "bounds_mm": [
+        [
+          -15.0,
+          -14.926,
+          0.0
+        ],
+        [
+          14.855,
+          14.926,
+          9.0
+        ]
+      ],
+      "female_thread_depth_mm": 4.6,
+      "male_crest_d": 25.4,
+      "male_root_d": 24.426,
+      "female_crest_d": 25.381,
+      "female_root_d": 26.326,
+      "male_wall_at_root_mm": 1.163
+    },
+    {
+      "name": "E",
+      "male_clear": -0.06,
+      "female_clear": 0.46,
+      "od": 30.0,
+      "spacing": 5.0,
+      "roof": 0.4,
+      "spigot": 4.0,
+      "bore": 22.1,
+      "relief": 0.5,
+      "entry": 0.4,
+      "flutes": 30,
+      "flute_depth": 0.25,
+      "notches": 5,
+      "n_theta": 360,
+      "dz": 0.04,
+      "stl": "c_cs_spacer_E.stl",
+      "triangles": 162720,
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_mm3": 1431.11,
+      "mass_g_pla": 1.77,
+      "bounds_mm": [
+        [
+          -15.0,
+          -14.926,
+          0.0
+        ],
+        [
+          14.855,
+          14.926,
+          9.0
+        ]
+      ],
+      "female_thread_depth_mm": 4.6,
+      "male_crest_d": 25.52,
+      "male_root_d": 24.546,
+      "female_crest_d": 25.461,
+      "female_root_d": 26.406,
+      "male_wall_at_root_mm": 1.223
+    },
+    {
+      "name": "F",
+      "male_clear": -0.12,
+      "female_clear": 0.5,
+      "od": 30.0,
+      "spacing": 5.0,
+      "roof": 0.4,
+      "spigot": 4.0,
+      "bore": 22.1,
+      "relief": 0.5,
+      "entry": 0.4,
+      "flutes": 30,
+      "flute_depth": 0.25,
+      "notches": 6,
+      "n_theta": 360,
+      "dz": 0.04,
+      "stl": "c_cs_spacer_F.stl",
+      "triangles": 162720,
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_mm3": 1432.3,
+      "mass_g_pla": 1.78,
+      "bounds_mm": [
+        [
+          -15.0,
+          -14.926,
+          0.0
+        ],
+        [
+          14.855,
+          14.926,
+          9.0
+        ]
+      ],
+      "female_thread_depth_mm": 4.6,
+      "male_crest_d": 25.64,
+      "male_root_d": 24.666,
+      "female_crest_d": 25.541,
+      "female_root_d": 26.486,
+      "male_wall_at_root_mm": 1.283
+    },
+    {
+      "name": "G",
+      "male_clear": -0.18,
+      "female_clear": 0.54,
+      "od": 30.0,
+      "spacing": 5.0,
+      "roof": 0.4,
+      "spigot": 4.0,
+      "bore": 22.1,
+      "relief": 0.5,
+      "entry": 0.4,
+      "flutes": 30,
+      "flute_depth": 0.25,
+      "notches": 7,
+      "n_theta": 360,
+      "dz": 0.04,
+      "stl": "c_cs_spacer_G.stl",
+      "triangles": 162720,
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_mm3": 1434.41,
+      "mass_g_pla": 1.78,
+      "bounds_mm": [
+        [
+          -15.0,
+          -14.926,
+          0.0
+        ],
+        [
+          14.855,
+          14.926,
+          9.0
+        ]
+      ],
+      "female_thread_depth_mm": 4.6,
+      "male_crest_d": 25.76,
+      "male_root_d": 24.786,
+      "female_crest_d": 25.621,
+      "female_root_d": 26.566,
+      "male_wall_at_root_mm": 1.343
+    },
+    {
+      "name": "H",
+      "male_clear": -0.24,
+      "female_clear": 0.58,
+      "od": 30.0,
+      "spacing": 5.0,
+      "roof": 0.4,
+      "spigot": 4.0,
+      "bore": 22.1,
+      "relief": 0.5,
+      "entry": 0.4,
+      "flutes": 30,
+      "flute_depth": 0.25,
+      "notches": 8,
+      "n_theta": 360,
+      "dz": 0.04,
+      "stl": "c_cs_spacer_H.stl",
+      "triangles": 162720,
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_mm3": 1435.49,
+      "mass_g_pla": 1.78,
+      "bounds_mm": [
+        [
+          -15.0,
+          -14.926,
+          0.0
+        ],
+        [
+          14.855,
+          14.926,
+          9.0
+        ]
+      ],
+      "female_thread_depth_mm": 4.6,
+      "male_crest_d": 25.88,
+      "male_root_d": 24.906,
+      "female_crest_d": 25.701,
+      "female_root_d": 26.646,
+      "male_wall_at_root_mm": 1.403
     }
-  ]
+  ],
+  "plate_C-H": {
+    "stl": "c_cs_spacer_sizes_C-H.stl",
+    "pitch_mm": 40.0,
+    "centres_mm": {
+      "C": [
+        -40.0,
+        -20.0
+      ],
+      "D": [
+        0.0,
+        -20.0
+      ],
+      "E": [
+        40.0,
+        -20.0
+      ],
+      "F": [
+        -40.0,
+        20.0
+      ],
+      "G": [
+        0.0,
+        20.0
+      ],
+      "H": [
+        40.0,
+        20.0
+      ]
+    },
+    "watertight": true,
+    "bodies": 6,
+    "bounds_mm": [
+      [
+        -55.0,
+        -34.926,
+        0.0
+      ],
+      [
+        54.855,
+        34.926,
+        9.0
+      ]
+    ]
+  }
 }

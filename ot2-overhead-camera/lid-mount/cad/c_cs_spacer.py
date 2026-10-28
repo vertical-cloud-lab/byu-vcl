@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """A printable 5 mm C-CS spacer ring for the lid camera, modelled on Amazon B09STVLLVY.
 
-    python c_cs_spacer.py            # writes ../exports/c_cs_spacer_{A,B}.stl, c_cs_spacer.json
-                                     # and ../renders/c_cs_spacer.png
+    python c_cs_spacer.py            # writes ../exports/c_cs_spacer_{A..H}.stl, c_cs_spacer.json,
+                                     # c_cs_spacer_sizes_C-H.stl (rings C-H laid out as one plate)
+                                     # and ../renders/c_cs_spacer.png, c_cs_spacer_sizes.png
 
 The listing (camera/README.md, 2026-10-23 21:20 UTC) gives a ring 30 mm across with a 25 mm
 threaded bore and 5 mm of spacing, plus a threaded end of about 4 mm: 9 mm in all. Both threads
@@ -18,8 +19,17 @@ plastic. The ring left under the male end is the real roof.
 The threads are generated here as a triangle mesh, not in CadQuery: a helical thread is a
 radius that depends on the angle and the height, r(theta, z), so each surface is a grid in
 (theta, z). The profile is the basic 60-degree UN form, moved out by `clear` (female) or in
-(male), radially. Two variants differ only in that clearance and are marked by notches on the
-rim: one notch = A (tighter), two = B (looser).
+(male), radially. The variants differ only in that clearance and are marked by notches on the
+rim, one per letter: one notch = A, two = B, and so on to eight = H.
+
+A and B (printed 2026-10-23) both came out too small on both ends at the robot (2026-10-27): the
+threaded end was loose in the knurled ring and the lens would not go into either bore. The
+slicer was not the cause: the G-code of that print traces both threads within 0.01 mm of this
+model (`../slice/c_cs_gcode_check.py`). So C-H (2026-10-28) step both ends bigger:
+the threaded end 0.06 mm a side per letter, from 0.06 under basic (C) to 0.24 over (H), and the
+bore 0.04 mm a side per letter, from 0.38 over basic (C) to 0.58 (H). Beyond about 0.33 a side
+a bore no longer overlaps the lens's thread crests as modelled, so the bigger bores only work
+if the printed bore really is that much smaller than drawn, which is what A and B suggest.
 """
 from __future__ import annotations
 
@@ -162,13 +172,15 @@ def write_stl(path: Path, v, f):
         fh.write(data.tobytes())
 
 
-def section_figure(variants, path: Path):
+def section_figure(variants, path: Path, ncols: int | None = None, title: str | None = None):
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
 
-    fig, axes = plt.subplots(1, len(variants), figsize=(4.3 * len(variants), 6.0), dpi=130)
-    for ax, s in zip(np.atleast_1d(axes), variants):
+    ncols = ncols or len(variants)
+    nrows = -(-len(variants) // ncols)
+    fig, axes = plt.subplots(nrows, ncols, figsize=(4.3 * ncols, 6.0 * nrows), dpi=130, squeeze=False)
+    for ax, s in zip(axes.flat, variants):
         th = np.pi   # away from the variant notches, on a flute crest
         z_roof, z_top = s.spacing - s.roof, s.spacing + s.spigot
         outer, inner = rows(s)
@@ -186,19 +198,29 @@ def section_figure(variants, path: Path):
         ax.plot(ring, zz, color="#16a34a", lw=1.6, label="knurled ring's thread, basic size")
         ax.set_xlim(10.4, 15.4); ax.set_ylim(-0.3, z_top + 0.4); ax.set_aspect("equal")
         ax.set_xlabel("radius (mm)"); ax.set_ylabel("height above the lens face (mm)")
+        male = f"male {'−' if s.male_clear > 0 else '+'}{abs(s.male_clear):.2f}"
         ax.set_title(f"Variant {s.name} ({s.notches} notch{'es' if s.notches > 1 else ''}): "
-                     f"male −{s.male_clear:.2f}, female +{s.female_clear:.2f} mm", fontsize=10)
+                     f"{male}, female +{s.female_clear:.2f} mm", fontsize=10)
         ax.axhline(s.spacing, color="0.6", lw=0.6, ls=":")
         ax.text(15.3, s.spacing + 0.08, "seats on the knurled ring", ha="right", fontsize=8, color="0.35")
         ax.text(15.3, 0.08, "lens rim seats here (on the bed)", ha="right", fontsize=8, color="0.35")
         ax.grid(alpha=0.25)
-    np.atleast_1d(axes)[0].legend(loc="upper left", fontsize=8, framealpha=0.95)
-    fig.suptitle("C–CS spacer ring, 1\"-32 UN both ends: half-section through the axis", fontsize=12)
+    axes.flat[0].legend(loc="upper left", fontsize=8, framealpha=0.95)
+    fig.suptitle(title or "C–CS spacer ring, 1\"-32 UN both ends: half-section through the axis", fontsize=12)
     fig.tight_layout()
     fig.savefig(path)
 
 
 VARIANTS = [Spacer("A", 0.12, 0.22, notches=1), Spacer("B", 0.22, 0.32, notches=2)]
+# 2026-10-28: both ends bigger than A and B. Male clearance negative = bigger than basic.
+SIZES = [Spacer(n, round(0.06 - 0.06 * k, 2), round(0.38 + 0.04 * k, 2), notches=3 + k)
+         for k, n in enumerate("CDEFGH")]
+PLATE_PITCH = 40.0   # ring centres on the C-H plate: C D E along the front row, F G H behind
+
+
+def plate_xy(k: int):
+    """Centre of ring k (0 = C) in c_cs_spacer_sizes_C-H.stl: +x to the right, +y to the back."""
+    return (k % 3 - 1) * PLATE_PITCH, (k // 3 - 0.5) * PLATE_PITCH
 
 
 def main():
@@ -208,8 +230,13 @@ def main():
     report = {"thread": {"pitch_mm": P, "basic_major_d": 2 * R_MAJ, "basic_pitch_d": 2 * R_PITCH,
                          "male_root_d": 2 * MALE_ROOT, "female_crest_d": 2 * FEMALE_CREST},
               "variants": []}
-    for s in VARIANTS:
+    plate_v, plate_f = [], []
+    for s in VARIANTS + SIZES:
         v, f = mesh(s)
+        if s in SIZES:
+            k = SIZES.index(s)
+            plate_f.append(f + sum(len(x) for x in plate_v))
+            plate_v.append(v + np.array([*plate_xy(k), 0.0]))
         path = EXPORTS / f"c_cs_spacer_{s.name}.stl"
         write_stl(path, v, f)
         m = trimesh.load(path)
@@ -227,9 +254,19 @@ def main():
         report["variants"].append(rec)
         print(f"{s.name}: {len(f)} triangles, watertight {m.is_watertight}, volume {m.volume:.1f} mm3, "
               f"bounds {lo.round(2)} .. {hi.round(2)}")
+    path = EXPORTS / "c_cs_spacer_sizes_C-H.stl"
+    write_stl(path, np.vstack(plate_v), np.vstack(plate_f))
+    m = trimesh.load(path)
+    report["plate_C-H"] = {"stl": path.name, "pitch_mm": PLATE_PITCH,
+                           "centres_mm": {s.name: plate_xy(k) for k, s in enumerate(SIZES)},
+                           "watertight": bool(m.is_watertight), "bodies": len(m.split(only_watertight=False)),
+                           "bounds_mm": [[round(x, 3) for x in b] for b in m.bounds]}
+    print(f"plate C-H: {len(m.faces)} triangles, watertight {m.is_watertight}, bounds {m.bounds.round(2).tolist()}")
     (EXPORTS / "c_cs_spacer.json").write_text(json.dumps(report, indent=2) + "\n")
     RENDERS.mkdir(exist_ok=True)
     section_figure(VARIANTS, RENDERS / "c_cs_spacer.png")
+    section_figure(SIZES, RENDERS / "c_cs_spacer_sizes.png", ncols=3,
+                   title="C–CS spacer rings C–H (2026-10-28): both ends bigger than A and B, half-section")
 
 
 if __name__ == "__main__":
