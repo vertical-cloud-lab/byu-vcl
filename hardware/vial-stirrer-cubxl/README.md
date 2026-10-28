@@ -48,6 +48,7 @@ the capper and the pipette, instead of its own XIAO RP2040.
 | [`onshape/vial_stirrer.fs`](onshape/vial_stirrer.fs) | The whole model as one FeatureScript feature. All dimensions are constants at the top |
 | [`build_onshape.py`](build_onshape.py) | Pushes the FeatureScript to Onshape, rebuilds, renders every step, exports the STLs and STEP files |
 | [`assembly_video.py`](assembly_video.py) | Renders the assembly as a video, a GIF and a contact sheet, one part per step, from the Onshape model's parts |
+| [`wiring_diagram.py`](wiring_diagram.py) | Draws [`img/wiring_uno.png`](img/wiring_uno.png), the Uno version's wiring with the junction board hole by hole, after checking that layout against BUILD.md's netlist. It also prints the hole list |
 | [`onshape/render_steps.json`](onshape/render_steps.json) | Camera and caption for each render |
 | [`onshape/document.json`](onshape/document.json) | Onshape document ids |
 | [`BUILD.md`](BUILD.md) | Build guide for the Uno-driven version: printing, keys, inserts, magnets, wiring, bench checks, assembly, flashing the Uno, first spins, the deck file |
@@ -56,7 +57,7 @@ the capper and the pipette, instead of its own XIAO RP2040.
 | [`stl/`](stl) | The same printed parts as STL. Both sets are in assembly position, which is also each part's print orientation. [`stl/key_fit_test/`](stl/key_fit_test) has the deck keys at 0.10 and 0.15 mm, the two sizes from the fit test that aren't printed by default |
 | [`compact/`](compact/README.md), [`stl/compact/`](stl/compact) | The compact 49 × 44 mm base and vial holder, built in CadQuery by `compact/build_compact.py` from `vial_stirrer.fs`'s numbers, and checked against the Onshape parts. STL only |
 | [`print/`](print) | Print records. [`2026-10-21-a1mini/`](print/2026-10-21-a1mini/README.md): all five parts on one A1 mini plate in white PETG Basic, sent from Bambu Studio by an `@claude-print` run. It has the file the printer ran, the settings and a camera timelapse. [`2026-10-22-a1mini-keys/`](print/2026-10-22-a1mini-keys/README.md): the deck key at 0.05, 0.10 and 0.15 mm, for the fit test, the same way. 0.05 fit best. [`2026-10-28-a1mini-compact/`](print/2026-10-28-a1mini-compact/README.md): the compact stirrer's base and holder, a carrier and two 0.05 keys |
-| [`img/`](img) | Onshape's renders (steps 1–10 of the XIAO version, assembled, exploded, section, contact sheet), and the assembly video, GIF and contact sheet of the Uno version |
+| [`img/`](img) | Onshape's renders (steps 1–10 of the XIAO version, assembled, exploded, section, contact sheet), the assembly video, GIF and contact sheet of the Uno version, and its wiring diagram |
 | [`firmware/main.py`](firmware/main.py) | MicroPython speed controller for the XIAO RP2040 (untested) |
 | [`../../cubos/firmware/panda-arduino-stirrer.patch`](../../cubos/firmware/panda-arduino-stirrer.patch) | The same controller as two commands in the CubXL Uno's PANDA firmware. Built, image committed, not flashed |
 | [`firmware/uno_sim/`](firmware/uno_sim) | Host-side simulation of that patch's control loop against a fan model, and its output |
@@ -318,6 +319,11 @@ whether anything is soldered to them on the Uno or its shield. Look first.
 
 ### Wiring, Uno version
 
+![The stirrer wired to the CubXL's Uno, with the junction board hole by hole](img/wiring_uno.png)
+
+The drawing above is [`BUILD.md`](BUILD.md#circuit)'s, which also lists every hole and solder
+bridge of the junction board. The text version follows.
+
 The circuit is the XIAO version's with the controller moved off the stirrer. The
 resistors go on a scrap of perfboard cut to the XIAO's 21 × 17.5 mm, which sits on the
 same rails, and the cable leaves through the USB-C notch in the −X wall (13 mm wide).
@@ -576,7 +582,7 @@ Onshape's, and show the XIAO version.
 |---|---|
 | ![](img/step01_keys.png) | **1. Press the two deck keys into the base.** Each key's triangular nub is a press fit in its 2.1 mm pocket under the base, 0.05 mm a side, so it needs no glue. With no play in the pocket, the keys end up square to the base and 25 mm apart. |
 | ![](img/step02_inserts.png) | **2. Press in eight M3 heat-set inserts.** Use a soldering iron at the insert maker's temperature: four go in the fan posts and four in the corner posts. Keep them square, as the fan screws pull straight down into them. |
-| ![](img/step03_electronics.png) | **3. Wire the electronics, then drop them in.** Solder per the wiring diagram, leaving about 60 mm of lead for the Hall sensor. The XIAO's USB-C goes into the notch in the −X wall, and the rails and the stop locate the board. In the Uno version the junction board sits in the same place and the cable leaves through the notch; tie it to the board for strain relief. The MOSFET and diode lie flat on the +X side, held with a dab of hot glue. |
+| ![](img/step03_electronics.png) | **3. Wire the electronics, then drop them in.** Solder per the [wiring diagram](BUILD.md#circuit), leaving about 60 mm of lead for the Hall sensor. The XIAO's USB-C goes into the notch in the −X wall, and the rails and the stop locate the board. In the Uno version the junction board sits in the same place and the cable leaves through the notch; hot glue over the jacket in the notch is its strain relief. The MOSFET lies flat on the +X side, printed face up, held with a dab of hot glue; so does the diode in the XIAO version, while the Uno version's diode is on the junction board. |
 | ![](img/step04_fan.png) | **4. Seat the fan, rotor side up.** It goes on the four posts with the side **without** the motor's struts up, so the spinning hub faces the vial. Don't go by the sticker: many fans carry it on the strut side. Run its leads to the MOSFET. |
 | ![](img/step05_fan_screws.png) | **5. Four M3 × 16 screws through the fan.** Tighten them snug only, since the fan frame is plastic. Screwed down, the fan can't be lifted by the magnets, which happened on one Pioreactor ([forum 781](https://forum.pioreactor.com/t/self-test-failure-the-fan-stirring-is-spinning-but-no-rpms-were-measured/781/4)). |
 | ![](img/step06_magnets.png) | **6. Magnets into the carrier, carrier onto the hub.** One magnet goes north up and one south up; check with a third magnet, which one attracts and the other repels. CA the magnets into the pockets and the carrier onto the hub, centred: a misaligned drive makes the bar walk. |

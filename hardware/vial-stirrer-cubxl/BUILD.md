@@ -22,7 +22,8 @@ The assembly, one part per step (stages 2–8):
 To pause on: [the same steps on YouTube](https://www.youtube.com/watch?v=YQJY8HC4F-w) (unlisted, with
 a chapter per step), or [`img/assembly_steps.mp4`](img/assembly_steps.mp4). The video's side
 panel gives each step's instruction from this guide. The junction board in it is drawn to
-this guide's dimensions, but where its parts sit is only a suggestion.
+this guide's dimensions, but where its parts sit is only a suggestion: for that, follow the
+[wiring diagram](#circuit).
 
 | Stage | What | Where the time goes |
 |---|---|---|
@@ -219,25 +220,17 @@ Identify every part before soldering anything.
 
 ### Circuit
 
-The README's Uno wiring:
+![The stirrer wired to the CubXL's Uno: the Uno's pins, the JST-XH pair, the cable, and the junction board hole by hole with the fan, the MOSFET and the Hall sensor](img/wiring_uno.png)
 
-```
-  Uno        cable, 22 AWG x 4        stirrer
-  ---        -----------------        -------
-  5V   ------ 1 ----------------+---- fan red (+)
-                                +---- 1N5819 cathode (banded end)
-                                +---- US1881 pin 1 (VDD)
-                                +---- 10 k ---+
-  D2   ------ 4 ------------------------------+---- US1881 pin 3 (OUT)
-  D10  ------ 3 ------ 100 R ---+---- IRLZ44N gate (pin 1)
-                                +---- 10 k ---+
-  GND  ------ 2 ------------------------------+---- IRLZ44N source (pin 3), US1881 pin 2 (GND)
-
-                     fan black (-) ---- 1N5819 anode ---- IRLZ44N drain (pin 2, tab)
-```
-
-plus a 100 nF capacitor from 5V to GND where the sensor's VDD and GND wires land on the
-board, as Melexis recommends.
+This is the whole stirrer wired to the Uno. The junction board is shown hole by hole, from
+above as it sits in the base, and from underneath (bottom left) as a mirror image for
+soldering. Columns A–H run from the cable notch (−X) to the MOSFET (+X), and rows 1–7 from
++Y to −Y. Rows 6 and 7 are the GND and 5V rails. The colours are the six nodes in the table
+below, not wire colours. [`wiring_diagram.py`](wiring_diagram.py) draws the figure. Before
+drawing, it checks that the leads, wires and solder bridges join exactly those six nodes,
+and that every part lies flat at a lead spacing it can take. To change the layout, edit the
+script, not the PNG. The [compact stirrer](compact/README.md#building-it) uses the same board,
+hole for hole, but its cable comes in through the −Y wall instead.
 
 The same circuit as six nodes. Tick each one off as you solder it:
 
@@ -257,6 +250,28 @@ Two parts of this protect the hardware rather than make it work:
 - **The diode must point the right way.** Backwards, it shorts 5 V through the MOSFET the
   moment the fan is switched on.
 
+<details><summary>The same circuit as text (the README's Uno wiring)</summary>
+
+```
+  Uno        cable, 22 AWG x 4        stirrer
+  ---        -----------------        -------
+  5V   ------ 1 ----------------+---- fan red (+)
+                                +---- 1N5819 cathode (banded end)
+                                +---- US1881 pin 1 (VDD)
+                                +---- 10 k ---+
+  D2   ------ 4 ------------------------------+---- US1881 pin 3 (OUT)
+  D10  ------ 3 ------ 100 R ---+---- IRLZ44N gate (pin 1)
+                                +---- 10 k ---+
+  GND  ------ 2 ------------------------------+---- IRLZ44N source (pin 3), US1881 pin 2 (GND)
+
+                     fan black (-) ---- 1N5819 anode ---- IRLZ44N drain (pin 2, tab)
+```
+
+plus a 100 nF capacitor from 5V to GND where the sensor's VDD and GND wires land on the
+board, as Melexis recommends.
+
+</details>
+
 ### The junction board
 
 <img src="img/step03_electronics.png" width="380">
@@ -264,21 +279,54 @@ Two parts of this protect the hardware rather than make it work:
 The render shows the XIAO RP2040 of the other version. The junction board goes in the same
 place: on the two rails at the −X end of the base, against the small stop, with the cable
 leaving through the notch in the −X wall. The MOSFET lies flat on the floor on the other
-side of the stop, under the fan, tab toward +X.
+side of the stop, under the fan, printed face up and tab toward +X.
 
 1. Cut the perfboard to 8 × 7 holes (about 21 × 17.5 mm): score along a row of holes and
    snap it. Check it sits on the rails.
 2. **Keep everything low.** The fan's underside is only about 3.5 mm above the top of a
    1.6 mm perfboard. Lay the resistors, the capacitor and the diode flat, keep the joints
    and wire links underneath short, and keep everything on top under 3 mm.
-3. Put the four cable connections at the −X (notch) end and the fan, MOSFET and Hall
-   connections at the +X end.
-4. Solder the three resistors, the 100 nF and the diode, and join the nodes in the table
-   with solder bridges and wire links underneath.
-5. The MOSFET's leads have to cross the 3 mm stop to reach the board. Join them with
-   short wires, or bend them up over the stop into the board's +X column if they reach.
+3. **Place everything as in the [wiring diagram](#circuit).** Holes are given as column
+   and row, with A1 at the cable end, top left:
+
+   | What | Holes |
+   |---|---|
+   | R1, 100 Ω (gate resistor) | B1 and F1 |
+   | R2, 10 kΩ (gate pull-down) | F2 and F6 |
+   | R3, 10 kΩ (Hall pull-up) | C3 and C7 |
+   | D1, 1N5819 | anode G4, banded end (cathode) G7 |
+   | C1, 100 nF | D6 and D7, bent over to lie flat across E6 and E7 |
+   | Cable, from the notch | A7 (1, 5V), A6 (2, GND), A1 (3, PWM), A3 (4, Hall) |
+   | Hall sensor leads | B7 (pin 1, VDD), B6 (pin 2, GND), B5 (pin 3, OUT) |
+   | Fan leads | F7 (red), G3 (black) |
+   | MOSFET legs | H3 (gate), H4 (drain), H5 (source) |
+
+   The resistors' leads are 4 holes (10.16 mm) apart, so a standard 6.3 mm body lies flat
+   between them, and the diode's are 3.
+4. Solder the three resistors, the 100 nF and the diode, then bridge the holes underneath,
+   node by node:
+
+   | Node | Bridges |
+   |---|---|
+   | PWM | A1–B1 |
+   | GATE | F1–F2–G2–H2–H3 |
+   | DRAIN | G3–G4–H4 |
+   | HALL | A3–B3–C3, and B3–B4–B5 |
+   | GND | all of row 6, A6 to H6, then H6–H5 |
+   | 5V | row 7 from A7 to G7. H7 stays empty |
+
+   Turned over, the board is a mirror image, with column A on the right; the figure's small
+   view shows it that way. For the two rails, a bare tinned wire laid along the row and
+   soldered at each hole is quicker than a run of solder blobs. Before going on, look along
+   the underside for solder joining row 6 to row 7, or H3, H4 and H5 to each other: those
+   holes sit side by side on different nodes.
+5. The MOSFET's leads have to cross the 3 mm stop to reach the board. With it printed face
+   up and the tab toward +X, its legs come in gate, drain, source from the top, which is H3,
+   H4, H5. Bend them up over the stop into those holes if they reach, or join them with
+   short wires.
 6. Cut the fan's leads to reach the board with some slack, about 70 mm, and solder red to
-   **5V** and black to **Drain**. Dress the leads along a strut, clear of the blades.
+   **F7** (the 5V rail) and black to **G3** (Drain). Dress the leads along a strut, clear
+   of the blades.
 
 ### The Hall sensor
 
@@ -290,18 +338,20 @@ and down the inside of the −X wall to the board, so it needs longer leads.
    Stagger the three joints along the leads so their heat shrink doesn't stack up: the
    groove is 5.2 mm wide.
 2. Shrink a sleeve over each joint.
-3. Solder the other ends to **5V**, **GND** and **Hall** on the board.
+3. Solder the other ends to **B7** (pin 1, VDD), **B6** (pin 2, GND) and **B5** (pin 3,
+   OUT) on the board.
 
 ### The cable, the connector and the Uno end
 
 1. Measure the cable route from the stirrer's slots to the Uno, clear of the gantry. About
    1.5 m was assumed.
 2. **Stirrer end:** strip about 30 mm of jacket, feed the cable in through the notch, and
-   solder the four conductors to the board in the order above. Write down which colour is
-   which pin.
-3. **Strain relief:** a small zip tie round the jacket just inside the notch, through two
-   holes at the board's −X edge, so a tug on the cable pulls on the jacket and not on the
-   joints. A dab of hot glue in the notch also works.
+   solder the four conductors to **A7** (1, 5V), **A6** (2, GND), **A1** (3, PWM) and
+   **A3** (4, Hall). Write down which colour is which pin.
+3. **Strain relief**, once the board is in the base ([stage 6](#6-assemble)): a dab of hot
+   glue over the jacket in the notch, so a tug on the cable pulls on the jacket and not on
+   the joints. A small zip tie through the board also works, but the board's holes are
+   about 1 mm, so drill out two of the free ones at its −X edge first (A2, A4 or A5).
 4. **Uno end:** splice the cable to the leads of one half of the JST-XH pair, pin 1 to cable 1
    and so on, with heat shrink on each joint. Put the half with recessed contacts (the
    housing) on the Uno side, so its live pins can't be touched when unplugged.
@@ -349,7 +399,7 @@ the bench.
 
 | | |
 |---|---|
-| <img src="img/step04_fan.png" width="300"> | **Board and fan.** Slide the junction board onto the rails against the stop, cable out through the notch, and put the zip tie on. Lay the MOSFET flat on the floor at +X with a dab of hot glue, its tab touching nothing. Set the fan on the four short posts **rotor side up** (the side without struts), with its leads to the board. |
+| <img src="img/step04_fan.png" width="300"> | **Board and fan.** Slide the junction board onto the rails against the stop, cable out through the notch, and fix the strain relief. Lay the MOSFET flat on the floor at +X, printed face up, with a dab of hot glue, its tab touching nothing. Set the fan on the four short posts **rotor side up** (the side without struts), with its leads to the board. |
 | <img src="img/step05_fan_screws.png" width="300"> | **Four M3 × 16 through the fan** into the post inserts. Snug only; the frame is plastic. Screwed down, the magnets can't lift the fan, which happened on one Pioreactor. Spin the blades by hand: nothing touches them. |
 | <img src="img/step06_magnets.png" width="300"> | **Carrier onto the hub.** If [Measure first](#measure-first) found the hub more than 0.4 mm proud, sand the carrier's underside now, before the glue. Peel any sticker off the hub and scuff it with 400 grit. Glue the carrier on, magnets up, with a thin layer of gel CA or 5-minute epoxy, **centred**: measure from the carrier's edge to the frame's round opening at four points 90° apart, and get them within about 0.3 mm. Off centre, the bar walks round the vial, the fan shakes, and the carrier may touch the sensor, which sits only 0.8 mm outside the carrier's edge. **Check:** the carrier's top stands about 3.3 mm above the fan frame's top face. The underside of the holder's floor will be 4.3 mm above that face, so a carrier top over 3.8 mm leaves less than 0.5 mm of gap, before any sag. |
 | <img src="img/step07_holder.png" width="300"> | **Hall sensor into the holder.** Turn the holder upside down. The recess ceiling is the underside of the vial floor, and a groove runs from the recess out to one side. Glue the sensor flat on the ceiling at the groove's mouth: marked face toward you (so it faces down once the holder is the right way up), plain back on the ceiling, leads lying in the groove. **Line its lead edge up with the edge of the round recess**, as the circle runs on either side of the groove. The 3 mm body then sits just inside the recess, its inner edge about 0.8 mm outside the carrier's path. There is no wall to push it against at the groove, so don't let it slide out along the groove: the further out, the weaker the signal. Tack the leads into the groove with a dab of glue. |
