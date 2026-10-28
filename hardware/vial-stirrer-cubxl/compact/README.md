@@ -8,6 +8,10 @@ for @benwhitney5463's `@claude-print` request on
 [PR #269](https://github.com/vertical-cloud-lab/byu-vcl/pull/269#issuecomment-6480898247), and
 printed the same day ([print record](../print/2026-10-28-a1mini-compact/README.md)).
 
+<img src="../img/compact_parts.png" width="360" alt="The compact stirrer's printed parts, exploded">
+
+*The printed parts, exploded: vial holder, magnet carrier, base, two deck keys ([`render_compact.py`](render_compact.py)). The cable notch is in the base's front (−Y) wall.*
+
 Only the base and the holder are new. The deck keys (the 0.05 mm press fit), the magnet
 carrier, the cup, the fan, the magnets and the electronics are today's, and so is every
 height except the base's wall top.
@@ -15,6 +19,7 @@ height except the base's wall top.
 | File | What |
 |---|---|
 | [`build_compact.py`](build_compact.py) | Builds both parts in CadQuery and writes the STLs and [`check_output.txt`](check_output.txt) |
+| [`render_compact.py`](render_compact.py) | Draws [`../img/compact_parts.png`](../img/compact_parts.png) from the STLs |
 | [`../stl/compact/base_compact.stl`](../stl/compact/base_compact.stl) | The base: 49 × 44 × 19 mm. Print floor down |
 | [`../stl/compact/vial_holder_compact.stl`](../stl/compact/vial_holder_compact.stl) | The vial holder: 49 × 44 × 22 mm. Print flange down |
 
