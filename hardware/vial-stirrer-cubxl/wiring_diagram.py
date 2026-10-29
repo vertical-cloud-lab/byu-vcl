@@ -10,17 +10,20 @@ check() runs first and makes sure the picture is the circuit. The leads, wires a
 bridges in PARTS, LANDINGS and BRIDGES have to join exactly the six nodes of BUILD.md's
 netlist, and the cable's four cores have to reach the Uno pins the stirrer firmware uses,
 none of them a pin the capper or the pipette already has. No hole may hold two leads, no
-lead may sit under a part's body, every part has to lie flat at a lead spacing it can take,
-and the MOSFET's legs have to go straight into column H in gate, drain, source order. If any
-of that fails, the script stops instead of drawing.
+lead may sit under a part's body, no two bodies may overlap at the sizes in SIZE, every part
+has to lie flat at a lead spacing it can take, and the MOSFET's legs have to go straight into
+column H in gate, drain, source order. fit() then checks that the piece of board fits on the
+rails of both bases. If any of that fails, the script stops instead of drawing.
 
 Where the numbers come from:
 - Uno R3 header positions: Arduino's 0.1 in grid, with the 0.16 in step between D7 and D8.
 - Pin orders: BUILD.md's pinout table (IRLZ44N printed face toward you: G D S; US1881 marked
   face toward you: VDD GND OUT).
-- The board (8 x 7 holes on the rails at -X), the stop, the notch and where the MOSFET lies:
-  onshape/vial_stirrer.fs. The MOSFET lies flat, printed face up, tab toward +X, so seen
-  from above its gate is the lead nearest +Y, the top of the figure.
+- The board: BOM item 10's strips are 20 x 80 mm with 6 x 28 holes, so the board is a piece 8
+  holes long and the strip's full 6 holes (20 mm) wide (the listing's photos, 2026-10-29).
+- The rails, the stop, the notch and where the MOSFET lies: onshape/vial_stirrer.fs, and for
+  the compact base compact/build_compact.py. The MOSFET lies flat, printed face up, tab toward
+  +X, so seen from above its gate is the lead nearest +Y, the top of the figure.
 """
 
 import math
@@ -79,37 +82,48 @@ UNO_BUSY = {"3", "4", "5", "6", "7", "9", "11", "A0", "A1", "A2", "A3", "A4", "0
 UNO_STIR = {("T", 1.54): "PWM", ("T", 2.40): "HALL", ("B", 1.50): "5V", ("B", 1.60): "GND"}
 
 # --- the junction board, hole by hole ------------------------------------------------------------
-# A hole is (column, row): columns A-H run -X -> +X (cable end to MOSFET end) and rows 1-7 run
+# A hole is (column, row): columns A-H run -X -> +X (cable end to MOSFET end) and rows 1-6 run
 # +Y -> -Y, so this is the board seen from above, +X to the right, as it sits in the base.
-NCOL, NROW = 8, 7
+# The strip is 6 holes wide, so the 6 rows are its whole width and its margins rest on the rails.
+NCOL, NROW = 8, 6
+PITCH = 2.54
+STRIP_W = 20.0                  # BOM item 10: 20 x 80 mm strips, 6 x 28 holes
 # Parts lying flat on top: ref, kind, value, (hole, terminal) for each lead, and for the
 # capacitor the side its body lies on. A resistor's leads are 4 holes apart (10.16 mm for a
 # 6.3 mm body), the diode's 3 or 4, the capacitor's 1 or 2.
 PARTS = [
     ("R1", "res", "100 Ω", ((1, 0), "100 R"), ((5, 0), "100 R")),
-    ("R2", "res", "10 k", ((5, 1), "10 k gate pull-down"), ((5, 5), "10 k gate pull-down")),
-    ("R3", "res", "10 k", ((2, 2), "10 k Hall pull-up"), ((2, 6), "10 k Hall pull-up")),
-    ("D1", "diode", "1N5819", ((6, 3), "1N5819 anode"), ((6, 6), "1N5819 cathode")),
-    ("C1", "cap", "100 nF", ((3, 5), "100 nF"), ((3, 6), "100 nF"), +1),
+    ("R2", "res", "10 k", ((6, 0), "10 k gate pull-down"), ((6, 4), "10 k gate pull-down")),
+    ("R3", "res", "10 k", ((2, 1), "10 k Hall pull-up"), ((2, 5), "10 k Hall pull-up")),
+    ("D1", "diode", "1N5819", ((5, 2), "1N5819 anode"), ((5, 5), "1N5819 cathode")),
+    ("C1", "cap", "100 nF", ((4, 4), "100 nF"), ((4, 5), "100 nF"), -1),
 ]
+# Body sizes, mm, along the leads x across: 1/4 W resistor, DO-41, a radial ceramic bent over flat
+SIZE = {"res": (6.3, 2.4), "diode": (4.8, 2.6), "cap": (4.2, 2.6)}
 # Wires and legs that end in a hole
 LANDINGS = [
-    ("cable 1", (0, 6)), ("cable 2", (0, 5)), ("cable 3", (0, 0)), ("cable 4", (0, 2)),
-    ("US1881 pin 1", (1, 6)), ("US1881 pin 2", (1, 5)), ("US1881 pin 3", (1, 4)),
-    ("fan red", (5, 6)), ("fan black", (6, 2)),
-    ("IRLZ44N pin 1", (7, 2)), ("IRLZ44N pin 2", (7, 3)), ("IRLZ44N pin 3", (7, 4)),
+    ("cable 1", (0, 5)), ("cable 2", (0, 4)), ("cable 3", (0, 0)), ("cable 4", (0, 2)),
+    ("US1881 pin 1", (1, 5)), ("US1881 pin 2", (1, 4)), ("US1881 pin 3", (1, 2)),
+    ("fan red", (6, 5)), ("fan black", (4, 2)),
+    ("IRLZ44N pin 1", (7, 1)), ("IRLZ44N pin 2", (7, 2)), ("IRLZ44N pin 3", (7, 3)),
 ]
-# Solder bridges between neighbouring holes, underneath. Rows 6 and 7 are the GND and 5V rails.
+# Solder bridges between neighbouring holes, underneath. Rows 5 and 6 are the GND and 5V rails.
 BRIDGES = [
     ((0, 0), (1, 0)),                                                          # PWM
-    ((5, 0), (5, 1)), ((5, 1), (6, 1)), ((6, 1), (7, 1)), ((7, 1), (7, 2)),    # GATE
-    ((7, 3), (6, 3)), ((6, 3), (6, 2)),                                        # DRAIN
-    ((0, 5), (1, 5)), ((1, 5), (2, 5)), ((2, 5), (3, 5)), ((3, 5), (4, 5)),    # GND rail
-    ((4, 5), (5, 5)), ((5, 5), (6, 5)), ((6, 5), (7, 5)), ((7, 5), (7, 4)),
-    ((0, 6), (1, 6)), ((1, 6), (2, 6)), ((2, 6), (3, 6)), ((3, 6), (4, 6)),    # 5V rail
-    ((4, 6), (5, 6)), ((5, 6), (6, 6)),
-    ((0, 2), (1, 2)), ((1, 2), (2, 2)), ((1, 2), (1, 3)), ((1, 3), (1, 4)),    # HALL
+    ((5, 0), (6, 0)), ((6, 0), (7, 0)), ((7, 0), (7, 1)),                      # GATE
+    ((4, 2), (5, 2)), ((5, 2), (6, 2)), ((6, 2), (7, 2)),                      # DRAIN
+    ((0, 4), (1, 4)), ((1, 4), (2, 4)), ((2, 4), (3, 4)), ((3, 4), (4, 4)),    # GND rail
+    ((4, 4), (5, 4)), ((5, 4), (6, 4)), ((6, 4), (7, 4)), ((7, 4), (7, 3)),
+    ((0, 5), (1, 5)), ((1, 5), (2, 5)), ((2, 5), (3, 5)), ((3, 5), (4, 5)),    # 5V rail
+    ((4, 5), (5, 5)), ((5, 5), (6, 5)),
+    ((0, 2), (1, 2)), ((1, 2), (2, 2)), ((2, 2), (2, 1)),                      # HALL
 ]
+# Where the board goes, against the stop on the two rails at -X: the -X wall's inner face and the
+# stop's -X face (vial_stirrer.fs makeBase; build_compact.py moves both 0.5 mm in), the rails at
+# |y| 7.4-8.9, and the fan posts, R4 at (+-16, +-16).
+BASES = {"56 x 56 mm base": (-23.5, -1.6), "compact base": (-22.9, -1.1)}
+RAIL_Y = (7.4, 8.9)
+FAN_POST, FAN_POST_R = 16.0, 4.0
 
 
 def hole_name(h):
@@ -130,6 +144,18 @@ def body_holes(part):
     if sr == 0:
         return inner + [(a[0] + sc * i, a[1] + side) for i in range(n + 1)]
     return inner + [(a[0] + side, a[1] + sr * i) for i in range(n + 1)]
+
+
+def body_box(part):
+    """A part's body in plan, mm: (x, y, half width, half height), x along the columns, y down the rows."""
+    kind = part[1]
+    (a, _), (b, _) = part[3], part[4]
+    length, width = SIZE[kind]
+    x, y = (a[0] + b[0]) / 2 * PITCH, (a[1] + b[1]) / 2 * PITCH
+    vert = a[0] == b[0]
+    if kind == "cap":   # lies flat beside its leads
+        x, y = (x + part[5] * PITCH, y) if vert else (x, y + part[5] * PITCH)
+    return (x, y, width / 2, length / 2) if vert else (x, y, length / 2, width / 2)
 
 
 def check():
@@ -162,6 +188,12 @@ def check():
             if h in covered:
                 raise SystemExit(f"{part[0]} and {covered[h]} both lie over {hole_name(h)}")
             covered[h] = part[0]
+    # parts side by side a column apart: their bodies, not just their holes, must not overlap
+    for i, p in enumerate(PARTS):
+        for q in PARTS[i + 1:]:
+            (x1, y1, w1, h1), (x2, y2, w2, h2) = body_box(p), body_box(q)
+            if abs(x1 - x2) < w1 + w2 and abs(y1 - y2) < h1 + h2:
+                raise SystemExit(f"{p[0]}'s body and {q[0]}'s overlap, at the sizes in SIZE")
     parent = {(c, r): (c, r) for c in range(NCOL) for r in range(NROW)}
 
     def find(h):
@@ -212,11 +244,31 @@ def check():
     return net_of
 
 
+def fit():
+    """Stop unless the piece fits on the rails of both bases, pushed against the stop. It is
+    snapped through the next column of holes at each end, so it is NCOL pitches long, and it is
+    the strip's full width. Returns, by base, the room left at the -X wall and the gap from the
+    piece's long edges to the fan posts, in mm."""
+    length = NCOL * PITCH
+    if STRIP_W / 2 < RAIL_Y[1]:
+        raise SystemExit(f"a {STRIP_W} mm board doesn't reach across both rails")
+    out = {}
+    for name, (wall, stop) in BASES.items():
+        spare = stop - wall - length
+        dx = max(stop - length + FAN_POST, 0.0, -FAN_POST - stop)    # the -X fan posts, at x = -16
+        post = math.hypot(dx, FAN_POST - STRIP_W / 2) - FAN_POST_R
+        if spare < 0.2 or post < 0.2:
+            raise SystemExit(f"the board doesn't fit the {name}: {spare:.2f} mm left at the wall, "
+                             f"{post:.2f} mm from the fan posts")
+        out[name] = (spare, post)
+    return out
+
+
 # --- drawing -------------------------------------------------------------------------------------
 W, H = 17.4, 11.2
 P = 0.54                        # board pitch in figure units (2.54 mm)
 MM = P / 2.54                   # figure units per mm, at the board's scale
-BX, BY = 8.85, 7.45             # where hole A1 is drawn
+BX, BY = 8.85, 7.18             # where hole A1 is drawn
 FLYING = {                      # leads that come down onto the board from above: marker text, colour
     "US1881 pin 1": ("1", "5V"), "US1881 pin 2": ("2", "GND"), "US1881 pin 3": ("3", "HALL"),
     "fan red": ("+", "5V"), "fan black": ("−", "GND"),
@@ -312,15 +364,24 @@ class Board:
         return self.x0 + c * self.p, self.y0 - h[1] * self.p
 
     def outline(self):
-        mx, my = 0.634 * self.p, 0.5 * self.p      # 21 x 17.8 mm around 7 x 6 pitches of holes
+        """Snapped through the next column of holes at each end, and the strip's full width across."""
+        mx, my = 0.5 * self.p, (STRIP_W - (NROW - 1) * PITCH) / 2 / PITCH * self.p
         return self.x0 - mx, self.y0 - (NROW - 1) * self.p - my, (NCOL - 1) * self.p + 2 * mx, \
             (NROW - 1) * self.p + 2 * my
 
     def draw(self, size=10.5, row_labels=True):
         ax, p = self.ax, self.p
         x0, y0, w, h = self.outline()
-        ax.add_patch(FancyBboxPatch((x0, y0), w, h, boxstyle="round,pad=0,rounding_size=0.05",
-                                    fc=C["board"], ec=C["board_edge"], lw=2, zorder=1))
+        plate = FancyBboxPatch((x0, y0), w, h, boxstyle="round,pad=0,rounding_size=0.03",
+                               fc=C["board"], ec=C["board_edge"], lw=2, zorder=1)
+        ax.add_patch(plate)
+        for r in range(NROW):            # the half holes the snapped ends leave
+            for x in (x0, x0 + w):
+                for patch in (Circle((x, self.xy((0, r))[1]), 0.27 * p, fc=C["pad"], ec="#b9b29a", lw=0.8 * p / P),
+                              Circle((x, self.xy((0, r))[1]), 0.12 * p, fc="#2b2b2b", ec="none")):
+                    ax.add_patch(patch)
+                    patch.set_zorder(1.5)
+                    patch.set_clip_path(plate)
         for c in range(NCOL):
             text(ax, self.xy((c, 0))[0], y0 + h + 0.17 * p / P, "ABCDEFGH"[c], size, "bold", "#333333")
         if row_labels:
@@ -350,7 +411,7 @@ class Board:
         a, b = part[3][0], part[4][0]
         (xa, ya), (xb, yb) = self.xy(a), self.xy(b)
         horiz = a[1] == b[1]
-        L, D = (6.3 * MM, 2.4 * MM) if kind == "res" else (4.8 * MM, 2.6 * MM)
+        L, D = (v * MM for v in SIZE[kind])
         cx, cy = (xa + xb) / 2, (ya + yb) / 2
         n = ((xb - xa) ** 2 + (yb - ya) ** 2) ** 0.5
         ux, uy = (xb - xa) / n, (yb - ya) / n
@@ -383,7 +444,8 @@ class Board:
         vert = a[0] == b[0]
         sx = -1 if self.mirror else 1
         cx, cy = ((xa + sx * side * self.p, (ya + yb) / 2) if vert else ((xa + xb) / 2, ya - side * self.p))
-        bw, bh = (2.6 * MM, 4.2 * MM) if vert else (4.2 * MM, 2.6 * MM)
+        L, D = SIZE["cap"]
+        bw, bh = (D * MM, L * MM) if vert else (L * MM, D * MM)
         for h in (a, b):
             hy = self.xy(h)[1]
             self.lead(h, cx - (bw / 2 if vert else 0) * sx * side, hy if vert else cy)
@@ -462,8 +524,8 @@ def figure(nets):
     text(ax, 0.3, 10.88, "Stirrer wiring, Uno version (BUILD.md stage 5): the CubXL's Uno drives the fan from D10 "
          "and counts turns on D2", 15.5, "bold", ha="left")
     text(ax, 0.3, 10.53, "Drawn from BUILD.md's netlist by wiring_diagram.py, which checks this layout against it. "
-         "Nothing has been built yet: the junction board layout is one that fits the 8 × 7-hole board.", 10.5,
-         colour="#444444", ha="left")
+         "Nothing has been built yet: the junction board is a piece of the 6-hole-wide perfboard strip, 8 × 6 holes.",
+         10.5, colour="#444444", ha="left")
 
     # --- Pi and Uno -------------------------------------------------------------------------------
     ax.add_patch(FancyBboxPatch((0.35, 9.35), 3.6, 0.78, boxstyle="round,pad=0,rounding_size=0.1",
@@ -497,7 +559,7 @@ def figure(nets):
 
     # --- cable ------------------------------------------------------------------------------------
     board = Board(ax, BX, BY, P, nets)
-    yj = board.xy((0, 3))[1]                           # the notch is centred on row 4
+    yj = board.xy((0, (NROW - 1) / 2))[1]              # the notch, the rails and the stop are centred on the board
     xs = x_r + 0.05
     ys_ = [jy[c] for c in (1, 2, 3, 4)]
     for c in (1, 2, 3, 4):
@@ -518,7 +580,7 @@ def figure(nets):
     nh = 6.5 * MM
     for ya, yb in ((by_ + bh_ + 0.15, yj + nh), (yj - nh, by_ - 0.15)):
         ax.add_patch(Rectangle((wx - 0.16, yb), 0.16, ya - yb, fc="#b9bec4", ec="#7d848c", lw=1, zorder=2))
-    text(ax, wx - 0.08, by_ + bh_ + 0.32, "−X wall", 8.5, colour="#555555")
+    text(ax, wx - 0.26, (yj + nh + by_ + bh_ + 0.15) / 2 + 0.08, "−X wall", 8.5, colour="#555555", ha="right")
     text(ax, wx - 0.45, yj + nh + 0.12, "notch", 8.5, colour="#555555")
     targets = {c: board.xy(landing(f"cable {c}")) for c in (1, 2, 3, 4)}
     up = sorted([c for c in targets if targets[c][1] > yj], key=lambda c: -targets[c][1])
@@ -538,9 +600,8 @@ def figure(nets):
         marker(ax, x, y, s_, colour)
     stop_x = bx_ + bw_ + 0.42
     legs = [landing(f"IRLZ44N pin {i}") for i in (1, 2, 3)]
-    yc = board.xy(legs[1])[1]
-    ax.add_patch(Rectangle((stop_x, yc - 5 * MM), 1.2 * MM, 10 * MM, fc="#b9bec4", ec="#7d848c", lw=1, zorder=2))
-    text(ax, stop_x + 0.6 * MM, yc + 5 * MM + 0.14, "stop", 8.5, colour="#555555")
+    ax.add_patch(Rectangle((stop_x, yj - 5 * MM), 1.2 * MM, 10 * MM, fc="#b9bec4", ec="#7d848c", lw=1, zorder=2))
+    text(ax, stop_x + 0.6 * MM, yj + 5 * MM + 0.14, "stop", 8.5, colour="#555555")
     draw_mosfet(ax, board, [r for _, r in legs], stop_x + 0.5)
     g, d, s_ = (hole_name(h) for h in legs)
     for i, line in enumerate((
@@ -580,15 +641,15 @@ def figure(nets):
         text(ax, 14.0, 9.88 - 0.24 * i, line, size, weight, ha="left")
 
     # --- legend ---------------------------------------------------------------------------------
-    text(ax, 8.35, 3.5, "Nodes (BUILD.md):", 9.5, "bold", ha="left")
+    text(ax, 8.35, 3.3, "Nodes (BUILD.md):", 9.5, "bold", ha="left")
     x, renderer = 10.0, fig.canvas.get_renderer()
     for net, label in (("5V", "5V"), ("GND", "GND"), ("PWM", "PWM, D10"), ("GATE", "GATE"),
                        ("DRAIN", "DRAIN, fan −"), ("HALL", "HALL, D2")):
-        t = chip(ax, x, 3.5, label, net, ha="left", size=9)
+        t = chip(ax, x, 3.3, label, net, ha="left", size=9)
         x += t.get_window_extent(renderer=renderer).width / fig.dpi + 0.3
 
     # --- underside ------------------------------------------------------------------------------
-    under = Board(ax, 1.2, 3.33, 0.26, nets, mirror=True)
+    under = Board(ax, 1.2, 3.1, 0.24, nets, mirror=True)
     under.draw(size=8, row_labels=False)
     for h in [part[3][0] for part in PARTS] + [part[4][0] for part in PARTS] + [h for _, h in LANDINGS]:
         x, y = under.xy(h)
@@ -605,7 +666,8 @@ def figure(nets):
     ax.add_patch(Rectangle((0.25, 0.15), W - 0.5, 1.3, fc="#f7f7f7", ec="#bbbbbb", lw=1.2, zorder=0))
     notes = (
         "The junction board is drawn from above as it sits in the base: the cable notch (−X) on the left, the MOSFET "
-        "(+X) on the right. Rows 6 and 7 are the GND and 5V rails.\n"
+        "(+X) on the right. Rows 5 and 6 are the GND and 5V rails. It is the strip's full 20 mm width: "
+        "its edges rest on the rails.\n"
         "Everything on top lies flat and under 3 mm, as the fan sits about 3.5 mm above the board. Leads are 4 holes "
         "apart (10.16 mm) for the resistors, 3 for the diode and 1 for the capacitor.\n"
         "The colours are the six nodes, not your wire colours: write down which cable core is which JST pin. "
@@ -639,6 +701,9 @@ def hole_list(nets):
 if __name__ == "__main__":
     nets = check()
     print("layout matches BUILD.md's netlist:", len(BRIDGES), "bridges")
+    print(f"board: {NCOL} x {NROW} holes, {NCOL * PITCH:.2f} x {STRIP_W:.1f} mm")
+    for name, (spare, post) in fit().items():
+        print(f"  {name}: {spare:.2f} mm left at the -X wall, {post:.2f} mm from the fan posts")
     print(hole_list(nets))
     save(figure(nets), OUT)
     print("wrote", OUT)

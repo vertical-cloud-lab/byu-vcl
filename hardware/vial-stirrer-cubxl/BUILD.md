@@ -21,8 +21,8 @@ The assembly, one part per step (stages 2–8):
 
 To pause on: [the same steps on YouTube](https://www.youtube.com/watch?v=YQJY8HC4F-w) (unlisted, with
 a chapter per step), or [`img/assembly_steps.mp4`](img/assembly_steps.mp4). The video's side
-panel gives each step's instruction from this guide. The junction board in it is drawn to
-this guide's dimensions, but where its parts sit is only a suggestion: for that, follow the
+panel gives each step's instruction from this guide. The junction board in it is the earlier
+8 × 7-hole one, and where its parts sit was only ever a suggestion: for the board, follow the
 [wiring diagram](#circuit).
 
 | Stage | What | Where the time goes |
@@ -56,7 +56,7 @@ this guide's dimensions, but where its parts sit is only a suggestion: for that,
 | Bought | Resistors: 100 Ω, 10 kΩ × 2 | 3 | BOM item 7 |
 | Bought | 22 AWG 4-conductor cable | ~1.5 m | BOM item 8 |
 | Bought | JST-XH 4-pin plug and socket, with leads | 1 pair | BOM item 9 |
-| Bought | Perfboard | 1 | BOM item 10 |
+| Bought | Perfboard, an 8 × 6-hole piece of one strip | 1 | BOM item 10 |
 | Bought | M3 × 5.7 mm heat-set inserts | 8 | BOM item 11 |
 | Bought | M3 stainless socket head screws | 4 × 16 mm, 4 × 12 mm | BOM item 12 |
 | Lab stock | 100 nF ceramic capacitor | 1 | Recommended by Melexis across the sensor's supply ([US1881 datasheet](https://www.melexis.com/-/media/files/documents/datasheets/us1881-datasheet-melexis.pdf), Application Comments). Not in the BOM |
@@ -224,11 +224,12 @@ Identify every part before soldering anything.
 
 This is the whole stirrer wired to the Uno. The junction board is shown hole by hole, from
 above as it sits in the base, and from underneath (bottom left) as a mirror image for
-soldering. Columns A–H run from the cable notch (−X) to the MOSFET (+X), and rows 1–7 from
-+Y to −Y. Rows 6 and 7 are the GND and 5V rails. The colours are the six nodes in the table
+soldering. Columns A–H run from the cable notch (−X) to the MOSFET (+X), and rows 1–6 from
++Y to −Y. Rows 5 and 6 are the GND and 5V rails. The colours are the six nodes in the table
 below, not wire colours. [`wiring_diagram.py`](wiring_diagram.py) draws the figure. Before
 drawing, it checks that the leads, wires and solder bridges join exactly those six nodes,
-and that every part lies flat at a lead spacing it can take. To change the layout, edit the
+that every part lies flat at a lead spacing it can take, that no two parts' bodies overlap,
+and that the board fits on the rails of both bases. To change the layout, edit the
 script, not the PNG. The [compact stirrer](compact/README.md#building-it) uses the same board,
 hole for hole, but its cable comes in through the −Y wall instead.
 
@@ -281,51 +282,63 @@ place: on the two rails at the −X end of the base, against the small stop, wit
 leaving through the notch in the −X wall. The MOSFET lies flat on the floor on the other
 side of the stop, under the fan, printed face up and tab toward +X.
 
-1. Cut the perfboard to 8 × 7 holes (about 21 × 17.5 mm): score along a row of holes and
-   snap it. Check it sits on the rails.
-2. **Keep everything low.** The fan's underside is only about 3.5 mm above the top of a
+1. **Cut a piece 8 holes long from one strip.** The BOM's strips are 20 × 80 mm, with 6 rows
+   of 28 holes, so the piece is the strip's full width: 8 × 6 holes, 20.3 × 20 mm. Score
+   across the strip along a column of holes, on both faces, and snap it; then do the same
+   9 columns further on. Each cut uses up the column it runs through. Take the piece from
+   between two cuts, not from an end of the strip: the ends carry pads and mounting holes,
+   and an end piece is about 25 mm long, too long for the base. Cutting through the strip's
+   printed columns A, J, S and the last B gives three pieces per strip.
+2. **Check the fit.** The piece lies across both rails, its 20 mm width resting on them, and
+   slides against the stop with about 1.5 mm to spare at the −X wall, in both bases.
+3. **Mark A1.** The strip prints its own letters along one long edge, so the piece shows
+   other letters than the diagram's (B to I, for the first piece). Ignore them. Put a dot
+   beside the corner hole that will be A1, at the cable end, on both faces, and count from
+   there.
+4. **Keep everything low.** The fan's underside is only about 3.5 mm above the top of a
    1.6 mm perfboard. Lay the resistors, the capacitor and the diode flat, keep the joints
    and wire links underneath short, and keep everything on top under 3 mm.
-3. **Place everything as in the [wiring diagram](#circuit).** Holes are given as column
+5. **Place everything as in the [wiring diagram](#circuit).** Holes are given as column
    and row, with A1 at the cable end, top left:
 
    | What | Holes |
    |---|---|
    | R1, 100 Ω (gate resistor) | B1 and F1 |
-   | R2, 10 kΩ (gate pull-down) | F2 and F6 |
-   | R3, 10 kΩ (Hall pull-up) | C3 and C7 |
-   | D1, 1N5819 | anode G4, banded end (cathode) G7 |
-   | C1, 100 nF | D6 and D7, bent over to lie flat across E6 and E7 |
-   | Cable, from the notch | A7 (1, 5V), A6 (2, GND), A1 (3, PWM), A3 (4, Hall) |
-   | Hall sensor leads | B7 (pin 1, VDD), B6 (pin 2, GND), B5 (pin 3, OUT) |
-   | Fan leads | F7 (red), G3 (black) |
-   | MOSFET legs | H3 (gate), H4 (drain), H5 (source) |
+   | R2, 10 kΩ (gate pull-down) | G1 and G5 |
+   | R3, 10 kΩ (Hall pull-up) | C2 and C6 |
+   | D1, 1N5819 | anode F3, banded end (cathode) F6 |
+   | C1, 100 nF | E5 and E6, bent over to lie flat across D5 and D6 |
+   | Cable, from the notch | A6 (1, 5V), A5 (2, GND), A1 (3, PWM), A3 (4, Hall) |
+   | Hall sensor leads | B6 (pin 1, VDD), B5 (pin 2, GND), B3 (pin 3, OUT) |
+   | Fan leads | G6 (red), E3 (black) |
+   | MOSFET legs | H2 (gate), H3 (drain), H4 (source) |
 
    The resistors' leads are 4 holes (10.16 mm) apart, so a standard 6.3 mm body lies flat
-   between them, and the diode's are 3.
-4. Solder the three resistors, the 100 nF and the diode, then bridge the holes underneath,
+   between them, and the diode's are 3. R3 and C1, and D1 and R2, lie side by side a column
+   apart and may touch, which does no harm.
+6. Solder the three resistors, the 100 nF and the diode, then bridge the holes underneath,
    node by node:
 
    | Node | Bridges |
    |---|---|
    | PWM | A1–B1 |
-   | GATE | F1–F2–G2–H2–H3 |
-   | DRAIN | G3–G4–H4 |
-   | HALL | A3–B3–C3, and B3–B4–B5 |
-   | GND | all of row 6, A6 to H6, then H6–H5 |
-   | 5V | row 7 from A7 to G7. H7 stays empty |
+   | GATE | F1–G1–H1–H2 |
+   | DRAIN | E3–F3–G3–H3 |
+   | HALL | A3–B3–C3–C2 |
+   | GND | all of row 5, A5 to H5, then H5–H4 |
+   | 5V | row 6 from A6 to G6. H6 stays empty |
 
    Turned over, the board is a mirror image, with column A on the right; the figure's small
    view shows it that way. For the two rails, a bare tinned wire laid along the row and
    soldered at each hole is quicker than a run of solder blobs. Before going on, look along
-   the underside for solder joining row 6 to row 7, or H3, H4 and H5 to each other: those
+   the underside for solder joining row 5 to row 6, or H2, H3 and H4 to each other: those
    holes sit side by side on different nodes.
-5. The MOSFET's leads have to cross the 3 mm stop to reach the board. With it printed face
-   up and the tab toward +X, its legs come in gate, drain, source from the top, which is H3,
-   H4, H5. Bend them up over the stop into those holes if they reach, or join them with
+7. The MOSFET's leads have to cross the 3 mm stop to reach the board. With it printed face
+   up and the tab toward +X, its legs come in gate, drain, source from the top, which is H2,
+   H3, H4. Bend them up over the stop into those holes if they reach, or join them with
    short wires.
-6. Cut the fan's leads to reach the board with some slack, about 70 mm, and solder red to
-   **F7** (the 5V rail) and black to **G3** (Drain). Dress the leads along a strut, clear
+8. Cut the fan's leads to reach the board with some slack, about 70 mm, and solder red to
+   **G6** (the 5V rail) and black to **E3** (Drain). Dress the leads along a strut, clear
    of the blades.
 
 ### The Hall sensor
@@ -338,20 +351,20 @@ and down the inside of the −X wall to the board, so it needs longer leads.
    Stagger the three joints along the leads so their heat shrink doesn't stack up: the
    groove is 5.2 mm wide.
 2. Shrink a sleeve over each joint.
-3. Solder the other ends to **B7** (pin 1, VDD), **B6** (pin 2, GND) and **B5** (pin 3,
-   OUT) on the board.
+3. Solder the other ends to **B6** (pin 1, VDD), **B5** (pin 2, GND) and **B3** (pin 3,
+   OUT) on the board. B4, between OUT and GND, stays empty.
 
 ### The cable, the connector and the Uno end
 
 1. Measure the cable route from the stirrer's slots to the Uno, clear of the gantry. About
    1.5 m was assumed.
 2. **Stirrer end:** strip about 30 mm of jacket, feed the cable in through the notch, and
-   solder the four conductors to **A7** (1, 5V), **A6** (2, GND), **A1** (3, PWM) and
+   solder the four conductors to **A6** (1, 5V), **A5** (2, GND), **A1** (3, PWM) and
    **A3** (4, Hall). Write down which colour is which pin.
 3. **Strain relief**, once the board is in the base ([stage 6](#6-assemble)): a dab of hot
    glue over the jacket in the notch, so a tug on the cable pulls on the jacket and not on
    the joints. A small zip tie through the board also works, but the board's holes are
-   about 1 mm, so drill out two of the free ones at its −X edge first (A2, A4 or A5).
+   about 1 mm, so drill out the two free ones at its −X edge first (A2 and A4).
 4. **Uno end:** splice the cable to the leads of one half of the JST-XH pair, pin 1 to cable 1
    and so on, with heat shrink on each joint. Put the half with recessed contacts (the
    housing) on the Uno side, so its live pins can't be touched when unplugged.

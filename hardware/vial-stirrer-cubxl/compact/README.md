@@ -86,9 +86,10 @@ instead of 1.1.
   out of a block of stirrers ([why](../README.md#side-by-side-on-the-deck)).
 - **The junction board** is wired as in BUILD.md's [wiring diagram](../BUILD.md#circuit), hole
   for hole. Only the cable arrives from another side: through the −Y notch, under the fan, to
-  the board's −Y edge below columns E–G. Run its cores flat along that edge to column A, into
-  A7 (5V) and A6 (GND), and up the board's −X edge over the free holes to A3 (Hall) and A1
-  (PWM). Keep them off the parts' bodies, since the fan is only about 3.5 mm above the board.
+  the board's −Y edge below columns E–G. Run its cores flat along that edge's margin, which
+  has no holes, to column A, into A6 (5V) and A5 (GND), and up the board's −X edge to A3
+  (Hall) and A1 (PWM). Keep them off the parts' bodies, since the fan is only about 3.5 mm
+  above the board.
   The Hall sensor's leads still come down the −X wall, as the holder's groove hasn't moved.
 - **The fan pocket is 45.8 × 40.8 mm,** so a 40 mm fan has 0.4 mm of play across Y. If a
   fan at the top of its ±0.5 mm tolerance won't drop in, ease the walls' inner faces.

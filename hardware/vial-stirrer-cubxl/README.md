@@ -48,7 +48,7 @@ the capper and the pipette, instead of its own XIAO RP2040.
 | [`onshape/vial_stirrer.fs`](onshape/vial_stirrer.fs) | The whole model as one FeatureScript feature. All dimensions are constants at the top |
 | [`build_onshape.py`](build_onshape.py) | Pushes the FeatureScript to Onshape, rebuilds, renders every step, exports the STLs and STEP files |
 | [`assembly_video.py`](assembly_video.py) | Renders the assembly as a video, a GIF and a contact sheet, one part per step, from the Onshape model's parts |
-| [`wiring_diagram.py`](wiring_diagram.py) | Draws [`img/wiring_uno.png`](img/wiring_uno.png), the Uno version's wiring with the junction board hole by hole, after checking that layout against BUILD.md's netlist. It also prints the hole list |
+| [`wiring_diagram.py`](wiring_diagram.py) | Draws [`img/wiring_uno.png`](img/wiring_uno.png), the Uno version's wiring with the junction board hole by hole, after checking that layout against BUILD.md's netlist and that the board fits both bases. It also prints the hole list |
 | [`onshape/render_steps.json`](onshape/render_steps.json) | Camera and caption for each render |
 | [`onshape/document.json`](onshape/document.json) | Onshape document ids |
 | [`BUILD.md`](BUILD.md) | Build guide for the Uno-driven version: printing, keys, inserts, magnets, wiring, bench checks, assembly, flashing the Uno, first spins, the deck file |
@@ -325,8 +325,9 @@ The drawing above is [`BUILD.md`](BUILD.md#circuit)'s, which also lists every ho
 bridge of the junction board. The text version follows.
 
 The circuit is the XIAO version's with the controller moved off the stirrer. The
-resistors go on a scrap of perfboard cut to the XIAO's 21 × 17.5 mm, which sits on the
-same rails, and the cable leaves through the USB-C notch in the −X wall (13 mm wide).
+resistors go on an 8 × 6-hole piece of perfboard, 20.3 × 20 mm, the full width of the BOM's
+6-hole strips. It sits on the XIAO's rails, and the cable leaves through the USB-C notch in
+the −X wall (13 mm wide).
 
 ```
   Uno        cable, 22 AWG x 4        stirrer
@@ -568,8 +569,8 @@ part per step:
 - The parts a step adds are orange, or amber for a second kind of part. The side panel gives
   the step's instruction from BUILD.md, its tool and its stage.
 - The Onshape model has the XIAO RP2040 in the controller pocket, so the junction board, its
-  parts and the cable are drawn by the script instead. Where the parts sit on the board is
-  only indicative; BUILD.md's netlist is what counts.
+  parts and the cable are drawn by the script instead. It is the earlier 8 × 7-hole board,
+  and where the parts sit on it is only indicative; BUILD.md's wiring diagram is what counts.
 - The bar turning at the end is only an illustration. Nothing has been built or run.
 
 [`img/assembly_steps_sheet.png`](img/assembly_steps_sheet.png) shows where each step ends. The
