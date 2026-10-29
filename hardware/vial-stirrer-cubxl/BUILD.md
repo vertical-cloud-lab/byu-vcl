@@ -9,8 +9,8 @@ and its wiring differ (README, [Wiring, XIAO version](README.md#wiring-xiao-vers
 It covers both sizes of stirrer: the **compact** one, 49 × 44 mm, and the first design,
 **56 × 56 mm**. They share the fan, the magnets and their carrier, the deck keys, the vial
 cup and the junction board, and the fan, the magnets and the vial sit at the same heights in
-both. Only the base, the vial holder and the way they are screwed together differ. Where a step differs, it says **Compact:**, and stage 6 has a
-part for each.
+both. Only the base, the vial holder and the way they are screwed together differ. Where a
+step differs, it says **Compact:**, and stage 6 has a part for each.
 
 | | Compact, 49 × 44 mm | 56 × 56 mm |
 |---|---|---|
