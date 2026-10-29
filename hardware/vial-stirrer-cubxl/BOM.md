@@ -19,9 +19,13 @@ Item 10 (the perfboard) was rechecked on **2026-10-29** in headed Chromium on th
 with [`scripts/amazon_listing_pi.py`](../../scripts/amazon_listing_pi.py): the strips are 6 × 28 holes
 (columns A–Z, A, B; rows 01–06), 80 × 20 × 1.6 mm, still $7.99, with 9 left in stock.
 
+Item 13 (the 100 nF capacitor) was added on **2026-10-29**, at @benwhitney5463's request, and
+checked the same way: MCIGICM's kit, $6.99, in stock, shipped by Amazon, with 20 each of 100 nF
+(104M, Y5V, 50 V) and 10 nF (103K, X7R, 50 V) in 1206.
+
 ## 1. Parts to buy (ME order)
 
-All twelve can go in one Amazon cart. The notes column gives other vendors where they
+All thirteen can go in one Amazon cart. The notes column gives other vendors where they
 are cheaper or carry the same part.
 
 | # | Part | Per stirrer | Order | Pack | Price | Notes |
@@ -38,9 +42,11 @@ are cheaper or carry the same part.
 | 10 | Perfboard, 2.54 mm pitch, 6 holes wide: a piece **8 × 6 holes** (20.3 × 20 mm) | 1 | [Amazon B0FVFTDYYH](https://www.amazon.com/dp/B0FVFTDYYH) | 20 strips, 2 × 8 cm, 6 × 28 holes | $7.99 | The junction board that sits where the XIAO would; three pieces to a strip ([`BUILD.md`](BUILD.md#the-junction-board)). Optional: the resistors can be spliced in-line with heat shrink instead |
 | 11 | Heat-set insert, **M3 × 5.7 mm** (ruthex RX-M3x5.7) | 8 | [Amazon B08BCRZZS3](https://www.amazon.com/dp/B08BCRZZS3) | 100 | $9.99 | Ø4.0 mm holes, 6.5 mm deep |
 | 12 | Socket head screw kit, **M3, 304 stainless**, 6–30 mm | 4 × M3×16, 4 × M3×12 | [Amazon B0D4L6QRZB](https://www.amazon.com/dp/B0D4L6QRZB) | 540 pcs | $9.99 | Stainless, not steel: the magnets catch on steel screws |
+| 13 | Capacitor, **100 nF, 1206 chip** (3.2 × 1.6 mm), from a 16-value kit | 1 | [Amazon B06XDHC93D](https://www.amazon.com/dp/B06XDHC93D) | 320 (20 of each value) | $6.99 | Across the Hall sensor's supply, as Melexis recommends. It is soldered on top across the pads of E5 and E6 ([`BUILD.md`](BUILD.md#the-junction-board)). A leaded 100 nF won't do there: its ~4 mm body, laid flat, rides up on R3's end, under the fan. The kit's 100 nF is Y5V, fine for decoupling. Its 10 nF is the optional one in section 3. One value, X7R: [B08XQXLJFD](https://www.amazon.com/dp/B08XQXLJFD), 100 for $7.14 |
 
-**Cost.** All twelve packs come to **$126.32**. That drops to **$101.35** if the
-MOSFET, the diode and the resistors come from the capper's leftovers and lab stock. Once
+**Cost.** All thirteen packs come to **$133.31**. That drops to **$108.34** if the
+MOSFET, the diode and the resistors come from the capper's leftovers and lab stock.
+Item 13 was added after ME order 13518 went in, so it needs an order of its own. Once
 the packs are bought, each further stirrer costs about **$20**, of which the fan is $7.43
 and 1.5 m of cable about $4. For more
 stirrers, the fan (one each), the stir bars (ten to a pack) and the cable (10 ft covers
@@ -81,8 +87,7 @@ and 3 mm, to go under the vial. Any slicer can make these as a cylinder primitiv
 | Adafruit Proto Shield v5, if it is on the Uno ([capper BOM](../../modules/electromagnetic-capper/BOM.md) item 4) | Solder the JST-XH socket's leads to 5V, GND, D2 and D10 |
 | Male–male jumper wires (capper BOM item 10, Adafruit 4482) | Instead of the proto shield: one pin each into the Uno's 5V, GND, D2 and D10 headers |
 | CA glue, hot glue, heat shrink, 26 AWG hookup wire | Magnets, carrier, Hall sensor and its 60 mm leads. The keys press in; glue them only if they are loose |
-| 100 nF ceramic capacitor | Across the Hall sensor's VDD and GND, as Melexis recommends ([`BUILD.md`](BUILD.md#circuit)) |
-| 10 nF ceramic capacitor | Only if the measured rpm reads above 0 with the fan off: D2 to GND at the Uno |
+| 10 nF ceramic capacitor | Only if the measured rpm reads above 0 with the fan off: D2 to GND at the Uno. Item 13's kit has 1206 ones; a leaded one is easier at the Uno's headers |
 | Soldering iron | Wiring, and pressing in the heat-set inserts |
 
 ## 4. Not needed when the Uno drives it

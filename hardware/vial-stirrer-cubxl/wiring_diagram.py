@@ -10,10 +10,10 @@ check() runs first and makes sure the picture is the circuit. The leads, wires a
 bridges in PARTS, LANDINGS and BRIDGES have to join exactly the six nodes of BUILD.md's
 netlist, and the cable's four cores have to reach the Uno pins the stirrer firmware uses,
 none of them a pin the capper or the pipette already has. No hole may hold two leads, no
-lead may sit under a part's body, no two bodies may overlap at the sizes in SIZE, every part
-has to lie flat at a lead spacing it can take, and the MOSFET's legs have to go straight into
-column H in gate, drain, source order. fit() then checks that the piece of board fits on the
-rails of both bases. If any of that fails, the script stops instead of drawing.
+lead may sit under a part's body, no two bodies may overlap at the sizes in SIZE (the 100 nF is
+a 1206 chip, BOM item 13), every part has to lie flat at a lead spacing it can take, and the
+MOSFET's legs have to go straight into column H in gate, drain, source order. fit() then
+checks that the piece of board fits on the rails of both bases. If any of that fails, the script stops instead of drawing.
 
 Where the numbers come from:
 - Uno R3 header positions: Arduino's 0.1 in grid, with the 0.16 in step between D7 and D8.
@@ -88,18 +88,19 @@ UNO_STIR = {("T", 1.54): "PWM", ("T", 2.40): "HALL", ("B", 1.50): "5V", ("B", 1.
 NCOL, NROW = 8, 6
 PITCH = 2.54
 STRIP_W = 20.0                  # BOM item 10: 20 x 80 mm strips, 6 x 28 holes
-# Parts lying flat on top: ref, kind, value, (hole, terminal) for each lead, and for the
-# capacitor the side its body lies on. A resistor's leads are 4 holes apart (10.16 mm for a
-# 6.3 mm body), the diode's 3 or 4, the capacitor's 1 or 2.
+# Parts on top: ref, kind, value, and (hole, terminal) for each end. A resistor's leads are 4 holes
+# apart (10.16 mm for a 6.3 mm body) and the diode's 3 or 4, each lying flat between its holes. The
+# 100 nF is a 1206 chip (BOM item 13) soldered on top across the pads of two neighbouring holes. A
+# leaded 100 nF has a body about 4 mm across: laid flat beside E5-E6 it would ride up on R3's end.
 PARTS = [
     ("R1", "res", "100 Ω", ((1, 0), "100 R"), ((5, 0), "100 R")),
     ("R2", "res", "10 k", ((6, 0), "10 k gate pull-down"), ((6, 4), "10 k gate pull-down")),
     ("R3", "res", "10 k", ((2, 1), "10 k Hall pull-up"), ((2, 5), "10 k Hall pull-up")),
     ("D1", "diode", "1N5819", ((5, 2), "1N5819 anode"), ((5, 5), "1N5819 cathode")),
-    ("C1", "cap", "100 nF", ((4, 4), "100 nF"), ((4, 5), "100 nF"), -1),
+    ("C1", "smd", "100 nF", ((4, 4), "100 nF"), ((4, 5), "100 nF")),
 ]
-# Body sizes, mm, along the leads x across: 1/4 W resistor, DO-41, a radial ceramic bent over flat
-SIZE = {"res": (6.3, 2.4), "diode": (4.8, 2.6), "cap": (4.2, 2.6)}
+# Body sizes, mm, along the leads x across: 1/4 W resistor, DO-41, 1206 chip
+SIZE = {"res": (6.3, 2.4), "diode": (4.8, 2.6), "smd": (3.2, 1.6)}
 # Wires and legs that end in a hole
 LANDINGS = [
     ("cable 1", (0, 5)), ("cable 2", (0, 4)), ("cable 3", (0, 0)), ("cable 4", (0, 2)),
@@ -131,31 +132,20 @@ def hole_name(h):
 
 
 def body_holes(part):
-    """Holes a part's body lies over (no lead may go in them)."""
-    kind = part[1]
+    """Holes a part's body lies over (no lead may go in them): those between its ends."""
     (a, _), (b, _) = part[3], part[4]
     dc, dr = b[0] - a[0], b[1] - a[1]
     n = abs(dc) + abs(dr)
     sc, sr = (dc > 0) - (dc < 0), (dr > 0) - (dr < 0)
-    inner = [(a[0] + sc * i, a[1] + sr * i) for i in range(1, n)]
-    if kind != "cap":
-        return inner
-    side = part[5]   # the capacitor lies flat beside its leads, on this side (+1: down or right)
-    if sr == 0:
-        return inner + [(a[0] + sc * i, a[1] + side) for i in range(n + 1)]
-    return inner + [(a[0] + side, a[1] + sr * i) for i in range(n + 1)]
+    return [(a[0] + sc * i, a[1] + sr * i) for i in range(1, n)]
 
 
 def body_box(part):
     """A part's body in plan, mm: (x, y, half width, half height), x along the columns, y down the rows."""
-    kind = part[1]
     (a, _), (b, _) = part[3], part[4]
-    length, width = SIZE[kind]
+    length, width = SIZE[part[1]]
     x, y = (a[0] + b[0]) / 2 * PITCH, (a[1] + b[1]) / 2 * PITCH
-    vert = a[0] == b[0]
-    if kind == "cap":   # lies flat beside its leads
-        x, y = (x + part[5] * PITCH, y) if vert else (x, y + part[5] * PITCH)
-    return (x, y, width / 2, length / 2) if vert else (x, y, length / 2, width / 2)
+    return (x, y, width / 2, length / 2) if a[0] == b[0] else (x, y, length / 2, width / 2)
 
 
 def check():
@@ -167,7 +157,7 @@ def check():
         if a[0] != b[0] and a[1] != b[1]:
             raise SystemExit(f"{ref} does not lie along a row or a column")
         span = abs(a[0] - b[0]) + abs(a[1] - b[1])
-        ok = {"res": {4}, "diode": {3, 4}, "cap": {1, 2}}[kind]
+        ok = {"res": {4}, "diode": {3, 4}, "smd": {1}}[kind]
         if span not in ok:
             raise SystemExit(f"{ref}: leads {span} holes apart, needs {sorted(ok)}")
         for h, term in (part[3], part[4]):
@@ -436,27 +426,28 @@ class Board:
         text(self.ax, lx, ly, f"{ref}  {value}", 8.4 if kind == "diode" else 8.6, "bold",
              "#2a2a2a" if kind == "res" else "#f0f0f0", rotation=0 if horiz else 90, zorder=9)
 
-    def cap(self, part):
-        """A radial ceramic capacitor bent over to lie flat beside its leads."""
-        ref, value, side = part[0], part[2], part[5]
+    def smd(self, part):
+        """A 1206 chip soldered on top across the pads of two neighbouring holes."""
+        ref, value = part[0], part[2]
         a, b = part[3][0], part[4][0]
         (xa, ya), (xb, yb) = self.xy(a), self.xy(b)
         vert = a[0] == b[0]
-        sx = -1 if self.mirror else 1
-        cx, cy = ((xa + sx * side * self.p, (ya + yb) / 2) if vert else ((xa + xb) / 2, ya - side * self.p))
-        L, D = SIZE["cap"]
-        bw, bh = (D * MM, L * MM) if vert else (L * MM, D * MM)
-        for h in (a, b):
-            hy = self.xy(h)[1]
-            self.lead(h, cx - (bw / 2 if vert else 0) * sx * side, hy if vert else cy)
-        self.ax.add_patch(FancyBboxPatch((cx - bw / 2, cy - bh / 2), bw, bh, boxstyle="round,pad=0,rounding_size=0.08",
-                                         fc="#3d7fc6", ec="#1d4f86", lw=1.4, zorder=7))
-        text(self.ax, cx, cy, f"{ref} {value.replace(' nF', 'n')}", 7.6, "bold", "white", rotation=90 if vert else 0,
-             zorder=9)
+        cx, cy = (xa + xb) / 2, (ya + yb) / 2
+        L, D = (v * MM for v in SIZE["smd"])
+        bw, bh = (D, L) if vert else (L, D)
+        self.ax.add_patch(Rectangle((cx - bw / 2, cy - bh / 2), bw, bh, fc="#b8955f", ec="#5c4524", lw=1.2, zorder=7))
+        e = 0.5 * MM   # the tinned terminations, soldered to the pads
+        for s_ in (-1, 1):
+            ex, ey = (cx, cy + s_ * (bh - e) / 2) if vert else (cx + s_ * (bw - e) / 2, cy)
+            ew, eh = (bw, e) if vert else (e, bh)
+            self.ax.add_patch(Rectangle((ex - ew / 2, ey - eh / 2), ew, eh, fc="#d6d6d6", ec="#6d6d6d", lw=0.8,
+                                        zorder=7.5))
+        text(self.ax, cx, cy, f"{ref} {value.replace(' nF', 'n')}", 6.2, "bold", "#1a1a1a",
+             rotation=90 if vert else 0, zorder=9)
 
     def parts(self):
         for part in PARTS:
-            (self.cap if part[1] == "cap" else self.axial)(part)
+            (self.smd if part[1] == "smd" else self.axial)(part)
 
 
 def draw_mosfet(ax, board, rows, x_body):
@@ -651,7 +642,8 @@ def figure(nets):
     # --- underside ------------------------------------------------------------------------------
     under = Board(ax, 1.2, 3.1, 0.24, nets, mirror=True)
     under.draw(size=8, row_labels=False)
-    for h in [part[3][0] for part in PARTS] + [part[4][0] for part in PARTS] + [h for _, h in LANDINGS]:
+    leaded = [part for part in PARTS if part[1] != "smd"]   # the chip is soldered on top only
+    for h in [part[3][0] for part in leaded] + [part[4][0] for part in leaded] + [h for _, h in LANDINGS]:
         x, y = under.xy(h)
         ax.add_patch(Circle((x, y), 0.06, fc="#c9c9cc", ec="#555555", lw=0.6, zorder=5))
     for r in range(NROW):
@@ -669,7 +661,7 @@ def figure(nets):
         "(+X) on the right. Rows 5 and 6 are the GND and 5V rails. It is the strip's full 20 mm width: "
         "its edges rest on the rails.\n"
         "Everything on top lies flat and under 3 mm, as the fan sits about 3.5 mm above the board. Leads are 4 holes "
-        "apart (10.16 mm) for the resistors, 3 for the diode and 1 for the capacitor.\n"
+        "apart (10.16 mm) for the resistors and 3 for the diode. C1 is a 1206 chip, soldered on top across E5 and E6.\n"
         "The colours are the six nodes, not your wire colours: write down which cable core is which JST pin. "
         "The diode's band faces the 5V rail; backwards, it shorts 5 V when the fan turns on.\n"
         "The 10 k from GATE to GND holds the fan off while D10 isn't driving it (cable unplugged, Uno resetting). "

@@ -354,8 +354,8 @@ the −X wall (13 mm wide).
 - **A JST-XH pair near the Uno** (BOM item 9) lets the stirrer come off the deck.
 - **A 100 nF capacitor across the sensor's VDD and GND** is what Melexis recommends
   ([datasheet](https://www.melexis.com/-/media/files/documents/datasheets/us1881-datasheet-melexis.pdf),
-  Application Comments). [`BUILD.md`](BUILD.md#circuit) puts one on the junction board,
-  from lab stock.
+  Application Comments). [`BUILD.md`](BUILD.md#the-junction-board) puts one on the
+  junction board, a 1206 chip across E5 and E6 (BOM item 13).
 - **Power** comes from the Uno's 5V, which comes from the Pi over USB. There is room for
   it ([Current draw](#current-draw-and-power)). If the Uno resets when the fan kicks,
   feed the fan from the electromagnet's 5 V supply instead, with the grounds joined.

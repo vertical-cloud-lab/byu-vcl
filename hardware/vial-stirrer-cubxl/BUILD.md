@@ -59,13 +59,14 @@ panel gives each step's instruction from this guide. The junction board in it is
 | Bought | Perfboard, an 8 × 6-hole piece of one strip | 1 | BOM item 10 |
 | Bought | M3 × 5.7 mm heat-set inserts | 8 | BOM item 11 |
 | Bought | M3 stainless socket head screws | 4 × 16 mm, 4 × 12 mm | BOM item 12 |
-| Lab stock | 100 nF ceramic capacitor | 1 | Recommended by Melexis across the sensor's supply ([US1881 datasheet](https://www.melexis.com/-/media/files/documents/datasheets/us1881-datasheet-melexis.pdf), Application Comments). Not in the BOM |
+| Bought | 100 nF capacitor, 1206 chip | 1 | BOM item 13. Recommended by Melexis across the sensor's supply ([US1881 datasheet](https://www.melexis.com/-/media/files/documents/datasheets/us1881-datasheet-melexis.pdf), Application Comments) |
 | Lab stock | CA glue (gel), hot glue, heat shrink, 26 AWG hookup wire in three colours, a small zip tie | | |
-| Lab stock | 10 nF ceramic capacitor | 1 | Only if needed, see [Troubleshooting](#troubleshooting) |
+| Lab stock | 10 nF ceramic capacitor | 1 | Only if needed, see [Troubleshooting](#troubleshooting). BOM item 13's kit has them |
 
 ### Tools
 
 - Soldering iron, solder, flux. A spare or conical tip for the inserts.
+- Fine tweezers, for the 1206 capacitor.
 - Multimeter with continuity and DC volts.
 - Calipers with a depth rod.
 - 2.5 mm hex key, for M3 socket heads.
@@ -296,7 +297,7 @@ side of the stop, under the fan, printed face up and tab toward +X.
    beside the corner hole that will be A1, at the cable end, on both faces, and count from
    there.
 4. **Keep everything low.** The fan's underside is only about 3.5 mm above the top of a
-   1.6 mm perfboard. Lay the resistors, the capacitor and the diode flat, keep the joints
+   1.6 mm perfboard. Lay the resistors and the diode flat, keep the joints
    and wire links underneath short, and keep everything on top under 3 mm.
 5. **Place everything as in the [wiring diagram](#circuit).** Holes are given as column
    and row, with A1 at the cable end, top left:
@@ -307,17 +308,21 @@ side of the stop, under the fan, printed face up and tab toward +X.
    | R2, 10 kΩ (gate pull-down) | G1 and G5 |
    | R3, 10 kΩ (Hall pull-up) | C2 and C6 |
    | D1, 1N5819 | anode F3, banded end (cathode) F6 |
-   | C1, 100 nF | E5 and E6, bent over to lie flat across D5 and D6 |
+   | C1, 100 nF, 1206 chip | On top, across the pads of E5 and E6 |
    | Cable, from the notch | A6 (1, 5V), A5 (2, GND), A1 (3, PWM), A3 (4, Hall) |
    | Hall sensor leads | B6 (pin 1, VDD), B5 (pin 2, GND), B3 (pin 3, OUT) |
    | Fan leads | G6 (red), E3 (black) |
    | MOSFET legs | H2 (gate), H3 (drain), H4 (source) |
 
    The resistors' leads are 4 holes (10.16 mm) apart, so a standard 6.3 mm body lies flat
-   between them, and the diode's are 3. R3 and C1, and D1 and R2, lie side by side a column
-   apart and may touch, which does no harm.
-6. Solder the three resistors, the 100 nF and the diode, then bridge the holes underneath,
-   node by node:
+   between them, and the diode's are 3. D1 and R2 lie side by side a column apart and may
+   touch, which does no harm. C1 is a chip because a leaded 100 nF has a body about 4 mm
+   across: laid flat beside E5 and E6, it would ride up on R3's end, under the fan. The chip
+   is about 1 mm tall and clears R3 by 3 mm and D1 by 0.4 mm.
+6. Solder C1 first, while the top is clear. Tin the E5 pad, hold the chip across E5 and E6
+   with tweezers, and touch the iron to the tinned pad to tack one end. Then solder the E6
+   end and go back over E5. Then solder the three resistors and the diode, and bridge the
+   holes underneath, node by node:
 
    | Node | Bridges |
    |---|---|
