@@ -428,13 +428,15 @@ and down the inside of the −X wall to the board, so it needs longer leads.
 
    **Compact:** strip about **50 mm** of jacket, so that the jacket ends in the −Y wall's
    notch and the cores reach the board. With the board on its rails, lay the cores from
-   the notch across the floor to the board's −Y edge, which they meet below columns E–G.
-   Run them flat along that edge's margin, which has no holes, to column A. Two go into
-   **A6** (5V) and **A5** (GND), and the other two go up the board's −X edge to **A3**
-   (Hall) and **A1** (PWM). A1 is the farthest, about 40 mm from the notch. Keep the cores
-   off the parts' bodies, since the fan is only about 3.5 mm above the board, and away from
-   the −X fan post at the notch's −X side. Shape them with the board sitting in the base
-   before you solder, then lift it out to solder.
+   the notch across the floor to the board's −Y edge, which they meet below columns E–G,
+   and along that edge's margin, which has no holes, to column A. The margin is under
+   3 mm wide clear of the pads, and the fan is only about 3.5 mm above the board, so the four
+   go as a bundle two wide and two high, not side by side. At column A, two go into **A6**
+   (5V) and **A5** (GND), and the other two go on up the board's −X edge, over column A, to
+   **A3** (Hall) and **A1** (PWM). A1 is the farthest, about 40 mm from the notch. Keep
+   the cores off the parts' bodies, and clear of the fan post just −X of the notch. Shape
+   them with the board sitting in the base before you solder, then lift it out to solder.
+   This route hasn't been tried; check it with the fan set on its posts before soldering.
 3. **Strain relief**, once the board is in the base ([stage 6](#6-assemble)): a dab of hot
    glue over the jacket in the notch, so a tug on the cable pulls on the jacket and not on
    the joints. A small zip tie through the board also works, but the board's holes are
@@ -505,6 +507,15 @@ same for both.
 One set of four M3 × 20 holds both the fan and the holder, so there is no screwing the fan
 down on its own first. The carrier therefore goes on the hub before the fan goes in, and the
 fan, the washers and the holder go on together.
+
+![The compact stirrer's assembly: the board, cable and MOSFET in the base; the fan on its posts; a washer on each corner and the holder above; the four M3 × 20](img/compact_assembly.png)
+
+*Steps 2, 3, 5–6 and 7 below. Orange is what the step adds, amber a second kind of part. The
+base is see-through in the first view, to show the board, and the cores run as described in
+[stage 5](#the-cable-the-connector-and-the-uno-end). The fan, carrier, MOSFET, Hall sensor and
+inserts are the Onshape model's; the base and holder are the compact STLs; the board, cable,
+washers and screws are drawn to this guide's dimensions
+([`compact/render_compact_steps.py`](compact/render_compact_steps.py)).*
 
 1. **Carrier onto the hub, on the bench.** Do it as in the 56 × 56 mm stirrer's step 3,
    with the fan lying rotor side up and its leads already on the board: sand the carrier if

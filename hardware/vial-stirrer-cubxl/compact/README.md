@@ -20,6 +20,7 @@ height except the base's wall top.
 |---|---|
 | [`build_compact.py`](build_compact.py) | Builds both parts in CadQuery and writes the STLs and [`check_output.txt`](check_output.txt) |
 | [`render_compact.py`](render_compact.py) | Draws [`../img/compact_parts.png`](../img/compact_parts.png) from the STLs |
+| [`render_compact_steps.py`](render_compact_steps.py) | Draws [`../img/compact_assembly.png`](../img/compact_assembly.png), four steps of the assembly for BUILD.md stage 6, from these STLs and the Onshape model's bought parts |
 | [`../stl/compact/base_compact.stl`](../stl/compact/base_compact.stl) | The base: 49 × 44 × 19 mm. Print floor down |
 | [`../stl/compact/vial_holder_compact.stl`](../stl/compact/vial_holder_compact.stl) | The vial holder: 49 × 44 × 22 mm. Print flange down |
 
@@ -89,10 +90,11 @@ its parts list, prints, inserts, cable route and its own assembly steps
   out of a block of stirrers ([why](../README.md#side-by-side-on-the-deck)).
 - **The junction board** is wired as in BUILD.md's [wiring diagram](../BUILD.md#circuit), hole
   for hole. Only the cable arrives from another side: through the −Y notch, under the fan, to
-  the board's −Y edge below columns E–G. Run its cores flat along that edge's margin, which
-  has no holes, to column A, into A6 (5V) and A5 (GND), and up the board's −X edge to A3
-  (Hall) and A1 (PWM). Keep them off the parts' bodies, since the fan is only about 3.5 mm
-  above the board. Strip about 50 mm of jacket, so that the jacket ends in the notch.
+  the board's −Y edge below columns E–G. Run its cores along that edge's margin, which has
+  no holes, to column A, into A6 (5V) and A5 (GND), and up the board's −X edge to A3 (Hall)
+  and A1 (PWM). The margin is under 3 mm wide clear of the pads and the fan only about
+  3.5 mm above the board, so they go as a bundle two wide and two high. Strip about 50 mm of
+  jacket, so that the jacket ends in the notch. Untried: check it with the fan on its posts.
   The Hall sensor's leads still come down the −X wall, as the holder's groove hasn't moved.
 - **The fan pocket is 45.8 × 40.8 mm,** so a 40 mm fan has 0.4 mm of play across Y. If a
   fan at the top of its ±0.5 mm tolerance won't drop in, ease the walls' inner faces.
@@ -100,7 +102,8 @@ its parts list, prints, inserts, cable route and its own assembly steps
 ## Not done
 
 - **It isn't in Onshape.** `vial_stirrer.fs` has no compact option, so there are no STEP
-  files, renders or assembly video for it.
+  files or assembly video for it. The four renders in BUILD.md stage 6 are drawn by
+  `render_compact_steps.py` instead.
 - **Some docs still describe the 10-22 plan or today's stirrer only:** `deck_tiling.py`'s
   `COMPACT` list (pads, 6.5 mm holes, vents on both Y walls) and the assembly video.
   `BUILD.md` and `BOM.md` cover both sizes since 2026-10-29.
