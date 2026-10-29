@@ -171,7 +171,8 @@ jobs:
       # secret inline in its sticky-flag hint, which is the failure mode this step
       # removes. Access to the Pis is still bounded by tailnet ACLs, not by joining.
       - name: Connect to Tailscale
-        uses: tailscale/github-action@v2
+        continue-on-error: true
+        uses: tailscale/github-action@v4
         with:
           oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
           oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
