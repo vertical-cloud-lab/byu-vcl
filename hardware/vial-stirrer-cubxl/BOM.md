@@ -15,6 +15,10 @@ Prices and stock were checked from the CubXL Pi on **2026-10-19**. The raw resul
 [`vendor_lookup_20261019.json`](../../outputs/issue-169-magnetic-stirrer/vendor_lookup_20261019.json).
 Amazon prices change, so check them again when you order.
 
+Item 10 (the perfboard) was rechecked on **2026-10-29** in headed Chromium on the CubXL Pi,
+with [`scripts/amazon_listing_pi.py`](../../scripts/amazon_listing_pi.py): the strips are 6 × 28 holes
+(columns A–Z, A, B; rows 01–06), 80 × 20 × 1.6 mm, still $7.99, with 9 left in stock.
+
 ## 1. Parts to buy (ME order)
 
 All twelve can go in one Amazon cart. The notes column gives other vendors where they
