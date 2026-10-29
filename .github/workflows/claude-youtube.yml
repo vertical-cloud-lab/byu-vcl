@@ -49,7 +49,8 @@ jobs:
       # residential IP. The OAuth client must request BOTH tags or the join
       # fails outright; see the Tailscale section of CLAUDE.md.
       - name: Connect to Tailscale
-        uses: tailscale/github-action@v2
+        continue-on-error: true
+        uses: tailscale/github-action@v4
         with:
           oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
           oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
