@@ -70,18 +70,21 @@ instead of 1.1.
 
 ## Building it
 
-[`BUILD.md`](../BUILD.md) is written for today's stirrer. For this one, the differences are:
+[`BUILD.md`](../BUILD.md) covers this stirrer as well as the 56 × 56 mm one, stage by stage:
+its parts list, prints, inserts, cable route and its own assembly steps
+([stage 6, compact](../BUILD.md#compact-stirrer)). In short, the differences are:
 
 - **Inserts:** 4, in the fan posts only.
 - **Screws:** 4 × M3 × 20, from the top: through the holder's counterbores, the washers and
   the fan, into the inserts. No M3 × 16 or M3 × 12. The BOM's M3 kit has 20 mm screws.
-- **Washers:** 4 × M3 flat washers, 0.5 mm thick (DIN 125 or ISO 7089: Ø3.2 × Ø7 × 0.5 mm).
-  Use stainless, for the reason the screws are stainless. They are not on the BOM, so take
-  them from lab stock. One goes on each of the fan's top corners, under the flange.
-- **Order:** the fan, the washers and the holder go on together, held by the same four
-  screws. Fit the carrier and the Hall sensor first. Then set the fan on its posts, push the
-  four screws down through the holder, hang a washer on each screw's tip, and lower the
-  holder onto the fan.
+- **Washers:** 4 × M3 flat washers, 0.5 mm thick (DIN 125 or ISO 7089: Ø3.2 × Ø7 × 0.5 mm),
+  stainless, for the reason the screws are stainless. The BOM's M3 kit (item 12) has 140 M3
+  flat washers, Ø7 mm; its listing gives no thickness, so measure one. One goes on each of
+  the fan's top corners, under the flange.
+- **Order:** one set of screws holds both the fan and the holder, so the carrier goes on the
+  hub first, on the bench. Then the board, the fan on its posts, the Hall sensor into the
+  holder, a washer on each of the fan's corners, the holder (groove over the −X wall), and
+  the four screws.
 - **The cable** leaves through the notch in the −Y wall. Turn the stirrer so that wall faces
   out of a block of stirrers ([why](../README.md#side-by-side-on-the-deck)).
 - **The junction board** is wired as in BUILD.md's [wiring diagram](../BUILD.md#circuit), hole
@@ -89,7 +92,7 @@ instead of 1.1.
   the board's −Y edge below columns E–G. Run its cores flat along that edge's margin, which
   has no holes, to column A, into A6 (5V) and A5 (GND), and up the board's −X edge to A3
   (Hall) and A1 (PWM). Keep them off the parts' bodies, since the fan is only about 3.5 mm
-  above the board.
+  above the board. Strip about 50 mm of jacket, so that the jacket ends in the notch.
   The Hall sensor's leads still come down the −X wall, as the holder's groove hasn't moved.
 - **The fan pocket is 45.8 × 40.8 mm,** so a 40 mm fan has 0.4 mm of play across Y. If a
   fan at the top of its ±0.5 mm tolerance won't drop in, ease the walls' inner faces.
@@ -98,8 +101,8 @@ instead of 1.1.
 
 - **It isn't in Onshape.** `vial_stirrer.fs` has no compact option, so there are no STEP
   files, renders or assembly video for it.
-- **The other docs still describe today's stirrer:** `BUILD.md`, `BOM.md` (no washers),
-  `deck_tiling.py`'s `COMPACT` list (pads, 6.5 mm holes, vents on both Y walls) and the
-  assembly video.
+- **Some docs still describe the 10-22 plan or today's stirrer only:** `deck_tiling.py`'s
+  `COMPACT` list (pads, 6.5 mm holes, vents on both Y walls) and the assembly video.
+  `BUILD.md` and `BOM.md` cover both sizes since 2026-10-29.
 - **Nothing has been assembled.** The fan pocket's fit, the washers' 0.5 mm, and the cable
   path under the fan are still unchecked.

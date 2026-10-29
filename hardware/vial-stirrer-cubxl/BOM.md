@@ -1,15 +1,18 @@
 # Bill of materials: single-vial magnetic stirrer, driven by the CubXL's Arduino Uno
 
 For one stirrer, as asked for by @benwhitney5463 on
-[PR #269](https://github.com/vertical-cloud-lab/byu-vcl/pull/269). It is the design in
+[PR #269](https://github.com/vertical-cloud-lab/byu-vcl/pull/269), in either size: the
+[compact 49 × 44 mm one](compact/README.md) or the 56 × 56 mm one. The two differ only in
+the base, the vial holder and the M3 parts (items 11 and 12). It is the design in
 [`README.md`](README.md), with the vial cup copied from the 9-vial holder. The stirrer
 is driven by the **Arduino Uno already on the CubXL**, the one that runs the capper and
 the pipette, rather than by its own XIAO RP2040. See
 [Driving it from the CubXL's Arduino Uno](README.md#driving-it-from-the-cubxls-arduino-uno)
 for the wiring and the firmware.
 
-**Status: designed, not built.** Nothing has been printed, wired, flashed or run.
-Once the parts are in, [`BUILD.md`](BUILD.md) is the step-by-step build guide.
+**Status: designed, not built.** The printed parts of both sizes have been printed on the
+lab's A1 mini ([`print/`](print)), but nothing has been wired, flashed or run. Once the
+parts are in, [`BUILD.md`](BUILD.md) is the step-by-step build guide, for both sizes.
 
 Prices and stock were checked from the CubXL Pi on **2026-10-19**. The raw results are in
 [`vendor_lookup_20261019.json`](../../outputs/issue-169-magnetic-stirrer/vendor_lookup_20261019.json).
@@ -40,8 +43,8 @@ are cheaper or carry the same part.
 | 8 | Cable, **22 AWG, 4 conductors**, stranded | ~1.5 m | [Amazon B0BVQ7ZNCQ](https://www.amazon.com/dp/B0BVQ7ZNCQ) | 10 ft | $7.99 | Stirrer to Uno. Measure the route clear of the gantry first; 10 ft is enough for two stirrers |
 | 9 | Connector pair, **JST-XH 4-pin**, plug and socket with 10 cm leads | 1 pair | [Amazon B0DNT63PTW](https://www.amazon.com/dp/B0DNT63PTW) | 10 pairs | $8.99 | Inline, near the Uno, so the stirrer can come off the deck without unsoldering |
 | 10 | Perfboard, 2.54 mm pitch, 6 holes wide: a piece **8 × 6 holes** (20.3 × 20 mm) | 1 | [Amazon B0FVFTDYYH](https://www.amazon.com/dp/B0FVFTDYYH) | 20 strips, 2 × 8 cm, 6 × 28 holes | $7.99 | The junction board that sits where the XIAO would; three pieces to a strip ([`BUILD.md`](BUILD.md#the-junction-board)). Optional: the resistors can be spliced in-line with heat shrink instead |
-| 11 | Heat-set insert, **M3 × 5.7 mm** (ruthex RX-M3x5.7) | 8 | [Amazon B08BCRZZS3](https://www.amazon.com/dp/B08BCRZZS3) | 100 | $9.99 | Ø4.0 mm holes, 6.5 mm deep |
-| 12 | Socket head screw kit, **M3, 304 stainless**, 6–30 mm | 4 × M3×16, 4 × M3×12 | [Amazon B0D4L6QRZB](https://www.amazon.com/dp/B0D4L6QRZB) | 540 pcs | $9.99 | Stainless, not steel: the magnets catch on steel screws |
+| 11 | Heat-set insert, **M3 × 5.7 mm** (ruthex RX-M3x5.7) | 8; compact: 4 | [Amazon B08BCRZZS3](https://www.amazon.com/dp/B08BCRZZS3) | 100 | $9.99 | Ø4.0 mm holes, 6.5 mm deep (7.5 mm in the compact base) |
+| 12 | Socket head screw kit, **M3, 304 stainless**, 6–30 mm, with nuts and washers | 4 × M3×16, 4 × M3×12; compact: 4 × M3×20 and 4 flat washers | [Amazon B0D4L6QRZB](https://www.amazon.com/dp/B0D4L6QRZB) | 540 pcs | $9.99 | Stainless, not steel: the magnets catch on steel screws. 15 of each length from 10 mm up, so enough for three stirrers of either size. It also has 140 M3 flat washers, Ø7 mm, which are the compact stirrer's four (listing rechecked from the CubXL Pi on 2026-10-29; it gives no thickness, so check for 0.5 mm, [`BUILD.md`](BUILD.md#measure-first)) |
 | 13 | Capacitor, **100 nF, 1206 chip** (3.2 × 1.6 mm), from a 16-value kit | 1 | [Amazon B06XDHC93D](https://www.amazon.com/dp/B06XDHC93D) | 320 (20 of each value) | $6.99 | Across the Hall sensor's supply, as Melexis recommends. It is soldered on top across the pads of E5 and E6 ([`BUILD.md`](BUILD.md#the-junction-board)). A leaded 100 nF won't do there: its ~4 mm body, laid flat, rides up on R3's end, under the fan. The kit's 100 nF is Y5V, fine for decoupling. Its 10 nF is the optional one in section 3. One value, X7R: [B08XQXLJFD](https://www.amazon.com/dp/B08XQXLJFD), 100 for $7.14 |
 
 **Cost.** All thirteen packs come to **$133.31**. That drops to **$108.34** if the
@@ -67,6 +70,12 @@ so a slicer only has to drop them onto the bed.
 | Vial holder | [`step/vial_holder.step`](step/vial_holder.step) | [`stl/vial_holder.stl`](stl/vial_holder.stl) | 1 | 17.1 cm³ | Flange down, so the fingers print upright as in the 9-vial holder. The 1.2 mm floor bridges the Ø27 mm carrier pocket; support it if the bridge sags |
 | Magnet carrier | [`step/magnet_carrier.step`](step/magnet_carrier.step) | [`stl/magnet_carrier.stl`](stl/magnet_carrier.stl) | 1 | 0.8 cm³ | Pockets up |
 | Deck key | [`step/deck_key.step`](step/deck_key.step) | [`stl/deck_key.stl`](stl/deck_key.stl) | **2** | 2.3 cm³ each | Nub up. Fix elephant's foot first; Cubware says to. The nub presses into the base, 0.05 mm a side, the best fit of the [2026-10-22 fit test](print/2026-10-22-a1mini-keys/README.md). Keep printing this one. The 0.10 and 0.15 mm keys are in [`stl/key_fit_test/`](stl/key_fit_test), in case another printer or filament comes out loose |
+| Compact base | none | [`stl/compact/base_compact.stl`](stl/compact/base_compact.stl) | 1 | 11.3 cm³ | For the compact stirrer, in place of the base. Floor down |
+| Compact vial holder | none | [`stl/compact/vial_holder_compact.stl`](stl/compact/vial_holder_compact.stl) | 1 | 11.4 cm³ | For the compact stirrer, in place of the vial holder. Flange down |
+
+The compact stirrer takes the same carrier and keys. Its base and holder were built in
+CadQuery by [`compact/build_compact.py`](compact/build_compact.py), not in Onshape, so they
+have STLs only.
 
 [`step/vial_stirrer_assembly.step`](step/vial_stirrer_assembly.step) is the whole
 stirrer as 39 solids: the printed parts, the bought parts modelled from their datasheet
@@ -74,7 +83,8 @@ dimensions, the screws and inserts, the vial and the stir bar. It is for checkin
 on the deck in CAD, not for printing. It still shows the XIAO RP2040 in the controller
 pocket, which is where the junction board (item 10) goes.
 
-About 46 cm³ in all, under 60 g of PETG even at 100% infill.
+About 46 cm³ in all, under 60 g of PETG even at 100% infill. The compact stirrer's five
+parts are about 28 cm³; Studio put the 2026-10-28 plate at 27 g.
 
 For the coupling test in README risk 1, also print **spacer discs**, Ø27 mm × 1, 2
 and 3 mm, to go under the vial. Any slicer can make these as a cylinder primitive.

@@ -6,6 +6,28 @@ covers the version that runs off the CubXL's Arduino Uno, the one that already d
 capper and the pipette. For the self-contained XIAO RP2040 version, only the controller
 and its wiring differ (README, [Wiring, XIAO version](README.md#wiring-xiao-version)).
 
+It covers both sizes of stirrer: the **compact** one, 49 × 44 mm, and the first design,
+**56 × 56 mm**. They share the fan, the magnets and their carrier, the deck keys, the vial
+cup and the junction board, and the fan, the magnets and the vial sit at the same heights in
+both. Only the base, the vial holder and the way they are screwed together differ. Where a step differs, it says **Compact:**, and stage 6 has a
+part for each.
+
+| | Compact, 49 × 44 mm | 56 × 56 mm |
+|---|---|---|
+| What it's for | Stirrers side by side, at the deck's slot pitch: 50 mm apart in X, 45 mm in Y ([README](README.md#side-by-side-on-the-deck)) | One stirrer; it takes 75 × 90 mm of deck |
+| Base and vial holder | [`stl/compact/`](stl/compact), STL only ([`compact/`](compact/README.md)) | [`step/`](step) or [`stl/`](stl) |
+| Printed on the A1 mini | 2026-10-28, with two 0.05 mm keys ([record](print/2026-10-28-a1mini-compact/README.md)) | 2026-10-21, with the old keys, which were loose in the base ([record](print/2026-10-21-a1mini/README.md)) |
+| Inserts | 4, in the fan posts | 8: 4 in the fan posts, 4 in the corner posts |
+| Screws | 4 × M3 × 20, through the holder, 4 washers and the fan into the inserts | 4 × M3 × 16 through the fan, 4 × M3 × 12 through the holder |
+| The holder sits on | the fan's corners, on four 0.5 mm M3 washers | the base's walls |
+| The cable leaves through | the −Y wall | the −X wall |
+| Vents | +X and +Y walls | +X, +Y and −Y walls |
+
+<img src="img/compact_parts.png" width="300" alt="The compact stirrer's printed parts, exploded">
+
+*The compact stirrer's printed parts, exploded: vial holder, magnet carrier, base, two deck
+keys. The cable notch is in the base's front (−Y) wall.*
+
 **No stirrer has been built yet,** so this is the first build. Some of the design's
 numbers are estimates, and the steps marked **Check** are where they get tested. Please
 write those measurements down and post them on
@@ -15,7 +37,7 @@ guide can be fixed.
 
 ![Exploded view](img/exploded.png)
 
-The assembly, one part per step (stages 2–8):
+The assembly of the 56 × 56 mm stirrer, one part per step (stages 2–8):
 
 ![The assembly, one part per step](img/assembly_steps.gif)
 
@@ -23,17 +45,18 @@ To pause on: [the same steps on YouTube](https://www.youtube.com/watch?v=YQJY8HC
 a chapter per step), or [`img/assembly_steps.mp4`](img/assembly_steps.mp4). The video's side
 panel gives each step's instruction from this guide. The junction board in it is the earlier
 8 × 7-hole one, and where its parts sit was only ever a suggestion: for the board, follow the
-[wiring diagram](#circuit).
+[wiring diagram](#circuit). There is no video of the compact stirrer. Stages 2–5 go the same
+way for it, and stage 6 has its own steps ([compact](#compact-stirrer)).
 
 | Stage | What | Where the time goes |
 |---|---|---|
 | [0](#0-before-you-start) | Parts, tools, three measurements | |
 | [1](#1-print-the-parts) | Print five parts and three spacer discs, check them | Printing |
 | [2](#2-press-the-deck-keys-into-the-base) | Deck keys pressed into the base | |
-| [3](#3-press-in-the-heat-set-inserts) | Eight heat-set inserts | |
+| [3](#3-press-in-the-heat-set-inserts) | Heat-set inserts: eight, or four in the compact base | |
 | [4](#4-glue-the-magnets-into-the-carrier) | Two magnets, opposite poles up | Glue cure |
 | [5](#5-wire-the-electronics) | Junction board, Hall sensor, cable, bench check | Soldering |
-| [6](#6-assemble) | Board, fan, carrier, sensor, holder | |
+| [6](#6-assemble) | Board, fan, carrier, sensor, holder: [56 × 56 mm](#56--56-mm-stirrer) or [compact](#compact-stirrer) | |
 | [7](#7-flash-the-uno) | Stirrer firmware onto the shared Uno | Needs the CubXL idle |
 | [8](#8-first-spins) | No vial, then water, then the coupling test | |
 | [9](#9-add-the-vial-to-the-deck-file) | Vial position and height for CubOS | Teaching |
@@ -42,26 +65,29 @@ panel gives each step's instruction from this guide. The junction board in it is
 
 ### Parts
 
-| | Item | Qty | From |
-|---|---|---|---|
-| Printed | Base, vial holder, magnet carrier | 1 each | [`step/`](step) or [`stl/`](stl), see [stage 1](#1-print-the-parts) |
-| Printed | Deck key, the 0.05 mm press fit | 2 | same |
-| Printed | Spacer discs, Ø27 × 1, 2 and 3 mm (for the coupling test) | 1 each | a cylinder in any slicer |
-| Bought | Orion OD4010-12HSS fan | 1 | BOM item 1 |
-| Bought | N52 magnets, 1/4 × 1/16 in | 2, plus 1 spare for checking poles | BOM item 2 |
-| Bought | PTFE stir bar, 15 × 6 mm | 1 | BOM item 3 |
-| Bought | US1881 Hall latch | 1 | BOM item 4 |
-| Bought | IRLZ44N MOSFET | 1 | BOM item 5 |
-| Bought | 1N5819 diode | 1 | BOM item 6 |
-| Bought | Resistors: 100 Ω, 10 kΩ × 2 | 3 | BOM item 7 |
-| Bought | 22 AWG 4-conductor cable | ~1.5 m | BOM item 8 |
-| Bought | JST-XH 4-pin plug and socket, with leads | 1 pair | BOM item 9 |
-| Bought | Perfboard, an 8 × 6-hole piece of one strip | 1 | BOM item 10 |
-| Bought | M3 × 5.7 mm heat-set inserts | 8 | BOM item 11 |
-| Bought | M3 stainless socket head screws | 4 × 16 mm, 4 × 12 mm | BOM item 12 |
-| Bought | 100 nF capacitor, 1206 chip | 1 | BOM item 13. Recommended by Melexis across the sensor's supply ([US1881 datasheet](https://www.melexis.com/-/media/files/documents/datasheets/us1881-datasheet-melexis.pdf), Application Comments) |
-| Lab stock | CA glue (gel), hot glue, heat shrink, 26 AWG hookup wire in three colours, a small zip tie | | |
-| Lab stock | 10 nF ceramic capacitor | 1 | Only if needed, see [Troubleshooting](#troubleshooting). BOM item 13's kit has them |
+| | Item | Compact | 56 × 56 mm | From |
+|---|---|---|---|---|
+| Printed | Base and vial holder | 1 each, the compact ones | 1 each | Compact: [`stl/compact/`](stl/compact). 56 × 56 mm: [`step/`](step) or [`stl/`](stl). See [stage 1](#1-print-the-parts) |
+| Printed | Magnet carrier | 1 | 1 | [`step/`](step) or [`stl/`](stl), the same part for both |
+| Printed | Deck key, the 0.05 mm press fit | 2 | 2 | same |
+| Printed | Spacer discs, Ø27 × 1, 2 and 3 mm (for the coupling test) | 1 each | 1 each | a cylinder in any slicer |
+| Bought | Orion OD4010-12HSS fan | 1 | 1 | BOM item 1 |
+| Bought | N52 magnets, 1/4 × 1/16 in | 2, plus 1 spare for checking poles | same | BOM item 2 |
+| Bought | PTFE stir bar, 15 × 6 mm | 1 | 1 | BOM item 3 |
+| Bought | US1881 Hall latch | 1 | 1 | BOM item 4 |
+| Bought | IRLZ44N MOSFET | 1 | 1 | BOM item 5 |
+| Bought | 1N5819 diode | 1 | 1 | BOM item 6 |
+| Bought | Resistors: 100 Ω, 10 kΩ × 2 | 3 | 3 | BOM item 7 |
+| Bought | 22 AWG 4-conductor cable | ~1.5 m | ~1.5 m | BOM item 8 |
+| Bought | JST-XH 4-pin plug and socket, with leads | 1 pair | 1 pair | BOM item 9 |
+| Bought | Perfboard, an 8 × 6-hole piece of one strip | 1 | 1 | BOM item 10 |
+| Bought | M3 × 5.7 mm heat-set inserts | **4** | 8 | BOM item 11 |
+| Bought | M3 stainless socket head screws | **4 × 20 mm** | 4 × 16 mm, 4 × 12 mm | BOM item 12 |
+| Bought | M3 stainless flat washers, Ø7 × 0.5 mm | **4** | none | BOM item 12: the kit has 140 M3 flat washers, Ø7 mm (listing checked 2026-10-29) |
+| Bought | 100 nF capacitor, 1206 chip | 1 | 1 | BOM item 13. Recommended by Melexis across the sensor's supply ([US1881 datasheet](https://www.melexis.com/-/media/files/documents/datasheets/us1881-datasheet-melexis.pdf), Application Comments) |
+| Lab stock | CA glue (gel), hot glue, heat shrink, 26 AWG hookup wire in three colours | | | |
+| Lab stock | A small zip tie | none | optional | For the strain relief, [stage 5](#the-cable-the-connector-and-the-uno-end) |
+| Lab stock | 10 nF ceramic capacitor | 1 | 1 | Only if needed, see [Troubleshooting](#troubleshooting). BOM item 13's kit has them |
 
 ### Tools
 
@@ -69,7 +95,7 @@ panel gives each step's instruction from this guide. The junction board in it is
 - Fine tweezers, for the 1206 capacitor.
 - Multimeter with continuity and DC volts.
 - Calipers with a depth rod.
-- 2.5 mm hex key, for M3 socket heads.
+- 2.5 mm hex key, for M3 socket heads. The M3 kit (BOM item 12) comes with one.
 - Flush cutters, wire strippers, hobby knife, 400-grit sandpaper.
 - Heat gun or lighter, for the heat shrink.
 - Fine marker.
@@ -80,8 +106,8 @@ discs this size jump across a few centimetres and chip when they hit.
 
 ### Measure first
 
-These three set the gaps in the stack, and the model had to assume them. Measure them
-before printing or gluing anything.
+These set the gaps in the stack, and the model had to assume them. Measure them before
+printing or gluing anything.
 
 1. **The fan's hub height.** Lay the fan rotor side up: that is the side **without** the
    three or four spokes (struts) that hold the motor, and its centre turns when you spin
@@ -92,13 +118,21 @@ before printing or gluing anything.
    flat underside down by the amount over 0.4 mm before you glue it on in
    [stage 6](#6-assemble). The carrier has 1.55 mm of plastic under its magnet pockets;
    keep at least 1 mm.
-2. **The vial's outside diameter, within 2 mm of its bottom.** The cup's rigid ring is
+2. **The fan's thickness**, frame face to frame face. The model has 10.5 mm. In the
+   56 × 56 mm stirrer the holder sits on the base's walls, so each 0.1 mm over 10.5 comes
+   off the carrier's 1.1 mm gap. In the compact one the holder sits on the fan, so the
+   fan's thickness moves the vial up or down instead, and the gap stays as it is.
+3. **The vial's outside diameter, within 2 mm of its bottom.** The cup's rigid ring is
    Ø27.6 mm at the floor. A vial up to that size sits on the floor; a bigger one stops on
    the ring about 2 mm higher, which also adds 2 mm between the magnets and the bar.
-3. **The deck plate's thickness**, at a slot. The model has 10 mm, the STEP's value, and
+4. **The deck plate's thickness**, at a slot. The model has 10 mm, the STEP's value, and
    the keys are 10 mm long. If the plate is thinner and sits on the machine's bed, the keys
    bottom out on the bed and hold the stirrer up by the difference, and every vial height
    on it moves by the same amount.
+5. **Compact: one of the M3 flat washers.** The model has 0.5 mm, the DIN 125 thickness for
+   M3; the kit's listing gives only the Ø7 mm outside. The washers set how high the holder
+   sits on the fan, so each 0.1 mm over 0.5 adds 0.1 mm to the carrier's gap and raises the
+   vial by the same. If they are much thicker than 0.5 mm, say on #269 before building.
 
 ## 1. Print the parts
 
@@ -114,6 +148,16 @@ print orientation, so a slicer only has to drop them onto the bed.
 | [Deck key](step/deck_key.step) | 2 | Nub up | Elephant's foot on the bottom edge makes it bind in the deck slot. The nub is a press fit in the base, 0.05 mm a side, the best fit of the [2026-10-22 fit test](print/2026-10-22-a1mini-keys/README.md). Each key has one dimple in its top face |
 | Spacer discs | 3 | Flat | Ø27 mm, 1, 2 and 3 mm thick. The cup narrows by 3°, to Ø27.3 mm at 3 mm up, so a Ø27.6 mm disc would stop short of the floor |
 
+**Compact:** print [`base_compact.stl`](stl/compact/base_compact.stl) and
+[`vial_holder_compact.stl`](stl/compact/vial_holder_compact.stl) in place of the base and the
+holder above. The carrier, the keys and the discs are the same. There are no STEP files of the
+compact parts.
+
+| Part | Qty | On the bed | Notes |
+|---|---|---|---|
+| [Compact base](stl/compact/base_compact.stl) | 1 | Floor down | 49 × 44 × 19 mm. The same key pockets and fan posts as the 56 × 56 mm base, and the same rails and stop 0.5 mm further toward +X, but no corner posts. The walls stop 1 mm under the holder, and the −Y wall has the cable notch and no vents |
+| [Compact vial holder](stl/compact/vial_holder_compact.stl) | 1 | Flange down | 49 × 44 × 22 mm. The cup, the recess and its bridge are the 56 × 56 mm holder's, copied from its STL. The flange's underside is flat, with four Ø3.4 mm holes and Ø6.5 × 3 mm counterbores for the M3 × 20 heads |
+
 Settings, as Cubware gives them for its keyed deck parts: at least 4 walls, 30 % infill
 or more, and first-layer or XY compensation for elephant's foot before you judge how the
 keys fit ([Cubware well plate holder README](https://github.com/Ursa-Laboratories/Cubware/blob/352aa95/cubxl_plus/labware/well_plate_holder/README.md#printing)).
@@ -123,6 +167,9 @@ These settings on the lab's A1 mini, all five parts on one plate, come to 42 g o
 and about 1 h 41 min. The first try's file and settings are in
 [`print/2026-10-21-a1mini/`](print/2026-10-21-a1mini/README.md). The three fit-test keys
 alone took 24 min and 6 g ([`print/2026-10-22-a1mini-keys/`](print/2026-10-22-a1mini-keys/README.md)).
+The compact stirrer's five parts came to 27 g and 1 h 11 min in Studio, and finished 72 min
+after Send on 2026-10-28
+([`print/2026-10-28-a1mini-compact/`](print/2026-10-28-a1mini-compact/README.md)).
 
 **Check the prints before going on:**
 
@@ -137,7 +184,12 @@ alone took 24 min and 6 g ([`print/2026-10-22-a1mini-keys/`](print/2026-10-22-a1
   measured from the flange's underside. Each 0.1 mm less is sag in the bridge, and it
   comes off the carrier's 1.1 mm running gap. Hub proud plus sag should stay under about
   0.6 mm.
-- [ ] **The eight insert holes** in the base are round and open, Ø4.0 mm.
+- [ ] **The insert holes** in the base, eight or four, are round and open, Ø4.0 mm.
+- [ ] **Compact: the fan drops into the base** and sits on its four posts. The pocket is
+  40.8 mm across Y for a fan that may be 40.5 mm, so if it binds, ease the ±Y walls' inner
+  faces with a knife or sandpaper. In X it has 2.9 mm to spare at each side.
+- [ ] **Compact: an M3 × 20 drops through each of the holder's four holes,** its head down in
+  the counterbore.
 
 ## 2. Press the deck keys into the base
 
@@ -177,7 +229,9 @@ pull it out with pliers and press it in again.
 <img src="img/step02_inserts.png" width="380">
 
 Eight M3 × 5.7 mm inserts: four in the short posts inside the base (the fan posts) and four
-in the corner posts.
+in the corner posts. **Compact:** four, in the fan posts only, since the compact base has no
+corner posts. Its holes are 7.5 mm deep, 1 mm deeper than in the 56 × 56 mm base, so that an
+M3 × 20 can't bottom out. The inserts still go in flush with the post tops.
 
 1. Practise on a scrap PETG print first. Use the iron temperature the insert maker gives
    for PETG; too hot and the insert sinks crooked or too deep.
@@ -283,6 +337,11 @@ place: on the two rails at the −X end of the base, against the small stop, wit
 leaving through the notch in the −X wall. The MOSFET lies flat on the floor on the other
 side of the stop, under the fan, printed face up and tab toward +X.
 
+**Compact:** the same board, wired hole for hole the same, on the same rails and stop,
+0.5 mm further toward +X. Only the cable arrives from another side: the compact base's
+notch is in its −Y wall, below columns E–G of the board, so the cable's cores run under the
+fan to reach column A ([below](#the-cable-the-connector-and-the-uno-end)).
+
 1. **Cut a piece 8 holes long from one strip.** The BOM's strips are 20 × 80 mm, with 6 rows
    of 28 holes, so the piece is the strip's full width: 8 × 6 holes, 20.3 × 20 mm. Score
    across the strip along a column of holes, on both faces, and snap it; then do the same
@@ -366,10 +425,22 @@ and down the inside of the −X wall to the board, so it needs longer leads.
 2. **Stirrer end:** strip about 30 mm of jacket, feed the cable in through the notch, and
    solder the four conductors to **A6** (1, 5V), **A5** (2, GND), **A1** (3, PWM) and
    **A3** (4, Hall). Write down which colour is which pin.
+
+   **Compact:** strip about **50 mm** of jacket, so that the jacket ends in the −Y wall's
+   notch and the cores reach the board. With the board on its rails, lay the cores from
+   the notch across the floor to the board's −Y edge, which they meet below columns E–G.
+   Run them flat along that edge's margin, which has no holes, to column A. Two go into
+   **A6** (5V) and **A5** (GND), and the other two go up the board's −X edge to **A3**
+   (Hall) and **A1** (PWM). A1 is the farthest, about 40 mm from the notch. Keep the cores
+   off the parts' bodies, since the fan is only about 3.5 mm above the board, and away from
+   the −X fan post at the notch's −X side. Shape them with the board sitting in the base
+   before you solder, then lift it out to solder.
 3. **Strain relief**, once the board is in the base ([stage 6](#6-assemble)): a dab of hot
    glue over the jacket in the notch, so a tug on the cable pulls on the jacket and not on
    the joints. A small zip tie through the board also works, but the board's holes are
    about 1 mm, so drill out the two free ones at its −X edge first (A2 and A4).
+   **Compact:** hot glue in the −Y notch only. A zip tie at the board's −X edge would be
+   too far from the notch to help.
 4. **Uno end:** splice the cable to the leads of one half of the JST-XH pair, pin 1 to cable 1
    and so on, with heat shrink on each joint. Put the half with recessed contacts (the
    housing) on the Uno side, so its live pins can't be touched when unplugged.
@@ -415,18 +486,66 @@ the bench.
 
 ## 6. Assemble
 
+The two sizes go together in a different order: [56 × 56 mm](#56--56-mm-stirrer) or
+[compact](#compact-stirrer). The checks at the [end](#check-now-that-it-is-closed) are the
+same for both.
+
+### 56 × 56 mm stirrer
+
 | | |
 |---|---|
-| <img src="img/step04_fan.png" width="300"> | **Board and fan.** Slide the junction board onto the rails against the stop, cable out through the notch, and fix the strain relief. Lay the MOSFET flat on the floor at +X, printed face up, with a dab of hot glue, its tab touching nothing. Set the fan on the four short posts **rotor side up** (the side without struts), with its leads to the board. |
-| <img src="img/step05_fan_screws.png" width="300"> | **Four M3 × 16 through the fan** into the post inserts. Snug only; the frame is plastic. Screwed down, the magnets can't lift the fan, which happened on one Pioreactor. Spin the blades by hand: nothing touches them. |
-| <img src="img/step06_magnets.png" width="300"> | **Carrier onto the hub.** If [Measure first](#measure-first) found the hub more than 0.4 mm proud, sand the carrier's underside now, before the glue. Peel any sticker off the hub and scuff it with 400 grit. Glue the carrier on, magnets up, with a thin layer of gel CA or 5-minute epoxy, **centred**: measure from the carrier's edge to the frame's round opening at four points 90° apart, and get them within about 0.3 mm. Off centre, the bar walks round the vial, the fan shakes, and the carrier may touch the sensor, which sits only 0.8 mm outside the carrier's edge. **Check:** the carrier's top stands about 3.3 mm above the fan frame's top face. The underside of the holder's floor will be 4.3 mm above that face, so a carrier top over 3.8 mm leaves less than 0.5 mm of gap, before any sag. |
-| <img src="img/step07_holder.png" width="300"> | **Hall sensor into the holder.** Turn the holder upside down. The recess ceiling is the underside of the vial floor, and a groove runs from the recess out to one side. Glue the sensor flat on the ceiling at the groove's mouth: marked face toward you (so it faces down once the holder is the right way up), plain back on the ceiling, leads lying in the groove. **Line its lead edge up with the edge of the round recess**, as the circle runs on either side of the groove. The 3 mm body then sits just inside the recess, its inner edge about 0.8 mm outside the carrier's path. There is no wall to push it against at the groove, so don't let it slide out along the groove: the further out, the weaker the signal. Tack the leads into the groove with a dab of glue. |
-| <img src="img/step08_holder_screws.png" width="300"> | **Holder on, four M3 × 12 screws.** The holder fits on four ways round, and only one is right: **the groove goes over the cable notch** (the wall without vents). Lower it on and fold the Hall leads down the inside of that wall into the gap between the fan and the wall. Before the screws: the flange sits flat on the walls all round, with no wire trapped under it. Then the screws go through the flange corners into the corner inserts. |
+| <img src="img/step04_fan.png" width="300"> | **1. Board and fan.** Slide the junction board onto the rails against the stop, cable out through the notch, and fix the strain relief. Lay the MOSFET flat on the floor at +X, printed face up, with a dab of hot glue, its tab touching nothing. Set the fan on the four short posts **rotor side up** (the side without struts), with its leads to the board. |
+| <img src="img/step05_fan_screws.png" width="300"> | **2. Four M3 × 16 through the fan** into the post inserts. Snug only; the frame is plastic. Screwed down, the magnets can't lift the fan, which happened on one Pioreactor. Spin the blades by hand: nothing touches them. |
+| <img src="img/step06_magnets.png" width="300"> | **3. Carrier onto the hub.** If [Measure first](#measure-first) found the hub more than 0.4 mm proud, sand the carrier's underside now, before the glue. Peel any sticker off the hub and scuff it with 400 grit. Glue the carrier on, magnets up, with a thin layer of gel CA or 5-minute epoxy, **centred**: measure from the carrier's edge to the frame's round opening at four points 90° apart, and get them within about 0.3 mm. Off centre, the bar walks round the vial, the fan shakes, and the carrier may touch the sensor, which sits only 0.8 mm outside the carrier's edge. **Check:** the carrier's top stands about 3.3 mm above the fan frame's top face. The underside of the holder's floor will be 4.3 mm above that face, less whatever the fan is over 10.5 mm thick, so a carrier top over 3.8 mm leaves less than 0.5 mm of gap, before any sag. |
+| <img src="img/step07_holder.png" width="300"> | **4. Hall sensor into the holder.** Turn the holder upside down. The recess ceiling is the underside of the vial floor, and a groove runs from the recess out to one side. Glue the sensor flat on the ceiling at the groove's mouth: marked face toward you (so it faces down once the holder is the right way up), plain back on the ceiling, leads lying in the groove. **Line its lead edge up with the edge of the round recess**, as the circle runs on either side of the groove. The 3 mm body then sits just inside the recess, its inner edge about 0.8 mm outside the carrier's path. There is no wall to push it against at the groove, so don't let it slide out along the groove: the further out, the weaker the signal. Tack the leads into the groove with a dab of glue. |
+| <img src="img/step08_holder_screws.png" width="300"> | **5. Holder on, four M3 × 12 screws.** The holder fits on four ways round, and only one is right: **the groove goes over the cable notch** (the wall without vents). Lower it on and fold the Hall leads down the inside of that wall into the gap between the fan and the wall. Before the screws: the flange sits flat on the walls all round, with no wire trapped under it. Then the screws go through the flange corners into the corner inserts. |
 
-**Check, now that it is closed:**
+### Compact stirrer
+
+One set of four M3 × 20 holds both the fan and the holder, so there is no screwing the fan
+down on its own first. The carrier therefore goes on the hub before the fan goes in, and the
+fan, the washers and the holder go on together.
+
+1. **Carrier onto the hub, on the bench.** Do it as in the 56 × 56 mm stirrer's step 3,
+   with the fan lying rotor side up and its leads already on the board: sand the carrier if
+   [Measure first](#measure-first) says to, peel and scuff the hub, and glue the carrier on,
+   magnets up, centred within about 0.3 mm of the frame's round opening. **Check:** the
+   carrier's top stands about 3.3 mm above the frame's top face. With 0.5 mm washers, the
+   underside of the holder's floor will be 4.3 mm above that face, the same as in the
+   56 × 56 mm stirrer.
+2. **Board and MOSFET.** Slide the junction board onto the rails against the stop. Lay the
+   cable's jacket in the −Y wall's notch, with the cores along the route from
+   [stage 5](#the-cable-the-connector-and-the-uno-end), and fix the jacket there with a dab
+   of hot glue. Lay the MOSFET flat on the floor at +X, printed face up, with a dab of hot
+   glue, its tab touching nothing.
+3. **Fan onto its four posts, rotor side up** (carrier up), with its leads to the board.
+   The ±Y walls hold it within 0.2 mm, but in X it can slide 2.9 mm each way until the
+   screws are in, so set it square over the posts. Check that the cable's cores lie flat
+   under it, and spin the blades by hand: nothing touches them.
+4. **Hall sensor into the holder,** exactly as in the 56 × 56 mm stirrer's step 4: holder
+   upside down, the sensor flat on the recess ceiling at the groove's mouth, marked face
+   toward you, its lead edge on the recess's circle, and the leads tacked into the groove.
+5. **Four washers, one on each of the fan's corners,** centred over its hole. The holder
+   rests on them. Without them it sits 0.5 mm lower, and the carrier's gap shrinks from
+   1.1 to 0.6 mm.
+6. **Holder on.** It fits on two ways round, and only one is right: **the groove goes over
+   the −X wall**, the short wall with neither vents nor the notch. Turned the other way, the
+   groove would sit over the vented +X wall and the MOSFET. Fold the Hall leads down the
+   inside of the −X wall, into the 2.9 mm gap between the fan and the wall, and lower the
+   holder straight down onto the washers without knocking them off their holes.
+7. **Four M3 × 20 through the counterbores,** each through the holder, a washer and the fan
+   into its post insert. A screw finds the washer's hole by feel. If one catches, lift the
+   holder and re-centre that washer. Start all four by two turns before tightening any, then
+   tighten them snug only: they clamp the holder, the washers and the fan's plastic frame
+   together. The heads end up flush with the flange's top. **Check:** the flange rests on
+   all four washers and doesn't rock, a gap of about 1 mm shows between the flange and the
+   base's walls all round, and no wire is trapped under the flange or a washer.
+
+### Check, now that it is closed
 
 - [ ] **Spin test.** Turn the fan through a side vent with a toothpick. It turns freely, with no
-  tick or scrape as the carrier passes the sensor.
+  tick or scrape as the carrier passes the sensor. The compact base's vents are in its +X and
+  +Y walls.
 - [ ] **Hall test.** Bench supply on pins 1 and 2 again, meter on pin 4. Turn the fan slowly
   through the vent: the reading drops to about 0 V once and rises to about 5 V once per
   turn. If it stays at one level, the magnets are the same pole up, or the sensor is too
@@ -493,6 +612,9 @@ EOF
 
 Set the stirrer in its two slots and run the cable clear of the gantry: flat on the deck or
 along its edge, taped, never across a path the head or its cables sweep. Plug in the JST.
+**Compact:** its cable leaves from the −Y side. Turn the stirrer so that side faces where
+the cable is to go, and if other labware or a second stirrer is to sit next to it, so that
+the −Y side faces out of the block ([README](README.md#side-by-side-on-the-deck)).
 
 This script, on the Pi, starts a timed run and prints the status every 2 s. The two numbers
 after `-` are the rpm (100–2000; the firmware clamps it) and the seconds. The fan stops by
@@ -556,8 +678,14 @@ its location.
 |---|---|---|
 | `location.x` | Midway between the two slot columns the keys are in. Columns are at about X = 136.668 + 25n, so the vial is at about **149.168 + 25n** | Inferred from Ben's deck file, where vial_1 at (136.668, 45) sits over a slot centre. ±1.5 mm; teach it |
 | `location.y` | The row's centre, about **45 + 45m** | Same |
-| `location.z` | The rim height in the deck frame. Ben's vials in the 9-vial holder are at 56; on the stirrer start from **63** (+7 mm), plus the spacer thickness if you use one | The vial bottom is 25.0 mm above the deck here, against 18.0 in the 9-vial holder |
+| `location.z` | The rim height in the deck frame. Ben's vials in the 9-vial holder are at 56; on the stirrer start from **63** (+7 mm), plus the spacer thickness if you use one | The vial bottom is 25.0 mm above the deck here, against 18.0 in the 9-vial holder. The same on the compact stirrer with 0.5 mm washers. There it also moves with the fan's and the washers' thickness ([Measure first](#measure-first)) |
 | `height`, `diameter` | Unchanged. They describe the vial, not where it is | CubOS's `Vial` model |
+
+The vial sits midway between its two keys on both sizes, so the same x and y apply.
+Compact stirrers side by side have their vials 50 mm apart in X (two slot columns) or 45 mm
+in Y (one row). **The Uno can drive only one of them,** though: D10 is its only free
+hardware-PWM pin. A second stirrer needs its own controller, for example the XIAO RP2040
+version (README, [Side by side on the deck](README.md#side-by-side-on-the-deck)).
 
 Then teach it like any new labware: jog the pipette, with a tip, over the vial and check the
 centre and the rim height. Run the checks (`cubxl_run.py --checks-only`: `validate_setup`,
@@ -571,7 +699,9 @@ script in stage 8, then start the run. A `set_stirrer` step modelled on CubOS's
 
 The first time a vial on the stirrer is decapped, watch it. The cup grips the vial as hard
 as the 9-vial holder does, but here nothing else weighs the holder down. If the stirrer
-comes up with the cap, see README [risk 3](README.md#risks-and-open-questions).
+comes up with the cap, see README [risk 3](README.md#risks-and-open-questions). The compact
+stirrer is about 30 % smaller in plan, and so lighter, which makes that a little more
+likely.
 
 ## Troubleshooting
 
@@ -584,7 +714,8 @@ comes up with the cap, see README [risk 3](README.md#risks-and-open-questions).
 | The Uno resets, or the Pi loses its port, when the fan starts | The 0.5 s start kick pulls the Uno's 5 V down | Feed the fan from the electromagnet's 5 V supply instead, with the grounds joined |
 | Something gets hot as soon as the fan is switched on | The diode is backwards, shorting 5 V through the MOSFET | Banded end to 5V |
 | `rpm` is above 0 with the fan stopped | Noise picked up on the Hall line over the cable | 10 nF from D2 to GND at the Uno. Keep the cable away from the stepper wiring |
-| A tick or a scrape once a turn | The carrier touches the sensor or the holder's floor | Re-centre the carrier, move the sensor out by up to 0.5 mm, or sand the carrier's underside |
+| A tick or a scrape once a turn | The carrier touches the sensor or the holder's floor. Compact: also a washer missing, or thinner than 0.5 mm | Re-centre the carrier, move the sensor out by up to 0.5 mm, or sand the carrier's underside. Compact: check the four washers |
+| Compact: a screw won't find its insert, or the holder rocks | A washer has slid off its corner under the flange | Lift the holder, re-centre the washers, and start all four screws again |
 | Grinding | The magnets are pulling on steel: a screw that isn't stainless, or a tool left nearby | Stainless screws only |
 | The bar wanders round the vial | Carrier off centre, or too fast | Re-centre; lower the rpm |
 | The bar jerks and won't speed up smoothly | Coupling too strong | A spacer disc under the vial |
@@ -600,11 +731,13 @@ README's estimates can be replaced with measurements:
 - The vial's outside diameter at the bottom, and whether it sits on the floor.
 - The deck plate's thickness, and whether the keys bottom out.
 - The holder recess depth (sag).
+- The fan's thickness, and for the compact stirrer the washers' thickness.
+- Compact: whether the fan dropped into the base, and whether the cable's cores fitted under it.
 - The fan's current at 5 V, full speed, and its peak when it starts.
 - Whether the Hall output toggles cleanly, and whether `rpm` ever reads above 0 with the fan off.
 - Whether `rpm` kept reading with a vial and bar in, or stalled only then.
 - With 10 mL of water: the highest smooth rpm with no spacer and with each spacer, and which spacer you kept.
 - Whether the Uno ever reset when the fan started.
 - Whether the stirrer lifted when a cap came off.
-- The taught vial location (x, y, z).
+- The taught vial location (x, y, z), and which size of stirrer it was.
 - A short video of the bar turning, if you can.

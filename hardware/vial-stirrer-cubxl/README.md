@@ -21,7 +21,8 @@ numbers that matter most (coupling, the Hall signal) are estimates until a first
 build. The vial cup is the exception: it is copied from the 9-vial holder already in
 use on the deck.
 
-**To build one:** follow [`BUILD.md`](BUILD.md), the step-by-step build guide. The bill
+**To build one:** follow [`BUILD.md`](BUILD.md), the step-by-step build guide, which covers
+both the 56 × 56 mm stirrer and the compact one. The bill
 of materials, with links and prices from 2026-10-19, is [`BOM.md`](BOM.md), and the
 printed parts are in [`step/`](step) and [`stl/`](stl). It can be driven by the
 [CubXL's Arduino Uno](#driving-it-from-the-cubxls-arduino-uno), the one that already runs
@@ -38,7 +39,7 @@ the capper and the pipette, instead of its own XIAO RP2040.
 | Magnets | 2 × N52, 1/4 × 1/16 in, opposite poles up, 9.8 mm apart (the Pioreactor's) |
 | Speed sensing | US1881 Hall latch beside the magnets, 1 pulse per turn |
 | Controller | The CubXL's Arduino Uno (D10 PWM, D2 Hall, a stir command added to its PANDA firmware), or a Seeed XIAO RP2040 on its own USB-C |
-| Fasteners | 4 × M3 × 16 and 4 × M3 × 12 socket head screws, 8 × M3 heat-set inserts |
+| Fasteners | 4 × M3 × 16 and 4 × M3 × 12 socket head screws, 8 × M3 heat-set inserts. Compact: 4 × M3 × 20, 4 × M3 flat washers, 4 inserts |
 | Parts cost | about $20 per stirrer once the multi-packs are bought; $101–126 for a first order ([`BOM.md`](BOM.md)) |
 
 ## Contents
@@ -51,7 +52,7 @@ the capper and the pipette, instead of its own XIAO RP2040.
 | [`wiring_diagram.py`](wiring_diagram.py) | Draws [`img/wiring_uno.png`](img/wiring_uno.png), the Uno version's wiring with the junction board hole by hole, after checking that layout against BUILD.md's netlist and that the board fits both bases. It also prints the hole list |
 | [`onshape/render_steps.json`](onshape/render_steps.json) | Camera and caption for each render |
 | [`onshape/document.json`](onshape/document.json) | Onshape document ids |
-| [`BUILD.md`](BUILD.md) | Build guide for the Uno-driven version: printing, keys, inserts, magnets, wiring, bench checks, assembly, flashing the Uno, first spins, the deck file |
+| [`BUILD.md`](BUILD.md) | Build guide for the Uno-driven version, in both sizes: printing, keys, inserts, magnets, wiring, bench checks, assembly, flashing the Uno, first spins, the deck file |
 | [`BOM.md`](BOM.md) | Bill of materials for the Uno-driven version: parts to buy with links and prices, parts to print |
 | [`step/`](step) | Printed parts as STEP: `base`, `vial_holder`, `magnet_carrier`, `deck_key` (the 0.05 mm press fit; print two), plus `vial_stirrer_assembly.step`, the whole stirrer for fit checks |
 | [`stl/`](stl) | The same printed parts as STL. Both sets are in assembly position, which is also each part's print orientation. [`stl/key_fit_test/`](stl/key_fit_test) has the deck keys at 0.10 and 0.15 mm, the two sizes from the fit test that aren't printed by default |
@@ -295,8 +296,17 @@ magnets sitting too close to the heater board, which carries two steel standoffs
 | M3 × 12 socket head, A2 stainless | 4 | Vial-holder flange to the base corner posts (47 mm square) | 5.7 mm, tip 0.5 mm above the hole floor |
 | M3 × 5.7 mm brass heat-set insert | 8 | In the base: 4 fan posts, 4 corner posts | Ø4.0 × 6.5 mm holes |
 
-The fan-screw heads sit about 12 mm outside the magnets' path, in pockets under the vial
-holder. The deck keys are a press fit. Glue holds the rest: the magnets, the carrier on
+The [compact stirrer](compact/README.md) has no corner posts, so one set of screws holds
+both the fan and the holder:
+
+| Fastener | Qty | Joins | Engagement |
+|---|---|---|---|
+| M3 × 20 socket head, A2 stainless | 4 | Holder flange, washers and fan to the base's fan posts (32 mm square), heads in 3 mm counterbores | 5.7 mm (full insert), tip 1.5 mm above the hole floor ([`check_output.txt`](compact/check_output.txt)) |
+| M3 flat washer, Ø7 × 0.5 mm, stainless | 4 | Under the flange, on the fan's corners: the holder rests on them | From the M3 kit ([`BOM.md`](BOM.md) item 12) |
+| M3 × 5.7 mm brass heat-set insert | 4 | In the fan posts | Ø4.0 × 7.5 mm holes |
+
+The fan-screw heads sit about 12 mm outside the magnets' path: in pockets under the vial
+holder, or in the compact stirrer in counterbores in the top of its flange. The deck keys are a press fit. Glue holds the rest: the magnets, the carrier on
 the hub and the Hall sensor.
 
 ## Driving it from the CubXL's Arduino Uno
