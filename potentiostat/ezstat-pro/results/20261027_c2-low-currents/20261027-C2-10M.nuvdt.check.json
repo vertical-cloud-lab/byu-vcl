@@ -1,0 +1,26 @@
+{
+  "file": "../results/20261027_c2-low-currents/20261027-C2-10M.nuvdt",
+  "nuvdt_header": [
+    "NBLOCKS:1   NUVANT_VERSION:1   DATA_TYPE:methodDATA;",
+    "NLINES:1   COMM_PAR:1.000000 Range 1 None FALSE FALSE {} {} 0.000000 0.000000 FALSE 0.000000 0.000000 0.000000 0.000000 Range 3 Range 1 Range 1 Range 3 Range 1;",
+    "METHOD:CorrInh METHOD_DATA: TRUE 1 60 FALSE 0 1 0.01 10 FALSE 0;",
+    "TIMEOFST: 1;",
+    "DATAID:Absolute Time Current Potential;"
+  ],
+  "points": 58,
+  "sample_interval_s": 1.0440597534179688,
+  "ocp": [
+    {
+      "t_start_s": 0.0,
+      "t_end_s": 58.90636920928955,
+      "points": 58,
+      "E_mean_V": -5.673263350004305e-05,
+      "E_sd_V": 1.682425868096586e-05,
+      "E_first_V": -7.358616700602158e-05,
+      "E_last_V": -4.3449344840045025e-05,
+      "drift_mV_per_10min": 0.19912389713782666
+    }
+  ],
+  "lpr": [],
+  "hold": []
+}

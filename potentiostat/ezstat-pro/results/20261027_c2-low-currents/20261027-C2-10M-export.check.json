@@ -1,0 +1,42 @@
+{
+  "file": "../results/20261027_c2-low-currents/20261027-C2-10M-export.csv",
+  "columns": {
+    "V": "Cell Potential[V]",
+    "I": "Cell Current[A]",
+    "t": "Relative Time [s]"
+  },
+  "units": {
+    "V": "v",
+    "I": "a",
+    "t": "s"
+  },
+  "points": 9,
+  "sample_interval_s": 12.0,
+  "ocp": [],
+  "lpr": [
+    {
+      "t_start_s": 0.0,
+      "t_end_s": 96.0,
+      "points": 9,
+      "E_from_V": 0.0043425151,
+      "E_to_V": 0.020163426,
+      "E_mid_V": 0.01225297055,
+      "I_at_mid_A": 1.1670650149849739e-09,
+      "I_mean_A": 1.1586205744444445e-09,
+      "I_sd_A": 5.241045008395942e-10,
+      "I_range_A": [
+        3.7190359e-10,
+        1.8810441e-09
+      ],
+      "slope_S": 1.01100062123045e-07,
+      "Rp_ohm": 9891190.756964507,
+      "residual_sd_A": 4.544586034698976e-11,
+      "Rp_resolved": true,
+      "R_ohm": 10160000.0,
+      "deviation_pct": -2.6457602660973762,
+      "pass": true
+    }
+  ],
+  "hold": [],
+  "pass": true
+}
