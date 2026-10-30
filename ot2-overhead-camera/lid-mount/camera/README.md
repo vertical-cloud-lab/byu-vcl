@@ -869,3 +869,40 @@ Otherwise the ring comes out with the lens again.
   of A or B, whichever fits, and steps only the bore.
 - **The threaded end is loose in the knurled ring:** C's is 0.06 mm a side bigger than A's, and
   D's is basic size.
+
+## 2026-10-30, 21:13 UTC: spacer in, live; much sharper, not sharp yet
+
+![The live broadcast at 15:14:07 MDT, pulled back from YouTube 13 s later](frames/2026-10-30/stream_frame_2114Z_spacer_in.jpg)
+
+@mcwilliams03 fitted the printed spacer as above and asked for the live stream
+([#234](https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-6533380355)). It was up
+from the 13:00 MDT reboot as [`N2pR7U7BdkI`](https://www.youtube.com/watch?v=N2pR7U7BdkI) (public, in
+the playlist), with no frames dropped. A frame pulled back from YouTube on the Pi was 13 s behind
+the camera. Under room light alone the camera was at its maximum exposure and gain (3.4 lux), so the
+OT-2's rail lights went on at 21:13:27 UTC, with no run active, and the same self-removing timer as on
+[22 Oct](#2026-10-22-2046-utc-live-far-out-of-focus) turns them off at 23:00 UTC (17:00 MDT).
+
+A full-resolution still taken 9 s later
+([half-size copy](frames/2026-10-30/still_2113Z_spacer_in.jpg)) was measured with
+[`back_focus_sweep.py`](back_focus_sweep.py)'s `measure()` and [`focus_side.py`](focus_side.py)'s
+`fit_well()`, unchanged. The 23 Oct sweep's sharpest still, turn 0, was re-fitted the same way for
+comparison. The iris is about the same in both, judging by the exposure under the rail lights.
+
+| | 23 Oct, turn 0: no spacer, knurled ring all the way out | Today: printed spacer in |
+|---|---|---|
+| Blur spot, rms radius at the plate | 5.5 mm (217 px at 39.7 px/mm) | **2.4 mm** (83 px at 34.0 px/mm) |
+| Sharpness (paint-well contrast) | 79 | 195 |
+| Blur spot's shape | Triangle, apex up: picture behind the sensor | Round: doesn't say which side |
+
+- **Less than half the blur, but not sharp.** The wells and the gaps between them show; their edges
+  don't.
+- **The still doesn't say which way to go.** The spot fits as round, so the turn of the focus
+  thumbscrew has to decide it, on the stream.
+- **The picture is about 15 % too big for the orange box** (34.0 px/mm against 29.4), so the plate's
+  right and top edges are out of the picture. The middle of its well grid is about 11 mm towards
+  the top of the picture and 5 mm to the right of the cross.
+
+What to do next is [Fitting the C–CS ring](#fitting-the-ccs-ring) from step 1, with the stream: zoom out
+until the plate fits the box, then find the sharpest point with the focus thumbscrew. If that is at the
+NEAR end and still soft, turn the knurled ring out a turn at a time, refocusing each time; if it is at
+the FAR end, turn the ring in. The numbers are in [`still_2113Z.json`](frames/2026-10-30/still_2113Z.json).
