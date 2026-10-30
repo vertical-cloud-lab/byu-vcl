@@ -1,0 +1,18 @@
+{"day": "2026-10-28",
+ "parts": [
+  {"from": "21:21:30", "to": "21:23:38", "speed": 4, "label": "Bambu Studio's first start on the runner (the login after it is cut)"},
+  {"from": "21:25:37", "to": "21:27:40", "speed": 2, "label": "Device page: the A1 mini idle, the plate empty, the nozzle (0.4 mm) and the HMS list"},
+  {"from": "21:27:40", "to": "21:43:40", "speed": 32, "label": "Modelling the compact base and holder (in the terminal, off screen); the hold for the print behind the bed, and Ben's go"},
+  {"from": "21:43:40", "to": "21:51:50", "speed": 4, "label": "Slicing: Sync info, PETG from A4, five STLs, BUILD.md's settings; the floating-cantilever warning, the base reloaded, sliced again"},
+  {"from": "21:51:50", "to": "21:54:25", "speed": 2, "label": "A fresh frame and the HMS tab, then Send"},
+  {"from": "21:54:25", "to": "22:02:30", "speed": 8, "label": "The printer prepares: PETG loaded, bed levelling, flow calibration"},
+  {"from": "22:02:30", "to": "23:06:30", "speed": 64, "label": "Printing, layer 1 to 110"},
+  {"from": "23:06:30", "to": "23:07:50", "speed": 2, "label": "Finished: 100 %, heaters off, no HMS alert"}
+ ],
+ "blur": [
+  ["21:25:37", "21:27:38", [[274, 136, 1024, 362]]],
+  ["21:52:05", "21:53:35", [[274, 136, 1024, 362]]],
+  ["21:54:09", "22:02:30", [[274, 136, 1024, 362]]],
+  ["22:02:30", "23:06:30", [[274, 136, 335, 135], [274, 271, 170, 70], [1069, 136, 229, 165]]],
+  ["23:06:30", "23:07:50", [[274, 136, 1024, 362]]]
+ ]}

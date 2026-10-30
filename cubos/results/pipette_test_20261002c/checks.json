@@ -1,0 +1,167 @@
+{
+  "name": "pipette_test_20261002c",
+  "argv": [
+    "--name",
+    "pipette_test_20261002c",
+    "--gantry",
+    "cubos/configs/gantry/cub_xl_ben_3_instrument.yaml",
+    "--deck",
+    "cubos/configs/deck/ben_2vials_tiprack.yaml",
+    "--home-check",
+    "--frames-at",
+    "2,3,4,8,9,10"
+  ],
+  "outdir": "/home/vcl/cubxl_runs/pipette_test_20261002c",
+  "byu_vcl": {
+    "commit": "021ad70",
+    "configs_dirty": false
+  },
+  "cubos": {
+    "commit": "496819c",
+    "patches_applied": [
+      "grbl-prompt-status-polling.patch",
+      "p20-gen2-plunger-constants.patch",
+      "pipette-connect-tolerate-failed-home-main.patch",
+      "tipped-hover-clamp-main.patch"
+    ]
+  },
+  "configs": {
+    "cub_xl_ben_3_instrument.yaml": "996da208d8d7",
+    "ben_2vials_tiprack.yaml": "6c0502f1f18a",
+    "pipette_test.yaml": "16eb7f2c5376"
+  },
+  "pi": {
+    "throttled": "throttled=0x0",
+    "uptime": "up 1 day, 22 hours, 12 minutes"
+  },
+  "ports": {
+    "gantry": {
+      "port": "/dev/ttyUSB0",
+      "device": "/dev/ttyUSB0",
+      "by_id": "/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0"
+    },
+    "vial_capper_decapper": {
+      "port": "/dev/ttyACM0",
+      "device": "/dev/ttyACM0",
+      "by_id": "/dev/serial/by-id/usb-Arduino__www.arduino.cc__0043_03535343335351018130-if00"
+    },
+    "pipette": {
+      "port": "/dev/ttyACM0",
+      "device": "/dev/ttyACM0",
+      "by_id": "/dev/serial/by-id/usb-Arduino__www.arduino.cc__0043_03535343335351018130-if00"
+    }
+  },
+  "protocol": {
+    "steps": 12,
+    "first": "home",
+    "commands": [
+      "home",
+      "move",
+      "decap",
+      "pick_up_tip",
+      "aspirate",
+      "move",
+      "cap",
+      "decap",
+      "blowout",
+      "drop_tip",
+      "cap",
+      "home"
+    ]
+  },
+  "grbl": {
+    "status": "<Alarm|WPos:364.000,281.000,125.000|FS:0,0|WCO:-364.000,-281.000,-125.000>",
+    "g54": [
+      -364.0,
+      -281.0,
+      -125.0
+    ],
+    "max_travel": [
+      364.0,
+      281.0,
+      125.0
+    ],
+    "feed_mm_min": 3000.0,
+    "max_rate": [
+      5000.0,
+      5000.0,
+      5000.0
+    ],
+    "accel": [
+      300.0,
+      300.0,
+      300.0
+    ],
+    "soft_limits": 1.0,
+    "hard_limits": 1.0,
+    "mismatches": []
+  },
+  "arduino_before": [
+    {
+      "cmd": "connect",
+      "dt_s": 3.766,
+      "reply": "ok"
+    },
+    {
+      "cmd": "STATUS",
+      "code": 14,
+      "t": "2026-10-02T20:04:44.070+00:00",
+      "dt_s": 0.008,
+      "reply": "OK:{\"homed\":0,\"pos\":0.00,\"max_vol\":20.00}"
+    },
+    {
+      "cmd": "cap sensor",
+      "code": 7,
+      "t": "2026-10-02T20:04:44.077+00:00",
+      "dt_s": 0.004,
+      "reply": "OK:{\"value1\":0}"
+    },
+    {
+      "cmd": "EMAG_OFF",
+      "code": 6,
+      "t": "2026-10-02T20:04:44.081+00:00",
+      "dt_s": 0.005,
+      "reply": "OK:{\"msg\":\"Electromagnet off\"}"
+    }
+  ],
+  "gates": {
+    "validate": {
+      "pass": true,
+      "rc": 0,
+      "s": 0.4
+    },
+    "mock": {
+      "pass": true,
+      "rc": 0,
+      "s": 4.5
+    },
+    "shadow": {
+      "pass": true,
+      "rc": 0,
+      "s": 4.5
+    },
+    "shadow_tipstuck": {
+      "pass": true,
+      "rc": 0,
+      "s": 4.5
+    }
+  },
+  "tic": {
+    "before": {
+      "rc": 0,
+      "vin": "12.5",
+      "energized": "No",
+      "state": "De-energized",
+      "stopping": "Intentionally de-energized",
+      "since_last": "None"
+    },
+    "energized": {
+      "rc": 0,
+      "vin": "10.9",
+      "energized": "Yes",
+      "state": "Normal",
+      "stopping": "None",
+      "since_last": "None"
+    }
+  }
+}

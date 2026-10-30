@@ -1,0 +1,5 @@
+{
+ "task_id": "f39a753c-0a7c-4677-b6b5-d81315b4cc66",
+ "job": "job-futurehouse-paperqa3",
+ "query": "For magnetic stirring of a single 20 mL glass vial (about 25 mm inner diameter) with a PTFE-coated stir bar 10 to 15 mm long, what does the literature report about: (1) how magnet-to-stir-bar distance, magnet grade/size and pole arrangement affect maximum coupling torque and decoupling speed; (2) typical decoupling speeds for small stir bars in water versus viscous fluids; (3) how speed ramping and closed-loop RPM control (e.g. fan tachometer feedback with PID) prevent decoupling; (4) mixing time versus stir speed in small vials; and (5) heating of the sample from the motor or coils. Cite quantitative values where available."
+}
