@@ -16,7 +16,9 @@ so the key now has a press-fit nub. Of three sizes printed on 2026-10-22
 ([print record](print/2026-10-22-a1mini-keys/README.md)), the 0.05 mm one fit best, so it is
 the key to print from now on. A [compact 49 × 44 mm version](compact/README.md), so that
 stirrers fit side by side on the deck, was modelled and printed on the A1 mini on 2026-10-28
-([print record](print/2026-10-28-a1mini-compact/README.md)). Nothing has been wired or run. The
+([print record](print/2026-10-28-a1mini-compact/README.md)). A second compact set, from the same
+file, paused itself at layer 57 of 110 on 2026-10-30 on the AMS Lite's slot 4 warning
+([print record](print/2026-10-30-a1mini-compact/README.md)). Nothing has been wired or run. The
 numbers that matter most (coupling, the Hall signal) are estimates until a first
 build. The vial cup is the exception: it is copied from the 9-vial holder already in
 use on the deck.
@@ -57,7 +59,7 @@ the capper and the pipette, instead of its own XIAO RP2040.
 | [`step/`](step) | Printed parts as STEP: `base`, `vial_holder`, `magnet_carrier`, `deck_key` (the 0.05 mm press fit; print two), plus `vial_stirrer_assembly.step`, the whole stirrer for fit checks |
 | [`stl/`](stl) | The same printed parts as STL. Both sets are in assembly position, which is also each part's print orientation. [`stl/key_fit_test/`](stl/key_fit_test) has the deck keys at 0.10 and 0.15 mm, the two sizes from the fit test that aren't printed by default |
 | [`compact/`](compact/README.md), [`stl/compact/`](stl/compact) | The compact 49 × 44 mm base and vial holder, built in CadQuery by `compact/build_compact.py` from `vial_stirrer.fs`'s numbers, and checked against the Onshape parts. STL only. `compact/render_compact_steps.py` draws its assembly for BUILD.md, [`img/compact_assembly.png`](img/compact_assembly.png) |
-| [`print/`](print) | Print records. [`2026-10-21-a1mini/`](print/2026-10-21-a1mini/README.md): all five parts on one A1 mini plate in white PETG Basic, sent from Bambu Studio by an `@claude-print` run. It has the file the printer ran, the settings and a camera timelapse. [`2026-10-22-a1mini-keys/`](print/2026-10-22-a1mini-keys/README.md): the deck key at 0.05, 0.10 and 0.15 mm, for the fit test, the same way. 0.05 fit best. [`2026-10-28-a1mini-compact/`](print/2026-10-28-a1mini-compact/README.md): the compact stirrer's base and holder, a carrier and two 0.05 keys |
+| [`print/`](print) | Print records. [`2026-10-21-a1mini/`](print/2026-10-21-a1mini/README.md): all five parts on one A1 mini plate in white PETG Basic, sent from Bambu Studio by an `@claude-print` run. It has the file the printer ran, the settings and a camera timelapse. [`2026-10-22-a1mini-keys/`](print/2026-10-22-a1mini-keys/README.md): the deck key at 0.05, 0.10 and 0.15 mm, for the fit test, the same way. 0.05 fit best. [`2026-10-28-a1mini-compact/`](print/2026-10-28-a1mini-compact/README.md): the compact stirrer's base and holder, a carrier and two 0.05 keys. [`2026-10-30-a1mini-compact/`](print/2026-10-30-a1mini-compact/README.md): the same plate again, from the same file; paused at 80 % on the AMS Lite slot 4 warning |
 | [`img/`](img) | Onshape's renders (steps 1–10 of the XIAO version, assembled, exploded, section, contact sheet), the assembly video, GIF and contact sheet of the Uno version, and its wiring diagram |
 | [`firmware/main.py`](firmware/main.py) | MicroPython speed controller for the XIAO RP2040 (untested) |
 | [`../../cubos/firmware/panda-arduino-stirrer.patch`](../../cubos/firmware/panda-arduino-stirrer.patch) | The same controller as two commands in the CubXL Uno's PANDA firmware. Built, image committed, not flashed |
@@ -527,7 +529,8 @@ leaving front and back, or as a row of four
 - **A few more M3 × 20 screws.** Four compact stirrers take 16, and the M3 kit (item 12) has
   15. A second kit or a few stainless M3 × 20 covers it.
 - **Two more compact print sets.** One was printed on 2026-10-28, and a second went to the A1
-  mini on 2026-10-30.
+  mini on 2026-10-30 but paused at 80 % on an AMS Lite warning
+  ([record](print/2026-10-30-a1mini-compact/README.md)).
 - The other packs cover four stirrers.
 
 **The firmware change** (not written yet):
