@@ -1,0 +1,181 @@
+{
+ "what": "OT-2 lid camera mount: the deck with the 3.5 mm camera bosses (the deck of plate 2, without its Pi spacers and shims)",
+ "result": "printed; Studio's Device page showed 100 %, layer 28/28 and no 'Printing' label from about 20:42:17 UTC; no HMS alert or error dialog appeared during the print",
+ "printer": {
+  "model": "Bambu Lab H2D",
+  "name_in_studio": "BYU VCL H2D - Théoden",
+  "nozzles": "left 0.6 mm standard flow (used); right 0.6 mm TPU high flow (idle)",
+  "firmware": "01.03.00.00 (01.04.00.00 offered, not installed)",
+  "ams": "AMS 2 Pro 04.00.21.87 on the left nozzle (A2 black PLA, A4 light-blue PLA); AMS HT 04.00.21.86 (empty) and external TPU spool on the right",
+  "mode": "Bambu cloud",
+  "lan": "TLS certificate CN matched H2D_SERIAL at 2026-10-08T19:36Z, but MQTT refused H2D_ACCESS_CODE ('Not authorized'); no LAN pre-flight or watch was possible"
+ },
+ "route": "route 3 in bambu/README.md: Bambu Studio 02.08.02.61 GUI on the GitHub Actions runner's Xvfb display, logged in to the lab's Bambu account, sent through Bambu's cloud",
+ "source": {
+  "model": "ot2-overhead-camera/lid-mount/exports/deck.stl (112 x 112 x 8.5 mm, already in print orientation), as of commit 199adef on claude/ot2-lid-camera-mount-20260925 (PR #234)",
+  "stl_md5": "07bb621cafed6e6157a9656ea3c78d91",
+  "why_not_the_cli_project": "lid_mount_A1mini_PLA.3mf is sliced for the A1 mini's 0.4 mm nozzle; the deck was imported into a new Studio project after 'Sync info' set the printer to the H2D with its 0.6 mm nozzles"
+ },
+ "presets": {
+  "machine": "Bambu Lab H2D 0.6 nozzle",
+  "process": "0.30mm Standard @BBL H2D 0.6 nozzle (modified as below)",
+  "filament": "Bambu PLA Basic @BBL H2D 0.6 nozzle (GFA00)",
+  "plate": "Textured PEI Plate"
+ },
+ "gui_changes_from_stock": {
+  "wall_loops": "2 -> 3",
+  "sparse_infill_density": "15% -> 25%",
+  "enable_circle_compensation": "0 -> 1",
+  "why": "the lid-mount project's print settings (slice/README.md); the H2D 0.6 nozzle PLA Basic preset has its own circle-compensation coefficients (hole_coef_2 -0.0028, hole_coef_3 0.12)",
+  "filament_grouping": "Convenience mode (filament_map_mode = Auto For Match): the PLA on the left nozzle, whose AMS holds it"
+ },
+ "slice_checks": {
+  "slicer_warnings": "none in Studio's viewport and none stored in slice_info.config",
+  "plate_gcode_md5": "e2aec047217f8f8d6c3194c8d218db2c",
+  "start_gcode": "Bambu's H2D template dated 2026-06-05: M620 S0A filament load present; the template has no M412",
+  "temperatures": "nozzle 220 C; bed M190 S55 (Textured PEI); G29.1 Z-0.02 textured-plate offset present",
+  "layers": "28 x 0.30 mm, first 0.30 mm, top at 8.40 mm; plate layers 1-17 (to 5.1 mm), camera bosses layers 18-28 (3.3 mm)",
+  "other": "no supports, no brim (auto brim chose none), nothing outside the bed, line width 0.62 mm, elephant-foot compensation 0.15 mm"
+ },
+ "send_options": {
+  "job_name": "lid_mount_deck_H2D (renamed from 'deck')",
+  "plate_type": "Textured PEI",
+  "ams_mapping": "filament 1 (PLA) -> A2, black Bambu PLA Basic, left nozzle",
+  "timelapse": false,
+  "auto_bed_leveling": "On (dialog default Auto)",
+  "flow_dynamics_calibration": "On (dialog default Auto)",
+  "nozzle_offset_calibration": "Off (one nozzle used)"
+ },
+ "sent_file": {
+  "path": "sent/lid_mount_deck_H2D.3mf",
+  "provenance": "Studio's own upload copy, written to /tmp/bamboo_model/<session>/Metadata/.<pid>.0.3mf at the moment of Send; DesignerUserId (the lab's Bambu account ID) blanked in 3D/3dmodel.model, nothing else changed",
+  "plate_1_gcode_md5": "e2aec047217f8f8d6c3194c8d218db2c",
+  "same_gcode_as": [
+   "Studio's slice in /tmp/bamboo_model",
+   "an 'Export plate sliced file' made at 19:54 UTC, before Send"
+  ]
+ },
+ "estimates": {
+  "model_time": "35m48s",
+  "total_time": "41m4s",
+  "filament_g": 47.04,
+  "filament_m": 15.52,
+  "layers": 28,
+  "max_z_mm": 8.4,
+  "studio_total_time_vs_actual": "41m04s estimated; 44.6 min from Send to finish, start sequence (7.5 min) included"
+ },
+ "go": {
+  "by": "timothy-commins",
+  "comment": "https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-6067925635",
+  "text": "plate clear",
+  "asked_for": "plate empty (the outline on the plate is the printed Bambu logo), Textured PEI, someone able to reach the printer for about an hour; deck only, black PLA in A2, unless told otherwise",
+  "frame_shown": "20261008T194651Z_h2d_camera_studio.jpg"
+ },
+ "login_code_relayed_by": {
+  "by": "timothy-commins",
+  "comment_id": 6067734839
+ },
+ "request_comment": "https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-6067524181",
+ "thread_comment": "https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-6067531078",
+ "timeline_utc": {
+  "request": "2026-10-08T19:32:00Z",
+  "session_start": "2026-10-08T19:32:19Z",
+  "lan_status_attempt": "2026-10-08T19:36Z (TLS identity matched H2D_SERIAL; MQTT login refused)",
+  "recording_started": "2026-10-08T19:36:38Z",
+  "login_pressed": "2026-10-08T19:40:10Z",
+  "login_code_posted": "2026-10-08T19:44:39Z",
+  "login_code_typed": "2026-10-08T19:44:45Z",
+  "device_page_check": "2026-10-08T19:46:51Z (idle, no HMS, heaters off; frame posted with the request for the go)",
+  "sync_info_and_slice": "2026-10-08T19:49Z-19:53Z",
+  "pre_send_export_checked": "2026-10-08T19:54Z (plate_info: MD5 intact, no warnings, H2D start G-code)",
+  "go": "2026-10-08T19:56:17Z",
+  "fresh_device_check": "2026-10-08T19:56:43Z",
+  "sent": "2026-10-08T19:57:42Z",
+  "homing_by": "2026-10-08T19:58:29Z",
+  "start_sequence": "homing, foreign-object detection on the bed, filament change, dynamic flow calibration, nozzle cleaning, auto bed levelling (19:58-20:05)",
+  "layer_first_seen_by_monitor": {
+   "1": "2026-10-08T20:05:40Z",
+   "2": "2026-10-08T20:11:29Z",
+   "3": "2026-10-08T20:14:00Z",
+   "4": "2026-10-08T20:16:51Z",
+   "5": "2026-10-08T20:17:26Z",
+   "6": "2026-10-08T20:18:18Z",
+   "7": "2026-10-08T20:19:50Z",
+   "8": "2026-10-08T20:21:10Z",
+   "9": "2026-10-08T20:22:41Z",
+   "10": "2026-10-08T20:24:22Z",
+   "11": "2026-10-08T20:25:19Z",
+   "12": "2026-10-08T20:26:28Z",
+   "13": "2026-10-08T20:27:25Z",
+   "14": "2026-10-08T20:28:22Z",
+   "15": "2026-10-08T20:29:31Z",
+   "16": "2026-10-08T20:35:14Z",
+   "17": "2026-10-08T20:37:43Z",
+   "19": "2026-10-08T20:40:58Z",
+   "22": "2026-10-08T20:41:09Z"
+  },
+  "from_the_recording": {
+   "layer_28": "2026-10-08T20:41:44Z",
+   "100_percent": "2026-10-08T20:41:50Z",
+   "printing_label_gone": "2026-10-08T20:42:17Z (+-3 s)"
+  },
+  "finished": "2026-10-08T20:42:17Z",
+  "sent_to_finish_min": 44.6,
+  "final_frame": "2026-10-08T20:51:36Z (live view restarted; Studio had closed it after the print)",
+  "recording_stopped": "2026-10-08T20:52:03Z"
+ },
+ "monitor": {
+  "tool": "bambu/studio/watch_studio.py (run from /tmp as monitor.py), reading Studio's Device page by screenshot and tesseract OCR every 10 s; camera frame every 30 s",
+  "why": "no LAN access to the H2D (access code refused), so bambu_print.py watch could not run",
+  "log": "monitor.jsonl.gz",
+  "samples": 221,
+  "frames": 77,
+  "left_nozzle_c_min_max_while_printing": [
+   218,
+   222
+  ],
+  "bed_c_min_max_while_printing": [
+   55,
+   55
+  ],
+  "chamber_c_min_max_while_printing": [
+   26,
+   29
+  ],
+  "right_nozzle_target_c": [
+   0
+  ],
+  "dialogs_or_hms": "none",
+  "longest_layer": "layer 15, the first solid top layer over the infill: 5.7 min (20:29:31-20:35:14)",
+  "ocr_note": "values from OCR, kept only when plausible (nozzle 150-260, bed 30-80); misreads such as a 140 target read as 114 or 40 as 140 happened",
+  "stops": [
+   "20:05:40, first run: false 'finished' from the word 'finish' in 'Estimated finish time'; restarted with the rule fixed",
+   "20:41:09, second run: Studio writes 'Finished' in place of the finish time once the remaining time reaches 0 min, here at layer 22; the print actually finished at about 20:42:17. watch_studio.py now waits for 100 % and the 'Printing' label to go"
+  ]
+ },
+ "recording": {
+  "youtube": "https://www.youtube.com/watch?v=nrGHKqr7TO0",
+  "privacy": "unlisted",
+  "length": "10:48",
+  "raw": "ffmpeg x11grab of the runner's :99 display, 15 fps, 19:36:38-20:52:03 UTC (75 min, 3.4 GB with Studio's camera playing; deleted after the cut)",
+  "covers": "Studio's first run (2x); Device page and the H2D's state (2x); Sync info, import, settings, slice and checks (3x); Send (1x); start sequence and layer 1 (8x); layers 2-22 (24x, to 20:41:28); the finished deck at 20:51 (1x)",
+  "cut": [
+   "the Bambu login, 19:39:28-19:45:12 UTC (e-mail address and account name on screen)",
+   "the Device page's Update tab, 19:46:55-19:47:18 UTC (printer and AMS serial numbers on screen)",
+   "20:41:28-20:51:16 UTC: layers 23-28 and the end of the print (about 50 s, by mistake: the segment was cut where the monitor had stopped), then 9 min of Studio's closed live view"
+  ],
+  "blurred": "nothing: the H2D's chamber camera showed no people",
+  "chapters": [
+   "0:00 Bambu Studio's first run on the CI runner (2x)",
+   "1:25 Device page: the H2D idle, heaters off, no HMS alerts (2x)",
+   "2:14 Sync to the H2D's 0.6 mm nozzles, import the deck, 3 walls, 25% infill, circle compensation, slice and check (3x)",
+   "5:25 Send after the go: Textured PEI, black PLA in A2, timelapse off (1x)",
+   "7:15 Start sequence: homing, bed check, flow calibration, nozzle cleaning, levelling (8x)",
+   "8:04 Layer 1 (8x)",
+   "8:51 Layers 2-22 (24x)",
+   "10:06 Finished at 20:42 UTC; the deck on the plate (1x)"
+  ],
+  "description_links_to": "https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-6067531078",
+  "chapters_note": "the uploaded description says 'Layers 2-28' for the 8:51 chapter; the 24x part actually ends at layer 22, and 10:06 shows the finished deck"
+ }
+}

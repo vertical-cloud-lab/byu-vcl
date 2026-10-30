@@ -1,0 +1,86 @@
+{
+ "still": "still_0358Z_lit.jpg",
+ "still_path": "camera/frames/2026-10-20/still_0358Z_lit.jpg",
+ "method": "96-well grid: circles fitted to the outer edges of the wells' rims, least-squares similarity to the 9 mm SBS grid",
+ "slot": 7,
+ "search": {
+  "grids_seen": 2,
+  "picked": {
+   "wells": 96,
+   "on_off": 4.7,
+   "z": 17.64,
+   "ring_radius_px": 30.31,
+   "dist_px": 56.92
+  },
+  "stepped_mm": [
+   9.0,
+   0.0
+  ],
+  "rim_radius_mm": 4.18
+ },
+ "wells_found": 95,
+ "wells_used": 95,
+ "fit_rms_mm": 0.378,
+ "fit_max_mm": 1.062,
+ "px_per_mm_at_plate_top": 9.58,
+ "field_at_plate_top_mm": [
+  423.4,
+  317.3
+ ],
+ "focal_mm": 9.02,
+ "focal_note": "pinhole model, pupil 607.35 mm above the plate's top (621.7 above the deck, plate 14.35 tall); about +-2 %",
+ "rotation_deg": 1.45,
+ "axis_offset_mm": [
+  125.92,
+  -29.21
+ ],
+ "axis_offset_note": "where the picture's centre is, from the plate centre (the well grid's centre); +x right, +y back (seen from the door)",
+ "margins_mm": {
+  "left": 21.6,
+  "right": 271.9,
+  "back_top": 81.9,
+  "front_bottom": 146.7
+ },
+ "margins_note": "from the plate's outline (127.76 x 85.48 mm) to the picture's edges, at the plate top; negative = plate cut off",
+ "px_per_well": 65.7,
+ "target": {
+  "margin_mm": 5.0,
+  "field_w_mm": 137.76,
+  "focal_mm": 27.72,
+  "plate_fills": [
+   0.927,
+   0.828
+  ]
+ },
+ "to_do": {
+  "slide_mount_mm": {
+   "toward_door": -29.2,
+   "to_the_right": -125.9
+  },
+  "turn_mount_deg": {
+   "clockwise_seen_from_above": 1.45
+  },
+  "zoom": {
+   "zoom in": "from 9.02 to 27.72 mm",
+   "plate_fills_width": 0.927
+  }
+ },
+ "plate_to_still": [
+  [
+   9.576931,
+   0.242795,
+   828.69737
+  ],
+  [
+   0.242795,
+   -9.576931,
+   1209.180728
+  ]
+ ],
+ "plate_to_still_note": "2 x 3 affine from plate mm (origin at the plate centre, x right toward column 12, y back toward row A) to still pixels",
+ "plate_vs_slot_mm": [
+  2.88,
+  -0.12
+ ],
+ "plate_vs_slot_note": "plate centre minus slot 7's centre, deck mm through lid_camera_setup.json (axis assumed vertical)"
+}

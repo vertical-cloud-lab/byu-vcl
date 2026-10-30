@@ -1,0 +1,3 @@
+requests       # onshape_api.py
+playwright     # onshape_ui.py; then `playwright install chromium`, or --chrome for an installed one, or --cdp to drive a running one
+cadquery>=2.4  # both import the shared parameters from ../cad/lid_mount.py
