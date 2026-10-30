@@ -106,6 +106,38 @@ sudo -S -p '' systemctl start device.service <<< "$RPI_STREAM_CAM_PASSWORD"
 13:00 or 21:00 local), which starts it again. To keep it off through reboots, use
 `systemctl disable --now device.service`, and `enable --now` to bring it back.
 
+**Working on the camera at the robot** (2026-10-30, for fitting a C–CS ring). What to do with the
+stream depends on whether the ribbon cable is touched:
+
+- **Lens side only** (the lens, a C–CS ring, the knurled back-focus ring, the zoom, focus and iris
+  rings): leave everything on. Nothing electrical changes, so the stream carries on in the same
+  broadcast and `/still` keeps working. It is public, so keep the lens pointed down rather than at
+  people while it is off the window.
+- **Anything that touches the ribbon or its connectors, or takes the camera board off the deck**:
+  shut the Pi down and unplug it first. Raspberry Pi's
+  [camera install steps](https://www.raspberrypi.com/documentation/accessories/camera.html#install-a-raspberry-pi-camera)
+  say "Shut down your Raspberry Pi and disconnect it from power", and that cameras are sensitive to
+  static. Stopping `device.service` is not enough: the connector stays powered while the Pi runs,
+  and the Pi 5's soft-off after a shutdown leaves its power rails up.
+  1. Check that nothing is using the OT-2, whose only link is this Pi.
+  2. Press the Pi 5's power button once, briefly. This Pi has no desktop (`multi-user.target`)
+     and logind's `HandlePowerKey` is the default, `poweroff`, so one press shuts it down cleanly.
+     Holding the button forces a hard power-off instead.
+  3. When the LED next to the button turns red (standby), unplug the USB-C power.
+  4. To restart, plug it back in. The bootloader config sets neither `POWER_OFF_ON_HALT` nor
+     `WAIT_FOR_POWER_BUTTON`, so it boots on power-up; from standby, a press of the button boots it.
+     `device.service` is enabled, so the stream comes back by itself as a new broadcast in the
+     playlist, about a minute after boot.
+
+  Unplugged while running, the camera stops sending frames: `picam_source.py` exits after 10 s
+  without one and `device.py` keeps retrying on the same broadcast. If the upload stalls for
+  3 min, the watchdog restarts the service, which makes a new broadcast each time (at most 6 a
+  day). Reseat the cable with the Pi off, as above, rather than live.
+
+Checked on the Pi on 2026-10-30. The same check found the supply sagging: `Undervoltage detected!`
+four times in the four minutes after the 13:00 MDT boot, and `EXT5V_V` at 4.81 V while
+streaming. Raspberry Pi specifies a 5.1 V supply, the 27 W USB-C one for a Pi 5.
+
 **Playlist.** The Lambda adds each broadcast to the first playlist whose title contains
 `OT2 overhead`, now *OT2 overhead Livestreams Playlist*. If that playlist is renamed or deleted,
 the Lambda creates a new one under the same name at the next start, with a new ID. The first
