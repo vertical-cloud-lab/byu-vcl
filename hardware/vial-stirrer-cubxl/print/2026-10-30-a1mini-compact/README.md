@@ -15,19 +15,25 @@ Bambu account with the password and an authenticator code from `bambu-totp`, ope
 and sent it through Bambu's cloud. The printer was checked and watched from Studio's Device
 page.
 
-**Outcome: paused at layer 57 of 110 (80 %).** Sent at 20:06:13 UTC, first layer at 20:14:03.
-At 21:05:30 the A1 mini paused itself on the same AMS Lite warning that stopped the
-[2026-10-21 print](../2026-10-21-a1mini/README.md) at 66 %: *AMS lite filament spool or
-filament may be stuck* [1200-8010], and in the HMS list *AMS lite slot 4 filament may be
-tangled or stuck*. A4 holds the white PETG Basic. Until then it had printed cleanly at
-245 °C / 70 °C. The run didn't press *Resume*, because someone has to look at the spool first.
-About 3.5 g of the file's 27.1 g was still to print.
+**Outcome: finished, after a 58 min pause at layer 57 of 110.** Sent at 20:06:13 UTC, first
+layer at 20:14:03. At 21:05:30, at 80 %, the A1 mini paused itself on the same AMS Lite warning
+that stopped the [2026-10-21 print](../2026-10-21-a1mini/README.md) at 66 %: *AMS lite
+filament spool or filament may be stuck* [1200-8010], and in the HMS list *AMS lite slot 4
+filament may be tangled or stuck*. A4 holds the white PETG Basic. Until then it had printed
+cleanly at 245 °C / 70 °C. The run didn't press *Resume*, because someone had to look at the
+spool first. At 22:02:37 Ben wrote in the thread "resume the print, I fixed the filament", and
+the run pressed *Resume (problem solved)* in Studio at 22:03:18. Layer 110/110 and *Finished*
+came at 22:17:58, 2 h 12 min after Send, or about 74 min without the pause, against Studio's
+1 h 11 min 20 s. There was no other dialog or HMS alert. The parts were left on the plate, and
+nothing has been assembled.
 
-| Paused, 21:28:54 UTC | Studio's warning, 21:05:45 UTC |
+| Finished, 22:18:56 UTC | Paused, 21:28:54 UTC |
 |---|---|
-| <img src="20261030T212854Z_paused.jpg" width="420"> | <img src="20261030T210545Z_ams_warning.png" width="240"> |
+| <img src="20261030T221856Z_finished.jpg" width="420"> | <img src="20261030T212854Z_paused.jpg" width="420"> |
 
-*The base and the vial holder are the two parts on the right. The room is blurred.*
+*Left: the vial holder and the base on the plate, the gantry parked high; the carrier and the
+keys are out of view. Right: the pause, with the same two parts on the right. Studio's
+[warning](20261030T210545Z_ams_warning.png). The room is blurred in both.*
 
 | First frame, 19:58:49 UTC | Before Send, 20:05:14 UTC |
 |---|---|
@@ -92,16 +98,25 @@ them, and the print ran on normally.
 | 21:05:30 | **Paused** on layer 57, 80 %: AMS Lite slot 4 [1200-8010] ([warning](20261030T210545Z_ams_warning.png), [job panel](20261030T210618Z_paused_job_panel.png), [HMS](20261030T210628Z_hms.png)) |
 | 21:06:53 | Thread told: what to check at A4, and how to resume or stop |
 | 21:28 | Still paused; the nozzle cooled to about 41 °C, the bed held at 70 °C |
+| 22:02:37 | Ben in the thread: "resume the print, I fixed the filament" |
+| 22:03:18 | *Resume (problem solved)* pressed in Studio; the nozzle reheated to 245 °C |
+| 22:08:01 | Layer 70 |
+| 22:13:33 | Layer 93 |
+| 22:17:58 | Layer 110/110, *Finished*; 100 % at 22:18:20 ([job panel](20261030T221856Z_job_panel_finished.png)) |
+| 22:18:56 | The parts on the plate; no HMS alerts at 22:19:04 ([HMS](20261030T221904Z_hms_empty_after.png)) |
+| 22:19:53 | Signed out; Studio closed and its config deleted at 22:20:15 |
 
 ## Files
 
 | File | What |
 |---|---|
 | [`print.json`](print.json) | The request, the plate check and the wait, the source and sent file with their MD5s, the Send options, the pause, the timeline |
-| `*_camera.jpg`, `*_start_bench.jpg`, `*_L14.jpg`, `*_paused.jpg` | Camera frames from Studio's Device page, the room blurred |
+| `*_camera.jpg`, `*_start_bench.jpg`, `*_L14.jpg`, `*_paused.jpg`, `*_finished.jpg` | Camera frames from Studio's Device page, the room blurred |
 | `*_device_page.jpg`, `*_printer_parts.png`, `*_hms_empty.png`, `*_send_dialog.png` | The Device page, the nozzle read off the printer, the empty HMS list before Send, and the Send dialog |
 | `*_ams_warning.png`, `*_paused_job_panel.png`, `*_hms.png` | The pause: Studio's warning, the job panel and the HMS list |
-| [`timelapse.mp4`](timelapse.mp4), [`timelapse.gif`](timelapse.gif) | The camera from 20:08:10, one frame a minute, with the UTC time and layer, to the pause. 1024 × 658 and 360 px wide, 8 fps. Room blurred |
+| `*_job_panel_finished.png`, `*_hms_empty_after.png` | The job panel at 100 % and the empty HMS list after the print |
+| [`timelapse.mp4`](timelapse.mp4), [`timelapse.gif`](timelapse.gif) | The camera from 20:08:10 to the finish, about one frame a minute, with the UTC time and layer; one frame stands for the pause. 1024 × 658 and 360 px wide, 8 fps. Room blurred |
+| [`recording/`](recording/) | The session's screen recording, cut by wall-clock time ([`cut_plan.json`](recording/cut_plan.json) to 21:31:30, then [`cut_plan_tail.json`](recording/cut_plan_tail.json) from 22:01:30), 8.4 min with [chapters](recording/compact_stirrer_parts_2_A1mini_2026-10-30_chapters.txt). The login, the sign-out and 30 min of the pause are not in it. The room in the camera pane is blurred. Not uploaded: `claude-print.yml` has no YouTube token |
 
 The file the printer ran is not copied here: it is
 [`../2026-10-28-a1mini-compact/compact_stirrer_parts.gcode.3mf`](../2026-10-28-a1mini-compact/compact_stirrer_parts.gcode.3mf),
@@ -111,8 +126,8 @@ byte for byte.
 
 - **Slot A4 has now paused two of the stirrer's four PETG prints,** both with
   *slot 4 filament may be tangled or stuck*: 2026-10-21 at 66 % and this one at 80 %. The
-  10-22 keys and the 10-28 compact set ran through. The thread never said what was wrong on
-  10-21. Before the next PETG print, someone should look at that spool: how much is on it,
+  10-22 keys and the 10-28 compact set ran through. Both times the print was resumed and
+  finished (today Ben "fixed the filament"), but the thread doesn't say what was wrong. Before the next PETG print, someone should look at that spool: how much is on it,
   whether it unwinds freely, whether it binds on the rollers. Since 10-21, A4 has fed about
   100 g of print (42, 6, 27 and 24 g) plus the purges.
 - **A sliced `.gcode.3mf` can be sent again as it is.** *Open project* (Ctrl+O) loads it straight
@@ -127,4 +142,6 @@ byte for byte.
   a frame taken then. Past the plate's far edge is beside the travel, not in it: that is
   where the print stood that the 2026-10-28 run held for.
 - **A comment edit notifies nobody.** The run can only edit its tracking comment, so news of
-  the pause reached only people already looking at the thread.
+  the pause reached only people looking at the thread. Ben's reply came 57 min after the pause.
+  A reply in the thread, as here, is enough for the run to resume: it polls the thread and
+  can press *Resume (problem solved)* within a minute.

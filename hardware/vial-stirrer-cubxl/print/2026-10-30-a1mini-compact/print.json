@@ -85,6 +85,13 @@
    "A4": "PETG Basic, white"
   }
  },
+ "resume": {
+  "utc": "2026-10-30T22:03:18Z",
+  "asked_by": "benwhitney5463 (write access), https://github.com/vertical-cloud-lab/byu-vcl/pull/269#issuecomment-6534446219, 22:02:37Z: 'resume the print, I fixed the filament'",
+  "how": "Resume (problem solved) in Studio's Warning window; 41 s after the comment",
+  "paused_for": "57 min 48 s",
+  "cause": "not stated beyond 'I fixed the filament'"
+ },
  "pause": {
   "utc": "2026-10-30T21:05:30Z",
   "layer": "57/110",
@@ -94,13 +101,18 @@
   "same_as": "print/2026-10-21-a1mini/ (paused at layer 42/110, 66 %, the same warning and slot)",
   "filament": "about 24 g of the file's 27.1 g extruded by layer 57 (summed from the G-code, start purge included); about 3.5 g still to go",
   "printer_while_paused": "bed held at 70 C; nozzle cooled to about 41 C by 21:28Z",
-  "run_action": "did not press Resume (problem solved) or Check Assistant: someone has to look at the spool first. Moved Studio's Warning window aside at 21:28:5xZ so the camera pane showed; touched nothing else",
+  "run_action": "did not press Resume (problem solved) or Check Assistant until a person had seen to the spool: someone has to look at it first. Moved Studio's Warning window aside at 21:28:5xZ so the camera pane showed; touched nothing else until the resume",
   "files": [
    "20261030T210545Z_ams_warning.png",
    "20261030T210618Z_paused.jpg",
    "20261030T210618Z_paused_job_panel.png",
    "20261030T210628Z_hms.png",
    "20261030T212854Z_paused.jpg"
+  ],
+  "finish_files": [
+   "20261030T221856Z_finished.jpg",
+   "20261030T221856Z_job_panel_finished.png",
+   "20261030T221904Z_hms_empty_after.png"
   ]
  },
  "timeline_utc": [
@@ -227,9 +239,57 @@
   [
    "21:06:53",
    "tracking comment: paused, what to check at A4, how to resume or stop"
+  ],
+  [
+   "21:28",
+   "still paused; nozzle cooled to about 41 C, bed held at 70 C"
+  ],
+  [
+   "22:02:37",
+   "benwhitney5463 in the thread: 'resume the print, I fixed the filament'"
+  ],
+  [
+   "22:03:18",
+   "Resume (problem solved) pressed in Studio's Warning window; the warning closed and the nozzle reheated to 245 C"
+  ],
+  [
+   "22:03:44",
+   "tracking comment: resumed"
+  ],
+  [
+   "22:08:01",
+   "layer 70"
+  ],
+  [
+   "22:13:33",
+   "layer 93"
+  ],
+  [
+   "22:17:58",
+   "layer 110/110, heaters' targets 0, Finished"
+  ],
+  [
+   "22:18:20",
+   "100 %"
+  ],
+  [
+   "22:18:56",
+   "the parts on the plate, gantry parked high (frame); HMS list empty at 22:19:04"
+  ],
+  [
+   "22:19:17",
+   "screen recording stopped"
+  ],
+  [
+   "22:19:53",
+   "signed out of the Bambu account"
+  ],
+  [
+   "22:20:15",
+   "Studio closed and its config deleted"
   ]
  ],
- "watching": "Studio's Device page: watch_a1.py, a PETG copy of PR #234's bambu/studio/watch_studio.py (nozzle limit 285 C until layer 1 and 260 C after, bed 80 C, two plausible readings in a row needed), OCR about every 11 s and a camera crop every 60 s; it stopped on the Warning window at 21:05:45Z. Then a pause watcher (job panel OCR and window list every 10 s) and the thread polled about every 30 s",
- "recording": "the runner's screen was recorded in 5 min segments; the segment holding the login (19:55:05-20:00:05Z) was re-cut at once into 19:55:05-19:57:10 and 19:58:10-20:00:05 and the original deleted, so the login was never kept",
- "outcome": "paused at layer 57/110 (80 %) at 21:05:30Z on the AMS Lite slot 4 warning; waiting for someone at the printer (as of 21:31Z)"
+ "watching": "Studio's Device page: watch_a1.py, a PETG copy of PR #234's bambu/studio/watch_studio.py (nozzle limit 285 C until layer 1 and 260 C after, bed 80 C, two plausible readings in a row needed), OCR about every 11 s and a camera crop every 60 s; it stopped on the Warning window at 21:05:45Z. During the pause, a watcher of the job panel and window list every 10 s, with the thread polled about every 30 s; after the resume, watch_a1.py again to the finish. The thread was polled about once a minute while printing",
+ "recording": "the runner's screen was recorded in 5 min segments from 19:55:05Z to 22:19:17Z; the segment holding the login (19:55:05-20:00:05Z) was re-cut at once into 19:55:05-19:57:10 and 19:58:10-20:00:05 and the original deleted, so the login was never kept. recording/ has the cut video (8.4 min, chapters in its _chapters.txt): cut_plan.json up to 21:31:30Z and cut_plan_tail.json from 22:01:30Z, joined; 21:31:30-22:01:30 (still paused) is left out. The camera pane's room is blurred throughout; people stood behind the printer from about 22:00. Not uploaded: claude-print.yml has no YouTube token",
+ "outcome": "finished: layer 110/110 and Finished at 22:17:58Z, 100 % by 22:18:20Z, 2 h 11.8 min after Send. Paused 21:05:30-22:03:18Z (57 min 48 s) at layer 57/110 on the AMS Lite slot 4 warning [1200-8010]; benwhitney5463 freed the filament and asked in the thread for a resume, which the run pressed in Studio. Printing time without the pause about 74 min against Studio's 1 h 11 min 20 s. No other dialog or HMS alert; HMS list empty after. The parts were left on the plate (frame 22:18:56Z): the vial holder and the base in view, the carrier and keys out of view. Nothing has been assembled"
 }

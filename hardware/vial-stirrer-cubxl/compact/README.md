@@ -7,7 +7,7 @@ CubXL deck at its own 50 × 45 mm slot pitch. The layout was worked out and chec
 for @benwhitney5463's `@claude-print` request on
 [PR #269](https://github.com/vertical-cloud-lab/byu-vcl/pull/269#issuecomment-6480898247), and
 printed the same day ([print record](../print/2026-10-28-a1mini-compact/README.md)). A second
-set, from the same file, went to the A1 mini on 2026-10-30
+set, from the same file, was printed on 2026-10-30
 ([print record](../print/2026-10-30-a1mini-compact/README.md)).
 
 <img src="../img/compact_parts.png" width="360" alt="The compact stirrer's printed parts, exploded">
