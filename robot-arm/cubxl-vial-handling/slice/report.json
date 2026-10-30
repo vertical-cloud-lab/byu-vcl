@@ -1,0 +1,1052 @@
+{
+ "job": {
+  "bambu_studio": "02.08.02.61",
+  "presets": {
+   "machine": "Bambu Lab A1 mini 0.4 nozzle",
+   "process": "0.20mm Standard @BBL A1M",
+   "filament": "Bambu PLA Basic @BBL A1M"
+  },
+  "overrides": {
+   "wall_loops": "3",
+   "sparse_infill_density": "25%",
+   "curr_bed_type": "Textured PEI Plate",
+   "enable_circle_compensation": "1",
+   "enable_support": "0"
+  },
+  "return_code": 0,
+  "error_string": "Success.",
+  "support_necessity_checks_run": 33,
+  "support_necessity_flags": [],
+  "layout": [
+   {
+    "part": "carrier_half_a",
+    "stl": "carrier_half_a.stl",
+    "sha256": "708c08f72539",
+    "centre": [
+     40,
+     90
+    ],
+    "footprint": [
+     23.3,
+     14.15,
+     56.7,
+     165.85
+    ],
+    "height": 35.0
+   },
+   {
+    "part": "carrier_half_b",
+    "stl": "carrier_half_b.stl",
+    "sha256": "203118b6152d",
+    "centre": [
+     88,
+     90
+    ],
+    "footprint": [
+     71.3,
+     15.65,
+     104.7,
+     164.35
+    ],
+    "height": 35.0
+   },
+   {
+    "part": "handle_post",
+    "stl": "handle_post.stl",
+    "sha256": "31e074faee2d",
+    "centre": [
+     142,
+     90
+    ],
+    "footprint": [
+     125.51,
+     73.51,
+     158.49,
+     106.49
+    ],
+    "height": 44.0
+   },
+   {
+    "part": "finger_insert_upper",
+    "stl": "finger_insert_upper.stl",
+    "sha256": "5a01dd7a310d",
+    "centre": [
+     90,
+     46
+    ],
+    "footprint": [
+     43.71,
+     7.61,
+     136.29,
+     84.39
+    ],
+    "height": 81.0
+   },
+   {
+    "part": "finger_insert_lower",
+    "stl": "finger_insert_lower.stl",
+    "sha256": "dc10c86d8d50",
+    "centre": [
+     90,
+     134
+    ],
+    "footprint": [
+     45.96,
+     96.61,
+     134.04,
+     171.39
+    ],
+    "height": 87.92
+   },
+   {
+    "part": "dock_block#1",
+    "stl": "dock_block.stl",
+    "sha256": "b4e44733933d",
+    "centre": [
+     50,
+     90
+    ],
+    "footprint": [
+     24.0,
+     45.0,
+     76.0,
+     135.0
+    ],
+    "height": 18.0
+   },
+   {
+    "part": "dock_block#2",
+    "stl": "dock_block.stl",
+    "sha256": "b4e44733933d",
+    "centre": [
+     130,
+     90
+    ],
+    "footprint": [
+     104.0,
+     45.0,
+     156.0,
+     135.0
+    ],
+    "height": 18.0
+   },
+   {
+    "part": "plate_0#1",
+    "stl": "plate_0.stl",
+    "sha256": "34792fc9f18a",
+    "centre": [
+     30,
+     50
+    ],
+    "footprint": [
+     6.0,
+     17.0,
+     54.0,
+     83.0
+    ],
+    "height": 16.0
+   },
+   {
+    "part": "plate_0#2",
+    "stl": "plate_0.stl",
+    "sha256": "34792fc9f18a",
+    "centre": [
+     90,
+     50
+    ],
+    "footprint": [
+     66.0,
+     17.0,
+     114.0,
+     83.0
+    ],
+    "height": 16.0
+   },
+   {
+    "part": "plate_x+1mm#1",
+    "stl": "plate_x+1mm.stl",
+    "sha256": "49660e9bd651",
+    "centre": [
+     150,
+     50
+    ],
+    "footprint": [
+     126.0,
+     17.0,
+     174.0,
+     83.0
+    ],
+    "height": 16.0
+   },
+   {
+    "part": "plate_x+1mm#2",
+    "stl": "plate_x+1mm.stl",
+    "sha256": "49660e9bd651",
+    "centre": [
+     30,
+     130
+    ],
+    "footprint": [
+     6.0,
+     97.0,
+     54.0,
+     163.0
+    ],
+    "height": 16.0
+   },
+   {
+    "part": "plate_x+2mm#1",
+    "stl": "plate_x+2mm.stl",
+    "sha256": "f9a8242a39fc",
+    "centre": [
+     90,
+     130
+    ],
+    "footprint": [
+     66.0,
+     97.0,
+     114.0,
+     163.0
+    ],
+    "height": 16.0
+   },
+   {
+    "part": "plate_x+2mm#2",
+    "stl": "plate_x+2mm.stl",
+    "sha256": "f9a8242a39fc",
+    "centre": [
+     150,
+     130
+    ],
+    "footprint": [
+     126.0,
+     97.0,
+     174.0,
+     163.0
+    ],
+    "height": 16.0
+   },
+   {
+    "part": "plate_x+3mm#1",
+    "stl": "plate_x+3mm.stl",
+    "sha256": "df338ae8362e",
+    "centre": [
+     30,
+     50
+    ],
+    "footprint": [
+     6.0,
+     17.0,
+     54.0,
+     83.0
+    ],
+    "height": 16.0
+   },
+   {
+    "part": "plate_x+3mm#2",
+    "stl": "plate_x+3mm.stl",
+    "sha256": "df338ae8362e",
+    "centre": [
+     90,
+     50
+    ],
+    "footprint": [
+     66.0,
+     17.0,
+     114.0,
+     83.0
+    ],
+    "height": 16.0
+   },
+   {
+    "part": "plate_x+4mm#1",
+    "stl": "plate_x+4mm.stl",
+    "sha256": "6d5d259249bc",
+    "centre": [
+     150,
+     50
+    ],
+    "footprint": [
+     126.0,
+     17.0,
+     174.0,
+     83.0
+    ],
+    "height": 16.0
+   },
+   {
+    "part": "plate_x+4mm#2",
+    "stl": "plate_x+4mm.stl",
+    "sha256": "6d5d259249bc",
+    "centre": [
+     30,
+     130
+    ],
+    "footprint": [
+     6.0,
+     97.0,
+     54.0,
+     163.0
+    ],
+    "height": 16.0
+   },
+   {
+    "part": "plate_y+1mm#1",
+    "stl": "plate_y+1mm.stl",
+    "sha256": "499a4222f2fd",
+    "centre": [
+     90,
+     130
+    ],
+    "footprint": [
+     66.0,
+     97.0,
+     114.0,
+     163.0
+    ],
+    "height": 16.0
+   },
+   {
+    "part": "plate_y+1mm#2",
+    "stl": "plate_y+1mm.stl",
+    "sha256": "499a4222f2fd",
+    "centre": [
+     150,
+     130
+    ],
+    "footprint": [
+     126.0,
+     97.0,
+     174.0,
+     163.0
+    ],
+    "height": 16.0
+   },
+   {
+    "part": "plate_y+2mm#1",
+    "stl": "plate_y+2mm.stl",
+    "sha256": "66b64cc6dad3",
+    "centre": [
+     30,
+     50
+    ],
+    "footprint": [
+     6.0,
+     17.0,
+     54.0,
+     83.0
+    ],
+    "height": 16.0
+   },
+   {
+    "part": "plate_y+2mm#2",
+    "stl": "plate_y+2mm.stl",
+    "sha256": "66b64cc6dad3",
+    "centre": [
+     90,
+     50
+    ],
+    "footprint": [
+     66.0,
+     17.0,
+     114.0,
+     83.0
+    ],
+    "height": 16.0
+   },
+   {
+    "part": "plate_y+3mm#1",
+    "stl": "plate_y+3mm.stl",
+    "sha256": "d66fc14cf2a1",
+    "centre": [
+     150,
+     50
+    ],
+    "footprint": [
+     126.0,
+     17.0,
+     174.0,
+     83.0
+    ],
+    "height": 16.0
+   },
+   {
+    "part": "plate_y+3mm#2",
+    "stl": "plate_y+3mm.stl",
+    "sha256": "d66fc14cf2a1",
+    "centre": [
+     30,
+     130
+    ],
+    "footprint": [
+     6.0,
+     97.0,
+     54.0,
+     163.0
+    ],
+    "height": 16.0
+   },
+   {
+    "part": "plate_y+4mm#1",
+    "stl": "plate_y+4mm.stl",
+    "sha256": "b10313cc070b",
+    "centre": [
+     90,
+     130
+    ],
+    "footprint": [
+     66.0,
+     97.0,
+     114.0,
+     163.0
+    ],
+    "height": 16.0
+   },
+   {
+    "part": "plate_y+4mm#2",
+    "stl": "plate_y+4mm.stl",
+    "sha256": "b10313cc070b",
+    "centre": [
+     150,
+     130
+    ],
+    "footprint": [
+     126.0,
+     97.0,
+     174.0,
+     163.0
+    ],
+    "height": 16.0
+   },
+   {
+    "part": "plate_yaw+2deg#1",
+    "stl": "plate_yaw+2deg.stl",
+    "sha256": "66e85b0b23db",
+    "centre": [
+     30,
+     50
+    ],
+    "footprint": [
+     6.0,
+     17.0,
+     54.0,
+     83.0
+    ],
+    "height": 16.0
+   },
+   {
+    "part": "plate_yaw+2deg#2",
+    "stl": "plate_yaw+2deg.stl",
+    "sha256": "66e85b0b23db",
+    "centre": [
+     90,
+     50
+    ],
+    "footprint": [
+     66.0,
+     17.0,
+     114.0,
+     83.0
+    ],
+    "height": 16.0
+   },
+   {
+    "part": "plate_yaw-2deg#1",
+    "stl": "plate_yaw-2deg.stl",
+    "sha256": "648e5443d7f2",
+    "centre": [
+     150,
+     50
+    ],
+    "footprint": [
+     126.0,
+     17.0,
+     174.0,
+     83.0
+    ],
+    "height": 16.0
+   },
+   {
+    "part": "plate_yaw-2deg#2",
+    "stl": "plate_yaw-2deg.stl",
+    "sha256": "648e5443d7f2",
+    "centre": [
+     30,
+     130
+    ],
+    "footprint": [
+     6.0,
+     97.0,
+     54.0,
+     163.0
+    ],
+    "height": 16.0
+   },
+   {
+    "part": "plate_yaw+4deg#1",
+    "stl": "plate_yaw+4deg.stl",
+    "sha256": "1ee0ad5b6c62",
+    "centre": [
+     90,
+     130
+    ],
+    "footprint": [
+     66.0,
+     97.0,
+     114.0,
+     163.0
+    ],
+    "height": 16.0
+   },
+   {
+    "part": "plate_yaw+4deg#2",
+    "stl": "plate_yaw+4deg.stl",
+    "sha256": "1ee0ad5b6c62",
+    "centre": [
+     150,
+     130
+    ],
+    "footprint": [
+     126.0,
+     97.0,
+     174.0,
+     163.0
+    ],
+    "height": 16.0
+   },
+   {
+    "part": "plate_yaw-4deg#1",
+    "stl": "plate_yaw-4deg.stl",
+    "sha256": "ec434c97b38f",
+    "centre": [
+     30,
+     50
+    ],
+    "footprint": [
+     6.0,
+     17.0,
+     54.0,
+     83.0
+    ],
+    "height": 16.0
+   },
+   {
+    "part": "plate_yaw-4deg#2",
+    "stl": "plate_yaw-4deg.stl",
+    "sha256": "ec434c97b38f",
+    "centre": [
+     90,
+     50
+    ],
+    "footprint": [
+     66.0,
+     17.0,
+     114.0,
+     83.0
+    ],
+    "height": 16.0
+   }
+  ],
+  "layout_warnings": [],
+  "thumbnails_embedded": [
+   "Metadata/pick_1.png",
+   "Metadata/pick_2.png",
+   "Metadata/pick_3.png",
+   "Metadata/pick_4.png",
+   "Metadata/pick_5.png",
+   "Metadata/pick_6.png",
+   "Metadata/pick_7.png",
+   "Metadata/pick_8.png",
+   "Metadata/plate_1.png",
+   "Metadata/plate_1_small.png",
+   "Metadata/plate_2.png",
+   "Metadata/plate_2_small.png",
+   "Metadata/plate_3.png",
+   "Metadata/plate_3_small.png",
+   "Metadata/plate_4.png",
+   "Metadata/plate_4_small.png",
+   "Metadata/plate_5.png",
+   "Metadata/plate_5_small.png",
+   "Metadata/plate_6.png",
+   "Metadata/plate_6_small.png",
+   "Metadata/plate_7.png",
+   "Metadata/plate_7_small.png",
+   "Metadata/plate_8.png",
+   "Metadata/plate_8_small.png",
+   "Metadata/plate_no_light_1.png",
+   "Metadata/plate_no_light_2.png",
+   "Metadata/plate_no_light_3.png",
+   "Metadata/plate_no_light_4.png",
+   "Metadata/plate_no_light_5.png",
+   "Metadata/plate_no_light_6.png",
+   "Metadata/plate_no_light_7.png",
+   "Metadata/plate_no_light_8.png",
+   "Metadata/top_1.png",
+   "Metadata/top_2.png",
+   "Metadata/top_3.png",
+   "Metadata/top_4.png",
+   "Metadata/top_5.png",
+   "Metadata/top_6.png",
+   "Metadata/top_7.png",
+   "Metadata/top_8.png"
+  ],
+  "plates": [
+   {
+    "plate": 1,
+    "name": "Carrier",
+    "objects": [
+     "carrier_half_a_1",
+     "carrier_half_b_1",
+     "handle_post_1"
+    ],
+    "parts": [
+     "carrier_half_a",
+     "carrier_half_b",
+     "handle_post"
+    ],
+    "print_time_s": 11719,
+    "filament_g": 106.95,
+    "filament_m": 35.29,
+    "layers": 220,
+    "bed_type": "Textured PEI Plate",
+    "toolpath_outside_bed": false,
+    "support_used": false,
+    "support_extrusion_in_gcode": false,
+    "slicer_warnings": [],
+    "gcode_warnings": [
+     {
+      "msg": "not_support_traditional_timelapse",
+      "level": 2,
+      "code": "10018003"
+     },
+     {
+      "msg": "not_support_traditional_timelapse",
+      "level": 3,
+      "code": "1000C003"
+     }
+    ]
+   },
+   {
+    "plate": 2,
+    "name": "Finger inserts",
+    "objects": [
+     "finger_insert_upper_1",
+     "finger_insert_lower_1"
+    ],
+    "parts": [
+     "finger_insert_upper",
+     "finger_insert_lower"
+    ],
+    "print_time_s": 9024,
+    "filament_g": 67.13,
+    "filament_m": 22.15,
+    "layers": 439,
+    "bed_type": "Textured PEI Plate",
+    "toolpath_outside_bed": false,
+    "support_used": false,
+    "support_extrusion_in_gcode": false,
+    "slicer_warnings": [],
+    "gcode_warnings": [
+     {
+      "msg": "not_support_traditional_timelapse",
+      "level": 2,
+      "code": "10018003"
+     },
+     {
+      "msg": "not_support_traditional_timelapse",
+      "level": 3,
+      "code": "1000C003"
+     }
+    ]
+   },
+   {
+    "plate": 3,
+    "name": "Dock blocks",
+    "objects": [
+     "dock_block_1",
+     "dock_block_1"
+    ],
+    "parts": [
+     "dock_block#1",
+     "dock_block#2"
+    ],
+    "print_time_s": 4348,
+    "filament_g": 45.1,
+    "filament_m": 14.88,
+    "layers": 90,
+    "bed_type": "Textured PEI Plate",
+    "toolpath_outside_bed": false,
+    "support_used": false,
+    "support_extrusion_in_gcode": false,
+    "slicer_warnings": [],
+    "gcode_warnings": [
+     {
+      "msg": "not_support_traditional_timelapse",
+      "level": 2,
+      "code": "10018003"
+     },
+     {
+      "msg": "not_support_traditional_timelapse",
+      "level": 3,
+      "code": "1000C003"
+     }
+    ]
+   },
+   {
+    "plate": 4,
+    "name": "Offset plates 1",
+    "objects": [
+     "plate_0_1",
+     "plate_0_1",
+     "plate_x+1mm_1",
+     "plate_x+1mm_1",
+     "plate_x+2mm_1",
+     "plate_x+2mm_1"
+    ],
+    "parts": [
+     "plate_0#1",
+     "plate_0#2",
+     "plate_x+1mm#1",
+     "plate_x+1mm#2",
+     "plate_x+2mm#1",
+     "plate_x+2mm#2"
+    ],
+    "print_time_s": 8672,
+    "filament_g": 91.21,
+    "filament_m": 30.1,
+    "layers": 80,
+    "bed_type": "Textured PEI Plate",
+    "toolpath_outside_bed": false,
+    "support_used": false,
+    "support_extrusion_in_gcode": false,
+    "slicer_warnings": [],
+    "gcode_warnings": [
+     {
+      "msg": "not_support_traditional_timelapse",
+      "level": 2,
+      "code": "10018003"
+     },
+     {
+      "msg": "not_support_traditional_timelapse",
+      "level": 3,
+      "code": "1000C003"
+     }
+    ]
+   },
+   {
+    "plate": 5,
+    "name": "Offset plates 2",
+    "objects": [
+     "plate_x+3mm_1",
+     "plate_x+3mm_1",
+     "plate_x+4mm_1",
+     "plate_x+4mm_1",
+     "plate_y+1mm_1",
+     "plate_y+1mm_1"
+    ],
+    "parts": [
+     "plate_x+3mm#1",
+     "plate_x+3mm#2",
+     "plate_x+4mm#1",
+     "plate_x+4mm#2",
+     "plate_y+1mm#1",
+     "plate_y+1mm#2"
+    ],
+    "print_time_s": 8752,
+    "filament_g": 91.25,
+    "filament_m": 30.11,
+    "layers": 80,
+    "bed_type": "Textured PEI Plate",
+    "toolpath_outside_bed": false,
+    "support_used": false,
+    "support_extrusion_in_gcode": false,
+    "slicer_warnings": [],
+    "gcode_warnings": [
+     {
+      "msg": "not_support_traditional_timelapse",
+      "level": 2,
+      "code": "10018003"
+     },
+     {
+      "msg": "not_support_traditional_timelapse",
+      "level": 3,
+      "code": "1000C003"
+     }
+    ]
+   },
+   {
+    "plate": 6,
+    "name": "Offset plates 3",
+    "objects": [
+     "plate_y+2mm_1",
+     "plate_y+2mm_1",
+     "plate_y+3mm_1",
+     "plate_y+3mm_1",
+     "plate_y+4mm_1",
+     "plate_y+4mm_1"
+    ],
+    "parts": [
+     "plate_y+2mm#1",
+     "plate_y+2mm#2",
+     "plate_y+3mm#1",
+     "plate_y+3mm#2",
+     "plate_y+4mm#1",
+     "plate_y+4mm#2"
+    ],
+    "print_time_s": 8732,
+    "filament_g": 91.25,
+    "filament_m": 30.11,
+    "layers": 80,
+    "bed_type": "Textured PEI Plate",
+    "toolpath_outside_bed": false,
+    "support_used": false,
+    "support_extrusion_in_gcode": false,
+    "slicer_warnings": [],
+    "gcode_warnings": [
+     {
+      "msg": "not_support_traditional_timelapse",
+      "level": 2,
+      "code": "10018003"
+     },
+     {
+      "msg": "not_support_traditional_timelapse",
+      "level": 3,
+      "code": "1000C003"
+     }
+    ]
+   },
+   {
+    "plate": 7,
+    "name": "Offset plates 4",
+    "objects": [
+     "plate_yaw+2deg_1",
+     "plate_yaw+2deg_1",
+     "plate_yaw-2deg_1",
+     "plate_yaw-2deg_1",
+     "plate_yaw+4deg_1",
+     "plate_yaw+4deg_1"
+    ],
+    "parts": [
+     "plate_yaw+2deg#1",
+     "plate_yaw+2deg#2",
+     "plate_yaw-2deg#1",
+     "plate_yaw-2deg#2",
+     "plate_yaw+4deg#1",
+     "plate_yaw+4deg#2"
+    ],
+    "print_time_s": 8709,
+    "filament_g": 91.17,
+    "filament_m": 30.08,
+    "layers": 80,
+    "bed_type": "Textured PEI Plate",
+    "toolpath_outside_bed": false,
+    "support_used": false,
+    "support_extrusion_in_gcode": false,
+    "slicer_warnings": [],
+    "gcode_warnings": [
+     {
+      "msg": "not_support_traditional_timelapse",
+      "level": 2,
+      "code": "10018003"
+     },
+     {
+      "msg": "not_support_traditional_timelapse",
+      "level": 3,
+      "code": "1000C003"
+     }
+    ]
+   },
+   {
+    "plate": 8,
+    "name": "Offset plates 5",
+    "objects": [
+     "plate_yaw-4deg_1",
+     "plate_yaw-4deg_1"
+    ],
+    "parts": [
+     "plate_yaw-4deg#1",
+     "plate_yaw-4deg#2"
+    ],
+    "print_time_s": 3223,
+    "filament_g": 30.38,
+    "filament_m": 10.02,
+    "layers": 80,
+    "bed_type": "Textured PEI Plate",
+    "toolpath_outside_bed": false,
+    "support_used": false,
+    "support_extrusion_in_gcode": false,
+    "slicer_warnings": [],
+    "gcode_warnings": [
+     {
+      "msg": "not_support_traditional_timelapse",
+      "level": 2,
+      "code": "10018003"
+     },
+     {
+      "msg": "not_support_traditional_timelapse",
+      "level": 3,
+      "code": "1000C003"
+     }
+    ]
+   }
+  ],
+  "total_print_time_s": 63179,
+  "total_filament_g": 614.44
+ },
+ "per_part": {
+  "carrier_half_a": {
+   "print_time_s": 5602,
+   "filament_g": 49.21,
+   "filament_m": 16.24,
+   "support_used": false,
+   "support_extrusion_in_gcode": false,
+   "slicer_warnings": []
+  },
+  "carrier_half_b": {
+   "print_time_s": 5554,
+   "filament_g": 49.18,
+   "filament_m": 16.23,
+   "support_used": false,
+   "support_extrusion_in_gcode": false,
+   "slicer_warnings": []
+  },
+  "handle_post": {
+   "print_time_s": 2170,
+   "filament_g": 8.7,
+   "filament_m": 2.87,
+   "support_used": false,
+   "support_extrusion_in_gcode": false,
+   "slicer_warnings": []
+  },
+  "dock_block": {
+   "print_time_s": 2416,
+   "filament_g": 22.59,
+   "filament_m": 7.45,
+   "support_used": false,
+   "support_extrusion_in_gcode": false,
+   "slicer_warnings": []
+  },
+  "finger_insert_upper": {
+   "print_time_s": 4991,
+   "filament_g": 33.41,
+   "filament_m": 11.03,
+   "support_used": false,
+   "support_extrusion_in_gcode": false,
+   "slicer_warnings": []
+  },
+  "finger_insert_lower": {
+   "print_time_s": 5176,
+   "filament_g": 33.79,
+   "filament_m": 11.15,
+   "support_used": false,
+   "support_extrusion_in_gcode": false,
+   "slicer_warnings": []
+  },
+  "plate_0": {
+   "print_time_s": 1883,
+   "filament_g": 15.24,
+   "filament_m": 5.03,
+   "support_used": false,
+   "support_extrusion_in_gcode": false,
+   "slicer_warnings": []
+  },
+  "plate_x+1mm": {
+   "print_time_s": 1923,
+   "filament_g": 15.27,
+   "filament_m": 5.04,
+   "support_used": false,
+   "support_extrusion_in_gcode": false,
+   "slicer_warnings": []
+  },
+  "plate_x+2mm": {
+   "print_time_s": 1924,
+   "filament_g": 15.28,
+   "filament_m": 5.04,
+   "support_used": false,
+   "support_extrusion_in_gcode": false,
+   "slicer_warnings": []
+  },
+  "plate_x+3mm": {
+   "print_time_s": 1922,
+   "filament_g": 15.28,
+   "filament_m": 5.04,
+   "support_used": false,
+   "support_extrusion_in_gcode": false,
+   "slicer_warnings": []
+  },
+  "plate_x+4mm": {
+   "print_time_s": 1929,
+   "filament_g": 15.27,
+   "filament_m": 5.04,
+   "support_used": false,
+   "support_extrusion_in_gcode": false,
+   "slicer_warnings": []
+  },
+  "plate_y+1mm": {
+   "print_time_s": 1918,
+   "filament_g": 15.27,
+   "filament_m": 5.04,
+   "support_used": false,
+   "support_extrusion_in_gcode": false,
+   "slicer_warnings": []
+  },
+  "plate_y+2mm": {
+   "print_time_s": 1921,
+   "filament_g": 15.27,
+   "filament_m": 5.04,
+   "support_used": false,
+   "support_extrusion_in_gcode": false,
+   "slicer_warnings": []
+  },
+  "plate_y+3mm": {
+   "print_time_s": 1917,
+   "filament_g": 15.27,
+   "filament_m": 5.04,
+   "support_used": false,
+   "support_extrusion_in_gcode": false,
+   "slicer_warnings": []
+  },
+  "plate_y+4mm": {
+   "print_time_s": 1921,
+   "filament_g": 15.26,
+   "filament_m": 5.04,
+   "support_used": false,
+   "support_extrusion_in_gcode": false,
+   "slicer_warnings": []
+  },
+  "plate_yaw+2deg": {
+   "print_time_s": 1923,
+   "filament_g": 15.27,
+   "filament_m": 5.04,
+   "support_used": false,
+   "support_extrusion_in_gcode": false,
+   "slicer_warnings": []
+  },
+  "plate_yaw-2deg": {
+   "print_time_s": 1911,
+   "filament_g": 15.26,
+   "filament_m": 5.04,
+   "support_used": false,
+   "support_extrusion_in_gcode": false,
+   "slicer_warnings": []
+  },
+  "plate_yaw+4deg": {
+   "print_time_s": 1914,
+   "filament_g": 15.23,
+   "filament_m": 5.03,
+   "support_used": false,
+   "support_extrusion_in_gcode": false,
+   "slicer_warnings": []
+  },
+  "plate_yaw-4deg": {
+   "print_time_s": 1912,
+   "filament_g": 15.23,
+   "filament_m": 5.02,
+   "support_used": false,
+   "support_extrusion_in_gcode": false,
+   "slicer_warnings": []
+  }
+ },
+ "per_part_support_flags": [],
+ "per_part_support_checks_run": 19
+}
