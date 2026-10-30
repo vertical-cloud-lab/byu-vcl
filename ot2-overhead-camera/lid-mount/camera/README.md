@@ -719,6 +719,11 @@ Swap in the aluminium ring when it arrives.
 
 ## 2026-10-28: six more printed rings, C to H, bigger on both ends
 
+> **2026-10-30:** the camera's knurled ring had come off on the lens when @mcwilliams03 tried the
+> rings, and the 27 Oct "too small on both ends" may have the same cause. Try A and B as in
+> [the knurled ring came off with the lens](#2026-10-30-the-knurled-ring-came-off-with-the-lens)
+> before printing these.
+
 ![Half-sections of rings C-H](../renders/c_cs_spacer_sizes.png)
 
 @timothy-commins tried A and B on 27 Oct and found both too small on both ends: the threaded end
@@ -785,3 +790,81 @@ Test each end on its own, so that one tight end doesn't hide a good fit on the o
 
 A short video of each try, as @sgbaird asked, shows the fit better than words. As before, these
 are a stopgap until the aluminium ring arrives: PLA creeps when it's warm.
+
+## 2026-10-30: the knurled ring came off with the lens
+
+![Michael's photos: the camera without its knurled ring, and the ring still on the lens](frames/2026-10-30/which_thread.jpg)
+
+@mcwilliams03 found that the printed spacer's threaded end fitted a thread inside the back of the
+lens rather than the camera, and asked for a spacer the other way round
+([#234](https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-6531983092),
+[photos](https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-6532018247)). His
+photos show why: **the camera's knurled back-focus ring unscrewed from the camera together with
+the lens**, so it looked like part of the lens. Turning a lens counter-clockwise to take it off
+drags the knurled ring out with it, unless the ring's lock screw is tight.
+[`which_thread.py`](which_thread.py) draws both figures here from EXIF-free crops of his photos.
+
+His caliper readings line up with the parts:
+
+| He measured | What it is | Standard |
+|---|---|---|
+| "Internal thread of the lens": 0.965 in (24.5 mm) across the crests, about 3 threads | The knurled ring's own C-mount thread: the part the lens's thread doesn't fill | 1"-32 UN. A female thread's crests are 0.966 in (24.54 mm) across, basic |
+| "External thread of the lens": 1.0965 in (27.85 mm), about 5 threads in 0.25 in | The knurled ring's outer thread, which screws into the camera body | The camera's own thread, about 28 mm across; not a lens mount |
+| "Internal thread of the Pi lens adapter": 1.085 in (27.56 mm), 5 threads | The camera body's thread for the knurled ring | The same thread, female |
+| Thickness of the printed spacer: 0.3535 in (8.98 mm) | 5 mm flange plus the 4 mm threaded end | The model's 9.0 mm |
+| Not measurable: hidden inside the knurled ring | The lens's own C-mount thread | 1"-32 UN: 1.000 in (25.4 mm) across the crests, 5.0 mm long on Waveshare's drawing |
+
+**So the spacer isn't backwards, and no new model is needed.** The fit he found, its threaded
+end in the C-mount thread inside the knurled ring, is the one it was made for:
+
+![Exploded section of the stack, to scale: camera body, knurled ring, printed spacer, lens](frames/2026-10-30/thread_stack.jpg)
+
+A spacer between the camera body and the knurled ring, as asked, would add spacing too. But both
+its threads would be the camera's ~28 mm one, whose pitch would have to be measured, and the
+knurled ring would then sit below the lock-screw clamp, free to turn. The C–CS position has the
+standard 1"-32 thread at both ends, and the bought aluminium ring goes there too.
+
+**What it may mean for rings C–H.** On 27 Oct @timothy-commins found A and B too small on both
+ends. If the knurled ring was on the lens then as well, that is exactly what he would have seen:
+the 25.4 mm threaded end spins in the camera body's 28 mm thread, and the lens, wearing the 28 mm
+knurled ring, can't enter a 25.4 mm bore. That can't be checked now, but today's fit of the
+threaded end in the real C-mount thread points that way. C–H were sized from that report, bigger
+at both ends: from D up their threaded ends are basic size or bigger, and may bind in the knurled
+ring. So try A and B as below before printing C–H.
+
+### Putting it back together, and testing the fit
+
+Work with the deck upside down, as in photo 1, so nothing falls onto the sensor's filter glass.
+"Clockwise" means as you look into the camera, at the sensor. Every thread here is right-handed.
+
+1. **Take the knurled ring off the lens.** Hold the lens body with its back facing you, and turn
+   the knurled ring counter-clockwise, like opening a jar. A rubber jar grip helps if it's stiff;
+   don't use pliers on the knurls.
+2. **Screw the knurled ring back into the camera**, threaded end first, knurled flange up. Turn it
+   counter-clockwise until the thread drops into place, then clockwise until it stops. It should
+   turn by finger. If it stiffens within the first turn it is cross-threaded: back it out and start
+   again. Leave the lock screw (mark 2) loose. Screwed fully in is where focusing starts.
+3. **Screw the spacer's narrow threaded end into the knurled ring**, clockwise, by hand, until its
+   flange meets the ring. Turning clockwise pushes the knurled ring against its stop, so it stays
+   put. Cut out any of the roof disc that's left first
+   ([above](#2026-10-23-2310-utc-a-printed-ccs-ring-to-use-until-the-bought-one-arrives)).
+4. **Screw the lens into the spacer's wide side**, clockwise, until its silver rim meets the
+   spacer's face, or until it stops. Don't force it. If it stops up to 0.4 mm short, it is touching
+   the ring left under the threaded end, which is fine.
+5. **Note how each joint felt**: *spins*, *loose*, *snug* or *binds*, for each ring you try. The rim
+   notches give the letter: one notch is A, two are B. Post them on #234 with a photo of the stack.
+6. **If it holds,** set the mount on its marks gently and focus as in
+   [Fitting the C–CS ring](#fitting-the-ccs-ring), from step 4: turn the knurled ring out a turn at a
+   time, with a still after each. Tighten the lock screw at the end.
+
+**To take the lens off later,** tighten the lock screw first, or hold the knurled ring still.
+Otherwise the ring comes out with the lens again.
+
+**What to print next depends on step 5:**
+
+- **A or B snug at both ends:** nothing, until the aluminium ring arrives.
+- **The lens binds in both bores:** print C–H, whose bores are bigger, and test each end on its own
+  ([Testing them](#testing-them-one-end-at-a-time)). Or ask for a plate that keeps the threaded end
+  of A or B, whichever fits, and steps only the bore.
+- **The threaded end is loose in the knurled ring:** C's is 0.06 mm a side bigger than A's, and
+  D's is basic size.

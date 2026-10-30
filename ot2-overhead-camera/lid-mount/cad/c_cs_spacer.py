@@ -30,6 +30,11 @@ the threaded end 0.06 mm a side per letter, from 0.06 under basic (C) to 0.24 ov
 bore 0.04 mm a side per letter, from 0.38 over basic (C) to 0.58 (H). Beyond about 0.33 a side
 a bore no longer overlaps the lens's thread crests as modelled, so the bigger bores only work
 if the printed bore really is that much smaller than drawn, which is what A and B suggest.
+
+On 2026-10-30 the camera's knurled ring turned out to have come off on the lens, so the threads
+being tried were its ~28 mm outer one and the camera body's, not 1"-32, and a printed ring's
+threaded end fitted the real 1"-32 inside the knurled ring. The 27 Oct result may have the same
+cause, so A and B are worth trying again before C-H (camera/README.md, 2026-10-30).
 """
 from __future__ import annotations
 
