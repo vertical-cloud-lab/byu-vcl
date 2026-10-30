@@ -1,0 +1,235 @@
+{
+ "what": "A second set of the compact (49 x 44 mm) stirrer's printed parts on one plate: compact base, compact vial holder, magnet carrier, 2 x deck key (0.05 mm press fit). The same plate as 2026-10-28, from the same sliced file",
+ "request": "https://github.com/vertical-cloud-lab/byu-vcl/pull/269#issuecomment-6532160735",
+ "request_text": "@claude-print print another stir module (the smaller version)",
+ "requested_by": "benwhitney5463",
+ "run": "https://github.com/vertical-cloud-lab/byu-vcl/actions/runs/41118667792",
+ "workflow": "claude-print.yml (@claude-print), environment bambu-print",
+ "approved_by": "benwhitney5463",
+ "tracking_comment": "https://github.com/vertical-cloud-lab/byu-vcl/pull/269#issuecomment-6532175625",
+ "printer_choice": "A1 mini: the request named no printer; every stirrer part so far was printed on the A1 mini in this PETG (print/2026-10-21-a1mini/, 2026-10-22-a1mini-keys/, 2026-10-28-a1mini-compact/)",
+ "plate_rule": "sgbaird 2026-10-23: frame first, the run reads the plate, at least 90 s for objections while polling the thread, a fresh frame before Send; no plate-clear reply needed",
+ "plate_check": {
+  "first_frame": {
+   "file": "20261030T195849Z_camera.jpg",
+   "utc": "2026-10-30T19:58:49Z",
+   "posted_utc": "2026-10-30T20:03:32Z",
+   "comment": "https://github.com/vertical-cloud-lab/byu-vcl/pull/269#issuecomment-6532175625",
+   "read": "plate empty and bright enough to tell: Textured PEI, its texture, the faint outlines printed on it, lamp glare. The previous job's parts and filament tangle, on the plate at 17:42Z (print/2026-10-30-a1mini-key/), were gone from it",
+   "beside_the_plate": "on the bench, not on the plate: a black part and a clump of filament past the far edge; a black part standing on a white block to the left; a small black part lying flat near the lower-left corner; the red box at the far right corner (there through the 10-22 and 10-28 prints). In this high view the bed travels left-right; it was parked at Y 180, the left end, and the start G-code takes it to Y 185"
+  },
+  "second_frame": {
+   "file": "20261030T200514Z_camera.jpg",
+   "utc": "2026-10-30T20:05:14Z",
+   "read": "plate unchanged: mean absolute difference 2.44 of 255 over the plate region from the first frame (1.94 over the bench below the room)"
+  },
+  "wait": "frame posted 20:03:32Z; the thread polled at 20:03:45Z, 20:04:49Z and 20:06:08Z; no comment asked to stop, wait or change anything; Send at 20:06:13Z, 2 min 41 s after the post",
+  "replies_during_wait": "none. benwhitney5463's 19:55:23Z comment (four stirrers on one Uno) was a separate request, answered by another run",
+  "go": "the run's own read of the plate, with no objection in the wait",
+  "hms_before_send": "empty at 20:02:22Z (Assistant (HMS) tab)",
+  "nozzle": "0.4 mm stainless steel, standard flow, read off the printer (Printer Parts), 2026-10-30T20:02:09Z"
+ },
+ "uncovered_at_start": {
+  "frame": "20261030T200745Z_start_bench.jpg",
+  "what": "once the bed moved off Y 180, the bench under the plate's left overhang showed the previous job's filament tangle, a black part in it and two black two-post parts, lying flat beyond the end of the base. They had been hidden under the plate in both pre-Send frames. The plate went back over them to Y 185 at about 20:09Z (frame 20:09:16Z) with no sign of catching them, and the print ran normally after; the tangle was still lying there at the pause (20261030T212854Z_paused.jpg, top left)"
+ },
+ "source": {
+  "branch": "claude/issue-169-20261009-2151",
+  "sent_file": "../2026-10-28-a1mini-compact/compact_stirrer_parts.gcode.3mf, unchanged",
+  "sent_file_md5": "336c48d65c49bbed73c315ef3e0d15dd",
+  "plate_1_gcode_md5": "a4a94f0268d8ffbfe13347abf12c7f91",
+  "stl_md5_now_same_as_2026_10_28": {
+   "hardware/vial-stirrer-cubxl/stl/compact/base_compact.stl": "f7fc6f13592db7b35ea21e3a3ec05f3d",
+   "hardware/vial-stirrer-cubxl/stl/compact/vial_holder_compact.stl": "9d26f77e390d5899fbaa4d7002fd2c94",
+   "hardware/vial-stirrer-cubxl/stl/magnet_carrier.stl": "84c241f7db03fb13f88b4eb47cdedc00",
+   "hardware/vial-stirrer-cubxl/stl/deck_key.stl": "fc2bb14d3cd7b228053a834a42651613"
+  },
+  "why_not_resliced": "the request was for another of the same; re-sending the file the printer ran on 10-28 gives the same toolpaths, and avoids the GUI resetting a project's changed settings (bambu/studio/README.md on PR #234's branch)",
+  "gcode_checks": "../2026-10-28-a1mini-compact/check_slice.py on the sent file gives output identical to ../2026-10-28-a1mini-compact/check_slice_output.txt"
+ },
+ "slicer": {
+  "app": "Bambu Studio 02.08.02.61 (AppImage) on the CI runner, bundled profiles (the 2.8.0.6 configuration update was cancelled)",
+  "how_opened": "File > Open project (Ctrl+O) on the .gcode.3mf: Studio loads it as a sliced plate, straight into Preview, with Slice plate greyed out and Print plate active",
+  "shown": "Bambu Lab A1 mini, Textured PEI, 0.4 nozzle, PETG Basic, process * 0.20mm Standard @BBL A1M; 110 layers to 22.00 mm, 9.02 m, 27.11 g, total 1h11m",
+  "settings": "as sliced on 2026-10-28: 0.20mm Standard @BBL A1M with 4 walls, 30 % infill and 0.15 mm elephant-foot compensation; the magnet carrier alone at 100 % rectilinear; no supports; Bambu PETG Basic, 245 C nozzle, 70 C bed"
+ },
+ "send": {
+  "utc": "2026-10-30T20:06:13Z",
+  "printer": "Thumbelina, the A1 Mini (Bambu Lab A1 mini, 0.4 mm)",
+  "route": "Bambu Studio on the runner, logged in to the lab's Bambu account (password + authenticator code), sent through Bambu's cloud",
+  "job_name": "compact_stirrer_parts_2 (the dialog offered compact_stirrer_parts.gcode, from the file name)",
+  "plate": "PEI (the file's Textured PEI)",
+  "ams_mapping": "PETG -> A4, chosen by Studio",
+  "timelapse": false,
+  "auto_bed_leveling": true,
+  "flow_dynamics_calibration": true,
+  "dialog": "20261030T200601Z_send_dialog.png",
+  "uploaded": "the opened file itself, plus a config-only .5752.0_config.3mf (no G-code) that Studio wrote to /tmp/bamboo_model at Send; that one was not kept"
+ },
+ "estimates": {
+  "total": "1h 11m 20s",
+  "layers": 110,
+  "max_z_mm": 22.0,
+  "filament_g": 27.11,
+  "filament_m": 9.02
+ },
+ "printer_before": {
+  "utc": "2026-10-30T19:58:49Z",
+  "state": "idle after issue55_sleeves_A1mini_PLA (100 %, Finished), no HMS alerts",
+  "nozzle_c": 22,
+  "bed_c": 22,
+  "ams_lite": {
+   "A1": "PLA Basic, dark blue",
+   "A2": "empty",
+   "A3": "PLA Basic, black",
+   "A4": "PETG Basic, white"
+  }
+ },
+ "pause": {
+  "utc": "2026-10-30T21:05:30Z",
+  "layer": "57/110",
+  "percent": 80,
+  "warning": "AMS lite filament spool or filament may be stuck [1200-8010 210530]",
+  "hms": "AMS lite slot 4 filament may be tangled or stuck",
+  "same_as": "print/2026-10-21-a1mini/ (paused at layer 42/110, 66 %, the same warning and slot)",
+  "filament": "about 24 g of the file's 27.1 g extruded by layer 57 (summed from the G-code, start purge included); about 3.5 g still to go",
+  "printer_while_paused": "bed held at 70 C; nozzle cooled to about 41 C by 21:28Z",
+  "run_action": "did not press Resume (problem solved) or Check Assistant: someone has to look at the spool first. Moved Studio's Warning window aside at 21:28:5xZ so the camera pane showed; touched nothing else",
+  "files": [
+   "20261030T210545Z_ams_warning.png",
+   "20261030T210618Z_paused.jpg",
+   "20261030T210618Z_paused_job_panel.png",
+   "20261030T210628Z_hms.png",
+   "20261030T212854Z_paused.jpg"
+  ]
+ },
+ "timeline_utc": [
+  [
+   "19:51:35",
+   "request (@claude-print, benwhitney5463)"
+  ],
+  [
+   "19:51:38",
+   "run created; approved by benwhitney5463"
+  ],
+  [
+   "19:53:38",
+   "tracking comment's first checklist"
+  ],
+  [
+   "19:55:05",
+   "screen recording started; Studio's first start: certificate prompt, wizard (North America, data sharing skipped), plug-in installed, configuration update cancelled, three Beta prompts"
+  ],
+  [
+   "19:57:13",
+   "Login window: e-mail and password typed from the environment; Log In at 19:57:30"
+  ],
+  [
+   "19:57:49",
+   "authenticator code typed (bambu-totp) and confirmed; logged in; Synchronise: No"
+  ],
+  [
+   "19:58:05",
+   "Device page: Studio had selected the A1 mini by itself; idle after issue55_sleeves_A1mini_PLA, heaters off"
+  ],
+  [
+   "19:58:49",
+   "first frame (live view from 19:58:27)"
+  ],
+  [
+   "20:02:09",
+   "Printer Parts: 0.4 mm stainless, standard flow"
+  ],
+  [
+   "20:02:22",
+   "HMS tab: empty"
+  ],
+  [
+   "20:02:45",
+   "frame, Device page, nozzle and HMS screenshots pushed (2e1c217)"
+  ],
+  [
+   "20:03:32",
+   "frame, state, plan and read of the plate posted at the top of the tracking comment"
+  ],
+  [
+   "20:04:25",
+   "the 10-28 compact_stirrer_parts.gcode.3mf opened: Preview, 110 layers, 27.11 g, 1h11m"
+  ],
+  [
+   "20:05:14",
+   "second frame: plate unchanged"
+  ],
+  [
+   "20:06:01",
+   "Send dialog: job renamed compact_stirrer_parts_2; PETG -> A4, timelapse off, levelling and flow calibration on"
+  ],
+  [
+   "20:06:08",
+   "thread polled: nothing new"
+  ],
+  [
+   "20:06:13",
+   "Send"
+  ],
+  [
+   "20:06:23",
+   "printer downloading; bed target 70 C"
+  ],
+  [
+   "20:07:45",
+   "the bed off Y 180 shows the tangle and parts lying under its end of travel"
+  ],
+  [
+   "20:08:10",
+   "changing filament (PETG from A4)"
+  ],
+  [
+   "20:11:18",
+   "bed levelling"
+  ],
+  [
+   "20:12:35",
+   "flow dynamics calibration"
+  ],
+  [
+   "20:14:03",
+   "layer 1"
+  ],
+  [
+   "20:28:17",
+   "layer 10"
+  ],
+  [
+   "20:36:51",
+   "tracking comment: printing, layer 14"
+  ],
+  [
+   "20:42:49",
+   "layer 20"
+  ],
+  [
+   "20:53:10",
+   "layer 30"
+  ],
+  [
+   "21:02:48",
+   "layer 50"
+  ],
+  [
+   "21:05:12",
+   "layer 57"
+  ],
+  [
+   "21:05:30",
+   "paused: AMS lite filament spool or filament may be stuck [1200-8010]; HMS: AMS lite slot 4 filament may be tangled or stuck"
+  ],
+  [
+   "21:06:53",
+   "tracking comment: paused, what to check at A4, how to resume or stop"
+  ]
+ ],
+ "watching": "Studio's Device page: watch_a1.py, a PETG copy of PR #234's bambu/studio/watch_studio.py (nozzle limit 285 C until layer 1 and 260 C after, bed 80 C, two plausible readings in a row needed), OCR about every 11 s and a camera crop every 60 s; it stopped on the Warning window at 21:05:45Z. Then a pause watcher (job panel OCR and window list every 10 s) and the thread polled about every 30 s",
+ "recording": "the runner's screen was recorded in 5 min segments; the segment holding the login (19:55:05-20:00:05Z) was re-cut at once into 19:55:05-19:57:10 and 19:58:10-20:00:05 and the original deleted, so the login was never kept",
+ "outcome": "paused at layer 57/110 (80 %) at 21:05:30Z on the AMS Lite slot 4 warning; waiting for someone at the printer (as of 21:31Z)"
+}
