@@ -834,14 +834,15 @@ ring. So try A and B as below before printing C–H.
 
 ### Putting it back together, and testing the fit
 
-Work with the deck upside down, as in photo 1, so nothing falls onto the sensor's filter glass.
-"Clockwise" means as you look into the camera, at the sensor. Every thread here is right-handed.
+Keep the camera pointing down while it's open, as it hangs on the robot, so dust can't fall onto
+the sensor's filter glass, and work on it from below. "Clockwise" means as you look up into the
+camera, at the sensor. Every thread here is right-handed.
 
 1. **Take the knurled ring off the lens.** Hold the lens body with its back facing you, and turn
    the knurled ring counter-clockwise, like opening a jar. A rubber jar grip helps if it's stiff;
    don't use pliers on the knurls.
-2. **Screw the knurled ring back into the camera**, threaded end first, knurled flange up. Turn it
-   counter-clockwise until the thread drops into place, then clockwise until it stops. It should
+2. **Screw the knurled ring back into the camera**, threaded end first, knurled flange toward you.
+   Turn it counter-clockwise until the thread drops into place, then clockwise until it stops. It should
    turn by finger. If it stiffens within the first turn it is cross-threaded: back it out and start
    again. Leave the lock screw (mark 2) loose. Screwed fully in is where focusing starts.
 3. **Screw the spacer's narrow threaded end into the knurled ring**, clockwise, by hand, until its
