@@ -44,6 +44,12 @@ Afterwards, check that the capper and the pipette still behave (`pipette_test`),
 end of this file. Nothing in the patch prints unless a command asks, so `PawduinoLink`'s
 one-reply-per-command framing is unchanged.
 
+The patch drives one stirrer. Four, one at a time, need a further change, not yet written: a
+gate pin and a Hall pin per stirrer, with Timer1's interrupts switching the gate in software
+and reading the Hall pin, and D5–D7 taken from the lights. See
+[Four stirrers on one Uno](../../hardware/vial-stirrer-cubxl/README.md#four-stirrers-on-one-uno)
+(2026-10-30).
+
 ## 2026-10-07: the board runs `panda_vcl_p20gen2_tic796_fastmove_spread_20261007.hex`
 
 Fix B for the TMC2209: the 10-01 image with spreadCycle instead of StealthChop, one line in

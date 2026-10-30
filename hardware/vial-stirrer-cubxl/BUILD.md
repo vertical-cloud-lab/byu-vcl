@@ -694,9 +694,10 @@ its location.
 
 The vial sits midway between its two keys on both sizes, so the same x and y apply.
 Compact stirrers side by side have their vials 50 mm apart in X (two slot columns) or 45 mm
-in Y (one row). **The Uno can drive only one of them,** though: D10 is its only free
-hardware-PWM pin. A second stirrer needs its own controller, for example the XIAO RP2040
-version (README, [Side by side on the deck](README.md#side-by-side-on-the-deck)).
+in Y (one row). **As the firmware stands, the Uno drives one of them,** on D10 and D2. Four,
+one at a time, take a firmware change and a gate pin and a Hall pin each (README,
+[Four stirrers on one Uno](README.md#four-stirrers-on-one-uno)). Wire the first to D10 and
+D2, as in [stage 5](#the-cable-the-connector-and-the-uno-end): in that plan it is stirrer 1.
 
 Then teach it like any new labware: jog the pipette, with a tip, over the vial and check the
 centre and the rim height. Run the checks (`cubxl_run.py --checks-only`: `validate_setup`,

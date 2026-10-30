@@ -38,7 +38,7 @@ the capper and the pipette, instead of its own XIAO RP2040.
 | Drive | Orion OD4010-12HSS fan (the Pioreactor's), 5 V, 200 Hz PWM through a low-side MOSFET |
 | Magnets | 2 × N52, 1/4 × 1/16 in, opposite poles up, 9.8 mm apart (the Pioreactor's) |
 | Speed sensing | US1881 Hall latch beside the magnets, 1 pulse per turn |
-| Controller | The CubXL's Arduino Uno (D10 PWM, D2 Hall, a stir command added to its PANDA firmware), or a Seeed XIAO RP2040 on its own USB-C |
+| Controller | The CubXL's Arduino Uno (D10 PWM, D2 Hall, a stir command added to its PANDA firmware; [four stirrers, one at a time](#four-stirrers-on-one-uno), with a further change), or a Seeed XIAO RP2040 on its own USB-C |
 | Fasteners | 4 × M3 × 16 and 4 × M3 × 12 socket head screws, 8 × M3 heat-set inserts. Compact: 4 × M3 × 20, 4 × M3 flat washers, 4 inserts |
 | Parts cost | about $20 per stirrer once the multi-packs are bought; $101–126 for a first order ([`BOM.md`](BOM.md)) |
 
@@ -177,9 +177,11 @@ gap to go down, and the board clears the wall by 0.8 mm. Each screw reaches thro
 
 What else changes:
 
-- **One Uno drives one stirrer.** D10 is its only free hardware-PWM pin. For several, use
-  the XIAO RP2040 version, one per stirrer, each on its own USB, or one RP2040 board for all
-  of them, with a PWM pin and a Hall input for each.
+- **One Uno can drive four stirrers, one at a time,** each on a gate pin and a Hall pin of
+  its own, once the firmware is changed to switch the PWM in software
+  ([Four stirrers on one Uno](#four-stirrers-on-one-uno), 2026-10-30). Today's patch drives
+  one, on D10, the only free hardware-PWM pin. To run several at once, use the XIAO RP2040
+  version, one per stirrer, each on its own USB.
 - **Cables.** With 1 mm between stirrers, a cable can only leave from a side that faces out
   of the block. With the notch on −Y, and each stirrer turned so that side faces out, a block
   two rows deep and any number of columns long works. A third row's cables would have to go
@@ -321,8 +323,10 @@ D3–D7, D9, D11 and A0–A4. What is left is enough for the stirrer:
 | Hall sensor | **D2** | INT0, the free external interrupt |
 | Supply | **5V** and **GND** | About 0.1 A for the whole stirrer, at most. See [Current draw](#current-draw-and-power) |
 
-D8, D12, D13 and A5 stay free. A second stirrer would need software PWM and a
-pin-change interrupt on those, which the patch below does not do.
+D8, D12, D13 and A5 stay free. More stirrers need software PWM and a pin each for the gate
+and the Hall sensor, which the patch below does not do: see
+[Four stirrers on one Uno](#four-stirrers-on-one-uno). Pin-change interrupts are out,
+because SoftwareSerial claims them all.
 
 **Check before wiring:** the firmware leaves D2 and D10 alone, but nothing here records
 whether anything is soldered to them on the Uno or its shield. Look first.
@@ -438,6 +442,115 @@ stir command yet. The obvious shape for one is a copy of its `set_lights`:
 - run teardown turning the stirrer off, as it does the lights.
 
 That is not written yet.
+
+### Four stirrers on one Uno
+
+Asked by @benwhitney5463 on 2026-10-30: could four stirrers share the Uno, on one clock,
+each switched on by a pin of its own, with only one stirring at a time? **Yes, with no new
+parts, but it takes a firmware change that hasn't been written yet.** Each stirrer stays
+exactly as [`BUILD.md`](BUILD.md) builds it, with its own four-core cable. At the Uno each
+one takes two pins, one for its MOSFET gate and one for its Hall sensor, so four take eight.
+Worked out from the firmware source on 2026-10-30; nothing was built or run.
+
+**One clock, a gate pin each.** Timer1 stays the shared 200 Hz clock. Instead of putting
+its pulses out on D10 in hardware, its two interrupts switch the gate pin of whichever
+stirrer is on: on at the start of each period, off at the duty point. That combines the
+clock with the stirrer's own pin inside the chip. Arduino's Servo library drives up to 12
+pins from Timer1 the same way.
+
+- **Starting one stirrer stops any other.** Running one fan at a time also keeps the
+  current about where it is now (below).
+- **Each gate keeps its 10 k pull-down on the stirrer,** so every fan stays off while the
+  Uno resets, as now.
+- **A separate clock wire works as well, but costs a pin and a chip.** One PWM pin wired to
+  all four stirrers, plus an on/off pin each, needs an AND gate per stirrer to combine
+  them, for example a 74HC08 (four gates in one chip) at the Uno. That is five pins for the
+  fans instead of four.
+
+**Each stirrer needs its own Hall pin too.** The US1881 is a latch. A stopped fan's sensor
+stays in whichever state it was last in, and about half the time that is on, pulling its
+output low. On one line shared by four sensors, an idle stirrer stuck low would hide the
+running one's pulses.
+
+**The Hall pins are sampled, not interrupt-driven.** The Uno has two external interrupts,
+on D2 and D3. Every pin also has a pin-change interrupt, but the firmware's SoftwareSerial
+(the TMC2209's UART on A0 and A1) claims all three pin-change vectors, so the rest of the
+firmware can't use them. Instead, the same Timer1 interrupt reads the running stirrer's Hall
+pin, 200 times a second, and counts its falling edges. At 2000 rpm, the firmware's cap, the
+latch spends 15 ms in each state, so each state is read at least three times.
+
+**Pins.** In use are D4 (the capper's line-break sensor), D9 (the pipette's limit switch),
+D11 (the electromagnet) and A0–A4 (the TMC2209). The firmware also claims D3, D5, D6 and
+D7 for lights that aren't wired: a NeoPixel ring on D3, two NeoPixel dots on D5 and D6, and
+the line-break LED on D7. Taking D5–D7 for stirrers leaves the ring's pin alone:
+
+| Stirrer | Gate (fan PWM, through the stirrer's 100 Ω) | Hall input | Those pins today |
+|---|---|---|---|
+| 1 | **D10** | **D2** | Free. The single stirrer's pins, so one built now from `BUILD.md` is stirrer 1 |
+| 2 | **D5** | **D8** | NeoPixel dot 1; free |
+| 3 | **D6** | **D12** | NeoPixel dot 2; free |
+| 4 | **D7** | **A5** | Line-break LED; free |
+
+- **D13 stays free.** The bootloader blinks it at every reset, and opening the port resets
+  the board. On a gate that would kick a fan at every reset. On a Hall input the pin would
+  drive against the sensor's output.
+- **The gates take the light pins, and the Hall inputs take pins nothing drives.** Today's
+  firmware drives D5–D7 at boot. A gate there only switches a fan; a Hall input there would
+  have the pin fighting the sensor's output.
+- **Plug stirrers 2–4 in only after the four-stirrer firmware is flashed.** Today's firmware
+  sets D7 high at boot whenever the line-break beam is broken, and leaves it there, which
+  would run stirrer 4 flat out.
+- **Check before wiring,** as for one stirrer, that nothing is soldered to these pins on the
+  Uno or its shield. If the dots or the LED turn out to be wired after all, pick again.
+
+**At the Uno.** The Uno has one 5V pin, so the four cables meet at a small hub. That is
+four JST-XH sockets (BOM item 9 has ten pairs) whose 5V leads join on one rail and GND leads
+on another, with a lead from each rail to the Uno's 5V and a GND. Each socket's gate and Hall
+leads go to that stirrer's two pins. The rails can be the proto shield's, if it is on the
+Uno, or a piece of the BOM's perfboard strip.
+
+**Current.** One fan at a time draws under 0.1 A, as now. The four Hall sensors are powered
+all the time, up to 5 mA each, so the stirrers come to about 0.12 A at most, against about
+0.1 A for one. Four fans at once would add about 0.4 A to the Uno's own 0.1 A or so, which
+reaches its 500 mA USB fuse. Running them together would need the fans fed from the
+electromagnet's 5 V supply.
+
+**On the deck,** four compact stirrers fit as a 2 × 2 block, 100 × 90 mm, with the cables
+leaving front and back, or as a row of four
+([Side by side on the deck](#side-by-side-on-the-deck)).
+
+**For four compact stirrers, besides ME order 13518 and item 13:**
+
+- **Two more fans.** 13518 has two. Amazon had only 4 left on 2026-10-19; Digi-Key
+  1053-1205-ND is the same fan.
+- **One more 10 ft pack of cable** (item 8). A pack covers about two stirrers.
+- **A few more M3 × 20 screws.** Four compact stirrers take 16, and the M3 kit (item 12) has
+  15. A second kit or a few stainless M3 × 20 covers it.
+- **Two more compact print sets.** One was printed on 2026-10-28, and a second went to the A1
+  mini on 2026-10-30.
+- The other packs cover four stirrers.
+
+**The firmware change** (not written yet):
+
+- `Stirrer.h` and `Stirrer.cpp`: a gate and Hall pin pair per stirrer. Timer1 runs at
+  200 Hz in fast PWM (TOP 1249, clk/64), and its overflow and compare-B interrupts switch the
+  running stirrer's gate and read its Hall pin. The control loop is unchanged and runs for
+  that stirrer.
+- `CMD_STIR` takes a stirrer number first, `30,<stirrer>,<rpm>[,<seconds>]`. `31` also
+  says which stirrer is running.
+- Lights: drop the two dots and the line-break LED. The ring on D3 and the line-break
+  sensor on D4 stay.
+- It fits easily. The one-stirrer image uses 20,340 of 32,256 bytes of flash and 1,510 of
+  2,048 bytes of RAM.
+- Interrupts are held off for about 1 ms per byte while SoftwareSerial talks to the
+  TMC2209, and for about 1 ms each time the ring is updated. A PWM edge that has to wait
+  makes that one period's pulse up to 1 ms longer or shorter, which the fan won't notice, and
+  the Hall pin is still read in every state.
+
+**If pins run short later,** a 74HC4052 at the Uno can route D10 to one stirrer's gate and
+that stirrer's Hall line to D2. It is two 4-way analog switches in one chip, sharing two
+select lines. That uses four pins in all and keeps today's hardware PWM and interrupt code,
+at the cost of one more chip to buy and solder.
 
 ## Current draw and power
 
