@@ -329,7 +329,8 @@ def instron_floor() -> Instrument:
              "screen_on")
     xh = _piece(inst, "crosshead")
     z = p["xh_z"]
-    xh.add("crosshead", rbox(p["col_dx"] + 2 * p["col_w"] + 20, p["col_d"] - 30, p["xh_h"], 12, z=z), "inst_black")
+    # its ends run in the columns, on the screws at their centrelines (it poked out of their outer sides)
+    xh.add("crosshead", rbox(p["col_dx"] + p["col_w"], p["col_d"] - 30, p["xh_h"], 12, z=z), "inst_black")
     xh.add("crosshead logo", box(-90, -(p["col_d"] - 30) / 2 - 2, z + 80, 90, -(p["col_d"] - 30) / 2,
                                  z + 120), "inst_red")
     xh.add("load cell", cyl(110, 70, z=z - 70), "chrome")
@@ -388,7 +389,8 @@ def instron_small() -> Instrument:
     xh = _piece(inst, "crosshead")
     z = p["xh_z"]
     arm_y0 = gy - 70
-    xh.add("arm", box(-p["col_w"] / 2 - 10, arm_y0, z, p["col_w"] / 2 + 10, col_y, z + p["arm_h"])
+    # narrower than the column and out of its front face (it was wider, and wrapped round the column to its middle)
+    xh.add("arm", box(-p["col_w"] / 2 + 15, arm_y0, z, p["col_w"] / 2 - 15, col_y - p["col_d"] / 2 + 30, z + p["arm_h"])
            .edges("|X").fillet(10), "inst_black")
     xh.add("load cell", cyl(70, 50, y=gy, z=z - 50), "chrome")
     xh.add("load cell band", cyl(72, 10, y=gy, z=z - 32), "inst_red")
@@ -447,8 +449,8 @@ def xrd() -> Instrument:
     hood = _piece(inst, "hood")
     upper = box(-bw / 2, yf, p["base_top"], bw / 2, yb, p["upper_top"])
     upper = upper.cut(box(-p["door_x"], yf - 1, p["base_top"], p["door_x"], yf + p["door_t"], p["door_top"]))
-    upper = upper.cut(box(-p["door_x"] + 8, yf + p["door_t"] - 1, p["base_top"] + 6, p["door_x"] - 8, yb - 30,
-                          p["door_top"] - 6))
+    cx0, cz1 = bw / 2 - 20, p["upper_top"] - 15      # the chamber behind the door frame: wider and taller than the door
+    upper = upper.cut(box(-cx0, yf + p["door_t"] - 1, p["base_top"] + 6, cx0, yb - 30, cz1))
     hood.add("upper housing", upper, "inst_white")
     hood.add("logo band", box(-p["door_x"], yf - 2, p["door_top"] + 12, p["door_x"], yf, p["upper_top"] - 12),
              "inst_offwhite")
@@ -462,24 +464,26 @@ def xrd() -> Instrument:
         hood.add(f"side bulge {'LR'[sx > 0]}", w.edges("|Y").chamfer(12), "inst_light")
     # inside: the goniometer's back plate, the fixed X-ray tube on the left, the stage and the detector arm
     inner = _piece(inst, "chamber")
-    inner.add("chamber lining", box(-p["door_x"] + 8, yb - 34, p["base_top"] + 6, p["door_x"] - 8, yb - 30,
-                                    p["door_top"] - 6).union(
-        box(-p["door_x"] + 8, yf + p["door_t"], p["base_top"] + 6, p["door_x"] - 8, yb - 30, p["base_top"] + 10)),
-        "inst_dark")
+    inner.add("chamber lining", box(-cx0, yb - 34, p["base_top"] + 6, cx0, yb - 30, cz1).union(
+        box(-cx0, yf + p["door_t"], p["base_top"] + 6, cx0, yb - 30, p["base_top"] + 10)), "inst_dark")
     inner.add("goniometer", _ycyl(250, 12, y=yb - 46, z=gz), "inst_grey")
-    inner.add("goniometer hub", _ycyl(70, 120, y=gy - 20, z=gz).cut(_ycyl(40, 200, y=gy - 100, z=gz)), "aluminium")
+    # the hub is behind the sample (it used to ring the stage, in the beam's way); the stage turns on a theta shaft
+    inner.add("goniometer hub", _ycyl(70, yb - 46 - (gy + 60), y=gy + 60, z=gz), "aluminium")
     tube_x0 = -p["gonio_r"]
     inner.add("X-ray tube", _xcyl(64, 170, x=tube_x0 - 140, y=gy, z=gz), "inst_black")
     inner.add("tube window", _xcyl(30, 30, x=tube_x0 + 30, y=gy, z=gz), "steel")
     inner.add("divergence slit", box(tube_x0 + 60, gy - 18, gz - 18, tube_x0 + 66, gy + 18, gz + 18), "brass")
     stage = _piece(inst, "stage")
     stage.add("sample stage", box(-35, gy - 30, gz - 16, 35, gy + 30, gz - 3), "aluminium")
+    stage.add("theta shaft", _ycyl(24, 30, y=gy + 30, z=gz), "steel")
     holder = _piece(inst, "holder")
     holder.add("sample holder", box(-22, -26, 0, 22, 26, 2.5), "window")
     holder.add("powder", box(-10, -10, 2.5, 10, 10, 3.0), "powder")
     det = _piece(inst, "detector")
     r = p["gonio_r"]
-    d_shape = box(r - 10, gy - 30, -28, r + 120, gy + 30, 28).union(_xcyl(36, 30, x=r - 40, y=gy, z=0))
+    # the D/teX head at the 150 mm circle on its 2theta arm, which turns about the axis behind the beam plane
+    d_shape = box(r - 10, gy - 30, -28, r + 60, gy + 31, 28).union(_xcyl(36, 30, x=r - 40, y=gy, z=0)).union(
+        box(14, gy + 31, -12, r + 20, gy + 45, 12))
     d_shape = d_shape.rotate((0, gy, 0), (0, gy + 1, 0), -10.0).translate((0, 0, gz))    # 2theta = 10 deg
     det.add("D/teX detector", d_shape, "inst_dark")
     door = _piece(inst, "door")
@@ -491,8 +495,9 @@ def xrd() -> Instrument:
     inst.joints = {
         "door": Joint("hinge", axis=(0, 0, 1), pivot=(p["door_x"], yf, 0), deg=100.0),
         "stage": Joint("hinge", axis=(0, 1, 0), pivot=(0, gy, gz), deg=-40.0),
-        "holder": Joint("path", parent="stage", path=((0, -420, 120), (0, -260, 60), (0, gy - 60, gz - 3 + 40),
-                                                      (0, gy, gz - 3))),
+        # it waits clear of the door's swing and comes in through the doorway, at the goniometer's height
+        "holder": Joint("path", parent="stage", path=((-200, -520, gz + 60), (0, yf - 40, gz + 40),
+                                                      (0, gy - 60, gz - 3 + 40), (0, gy, gz - 3))),
         "detector": Joint("hinge", axis=(0, 1, 0), pivot=(0, gy, gz), deg=-80.0),
     }
     inst.actions = [
@@ -503,11 +508,12 @@ def xrd() -> Instrument:
         ("Scan, drawn see-through: the tube stays put, the sample tilts by theta and the detector sweeps 2theta "
          "from 10 to 90 degrees.", 3.2, {"~hood": (0.0, 1.0), "~door": (0.0, 1.0), "stage": (0.0, 1.0),
                                          "detector": (0.0, 1.0)}),
-        ("The detector parks, the door opens again and the sample comes out.", 2.2,
+        ("The detector parks and the door opens again.", 1.8,
          {"stage": (1.0, 0.0), "detector": (1.0, 0.0), "~hood": (1.0, 0.0), "~door": (1.0, 0.0),
           "door": (0.0, 1.0)}),
+        ("The sample comes out.", 1.4, {"holder": (1.0, 0.0)}),
         ("Door shut. At 722 mm tall the MiniFlex just fits a tray: Kardex allows 727.5 mm.", 1.4,
-         {"holder": (1.0, 0.0), "door": (1.0, 0.0)}),
+         {"door": (1.0, 0.0)}),
     ]
     inst.labels = [("X-ray tube", (-200, gy, gz + 30), (0.12, 0.30)), ("detector", (150, gy, gz + 60), (0.84, 0.30)),
                    ("front door", (-170, yf - 30, 520), (0.14, 0.62))]
@@ -538,7 +544,11 @@ def sem() -> Instrument:
             body.add(f"foot {sx}{sy}", cyl(40, p["feet"], x=sx * (W / 2 - 40), y=sy * (D / 2 - 50)), "chrome")
     shell = rbox(W, D - 10, H - p["feet"] - 70, 18, y=5, z=p["feet"])
     shell = shell.cut(box(-W / 2 + 32, yf - 1, p["front_z0"], W / 2 - 32, yf + 40, p["blue_top"]))
+    # the sample chamber behind the drawer, so the stage comes out of an opening rather than out of solid shell
+    chamber = box(-115, yf + 39, 45, 115, yf + 240, 235)
+    shell = shell.cut(chamber)
     body.add("body", shell, "inst_white")
+    body.add("chamber", chamber.cut(box(-111, yf + 38, 49, 111, yf + 236, 231)), "inst_dark")
     hood = rbox(W - 6, D - 60, 70, 30, y=20, z=H - 70).edges(">Z").fillet(20)
     body.add("top hood", hood, "inst_offwhite")
     body.add("hood ridge", rbox(175, D - 120, 14, 10, y=40, z=H - 14), "inst_white")
@@ -564,8 +574,10 @@ def sem() -> Instrument:
     drawer.add("drawer front", rbox(W - 72, 30, p["drawer_top"] - p["front_z0"] - 12, 6, y=yf + 15,
                                     z=p["front_z0"] + 6), "inst_blue")
     drawer.add("handle", rbox(160, 16, 22, 8, y=yf - 6, z=p["drawer_top"] - 70), "inst_black")
-    drawer.add("stage rails", box(-80, yf + 30, 60, -60, yf + 200, 75).union(box(60, yf + 30, 60, 80, yf + 200, 75)),
+    # rails long enough to stay in the chamber with the drawer out, and a carrier plate under the stage's column
+    drawer.add("stage rails", box(-80, yf + 30, 60, -60, yf + 230, 75).union(box(60, yf + 30, 60, 80, yf + 230, 75)),
                "steel")
+    drawer.add("stage carrier", box(-80, yf + 30, 52, 80, yf + 200, 60), "steel")
     drawer.add("stage", cyl(70, 30, y=yf + 120, z=95), "aluminium")
     drawer.add("stage column", cyl(30, 35, y=yf + 120, z=60), "steel")
     stub = _piece(inst, "stub")
@@ -575,7 +587,7 @@ def sem() -> Instrument:
                .translate((32, yf + 120, 110)), "aluminium")
     inst.joints = {
         "drawer": Joint("slide", vec=(0, -p["draw"], 0)),
-        "stub": Joint("path", parent="drawer", path=((0, yf - 250, 330), (0, yf + 120, 190), (0, yf + 120, 125))),
+        "stub": Joint("path", parent="drawer", path=((0, yf - 250, 330), (0, yf + 120, 270), (0, yf + 120, 125))),
     }
     inst.actions = [
         ("AIR vents the chamber; the drawer slides out with the stage on its inside face.", 1.6,
@@ -768,8 +780,12 @@ def rail(length: float = 4000.0, travel: float = 1600.0) -> Instrument:
     car.add("carriage plate", box(-cl / 2, -cw / 2, top - p["car_t"], cl / 2, cw / 2, top).cut(
         cyl(120, p["car_t"] + 2, z=top - p["car_t"] - 1)), "vention_blue")
     car.add("bearing blocks", box(-cl / 2 + 30, -cw / 2 + 40, z1 + 15, cl / 2 - 30, cw / 2 - 40, top - p["car_t"]), "steel")
-    car.add("gearmotor", cyl(110, 170, x=0, y=-cw / 2 - 70, z=z1 - 140).union(
-        box(-70, -cw / 2 - 130, z1 - 10, 70, -cw / 2, z1 + 20)), "inst_black")
+    # the servo and its right-angle gearbox hang off the plate's front edge on a bracket, the pinion behind the bracket
+    # meshing with the rack (they floated in front of the plate, with no pinion)
+    car.add("motor bracket", box(-75, -cw / 2 - 15, z1 - 60, 75, -cw / 2, top), "aluminium")
+    car.add("gearmotor", box(-60, -cw / 2 - 115, z1 - 60, 60, -cw / 2 - 15, z1 + 20).union(
+        cyl(100, 160, x=0, y=-cw / 2 - 65, z=z1 - 220)), "inst_black")
+    car.add("pinion", cyl(44, 40, x=0, y=-bw / 2 - 12 - 22, z=z1 - 42), "steel")
     car.add("robot adapter", cyl(210, 12, z=top - 12), "aluminium")
     inst.joints = {"carriage": Joint("slide", vec=(travel, 0, 0))}
     inst.actions = [
@@ -819,20 +835,24 @@ def polisher() -> Instrument:
     tscr = box(-80, -4, 0, 80, 0, 100).rotate((0, 0, 0), (1, 0, 0), -20).translate((tx - 30, ty - 77, p["tower_h"] - 115))
     body.add("touchscreen", tscr.rotate((tx, ty, 0), (tx, ty, 1), 0), "screen_on")
     cx, cy = -W / 2 + 80, yb - 90
-    body.add("column", rbox(90, 90, H - p["deck"] - 60, 10, x=cx, y=cy, z=p["deck"]), "inst_offwhite")
-    body.add("water spout", box(pc[0] + 120, pc[1] + 60, p["deck"] + 90, pc[0] + 132, yb - 160, p["deck"] + 102)
-             .union(box(pc[0] + 120, pc[1] + 60, p["deck"] + 60, pc[0] + 132, pc[1] + 72, p["deck"] + 102)), "steel")
+    # the column ends inside the head even with the head down (it came up through the cap)
+    body.add("column", rbox(90, 90, H - p["deck"] - 90, 10, x=cx, y=cy, z=p["deck"]), "inst_offwhite")
+    pz = p["deck"] + 70                         # the platen's underside; the cloth's top is 18 mm above it
+    # the spout comes out of the tower over the bowl's rim, its nozzle 10 mm above the cloth (it went into the platen)
+    sz0 = pz + 28
+    body.add("water spout", box(pc[0] + 120, pc[1] + 60, p["deck"] + 110, pc[0] + 132, yb - 160, p["deck"] + 122)
+             .union(box(pc[0] + 120, pc[1] + 60, sz0, pc[0] + 132, pc[1] + 72, p["deck"] + 122)), "steel")
     head = _piece(inst, "head")
     hz = H - 150
+    hz0 = pz + 18.6 + p["head_drop"]            # the mounts' faces: on the cloth with the head down
     hcx, hcy = pc[0] - 30, pc[1] + 20             # the holder's axis, off the platen's centre
     head.add("head arm", box(cx - 50, hcy - 60, hz, cx + 50, cy + 40, hz + 110).edges("|Z").fillet(20).union(
         box(cx - 50, hcy - 60, hz, hcx + 70, hcy + 60, hz + 110).edges("|Z").fillet(20)), "inst_blue")
     head.add("head cap", box(cx - 45, hcy - 55, hz + 110, hcx + 65, hcy + 55, hz + 125).edges("|Z").fillet(18)
              .union(box(cx - 45, hcy - 55, hz + 110, cx + 45, cy + 35, hz + 125)), "inst_white")
     head.add("chevron", box(hcx - 20, hcy - 61, hz + 40, hcx + 40, hcy - 60, hz + 70), "inst_white")
-    head.add("spindle", cyl(36, 70, x=hcx, y=hcy, z=hz - 70), "chrome")
+    head.add("spindle", cyl(36, hz - (hz0 + 40), x=hcx, y=hcy, z=hz0 + 40), "chrome")
     holder = _piece(inst, "holder")
-    hz0 = p["deck"] + 95 + p["head_drop"]
     holder.add("specimen holder", cyl(160, 18, x=hcx, y=hcy, z=hz0 + 22).cut(cyl(30, 20, x=hcx, y=hcy, z=hz0 + 21)),
                "steel")
     for i in range(6):
@@ -841,14 +861,14 @@ def polisher() -> Instrument:
                    "mount")
     holder.add("mark", box(hcx + 60, hcy - 4, hz0 + 40, hcx + 78, hcy + 4, hz0 + 41), "inst_red")
     platen = _piece(inst, "platen")
-    pz = p["deck"] + 70
     platen.add("platen", cyl(p["platen_d"], 15, x=pc[0], y=pc[1], z=pz), "aluminium")
+    platen.add("platen hub", cyl(80, pz - p["deck"] - 8, x=pc[0], y=pc[1], z=p["deck"] + 8), "steel")
     platen.add("cloth", cyl(p["platen_d"] - 6, 3, x=pc[0], y=pc[1], z=pz + 15), "cloth")
     for i in range(4):
         bar = box(-p["platen_d"] / 2 + 10, -3, pz + 18, p["platen_d"] / 2 - 10, 3, pz + 18.6)
         platen.add(f"groove {i}", bar.rotate((0, 0, 0), (0, 0, 1), i * 45.0).translate((pc[0], pc[1], 0)), "inst_grey")
     water = _piece(inst, "glow")
-    water.add("water", cyl(6, 70, x=pc[0] + 126, y=pc[1] + 66, z=pz + 20), "water")
+    water.add("water", cyl(6, sz0 - (pz + 18), x=pc[0] + 126, y=pc[1] + 66, z=pz + 18), "water")     # nozzle to cloth
     inst.joints = {
         "head": Joint("slide", vec=(0, 0, -p["head_drop"])),
         "holder": Joint("spin", parent="head", axis=(0, 0, 1), pivot=(hcx, hcy, 0), deg=-720.0),
@@ -906,7 +926,7 @@ def nanoindenter() -> Instrument:
         box(p["head_x"] - 50, -40, sz + 200, p["head_x"] + 50, yb - 150, sz + 280)), "inst_black")
     body.add("indenter tip", cyl(10, 30, x=p["head_x"], y=0, z=sz + 60), "chrome")
     body.add("objective", cyl(36, 110, x=p["scope_x"], y=0, z=sz + 100), "chrome")
-    body.add("camera", cyl(46, 90, x=p["scope_x"], y=0, z=sz + 210), "inst_dark")
+    body.add("camera", cyl(46, 80, x=p["scope_x"], y=0, z=sz + 210), "inst_dark")     # under the lid
     body.add("stage base", box(-150, -110, p["feet"] + 70, 150, 110, sz - 20), "inst_dark")
     stage = _piece(inst, "stage")
     stage.add("xy stage", box(-90, -80, sz - 20, 90, 80, sz), "aluminium")
@@ -922,7 +942,7 @@ def nanoindenter() -> Instrument:
         box(-W / 2 + 90, yf - 1, p["feet"] + 120, W / 2 - 80, yf + 13, hz - 50)), "inst_white")
     lid.add("hood glass", box(-W / 2 + 90, yf + 4, p["feet"] + 120, W / 2 - 80, yf + 8, hz - 50), "window")
     inst.joints = {
-        "lid": Joint("hinge", axis=(1, 0, 0), pivot=(0, yb, hz), deg=p["lid_deg"]),
+        "lid": Joint("hinge", axis=(1, 0, 0), pivot=(0, yb, hz), deg=-p["lid_deg"]),     # front up, about the back edge
         "stage": Joint("slide", vec=(p["head_x"] - p["scope_x"], 0, 0)),
         "sample": Joint("path", parent="stage", path=((p["scope_x"], -380, 420), (p["scope_x"], -150, sz + 120),
                                                       (p["scope_x"], 0, sz + 15 + 30), (p["scope_x"], 0, sz + 15))),
@@ -938,6 +958,7 @@ def nanoindenter() -> Instrument:
     inst.labels = [("indenter head", (p["head_x"], 0, sz + 160), (0.14, 0.30)),
                    ("microscope", (p["scope_x"], 0, sz + 200), (0.84, 0.30))]
     inst.cam = (-0.7, -1.8, 1.0)
+    inst.framing = (1.2, 0.85)                  # room above for the lid, which lifts to about 1 m
     return inst
 
 
@@ -981,9 +1002,13 @@ def mastersizer() -> Instrument:
     body.add("Aero S", rbox(p["aero_l"] - 20, p["aero_w"] - 20, p["aero_h"] - 100, 60, x=ax, y=ay, z=40)
              .edges(">Z").fillet(20), "inst_light")
     body.add("Aero S LED", box(ax - 80, ay - p["aero_w"] / 2 + 8, 52, ax + 80, ay - p["aero_w"] / 2 + 10, 60), "screen_on")
-    body.add("feed tray", box(ax - 20, ay - 40, p["aero_h"] - 60, ax + 20, yf + 40, p["aero_h"] - 50), "steel")
-    body.add("hopper", cyl(90, 50, x=ax, y=ay, z=p["aero_h"] - 60).cut(cyl(76, 50, x=ax, y=ay, z=p["aero_h"] - 50)),
+    # the hopper is a funnel set into the deck and the tray stays under the dome, clear of its back wall as it lifts;
+    # the venturi takes the powder on from the back of the Aero S into the cell bay
+    hy = ay - 15                                 # the hopper's centre
+    body.add("feed tray", box(ax - 20, hy - 40, p["aero_h"] - 60, ax + 20, ay + 35, p["aero_h"] - 50), "steel")
+    body.add("hopper", cyl(90, 45, x=ax, y=hy, z=p["aero_h"] - 90).cut(cyl(76, 45, x=ax, y=hy, z=p["aero_h"] - 80)),
              "steel")
+    body.add("venturi", box(ax - 25, ay + 70, 230, ax + 25, yf + 25, 270), "inst_dark")
     # the vacuum extractor on the right
     vx = x0 + L + 60 + p["vac_w"] / 2
     vy = (yf + yb) / 2
@@ -1007,11 +1032,11 @@ def mastersizer() -> Instrument:
         t = i / 15.0
         beam.add(f"grain {i}", cq.Workplane("XY").sphere(2.4).translate((
             ax + 5 * math.sin(i * 1.9), ay + (yf + 60 - ay) * t, p["aero_h"] - 60 - 160 * t)), "powder")
-    hinge_y = ay + (p["aero_w"] - 30) / 2
-    inst.joints = {
-        "lid": Joint("hinge", axis=(1, 0, 0), pivot=(0, hinge_y, p["aero_h"] - 60), deg=70.0),
-        "sample": Joint("path", path=((ax - 250, ay - 300, p["aero_h"] + 120), (ax - 60, ay - 80, p["aero_h"] + 120),
-                                      (ax, ay, p["aero_h"] + 60))),
+    hinge_y = ay + (p["aero_w"] - 30) / 2        # the dome's back edge, on top: hinged at the bottom it would swing
+    inst.joints = {                              # back into the bench; hinged at the top its front rises (angle < 0)
+        "lid": Joint("hinge", axis=(1, 0, 0), pivot=(0, hinge_y, p["aero_h"] + 10), deg=-70.0),
+        "sample": Joint("path", path=((ax - 250, ay - 400, p["aero_h"] + 140), (ax, ay - 250, p["aero_h"] + 50),
+                                      (ax, hy, p["aero_h"] + 20))),     # in from the front, under the raised dome
         "beam": Joint("fade"),
     }
     inst.actions = [
@@ -1060,8 +1085,16 @@ def wire_edm() -> Instrument:
     ty0, ty1 = yf + 60, yf + 760
     body.add("tank", box(tx0, ty0 + 30, bz, tx1, ty1, tz).cut(box(tx0 + 20, ty0 + 20, bz + 20, tx1 - 20, ty1 - 20,
                                                                     tz + 1)), "stainless")
-    body.add("table", box(tx0 + 120, ty0 + 150, bz + 20, tx1 - 120, ty1 - 150, p["table_z"]).cut(
-        box(tx0 + 200, ty0 + 230, bz + 19, tx1 - 200, ty1 - 230, p["table_z"] + 1)), "steel")
+    # a U-shaped table, open at the back for the lower arm. A vertical wire can only cut parts off their build plate
+    # along its face, so the plate stands on its edge against an angle plate on a bridge, its parts facing the door
+    # (lying flat, the wire would have sliced down through the bars and the plate, and the lower arm drove through it)
+    tzt = p["table_z"]
+    body.add("table", box(tx0 + 120, ty0 + 150, bz + 20, tx1 - 120, ty1 - 150, tzt).cut(
+        box(tx0 + 200, ty0 + 230, bz + 19, tx1 - 200, ty1 - 149, tzt + 1)), "steel")
+    px, py, pz = (tx0 + tx1) / 2, ty0 + 390, tzt + 115         # the build plate's back face and centre, on edge
+    wy = py - 28                                               # the wire, 3 mm in front of the plate's face
+    body.add("fixture", box(tx0 + 160, py, tzt, tx1 - 160, py + 40, tzt + 50).union(
+        box(px - 100, py, tzt + 50, px + 100, py + 25, pz + 50)), "steel")
     body.add("column", box(xl + 250, ty1, bz, xm - 200, yb - 300, p["head_z0"] + 120), "inst_offwhite")
     hx0, hx1 = xl + 160, xm - 120
     head = box(hx0, yf + 200, p["head_z0"], hx1, yb - 600, H)
@@ -1081,36 +1114,36 @@ def wire_edm() -> Instrument:
     body.add("pendant", box(xm + 40, yf + 280, 1380, xm + 110, yf + 320, 1560), "inst_dark")
     # the yellow tank door drops into the base to load; the wire head traverses X
     door = _piece(inst, "door")
-    door.add("tank door", box(tx0 - 10, ty0, bz + 10, tx1 + 10, ty0 + 30, tz), "inst_yellow")
-    door.add("door window", box(tx0 + 80, ty0 - 1, tz - 230, tx1 - 80, ty0 + 31, tz - 50), "window")
+    door.add("tank door", box(tx0 - 10, ty0, bz + 10, tx1 + 10, ty0 + 30, tz).cut(       # the window shows the tank
+        box(tx0 + 80, ty0 - 1, tz - 230, tx1 - 80, ty0 + 31, tz - 50)), "inst_yellow")
+    door.add("door window", box(tx0 + 80, ty0 + 10, tz - 230, tx1 - 80, ty0 + 20, tz - 50), "window")
     door.add("door warning", box(tx1 - 140, ty0 - 2, bz + 60, tx1 - 60, ty0, bz + 140), "inst_black")
     hd = _piece(inst, "wirehead")
-    gx, gy = (tx0 + tx1) / 2 - p["travel_x"] / 2, (ty0 + ty1) / 2 - 40
-    hd.add("upper guide", box(gx - 60, gy - 60, p["table_z"] + 260, gx + 60, gy + 60, p["head_z0"] + 20), "inst_offwhite")
-    hd.add("upper nozzle", cyl(40, 40, x=gx, y=gy, z=p["table_z"] + 220), "steel")
-    hd.add("lower arm", box(gx - 40, gy - 40, bz + 60, gx + 40, ty1 - 20, bz + 120), "steel")
-    hd.add("lower nozzle", cyl(40, 40, x=gx, y=gy, z=bz + 120), "steel")
-    hd.add("wire", cyl(2.0, p["table_z"] + 220 - (bz + 160), x=gx, y=gy, z=bz + 160), "brass_wire")
-    plate = _piece(inst, "load")
-    plate.add("build plate", cyl(170, 25, z=0), "steel")
+    gx = px - p["travel_x"] / 2
+    hd.add("upper guide", box(gx - 60, wy - 60, tzt + 260, gx + 60, wy + 60, p["head_z0"] + 20), "inst_offwhite")
+    hd.add("upper nozzle", cyl(40, 40, x=gx, y=wy, z=tzt + 220), "steel")
+    hd.add("lower arm", box(gx - 40, wy - 40, tzt - 40, gx + 40, ty1 - 20, tzt - 2), "steel")     # under the work
+    hd.add("lower nozzle", cyl(40, 22, x=gx, y=wy, z=tzt - 2), "steel")
+    hd.add("wire", cyl(2.0, 200, x=gx, y=wy, z=tzt + 20), "brass_wire")
+    plate = _piece(inst, "load")                 # built flat, parts up, then stood on its edge: parts toward -y
+    on_edge = dict(axisStartPoint=(0, 0, 0), axisEndPoint=(1, 0, 0), angleDegrees=90)
+    plate.add("build plate", cyl(170, 25, z=0).rotate(**on_edge), "steel")
     for i, (xx, yy) in enumerate([(-45, -30), (0, -30), (45, -30), (-45, 30), (0, 30), (45, 30)]):
-        plate.add(f"printed bar {i + 1}", box(xx - 6, yy - 20, 25, xx + 6, yy + 20, 105), "sample")
+        plate.add(f"printed bar {i + 1}", box(xx - 6, yy - 20, 25, xx + 6, yy + 20, 105).rotate(**on_edge), "sample")
     water = _piece(inst, "glow")
     water.add("dielectric", box(tx0 + 22, ty0 + 52, bz + 22, tx1 - 22, ty1 - 22, tz - 40), "water")
-    plate_at = ((tx0 + tx1) / 2, (ty0 + ty1) / 2 - 40, p["table_z"])
     inst.joints = {
         "door": Joint("slide", vec=(0, 0, -(tz - bz) + 30)),
-        "load": Joint("path", path=((plate_at[0], yf - 700, 1250), (plate_at[0], yf - 200, 1200),
-                                    (plate_at[0], plate_at[1], plate_at[2] + 120), plate_at)),
+        "load": Joint("path", path=((px, yf - 700, 1250), (px, yf - 200, 1200), (px, py - 200, pz + 40), (px, py, pz))),
         "wirehead": Joint("slide", vec=(p["travel_x"], 0, 0)),
         "glow": Joint("fade"),
     }
     inst.actions = [
-        ("The yellow tank door drops. A build plate with printed bars goes onto the table, parts up.", 2.6,
+        ("The yellow tank door drops. A build plate with printed bars is clamped on its edge, parts facing out.", 2.6,
          {"door": (0.0, 1.0), "load": (0.0, 1.0), "glow": (0.0, 0.0)}),
         ("Door up; the tank fills with deionized water, the dielectric.", 1.8, {"door": (1.0, 0.0), "glow": (0.0, 1.0)}),
-        ("The brass wire, held between the upper and lower guides, traverses the plate and cuts the parts off at "
-         "their base.", 3.2, {"wirehead": (0.0, 1.0)}),
+        ("The brass wire, held between the upper and lower guides, runs along the plate's face and cuts the parts "
+         "off at their base.", 3.2, {"wirehead": (0.0, 1.0)}),
         ("Drained and opened. At 1970 mm and 2.2 t it stands beside the VLM; no benchtop wire EDM is sold.", 2.2,
          {"glow": (1.0, 0.0), "door": (0.0, 1.0), "wirehead": (1.0, 0.0)}),
     ]
@@ -1160,13 +1193,14 @@ def glovebox() -> Instrument:
     body.add("box", shell, "stainless")
     win = box(xb0 + 40, 4, 40, xb1 - 40, 10, p["box_h"] - 40).rotate((0, 0, 0), (1, 0, 0), -_m.degrees(slope))
     body.add("window", win.translate((0, yf + 20, sz)), "polycarb")
+    port_y = yf + 20 + 7 / _m.cos(slope) + 300 * _m.tan(slope)      # the window's mid-plane, 300 mm up
     for sx in (-1, 1):
         px = (xb0 + xb1) / 2 + sx * p["port_dx"] / 2
         ring = _ycyl(p["port_d"] + 40, 30, x=px, y=-15, z=0).cut(_ycyl(p["port_d"], 32, x=px, y=-16, z=0))
-        ring = ring.rotate((0, 0, 0), (1, 0, 0), -_m.degrees(slope)).translate((0, yf + 20 + 0.42 * 260, sz + 300))
+        ring = ring.rotate((0, 0, 0), (1, 0, 0), -_m.degrees(slope)).translate((0, port_y, sz + 300))
         body.add(f"port {sx}", ring, "inst_dark")
         glove = _ycyl(p["port_d"] - 10, 420, x=px, y=-15, z=0).rotate((0, 0, 0), (1, 0, 0), -_m.degrees(slope))
-        body.add(f"glove {sx}", glove.translate((0, yf + 20 + 0.42 * 260, sz + 300)), "glove")
+        body.add(f"glove {sx}", glove.translate((0, port_y, sz + 300)), "glove")
     # purifier, controls and the automatic antechamber over it, on the right
     body.add("purifier", box(xb1 + 20, yf + 30, 160, W / 2 - 20, yb - 30, sz - 60), "inst_blue")
     body.add("touch panel", box(xb1 + 60, yf + 60, tz - 250, xb1 + 380, yf + 90, tz - 30), "inst_dark")
@@ -1174,11 +1208,11 @@ def glovebox() -> Instrument:
     body.add("panel arm", box(xb1 - 5, yf + 70, tz - 160, xb1 + 60, yf + 110, tz - 120), "inst_grey")
     ay = (yf + yb) / 2
     az = sz + p["ante_d"] / 2 + 80
-    ante = _xcyl(p["ante_d"], p["ante_l"], x=xb1, y=ay, z=az).cut(_xcyl(p["ante_d"] - 20, p["ante_l"] - 20,
+    ante = _xcyl(p["ante_d"], p["ante_l"], x=xb1, y=ay, z=az).cut(_xcyl(p["ante_d"] - 20, p["ante_l"] - 9,
                                                                          x=xb1 + 10, y=ay, z=az))
     body.add("antechamber", ante, "stainless")
-    body.add("antechamber cradle", box(xb1 + 60, ay - 160, sz - 60, xb1 + p["ante_l"] - 60, ay + 160, az - 120),
-             "inst_grey")
+    body.add("antechamber cradle", box(xb1 + 60, ay - 160, sz - 60, xb1 + p["ante_l"] - 60, ay + 160, az - 120)
+             .cut(_xcyl(p["ante_d"], p["ante_l"], x=xb1, y=ay, z=az)), "inst_grey")
     body.add("mini antechamber", _xcyl(150, 300, x=xb0 - 300, y=ay - 150, z=sz + 450), "stainless")
     body.add("vacuum pump", box(xb0 + 200, yf + 120, 160, xb0 + 560, yb - 160, 420), "inst_dark")
     door = _piece(inst, "door")
@@ -1192,9 +1226,9 @@ def glovebox() -> Instrument:
     tray.add("vial", cyl(28, 61, x=60, z=6), "window")
     hinge = (xb1 + p["ante_l"] + 15, ay + p["ante_d"] / 2 + 15, 0)
     inst.joints = {
-        "door": Joint("hinge", axis=(0, 0, 1), pivot=hinge, deg=-105.0),
+        "door": Joint("hinge", axis=(0, 0, 1), pivot=hinge, deg=105.0),          # out, about its back edge
         "load": Joint("path", path=((xb1 + p["ante_l"] + 700, ay - 400, az + 200), (xb1 + p["ante_l"] + 250, ay, az - 60),
-                                    (xb1 + p["ante_l"] / 2, ay, az - p["ante_d"] / 2 + 40))),
+                                    (xb1 + p["ante_l"] / 2, ay, az - p["ante_d"] / 2 + 41))),
     }
     inst.actions = [
         ("The automatic antechamber's outer door swings open on the side facing the line, where an arm outside "
