@@ -60,7 +60,7 @@ def piece_entries(inst: I.Instrument) -> dict:
     for name, model in inst.pieces.items():
         by = {}
         for p in model.parts:
-            by.setdefault(p.material, []).append(lab.to_mesh(p.shape, 0.5))
+            by.setdefault(p.material, []).append(lab.to_mesh(p.shape, 0.5, 0.12))   # round parts read as round
         out[name] = []
         for mat, ms in by.items():
             r, g, b, a, spec = MATS[mat]
@@ -73,7 +73,7 @@ def piece_entries(inst: I.Instrument) -> dict:
 
 
 def _sources(module: str = "instruments") -> list[Path]:
-    common = [HERE / "lab_models" / "common.py", HERE / "instruments.py"]
+    common = [HERE / "lab_models" / "common.py", HERE / "instruments.py", HERE / "lab.py"]   # lab.py: to_mesh
     if module == "instruments":
         return [*common, HERE / "openflexure.py", *sorted((HERE / "openflexure").glob("*.json"))]
     return [*common, HERE / f"{module}.py"]
@@ -224,6 +224,14 @@ def frame_cam(bb, direction=(1.0, -1.6, 0.9), pad=0.85, look_z=0.42):
     return [tuple(c + d * dist), tuple(c), (0, 0, 1)]
 
 
+def close_cam(target, dist, direction=(1.0, -1.6, 0.9)):
+    """A camera `dist` mm from `target`, looking along -direction: for an instrument's close-ups (Instrument.zoom)."""
+    d = np.asarray(direction, float)
+    d /= np.linalg.norm(d)
+    c = np.asarray(target, float)
+    return [tuple(c + d * dist), tuple(c), (0, 0, 1)]
+
+
 def tour_one(inst: I.Instrument, entries: dict) -> str:
     ents = entries
     out = OUT / "instruments"
@@ -245,8 +253,11 @@ def tour_one(inst: I.Instrument, entries: dict) -> str:
         robot.Robot(sc, "ur10e", f"{inst.key}:carriage", T((0, 0, top)), q0=animate.PARK_DEG, prefix="railarm")
         sc.cam = frame_cam(inst.bbox(), inst.cam, pad=0.75, look_z=0.9)
     n = len([a for a in inst.actions if a[0]])
+    whole = sc.cam
     for i, (cap, secs, targets) in enumerate(inst.actions):
-        sc.step(f"{min(i + 1, n)}/{n}", cap, secs, rig.move(targets), hold=0.5, labels=labels)
+        z = getattr(inst, "zoom", {}).get(i)
+        cam_to = None if z is None else whole if z == "out" else close_cam(*z, direction=inst.cam)
+        sc.step(f"{min(i + 1, n)}/{n}", cap, secs, rig.move(targets), hold=0.5, labels=labels, cam_to=cam_to)
     # the hero still for the gallery: closed, the sample in place, no text
     rig.move({k: (None, 1.0 if k in inst.props else j.v0) for k, j in inst.joints.items()})(1.0)
     rig.move({f"~{k}": (None, 0.0) for k in ents})(1.0)

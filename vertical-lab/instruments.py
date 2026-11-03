@@ -134,6 +134,8 @@ class Instrument:
     cam: tuple = (1.0, -1.6, 0.9)    # camera direction for the tour, scaled by the instrument's size
     framing: tuple = ()              # (pad, look_z) for the tour's camera, when the default doesn't suit
     meshes: dict = field(default_factory=dict)     # name -> [(PolyData, rgb, opacity)]: pieces that are meshes, not CAD
+    zoom: dict = field(default_factory=dict)       # action index -> ((x, y, z), distance mm): the camera moves in;
+                                                   # -> "out": back to the whole instrument (tour.py)
     props: tuple = ("load", "sample", "specimen", "holder", "stub", "slide", "beam", "glow", "powder")  # not the machine
 
     def bbox(self, all_pieces=False) -> tuple:
@@ -582,13 +584,18 @@ def sem() -> Instrument:
 # ===================================================================================================== PIP
 # Plastometrex PLX-Benchtop (profilometry-based indentation plastometry): a matte charcoal portal, two side columns
 # under a rounded housing with a U-shaped blue LED band, an open test bay with no door or guard: a crosshead with the
-# indenter and a slanted profilometer stylus arm beside it, over a round stainless platen on a load cell (Plastometrex's
-# product render and brochure). The sample is set on the platen by hand, unclamped; up to 160 mm across, under 8 mm
-# thick on a fixture (Illinois MRL and a published SOP). PLX-AutoStage is Plastometrex's add-on that automates the
-# loading. Plastometrex publishes no dimensions: the envelope is scaled from photos (about 0.5 m wide and 0.65-0.7 m
-# tall, +-20 %), so whether it fits a tray is not settled.
-PIP = dict(W=500.0, D=500.0, H=680.0, pillar=100.0, base_h=60.0, top_z0=390.0, stage_d=150.0, stage_h=40.0,
-           head_z=185.0)
+# indenter over a round stainless platen on a load cell (Plastometrex's product render and brochure). The sample is
+# set on the platen by hand, unclamped; up to 160 mm across, under 8 mm thick on a fixture (Illinois MRL and a
+# published SOP). PLX-AutoStage is Plastometrex's add-on that automates the loading and places indents within 150 um.
+# Plastometrex publishes no dimensions: the envelope is scaled from photos (about 0.5 m wide and 0.65-0.7 m tall,
+# +-20 %), so whether it fits a tray is not settled.
+# The profile is measured with a stylus profilometer on the Benchtop (an interferometer on the PLX-Portable,
+# Plastometrex's "What is PIP?" page). Where the stylus sits and how it reaches the indent is not published: here it is
+# a traverse unit on the left-hand column, its arm level with the sample. It stays parked well clear of the indenter
+# while the indent is made; then, with the indenter lifted, the arm reaches in under it, sets the stylus down in the
+# indent and traces across it. Without the AutoStage the sample can't move, so the stylus has to come to the indent.
+PIP = dict(W=500.0, D=500.0, H=680.0, pillar=100.0, base_h=60.0, top_z0=390.0, stage_d=150.0, stage_t=16.0,
+           cell_d=80.0, cell_h=24.0, head_z=185.0, reach=40.0, drop=8.0, scan=3.0, lift=0.4)
 
 
 def pip() -> Instrument:
@@ -598,10 +605,12 @@ def pip() -> Instrument:
                       "SOP for loading; no published dimensions, so the envelope is scaled from photos")
     W, D, H = p["W"], p["D"], p["H"]
     yf = -D / 2
+    yc = -20.0                                   # the indenter's axis, and so the indent, is at (0, yc)
     body = _piece(inst, "body")
     body.add("base", rbox(W, D, p["base_h"], 20), "inst_dark")
+    plate_z = p["base_h"] + 8
     body.add("base plate", box(-W / 2 + p["pillar"], yf + 20, p["base_h"] - 2, W / 2 - p["pillar"], D / 2 - 40,
-                               p["base_h"] + 8), "aluminium")
+                               plate_z), "aluminium")
     for sx in (-1, 1):
         x0, x1 = sorted((sx * W / 2, sx * (W / 2 - p["pillar"])))
         pil = box(x0, yf, p["base_h"], x1, D / 2, p["top_z0"] + 20).edges("|Z").fillet(18)
@@ -624,8 +633,23 @@ def pip() -> Instrument:
     body.add("e-stop collar", _xcyl(48, 8, x=W / 2, y=yf + 60, z=p["top_z0"] - 30), "inst_yellow")
     body.add("guide columns", cyl(26, p["top_z0"] - p["base_h"], x=-W / 2 + p["pillar"] + 28, y=60, z=p["base_h"])
              .union(cyl(26, p["top_z0"] - p["base_h"], x=W / 2 - p["pillar"] - 28, y=60, z=p["base_h"])), "chrome")
-    body.add("load cell", cyl(80, 20, y=-20, z=p["base_h"] + 8), "steel")
-    body.add("platen", cyl(p["stage_d"], p["stage_h"] - 20, y=-20, z=p["base_h"] + 28), "stainless")
+    # the load string under the sample: a load cell, then a plain stainless disc for the platen
+    body.add("load cell", cyl(p["cell_d"], p["cell_h"], y=yc, z=plate_z), "steel")
+    platen_z = plate_z + p["cell_h"]
+    body.add("platen", cyl(p["stage_d"], p["stage_t"], y=yc, z=platen_z).faces(">Z").edges().chamfer(1.5),
+             "stainless")
+    stz = platen_z + p["stage_t"]                 # the platen's top face
+    s_top = stz + 6                               # the sample's top face, where the indent is
+    # the profilometer's traverse unit, on the left-hand column's inner face (in view from the front right), level
+    # with the sample
+    xl = -(W / 2 - p["pillar"])                   # the column's inner face
+    arm_z = s_top + 16                            # underside of the stylus arm when it travels
+    ux1 = -62.0                                   # the unit's inner end
+    body.add("profilometer traverse unit", rbox(ux1 - xl, 44, 46, 6, x=(xl + ux1) / 2, y=yc, z=arm_z - 14),
+             "inst_light")
+    body.add("profilometer unit window", box(xl + 12, yc - 23, arm_z + 10, ux1 - 12, yc - 22, arm_z + 26),
+             "inst_dark")
+    body.add("profilometer bracket", box(xl, yc - 30, arm_z - 22, xl + 12, yc + 30, arm_z + 40), "inst_dark")
     head = _piece(inst, "head")
     hz = p["head_z"] + p["base_h"]
     head.add("crosshead", box(-W / 2 + p["pillar"] + 10, -60, hz + 40, W / 2 - p["pillar"] - 10, 120, hz + 110)
@@ -633,35 +657,53 @@ def pip() -> Instrument:
     head.add("crosshead nose", box(-100, -95, hz + 10, 100, 40, hz + 70).edges("|Y").chamfer(25), "inst_dark")
     for sx in (-1, 1):
         head.add(f"warning {sx}", box(sx * 80 - 13, -97, hz + 42, sx * 80 + 13, -95, hz + 62), "inst_yellow")
-    head.add("indenter holder", cyl(32, 55, y=-20, z=hz - 45), "chrome")
-    head.add("indenter", cyl(12, 12, y=-20, z=hz - 57), "inst_black")
+    head.add("indenter holder", cyl(32, 55, y=yc, z=hz - 45), "chrome")
+    head.add("indenter", cyl(12, 10, y=yc, z=hz - 55).union(
+        cq.Workplane("XY").sphere(3.0).translate((0, yc, hz - 55))), "inst_black")   # a WC ball in its seat
+    # the stylus arm, parked: it slides out of the traverse unit along +x; its stylus hangs under the tip
     sty = _piece(inst, "stylus")
-    piv = (70.0, -20.0, hz + 10)
-    arm = box(-5, -5, -95, 5, 5, 0).rotate((0, 0, 0), (0, 1, 0), 25).translate(piv)
-    sty.add("profilometer arm", arm.union(box(piv[0] - 12, piv[1] - 12, piv[2] - 4, piv[0] + 12, piv[1] + 12,
-                                               piv[2] + 20)), "inst_grey")
+    park = p["reach"]                              # the tip parks this far to the left of the indenter's axis
+    sty.add("profilometer arm", box(xl + 20, yc - 3, arm_z, -park, yc + 3, arm_z + 6), "steel")
+    sty.add("stylus", cyl(2.5, 10, x=-park - 2, y=yc, z=arm_z - 10 + 1).union(
+        cq.Workplane("XY").sphere(1.0).translate((-park - 2, yc, arm_z - 9))), "inst_black")
     sample = _piece(inst, "sample")
     sample.add("sample", box(-20, -20, 0, 20, 20, 6), "sample")
-    stz = p["base_h"] + 8 + p["stage_h"]
-    gap = hz - 57 - (stz + 6)
+    dent = _piece(inst, "indent")                  # shows once the ball lifts off; rides on the sample
+    dent.add("indent", cyl(2.5, 0.3, z=6.0), "inst_dark")        # in the sample's own frame
+    gap = hz - 58 - s_top                          # the ball's lowest point to the sample's top face
+    tip = arm_z - 10                               # the stylus tip, parked
+    dx, dz, sc = park + 2, tip - s_top, p["scan"]
+    # the stylus's route: in under the indenter, down into the indent, across it and back, up, and parked again
+    route = ((0, 0, 0), (dx, 0, 0), (dx, 0, -dz), (dx - sc, 0, -dz), (dx + sc, 0, -dz), (dx, 0, -dz), (dx, 0, 0),
+             (0, 0, 0))
+    seg = np.linalg.norm(np.diff(np.asarray(route, float), axis=0), axis=1)
+    at = np.concatenate([[0], np.cumsum(seg)]) / seg.sum()      # v at each waypoint
     inst.joints = {
-        "sample": Joint("path", path=((0, -420, 260), (0, -220, 120), (0, -20, stz + 40), (0, -20, stz))),
+        "sample": Joint("path", path=((0, -420, 260), (0, -220, 120), (0, yc, stz + 40), (0, yc, stz))),
         "head": Joint("slide", vec=(0, 0, -gap)),
-        "stylus": Joint("hinge", parent="head", axis=(0, 1, 0), pivot=piv, deg=-22.0),
+        "stylus": Joint("path", path=route),
+        "indent": Joint("fade", parent="sample"),
     }
     inst.actions = [
         ("No door or guard: a flat sample (here a 40 mm square cut from a print; 3 x 3 x 1.5 mm at the least) goes "
          "on the platen by hand, unclamped.", 2.4, {"sample": (0.0, 1.0)}),
-        ("Hands clear: the crosshead drives the spherical indenter in, an indent 0.25-1 mm wide.", 1.8,
-         {"head": (0.0, 1.0)}),
-        ("It lifts, and the profilometer stylus sweeps across the indent to map its shape.", 2.4,
-         {"head": (1.0, 0.25), "stylus": (0.0, 1.0)}),
-        ("CORSICA fits a stress-strain curve to that profile in minutes. The sample comes off.", 2.2,
-         {"stylus": (1.0, 0.0), "head": (0.25, 0.0), "sample": (1.0, 0.0)}),
+        ("Hands clear: the crosshead drives the spherical indenter in, an indent 0.25-1 mm wide. The profilometer's "
+         "stylus stays parked at the side.", 1.8, {"head": (0.0, 1.0)}),
+        ("The indenter lifts; the stylus arm reaches in under it and sets the stylus down in the indent.", 2.2,
+         {"head": (1.0, p["lift"]), "stylus": (0.0, float(at[2])), "indent": (0.0, 1.0)}),
+        ("The stylus traces across the indent, line by line, to map its 3D shape.", 1.8,
+         {"stylus": (float(at[2]), float(at[5]))}),
+        ("It lifts and parks, and the crosshead goes back up.", 1.6,
+         {"stylus": (float(at[5]), 1.0), "head": (p["lift"], 0.0)}),
+        ("CORSICA fits a stress-strain curve to that profile in minutes. The sample comes off.", 2.0,
+         {"sample": (1.0, 0.0), "indent": (1.0, 1.0)}),
     ]
-    inst.labels = [("indenter", (0, -20, hz - 40), (0.14, 0.40)), ("profilometer stylus", (85, -20, hz - 30),
-                                                                   (0.84, 0.40)),
-                   ("platen on a load cell", (0, -20 - p["stage_d"] / 2, p["base_h"] + 30), (0.16, 0.72))]
+    inst.labels = [("indenter", (0, yc, hz - 40), (0.84, 0.34)),
+                   ("profilometer stylus", (-park - 10, yc - 3, arm_z + 3), (0.12, 0.46)),
+                   ("platen on a load cell", (0, yc - p["stage_d"] / 2, platen_z + 8), (0.84, 0.72))]
+    inst.zoom = {2: ((0.0, yc, s_top + 30), 520.0), 4: "out"}      # in on the bay for the profile, then back out
+    inst.notes = ["The stylus profilometer's mounting is not published; the traverse unit on the left-hand column "
+                  "is this model's choice."]
     inst.cam = (0.75, -1.9, 0.6)
     inst.framing = (0.66, 0.30)
     return inst
