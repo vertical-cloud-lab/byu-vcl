@@ -1,263 +1,527 @@
 {
  "name": "vlm_loading",
  "fps": 15,
- "n_frames": 1039,
+ "n_frames": 1598,
  "size": [
   1280,
   720
  ],
  "substeps": [
   {
-   "label": "1/6",
-   "caption": "The Kardex Shuttle XP 500 as it would stand in the lab: a closed cabinet, 2780 mm wide, 3074 mm deep and 3950 mm tall, with one large access opening at counter height and the operator console beside it.",
+   "label": "1/9",
+   "caption": "The Kardex Shuttle XP 500 as it would stand in the lab: a closed cabinet, 2780 mm wide, 3074 mm deep and 3950 mm tall, with one large access opening at counter height. The rePowder ultrasonic atomizer stands just off its left side and the Aconity MIDI metal printer just off its right, both facing inward.",
    "start_frame": 0,
-   "end_frame": 74
+   "end_frame": 83
   },
   {
-   "label": "2/6",
-   "caption": "Inside, drawn see-through from here on: the front storage column, the extractor's shaft and the rear storage column, with the three empty trays in their slots.",
-   "start_frame": 75,
-   "end_frame": 128
+   "label": "2/9",
+   "caption": "Inside, drawn see-through from here on: the front storage column, the extractor's shaft and the rear storage column, with six empty trays in their slots.",
+   "start_frame": 84,
+   "end_frame": 137
   },
   {
-   "label": "3/6",
-   "caption": "Loading tray A (liquid handling): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
-   "start_frame": 129,
-   "end_frame": 139
+   "label": "3/9",
+   "caption": "Loading tray A (liquid handling, OT-2s): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
+   "start_frame": 138,
+   "end_frame": 148
   },
   {
-   "label": "3/6",
-   "caption": "Loading tray A (liquid handling): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
-   "start_frame": 140,
-   "end_frame": 167
+   "label": "3/9",
+   "caption": "Loading tray A (liquid handling, OT-2s): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
+   "start_frame": 149,
+   "end_frame": 170
   },
   {
-   "label": "3/6",
-   "caption": "Loading tray A (liquid handling): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
-   "start_frame": 168,
-   "end_frame": 178
+   "label": "3/9",
+   "caption": "Loading tray A (liquid handling, OT-2s): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
+   "start_frame": 171,
+   "end_frame": 181
   },
   {
-   "label": "3/6",
-   "caption": "Loading tray A (liquid handling): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
-   "start_frame": 179,
-   "end_frame": 186
+   "label": "3/9",
+   "caption": "Loading tray A (liquid handling, OT-2s): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
+   "start_frame": 182,
+   "end_frame": 187
   },
   {
-   "label": "3/6",
-   "caption": "Loading tray A (liquid handling): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
-   "start_frame": 187,
-   "end_frame": 212
+   "label": "3/9",
+   "caption": "Loading tray A (liquid handling, OT-2s): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
+   "start_frame": 188,
+   "end_frame": 207
   },
   {
-   "label": "3/6",
-   "caption": "Loading tray A (liquid handling): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
-   "start_frame": 213,
-   "end_frame": 220
+   "label": "3/9",
+   "caption": "Loading tray A (liquid handling, OT-2s): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
+   "start_frame": 208,
+   "end_frame": 213
   },
   {
-   "label": "3/6",
-   "caption": "Tray A: the CubXL liquid-handling gantry goes in through the opening (the lab's model from #199).",
-   "start_frame": 227,
-   "end_frame": 269
+   "label": "3/9",
+   "caption": "Tray A: 3 × Opentrons OT-2 goes in through the opening, one at a time (Opentrons' own reference STEP).",
+   "start_frame": 217,
+   "end_frame": 252
   },
   {
-   "label": "3/6",
-   "caption": "Tray A: the Opentrons OT-2 goes in through the opening (Opentrons' own reference STEP).",
-   "start_frame": 270,
-   "end_frame": 312
+   "label": "3/9",
+   "caption": "Tray A: 3 × Opentrons OT-2 goes in through the opening, one at a time (Opentrons' own reference STEP).",
+   "start_frame": 253,
+   "end_frame": 273
   },
   {
-   "label": "3/6",
-   "caption": "Tray A goes back to its slot (R2), where it has power again.",
-   "start_frame": 313,
+   "label": "3/9",
+   "caption": "Tray A: 3 × Opentrons OT-2 goes in through the opening, one at a time (Opentrons' own reference STEP).",
+   "start_frame": 274,
+   "end_frame": 294
+  },
+  {
+   "label": "3/9",
+   "caption": "Tray A goes back to its slot (R1), where it has power again.",
+   "start_frame": 295,
+   "end_frame": 300
+  },
+  {
+   "label": "3/9",
+   "caption": "Tray A goes back to its slot (R1), where it has power again.",
+   "start_frame": 301,
    "end_frame": 320
   },
   {
-   "label": "3/6",
-   "caption": "Tray A goes back to its slot (R2), where it has power again.",
+   "label": "3/9",
+   "caption": "Tray A goes back to its slot (R1), where it has power again.",
    "start_frame": 321,
-   "end_frame": 346
+   "end_frame": 328
   },
   {
-   "label": "3/6",
-   "caption": "Tray A goes back to its slot (R2), where it has power again.",
-   "start_frame": 347,
-   "end_frame": 356
+   "label": "3/9",
+   "caption": "Tray A goes back to its slot (R1), where it has power again.",
+   "start_frame": 329,
+   "end_frame": 339
   },
   {
-   "label": "3/6",
-   "caption": "Tray A goes back to its slot (R2), where it has power again.",
-   "start_frame": 357,
-   "end_frame": 367
+   "label": "3/9",
+   "caption": "Tray A goes back to its slot (R1), where it has power again.",
+   "start_frame": 340,
+   "end_frame": 359
   },
   {
-   "label": "3/6",
-   "caption": "Tray A goes back to its slot (R2), where it has power again.",
-   "start_frame": 368,
-   "end_frame": 393
-  },
-  {
-   "label": "4/6",
+   "label": "4/9",
    "caption": "Loading tray B (powder dosing): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
-   "start_frame": 398,
-   "end_frame": 408
+   "start_frame": 363,
+   "end_frame": 373
   },
   {
-   "label": "4/6",
+   "label": "4/9",
    "caption": "Loading tray B (powder dosing): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
-   "start_frame": 409,
-   "end_frame": 436
+   "start_frame": 374,
+   "end_frame": 395
   },
   {
-   "label": "4/6",
+   "label": "4/9",
    "caption": "Loading tray B (powder dosing): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
-   "start_frame": 437,
-   "end_frame": 447
+   "start_frame": 396,
+   "end_frame": 406
   },
   {
-   "label": "4/6",
+   "label": "4/9",
    "caption": "Loading tray B (powder dosing): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
-   "start_frame": 448,
-   "end_frame": 455
+   "start_frame": 407,
+   "end_frame": 412
   },
   {
-   "label": "4/6",
+   "label": "4/9",
    "caption": "Loading tray B (powder dosing): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
-   "start_frame": 456,
-   "end_frame": 481
+   "start_frame": 413,
+   "end_frame": 432
   },
   {
-   "label": "4/6",
+   "label": "4/9",
    "caption": "Loading tray B (powder dosing): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
-   "start_frame": 482,
-   "end_frame": 489
+   "start_frame": 433,
+   "end_frame": 438
   },
   {
-   "label": "4/6",
-   "caption": "Tray B: the vial rack goes in through the opening (a printed rack for the doser's 20 mL vials).",
-   "start_frame": 496,
-   "end_frame": 538
+   "label": "4/9",
+   "caption": "Tray B: the vial rack goes in through the opening, one at a time (a printed rack for the doser's 20 mL vials).",
+   "start_frame": 442,
+   "end_frame": 477
   },
   {
-   "label": "4/6",
-   "caption": "Tray B: the multi-doser: chain carousel v2, 13 powders goes in through the opening (powder-doser PR #185's CAD, driven by its own kinematics).",
-   "start_frame": 539,
-   "end_frame": 581
+   "label": "4/9",
+   "caption": "Tray B: the multi-doser: chain carousel v2, 13 powders goes in through the opening, one at a time (powder-doser PR #185's CAD, driven by its own kinematics).",
+   "start_frame": 478,
+   "end_frame": 513
   },
   {
-   "label": "4/6",
-   "caption": "Tray B goes back to its slot (R3), where it has power again.",
+   "label": "4/9",
+   "caption": "Tray B goes back to its slot (R2), where it has power again.",
+   "start_frame": 514,
+   "end_frame": 519
+  },
+  {
+   "label": "4/9",
+   "caption": "Tray B goes back to its slot (R2), where it has power again.",
+   "start_frame": 520,
+   "end_frame": 539
+  },
+  {
+   "label": "4/9",
+   "caption": "Tray B goes back to its slot (R2), where it has power again.",
+   "start_frame": 540,
+   "end_frame": 547
+  },
+  {
+   "label": "4/9",
+   "caption": "Tray B goes back to its slot (R2), where it has power again.",
+   "start_frame": 548,
+   "end_frame": 558
+  },
+  {
+   "label": "4/9",
+   "caption": "Tray B goes back to its slot (R2), where it has power again.",
+   "start_frame": 559,
+   "end_frame": 578
+  },
+  {
+   "label": "5/9",
+   "caption": "Loading tray C (liquid handling, CubXLs): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
    "start_frame": 582,
-   "end_frame": 589
+   "end_frame": 592
   },
   {
-   "label": "4/6",
-   "caption": "Tray B goes back to its slot (R3), where it has power again.",
-   "start_frame": 590,
-   "end_frame": 615
+   "label": "5/9",
+   "caption": "Loading tray C (liquid handling, CubXLs): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
+   "start_frame": 593,
+   "end_frame": 614
   },
   {
-   "label": "4/6",
-   "caption": "Tray B goes back to its slot (R3), where it has power again.",
-   "start_frame": 616,
+   "label": "5/9",
+   "caption": "Loading tray C (liquid handling, CubXLs): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
+   "start_frame": 615,
    "end_frame": 625
   },
   {
-   "label": "4/6",
-   "caption": "Tray B goes back to its slot (R3), where it has power again.",
+   "label": "5/9",
+   "caption": "Loading tray C (liquid handling, CubXLs): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
    "start_frame": 626,
-   "end_frame": 636
+   "end_frame": 631
   },
   {
-   "label": "4/6",
-   "caption": "Tray B goes back to its slot (R3), where it has power again.",
-   "start_frame": 637,
-   "end_frame": 662
+   "label": "5/9",
+   "caption": "Loading tray C (liquid handling, CubXLs): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
+   "start_frame": 632,
+   "end_frame": 651
   },
   {
-   "label": "5/6",
-   "caption": "Loading tray C (3D printing): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
-   "start_frame": 667,
-   "end_frame": 694
+   "label": "5/9",
+   "caption": "Loading tray C (liquid handling, CubXLs): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
+   "start_frame": 652,
+   "end_frame": 657
   },
   {
-   "label": "5/6",
-   "caption": "Loading tray C (3D printing): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
-   "start_frame": 695,
-   "end_frame": 705
+   "label": "5/9",
+   "caption": "Tray C: 3 × CubXL liquid-handling gantry goes in through the opening, one at a time (the lab's model from #199).",
+   "start_frame": 661,
+   "end_frame": 696
   },
   {
-   "label": "5/6",
-   "caption": "Loading tray C (3D printing): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
-   "start_frame": 706,
-   "end_frame": 713
+   "label": "5/9",
+   "caption": "Tray C: 3 × CubXL liquid-handling gantry goes in through the opening, one at a time (the lab's model from #199).",
+   "start_frame": 697,
+   "end_frame": 717
   },
   {
-   "label": "5/6",
-   "caption": "Loading tray C (3D printing): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
-   "start_frame": 714,
-   "end_frame": 739
+   "label": "5/9",
+   "caption": "Tray C: 3 × CubXL liquid-handling gantry goes in through the opening, one at a time (the lab's model from #199).",
+   "start_frame": 718,
+   "end_frame": 738
   },
   {
-   "label": "5/6",
-   "caption": "Loading tray C (3D printing): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
-   "start_frame": 740,
-   "end_frame": 747
+   "label": "5/9",
+   "caption": "Tray C goes back to its slot (F1), where it has power again.",
+   "start_frame": 739,
+   "end_frame": 744
   },
   {
-   "label": "5/6",
-   "caption": "Tray C: the Bambu Lab H2D goes in through the opening (the lab's model from Bambu's spec).",
-   "start_frame": 754,
-   "end_frame": 796
+   "label": "5/9",
+   "caption": "Tray C goes back to its slot (F1), where it has power again.",
+   "start_frame": 745,
+   "end_frame": 764
   },
   {
-   "label": "5/6",
-   "caption": "Tray C: the Bambu Lab A1 mini goes in through the opening (the lab's model from Bambu's outline drawing).",
-   "start_frame": 797,
+   "label": "5/9",
+   "caption": "Tray C goes back to its slot (F1), where it has power again.",
+   "start_frame": 765,
+   "end_frame": 772
+  },
+  {
+   "label": "5/9",
+   "caption": "Tray C goes back to its slot (F1), where it has power again.",
+   "start_frame": 773,
+   "end_frame": 783
+  },
+  {
+   "label": "5/9",
+   "caption": "Tray C goes back to its slot (F1), where it has power again.",
+   "start_frame": 784,
+   "end_frame": 803
+  },
+  {
+   "label": "6/9",
+   "caption": "Loading tray D (3D printing, H2Ds): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
+   "start_frame": 807,
+   "end_frame": 828
+  },
+  {
+   "label": "6/9",
+   "caption": "Loading tray D (3D printing, H2Ds): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
+   "start_frame": 829,
    "end_frame": 839
   },
   {
-   "label": "5/6",
-   "caption": "Tray C goes back to its slot (F1), where it has power again.",
+   "label": "6/9",
+   "caption": "Loading tray D (3D printing, H2Ds): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
    "start_frame": 840,
-   "end_frame": 847
+   "end_frame": 845
   },
   {
-   "label": "5/6",
-   "caption": "Tray C goes back to its slot (F1), where it has power again.",
-   "start_frame": 848,
-   "end_frame": 873
+   "label": "6/9",
+   "caption": "Loading tray D (3D printing, H2Ds): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
+   "start_frame": 846,
+   "end_frame": 865
   },
   {
-   "label": "5/6",
-   "caption": "Tray C goes back to its slot (F1), where it has power again.",
-   "start_frame": 874,
-   "end_frame": 883
+   "label": "6/9",
+   "caption": "Loading tray D (3D printing, H2Ds): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
+   "start_frame": 866,
+   "end_frame": 871
   },
   {
-   "label": "5/6",
-   "caption": "Tray C goes back to its slot (F1), where it has power again.",
-   "start_frame": 884,
-   "end_frame": 894
+   "label": "6/9",
+   "caption": "Tray D: 3 × Bambu Lab H2D goes in through the opening, one at a time (the lab's model from Bambu's spec).",
+   "start_frame": 875,
+   "end_frame": 910
   },
   {
-   "label": "5/6",
-   "caption": "Tray C goes back to its slot (F1), where it has power again.",
-   "start_frame": 895,
-   "end_frame": 920
+   "label": "6/9",
+   "caption": "Tray D: 3 × Bambu Lab H2D goes in through the opening, one at a time (the lab's model from Bambu's spec).",
+   "start_frame": 911,
+   "end_frame": 931
   },
   {
-   "label": "6/6",
-   "caption": "The operator rolls up: a Universal Robots UR10e with a Robotiq 2F-85 gripper on a MiR250 mobile base, parked square to the opening. Its 1300 mm reach covers every seat it works on from here.",
-   "start_frame": 925,
+   "label": "6/9",
+   "caption": "Tray D: 3 × Bambu Lab H2D goes in through the opening, one at a time (the lab's model from Bambu's spec).",
+   "start_frame": 932,
+   "end_frame": 952
+  },
+  {
+   "label": "6/9",
+   "caption": "Tray D goes back to its slot (R3), where it has power again.",
+   "start_frame": 953,
+   "end_frame": 958
+  },
+  {
+   "label": "6/9",
+   "caption": "Tray D goes back to its slot (R3), where it has power again.",
+   "start_frame": 959,
    "end_frame": 978
   },
   {
-   "label": "6/6",
-   "caption": "Loaded: liquid handling on tray A, powder dosing on tray B, 3D printing on tray C, each powered in its slot so its equipment can keep running while it is stored.",
+   "label": "6/9",
+   "caption": "Tray D goes back to its slot (R3), where it has power again.",
    "start_frame": 979,
-   "end_frame": 1038
+   "end_frame": 986
+  },
+  {
+   "label": "6/9",
+   "caption": "Tray D goes back to its slot (R3), where it has power again.",
+   "start_frame": 987,
+   "end_frame": 997
+  },
+  {
+   "label": "6/9",
+   "caption": "Tray D goes back to its slot (R3), where it has power again.",
+   "start_frame": 998,
+   "end_frame": 1017
+  },
+  {
+   "label": "7/9",
+   "caption": "Loading tray E (3D printing, A2Ls): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
+   "start_frame": 1021,
+   "end_frame": 1031
+  },
+  {
+   "label": "7/9",
+   "caption": "Loading tray E (3D printing, A2Ls): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
+   "start_frame": 1032,
+   "end_frame": 1053
+  },
+  {
+   "label": "7/9",
+   "caption": "Loading tray E (3D printing, A2Ls): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
+   "start_frame": 1054,
+   "end_frame": 1066
+  },
+  {
+   "label": "7/9",
+   "caption": "Loading tray E (3D printing, A2Ls): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
+   "start_frame": 1067,
+   "end_frame": 1072
+  },
+  {
+   "label": "7/9",
+   "caption": "Loading tray E (3D printing, A2Ls): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
+   "start_frame": 1073,
+   "end_frame": 1092
+  },
+  {
+   "label": "7/9",
+   "caption": "Loading tray E (3D printing, A2Ls): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
+   "start_frame": 1093,
+   "end_frame": 1098
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray E: 3 × Bambu Lab A2L goes in through the opening, one at a time (modelled from Bambu's published envelope).",
+   "start_frame": 1102,
+   "end_frame": 1137
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray E: 3 × Bambu Lab A2L goes in through the opening, one at a time (modelled from Bambu's published envelope).",
+   "start_frame": 1138,
+   "end_frame": 1158
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray E: 3 × Bambu Lab A2L goes in through the opening, one at a time (modelled from Bambu's published envelope).",
+   "start_frame": 1159,
+   "end_frame": 1179
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray E goes back to its slot (R4), where it has power again.",
+   "start_frame": 1180,
+   "end_frame": 1185
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray E goes back to its slot (R4), where it has power again.",
+   "start_frame": 1186,
+   "end_frame": 1205
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray E goes back to its slot (R4), where it has power again.",
+   "start_frame": 1206,
+   "end_frame": 1213
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray E goes back to its slot (R4), where it has power again.",
+   "start_frame": 1214,
+   "end_frame": 1226
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray E goes back to its slot (R4), where it has power again.",
+   "start_frame": 1227,
+   "end_frame": 1246
+  },
+  {
+   "label": "8/9",
+   "caption": "Loading tray F (3D printing, A1 minis): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
+   "start_frame": 1250,
+   "end_frame": 1266
+  },
+  {
+   "label": "8/9",
+   "caption": "Loading tray F (3D printing, A1 minis): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
+   "start_frame": 1267,
+   "end_frame": 1288
+  },
+  {
+   "label": "8/9",
+   "caption": "Loading tray F (3D printing, A1 minis): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
+   "start_frame": 1289,
+   "end_frame": 1299
+  },
+  {
+   "label": "8/9",
+   "caption": "Loading tray F (3D printing, A1 minis): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
+   "start_frame": 1300,
+   "end_frame": 1305
+  },
+  {
+   "label": "8/9",
+   "caption": "Loading tray F (3D printing, A1 minis): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
+   "start_frame": 1306,
+   "end_frame": 1325
+  },
+  {
+   "label": "8/9",
+   "caption": "Loading tray F (3D printing, A1 minis): the extractor brings it to the opening; the shutter behind the opening lets it through and closes behind it.",
+   "start_frame": 1326,
+   "end_frame": 1331
+  },
+  {
+   "label": "8/9",
+   "caption": "Tray F: 3 × Bambu Lab A1 mini goes in through the opening, one at a time (the lab's model from Bambu's outline drawing).",
+   "start_frame": 1335,
+   "end_frame": 1370
+  },
+  {
+   "label": "8/9",
+   "caption": "Tray F: 3 × Bambu Lab A1 mini goes in through the opening, one at a time (the lab's model from Bambu's outline drawing).",
+   "start_frame": 1371,
+   "end_frame": 1391
+  },
+  {
+   "label": "8/9",
+   "caption": "Tray F: 3 × Bambu Lab A1 mini goes in through the opening, one at a time (the lab's model from Bambu's outline drawing).",
+   "start_frame": 1392,
+   "end_frame": 1412
+  },
+  {
+   "label": "8/9",
+   "caption": "Tray F goes back to its slot (F0), where it has power again.",
+   "start_frame": 1413,
+   "end_frame": 1418
+  },
+  {
+   "label": "8/9",
+   "caption": "Tray F goes back to its slot (F0), where it has power again.",
+   "start_frame": 1419,
+   "end_frame": 1438
+  },
+  {
+   "label": "8/9",
+   "caption": "Tray F goes back to its slot (F0), where it has power again.",
+   "start_frame": 1439,
+   "end_frame": 1446
+  },
+  {
+   "label": "8/9",
+   "caption": "Tray F goes back to its slot (F0), where it has power again.",
+   "start_frame": 1447,
+   "end_frame": 1457
+  },
+  {
+   "label": "8/9",
+   "caption": "Tray F goes back to its slot (F0), where it has power again.",
+   "start_frame": 1458,
+   "end_frame": 1477
+  },
+  {
+   "label": "8/9",
+   "caption": "The operator rolls up: a Universal Robots UR10e with a Robotiq 2F-85 gripper on a MiR250 mobile base, parked square to the opening. Its 1300 mm reach covers every seat it works on from here.",
+   "start_frame": 1481,
+   "end_frame": 1534
+  },
+  {
+   "label": "9/9",
+   "caption": "Loaded, 16 pieces on six powered trays: three OT-2s, the multi-doser, three CubXLs, three H2Ds, three A2Ls and three A1 minis, each tray powered in its slot so its equipment keeps running while stored.",
+   "start_frame": 1535,
+   "end_frame": 1597
   }
  ]
 }

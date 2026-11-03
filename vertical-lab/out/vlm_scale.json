@@ -1,0 +1,83 @@
+{
+ "name": "vlm_scale",
+ "fps": 15,
+ "n_frames": 665,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/6",
+   "caption": "Scaling up. The Shuttle XP 500 in the lab is 3.95 m tall. Kardex builds the Shuttle up to 30 m, in 100 mm steps, on the same 2780 × 3074 mm footprint: here it is 15.15 m, just under 50 ft.",
+   "start_frame": 0,
+   "end_frame": 92
+  },
+  {
+   "label": "2/6",
+   "caption": "An array: eight of them in two rows of four, facing each other across an 1100 mm aisle. Each holds 44 powered trays in its two columns, one load of three instruments each.",
+   "start_frame": 93,
+   "end_frame": 167
+  },
+  {
+   "label": "3/6",
+   "caption": "One UR10e serves all eight openings: it rides a floor rail down the aisle on an 800 mm riser, the height it has on the MiR250, and turns to either row.",
+   "start_frame": 168,
+   "end_frame": 218
+  },
+  {
+   "label": "4/6",
+   "caption": "See-through: 352 trays and 1056 instruments, every tray powered in its slot (#53). The extractors run in parallel, one per unit.",
+   "start_frame": 219,
+   "end_frame": 272
+  },
+  {
+   "label": "5/6",
+   "caption": "Every unit brings a tray down to its opening at once, at Kardex's 2 m/s vertical speed, while the arm rolls to the first one.",
+   "start_frame": 273,
+   "end_frame": 366
+  },
+  {
+   "label": "5/6",
+   "caption": "The arm reaches into the opening and back, then rolls on to the next unit, across the aisle.",
+   "start_frame": 367,
+   "end_frame": 396
+  },
+  {
+   "label": "5/6",
+   "caption": "The arm reaches into the opening and back, then rolls on to the next unit, across the aisle.",
+   "start_frame": 397,
+   "end_frame": 416
+  },
+  {
+   "label": "5/6",
+   "caption": "The arm reaches into the opening and back, then rolls on to the next unit, across the aisle.",
+   "start_frame": 417,
+   "end_frame": 460
+  },
+  {
+   "label": "5/6",
+   "caption": "The arm reaches into the opening and back, then rolls on to the next unit, across the aisle.",
+   "start_frame": 461,
+   "end_frame": 490
+  },
+  {
+   "label": "5/6",
+   "caption": "The arm reaches into the opening and back, then rolls on to the next unit, across the aisle.",
+   "start_frame": 491,
+   "end_frame": 510
+  },
+  {
+   "label": "6/6",
+   "caption": "The trays go back to their slots, where they have power again. The same arm, the same trays and the same equipment as the lab's one unit, on about 75 m² of floor plus the aisle.",
+   "start_frame": 511,
+   "end_frame": 604
+  },
+  {
+   "label": "6/6",
+   "caption": "The same arm, the same trays and the same equipment as the lab's one unit, 3.8 times as tall and eight times over.",
+   "start_frame": 605,
+   "end_frame": 664
+  }
+ ]
+}

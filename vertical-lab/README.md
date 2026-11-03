@@ -16,9 +16,9 @@ framework, [`scene.py`](scene.py), is `atomizer-training/viz3d/scene.py` from #1
 | **Assembly**: base, frame, columns, extractor, six trays, then the cladding goes on, opaque | [`out/vlm_assembly.gif`](out/vlm_assembly.gif) | [`out/mp4/vlm_assembly.mp4`](out/mp4/vlm_assembly.mp4) |
 | **Loading**: the closed machine between the atomizer and the Aconity, then see-through; all 16 pieces go onto their trays through the opening, one at a time; the arm rolls up | [`out/vlm_loading.gif`](out/vlm_loading.gif) | [`out/mp4/vlm_loading.mp4`](out/mp4/vlm_loading.mp4) |
 | **Workflow**: the arm doses a powder with the multi-doser, the vial upright all the way, and takes it to a CubXL, which adds liquid | [`out/vlm_workflow.gif`](out/vlm_workflow.gif) | [`out/mp4/vlm_workflow.mp4`](out/mp4/vlm_workflow.mp4) |
-| **Scale**: the Shuttle grown to 15.15 m, eight of them in two rows, one UR10e on a rail down the aisle | [`out/vlm_scale.gif`](out/vlm_scale.gif) | [`out/mp4/vlm_scale.mp4`](out/mp4/vlm_scale.mp4) |
+| **Scale**: the Shuttle grown to 15.15 m, eight of them in two rows, one UR10e on a rail down the aisle | [`out/vlm_scale.gif`](out/vlm_scale.gif) (640 × 360, 6 fps, to stay under 5 MB) | [`out/mp4/vlm_scale.mp4`](out/mp4/vlm_scale.mp4) |
 | **Disassembly**: unloaded one piece at a time, then taken apart | [`out/vlm_disassembly.gif`](out/vlm_disassembly.gif) | [`out/mp4/vlm_disassembly.mp4`](out/mp4/vlm_disassembly.mp4) |
-| **All five**, one after the other | [on YouTube](YOUTUBE_URL) (unlisted, BYU Vertical Cloud Lab channel) | [`out/mp4/vertical_lab_full.mp4`](out/mp4/vertical_lab_full.mp4) |
+| **All five**, one after the other (5 min 53 s) | [on YouTube](https://www.youtube.com/watch?v=9A9XuBT0BYk) (unlisted, BYU Vertical Cloud Lab channel) | [`out/mp4/vertical_lab_full.mp4`](out/mp4/vertical_lab_full.mp4) |
 
 ![Loading](out/vlm_loading.gif)
 
