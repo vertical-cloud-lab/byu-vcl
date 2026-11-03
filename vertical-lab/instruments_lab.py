@@ -47,6 +47,7 @@ MATERIALS = {
     "lab_hdpe": (0.93, 0.93, 0.90, 0.80, 0.3),          # a milky HDPE jar
     "lab_label": (0.98, 0.98, 0.97, 1.0, 0.2),
     "lab_bag": (0.86, 0.89, 0.92, 0.38, 0.7),           # a clear polyethylene liner bag
+    "lab_over": (0.92, 0.16, 0.12, 0.42, 0.2),          # what doesn't fit, highlighted
 }
 
 
@@ -553,7 +554,7 @@ def cubxl_corrosion() -> Instrument:
          {**seg("cap on", "parked"), "led": (1.0, 0.0)}),
         ("A fresh tip takes the well's liquid to tube 1, for ICP: dissolved Al and Mg, element by element.", 4.2,
          seg("parked", "collected")),
-        ("On to S2. Four coupons, two wells each, make eight spots a tray load: one night at the screening rate.", 2.4,
+        ("On to S2. At 44 min a spot, a 12 h night screens 16 spots; at the G61 rate, 6.", 2.4,
          seg("collected", "next")),
     ]
     inst.labels = [("electrode cap,\nparked", (kx, ky, kz + 18), (0.10, 0.30)),
@@ -712,8 +713,7 @@ def packaging() -> Instrument:
         "Primera AP380 (340 x 508 x 226 mm) and LX500c (264 x 389 x 180 mm) pages; Zebra ZD621 spec sheet (ZD621t "
         "202 x 267 x 192 mm); Uline H-190 (452 x 84 x 188 mm), S-23611 foam shipper, S-6802 4 x 6 in labels; "
         "Nalgene 2104-0008 250 mL jar (61 x 131 mm). Looks from the makers' photos; fixtures drawn here",
-        props=("jarpos", "jartilt", "jar", "jarlabel", "bag", "strip", "stripslide", "shiplabel", "inset_jar",
-               "inset_ship"))
+        props=("jarpos", "jartilt", "jar", "jarlabel", "bag", "inset_jar", "inset_ship"))
     body = _piece(inst, "body")
     # ---- AP380: black side plates on splayed feet, a cradle of chrome rollers, a pressure arm, the label roll at the
     # back, the grey control box on the right end
@@ -1109,8 +1109,8 @@ def ded() -> Instrument:
     beads = [k for k in joints if k.startswith("bead")]
     build = {k: (0.0, 1.0) for k in ["head", "glow"] + beads}
     inst.actions = [
-        ("The MX-Lab stands on the floor beside the VLM: 680 x 684 x 835 mm and 250 kg without its base, more than "
-         "a tray takes. Six powder hoppers feed one nozzle.", 2.4, {"load": (0.0, 0.0)}),
+        ("The MX-Lab stands on the floor beside the VLM: 680 x 684 x 835 mm and 250 kg without its base, taller "
+         "than the 727.5 mm a tray takes. Up to six powder hoppers feed one nozzle.", 2.6, {"load": (0.0, 0.0)}),
         ("The door swings open on its left hinge.", 1.6, {"door": (0.0, 1.0)}),
         ("A steel substrate goes from the shelf onto the 175 x 175 mm worktable.", 2.2, {"load": (0.0, 1.0)}),
         ("Door shut. Argon purges the chamber: InssTek's inert option holds O2 at or below 50 ppm.", 2.8,
@@ -1118,7 +1118,7 @@ def ded() -> Instrument:
         ("The laser and the powder streams meet at the melt pool. Spoke by spoke, layer by layer: a wagon wheel, each "
          "spoke a different blend from the six hoppers (colours illustrative).", 7.5,
          {**build, "~door": (0.0, 1.0), "gauge": (1.0, 0.0)}),
-        ("Laser off; the door opens on six compositions in one build, a few grams of powder each.", 2.0,
+        ("Laser off; the door opens on six compositions in one build.", 2.0,
          {"~door": (1.0, 0.0), "door": (0.0, 1.0)}),
         ("", 1.2, {}),
     ]
@@ -1136,5 +1136,161 @@ CAMS["instruments/ded"] = {1: _DED_DOOR, 4: _DED_IN, 6: _DED_OVER}
 PLOTS["instruments/ded"] = _draw_ded_overlay
 
 
+# ===================================================================================================== HIP
+# "Could a hot isostatic press fit on the VLM?" The smallest 200 MPa laboratory HIP with a published envelope is
+# Kobelco's O2-Dr.HIP: 1315 W x 1100 D x 1300 H mm, 1100 kg, 200 MPa; 1500 C (Pt-Rh), 2000 C (graphite) or 1500 C
+# (Mo) heaters; hot zones 50 x 60, 50 x 75 or 75 x 100 mm (kobelco.co.jp, Dr. HIP page). Against a Kardex tray
+# (#53, the order sheet): 2450 x 864 mm, about 2426 x 840 inside the rim; 727.5 mm of product height through the
+# opening; 228 / 360 / 490 kg for light / medium / strong trays; power in a slot and at the opening, not in transit,
+# and no gas or water. Others, for the record: AIP6-30H (30,000 psi, 75 x 125 mm hot zone) publishes no size or mass;
+# EPSI's lab HIPs and Hiperbaric's HIP 10 likewise; Quintus' smallest current compact unit, the QIH 15L, is
+# 4.2 x 3.0 x 3.4 m and 8 t; MTI's CM-HIP-2 (1200 x 630 x 1425 mm, 250 kg) is a 20 MPa furnace, a tenth of HIP
+# pressure, and still too tall. A "QIH 3" was not found.
+# Look (Kobelco's photo and cutaway): one off-white enclosure; on the left a tall housing with a rounded, drum-like
+# front around the vessel; on the right a cabinet with the HMI screen and keypad on its upper face and a full-height
+# door; a broad red band at about three-quarter height with KOBELCO in white; a plinth. Inside, a vertical vessel held
+# by a frame across its closures. The vessel's and the frame's sizes are not published: drawn schematically.
+HIP = dict(W=1315.0, D=1100.0, H=1300.0, mass=1100.0, p_mpa=200.0, hot=(75.0, 100.0),
+           tray=(2450.0, 864.0), inside=(2426.0, 840.0), h_max=727.5, payload=(228.0, 360.0, 490.0),
+           header=844.0, opening_w=2500.0)
+
+
+def hip_numbers() -> dict:
+    """The comparison, and the stored energy of the gas by NIST NCNR's method for isentropic expansion,
+    W = P1 V1 / (k - 1) [1 - (P2 / P1)^((k - 1) / k)], ideal-gas argon (k = 5/3): a rough figure at 200 MPa."""
+    h = HIP
+    k, p1, p2 = 5.0 / 3.0, h["p_mpa"] * 1e6, 0.101e6
+    per_l = p1 * 1e-3 / (k - 1) * (1 - (p2 / p1) ** ((k - 1) / k))
+    hot_l = math.pi / 4 * (h["hot"][0] / 10) ** 2 * (h["hot"][1] / 10) / 1000
+    return dict(height_over_mm=h["H"] - h["h_max"], height_ratio=round(h["H"] / h["h_max"], 2),
+                depth_over_inside_mm=h["D"] - h["inside"][1], depth_over_tray_mm=h["D"] - h["tray"][1],
+                mass_ratio={n: round(h["mass"] / m, 1) for n, m in zip(("light", "medium", "strong"), h["payload"])},
+                energy_MJ_per_L=round(per_l / 1e6, 3), hot_zone_L=round(hot_l, 3),
+                energy_hot_zone_MJ=round(per_l * hot_l / 1e6, 3), header_over_mm=h["H"] - h["header"])
+
+
+def _draw_hip_overlay(sc, img, s):
+    from PIL import ImageDraw
+    from scene import font
+    a = min(1.0, _gv(sc, "hip:table"))
+    if a <= 0.02:
+        return
+    n = hip_numbers()
+    h = HIP
+    W, H = img.size
+    d = ImageDraw.Draw(img, "RGBA")
+    al = int(255 * a)
+    x0, y0, x1 = W - 470 * s, 46 * s, W - 10 * s
+    rows = [("", "O2-Dr.HIP", "tray limit"),
+            ("height", f"{h['H']:.0f} mm", f"{h['h_max']} mm"),
+            ("depth", f"{h['D']:.0f} mm", f"{h['tray'][1]:.0f} mm tray"),
+            ("mass", f"{h['mass']:.0f} kg", "228 / 360 / 490 kg"),
+            ("services", "Ar, water, air", "power, not in transit"),
+            ("gas", f"{h['p_mpa']:.0f} MPa argon", "none")]
+    y1 = y0 + (len(rows) * 20 + 66) * s
+    d.rounded_rectangle((x0, y0, x1, y1), 6 * s, fill=(255, 255, 255, int(238 * a)), outline=(150, 156, 164, al))
+    d.text((x0 + 10 * s, y0 + 6 * s), "On a tray? No.", font=font(15 * s, bold=True), fill=(170, 30, 30, al))
+    for i, (k, v1, v2) in enumerate(rows):
+        yy = y0 + (30 + i * 20) * s
+        f = font(12.5 * s, bold=(i == 0))
+        d.text((x0 + 10 * s, yy), k, font=f, fill=(80, 84, 90, al))
+        d.text((x0 + 100 * s, yy), v1, font=f, fill=(170, 30, 30, al) if i else (20, 20, 24, al))
+        d.text((x0 + 265 * s, yy), v2, font=f, fill=(20, 20, 24, al))
+    d.text((x0 + 10 * s, y1 - 32 * s), f"Gas energy, ideal argon at 200 MPa: about {n['energy_MJ_per_L']:.2f} MJ per "
+           f"litre (NIST", font=font(11 * s), fill=(80, 84, 90, al))
+    d.text((x0 + 10 * s, y1 - 18 * s), f"NCNR's method); the 75 x 100 mm hot zone alone, {n['energy_hot_zone_MJ']:.2f} MJ."
+           , font=font(11 * s), fill=(80, 84, 90, al))
+
+
+def hip() -> Instrument:
+    h = HIP
+    W, D, H = h["W"], h["D"], h["H"]
+    inst = Instrument(
+        "hip", "Hot isostatic press against a VLM tray", "Kobelco O2-Dr.HIP", (W, D, H),
+        "Kobelco's Dr. HIP page (O2-Dr.HIP: 1315 x 1100 x 1300 mm, 1100 kg, 200 MPa, up to 2000 C) and photo; the "
+        "tray, product height and payloads from #53 and Kardex's order sheet. Vessel and frame inside drawn "
+        "schematically (not published)", floor=True, props=("hip", "vessel", "over", "env", "table"))
+    body = _piece(inst, "body")
+    tw, td = h["tray"]
+    # ---- the tray, the product height it takes, and the opening's posts and header
+    body.add("tray", box(-tw / 2, -td / 2, -22, tw / 2, td / 2, 0).cut(
+        box(-tw / 2 + 12, -td / 2 + 12, -10, tw / 2 - 12, td / 2 - 12, 1)), "inst_light")
+    body.add("tray floor", box(-tw / 2 + 12, -td / 2 + 12, -12, tw / 2 - 12, td / 2 - 12, -10), "inst_grey")
+    ow = h["opening_w"]
+    for sx in (-1, 1):
+        body.add(f"opening post {sx:+d}", box(sx * ow / 2 - (0 if sx > 0 else 60), -td / 2 - 80, -22,
+                                              sx * ow / 2 + (60 if sx > 0 else 0), -td / 2 - 20, h["header"]),
+                 "anthracite")
+    body.add("opening header", box(-ow / 2 - 60, -td / 2 - 80, h["header"], ow / 2 + 60, -td / 2 - 20,
+                                   h["header"] + 160), "paint_white")
+    env = _piece(inst, "env")
+    iw, idp = h["inside"]
+    env.add("product height", box(-iw / 2, -idp / 2, 0, iw / 2, idp / 2, h["h_max"]), "window")
+    env.add("height line", box(-iw / 2, -idp / 2 - 1, h["h_max"] - 2, iw / 2, -idp / 2 + 1, h["h_max"] + 2), "inst_blue")
+    # ---- the O2-Dr.HIP, centred on the tray: drum housing on the left, cabinet on the right, plinth, red band
+    _piece(inst, "hipdrop")                              # an empty parent: lowers the HIP onto the tray
+    hp = _piece(inst, "hip")
+    xd = -W / 2 + 350                                    # the drum's axis
+    hp.add("plinth", box(-W / 2 + 10, -D / 2 + 10, 0, W / 2 - 10, D / 2 - 10, 60), "inst_grey")
+    drum = box(-W / 2, -D / 2 + 350, 60, xd + 350, D / 2, H).union(cyl(700, H - 60, x=xd, y=-D / 2 + 350, z=60))
+    hp.add("drum housing", drum, "inst_white")
+    hp.add("cabinet", box(xd + 350, -D / 2, 60, W / 2, D / 2, H), "inst_offwhite")
+    hp.add("cabinet door", box(xd + 380, -D / 2 - 4, 90, W / 2 - 30, -D / 2, 900), "inst_white")
+    hp.add("door handle", box(W / 2 - 80, -D / 2 - 30, 420, W / 2 - 60, -D / 2 - 4, 600), "inst_grey")
+    hp.add("HMI", box(xd + 420, -D / 2 - 3, 1060, xd + 640, -D / 2, 1220), "screen_on")
+    hp.add("keypad", box(W / 2 - 160, -D / 2 - 3, 1080, W / 2 - 60, -D / 2, 1200), "inst_dark")
+    band = box(-W / 2 - 3, -D / 2 + 350, 940, W / 2 + 3, D / 2 + 3, 1020).union(
+        cyl(706, 80, x=xd, y=-D / 2 + 350, z=940)).union(box(xd + 350, -D / 2 - 3, 940, W / 2 + 3, D / 2 + 3, 1020))
+    hp.add("red band", band.cut(box(xd + 400, -D / 2 - 10, 930, xd + 660, -D / 2 + 5, 1030)), "inst_red")
+    import pyvista as pv
+    t = pv.Text3D("KOBELCO", depth=0.04)
+    b = t.bounds
+    t = t.translate((-b[0], -b[2], -b[4]), inplace=False).scale(50.0 / (b[3] - b[2]), inplace=False)
+    t = t.rotate_x(90, inplace=False).translate((xd - 160, -D / 2 - 4, 955), inplace=False)
+    inst.meshes["hip"] = [(t, (1.0, 1.0, 1.0), 1.0)]
+    vessel = _piece(inst, "vessel")                      # schematic: sizes not published
+    vessel.add("vessel", cyl(360, 640, x=xd, y=-D / 2 + 350, z=180), "stainless")
+    vessel.add("frame", box(xd - 300, -D / 2 + 320, 120, xd + 300, -D / 2 + 380, 900).cut(
+        box(xd - 240, -D / 2 + 300, 180, xd + 240, -D / 2 + 400, 840)), "inst_dark")
+    vessel.add("hot zone", cyl(75, 100, x=xd, y=-D / 2 + 350, z=450), "glow")
+    over = _piece(inst, "over")
+    over.add("too tall", box(-W / 2 - 4, -D / 2 - 4, h["h_max"], W / 2 + 4, D / 2 + 4, H + 4), "lab_over")
+    over.add("too deep, front", box(-W / 2 - 4, -D / 2 - 4, 0, W / 2 + 4, -td / 2, h["h_max"]), "lab_over")
+    over.add("too deep, back", box(-W / 2 - 4, td / 2, 0, W / 2 + 4, D / 2 + 4, h["h_max"]), "lab_over")
+    inst.joints = {
+        "env": Joint("fade"),
+        "hipdrop": Joint("path", path=((0, 0, 1500.0), (0, 0, 300.0), (0, 0, 0)), v0=1.0),
+        "hip": Joint("fade", parent="hipdrop"),
+        "vessel": Joint("fade", parent="hip"),
+        "over": Joint("fade"),
+        "table": Joint("slide", vec=(1, 0, 0)),
+    }
+    n = hip_numbers()
+    inst.actions = [
+        ("A Kardex tray, 2450 x 864 mm, and the room above it: 727.5 mm of product height through the opening.", 2.6,
+         {"env": (0.0, 1.0), "hip": (0.0, 0.0), "vessel": (0.0, 0.0), "over": (0.0, 0.0), "hipdrop": (0.0, 0.0)}),
+        ("The smallest 200 MPa lab HIP with a published size: Kobelco's O2-Dr.HIP, 1315 x 1100 x 1300 mm, 1100 kg.",
+         2.8, {"hip": (1.0, 1.0), "hipdrop": (0.0, 1.0)}),
+        (f"{n['height_over_mm']:.0f} mm too tall and {n['depth_over_tray_mm']:.0f} mm deeper than the tray; "
+         f"{n['mass_ratio']['strong']} times what a strong tray carries.", 3.0,
+         {"over": (0.0, 1.0), "table": (0.0, 1.0)}),
+        ("Inside, a vessel in a frame (drawn schematically): argon at 200 MPa, up to 2000 C. A HIP needs argon, "
+         "cooling water and air, and its cooling must not stop. A tray has power only, and not in transit.", 3.8,
+         {"over": (1.0, 0.0), "~hip": (0.0, 1.0), "vessel": (0.0, 1.0)}),
+        ("So no. A HIP stands on the floor with its gas and water, like the wire EDM, and the arm brings it work.", 2.4,
+         {"~hip": (1.0, 0.0), "vessel": (1.0, 0.0)}),
+    ]
+    inst.labels = [("727.5 mm product height", (-iw / 2 + 200, -idp / 2, h["h_max"]), (0.10, 0.22)),
+                   ("tray, 2450 x 864 mm", (-tw / 2 + 150, -td / 2, 0), (0.10, 0.80)),
+                   ("opening header", (ow / 2 - 200, -td / 2 - 80, h["header"] + 80), (0.86, 0.80))]
+    inst.cam = (0.55, -1.7, 0.75)
+    inst.framing = (0.80, 0.45)
+    inst.notes = [f"{k}: {v}" for k, v in n.items()]
+    return inst
+
+
+PLOTS["instruments/hip"] = _draw_hip_overlay
+
+
 # ===================================================================================================== registry
-REGISTRY = {"cubxl_corrosion": cubxl_corrosion, "ded": ded, "packaging": packaging}
+REGISTRY = {"cubxl_corrosion": cubxl_corrosion, "ded": ded, "packaging": packaging, "hip": hip}
