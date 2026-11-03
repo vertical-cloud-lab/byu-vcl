@@ -9,7 +9,7 @@
  "substeps": [
   {
    "label": "1/4",
-   "caption": "The yellow tank door drops. A build plate with printed bars goes onto the table, parts up.",
+   "caption": "The yellow tank door drops. A build plate with printed bars is clamped on its edge, parts facing out.",
    "start_frame": 0,
    "end_frame": 55
   },
@@ -21,7 +21,7 @@
   },
   {
    "label": "3/4",
-   "caption": "The brass wire, held between the upper and lower guides, traverses the plate and cuts the parts off at their base.",
+   "caption": "The brass wire, held between the upper and lower guides, runs along the plate's face and cuts the parts off at their base.",
    "start_frame": 91,
    "end_frame": 146
   },
