@@ -227,6 +227,7 @@ def target_xy(key: str) -> np.ndarray:
 
 TARGET_Z = 900.0
 SPEED = 1500.0                                 # mm/s as drawn; the MiR250 does up to 2.0 m/s (MiR)
+GIF = dict(fps=5, width=640, lossy=90)         # line.mp4_to_gif settings: these movies are long, so a smaller GIF
 
 
 def upright(p, toward):
@@ -789,4 +790,4 @@ if __name__ == "__main__":
         idata = tour.load()
         print(movie(data, idata), flush=True)
         if not PREVIEW:
-            print(line.mp4_to_gif(OUT / "mp4" / "warehouse.mp4", OUT / "warehouse.gif"), flush=True)
+            print(line.mp4_to_gif(OUT / "mp4" / "warehouse.mp4", OUT / "warehouse.gif", **GIF), flush=True)

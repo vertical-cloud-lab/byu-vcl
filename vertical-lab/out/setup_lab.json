@@ -1,0 +1,563 @@
+{
+ "name": "setup_lab",
+ "fps": 15,
+ "n_frames": 1670,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/9",
+   "caption": "An empty bay in a warehouse, about 24 m between the racks on its side walls. Everything that follows goes into it.",
+   "start_frame": 0,
+   "end_frame": 68
+  },
+  {
+   "label": "2/9",
+   "caption": "The layout goes down in tape first: the 3.0 m aisle, each machine's footprint, a dock for the MiR250 at every front with a camera target on a post, two charger bays, and space kept for the DED machine and the packaging station.",
+   "start_frame": 69,
+   "end_frame": 131
+  },
+  {
+   "label": "3/9",
+   "caption": "Utilities: cable trays over both rows with a drop to every station (power and network), 208 V three-phase to the VLM (#53), and an argon line from a cylinder manifold to the glovebox, the rePowder, the Aconity and the DED. Layout choices, not a design.",
+   "start_frame": 132,
+   "end_frame": 203
+  },
+  {
+   "label": "4/9",
+   "caption": "The Kardex Shuttle XP 500 goes together where its footprint is taped: base frame, posts, storage columns.",
+   "start_frame": 204,
+   "end_frame": 243
+  },
+  {
+   "label": "4/9",
+   "caption": "The extractor and its drive, then six empty electrified trays, A to F.",
+   "start_frame": 244,
+   "end_frame": 283
+  },
+  {
+   "label": "4/9",
+   "caption": "The cladding, the opening, the console and the shutter.",
+   "start_frame": 284,
+   "end_frame": 325
+  },
+  {
+   "label": "5/9",
+   "caption": "The floor machines come in on their footprints, fronts to the aisle: the glovebox (its antechamber to the aisle), the rePowder, the Aconity MIDI, the wire EDM and the two Instrons.",
+   "start_frame": 326,
+   "end_frame": 415
+  },
+  {
+   "label": "6/9",
+   "caption": "Two MiR Charge 48V chargers go in, then the first MiR250 rolls onto its charging plate.",
+   "start_frame": 416,
+   "end_frame": 438
+  },
+  {
+   "label": "6/9",
+   "caption": "Two MiR Charge 48V chargers go in, then the first MiR250 rolls onto its charging plate.",
+   "start_frame": 439,
+   "end_frame": 471
+  },
+  {
+   "label": "6/9",
+   "caption": "Its cabinet goes on top: it carries the arm at 800 mm and holds the UR control box.",
+   "start_frame": 472,
+   "end_frame": 498
+  },
+  {
+   "label": "6/9",
+   "caption": "The UR control box (460 x 449 x 254 mm, 12 kg) goes into the cabinet.",
+   "start_frame": 499,
+   "end_frame": 528
+  },
+  {
+   "label": "6/9",
+   "caption": "The UR10e is lowered onto the cabinet's top plate and bolted down: four M8 bolts at 20 Nm, two 8 mm pins so it goes back in the same place (UR's manual).",
+   "start_frame": 529,
+   "end_frame": 567
+  },
+  {
+   "label": "6/9",
+   "caption": "The Robotiq 2F-85 goes on the flange.",
+   "start_frame": 568,
+   "end_frame": 591
+  },
+  {
+   "label": "6/9",
+   "caption": "It wakes up and stretches. The second unit is built the same way at the other charger.",
+   "start_frame": 592,
+   "end_frame": 621
+  },
+  {
+   "label": "6/9",
+   "caption": "It wakes up and stretches. The second unit is built the same way at the other charger.",
+   "start_frame": 622,
+   "end_frame": 648
+  },
+  {
+   "label": "7/9",
+   "caption": "Loading, drawn see-through: each tray comes to the opening, people put its instruments on through it (most weigh more than the arm's 12.5 kg), and it goes back to its slot and its power.",
+   "start_frame": 649,
+   "end_frame": 678
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray A (liquid handling) comes to the opening.",
+   "start_frame": 679,
+   "end_frame": 689
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray A (liquid handling) comes to the opening.",
+   "start_frame": 690,
+   "end_frame": 701
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray A (liquid handling) comes to the opening.",
+   "start_frame": 702,
+   "end_frame": 712
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray A (liquid handling) comes to the opening.",
+   "start_frame": 713,
+   "end_frame": 715
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray A (liquid handling) comes to the opening.",
+   "start_frame": 716,
+   "end_frame": 725
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray A (liquid handling) comes to the opening.",
+   "start_frame": 726,
+   "end_frame": 728
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray A: CubXL liquid-handling gantry, Opentrons OT-2.",
+   "start_frame": 730,
+   "end_frame": 765
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray A goes back to its slot (R2), where it has power.",
+   "start_frame": 766,
+   "end_frame": 768
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray A goes back to its slot (R2), where it has power.",
+   "start_frame": 769,
+   "end_frame": 778
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray A goes back to its slot (R2), where it has power.",
+   "start_frame": 779,
+   "end_frame": 783
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray A goes back to its slot (R2), where it has power.",
+   "start_frame": 784,
+   "end_frame": 794
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray A goes back to its slot (R2), where it has power.",
+   "start_frame": 795,
+   "end_frame": 804
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray B (powder dosing) comes to the opening.",
+   "start_frame": 806,
+   "end_frame": 816
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray B (powder dosing) comes to the opening.",
+   "start_frame": 817,
+   "end_frame": 828
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray B (powder dosing) comes to the opening.",
+   "start_frame": 829,
+   "end_frame": 839
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray B (powder dosing) comes to the opening.",
+   "start_frame": 840,
+   "end_frame": 842
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray B (powder dosing) comes to the opening.",
+   "start_frame": 843,
+   "end_frame": 852
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray B (powder dosing) comes to the opening.",
+   "start_frame": 853,
+   "end_frame": 855
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray B: vial rack, multi-doser: chain carousel v2, 13 powders.",
+   "start_frame": 857,
+   "end_frame": 892
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray B goes back to its slot (R3), where it has power.",
+   "start_frame": 893,
+   "end_frame": 895
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray B goes back to its slot (R3), where it has power.",
+   "start_frame": 896,
+   "end_frame": 905
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray B goes back to its slot (R3), where it has power.",
+   "start_frame": 906,
+   "end_frame": 910
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray B goes back to its slot (R3), where it has power.",
+   "start_frame": 911,
+   "end_frame": 921
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray B goes back to its slot (R3), where it has power.",
+   "start_frame": 922,
+   "end_frame": 931
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray C (3D printing) comes to the opening.",
+   "start_frame": 933,
+   "end_frame": 944
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray C (3D printing) comes to the opening.",
+   "start_frame": 945,
+   "end_frame": 955
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray C (3D printing) comes to the opening.",
+   "start_frame": 956,
+   "end_frame": 958
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray C (3D printing) comes to the opening.",
+   "start_frame": 959,
+   "end_frame": 968
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray C (3D printing) comes to the opening.",
+   "start_frame": 969,
+   "end_frame": 971
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray C: Bambu Lab H2D, Bambu Lab A1 mini.",
+   "start_frame": 973,
+   "end_frame": 1008
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray C goes back to its slot (F1), where it has power.",
+   "start_frame": 1009,
+   "end_frame": 1011
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray C goes back to its slot (F1), where it has power.",
+   "start_frame": 1012,
+   "end_frame": 1021
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray C goes back to its slot (F1), where it has power.",
+   "start_frame": 1022,
+   "end_frame": 1026
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray C goes back to its slot (F1), where it has power.",
+   "start_frame": 1027,
+   "end_frame": 1037
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray C goes back to its slot (F1), where it has power.",
+   "start_frame": 1038,
+   "end_frame": 1047
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray D (microscopy and diffraction) comes to the opening.",
+   "start_frame": 1049,
+   "end_frame": 1059
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray D (microscopy and diffraction) comes to the opening.",
+   "start_frame": 1060,
+   "end_frame": 1071
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray D (microscopy and diffraction) comes to the opening.",
+   "start_frame": 1072,
+   "end_frame": 1082
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray D (microscopy and diffraction) comes to the opening.",
+   "start_frame": 1083,
+   "end_frame": 1085
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray D (microscopy and diffraction) comes to the opening.",
+   "start_frame": 1086,
+   "end_frame": 1095
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray D (microscopy and diffraction) comes to the opening.",
+   "start_frame": 1096,
+   "end_frame": 1098
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray D: Hitachi TM4000PlusII, Rigaku MiniFlex 600.",
+   "start_frame": 1100,
+   "end_frame": 1135
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray D goes back to its slot (R1), where it has power.",
+   "start_frame": 1136,
+   "end_frame": 1138
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray D goes back to its slot (R1), where it has power.",
+   "start_frame": 1139,
+   "end_frame": 1148
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray D goes back to its slot (R1), where it has power.",
+   "start_frame": 1149,
+   "end_frame": 1153
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray D goes back to its slot (R1), where it has power.",
+   "start_frame": 1154,
+   "end_frame": 1164
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray D goes back to its slot (R1), where it has power.",
+   "start_frame": 1165,
+   "end_frame": 1174
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray E (mechanical testing and particle size) comes to the opening.",
+   "start_frame": 1176,
+   "end_frame": 1186
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray E (mechanical testing and particle size) comes to the opening.",
+   "start_frame": 1187,
+   "end_frame": 1198
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray E (mechanical testing and particle size) comes to the opening.",
+   "start_frame": 1199,
+   "end_frame": 1209
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray E (mechanical testing and particle size) comes to the opening.",
+   "start_frame": 1210,
+   "end_frame": 1212
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray E (mechanical testing and particle size) comes to the opening.",
+   "start_frame": 1213,
+   "end_frame": 1222
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray E (mechanical testing and particle size) comes to the opening.",
+   "start_frame": 1223,
+   "end_frame": 1225
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray E: Plastometrex PLX-Benchtop, KLA iMicro, Malvern Mastersizer 3000 + Aero S.",
+   "start_frame": 1227,
+   "end_frame": 1270
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray E goes back to its slot (R4), where it has power.",
+   "start_frame": 1271,
+   "end_frame": 1273
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray E goes back to its slot (R4), where it has power.",
+   "start_frame": 1274,
+   "end_frame": 1283
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray E goes back to its slot (R4), where it has power.",
+   "start_frame": 1284,
+   "end_frame": 1288
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray E goes back to its slot (R4), where it has power.",
+   "start_frame": 1289,
+   "end_frame": 1299
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray E goes back to its slot (R4), where it has power.",
+   "start_frame": 1300,
+   "end_frame": 1309
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray F (sample prep and heat treatment) comes to the opening.",
+   "start_frame": 1311,
+   "end_frame": 1322
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray F (sample prep and heat treatment) comes to the opening.",
+   "start_frame": 1323,
+   "end_frame": 1333
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray F (sample prep and heat treatment) comes to the opening.",
+   "start_frame": 1334,
+   "end_frame": 1336
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray F (sample prep and heat treatment) comes to the opening.",
+   "start_frame": 1337,
+   "end_frame": 1346
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray F (sample prep and heat treatment) comes to the opening.",
+   "start_frame": 1347,
+   "end_frame": 1349
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray F: Buehler EcoMet 30 semi-automatic, Nabertherm NAT 15/65.",
+   "start_frame": 1351,
+   "end_frame": 1386
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray F goes back to its slot (F2), where it has power.",
+   "start_frame": 1387,
+   "end_frame": 1389
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray F goes back to its slot (F2), where it has power.",
+   "start_frame": 1390,
+   "end_frame": 1399
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray F goes back to its slot (F2), where it has power.",
+   "start_frame": 1400,
+   "end_frame": 1404
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray F goes back to its slot (F2), where it has power.",
+   "start_frame": 1405,
+   "end_frame": 1415
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray F goes back to its slot (F2), where it has power.",
+   "start_frame": 1416,
+   "end_frame": 1425
+  },
+  {
+   "label": "8/9",
+   "caption": "The cameras go on: a stream camera on each tray and two bay cameras under the cable tray. Stand-ins: services.py's cameras replace them once merged.",
+   "start_frame": 1427,
+   "end_frame": 1471
+  },
+  {
+   "label": "9/9",
+   "caption": "Set up: the VLM with trays A-F, the floor machines, two MiR250 + UR10e units on charge.",
+   "start_frame": 1472,
+   "end_frame": 1489
+  },
+  {
+   "label": "9/9",
+   "caption": "Set up: the VLM with trays A-F, the floor machines, two MiR250 + UR10e units on charge.",
+   "start_frame": 1490,
+   "end_frame": 1525
+  },
+  {
+   "label": "9/9",
+   "caption": "Set up: the VLM with trays A-F, the floor machines, two MiR250 + UR10e units on charge.",
+   "start_frame": 1526,
+   "end_frame": 1561
+  },
+  {
+   "label": "9/9",
+   "caption": "Set up: the VLM with trays A-F, the floor machines, two MiR250 + UR10e units on charge.",
+   "start_frame": 1562,
+   "end_frame": 1597
+  },
+  {
+   "label": "9/9",
+   "caption": "Set up: the VLM with trays A-F, the floor machines, two MiR250 + UR10e units on charge.",
+   "start_frame": 1598,
+   "end_frame": 1669
+  }
+ ]
+}
