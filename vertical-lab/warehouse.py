@@ -77,13 +77,15 @@ STATIONS = {
     "instron_small": (-4300.0, "S", 0.0, -4300.0),
     "ded": (3500.0, "S", 0.0, 3500.0),
     "packaging": (7300.0, "S", 0.0, 7300.0),
+    "hip": (10000.0, "N", 0.0, 10000.0),         # a hot isostatic press, if a module adds one (key "hip")
 }
 SETBACK = {"glovebox": 400.0}
 RESERVED = {"ded": ("space for a DED machine", 3000.0, 2400.0),           # footprints drawn until a model exists
             "packaging": ("space for a packaging station", 2400.0, 1500.0)}   # (estimates: room, not a machine)
 NAMES = {"glovebox": "glovebox: antechamber to the aisle", "repowder": "rePowder atomizer", "vlm": "Kardex VLM",
          "aconity": "Aconity MIDI", "wire_edm": "FANUC wire EDM", "instron_floor": "Instron 68FM-100",
-         "instron_small": "Instron 68SC-2", "ded": "DED machine", "packaging": "packaging station"}
+         "instron_small": "Instron 68SC-2", "ded": "DED machine", "packaging": "packaging station",
+         "hip": "hot isostatic press"}
 CHARGERS = [-1500.0, -300.0]                   # x of each MiR Charge 48V, south side of the aisle (1.2 m apart)
 RACK = dict(bay=2743.0, depth=1067.0, height=4877.0, levels=(0.0, 1626.0, 3251.0), upright=76.0, beam_h=127.0)
 # typical selective pallet racking, not a quote: 108 in beams, 42 in deep frames, 16 ft uprights; GMA pallets
@@ -399,6 +401,8 @@ class Floor:
         self.groups["tape"] = ["aisle tape", "aisle dashes"]
         docks, blacks, whites, posts = [], [], [], []
         for key in STATIONS:
+            if key not in ("vlm", "repowder") and key not in self.groups:      # nothing stands there: no dock
+                continue
             x, y, hd = dock_pose(key)
             docks.append(tape_rect(x, y, P.MIR["L"] + 140, P.MIR["W"] + 140, t=50.0, ang=hd))
             tx, ty = target_xy(key)
