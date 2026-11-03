@@ -1,7 +1,7 @@
 {
  "name": "fabrication/form4",
  "fps": 15,
- "n_frames": 161,
+ "n_frames": 190,
  "size": [
   1280,
   720
@@ -27,9 +27,15 @@
   },
   {
    "label": "4/4",
-   "caption": "A fresh platform goes on and the cover shuts.",
+   "caption": "A fresh platform goes onto the raised carrier; it lowers to the tank and the cover shuts.",
    "start_frame": 129,
    "end_frame": 160
+  },
+  {
+   "label": "4/4",
+   "caption": "",
+   "start_frame": 161,
+   "end_frame": 189
   }
  ]
 }
