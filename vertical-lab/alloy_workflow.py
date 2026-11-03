@@ -380,7 +380,8 @@ class Mir:
         return up
 
     def secs(self, x1):
-        return max(1.2, abs(x1 - self.x) / MIR_SPEED + 0.8)       # plus the speed-up and slow-down
+        # plus 0.8 s for speeding up and slowing down: faster than MiR's 0.3 m/s^2 allows (see the notes)
+        return max(1.2, abs(x1 - self.x) / MIR_SPEED + 0.8)
 
     def world(self, p):
         return (self.sc.world("amr") @ np.r_[p, 1.0])[:3]
@@ -475,9 +476,7 @@ def movie():
           "pointing down, so it takes the lug pointing 30° down and lifts the plate out."
     status(sc, Arm="driving to the Aconity")
     sc.step(f"3/{n}", cap, amr.secs(aco_x), amr.drive(aco_x), hold=0.2)
-    plate_top = lambda: held_point(sc, "plate", (0, 0, 0))          # noqa: E731
-    lug = lambda: held_point(sc, "plate", (-78.0, 0, 28.0))         # noqa: E731
-    p_g = lug()
+    p_g = held_point(sc, "plate", (-78.0, 0, 28.0))   # the grasp point: the lug's centre line, 28 mm up
     a_dir = np.array([0, math.cos(math.radians(TILT)), -math.sin(math.radians(TILT))])
     status(sc, Arm="taking the plate")
     sc.step(f"3/{n}", cap, 1.8, RB.both(rb.joint_to(Tw=tilt(p_g - a_dir * 150)), rb.grip_to(0.0)), hold=0.05,
@@ -624,7 +623,6 @@ def movie():
     sc.step(f"5/{n}", cap, 0.7, rb.line_to(A.down(p_b, spin=0.0)), hold=0.05)
     sc.step(f"5/{n}", cap, 0.4, rb.grip_to(GRIP_BAR), hold=0.05)
     rb.grasp(g)
-    bar_off = np.linalg.inv(rb.tcp_world()) @ sc.world(g)          # the bar in the gripper's frame
     sc.step(f"5/{n}", cap, 0.8, rb.line_to(A.down(p_b + (0, 0, 70), spin=0.0)), hold=0.05)
     sc.step(f"5/{n}", cap, 1.0, rb.line_to(A.down(p_b + (0, -420, 120), spin=0.0)), hold=0.05)
     # into the holder on the MiR
@@ -684,7 +682,6 @@ def movie():
           f"measurement: it runs through AddUp's published as-built values ({SS['src']}). The bar breaks at about " \
           f"{SS['uts']:.0f} MPa, {SS['elong'] * 100:.0f} % strain, with little necking."
     hi_up = held_point(sc, g, (0, 25.0, 3.0))[2] > held_point(sc, g, (0, -25.0, 3.0))[2]
-    ef = SS_PTS[-1, 0]
     gauge = M.E8_SUB["G"]
 
     def pull(u):
