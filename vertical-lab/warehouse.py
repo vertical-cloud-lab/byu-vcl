@@ -80,7 +80,8 @@ STATIONS = {
     "instron_small": (-4300.0, "S", 0.0, -4300.0),
     "ded": (3500.0, "S", 0.0, 3500.0),
     "packaging": (7300.0, "S", 0.0, 7300.0),
-    "hip": (10000.0, "N", 0.0, 10000.0),         # a hot isostatic press, if a module adds one (key "hip")
+    # no "hip": instruments_lab.hip() is a HIP against a tray and the opening, a comparison rather than a floor
+    # machine, and the answer was no (notes/instruments_lab.md)
 }
 SETBACK = {"glovebox": 400.0}
 BENCH = {"packaging": 900.0}      # benchtop stations on the floor plan stand on a bench this tall (mm, a choice)

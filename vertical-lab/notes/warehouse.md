@@ -186,16 +186,23 @@ fronts of the machines for people when the rail is off.
 
 What is loaded is data, so the same script renders the full lab once the other modules are merged:
 - `TRAY_ITEMS` holds trays A-F: `animate.LOADS` and `line.TRAY_LOADS`.
-- `ROUND4_TRAY` holds the round-4 tray instruments (`vhx`, `xrf`, `sieve`, `openflexure_array`, `cubxl_corrosion`).
-  Their spots were picked before the models existed.
-- `warehouse.STATIONS` holds the floor (`ded`, `packaging`, `hip`).
+- `ROUND4_TRAY` holds the round-4 tray instruments. They were placed after merging, from `setup_lab.py fit`:
+  - the corrosion CubXL on A, in place of round 2's CubXL;
+  - the VHX on C;
+  - the OpenFlexure array on D, in place of the two freestanding microscopes;
+  - the sieve shaker and the XRF on F.
+
+  `REPLACED` lists what they replace.
+- `warehouse.STATIONS` holds the floor (`ded`, `packaging`). The packaging station stands on a 900 mm bench
+  (`warehouse.BENCH`). There is no `hip` spot: `instruments_lab.hip()` is a comparison against a tray, and the answer
+  was no.
 - A key that `tour.load()` doesn't return is skipped.
 - `python3 setup_lab.py fit` prints every tray item's size, whether it is under Kardex's 727.5 mm and inside the tray,
   and what it overlaps. The render prints the same warnings.
 
-**The cameras are stand-ins.** Each tray gets a small camera on a post at its back corner, and two dome cameras hang
-under the north cable tray. If `services.py` has a function named by `CAMERA_HOOK` (`add_cameras` by default), it is
-called as `hook(sc, L)` instead, and should return `[(label, xyz)]`.
+**The cameras are `services.py`'s.** `services.add_cameras(sc, L)`, the function `CAMERA_HOOK` names, puts each
+tray's Pi 5 units (`services.TRAY_CAMS`) and the overhead camera at the bay into the scene. Without `services.py`, the
+script draws stand-ins: a camera on a post at each tray's back corner, and two domes under the north cable tray.
 
 ### Caveats
 
