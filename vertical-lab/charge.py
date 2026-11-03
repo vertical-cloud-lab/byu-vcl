@@ -19,7 +19,7 @@ into the atomizer", DAL #162). Each takes a plug of its own metal.
 Every lathe part can also be built cut in half (``cut=True``, the front half removed), so a close-up shows the
 bore, the powder and the plug going in. ``lathe()`` revolves a closed (r, z) profile about z.
 
-    python3 charge.py      # prints the recipe -> out/alloy_charge.json
+    python3 charge.py      # prints the recipe -> out/alloy_recipe.json
 """
 from __future__ import annotations
 
@@ -307,5 +307,5 @@ def recipe() -> dict:
 if __name__ == "__main__":
     r = recipe()
     (HERE / "out").mkdir(exist_ok=True)
-    (HERE / "out" / "alloy_charge.json").write_text(json.dumps(r, indent=1) + "\n")
+    (HERE / "out" / "alloy_recipe.json").write_text(json.dumps(r, indent=1) + "\n")
     print(json.dumps(r, indent=1))

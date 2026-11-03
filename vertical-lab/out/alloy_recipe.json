@@ -1,0 +1,87 @@
+{
+ "volumes_cm3": {
+  "cup": 11.887,
+  "plug": 1.173,
+  "cavity": 4.903,
+  "slug": 18.099
+ },
+ "runs": {
+  "Al-10Si": {
+   "cups": [
+    {
+     "cup": "5N Al cup + plug",
+     "powder": "Si",
+     "cup_g": 32.08,
+     "plug_g": 3.17,
+     "powder_g": 3.92,
+     "fill_mm": 27.7,
+     "headspace_mm": 10.4
+    },
+    {
+     "cup": "5N Al cup + plug",
+     "powder": "Si",
+     "cup_g": 32.08,
+     "plug_g": 3.17,
+     "powder_g": 3.92,
+     "fill_mm": 27.7,
+     "headspace_mm": 10.4
+    }
+   ],
+   "charge_g": 78.3,
+   "designed_wt_pct": {
+    "Al": 90.0,
+    "Si": 10.0
+   }
+  },
+  "Cu-10Ni": {
+   "cups": [
+    {
+     "cup": "OFE Cu (C10100) cup + plug",
+     "powder": "Ni",
+     "cup_g": 106.27,
+     "plug_g": 10.48,
+     "powder_g": 12.97,
+     "fill_mm": 20.6,
+     "headspace_mm": 17.5
+    },
+    {
+     "cup": "OFE Cu (C10100) cup + plug",
+     "powder": "Ni",
+     "cup_g": 106.27,
+     "plug_g": 10.48,
+     "powder_g": 12.97,
+     "fill_mm": 20.6,
+     "headspace_mm": 17.5
+    }
+   ],
+   "charge_g": 259.5,
+   "designed_wt_pct": {
+    "Cu": 90.0,
+    "Ni": 10.0
+   }
+  }
+ },
+ "densities": {
+  "Ni": {
+   "tapped_g_cm3": 4.9,
+   "source": "assumed: 55 % of 8.91, a gas-atomized spherical powder tapped"
+  },
+  "Fe": {
+   "tapped_g_cm3": 4.3,
+   "source": "assumed: 55 % of 7.87"
+  },
+  "Cu": {
+   "tapped_g_cm3": 4.9,
+   "source": "assumed: 55 % of 8.96"
+  },
+  "Al": {
+   "tapped_g_cm3": 1.6,
+   "source": "#222: AlSi10Mg tapped by hand, 1.60"
+  },
+  "Si": {
+   "tapped_g_cm3": 1.1,
+   "source": "#222: irregular Si tapped, 1.10"
+  }
+ },
+ "note": "Designed composition: what the charge gives if every gram dissolves and none is lost; ICP/EDS on the powder measures recovery (#222). Cup and plug volumes are #222's CAD. The Ni tapped density is assumed. Powder below the plug line leaves headspace under the plug, as #222's E5 does; the plug's vent lets that air out when the chamber is pumped down."
+}
