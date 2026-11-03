@@ -33,7 +33,7 @@ Why not on the back edge itself:
 - So a back-edge plate needs a different dock in each column, and the one at the opening has nowhere to go.
 
 A side plate meets the same dock everywhere: rear slots, front slots and the bay. The dock's housing sits in the
-cavity between the column's side wall and the cladding, taken here as about 105 mm. It is clear of the extractor's
+cavity between the column's side wall and the cladding, about 108 mm in the model. It is clear of the extractor's
 guide rails and of the shutter, and pulled back it is 20 mm clear of the tray. One plate serves both places.
 
 **The parts are Stäubli CombiTac's, from its catalogue:**
@@ -63,8 +63,9 @@ guide rails and of the shutter, and pulled back it is 20 mm clear of the tray. O
   4. The extractor moves the tray.
   5. The bay dock pushes in, pins first.
   6. The contacts mate, the supplies open, and the tray is back on mains.
-- **The transit is short.** At Kardex's 0.7 m/s in and out and 2 m/s up and down, R2 to the opening is about 6 s, and
-  no slot is more than about 15 s away.
+- **The transit is short.** From R2 to the opening the tray moves 2 x 1030 mm in and out at Kardex's 0.7 m/s, about
+  3 s, and 246 mm down at 2 m/s, 0.1 s. With the shutter and the accelerations, which Kardex doesn't publish, that is
+  about 6 s. R4, the farthest slot, adds about 0.8 s of vertical travel.
 
 ### The UPS on each tray
 

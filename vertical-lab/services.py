@@ -1102,7 +1102,8 @@ def heat_budget() -> dict:
         utilities=dict(
             ups=dict(model="Eaton 5PX1500RTNG2", size_mm=[UPS["w"], UPS["d"], UPS["h"]], rating="1500 VA, 120 V",
                      runtime="44 min at 300 W (230 V model, retailer)", where="on every tray, back right",
-                     transit_s="about 6 s from R2 to the opening; under 15 s from any slot at Kardex's speeds",
+                     transit_s="about 6 s from R2 to the opening: 2 x 1030 mm at 0.7 m/s (3 s), 246 mm at 2 m/s "
+                               "(0.1 s), plus the shutter and accelerations (not published); R4 adds about 0.8 s",
                      source=SOURCES["ups"]),
             n2=dict(model="Parker Balston UHPN2-1100", size_mm=[N2GEN["w"], N2GEN["d"], N2GEN["h"]],
                     fits_tray=N2GEN["h"] <= V.MAX_GOODS_H, where="beside the VLM; N2 through the docks",
@@ -1118,7 +1119,7 @@ def heat_budget() -> dict:
             "650 C may run inside at all.",
             "The extractor's repeatability at a slot, for a dock that takes 4 mm of misalignment.",
             "Whether the side walls can take a window and a dock behind the supports at a slot, and the space between "
-            "the column wall and the cladding (taken here as about 105 mm).",
+            "the column wall and the cladding (about 108 mm in the model).",
             "Whether power to a slot can stay on while a tray is stored, and what they would fit (the dealer offered "
             "a quick-connect cord).",
         ],

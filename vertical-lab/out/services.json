@@ -389,7 +389,7 @@
     "rating": "1500 VA, 120 V",
     "runtime": "44 min at 300 W (230 V model, retailer)",
     "where": "on every tray, back right",
-    "transit_s": "about 6 s from R2 to the opening; under 15 s from any slot at Kardex's speeds",
+    "transit_s": "about 6 s from R2 to the opening: 2 x 1030 mm at 0.7 m/s (3 s), 246 mm at 2 m/s (0.1 s), plus the shutter and accelerations (not published); R4 adds about 0.8 s",
     "source": "Eaton 5PX1500RTNG2 (120 V, 1500 VA, rack/tower 2U): 3.4 x 17.2 x 17.6 in (86 x 437 x 447 mm), weight '50.7' (lb, about 23 kg), farnell.com data sheet (search snippet); 44 min at 300 W (230 V model, retailer listing). Heat dissipation not published. APC SMT1500RM2UC for comparison: 432 x 477 x 86 mm, 26.5 kg, 1440 VA / 1000 W, 98.9 % efficient at 50 % load (ENERGY STAR)."
    },
    "n2": {
@@ -415,7 +415,7 @@
    "The heat a tray may give off in a slot, and in total, and the interior temperature the drives and controls are rated for.",
    "Whether a column can be ventilated (a filtered fan and an outlet on the roof), and whether a furnace at 650 C may run inside at all.",
    "The extractor's repeatability at a slot, for a dock that takes 4 mm of misalignment.",
-   "Whether the side walls can take a window and a dock behind the supports at a slot, and the space between the column wall and the cladding (taken here as about 105 mm).",
+   "Whether the side walls can take a window and a dock behind the supports at a slot, and the space between the column wall and the cladding (about 108 mm in the model).",
    "Whether power to a slot can stay on while a tray is stored, and what they would fit (the dealer offered a quick-connect cord)."
   ]
  },
