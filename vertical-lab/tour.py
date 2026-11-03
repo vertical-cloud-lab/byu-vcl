@@ -22,6 +22,8 @@ import numpy as np
 import pyvista as pv
 from PIL import Image, ImageDraw
 
+import importlib
+
 import instruments as I
 import lab
 import scene
@@ -31,6 +33,21 @@ HERE = Path(__file__).resolve().parent
 CACHE = HERE / ".cache"
 MATS = dict(lab.MATS)
 MATS.update(I.MATERIALS)
+# Round 4 adds its instruments in modules of their own, each with a REGISTRY ({key: build}) and, optionally,
+# MATERIALS; a module that isn't there yet is skipped. Each module is cached on its own sources.
+MODULES = ["instruments", "instruments_char", "instruments_lab", "services"]
+
+
+def _modules() -> dict:
+    out = {}
+    for name in MODULES:
+        if not (HERE / f"{name}.py").exists():
+            continue
+        mod = I if name == "instruments" else importlib.import_module(name)
+        if getattr(mod, "REGISTRY", None):
+            out[name] = mod
+            MATS.update(getattr(mod, "MATERIALS", {}))
+    return out
 GLOWY = {"glow", "laser", "screen_on", "vlm_led"}
 scene.GIF_SIZE = (640, 360)          # one GIF per instrument: smaller than the chapters'
 FIT = dict(W=2450.0 - 24, D=864.0 - 24, H=727.5)     # inside a tray's rim; Kardex's product height
@@ -55,29 +72,51 @@ def piece_entries(inst: I.Instrument) -> dict:
     return out
 
 
-def _sources() -> list[Path]:
-    return [HERE / "instruments.py", HERE / "openflexure.py", HERE / "lab_models" / "common.py",
-            *sorted((HERE / "openflexure").glob("*.json"))]
+def _sources(module: str = "instruments") -> list[Path]:
+    common = [HERE / "lab_models" / "common.py", HERE / "instruments.py"]
+    if module == "instruments":
+        return [*common, HERE / "openflexure.py", *sorted((HERE / "openflexure").glob("*.json"))]
+    return [*common, HERE / f"{module}.py"]
 
 
 def load(keys=None, rebuild=False) -> dict:
-    """{key: (Instrument, {piece: [entry]})}, every instrument, cached on the sources."""
+    """{key: (Instrument, {piece: [entry]})}, every instrument of every module in MODULES, each module cached on its
+    sources. An instrument whose build fails (say, the OpenFlexure meshes aren't built yet) is skipped, with a note."""
     CACHE.mkdir(exist_ok=True)
-    h = hashlib.sha256()
-    for f in _sources():
-        if f.exists():
-            h.update(f.read_bytes())
-    path = CACHE / f"instruments_{h.hexdigest()[:12]}.pkl"
-    if path.exists() and not rebuild:
-        data = pickle.loads(path.read_bytes())
-    else:
-        data = {}
-        for key, build in I.REGISTRY.items():
-            print(f"  building {key}", flush=True)
-            inst = build()
-            data[key] = (inst, piece_entries(inst))
-        path.write_bytes(pickle.dumps(data))
+    data = {}
+    for name, mod in _modules().items():
+        if keys is not None and not set(keys) & set(mod.REGISTRY):
+            continue
+        h = hashlib.sha256()
+        for f in _sources(name):
+            if f.exists():
+                h.update(f.read_bytes())
+        if name == "instruments":                  # rebuilt once the OpenFlexure meshes are there
+            h.update(str((CACHE / "openflexure" / "v7").is_dir() and (CACHE / "openflexure" / "delta").is_dir()).encode())
+        path = CACHE / f"{name}_{h.hexdigest()[:12]}.pkl"
+        if path.exists() and not rebuild:
+            part = pickle.loads(path.read_bytes())
+        else:
+            part = {}
+            for key, build in mod.REGISTRY.items():
+                print(f"  building {key}", flush=True)
+                try:
+                    inst = build()
+                except FileNotFoundError as e:            # vendor files not fetched or built yet
+                    print(f"  skipping {key}: {e}", flush=True)
+                    continue
+                part[key] = (inst, piece_entries(inst))
+            path.write_bytes(pickle.dumps(part))
+        data.update(part)
     return {k: v for k, v in data.items() if keys is None or k in keys}
+
+
+def registry() -> dict:
+    """{key: build} across every module, in order."""
+    out = {}
+    for mod in _modules().values():
+        out.update(mod.REGISTRY)
+    return out
 
 
 def fit_report(inst: I.Instrument) -> dict:
@@ -265,7 +304,7 @@ if __name__ == "__main__":
             elif word == "gallery":
                 print(gallery(load()))
             else:
-                print(join(list(I.REGISTRY)))
+                print(join(list(registry())))
     else:
         data = load(args or None, rebuild="--rebuild" in args)
         for key, (inst, ents) in data.items():
