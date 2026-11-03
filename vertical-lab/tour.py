@@ -311,7 +311,7 @@ if __name__ == "__main__":
             sc = Scene(f"still_{key}", inst.model, gif=False, mp4=False)
             studio(sc, shadow_of=inst.bbox())
             rig = Rig(sc, inst, ents, f"{key}:")
-            sc.cam = frame_cam(inst.bbox(), inst.cam)
+            sc.cam = frame_cam(inst.bbox(), inst.cam, *(inst.framing or ()))
             shots = [sc.render_base()]
             for cap, secs, targets in inst.actions:
                 rig.move(targets)(1.0)

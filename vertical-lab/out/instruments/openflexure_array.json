@@ -27,7 +27,7 @@
   },
   {
    "label": "4/7",
-   "caption": "All six scan at once: each flexure stage rasters its coupon (+-6 mm) under the reflection optics. The v7s focus by moving the optics, the Deltas by moving the stage.",
+   "caption": "All six scan at once: each flexure stage rasters its coupon under the reflection optics, its legs leaning with it (+-6 mm on the v7s, +-4 mm on the Deltas). The v7s focus by moving the optics, the Deltas by moving the stage.",
    "start_frame": 132,
    "end_frame": 202
   },
