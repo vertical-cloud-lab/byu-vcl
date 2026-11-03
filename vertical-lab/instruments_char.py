@@ -542,10 +542,10 @@ def sieve() -> Instrument:
          "DAL bought and ordered: No. 60, 100, 140, 230, 325 and a pan.", 2.8,
          {"carrier": (0.0, 1.0), "container": (0.0, 1.0), **fades}),
         ("", 2.0, {"stream": (0.0, 1.0), **{f"frac_{k}": (0.0, 1.0) for k, *_ in STACK}}),
-        ("The container goes back. The clamping lid goes over the two rods and down onto the stack, and its knobs "
-         "clamp it: what an arm would do, since no shaker found is sold for robot loading.", 3.4,
-         {"stream": (1.0, 0.0), "carrier": (1.0, 0.0), "container": (1.0, 0.0), "lid": (0.0, 1.0),
-          "knobL": (0.0, 1.0), "knobR": (0.0, 1.0)}),
+        ("The container goes back. The clamping lid goes over the two rods and down onto the stack ...", 2.6,
+         {"stream": (1.0, 0.0), "carrier": (1.0, 0.0), "container": (1.0, 0.0), "lid": (0.0, 1.0)}),
+        ("... and its knobs clamp it: what an arm would do, since no shaker found is sold for robot loading.", 1.4,
+         {"knobL": (0.0, 1.0), "knobR": (0.0, 1.0)}),
         ("Sieving, drawn see-through: 3-D throwing motion, amplitude 0.2-3 mm. Each size class falls until a cloth "
          "stops it.", 5.6, {"stack": (0.0, 1.0), "~stack": (0.0, 1.0), "~lid": (0.0, 1.0),
                             **{f"fall_{k}": (0.0, 1.0) for k, *_ in STACK}}),
@@ -634,21 +634,24 @@ def vhx() -> Instrument:
     body.add("XY stage", rbox(p["stage"][0], p["stage"][1], 40, 8, x=sx0, y=-40, z=bh), "char_keyence_dk")
     body.add("stage disk", cyl(p["disk"], 2, x=sx0, y=-40, z=zs - 1), "inst_grey")
     # the free-angle arm: a pivot on the column at the head's focal height, so the view stays centred as it tilts
-    zf = zs + 4.0                                  # the sample surface
+    zf = zs + 1.0 + 12.6                           # the sample surface: a 12.6 mm mounted coupon on the stage disk
     pivot = (sx0, -40.0, zf)
     head = _piece(inst, "head")
     eh = p["ea_H"]
     z_ea = zf + p["wd"] + 40.0                     # the EA-300's underside: objective nose + working distance
+    # the EA-300's back stands 4 mm clear of the tilt guide on the column face, the arm bridging the gap
+    ey = yc - cd / 2 - 14 - 4 - p["ea_D"] / 2
+    ly = ey - 110.0                                # the zoom lens, half sunk in the EA-300's front as before
     head.add("arm", box(sx0 - 40, -40 + 60, z_ea + 120, sx0 + 40, yc - cd / 2, z_ea + 200), "char_keyence_dk")
-    head.add("EA-300", rbox(p["ea_W"], p["ea_D"], eh, 18, x=sx0, y=-40 + 30, z=z_ea).edges(">Z").fillet(10),
+    head.add("EA-300", rbox(p["ea_W"], p["ea_D"], eh, 18, x=sx0, y=ey, z=z_ea).edges(">Z").fillet(10),
              "char_keyence")
-    head.add("EA-300 band", box(sx0 - p["ea_W"] / 2 - 0.5, -40 + 30 - p["ea_D"] / 2 - 0.5, z_ea + 150,
-                                sx0 + p["ea_W"] / 2 + 0.5, -40 + 30 + p["ea_D"] / 2 + 0.5, z_ea + 175), "char_keyence_dk")
+    head.add("EA-300 band", box(sx0 - p["ea_W"] / 2 - 0.5, ey - p["ea_D"] / 2 - 0.5, z_ea + 150,
+                                sx0 + p["ea_W"] / 2 + 0.5, ey + p["ea_D"] / 2 + 0.5, z_ea + 175), "char_keyence_dk")
     head.add("objective", cyl(46, 40, x=sx0, y=-40, z=z_ea - 40), "inst_dark")
     head.add("objective ring", cyl(52, 6, x=sx0, y=-40, z=z_ea - 12), "chrome")
-    head.add("VH-ZST zoom lens", cyl(58, 150, x=sx0 + 95, y=-40 - 80, z=z_ea + 60), "char_keyence_dk")
-    head.add("camera", rbox(60, 60, 50, 6, x=sx0 + 95, y=-40 - 80, z=z_ea + 210), "char_keyence")
-    head.add("lens joint", box(sx0 + 60, -40 - 95, z_ea + 150, sx0 + 140, -40 - 60, z_ea + 180), "inst_grey")
+    head.add("VH-ZST zoom lens", cyl(58, 150, x=sx0 + 95, y=ly, z=z_ea + 60), "char_keyence_dk")
+    head.add("camera", rbox(60, 60, 50, 6, x=sx0 + 95, y=ly, z=z_ea + 210), "char_keyence")
+    head.add("lens joint", box(sx0 + 60, ly - 15, z_ea + 150, sx0 + 140, ly + 20, z_ea + 180), "inst_grey")
     # the free-angle guide: an arc on the column face about the focal point, which the arm rides as the head tilts
     R_arm = z_ea + 160 - zf
     for k in range(-6, 7):
@@ -672,7 +675,8 @@ def vhx() -> Instrument:
     smp.add("mount", cyl(30, 12, z=0), "mount")
     smp.add("polished face", cyl(22, 0.6, z=12), "sample")
     inst.joints = {
-        "sample": Joint("path", path=((sx0, -320, zs + 150), (sx0, -160, zs + 40), (sx0, -40, zs + 12), (sx0, -40, zs - 8.6))),
+        # in under the objective's nose, then down onto the stage disk (its top at zs + 1)
+        "sample": Joint("path", path=((sx0, -320, zs + 150), (sx0, -160, zs + 14), (sx0, -40, zs + 6), (sx0, -40, zs + 1))),
         "head": Joint("hinge", axis=(0, 1, 0), pivot=pivot, deg=-35.0, parent="focus"),
         "laser": Joint("fade"),
         "plasma": Joint("fade"),
@@ -703,7 +707,7 @@ def vhx() -> Instrument:
          2.4, {"plasma": (0.3, 0.0), "readout": (1.0, 0.0)}),
     ]
     inst.labels = [("EA-300 LIBS head", (sx0 - p["ea_W"] / 2, -40, z_ea + 250), (0.10, 0.25)),
-                   ("VH-ZST zoom lens", (sx0 + 95 + 29, -40 - 80, z_ea + 120), (0.42, 0.14)),
+                   ("VH-ZST zoom lens", (sx0 + 95 + 29, ly, z_ea + 120), (0.42, 0.14)),
                    ("motorized XY stage", (sx0 - p["stage"][0] / 2, -40 - p["stage"][1] / 2, zs), (0.08, 0.72)),
                    ("controller, 27 in 4K screen", (cx - 250, 40, p["ctrl_H"] - 60), (0.84, 0.80)),
                    ("laser spot", (sx0, -40 - 15, zf + 2), (0.12, 0.50))]
@@ -762,11 +766,18 @@ def xrf() -> Instrument:
     body.add("feet", rbox(W - 80, D - 80, 15, 20), "inst_black")
     shell = I._wedge(W, D, D - 140, deck - 15, y0=yf, z=15).edges("|Y").fillet(25)
     body.add("housing", shell, "inst_white")
-    body.add("front band", box(-W / 2 + 30, yf - 1, 40, W / 2 - 30, yf, 70), "inst_navy")
-    body.add("logo", box(-W / 2 + 40, yf - 1.5, deck - 80, -W / 2 + 180, yf - 0.5, deck - 60), "inst_blue")
+    lean = math.degrees(math.atan2(140.0, deck - 15.0))   # the front leans back 140 mm over its 405 mm height
+
+    def on_front(x0, x1, z0, z1, t=1.0):
+        """A thin plate lying on the sloped front, from z0 to z1 (as measured up the face's height)."""
+        zc = (z0 + z1) / 2
+        yc = yf + 140.0 * (zc - 15.0) / (deck - 15.0)
+        return box(x0, -t, z0 - zc, x1, 0.0, z1 - zc).rotate((0, 0, 0), (1, 0, 0), -lean).translate((0, yc, zc))
+    body.add("front band", on_front(-W / 2 + 30, W / 2 - 30, 40, 70), "inst_navy")
+    body.add("logo", on_front(-W / 2 + 40, -W / 2 + 180, deck - 80, deck - 60, 1.5), "inst_blue")
     body.add("touch screen", box(W / 2 - 190, yf + 140 - 30, deck - 15, W / 2 - 40, yf + 140, deck + 75).rotate(
         (0, yf + 140, deck - 15), (1, yf + 140, deck - 15), -25), "screen_on")
-    body.add("deck", box(-W / 2 + 20, yf + 150, deck - 15, W / 2 - 230, yb - 40, deck + 1), "inst_grey")
+    deck_plate = box(-W / 2 + 20, yf + 150, deck - 15, W / 2 - 230, yb - 40, deck + 1)
     # the XY sample tray: 4 x 5 = 20 cups' seats, removable
     tx, ty = -W / 2 + 20 + (W - 250) / 2, (yf + 150 + yb - 40) / 2
     tray = box(tx - 150, ty - 190, deck, tx + 150, ty + 190, deck + 12)
@@ -779,6 +790,7 @@ def xrf() -> Instrument:
     body.add("XY tray", tray, "aluminium")
     # the measuring position: the window over the tube, front left of the tray
     mx, my = tx - 105, ty - 150 - 75                   # in front of the tray's first row
+    body.add("deck", deck_plate.cut(cyl(46, 20, x=mx, y=my, z=deck - 18)), "inst_grey")   # open under the window
     body.add("measuring window", tube(70, 46, 3, x=mx, y=my, z=deck - 1), "steel")
     lid = _piece(inst, "lid")
     lw, ld = W - 230, D - 190
