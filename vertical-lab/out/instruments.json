@@ -1,0 +1,254 @@
+{
+ "xrd": {
+  "title": "Benchtop X-ray diffractometer",
+  "model": "Rigaku MiniFlex 600",
+  "source": "Rigaku MiniFlex brochure (outline drawings: 620 W x 456 D x 722 H mm with the feet and the top hump, 80 kg; 150 mm vertical goniometer, theta-2theta) and the MiniFlex 6G sheet",
+  "model_mm": [
+   620,
+   453,
+   722
+  ],
+  "published_mm": [
+   620.0,
+   456.0,
+   722.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "sem": {
+  "title": "Tabletop SEM with EDS and EBSD",
+  "model": "Hitachi TM4000PlusII",
+  "source": "Hitachi High-Tech TM4000PlusII specifications (main unit 330 W x 614 D x 547 H mm, 54 kg; pump 144 x 270 x 216 mm); Hitachi's EDS brochure (AZtecOne analyser 290 x 260 x 330 mm); look from Hitachi's photo; envelope and the 17 cm drawer travel cross-checked against ac-dev-lab #132's TM4000II model",
+  "model_mm": [
+   832,
+   628,
+   547
+  ],
+  "published_mm": [
+   330.0,
+   614.0,
+   547.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "pip": {
+  "title": "Indentation plastometer (PIP)",
+  "model": "Plastometrex PLX-Benchtop",
+  "source": "Plastometrex's product render, brochure and FAQ; Illinois MRL's instrument page and a published SOP for loading; no published dimensions, so the envelope is scaled from photos",
+  "model_mm": [
+   524,
+   507,
+   680
+  ],
+  "published_mm": [
+   500.0,
+   500.0,
+   680.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "openflexure_v7": {
+  "title": "Microscope, reflection",
+  "model": "OpenFlexure Microscope v7",
+  "source": "OpenFlexure Microscope v7.0.0-beta5's OpenSCAD (commit 4828ffa5, CERN-OHL-S-2.0), exported assembled with its own rendering modules; reflection optics placed from the .scad sources",
+  "model_mm": [
+   171,
+   139,
+   169
+  ],
+  "published_mm": [
+   171,
+   139,
+   169
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "openflexure_delta": {
+  "title": "Microscope, reflection",
+  "model": "OpenFlexure Delta Stage",
+  "source": "OpenFlexure Delta Stage v1.2.3's OpenSCAD (commit d882d18b, CERN-OHL-1.2), exported with its build.sh options for reflection illumination; assembled from the .scad sources",
+  "model_mm": [
+   166,
+   156,
+   173
+  ],
+  "published_mm": [
+   166,
+   156,
+   173
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "nanoindenter": {
+  "title": "Nanoindenter",
+  "model": "KLA iMicro",
+  "source": "KLA Instruments iMicro / iNano product photos and data sheet; envelope in SPECS",
+  "model_mm": [
+   543,
+   522,
+   521
+  ],
+  "published_mm": [
+   540.0,
+   520.0,
+   520.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "polisher": {
+  "title": "Metallographic grinder-polisher",
+  "model": "Buehler EcoMet 30 semi-automatic",
+  "source": "Buehler EcoMet 30 instruction manual (drawing 488 x 638 x 650 mm, 75 kg, platens, services); look from Buehler's photos",
+  "model_mm": [
+   490,
+   652,
+   625
+  ],
+  "published_mm": [
+   488.0,
+   638.0,
+   650.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "furnace": {
+  "title": "Heat treatment and ageing furnace",
+  "model": "Nabertherm NAT 15/65",
+  "source": "Nabertherm forced-convection chamber furnaces, tabletop (NAT 15/65: 470 x 790 x 460 mm, 60 kg, 650 C); look from Nabertherm's photos",
+  "model_mm": [
+   470,
+   820,
+   510
+  ],
+  "published_mm": [
+   470.0,
+   790.0,
+   460.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "mastersizer": {
+  "title": "Laser diffraction particle sizer",
+  "model": "Malvern Mastersizer 3000 + Aero S",
+  "source": "Malvern Panalytical Mastersizer 3000 and 3000+ brochures (bench 690 x 300 x 450 mm, 30 kg; Aero S 260 x 180 x 380 mm, 10.5 kg); look from Malvern's product photos",
+  "model_mm": [
+   1084,
+   550,
+   482
+  ],
+  "published_mm": [
+   690.0,
+   300.0,
+   450.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "instron_small": {
+  "title": "Universal testing machine, tabletop",
+  "model": "Instron 68SC-2",
+  "source": "Instron 6800 Series brochure (68SC-1/-2: 1410 x 460 x 615 mm, 62 kg, 100 mm throat); look from Instron's renders",
+  "model_mm": [
+   480,
+   635,
+   1410
+  ],
+  "published_mm": [
+   460.0,
+   615.0,
+   1410.0
+  ],
+  "fits_tray": false,
+  "floor": true,
+  "where": "beside the VLM"
+ },
+ "instron_floor": {
+  "title": "Universal testing machine, floor model",
+  "model": "Instron 68FM-100",
+  "source": "Instron 6800 Series floor-model sheet (2287 x 1140 x 786 mm, 799 kg, 1494 mm test space, 575 mm between columns); look from Instron's photos",
+  "model_mm": [
+   1575,
+   796,
+   2287
+  ],
+  "published_mm": [
+   1140.0,
+   786.0,
+   2287.0
+  ],
+  "fits_tray": false,
+  "floor": true,
+  "where": "beside the VLM"
+ },
+ "wire_edm": {
+  "title": "Wire EDM",
+  "model": "FANUC ROBOCUT alpha-C400iC",
+  "source": "FANUC America ROBOCUT alpha-C400iC data sheet and floor plan; look from FANUC's photo",
+  "model_mm": [
+   2120,
+   2544,
+   1970
+  ],
+  "published_mm": [
+   2120.0,
+   2540.0,
+   1970.0
+  ],
+  "fits_tray": false,
+  "floor": true,
+  "where": "beside the VLM"
+ },
+ "glovebox": {
+  "title": "Inert glovebox with automatic antechamber",
+  "model": "Inert PureLab HE 2GB",
+  "source": "Inert PureLab HE 2GB drawing (NIST's copy of Inert's manual); the automatic antechamber after DAL #130 and DAL PR #185",
+  "model_mm": [
+   2305,
+   804,
+   1795
+  ],
+  "published_mm": [
+   2005.0,
+   834.0,
+   1794.0
+  ],
+  "fits_tray": false,
+  "floor": true,
+  "where": "beside the VLM"
+ },
+ "rail": {
+  "title": "Backup: a floor rail for the arm",
+  "model": "Vention robot 7th axis",
+  "source": "Vention design 337010 and its part pages (beam, guides, carriage plate) and actuator docs",
+  "model_mm": [
+   4105,
+   523,
+   800
+  ],
+  "published_mm": [
+   4000.0,
+   628.0,
+   800.0
+  ],
+  "fits_tray": false,
+  "floor": true,
+  "where": "beside the VLM"
+ }
+}

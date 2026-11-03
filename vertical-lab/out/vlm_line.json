@@ -1,0 +1,263 @@
+{
+ "name": "vlm_line",
+ "fps": 15,
+ "n_frames": 1046,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/7",
+   "caption": "The backup layout: the alloy equipment in a line with the VLM, every front facing the same way, along a floor rail. The VLM now holds six trays: round 2's three and three for characterization.",
+   "start_frame": 0,
+   "end_frame": 83
+  },
+  {
+   "label": "2/7",
+   "caption": "The cladding drawn see-through: trays D, E and F take the instruments that fit through the 727.5 mm opening.",
+   "start_frame": 84,
+   "end_frame": 128
+  },
+  {
+   "label": "3/7",
+   "caption": "Tray D comes to the opening.",
+   "start_frame": 129,
+   "end_frame": 139
+  },
+  {
+   "label": "3/7",
+   "caption": "Tray D comes to the opening.",
+   "start_frame": 140,
+   "end_frame": 161
+  },
+  {
+   "label": "3/7",
+   "caption": "Tray D comes to the opening.",
+   "start_frame": 162,
+   "end_frame": 172
+  },
+  {
+   "label": "3/7",
+   "caption": "Tray D comes to the opening.",
+   "start_frame": 173,
+   "end_frame": 178
+  },
+  {
+   "label": "3/7",
+   "caption": "Tray D comes to the opening.",
+   "start_frame": 179,
+   "end_frame": 198
+  },
+  {
+   "label": "3/7",
+   "caption": "Tray D comes to the opening.",
+   "start_frame": 199,
+   "end_frame": 204
+  },
+  {
+   "label": "3/7",
+   "caption": "Tray D: the Hitachi TM4000PlusII SEM (EDS; EBSD proposed), the Rigaku MiniFlex XRD and the two OpenFlexure microscopes, in reflection.",
+   "start_frame": 208,
+   "end_frame": 258
+  },
+  {
+   "label": "3/7",
+   "caption": "Tray D goes back to its slot (R1), where it has power.",
+   "start_frame": 259,
+   "end_frame": 264
+  },
+  {
+   "label": "3/7",
+   "caption": "Tray D goes back to its slot (R1), where it has power.",
+   "start_frame": 265,
+   "end_frame": 284
+  },
+  {
+   "label": "3/7",
+   "caption": "Tray D goes back to its slot (R1), where it has power.",
+   "start_frame": 285,
+   "end_frame": 292
+  },
+  {
+   "label": "3/7",
+   "caption": "Tray D goes back to its slot (R1), where it has power.",
+   "start_frame": 293,
+   "end_frame": 303
+  },
+  {
+   "label": "3/7",
+   "caption": "Tray D goes back to its slot (R1), where it has power.",
+   "start_frame": 304,
+   "end_frame": 323
+  },
+  {
+   "label": "3/7",
+   "caption": "Tray E comes to the opening.",
+   "start_frame": 326,
+   "end_frame": 343
+  },
+  {
+   "label": "3/7",
+   "caption": "Tray E comes to the opening.",
+   "start_frame": 344,
+   "end_frame": 365
+  },
+  {
+   "label": "3/7",
+   "caption": "Tray E comes to the opening.",
+   "start_frame": 366,
+   "end_frame": 379
+  },
+  {
+   "label": "3/7",
+   "caption": "Tray E comes to the opening.",
+   "start_frame": 380,
+   "end_frame": 385
+  },
+  {
+   "label": "3/7",
+   "caption": "Tray E comes to the opening.",
+   "start_frame": 386,
+   "end_frame": 405
+  },
+  {
+   "label": "3/7",
+   "caption": "Tray E comes to the opening.",
+   "start_frame": 406,
+   "end_frame": 411
+  },
+  {
+   "label": "3/7",
+   "caption": "Tray E: the Plastometrex PLX-Benchtop (PIP), the KLA iMicro nanoindenter and the Malvern Mastersizer 3000 with its Aero S.",
+   "start_frame": 415,
+   "end_frame": 465
+  },
+  {
+   "label": "3/7",
+   "caption": "Tray E goes back to its slot (R4), where it has power.",
+   "start_frame": 466,
+   "end_frame": 471
+  },
+  {
+   "label": "3/7",
+   "caption": "Tray E goes back to its slot (R4), where it has power.",
+   "start_frame": 472,
+   "end_frame": 491
+  },
+  {
+   "label": "3/7",
+   "caption": "Tray E goes back to its slot (R4), where it has power.",
+   "start_frame": 492,
+   "end_frame": 499
+  },
+  {
+   "label": "3/7",
+   "caption": "Tray E goes back to its slot (R4), where it has power.",
+   "start_frame": 500,
+   "end_frame": 513
+  },
+  {
+   "label": "3/7",
+   "caption": "Tray E goes back to its slot (R4), where it has power.",
+   "start_frame": 514,
+   "end_frame": 533
+  },
+  {
+   "label": "3/7",
+   "caption": "Tray F comes to the opening.",
+   "start_frame": 536,
+   "end_frame": 557
+  },
+  {
+   "label": "3/7",
+   "caption": "Tray F comes to the opening.",
+   "start_frame": 558,
+   "end_frame": 571
+  },
+  {
+   "label": "3/7",
+   "caption": "Tray F comes to the opening.",
+   "start_frame": 572,
+   "end_frame": 577
+  },
+  {
+   "label": "3/7",
+   "caption": "Tray F comes to the opening.",
+   "start_frame": 578,
+   "end_frame": 597
+  },
+  {
+   "label": "3/7",
+   "caption": "Tray F comes to the opening.",
+   "start_frame": 598,
+   "end_frame": 603
+  },
+  {
+   "label": "3/7",
+   "caption": "Tray F: the Buehler EcoMet 30 polisher and the Nabertherm NAT 15/65 furnace.",
+   "start_frame": 607,
+   "end_frame": 657
+  },
+  {
+   "label": "3/7",
+   "caption": "Tray F goes back to its slot (F2), where it has power.",
+   "start_frame": 658,
+   "end_frame": 663
+  },
+  {
+   "label": "3/7",
+   "caption": "Tray F goes back to its slot (F2), where it has power.",
+   "start_frame": 664,
+   "end_frame": 683
+  },
+  {
+   "label": "3/7",
+   "caption": "Tray F goes back to its slot (F2), where it has power.",
+   "start_frame": 684,
+   "end_frame": 691
+  },
+  {
+   "label": "3/7",
+   "caption": "Tray F goes back to its slot (F2), where it has power.",
+   "start_frame": 692,
+   "end_frame": 705
+  },
+  {
+   "label": "3/7",
+   "caption": "Tray F goes back to its slot (F2), where it has power.",
+   "start_frame": 706,
+   "end_frame": 725
+  },
+  {
+   "label": "4/7",
+   "caption": "Left of the VLM: the inert glovebox, its automatic antechamber facing along the line, and the rePowder ultrasonic atomizer.",
+   "start_frame": 728,
+   "end_frame": 790
+  },
+  {
+   "label": "5/7",
+   "caption": "Right of it: the Aconity MIDI, the floor and tabletop Instrons (neither fits a tray: the shortest Instron frame is 1020 mm tall) and the wire EDM that cuts parts off their build plates.",
+   "start_frame": 791,
+   "end_frame": 859
+  },
+  {
+   "label": "6/7",
+   "caption": "The backup to the mobile base: a Vention rack-and-pinion seventh axis along the fronts, the UR10e on its carriage at 800 mm, as on the MiR250. It can carry the arm from machine to machine.",
+   "start_frame": 860,
+   "end_frame": 919
+  },
+  {
+   "label": "6/7",
+   "caption": "Not used by any workflow yet: it parks at the VLM's opening, where the MiR250 parks.",
+   "start_frame": 920,
+   "end_frame": 973
+  },
+  {
+   "label": "7/7",
+   "caption": "The whole line, about 17 m along the rail.",
+   "start_frame": 974,
+   "end_frame": 1045
+  }
+ ]
+}

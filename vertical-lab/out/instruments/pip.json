@@ -1,0 +1,35 @@
+{
+ "name": "instruments/pip",
+ "fps": 15,
+ "n_frames": 173,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/4",
+   "caption": "No door or guard: a flat sample (here a 40 mm square cut from a print; 3 x 3 x 1.5 mm at the least) goes on the platen by hand, unclamped.",
+   "start_frame": 0,
+   "end_frame": 52
+  },
+  {
+   "label": "2/4",
+   "caption": "Hands clear: the crosshead drives the spherical indenter in, an indent 0.25-1 mm wide.",
+   "start_frame": 53,
+   "end_frame": 87
+  },
+  {
+   "label": "3/4",
+   "caption": "It lifts, and the profilometer stylus sweeps across the indent to map its shape.",
+   "start_frame": 88,
+   "end_frame": 131
+  },
+  {
+   "label": "4/4",
+   "caption": "CORSICA fits a stress-strain curve to that profile in minutes. The sample comes off.",
+   "start_frame": 132,
+   "end_frame": 172
+  }
+ ]
+}

@@ -91,7 +91,7 @@ def place_floor(inst_bbox, x: float) -> np.ndarray:
 
 
 def build(name: str, data: dict, idata: dict):
-    sc = Scene(name, TITLE)
+    sc = Scene(name, TITLE, gif=False)          # the GIF is made from the MP4 (mp4_to_gif)
     sc.cam = list(CAM_LINE)
     L = A.Lab(sc, data, robot=False)
     import pyvista as pv
@@ -147,6 +147,22 @@ def lab_at(lbls, fy=0.10):
             for i, (t, xyz, _) in enumerate(lbls)]
 
 
+def mp4_to_gif(mp4, gif, fps=6, width=720, lossy=80):
+    """The GIF from the MP4: 720 px wide at 6 fps, one palette, gifsicle --lossy. A 70 s movie at the scenes' own GIF
+    settings comes out near 15 MB."""
+    import subprocess
+    import tempfile
+    with tempfile.TemporaryDirectory() as tmp:
+        pal = f"{tmp}/pal.png"
+        vf = f"fps={fps},scale={width}:-1:flags=lanczos"
+        subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(mp4), "-vf",
+                        f"{vf},palettegen=max_colors=128:stats_mode=diff", pal], check=True)
+        subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(mp4), "-i", pal, "-lavfi",
+                        f"{vf}[x];[x][1:v]paletteuse=dither=none:diff_mode=rectangle", f"{tmp}/raw.gif"], check=True)
+        subprocess.run(["gifsicle", "-O3", f"--lossy={lossy}", "-o", str(gif), f"{tmp}/raw.gif"], check=True)
+    return f"{gif}: {gif.stat().st_size / 1e6:.1f} MB"
+
+
 def movie(data, idata):
     sc, L, rigs = build("vlm_line", data, idata)
     rail = rigs["rail"]
@@ -197,6 +213,9 @@ def movie(data, idata):
 
 
 if __name__ == "__main__":
+    from scene import OUT, PREVIEW
     data = lab.meshes()
     idata = tour.load()
     print(movie(data, idata), flush=True)
+    if not PREVIEW:
+        print(mp4_to_gif(OUT / "mp4" / "vlm_line.mp4", OUT / "vlm_line.gif"), flush=True)
