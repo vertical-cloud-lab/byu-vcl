@@ -20,7 +20,9 @@ spins are in
 the Hall input counts pulses, but the fan didn't start. To go back, write the 10-07 image
 with the `avrdude` line at the end of this file.
 
-## 2026-10-19: a stirrer image is built and committed but **not flashed** (flashed 2026-11-03)
+## 2026-10-19: a stirrer image is built and committed but **not flashed**
+
+Flashed on 2026-11-03 (section above).
 
 `panda_vcl_p20gen2_tic796_fastmove_spread_stir_20261019.hex` is the 10-07 image plus the
 single-vial magnetic stirrer
