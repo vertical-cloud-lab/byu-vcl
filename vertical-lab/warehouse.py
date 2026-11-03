@@ -455,6 +455,8 @@ def auto(sc: Scene, cam, items, dy=0.10):
 def floor_labels(F, keys, have):
     out = []
     for k in keys:
+        if k not in F.where:                     # a spot with nothing on it yet (e.g. "hip" before its module exists)
+            continue
         t = NAMES[k] if k not in RESERVED or k in have else RESERVED[k][0]
         out.append((t, F.where[k]))
     return out
@@ -655,7 +657,7 @@ def sway() -> dict:
                           lever_mm=UR10E["reach_mm"], mass_on_top_kg=mass, com_above_flange_mm=e_com,
                           sources=["UR10e user manual SW5.26, 6.2 Dimensioning the Stand (loads x 2.5; >= 45 Hz)",
                                    "UR10e data sheet Oct 2026 (12.5 kg, 1300 mm, 33.3 kg, +-0.05 mm)",
-                                   "Robotiq 2F-85: 0.925 kg"]),
+                                   "Robotiq 2F-85: about 0.9 kg (Robotiq; 0.89-0.925 kg in listings)"]),
            "pedestal": []}
     for hname, Lp in heights.items():
         for sname, Ii in sections.items():
