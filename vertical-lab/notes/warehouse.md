@@ -19,8 +19,8 @@ Links are relative to `vertical-lab/`, so this section can go into the README as
 - **The glovebox is turned** so its automatic antechamber faces the aisle and the arm. Its glove ports face west,
   where people work.
 - **Space is kept** for a DED machine and a packaging station (keys `ded` and `packaging`), and for a hot isostatic
-  press (`hip`). A model takes its spot when `tour.load()` returns it. Until then the spot is a labelled footprint,
-  sized as a guess (3.0 × 2.4 m and 2.4 × 1.5 m).
+  press (`hip`). A model takes its spot when `tour.load()` returns it. Until then the DED and packaging spots are
+  labelled footprints, sized as a guess (3.0 × 2.4 m and 2.4 × 1.5 m), and the HIP's is left empty.
 - **Pallet racking** stands round three walls, so it reads as a warehouse. It is typical selective racking, not a
   quote: 108 in beams, 42 in frames, 16 ft uprights, 48 × 40 in pallets.
 
@@ -65,6 +65,10 @@ is off, but would the pedestal sway? Three options, each carrying the UR10e's ba
 - **A. A low rail with a pedestal.** The carriage is near the floor and a steel tube lifts the arm.
 - **B. The beam-height rail of round 3.** The arm bolts straight onto Vention's carriage.
 - **C. A MiR250.** No rail.
+
+![Carrying a UR10e at 800 mm, three ways](out/rail_vs_amr.png)
+
+[`out/rail_vs_amr.png`](out/rail_vs_amr.png) is drawn by `python3 warehouse.py compare`, with the same arm pose on each.
 
 **The loads.** UR's manual gives the loads the arm puts into whatever it stands on (UR10e user manual, software 5.26,
 6.2 "Dimensioning the Stand"). Its table is the worst case multiplied by a safety factor of 2.5:
@@ -207,6 +211,7 @@ called as `hook(sc, L)` instead, and should return `[(label, xyz)]`.
 
 ```bash
 python3 warehouse.py sway                                                    # -> out/rail_vs_amr.json
+xvfb-run --server-num=N -s "-screen 0 1280x720x24" python3 warehouse.py compare   # -> out/rail_vs_amr.png
 xvfb-run --server-num=N -s "-screen 0 1280x720x24" python3 warehouse.py     # -> out/warehouse.gif, out/mp4/warehouse.mp4
 python3 setup_lab.py fit                                                     # what loads where, and whether it fits
 xvfb-run --server-num=N -s "-screen 0 1280x720x24" python3 setup_lab.py     # -> out/setup_lab.gif, out/mp4/setup_lab.mp4
