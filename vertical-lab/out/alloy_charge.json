@@ -2,7 +2,7 @@
  "volumes_cm3": {
   "cup": 11.887,
   "plug": 1.173,
-  "cavity": 4.803,
+  "cavity": 4.903,
   "slug": 18.099
  },
  "runs": {
@@ -15,7 +15,7 @@
      "plug_g": 3.17,
      "powder_g": 3.92,
      "fill_mm": 27.7,
-     "headspace_mm": 9.6
+     "headspace_mm": 10.4
     },
     {
      "cup": "5N Al cup + plug",
@@ -24,13 +24,13 @@
      "plug_g": 3.17,
      "powder_g": 3.92,
      "fill_mm": 27.7,
-     "headspace_mm": 9.6
+     "headspace_mm": 10.4
     }
    ],
    "charge_g": 78.3,
    "designed_wt_pct": {
-    "Al": 89.99,
-    "Si": 10.01
+    "Al": 90.0,
+    "Si": 10.0
    }
   },
   "Cu-10Ni": {
@@ -42,7 +42,7 @@
      "plug_g": 10.48,
      "powder_g": 12.97,
      "fill_mm": 20.6,
-     "headspace_mm": 16.7
+     "headspace_mm": 17.5
     },
     {
      "cup": "OFE Cu (C10100) cup + plug",
@@ -51,10 +51,10 @@
      "plug_g": 10.48,
      "powder_g": 12.97,
      "fill_mm": 20.6,
-     "headspace_mm": 16.7
+     "headspace_mm": 17.5
     }
    ],
-   "charge_g": 259.4,
+   "charge_g": 259.5,
    "designed_wt_pct": {
     "Cu": 90.0,
     "Ni": 10.0
