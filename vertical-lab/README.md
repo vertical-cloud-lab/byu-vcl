@@ -13,13 +13,13 @@ framework, [`scene.py`](scene.py), is `atomizer-training/viz3d/scene.py` from #1
 |---|---|---|
 | **Assembly**: base, frame, columns, extractor, trays, then the cladding goes on, opaque | [`out/vlm_assembly.gif`](out/vlm_assembly.gif) | [`out/mp4/vlm_assembly.mp4`](out/mp4/vlm_assembly.mp4) |
 | **Loading**: the closed machine, then see-through; every piece of equipment goes onto its tray through the opening, one at a time; the arm rolls up | [`out/vlm_loading.gif`](out/vlm_loading.gif) | [`out/mp4/vlm_loading.mp4`](out/mp4/vlm_loading.mp4) |
-| **Workflow**: the arm doses a powder with the multi-doser and takes the vial to the CubXL, which adds liquid | [`out/vlm_workflow.gif`](out/vlm_workflow.gif) | [`out/mp4/vlm_workflow.mp4`](out/mp4/vlm_workflow.mp4) |
+| **Workflow** (round 2; for the alloy work, superseded by [the alloy route](#the-alloy-route-start-to-finish-charge-cups-to-tensile-bar), where the vial is the lab's charge cups): the arm doses a powder with the multi-doser and takes the vial to the CubXL, which adds liquid | [`out/vlm_workflow.gif`](out/vlm_workflow.gif) | [`out/mp4/vlm_workflow.mp4`](out/mp4/vlm_workflow.mp4) |
 | **Disassembly**: unloaded one piece at a time, then taken apart | [`out/vlm_disassembly.gif`](out/vlm_disassembly.gif) | [`out/mp4/vlm_disassembly.mp4`](out/mp4/vlm_disassembly.mp4) |
 | **All four**, one after the other (4 min 5 s) | [on YouTube](https://www.youtube.com/watch?v=ro-pUo0ie_M) (unlisted, BYU Vertical Cloud Lab channel) | [`out/mp4/vertical_lab_full.mp4`](out/mp4/vertical_lab_full.mp4) |
 
-![Workflow](out/vlm_workflow.gif)
+![The alloy route, chapter 1: the lab's charge cups dosed and plugged on tray B](out/alloy_charge.gif)
 
-![The dose: module 6 tilted, the others see-through](out/vlm_workflow_dose.png)
+![The dose into a charge cup, in half section](out/alloy_charge_dose.png)
 
 ![Loading](out/vlm_loading.gif)
 
@@ -531,6 +531,49 @@ Earlier rounds, on YouTube (unlisted):
 - [trays D–F and the line](https://www.youtube.com/watch?v=oWM3fCZiwRs);
 - [the fabrication tools](https://www.youtube.com/watch?v=HYN9dYyRkrQ);
 - [trays G–I](https://www.youtube.com/watch?v=5q5Pv2Mhbn8).
+
+## The alloy route, start to finish: charge cups to tensile bar
+
+Asked for in [PR #318](https://github.com/vertical-cloud-lab/byu-vcl/pull/318): no vial. The atomizer is charged with
+the lab's own **charge cups** (#222), in **high-purity Al and Cu**, and putting the plugs into them is part of the
+route. Four chapters, each rendered on its own and joined by [`alloy_route.py`](alloy_route.py) into
+[`out/mp4/alloy_route.mp4`](out/mp4/alloy_route.mp4), a title card before each:
+
+<!-- alloy-route-table -->
+| Chapter | Code | GIF | MP4 | Notes |
+|---|---|---|---|---|
+| **1. The charge**: cups filled by the multi-doser, plugs pressed in, on tray B | [`alloy_charge.py`](alloy_charge.py), [`charge.py`](charge.py) | [GIF](out/alloy_charge.gif) | [MP4](out/mp4/alloy_charge.mp4) | [`notes/alloy_charge.md`](notes/alloy_charge.md) |
+| **2. Melt and atomize**: the Al cups in the rePowder | [`alloy_atomize.py`](alloy_atomize.py) | [GIF](out/alloy_atomize.gif) | [MP4](out/mp4/alloy_atomize.mp4) | [`notes/alloy_atomize.md`](notes/alloy_atomize.md) |
+| **3. Sieve and print**: the AS 200 stack, then the Aconity MIDI | [`alloy_print.py`](alloy_print.py) | [GIF](out/alloy_print.gif) | [MP4](out/mp4/alloy_print.mp4) | [`notes/alloy_print.md`](notes/alloy_print.md) |
+| **4. Cut and test**: the plate to the wire EDM, a bar to the 68FM-100 (round 4, above) | [`alloy_workflow.py`](alloy_workflow.py) | [GIF](out/alloy_workflow.gif) | [MP4](out/mp4/alloy_workflow.mp4) | [`notes/alloy_workflow.md`](notes/alloy_workflow.md) |
+<!-- /alloy-route-table -->
+
+![The plug pressed home in #222's steel sleeve, in half section](out/alloy_charge_press.png)
+
+**The charge.** The cup, the vented plug and the steel press sleeve (F1) are #222's own `charge_cad.py` profiles,
+dimension for dimension. Tray B carries:
+- a charge rack, cups in front and plugs behind;
+- a plug press with a shuttle nest and an ejector (assumed);
+- the multi-doser.
+
+Two runs are made up, from [`out/alloy_recipe.json`](out/alloy_recipe.json):
+
+| Run | Cups and plugs | Powder in each cup | Charge | Designed |
+|---|---|---|---|---|
+| this one | 2 × **5N Al** (DAL #152's rod) | Si, 3.92 g | 78.3 g | Al-10Si, the Si of the AlSi10Mg printed in chapter 4 |
+| the next one | 2 × **oxygen-free Cu**, C10100 (DAL #162) | Ni, 12.97 g | 259.5 g | 90/10 Cu-Ni, the Navy's seawater alloy |
+
+The Al cups ride the MiR250 to the rePowder. The Cu cups go back on the rack for their own run.
+
+What chapter 1 showed:
+- **A Cu cup is over the doser's load cell.** The cup alone is 106 g, 119 g with its Ni, and the rig's TAL221 is rated
+  100 g.
+- **The doser's 18 mm funnel spout is wider than the cup's 12.7 mm bore.** A cup station needs a narrower spout and a
+  deeper holder on the load cell. The cup is also captured between the holder and the funnel, as round 2's vial was.
+- **F1 is as long as the cup**, so a pressed cup is entirely inside it. The press needs an ejector to lift the cup out.
+  The arm sets the plug from above, so the nest must slide out from under the ram to be loaded.
+- **The arm always holds a cup level**, fingers closing sideways, so it never tilts. That is why the rack has its cups
+  in front.
 
 ## The workflow
 

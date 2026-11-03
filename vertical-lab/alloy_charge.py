@@ -248,7 +248,7 @@ def movie():
 
     def cycle(i, fast):
         metal, pw = SLOTS[i]
-        f = 0.38 if fast else 1.0
+        f = 0.30 if fast else 1.0
         st = f"{2 if i == 0 else 6}/{n}"
         # -------------------------------------------------- cup to the doser
         if not fast:
@@ -379,7 +379,7 @@ def movie():
             L.note(3, "Press", "nest in")
         nest_in = (sc.world("press") @ np.r_[0.0, C.PR["ram_y"], C.PR["nest_top"], 1.0])[:3]
         sc.step(st, cap, 1.0 * f, K.to(nest_y=C.PR["ram_y"]), hold=0.05,
-                cam_to=None if fast else cam_near(nest_in, (70.0, -260.0, 70.0), (0.0, 0.0, 42.0)))
+                cam_to=None if fast else cam_near(nest_in, (55.0, -205.0, 52.0), (0.0, 0.0, 44.0)))
         if not fast:
             K.cut(i, True, sleeve=True)
         plug_top0 = C.PR["sleeve_top"] - lead + C.PLUG_L
@@ -462,11 +462,11 @@ def movie():
     # ------------------------------------------------------------------ 7. tray B up; ready for the atomizer
     cap = (f"Made up: two Al-10Si cups, {al['charge_g']:.1f} g together, on the MiR250 for the rePowder, and two "
            f"90/10 Cu-Ni cups on the rack, {cu['charge_g']:.1f} g, for their own run (designed compositions, if every "
-           f"gram dissolves; out/alloy_charge.json). Tray B goes back into storage.")
+           f"gram dissolves; out/alloy_recipe.json). Tray B goes back into storage.")
     L.store("B", f"7/{n}", cap, cam=CAM_AMR)
     L.note(0, "Arm", "parked; next: the atomizer")
     sc.step(f"7/{n}", cap, 1.6, None, hold=2.4, still=True,
-            cam_to=cam_near(K.carrier_seat(0) + (17, 0, 0), (520.0, -700.0, 380.0), (0.0, 0.0, 30.0)),
+            cam_to=cam_near(K.carrier_seat(0) + (17, 0, 0), (-560.0, -620.0, 330.0), (0.0, 0.0, 25.0)),
             labels=[("two charged 5N Al cups, for the rePowder", K.carrier_seat(0) + (17, 0, 90), (0.30, 0.25))])
     print(f"highest forearm/wrist point {rb.max_z_world:.0f} mm; opening top {V.Z_OPEN_TOP:.0f} mm", flush=True)
     return sc.save()
