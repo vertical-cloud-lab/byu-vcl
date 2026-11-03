@@ -19,7 +19,7 @@ delivered a frame from the A1 mini, and the H2D was offline.
 | 23:41:47 | Device page: Studio picked the A1 mini by itself. Idle, no HMS alert, nozzle and bed 21 °C, last job `compact_stirrer_parts_2` Finished |
 | 23:42–23:47 | Live view: *"Loading failed. Please check the network and try again. [2:2]"* on every try. GStreamer `plugins-bad` added and Studio restarted, which kept the login, so no second code was needed. No change |
 | 23:48 | H2D ("BYU VCL H2D - Théoden") selected: *"Failed to connect to the printer"* |
-| ~23:49 | Someone else's job, `stub_holder_A1mini_blackPLA` (90 layers, 53 min 32 s, 30.90 g), started on the A1 mini. Not from this run |
+| ~23:49 | `stub_holder_A1mini_blackPLA` (90 layers, 53 min 32 s, 30.90 g) started on the A1 mini. It was sent by another `@claude-print` session, [run 41541932926](https://github.com/vertical-cloud-lab/byu-vcl/actions/runs/41541932926) on [PR 95](https://github.com/vertical-cloud-lab/byu-vcl/pull/95), which had been running since 23:00. Not from this run |
 | 23:53 | Prepare page: *Sync info* switched the preset from "Bambu Lab A1" to the A1 mini and read a 0.4 mm nozzle |
 | 23:54:24 | `tube_rack_2x8.stl` sliced (Ctrl+R; *Print plate* never pressed) |
 | 23:56–00:06 | Live view retried 20 more times, with a note in the thread asking anyone watching the A1 mini's camera to close it. Never a frame. The Storage tab listed the SD card's timelapses through the same cloud tunnel |
@@ -64,15 +64,24 @@ It is `resources/images/liveview_bg.png`, bundled with Studio.
   failed.
 - **Not the plug-in.** Its files are dated 14 Aug, the same as in the runs that got frames on
   2026-10-23 and 2026-10-28.
-- **Most likely: another viewer.** Studio's source has, for the A1 mini's error code 1:
-  "Multi-device/client simultaneous liveview is not supported. Please close the liveview on
-  other devices/clients and try again." This run was a live demo in the lab, and a print
-  started on the A1 mini mid-run. Someone watching its camera in Bambu Handy or Studio would
-  hold the only slot. Studio might then have reported code 1 rather than a timeout, so this
-  is a guess, not a finding.
+- **Most likely: another viewer, the PR 95 print run.** Studio's source has, for error code 1
+  on a stream that was playing: "Multi-device/client simultaneous liveview is not supported.
+  Please close the liveview on other devices/clients and try again." From 23:00 another
+  `@claude-print` session ([run 41541932926](https://github.com/vertical-cloud-lab/byu-vcl/actions/runs/41541932926),
+  [PR 95](https://github.com/vertical-cloud-lab/byu-vcl/pull/95)) was logged in to the same
+  account and working on the same A1 mini. It sent its plate at about 23:49 and then watched the
+  print, which in a print run goes through Studio's live view. All of this run's tries,
+  23:42–00:06, overlapped with it. Studio might have reported code 1 rather than a timeout, so
+  this is still a likely cause, not a confirmed one. **The reverse may also have happened:** each
+  try here may have knocked that session's live view off, so blank or dropped frames on PR 95 in
+  that window are probably this run's doing.
 - **No fallback still.** Studio's "Printer Preview" (`start_device_image_flow`) needs
   `is_support_liveview_preview`. No preview with its watermark appeared, so the A1 mini either
   lacks it or the download failed.
 
-Next time, close every other view of the printer's camera before the run starts. In a `@claude`
-run, a LAN frame from a Pi doesn't depend on Bambu's cloud stream at all.
+Next time:
+- **Check for another print run first.** `gh run list --workflow claude-print.yml` shows any
+  `@claude-print` session already in progress. While one is printing on a printer, a second run
+  should stay off that printer's camera rather than retry the live view in a loop.
+- Close every other view of the printer's camera before the run starts.
+- In a plain `@claude` run, a LAN frame from a Pi doesn't depend on Bambu's cloud stream at all.
