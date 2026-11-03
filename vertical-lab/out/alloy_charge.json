@@ -1,0 +1,79 @@
+{
+ "alloy": "nickel aluminium bronze, C63000 (ASTM B150: Cu 78-85, Al 9-11, Ni 4-5.5, Fe 2-4 wt%)",
+ "volumes_cm3": {
+  "cup": 11.887,
+  "plug": 1.173,
+  "cavity": 4.803,
+  "slug": 18.099
+ },
+ "cups": [
+  {
+   "cup": "OFE Cu (C10100) cup + plug",
+   "powder": "Ni",
+   "cup_g": 106.27,
+   "plug_g": 10.48,
+   "powder_g": 20.24,
+   "fill_mm": 32.1
+  },
+  {
+   "cup": "OFE Cu (C10100) cup + plug",
+   "powder": "Fe",
+   "cup_g": 106.27,
+   "plug_g": 10.48,
+   "powder_g": 14.25,
+   "fill_mm": 25.7
+  },
+  {
+   "cup": "OFE Cu (C10100) cup + plug",
+   "powder": "Cu",
+   "cup_g": 106.27,
+   "plug_g": 10.48,
+   "powder_g": 23.54,
+   "fill_mm": 37.3
+  },
+  {
+   "cup": "5N Al cup + plug",
+   "powder": "Al",
+   "cup_g": 32.08,
+   "plug_g": 3.17,
+   "powder_g": 7.69,
+   "fill_mm": 37.3
+  }
+ ],
+ "charge_g": 451.2,
+ "designed_wt_pct": {
+  "Cu": 82.84,
+  "Ni": 4.49,
+  "Fe": 3.16,
+  "Al": 9.51
+ },
+ "in_spec": {
+  "Cu": true,
+  "Al": true,
+  "Ni": true,
+  "Fe": true
+ },
+ "densities": {
+  "Ni": {
+   "tapped_g_cm3": 4.9,
+   "source": "assumed: 55 % of 8.91, a gas-atomized spherical powder tapped"
+  },
+  "Fe": {
+   "tapped_g_cm3": 4.3,
+   "source": "assumed: 55 % of 7.87"
+  },
+  "Cu": {
+   "tapped_g_cm3": 4.9,
+   "source": "assumed: 55 % of 8.96"
+  },
+  "Al": {
+   "tapped_g_cm3": 1.6,
+   "source": "#222: AlSi10Mg tapped by hand, 1.60"
+  },
+  "Si": {
+   "tapped_g_cm3": 1.1,
+   "source": "#222: irregular Si tapped, 1.10"
+  }
+ },
+ "note": "Designed composition: what the charge gives if every gram dissolves and none is lost. Al and Mg oxidise and evaporate in a vacuum furnace, so ICP/EDS on the powder measures recovery. Cup and plug volumes are #222's CAD; tapped densities of Ni, Fe and Cu are assumed."
+}
