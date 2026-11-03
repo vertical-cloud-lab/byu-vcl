@@ -75,7 +75,7 @@ def tour_one(inst, entries: dict) -> str:
     (OUT / "mp4" / DIR).mkdir(parents=True, exist_ok=True)
     sc = Scene(f"{DIR}/{inst.key}", f"{inst.title}: {inst.model}")
     sc.intro = 0.6
-    tour.studio(sc)
+    tour.studio(sc, shadow_of=inst.bbox())
     rig = tour.Rig(sc, inst, entries, f"{inst.key}:")
     bb = inst.bbox()
     tall = (bb[5] - bb[4]) > 1.3 * max(bb[1] - bb[0], bb[3] - bb[2])
@@ -94,7 +94,7 @@ def tour_one(inst, entries: dict) -> str:
 def still(keys) -> None:
     for key, (inst, ents) in load(keys or None).items():
         sc = Scene(f"still_{key}", inst.model, gif=False, mp4=False)
-        tour.studio(sc)
+        tour.studio(sc, shadow_of=inst.bbox())
         rig = tour.Rig(sc, inst, ents, f"{key}:")
         sc.cam = tour.frame_cam(inst.bbox(), inst.cam, *(inst.framing or ()))
         shots = [sc.render_base()]

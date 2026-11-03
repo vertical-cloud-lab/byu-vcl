@@ -230,7 +230,7 @@ def furnace() -> Instrument:
         load.add(f"coupon {i + 1}", box(x - 8, -60, 3, x + 8, 60, 7), "sample")
     chamber_c = (0.0, yf + p["door_t"] + cd / 2, cz)
     inst.joints = {
-        "door": Joint("hinge", axis=(0, 0, 1), pivot=(W / 2 - 4, yf, 0), deg=-100.0),
+        "door": Joint("hinge", axis=(0, 0, 1), pivot=(W / 2 - 4, yf, 0), deg=100.0),   # free edge out to the front
         "load": Joint("path", path=((0, yf - 300, cz + 80), (0, yf - 60, cz + 10), chamber_c)),
         "fan": Joint("spin", axis=(0, 1, 0), pivot=(0, fy, fz), deg=1440.0),
     }

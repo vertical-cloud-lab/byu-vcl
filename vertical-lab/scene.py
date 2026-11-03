@@ -45,6 +45,34 @@ PREVIEW = bool(os.environ.get("PREVIEW"))   # render only the last frame of each
 
 FLATTISH = {"skin", "panel", "roof", "floor", "walls", "counter"}      # big flat parts: no sheen, so GIFs compress
 
+# Render style (#303 review: "the amount of sheen is a bit distracting, looks like early 2000s renders").
+# * Hard edges stay hard. The meshes are welded (lab._merge cleans duplicate points), so plain smooth shading averages
+#   the normals across every crease: flat panels then fade from white to grey like cushions, and a disc's top and side
+#   blend into a pillow. Normals are split wherever neighbouring faces meet at more than FEATURE_ANGLE.
+# * Specular follows a material's 0-1 "shininess" (the fifth number in the MATERIALS tables) on a curve: paint and
+#   plastic come out close to matte, metal and glass keep a small, tight highlight.
+# * The key light comes from up and to the left, with a weaker headlight than VTK's default light kit, so a box reads
+#   in three tones (top, front, side) instead of one flat grey. (Screen-space ambient occlusion was tried too: eight
+#   times slower per frame on the runner's software renderer, for little visible difference.)
+FEATURE_ANGLE = 35.0
+
+
+def surface_style(shininess: float) -> dict:
+    """specular and specular_power for a material's 0-1 shininess."""
+    s = min(max(float(shininess), 0.0), 1.0)
+    return dict(specular=0.30 * s * s, specular_power=12.0 + 68.0 * s)
+
+
+def light_kit(renderer) -> None:
+    kit = vtk.vtkLightKit()
+    kit.SetKeyLightElevation(50.0)
+    kit.SetKeyLightAzimuth(-25.0)
+    kit.SetKeyLightIntensity(0.85)
+    kit.SetKeyToFillRatio(2.6)
+    kit.SetKeyToHeadRatio(6.0)
+    kit.SetKeyToBackRatio(4.0)
+    kit.AddLightsToRenderer(renderer)
+
 
 def _wait_for_x(timeout=60.0):
     """Under heavy load Xvfb can still be starting when xvfb-run hands over; VTK then fails with 'bad X server
@@ -135,7 +163,8 @@ def _vtk_matrix(m: np.ndarray) -> vtk.vtkMatrix4x4:
 class Scene:
     def __init__(self, name: str, title: str, size=SIZE, gif=True, mp4=True):
         self.name, self.title, self.size = name, title, size
-        self.pl = pv.Plotter(off_screen=True, window_size=size, lighting="light kit")
+        self.pl = pv.Plotter(off_screen=True, window_size=size, lighting="none")
+        light_kit(self.pl.renderer)
         self.pl.set_background("white")
         self.pl.enable_anti_aliasing("ssaa")
         self.pl.enable_depth_peeling(number_of_peels=6, occlusion_ratio=0.0)
@@ -186,9 +215,12 @@ class Scene:
     def add(self, name, poly, color, group="static", opacity=1.0, shown=True, **kw):
         if poly is None:
             return None
-        style = dict(smooth_shading=True, specular=0.35, specular_power=20, ambient=0.18, diffuse=0.85)
+        style = dict(smooth_shading=True, split_sharp_edges=True, feature_angle=FEATURE_ANGLE, ambient=0.22,
+                     diffuse=0.80)
+        shine = kw.pop("specular", 0.35)
         if any(k in name for k in FLATTISH):
-            style.update(specular=0.08)
+            shine = min(shine, 0.15)
+        style.update(surface_style(shine))
         if "point_size" in kw:                                  # sized for 720p: the same on screen at any VIZ3D_SIZE
             kw["point_size"] = kw["point_size"] * size_scale(self.size)
         style.update(kw)
