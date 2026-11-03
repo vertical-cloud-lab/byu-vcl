@@ -1,0 +1,71 @@
+{
+ "name": "instruments/packaging",
+ "fps": 15,
+ "n_frames": 422,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/9",
+   "caption": "A 250 mL jar of powder goes into the printed nest.",
+   "start_frame": 0,
+   "end_frame": 43
+  },
+  {
+   "label": "2/9",
+   "caption": "The LX500c prints its label: sample ID, alloy, mass, date and a QR code. The AP380 takes such labels die-cut on a roll.",
+   "start_frame": 44,
+   "end_frame": 87
+  },
+  {
+   "label": "3/9",
+   "caption": "The jar goes into the AP380, lying down on its rollers; the pressure arm comes down.",
+   "start_frame": 88,
+   "end_frame": 134
+  },
+  {
+   "label": "4/9",
+   "caption": "One press of the foot switch: the rollers turn the jar once and the label wraps on.",
+   "start_frame": 135,
+   "end_frame": 175
+  },
+  {
+   "label": "5/9",
+   "caption": "Out, and into a clear liner bag, its mouth across the H-190's jaw.",
+   "start_frame": 176,
+   "end_frame": 219
+  },
+  {
+   "label": "6/9",
+   "caption": "The impulse sealer closes the bag: a 12 in seal.",
+   "start_frame": 220,
+   "end_frame": 254
+  },
+  {
+   "label": "7/9",
+   "caption": "Into the foam insert's cut-out, lying down.",
+   "start_frame": 255,
+   "end_frame": 295
+  },
+  {
+   "label": "8/9",
+   "caption": "The lid goes on.",
+   "start_frame": 296,
+   "end_frame": 324
+  },
+  {
+   "label": "9/9",
+   "caption": "The ZD621 prints the 4 x 6 in shipping label, and it goes on the lid. Whether the box needs dangerous-goods marks depends on a test, not on the alloy's name.",
+   "start_frame": 325,
+   "end_frame": 383
+  },
+  {
+   "label": "9/9",
+   "caption": "",
+   "start_frame": 384,
+   "end_frame": 421
+  }
+ ]
+}
