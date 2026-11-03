@@ -1,0 +1,437 @@
+{
+ "name": "alloy_print",
+ "fps": 15,
+ "n_frames": 1519,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/5",
+   "caption": "From the atomizer to the printer. The run's powder is in the rePowder's container, on the MiR250: two 5N Al cups with Si, Al-10Si (78 g charged). Next, the sieve shaker beside the rePowder, then the Aconity MIDI.",
+   "start_frame": 0,
+   "end_frame": 68
+  },
+  {
+   "label": "1/5",
+   "caption": "The MiR250 pulls up to the bench with the Retsch AS 200 and the lab's 8 in stack: No. 60, 100, 140, 230, 325 and a pan (DAL PR #175). The arm takes the container by its handle.",
+   "start_frame": 69,
+   "end_frame": 103
+  },
+  {
+   "label": "1/5",
+   "caption": "The MiR250 pulls up to the bench with the Retsch AS 200 and the lab's 8 in stack: No. 60, 100, 140, 230, 325 and a pan (DAL PR #175). The arm takes the container by its handle.",
+   "start_frame": 104,
+   "end_frame": 128
+  },
+  {
+   "label": "1/5",
+   "caption": "The MiR250 pulls up to the bench with the Retsch AS 200 and the lab's 8 in stack: No. 60, 100, 140, 230, 325 and a pan (DAL PR #175). The arm takes the container by its handle.",
+   "start_frame": 129,
+   "end_frame": 143
+  },
+  {
+   "label": "1/5",
+   "caption": "The MiR250 pulls up to the bench with the Retsch AS 200 and the lab's 8 in stack: No. 60, 100, 140, 230, 325 and a pan (DAL PR #175). The arm takes the container by its handle.",
+   "start_frame": 144,
+   "end_frame": 150
+  },
+  {
+   "label": "1/5",
+   "caption": "The MiR250 pulls up to the bench with the Retsch AS 200 and the lab's 8 in stack: No. 60, 100, 140, 230, 325 and a pan (DAL PR #175). The arm takes the container by its handle.",
+   "start_frame": 151,
+   "end_frame": 163
+  },
+  {
+   "label": "2/5",
+   "caption": "It tips the container into the No. 60 at the top of the stack.",
+   "start_frame": 164,
+   "end_frame": 191
+  },
+  {
+   "label": "2/5",
+   "caption": "It tips the container into the No. 60 at the top of the stack.",
+   "start_frame": 192,
+   "end_frame": 216
+  },
+  {
+   "label": "2/5",
+   "caption": "It tips the container into the No. 60 at the top of the stack.",
+   "start_frame": 217,
+   "end_frame": 255
+  },
+  {
+   "label": "2/5",
+   "caption": "The empty container goes down on the bench, to be cleaned before the next run.",
+   "start_frame": 256,
+   "end_frame": 274
+  },
+  {
+   "label": "2/5",
+   "caption": "The empty container goes down on the bench, to be cleaned before the next run.",
+   "start_frame": 275,
+   "end_frame": 296
+  },
+  {
+   "label": "2/5",
+   "caption": "The empty container goes down on the bench, to be cleaned before the next run.",
+   "start_frame": 297,
+   "end_frame": 307
+  },
+  {
+   "label": "2/5",
+   "caption": "The empty container goes down on the bench, to be cleaned before the next run.",
+   "start_frame": 308,
+   "end_frame": 314
+  },
+  {
+   "label": "2/5",
+   "caption": "The empty container goes down on the bench, to be cleaned before the next run.",
+   "start_frame": 315,
+   "end_frame": 325
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm brings the AS 200's clamping lid over the two rods and down onto the stack, then turns its two knobs to clamp it: no shaker found is sold for robot loading, so it does what a person does.",
+   "start_frame": 326,
+   "end_frame": 350
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm brings the AS 200's clamping lid over the two rods and down onto the stack, then turns its two knobs to clamp it: no shaker found is sold for robot loading, so it does what a person does.",
+   "start_frame": 351,
+   "end_frame": 361
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm brings the AS 200's clamping lid over the two rods and down onto the stack, then turns its two knobs to clamp it: no shaker found is sold for robot loading, so it does what a person does.",
+   "start_frame": 362,
+   "end_frame": 368
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm brings the AS 200's clamping lid over the two rods and down onto the stack, then turns its two knobs to clamp it: no shaker found is sold for robot loading, so it does what a person does.",
+   "start_frame": 369,
+   "end_frame": 381
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm brings the AS 200's clamping lid over the two rods and down onto the stack, then turns its two knobs to clamp it: no shaker found is sold for robot loading, so it does what a person does.",
+   "start_frame": 382,
+   "end_frame": 394
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm brings the AS 200's clamping lid over the two rods and down onto the stack, then turns its two knobs to clamp it: no shaker found is sold for robot loading, so it does what a person does.",
+   "start_frame": 395,
+   "end_frame": 407
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm brings the AS 200's clamping lid over the two rods and down onto the stack, then turns its two knobs to clamp it: no shaker found is sold for robot loading, so it does what a person does.",
+   "start_frame": 408,
+   "end_frame": 414
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm brings the AS 200's clamping lid over the two rods and down onto the stack, then turns its two knobs to clamp it: no shaker found is sold for robot loading, so it does what a person does.",
+   "start_frame": 415,
+   "end_frame": 425
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm brings the AS 200's clamping lid over the two rods and down onto the stack, then turns its two knobs to clamp it: no shaker found is sold for robot loading, so it does what a person does.",
+   "start_frame": 426,
+   "end_frame": 432
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm brings the AS 200's clamping lid over the two rods and down onto the stack, then turns its two knobs to clamp it: no shaker found is sold for robot loading, so it does what a person does.",
+   "start_frame": 433,
+   "end_frame": 437
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm brings the AS 200's clamping lid over the two rods and down onto the stack, then turns its two knobs to clamp it: no shaker found is sold for robot loading, so it does what a person does.",
+   "start_frame": 438,
+   "end_frame": 452
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm brings the AS 200's clamping lid over the two rods and down onto the stack, then turns its two knobs to clamp it: no shaker found is sold for robot loading, so it does what a person does.",
+   "start_frame": 453,
+   "end_frame": 457
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm brings the AS 200's clamping lid over the two rods and down onto the stack, then turns its two knobs to clamp it: no shaker found is sold for robot loading, so it does what a person does.",
+   "start_frame": 458,
+   "end_frame": 464
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm brings the AS 200's clamping lid over the two rods and down onto the stack, then turns its two knobs to clamp it: no shaker found is sold for robot loading, so it does what a person does.",
+   "start_frame": 465,
+   "end_frame": 475
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm brings the AS 200's clamping lid over the two rods and down onto the stack, then turns its two knobs to clamp it: no shaker found is sold for robot loading, so it does what a person does.",
+   "start_frame": 476,
+   "end_frame": 482
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm brings the AS 200's clamping lid over the two rods and down onto the stack, then turns its two knobs to clamp it: no shaker found is sold for robot loading, so it does what a person does.",
+   "start_frame": 483,
+   "end_frame": 487
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm brings the AS 200's clamping lid over the two rods and down onto the stack, then turns its two knobs to clamp it: no shaker found is sold for robot loading, so it does what a person does.",
+   "start_frame": 488,
+   "end_frame": 502
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm brings the AS 200's clamping lid over the two rods and down onto the stack, then turns its two knobs to clamp it: no shaker found is sold for robot loading, so it does what a person does.",
+   "start_frame": 503,
+   "end_frame": 507
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm brings the AS 200's clamping lid over the two rods and down onto the stack, then turns its two knobs to clamp it: no shaker found is sold for robot loading, so it does what a person does.",
+   "start_frame": 508,
+   "end_frame": 514
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm brings the AS 200's clamping lid over the two rods and down onto the stack, then turns its two knobs to clamp it: no shaker found is sold for robot loading, so it does what a person does.",
+   "start_frame": 515,
+   "end_frame": 533
+  },
+  {
+   "label": "2/5",
+   "caption": "Sieving, the stack drawn see-through: 3-D throwing motion, amplitude 0.2-3 mm (Retsch). Each size class falls until a cloth stops it. Al powder under 63 um is among the most ignitable metal dusts: the bench wants bonding, grounding and extraction (DAL's sieve note).",
+   "start_frame": 534,
+   "end_frame": 552
+  },
+  {
+   "label": "2/5",
+   "caption": "Sieving, the stack drawn see-through: 3-D throwing motion, amplitude 0.2-3 mm (Retsch). Each size class falls until a cloth stops it. Al powder under 63 um is among the most ignitable metal dusts: the bench wants bonding, grounding and extraction (DAL's sieve note).",
+   "start_frame": 553,
+   "end_frame": 629
+  },
+  {
+   "label": "2/5",
+   "caption": "The fractions, by the sieve that keeps each. The LPBF cut, 20-63 um, is the No. 325 and the pan: there is no 20 um sieve, and DAL found under 20 um is about 0.05 % by mass.",
+   "start_frame": 630,
+   "end_frame": 692
+  },
+  {
+   "label": "3/5",
+   "caption": "Taking the stack apart is left to a person, in a respirator, under extraction: the cut is the finest, most ignitable powder of the run. The No. 325's and the pan's powder go into a jar.",
+   "start_frame": 693,
+   "end_frame": 712
+  },
+  {
+   "label": "3/5",
+   "caption": "Taking the stack apart is left to a person, in a respirator, under extraction: the cut is the finest, most ignitable powder of the run. The No. 325's and the pan's powder go into a jar.",
+   "start_frame": 713,
+   "end_frame": 751
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm takes the jar and stands it in the cup on the MiR's cabinet.",
+   "start_frame": 752,
+   "end_frame": 776
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm takes the jar and stands it in the cup on the MiR's cabinet.",
+   "start_frame": 777,
+   "end_frame": 791
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm takes the jar and stands it in the cup on the MiR's cabinet.",
+   "start_frame": 792,
+   "end_frame": 798
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm takes the jar and stands it in the cup on the MiR's cabinet.",
+   "start_frame": 799,
+   "end_frame": 811
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm takes the jar and stands it in the cup on the MiR's cabinet.",
+   "start_frame": 812,
+   "end_frame": 836
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm takes the jar and stands it in the cup on the MiR's cabinet.",
+   "start_frame": 837,
+   "end_frame": 849
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm takes the jar and stands it in the cup on the MiR's cabinet.",
+   "start_frame": 850,
+   "end_frame": 856
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm takes the jar and stands it in the cup on the MiR's cabinet.",
+   "start_frame": 857,
+   "end_frame": 867
+  },
+  {
+   "label": "3/5",
+   "caption": "The arm takes the jar and stands it in the cup on the MiR's cabinet.",
+   "start_frame": 868,
+   "end_frame": 886
+  },
+  {
+   "label": "4/5",
+   "caption": "To the Aconity MIDI, 4.8 m along the line, past the VLM's opening.",
+   "start_frame": 887,
+   "end_frame": 952
+  },
+  {
+   "label": "4/5",
+   "caption": "The door opens, and the chamber is drawn see-through. The MIDI's 170 mm build cylinder is at the front; the 170 mm powder supply cylinder is behind it (DAL PR #169). Its piston drops to take the powder.",
+   "start_frame": 953,
+   "end_frame": 978
+  },
+  {
+   "label": "4/5",
+   "caption": "The door opens, and the chamber is drawn see-through. The MIDI's 170 mm build cylinder is at the front; the 170 mm powder supply cylinder is behind it (DAL PR #169). Its piston drops to take the powder.",
+   "start_frame": 979,
+   "end_frame": 995
+  },
+  {
+   "label": "4/5",
+   "caption": "The arm carries the jar in, level, over the supply cylinder, and turns its wrist to pour. One run's cut is tens of grams; a 30 mm build in a 170 mm cylinder takes about 1 kg in the bed, so in practice the supply is topped up from many runs, or a smaller build cylinder is fitted.",
+   "start_frame": 996,
+   "end_frame": 1017
+  },
+  {
+   "label": "4/5",
+   "caption": "The arm carries the jar in, level, over the supply cylinder, and turns its wrist to pour. One run's cut is tens of grams; a 30 mm build in a 170 mm cylinder takes about 1 kg in the bed, so in practice the supply is topped up from many runs, or a smaller build cylinder is fitted.",
+   "start_frame": 1018,
+   "end_frame": 1030
+  },
+  {
+   "label": "4/5",
+   "caption": "The arm carries the jar in, level, over the supply cylinder, and turns its wrist to pour. One run's cut is tens of grams; a 30 mm build in a 170 mm cylinder takes about 1 kg in the bed, so in practice the supply is topped up from many runs, or a smaller build cylinder is fitted.",
+   "start_frame": 1031,
+   "end_frame": 1037
+  },
+  {
+   "label": "4/5",
+   "caption": "The arm carries the jar in, level, over the supply cylinder, and turns its wrist to pour. One run's cut is tens of grams; a 30 mm build in a 170 mm cylinder takes about 1 kg in the bed, so in practice the supply is topped up from many runs, or a smaller build cylinder is fitted.",
+   "start_frame": 1038,
+   "end_frame": 1050
+  },
+  {
+   "label": "4/5",
+   "caption": "The arm carries the jar in, level, over the supply cylinder, and turns its wrist to pour. One run's cut is tens of grams; a 30 mm build in a 170 mm cylinder takes about 1 kg in the bed, so in practice the supply is topped up from many runs, or a smaller build cylinder is fitted.",
+   "start_frame": 1051,
+   "end_frame": 1075
+  },
+  {
+   "label": "4/5",
+   "caption": "The arm carries the jar in, level, over the supply cylinder, and turns its wrist to pour. One run's cut is tens of grams; a 30 mm build in a 170 mm cylinder takes about 1 kg in the bed, so in practice the supply is topped up from many runs, or a smaller build cylinder is fitted.",
+   "start_frame": 1076,
+   "end_frame": 1100
+  },
+  {
+   "label": "4/5",
+   "caption": "The arm carries the jar in, level, over the supply cylinder, and turns its wrist to pour. One run's cut is tens of grams; a 30 mm build in a 170 mm cylinder takes about 1 kg in the bed, so in practice the supply is topped up from many runs, or a smaller build cylinder is fitted.",
+   "start_frame": 1101,
+   "end_frame": 1116
+  },
+  {
+   "label": "4/5",
+   "caption": "The arm carries the jar in, level, over the supply cylinder, and turns its wrist to pour. One run's cut is tens of grams; a 30 mm build in a 170 mm cylinder takes about 1 kg in the bed, so in practice the supply is topped up from many runs, or a smaller build cylinder is fitted.",
+   "start_frame": 1117,
+   "end_frame": 1155
+  },
+  {
+   "label": "4/5",
+   "caption": "The empty jar goes back on the MiR, and the door shuts. The chamber is purged with argon before the laser runs.",
+   "start_frame": 1156,
+   "end_frame": 1168
+  },
+  {
+   "label": "4/5",
+   "caption": "The empty jar goes back on the MiR, and the door shuts. The chamber is purged with argon before the laser runs.",
+   "start_frame": 1169,
+   "end_frame": 1190
+  },
+  {
+   "label": "4/5",
+   "caption": "The empty jar goes back on the MiR, and the door shuts. The chamber is purged with argon before the laser runs.",
+   "start_frame": 1191,
+   "end_frame": 1215
+  },
+  {
+   "label": "4/5",
+   "caption": "The empty jar goes back on the MiR, and the door shuts. The chamber is purged with argon before the laser runs.",
+   "start_frame": 1216,
+   "end_frame": 1228
+  },
+  {
+   "label": "4/5",
+   "caption": "The empty jar goes back on the MiR, and the door shuts. The chamber is purged with argon before the laser runs.",
+   "start_frame": 1229,
+   "end_frame": 1235
+  },
+  {
+   "label": "4/5",
+   "caption": "The empty jar goes back on the MiR, and the door shuts. The chamber is purged with argon before the laser runs.",
+   "start_frame": 1236,
+   "end_frame": 1246
+  },
+  {
+   "label": "4/5",
+   "caption": "The empty jar goes back on the MiR, and the door shuts. The chamber is purged with argon before the laser runs.",
+   "start_frame": 1247,
+   "end_frame": 1270
+  },
+  {
+   "label": "5/5",
+   "caption": "The print, sped up and cut open: the recoater spreads a layer from the supply over the build cylinder, the laser melts the bars' and the lug's outlines, the platform drops one layer. 600 layers of 50 um (assumed) make the 30 mm build.",
+   "start_frame": 1271,
+   "end_frame": 1292
+  },
+  {
+   "label": "5/5",
+   "caption": "The print, sped up and cut open: the recoater spreads a layer from the supply over the build cylinder, the laser melts the bars' and the lug's outlines, the platform drops one layer. 600 layers of 50 um (assumed) make the 30 mm build.",
+   "start_frame": 1293,
+   "end_frame": 1433
+  },
+  {
+   "label": "5/5",
+   "caption": "Printed: four ASTM E8 subsize bars and a handling lug on the 170 mm plate, buried in powder. The MiR comes back along the line, and chapter 4 takes the plate from here.",
+   "start_frame": 1434,
+   "end_frame": 1453
+  },
+  {
+   "label": "5/5",
+   "caption": "Printed: four ASTM E8 subsize bars and a handling lug on the 170 mm plate, buried in powder. The MiR comes back along the line, and chapter 4 takes the plate from here.",
+   "start_frame": 1454,
+   "end_frame": 1485
+  },
+  {
+   "label": "5/5",
+   "caption": "Printed: four ASTM E8 subsize bars and a handling lug on the 170 mm plate, buried in powder. The MiR comes back along the line, and chapter 4 takes the plate from here.",
+   "start_frame": 1486,
+   "end_frame": 1518
+  }
+ ]
+}
