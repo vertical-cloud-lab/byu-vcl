@@ -143,8 +143,9 @@ needed. GrabCAD, TraceParts and CADENAS block the runner and need logins anyway.
   - A 650 °C furnace running inside the machine needs Kardex's say-so, and probably ventilation.
   - The SEM and the nanoindenter are vibration-sensitive. Their trays are still in their slots, but the extractor
     moves other trays past them.
-- **The rail closes the front to people.** Its beam runs about 120 mm in front of the machines' fronts at knee
-  height, so the line becomes a cell for the arm. That is the trade against the MiR250, which leaves the floor free.
+- **The rail closes the front to people.** Its beam runs about 120 mm in front of the machines' fronts, between about
+  440 and 690 mm up, so the line becomes a cell for the arm. That is the trade against the MiR250, which leaves the
+  floor free.
 
 ## The workflow
 
