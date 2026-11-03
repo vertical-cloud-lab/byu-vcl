@@ -259,42 +259,61 @@ def _wedge_grip(z, up=True, w=90.0, h=110.0) -> cq.Workplane:
     return g.cut(slot)
 
 
-# Instron 6800 Series floor model, 68FM-100 (100 kN): envelope from Instron's 6800 Series floor-model data (SPECS).
-INSTRON_FM = dict(W=1257.0, D=762.0, H=2459.0, base_h=660.0, col_dx=575.0, col_w=150.0, xh_h=190.0, top_h=170.0,
-                  xh_z=1450.0, travel=180.0)
+# Instron 6800 Series floor model 68FM-100 (100 kN): 2287 H x 1140 W x 786 D mm, 799 kg; 1494 mm of vertical test
+# space, 575 mm between the columns; short base about 500 mm (Instron's 6800 Series floor-model sheet). The look from
+# Instron's photos: matte black frame, ribbed columns, satin-silver worktop edge, red Instron logo on the crosshead and
+# base, a red-and-silver load cell, and the dashboard, handset and e-stop on the right column.
+INSTRON_FM = dict(W=1140.0, D=786.0, H=2287.0, base_h=500.0, col_dx=575.0, col_w=200.0, col_d=260.0, xh_h=200.0,
+                  top_h=150.0, xh_z=1250.0, travel=160.0)
+
+
+def _ribbed_column(w, d, h, x, y, z) -> cq.Workplane:
+    c = rbox(w, d, h, 10, x=x, y=y, z=z)
+    for i in range(5):                        # vertical ribs on the front cover
+        xx = x - w / 2 + w * (i + 1) / 6
+        c = c.cut(box(xx - 3, y - d / 2 - 1, z + 30, xx + 3, y - d / 2 + 4, z + h - 30))
+    return c
 
 
 def instron_floor() -> Instrument:
     p = INSTRON_FM
     inst = Instrument("instron_floor", "Universal testing machine, floor model", "Instron 68FM-100",
-                      (p["W"], p["D"], p["H"]), "Instron 6800 Series floor-model specifications; look from Instron's "
-                      "photos (grey frame, black base, blue crosshead trim)", floor=True)
+                      (p["W"], p["D"], p["H"]), "Instron 6800 Series floor-model sheet (2287 x 1140 x 786 mm, 799 kg, "
+                      "1494 mm test space, 575 mm between columns); look from Instron's photos", floor=True)
     W, D, H = p["W"], p["D"], p["H"]
+    yf = -D / 2
     body = _piece(inst, "body")
-    body.add("base", rbox(W, D, p["base_h"], 20), "inst_dark")
-    body.add("base front", box(-W / 2 + 60, -D / 2 - 3, 120, W / 2 - 60, -D / 2, p["base_h"] - 60), "inst_black")
-    body.add("logo plate", box(-150, -D / 2 - 5, p["base_h"] - 140, 150, -D / 2 - 3, p["base_h"] - 90), "inst_blue")
+    base = box(-W / 2, yf, 0, W / 2, D / 2, p["base_h"] - 30).edges("|Z").fillet(40)
+    body.add("base", base, "inst_dark")
+    body.add("worktop", rbox(W + 10, D + 10, 30, 40, z=p["base_h"] - 30), "aluminium")
+    body.add("base logo", box(-W / 2 + 70, yf - 2, p["base_h"] - 120, -W / 2 + 250, yf, p["base_h"] - 80), "inst_red")
+    body.add("base recess", box(-W / 2 + 60, yf - 1, 60, W / 2 - 60, yf + 4, p["base_h"] - 160), "inst_black")
     cx = p["col_dx"] / 2 + p["col_w"] / 2
-    cols = None
     for sx in (-1, 1):
-        c = rbox(p["col_w"], p["col_w"] + 40, H - p["base_h"] - p["top_h"], 10, x=sx * cx, z=p["base_h"])
-        cols = c if cols is None else cols.union(c)
-    body.add("columns", cols, "inst_light")
-    body.add("top plate", rbox(p["col_dx"] + 2 * p["col_w"] + 80, D - 220, p["top_h"], 14, z=H - p["top_h"]),
+        body.add(f"column {'LR'[sx > 0]}", _ribbed_column(p["col_w"], p["col_d"], H - p["base_h"] - p["top_h"],
+                                                         sx * cx, 0, p["base_h"]), "inst_black")
+    body.add("top plate", rbox(p["col_dx"] + 2 * p["col_w"] + 40, p["col_d"] + 40, p["top_h"], 16, z=H - p["top_h"]),
              "inst_dark")
     body.add("lower grip", _wedge_grip(p["base_h"] + 90, up=True), "steel")
     body.add("lower adapter", cyl(70, 90, z=p["base_h"]), "steel")
-    body.add("handset", rbox(110, 60, 160, 8, x=cx + p["col_w"] / 2 + 70, y=-120, z=1150), "inst_dark")
-    body.add("handset screen", box(cx + p["col_w"] / 2 + 30, -151, 1220, cx + p["col_w"] / 2 + 110, -150, 1290),
+    xr = cx + p["col_w"] / 2
+    body.add("handset", rbox(90, 50, 150, 8, x=xr + 30, y=-p["col_d"] / 2 + 40, z=1100), "inst_dark")
+    body.add("e-stop", _ycyl(40, 20, x=xr + 30, y=-p["col_d"] / 2 - 5, z=1320), "inst_red")
+    body.add("e-stop label", box(xr + 5, -p["col_d"] / 2 + 13, 1295, xr + 55, -p["col_d"] / 2 + 15, 1345), "inst_yellow")
+    body.add("dashboard arm", box(xr, -20, 1480, xr + 260, 20, 1510), "inst_dark")
+    body.add("dashboard", box(xr + 220, -150, 1390, xr + 520, -120, 1610).rotate((xr + 370, -135, 1500),
+                                                                                  (xr + 370, -135, 1501), 25),
+             "inst_black")
+    body.add("dashboard screen", box(xr + 235, -152, 1405, xr + 505, -150, 1595).rotate((xr + 370, -135, 1500),
+                                                                                        (xr + 370, -135, 1501), 25),
              "screen_on")
-    body.add("handset arm", box(cx + p["col_w"] / 2, -110, 1200, cx + p["col_w"] / 2 + 20, -80, 1240), "inst_dark")
-    # the moving crosshead with the load cell and the upper grip
     xh = _piece(inst, "crosshead")
     z = p["xh_z"]
-    xh.add("crosshead", rbox(p["col_dx"] + 2 * p["col_w"] + 60, D - 260, p["xh_h"], 12, z=z), "inst_dark")
-    xh.add("crosshead trim", box(-p["col_dx"] / 2, -(D - 260) / 2 - 3, z + 60, p["col_dx"] / 2, -(D - 260) / 2,
-                                 z + p["xh_h"] - 60), "inst_blue")
+    xh.add("crosshead", rbox(p["col_dx"] + 2 * p["col_w"] + 20, p["col_d"] - 30, p["xh_h"], 12, z=z), "inst_black")
+    xh.add("crosshead logo", box(-90, -(p["col_d"] - 30) / 2 - 2, z + 80, 90, -(p["col_d"] - 30) / 2,
+                                 z + 120), "inst_red")
     xh.add("load cell", cyl(110, 70, z=z - 70), "chrome")
+    xh.add("load cell band", cyl(112, 14, z=z - 42), "inst_red")
     xh.add("upper grip", _wedge_grip(z - 70, up=False), "steel")
     spec = _piece(inst, "specimen")
     g0, g1 = p["base_h"] + 90 + 110, z - 70 - 110
@@ -304,44 +323,55 @@ def instron_floor() -> Instrument:
     inst.actions = [
         ("A printed tensile bar in the wedge grips. The crosshead pulls at a constant rate; the load cell above "
          "the upper grip reads the force.", 3.0, {"crosshead": (0.0, 0.15)}),
-        ("Ductile fracture: the crosshead returns. 100 kN capacity, about 2.5 m tall, so it stands beside the VLM.",
-         2.2, {"crosshead": (0.15, 0.0)}),
+        ("Ductile fracture: the crosshead returns. 100 kN capacity, 2.3 m tall and 800 kg, so it stands beside the "
+         "VLM.", 2.2, {"crosshead": (0.15, 0.0)}),
     ]
-    inst.labels = [("moving crosshead", (0, -(D - 260) / 2, z + p["xh_h"] / 2), (0.15, 0.25)),
+    inst.labels = [("moving crosshead", (-200, -(p["col_d"] - 30) / 2, z + p["xh_h"] / 2), (0.15, 0.25)),
                    ("load cell", (0, -55, z - 35), (0.82, 0.32)),
                    ("wedge grips", (0, -35, p["base_h"] + 150), (0.82, 0.62))]
     inst.cam = (1.0, -2.4, 0.9)
     return inst
 
 
-# Instron 6800 Series single column, 68SC-2 (2 kN) tabletop: envelope from Instron's single-column data (SPECS).
-INSTRON_SC = dict(W=420.0, D=600.0, H=1100.0, base_h=170.0, col_w=150.0, col_d=150.0, arm_l=270.0, arm_h=110.0,
-                  xh_z=640.0, travel=60.0)
+# Instron 6800 Series single column 68SC-2 (2 kN; the 68SC-1 is the same frame): 1410 H x 460 W x 615 D mm, 62 kg;
+# 1118 mm of vertical test space, 100 mm throat from the column to the load axis (Instron 6800 Series brochure). The
+# shortest single column, the 68SC-05, is still 1020 mm tall: no Instron frame fits under Kardex's 727.5 mm. Look from
+# Instron's renders: black ribbed column at the back, black arm with a silver load cell with a red band, a low black
+# base with a silver strip, the red badge and the red e-stop, and the touchscreen on a swing arm.
+INSTRON_SC = dict(W=460.0, D=615.0, H=1410.0, base_h=130.0, col_w=170.0, col_d=200.0, throat=100.0, arm_h=110.0,
+                  xh_z=760.0, travel=60.0)
 
 
 def instron_small() -> Instrument:
     p = INSTRON_SC
     inst = Instrument("instron_small", "Universal testing machine, tabletop", "Instron 68SC-2",
-                      (p["W"], p["D"], p["H"]), "Instron 6800 Series single-column specifications; look from "
-                      "Instron's photos")
+                      (p["W"], p["D"], p["H"]), "Instron 6800 Series brochure (68SC-1/-2: 1410 x 460 x 615 mm, 62 kg, "
+                      "100 mm throat); look from Instron's renders", floor=True)
     W, D, H = p["W"], p["D"], p["H"]
     body = _piece(inst, "body")
-    col_y = D / 2 - p["col_d"] / 2 - 20
-    body.add("base", rbox(W, D, p["base_h"], 16), "inst_dark")
-    body.add("base front", box(-W / 2 + 40, -D / 2 - 3, 40, W / 2 - 40, -D / 2, p["base_h"] - 40), "inst_black")
-    body.add("column", rbox(p["col_w"], p["col_d"], H - p["base_h"], 12, y=col_y, z=p["base_h"]), "inst_light")
-    body.add("column cap", rbox(p["col_w"] + 10, p["col_d"] + 10, 30, 12, y=col_y, z=H - 30), "inst_dark")
-    gy = col_y - p["col_d"] / 2 - p["arm_l"] + 70        # grips' axis, in front of the column
+    col_y = D / 2 - p["col_d"] / 2 - 15
+    gy = col_y - p["col_d"] / 2 - p["throat"]          # the load axis, 100 mm in front of the column
+    body.add("base", rbox(W, D, p["base_h"] - 20, 16, z=20), "inst_dark")
+    body.add("base strip", rbox(W - 10, D - 10, 20, 14), "aluminium")
+    body.add("badge", box(-W / 2 + 30, -D / 2 - 2, p["base_h"] - 60, -W / 2 + 120, -D / 2, p["base_h"] - 35),
+             "inst_red")
+    body.add("e-stop label", box(W / 2 - 90, -D / 2 - 2, 45, W / 2 - 30, -D / 2, 105), "inst_yellow")
+    body.add("e-stop", _ycyl(36, 18, x=W / 2 - 60, y=-D / 2 - 20, z=75), "inst_red")
+    body.add("column", _ribbed_column(p["col_w"], p["col_d"], H - p["base_h"] - 20, 0, col_y, p["base_h"]),
+             "inst_black")
+    body.add("lifting eye", cyl(40, 20, y=col_y, z=H - 20), "steel")
     body.add("lower grip", _wedge_grip(p["base_h"] + 60, up=True, w=60, h=70).translate((0, gy, 0)), "steel")
     body.add("lower adapter", cyl(50, 60, y=gy, z=p["base_h"]), "steel")
-    body.add("logo plate", box(-90, -D / 2 - 5, p["base_h"] - 70, 90, -D / 2 - 3, p["base_h"] - 45), "inst_blue")
+    body.add("screen arm", box(p["col_w"] / 2, col_y - 15, 1050, p["col_w"] / 2 + 160, col_y + 15, 1075), "inst_dark")
+    body.add("touchscreen", box(p["col_w"] / 2 + 140, col_y - 120, 930, p["col_w"] / 2 + 165, col_y + 40, 1180),
+             "inst_black")
     xh = _piece(inst, "crosshead")
     z = p["xh_z"]
-    xh.add("arm", rbox(p["col_w"] + 30, p["arm_l"], p["arm_h"], 10, y=col_y - p["arm_l"] / 2 + p["col_d"] / 2 - 10,
-                       z=z), "inst_dark")
-    xh.add("arm trim", box(-60, col_y - p["arm_l"] + p["col_d"] / 2 - 13, z + 30, 60,
-                           col_y - p["arm_l"] + p["col_d"] / 2 - 10, z + p["arm_h"] - 30), "inst_blue")
+    arm_y0 = gy - 70
+    xh.add("arm", box(-p["col_w"] / 2 - 10, arm_y0, z, p["col_w"] / 2 + 10, col_y, z + p["arm_h"])
+           .edges("|X").fillet(10), "inst_black")
     xh.add("load cell", cyl(70, 50, y=gy, z=z - 50), "chrome")
+    xh.add("load cell band", cyl(72, 10, y=gy, z=z - 32), "inst_red")
     xh.add("upper grip", _wedge_grip(z - 50, up=False, w=60, h=70).translate((0, gy, 0)), "steel")
     spec = _piece(inst, "specimen")
     g0, g1 = p["base_h"] + 60 + 70, z - 50 - 70
@@ -351,10 +381,11 @@ def instron_small() -> Instrument:
     inst.actions = [
         ("A sub-size printed bar in its grips. The arm rides up the single column and pulls it.", 2.6,
          {"crosshead": (0.0, 0.25)}),
-        ("Back to the start. A tabletop frame, but its column is still taller than a tray takes.", 2.0,
-         {"crosshead": (0.25, 0.0)}),
+        ("Back to the start. A tabletop frame, but 1410 mm tall: even the shortest single column (1020 mm) is "
+         "taller than a tray takes, so it stands beside the VLM.", 2.4, {"crosshead": (0.25, 0.0)}),
     ]
-    inst.labels = [("single column", (0, col_y, 900), (0.80, 0.25)), ("grips", (0, gy - 30, 300), (0.16, 0.60))]
+    inst.labels = [("single column", (0, col_y - p["col_d"] / 2, 1100), (0.80, 0.25)),
+                   ("load cell and grips", (0, gy - 30, z - 60), (0.16, 0.45))]
     inst.cam = (1.4, -2.2, 0.9)
     return inst
 
@@ -898,6 +929,187 @@ def mastersizer() -> Instrument:
                    ("optical bench", (xb - L / 2 + 100, yf, 250), (0.12, 0.55)),
                    ("vacuum extractor", (vx, -p["vac_d"] / 2, 300), (0.86, 0.55))]
     inst.cam = (0.5, -1.7, 0.75)
+    return inst
+
+
+# ===================================================================================================== wire EDM
+# FANUC ROBOCUT alpha-C400iC wire EDM: 2120 W x 2540 D x 1970 H mm (2120 mm with the safety cover up), about 2200 kg;
+# workpieces up to 730 x 630 x 250 mm and 500 kg; X/Y travel 400 x 300 mm, Z 255 mm (FANUC America data sheet and
+# floor plan). The machine is 1210 mm wide on the left, its control cabinet 900 mm on the right. The look from FANUC's
+# photo: off-white sheet metal, the upper head with a triangular window onto the wire spool and the yellow FANUC
+# ROBOCUT badge, a yellow work-tank door with a wide window, the CNC panel on the cabinet. It cuts printed parts off
+# their build plate; at 1970 mm and 2.2 t it stands beside the VLM.
+EDM = dict(W=2120.0, D=2540.0, H=1970.0, mach_w=1210.0, base_h=700.0, tank_top=1220.0, table_z=780.0,
+           head_z0=1230.0, travel_x=360.0)
+
+
+def wire_edm() -> Instrument:
+    p = EDM
+    inst = Instrument("wire_edm", "Wire EDM", "FANUC ROBOCUT alpha-C400iC", (p["W"], p["D"], p["H"]),
+                      "FANUC America ROBOCUT alpha-C400iC data sheet and floor plan; look from FANUC's photo",
+                      floor=True)
+    W, D, H = p["W"], p["D"], p["H"]
+    xl, xr = -W / 2, W / 2
+    xm = xl + p["mach_w"]                   # machine | cabinet
+    yf, yb = -D / 2, D / 2
+    bz, tz = p["base_h"], p["tank_top"]
+    body = _piece(inst, "body")
+    body.add("base", box(xl, yf, 40, xm, yb, bz), "inst_white")
+    body.add("plinth", box(xl + 20, yf + 20, 0, xm - 20, yb - 20, 40), "inst_grey")
+    body.add("base panel", box(xl + 120, yf - 2, 90, xm - 120, yf, bz - 220), "inst_offwhite")
+    body.add("base badge", box(xl + 450, yf - 4, bz - 160, xl + 800, yf - 2, bz - 120), "inst_light")
+    tx0, tx1 = xl + 200, xm - 150           # the work tank
+    ty0, ty1 = yf + 60, yf + 760
+    body.add("tank", box(tx0, ty0 + 30, bz, tx1, ty1, tz).cut(box(tx0 + 20, ty0 + 20, bz + 20, tx1 - 20, ty1 - 20,
+                                                                    tz + 1)), "stainless")
+    body.add("table", box(tx0 + 120, ty0 + 150, bz + 20, tx1 - 120, ty1 - 150, p["table_z"]).cut(
+        box(tx0 + 200, ty0 + 230, bz + 19, tx1 - 200, ty1 - 230, p["table_z"] + 1)), "steel")
+    body.add("column", box(xl + 250, ty1, bz, xm - 200, yb - 300, p["head_z0"] + 120), "inst_offwhite")
+    hx0, hx1 = xl + 160, xm - 120
+    head = box(hx0, yf + 200, p["head_z0"], hx1, yb - 600, H)
+    body.add("upper housing", head, "inst_white")
+    tri = cq.Workplane("XZ").polyline([(hx0 + 40, p["head_z0"] + 60), (hx0 + 600, p["head_z0"] + 60),
+                                       (hx0 + 40, H - 120)]).close().extrude(2).translate((0, yf + 199, 0))
+    body.add("spool window", tri, "inst_dark")
+    body.add("wire spool", _ycyl(260, 120, x=hx0 + 220, y=yf + 230, z=p["head_z0"] + 330), "brass_wire")
+    body.add("badge", box(hx1 - 330, yf + 196, H - 230, hx1 - 40, yf + 200, H - 60), "inst_yellow")
+    # the control cabinet with the CNC panel and its pendant
+    body.add("cabinet", box(xm + 10, yf + 300, 0, xr, yb - 500, 1250), "inst_white")
+    panel = box(xm + 120, yf + 300, 0, xr - 120, yf + 380, 520).rotate((0, yf + 380, 0), (1, yf + 380, 0), -12)
+    body.add("CNC panel", panel.translate((0, 0, 1250)), "inst_dark")
+    scr = box(xm + 170, yf + 296, 270, xr - 170, yf + 300, 500).rotate((0, yf + 380, 0), (1, yf + 380, 0), -12)
+    body.add("CNC screen", scr.translate((0, 0, 1250)), "screen_on")
+    body.add("CNC e-stop", _ycyl(40, 20, x=xr - 170, y=yf + 270, z=1300), "inst_red")
+    body.add("pendant", box(xm + 40, yf + 280, 1380, xm + 110, yf + 320, 1560), "inst_dark")
+    # the yellow tank door drops into the base to load; the wire head traverses X
+    door = _piece(inst, "door")
+    door.add("tank door", box(tx0 - 10, ty0, bz + 10, tx1 + 10, ty0 + 30, tz), "inst_yellow")
+    door.add("door window", box(tx0 + 80, ty0 - 1, tz - 230, tx1 - 80, ty0 + 31, tz - 50), "window")
+    door.add("door warning", box(tx1 - 140, ty0 - 2, bz + 60, tx1 - 60, ty0, bz + 140), "inst_black")
+    hd = _piece(inst, "wirehead")
+    gx, gy = (tx0 + tx1) / 2 - p["travel_x"] / 2, (ty0 + ty1) / 2 - 40
+    hd.add("upper guide", box(gx - 60, gy - 60, p["table_z"] + 260, gx + 60, gy + 60, p["head_z0"] + 20), "inst_offwhite")
+    hd.add("upper nozzle", cyl(40, 40, x=gx, y=gy, z=p["table_z"] + 220), "steel")
+    hd.add("lower arm", box(gx - 40, gy - 40, bz + 60, gx + 40, ty1 - 20, bz + 120), "steel")
+    hd.add("lower nozzle", cyl(40, 40, x=gx, y=gy, z=bz + 120), "steel")
+    hd.add("wire", cyl(2.0, p["table_z"] + 220 - (bz + 160), x=gx, y=gy, z=bz + 160), "brass_wire")
+    plate = _piece(inst, "load")
+    plate.add("build plate", cyl(170, 25, z=0), "steel")
+    for i, (xx, yy) in enumerate([(-45, -30), (0, -30), (45, -30), (-45, 30), (0, 30), (45, 30)]):
+        plate.add(f"printed bar {i + 1}", box(xx - 6, yy - 20, 25, xx + 6, yy + 20, 105), "sample")
+    water = _piece(inst, "glow")
+    water.add("dielectric", box(tx0 + 22, ty0 + 52, bz + 22, tx1 - 22, ty1 - 22, tz - 40), "water")
+    plate_at = ((tx0 + tx1) / 2, (ty0 + ty1) / 2 - 40, p["table_z"])
+    inst.joints = {
+        "door": Joint("slide", vec=(0, 0, -(tz - bz) + 30)),
+        "load": Joint("path", path=((plate_at[0], yf - 700, 1250), (plate_at[0], yf - 200, 1200),
+                                    (plate_at[0], plate_at[1], plate_at[2] + 120), plate_at)),
+        "wirehead": Joint("slide", vec=(p["travel_x"], 0, 0)),
+        "glow": Joint("fade"),
+    }
+    inst.actions = [
+        ("The yellow tank door drops. A build plate with printed bars goes onto the table, parts up.", 2.6,
+         {"door": (0.0, 1.0), "load": (0.0, 1.0), "glow": (0.0, 0.0)}),
+        ("Door up; the tank fills with deionized water, the dielectric.", 1.8, {"door": (1.0, 0.0), "glow": (0.0, 1.0)}),
+        ("The brass wire, held between the upper and lower guides, traverses the plate and cuts the parts off at "
+         "their base.", 3.2, {"wirehead": (0.0, 1.0)}),
+        ("Drained and opened. At 1970 mm and 2.2 t it stands beside the VLM; no benchtop wire EDM is sold.", 2.2,
+         {"glow": (1.0, 0.0), "door": (0.0, 1.0), "wirehead": (1.0, 0.0)}),
+    ]
+    inst.labels = [("wire spool", (hx0 + 220, yf + 200, p["head_z0"] + 330), (0.14, 0.25)),
+                   ("work tank", (tx0, ty0, bz + 300), (0.12, 0.62)),
+                   ("CNC panel", (xm + 400, yf + 330, 1600), (0.86, 0.25))]
+    inst.cam = (0.9, -2.0, 0.85)
+    return inst
+
+
+# ===================================================================================================== glovebox
+# An inert-gas glovebox for the oxidation-sensitive powders, set up for automation: the arm stays outside and works
+# through an automatic antechamber, which a PLC evacuates and refills on its own (the recommendation in DAL PR #185's
+# decision matrix and DAL #130; LC Technology quoted its AC-601 automatic antechamber control, VAC's NexGen and
+# Inert's PureLab have the same). Envelope from Inert's PureLab HE 2GB drawing (NIST's copy of its manual): 2005 W x
+# 834 D x 1794 H mm, a 1219 mm box, 928 mm tall, on an 867 mm stand, glove ports 457 mm apart, a 381 mm (15 in)
+# antechamber over the purifier.
+GLOVEBOX = dict(W=2005.0, D=834.0, H=1794.0, box_w=1219.0, box_h=928.0, stand_h=867.0, port_dx=457.0, port_d=220.0,
+                ante_d=381.0, ante_l=600.0)
+
+
+def glovebox() -> Instrument:
+    p = GLOVEBOX
+    inst = Instrument("glovebox", "Inert glovebox with automatic antechamber", "Inert PureLab HE 2GB",
+                      (p["W"], p["D"], p["H"]), "Inert PureLab HE 2GB drawing (NIST's copy of Inert's manual); the "
+                      "automatic antechamber after DAL #130 and DAL PR #185", floor=True)
+    W, D, H = p["W"], p["D"], p["H"]
+    xb0 = -W / 2                                # the box on the left, the antechamber bay on the right
+    xb1 = xb0 + p["box_w"]
+    yf, yb = -D / 2, D / 2
+    sz, tz = p["stand_h"], p["stand_h"] + p["box_h"]
+    body = _piece(inst, "body")
+    stand = None
+    for x in (xb0 + 30, xb1 - 30, W / 2 - 30):
+        for y in (yf + 40, yb - 40):
+            q = box(x - 25, y - 25, 0, x + 25, y + 25, sz)
+            stand = q if stand is None else stand.union(q)
+    stand = stand.union(box(xb0, yf + 15, sz - 60, W / 2, yb - 15, sz)).union(box(xb0, yf + 15, 120, W / 2, yb - 15, 160))
+    body.add("stand", stand, "inst_grey")
+    shell = _wedge(p["box_w"], D - 40, D - 240, p["box_h"], x=(xb0 + xb1) / 2, y0=yf + 20, z=sz)
+    shell = shell.cut(_wedge(p["box_w"] - 60, D - 100, D - 300, p["box_h"] - 60, x=(xb0 + xb1) / 2, y0=yf + 50, z=sz + 30))
+    # the sloped window with its two glove ports, and the gloves
+    import math as _m
+    slope = _m.atan2(200, p["box_h"])           # the front leans back 200 mm over the box's height
+    opening = box(xb0 + 50, -60, 50, xb1 - 50, 60, p["box_h"] - 50).rotate((0, 0, 0), (1, 0, 0), -_m.degrees(slope))
+    shell = shell.cut(opening.translate((0, yf + 20, sz)))
+    body.add("box", shell, "stainless")
+    win = box(xb0 + 40, 4, 40, xb1 - 40, 10, p["box_h"] - 40).rotate((0, 0, 0), (1, 0, 0), -_m.degrees(slope))
+    body.add("window", win.translate((0, yf + 20, sz)), "polycarb")
+    for sx in (-1, 1):
+        px = (xb0 + xb1) / 2 + sx * p["port_dx"] / 2
+        ring = _ycyl(p["port_d"] + 40, 30, x=px, y=-15, z=0).cut(_ycyl(p["port_d"], 32, x=px, y=-16, z=0))
+        ring = ring.rotate((0, 0, 0), (1, 0, 0), -_m.degrees(slope)).translate((0, yf + 20 + 0.42 * 260, sz + 300))
+        body.add(f"port {sx}", ring, "inst_dark")
+        glove = _ycyl(p["port_d"] - 10, 420, x=px, y=-15, z=0).rotate((0, 0, 0), (1, 0, 0), -_m.degrees(slope))
+        body.add(f"glove {sx}", glove.translate((0, yf + 20 + 0.42 * 260, sz + 300)), "glove")
+    # purifier, controls and the automatic antechamber over it, on the right
+    body.add("purifier", box(xb1 + 20, yf + 30, 160, W / 2 - 20, yb - 30, sz - 60), "inst_blue")
+    body.add("touch panel", box(xb1 + 60, yf + 60, tz - 250, xb1 + 380, yf + 90, tz - 30), "inst_dark")
+    body.add("touch screen", box(xb1 + 80, yf + 58, tz - 230, xb1 + 360, yf + 60, tz - 50), "screen_on")
+    body.add("panel arm", box(xb1 - 5, yf + 70, tz - 160, xb1 + 60, yf + 110, tz - 120), "inst_grey")
+    ay = (yf + yb) / 2
+    az = sz + p["ante_d"] / 2 + 80
+    ante = _xcyl(p["ante_d"], p["ante_l"], x=xb1, y=ay, z=az).cut(_xcyl(p["ante_d"] - 20, p["ante_l"] - 20,
+                                                                         x=xb1 + 10, y=ay, z=az))
+    body.add("antechamber", ante, "stainless")
+    body.add("antechamber cradle", box(xb1 + 60, ay - 160, sz - 60, xb1 + p["ante_l"] - 60, ay + 160, az - 120),
+             "inst_grey")
+    body.add("mini antechamber", _xcyl(150, 300, x=xb0 - 300, y=ay - 150, z=sz + 450), "stainless")
+    body.add("vacuum pump", box(xb0 + 200, yf + 120, 160, xb0 + 560, yb - 160, 420), "inst_dark")
+    door = _piece(inst, "door")
+    door.add("outer door", _xcyl(p["ante_d"] + 30, 30, x=xb1 + p["ante_l"], y=ay, z=az), "stainless")
+    door.add("door handle", box(xb1 + p["ante_l"] + 30, ay - 15, az - 80, xb1 + p["ante_l"] + 55, ay + 15, az + 80),
+             "inst_dark")
+    tray = _piece(inst, "load")
+    tray.add("transfer tray", box(-150, -100, 0, 150, 100, 6), "aluminium")
+    tray.add("powder jar", cyl(60, 80, x=-60, z=6), "inst_white")
+    tray.add("powder jar lid", cyl(64, 15, x=-60, z=86), "inst_blue")
+    tray.add("vial", cyl(28, 61, x=60, z=6), "window")
+    hinge = (xb1 + p["ante_l"] + 15, ay + p["ante_d"] / 2 + 15, 0)
+    inst.joints = {
+        "door": Joint("hinge", axis=(0, 0, 1), pivot=hinge, deg=-105.0),
+        "load": Joint("path", path=((xb1 + p["ante_l"] + 700, ay - 400, az + 200), (xb1 + p["ante_l"] + 250, ay, az - 60),
+                                    (xb1 + p["ante_l"] / 2, ay, az - p["ante_d"] / 2 + 40))),
+    }
+    inst.actions = [
+        ("The automatic antechamber's outer door swings open on the side facing the line, where an arm outside "
+         "can reach it.", 1.8, {"door": (0.0, 1.0), "load": (0.0, 0.0)}),
+        ("A tray with a powder jar and a vial goes in.", 2.0, {"load": (0.0, 1.0)}),
+        ("Door shut. The PLC evacuates and refills it three times on its own, then someone at the gloves (or an arm "
+         "inside) takes it in. Under 1 ppm O2 and H2O.", 2.4, {"door": (1.0, 0.0), "~body": (0.0, 0.6)}),
+        ("", 1.0, {"~body": (0.6, 0.0)}),
+    ]
+    inst.labels = [("automatic antechamber", (xb1 + p["ante_l"] / 2, ay, az + p["ante_d"] / 2), (0.78, 0.22)),
+                   ("glove ports", ((xb0 + xb1) / 2, yf + 80, sz + 300), (0.14, 0.32)),
+                   ("gas purifier", (xb1 + 300, yf + 30, 500), (0.84, 0.70))]
+    inst.cam = (1.2, -1.8, 0.8)
     return inst
 
 
