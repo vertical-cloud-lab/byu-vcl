@@ -61,7 +61,7 @@ jobs:
       )
     runs-on: ubuntu-latest
     environment: bambu-print
-    timeout-minutes: 180
+    timeout-minutes: 360
     permissions:
       contents: read
       pull-requests: read
