@@ -1,0 +1,464 @@
+{
+ "coupling": {
+  "design": "one plate per tray at its back right corner, facing out through the right-hand side; an actuated dock in the side wall of each slot a tray uses and of the bay; stroke 45 mm across the tray's travel",
+  "plate_mm": {
+   "along_tray": 200.0,
+   "height": 90.0,
+   "centre_from_back": 152.0
+  },
+  "media": [
+   {
+    "key": "power",
+    "what": "mains: L1, L2, N, PE",
+    "coupling": "4 x O3 mm power units, 39 A each"
+   },
+   {
+    "key": "data",
+    "what": "Ethernet, Cat 6A",
+    "coupling": "10 Gbit module, RJ45"
+   },
+   {
+    "key": "air",
+    "what": "compressed air",
+    "coupling": "RCT06, 6 mm, shut-off"
+   },
+   {
+    "key": "n2",
+    "what": "nitrogen",
+    "coupling": "SCT03, shut-off both sides"
+   },
+   {
+    "key": "cws",
+    "what": "chilled water in",
+    "coupling": "LCT06, shut-off both sides"
+   },
+   {
+    "key": "cwr",
+    "what": "chilled water out",
+    "coupling": "LCT06, shut-off both sides"
+   }
+  ],
+  "why_not_the_back_edge": "in a front-column slot and at the opening the back edge faces the shaft; a dock there would sit in the 106-146 mm between the tray and the extractor's platform, in the path of every tray it pulls, and at the opening the shutter is 35 mm behind the tray",
+  "sequence": [
+   "shut and vent air, N2 and water (CombiTac: no mating or parting under pressure)",
+   "UPS takes the load",
+   "dock pulls back 45 mm",
+   "extractor moves the tray",
+   "bay dock pushes in, pins first",
+   "contacts mate, supplies open, back on mains"
+  ],
+  "sources": {
+   "kardex_tray_power": "#53: 'the trays will not retain power while in motion. They will only have power when stored, or again when they arrive at the delivery bay'; the dealer offered 'a quick connect cord' to the device on the tray. Kardex's own Shuttle option list shows no powered-tray or media option (kardex.com/products/vertical-lift/kardex-shuttle).",
+   "combitac_align4": "Staubli CombiTac uniq catalogue (CT-Main-11014009-en) p.80-81: CombiTac align 4, misalignment compensation radial 4 mm, angular +-2 deg; 100,000 mating cycles; the plug side's pins guide, the socket side is conical. p.82: 'the customer must provide a stable guide system, e.g. with mechanical pins'. p.87: largest gap between mated carriers 1-2 mm.",
+   "combitac_power": "CombiTac catalogue p.26: 'O 3 mm power unit up to 39 A', 600 V (pollution degree 2/CAT II).",
+   "combitac_data": "CombiTac catalogue p.46-49: 10 Gbit module, 'Ethernet up to 10 Gbit/s (Cat6a or higher)', RJ45 or M12 X-coded, 100,000 cycles, 14 N sliding force, 22 mm wide.",
+   "combitac_air": "CombiTac catalogue p.61-69: RCT06 pneumatic, 6 mm bore, shut-off on one side, 15 bar; 'Connecting and disconnecting under pressure is prohibited.'",
+   "combitac_fluid": "CombiTac catalogue p.70-75: SCT03 (G1/8) and LCT06 (G1/4), 'leakproof, shut-off on both sides', 15 bar; LCT06 8.48 L/min at 5 m/s, counter force 135 N at 10 bar; pressure drop 0.2-0.3 bar. Fluid couplings 'can also be used for pneumatic applications'.",
+   "odu_dock": "ODU-MAC Silver-Line P4+ docking frame: 'axial 1mm, radial +/- 4mm', floating, 100,000 cycles (ODU via adsgroup.org.uk).",
+   "harting_dock": "Harting Han 6 Mod Docking Frame 09140061716: floating +-2 mm, lock-in +-4 mm, >=10,000 cycles (harting.com).",
+   "cpc_everis": "CPC Everis BLQ6 blind-mate liquid coupling: Cv ~2.2, vacuum to 8.3 bar, 'disconnect under pressure without drips' (cpcworldwide.com; search snippet, page not opened)."
+  }
+ },
+ "cameras": {
+  "per_tray": {
+   "A": 2,
+   "B": 2,
+   "C": 2,
+   "D": 3,
+   "E": 3,
+   "F": 2
+  },
+  "bay": 1,
+  "unit": "DAL PR #189 (atomizer-viewport-cameras): the front unit pairs an HQ Camera (M12) with a 16 mm M12 lens (about O16 x 18 mm) and a Camera Module 3 Wide side by side, boards 2 mm apart, HQ lens 15 mm left of the axis and the Wide's 18.5 mm right; Pi 5 4 GB with Active Cooler and 27 W PSU; black PETG; the top unit rides a 2020 extrusion arm. DAL #147: 1/4-20 insert to a bought arm rather than a printed ball joint; cameras within the 200/300/500 mm ribbons of the board.",
+  "clearances": {
+   "tray_units": {
+    "A0": {
+     "top_over_floor_mm": 686.9,
+     "yaw_deg": 52.4,
+     "tilt_down_deg": 32.6
+    },
+    "A1": {
+     "top_over_floor_mm": 687.0,
+     "yaw_deg": 41.8,
+     "tilt_down_deg": 31.5
+    },
+    "B0": {
+     "top_over_floor_mm": 686.5,
+     "yaw_deg": 24.1,
+     "tilt_down_deg": 37.6
+    },
+    "B1": {
+     "top_over_floor_mm": 687.0,
+     "yaw_deg": -19.9,
+     "tilt_down_deg": 26.9
+    },
+    "C0": {
+     "top_over_floor_mm": 686.9,
+     "yaw_deg": 114.6,
+     "tilt_down_deg": 25.8
+    },
+    "C1": {
+     "top_over_floor_mm": 682.7,
+     "yaw_deg": -3.6,
+     "tilt_down_deg": 54.1
+    },
+    "D0": {
+     "top_over_floor_mm": 687.0,
+     "yaw_deg": 39.7,
+     "tilt_down_deg": 29.3
+    },
+    "D1": {
+     "top_over_floor_mm": 686.7,
+     "yaw_deg": 112.6,
+     "tilt_down_deg": 36.0
+    },
+    "D2": {
+     "top_over_floor_mm": 684.5,
+     "yaw_deg": 14.3,
+     "tilt_down_deg": 48.2
+    },
+    "E0": {
+     "top_over_floor_mm": 687.0,
+     "yaw_deg": 40.2,
+     "tilt_down_deg": 28.0
+    },
+    "E1": {
+     "top_over_floor_mm": 686.6,
+     "yaw_deg": 45.0,
+     "tilt_down_deg": 37.2
+    },
+    "E2": {
+     "top_over_floor_mm": 687.0,
+     "yaw_deg": 57.4,
+     "tilt_down_deg": 30.0
+    },
+    "F0": {
+     "top_over_floor_mm": 686.0,
+     "yaw_deg": 63.8,
+     "tilt_down_deg": 17.1
+    },
+    "F1": {
+     "top_over_floor_mm": 686.9,
+     "yaw_deg": 43.9,
+     "tilt_down_deg": 25.4
+    }
+   },
+   "limit_mm": 727.5,
+   "bay_lowest_mm": 1632.6,
+   "envelope_top_mm": 1604.5,
+   "bay_margin_mm": 28.1
+  },
+  "bay_camera": {
+   "y": -650.0,
+   "pivot_z": 1672.0,
+   "tilt_deg": 58.0
+  },
+  "fov": {
+   "wide": "102 x 67 deg (Camera Module 3 Wide)",
+   "hq_16mm": "about 22 x 17 deg: the IMX477's 6.29 x 4.71 mm active area behind a 16 mm lens (2 atan(w / 2f)); ours, from the published sensor"
+  },
+  "bay_view": {
+   "axis_hits_tray_at_y": -1159,
+   "distance_mm": 961,
+   "wide_width_mm": 2374,
+   "hq_width_mm": 378,
+   "tray_y_range": [
+    -1462.0,
+    -598.0
+   ]
+  }
+ },
+ "heat": {
+  "trays": {
+   "A": {
+    "slot": "R2",
+    "items": {
+     "cubxl": {
+      "w": 100.0,
+      "kind": "estimate",
+      "source": "the lab's gantry (Genmitsu PROVerXL 4030 frame, #199): no rating found; 100 W is ours"
+     },
+     "ot2": {
+      "w": 180.0,
+      "kind": "published",
+      "source": "Opentrons OT-2 specs: idle 90-120 W, active 100-180 W (docs.opentrons.com)"
+     },
+     "cameras": {
+      "w": 8.0,
+      "kind": "published",
+      "source": "Raspberry Pi 5: typical bare-board active current 800 mA at 5 V; the supply is rated 27 W (raspberrypi.com). Cameras add well under 1 W; 2 units"
+     },
+     "ups loss": {
+      "w": 8.6,
+      "kind": "estimate",
+      "source": "the UPS's own loss: Eaton publishes none; APC's SMT1500RM2UC is 98.9 % efficient at 50 % load (ENERGY STAR), so 3 % covers charging as well"
+     }
+    },
+    "total_w": 297,
+    "ups_ok": true,
+    "estimated_share": 0.37
+   },
+   "B": {
+    "slot": "R3",
+    "items": {
+     "carousel": {
+      "w": 40.0,
+      "kind": "estimate",
+      "source": "the multi-doser's steppers, actuator and board (powder-doser #185): ours, 40 W"
+     },
+     "cameras": {
+      "w": 8.0,
+      "kind": "published",
+      "source": "Raspberry Pi 5: typical bare-board active current 800 mA at 5 V; the supply is rated 27 W (raspberrypi.com). Cameras add well under 1 W; 2 units"
+     },
+     "ups loss": {
+      "w": 1.4,
+      "kind": "estimate",
+      "source": "the UPS's own loss: Eaton publishes none; APC's SMT1500RM2UC is 98.9 % efficient at 50 % load (ENERGY STAR), so 3 % covers charging as well"
+     }
+    },
+    "total_w": 49,
+    "ups_ok": true,
+    "estimated_share": 0.84
+   },
+   "C": {
+    "slot": "F1",
+    "items": {
+     "h2d": {
+      "w": 1050.0,
+      "kind": "snippet",
+      "source": "Bambu Lab H2D: average 1050 W; max 1320 W at 110 V for under 3 min (bambulab.com, search snippet)"
+     },
+     "a1mini": {
+      "w": 150.0,
+      "kind": "snippet",
+      "source": "Bambu Lab A1 mini: max power 150 W (Bambu's TDS via a retailer)"
+     },
+     "cameras": {
+      "w": 8.0,
+      "kind": "published",
+      "source": "Raspberry Pi 5: typical bare-board active current 800 mA at 5 V; the supply is rated 27 W (raspberrypi.com). Cameras add well under 1 W; 2 units"
+     },
+     "ups loss": {
+      "w": 36.2,
+      "kind": "estimate",
+      "source": "the UPS's own loss: Eaton publishes none; APC's SMT1500RM2UC is 98.9 % efficient at 50 % load (ENERGY STAR), so 3 % covers charging as well"
+     }
+    },
+    "total_w": 1244,
+    "ups_ok": true,
+    "estimated_share": 0.03
+   },
+   "D": {
+    "slot": "R1",
+    "items": {
+     "sem": {
+      "w": 500.0,
+      "kind": "snippet",
+      "source": "Hitachi TM4000PlusIII: 'Single phase AC100-240 V ... 500 VA', PC separate (Series III brochure; the PlusII's figure was not found)"
+     },
+     "xrd": {
+      "w": 600.0,
+      "kind": "published",
+      "source": "Rigaku MiniFlex 600: '600 W X-ray tube', '1-phase, 100-240 V' (rigaku.com); the total draw was not found, so this counts the tube alone"
+     },
+     "openflexure_v7": {
+      "w": 10.0,
+      "kind": "estimate",
+      "source": "a Pi and three small steppers: ours, 10 W"
+     },
+     "openflexure_delta": {
+      "w": 10.0,
+      "kind": "estimate",
+      "source": "the same: ours, 10 W"
+     },
+     "cameras": {
+      "w": 12.0,
+      "kind": "published",
+      "source": "Raspberry Pi 5: typical bare-board active current 800 mA at 5 V; the supply is rated 27 W (raspberrypi.com). Cameras add well under 1 W; 3 units"
+     },
+     "ups loss": {
+      "w": 34.0,
+      "kind": "estimate",
+      "source": "the UPS's own loss: Eaton publishes none; APC's SMT1500RM2UC is 98.9 % efficient at 50 % load (ENERGY STAR), so 3 % covers charging as well"
+     }
+    },
+    "total_w": 1166,
+    "ups_ok": true,
+    "estimated_share": 0.05
+   },
+   "E": {
+    "slot": "R4",
+    "items": {
+     "pip": {
+      "w": 200.0,
+      "kind": "estimate",
+      "source": "Plastometrex PLX-Benchtop: no rating found; 200 W is ours"
+     },
+     "nanoindenter": {
+      "w": 200.0,
+      "kind": "estimate",
+      "source": "KLA iMicro: no rating found; 200 W is ours"
+     },
+     "mastersizer": {
+      "w": 200.0,
+      "kind": "snippet",
+      "source": "Malvern Mastersizer 3000+ Ultra: '50 W (no dispersion) up to 200 W' (DirectIndustry, snippet)"
+     },
+     "cameras": {
+      "w": 12.0,
+      "kind": "published",
+      "source": "Raspberry Pi 5: typical bare-board active current 800 mA at 5 V; the supply is rated 27 W (raspberrypi.com). Cameras add well under 1 W; 3 units"
+     },
+     "ups loss": {
+      "w": 18.4,
+      "kind": "estimate",
+      "source": "the UPS's own loss: Eaton publishes none; APC's SMT1500RM2UC is 98.9 % efficient at 50 % load (ENERGY STAR), so 3 % covers charging as well"
+     }
+    },
+    "total_w": 630,
+    "ups_ok": true,
+    "estimated_share": 0.66
+   },
+   "F": {
+    "slot": "F2",
+    "items": {
+     "polisher": {
+      "w": 740.0,
+      "kind": "snippet",
+      "source": "Buehler EcoMet 30: base motor 440 W, semi-automatic head 300 W (distributors' sheets, snippets)"
+     },
+     "furnace": {
+      "w": 2800.0,
+      "kind": "published",
+      "source": "Nabertherm NAT 15/65: connected load 2.8 kW, 1-phase (nabertherm.com)"
+     },
+     "cameras": {
+      "w": 8.0,
+      "kind": "published",
+      "source": "Raspberry Pi 5: typical bare-board active current 800 mA at 5 V; the supply is rated 27 W (raspberrypi.com). Cameras add well under 1 W; 2 units"
+     },
+     "ups loss": {
+      "w": 106.4,
+      "kind": "estimate",
+      "source": "the UPS's own loss: Eaton publishes none; APC's SMT1500RM2UC is 98.9 % efficient at 50 % load (ENERGY STAR), so 3 % covers charging as well"
+     }
+    },
+    "total_w": 3654,
+    "ups_ok": false,
+    "estimated_share": 0.03
+   }
+  },
+  "vlm": {
+   "enclosure_m": [
+    2.83,
+    3.12,
+    3.95
+   ],
+   "surface_m2": 55.9,
+   "scenarios": {
+    "everything on at its rating": {
+     "w": 7040,
+     "rise_k_unventilated": 22.9,
+     "airflow_m3h_for_5k": 4203,
+     "airflow_m3h_for_10k": 2101
+    },
+    "printing in storage (tray C) and the furnace holding (tray F at a third of 2.8 kW)": {
+     "w": 2277,
+     "rise_k_unventilated": 7.4,
+     "airflow_m3h_for_5k": 1359,
+     "airflow_m3h_for_10k": 680
+    },
+    "idle: controllers, cameras and UPSs only (about 60 W a tray, an estimate)": {
+     "w": 360,
+     "rise_k_unventilated": 1.2,
+     "airflow_m3h_for_5k": 215,
+     "airflow_m3h_for_10k": 107
+    }
+   },
+   "method": "rise with no ventilation = W / (5.5 W/m2K x surface): the usual figure for painted sheet steel in still air, an estimate for a machine this size; airflow = W / (rho cp dT), air at 1.2 kg/m3 and 1005 J/kg K"
+  },
+  "utilities": {
+   "ups": {
+    "model": "Eaton 5PX1500RTNG2",
+    "size_mm": [
+     86.0,
+     447.0,
+     437.0
+    ],
+    "rating": "1500 VA, 120 V",
+    "runtime": "44 min at 300 W (230 V model, retailer)",
+    "where": "on every tray, back right",
+    "transit_s": "about 6 s from R2 to the opening; under 15 s from any slot at Kardex's speeds",
+    "source": "Eaton 5PX1500RTNG2 (120 V, 1500 VA, rack/tower 2U): 3.4 x 17.2 x 17.6 in (86 x 437 x 447 mm), weight '50.7' (lb, about 23 kg), farnell.com data sheet (search snippet); 44 min at 300 W (230 V model, retailer listing). Heat dissipation not published. APC SMT1500RM2UC for comparison: 432 x 477 x 86 mm, 26.5 kg, 1440 VA / 1000 W, 98.9 % efficient at 50 % load (ENERGY STAR)."
+   },
+   "n2": {
+    "model": "Parker Balston UHPN2-1100",
+    "size_mm": [
+     305.0,
+     406.0,
+     889.0
+    ],
+    "fits_tray": false,
+    "where": "beside the VLM; N2 through the docks",
+    "source": "Parker Balston UHPN2-1100: 35 in H x 12 in W x 16 in D (889 x 305 x 406 mm), 50 kg (VWR), 120 VAC 60 Hz, 500-1100 cc/min at 99.9999 %, needs compressed air at 60-125 psig, no compressor of its own (govsci.com, gmi-inc.com, marshallscientific.com; search snippets). Peak Precision Nitrogen 1000: 1000 cc/min, 26 kg, no compressor (Peak's sheet, snippet)."
+   },
+   "chiller": {
+    "model": "Thermo Scientific ThermoFlex 900",
+    "cooling_w": 900,
+    "heat_to_room": "900 W plus its own input, which was not found",
+    "where": "beside the VLM; water through the docks, so its heat stays out of the enclosure",
+    "source": "Thermo Scientific ThermoFlex 900: up to 900 W of cooling at a +20 C setpoint and 25 C ambient (60 Hz), 5-40 C, pump 15.1 L/min at 4.1 bar (thermofisher.com TF900, snippet). Its size and electrical input were not found."
+   }
+  },
+  "ask_kardex": [
+   "The heat a tray may give off in a slot, and in total, and the interior temperature the drives and controls are rated for.",
+   "Whether a column can be ventilated (a filtered fan and an outlet on the roof), and whether a furnace at 650 C may run inside at all.",
+   "The extractor's repeatability at a slot, for a dock that takes 4 mm of misalignment.",
+   "Whether the side walls can take a window and a dock behind the supports at a slot, and the space between the column wall and the cladding (taken here as about 105 mm).",
+   "Whether power to a slot can stay on while a tray is stored, and what they would fit (the dealer offered a quick-connect cord)."
+  ]
+ },
+ "tether": {
+  "rows": {
+   "A": {
+    "slot": "R2",
+    "column": "rear",
+    "vertical_mm": 246,
+    "payout_mm": 2109
+   },
+   "B": {
+    "slot": "R3",
+    "column": "rear",
+    "vertical_mm": 1046,
+    "payout_mm": 2342
+   },
+   "C": {
+    "slot": "F1",
+    "column": "front",
+    "vertical_mm": 1046,
+    "payout_mm": 2159
+   },
+   "D": {
+    "slot": "R1",
+    "column": "rear",
+    "vertical_mm": 554,
+    "payout_mm": 2167
+   },
+   "E": {
+    "slot": "R4",
+    "column": "rear",
+    "vertical_mm": 1846,
+    "payout_mm": 2792
+   },
+   "F": {
+    "slot": "F2",
+    "column": "front",
+    "vertical_mm": 1846,
+    "payout_mm": 2641
+   }
+  },
+  "note": "The line has to stay in the 30 mm between the tray's side and the extractor's guide rails, the shutter needs a notch for it, and while the tray is out the line spans the shaft, so the extractor can't fetch any other tray. It suits one tray stored at the opening's own height.",
+  "source": "igus e-spool flex 2.0: extension up to 15 m, cables 5-15 mm, spring (SP, SB) or crank; 'No slip ring: Uninterrupted supply of power, data and air.' igus e-spool power: motor-driven, up to 25 m, 1.2 m/s, power, data, fibre, air and liquids, no slip ring (igus.com)."
+ }
+}
