@@ -1,7 +1,7 @@
 {
  "name": "vlm_assembly",
  "fps": 15,
- "n_frames": 413,
+ "n_frames": 419,
  "size": [
   1280,
   720
@@ -9,7 +9,7 @@
  "substeps": [
   {
    "label": "1/7",
-   "caption": "The Kardex Shuttle XP 500 quoted in #53, beside the lab's rePowder atomizer: 2450 × 864 mm trays in a 2780 × 3074 mm module, 3950 mm tall to stay under 13 ft. The base frame goes down first, on levelling feet.",
+   "caption": "The Kardex Shuttle XP 500 quoted in #53, between the lab's rePowder atomizer and an Aconity MIDI: 2450 × 864 mm trays in a 2780 × 3074 mm module, 3950 mm tall to stay under 13 ft. The base frame goes down first, on levelling feet.",
    "start_frame": 0,
    "end_frame": 62
   },
@@ -33,21 +33,21 @@
   },
   {
    "label": "5/7",
-   "caption": "Three electrified trays (#53): strong (1080 lb), medium (794 lb) and light (502 lb). Each has a power strip and a socket; it has power in its slot and at the opening, not while it moves.",
+   "caption": "Six electrified trays: #53's strong (1080 lb), medium (794 lb) and light (502 lb) ones, and three more light ones for the equipment here. Each has a power strip and a socket; it has power in its slot and at the opening, not while it moves.",
    "start_frame": 225,
-   "end_frame": 284
+   "end_frame": 290
   },
   {
    "label": "6/7",
    "caption": "Cladding in RAL 7035 and the access opening, 2500 mm wide at a 833 mm table: header with the LED light, side posts, the OPTIC panel on the right post, and the powered safety shutter at the back of the bay, which closes whenever the extractor moves.",
-   "start_frame": 285,
-   "end_frame": 344
+   "start_frame": 291,
+   "end_frame": 350
   },
   {
    "label": "7/7",
    "caption": "Assembled: from outside, a closed cabinet with one opening. Next: what goes inside.",
-   "start_frame": 345,
-   "end_frame": 412
+   "start_frame": 351,
+   "end_frame": 418
   }
  ]
 }

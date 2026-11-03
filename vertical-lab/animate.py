@@ -88,7 +88,7 @@ DOSE_G = 0.512
 CAM_WIDE = [(3400, -10600, 6000), (0, -1100, 1550), (0, 0, 1)]
 CAM_FRONT = [(1500, -9800, 2900), (0, -1200, 1750), (0, 0, 1)]
 CAM_OPEN = [(1700, -7400, 3300), (100, -1000, 1400), (0, 0, 1)]
-CAM_CELL = [(-200, -9200, 7600), (150, -1500, 900), (0, 0, 1)]      # over the cell: the atomizer, the VLM, the Aconity
+CAM_CELL = [(-300, -11800, 8200), (150, -1300, 1500), (0, 0, 1)]    # over the cell: the atomizer, the VLM, the Aconity
 CAM_WORK = [(-1250, -4300, 2550), (60, -1450, 1060), (0, 0, 1)]
 CAM_MID = [(1100, -3300, 2100), (245, -1320, 1170), (0, 0, 1)]      # on the way to CAM_DOSE, clear of the arm
 CAM_DOSE = [(640, -1770, 1300), (245, -1330, 1180), (0, 0, 1)]      # at the station: the upright vial in its cup
@@ -807,11 +807,201 @@ def disassembly(data):
     return sc.save()
 
 
+def scale(data):
+    """Scaling up (scale.py): eight Shuttle XP 500s 15.15 m tall in two rows, served by a UR10e on a floor rail."""
+    import robot as RB
+    import scale as SC
+    sc = Scene("vlm_scale", "Scaling up: Kardex Shuttle XP 500s at 15.15 m, served by a UR10e on a rail")
+    sc.add("floor", pv.Plane(center=(0, 0, -1), direction=(0, 0, 1), i_size=60000, j_size=60000), FLOOR_C, "floor",
+           ambient=1.0, diffuse=0.0, specular=0.0, smooth_shading=False)
+    tmpl = SC.tray_templates(data, LOADS)
+    shell = SC.unit_shell()
+    tall = SC.slots()
+    units = [(1, 1), (1, 0), (1, 2), (1, 3), (0, 0), (0, 1), (0, 2), (0, 3)]     # the first is the one that grows
+    # the tray each unit brings down: one high up, one low, and so on, so the extractors run different distances
+    pick = {u: k for u, k in zip(units, (len(tall) // 2 - 2, 12, 3, len(tall) // 2 - 6, len(tall) // 2 - 10, 7,
+                                         len(tall) // 2 - 4, 20))}
+    grow_parts, ghosts, bands = [], {}, []
+    for r, i in units:
+        g = f"u{r}{i}"
+        sc.gmat[g] = SC.unit_xform(r, i)
+        for name, (mesh, col, ghost, grow) in shell.items():
+            grp = g if grow is None else f"{g}_g_{name}"
+            if grow is not None:
+                sc.parent[grp] = g
+                grow_parts.append((grp, grow))
+            kw = dict(specular=0.05, ambient=0.35) if name.startswith("skin") else {}
+            if name == "LED light":
+                kw = dict(ambient=0.9, diffuse=0.2)
+            sc.add(f"{g}/{name}", mesh, col, grp, opacity=ghost if name == "shutter" else 1.0, smooth_shading=False,
+                   **kw)
+            if ghost is not None and name != "shutter":
+                ghosts[f"{g}/{name}"] = ghost
+        by: dict = {}
+        grower = (r, i) == units[0]
+        for k, (y, z, kind) in enumerate(tall):
+            if k == pick[(r, i)]:
+                continue
+            band = int((z + SC.KIND_H[kind]) // 1500) if grower else 0    # the growing unit's trays, in height bands
+            for key, m in tmpl[kind].items():
+                by.setdefault((band, *key), []).append(m.translate((0, y, z), inplace=False))
+        for j, ((band, col, op), ms) in enumerate(sorted(by.items())):
+            sc.add(f"{g}/trays/{j}", pv.merge(ms, merge_points=False), col, f"{g}_trays", opacity=op,
+                   smooth_shading=col != tuple(V.MATERIALS["vlm_tray"][:3]))
+            if grower:
+                bands.append((f"{g}/trays/{j}", (band + 1) * 1500.0))
+        sc.parent[f"{g}_trays"] = g
+        y, z, kind = tall[pick[(r, i)]]
+        for j, ((col, op), m) in enumerate(sorted(tmpl[kind].items())):
+            sc.add(f"{g}/tray/{j}", m, col, f"{g}_tray", opacity=op, smooth_shading=col != tuple(V.MATERIALS["vlm_tray"][:3]))
+        sc.parent[f"{g}_tray"] = g
+        sc.gmat[f"{g}_tray"] = T((0, y, z))
+        sc.add(f"{g}/lift", SC.extractor_mesh(), V.MATERIALS["vlm_lift"][:3], f"{g}_lift", smooth_shading=False)
+        sc.parent[f"{g}_lift"] = g
+        sc.gmat[f"{g}_lift"] = T((0, 0, z))
+    n_trays, n_inst = len(tall) * len(units), 3 * len(tall) * len(units)
+    # the rail and the arm on its carriage
+    span = SC.N_ROW * SC.PITCH_X + 1200
+    for part, items in SC.rail_meshes(span).items():
+        for name, (mesh, col) in items.items():
+            sc.add(f"{part}/{name}", mesh, col, part, smooth_shading=False,
+                   **(dict(ambient=0.8) if "light" in name else {}))
+    car_x = [SC.unit_xform(1, SC.N_ROW - 1)[0, 3] + 1200.0]
+    sc.gmat["carriage"] = T((car_x[0], 0, 0))
+    rb = RB.Robot(sc, ROBOT, "carriage", T((0, 0, SC.RAIL_Z)), q0=PARK_DEG, prefix="rail_ur")
+    rb.set(np.radians((0.0, -150.0, 135.0, -75.0, -90.0, 0.0)))
+    everything_else = [n for n in sc.actors if not n.startswith(f"u{units[0][0]}{units[0][1]}/") and n != "floor"]
+
+    cars = {u: dict(y=tall[pick[u]][0], z=tall[pick[u]][1]) for u in units}
+
+    def grow(f):
+        """The first unit from the lab's 3950 mm to H_TALL; its trays above the roof are hidden as it grows."""
+        h = V.UNIT_H + (SC.H_TALL - V.UNIT_H) * f
+        for grp, pivot in grow_parts:
+            if not grp.startswith(f"u{units[0][0]}{units[0][1]}_"):
+                continue
+            if pivot == "roof":
+                sc.gmat[grp] = T((0, 0, h - SC.H_TALL))
+            else:
+                sc.gmat[grp] = T((0, 0, pivot)) @ S((1, 1, (h - pivot) / (SC.H_TALL - pivot))) @ T((0, 0, -pivot))
+        for name, top in bands:                 # nothing pokes out of the roof (the cladding is opaque meanwhile)
+            sc.alpha[name] = 1.0 if top <= h - 260.0 else 0.0
+        g0 = f"u{units[0][0]}{units[0][1]}"
+        for name in [x for x in sc.actors if x.startswith(f"{g0}/tray/") or x == f"{g0}/lift"]:
+            sc.alpha[name] = 1.0 if cars[units[0]]["z"] + 800.0 <= h - 260.0 else 0.0
+        return h
+
+    def skin(f):
+        for n, gh in ghosts.items():
+            sc.base_alpha[n] = 1.0 + (gh - 1.0) * f
+
+    def trays_move(down=True, stagger=0.35):
+        """Every unit's extractor brings its tray from its slot to the opening (or back): pull it on, ride, push it
+        out; units start a little apart."""
+        def up(e):
+            for j, u in enumerate(units):
+                g = f"u{u[0]}{u[1]}"
+                c = cars[u]
+                t0 = (j % 4) * stagger / 4 * (1 if down else 0.5)
+                v = min(1.0, max(0.0, (e - t0) / (1.0 - stagger + 1e-9)))
+                if not down:
+                    v = 1.0 - v
+                a, b2 = min(1.0, v / 0.2), min(1.0, max(0.0, (v - 0.2) / 0.6))
+                c3 = min(1.0, max(0.0, (v - 0.8) / 0.2))
+                y = c["y"] + (0.0 - c["y"]) * a + (V.Y_OPEN - 0.0) * c3
+                z = c["z"] + (V.Z_OPEN - c["z"]) * b2
+                sc.gmat[f"{g}_tray"] = T((0, y, z))
+                sc.gmat[f"{g}_lift"] = T((0, 0, z))
+        return up
+
+    def roll_to(x1):
+        x0 = car_x[0]
+
+        def up(e):
+            car_x[0] = x0 + (x1 - x0) * e
+            sc.gmat["carriage"] = T((car_x[0], 0, 0))
+            rb.set()
+        return up
+
+    def reach(r, i):
+        """IK pose with the gripper down 250 mm into unit (r, i)'s presented tray, 150 mm over its floor."""
+        x = SC.unit_xform(r, i)[0, 3]
+        side = 1.0 if r == 1 else -1.0
+        p = np.array([x, side * (SC.AISLE / 2 + 150.0 + 250.0), V.Z_OPEN + V.T_FLOOR + 150.0])
+        return P.tcp_frame(p, (0, 0, -1), 90.0)
+
+    sc.gauges = [("Shuttles", f"{len(units)} × Shuttle XP 500, {SC.H_TALL / 1000:.2f} m"),
+                 ("Trays", f"{len(units)} × {len(tall)} = {n_trays}, powered"),
+                 ("Instruments", f"{n_inst}: OT-2, CubXL, H2D, A2L, A1 mini"),
+                 ("Arm", f"one {ROBOT_NAME} on a floor rail")]
+    gauges = sc.gauges
+    sc.gauges = []
+    for n in everything_else:
+        sc.alpha[n] = 0.0
+    grow(0.0)
+    x11 = SC.unit_xform(1, 1)[0, 3]
+    C1 = [(x11 + 4200, -8200, 3300), (x11, SC.Y_UNIT, 2200), (0, 0, 1)]
+    C2 = [(x11 + 15000, -36000, 11000), (x11, SC.Y_UNIT, 7600), (0, 0, 1)]
+    C3 = [(31000, -25000, 23000), (0, 0, 7000), (0, 0, 1)]
+    C4 = [(14500, 0, 3200), (0, 0, 2300), (0, 0, 1)]                  # down the aisle from its east end
+    C5 = [(29000, 21000, 24000), (0, 0, 6800), (0, 0, 1)]
+    C6 = [(11500, 0, 4600), (-2000, 0, 1500), (0, 0, 1)]               # in the aisle: openings, rail and arm
+    sc.cam = list(C1)
+    n = 6
+    sc.step(f"1/{n}", "Scaling up. The Shuttle XP 500 in the lab is 3.95 m tall. Kardex builds the Shuttle up to 30 m, "
+            "in 100 mm steps, on the same 2780 × 3074 mm footprint: here it is 15.15 m, just under 50 ft.",
+            4.2, lambda e: grow(e), hold=1.0, cam_to=C2,
+            labels=[(f"{SC.H_TALL / 1000:.2f} m (49 ft 8 in)", (x11 + V.UNIT_W / 2, SC.Y_UNIT, SC.H_TALL), (0.70, 0.20)),
+                    ("the lab's unit: 3.95 m", (x11 + V.UNIT_W / 2, SC.Y_UNIT - V.UNIT_D / 2, V.UNIT_H), (0.72, 0.62))])
+    others = [n2 for n2 in everything_else if n2.startswith("u")]
+
+    def appear(e):
+        for n2 in others:
+            sc.alpha[n2] = min(1.0, e * 1.4)
+        for u in units[1:]:
+            g = f"u{u[0]}{u[1]}"
+            sc.gmat[g] = T((0, 0, -SC.H_TALL * (1.0 - e) ** 2)) @ SC.unit_xform(*u)
+    sc.step(f"2/{n}", f"An array: eight of them in two rows of four, facing each other across an {SC.AISLE:.0f} mm aisle. "
+            f"Each holds {len(tall)} powered trays in its two columns, one load of three instruments each.",
+            4.0, appear, hold=1.0, cam_to=C3)
+    rail = [n2 for n2 in everything_else if not n2.startswith("u")]
+
+    def rail_in(e):
+        for n2 in rail:
+            sc.alpha[n2] = min(1.0, e * 1.5)
+        sc.gmat["rail"] = T((0, 0, -400 * (1 - e)))
+    sc.step(f"3/{n}", f"One {ROBOT_NAME} serves all eight openings: it rides a floor rail down the aisle on an 800 mm "
+            "riser, the height it has on the MiR250, and turns to either row.", 2.6, rail_in, hold=0.8, cam_to=C4,
+            labels=[(f"{ROBOT_NAME} on its rail carriage", (car_x[0], 0, 1600), (0.80, 0.30))])
+    sc.gauges = gauges
+    sc.step(f"4/{n}", f"See-through: {n_trays} trays and {n_inst} instruments, every tray powered in its slot (#53). "
+            "The extractors run in parallel, one per unit.", 2.6, skin, hold=1.0, cam_to=C5)
+    first, second = (1, 2), (0, 0)
+    sc.step(f"5/{n}", "Every unit brings a tray down to its opening at once, at Kardex's 2 m/s vertical speed, while the "
+            "arm rolls to the first one.", 6.0, both(trays_move(True), roll_to(SC.unit_xform(*first)[0, 3])),
+            hold=0.3, cam_to=C6)
+    q_park = rb.q.copy()
+    cap = "The arm reaches into the opening and back, then rolls on to the next unit, across the aisle."
+    sc.step(f"5/{n}", cap, 1.6, rb.joint_to(Tw=reach(*first)), hold=0.4)
+    sc.step(f"5/{n}", cap, 1.2, rb.joint_to(q_park), hold=0.1)
+    q_south = q_park.copy()
+    q_south[0] += math.pi
+    sc.step(f"5/{n}", cap, 2.8, both(roll_to(SC.unit_xform(*second)[0, 3]), rb.joint_to(q_south)), hold=0.1)
+    sc.step(f"5/{n}", cap, 1.6, rb.joint_to(Tw=reach(*second)), hold=0.4)
+    sc.step(f"5/{n}", cap, 1.2, rb.joint_to(q_south), hold=0.1)
+    sc.step(f"6/{n}", "The trays go back to their slots, where they have power again. The same arm, the same trays and "
+            f"the same equipment as the lab's one unit, on about {len(units) * 9.4:.0f} m² of floor plus the aisle.",
+            6.0, trays_move(False), hold=0.3, cam_to=C3)
+    sc.step(f"6/{n}", "The same arm, the same trays and the same equipment as the lab's one unit, "
+            f"{SC.H_TALL / V.UNIT_H:.1f} times as tall and eight times over.", 1.0, None, hold=3.0, still=True)
+    return sc.save()
+
+
 def full():
     """Join the four MP4s without re-encoding."""
     import subprocess
     from scene import OUT
-    parts = [OUT / "mp4" / f"vlm_{c}.mp4" for c in ("assembly", "loading", "workflow", "disassembly")]
+    parts = [OUT / "mp4" / f"vlm_{c}.mp4" for c in ("assembly", "loading", "workflow", "scale", "disassembly")]
     lst = OUT / "mp4" / "concat.txt"
     lst.write_text("".join(f"file '{p.name}'\n" for p in parts))
     out = OUT / "mp4" / "vertical_lab_full.mp4"
@@ -827,7 +1017,8 @@ def ur_reach() -> float:
 
 
 PARK_RAD = np.radians(PARK_DEG)
-CHAPTERS = {"assembly": assembly, "loading": loading, "workflow": workflow, "disassembly": disassembly}
+CHAPTERS = {"assembly": assembly, "loading": loading, "workflow": workflow, "disassembly": disassembly,
+            "scale": scale}
 
 if __name__ == "__main__":
     names = sys.argv[1:] or [*CHAPTERS, "full"]

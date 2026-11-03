@@ -59,27 +59,27 @@ def header_gap(pts) -> float:
 
 
 def seats() -> dict[str, np.ndarray]:
-    """The workflow's grip poses, world frame (the trays at the opening)."""
+    """The workflow's grip poses, world frame (the trays at the opening): every one a side grasp with the gripper level,
+    so the vial stays upright, as animate.py's workflow does it."""
     import carousel as C
     out = {}
-    block, rs = P.vial_rack()
+    block, rs = P.vial_rack(A.RACK_N, A.RACK_PITCH)
     rack_xy = A.LOADS["B"][0][1:]
     s = np.array(rs[A.RACK_SEAT]) + (*rack_xy, V.T_FLOOR)
-    out["vial rack (tray B)"] = A.down(A.tray_world("B", s + (0, 0, 50.0)))
+    out["vial rack (tray B)"] = A.level(A.tray_world("B", s + (0, 0, A.SIDE_Z)))
     car_xy = A.LOADS["B"][1][1:]
     vs = C.vial_seat()
     cup = np.array([car_xy[0] - vs[1], car_xy[1] + vs[0], V.T_FLOOR + vs[2]])
-    out["multi-doser cup (tray B)"] = A.level(A.tray_world("B", cup + (0, 0, 32.0)))
-    _, seat = P.buffer_holder()
-    b = A.AMR_XY[0] + A.BUFFER_LOCAL[0], A.AMR_XY[1] + A.BUFFER_LOCAL[1], P.AMR_TOP - 20 + seat[2] + 50.0
-    out["holder on the arm's base"] = A.down(np.array(b))
-    # the CubXL's free rack seat on tray A, through the same centring animate.py uses
+    p_cup = A.tray_world("B", cup + (0, 0, A.SIDE_Z))
+    out["multi-doser cup (tray B)"] = A.level(p_cup)
+    out["holding the vial, clear of the opening"] = A.level(p_cup + (0, -380, 60))
+    # the seat on the deck of tray C's right-hand CubXL, through the same centring animate.py uses
     import lab
     _, bb = lab.meshes()["equipment"]["cubxl_frame"]
     cx, cy = (bb[0] + bb[1]) / 2, (bb[2] + bb[3]) / 2
-    x, y = A.LOADS["A"][0][1:]
-    p = np.array(A.CUB_SLOT) + (x - cx, y - cy, V.T_FLOOR - bb[4])
-    out["CubXL rack seat (tray A)"] = A.down(A.tray_world("A", p + (0, 0, 50.0 - 8.0)))
+    x, y = A.LOADS["C"][A.CUB_WORK][1:]
+    p = np.array(A.CUB_SEAT) + (x - cx, y - cy, V.T_FLOOR - bb[4])
+    out["CubXL deck seat (tray C)"] = A.level(A.tray_world("C", p + (0, 0, A.SIDE_Z)))
     return out
 
 
