@@ -54,8 +54,9 @@ def _hash_sources(*files) -> str:
     return h.hexdigest()[:12]
 
 
-def to_mesh(shape, tol: float) -> pv.PolyData:
-    verts, tris = shape.tessellate(tol, 0.3)
+def to_mesh(shape, tol: float, ang: float = 0.3) -> pv.PolyData:
+    """CadQuery shape -> triangles; tol is the chord tolerance in mm, ang the angular one in radians."""
+    verts, tris = shape.tessellate(tol, ang)
     if not tris:
         return pv.PolyData()
     pts = np.array([(v.x, v.y, v.z) for v in verts], float)

@@ -53,7 +53,7 @@ def load(keys=None, rebuild=False) -> dict:
     """{key: (Instrument, {piece: [entry]})}, cached per model on its family's source."""
     CACHE.mkdir(exist_ok=True)
     data = {}
-    shared = b"".join((HERE / f).read_bytes() for f in ("instruments.py", "lab_models/common.py"))
+    shared = b"".join((HERE / f).read_bytes() for f in ("instruments.py", "lab_models/common.py", "lab.py"))
     for key, (mod, build) in registry().items():
         if keys is not None and key not in keys:
             continue
