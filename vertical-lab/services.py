@@ -620,13 +620,13 @@ def make_lab(sc, data, robot=False):
     return SLab(sc, data, robot=robot)
 
 
-def build_vlm(name, data, idata, title, docks=True, cams=True):
+def build_vlm(name, data, idata, title, docks=True, cams=True, mp4=True):
     """The VLM with trays A-F and their equipment (as line.py has them, without the floor line), the docks, plates,
     UPSs and cameras. Returns (scene, lab, {tray: [line actor names]})."""
     import line
     import tour
     from scene import Scene, T
-    sc = Scene(name, title, gif=False)
+    sc = Scene(name, title, gif=False, mp4=mp4)
     L = make_lab(sc, data)
     for k, loads in line.TRAY_LOADS.items():
         line.add_tray(sc, L, k)
@@ -757,6 +757,30 @@ def movie_services(data, idata):
             "overhead one at the back of the bay, above Kardex's product envelope, looking down on the presented "
             "tray.", 3.2, None, hold=2.6, cam_to=CAM_S_CAMS, still=True,
             labels=cam_lbl + [("overhead camera at the bay", (0, BAY_CAM["y"], BAY_CAM["pivot_z"]), (0.60, 0.13))])
+    return sc.save()
+
+
+def still_cameras(data, idata, k="D"):
+    """out/vlm_cameras_still.png: tray k presented, its stream cameras and the bay's overhead one."""
+    import animate as A
+    sc, L, live = build_vlm("vlm_cameras", data, idata, f"Stream cameras: tray {k} at the opening", mp4=False)
+    L.skin(1.0)(1.0)
+    L.tray[k] = [V.Y_OPEN, V.Z_OPEN]
+    L.where[k] = "open"
+    L.lift_z = V.Z_OPEN
+    set_dock(sc, "open", 0.0)
+    set_dock(sc, HOME[k], 1.0)
+    L.svc_lines = [(f"Tray {k}", f"at the opening, {len(TRAY_CAMS[k])} cameras"), ("Bay", "one overhead camera")]
+    L.apply_state()
+    sc.cam = [(1500, -3900, 1560), (-150, -1000, 1180), (0, 0, 1)]
+    lbl = []
+    for i, (x, y, *_r) in enumerate(TRAY_CAMS[k]):
+        lbl.append((f"Pi 5 + HQ + Wide, on tray {k}", tuple(A.tray_world(k, (x, y, V.T_FLOOR + CAM_PIVOT + 30))),
+                    (0.12 + 0.30 * i + (0.08 if i == 2 else 0.0), 0.20 + 0.06 * (i % 2))))
+    lbl.append(("overhead camera at the bay", (0.0, BAY_CAM["y"], BAY_CAM["pivot_z"]), (0.60, 0.09)))
+    sc.step("", f"Tray {k} at the opening: {len(TRAY_CAMS[k])} Pi 5 units on 2020 posts, each aimed at an instrument's "
+            "working face and under the 727.5 mm product height, and the overhead unit at the back of the bay, 28 mm "
+            "above Kardex's product envelope.", 0.1, None, hold=0.0, labels=lbl, still=True)
     return sc.save()
 
 
@@ -1217,7 +1241,7 @@ def _main():
     args = sys.argv[1:] or ["services"]
     data = idata = None
     for word in args:
-        if word in ("services", "cabling", "tether") and data is None:
+        if word in ("services", "cabling", "tether", "cameras") and data is None:
             import lab
             import tour
             data, idata = lab.meshes(), tour.load()
@@ -1227,6 +1251,8 @@ def _main():
         elif word == "cabling":
             print(movie_cabling(data, idata), flush=True)
             _gif("vlm_cabling")
+        elif word == "cameras":
+            print(still_cameras(data, idata), flush=True)
         elif word == "tether":
             print(movie_tether(data, idata), flush=True)
             _gif("vlm_tether")

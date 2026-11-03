@@ -13,7 +13,7 @@ coupling instead: mains, Ethernet, compressed air, N2 and chilled water. A UPS o
 | **The coupling on its own** (`tour.py tray_dock`) | [`out/instruments/tray_dock.gif`](../out/instruments/tray_dock.gif) | [`out/mp4/instruments/tray_dock.mp4`](../out/mp4/instruments/tray_dock.mp4) |
 | **The camera unit on its own** (`tour.py stream_cam`) | [`out/instruments/stream_cam.gif`](../out/instruments/stream_cam.gif) | [`out/mp4/instruments/stream_cam.mp4`](../out/mp4/instruments/stream_cam.mp4) |
 
-![Tray A at the opening with its cameras and the bay camera](../out/vlm_services_still.png)
+![Tray D at the opening with its three cameras and the bay camera](../out/vlm_cameras_still.png)
 
 [`out/services.json`](../out/services.json) has the coupling, the camera clearances, the heat budget and the tether's
 payout. [`out/cabling.json`](../out/cabling.json) has the circuits.
@@ -140,6 +140,8 @@ Every tray unit's top is at most 687 mm over the tray floor, 40 mm under the 727
 its instrument's working face. The tall instruments (the MiniFlex at 722 mm, the OT-2 at 662 mm) can't be looked into
 from above within the limit, so their cameras stand beside them and look in at the door.
 
+[`out/vlm_cameras_still.png`](../out/vlm_cameras_still.png) (`services.py cameras`) shows tray D at the opening with its three units and the bay's.
+
 **One overhead unit at the bay, on the machine.** It hangs from a 2020 bar across the back of the bay, 650 mm behind
 the front, tilted 58° down:
 - Its lowest point is 1633 mm, 28 mm above the top of Kardex's product envelope at the opening (854 + 3 + 727.5 + 20
@@ -231,5 +233,5 @@ S.make_lab(sc, data)                         # animate.Lab whose gauges come fro
 S.build_vlm(name, data, idata, title)        # the VLM with trays A-F, their instruments, docks and cameras
 ```
 
-Run: `xvfb-run -a python3 services.py services cabling tether json`, and `xvfb-run -a python3 tour.py tray_dock
+Run: `xvfb-run -a python3 services.py services cabling tether cameras json`, and `xvfb-run -a python3 tour.py tray_dock
 stream_cam`.
