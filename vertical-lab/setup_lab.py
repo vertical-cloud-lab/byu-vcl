@@ -324,8 +324,8 @@ def movie(data, idata):
     n = 9
     have = set(idata)
     # ------------------------------------------------------------------ 1. the empty bay
-    sc.step(f"1/{n}", "An empty bay in a warehouse, about 26 x 13 m between its pallet racks. Everything that follows "
-            "goes into it.", 2.4, None, hold=1.2)
+    sc.step(f"1/{n}", "An empty bay in a warehouse, about 24 m between the racks on its side walls. Everything that "
+            "follows goes into it.", 2.4, None, hold=1.2)
     # ------------------------------------------------------------------ 2. the layout on the floor
     fl = {nm: 1.0 for nm in layout}
 

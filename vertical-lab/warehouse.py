@@ -476,14 +476,16 @@ def movie(data, idata):
     # ------------------------------------------------------------------ 1. the floor
     have = [k for k in ("ded", "packaging") if k in idata]
     cap = ("The warehouse version: the VLM and the alloy line's floor machines on an open floor, pallet racking round "
-           "the edge, served by MiR250 mobile bases each carrying a UR10e. Nothing is in a line: a MiR250 can dock "
-           "at any front that faces an aisle.")
+           "the edge, served by MiR250 mobile bases each carrying a UR10e. The machines face one aisle from both "
+           "sides instead of standing along a rail: a MiR250 can dock at any front that faces an aisle.")
     sc.step(f"1/{n}", cap, 3.0, None, hold=2.0, labels=auto(sc, CAM_ALL, floor_labels(F, STATIONS, have)))
     # ------------------------------------------------------------------ 2. aisles, docks, chargers
+    gap = CHARGERS[1] - CHARGERS[0] - CHARGER["W"]
     cap = (f"The main aisle is {MIR250['corridor_two_mm'] / 1000:.1f} m wide, MiR's figure for two MiR250s passing with "
            f"the default safety setup; one needs {MIR250['corridor_mm'] / 1000:.2f} m and pivots in "
-           f"{MIR250['pivot_mm'] / 1000:.1f} m. A docked unit leaves 2.1 m. Each dock is taped, with a camera target "
-           "on a post. Two MiR Charge 48V chargers, 1.2 m apart (MiR: at least 0.45 m).")
+           f"{MIR250['pivot_mm'] / 1000:.1f} m. The docks sit between the aisle and the machines, each taped with a "
+           f"camera target on a post, so a docked unit blocks nothing. The two chargers stand {gap / 1000:.2f} m apart "
+           f"(MiR: at least {MIR250['charger_side_mm'] / 1000:.2f} m to the side of each).")
     mid = (AISLE[0] + AISLE[1]) / 2
     sc.step(f"2/{n}", cap, 3.0, None, hold=2.4, cam_to=CAM_AISLE,
             labels=[("main aisle, 3.0 m", (-4800, mid, 0), (0.16, 0.42)),
@@ -516,9 +518,10 @@ def movie(data, idata):
     rb = r1.robot
     tx, ty = target_xy("vlm")
     look = A.down(np.array([tx, ty, TARGET_Z + 330.0]), spin=0.0)
-    cap = (f"Docked: MiR gives +-{MIR250['dock_L_mm_deg'][0]} mm along, +-{MIR250['dock_L_mm_deg'][1]} mm across and "
-           f"+-{MIR250['dock_L_mm_deg'][2]:.0f} deg to an L-marker. One degree is 23 mm at the arm's 1.3 m reach, so "
-           "the wrist camera reads the target and shifts the taught frame before the arm works.")
+    cap = (f"Docked. MiR's figures for docking to an L-marker: ±{MIR250['dock_L_mm_deg'][0]} mm along, "
+           f"±{MIR250['dock_L_mm_deg'][1]} mm across, ±{MIR250['dock_L_mm_deg'][2]:.0f}° of yaw. One degree is 23 mm at "
+           "the arm's 1.3 m reach, so the wrist camera reads the target and shifts the taught frame before the arm "
+           "works.")
     sc.step(f"4/{n}", cap, 2.2, rb.joint_to(Tw=look), hold=1.6,
             cam_to=CAM_VLM, labels=[("camera target", (tx, ty, TARGET_Z), (0.80, 0.40))])
     L.fetch("B", f"4/{n}", "The VLM brings tray B (powder dosing) to the opening.", fast=0.45, hold=0.1)
@@ -563,8 +566,8 @@ def movie(data, idata):
         sc.step(f"6/{n}", cap, 1.6, gb.move({"door": (None, 1.0)}), hold=0.2)
     done = _antechamber(sc, L, F, r1, f"6/{n}")
     if gb is not None:
-        sc.step(f"6/{n}", "Door shut; the PLC cycles the antechamber and the vial goes in under argon." if done else
-                cap, 1.4, gb.move({"door": (None, 0.0)}), hold=0.4)
+        sc.step(f"6/{n}", "Door shut: the PLC evacuates and refills the antechamber before the vial goes inside."
+                if done else cap, 1.4, gb.move({"door": (None, 0.0)}), hold=0.4)
     # ------------------------------------------------------------------ 7. home
     p4 = [(xg + 1600, yg), (xg + 1600, mid + 400), (CHARGERS[0], mid + 400), (CHARGERS[0], charger_pose(0)[1])]
     p5 = [(xi + 1500, yi), (xi + 1500, mid - 400), (CHARGERS[1], mid - 400), (CHARGERS[1], charger_pose(1)[1])]
@@ -574,8 +577,8 @@ def movie(data, idata):
     sc.step(f"7/{n}", "Both units go back to charge: 10 to 90 % takes 52 min on a MiR Charge 48V (MiR).", max(t4, t5),
             A.both(u4, u5), hold=0.3, cam_to=CAM_ALL)
     sc.step(f"7/{n}", "The trade against the rail: every front on the floor is reachable and the floor stays free, but "
-            "each dock comes back to within millimetres, not the rail's +-0.3 mm, so every station needs a target "
-            "the arm checks before it works.", 1.6, None, hold=3.0, still=True,
+            "a dock comes back to within millimetres, not the rail's ±0.3 mm, so every station needs a target the "
+            "arm checks before it works.", 1.6, None, hold=3.0, still=True,
             labels=auto(sc, CAM_ALL, floor_labels(F, ("glovebox", "vlm", "wire_edm", "instron_floor", "ded"), have)))
     return sc.save()
 
