@@ -6,7 +6,7 @@ Four more models in [`instruments_lab.py`](../instruments_lab.py), each an `Inst
 |---|---|---|---|---|
 | CubXL set up for corrosion spots, with a NuVant EZstat Pro | The P20 takes a tip and fills well S1 with 150 µL of 0.6 M NaCl; the capper carries the electrode cap from its park cup to S1; the potentiostat runs OCP, then a cyclic polarization, drawn as an overlay (illustrative); the cap is rinsed and parked; the well's liquid goes to a tube for ICP; on to S2 | [GIF](../out/instruments/cubxl_corrosion.gif), [MP4](../out/mp4/instruments/cubxl_corrosion.mp4) | CubXL 740 × 605 × 488 (#199's model); EZstat Pro 255 × 245 × 102 | tray A |
 | DED, powder-fed laser: InssTek MX-Lab | The door swings open; a substrate goes from the shelf to the worktable; argon purge (O2 readout); the head builds a six-spoke "wagon wheel", each spoke a different blend, bead segments rising as the nozzle passes; the door opens | [GIF](../out/instruments/ded.gif), [MP4](../out/mp4/instruments/ded.mp4) | 680 × 684 × 835 (machine); base cabinet estimated | on the floor, beside the VLM |
-| Packaging station: Primera AP380 + LX500c, Zebra ZD621t, Uline H-190 | A jar into the nest; the LX500c prints its label; the AP380 wraps it on; the jar is bagged and the H-190 seals the bag; into the foam insert; lid on; the ZD621t's 4 × 6 in label onto the lid. Insets show the jar label and what the box must carry | [GIF](../out/instruments/packaging.gif), [MP4](../out/mp4/instruments/packaging.mp4) | about 2000 × 508 × 226 as laid out | a tray (fits) |
+| Packaging station: Primera AP380 + LX500c, Zebra ZD621t, Uline H-190 | A jar into the nest; the LX500c prints its label; the AP380 wraps it on; the jar is bagged and the H-190 seals the bag; into the foam insert; lid on; the ZD621t's 4 × 6 in label onto the lid. Insets show the jar label and what the box must carry | [GIF](../out/instruments/packaging.gif), [MP4](../out/mp4/instruments/packaging.mp4) | each piece published (below); about 1990 × 650 × 229 as laid out here | a tray (fits) |
 | HIP against a tray: Kobelco O2-Dr.HIP | The tray and its 727.5 mm product height; the HIP lowered onto it; the parts that don't fit, in red; see-through to the vessel; the verdict | [GIF](../out/instruments/hip.gif), [MP4](../out/mp4/instruments/hip.mp4), [still](../out/instruments/hip.png) | 1315 × 1100 × 1300, 1100 kg | does not fit a tray |
 
 ### The CubXL, set up for corrosion spots
@@ -109,8 +109,8 @@ MX-Lab from its six hoppers; that is to be confirmed with Prof. Fang.
   | Uline S-6802 4 × 6 in labels | 102 × 152 | uline.com |
 
   The jar nest and the bag stand are fixtures drawn here; their sizes are layout choices.
-- **It fits a tray.** Laid out in a line it is about 2.0 m × 0.5 m and 229 mm tall. The LX500c's lid stands 442 mm
-  open.
+- **It fits a tray.** Laid out in a line, with the foot switch and the bag stand in front, it is about 1990 × 650 mm
+  and 229 mm tall. The LX500c's lid stands 442 mm open.
 - **Print and apply are two steps, not one.** The AP380 takes labels die-cut with the waste removed, on a roll.
   Primera sells no print-and-apply bundle, and labels die-cut digitally on the LX610 are not compatible. So the
   LX500c prints a batch's labels, the roll is rewound, and the AP380 applies them one per jar.
