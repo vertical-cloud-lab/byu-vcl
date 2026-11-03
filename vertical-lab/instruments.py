@@ -583,7 +583,8 @@ def sem() -> Instrument:
     stub = _piece(inst, "stub")
     stub.add("mount", cyl(25, 10, z=0), "mount")
     stub.add("polished face", cyl(15, 0.6, z=10), "sample")
-    drawer.add("pre-tilted holder", box(-14, -8, 0, 14, 8, 26).rotate((0, 0, 0), (1, 0, 0), 20)
+    # its left face, where the sample goes, stands 70 degrees from horizontal and faces the EBSD detector on the left
+    drawer.add("pre-tilted holder", box(-14, -8, 0, 14, 8, 26).rotate((0, 0, 0), (0, 1, 0), 20)
                .translate((32, yf + 120, 110)), "aluminium")
     inst.joints = {
         "drawer": Joint("slide", vec=(0, -p["draw"], 0)),
