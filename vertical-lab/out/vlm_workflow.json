@@ -1,0 +1,401 @@
+{
+ "name": "vlm_workflow",
+ "fps": 15,
+ "n_frames": 1306,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/6",
+   "caption": "An example run: dose 0.5 g of a powder from the multi-doser, then add liquid to it in the CubXL. The arm asks for tray B: the extractor pulls it off its supports, carries it down and pushes it into the opening.",
+   "start_frame": 0,
+   "end_frame": 37
+  },
+  {
+   "label": "1/6",
+   "caption": "An example run: dose 0.5 g of a powder from the multi-doser, then add liquid to it in the CubXL. The arm asks for tray B: the extractor pulls it off its supports, carries it down and pushes it into the opening.",
+   "start_frame": 38,
+   "end_frame": 51
+  },
+  {
+   "label": "1/6",
+   "caption": "An example run: dose 0.5 g of a powder from the multi-doser, then add liquid to it in the CubXL. The arm asks for tray B: the extractor pulls it off its supports, carries it down and pushes it into the opening.",
+   "start_frame": 52,
+   "end_frame": 86
+  },
+  {
+   "label": "1/6",
+   "caption": "An example run: dose 0.5 g of a powder from the multi-doser, then add liquid to it in the CubXL. The arm asks for tray B: the extractor pulls it off its supports, carries it down and pushes it into the opening.",
+   "start_frame": 87,
+   "end_frame": 100
+  },
+  {
+   "label": "1/6",
+   "caption": "An example run: dose 0.5 g of a powder from the multi-doser, then add liquid to it in the CubXL. The arm asks for tray B: the extractor pulls it off its supports, carries it down and pushes it into the opening.",
+   "start_frame": 101,
+   "end_frame": 110
+  },
+  {
+   "label": "1/6",
+   "caption": "An example run: dose 0.5 g of a powder from the multi-doser, then add liquid to it in the CubXL. The arm asks for tray B: the extractor pulls it off its supports, carries it down and pushes it into the opening.",
+   "start_frame": 111,
+   "end_frame": 143
+  },
+  {
+   "label": "1/6",
+   "caption": "An example run: dose 0.5 g of a powder from the multi-doser, then add liquid to it in the CubXL. The arm asks for tray B: the extractor pulls it off its supports, carries it down and pushes it into the opening.",
+   "start_frame": 144,
+   "end_frame": 153
+  },
+  {
+   "label": "2/6",
+   "caption": "The UR10e takes an empty 20 mL vial from the rack at the front of the tray and sets it in the multi-doser's cup, on its 100 g load cell under the station.",
+   "start_frame": 160,
+   "end_frame": 184
+  },
+  {
+   "label": "2/6",
+   "caption": "The UR10e takes an empty 20 mL vial from the rack at the front of the tray and sets it in the multi-doser's cup, on its 100 g load cell under the station.",
+   "start_frame": 185,
+   "end_frame": 199
+  },
+  {
+   "label": "2/6",
+   "caption": "The UR10e takes an empty 20 mL vial from the rack at the front of the tray and sets it in the multi-doser's cup, on its 100 g load cell under the station.",
+   "start_frame": 200,
+   "end_frame": 208
+  },
+  {
+   "label": "2/6",
+   "caption": "The UR10e takes an empty 20 mL vial from the rack at the front of the tray and sets it in the multi-doser's cup, on its 100 g load cell under the station.",
+   "start_frame": 209,
+   "end_frame": 221
+  },
+  {
+   "label": "2/6",
+   "caption": "The UR10e takes an empty 20 mL vial from the rack at the front of the tray and sets it in the multi-doser's cup, on its 100 g load cell under the station.",
+   "start_frame": 222,
+   "end_frame": 240
+  },
+  {
+   "label": "2/6",
+   "caption": "The UR10e takes an empty 20 mL vial from the rack at the front of the tray and sets it in the multi-doser's cup, on its 100 g load cell under the station.",
+   "start_frame": 241,
+   "end_frame": 256
+  },
+  {
+   "label": "2/6",
+   "caption": "The UR10e takes an empty 20 mL vial from the rack at the front of the tray and sets it in the multi-doser's cup, on its 100 g load cell under the station.",
+   "start_frame": 257,
+   "end_frame": 263
+  },
+  {
+   "label": "2/6",
+   "caption": "The UR10e takes an empty 20 mL vial from the rack at the front of the tray and sets it in the multi-doser's cup, on its 100 g load cell under the station.",
+   "start_frame": 264,
+   "end_frame": 272
+  },
+  {
+   "label": "2/6",
+   "caption": "The UR10e takes an empty 20 mL vial from the rack at the front of the tray and sets it in the multi-doser's cup, on its 100 g load cell under the station.",
+   "start_frame": 273,
+   "end_frame": 287
+  },
+  {
+   "label": "2/6",
+   "caption": "The UR10e takes an empty 20 mL vial from the rack at the front of the tray and sets it in the multi-doser's cup, on its 100 g load cell under the station.",
+   "start_frame": 288,
+   "end_frame": 307
+  },
+  {
+   "label": "3/6",
+   "caption": "The carousel indexes powder module 6 (green) to the station, 8 chain links per module, and the Actuonix P16 lifts the electronics carriage and docks it under the module's plate, magnet on.",
+   "start_frame": 308,
+   "end_frame": 349
+  },
+  {
+   "label": "3/6",
+   "caption": "The carousel indexes powder module 6 (green) to the station, 8 chain links per module, and the Actuonix P16 lifts the electronics carriage and docks it under the module's plate, magnet on. The other modules are drawn see-through: the docked one rides inside the loop.",
+   "start_frame": 350,
+   "end_frame": 373
+  },
+  {
+   "label": "3/6",
+   "caption": "Module 6 tilts 30°, cap end up into the loop, and the auger turns through the steel pinion: the powder drops through the D-cut funnel into the vial while the load cell counts it. Then hold, tilt back, reverse one turn at rest, undock (powder-doser's leakage study).",
+   "start_frame": 374,
+   "end_frame": 399
+  },
+  {
+   "label": "3/6",
+   "caption": "Module 6 tilts 30°, cap end up into the loop, and the auger turns through the steel pinion: the powder drops through the D-cut funnel into the vial while the load cell counts it. Then hold, tilt back, reverse one turn at rest, undock (powder-doser's leakage study).",
+   "start_frame": 400,
+   "end_frame": 459
+  },
+  {
+   "label": "3/6",
+   "caption": "Module 6 tilts 30°, cap end up into the loop, and the auger turns through the steel pinion: the powder drops through the D-cut funnel into the vial while the load cell counts it. Then hold, tilt back, reverse one turn at rest, undock (powder-doser's leakage study).",
+   "start_frame": 460,
+   "end_frame": 479
+  },
+  {
+   "label": "3/6",
+   "caption": "Module 6 tilts 30°, cap end up into the loop, and the auger turns through the steel pinion: the powder drops through the D-cut funnel into the vial while the load cell counts it. Then hold, tilt back, reverse one turn at rest, undock (powder-doser's leakage study).",
+   "start_frame": 480,
+   "end_frame": 493
+  },
+  {
+   "label": "3/6",
+   "caption": "Module 6 tilts 30°, cap end up into the loop, and the auger turns through the steel pinion: the powder drops through the D-cut funnel into the vial while the load cell counts it. Then hold, tilt back, reverse one turn at rest, undock (powder-doser's leakage study).",
+   "start_frame": 494,
+   "end_frame": 511
+  },
+  {
+   "label": "4/6",
+   "caption": "The arm takes the vial out (0.512 g in it) and stands it in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and its power.",
+   "start_frame": 512,
+   "end_frame": 530
+  },
+  {
+   "label": "4/6",
+   "caption": "The arm takes the vial out (0.512 g in it) and stands it in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and its power.",
+   "start_frame": 531,
+   "end_frame": 546
+  },
+  {
+   "label": "4/6",
+   "caption": "The arm takes the vial out (0.512 g in it) and stands it in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and its power.",
+   "start_frame": 547,
+   "end_frame": 555
+  },
+  {
+   "label": "4/6",
+   "caption": "The arm takes the vial out (0.512 g in it) and stands it in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and its power.",
+   "start_frame": 556,
+   "end_frame": 561
+  },
+  {
+   "label": "4/6",
+   "caption": "The arm takes the vial out (0.512 g in it) and stands it in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and its power.",
+   "start_frame": 562,
+   "end_frame": 577
+  },
+  {
+   "label": "4/6",
+   "caption": "The arm takes the vial out (0.512 g in it) and stands it in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and its power.",
+   "start_frame": 578,
+   "end_frame": 602
+  },
+  {
+   "label": "4/6",
+   "caption": "The arm takes the vial out (0.512 g in it) and stands it in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and its power.",
+   "start_frame": 603,
+   "end_frame": 617
+  },
+  {
+   "label": "4/6",
+   "caption": "The arm takes the vial out (0.512 g in it) and stands it in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and its power.",
+   "start_frame": 618,
+   "end_frame": 626
+  },
+  {
+   "label": "4/6",
+   "caption": "The arm takes the vial out (0.512 g in it) and stands it in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and its power.",
+   "start_frame": 627,
+   "end_frame": 639
+  },
+  {
+   "label": "4/6",
+   "caption": "The arm takes the vial out (0.512 g in it) and stands it in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and its power.",
+   "start_frame": 640,
+   "end_frame": 659
+  },
+  {
+   "label": "4/6",
+   "caption": "The arm takes the vial out (0.512 g in it) and stands it in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and its power.",
+   "start_frame": 660,
+   "end_frame": 669
+  },
+  {
+   "label": "4/6",
+   "caption": "The arm takes the vial out (0.512 g in it) and stands it in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and its power.",
+   "start_frame": 670,
+   "end_frame": 702
+  },
+  {
+   "label": "4/6",
+   "caption": "The arm takes the vial out (0.512 g in it) and stands it in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and its power.",
+   "start_frame": 703,
+   "end_frame": 714
+  },
+  {
+   "label": "4/6",
+   "caption": "The arm takes the vial out (0.512 g in it) and stands it in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and its power.",
+   "start_frame": 715,
+   "end_frame": 728
+  },
+  {
+   "label": "4/6",
+   "caption": "The arm takes the vial out (0.512 g in it) and stands it in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and its power.",
+   "start_frame": 729,
+   "end_frame": 761
+  },
+  {
+   "label": "5/6",
+   "caption": "Tray A (liquid handling) comes down. The CubXL's gantry is parked at the back, so the arm can put the vial in the free seat of its rack.",
+   "start_frame": 766,
+   "end_frame": 776
+  },
+  {
+   "label": "5/6",
+   "caption": "Tray A (liquid handling) comes down. The CubXL's gantry is parked at the back, so the arm can put the vial in the free seat of its rack.",
+   "start_frame": 777,
+   "end_frame": 811
+  },
+  {
+   "label": "5/6",
+   "caption": "Tray A (liquid handling) comes down. The CubXL's gantry is parked at the back, so the arm can put the vial in the free seat of its rack.",
+   "start_frame": 812,
+   "end_frame": 822
+  },
+  {
+   "label": "5/6",
+   "caption": "Tray A (liquid handling) comes down. The CubXL's gantry is parked at the back, so the arm can put the vial in the free seat of its rack.",
+   "start_frame": 823,
+   "end_frame": 832
+  },
+  {
+   "label": "5/6",
+   "caption": "Tray A (liquid handling) comes down. The CubXL's gantry is parked at the back, so the arm can put the vial in the free seat of its rack.",
+   "start_frame": 833,
+   "end_frame": 865
+  },
+  {
+   "label": "5/6",
+   "caption": "Tray A (liquid handling) comes down. The CubXL's gantry is parked at the back, so the arm can put the vial in the free seat of its rack.",
+   "start_frame": 866,
+   "end_frame": 875
+  },
+  {
+   "label": "5/6",
+   "caption": "Tray A (liquid handling) comes down. The CubXL's gantry is parked at the back, so the arm can put the vial in the free seat of its rack.",
+   "start_frame": 882,
+   "end_frame": 899
+  },
+  {
+   "label": "5/6",
+   "caption": "Tray A (liquid handling) comes down. The CubXL's gantry is parked at the back, so the arm can put the vial in the free seat of its rack.",
+   "start_frame": 900,
+   "end_frame": 924
+  },
+  {
+   "label": "5/6",
+   "caption": "Tray A (liquid handling) comes down. The CubXL's gantry is parked at the back, so the arm can put the vial in the free seat of its rack.",
+   "start_frame": 925,
+   "end_frame": 939
+  },
+  {
+   "label": "5/6",
+   "caption": "Tray A (liquid handling) comes down. The CubXL's gantry is parked at the back, so the arm can put the vial in the free seat of its rack.",
+   "start_frame": 940,
+   "end_frame": 948
+  },
+  {
+   "label": "5/6",
+   "caption": "Tray A (liquid handling) comes down. The CubXL's gantry is parked at the back, so the arm can put the vial in the free seat of its rack.",
+   "start_frame": 949,
+   "end_frame": 961
+  },
+  {
+   "label": "5/6",
+   "caption": "Tray A (liquid handling) comes down. The CubXL's gantry is parked at the back, so the arm can put the vial in the free seat of its rack.",
+   "start_frame": 962,
+   "end_frame": 986
+  },
+  {
+   "label": "5/6",
+   "caption": "Tray A (liquid handling) comes down. The CubXL's gantry is parked at the back, so the arm can put the vial in the free seat of its rack.",
+   "start_frame": 987,
+   "end_frame": 1001
+  },
+  {
+   "label": "5/6",
+   "caption": "Tray A (liquid handling) comes down. The CubXL's gantry is parked at the back, so the arm can put the vial in the free seat of its rack.",
+   "start_frame": 1002,
+   "end_frame": 1010
+  },
+  {
+   "label": "5/6",
+   "caption": "Tray A (liquid handling) comes down. The CubXL's gantry is parked at the back, so the arm can put the vial in the free seat of its rack.",
+   "start_frame": 1011,
+   "end_frame": 1023
+  },
+  {
+   "label": "5/6",
+   "caption": "Tray A (liquid handling) comes down. The CubXL's gantry is parked at the back, so the arm can put the vial in the free seat of its rack.",
+   "start_frame": 1024,
+   "end_frame": 1046
+  },
+  {
+   "label": "6/6",
+   "caption": "The CubXL's gantry brings its pipette over the vial and adds the liquid; the vial stays there for the measurement. Tray A goes back to its slot, where it has power, so the CubXL keeps working while it is stored.",
+   "start_frame": 1047,
+   "end_frame": 1078
+  },
+  {
+   "label": "6/6",
+   "caption": "The CubXL's gantry brings its pipette over the vial and adds the liquid; the vial stays there for the measurement. Tray A goes back to its slot, where it has power, so the CubXL keeps working while it is stored.",
+   "start_frame": 1079,
+   "end_frame": 1095
+  },
+  {
+   "label": "6/6",
+   "caption": "The CubXL's gantry brings its pipette over the vial and adds the liquid; the vial stays there for the measurement. Tray A goes back to its slot, where it has power, so the CubXL keeps working while it is stored.",
+   "start_frame": 1096,
+   "end_frame": 1132
+  },
+  {
+   "label": "6/6",
+   "caption": "The CubXL's gantry brings its pipette over the vial and adds the liquid; the vial stays there for the measurement. Tray A goes back to its slot, where it has power, so the CubXL keeps working while it is stored.",
+   "start_frame": 1133,
+   "end_frame": 1149
+  },
+  {
+   "label": "6/6",
+   "caption": "The CubXL's gantry brings its pipette over the vial and adds the liquid; the vial stays there for the measurement. Tray A goes back to its slot, where it has power, so the CubXL keeps working while it is stored.",
+   "start_frame": 1150,
+   "end_frame": 1159
+  },
+  {
+   "label": "6/6",
+   "caption": "The CubXL's gantry brings its pipette over the vial and adds the liquid; the vial stays there for the measurement. Tray A goes back to its slot, where it has power, so the CubXL keeps working while it is stored.",
+   "start_frame": 1160,
+   "end_frame": 1192
+  },
+  {
+   "label": "6/6",
+   "caption": "The CubXL's gantry brings its pipette over the vial and adds the liquid; the vial stays there for the measurement. Tray A goes back to its slot, where it has power, so the CubXL keeps working while it is stored.",
+   "start_frame": 1193,
+   "end_frame": 1204
+  },
+  {
+   "label": "6/6",
+   "caption": "The CubXL's gantry brings its pipette over the vial and adds the liquid; the vial stays there for the measurement. Tray A goes back to its slot, where it has power, so the CubXL keeps working while it is stored.",
+   "start_frame": 1205,
+   "end_frame": 1215
+  },
+  {
+   "label": "6/6",
+   "caption": "The CubXL's gantry brings its pipette over the vial and adds the liquid; the vial stays there for the measurement. Tray A goes back to its slot, where it has power, so the CubXL keeps working while it is stored.",
+   "start_frame": 1216,
+   "end_frame": 1248
+  },
+  {
+   "label": "6/6",
+   "caption": "Done: the dosed vial is in the CubXL on tray A, in storage and powered. The arm and the opening are free for the next request.",
+   "start_frame": 1253,
+   "end_frame": 1305
+  }
+ ]
+}
