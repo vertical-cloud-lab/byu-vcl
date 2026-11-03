@@ -254,39 +254,41 @@ def volumes() -> dict:
             "slug": math.pi / 4 * STOCK_D ** 2 * SLUG_L / 1000.0}
 
 
-# One run of nickel aluminium bronze, C63000 (82Cu-10Al-5Ni-3Fe, DAL #219's 630 bronze), built from high-purity
-# elements: three Cu cups and one Al cup, four being the most that stand round the sealing rod (#222). The doser fills
-# each cup's bore with one powder, tapped to the plug line.
-RUN = [  # (cup metal, powder, fill fraction of the cavity)
-    ("Cu", "Ni", 0.86),
-    ("Cu", "Fe", 0.69),
-    ("Cu", "Cu", 1.00),
-    ("Al", "Al", 1.00),
-]
-C63000 = {"Cu": (78.0, 85.0), "Al": (9.0, 11.0), "Ni": (4.0, 5.5), "Fe": (2.0, 4.0)}   # wt%, ASTM B150
+# The cups the workflow charges: two 5N Al cups with Si for this run's Al-10Si (the Si of the AlSi10Mg the line prints;
+# two slugs a run is #222's default, 80-100 g), and two OFE Cu cups with Ni for the next run's 90/10 Cu-Ni (the Navy's
+# seawater alloy, C70600 less its 1-1.8 % Fe; DAL's Cu work, #162, #219). The doser fills each bore with one powder;
+# the fraction of the cavity under the plug that it fills sets the composition.
+RUNS = {
+    "Al-10Si": [("Al", "Si", 0.742), ("Al", "Si", 0.742)],
+    "Cu-10Ni": [("Cu", "Ni", 0.551), ("Cu", "Ni", 0.551)],
+}
+TARGET = {"Al-10Si": {"Si": 10.0}, "Cu-10Ni": {"Ni": 10.0}}
 
 
 def recipe() -> dict:
     v = volumes()
-    cups, total = [], {}
-    for metal, pw, frac in RUN:
-        m_cup = v["cup"] * RHO[metal]
-        m_plug = v["plug"] * RHO[metal]
-        m_pw = v["cavity"] * POWDERS[pw][1] * frac
-        for el, m in ((metal, m_cup + m_plug), (pw, m_pw)):
-            total[el] = total.get(el, 0.0) + m
-        cups.append(dict(cup=f"{'5N Al' if metal == 'Al' else 'OFE Cu (C10100)'} cup + plug", powder=pw,
-                         cup_g=round(m_cup, 2), plug_g=round(m_plug, 2), powder_g=round(m_pw, 2),
-                         fill_mm=round((FILL_TOP - FLOOR_Z) * frac, 1)))
-    mass = sum(total.values())
-    comp = {k: round(float(100 * m / mass), 2) for k, m in total.items()}
-    return dict(alloy="nickel aluminium bronze, C63000 (ASTM B150: Cu 78-85, Al 9-11, Ni 4-5.5, Fe 2-4 wt%)",
-                volumes_cm3={k: round(x, 3) for k, x in v.items()}, cups=cups, charge_g=round(mass, 1),
-                designed_wt_pct=comp, in_spec={k: bool(lo <= comp.get(k, 0) <= hi) for k, (lo, hi) in C63000.items()},
+    runs = {}
+    for name, cups_ in RUNS.items():
+        cups, total = [], {}
+        for metal, pw, frac in cups_:
+            m_cup = v["cup"] * RHO[metal]
+            m_plug = v["plug"] * RHO[metal]
+            m_pw = v["cavity"] * POWDERS[pw][1] * frac
+            for el, m in ((metal, m_cup + m_plug), (pw, m_pw)):
+                total[el] = total.get(el, 0.0) + m
+            cups.append(dict(cup=f"{'5N Al' if metal == 'Al' else 'OFE Cu (C10100)'} cup + plug", powder=pw,
+                             cup_g=round(m_cup, 2), plug_g=round(m_plug, 2), powder_g=round(m_pw, 2),
+                             fill_mm=round((FILL_TOP - FLOOR_Z) * frac, 1),
+                             headspace_mm=round((FILL_TOP - FLOOR_Z) * (1 - frac), 1)))
+        mass = sum(total.values())
+        runs[name] = dict(cups=cups, charge_g=round(float(mass), 1),
+                          designed_wt_pct={k: round(float(100 * m / mass), 2) for k, m in total.items()})
+    return dict(volumes_cm3={k: round(x, 3) for k, x in v.items()}, runs=runs,
                 densities={k: dict(tapped_g_cm3=d, source=s) for k, (_, d, s) in POWDERS.items()},
-                note="Designed composition: what the charge gives if every gram dissolves and none is lost. Al and "
-                     "Mg oxidise and evaporate in a vacuum furnace, so ICP/EDS on the powder measures recovery. "
-                     "Cup and plug volumes are #222's CAD; tapped densities of Ni, Fe and Cu are assumed.")
+                note="Designed composition: what the charge gives if every gram dissolves and none is lost; ICP/EDS "
+                     "on the powder measures recovery (#222). Cup and plug volumes are #222's CAD. The Ni tapped "
+                     "density is assumed. Powder below the plug line leaves headspace under the plug, as #222's E5 "
+                     "does; the plug's vent lets that air out when the chamber is pumped down.")
 
 
 if __name__ == "__main__":
