@@ -50,7 +50,7 @@ narrow for a bench. `setup_lab.py` puts the shaker on tray F instead; the two la
 
 ### Open questions and simplifications
 
-- **How much powder.** One run charges 78 g (`out/alloy_charge.json`). Its 20–63 µm cut is some fraction of that,
+- **How much powder.** One run charges 78 g (`out/alloy_recipe.json`). Its 20–63 µm cut is some fraction of that,
   tens of grams. A 30 mm build in the 170 mm cylinder needs about 1 kg in the bed (π/4 · 170² · 30 mm ≈ 680 cm³ at
   about 1.5 g/cm³), plus the supply's excess. So one jar stands for many runs, or a smaller build cylinder. The
   caption says so. Whether Aconity offers a reduced build volume for the MIDI hasn't been checked.
