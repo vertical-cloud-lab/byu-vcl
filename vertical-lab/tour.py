@@ -73,10 +73,10 @@ def piece_entries(inst: I.Instrument) -> dict:
 
 
 def _sources(module: str = "instruments") -> list[Path]:
-    common = [HERE / "lab_models" / "common.py", HERE / "instruments.py", HERE / "lab.py"]   # lab.py: to_mesh
-    if module == "instruments":
-        return [*common, HERE / "openflexure.py", *sorted((HERE / "openflexure").glob("*.json"))]
-    return [*common, HERE / f"{module}.py"]
+    # lab.py has to_mesh; the OpenFlexure files feed the array in instruments_char as well as the two microscopes
+    common = [HERE / "lab_models" / "common.py", HERE / "instruments.py", HERE / "lab.py", HERE / "openflexure.py",
+              *sorted((HERE / "openflexure").glob("*.json"))]
+    return common if module == "instruments" else [*common, HERE / f"{module}.py"]
 
 
 def load(keys=None, rebuild=False) -> dict:
@@ -91,8 +91,8 @@ def load(keys=None, rebuild=False) -> dict:
         for f in _sources(name):
             if f.exists():
                 h.update(f.read_bytes())
-        if name == "instruments":                  # rebuilt once the OpenFlexure meshes are there
-            h.update(str((CACHE / "openflexure" / "v7").is_dir() and (CACHE / "openflexure" / "delta").is_dir()).encode())
+        # rebuilt once the OpenFlexure meshes are there (the two microscopes, and the array in instruments_char)
+        h.update(str((CACHE / "openflexure" / "v7").is_dir() and (CACHE / "openflexure" / "delta").is_dir()).encode())
         path = CACHE / f"{name}_{h.hexdigest()[:12]}.pkl"
         if path.exists() and not rebuild:
             part = pickle.loads(path.read_bytes())

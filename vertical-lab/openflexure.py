@@ -256,6 +256,7 @@ def v7() -> I.Instrument:
     inst.labels = [("beamsplitter optics and reflection illuminator", (0, -20, 60), (0.12, 0.70)),
                    ("flexure XY stage", (20, -20, zs), (0.84, 0.25))]
     inst.cam = (0.9, -1.6, 0.9)
+    inst.zoom = {1: ((24.0, -24.0, 110.0), 300.0), 2: "out"}     # in on the front-right leg while the stage scans
     return inst
 
 
@@ -284,4 +285,5 @@ def delta() -> I.Instrument:
     inst.labels = [("moving stage", (0, 30, zs), (0.84, 0.25)),
                    ("electronics base (Pi, Sangaboard)", (60, -40, 40), (0.84, 0.72))]
     inst.cam = (0.9, -1.6, 0.9)
+    inst.zoom = {1: ((32.0, -24.0, 112.0), 330.0), 2: "out"}     # in on the front-right leg and its lever
     return inst
