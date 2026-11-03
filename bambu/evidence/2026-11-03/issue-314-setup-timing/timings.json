@@ -1,0 +1,41 @@
+{
+ "what": "Bambu Studio setup on a GitHub-hosted runner, measured for issue #314 (plain @claude run, no Bambu login)",
+ "runner": "ubuntu-24.04.5, x86-64, 4 vCPU, 16 GB (GitHub-hosted, run 41549345012)",
+ "studio": "02.08.02.61 (BambuStudio_ubuntu24.04 AppImage, sha256 d501b103… = GitHub's asset digest)",
+ "pieces_measured_by_hand_s": {
+  "appimage_download_220MB": 2.2,
+  "appimage_extract_541MB": 1.0,
+  "network_plugin_download_31MB": 0.3,
+  "apt_update": 4.8,
+  "apt_install_as_in_runbook": 136.4,
+  "apt_install_no_recommends_no_mandb_cold": 89.8,
+  "apt_install_no_recommends_no_mandb_debs_cached": 9.8
+ },
+ "setup_runner_sh_end_to_end_s": {
+  "cold_fresh_runner": {
+   "apt": 78.0,
+   "appimage": 4.3,
+   "plugin": 0.6,
+   "studio_window": 7.0,
+   "total": 100.7,
+   "note": "total includes a fixed 10 s prompt watch, since shortened to ~2 s"
+  },
+  "debs_from_cache": {
+   "apt": 10.6,
+   "appimage": 2.4,
+   "plugin": 0.5,
+   "studio_window": 6.9,
+   "total": 31.3,
+   "note": "same fixed 10 s prompt watch"
+  },
+  "packages_preinstalled": {
+   "apt": 0.0,
+   "appimage": 2.6,
+   "plugin": 0.7,
+   "studio_window": 6.9,
+   "total": 12.8
+  }
+ },
+ "first_run_by_hand_for_comparison": "SSL prompt, 6-page wizard, plug-in download (about 1 s), profile-update prompt, three Beta prompts: each one a screenshot and a click for the agent. No hang this time; the PR #95 run hung at 100 % CPU after the plug-in install and lost ~4 min",
+ "arm64": "Bambu's plug-in endpoint returns an x86-64 build for X-BBL-OS-Type linux (libbambu_networking.so: ELF 64-bit x86-64) and nothing for linux_arm, linux_aarch64 or linux-arm64. Flathub builds Studio for aarch64, but without the plug-in it can't log in, send or show the camera"
+}
