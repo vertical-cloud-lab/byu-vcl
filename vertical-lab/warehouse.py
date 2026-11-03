@@ -3,16 +3,18 @@ mobile bases carrying UR10e arms that drive between docking spots, instead of a 
 
     xvfb-run -a python3 warehouse.py            # -> out/warehouse.gif, out/mp4/warehouse.mp4, out/warehouse_still.png
     PREVIEW=1 xvfb-run -a python3 warehouse.py  # the last frame of each sub-step -> /tmp/preview_warehouse.png
-    python3 warehouse.py sway                   # rail with a pedestal vs beam-height rail vs MiR250 -> out/rail_vs_amr.json
+    python3 warehouse.py sway                   # low rail + pedestal, beam rail, MiR250 -> out/rail_vs_amr.json
+    xvfb-run -a python3 warehouse.py compare    # the three side by side -> out/rail_vs_amr.png
 
-The floor plan is data (``STATIONS``, ``CHARGERS``, ``RACKS``) so ``setup_lab.py`` builds the same floor, and a model
-that another module adds later (subagent B's DED machine and packaging station, keys ``ded`` and ``packaging``) takes
-its reserved spot when ``tour.load()`` returns it; until then the spot is a labelled footprint.
+The floor plan is data (``STATIONS``, ``CHARGERS``, ``RACKS``) so ``setup_lab.py`` builds the same floor. A model that
+another module adds later (the DED machine and the packaging station, keys ``ded`` and ``packaging``; a HIP, ``hip``)
+takes its reserved spot when ``tour.load()`` returns it; until then the DED and packaging spots are labelled footprints.
 
 Every MiR figure is from MiR's own specification sheet, "MiR250 Specifications", dated 2023-06-28, as hosted by the
 MiR distributor Hartfiel (https://www.hartfiel.com/wp-content/uploads/2024/04/MiR250-Specs.pdf). Every UR10e figure is
 from UR's UR10e data sheet (October 2026) and the UR10e user manual for software 5.26, section 6.2, "Dimensioning the
-Stand" (https://www.universal-robots.com/manuals/EN/PDF/SW5_26/user-manual-UR10e-PDF_online/711-039-00_UR10e_User_Manual_en_Global.pdf).
+Stand":
+https://www.universal-robots.com/manuals/EN/PDF/SW5_26/user-manual-UR10e-PDF_online/711-039-00_UR10e_User_Manual_en_Global.pdf
 """
 from __future__ import annotations
 
@@ -48,7 +50,8 @@ MIR250 = dict(                    # MiR250 Specifications, 2023-06-28 (see the m
 CHARGER = dict(W=622.0, D=237.0, H=287.0, D_plate=487.0)   # MiR Charge 48V, W x D x H, and the depth with its
 # charging plate: Konica Minolta's and IDEC's (MiR distributors) listings; 20 kg
 UR10E = dict(payload_kg=12.5, reach_mm=1300, mass_kg=33.3, repeat_mm=0.05,            # UR10e data sheet, Oct 2026
-             # UR10e manual 6.2: worst-case loads on the stand x a safety factor of 2.5: Mz [Nm], Fz [N], Mxy [Nm], Fxy [N]
+             # UR10e manual 6.2: worst-case loads on the stand x a safety factor of 2.5: Mz [Nm], Fz [N], Mxy [Nm],
+             # Fxy [N]
              stand_stop=(990, 1700, 1460, 1160), stand_run=(830, 1450, 860, 860), safety=2.5, stand_min_hz=45)
 VENTION_REPEAT_MM = 0.3           # Vention rack and pinion actuator, repeatability including backlash, +-0.3 mm
 # (docs.vention.com/docs/rack-and-pinon-actuator; 0.25 mm backlash; 4000 mm/s without gearbox)
@@ -483,8 +486,8 @@ def movie(data, idata):
     sc.step(f"1/{n}", cap, 3.0, None, hold=2.0, labels=auto(sc, CAM_ALL, floor_labels(F, STATIONS, have)))
     # ------------------------------------------------------------------ 2. aisles, docks, chargers
     gap = CHARGERS[1] - CHARGERS[0] - CHARGER["W"]
-    cap = (f"The main aisle is {MIR250['corridor_two_mm'] / 1000:.1f} m wide, MiR's figure for two MiR250s passing with "
-           f"the default safety setup; one needs {MIR250['corridor_mm'] / 1000:.2f} m and pivots in "
+    cap = (f"The main aisle is {MIR250['corridor_two_mm'] / 1000:.1f} m wide, MiR's figure for two MiR250s passing "
+           f"with the default safety setup; one needs {MIR250['corridor_mm'] / 1000:.2f} m and pivots in "
            f"{MIR250['pivot_mm'] / 1000:.1f} m. The docks sit between the aisle and the machines, each taped with a "
            f"camera target on a post, so a docked unit blocks nothing. The two chargers stand {gap / 1000:.2f} m apart "
            f"(MiR: at least {MIR250['charger_side_mm'] / 1000:.2f} m to the side of each).")
@@ -521,8 +524,8 @@ def movie(data, idata):
     tx, ty = target_xy("vlm")
     look = A.down(np.array([tx, ty, TARGET_Z + 330.0]), spin=0.0)
     cap = (f"Docked. MiR's figures for docking to an L-marker: ±{MIR250['dock_L_mm_deg'][0]} mm along, "
-           f"±{MIR250['dock_L_mm_deg'][1]} mm across, ±{MIR250['dock_L_mm_deg'][2]:.0f}° of yaw. One degree is 23 mm at "
-           "the arm's 1.3 m reach, so the wrist camera reads the target and shifts the taught frame before the arm "
+           f"±{MIR250['dock_L_mm_deg'][1]} mm across, ±{MIR250['dock_L_mm_deg'][2]:.0f}° of yaw. One degree is 23 mm "
+           "at the arm's 1.3 m reach, so the wrist camera reads the target and shifts the taught frame before the arm "
            "works.")
     sc.step(f"4/{n}", cap, 2.2, rb.joint_to(Tw=look), hold=1.6,
             cam_to=CAM_VLM, labels=[("camera target", (tx, ty, TARGET_Z), (0.80, 0.40))])
@@ -554,8 +557,8 @@ def movie(data, idata):
         sc.alpha["route3"] = min(1.0, u * 8)
         u3(u)
         j2(min(1.0, u * 2.5))
-    sc.step(f"5/{n}", "Unit 1 carries the vial to the glovebox's antechamber, along the aisle. At the Instron, unit 2's "
-            "camera finds that dock's target.", t3, go, hold=0.3, cam_to=CAM_WEST,
+    sc.step(f"5/{n}", "Unit 1 carries the vial to the glovebox's antechamber, along the aisle. At the Instron, unit "
+            "2's camera finds that dock's target.", t3, go, hold=0.3, cam_to=CAM_WEST,
             labels=[("unit 1, a vial on board", (xg + 1600, mid, 1500), (0.70, 0.22)),
                     ("unit 2: camera check", (tx2, ty2, TARGET_Z), (0.24, 0.70))])
     # ------------------------------------------------------------------ 6. the antechamber
