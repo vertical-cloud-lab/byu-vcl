@@ -1,0 +1,89 @@
+{
+ "name": "fabrication/mprint",
+ "fps": 15,
+ "n_frames": 461,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/10",
+   "caption": "The hatch opens on the powder revolver: five sealed cartridges, 250 % of the build volume when full.",
+   "start_frame": 0,
+   "end_frame": 40
+  },
+  {
+   "label": "2/10",
+   "caption": "A spent cartridge comes out to be refilled outside; a full one goes in. No open powder.",
+   "start_frame": 41,
+   "end_frame": 84
+  },
+  {
+   "label": "3/10",
+   "caption": "",
+   "start_frame": 85,
+   "end_frame": 116
+  },
+  {
+   "label": "4/10",
+   "caption": "Hatch shut. The chamber door opens and a 150 mm build plate goes onto the platform.",
+   "start_frame": 117,
+   "end_frame": 163
+  },
+  {
+   "label": "5/10",
+   "caption": "Door shut; argon purge. See-through: the revolver turns a full cartridge over the feed to the hopper.",
+   "start_frame": 164,
+   "end_frame": 201
+  },
+  {
+   "label": "6/10",
+   "caption": "The recoater spreads a layer of powder over the plate.",
+   "start_frame": 202,
+   "end_frame": 229
+  },
+  {
+   "label": "7/10",
+   "caption": "The 200 W fibre laser melts each layer's cross-section.",
+   "start_frame": 230,
+   "end_frame": 264
+  },
+  {
+   "label": "8/10",
+   "caption": "The platform drops a layer; the recoater spreads fresh powder over it.",
+   "start_frame": 265,
+   "end_frame": 292
+  },
+  {
+   "label": "9/10",
+   "caption": "",
+   "start_frame": 293,
+   "end_frame": 327
+  },
+  {
+   "label": "10/10",
+   "caption": "The platform drops a layer; the recoater spreads fresh powder over it.",
+   "start_frame": 328,
+   "end_frame": 355
+  },
+  {
+   "label": "10/10",
+   "caption": "",
+   "start_frame": 356,
+   "end_frame": 390
+  },
+  {
+   "label": "10/10",
+   "caption": "Done: the plate comes out through the door to the MUNPACK station, which depowders it.",
+   "start_frame": 391,
+   "end_frame": 434
+  },
+  {
+   "label": "10/10",
+   "caption": "1900 mm tall: it stands beside the VLM.",
+   "start_frame": 435,
+   "end_frame": 460
+  }
+ ]
+}

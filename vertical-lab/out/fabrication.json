@@ -1,0 +1,214 @@
+{
+ "metalone": {
+  "title": "Desktop metal printer (LPBF)",
+  "model": "Sharebot MetalONE",
+  "source": "Sharebot MetalONE launch figures (740 x 630 x 1000 mm, 150 kg; 100 x 100 x 100 mm build; 200 W fibre laser), engineering.com, 3D Printing Industry, Fabbaloo; look from Sharebot's photos",
+  "model_mm": [
+   740,
+   630,
+   1000
+  ],
+  "published_mm": [
+   740.0,
+   630.0,
+   1000.0
+  ],
+  "fits_tray": false,
+  "floor": true,
+  "where": "beside the VLM",
+  "over_opening_mm": 272.5,
+  "notes": [
+   "1000 mm tall at launch (740 x 630 x 1000 mm, 150 kg); later listings give 1000 x 600 x 1470 mm and 270-315 kg, probably a stand or a bigger configuration.",
+   "Needs argon (or nitrogen for some alloys) and powder handling, which the VLM's trays don't have."
+  ]
+ },
+ "snowpod": {
+  "title": "Desktop metal printer (LPBF), pre-release",
+  "model": "SnowX SnowPod",
+  "source": "3DWithUs's review (360 x 360 x 660 mm, 40 kg, 200 W fibre laser); 3Dnatives and Makers101 (80 x 80 x 100 mm build, 40 um spot, sealed cartridges, NitroPod nitrogen); look approximate",
+  "model_mm": [
+   360,
+   364,
+   660
+  ],
+  "published_mm": [
+   360.0,
+   360.0,
+   660.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a VLM tray",
+  "over_opening_mm": 0.0,
+  "notes": [
+   "360 x 360 x 660 mm and 40 kg are 3DWithUs's figures; SnowX's announcements give the build, the spot and the price but no outer size.",
+   "A Kickstarter kit, launch planned for Q4 2026 ($5,299 launch special, $9,299 MSRP), 316L only at launch: not shipping yet.",
+   "Nitrogen comes from SnowX's NitroPod, which makes it from air (99.9 % at 3 L/min), so on a tray it needs power, not a gas line. The NitroPod's size isn't published; it isn't modelled.",
+   "Powder stays in sealed supply and recovery cartridges; a cyclone, two H13 filters and an H14 at the exhaust."
+  ]
+ },
+ "mprint": {
+  "title": "Compact metal printer (LPBF)",
+  "model": "One Click Metal MPRINT",
+  "source": "One Click Metal MPRINT/MPRINT+ (1100 x 790 x 1900 mm, 440-450 kg; 150 mm cube build; 200 W fibre laser; five-cartridge powder revolver), filament2print, 3D Printing Industry, Autodesk; look from One Click Metal's photos",
+  "model_mm": [
+   1100,
+   790,
+   1900
+  ],
+  "published_mm": [
+   1100.0,
+   790.0,
+   1900.0
+  ],
+  "fits_tray": false,
+  "floor": true,
+  "where": "beside the VLM",
+  "over_opening_mm": 1172.5,
+  "notes": [
+   "The published figures are 1100 x 1900 x 790 mm (and 1.9 x 1.1 x 0.79 m); read as W x H x D from the photos, a 1.9 m cabinet.",
+   "Needs argon and depowdering in its separate MUNPACK station; check the supply rating with the maker."
+  ]
+ },
+ "meltio_m450": {
+  "title": "Compact wire-laser DED",
+  "model": "Meltio M450",
+  "source": "Meltio M450 technical specifications (560 x 600 x 1400 mm, 250 kg; 145 x 168 x 390 mm envelope; 6 x 200 W diode lasers at 976 nm; 0.8-1.2 mm wire); look from Meltio's photos",
+  "model_mm": [
+   560,
+   600,
+   1400
+  ],
+  "published_mm": [
+   560.0,
+   600.0,
+   1400.0
+  ],
+  "fits_tray": false,
+  "floor": true,
+  "where": "beside the VLM",
+  "over_opening_mm": 672.5,
+  "notes": [
+   "The most compact DED found; Meltio's M600 is 1050 x 1050 x 1950 mm.",
+   "Needs argon and cooling, and 2-5 kW peak; wire feedstock means no loose powder."
+  ]
+ },
+ "form4": {
+  "title": "Resin 3D printer (MSLA)",
+  "model": "Formlabs Form 4",
+  "source": "Formlabs Form 4 tech specs (398 x 367 x 554 mm, 18.3 kg; 407 x 478 x 844 mm with the cover open; 200 x 125 x 210 mm build volume); look from Formlabs' photos",
+  "model_mm": [
+   398,
+   369,
+   554
+  ],
+  "published_mm": [
+   398.0,
+   367.0,
+   554.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a VLM tray",
+  "over_opening_mm": 0.0,
+  "notes": [
+   "Fits a tray with 173.5 mm to spare under Kardex's 727.5 mm, but the cover opens to 844 mm: the arm can open it at the opening (about 845 mm under the header), never while the tray is in a slot",
+   "The cover's rear hinge is inferred from the published open envelope, not from a drawing"
+  ]
+ },
+ "form_wash": {
+  "title": "Wash station for resin parts",
+  "model": "Formlabs Form Wash (2nd Gen)",
+  "source": "Formlabs Form Wash (2nd Gen): 315 x 293 x 405 mm, 714 mm tall with the lid open; look from Formlabs' photos",
+  "model_mm": [
+   315,
+   296,
+   406
+  ],
+  "published_mm": [
+   315.0,
+   293.0,
+   405.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a VLM tray",
+  "over_opening_mm": 0.0,
+  "notes": [
+   "Fits a tray closed (405 mm) and open (714 mm), under Kardex's 727.5 mm with 13.5 mm to spare",
+   "The bucket holds several litres of IPA: flammable vapour inside an enclosed VLM is a question for Kardex and EHS, as is the waste solvent"
+  ]
+ },
+ "form_cure": {
+  "title": "Post-cure chamber, 405 nm and heat",
+  "model": "Formlabs Form Cure (2nd Gen)",
+  "source": "Formlabs Form Cure (2nd Gen): 337 x 356 x 404 mm, 12.1 kg, 405 nm light and heat, 235 mm turntable; look from Formlabs' photos and service guide",
+  "model_mm": [
+   337,
+   360,
+   404
+  ],
+  "published_mm": [
+   337.0,
+   356.0,
+   404.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a VLM tray",
+  "over_opening_mm": 0.0,
+  "notes": [
+   "Fits a tray with 323.5 mm to spare; the door swings out in front, so it opens at the opening",
+   "The door's hinge side is assumed; Formlabs' service guide confirms a door, not a lid"
+  ]
+ },
+ "stencil": {
+  "title": "Solder paste stencil printer, semi-automatic",
+  "model": "DDM Novastar SPR-45VA",
+  "source": "Pentalogix's SPR-45VA listing (762 x 889 x 406 mm, 584 mm frames); DDM Novastar's SPR-45 description (160 lb, dual squeegees, power frame lift); layout from resellers' photos",
+  "model_mm": [
+   762,
+   903,
+   406
+  ],
+  "published_mm": [
+   762.0,
+   889.0,
+   406.0
+  ],
+  "fits_tray": false,
+  "floor": false,
+  "where": "on a VLM tray, turned 90 deg",
+  "over_opening_mm": 0.0,
+  "notes": [
+   "The layout between the published outline is generic for a benchtop semi-automatic printer.",
+   "Semi-automatic: someone, or the arm, puts the board on the nest and takes it off; the machine aligns, prints and separates.",
+   "889 mm deep against the tray's 840, so it goes on the tray turned 90 degrees.",
+   "Solder paste lives in a fridge and needs time to warm up; the paste on the stencil dries out over a few hours, so someone has to wipe the stencil."
+  ]
+ },
+ "lumenpnp": {
+  "title": "Pick-and-place, open source",
+  "model": "Opulo LumenPnP v4",
+  "source": "Opulo's LumenPnP repository (DESIGN_DECISIONS.md, bom.json: 600 mm V-slot, two nozzles, top and bottom vision, 120 x 600 mm staging plates, boards to 225 x 400 mm) and its v4 photo; overall size estimated from the extrusions and the photo",
+  "model_mm": [
+   690,
+   795,
+   450
+  ],
+  "published_mm": [
+   680.0,
+   680.0,
+   450.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a VLM tray",
+  "over_opening_mm": 0.0,
+  "notes": [
+   "Opulo publishes no overall size; 680 x 680 x 450 mm is the 600 mm extrusions plus the legs, and the height scaled from Opulo's photo (about +-15 %).",
+   "Open hardware: the CAD is FreeCAD and the firmware is Marlin, driven by OpenPnP.",
+   "It needs no compressed air: its vacuum pumps are on board."
+  ]
+ }
+}
