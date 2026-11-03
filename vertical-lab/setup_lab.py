@@ -541,4 +541,4 @@ if __name__ == "__main__":
         data = lab.meshes()
         print(movie(data, idata), flush=True)
         if not PREVIEW:
-            print(line.mp4_to_gif(OUT / "mp4" / "setup_lab.mp4", OUT / "setup_lab.gif"), flush=True)
+            print(line.mp4_to_gif(OUT / "mp4" / "setup_lab.mp4", OUT / "setup_lab.gif", **W.GIF), flush=True)

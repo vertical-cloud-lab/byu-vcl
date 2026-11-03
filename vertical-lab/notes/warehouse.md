@@ -2,10 +2,12 @@
 
 Links are relative to `vertical-lab/`, so this section can go into the README as it is.
 
-| Scene | GIF | MP4 | Still |
+| Scene | GIF (640 px, 5 fps) | MP4 (1280 × 720, 15 fps) | Still |
 |---|---|---|---|
-| **Warehouse**: the VLM and the floor machines on an open floor, two MiR250 + UR10e units driving between docks | [`out/warehouse.gif`](out/warehouse.gif) | [`out/mp4/warehouse.mp4`](out/mp4/warehouse.mp4) | [`out/warehouse_still.png`](out/warehouse_still.png) |
-| **Set up from scratch**: tape, utilities, the VLM, the machines, the arms, trays A-F, the cameras, an orbit | [`out/setup_lab.gif`](out/setup_lab.gif) | [`out/mp4/setup_lab.mp4`](out/mp4/setup_lab.mp4) | [`out/setup_lab_still.png`](out/setup_lab_still.png) |
+| **Warehouse**: the VLM and the floor machines on an open floor, two MiR250 + UR10e units driving between docks (90 s) | [`out/warehouse.gif`](out/warehouse.gif) | [`out/mp4/warehouse.mp4`](out/mp4/warehouse.mp4) | [`out/warehouse_still.png`](out/warehouse_still.png) |
+| **Set up from scratch**: tape, utilities, the VLM, the machines, the arms, trays A-F, the cameras, an orbit (1 min 51 s) | [`out/setup_lab.gif`](out/setup_lab.gif) | [`out/mp4/setup_lab.mp4`](out/mp4/setup_lab.mp4) | [`out/setup_lab_still.png`](out/setup_lab_still.png) |
+
+`out/<name>.json` gives the frame range of every sub-step, as for the other chapters.
 
 [`out/rail_vs_amr.json`](out/rail_vs_amr.json) has the numbers in "Rail or mobile base" below, from `python3 warehouse.py sway`.
 
