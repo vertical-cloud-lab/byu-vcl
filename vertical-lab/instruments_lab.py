@@ -1254,9 +1254,10 @@ def hip() -> Instrument:
         box(xd - 240, -D / 2 + 300, 180, xd + 240, -D / 2 + 400, 840)), "inst_dark")
     vessel.add("hot zone", cyl(75, 100, x=xd, y=-D / 2 + 350, z=450), "glow")
     over = _piece(inst, "over")
-    over.add("too tall", box(-W / 2 - 4, -D / 2 - 4, h["h_max"], W / 2 + 4, D / 2 + 4, H + 4), "lab_over")
-    over.add("too deep, front", box(-W / 2 - 4, -D / 2 - 4, 0, W / 2 + 4, -td / 2, h["h_max"]), "lab_over")
-    over.add("too deep, back", box(-W / 2 - 4, td / 2, 0, W / 2 + 4, D / 2 + 4, h["h_max"]), "lab_over")
+    e = 14.0                                             # proud of the HIP's faces, so they don't fight
+    over.add("too tall", box(-W / 2 - e, -D / 2 - 40, h["h_max"], W / 2 + e, D / 2 + e, H + e), "lab_over")
+    over.add("too deep, front", box(-W / 2 - e, -D / 2 - 40, 0, W / 2 + e, -td / 2, h["h_max"]), "lab_over")
+    over.add("too deep, back", box(-W / 2 - e, td / 2, 0, W / 2 + e, D / 2 + e, h["h_max"]), "lab_over")
     inst.joints = {
         "env": Joint("fade"),
         "hipdrop": Joint("path", path=((0, 0, 1500.0), (0, 0, 300.0), (0, 0, 0)), v0=1.0),
