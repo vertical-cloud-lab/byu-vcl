@@ -1,0 +1,53 @@
+{
+ "name": "instruments/openflexure_array",
+ "fps": 15,
+ "n_frames": 329,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/7",
+   "caption": "Six OpenFlexure microscopes on one aluminium sub-tray: four v7 and two Delta Stages, each standing in a 2 mm pocket cut to its own footprint, so it goes back in the same place.",
+   "start_frame": 0,
+   "end_frame": 58
+  },
+  {
+   "label": "2/7",
+   "caption": "A polished coupon on a slide goes under the clips of each microscope in the front row...",
+   "start_frame": 59,
+   "end_frame": 96
+  },
+  {
+   "label": "3/7",
+   "caption": "...and the back row.",
+   "start_frame": 97,
+   "end_frame": 131
+  },
+  {
+   "label": "4/7",
+   "caption": "All six scan at once: each flexure stage rasters its coupon (+-6 mm) under the reflection optics. The v7s focus by moving the optics, the Deltas by moving the stage.",
+   "start_frame": 132,
+   "end_frame": 202
+  },
+  {
+   "label": "5/7",
+   "caption": "One hub supplies power and a network switch to all six through the cable ducts; the tray's own power feeds the hub.",
+   "start_frame": 203,
+   "end_frame": 243
+  },
+  {
+   "label": "6/7",
+   "caption": "The sub-tray lifts out as one unit by its two end handles: microscopes, slides and cables together.",
+   "start_frame": 244,
+   "end_frame": 290
+  },
+  {
+   "label": "7/7",
+   "caption": "And goes back into its place on tray D.",
+   "start_frame": 291,
+   "end_frame": 328
+  }
+ ]
+}
