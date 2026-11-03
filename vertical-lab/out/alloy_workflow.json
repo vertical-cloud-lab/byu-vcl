@@ -1,0 +1,413 @@
+{
+ "name": "alloy_workflow",
+ "fps": 15,
+ "n_frames": 1727,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/6",
+   "caption": "An example run on the alloy line: a build plate from the Aconity MIDI to the wire EDM, which cuts the tensile bars off it, then one bar to the Instron. The UR10e rides its MiR250 along the fronts.",
+   "start_frame": 0,
+   "end_frame": 74
+  },
+  {
+   "label": "1/6",
+   "caption": "The print is done: four ASTM E8 subsize tensile bars, 100 mm long and 6 mm thick, printed flat in AlSi10Mg on a 170 mm plate (DAL PR #169's build at Utah), and a handling lug for the gripper. They are still buried in the powder. The chamber is drawn see-through.",
+   "start_frame": 75,
+   "end_frame": 126
+  },
+  {
+   "label": "1/6",
+   "caption": "The print is done: four ASTM E8 subsize tensile bars, 100 mm long and 6 mm thick, printed flat in AlSi10Mg on a 170 mm plate (DAL PR #169's build at Utah), and a handling lug for the gripper. They are still buried in the powder. The chamber is drawn see-through.",
+   "start_frame": 127,
+   "end_frame": 192
+  },
+  {
+   "label": "2/6",
+   "caption": "The chamber door opens. Depowdering is a person's job: the MIDI has no automatic depowdering, so someone vacuums and brushes the loose powder off while the platform rises, and Aconity's separate sieve recovers it. The arm can't do this step.",
+   "start_frame": 193,
+   "end_frame": 219
+  },
+  {
+   "label": "2/6",
+   "caption": "The chamber door opens. Depowdering is a person's job: the MIDI has no automatic depowdering, so someone vacuums and brushes the loose powder off while the platform rises, and Aconity's separate sieve recovers it. The arm can't do this step.",
+   "start_frame": 220,
+   "end_frame": 291
+  },
+  {
+   "label": "3/6",
+   "caption": "The MiR250 rolls up. The platform's clamp lets go (a zero-point clamp: Aconity's platform takes a screwed plate, so this is an assumption). The chamber is 280 mm tall inside, too low for the gripper pointing down, so it takes the lug pointing 30° down and lifts the plate out.",
+   "start_frame": 292,
+   "end_frame": 320
+  },
+  {
+   "label": "3/6",
+   "caption": "The MiR250 rolls up. The platform's clamp lets go (a zero-point clamp: Aconity's platform takes a screwed plate, so this is an assumption). The chamber is 280 mm tall inside, too low for the gripper pointing down, so it takes the lug pointing 30° down and lifts the plate out.",
+   "start_frame": 321,
+   "end_frame": 348
+  },
+  {
+   "label": "3/6",
+   "caption": "The MiR250 rolls up. The platform's clamp lets go (a zero-point clamp: Aconity's platform takes a screwed plate, so this is an assumption). The chamber is 280 mm tall inside, too low for the gripper pointing down, so it takes the lug pointing 30° down and lifts the plate out.",
+   "start_frame": 349,
+   "end_frame": 364
+  },
+  {
+   "label": "3/6",
+   "caption": "The MiR250 rolls up. The platform's clamp lets go (a zero-point clamp: Aconity's platform takes a screwed plate, so this is an assumption). The chamber is 280 mm tall inside, too low for the gripper pointing down, so it takes the lug pointing 30° down and lifts the plate out.",
+   "start_frame": 365,
+   "end_frame": 373
+  },
+  {
+   "label": "3/6",
+   "caption": "The MiR250 rolls up. The platform's clamp lets go (a zero-point clamp: Aconity's platform takes a screwed plate, so this is an assumption). The chamber is 280 mm tall inside, too low for the gripper pointing down, so it takes the lug pointing 30° down and lifts the plate out.",
+   "start_frame": 374,
+   "end_frame": 386
+  },
+  {
+   "label": "3/6",
+   "caption": "The MiR250 rolls up. The platform's clamp lets go (a zero-point clamp: Aconity's platform takes a screwed plate, so this is an assumption). The chamber is 280 mm tall inside, too low for the gripper pointing down, so it takes the lug pointing 30° down and lifts the plate out.",
+   "start_frame": 387,
+   "end_frame": 414
+  },
+  {
+   "label": "3/6",
+   "caption": "It sets the plate on a carrier on the MiR250, half a turn round, so the lug ends up on the plate's right. Plate and parts weigh about 1 kg, against the UR10e's 12.5 kg.",
+   "start_frame": 415,
+   "end_frame": 448
+  },
+  {
+   "label": "3/6",
+   "caption": "It sets the plate on a carrier on the MiR250, half a turn round, so the lug ends up on the plate's right. Plate and parts weigh about 1 kg, against the UR10e's 12.5 kg.",
+   "start_frame": 449,
+   "end_frame": 464
+  },
+  {
+   "label": "3/6",
+   "caption": "It sets the plate on a carrier on the MiR250, half a turn round, so the lug ends up on the plate's right. Plate and parts weigh about 1 kg, against the UR10e's 12.5 kg.",
+   "start_frame": 465,
+   "end_frame": 473
+  },
+  {
+   "label": "3/6",
+   "caption": "It sets the plate on a carrier on the MiR250, half a turn round, so the lug ends up on the plate's right. Plate and parts weigh about 1 kg, against the UR10e's 12.5 kg.",
+   "start_frame": 474,
+   "end_frame": 486
+  },
+  {
+   "label": "3/6",
+   "caption": "It sets the plate on a carrier on the MiR250, half a turn round, so the lug ends up on the plate's right. Plate and parts weigh about 1 kg, against the UR10e's 12.5 kg.",
+   "start_frame": 487,
+   "end_frame": 509
+  },
+  {
+   "label": "4/6",
+   "caption": "To the FANUC ROBOCUT wire EDM, 5.5 m along the line, at up to 1.5 m/s (the MiR250 does 2.0).",
+   "start_frame": 510,
+   "end_frame": 578
+  },
+  {
+   "label": "4/6",
+   "caption": "The tank is drained and its yellow door drops. The arm takes the plate by the lug again, from above, turns it on edge and pushes it onto a zero-point receiver on an angle plate on the table, bars to the front.",
+   "start_frame": 579,
+   "end_frame": 607
+  },
+  {
+   "label": "4/6",
+   "caption": "The tank is drained and its yellow door drops. The arm takes the plate by the lug again, from above, turns it on edge and pushes it onto a zero-point receiver on an angle plate on the table, bars to the front.",
+   "start_frame": 608,
+   "end_frame": 632
+  },
+  {
+   "label": "4/6",
+   "caption": "The tank is drained and its yellow door drops. The arm takes the plate by the lug again, from above, turns it on edge and pushes it onto a zero-point receiver on an angle plate on the table, bars to the front.",
+   "start_frame": 633,
+   "end_frame": 647
+  },
+  {
+   "label": "4/6",
+   "caption": "The tank is drained and its yellow door drops. The arm takes the plate by the lug again, from above, turns it on edge and pushes it onto a zero-point receiver on an angle plate on the table, bars to the front.",
+   "start_frame": 648,
+   "end_frame": 656
+  },
+  {
+   "label": "4/6",
+   "caption": "The tank is drained and its yellow door drops. The arm takes the plate by the lug again, from above, turns it on edge and pushes it onto a zero-point receiver on an angle plate on the table, bars to the front.",
+   "start_frame": 657,
+   "end_frame": 671
+  },
+  {
+   "label": "4/6",
+   "caption": "The tank is drained and its yellow door drops. The arm takes the plate by the lug again, from above, turns it on edge and pushes it onto a zero-point receiver on an angle plate on the table, bars to the front.",
+   "start_frame": 672,
+   "end_frame": 705
+  },
+  {
+   "label": "4/6",
+   "caption": "The tank is drained and its yellow door drops. The arm takes the plate by the lug again, from above, turns it on edge and pushes it onto a zero-point receiver on an angle plate on the table, bars to the front.",
+   "start_frame": 706,
+   "end_frame": 727
+  },
+  {
+   "label": "4/6",
+   "caption": "The tank is drained and its yellow door drops. The arm takes the plate by the lug again, from above, turns it on edge and pushes it onto a zero-point receiver on an angle plate on the table, bars to the front.",
+   "start_frame": 728,
+   "end_frame": 738
+  },
+  {
+   "label": "4/6",
+   "caption": "The tank is drained and its yellow door drops. The arm takes the plate by the lug again, from above, turns it on edge and pushes it onto a zero-point receiver on an angle plate on the table, bars to the front.",
+   "start_frame": 739,
+   "end_frame": 747
+  },
+  {
+   "label": "4/6",
+   "caption": "The tank is drained and its yellow door drops. The arm takes the plate by the lug again, from above, turns it on edge and pushes it onto a zero-point receiver on an angle plate on the table, bars to the front.",
+   "start_frame": 748,
+   "end_frame": 766
+  },
+  {
+   "label": "4/6",
+   "caption": "The tank is drained and its yellow door drops. The arm takes the plate by the lug again, from above, turns it on edge and pushes it onto a zero-point receiver on an angle plate on the table, bars to the front.",
+   "start_frame": 767,
+   "end_frame": 788
+  },
+  {
+   "label": "4/6",
+   "caption": "Door up; the tank fills with deionised water, the dielectric. The plate is cut under water.",
+   "start_frame": 789,
+   "end_frame": 810
+  },
+  {
+   "label": "4/6",
+   "caption": "Door up; the tank fills with deionised water, the dielectric. The plate is cut under water.",
+   "start_frame": 811,
+   "end_frame": 838
+  },
+  {
+   "label": "5/6",
+   "caption": "The cut, with the machine drawn see-through: the brass wire (0.25 mm; FANUC takes 0.10-0.30 mm) runs between its upper and lower guides, 0.15 mm off the plate, and sparks its way through the base of each bar.",
+   "start_frame": 839,
+   "end_frame": 873
+  },
+  {
+   "label": "5/6",
+   "caption": "The cut, with the machine drawn see-through: the brass wire (0.25 mm; FANUC takes 0.10-0.30 mm) runs between its upper and lower guides, 0.15 mm off the plate, and sparks its way through the base of each bar.",
+   "start_frame": 874,
+   "end_frame": 924
+  },
+  {
+   "label": "5/6",
+   "caption": "The cut, with the machine drawn see-through: the brass wire (0.25 mm; FANUC takes 0.10-0.30 mm) runs between its upper and lower guides, 0.15 mm off the plate, and sparks its way through the base of each bar.",
+   "start_frame": 925,
+   "end_frame": 1011
+  },
+  {
+   "label": "5/6",
+   "caption": "Four cuts, 3389 mm² in all. FANUC gives no cutting rate for aluminium; at the 300 mm²/min GF quotes as the maximum of its CUT AM 500, made for this job, it would take at least 11 minutes. The tank drains and the door drops.",
+   "start_frame": 1012,
+   "end_frame": 1037
+  },
+  {
+   "label": "5/6",
+   "caption": "Four cuts, 3389 mm² in all. FANUC gives no cutting rate for aluminium; at the 300 mm²/min GF quotes as the maximum of its CUT AM 500, made for this job, it would take at least 11 minutes. The tank drains and the door drops.",
+   "start_frame": 1038,
+   "end_frame": 1060
+  },
+  {
+   "label": "5/6",
+   "caption": "The arm takes the first bar off the shelf by its end, the gripper opened just enough to fit between the bars. Wire-cut parts come out wet with deionised water: a rinse and dry, which the line doesn't have yet, comes before the test.",
+   "start_frame": 1061,
+   "end_frame": 1088
+  },
+  {
+   "label": "5/6",
+   "caption": "The arm takes the first bar off the shelf by its end, the gripper opened just enough to fit between the bars. Wire-cut parts come out wet with deionised water: a rinse and dry, which the line doesn't have yet, comes before the test.",
+   "start_frame": 1089,
+   "end_frame": 1101
+  },
+  {
+   "label": "5/6",
+   "caption": "The arm takes the first bar off the shelf by its end, the gripper opened just enough to fit between the bars. Wire-cut parts come out wet with deionised water: a rinse and dry, which the line doesn't have yet, comes before the test.",
+   "start_frame": 1102,
+   "end_frame": 1112
+  },
+  {
+   "label": "5/6",
+   "caption": "The arm takes the first bar off the shelf by its end, the gripper opened just enough to fit between the bars. Wire-cut parts come out wet with deionised water: a rinse and dry, which the line doesn't have yet, comes before the test.",
+   "start_frame": 1113,
+   "end_frame": 1119
+  },
+  {
+   "label": "5/6",
+   "caption": "The arm takes the first bar off the shelf by its end, the gripper opened just enough to fit between the bars. Wire-cut parts come out wet with deionised water: a rinse and dry, which the line doesn't have yet, comes before the test.",
+   "start_frame": 1120,
+   "end_frame": 1132
+  },
+  {
+   "label": "5/6",
+   "caption": "The arm takes the first bar off the shelf by its end, the gripper opened just enough to fit between the bars. Wire-cut parts come out wet with deionised water: a rinse and dry, which the line doesn't have yet, comes before the test.",
+   "start_frame": 1133,
+   "end_frame": 1148
+  },
+  {
+   "label": "5/6",
+   "caption": "The arm takes the first bar off the shelf by its end, the gripper opened just enough to fit between the bars. Wire-cut parts come out wet with deionised water: a rinse and dry, which the line doesn't have yet, comes before the test.",
+   "start_frame": 1149,
+   "end_frame": 1176
+  },
+  {
+   "label": "5/6",
+   "caption": "The arm takes the first bar off the shelf by its end, the gripper opened just enough to fit between the bars. Wire-cut parts come out wet with deionised water: a rinse and dry, which the line doesn't have yet, comes before the test.",
+   "start_frame": 1177,
+   "end_frame": 1189
+  },
+  {
+   "label": "5/6",
+   "caption": "The arm takes the first bar off the shelf by its end, the gripper opened just enough to fit between the bars. Wire-cut parts come out wet with deionised water: a rinse and dry, which the line doesn't have yet, comes before the test.",
+   "start_frame": 1190,
+   "end_frame": 1196
+  },
+  {
+   "label": "5/6",
+   "caption": "The arm takes the first bar off the shelf by its end, the gripper opened just enough to fit between the bars. Wire-cut parts come out wet with deionised water: a rinse and dry, which the line doesn't have yet, comes before the test.",
+   "start_frame": 1197,
+   "end_frame": 1207
+  },
+  {
+   "label": "5/6",
+   "caption": "The arm takes the first bar off the shelf by its end, the gripper opened just enough to fit between the bars. Wire-cut parts come out wet with deionised water: a rinse and dry, which the line doesn't have yet, comes before the test.",
+   "start_frame": 1208,
+   "end_frame": 1227
+  },
+  {
+   "label": "6/6",
+   "caption": "To the Instron. The bar's 6 × 6 mm section at 412 MPa is a 14.8 kN pull: the 68SC-2 stops at 2 kN, so it goes to the 68FM-100 (100 kN). The crosshead rises out of the arm's way.",
+   "start_frame": 1228,
+   "end_frame": 1271
+  },
+  {
+   "label": "6/6",
+   "caption": "To the Instron. The bar's 6 × 6 mm section at 412 MPa is a 14.8 kN pull: the 68SC-2 stops at 2 kN, so it goes to the 68FM-100 (100 kN). The crosshead rises out of the arm's way.",
+   "start_frame": 1272,
+   "end_frame": 1296
+  },
+  {
+   "label": "6/6",
+   "caption": "To the Instron. The bar's 6 × 6 mm section at 412 MPa is a 14.8 kN pull: the 68SC-2 stops at 2 kN, so it goes to the 68FM-100 (100 kN). The crosshead rises out of the arm's way.",
+   "start_frame": 1297,
+   "end_frame": 1307
+  },
+  {
+   "label": "6/6",
+   "caption": "To the Instron. The bar's 6 × 6 mm section at 412 MPa is a 14.8 kN pull: the 68SC-2 stops at 2 kN, so it goes to the 68FM-100 (100 kN). The crosshead rises out of the arm's way.",
+   "start_frame": 1308,
+   "end_frame": 1314
+  },
+  {
+   "label": "6/6",
+   "caption": "To the Instron. The bar's 6 × 6 mm section at 412 MPa is a 14.8 kN pull: the 68SC-2 stops at 2 kN, so it goes to the 68FM-100 (100 kN). The crosshead rises out of the arm's way.",
+   "start_frame": 1315,
+   "end_frame": 1325
+  },
+  {
+   "label": "6/6",
+   "caption": "The arm lowers the bar's end into the lower wedge grip, which closes on it (Instron sells 100 kN wedge grips with automatic hydraulic actuation and front loading for flat specimens). The arm lets go and backs off.",
+   "start_frame": 1326,
+   "end_frame": 1353
+  },
+  {
+   "label": "6/6",
+   "caption": "The arm lowers the bar's end into the lower wedge grip, which closes on it (Instron sells 100 kN wedge grips with automatic hydraulic actuation and front loading for flat specimens). The arm lets go and backs off.",
+   "start_frame": 1354,
+   "end_frame": 1370
+  },
+  {
+   "label": "6/6",
+   "caption": "The arm lowers the bar's end into the lower wedge grip, which closes on it (Instron sells 100 kN wedge grips with automatic hydraulic actuation and front loading for flat specimens). The arm lets go and backs off.",
+   "start_frame": 1371,
+   "end_frame": 1377
+  },
+  {
+   "label": "6/6",
+   "caption": "The arm lowers the bar's end into the lower wedge grip, which closes on it (Instron sells 100 kN wedge grips with automatic hydraulic actuation and front loading for flat specimens). The arm lets go and backs off.",
+   "start_frame": 1378,
+   "end_frame": 1388
+  },
+  {
+   "label": "6/6",
+   "caption": "The arm lowers the bar's end into the lower wedge grip, which closes on it (Instron sells 100 kN wedge grips with automatic hydraulic actuation and front loading for flat specimens). The arm lets go and backs off.",
+   "start_frame": 1389,
+   "end_frame": 1409
+  },
+  {
+   "label": "6/6",
+   "caption": "The arm lowers the bar's end into the lower wedge grip, which closes on it (Instron sells 100 kN wedge grips with automatic hydraulic actuation and front loading for flat specimens). The arm lets go and backs off.",
+   "start_frame": 1410,
+   "end_frame": 1428
+  },
+  {
+   "label": "6/6",
+   "caption": "The crosshead comes down until the upper grip takes the bar's other end, 40 mm of it free between the jaws, and the upper grip closes.",
+   "start_frame": 1429,
+   "end_frame": 1462
+  },
+  {
+   "label": "6/6",
+   "caption": "The test: the crosshead pulls at a constant rate and the load cell reads the force. The curve is not a measurement: it runs through AddUp's published as-built values (AddUp AlSi10Mg data sheet, as built, XY, ASTM E8). The bar breaks at about 412 MPa, 5 % strain, with little necking.",
+   "start_frame": 1463,
+   "end_frame": 1585
+  },
+  {
+   "label": "6/6",
+   "caption": "Broken. The crosshead backs off 20 mm to show the break; the halves go on to the SEM for fractography.",
+   "start_frame": 1586,
+   "end_frame": 1630
+  },
+  {
+   "label": "6/6",
+   "caption": "Done: printed, cut and tested, every arm move a real one. Two steps still need a person or a new station: depowdering the build, and rinsing and drying the wet bars.",
+   "start_frame": 1631,
+   "end_frame": 1726
+  }
+ ],
+ "numbers": {
+  "specimen": {
+   "L": 100.0,
+   "A": 32.0,
+   "W": 6.0,
+   "C": 10.0,
+   "B": 30.0,
+   "R": 6.0,
+   "G": 25.0,
+   "T": 6.0
+  },
+  "plate": {
+   "r": 85.0,
+   "t": 15.0,
+   "stud_r": 20.0,
+   "stud_h": 20.0
+  },
+  "cut_area_mm2": 3389,
+  "peak_kN": 14.8,
+  "stress_strain": {
+   "E": 72000.0,
+   "ys": 275.0,
+   "uts": 412.0,
+   "elong": 0.05,
+   "src": "AddUp AlSi10Mg data sheet, as built, XY, ASTM E8"
+  },
+  "mir_speed_mm_s": 1500.0
+ },
+ "data": {
+  "sem": {
+   "file": "DAL figures/sem/AlSi10Mg_carbon_adhesive_SEM.png",
+   "taken": "BYU Apreo SEM, 500x, 5 kV, 0.10 nA, ETD, 2 April 2026",
+   "by": "Gage Erickson (byu-vcl#48, comment 4181040112)"
+  },
+  "curve": "illustrative fit through published values, not measured"
+ }
+}
