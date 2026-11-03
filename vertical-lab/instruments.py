@@ -40,6 +40,7 @@ MATERIALS = {
     "inst_red": (0.78, 0.12, 0.12, 1.0, 0.30),
     "inst_green": (0.20, 0.62, 0.32, 1.0, 0.30),
     "inst_orange": (0.95, 0.50, 0.10, 1.0, 0.30),
+    "inst_purple": (0.52, 0.27, 0.72, 1.0, 0.30),
     "inst_yellow": (0.98, 0.80, 0.15, 1.0, 0.25),
     "stainless": (0.72, 0.73, 0.75, 1.0, 0.75),
     "chrome": (0.85, 0.86, 0.88, 1.0, 0.95),
@@ -526,6 +527,377 @@ def sem() -> Instrument:
                    ("EBSD detector", (-W / 2 - 200, -40, cz + 55), (0.14, 0.28)),
                    ("sample drawer", (0, yf, 180), (0.18, 0.70))]
     inst.cam = (0.9, -2.0, 0.85)
+    return inst
+
+
+# ===================================================================================================== PIP
+# Plastometrex PLX-Benchtop (profilometry-based indentation plastometry): an arch of two rounded pillars under a top
+# housing with a blue LED band, an open test space with the indenter head on a crosshead, and a round sample stage
+# on an aluminium base (Plastometrex's product render). A spherical indenter pushes into a flat sample, the
+# profilometer maps the residual indent, and CORSICA fits the stress-strain curve to the profile. PLX-AutoStage is
+# Plastometrex's add-on that automates the loading. Envelope: see SPECS (the proportions are the render's).
+PIP = dict(W=560.0, D=520.0, H=750.0, pillar=110.0, base_h=70.0, top_z0=430.0, stage_d=150.0, stage_h=45.0,
+           head_z=200.0, stroke=95.0)
+
+
+def pip() -> Instrument:
+    p = PIP
+    inst = Instrument("pip", "Indentation plastometer (PIP)", "Plastometrex PLX-Benchtop", (p["W"], p["D"], p["H"]),
+                      "Plastometrex's PLX-Benchtop product render and brochure; overall size estimated from the "
+                      "render (see SPECS)")
+    W, D, H = p["W"], p["D"], p["H"]
+    yf = -D / 2
+    body = _piece(inst, "body")
+    body.add("base", rbox(W, D, p["base_h"], 20), "inst_dark")
+    body.add("base plate", box(-W / 2 + p["pillar"], yf + 20, p["base_h"] - 2, W / 2 - p["pillar"], D / 2 - 40,
+                               p["base_h"] + 8), "aluminium")
+    for sx in (-1, 1):
+        x0, x1 = sorted((sx * W / 2, sx * (W / 2 - p["pillar"])))
+        pil = box(x0, yf, p["base_h"], x1, D / 2, p["top_z0"] + 20).edges("|Z").fillet(18)
+        body.add(f"pillar {'LR'[sx > 0]}", pil, "inst_dark")
+    body.add("back wall", box(-W / 2 + p["pillar"], D / 2 - 60, p["base_h"], W / 2 - p["pillar"], D / 2 - 20,
+                              p["top_z0"]), "inst_black")
+    body.add("louvres", box(-W / 2 + p["pillar"], yf + 80, p["base_h"] + 40, -W / 2 + p["pillar"] + 4, D / 2 - 80,
+                            p["top_z0"] - 120), "inst_grey")
+    top = box(-W / 2, yf, p["top_z0"], W / 2, D / 2, H).edges("|Y").fillet(70)
+    body.add("top housing", top, "inst_dark")
+    body.add("trim", box(-W / 2 - 2, yf - 2, p["top_z0"] - 6, W / 2 + 2, D / 2 + 2, p["top_z0"]), "aluminium")
+    body.add("front panel", box(-W / 2 + 80, yf - 3, p["top_z0"] + 70, W / 2 - 80, yf, H - 40), "inst_black")
+    led = box(-W / 2 + 74, yf - 5, p["top_z0"] + 64, W / 2 - 74, yf - 3, p["top_z0"] + 72).union(
+        box(-W / 2 + 74, yf - 5, p["top_z0"] + 64, -W / 2 + 82, yf - 3, H - 90)).union(
+        box(W / 2 - 82, yf - 5, p["top_z0"] + 64, W / 2 - 74, yf - 3, H - 90))
+    body.add("LED band", led, "screen_on")
+    body.add("e-stop", _xcyl(40, 25, x=W / 2, y=yf + 60, z=p["top_z0"] + 20), "inst_red")
+    body.add("e-stop collar", _xcyl(50, 8, x=W / 2, y=yf + 60, z=p["top_z0"] + 20), "inst_yellow")
+    body.add("guide columns", cyl(28, p["top_z0"] - p["base_h"], x=-W / 2 + p["pillar"] + 30, y=60, z=p["base_h"])
+             .union(cyl(28, p["top_z0"] - p["base_h"], x=W / 2 - p["pillar"] - 30, y=60, z=p["base_h"])), "chrome")
+    # the sample stage, which shifts the sample from under the indenter to under the profilometer
+    stage = _piece(inst, "stage")
+    stage.add("sample stage", cyl(p["stage_d"], p["stage_h"], y=-20, z=p["base_h"] + 8), "aluminium")
+    stage.add("anvil", cyl(p["stage_d"] - 30, 8, y=-20, z=p["base_h"] + 8 + p["stage_h"]), "steel")
+    # the crosshead with the indenter and the profilometer probe beside it
+    head = _piece(inst, "head")
+    hz = p["head_z"] + p["base_h"]
+    head.add("crosshead", box(-W / 2 + p["pillar"] + 10, -60, hz + 40, W / 2 - p["pillar"] - 10, 120, hz + 120)
+             .edges("|Y").fillet(12), "inst_dark")
+    head.add("crosshead nose", box(-110, -95, hz + 10, 110, 40, hz + 70).edges("|Y").chamfer(25), "inst_dark")
+    for sx in (-1, 1):
+        head.add(f"warning {sx}", box(sx * 90 - 14, -97, hz + 45, sx * 90 + 14, -95, hz + 65), "inst_yellow")
+    head.add("indenter holder", cyl(36, 60, y=-20, z=hz - 50), "chrome")
+    head.add("indenter", cyl(14, 12, y=-20, z=hz - 62), "inst_black")
+    head.add("profilometer probe", cyl(16, 70, x=70, y=-20, z=hz - 60), "inst_grey")
+    sample = _piece(inst, "sample")
+    sample.add("sample", box(-20, -20, 0, 20, 20, 6), "sample")
+    stz = p["base_h"] + 8 + p["stage_h"] + 8
+    inst.joints = {
+        "sample": Joint("path", parent="stage", path=((0, -420, 260), (0, -220, 120), (0, -20, stz + 40),
+                                                      (0, -20, stz))),
+        "head": Joint("slide", vec=(0, 0, -p["stroke"])),
+        "stage": Joint("slide", vec=(-70, 0, 0)),
+    }
+    gap = p["head_z"] + p["base_h"] - 62 - (stz + 6)
+    inst.joints["head"] = Joint("slide", vec=(0, 0, -gap))
+    inst.actions = [
+        ("A flat sample (3 x 3 x 1.5 mm at the least; here a 40 mm square cut from a print) goes onto the anvil.",
+         2.2, {"sample": (0.0, 1.0)}),
+        ("The crosshead drives the spherical indenter in: a few hundred newtons, an indent 0.25-1 mm wide.", 1.8,
+         {"head": (0.0, 1.0)}),
+        ("It lifts off, and the stage carries the indent under the profilometer, which maps its shape.", 2.2,
+         {"head": (1.0, 0.0), "stage": (0.0, 1.0)}),
+        ("CORSICA fits a stress-strain curve to that profile. The stage returns and the sample comes off.", 2.2,
+         {"stage": (1.0, 0.0), "sample": (1.0, 0.0)}),
+    ]
+    inst.labels = [("indenter", (0, -20, hz - 40), (0.14, 0.40)), ("profilometer", (70, -20, hz - 40), (0.84, 0.40)),
+                   ("sample stage", (0, -20 - p["stage_d"] / 2, p["base_h"] + 30), (0.16, 0.72))]
+    inst.cam = (0.75, -1.9, 0.75)
+    return inst
+
+
+# ===================================================================================================== rail
+# Vention's robot seventh axis, elevated version (Vention's "7th axis" application page and MachineBuilder render): a
+# beam of aluminium extrusions on braced legs, two linear guides and a rack on top, a carriage plate with the
+# gearmotor and pinion, the robot's adapter plate, a cable chain along the beam and the control cabinet hung under
+# it. Vention renders its extrusions blue. The beam height is set so the arm's base sits where it does on the MiR250
+# (800 mm), and the axis runs along the fronts of the line. Section and leg sizes are read off the render.
+RAIL = dict(beam_w=180.0, beam_h=135.0, top=780.0, leg_pitch=3000.0, car_l=450.0, car_w=400.0, car_t=20.0)
+
+
+def rail(length: float = 4000.0, travel: float = 1600.0) -> Instrument:
+    p = RAIL
+    inst = Instrument("rail", "Backup: a floor rail for the arm", "Vention robot 7th axis", (length, 600.0, p["top"]),
+                      "Vention's seventh-axis application page and MachineBuilder render; section sizes read off "
+                      "the render", floor=True)
+    L = length
+    bw, bh, top = p["beam_w"], p["beam_h"], p["top"]
+    z1 = top - 25.0                         # top of the beam, under the guides
+    z0 = z1 - bh
+    body = _piece(inst, "body")
+    beam = box(-L / 2, -bw / 2, z0, L / 2, bw / 2, z1)
+    for y in (-bw / 2 + 22.5, bw / 2 - 22.5):            # the extrusions' T-slots, as grooves
+        beam = beam.cut(box(-L / 2 - 1, y - 4, z1 - 8, L / 2 + 1, y + 4, z1 + 1))
+    body.add("beam", beam, "inst_blue")
+    for y in (-bw / 2 + 30, bw / 2 - 30):
+        body.add(f"guide {y:+.0f}", box(-L / 2 + 20, y - 10, z1, L / 2 - 20, y + 10, z1 + 15), "steel")
+    body.add("rack", box(-L / 2 + 20, -bw / 2 - 12, z1 - 40, L / 2 - 20, -bw / 2, z1), "steel")
+    body.add("chain tray", box(-L / 2, bw / 2, z0 + 20, L / 2, bw / 2 + 90, z0 + 30).union(
+        box(-L / 2, bw / 2 + 85, z0 + 20, L / 2, bw / 2 + 90, z0 + 70)), "inst_blue")
+    body.add("cable chain", box(-L / 2 + 100, bw / 2 + 10, z0 + 30, 0, bw / 2 + 80, z0 + 75), "inst_black")
+    n_legs = max(2, int(round(L / p["leg_pitch"])) + 1)
+    legs = None
+    for i in range(n_legs):
+        x = -L / 2 + 150 + i * (L - 300) / (n_legs - 1)
+        leg = box(x - 45, -45, 20, x + 45, 45, z0).union(box(x - 160, -160, 0, x + 160, 160, 20))
+        for sx in (-1, 1):                     # gussets
+            g = cq.Workplane("XZ").polyline([(x + sx * 45, 20), (x + sx * 150, 20), (x + sx * 45, 260)]).close() \
+                .extrude(20, both=True)
+            leg = leg.union(g)
+        legs = leg if legs is None else legs.union(leg)
+    body.add("legs", legs, "inst_blue")
+    body.add("control cabinet", box(-L / 2 + 500, -150, z0 - 420, -L / 2 + 900, 150, z0 - 20), "inst_navy")
+    body.add("cabinet screen", box(-L / 2 + 560, -152, z0 - 200, -L / 2 + 760, -150, z0 - 80), "screen_on")
+    car = _piece(inst, "carriage")
+    cl, cw = p["car_l"], p["car_w"]
+    car.add("carriage plate", box(-cl / 2, -cw / 2, z1 + 15, cl / 2, cw / 2, top - p["car_t"] + 20), "inst_blue")
+    car.add("bearing blocks", box(-cl / 2 + 30, -cw / 2 + 50, z1 + 5, cl / 2 - 30, cw / 2 - 50, z1 + 15), "steel")
+    car.add("gearmotor", cyl(110, 170, x=0, y=-cw / 2 - 70, z=z1 - 140).union(
+        box(-70, -cw / 2 - 130, z1 - 10, 70, -cw / 2, z1 + 20)), "inst_black")
+    car.add("robot adapter", cyl(210, 20, z=top), "aluminium")
+    inst.joints = {"carriage": Joint("slide", vec=(travel, 0, 0))}
+    inst.actions = [
+        ("The backup to the mobile base: a Vention seventh axis. The carriage carries the arm along the line on a "
+         "rack and pinion.", 2.6, {"carriage": (0.0, 1.0)}),
+        ("Its beam is set so the arm's base is at 800 mm, where it sits on the MiR250.", 2.2,
+         {"carriage": (1.0, 0.0)}),
+    ]
+    inst.labels = [("carriage and gearmotor", (0, -cw / 2 - 70, z1 - 60), (0.16, 0.30)),
+                   ("rack and guides", (L / 2 - 400, -bw / 2, z1), (0.82, 0.40)),
+                   ("control cabinet", (-L / 2 + 700, -150, z0 - 220), (0.16, 0.72))]
+    inst.cam = (0.55, -1.5, 0.6)
+    return inst
+
+
+# ===================================================================================================== polisher
+# Buehler EcoMet 30 semi-automatic grinder-polisher, single 12 in (305 mm) platen: 500 L x 650 D x 650 H mm, 75 kg;
+# 50-500 rpm; holds 25-40 mm mounts. It needs water, compressed air and a drain (EcoMet 30 manual), which a VLM tray
+# does not supply: see the notes.
+POLISHER = dict(W=500.0, D=650.0, H=650.0, base_h=300.0, platen_d=305.0, bowl_d=400.0, col_x=150.0, col_y=230.0,
+                head_drop=40.0)
+
+
+def polisher() -> Instrument:
+    p = POLISHER
+    inst = Instrument("polisher", "Metallographic grinder-polisher", "Buehler EcoMet 30 semi-automatic",
+                      (p["W"], p["D"], p["H"]), "Buehler EcoMet 30 instruction manual (machine size, platen sizes, "
+                      "weights); look from Buehler's photos")
+    W, D, H = p["W"], p["D"], p["H"]
+    yf = -D / 2
+    pc = (0.0, -50.0)                         # platen centre
+    body = _piece(inst, "body")
+    base = box(-W / 2, yf, 0, W / 2, D / 2, p["base_h"]).edges("|Z").fillet(30)
+    body.add("base", base, "inst_light")
+    body.add("front panel", _wedge(W - 80, 40, 10, 120, x=0, y0=yf - 30, z=p["base_h"] - 160), "inst_dark")
+    body.add("touchscreen", box(60, yf - 8, p["base_h"] - 130, 200, yf - 4, p["base_h"] - 60), "screen_on")
+    bowl = cyl(p["bowl_d"], 90, x=pc[0], y=pc[1], z=p["base_h"]).cut(
+        cyl(p["bowl_d"] - 24, 91, x=pc[0], y=pc[1], z=p["base_h"] + 8))
+    body.add("splash bowl", bowl, "inst_black")
+    body.add("drain", cyl(30, 40, x=-W / 2 + 60, y=yf + 60, z=p["base_h"] - 40), "inst_grey")
+    # the power head: a column at the back right and an arm over the platen
+    cx, cy = p["col_x"], p["col_y"]
+    body.add("column", rbox(90, 90, H - p["base_h"] - 60, 10, x=cx, y=cy, z=p["base_h"]), "inst_dark")
+    body.add("water arm", box(-W / 2 + 60, cy - 10, p["base_h"] + 150, -W / 2 + 75, cy + 10, p["base_h"] + 165).union(
+        box(-W / 2 + 60, pc[1] - 20, p["base_h"] + 150, -W / 2 + 75, cy + 10, p["base_h"] + 165)).union(
+        box(-W / 2 + 60, pc[1] - 25, p["base_h"] + 95, -W / 2 + 75, pc[1] - 10, p["base_h"] + 165)), "steel")
+    head = _piece(inst, "head")
+    hz = H - 140
+    head.add("head", rbox(150, 330, 120, 20, x=cx - 10, y=cy - 130, z=hz), "inst_dark")
+    head.add("head cap", rbox(130, 300, 20, 18, x=cx - 10, y=cy - 130, z=hz + 120), "inst_grey")
+    head.add("spindle", cyl(36, 70, x=pc[0] + 70, y=pc[1] + 10, z=hz - 70), "chrome")
+    holder = _piece(inst, "holder")
+    hcx, hcy = pc[0] + 70, pc[1] + 10
+    hz0 = p["base_h"] + 95 + p["head_drop"]
+    holder.add("specimen holder", cyl(150, 18, x=hcx, y=hcy, z=hz0 + 22).cut(cyl(30, 20, x=hcx, y=hcy, z=hz0 + 21)),
+               "steel")
+    for i in range(3):
+        a = math.radians(90 + 120 * i)
+        holder.add(f"mount {i + 1}", cyl(30, 25, x=hcx + 45 * math.cos(a), y=hcy + 45 * math.sin(a), z=hz0), "mount")
+    holder.add("mark", box(hcx + 55, hcy - 4, hz0 + 40, hcx + 74, hcy + 4, hz0 + 41), "inst_red")
+    platen = _piece(inst, "platen")
+    pz = p["base_h"] + 70
+    platen.add("platen", cyl(p["platen_d"], 15, x=pc[0], y=pc[1], z=pz), "aluminium")
+    platen.add("cloth", cyl(p["platen_d"] - 6, 3, x=pc[0], y=pc[1], z=pz + 15), "cloth")
+    for i in range(4):
+        a = i * 45.0
+        bar = box(-p["platen_d"] / 2 + 10, -3, pz + 18, p["platen_d"] / 2 - 10, 3, pz + 18.6)
+        platen.add(f"groove {i}", bar.rotate((0, 0, 0), (0, 0, 1), a).translate((pc[0], pc[1], 0)), "inst_grey")
+    water = _piece(inst, "glow")
+    water.add("water", cyl(6, 75, x=-W / 2 + 67, y=pc[1] - 17, z=pz + 20), "water")
+    inst.joints = {
+        "head": Joint("slide", vec=(0, 0, -p["head_drop"])),
+        "holder": Joint("spin", parent="head", axis=(0, 0, 1), pivot=(hcx, hcy, 0), deg=-720.0),
+        "platen": Joint("spin", axis=(0, 0, 1), pivot=(pc[0], pc[1], 0), deg=1800.0),
+        "glow": Joint("fade"),
+    }
+    inst.actions = [
+        ("Three mounted samples (30 mm) in the power head's holder, over a 12 in platen with a polishing cloth.",
+         1.4, {"glow": (0.0, 0.0)}),
+        ("The head lowers the holder onto the cloth; water on; platen and holder turn, 50-500 rpm.", 3.6,
+         {"head": (0.0, 1.0), "platen": (0.0, 1.0), "holder": (0.0, 1.0), "glow": (0.0, 1.0)}),
+        ("Done: the head lifts. It needs water, air and a drain, so on a tray it needs a recirculating unit.", 1.8,
+         {"head": (1.0, 0.0), "glow": (1.0, 0.0)}),
+    ]
+    inst.labels = [("power head", (cx, cy - 130, hz + 120), (0.82, 0.25)), ("platen", (pc[0] - 140, pc[1], pz + 15),
+                                                                            (0.14, 0.62))]
+    inst.cam = (0.8, -1.7, 1.1)
+    return inst
+
+
+# ===================================================================================================== nanoindenter
+# KLA iMicro nanoindenter (the iNano's enclosure, with a 1 N actuator for metals): a white cabinet with a lid hinged at
+# the back on gas struts, a window in the lid, a patterned side panel and a status light along the front; inside, the
+# indenter head and a microscope above a motorized XY stage (KLA product photos). Envelope: see SPECS.
+NANO = dict(W=560.0, D=520.0, H=500.0, feet=25.0, lid_t=40.0, lid_deg=58.0, stage_z=150.0, head_x=-40.0,
+            scope_x=60.0)
+
+
+def nanoindenter() -> Instrument:
+    p = NANO
+    inst = Instrument("nanoindenter", "Nanoindenter", "KLA iMicro", (p["W"], p["D"], p["H"]),
+                      "KLA Instruments iMicro / iNano product photos and data sheet; envelope in SPECS")
+    W, D, H = p["W"], p["D"], p["H"]
+    yf, yb = -D / 2, D / 2
+    body = _piece(inst, "body")
+    for sx in (-1, 1):
+        for sy in (-1, 1):
+            body.add(f"foot {sx}{sy}", box(sx * (W / 2 - 60) - 30, sy * (D / 2 - 50) - 25, 0, sx * (W / 2 - 60) + 30,
+                                           sy * (D / 2 - 50) + 25, p["feet"]), "inst_black")
+    hz = H - p["lid_t"]
+    shell = box(-W / 2, yf, p["feet"], W / 2, yb, hz).edges("|Y").fillet(16)
+    shell = shell.cut(box(-W / 2 + 40, yf - 1, p["feet"] + 70, W / 2 - 30, yb - 30, hz + 1))
+    shell = shell.cut(box(-W / 2 + 40, yf + 30, p["feet"] + 70, W / 2 - 30, yb - 30, hz + 1))
+    body.add("cabinet", shell, "inst_white")
+    body.add("inner walls", box(-W / 2 + 40, yb - 34, p["feet"] + 70, W / 2 - 30, yb - 30, hz).union(
+        box(-W / 2 + 40, yf, p["feet"] + 66, W / 2 - 30, yb - 30, p["feet"] + 70)), "inst_dark")
+    body.add("side panel", box(-W / 2 - 3, yf + 10, p["feet"] + 10, -W / 2, yb - 10, hz - 10), "inst_purple")
+    body.add("status light", box(-50, yf - 2, p["feet"] + 28, 50, yf, p["feet"] + 42), "inst_green")
+    sz = p["feet"] + 70 + p["stage_z"] - 60
+    body.add("frame", box(-120, yb - 160, p["feet"] + 70, 120, yb - 34, hz - 40), "inst_black")
+    body.add("indenter head", cyl(70, 150, x=p["head_x"], y=0, z=sz + 90).union(
+        box(p["head_x"] - 50, -40, sz + 200, p["head_x"] + 50, yb - 150, sz + 280)), "inst_black")
+    body.add("indenter tip", cyl(10, 30, x=p["head_x"], y=0, z=sz + 60), "chrome")
+    body.add("objective", cyl(36, 110, x=p["scope_x"], y=0, z=sz + 100), "chrome")
+    body.add("camera", cyl(46, 90, x=p["scope_x"], y=0, z=sz + 210), "inst_dark")
+    body.add("stage base", box(-150, -110, p["feet"] + 70, 150, 110, sz - 20), "inst_dark")
+    stage = _piece(inst, "stage")
+    stage.add("xy stage", box(-90, -80, sz - 20, 90, 80, sz), "aluminium")
+    stage.add("sample puck", cyl(40, 15, x=0, y=0, z=sz), "steel")
+    sample = _piece(inst, "sample")
+    sample.add("sample", cyl(25, 10, z=0), "mount")
+    sample.add("polished face", cyl(15, 0.5, z=10), "sample")
+    lid = _piece(inst, "lid")
+    lid.add("lid", box(-W / 2, yf, hz, W / 2, yb, H).edges("|Y").fillet(14), "inst_white")
+    lid.add("lid window", box(-W / 2 + 120, yf + 80, H, W / 2 - 80, yb - 120, H + 1), "inst_black")
+    # the hood's front, down to the status light: it lifts with the lid
+    lid.add("hood front", box(-W / 2 + 40, yf, p["feet"] + 70, W / 2 - 30, yf + 12, hz).cut(
+        box(-W / 2 + 90, yf - 1, p["feet"] + 120, W / 2 - 80, yf + 13, hz - 50)), "inst_white")
+    lid.add("hood glass", box(-W / 2 + 90, yf + 4, p["feet"] + 120, W / 2 - 80, yf + 8, hz - 50), "window")
+    inst.joints = {
+        "lid": Joint("hinge", axis=(1, 0, 0), pivot=(0, yb, hz), deg=p["lid_deg"]),
+        "stage": Joint("slide", vec=(p["head_x"] - p["scope_x"], 0, 0)),
+        "sample": Joint("path", parent="stage", path=((p["scope_x"], -380, 420), (p["scope_x"], -150, sz + 120),
+                                                      (p["scope_x"], 0, sz + 15 + 30), (p["scope_x"], 0, sz + 15))),
+    }
+    inst.actions = [
+        ("The lid lifts on its gas struts, hinged at the back.", 1.6, {"lid": (0.0, 1.0), "sample": (0.0, 0.0)}),
+        ("A mounted sample goes onto the stage's puck, under the microscope.", 2.0, {"sample": (0.0, 1.0)}),
+        ("Lid down: the cabinet shuts out air currents and noise. The stage carries the chosen spot under the "
+         "indenter for a grid of indents (hardness and modulus).", 2.6, {"lid": (1.0, 0.0), "stage": (0.0, 1.0),
+                                                                          "~lid": (0.0, 1.0)}),
+        ("Back under the microscope to image the indents.", 1.6, {"stage": (1.0, 0.0), "~lid": (1.0, 0.0)}),
+    ]
+    inst.labels = [("indenter head", (p["head_x"], 0, sz + 160), (0.14, 0.30)),
+                   ("microscope", (p["scope_x"], 0, sz + 200), (0.84, 0.30))]
+    inst.cam = (-0.7, -1.8, 1.0)
+    return inst
+
+
+# ===================================================================================================== laser diffraction
+# Malvern Panalytical Mastersizer 3000 with the Aero S dry powder disperser, as for metal powders: the optical bench is
+# 690 L x 300 W x 450 H mm, 30 kg; the Aero S docks into the bench's accessory slot, its hopper on top, and feeds the
+# powder through a venturi across the laser; a vacuum extractor takes it away (Malvern's Mastersizer 3000 brochure,
+# specifications; the look from Malvern's product photo: a silver bench with a curved top and an arch under it).
+MS3000 = dict(L=690.0, W=300.0, H=450.0, slot_x0=-60.0, slot_x1=70.0, vac_w=330.0, vac_d=330.0, vac_h=480.0)
+
+
+def mastersizer() -> Instrument:
+    p = MS3000
+    inst = Instrument("mastersizer", "Laser diffraction particle sizer", "Malvern Mastersizer 3000 + Aero S",
+                      (p["L"] + 60 + p["vac_w"], p["W"] + 40, p["H"] + 90),
+                      "Malvern Panalytical Mastersizer 3000 brochure (bench 690 x 300 x 450 mm, 30 kg; Aero S "
+                      "dry disperser); look from Malvern's product photo")
+    L, W, H = p["L"], p["W"], p["H"]
+    x0b = -(L + 60 + p["vac_w"]) / 2            # the bench on the left, the vacuum extractor on the right
+    xb = x0b + L / 2
+    yf = -W / 2
+    body = _piece(inst, "body")
+
+    def bench_block(xa, xc, mat, name):
+        prof = cq.Workplane("XZ").polyline([(xa, 0), (xc, 0), (xc, H - 60 + 60 * (xb + L / 2 - xc) / L),
+                                            (xa, H - 60 + 60 * (xb + L / 2 - xa) / L)]).close().extrude(-W)
+        prof = prof.translate((0, yf, 0))
+        arch = _ycyl(560, 40, x=xb + 60, y=yf - 1, z=-215)
+        body.add(name, prof.cut(arch), mat)
+
+    bench_block(xb - L / 2, xb + p["slot_x0"], "inst_light", "bench left")
+    bench_block(xb + p["slot_x1"], xb + L / 2, "inst_light", "bench right")
+    body.add("bench feet", box(xb - L / 2 + 20, yf + 20, -0.1, xb - L / 2 + 70, -yf - 20, 1).union(
+        box(xb + L / 2 - 70, yf + 20, -0.1, xb + L / 2 - 20, -yf - 20, 1)), "inst_black")
+    body.add("logo", box(xb - L / 2 + 50, yf - 1, H - 120, xb - L / 2 + 110, yf, H - 70), "inst_navy")
+    # the Aero S in the slot: its front with the status light and the knob, the hopper on top
+    sx0, sx1 = xb + p["slot_x0"], xb + p["slot_x1"]
+    body.add("Aero S", box(sx0 + 2, yf - 6, 40, sx1 - 2, -yf, H + 10), "inst_offwhite")
+    body.add("Aero S light", _ycyl(10, 3, x=(sx0 + sx1) / 2 - 25, y=yf - 9, z=H - 40), "inst_green")
+    body.add("Aero S knob", _ycyl(22, 18, x=(sx0 + sx1) / 2 + 10, y=yf - 24, z=H - 180), "inst_black")
+    hx, hy = (sx0 + sx1) / 2, 10.0
+    body.add("hopper", cyl(120, 70, x=hx, y=hy, z=H + 10).cut(cyl(100, 70, x=hx, y=hy, z=H + 20)), "steel")
+    # the vacuum extractor and its hose
+    vx = x0b + L + 60 + p["vac_w"] / 2
+    body.add("vacuum extractor", rbox(p["vac_w"], p["vac_d"], p["vac_h"] - 60, 60, x=vx, z=60), "inst_grey")
+    body.add("extractor head", rbox(p["vac_w"] - 20, p["vac_d"] - 20, 60, 50, x=vx, z=p["vac_h"] - 60), "inst_dark")
+    body.add("extractor wheels", box(vx - p["vac_w"] / 2 + 30, -120, 0, vx - p["vac_w"] / 2 + 70, 120, 60).union(
+        box(vx + p["vac_w"] / 2 - 70, -120, 0, vx + p["vac_w"] / 2 - 30, 120, 60)), "inst_black")
+    from common import hose as _hose
+    body.add("extract hose", _hose([(hx + 20, -yf - 10, 120), (hx + 20, -yf + 60, 120), (vx - 60, -yf + 60, 200),
+                                     (vx - 60, 40, p["vac_h"] - 30)], 38), "inst_black")
+    lid = _piece(inst, "lid")
+    lid.add("hopper lid", cyl(124, 8, x=hx, y=hy, z=H + 80), "inst_dark")
+    lid.add("lid knob", cyl(20, 14, x=hx, y=hy, z=H + 88), "inst_dark")
+    vial = _piece(inst, "sample")
+    vial.add("vial", cyl(28, 61, z=0).cut(cyl(25, 60, z=2)), "window")
+    vial.add("powder", cyl(25, 30, z=2), "powder")
+    beam = _piece(inst, "beam")
+    beam.add("laser", _xcyl(3, L - 80, x=xb - L / 2 + 40, y=0, z=200), "laser")
+    for i in range(14):
+        beam.add(f"grain {i}", cq.Workplane("XY").sphere(2.2).translate((hx + 6 * math.sin(i * 1.7), hy - 4,
+                                                                         H + 20 - i * 18)), "powder")
+    inst.joints = {
+        "lid": Joint("slide", vec=(0, 0, 90)),
+        "sample": Joint("path", path=((hx - 260, -260, H - 40), (hx - 120, -120, H + 140), (hx, hy, H + 130),
+                                      (hx, hy, H + 100))),
+        "beam": Joint("fade"),
+    }
+    inst.actions = [
+        ("The hopper's lid lifts; a vial of atomized powder (a few grams) is emptied into the Aero S.", 2.2,
+         {"lid": (0.0, 1.0), "sample": (0.0, 1.0), "beam": (0.0, 0.0)}),
+        ("Lid down. A vibrating tray feeds the powder through a venturi; compressed air disperses it across the "
+         "laser (drawn see-through).", 2.6, {"sample": (1.0, 0.0), "lid": (1.0, 0.0), "beam": (0.0, 1.0),
+                                             "~body": (0.0, 1.0)}),
+        ("The scattering pattern gives the size distribution, 0.1 um to 3.5 mm, in under a minute; the vacuum "
+         "extractor takes the powder away.", 2.0, {"beam": (1.0, 0.0), "~body": (1.0, 0.0)}),
+    ]
+    inst.labels = [("Aero S dry disperser", (hx, yf, H - 60), (0.40, 0.18)),
+                   ("optical bench", (xb - L / 2 + 100, yf, 250), (0.12, 0.55)),
+                   ("vacuum extractor", (vx, -p["vac_d"] / 2, 300), (0.86, 0.55))]
+    inst.cam = (0.5, -1.7, 0.75)
     return inst
 
 

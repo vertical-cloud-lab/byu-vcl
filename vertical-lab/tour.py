@@ -152,7 +152,7 @@ def studio(sc: Scene, size=6000.0, at=(0, 0)):
            smooth_shading=False)
 
 
-def frame_cam(bb, direction=(1.0, -1.6, 0.9), pad=1.0, look_z=0.45):
+def frame_cam(bb, direction=(1.0, -1.6, 0.9), pad=0.78, look_z=0.42):
     x0, x1, y0, y1, z0, z1 = bb
     c = np.array([(x0 + x1) / 2, (y0 + y1) / 2, z0 + (z1 - z0) * look_z])
     r = 0.5 * np.linalg.norm([x1 - x0, y1 - y0, z1 - z0])
@@ -177,8 +177,9 @@ def tour_one(inst: I.Instrument, entries: dict) -> str:
     for cap, secs, targets in inst.actions:
         sc.step(inst.model, cap, secs, rig.move(targets), hold=0.5, labels=labels if first else labels)
         first = False
-    # the hero still for the gallery: closed, no text
-    rig.move({k: (None, j.v0) for k, j in inst.joints.items()})(1.0)
+    # the hero still for the gallery: closed, the sample in place, no text
+    rig.move({k: (None, 1.0 if k in inst.props else j.v0) for k, j in inst.joints.items()})(1.0)
+    rig.move({f"~{k}": (None, 0.0) for k in inst.pieces})(1.0)
     img = sc.render_base()
     Image.fromarray(img).save(out / f"{inst.key}.png", optimize=True)
     return sc.save()
