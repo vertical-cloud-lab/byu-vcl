@@ -58,18 +58,35 @@ from 22:42:06 to 22:42:41: about 11 in 35 s,** one or none per 2 s window. Befor
 `rpm` stayed 0.0, so the line picks up no noise with the fan still. The US1881, its wiring,
 the pull-up and D2's interrupt all work.
 
-## So far
+## Holder off: it spins and the speed loop works
 
-The Hall side works; the fan doesn't start when driven, even in the 0.5 s kicks at full
-duty. That leaves the drive side or the mechanics:
+So the fault was on the drive side or in the mechanics. Ben took the vial holder off, leaving
+everything else plugged in, and at 22:47:36 the same script asked for 1200 rpm for 16 s
+([log](holderoff.log), [data](holderoff.jsonl)). The fan started on the first kick, Hall
+pulses came through, and the loop followed the setpoint's 100 rpm/s ramp:
 
-- the carrier rubbing on the holder's floor or the sensor (fits the jerky feel by hand);
-- the gate not driven: the PWM lead off D10, or the MOSFET's legs not G, D, S in H2–H4;
-- the 1N5819 reversed, shorting the fan;
-- the fan unable to start at 5 V against the magnets.
+| s | 2 | 4 | 6 | 8 | 10 | 12 | 14 | 16 (end of run) | 18 | 20 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| setpoint | 300 | 500 | 700 | 900 | 1100 | 1200 | 1200 | off | | |
+| `rpm` | 510 | 390 | 330 | 480 | 630 | 810 | 990 | 1110 | 360 | 0 |
+| duty | 0.258 | 0.280 | 0.354 | 0.429 | 0.504 | 0.579 | 0.621 | 0 | | |
 
-The next checks, with the holder off and a meter across the fan's leads, are in the PR
-thread.
+<img src="frames/224742Z_holder_off_running.jpg" width="360">
+
+*22:47:42, 6 s in: the base with the fan and the white carrier on the bench, the holder set
+aside to the right. The sensor was still counting, so it sits in the base, not in the holder.*
+
+**So the wiring, the gate drive, the Hall sensor and the firmware all work.** With the holder
+on, something catches the carrier hard enough that the fan can't start at 5 V: the holder's
+floor or the sensor and its leads, pushed into the carrier's path. The design leaves 1.1 mm
+between the carrier and the floor with 0.5 mm washers. The checks sent to Ben were: turn it by
+hand with the holder resting on, then with each screw snugged; look for scuffs; add a second
+washer at each corner (+0.5 mm, leaving 5.5 mm of the M3 × 20 in the 5.7 mm insert) or sand
+the carrier's top.
+
+The duty the loop settled toward, about 0.6 for 1000 rpm, says the fan has headroom at 5 V
+with no bar to drag. The rpm reading moves in the expected 30 rpm steps, one pulse a turn
+over 2 s.
 
 ## The way back
 
