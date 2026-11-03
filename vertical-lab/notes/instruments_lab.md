@@ -9,6 +9,10 @@ Four more models in [`instruments_lab.py`](../instruments_lab.py), each an `Inst
 | Packaging station: Primera AP380 + LX500c, Zebra ZD621t, Uline H-190 | A jar into the nest; the LX500c prints its label; the AP380 wraps it on; the jar is bagged and the H-190 seals the bag; into the foam insert; lid on; the ZD621t's 4 × 6 in label onto the lid. Insets show the jar label and what the box must carry | [GIF](../out/instruments/packaging.gif), [MP4](../out/mp4/instruments/packaging.mp4) | each piece published (below); about 1990 × 650 × 229 as laid out here | a tray (fits) |
 | HIP against a tray: Kobelco O2-Dr.HIP | The tray and its 727.5 mm product height; the HIP lowered onto it; the parts that don't fit, in red; see-through to the vessel; the verdict | [GIF](../out/instruments/hip.gif), [MP4](../out/mp4/instruments/hip.mp4), [still](../out/instruments/hip.png) | 1315 × 1100 × 1300, 1100 kg | does not fit a tray |
 
+Clip lengths at 1280 × 720, 15 fps: the CubXL 34.6 s (MP4 2.3 MB, GIF 3.6 MB), DED 24.2 s (1.3 MB, 1.5 MB),
+packaging 28.1 s (1.4 MB, 2.0 MB), HIP 17.9 s (0.7 MB, 0.9 MB). Each has a hero still,
+`out/instruments/<key>.png`, and `out/instruments/<key>.json` with the frame range of every step.
+
 ### The CubXL, set up for corrosion spots
 
 - **The plan is DAL's, not built.** The deck, the electrode cap and the head follow DAL PR #180
