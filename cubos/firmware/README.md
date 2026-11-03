@@ -8,7 +8,19 @@ applied casually.
 Upstream: [`BU-KABlab/PANDA_Arduino`](https://github.com/BU-KABlab/PANDA_Arduino)
 @ `228615b` ("fixed mixing function for pipette", 2025-08-27).
 
-## 2026-10-19: a stirrer image is built and committed but **not flashed**
+## 2026-11-03: the board runs `panda_vcl_p20gen2_tic796_fastmove_spread_stir_20261019.hex`
+
+Flashed at 22:35 UTC, once the first stirrer was built and plugged in. The flash read back
+as the 10-07 image first and was saved as
+[`../results/stirrer_first_spins_20261103/flash_before_stirrer_20261103.hex`](../results/stirrer_first_spins_20261103/flash_before_stirrer_20261103.hex).
+`avrdude` verified the stirrer image after writing. Afterwards `31` answers, and `14` and `29`
+answer as they did before. **`pipette_test` has not been rerun on this image yet.** The first
+spins are in
+[`../results/stirrer_first_spins_20261103/`](../results/stirrer_first_spins_20261103/README.md):
+the Hall input counts pulses, but the fan didn't start. To go back, write the 10-07 image
+with the `avrdude` line at the end of this file.
+
+## 2026-10-19: a stirrer image is built and committed but **not flashed** (flashed 2026-11-03)
 
 `panda_vcl_p20gen2_tic796_fastmove_spread_stir_20261019.hex` is the 10-07 image plus the
 single-vial magnetic stirrer
