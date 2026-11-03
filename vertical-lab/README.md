@@ -147,6 +147,125 @@ needed. GrabCAD, TraceParts and CADENAS block the runner and need logins anyway.
   440 and 690 mm up, so the line becomes a cell for the arm. That is the trade against the MiR250, which leaves the
   floor free.
 
+## Fabrication: compact metal printers, resin printing and PCB assembly
+
+Asked for in [PR #318](https://github.com/vertical-cloud-lab/byu-vcl/pull/318): a couple of desktop LPBF machines on the
+VLM, a DED machine if any fits, resin printers, an automatic pick-and-place (an open-source one if possible) and a PCB
+stencil printer. Nine models, in `instruments.py`'s framework (pieces, joints and an action script):
+- [`fab_metal.py`](fab_metal.py): the SnowX SnowPod, Sharebot MetalONE and One Click Metal MPRINT (LPBF) and the
+  Meltio M450 (DED).
+- [`fab_resin.py`](fab_resin.py): the Formlabs Form 4, Form Wash and Form Cure.
+- [`fab_pcb.py`](fab_pcb.py): the DDM Novastar SPR-45VA stencil printer and the Opulo LumenPnP v4.
+- [`fab_tour.py`](fab_tour.py) renders each one doing its job, as `tour.py` does for the instruments.
+- [`fab_trays.py`](fab_trays.py) lays out trays G, H and I and stands the other metal printers against the opening's
+  height.
+
+![The fabrication tools](out/fabrication_gallery.png)
+
+| Machine | Model | What the animation shows | GIF, MP4 | Size W × D × H (mm), published | Where |
+|---|---|---|---|---|---|
+| Desktop LPBF, pre-release | SnowX SnowPod | A build plate goes in; nitrogen from its NitroPod; see-through, the recoater spreads 316L from a sealed cartridge, the laser melts a layer and the platform drops, three times | [GIF](out/fabrication/snowpod.gif), [MP4](out/mp4/fabrication/snowpod.mp4) | 360 × 360 × 660, 40 kg | tray I, two of them: 67.5 mm under the limit |
+| Desktop LPBF | Sharebot MetalONE | A build plate goes in; see-through, the recoater spreads powder, the laser scans a layer and the platform drops, three times | [GIF](out/fabrication/metalone.gif), [MP4](out/mp4/fabrication/metalone.mp4) | 740 × 630 × 1000, 150 kg (launch figures) | the line: 272.5 mm too tall |
+| Compact LPBF | One Click Metal MPRINT | The hatch opens on the five-cartridge revolver; a spent cartridge comes out and a full one goes in; a 150 mm plate goes in; recoat, scan, the platform drops; the plate goes out to the MUNPACK station | [GIF](out/fabrication/mprint.gif), [MP4](out/mp4/fabrication/mprint.mp4) | 1100 × 790 × 1900, 440 kg | the line |
+| Wire-laser DED | Meltio M450 | A substrate goes in; see-through, the head's six lasers melt the wire and a wall grows layer by layer | [GIF](out/fabrication/meltio_m450.gif), [MP4](out/mp4/fabrication/meltio_m450.mp4) | 560 × 600 × 1400, 250 kg | the line |
+| Resin printer (MSLA) | Formlabs Form 4 | The platform rises out of the resin with the parts; the cover lifts; the platform comes off; a fresh one goes on | [GIF](out/fabrication/form4.gif), [MP4](out/mp4/fabrication/form4.mp4) | 398 × 367 × 554, 18.3 kg; 844 tall with the cover open | tray G, two of them |
+| Wash | Formlabs Form Wash (2nd Gen) | The lid lifts; the Form 4's platform goes onto the elevator; it lowers the parts into the IPA while the impeller stirs, then lifts them out to dry | [GIF](out/fabrication/form_wash.gif), [MP4](out/mp4/fabrication/form_wash.mp4) | 315 × 293 × 405; 714 tall open | tray G |
+| Post-cure | Formlabs Form Cure (2nd Gen) | The door opens; the parts go onto the turntable; it turns under 405 nm light | [GIF](out/fabrication/form_cure.gif), [MP4](out/mp4/fabrication/form_cure.mp4) | 337 × 356 × 404, 12.1 kg | tray G |
+| Stencil printer, semi-automatic | DDM Novastar SPR-45VA | A bare board onto the vacuum nest; the frame comes down; the squeegee drives the paste across; the frame lifts off, leaving paste on the pads | [GIF](out/fabrication/stencil.gif), [MP4](out/mp4/fabrication/stencil.mp4) | 762 × 889 × 406, about 73 kg | tray H, turned 90° |
+| Pick-and-place, open source | Opulo LumenPnP v4 | The pasted board goes onto the staging plate; three parts, each picked from a feeder, checked over the up-looking camera and placed | [GIF](out/fabrication/lumenpnp.gif), [MP4](out/mp4/fabrication/lumenpnp.mp4) | about 680 × 680 × 450, estimated | tray H |
+
+All nine, one after the other: [`out/mp4/fabrication_tour.mp4`](out/mp4/fabrication_tour.mp4).
+[`out/fabrication.json`](out/fabrication.json) has each model's source, its size as drawn, whether it fits a tray, how
+far it is over the opening's height and its notes.
+
+### Trays G, H and I, and the metal printers against the opening
+
+![Trays G, H and I, and the metal printers](out/vlm_fab_trays.gif)
+
+The blue boxes are what goes through the Shuttle's opening: the tray's inside, 2426 × 840 mm, by Kardex's 727.5 mm of
+product height. The metal printers stand on red boxes of the same height. MP4:
+[`out/mp4/vlm_fab_trays.mp4`](out/mp4/vlm_fab_trays.mp4); still: [`out/vlm_fab_trays_still.png`](out/vlm_fab_trays_still.png).
+
+- **Tray G, resin printing:** two Form 4s, the Form Wash and the Form Cure, left to right in the order a print goes.
+- **Tray H, PCB assembly:** the stencil printer, then the LumenPnP. The right end, about 470 mm, is free for a reflow
+  oven, which the line still needs.
+- **Tray I, desktop LPBF:** two SnowPods, with room beside each for its NitroPod.
+
+### Where the fabrication models come from
+
+None of these makers publishes CAD for download, except Opulo, whose CAD is FreeCAD (`.FCStd`, not read here). So each
+model is built from these:
+- **SnowX SnowPod:** 3DWithUs's hands-on review (360 × 360 × 660 mm, 40 kg, a 200 W fibre laser) and SnowX's
+  announcements, via 3Dnatives (22 October 2026), Makers101 and 3DPrint.com:
+  - an 80 × 80 × 100 mm build, a 40 µm spot, 316L at launch;
+  - powder in sealed supply and recovery cartridges; a cyclone, two H13 filters and an H14 at the exhaust;
+  - nitrogen from the companion NitroPod, which separates it from air (99.9 % at 3 L/min).
+  - SnowX gives no outer size of its own, and the NitroPod's size isn't published, so it isn't modelled. The look is
+    approximate: no photo was checked.
+  - A Kickstarter kit: $5,299 at the launch special, $9,299 MSRP, launch planned for Q4 2026. Not shipping yet.
+- **Sharebot MetalONE:** the 2019 launch figures (engineering.com, 3D Printing Industry, Aniwaa: 740 × 630 × 1000 mm,
+  150 kg; Fabbaloo: 174 kg); build area 65 × 65 or 100 × 100 mm, 100 mm tall; fibre laser, 200 W at launch.
+  - Later dealer listings give 1000 × 600 × 1470 mm and 270-315 kg, probably with its stand or a bigger configuration.
+    The launch figures are used.
+- **One Click Metal MPRINT:** 1100 × 790 × 1900 mm and 440 kg (filament2print; MPRINT+ 450 kg, MPRINTpro 490 kg);
+  build 150 × 150 × 150 mm; 200 W fibre laser; a revolver of five powder cartridges (Autodesk's case study).
+  - The published order is "1100 × 1900 × 790"; read here as W × H × D, since the photos show a cabinet taller than it
+    is wide.
+  - Depowdering is a separate station, MUNPACK, not modelled.
+- **Meltio M450:** Meltio's technical specifications (560 × 600 × 1400 mm, 250 kg, print envelope 145 × 168 × 390 mm;
+  six 200 W diode lasers, 1200 W, around a wire fed through the head; wire 0.8-1.2 mm). MatterHackers gives 1414 mm
+  tall. The next smallest, Meltio's M600, is 1050 × 1050 × 1950 mm.
+- **Formlabs Form 4:** Formlabs' tech specs (398 × 367 × 554 mm, 18.3 kg; 407 × 478 × 844 mm minimum access, the cover
+  open; build 200 × 125 × 210 mm). The cover's rear hinge is inferred from that open envelope, not from a drawing.
+- **Formlabs Form Wash and Form Cure (2nd Gen):** Formlabs' and resellers' figures (Wash 315 × 293 × 405 mm, 714 mm
+  open; Cure 337 × 356 × 404 mm, 12.1 kg, a 235 mm turntable, 405 nm light and heat). Which side the Cure's door
+  hinges on is assumed.
+  - Formlabs' Form Auto, which takes parts off the platform by itself, works only with the Form 3 series. With a Form 3
+    it is 610 × 914 × 914 mm, too deep and too tall for a tray.
+- **DDM Novastar SPR-45VA:** Pentalogix's listing (762 × 889 × 406 mm; frames up to 584 × 584 mm) and DDM Novastar's
+  SPR-45 description at its resellers (about 73 kg, dual squeegees, a power frame lift). The layout inside that outline
+  is generic for a benchtop semi-automatic printer.
+- **Opulo LumenPnP v4:** Opulo's repository ([`opulo-inc/lumenpnp`](https://github.com/opulo-inc/lumenpnp):
+  `DESIGN_DECISIONS.md`, `bom.json`) and its v4 photo:
+  - seven 600 mm lengths of 20 × 20 V-slot on four printed legs, an X gantry on two Y gantries;
+  - two nozzles on hollow-shaft NEMA 11s, top and bottom cameras with ring lights;
+  - 120 × 600 mm staging-plate PCBs, powered feeders, boards up to 225 × 400 mm.
+  - Opulo publishes no overall size. 680 × 680 × 450 mm is the extrusions plus the legs, with the height scaled from the
+    photo (about ±15 %).
+
+### Things the fabrication models show
+
+- **One LPBF machine fits through the opening, and it isn't shipping yet.** The SnowPod is 660 mm tall, 67.5 mm under
+  Kardex's 727.5, and makes its own nitrogen, so its tray needs only power. Every other LPBF machine found is too tall:
+  - the Mastrex MX100, 800 mm (one retailer's listing);
+  - the Lasefinity Fusion X, 860 mm (TCT Magazine);
+  - the Kings 3D DiMetal-100, 1000 mm, on three-phase power (All3DP);
+  - the MetalONE as launched, 1000 mm, 272.5 mm over.
+- **No DED fits.** The most compact found, the Meltio M450, is 1400 mm tall. So it, the MetalONE and the MPRINT stand
+  in the line, next to the Aconity MIDI.
+- **The Shuttle is full.** Its six slots hold trays A-F, and its 3950 mm height is set by the ceiling (#53). So trays G,
+  H and I need a second Shuttle, as trays D-F already might (see the PR description). G and H are shorter than the
+  others, 554 and 450 mm of product, so they would take slots about 650 and 550 mm apart, not 800.
+- **The Form 4 and the Form Cure open only at the opening.** The Form 4's cover opens to 844 mm, which is more than a
+  slot takes and about the 845 mm under the header. The Cure's door swings out in front. The Form Wash fits even with
+  its lid open, 714 mm, with 13.5 mm to spare.
+- **Solvent and resin on a moving tray are open questions.** The Wash's bucket holds litres of IPA, a flammable vapour
+  inside an enclosed, powered machine, with waste solvent to handle. Resin stands in an open tank on a tray that the
+  extractor moves. Both need Kardex and EHS to agree, and the tray moved gently.
+- **The stencil printer only fits turned 90°.** It is 889 mm deep against the tray's 840. Turned, its front faces the
+  pick-and-place, and the arm meets it from the side, where its frame-lift column is. A shallower printer, or one the
+  arm can load from above, would suit a tray better.
+- **The PCB line is not complete.** It still needs a reflow oven, the free end of tray H. Solder paste lives in a
+  fridge and needs time to warm up, and the paste left on the stencil dries out over a few hours, so the stencil needs
+  wiping.
+- **The LumenPnP needs no compressed air.** Its vacuum pumps are on board, so on a tray it needs only power.
+
+```bash
+xvfb-run -a python3 fab_tour.py                 # every model -> out/fabrication/, out/mp4/fabrication/
+python3 fab_tour.py gallery join table          # out/fabrication_gallery.png, out/mp4/fabrication_tour.mp4, out/fabrication.json
+xvfb-run -a python3 fab_trays.py                # trays G-I, and the metal printers -> out/vlm_fab_trays.gif
+```
+
 ## The workflow
 
 An example run, with every move a real one:
