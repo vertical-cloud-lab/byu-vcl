@@ -1,0 +1,149 @@
+{
+ "name": "fabrication/lumenpnp",
+ "fps": 15,
+ "n_frames": 461,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/5",
+   "caption": "A bare board, pasted on tray H's stencil printer, goes onto the staging plate against the datum mounts.",
+   "start_frame": 0,
+   "end_frame": 46
+  },
+  {
+   "label": "2/5",
+   "caption": "The head goes to a feeder; nozzle 1 drops and picks a part by vacuum.",
+   "start_frame": 47,
+   "end_frame": 72
+  },
+  {
+   "label": "3/5",
+   "caption": "",
+   "start_frame": 73,
+   "end_frame": 88
+  },
+  {
+   "label": "4/5",
+   "caption": "",
+   "start_frame": 89,
+   "end_frame": 102
+  },
+  {
+   "label": "5/5",
+   "caption": "Over the up-looking camera, which measures the part's offset and rotation on the nozzle.",
+   "start_frame": 103,
+   "end_frame": 128
+  },
+  {
+   "label": "5/5",
+   "caption": "To its place on the board, found by the top camera from the board's fiducials; down, and the vacuum lets go.",
+   "start_frame": 129,
+   "end_frame": 156
+  },
+  {
+   "label": "5/5",
+   "caption": "",
+   "start_frame": 157,
+   "end_frame": 172
+  },
+  {
+   "label": "5/5",
+   "caption": "",
+   "start_frame": 173,
+   "end_frame": 186
+  },
+  {
+   "label": "5/5",
+   "caption": "",
+   "start_frame": 187,
+   "end_frame": 206
+  },
+  {
+   "label": "5/5",
+   "caption": "",
+   "start_frame": 207,
+   "end_frame": 222
+  },
+  {
+   "label": "5/5",
+   "caption": "",
+   "start_frame": 223,
+   "end_frame": 236
+  },
+  {
+   "label": "5/5",
+   "caption": "",
+   "start_frame": 237,
+   "end_frame": 254
+  },
+  {
+   "label": "5/5",
+   "caption": "",
+   "start_frame": 255,
+   "end_frame": 274
+  },
+  {
+   "label": "5/5",
+   "caption": "",
+   "start_frame": 275,
+   "end_frame": 290
+  },
+  {
+   "label": "5/5",
+   "caption": "",
+   "start_frame": 291,
+   "end_frame": 304
+  },
+  {
+   "label": "5/5",
+   "caption": "",
+   "start_frame": 305,
+   "end_frame": 324
+  },
+  {
+   "label": "5/5",
+   "caption": "",
+   "start_frame": 325,
+   "end_frame": 340
+  },
+  {
+   "label": "5/5",
+   "caption": "",
+   "start_frame": 341,
+   "end_frame": 354
+  },
+  {
+   "label": "5/5",
+   "caption": "",
+   "start_frame": 355,
+   "end_frame": 372
+  },
+  {
+   "label": "5/5",
+   "caption": "",
+   "start_frame": 373,
+   "end_frame": 392
+  },
+  {
+   "label": "5/5",
+   "caption": "",
+   "start_frame": 393,
+   "end_frame": 408
+  },
+  {
+   "label": "5/5",
+   "caption": "",
+   "start_frame": 409,
+   "end_frame": 422
+  },
+  {
+   "label": "5/5",
+   "caption": "Three parts placed; the board goes on to reflow.",
+   "start_frame": 423,
+   "end_frame": 460
+  }
+ ]
+}

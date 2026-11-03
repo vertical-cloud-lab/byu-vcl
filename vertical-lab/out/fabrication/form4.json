@@ -1,0 +1,35 @@
+{
+ "name": "fabrication/form4",
+ "fps": 15,
+ "n_frames": 161,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/4",
+   "caption": "Printing: the build platform rises out of the resin layer by layer, the parts growing upside down.",
+   "start_frame": 0,
+   "end_frame": 61
+  },
+  {
+   "label": "2/4",
+   "caption": "Done. The cover lifts on its rear hinge, to 844 mm: only at the VLM's opening, never in a slot.",
+   "start_frame": 62,
+   "end_frame": 93
+  },
+  {
+   "label": "3/4",
+   "caption": "The build platform comes off its carrier by the handle, parts and all, for the Form Wash.",
+   "start_frame": 94,
+   "end_frame": 128
+  },
+  {
+   "label": "4/4",
+   "caption": "A fresh platform goes on and the cover shuts.",
+   "start_frame": 129,
+   "end_frame": 160
+  }
+ ]
+}
