@@ -19,7 +19,7 @@ from __future__ import annotations
 
 import math
 import sys
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
 
 import cadquery as cq
@@ -870,7 +870,7 @@ def packaging() -> Instrument:
         "strip": Joint("fade", parent="stripslide"),
         "press": Joint("hinge", axis=(1, 0, 0), pivot=(ax, yf + a["D"] - 200, pz), deg=-14.0, v0=1.0),
         "arm": Joint("hinge", axis=(1, 0, 0), pivot=(sx_, yf + se["D"], 126), deg=-35.0, v0=1.0),
-        "lid": Joint("hinge", axis=(1, 0, 0), pivot=(bx_, yf + b["D"], b["H"] - 40), deg=105.0, v0=1.0),
+        "lid": Joint("hinge", axis=(1, 0, 0), pivot=(bx_, yf + b["D"], b["H"] - 40), deg=-105.0, v0=1.0),
         "shiplabel": Track(knots=tl.knots(ship_off)),
         "inset_jar": Joint("slide", vec=(1, 0, 0)),
         "inset_ship": Joint("slide", vec=(1, 0, 0)),
