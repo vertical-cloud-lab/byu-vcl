@@ -52,6 +52,43 @@ log() { echo "[setup_runner $(since "$T0") s] $*"; }
 nap() { python3 -c "import sys, time; time.sleep(float(sys.argv[1]))" "$1"; }
 window_up() { wmctrl -l 2>/dev/null | grep -q -- "$1"; }
 
+# apt hands a cached .deb of the right size straight to dpkg without checking
+# its hash (tested on #314: a tampered wmctrl .deb went to dpkg as is). A
+# cache restored from actions/cache runs as root before the login is typed,
+# so check every file against the signed index from `apt-get update` and
+# delete any that doesn't match; apt downloads those again.
+verify_cached_debs() {
+  python3 -I - "$APT_DEB_CACHE" <<'PY'
+import hashlib, os, subprocess, sys, urllib.parse
+cache = sys.argv[1]
+debs = {}
+for name in os.listdir(cache):
+    parts = urllib.parse.unquote(name[:-4]).split("_") if name.endswith(".deb") else []
+    if len(parts) == 3:
+        debs[name] = parts                     # package, version, architecture
+    elif name.endswith(".deb"):
+        os.remove(os.path.join(cache, name))
+want = {}
+if debs:
+    out = subprocess.run(["apt-cache", "show", *sorted({f"{p}={v}" for p, v, _ in debs.values()})],
+                         capture_output=True, text=True).stdout
+    for rec in out.split("\n\n"):
+        f = dict(l.split(": ", 1) for l in rec.splitlines() if ": " in l and not l.startswith(" "))
+        if "SHA256" in f:
+            want[(f.get("Package"), f.get("Version"), f.get("Architecture"))] = f["SHA256"]
+kept = dropped = 0
+for name, key in debs.items():
+    path = os.path.join(cache, name)
+    with open(path, "rb") as fh:
+        ok = hashlib.sha256(fh.read()).hexdigest() == want.get(tuple(key))
+    if ok:
+        kept += 1
+    else:
+        os.remove(path); dropped += 1
+print(f"cached .debs: {kept} match the signed index, {dropped} deleted")
+PY
+}
+
 # 1. System packages. --no-install-recommends and skipping man-db's trigger
 #    cut the runbook's 136 s to about 90 s; most of what is left is download,
 #    which actions/cache on $APT_DEB_CACHE removes.
@@ -64,6 +101,8 @@ if ! dpkg -s "${PKGS[@]}" >/dev/null 2>&1; then
   sudo rm -f /var/lib/man-db/auto-update
   # The cache lives in $HOME, which apt's _apt sandbox user can't write to.
   sudo apt-get update -qq >"$BAMBU_DIR/apt.log" 2>&1
+  sudo chown -R "$(id -u):$(id -g)" "$APT_DEB_CACHE"
+  log "apt: $(verify_cached_debs)"
   sudo DEBIAN_FRONTEND=noninteractive NEEDRESTART_SUSPEND=1 apt-get install -y -qq \
        --no-install-recommends -o APT::Sandbox::User=root \
        -o Dir::Cache::archives="$APT_DEB_CACHE" "${PKGS[@]}" >>"$BAMBU_DIR/apt.log" 2>&1
