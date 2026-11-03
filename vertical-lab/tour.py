@@ -95,7 +95,7 @@ class Rig:
         self.sc, self.inst, self.prefix = sc, inst, prefix
         self.base = at
         self.v = {k: j.v0 for k, j in inst.joints.items()}
-        self.v.update({f"~{k}": 0.0 for k in inst.pieces})          # see-through amount of each piece
+        self.v.update({f"~{k}": 0.0 for k in entries})              # see-through amount of each piece
         self.names: dict[str, list[str]] = {}
         root = f"{prefix}body"
         for piece, ents in entries.items():
@@ -152,7 +152,7 @@ def studio(sc: Scene, size=6000.0, at=(0, 0)):
            smooth_shading=False)
 
 
-def frame_cam(bb, direction=(1.0, -1.6, 0.9), pad=0.78, look_z=0.42):
+def frame_cam(bb, direction=(1.0, -1.6, 0.9), pad=0.85, look_z=0.42):
     x0, x1, y0, y1, z0, z1 = bb
     c = np.array([(x0 + x1) / 2, (y0 + y1) / 2, z0 + (z1 - z0) * look_z])
     r = 0.5 * np.linalg.norm([x1 - x0, y1 - y0, z1 - z0])
@@ -163,6 +163,7 @@ def frame_cam(bb, direction=(1.0, -1.6, 0.9), pad=0.78, look_z=0.42):
 
 
 def tour_one(inst: I.Instrument, entries: dict) -> str:
+    ents = entries
     out = OUT / "instruments"
     out.mkdir(parents=True, exist_ok=True)
     (OUT / "mp4" / "instruments").mkdir(parents=True, exist_ok=True)
@@ -173,13 +174,18 @@ def tour_one(inst: I.Instrument, entries: dict) -> str:
     bb = inst.bbox()
     sc.cam = frame_cam(bb, inst.cam)
     labels = [(t, xyz, at) for t, xyz, at in inst.labels]
-    first = True
-    for cap, secs, targets in inst.actions:
-        sc.step(inst.model, cap, secs, rig.move(targets), hold=0.5, labels=labels if first else labels)
-        first = False
+    if inst.key == "rail":                 # the arm it would carry: a UR10e on the carriage, folded
+        import animate
+        import robot
+        top = I.RAIL["top"]
+        robot.Robot(sc, "ur10e", f"{inst.key}:carriage", T((0, 0, top)), q0=animate.PARK_DEG, prefix="railarm")
+        sc.cam = frame_cam(inst.bbox(), inst.cam, pad=0.75, look_z=0.9)
+    n = len([a for a in inst.actions if a[0]])
+    for i, (cap, secs, targets) in enumerate(inst.actions):
+        sc.step(f"{min(i + 1, n)}/{n}", cap, secs, rig.move(targets), hold=0.5, labels=labels)
     # the hero still for the gallery: closed, the sample in place, no text
     rig.move({k: (None, 1.0 if k in inst.props else j.v0) for k, j in inst.joints.items()})(1.0)
-    rig.move({f"~{k}": (None, 0.0) for k in inst.pieces})(1.0)
+    rig.move({f"~{k}": (None, 0.0) for k in ents})(1.0)
     img = sc.render_base()
     Image.fromarray(img).save(out / f"{inst.key}.png", optimize=True)
     return sc.save()
