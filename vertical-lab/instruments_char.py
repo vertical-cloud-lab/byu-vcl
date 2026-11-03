@@ -187,14 +187,16 @@ def _footprint(key: str):
 
 
 def _ofm_meshes(key: str, max_tris=6000) -> dict:
-    """{role: {rgb: PolyData}} for one microscope, in its own frame; roles body / stage / optics."""
+    """{role: {rgb: PolyData}} for one microscope, in its own frame; roles body / stage / optics, and one per flexure
+    leg, lever and actuator column (openflexure.mechanism's pieces)."""
     import openflexure as O
     stage = {"v7": ("xy_stage", "sample_clips"), "delta": ("moving_stage", "sample_clips")}[key]
     optics = ("optics_module_beamsplitter", "objective", "tube_lens", "picamera2_with_cover", "camera_ribbon_cable",
               "fl_cube", "reflection_illuminator_holder", "reflection_led_condenser") if key == "v7" else ()
-    out = {"body": {}, "stage": {}, "optics": {}}
+    mech = {part: piece for piece, (parts, _) in O.mechanism(key, vec=(0.0, 0.0, 0.0)).items() for part in parts}
+    out = {"body": {}, "stage": {}, "optics": {}, **{piece: {} for piece in mech.values()}}
     for name, (mesh, col, _) in O._load(key).items():
-        role = "stage" if name in stage else "optics" if name in optics else "body"
+        role = "stage" if name in stage else "optics" if name in optics else mech.get(name, "body")
         m = mesh
         if m.n_cells > max_tris:
             m = m.decimate(1.0 - max_tris / m.n_cells).compute_normals(split_vertices=True, feature_angle=35.0)
@@ -271,13 +273,27 @@ def openflexure_array() -> Instrument:
             plate.add(f"handle block {'LR'[sx > 0]}{sy}", box(min(xe, xe + sx * 14), sy * hl - 12, 0,
                                                               max(xe, xe + sx * 14), sy * hl + 12, t / 2 + 30),
                       "char_plate")
-    # ---- the six microscopes: static parts, stages and (v7) optics, merged across the array by colour
+    # ---- the six microscopes: static parts, stages and (v7) optics, merged across the array by colour; each one's
+    # flexure legs, levers and columns are pieces of their own, as each pivots about its own microscope's flexures
     meshes = {k: _ofm_meshes(k) for k in ("v7", "delta")}
+    # the stages' rasters, within each design's flexure range (openflexure.mechanism checks them): the Delta's levers
+    # allow less x/y with focus than the v7's legs, at most 0.1 rad
+    scan = {"v7": ((0, 0, 0), (-6, -4, 0), (6, -4, 0), (6, 0, 0), (-6, 0, 0), (-6, 4, 0), (6, 4, 0), (0, 0, 0)),
+            "delta": ((0, 0, 0), (-4, -3, 0.5), (4, -3, 0.5), (4, 0, 1.0), (-4, 0, 1.0), (-4, 3, 0.5), (4, 3, 0.5),
+                      (0, 0, 0))}
     groups = {"scopes": {}, "stages_v7": {}, "stages_delta": {}, "optics_v7": {}}
-    for kind, cx, cy in sites:
+    mech_joints = {}
+    for i, (kind, cx, cy) in enumerate(sites):
         hull, c = hulls[kind]
         dx, dy = cx - c[0], cy - c[1]
+        mech = O.mechanism(kind, path=scan[kind], offset=(dx, dy, z0), parent="plate")
         for role, cols in meshes[kind].items():
+            if role in mech:
+                g = f"{role}_{i}"
+                mech_joints[g] = mech[role][1]
+                for col, m in cols.items():
+                    inst.meshes.setdefault(g, []).append((_moved(m, dx, dy, z0), col, 1.0))
+                continue
             g = "scopes" if role == "body" else f"{'stages' if role == 'stage' else 'optics'}_{kind}"
             for col, m in cols.items():
                 groups[g].setdefault(col, []).append(_moved(m, dx, dy, z0))
@@ -289,11 +305,10 @@ def openflexure_array() -> Instrument:
     inst.joints = {
         "plate": Joint("path", path=((0, 0, 0), (0, 0, p["lift"]), (0, -p["carry"], p["lift"] + 60))),
         "scopes": Joint("slide", parent="plate"),
-        "stages_v7": Joint("path", parent="plate", path=((0, 0, 0), (-6, -4, 0), (6, -4, 0), (6, 0, 0), (-6, 0, 0),
-                                                            (-6, 4, 0), (6, 4, 0), (0, 0, 0))),
-        "stages_delta": Joint("path", parent="plate", path=((0, 0, 0), (-5, -4, 1), (5, -4, 1), (5, 0, 2), (-5, 0, 2),
-                                                               (-5, 4, 3), (5, 4, 3), (0, 0, 0))),
+        "stages_v7": Joint("path", parent="plate", path=scan["v7"]),
+        "stages_delta": Joint("path", parent="plate", path=scan["delta"]),
         "optics_v7": Joint("path", parent="plate", path=((0, 0, 0), (0, 0, 2), (0, 0, 0.5), (0, 0, 1.5), (0, 0, 0))),
+        **mech_joints,
     }
     for i, (kind, cx, cy) in enumerate(sites):
         hull, c = hulls[kind]
@@ -312,9 +327,11 @@ def openflexure_array() -> Instrument:
          {f"slide{i}": (0.0, 0.0) for i in range(6)}),
         ("A polished coupon on a slide goes under the clips of each microscope in the front row...", 2.0, front),
         ("...and the back row.", 1.8, back),
-        ("All six scan at once: each flexure stage rasters its coupon (+-6 mm) under the reflection optics. The v7s "
-         "focus by moving the optics, the Deltas by moving the stage.", 4.2,
-         {"stages_v7": (0.0, 1.0), "stages_delta": (0.0, 1.0), "optics_v7": (0.0, 1.0)}),
+        ("All six scan at once: each flexure stage rasters its coupon under the reflection optics, its legs leaning "
+         "with it (+-6 mm on the v7s, +-4 mm on the Deltas). The v7s focus by moving the optics, the Deltas by "
+         "moving the stage.", 4.2,
+         {"stages_v7": (0.0, 1.0), "stages_delta": (0.0, 1.0), "optics_v7": (0.0, 1.0),
+          **{g: (0.0, 1.0) for g in mech_joints}}),
         ("One hub supplies power and a network switch to all six through the cable ducts; the tray's own power "
          "feeds the hub.", 2.2, {}),
         ("The sub-tray lifts out as one unit by its two end handles: microscopes, slides and cables together.", 2.6,

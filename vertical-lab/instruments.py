@@ -90,6 +90,9 @@ class Joint:
 
     slide: translate by v * vec.  hinge/spin: rotate v * deg about axis through pivot.  path: translate along the
     waypoints (offsets from the modelled position), evenly by arc length.  fade: only its opacity follows v.
+    follow: a linkage driven by another piece's displacement d, which is v * vec or, given a path, the path's offset
+    at v (as slide and path move that piece): the matrix is I + sum_k d[k] * jac[k], jac being three 3x4 matrices,
+    the motion per mm of d along x, y and z. For small motions, such as flexure legs and levers (openflexure.py).
     A piece with a parent rides on that piece."""
     kind: str
     vec: tuple = (0.0, 0.0, 0.0)
@@ -99,8 +102,14 @@ class Joint:
     path: tuple = ()
     parent: str | None = None
     v0: float = 0.0                  # the value it starts at in the tour
+    jac: tuple = ()                  # follow: three 3x4 matrices
 
     def matrix(self, v: float) -> np.ndarray:
+        if self.kind == "follow":
+            d = Joint("path", path=self.path).matrix(v)[:3, 3] if self.path else np.asarray(self.vec, float) * v
+            m = np.eye(4)
+            m[:3] += np.tensordot(d, np.asarray(self.jac, float), axes=1)
+            return m
         if self.kind == "slide":
             return _T(np.asarray(self.vec, float) * v)
         if self.kind in ("hinge", "spin"):

@@ -1,6 +1,12 @@
 main_body_full
 main_body
 xy_stage
+leg_x
+leg_y
+leg_back_left
+leg_back_right
+actuator_column_x
+actuator_column_y
 stand
 optics_module_beamsplitter
 fl_cube
