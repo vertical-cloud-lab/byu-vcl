@@ -28,10 +28,13 @@ TRAY_W, TRAY_D = 2450.0, 864.0       # #53: 96.46 x 34.00 in; the Shuttle XP's 8
 UNIT_W, UNIT_D = 2780.0, 3074.0      # Relevator Group listing for an XP 500 2450 x 864 (module W x D)
 UNIT_H = 3950.0                      # #53: "less than 13'" (3962 mm); Shuttle XP heights step 100 mm from 2550
 PITCH = 25.0                         # Kardex: tray supports on a 25 mm pitch (Optiflex)
-TRAYS = {                            # #53: one light, one medium and one strong tray
-    "A": dict(capacity_lb=1080, capacity_kg=490, kind="strong"),
+TRAYS = {                            # #53: one light, one medium and one strong tray; D-F are three more light trays
+    "A": dict(capacity_lb=1080, capacity_kg=490, kind="strong"),     # for the equipment #303 asks for (not quoted)
     "B": dict(capacity_lb=794, capacity_kg=360, kind="medium"),
     "C": dict(capacity_lb=502, capacity_kg=228, kind="light"),
+    "D": dict(capacity_lb=502, capacity_kg=228, kind="light"),
+    "E": dict(capacity_lb=502, capacity_kg=228, kind="light"),
+    "F": dict(capacity_lb=502, capacity_kg=228, kind="light"),
 }
 
 SOURCES = {
@@ -77,9 +80,11 @@ Y_FRONT, Y_LIFT, Y_REAR = -1030.0, 0.0, 1030.0      # tray centres: front column
 Y_OPEN = Y_FRONT        # the opening is a gap in the front column: the tray is presented 75 mm behind the front
 Y_SHUTTER = Y_FRONT + TRAY_D / 2 + 35.0             # the shutter: behind the presented tray, between it and the shaft
 Z_TOP_IN = UNIT_H - 260.0                           # underside of the drive bay
-SLOTS = {               # tray-bottom heights of the storage positions used here, on the 25 mm pitch
-    "R1": (Y_REAR, 300.0), "R2": (Y_REAR, 1100.0), "R3": (Y_REAR, 1900.0), "R4": (Y_REAR, 2700.0),
-    "F1": (Y_FRONT, 1900.0), "F2": (Y_FRONT, 2700.0),
+SLOTS = {               # tray-bottom heights of the storage positions used here, on the 25 mm pitch: each tray takes
+    # its equipment's height plus about 50 mm (OT-2 662, multi-doser 731, H2D 626, A2L 505 on R1-R4; CubXL 488 on F1;
+    # A1 mini 365 on F0, under the opening). The lowest slot is 300, where the extractor's carriages clear the base frame
+    "R1": (Y_REAR, 300.0), "R2": (Y_REAR, 1025.0), "R3": (Y_REAR, 1825.0), "R4": (Y_REAR, 2525.0),
+    "F0": (Y_FRONT, 300.0), "F1": (Y_FRONT, 1825.0), "F2": (Y_FRONT, 2525.0),
     "open": (Y_OPEN, Z_OPEN),
 }
 for _k, (_y, _z) in SLOTS.items():

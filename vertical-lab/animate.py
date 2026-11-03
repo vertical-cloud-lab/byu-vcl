@@ -34,42 +34,65 @@ Z_BELT_TOP = V.Z_TOP_IN + 140
 GREEN, OFF = (0.20, 0.85, 0.35), (0.30, 0.32, 0.30)
 FLOOR_C = (0.965, 0.965, 0.96)
 GHOST = {"vlm_skin": 0.16, "vlm_seam": 0.16, "vlm_bay": 0.22, "vlm_shutter": 0.35}   # see-through opacities
-REPOWDER_AT = (-3775.0, -1700.0, 0.0)          # its heat exchanger 1.2 m from the VLM's side, a little forward
-REPOWDER_LBL = ("AMAZEMET rePowder atomizer", (REPOWDER_AT[0] + 250, REPOWDER_AT[1] + 400, 1600), (0.10, 0.30))
+# the cell (#303, round 3): the rePowder atomizer just off the VLM's left side and the Aconity MIDI just off its right,
+# both turned to face inward, across the space in front of the opening where the arm works. Each is placed by its own
+# frame (front at -y): turned 90 deg, its front face 1450 mm from the centre line, its working end (the atomizer's
+# chamber, the Aconity's process chamber) in front of the VLM's lip and its utilities (heat exchanger, filter) beside
+# the VLM's front corner
+REPOWDER_ROT, REPOWDER_AT = 90.0, (-1649.0, -2339.0, 0.0)      # front turned to +x
+ACONITY_ROT, ACONITY_AT = -90.0, (2220.0, -2291.0, 0.0)        # front turned to -x
+REPOWDER_LBL = ("AMAZEMET rePowder ultrasonic atomizer", (-1900.0, -2100.0, 1650.0), (0.10, 0.30))
+ACONITY_LBL = ("Aconity MIDI metal LPBF (candidate)", (2070.0, -2000.0, 2350.0), (0.80, 0.30))
 
-# what goes on each tray, in the tray's frame (centre of its floor, y to the back): (key, x, y). Items the arm works
-# with are at the front edge, and the vial seats are within the arm's reach from its parking spot (reach.py)
+# what goes on each tray, in the tray's frame (centre of its floor, y to the back): (key, x, y), every item placed by
+# the centre of its footprint. Printers and liquid handlers stand at the front edge, where they are reached; the vial
+# rack and the multi-doser's station are within the arm's reach from its parking spot (reach.py)
 LOADS = {
-    "A": [("cubxl", -112.0, -114.5), ("ot2", 760.0, -40.0)],
-    "B": [("rack", -250.0, -372.0), ("carousel", 250.0, -316.0)],
-    "C": [("h2d", -560.0, 0.0), ("a1mini", 360.0, 0.0)],
+    "A": [("ot2", -700.0, -131.0), ("ot2", 0.0, -131.0), ("ot2", 700.0, -131.0)],
+    "B": [("rack", 600.0, -372.0), ("carousel", 250.0, -316.0)],
+    "C": [("cubxl", -760.0, -12.25), ("cubxl", 0.0, -12.25), ("cubxl", 760.0, -12.25)],
+    "D": [("h2d", -560.0, -158.0), ("h2d", 0.0, -158.0), ("h2d", 560.0, -158.0)],
+    "E": [("a2l", -620.0, -155.5), ("a2l", 0.0, -155.5), ("a2l", 620.0, -155.5)],
+    "F": [("a1mini", -480.0, -267.5), ("a1mini", 0.0, -267.5), ("a1mini", 480.0, -267.5)],
 }
-ROLE = {"A": "liquid handling", "B": "powder dosing", "C": "3D printing"}
+ROLE = {"A": "liquid handling, OT-2s", "B": "powder dosing", "C": "liquid handling, CubXLs", "D": "3D printing, H2Ds",
+        "E": "3D printing, A2Ls", "F": "3D printing, A1 minis"}
 NAMES = {"ot2": "Opentrons OT-2", "cubxl": "CubXL liquid-handling gantry", "rack": "vial rack",
-         "carousel": "multi-doser: chain carousel v2, 13 powders", "h2d": "Bambu Lab H2D", "a1mini": "Bambu Lab A1 mini"}
+         "carousel": "multi-doser: chain carousel v2, 13 powders", "h2d": "Bambu Lab H2D", "a1mini": "Bambu Lab A1 mini",
+         "a2l": "Bambu Lab A2L"}
 SOURCE = {"ot2": "Opentrons' own reference STEP", "cubxl": "the lab's model from #199",
           "rack": "a printed rack for the doser's 20 mL vials",
           "carousel": "powder-doser PR #185's CAD, driven by its own kinematics",
-          "h2d": "the lab's model from Bambu's spec", "a1mini": "the lab's model from Bambu's outline drawing"}
-HOME = {"A": "R2", "B": "R3", "C": "F1"}       # storage slot of each tray
+          "h2d": "the lab's model from Bambu's spec", "a1mini": "the lab's model from Bambu's outline drawing",
+          "a2l": "modelled from Bambu's published envelope"}
+HOME = {"A": "R1", "B": "R2", "C": "F1", "D": "R3", "E": "R4", "F": "F0"}       # storage slot of each tray
+CUB_WORK = 2                    # the CubXL the workflow uses: the right-hand one of tray C
 
 # the mobile manipulator: a MiR250 parked square to the opening, 30 mm off the tray cover's 50 mm lip, the arm over
 # its front half
 AMR_XY = (0.0, -V.UNIT_D / 2 - V.SKIN - 50.0 - 30.0 - P.MIR["W"] / 2)
 ARM_LOCAL = (0.0, 130.0)
-BUFFER_LOCAL = (-300.0, -150.0)                # the one-vial holder on the cabinet top
-RACK_SEAT = 5                                  # the rack's seat with the vial the workflow uses
-CUB_SLOT = (100.0, -60.0, 80.0)                # the CubXL rack's sixth seat (base of the vial), CubXL frame
+RACK_N, RACK_PITCH = 5, 70.0                   # one row at 70 mm: room for the fingers of a side grasp between vials
+RACK_SEAT = 0                                  # the rack's seat with the vial the workflow uses (the left-hand one)
+# the rack stands right of the doser and the workflow uses the right-hand CubXL: with the gripper level and pointing
+# into the tray, every grasp, transfer and approach then keeps the UR's wrist at least 245 mm off its base axis
+# the vial stays upright all the way: the station takes it only from the side (its cup is under the funnel), so the
+# arm grasps it from the side at the rack too, holds it while the VLM swaps trays, and stands it on a one-vial seat at
+# the front of the CubXL's deck (a layout choice: the CubXL's own rack is too tight for fingers between its vials)
+SIDE_Z = 46.0         # grasp height up the vial, the same everywhere: the 22 mm pads clear the rack's 32 mm holes and
+#                       the cup's 18 mm, and stay under the vial's 61 mm mouth, where the funnel's spout goes in
+CUB_SEAT = (130.0, -200.0, 86.0)               # the one-vial seat on the CubXL's deck (base of the vial), CubXL frame
 MODULE = 5                                     # the powder module the workflow doses from (0-based; "module 6")
 DOSE_G = 0.512
 
-CAM_WIDE = [(7570, -6720, 4790), (0, -250, 1800), (0, 0, 1)]
-CAM_FRONT = [(4300, -9200, 2600), (-300, -600, 1700), (0, 0, 1)]
-CAM_OPEN = [(5200, -7600, 3100), (100, -900, 1450), (0, 0, 1)]
-CAM_WORK = [(-1300, -4300, 2550), (60, -1450, 1060), (0, 0, 1)]
-CAM_MID = [(1700, -3300, 2100), (245, -1320, 1170), (0, 0, 1)]      # on the way to CAM_DOSE, clear of the arm
-CAM_DOSE = [(1000, -1600, 1330), (245, -1320, 1170), (0, 0, 1)]     # along the rig's loop, at the station
-CAM_CUB = [(1500, -3300, 2000), (60, -1420, 1010), (0, 0, 1)]
+CAM_WIDE = [(3400, -10600, 6000), (0, -1100, 1550), (0, 0, 1)]
+CAM_FRONT = [(1500, -9800, 2900), (0, -1200, 1750), (0, 0, 1)]
+CAM_OPEN = [(1700, -7400, 3300), (100, -1000, 1400), (0, 0, 1)]
+CAM_CELL = [(-200, -9200, 7600), (150, -1500, 900), (0, 0, 1)]      # over the cell: the atomizer, the VLM, the Aconity
+CAM_WORK = [(-1250, -4300, 2550), (60, -1450, 1060), (0, 0, 1)]
+CAM_MID = [(1100, -3300, 2100), (245, -1320, 1170), (0, 0, 1)]      # on the way to CAM_DOSE, clear of the arm
+CAM_DOSE = [(640, -1770, 1300), (245, -1330, 1180), (0, 0, 1)]      # at the station: the upright vial in its cup
+CAM_CUB = [(1150, -3500, 2150), (820, -1380, 1000), (0, 0, 1)]
 
 
 class Lab:
@@ -120,7 +143,7 @@ class Lab:
                     self._rack(g)
                     sc.gmat[g] = T((x, y, V.T_FLOOR))
                 elif key == "cubxl":
-                    self._cubxl(g, eq)
+                    self._cubxl(g, eq, work=(i == CUB_WORK))
                     sc.gmat[g] = T((x, y, V.T_FLOOR)) @ self.cub_center
                 else:
                     entries, bb = eq[key]
@@ -131,10 +154,14 @@ class Lab:
                     sc.gmat[g] = T((x, y, V.T_FLOOR))
                 sc.parent[g] = f"tray_{k}"
                 self.eq_groups[k].append(g)
-        # the rePowder atomizer and its utilities stand to the left, fronts in line with the VLM's
+        # the rePowder atomizer and its utilities just off the left side, the Aconity MIDI just off the right, both
+        # facing inward
         for name, e in data["repowder"].items():
             sc.add(name, e["mesh"], e["color"], "repowder", opacity=e["opacity"])
-        sc.gmat["repowder"] = T(REPOWDER_AT)
+        sc.gmat["repowder"] = T(REPOWDER_AT) @ R((0, 0, 1), REPOWDER_ROT)
+        for name, e in eq["aconity"][0].items():
+            sc.add(f"aconity/{name}", e["mesh"], e["color"], "aconity", opacity=e["opacity"])
+        sc.gmat["aconity"] = T(ACONITY_AT) @ R((0, 0, 1), ACONITY_ROT)
         # the vial the workflow follows: in the rack's last seat at the start
         self._vial()
         if robot:
@@ -144,7 +171,7 @@ class Lab:
 
     def _rack(self, g):
         sc = self.sc
-        block, seats = P.vial_rack()
+        block, seats = P.vial_rack(RACK_N, RACK_PITCH)
         sc.add(f"{g}/rack", block, P.RACK_C, g)
         self.rack_seats = seats
         glass = None
@@ -155,8 +182,9 @@ class Lab:
             glass = v if glass is None else glass.merge(v)
         sc.add(f"{g}/vials", glass, P.GLASS, g, opacity=0.45, specular=0.6)
 
-    def _cubxl(self, g, eq):
-        """The CubXL frame plus its gantry (y), carriage (x) and tools (z) as child groups, all in the frame's frame."""
+    def _cubxl(self, g, eq, work=False):
+        """The CubXL frame plus its gantry (y), carriage (x) and tools (z) as child groups, all in the frame's frame.
+        The one the workflow uses (`work`) also gets the one-vial seat at the front of its deck."""
         sc = self.sc
         _, bb = eq["cubxl_frame"]
         cx, cy = (bb[0] + bb[1]) / 2, (bb[2] + bb[3]) / 2
@@ -169,8 +197,13 @@ class Lab:
             if parent:
                 sc.parent[grp] = parent
                 sc.gmat[grp] = np.eye(4)
-        self.cub = g
-        self.cub_xyz = [0.5, 0.5, 0.5]
+        if work:
+            # a printed block on the deck with a 14 mm hole the vial stands in (the vial hides the hole)
+            seat = pv.Box(bounds=(CUB_SEAT[0] - 25, CUB_SEAT[0] + 25, CUB_SEAT[1] - 25, CUB_SEAT[1] + 25, 80.0,
+                                  CUB_SEAT[2] + 14)).triangulate()
+            sc.add(f"{g}/seat", seat, P.RACK_C, g)
+            self.cub = g
+            self.cub_xyz = [0.5, 0.5, 0.5]
 
     def _vial(self):
         sc = self.sc
@@ -205,9 +238,6 @@ class Lab:
         for name, (mesh, col) in P.mir250().items():
             kw = dict(ambient=0.8) if "light" in name else {}
             sc.add(f"amr/{name}", mesh, col, "amr", **kw)
-        holder, seat = P.buffer_holder()
-        sc.add("amr/holder", holder.translate((*BUFFER_LOCAL, P.AMR_TOP - 20), inplace=False), P.RACK_C, "amr")
-        self.buffer_seat = (BUFFER_LOCAL[0], BUFFER_LOCAL[1], P.AMR_TOP - 20 + seat[2])
         sc.gmat["amr"] = T((*AMR_XY, 0))
         # parked: folded over its own base, the gripper pointing down
         self.robot = RB.Robot(sc, ROBOT, "amr", T((*ARM_LOCAL, P.AMR_TOP)), q0=PARK_DEG)
@@ -437,6 +467,7 @@ def place(L: Lab, rb, step, cap, M_place, M_pre, new_parent, seconds=(1.6, 0.9, 
 
 
 GRIP_VIAL = 0.70               # 2F-85 closure with its pads 28 mm apart: the vial (ur_arm.gripper_fk)
+GRIP_SIDE_OPEN = 0.36          # part open (about 55 mm) for a side grasp: the fingers fit between the rack's vials
 
 
 # ======================================================================================= chapters
@@ -457,16 +488,18 @@ def assembly(data):
     eq = [n for k in V.TRAYS for g in L.eq_groups[k] for n in L.eq_names(g)] + L.groups("vial", "vial_powder",
                                                                                           "vial_liquid")
     vlm_groups = ["base", "posts", "col_front", "col_rear", "lift_rails", "drive", "lift", "belts", "bay", "console",
-                  "shutter", "skin_L", "skin_R", "skin_back", "skin_front", "skin_top", "tray_A", "tray_B", "tray_C"]
+                  "shutter", "skin_L", "skin_R", "skin_back", "skin_front", "skin_top", *(f"tray_{k}" for k in V.TRAYS)]
     hide(L, L.groups(*vlm_groups) + eq)
     L.skin(0.0)(1.0)                 # the cladding goes on as it is: opaque
     L.show_gauges = False
     L.apply_state()
     n = 7
-    sc.step(f"1/{n}", "The Kardex Shuttle XP 500 quoted in #53, beside the lab's rePowder atomizer: 2450 × 864 mm trays "
-            "in a 2780 × 3074 mm module, 3950 mm tall to stay under 13 ft. The base frame goes down first, on levelling feet.",
+    sc.step(f"1/{n}", "The Kardex Shuttle XP 500 quoted in #53, between the lab's rePowder atomizer and an Aconity MIDI: "
+            "2450 × 864 mm trays in a 2780 × 3074 mm module, 3950 mm tall to stay under 13 ft. The base frame goes down "
+            "first, on levelling feet.",
             2.0, slide_in(L, ["base"], (0, 0, 900)), hold=1.2,
-            labels=[("base frame, 2780 × 3074 mm", (V.UNIT_W / 2, -V.UNIT_D / 2, 100), (0.80, 0.80)), REPOWDER_LBL])
+            labels=[("base frame, 2780 × 3074 mm", (V.UNIT_W / 2, -V.UNIT_D / 2, 100), (0.62, 0.82)), REPOWDER_LBL,
+                    ACONITY_LBL])
     sc.step(f"2/{n}", "Posts and roof rails. The posts at the middle of each side mark off the three bays: front "
             "storage, the extractor's shaft and rear storage.",
             2.0, slide_in(L, ["posts"], (0, 0, 1800)), hold=1.0,
@@ -486,10 +519,11 @@ def assembly(data):
             labels=[("drive on the roof frame", (V.UNIT_W / 2 - 700, 0, V.Z_TOP_IN + 150), (0.80, 0.16)),
                     ("extractor platform", (V.TRAY_W / 2, 0, LIFT_HOME - 60), (0.86, 0.62))])
     trays_lbl = [(f"tray {k}: {V.TRAYS[k]['kind']}, {V.TRAYS[k]['capacity_lb']} lb", (V.TRAY_W / 2, *V.SLOTS[HOME[k]]),
-                  (0.86, 0.30 + 0.12 * i)) for i, k in enumerate(V.TRAYS)]
-    sc.step(f"5/{n}", "Three electrified trays (#53): strong (1080 lb), medium (794 lb) and light (502 lb). Each has a "
-            "power strip and a socket; it has power in its slot and at the opening, not while it moves.",
-            2.4, slide_in(L, ["tray_A", "tray_B", "tray_C"], (3200, 0, 0)), hold=1.6, labels=trays_lbl)
+                  (0.88, 0.14 + 0.115 * i)) for i, k in enumerate(V.TRAYS)]
+    sc.step(f"5/{n}", "Six electrified trays: #53's strong (1080 lb), medium (794 lb) and light (502 lb) ones, and three "
+            "more light ones for the equipment here. Each has a power strip and a socket; it has power in its slot and at "
+            "the opening, not while it moves.",
+            2.6, slide_in(L, [f"tray_{k}" for k in V.TRAYS], (3200, 0, 0)), hold=1.8, labels=trays_lbl)
     sc.step(f"6/{n}", f"Cladding in RAL 7035 and the access opening, {V.OPEN_W:.0f} mm wide at a {V.Z_SILL:.0f} mm table: "
             "header with the LED light, side posts, the OPTIC panel on the right post, and the powered safety shutter "
             "at the back of the bay, which closes whenever the extractor moves.",
@@ -504,6 +538,34 @@ def assembly(data):
     return sc.save()
 
 
+def tray_items(L: Lab, k):
+    """[(group, key, x, y)] of tray k, in loading order."""
+    return [(g, key, x, y) for g, (key, x, y) in zip(L.eq_groups[k], LOADS[k])]
+
+
+def load_tray(L: Lab, k, step, out=False):
+    """Every piece of equipment of tray k goes in through the opening one at a time (or out, in reverse). The first of
+    a kind takes its time and gets a label; the copies after it are quicker."""
+    sc = L.sc
+    items = tray_items(L, k)
+    if out:
+        items = items[::-1]
+    seen = set()
+    for g, key, x, y in items:
+        count = sum(1 for kk, _, _ in LOADS[k] if kk == key)
+        first = key not in seen
+        seen.add(key)
+        if out:
+            cap = f"Unloading tray {k} ({ROLE[k]}): the equipment goes out through the opening, one piece at a time."
+            sc.step(step, cap, 1.3 if first else 1.0, item_in(L, g, out=True), hold=0.15)
+            continue
+        what = f"{count} × {NAMES[key]}" if count > 1 else f"the {NAMES[key]}"
+        cap = f"Tray {k}: {what} goes in through the opening, one at a time ({SOURCE[key]})."
+        lbl = [(f"{count} × {NAMES[key]}" if count > 1 else NAMES[key], tray_world(k, (x, y, 560)),
+                (0.72 if x > 0 else 0.22, 0.22))] if first else []
+        sc.step(step, cap, 1.9 if first else 1.2, item_in(L, g), hold=0.5 if first else 0.2, labels=lbl)
+
+
 def loading(data):
     sc, L = new_scene("vlm_loading", data)
     rb = L.robot
@@ -513,41 +575,37 @@ def loading(data):
     L.skin(0.0)(1.0)
     L.apply_state()
     sc.cam = list(CAM_FRONT)
-    n = 6
+    order = ("A", "B", "C", "D", "E", "F")
+    n = len(order) + 3
     sc.step(f"1/{n}", "The Kardex Shuttle XP 500 as it would stand in the lab: a closed cabinet, 2780 mm wide, 3074 mm "
-            "deep and 3950 mm tall, with one large access opening at counter height and the operator console beside it.",
-            3.0, None, hold=1.0, cam_to=CAM_WIDE,
-            labels=[("large access opening", (0, -V.UNIT_D / 2 - V.SKIN, V.Z_SILL + 400), (0.18, 0.66)),
-                    ("operator console", (V.CONSOLE_X, -V.UNIT_D / 2 - 120, V.CONSOLE_Z), (0.84, 0.72)),
-                    REPOWDER_LBL])
+            "deep and 3950 mm tall, with one large access opening at counter height. The rePowder ultrasonic atomizer "
+            "stands just off its left side and the Aconity MIDI metal printer just off its right, both facing inward.",
+            3.4, None, hold=1.2, cam_to=CAM_CELL,
+            labels=[("large access opening", (0, -V.UNIT_D / 2 - V.SKIN, V.Z_SILL + 400), (0.50, 0.70)),
+                    REPOWDER_LBL, ACONITY_LBL])
     sc.step(f"2/{n}", "Inside, drawn see-through from here on: the front storage column, the extractor's shaft and the "
-            "rear storage column, with the three empty trays in their slots.",
-            2.4, L.skin(1.0), hold=1.2,
+            "rear storage column, with six empty trays in their slots.",
+            2.4, L.skin(1.0), hold=1.2, cam_to=CAM_WIDE,
             labels=[("front storage", (V.TRAY_W / 2, V.Y_FRONT, 2900), (0.84, 0.30)),
                     ("extractor", (V.TRAY_W / 2, 0, LIFT_HOME - 40), (0.88, 0.52)),
                     ("rear storage", (V.TRAY_W / 2, V.Y_REAR, 3300), (0.88, 0.20))])
-    for i, k in enumerate(("A", "B", "C")):
+    for i, k in enumerate(order):
         step = f"{3 + i}/{n}"
         cap0 = f"Loading tray {k} ({ROLE[k]}): the extractor brings it to the opening; the shutter behind the " \
                "opening lets it through and closes behind it."
-        L.fetch(k, step, cap0, fast=0.8, cam=CAM_OPEN if i == 0 else None)
-        for g in L.eq_groups[k]:
-            key = L.eq_key[g]
-            x, y = next((xx, yy) for kk, xx, yy in LOADS[k] if kk == key)
-            cap = f"Tray {k}: the {NAMES[key]} goes in through the opening ({SOURCE[key]})."
-            lbl = [(NAMES[key], tray_world(k, (x, y, 500)), (0.72 if x > 0 else 0.20, 0.22))]
-            sc.step(step, cap, 2.2, item_in(L, g), hold=0.7, labels=lbl)
-        L.store(k, step, f"Tray {k} goes back to its slot ({HOME[k]}), where it has power again.", fast=0.8,
-                cam=CAM_WIDE if i == 2 else None)
+        L.fetch(k, step, cap0, fast=0.6, cam=CAM_OPEN if i == 0 else None, hold=0.2)
+        load_tray(L, k, step)
+        L.store(k, step, f"Tray {k} goes back to its slot ({HOME[k]}), where it has power again.", fast=0.6,
+                cam=CAM_WIDE if i == len(order) - 1 else None, hold=0.2)
     cap = f"The operator rolls up: a Universal Robots {ROBOT_NAME} with a Robotiq 2F-85 gripper on a MiR250 mobile " \
           f"base, parked square to the opening. Its {ur_reach():.0f} mm reach covers every seat it works on from here."
-    sc.step(f"{n}/{n}", cap, 2.6, slide_in(L, ["amr"], (0, -2200, 0), names=L.groups("amr", *rb.groups())),
+    sc.step(f"{n - 1}/{n}", cap, 2.6, slide_in(L, ["amr"], (0, -2200, 0), names=L.groups("amr", *rb.groups())),
             hold=1.0, cam_to=CAM_OPEN,
             labels=[(f"{ROBOT_NAME} on a MiR250", (AMR_XY[0], AMR_XY[1], 1300), (0.16, 0.42))])
-    sc.step(f"{n}/{n}", "Loaded: liquid handling on tray A, powder dosing on tray B, 3D printing on tray C, each powered "
-            "in its slot so its equipment can keep running while it is stored.",
-            1.6, None, hold=2.4, cam_to=CAM_WIDE, still=True,
-            labels=[(f"tray {k}: {ROLE[k]}", (V.TRAY_W / 2 - 300, *V.SLOTS[HOME[k]]), (0.86, 0.30 + 0.12 * i))
+    sc.step(f"{n}/{n}", "Loaded, 16 pieces on six powered trays: three OT-2s, the multi-doser, three CubXLs, three H2Ds, "
+            "three A2Ls and three A1 minis, each tray powered in its slot so its equipment keeps running while stored.",
+            1.6, None, hold=2.6, cam_to=CAM_WIDE, still=True,
+            labels=[(f"tray {k}: {ROLE[k]}", (V.TRAY_W / 2 - 300, *V.SLOTS[HOME[k]]), (0.88, 0.14 + 0.115 * i))
                     for i, k in enumerate(V.TRAYS)])
     return sc.save()
 
@@ -580,33 +638,41 @@ def workflow(data):
     L.apply_state()
     n = 6
     # ------------------------------------------------------------------ 1. tray B down
-    cap = "An example run: dose 0.5 g of a powder from the multi-doser, then add liquid to it in the CubXL. The arm " \
+    cap = "An example run: dose 0.5 g of a powder from the multi-doser, then add liquid to it in a CubXL. The arm " \
           "asks for tray B: the extractor pulls it off its supports, carries it down and pushes it into the opening."
     sc.step(f"1/{n}", cap, 1.0, None, hold=0.5,
-            labels=[("tray B: powder dosing", (V.TRAY_W / 2 - 300, *V.SLOTS["R3"]), (0.86, 0.34))])
+            labels=[("tray B: powder dosing", (V.TRAY_W / 2 - 300, *V.SLOTS[HOME["B"]]), (0.86, 0.34))])
     L.fetch("B", f"1/{n}", cap, cam=CAM_WORK)
-    # ------------------------------------------------------------------ 2. an empty vial into the doser
+    # ------------------------------------------------------------------ 2. an empty vial into the doser, upright
     rack_xy = LOADS["B"][0][1:]
     seat = np.array(L.rack_seats[RACK_SEAT]) + (*rack_xy, V.T_FLOOR)
-    grasp_z = 50.0                                           # grip 50 mm up the vial: above the rack's 40 mm block
-    p_rack = tray_world("B", seat + (0, 0, grasp_z))
+    p_rack = tray_world("B", seat + (0, 0, SIDE_Z))
     car_xy = LOADS["B"][1][1:]
     vs = C.vial_seat()                                       # rig frame; the rig is turned 90 deg on the tray
     cup = np.array([car_xy[0] - vs[1], car_xy[1] + vs[0], V.T_FLOOR + vs[2]])
-    p_cup = tray_world("B", cup + (0, 0, 32.0))
-    cap = f"The {ROBOT_NAME} takes an empty 20 mL vial from the rack at the front of the tray and sets it in the " \
-          "multi-doser's cup, on its 100 g load cell under the station."
-    L.note(0, "Arm", "vial: rack to doser")
-    pick(L, rb, f"2/{n}", cap, down(p_rack), down(p_rack + (0, 0, 110)), "vial", cam=CAM_WORK,
-         labels=[("vial rack", p_rack + (-120, 0, 60), (0.20, 0.30)),
-                 ("multi-doser (powder-doser #185)", p_cup + (0, 150, 420), (0.70, 0.18))])
-    sc.step(f"2/{n}", cap, 1.2, rb.joint_to(Tw=level(p_cup + (0, -190, 6))), hold=0.05)
+    p_cup = tray_world("B", cup + (0, 0, SIDE_Z))
+    lift = (0, 0, 45.0)                                      # clears the rack's 32 mm holes
+    cap = f"The {ROBOT_NAME} takes an empty 20 mL vial from the rack at the front of the tray, from the side, so it " \
+          "stays upright: the station's cup is under its funnel, and the vial only goes in from the front, mouth up."
+    L.note(0, "Arm", "vial: rack to doser, upright")
+    sc.step(f"2/{n}", cap, 1.6, both(rb.joint_to(Tw=level(p_rack + (0, -170, 0))), rb.grip_to(GRIP_SIDE_OPEN)),
+            hold=0.05, cam_to=CAM_WORK,
+            labels=[("vial rack", p_rack + (150, 0, 60), (0.80, 0.30)),
+                    ("multi-doser (powder-doser #185)", p_cup + (0, 150, 420), (0.70, 0.18))])
+    sc.step(f"2/{n}", cap, 0.9, rb.line_to(level(p_rack)), hold=0.05)
+    sc.step(f"2/{n}", cap, 0.5, rb.grip_to(GRIP_VIAL), hold=0.05)
+    rb.grasp("vial")
+    sc.step(f"2/{n}", cap, 0.6, rb.line_to(level(p_rack + lift)), hold=0.05)
+    sc.step(f"2/{n}", cap, 0.7, rb.line_to(level(p_rack + lift + (0, -170, 0))), hold=0.05)
+    cap = "It carries the vial level, upright all the way, to the front of the station and slides it into the cup " \
+          "on the 100 g load cell, its mouth under the funnel's spout."
+    sc.step(f"2/{n}", cap, 1.4, rb.line_to(level(p_cup + (0, -190, 6))), hold=0.05)
     sc.step(f"2/{n}", cap, 1.0, rb.line_to(level(p_cup + (0, 0, 6))), hold=0.05)
     sc.step(f"2/{n}", cap, 0.4, rb.line_to(level(p_cup)), hold=0.05)
-    sc.step(f"2/{n}", cap, 0.5, rb.grip_to(0.0), hold=0.05)
+    sc.step(f"2/{n}", cap, 0.5, rb.grip_to(GRIP_SIDE_OPEN), hold=0.05)
     rb.release(L.eq_groups["B"][1])
-    sc.step(f"2/{n}", cap, 0.9, rb.line_to(level(p_cup + (0, -190, 0))), hold=0.05)
-    sc.step(f"2/{n}", cap, 1.2, rb.joint_to(PARK_RAD), hold=0.1, cam_to=CAM_MID)
+    sc.step(f"2/{n}", cap, 0.9, rb.line_to(level(p_cup + (0, -190, 0))), hold=0.05, cam_to=CAM_MID)
+    sc.step(f"2/{n}", cap, 1.2, rb.joint_to(PARK_RAD), hold=0.1)
     L.note(0, "Arm", "parked, clear of the doser")
     # ------------------------------------------------------------------ 3. dose
     cap = f"The carousel indexes powder module {MODULE + 1} (green) to the station, 8 chain links per module, and the " \
@@ -618,8 +684,8 @@ def workflow(data):
     cap = cap + " The other modules are drawn see-through: the docked one rides inside the loop."
     sc.step(f"3/{n}", cap, 1.4, both(car.to(ext=C.DOCK_EXT, magnet_on=True), car.ghost(0.18)), hold=0.2)
     cap = f"Module {MODULE + 1} tilts {C.CP.TILT_DOSE_WORLD:.0f}°, cap end up into the loop, and the auger turns through " \
-          "the steel pinion: the powder drops through the D-cut funnel into the vial while the load cell counts it. Then " \
-          "hold, tilt back, reverse one turn at rest, undock (powder-doser's leakage study)."
+          "the steel pinion: the powder drops through the D-cut funnel into the upright vial while the load cell counts " \
+          "it. Then hold, tilt back, reverse one turn at rest, undock (powder-doser's leakage study)."
     L.note(1, "Doser", f"module {MODULE + 1} tilted, dosing")
     sc.step(f"3/{n}", cap, 1.6, car.to(tilt=C.TILT), hold=0.1)
     spin0 = car.state["spin"]
@@ -636,53 +702,55 @@ def workflow(data):
         L.set_fill()
         L.note(2, "Load cell", f"{DOSE_G * min(1.0, max(0.0, (u - 0.12) / 0.83)):.3f} g")
     sc.parent["stream"] = L.eq_groups["B"][1]
-    sc.step(f"3/{n}", cap, 3.6, dose, hold=0.4, live=False)
+    sc.step(f"3/{n}", cap, 3.6, dose, hold=0.4, live=False, still=True)
     sc.alpha["stream"] = 0.0
     L.note(1, "Doser", f"module {MODULE + 1} back, undocking")
     sc.step(f"3/{n}", cap, 1.2, car.to(tilt=0.0), hold=0.1)
     sc.step(f"3/{n}", cap, 0.8, car.to(spin=spin0 + 2 * math.pi), hold=0.1)
     sc.step(f"3/{n}", cap, 1.0, both(car.to(ext=0.0, magnet_on=False), car.ghost(1.0)), hold=0.2)
     L.note(1, "Doser", f"module {MODULE + 1} undocked")
-    # ------------------------------------------------------------------ 4. vial to the arm's base, tray B up
-    buf = np.array(L.buffer_seat)
-    p_buf = (sc.world("amr") @ np.r_[buf + (0, 0, grasp_z), 1.0])[:3]
-    cap = f"The arm takes the vial out ({DOSE_G:.3f} g in it) and stands it in the holder on its own base, so the " \
-          "VLM can swap trays. Tray B goes back to its slot and its power."
-    L.note(0, "Arm", "vial: doser to its base")
-    sc.step(f"4/{n}", cap, 1.2, rb.joint_to(Tw=level(p_cup + (0, -190, 0))), hold=0.05, cam_to=CAM_WORK)
+    # ------------------------------------------------------------------ 4. the arm holds the vial; tray B up, tray C down
+    wait = level(p_cup + (0, -380, 60))                      # out of the bay, so the tray can go
+    cap = f"The arm takes the vial out of the cup ({DOSE_G:.3f} g in it), still upright, and holds it clear of the " \
+          "opening while the VLM swaps trays: tray B goes back to its slot and its power."
+    L.note(0, "Arm", "holding the vial")
+    sc.step(f"4/{n}", cap, 1.2, both(rb.joint_to(Tw=level(p_cup + (0, -190, 0))), rb.grip_to(GRIP_SIDE_OPEN)),
+            hold=0.05, cam_to=CAM_WORK)
     sc.step(f"4/{n}", cap, 1.0, rb.line_to(level(p_cup)), hold=0.05)
     sc.step(f"4/{n}", cap, 0.5, rb.grip_to(GRIP_VIAL), hold=0.05)
     rb.grasp("vial")
     sc.step(f"4/{n}", cap, 0.4, rb.line_to(level(p_cup + (0, 0, 6))), hold=0.0)
     sc.step(f"4/{n}", cap, 1.0, rb.line_to(level(p_cup + (0, -190, 6))), hold=0.05)
-    place(L, rb, f"4/{n}", cap, down(p_buf), down(p_buf + (0, 0, 120)), "amr")
-    sc.step(f"4/{n}", cap, 1.2, rb.joint_to(PARK_RAD), hold=0.1)
-    L.note(0, "Arm", "parked, vial on its base")
+    sc.step(f"4/{n}", cap, 1.0, rb.line_to(wait), hold=0.1)
     L.store("B", f"4/{n}", cap, cam=CAM_OPEN)
-    # ------------------------------------------------------------------ 5. tray A down, vial into the CubXL
-    cap = "Tray A (liquid handling) comes down. The CubXL's gantry is parked at the back, so the arm can put the vial " \
-          "in the free seat of its rack."
-    L.fetch("A", f"5/{n}", cap, cam=CAM_CUB)
+    # ------------------------------------------------------------------ 5. tray C down, vial onto the CubXL's deck
+    cap = "Tray C (liquid handling: three CubXLs) comes down. The right-hand CubXL's gantry parks at the back, so the " \
+          "arm can stand the vial on the one-vial seat at the front of its deck."
+    L.fetch("C", f"5/{n}", cap, cam=CAM_CUB)
     sc.step(f"5/{n}", cap, 1.0, L.cub_to(x=0.2, y=1.0, z=1.0), hold=0.2)
-    slot = (sc.world(L.cub) @ np.r_[CUB_SLOT, 1.0])[:3]          # tray A is at the opening now
-    p_slot = slot + (0, 0, grasp_z - 8.0)
-    L.note(0, "Arm", "vial: base to CubXL")
-    pick(L, rb, f"5/{n}", cap, down(p_buf), down(p_buf + (0, 0, 120)), "vial")
-    place(L, rb, f"5/{n}", cap, down(p_slot), down(p_slot + (0, 0, 130)), L.cub,
-          labels=[("CubXL: free seat in its rack", p_slot + (0, 0, 40), (0.74, 0.24))])
-    sc.step(f"5/{n}", cap, 1.4, rb.joint_to(PARK_RAD), hold=0.1)
+    base = (sc.world(L.cub) @ np.r_[CUB_SEAT, 1.0])[:3]          # tray C is at the opening now
+    p_seat = base + (0, 0, SIDE_Z)
+    L.note(0, "Arm", "vial: to the CubXL")
+    sc.step(f"5/{n}", cap, 1.4, rb.line_to(level(p_seat + (0, -190, 20))), hold=0.05,
+            labels=[("CubXL: one-vial seat", p_seat + (0, 0, 60), (0.74, 0.24))])
+    sc.step(f"5/{n}", cap, 1.0, rb.line_to(level(p_seat + (0, 0, 20))), hold=0.05)
+    sc.step(f"5/{n}", cap, 0.6, rb.line_to(level(p_seat)), hold=0.05)
+    sc.step(f"5/{n}", cap, 0.5, rb.grip_to(GRIP_SIDE_OPEN), hold=0.05)
+    rb.release(L.cub)
+    sc.step(f"5/{n}", cap, 0.9, rb.line_to(level(p_seat + (0, -190, 0))), hold=0.05)
+    sc.step(f"5/{n}", cap, 1.4, both(rb.joint_to(PARK_RAD), rb.grip_to(0.0)), hold=0.1)
     L.note(0, "Arm", "parked")
-    # ------------------------------------------------------------------ 6. CubXL adds liquid; tray A up
+    # ------------------------------------------------------------------ 6. CubXL adds liquid; tray C up
     cap = "The CubXL's gantry brings its pipette over the vial and adds the liquid; the vial stays there for the " \
-          "measurement. Tray A goes back to its slot, where it has power, so the CubXL keeps working while it is stored."
+          "measurement. Tray C goes back to its slot, where it has power, so the CubXL keeps working while it is stored."
     import equipment
     tr = equipment.CUBXL["travel"]
-    px = (CUB_SLOT[0] + 50.0 + tr[0] / 2) / tr[0]                       # pipette at cx - 50 (equipment.cubxl)
-    py = (CUB_SLOT[1] + 80.0 + equipment.CUBXL["D"] / 2 - 150.0) / tr[1]   # pipette at gy - 80
+    px = (CUB_SEAT[0] + 50.0 + tr[0] / 2) / tr[0]                       # pipette at cx - 50 (equipment.cubxl)
+    py = (CUB_SEAT[1] + 80.0 + equipment.CUBXL["D"] / 2 - 150.0) / tr[1]   # pipette at gy - 80
     sc.step(f"6/{n}", cap, 2.0, L.cub_to(x=px, y=py), hold=0.1, cam_to=CAM_CUB,
-            labels=[("CubXL pipette", p_slot + (0, 0, 260), (0.74, 0.24))])
+            labels=[("CubXL pipette", p_seat + (0, 0, 260), (0.74, 0.24))])
     sc.step(f"6/{n}", cap, 1.0, L.cub_to(z=0.55), hold=0.1)
-    tip = lambda: (sc.world(f"{L.cub}_tools") @ np.r_[CUB_SLOT[0], CUB_SLOT[1], 100.0 + 0.5 * tr[2] - 40.0 + 0.0, 1.0])[:3]  # noqa: E731
+    tip = lambda: (sc.world(f"{L.cub}_tools") @ np.r_[CUB_SEAT[0], CUB_SEAT[1], 100.0 + 0.5 * tr[2] - 40.0, 1.0])[:3]  # noqa: E731
 
     def pour(u):
         L.liquid_h = 22.0 * u
@@ -696,10 +764,10 @@ def workflow(data):
     sc.step(f"6/{n}", cap, 2.2, pour, hold=0.3)
     sc.alpha["pipette stream"] = 0.0
     sc.step(f"6/{n}", cap, 1.0, L.cub_to(z=1.0), hold=0.1)
-    L.store("A", f"6/{n}", cap, cam=CAM_WIDE)
+    L.store("C", f"6/{n}", cap, cam=CAM_WIDE)
     L.note(0, "Arm", "parked; next request")
-    sc.step(f"6/{n}", "Done: the dosed vial is in the CubXL on tray A, in storage and powered. The arm and the opening "
-            "are free for the next request.", 1.0, None, hold=2.5, still=True)
+    sc.step(f"6/{n}", "Done: the dosed vial is in the CubXL on tray C, in storage and powered. The arm and the opening "
+            "are free for the next request.", 1.0, None, hold=2.5)
     print(f"highest forearm/wrist point {rb.max_z_world:.0f} mm; opening top {V.Z_OPEN_TOP:.0f} mm", flush=True)
     return sc.save()
 
@@ -709,32 +777,31 @@ def disassembly(data):
     rb = L.robot
     L.skin(1.0)(1.0)
     L.apply_state()
-    n = 8
+    n = 6
     sc.step(f"1/{n}", "Taking it down is the assembly in reverse. The mobile manipulator drives away first.", 1.8,
             slide_in(L, ["amr"], (0, -2200, 0), out=True, names=L.groups("amr", *rb.groups())), hold=0.6)
-    for i, k in enumerate(("C", "B", "A")):
-        step = f"{2 + i}/{n}"
+    for i, k in enumerate(("F", "E", "D", "C", "B", "A")):
+        step = f"2/{n}"
         cap = f"Unloading tray {k} ({ROLE[k]}): it comes to the opening and the equipment goes out through it, one " \
               "piece at a time."
-        L.fetch(k, step, cap, fast=0.7, cam=CAM_OPEN if i == 0 else None)
-        for g in reversed(L.eq_groups[k]):
-            sc.step(step, cap, 1.5, item_in(L, g, out=True), hold=0.2)
-        L.store(k, step, cap, fast=0.7)
+        L.fetch(k, step, cap, fast=0.55, cam=CAM_OPEN if i == 0 else None, hold=0.15)
+        load_tray(L, k, step, out=True)
+        L.store(k, step, cap, fast=0.55, hold=0.15)
     L.show_gauges = False
     L.apply_state()
-    sc.step(f"5/{n}", "The cladding, the opening's posts, header and cover, the console and the shutter come off.",
+    sc.step(f"3/{n}", "The cladding, the opening's posts, header and cover, the console and the shutter come off.",
             2.4, both(slide_in(L, ["skin_L"], (-900, 0, 0), out=True), slide_in(L, ["skin_R"], (900, 0, 0), out=True),
                       slide_in(L, ["skin_back"], (0, 900, 0), out=True), slide_in(L, ["skin_top"], (0, 0, 900), out=True),
                       slide_in(L, ["skin_front", "bay", "console", "shutter"], (0, -900, 0), out=True)),
             hold=0.8, cam_to=CAM_WIDE)
-    sc.step(f"6/{n}", "The trays slide out of their slots.", 2.0,
-            slide_in(L, ["tray_A", "tray_B", "tray_C"], (3200, 0, 0), out=True), hold=0.6)
-    sc.step(f"7/{n}", "The extractor platform, its drive and its guide rails come out.", 2.4,
+    sc.step(f"4/{n}", "The trays slide out of their slots.", 2.0,
+            slide_in(L, [f"tray_{k}" for k in V.TRAYS], (3200, 0, 0), out=True), hold=0.6)
+    sc.step(f"5/{n}", "The extractor platform, its drive and its guide rails come out.", 2.4,
             both(slide_in(L, ["lift_rails"], (0, 0, 2500), out=True), slide_in(L, ["drive"], (0, 0, 1400), out=True),
                  slide_in(L, ["lift", "belts"], (0, 0, 2400), out=True)), hold=0.6)
-    sc.step(f"8/{n}", "The storage columns, the posts and roof rails, and last the base frame.", 2.0,
+    sc.step(f"6/{n}", "The storage columns, the posts and roof rails, and last the base frame.", 2.0,
             slide_in(L, ["col_front", "col_rear"], (2600, 0, 0), out=True), hold=0.3)
-    sc.step(f"8/{n}", "The storage columns, the posts and roof rails, and last the base frame.", 2.4,
+    sc.step(f"6/{n}", "The storage columns, the posts and roof rails, and last the base frame.", 2.4,
             both(slide_in(L, ["posts"], (0, 0, 1800), out=True), slide_in(L, ["base"], (0, 0, 900), out=True)),
             hold=1.5)
     return sc.save()
