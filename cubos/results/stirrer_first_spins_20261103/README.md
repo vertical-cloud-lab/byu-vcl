@@ -88,6 +88,21 @@ The duty the loop settled toward, about 0.6 for 1000 rpm, says the fan has headr
 with no bar to drag. The rpm reading moves in the expected 30 rpm steps, one pulse a turn
 over 2 s.
 
+## Holder back on: no pulses again
+
+Ben put the holder back on (22:56:10) and the first test was repeated at 22:56:31: 300 rpm
+for 30 s, then 1200 rpm for 30 s ([log](holderon.log), [data](holderon.jsonl)). It went
+exactly as the first time: `rpm` 0.0 throughout, and the firmware stopped each run at 12 s
+with `stalled` 1. Ben (22:57): with the holder on he can't reach the fan to see what catches
+it, and he suspects the Hall sensor.
+
+That fits: with the holder off the sensor still counted, so it isn't glued into the holder
+as `BUILD.md` stage 6 has it. It sits somewhere in the base near the carrier, where the
+holder coming down can push it, or its leads, into the carrier or the blades. **Not
+resolved in this run.**
+
+`HOLD` was removed at the end of the run. The Uno stays on the stirrer image.
+
 ## The way back
 
 Write the 10-07 image, or the backup above, with BUILD.md stage 7's `flash:w` line. The
