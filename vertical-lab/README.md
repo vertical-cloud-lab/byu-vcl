@@ -26,6 +26,126 @@ framework, [`scene.py`](scene.py), is `atomizer-training/viz3d/scene.py` from #1
 `out/<name>.json` gives the frame range of every sub-step in the MP4, `out/<name>_still.png` is a still of the last
 view, and [`out/reach.json`](out/reach.json) is the arm study below.
 
+## Characterization instruments, the alloy line and the backup rail (round 3)
+
+Fourteen more models, each its own, from the makers' published figures and photos or, for the OpenFlexure
+microscopes, from OpenFlexure's own OpenSCAD:
+- [`instruments.py`](instruments.py) holds the models. Doors, drawers, stages, crossheads and samples are separate
+  pieces with joints.
+- [`openflexure.py`](openflexure.py) loads the two OpenFlexure microscopes.
+- [`tour.py`](tour.py) renders each instrument doing what it does.
+- [`line.py`](line.py) puts them in the lab.
+
+![The instruments](out/instruments_gallery.png)
+
+| Instrument | Model | What the animation shows | GIF, MP4 | Size W × D × H (mm), published | Where |
+|---|---|---|---|---|---|
+| Benchtop XRD | Rigaku MiniFlex 600 | The door swings open on its right-hand hinge; a powder sample goes onto the stage; the door shuts; the scan is drawn see-through, with the sample tilting by θ and the detector sweeping 2θ | [GIF](out/instruments/xrd.gif), [MP4](out/mp4/instruments/xrd.mp4) | 620 × 456 × 722 | tray D: 5.5 mm under Kardex's limit |
+| Tabletop SEM, EDS, EBSD | Hitachi TM4000PlusII | The drawer slides out with the stage; a mounted sample goes on; EVAC | [GIF](out/instruments/sem.gif), [MP4](out/mp4/instruments/sem.mp4) | 330 × 614 × 547 (main unit) | tray D |
+| Microscope, reflection | OpenFlexure Microscope v7 | A polished coupon goes under the clips; the stage scans and the optics focus | [GIF](out/instruments/openflexure_v7.gif), [MP4](out/mp4/instruments/openflexure_v7.mp4) | 171 × 139 × 169 | tray D |
+| Microscope, reflection | OpenFlexure Delta Stage | The same, with the delta stage moving in x, y and z | [GIF](out/instruments/openflexure_delta.gif), [MP4](out/mp4/instruments/openflexure_delta.mp4) | 166 × 156 × 173 | tray D |
+| Indentation plastometer (PIP) | Plastometrex PLX-Benchtop | The sample goes onto the platen by hand; the indenter goes in; the profilometer stylus sweeps the indent | [GIF](out/instruments/pip.gif), [MP4](out/mp4/instruments/pip.mp4) | about 500 × 500 × 680, estimated | tray E |
+| Nanoindenter | KLA iMicro | The hood lifts; a mount goes onto the XY stage; the stage carries it from the microscope to the indenter | [GIF](out/instruments/nanoindenter.gif), [MP4](out/mp4/instruments/nanoindenter.mp4) | about 540 × 520 × 520, estimated | tray E |
+| Laser diffraction | Malvern Mastersizer 3000 + Aero S | Powder goes into the Aero S's hopper; the laser and the dispersed powder are drawn see-through | [GIF](out/instruments/mastersizer.gif), [MP4](out/mp4/instruments/mastersizer.mp4) | 690 × 300 × 450 (bench); Aero S 260 × 180 × 380 | tray E |
+| Grinder-polisher | Buehler EcoMet 30 semi-automatic | The power head presses six mounts onto the 12 in platen; platen and holder turn | [GIF](out/instruments/polisher.gif), [MP4](out/mp4/instruments/polisher.mp4) | 488 × 638 × 650 | tray F |
+| Heat treatment and ageing furnace | Nabertherm NAT 15/65 | The door swings open; a tray of coupons goes in; the circulation fan runs | [GIF](out/instruments/furnace.gif), [MP4](out/mp4/instruments/furnace.mp4) | 470 × 790 × 460 | tray F |
+| Tabletop testing machine | Instron 68SC-2 | The arm rides up the column and pulls a sub-size bar | [GIF](out/instruments/instron_small.gif), [MP4](out/mp4/instruments/instron_small.mp4) | 460 × 615 × 1410 | beside the VLM |
+| Floor testing machine | Instron 68FM-100 | The crosshead pulls a printed tensile bar | [GIF](out/instruments/instron_floor.gif), [MP4](out/mp4/instruments/instron_floor.mp4) | 1140 × 786 × 2287 | beside the VLM |
+| Wire EDM | FANUC ROBOCUT α-C400iC | The yellow tank door drops; a build plate goes in; the tank fills; the wire cuts the parts off | [GIF](out/instruments/wire_edm.gif), [MP4](out/mp4/instruments/wire_edm.mp4) | 2120 × 2540 × 1970 | beside the VLM |
+| Inert glovebox | Inert PureLab HE 2GB, with an automatic antechamber | The antechamber's outer door opens; a tray with a powder jar and a vial goes in; the PLC cycles it | [GIF](out/instruments/glovebox.gif), [MP4](out/mp4/instruments/glovebox.mp4) | 2005 × 834 × 1794 | beside the VLM |
+| Backup rail | Vention robot 7th axis, rack and pinion | The carriage carries a UR10e along the beam | [GIF](out/instruments/rail.gif), [MP4](out/mp4/instruments/rail.mp4) | 3488 × 628 × 1017 (Vention's 3.3 m unit) | along the line |
+
+All fourteen, one after the other: [`out/mp4/instruments_tour.mp4`](out/mp4/instruments_tour.mp4).
+[`out/instruments.json`](out/instruments.json) has each model's source, its size as drawn and whether it fits a tray.
+
+### The line
+
+![The line](out/vlm_line.gif)
+
+[`line.py`](line.py) puts it together:
+- **Three more trays.** Round 2 left three storage slots free, R1, R4 and F2. They now hold trays D (microscopy and
+  diffraction), E (mechanical testing and particle size) and F (sample prep and heat treatment).
+- **The line.** Everything taller than the opening takes stands in a line with the VLM, fronts in line with its
+  front. Left: the glovebox and the rePowder. Right: the Aconity MIDI (#199's model), the two Instrons and the wire EDM.
+- **The rail.** A Vention seventh axis runs about 17 m along the fronts. The UR10e rides its carriage at 800 mm, the
+  same height as on the MiR250, and parks at the opening.
+
+MP4: [`out/mp4/vlm_line.mp4`](out/mp4/vlm_line.mp4); still: [`out/vlm_line_still.png`](out/vlm_line_still.png).
+
+### Where the round-3 models come from
+
+No maker here publishes CAD without a login or a form. Instron's STEP files come by e-mail after a request form.
+Vention's export from MachineBuilder needs an account, which a residential IP doesn't get around, so the Pi wasn't
+needed. GrabCAD, TraceParts and CADENAS block the runner and need logins anyway. So each model is built from these:
+
+- **Rigaku MiniFlex 600:** the outline drawings in Rigaku's MiniFlex brochure (620 × 456 × 722 mm, 80 kg) and the
+  MiniFlex 6G sheet.
+  - The door hinges on its right edge and has no window.
+  - The goniometer is vertical, 150 mm radius, θ-2θ.
+  - The MiniFlex600-C, with its built-in chiller, is 526 mm deep.
+- **Hitachi TM4000PlusII:** Hitachi's figures, 330 × 614 × 547 mm and 54 kg; the pump is 144 × 270 × 216 mm.
+  - The drawer slides straight out; its 17 cm travel is from ac-dev-lab #132.
+  - The envelope matches ac-dev-lab's Fusion model of the TM4000II.
+  - The EDS detector is built in; Oxford's AZtecOne analyser stands beside it, 290 × 260 × 330 mm.
+  - **EBSD:** Hitachi lists no EBSD option for the TM4000 series. The model shows Bruker's e-Flash XS, sold for
+    tabletop SEMs, on a side port, with a 70° pre-tilted holder. That is a proposal, not a documented configuration.
+    A reseller says the COXEM EM-40 is the only tabletop SEM with integrated EBSD; I could not verify it.
+- **Plastometrex PLX-Benchtop:** Plastometrex's render, brochure and FAQ; Illinois MRL's page and a published SOP.
+  - There is no door or guard. The sample sits unclamped on the platen; up to 160 mm across.
+  - **Plastometrex publishes no dimensions.** The envelope is scaled from photos, ±20 %.
+  - PLX-AutoStage is their add-on that automates loading.
+- **OpenFlexure Microscope v7 and Delta Stage:** OpenFlexure's own OpenSCAD at pinned tags, exported assembled. See
+  [`openflexure/README.md`](openflexure/README.md).
+- **KLA iMicro:** KLA's photos.
+  - The L-shaped hood is hinged at the top rear and lifts 70-80°.
+  - KLA publishes no dimensions; scaled from photos, about 0.5-0.55 m on a side.
+- **Malvern Mastersizer 3000 + Aero S:** Malvern's Mastersizer 3000 and 3000+ brochures (bench 690 × 300 × 450 mm,
+  30 kg; Aero S 260 × 180 × 380 mm, 10.5 kg) and product photos.
+- **Buehler EcoMet 30 semi-automatic:** Buehler's instruction manual (drawing 488 × 638 × 650 mm, 75 kg; 12 in
+  platen; 25-200 N head force).
+- **Nabertherm NAT 15/65:** Nabertherm's forced-convection tabletop range (470 × 790 × 460 mm, 60 kg, 15 L, 650 °C,
+  ±5 °C).
+  - It covers solution treatment (about 530 °C) and ageing (160-200 °C) in one furnace.
+  - Why not the L 9/11 muffle furnace: its uniformity is only specified above 800 °C.
+- **Instron 68SC-2 and 68FM-100:** Instron's 6800 Series brochure and floor-model sheet.
+  - 68SC-2: 1410 × 460 × 615 mm, 62 kg.
+  - 68FM-100: 2287 × 1140 × 786 mm, 799 kg; 1494 mm test space, 575 mm between columns.
+  - Matte black frames with red Instron accents.
+- **FANUC ROBOCUT α-C400iC:** FANUC America's data sheet and floor plan (2120 × 2540 × 1970 mm, about 2200 kg; X/Y
+  travel 400 × 300 mm), and FANUC's photo.
+- **Inert glovebox:** the envelope is the Inert PureLab HE 2GB drawing in NIST's copy of Inert's manual. The automation
+  follows the lab's own glovebox research:
+  - DAL PR #185's decision matrix: keep the arm outside and transfer through an automated antechamber.
+  - DAL #130: VAC's NexGen PLC; LC Technology's quote included the AC-601 automatic antechamber control.
+  - Here, the antechamber's outer door faces along the line, towards the rail.
+- **Vention robot 7th axis:** Vention design 337010 (3488 × 628 × 1017 mm, 220 kg) and its part pages.
+  - A 247.5 mm square beam in 3330 mm segments, 20 mm profile guides, a steel rack.
+  - A 426.5 × 358 × 86 mm carriage plate, driven by a NEMA 34 through a right-angle gearbox, up to 4 m/s.
+  - The legs are cut so the arm's base is at 800 mm.
+- **Aconity MIDI:** `lab_models.equipment.aconity_midi()` from #199. DAL has documents for it but no model.
+
+### Things the round-3 models show
+
+- **The MiniFlex fits with 5.5 mm to spare.** It is 722 mm tall against Kardex's 727.5 mm. The MiniFlex600-C, with
+  the built-in chiller, is 70 mm deeper. The plain 600 needs a separate chiller, which has to go on the tray too.
+- **The PIP and the nanoindenter fit only on estimates.** Neither maker publishes a size; both are scaled from photos.
+  The nanoindenter's hood adds about 0.3 m when it is up. That is fine at the opening, where there is about 845 mm
+  under the header, but not in a slot.
+- **No Instron fits a tray.** The shortest single column, the 68SC-05, is 1020 mm tall, so both Instrons stand in the
+  line.
+- **No benchtop wire EDM is sold.** The smallest lab unit found, MTI's SYJ-7720-S, is 1250 × 1200 × 1380 mm. The
+  FANUC stands in the line.
+- **Some instruments need services a tray does not have.** Kardex's trays carry power, not plumbing:
+  - the polisher needs water, compressed air and a drain, so on a tray it needs a recirculating unit;
+  - the Mastersizer's Aero S needs compressed air (0-4 bar) and its vacuum extractor;
+  - the SEM needs its pump, which sits beside it on the tray.
+- **Heat and vibration in a VLM are open questions.**
+  - A 650 °C furnace running inside the machine needs Kardex's say-so, and probably ventilation.
+  - The SEM and the nanoindenter are vibration-sensitive. Their trays are still in their slots, but the extractor
+    moves other trays past them.
+- **The rail closes the front to people.** Its beam runs about 120 mm in front of the machines' fronts at knee
+  height, so the line becomes a cell for the arm. That is the trade against the MiR250, which leaves the floor free.
+
 ## The workflow
 
 An example run, with every move a real one:
@@ -143,7 +263,13 @@ pip install cadquery pyvista trimesh pycollada pillow numpy scipy   # plus ffmpe
 xvfb-run -a python3 animate.py assembly loading workflow disassembly full   # full joins the four MP4s
 PREVIEW=1 xvfb-run -a python3 animate.py workflow        # the last frame of each sub-step, to /tmp
 python3 reach.py                                          # the arm study -> out/reach.json
+xvfb-run -a python3 tour.py                               # round 3: every instrument -> out/instruments/, out/mp4/instruments/
+python3 tour.py gallery join table                        # the gallery, the joined tour MP4, out/instruments.json
+xvfb-run -a python3 line.py                               # the trays D-F, the line and the rail -> out/vlm_line.gif
 ```
+
+`openflexure.py` reads the OpenFlexure meshes from `.cache/openflexure/`; [`openflexure/README.md`](openflexure/README.md)
+says how to make them.
 
 The first run downloads the OT-2, UR, Robotiq and carousel files and tessellates everything, which takes a few
 minutes. The meshes are cached in `.cache/` until a source file changes. Run the chapters one `xvfb-run` at a time,

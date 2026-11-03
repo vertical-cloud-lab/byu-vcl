@@ -12,6 +12,7 @@ with PIL. The meshes are cached in ``.cache/`` on the sources' hash.
 from __future__ import annotations
 
 import hashlib
+import json
 import pickle
 import subprocess
 import sys
@@ -172,7 +173,9 @@ def tour_one(inst: I.Instrument, entries: dict) -> str:
     studio(sc)
     rig = Rig(sc, inst, entries, f"{inst.key}:")
     bb = inst.bbox()
-    sc.cam = frame_cam(bb, inst.cam)
+    tall = (bb[5] - bb[4]) > 1.3 * max(bb[1] - bb[0], bb[3] - bb[2])
+    pad, look_z = inst.framing or ((1.0, 0.5) if tall else (0.85, 0.42))
+    sc.cam = frame_cam(bb, inst.cam, pad=pad, look_z=look_z)
     labels = [(t, xyz, at) for t, xyz, at in inst.labels]
     if inst.key == "rail":                 # the arm it would carry: a UR10e on the carriage, folded
         import animate
@@ -248,10 +251,21 @@ if __name__ == "__main__":
                 sheet.paste(Image.fromarray(im).resize((w, h)), (i * w, 0))
             sheet.save(f"/tmp/still_{key}.png")
             print(key, fit_report(inst), f"/tmp/still_{key}.png", flush=True)
-    elif args == ["gallery"]:
-        print(gallery(load()))
-    elif args == ["join"]:
-        print(join(list(I.REGISTRY)))
+    elif args and set(args) <= {"gallery", "join", "table"}:
+        for word in args:
+            if word == "table":                 # out/instruments.json: what each model is, its size, where it goes
+                rows = {}
+                for key, (inst, _) in load().items():
+                    fr = fit_report(inst)
+                    rows[key] = dict(title=inst.title, model=inst.model, source=inst.source, **fr,
+                                     where="beside the VLM" if inst.floor or not fr["fits_tray"] else "on a tray")
+                (OUT / "instruments.json").write_text(json.dumps(rows, indent=1) + "\n")
+                for k, r in rows.items():
+                    print(f"{k:18s} {r['model']:36s} {r['published_mm']} model {r['model_mm']} {r['where']}")
+            elif word == "gallery":
+                print(gallery(load()))
+            else:
+                print(join(list(I.REGISTRY)))
     else:
         data = load(args or None, rebuild="--rebuild" in args)
         for key, (inst, ents) in data.items():

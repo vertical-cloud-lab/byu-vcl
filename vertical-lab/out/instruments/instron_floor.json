@@ -1,0 +1,23 @@
+{
+ "name": "instruments/instron_floor",
+ "fps": 15,
+ "n_frames": 103,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/2",
+   "caption": "A printed tensile bar in the wedge grips. The crosshead pulls at a constant rate; the load cell above the upper grip reads the force.",
+   "start_frame": 0,
+   "end_frame": 61
+  },
+  {
+   "label": "2/2",
+   "caption": "Ductile fracture: the crosshead returns. 100 kN capacity, 2.3 m tall and 800 kg, so it stands beside the VLM.",
+   "start_frame": 62,
+   "end_frame": 102
+  }
+ ]
+}

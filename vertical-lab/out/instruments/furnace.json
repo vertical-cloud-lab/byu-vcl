@@ -1,0 +1,35 @@
+{
+ "name": "instruments/furnace",
+ "fps": 15,
+ "n_frames": 149,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/3",
+   "caption": "The door swings open on its right-hand hinge.",
+   "start_frame": 0,
+   "end_frame": 40
+  },
+  {
+   "label": "2/3",
+   "caption": "A tray of printed tensile coupons goes in.",
+   "start_frame": 41,
+   "end_frame": 75
+  },
+  {
+   "label": "3/3",
+   "caption": "Door shut. Solution treatment at about 530 C, quench, then ageing at 160-200 C: the circulation fan holds +-5 C, so one furnace does both.",
+   "start_frame": 76,
+   "end_frame": 128
+  },
+  {
+   "label": "3/3",
+   "caption": "",
+   "start_frame": 129,
+   "end_frame": 148
+  }
+ ]
+}

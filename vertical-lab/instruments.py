@@ -132,6 +132,7 @@ class Instrument:
     notes: list = field(default_factory=list)      # what to know, for the README
     floor: bool = False              # stands on the floor (beside the VLM) rather than a tray
     cam: tuple = (1.0, -1.6, 0.9)    # camera direction for the tour, scaled by the instrument's size
+    framing: tuple = ()              # (pad, look_z) for the tour's camera, when the default doesn't suit
     meshes: dict = field(default_factory=dict)     # name -> [(PolyData, rgb, opacity)]: pieces that are meshes, not CAD
     props: tuple = ("load", "sample", "specimen", "holder", "stub", "slide", "beam", "glow", "powder")  # not the machine
 
@@ -661,7 +662,8 @@ def pip() -> Instrument:
     inst.labels = [("indenter", (0, -20, hz - 40), (0.14, 0.40)), ("profilometer stylus", (85, -20, hz - 30),
                                                                    (0.84, 0.40)),
                    ("platen on a load cell", (0, -20 - p["stage_d"] / 2, p["base_h"] + 30), (0.16, 0.72))]
-    inst.cam = (0.75, -1.9, 0.75)
+    inst.cam = (0.75, -1.9, 0.6)
+    inst.framing = (0.66, 0.30)
     return inst
 
 
@@ -901,7 +903,7 @@ def mastersizer() -> Instrument:
     L, W, H = p["L"], p["W"], p["H"]
     tot_l = L + 60 + p["vac_w"]
     inst = Instrument("mastersizer", "Laser diffraction particle sizer", "Malvern Mastersizer 3000 + Aero S",
-                      (tot_l, W + p["aero_w"], H + 40),
+                      (L, W, H),
                       "Malvern Panalytical Mastersizer 3000 and 3000+ brochures (bench 690 x 300 x 450 mm, 30 kg; "
                       "Aero S 260 x 180 x 380 mm, 10.5 kg); look from Malvern's product photos")
     x0 = -tot_l / 2

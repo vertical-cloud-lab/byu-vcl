@@ -1,0 +1,29 @@
+{
+ "name": "instruments/mastersizer",
+ "fps": 15,
+ "n_frames": 135,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/3",
+   "caption": "The Aero S's clear dome lifts; a vial of atomized powder (a few grams) is emptied into its hopper.",
+   "start_frame": 0,
+   "end_frame": 49
+  },
+  {
+   "label": "2/3",
+   "caption": "Dome down. A vibrating tray feeds the powder to a venturi in the cell bay; compressed air disperses it across the laser (drawn see-through).",
+   "start_frame": 50,
+   "end_frame": 96
+  },
+  {
+   "label": "3/3",
+   "caption": "The scattering pattern gives the size distribution, 0.1 um to 3.5 mm, in under a minute; the vacuum extractor takes the powder away.",
+   "start_frame": 97,
+   "end_frame": 134
+  }
+ ]
+}

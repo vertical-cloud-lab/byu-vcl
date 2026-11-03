@@ -1,0 +1,35 @@
+{
+ "name": "instruments/nanoindenter",
+ "fps": 15,
+ "n_frames": 158,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/4",
+   "caption": "The lid lifts on its gas struts, hinged at the back.",
+   "start_frame": 0,
+   "end_frame": 40
+  },
+  {
+   "label": "2/4",
+   "caption": "A mounted sample goes onto the stage's puck, under the microscope.",
+   "start_frame": 41,
+   "end_frame": 78
+  },
+  {
+   "label": "3/4",
+   "caption": "Lid down: the cabinet shuts out air currents and noise. The stage carries the chosen spot under the indenter for a grid of indents (hardness and modulus).",
+   "start_frame": 79,
+   "end_frame": 125
+  },
+  {
+   "label": "4/4",
+   "caption": "Back under the microscope to image the indents.",
+   "start_frame": 126,
+   "end_frame": 157
+  }
+ ]
+}

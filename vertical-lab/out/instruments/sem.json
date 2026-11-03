@@ -1,0 +1,29 @@
+{
+ "name": "instruments/sem",
+ "fps": 15,
+ "n_frames": 126,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/3",
+   "caption": "AIR vents the chamber; the drawer slides out with the stage on its inside face.",
+   "start_frame": 0,
+   "end_frame": 40
+  },
+  {
+   "label": "2/3",
+   "caption": "A polished, mounted sample (25 mm) goes onto the stage.",
+   "start_frame": 41,
+   "end_frame": 78
+  },
+  {
+   "label": "3/3",
+   "caption": "Drawer in, EVAC: about three minutes to vacuum. The EDS detector is built in, its analyser beside. EBSD (left) is a proposal: no TM4000 option exists, and it needs a 70 degree pre-tilted holder.",
+   "start_frame": 79,
+   "end_frame": 125
+  }
+ ]
+}

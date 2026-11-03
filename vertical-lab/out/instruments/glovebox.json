@@ -1,0 +1,35 @@
+{
+ "name": "instruments/glovebox",
+ "fps": 15,
+ "n_frames": 149,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/3",
+   "caption": "The automatic antechamber's outer door swings open on the side facing the line, where an arm outside can reach it.",
+   "start_frame": 0,
+   "end_frame": 43
+  },
+  {
+   "label": "2/3",
+   "caption": "A tray with a powder jar and a vial goes in.",
+   "start_frame": 44,
+   "end_frame": 81
+  },
+  {
+   "label": "3/3",
+   "caption": "Door shut. The PLC evacuates and refills it three times on its own, then someone at the gloves (or an arm inside) takes it in. Under 1 ppm O2 and H2O.",
+   "start_frame": 82,
+   "end_frame": 125
+  },
+  {
+   "label": "3/3",
+   "caption": "",
+   "start_frame": 126,
+   "end_frame": 148
+  }
+ ]
+}

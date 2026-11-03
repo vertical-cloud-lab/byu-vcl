@@ -1,0 +1,47 @@
+{
+ "name": "instruments/xrd",
+ "fps": 15,
+ "n_frames": 234,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/6",
+   "caption": "The door unlocks and swings open on its right-hand hinge, showing the 150 mm vertical goniometer.",
+   "start_frame": 0,
+   "end_frame": 40
+  },
+  {
+   "label": "2/6",
+   "caption": "A powder sample on its holder goes onto the stage at the goniometer's centre.",
+   "start_frame": 41,
+   "end_frame": 78
+  },
+  {
+   "label": "3/6",
+   "caption": "Door closed and locked: the X-ray interlock lets the 600 W tube switch on.",
+   "start_frame": 79,
+   "end_frame": 107
+  },
+  {
+   "label": "4/6",
+   "caption": "Scan, drawn see-through: the tube stays put, the sample tilts by theta and the detector sweeps 2theta from 10 to 90 degrees.",
+   "start_frame": 108,
+   "end_frame": 163
+  },
+  {
+   "label": "5/6",
+   "caption": "The detector parks, the door opens again and the sample comes out.",
+   "start_frame": 164,
+   "end_frame": 204
+  },
+  {
+   "label": "6/6",
+   "caption": "Door shut. At 722 mm tall the MiniFlex just fits a tray: Kardex allows 727.5 mm.",
+   "start_frame": 205,
+   "end_frame": 233
+  }
+ ]
+}
