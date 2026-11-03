@@ -79,9 +79,12 @@ def _spectrum_panel(img, scale, alpha, *, title, xlabel, x, y, peaks, note, box_
     from scene import font
     W, H = img.size
     d = ImageDraw.Draw(img, "RGBA")
-    s = max(scale, 0.8)
     a = int(255 * alpha)
     bx0, by0, bx1, by1 = box_frac[0] * W, box_frac[1] * H, box_frac[2] * W, box_frac[3] * H
+    # text is kept larger than a straight downscale in the small GIFs, but no larger than the panel holds: the title
+    # has to fit across it, and the note gets smaller still if it must
+    s = max(scale, min(max(scale, 0.8), (bx1 - bx0) / (d.textlength(title, font=font(14.5, bold=True)) + 20)))
+    s_note = max(scale, min(s, (bx1 - bx0) / (d.textlength(note, font=font(11.5)) + 20)))
     d.rounded_rectangle((bx0, by0, bx1, by1), 8 * scale, fill=(255, 255, 255, int(236 * alpha)),
                         outline=(120, 124, 130, a), width=max(1, int(round(1.2 * scale))))
     ft, fs, fn = font(14.5 * s, bold=True), font(12 * s), font(11.5 * s)
@@ -119,7 +122,7 @@ def _spectrum_panel(img, scale, alpha, *, title, xlabel, x, y, peaks, note, box_
         used.append((lx, lx + tw, ly))
         d.line([(tx, ty - 2 * s), (tx, ly + 14 * s)], fill=(120, 124, 130, int(160 * alpha)))
         d.text((lx, ly), lab, font=fs, fill=(150, 30, 30, a))
-    d.text((bx0 + 10 * s, by1 - 17 * s), note, font=fn, fill=(150, 30, 30, a))
+    d.text((bx0 + 10 * s, by1 - 17 * s), note, font=font(11.5 * s_note), fill=(150, 30, 30, a))
 
 
 def _gauss(x, mu, sig, h):

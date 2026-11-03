@@ -288,12 +288,22 @@ class Scene:
         d = ImageDraw.Draw(img, "RGBA")
         s = max(scale, 0.80)                      # GIF text is kept larger than a straight downscale
         pad = 10 * s
-        # title, top left
+        # title, top left; smaller (down to 70 %) or cut short if it would run under the step label
         ft = font(19 * s, bold=True)
         if self.title:
-            tw = d.textlength(self.title, font=ft)
-            d.rounded_rectangle((6 * s, 6 * s, 22 * s + tw, 36 * s), 6 * s, fill=(255, 255, 255, 215))
-            d.text((14 * s, 10 * s), self.title, font=ft, fill=(20, 20, 24))
+            room = W - 40 * s - (d.textlength(self.label, font=font(17 * s, bold=True)) + 2 * pad + 10 * s
+                                 if self.label else 0)
+            title, k = self.title, 1.0
+            tw = d.textlength(title, font=ft)
+            if tw > room:
+                k = max(0.7, room / tw)
+                ft = font(19 * s * k, bold=True)
+                while d.textlength(title, font=ft) > room and len(title) > 8:
+                    title = title[:-2].rstrip() + "…"
+                tw = d.textlength(title, font=ft)
+            d.rounded_rectangle((6 * s, 6 * s, 22 * s + tw, 6 * s + 30 * s * max(k, 0.85)), 6 * s,
+                                fill=(255, 255, 255, 215))
+            d.text((14 * s, 10 * s), title, font=ft, fill=(20, 20, 24))
         # step label, top right
         if self.label:
             fl = font(17 * s, bold=True)
