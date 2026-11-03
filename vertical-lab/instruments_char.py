@@ -741,7 +741,7 @@ def _libs_panel(img, scale, alpha):
 # isn't published; open, it needs the opening, not a slot. The look (a white body with a sloped front, the sample tray
 # under a large dark lid hinged at the back, the touch screen on the right) is from Bruker's photos: approximate.
 # Like most benchtop EDXRF, it measures from below: the cup sits film-side down over the tube and detector.
-# Alternatives checked: Rigaku NEX DE VS (356 x 351 x 260 mm, 27 kg, one to three sample spots), Thermo ARL QUANT'X
+# Alternatives checked: Rigaku NEX DE VS (356 x 351 x 260 mm, 27 kg, 1, 3 and 10 mm spots), Thermo ARL QUANT'X
 # (lid opens to 915 mm), Hitachi EA1000VX (520 x 600 x 445 mm), Bruker M4 TORNADO (a micro-XRF mapper, 815 x 680 x 580
 # mm, 130 kg).
 XRF_LID_DEG = 35.0         # how far the lid is drawn opening: not published
