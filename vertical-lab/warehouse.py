@@ -698,6 +698,80 @@ def sway() -> dict:
     return out
 
 
+def compare():
+    """out/rail_vs_amr.png: the three ways of carrying the UR10e at 800 mm, side by side, the arm in the same pose, with
+    the numbers from sway() under each."""
+    import instruments as I
+    import robot as RB
+    from PIL import Image, ImageDraw
+    from scene import font
+    res = sway()
+    sc = Scene("rail_vs_amr", "", gif=False, mp4=False)
+    sc.add("floor", pv.Plane(center=(3000, 0, -1), direction=(0, 0, 1), i_size=16000, j_size=10000), FLOOR_C, "wfloor",
+           ambient=0.9, diffuse=0.15, specular=0.0, smooth_shading=False)
+    xa, xb, xc = 0.0, 3500.0, 7000.0
+    blue, steel = I.MATERIALS["vention_blue"][:3], (0.70, 0.71, 0.73)
+    # A: Vention's beam laid on the floor (carriage top 363.5 mm) and a round steel tube, 219.1 x 8 mm, up to 800 mm
+    car_top = 800.0 - (800.0 - 363.5)
+    sc.add("A beam", _box(xa - 1250, -123.75, 0, xa + 1250, 123.75, 247.5), blue, "A")
+    sc.add("A guides", _merge([_box(xa - 1230, y - 10, 247.5, xa + 1230, y + 10, 262.5) for y in (-93.75, 93.75)]),
+           steel, "A")
+    sc.add("A carriage", _box(xa - 213, -179, car_top - 86, xa + 213, 179, car_top), blue, "A")
+    sc.add("A pedestal", pv.Cylinder(center=(xa, 0, (car_top + 20 + 780) / 2), direction=(0, 0, 1), radius=109.55,
+                                     height=780 - car_top - 20, resolution=48).triangulate(), (0.35, 0.36, 0.38), "A")
+    sc.add("A plates", _merge([_box(xa - 160, -160, car_top, xa + 160, 160, car_top + 20),
+                               _box(xa - 130, -130, 780, xa + 130, 130, 800)]), (0.35, 0.36, 0.38), "A")
+    # B: the beam-height rail of round 3
+    rail = I.rail(length=2500.0, travel=1.0)
+    tour.Rig(sc, rail, tour.piece_entries(rail), "B:", at=T((xb, 0, 0)))
+    # C: a MiR250 with its cabinet
+    amr = Amr(sc, "C", (xc, -A.ARM_LOCAL[1], 0.0))
+    robots = [RB.Robot(sc, A.ROBOT, "A", T((xa, 0, 800.0)), q0=A.PARK_DEG, prefix="Aur"),
+              RB.Robot(sc, A.ROBOT, "B:carriage", T((0, 0, I.RAIL["top"])), q0=A.PARK_DEG, prefix="Bur"), amr.robot]
+    for rb in robots:                               # the same pose for all three: reaching out 1 m, gripper down
+        base = sc.world(rb.root)[:3, 3]
+        rb.set(rb.solve(A.down(base + np.array([800.0, -300.0, 50.0]))))
+    sc.cam = [(3700, -10400, 3300), (3700, 0, 500), (0, 0, 1)]
+    img = Image.fromarray(sc.render_base())
+    pts = [sc.project((x, -900, 0)) for x in (xa, xb, xc)]
+    sc.pl.close()
+    p = res["pedestal"]
+    ped = next(r for r in p if r["section"].startswith("CHS") and r["height_mm"] < 500)
+    mom = res["moment_at_carriage_Nm"]
+    mir = res["mir250"]
+    texts = [
+        ("A. Low rail, steel pedestal", [f"round tube 219.1 x 8 mm, {ped['height_mm']:.0f} mm tall",
+                                         f"sway at the tool: {ped['run_tool_mm']:.2f}-{ped['stop_tool_mm']:.2f} mm",
+                                         f"first mode about {ped['first_mode_hz']:.0f} Hz (UR: ≥ 45)",
+                                         f"rail: ±{VENTION_REPEAT_MM} mm (Vention)",
+                                         f"carriage moment {mom['low rail, 436.5 mm pedestal']['run']} Nm"]),
+        ("B. Beam-height rail (round 3)", [f"rail: ±{VENTION_REPEAT_MM} mm (Vention)",
+                                           f"carriage moment {mom['beam-height rail']['run']} Nm",
+                                           "beam at 440-690 mm, 120 mm in front", "of the machines' fronts"]),
+        ("C. MiR250 + cabinet", [f"dock: ±{mir['dock_L'][0]} / ±{mir['dock_L'][1]} mm, ±{mir['dock_L'][2]:.0f}° "
+                                 "(L-marker)", f"1° of yaw = {mir['tool_error_from_1deg_yaw_mm']:.0f} mm at 1.3 m",
+                                 f"touch-off: ±{mir['touch_off_mm']} mm (Burger 2020)",
+                                 f"worst-case tipping moment {mir['tipping']['overturn_run_Nm']} Nm",
+                                 f"vs ≤ {mir['tipping']['restoring_Nm']} Nm holding it: slow the arm"]),
+    ]
+    d = ImageDraw.Draw(img, "RGBA")
+    f1, f2 = font(17, bold=True), font(14)
+    for (title, lines), (fx, fy) in zip(texts, pts):
+        x0 = min(max(fx * img.width - 170, 12), img.width - 330)
+        y0 = min(fy * img.height + 10, img.height - 30 - 20 * len(lines))
+        w = max([d.textlength(title, font=f1)] + [d.textlength(t, font=f2) for t in lines]) + 20
+        d.rounded_rectangle((x0 - 10, y0 - 6, x0 + w, y0 + 26 + 20 * len(lines)), 6, fill=(255, 255, 255, 225),
+                            outline=(150, 154, 160, 255))
+        d.text((x0, y0), title, font=f1, fill=(20, 20, 24))
+        for i, t in enumerate(lines):
+            d.text((x0, y0 + 26 + 20 * i), t, font=f2, fill=(40, 42, 46))
+    d.text((14, 10), "Carrying a UR10e at 800 mm, three ways (UR's worst-case loads, without its 2.5 factor)",
+           font=font(19, bold=True), fill=(20, 20, 24))
+    path = OUT / "rail_vs_amr.png"
+    img.convert("RGB").save(path, optimize=True)
+    return path
+
+
 if __name__ == "__main__":
     args = sys.argv[1:]
     if args and args[0] == "sway":
@@ -705,6 +779,8 @@ if __name__ == "__main__":
         OUT.mkdir(exist_ok=True)
         (OUT / "rail_vs_amr.json").write_text(json.dumps(res, indent=1) + "\n")
         print(json.dumps(res, indent=1))
+    elif args and args[0] == "compare":
+        print(compare(), flush=True)
     else:
         data = lab.meshes()
         idata = tour.load()
