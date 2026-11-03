@@ -56,7 +56,7 @@ sys.modules["repowder_model"] = M     # its dataclasses look themselves up there
 _spec.loader.exec_module(M)
 
 RP = np.array(A.REPOWDER_AT, float)   # the rePowder model's origin (the furnace axis on the floor) in the world
-RUN = json.loads((OUT / "alloy_charge.json").read_text())["runs"]["Al-10Si"] if (OUT / "alloy_charge.json").exists() \
+RUN = json.loads((OUT / "alloy_recipe.json").read_text())["runs"]["Al-10Si"] if (OUT / "alloy_recipe.json").exists() \
     else C.recipe()["runs"]["Al-10Si"]
 
 # ------------------------------------------------------------------------------------------------ the #124 port

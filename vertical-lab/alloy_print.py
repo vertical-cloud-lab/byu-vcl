@@ -5,7 +5,7 @@ Aconity MIDI, which prints the plate that ``alloy_workflow.py`` (chapter 4) take
     PREVIEW=1 xvfb-run -a python3 alloy_print.py  # the last frame of each sub-step -> /tmp/preview_alloy_print.png
 
 It starts where the atomizer chapter ends: the MiR250 parked in front of the AMAZEMET rePowder with the rePowder's
-powder container on its cabinet (two 5N Al cups with Si: Al-10Si, ``out/alloy_charge.json``). It ends where chapter
+powder container on its cabinet (two 5N Al cups with Si: Al-10Si, ``out/alloy_recipe.json``). It ends where chapter
 4 begins: the plate printed and buried in powder in the closed Aconity, the MiR back at x = 1400 with its arm parked,
 and chapter 4's opening camera.
 

@@ -1,87 +1,1481 @@
 {
- "volumes_cm3": {
-  "cup": 11.887,
-  "plug": 1.173,
-  "cavity": 4.903,
-  "slug": 18.099
- },
- "runs": {
-  "Al-10Si": {
-   "cups": [
-    {
-     "cup": "5N Al cup + plug",
-     "powder": "Si",
-     "cup_g": 32.08,
-     "plug_g": 3.17,
-     "powder_g": 3.92,
-     "fill_mm": 27.7,
-     "headspace_mm": 10.4
-    },
-    {
-     "cup": "5N Al cup + plug",
-     "powder": "Si",
-     "cup_g": 32.08,
-     "plug_g": 3.17,
-     "powder_g": 3.92,
-     "fill_mm": 27.7,
-     "headspace_mm": 10.4
-    }
-   ],
-   "charge_g": 78.3,
-   "designed_wt_pct": {
-    "Al": 90.0,
-    "Si": 10.0
-   }
+ "name": "alloy_charge",
+ "fps": 15,
+ "n_frames": 2101,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/7",
+   "caption": "The alloy route, start to finish. First the charge: the atomizer melts cups, the lab's own (#222), turned from high-purity bar, filled with powder and closed with a vented plug. Tray B holds two 5N Al cups for this run's Al-10Si and two oxygen-free Cu cups for a 90/10 Cu-Ni run, a plug for each. The arm asks for it.",
+   "start_frame": 0,
+   "end_frame": 38
   },
-  "Cu-10Ni": {
-   "cups": [
-    {
-     "cup": "OFE Cu (C10100) cup + plug",
-     "powder": "Ni",
-     "cup_g": 106.27,
-     "plug_g": 10.48,
-     "powder_g": 12.97,
-     "fill_mm": 20.6,
-     "headspace_mm": 17.5
-    },
-    {
-     "cup": "OFE Cu (C10100) cup + plug",
-     "powder": "Ni",
-     "cup_g": 106.27,
-     "plug_g": 10.48,
-     "powder_g": 12.97,
-     "fill_mm": 20.6,
-     "headspace_mm": 17.5
-    }
-   ],
-   "charge_g": 259.5,
-   "designed_wt_pct": {
-    "Cu": 90.0,
-    "Ni": 10.0
-   }
+  {
+   "label": "1/7",
+   "caption": "The alloy route, start to finish. First the charge: the atomizer melts cups, the lab's own (#222), turned from high-purity bar, filled with powder and closed with a vented plug. Tray B holds two 5N Al cups for this run's Al-10Si and two oxygen-free Cu cups for a 90/10 Cu-Ni run, a plug for each. The arm asks for it.",
+   "start_frame": 39,
+   "end_frame": 52
+  },
+  {
+   "label": "1/7",
+   "caption": "The alloy route, start to finish. First the charge: the atomizer melts cups, the lab's own (#222), turned from high-purity bar, filled with powder and closed with a vented plug. Tray B holds two 5N Al cups for this run's Al-10Si and two oxygen-free Cu cups for a 90/10 Cu-Ni run, a plug for each. The arm asks for it.",
+   "start_frame": 53,
+   "end_frame": 87
+  },
+  {
+   "label": "1/7",
+   "caption": "The alloy route, start to finish. First the charge: the atomizer melts cups, the lab's own (#222), turned from high-purity bar, filled with powder and closed with a vented plug. Tray B holds two 5N Al cups for this run's Al-10Si and two oxygen-free Cu cups for a 90/10 Cu-Ni run, a plug for each. The arm asks for it.",
+   "start_frame": 88,
+   "end_frame": 101
+  },
+  {
+   "label": "1/7",
+   "caption": "The alloy route, start to finish. First the charge: the atomizer melts cups, the lab's own (#222), turned from high-purity bar, filled with powder and closed with a vented plug. Tray B holds two 5N Al cups for this run's Al-10Si and two oxygen-free Cu cups for a 90/10 Cu-Ni run, a plug for each. The arm asks for it.",
+   "start_frame": 102,
+   "end_frame": 111
+  },
+  {
+   "label": "1/7",
+   "caption": "The alloy route, start to finish. First the charge: the atomizer melts cups, the lab's own (#222), turned from high-purity bar, filled with powder and closed with a vented plug. Tray B holds two 5N Al cups for this run's Al-10Si and two oxygen-free Cu cups for a 90/10 Cu-Ni run, a plug for each. The arm asks for it.",
+   "start_frame": 112,
+   "end_frame": 144
+  },
+  {
+   "label": "1/7",
+   "caption": "The alloy route, start to finish. First the charge: the atomizer melts cups, the lab's own (#222), turned from high-purity bar, filled with powder and closed with a vented plug. Tray B holds two 5N Al cups for this run's Al-10Si and two oxygen-free Cu cups for a 90/10 Cu-Ni run, a plug for each. The arm asks for it.",
+   "start_frame": 145,
+   "end_frame": 154
+  },
+  {
+   "label": "1/7",
+   "caption": "The alloy route, start to finish. First the charge: the atomizer melts cups, the lab's own (#222), turned from high-purity bar, filled with powder and closed with a vented plug. Tray B holds two 5N Al cups for this run's Al-10Si and two oxygen-free Cu cups for a 90/10 Cu-Ni run, a plug for each. The arm asks for it.",
+   "start_frame": 161,
+   "end_frame": 208
+  },
+  {
+   "label": "2/7",
+   "caption": "The UR10e takes an empty 5N Al cup from the rack, level from the front, and stands it under the multi-doser's funnel on its load cell, its rim at the spout.",
+   "start_frame": 209,
+   "end_frame": 233
+  },
+  {
+   "label": "2/7",
+   "caption": "The UR10e takes an empty 5N Al cup from the rack, level from the front, and stands it under the multi-doser's funnel on its load cell, its rim at the spout.",
+   "start_frame": 234,
+   "end_frame": 246
+  },
+  {
+   "label": "2/7",
+   "caption": "The UR10e takes an empty 5N Al cup from the rack, level from the front, and stands it under the multi-doser's funnel on its load cell, its rim at the spout.",
+   "start_frame": 247,
+   "end_frame": 253
+  },
+  {
+   "label": "2/7",
+   "caption": "The UR10e takes an empty 5N Al cup from the rack, level from the front, and stands it under the multi-doser's funnel on its load cell, its rim at the spout.",
+   "start_frame": 254,
+   "end_frame": 262
+  },
+  {
+   "label": "2/7",
+   "caption": "The UR10e takes an empty 5N Al cup from the rack, level from the front, and stands it under the multi-doser's funnel on its load cell, its rim at the spout.",
+   "start_frame": 263,
+   "end_frame": 275
+  },
+  {
+   "label": "2/7",
+   "caption": "The UR10e takes an empty 5N Al cup from the rack, level from the front, and stands it under the multi-doser's funnel on its load cell, its rim at the spout.",
+   "start_frame": 276,
+   "end_frame": 297
+  },
+  {
+   "label": "2/7",
+   "caption": "The UR10e takes an empty 5N Al cup from the rack, level from the front, and stands it under the multi-doser's funnel on its load cell, its rim at the spout.",
+   "start_frame": 298,
+   "end_frame": 313
+  },
+  {
+   "label": "2/7",
+   "caption": "The UR10e takes an empty 5N Al cup from the rack, level from the front, and stands it under the multi-doser's funnel on its load cell, its rim at the spout.",
+   "start_frame": 314,
+   "end_frame": 320
+  },
+  {
+   "label": "2/7",
+   "caption": "The UR10e takes an empty 5N Al cup from the rack, level from the front, and stands it under the multi-doser's funnel on its load cell, its rim at the spout.",
+   "start_frame": 321,
+   "end_frame": 327
+  },
+  {
+   "label": "2/7",
+   "caption": "The UR10e takes an empty 5N Al cup from the rack, level from the front, and stands it under the multi-doser's funnel on its load cell, its rim at the spout.",
+   "start_frame": 328,
+   "end_frame": 340
+  },
+  {
+   "label": "2/7",
+   "caption": "The UR10e takes an empty 5N Al cup from the rack, level from the front, and stands it under the multi-doser's funnel on its load cell, its rim at the spout.",
+   "start_frame": 341,
+   "end_frame": 357
+  },
+  {
+   "label": "2/7",
+   "caption": "The carousel brings module 6 (Si powder) to the station and docks it. It tilts and its auger turns: the powder falls through the funnel into the cup's 1/2 in bore while the load cell counts it. Cut open here: the bore fills from the 118° drill point.",
+   "start_frame": 358,
+   "end_frame": 392
+  },
+  {
+   "label": "2/7",
+   "caption": "The carousel brings module 6 (Si powder) to the station and docks it. It tilts and its auger turns: the powder falls through the funnel into the cup's 1/2 in bore while the load cell counts it. Cut open here: the bore fills from the 118° drill point.",
+   "start_frame": 393,
+   "end_frame": 412
+  },
+  {
+   "label": "2/7",
+   "caption": "The carousel brings module 6 (Si powder) to the station and docks it. It tilts and its auger turns: the powder falls through the funnel into the cup's 1/2 in bore while the load cell counts it. Cut open here: the bore fills from the 118° drill point.",
+   "start_frame": 413,
+   "end_frame": 433
+  },
+  {
+   "label": "2/7",
+   "caption": "The carousel brings module 6 (Si powder) to the station and docks it. It tilts and its auger turns: the powder falls through the funnel into the cup's 1/2 in bore while the load cell counts it. Cut open here: the bore fills from the 118° drill point.",
+   "start_frame": 434,
+   "end_frame": 488
+  },
+  {
+   "label": "2/7",
+   "caption": "The carousel brings module 6 (Si powder) to the station and docks it. It tilts and its auger turns: the powder falls through the funnel into the cup's 1/2 in bore while the load cell counts it. Cut open here: the bore fills from the 118° drill point.",
+   "start_frame": 489,
+   "end_frame": 504
+  },
+  {
+   "label": "2/7",
+   "caption": "The carousel brings module 6 (Si powder) to the station and docks it. It tilts and its auger turns: the powder falls through the funnel into the cup's 1/2 in bore while the load cell counts it. Cut open here: the bore fills from the 118° drill point.",
+   "start_frame": 505,
+   "end_frame": 515
+  },
+  {
+   "label": "2/7",
+   "caption": "The carousel brings module 6 (Si powder) to the station and docks it. It tilts and its auger turns: the powder falls through the funnel into the cup's 1/2 in bore while the load cell counts it. Cut open here: the bore fills from the 118° drill point.",
+   "start_frame": 516,
+   "end_frame": 531
+  },
+  {
+   "label": "3/7",
+   "caption": "Dosed: 3.92 g of Si, 27.7 mm up the bore. The arm takes the cup to the press and lowers it onto the nest's ejector, which draws it down into #222's steel sleeve: F1 is bored to the cup's OD + .0005 in, so the wall can't bulge. Then the cup's own plug, from above.",
+   "start_frame": 532,
+   "end_frame": 548
+  },
+  {
+   "label": "3/7",
+   "caption": "Dosed: 3.92 g of Si, 27.7 mm up the bore. The arm takes the cup to the press and lowers it onto the nest's ejector, which draws it down into #222's steel sleeve: F1 is bored to the cup's OD + .0005 in, so the wall can't bulge. Then the cup's own plug, from above.",
+   "start_frame": 549,
+   "end_frame": 563
+  },
+  {
+   "label": "3/7",
+   "caption": "Dosed: 3.92 g of Si, 27.7 mm up the bore. The arm takes the cup to the press and lowers it onto the nest's ejector, which draws it down into #222's steel sleeve: F1 is bored to the cup's OD + .0005 in, so the wall can't bulge. Then the cup's own plug, from above.",
+   "start_frame": 564,
+   "end_frame": 570
+  },
+  {
+   "label": "3/7",
+   "caption": "Dosed: 3.92 g of Si, 27.7 mm up the bore. The arm takes the cup to the press and lowers it onto the nest's ejector, which draws it down into #222's steel sleeve: F1 is bored to the cup's OD + .0005 in, so the wall can't bulge. Then the cup's own plug, from above.",
+   "start_frame": 571,
+   "end_frame": 576
+  },
+  {
+   "label": "3/7",
+   "caption": "Dosed: 3.92 g of Si, 27.7 mm up the bore. The arm takes the cup to the press and lowers it onto the nest's ejector, which draws it down into #222's steel sleeve: F1 is bored to the cup's OD + .0005 in, so the wall can't bulge. Then the cup's own plug, from above.",
+   "start_frame": 577,
+   "end_frame": 591
+  },
+  {
+   "label": "3/7",
+   "caption": "Dosed: 3.92 g of Si, 27.7 mm up the bore. The arm takes the cup to the press and lowers it onto the nest's ejector, which draws it down into #222's steel sleeve: F1 is bored to the cup's OD + .0005 in, so the wall can't bulge. Then the cup's own plug, from above.",
+   "start_frame": 592,
+   "end_frame": 599
+  },
+  {
+   "label": "3/7",
+   "caption": "Dosed: 3.92 g of Si, 27.7 mm up the bore. The arm takes the cup to the press and lowers it onto the nest's ejector, which draws it down into #222's steel sleeve: F1 is bored to the cup's OD + .0005 in, so the wall can't bulge. Then the cup's own plug, from above.",
+   "start_frame": 600,
+   "end_frame": 622
+  },
+  {
+   "label": "3/7",
+   "caption": "Dosed: 3.92 g of Si, 27.7 mm up the bore. The arm takes the cup to the press and lowers it onto the nest's ejector, which draws it down into #222's steel sleeve: F1 is bored to the cup's OD + .0005 in, so the wall can't bulge. Then the cup's own plug, from above.",
+   "start_frame": 623,
+   "end_frame": 635
+  },
+  {
+   "label": "3/7",
+   "caption": "Dosed: 3.92 g of Si, 27.7 mm up the bore. The arm takes the cup to the press and lowers it onto the nest's ejector, which draws it down into #222's steel sleeve: F1 is bored to the cup's OD + .0005 in, so the wall can't bulge. Then the cup's own plug, from above.",
+   "start_frame": 636,
+   "end_frame": 646
+  },
+  {
+   "label": "3/7",
+   "caption": "Dosed: 3.92 g of Si, 27.7 mm up the bore. The arm takes the cup to the press and lowers it onto the nest's ejector, which draws it down into #222's steel sleeve: F1 is bored to the cup's OD + .0005 in, so the wall can't bulge. Then the cup's own plug, from above.",
+   "start_frame": 647,
+   "end_frame": 653
+  },
+  {
+   "label": "3/7",
+   "caption": "Dosed: 3.92 g of Si, 27.7 mm up the bore. The arm takes the cup to the press and lowers it onto the nest's ejector, which draws it down into #222's steel sleeve: F1 is bored to the cup's OD + .0005 in, so the wall can't bulge. Then the cup's own plug, from above.",
+   "start_frame": 654,
+   "end_frame": 664
+  },
+  {
+   "label": "3/7",
+   "caption": "Dosed: 3.92 g of Si, 27.7 mm up the bore. The arm takes the cup to the press and lowers it onto the nest's ejector, which draws it down into #222's steel sleeve: F1 is bored to the cup's OD + .0005 in, so the wall can't bulge. Then the cup's own plug, from above.",
+   "start_frame": 665,
+   "end_frame": 677
+  },
+  {
+   "label": "3/7",
+   "caption": "Dosed: 3.92 g of Si, 27.7 mm up the bore. The arm takes the cup to the press and lowers it onto the nest's ejector, which draws it down into #222's steel sleeve: F1 is bored to the cup's OD + .0005 in, so the wall can't bulge. Then the cup's own plug, from above.",
+   "start_frame": 678,
+   "end_frame": 699
+  },
+  {
+   "label": "3/7",
+   "caption": "Dosed: 3.92 g of Si, 27.7 mm up the bore. The arm takes the cup to the press and lowers it onto the nest's ejector, which draws it down into #222's steel sleeve: F1 is bored to the cup's OD + .0005 in, so the wall can't bulge. Then the cup's own plug, from above.",
+   "start_frame": 700,
+   "end_frame": 710
+  },
+  {
+   "label": "3/7",
+   "caption": "Dosed: 3.92 g of Si, 27.7 mm up the bore. The arm takes the cup to the press and lowers it onto the nest's ejector, which draws it down into #222's steel sleeve: F1 is bored to the cup's OD + .0005 in, so the wall can't bulge. Then the cup's own plug, from above.",
+   "start_frame": 711,
+   "end_frame": 717
+  },
+  {
+   "label": "3/7",
+   "caption": "Dosed: 3.92 g of Si, 27.7 mm up the bore. The arm takes the cup to the press and lowers it onto the nest's ejector, which draws it down into #222's steel sleeve: F1 is bored to the cup's OD + .0005 in, so the wall can't bulge. Then the cup's own plug, from above.",
+   "start_frame": 718,
+   "end_frame": 727
+  },
+  {
+   "label": "3/7",
+   "caption": "Dosed: 3.92 g of Si, 27.7 mm up the bore. The arm takes the cup to the press and lowers it onto the nest's ejector, which draws it down into #222's steel sleeve: F1 is bored to the cup's OD + .0005 in, so the wall can't bulge. Then the cup's own plug, from above.",
+   "start_frame": 728,
+   "end_frame": 748
+  },
+  {
+   "label": "3/7",
+   "caption": "Dosed: 3.92 g of Si, 27.7 mm up the bore. The arm takes the cup to the press and lowers it onto the nest's ejector, which draws it down into #222's steel sleeve: F1 is bored to the cup's OD + .0005 in, so the wall can't bulge. Then the cup's own plug, from above.",
+   "start_frame": 749,
+   "end_frame": 761
+  },
+  {
+   "label": "3/7",
+   "caption": "Dosed: 3.92 g of Si, 27.7 mm up the bore. The arm takes the cup to the press and lowers it onto the nest's ejector, which draws it down into #222's steel sleeve: F1 is bored to the cup's OD + .0005 in, so the wall can't bulge. Then the cup's own plug, from above.",
+   "start_frame": 762,
+   "end_frame": 766
+  },
+  {
+   "label": "3/7",
+   "caption": "Dosed: 3.92 g of Si, 27.7 mm up the bore. The arm takes the cup to the press and lowers it onto the nest's ejector, which draws it down into #222's steel sleeve: F1 is bored to the cup's OD + .0005 in, so the wall can't bulge. Then the cup's own plug, from above.",
+   "start_frame": 767,
+   "end_frame": 771
+  },
+  {
+   "label": "3/7",
+   "caption": "Dosed: 3.92 g of Si, 27.7 mm up the bore. The arm takes the cup to the press and lowers it onto the nest's ejector, which draws it down into #222's steel sleeve: F1 is bored to the cup's OD + .0005 in, so the wall can't bulge. Then the cup's own plug, from above.",
+   "start_frame": 772,
+   "end_frame": 781
+  },
+  {
+   "label": "3/7",
+   "caption": "Dosed: 3.92 g of Si, 27.7 mm up the bore. The arm takes the cup to the press and lowers it onto the nest's ejector, which draws it down into #222's steel sleeve: F1 is bored to the cup's OD + .0005 in, so the wall can't bulge. Then the cup's own plug, from above.",
+   "start_frame": 782,
+   "end_frame": 797
+  },
+  {
+   "label": "3/7",
+   "caption": "The nest slides in under the ram. The ram comes down and presses the plug flush: F1 is as long as the cup, so the ram bottoms out on it. Cut open: the plug closes the bore over the powder; the air it pushes out leaves through its 1/16 in vent, the same way the chamber's air will on pump-down.",
+   "start_frame": 798,
+   "end_frame": 813
+  },
+  {
+   "label": "3/7",
+   "caption": "The nest slides in under the ram. The ram comes down and presses the plug flush: F1 is as long as the cup, so the ram bottoms out on it. Cut open: the plug closes the bore over the powder; the air it pushes out leaves through its 1/16 in vent, the same way the chamber's air will on pump-down.",
+   "start_frame": 814,
+   "end_frame": 829
+  },
+  {
+   "label": "3/7",
+   "caption": "The nest slides in under the ram. The ram comes down and presses the plug flush: F1 is as long as the cup, so the ram bottoms out on it. Cut open: the plug closes the bore over the powder; the air it pushes out leaves through its 1/16 in vent, the same way the chamber's air will on pump-down.",
+   "start_frame": 830,
+   "end_frame": 871
+  },
+  {
+   "label": "3/7",
+   "caption": "The nest slides in under the ram. The ram comes down and presses the plug flush: F1 is as long as the cup, so the ram bottoms out on it. Cut open: the plug closes the bore over the powder; the air it pushes out leaves through its 1/16 in vent, the same way the chamber's air will on pump-down.",
+   "start_frame": 872,
+   "end_frame": 886
+  },
+  {
+   "label": "3/7",
+   "caption": "The nest slides in under the ram. The ram comes down and presses the plug flush: F1 is as long as the cup, so the ram bottoms out on it. Cut open: the plug closes the bore over the powder; the air it pushes out leaves through its 1/16 in vent, the same way the chamber's air will on pump-down.",
+   "start_frame": 887,
+   "end_frame": 901
+  },
+  {
+   "label": "3/7",
+   "caption": "The nest slides in under the ram. The ram comes down and presses the plug flush: F1 is as long as the cup, so the ram bottoms out on it. Cut open: the plug closes the bore over the powder; the air it pushes out leaves through its 1/16 in vent, the same way the chamber's air will on pump-down.",
+   "start_frame": 902,
+   "end_frame": 911
+  },
+  {
+   "label": "4/7",
+   "caption": "The charged cup, 39.2 g, goes onto the carrier on the MiR250's cabinet, beside the arm, for the atomizer.",
+   "start_frame": 912,
+   "end_frame": 930
+  },
+  {
+   "label": "4/7",
+   "caption": "The charged cup, 39.2 g, goes onto the carrier on the MiR250's cabinet, beside the arm, for the atomizer.",
+   "start_frame": 931,
+   "end_frame": 941
+  },
+  {
+   "label": "4/7",
+   "caption": "The charged cup, 39.2 g, goes onto the carrier on the MiR250's cabinet, beside the arm, for the atomizer.",
+   "start_frame": 942,
+   "end_frame": 948
+  },
+  {
+   "label": "4/7",
+   "caption": "The charged cup, 39.2 g, goes onto the carrier on the MiR250's cabinet, beside the arm, for the atomizer.",
+   "start_frame": 949,
+   "end_frame": 957
+  },
+  {
+   "label": "4/7",
+   "caption": "The charged cup, 39.2 g, goes onto the carrier on the MiR250's cabinet, beside the arm, for the atomizer.",
+   "start_frame": 958,
+   "end_frame": 968
+  },
+  {
+   "label": "4/7",
+   "caption": "The charged cup, 39.2 g, goes onto the carrier on the MiR250's cabinet, beside the arm, for the atomizer.",
+   "start_frame": 969,
+   "end_frame": 974
+  },
+  {
+   "label": "4/7",
+   "caption": "The charged cup, 39.2 g, goes onto the carrier on the MiR250's cabinet, beside the arm, for the atomizer.",
+   "start_frame": 975,
+   "end_frame": 999
+  },
+  {
+   "label": "4/7",
+   "caption": "The charged cup, 39.2 g, goes onto the carrier on the MiR250's cabinet, beside the arm, for the atomizer.",
+   "start_frame": 1000,
+   "end_frame": 1010
+  },
+  {
+   "label": "4/7",
+   "caption": "The charged cup, 39.2 g, goes onto the carrier on the MiR250's cabinet, beside the arm, for the atomizer.",
+   "start_frame": 1011,
+   "end_frame": 1020
+  },
+  {
+   "label": "4/7",
+   "caption": "The charged cup, 39.2 g, goes onto the carrier on the MiR250's cabinet, beside the arm, for the atomizer.",
+   "start_frame": 1021,
+   "end_frame": 1027
+  },
+  {
+   "label": "4/7",
+   "caption": "The charged cup, 39.2 g, goes onto the carrier on the MiR250's cabinet, beside the arm, for the atomizer.",
+   "start_frame": 1028,
+   "end_frame": 1038
+  },
+  {
+   "label": "4/7",
+   "caption": "The charged cup, 39.2 g, goes onto the carrier on the MiR250's cabinet, beside the arm, for the atomizer.",
+   "start_frame": 1039,
+   "end_frame": 1056
+  },
+  {
+   "label": "5/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1057,
+   "end_frame": 1089
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1090,
+   "end_frame": 1097
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1098,
+   "end_frame": 1102
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1103,
+   "end_frame": 1105
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1106,
+   "end_frame": 1108
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1109,
+   "end_frame": 1113
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1114,
+   "end_frame": 1120
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1121,
+   "end_frame": 1125
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1126,
+   "end_frame": 1128
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1129,
+   "end_frame": 1131
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1132,
+   "end_frame": 1136
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1137,
+   "end_frame": 1142
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1143,
+   "end_frame": 1149
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1150,
+   "end_frame": 1156
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1157,
+   "end_frame": 1172
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1173,
+   "end_frame": 1177
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1178,
+   "end_frame": 1181
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1182,
+   "end_frame": 1187
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1188,
+   "end_frame": 1193
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1194,
+   "end_frame": 1198
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1199,
+   "end_frame": 1201
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1202,
+   "end_frame": 1203
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1204,
+   "end_frame": 1208
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1209,
+   "end_frame": 1210
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1211,
+   "end_frame": 1218
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1219,
+   "end_frame": 1223
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1224,
+   "end_frame": 1227
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1228,
+   "end_frame": 1230
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1231,
+   "end_frame": 1234
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1235,
+   "end_frame": 1239
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1240,
+   "end_frame": 1246
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1247,
+   "end_frame": 1250
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1251,
+   "end_frame": 1253
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1254,
+   "end_frame": 1257
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1258,
+   "end_frame": 1264
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1265,
+   "end_frame": 1269
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1270,
+   "end_frame": 1271
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1272,
+   "end_frame": 1273
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1274,
+   "end_frame": 1277
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1278,
+   "end_frame": 1282
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1283,
+   "end_frame": 1287
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1288,
+   "end_frame": 1292
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1293,
+   "end_frame": 1303
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1304,
+   "end_frame": 1307
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1308,
+   "end_frame": 1312
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1313,
+   "end_frame": 1316
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1317,
+   "end_frame": 1322
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1323,
+   "end_frame": 1326
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1327,
+   "end_frame": 1329
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1330,
+   "end_frame": 1332
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1333,
+   "end_frame": 1336
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1337,
+   "end_frame": 1338
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1339,
+   "end_frame": 1346
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1347,
+   "end_frame": 1350
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1351,
+   "end_frame": 1354
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1355,
+   "end_frame": 1357
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1358,
+   "end_frame": 1361
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1362,
+   "end_frame": 1368
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1369,
+   "end_frame": 1376
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1377,
+   "end_frame": 1381
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1382,
+   "end_frame": 1384
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1385,
+   "end_frame": 1387
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1388,
+   "end_frame": 1392
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1393,
+   "end_frame": 1399
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1400,
+   "end_frame": 1404
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1405,
+   "end_frame": 1407
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1408,
+   "end_frame": 1410
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1411,
+   "end_frame": 1415
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1416,
+   "end_frame": 1421
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1422,
+   "end_frame": 1433
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1434,
+   "end_frame": 1440
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1441,
+   "end_frame": 1447
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1448,
+   "end_frame": 1463
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1464,
+   "end_frame": 1468
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1469,
+   "end_frame": 1472
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1473,
+   "end_frame": 1478
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1479,
+   "end_frame": 1484
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1485,
+   "end_frame": 1489
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1490,
+   "end_frame": 1492
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1493,
+   "end_frame": 1494
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1495,
+   "end_frame": 1499
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1500,
+   "end_frame": 1501
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1502,
+   "end_frame": 1509
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1510,
+   "end_frame": 1514
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1515,
+   "end_frame": 1518
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1519,
+   "end_frame": 1521
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1522,
+   "end_frame": 1525
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1526,
+   "end_frame": 1530
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1531,
+   "end_frame": 1537
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1538,
+   "end_frame": 1541
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1542,
+   "end_frame": 1544
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1545,
+   "end_frame": 1548
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1549,
+   "end_frame": 1555
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1556,
+   "end_frame": 1560
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1561,
+   "end_frame": 1562
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1563,
+   "end_frame": 1564
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1565,
+   "end_frame": 1568
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1569,
+   "end_frame": 1573
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1574,
+   "end_frame": 1578
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1579,
+   "end_frame": 1583
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1584,
+   "end_frame": 1594
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1595,
+   "end_frame": 1598
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1599,
+   "end_frame": 1603
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1604,
+   "end_frame": 1607
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1608,
+   "end_frame": 1613
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1614,
+   "end_frame": 1617
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1618,
+   "end_frame": 1620
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1621,
+   "end_frame": 1623
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1624,
+   "end_frame": 1627
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1628,
+   "end_frame": 1629
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1630,
+   "end_frame": 1636
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1637,
+   "end_frame": 1640
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1641,
+   "end_frame": 1643
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1644,
+   "end_frame": 1646
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1647,
+   "end_frame": 1650
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1651,
+   "end_frame": 1657
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1658,
+   "end_frame": 1665
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1666,
+   "end_frame": 1670
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1671,
+   "end_frame": 1673
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1674,
+   "end_frame": 1676
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1677,
+   "end_frame": 1681
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1682,
+   "end_frame": 1688
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1689,
+   "end_frame": 1693
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1694,
+   "end_frame": 1696
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1697,
+   "end_frame": 1699
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1700,
+   "end_frame": 1704
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1705,
+   "end_frame": 1710
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1711,
+   "end_frame": 1717
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1718,
+   "end_frame": 1724
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1725,
+   "end_frame": 1740
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1741,
+   "end_frame": 1745
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1746,
+   "end_frame": 1749
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1750,
+   "end_frame": 1755
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1756,
+   "end_frame": 1761
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1762,
+   "end_frame": 1766
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1767,
+   "end_frame": 1769
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1770,
+   "end_frame": 1771
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1772,
+   "end_frame": 1776
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1777,
+   "end_frame": 1778
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1779,
+   "end_frame": 1786
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1787,
+   "end_frame": 1791
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1792,
+   "end_frame": 1795
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1796,
+   "end_frame": 1798
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1799,
+   "end_frame": 1802
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1803,
+   "end_frame": 1807
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1808,
+   "end_frame": 1814
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1815,
+   "end_frame": 1818
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1819,
+   "end_frame": 1821
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1822,
+   "end_frame": 1825
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1826,
+   "end_frame": 1832
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1833,
+   "end_frame": 1837
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1838,
+   "end_frame": 1839
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1840,
+   "end_frame": 1841
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1842,
+   "end_frame": 1845
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1846,
+   "end_frame": 1850
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1851,
+   "end_frame": 1855
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1856,
+   "end_frame": 1860
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1861,
+   "end_frame": 1871
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1872,
+   "end_frame": 1875
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1876,
+   "end_frame": 1880
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1881,
+   "end_frame": 1884
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1885,
+   "end_frame": 1890
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1891,
+   "end_frame": 1894
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1895,
+   "end_frame": 1897
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1898,
+   "end_frame": 1900
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1901,
+   "end_frame": 1904
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1905,
+   "end_frame": 1906
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1907,
+   "end_frame": 1913
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1914,
+   "end_frame": 1917
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1918,
+   "end_frame": 1920
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1921,
+   "end_frame": 1923
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1924,
+   "end_frame": 1927
+  },
+  {
+   "label": "6/7",
+   "caption": "The same for the second Al cup (3.92 g Si), then the two Cu cups with Ni (12.97 g each), shown faster. A Cu cup alone is 106 g: over the doser's 100 g load cell (TAL221), so Cu cups need a bigger cell. The Cu cups go back on the rack for their own run.",
+   "start_frame": 1928,
+   "end_frame": 1934
+  },
+  {
+   "label": "7/7",
+   "caption": "Made up: two Al-10Si cups, 78.3 g together, on the MiR250 for the rePowder, and two 90/10 Cu-Ni cups on the rack, 259.5 g, for their own run (designed compositions, if every gram dissolves; out/alloy_recipe.json). Tray B goes back into storage.",
+   "start_frame": 1935,
+   "end_frame": 1944
+  },
+  {
+   "label": "7/7",
+   "caption": "Made up: two Al-10Si cups, 78.3 g together, on the MiR250 for the rePowder, and two 90/10 Cu-Ni cups on the rack, 259.5 g, for their own run (designed compositions, if every gram dissolves; out/alloy_recipe.json). Tray B goes back into storage.",
+   "start_frame": 1945,
+   "end_frame": 1977
+  },
+  {
+   "label": "7/7",
+   "caption": "Made up: two Al-10Si cups, 78.3 g together, on the MiR250 for the rePowder, and two 90/10 Cu-Ni cups on the rack, 259.5 g, for their own run (designed compositions, if every gram dissolves; out/alloy_recipe.json). Tray B goes back into storage.",
+   "start_frame": 1978,
+   "end_frame": 1989
+  },
+  {
+   "label": "7/7",
+   "caption": "Made up: two Al-10Si cups, 78.3 g together, on the MiR250 for the rePowder, and two 90/10 Cu-Ni cups on the rack, 259.5 g, for their own run (designed compositions, if every gram dissolves; out/alloy_recipe.json). Tray B goes back into storage.",
+   "start_frame": 1990,
+   "end_frame": 2003
+  },
+  {
+   "label": "7/7",
+   "caption": "Made up: two Al-10Si cups, 78.3 g together, on the MiR250 for the rePowder, and two 90/10 Cu-Ni cups on the rack, 259.5 g, for their own run (designed compositions, if every gram dissolves; out/alloy_recipe.json). Tray B goes back into storage.",
+   "start_frame": 2004,
+   "end_frame": 2036
+  },
+  {
+   "label": "7/7",
+   "caption": "Made up: two Al-10Si cups, 78.3 g together, on the MiR250 for the rePowder, and two 90/10 Cu-Ni cups on the rack, 259.5 g, for their own run (designed compositions, if every gram dissolves; out/alloy_recipe.json). Tray B goes back into storage.",
+   "start_frame": 2041,
+   "end_frame": 2100
   }
- },
- "densities": {
-  "Ni": {
-   "tapped_g_cm3": 4.9,
-   "source": "assumed: 55 % of 8.91, a gas-atomized spherical powder tapped"
-  },
-  "Fe": {
-   "tapped_g_cm3": 4.3,
-   "source": "assumed: 55 % of 7.87"
-  },
-  "Cu": {
-   "tapped_g_cm3": 4.9,
-   "source": "assumed: 55 % of 8.96"
-  },
-  "Al": {
-   "tapped_g_cm3": 1.6,
-   "source": "#222: AlSi10Mg tapped by hand, 1.60"
-  },
-  "Si": {
-   "tapped_g_cm3": 1.1,
-   "source": "#222: irregular Si tapped, 1.10"
-  }
- },
- "note": "Designed composition: what the charge gives if every gram dissolves and none is lost; ICP/EDS on the powder measures recovery (#222). Cup and plug volumes are #222's CAD. The Ni tapped density is assumed. Powder below the plug line leaves headspace under the plug, as #222's E5 does; the plug's vent lets that air out when the chamber is pumped down."
+ ]
 }

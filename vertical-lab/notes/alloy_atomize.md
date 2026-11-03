@@ -16,7 +16,7 @@ charge. The arm then takes the powder container off onto the MiR.
 
 | On screen | Value | Source |
 |---|---|---|
-| Charge | 2 cups, 78.3 g, Al-10Si (Si powder at 74 % of each cavity) | `out/alloy_charge.json` (charge.py: #222's cup and plug, tapped Si 1.10 g/cm³) |
+| Charge | 2 cups, 78.3 g, Al-10Si (3.92 g of Si powder 27.7 mm up each bore) | `out/alloy_recipe.json` (charge.py: #222's cup and plug, tapped Si 1.10 g/cm³) |
 | Two cups a run | 80–100 g, the 100 g/run basis of the #161 purchase model | #222 README, "Rods around the piston" |
 | Loading order | rod fitted and seated first, then the metal round it | GU500 manual pp. 15, 47–51, via #222 |
 | Getting past the rod's adapter | straight down misses by 1.35 mm; tipped in, −0.09 mm (−2.1 to +0.5) | #222 README, `loading_margin()` |

@@ -542,13 +542,14 @@ route. Four chapters, each rendered on its own and joined by [`alloy_route.py`](
 <!-- alloy-route-table -->
 | Chapter | Code | GIF | MP4 | Notes |
 |---|---|---|---|---|
-| **1. The charge**: cups filled by the multi-doser, plugs pressed in, on tray B | [`alloy_charge.py`](alloy_charge.py), [`charge.py`](charge.py) | [GIF](out/alloy_charge.gif) | [MP4](out/mp4/alloy_charge.mp4) | [`notes/alloy_charge.md`](notes/alloy_charge.md) |
-| **2. Melt and atomize**: the Al cups in the rePowder | [`alloy_atomize.py`](alloy_atomize.py) | [GIF](out/alloy_atomize.gif) | [MP4](out/mp4/alloy_atomize.mp4) | [`notes/alloy_atomize.md`](notes/alloy_atomize.md) |
-| **3. Sieve and print**: the AS 200 stack, then the Aconity MIDI | [`alloy_print.py`](alloy_print.py) | [GIF](out/alloy_print.gif) | [MP4](out/mp4/alloy_print.mp4) | [`notes/alloy_print.md`](notes/alloy_print.md) |
-| **4. Cut and test**: the plate to the wire EDM, a bar to the 68FM-100 (round 4, above) | [`alloy_workflow.py`](alloy_workflow.py) | [GIF](out/alloy_workflow.gif) | [MP4](out/mp4/alloy_workflow.mp4) | [`notes/alloy_workflow.md`](notes/alloy_workflow.md) |
+| **All four, joined** (7 min 40 s, a title card before each) | [`alloy_route.py`](alloy_route.py) | | [MP4](out/mp4/alloy_route.mp4) | [on YouTube](https://www.youtube.com/watch?v=9qnGCtPwCTM) (unlisted), chapters in [`out/alloy_route.json`](out/alloy_route.json) |
+| **1. The charge** (140 s): cups filled by the multi-doser, plugs pressed in, on tray B | [`alloy_charge.py`](alloy_charge.py), [`charge.py`](charge.py) | [GIF](out/alloy_charge.gif) | [MP4](out/mp4/alloy_charge.mp4) | [`notes/alloy_charge.md`](notes/alloy_charge.md) |
+| **2. Melt and atomize** (92 s): the Al cups in the rePowder | [`alloy_atomize.py`](alloy_atomize.py) | [GIF](out/alloy_atomize.gif) | [MP4](out/mp4/alloy_atomize.mp4) | [`notes/alloy_atomize.md`](notes/alloy_atomize.md) |
+| **3. Sieve and print** (101 s): the AS 200 stack, then the Aconity MIDI | [`alloy_print.py`](alloy_print.py) | [GIF](out/alloy_print.gif) | [MP4](out/mp4/alloy_print.mp4) | [`notes/alloy_print.md`](notes/alloy_print.md) |
+| **4. Cut and test** (115 s): the plate to the wire EDM, a bar to the 68FM-100 (round 4, above) | [`alloy_workflow.py`](alloy_workflow.py) | [GIF](out/alloy_workflow.gif) | [MP4](out/mp4/alloy_workflow.mp4) | [`notes/alloy_workflow.md`](notes/alloy_workflow.md) |
 <!-- /alloy-route-table -->
 
-![The plug pressed home in #222's steel sleeve, in half section](out/alloy_charge_press.png)
+![The four chapters at work: the plug pressed into a cup, the cups atomized, the plate printed, the bars cut off](out/alloy_route_sheet.png)
 
 **The charge.** The cup, the vented plug and the steel press sleeve (F1) are #222's own `charge_cad.py` profiles,
 dimension for dimension. Tray B carries:
@@ -574,6 +575,24 @@ What chapter 1 showed:
   The arm sets the plug from above, so the nest must slide out from under the ram to be loaded.
 - **The arm always holds a cup level**, fingers closing sideways, so it never tilts. That is why the rack has its cups
   in front.
+
+What chapters 2 and 3 showed:
+- **A robot may not get a 3/4 in cup into the crucible.** It only passes the sealing rod's adapter tipped, and #222
+  puts that at −0.09 mm. In the clip the gripper lets go once the cup is past the adapter, and its fingers still brush
+  it. A slimmer gripper or a 5/8 in cup would clear it: the 5/8 in cup goes straight in with 1.83 mm to spare.
+- **The MiR stands 220 mm further out to work the rePowder.** Closer, the lid's knob and the container's handle fall
+  inside the UR10e's unreachable cylinder over its base. Even its hand-off spot is 148 mm out from the line, because
+  the rePowder's front sticks out past the other machines'.
+- **One run is far too little powder for the MIDI.** 78 g gives tens of grams of 20–63 µm powder, and the 30 mm build
+  needs about 1 kg in the bed. That means many runs into the supply, or a smaller build cylinder.
+- **A person still does the dustiest step**, taking the sieve stack apart, as well as depowdering the plate
+  (chapter 4).
+- **Taking the container off under argon is unchecked.** The training vents the chamber first.
+- **The two layouts disagree on the sieve shaker.** Chapter 3 puts it on a bench between the rePowder and the VLM;
+  `setup_lab.py` puts it on tray F.
+
+Chapter 1 is 140 s, chapter 2 92 s and chapter 3 101 s, so each GIF stays under 4.9 MB at 640 × 360 and 5–6 fps.
+The MP4s keep every frame.
 
 ## The workflow
 
@@ -695,6 +714,11 @@ python3 reach.py                                          # the arm study -> out
 xvfb-run -a python3 tour.py                               # round 3: every instrument -> out/instruments/, out/mp4/instruments/
 python3 tour.py gallery join table                        # the gallery, the joined tour MP4, out/instruments.json
 xvfb-run -a python3 line.py                               # the trays D-F, the line and the rail -> out/vlm_line.gif
+python3 charge.py                                         # the alloy route's charge recipe -> out/alloy_recipe.json
+xvfb-run -a python3 alloy_charge.py                       # alloy route 1/4: cups dosed and plugged on tray B
+xvfb-run -a python3 alloy_atomize.py                      # 2/4: melted and atomized in the rePowder
+xvfb-run -a python3 alloy_print.py                        # 3/4: sieved, printed in the Aconity MIDI
+python3 alloy_route.py                                    # the four (4/4 is alloy_workflow.py) -> out/mp4/alloy_route.mp4
 ```
 
 Round 4:
