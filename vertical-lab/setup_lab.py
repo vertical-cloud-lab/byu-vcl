@@ -42,10 +42,17 @@ TRAY_ITEMS = {**{k: list(v) for k, v in A.LOADS.items()}, **{k: list(v) for k, v
 # the models existed: run `python3 setup_lab.py fit` after merging and move anything that overlaps or is too tall. A
 # key tour.load() doesn't return is skipped. To use a new tray, add it here and give it a slot in NEW_TRAYS.
 ROUND4_TRAY: dict[str, list[tuple[str, float, float]]] = {
-    "F": [("sieve", -990.0, 0.0), ("cubxl_corrosion", 880.0, 0.0)],     # F has 480 mm free left, 690 mm right
-    "C": [("xrf", 900.0, 0.0)],
-    "D": [("openflexure_array", 680.0, 150.0), ("vhx", 1000.0, 250.0)],  # D is nearly full: check these
+    # placed after merging, from `setup_lab.py fit`: no overlaps, every item inside its tray's rim
+    "A": [("cubxl_corrosion", -300.0, -114.5)],                          # tray A's CubXL, set up for corrosion
+    "C": [("vhx", 850.0, 0.0)],                                          # beside the A1 mini
+    "D": [("openflexure_array", 792.0, -148.0)],                         # instruments_char's spot for the array
+    "F": [("sieve", -990.0, 0.0), ("xrf", 876.0, 0.0)],
 }
+# Round 4 replaces two round-2/3 items: the CubXL on tray A is the corrosion set-up (instruments_lab.cubxl_corrosion),
+# and the six-microscope array takes the place of tray D's two freestanding OpenFlexures.
+REPLACED = {"A": ["cubxl"], "D": ["openflexure_v7", "openflexure_delta"]}
+for _k, _keys in REPLACED.items():
+    TRAY_ITEMS[_k] = [it for it in TRAY_ITEMS[_k] if it[0] not in _keys]
 NEW_TRAYS: dict[str, tuple[str, str]] = {}     # tray -> (slot in vlm.SLOTS, role), for trays beyond A-F
 # Floor machines: warehouse.STATIONS (the DED machine and the packaging station have reserved spots; HIP has one too).
 # Services: CAMERA_HOOK names the function in services.py that adds the stream cameras and the bay camera; it is called
@@ -262,6 +269,13 @@ def build(data, idata):
     sc = Scene("setup_lab", TITLE, gif=False)
     sc.cam = list(CAM_ROOM)
     L = A.Lab(sc, data, robot=False)
+    if "cubxl_corrosion" in idata:                   # round 2's CubXL stays hidden: the corrosion set-up replaces it
+        for g in L.eq_groups.get("A", []):
+            if L.eq_key[g] in REPLACED["A"]:
+                for nm in L.eq_names(g):
+                    sc.alpha[nm] = 0.0
+    else:
+        TRAY_ITEMS["A"] = list(A.LOADS["A"])
     F = W.Floor(sc, L, idata)
     rigs, items = {}, {k: [] for k in "ABCDEF"}
     for k, (slot, role) in NEW_TRAYS.items():
@@ -484,7 +498,7 @@ def movie(data, idata):
               "services.py's cameras replace them once merged."
     L.show_gauges = False
     L.apply_state()
-    cam_names = [nm for nm in sc.actors if nm.startswith(("cam ", "baycam"))]
+    cam_names = [nm for nm in sc.actors if nm.startswith(("cam ", "cam_", "camhead_", "baycam"))]
     for nm in cam_names:
         sc.alpha[nm] = 0.0
 

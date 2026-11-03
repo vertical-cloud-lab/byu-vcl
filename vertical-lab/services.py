@@ -539,6 +539,19 @@ def add_tray_cameras(sc, tray: str, layout=None, pivot=CAM_PIVOT) -> list:
     return groups
 
 
+def add_cameras(sc, L=None, trays="ABCDEF") -> list:
+    """setup_lab's CAMERA_HOOK: every tray's stream cameras (TRAY_CAMS) and the bay camera. [(label, xyz)] for captions."""
+    labels = []
+    for k in trays:
+        if f"tray_{k}" in sc.gmat and TRAY_CAMS.get(k):
+            groups = add_tray_cameras(sc, k)
+            if groups and len(labels) < 1:
+                labels.append((f"Pi 5 + HQ + Wide, on tray {k}", tuple(sc.world(groups[0])[:3, 3] + (0, 0, 640))))
+    gh = add_bay_camera(sc)
+    labels.insert(0, ("overhead camera at the bay", tuple(sc.world(gh)[:3, 3])))
+    return labels
+
+
 def add_bay_camera(sc, x=0.0) -> str:
     """The overhead unit at the bay: on a 2020 bar across the back of the bay, under the header's line, above
     Kardex's product envelope (tray floor + 727.5 + 20 mm), looking down and forward over the presented tray."""

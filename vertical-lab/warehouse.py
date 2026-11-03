@@ -83,6 +83,7 @@ STATIONS = {
     "hip": (10000.0, "N", 0.0, 10000.0),         # a hot isostatic press, if a module adds one (key "hip")
 }
 SETBACK = {"glovebox": 400.0}
+BENCH = {"packaging": 900.0}      # benchtop stations on the floor plan stand on a bench this tall (mm, a choice)
 RESERVED = {"ded": ("space for a DED machine", 3000.0, 2400.0),           # footprints drawn until a model exists
             "packaging": ("space for a packaging station", 2400.0, 1500.0)}   # (estimates: room, not a machine)
 NAMES = {"glovebox": "glovebox: antechamber to the aisle", "repowder": "rePowder atomizer", "vlm": "Kardex VLM",
@@ -370,13 +371,27 @@ class Floor:
             if key in self.idata:
                 inst, ents = self.idata[key]
                 bb = inst.bbox()
-                rig = tour.Rig(sc, inst, ents, f"wh_{key}:", at=place(bb, cx, front, row, turn))
+                M = place(bb, cx, front, row, turn)
+                bench = []
+                if key in BENCH:                      # a benchtop station stands on a plain bench (a layout choice)
+                    h = BENCH[key]
+                    w, d = bb[1] - bb[0] + 100.0, bb[3] - bb[2] + 100.0
+                    yc = front + (bb[3] - bb[2]) / 2 if row == "N" else front - (bb[3] - bb[2]) / 2
+                    g = f"bench_{key}"
+                    sc.add(f"{g}/top", _box(cx - w / 2, yc - d / 2, h - 40, cx + w / 2, yc + d / 2, h),
+                           (0.62, 0.64, 0.67), g, specular=0.1)
+                    legs = _merge([_box(x - 25, y - 25, 0, x + 25, y + 25, h - 40)
+                                   for x in (cx - w / 2 + 40, cx + w / 2 - 40) for y in (yc - d / 2 + 40, yc + d / 2 - 40)])
+                    sc.add(f"{g}/legs", legs, (0.35, 0.36, 0.38), g)
+                    bench = sc.members(g)
+                    M = T((0, 0, h)) @ M
+                rig = tour.Rig(sc, inst, ents, f"wh_{key}:", at=M)
                 self.rigs[key] = rig
                 for piece in [pc for pc in rig.names if pc in inst.props]:
                     for nm in rig.names.pop(piece):
                         sc.alpha[nm] = 0.0
-                self.groups[key] = rig.all_names()
-                self.where[key] = np.array([cx, front + (300 if row == "N" else -300), bb[5]])
+                self.groups[key] = rig.all_names() + bench
+                self.where[key] = np.array([cx, front + (300 if row == "N" else -300), bb[5] + BENCH.get(key, 0.0)])
                 continue
             if key in RESERVED:                       # a labelled footprint until the model exists
                 txt, w, d = RESERVED[key]

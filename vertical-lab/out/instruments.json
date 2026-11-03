@@ -250,5 +250,185 @@
   "fits_tray": false,
   "floor": true,
   "where": "beside the VLM"
+ },
+ "openflexure_array": {
+  "title": "Six reflection microscopes on one sub-tray",
+  "model": "OpenFlexure array: 4 x v7 + 2 x Delta Stage",
+  "source": "OpenFlexure Microscope v7.0.0-beta5 and Delta Stage v1.2.3, exported from OpenFlexure's own OpenSCAD (openflexure/README.md); the sub-tray, ducts, hub and handles are designed here",
+  "model_mm": [
+   784,
+   524,
+   177
+  ],
+  "published_mm": [
+   784,
+   524,
+   177
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "vhx": {
+  "title": "Digital microscope with laser elemental analysis (LIBS)",
+  "model": "Keyence VHX-7000 + EA-300",
+  "source": "Keyence VHX-7000N brochure KA1-1099 pp. 34-38 (EA-300 280 x 210 x 375 mm, 7.2 kg, 355 nm Nd:YAG, 10 um spot, H-U; VHX-S750E stage 171 x 168 mm, XY +-20 mm; controller 625 x 460 x 180 mm); EA-300 model page; stand base and column scaled from Keyence's photos",
+  "model_mm": [
+   606,
+   461,
+   655
+  ],
+  "published_mm": [
+   606,
+   461,
+   655
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "xrf": {
+  "title": "Benchtop EDXRF for powders and coupons",
+  "model": "Bruker S2 PUMA Series 2, XY Autochanger",
+  "source": "Bruker S2 PUMA Series 2 specifications via DKSH (XY Autochanger 67 x 71 x 61 cm, 108 kg; 20-position tray; 50 W Pd/Ag tube; HighSense SDD; reduced-pressure He for loose powders); look from Bruker's photos",
+  "model_mm": [
+   670,
+   712,
+   601
+  ],
+  "published_mm": [
+   670.0,
+   710.0,
+   610.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "sieve": {
+  "title": "Sieve shaker for atomized powder",
+  "model": "Retsch AS 200 control",
+  "source": "Retsch AS 200 control product page (417 W x 212 H x 384 D mm, about 35 kg, 3-D throwing motion, amplitude 0.2-3 mm); the 8 in stack from DAL PR #175 and DAL's sieving/viz3d model; look from Retsch's photos",
+  "model_mm": [
+   417,
+   392,
+   567
+  ],
+  "published_mm": [
+   417.0,
+   384.0,
+   212.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "cubxl_corrosion": {
+  "title": "Corrosion spots on the CubXL, with a potentiostat",
+  "model": "CubXL + NuVant EZstat Pro",
+  "source": "The CubXL from lab_models.equipment.cubxl() (#199); the corrosion deck, electrode cap and head as DAL PR #180 proposes them (alloy-corrosion/cubxl-setup.md, CubOS deck frame of Ben's 2026-10-02 calibration); NuVant's EZstat Pro (255 x 245 x 102 mm, nuvant.com) beside it, as in byu-vcl #231 / DAL #221",
+  "model_mm": [
+   1328,
+   605,
+   538
+  ],
+  "published_mm": [
+   1095.0,
+   605.0,
+   538.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "ded": {
+  "title": "Directed energy deposition, powder-fed laser",
+  "model": "InssTek MX-Lab",
+  "source": "InssTek MX-Lab Technical Data Rev.3 (680 x 684 x 835 mm, 250 kg, 1-phase 220 V), InssTek's 2024 brochure (150 mm stroke, 175 mm table, six hoppers, <= 500 W, Ar with <= 50 ppm O2); look from InssTek's and Chalmers' photos. The base cabinet's size is an estimate",
+  "model_mm": [
+   1323,
+   777,
+   1835
+  ],
+  "published_mm": [
+   680.0,
+   684.0,
+   835.0
+  ],
+  "fits_tray": false,
+  "floor": true,
+  "where": "beside the VLM"
+ },
+ "packaging": {
+  "title": "Automated packaging station for powders",
+  "model": "Primera AP380 + LX500c, Zebra ZD621t, Uline H-190",
+  "source": "Primera AP380 (340 x 508 x 226 mm) and LX500c (264 x 389 x 180 mm) pages; Zebra ZD621 spec sheet (ZD621t 202 x 267 x 192 mm); Uline H-190 (452 x 84 x 188 mm), S-23611 foam shipper, S-6802 4 x 6 in labels; Nalgene 2104-0008 250 mL jar (61 x 131 mm). Looks from the makers' photos; fixtures drawn here",
+  "model_mm": [
+   1989,
+   653,
+   229
+  ],
+  "published_mm": [
+   2000.0,
+   508.0,
+   226.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "hip": {
+  "title": "Hot isostatic press against a VLM tray",
+  "model": "Kobelco O2-Dr.HIP",
+  "source": "Kobelco's Dr. HIP page (O2-Dr.HIP: 1315 x 1100 x 1300 mm, 1100 kg, 200 MPa, up to 2000 C) and photo; the tray, product height and payloads from #53 and Kardex's order sheet. Vessel and frame inside drawn schematically (not published)",
+  "model_mm": [
+   2620,
+   944,
+   1026
+  ],
+  "published_mm": [
+   1315.0,
+   1100.0,
+   1300.0
+  ],
+  "fits_tray": false,
+  "floor": true,
+  "where": "beside the VLM"
+ },
+ "tray_dock": {
+  "title": "Tray service dock",
+  "model": "Staubli CombiTac-style docking plate, actuated",
+  "source": "CombiTac uniq catalogue (inserts, align 4 docking), Kardex #53 (power in a slot and at the opening); the layout, plate and stroke are ours",
+  "model_mm": [
+   447,
+   480,
+   230
+  ],
+  "published_mm": [
+   225.0,
+   240.0,
+   150.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "stream_cam": {
+  "title": "Stream camera unit for a tray",
+  "model": "Raspberry Pi 5, HQ Camera + Camera Module 3 Wide",
+  "source": "the lab's Pi 5 dual-camera unit, DAL PR #189's front unit without its display (Raspberry Pi's drawings for the boards, a 16 mm M12 lens), on a 2020 post as its top unit; the post's height is ours",
+  "model_mm": [
+   107,
+   85,
+   301
+  ],
+  "published_mm": [
+   107.0,
+   70.0,
+   301.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
  }
 }
