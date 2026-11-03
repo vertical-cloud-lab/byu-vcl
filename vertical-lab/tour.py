@@ -186,10 +186,32 @@ class Rig:
         return [n for ns in self.names.values() for n in ns]
 
 
-def studio(sc: Scene, size=6000.0, at=(0, 0)):
+def studio(sc: Scene, size=6000.0, at=(0, 0), shadow_of=None):
     floor = pv.Plane(center=(at[0], at[1], -0.5), direction=(0, 0, 1), i_size=size, j_size=size)
     sc.add("floor", floor, (0.965, 0.965, 0.96), "floor", ambient=1.0, diffuse=0.0, specular=0.0,
            smooth_shading=False)
+    if shadow_of is not None:
+        contact_shadow(sc, shadow_of)
+
+
+def contact_shadow(sc: Scene, bb, strength=0.16, name="floor shadow"):
+    """A soft, darker patch on the floor under the machine's footprint (bb: xmin, xmax, ymin, ymax, ...), so it stands
+    on the floor rather than floating over it. Per-vertex alpha on a grid: no textures, no shadow pass."""
+    x0, x1, y0, y1 = bb[:4]
+    w, d = x1 - x0, y1 - y0
+    r = 0.08 * min(w, d) + 0.04 * max(w, d) + 15.0          # the blur, mm
+    grid = pv.Plane(center=((x0 + x1) / 2, (y0 + y1) / 2, 0.0), direction=(0, 0, 1), i_size=w + 5 * r,
+                    j_size=d + 5 * r, i_resolution=60, j_resolution=60)
+    p = grid.points
+    dx = np.maximum(np.abs(p[:, 0] - (x0 + x1) / 2) - w / 2, 0.0)
+    dy = np.maximum(np.abs(p[:, 1] - (y0 + y1) / 2) - d / 2, 0.0)
+    a = strength * np.exp(-(np.hypot(dx, dy) / r) ** 2)
+    rgba = np.zeros((grid.n_points, 4), np.uint8)
+    rgba[:, :3] = 40
+    rgba[:, 3] = np.round(255 * a).astype(np.uint8)
+    grid.point_data["rgba"] = rgba
+    sc.add(name, grid, None, "floor", scalars="rgba", rgba=True, ambient=1.0, diffuse=0.0, specular=0.0,
+           smooth_shading=False, show_scalar_bar=False)
 
 
 def frame_cam(bb, direction=(1.0, -1.6, 0.9), pad=0.85, look_z=0.42):
@@ -209,9 +231,9 @@ def tour_one(inst: I.Instrument, entries: dict) -> str:
     (OUT / "mp4" / "instruments").mkdir(parents=True, exist_ok=True)
     sc = Scene(f"instruments/{inst.key}", f"{inst.title}: {inst.model}")
     sc.intro = 0.6
-    studio(sc)
-    rig = Rig(sc, inst, entries, f"{inst.key}:")
     bb = inst.bbox()
+    studio(sc, shadow_of=bb)
+    rig = Rig(sc, inst, entries, f"{inst.key}:")
     tall = (bb[5] - bb[4]) > 1.3 * max(bb[1] - bb[0], bb[3] - bb[2])
     pad, look_z = inst.framing or ((1.0, 0.5) if tall else (0.85, 0.42))
     sc.cam = frame_cam(bb, inst.cam, pad=pad, look_z=look_z)
@@ -276,7 +298,7 @@ if __name__ == "__main__":
     if args and args[0] == "still":          # quick look: the closed state and the end of every action, to /tmp
         for key, (inst, ents) in load(args[1:] or None).items():
             sc = Scene(f"still_{key}", inst.model, gif=False, mp4=False)
-            studio(sc)
+            studio(sc, shadow_of=inst.bbox())
             rig = Rig(sc, inst, ents, f"{key}:")
             sc.cam = frame_cam(inst.bbox(), inst.cam)
             shots = [sc.render_base()]
