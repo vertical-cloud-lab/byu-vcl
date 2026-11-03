@@ -15,6 +15,8 @@
 #   AppImage download (220 MB) + extract             ~3 s
 #   network plug-in (31 MB, Bambu's CDN)             <1 s
 #   Studio launch to its home page, no prompts       ~7 s
+#   End to end: ~100 s fresh, ~25 s with the .debs from actions/cache,
+#   ~13 s with the packages already installed.
 #
 # Why no wizard: Studio runs it only when it has no config or no printers
 # (GUI_App::config_wizard_startup), and asks about the SSL store only when
