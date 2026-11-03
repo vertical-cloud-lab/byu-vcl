@@ -317,7 +317,8 @@ def movie(data, idata):
         [n for n, g in sc.group_of.items() if g.startswith("charger") and g.endswith("_tape")]
     chargers = [n for n, g in sc.group_of.items() if g.startswith("charger") and not g.endswith("_tape")]
     unit_names = [n for u in units for n in u.all_names()]
-    A.hide(L, L.groups(*vlm_groups, *tray_groups) + eq + machines + layout + chargers + unit_names + list(util.values()))
+    A.hide(L, L.groups(*vlm_groups, *tray_groups) + eq + machines + layout + chargers + unit_names +
+           list(util.values()))
     L.skin(0.0)(1.0)
     L.show_gauges = False
     L.apply_state()
@@ -361,8 +362,8 @@ def movie(data, idata):
                                           s(L, ["col_front", "col_rear"], (2600, 0, 0))),
             hold=0.3, cam_to=CAM_VLM)
     sc.step(f"4/{n}", "The extractor and its drive, then six empty electrified trays, A to F.", 2.4,
-            A.both(s(L, ["lift_rails"], (0, 0, 2500)), s(L, ["drive"], (0, 0, 1400)), s(L, ["lift", "belts"], (0, 0, 2400)),
-                   s(L, tray_groups, (3200, 0, 0))), hold=0.3)
+            A.both(s(L, ["lift_rails"], (0, 0, 2500)), s(L, ["drive"], (0, 0, 1400)),
+                   s(L, ["lift", "belts"], (0, 0, 2400)), s(L, tray_groups, (3200, 0, 0))), hold=0.3)
     sc.step(f"4/{n}", "The cladding, the opening, the console and the shutter.", 2.2,
             A.both(s(L, ["skin_L"], (-900, 0, 0)), s(L, ["skin_R"], (900, 0, 0)), s(L, ["skin_back"], (0, 900, 0)),
                    s(L, ["skin_top"], (0, 0, 900)), s(L, ["skin_front", "bay", "console", "shutter"], (0, -900, 0))),
@@ -523,7 +524,8 @@ def fit(idata) -> list:
             b = (x - w / 2, x + w / 2, y - d / 2, y + d / 2)
             over = [kk for kk, bb in boxes if b[0] < bb[1] and bb[0] < b[1] and b[2] < bb[3] and bb[2] < b[3]]
             boxes.append((key, b))
-            rows.append(dict(tray=k, key=key, size_mm=[round(w), round(d), round(h)], fits_height=bool(h <= V.MAX_GOODS_H),
+            rows.append(dict(tray=k, key=key, size_mm=[round(w), round(d), round(h)],
+                             fits_height=bool(h <= V.MAX_GOODS_H),
                              inside_tray=bool(abs(b[0]) <= V.TRAY_W / 2 - 12 and b[1] <= V.TRAY_W / 2 - 12
                              and abs(b[2]) <= V.TRAY_D / 2 - 12 and b[3] <= V.TRAY_D / 2 - 12), overlaps=over))
     return rows

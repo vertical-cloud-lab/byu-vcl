@@ -13,7 +13,7 @@
   "sources": [
    "UR10e user manual SW5.26, 6.2 Dimensioning the Stand (loads x 2.5; >= 45 Hz)",
    "UR10e data sheet Oct 2026 (12.5 kg, 1300 mm, 33.3 kg, +-0.05 mm)",
-   "Robotiq 2F-85: 0.925 kg"
+   "Robotiq 2F-85: about 0.9 kg (Robotiq; 0.89-0.925 kg in listings)"
   ]
  },
  "pedestal": [
