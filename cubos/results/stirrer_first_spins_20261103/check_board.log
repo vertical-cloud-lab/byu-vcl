@@ -1,0 +1,5 @@
+22:35:29.116Z connect (resets the Uno)
+22:35:32.893Z  31 stirrer status          0.01 s  OK:{"target":0,"setpoint":0,"rpm":0.0,"duty":0.000,"stalled":0,"left_s":-1}
+22:35:32.901Z  14 pipette STATUS          0.01 s  OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+22:35:33.057Z  29 pipette driver status   0.16 s  OK:{"msg":"Driver status","v":[0.00,0.00,-1.00]}
+22:35:33.060Z disconnected
