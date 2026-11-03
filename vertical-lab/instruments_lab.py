@@ -1054,7 +1054,7 @@ def ded() -> Instrument:
                                                                 hz + 90), (tcx + 30 * math.cos(ang), tcy + 60,
                                                                            dz1 - 12)], 6), "ded_orange")
     glow = _piece(inst, "glow")
-    glow.add("melt pool", cq.Workplane().add(cq.Solid.makeSphere(3.2, cq.Vector(tcx, tcy, plate_top + 0.6),
+    glow.add("melt pool", cq.Workplane().add(cq.Solid.makeSphere(4.2, cq.Vector(tcx, tcy, plate_top + 0.6),
                                                                   angleDegrees1=-90, angleDegrees2=90)), "glow")
     # ---- the substrate, and the wagon wheel's beads in segments that rise as the nozzle passes
     load = _piece(inst, "load")
@@ -1114,10 +1114,10 @@ def ded() -> Instrument:
         ("The door swings open on its left hinge.", 1.6, {"door": (0.0, 1.0)}),
         ("A steel substrate goes from the shelf onto the 175 x 175 mm worktable.", 2.2, {"load": (0.0, 1.0)}),
         ("Door shut. Argon purges the chamber: InssTek's inert option holds O2 at or below 50 ppm.", 2.8,
-         {"door": (1.0, 0.0), "gauge": (0.0, 1.0), "purge": (0.0, 1.0)}),
+         {"door": (1.0, 0.0), "gauge": (0.0, 1.0), "purge": (0.0, 1.0), "~door": (0.0, 1.0)}),
         ("The laser and the powder streams meet at the melt pool. Spoke by spoke, layer by layer: a wagon wheel, each "
          "spoke a different blend from the six hoppers (colours illustrative).", 7.5,
-         {**build, "~door": (0.0, 1.0), "gauge": (1.0, 0.0)}),
+         {**build, "~door": (1.0, 1.0), "gauge": (1.0, 0.0)}),
         ("Laser off; the door opens on six compositions in one build.", 2.0,
          {"~door": (1.0, 0.0), "door": (0.0, 1.0)}),
         ("", 1.2, {}),
@@ -1132,7 +1132,7 @@ def ded() -> Instrument:
 _DED_OVER = ((1900.0, -3300.0, 2300.0), (0.0, 0.0, 950.0))
 _DED_DOOR = ((900.0, -1650.0, 1650.0), (-30.0, -200.0, 1250.0))
 _DED_IN = ((260.0, -620.0, 1420.0), (-65.0, -40.0, 1145.0))
-CAMS["instruments/ded"] = {1: _DED_DOOR, 4: _DED_IN, 6: _DED_OVER}
+CAMS["instruments/ded"] = {1: _DED_DOOR, 3: _DED_IN, 6: _DED_OVER}
 PLOTS["instruments/ded"] = _draw_ded_overlay
 
 
