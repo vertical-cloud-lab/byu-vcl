@@ -47,6 +47,7 @@ import tour                           # noqa: E402
 HERE = Path(__file__).resolve().parent
 NAME = "alloy_atomize"
 DEBUG = bool(__import__("os").environ.get("ATOMIZE_DEBUG"))
+TAIL = int(__import__("os").environ.get("ATOMIZE_TAIL", "0"))
 TITLE = "Vertical cloud lab: the charge cups into the atomizer"
 
 _spec = importlib.util.spec_from_file_location("repowder_model", HERE / "repowder" / "model.py")
@@ -76,6 +77,8 @@ PARK = np.radians(A.PARK_DEG)
 CARRIER_AT = (A.BUFFER_LOCAL[0], A.BUFFER_LOCAL[1], P.AMR_TOP - 20.0)    # where chapter 1 puts the cup carrier
 CRADLE_AT = (280.0, 10.0, P.AMR_TOP - 20.0)                           # the container's cradle, beside the arm
 CRADLE_H = 150.0
+END_POSE = (A.REPOWDER_AT[0] + 288.0, -2230.0)     # the hand-off to chapter 3 (sieve, print): MiR250 centre, yaw 0,
+                                                   # square to the container's axis, 41 mm off the view port's flange
 
 
 def lighter(c, k=0.45):
@@ -642,8 +645,24 @@ def build():
     return sc, L, mir, pool, powder, spray, drops, vent
 
 
+def fast_forward(sc, first: int):
+    """Re-render only from sub-step `first` on: earlier frames are counted but not drawn (ATOMIZE_TAIL), so a changed
+    ending can be spliced onto an earlier render (see the notes)."""
+    snap = sc.snap
+
+    def maybe(n=1):
+        if len(sc.substeps) < first:
+            sc.want_still = False
+            sc.n += n
+            return None
+        return snap(n)
+    sc.snap = maybe
+
+
 def movie():
     sc, L, mir, pool, powder, spray, drops, vent = build()
+    if TAIL:
+        fast_forward(sc, TAIL)
     rb = mir.rb
     n = 5
     m_cup = RUN["charge_g"]
@@ -931,8 +950,17 @@ def movie():
     rb.release("amr")
     sc.step(f"5/{n}", cap, 0.7, rb.line_to(t_place @ T((0, 0, -110))), hold=0.05)
     show_g(arm="parked", cont="on the MiR250, under argon")
+    cap = "The arm parks, and the MiR250 lines up in front of the rePowder for the next leg: the AS 200 sieve shaker."
+    sc.step(f"5/{n}", cap, 1.3, rb.joint_to(PARK), hold=0.2)
+    show_g(mir="lining up")
+    x_back = END_POSE[0] - 613.0                      # back off along the front, then an S-curve onto the hand-off spot
+    sc.step(f"5/{n}", cap, mir.secs(x_back, y_park), mir.drive(x_back, y_park), hold=0.0)
+    sc.step(f"5/{n}", cap, mir.secs(*END_POSE) + 0.6, mir.drive(*END_POSE), hold=0.2)
+    show_g(mir="at the rePowder")
     sc.step(f"5/{n}", "Done: the powder is on the MiR250, in front of the rePowder. Next: the AS 200 sieve shaker and "
-            "the printer.", 1.3, rb.joint_to(PARK), hold=2.0)
+            "the printer.", 0.4, None, hold=2.0)
+    if DEBUG:
+        print("end pose", round(mir.x, 1), round(mir.y, 1), round(mir.yaw, 2), flush=True)
     print(f"highest forearm/wrist point {rb.max_z_world:.0f} mm", flush=True)
     return sc.save()
 

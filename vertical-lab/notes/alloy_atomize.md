@@ -8,7 +8,7 @@ charge. The arm then takes the powder container off onto the MiR.
 |---|---|
 | Clip | [GIF](../out/alloy_atomize.gif), [MP4](../out/mp4/alloy_atomize.mp4), [still](../out/alloy_atomize_still.png), sub-steps in [`alloy_atomize.json`](../out/alloy_atomize.json) |
 | Starts | MiR250 at the VLM's opening (`animate.AMR_XY`), the two Al cups in the first two pockets of `charge.carrier()` at `animate.BUFFER_LOCAL` on the cabinet: where chapter 1 ends |
-| Ends | MiR250 parked in front of the rePowder (y = −2450), the container in a cradle at MiR-local (280, 10) on the cabinet, the arm parked: where chapter 3 (sieve, print) starts |
+| Ends | MiR250 at world (−3487, −2230), yaw 0: square to the container's axis, 41 mm off the view port's flange, the hand-off chapter 3 (sieve, print) starts from. The container stands in a cradle at MiR-local (280, 10), seat z = 933 mm; the arm is parked. While the arm works the MiR stands 220 mm further out (y = −2450), because at y = −2230 the lid knob and the container's handle fall inside the UR10e's unreachable cylinder over its base; it drives onto the hand-off spot at the end |
 | Scene | `line.py`'s layout as `alloy_workflow.py` builds it, the rePowder loaded part by part from `repowder/model.py` (the merged copy `animate.Lab` adds is hidden) |
 | Ported | `Pool`, `Powder`, `Particles`, `stream`, `film`, `shake`, the heat colours, the argon volumes, `load_machine`/`set_cut`: #124's rePowder training animations (`atomizer-training/viz3d/steps.py` and `scene.py`, branch `claude/issue-124-20261003-0335`) |
 
@@ -56,3 +56,5 @@ charge. The arm then takes the powder container off onto the MiR.
   with the chamber still at over-pressure. The training vents the chamber first; check the order with AMAZEMET.
 - **The MiR parks 260 mm off the view port** so the arm has room to reach the lid knob: closer, the knob falls
   inside the UR10e's unreachable cylinder over its base. Check the floor space in front of the real rePowder.
+
+**Re-rendering only the ending.** `ATOMIZE_TAIL=52` counts the frames of the first 52 sub-steps without drawing them, so a changed ending renders in a minute. The ending was spliced onto the first render's MP4 at frame 1267 that way (ffmpeg trim + concat). The GIF is still the first render's: re-encoding the spliced GIF came out at 10–16 MB, so it ends just before the final 7 s re-drive. The MP4 and the JSON have the re-drive.
