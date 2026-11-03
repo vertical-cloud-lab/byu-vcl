@@ -422,16 +422,16 @@ def tray_dock() -> Instrument:
          "home, the supplies open: back on mains.", 2.4, {"head": (1.0, 0.0), "live": (0.0, 1.0)}),
     ]
     z = ZC
-    inst.labels = [("guide pin", (-24, PIN_DY, z), (0.84, 0.20)),
-                   ("mains", (0, INSERT_DY[0], z + 20), (0.16, 0.18)),
-                   ("Ethernet", (0, INSERT_DY[1], z + 20), (0.16, 0.28)),
-                   ("air", (0, INSERT_DY[2], z), (0.16, 0.38)),
-                   ("N2", (0, INSERT_DY[3], z), (0.16, 0.48)),
-                   ("water in / out", (0, INSERT_DY[4], z), (0.16, 0.58)),
+    inst.labels = [("guide pin", (-24, PIN_DY, z), (0.84, 0.20)),          # on the dock's head, which stays
+                   ("mains", (8, INSERT_DY[0], z + 20), (0.16, 0.18)),
+                   ("Ethernet", (8, INSERT_DY[1], z + 20), (0.16, 0.28)),
+                   ("air", (8, INSERT_DY[2], z), (0.16, 0.38)),
+                   ("N2", (8, INSERT_DY[3], z), (0.16, 0.48)),
+                   ("water in / out", (8, INSERT_DY[4], z), (0.16, 0.58)),
                    ("dock: actuator in the side wall", (110, -60, PLATE_Z0 + PLATE_H + 25), (0.84, 0.40)),
                    ("service plate on the tray", (-PLATE_T, -PLATE_L / 2, PLATE_Z0 + 5), (0.84, 0.66))]
     inst.cam = (1.0, -1.5, 1.0)
-    inst.framing = (0.62, 0.45)
+    inst.framing = (0.48, 0.45)
     inst.props = ("live",)
     return inst
 
