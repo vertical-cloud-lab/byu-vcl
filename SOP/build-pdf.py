@@ -54,6 +54,7 @@ blockquote {
   border-left: 4px solid #e0a800; page-break-inside: avoid;
 }
 blockquote p { margin: 3pt 0; }
+img { max-width: 100%; }
 """
 
 
@@ -69,8 +70,11 @@ def main() -> int:
         src.read_text(encoding="utf-8"),
         extensions=["tables", "sane_lists", "toc", "attr_list"],
     )
+    # The page is rendered from a temp dir, so point relative links and
+    # image paths (e.g. images/foo.jpg) back at the markdown file's folder.
     html = (
         "<!DOCTYPE html><html><head><meta charset='utf-8'>"
+        f"<base href='{src.parent.as_uri()}/'>"
         f"<title>{src.stem}</title><style>{CSS}</style></head>"
         f"<body>{html_body}</body></html>"
     )
