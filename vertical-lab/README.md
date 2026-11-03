@@ -266,6 +266,268 @@ python3 fab_tour.py gallery join table          # out/fabrication_gallery.png, o
 xvfb-run -a python3 fab_trays.py                # trays G-I, and the metal printers -> out/vlm_fab_trays.gif
 ```
 
+## Round 4: tray services and cameras, more instruments, the alloy workflow, the warehouse, the lab from scratch
+
+Asked for in [PR #318](https://github.com/vertical-cloud-lab/byu-vcl/pull/318#issuecomment-6613794646). Each part has
+its own notes file, with every source:
+
+| Part | Code | Notes |
+|---|---|---|
+| Quick disconnects at the back of each tray, UPS, N₂, chilled water and heat; stream cameras; cabling | [`services.py`](services.py) | [`notes/services.md`](notes/services.md) |
+| VHX-7000 with the EA-300 laser, desktop XRF, sieve shaker, six OpenFlexures on a sub-tray | [`instruments_char.py`](instruments_char.py) | [`notes/instruments_char.md`](notes/instruments_char.md) |
+| The CubXL set up for corrosion, a DED machine, a packaging station, and whether a HIP fits | [`instruments_lab.py`](instruments_lab.py) | [`notes/instruments_lab.md`](notes/instruments_lab.md) |
+| From the metal printer to the tensile test | [`alloy_workflow.py`](alloy_workflow.py), [`alloy_models.py`](alloy_models.py) | [`notes/alloy_workflow.md`](notes/alloy_workflow.md) |
+| The warehouse version with mobile manipulators, rail or mobile base, the lab set up from scratch | [`warehouse.py`](warehouse.py), [`setup_lab.py`](setup_lab.py) | [`notes/warehouse.md`](notes/warehouse.md) |
+| DAL's workflow steps, and where each goes | | [`notes/dal_workflow.md`](notes/dal_workflow.md) |
+
+| Video | GIF | MP4 | YouTube (unlisted) |
+|---|---|---|---|
+| **The lab set up from scratch**: an empty warehouse bay, the layout, utilities, the VLM, the floor machines, the two MiR250 + UR10e units put together, every tray loaded (A–F, with round 4's instruments), the cameras | [GIF](out/setup_lab.gif) | [MP4](out/mp4/setup_lab.mp4) | [on YouTube](https://www.youtube.com/watch?v=bITROBu1NNE) |
+| **The warehouse version**: two MiR250 + UR10e units drive between the VLM and the floor machines along marked aisles | [GIF](out/warehouse.gif) | [MP4](out/mp4/warehouse.mp4) | [on YouTube](https://www.youtube.com/watch?v=KbrkulS07EM) |
+| **From the printer to the tensile test**: the build plate out of the Aconity MIDI, the bars cut off in the wire EDM, one pulled to fracture in the 68FM-100 | [GIF](out/alloy_workflow.gif) | [MP4](out/mp4/alloy_workflow.mp4) | [on YouTube](https://www.youtube.com/watch?v=YVdpGTLvxhI) |
+| **Tray services**: the docking coupling in the slot and at the opening, the tethered alternative, the cabling | [docking](out/vlm_services.gif), [tether](out/vlm_tether.gif), [cabling](out/vlm_cabling.gif) | [MP4](out/mp4/vlm_services_all.mp4) | [on YouTube](https://www.youtube.com/watch?v=ed2M0u5Rjw0) |
+| **The round-4 instruments**, each doing its job | [gallery](out/instruments_gallery.png) | [MP4](out/mp4/instruments_round4_tour.mp4) | [on YouTube](https://www.youtube.com/watch?v=IEbhMjcAUOQ) |
+
+![The lab set up from scratch](out/setup_lab_still.png)
+
+### Quick disconnects, UPS, N₂, chilled water and heat
+
+![Tray A at the opening, docked](out/vlm_services_still.png)
+
+- **A tray has power only in its slot and at the opening, not in transit** (#53, where the dealer offered a
+  quick-connect cord). A search of Kardex's published Shuttle options found nothing that brings air, gas, water or data
+  to a tray.
+- **The coupling can't go on the back edge itself.** In a front-column slot and at the opening, the back edge faces
+  the shaft. A dock there would sit in the extractor's path, and the shutter closes 35 mm behind the presented tray.
+- **One plate per tray, at its back-right corner, mating sideways, serves every place.** Its docks sit in the right
+  side wall of each slot and of the bay, with a 45 mm stroke, clear of the extractor and the shutter. The plate is a
+  Stäubli CombiTac carrying:
+  - four 39 A power contacts;
+  - Cat 6A;
+  - air and N₂;
+  - chilled water in and out.
+
+  CombiTac align 4's pins take up 4 mm of misalignment. ODU-MAC and Harting make similar docking frames.
+- **The couplings must not part under pressure** (Stäubli). So the dock shuts and vents the air, N₂ and water before
+  it pulls back, and opens them only once the plate is home. A tray is disconnected only while the extractor carries
+  it.
+- **A UPS on each tray covers the transit.** An Eaton 5PX1500 bridges the roughly 6 s from R2 to the opening for
+  trays A–E. Tray F's furnace draws 2.8 kW, more than the UPS gives, so its heaters pause in transit.
+- **Heat is the real limit.**
+  - With everything on, the trays put about 7.0 kW into the machine. Unventilated, that is about a 23 K rise; holding
+    the rise to 5 K takes about 4200 m³/h of air.
+  - The N₂ generator (Parker UHPN2-1100, 889 mm tall) can't go on a tray. It and the recirculating chiller stand
+    beside the VLM, piped through the docks, so their heat stays outside.
+  - This is the question for Kardex.
+- **The tether, the continuous alternative.** An igus e-spool carries power, data and hoses on one chain, and a slot
+  near the opening needs only 2.1–2.8 m of payout. While that tray is out, though, its line spans the shaft, so the
+  extractor can't fetch any other tray. It suits one tray, kept low.
+
+### Stream cameras
+
+![Tray D at the opening with its cameras](out/vlm_cameras_still.png)
+
+- **The unit is the lab's own**, from DAL PR #189: a Pi 5 with the HQ Camera (16 mm M12 lens) and a Camera Module 3
+  Wide, in a PETG box on a 2020 post.
+- **On the trays, not the modules.** There are 2–3 per tray, 14 in all, each aimed at an instrument's working face
+  and under the 727.5 mm product height. They watch the printers and the CubXL work while the tray is in storage, and
+  the dock already brings power and Ethernet.
+- **The overhead camera** hangs at the back of the bay, 28 mm above Kardex's product envelope. Its wide camera covers
+  about 2.37 m of the 2.45 m tray. It hasn't yet been checked against the arm's poses.
+
+### Cabling
+
+![The cabling](out/vlm_cabling_still.png)
+
+- **One overhead ladder tray** at 2.8 m behind the line and round the back of the VLM, with drops to every machine
+  and risers inside the VLM to the docks. [`out/cabling.json`](out/cabling.json) lists the circuits.
+- **The FANUC wire EDM is the biggest load**, at 13 kVA, 200 V three-phase. That figure is from a search result;
+  the page itself wasn't opened.
+- **No ratings found** for the Aconity MIDI or the glovebox. Several other ratings come from search snippets; the
+  JSON marks which.
+
+### More instruments
+
+![Every instrument](out/instruments_gallery.png)
+
+| Instrument | Model | GIF, MP4 | Where |
+|---|---|---|---|
+| Digital microscope with laser elemental analysis (LIBS) | Keyence VHX-7000 + EA-300 on the VHX-S750E stand | [GIF](out/instruments/vhx.gif), [MP4](out/mp4/instruments/vhx.mp4) | tray C, beside the A1 mini |
+| Benchtop EDXRF | Bruker S2 PUMA Series 2, 20-position XY Autochanger | [GIF](out/instruments/xrf.gif), [MP4](out/mp4/instruments/xrf.mp4) | tray F |
+| Sieve shaker | Retsch AS 200 control, with DAL's 8 in stack | [GIF](out/instruments/sieve.gif), [MP4](out/mp4/instruments/sieve.mp4) | tray F in the set-up scene; better beside the rePowder (below) |
+| Six reflection microscopes on one sub-tray | OpenFlexure, 4 × v7 + 2 × Delta Stage | [GIF](out/instruments/openflexure_array.gif), [MP4](out/mp4/instruments/openflexure_array.mp4) | tray D, in place of the two freestanding ones |
+| CubXL set up for corrosion | CubXL + NuVant EZstat Pro, DAL PR #180's deck | [GIF](out/instruments/cubxl_corrosion.gif), [MP4](out/mp4/instruments/cubxl_corrosion.mp4) | tray A, in place of round 2's CubXL |
+| Directed energy deposition | InssTek MX-Lab | [GIF](out/instruments/ded.gif), [MP4](out/mp4/instruments/ded.mp4) | the floor |
+| Packaging | Primera AP380 + LX500c, Zebra ZD621t, Uline H-190 | [GIF](out/instruments/packaging.gif), [MP4](out/mp4/instruments/packaging.mp4) | a bench on the floor |
+| HIP against a tray | Kobelco O2-Dr.HIP | [GIF](out/instruments/hip.gif), [MP4](out/mp4/instruments/hip.mp4) | doesn't fit |
+| The docking coupling; the camera unit | | [dock](out/instruments/tray_dock.gif), [camera](out/instruments/stream_cam.gif) | every tray |
+
+- **VHX + EA-300.**
+  - The EA-300 is a 355 nm laser with a 10 µm spot, reading elements H to U.
+  - Stand and head stand 655 mm against Kardex's 727.5 mm. The stand's outer size isn't published, so its base is an
+    estimate.
+  - Keyence has replaced the VHX-7000 with the VHX-X1.
+- **XRF.**
+  - The S2 PUMA is 670 × 710 × 610 mm and 108 kg. It has a reduced-pressure helium mode for loose powder.
+  - It is the only candidate with a published robot interface (its Automation version).
+  - Bruker doesn't publish the lid's open height; drawn 35° open, it reaches about 905 mm. That is more than the
+    roughly 844 mm under the opening's header, so ask Bruker.
+- **Sieving.**
+  - The stack is the one DAL bought or ordered (DAL PR #175): No. 60, 100, 140, 230, 325 and a pan.
+  - LPBF's 20–63 µm is the No. 325 and the pan. DED's 45–105 µm is the No. 230 and the No. 325.
+  - No sieve shaker sold for robot loading was found, so the clip shows what an arm would do: pour, lid, knobs.
+  - For aluminium powder the dust hazard argues for the shaker beside the rePowder, or in the glovebox, rather than
+    in the VLM.
+  - The lab's own sieving, by hand, is on the channel: the 630 bronze [1](https://www.youtube.com/watch?v=7pqPt9xbV8E),
+    [2](https://www.youtube.com/watch?v=sN0xzUjTDKE), [3](https://www.youtube.com/watch?v=Dni35K9VWck).
+- **OpenFlexure array.**
+  - Four v7 and two Delta Stages, so the two designs can be compared on the same coupons.
+  - They sit on a 1/4 in aluminium tooling plate, 700 × 510 mm and 5.6 kg after pocketing, each microscope in a 2 mm
+    pocket cut to its own footprint, with handles.
+  - The meshes are rebuilt from OpenFlexure's OpenSCAD. [`notes/instruments_char.md`](notes/instruments_char.md) has
+    four steps the pipeline's README lacked.
+- **The CubXL for corrosion.**
+  - It follows DAL PR #180's plan, which is not built yet:
+    - four coupons on pogo pins under FKM O-ring lids, each a 0.071 cm² well of about 150 µL;
+    - a magnetic cap with a 2 mm Ag/AgCl reference inside a Pt coil;
+    - 0.6, 0.06 and 0.006 M NaCl;
+    - per spot, OCP, then LPR, then cyclic polarization.
+  - No measured corrosion data exist yet. The curve on screen is labelled illustrative; only its E_corr and i_corr
+    come from Wu et al. 2022.
+- **DED: the InssTek MX-Lab.**
+  - It is the only candidate with a published size and mass: 680 × 684 × 835 mm and 250 kg without its base.
+  - It has six hoppers that blend in the melt pool, and an argon option holding O₂ at 50 ppm or less.
+  - It is also the first step in DAL PR #117's own plan, at Utah. The "Mines X2" in DAL PR #220 is a FormAlloy X2,
+    which publishes no size.
+  - The other session's Meltio M450 (wire-laser, [above](#fabrication-compact-metal-printers-resin-printing-and-pcb-assembly))
+    is the wire alternative.
+- **Packaging.**
+  - Primera sells no print-and-apply bundle: the LX500c prints a roll that the AP380 wraps on. Laid out with the
+    sealer, the foam shipper and the Zebra, the station is about 1990 × 650 × 229 mm.
+  - Whether a powder is dangerous goods depends on a test (UN N.1 / N.5), not the alloy's name. Coated aluminium
+    powder is UN 1309 (Class 4.1) and uncoated UN 1396 (4.3), and USPS takes no flammable solid abroad.
+  - The QR code in the clip is a placeholder pattern.
+
+### Could a hot isostatic press fit on the VLM? No.
+
+![The HIP against a tray](out/instruments/hip.png)
+
+The smallest 200 MPa lab HIP with a published size, Kobelco's O2-Dr.HIP, is 1315 × 1100 × 1300 mm and 1100 kg:
+- 572.5 mm over the 727.5 mm product height, and 236 mm deeper than the 864 mm tray;
+- 4.8×, 3.1× and 2.2× the light, medium and strong trays' payloads;
+- it needs argon, cooling water and air, and its cooling must not stop. A tray has power only, and none in transit.
+
+A HIP stands on the floor or goes out to a service.
+
+### From the metal printer to the tensile test
+
+| The wire cutting the bars off, machine see-through | The bar broken in the 68FM-100 |
+|---|---|
+| ![The cut](out/alloy_workflow_cut.png) | ![The break](out/alloy_workflow_still.png) |
+
+The UR10e on the MiR250 does each move with straight-line IK, as in round 2:
+1. **The Aconity MIDI.** The chamber opens and the platform rises. A person depowders: no automatic depowdering was
+   found for the MIDI. The arm lifts the plate out by a printed lug.
+2. **The wire EDM.** The plate goes into a fixture on the table, on edge. The tank fills, and the wire cuts the four
+   bars off at their base, drawn see-through.
+3. **The 68FM-100.** The arm puts one bar in the wedge grips, and the test runs to fracture. A stress–strain curve
+   draws in step.
+
+What the workflow showed:
+- **The arm can't point straight down inside the MIDI's chamber**, which is about 280 mm tall inside. Pointed down,
+  its wrist would be 38 mm above the roof, so it takes the plate by a lug, at 30° down.
+- **At the machines the MiR parks 230 mm off the front, not 30 mm** as at the VLM. Otherwise the plate's 435 mm move
+  out of the chamber has no IK solution.
+- **The bar needs the 68FM-100.** A 6 × 6 mm section at 412 MPa is a 14.8 kN pull. The 68SC-2's 2 kN is reached at
+  56 MPa, below yield.
+- **The plate stands on edge in the EDM.** A vertical wire can only cut the bars off at their base that way. The cut
+  is 3389 mm², so at least about 11 minutes at the 300 mm²/min GF quotes for its AM cutter. FANUC gives no rate for
+  aluminium.
+
+Real data and illustrative data:
+- **The SEM inset is real.** It is the lab's stock AlSi10Mg powder on BYU's Apreo, at 500×, taken 2 April 2026 by Gage
+  Erickson ([#48](https://github.com/vertical-cloud-lab/byu-vcl/issues/48#issuecomment-4181040112)).
+- **The curve is not a measurement**, and the clip says so. It is drawn through AddUp's published as-built values.
+  No real tensile data were found in DAL or here.
+
+### The warehouse version, and rail or mobile base
+
+![Rail or mobile base](out/rail_vs_amr.png)
+
+- **The floor.** Aisles are 3.0 m, MiR's figure for two MiR250s passing. Docks sit outside the aisle, and there are
+  two MiR chargers.
+- **MiR250 docking accuracy.**
+  - To an L-marker: ±6 / ±3 mm and ±1°. To a VL-marker: ±3 / ±3 mm. With no marker: ±60 / ±85 mm and ±4°.
+  - 1° of yaw is 23 mm at the arm's 1.3 m reach, so every station needs a reference the arm measures before it
+    works. A six-touch calibration on a cube reached ±0.12 mm (Burger et al., *Nature* 2020).
+- **The pedestal hardly sways; the carriage takes the moment.**
+  - A Ø219.1 × 8 mm steel tube lifting the UR10e from a floor-level rail moves the tool 0.05 mm running and 0.08 mm
+    in a stop. Its first mode is about 129 Hz, against UR's 45 Hz minimum.
+  - That is below Vention's own ±0.3 mm repeatability.
+  - What the pedestal costs is 29–48 % more moment on the carriage: 494–568 Nm against 384 Nm. No maker publishes the
+    figures to check that against. The numbers are in [`out/rail_vs_amr.json`](out/rail_vs_amr.json).
+- **A UR10e on a MiR250 can tip.** UR's worst-case loads give 619 Nm running and 955 Nm stopping, against roughly
+  554 Nm of resistance, so the arm runs with lower acceleration limits.
+- **The MiR250 can't power the arm.** Its top-module supply is 480 W at 48 V. The UR10e can draw 615 W, and its
+  standard control box wants mains.
+
+### The lab set up from scratch
+
+The set-up scene, in order:
+1. An empty warehouse bay.
+2. The layout in tape on the floor.
+3. Utilities: cable trays, power drops, network, argon.
+4. The VLM assembled.
+5. The floor machines, including the DED machine and the packaging station (on a bench).
+6. The first MiR250 + UR10e unit put together on its charger:
+   - the cabinet goes on;
+   - the UR control box goes inside;
+   - the arm is bolted down with UR's four M8 bolts and two dowel pins;
+   - the gripper goes on.
+
+   Then the second unit appears.
+7. Trays A–F loaded through the opening, by people, since most instruments weigh more than the arm's 12.5 kg.
+   Round 4's instruments go where `setup_lab.ROUND4_TRAY` puts them:
+   - the corrosion CubXL on A;
+   - the VHX on C;
+   - the OpenFlexure array on D;
+   - the sieve shaker and the XRF on F.
+
+   Each tray then goes back to its slot.
+8. The stream cameras, from `services.add_cameras`.
+9. A closing orbit.
+
+`python3 setup_lab.py fit` checks every tray item against the product height, the tray's rim and its neighbours.
+Trays G–I (fabrication, above) aren't in this scene yet.
+
+### The alloy workflow, step by step, from DAL
+
+[`notes/dal_workflow.md`](notes/dal_workflow.md) maps every step DAL runs by hand to the station it would use here, and
+names what is still missing. It links the lab's own footage of each step from the channel. The gaps it finds:
+- a station that fills and presses the atomizer's cups;
+- powder transfer between atomizer, sieve and jar without air exposure;
+- a dry cabinet;
+- a stub-prep station for the SEM;
+- a mounting press;
+- a hardness tester;
+- a balance with a density kit, for DAL #144's Archimedes cubes;
+- automatic depowdering.
+
+### The real VLM
+
+Sterling's test of a real vertical lift module is on his own channel: [*Vertical Lift Module in operation – from the
+sample's perspective*](https://www.youtube.com/watch?v=ck8QJhVqPiY) (59 s, 2025-09-15, recorded while collecting
+vibration data). The VLM also appears in two talks:
+- [*Towards an Autonomous Vertical Cloud Lab for Additively Manufactured Aerospace
+  Alloys*](https://www.youtube.com/watch?v=6uJP2CKMbEM) (Fall MRS 2025; "vertical automation" runs 00:00–14:00);
+- Matterhorn Studio's [*Vertical Cloud Lab*](https://www.youtube.com/watch?v=3xRSuz3zBww).
+
+Earlier rounds, on YouTube (unlisted):
+- [round 3's instruments](https://www.youtube.com/watch?v=ISyVIHtmvZc);
+- [trays D–F and the line](https://www.youtube.com/watch?v=oWM3fCZiwRs);
+- [the fabrication tools](https://www.youtube.com/watch?v=HYN9dYyRkrQ);
+- [trays G–I](https://www.youtube.com/watch?v=5q5Pv2Mhbn8).
+
 ## The workflow
 
 An example run, with every move a real one:
@@ -387,6 +649,19 @@ xvfb-run -a python3 tour.py                               # round 3: every instr
 python3 tour.py gallery join table                        # the gallery, the joined tour MP4, out/instruments.json
 xvfb-run -a python3 line.py                               # the trays D-F, the line and the rail -> out/vlm_line.gif
 ```
+
+Round 4:
+
+```bash
+xvfb-run -a python3 tour.py vhx xrf sieve openflexure_array cubxl_corrosion ded packaging hip tray_dock stream_cam
+xvfb-run -a python3 services.py services cabling tether cameras json   # -> out/vlm_services.*, vlm_cabling.*, vlm_tether.*
+xvfb-run -a python3 alloy_workflow.py                                   # -> out/alloy_workflow.*
+xvfb-run -a python3 warehouse.py; python3 warehouse.py sway compare     # the warehouse; out/rail_vs_amr.{json,png}
+python3 setup_lab.py fit; xvfb-run -a python3 setup_lab.py              # check every tray item, then the set-up movie
+```
+
+Under load, Xvfb sometimes drops the render window ("bad X server connection", "Render window is not current"). Retrying
+the same command has worked every time. Render one instrument per process with `PREVIEW=1`.
 
 `openflexure.py` reads the OpenFlexure meshes from `.cache/openflexure/`; [`openflexure/README.md`](openflexure/README.md)
 says how to make them.
