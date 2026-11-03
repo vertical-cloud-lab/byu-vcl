@@ -539,18 +539,18 @@ def sieve() -> Instrument:
         ("lid", "knobL", "knobR")
     inst.actions = [
         ("The powder from the atomizer's container goes onto the top sieve. The stack is the 8 in, 304 stainless one "
-         "DAL bought and ordered: No. 60, 100, 140, 230, 325 and a pan.", 2.4,
+         "DAL bought and ordered: No. 60, 100, 140, 230, 325 and a pan.", 2.8,
          {"carrier": (0.0, 1.0), "container": (0.0, 1.0), **fades}),
-        ("", 1.6, {"stream": (0.0, 1.0), **{f"frac_{k}": (0.0, 1.0) for k, *_ in STACK}}),
+        ("", 2.0, {"stream": (0.0, 1.0), **{f"frac_{k}": (0.0, 1.0) for k, *_ in STACK}}),
         ("The container goes back. The clamping lid goes over the two rods and down onto the stack, and its knobs "
-         "clamp it: what an arm would do, since no shaker found is sold for robot loading.", 3.0,
+         "clamp it: what an arm would do, since no shaker found is sold for robot loading.", 3.4,
          {"stream": (1.0, 0.0), "carrier": (1.0, 0.0), "container": (1.0, 0.0), "lid": (0.0, 1.0),
           "knobL": (0.0, 1.0), "knobR": (0.0, 1.0)}),
         ("Sieving, drawn see-through: 3-D throwing motion, amplitude 0.2-3 mm. Each size class falls until a cloth "
-         "stops it.", 4.6, {"stack": (0.0, 1.0), "~stack": (0.0, 1.0), "~lid": (0.0, 1.0),
+         "stops it.", 5.6, {"stack": (0.0, 1.0), "~stack": (0.0, 1.0), "~lid": (0.0, 1.0),
                             **{f"fall_{k}": (0.0, 1.0) for k, *_ in STACK}}),
         ("The fractions, by the sieve that keeps each. The LPBF cut (20-63 um) is the No. 325 and the pan; DED's "
-         "45-105 um is the No. 230 and No. 325; its 100-200 um is close to the No. 140 and No. 100.", 3.6,
+         "45-105 um is the No. 230 and No. 325; its 100-200 um is close to the No. 140 and No. 100.", 4.6,
          {"readout": (0.0, 1.0)}),
     ]
     inst.labels = [(f"No. {num} ({op} um)" if num else "pan", (RW + LIP, 0, levels[key] + 10),
@@ -689,16 +689,18 @@ def vhx() -> Instrument:
     inst.aside = ("readout", "controller")
     inst.props = ("sample",)
     inst.actions = [
-        ("A polished, mounted coupon goes onto the VHX-S750E's motorized XY stage (+-20 mm).", 2.0,
+        ("A polished, mounted coupon goes onto the VHX-S750E's motorized XY stage (+-20 mm).", 2.4,
          {"sample": (0.0, 1.0), "laser": (0.0, 0.0), "plasma": (0.0, 0.0), "readout": (0.0, 0.0)}),
-        ("The free-angle head tilts to look at the surface from the side; the view stays centred on the coupon.", 2.2,
+        ("The free-angle head tilts to look at the surface from the side; the view stays centred on the coupon.", 2.6,
          {"head": (0.0, 1.0)}),
         ("Upright again. Depth composition: the motorized Z focus sweeps through the relief and the controller keeps "
-         "the sharp part of each frame (VH-ZST zoom: 20-2000x).", 3.0, {"head": (1.0, 0.0), "focus": (0.0, 1.0)}),
+         "the sharp part of each frame (VH-ZST zoom: 20-2000x).", 3.6, {"head": (1.0, 0.0), "focus": (0.0, 1.0)}),
         ("The EA-300 fires: a 355 nm Nd:YAG pulse (drawn red, and far wider than its 10 um spot) turns a speck of the "
-         "surface into a plasma.", 1.8, {"laser": (0.0, 1.0), "plasma": (0.0, 1.0)}),
+         "surface into a plasma.", 2.4, {"laser": (0.0, 1.0), "plasma": (0.0, 1.0)}),
         ("Its spectrometer reads the plasma's light: elements from H to U, in seconds, at the spot the camera is "
-         "looking at.", 3.4, {"laser": (1.0, 0.0), "plasma": (1.0, 0.3), "readout": (0.0, 1.0)}),
+         "looking at.", 4.2, {"laser": (1.0, 0.0), "plasma": (1.0, 0.3), "readout": (0.0, 1.0)}),
+        ("The EA-300 adds 7.2 kg and 375 mm to the stand. Stand and head are 655 mm tall: under Kardex's 727.5 mm.",
+         2.4, {"plasma": (0.3, 0.0), "readout": (1.0, 0.0)}),
     ]
     inst.labels = [("EA-300 LIBS head", (sx0 - p["ea_W"] / 2, -40, z_ea + 250), (0.10, 0.25)),
                    ("VH-ZST zoom lens", (sx0 + 95 + 29, -40 - 80, z_ea + 120), (0.42, 0.14)),
@@ -817,17 +819,17 @@ def xrf() -> Instrument:
     inst.aside = ("readout",)
     inst.props = ("sample", "beam")
     inst.actions = [
-        ("The lid lifts on its rear hinge, uncovering the XY Autochanger's 20-position tray.", 1.8,
+        ("The lid lifts on its rear hinge, uncovering the XY Autochanger's 20-position tray.", 2.2,
          {"lid": (0.0, 1.0), "sample": (0.0, 0.0), "beam": (0.0, 0.0), "readout": (0.0, 0.0)}),
-        ("A cup of atomized powder, closed underneath by a thin prolene film, goes into a free seat.", 2.2,
+        ("A cup of atomized powder, closed underneath by a thin prolene film, goes into a free seat.", 2.6,
          {"sample": (0.0, v_seat)}),
         ("Lid down; drawn see-through.", 1.6, {"lid": (1.0, 0.0), "~body": (0.0, 1.0), "~lid": (0.0, 1.0)}),
         ("The changer takes the cup to the measuring position, film side down over the window: the tube and the "
-         "detector are underneath. Helium at reduced pressure keeps loose powder in place.", 2.4,
+         "detector are underneath. Helium at reduced pressure keeps loose powder in place.", 2.8,
          {"sample": (v_seat, 1.0)}),
         ("The beam, drawn see-through: up to 50 kV and 50 W from the tube; each element in the powder answers with "
-         "its own X-ray lines, which the silicon drift detector counts.", 2.6, {"beam": (0.0, 1.0)}),
-        ("The spectrum: peaks at each element's lines give the composition, Na to Am, in minutes.", 3.4,
+         "its own X-ray lines, which the silicon drift detector counts.", 3.0, {"beam": (0.0, 1.0)}),
+        ("The spectrum: peaks at each element's lines give the composition, Na to Am, in minutes.", 4.8,
          {"readout": (0.0, 1.0)}),
     ]
     inst.labels = [("lid", (-W / 2 + 60, yf + 300, H - 5), (0.10, 0.22)),

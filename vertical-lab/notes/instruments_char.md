@@ -108,7 +108,7 @@ Source: Bruker's S2 PUMA Series 2 specifications, via its distributor DKSH.
 | Other versions | single-sample 37 cm tall, 87 kg; Carousel and Automation 57 cm, 130–132 kg |
 | Tray | 20 removable positions; cups up to 40 mm across and 38 mm tall |
 | Tube | Pd or Ag anode; 50 W; 50 kV max |
-| Detector | HighSense silicon drift detector; Na to Am |
+| Detector | HighSense silicon drift detector; Na to Am (C to Am for the LE version) |
 | Atmosphere | Air, vacuum, He or N2; a "Helium mode with reduced pressure" for loose powder |
 
 Why it, of the six looked at:
@@ -138,9 +138,10 @@ Things to know:
 - **The spectrum is illustrative:** real Kα energies (Mg 1.25, Al 1.49, Si 1.74, Mn 5.90, Fe 6.40, Cu 8.05,
   Zn 8.64 keV) and Ag Lα from an Ag tube, with made-up heights. The panel says so.
 - **DAL's issue #102** (a TMS abstract on compositional analysis of AM powders and prints) is the use.
-  - The S2 PUMA covers Na to Am, so it covers Mg, Al and Si in the Al alloys.
-  - It can't measure C, N or O. DAL's `edison-trajectories/automated_characterization.md` notes that light elements
-    are hard for EDS and XRF, and points to glow-discharge spectroscopy for C, N and O.
+  - The standard S2 PUMA covers Na to Am, so it covers Mg, Al and Si in the Al alloys. Bruker lists an LE version
+    from C.
+  - DAL's `edison-trajectories/automated_characterization.md` notes that light elements are hard for EDS and XRF,
+    and points to glow-discharge spectroscopy for C, N and O.
 
 ### Sieve shaker: Retsch AS 200 control
 
@@ -183,10 +184,10 @@ What that gives each process:
 How much powder lands in each fraction is an example, not data. The clip and the fractions panel say so.
 
 **No sieve shaker found is sold for robot loading.**
-- Retsch, Fritsch, Haver and Gilson sell none.
+- None was found from Retsch, Fritsch, Haver or Gilson. That doesn't prove none exists.
 - **Nearest:** Fritsch's ANALYSETTE 3 PRO, whose electric "TorqueMaster" tensions the stack, would take the
-  hand-tightened knobs out of the job. SIEBTECHNIK TEMA's ASM has quick-release fasteners. Neither has published
-  dimensions I could check.
+  hand-tightened knobs out of the job. SIEBTECHNIK TEMA's ASM has quick-release fasteners. I could check neither
+  one's dimensions: Fritsch's came only from a distributor's search extract, and none were found for the ASM.
 - **Prior art:** an IROS 2025 paper (arXiv 2509.14531) has two arms working a vibratory sieve shaker's lid.
 - **What the clip shows instead:** what an arm would do with the AS 200. It tips the container, carries the lid over
   the rods and lowers it, and turns the two knobs.
@@ -249,3 +250,6 @@ don't know whether Kardex's configuration leaves another.
   keep their place in the hero still. They are the container, the VHX controller and the readouts.
 - **Display trouble.** Under the load of five agents, `xvfb-run` on this runner sometimes gave VTK a "bad X server
   connection". That happened on several display numbers, not just 101. A retry fixed it each time.
+- **Placing them in `line.py`.** Outside the tour, a `tour.Rig` starts every joint at `v0`. The slides, cups and
+  powder then hang at the start of their paths, as the XRD's holder does today. Put the props in place first, as
+  the tour's hero still does: `rig.move({k: (None, 1.0) for k in inst.props})(1.0)`.
