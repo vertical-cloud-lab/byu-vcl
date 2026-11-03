@@ -1,0 +1,17 @@
+{
+ "name": "vlm_cameras",
+ "fps": 15,
+ "n_frames": 17,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "",
+   "caption": "Tray D at the opening: 3 Pi 5 units on 2020 posts, each aimed at an instrument's working face and under the 727.5 mm product height, and the overhead unit at the back of the bay, 28 mm above Kardex's product envelope.",
+   "start_frame": 0,
+   "end_frame": 16
+  }
+ ]
+}

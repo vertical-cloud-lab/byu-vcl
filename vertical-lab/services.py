@@ -422,16 +422,16 @@ def tray_dock() -> Instrument:
          "home, the supplies open: back on mains.", 2.4, {"head": (1.0, 0.0), "live": (0.0, 1.0)}),
     ]
     z = ZC
-    inst.labels = [("guide pin", (-24, PIN_DY, z), (0.84, 0.20)),
-                   ("mains", (0, INSERT_DY[0], z + 20), (0.16, 0.18)),
-                   ("Ethernet", (0, INSERT_DY[1], z + 20), (0.16, 0.28)),
-                   ("air", (0, INSERT_DY[2], z), (0.16, 0.38)),
-                   ("N2", (0, INSERT_DY[3], z), (0.16, 0.48)),
-                   ("water in / out", (0, INSERT_DY[4], z), (0.16, 0.58)),
+    inst.labels = [("guide pin", (-24, PIN_DY, z), (0.84, 0.20)),          # on the dock's head, which stays
+                   ("mains", (8, INSERT_DY[0], z + 20), (0.16, 0.18)),
+                   ("Ethernet", (8, INSERT_DY[1], z + 20), (0.16, 0.28)),
+                   ("air", (8, INSERT_DY[2], z), (0.16, 0.38)),
+                   ("N2", (8, INSERT_DY[3], z), (0.16, 0.48)),
+                   ("water in / out", (8, INSERT_DY[4], z), (0.16, 0.58)),
                    ("dock: actuator in the side wall", (110, -60, PLATE_Z0 + PLATE_H + 25), (0.84, 0.40)),
                    ("service plate on the tray", (-PLATE_T, -PLATE_L / 2, PLATE_Z0 + 5), (0.84, 0.66))]
     inst.cam = (1.0, -1.5, 1.0)
-    inst.framing = (0.62, 0.45)
+    inst.framing = (0.48, 0.45)
     inst.props = ("live",)
     return inst
 
@@ -620,13 +620,13 @@ def make_lab(sc, data, robot=False):
     return SLab(sc, data, robot=robot)
 
 
-def build_vlm(name, data, idata, title, docks=True, cams=True):
+def build_vlm(name, data, idata, title, docks=True, cams=True, mp4=True):
     """The VLM with trays A-F and their equipment (as line.py has them, without the floor line), the docks, plates,
     UPSs and cameras. Returns (scene, lab, {tray: [line actor names]})."""
     import line
     import tour
     from scene import Scene, T
-    sc = Scene(name, title, gif=False)
+    sc = Scene(name, title, gif=False, mp4=mp4)
     L = make_lab(sc, data)
     for k, loads in line.TRAY_LOADS.items():
         line.add_tray(sc, L, k)
@@ -663,7 +663,7 @@ CAM_S_WIDE = [(6800, -5200, 4300), (300, 0, 1700), (0, 0, 1)]
 CAM_S_R2 = [(1930, 930, 1480), (1240, 1320, 1150), (0, 0, 1)]
 CAM_S_MID = [(5200, -2900, 2500), (700, -200, 1100), (0, 0, 1)]
 CAM_S_BAY = [(1930, -1130, 1240), (1240, -740, 910), (0, 0, 1)]
-CAM_S_CAMS = [(2400, -4300, 2500), (0, -1050, 1200), (0, 0, 1)]
+CAM_S_CAMS = [(1500, -3900, 1560), (-150, -1000, 1180), (0, 0, 1)]     # under the header, as the camera still
 
 
 def movie_services(data, idata):
@@ -757,6 +757,30 @@ def movie_services(data, idata):
             "overhead one at the back of the bay, above Kardex's product envelope, looking down on the presented "
             "tray.", 3.2, None, hold=2.6, cam_to=CAM_S_CAMS, still=True,
             labels=cam_lbl + [("overhead camera at the bay", (0, BAY_CAM["y"], BAY_CAM["pivot_z"]), (0.60, 0.13))])
+    return sc.save()
+
+
+def still_cameras(data, idata, k="D"):
+    """out/vlm_cameras_still.png: tray k presented, its stream cameras and the bay's overhead one."""
+    import animate as A
+    sc, L, live = build_vlm("vlm_cameras", data, idata, f"Stream cameras: tray {k} at the opening", mp4=False)
+    L.skin(1.0)(1.0)
+    L.tray[k] = [V.Y_OPEN, V.Z_OPEN]
+    L.where[k] = "open"
+    L.lift_z = V.Z_OPEN
+    set_dock(sc, "open", 0.0)
+    set_dock(sc, HOME[k], 1.0)
+    L.svc_lines = [(f"Tray {k}", f"at the opening, {len(TRAY_CAMS[k])} cameras"), ("Bay", "one overhead camera")]
+    L.apply_state()
+    sc.cam = [(1500, -3900, 1560), (-150, -1000, 1180), (0, 0, 1)]
+    lbl = []
+    for i, (x, y, *_r) in enumerate(TRAY_CAMS[k]):
+        lbl.append((f"Pi 5 + HQ + Wide, on tray {k}", tuple(A.tray_world(k, (x, y, V.T_FLOOR + CAM_PIVOT + 30))),
+                    (0.12 + 0.30 * i + (0.08 if i == 2 else 0.0), 0.20 + 0.06 * (i % 2))))
+    lbl.append(("overhead camera at the bay", (0.0, BAY_CAM["y"], BAY_CAM["pivot_z"]), (0.60, 0.09)))
+    sc.step("", f"Tray {k} at the opening: {len(TRAY_CAMS[k])} Pi 5 units on 2020 posts, each aimed at an instrument's "
+            "working face and under the 727.5 mm product height, and the overhead unit at the back of the bay, 28 mm "
+            "above Kardex's product envelope.", 0.1, None, hold=0.0, labels=lbl, still=True)
     return sc.save()
 
 
@@ -1102,7 +1126,8 @@ def heat_budget() -> dict:
         utilities=dict(
             ups=dict(model="Eaton 5PX1500RTNG2", size_mm=[UPS["w"], UPS["d"], UPS["h"]], rating="1500 VA, 120 V",
                      runtime="44 min at 300 W (230 V model, retailer)", where="on every tray, back right",
-                     transit_s="about 6 s from R2 to the opening; under 15 s from any slot at Kardex's speeds",
+                     transit_s="about 6 s from R2 to the opening: 2 x 1030 mm at 0.7 m/s (3 s), 246 mm at 2 m/s "
+                               "(0.1 s), plus the shutter and accelerations (not published); R4 adds about 0.8 s",
                      source=SOURCES["ups"]),
             n2=dict(model="Parker Balston UHPN2-1100", size_mm=[N2GEN["w"], N2GEN["d"], N2GEN["h"]],
                     fits_tray=N2GEN["h"] <= V.MAX_GOODS_H, where="beside the VLM; N2 through the docks",
@@ -1118,7 +1143,7 @@ def heat_budget() -> dict:
             "650 C may run inside at all.",
             "The extractor's repeatability at a slot, for a dock that takes 4 mm of misalignment.",
             "Whether the side walls can take a window and a dock behind the supports at a slot, and the space between "
-            "the column wall and the cladding (taken here as about 105 mm).",
+            "the column wall and the cladding (about 108 mm in the model).",
             "Whether power to a slot can stay on while a tray is stored, and what they would fit (the dealer offered "
             "a quick-connect cord).",
         ],
@@ -1216,7 +1241,7 @@ def _main():
     args = sys.argv[1:] or ["services"]
     data = idata = None
     for word in args:
-        if word in ("services", "cabling", "tether") and data is None:
+        if word in ("services", "cabling", "tether", "cameras") and data is None:
             import lab
             import tour
             data, idata = lab.meshes(), tour.load()
@@ -1226,6 +1251,8 @@ def _main():
         elif word == "cabling":
             print(movie_cabling(data, idata), flush=True)
             _gif("vlm_cabling")
+        elif word == "cameras":
+            print(still_cameras(data, idata), flush=True)
         elif word == "tether":
             print(movie_tether(data, idata), flush=True)
             _gif("vlm_tether")

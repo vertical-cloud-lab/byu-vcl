@@ -1,8 +1,8 @@
 ## Tray services: docking couplings, stream cameras, cabling and heat (round 4)
 
 Kardex powers a tray in its slot and again at the opening, but not while the extractor carries it (#53). The dealer
-offered a quick-connect cord to the device on the tray. Kardex's own option list for the Shuttle shows no powered tray
-and no air or data to a tray. [`services.py`](../services.py) takes every service a tray needs through one automatic
+offered a quick-connect cord to the device on the tray. A search of Kardex's Shuttle options found no powered tray and
+no air or data to a tray. [`services.py`](../services.py) takes every service a tray needs through one automatic
 coupling instead: mains, Ethernet, compressed air, N2 and chilled water. A UPS on the tray covers the transit.
 
 | | GIF | MP4 |
@@ -13,7 +13,7 @@ coupling instead: mains, Ethernet, compressed air, N2 and chilled water. A UPS o
 | **The coupling on its own** (`tour.py tray_dock`) | [`out/instruments/tray_dock.gif`](../out/instruments/tray_dock.gif) | [`out/mp4/instruments/tray_dock.mp4`](../out/mp4/instruments/tray_dock.mp4) |
 | **The camera unit on its own** (`tour.py stream_cam`) | [`out/instruments/stream_cam.gif`](../out/instruments/stream_cam.gif) | [`out/mp4/instruments/stream_cam.mp4`](../out/mp4/instruments/stream_cam.mp4) |
 
-![Tray A at the opening with its cameras and the bay camera](../out/vlm_services_still.png)
+![Tray D at the opening with its three cameras and the bay camera](../out/vlm_cameras_still.png)
 
 [`out/services.json`](../out/services.json) has the coupling, the camera clearances, the heat budget and the tether's
 payout. [`out/cabling.json`](../out/cabling.json) has the circuits.
@@ -33,7 +33,7 @@ Why not on the back edge itself:
 - So a back-edge plate needs a different dock in each column, and the one at the opening has nowhere to go.
 
 A side plate meets the same dock everywhere: rear slots, front slots and the bay. The dock's housing sits in the
-cavity between the column's side wall and the cladding, taken here as about 105 mm. It is clear of the extractor's
+cavity between the column's side wall and the cladding, about 108 mm in the model. It is clear of the extractor's
 guide rails and of the shutter, and pulled back it is 20 mm clear of the tray. One plate serves both places.
 
 **The parts are Stäubli CombiTac's, from its catalogue:**
@@ -51,7 +51,8 @@ guide rails and of the shutter, and pulled back it is 20 mm clear of the tray. O
   under pressure. So the dock shuts and vents air, N2 and water before it pulls back, and opens them only after the
   plate is home.
 - **The dock has to press the plate home.** The largest gap Stäubli allows between mated carriers is 1-2 mm. The
-  frames don't float on their own: "the customer must provide a stable guide system".
+  standard frames don't float ("the customer must provide a stable guide system"); the align 4 parts add the pins and
+  the conical sockets that take up the misalignment.
 - Alternatives with similar figures:
   - ODU-MAC's P4+ docking frame: ±4 mm radial, 1 mm axial, 100,000 cycles.
   - Harting's Han docking frame: ±2 mm float, ±4 mm lock-in, at least 10,000 cycles.
@@ -63,8 +64,9 @@ guide rails and of the shutter, and pulled back it is 20 mm clear of the tray. O
   4. The extractor moves the tray.
   5. The bay dock pushes in, pins first.
   6. The contacts mate, the supplies open, and the tray is back on mains.
-- **The transit is short.** At Kardex's 0.7 m/s in and out and 2 m/s up and down, R2 to the opening is about 6 s, and
-  no slot is more than about 15 s away.
+- **The transit is short.** From R2 to the opening the tray moves 2 x 1030 mm in and out at Kardex's 0.7 m/s, about
+  3 s, and 246 mm down at 2 m/s, 0.1 s. With the shutter and the accelerations, which Kardex doesn't publish, that is
+  about 6 s. R4, the farthest slot, adds about 0.8 s of vertical travel.
 
 ### The UPS on each tray
 
@@ -84,7 +86,7 @@ transit of seconds.
 | F | F2 | 3654 | Nabertherm NAT 15/65, 2.8 kW (Nabertherm) | 3 % |
 
 Tray F is over the UPS. Its furnace's heaters have to pause in transit, and its thermal mass carries the few seconds.
-The furnace and the polisher also want 208 V, so each dock carries L1, L2, N and PE on a 30 A breaker. That gives 208 V
+At 120 V the furnace alone would draw 23 A, so each dock carries L1, L2, N and PE on a 30 A breaker. That gives 208 V
 and 120 V, 5 kVA continuous at 80 %, inside the contacts' 39 A.
 
 ### Utilities, and the heat
@@ -137,7 +139,10 @@ tray:
 
 Every tray unit's top is at most 687 mm over the tray floor, 40 mm under the 727.5 mm limit. Each unit is aimed at
 its instrument's working face. The tall instruments (the MiniFlex at 722 mm, the OT-2 at 662 mm) can't be looked into
-from above within the limit, so their cameras stand beside them and look in at the door.
+from above within the limit, so their cameras stand beside them and look in through the side or the door.
+
+[`out/vlm_cameras_still.png`](../out/vlm_cameras_still.png) (`services.py cameras`) shows tray D at the opening with its
+three units and the bay's.
 
 **One overhead unit at the bay, on the machine.** It hangs from a 2020 bar across the back of the bay, 650 mm behind
 the front, tilted 58° down:
@@ -154,7 +159,8 @@ the 27 W USB-C supply from the tray's power strip. A Pi 5 takes about 4 W typica
 ![Cabling](../out/vlm_cabling_still.png)
 
 **One overhead ladder tray at 2.8 m.** It runs 300 mm wide behind the line's machines and round the back of the VLM.
-The machines' backs are at y = -758 to -927 mm; the ladder passes over the Aconity and the wire EDM, which are deeper.
+The ladder is at y = -560 mm, behind the machines' backs (y = -700 to -927 mm); it passes over the Aconity and the
+wire EDM, which are deeper.
 There is a drop to each machine's back or top.
 
 **Into the VLM:**
@@ -212,7 +218,7 @@ these spools covers it.
   be checked against the makers' sheets.
 - **Some loads are ours.** Five tray loads are estimates: the CubXL, the doser, the PIP, the nanoindenter and the
   OpenFlexures.
-- **The bay camera hasn't been checked against the arm.** It is 880 mm behind the front, where `reach.py`'s closest
+- **The bay camera hasn't been checked against the arm.** It is about 910 mm behind the front face, where `reach.py`'s closest
   approach to the header (118 mm) doesn't apply. Run the workflow's poses against it.
 - **Some boxes are not to size:** the e-spool and the MiR charger are markers, and the chiller is a placeholder.
 
@@ -230,5 +236,5 @@ S.make_lab(sc, data)                         # animate.Lab whose gauges come fro
 S.build_vlm(name, data, idata, title)        # the VLM with trays A-F, their instruments, docks and cameras
 ```
 
-Run: `xvfb-run -a python3 services.py services cabling tether json`, and `xvfb-run -a python3 tour.py tray_dock
+Run: `xvfb-run -a python3 services.py services cabling tether cameras json`, and `xvfb-run -a python3 tour.py tray_dock
 stream_cam`.

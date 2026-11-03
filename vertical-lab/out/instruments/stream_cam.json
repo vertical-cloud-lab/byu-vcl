@@ -1,0 +1,29 @@
+{
+ "name": "instruments/stream_cam",
+ "fps": 15,
+ "n_frames": 135,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/3",
+   "caption": "A Raspberry Pi 5 with two cameras, as the lab's own units in DAL PR #189: an HQ Camera with a 16 mm M12 lens beside a Camera Module 3 Wide, the Pi 5 and its Active Cooler behind them in a black PETG box.",
+   "start_frame": 0,
+   "end_frame": 55
+  },
+  {
+   "label": "2/3",
+   "caption": "It tilts on a 1/4-20 joint at the top of a 2020 post: down onto the instrument it watches.",
+   "start_frame": 56,
+   "end_frame": 90
+  },
+  {
+   "label": "3/3",
+   "caption": "The Wide sees 102 x 67 degrees; the HQ with its 16 mm lens about 22 x 17 degrees, the detail. One PoE cable carries power and the stream.",
+   "start_frame": 91,
+   "end_frame": 134
+  }
+ ]
+}

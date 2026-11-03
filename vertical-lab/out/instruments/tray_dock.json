@@ -1,0 +1,41 @@
+{
+ "name": "instruments/tray_dock",
+ "fps": 15,
+ "n_frames": 220,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/5",
+   "caption": "In its slot the tray's plate is held against the dock: mains, Ethernet, compressed air, N2 and chilled water are all live through one coupling.",
+   "start_frame": 0,
+   "end_frame": 52
+  },
+  {
+   "label": "2/5",
+   "caption": "Before the tray moves: air, N2 and water are shut and vented (CombiTac's couplings must not part under pressure), the tray's UPS takes the load, and the dock pulls back 45 mm.",
+   "start_frame": 53,
+   "end_frame": 99
+  },
+  {
+   "label": "3/5",
+   "caption": "The extractor pulls the tray out of the slot, across the dock, which is now 20 mm clear.",
+   "start_frame": 100,
+   "end_frame": 137
+  },
+  {
+   "label": "4/5",
+   "caption": "At the opening an identical dock waits in the bay's side wall. The tray stops against it ...",
+   "start_frame": 138,
+   "end_frame": 175
+  },
+  {
+   "label": "5/5",
+   "caption": "... the guide pins find the plate's bushings (4 mm of misalignment, CombiTac align), the plate is pressed home, the supplies open: back on mains.",
+   "start_frame": 176,
+   "end_frame": 219
+  }
+ ]
+}
