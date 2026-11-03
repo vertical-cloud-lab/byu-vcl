@@ -199,13 +199,19 @@ def stencil_printer() -> Instrument:
     body.add("logo", box(-80, -D / 2 - 2, 40, 80, -D / 2, 55), "ddm_blue")
     body.add("deck", box(-W / 2 + 10, -D / 2 + 40, dz, W / 2 - 10, D / 2 - 10, dz + 8), "inst_dark")
     body.add("board nest", box(-150, -110, dz + 8, 150, 110, zs - 1.6), "aluminium")
+    # the frame holder slides on two lift posts, which pass through it and stop inside the published height; a sleeve
+    # under the holder keeps hold of each post with the frame up
+    px = W / 2 - 45
     for sx in (-1, 1):
-        body.add(f"lift column {sx}", box(sx * (W / 2 - 45) - 25, -60, dz + 8, sx * (W / 2 - 45) + 25, 60, zs + 40),
-                 "inst_dark")
+        body.add(f"lift column {sx}", box(sx * px - 25, -60, dz + 8, sx * px + 25, 60, H - 4), "inst_dark")
     body.add("vision camera", box(-40, D / 2 - 90, dz + 8, 40, D / 2 - 30, zs - 20), "inst_black")
     frame = _piece(inst, "frame")
     ring = box(-W / 2 + 20, -fr / 2 - 30, zs + 20, W / 2 - 20, fr / 2 + 30, zs + 40).cut(
         box(-fr / 2, -fr / 2, zs + 19, fr / 2, fr / 2, zs + 41))
+    for sx in (-1, 1):
+        ring = ring.cut(box(sx * px - 27, -62, zs + 19, sx * px + 27, 62, zs + 41))
+        frame.add(f"lift sleeve {sx}", box(sx * px - 30, -65, zs - 50, sx * px + 30, 65, zs + 20).cut(
+            box(sx * px - 27, -62, zs - 51, sx * px + 27, 62, zs + 21)), "inst_dark")
     frame.add("frame holder", ring, "inst_black")
     frame.add("stencil frame", box(-fr / 2, -fr / 2, zs, fr / 2, fr / 2, zs + 38).cut(
         box(-fr / 2 + 32, -fr / 2 + 32, zs - 1, fr / 2 - 32, fr / 2 - 32, zs + 39)), "aluminium")

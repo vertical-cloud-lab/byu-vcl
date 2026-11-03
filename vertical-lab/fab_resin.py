@@ -43,9 +43,10 @@ def _feet(W, D, inset=30.0, d=22.0, h=FEET) -> cq.Workplane:
 
 def _build_platform(y0: float, z0: float, handle=True) -> cq.Workplane:
     """A Form 4 build platform, plate face down at z0, centred on y0: the 200 x 125 mm plate, its spine to the carrier
-    at the back, and the handle on top, grip at the front."""
+    at the back, and the handle on top, grip at the front. The spine stands 58 mm tall so that, with the plate down on
+    the Form 4's tank floor, the carrier it hangs from clears the tank's back wall."""
     plate = box(-100, y0 - 62.5, z0, 100, y0 + 62.5, z0 + 10)
-    spine = box(-28, y0 + 40, z0 + 10, 28, y0 + 92, z0 + 40)
+    spine = box(-28, y0 + 40, z0 + 10, 28, y0 + 88, z0 + 58)
     plate = plate.union(spine)
     if handle:
         plate = plate.union(box(-14, y0 - 70, z0 + 10, 14, y0 + 45, z0 + 34)).union(
@@ -103,17 +104,36 @@ def form4() -> Instrument:
     body.add("resin tank", tank, "fl_dark")
     body.add("resin", rbox(268, 178, 20, 6, y=ty, z=zb + 6), "fl_resin")
     body.add("Z tower", box(-40, 78, zb + 2, 40, p["hinge_y"] - 2, H - 40), "aluminium")
-    body.add("Z rail", box(-12, 70, zb + 40, 12, 78, H - 60), "steel")
-    # the carrier on the tower (moves with the print) and the build platform on it
+    body.add("Z rail", box(-12, 70, zb + 40, 12, 78, H - 42), "steel")
+    # the carrier on the tower (moves with the print) and the build platform on it. Its arm reaches over the tank's
+    # back wall (top at zb + 50) to the platform's spine, and its block rides in front of the Z rail.
     holder = _piece(inst, "holder")
     z0 = zb + 8                                    # plate underside at the start of a print: just over the tank floor
-    holder.add("carrier", box(-50, 52, z0 + 22, 50, 70, z0 + 62).union(box(-30, 62, z0 + 10, 30, 78, z0 + 80)),
+    holder.add("carrier", box(-50, 40, zb + 56, 50, 70, zb + 96).union(box(-30, 60, zb + 56, 30, 70, zb + 116)),
                "fl_dark")
     load = _piece(inst, "load")
     load.add("build platform", _build_platform(ty, z0), "aluminium")
-    sample = _piece(inst, "sample")
-    for name, shape in _parts(ty, z0):
+    # The parts grow downward from the plate as it rises, so they are drawn in 10 mm bands, each one appearing as the
+    # plate lifts its lower face off the tank floor (the film, at zb + 6); a band is never drawn below the film.
+    band, film = 10.0, zb + 6
+    parts = _parts(ty, z0)
+    depth = max(z0 - s.val().BoundingBox().zmin for _, s in parts)
+    layers = [f"layer{k}" for k in range(1, int(math.ceil(depth / band - 1e-6)) + 1)]
+    for k, lname in enumerate(layers):
+        cut = box(-150, ty - 150, z0 - (k + 1) * band, 150, ty + 150, z0 - k * band)
+        for name, shape in parts:
+            s = shape.intersect(cut)
+            if s.vals() and s.val().Volume() > 1.0:
+                _piece(inst, lname).add(f"{name}, band {k + 1}", s, "fl_part")
+    # each band's fade runs 0 -> 1 over the last 3 mm of the plate's rise that prints it, in the same step as the
+    # rise; Rig/Scene clip opacities to 0..1, so values past either end just hold it hidden or shown
+    grow = {lname: ((z0 - film - (k + 1) * band + 3.0) / 3.0, (z0 - film + p["raise_"] - (k + 1) * band + 3.0) / 3.0)
+            for k, lname in enumerate(layers)}
+    sample = _piece(inst, "sample")                # the same parts whole, swapped in for the bands once printed
+    for name, shape in parts:
         sample.add(name, shape, "fl_part")
+    whole = {"sample": (1.0, 1.0), **{lname: (0.0, 0.0) for lname in layers}}
+    inst.props = ("load", "holder", "sample")
     cover = _piece(inst, "cover")
     t = p["cover_t"]
     shell = box(-W / 2 + 1, yf, zb + 2, W / 2 - 1, p["hinge_y"], H).cut(
@@ -123,18 +143,21 @@ def form4() -> Instrument:
     inst.joints = {
         "holder": Joint("slide", vec=(0, 0, p["raise_"])),
         "load": Joint("path", path=((0, -470, -30), (0, -175, 0), (0, 0, 0)), parent="holder", v0=1.0),
+        **{lname: Joint("fade", parent="load") for lname in layers},
         "sample": Joint("fade", parent="load"),
         "cover": Joint("hinge", axis=(1, 0, 0), pivot=(0, p["hinge_y"], H), deg=p["cover_deg"]),
     }
     inst.actions = [
         ("Printing: the build platform rises out of the resin layer by layer, the parts growing upside down.", 3.0,
-         {"holder": (0.0, 1.0), "sample": (0.0, 1.0), "~cover": (0.0, 0.6)}),
+         {"holder": (0.0, 1.0), **grow, "~cover": (0.0, 0.6)}),
         ("Done. The cover lifts on its rear hinge, to 844 mm: only at the VLM's opening, never in a slot.", 1.6,
-         {"cover": (0.0, 1.0), "~cover": (0.6, 0.0)}),
+         {"cover": (0.0, 1.0), "~cover": (0.6, 0.0), **whole}),
         ("The build platform comes off its carrier by the handle, parts and all, for the Form Wash.", 1.8,
          {"load": (1.0, 0.0)}),
-        ("A fresh platform goes on and the cover shuts.", 1.6, {"load": (0.0, 1.0), "sample": (1.0, 0.0),
-                                                                 "holder": (1.0, 0.0), "cover": (1.0, 0.0)}),
+        # the fresh platform is bare: the old parts are gone in the step's first quarter, while it is still outside
+        ("A fresh platform goes onto the raised carrier; it lowers to the tank and the cover shuts.", 1.6,
+         {"load": (0.0, 1.0), "sample": (1.0, -3.0)}),
+        ("", 1.4, {"holder": (1.0, 0.0), "cover": (1.0, 0.0)}),
     ]
     inst.labels = [("tinted cover", (-W / 2 + 40, yf, H - 60), (0.14, 0.24)),
                    ("touchscreen", (120, yf - 2, 140), (0.84, 0.70)),
@@ -172,7 +195,7 @@ def form_wash() -> Instrument:
     body.add("bucket", box(-128, yf + 18, 36, 128, yb - 34, 40), "fl_dark")
     body.add("display", box(-40, yf - 2, zl - 46, 40, yf, zl - 18), "screen_on")
     body.add("button", _ycyl(16, 3, x=70, y=yf - 3, z=zl - 32), "fl_dark")
-    body.add("elevator rail", box(-14, yb - 34, 40, 14, yb - 26, zl - 4), "steel")
+    body.add("elevator rail", box(-14, yb - 42, 40, 14, yb - 34, zl - 4), "steel")    # proud of the bucket's back
     solvent = _piece(inst, "solvent")
     solvent.add("IPA", box(-126, yf + 20, 40, 126, yb - 36, p["solvent_top"]), "ipa")
     imp = _piece(inst, "impeller")
@@ -183,7 +206,8 @@ def form_wash() -> Instrument:
     holder = _piece(inst, "holder")
     py = -10.0                                     # the platform's centre over the bucket
     z_plate = zl - 62                              # plate underside with the elevator up: parts clear of the IPA
-    holder.add("carriage", box(-40, yb - 60, z_plate + 18, 40, yb - 36, z_plate + 58), "fl_dark")
+    # from the rail's face to the platform's spine (which ends at py + 88), so the platform hangs from it
+    holder.add("carriage", box(-40, py + 80, z_plate + 18, 40, yb - 42, z_plate + 58), "fl_dark")
     load = _piece(inst, "load")
     load.add("build platform", _build_platform(py, z_plate), "aluminium")
     for name, shape in _parts(py, z_plate):
@@ -257,15 +281,16 @@ def form_cure() -> Instrument:
                "fl_part")
     glow = _piece(inst, "glow")
     glow.add("405 nm light", box(-133, yf + dt + 2, p["ch_z0"] + 18, 133, yb - 33, p["ch_z1"] - 4), "uv_glow")
-    door = _piece(inst, "door")
-    door.add("door", rbox(W - 4, dt, H - FEET - 10, 8, y=yf + dt / 2, z=FEET + 4).cut(
+    door = _piece(inst, "door")                    # up to just over the chamber, so the display shows above it
+    door.add("door", rbox(W - 4, dt, p["ch_z1"] + 6 - FEET - 4, 8, y=yf + dt / 2, z=FEET + 4).cut(
         box(-115, yf - 1, 80, 115, yf + dt + 1, 320)), "fl_dark")
     door.add("door window", box(-116, yf + 6, 79, 116, yf + 10, 321), "fl_orange")
     door.add("door handle", box(W / 2 - 40, yf - 4, 150, W / 2 - 22, yf, 260), "fl_dark")
     inst.joints = {
         "door": Joint("hinge", axis=(0, 0, 1), pivot=(-W / 2 + 4, yf, 0), deg=-105.0),
         "turntable": Joint("spin", axis=(0, 0, 1), pivot=(0, cy, 0), deg=720.0),
-        "sample": Joint("path", path=((0, -460, 160), (0, -180, 40), (0, 0, 0)), parent="turntable"),
+        # the parts wait over the top of the door, out of its swing, and come in once it is open
+        "sample": Joint("path", path=((0, -460, 300), (0, -180, 40), (0, 0, 0)), parent="turntable"),
         "glow": Joint("fade"),
     }
     inst.actions = [
