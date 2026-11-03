@@ -44,7 +44,7 @@ microscopes, from OpenFlexure's own OpenSCAD:
 | Tabletop SEM, EDS, EBSD | Hitachi TM4000PlusII | The drawer slides out with the stage; a mounted sample goes on; EVAC | [GIF](out/instruments/sem.gif), [MP4](out/mp4/instruments/sem.mp4) | 330 × 614 × 547 (main unit) | tray D |
 | Microscope, reflection | OpenFlexure Microscope v7 | A polished coupon goes under the clips; the stage scans and the optics focus | [GIF](out/instruments/openflexure_v7.gif), [MP4](out/mp4/instruments/openflexure_v7.mp4) | 171 × 139 × 169 | tray D |
 | Microscope, reflection | OpenFlexure Delta Stage | The same, with the delta stage moving in x, y and z | [GIF](out/instruments/openflexure_delta.gif), [MP4](out/mp4/instruments/openflexure_delta.mp4) | 166 × 156 × 173 | tray D |
-| Indentation plastometer (PIP) | Plastometrex PLX-Benchtop | The sample goes onto the platen by hand; the indenter goes in; the profilometer stylus sweeps the indent | [GIF](out/instruments/pip.gif), [MP4](out/mp4/instruments/pip.mp4) | about 500 × 500 × 680, estimated | tray E |
+| Indentation plastometer (PIP) | Plastometrex PLX-Benchtop | The sample goes onto the platen by hand; the indenter goes in and lifts; the profilometer's arm reaches in under it and the stylus traces the indent | [GIF](out/instruments/pip.gif), [MP4](out/mp4/instruments/pip.mp4) | about 500 × 500 × 680, estimated | tray E |
 | Nanoindenter | KLA iMicro | The hood lifts; a mount goes onto the XY stage; the stage carries it from the microscope to the indenter | [GIF](out/instruments/nanoindenter.gif), [MP4](out/mp4/instruments/nanoindenter.mp4) | about 540 × 520 × 520, estimated | tray E |
 | Laser diffraction | Malvern Mastersizer 3000 + Aero S | Powder goes into the Aero S's hopper; the laser and the dispersed powder are drawn see-through | [GIF](out/instruments/mastersizer.gif), [MP4](out/mp4/instruments/mastersizer.mp4) | 690 × 300 × 450 (bench); Aero S 260 × 180 × 380 | tray E |
 | Grinder-polisher | Buehler EcoMet 30 semi-automatic | The power head presses six mounts onto the 12 in platen; platen and holder turn | [GIF](out/instruments/polisher.gif), [MP4](out/mp4/instruments/polisher.mp4) | 488 × 638 × 650 | tray F |
@@ -93,7 +93,11 @@ needed. GrabCAD, TraceParts and CADENAS block the runner and need logins anyway.
 - **Plastometrex PLX-Benchtop:** Plastometrex's render, brochure and FAQ; Illinois MRL's page and a published SOP.
   - There is no door or guard. The sample sits unclamped on the platen; up to 160 mm across.
   - **Plastometrex publishes no dimensions.** The envelope is scaled from photos, ±20 %.
-  - PLX-AutoStage is their add-on that automates loading.
+  - PLX-AutoStage is their add-on that automates loading and places indents.
+  - **The profilometer is a stylus on the Benchtop** (an interferometer on the PLX-Portable), per Plastometrex's
+    "What is PIP?" page. **Where it sits is not published.** The model puts a traverse unit on the left-hand column.
+    Its arm stays parked while the indent is made, then reaches in under the lifted indenter and traces the indent.
+    Without the AutoStage the sample can't move, so the stylus has to come to it.
 - **OpenFlexure Microscope v7 and Delta Stage:** OpenFlexure's own OpenSCAD at pinned tags, exported assembled. See
   [`openflexure/README.md`](openflexure/README.md).
 - **KLA iMicro:** KLA's photos.
@@ -662,6 +666,16 @@ python3 setup_lab.py fit; xvfb-run -a python3 setup_lab.py              # check 
 
 Under load, Xvfb sometimes drops the render window ("bad X server connection", "Render window is not current"). Retrying
 the same command has worked every time. Render one instrument per process with `PREVIEW=1`.
+
+**Render style** (`scene.py`, after review on PR #318):
+- **Hard edges stay hard.** The meshes are welded, so plain smooth shading averaged the normals across every crease:
+  flat panels faded from white to grey and discs turned into pillows. Normals are now split at 35°.
+- **Specular follows each material's shininess on a curve.** Paint and plastic are close to matte. Metal and glass
+  keep a small, tight highlight.
+- **The key light comes from the upper left** with a weaker headlight, so a box reads in three tones.
+- **The instrument tours put a soft contact shadow under each machine** (`tour.contact_shadow`).
+- **Screen-space ambient occlusion was tried and left out.** It was eight times slower per frame on the runner, for
+  little visible difference.
 
 `openflexure.py` reads the OpenFlexure meshes from `.cache/openflexure/`; [`openflexure/README.md`](openflexure/README.md)
 says how to make them.

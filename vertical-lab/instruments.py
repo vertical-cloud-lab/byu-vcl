@@ -233,7 +233,8 @@ def furnace() -> Instrument:
     chamber_c = (0.0, yf + p["door_t"] + cd / 2, cz)
     inst.joints = {
         "door": Joint("hinge", axis=(0, 0, 1), pivot=(W / 2 - 4, yf, 0), deg=100.0),   # free edge out to the front
-        "load": Joint("path", path=((0, yf - 300, cz + 80), (0, yf - 60, cz + 10), chamber_c)),
+        # the tray waits to the left, outside the door's swing (a 462 mm radius about the hinge)
+        "load": Joint("path", path=((-330, yf - 330, cz + 80), (0, yf - 60, cz + 10), chamber_c)),
         "fan": Joint("spin", axis=(0, 1, 0), pivot=(0, fy, fz), deg=1440.0),
     }
     inst.actions = [
@@ -243,9 +244,10 @@ def furnace() -> Instrument:
          "+-5 C, so one furnace does both.", 3.0, {"door": (1.0, 0.0), "fan": (0.0, 1.0), "~door": (0.0, 0.7)}),
         ("", 0.8, {"~door": (0.7, 0.0)}),
     ]
-    inst.labels = [("swing door", (-W / 2 + 35, yf - 15, (dz0 + dz1) / 2), (0.14, 0.32)),
+    inst.labels = [("swing door", (W / 2 - 40, yf - 2, dz1 - 40), (0.80, 0.18)),     # near the hinge: stays on it
                    ("controller", (W / 2 - 120, yf + 14, p["feet"] + 70), (0.84, 0.72))]
     inst.cam = (0.9, -1.7, 0.8)
+    inst.framing = (0.95, 0.40)              # room on the left for the tray waiting outside the door's swing
     return inst
 
 
