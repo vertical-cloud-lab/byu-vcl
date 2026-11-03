@@ -1,0 +1,137 @@
+{
+ "inputs": {
+  "E_N_mm2": 200000.0,
+  "loads_nominal": {
+   "run_Mxy_Nm": 344.0,
+   "run_Fxy_N": 344.0,
+   "stop_Mxy_Nm": 584.0,
+   "stop_Fxy_N": 464.0
+  },
+  "lever_mm": 1300,
+  "mass_on_top_kg": 51.724999999999994,
+  "com_above_flange_mm": 400.0,
+  "sources": [
+   "UR10e user manual SW5.26, 6.2 Dimensioning the Stand (loads x 2.5; >= 45 Hz)",
+   "UR10e data sheet Oct 2026 (12.5 kg, 1300 mm, 33.3 kg, +-0.05 mm)",
+   "Robotiq 2F-85: 0.925 kg"
+  ]
+ },
+ "pedestal": [
+  {
+   "pedestal": "Vention beam laid on the floor (carriage top 363.5 mm)",
+   "height_mm": 436.5,
+   "section": "CHS 219.1 x 8.0",
+   "I_cm4": 2960,
+   "run_tilt_mdeg": 1.77,
+   "run_tool_mm": 0.047,
+   "stop_tilt_mdeg": 2.9,
+   "stop_tool_mm": 0.077,
+   "first_mode_hz": 129.2
+  },
+  {
+   "pedestal": "Vention beam laid on the floor (carriage top 363.5 mm)",
+   "height_mm": 436.5,
+   "section": "SHS 150 x 150 x 6.3",
+   "I_cm4": 1249,
+   "run_tilt_mdeg": 4.2,
+   "run_tool_mm": 0.112,
+   "stop_tilt_mdeg": 6.86,
+   "stop_tool_mm": 0.183,
+   "first_mode_hz": 83.9
+  },
+  {
+   "pedestal": "Vention beam laid on the floor (carriage top 363.5 mm)",
+   "height_mm": 436.5,
+   "section": "SHS 200 x 200 x 10",
+   "I_cm4": 4585,
+   "run_tilt_mdeg": 1.14,
+   "run_tool_mm": 0.031,
+   "stop_tilt_mdeg": 1.87,
+   "stop_tool_mm": 0.05,
+   "first_mode_hz": 160.8
+  },
+  {
+   "pedestal": "flush floor track (carriage top about 150 mm, estimate)",
+   "height_mm": 650.0,
+   "section": "CHS 219.1 x 8.0",
+   "I_cm4": 2960,
+   "run_tilt_mdeg": 2.87,
+   "run_tool_mm": 0.083,
+   "stop_tilt_mdeg": 4.62,
+   "stop_tool_mm": 0.133,
+   "first_mode_hz": 89.2
+  },
+  {
+   "pedestal": "flush floor track (carriage top about 150 mm, estimate)",
+   "height_mm": 650.0,
+   "section": "SHS 150 x 150 x 6.3",
+   "I_cm4": 1249,
+   "run_tilt_mdeg": 6.8,
+   "run_tool_mm": 0.196,
+   "stop_tilt_mdeg": 10.96,
+   "stop_tool_mm": 0.315,
+   "first_mode_hz": 57.9
+  },
+  {
+   "pedestal": "flush floor track (carriage top about 150 mm, estimate)",
+   "height_mm": 650.0,
+   "section": "SHS 200 x 200 x 10",
+   "I_cm4": 4585,
+   "run_tilt_mdeg": 1.85,
+   "run_tool_mm": 0.053,
+   "stop_tilt_mdeg": 2.98,
+   "stop_tool_mm": 0.086,
+   "first_mode_hz": 111.0
+  }
+ ],
+ "moment_at_carriage_Nm": {
+  "beam-height rail": {
+   "run": 384,
+   "stop": 638,
+   "lever_mm": 116.0
+  },
+  "low rail, 436.5 mm pedestal": {
+   "run": 494,
+   "stop": 787,
+   "lever_mm": 436.5
+  },
+  "flush track, 650 mm pedestal": {
+   "run": 568,
+   "stop": 886,
+   "lever_mm": 650.0
+  }
+ },
+ "tool_mm_per_mdeg_tilt_at_reach": 0.0227,
+ "mir250": {
+  "dock_L": [
+   6,
+   3,
+   1.0
+  ],
+  "dock_VL": [
+   3,
+   3
+  ],
+  "position": [
+   60,
+   85,
+   4.0
+  ],
+  "tool_error_from_1deg_yaw_mm": 22.7,
+  "touch_off_mm": 0.12,
+  "touch_off_deg": 0.005,
+  "touch_off_source": "Burger et al., Nature 583, 237 (2020), SI 1.3: six touches on a 100 x 100 x 50 mm cube; KUKA KMR iiwa, 100 trials from up to +-15 mm, +-2.5 deg",
+  "tipping": {
+   "mass_kg": 194.8,
+   "note": "MiR250 97 kg (MiR), UR10e 33.3 kg, control box 12 kg, payload 12.5 kg (UR), cabinet 40 kg (estimate); restoring moment about the body's long edge, an upper bound (the wheels sit inside)",
+   "restoring_Nm": 554,
+   "arm_base_m": 0.8,
+   "overturn_run_Nm": 619,
+   "overturn_stop_Nm": 955
+  }
+ },
+ "rail": {
+  "vention_repeat_mm": 0.3,
+  "ur10e_repeat_mm": 0.05
+ }
+}
