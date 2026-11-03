@@ -1,0 +1,41 @@
+{
+ "name": "instruments/sieve",
+ "fps": 15,
+ "n_frames": 325,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/4",
+   "caption": "The powder from the atomizer's container goes onto the top sieve. The stack is the 8 in, 304 stainless one DAL bought and ordered: No. 60, 100, 140, 230, 325 and a pan.",
+   "start_frame": 0,
+   "end_frame": 58
+  },
+  {
+   "label": "2/4",
+   "caption": "",
+   "start_frame": 59,
+   "end_frame": 96
+  },
+  {
+   "label": "3/4",
+   "caption": "The container goes back. The clamping lid goes over the two rods and down onto the stack, and its knobs clamp it: what an arm would do, since no shaker found is sold for robot loading.",
+   "start_frame": 97,
+   "end_frame": 155
+  },
+  {
+   "label": "4/4",
+   "caption": "Sieving, drawn see-through: 3-D throwing motion, amplitude 0.2-3 mm. Each size class falls until a cloth stops it.",
+   "start_frame": 156,
+   "end_frame": 247
+  },
+  {
+   "label": "4/4",
+   "caption": "The fractions, by the sieve that keeps each. The LPBF cut (20-63 um) is the No. 325 and the pan; DED's 45-105 um is the No. 230 and No. 325; its 100-200 um is close to the No. 140 and No. 100.",
+   "start_frame": 248,
+   "end_frame": 324
+  }
+ ]
+}

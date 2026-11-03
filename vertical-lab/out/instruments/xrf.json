@@ -1,0 +1,47 @@
+{
+ "name": "instruments/xrf",
+ "fps": 15,
+ "n_frames": 312,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/6",
+   "caption": "The lid lifts on its rear hinge, uncovering the XY Autochanger's 20-position tray.",
+   "start_frame": 0,
+   "end_frame": 49
+  },
+  {
+   "label": "2/6",
+   "caption": "A cup of atomized powder, closed underneath by a thin prolene film, goes into a free seat.",
+   "start_frame": 50,
+   "end_frame": 96
+  },
+  {
+   "label": "3/6",
+   "caption": "Lid down; drawn see-through.",
+   "start_frame": 97,
+   "end_frame": 128
+  },
+  {
+   "label": "4/6",
+   "caption": "The changer takes the cup to the measuring position, film side down over the window: the tube and the detector are underneath. Helium at reduced pressure keeps loose powder in place.",
+   "start_frame": 129,
+   "end_frame": 178
+  },
+  {
+   "label": "5/6",
+   "caption": "The beam, drawn see-through: up to 50 kV and 50 W from the tube; each element in the powder answers with its own X-ray lines, which the silicon drift detector counts.",
+   "start_frame": 179,
+   "end_frame": 231
+  },
+  {
+   "label": "6/6",
+   "caption": "The spectrum: peaks at each element's lines give the composition, Na to Am, in minutes.",
+   "start_frame": 232,
+   "end_frame": 311
+  }
+ ]
+}

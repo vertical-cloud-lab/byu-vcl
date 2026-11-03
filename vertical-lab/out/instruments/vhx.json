@@ -1,0 +1,47 @@
+{
+ "name": "instruments/vhx",
+ "fps": 15,
+ "n_frames": 321,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/6",
+   "caption": "A polished, mounted coupon goes onto the VHX-S750E's motorized XY stage (+-20 mm).",
+   "start_frame": 0,
+   "end_frame": 52
+  },
+  {
+   "label": "2/6",
+   "caption": "The free-angle head tilts to look at the surface from the side; the view stays centred on the coupon.",
+   "start_frame": 53,
+   "end_frame": 99
+  },
+  {
+   "label": "3/6",
+   "caption": "Upright again. Depth composition: the motorized Z focus sweeps through the relief and the controller keeps the sharp part of each frame (VH-ZST zoom: 20-2000x).",
+   "start_frame": 100,
+   "end_frame": 161
+  },
+  {
+   "label": "4/6",
+   "caption": "The EA-300 fires: a 355 nm Nd:YAG pulse (drawn red, and far wider than its 10 um spot) turns a speck of the surface into a plasma.",
+   "start_frame": 162,
+   "end_frame": 205
+  },
+  {
+   "label": "5/6",
+   "caption": "Its spectrometer reads the plasma's light: elements from H to U, in seconds, at the spot the camera is looking at.",
+   "start_frame": 206,
+   "end_frame": 276
+  },
+  {
+   "label": "6/6",
+   "caption": "The EA-300 adds 7.2 kg and 375 mm to the stand. Stand and head are 655 mm tall: under Kardex's 727.5 mm.",
+   "start_frame": 277,
+   "end_frame": 320
+  }
+ ]
+}
