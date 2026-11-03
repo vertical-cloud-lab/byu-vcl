@@ -1,6 +1,6 @@
 {
  "what": "Stub holder plate (Top + Bottom) for SEM stubs, digital-alloy-lab PR #174, on the A1 mini in black PLA Basic",
- "status": "INTERIM (written mid-print at 23:58 UTC); the finish is added when the print ends",
+ "status": "complete",
  "request": {
   "by": "ronnie-guymon",
   "comment": "https://github.com/vertical-cloud-lab/byu-vcl/pull/95#issuecomment-6589992268",
@@ -34,14 +34,24 @@
   "printer": "Thumbelina, the A1 Mini (Bambu Lab A1 mini 0.4mm)",
   "plate": "PEI (Textured PEI)",
   "ams_mapping": "PLA -> A3 (black)",
-  "timelapse": "off", "auto_bed_leveling": "on", "flow_dynamics_calibration": "on"
+  "timelapse": "off",
+  "auto_bed_leveling": "on",
+  "flow_dynamics_calibration": "on"
  },
- "estimates": {"studio": "53 min 32 s, 30.90 g, 90 layers", "requested_file": "54 min 4 s"},
+ "estimates": {
+  "studio": "53 min 32 s, 30.90 g, 90 layers",
+  "requested_file": "54 min 4 s"
+ },
  "plate_check": {
   "rule": "sgbaird 2026-10-23: frame first, read the plate, wait at least 90 s; if the run can't tell, wait for a person",
   "frame": "NONE: Studio's live view never started. 15+ attempts 23:24-23:56 UTC across two Studio restarts all ended 'Loading failed. Please check the network and try again. [2:2]' (code 2 = no video within 15 s, MediaPlayCtrl.cpp in 02.08.02.61). The runner's outbound UDP worked (STUN) and the printer's Storage tab loaded over the same cloud tunnel, so the fault looked printer-side. Screenshot: 20261102T234817Z_a1mini_liveview_failed.png",
   "asked": "23:33:37 UTC in the tracking comment: no frame, nothing will be sent; anyone with the camera open in Handy/Studio please close it, or power-cycle the printer",
-  "go": {"by": "ronnie-guymon (write access)", "at": "2026-11-02T23:46:33Z", "comment": "https://github.com/vertical-cloud-lab/byu-vcl/pull/95#issuecomment-6591420981", "text": "Ignore the camera frame, the plate is clear"},
+  "go": {
+   "by": "ronnie-guymon (write access)",
+   "at": "2026-11-02T23:46:33Z",
+   "comment": "https://github.com/vertical-cloud-lab/byu-vcl/pull/95#issuecomment-6591420981",
+   "text": "Ignore the camera frame, the plate is clear"
+  },
   "send_notice": "2026-11-02T23:47:45Z in the tracking comment, with a 90 s window to object",
   "wait_ended": "2026-11-02T23:49:35Z, no replies after the go (issue or review comments)",
   "frame_before_send": "attempted 23:47:56 UTC; failed the same way"
@@ -61,7 +71,32 @@
   "go": "2026-11-02T23:46:33Z",
   "send": "2026-11-02T23:49:37Z",
   "printing_state": "2026-11-02T23:50:28Z (0 %, layer 0/90, heating)",
-  "layer_1": "by 2026-11-02T23:56:37Z (11 %, nozzle 220/220, bed 65/65)"
+  "layer_1": "by 2026-11-02T23:56:37Z (11 %, nozzle 220/220, bed 65/65; Device-page screenshot)",
+  "layer_14": "2026-11-03T00:09:59Z (36 %)",
+  "layer_50": "2026-11-03T00:25:01Z (65 %)",
+  "layer_90": "2026-11-03T00:41:10Z",
+  "heaters_off": "2026-11-03T00:42:41Z (nozzle and bed targets 0; 99 %, 'Finished')",
+  "finished_100pct": "by 2026-11-03T00:44:18Z (100 %, layer 90/90, 'Finished', Pause/Stop greyed)",
+  "hms_after": "2026-11-03T00:45:11Z, Assistant tab empty",
+  "signed_out": "2026-11-03T00:46:03Z, then Studio closed and ~/.config/BambuStudio deleted (it holds the printers' LAN access codes)"
  },
- "github_token": "re-minted with scripts/refresh_github_app_token.py (main) at 23:56 UTC"
+ "github_token": "re-minted with scripts/refresh_github_app_token.py (main) at 23:56 and 00:51 UTC. GH_TOKEN in this session was the 1-hour App token, not the job token: gh calls with it failed at 00:12:22, 60 min after the step started; DEFAULT_WORKFLOW_TOKEN kept working for reads",
+ "result": "FINISHED: 100 %, layer 90/90 by 00:44:18 UTC; the last layer at 00:41:10 and both heater targets back to 0 at 00:42:41, 53.1 min after Send (Studio's estimate 53 min 32 s). No HMS alert or dialog at any point (Assistant tab empty before and after). Not seen on camera: the live view never started, so the part itself was never imaged by this run",
+ "monitor": {
+  "how": "Studio's Device page, OCR every ~10 s (bambu/studio/watch_studio.py for the start-up, then a variant that also polled this thread and retried the camera every 3 min); log in watch.jsonl.gz",
+  "samples": 257,
+  "printing_samples": 227,
+  "nozzle_C_while_printing": [
+   218,
+   221
+  ],
+  "bed_C_while_printing": [
+   62,
+   65
+  ],
+  "dialogs": "none",
+  "replies_after_the_go": "none",
+  "camera": "never played: every retry, 23:24 UTC to 00:45 UTC, ended '[2:2]' (cam_mad 0 in every sample, i.e. the idle placeholder throughout)"
+ },
+ "recording": "recording/stub_holder_A1mini_2026-11-02.mp4 (13.3 min, 4.8 MB, chapters in recording/*_chapters.txt), cut from the session's x11grab segments by bambu/studio/cut_recording.py (copy patched to take full dates, since the session crossed midnight) per recording/cut_plan.json. Cut: the login 23:20:36-23:21:32 (e-mail and code on screen), the Update tab 23:30:15-23:30:40 (serial numbers), the restart's home page 23:31:10-23:31:50 and the sign-out from 00:45:25 (account name). Frames within 2 s of each cut were OCR-checked for login, serial and account text: none. No blur needed: the camera pane never showed the room. Not on YouTube: claude-print.yml has no YouTube token"
 }
