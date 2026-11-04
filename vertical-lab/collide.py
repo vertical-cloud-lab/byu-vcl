@@ -214,8 +214,8 @@ class World:
                 continue
             self.bodies[name] = Body(name, self.sc.group_of[name], *t)
 
-    def current(self, exclude_groups: set[str]) -> list[tuple[Body, np.ndarray, np.ndarray]]:
-        """(body, box min, box max) for every visible body not in exclude_groups, placed where its group is now."""
+    def current(self, exclude_groups: set[str]) -> "Snap":
+        """Every visible body not in exclude_groups, placed where its group is now, with its world box."""
         sc = self.sc
         cache, out = {}, []
         for name, b in self.bodies.items():
@@ -227,7 +227,17 @@ class World:
             b.place(M)
             lo, hi = b.box(M)
             out.append((b, lo, hi))
-        return out
+        return Snap(out)
+
+
+class Snap:
+    """The world at one instant: its bodies and their world boxes as arrays, for a vectorised overlap test."""
+
+    def __init__(self, items):
+        self.items = items
+        self.bodies = [b for b, _, _ in items]
+        self.lo = np.array([lo for _, lo, _ in items]).reshape(-1, 3)
+        self.hi = np.array([hi for _, _, hi in items]).reshape(-1, 3)
 
 
 def _subtree(sc, group: str) -> set[str]:
@@ -317,31 +327,47 @@ class Checker:
                 b.place(Mg[b.group])
                 hb.append(b)
         out = []
+        mine = list(self.arm.bodies()) + hb
+        boxes = [b.box(b.tf) for b in mine]
+        R_lo = np.array([lo for lo, _ in boxes])
+        R_hi = np.array([hi for _, hi in boxes])
+        idx = {id(b): i for i, b in enumerate(mine)}
+
+        def near(x, y):
+            i, j = idx[id(x)], idx[id(y)]
+            return not ((R_lo[i] > R_hi[j]).any() or (R_hi[i] < R_lo[j]).any())
+
         # self: links against links, and the held part against the links it isn't gripped by
         groups = {k: [self.arm.links[k]] for k in ARM_LINKS}
         groups["gripper"] = list(self.arm.grip.values())
         for a, b in self.pairs:
+            found = False
             for x in groups[a]:
-                hitp = next((y for y in groups[b] if _hit(x.obj, y.obj)), None)
-                if hitp is not None:
-                    out.append(("self", a, b, ""))
-                    if first:
-                        return out
+                for y in groups[b]:
+                    if near(x, y) and _hit(x.obj, y.obj):
+                        found = True
+                        break
+                if found:
                     break
+            if found:
+                out.append(("self", a, b, ""))
+                if first:
+                    return out
         for x in hb:
             for k in ("base", "shoulder", "upper_arm", "forearm", "wrist1"):
-                if _hit(x.obj, self.arm.links[k].obj):
+                y = self.arm.links[k]
+                if near(x, y) and _hit(x.obj, y.obj):
                     out.append(("self", f"held:{x.group}", k, ""))
                     if first:
                         return out
-        # the world
-        mine = [(b, *b.box(b.tf)) for b in self.arm.bodies()] + [(b, *b.box(b.tf)) for b in hb]
+        # the world: boxes first, all pairs at once, then the meshes of the pairs whose boxes overlap
         allow = allow or set()
-        for b, lo, hi in mine:
-            kind = "held" if b in hb else ("gripper" if b.group == "gripper" else "arm")
-            for w, wlo, whi in world:
-                if (lo > whi).any() or (hi < wlo).any():
-                    continue
+        if len(world.bodies):
+            ov = ~((R_lo[:, None, :] > world.hi[None]) | (R_hi[:, None, :] < world.lo[None])).any(-1)
+            nh = len(self.arm.links) + len(self.arm.grip)
+            for i, j in zip(*np.nonzero(ov)):
+                b, w = mine[i], world.bodies[j]
+                kind = "held" if i >= nh else ("gripper" if b.group == "gripper" else "arm")
                 if kind == "arm" and b.name == "base" and w.group in self.mount:
                     continue
                 if kind in ("gripper", "held") and w.group in allow:
@@ -415,7 +441,7 @@ def path_hits(chk: Checker, path, close, world=None, allow=None) -> list[tuple[i
     return out
 
 
-def plan_joint_move(chk: Checker, q0, q1, close, seed: int = 0, iters: int = 6000, step: float = 0.35):
+def plan_joint_move(chk: Checker, q0, q1, close, seed: int = 0, iters: int = 2500, step: float = 0.35):
     """A collision-free joint path [q0, ..., q1] (list of arrays), or None. The straight line if it is clear,
     otherwise RRT-Connect, shortcut. What the gripper or the held part touches at either end is allowed throughout."""
     q0, q1 = np.asarray(q0, float), np.asarray(q1, float)
@@ -532,6 +558,50 @@ class Auditor:
         self.sc = sc
         self.frames: list[dict] = []
         self.checkers: dict[str, Checker] = {}
+        # ARM_AUDIT_SNAP="540,930": also draw those frames, the parts in collision in red -> out/collisions/*.png
+        self.snap_frames = {int(x) for x in os.environ.get("ARM_AUDIT_SNAP", "").split(",") if x.strip()}
+
+    def picture(self, sc):
+        """Draw the current frame with every arm part that touches something it shouldn't in red."""
+        from PIL import ImageDraw
+        from scene import font
+        hits = self.frames[-1]["hits"] if self.frames else []
+        red = {}
+        for rb in getattr(sc, "robots", []):
+            mine = [h for h in hits if h[0] == rb.prefix]
+            for _, kind, a, b, g in mine:
+                parts = [a] + ([b] if kind == "self" and not b.startswith("held") else [])
+                for part in parts:
+                    if part.startswith("held:"):
+                        grp = part[5:]
+                        names = [n for n, gg in sc.group_of.items() if gg == grp]
+                    elif part == "gripper":
+                        names = [n for n in sc.actors if n.startswith(f"{rb.prefix}/gr/")]
+                    elif part in ARM_LINKS:
+                        names = [n for n in sc.actors if n.startswith(f"{rb.prefix}/{part}/")]
+                    else:
+                        names = [n for n in sc.actors if n.startswith(f"{rb.prefix}/gr/{part}/")]
+                    for n in names:
+                        if n not in red:
+                            red[n] = (sc.color.get(n), tuple(sc.actors[n].GetProperty().GetColor()))
+        for n in red:
+            sc.color[n] = (0.92, 0.10, 0.10)
+        from PIL import Image
+        img = Image.fromarray(sc.render_base())
+        for n, (c, drawn) in red.items():
+            if c is None:
+                sc.color.pop(n, None)
+                sc.actors[n].GetProperty().SetColor(*drawn)
+            else:
+                sc.color[n] = c
+        d = ImageDraw.Draw(img)
+        tag = os.environ.get("ARM_AUDIT_TAG", "") or "planned"
+        txt = (f"{sc.name}, frame {sc.n} ({sc.label}), {'old straight joint moves' if tag == 'before' else 'planned'}: "
+               + ("; ".join(sorted({f'{a} in {g or b}' for _, k, a, b, g in hits})) if hits else "no collisions"))
+        d.rectangle((0, 0, img.width, 34), fill=(255, 255, 255))
+        d.text((14, 8), txt[:150], fill=(180, 20, 20) if hits else (20, 110, 40), font=font(17, bold=True))
+        OUT.mkdir(parents=True, exist_ok=True)
+        img.convert("RGB").save(OUT / f"{sc.name}_{tag}_{sc.n:05d}.png", optimize=True)
 
     def __call__(self, sc):
         world_by = {}
@@ -623,7 +693,8 @@ class Auditor:
     def save(self):
         OUT.mkdir(parents=True, exist_ok=True)
         rep = self.report()
-        path = OUT / f"{self.sc.name}.json"
+        tag = os.environ.get("ARM_AUDIT_TAG", "")
+        path = OUT / f"{self.sc.name}{'_' + tag if tag else ''}.json"
         path.write_text(json.dumps(rep, indent=1) + "\n")
         print(f"{self.sc.name}: {rep['frames_with_collisions']} of {rep['frames_checked']} frames with collisions, "
               f"{len(rep['runs'])} runs -> {path.relative_to(HERE)}", flush=True)

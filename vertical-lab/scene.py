@@ -386,6 +386,8 @@ class Scene:
 
     def snap(self, n=1):
         if AUDIT:
+            if self.auditor is not None and any(k in self.auditor.snap_frames for k in range(self.n, self.n + n)):
+                self.auditor.picture(self)
             self.n += n
             return None
         base = self.render_base()
