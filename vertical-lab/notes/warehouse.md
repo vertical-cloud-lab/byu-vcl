@@ -4,7 +4,7 @@ Links are relative to `vertical-lab/`, so this section can go into the README as
 
 | Scene | GIF (640 px, 5 fps) | MP4 (1280 × 720, 15 fps) | Still |
 |---|---|---|---|
-| **Warehouse**: the VLM and the floor machines on an open floor, two MiR250 + UR10e units driving between docks (90 s) | [`out/warehouse.gif`](out/warehouse.gif) | [`out/mp4/warehouse.mp4`](out/mp4/warehouse.mp4) | [`out/warehouse_still.png`](out/warehouse_still.png) |
+| **Warehouse**: the VLM and the floor machines on an open floor, two MiR250 + UR10e units driving between docks (89 s) | [`out/warehouse.gif`](out/warehouse.gif) | [`out/mp4/warehouse.mp4`](out/mp4/warehouse.mp4) | [`out/warehouse_still.png`](out/warehouse_still.png) |
 | **Set up from scratch**: tape, utilities, the VLM, the machines, the arms, trays A-F, the cameras, an orbit (1 min 51 s) | [`out/setup_lab.gif`](out/setup_lab.gif) | [`out/mp4/setup_lab.mp4`](out/mp4/setup_lab.mp4) | [`out/setup_lab_still.png`](out/setup_lab_still.png) |
 
 `out/<name>.json` gives the frame range of every sub-step, as for the other chapters.
@@ -58,6 +58,31 @@ both are MiR distributors).
 
 The docks sit between the aisle and the machines: a 0.84 m band on each side, taped, with a camera target on a post.
 So a docked unit blocks nothing. From front line to front line the band is 4.68 m: 3.0 m of aisle and two dock bands.
+
+**A unit drives into a dock along the dock's line, from the end without the post.** A docked MiR250 stands 80 mm off
+the machines' fronts. A pivot on the dock line would swing its corners 0.12 m past them, along 0.66 m of the row. So a
+unit can only turn onto a dock line where the row has a gap that wide, or where a machine is set back, as the glovebox
+is. Most posts stand beyond the docked unit's front end, and the unit drives in forwards.
+
+The small Instron's dock is the exception (`BACK_IN` in `warehouse.py`). The gap between the two Instrons is the only
+place on that stretch of the row to turn, and the small Instron's post used to stand in it. So that dock is backed
+into from the gap, and its post now stands at the dock's other end.
+
+No unit turns at a dock. Each one backs out the way it came in.
+
+**`ARM_AUDIT=1` checks the MiR250s too** (`warehouse.MirCheck`). It uses FCL on the drawn meshes, as `collide.py` does
+for the arms. It checks the body, the cabinet, the holder and the vial in it against the posts, the machines, the VLM
+and the other unit.
+
+On the earlier routes, 134 of 1138 frames had a MiR250 inside something:
+- through the glovebox's post and the small Instron's post, twice each;
+- into the VLM's front, pivoting 1.2 m from its dock;
+- into the 100 kN Instron, turning round at its dock.
+
+The arms touched those posts, and the VLM's opening, in 24 frames. Now neither the units nor the arms touch anything
+they shouldn't, in any of the 1120 frames checked
+([`out/collisions/warehouse.json`](out/collisions/warehouse.json),
+[`out/collisions/warehouse_mir.json`](out/collisions/warehouse_mir.json)).
 
 ### Rail or mobile base
 
@@ -213,8 +238,9 @@ script draws stand-ins: a camera on a post at each tray's back corner, and two d
 - **The tipping check uses an estimated cabinet mass** and ignores where the wheels actually are.
 - **These are layout choices, not a design:** the racking sizes, the cable trays, the argon line, the camera targets
   and the reserved footprints. The targets are drawn like AprilTags, schematically.
-- **The arm's moves at the glovebox are only kinematic.** The arm reaches into the antechamber through the door
-  opening, and nothing checks for collisions there.
+- **The collision checks cover only the drawn meshes, at the drawn speeds.** They know nothing of the MiR250's safety
+  scanners. In practice those keep a moving unit farther from things than these routes do: MiR's corridor for one
+  unit is 1.45 m.
 
 ### Running it
 
@@ -222,6 +248,7 @@ script draws stand-ins: a camera on a post at each tray's back corner, and two d
 python3 warehouse.py sway                                                    # -> out/rail_vs_amr.json
 xvfb-run --server-num=N -s "-screen 0 1280x720x24" python3 warehouse.py compare   # -> out/rail_vs_amr.png
 xvfb-run --server-num=N -s "-screen 0 1280x720x24" python3 warehouse.py     # -> out/warehouse.gif, out/mp4/warehouse.mp4
+ARM_AUDIT=1 xvfb-run -a python3 warehouse.py      # no render: -> out/collisions/warehouse.json (arms), warehouse_mir.json
 python3 setup_lab.py fit                                                     # what loads where, and whether it fits
 xvfb-run --server-num=N -s "-screen 0 1280x720x24" python3 setup_lab.py     # -> out/setup_lab.gif, out/mp4/setup_lab.mp4
 ```
