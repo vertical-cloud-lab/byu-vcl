@@ -388,7 +388,7 @@ def glovebox_tray() -> Instrument:
                    ("PLC, O2 and dew point", (550, -121, 480), (0.88, 0.30)),
                    ("N2 purge out: oil bubbler", (-600, 300, Z1 + 110), (0.16, 0.10)),
                    ("antechamber pump", (550, 150, 250), (0.90, 0.72))]
-    inst.cam = (-0.35, -1.3, 1.5)
+    inst.cam = (0.55, -1.0, 1.45)                    # from the front right, high: over the controls bay into the box
     inst.props = ("load", "lifter", "tipper", "lid", "lid2", "fill")
     return inst
 
