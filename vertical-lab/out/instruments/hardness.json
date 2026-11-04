@@ -1,0 +1,41 @@
+{
+ "name": "instruments/hardness",
+ "fps": 15,
+ "n_frames": 301,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/5",
+   "caption": "A polished 1.25 in mount goes onto the motorized XY stage (50 x 50 mm travel).",
+   "start_frame": 0,
+   "end_frame": 52
+  },
+  {
+   "label": "2/5",
+   "caption": "The motorized turret swings the Vickers indenter over it; the force motor presses: HV0.5, 4.9 N.",
+   "start_frame": 53,
+   "end_frame": 108
+  },
+  {
+   "label": "3/5",
+   "caption": "The 50x objective comes back. The 3 MP camera images the indent; AVPAK measures both diagonals.",
+   "start_frame": 109,
+   "end_frame": 155
+  },
+  {
+   "label": "4/5",
+   "caption": "A series across the coupon: the stage steps (0.5 mm apart; drawn 3 mm), and each indent is made and read the same way, unattended.",
+   "start_frame": 156,
+   "end_frame": 253
+  },
+  {
+   "label": "5/5",
+   "caption": "315 x 671 x 595 mm and 43 kg: on a tray, with 260 mm to spare under the opening. HM-220: 0.05 gf to 2 kgf, enough for HV0.5 on Al alloys.",
+   "start_frame": 254,
+   "end_frame": 300
+  }
+ ]
+}

@@ -1,7 +1,7 @@
 {
  "name": "instruments/vhx",
  "fps": 15,
- "n_frames": 321,
+ "n_frames": 330,
  "size": [
   1280,
   720
@@ -39,9 +39,9 @@
   },
   {
    "label": "6/6",
-   "caption": "The EA-300 adds 7.2 kg to the stand. Stand and head are about 716 mm tall: under Kardex's 727.5 mm.",
+   "caption": "The EA-300 adds 7.2 kg to the stand. Stand and head are about 716 mm tall, under the opening's 856.5 mm. No monitor or console: the controller stands sideways, and a PiKVM puts its screen on the LAN.",
    "start_frame": 277,
-   "end_frame": 320
+   "end_frame": 329
   }
  ]
 }

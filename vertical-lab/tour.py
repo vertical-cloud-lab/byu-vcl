@@ -35,7 +35,7 @@ MATS = dict(lab.MATS)
 MATS.update(I.MATERIALS)
 # Round 4 adds its instruments in modules of their own, each with a REGISTRY ({key: build}) and, optionally,
 # MATERIALS; a module that isn't there yet is skipped. Each module is cached on its own sources.
-MODULES = ["instruments", "instruments_char", "instruments_lab", "services"]
+MODULES = ["instruments", "instruments_char", "instruments_lab", "services", "instruments_r7"]
 
 
 def _modules() -> dict:
