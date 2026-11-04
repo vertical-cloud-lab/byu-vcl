@@ -117,8 +117,9 @@ POWER = {
     "nanoindenter": (200.0, "estimate", "KLA iMicro: no rating found; 200 W is ours"),
     "mastersizer": (200.0, "snippet", "Malvern Mastersizer 3000+ Ultra: '50 W (no dispersion) up to 200 W' "
                                       "(DirectIndustry, snippet)"),
-    "polisher": (740.0, "snippet", "Buehler EcoMet 30: base motor 440 W, semi-automatic head 300 W (distributors' "
-                                   "sheets, snippets)"),
+    "polisher": (740.0, "estimate", "LECO PX500 (the lab's): LECO publishes no rating, so this is the Buehler "
+                                    "EcoMet 30's, a machine of the same class: base motor 440 W, semi-automatic head "
+                                    "300 W (distributors' sheets, snippets)"),
     "furnace": (2800.0, "published", "Nabertherm NAT 15/65: connected load 2.8 kW, 1-phase (nabertherm.com)"),
     "pi_unit": (4.0, "published", "Raspberry Pi 5: typical bare-board active current 800 mA at 5 V; the supply is "
                                   "rated 27 W (raspberrypi.com). Cameras add well under 1 W"),

@@ -183,7 +183,7 @@ def movie(data, idata):
                   "OpenFlexure microscopes, in reflection.",
              "E": "Tray E: the Plastometrex PLX-Benchtop (PIP), the KLA iMicro nanoindenter and the Malvern Mastersizer "
                   "3000 with its Aero S.",
-             "F": "Tray F: the Buehler EcoMet 30 polisher and the Nabertherm NAT 15/65 furnace."}
+             "F": "Tray F: the LECO PX500 polisher (the lab's) and the Nabertherm NAT 15/65 furnace."}
     cam = CAM_OPEN
     for i, k in enumerate(("D", "E", "F")):
         L.fetch(k, f"3/{n}", f"Tray {k} comes to the opening.", fast=0.6, cam=cam, hold=0.2)
