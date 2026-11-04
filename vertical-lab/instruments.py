@@ -66,6 +66,7 @@ MATERIALS = {
     "led_blue": (0.40, 0.62, 1.00, 1.0, 0.10),         # the PX500's lit ring under the head
     "px_screen": (0.07, 0.13, 0.22, 1.0, 0.6),          # the PX500's dark navy screen
     "px_ui": (0.62, 0.86, 0.92, 1.0, 0.1),              # its light-cyan dial and setting rows
+    "nat_screen": (0.86, 0.93, 0.97, 1.0, 0.3),        # the NAT controller's light touchscreen
     "alumina": (0.93, 0.93, 0.90, 0.85, 0.30),         # alumina suspension
 }
 
@@ -210,71 +211,137 @@ def _ycyl(d, L, x=0.0, y=0.0, z=0.0) -> cq.Workplane:
 # Nabertherm NAT 15/65, a forced-convection chamber furnace: 470 W x 790 D x 460 H mm, 60 kg, 15 L, up to 650 C with
 # +-5 C uniformity, sold for solution annealing and ageing (Nabertherm's forced-convection tabletop range). One furnace
 # covers both steps for the Al alloys (~530 C, then ~160-200 C). A muffle furnace like the L 9/11 is only specified to
-# +-5 K above 800 C, and its lift-door LT version stands 755 mm tall with the door up. Look from Nabertherm's photos
-# of the NAT series: textured stainless housing; the door fills the upper two thirds of the front, hinged on the
-# right, with a black lever latch on the left; the controller strip below it; the circulation fan in the back wall.
-FURNACE = dict(W=470.0, D=790.0, H=460.0, feet=20.0, ctrl_h=120.0, ch_w=300.0, ch_d=340.0, ch_h=150.0, door_t=80.0)
+# +-5 K above 800 C, and its lift-door LT version stands 755 mm tall with the door up. The look follows Nabertherm's
+# own video of the NAT series ("Discover the NAT Series", youtu.be/WE6O8EccLyc, 0:16-0:22, the NAT 15/65 itself),
+# measured with register.py (refs/furnace/): a stainless chamber unit on a separate controller unit with a wide
+# touchscreen in the middle of its front; a slotted vent strip along the top front; the door a stainless panel with a
+# thick insulating plug behind it, hinged on two brackets at the right, a vertical bar handle near its left edge and a
+# latch knob on the left side; a small round fan guard in the back wall of the chamber.
+FURNACE = dict(W=470.0, D=790.0, H=460.0, feet=12.0, lower_h=149.0, mouth_w=329.0, mouth_h=170.0, mouth_z0=226.0,
+               mouth_x=-1.0, ch_w=300.0, ch_d=340.0, ch_h=150.0, panel_t=30.0, plug_t=60.0, fan_d=72.0,
+               scr_w=228.0, scr_h=75.0, scr_z=74.0, vent_h=16.0)
+
+
+def furnace_anchors(p, pose=None) -> dict:
+    W, D, H = p["W"], p["D"], p["H"]
+    yf = -D / 2
+    y1 = yf + p["panel_t"]                                          # the chamber unit's front face, behind the door
+    mx, mz0, mw, mh = p["mouth_x"], p["mouth_z0"], p["mouth_w"], p["mouth_h"]
+    cz = mz0 + (mh - p["ch_h"]) / 2
+    a = {"mouth tl": (mx - mw / 2, y1, mz0 + mh), "mouth tr": (mx + mw / 2, y1, mz0 + mh),
+         "mouth bl": (mx - mw / 2, y1, mz0), "mouth br": (mx + mw / 2, y1, mz0),
+         "top front left": (-W / 2, y1, H), "top front right": (W / 2, y1, H),
+         "split left": (-W / 2, y1, p["lower_h"]),
+         "fan": (mx, y1 + p["ch_d"], cz + p["ch_h"] / 2),
+         "screen tl": (-p["scr_w"] / 2, yf + 8, p["scr_z"] + p["scr_h"] / 2),
+         "screen tr": (p["scr_w"] / 2, yf + 8, p["scr_z"] + p["scr_h"] / 2),
+         "screen bl": (-p["scr_w"] / 2, yf + 8, p["scr_z"] - p["scr_h"] / 2),
+         "screen br": (p["scr_w"] / 2, yf + 8, p["scr_z"] - p["scr_h"] / 2),
+         "foot left front": (-W / 2, yf + 6, 0.0)}
+    return a
 
 
 def furnace() -> Instrument:
     p = FURNACE
     inst = Instrument("furnace", "Heat treatment and ageing furnace", "Nabertherm NAT 15/65", (p["W"], p["D"], p["H"]),
                       "Nabertherm forced-convection chamber furnaces, tabletop (NAT 15/65: 470 x 790 x 460 mm, 60 kg, "
-                      "650 C); look from Nabertherm's photos")
+                      "650 C); the look from Nabertherm's NAT video, measured with register.py")
     W, D, H = p["W"], p["D"], p["H"]
     yf = -D / 2
+    y1 = yf + p["panel_t"]
+    lh, ft = p["lower_h"], p["feet"]
+    mx, mz0, mw, mh = p["mouth_x"], p["mouth_z0"], p["mouth_w"], p["mouth_h"]
     cw, cd, chh = p["ch_w"], p["ch_d"], p["ch_h"]
-    cz = p["feet"] + p["ctrl_h"] + 45          # chamber floor
-    dz0, dz1 = p["feet"] + p["ctrl_h"] + 5, H - 10
+    cz = mz0 + (mh - chh) / 2                                       # chamber floor
     body = _piece(inst, "body")
-    body.add("feet", box(-W / 2 + 15, yf + 15, 0, -W / 2 + 55, D / 2 - 15, p["feet"]).union(
-        box(W / 2 - 55, yf + 15, 0, W / 2 - 15, D / 2 - 15, p["feet"])), "inst_black")
-    shell = box(-W / 2, yf + p["door_t"], p["feet"], W / 2, D / 2, H).edges("|Y").fillet(10)
-    shell = shell.cut(box(-cw / 2, yf + p["door_t"] - 1, cz, cw / 2, yf + p["door_t"] + cd, cz + chh))
-    body.add("housing", shell, "stainless")
-    body.add("front frame", box(-W / 2, yf + p["door_t"] - 6, p["feet"], W / 2, yf + p["door_t"], dz0)
-             .union(box(-W / 2, yf + 20, p["feet"], W / 2, yf + p["door_t"], dz0)), "stainless")
-    body.add("controller strip", box(-W / 2 + 20, yf + 16, p["feet"] + 15, W / 2 - 20, yf + 20, dz0 - 15), "inst_black")
-    body.add("controller screen", box(W / 2 - 190, yf + 14, p["feet"] + 30, W / 2 - 50, yf + 16, dz0 - 30), "screen_on")
-    body.add("power switch", box(-W / 2 + 40, yf + 12, p["feet"] + 45, -W / 2 + 70, yf + 16, p["feet"] + 75), "inst_green")
-    body.add("chamber", box(-cw / 2, yf + p["door_t"] + cd - 4, cz, cw / 2, yf + p["door_t"] + cd, cz + chh).union(
-        box(-cw / 2, yf + p["door_t"], cz - 4, cw / 2, yf + p["door_t"] + cd, cz)), "stainless")
-    body.add("fan guard", _ycyl(130, 6, y=yf + p["door_t"] + cd - 10, z=cz + chh / 2).cut(
-        _ycyl(110, 8, y=yf + p["door_t"] + cd - 11, z=cz + chh / 2)), "steel")
+    body.add("feet", box(-W / 2 + 15, yf + 25, 0, -W / 2 + 55, D / 2 - 15, ft).union(
+        box(W / 2 - 55, yf + 25, 0, W / 2 - 15, D / 2 - 15, ft)), "inst_black")
+    # the controller unit: its own box, the wide touchscreen in the middle of its front, the switch at the right
+    lower = box(-W / 2, yf + 4, ft, W / 2, D / 2, lh - 3).edges("|Y").fillet(6)
+    body.add("controller unit", lower, "stainless")
+    sw, sh, sz = p["scr_w"], p["scr_h"], p["scr_z"]                # the display's black glass; its light page on the right
+    body.add("screen bezel", box(-sw / 2 - 8, yf + 1, sz - sh / 2 - 8, sw / 2 + 8, yf + 4, sz + sh / 2 + 8), "inst_grey")
+    body.add("screen glass", box(-sw / 2, yf + 0.6, sz - sh / 2, sw / 2, yf + 1.2, sz + sh / 2), "inst_black")
+    body.add("controller screen", box(-sw / 2 + 0.22 * sw, yf + 0.2, sz - sh / 2 + 4, sw / 2 - 4, yf + 0.7,
+                                      sz + sh / 2 - 4), "nat_screen")
+    body.add("power switch", box(W / 2 - 62, yf + 1, p["scr_z"] - 12, W / 2 - 38, yf + 4, p["scr_z"] + 12), "inst_black")
+    body.add("warning label", box(W / 2 - 92, yf + 3.4, ft + 14, W / 2 - 40, yf + 4.2, ft + 30), "inst_yellow")
+    # the chamber unit, with its mouth and the chamber behind it
+    shell = box(-W / 2, y1, lh, W / 2, D / 2, H).edges("|Y").fillet(6)
+    shell = shell.cut(box(mx - mw / 2, y1 - 1, mz0, mx + mw / 2, y1 + 25, mz0 + mh))
+    shell = shell.cut(box(mx - cw / 2, y1 + 20, cz, mx + cw / 2, y1 + cd, cz + chh))
+    body.add("chamber unit", shell, "stainless")
+    body.add("split", box(-W / 2 + 2, y1 - 0.5, lh - 3, W / 2 - 2, D / 2 - 2, lh), "inst_dark")
+    slots = None
+    for i in range(5):                                              # the vent strip along the top front
+        x0 = -W / 2 + 38 + i * (W - 76) / 5
+        s = box(x0 + 6, y1 - 1.0, H - 12 - p["vent_h"] / 2, x0 + (W - 76) / 5 - 6, y1 + 0.5, H - 12 + p["vent_h"] / 2 - 8)
+        slots = s if slots is None else slots.union(s)
+    body.add("vent slots", slots, "inst_black")
+    body.add("latch knob", _xcyl(16, 24, x=-W / 2 - 24, y=y1 + 40, z=mz0 + mh * 0.62).union(
+        _xcyl(26, 8, x=-W / 2 - 30, y=y1 + 40, z=mz0 + mh * 0.62)), "chrome")
+    for zh in (mz0 + 18, mz0 + mh - 18):                           # the door's two hinge brackets, on the right
+        body.add(f"hinge {zh:.0f}", box(W / 2 - 6, yf - 6, zh - 22, W / 2 + 10, y1 + 30, zh + 22), "stainless")
+    body.add("chamber floor", box(mx - cw / 2, y1 + 20, cz - 3, mx + cw / 2, y1 + cd, cz), "steel")
+    fy = y1 + cd - 2
+    guard = _ycyl(p["fan_d"], 3, x=mx, y=fy - 3, z=cz + chh / 2).cut(_ycyl(p["fan_d"] - 8, 5, x=mx, y=fy - 4,
+                                                                              z=cz + chh / 2))
+    for r in (0.62, 0.30):
+        d = p["fan_d"] * r
+        guard = guard.union(_ycyl(d, 3, x=mx, y=fy - 3, z=cz + chh / 2).cut(_ycyl(d - 6, 5, x=mx, y=fy - 4,
+                                                                                   z=cz + chh / 2)))
+    for ang in (0, 45, 90, 135):
+        bar = box(-p["fan_d"] / 2 + 3, fy - 3, -1.5, p["fan_d"] / 2 - 3, fy, 1.5).rotate((0, 0, 0), (0, 1, 0), ang)
+        guard = guard.union(bar.translate((mx, 0, cz + chh / 2)))
+    body.add("fan guard", guard, "inst_dark")
     body.add("exhaust", cyl(40, 50, y=D / 2 - 90, z=H), "stainless")
     fan = _piece(inst, "fan")
-    fz, fy = cz + chh / 2, yf + p["door_t"] + cd - 12
+    fz = cz + chh / 2
     for i in range(4):
-        blade = box(-50, -2, -8, 50, 2, 8).rotate((0, 0, 0), (0, 1, 0), i * 45.0)
-        fan.add(f"blade {i}", blade.translate((0, fy, fz)), "steel")
+        blade = box(-p["fan_d"] / 2 + 8, -2, -6, p["fan_d"] / 2 - 8, 2, 6).rotate((0, 0, 0), (0, 1, 0), i * 45.0)
+        fan.add(f"blade {i}", blade.translate((mx, fy + 4, fz)), "steel")
     door = _piece(inst, "door")
-    door.add("door", box(-W / 2 + 4, yf, dz0, W / 2 - 4, yf + p["door_t"] - 8, dz1).edges("|Y").fillet(8), "stainless")
-    door.add("door logo", box(W / 2 - 150, yf - 1, dz1 - 60, W / 2 - 40, yf, dz1 - 35), "inst_yellow")
-    door.add("door latch", box(-W / 2 + 25, yf - 30, (dz0 + dz1) / 2 - 50, -W / 2 + 45, yf, (dz0 + dz1) / 2 + 50),
-             "inst_black")
+    dz0, dz1 = lh + 6, H - 34                                       # under the vent strip
+    door.add("door", box(-W / 2 + 6, yf, dz0, W / 2 - 6, y1, dz1).edges("|Y").fillet(6), "stainless")
+    # the insulating plug: a step that fills the mouth, then one that goes into the chamber (white fibre in the video)
+    door.add("door plug", box(mx - mw / 2 + 6, y1, mz0 + 6, mx + mw / 2 - 6, y1 + 22, mz0 + mh - 6).union(
+        box(mx - cw / 2 + 6, y1 + 22, cz + 5, mx + cw / 2 - 6, y1 + p["plug_t"], cz + chh - 5)), "refractory")
+    hx = -W / 2 + 52
+    door.add("door handle", _ycyl(14, 26, x=hx, y=yf - 26, z=fz - 60).union(_ycyl(14, 26, x=hx, y=yf - 26, z=fz + 60))
+             .union(cyl(16, 150, x=hx, y=yf - 26, z=fz - 75)), "chrome")
+    door.add("door badge", box(W / 2 - 150, yf - 1, dz1 - 50, W / 2 - 50, yf, dz1 - 30), "inst_yellow")
     load = _piece(inst, "load")
     load.add("tray", box(-110, -80, 0, 110, 80, 8).cut(box(-104, -74, 3, 104, 74, 9)), "stainless")
     for i, x in enumerate((-60, 0, 60)):
         load.add(f"coupon {i + 1}", box(x - 8, -60, 3, x + 8, 60, 7), "sample")
-    chamber_c = (0.0, yf + p["door_t"] + cd / 2, cz)
+    chamber_c = (mx, y1 + 20 + (cd - 20) / 2, cz)
     inst.joints = {
-        "door": Joint("hinge", axis=(0, 0, 1), pivot=(W / 2 - 4, yf, 0), deg=100.0),   # free edge out to the front
-        # the tray waits to the left, outside the door's swing (a 462 mm radius about the hinge)
-        "load": Joint("path", path=((-330, yf - 330, cz + 80), (0, yf - 60, cz + 10), chamber_c)),
-        "fan": Joint("spin", axis=(0, 1, 0), pivot=(0, fy, fz), deg=1440.0),
+        "door": Joint("hinge", axis=(0, 0, 1), pivot=(W / 2 + 2, yf, 0), deg=100.0),   # free edge out to the front
+        # the tray waits to the left, outside the door's swing (a 466 mm radius about the hinge)
+        "load": Joint("path", path=((-330, yf - 330, cz + 80), (mx, yf - 60, cz + 10), chamber_c)),
+        "fan": Joint("spin", axis=(0, 1, 0), pivot=(mx, fy, fz), deg=1440.0),
     }
     inst.actions = [
-        ("The door swings open on its right-hand hinge.", 1.6, {"door": (0.0, 1.0), "load": (0.0, 0.0)}),
+        ("The door swings open on its two right-hand hinges; its insulating plug comes out of the chamber's mouth.",
+         1.6, {"door": (0.0, 1.0), "load": (0.0, 0.0)}),
         ("A tray of printed tensile coupons goes in.", 1.8, {"load": (0.0, 1.0)}),
         ("Door shut. Solution treatment at about 530 C, quench, then ageing at 160-200 C: the circulation fan holds "
          "+-5 C, so one furnace does both.", 3.0, {"door": (1.0, 0.0), "fan": (0.0, 1.0), "~door": (0.0, 0.7)}),
         ("", 0.8, {"~door": (0.7, 0.0)}),
     ]
     inst.labels = [("swing door", (W / 2 - 40, yf - 2, dz1 - 40), (0.80, 0.18)),     # near the hinge: stays on it
-                   ("controller", (W / 2 - 120, yf + 14, p["feet"] + 70), (0.84, 0.72))]
+                   ("controller", (p["scr_w"] / 2, yf, p["scr_z"]), (0.84, 0.72))]
+    inst.anchors = furnace_anchors(p)
     inst.cam = (0.9, -1.7, 0.8)
     inst.framing = (0.95, 0.40)              # room on the left for the tray waiting outside the door's swing
     return inst
+
+
+ANCHORS["furnace"] = (FURNACE, furnace_anchors)
+FREE["furnace"] = ["lower_h", "mouth_w", "mouth_h", "mouth_z0", "mouth_x", "scr_w", "scr_h", "scr_z"]
+CHECKS["furnace"] = lambda p: [p["mouth_z0"] - p["lower_h"] - 30, p["H"] - p["mouth_z0"] - p["mouth_h"] - 50,
+                               p["mouth_w"] - p["ch_w"], p["mouth_h"] - p["ch_h"], p["lower_h"] - p["scr_z"] -
+                               p["scr_h"] / 2 - 20]
 
 
 # ===================================================================================================== Instron

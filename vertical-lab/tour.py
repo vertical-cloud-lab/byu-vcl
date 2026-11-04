@@ -48,7 +48,7 @@ def _modules() -> dict:
             out[name] = mod
             MATS.update(getattr(mod, "MATERIALS", {}))
     return out
-GLOWY = {"glow", "laser", "screen_on", "vlm_led", "led_blue", "px_ui"}
+GLOWY = {"glow", "laser", "screen_on", "vlm_led", "led_blue", "px_ui", "nat_screen"}
 scene.GIF_SIZE = (640, 360)          # one GIF per instrument: smaller than the chapters'
 FIT = dict(W=2450.0 - 24, D=864.0 - 24, H=727.5)     # inside a tray's rim; Kardex's product height
 
