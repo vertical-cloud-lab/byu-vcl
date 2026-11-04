@@ -1,7 +1,7 @@
 {
  "name": "vlm_cabling",
- "fps": 15,
- "n_frames": 459,
+ "fps": 10,
+ "n_frames": 306,
  "size": [
   1280,
   720
@@ -11,37 +11,37 @@
    "label": "1/6",
    "caption": "Power and network for the line, everything else drawn faint: one ladder tray overhead at 2.8 m, behind the machines and round the back of the VLM, with a drop to each machine.",
    "start_frame": 0,
-   "end_frame": 89
+   "end_frame": 59
   },
   {
    "label": "2/6",
    "caption": "Left: the glovebox (rating not found) and the rePowder atomizer, which needs 400 V three-phase and 230 V on 32 A plugs, its optimizer drawing up to about 60 A (the install call).",
-   "start_frame": 90,
-   "end_frame": 158
+   "start_frame": 60,
+   "end_frame": 105
   },
   {
    "label": "3/6",
    "caption": "The VLM: its 208 V three-phase supply (#53) into the back, and the dock circuits up and over the top into the two risers. A PoE+ switch on its side feeds the risers and the bay camera; N2 and chilled water come from units standing beside it.",
-   "start_frame": 159,
-   "end_frame": 239
+   "start_frame": 106,
+   "end_frame": 159
   },
   {
    "label": "4/6",
    "caption": "Right: the Aconity MIDI (supply not found), the two Instrons and the wire EDM, the biggest load here at 13 kVA, three-phase 200 V.",
-   "start_frame": 240,
-   "end_frame": 311
+   "start_frame": 160,
+   "end_frame": 207
   },
   {
    "label": "5/6",
    "caption": "The rail: its cable chain lies in a trough in front of the beam and follows the carriage; MachineMotion 2 (1200 W typical) and the UR10e's control box (350 W typical) stand at its end.",
-   "start_frame": 312,
-   "end_frame": 383
+   "start_frame": 208,
+   "end_frame": 255
   },
   {
    "label": "6/6",
    "caption": "All of it: one overhead route, drops at the machines' backs, nothing on the floor of the cell but the rail's own chain.",
-   "start_frame": 384,
-   "end_frame": 458
+   "start_frame": 256,
+   "end_frame": 305
   }
  ]
 }
