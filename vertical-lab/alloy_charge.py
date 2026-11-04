@@ -92,8 +92,9 @@ TOL = 0.01                             # dose tolerance, fraction of the dose (a
 STATION_GONE = {"load_cell", "vial_cup", "vial_funnel", "ext_vial_post", "level_wedge"}
 ERR = [0.0006, -0.0013, 0.0009, -0.0004, 0.0011, -0.0008, 0.0003, -0.0010]   # each cup's dose off its target (made
 #                                        up, inside TOL: the readings shown)
-F_DETAIL = {"Al": 0.85, "Cu": 0.60}    # the first cup of each run, shown in full
-F_FAST = 0.10                          # the other three of each run: a time-lapse, no holds
+F_DETAIL = {"Al": 0.55, "Cu": 0.36}    # the first cup of each run, shown in full
+F_FAST = 0.10                          # the other three of each run: a time-lapse, no holds, its short moves cut
+FAST_CUT = 0.10                        # (s): in the time-lapse, a sub-step shorter than this is done between frames
 
 CAM_WORK = [(-1500, -4300, 2500), (-60, -1450, 1020), (0, 0, 1)]
 CAM_RACK = [(-1150, -2650, 1800), (-330, -1360, 960), (0, 0, 1)]
@@ -327,9 +328,14 @@ def movie():
     K = Charge(sc, L)
     rb, car = L.robot, L.carousel
     sc.parent["stream"] = K.rig
+    auditor = None
     if not os.environ.get("ARM_AUDIT"):
         import time
         t_start = time.time()
+        if os.environ.get("ARM_AUDIT_RENDER"):          # render and check every frame in the same pass
+            import collide
+            auditor = collide.Auditor(sc)
+            sc.frame_hooks.append(auditor)
 
         last = [0]
 
@@ -567,7 +573,7 @@ def movie():
             L.note(2, "HR-202i", f"{v:.4f} g{'  stable: ' + what if u > 0.85 else ''}")
         if still:
             STILLS[still] = sc.n + int(round(1.4 * f * scene.FPS)) + int(round(0.6 * scene.FPS))
-        sc.step(st, cap, 1.4 * f, settle, hold=1.4 if detail else 0.0)
+        sc.step(st, cap, 1.4 * f, settle, hold=1.2 if detail else 0.0)
         sc.step(st, cap, 0.6 * f, K.to(door=DOOR_OPEN), hold=H(0.05))
 
     def balance_to_rack(i, st, cap, f, H, detail):
@@ -953,7 +959,7 @@ def movie():
     # ------------------------------------------------------------------ 2. the Si funnel into the fork
     cap = ("The Si funnel goes into the doser's fork. It is only ever used for Si, and its stem points into the cup's "
            "bore without touching it, so nothing passes from one powder or one cup to the next.")
-    with_caption(sc, cap, lambda: funnel_to_station("Si", f"2/{n}", 0.8, cam=CAM_RIGHT))
+    with_caption(sc, cap, lambda: funnel_to_station("Si", f"2/{n}", 0.6, cam=CAM_RIGHT))
     with_caption(sc, cap, lambda: sc.step(f"2/{n}", None, 0.8, None, hold=0.6, cam_to=cam_fork))
     STILLS["funnels"] = sc.n - 2
     # ------------------------------------------------------------------ 3. the four Al cups' Si, the first in full
@@ -962,12 +968,12 @@ def movie():
            f"weighed.")
     sc.step(f"3/{n}", cap, 0.6, None, hold=1.2, cam_to=CAM_WORK)
     for i in (1, 2, 3):
-        with_caption(sc, cap, lambda i=i: layer1(i, fast=True))
+        with_caption(sc, cap, lambda i=i: layer1(i, fast=True), cut=True)
     # ------------------------------------------------------------------ 4. the Si funnel out, the AlSi10Mg funnel in
     cap = ("Now the top-up, the cup's own metal: the Si funnel goes back to its place on the stand and the AlSi10Mg "
            "funnel takes the fork. One funnel per powder: a funnel that has carried Si never carries anything else.")
-    with_caption(sc, cap, lambda: funnel_to_stand("Si", f"4/{n}", 0.5, cam=CAM_RIGHT))
-    with_caption(sc, cap, lambda: funnel_to_station("AlSi10Mg", f"4/{n}", 0.5))
+    with_caption(sc, cap, lambda: funnel_to_stand("Si", f"4/{n}", 0.4, cam=CAM_RIGHT))
+    with_caption(sc, cap, lambda: funnel_to_station("AlSi10Mg", f"4/{n}", 0.4))
     # ------------------------------------------------------------------ 5. top-up, plug, press: the first in full
     layer2(0, fast=False)
     cap = (f"The other three Al cups the same way, faster: {pa['top_up_g']:.2f} g of AlSi10Mg each, weighed, plugged, "
@@ -975,29 +981,29 @@ def movie():
            f"{4 * pa['charged_cup_g']:.1f} g of Al-10Si.")
     sc.step(f"5/{n}", cap, 0.6, None, hold=1.4, cam_to=CAM_WORK)
     for i in (1, 2, 3):
-        with_caption(sc, cap, lambda i=i: layer2(i, fast=True))
+        with_caption(sc, cap, lambda i=i: layer2(i, fast=True), cut=True)
     # ------------------------------------------------------------------ 6. the AlSi10Mg funnel out, the Ni funnel in
     cap = ("Then the Cu-10Ni run. The AlSi10Mg funnel goes back to the stand and the Ni funnel takes the fork, so no "
            "Al run powder reaches a Cu cup.")
-    with_caption(sc, cap, lambda: funnel_to_stand("AlSi10Mg", f"6/{n}", 0.4, cam=CAM_RIGHT))
-    with_caption(sc, cap, lambda: funnel_to_station("Ni", f"6/{n}", 0.4))
+    with_caption(sc, cap, lambda: funnel_to_stand("AlSi10Mg", f"6/{n}", 0.32, cam=CAM_RIGHT))
+    with_caption(sc, cap, lambda: funnel_to_station("Ni", f"6/{n}", 0.32))
     # ------------------------------------------------------------------ 7. the four Cu cups' Ni
     layer1(4, fast=False)
     cap = (f"The other three Cu cups' Ni, faster: {pc['alloying_g']:.2f} g each, weighed.")
     sc.step(f"7/{n}", cap, 0.5, None, hold=0.9, cam_to=CAM_WORK)
     for i in (5, 6, 7):
-        with_caption(sc, cap, lambda i=i: layer1(i, fast=True))
+        with_caption(sc, cap, lambda i=i: layer1(i, fast=True), cut=True)
     # ------------------------------------------------------------------ 8. the Ni funnel out, the Cu funnel in
     cap = "The Ni funnel back to the stand; the Cu funnel takes the fork for the Cu cups' top-up."
-    with_caption(sc, cap, lambda: funnel_to_stand("Ni", f"8/{n}", 0.35, cam=CAM_RIGHT))
-    with_caption(sc, cap, lambda: funnel_to_station("Cu", f"8/{n}", 0.35))
+    with_caption(sc, cap, lambda: funnel_to_stand("Ni", f"8/{n}", 0.3, cam=CAM_RIGHT))
+    with_caption(sc, cap, lambda: funnel_to_station("Cu", f"8/{n}", 0.3))
     # ------------------------------------------------------------------ 9. the Cu cups' top-up, plug, press
     layer2(4, fast=False)
     cap = (f"The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is "
            f"{pc['charged_cup_g']:.0f} g. They go back on the rack for their own run.")
     sc.step(f"9/{n}", cap, 0.5, None, hold=0.9, cam_to=CAM_WORK)
     for i in (5, 6, 7):
-        with_caption(sc, cap, lambda i=i: layer2(i, fast=True))
+        with_caption(sc, cap, lambda i=i: layer2(i, fast=True), cut=True)
     with_caption(sc, cap, lambda: funnel_to_stand("Cu", f"9/{n}", 0.3))
     with_caption(sc, cap, lambda: park(f"9/{n}", 0.4, lambda x: 0.0))
     # ------------------------------------------------------------------ 10. tray B up; ready for the atomizer
@@ -1016,6 +1022,8 @@ def movie():
     out = sc.save()
     if not (scene.PREVIEW or os.environ.get("ARM_AUDIT")):
         cut_stills()
+    if auditor is not None:
+        auditor.save()
     return out
 
 
@@ -1029,12 +1037,21 @@ def cut_stills():
                                                       stills=STILLS), indent=1, ensure_ascii=False) + "\n")
 
 
-def with_caption(sc, cap, fn):
-    """Run fn() with every sub-step that has no caption of its own given `cap`."""
+def with_caption(sc, cap, fn, cut=False):
+    """Run fn() with every sub-step that has no caption of its own given `cap`. cut=True (the time-lapse): a sub-step
+    shorter than FAST_CUT with no hold happens between two frames (its update run to the end at once), so a cup's
+    approach, grip and retreat cost no frames and the joint moves, the dose and the press stroke carry the cut."""
     orig = sc.step
 
-    def step(label, caption, *a, **kw):
-        return orig(label, caption if caption is not None else cap, *a, **kw)
+    def step(label, caption, seconds, update=None, hold=1.2, cam_to=None, labels=(), **kw):
+        if cut and seconds < FAST_CUT and hold <= 0 and not labels:
+            if update is not None:
+                update(1.0)
+            if cam_to is not None:
+                sc.cam = list(cam_to)
+            return None
+        return orig(label, caption if caption is not None else cap, seconds, update, hold=hold, cam_to=cam_to,
+                    labels=labels, **kw)
     sc.step = step
     try:
         fn()
