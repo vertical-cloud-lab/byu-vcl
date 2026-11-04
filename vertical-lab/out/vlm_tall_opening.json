@@ -1,0 +1,47 @@
+{
+ "name": "vlm_tall_opening",
+ "fps": 15,
+ "n_frames": 513,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/6",
+   "caption": "Kardex publishes 727.5 mm of product height through the opening (blue, its order sheet). Green is 1000 mm: the Shuttle 1000 stores Euro mesh boxes, 970 mm tall, on special trays, so a taller opening exists, but Kardex publishes no figure. Orange, about 856 mm: one used XP 500's 996 mm opening, estimated.",
+   "start_frame": 0,
+   "end_frame": 89
+  },
+  {
+   "label": "2/6",
+   "caption": "The InssTek MX-Lab, 835 mm, 250 kg: under 1000 mm with 165 mm to spare, and under a strong XP 500 tray's 500 kg. But it puts 537 kg/m2 on its footprint, 2.3 times the strong tray's rating per area: a spreader plate, or a Shuttle 1000 pallet tray. Its base cabinet (estimated, grey) and argon come too.",
+   "start_frame": 90,
+   "end_frame": 179
+  },
+  {
+   "label": "3/6",
+   "caption": "Desktop LPBF: the Sharebot MetalONE is exactly 1000 mm (150 kg), so it fits with no margin. The Mastrex MX100 (800 mm, 125 kg) and Lasefinity Fusion X (860 mm, mass not published; drawn as boxes) fit with room. Each needs inert gas through the dock.",
+   "start_frame": 180,
+   "end_frame": 263
+  },
+  {
+   "label": "4/6",
+   "caption": "Two Formlabs Form 4s with their covers open (844 mm): with 1000 mm they could open in their slot, not just at the opening. The Parker Balston N2 generator (889 mm, 50 kg; a box) goes on a tray too.",
+   "start_frame": 264,
+   "end_frame": 341
+  },
+  {
+   "label": "5/6",
+   "caption": "Still too tall at 1000 mm (red boxes): the Meltio M450, the Instron 68SC-2 (its shortest single column, the 68SC-05, is 1020 mm) and the MPRINT. The Kobelco HIP, 1300 mm and 1100 kg, is over every Shuttle tray's rating as well.",
+   "start_frame": 342,
+   "end_frame": 422
+  },
+  {
+   "label": "6/6",
+   "caption": "Blue 727.5 mm (today), orange ~856 mm (est.), green 1000 mm. About 1000 mm would put DED, desktop LPBF, an open Form 4 and an N2 generator on trays. Ask Kardex for the Shuttle 700 and 1000's tallest opening, and a pallet tray's rating for a point load.",
+   "start_frame": 423,
+   "end_frame": 512
+  }
+ ]
+}
