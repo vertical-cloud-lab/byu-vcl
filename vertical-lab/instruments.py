@@ -37,6 +37,7 @@ MATERIALS = {
     "inst_black": (0.09, 0.09, 0.10, 1.0, 0.30),
     "inst_blue": (0.10, 0.36, 0.66, 1.0, 0.30),
     "inst_navy": (0.10, 0.18, 0.36, 1.0, 0.30),
+    "rigaku_navy": (0.13, 0.12, 0.25, 1.0, 0.35),       # the MiniFlex's dark navy front
     "inst_red": (0.78, 0.12, 0.12, 1.0, 0.30),
     "inst_green": (0.20, 0.62, 0.32, 1.0, 0.30),
     "inst_orange": (0.95, 0.50, 0.10, 1.0, 0.30),
@@ -497,66 +498,136 @@ def instron_small() -> Instrument:
 
 
 # ===================================================================================================== XRD
-# Rigaku MiniFlex (6th generation, "MiniFlex 6G"): 620 W x 722 H x 460 D mm, ~80 kg, vertical goniometer of 150 mm
-# radius, theta-2theta (Rigaku MiniFlex 6G sheet; Rigaku brochure). The layout is Rigaku's own outline drawing in the
-# brochure: a base with the control panel, the upper housing with a full-height front door between two side posts
-# (vertical handle at its left, so it hinges on the right), a raised cover on top, and a bulge on each side.
-XRD = dict(W=620.0, D=456.0, H=722.0, body_w=566.0, body_d=395.0, feet=23.0, base_top=297.0, door_top=611.0,
-           upper_top=692.0, door_x=199.0, door_t=59.0, gonio_r=150.0, gonio_z=440.0)
+# Rigaku MiniFlex, 6th generation ("MiniFlex 6G", sold since 2023 and so what a lab buying one now gets; the MiniFlex
+# 600 it replaced was the 5th): 620 W x 722 H x 460 D mm, ~80 kg; a vertical goniometer of 150 mm radius, theta-2theta;
+# a 600 W tube (Rigaku's MiniFlex 6G sheet; its brochure's outline drawing gives 456 mm deep, used here). The front's
+# proportions are fitted with register.py (refs/xrd/) to frames of Rigaku's own 6G launch video (8tI9uFKevr0): a
+# light-grey body split at the button strip into a base and an upper housing, with rounded vertical edges; a dark navy
+# front of three parts, the "Rigaku" band at the top, the door (a vertical handle at its left, hinged on its right,
+# "MiniFlex" low on it) and the button strip under it (radiation label, DOOR LOCK, a lamp, the HV key, power off and
+# on, the e-stop); a bulge on each side of the upper housing; the orange X-ray lamp at the top of the front, over the
+# Rigaku band; vents low on the sides. The top is flat: neither 6G view shows the raised cover this model used to
+# have, and without one the published 722 mm and 620 mm agree with the frames. Inside (that video, and the MiniFlex
+# 600's, which the 6G kept): the tube's white housing with a green lamp on the left, the goniometer in the middle, the
+# navy D/teX detector on the 2theta arm on the right; the door's inside is light grey.
+XRD = dict(W=620.0, D=456.0, H=722.0, body_w=560.2, body_d=395.0, feet=23.0, seam_z=305.3, strip_z0=210.4,
+           door_top=628.2, panel_top=707.6, panel_x=199.6, bulge_z0=353.5, bulge_z1=554.7, bulge_y0=92.0,
+           bulge_y1=216.0, estop_x=153.0, estop_z=254.8, handle_x=-179.4, handle_z0=368.4, handle_z1=467.4,
+           door_t=30.0, door_deg=100.0, gonio_r=150.0, gonio_z=450.0)
+FOOT_IN = 60.0                  # the feet's centres, in from the body's sides and front (the product shot)
+STRIP_BUTTONS = ((-0.75, 34, "inst_yellow", "DOOR LOCK"), (-0.48, 20, "inst_white", "lamp"),
+                 (-0.21, 24, "chrome", "HV key"), (0.08, 32, "inst_offwhite", "power off"),
+                 (0.35, 32, "inst_green", "power on"))   # (x / panel_x, diameter, material, name), left to right
+
+
+def _miniflex(p) -> dict:
+    """The positions the model and its anchors share."""
+    bw, bd = p["body_w"], p["body_d"]
+    yf, yb = -bd / 2, bd / 2
+    return dict(bw=bw, bd=bd, yf=yf, yb=yb, gy=yf + p["door_t"] + 150.0, gz=p["gonio_z"],
+                hinge=(p["panel_x"], yf - 3.0))           # the door's right front edge
+
+
+def _door_pt(p, pt, v) -> tuple:
+    """A point on the door, swung open by v (0 shut, 1 open) about its right-hand hinge."""
+    hx, hy = _miniflex(p)["hinge"]
+    t = math.radians(p["door_deg"] * v)
+    x, y = pt[0] - hx, pt[1] - hy
+    return (hx + x * math.cos(t) - y * math.sin(t), hy + x * math.sin(t) + y * math.cos(t), pt[2])
+
+
+def xrd_anchors(p, pose=None) -> dict:
+    """Named points of the model, for register.py; the handle follows pose["door"] (0 shut, 1 open)."""
+    g = _miniflex(p)
+    bw, yf, H, px, W = g["bw"], g["yf"], p["H"], p["panel_x"], p["W"]
+    xb = (bw + W) / 4                                          # the bulges' mid-thickness
+    v = float((pose or {}).get("door", 0.0))
+    a = {"front top left": (-bw / 2, yf, H), "front top right": (bw / 2, yf, H),
+         "front bottom left": (-bw / 2, yf, p["feet"]), "front bottom right": (bw / 2, yf, p["feet"]),
+         "seam left": (-bw / 2, yf, p["seam_z"]), "seam right": (bw / 2, yf, p["seam_z"]),
+         "panel tl": (-px, yf, p["panel_top"]), "panel tr": (px, yf, p["panel_top"]),
+         "band bl": (-px, yf, p["door_top"]), "band br": (px, yf, p["door_top"]),
+         "strip tl": (-px, yf, p["seam_z"]), "strip tr": (px, yf, p["seam_z"]),
+         "strip bl": (-px, yf, p["strip_z0"]), "strip br": (px, yf, p["strip_z0"]),
+         "estop": (p["estop_x"], yf - 28.0, p["estop_z"]), "lamp": (0.0, yf, H - 7.0),
+         "foot left": (-(bw / 2 - FOOT_IN), yf + FOOT_IN, 0.0), "foot right": (bw / 2 - FOOT_IN, yf + FOOT_IN, 0.0),
+         "bulge left top": (-xb, yf + p["bulge_y0"], p["bulge_z1"]),
+         "bulge left bottom": (-xb, yf + p["bulge_y0"], p["bulge_z0"]),
+         "bulge right top": (xb, yf + p["bulge_y0"], p["bulge_z1"]),
+         "bulge right bottom": (xb, yf + p["bulge_y0"], p["bulge_z0"]),
+         "handle top": _door_pt(p, (p["handle_x"], yf - 26.0, p["handle_z1"]), v),
+         "handle bottom": _door_pt(p, (p["handle_x"], yf - 26.0, p["handle_z0"]), v)}
+    return a
 
 
 def xrd() -> Instrument:
     p = XRD
-    inst = Instrument("xrd", "Benchtop X-ray diffractometer", "Rigaku MiniFlex 600", (p["W"], p["D"], p["H"]),
-                      "Rigaku MiniFlex brochure (outline drawings: 620 W x 456 D x 722 H mm with the feet and the top "
-                      "hump, 80 kg; 150 mm vertical goniometer, theta-2theta) and the MiniFlex 6G sheet")
-    bw, bd = p["body_w"], p["body_d"]
-    yf, yb = -bd / 2, bd / 2
-    gy = yf + p["door_t"] + 150.0                 # goniometer centre, behind the door
-    gz = p["gonio_z"]
+    g = _miniflex(p)
+    inst = Instrument("xrd", "Benchtop X-ray diffractometer", "Rigaku MiniFlex (6th generation)",
+                      (p["W"], p["D"], p["H"]),
+                      "Rigaku MiniFlex 6G sheet and brochure (620 W x 456 D x 722 H mm, 80 kg; 150 mm vertical "
+                      "goniometer, theta-2theta, 600 W); the front fitted with register.py to Rigaku's 6G launch video")
+    bw, bd, yf, yb, gy, gz = g["bw"], g["bd"], g["yf"], g["yb"], g["gy"], g["gz"]
+    H, px, seam, W = p["H"], p["panel_x"], p["seam_z"], p["W"]
     body = _piece(inst, "body")
     feet = None
     for sx in (-1, 1):
         for sy in (-1, 1):
-            f = cyl(40, p["feet"], x=sx * (bw / 2 - 45), y=sy * (bd / 2 - 45))
+            f = cyl(40, p["feet"], x=sx * (bw / 2 - FOOT_IN), y=-sy * (bd / 2 - FOOT_IN))
             feet = f if feet is None else feet.union(f)
-    body.add("feet", feet, "inst_dark")
-    body.add("base", box(-bw / 2, yf, p["feet"], bw / 2, yb, p["base_top"]), "inst_white")
-    body.add("control panel", box(-p["door_x"], yf - 3, 199, p["door_x"], yf, 290), "inst_light")
-    for i, x in enumerate((-160, -110, -60, 0, 50)):
-        body.add(f"button {i + 1}", _ycyl(16 if i != 1 else 10, 6, x=x, y=yf - 9, z=245), "inst_grey")
-    body.add("door lock", _ycyl(24, 8, x=110, y=yf - 11, z=245), "inst_yellow")
-    body.add("HV key", _ycyl(14, 10, x=-110, y=yf - 13, z=245), "chrome")
-    body.add("emergency stop", _ycyl(34, 10, x=160, y=yf - 13, z=245), "inst_red")
-    body.add("rear fittings", box(-120, yb, 80, 120, yb + 30, 200), "inst_grey")
-    # the upper housing: posts either side of the door, the logo band over it, the chamber behind it
-    hood = _piece(inst, "hood")
-    upper = box(-bw / 2, yf, p["base_top"], bw / 2, yb, p["upper_top"])
-    upper = upper.cut(box(-p["door_x"], yf - 1, p["base_top"], p["door_x"], yf + p["door_t"], p["door_top"]))
-    cx0, cz1 = bw / 2 - 20, p["upper_top"] - 15      # the chamber behind the door frame: wider and taller than the door
-    upper = upper.cut(box(-cx0, yf + p["door_t"] - 1, p["base_top"] + 6, cx0, yb - 30, cz1))
-    hood.add("upper housing", upper, "inst_white")
-    hood.add("logo band", box(-p["door_x"], yf - 2, p["door_top"] + 12, p["door_x"], yf, p["upper_top"] - 12),
-             "inst_offwhite")
-    hood.add("logo", box(-80, yf - 3, 655, 80, yf - 2, 672), "inst_grey")
-    top = cq.Workplane("YZ").polyline([(yf + 95, 0), (yf + 215, 0), (yf + 205, 30), (yf + 105, 30)]).close() \
-        .extrude(2 * 188).translate((-188, 0, p["upper_top"]))
-    hood.add("top cover", top, "inst_light")
-    hood.add("X-ray lamp", cyl(22, 14, x=230, y=yf + 160, z=p["upper_top"]), "inst_orange")
+    body.add("feet", feet, "inst_black")
+    body.add("base", box(-bw / 2, yf, p["feet"], bw / 2, yb, seam).edges("|Z").fillet(12), "inst_white")
+    # the button strip: the bottom of the navy front, on the base, its lower corners rounded
+    body.add("button strip", box(-px, yf - 3, p["strip_z0"], px, yf + 1, seam - 1).edges("|Y").edges("<Z")
+             .fillet(14), "rigaku_navy")
+    sz = p["estop_z"]
+    for k, (fx, d, mat, nm) in enumerate(STRIP_BUTTONS):
+        body.add(nm, _ycyl(d, 8, x=fx * px, y=yf - 11, z=sz), mat)
+    body.add("HV key bow", box(-0.21 * px - 4, yf - 14, sz - 46, -0.21 * px + 4, yf - 10, sz - 12), "chrome")
+    body.add("radiation label", box(-0.93 * px - 14, yf - 4, sz - 25, -0.93 * px + 14, yf - 3, sz + 25),
+             "inst_yellow")
+    ex = p["estop_x"]
+    body.add("e-stop collar", _ycyl(62, 10, x=ex, y=yf - 11, z=sz), "inst_yellow")
+    body.add("emergency stop", _ycyl(50, 30, x=ex, y=yf - 28, z=sz), "inst_red")      # a mushroom, well proud
+    # vents low on both sides of the base, near the front
     for sx in (-1, 1):
-        w = box(min(sx * bw / 2, sx * (bw / 2 + 27)), yf + 92, 309, max(sx * bw / 2, sx * (bw / 2 + 27)), yf + 216, 543)
-        hood.add(f"side bulge {'LR'[sx > 0]}", w.edges("|Y").chamfer(12), "inst_light")
-    # inside: the goniometer's back plate, the fixed X-ray tube on the left, the stage and the detector arm
+        for i in range(9):
+            y = yf + 50 + 12 * i
+            body.add(f"vent {'LR'[sx > 0]}{i + 1}", box(sx * bw / 2 - 1.5, y, 60, sx * bw / 2 + 1.5, y + 5, 230),
+                     "inst_grey")
+    body.add("rear fittings", box(-120, yb, 80, 120, yb + 30, 200), "inst_grey")
+    # the upper housing: the door's recess and the opening behind it, the chamber; the Rigaku band over the door
+    hood = _piece(inst, "hood")
+    dt = p["door_t"]
+    upper = box(-bw / 2, yf, seam, bw / 2, yb, H).edges("|Z").fillet(12)
+    upper = upper.cut(box(-px, yf - 1, seam, px, yf + dt, p["door_top"]))
+    upper = upper.cut(box(-px + 25, yf + dt - 1, seam + 40, px - 30, yf + dt + 16, p["door_top"] - 20))
+    cx0, cz1 = bw / 2 - 25, H - 20                               # the chamber: wider and taller than the opening
+    upper = upper.cut(box(-cx0, yf + dt + 15, seam + 6, cx0, yb - 30, cz1))
+    hood.add("upper housing", upper, "inst_white")
+    hood.add("Rigaku band", box(-px, yf - 3, p["door_top"], px, yf + 1, p["panel_top"]), "rigaku_navy")
+    lz = p["door_top"] + 0.54 * (p["panel_top"] - p["door_top"])
+    hood.add("Rigaku logo", box(-96, yf - 4, lz - 16, 96, yf - 3, lz + 16), "inst_light")
+    hood.add("X-ray lamp", box(-28, yf - 2, H - 12, 28, yf + 14, H - 1), "inst_orange")
+    lit = _piece(inst, "glow")                                   # the lamp lit while the X-rays are on
+    lit.add("X-ray lamp lit", box(-29, yf - 3, H - 13, 29, yf + 15, H), "glow")
+    for sx in (-1, 1):
+        x0, x1 = sorted((sx * (bw / 2 - 5), sx * W / 2))
+        w = box(x0, yf + p["bulge_y0"], p["bulge_z0"], x1, yf + p["bulge_y1"], p["bulge_z1"])
+        hood.add(f"side bulge {'LR'[sx > 0]}", w.edges("|Y").fillet(9), "inst_white")
+    # inside: the goniometer's back plate, the tube's housing on the left, the stage and the detector arm
     inner = _piece(inst, "chamber")
-    inner.add("chamber lining", box(-cx0, yb - 34, p["base_top"] + 6, cx0, yb - 30, cz1).union(
-        box(-cx0, yf + p["door_t"], p["base_top"] + 6, cx0, yb - 30, p["base_top"] + 10)), "inst_dark")
+    inner.add("chamber lining", box(-cx0, yb - 34, seam + 6, cx0, yb - 30, cz1).union(
+        box(-cx0, yf + dt + 15, seam + 6, cx0, yb - 30, seam + 10)), "inst_dark")
     inner.add("goniometer", _ycyl(250, 12, y=yb - 46, z=gz), "inst_grey")
     # the hub is behind the sample (it used to ring the stage, in the beam's way); the stage turns on a theta shaft
     inner.add("goniometer hub", _ycyl(70, yb - 46 - (gy + 60), y=gy + 60, z=gz), "aluminium")
     tube_x0 = -p["gonio_r"]
-    inner.add("X-ray tube", _xcyl(64, 170, x=tube_x0 - 140, y=gy, z=gz), "inst_black")
-    inner.add("tube window", _xcyl(30, 30, x=tube_x0 + 30, y=gy, z=gz), "steel")
-    inner.add("divergence slit", box(tube_x0 + 60, gy - 18, gz - 18, tube_x0 + 66, gy + 18, gz + 18), "brass")
+    inner.add("X-ray tube housing", box(tube_x0 - 105, gy - 45, gz - 55, tube_x0 + 10, gy + 45, gz + 50), "inst_white")
+    inner.add("shutter lamp", box(tube_x0 - 60, gy - 47, gz - 30, tube_x0 - 30, gy - 45, gz - 20), "inst_green")
+    inner.add("tube label", box(tube_x0 - 20, gy - 47, gz + 5, tube_x0 + 2, gy - 45, gz + 30), "inst_yellow")
+    inner.add("tube window", _xcyl(30, 30, x=tube_x0 + 10, y=gy, z=gz), "steel")
+    inner.add("divergence slit", box(tube_x0 + 40, gy - 18, gz - 18, tube_x0 + 46, gy + 18, gz + 18), "brass")
     stage = _piece(inst, "stage")
     stage.add("sample stage", box(-35, gy - 30, gz - 16, 35, gy + 30, gz - 3), "aluminium")
     stage.add("theta shaft", _ycyl(24, 30, y=gy + 30, z=gz), "steel")
@@ -565,44 +636,70 @@ def xrd() -> Instrument:
     holder.add("powder", box(-10, -10, 2.5, 10, 10, 3.0), "powder")
     det = _piece(inst, "detector")
     r = p["gonio_r"]
-    # the D/teX head at the 150 mm circle on its 2theta arm, which turns about the axis behind the beam plane
+    # the D/teX head (navy, as Rigaku's) at the 150 mm circle on its 2theta arm, which turns about the axis behind the
+    # beam plane
     d_shape = box(r - 10, gy - 30, -28, r + 60, gy + 31, 28).union(_xcyl(36, 30, x=r - 40, y=gy, z=0)).union(
         box(14, gy + 31, -12, r + 20, gy + 45, 12))
     d_shape = d_shape.rotate((0, gy, 0), (0, gy + 1, 0), -10.0).translate((0, 0, gz))    # 2theta = 10 deg
-    det.add("D/teX detector", d_shape, "inst_dark")
+    det.add("D/teX detector", d_shape, "rigaku_navy")
+    # the door: light grey, its outside navy; the handle at its left, "MiniFlex" low on it
     door = _piece(inst, "door")
-    door.add("door", box(-p["door_x"] + 1, yf, p["base_top"] + 1, p["door_x"] - 1, yf + p["door_t"] - 2,
-                         p["door_top"] - 1), "inst_navy")
-    door.add("door logo", box(-40, yf - 1, 340, 70, yf, 352), "inst_light")
-    door.add("door handle", box(-178, yf - 28, 353, -166, yf - 16, 461).union(
-        box(-178, yf - 28, 353, -166, yf, 365)).union(box(-178, yf - 28, 449, -166, yf, 461)), "chrome")
+    dz0, dz1 = seam + 1, p["door_top"] - 1
+    door.add("door", box(-px + 1, yf - 1, dz0, px - 1, yf + dt - 2, dz1), "inst_light")
+    door.add("door front", box(-px + 1, yf - 3, dz0, px - 1, yf - 1, dz1), "rigaku_navy")
+    door.add("MiniFlex label", box(-58, yf - 4, seam + 14, 58, yf - 3, seam + 34), "inst_light")   # centred, low
+    hx, hz0, hz1 = p["handle_x"], p["handle_z0"], p["handle_z1"]
+    door.add("door handle", box(hx - 5, yf - 29, hz0, hx + 5, yf - 23, hz1).union(
+        box(hx - 5, yf - 29, hz0, hx + 5, yf - 3, hz0 + 10)).union(box(hx - 5, yf - 29, hz1 - 10, hx + 5, yf - 3, hz1)),
+        "chrome")
     inst.joints = {
-        "door": Joint("hinge", axis=(0, 0, 1), pivot=(p["door_x"], yf, 0), deg=100.0),
+        "door": Joint("hinge", axis=(0, 0, 1), pivot=(g["hinge"][0], g["hinge"][1], 0), deg=p["door_deg"]),
         "stage": Joint("hinge", axis=(0, 1, 0), pivot=(0, gy, gz), deg=-40.0),
-        # it waits clear of the door's swing and comes in through the doorway, at the goniometer's height
+        # it waits clear of the door's swing and comes in through the doorway by hand, at the goniometer's height
         "holder": Joint("path", parent="stage", path=((-200, -520, gz + 60), (0, yf - 40, gz + 40),
                                                       (0, gy - 60, gz - 3 + 40), (0, gy, gz - 3))),
         "detector": Joint("hinge", axis=(0, 1, 0), pivot=(0, gy, gz), deg=-80.0),
+        "glow": Joint("fade"),
     }
     inst.actions = [
-        ("The door unlocks and swings open on its right-hand hinge, showing the 150 mm vertical goniometer.", 1.6,
-         {"door": (0.0, 1.0), "holder": (0.0, 0.0)}),
-        ("A powder sample on its holder goes onto the stage at the goniometer's centre.", 2.0, {"holder": (0.0, 1.0)}),
-        ("Door closed and locked: the X-ray interlock lets the 600 W tube switch on.", 1.4, {"door": (1.0, 0.0)}),
+        ("DOOR LOCK pressed, the door swings open on its right-hand hinge, past square, showing the 150 mm vertical "
+         "goniometer.", 1.6, {"door": (0.0, 1.0), "holder": (0.0, 0.0)}),
+        ("A powder sample on its holder goes in by hand onto the stage at the goniometer's centre.", 2.0,
+         {"holder": (0.0, 1.0)}),
+        ("Door closed and locked: the X-ray interlock lets the 600 W tube switch on; the lamp on top lights.", 1.4,
+         {"door": (1.0, 0.0), "glow": (0.0, 1.0)}),
         ("Scan, drawn see-through: the tube stays put, the sample tilts by theta and the detector sweeps 2theta "
          "from 10 to 90 degrees.", 3.2, {"~hood": (0.0, 1.0), "~door": (0.0, 1.0), "stage": (0.0, 1.0),
                                          "detector": (0.0, 1.0)}),
-        ("The detector parks and the door opens again.", 1.8,
+        ("X-rays off, the detector parks and the door opens again.", 1.8,
          {"stage": (1.0, 0.0), "detector": (1.0, 0.0), "~hood": (1.0, 0.0), "~door": (1.0, 0.0),
-          "door": (0.0, 1.0)}),
+          "door": (0.0, 1.0), "glow": (1.0, 0.0)}),
         ("The sample comes out.", 1.4, {"holder": (1.0, 0.0)}),
         ("Door shut. At 722 mm tall the MiniFlex just fits a tray: Kardex allows 727.5 mm.", 1.4,
          {"door": (1.0, 0.0)}),
     ]
-    inst.labels = [("X-ray tube", (-200, gy, gz + 30), (0.12, 0.30)), ("detector", (150, gy, gz + 60), (0.84, 0.30)),
-                   ("front door", (-170, yf - 30, 520), (0.14, 0.62))]
+    inst.labels = [("X-ray tube", (tube_x0 - 50, gy, gz + 50), (0.12, 0.30)),
+                   ("detector", (150, gy, gz + 60), (0.84, 0.30)),
+                   ("front door", (hx, yf - 30, hz1), (0.14, 0.62))]
+    inst.anchors = xrd_anchors(p)
     inst.cam = (0.75, -1.8, 0.7)
     return inst
+
+
+# register.py: the MiniFlex's anchors, the front's proportions fitted to the 6G frames (refs/xrd/), and what keeps a
+# fitted model buildable: the panel inside the body, the band, door and strip in order from the top, the e-stop on the
+# strip, the handle on the door.
+ANCHORS["xrd"] = (XRD, xrd_anchors)
+FREE["xrd"] = ["body_w", "panel_x", "panel_top", "door_top", "seam_z", "strip_z0", "bulge_z0", "bulge_z1", "estop_x",
+               "estop_z", "handle_x", "handle_z0", "handle_z1"]
+CHECKS["xrd"] = lambda p: [p["body_w"] / 2 - p["panel_x"] - 15, p["H"] - p["panel_top"] - 8,
+                           p["panel_top"] - p["door_top"] - 40, p["door_top"] - p["seam_z"] - 200,
+                           p["seam_z"] - p["strip_z0"] - 50, p["strip_z0"] - p["feet"] - 80,
+                           p["bulge_z1"] - p["bulge_z0"] - 80, p["estop_z"] - p["strip_z0"] - 25,
+                           p["seam_z"] - p["estop_z"] - 25, p["panel_x"] - p["estop_x"] - 25,
+                           p["handle_z1"] - p["handle_z0"] - 50, p["handle_x"] + p["panel_x"] - 10,
+                           p["handle_z0"] - p["seam_z"] - 20, p["door_top"] - p["handle_z1"] - 20,
+                           p["door_top"] - 60 - p["gonio_z"], p["gonio_z"] - p["seam_z"] - 80]
 
 
 # ===================================================================================================== SEM
