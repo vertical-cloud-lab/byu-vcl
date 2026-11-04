@@ -1,6 +1,6 @@
 """The whole lab set up from scratch (#303, round 4), on the warehouse floor of ``warehouse.py``: an empty bay; the
 layout taped on the floor; the utilities; the VLM assembled; the floor machines moved in; the UR10e arms installed on
-their MiR250s; every tray loaded, A to F; the cameras; a closing orbit.
+their MiR250s; every tray loaded, A to I; the cameras; a closing orbit.
 
     xvfb-run -a python3 setup_lab.py            # -> out/setup_lab.gif, out/mp4/setup_lab.mp4, out/setup_lab_still.png
     PREVIEW=1 xvfb-run -a python3 setup_lab.py  # the last frame of each sub-step -> /tmp/preview_setup_lab.png
@@ -14,10 +14,18 @@ when it provides ``CAMERA_HOOK``'s function; until then stand-ins are drawn and 
 Everything here that isn't a maker's figure is a layout choice: the cable trays, drops and the argon line, the cameras
 and where they sit. Kardex's 208 V three-phase supply is #53's. Installing the arm follows UR's manual (four M8 bolts at
 20 Nm, two 8 mm pins for re-mounting; UR10e user manual SW5.26, 6.1).
+
+Trays G-I (``fab_trays.py``: resin printing, PCB assembly, desktop LPBF) need room the 3950 mm Shuttle of #53 doesn't
+have: its six 800 mm slots hold A-F. So in this scene, and only here, the Shuttle is assumed 500 mm taller, 4450 mm
+(``UNIT_H``). Kardex builds the XP 250/500 from 2550 to 30 050 mm in 100 mm steps and can change a unit's height after it
+is built (Shuttle XP brochure, "Technical data" and "Flexible and modular design"); #53's 13 ft is that room's ceiling,
+and this warehouse's racking alone is 16 ft. That adds a top slot to each column, for G and I. H, the shortest, goes in
+the front column under the opening, which the 3950 mm unit already has. Every other scene keeps the 3950 mm unit.
 """
 from __future__ import annotations
 
 import math
+import pickle
 import sys
 
 import numpy as np
@@ -41,19 +49,45 @@ TRAY_ITEMS = {**{k: list(v) for k, v in A.LOADS.items()}, **{k: list(v) for k, v
 # Round 4's tray instruments, from the modules other agents are writing (tour.MODULES). These spots were picked before
 # the models existed: run `python3 setup_lab.py fit` after merging and move anything that overlaps or is too tall. A
 # key tour.load() doesn't return is skipped. To use a new tray, add it here and give it a slot in NEW_TRAYS.
-ROUND4_TRAY: dict[str, list[tuple[str, float, float]]] = {
+# An item is (key, x, y) or (key, x, y, turn): (x, y) is the centre of its box, y None puts its front 30 mm behind the
+# tray's front lip (as fab_trays.LOADS), and turn is degrees about z.
+ROUND4_TRAY: dict[str, list[tuple]] = {
     # placed after merging, from `setup_lab.py fit`: no overlaps, every item inside its tray's rim
     "A": [("cubxl_corrosion", -300.0, -114.5)],                          # tray A's CubXL, set up for corrosion
     "C": [("vhx", 860.0, 0.0)],                                          # beside the A1 mini
     # no "D": the OpenFlexure array is in line.TRAY_LOADS["D"] itself now, at (792, -148), so it comes in with D-F
     "F": [("sieve", -990.0, 0.0), ("xrf", 876.0, 0.0)],
+    # trays G-I as fab_trays.LOADS lays them out (fab_tour.load()'s models, FAB_KEYS); `fit` passes them as they are
+    "G": [("form4", -920.0, None), ("form4", -470.0, None), ("form_wash", -40.0, None), ("form_cure", 360.0, None)],
+    "H": [("stencil", -640.0, 0.0, 90.0), ("lumenpnp", 400.0, 0.0)],     # the stencil printer is 903 deep: turned
+    "I": [("snowpod", -500.0, None), ("snowpod", 300.0, None)],
 }
+FAB_KEYS = {it[0] for k in "GHI" for it in ROUND4_TRAY[k]}               # loaded with fab_tour.load(), not tour.load()
 # Round 4 replaces a round-2 item: the CubXL on tray A is the corrosion set-up (instruments_lab.cubxl_corrosion). (Tray
 # D's two freestanding OpenFlexures were replaced here by the array too, until line.TRAY_LOADS made the same swap.)
 REPLACED = {"A": ["cubxl"]}
 for _k, _keys in REPLACED.items():
     TRAY_ITEMS[_k] = [it for it in TRAY_ITEMS[_k] if it[0] not in _keys]
-NEW_TRAYS: dict[str, tuple[str, str]] = {}     # tray -> (slot in vlm.SLOTS, role), for trays beyond A-F
+# Trays beyond A-F: tray -> (slot, role). A-F fill vlm.SLOTS, so G-I get storage positions of their own (NEW_SLOTS),
+# which need the taller unit (UNIT_H, see the docstring). Tray bottoms on Kardex's 25 mm pitch:
+# - F0, the front column under the opening, at 300 mm, the lowest the extractor goes (R1 is there too). The presented
+#   tray's supports are at Z_OPEN - 30 = 824 mm, so with Kardex's 20 mm clear it takes 501 mm of goods: H's 406.
+# - F3 and R5, the top of each column, at 3475 mm: the first step clear of E and F at 2700 (2700 + 3 + 727.5 + 20 =
+#   3450.5). Under the drive bay at UNIT_H - 260 = 4190 mm they take 692 mm of goods: G's 554 and I's 660. I sets the
+#   height: 3478 + 660 + 20 = 4158 mm under the drive bay needs a 4418 mm unit, so 4450 on the 100 mm steps.
+UNIT_H = 4450.0
+NEW_SLOTS = {"F0": (V.Y_FRONT, 300.0), "F3": (V.Y_FRONT, 3475.0), "R5": (V.Y_REAR, 3475.0)}
+SLOT_NOTE = {"F0": "the front column, under the opening", "F3": "the top of the front column",
+             "R5": "the top of the rear column"}
+NEW_TRAYS: dict[str, tuple[str, str]] = {"G": ("F3", "resin printing"), "H": ("F0", "PCB assembly"),
+                                         "I": ("R5", "desktop LPBF")}
+
+
+def slot_goods_h(slot: str) -> float:
+    """The tallest goods a new slot takes, with Kardex's 20 mm clear above them (UNIT_H's unit)."""
+    z = NEW_SLOTS[slot][1] + V.T_FLOOR
+    top = V.Z_OPEN - 30.0 if slot == "F0" else UNIT_H - 260.0      # the opening's supports; the drive bay
+    return top - V.GOODS_CLEAR - z
 # Floor machines: warehouse.STATIONS (the DED machine and the packaging station have reserved spots; HIP has one too).
 # Services: CAMERA_HOOK names the function in services.py that adds the stream cameras and the bay camera; it is called
 # as hook(sc, L) and should return [(label, xyz)] for the captions. Until it exists, stand-ins are drawn.
@@ -63,7 +97,8 @@ INSTALL_AT = 0                                 # the first unit is put together 
 CAM_ROOM = [(9000, -21000, 14500), (-300, -2700, 0), (0, 0, 1)]
 CAM_TOP = [(1500, -14500, 21000), (-300, -2600, 0), (0, 0, 1)]
 CAM_UTIL = [(7600, -16500, 9500), (-600, -2600, 2400), (0, 0, 1)]
-CAM_VLM = [(6300, -9200, 5600), (0, -400, 1900), (0, 0, 1)]
+# the VLM's view: 1.18 times as far back as for the 3950 mm unit, looking 300 mm higher, to take the 4450 mm one
+CAM_VLM = [(7434, -10784, 6566), (0, -400, 2200), (0, 0, 1)]
 CAM_FLOOR = W.CAM_ALL
 CAM_UNIT = [(1900, -2900, 2300), (-1300, -5600, 800), (0, 0, 1)]
 CAM_OPEN = [(4300, -7700, 3100), (0, -1000, 1300), (0, 0, 1)]
@@ -71,6 +106,57 @@ ORBIT = [[(-9000, -16500, 9000), (-300, -2300, 600), (0, 0, 1)],
          [(-15500, -2000, 9500), (-300, -2300, 600), (0, 0, 1)],
          [(-5500, 9500, 10500), (-300, -2300, 600), (0, 0, 1)],
          [(9500, -18000, 12500), (-300, -2600, 300), (0, 0, 1)]]
+
+
+def load() -> dict:
+    """tour.load()'s instruments with fab_tour.load()'s models for trays G-I (which also registers their materials)."""
+    import fab_tour
+    idata = tour.load()
+    idata.update(fab_tour.load(FAB_KEYS))
+    return idata
+
+
+def tall_vlm() -> dict:
+    """lab.meshes()'s VLM entries for a unit UNIT_H tall, with NEW_SLOTS added to vlm.SLOTS. vlm.py builds every height
+    from UNIT_H and Z_TOP_IN (and animate the belts from Z_BELT_TOP), so they are set here, for this process, after
+    lab.meshes() has cached the 3950 mm unit, and these meshes are cached apart from it."""
+    V.SLOTS.update(NEW_SLOTS)
+    if V.UNIT_H != UNIT_H:
+        lab.meshes()                     # lab's own cache holds the 3950 mm unit before anything here changes
+        V.UNIT_H, V.Z_TOP_IN = UNIT_H, UNIT_H - 260.0
+        A.Z_BELT_TOP = V.Z_TOP_IN + 140.0
+    srcs = (lab.HERE / "vlm.py", lab.HERE / "lab.py", lab.HERE / "lab_models" / "common.py")
+    path = lab.CACHE / f"vlm_h{UNIT_H:.0f}_{lab._hash_sources(*srcs)}.pkl"
+    if path.exists():
+        return pickle.loads(path.read_bytes())
+    print(f"tessellating the {UNIT_H:.0f} mm VLM (cached afterwards in {path.name})", flush=True)
+    ents = lab._vlm_entries()
+    path.write_bytes(pickle.dumps(ents))
+    return ents
+
+
+def _item(it) -> tuple:
+    """(key, x, y[, turn]) -> (key, x, y, turn)."""
+    return (*it, 0.0) if len(it) == 3 else tuple(it)
+
+
+def _box(inst, x, y, turn) -> tuple:
+    """Where an item stands on its tray: its box centre (y None: front 30 mm behind the lip) and footprint (w, d),
+    turned."""
+    x0, x1, y0, y1, _, _ = inst.bbox()
+    t = math.radians(turn)
+    c, s = abs(math.cos(t)), abs(math.sin(t))
+    w, d = c * (x1 - x0) + s * (y1 - y0), s * (x1 - x0) + c * (y1 - y0)
+    if y is None:
+        y = -(V.TRAY_D - 24.0) / 2 + 30.0 + d / 2
+    return x, y, w, d
+
+
+def _placed(inst, x, y, turn) -> np.ndarray:
+    """An item's own frame -> its tray's: the box centred on (x, y), turned about z, standing on the tray floor."""
+    x0, x1, y0, y1, z0, _ = inst.bbox()
+    x, y, _, _ = _box(inst, x, y, turn)
+    return T((x, y, V.T_FLOOR)) @ R((0, 0, 1), turn) @ T((-(x0 + x1) / 2, -(y0 + y1) / 2, -z0))
 
 
 # ================================================================================================ the lab
@@ -168,10 +254,15 @@ def sc_data(L):
     return _DATA
 
 
+def z_north() -> float:
+    """The north cable tray's height: 325 mm over the VLM's roof (4300 mm over the 3950 mm unit)."""
+    return V.UNIT_H + V.SKIN + 325.0
+
+
 def utilities() -> dict:
     """Cable trays over both rows with drops to each station, a network cable in each, and an argon line from a
     cylinder manifold to the gas users. Layout choices, drawn to read, not a design."""
-    zn, yn = 4300.0, W.Y_FACE_N + 700.0          # over the north row, above the VLM's 3950 mm roof
+    zn, yn = z_north(), W.Y_FACE_N + 700.0       # over the north row, 325 mm above the VLM's roof
     zs, ys = 3200.0, W.Y_FACE_S - 600.0
     xs = (-9200.0, 9800.0)
 
@@ -187,7 +278,7 @@ def utilities() -> dict:
     north = {"glovebox": -7300.0, "repowder": -3640.0, "vlm": 900.0, "aconity": 3700.0, "wire_edm": 7400.0}
     south = {"instron_floor": -6400.0, "instron_small": -4300.0, "chargers": -900.0, "ded": 3500.0, "packaging": 7300.0}
     for x in north.values():
-        z_end = 3975.0 if x == 900.0 else 2500.0
+        z_end = V.UNIT_H + V.SKIN if x == 900.0 else 2500.0
         drops.append(pv.Cylinder(center=(x, yn - 60, (zn + z_end) / 2), direction=(0, 0, 1), radius=22,
                                  height=zn - z_end, resolution=16).triangulate())
         boxes.append(W._box(x - 110, yn - 160, z_end - 160, x + 110, yn + 40, z_end))
@@ -232,7 +323,7 @@ def stand_in_cameras(sc: Scene, trays) -> list:
         sc.add(f"cam {k}/head", head, (0.10, 0.45, 0.30), g)
         sc.add(f"cam {k}/lens", lens, (0.05, 0.05, 0.06), g)
     for i, (x, aim) in enumerate(((0.0, (0, -1, -0.9)), (-4000.0, (0.4, -1, -0.8)))):
-        y, z = W.Y_FACE_N + 700.0 - 160, 4300.0 - 60
+        y, z = W.Y_FACE_N + 700.0 - 160, z_north() - 60
         dome = pv.Sphere(radius=70, center=(x, y - 120, z - 90)).triangulate()
         arm = W._box(x - 20, y - 140, z - 40, x + 20, y, z)
         sc.add(f"baycam{i}/dome", dome, (0.15, 0.15, 0.17), "cams")
@@ -253,6 +344,14 @@ def rig_in(sc: Scene, g, names, out=False, travel=1700.0):
     return up
 
 
+def spread(sc: Scene, cam, items, fy=0.15) -> list:
+    """Leader labels spread evenly across the frame (right of the gauge table) in the order their anchors are seen from
+    `cam`, in two staggered rows: W.auto puts each over its own anchor, which hides one of four items side by side."""
+    out = W.auto(sc, cam, items)                 # sorted left to right as seen
+    n = len(out)
+    return [(t, xyz, (0.30 + 0.60 * i / max(n - 1, 1), fy + 0.06 * (i % 2))) for i, (t, xyz, _) in enumerate(out)]
+
+
 def stagger(fs, overlap=0.45):
     """Run updates one after another within one step, each over `overlap` of it."""
     n = len(fs)
@@ -265,6 +364,7 @@ def stagger(fs, overlap=0.45):
 
 
 def build(data, idata):
+    data = {**data, "vlm": tall_vlm()}               # the UNIT_H unit, with room for trays G-I (see the docstring)
     _DATA.update(data)
     sc = Scene("setup_lab", TITLE, gif=False)
     sc.cam = list(CAM_ROOM)
@@ -288,7 +388,8 @@ def build(data, idata):
         loads[k] += [it for it in extra if it[0] in idata]
     for k, lst in loads.items():
         items.setdefault(k, [])
-        for key, x, y in lst:
+        for it in lst:
+            key, x, y, turn = _item(it)
             if k in A.LOADS and (key, x, y) in A.LOADS[k]:
                 g = next(gg for gg in L.eq_groups[k] if L.eq_key[gg] == key)
                 names = L.eq_names(g) + (L.groups("vial", "vial_powder", "vial_liquid") if key == "rack" else [])
@@ -297,16 +398,17 @@ def build(data, idata):
             if key not in idata:
                 continue
             inst, ents = idata[key]
-            x0, x1, y0, y1, z0, _ = inst.bbox()
-            at = T((x - (x0 + x1) / 2, y - (y0 + y1) / 2, V.T_FLOOR - z0))
-            rig = tour.Rig(sc, inst, ents, f"{k}_{key}:", at=at, parent=f"tray_{k}")
+            tag = f"{k}_{key}"
+            n = sum(1 for kk, _, _, _ in items[k] if kk == key)       # a second of the same (tray G's two Form 4s)
+            tag = tag if n == 0 else f"{tag}{n + 1}"
+            rig = tour.Rig(sc, inst, ents, f"{tag}:", at=_placed(inst, x, y, turn), parent=f"tray_{k}")
             for piece in [pc for pc in rig.names if pc in inst.props]:
                 for nm in rig.names.pop(piece):
                     sc.alpha[nm] = 0.0
-            rigs[f"{k}_{key}"] = rig
-            items[k].append((key, f"{k}_{key}:body", rig.all_names(), "rig"))
+            rigs[tag] = rig
+            items[k].append((key, f"{tag}:body", rig.all_names(), "rig"))
     for r in fit(idata):                       # say so if a round-4 item doesn't fit where ROUND4_TRAY puts it
-        if r.get("overlaps") or r.get("fits_height") is False or r.get("inside_tray") is False:
+        if r.get("overlaps") or False in (r.get("fits_height"), r.get("inside_tray"), r.get("fits_slot")):
             print(f"setup_lab: check {r['key']} on tray {r['tray']}: {r}", flush=True)
     units = [Unit(sc, f"unit{i}", W.charger_pose(i)) for i in range(len(W.CHARGERS))]
     util = {}
@@ -365,19 +467,22 @@ def movie(data, idata):
     sc.step(f"3/{n}", "Utilities: cable trays over both rows with a drop to every station (power and network), "
             "208 V three-phase to the VLM (#53), and an argon line from a cylinder manifold to the glovebox, the "
             "rePowder, the Aconity and the DED. Layout choices, not a design.", 3.2, util_on, hold=1.6, cam_to=CAM_UTIL,
-            labels=W.auto(sc, CAM_UTIL, [("cable tray: power and network", (5200, W.Y_FACE_N + 700, 4400)),
+            labels=W.auto(sc, CAM_UTIL, [("cable tray: power and network", (5200, W.Y_FACE_N + 700, z_north() + 100)),
                                           ("argon cylinders", (-9500, W.Y_FACE_N + 1400, 1500)),
                                           ("power drop", (-4300, W.Y_FACE_S - 600, 2500)),
-                                          ("VLM supply, 208 V 3-phase", (900, W.Y_FACE_N + 640, 4300))]))
+                                          ("VLM supply, 208 V 3-phase", (900, W.Y_FACE_N + 640, z_north()))]))
     # ------------------------------------------------------------------ 4. the VLM
     s = A.slide_in
-    sc.step(f"4/{n}", "The Kardex Shuttle XP 500 goes together where its footprint is taped: base frame, posts, "
-            "storage columns.", 2.4, A.both(s(L, ["base"], (0, 0, 900)), s(L, ["posts"], (0, 0, 1800)),
-                                          s(L, ["col_front", "col_rear"], (2600, 0, 0))),
-            hold=0.3, cam_to=CAM_VLM)
-    sc.step(f"4/{n}", "The extractor and its drive, then six empty electrified trays, A to F.", 2.4,
+    sc.step(f"4/{n}", f"The Kardex Shuttle XP 500 goes together where its footprint is taped: base frame, posts, "
+            f"storage columns. Assumed here: {UNIT_H:.0f} mm tall, 500 mm more than #53's 13 ft unit (Kardex builds it "
+            f"in 100 mm steps), so that it holds trays G-I too.", 3.4,
+            A.both(s(L, ["base"], (0, 0, 900)), s(L, ["posts"], (0, 0, 1800)),
+                   s(L, ["col_front", "col_rear"], (2600, 0, 0))),
+            hold=0.6, cam_to=CAM_VLM)
+    sc.step(f"4/{n}", f"The extractor and its drive, then {len(trays)} empty electrified trays, A to {trays[-1]}. G and "
+            "I take a new slot at the top of each column; H goes in the front column, under the opening.", 2.8,
             A.both(s(L, ["lift_rails"], (0, 0, 2500)), s(L, ["drive"], (0, 0, 1400)),
-                   s(L, ["lift", "belts"], (0, 0, 2400)), s(L, tray_groups, (3200, 0, 0))), hold=0.3)
+                   s(L, ["lift", "belts"], (0, 0, 2400)), s(L, tray_groups, (3200, 0, 0))), hold=0.5)
     sc.step(f"4/{n}", "The cladding, the opening, the console and the shutter.", 2.2,
             A.both(s(L, ["skin_L"], (-900, 0, 0)), s(L, ["skin_R"], (900, 0, 0)), s(L, ["skin_back"], (0, 900, 0)),
                    s(L, ["skin_top"], (0, 0, 900)), s(L, ["skin_front", "bay", "console", "shutter"], (0, -900, 0))),
@@ -478,10 +583,20 @@ def movie(data, idata):
                 fs.append(A.item_in(L, g) if kind == "lab" else rig_in(sc, g, names))
                 nm = A.NAMES.get(key) if kind == "lab" else idata[key][0].model
                 lbls.append((nm, tuple(np.array(sc.world(g)[:3, 3]) + (0, 0, 400))))
-            cap = f"Tray {k}: " + ", ".join(lb[0] for lb in lbls) + "."
+            texts = [lb[0] for lb in lbls]               # two of the same once: "2 x Formlabs Form 4"
+            cap = f"Tray {k}: " + ", ".join(f"{texts.count(t)} x {t}" if texts.count(t) > 1 else t
+                                            for t in dict.fromkeys(texts)) + "."
+            for key, _, _, turn in map(_item, ROUND4_TRAY.get(k, [])):
+                if turn and key in idata:                 # tray H's stencil printer
+                    inst = idata[key][0]
+                    _, _, y0, y1, _, _ = inst.bbox()
+                    cap += (f" The {inst.model} is turned {turn:.0f} degrees: it is {y1 - y0:.0f} mm deep, the "
+                            f"tray's inside {V.TRAY_D - 24:.0f}.")
             sc.step(f"7/{n}", cap, 0.9 + 0.5 * len(lst), stagger(fs, overlap=0.55), hold=0.5,
-                    labels=W.auto(sc, CAM_OPEN, lbls, dy=0.16))
-        L.store(k, f"7/{n}", f"Tray {k} goes back to its slot ({A.HOME[k]}), where it has power.", fast=0.3, hold=0.05)
+                    labels=spread(sc, CAM_OPEN, lbls) if k in NEW_TRAYS else W.auto(sc, CAM_OPEN, lbls, dy=0.16))
+        slot = A.HOME[k]
+        where = f"{slot}, {SLOT_NOTE[slot]}" if slot in SLOT_NOTE else slot
+        L.store(k, f"7/{n}", f"Tray {k} goes back to its slot ({where}), where it has power.", fast=0.3, hold=0.05)
     # ------------------------------------------------------------------ 8. the cameras
     hook = None
     try:
@@ -491,7 +606,8 @@ def movie(data, idata):
         pass
     if hook is not None:
         cam_lbls = hook(sc, L) or []
-        cap = "The cameras go on: a stream camera on each tray and the bay cameras (services.py)."
+        cap = "The cameras go on: stream cameras on trays A-F and the bay camera (services.py, which has none for " \
+              "trays G-I yet)."
     else:
         cam_lbls = stand_in_cameras(sc, trays)
         cap = "The cameras go on: a stream camera on each tray and two bay cameras under the cable tray. Stand-ins: " \
@@ -511,43 +627,56 @@ def movie(data, idata):
     # ------------------------------------------------------------------ 9. orbit
     L.show_gauges = False
     L.apply_state()
-    sc.step(f"9/{n}", "Set up: the VLM with trays A-F, the floor machines, two MiR250 + UR10e units on charge.", 1.2,
-            L.skin(0.0), hold=0.0)
+    done = f"Set up: the VLM ({UNIT_H:.0f} mm tall) with trays A-{trays[-1]}, the floor machines, two MiR250 + UR10e " \
+           "units on charge."
+    sc.step(f"9/{n}", done, 1.2, L.skin(0.0), hold=0.0)
     for i, cam in enumerate(ORBIT):
         last = i == len(ORBIT) - 1
-        sc.step(f"9/{n}", "Set up: the VLM with trays A-F, the floor machines, two MiR250 + UR10e units on charge.",
-                2.4, None, hold=2.4 if last else 0.0, cam_to=cam, still=last)
+        sc.step(f"9/{n}", done, 2.4, None, hold=2.4 if last else 0.0, cam_to=cam, still=last)
     return sc.save()
 
 
 def fit(idata) -> list:
-    """Every tray item: its height against Kardex's 727.5 mm, and any overlap with its neighbours on the tray."""
+    """Every tray item: its height against Kardex's 727.5 mm (and, on trays G-I, against its slot: slot_goods_h), its
+    footprint against the tray's rim, and any overlap with its neighbours on the tray."""
     rows = []
     for k, lst in {**TRAY_ITEMS, **{kk: TRAY_ITEMS.get(kk, []) + v for kk, v in ROUND4_TRAY.items()}}.items():
         boxes = []
-        for key, x, y in lst:
+        for it in lst:
+            key, x, y, turn = _item(it)
             if key in idata:
-                x0, x1, y0, y1, z0, z1 = idata[key][0].bbox()
-                w, d, h = x1 - x0, y1 - y0, z1 - z0
+                inst = idata[key][0]
+                x0, x1, y0, y1, z0, z1 = inst.bbox()
+                x, y, w, d = _box(inst, x, y, turn)
+                h = z1 - z0
             elif key in A.NAMES:
                 rows.append(dict(tray=k, key=key, note="round 2 equipment (animate.LOADS)"))
                 continue
             else:
-                rows.append(dict(tray=k, key=key, note="not loaded by tour.load(): skipped"))
+                rows.append(dict(tray=k, key=key, note="not loaded by tour.load() or fab_tour.load(): skipped"))
                 continue
             b = (x - w / 2, x + w / 2, y - d / 2, y + d / 2)
             over = [kk for kk, bb in boxes if b[0] < bb[1] and bb[0] < b[1] and b[2] < bb[3] and bb[2] < b[3]]
             boxes.append((key, b))
-            rows.append(dict(tray=k, key=key, size_mm=[round(w), round(d), round(h)],
-                             fits_height=bool(h <= V.MAX_GOODS_H),
-                             inside_tray=bool(abs(b[0]) <= V.TRAY_W / 2 - 12 and b[1] <= V.TRAY_W / 2 - 12
-                             and abs(b[2]) <= V.TRAY_D / 2 - 12 and b[3] <= V.TRAY_D / 2 - 12), overlaps=over))
+            row = dict(tray=k, key=key, at_mm=[round(float(x), 1), round(float(y), 1)],
+                       size_mm=[round(w), round(d), round(h)],
+                       fits_height=bool(h <= V.MAX_GOODS_H),
+                       inside_tray=bool(abs(b[0]) <= V.TRAY_W / 2 - 12 and b[1] <= V.TRAY_W / 2 - 12
+                                        and abs(b[2]) <= V.TRAY_D / 2 - 12 and b[3] <= V.TRAY_D / 2 - 12),
+                       overlaps=over)
+            if turn:
+                row["turn_deg"] = turn
+            if k in NEW_TRAYS:
+                slot = NEW_TRAYS[k][0]
+                row.update(slot=slot, slot_goods_mm=round(slot_goods_h(slot), 1),
+                           fits_slot=bool(h <= slot_goods_h(slot)))
+            rows.append(row)
     return rows
 
 
 if __name__ == "__main__":
     args = sys.argv[1:]
-    idata = tour.load()
+    idata = load()
     if args and args[0] == "fit":
         for r in fit(idata):
             print(r)
