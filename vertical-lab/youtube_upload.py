@@ -136,6 +136,8 @@ WHERE = {
     "beside the VLM": "It is too big for a tray of the vertical lift module, so it stands beside it.",
 }
 WHERE_KEY = {"rail": "It runs along the front of the line, for the arm.",
+             "multidoser": "It goes on tray B of the vertical lift module. As drawn it stands 731 mm, 3.5 mm over "
+                           "Kardex's 727.5 mm product height; its levelling feet can take that up.",
              "hip": "It is shown against a tray of the vertical lift module, which it doesn't fit."}
 TITLE_KEY = {   # where "<model>, <title>" reads badly or runs over 100 characters
     "ot2": "Opentrons OT-2, the gantry and pipette over the deck, the panels see-through",

@@ -502,5 +502,23 @@
   "fits_tray": true,
   "floor": false,
   "where": "on a tray"
+ },
+ "multidoser": {
+  "title": "Multi-doser, 13 powder modules",
+  "model": "the lab's chain carousel v2 (powder-doser PR #185)",
+  "source": "powder-doser 1c135e0 (PR #185's head), cad/chain-carousel-v2: its own CAD, layout and kinematics, verbatim in multidoser/, and its three reference STEPs, hash-checked (carousel.py)",
+  "model_mm": [
+   435,
+   684,
+   731
+  ],
+  "published_mm": [
+   435,
+   684,
+   731
+  ],
+  "fits_tray": false,
+  "floor": false,
+  "where": "beside the VLM"
  }
 }
