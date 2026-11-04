@@ -140,7 +140,7 @@ def movie():
             "against the tray's 840, and the open-source Opulo LumenPnP v4. The right end is free for a reflow oven.",
             4.2, both("H0", "H1"), hold=1.2, cam_to=CAM_H,
             labels=[(model("stencil"), (TRAYS["H"][0] - 640, 0, 450), (0.20, 0.22)),
-                    (model("lumenpnp"), (TRAYS["H"][0] + 400, 0, 470), (0.74, 0.22))])
+                    (model("lumenpnp"), (TRAYS["H"][0] + 400, 0, 360), (0.74, 0.22))])
     sc.step(f"4/{n}", "Tray I: two SnowX SnowPods, desktop LPBF, 660 mm tall: the only powder-bed printer found that "
             "goes through the opening, with 67.5 mm to spare. Each makes its own nitrogen from air with a NitroPod, so "
             "the tray needs only power. A Kickstarter kit: not shipping yet.", 4.4, both("I0", "I1"), hold=1.4,
