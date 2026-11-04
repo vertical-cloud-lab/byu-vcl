@@ -1513,6 +1513,18 @@ def splice() -> str:
     gif = OUT / f"{NAME}.gif"
     if gframes:
         scene.write_gif(gframes, gif)
+        # the footage is noisy, real video: if the GIF is still over 5 MB, drop to 4 fps (every fifth frame out),
+        # then to 560 x 315
+        fps0 = scene.GIF_FPS
+        for shrink in (False, True):
+            if gif.stat().st_size <= 5.0e6:
+                break
+            scene.GIF_FPS = 4
+            frames2 = [f for i, f in enumerate(gframes) if i % 5 != 4]
+            if shrink:
+                frames2 = [f.resize((560, 315), Image.LANCZOS) for f in frames2]
+            scene.write_gif(frames2, gif)
+        scene.GIF_FPS = fps0
     n_ft = sum(len(fr) for _, fr, _, _ in inserts)
     info = (f"{NAME}: {written} frames, {written / fps:.1f} s, {n_ft / fps:.1f} s of it the lab's footage "
             f"({sum(len(s_) for *_, s_ in inserts)} pieces); gif {len(gframes)} frames "
