@@ -26,6 +26,35 @@ framework, [`scene.py`](scene.py), is `atomizer-training/viz3d/scene.py` from #1
 `out/<name>.json` gives the frame range of every sub-step in the MP4, `out/<name>_still.png` is a still of the last
 view, and [`out/reach.json`](out/reach.json) is the arm study below.
 
+## The models against real footage
+
+Asked for in [PR #318](https://github.com/vertical-cloud-lab/byu-vcl/pull/318): refine the equipment piece by piece
+against the lab's SOP videos and other footage, registering each model to frames taken from different angles.
+
+![The polisher: the lab's machine, the old model, the new one](out/register/polisher_before_after.png)
+
+**The method.**
+1. [`frames.py`](frames.py) finds the moments that show a machine whole. It fetches storyboard thumbnails, then
+   single 720p frames, through a stream-cam Pi, because YouTube refuses the runner.
+2. Points and edges are picked on each frame: corners, screen corners, circle edges.
+3. [`register.py`](register.py) fits the camera of each frame. Frames from one video share a lens. It fits the
+   model's own unpublished proportions too, with the published size, or a part of known size, as the scale.
+4. `register.py` then draws the model's outline over each frame
+   ([`out/register/<key>/`](out/register/)), so a wrong shape shows up as a gap.
+5. A held-out frame checks the result.
+
+Each model publishes its anchors (named points, circles and lines) from the same parameters that build it. So a
+fitted number is a model dimension, and the same picks re-test the model after every change.
+
+- **Frames from the lab's own videos are committed** in `refs/<key>/`.
+- **Frames from others' videos are not.** They are fetched again from their video id and time, as the vendor CAD is.
+- **The overlays are committed.**
+
+| Model | What the footage changed | Fit (RMS) | Notes |
+|---|---|---|---|
+| **Grinder-polisher** | It is the lab's **LECO PX500**, not the Buehler EcoMet 30 that was modelled. The model is rebuilt from the SOP frames: round bowl drum, screen block, tall rounded head, gooseneck spigot, bottle holder. The clip follows the SOP: SiC papers at the screen's settings, then the white cloth with alumina | 8.6 and 4.5 px on two frames of [SOP part 2](https://www.youtube.com/watch?v=nfnl0aPJPZc); 11.8 px on a held-out frame of [part 3](https://www.youtube.com/watch?v=eLrJxxBAcnE) | [`notes/refine_polisher.md`](notes/refine_polisher.md), [overlays](out/register/polisher/) |
+<!-- refine-table -->
+
 ## Characterization instruments, the alloy line and the backup rail (round 3)
 
 Fourteen more models, each its own, from the makers' published figures and photos or, for the OpenFlexure
@@ -47,7 +76,7 @@ microscopes, from OpenFlexure's own OpenSCAD:
 | Indentation plastometer (PIP) | Plastometrex PLX-Benchtop | The sample goes onto the platen by hand; the indenter goes in and lifts; the profilometer's arm reaches in under it and the stylus traces the indent | [GIF](out/instruments/pip.gif), [MP4](out/mp4/instruments/pip.mp4) | about 500 × 500 × 680, estimated | tray E |
 | Nanoindenter | KLA iMicro | The hood lifts; a mount goes onto the XY stage; the stage carries it from the microscope to the indenter | [GIF](out/instruments/nanoindenter.gif), [MP4](out/mp4/instruments/nanoindenter.mp4) | about 540 × 520 × 520, estimated | tray E |
 | Laser diffraction | Malvern Mastersizer 3000 + Aero S | The Aero S's dome lifts and powder goes into its hopper; the laser and the dispersed powder are drawn see-through | [GIF](out/instruments/mastersizer.gif), [MP4](out/mp4/instruments/mastersizer.mp4) | 690 × 300 × 450 (bench); Aero S 260 × 180 × 380 | tray E |
-| Grinder-polisher | Buehler EcoMet 30 semi-automatic | The power head presses six mounts onto the 12 in platen; platen and holder turn | [GIF](out/instruments/polisher.gif), [MP4](out/mp4/instruments/polisher.mp4) | 488 × 638 × 650 | tray F |
+| Grinder-polisher | LECO PX500 semi-automatic, the lab's (was the Buehler EcoMet 30; see [above](#the-models-against-real-footage)) | As in the lab's SOP: SiC papers from 320 to 1200 grit with water, then a white cloth with alumina; the head presses six mounts down while platen and holder turn | [GIF](out/instruments/polisher.gif), [MP4](out/mp4/instruments/polisher.mp4) | 558 × 711 × 677 (fitted; plus the bottle holder) | tray F |
 | Heat treatment and ageing furnace | Nabertherm NAT 15/65 | The door swings open; a tray of coupons goes in; the circulation fan runs | [GIF](out/instruments/furnace.gif), [MP4](out/mp4/instruments/furnace.mp4) | 470 × 790 × 460 | tray F |
 | Tabletop testing machine | Instron 68SC-2 | The arm rides up the column and pulls a sub-size bar | [GIF](out/instruments/instron_small.gif), [MP4](out/mp4/instruments/instron_small.mp4) | 460 × 615 × 1410 | beside the VLM |
 | Floor testing machine | Instron 68FM-100 | The crosshead pulls a printed tensile bar | [GIF](out/instruments/instron_floor.gif), [MP4](out/mp4/instruments/instron_floor.mp4) | 1140 × 786 × 2287 | beside the VLM |
@@ -105,8 +134,11 @@ needed. GrabCAD, TraceParts and CADENAS block the runner and need logins anyway.
   - KLA publishes no dimensions; scaled from photos, about 0.5-0.55 m on a side.
 - **Malvern Mastersizer 3000 + Aero S:** Malvern's Mastersizer 3000 and 3000+ brochures (bench 690 × 300 × 450 mm,
   30 kg; Aero S 260 × 180 × 380 mm, 10.5 kg) and product photos.
-- **Buehler EcoMet 30 semi-automatic:** Buehler's instruction manual (drawing 488 × 638 × 650 mm, 75 kg; 12 in
-  platen; 25-200 N head force).
+- **LECO PX500 semi-automatic** (until the SOP footage was checked, a Buehler EcoMet 30):
+  - **The lab's own SOP videos,** fitted with `register.py`.
+  - **LECO's PX400/PX500 brochure** (form 209-254) for the features.
+  - **LECO publishes no dimensions.** 533 × 711 × 635 mm is a reseller's figure for the series.
+  - See [`notes/refine_polisher.md`](notes/refine_polisher.md).
 - **Nabertherm NAT 15/65:** Nabertherm's forced-convection tabletop range (470 × 790 × 460 mm, 60 kg, 15 L, 650 °C,
   ±5 °C).
   - It covers solution treatment (about 530 °C) and ageing (160-200 °C) in one furnace.
@@ -740,6 +772,15 @@ xvfb-run -a python3 alloy_charge.py                       # alloy route 1/4: cup
 xvfb-run -a python3 alloy_atomize.py                      # 2/4: melted and atomized in the rePowder
 xvfb-run -a python3 alloy_print.py                        # 3/4: sieved, printed in the Aconity MIDI
 python3 alloy_route.py                                    # the four (4/4 is alloy_workflow.py) -> out/mp4/alloy_route.mp4
+```
+
+Fitting the models to footage (see [above](#the-models-against-real-footage)):
+
+```bash
+python3 frames.py storyboard VIDEO_ID; python3 frames.py grab VIDEO_ID 180 219   # through the Pi -> .frames/
+python3 frames.py grid .frames/VIDEO_ID_0180.0.jpg 50                           # a gridded copy, to read picks off
+python3 register.py solve polisher                       # cameras and free dimensions -> refs/polisher/fit.json
+xvfb-run -a python3 register.py draw polisher            # the model over each frame -> out/register/polisher/
 ```
 
 Round 4:
