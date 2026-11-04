@@ -29,6 +29,11 @@ from common import box, cyl, hose, rbox, tube  # noqa: F401  (lab_models helpers
 from instruments import Instrument, Joint, _piece, _xcyl, _ycyl
 
 # name: (r, g, b, opacity, specular), merged into tour's MATS
+# register.py's view of these models (see its docstring), filled in after each build function
+ANCHORS: dict = {}
+FREE: dict = {}
+CHECKS: dict = {}
+
 MATERIALS = {
     "char_plate": (0.80, 0.81, 0.83, 1.0, 0.55),        # cast aluminium tooling plate, milled
     "char_duct": (0.36, 0.37, 0.40, 1.0, 0.25),         # cable duct
@@ -910,10 +915,10 @@ def xrf() -> Instrument:
 
 
 # register.py: the S2 PUMA's anchors and the parts of its look fitted to Bruker's video (refs/xrf/)
-ANCHORS = {"xrf": (XRF_LOOK, xrf_anchors)}
-FREE = {"xrf": ["deck", "scr_w", "scr_h", "scr_x", "scr_z"]}     # the window isn't picked: it isn't fitted
-CHECKS = {"xrf": lambda q: [q["deck"] - q["scr_z"] - q["scr_h"] / 2 - 30, q["scr_z"] - q["scr_h"] / 2 - 40,
-                            XRF_SPECS["H"] - q["deck"] - 150]}
+ANCHORS["xrf"] = (XRF_LOOK, xrf_anchors)
+FREE["xrf"] = ["deck", "scr_w", "scr_h", "scr_x", "scr_z"]     # the window isn't picked: it isn't fitted
+CHECKS["xrf"] = lambda q: [q["deck"] - q["scr_z"] - q["scr_h"] / 2 - 30, q["scr_z"] - q["scr_h"] / 2 - 40,
+                           XRF_SPECS["H"] - q["deck"] - 150]
 
 def _cone(a, b, ra, rb):
     """A truncated cone from point a (radius ra) to point b (radius rb)."""
