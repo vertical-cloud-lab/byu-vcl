@@ -1,0 +1,50 @@
+{
+ "source": [
+  "digital-alloy-lab, onr-yip-figs-oct27-integrate @ b553306, benchmarks/bofn-prelim/dag/network_dag.py",
+  "https://github.com/vertical-cloud-lab/digital-alloy-lab/blob/b553306/benchmarks/bofn-prelim/dag/network_dag.py"
+ ],
+ "chapters": {
+  "1": {
+   "seconds": 13.47,
+   "captions": [
+    "A design starts as a composition.",
+    "CALPHAD screens it first: one $10 call returns three numbers.",
+    "Chapter 1: the composition becomes charge cups, dosed, weighed and pressed."
+   ],
+   "mp4": "out/mp4/dag/route_dag_ch1.mp4",
+   "png": "out/dag/route_dag_ch1.png"
+  },
+  "2": {
+   "seconds": 6.87,
+   "captions": [
+    "Chapter 2: melt and atomize. Its output is powder quality."
+   ],
+   "mp4": "out/mp4/dag/route_dag_ch2.mp4",
+   "png": "out/dag/route_dag_ch2.png"
+  },
+  "3": {
+   "seconds": 6.87,
+   "captions": [
+    "Chapter 3: sieve the powder and print. Is the build dense and crack-free?"
+   ],
+   "mp4": "out/mp4/dag/route_dag_ch3.mp4",
+   "png": "out/dag/route_dag_ch3.png"
+  },
+  "4": {
+   "seconds": 6.87,
+   "captions": [
+    "Chapter 4: cut a bar and pull it. Strength is what the objective scores."
+   ],
+   "mp4": "out/mp4/dag/route_dag_ch4.mp4",
+   "png": "out/dag/route_dag_ch4.png"
+  },
+  "5": {
+   "seconds": 6.87,
+   "captions": [
+    "Chapter 5: cheaper looks at the same nodes, from the trays."
+   ],
+   "mp4": "out/mp4/dag/route_dag_ch5.mp4",
+   "png": "out/dag/route_dag_ch5.png"
+  }
+ }
+}

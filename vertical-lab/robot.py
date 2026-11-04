@@ -2,7 +2,8 @@
 workflow is written in (joint moves, straight-line tool moves solved with IK every frame, gripper, pick and place).
 
 The arm's meshes and kinematics come from ``ur_arm.py`` (Universal Robots' own ROS 2 description and Robotiq's
-2F-85 description, fetched at pinned commits). Nothing here is scripted in joint space by hand except the via poses:
+2F-85 description, fetched at pinned commits). The wrist camera (an Intel RealSense D405 on a bracket round the
+2F-85's coupling, round 7) is one of the gripper's parts there, so every arm drawn here carries it. Nothing here is scripted in joint space by hand except the via poses:
 every approach, grasp and retreat is a straight line of the gripper's grasp point, so what the arm does is what it
 would have to do.
 

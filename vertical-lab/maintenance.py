@@ -207,7 +207,7 @@ def draw():
     bx.text(V.Y_SHUTTER + 40, V.Z_OPEN_TOP + 30, "shutter", color=INK2, fontsize=8, va="bottom")
     rect(bx, TRAY_F[0], V.Z_OPEN, TRAY_F[1], V.Z_OPEN + V.T_RIM, fc=TRAY_C, ec=INK, lw=0.8)
     rect(bx, TRAY_F[0], Z_TRAY, TRAY_F[1], Z_TRAY + V.MAX_GOODS_H, fc="none", ec=INK2, lw=0.8, ls=(0, (3, 2)))
-    bx.text((TRAY_F[0] + TRAY_F[1]) / 2, Z_TRAY + V.MAX_GOODS_H / 2, "tray at the opening,\nits 727.5 mm\n"
+    bx.text((TRAY_F[0] + TRAY_F[1]) / 2, Z_TRAY + V.MAX_GOODS_H / 2, f"tray at the opening,\nits {V.MAX_GOODS_H:g} mm\n"
             "product height", ha="center", va="center", color=INK, fontsize=8)
     # the rail; the leg at x = -590 seen beyond the cut
     rect(bx, RAIL_Y - PLATE, 0, RAIL_Y + PLATE, 20, fc=RAIL_C, alpha=0.55, ec=RAIL_C)

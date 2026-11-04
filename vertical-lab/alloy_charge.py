@@ -1034,8 +1034,9 @@ def movie():
     L.store("B", f"10/{n}", cap, cam=CAM_AMR)
     L.note(0, "Arm", "parked; next: the atomizer")
     sc.step(f"10/{n}", cap, 1.6, None, hold=2.4, still=True,
-            cam_to=cam_near(K.carrier_seat(1) + (17, 0, 0), (-600.0, -640.0, 340.0), (0.0, 0.0, 25.0)),
-            labels=[("four charged 5N Al cups, for the rePowder", K.carrier_seat(1) + (17, 0, 90), (0.30, 0.25))])
+            cam_to=cam_near((K.carrier_seat(1) + K.carrier_seat(2)) / 2, (-600.0, -640.0, 340.0), (0.0, 0.0, 25.0)),
+            labels=[("four charged 5N Al cups, for the rePowder", (K.carrier_seat(1) + K.carrier_seat(2)) / 2 + (0, 0, 90),
+                     (0.30, 0.25))])
     print(f"highest forearm/wrist point {rb.max_z_world:.0f} mm; opening top {V.Z_OPEN_TOP:.0f} mm", flush=True)
     print(f"{sc.n} frames, {sc.n / scene.FPS:.1f} s", flush=True)
     out = sc.save()
