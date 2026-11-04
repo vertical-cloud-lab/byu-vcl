@@ -25,15 +25,17 @@ from scene import OUT, font
 
 CHAPTERS = [
     ("alloy_charge", "1/4  The charge",
-     "Charge cups turned from 5N Al and oxygen-free Cu bar, filled to the plug by the multi-doser, then the plug "
-     "pressed home at 3.2 t under vacuum in a Specac Autotouch, on tray B of the VLM"),
+     "Four 5N Al and four oxygen-free Cu charge cups dosed by the multi-doser through one funnel per powder, "
+     "weighed on an A&D HR-202i and plugged, on tray B of the VLM (alloy_charge_doser.py; the vacuum press is next)"),
     ("alloy_atomize", "2/4  Melt and atomize",
      "The four Al cups melted in the rePowder's induction furnace and atomized ultrasonically under argon, cut "
      "with the lab's own footage of its bronze and Al runs"),
     ("alloy_print", "3/4  Sieve and print",
-     "The powder sieved to the LPBF cut, then printed into tensile bars in the Aconity MIDI"),
+     "The arm runs a sieving cell: it stacks the sieves, the AS 200 shakes them, and a tipper empties each into its "
+     "own labelled jar. The LPBF cut is printed into tensile bars in the Aconity MIDI"),
     ("alloy_workflow", "4/4  Cut and test",
-     "The build plate to the wire EDM, a tensile bar to the Instron 68FM-100"),
+     "The build vacuumed with a lance, the plate depowdered in a turning, shaking box under argon, the bars cut off "
+     "in the wire EDM, one rinsed and dried, and pulled in the Instron 68FM-100"),
 ]
 SIZE, FPS, CARD_S = (1280, 720), 15, 3.0
 # the 2 x 2 sheet: a picture of each chapter at work (a still it saves, or a frame of its MP4 as a fraction of its
@@ -92,13 +94,21 @@ def main():
             t += d
         else:
             chapters.append(dict(key=key, title=title, start_s=None, seconds=0, missing=True))
+    # Each part is brought to one size and frame rate on its own before the join. The concat demuxer takes its
+    # timing from the first file, so a chapter rendered at 10 fps (VIZ3D_FPS=10) among 15 fps ones came out short.
+    norm = []
+    for i, part in enumerate(parts):
+        out = tmp / f"n{i:02d}.mp4"
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(part),
+                        "-vf", f"scale={SIZE[0]}:{SIZE[1]}:force_original_aspect_ratio=decrease,"
+                               f"pad={SIZE[0]}:{SIZE[1]}:(ow-iw)/2:(oh-ih)/2:color=white,fps={FPS}",
+                        "-an", "-c:v", "libx264", "-preset", "medium", "-crf", "24", "-pix_fmt", "yuv420p",
+                        "-video_track_timescale", "15360", str(out)], check=True)
+        norm.append(out)
     lst = tmp / "list.txt"
-    lst.write_text("".join(f"file '{p}'\n" for p in parts))
+    lst.write_text("".join(f"file '{p}'\n" for p in norm))
     dst = OUT / "mp4" / "alloy_route.mp4"
-    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", str(lst),
-                    "-vf", f"scale={SIZE[0]}:{SIZE[1]}:force_original_aspect_ratio=decrease,"
-                           f"pad={SIZE[0]}:{SIZE[1]}:(ow-iw)/2:(oh-ih)/2:color=white,fps={FPS}",
-                    "-c:v", "libx264", "-preset", "medium", "-crf", "24", "-pix_fmt", "yuv420p",
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", str(lst), "-c", "copy",
                     "-movflags", "+faststart", str(dst)], check=True)
     (OUT / "alloy_route.json").write_text(json.dumps(dict(name="alloy_route", seconds=round(t, 1),
                                                           card_seconds=CARD_S, chapters=chapters), indent=1) + "\n")
