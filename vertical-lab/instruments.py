@@ -1459,96 +1459,227 @@ def nanoindenter() -> Instrument:
 
 
 # ===================================================================================================== laser diffraction
-# Malvern Panalytical Mastersizer 3000 with the Aero S dry powder disperser, as for metal powders (Malvern's Mastersizer
-# 3000 and 3000+ brochures): the optical bench is 690 L x 300 W x 450 H mm, 30 kg, a satin warm-grey box with a black
-# top deck and left end and a vertical cell bay a third of the way along, under a dark dome lid; the Aero S (260 x 180
-# x 380 mm, 10.5 kg) stands in front of the bay, its feed tray and hopper under a clear hinged dome, and blows the
-# powder through a venturi in the bay across the laser; a vacuum extractor takes it away.
-MS3000 = dict(L=690.0, W=300.0, H=450.0, bay_x=-115.0, bay_w=130.0, aero_l=260.0, aero_w=180.0, aero_h=380.0,
-              vac_w=330.0, vac_d=330.0, vac_h=480.0)
+# Malvern Panalytical Mastersizer 3000 with the Aero S dry powder disperser, as for metal powders. Published (Malvern's
+# Mastersizer 3000 brochure): the optical bench 690 W x 300 D x 450 H mm, 30 kg; the Aero S 260 x 180 x 380 mm, 10.5 kg.
+# The proportions in between are fitted with register.py (refs/mastersizer/) to frames of Malvern's own videos, "Mastersizer
+# 3000 Aero Demo" (iaHJ8QEwJ-I) and "Measuring metal powders with the Mastersizer 3000" (6ZuKAAHb_20), the bench's
+# 690 x 450 setting the scale. The look, from those frames: a satin silver-grey bench under a charcoal deck; a narrow
+# bay a third of the way along holds the measurement cell's cassette, its front plate lettered AERO with a green LED
+# and the fitting for the Aero S's hose, a lower block under it; MASTERSIZER runs up the left panel. The lower edges of
+# both panels sweep down from the bay to the ends over a dark recessed plinth, so the plinth peaks under the bay. A
+# round light-grey lid with a dark handle closes the cell from above; a raised teardrop runs right from it along the
+# deck, a blue-lit oval sits left of it; a darker grey cap closes the right end; small adjustable feet. The Aero S
+# stands in front of the left panel: a dark base and core, a silver shell sweeping down over its front, a blue LED at
+# the front right of the base, a clear cover over the top that lifts off by hand ("Adjust Hopper", 0:52 of the Aero
+# demo); under it a U-shaped carrier holds the vibrating tray, the black hopper standing over one end of it, the
+# venturi at the other, and from the venturi a black hose runs to the cassette's fitting. The powder leaves the cell
+# downwards, by a tube from under the bay, to a vacuum extractor (not in the frames; drawn as a generic unit).
+MS3000 = dict(L=690.0, W=300.0, H=450.0, feet=15.0, deck=381.0, bay_x0=186.0, bay_w=102.0, cass_z0=189.0,
+              z_cut=69.0, cap_w=24.0, dome_x=238.0, dome_y=141.0, dome_r=110.0, sw_x1=541.0, sw_y=130.0,
+              fit_z=264.0, aero_l=260.0, aero_w=180.0, aero_h=380.0, aero_x=152.0, aero_y=138.0, cover_z=250.0,
+              hop_x=79.0, hop_z=331.0, vac_w=330.0, vac_d=330.0, vac_h=480.0)
+
+
+def _ms3000(p) -> dict:
+    """The positions the model and its anchors share: the bench's ends, front and back, its bay, and the Aero S."""
+    xl = -(p["L"] + 60 + p["vac_w"]) / 2             # the bench's left end; the extractor stands to its right
+    yf = -p["W"] / 2 + p["aero_w"] / 2               # the bench's front; the Aero S stands in front of it
+    bx0 = xl + p["bay_x0"]
+    ax, ay = xl + p["aero_x"], yf - p["aero_y"]      # the Aero S's centre, aero_y in front of the bench
+    return dict(xl=xl, xr=xl + p["L"], yf=yf, yb=yf + p["W"], bx0=bx0, bx1=bx0 + p["bay_w"],
+                xp=xl + p["L"] - p["cap_w"],         # the right panel's right edge, where the end cap begins
+                fx=bx0 + p["bay_w"] / 2,             # the cassette's hose fitting, on its front plate
+                dx=xl + p["dome_x"], dy=yf + p["dome_y"], ax=ax, ay=ay,
+                hx=ax - p["aero_l"] / 2 + p["hop_x"], hy=ay + 15.0)     # the hopper, over the tray
+
+
+def mastersizer_anchors(p, pose=None) -> dict:
+    """Named points and lines of the model, for register.py (the Aero S's only in views where it stands as here)."""
+    g = _ms3000(p)
+    xl, yf, yb, bx0, bx1, xp = g["xl"], g["yf"], g["yb"], g["bx0"], g["bx1"], g["xp"]
+    dk, ft, zc = p["deck"], p["feet"], p["z_cut"]
+    l, w = p["aero_l"], p["aero_w"]
+    return {"top front left": (xl, yf, dk), "top back left": (xl, yb, dk), "top front right": (xp, yf, dk),
+            "bay left top": (bx0, yf, dk), "bay right top": (bx1, yf, dk),
+            "cassette bottom left": (bx0, yf, p["cass_z0"]), "cassette bottom right": (bx1, yf, p["cass_z0"]),
+            "hose fitting": (g["fx"], yf - 10, p["fit_z"]),
+            "cut at bay left": (bx0, yf, zc), "cut at bay right": (bx1, yf, zc), "bottom front left": (xl, yf, ft),
+            "dome top": (g["dx"], g["dy"], p["H"]), "swoosh tip": (xl + p["sw_x1"], yf + p["sw_y"], dk + 8),
+            "front top edge": ("line", (xl, yf, dk), (xp, yf, dk)), "back top edge": ("line", (xl, yb, dk), (xp, yb, dk)),
+            "left cut": ("line", (xl, yf, ft), (bx0, yf, zc)), "right cut": ("line", (bx1, yf, zc), (xp, yf, ft)),
+            "left edge": ("line", (xl, yf, ft), (xl, yf, dk)), "panel right edge": ("line", (xp, yf, ft), (xp, yf, dk)),
+            "aero LED": (g["ax"] + l / 2 - 9.5, g["ay"] - w / 2 + 9.5, 48.0), "hopper top": (g["hx"], g["hy"], p["hop_z"])}
+
+
+def _teardrop(c, r, tip_x, z, h) -> cq.Workplane:
+    """A flat drop on z, h thick: round (radius r) behind c (x, y), and half an ellipse in front, out to tip_x."""
+    a = tip_x - c[0]
+    pts = [(c[0] + a * math.cos(t), c[1] + r * math.sin(t)) for t in np.linspace(-math.pi / 2, math.pi / 2, 30)]
+    pts += [(c[0] - r * math.cos(t), c[1] + r * math.sin(t)) for t in np.linspace(math.pi / 2, -math.pi / 2, 30)[1:-1]]
+    return cq.Workplane("XY").polyline(pts).close().extrude(h).translate((0, 0, z))
 
 
 def mastersizer() -> Instrument:
     p = MS3000
-    L, W, H = p["L"], p["W"], p["H"]
-    tot_l = L + 60 + p["vac_w"]
+    g = _ms3000(p)
+    xl, xr, yf, yb, bx0, bx1, xp, fx = (g[k] for k in ("xl", "xr", "yf", "yb", "bx0", "bx1", "xp", "fx"))
+    L, W, H, dk, ft, zc = p["L"], p["W"], p["H"], p["deck"], p["feet"], p["z_cut"]
     inst = Instrument("mastersizer", "Laser diffraction particle sizer", "Malvern Mastersizer 3000 + Aero S",
                       (L, W, H),
-                      "Malvern Panalytical Mastersizer 3000 and 3000+ brochures (bench 690 x 300 x 450 mm, 30 kg; "
-                      "Aero S 260 x 180 x 380 mm, 10.5 kg); look from Malvern's product photos")
-    x0 = -tot_l / 2
-    xb = x0 + L / 2                              # the bench's centre
-    yf, yb = -W / 2 + p["aero_w"] / 2, W / 2 + p["aero_w"] / 2          # bench front and back
+                      "Malvern Panalytical Mastersizer 3000 brochure (bench 690 x 300 x 450 mm, 30 kg; Aero S 260 x 180 "
+                      "x 380 mm, 10.5 kg); proportions fitted with register.py to frames of Malvern's videos")
     body = _piece(inst, "body")
-    bench = box(xb - L / 2, yf, 0, xb + L / 2, yb, H - 20).edges("|Y").fillet(30)
-    bx = xb + p["bay_x"]
-    bench = bench.cut(box(bx - p["bay_w"] / 2, yf - 1, 60, bx + p["bay_w"] / 2, yb - 60, H))
-    body.add("bench", bench, "inst_light")
-    body.add("top deck", box(xb - L / 2 + 10, yf + 10, H - 20, xb + L / 2 - 10, yb - 10, H - 6), "inst_black")
-    body.add("left end", box(xb - L / 2 - 4, yf + 5, 20, xb - L / 2, yb - 5, H - 40), "inst_black")
-    body.add("cell bay", box(bx - p["bay_w"] / 2, yf + 20, 60, bx + p["bay_w"] / 2, yb - 60, H - 20), "inst_dark")
-    body.add("bay dome", cyl(p["bay_w"] + 20, 40, x=bx, y=(yf + yb) / 2 - 20, z=H - 20).edges(">Z").fillet(18),
+    # the bench: one silver shell to the deck, its front cut away below the panels' sweep down from the bay to the ends,
+    # where a dark plinth shows, set back
+    rec = 30.0
+    shell = box(xl, yf, ft, xp, yb, dk).edges("|Z and <X").fillet(8)
+    sweep = (cq.Workplane("XZ").polyline([(xl - 1, ft - 1), (xl - 1, ft), (bx0, zc), (bx1, zc), (xp + 1, ft),
+                                          (xp + 1, ft - 1)]).close().extrude(-(rec + 1)).translate((0, yf - 1, 0)))
+    body.add("bench", shell.cut(sweep), "inst_light")
+    body.add("plinth", box(xl + 2, yf + rec - 1.5, ft, xp - 2, yf + rec, zc + 2), "inst_black")
+    body.add("end cap", box(xp, yf - 3, ft, xr, yb, dk + 12).edges("|Z and >X").fillet(12), "inst_grey")
+    body.add("deck", box(xl + 8, yf + 12, dk - 1, xp, yb - 8, dk + 2), "inst_dark")
+    for sx in (xl + 30, xp - 30):
+        for sy in (yf + 35, yb - 35):
+            body.add(f"foot {sx:.0f} {sy:.0f}", cyl(30, ft, x=sx, y=sy), "chrome")
+    # the cell's bay: the cassette's front plate (AERO, a green LED, the hose fitting), a lower block, dark joints
+    body.add("bay joints", box(bx0 - 1.5, yf - 0.6, zc, bx0 + 1.5, yf + 1, dk).union(
+        box(bx1 - 1.5, yf - 0.6, zc, bx1 + 1.5, yf + 1, dk)).union(
+        box(bx0, yf - 0.6, p["cass_z0"] - 1.5, bx1, yf + 1, p["cass_z0"] + 1.5)), "inst_black")
+    body.add("cassette plate", box(bx0 + 2, yf - 2, p["cass_z0"] + 2, bx1 - 2, yf, dk - 2), "inst_light")
+    body.add("AERO lettering", box(bx0 + 14, yf - 2.4, p["fit_z"] + 30, bx0 + 22, yf - 2, dk - 40), "inst_grey")
+    body.add("green LED", _ycyl(9, 2, x=bx0 + 18, y=yf - 2.5, z=dk - 25), "inst_green")
+    body.add("cassette fitting", _ycyl(20, 10, x=fx, y=yf - 10, z=p["fit_z"]), "chrome")
+    body.add("bay LED", box(bx0 + 4, yf - 1, zc + 6, bx0 + 45, yf, zc + 12), "led_blue")
+    body.add("MASTERSIZER lettering", box(bx0 - 32, yf - 0.6, 110, bx0 - 22, yf, 330), "inst_grey")
+    # on the deck: the round lid over the cell, with its handle; the raised teardrop running right; the blue oval
+    dx, dy, R = g["dx"], g["dy"], p["dome_r"]
+    top = H - 12 - (dk + 2 + 10)                                   # the lid's rise above its base ring
+    prof = [(0, 0), (R, 0)] + [(R * math.cos(t), top * math.sin(t)) for t in np.linspace(0.15, math.pi / 2, 14)]
+    lid = cq.Workplane("XZ").polyline(prof).close().revolve(360, (0, 0, 0), (0, 1, 0)).translate((dx, dy, dk + 12))
+    body.add("lid ring", cyl(2 * R + 10, 10, x=dx, y=dy, z=dk + 2), "inst_light")
+    body.add("cell lid", lid, "inst_light")
+    body.add("lid handle", rbox(36, 1.5 * R, 26, 12, x=dx, y=dy - 0.15 * R, z=H - 26).edges(">Z").fillet(8),
              "inst_dark")
-    body.add("dome handle", box(bx - 40, (yf + yb) / 2 - 30, H + 20, bx + 40, (yf + yb) / 2 - 10, H + 32), "inst_black")
-    body.add("status light", box(xb - L / 2 + 30, yf - 1, H - 70, xb - L / 2 + 80, yf, H - 60), "screen_on")
-    body.add("lettering", box(bx + p["bay_w"] / 2 + 20, yf - 1, 90, bx + p["bay_w"] / 2 + 32, yf, H - 80), "inst_grey")
-    # the Aero S in front of the bay: a grey body on a black base, the blue LED strip, the hopper under a clear dome
-    ax, ay = bx, yf - p["aero_w"] / 2
-    body.add("Aero S base", rbox(p["aero_l"], p["aero_w"], 40, 20, x=ax, y=ay), "inst_black")
-    body.add("Aero S", rbox(p["aero_l"] - 20, p["aero_w"] - 20, p["aero_h"] - 100, 60, x=ax, y=ay, z=40)
-             .edges(">Z").fillet(20), "inst_light")
-    body.add("Aero S LED", box(ax - 80, ay - p["aero_w"] / 2 + 8, 52, ax + 80, ay - p["aero_w"] / 2 + 10, 60), "screen_on")
-    # the hopper is a funnel set into the deck and the tray stays under the dome, clear of its back wall as it lifts;
-    # the venturi takes the powder on from the back of the Aero S into the cell bay
-    hy = ay - 15                                 # the hopper's centre
-    body.add("feed tray", box(ax - 20, hy - 40, p["aero_h"] - 60, ax + 20, ay + 35, p["aero_h"] - 50), "steel")
-    body.add("hopper", cyl(90, 45, x=ax, y=hy, z=p["aero_h"] - 90).cut(cyl(76, 45, x=ax, y=hy, z=p["aero_h"] - 80)),
-             "steel")
-    body.add("venturi", box(ax - 25, ay + 70, 230, ax + 25, yf + 25, 270), "inst_dark")
-    # the vacuum extractor on the right
-    vx = x0 + L + 60 + p["vac_w"] / 2
-    vy = (yf + yb) / 2
-    body.add("vacuum extractor", rbox(p["vac_w"], p["vac_d"], p["vac_h"] - 60, 60, x=vx, y=vy, z=60), "inst_grey")
-    body.add("extractor head", rbox(p["vac_w"] - 20, p["vac_d"] - 20, 60, 50, x=vx, y=vy, z=p["vac_h"] - 60), "inst_dark")
-    body.add("extractor wheels", box(vx - p["vac_w"] / 2 + 30, vy - 120, 0, vx - p["vac_w"] / 2 + 70, vy + 120, 60).union(
-        box(vx + p["vac_w"] / 2 - 70, vy - 120, 0, vx + p["vac_w"] / 2 - 30, vy + 120, 60)), "inst_black")
-    from common import hose as _hose
-    body.add("extract hose", _hose([(bx, yb - 30, 150), (bx, yb + 50, 150), (vx - 80, yb + 50, 220),
-                                     (vx - 80, vy + 40, p["vac_h"] - 30)], 38), "inst_black")
-    dome = _piece(inst, "lid")
-    dome.add("clear dome", rbox(p["aero_l"] - 40, p["aero_w"] - 30, 70, 40, x=ax, y=ay, z=p["aero_h"] - 60)
-             .edges(">Z").fillet(25).cut(rbox(p["aero_l"] - 50, p["aero_w"] - 40, 66, 36, x=ax, y=ay,
-                                               z=p["aero_h"] - 60)), "polycarb")
-    vial = _piece(inst, "sample")
+    body.add("swoosh", _teardrop((dx, yf + p["sw_y"]), 0.85 * R, xl + p["sw_x1"], dk + 2, 6),
+             "inst_light")
+    body.add("status light", cq.Workplane("XY").ellipse(32, 15).extrude(3).translate((dx - R - 32, dy - 15, dk + 2)),
+             "led_blue")
+    # the Aero S: dark base and core, the silver shell over the front and right; its blue LED at the front right
+    ax, ay, hx, hy = g["ax"], g["ay"], g["hx"], g["hy"]
+    l, w, h, cz = p["aero_l"], p["aero_w"], p["aero_h"], p["cover_z"]
+    body.add("Aero S base", rbox(l, w, 45, 34, x=ax, y=ay), "inst_black")
+    body.add("Aero S core", rbox(l - 10, w - 10, cz - 45, 38, x=ax, y=ay, z=45), "inst_dark")
+    sweep_a = (cq.Workplane("XZ").polyline([(ax - l, cz - 25), (ax - l / 2, cz - 25), (ax + l / 2, 60), (ax + l, 60),
+                                            (ax + l, 0), (ax - l, 0)]).close().extrude(-(w + 20))
+               .translate((0, ay - w / 2 - 10, 0)))
+    silver = rbox(l - 4, w - 4, cz - 45, 40, x=ax, y=ay, z=45).cut(sweep_a).cut(
+        box(ax - l, ay + w / 2 - 45, 0, ax + l, ay + w, h))
+    body.add("Aero S shell", silver, "inst_light")
+    lc = (ax + l / 2 - 34, ay - w / 2 + 34)                         # the base's front corner, where the LED wraps
+    body.add("Aero S LED", cq.Workplane("XY").circle(35.5).circle(33).extrude(6).translate((*lc, 45)).intersect(
+        box(lc[0] + 4, lc[1] - 40, 40, lc[0] + 40, lc[1] - 4, 55)), "led_blue")
+    body.add("Aero S deck", rbox(l - 14, w - 12, 6, 36, x=ax, y=ay, z=cz), "inst_light")
+    # under the cover: the U-shaped carrier on its pillar, the hopper over the tray, the venturi and its hose
+    ux = ax + 10
+    body.add("tray carrier", rbox(190, 72, 18, 34, x=ux, y=hy, z=cz + 42).cut(rbox(160, 42, 20, 20, x=ux, y=hy,
+                                                                                    z=cz + 41)).union(
+        box(ux - 30, hy - 14, cz + 6, ux + 30, hy + 14, cz + 42)), "inst_light")
+    body.add("hopper", cyl(46, p["hop_z"] - 14 - (cz + 62), x=hx, y=hy, z=cz + 62).union(
+        cyl(30, 10, x=hx, y=hy, z=cz + 52)), "inst_black")
+    body.add("hopper ring", cyl(54, 14, x=hx, y=hy, z=p["hop_z"] - 14), "inst_dark")
+    vx_ = ax + 95                                                    # the venturi, at the tray's other end
+    body.add("venturi", box(vx_ - 12, hy - 20, cz + 6, vx_ + 22, hy + 20, cz + 56), "steel")
+    out = (ax + l / 2 + 4, hy, cz + 30)
+    body.add("venturi outlet", _xcyl(22, ax + l / 2 + 6 - (vx_ + 22), x=vx_ + 22, y=hy, z=cz + 30), "chrome")
+    body.add("sample hose", hose([out, (out[0] + 45, hy - 10, cz + 20), (fx - 10, yf - 60, p["fit_z"]),
+                                  (fx, yf - 15, p["fit_z"])], 15), "inst_black")
+    # inside the bay: the cell's body and its two windows across the beam (seen when the bench goes see-through)
+    cy, bz = yf + 120, p["fit_z"] - 15
+    body.add("cell", box(bx0 + 18, yf + 40, p["cass_z0"] - 40, bx1 - 18, yf + 200, dk - 30).cut(
+        box(bx0 + 30, cy - 25, bz - 25, bx1 - 30, cy + 25, bz + 25)), "inst_dark")
+    for x_ in (bx0 + 26, bx1 - 30):
+        body.add(f"cell window {x_:.0f}", _xcyl(44, 4, x=x_, y=cy, z=bz), "window")
+    # the extractor, and its hose from the cell's outlet under the bay
+    vac_x = xr + 60 + p["vac_w"] / 2
+    vac_y = (yf + yb) / 2
+    body.add("vacuum extractor", rbox(p["vac_w"], p["vac_d"], p["vac_h"] - 120, 60, x=vac_x, y=vac_y, z=60),
+             "inst_grey")
+    body.add("extractor head", rbox(p["vac_w"] - 20, p["vac_d"] - 20, 60, 50, x=vac_x, y=vac_y, z=p["vac_h"] - 60),
+             "inst_dark")
+    body.add("extractor wheels", box(vac_x - p["vac_w"] / 2 + 30, vac_y - 120, 0, vac_x - p["vac_w"] / 2 + 70,
+                                     vac_y + 120, 60).union(box(vac_x + p["vac_w"] / 2 - 70, vac_y - 120, 0,
+                                                                vac_x + p["vac_w"] / 2 - 30, vac_y + 120, 60)),
+             "inst_black")
+    body.add("extract hose", hose([(fx, yf + rec + 8, zc - 25), (fx, yb + 45, 30), (vac_x - 90, yb + 45, 30),
+                                   (vac_x - 90, yb + 45, p["vac_h"] - 40), (vac_x - 90, vac_y + 60, p["vac_h"] + 10)],
+                                  34), "inst_black")
+    # the clear cover, level-topped at the published height (its edges slope in the frames only with perspective)
+    cover = _piece(inst, "lid")
+    cv = rbox(l - 14, w - 8, h - cz, 44, x=ax, y=ay, z=cz).edges(">Z").fillet(30)
+    cover.add("clear cover", cv.cut(rbox(l - 20, w - 14, h - cz - 3, 41, x=ax, y=ay, z=cz - 1)), "polycarb")
+    tray = _piece(inst, "tray")
+    tray.add("vibrating tray", box(hx - 22, hy - 13, cz + 50, vx_ - 10, hy + 13, cz + 53).union(
+        box(hx - 22, hy - 13, cz + 53, vx_ - 10, hy - 11, cz + 60)).union(
+        box(hx - 22, hy + 11, cz + 53, vx_ - 10, hy + 13, cz + 60)), "stainless")
+    vial = _piece(inst, "vial")                                     # not a prop: it stands on the bench at rest
     vial.add("vial", cyl(28, 61, z=0).cut(cyl(25, 60, z=2)), "window")
-    vial.add("powder", cyl(25, 30, z=2), "powder")
+    vial.add("powder in vial", cyl(25, 30, z=2), "powder")
+    charge = _piece(inst, "powder")
+    charge.add("powder in the hopper", cyl(38, 30, x=hx, y=hy, z=p["hop_z"] - 48), "powder")
     beam = _piece(inst, "beam")
-    beam.add("laser", _xcyl(3, L - 80, x=xb - L / 2 + 40, y=(yf + yb) / 2, z=220), "laser")
-    for i in range(16):
-        t = i / 15.0
-        beam.add(f"grain {i}", cq.Workplane("XY").sphere(2.4).translate((
-            ax + 5 * math.sin(i * 1.9), ay + (yf + 60 - ay) * t, p["aero_h"] - 60 - 160 * t)), "powder")
-    hinge_y = ay + (p["aero_w"] - 30) / 2        # the dome's back edge, on top: hinged at the bottom it would swing
-    inst.joints = {                              # back into the bench; hinged at the top its front rises (angle < 0)
-        "lid": Joint("hinge", axis=(1, 0, 0), pivot=(0, hinge_y, p["aero_h"] + 10), deg=-70.0),
-        "sample": Joint("path", path=((ax - 250, ay - 400, p["aero_h"] + 140), (ax, ay - 250, p["aero_h"] + 50),
-                                      (ax, hy, p["aero_h"] + 20))),     # in from the front, under the raised dome
+    beam.add("laser", _xcyl(3, xp - 40 - (bx0 - 60), x=bx0 - 60, y=cy, z=bz), "laser")
+    path = [(hx, hy, cz + 56), (vx_, hy, cz + 56), out, (out[0] + 45, hy - 10, cz + 20), (fx - 10, yf - 60, p["fit_z"]),
+            (fx, yf - 15, p["fit_z"]), (fx, cy, p["fit_z"]), (fx, cy, p["cass_z0"] - 30)]
+    seg = np.linalg.norm(np.diff(np.asarray(path), axis=0), axis=1)
+    s = np.r_[0, np.cumsum(seg)]
+    for i, t in enumerate(np.linspace(0.02, 0.98, 30) * s[-1]):
+        k = min(int(np.searchsorted(s, t, side="right")) - 1, len(seg) - 1)
+        q = np.asarray(path[k]) + (np.asarray(path[k + 1]) - path[k]) * (t - s[k]) / seg[k]
+        beam.add(f"grain {i}", cq.Workplane("XY").sphere(4.0).translate(tuple(q + (0, 0, 3.0 * math.sin(i * 2.3)))),
+                 "powder")
+    buzz = tuple((2.5 * (-1) ** i, 0.0, 0.0) if 0 < i < 24 else (0.0, 0.0, 0.0) for i in range(25))
+    inst.joints = {
+        "lid": Joint("path", path=((0, 0, 0), (0, 0, 130), (-170, -60, 170))),           # lifted off by hand
+        "vial": Joint("path", path=((fx + 170, yf - 150, 0), (fx + 170, yf - 150, h + 90), (hx, hy, h + 90),
+                                    (hx, hy, p["hop_z"] + 25))),                         # from the bench to the hopper
+        "powder": Joint("fade"),
+        "tray": Joint("path", path=buzz),                                                 # the feeder's vibration
         "beam": Joint("fade"),
     }
     inst.actions = [
-        ("The Aero S's clear dome lifts; a vial of atomized powder (a few grams) is emptied into its hopper.", 2.2,
-         {"lid": (0.0, 1.0), "sample": (0.0, 1.0), "beam": (0.0, 0.0)}),
-        ("Dome down. A vibrating tray feeds the powder to a venturi in the cell bay; compressed air disperses it "
-         "across the laser (drawn see-through).", 2.6, {"sample": (1.0, 0.0), "lid": (1.0, 0.0), "beam": (0.0, 1.0),
-                                                        "~body": (0.0, 1.0)}),
-        ("The scattering pattern gives the size distribution, 0.1 um to 3.5 mm, in under a minute; the vacuum "
-         "extractor takes the powder away.", 2.0, {"beam": (1.0, 0.0), "~body": (1.0, 0.0)}),
+        ("The Aero S's clear cover lifts off; a few grams of atomized powder go into its hopper, over the vibrating "
+         "tray.", 2.4, {"lid": (0.0, 1.0), "vial": (0.0, 1.0), "powder": (0.0, 0.0), "beam": (0.0, 0.0)}),
+        ("The hopper's gap sets the feed; the cover goes back on.", 1.6, {"vial": (1.0, 0.0), "powder": (0.0, 1.0),
+                                                                         "lid": (1.0, 0.0)}),
+        ("Air on and the background measured, then the tray vibrates the powder into the venturi, and the air carries "
+         "it down the hose to the cell in the bay, across the laser (drawn see-through).", 3.2,
+         {"tray": (0.0, 1.0), "beam": (0.0, 1.0), "~body": (0.0, 1.0), "powder": (1.0, 0.0)}),
+        ("The scattering gives the size distribution, 0.1 um to 3.5 mm, in under a minute; the extractor draws the "
+         "powder away from under the cell.", 2.0, {"beam": (1.0, 0.0), "~body": (1.0, 0.0)}),
     ]
-    inst.labels = [("Aero S dry disperser", (ax, ay, p["aero_h"] - 40), (0.20, 0.22)),
-                   ("optical bench", (xb + L / 2 - 120, yf, 300), (0.50, 0.70)),
-                   ("vacuum extractor", (vx, vy - p["vac_d"] / 2, 300), (0.86, 0.55))]
+    inst.labels = [("Aero S dry disperser", (ax - l / 2, ay, h - 80), (0.12, 0.30)),
+                   ("cell cassette", (fx, yf, dk - 60), (0.42, 0.10)),
+                   ("optical bench", (xp - 150, yf, 300), (0.62, 0.80)),
+                   ("vacuum extractor", (vac_x, vac_y - p["vac_d"] / 2, 300), (0.88, 0.55))]
+    inst.anchors = mastersizer_anchors(p)
     inst.cam = (0.5, -1.7, 0.8)
+    inst.zoom = {0: ((hx + 60, hy, cz + 40), 1700.0), 2: "out"}
     return inst
+
+
+# register.py: the Mastersizer's anchors, the proportions fitted to Malvern's frames (refs/mastersizer/), and what keeps
+# a fitted model buildable: the bay between two real panels, the cassette over its lower block, the lid's rise, the
+# fitting on the cassette's plate, the hopper between the Aero S's deck and its cover.
+ANCHORS["mastersizer"] = (MS3000, mastersizer_anchors)
+FREE["mastersizer"] = ["deck", "bay_x0", "bay_w", "cass_z0", "z_cut", "cap_w", "dome_x", "dome_y", "sw_x1", "sw_y",
+                       "fit_z", "aero_x", "aero_y", "hop_x", "hop_z"]
+CHECKS["mastersizer"] = lambda p: [p["bay_x0"] - 120, p["L"] - p["cap_w"] - p["bay_x0"] - p["bay_w"] - 250,
+                                   p["cass_z0"] - p["z_cut"] - 50, p["deck"] - p["cass_z0"] - 120, p["H"] - p["deck"] - 35,
+                                   p["fit_z"] - p["cass_z0"] - 20, p["deck"] - p["fit_z"] - 40, p["cap_w"] - 8,
+                                   p["aero_h"] - p["hop_z"] - 12,
+                                   p["hop_z"] - p["cover_z"] - 75,
+                                   p["aero_y"] - p["aero_w"] / 2 - 5]
 
 
 # ===================================================================================================== wire EDM
