@@ -1,7 +1,7 @@
 {
  "name": "vlm_services",
- "fps": 15,
- "n_frames": 510,
+ "fps": 10,
+ "n_frames": 339,
  "size": [
   1280,
   720
@@ -11,67 +11,67 @@
    "label": "1/6",
    "caption": "Every service a tray needs goes through one automatic coupling. The plate is on the tray's back right corner; each slot a tray uses, and the bay, has a matching dock in its right-hand side wall, fed by a riser in the side of the machine.",
    "start_frame": 0,
-   "end_frame": 92
+   "end_frame": 61
   },
   {
    "label": "2/6",
    "caption": "Tray A in its slot (R2). The dock holds the plate home: mains, Ethernet, compressed air, nitrogen and chilled water are live. CombiTac's docking frame lets the pins take up 4 mm of misalignment.",
-   "start_frame": 93,
-   "end_frame": 179
+   "start_frame": 62,
+   "end_frame": 119
   },
   {
    "label": "3/6",
-   "caption": "To let it go: the air, N2 and water supplies close and vent (the couplings must not part under pressure), the tray's UPS takes the load, and the dock pulls back 45 mm, 20 mm clear of the tray.",
-   "start_frame": 180,
-   "end_frame": 239
+   "caption": "To let it go: the air, N2 and water supplies close and vent (the couplings must not part under pressure), the tray's UPS takes the load, and the dock pulls back 60 mm, clear of the tray.",
+   "start_frame": 120,
+   "end_frame": 159
   },
   {
    "label": "4/6",
    "caption": "In transit: the extractor takes tray A from R2 to the opening, about 6 s at Kardex's 0.7 m/s in and out and 2 m/s up and down. The UPS carries the instruments, the cameras and the tray's switch.",
-   "start_frame": 240,
-   "end_frame": 250
+   "start_frame": 160,
+   "end_frame": 166
   },
   {
    "label": "4/6",
    "caption": "In transit: the extractor takes tray A from R2 to the opening, about 6 s at Kardex's 0.7 m/s in and out and 2 m/s up and down. The UPS carries the instruments, the cameras and the tray's switch.",
-   "start_frame": 251,
-   "end_frame": 282
+   "start_frame": 167,
+   "end_frame": 187
   },
   {
    "label": "4/6",
    "caption": "In transit: the extractor takes tray A from R2 to the opening, about 6 s at Kardex's 0.7 m/s in and out and 2 m/s up and down. The UPS carries the instruments, the cameras and the tray's switch.",
-   "start_frame": 283,
-   "end_frame": 293
+   "start_frame": 188,
+   "end_frame": 194
   },
   {
    "label": "4/6",
    "caption": "In transit: the extractor takes tray A from R2 to the opening, about 6 s at Kardex's 0.7 m/s in and out and 2 m/s up and down. The UPS carries the instruments, the cameras and the tray's switch.",
-   "start_frame": 294,
-   "end_frame": 302
+   "start_frame": 195,
+   "end_frame": 200
   },
   {
    "label": "4/6",
    "caption": "In transit: the extractor takes tray A from R2 to the opening, about 6 s at Kardex's 0.7 m/s in and out and 2 m/s up and down. The UPS carries the instruments, the cameras and the tray's switch.",
-   "start_frame": 303,
-   "end_frame": 332
+   "start_frame": 201,
+   "end_frame": 220
   },
   {
    "label": "4/6",
    "caption": "In transit: the extractor takes tray A from R2 to the opening, about 6 s at Kardex's 0.7 m/s in and out and 2 m/s up and down. The UPS carries the instruments, the cameras and the tray's switch.",
-   "start_frame": 333,
-   "end_frame": 344
+   "start_frame": 221,
+   "end_frame": 228
   },
   {
    "label": "5/6",
    "caption": "At the opening the bay's dock pushes in: the guide pins enter the plate's bushings first, then the contacts and couplings mate and the supplies open. The instruments are back on mains and the UPS recharges.",
-   "start_frame": 345,
-   "end_frame": 422
+   "start_frame": 229,
+   "end_frame": 280
   },
   {
    "label": "6/6",
-   "caption": "The cameras: two Pi 5 units on tray A, on 2020 posts under the 727.5 mm product height, and an overhead one at the back of the bay, above Kardex's product envelope, looking down on the presented tray.",
-   "start_frame": 423,
-   "end_frame": 509
+   "caption": "The cameras: two Pi 5 units on tray A, standing in front of or beside their instruments and looking back, so they keep the room out of the picture, and an overhead one at the back of the bay, above Kardex's product envelope, looking down on the presented tray.",
+   "start_frame": 281,
+   "end_frame": 338
   }
  ]
 }

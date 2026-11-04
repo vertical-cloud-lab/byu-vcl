@@ -82,6 +82,9 @@ SOURCES = {
                  "tripod mount, 200 mm ribbon; IMX477, 7.9 mm sensor diagonal.",
     "cm3_wide": "raspberrypi.com: Camera Module 3 Wide about 25 x 24 x 12.4 mm, 4 g, 102 deg horizontal, 67 deg "
                 "vertical, 120 deg diagonal; 200 mm ribbon. Pi 5 camera cables: 200, 300 and 500 mm.",
+    "hq_sensor": "Raspberry Pi HQ Camera product brief: Sony IMX477R, 12.3 MP, 4056 x 3040 pixels of 1.55 x 1.55 um "
+                 "(so 6.29 x 4.71 mm), 7.9 mm sensor diagonal. With a 16 mm lens: 2 atan(6.29 / 32) = 22.2 deg across, "
+                 "16.8 deg up and down, 27.6 deg diagonally, as Raspberry Pi's lens table gives (22.2 x 16.7).",
     "lab_units": "DAL PR #189 (atomizer-viewport-cameras): the front unit pairs an HQ Camera (M12) with a 16 mm M12 lens "
                  "(about O16 x 18 mm) and a Camera Module 3 Wide side by side, boards 2 mm apart, HQ lens 15 mm left "
                  "of the axis and the Wide's 18.5 mm right; Pi 5 4 GB with Active Cooler and 27 W PSU; black PETG; "
@@ -206,6 +209,7 @@ PLATE_T = 16.0
 SIDE = V.TRAY_W / 2                    # the tray's outer side face: 1225
 X_FACE = SIDE - 6.0                    # the mated faces meet here, 6 mm inside it: 1219
 STROKE = 60.0                          # the dock pulls back this far: its pins' tips (32 mm) 22 mm clear of the tray
+DOCK_HX0 = X_FACE + STROKE + PLATE_T + 3.0     # the dock housing's inner face, behind the head pulled back: 1298
 PIN_DY = 86.0                          # guide pins either side of the plate's centre
 INSERT_DY = (-60.0, -36.0, -12.0, 12.0, 36.0, 60.0)
 ZC = PLATE_Z0 + PLATE_H / 2
@@ -246,17 +250,87 @@ def plate_parts() -> dict:
     return p
 
 
+MANIFOLD_X = 580.0          # tray frame: the end of the tray's lines, a manifold block left of the UPS on the back rim
+
+
+def line_paths() -> dict:
+    """{medium: [(x, y, z)]} of the tray's lines, tray frame: up out of the plate's top edge, over its bracket, then
+    mains into the UPS's back (the UPS feeds the tray's power strip) and the rest back to the rim and along it, over
+    the power strip, to a manifold block left of the UPS."""
+    out = {}
+    ux = UPS_AT[0] + UPS["d"] / 2                       # the UPS's back, facing the plate: x = 1060
+    xs = X_FACE - 8.0                                   # inside the plate, at its top edge
+    j = 0
+    for i, ((key, _, _, _), dy) in enumerate(zip(MEDIA, INSERT_DY)):
+        y = PLATE_Y + dy
+        zt = PLATE_Z0 + PLATE_H + 30.0 + 6.0 * i        # over the bracket, one layer each
+        if key == "power":
+            out[key] = [(xs, y, PLATE_Z0 + PLATE_H - 4), (xs, y, zt), (ux + 40, y, zt), (ux + 40, UPS_AT[1], zt),
+                        (ux + 1, UPS_AT[1], zt)]
+            continue
+        yr = V.TRAY_D / 2 - 18.0 - 6.5 * j              # along the back rim, over the power strip
+        zr = 58.0 + 6.5 * j
+        out[key] = [(xs, y, PLATE_Z0 + PLATE_H - 4), (xs, y, zt), (ux + 60 - 8 * j, y, zt), (ux + 60 - 8 * j, yr, zt),
+                    (ux + 60 - 8 * j, yr, zr), (MANIFOLD_X + 40, yr, zr)]
+        j += 1
+    return out
+
+
 def tray_lines(live_mat=True) -> dict:
-    """The tray's lines from the plate inwards, along the back rim (tray frame); coloured when live."""
+    """The tray's lines (line_paths) and the manifold they end at (tray frame); coloured when live."""
     p = {}
-    for i, ((key, _, mat, _), dy) in enumerate(zip(MEDIA, INSERT_DY)):
-        y = PLATE_Y + dy * 0.6
-        z = PLATE_Z0 + PLATE_H + 25 + 0  # over the bracket
-        x0 = X_FACE - PLATE_T - 60
-        x1 = x0 - 120 - 18 * i
-        seg = _xc(8, x1, x0, y, z - i * 3)
-        p[f"line {key}"] = (seg, mat if live_mat else "svc_plate")
+    for (key, _, mat, _) in MEDIA:
+        p[f"line {key}"] = (hose(line_paths()[key], 7.0), mat if live_mat else "svc_plate")
+    yr0 = V.TRAY_D / 2 - 18.0 - 6.5 * 4 - 6
+    p["manifold"] = (box(MANIFOLD_X - 30, yr0, 40.0, MANIFOLD_X + 40, V.TRAY_D / 2 - 12, 100.0), "svc_alu")
     return p
+
+
+def dock_paths() -> dict:
+    """{medium: [(x, y, z)]} of the dock's side, slot frame: from the service riser along the hose, through its valve
+    (or the mains contactor, or the Ethernet link), down into the housing and across to its insert in the head."""
+    out = {}
+    y0 = PLATE_Y - PLATE_L / 2
+    ry = PLATE_Y + RISER["dy"]
+    zr = PLATE_Z0 + PLATE_H + 25 + 30
+    for i, ((key, _, _, _), dy) in enumerate(zip(MEDIA, INSERT_DY)):
+        x = DOCK_HX0 + 14 + i * 13
+        out[key] = [(x, ry, zr), (x, y0 + 30, zr), (x, y0 + 30, PLATE_Z0 + PLATE_H + 25),
+                    (X_FACE + PLATE_T + 6, PLATE_Y + dy, ZC), (X_FACE + 2, PLATE_Y + dy, ZC)]
+    return out
+
+
+VALVE_Y = PLATE_Y - PLATE_L / 2 - 20.0      # slot frame: where each hose's valve sits on its run to the riser
+SWITCH_C = {True: (0.15, 0.78, 0.30), False: (0.88, 0.16, 0.12)}      # open / closed
+
+
+def switch_parts() -> dict:
+    """The dock's switching, slot frame: a solenoid valve with a vent on each of the air, N2 and two water hoses, a
+    contactor on the mains and a link light on the Ethernet. {name: (shape, material)}; the indicator on each is
+    switch_lights()."""
+    p = {}
+    zr = PLATE_Z0 + PLATE_H + 25 + 30
+    for i, (key, _, mat, _) in enumerate(MEDIA):
+        x = DOCK_HX0 + 14 + i * 13
+        if key in ("air", "n2", "cws", "cwr"):
+            body = box(x - 5.5, VALVE_Y - 12, zr - 8, x + 5.5, VALVE_Y + 12, zr + 8)
+            sol = cyl(9.0, 14.0, x=x, y=VALVE_Y, z=zr + 8)
+            vent = cq.Workplane("XZ").circle(2.5).extrude(-8).translate((x, VALVE_Y + 12, zr - 3))
+            p[f"valve {key}"] = (body.union(vent), "svc_steel")
+            p[f"solenoid {key}"] = (sol, "svc_print")
+        else:
+            p[f"{'contactor' if key == 'power' else 'link'} {key}"] = (
+                box(x - 5.5, VALVE_Y - 14, zr - 9, x + 5.5, VALVE_Y + 14, zr + 20), "svc_print")
+    return p
+
+
+def switch_light_mesh(key: str):
+    """The indicator disc on top of a medium's valve, contactor or link (slot frame), a PolyData."""
+    import pyvista as pv
+    i = [m[0] for m in MEDIA].index(key)
+    zr = PLATE_Z0 + PLATE_H + 25 + 30
+    return pv.Cylinder(center=(DOCK_HX0 + 14 + i * 13, VALVE_Y, zr + 23.5), direction=(0, 0, 1), radius=4.6,
+                       height=3.0).triangulate()
 
 
 def dock_parts(head=True) -> dict:
@@ -285,7 +359,7 @@ def dock_parts(head=True) -> dict:
         # the rod of the actuator, through the side wall's window
         p["dock rod"] = (box(X_FACE + PLATE_T, PLATE_Y - 14, ZC - 14, 1300, PLATE_Y + 14, ZC + 14), "svc_steel")
         return p
-    hx0, hx1 = X_FACE + STROKE + PLATE_T + 3.0, 1372.0      # behind the head pulled back: 1298 to 1372
+    hx0, hx1 = DOCK_HX0, 1372.0
     p["dock housing"] = (box(hx0, y0 + 20, PLATE_Z0 - 15, hx1, y1 - 20, PLATE_Z0 + PLATE_H + 25), "svc_housing")
     # its hoses: six lines from the housing's front into the column's riser
     ry = PLATE_Y + RISER["dy"]
@@ -801,11 +875,11 @@ TRAY_CAMS = {   # per tray: (mast x, mast y, aim x, aim y, aim z, post yaw) in t
     # least of the room in either camera's picture with the tray presented (unit_view), then the closest view; posts
     # 15 mm or more clear of every instrument's box, the UPS and the service plate, inside the rim, off the middle
     # half of each instrument's front (where the arm works) and, on tray B, off the front between the rack and the
-    # doser's cup. Each unit stands in front of or beside its instrument and looks back or down at it. Tray B's rack
-    # and doser are at the front edge and the OT-2 has no room in front, so B0, B1, A1 and D2 still see some of the
+    # doser's cup. Each unit stands in front of or beside its instrument and looks back or down at it. Tray B's doser
+    # is at the front edge and the OT-2 has no room in front, so B0, A1 and D2 still see some of the
     # room (cameras.views in services.json).
-    "A": [(-680.0, -270.0, -467.0, 6.0, 92.0, 90.0), (210.0, 275.0, 916.0, 102.0, 600.0, 90.0)],
-    "B": [(-120.0, -25.0, -250.0, -356.0, 43.0, 0.0), (685.0, -340.0, 460.0, -222.0, 339.0, 270.0)],
+    "A": [(-1060.0, -10.0, -850.0, 100.0, 400.0, 90.0), (210.0, 275.0, 916.0, 102.0, 600.0, 90.0)],
+    "B": [(920.0, -220.0, 750.0, 0.0, 600.0, 180.0)],     # one: a unit over the rack stood in the middle of the tray
     "C": [(-960.0, -340.0, -560.0, 0.0, 600.0, 90.0), (125.0, -235.0, 360.0, 0.0, 486.0, 90.0)],
     "D": [(-225.0, -305.0, -552.0, 0.0, 550.0, 270.0), (300.0, -340.0, 60.0, 0.0, 600.0, 270.0),
           (860.0, 185.0, 1066.0, -43.0, 109.0, 90.0)],
@@ -815,7 +889,7 @@ TRAY_CAMS = {   # per tray: (mast x, mast y, aim x, aim y, aim z, post yaw) in t
 }
 TRAY_CAMS_ROUND5 = {   # where they stood before: at the back, looking forward over their instruments and out of the bay
     "A": [(-760.0, 320.0, -150.0, -150.0, 150.0), (380.0, 350.0, 760.0, -60.0, 330.0, 90.0)],
-    "B": [(-560.0, 320.0, -250.0, -372.0, 60.0), (480.0, 320.0, 250.0, -316.0, 300.0)],
+    "B": [(480.0, 320.0, 250.0, -316.0, 300.0), (-560.0, 320.0, -250.0, -372.0, 60.0)],     # doser first, as now
     "C": [(-1150.0, -330.0, -560.0, -60.0, 330.0), (380.0, 320.0, 360.0, 0.0, 200.0)],
     "D": [(-1150.0, 361.0, -760.0, -150.0, 300.0, 90.0), (-290.0, -345.0, 60.0, -230.0, 360.0, 90.0),
           (560.0, 320.0, 680.0, -150.0, 100.0)],
@@ -826,12 +900,14 @@ TRAY_CAMS_ROUND5 = {   # where they stood before: at the back, looking forward o
 CAM_PIVOT = 640.0                       # the tilt axis over the tray floor; the head's top stays under 727.5 mm
 POST_H = 590.0                          # the tray posts: 22 mm over the sliding block at its CAM_PIVOT height
 CAM_H = CAM_PIVOT - TILT_AXIS[2]        # the block's height on a tray post: 543 mm
-# The bay unit stands on a 2020 bar across the back of the bay, 37 mm in front of the shutter's plane and 35.5 mm
-# over the top of Kardex's product envelope at the opening, and under tray F1, which is stored over the opening:
-# y and bar_z are the bar's centre; h the block's height on its 90 mm post; the head looks forward (-y), tilted down.
-BAY_CAM = dict(y=-600.0, bar_z=1650.0, post_h=90.0, h=52.0, tilt=64.0)
-BAY_CAM["pivot_z"] = BAY_CAM["bar_z"] + 10.0 + BAY_CAM["h"] + TILT_AXIS[2]   # the tilt axis: 1809 mm
-BAY_CAM["pivot_y"] = BAY_CAM["y"] + TILT_AXIS[1]                              # 80 mm in front of the bar
+# The bay unit sits on a 2020 bar across the back of the bay, 72 mm in front of the shutter's plane, over the top of
+# Kardex's product envelope at the opening and under tray F1, which is stored over the opening. With the 996 mm
+# opening (vlm.py) that envelope tops out at 1733.5 mm, only 166.5 mm under F1 at 1900, so the bay unit has no post or
+# sliding block: its yoke is bolted straight onto a saddle clamp on the bar (bay_at). y and bar_z are the bar's centre;
+# the head looks forward (-y), tilted down.
+BAY_CAM = dict(y=-635.0, bar_z=V.Z_OPEN + V.T_FLOOR + V.MAX_GOODS_H + V.GOODS_CLEAR + 25.0, tilt=64.0)
+BAY_CAM["pivot_z"] = BAY_CAM["bar_z"] + 14.0 + TILT_AXIS[2] - PAN_AXIS[2]     # the tilt axis, 68 mm over the clamp
+BAY_CAM["pivot_y"] = BAY_CAM["y"] + TILT_AXIS[1] - PAN_AXIS[1]               # 13 mm in front of the bar
 LAMP_UPS = (1.0, 0.62, 0.10)
 
 
@@ -961,25 +1037,36 @@ def add_cameras(sc, L=None, trays="ABCDEF") -> list:
 
 
 def bay_parts() -> dict:
-    """The bar across the bay and the printed clamp that holds the bay unit's post on it, world frame."""
+    """The bar across the bay and the printed saddle clamp the bay unit's yoke is bolted to, world frame."""
     b = BAY_CAM
     x0, x1 = -V.OPEN_W / 2, V.OPEN_W / 2
     bar = box(x0, b["y"] - 10, b["bar_z"] - 10, x1, b["y"] + 10, b["bar_z"] + 10)
-    clamp = box(-22, b["y"] - 14, b["bar_z"] - 14, 22, b["y"] + 14, b["bar_z"] + 26).edges("|X").fillet(3.0)
-    clamp = clamp.cut(box(-23, b["y"] - 10.2, b["bar_z"] - 10.2, 23, b["y"] + 10.2, b["bar_z"] + 10.2))
-    clamp = clamp.cut(box(-10.2, b["y"] - 10.2, b["bar_z"] + 9.8, 10.2, b["y"] + 10.2, b["bar_z"] + 27))
-    return {"bay bar": (bar, "svc_alu"), "post clamp": (clamp, "svc_petg")}
+    clamp = box(-24, b["y"] - 14, b["bar_z"] - 14, 24, b["y"] + 14, b["bar_z"] + 14).edges("|X").fillet(3.0)
+    clamp = clamp.cut(box(-25, b["y"] - 10.2, b["bar_z"] - 10.2, 25, b["y"] + 10.2, b["bar_z"] + 10.2))
+    return {"bay bar": (bar, "svc_alu"), "saddle clamp": (clamp, "svc_petg")}
+
+
+def bay_at(x: float = 0.0) -> np.ndarray:
+    """The bay unit's rig frame, world: placed so that its pan axis stands on the saddle clamp's top (no post, no
+    block); use with h = 0."""
+    return I._T((x, BAY_CAM["y"] - PAN_AXIS[1], BAY_CAM["bar_z"] + 14.0 - PAN_AXIS[2]))
 
 
 def add_bay_camera(sc, x=0.0) -> str:
-    """The overhead unit at the bay: its post stands on a 2020 bar across the back of the bay, over Kardex's product
-    envelope and under the tray stored over the opening; the head looks down and forward over the presented tray."""
-    from scene import T
+    """The overhead unit at the bay: its yoke on a saddle clamp on a 2020 bar across the back of the bay, over Kardex's
+    product envelope and under the tray stored over the opening; the head looks down and forward over the presented
+    tray. Returns the head's group."""
     b = BAY_CAM
     add_meshes(sc, "baycam", meshes_of("baybar", bay_parts, 0.5), "baycam")
     sc.gmat["baycam"] = np.eye(4)
-    return _add_rig(sc, "baycamrig", None, T((x, b["y"], b["bar_z"] + 10.0)), 0.0, b["h"], 0.0, b["tilt"],
-                    post_h=b["post_h"], foot=False)
+    sc.gmat["baycamrig"] = bay_at(x)
+    for k in ("pan", "head"):
+        add_meshes(sc, f"baycamrig{k}", meshes_of(f"rig_{k}", lambda k=k: rig_pieces()[k], 0.3), f"baycamrig{k}")
+    sc.gmat["baycamrigpan"] = I._R((0, 0, 1), 0.0, PAN_AXIS)
+    sc.parent["baycamrigpan"] = "baycamrig"
+    sc.gmat["baycamrighead"] = I._R((1, 0, 0), b["tilt"], TILT_AXIS)
+    sc.parent["baycamrighead"] = "baycamrigpan"
+    return "baycamrighead"
 
 
 def add_docks(sc, positions) -> dict:
@@ -997,6 +1084,9 @@ def add_docks(sc, positions) -> dict:
         sc.parent[gh] = g
         sc.gmat[gh] = np.eye(4)
         out[pos] = gh
+        add_meshes(sc, f"sw_{pos}", meshes_of("switches", switch_parts, 0.3), g)
+        for key, *_ in MEDIA:
+            sc.add(f"swlight_{pos}_{key}", switch_light_mesh(key), SWITCH_C[True], g, ambient=0.7, specular=0.2)
     riser = meshes_of("riser", riser_parts, 2.0)
     for yc, name in ((V.Y_FRONT, "front"), (V.Y_REAR, "rear")):
         add_meshes(sc, f"riser_{name}", riser, f"riser_{name}")
@@ -1010,13 +1100,114 @@ def set_dock(sc, pos, u):
     sc.gmat[f"dockhead_{pos}"] = T((STROKE * u, 0, 0))
 
 
+def set_switches(sc, pos, on):
+    """The dock's valves, contactor and link light at `pos`: on = True / False for all, or {medium: bool}."""
+    for key, *_ in MEDIA:
+        v = on.get(key, False) if isinstance(on, dict) else bool(on)
+        sc.color[f"swlight_{pos}_{key}"] = SWITCH_C[v]
+
+
+UPS_LED = {"mains": (0.15, 0.80, 0.30), "battery": (1.0, 0.62, 0.10)}     # charging on mains / carrying the tray
+
+
+def ups_label_mesh():
+    """'UPS' in white on the tray UPS's top and on its side facing the front of the tray, tray frame (PR #318: "I
+    didn't see anywhere that showed UPS-s")."""
+    import pyvista as pv
+    x, y = UPS_AT
+    u = UPS
+    t = pv.Text3D("UPS", depth=0.1)
+    k = 1.0 / (t.bounds[3] - t.bounds[2])
+
+    def place(h, turn, at):
+        m = t.scale(h * k, inplace=False)
+        if turn:
+            m = m.rotate_x(90, inplace=False)
+        return m.translate(at, inplace=False)
+    top = place(56.0, False, (x - 60, y, V.T_FLOOR + u["h"] + 1.5))
+    side = place(120.0, True, (x, y - u["w"] / 2 - 1.5, V.T_FLOOR + u["h"] * 0.62))
+    return top.merge(side).triangulate()
+
+
+def ups_led_mesh():
+    """The UPS's status strip, on its top and on its front-facing side (tray frame): green on mains, amber on battery."""
+    x, y = UPS_AT
+    u = UPS
+    a = box(x - 170, y - u["w"] / 2 - 2.5, V.T_FLOOR + u["h"] * 0.32, x + 170, y - u["w"] / 2, V.T_FLOOR + u["h"] * 0.32
+            + 26)
+    b = box(x + 60, y - 26, V.T_FLOOR + u["h"], x + 200, y + 26, V.T_FLOOR + u["h"] + 2.5)
+    return a.union(b)
+
+
 def add_tray_services(sc, tray: str, ups=True) -> list:
-    """The tray's plate, its lines (coloured when live) and its UPS, riding with group tray_<k>."""
+    """The tray's plate, its lines (coloured when live) and its UPS with its label and status strip, riding with group
+    tray_<k>."""
     add_meshes(sc, f"plate_{tray}", meshes_of("plate", plate_parts, 0.4), f"tray_{tray}")
     names = add_meshes(sc, f"lines_{tray}", meshes_of("lines", tray_lines, 0.5), f"tray_{tray}")
     if ups:
         add_meshes(sc, f"ups_{tray}", meshes_of("ups", ups_parts, 1.0), f"tray_{tray}")
+        if "upslabel" not in _MESH_CACHE:
+            import lab
+            _MESH_CACHE["upslabel"] = ups_label_mesh()
+            _MESH_CACHE["upsled"] = lab.to_mesh(_shape(ups_led_mesh()), 0.5)
+        sc.add(f"ups label {tray}", _MESH_CACHE["upslabel"], (0.97, 0.97, 0.95), f"tray_{tray}", ambient=0.6,
+               specular=0.1)
+        sc.add(f"ups led {tray}", _MESH_CACHE["upsled"], UPS_LED["mains"], f"tray_{tray}", ambient=0.75, specular=0.1)
     return names
+
+
+def set_ups(sc, tray: str, battery: bool):
+    sc.color[f"ups led {tray}"] = UPS_LED["battery" if battery else "mains"]
+
+
+class Flow:
+    """Dots running along each live medium, from the service riser through the dock and the plate to the tray's end of
+    the line, at the places given (slots, or 'open' for the bay): a frame hook moves them. on[(pos, key)] is how much
+    of the path, from the riser end, is filled: 0 shut, 1 flowing all the way."""
+
+    def __init__(self, sc, places, speed=160.0, pitch=45.0, bead=6.5):
+        import pyvista as pv
+        from scene import FPS, lighter
+        self.sc, self.speed, self.pitch, self.dt = sc, speed, pitch, 1.0 / FPS
+        self.t = 0.0
+        self.on, self.paths = {}, {}
+        self.ball = pv.Sphere(radius=bead, theta_resolution=10, phi_resolution=8)   # wider than the 7-8 mm lines
+        M = mats()
+        lp, dp = line_paths(), dock_paths()
+        for pos in places:
+            yc, zs = V.SLOTS[pos]
+            for (key, _, mat, _), dy in zip(MEDIA, INSERT_DY):
+                pts = np.array(dp[key] + [(X_FACE - 8.0, PLATE_Y + dy, ZC)] + lp[key], float) + (0.0, yc, zs)
+                cum = np.r_[0.0, np.cumsum(np.linalg.norm(np.diff(pts, axis=0), axis=1))]
+                self.paths[(pos, key)] = (pts, cum)
+                name = f"flow_{pos}_{key}"
+                sc.add(name, self.ball.translate(pts[0], inplace=False), lighter(M[mat][:3], 0.55), name,
+                       ambient=0.75, specular=0.1)
+                sc.alpha[name] = 0.0
+                self.on[(pos, key)] = 0.0
+        sc.frame_hooks.append(self)
+
+    def set(self, pos, f, keys=None):
+        for key, *_ in MEDIA:
+            if keys is None or key in keys:
+                self.on[(pos, key)] = float(f)
+
+    def __call__(self, sc):
+        import pyvista as pv
+        self.t += self.dt
+        for (pos, key), (pts, cum) in self.paths.items():
+            name = f"flow_{pos}_{key}"
+            f = self.on[(pos, key)]
+            L = cum[-1]
+            n = max(4, int(L / self.pitch))
+            s = ((np.arange(n) / n + self.t * self.speed / L) % 1.0) * L
+            s = s[s <= f * L]
+            if f <= 0.01 or not len(s):
+                sc.alpha[name] = 0.0
+                continue
+            P = np.c_[np.interp(s, cum, pts[:, 0]), np.interp(s, cum, pts[:, 1]), np.interp(s, cum, pts[:, 2])]
+            sc.set_mesh(name, pv.PolyData(P).glyph(geom=self.ball, scale=False, orient=False))
+            sc.alpha[name] = 1.0
 
 
 def set_live(sc, names, f):
@@ -1046,14 +1237,15 @@ def make_lab(sc, data, robot=False):
     return SLab(sc, data, robot=robot)
 
 
-def build_vlm(name, data, idata, title, docks=True, cams=True, mp4=True):
+def build_vlm(name, data, idata, title, docks=True, cams=True, mp4=True, robot=False, scene_cls=None):
     """The VLM with trays A-F and their equipment (as line.py has them, without the floor line), the docks, plates,
-    UPSs and cameras. Returns (scene, lab, {tray: [line actor names]})."""
+    UPSs and cameras; robot=True adds the MiR250 and UR10e at the opening. Returns (scene, lab, {tray: [line actor
+    names]})."""
     import line
     import tour
     from scene import Scene, T
-    sc = Scene(name, title, gif=False, mp4=mp4)
-    L = make_lab(sc, data)
+    sc = (scene_cls or Scene)(name, title, gif=False, mp4=mp4)
+    L = make_lab(sc, data, robot=robot)
     for k, loads in line.TRAY_LOADS.items():
         line.add_tray(sc, L, k)
         for key, x, y in loads:
@@ -1179,10 +1371,10 @@ def movie_services(data, idata):
     hide(sc, ("skin_R",) + cut2, 1.0)
     cam_lbl = [(f"stream camera on tray {k}", A.tray_world(k, head_point(*c, dz=40.0)),
                 (0.14 if c[0] < 0 else 0.86, 0.30)) for c in TRAY_CAMS[k]]
-    sc.step(f"6/{n}", "The cameras: two Pi 5 units on tray A, on 2020 posts under the 727.5 mm product height, and an "
-            "overhead one at the back of the bay, above Kardex's product envelope, looking down on the presented "
-            "tray.", 3.2, None, hold=2.6, cam_to=CAM_S_CAMS, still=True,
-            labels=cam_lbl + [("overhead camera at the bay", bay_cam_point(), (0.60, 0.13))])
+    sc.step(f"6/{n}", "The cameras: two Pi 5 units on tray A, standing in front of or beside their instruments and "
+            "looking back, so they keep the room out of the picture, and an overhead one at the back of the bay, above "
+            "Kardex's product envelope, looking down on the presented tray.", 3.2, None, hold=2.6, cam_to=CAM_S_CAMS,
+            still=True, labels=cam_lbl + [("overhead camera at the bay", bay_cam_point(), (0.60, 0.13))])
     return sc.save()
 
 
@@ -1210,9 +1402,385 @@ def still_cameras(data, idata, k="E"):
     top = max(v["top_over_floor_mm"] for kk, v in cl["tray_units"].items() if kk.startswith(k))
     sc.step("", f"Tray {k} at the opening: {len(TRAY_CAMS[k])} Pi 5 units, each on a 2020 post with a sliding block and "
             f"a pan-tilt head, aimed at an instrument's working face; the highest stands {top:.0f} mm over the tray "
-            f"floor, under the 727.5 mm product height. The overhead unit stands on a bar at the back of the bay, "
-            f"{cl['bay_margin_mm']:.0f} mm over Kardex's product envelope and {cl['bay_margin_to_F1_mm']:.0f} mm "
-            "under the tray stored above the opening.", 0.1, None, hold=0.0, labels=lbl, still=True)
+            f"floor. They stand in front of or beside their instruments and look back, away from the opening. The overhead "
+            f"unit sits on a bar at the back of the bay, {cl['bay_margin_mm']:.0f} mm over Kardex's product envelope and "
+            f"{cl['bay_margin_to_F1_mm']:.0f} mm under the tray stored above the opening.", 0.1, None, hold=0.0, labels=lbl,
+            still=True)
+    return sc.save()
+
+
+# ----------------------------------------------------------------------------------------------- vlm_hookups
+# PR #318: "Assume UPS for now, and show the automatic electrical, gas, and water hookup setups during storage and
+# when in the picking bay ... I didn't see anywhere that showed UPS-s." One tray, A, from its slot to the bay.
+CAM_H_WIDE = [(6300, -3900, 4200), (450, 250, 1750), (0, 0, 1)]
+CAM_H_SLOT = [(1760, 560, 1760), (1150, 1280, 1230), (0, 0, 1)]       # outside the right side, over tray A in R2
+CAM_H_MID = [(5600, -3300, 2700), (600, -250, 1250), (0, 0, 1)]
+CAM_H_BAY = [(2080, -1420, 1500), (1110, -760, 1020), (0, 0, 1)]      # outside the right side, at the bay
+CAM_H_END = [(1500, -3300, 1900), (500, -950, 1150), (0, 0, 1)]
+
+
+def ghost_prefix(sc, prefixes, a):
+    """Every actor whose group starts with one of `prefixes` to opacity factor a (1 back to normal)."""
+    for n, g in sc.group_of.items():
+        if g.startswith(tuple(prefixes)):
+            sc.alpha[n] = a
+
+
+def ups_points() -> dict:
+    """{tray: world point on top of its UPS} with every tray in its slot."""
+    out = {}
+    for k, pos in HOME.items():
+        yc, zs = V.SLOTS[pos]
+        out[k] = (UPS_AT[0], yc + UPS_AT[1], zs + V.T_FLOOR + UPS["h"])
+    return out
+
+
+def movie_hookups(data, idata):
+    import animate as A
+    k = "A"
+    slot = HOME[k]
+    sc, L, live = build_vlm("vlm_hookups", data, idata,
+                            "Vertical cloud lab: one tray's hookups and its UPS, from its slot to the bay")
+    L.skin(1.0)(1.0)
+    L.on_ups = {}
+    hide(sc, ("skin_R",))
+    flow = Flow(sc, [slot, "open"])
+    for pos in HOME.values():
+        set_dock(sc, pos, 0.0)
+        set_switches(sc, pos, True)
+    set_dock(sc, "open", 1.0)
+    set_switches(sc, "open", False)
+    flow.set(slot, 1.0)
+    load_w = sum(POWER[i][0] for i in TRAY_ITEMS[k]) + len(TRAY_CAMS[k]) * POWER["pi_unit"][0]
+    ups_min = 44 * 300 / load_w                        # the retailer's 44 min at 300 W, scaled: a rough figure
+    yc, zs = V.SLOTS[slot]
+    by, bz = V.SLOTS["open"]
+    fluids = ("air", "n2", "cws", "cwr")
+    names_by = {key: [n for n in live[k] if n.split("/")[-1] == mat] for key, _, mat, _ in MEDIA}
+
+    def gauges(tray, ups, dock_slot, dock_bay):
+        L.svc_lines = [(f"Tray {k}", tray), ("UPS", ups), (f"Dock {slot}", dock_slot), ("Bay dock", dock_bay)]
+        L.gauges()
+
+    def at_slot(x, y, z, pos=slot):
+        y0, z0 = V.SLOTS[pos]
+        return (x, y0 + y, z0 + z)
+
+    zr = PLATE_Z0 + PLATE_H + 25 + 30
+    xv = DOCK_HX0 + 14
+    gauges(f"in {slot}, docked: on mains", "charging from the dock's mains", "engaged, all six live", "pulled back")
+    L.apply_state()
+    n = 6
+    ups_lbl = [(f"UPS, tray {t} ({HOME[t]})", p, (0.08 if i < 3 else 0.92, 0.30 + 0.08 * (i % 3)))
+               for i, (t, p) in enumerate(sorted(ups_points().items(), key=lambda kv: -kv[1][2]))]
+    sc.step(f"1/{n}", "Every tray carries its own UPS, an Eaton 5PX 1500 standing at its back right (white 'UPS' on "
+            "top, a status strip: green on mains, amber on battery). In its slot, a tray is plugged into the machine "
+            "through one automatic coupling in the slot's right-hand side wall.", 3.6, None, hold=2.2,
+            cam_to=CAM_H_WIDE, labels=ups_lbl)
+    # ---- 2: docked in storage
+    cut = ("col_rear", "posts", "lift_rails", "lift", "riser_rear")
+    eq = tuple(L.eq_groups[k]) + ("eq_A",)
+
+    def into(u):
+        hide(sc, cut, 1.0 - u)
+        ghost_prefix(sc, eq, 1.0 - 0.75 * u)
+    lbl2 = [("UPS: charging from the mains", (UPS_AT[0] - 80, yc + UPS_AT[1], zs + V.T_FLOOR + UPS["h"]), (0.10, 0.20)),
+            ("valves on air, N2, water in and out: open", at_slot(xv + 13 * 3, VALVE_Y, zr + 25), (0.88, 0.16)),
+            ("mains contactor: closed", at_slot(xv, VALVE_Y, zr + 25), (0.88, 0.26)),
+            ("Ethernet: linked", at_slot(xv + 13, VALVE_Y, zr + 25), (0.88, 0.34)),
+            ("dock head pressed on the plate", at_slot(X_FACE + 10, PLATE_Y + 70, PLATE_Z0 + PLATE_H), (0.88, 0.52)),
+            ("lines on the tray: mains into the UPS,\nthe rest along the back rim", at_slot(1100, 400, 70), (0.10, 0.62))]
+    sc.step(f"2/{n}", f"Stored in {slot}, docked: the dock in the side wall holds the plate home. Mains, Ethernet, "
+            "compressed air, nitrogen and chilled water in and out are all live (the dots), from the service riser "
+            "through the coupling to the tray; the UPS charges. Tray A's instruments are drawn faint.",
+            3.4, into, hold=3.2, cam_to=CAM_H_SLOT, labels=lbl2, live=True)
+
+    # ---- 3: shut, vent, on battery, pull back
+    def release(u):
+        state = {kk: True for kk, *_ in MEDIA}
+        for i, key in enumerate(fluids):
+            f = min(1.0, max(0.0, (u - 0.08 * i) / 0.12))
+            state[key] = f < 0.5
+            flow.set(slot, 1.0 - f, (key,))
+            set_live(sc, names_by[key], 1.0 - f)
+        g = min(1.0, max(0.0, (u - 0.40) / 0.10))
+        state["power"] = state["data"] = g < 0.5
+        set_switches(sc, slot, state)
+        flow.set(slot, 1.0 - g, ("power", "data"))
+        set_live(sc, names_by["power"] + names_by["data"], 1.0 - g)
+        L.on_ups[k] = g > 0.5
+        set_ups(sc, k, g > 0.5)
+        set_dock(sc, slot, min(1.0, max(0.0, (u - 0.55) / 0.45)))
+        L.apply_state()
+    gauges(f"in {slot}, letting go", f"takes the load: about {load_w:.0f} W", "shutting, venting, pulling back",
+           "pulled back")
+    lbl3 = [("valves shut, lines vented", at_slot(xv + 13 * 3, VALVE_Y, zr + 25), (0.88, 0.16)),
+            ("contactor open: mains off", at_slot(xv, VALVE_Y, zr + 25), (0.88, 0.26)),
+            ("UPS: on battery", (UPS_AT[0] - 80, yc + UPS_AT[1], zs + V.T_FLOOR + UPS["h"]), (0.10, 0.20)),
+            (f"dock pulls back {STROKE:.0f} mm", at_slot(X_FACE + 40, PLATE_Y + 70, PLATE_Z0 + PLATE_H),
+             (0.88, 0.52))]
+    sc.step(f"3/{n}", "Before the tray may move: the air, N2 and water valves shut and their lines vent (Staubli: the "
+            "couplings must not part under pressure); the contactor opens, so the UPS takes the load; then the dock "
+            f"pulls back {STROKE:.0f} mm, its pins 22 mm clear of the tray.", 4.6, release, hold=1.6, labels=lbl3,
+            live=True)
+
+    # ---- 4: in transit on the UPS
+    tag = np.array([0.0, 0.0, 0.0])
+
+    def follow():
+        y, z = L.tray[k]
+        tag[:] = (UPS_AT[0] - 80, y + UPS_AT[1], z + V.T_FLOOR + UPS["h"])
+
+    def moving(f):
+        def up(u):
+            f(u)
+            follow()
+            ghost_prefix(sc, eq, 0.25 + 0.75 * min(1.0, u * 3) if f is first else 1.0)
+        return up
+    first = L.lift_to(zs)
+    follow()
+    hide(sc, cut, 1.0)
+    L.where[k] = None
+    gauges("in transit, unplugged", f"on battery, about {load_w:.0f} W (roughly {ups_min:.0f} min of it)",
+           "pulled back", "pulled back, waiting")
+    cap = (f"In transit, about 6 s from {slot} to the opening: no coupling, the UPS carries the instruments, the "
+           "cameras and the tray's switch. The tray's lamp and the UPS's strip are amber.")
+    lbl4 = [(f"tray {k}: on its UPS", tag, (0.16, 0.22))]
+    sc.step(f"4/{n}", cap, max(0.6, abs(L.lift_z - zs) / 1333), moving(first), hold=0.1, cam_to=CAM_H_MID,
+            labels=lbl4)
+    sc.step(f"4/{n}", cap, 2.0, moving(L.slide(k, 0.0)), hold=0.1, labels=lbl4)
+    sc.step(f"4/{n}", cap, max(0.6, abs(zs - bz) / 1333), moving(L.lift_to(bz, carry=k)), hold=0.1, labels=lbl4)
+    sc.step(f"4/{n}", cap, 0.6, moving(L.shut(1.0)), hold=0.0, labels=lbl4)
+    sc.step(f"4/{n}", cap, 2.0, moving(L.slide(k, by)), hold=0.0, labels=lbl4)
+    sc.step(f"4/{n}", cap, 0.6, moving(L.shut(0.0)), hold=0.3, labels=lbl4)
+    L.where[k] = "open"
+
+    # ---- 5: the bay's dock takes over
+    cut2 = ("col_front", "posts", "lift_rails", "lift", "riser_front", "shutter")
+
+    def engage(u):
+        hide(sc, cut2, 1.0 - min(1.0, 3 * u))
+        set_dock(sc, "open", 1.0 - min(1.0, u / 0.35))
+        g = min(1.0, max(0.0, (u - 0.38) / 0.10))
+        state = {kk: False for kk, *_ in MEDIA}
+        state["power"] = state["data"] = g > 0.5
+        flow.set("open", g, ("power", "data"))
+        set_live(sc, names_by["power"] + names_by["data"], g)
+        L.on_ups[k] = g < 0.5
+        set_ups(sc, k, g < 0.5)
+        for i, key in enumerate(fluids):
+            f = min(1.0, max(0.0, (u - 0.52 - 0.08 * i) / 0.16))
+            state[key] = f > 0.05
+            flow.set("open", f, (key,))
+            set_live(sc, names_by[key], f)
+        set_switches(sc, "open", state)
+        L.apply_state()
+    gauges("at the opening, docking", f"on battery, about {load_w:.0f} W", "pulled back, empty slot", "pushing in")
+    lbl5 = [("bay dock: pins first", at_slot(X_FACE + 10, PLATE_Y + PIN_DY, ZC, "open"), (0.88, 0.50)),
+            ("contactor closes: back on mains", at_slot(xv, VALVE_Y, zr + 25, "open"), (0.88, 0.22)),
+            ("valves open: air, N2, water", at_slot(xv + 13 * 3, VALVE_Y, zr + 25, "open"), (0.88, 0.32)),
+            ("UPS: recharging", (UPS_AT[0] - 80, by + UPS_AT[1], bz + V.T_FLOOR + UPS["h"]), (0.10, 0.24))]
+    sc.step(f"5/{n}", "At the opening the bay's identical dock pushes in: the guide pins find the plate's bushings, "
+            "the contacts and couplings mate, the contactor closes (the UPS recharges) and only then the valves open: "
+            "the supplies fill the tray's lines again.", 5.0, engage, hold=2.4, cam_to=CAM_H_BAY, labels=lbl5,
+            live=True)
+    gauges("at the opening, docked: on mains", "recharging", "pulled back, empty slot", "engaged, all six live")
+    hide(sc, cut2, 1.0)
+    ghost_prefix(sc, eq, 1.0)
+    lbl6 = [("tray A's UPS", A.tray_world(k, (UPS_AT[0] - 80, UPS_AT[1], V.T_FLOOR + UPS["h"])), (0.86, 0.20)),
+            ("bay dock", A.tray_world(k, (X_FACE + 40, PLATE_Y, PLATE_Z0 + PLATE_H)), (0.86, 0.36))]
+    sc.step(f"6/{n}", "Docked at the opening, as in its slot: on mains, with air, N2 and water. Where the tray is "
+            "stored and where it is worked on, the same coupling; only the seconds between run on the tray's UPS.",
+            3.0, lambda u: None, hold=2.6, cam_to=CAM_H_END, labels=lbl6, still=True, live=True)
+    return sc.save()
+
+
+# ----------------------------------------------------------------------------------------------- bay_camera
+# PR #318: "The way the overhead camera at the bay gets called out is kind of weird. It probably deserves its own
+# sequence and showing an upward looking angle from the front of the bay as if an operator and then also a rendered
+# view of what the camera would see."
+HQ_SENSOR = dict(w=4056 * 1.55e-3, h=3040 * 1.55e-3)        # IMX477, mm (SOURCES["hq_sensor"])
+
+
+def camera_fov() -> dict:
+    """Each bay camera's picture, degrees: the Wide's from Raspberry Pi's figures, the HQ's from its sensor and the
+    16 mm lens's focal length."""
+    f = 16.0
+    w, h = HQ_SENSOR["w"], HQ_SENSOR["h"]
+    hq = dict(across=2 * math.degrees(math.atan(w / 2 / f)), up_down=2 * math.degrees(math.atan(h / 2 / f)),
+              diagonal=2 * math.degrees(math.atan(math.hypot(w, h) / 2 / f)), sensor_mm=[round(w, 2), round(h, 2)],
+              focal_mm=f, source=SOURCES["hq_sensor"])
+    wide = dict(across=102.0, up_down=67.0, diagonal=120.0, source=SOURCES["cm3_wide"],
+                note="Raspberry Pi's figures. A 16:9 rectilinear picture 102 deg across is 69.6 deg up and down; the "
+                     "lens's own distortion makes it 67")
+    return {"wide": {k: (round(v, 1) if isinstance(v, float) else v) for k, v in wide.items()},
+            "hq_16mm": {k: (round(v, 1) if isinstance(v, float) else v) for k, v in hq.items()}}
+
+
+def frustum_meshes(c, f, r, u, half, z_floor, far=2400.0):
+    """A camera's picture as a see-through pyramid from its lens to where it meets z_floor, and its edges."""
+    import pyvista as pv
+    ta, tb = math.tan(math.radians(half[0])), math.tan(math.radians(half[1]))
+    pts = [np.asarray(c, float)]
+    for a, b in ((1, 1), (1, -1), (-1, -1), (-1, 1)):
+        d = f + a * ta * r + b * tb * u
+        d = d / np.linalg.norm(d)
+        t = (z_floor - c[2]) / d[2] if d[2] < -1e-6 else far
+        pts.append(c + d * min(t, far))
+    P = np.array(pts)
+    sides = pv.PolyData(P, faces=np.hstack([[3, 0, 1, 2], [3, 0, 2, 3], [3, 0, 3, 4], [3, 0, 4, 1]]))
+    lines = []
+    for i in range(1, 5):
+        lines.append(_tube([P[0], P[i]], 3.0, 6))
+        lines.append(_tube([P[i], P[1 + i % 4]], 3.0, 6))
+    return sides, pv.merge(lines), P
+
+
+def _cam_scene_cls():
+    from scene import Scene
+
+    class CamScene(Scene):
+        """A Scene that can black out the edges of the frame, so a camera's own picture keeps its shape."""
+        mask_x = 0.0
+        mask_y = 0.0
+
+        def render_base(self):
+            img = super().render_base()
+            if self.mask_x > 0 or self.mask_y > 0:
+                img = np.array(img)
+                h, w = img.shape[:2]
+                mx, my = int(round(self.mask_x * w)), int(round(self.mask_y * h))
+                if mx:
+                    img[:, :mx] = 22
+                    img[:, w - mx:] = 22
+                if my:
+                    img[:my] = 22
+                    img[h - my:] = 22
+            return img
+    return CamScene
+
+
+def movie_bay_camera(data, idata):
+    import animate as A
+    import reach
+    from scene import SIZE, T
+    sc, L, live = build_vlm("bay_camera", data, idata, "Vertical cloud lab: the overhead camera at the bay",
+                            robot=True, scene_cls=_cam_scene_cls())
+    L.skin(1.0)(1.0)
+    k = "B"                                           # the doser's tray: the arm's busiest
+    L.tray[k] = [V.Y_OPEN, V.Z_OPEN]
+    L.where[k] = "open"
+    L.lift_z = V.Z_OPEN
+    set_dock(sc, "open", 0.0)
+    set_dock(sc, HOME[k], 1.0)
+    L.svc_lines = [(f"Tray {k}", "at the opening, docked"), ("Arm", "UR10e on a MiR250")]
+    L.apply_state()
+    sc.cam = [(2500, -6600, 2500), (0, -900, 1350), (0, 0, 1)]
+    rb = L.robot
+    b = BAY_CAM
+    opt = camera_optics(bay_at(), 0.0, 0.0, 0.0, b["tilt"])
+    fov = camera_fov()
+    zf = V.Z_OPEN + V.T_FLOOR
+    M = mats()
+    fr = {}
+    for key, col in (("wide", (0.20, 0.45, 0.85)), ("hq", (0.95, 0.55, 0.10))):
+        c, f, r, u = opt[key]
+        half = (51.0, 33.5) if key == "wide" else (fov["hq_16mm"]["across"] / 2, fov["hq_16mm"]["up_down"] / 2)
+        sides, edges, P = frustum_meshes(c, f, r, u, half, zf)
+        sc.add(f"frustum {key}", sides, col, "frusta", opacity=0.16 if key == "wide" else 0.30, specular=0.0,
+               ambient=0.6)
+        sc.add(f"frustum {key} edges", edges, col, "frusta", ambient=0.6, specular=0.0)
+        fr[key] = P
+    hide(sc, ("frusta",), 0.0)
+    rig = ("baycamrig", "baycamrigsl", "baycamrigpan", "baycamrighead")
+    # the arm's work: from parked, over the vial rack, down to the vial, up, over to the doser's cup and in
+    seeds = [np.radians(q) for q in ((-90, -100, 120, -110, -90, 0), (-90, -60, 90, -120, -90, 0),
+                                     (-60, -80, 100, -110, -90, 0), (-120, -80, 100, -110, -90, 0))]
+    seats = reach.seats()
+    rack, cup = seats["vial rack (tray B)"], seats["multi-doser cup (tray B)"]
+    poses = [T((0, 0, 140)) @ rack, rack, T((0, 0, 140)) @ rack, T((0, -140, 60)) @ cup, cup, T((0, -140, 60)) @ cup,
+             T((0, 0, 140)) @ rack]
+    qs = [rb.q.copy()]
+    for Tw in poses:
+        sol = reach.solve("ur10e", Tw, [qs[-1]] + seeds)
+        if sol is not None:
+            qs.append(np.asarray(sol[0], float))
+
+    def arm(i0, i1):
+        """The arm along the joint waypoints qs[i0..i1], over the step."""
+        path = qs[i0:i1 + 1]
+
+        def up(u):
+            s = u * (len(path) - 1)
+            j = min(int(s), len(path) - 2)
+            rb.set(path[j] + (path[j + 1] - path[j]) * (s - j))
+        return up if len(path) > 1 else (lambda u: None)
+    n = 4
+    eye = np.array([420.0, -2450.0, 1600.0])           # an operator's eyes, 1.6 m up, 0.9 m in front of the VLM's face
+    target = np.array(bay_cam_point())
+    cam_op = [tuple(eye), tuple(target + (0, 0, -60)), (0, 0, 1)]
+    lbl1 = [("overhead camera: Pi 5, HQ Camera with a 16 mm lens,\nCamera Module 3 Wide, on a pan-tilt head",
+             target, (0.62, 0.12)),
+            ("on a 2020 bar across the back of the bay", (-700.0, b["y"], b["bar_z"]), (0.20, 0.26))]
+    sc.step(f"1/{n}", "From where an operator stands, 0.9 m in front of the opening, eyes at 1.6 m: the bay's overhead "
+            "camera, up under the header at the back of the bay, looking down over the presented tray (here tray B, "
+            "the doser's).", 4.0, None, hold=2.6, cam_to=cam_op, view_angle_to=50.0, labels=lbl1)
+
+    def show_fr(u):
+        hide(sc, ("frusta",), u)
+        arm(0, 1)(u)
+    lbl2 = [(f"Wide: {fov['wide']['across']:.0f} x {fov['wide']['up_down']:.0f} deg", tuple(fr["wide"][2]),
+             (0.10, 0.60)),
+            (f"HQ, 16 mm lens: {fov['hq_16mm']['across']:.1f} x {fov['hq_16mm']['up_down']:.1f} deg",
+             tuple((fr["hq"][1] + fr["hq"][2]) / 2), (0.86, 0.66))]
+    sc.step(f"2/{n}", f"What it covers: the Camera Module 3 Wide (blue) sees {fov['wide']['across']:.0f} x "
+            f"{fov['wide']['up_down']:.0f} degrees, the whole tray; the HQ Camera with the 16 mm lens (orange) "
+            f"{fov['hq_16mm']['across']:.1f} x {fov['hq_16mm']['up_down']:.1f} degrees, a patch about a tenth of it, "
+            "for detail.", 3.0, show_fr, hold=2.6, labels=lbl2)
+    # ---- through its own lenses
+    c, f, r, u = opt["wide"]
+    va_wide = 2 * math.degrees(math.atan(math.tan(math.radians(51.0)) * SIZE[1] / SIZE[0]))
+    cam_wide = [tuple(c), tuple(c + f * 1000.0), tuple(u)]
+
+    def into_wide(s):
+        hide(sc, ("frusta",), 1.0 - min(1.0, 2 * s))
+        hide(sc, rig, 1.0 - min(1.0, max(0.0, (s - 0.6) / 0.3)))
+        sc.mask_y = (1.0 - math.tan(math.radians(33.5)) / math.tan(math.radians(va_wide / 2))) / 2 * \
+            max(0.0, (s - 0.85) / 0.15)
+    sc.step(f"3/{n}", "Into the camera.", 2.2, into_wide, hold=0.0, cam_to=cam_wide, view_angle_to=va_wide)
+    L.svc_lines = [("Camera", "Camera Module 3 Wide"), ("Picture", "102 x 67 deg, 16:9"), ("Arm", "to the vial rack")]
+    L.gauges()
+    capw = ("What the Wide sees: the whole presented tray and the arm working on it. Rendered from the camera's own "
+            "position and aim, 102 degrees across (Raspberry Pi's figures: 102 x 67, 120 diagonal).")
+    sc.step(f"3/{n}", capw, 3.4, arm(1, 3), hold=0.2)
+    L.svc_lines[2] = ("Arm", "to the doser's cup")
+    L.gauges()
+    sc.step(f"3/{n}", capw, 3.4, arm(3, 5), hold=0.6, still=True)
+    # the head turns on its pan and tilt joints to put the HQ on the doser's cup, where the gripper is
+    at = bay_at()
+    _, pan_c, tilt_c = rig_pose(float(at[0, 3]), float(at[1, 3]), tuple(cup[:3, 3]), h=0.0, z0=float(at[2, 3]), post=0.0)
+    c, f, r, u = camera_optics(at, 0.0, 0.0, pan_c, tilt_c)["hq"]
+    hq = fov["hq_16mm"]
+    cam_hq = [tuple(c), tuple(c + f * 1000.0), tuple(u)]
+    va_hq = hq["up_down"]
+    mx = (1.0 - math.tan(math.radians(hq["across"] / 2)) /
+          (math.tan(math.radians(va_hq / 2)) * SIZE[0] / SIZE[1])) / 2
+
+    def to_hq(s):
+        sc.mask_y = 0.0
+        sc.mask_x = mx * s
+        sc.gmat["baycamrigpan"] = I._R((0, 0, 1), pan_c * s, PAN_AXIS)
+        sc.gmat["baycamrighead"] = I._R((1, 0, 0), b["tilt"] + (tilt_c - b["tilt"]) * s, TILT_AXIS)
+    L.svc_lines = [("Camera", "HQ Camera, 16 mm lens"), ("Picture", f"{hq['across']:.1f} x {hq['up_down']:.1f} deg, "
+                                                                     "4:3"), ("Arm", "at the doser's cup")]
+    L.gauges()
+    caph = (f"What the HQ Camera sees through the 16 mm lens, {hq['across']:.1f} x {hq['up_down']:.1f} degrees (its "
+            f"sensor is {hq['sensor_mm'][0]} x {hq['sensor_mm'][1]} mm: 2 atan(6.29 / 32) across), with the head "
+            f"turned {abs(pan_c):.0f} degrees and tilted {tilt_c:.0f} down onto the doser's cup: a 4:3 close-up of "
+            "the gripper at work.")
+    sc.step(f"4/{n}", caph, 1.4, to_hq, hold=0.2, cam_to=cam_hq, view_angle_to=va_hq)
+    sc.step(f"4/{n}", caph, 3.2, arm(5, 6), hold=0.4)
+    sc.step(f"4/{n}", caph, 3.0, arm(6, 7), hold=1.6)
     return sc.save()
 
 
@@ -1524,10 +2092,10 @@ def _world_points(at, post, h, pan, tilt, post_h=POST_H, foot=True) -> dict:
 
 
 def bay_points() -> np.ndarray:
-    """Every point of the bay unit, its post, clamp and bar, world."""
+    """Every point of the bay unit, its clamp and bar, world."""
     from scene import T
     b = BAY_CAM
-    pts = _world_points(T((0.0, b["y"], b["bar_z"] + 10.0)), 0.0, b["h"], 0.0, b["tilt"], b["post_h"], False)
+    pts = {k: v for k, v in _world_points(bay_at(), 0.0, 0.0, 0.0, b["tilt"]).items() if k in ("pan", "head")}
     bar = np.vstack([m.points for m in meshes_of("baybar", bay_parts, 0.5).values() if m.n_points])
     return np.vstack([*pts.values(), bar])
 
@@ -1552,7 +2120,7 @@ def bay_view(step=25.0) -> dict:
     axis meets the floor, and what it misses."""
     from scene import T
     b = BAY_CAM
-    opt = camera_optics(T((0.0, b["y"], b["bar_z"] + 10.0)), 0.0, b["h"], 0.0, b["tilt"])
+    opt = camera_optics(bay_at(), 0.0, 0.0, 0.0, b["tilt"])
     z = V.Z_OPEN + V.T_FLOOR
     xs = np.arange(-V.TRAY_W / 2, V.TRAY_W / 2 + 1, step)
     ys = np.arange(V.Y_OPEN - V.TRAY_D / 2, V.Y_OPEN + V.TRAY_D / 2 + 1, step)
@@ -1908,7 +2476,7 @@ def draw_clearance(res: dict | None = None, path=None):
     ink, muted, grid = "#1f2328", "#59636e", "#d0d7de"
     c_lift, c_dock, c_tray, c_plate = "#c0392b", "#57606a", "#8c959f", "#24292f"
     fig = plt.figure(figsize=(13.0, 6.6), dpi=130)
-    ax = fig.add_axes([0.04, 0.10, 0.50, 0.80])
+    ax = fig.add_axes([0.07, 0.16, 0.47, 0.74])
     yf, yr = V.Y_FRONT, V.Y_REAR
 
     def rect(bb, color, alpha=1.0, lw=0.0, fill=True, z=1, ls="-"):
@@ -1976,7 +2544,7 @@ def draw_clearance(res: dict | None = None, path=None):
                  "the docks (grey) sit in the columns' side walls; plates dark, their inserts orange",
                  fontsize=9.5, color=ink, loc="left")
     # each case's smallest gap
-    bx = fig.add_axes([0.70, 0.12, 0.27, 0.74])
+    bx = fig.add_axes([0.70, 0.16, 0.27, 0.70])
     lift_f = min(r["gap_mm"] for rr in res["lift"].values() for n, r in rr.items() if n.startswith(("F", "open")))
     lift_r = min(r["gap_mm"] for rr in res["lift"].values() for n, r in rr.items() if n.startswith("R"))
     rows = [("lift past the rear-column docks", lift_r, False),
