@@ -134,6 +134,6 @@ at 7–12 px: the extension's inner face is hard to tell from its front at that 
 - **The pose in each frame** is a grid-search estimate. Gantry and head are good to about ±0.02, but there are few
   head picks.
 - **The floor.** The legs' extensions end at z −100 in the CAD. The rubber feet (bom.json: 10 mm, adhesive) are taken as 1 mm.
-- **Close-ups.** `fab_tour.py`'s `tour_one` ignores `Instrument.zoom`, unlike `tour.py`. So the close-up of the
-  first pick (`inst.zoom = {3: …, 12: "out"}`) does not show yet, and the 9–31 mm nozzle strokes are small in the
-  whole-machine view.
+- **Close-ups.** When this was written, `fab_tour.py`'s `tour_one` ignored `Instrument.zoom`, so the close-up of
+  the first pick (`inst.zoom = {3: …, 12: "out"}`) didn't show. `e40a811` added close-ups to the fabrication tours,
+  and since round 5's fixes `fab_tour.tour_one` is `tour.tour_one`, with its cameras, labels and overlays.

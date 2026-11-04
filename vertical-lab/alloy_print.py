@@ -27,7 +27,7 @@ import pyvista as pv
 from PIL import ImageDraw
 
 import alloy_workflow as AW           # sets scene.GIF_FPS / GIF_SIZE as chapter 4 does
-from scene import CLEAN, PREVIEW, T, R, S, font
+from scene import CLEAN, PREVIEW, T, R, S, font, unease
 
 import alloy_models as M              # noqa: E402
 import animate as A                   # noqa: E402
@@ -252,32 +252,32 @@ def _panel(img, scale, alpha):
 
 class Mir2:
     """alloy_workflow.Mir, which drives along x at MIR_Y, given a y as well, for the spot in front of the rePowder
-    (whose front stands 300 mm proud of the line's)."""
+    (whose front stands 300 mm proud of the line's). Off that spot it drives an S-curve with its long axis on the
+    tangent, as chapter 2 drives onto it (props.s_curve): a MiR250 is differential drive and can't slide sideways."""
 
     def __init__(self, amr):
         self.amr, self.sc, self.rb = amr, amr.sc, amr.rb
         self.y = AW.MIR_Y
 
-    def place(self, x, y):
+    def place(self, x, y, heading=0.0):
         self.amr.x, self.y = x, y
-        self.sc.gmat["amr"] = T((x, y, 0))
+        self.sc.gmat["amr"] = T((x, y, 0)) @ R((0, 0, 1), heading)
         if self.rb.held is not None:
             self.rb.set()
 
     def drive(self, x1, y1=None):
-        x0, y0 = self.amr.x, self.y
+        """From rest to rest at the MiR250's 0.3 m/s^2 along the path (props.ramp_frac), over the step's time."""
         y1 = AW.MIR_Y if y1 is None else y1
+        at, ps, s = P.s_curve(self.amr.x, self.y, x1, y1)
 
         def up(u):
-            # turn the corner: y first for the first third, then along x
-            uy = min(1.0, u / 0.35)
-            ux = max(0.0, (u - 0.25) / 0.75) if abs(y1 - y0) > 1 else u
-            self.place(x0 + (x1 - x0) * ux, y0 + (y1 - y0) * uy)
+            f = P.ramp_frac(unease(u), s[-1], AW.MIR_SPEED)
+            self.place(*at(float(np.interp(f * s[-1], s, ps))))
         return up
 
     def secs(self, x1, y1=None):
-        y1 = AW.MIR_Y if y1 is None else y1
-        return max(1.4, (abs(x1 - self.amr.x) + abs(y1 - self.y)) / AW.MIR_SPEED + 1.0)
+        s = P.s_curve(self.amr.x, self.y, x1, AW.MIR_Y if y1 is None else y1)[2]
+        return max(1.4, P.ramp_secs(s[-1], AW.MIR_SPEED))
 
 
 def build():

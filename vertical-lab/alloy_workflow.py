@@ -62,7 +62,8 @@ GRIP_BAR = 0.90                               # for the bar's 10 mm grip end
 GRIP_NEAR = 0.78                              # opened only 21 mm, to reach between the cut bars
 TILT = 30.0                                   # the grasp in the Aconity's chamber points 30 deg down (see grasp_aco)
 MIR_Y = line.Y_FACE - 230.0 - P.MIR["W"] / 2  # the MiR250 parks 230 mm off the fronts, broadside, arm towards them
-MIR_SPEED = 1500.0                            # mm/s; the MiR250's maximum is 2.0 m/s (MiR250 data sheet)
+MIR_SPEED = 1500.0                            # mm/s at most; the MiR250's maximum is 2.0 m/s (MiR250 data sheet)
+#                                               and it speeds up and slows down at 0.3 m/s^2 (P.MIR_ACCEL, P.ramp_secs)
 
 BLUE = (30, 60, 140)
 CURVE = (31, 94, 168)
@@ -496,17 +497,17 @@ class Mir:
         self.sc.gmat["amr"] = T((x, MIR_Y, 0))
 
     def drive(self, x1):
+        """From rest to rest at the MiR250's 0.3 m/s^2, up to MIR_SPEED (props.ramp_frac), over the step's time."""
         x0 = self.x
 
         def up(u):
-            self.set(x0 + (x1 - x0) * u)
+            self.set(x0 + (x1 - x0) * P.ramp_frac(scene.unease(u), x1 - x0, MIR_SPEED))
             if self.rb.held is not None:
                 self.rb.set()
         return up
 
     def secs(self, x1):
-        # plus 0.8 s for speeding up and slowing down: faster than MiR's 0.3 m/s^2 allows (see the notes)
-        return max(1.2, abs(x1 - self.x) / MIR_SPEED + 0.8)
+        return max(1.2, P.ramp_secs(x1 - self.x, MIR_SPEED))
 
     def world(self, p):
         return (self.sc.world("amr") @ np.r_[p, 1.0])[:3]
@@ -751,8 +752,8 @@ def movie():
     status(sc, Arm="parked")
 
     # ------------------------------------------------------------------ 4. to the wire EDM, plate in
-    cap = f"To the FANUC ROBOCUT wire EDM, {(edm_x - box_x) / 1000:.1f} m along the line, at up to " \
-          f"{MIR_SPEED / 1000:.1f} m/s (the MiR250 does 2.0)."
+    cap = f"To the FANUC ROBOCUT wire EDM, {(edm_x - box_x) / 1000:.1f} m along the line. At the MiR250's 0.3 m/s^2 " \
+          f"it peaks at {P.ramp_peak(edm_x - box_x, MIR_SPEED) / 1000:.1f} m/s on the way (its top speed is 2.0)."
     status(sc, Arm="driving to the wire EDM")
     sc.step(f"4/{n}", cap, amr.secs(edm_x), amr.drive(edm_x), hold=0.2, cam_to=CAM_DRIVE)
     cap = "The tank is drained and its yellow door drops. The arm takes the plate by the lug again, from above, " \
@@ -967,7 +968,8 @@ def movie():
         meta_path = OUT / f"{NAME}.json"
         meta = json.loads(meta_path.read_text())
         meta.update(numbers=dict(specimen=M.E8_SUB, plate=M.PLATE, cut_area_mm2=round(area), peak_kN=round(peak, 1),
-                                 stress_strain=SS, mir_speed_mm_s=MIR_SPEED),
+                                 stress_strain=SS, mir_speed_mm_s=MIR_SPEED,
+                                 mir_accel_mm_s2=P.MIR_ACCEL),
                     data=dict(sem=dict(file="DAL figures/sem/AlSi10Mg_carbon_adhesive_SEM.png",
                                        taken="BYU Apreo SEM, 500x, 5 kV, 0.10 nA, ETD, 2 April 2026",
                                        by="Gage Erickson (byu-vcl#48, comment 4181040112)"),

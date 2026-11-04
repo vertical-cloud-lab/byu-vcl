@@ -242,10 +242,9 @@ don't know whether Kardex's configuration leaves another.
 
 - **The spectra are illustrative.** Both the LIBS and the XRF spectra are; the line positions are real and the
   heights made up. Each panel says so on screen.
-- **The overlay hook.** `tour.tour_one` has no hook for a 2-D overlay. So `instruments_char.py` wraps
-  `scene.Scene.overlay`, once, on import. It draws a panel only in scenes named `instruments/<key>` for its own keys,
-  at the opacity of that instrument's `readout` piece. Every other scene is untouched.
-  - **The cleaner fix** would be an `Instrument.overlay(img, scale, alpha)` that `tour_one` calls.
+- **The panels are each instrument's `Instrument.overlay`** (round 5's fixes), which `tour.tour_one` draws over
+  every frame of that instrument's clip, at the opacity of its `readout` piece. Until round 5 this module wrapped
+  `scene.Scene.overlay` on import instead, keyed on the scene's name. The three clips render pixel-identical either way.
 - **`CharInstrument` subclasses `Instrument`.** Its `aside` pieces stay out of the size and the framing, but
   keep their place in the hero still. They are the container, the VHX controller and the readouts.
 - **Display trouble.** Under the load of five agents, `xvfb-run` on this runner sometimes gave VTK a "bad X server

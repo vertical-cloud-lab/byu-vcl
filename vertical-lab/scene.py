@@ -114,6 +114,13 @@ def ease(u: float) -> float:
     return u * u * (3 - 2 * u)
 
 
+def unease(e: float) -> float:
+    """The inverse of ease: the step's own time (0-1) for the eased u that Scene.step passes, for a motion that keeps a
+    profile of its own (a MiR250's drive, props.ramp_frac)."""
+    e = min(max(e, 0.0), 1.0)
+    return 0.5 - math.sin(math.asin(1.0 - 2.0 * e) / 3.0)
+
+
 def window(u, t0, t1):
     """Re-map u so the action happens between t0 and t1 of the step (eased)."""
     return ease((u - t0) / max(t1 - t0, 1e-6))

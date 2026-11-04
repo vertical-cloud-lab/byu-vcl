@@ -94,7 +94,7 @@ GRIP_CUP = 0.80                       # 2F-85 closure for the 19.05 mm cup (ur_a
 GRIP_KNOB = 0.52                      # the lid's knob, 41 mm across
 GRIP_HANDLE = 0.86                    # the container's 12 mm handle bar
 HOOD_OPEN = 110.0                     # degrees the lid swings up (#124's training animation)
-MIR_SPEED = 1500.0                    # mm/s, as alloy_workflow.py
+MIR_SPEED = 1500.0                    # mm/s at most, at 0.3 m/s^2 (props.ramp_secs), as alloy_workflow.py
 PARK = np.radians(A.PARK_DEG)
 CARRIER_AT = (A.BUFFER_LOCAL[0], A.BUFFER_LOCAL[1], P.AMR_TOP - 20.0)    # where chapter 1 puts the cup carrier
 CRADLE_AT = (280.0, 10.0, P.AMR_TOP - 20.0)                           # the container's cradle, beside the arm
@@ -576,19 +576,18 @@ class Mir:
             self.rb.set()
 
     def drive(self, x1, y1):
-        """Along a smoothstep S-curve to (x1, y1), its long axis on the tangent (it drives along its length)."""
-        x0, y0 = self.x, self.y
+        """Along a smoothstep S-curve to (x1, y1), its long axis on the tangent (it drives along its length), from rest
+        to rest at the MiR250's 0.3 m/s^2 along the curve (props.s_curve, props.ramp_frac), over the step's time."""
+        at, ps, s = P.s_curve(self.x, self.y, x1, y1)
 
         def up(u):
-            x = x0 + (x1 - x0) * u
-            y = y0 + (y1 - y0) * (3 * u * u - 2 * u ** 3)
-            dydx = (y1 - y0) * (6 * u - 6 * u * u) / (x1 - x0) if abs(x1 - x0) > 1 else 0.0
-            self.set(x, y, math.degrees(math.atan(dydx)))
+            f = P.ramp_frac(scene.unease(u), s[-1], MIR_SPEED)
+            self.set(*at(float(np.interp(f * s[-1], s, ps))))
         return up
 
     def secs(self, x1, y1=None):
-        d = math.hypot(x1 - self.x, (y1 if y1 is not None else self.y) - self.y)
-        return max(1.2, d / MIR_SPEED + 0.8)
+        s = P.s_curve(self.x, self.y, x1, self.y if y1 is None else y1)[2]
+        return max(1.2, P.ramp_secs(s[-1], MIR_SPEED))
 
     def world(self, p):
         return (self.sc.world("amr") @ np.r_[p, 1.0])[:3]

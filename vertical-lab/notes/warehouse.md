@@ -38,7 +38,7 @@ What the movie shows:
 7. Both go back to charge.
 
 Every arm move is solved with the UR's inverse kinematics, as in the workflow. The MiR250s drive straight legs and turn
-on the spot, which they can do. They are drawn at 1.5 m/s; the MiR250's top speed is 2.0 m/s.
+on the spot, which they can do. Each leg starts and stops at the MiR250's 0.3 m/s², up to 1.5 m/s; its top speed is 2.0 m/s.
 
 **The floor plan, from MiR's own figures** ("MiR250 Specifications", 2023-06-28):
 

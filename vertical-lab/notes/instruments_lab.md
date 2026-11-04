@@ -121,7 +121,9 @@ MX-Lab from its six hoppers; that is to be confirmed with Prof. Fang.
 - **The label insets are examples.**
   - The jar label's fields (sample ID, alloy, mass, date, lab) follow DAL's powder SOP (PR #187): "Label container
     with mixture composition and date".
-  - The QR code is a placeholder pattern, not a real code; no QR library was installed.
+  - The QR code is real and holds the label's text, one line each (the `qrcode` package, version 5, error
+    correction L, 37 × 37 modules; 3 px a module at 720p). zbar and OpenCV both read it back from the rendered
+    MP4's frames, and zbar from the GIF's too. Until round 5 it was a placeholder pattern.
   - The shipping label's addresses are placeholders.
 - **Dangerous goods: a test decides, not the alloy's name** (49 CFR 172.101; 173.124-125).
 
@@ -195,12 +197,11 @@ two things and keeps them local:
   - The CubXL's gantry, carriage and head, the electrode cap, the tips and the liquid levels all share one timeline.
     So does the packaging jar's position, tilt and spin, and the DED head with its 72 bead segments.
   - One action can then carry the head through several waypoints and pick up or set down what it carries on the way.
-- **Two wrappers on `scene.Scene`**, installed on import and keyed on the scene's name, so they touch only these
-  clips.
-  - `step` takes a camera move and that view's leader labels per action, from `CAMS` and `LABELS`.
-  - `overlay` draws the live plot or inset from `PLOTS`.
-  - The change I'd want in `tour.py` instead: `Instrument.cams`, per-action labels and an `Instrument.overlay(sc, img, s)`
-    hook passed to the Scene.
+- **The camera moves, the per-view labels and the plots go through `tour.tour_one` (round 5's fixes).** Each
+  instrument sets `Instrument.cams` (a view per action), `Instrument.step_labels` (that view's leader labels, from
+  its action on) and `Instrument.overlay` (the live plot or inset, drawn over every frame through `Scene.overlays`).
+  Until round 5 this module wrapped `scene.Scene.step` and `.overlay` on import, keyed on the scene's name. The four
+  clips render pixel-identical either way.
 - **Render on a display number of your own.** Two renders here failed with "bad X server connection" on a display
   number that had just been released. `xvfb-run --server-num=152` worked.
 
