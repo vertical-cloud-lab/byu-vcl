@@ -61,6 +61,7 @@
     1280,
     720
    ],
+   "holdout": false,
    "camera": [
     2.263403949877987,
     0.008471670113868023,
@@ -104,6 +105,7 @@
     1280,
     720
    ],
+   "holdout": false,
    "camera": [
     1.9221771986518281,
     -0.24140572469214386,
@@ -142,6 +144,43 @@
     "head top (1)": 4.2,
     "head top (2)": 1.3,
     "head top (3)": 7.7
+   }
+  },
+  "sop3_0000_head_down": {
+   "source": "https://youtu.be/eLrJxxBAcnE?t=0 (Alumina polish part 3, 0:00: polishing, head down)",
+   "size": [
+    1280,
+    720
+   ],
+   "holdout": true,
+   "camera": [
+    2.3376875525308485,
+    -0.4240412791261574,
+    0.3499291815426987,
+    -140.0265142989331,
+    54.910581995292624,
+    1046.6610626727097,
+    6.928881547775256,
+    0.0008184351564905902
+   ],
+   "focal_px": 1021.4,
+   "k1": 0.0008,
+   "rms_px_camera_only": 11.44,
+   "rms_px": 11.76,
+   "residual_px": {
+    "screen tl": 10.0,
+    "screen tr": 2.8,
+    "screen bl": 6.3,
+    "screen br": 15.2,
+    "estop": 10.6,
+    "platen edge (1)": 7.0,
+    "platen edge (2)": 1.0,
+    "platen edge (3)": 6.7,
+    "platen edge (4)": 2.4,
+    "platen edge (5)": 19.5,
+    "platen edge (6)": 27.4,
+    "head left (1)": 4.4,
+    "head left (2)": 7.5
    }
   }
  }

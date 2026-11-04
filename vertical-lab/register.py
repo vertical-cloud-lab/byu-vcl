@@ -9,7 +9,8 @@ A view is ``refs/<key>/<name>.json`` next to its frame ``refs/<key>/<name>.jpg``
      "video": "nfnl0aPJPZc", "t": 219,                    # optional: lets a missing frame be fetched (frames.py)
      "pose": {"head": 0.0},                               # joint values of the model in that frame (Instrument.joints)
      "points": {"screen tl": [771, 548], ...},            # a point of the model at pixel (u, v)
-     "curves": {"platen edge": [[402, 455], ...], ...}}   # pixels anywhere along a circle or a line of the model
+     "curves": {"platen edge": [[402, 455], ...], ...},   # pixels anywhere along a circle or a line of the model
+     "holdout": false}                                    # true: a check, left out of the fit of the model's dimensions
 
 Frames from the lab's own videos are committed; frames from makers' and others' videos are not (refs/.gitignore),
 as vendor CAD is not: give their "video" and "t" and the frame is fetched through the Pi when it is missing.
@@ -179,6 +180,8 @@ def solve(key: str) -> dict:
         views[p.stem] = v
     cams = {name: fit_camera(fn(params, v.get("pose", {})), v, v["size"]) for name, v in views.items()}
     before = {n: rms(residuals(cams[n], fn(params, v.get("pose", {})), v, v["size"])) for n, v in views.items()}
+    held = {n: v for n, v in views.items() if v.get("holdout")}
+    views = {n: v for n, v in views.items() if not v.get("holdout")}
     fitted = dict(params)
     if free or len(set(group(v) for v in views.values())) < len(views):
         # views from the same video share the lens: one focal length and one radial term per video
@@ -213,6 +216,9 @@ def solve(key: str) -> dict:
         sol = least_squares(f, np.clip(x, lo + 1e-9, hi - 1e-9), bounds=(lo, hi), x_scale="jac", loss="soft_l1",
                             f_scale=6.0, max_nfev=20000)
         fitted, cams = unpack(sol.x)
+    for n, v in held.items():                       # the checks: only their own camera is fitted, to the result
+        cams[n] = fit_camera(fn(fitted, v.get("pose", {})), v, v["size"])
+    views.update(held)
     out = {"key": key, "free": free, "params": {k: round(float(fitted[k]), 1) for k in free},
            "start": {k: params[k] for k in free}, "views": {}}
     for name, v in views.items():
@@ -220,7 +226,7 @@ def solve(key: str) -> dict:
         r = residuals(c, fn(fitted, v.get("pose", {})), v, v["size"]).reshape(-1, 2)
         names = list(v.get("points", {})) + [f"{n} ({i + 1})" for n, uvs in v.get("curves", {}).items()
                                              for i in range(len(uvs))]
-        out["views"][name] = {"source": v.get("source", ""), "size": list(v["size"]),
+        out["views"][name] = {"source": v.get("source", ""), "size": list(v["size"]), "holdout": bool(v.get("holdout")),
                               "camera": [float(t) for t in c], "focal_px": round(math.exp(c[6]), 1),
                               "k1": round(float(c[7]), 4), "rms_px_camera_only": round(before[name], 2),
                               "rms_px": round(rms(r), 2),
@@ -415,7 +421,8 @@ if __name__ == "__main__":
         res = solve(key)
         print(json.dumps({k: res[k] for k in ("free", "start", "params")}, indent=1))
         for n, v in res["views"].items():
-            print(f"{n}: rms {v['rms_px_camera_only']} -> {v['rms_px']} px, f {v['focal_px']}, k1 {v['k1']}")
+            tag = " (held out of the fit)" if v.get("holdout") else ""
+            print(f"{n}{tag}: rms {v['rms_px_camera_only']} -> {v['rms_px']} px, f {v['focal_px']}, k1 {v['k1']}")
             worst = sorted(v["residual_px"].items(), key=lambda kv: -kv[1])[:6]
             print("   worst:", ", ".join(f"{a} {b}" for a, b in worst))
     elif cmd == "draw":
