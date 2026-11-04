@@ -96,7 +96,7 @@ None of these are the makers' published arrangements. They are our design choice
 - the gripper may touch what it is picking up or putting down, within 4 s of the grasp or the release;
 - a held part may touch where it came from and where it goes.
 
-The first full draft had 245 frames in collision.
+The first draft had 245 frames in collision in its polisher steps alone, and the first full draft had 132 of 1875.
 
 It took these changes to get there:
 - The holder's rest and the caddy moved behind the arm. Beside the arm's base, the upper arm swept through them.
