@@ -37,6 +37,7 @@ MATERIALS = {
     "inst_black": (0.09, 0.09, 0.10, 1.0, 0.30),
     "inst_blue": (0.10, 0.36, 0.66, 1.0, 0.30),
     "inst_navy": (0.10, 0.18, 0.36, 1.0, 0.30),
+    "rigaku_navy": (0.13, 0.12, 0.25, 1.0, 0.35),       # the MiniFlex's dark navy front
     "inst_red": (0.78, 0.12, 0.12, 1.0, 0.30),
     "inst_green": (0.20, 0.62, 0.32, 1.0, 0.30),
     "inst_orange": (0.95, 0.50, 0.10, 1.0, 0.30),
@@ -101,6 +102,30 @@ def _R(axis, deg, pivot=(0, 0, 0)) -> np.ndarray:
     return _T(p) @ m @ _T(-p)
 
 
+def chain_params(s, x_fixed, x_end0, travel, straight, radius, z_low) -> tuple:
+    """A link `s` mm along a horizontal energy chain from its fixed end at x_fixed: the chain lies in its lower run
+    from there towards -x, bends up round radius `radius` and comes back along the upper run to its moving end, at
+    x_end0 + travel * v. straight is the chain's length less its bend; z_low the lower run's centre line."""
+    return (float(s), float(x_fixed), float(x_end0), float(travel), float(straight), float(radius), float(z_low))
+
+
+def chain_pose(params, v: float) -> np.ndarray:
+    """The 4x4 pose (link frame: x along the chain, z out of the bend) of a link at v. The bend sits where the two runs
+    meet, (x_fixed + x_end - straight) / 2, so it moves at half the carriage's speed."""
+    s, xf, xe0, travel, straight, r, z_low = params
+    xe = xe0 + travel * v
+    xl = (xf + xe - straight) / 2.0
+    a = xf - xl                                          # the lower run
+    if s <= a:
+        x, z, ang = xf - s, z_low, 0.0
+    elif s <= a + math.pi * r:
+        phi = (s - a) / r
+        x, z, ang = xl - r * math.sin(phi), z_low + r - r * math.cos(phi), phi
+    else:
+        x, z, ang = xl + (s - a - math.pi * r), z_low + 2 * r, math.pi
+    return _T((x, 0.0, z)) @ _R((0, 1, 0), math.degrees(ang))
+
+
 @dataclass
 class Joint:
     """How a piece moves with a value v (0 = as modelled, 1 = the far end of its travel).
@@ -110,6 +135,8 @@ class Joint:
     follow: a linkage driven by another piece's displacement d, which is v * vec or, given a path, the path's offset
     at v (as slide and path move that piece): the matrix is I + sum_k d[k] * jac[k], jac being three 3x4 matrices,
     the motion per mm of d along x, y and z. For small motions, such as flexure legs and levers (openflexure.py).
+    chain: one link of an energy chain whose moving end rides a carriage (v as the carriage's slide), path =
+    chain_params(...): the link lies in the lower run, rolls round the bend or rides the upper run (rail()).
     A piece with a parent rides on that piece."""
     kind: str
     vec: tuple = (0.0, 0.0, 0.0)
@@ -122,6 +149,8 @@ class Joint:
     jac: tuple = ()                  # follow: three 3x4 matrices
 
     def matrix(self, v: float) -> np.ndarray:
+        if self.kind == "chain":
+            return chain_pose(self.path, v) @ np.linalg.inv(chain_pose(self.path, 0.0))
         if self.kind == "follow":
             d = Joint("path", path=self.path).matrix(v)[:3, 3] if self.path else np.asarray(self.vec, float) * v
             m = np.eye(4)
@@ -497,66 +526,136 @@ def instron_small() -> Instrument:
 
 
 # ===================================================================================================== XRD
-# Rigaku MiniFlex (6th generation, "MiniFlex 6G"): 620 W x 722 H x 460 D mm, ~80 kg, vertical goniometer of 150 mm
-# radius, theta-2theta (Rigaku MiniFlex 6G sheet; Rigaku brochure). The layout is Rigaku's own outline drawing in the
-# brochure: a base with the control panel, the upper housing with a full-height front door between two side posts
-# (vertical handle at its left, so it hinges on the right), a raised cover on top, and a bulge on each side.
-XRD = dict(W=620.0, D=456.0, H=722.0, body_w=566.0, body_d=395.0, feet=23.0, base_top=297.0, door_top=611.0,
-           upper_top=692.0, door_x=199.0, door_t=59.0, gonio_r=150.0, gonio_z=440.0)
+# Rigaku MiniFlex, 6th generation ("MiniFlex 6G", sold since 2023 and so what a lab buying one now gets; the MiniFlex
+# 600 it replaced was the 5th): 620 W x 722 H x 460 D mm, ~80 kg; a vertical goniometer of 150 mm radius, theta-2theta;
+# a 600 W tube (Rigaku's MiniFlex 6G sheet; its brochure's outline drawing gives 456 mm deep, used here). The front's
+# proportions are fitted with register.py (refs/xrd/) to frames of Rigaku's own 6G launch video (8tI9uFKevr0): a
+# light-grey body split at the button strip into a base and an upper housing, with rounded vertical edges; a dark navy
+# front of three parts, the "Rigaku" band at the top, the door (a vertical handle at its left, hinged on its right,
+# "MiniFlex" low on it) and the button strip under it (radiation label, DOOR LOCK, a lamp, the HV key, power off and
+# on, the e-stop); a bulge on each side of the upper housing; the orange X-ray lamp at the top of the front, over the
+# Rigaku band; vents low on the sides. The top is flat: neither 6G view shows the raised cover this model used to
+# have, and without one the published 722 mm and 620 mm agree with the frames. Inside (that video, and the MiniFlex
+# 600's, which the 6G kept): the tube's white housing with a green lamp on the left, the goniometer in the middle, the
+# navy D/teX detector on the 2theta arm on the right; the door's inside is light grey.
+XRD = dict(W=620.0, D=456.0, H=722.0, body_w=560.2, body_d=395.0, feet=23.0, seam_z=305.3, strip_z0=210.4,
+           door_top=628.2, panel_top=707.6, panel_x=199.6, bulge_z0=353.5, bulge_z1=554.7, bulge_y0=92.0,
+           bulge_y1=216.0, estop_x=153.0, estop_z=254.8, handle_x=-179.4, handle_z0=368.4, handle_z1=467.4,
+           door_t=30.0, door_deg=100.0, gonio_r=150.0, gonio_z=450.0)
+FOOT_IN = 60.0                  # the feet's centres, in from the body's sides and front (the product shot)
+STRIP_BUTTONS = ((-0.75, 34, "inst_yellow", "DOOR LOCK"), (-0.48, 20, "inst_white", "lamp"),
+                 (-0.21, 24, "chrome", "HV key"), (0.08, 32, "inst_offwhite", "power off"),
+                 (0.35, 32, "inst_green", "power on"))   # (x / panel_x, diameter, material, name), left to right
+
+
+def _miniflex(p) -> dict:
+    """The positions the model and its anchors share."""
+    bw, bd = p["body_w"], p["body_d"]
+    yf, yb = -bd / 2, bd / 2
+    return dict(bw=bw, bd=bd, yf=yf, yb=yb, gy=yf + p["door_t"] + 150.0, gz=p["gonio_z"],
+                hinge=(p["panel_x"], yf - 3.0))           # the door's right front edge
+
+
+def _door_pt(p, pt, v) -> tuple:
+    """A point on the door, swung open by v (0 shut, 1 open) about its right-hand hinge."""
+    hx, hy = _miniflex(p)["hinge"]
+    t = math.radians(p["door_deg"] * v)
+    x, y = pt[0] - hx, pt[1] - hy
+    return (hx + x * math.cos(t) - y * math.sin(t), hy + x * math.sin(t) + y * math.cos(t), pt[2])
+
+
+def xrd_anchors(p, pose=None) -> dict:
+    """Named points of the model, for register.py; the handle follows pose["door"] (0 shut, 1 open)."""
+    g = _miniflex(p)
+    bw, yf, H, px, W = g["bw"], g["yf"], p["H"], p["panel_x"], p["W"]
+    xb = (bw + W) / 4                                          # the bulges' mid-thickness
+    v = float((pose or {}).get("door", 0.0))
+    a = {"front top left": (-bw / 2, yf, H), "front top right": (bw / 2, yf, H),
+         "front bottom left": (-bw / 2, yf, p["feet"]), "front bottom right": (bw / 2, yf, p["feet"]),
+         "seam left": (-bw / 2, yf, p["seam_z"]), "seam right": (bw / 2, yf, p["seam_z"]),
+         "panel tl": (-px, yf, p["panel_top"]), "panel tr": (px, yf, p["panel_top"]),
+         "band bl": (-px, yf, p["door_top"]), "band br": (px, yf, p["door_top"]),
+         "strip tl": (-px, yf, p["seam_z"]), "strip tr": (px, yf, p["seam_z"]),
+         "strip bl": (-px, yf, p["strip_z0"]), "strip br": (px, yf, p["strip_z0"]),
+         "estop": (p["estop_x"], yf - 28.0, p["estop_z"]), "lamp": (0.0, yf, H - 7.0),
+         "foot left": (-(bw / 2 - FOOT_IN), yf + FOOT_IN, 0.0), "foot right": (bw / 2 - FOOT_IN, yf + FOOT_IN, 0.0),
+         "bulge left top": (-xb, yf + p["bulge_y0"], p["bulge_z1"]),
+         "bulge left bottom": (-xb, yf + p["bulge_y0"], p["bulge_z0"]),
+         "bulge right top": (xb, yf + p["bulge_y0"], p["bulge_z1"]),
+         "bulge right bottom": (xb, yf + p["bulge_y0"], p["bulge_z0"]),
+         "handle top": _door_pt(p, (p["handle_x"], yf - 26.0, p["handle_z1"]), v),
+         "handle bottom": _door_pt(p, (p["handle_x"], yf - 26.0, p["handle_z0"]), v)}
+    return a
 
 
 def xrd() -> Instrument:
     p = XRD
-    inst = Instrument("xrd", "Benchtop X-ray diffractometer", "Rigaku MiniFlex 600", (p["W"], p["D"], p["H"]),
-                      "Rigaku MiniFlex brochure (outline drawings: 620 W x 456 D x 722 H mm with the feet and the top "
-                      "hump, 80 kg; 150 mm vertical goniometer, theta-2theta) and the MiniFlex 6G sheet")
-    bw, bd = p["body_w"], p["body_d"]
-    yf, yb = -bd / 2, bd / 2
-    gy = yf + p["door_t"] + 150.0                 # goniometer centre, behind the door
-    gz = p["gonio_z"]
+    g = _miniflex(p)
+    inst = Instrument("xrd", "Benchtop X-ray diffractometer", "Rigaku MiniFlex (6th generation)",
+                      (p["W"], p["D"], p["H"]),
+                      "Rigaku MiniFlex 6G sheet and brochure (620 W x 456 D x 722 H mm, 80 kg; 150 mm vertical "
+                      "goniometer, theta-2theta, 600 W); the front fitted with register.py to Rigaku's 6G launch video")
+    bw, bd, yf, yb, gy, gz = g["bw"], g["bd"], g["yf"], g["yb"], g["gy"], g["gz"]
+    H, px, seam, W = p["H"], p["panel_x"], p["seam_z"], p["W"]
     body = _piece(inst, "body")
     feet = None
     for sx in (-1, 1):
         for sy in (-1, 1):
-            f = cyl(40, p["feet"], x=sx * (bw / 2 - 45), y=sy * (bd / 2 - 45))
+            f = cyl(40, p["feet"], x=sx * (bw / 2 - FOOT_IN), y=-sy * (bd / 2 - FOOT_IN))
             feet = f if feet is None else feet.union(f)
-    body.add("feet", feet, "inst_dark")
-    body.add("base", box(-bw / 2, yf, p["feet"], bw / 2, yb, p["base_top"]), "inst_white")
-    body.add("control panel", box(-p["door_x"], yf - 3, 199, p["door_x"], yf, 290), "inst_light")
-    for i, x in enumerate((-160, -110, -60, 0, 50)):
-        body.add(f"button {i + 1}", _ycyl(16 if i != 1 else 10, 6, x=x, y=yf - 9, z=245), "inst_grey")
-    body.add("door lock", _ycyl(24, 8, x=110, y=yf - 11, z=245), "inst_yellow")
-    body.add("HV key", _ycyl(14, 10, x=-110, y=yf - 13, z=245), "chrome")
-    body.add("emergency stop", _ycyl(34, 10, x=160, y=yf - 13, z=245), "inst_red")
-    body.add("rear fittings", box(-120, yb, 80, 120, yb + 30, 200), "inst_grey")
-    # the upper housing: posts either side of the door, the logo band over it, the chamber behind it
-    hood = _piece(inst, "hood")
-    upper = box(-bw / 2, yf, p["base_top"], bw / 2, yb, p["upper_top"])
-    upper = upper.cut(box(-p["door_x"], yf - 1, p["base_top"], p["door_x"], yf + p["door_t"], p["door_top"]))
-    cx0, cz1 = bw / 2 - 20, p["upper_top"] - 15      # the chamber behind the door frame: wider and taller than the door
-    upper = upper.cut(box(-cx0, yf + p["door_t"] - 1, p["base_top"] + 6, cx0, yb - 30, cz1))
-    hood.add("upper housing", upper, "inst_white")
-    hood.add("logo band", box(-p["door_x"], yf - 2, p["door_top"] + 12, p["door_x"], yf, p["upper_top"] - 12),
-             "inst_offwhite")
-    hood.add("logo", box(-80, yf - 3, 655, 80, yf - 2, 672), "inst_grey")
-    top = cq.Workplane("YZ").polyline([(yf + 95, 0), (yf + 215, 0), (yf + 205, 30), (yf + 105, 30)]).close() \
-        .extrude(2 * 188).translate((-188, 0, p["upper_top"]))
-    hood.add("top cover", top, "inst_light")
-    hood.add("X-ray lamp", cyl(22, 14, x=230, y=yf + 160, z=p["upper_top"]), "inst_orange")
+    body.add("feet", feet, "inst_black")
+    body.add("base", box(-bw / 2, yf, p["feet"], bw / 2, yb, seam).edges("|Z").fillet(12), "inst_white")
+    # the button strip: the bottom of the navy front, on the base, its lower corners rounded
+    body.add("button strip", box(-px, yf - 3, p["strip_z0"], px, yf + 1, seam - 1).edges("|Y").edges("<Z")
+             .fillet(14), "rigaku_navy")
+    sz = p["estop_z"]
+    for k, (fx, d, mat, nm) in enumerate(STRIP_BUTTONS):
+        body.add(nm, _ycyl(d, 8, x=fx * px, y=yf - 11, z=sz), mat)
+    body.add("HV key bow", box(-0.21 * px - 4, yf - 14, sz - 46, -0.21 * px + 4, yf - 10, sz - 12), "chrome")
+    body.add("radiation label", box(-0.93 * px - 14, yf - 4, sz - 25, -0.93 * px + 14, yf - 3, sz + 25),
+             "inst_yellow")
+    ex = p["estop_x"]
+    body.add("e-stop collar", _ycyl(62, 10, x=ex, y=yf - 11, z=sz), "inst_yellow")
+    body.add("emergency stop", _ycyl(50, 30, x=ex, y=yf - 28, z=sz), "inst_red")      # a mushroom, well proud
+    # vents low on both sides of the base, near the front
     for sx in (-1, 1):
-        w = box(min(sx * bw / 2, sx * (bw / 2 + 27)), yf + 92, 309, max(sx * bw / 2, sx * (bw / 2 + 27)), yf + 216, 543)
-        hood.add(f"side bulge {'LR'[sx > 0]}", w.edges("|Y").chamfer(12), "inst_light")
-    # inside: the goniometer's back plate, the fixed X-ray tube on the left, the stage and the detector arm
+        for i in range(9):
+            y = yf + 50 + 12 * i
+            body.add(f"vent {'LR'[sx > 0]}{i + 1}", box(sx * bw / 2 - 1.5, y, 60, sx * bw / 2 + 1.5, y + 5, 230),
+                     "inst_grey")
+    body.add("rear fittings", box(-120, yb, 80, 120, yb + 30, 200), "inst_grey")
+    # the upper housing: the door's recess and the opening behind it, the chamber; the Rigaku band over the door
+    hood = _piece(inst, "hood")
+    dt = p["door_t"]
+    upper = box(-bw / 2, yf, seam, bw / 2, yb, H).edges("|Z").fillet(12)
+    upper = upper.cut(box(-px, yf - 1, seam, px, yf + dt, p["door_top"]))
+    upper = upper.cut(box(-px + 25, yf + dt - 1, seam + 40, px - 30, yf + dt + 16, p["door_top"] - 20))
+    cx0, cz1 = bw / 2 - 25, H - 20                               # the chamber: wider and taller than the opening
+    upper = upper.cut(box(-cx0, yf + dt + 15, seam + 6, cx0, yb - 30, cz1))
+    hood.add("upper housing", upper, "inst_white")
+    hood.add("Rigaku band", box(-px, yf - 3, p["door_top"], px, yf + 1, p["panel_top"]), "rigaku_navy")
+    lz = p["door_top"] + 0.54 * (p["panel_top"] - p["door_top"])
+    hood.add("Rigaku logo", box(-96, yf - 4, lz - 16, 96, yf - 3, lz + 16), "inst_light")
+    hood.add("X-ray lamp", box(-28, yf - 2, H - 12, 28, yf + 14, H - 1), "inst_orange")
+    lit = _piece(inst, "glow")                                   # the lamp lit while the X-rays are on
+    lit.add("X-ray lamp lit", box(-29, yf - 3, H - 13, 29, yf + 15, H), "glow")
+    for sx in (-1, 1):
+        x0, x1 = sorted((sx * (bw / 2 - 5), sx * W / 2))
+        w = box(x0, yf + p["bulge_y0"], p["bulge_z0"], x1, yf + p["bulge_y1"], p["bulge_z1"])
+        hood.add(f"side bulge {'LR'[sx > 0]}", w.edges("|Y").fillet(9), "inst_white")
+    # inside: the goniometer's back plate, the tube's housing on the left, the stage and the detector arm
     inner = _piece(inst, "chamber")
-    inner.add("chamber lining", box(-cx0, yb - 34, p["base_top"] + 6, cx0, yb - 30, cz1).union(
-        box(-cx0, yf + p["door_t"], p["base_top"] + 6, cx0, yb - 30, p["base_top"] + 10)), "inst_dark")
+    inner.add("chamber lining", box(-cx0, yb - 34, seam + 6, cx0, yb - 30, cz1).union(
+        box(-cx0, yf + dt + 15, seam + 6, cx0, yb - 30, seam + 10)), "inst_dark")
     inner.add("goniometer", _ycyl(250, 12, y=yb - 46, z=gz), "inst_grey")
     # the hub is behind the sample (it used to ring the stage, in the beam's way); the stage turns on a theta shaft
     inner.add("goniometer hub", _ycyl(70, yb - 46 - (gy + 60), y=gy + 60, z=gz), "aluminium")
     tube_x0 = -p["gonio_r"]
-    inner.add("X-ray tube", _xcyl(64, 170, x=tube_x0 - 140, y=gy, z=gz), "inst_black")
-    inner.add("tube window", _xcyl(30, 30, x=tube_x0 + 30, y=gy, z=gz), "steel")
-    inner.add("divergence slit", box(tube_x0 + 60, gy - 18, gz - 18, tube_x0 + 66, gy + 18, gz + 18), "brass")
+    inner.add("X-ray tube housing", box(tube_x0 - 105, gy - 45, gz - 55, tube_x0 + 10, gy + 45, gz + 50), "inst_white")
+    inner.add("shutter lamp", box(tube_x0 - 60, gy - 47, gz - 30, tube_x0 - 30, gy - 45, gz - 20), "inst_green")
+    inner.add("tube label", box(tube_x0 - 20, gy - 47, gz + 5, tube_x0 + 2, gy - 45, gz + 30), "inst_yellow")
+    inner.add("tube window", _xcyl(30, 30, x=tube_x0 + 10, y=gy, z=gz), "steel")
+    inner.add("divergence slit", box(tube_x0 + 40, gy - 18, gz - 18, tube_x0 + 46, gy + 18, gz + 18), "brass")
     stage = _piece(inst, "stage")
     stage.add("sample stage", box(-35, gy - 30, gz - 16, 35, gy + 30, gz - 3), "aluminium")
     stage.add("theta shaft", _ycyl(24, 30, y=gy + 30, z=gz), "steel")
@@ -565,128 +664,257 @@ def xrd() -> Instrument:
     holder.add("powder", box(-10, -10, 2.5, 10, 10, 3.0), "powder")
     det = _piece(inst, "detector")
     r = p["gonio_r"]
-    # the D/teX head at the 150 mm circle on its 2theta arm, which turns about the axis behind the beam plane
+    # the D/teX head (navy, as Rigaku's) at the 150 mm circle on its 2theta arm, which turns about the axis behind the
+    # beam plane
     d_shape = box(r - 10, gy - 30, -28, r + 60, gy + 31, 28).union(_xcyl(36, 30, x=r - 40, y=gy, z=0)).union(
         box(14, gy + 31, -12, r + 20, gy + 45, 12))
     d_shape = d_shape.rotate((0, gy, 0), (0, gy + 1, 0), -10.0).translate((0, 0, gz))    # 2theta = 10 deg
-    det.add("D/teX detector", d_shape, "inst_dark")
+    det.add("D/teX detector", d_shape, "rigaku_navy")
+    # the door: light grey, its outside navy; the handle at its left, "MiniFlex" low on it
     door = _piece(inst, "door")
-    door.add("door", box(-p["door_x"] + 1, yf, p["base_top"] + 1, p["door_x"] - 1, yf + p["door_t"] - 2,
-                         p["door_top"] - 1), "inst_navy")
-    door.add("door logo", box(-40, yf - 1, 340, 70, yf, 352), "inst_light")
-    door.add("door handle", box(-178, yf - 28, 353, -166, yf - 16, 461).union(
-        box(-178, yf - 28, 353, -166, yf, 365)).union(box(-178, yf - 28, 449, -166, yf, 461)), "chrome")
+    dz0, dz1 = seam + 1, p["door_top"] - 1
+    door.add("door", box(-px + 1, yf - 1, dz0, px - 1, yf + dt - 2, dz1), "inst_light")
+    door.add("door front", box(-px + 1, yf - 3, dz0, px - 1, yf - 1, dz1), "rigaku_navy")
+    door.add("MiniFlex label", box(-58, yf - 4, seam + 14, 58, yf - 3, seam + 34), "inst_light")   # centred, low
+    hx, hz0, hz1 = p["handle_x"], p["handle_z0"], p["handle_z1"]
+    door.add("door handle", box(hx - 5, yf - 29, hz0, hx + 5, yf - 23, hz1).union(
+        box(hx - 5, yf - 29, hz0, hx + 5, yf - 3, hz0 + 10)).union(box(hx - 5, yf - 29, hz1 - 10, hx + 5, yf - 3, hz1)),
+        "chrome")
     inst.joints = {
-        "door": Joint("hinge", axis=(0, 0, 1), pivot=(p["door_x"], yf, 0), deg=100.0),
+        "door": Joint("hinge", axis=(0, 0, 1), pivot=(g["hinge"][0], g["hinge"][1], 0), deg=p["door_deg"]),
         "stage": Joint("hinge", axis=(0, 1, 0), pivot=(0, gy, gz), deg=-40.0),
-        # it waits clear of the door's swing and comes in through the doorway, at the goniometer's height
+        # it waits clear of the door's swing and comes in through the doorway by hand, at the goniometer's height
         "holder": Joint("path", parent="stage", path=((-200, -520, gz + 60), (0, yf - 40, gz + 40),
                                                       (0, gy - 60, gz - 3 + 40), (0, gy, gz - 3))),
         "detector": Joint("hinge", axis=(0, 1, 0), pivot=(0, gy, gz), deg=-80.0),
+        "glow": Joint("fade"),
     }
     inst.actions = [
-        ("The door unlocks and swings open on its right-hand hinge, showing the 150 mm vertical goniometer.", 1.6,
-         {"door": (0.0, 1.0), "holder": (0.0, 0.0)}),
-        ("A powder sample on its holder goes onto the stage at the goniometer's centre.", 2.0, {"holder": (0.0, 1.0)}),
-        ("Door closed and locked: the X-ray interlock lets the 600 W tube switch on.", 1.4, {"door": (1.0, 0.0)}),
+        ("DOOR LOCK pressed, the door swings open on its right-hand hinge, past square, showing the 150 mm vertical "
+         "goniometer.", 1.6, {"door": (0.0, 1.0), "holder": (0.0, 0.0)}),
+        ("A powder sample on its holder goes in by hand onto the stage at the goniometer's centre.", 2.0,
+         {"holder": (0.0, 1.0)}),
+        ("Door closed and locked: the X-ray interlock lets the 600 W tube switch on; the lamp on top lights.", 1.4,
+         {"door": (1.0, 0.0), "glow": (0.0, 1.0)}),
         ("Scan, drawn see-through: the tube stays put, the sample tilts by theta and the detector sweeps 2theta "
          "from 10 to 90 degrees.", 3.2, {"~hood": (0.0, 1.0), "~door": (0.0, 1.0), "stage": (0.0, 1.0),
                                          "detector": (0.0, 1.0)}),
-        ("The detector parks and the door opens again.", 1.8,
+        ("X-rays off, the detector parks and the door opens again.", 1.8,
          {"stage": (1.0, 0.0), "detector": (1.0, 0.0), "~hood": (1.0, 0.0), "~door": (1.0, 0.0),
-          "door": (0.0, 1.0)}),
+          "door": (0.0, 1.0), "glow": (1.0, 0.0)}),
         ("The sample comes out.", 1.4, {"holder": (1.0, 0.0)}),
         ("Door shut. At 722 mm tall the MiniFlex just fits a tray: Kardex allows 727.5 mm.", 1.4,
          {"door": (1.0, 0.0)}),
     ]
-    inst.labels = [("X-ray tube", (-200, gy, gz + 30), (0.12, 0.30)), ("detector", (150, gy, gz + 60), (0.84, 0.30)),
-                   ("front door", (-170, yf - 30, 520), (0.14, 0.62))]
+    inst.labels = [("X-ray tube", (tube_x0 - 50, gy, gz + 50), (0.12, 0.30)),
+                   ("detector", (150, gy, gz + 60), (0.84, 0.30)),
+                   ("front door", (hx, yf - 30, hz1), (0.14, 0.62))]
+    inst.anchors = xrd_anchors(p)
     inst.cam = (0.75, -1.8, 0.7)
     return inst
 
 
+# register.py: the MiniFlex's anchors, the front's proportions fitted to the 6G frames (refs/xrd/), and what keeps a
+# fitted model buildable: the panel inside the body, the band, door and strip in order from the top, the e-stop on the
+# strip, the handle on the door.
+ANCHORS["xrd"] = (XRD, xrd_anchors)
+FREE["xrd"] = ["body_w", "panel_x", "panel_top", "door_top", "seam_z", "strip_z0", "bulge_z0", "bulge_z1", "estop_x",
+               "estop_z", "handle_x", "handle_z0", "handle_z1"]
+CHECKS["xrd"] = lambda p: [p["body_w"] / 2 - p["panel_x"] - 15, p["H"] - p["panel_top"] - 8,
+                           p["panel_top"] - p["door_top"] - 40, p["door_top"] - p["seam_z"] - 200,
+                           p["seam_z"] - p["strip_z0"] - 50, p["strip_z0"] - p["feet"] - 80,
+                           p["bulge_z1"] - p["bulge_z0"] - 80, p["estop_z"] - p["strip_z0"] - 25,
+                           p["seam_z"] - p["estop_z"] - 25, p["panel_x"] - p["estop_x"] - 25,
+                           p["handle_z1"] - p["handle_z0"] - 50, p["handle_x"] + p["panel_x"] - 10,
+                           p["handle_z0"] - p["seam_z"] - 20, p["door_top"] - p["handle_z1"] - 20,
+                           p["door_top"] - 60 - p["gonio_z"], p["gonio_z"] - p["seam_z"] - 80]
+
+
 # ===================================================================================================== SEM
-# Hitachi TM4000PlusII tabletop SEM: main unit 330 W x 614 D x 547 H mm (Hitachi High-Tech); the look from Hitachi's
-# product photo: white body and top hood, a dark blue front with the EVAC/AIR button, and the sample chamber's drawer
-# below it with a black handle. The stage rides on the drawer and comes out with it. EDS and EBSD detectors mount on
-# the chamber's sides; their electronics stand beside it, the diaphragm pump behind.
-SEM = dict(W=330.0, D=614.0, H=547.0, feet=25.0, front_z0=30.0, drawer_top=250.0, blue_top=430.0, draw=170.0)
+# Hitachi TM4000PlusII tabletop SEM: main unit 330 W x 614 D x 547 H mm, 54 kg (Hitachi High-Tech). The proportions
+# are fitted with register.py (refs/sem/) to Hitachi's product shot of the TM4000II / TM4000PlusII (the opening of
+# its own launch video) and to the Canadian Centre for Electron Microscopy's TM4000Plus videos, whose body is the same.
+# Look, from those: a white body whose top front edge rolls over in a large radius, with a raised strip along the
+# middle of the top that ramps down at its front end; the top cover's seam sweeps down each side from the back of the
+# top to the front; two vent grilles on the left side. The front is a dark navy panel set into a white frame: a lit
+# strip between "EVAC" and "AIR" along its top, "TM4000Plus", the II badge, an icon and HITACHI, and the round
+# EVAC/AIR button at the right. Below it the sample chamber's door, a navy block standing a little proud of the frame
+# with a black bar handle on two posts near its top. The door is a drawer: pulled straight out by the handle once
+# AIR has vented the chamber, it brings the motorized X-Y stage out on its inside face, and the sample, on a
+# cylindrical holder whose height is set on a gauge at the bench, drops into the socket in the middle of the stage
+# (CCEM, "Loading the specimen"; Microscopy Australia's workflow video). EDS and EBSD detectors mount on the chamber's
+# sides; their electronics stand beside it, the diaphragm pump behind.
+SEM = dict(W=330.0, D=614.0, H=547.0, feet=12.0, front_z0=30.0, drawer_top=236.0, blue_top=417.0, draw=170.0,
+           frame_w=35.0, recess=20.0, proud=6.0, nose_r=80.0, cap_z=400.0, hump_w=151.0, hump_h=31.0, hump_y0=59.0,
+           hump_run=15.0, hump_len=200.0, door_w=201.0, btn_x=107.0, btn_z=277.0, badge_z=320.0, handle_z=212.0,
+           handle_w=149.0)
+
+
+def _tm4000(p) -> dict:
+    """The positions the model and its anchors share."""
+    W, D, H = p["W"], p["D"], p["H"]
+    yf = -D / 2
+    xb = W / 2 - p["frame_w"]                      # the navy recess's sides
+    Ht, r, y0 = H - p["hump_h"], p["nose_r"], p["hump_y0"]
+    return dict(W=W, D=D, H=H, yf=yf, yb=D / 2, Ht=Ht, xb=xb, xd=p["door_w"] / 2, yp=yf + p["recess"],
+                ydf=yf - p["proud"], ys=yf + 130.0,                                        # ys: the stage's socket
+                zh=Ht - r + math.sqrt(max(r * r - (r - y0) ** 2, 0.0)))   # the rolled edge's top where the wedge stands
+
+
+def sem_anchors(p, pose=None) -> dict:
+    """Named points and lines of the model, for register.py; the door follows pose["drawer"] (0 in, 1 out)."""
+    g = _tm4000(p)
+    W, H, yf, yb, Ht, xb, xd = g["W"], g["H"], g["yf"], g["yb"], g["Ht"], g["xb"], g["xd"]
+    yd = g["ydf"] - p["draw"] * float((pose or {}).get("drawer", 0.0))
+    z0, hx, hy, hw = p["feet"], p["handle_w"] / 2, yf + p["hump_y0"], p["hump_w"] / 2
+    a = {"blue tl": (-xb, yf, p["blue_top"]), "blue tr": (xb, yf, p["blue_top"]),
+         "button": (p["btn_x"], g["yp"] - 4, p["btn_z"]), "badge": (0.0, g["yp"], p["badge_z"]),
+         "drawer tl": (-xd, yd, p["drawer_top"]), "drawer tr": (xd, yd, p["drawer_top"]),
+         "drawer bl": (-xd, yd, p["front_z0"]), "drawer br": (xd, yd, p["front_z0"]),
+         "handle l": (-hx, yd - 26, p["handle_z"]), "handle r": (hx, yd - 26, p["handle_z"]),
+         "wedge tl": (-hw, hy + p["hump_run"], H), "wedge tr": (hw, hy + p["hump_run"], H),
+         "wedge bl": (-hw, hy, g["zh"]), "wedge br": (hw, hy, g["zh"])}
+    for s, nm in ((-1, "left"), (1, "right")):
+        x = s * W / 2
+        a.update({f"front {nm} bottom": (x, yf, z0), f"back {nm} bottom": (x, yb, z0), f"back {nm} top": (x, yb, Ht),
+                  f"front {nm} edge": ("line", (x, yf, z0 + 30), (x, yf, Ht - p["nose_r"])),
+                  f"back {nm} edge": ("line", (x, yb, z0 + 30), (x, yb, Ht - 15)),
+                  f"{nm} bottom": ("line", (x, yf + 30, z0), (x, yb - 30, z0))})
+    return a
 
 
 def sem() -> Instrument:
     p = SEM
-    inst = Instrument("sem", "Tabletop SEM with EDS and EBSD", "Hitachi TM4000PlusII", (p["W"], p["D"], p["H"]),
+    g = _tm4000(p)
+    W, D, H, yf, yb, Ht, xb, xd, yp, ydf, ys = (g[k] for k in ("W", "D", "H", "yf", "yb", "Ht", "xb", "xd", "yp",
+                                                                "ydf", "ys"))
+    inst = Instrument("sem", "Tabletop SEM with EDS and EBSD", "Hitachi TM4000PlusII", (W, D, H),
                       "Hitachi High-Tech TM4000PlusII specifications (main unit 330 W x 614 D x 547 H mm, 54 kg; "
-                      "pump 144 x 270 x 216 mm); Hitachi's EDS brochure (AZtecOne analyser 290 x 260 x 330 mm); look "
-                      "from Hitachi's photo; envelope and the 17 cm drawer travel cross-checked against ac-dev-lab "
-                      "#132's TM4000II model")
-    W, D, H = p["W"], p["D"], p["H"]
-    yf, yb = -D / 2, D / 2
+                      "pump 144 x 270 x 216 mm); Hitachi's EDS brochure (AZtecOne analyser 290 x 260 x 330 mm); "
+                      "proportions fitted with register.py to Hitachi's TM4000II/PlusII product shot and CCEM's "
+                      "TM4000Plus videos; the 17 cm drawer travel from ac-dev-lab #132's TM4000II model")
+    z0, fz, dt, bt = p["feet"], p["front_z0"], p["drawer_top"], p["blue_top"]
     body = _piece(inst, "body")
     for sx in (-1, 1):
         for sy in (-1, 1):
-            body.add(f"foot {sx}{sy}", cyl(40, p["feet"], x=sx * (W / 2 - 40), y=sy * (D / 2 - 50)), "chrome")
-    shell = rbox(W, D - 10, H - p["feet"] - 70, 18, y=5, z=p["feet"])
-    shell = shell.cut(box(-W / 2 + 32, yf - 1, p["front_z0"], W / 2 - 32, yf + 40, p["blue_top"]))
-    # the sample chamber behind the drawer, so the stage comes out of an opening rather than out of solid shell
-    chamber = box(-115, yf + 39, 45, 115, yf + 240, 235)
-    shell = shell.cut(chamber)
-    body.add("body", shell, "inst_white")
-    body.add("chamber", chamber.cut(box(-111, yf + 38, 49, 111, yf + 236, 231)), "inst_dark")
-    hood = rbox(W - 6, D - 60, 70, 30, y=20, z=H - 70).edges(">Z").fillet(20)
-    body.add("top hood", hood, "inst_offwhite")
-    body.add("hood ridge", rbox(175, D - 120, 14, 10, y=40, z=H - 14), "inst_white")
-    body.add("front panel", box(-W / 2 + 36, yf + 8, p["drawer_top"], W / 2 - 36, yf + 40, p["blue_top"]), "inst_blue")
-    body.add("status lights", box(-60, yf + 6, p["blue_top"] - 22, 60, yf + 8, p["blue_top"] - 14), "screen_on")
-    body.add("model plate", box(-70, yf + 6, p["blue_top"] - 80, 70, yf + 8, p["blue_top"] - 50), "inst_light")
-    body.add("EVAC/AIR button", _ycyl(30, 6, x=W / 2 - 55, y=yf + 2, z=p["blue_top"] - 110), "chrome")
-    body.add("drawer frame", box(-W / 2 + 32, yf + 8, p["front_z0"], W / 2 - 32, yf + 40, p["front_z0"] + 4), "inst_navy")
+            body.add(f"foot {sx}{sy}", cyl(36, z0, x=sx * (W / 2 - 35), y=sy * (D / 2 - 45)), "inst_light")
+    # the shell: its top front edge rolls over in a large radius; the navy recess, and the chamber behind the door
+    shell = box(-W / 2, yf, z0, W / 2, yb, Ht).edges("<Y and >Z").fillet(p["nose_r"])
+    try:
+        shell = shell.edges("|Z").fillet(10)
+    except Exception:                              # noqa: BLE001 - square side edges if the kernel refuses
+        pass
+    recess = box(-xb, yf - 1, fz, xb, yp, bt).edges("|Y").fillet(8)
+    chamber = box(-xd + 4, yp - 1, fz + 6, xd - 4, yf + 270, dt - 6)
+    shell = shell.cut(recess).cut(chamber)
+    # the top cover: its seam sweeps down each side from the back of the top to the front, below the recess's top
+    seam = [(yf + 0.30 * D, p["cap_z"] + 30), (yf + 0.62 * D, Ht - 45), (yb + 2, Ht - 22)]
+    above = (cq.Workplane("YZ").moveTo(yf - 2, p["cap_z"]).spline(seam, includeCurrent=True)
+             .lineTo(yb + 2, H + 5).lineTo(yf - 2, H + 5).close().extrude(W + 4).translate((-W / 2 - 2, 0, 0)))
+    body.add("body", shell.cut(above), "inst_offwhite")
+    body.add("top cover", shell.intersect(above), "inst_white")
+    # a wedge on the top's front: its face stands on the rolled edge, and it tapers back into the top
+    hy0, hy1 = yf + p["hump_y0"], yf + p["hump_y0"] + p["hump_run"]
+    body.add("top wedge", cq.Workplane("YZ").polyline([(hy0, g["zh"] - 30), (hy0, g["zh"]), (hy1, H),
+                                                      (hy1 + p["hump_len"], Ht), (hy1 + p["hump_len"], Ht - 30)])
+             .close().extrude(p["hump_w"]).translate((-p["hump_w"] / 2, 0, 0)), "inst_white")
+    for i, vy in enumerate((-30.0, 60.0)):         # the vent grilles on the left side
+        for k in range(6):
+            body.add(f"vent {i} {k}", box(-W / 2 - 1.5, vy - 22, 330 + 12 * k, -W / 2 + 1, vy + 22, 335 + 12 * k),
+                     "inst_dark")
+    # the front: a navy panel set into the white frame, lined in navy, its lit strip, lettering, badges and button
+    navy = "inst_navy"
+    body.add("recess lining", box(-xb, yf + 0.5, fz, xb, yp, bt).edges("|Y").fillet(8)
+             .cut(box(-xb + 2.5, yf, fz + 2.5, xb - 2.5, yp + 1, bt - 2.5)), navy)
+    body.add("front panel", box(-xb + 1, yp - 0.5, dt - 4, xb - 1, yp + 6, bt - 1), navy)
+    body.add("door surround", box(-xb + 1, yp - 0.5, fz, xb - 1, yp + 2, dt - 4).cut(
+        box(-xd + 4, yp - 1, fz + 6, xd - 4, yp + 3, dt - 6)), "inst_black")
+    body.add("EVAC-AIR strip", box(-75, yp - 1.5, bt - 30, 75, yp - 0.4, bt - 24), "led_blue")
+    body.add("model name", box(-58, yp - 1.2, bt - 62, 58, yp - 0.4, bt - 48), "inst_light")
+    body.add("II badge", box(-9, yp - 1.6, p["badge_z"] - 9, 9, yp - 0.4, p["badge_z"] + 9), "inst_light")
+    body.add("icon badge", box(-16, yp - 1.6, p["badge_z"] - 44, 16, yp - 0.4, p["badge_z"] - 20), "inst_light")
+    body.add("HITACHI", box(-45, yp - 1.2, dt + 14, 45, yp - 0.4, dt + 24), "inst_light")
+    body.add("EVAC/AIR ring", _ycyl(30, 3, x=p["btn_x"], y=yp - 3, z=p["btn_z"]), "inst_light")
+    body.add("EVAC/AIR button", _ycyl(22, 3, x=p["btn_x"], y=yp - 5, z=p["btn_z"]), "chrome")
+    body.add("chamber", chamber.cut(box(-xd + 6, yp - 2, fz + 9, xd - 6, yf + 266, dt - 9)), "inst_dark")
     # EDS: the detector is built in (Hitachi); only Oxford's AZtecOne analyser box stands beside. EBSD: Hitachi lists
     # no EBSD option for the TM4000 series; drawn here is Bruker's e-Flash XS (sold for tabletop SEMs, 48 x 84 mm
-    # outside the chamber) on a side port, with a 70 degree pre-tilted stub holder. A proposal, not a documented mount.
+    # outside the chamber) on a side port level with the stage, with a 70 degree pre-tilted stub holder. A proposal,
+    # not a documented mount.
     cz = 150.0
     body.add("EDS analyser", rbox(260, 290, 330, 12, x=W / 2 + 190, y=-90, z=0), "inst_white")
-    body.add("EDS analyser front", box(W / 2 + 70, -236, 40, W / 2 + 310, -235, 300), "inst_navy")
+    body.add("EDS analyser front", box(W / 2 + 70, -236, 40, W / 2 + 310, -235, 300), navy)
     body.add("EDS analyser light", _ycyl(14, 3, x=W / 2 + 190, y=-237, z=250), "inst_orange")
-    body.add("EBSD port", _xcyl(70, 20, x=-W / 2 - 20, y=-40, z=cz), "inst_light")
-    body.add("EBSD detector", _xcyl(48, 84, x=-W / 2 - 104, y=-40, z=cz), "inst_dark")
-    body.add("EBSD camera", _xcyl(56, 40, x=-W / 2 - 144, y=-40, z=cz), "inst_black")
+    body.add("EBSD port", _xcyl(70, 20, x=-W / 2 - 20, y=ys, z=cz), "inst_light")
+    body.add("EBSD detector", _xcyl(48, 84, x=-W / 2 - 104, y=ys, z=cz), "inst_dark")
+    body.add("EBSD camera", _xcyl(56, 40, x=-W / 2 - 144, y=ys, z=cz), "inst_black")
     body.add("pump", rbox(144, 270, 216, 10, x=-W / 2 - 110, y=D / 2 - 160, z=0), "inst_white")
     body.add("pump hose", cyl(22, 30, x=-W / 2 - 110, y=D / 2 - 160, z=216), "inst_black")
-    # the drawer: the chamber's front door, with the stage on its inside face
+    # the door: a navy block a little proud of the frame, its bar handle near the top, the stage on its inside face
     drawer = _piece(inst, "drawer")
-    drawer.add("drawer front", rbox(W - 72, 30, p["drawer_top"] - p["front_z0"] - 12, 6, y=yf + 15,
-                                    z=p["front_z0"] + 6), "inst_blue")
-    drawer.add("handle", rbox(160, 16, 22, 8, y=yf - 6, z=p["drawer_top"] - 70), "inst_black")
-    # rails long enough to stay in the chamber with the drawer out, and a carrier plate under the stage's column
-    drawer.add("stage rails", box(-80, yf + 30, 60, -60, yf + 230, 75).union(box(60, yf + 30, 60, 80, yf + 230, 75)),
-               "steel")
-    drawer.add("stage carrier", box(-80, yf + 30, 52, 80, yf + 200, 60), "steel")
-    drawer.add("stage", cyl(70, 30, y=yf + 120, z=95), "aluminium")
-    drawer.add("stage column", cyl(30, 35, y=yf + 120, z=60), "steel")
-    stub = _piece(inst, "stub")
-    stub.add("mount", cyl(25, 10, z=0), "mount")
-    stub.add("polished face", cyl(15, 0.6, z=10), "sample")
+    drawer.add("door", box(-xd, ydf, fz + 3, xd, yp + 16, dt - 2).edges("<Y").fillet(5), navy)
+    hx = p["handle_w"] / 2
+    drawer.add("handle", box(-hx, ydf - 30, p["handle_z"] - 8, hx, ydf - 18, p["handle_z"] + 8).edges("|Y")
+               .fillet(5), "inst_black")
+    for s in (-1, 1):
+        drawer.add(f"handle post {s}", _ycyl(14, 19, x=s * (hx - 10), y=ydf - 19, z=p["handle_z"]), "inst_black")
+    # the motorized X-Y stage: a carrier on rails long enough to stay in the chamber, two slides, lead screws, and
+    # the holder's socket in the middle
+    st = fz + 62.0                                 # the socket's top, where the holder stands
+    drawer.add("stage carrier", box(-xd + 12, yp + 16, fz + 10, xd - 12, yf + 255, fz + 20), "steel")
+    drawer.add("stage y slide", box(-85, ys - 70, fz + 20, 85, ys + 70, fz + 38), "aluminium")
+    drawer.add("stage x slide", box(-65, ys - 55, fz + 38, 65, ys + 55, fz + 54), "aluminium")
+    drawer.add("socket", cyl(34, st - fz - 54, y=ys, z=fz + 54), "steel")
+    drawer.add("y lead screw", _ycyl(8, 150, x=78, y=ys - 75, z=fz + 30), "steel")
+    drawer.add("x lead screw", _xcyl(8, 130, x=-65, y=ys + 62, z=fz + 46), "steel")
     # its left face, where the sample goes, stands 70 degrees from horizontal and faces the EBSD detector on the left
     drawer.add("pre-tilted holder", box(-14, -8, 0, 14, 8, 26).rotate((0, 0, 0), (0, 1, 0), 20)
-               .translate((32, yf + 120, 110)), "aluminium")
+               .translate((45, ys, fz + 54)), "aluminium")
+    # the sample: the polisher's 1.25 in Bakelite mount on a cylindrical holder, its height set at the bench
+    stub = _piece(inst, "stub")
+    stub.add("holder pin", cyl(12, 10, z=0), "steel")
+    stub.add("holder post", cyl(20, 28, z=8), "aluminium")
+    stub.add("holder collar", cyl(30, 8, z=22), "steel")
+    stub.add("mount", cyl(MOUNT_D, 14, z=36), "mount_red")
+    stub.add("polished face", cyl(MOUNT_D - 8, 0.6, z=50), "sample")
     inst.joints = {
         "drawer": Joint("slide", vec=(0, -p["draw"], 0)),
-        "stub": Joint("path", parent="drawer", path=((0, yf - 250, 330), (0, yf + 120, 270), (0, yf + 120, 125))),
+        "stub": Joint("path", parent="drawer", path=((W / 2 + 70, ys - 230, st + 200), (0, ys, st + 150),
+                                                      (0, ys, st))),
     }
     inst.actions = [
-        ("AIR vents the chamber; the drawer slides out with the stage on its inside face.", 1.6,
-         {"drawer": (0.0, 1.0), "stub": (0.0, 0.0)}),
-        ("A polished, mounted sample (25 mm) goes onto the stage.", 2.0, {"stub": (0.0, 1.0)}),
-        ("Drawer in, EVAC: about three minutes to vacuum. The EDS detector is built in, its analyser beside. "
+        ("EVAC/AIR vents the chamber; the door is pulled straight out by its handle, the stage on its inside face.",
+         1.6, {"drawer": (0.0, 1.0), "stub": (0.0, 0.0)}),
+        ("The polished mount, on a holder set to height at the bench, drops into the socket in the stage.", 2.0,
+         {"stub": (0.0, 1.0)}),
+        ("Door in, EVAC/AIR again: about three minutes to vacuum. The EDS detector is built in, its analyser beside. "
          "EBSD (left) is a proposal: no TM4000 option exists, and it needs a 70 degree pre-tilted holder.", 2.6,
          {"drawer": (1.0, 0.0)}),
     ]
     inst.labels = [("EDS analyser (AZtecOne)", (W / 2 + 190, -90, 330), (0.84, 0.22)),
-                   ("EBSD (proposed)", (-W / 2 - 110, -40, cz + 30), (0.14, 0.28)),
-                   ("sample drawer", (0, yf, 180), (0.18, 0.70))]
-    inst.cam = (-0.9, -2.0, 0.85)
+                   ("EBSD (proposed)", (-W / 2 - 110, ys, cz + 30), (0.14, 0.28)),
+                   ("sample drawer", (0, ydf, 150), (0.18, 0.70)),
+                   ("EVAC/AIR", (p["btn_x"], yp, p["btn_z"]), (0.62, 0.42))]
+    inst.notes = ["The door is a drawer: AIR vents the chamber, the door comes straight out with the X-Y stage on "
+                  "its inside face, and the sample holder drops into the stage's socket (CCEM's and Microscopy "
+                  "Australia's TM4000Plus videos)."]
+    # from the front left, steep enough, and far enough round, to see past the open door into the stage's socket
+    inst.cam = (-1.5, -1.2, 1.2)
+    inst.zoom = {1: ((0, yf - 40, st + 60), 800.0), 2: "out"}
     return inst
+
+
+# register.py: the SEM's anchors, the parameters fitted to the frames in refs/sem/, and what keeps a fitted model
+# buildable: the door under the panel with room for the handle, the button and badges on the panel, the top strip
+# behind the rolled front edge.
+ANCHORS["sem"] = (SEM, sem_anchors)
+FREE["sem"] = ["front_z0", "drawer_top", "blue_top", "frame_w", "recess", "proud", "door_w", "btn_x", "btn_z", "badge_z",
+               "handle_z", "handle_w", "hump_w", "hump_h", "hump_y0", "hump_run", "feet"]
+CHECKS["sem"] = lambda p: [p["blue_top"] - p["drawer_top"] - 120, p["drawer_top"] - p["front_z0"] - 150,
+                           p["btn_z"] - p["drawer_top"] - 20, p["blue_top"] - p["btn_z"] - 40,
+                           p["drawer_top"] - p["handle_z"] - 14, p["W"] / 2 - p["frame_w"] - p["btn_x"] - 15,
+                           p["door_w"] - p["handle_w"] - 20, p["W"] - 2 * p["frame_w"] - p["door_w"] - 6,
+                           p["hump_y0"] - 20, p["nose_r"] - p["hump_y0"] - 5, p["feet"] - 5]
 
 
 # ===================================================================================================== PIP
@@ -876,7 +1104,7 @@ def pip() -> Instrument:
     inst.notes = ["The profilometer's place is from Plastometrex's own footage; how its pick-up is lowered onto the "
                   "surface (the animation shows a rotation at the arm's foot) is simplified to a small drop here."]
     inst.cam = (0.32, -1.9, 0.28)                   # low and nearly frontal, as the videos show the bay
-    inst.framing = (0.66, 0.30)
+    inst.framing = (0.86, 0.44)                     # the whole machine in view, the bay still large
     return inst
 
 
@@ -902,8 +1130,12 @@ CHECKS["pip"] = lambda p: [p["W"] / 2 - p["led_x"] - 30, p["led_z1"] - p["led_z0
 RAIL = dict(beam_w=247.5, beam_h=247.5, top=800.0, leg_pitch=3330.0, car_l=426.5, car_w=358.0, car_t=86.0)
 
 
-def rail(length: float = 4000.0, travel: float = 1600.0) -> Instrument:
+def rail(length: float = 4000.0, travel: float = 1600.0, chain: bool | None = None) -> Instrument:
+    """Vention's seventh axis with the carriage at x = 0 (v = 0) to `travel` (v = 1). chain: its energy chain as
+    links that follow the carriage (the default for a travel in mm; line.py drives the carriage with travel = 1 and
+    a 17 m beam, so its chain is the fixed one it had)."""
     p = RAIL
+    chain = travel >= 200.0 if chain is None else chain
     inst = Instrument("rail", "Backup: a floor rail for the arm", "Vention robot 7th axis", (length, 628.0, p["top"]),
                       "Vention design 337010 and its part pages (beam, guides, carriage plate) and actuator docs",
                       floor=True)
@@ -921,7 +1153,23 @@ def rail(length: float = 4000.0, travel: float = 1600.0) -> Instrument:
     body.add("rack", box(-L / 2 + 20, -bw / 2 - 12, z1 - 40, L / 2 - 20, -bw / 2, z1), "steel")
     body.add("chain tray", box(-L / 2, bw / 2, z0 + 20, L / 2, bw / 2 + 90, z0 + 30).union(
         box(-L / 2, bw / 2 + 85, z0 + 20, L / 2, bw / 2 + 90, z0 + 70)), "vention_blue")
-    body.add("cable chain", box(-L / 2 + 100, bw / 2 + 10, z0 + 30, 0, bw / 2 + 80, z0 + 75), "inst_black")
+    # the energy chain, in its tray behind the beam: its fixed end halfway along the moving end's travel, its lower
+    # run on the tray's floor, the bend rising to the upper run, which ends on a bracket under the carriage's back
+    # edge; the bend travels at half the carriage's speed. Link 70 x 44 mm, bend radius 98 mm: ours, to suit the
+    # 73 mm chain and the 230 mm between the tray's floor and the carriage plate.
+    cy0, cy1 = bw / 2 + 10, bw / 2 + 80
+    ch = dict(h=44.0, r=98.0, z_low=z0 + 30 + 22.0, end_dx=-p["car_l"] / 2 + 20.0)
+    x_end0 = ch["end_dx"]
+    x_fix = x_end0 + travel / 2.0
+    straight = travel / 2.0 + 100.0
+    if not chain:
+        body.add("cable chain", box(-L / 2 + 100, cy0, z0 + 30, 0, cy1, z0 + 75), "inst_black")
+    else:
+        body.add("chain fixed end", box(x_fix, cy0 - 4, z0 + 30, x_fix + 30, cy1 + 4, z0 + 30 + ch["h"] + 8),
+                 "aluminium")
+        body.add("chain cable", hose([(x_fix + 15, (cy0 + cy1) / 2, z0 + 20), (x_fix + 15, (cy0 + cy1) / 2, 300.0),
+                                      (-L / 2 + 900, (cy0 + cy1) / 2, 300.0), (-L / 2 + 900, 120.0, 300.0)], 24.0),
+                 "inst_black")
     n_legs = max(2, int(round(L / p["leg_pitch"])) + 1)
     legs = None
     for i in range(n_legs):
@@ -948,16 +1196,45 @@ def rail(length: float = 4000.0, travel: float = 1600.0) -> Instrument:
     car.add("pinion", cyl(44, 40, x=0, y=-bw / 2 - 12 - 22, z=z1 - 42), "steel")
     car.add("robot adapter", cyl(210, 12, z=top - 12), "aluminium")
     inst.joints = {"carriage": Joint("slide", vec=(travel, 0, 0))}
+    links = []
+    if chain:
+        zu = ch["z_low"] + 2 * ch["r"]
+        car.add("chain bracket", box(x_end0 - 22, cy0 - 4, zu - ch["h"] / 2 - 6, x_end0 + 8, p["car_w"] / 2,
+                                     top - p["car_t"]), "aluminium")
+        total = straight + math.pi * ch["r"]
+        n = int(round(total / 36.0))
+        pitch = total / n
+        for i in range(n):
+            prm = chain_params((i + 0.5) * pitch, x_fix, x_end0, travel, straight, ch["r"], ch["z_low"])
+            pose = chain_pose(prm, 0.0)
+            link = box(-pitch / 2 + 1.2, cy0, -ch["h"] / 2, pitch / 2 - 1.2, cy1, ch["h"] / 2)
+            link = link.union(box(-pitch / 2 + 4, cy0 + 8, -ch["h"] / 2 - 1, pitch / 2 - 4, cy1 - 8, ch["h"] / 2 + 1))
+            ang = math.degrees(math.atan2(pose[0, 2], pose[0, 0]))
+            link = link.rotate((0, 0, 0), (0, 1, 0), ang).translate((float(pose[0, 3]), 0.0, float(pose[2, 3])))
+            key = f"chain {i:02d}"
+            _piece(inst, key).add("link", link, "inst_black")
+            inst.joints[key] = Joint("chain", path=prm)
+            links.append(key)
+
+    def drive(a, b):
+        return {"carriage": (a, b), **{k: (a, b) for k in links}}
     inst.actions = [
         ("The backup to the mobile base: a Vention seventh axis. The carriage carries the arm along the line on a "
-         "rack and pinion.", 2.6, {"carriage": (0.0, 1.0)}),
+         "rack and pinion; its energy chain's bend travels at half the carriage's speed.", 2.6, drive(0.0, 1.0)),
         ("Up to 4 m/s. Its legs are cut so the arm's base is at 800 mm, where it sits on the MiR250.", 2.2,
-         {"carriage": (1.0, 0.0)}),
+         drive(1.0, 0.0)),
     ]
     inst.labels = [("carriage and gearmotor", (0, -cw / 2 - 70, z1 - 60), (0.16, 0.30)),
                    ("rack and guides", (L / 2 - 400, -bw / 2, z1), (0.82, 0.40)),
                    ("control cabinet", (-L / 2 + 700, -150, z0 - 220), (0.16, 0.72))]
     inst.cam = (0.55, -1.5, 0.6)
+    if chain:                   # seen from behind, where the chain runs; the gearmotor and rack are on the far side
+        inst.labels = [("carriage (gearmotor, pinion and rack on the far side)", (0, cw / 2, top), (0.16, 0.24)),
+                       ("guides", (L / 2 - 400, bw / 2 - 30, z1 + 15), (0.84, 0.30)),
+                       ("energy chain: fixed end halfway along the travel", (x_fix + 15, cy1 + 4, z0 + 70),
+                        (0.84, 0.62)),
+                       ("control cabinet", (-L / 2 + 700, 150, z0 - 220), (0.16, 0.74))]
+        inst.cam = (0.5, 1.6, 0.75)
     return inst
 
 
@@ -1259,96 +1536,227 @@ def nanoindenter() -> Instrument:
 
 
 # ===================================================================================================== laser diffraction
-# Malvern Panalytical Mastersizer 3000 with the Aero S dry powder disperser, as for metal powders (Malvern's Mastersizer
-# 3000 and 3000+ brochures): the optical bench is 690 L x 300 W x 450 H mm, 30 kg, a satin warm-grey box with a black
-# top deck and left end and a vertical cell bay a third of the way along, under a dark dome lid; the Aero S (260 x 180
-# x 380 mm, 10.5 kg) stands in front of the bay, its feed tray and hopper under a clear hinged dome, and blows the
-# powder through a venturi in the bay across the laser; a vacuum extractor takes it away.
-MS3000 = dict(L=690.0, W=300.0, H=450.0, bay_x=-115.0, bay_w=130.0, aero_l=260.0, aero_w=180.0, aero_h=380.0,
-              vac_w=330.0, vac_d=330.0, vac_h=480.0)
+# Malvern Panalytical Mastersizer 3000 with the Aero S dry powder disperser, as for metal powders. Published (Malvern's
+# Mastersizer 3000 brochure): the optical bench 690 W x 300 D x 450 H mm, 30 kg; the Aero S 260 x 180 x 380 mm, 10.5 kg.
+# The proportions in between are fitted with register.py (refs/mastersizer/) to frames of Malvern's own videos, "Mastersizer
+# 3000 Aero Demo" (iaHJ8QEwJ-I) and "Measuring metal powders with the Mastersizer 3000" (6ZuKAAHb_20), the bench's
+# 690 x 450 setting the scale. The look, from those frames: a satin silver-grey bench under a charcoal deck; a narrow
+# bay a third of the way along holds the measurement cell's cassette, its front plate lettered AERO with a green LED
+# and the fitting for the Aero S's hose, a lower block under it; MASTERSIZER runs up the left panel. The lower edges of
+# both panels sweep down from the bay to the ends over a dark recessed plinth, so the plinth peaks under the bay. A
+# round light-grey lid with a dark handle closes the cell from above; a raised teardrop runs right from it along the
+# deck, a blue-lit oval sits left of it; a darker grey cap closes the right end; small adjustable feet. The Aero S
+# stands in front of the left panel: a dark base and core, a silver shell sweeping down over its front, a blue LED at
+# the front right of the base, a clear cover over the top that lifts off by hand ("Adjust Hopper", 0:52 of the Aero
+# demo); under it a U-shaped carrier holds the vibrating tray, the black hopper standing over one end of it, the
+# venturi at the other, and from the venturi a black hose runs to the cassette's fitting. The powder leaves the cell
+# downwards, by a tube from under the bay, to a vacuum extractor (not in the frames; drawn as a generic unit).
+MS3000 = dict(L=690.0, W=300.0, H=450.0, feet=15.0, deck=381.0, bay_x0=186.0, bay_w=102.0, cass_z0=189.0,
+              z_cut=69.0, cap_w=24.0, dome_x=238.0, dome_y=141.0, dome_r=110.0, sw_x1=541.0, sw_y=130.0,
+              fit_z=264.0, aero_l=260.0, aero_w=180.0, aero_h=380.0, aero_x=152.0, aero_y=138.0, cover_z=250.0,
+              hop_x=79.0, hop_z=331.0, vac_w=330.0, vac_d=330.0, vac_h=480.0)
+
+
+def _ms3000(p) -> dict:
+    """The positions the model and its anchors share: the bench's ends, front and back, its bay, and the Aero S."""
+    xl = -(p["L"] + 60 + p["vac_w"]) / 2             # the bench's left end; the extractor stands to its right
+    yf = -p["W"] / 2 + p["aero_w"] / 2               # the bench's front; the Aero S stands in front of it
+    bx0 = xl + p["bay_x0"]
+    ax, ay = xl + p["aero_x"], yf - p["aero_y"]      # the Aero S's centre, aero_y in front of the bench
+    return dict(xl=xl, xr=xl + p["L"], yf=yf, yb=yf + p["W"], bx0=bx0, bx1=bx0 + p["bay_w"],
+                xp=xl + p["L"] - p["cap_w"],         # the right panel's right edge, where the end cap begins
+                fx=bx0 + p["bay_w"] / 2,             # the cassette's hose fitting, on its front plate
+                dx=xl + p["dome_x"], dy=yf + p["dome_y"], ax=ax, ay=ay,
+                hx=ax - p["aero_l"] / 2 + p["hop_x"], hy=ay + 15.0)     # the hopper, over the tray
+
+
+def mastersizer_anchors(p, pose=None) -> dict:
+    """Named points and lines of the model, for register.py (the Aero S's only in views where it stands as here)."""
+    g = _ms3000(p)
+    xl, yf, yb, bx0, bx1, xp = g["xl"], g["yf"], g["yb"], g["bx0"], g["bx1"], g["xp"]
+    dk, ft, zc = p["deck"], p["feet"], p["z_cut"]
+    l, w = p["aero_l"], p["aero_w"]
+    return {"top front left": (xl, yf, dk), "top back left": (xl, yb, dk), "top front right": (xp, yf, dk),
+            "bay left top": (bx0, yf, dk), "bay right top": (bx1, yf, dk),
+            "cassette bottom left": (bx0, yf, p["cass_z0"]), "cassette bottom right": (bx1, yf, p["cass_z0"]),
+            "hose fitting": (g["fx"], yf - 10, p["fit_z"]),
+            "cut at bay left": (bx0, yf, zc), "cut at bay right": (bx1, yf, zc), "bottom front left": (xl, yf, ft),
+            "dome top": (g["dx"], g["dy"], p["H"]), "swoosh tip": (xl + p["sw_x1"], yf + p["sw_y"], dk + 8),
+            "front top edge": ("line", (xl, yf, dk), (xp, yf, dk)), "back top edge": ("line", (xl, yb, dk), (xp, yb, dk)),
+            "left cut": ("line", (xl, yf, ft), (bx0, yf, zc)), "right cut": ("line", (bx1, yf, zc), (xp, yf, ft)),
+            "left edge": ("line", (xl, yf, ft), (xl, yf, dk)), "panel right edge": ("line", (xp, yf, ft), (xp, yf, dk)),
+            "aero LED": (g["ax"] + l / 2 - 9.5, g["ay"] - w / 2 + 9.5, 48.0), "hopper top": (g["hx"], g["hy"], p["hop_z"])}
+
+
+def _teardrop(c, r, tip_x, z, h) -> cq.Workplane:
+    """A flat drop on z, h thick: round (radius r) behind c (x, y), and half an ellipse in front, out to tip_x."""
+    a = tip_x - c[0]
+    pts = [(c[0] + a * math.cos(t), c[1] + r * math.sin(t)) for t in np.linspace(-math.pi / 2, math.pi / 2, 30)]
+    pts += [(c[0] - r * math.cos(t), c[1] + r * math.sin(t)) for t in np.linspace(math.pi / 2, -math.pi / 2, 30)[1:-1]]
+    return cq.Workplane("XY").polyline(pts).close().extrude(h).translate((0, 0, z))
 
 
 def mastersizer() -> Instrument:
     p = MS3000
-    L, W, H = p["L"], p["W"], p["H"]
-    tot_l = L + 60 + p["vac_w"]
+    g = _ms3000(p)
+    xl, xr, yf, yb, bx0, bx1, xp, fx = (g[k] for k in ("xl", "xr", "yf", "yb", "bx0", "bx1", "xp", "fx"))
+    L, W, H, dk, ft, zc = p["L"], p["W"], p["H"], p["deck"], p["feet"], p["z_cut"]
     inst = Instrument("mastersizer", "Laser diffraction particle sizer", "Malvern Mastersizer 3000 + Aero S",
                       (L, W, H),
-                      "Malvern Panalytical Mastersizer 3000 and 3000+ brochures (bench 690 x 300 x 450 mm, 30 kg; "
-                      "Aero S 260 x 180 x 380 mm, 10.5 kg); look from Malvern's product photos")
-    x0 = -tot_l / 2
-    xb = x0 + L / 2                              # the bench's centre
-    yf, yb = -W / 2 + p["aero_w"] / 2, W / 2 + p["aero_w"] / 2          # bench front and back
+                      "Malvern Panalytical Mastersizer 3000 brochure (bench 690 x 300 x 450 mm, 30 kg; Aero S 260 x 180 "
+                      "x 380 mm, 10.5 kg); proportions fitted with register.py to frames of Malvern's videos")
     body = _piece(inst, "body")
-    bench = box(xb - L / 2, yf, 0, xb + L / 2, yb, H - 20).edges("|Y").fillet(30)
-    bx = xb + p["bay_x"]
-    bench = bench.cut(box(bx - p["bay_w"] / 2, yf - 1, 60, bx + p["bay_w"] / 2, yb - 60, H))
-    body.add("bench", bench, "inst_light")
-    body.add("top deck", box(xb - L / 2 + 10, yf + 10, H - 20, xb + L / 2 - 10, yb - 10, H - 6), "inst_black")
-    body.add("left end", box(xb - L / 2 - 4, yf + 5, 20, xb - L / 2, yb - 5, H - 40), "inst_black")
-    body.add("cell bay", box(bx - p["bay_w"] / 2, yf + 20, 60, bx + p["bay_w"] / 2, yb - 60, H - 20), "inst_dark")
-    body.add("bay dome", cyl(p["bay_w"] + 20, 40, x=bx, y=(yf + yb) / 2 - 20, z=H - 20).edges(">Z").fillet(18),
+    # the bench: one silver shell to the deck, its front cut away below the panels' sweep down from the bay to the ends,
+    # where a dark plinth shows, set back
+    rec = 30.0
+    shell = box(xl, yf, ft, xp, yb, dk).edges("|Z and <X").fillet(8)
+    sweep = (cq.Workplane("XZ").polyline([(xl - 1, ft - 1), (xl - 1, ft), (bx0, zc), (bx1, zc), (xp + 1, ft),
+                                          (xp + 1, ft - 1)]).close().extrude(-(rec + 1)).translate((0, yf - 1, 0)))
+    body.add("bench", shell.cut(sweep), "inst_light")
+    body.add("plinth", box(xl + 2, yf + rec - 1.5, ft, xp - 2, yf + rec, zc + 2), "inst_black")
+    body.add("end cap", box(xp, yf - 3, ft, xr, yb, dk + 12).edges("|Z and >X").fillet(12), "inst_grey")
+    body.add("deck", box(xl + 8, yf + 12, dk - 1, xp, yb - 8, dk + 2), "inst_dark")
+    for sx in (xl + 30, xp - 30):
+        for sy in (yf + 35, yb - 35):
+            body.add(f"foot {sx:.0f} {sy:.0f}", cyl(30, ft, x=sx, y=sy), "chrome")
+    # the cell's bay: the cassette's front plate (AERO, a green LED, the hose fitting), a lower block, dark joints
+    body.add("bay joints", box(bx0 - 1.5, yf - 0.6, zc, bx0 + 1.5, yf + 1, dk).union(
+        box(bx1 - 1.5, yf - 0.6, zc, bx1 + 1.5, yf + 1, dk)).union(
+        box(bx0, yf - 0.6, p["cass_z0"] - 1.5, bx1, yf + 1, p["cass_z0"] + 1.5)), "inst_black")
+    body.add("cassette plate", box(bx0 + 2, yf - 2, p["cass_z0"] + 2, bx1 - 2, yf, dk - 2), "inst_light")
+    body.add("AERO lettering", box(bx0 + 14, yf - 2.4, p["fit_z"] + 30, bx0 + 22, yf - 2, dk - 40), "inst_grey")
+    body.add("green LED", _ycyl(9, 2, x=bx0 + 18, y=yf - 2.5, z=dk - 25), "inst_green")
+    body.add("cassette fitting", _ycyl(20, 10, x=fx, y=yf - 10, z=p["fit_z"]), "chrome")
+    body.add("bay LED", box(bx0 + 4, yf - 1, zc + 6, bx0 + 45, yf, zc + 12), "led_blue")
+    body.add("MASTERSIZER lettering", box(bx0 - 32, yf - 0.6, 110, bx0 - 22, yf, 330), "inst_grey")
+    # on the deck: the round lid over the cell, with its handle; the raised teardrop running right; the blue oval
+    dx, dy, R = g["dx"], g["dy"], p["dome_r"]
+    top = H - 12 - (dk + 2 + 10)                                   # the lid's rise above its base ring
+    prof = [(0, 0), (R, 0)] + [(R * math.cos(t), top * math.sin(t)) for t in np.linspace(0.15, math.pi / 2, 14)]
+    lid = cq.Workplane("XZ").polyline(prof).close().revolve(360, (0, 0, 0), (0, 1, 0)).translate((dx, dy, dk + 12))
+    body.add("lid ring", cyl(2 * R + 10, 10, x=dx, y=dy, z=dk + 2), "inst_light")
+    body.add("cell lid", lid, "inst_light")
+    body.add("lid handle", rbox(36, 1.5 * R, 26, 12, x=dx, y=dy - 0.15 * R, z=H - 26).edges(">Z").fillet(8),
              "inst_dark")
-    body.add("dome handle", box(bx - 40, (yf + yb) / 2 - 30, H + 20, bx + 40, (yf + yb) / 2 - 10, H + 32), "inst_black")
-    body.add("status light", box(xb - L / 2 + 30, yf - 1, H - 70, xb - L / 2 + 80, yf, H - 60), "screen_on")
-    body.add("lettering", box(bx + p["bay_w"] / 2 + 20, yf - 1, 90, bx + p["bay_w"] / 2 + 32, yf, H - 80), "inst_grey")
-    # the Aero S in front of the bay: a grey body on a black base, the blue LED strip, the hopper under a clear dome
-    ax, ay = bx, yf - p["aero_w"] / 2
-    body.add("Aero S base", rbox(p["aero_l"], p["aero_w"], 40, 20, x=ax, y=ay), "inst_black")
-    body.add("Aero S", rbox(p["aero_l"] - 20, p["aero_w"] - 20, p["aero_h"] - 100, 60, x=ax, y=ay, z=40)
-             .edges(">Z").fillet(20), "inst_light")
-    body.add("Aero S LED", box(ax - 80, ay - p["aero_w"] / 2 + 8, 52, ax + 80, ay - p["aero_w"] / 2 + 10, 60), "screen_on")
-    # the hopper is a funnel set into the deck and the tray stays under the dome, clear of its back wall as it lifts;
-    # the venturi takes the powder on from the back of the Aero S into the cell bay
-    hy = ay - 15                                 # the hopper's centre
-    body.add("feed tray", box(ax - 20, hy - 40, p["aero_h"] - 60, ax + 20, ay + 35, p["aero_h"] - 50), "steel")
-    body.add("hopper", cyl(90, 45, x=ax, y=hy, z=p["aero_h"] - 90).cut(cyl(76, 45, x=ax, y=hy, z=p["aero_h"] - 80)),
-             "steel")
-    body.add("venturi", box(ax - 25, ay + 70, 230, ax + 25, yf + 25, 270), "inst_dark")
-    # the vacuum extractor on the right
-    vx = x0 + L + 60 + p["vac_w"] / 2
-    vy = (yf + yb) / 2
-    body.add("vacuum extractor", rbox(p["vac_w"], p["vac_d"], p["vac_h"] - 60, 60, x=vx, y=vy, z=60), "inst_grey")
-    body.add("extractor head", rbox(p["vac_w"] - 20, p["vac_d"] - 20, 60, 50, x=vx, y=vy, z=p["vac_h"] - 60), "inst_dark")
-    body.add("extractor wheels", box(vx - p["vac_w"] / 2 + 30, vy - 120, 0, vx - p["vac_w"] / 2 + 70, vy + 120, 60).union(
-        box(vx + p["vac_w"] / 2 - 70, vy - 120, 0, vx + p["vac_w"] / 2 - 30, vy + 120, 60)), "inst_black")
-    from common import hose as _hose
-    body.add("extract hose", _hose([(bx, yb - 30, 150), (bx, yb + 50, 150), (vx - 80, yb + 50, 220),
-                                     (vx - 80, vy + 40, p["vac_h"] - 30)], 38), "inst_black")
-    dome = _piece(inst, "lid")
-    dome.add("clear dome", rbox(p["aero_l"] - 40, p["aero_w"] - 30, 70, 40, x=ax, y=ay, z=p["aero_h"] - 60)
-             .edges(">Z").fillet(25).cut(rbox(p["aero_l"] - 50, p["aero_w"] - 40, 66, 36, x=ax, y=ay,
-                                               z=p["aero_h"] - 60)), "polycarb")
-    vial = _piece(inst, "sample")
+    body.add("swoosh", _teardrop((dx, yf + p["sw_y"]), 0.85 * R, xl + p["sw_x1"], dk + 2, 6),
+             "inst_light")
+    body.add("status light", cq.Workplane("XY").ellipse(32, 15).extrude(3).translate((dx - R - 32, dy - 15, dk + 2)),
+             "led_blue")
+    # the Aero S: dark base and core, the silver shell over the front and right; its blue LED at the front right
+    ax, ay, hx, hy = g["ax"], g["ay"], g["hx"], g["hy"]
+    l, w, h, cz = p["aero_l"], p["aero_w"], p["aero_h"], p["cover_z"]
+    body.add("Aero S base", rbox(l, w, 45, 34, x=ax, y=ay), "inst_black")
+    body.add("Aero S core", rbox(l - 10, w - 10, cz - 45, 38, x=ax, y=ay, z=45), "inst_dark")
+    sweep_a = (cq.Workplane("XZ").polyline([(ax - l, cz - 25), (ax - l / 2, cz - 25), (ax + l / 2, 60), (ax + l, 60),
+                                            (ax + l, 0), (ax - l, 0)]).close().extrude(-(w + 20))
+               .translate((0, ay - w / 2 - 10, 0)))
+    silver = rbox(l - 4, w - 4, cz - 45, 40, x=ax, y=ay, z=45).cut(sweep_a).cut(
+        box(ax - l, ay + w / 2 - 45, 0, ax + l, ay + w, h))
+    body.add("Aero S shell", silver, "inst_light")
+    lc = (ax + l / 2 - 34, ay - w / 2 + 34)                         # the base's front corner, where the LED wraps
+    body.add("Aero S LED", cq.Workplane("XY").circle(35.5).circle(33).extrude(6).translate((*lc, 45)).intersect(
+        box(lc[0] + 4, lc[1] - 40, 40, lc[0] + 40, lc[1] - 4, 55)), "led_blue")
+    body.add("Aero S deck", rbox(l - 14, w - 12, 6, 36, x=ax, y=ay, z=cz), "inst_light")
+    # under the cover: the U-shaped carrier on its pillar, the hopper over the tray, the venturi and its hose
+    ux = ax + 10
+    body.add("tray carrier", rbox(190, 72, 18, 34, x=ux, y=hy, z=cz + 42).cut(rbox(160, 42, 20, 20, x=ux, y=hy,
+                                                                                    z=cz + 41)).union(
+        box(ux - 30, hy - 14, cz + 6, ux + 30, hy + 14, cz + 42)), "inst_light")
+    body.add("hopper", cyl(46, p["hop_z"] - 14 - (cz + 62), x=hx, y=hy, z=cz + 62).union(
+        cyl(30, 10, x=hx, y=hy, z=cz + 52)), "inst_black")
+    body.add("hopper ring", cyl(54, 14, x=hx, y=hy, z=p["hop_z"] - 14), "inst_dark")
+    vx_ = ax + 95                                                    # the venturi, at the tray's other end
+    body.add("venturi", box(vx_ - 12, hy - 20, cz + 6, vx_ + 22, hy + 20, cz + 56), "steel")
+    out = (ax + l / 2 + 4, hy, cz + 30)
+    body.add("venturi outlet", _xcyl(22, ax + l / 2 + 6 - (vx_ + 22), x=vx_ + 22, y=hy, z=cz + 30), "chrome")
+    body.add("sample hose", hose([out, (out[0] + 45, hy - 10, cz + 20), (fx - 10, yf - 60, p["fit_z"]),
+                                  (fx, yf - 15, p["fit_z"])], 15), "inst_black")
+    # inside the bay: the cell's body and its two windows across the beam (seen when the bench goes see-through)
+    cy, bz = yf + 120, p["fit_z"] - 15
+    body.add("cell", box(bx0 + 18, yf + 40, p["cass_z0"] - 40, bx1 - 18, yf + 200, dk - 30).cut(
+        box(bx0 + 30, cy - 25, bz - 25, bx1 - 30, cy + 25, bz + 25)), "inst_dark")
+    for x_ in (bx0 + 26, bx1 - 30):
+        body.add(f"cell window {x_:.0f}", _xcyl(44, 4, x=x_, y=cy, z=bz), "window")
+    # the extractor, and its hose from the cell's outlet under the bay
+    vac_x = xr + 60 + p["vac_w"] / 2
+    vac_y = (yf + yb) / 2
+    body.add("vacuum extractor", rbox(p["vac_w"], p["vac_d"], p["vac_h"] - 120, 60, x=vac_x, y=vac_y, z=60),
+             "inst_grey")
+    body.add("extractor head", rbox(p["vac_w"] - 20, p["vac_d"] - 20, 60, 50, x=vac_x, y=vac_y, z=p["vac_h"] - 60),
+             "inst_dark")
+    body.add("extractor wheels", box(vac_x - p["vac_w"] / 2 + 30, vac_y - 120, 0, vac_x - p["vac_w"] / 2 + 70,
+                                     vac_y + 120, 60).union(box(vac_x + p["vac_w"] / 2 - 70, vac_y - 120, 0,
+                                                                vac_x + p["vac_w"] / 2 - 30, vac_y + 120, 60)),
+             "inst_black")
+    body.add("extract hose", hose([(fx, yf + rec + 8, zc - 25), (fx, yb + 45, 30), (vac_x - 90, yb + 45, 30),
+                                   (vac_x - 90, yb + 45, p["vac_h"] - 40), (vac_x - 90, vac_y + 60, p["vac_h"] + 10)],
+                                  34), "inst_black")
+    # the clear cover, level-topped at the published height (its edges slope in the frames only with perspective)
+    cover = _piece(inst, "lid")
+    cv = rbox(l - 14, w - 8, h - cz, 44, x=ax, y=ay, z=cz).edges(">Z").fillet(30)
+    cover.add("clear cover", cv.cut(rbox(l - 20, w - 14, h - cz - 3, 41, x=ax, y=ay, z=cz - 1)), "polycarb")
+    tray = _piece(inst, "tray")
+    tray.add("vibrating tray", box(hx - 22, hy - 13, cz + 50, vx_ - 10, hy + 13, cz + 53).union(
+        box(hx - 22, hy - 13, cz + 53, vx_ - 10, hy - 11, cz + 60)).union(
+        box(hx - 22, hy + 11, cz + 53, vx_ - 10, hy + 13, cz + 60)), "stainless")
+    vial = _piece(inst, "vial")                                     # not a prop: it stands on the bench at rest
     vial.add("vial", cyl(28, 61, z=0).cut(cyl(25, 60, z=2)), "window")
-    vial.add("powder", cyl(25, 30, z=2), "powder")
+    vial.add("powder in vial", cyl(25, 30, z=2), "powder")
+    charge = _piece(inst, "powder")
+    charge.add("powder in the hopper", cyl(38, 30, x=hx, y=hy, z=p["hop_z"] - 48), "powder")
     beam = _piece(inst, "beam")
-    beam.add("laser", _xcyl(3, L - 80, x=xb - L / 2 + 40, y=(yf + yb) / 2, z=220), "laser")
-    for i in range(16):
-        t = i / 15.0
-        beam.add(f"grain {i}", cq.Workplane("XY").sphere(2.4).translate((
-            ax + 5 * math.sin(i * 1.9), ay + (yf + 60 - ay) * t, p["aero_h"] - 60 - 160 * t)), "powder")
-    hinge_y = ay + (p["aero_w"] - 30) / 2        # the dome's back edge, on top: hinged at the bottom it would swing
-    inst.joints = {                              # back into the bench; hinged at the top its front rises (angle < 0)
-        "lid": Joint("hinge", axis=(1, 0, 0), pivot=(0, hinge_y, p["aero_h"] + 10), deg=-70.0),
-        "sample": Joint("path", path=((ax - 250, ay - 400, p["aero_h"] + 140), (ax, ay - 250, p["aero_h"] + 50),
-                                      (ax, hy, p["aero_h"] + 20))),     # in from the front, under the raised dome
+    beam.add("laser", _xcyl(3, xp - 40 - (bx0 - 60), x=bx0 - 60, y=cy, z=bz), "laser")
+    path = [(hx, hy, cz + 56), (vx_, hy, cz + 56), out, (out[0] + 45, hy - 10, cz + 20), (fx - 10, yf - 60, p["fit_z"]),
+            (fx, yf - 15, p["fit_z"]), (fx, cy, p["fit_z"]), (fx, cy, p["cass_z0"] - 30)]
+    seg = np.linalg.norm(np.diff(np.asarray(path), axis=0), axis=1)
+    s = np.r_[0, np.cumsum(seg)]
+    for i, t in enumerate(np.linspace(0.02, 0.98, 30) * s[-1]):
+        k = min(int(np.searchsorted(s, t, side="right")) - 1, len(seg) - 1)
+        q = np.asarray(path[k]) + (np.asarray(path[k + 1]) - path[k]) * (t - s[k]) / seg[k]
+        beam.add(f"grain {i}", cq.Workplane("XY").sphere(4.0).translate(tuple(q + (0, 0, 3.0 * math.sin(i * 2.3)))),
+                 "powder")
+    buzz = tuple((2.5 * (-1) ** i, 0.0, 0.0) if 0 < i < 24 else (0.0, 0.0, 0.0) for i in range(25))
+    inst.joints = {
+        "lid": Joint("path", path=((0, 0, 0), (0, 0, 130), (-170, -60, 170))),           # lifted off by hand
+        "vial": Joint("path", path=((fx + 170, yf - 150, 0), (fx + 170, yf - 150, h + 90), (hx, hy, h + 90),
+                                    (hx, hy, p["hop_z"] + 25))),                         # from the bench to the hopper
+        "powder": Joint("fade"),
+        "tray": Joint("path", path=buzz),                                                 # the feeder's vibration
         "beam": Joint("fade"),
     }
     inst.actions = [
-        ("The Aero S's clear dome lifts; a vial of atomized powder (a few grams) is emptied into its hopper.", 2.2,
-         {"lid": (0.0, 1.0), "sample": (0.0, 1.0), "beam": (0.0, 0.0)}),
-        ("Dome down. A vibrating tray feeds the powder to a venturi in the cell bay; compressed air disperses it "
-         "across the laser (drawn see-through).", 2.6, {"sample": (1.0, 0.0), "lid": (1.0, 0.0), "beam": (0.0, 1.0),
-                                                        "~body": (0.0, 1.0)}),
-        ("The scattering pattern gives the size distribution, 0.1 um to 3.5 mm, in under a minute; the vacuum "
-         "extractor takes the powder away.", 2.0, {"beam": (1.0, 0.0), "~body": (1.0, 0.0)}),
+        ("The Aero S's clear cover lifts off; a few grams of atomized powder go into its hopper, over the vibrating "
+         "tray.", 2.4, {"lid": (0.0, 1.0), "vial": (0.0, 1.0), "powder": (0.0, 0.0), "beam": (0.0, 0.0)}),
+        ("The hopper's gap sets the feed; the cover goes back on.", 1.6, {"vial": (1.0, 0.0), "powder": (0.0, 1.0),
+                                                                         "lid": (1.0, 0.0)}),
+        ("Air on and the background measured, then the tray vibrates the powder into the venturi, and the air carries "
+         "it down the hose to the cell in the bay, across the laser (drawn see-through).", 3.2,
+         {"tray": (0.0, 1.0), "beam": (0.0, 1.0), "~body": (0.0, 1.0), "powder": (1.0, 0.0)}),
+        ("The scattering gives the size distribution, 0.1 um to 3.5 mm, in under a minute; the extractor draws the "
+         "powder away from under the cell.", 2.0, {"beam": (1.0, 0.0), "~body": (1.0, 0.0)}),
     ]
-    inst.labels = [("Aero S dry disperser", (ax, ay, p["aero_h"] - 40), (0.20, 0.22)),
-                   ("optical bench", (xb + L / 2 - 120, yf, 300), (0.50, 0.70)),
-                   ("vacuum extractor", (vx, vy - p["vac_d"] / 2, 300), (0.86, 0.55))]
+    inst.labels = [("Aero S dry disperser", (ax - l / 2, ay, h - 80), (0.12, 0.30)),
+                   ("cell cassette", (fx, yf, dk - 60), (0.42, 0.10)),
+                   ("optical bench", (xp - 150, yf, 300), (0.62, 0.80)),
+                   ("vacuum extractor", (vac_x, vac_y - p["vac_d"] / 2, 300), (0.88, 0.55))]
+    inst.anchors = mastersizer_anchors(p)
     inst.cam = (0.5, -1.7, 0.8)
+    inst.zoom = {0: ((hx + 60, hy, cz + 40), 1700.0), 2: "out"}
     return inst
+
+
+# register.py: the Mastersizer's anchors, the proportions fitted to Malvern's frames (refs/mastersizer/), and what keeps
+# a fitted model buildable: the bay between two real panels, the cassette over its lower block, the lid's rise, the
+# fitting on the cassette's plate, the hopper between the Aero S's deck and its cover.
+ANCHORS["mastersizer"] = (MS3000, mastersizer_anchors)
+FREE["mastersizer"] = ["deck", "bay_x0", "bay_w", "cass_z0", "z_cut", "cap_w", "dome_x", "dome_y", "sw_x1", "sw_y",
+                       "fit_z", "aero_x", "aero_y", "hop_x", "hop_z"]
+CHECKS["mastersizer"] = lambda p: [p["bay_x0"] - 120, p["L"] - p["cap_w"] - p["bay_x0"] - p["bay_w"] - 250,
+                                   p["cass_z0"] - p["z_cut"] - 50, p["deck"] - p["cass_z0"] - 120, p["H"] - p["deck"] - 35,
+                                   p["fit_z"] - p["cass_z0"] - 20, p["deck"] - p["fit_z"] - 40, p["cap_w"] - 8,
+                                   p["aero_h"] - p["hop_z"] - 12,
+                                   p["hop_z"] - p["cover_z"] - 75,
+                                   p["aero_y"] - p["aero_w"] / 2 - 5]
 
 
 # ===================================================================================================== wire EDM

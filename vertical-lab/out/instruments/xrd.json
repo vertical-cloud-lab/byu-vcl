@@ -9,19 +9,19 @@
  "substeps": [
   {
    "label": "1/7",
-   "caption": "The door unlocks and swings open on its right-hand hinge, showing the 150 mm vertical goniometer.",
+   "caption": "DOOR LOCK pressed, the door swings open on its right-hand hinge, past square, showing the 150 mm vertical goniometer.",
    "start_frame": 0,
    "end_frame": 40
   },
   {
    "label": "2/7",
-   "caption": "A powder sample on its holder goes onto the stage at the goniometer's centre.",
+   "caption": "A powder sample on its holder goes in by hand onto the stage at the goniometer's centre.",
    "start_frame": 41,
    "end_frame": 78
   },
   {
    "label": "3/7",
-   "caption": "Door closed and locked: the X-ray interlock lets the 600 W tube switch on.",
+   "caption": "Door closed and locked: the X-ray interlock lets the 600 W tube switch on; the lamp on top lights.",
    "start_frame": 79,
    "end_frame": 107
   },
@@ -33,7 +33,7 @@
   },
   {
    "label": "5/7",
-   "caption": "The detector parks and the door opens again.",
+   "caption": "X-rays off, the detector parks and the door opens again.",
    "start_frame": 164,
    "end_frame": 198
   },

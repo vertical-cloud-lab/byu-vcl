@@ -1,0 +1,46 @@
+{
+ "source": "https://youtu.be/IqZkvBX-7cU?t=23 (CCEM, Table Top SEM Hitachi TM4000Plus - Loading the specimen, 0:23)",
+ "video": "IqZkvBX-7cU",
+ "t": 23,
+ "pose": {
+  "drawer": 0.0
+ },
+ "points": {
+  "blue tl": [
+   143,
+   97
+  ],
+  "blue tr": [
+   239,
+   101
+  ],
+  "button": [
+   234,
+   161
+  ],
+  "badge": [
+   190,
+   138
+  ],
+  "back right top": [
+   330,
+   43
+  ]
+ },
+ "curves": {
+  "back right edge": [
+   [
+    330,
+    60
+   ],
+   [
+    329,
+    120
+   ],
+   [
+    328,
+    180
+   ]
+  ]
+ }
+}

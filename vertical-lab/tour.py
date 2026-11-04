@@ -254,10 +254,12 @@ def tour_one(inst: I.Instrument, entries: dict) -> str:
         sc.cam = frame_cam(inst.bbox(), inst.cam, pad=0.75, look_z=0.9)
     n = len([a for a in inst.actions if a[0]])
     whole = sc.cam
+    own = getattr(inst, "step_labels", {})         # {action index: labels} for an action with labels of its own
     for i, (cap, secs, targets) in enumerate(inst.actions):
         z = getattr(inst, "zoom", {}).get(i)
         cam_to = None if z is None else whole if z == "out" else close_cam(*z, direction=inst.cam)
-        sc.step(f"{min(i + 1, n)}/{n}", cap, secs, rig.move(targets), hold=0.5, labels=labels, cam_to=cam_to)
+        sc.step(f"{min(i + 1, n)}/{n}", cap, secs, rig.move(targets), hold=0.5, labels=own.get(i, labels),
+                cam_to=cam_to)
     # the hero still for the gallery: closed, the sample in place, no text
     rig.move({k: (None, 1.0 if k in inst.props else j.v0) for k, j in inst.joints.items()})(1.0)
     rig.move({f"~{k}": (None, 0.0) for k in ents})(1.0)

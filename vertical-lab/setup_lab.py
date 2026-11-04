@@ -44,7 +44,7 @@ TRAY_ITEMS = {**{k: list(v) for k, v in A.LOADS.items()}, **{k: list(v) for k, v
 ROUND4_TRAY: dict[str, list[tuple[str, float, float]]] = {
     # placed after merging, from `setup_lab.py fit`: no overlaps, every item inside its tray's rim
     "A": [("cubxl_corrosion", -300.0, -114.5)],                          # tray A's CubXL, set up for corrosion
-    "C": [("vhx", 850.0, 0.0)],                                          # beside the A1 mini
+    "C": [("vhx", 860.0, 0.0)],                                          # beside the A1 mini
     "D": [("openflexure_array", 792.0, -148.0)],                         # instruments_char's spot for the array
     "F": [("sieve", -990.0, 0.0), ("xrf", 876.0, 0.0)],
 }

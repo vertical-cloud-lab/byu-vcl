@@ -1,0 +1,137 @@
+{
+ "key": "lumenpnp",
+ "free": [
+  "feed_top",
+  "feed_in",
+  "feed_low"
+ ],
+ "params": {
+  "feed_top": 56.9,
+  "feed_in": 74.0,
+  "feed_low": -36.1
+ },
+ "start": {
+  "feed_top": 55.0,
+  "feed_in": 74.0,
+  "feed_low": -37.0
+ },
+ "views": {
+  "v42_front_right": {
+   "source": "https://youtu.be/awn-P1sYTt0?t=19",
+   "size": [
+    1280,
+    720
+   ],
+   "holdout": false,
+   "camera": [
+    1.5848395639933481,
+    0.5853337271616098,
+    -0.5207345480140642,
+    -146.43660314120015,
+    349.32385524386353,
+    1618.934488196674,
+    6.931208312487513,
+    0.0007975651414848159
+   ],
+   "focal_px": 1023.7,
+   "k1": 0.0008,
+   "rms_px_camera_only": 6.05,
+   "rms_px": 6.05,
+   "residual_px": {
+    "FR arm top inner": 2.1,
+    "FR arm bottom inner": 2.3,
+    "FR arm bottom outer": 8.1,
+    "FL arm top outer": 3.0,
+    "FL arm top inner": 7.2,
+    "FL arm bottom outer": 5.8,
+    "FL foot outer": 1.6,
+    "FL foot inner back": 7.7,
+    "FR foot back outer": 10.2,
+    "x tension arm top front left": 1.7,
+    "x motor top left": 5.8,
+    "nozzle 1 tip": 11.5,
+    "nozzle 2 tip": 4.9,
+    "right y rail top (1)": 1.3,
+    "right y rail top (2)": 3.4,
+    "right y rail top (3)": 6.7
+   }
+  },
+  "v4_front": {
+   "source": "https://youtu.be/bvGPbwndZMQ?t=10",
+   "size": [
+    1280,
+    720
+   ],
+   "holdout": false,
+   "camera": [
+    1.7246663571321528,
+    -0.1093710808261363,
+    0.10011866116277629,
+    -33.67476075151921,
+    180.74961949568421,
+    1014.3737695973564,
+    6.806507660484735,
+    -0.001271328169099367
+   ],
+   "focal_px": 903.7,
+   "k1": -0.0013,
+   "rms_px_camera_only": 7.57,
+   "rms_px": 7.44,
+   "residual_px": {
+    "FL arm top outer": 6.4,
+    "FL arm top inner": 1.6,
+    "FR arm top outer": 12.4,
+    "FR arm top inner": 1.5,
+    "FL foot outer": 0.7,
+    "FL foot inner": 11.8,
+    "FR foot outer": 7.0,
+    "x motor top left": 3.9,
+    "x motor top right": 2.5,
+    "x idler right": 4.7,
+    "z motor face": 5.6,
+    "nozzle 1 tip": 3.7,
+    "nozzle 2 tip": 5.9,
+    "front feeder 1 top front": 13.4,
+    "front feeder 1 bottom front": 11.7,
+    "front feeder 25 top front": 8.0,
+    "front feeder 25 bottom front": 6.8
+   }
+  },
+  "v4_front_check": {
+   "source": "https://youtu.be/FzCwtPgJDBg?t=4",
+   "size": [
+    1280,
+    720
+   ],
+   "holdout": true,
+   "camera": [
+    1.756609450333613,
+    -0.12573244894382243,
+    0.11064389267801393,
+    -40.75385488304713,
+    147.87568797216016,
+    987.4554810925972,
+    6.870860287202208,
+    0.0009450652488556324
+   ],
+   "focal_px": 963.8,
+   "k1": 0.0009,
+   "rms_px_camera_only": 5.58,
+   "rms_px": 5.58,
+   "residual_px": {
+    "FL arm top outer": 3.9,
+    "FL arm top inner": 2.5,
+    "FR arm top inner": 0.6,
+    "FR arm top outer": 6.0,
+    "FL foot outer": 5.8,
+    "FL foot inner": 7.9,
+    "FR foot outer": 13.1,
+    "x motor top left": 1.8,
+    "x motor top right": 1.4,
+    "x idler right": 1.5,
+    "nozzle 1 tip": 4.0,
+    "nozzle 2 tip": 5.0
+   }
+  }
+ }
+}
