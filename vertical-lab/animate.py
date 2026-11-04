@@ -354,7 +354,9 @@ class Lab:
         return self.groups(*kids)
 
 
-PARK_DEG = (-90.0, -150.0, 135.0, -75.0, -90.0, 0.0)    # folded over its base, facing the opening (q0 = -90: +y)
+PARK_DEG = (-90.0, -150.0, 135.0, -75.0, -90.0, 180.0)  # folded over its base, facing the opening (q0 = -90: +y);
+# wrist 3 at 180 deg (round 7) turns the wrist camera (ur_arm.camera_meshes) to the MiR's back: at 0 it stuck out
+# 71 mm past the MiR's side towards the machine it docks at, and caught the Kardex opening's post while docking
 
 
 def both(*fs):
