@@ -40,12 +40,11 @@ EXTRA = {"D": ("R1", "microscopy and diffraction"), "E": ("R4", "mechanical test
 TRAY_LOADS = {
     # the six OpenFlexures (4 x v7, 2 x Delta) on one pocketed sub-tray, in place of round 3's two freestanding ones
     # (PR #318: "put them in an array on some kind of sub-tray with cutouts"); setup_lab.py fit placed it here
-    # round 7 (setup_lab.py fit, with each tray's UPS, dock plate and camera posts): the SEM 15 mm forward, clear of
-    # the left camera post; the Mastersizer 60 mm forward, clear of the UPS and the tray lines; the polisher 280 mm
-    # left, clear of the right camera post (the sieve shaker went to the sieving cell on the floor, the XRF to tray M)
-    "D": [("sem", -760.0, -15.0), ("xrd", 60.0, 0.0), ("openflexure_array", 792.0, -148.0)],
+    # round 7 (setup_lab.py fit, with each tray's UPS, dock plate and camera posts): the Mastersizer 60 mm forward,
+    # clear of the UPS and the tray lines. The sieve shaker went to the sieving cell on the floor, the XRF to tray M
+    "D": [("sem", -760.0, 0.0), ("xrd", 60.0, 0.0), ("openflexure_array", 792.0, -148.0)],
     "E": [("pip", -880.0, 0.0), ("nanoindenter", -250.0, 0.0), ("mastersizer", 590.0, -60.0)],
-    "F": [("polisher", -700.0, 0.0), ("furnace", 280.0, 0.0)],      # the PX500 with its bottle holder: 630 wide
+    "F": [("polisher", -420.0, 0.0), ("furnace", 280.0, 0.0)],      # the PX500 with its bottle holder: 630 wide
 }
 # the line, left to right: x of each machine's centre; fronts at Y_FACE (the rePowder stays where round 2 put it)
 LINE = {"glovebox": -6350.0, "aconity": 3250.0, "instron_floor": 5600.0, "instron_small": 7000.0, "wire_edm": 8700.0}
