@@ -9,8 +9,9 @@ and wire head, and the holders on the MiR.
 
 | | |
 |---|---|
-| MP4, 1280 × 720, 15 fps, 115 s | [`out/mp4/alloy_workflow.mp4`](out/mp4/alloy_workflow.mp4) (7.8 MB) |
-| GIF, 640 × 360, 5 fps | [`out/alloy_workflow.gif`](out/alloy_workflow.gif) (4.5 MB) |
+| MP4, 1280 × 720, 10 fps, 159 s (round 5; re-render at 15 fps when the runner is free) | [`out/mp4/alloy_workflow.mp4`](out/mp4/alloy_workflow.mp4) (8.9 MB) |
+| GIF, 640 × 360, 5 fps | [`out/alloy_workflow.gif`](out/alloy_workflow.gif) (5.1 MB) |
+| Stills: the lance, the depowdering box | [`out/alloy_workflow_lance.png`](out/alloy_workflow_lance.png), [`out/alloy_workflow_depowder.png`](out/alloy_workflow_depowder.png) |
 | Frame range of every sub-step, and the numbers used | [`out/alloy_workflow.json`](out/alloy_workflow.json) |
 | Stills: the cut, the broken bar | [`out/alloy_workflow_cut.png`](out/alloy_workflow_cut.png), [`out/alloy_workflow_still.png`](out/alloy_workflow_still.png) |
 
@@ -23,18 +24,25 @@ and wire head, and the holders on the MiR.
 1. **The print is done.** Four ASTM E8 subsize bars lie flat on a 170 mm plate, still buried in powder. With them is
    a handling lug for the gripper. The process chamber is drawn see-through. An inset shows an SEM image of the
    lab's AlSi10Mg powder.
-2. **Door, depowdering, platform.** The chamber door opens and the platform rises. A person removes the loose
-   powder; the arm doesn't.
-3. **The arm takes the plate.** The MiR250 rolls up and the platform's clamp lets go. The arm takes the lug, with
-   the gripper pointing 30° down, lifts the plate 32 mm and draws it out. It sets the plate on a carrier on the MiR,
-   turned half a turn.
-4. **Into the wire EDM.** The MiR drives 5.5 m to the FANUC. The tank is drained, so its door can drop. The arm
+2. **Door, suction lance, platform (round 5: no person).** The chamber door opens and the MiR250 rolls up. The arm
+   takes a suction lance off a post in front of the printer, right of the chamber, and vacuums the build cylinder
+   at floor level, pointing 25° down, in four passes, while the platform rises out of the powder. A pipe along the
+   floor takes the powder to the depowdering box's separator. The lance goes back on its post. Loose grains are
+   left round the bars and the lug.
+3. **The arm takes the plate; the depowdering box.** The platform's clamp lets go. The arm takes the lug, with the
+   gripper pointing 30° down, lifts the plate 32 mm and draws it out. Holding it, the MiR moves 1.6 m to the
+   depowdering box between the printer and the 68FM-100. The box's door slides up, and the arm sets the plate's
+   zero-point stud in a chuck on a horizontal shaft and backs off. The door shuts; under argon the shaft turns the
+   plate over and back on a set path while a vibrator on it shakes the grains off, down a hopper into a closed
+   bottle. The arm takes the clean plate out and sets it on the MiR's carrier, turned half a turn.
+4. **Into the wire EDM.** The MiR drives about 3.7 m from the box to the FANUC. The tank is drained, so its door can drop. The arm
    takes the lug again, from above, and turns the plate on edge. It pushes the plate onto a zero-point receiver on
    an angle plate, bars to the front. The door goes up and the tank fills.
 5. **The cut.** It is drawn see-through. The wire runs between its guides, 0.15 mm off the plate's face, and crosses
    the plate. The sparks show where it is inside a bar. Each bar drops 14 mm onto a catch shelf once it is cut
-   through. The tank drains and the door drops. The arm takes the first bar by its end and stands it in a holder on
-   the MiR.
+   through. The tank drains and the door drops. The arm takes the first bar by its end, dips it in a cup of
+   isopropanol on a stand left of the EDM, pulls it out slowly through the air knife on the cup's rim, and stands it
+   in a holder on the MiR (round 5: the rinse and dry).
 6. **The tensile test.** The MiR drives to the 68FM-100, and the crosshead rises out of the way. The arm lowers the
    bar into the lower wedge grip, which closes, then lets go and backs off. The crosshead comes down until 40 mm of
    the bar is free between the jaws, and the upper grip closes. Then the pull: the stress-strain curve draws in step
@@ -141,11 +149,27 @@ The pages:
   - Aconity publishes no drawing of the chamber's inside. The supply cylinder behind the build cylinder, the
     recoater parked at the back, the piston and the powder are layout choices; only the 170 mm sizes are from DAL.
   - The wire head is drawn here. `instruments.wire_edm()`'s own head can't span a plate on edge, so it is hidden.
-- **Depowdering is a person's job.** No source found documents automatic depowdering on the MIDI. Utah's page lists
-  the AconitySIEVE as a separate unit. The animation says a person vacuums and brushes the powder off as the
-  platform rises.
-- **Wet bars.** Wire-cut parts come out wet with deionised water. The line has no rinse-and-dry station yet, and no
-  source was found on how fast wet AlSi10Mg stains.
+- **Depowdering (round 5): our design, on a commercial principle.** No source found documents automatic
+  depowdering on the MIDI, and Utah's page lists the AconitySIEVE as a separate unit. So:
+  - **In the chamber, the arm does what a person does** with an ATEX vacuum: a suction lance (Ø28 × 300 mm tube,
+    a 12 mm handle gripped like the lug, assumed) on a post at x = 3420, in reach from the MiR's spot at the
+    printer. A floor pipe along the fronts runs to the box. The lance points 25° down because the chamber is
+    280 mm tall; at 30°, with a 430 mm tube, the UR10e's wrist would have had to come inside its own base's reach
+    limit, so the tube was shortened.
+  - **Then a depowdering box**, 420 × 620 × 1540 mm, in the 544 mm the line leaves between the Aconity (to
+    x = 4486) and the 68FM-100 (from x = 5030). It works like Solukon's SFM-AT200: the plate clamped on a table
+    that turns about one axis on a programmed path, shaken at a variable frequency, in nitrogen or argon. Solukon
+    gives parts up to 300 × 300 × 230 mm and 60 kg ([TCT Magazine](https://www.tctmagazine.com/solukon-compact-post-processing-metal-3d-printing/));
+    a later version adds ultrasonic excitation ([Metal AM](https://www.metal-am.com/?p=82324)). Solukon publishes
+    no outer size, and [3devaluate](https://3devaluate.com/_files/ugd/cf3431_a1fb83966d694d8ea6f16706d573508d.pdf)
+    lists its installation space as 2 × 2 × 2 m, so the commercial unit would need the line opened up by about a
+    metre. Hence the narrow box: the chuck, shaft, vibrator, hopper and bottle are this model's.
+  - For four flat bars the lance does most of the work; the box is what parts with channels or overhangs need.
+- **Wet bars (round 5): a dip-and-blow cup.** Isopropanol in a Ø92 cup on a stand in the 410 mm between the
+  68SC-2 and the EDM, with an annular air knife on the rim (assumed). No source was found on how fast wet AlSi10Mg
+  stains, nor on rinsing wire-cut Al before a tensile test.
+- **The depowdering takes 7 s on screen.** No cycle time is published for a plate this size; Solukon's programs
+  run for minutes.
 - **The curve is not a measurement.** It is a smooth curve through AddUp's four values: elastic at 72 GPa, then
   Voce hardening, s = 244 + 169 (1 - e^(-100 εp)) MPa. That puts 275 MPa at 0.2 % offset and 412 MPa at 5 %, where
   it breaks. The plot says so.

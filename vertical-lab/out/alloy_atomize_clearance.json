@@ -1,0 +1,49 @@
+{
+ "cups": [
+  {
+   "cup": 1,
+   "angle_deg": 145.0,
+   "fingers_lowest_below_rim_mm": 14.7,
+   "over_seated_cups": [],
+   "into_crucible_wall_mm": 4.9
+  },
+  {
+   "cup": 2,
+   "angle_deg": 70.0,
+   "fingers_lowest_below_rim_mm": 14.7,
+   "over_seated_cups": [
+    {
+     "cup": 1,
+     "gap_mm": 5.4
+    }
+   ],
+   "into_crucible_wall_mm": 4.9
+  },
+  {
+   "cup": 3,
+   "angle_deg": 220.0,
+   "fingers_lowest_below_rim_mm": 14.6,
+   "over_seated_cups": [
+    {
+     "cup": 1,
+     "gap_mm": 5.4
+    }
+   ],
+   "into_crucible_wall_mm": 4.2
+  },
+  {
+   "cup": 4,
+   "angle_deg": 295.0,
+   "fingers_lowest_below_rim_mm": 14.6,
+   "over_seated_cups": [
+    {
+     "cup": 3,
+     "gap_mm": 5.4
+    }
+   ],
+   "into_crucible_wall_mm": 4.2
+  }
+ ],
+ "seated_cup_tops_below_rim_mm": 19.1,
+ "note": "2F-85 at closure GRIP_CUP, holding the cup 13 mm below its top as the movie does, at the release pose (#222's tight spot under the rod's adapter). into_crucible_wall_mm: how far the fingers' outer corners reach past the 57.1 mm bore while below the rim, i.e. into the graphite."
+}

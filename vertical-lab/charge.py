@@ -162,7 +162,7 @@ def _ring(ro, ri, z0, z1, x=0.0, y=0.0):
 
 
 # ------------------------------------------------------------------ fixtures
-RACK_COLS = 4
+RACK_COLS = 8               # four cups a run, two runs (Al and Cu) made up together
 RACK_PITCH = 40.0
 RACK_H = 30.0
 CUP_POCKET = 22.0           # the cup stands 22 mm deep in the rack
@@ -170,10 +170,11 @@ PLUG_POCKET = 5.0
 RACK_Y = {"cup": -20.0, "plug": 16.0}   # cups in the front row, where a level gripper reaches them from the front
 
 
-def rack():
-    """A printed charge rack (#222's holder_charge, as two rows of four): cups in the front row, so a level gripper
+def rack(cols: int = RACK_COLS):
+    """A printed charge rack (#222's holder_charge, as two rows of eight): cups in the front row, so a level gripper
     takes them from the front; their plugs behind, in shallow pockets, taken from above. Returns the block, its pocket
     rims and the seats: {"cup": [(x, y, z)], "plug": [...]}, base centres in the rack's frame."""
+    RACK_COLS = cols        # noqa: N806
     w = RACK_COLS * RACK_PITCH + 16
     d = 80.0
     body = _box(-w / 2, w / 2, -d / 2, d / 2, 0, RACK_H)
@@ -193,6 +194,86 @@ def doser_adapter():
     """A printed holder that stands a cup in the multi-doser's 28 mm vial cup (assumed): 27.7 mm across, bored for
     the 3/4 in cup."""
     return lathe([(STOCK_D / 2 + 0.3, 0.0), (27.7 / 2, 0.0), (27.7 / 2, 14.0), (STOCK_D / 2 + 0.3, 14.0)], res=48)
+
+
+# ------------------------------------------------------------------ one funnel per powder (byu-vcl PR #318)
+# The doser itself has no funnel. Charging cups by hand, the lab used paper funnels, and one funnel only ever sees one
+# powder (cross-contamination). So each powder has its own funnel, labelled with its colour, and it is only used for
+# that powder: a stem under 11 mm that points into the cup's 12.7 mm bore without touching it, a flange that rests in a
+# fork, and a band to grip by. Frame: z = 0 at the stem's tip, the funnel's axis on z. Our design, not measured.
+FUNNEL = dict(stem_od=9.0, stem_id=6.0, stem_l=12.0, flange_d=28.0, flange_t=2.0, cone_r=20.0, cone_h=22.0, wall=1.4,
+              band_d=42.0, band_h=6.0, gap=4.0)
+FUNNEL["h"] = FUNNEL["stem_l"] + FUNNEL["flange_t"] + FUNNEL["cone_h"]       # 36 mm, stem tip to rim
+FUNNEL["grasp"] = FUNNEL["h"] - FUNNEL["band_h"] / 2                          # the band's middle
+FUNNEL_LABEL = {"Si": (0.95, 0.75, 0.10), "Ni": (0.20, 0.62, 0.30), "Fe": (0.80, 0.25, 0.20), "Cu": (0.85, 0.45, 0.20),
+                "Al": (0.25, 0.45, 0.85)}
+
+
+def funnel(cut: bool = False):
+    """{part: mesh} of a powder funnel (printed PP, white), plus its label ring ("label"); cut=True: the back half."""
+    f = FUNNEL
+    s0, s1 = f["stem_l"], f["stem_l"] + f["flange_t"]
+    ro, ri, w = f["stem_od"] / 2, f["stem_id"] / 2, f["wall"]
+    top = f["h"]
+    body = lathe([(ri, 0.0), (ro, 0.0), (ro, s0), (f["flange_d"] / 2, s0), (f["flange_d"] / 2, s1),
+                  (ro + w, s1), (f["cone_r"] + w, top - f["band_h"]), (f["band_d"] / 2, top - f["band_h"]),
+                  (f["band_d"] / 2, top), (f["cone_r"], top), (ri, s1)], cut=cut, res=56)
+    label = _ring(f["band_d"] / 2 + 0.4, f["band_d"] / 2 - 0.2, top - f["band_h"] + 1.0, top - 1.0)
+    return {"body": body, "label": label}
+
+
+def funnel_stand(n: int = 2, pitch: float = 64.0):
+    """A printed stand that holds the funnels by their flanges in forks open to the front (-y), so a level gripper
+    takes one from the front: the block, and the seats (stem-tip points, stand frame)."""
+    f = FUNNEL
+    w = n * pitch + 12.0
+    plate_z = 34.0                                                   # the forks' top: the flanges rest here
+    base = _box(-w / 2, w / 2, 0.0, 40.0, 0.0, plate_z)              # the block, behind the forks
+    plate = _box(-w / 2, w / 2, -40.0, 0.0, plate_z - 5.0, plate_z)  # the fork plate, over the stems
+    foot = _box(-w / 2, w / 2, -40.0, 40.0, 0.0, 4.0)
+    xs = [-w / 2 + 6 + pitch * (i + 0.5) for i in range(n)]
+    seats = [(x, -22.0, plate_z - f["stem_l"]) for x in xs]
+    m = base.merge(plate).merge(foot)
+    for x in xs:                                                     # the slots, drawn as dark strips on the plate
+        m = m.merge(_box(x - 5.5, x + 5.5, -40.0, -22.0, plate_z - 0.2, plate_z + 0.4))
+    return m, seats
+
+
+# ------------------------------------------------------------------ the doser's cup station, rebuilt for cups
+# The rig's 100 g load cell, its vial cup, the vial post and the shared catch funnel come out. In their place: a 2020
+# post on the same base rail, a cradle (a C open to the front, so the arm slides the cup in level) and above it a
+# fork for the powder's own funnel, its stem 4 mm over the cup's rim. Rig frame (multidoser/layout.py), mm. Our
+# design: the rig's docking actuator stands 6 mm behind the auger's outlet, so nothing as big as a balance's pan fits
+# under the outlet as the rig is built; the cups are weighed on the HR-202i beside it instead.
+STATION = dict(cup_base_z=194.0, post_xy=(18.33, -110.0), post_top=282.0, cradle_t=6.0, cradle_wall=8.0)
+
+
+def station_fittings(axis_xy=(18.33, 4.76)):
+    """{name: (mesh, colour)} of the post, cradle and funnel fork, rig frame; and the seats: the cup's base and the
+    funnel's stem tip."""
+    st, f = STATION, FUNNEL
+    ax, ay = axis_xy
+    px, py = st["post_xy"]
+    zc = st["cup_base_z"]
+    alu, printed = (0.70, 0.71, 0.73), PRINT
+    post = _box(px - 10, px + 10, py - 10, py + 10, 35.0, st["post_top"])
+    # cradle: a plate under the cup and a C wall round its back half, on an arm from the post
+    plate = _box(ax - 17, ax + 17, ay - 17, ay + 17, zc - st["cradle_t"], zc)
+    arm1 = _box(ax - 8, ax + 8, py + 10, ay - 17, zc - st["cradle_t"], zc)
+    # the back half only (+x, away from the arm), so the cup slides in from -x: lathe(cut) keeps y >= 0; turn it
+    wall = lathe([(STOCK_D / 2 + 0.6, zc), (STOCK_D / 2 + 3.6, zc), (STOCK_D / 2 + 3.6, zc + st["cradle_wall"]),
+                  (STOCK_D / 2 + 0.6, zc + st["cradle_wall"])], cut=True, res=48)
+    wall = wall.rotate_z(-90.0, inplace=False).translate((ax, ay, 0), inplace=False)
+    # funnel fork: its top 4 mm + stem length over the rim; a slot open to the front (-x) for the stem
+    tip = zc + SLUG_L + f["gap"]
+    top = tip + f["stem_l"]
+    fork = _box(ax + 5.5, ax + 20, ay - 20, ay + 20, top - 4, top).merge(
+        _box(ax - 20, ax + 5.5, ay + 5.5, ay + 20, top - 4, top)).merge(
+        _box(ax - 20, ax + 5.5, ay - 20, ay - 5.5, top - 4, top))
+    arm2 = _box(ax - 8, ax + 8, py + 10, ay - 20, top - 4, top)
+    parts = {"post": (post, alu), "cradle": (plate.merge(arm1).merge(wall), printed),
+             "fork": (fork.merge(arm2), printed)}
+    return parts, {"cup": (ax, ay, zc), "funnel": (ax, ay, tip)}
 
 
 # The plug press (assumed: a benchtop electric press with a shuttle nest; the lab's own press-fit station is a 1 t
