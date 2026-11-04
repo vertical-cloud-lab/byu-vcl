@@ -702,7 +702,7 @@ def check(key: str, module: str, build, verbose=True) -> dict:
     ex = Exact(parts)
     hits = {}                                     # (i, j) -> dict
     meant = {}                                    # (i, j) -> listed in INTENDED
-    n_cand = n_conf = 0
+    n_cand = n_conf = n_skip = 0
     t1 = time.time()
     for a, fno, u, v in fr:
         sim.set(v)
@@ -720,6 +720,7 @@ def check(key: str, module: str, build, verbose=True) -> dict:
             if (i, j) not in meant:
                 meant[(i, j)] = _intended(key, parts[i], parts[j]) is not None
             if meant[(i, j)] and (i, j) in hits and fno % 10:      # intended (DED's fused beads): every 10th frame
+                n_skip += 1
                 continue
             if not ex.overlap(i, j, w[pi], w[pj]):
                 continue
@@ -785,7 +786,7 @@ def check(key: str, module: str, build, verbose=True) -> dict:
                parts=len(parts), nonconvex_parts=sum(1 for p in parts if len(p["hulls"]) > 1 or p["ratio"] < 0.97),
                mujoco_geoms=n_hull, moving_pieces=len(sim.jadr),
                pose_error_mm=round(pose_err, 6), candidates=n_cand, confirmed=n_conf,
-               rejected_by_exact=n_cand - n_conf,
+               intended_not_rechecked=n_skip, rejected_by_exact=n_cand - n_conf - n_skip,
                seconds=dict(geometry=round(t_geo, 1), sweep=round(t_sweep, 1), loose=round(t_gap, 1),
                             total=round(time.time() - t0, 1)),
                findings=findings, loose=loose)
@@ -898,9 +899,13 @@ def run(keys=None) -> dict:
         models_checked=len(done), models_skipped=sorted(k for k, r in models.items() if "skipped" in r),
         frames=sum(r["frames"] for r in done), mujoco_geoms=sum(r["mujoco_geoms"] for r in done),
         candidates=sum(r["candidates"] for r in done), confirmed=sum(r["confirmed"] for r in done),
+        rejected_by_exact=sum(r.get("rejected_by_exact", 0) for r in done),
         faults=sum(1 for r in done for f in r["findings"] if f["level"] == "fault" and not f["intended"]),
         minor=sum(1 for r in done for f in r["findings"] if f["level"] == "minor" and not f["intended"]),
+        moving_faults=sum(1 for r in done for f in r["findings"]
+                          if f["level"] == "fault" and f["kind"] == "motion" and not f["intended"]),
         intended=sum(1 for r in done for f in r["findings"] if f["intended"]),
+        loose=sum(len(r.get("loose", [])) for r in done),
         seconds=round(sum(r["seconds"]["total"] for r in done), 1))
     rep["method"] = dict(tessellation_mm_rad=TESS, touching_below_mm=TOUCH_MM, fault_from_mm=FAULT_MM, fps=FPS,
                          visual_materials_left_out=sorted(VISUAL), mujoco=__import__("mujoco").__version__)
