@@ -300,6 +300,7 @@ BOXC = {"mxlab_base": (0.20, 0.20, 0.22), "mx100": (0.62, 0.64, 0.68), "fusionx"
         "n2gen": (0.86, 0.87, 0.89)}
 CAM_ALL = [(2000, -13800, 6200), (2200, 300, 500), (0, 0, 1)]
 CAM_BACK = [(4600, -6400, 3400), (6400, 0, 900), (0, 0, 1)]
+CAM_END = [(2270, -14000, 4300), (2270, 300, 1050), (0, 0, 1)]
 CAM_J = [(-4700, -6300, 3300), (-2700, 0, 650), (0, 0, 1)]
 CAM_K = [(-1500, -6300, 3300), (0, 0, 650), (0, 0, 1)]
 CAM_L = [(4400, -6300, 3300), (2700, 0, 650), (0, 0, 1)]
@@ -477,12 +478,13 @@ def movie():
     sc.step(f"5/{n}", "Still too tall at 1000 mm (red boxes): the Meltio M450, the Instron 68SC-2 (its shortest "
             "single column, the 68SC-05, is 1020 mm) and the MPRINT. The Kobelco HIP, 1300 mm and 1100 kg, is over "
             "every Shuttle tray's rating as well.", 3.8, None, hold=1.6, cam_to=CAM_BACK, labels=tall)
-    sc.step(f"6/{n}", "About 1000 mm would put DED, desktop LPBF, an open Form 4 and an N2 generator on trays. Ask "
-            "Kardex for the Shuttle 700 and 1000's tallest opening, and a pallet tray's rating for a point load.",
-            3.6, None, hold=2.4, cam_to=CAM_ALL, still=True,
-            labels=[(f"tray {k}: {role}", (tx[k], -IN_D / 2, zt + H_TALL + 60), (0.08 + 0.22 * i, 0.18 + 0.07 * i))
-                    for i, (k, (_, role)) in enumerate(TRAYS3.items())]
-            + [("too tall at 1000 mm", (BACK[1][1], BACK_Y, H_TALL + 500), (0.84, 0.16))])
+    sc.step(f"6/{n}", "Blue 727.5 mm (today), orange ~856 mm (est.), green 1000 mm. About 1000 mm would put DED, "
+            "desktop LPBF, an open Form 4 and an N2 generator on trays. Ask Kardex for the Shuttle 700 and 1000's "
+            "tallest opening, and a pallet tray's rating for a point load.",
+            3.6, None, hold=2.4, cam_to=CAM_END, still=True,
+            labels=[(f"tray {k}: {role}", (tx[k], -IN_D / 2, zt + H_TALL), (fx, 0.20))
+                    for (k, (_, role)), fx in zip(TRAYS3.items(), (0.06, 0.30, 0.70))]
+            + [("too tall at 1000 mm", (BACK[1][1], BACK_Y, H_TALL + 500), (0.92, 0.16))])
     return sc.save()
 
 
