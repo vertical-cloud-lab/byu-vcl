@@ -33,6 +33,7 @@ h2 {
   page-break-after: avoid; break-after: avoid;
 }
 h3 { font-size: 11.5pt; margin: 13pt 0 4pt; color: #24425f; page-break-after: avoid; }
+h4 { font-size: 10.5pt; margin: 10pt 0 3pt; color: #24425f; page-break-after: avoid; }
 p, li { orphans: 2; widows: 2; }
 ul, ol { padding-left: 20pt; margin: 5pt 0; }
 li { margin: 2.5pt 0; }

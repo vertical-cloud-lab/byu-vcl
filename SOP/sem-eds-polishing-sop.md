@@ -1,6 +1,6 @@
 # Polishing SOP
 
-*Steps 1-6 are copied word for word from [Ronnie's Google Doc](https://docs.google.com/document/d/1XJjOSDlwKRht6PhplwmZmqG202qoPPqnPQxjfCyigtU/edit) on 2026-10-05. Steps 7-11 are a draft that replaces the Doc's Step 7 ("Use a vibrating polisher").*
+*Steps 1-6 are copied word for word from [Ronnie's Google Doc](https://docs.google.com/document/d/1XJjOSDlwKRht6PhplwmZmqG202qoPPqnPQxjfCyigtU/edit) on 2026-10-05. Steps 7-11 are a draft that fills in the Doc's Step 7 ("Use a vibrating polisher"), with 0.1 µm diamond instead of colloidal silica.*
 
 ### Step 1
 
@@ -61,36 +61,111 @@ Switch out sandpaper for a polishing pad. Polishing pads can be used multiple ti
 * Place the glass container into the water with a lid on top so no water gets into the glass container or touches the sample. Put the lid on top of the ultrasonicator and turn it on, cleaning for however long is needed.
 * Bring it back to the fume hood. Remove the lid carefully so no water drips into methanol. Dry with compressed air. There may be a haze over the sample, and if there is, repeat ultrasonication until haze is no longer present.
 
-> **Steps 7-11 are a draft.** They were written from the #110 discussion of
-> [09-28](https://github.com/vertical-cloud-lab/byu-vcl/issues/110#issuecomment-5877870941),
-> [09-30](https://github.com/vertical-cloud-lab/byu-vcl/issues/110#issuecomment-5920925144) and
-> [10-01](https://github.com/vertical-cloud-lab/byu-vcl/issues/110#issuecomment-5941729589), and
-> nobody has run them yet, so expect to change them after the first sample. For EDS samples they
-> replace the vibrating polisher. EBSD samples still need the colloidal silica on the vibrating
-> polisher, which isn't written up yet.
+> **Steps 7-11 are a draft.** Step 7 is the vibrating polisher the Doc planned, with 0.1 µm
+> diamond suspension in place of colloidal silica. It is Gage's May colloidal silica procedure
+> with the abrasive swapped, plus what came out of the discussion on
+> [#258](https://github.com/vertical-cloud-lab/byu-vcl/pull/258) and
+> [#110](https://github.com/vertical-cloud-lab/byu-vcl/issues/110). Nobody has run diamond on the
+> VibroMet yet, so expect to change these steps after the first sample. EBSD samples still need
+> colloidal silica, which isn't written up yet.
 
 ### Step 7
 
-Final polish on 0.1 µm diamond film. EDS doesn't need the 5 hour colloidal silica polish (that is
-for EBSD), but aluminum still needs about a 0.1 µm finish for accurate EDS. The film leaves no
-liquid to dry on the face, and any diamond left behind is carbon, which we don't measure.
+Final polish with 0.1 µm diamond on the vibrating polisher (Buehler VibroMet 2). Aluminum needs about a 0.1 µm finish for accurate EDS, but not the 4-6 hour colloidal silica polish, which is for EBSD. Diamond polishes mechanically, adds no Si, Al or Mg, and any left in the face reads as C.
 
-* The puck has to go through all of Step 6, ultrasonic included, before it goes on the film. About 1 minute in the ultrasonicator is enough, in methanol as in Step 6 or in IPA. One grain of 1 µm alumina carried onto the 0.1 µm film can scratch every sample polished on that film afterwards.
-* The polishing pad should already be off and bagged (end of Step 5). Rinse every part the alumina touched, the same way as between grits in Step 4: the metal puck holder, the rings and the table. Then dry the table completely with compressed air. A grain left on the table shows through the film as a bump.
-* Peel the backing off one 0.1 µm diamond film disc (PACE `PDAA-01P12`, 3 per pack), keeping the backing so you can put it back on for storage, like the pads. Add a tab of electroplated tape as in Step 5 so it can be pulled off later. Lay it on the clean, dry table and press it down firmly from the center outward so no air bubbles are trapped under it.
-* Settings are lighter and slower than for the papers. PACE recommends 60-120 rpm for fine film and 2-5 lb (9-22 N) per sample, with the head and table turning the same direction. If the 150 in Step 4's gentle settings is the table speed, turn it down to about 100. Use the lowest force the machine allows, since too much force tears the film.
-* Unlike the alumina pad, the film runs wet. Turn the water on (link + H2O, as in Step 4) before lowering the puck and leave it on the whole time, positioned so it washes away from the sample. The water carries off what the film cuts; without it the film clogs and can tear.
-* Use link+down to lower the puck onto the film, set the time to 1 minute and press start. After each run, remove the puck from the holder, rinse it with DI water into the deep glass container, dry it with compressed air, and check it under the optical microscope. Never set the polished side facing down.
-* Stop when the scratches from the alumina are gone. The film's own scratches are about 0.1 µm, mostly too fine to see in an optical microscope, so any scratch you can still see is left over from the alumina or from a stray grain. Expect a few minutes in total: PACE's rule of thumb is 30-90 seconds per micron removed, and the finest film cuts slowest. If alumina scratches are still there after about 10 minutes, the film may be worn, or the jump from 1 µm may be too big for it. The 0.5 µm film (PACE `PDAA-05P12`) between the alumina and this film would fix the second.
-* Right after the last run, rinse the face with DI water before the machine's water can dry on it. If the machine runs on tap water, it dries to calcium and magnesium spots, and Mg is one of the elements EDS is measuring.
-* Rinse the film, dry it with compressed air, put its backing back on, and store it in a bag labeled "0.1 µm diamond film" and the metal that was polished on it. Like the pads, use each film for one alloy only. Reuse it until it stops cutting (each run takes longer) or shows bald or worn patches.
+This is Gage's colloidal silica procedure with the silica swapped for diamond. His procedure comes from his two videos of the May AlSi10Mg sample ([setup](https://youtu.be/OvVvYESOxqw) and [removal and cleaning](https://youtu.be/kcyESipwU8Y)) and his [cleaning sheet](https://github.com/vertical-cloud-lab/byu-vcl/issues/110#issuecomment-4513325105). The diamond changes come from the VibroMet 2 manual, PACE's guides and two Edison literature searches, listed under Sources.
+
+> **Diamond doesn't need the constant spray.** Colloidal silica had to stay wet because it sets as it dries: the particles bond to each other and to the face, and the layer won't wash off. Drying causes it, not oxygen. Diamond doesn't set. `WPC-0110` is 94-98% water, with at most 0.1% PEG and 0.2% surfactant, both water-soluble, so dried suspension leaves loose diamond and a film, and both wash off. Edison found no study of dried diamond residue on aluminum, so this rests on the chemistry. Its advice: "Prompt but not frantic: aim to begin the water rinse within roughly a minute and never let a thick slurry puddle dry." You can also take the puck out partway to check it, which you couldn't do with silica.
+
+> **The water doesn't add oxide that matters.** The diamond grinds oxide off as fast as it forms, so only the oxide that grows after the last pass reaches the SEM, and about 1.7 nm of that forms in air within 10 minutes, whatever was on the face. An alcohol-based liquid wouldn't keep oxygen away either: IPA dissolves about 8 times as much oxygen as water. What matters is keeping water contact short once the polish stops: rinse, push the water off with alcohol, and dry (Step 8).
+
+> **The risk to watch for is embedded diamond.** Buehler polished cast Al-Si alloys with 9 and 1 µm diamond suspensions and found the surfaces "heavily embedded with diamond abrasive", mostly in the aluminum. Diamond paste didn't embed, and Buehler concluded "embedment is mainly a problem with fine diamond particles". Edison found no published run of a diamond suspension this fine on aluminum, in a vibratory polisher or otherwise; the literature uses colloidal silica for this step. Embedded diamond reads as C in EDS. So keep the load light and the run short, and check the first sample for it at the SEM (see [Checking the first sample](#checking-the-first-sample)).
+
+![Gage's colloidal silica run, May 2026](images/vibromet-gage-2026-05.jpg)
+
+*Frames from Gage's videos of the colloidal silica run: (a) tape pull-tab on the back of a new cloth, (b) clamp ring going on, (c) the specimen holder with one weight, running, (d) spraying the puck as it comes off the cloth, which diamond doesn't need, (e) the puck face up under ethanol.*
+
+#### What you need
+
+| Item | Notes |
+|---|---|
+| 0.1 µm polycrystalline diamond, water-based (PACE DIAMAT `WPC-0110`) | PACE confirmed it has no silica or alumina |
+| A new 12" adhesive-back final polishing cloth | Allied Red Final C (`90-150-355`, on hand) until the Mark V pad arrives (see 7b). Never one that has had colloidal silica or alumina on it |
+| DI water squirt bottle | DI only. Tap water dries to Ca and Mg spots, and Mg is one of the elements EDS is measuring |
+| Alcohol squirt bottle | 200-proof ethanol (what Gage sprayed) or IPA of at least 99%. Not 70% IPA: it carries enough water to leave spots |
+| Two clean glass dishes, with lids or parafilm | Deep enough to cover the puck, as in Gage's sheet |
+| Electroplated tape | For the pull tab on the cloth |
+| Lint-free wipes, paper towels, powder-free gloves, pH strips | |
+| Clean, dry gas | Nitrogen, or a can of non-flammable duster (PACE `AIR-1000`), if the lab has either. Otherwise the fume hood's compressed air (see Open questions) |
+| Ultrasonicator, optical microscope, timer | |
+
+#### 7a. Clean the VibroMet
+
+Other people use it with colloidal silica, and titanium runs add hydrogen peroxide. Any silica left in the bowl ends up on your sample as Si.
+
+* If someone else's cloth is in the bowl, don't touch it. Ask them, or wait.
+* Clean the bowl with water and paper towels until all loose material is out. Look hard at the rim, the clamp ring and under the ring, where silica dries into a white crust. Then wipe it all down with ethanol. Gage did water, then ethanol.
+* The bowl has to be clean and **dry** before an adhesive cloth goes in (VibroMet 2 manual, p. 9).
+* Clean the specimen holder and the weight the same way, water then ethanol, including the bottom face that sits on the cloth.
+
+#### 7b. Put in a new cloth
+
+* **Which cloth.** Use Allied Red Final C (`90-150-355`) until the Mark V pad arrives. Allied rates it for "diamond (3-0.02 micron)" and calls it "especially effective when preparing materials for SEM or TEM evaluation". It has more nap than the low-nap cloths the literature prefers for aluminum. The fibers bend around the hard Si and keep polishing the soft aluminum next to it, which leaves the Si standing proud. That's one more reason to keep the run short (7e).
+* **When the Mark V pad arrives,** check its part number. Black Chem (`CPS-12A`) is a low-nap polymer sheet with no fibers, so it is flatter than Red Final C: switch to it if the SEM shows relief. Black velvet (`VC12`) is the same nap class as Red Final C, so it changes nothing, and its back is plain, so only the clamp ring holds it down.
+* Keep new cloths in their bag until you use them, and open the bag at the polisher, away from the belt sander and the SiC papers.
+* Peel the backing off and keep it, so it can go back on for storage. Stick a tab of electroplated tape to the back near the edge, so the cloth can be pulled out later (photo a).
+* Lay the cloth in the bowl and press it flat from the center out, so no air is trapped under it.
+* Put the clamp ring on and tighten its knobs (photo b).
+* Write on the backing and the bag: "0.1 µm diamond, AlSi10Mg only", the cloth's name and the date. One cloth per abrasive and alloy, like the pads in Step 5. Write the cloth into the sample record too (Step 10), so samples polished on different cloths never get pooled without anyone knowing.
+
+#### 7c. Charge the cloth with diamond
+
+* Look at the bottle first. Gage found dried crust around the colloidal silica cap ("those chunks are bigger than 0.05"). Wipe the cap and the neck with a damp lint-free wipe, pulling away from the opening.
+* If there's sediment at the bottom of the bottle, turn the closed bottle over gently a few times to mix it back in. Diamond can settle out; colloidal silica doesn't.
+* The first time a bottle is opened, pour a few drops into a clean dish and check them with a pH strip. Never dip the strip in the bottle. The safety data sheet gives both "7~9" and "9-11". Aluminum's oxide is only stable between about pH 4.5 and 8.5, so above that the suspension slowly etches the face. Write the pH on the bottle. If it's 9 or more, keep runs as short as possible and rinse promptly.
+* Wet the cloth thoroughly with DI water first (manual, p. 12).
+* Pour the diamond on and spread it with a clean gloved finger until the whole cloth is covered with a film of liquid (manual, p. 12). Gage used 200 mL of silica, "the amount to cover the bottom". Diamond costs more, so start with **about 50 mL** poured over the wet cloth, spread it, and add more diamond until the whole cloth has a film of liquid. Write down how much it took.
+* Use the suspension as it comes. PACE sells it ready to use, so don't thin it; only add DI water later to replace what evaporates. Don't add any lubricant or extender. PACE's own diamond lapping film lube (PACE LUBE) lists 5-10% amorphous silica, which is exactly the Si this procedure keeps off the face.
+* If the first check shows little progress, add more diamond. PACE's fix for a slow polish is to "recharge pad with diamond".
+
+#### 7d. Load the puck and start
+
+* Slide the puck into the specimen holder, face down, and tighten the hex screw.
+* Wet the bottom of the holder with DI water before you set it on the cloth. The manual says this prevents chatter (p. 11).
+* Put the weight on the holder. Gage used one weight and never needed more ("you can actually screw in a post and add more weights, but I've never felt like I needed to"). Keep it at one for aluminum, since more force presses more diamond into the metal.
+* Put the lid on. Press the power button, then raise the amplitude. Gage starts at 50% and watches: the holder should travel smoothly around the bowl in a circle. If it hits the wall, turn the amplitude down.
+* Set a timer for 30 minutes.
+
+#### 7e. Check every 30 minutes, and stop when the alumina scratches are gone
+
+* Expect 1-2 hours, and never more than 4. The manual says to check every 15-30 minutes and that "some polishing times will exceed one hour" (p. 13). Gage ran silica for 4 hours, and 6 on a slow day. Edison found no published time for diamond and suggests a first trial of 1-2 hours, checked every 30 minutes. Check rather than guess, and write down how long it took.
+* To check: stop the machine and lift the holder out. Rinse the face with DI water, then right away with alcohol to push the water off, and dry it. Look at it under the optical microscope at the highest magnification. Never set the polished side face down. Before putting it back, rinse the bottom of the holder with DI water. Keep the lid on the bowl while you're away.
+* Stop when the scratches from the 1 µm alumina are gone, and don't keep going after that. PACE: "Over-polishing is the most common operator error: it rounds edges, pulls inclusions, and produces relief between phases of different hardness." On a napped cloth, extra time polishes the soft aluminum away from the hard Si, and at the SEM that relief reads as low Si.
+* If scratches are still there after 4 hours, they're deeper than the alumina leaves, probably from the 1200 paper. Go back to Step 5 instead of running longer.
+* If the cloth starts to look dry, add DI water. Never let it turn tacky or dry in patches. Keep the lid on so it evaporates slowly.
+* **Don't leave it running overnight,** or alone past the next check. Overnight runs are a colloidal silica habit, for EBSD. Here the extra hours only add relief around the Si. By a rough estimate, an uncovered bowl loses 5-10 mL of water an hour, so the cloth can dry out before morning. And if the machine stops, the puck sits face down in the slurry.
+* **If you can't stay until it's done,** stop at a check, clean the puck as in Step 8, put it in the vacuum jar (Step 11), and finish another day. With diamond you can stop and restart; with silica you couldn't. Leave the cloth in the bowl, still charged, with the lid on. If it has dried out by the time you come back, re-wet it with DI water and spread it as in 7c.
+* Once you know how long a sample takes, you can leave it alone for that long with the lid on, but no longer.
 
 ### Step 8
 
-Clean the puck after the film.
+Take the puck out and clean it, then clean up the VibroMet.
 
-* Clean as in Step 6: the puck face up in a clean glass container, covered in IPA or methanol, lid on, in the ultrasonicator for about 1 minute. The IPA or methanol always goes in the lidded glass container sitting in the water, never straight into the ultrasonicator tank, because both are flammable.
-* Dry it completely with compressed air, including the edges of the face. The tape in Step 9 won't seal on a wet surface, and it would trap whatever is under it.
+#### 8a. Clean the puck
+
+* Set up before you stop the machine: the DI water and alcohol squirt bottles, two clean glass dishes deep enough to cover the puck (one with DI water, one with alcohol), and the ultrasonicator, cleaned and filled with DI water as in Step 6.
+* Stop the machine and lift the holder off. Rinse the face generously with DI water within about a minute. Water is what dissolves the suspension's additives; alcohol only pushes the water off afterwards. There's no need for the non-stop stream the silica needed.
+* Take the puck out of the holder and put it face up in the dish of DI water. Cover the dish (lid or parafilm, as Gage did) and stand it in the ultrasonicator for 2 minutes. PACE's cleaning guide gives 1-3 minutes. Don't go much longer, because pores and the gap between the metal and the Bakelite can soak up liquid.
+* Move the puck to the dish of alcohol, cover it, and give it 2 more minutes. Methanol works too, as in Step 6, but Edison found nothing that needs methanol in particular, and ethanol is less toxic. Alcohol always stays in the covered dish, never straight in the tank, because it's flammable.
+* Dry it right away, sweeping the gas across the face. Gage: "I always just blow right along the sample, and the sides just have to dry slow." No heat: PACE's aluminum guide says "no heated drying". Dry the edges of the face completely too. The tape in Step 9 won't seal on a wet surface, and it would trap whatever is under it. Never leave the puck sitting in water, and never let water dry on the face.
+* Look at it under the optical microscope. If there's haze or specks, repeat both baths. If they're still there, add a drop of neutral lab detergent to the water bath for one more round, then rinse with DI water and finish with the alcohol bath. Detergent isn't routine because it leaves its own residue.
+* Then go straight on to Step 9. If you have to stop, this is the place to do it (see Step 11).
+
+#### 8b. Clean up the VibroMet
+
+* Soak up the free liquid in the bowl with paper towels. PACE's safety data sheet lists no hazardous ingredients but says to dispose of it according to local rules, so ask the lab manager before pouring larger amounts down the sink.
+* Rinse the cloth with DI water. If nobody else needs the bowl, leave the cloth in it with the lid on. Otherwise pull it out by the tab, put the backing back on and bag it. Allied says each removal weakens the adhesive, and slurry gets under a cloth that lifts, so replace a cloth that no longer lies flat. When the Mark V pad goes in, throw the Red Final C disc away rather than sticking it back in later.
+* Wash the bowl, the clamp ring, the holder and the weight with water, then wipe them with ethanol, as in 7a.
 
 ### Step 9
 
@@ -103,7 +178,7 @@ Tape the face and cut the sample out of the puck. The tape keeps the saw's water
 * Then cut parallel to the face, a few millimeters less deep than the sample is tall, so the cut goes through the metal. The piece then has a bare metal back, which is what conducts to the SEM stub (Bakelite doesn't conduct), and it is no taller than about 1 cm, as in Step 1.
 * Do the four side cuts first, while there's plenty of Bakelite to clamp, and the parallel cut last. Slow down at the end of each cut. If the piece drops into the water, only reach for it after the blade has stopped.
 * With the tape still on, rinse the piece with DI water and dry it, so saw slurry on the sides can't run onto the face when the tape comes off.
-* Peel the tape off slowly, starting from a Bakelite corner. If the tape stayed down, just blow the face off with compressed air; it doesn't need another solvent clean. If an edge lifted and left a film or stain, cleaning won't rescue that strip, so keep EDS away from it.
+* Peel the tape off slowly, starting from a Bakelite corner. If the tape stayed down, just blow the face off with the dry gas from Step 8; it doesn't need another solvent clean. If an edge lifted and left a film or stain, cleaning won't rescue that strip, so keep EDS away from it.
 * Disassemble the saw and return the bag to the PSC, as at the end of Step 1.
 
 ### Step 10
@@ -114,12 +189,15 @@ Mount the sample on an SEM stub.
 * Stick a 12 mm carbon tab (Ted Pella `16084-1`) on a clean pin stub and peel off the tab's top liner.
 * Set the piece on the tab with the bare metal back down and the polished face up, centered so nothing hangs over the edge of the stub. Press it down by its sides, never on the face.
 * If Bakelite ended up between the metal and the tab, the sample isn't grounded. Run a strip of carbon tape, or a thin line of the silver paint, from the edge of the metal over the Bakelite and down to the stub, well away from where you'll take EDS. Let silver paint dry completely before the stub goes into the vacuum jar or the SEM.
-* Write down which stub is which (sample, alloy, date, and "0.1 µm diamond film"), for example by its position in the vacuum jar.
+* Write down which stub is which: sample, alloy, date, "0.1 µm diamond, VibroMet", the cloth (Red Final C or the Mark V pad) and how long the polish took. Its position in the vacuum jar is one way to keep track.
 
 ### Step 11
 
 Store the stub under vacuum until the SEM ([caliber#16](https://github.com/vertical-cloud-lab/caliber/issues/16)).
 
+* From the moment the puck comes off the cloth, its face should be in one of two places: being worked on (Steps 8-10) or in this jar. Never on the bench or in an open dish.
+* Do Steps 8-10 in one sitting if you can. If you have to stop, stop after Step 8: put the dry puck in the jar, face up in a covered dish, and come back for Steps 9-10. Don't stop with the Kapton on, since its silicone adhesive is touching the face.
+* The jar doesn't keep oxide off. About 1.7 nm forms within 10 minutes of the polish, whatever you do. The jar keeps the face clean and dry, and keeps that oxide from growing much past 3 nm while the stub waits.
 * Stand the stub by its pin in one of the holes in the vacuum jar's blue stub plate. Keep the desiccant pack from touching any stub.
 * Close the lid, connect the pump hose to the jar, open the jar's valve (the black knob), and run the pump for about 45 seconds.
 * Close the jar's valve before you switch the pump off. An oil-sealed pump that stops while it is still open to the jar can draw oil back up the hose toward the samples.
@@ -130,18 +208,58 @@ Store the stub under vacuum until the SEM ([caliber#16](https://github.com/verti
 
 ### Checking the first sample
 
-* At the SEM, take SE and BSE images at 50,000x or more before trusting any numbers. Look for leftover scratches and for dark specks in BSE, which would be embedded diamond. Run EDS at 5 kV with C and O left in the element list.
-* If you can, put the pure Al pellet through Steps 7-10 with it. Pure Al has no Si, so any Si on the pellet came from the process.
+* At the SEM, take SE and BSE images at 50,000x or more before trusting any numbers.
+    * BSE: embedded diamond is carbon, so it shows as dark specks, mostly in the aluminum between the Si.
+    * SE: bright, raised Si walls and rounded pore edges mean relief, from too long a run or too much nap. Relief reads as low Si. In the [Oct 22 estimate](https://github.com/vertical-cloud-lab/caliber/pull/6#issuecomment-6352466860), a facet tilted 10° away from the detector read Si 4.5% low.
+    * Scratches left over from the alumina.
+* Run EDS at 5 kV with C and O left in the element list. About 1 wt% O at 5 kV is the native oxide, and on its own doesn't mean anything went wrong ([10-08 estimate](https://github.com/vertical-cloud-lab/byu-vcl/pull/258#issuecomment-6067927580)).
+* If you can, put the pure Al pellet through Steps 7-11 with it: same cloth, same day, same jar and same SEM session, so both oxides are the same age. Pure Al has no Si and no O inside, so any Si it shows came from the process, and its O is the oxide plus any residue. Compare its C with the sample's.
+* If BSE shows a lot of embedded diamond, don't polish longer or harder. Tell the thread, and ask Mike what he does (see Open questions). The other options:
+    * The 0.1 µm diamond film on the rotary polisher, which was this SOP's Step 7 until 2026-11-04 ([that version](https://github.com/vertical-cloud-lab/byu-vcl/blob/5ae088c/SOP/sem-eds-polishing-sop.md#step-7)). Its diamond is bonded to the backing, so less of it is loose to press into the aluminum, but nobody has tested that on this alloy either. Clean new film before using it ([10-21](https://github.com/vertical-cloud-lab/byu-vcl/pull/258#issuecomment-6305783302)).
+    * Colloidal silica, which is what the literature uses for this step, at the risk of Si residue.
+* If SE shows relief, shorten the run, or switch to the low-nap Black Chem pad.
+
+### Colloidal silica and diamond, side by side
+
+| | Gage's colloidal silica run (May) | Step 7 (0.1 µm diamond) |
+|---|---|---|
+| Abrasive | 0.05 µm colloidal silica, 200 mL | 0.1 µm water-based polycrystalline diamond (`WPC-0110`), about 50 mL to start |
+| How it polishes | Chemical and mechanical: the alkaline silica also attacks the metal | Mechanical only |
+| Time | 4 h, 6 h that day. Overnight is common for EBSD | Until the alumina scratches are gone: 1-2 h expected, never more than 4, never overnight |
+| Checking partway | Not practical: every check means the full clean | Rinse, dry, look, put it back |
+| Taking it out | Never let air reach the face: a non-stop ethanol stream, straight into a bowl of ethanol | Rinse with DI water within about a minute, then alcohol |
+| Cleaning | Acetone 10 min, ethanol 8 min, methanol 5 min, all ultrasonic | 2 min ultrasonic in DI water, then 2 min in alcohol |
+| What can go wrong | Dried silica, which reads as Si and O in EDS | Embedded diamond, which reads as C. Buehler found fine diamond suspensions embed in Al-Si |
 
 ### Open questions
 
-* Which of Step 4's gentle settings (35, 30, 150) is the force, the head speed and the table speed. Step 7 needs the table at about 100 rpm and the lowest force.
+* Ask Mike what he runs on the vibratory polisher for aluminum with his 0.1 µm diamond: time, weight, cloth, and whether he has seen embedded diamond. He suggested the slurry, and Edison found no published procedure to compare against.
+* Which Mark V pad was ordered, black `CPS-12A` or `VC12`? See 7b and the [11-02 comparison](https://github.com/vertical-cloud-lab/byu-vcl/pull/258#issuecomment-6591394154).
+* How much suspension does a charge take? Write down what the first run used. If the bottle is the 250 mL size, that may only be a few charges.
+* What is the suspension's pH? PACE's safety data sheet gives both "7~9" and "9-11" (Section 9). The pH strip in 7c answers it.
+* Where should used diamond suspension go? Gage poured silica down the sink. PACE's safety data sheet says to follow local regulations (Section 13).
+* Does the VibroMet's cycle control stop the machine after a set time? If it does, it can time the 30-minute checks. The manual doesn't make this clear.
+* How fast does the cloth dry with the lid on? This only matters if runs turn out to need more than 2 hours. To find out, run the machine with only DI water on the cloth and the lid on, and look at it every hour.
+* Which of Step 4's gentle settings (35, 30, 150) is the force, the head speed and the table speed. See the [comparison of Steps 1-6 with PACE](../docs/sem-eds-polishing-sop-steps-1-6-vs-pace.md).
 * Does the SEM have a holder for 1 1/4" mounts? If it does, Steps 9 and 10 can be skipped: a strip of carbon tape from the edge of the metal face to the holder grounds the sample. Worth asking Mike.
 * The Kapton roll is 1/4" wide. A 1" roll would cover the face in one piece, with no seams.
-* The ASTM E1078 notes in [#77](https://github.com/vertical-cloud-lab/byu-vcl/issues/77#issuecomment-4400486364) say not to spray the specimen with compressed air, and this SOP uses the fume hood's compressed air throughout. Worth asking Mike whether that air is filtered, or whether to use nitrogen for the last dry in Step 8.
+* Is the fume hood's compressed air filtered and oil-free? The ASTM E1078 notes in [#77](https://github.com/vertical-cloud-lab/byu-vcl/issues/77#issuecomment-4400486364) say not to spray the specimen with compressed air, and PACE agrees: "shop air carries oil and moisture that will recontaminate the specimen". If nobody knows, get nitrogen or a can of PACE `AIR-1000` ($14) for Steps 7-9. Steps 1-6 still say compressed air, along with the rest of the PACE comparison.
 
 ### Sources for Steps 7-11
 
-* Film settings, timing and replacement: PACE Technologies, [Lapping Films](https://www.metallographic.com/metallographic-technical/Metallography-Technical-Lapping-Films.htm).
+* Gage's videos: [Setting up the vibrator polisher](https://youtu.be/OvVvYESOxqw) (posted 05-18) and [Vibrator polishing + final cleaning + SEM stub mounting](https://youtu.be/kcyESipwU8Y) (05-21), from [digital-alloy-lab#138](https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/138#issuecomment-6353375812). His cleaning sheet is in [#110](https://github.com/vertical-cloud-lab/byu-vcl/issues/110#issuecomment-4513325105).
+* Buehler, VibroMet 2 manual MA671635_13.1 (2012), pp. 9-14, [ManualsLib](https://www.manualslib.com/manual/1839673/Buehler-Vibromet-2.html). The page numbers are ManualsLib's.
+* G. Vander Voort, "Preparation of Cast Aluminum-Silicon Alloys," [Buehler Tech-Notes 3(2)](https://www.buehler.com/assets/solutions/technotes/vol3_issue2.pdf): diamond embedding from fine suspensions.
+* PACE Technologies:
+    * Guides: [Cleaning](https://www.metallographic.com/metallographic-consumables/cleaning), [Polishing methods](https://metallographic.com/guides/polishing-methods) (over-polishing, overnight vibratory runs), [Polycrystalline diamond](https://metallographic.com/metallographic-consumables/polishing/polycrystalline-diamond), [Aluminum](https://www.metallographic.com/guides/aluminum-sample-preparation) (no heated drying).
+    * Safety data sheets: [DIAMAT water-based diamond](https://www.metallographic.com/sds/DIAMAT-Water-based-DIAMOND.pdf) (revised 07-15-2024), [PACE LUBE](https://www.metallographic.com/sds/PACE-LUBE.pdf).
+* Allied High Tech: [Red Final C](https://consumables.alliedhightech.com/Red-Final-C-p/rfc.htm), and the [Polishing Cloths product guide v1.6](https://www.alliedhightech.com/Media/Default/images/PG%20-%20Polishing%20Cloths%20v1.6.pdf), p. 1, on removing and re-applying adhesive cloths.
+* Mark V: [Black Chem `CPS-12A`](https://markvlab.com/polishing-cloths-home/product/1118-12-psa-polytech-supreme-chem-cloth-10-pkg) and [black velvet `VC12`](https://markvlab.com/polishing-cloths/product/1183-ray-vel-cloth-f-12-wheel-10-pkg).
 * Aluminum needs a 0.1 µm finish: Geller & Engle, NIST, [doi:10.6028/jres.107.051](https://doi.org/10.6028/jres.107.051) ("Aluminum and copper: these metals scratch easily, requiring 0.1 µm to finish").
-* Why diamond film and not SiC or silica: the [09-28 write-up](https://github.com/vertical-cloud-lab/byu-vcl/blob/cc9b9cb/docs/sem-eds-polishing-lapping-film.md).
+* Oxide and water:
+    * Oxide growth in air: E. Hedrick et al., [arXiv:2603.13183](https://arxiv.org/abs/2603.13183) (2026), Fig. 4; R. K. Hart, Proc. R. Soc. A 236, 68-88 (1956), [doi:10.1098/rspa.1956.0113](https://doi.org/10.1098/rspa.1956.0113).
+    * Oxide stable from pH 4.5 to 8.5: W. J. Fullen and J. Deheck, "[Aluminum Surface Finishing Corrosion Causes and Troubleshooting](https://pfonline.com/articles/aluminum-surface-finishing-corrosion-causes-and-troubleshooting)," Products Finishing.
+    * Oxygen dissolved in IPA and in water: R. Battino et al., J. Phys. Chem. Ref. Data 12, 163 (1983), [doi:10.1063/1.555680](https://doi.org/10.1063/1.555680).
+* Edison `LITERATURE_HIGH` searches, 2026-11-03: [keep-wet and cleaning](../outputs/edison-vibratory-diamond-2026-11-03/keep_wet-answer.md) and [diamond on a vibratory polisher](../outputs/edison-vibratory-diamond-2026-11-03/vibratory_diamond-answer.md), with full trajectories in the same folder.
+* Why not colloidal silica or SiC for the EDS finish: the [09-28 write-up](https://github.com/vertical-cloud-lab/byu-vcl/blob/cc9b9cb/docs/sem-eds-polishing-lapping-film.md).
+* The #258 discussion behind these steps: [Steps 1-6 against PACE](https://github.com/vertical-cloud-lab/byu-vcl/pull/258#issuecomment-6025484258) (10-06), [the vacuum jar and oxide](https://github.com/vertical-cloud-lab/byu-vcl/pull/258#issuecomment-6067927580) (10-08), [water or IPA](https://github.com/vertical-cloud-lab/byu-vcl/pull/258#issuecomment-6305531421) and [particles on new film](https://github.com/vertical-cloud-lab/byu-vcl/pull/258#issuecomment-6305783302) (10-21), [Red Final C and the black pads](https://github.com/vertical-cloud-lab/byu-vcl/pull/258#issuecomment-6591394154) (11-02), [the vibratory procedure](https://github.com/vertical-cloud-lab/byu-vcl/pull/258#issuecomment-6616908377) and [overnight runs](https://github.com/vertical-cloud-lab/byu-vcl/pull/258#issuecomment-6618127160) (11-03).
