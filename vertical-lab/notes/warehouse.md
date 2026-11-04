@@ -5,7 +5,7 @@ Links are relative to `vertical-lab/`, so this section can go into the README as
 | Scene | GIF (640 px, 5 fps) | MP4 (1280 × 720, 15 fps) | Still |
 |---|---|---|---|
 | **Warehouse**: the VLM and the floor machines on an open floor, two MiR250 + UR10e units driving between docks (89 s) | [`out/warehouse.gif`](out/warehouse.gif) | [`out/mp4/warehouse.mp4`](out/mp4/warehouse.mp4) | [`out/warehouse_still.png`](out/warehouse_still.png) |
-| **Set up from scratch**: tape, utilities, the VLM, the machines, the arms, trays A-F, the cameras, an orbit (1 min 51 s) | [`out/setup_lab.gif`](out/setup_lab.gif) | [`out/mp4/setup_lab.mp4`](out/mp4/setup_lab.mp4) | [`out/setup_lab_still.png`](out/setup_lab_still.png) |
+| **Set up from scratch**: tape, utilities, the VLM, the machines, the arms, trays A-I, the cameras, an orbit (2 min 22 s) | [`out/setup_lab.gif`](out/setup_lab.gif) | [`out/mp4/setup_lab.mp4`](out/mp4/setup_lab.mp4) | [`out/setup_lab_still.png`](out/setup_lab_still.png) |
 
 `out/<name>.json` gives the frame range of every sub-step, as for the other chapters.
 
@@ -193,7 +193,8 @@ fronts of the machines for people when the rail is off.
    - cable trays over both rows, with a power and network drop to every station;
    - 208 V three-phase to the VLM (#53);
    - an argon line from a cylinder manifold to the glovebox, the rePowder, the Aconity and the DED.
-4. The VLM, as round 2's assembly but shorter. It now has six trays.
+4. The VLM, as round 2's assembly but shorter. It now has nine trays, in a unit assumed 4450 mm tall, 500 mm more than
+   #53's (PR #320; see below).
 5. The floor machines come in on their footprints.
 6. The first unit is put together on its charger:
    - the MiR250 rolls on;
@@ -204,7 +205,7 @@ fronts of the machines for people when the rail is off.
    - the 2F-85 goes on the flange.
 
    Then the second unit appears on the other charger.
-7. Trays A to F come to the opening one at a time and are loaded through it. People do the loading: most instruments
+7. Trays A to I come to the opening one at a time and are loaded through it. People do the loading: most instruments
    weigh more than the arm's 12.5 kg.
 8. The cameras go on.
 9. An orbit.
@@ -214,8 +215,16 @@ What is loaded is data, so the same script renders the full lab once the other m
 - `ROUND4_TRAY` holds the round-4 tray instruments. They were placed after merging, from `setup_lab.py fit`:
   - the corrosion CubXL on A, in place of round 2's CubXL;
   - the VHX on C;
-  - the OpenFlexure array on D, in place of the two freestanding microscopes;
-  - the sieve shaker and the XRF on F.
+  - the sieve shaker and the XRF on F;
+  - since PR #320, `fab_trays.py`'s trays G (two Form 4s, Form Wash, Form Cure), H (the stencil printer turned 90°,
+    the LumenPnP) and I (two SnowPods), from `fab_tour.load()`. An item can carry a turn about z, and a y of None puts
+    its front 30 mm behind the tray's lip, as in `fab_trays.py`. G and I take new slots at the top of each column
+    (F3, R5 at 3475 mm, 692 mm of goods), and H the front column under the opening (F0 at 300 mm, 501 mm). That is
+    why the unit is assumed 4450 mm tall, in this scene only: Kardex builds the XP 500 from 2550 to 30,050 mm in
+    100 mm steps.
+
+  The OpenFlexure array on D, in place of the two freestanding microscopes, is in `line.TRAY_LOADS` itself since
+  PR #320, so the line scene shows it too.
 
   `REPLACED` lists what they replace.
 - `warehouse.STATIONS` holds the floor (`ded`, `packaging`). The packaging station stands on a 900 mm bench

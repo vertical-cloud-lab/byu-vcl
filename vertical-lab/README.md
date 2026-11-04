@@ -299,7 +299,8 @@ model is built from these:
   in the line, next to the Aconity MIDI.
 - **The Shuttle is full.** Its six slots hold trays A-F, and its 3950 mm height is set by the ceiling (#53). So trays G,
   H and I need a second Shuttle, as trays D-F already might (see the PR description). G and H are shorter than the
-  others, 554 and 450 mm of product, so they would take slots about 650 and 550 mm apart, not 800.
+  others, 554 and 450 mm of product, so they would take slots about 650 and 550 mm apart, not 800. The set-up scene
+  takes the other way out: a unit 500 mm taller (see [the lab set up from scratch](#the-lab-set-up-from-scratch)).
 - **The Form 4 and the Form Cure open only at the opening.** The Form 4's cover opens to 844 mm, which is more than a
   slot takes and about the 845 mm under the header. The Cure's door swings out in front. The Form Wash fits even with
   its lid open, 714 mm, with 13.5 mm to spare.
@@ -336,7 +337,7 @@ its own notes file, with every source:
 
 | Video | GIF | MP4 | YouTube (unlisted) |
 |---|---|---|---|
-| **The lab set up from scratch**: an empty warehouse bay, the layout, utilities, the VLM, the floor machines, the two MiR250 + UR10e units put together, every tray loaded (A–F, with round 4's instruments), the cameras | [GIF](out/setup_lab.gif) | [MP4](out/mp4/setup_lab.mp4) | [on YouTube](https://www.youtube.com/watch?v=bITROBu1NNE) |
+| **The lab set up from scratch**: an empty warehouse bay, the layout, utilities, the VLM, the floor machines, the two MiR250 + UR10e units put together, every tray loaded (A–I, with round 4's instruments; trays G–I since PR #320, in a Shuttle assumed 4450 mm tall), the cameras | [GIF](out/setup_lab.gif) | [MP4](out/mp4/setup_lab.mp4) | [on YouTube](https://www.youtube.com/watch?v=pLrpXrrSmAs) (2 min 22 s; was `bITROBu1NNE`, trays A–F) |
 | **The warehouse version**: two MiR250 + UR10e units drive between the VLM and the floor machines along marked aisles | [GIF](out/warehouse.gif) | [MP4](out/mp4/warehouse.mp4) | [on YouTube](https://www.youtube.com/watch?v=3IrSB9-meN8) (collision-checked; was `KbrkulS07EM`) |
 | **From the printer to the tensile test**: the build plate out of the Aconity MIDI, the bars cut off in the wire EDM, one pulled to fracture in the 68FM-100 | [GIF](out/alloy_workflow.gif) | [MP4](out/mp4/alloy_workflow.mp4) | [on YouTube](https://www.youtube.com/watch?v=YVdpGTLvxhI) |
 | **Tray services**: the docking coupling in the slot and at the opening, the tethered alternative, the cabling | [docking](out/vlm_services.gif), [tether](out/vlm_tether.gif), [cabling](out/vlm_cabling.gif) | [MP4](out/mp4/vlm_services_all.mp4) | [on YouTube](https://www.youtube.com/watch?v=ed2M0u5Rjw0) |
@@ -562,19 +563,32 @@ The set-up scene, in order:
    - the gripper goes on.
 
    Then the second unit appears.
-7. Trays A–F loaded through the opening, by people, since most instruments weigh more than the arm's 12.5 kg.
-   Round 4's instruments go where `setup_lab.ROUND4_TRAY` puts them:
+7. Trays A–I loaded through the opening, by people, since most instruments weigh more than the arm's 12.5 kg.
+   Round 4's instruments, and since PR #320 trays G–I, go where `setup_lab.ROUND4_TRAY` puts them:
    - the corrosion CubXL on A;
    - the VHX on C;
-   - the OpenFlexure array on D;
-   - the sieve shaker and the XRF on F.
+   - the sieve shaker and the XRF on F;
+   - on G, two Form 4s, the Form Wash and the Form Cure;
+   - on H, the stencil printer (turned 90°) and the LumenPnP;
+   - on I, two SnowPods.
 
-   Each tray then goes back to its slot.
+   The OpenFlexure array on D is now in `line.TRAY_LOADS` itself. Each tray then goes back to its slot.
 8. The stream cameras, from `services.add_cameras`.
 9. A closing orbit.
 
-`python3 setup_lab.py fit` checks every tray item against the product height, the tray's rim and its neighbours.
-Trays G–I (fabrication, above) aren't in this scene yet.
+`python3 setup_lab.py fit` checks every tray item against the product height, the tray's rim and its neighbours,
+and for G–I against its slot's height too. Every item passes.
+
+The 3950 mm Shuttle's six slots are full with A–F, so for G–I this scene alone assumes the unit 500 mm taller, at
+4450 mm. Kardex's Shuttle XP brochure gives heights from 2550 to 30,050 mm in 100 mm steps, which can be changed after
+installation. #53's 3950 mm was set by that room's ceiling, and this warehouse's racking alone is 16 ft. Each tray
+gets a slot:
+- G: a new slot at the top of the front column, F3 at 3475 mm, with 692 mm of goods;
+- I: a new slot at the top of the rear column, R5 at 3475 mm, with 692 mm of goods;
+- H: the front column under the opening, F0 at 300 mm, with 501 mm of goods. The 3950 mm unit already has this one.
+
+The captions say so. `vlm.py` and every other scene keep the 3950 mm unit. The cameras (`services.add_cameras`)
+don't cover trays G–I yet.
 
 ### The alloy workflow, step by step, from DAL
 
