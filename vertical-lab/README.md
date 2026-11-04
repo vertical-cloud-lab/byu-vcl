@@ -875,7 +875,8 @@ had already been done on #318.
   `props.ramp_frac`). Along the line it never reaches 1.5 m/s. In chapter 4, the 3.7 m from the depowdering box to
   the wire EDM takes 7.0 s and peaks at 1.05 m/s; it was 3.3 s. `scene.unease` undoes `Scene.step`'s easing, so a
   drive keeps its own profile while the camera still eases.
-- **The warehouse is re-rendered:** 137 s, up from 89 s. Its two MiR250s and arms are re-audited with the new timing.
+- **The warehouse is re-rendered:** 137 s, up from 89 s. Re-audited with the new timing, its two arms and its two
+  MiR250s' own bodies touch nothing in any of 1846 frames (`out/collisions/warehouse.json`, `warehouse_mir.json`).
 - **Chapter 3's MiR no longer slides sideways** off the rePowder. A MiR250 is differential drive, so it now drives
   chapter 2's S-curve (`props.s_curve`), facing along it.
 - **Chapters 2–4 of the alloy route have the new drives in their code but not yet in their renders.** #318's
