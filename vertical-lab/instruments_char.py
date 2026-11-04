@@ -991,10 +991,13 @@ def xrf() -> Instrument:
     inst.meshes["readout"] = _dummy((0, 0, H))
     hinge_y = yb - 5
     s0 = seats[2]
-    path = ((s0[0] - 60, yf - 260, H + 220), (s0[0], s0[1] - 30, H + 120), (s0[0], s0[1], deck + 40),
+    # down in front of the lid, in under its front edge (the lid opens only 35 degrees: coming in from above, the cup
+    # clipped that edge, collide.py), then down into the seat
+    path = ((s0[0] - 60, yf - 260, H + 220), (s0[0], yf - 40, H + 90), (s0[0], s0[1] - 30, H + 90),
+            (s0[0], s0[1], deck + 40),
             (s0[0], s0[1], deck + 3), (s0[0], s0[1], deck + 40), (mx, my, deck + 40), (mx, my, deck + 2))
     seg = np.linalg.norm(np.diff(np.asarray(path), axis=0), axis=1)
-    v_seat = float(seg[:3].sum() / seg.sum())
+    v_seat = float(seg[:4].sum() / seg.sum())          # the cup down in its seat, at deck + 3
     inst.joints = {
         "lid": Joint("hinge", axis=(1, 0, 0), pivot=(0, hinge_y, H - 10), deg=-XRF_LID_DEG),
         "sample": Joint("path", path=path),
