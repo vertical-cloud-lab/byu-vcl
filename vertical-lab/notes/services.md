@@ -264,8 +264,8 @@ these spools covers it.
 - **Some loads are ours.** Five tray loads are estimates: the CubXL, the doser, the PIP, the nanoindenter and the
   OpenFlexures.
 - **The bay camera against the arm's own paths (round 5's fixes).** Besides `reach.py`'s poses (197 mm clear,
-  above), `audit_baycam.py` runs collide.py's audit with the bay unit added to a clip. The round-1 workflow (dose,
-  swap trays, CubXL) and chapter 1 of the alloy route (the charge at the opening, tray B) never touch the unit, its
+  above), `audit_baycam.py` runs collide.py's audit with the bay unit added to a clip. The VLM workflow clip
+  (`vlm_workflow`: dose, swap trays, CubXL) and chapter 1 of the alloy route (the charge at the opening, tray B) never touch the unit, its
   post or its bar ([`vlm_workflow_baycam.json`](../out/collisions/vlm_workflow_baycam.json): 0 of 1140 frames).
   Chapter 1's audit does show 55 of 2752 frames of the gripper against cup 1 and the vacuum press, identically with
   and without the camera, where the committed `alloy_charge_vacuum.json` has 0. That is left to #318's collision
