@@ -1,0 +1,47 @@
+{
+ "name": "instruments/multidoser",
+ "fps": 15,
+ "n_frames": 342,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/6",
+   "caption": "Thirteen powder modules ride two #35 roller chains. The chain indexes module 6 (green) to the dosing station on the bottom run, 8 links (76.2 mm) per module.",
+   "start_frame": 0,
+   "end_frame": 64
+  },
+  {
+   "label": "2/6",
+   "caption": "An Actuonix P16 lifts the electronics carriage up to module 6's plate, and the dock magnet holds the auger's 44T gear in mesh with the steel 20T pinion. The other modules fade out.",
+   "start_frame": 65,
+   "end_frame": 108
+  },
+  {
+   "label": "3/6",
+   "caption": "The station tilts the module 30°, cap end up, about a hinge through the auger's outlet. The vial, its cup and the catch funnel are drawn cut in half.",
+   "start_frame": 109,
+   "end_frame": 146
+  },
+  {
+   "label": "4/6",
+   "caption": "The NEMA 11 turns the auger 5 times through the pinion while the solenoid taps the tube. Salt leaves the outlet at 105 mg a turn and falls through the funnel into the vial, on its 100 g load cell: 0.525 g.",
+   "start_frame": 147,
+   "end_frame": 244
+  },
+  {
+   "label": "5/6",
+   "caption": "After a 0.5 s hold for the tail of the dose, the module tilts back and the auger turns back once at rest, which draws the powder back from the outlet.",
+   "start_frame": 245,
+   "end_frame": 294
+  },
+  {
+   "label": "6/6",
+   "caption": "The carriage drops away and the magnet lets go, so module 6 rides on with the chain. The vial holds 0.525 g of salt.",
+   "start_frame": 295,
+   "end_frame": 341
+  }
+ ]
+}
