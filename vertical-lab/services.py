@@ -2469,7 +2469,7 @@ def draw_clearance(res: dict | None = None, path=None):
     ink, muted, grid = "#1f2328", "#59636e", "#d0d7de"
     c_lift, c_dock, c_tray, c_plate = "#c0392b", "#57606a", "#8c959f", "#24292f"
     fig = plt.figure(figsize=(13.0, 6.6), dpi=130)
-    ax = fig.add_axes([0.04, 0.10, 0.50, 0.80])
+    ax = fig.add_axes([0.07, 0.16, 0.47, 0.74])
     yf, yr = V.Y_FRONT, V.Y_REAR
 
     def rect(bb, color, alpha=1.0, lw=0.0, fill=True, z=1, ls="-"):
@@ -2537,7 +2537,7 @@ def draw_clearance(res: dict | None = None, path=None):
                  "the docks (grey) sit in the columns' side walls; plates dark, their inserts orange",
                  fontsize=9.5, color=ink, loc="left")
     # each case's smallest gap
-    bx = fig.add_axes([0.70, 0.12, 0.27, 0.74])
+    bx = fig.add_axes([0.70, 0.16, 0.27, 0.70])
     lift_f = min(r["gap_mm"] for rr in res["lift"].values() for n, r in rr.items() if n.startswith(("F", "open")))
     lift_r = min(r["gap_mm"] for rr in res["lift"].values() for n, r in rr.items() if n.startswith("R"))
     rows = [("lift past the rear-column docks", lift_r, False),
