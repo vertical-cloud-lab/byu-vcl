@@ -1,0 +1,711 @@
+{
+ "clip": "vlm_workflow",
+ "frames_checked": 1140,
+ "frames_with_collisions": 130,
+ "runs": [
+  {
+   "label": "2/6",
+   "first_frame": 206,
+   "last_frame": 207,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "eq_B0"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "eq_B0"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 228,
+   "last_frame": 228,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "eq_B1"
+    }
+   ]
+  },
+  {
+   "label": "4/6",
+   "first_frame": 522,
+   "last_frame": 523,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "4/6",
+   "first_frame": 524,
+   "last_frame": 524,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "4/6",
+   "first_frame": 525,
+   "last_frame": 525,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "bay"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "4/6",
+   "first_frame": 526,
+   "last_frame": 527,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "bay"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "skin_front"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "4/6",
+   "first_frame": 528,
+   "last_frame": 532,
+   "frames": 4,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "bay"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "skin_front"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "skin_front"
+    }
+   ]
+  },
+  {
+   "label": "4/6",
+   "first_frame": 533,
+   "last_frame": 553,
+   "frames": 20,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "bay"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "skin_front"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "skin_front"
+    }
+   ]
+  },
+  {
+   "label": "4/6",
+   "first_frame": 554,
+   "last_frame": 558,
+   "frames": 4,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "bay"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "skin_front"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "skin_front"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "eq_B1"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "eq_B1"
+    }
+   ]
+  },
+  {
+   "label": "4/6",
+   "first_frame": 559,
+   "last_frame": 561,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "bay"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "skin_front"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "skin_front"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "eq_B1"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "eq_B1"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "eq_B1"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "eq_B1"
+    }
+   ]
+  },
+  {
+   "label": "4/6",
+   "first_frame": 562,
+   "last_frame": 562,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "bay"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "skin_front"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "skin_front"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "eq_B1"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "eq_B1"
+    }
+   ]
+  },
+  {
+   "label": "4/6",
+   "first_frame": 563,
+   "last_frame": 574,
+   "frames": 12,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "bay"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "skin_front"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "skin_front"
+    }
+   ]
+  },
+  {
+   "label": "4/6",
+   "first_frame": 575,
+   "last_frame": 576,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "bay"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "skin_front"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "skin_front"
+    }
+   ]
+  },
+  {
+   "label": "4/6",
+   "first_frame": 578,
+   "last_frame": 581,
+   "frames": 4,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "bay"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "skin_front"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "skin_front"
+    }
+   ]
+  },
+  {
+   "label": "4/6",
+   "first_frame": 582,
+   "last_frame": 584,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "bay"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "skin_front"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "bay"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "skin_front"
+    }
+   ]
+  },
+  {
+   "label": "4/6",
+   "first_frame": 585,
+   "last_frame": 585,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "bay"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "tray_B"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "bay"
+    }
+   ]
+  },
+  {
+   "label": "4/6",
+   "first_frame": 586,
+   "last_frame": 586,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "tray_B"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "bay"
+    }
+   ]
+  },
+  {
+   "label": "4/6",
+   "first_frame": 589,
+   "last_frame": 590,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:vial",
+     "other": "forearm"
+    }
+   ]
+  },
+  {
+   "label": "4/6",
+   "first_frame": 591,
+   "last_frame": 592,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ]
+  },
+  {
+   "label": "4/6",
+   "first_frame": 644,
+   "last_frame": 645,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "wrist3"
+    }
+   ]
+  },
+  {
+   "label": "4/6",
+   "first_frame": 646,
+   "last_frame": 646,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 909,
+   "last_frame": 910,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 911,
+   "last_frame": 912,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "vial"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 913,
+   "last_frame": 915,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "vial"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "vial_powder"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 916,
+   "last_frame": 916,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "vial"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 917,
+   "last_frame": 970,
+   "frames": 50,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 973,
+   "last_frame": 973,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "bay"
+    }
+   ]
+  }
+ ],
+ "rules": "What may touch: the gripper and whatever group it is picking up, holding or putting down, within 4 s of the\n    grasp or release; a held part and the groups it touches when it is taken and when it is let go (where it came\n    from and where it goes).",
+ "method": "FCL 0.7 (python-fcl) mesh-mesh collision on the drawn meshes, arm links decimated to 8000 triangles; every frame of the clip, after its update"
+}

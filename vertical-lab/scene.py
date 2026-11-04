@@ -41,6 +41,7 @@ HD = bool(os.environ.get("VIZ3D_HD"))           # out/hd/ with the text and out/
 GIF_SIZE = (800, 450)
 FONT_DIR = Path("/usr/share/fonts/truetype/dejavu")
 PREVIEW = bool(os.environ.get("PREVIEW"))   # render only the last frame of each sub-step, to /tmp
+AUDIT = bool(os.environ.get("ARM_AUDIT"))   # render nothing; check the arms every frame -> out/collisions/ (collide.py)
 
 
 FLATTISH = {"skin", "panel", "roof", "floor", "walls", "counter"}      # big flat parts: no sheen, so GIFs compress
@@ -195,7 +196,7 @@ class Scene:
         self.want_still = False
         self.mp4 = self.mp4_text = None
         self.preview: list[Image.Image] = []
-        if PREVIEW:
+        if PREVIEW or AUDIT:
             mp4 = gif = False
         if CLEAN or HD:
             gif = False
@@ -210,6 +211,13 @@ class Scene:
                 self.mp4 = encoder(self.mp4_path, size, crf=16 if CLEAN else 21)
         self.gif = gif
         self.intro = 1.0          # seconds of establishing view before the first sub-step's motion
+        self.robots: list = []    # robot.Robot instances in the scene (they register themselves)
+        self.frame_hooks: list = []   # f(scene) after every frame's update, before it is drawn
+        self.auditor = None
+        if AUDIT:
+            import collide
+            self.auditor = collide.Auditor(self)
+            self.frame_hooks.append(self.auditor)
 
     # ------------------------------------------------------------------------------- actors
     def add(self, name, poly, color, group="static", opacity=1.0, shown=True, **kw):
@@ -377,6 +385,9 @@ class Scene:
         return self.pl.screenshot(return_img=True)
 
     def snap(self, n=1):
+        if AUDIT:
+            self.n += n
+            return None
         base = self.render_base()
         anchors = [self.project(xyz) for _, xyz, _, _ in self.labels]
         # HD: the text keeps the share of the frame it has at 1280 x 720
@@ -426,6 +437,8 @@ class Scene:
                 self.cam = [tuple(a + (np.array(b, float) - a) * e) for a, b in zip(cam_from, cam_to)]
             if view_angle_to is not None:
                 self.view_angle = va_from + (view_angle_to - va_from) * e
+            for h in self.frame_hooks:
+                h(self)
             fade = min(1.0, u * 3)
             self.labels = [(t, xyz, at, fade if t not in lab_from else 1.0) for t, xyz, at in new] + \
                           [(t, xyz, at, max(0.0, 1 - u * 3)) for t, xyz, at, a in self.labels
@@ -444,6 +457,8 @@ class Scene:
             if live and update is not None:       # particles, flow and vibration keep going through the hold
                 for _ in range(max(1, int(round(hold * FPS)))):
                     update(1.0)
+                    for h in self.frame_hooks:
+                        h(self)
                     self.snap()
             else:
                 self.snap(max(1, int(round(hold * FPS))))
@@ -451,6 +466,9 @@ class Scene:
 
     # --------------------------------------------------------------------------------- save
     def save(self):
+        if AUDIT:
+            self.pl.close()
+            return self.auditor.save()
         if PREVIEW:
             self.pl.close()
             tw, th = 640, 360
