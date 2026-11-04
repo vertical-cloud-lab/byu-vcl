@@ -110,7 +110,7 @@ COLUMNS = {     # Shuttle: column: [(slot, span in mm)], bottom to top
     1: {"rear": [("R1", 750), ("R2", 750), ("R3", 775), ("R4", 725)],          # trays D, A, B, E
         "front_low": [("F0", 475)],                                             # tray J
         "front": [("F1", 725), ("F2", 725)]},                                   # trays C, F
-    2: {"rear": [("2R1", 800), ("2R2", 725), ("2R3", 725), ("2R4", 550)],      # trays K, L, M, H
+    2: {"rear": [("2R1", 850), ("2R2", 725), ("2R3", 750), ("2R4", 550)],      # trays K, L, M, H
         "front_low": [],
         "front": [("2F1", 725), ("2F2", 725)]},                                 # trays G, I
 }

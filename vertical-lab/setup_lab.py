@@ -73,11 +73,11 @@ def _items() -> dict:
     for k, v in FT.LOADS.items():
         out[k] = [tuple(it) for it in v]
     out["J"] = [("storage", -320.0, 0.0, 0.0)]                  # its right 630 mm left for the UPS and the dock
-    # the Keyence VHX with its controller beside it is 948 mm wide: too wide for tray C beside the UPS, so it went to K
-    # (its box centre at x; the controller makes the unit reach 318 mm left and 630 mm right of it)
-    out["K"] = [("glovebox_tray", -460.0, None, 0.0), ("vhx", 573.0, -15.0, 0.0)]
-    out["L"] = [("tensile_h", -565.0, None, 0.0), ("hardness", 343.0, None, 0.0)]     # left of the UPS
-    out["M"] = [("xrf", -873.0, None, 0.0), ("fumehood_tray", -53.0, None, 0.0), ("cnc", 722.0, None, 0.0)]
+    # the Keyence VHX is 624 mm deep as modelled: tray C has no room for it between its camera posts and the UPS, so it
+    # went to K, beside the glovebox, in front of the UPS
+    out["K"] = [("glovebox_tray", -460.0, 7.0, 0.0), ("vhx", 570.0, -50.0, 0.0)]
+    out["L"] = [("tensile_h", -23.5, None, 0.0), ("hardness", -944.0, 11.0, 0.0)]      # the tester in front of the UPS
+    out["M"] = [("xrf", -875.0, None, 0.0), ("fumehood_tray", -13.0, None, 0.0), ("cnc", 819.0, None, 0.0)]
     return out
 
 
@@ -91,7 +91,7 @@ CAMS = {
     "I": ([(-1150.0, 361.0, -500.0, -150.0, 400.0, 90.0), (-100.0, 361.0, 300.0, -150.0, 400.0, 90.0)], None, None),
     "J": ([(680.0, -360.0, -320.0, -100.0, 150.0), (1160.0, 100.0, -700.0, -100.0, 150.0)], 270.0, 320.0),
     "K": ([(470.0, 361.0, -460.0, -300.0, 450.0, 90.0)], None, None),
-    "L": ([(-1150.0, 361.0, -540.0, -150.0, 300.0, 90.0), (180.0, 361.0, 560.0, -150.0, 400.0, 90.0)], None, None),
+    "L": ([(-620.0, 361.0, -944.0, -150.0, 400.0, 90.0), (180.0, 361.0, -23.0, -150.0, 300.0, 90.0)], None, None),
     "M": ([(-480.0, 361.0, -873.0, -150.0, 400.0, 90.0), (470.0, 361.0, 722.0, -150.0, 400.0, 90.0)], None, None),
 }
 
