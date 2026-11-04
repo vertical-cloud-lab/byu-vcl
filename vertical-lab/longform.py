@@ -643,10 +643,37 @@ def upload(meta: dict) -> str:
     return vid
 
 
+def readme_table(meta: dict) -> str:
+    """The chapters as a markdown table: number, title, start, and the parts with links (a part from another branch
+    named with its commit)."""
+    rows = ["| # | Starts | Chapter | Parts |", "|---|---|---|---|"]
+    n = 0
+    for ch in CHAPTERS:
+        parts = [r for r in meta["parts"] if r["chapter"] == ch["key"]]
+        if not parts:
+            continue
+        n += 1
+        start = parts[0]["start_s"]
+        links = []
+        for r in parts:
+            src = r.get("src")
+            if not src or r["kind"] == "card":
+                continue
+            if ":" in src:
+                commit, path = src.split(":", 1)
+                links.append(f"[`{Path(path).name}`](https://github.com/{REPO}/blob/{commit}/{path}) ({commit})")
+            else:
+                links.append(f"[`{Path(src).name}`]({src})")
+        rows.append(f"| {n} | {stamp(start)} | {ch['title']} | {', '.join(links)} |")
+    return "\n".join(rows)
+
+
 if __name__ == "__main__":
     args = sys.argv[1:]
     if args and args[0] == "plan":
         show_plan(plan())
+    elif args and args[0] == "readme":
+        print(readme_table(json.loads((OUT / "longform.json").read_text())))
     elif args and args[0] == "upload":
         upload(json.loads((OUT / "longform.json").read_text()))
     elif args and args[0] == "cards":                 # the cards alone, to /tmp, to read them
