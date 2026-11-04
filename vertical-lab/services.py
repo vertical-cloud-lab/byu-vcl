@@ -124,6 +124,8 @@ POWER = {
                                 "total draw was not found, so this counts the tube alone"),
     "openflexure_v7": (10.0, "estimate", "a Pi and three small steppers: ours, 10 W"),
     "openflexure_delta": (10.0, "estimate", "the same: ours, 10 W"),
+    "openflexure_array": (60.0, "estimate", "six OpenFlexures (4 x v7, 2 x Delta), a Pi and three small steppers each: "
+                                            "ours, 10 W each"),
     "pip": (200.0, "estimate", "Plastometrex PLX-Benchtop: no rating found; 200 W is ours"),
     "nanoindenter": (200.0, "estimate", "KLA iMicro: no rating found; 200 W is ours"),
     "mastersizer": (200.0, "snippet", "Malvern Mastersizer 3000+ Ultra: '50 W (no dispersion) up to 200 W' "
@@ -140,7 +142,7 @@ POWER = {
 
 TRAY_ITEMS = {      # what's on each tray (animate.LOADS, line.TRAY_LOADS)
     "A": ["cubxl", "ot2"], "B": ["carousel"], "C": ["h2d", "a1mini"],
-    "D": ["sem", "xrd", "openflexure_v7", "openflexure_delta"], "E": ["pip", "nanoindenter", "mastersizer"],
+    "D": ["sem", "xrd", "openflexure_array"], "E": ["pip", "nanoindenter", "mastersizer"],
     "F": ["polisher", "furnace"],
 }
 HOME = {"A": "R2", "B": "R3", "C": "F1", "D": "R1", "E": "R4", "F": "F2"}

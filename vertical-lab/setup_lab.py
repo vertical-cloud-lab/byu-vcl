@@ -45,12 +45,11 @@ ROUND4_TRAY: dict[str, list[tuple[str, float, float]]] = {
     # placed after merging, from `setup_lab.py fit`: no overlaps, every item inside its tray's rim
     "A": [("cubxl_corrosion", -300.0, -114.5)],                          # tray A's CubXL, set up for corrosion
     "C": [("vhx", 860.0, 0.0)],                                          # beside the A1 mini
-    "D": [("openflexure_array", 792.0, -148.0)],                         # instruments_char's spot for the array
     "F": [("sieve", -990.0, 0.0), ("xrf", 876.0, 0.0)],
 }
-# Round 4 replaces two round-2/3 items: the CubXL on tray A is the corrosion set-up (instruments_lab.cubxl_corrosion),
-# and the six-microscope array takes the place of tray D's two freestanding OpenFlexures.
-REPLACED = {"A": ["cubxl"], "D": ["openflexure_v7", "openflexure_delta"]}
+# Round 4 replaces a round-2 item: the CubXL on tray A is the corrosion set-up (instruments_lab.cubxl_corrosion). The
+# six-microscope array that took the place of tray D's two freestanding OpenFlexures is in line.TRAY_LOADS itself now.
+REPLACED = {"A": ["cubxl"]}
 for _k, _keys in REPLACED.items():
     TRAY_ITEMS[_k] = [it for it in TRAY_ITEMS[_k] if it[0] not in _keys]
 NEW_TRAYS: dict[str, tuple[str, str]] = {}     # tray -> (slot in vlm.SLOTS, role), for trays beyond A-F

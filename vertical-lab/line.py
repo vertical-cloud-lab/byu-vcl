@@ -34,8 +34,9 @@ EXTRA = {"D": ("R1", "microscopy and diffraction"), "E": ("R4", "mechanical test
          "F": ("F2", "sample prep and heat treatment")}
 # what goes on each new tray, in the tray's frame (centre of its floor, y to the back): (instrument key, x, y)
 TRAY_LOADS = {
-    "D": [("sem", -760.0, 0.0), ("xrd", 60.0, 0.0), ("openflexure_v7", 560.0, -150.0),
-          ("openflexure_delta", 800.0, -150.0)],
+    # the six OpenFlexures (4 x v7, 2 x Delta) on one pocketed sub-tray, in place of round 3's two freestanding ones
+    # (PR #318: "put them in an array on some kind of sub-tray with cutouts"); setup_lab.py fit placed it here
+    "D": [("sem", -760.0, 0.0), ("xrd", 60.0, 0.0), ("openflexure_array", 792.0, -148.0)],
     "E": [("pip", -880.0, 0.0), ("nanoindenter", -250.0, 0.0), ("mastersizer", 590.0, 0.0)],
     "F": [("polisher", -420.0, 0.0), ("furnace", 280.0, 0.0)],      # the PX500 with its bottle holder: 630 wide
 }
