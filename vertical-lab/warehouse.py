@@ -31,7 +31,7 @@ import line
 import props as P
 import tour
 import vlm as V
-from scene import FPS, OUT, PREVIEW, Scene, T, R
+from scene import AUDIT, FPS, OUT, PREVIEW, Scene, T, R
 
 TITLE = "Vertical cloud lab, warehouse version: MiR250 + UR10e on an open floor"
 
@@ -219,12 +219,21 @@ def charger_pose(i: int) -> tuple[float, float, float]:
     return (CHARGERS[i], Y_FACE_S + 20.0 + P.MIR["L"] / 2, -90.0)
 
 
+# A MiR250 turns onto a dock line where it can pivot: a docked unit stands 80 mm off the machines' fronts, so a pivot
+# on the line sweeps its corners 0.12 m past them, over 0.66 m of the row. So each dock is driven into along its line,
+# from the end without the post. Most docks are driven into forwards, the post beyond the unit's front end. The small
+# Instron's dock is backed into from the gap between the two Instrons, the one place on that stretch a unit can turn,
+# so its post stands beyond the unit's back end, out of the 100 kN Instron's way.
+BACK_IN = {"instron_small"}
+
+
 def target_xy(key: str) -> np.ndarray:
-    """Where the camera target stands at a dock: beyond the docked MiR's front end, 150 mm off the station's face."""
+    """Where the camera target stands at a dock: 150 mm off the station's face, beyond the docked MiR's front end, or
+    its back end at a dock it backs into (BACK_IN), so a unit never drives through a post to dock."""
     x, y, hd = dock_pose(key)
     fwd = np.array([math.cos(math.radians(hd)), math.sin(math.radians(hd))])
     side = np.array([-fwd[1], fwd[0]])
-    return np.array([x, y]) + fwd * 650.0 + side * ((Y_FACE_N - DOCK_N) - 150.0)
+    return np.array([x, y]) + fwd * (-650.0 if key in BACK_IN else 650.0) + side * ((Y_FACE_N - DOCK_N) - 150.0)
 
 
 TARGET_Z = 900.0
@@ -305,6 +314,67 @@ class Amr:
                     self.set(a + (b - a) * f)
                     return
         return up, total
+
+
+class MirCheck:
+    """ARM_AUDIT=1: the MiR250s themselves against everything visible, every frame, with FCL on the drawn meshes as
+    collide.py checks the arms (which it does without the bases they ride on). That means the body, the cabinet, the
+    holder and whatever stands in it, against the posts, the machines, the VLM and the other unit. Writes
+    out/collisions/warehouse_mir.json. Floor decals are left out: the tape, the route ribbons and the chargers' plates
+    and contacts, whose tops are under 35 mm. The posts' 12 mm feet are part of the posts' mesh, so they are
+    checked."""
+
+    DECAL_Z = 35.0
+
+    def __init__(self, sc: Scene, names):
+        self.sc, self.names, self.frames = sc, names, []
+
+    def __call__(self, sc):
+        import collide
+        if not hasattr(sc, "_collide_world"):
+            sc._collide_world = collide.World(sc)
+        world = sc._collide_world
+        world.refresh()
+        robots = {rb.prefix: rb for rb in getattr(sc, "robots", [])}
+        hits = []
+        for name in self.names:
+            rb = robots.get(f"{name}ur")
+            held = collide._subtree(sc, rb.held[0]) if rb is not None and rb.held is not None else set()
+            sub = collide._subtree(sc, name)
+            mine = (sub - set(rb.groups() if rb is not None else ())) - held      # the arm is collide.py's
+            snap = world.current(sub | held)
+            for b in [b for b in world.bodies.values() if b.group in mine and collide._visible(sc, b.name)]:
+                M = sc.world(b.group)
+                b.place(M)
+                lo, hi = b.box(M)
+                near = ~((lo[None] > snap.hi) | (hi[None] < snap.lo)).any(-1) & (snap.hi[:, 2] >= self.DECAL_Z)
+                hits += [(name, b.name.split("/", 1)[-1], w.name, w.group) for w in
+                         (snap.bodies[j] for j in np.nonzero(near)[0]) if collide._hit(b.obj, w.obj)]
+        self.frames.append(dict(n=sc.n, label=sc.label, hits=hits))
+
+    def save(self):
+        runs = []
+        for prev, fr in zip([None] + self.frames[:-1], self.frames):
+            key = sorted({(u, part, g or o) for u, part, o, g in fr["hits"]})
+            if not key:
+                continue
+            r = runs[-1] if runs else None
+            if r and r["_key"] == key and r["label"] == fr["label"] and prev and prev["n"] == r["last_frame"]:
+                r["last_frame"], r["frames"] = fr["n"], r["frames"] + 1
+            else:
+                runs.append(dict(label=fr["label"], first_frame=fr["n"], last_frame=fr["n"], frames=1, _key=key,
+                                 pairs=[dict(unit=u, part=p, other=o) for u, p, o in key]))
+        for r in runs:
+            r.pop("_key")
+        rep = dict(clip=self.sc.name, frames_checked=len(self.frames),
+                   frames_with_collisions=sum(r["frames"] for r in runs), runs=runs,
+                   method=" ".join(self.__doc__.split()))
+        path = OUT / "collisions" / f"{self.sc.name}_mir.json"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(rep, indent=1) + "\n")
+        print(f"{self.sc.name}: MiR250 bodies, {rep['frames_with_collisions']} of {rep['frames_checked']} frames with "
+              f"collisions, {len(runs)} runs -> {path.relative_to(OUT.parent)}", flush=True)
+        return rep
 
 
 def path_ribbon(start, pts, width=45.0):
@@ -493,6 +563,9 @@ def movie(data, idata):
     L.apply_state()
     r1 = Amr(sc, "amr1", charger_pose(0), band=(0.45, 0.75, 1.0))
     r2 = Amr(sc, "amr2", charger_pose(1), band=(0.45, 1.0, 0.70))
+    mir = MirCheck(sc, ("amr1", "amr2")) if AUDIT else None
+    if mir is not None:
+        sc.frame_hooks.append(mir)
     n = 7
 
     # ------------------------------------------------------------------ 1. the floor
@@ -515,8 +588,11 @@ def movie(data, idata):
                     ("MiR Charge 48V x 2", (CHARGERS[0], Y_FACE_S, 300), (0.62, 0.70)),
                     ("UR10e on a MiR250, charging", (CHARGERS[1], Y_FACE_S + 450, 1300), (0.80, 0.46))])
     # ------------------------------------------------------------------ 3. out to the VLM and the Instron
+    # where the units turn onto their docks' lines (see BACK_IN): unit 1 west of the VLM, clear of its side (the MiR
+    # and its parked arm sweep 0.51 m pivoting); unit 2 in the gap between the two Instrons
     xv, yv, hv = dock_pose("vlm")
-    p1 = [(CHARGERS[0], mid + 400), (-1800, mid + 400), (-1800, yv), (xv, yv)]
+    xt = -1800.0
+    p1 = [(CHARGERS[0], mid + 400), (xt, mid + 400), (xt, yv), (xv, yv)]
     xi, yi, hi = dock_pose("instron_floor")
     p2 = [(CHARGERS[1], mid - 400), (xi + 1500, mid - 400), (xi + 1500, yi), (xi, yi)]
     rib1 = path_ribbon(r1.pose, p1)
@@ -558,13 +634,16 @@ def movie(data, idata):
     sc.step(f"4/{n}", cap, 1.0, rb.joint_to(A.PARK_RAD), hold=0.1)
     L.store("B", f"4/{n}", "Tray B goes back to its slot.", fast=0.4, hold=0.1)
     # ------------------------------------------------------------------ 5. to the glovebox; unit 2 checks in
+    # back out the way it came, to where it turned in, then into the glovebox's dock forwards from the west (its post
+    # stands at the east end); the glovebox is set back, so the unit can turn 0.6 m short of the dock
     xg, yg, hg = dock_pose("glovebox")
-    p3 = [(xv - 1200, yv), (xv - 1200, mid + 400), (xg + 1600, mid + 400), (xg + 1600, yg), (xg, yg)]
+    xw = xg - 600.0
+    p3 = [(xt, yv), (xt, mid + 400), (xw, mid + 400), (xw, yg), (xg, yg)]
     rib3 = path_ribbon(r1.pose, p3)
     sc.add("route3", rib3, R1_C, "routes", specular=0.0, ambient=0.6)
     sc.alpha["route1"] = sc.alpha["route2"] = 0.0
     sc.alpha["route3"] = 0.0
-    u3, t3 = r1.route(p3, end_heading=hg, reverse_first=True, reverse_last=True)
+    u3, t3 = r1.route(p3, end_heading=hg, reverse_first=True)
     rb2 = r2.robot
     tx2, ty2 = target_xy("instron_floor")
     look2 = A.down(np.array([tx2, ty2, TARGET_Z + 330.0]), spin=0.0)
@@ -591,10 +670,11 @@ def movie(data, idata):
         sc.step(f"6/{n}", "Door shut: the PLC evacuates and refills the antechamber before the vial goes inside."
                 if done else cap, 1.4, gb.move({"door": (None, 0.0)}), hold=0.4)
     # ------------------------------------------------------------------ 7. home
-    p4 = [(xg + 1600, yg), (xg + 1600, mid + 400), (CHARGERS[0], mid + 400), (CHARGERS[0], charger_pose(0)[1])]
+    # both back out of their docks to where they turned in (a pivot at the Instron's dock would sweep into it)
+    p4 = [(xw, yg), (xw, mid + 400), (CHARGERS[0], mid + 400), (CHARGERS[0], charger_pose(0)[1])]
     p5 = [(xi + 1500, yi), (xi + 1500, mid - 400), (CHARGERS[1], mid - 400), (CHARGERS[1], charger_pose(1)[1])]
-    u4, t4 = r1.route(p4, end_heading=-90.0)
-    u5, t5 = r2.route(p5, end_heading=-90.0)
+    u4, t4 = r1.route(p4, end_heading=-90.0, reverse_first=True)
+    u5, t5 = r2.route(p5, end_heading=-90.0, reverse_first=True)
     sc.alpha["route3"] = 0.0
     sc.step(f"7/{n}", "Both units go back to charge: 10 to 90 % takes 52 min on a MiR Charge 48V (MiR).", max(t4, t5),
             A.both(u4, u5), hold=0.3, cam_to=CAM_ALL)
@@ -602,6 +682,8 @@ def movie(data, idata):
             "a dock comes back to within millimetres, not the rail's ±0.3 mm, so every station needs a target the "
             "arm checks before it works.", 1.6, None, hold=3.0, still=True,
             labels=auto(sc, CAM_ALL, floor_labels(F, ("glovebox", "vlm", "wire_edm", "instron_floor", "ded"), have)))
+    if mir is not None:
+        mir.save()
     return sc.save()
 
 
@@ -805,5 +887,5 @@ if __name__ == "__main__":
         data = lab.meshes()
         idata = tour.load()
         print(movie(data, idata), flush=True)
-        if not PREVIEW:
+        if not (PREVIEW or AUDIT):
             print(line.mp4_to_gif(OUT / "mp4" / "warehouse.mp4", OUT / "warehouse.gif", **GIF), flush=True)
