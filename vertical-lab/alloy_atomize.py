@@ -993,9 +993,10 @@ LATCH_AZ = -30.0                      # the hood's front-right face (model.py he
 LATCH_PIVOT_R = M.BODY_R + 14.0       # the lever's pivot: 14 mm off the body
 LATCH_Z = M.BODY_TOP - 74.0           # and 74 mm under the deck
 LATCH_OPEN = 105.0                    # degrees the lever swings out and down to let the loop off the keeper
-TAB = np.array([17.0, 0.0, 60.0])     # the pull tab's grasp point, latch frame (x out, y along the face, z up)
+TAB = np.array([25.0, 0.0, 60.0])     # the pull tab's grasp point, latch frame (x out, y along the face, z up)
 GRIP_TAB = 0.79                       # the 2F-85 on the 20 mm tab
-BOLT_TRAVEL = 37.0                    # the locking bolt: out in front of the lever, or back clear of it
+GRIP_TAB_OPEN = 0.72                  # and open only so far round it: wide open, a finger meets the bolt's cylinder
+BOLT_TRAVEL = 55.0                    # the locking bolt: out in front of the lever, or back clear of it
 
 
 def latch_frame() -> np.ndarray:
@@ -1022,7 +1023,7 @@ def latch_meshes() -> dict:
     st, dk = (0.82, 0.83, 0.85), (0.55, 0.57, 0.60)
     base = _bx(-18, -2, -23, 23, -10, 62).merge(_bx(-4, 6, -19, -15, -6, 6)).merge(_bx(-4, 6, 15, 19, -6, 6))
     # the pull tab ends in a T: the 2F-85's pads sit inside its head, so the pull is taken by shape, not friction
-    lever_ = _bx(0, 4, -15, 15, -4, 62).merge(_bx(4, 30, -10, 10, 56, 64)).merge(_bx(30, 35, -17, 17, 54, 66)).merge(
+    lever_ = _bx(0, 4, -15, 15, -4, 62).merge(_bx(4, 46, -10, 10, 56, 64)).merge(_bx(46, 50, -17, 17, 54, 66)).merge(
         _cy((0, 0, 0), (0, 1, 0), 4, 34))
     loop = None
     for y in (-10.0, 10.0):                       # the U-loop: two rods from the lever's pin up over the keeper's lip
@@ -1033,8 +1034,8 @@ def latch_meshes() -> dict:
     keeper = _bx(-17.4, -7.4, -17, 17, 76, 100).merge(_bx(-7.4, -1.5, -17, 17, 95, 100))
     for y in (-10, 10):
         keeper = keeper.merge(_cy((-7.0, y, 86), (1, 0, 0), 3.0, 1.5, res=16))
-    body = _cy((12, 52, 48), (0, 1, 0), 10, 50).merge(_bx(-25, 4, 40, 64, 42, 54))
-    bolt = _cy((10, 8.5, 48), (0, 1, 0), 4, 37, res=16)       # out: from the cylinder to past the lever's far edge
+    body = _cy((10, 65, 48), (0, 1, 0), 10, 50).merge(_bx(-33, 2, 53, 77, 42, 54))
+    bolt = _cy((10, 8.5, 48), (0, 1, 0), 4, 53, res=16)       # out: from the cylinder to past the lever's far edge
     return {"latch base": (base, st, "latch_base"), "latch lever": (lever_, st, "latch_lever"),
             "latch loop": (loop, st, "latch_loop"), "latch keeper": (keeper, st, "keeper"),
             "lock cylinder": (body, dk, "latch_base"), "lock bolt": (bolt, (0.70, 0.71, 0.73), "lockbolt")}
@@ -1079,7 +1080,7 @@ def latch_fade(sc, a):
 def tab_grasp(deg=0.0) -> np.ndarray:
     """The 2F-85 on the pull tab from above, fingers along the face, with the lever out `deg`; world frame."""
     Mx = np.eye(4)
-    Mx[:3, 0], Mx[:3, 1], Mx[:3, 2], Mx[:3, 3] = (0, 1, 0), (1, 0, 0), (0, 0, -1), TAB
+    Mx[:3, 0], Mx[:3, 1], Mx[:3, 2], Mx[:3, 3] = (0, -1, 0), (-1, 0, 0), (0, 0, -1), TAB   # the wrist camera (tool0 -y) outboard
     return T(RP) @ latch_frame() @ R((0, 1, 0), deg, (0, 0, 0)) @ Mx
 
 
@@ -1219,6 +1220,11 @@ def stability(mir, q, P_tool, F_dir, ballast: bool) -> dict:
     return dict(mass_kg=round(m, 1), cog_mm=[round(float(x)) for x in G], force_point_mm=[round(float(x)) for x in Pl],
                 force_dir=[round(float(x), 3) for x in Fl], edges=tip, tips_at_N=worst[0], tips_about=worst[1],
                 slides_at_N=round(slide, 0) if slide else None)
+
+
+def ur_arm_tcp() -> float:
+    import ur_arm
+    return float(ur_arm.TCP_MM)
 
 
 def tong_tcp(F) -> np.ndarray:
@@ -1447,11 +1453,11 @@ def movie():
            "locking bolt beside it is back: the furnace is at atmosphere. The arm takes the lever by a pull tab.")
     show_g(arm="lid latch")
     pre_tab = g_tab @ T((0, 0, -110))
-    sc.step(f"2/{n}", cap, 1.6, RB.both(rb.joint_to(q1=rb.solve(pre_tab, q_tab)), rb.grip_to(0.0)), hold=0.05,
+    sc.step(f"2/{n}", cap, 1.6, RB.both(rb.joint_to(q1=rb.solve(pre_tab, q_tab)), rb.grip_to(GRIP_TAB_OPEN)), hold=0.05,
             cam_to=CAM_LATCH,
             labels=[("draw latch", tuple((Lw @ np.r_[2.0, -16.0, 20.0, 1.0])[:3]), (0.70, 0.62)),
                     ("keeper, on the lid", tuple((Lw @ np.r_[-8.0, -14.0, 92.0, 1.0])[:3]), (0.70, 0.22)),
-                    ("locking bolt, back", tuple((Lw @ np.r_[12.0, 40.0, 48.0, 1.0])[:3]), (0.08, 0.30))])
+                    ("locking bolt, back", tuple((Lw @ np.r_[12.0, 62.0, 48.0, 1.0])[:3]), (0.08, 0.30))])
     sc.step(f"2/{n}", cap, 0.7, rb.line_to(g_tab), hold=0.05)
     sc.step(f"2/{n}", cap, 0.4, rb.grip_to(GRIP_TAB), hold=0.05)
     rb.events.append((sc.n, "grasp", g("latch_lever"), g("latch_loop")))
@@ -1468,7 +1474,7 @@ def movie():
     sc.step(f"2/{n}", cap, 1.6, latch_open, hold=0.6,
             labels=[(f"ballast plate, {BALLAST_KG:.0f} kg",
                      tuple(mir.world((0.0, -P.MIR["W"] / 2 + 28, P.MIR["H"] + 16))), (0.08, 0.80))])
-    sc.step(f"2/{n}", cap, 0.3, rb.grip_to(0.0), hold=0.05)
+    sc.step(f"2/{n}", cap, 0.3, rb.grip_to(GRIP_TAB_OPEN), hold=0.05)
     rb.events.append((sc.n, "release", g("latch_lever"), g("latch_loop")))
     q_tab_open = rb.q.copy()
     sc.step(f"2/{n}", cap, 0.6, rb.line_to(tab_grasp(LATCH_OPEN) @ T((0, 0, -110))), hold=0.05)
@@ -1541,15 +1547,14 @@ def movie():
     hw = home_w[:3, 3]
     CAM_TONG = [tuple(hw + (-420.0, -640.0, 520.0)), tuple(hw + (0.0, 0.0, 230.0)), (0, 0, 1)]
     sc.step(f"2/{n}", cap, 1.6, RB.both(rb.joint_to(Tw=T((0, 0, 130)) @ g_home), rb.grip_to(0.0)), hold=0.05,
-            cam_to=CAM_TONG,
-            labels=[("loading tong", tuple(hw + (0.0, 0.0, 120.0)), (0.70, 0.30)),
-                    ("wrist camera", tuple(rb.tcp_world()[:3, 3]), (0.08, 0.26))])
+            cam_to=CAM_TONG, labels=[("loading tong", tuple(hw + (0.0, 0.0, 120.0)), (0.70, 0.30))])
     sc.step(f"2/{n}", cap, 0.8, rb.line_to(g_home), hold=0.05)
-    sc.step(f"2/{n}", cap, 0.4, rb.grip_to(GRIP_TONG), hold=0.05)
+    cam_at = (g_home @ T((0.0, -67.0, 24.0 - ur_arm_tcp())) @ np.r_[0.0, 0.0, 0.0, 1.0])[:3]
+    sc.step(f"2/{n}", cap, 0.4, rb.grip_to(GRIP_TONG), hold=0.9,
+            labels=[("loading tong", tuple(hw + (0.0, 0.0, 120.0)), (0.70, 0.30)),
+                    ("wrist camera (RealSense D405)", tuple(cam_at), (0.08, 0.26))])
     rb.grasp("tong")
-    sc.step(f"2/{n}", cap, 0.9, rb.line_to(T((0, 0, 210)) @ rb.tcp_world()), hold=0.05,
-            labels=[("loading tong", tuple(hw + (0.0, 0.0, 330.0)), (0.70, 0.30)),
-                    ("wrist camera", tuple(rb.tcp_world()[:3, 3] + (0.0, 0.0, 330.0)), (0.08, 0.26))])
+    sc.step(f"2/{n}", cap, 0.9, rb.line_to(T((0, 0, 210)) @ rb.tcp_world()), hold=0.05)
 
     def hold_cup(cg):
         """The tong has shut on the cup: the arm holds the cup now, the tong riding on it (the audit's bookkeeping:
@@ -1615,14 +1620,24 @@ def movie():
         sc.step(f"2/{n}", cap, 0.6 * f, rb.line_to(T((0, 0, 150)) @ rb.tcp_world()), hold=0.05)
         path = tong_path(k)
         grips = [tong_tcp(T(RP) @ tong_frame_for(k, Mx)) for Mx in path]
-        sc.step(f"2/{n}", cap, 1.6 * f, rb.joint_to(Tw=grips[0]), hold=0.05, cam_to=CAM_TOP if k == 0 else None)
-        down1 = follow(rb, grips[:5])
-        sc.step(f"2/{n}", cap, 1.8 * f, down1, hold=0.05,
+        # by way of a pose in front of the furnace, right of the open lid: swung straight over, the tong's handle
+        # grazed the lid's edge (one frame at 1.5 deg planning steps, the tong 0.2 m out from the wrist)
+        stage = grips[0].copy()
+        stage[0, 3], stage[1, 3] = RP[0] + 60.0, RP[1] - 200.0
+        sc.step(f"2/{n}", cap, 1.3 * f, rb.joint_to(Tw=stage), hold=0.0, cam_to=CAM_TOP if k == 0 else None)
+        sc.step(f"2/{n}", cap, 0.6 * f, rb.line_to(grips[0]), hold=0.05)
+        # down the bore in three legs: to the foot at the rim, to the tight spot under the adapter, to the floor. At
+        # each joint the arm's "held" part swaps between the cup and the tong (one riding on the other), so for the
+        # audit each leg is its own episode, and the cup may touch what it touches where the leg starts and ends:
+        # the bore's rim, the adapter and the rod at #222's squeeze, the floor cone. Nothing else changes.
+        sc.step(f"2/{n}", cap, 1.2 * f, follow(rb, grips[:4]), hold=0.0,
                 labels=[("rod adapter", tuple(W((0, 0, M.RIM + 40))), (0.10, 0.30)),
                         ("crucible, 57 mm bore", tuple(W((-26, 0, M.RIM - 6))), (0.10, 0.62))] if k == 0 else ())
         hold_tong(cg)
-        down2 = follow(rb, grips[4:])
-        sc.step(f"2/{n}", cap, 1.4 * f, down2, hold=0.05)
+        sc.step(f"2/{n}", cap, 0.8 * f, follow(rb, grips[3:5]), hold=0.0)
+        hold_cup(cg)
+        sc.step(f"2/{n}", cap, 1.4 * f, follow(rb, grips[4:]), hold=0.05)
+        hold_tong(cg)
         sc.step(f"2/{n}", cap, 0.4, RB.both(rb.grip_to(GRIP_TONG_OPEN), jaws(0.0, 1.0)), hold=0.05)
         cup_down(k, cg)
         sc.step(f"2/{n}", cap, 0.8 * f, rb.line_to(T((0, 0, 170)) @ rb.tcp_world()), hold=0.05)
@@ -1688,7 +1703,8 @@ def movie():
            "in a few seconds; it is the one place the arm pushes hard on the machine.")
     show_g(arm="lid latch")
     g_tab_o = tab_grasp(LATCH_OPEN)
-    sc.step(f"2/{n}", cap, 1.4, rb.joint_to(q1=rb.solve(g_tab_o @ T((0, 0, -110)), q_tab_open)), hold=0.05,
+    sc.step(f"2/{n}", cap, 1.4, RB.both(rb.joint_to(q1=rb.solve(g_tab_o @ T((0, 0, -110)), q_tab_open)),
+                                       rb.grip_to(GRIP_TAB_OPEN)), hold=0.05,
             cam_to=CAM_LATCH)
     sc.step(f"2/{n}", cap, 0.6, rb.line_to(g_tab_o), hold=0.05)
     sc.step(f"2/{n}", cap, 0.4, rb.grip_to(GRIP_TAB), hold=0.05)
@@ -1699,7 +1715,7 @@ def movie():
         tab_in(u)
         latch(sc, LATCH_OPEN * (1 - u))
     sc.step(f"2/{n}", cap, 1.6, latch_shut, hold=0.2)
-    sc.step(f"2/{n}", cap, 0.3, rb.grip_to(0.0), hold=0.05)
+    sc.step(f"2/{n}", cap, 0.3, rb.grip_to(GRIP_TAB_OPEN), hold=0.05)
     rb.events.append((sc.n, "release", g("latch_lever"), g("latch_loop")))
     sc.step(f"2/{n}", cap, 0.6, rb.line_to(pre_tab), hold=0.05)
     sc.step(f"2/{n}", cap, 1.2, rb.joint_to(PARK), hold=0.05)

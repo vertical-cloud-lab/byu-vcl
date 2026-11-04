@@ -10,7 +10,7 @@ powder.
 |---|---|
 | Clip | 170.3 s at 10 fps (rendered so to fit the session), 43.5 s of it the lab's own footage; [GIF](../out/alloy_atomize.gif) (640 × 360, 5 fps, 4.9 MB), [MP4](../out/mp4/alloy_atomize.mp4), [still](../out/alloy_atomize_still.png), sub-steps in [`alloy_atomize.json`](../out/alloy_atomize.json), powder sums in [`alloy_atomize_powder.json`](../out/alloy_atomize_powder.json) |
 | Starts | MiR250 at the VLM's opening (`animate.AMR_XY`), the four Al cups in `charge.carrier()`'s four pockets at `animate.BUFFER_LOCAL` on the cabinet: where chapter 1 ends |
-| Ends | MiR250 at world (−3487, −2230), yaw 0: square to the container's axis, 41 mm off the view port's flange, the hand-off chapter 3 (sieve, print) starts from. The container stands in a cradle at MiR-local (280, 10), seat z = 933 mm; the arm is parked. While the arm works the MiR stands further out: 220 mm (y = −2450) for the lid and the cups, because at y = −2230 the lid knob falls inside the UR10e's unreachable cylinder over its base; 420 mm (y = −2650) for the container, because closer the forearm comes down through the MiR's own cabinet to the handle, 275 mm off the floor. It drives onto the hand-off spot at the end |
+| Ends | MiR250 at world (−3487, −2230), yaw 0: square to the container's axis, 41 mm off the view port's flange, the hand-off chapter 3 (sieve, print) starts from. The container stands in a cradle at MiR-local (280, 10), a low ring on the cabinet top, seat z = 783 mm (round 6; it was 933 on a post); the loading tong hangs in its sleeve on the cabinet's −x end; the arm is parked. While the arm works the MiR stands further out: 220 mm (y = −2450) for the lid and the cups, because at y = −2230 the lid knob falls inside the UR10e's unreachable cylinder over its base; 420 mm (y = −2650) for the container, because closer the forearm comes down through the MiR's own cabinet to the handle, 275 mm off the floor. It drives onto the hand-off spot at the end |
 | Scene | `line.py`'s layout as `alloy_workflow.py` builds it, the rePowder loaded part by part from `repowder/model.py` (the merged copy `animate.Lab` adds is hidden) |
 | Ported | `Pool`, `Powder`, `Particles`, `stream`, `film`, `shake`, the heat colours, the argon volumes, `load_machine`/`set_cut`: #124's rePowder training animations (`atomizer-training/viz3d/steps.py` and `scene.py`, branch `claude/issue-124-20261003-0335`) |
 | Footage | [`out/footage/`](../out/footage/): the excerpts and photos used, small, with a [manifest](../out/footage/manifest.json) of credits |
@@ -83,7 +83,12 @@ Fig. 2-8, 0.275 in section), so 1-2.8 kN, about half of it on the latch and half
 `stability()` sums it at the pose the chapter uses: the arm on the pull tab, the MiR where it stands for the lid.
 Results in [`out/alloy_atomize_stability.json`](../out/alloy_atomize_stability.json).
 
-STABILITY_TABLE
+| | Mass, CoG height | Tips at | Slides at | 100 N latch (expected) | 200 N latch (stiff) |
+|---|---|---|---|---|---|
+| MiR250, cabinet, control box, UR10e, 2F-85 | 172 kg, 442 mm | 466 N | 505 N | 4.7× tipping, 5.1× sliding | 2.3×, 2.5× |
+| the same with the 95 kg ballast plate (as drawn) | 267 kg, 397 mm | 730 N | 785 N | 7.3×, 7.9× | 3.7×, 3.9× |
+
+Closing the latch pushes the other way: it would tip the MiR at 483 N (746 N with the plate).
 
 - **The force** acts at the tab, 1,331 mm up and 664 mm out from the MiR's centre, toward the furnace (the lever pulls
   back on the arm). Closing the latch pushes the other way.
@@ -129,7 +134,16 @@ open, and the tong comes straight up.
 **Clearances** ([`alloy_atomize_clearance.json`](../out/alloy_atomize_clearance.json)), by FCL on the meshes, the
 least along each cup's whole path:
 
-CLEARANCE_TABLE
+| Least clearance, mm | Sealing rod | Rod adapter | Crucible bore | Filling cone | Thermocouple | Cups already in |
+|---|---|---|---|---|---|---|
+| Jaws (all four cups) | 10.2 | 7.6 | 3.3 | 3.3 | 4.4 (cup 2) | 1.3 |
+| Stem and bridge | 7.1 | **2.6** | 3.2 | 3.1 | 3.5 (cup 2) | 4.2 |
+| The cup it carries | −0.3 to −0.4 | −0.5 to −0.9 | +0.2 | +0.1 to +0.2 | ≥ 3 | 1.1 |
+
+- **The gripper's lowest point stays 136 mm over the rim** (the cup seated, its top 19.1 mm under the rim). Nothing
+  of the 2F-85 comes near the rod, the adapter's stub, the raised lever or the filling cone.
+- **The tightest spots** are the stem passing the adapter's rim as the cup goes upright (2.6 mm), and a jaw passing a
+  cup already seated (1.3 mm; neighbours stand 2.2 mm apart).
 
 - **The cup's own squeeze is unchanged.** A 3/4 in cup only passes the adapter tipped, at #222's −0.09 mm. In the
   model the cup overlaps the adapter by 0.5-0.9 mm and the rod by 0.3-0.4 mm at the tight spot. These are FCL's
