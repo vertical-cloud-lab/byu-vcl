@@ -54,10 +54,11 @@ NAME = "vlm_tall_opening"
 TITLE = "Vertical cloud lab: what a taller Kardex opening would put on a tray"
 
 # ----------------------------------------------------------------------------------------------- the heights checked
-H_STD = V.MAX_GOODS_H         # 727.5 mm, Kardex's order sheet (POF) for the XP 500 at 2450 x 864
+H_STD = V.POF_GOODS_H         # 727.5 mm, Kardex's published figure: its order sheet (POF) for the XP 500 at 2450 x 864
 CLEAR = V.GOODS_CLEAR         # 20 mm clear above the goods, required (POF)
-HEADER_STD = V.Z_OPEN_TOP - V.Z_SILL       # 867 mm: vlm.py's header over the table for 727.5 mm of goods (renders)
+HEADER_STD = V.POF_OPEN_H     # 867 mm: the standard unit's header over the table for 727.5 mm of goods (renders)
 H_996 = round(H_STD + 996.0 - HEADER_STD, 1)  # a 996 mm opening over the same 833 mm access table: about 856 mm
+assert abs(H_996 - V.MAX_GOODS_H) < 0.05      # vlm.py now draws that opening (round 7), and takes this figure
 H_MESH = 970.0                # a Euro mesh box's outside height (UIC 435-3 / DIN 15155)
 H_TALL = 1000.0               # the height checked: Sterling's figure, about a mesh box
 HEIGHTS = {"today_727_5": H_STD, "opening_996_est": H_996, "mesh_box_970": H_MESH, "tall_1000": H_TALL}

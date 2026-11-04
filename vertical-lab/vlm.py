@@ -48,7 +48,7 @@ SOURCES = {
     "power": "#53: 208 V three-phase",
 }
 
-# --- the access opening, from Kardex's order sheet for this configuration -------------------------------------------
+# --- the access opening ----------------------------------------------------------------------------------------------
 # "Kardex Shuttle POF Version 16", SHUTTLE-01-500-2450x864 (StoreMoreStore's VLM option 1 specification sheet):
 # front access table (TH1) 833 mm above the floor, the presented tray's underside at TH1 + 21 mm, tray floor top at
 # TH1 + 22.5-23.5 mm, maximum product height 727.5 mm with 20 mm clearance required above it, a single front opening.
@@ -56,13 +56,29 @@ SOURCES = {
 # bay, slatted side walls, a blue cover under the tray, the 12 in OPTIC panel on the right post) is from Kardex's
 # Shuttle 500 product renders and fact sheet. Kardex lists no separate "large" opening for the 250/500: the largest
 # is this full-width one (the only bigger option is full tray extraction onto a table in front, for cranes).
-Z_SILL = 833.0          # TH1, the access table
-Z_OPEN = 854.0          # TH1 + 21: tray underside when presented (in the opening, not a storage slot)
-MAX_GOODS_H = 727.5     # maximum product height through the opening, over the tray floor
-GOODS_CLEAR = 20.0      # clearance Kardex requires above it
+#
+# The opening drawn here is a taller one (Sterling, PR #318, 2026-11-04: "assume that 996 mm ... bay height ... so
+# you'll fit taller items"). One used Shuttle XP 500 (2005/2006, 3050 x 864 mm) is listed with "Bedienoeffnung
+# frontseitig auf 833 mm, Hoehe 996 mm" (lagersysteme-paternoster.de, Pos. 89): a 996 mm opening over the same 833 mm
+# table. Its product height is not published. MAX_GOODS_H keeps the header as far above the goods as on the standard
+# unit (POF_OPEN_H, from the renders), which gives about 856.5 mm: an estimate (notes/kardex_opening.md, kardex_tall.py).
+Z_SILL = 833.0          # TH1, the access table (POF)
+Z_OPEN = 854.0          # TH1 + 21: tray underside when presented (in the opening, not a storage slot) (POF)
+POF_GOODS_H = 727.5     # Kardex's published maximum product height through the standard opening, over the tray floor
+POF_OPEN_H = 867.0      # the standard opening's header over the table: estimated from renders (the mouth reads ~850-870)
+GOODS_CLEAR = 20.0      # clearance Kardex requires above the goods (POF)
+OPEN_H = 996.0          # the opening drawn: the used XP 500's 996 mm over the 833 mm table (lagersysteme-paternoster.de)
+Z_OPEN_TOP = Z_SILL + OPEN_H                      # 1829: underside of the header, where the LED light is
+MAX_GOODS_H = POF_GOODS_H + (OPEN_H - POF_OPEN_H)     # 856.5 mm over the tray floor: an estimate, see above
+SOURCES.update(
+    access_table_mm=[Z_SILL, "Kardex Shuttle POF (order sheet), SHUTTLE-01-500-2450x864: access table TH1 833 mm, tray "
+                             "underside at TH1 + 21 mm, maximum product height 727.5 mm with 20 mm clear above it"],
+    opening_h_mm=[OPEN_H, "a used Kardex Shuttle XP 500 (3050 x 864, 2005/2006): 'Bedienoeffnung frontseitig auf 833 mm, "
+                          "Hoehe 996 mm', https://www.lagersysteme-paternoster.de/gebrauchte-lagertechnik/"
+                          "kardex-shuttle-xp500-3050x864-pos-89/"],
+    max_goods_h_mm=[MAX_GOODS_H, "estimate: the POF's 727.5 mm plus (996 - 867) mm, the header kept as far above the goods "
+                                 "as on the standard unit; the 867 mm is read off Kardex's renders, not published"])
 OPEN_W = 2500.0         # clear width between the side posts: about tray + 50 mm (renders, a real 2450 x 864 unit)
-Z_OPEN_TOP = 1700.0     # underside of the header, where the LED light is (the mouth reads ~850-870 mm tall)
-OPEN_H = Z_OPEN_TOP - Z_SILL
 HEADER_H = 95.0         # white header band with the logo
 POST_W = 115.0          # anthracite side posts of the opening
 CONSOLE_X = OPEN_W / 2 + POST_W / 2       # the OPTIC panel, on the right post at header height
