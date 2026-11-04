@@ -235,22 +235,23 @@ etc. See robot-arms ... able to be adjusted in terms of angle and height."
   - inside the rim;
   - off the middle half of each instrument's front, where the arm works, and on tray B off the front between the rack
     and the doser's cup.
-- **10 of 13 units now see none of the room.** Three still see some, all in the Wide's picture; no HQ does:
+- **11 of 13 units now see none of the room.** Two still see some, both in the Wide's picture; no HQ does:
 
   | Unit | Watches | Room in the Wide's picture, now | Before |
   |---|---|---|---|
-  | A0 | the CubXL, from its front left | 0.3 % | 36 % |
+  | A0 | the CubXL and its potentiostat, from their left | 0 % | 36 % |
   | A1 | the OT-2, from behind the CubXL (no room in front of the OT-2) | 26 % | 35 % |
-  | B0 | the doser, from its front right (the doser is at the front edge) | 21 % | 60 % |
+  | B0 | the doser, from its right | 0 % | 60 % |
   | C0, C1, D0, D1, E0-E2, F0, F1 | | 0 % | 20-45 % |
   | D2 | the OpenFlexure array, which is at the front edge | 15 % | 25 % |
 
-  Those three streams want a privacy crop: the Pi's camera stack can crop the sensor (libcamera's ScalerCrop), or the
+  Those two streams want a privacy crop: the Pi's camera stack can crop the sensor (libcamera's ScalerCrop), or the
   stream can mask the top of the picture.
 - **Tray B is down to one unit.** Its rack camera ended up in the middle of the tray, in the arm's way and in the middle
   of the bay camera's picture. The bay camera sees the rack.
-- **Clear of the instruments.** D0, E0 and F1 touched their instruments' boxes. Now the tightest gap is A0's, 16 mm
-  from the CubXL; every unit is inside the rim and its top is 688 mm or less over the tray floor.
+- **Clear of the instruments.** D0, E0 and F1 touched their instruments' boxes; A0 and B0 stood inside the tray plan's new
+  CubXL + EZstat frame and multi-doser. All are clear now: `setup_lab.py fit` reads ok for trays A-F; every unit is
+  inside the rim and its top is 688 mm or less over the tray floor.
   `tray_instrument_boxes()` also has tray B's vial rack now, which it missed.
 
   Each unit's yaw, pan, tilt, gap and view are in `services.json` (`cameras.clearances`, `cameras.views`); the old
