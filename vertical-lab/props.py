@@ -3,6 +3,8 @@
 * The vial is the multi-doser's own: a 20 mL vial, 28 mm across and 61 mm tall (powder-doser
   ``cad/chain-carousel-v2/params.py``), with a powder fill and a liquid fill that the animation sets.
 * The vial rack is a printed block like the CubXL's six-vial rack (``lab_models/equipment.py``), sized for 28 mm vials.
+* The MiR's intermediary storage is a low block on its cabinet top, beside the arm's mounting plate, with bored and
+  chamfered pockets (``pocket_block``, ``buffer_holder``; ``charge.carrier`` for the charge cups): no post.
 * The mobile base is a **MiR250** (Mobile Industrial Robots, the AMR sold with UR arms): 800 x 580 x 300 mm
   (MiR250 data sheet), with a top cabinet that holds the UR control box (e-Series control box 460 x 449 x 254 mm,
   UR data sheet), so the arm's base sits at ``AMR_TOP``. The cabinet's height is a layout choice: it puts the
@@ -73,16 +75,55 @@ def mir250() -> dict[str, tuple[pv.PolyData, tuple]]:
     }
 
 
-HOLDER_H = 260.0                             # the vial holder's post on the cabinet top (layout choice)
+# The MiR's intermediary storage (byu-vcl PR #318, round 7). Sterling: "There's no insertion gap for the
+# intermediary storage on the MiR250. They would just fall off. Also, it's positioned rather high ... Should probably be
+# much lower / flush with the base." So it is a low block standing on the cabinet top beside the arm's mounting plate,
+# no post, with real bored pockets: about 1 mm radial clearance, a 45 deg lead-in at the mouth, and deep enough (over
+# 40 % of a vial's or a cup's height) that nothing tips out while the MiR drives. A printed or machined block; the
+# sizes are layout choices, not a product.
+DECK_H = 30.0                # the pocket block's height over the cabinet top, 10 mm over the mounting plate
+DECK_FLOOR = 4.0             # under the pockets: the seats are this high in the block
+DECK_DEPTH = DECK_H - DECK_FLOOR      # 26 mm: 43 % of the 61 mm vial, 41 % of the 63.5 mm charge cup
+POCKET_CLEAR = 1.0           # radial clearance in a pocket
+POCKET_LEAD = 3.0            # 45 deg chamfer at a pocket's mouth: the lead-in that guides a part in
+HOLDER_H = DECK_H            # was the vial holder's 260 mm post; kept as a name for older callers
+
+
+def _cq_mesh(shape, tol: float = 0.2) -> pv.PolyData:
+    verts, tris = shape.tessellate(tol, 0.25)
+    pts = np.array([(v.x, v.y, v.z) for v in verts], float)
+    faces = np.hstack([np.full((len(tris), 1), 3), np.asarray(tris, int)]).ravel()
+    return pv.PolyData(pts, faces).clean().compute_normals(split_vertices=True, feature_angle=35.0,
+                                                           auto_orient_normals=True)
+
+
+_BLOCKS: dict = {}
+
+
+def pocket_block(x0, x1, y0, y1, holes, h: float = DECK_H, floor: float = DECK_FLOOR,
+                 lead: float = POCKET_LEAD) -> pv.PolyData:
+    """A block, its bottom face at z = 0, with flat-bottomed bores [(x, y, r)] from its top down to `floor`, each with a
+    45 deg chamfer `lead` deep at its mouth. CadQuery, tessellated once per shape."""
+    key = (x0, x1, y0, y1, tuple(holes), h, floor, lead)
+    if key not in _BLOCKS:
+        import cadquery as cq
+        b = cq.Workplane("XY").box(x1 - x0, y1 - y0, h, centered=False).translate((x0, y0, 0))
+        for x, y, r in holes:
+            bore = cq.Workplane("XY").circle(r).extrude(h - floor + 1.0).translate((x, y, floor))
+            cone = cq.Solid.makeCone(r, r + lead + 0.5, lead + 0.5, pnt=cq.Vector(x, y, h - lead),
+                                     dir=cq.Vector(0, 0, 1))
+            b = b.cut(bore).cut(cq.Workplane("XY").add(cone))
+        _BLOCKS[key] = _cq_mesh(b.val())
+    return _BLOCKS[key].copy()
 
 
 def buffer_holder() -> tuple[pv.PolyData, tuple[float, float, float]]:
-    """A one-vial holder on a post on the cabinet top, beside the arm: where the vial waits while the VLM swaps
-    trays. The post keeps the arm's wrist well clear of the cabinet when it reaches down there."""
-    post = pv.Cylinder(center=(0, 0, HOLDER_H / 2), direction=(0, 0, 1), radius=16, height=HOLDER_H).triangulate()
-    foot = pv.Box(bounds=(-45, 45, -45, 45, 0, 8)).triangulate()
-    cup = pv.Box(bounds=(-30, 30, -30, 30, HOLDER_H, HOLDER_H + 36)).triangulate()
-    return post.merge(foot).merge(cup), (0.0, 0.0, HOLDER_H + 6.0)
+    """A one-vial block on the cabinet top, beside the arm's mounting plate: where the vial waits while the VLM swaps
+    trays. Its frame's origin is on the cabinet top; returns the mesh and the seat (the vial's base centre): a 30 mm
+    bore for the 28 mm vial, 26 mm deep, with a lead-in. The gripper takes the vial 50 mm up, so its fingertips stay
+    about 5 mm over the block."""
+    mesh = pocket_block(-32.0, 32.0, -32.0, 32.0, [(0.0, 0.0, VIAL_R + POCKET_CLEAR)])
+    return mesh, (0.0, 0.0, DECK_FLOOR)
 
 
 def tcp_frame(p, approach=(0, 0, -1), spin_deg: float = 0.0) -> np.ndarray:

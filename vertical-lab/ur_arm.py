@@ -25,6 +25,15 @@ for any part under 30 mm wide); ``tcp_mm(close)`` gives the rest, and ``ik(..., 
 
 Colours are the .dae materials', sRGB-encoded (Blender exports linear values; VTK shows numbers as given).
 
+**The wrist camera** (byu-vcl PR #318, round 7: "The gripper of the arm should have a camera on it"): an Intel
+RealSense D405 (Intel: 42 x 42 x 23 mm, depth 7-50 cm, depth field of view 87 x 58 deg) on a clamp-and-plate bracket
+round the 2F-85's coupling, on the coupling's -y side (the fingers close along x), looking along the tool axis, with a
+USB-C cable stub running back past the wrist. It is a gripper part, ``"camera"``, fixed to tool0: ``gripper_meshes()``
+and ``gripper_fk()`` include it, so it is drawn wherever the arm is (``robot.py``) and checked wherever the gripper is
+(``collide.py``). It does not move the TCP. Its lens face is ``CAM_FACE_Z`` along the tool axis, so the grasp point
+(``TCP_MM``) is about 120 mm in front of it, inside the D405's range. The bracket is a layout choice, drawn as boxes;
+the camera is drawn at its published size.
+
     import ur_arm
     links = ur_arm.arm_meshes("ur10e")          # {"base": [(mesh, rgb, specular), ...], ...}
     T = ur_arm.fk("ur10e", q)                   # {"base": 4x4, ..., "tool0": 4x4}
@@ -36,6 +45,7 @@ from __future__ import annotations
 import functools
 import hashlib
 import math
+import os
 import pickle
 import urllib.request
 from pathlib import Path
@@ -333,6 +343,7 @@ def gripper_fk(close: float) -> dict[str, np.ndarray]:
     out["right_inner_knuckle"] = base @ _origin(-0.0127 * mm, 0, 0.06142 * mm) @ _rot(_Y, -t)
     out["left_finger_tip"] = out["left_finger"] @ _origin(0.00563134 * mm, 0, 0.04718515 * mm) @ _rot(_Y, -t)
     out["right_finger_tip"] = out["right_finger"] @ _origin(-0.00563134 * mm, 0, 0.04718515 * mm) @ _rot(_Y, t)
+    out["camera"] = np.eye(4)                                     # the wrist camera on its bracket: fixed to tool0
     return out
 
 
@@ -415,15 +426,20 @@ def _load_dae(path: Path, T_visual: np.ndarray, max_tris: int) -> list[tuple[pv.
 
 
 def _cached(key: str, build):
-    h = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()[:12]
-    path = CACHE / f"{key}_{h}.pkl"
+    """The vendor meshes, tessellated once. Keyed on what they are built from (the pinned commits and checksums, the
+    visual origins and the loading code), not on this whole file, so editing the camera or the IK doesn't rebuild
+    them; old pickles are left alone, since other checkouts may share the cache."""
+    import inspect
+    src = repr((UR_SHA, RQ_SHA, sorted(SHA256.items()), sorted(_VISUAL.items()), sorted(_GRIPPER_DAE.items()),
+                inspect.getsource(_load_dae), inspect.getsource(_srgb), inspect.getsource(_specular)))
+    path = CACHE / f"{key}_k{hashlib.sha256(src.encode()).hexdigest()[:12]}.pkl"
     if path.exists():
         return pickle.loads(path.read_bytes())
     data = build()
     CACHE.mkdir(parents=True, exist_ok=True)
-    for stale in CACHE.glob(f"{key}_*.pkl"):
-        stale.unlink()
-    path.write_bytes(pickle.dumps(data))
+    tmp = path.with_suffix(f".{os.getpid()}.part")
+    tmp.write_bytes(pickle.dumps(data))
+    tmp.replace(path)
     return data
 
 
@@ -458,10 +474,67 @@ def _gripper_meshes(max_tris: int):
     return _cached(f"meshes_2f_85_{max_tris}", build)
 
 
+# ------------------------------------------------------------------------------------------ the wrist camera
+# Intel RealSense D405: 42 x 42 x 23 mm, ideal range 7 cm to 50 cm, depth FOV 87 x 58 deg, USB-C
+# (https://www.intelrealsense.com/depth-camera-d405/). On the coupling's -y side (the fingers close along x), lens
+# forward along tool0's z, its wide (87 deg) axis along y: the grasp point, about 65 mm off its axis and 120 mm
+# ahead, is in view. In a level grip (props.tcp_frame, spin 0) tool0's y points down, so the camera rides on top.
+# Clear of the arm's own wrist: wrist3 reaches 51.6 mm from the tool axis and wrist2 53.4 mm, both behind the flange
+# (z < 0); wrist1 is behind z = -69.6 mm. The bracket and cable are a layout choice.
+CAMERA = dict(model="Intel RealSense D405", size_mm=(42.0, 42.0, 23.0), range_mm=(70.0, 500.0), fov_deg=(87.0, 58.0),
+              source="https://www.intelrealsense.com/depth-camera-d405/")
+CAM_Y = (-88.0, -46.0)          # the body across y in tool0's frame: 8.5 mm off the 2F-85's housing (y -37.5)
+CAM_Z = (12.0, 35.0)            # along the tool axis: its back on the bracket plate, its lens face forward
+CAM_FACE_Z = CAM_Z[1]
+CAM_COLOURS = dict(body=(0.30, 0.31, 0.34), glass=(0.03, 0.03, 0.05), lens=(0.12, 0.16, 0.28),
+                   bracket=(0.68, 0.69, 0.72), cable=(0.05, 0.05, 0.05))
+
+
+def _cam_box(x0, x1, y0, y1, z0, z1) -> pv.PolyData:
+    return pv.Box(bounds=(x0, x1, y0, y1, z0, z1)).triangulate()
+
+
+def _annulus(ri: float, ro: float, z0: float, z1: float, n: int = 48) -> pv.PolyData:
+    """A closed flat ring about z (the clamp round the coupling)."""
+    a = np.linspace(0, 2 * math.pi, n, endpoint=False)
+    rings = [(ro, z0), (ro, z1), (ri, z1), (ri, z0)]
+    pts = np.array([(r * math.cos(t), r * math.sin(t), z) for r, z in rings for t in a])
+    faces = []
+    for k in range(4):
+        o0, o1 = k * n, ((k + 1) % 4) * n
+        for i in range(n):
+            j = (i + 1) % n
+            faces += [3, o0 + i, o0 + j, o1 + j, 3, o0 + i, o1 + j, o1 + i]
+    return pv.PolyData(pts, np.array(faces)).compute_normals(auto_orient_normals=True)
+
+
+def camera_meshes() -> list[tuple[pv.PolyData, tuple, float]]:
+    """The D405, its bracket and its cable stub, in tool0's frame (mm): [(mesh, rgb, specular), ...]."""
+    y0, y1 = CAM_Y
+    z0, z1 = CAM_Z
+    clamp = _annulus(37.6, 41.5, 2.0, 12.0)                             # round the coupling (r 37.5, z -3 to 13.9)
+    plate = _cam_box(-20.0, 20.0, y0 - 2.0, -40.0, 2.0, z0)             # from the clamp out under the camera
+    body = _cam_box(-21.0, 21.0, y0, y1, z0, z1 - 0.6)
+    glass = _cam_box(-20.0, 20.0, y0 + 1.0, y1 - 1.0, z1 - 0.6, z1)     # the black glass front
+    lenses = None
+    for x in (-9.0, 9.0):                                              # the stereo pair, 18 mm apart
+        g = pv.Cylinder(center=(x, (y0 + y1) / 2, z1 + 0.3), direction=(0, 0, 1), radius=4.5, height=0.6,
+                        resolution=32).triangulate()
+        lenses = g if lenses is None else lenses.merge(g)
+    plug = _cam_box(21.0, 28.0, -71.0, -63.0, 18.0, 30.0)              # the USB-C plug, on the body's side
+    path = np.array([(24.5, -67.0, 24.0), (24.5, -67.0, 0.0), (24.0, -62.0, -18.0), (20.0, -57.0, -45.0)])
+    cable = pv.Spline(path, 24).tube(radius=2.4, n_sides=16).triangulate()    # back past the wrist, a stub
+    return [(clamp.merge(plate), CAM_COLOURS["bracket"], 0.5), (body, CAM_COLOURS["body"], 0.35),
+            (glass, CAM_COLOURS["glass"], 0.8), (lenses, CAM_COLOURS["lens"], 0.9),
+            (plug.merge(cable), CAM_COLOURS["cable"], 0.2)]
+
+
 def gripper_meshes() -> dict[str, list[tuple[pv.PolyData, tuple, float]]]:
     """{part: [(mesh in the part's own frame, mm), rgb, specular), ...]}; place each with
-    fk(model, q)["tool0"] @ gripper_fk(close)[part]."""
-    return {k: [(m.copy(), c, s) for m, c, s in v] for k, v in _gripper_meshes(MAX_TRIS).items()}
+    fk(model, q)["tool0"] @ gripper_fk(close)[part]. "camera" is the wrist camera on its bracket."""
+    out = {k: [(m.copy(), c, s) for m, c, s in v] for k, v in _gripper_meshes(MAX_TRIS).items()}
+    out["camera"] = camera_meshes()
+    return out
 
 
 if __name__ == "__main__":

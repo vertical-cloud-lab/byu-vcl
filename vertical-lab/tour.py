@@ -50,7 +50,7 @@ def _modules() -> dict:
     return out
 GLOWY = {"glow", "laser", "screen_on", "vlm_led", "led_blue", "px_ui", "nat_screen"}
 scene.GIF_SIZE = (640, 360)          # one GIF per instrument: smaller than the chapters'
-FIT = dict(W=2450.0 - 24, D=864.0 - 24, H=727.5)     # inside a tray's rim; Kardex's product height
+FIT = dict(W=2450.0 - 24, D=864.0 - 24, H=lab.vlm.MAX_GOODS_H)   # inside a tray's rim; product height (vlm.py)
 
 
 # ================================================================================================= meshes
