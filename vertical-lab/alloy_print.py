@@ -25,7 +25,7 @@ import pyvista as pv
 from PIL import ImageDraw
 
 import alloy_workflow as AW           # sets scene.GIF_FPS / GIF_SIZE as chapter 4 does
-from scene import CLEAN, PREVIEW, T, S, font
+from scene import CLEAN, PREVIEW, T, R, S, font
 
 import alloy_models as M              # noqa: E402
 import animate as A                   # noqa: E402
@@ -34,6 +34,7 @@ import instruments_char as IC         # noqa: E402
 import line                           # noqa: E402
 import props as P                     # noqa: E402
 import robot as RB                    # noqa: E402
+import sieve_station as SS            # noqa: E402
 import tour                           # noqa: E402
 from alloy_workflow import held_point, status  # noqa: E402
 
@@ -41,8 +42,14 @@ NAME = "alloy_print"
 TITLE = "Vertical cloud lab: from the atomizer's powder to the printed plate"
 
 # ------------------------------------------------------------------------------------------------- layout
-BENCH = dict(x=-2015.0, w=1000.0, d=600.0, h=700.0)     # a lab bench between the rePowder and the VLM (assumed)
-SIEVE_DX = -30.0                                        # the shaker's centre, from the bench's
+BENCH = dict(x=-1982.5, w=1065.0, d=600.0, h=700.0)     # a lab bench between the rePowder and the VLM (assumed)
+SIEVE_DX = 11.5                                         # the shaker's centre, from the bench's
+TIPPER_DX = -367.5                                      # the tipper's, left of the shaker (sieve_station.py)
+STAND_DX = 359.5                                        # the Al set's stand, right of the shaker
+GRIP_TAB = 0.88                                         # a sieve's 12 mm handling tab, as the plate's 12 mm lug
+HOLDER2_LOCAL = (-190.0, -160.0)                        # a second cup on the MiR's cabinet, for the jar
+ORDER_UP = ["pan", "s325", "s230", "s140", "s100", "s60"]          # bottom to top on the shaker (instruments_char)
+LABEL = {"pan": "pan", "s325": "No. 325", "s230": "No. 230", "s140": "No. 140", "s100": "No. 100", "s60": "No. 60"}
 START = (A.REPOWDER_AT[0] + 288.0, -2230.0)             # MiR parked in front of the rePowder's container axis, clear
 MIR_END = 1400.0                                        # alloy_workflow.Mir's starting x: chapter 4 begins there
 HOLDER_LOCAL = (-30.0, -150.0)                          # container/bottle cup on the MiR's cabinet (MiR frame)
@@ -93,8 +100,8 @@ def bottle_meshes():
     return body, cap, powder
 
 
-def holder_mesh(top):
-    hx, hy = HOLDER_LOCAL
+def holder_mesh(top, at=HOLDER_LOCAL):
+    hx, hy = at
     post = pv.Cylinder(center=(hx, hy, top + HOLDER_H / 2), direction=(0, 0, 1), radius=18, height=HOLDER_H).triangulate()
     foot = pv.Box(bounds=(hx - 50, hx + 50, hy - 50, hy + 50, top, top + 8)).triangulate()
     cup = charge.lathe([(0, 0), (72, 0), (72, 34), (66, 34), (66, 6), (0, 6)], res=56).translate(
@@ -113,6 +120,76 @@ def bench_mesh():
         legs = leg if legs is None else legs.merge(leg)
     shelf = pv.Box(bounds=(x0 + 10, x1 - 10, y0 + 10, y1 - 10, 160, 180)).triangulate()
     return top, legs.merge(shelf)
+
+
+def build_cell(sc, sv):
+    """The sieving cell on the bench (sieve_station.py): the enclosure, the tipper with its funnel and five jars on
+    a turntable, the Al set's stand with the set nested on it (storage order), the lid parked on the tipper's roof,
+    the ground straps. The LPBF jar is the group "bottle", as the old single bottle was, so step 4 is unchanged."""
+    b = BENCH
+    y_c = sieve_w(sv, (0, 0, 0))[1]                       # the shaker's centre line: the cell's front-back axis
+    zb = b["h"]
+    sc.gmat["encl"] = T((b["x"], line.Y_FACE + b["d"] / 2, zb))
+    for name, (mesh, col, spec, op) in SS.enclosure_parts(b["w"], b["d"], 950.0).items():
+        sc.add(f"encl/{name}", mesh, col, "encl", opacity=op, specular=spec)
+    # the tipper
+    sc.gmat["tipper"] = T((b["x"] + TIPPER_DX, y_c, zb))
+    names = {}
+    for piece, parts in SS.tipper_parts().items():
+        g = "tipper" if piece == "body" else f"tip_{piece}"
+        for name, (mesh, col, spec, op) in parts.items():
+            sc.add(f"tipper/{piece}/{name}", mesh, col, g, opacity=op, specular=spec)
+            names.setdefault(piece, []).append(f"tipper/{piece}/{name}")
+    sc.parent["tip_cradle"] = "tipper"
+    sc.parent["tip_clamps"] = "tip_cradle"
+    sc.parent["tip_knocker"] = "tip_cradle"
+    sc.parent["tip_table"] = "tipper"
+    # the five jars on the turntable; the LPBF one is "bottle"
+    jp = SS.jar_parts()
+    for j, (key, txt) in enumerate(SS.JARS):
+        g = "bottle" if j == 4 else f"jar{j}"
+        for name, (mesh, col, spec, op) in jp.items():
+            sc.add(f"{g}/{name}", mesh, col, g, opacity=op, specular=spec)
+        pn = "bottle/powder" if j == 4 else f"{g}/powder"
+        pg = "bottle_pow" if j == 4 else f"{g}_pow"
+        frac_mat = IC.MATERIALS[dict((k, m) for k, _, _, _, m in IC.STACK)["s325" if key == "lpbf" else key]]
+        sc.add(pn, SS.jar_powder(), frac_mat[:3], pg, specular=0.05)
+        sc.parent[pg] = g
+        sc.gmat[pg] = T((0, 0, 3.5)) @ S((1, 1, 0.01))
+        sc.alpha[pn] = 0.0
+        sc.parent[g] = "tip_table"
+        x, y = SS.jar_xy(j)
+        sc.gmat[g] = T((x, y, 22.0))
+    # the stand and the Al set on it, nested No. 60 at the bottom, the pan on top
+    sc.gmat["stand"] = T((b["x"] + STAND_DX, y_c, zb))
+    for name, (mesh, col, spec, op) in SS.stand_parts().items():
+        sc.add(f"stand/{name}", mesh, col, "stand", opacity=op, specular=spec)
+    fr = dict((k, m) for k, _, _, _, m in IC.STACK)
+    for i, key in enumerate(SS.STORAGE):
+        g = f"sv_{key}"
+        for name, (mesh, col, spec, op) in SS.sieve_parts(key).items():
+            sc.add(f"{g}/{name}", mesh, col, g, opacity=op, specular=spec)
+        sc.add(f"{g}/powder", SS.powder_disc(key), IC.MATERIALS[fr[key]][:3], f"{g}_pow", specular=0.05)
+        sc.parent[f"{g}_pow"] = g
+        sc.alpha[f"{g}/powder"] = 0.0
+        sc.parent[g] = "stand"
+        sc.gmat[g] = T((0, 0, SS.STAND["h"] + SS.stand_seat(i)))
+    # the lid, parked on the tipper's roof (sieve_station: the arm takes it to the stack and back)
+    zl = 212.0 + 6 * IC.DEPTH - 8
+    sc.parent["sieve:lid"] = "tipper"
+    sc.gmat["sieve:lid"] = T((0, 0, SS.TIP["top"] + 12.0 - zl))
+    # ground straps: shaker, tipper, stand, turntable to the bar on the back panel
+    gb = np.array([b["x"], line.Y_FACE + b["d"] - 18, zb + 14])
+    ends = [sieve_w(sv, (150, 120, 20)), (b["x"] + TIPPER_DX + 140, y_c + 140, zb + 8),
+            (b["x"] + STAND_DX + 60, y_c + 100, zb + 8)]
+    straps = None
+    for e in ends:
+        e = np.asarray(e, float)
+        s_ = SS.strap(e, (e[0] * 0.5 + gb[0] * 0.5, gb[1], gb[2]))
+        straps = s_ if straps is None else straps.merge(s_)
+    sc.add("ground straps", straps, (0.35, 0.62, 0.20), "static", specular=0.2)
+    sc.tip_names = names
+    sc.y_cell = y_c
 
 
 def stream_pts(top, bottom, t, n=34, on=1.0, spread=2.0):
@@ -215,9 +292,15 @@ def build():
     sv.v["~container"] = 1.0 / 0.82                  # its own container: the arm carries ours instead
     sv.v["~carrier"] = 1.0 / 0.82
     sv.apply()
-    # the MiR's cup for the container, then the bottle; the container on it
+    # the AS 200's own sieves are replaced by ours, each its own group with a handling tab (sieve_station.py)
+    for nm in sv.names["stack"]:
+        if any(m in nm for m in ("stainless", "sieve_cloth", "brass")):
+            sc.set_mesh(nm, pv.PolyData())
+    build_cell(sc, sv)
+    # the MiR's cups: the container's (it rides back to the rePowder) and the jar's; the container on its cup
     mo = Mir2(amr)
     sc.add("amr/holder2", holder_mesh(amr.top), (0.94, 0.94, 0.92), "amr")
+    sc.add("amr/holder3", holder_mesh(amr.top, HOLDER2_LOCAL), (0.94, 0.94, 0.92), "amr")
     parts, cpow = container_meshes()
     for name, (mesh, col) in parts.items():
         sc.add(f"pcont/{name}", mesh, col, "pcont", specular=0.5)
@@ -226,10 +309,6 @@ def build():
     seat = np.array([HOLDER_LOCAL[0], HOLDER_LOCAL[1], amr.top + HOLDER_H + 6.0])
     sc.parent["pcont"] = "amr"
     sc.gmat["pcont"] = T(seat)
-    body, _cap, bpow = bottle_meshes()
-    sc.add("bottle/body", body, (0.93, 0.93, 0.90), "bottle", opacity=0.55, specular=0.3)
-    sc.add("bottle/powder", bpow, POWDER, "bottle_pow", specular=0.05)
-    sc.parent["bottle_pow"] = "bottle"
     # streams and the laser
     sc.add("pstream", pv.PolyData(np.zeros((1, 3))), STREAM, "pstream", style="points", point_size=4.0,
            render_points_as_spheres=True)
@@ -294,6 +373,7 @@ def movie():
     zl = 212.0 + 6 * IC.DEPTH - 8                       # the lid's datum (instruments_char.sieve: z_rim - 8)
     z_rim = 212.0 + 6 * IC.DEPTH
     rod_x = 132.0
+    rod_top_w = BENCH["h"] + 212.0 + 6 * IC.DEPTH + 50.0    # instruments_char.sieve's rod_top, world
     sv_c = sieve_w(sv, (0, 0, 0))
     aco_bp = W.world(W.bp())
     aco_x = aco_bp[0] - 146.0
@@ -310,33 +390,116 @@ def movie():
     CAM_PRINT = [tuple(aco_bp + (-430, -390, 560)), tuple(aco_bp + (10, 40, -15)), (0, 0, 1)]
     CAM_LINE = [(aco_bp[0] + 2600, -9800, 4300), (aco_bp[0] + 2600, -1100, 900), (0, 0, 1)]    # chapter 4's first
 
+    sc.lid_park = sc.gmat["sieve:lid"].copy()
+    sc.lid_parked = True
+
+    def lid_fix():
+        if sc.lid_parked:
+            sc.parent["sieve:lid"] = "tipper"
+            sc.gmat["sieve:lid"] = sc.lid_park
+
+    def svmove(t):
+        f = sv.move(t)
+
+        def up(u):
+            f(u)
+            lid_fix()
+        return up
+
+    tip_w = sc.world("tipper")[:3, 3]
+    stand_w = sc.world("stand")[:3, 3]
+    CAM_CELL = [tuple(sv_c + (-420, -2450, 1350)), tuple(sv_c + (-40, 60, 230)), (0, 0, 1)]
+    CAM_TIP = [tuple(tip_w + (-560, -1150, 640)), tuple(tip_w + (60, 30, 330)), (0, 0, 1)]
+    CAM_STAND = [tuple(stand_w + (650, -1450, 800)), tuple(stand_w + (-260, 40, 260)), (0, 0, 1)]
     status(sc, Arm="UR10e on MiR250, parked", Powder="in the rePowder's container, on the MiR",
-           Sieve="AS 200, empty", Aconity="idle")
+           Sieve="the Al set, on its stand", Aconity="idle")
     sc.cam = list(CAM_RP)
     lbl = [A.REPOWDER_LBL[:2] + ((0.12, 0.26),),
-           ("Retsch AS 200 sieve shaker", tuple(sv_c + (0, 0, 600)), (0.50, 0.22)),
+           ("sieving cell", tuple(sv_c + (0, 250, 1000)), (0.50, 0.20)),
            ("the rePowder's powder container", tuple(mo.amr.world(np.r_[HOLDER_LOCAL, amr.top + HOLDER_H + 120])),
             (0.30, 0.62))]
-    cap = "From the atomizer to the printer. The run's powder is in the rePowder's container, on the MiR250: two 5N Al " \
-          "cups with Si, Al-10Si (78 g charged). Next, the sieve shaker beside the rePowder, then the Aconity MIDI."
+    cap = "From the atomizer to the printer. The run's powder is in the rePowder's container, on the MiR250: four 5N Al " \
+          "cups with Si, Al-10Si, 157 g charged. Next, the sieving cell beside the rePowder, then the Aconity MIDI."
     sc.step(f"1/{n}", cap, 2.4, None, hold=1.4, labels=lbl)
 
-    # ------------------------------------------------------------------ 1. to the bench; container over the stack
-    cap = "The MiR250 pulls up to the bench with the Retsch AS 200 and the lab's 8 in stack: No. 60, 100, 140, 230, " \
-          "325 and a pan (DAL PR #175). The arm takes the container by its handle."
-    status(sc, Arm="driving to the sieve shaker")
-    sc.step(f"1/{n}", cap, mo.secs(x_sv), mo.drive(x_sv), hold=0.2, cam_to=CAM_SV,
-            labels=[("Retsch AS 200 control, 8 in stack", tuple(sv_c + (180, 0, 560)), (0.62, 0.20))])
-    g_hold = held_point(sc, "pcont", HANDLE_GRASP)
-    status(sc, Arm="taking the container")
-    sc.step(f"1/{n}", cap, 1.6, RB.both(rb.joint_to(Tw=level_y(g_hold - (0, 140, -40), 90.0)), rb.grip_to(0.0)),
-            hold=0.05)
-    sc.step(f"1/{n}", cap, 0.9, rb.line_to(level_y(g_hold - (0, 0, 0), 90.0)), hold=0.05)
-    sc.step(f"1/{n}", cap, 0.4, rb.grip_to(GRIP_HANDLE), hold=0.05)
-    rb.grasp("pcont")
-    sc.step(f"1/{n}", cap, 0.8, rb.line_to(level_y(g_hold + (0, 0, 120), 90.0)), hold=0.05)
+    # ------------------------------------------------------------------ 1. the cell
+    cap = "The sieving cell, in a downdraft enclosure, every metal part bonded to a ground bar. Left to right: a " \
+          "tipper over a funnel and five labelled jars, the Retsch AS 200, and the Al set's own stand: the lab's 8 in " \
+          "stack (DAL PR #175), nested in reverse, each sieve with a 12 mm handling tab at the front."
+    status(sc, Arm="driving to the sieving cell")
+    sc.step(f"1/{n}", cap, mo.secs(x_sv), mo.drive(x_sv), hold=2.0, cam_to=CAM_CELL,
+            labels=[("tipper, funnel, jars", tuple(tip_w + (0, 0, 640)), (0.14, 0.22)),
+                    ("Retsch AS 200 control", tuple(sv_c + (0, -120, 230)), (0.44, 0.16)),
+                    ("Al set: No. 60 at the bottom, pan on top", tuple(stand_w + (0, 0, 360)), (0.80, 0.22))])
 
-    # ------------------------------------------------------------------ 2. pour, lid, knobs, shake
+    def GR(p):
+        return level_y(p, 90.0)          # level, pointing at the machines, fingers closing up and down on a tab
+
+    def tab_now(key):
+        return (sc.world(f"sv_{key}") @ np.r_[SS.grasp_local(key), 1.0])[:3]
+
+    def tab_at(parent, M_, key):
+        return (sc.world(parent) @ M_ @ np.r_[SS.grasp_local(key), 1.0])[:3]
+
+    def transfer(lab_, cap, key, parent, M_, k=1.0, lift0=26.0, out0=0.0, lift1=26.0, in1=0.0, cam=None,
+                 labels=(), up=150.0):
+        """Sieve `key` by its tab to M_ in `parent`. out0/in1 > 0: drawn out of / slid into a slot along y (the
+        tipper's cradle, under its roof); 0: lifted up and over (the stand; the shaker, between its rods)."""
+        g0 = tab_now(key)
+        g1 = tab_at(parent, M_, key)
+        sc.step(lab_, cap, 1.0 * k, RB.both(rb.joint_to(Tw=GR(g0 - (0, 90, 0))), rb.grip_to(0.0)), hold=0.02,
+                cam_to=cam, labels=labels)
+        sc.step(lab_, cap, 0.5 * k, rb.line_to(GR(g0)), hold=0.02)
+        sc.step(lab_, cap, 0.3 * k, rb.grip_to(GRIP_TAB), hold=0.02)
+        rb.grasp(f"sv_{key}")
+        sc.step(lab_, cap, 0.4 * k, rb.line_to(GR(g0 + (0, 0, lift0))), hold=0.02)
+        a = g0 + ((0, -out0, lift0) if out0 else (0, 0, lift0 + up))
+        b = g1 + ((0, -in1, lift1) if in1 else (0, 0, lift1 + up))
+        z_over = rod_top_w + 30.0 + SS.tab_z(key)       # the sieve's foot over the shaker's rods
+        if not out0:
+            a[2] = max(a[2], z_over)
+        if not in1:
+            b[2] = max(b[2], z_over)
+        sc.step(lab_, cap, 0.6 * k, rb.line_to(GR(a)), hold=0.02)
+        sc.step(lab_, cap, 1.0 * k, rb.joint_to(Tw=GR(b)), hold=0.02)
+        sc.step(lab_, cap, 0.6 * k, rb.line_to(GR(g1 + (0, 0, lift1))), hold=0.02)
+        sc.step(lab_, cap, 0.4 * k, rb.line_to(GR(g1)), hold=0.02)
+        sc.step(lab_, cap, 0.3 * k, rb.grip_to(0.0), hold=0.02)
+        rb.release(parent)
+        sc.gmat[f"sv_{key}"] = M_
+        sc.step(lab_, cap, 0.4 * k, rb.line_to(GR(g1 - (0, 90, 0))), hold=0.02)
+
+    def on_shaker(i):
+        return T((0, 0, 212.0 + SS.stack_seat(i)))
+
+    def on_stand(key):
+        return T((0, 0, SS.STAND["h"] + SS.stand_seat(SS.STORAGE.index(key))))
+
+    in_cradle = T((0, 0, SS.TIP["seat"]))
+
+    # ------------------------------------------------------------------ 2. the stack built, the powder in, shaken
+    status(sc, Arm="building the stack", Sieve="stacking: pan first")
+    cap = "The arm builds the stack on the AS 200. It takes the top piece off the stand by its tab, lifts it clear " \
+          "of the one below, draws it out and sets it between the shaker's two rods: the pan first."
+    transfer(f"2/{n}", cap, "pan", "sieve:stack", on_shaker(0), k=1.0, cam=CAM_STAND,
+             labels=[("handling tab", tuple(tab_now("pan") + (0, -10, 25)), (0.62, 0.30))])
+    cap = "Then the No. 325, 230, 140 and 100, and the No. 60 on top: each sieve's skirt nests in the rim below " \
+          "(sped up)."
+    for i, key in enumerate(ORDER_UP[1:], start=1):
+        status(sc, Sieve=f"stacking: {LABEL[key]}")
+        transfer(f"2/{n}", cap, key, "sieve:stack", on_shaker(i), k=0.42, cam=CAM_SV if i == 1 else None)
+    status(sc, Sieve="stacked: No. 60 to pan", Arm="taking the container")
+    # the container: from the MiR's cup, poured onto the No. 60
+    g_hold = held_point(sc, "pcont", HANDLE_GRASP)
+    cap = "The arm takes the rePowder's container by its handle and tips it into the No. 60. DIN 66165 allows about " \
+          "26 cm³ on a 200 mm, 63 um sieve, some 35-40 g of Al powder (DAL PR #175), so a four-cup run goes " \
+          "through in about four passes; one is shown."
+    sc.step(f"2/{n}", cap, 1.6, RB.both(rb.joint_to(Tw=level_y(g_hold - (0, 140, -40), 90.0)), rb.grip_to(0.0)),
+            hold=0.05, cam_to=CAM_SV)
+    sc.step(f"2/{n}", cap, 0.9, rb.line_to(level_y(g_hold, 90.0)), hold=0.05)
+    sc.step(f"2/{n}", cap, 0.4, rb.grip_to(GRIP_HANDLE), hold=0.05)
+    rb.grasp("pcont")
+    sc.step(f"2/{n}", cap, 0.8, rb.line_to(level_y(g_hold + (0, 0, 120), 90.0)), hold=0.05)
     th = 115.0
     m_rel = np.array([-45.0, 94.0, -13.0])                 # mouth from the grasp, upright
     c, s_ = math.cos(math.radians(th)), math.sin(math.radians(th))
@@ -344,11 +507,10 @@ def movie():
     target = sieve_w(sv, (-30.0, 0.0, z_rim + 90.0))
     p_tip = target - m_rot
     p_up = sieve_w(sv, (0, 0, 0)) + np.array([-215.0, -94.0, z_rim + 105.0])
-    cap = "It tips the container into the No. 60 at the top of the stack."
     status(sc, Arm="pouring", Powder="onto the No. 60")
     sc.step(f"2/{n}", cap, 1.8, rb.joint_to(Tw=level_y(p_up, 90.0)), hold=0.05, cam_to=CAM_SV_IN)
     sc.step(f"2/{n}", cap, 1.6, rb.line_to(level_y(p_tip, 90.0 + th)), hold=0.05)
-    heap_in = sv.move({f"frac_{k}": (0.0, 1.0) for k, *_ in IC.STACK})
+    heap_in = svmove({f"frac_{k}": (0.0, 1.0) for k, *_ in IC.STACK})
 
     def pour(u):
         heap_in(min(1.0, u * 1.25))
@@ -363,59 +525,76 @@ def movie():
     sc.gmat["pcont_pow"] = T((0, 0, 4)) @ S((1, 1, 60.0))
     sc.step(f"2/{n}", cap, 2.4, pour, hold=0.2, live=False)
     sc.alpha["pstream"] = 0.0
-    # the empty container down on the bench, at the shaker's left (where instruments_char's tour stands it)
-    rest = sieve_w(sv, (-IC.SIEVE_SPECS["W"] / 2 - 150.0, -40.0, 0.0))
-    g_rest = rest + HANDLE_GRASP
-    cap = "The empty container goes down on the bench, to be cleaned before the next run."
-    status(sc, Arm="setting the container down", Powder="on the No. 60")
+    # the empty container back in its cup on the MiR: it rides back to the rePowder to be cleaned
+    seat_c = mo.amr.world(np.r_[HOLDER_LOCAL[0], HOLDER_LOCAL[1], amr.top + HOLDER_H + 6.0])
+    g_back = seat_c + HANDLE_GRASP
+    cap = "The empty container goes back in its cup on the MiR, to ride back to the rePowder for cleaning."
+    status(sc, Arm="the container back on the MiR", Powder="on the No. 60")
     sc.step(f"2/{n}", cap, 1.2, rb.line_to(level_y(p_up, 90.0)), hold=0.05)
-    sc.step(f"2/{n}", cap, 1.4, rb.line_to(level_y(g_rest + (0, 0, 60), 90.0)), hold=0.05)
-    sc.step(f"2/{n}", cap, 0.7, rb.line_to(level_y(g_rest, 90.0)), hold=0.05)
+    sc.step(f"2/{n}", cap, 1.6, rb.joint_to(Tw=level_y(g_back + (0, 0, 120), 90.0)), hold=0.05)
+    sc.step(f"2/{n}", cap, 0.8, rb.line_to(level_y(g_back, 90.0)), hold=0.05)
     sc.step(f"2/{n}", cap, 0.4, rb.grip_to(0.0), hold=0.05)
-    rb.release("sieve:body")
-    sc.step(f"2/{n}", cap, 0.7, rb.line_to(level_y(g_rest - (0, 130, -30), 90.0)), hold=0.05)
+    rb.release("amr")
+    sc.step(f"2/{n}", cap, 0.7, rb.line_to(level_y(g_back - (0, 130, -30), 90.0)), hold=0.05)
 
-    # the lid: from the bench, up over the rods and down onto the stack, by its crossbar
+    # the lid: from the tipper's roof, over the rods and down onto the stack, by its crossbar
     jl = inst.joints["lid"]
 
     def lid_grasp(v):
         return (sc.world("sieve:stack") @ jl.matrix(v) @ np.r_[0.0, 0.0, zl + 17.0, 1.0])[:3]
-    cap = "The arm brings the AS 200's clamping lid over the two rods and down onto the stack, then turns its two " \
-          "knobs to clamp it: no shaker found is sold for robot loading, so it does what a person does."
+    p_lpark = (sc.world("tipper") @ np.r_[0.0, 0.0, SS.TIP["top"] + 29.0, 1.0])[:3]
+    cap = "The lid comes off the tipper's roof, over the two rods and down onto the stack, and the arm turns its two " \
+          "knobs to clamp it. No shaker found is sold for robot loading, so it does what a person does; Fritsch's " \
+          "motor-tensioned ANALYSETTE 3 PRO would take this step out."
     status(sc, Arm="closing the lid")
-    p_l0 = lid_grasp(0.0)
-    sc.step(f"2/{n}", cap, 1.6, rb.joint_to(Tw=A.down(p_l0 + (0, 0, 120), spin=90.0)), hold=0.05, cam_to=CAM_SV)
-    sc.step(f"2/{n}", cap, 0.7, rb.line_to(A.down(p_l0, spin=90.0)), hold=0.05)
+    sc.step(f"2/{n}", cap, 1.6, rb.joint_to(Tw=A.down(p_lpark + (0, 0, 120), spin=90.0)), hold=0.05, cam_to=CAM_SV)
+    sc.step(f"2/{n}", cap, 0.7, rb.line_to(A.down(p_lpark, spin=90.0)), hold=0.05)
     sc.step(f"2/{n}", cap, 0.4, rb.grip_to(GRIP_BAR36), hold=0.05)
     rb.grasp("sieve:lid")
-    path_u = [0.0, 1 / 3, 2 / 3, 1.0]                       # the joint's four path points
-    for v in path_u[1:]:
-        sc.step(f"2/{n}", cap, 0.8, rb.line_to(A.down(lid_grasp(v), spin=90.0)), hold=0.02)
+    sc.lid_parked = False
+    sc.step(f"2/{n}", cap, 0.7, rb.line_to(A.down(p_lpark + (0, 0, 90), spin=90.0)), hold=0.02)
+    sc.step(f"2/{n}", cap, 1.4, rb.joint_to(Tw=A.down(lid_grasp(2 / 3) + (0, 0, 40), spin=90.0)), hold=0.02)
+    sc.step(f"2/{n}", cap, 0.5, rb.line_to(A.down(lid_grasp(2 / 3), spin=90.0)), hold=0.02)
+    sc.step(f"2/{n}", cap, 1.0, rb.line_to(A.down(lid_grasp(1.0), spin=90.0)), hold=0.02)
     sc.step(f"2/{n}", cap, 0.4, rb.grip_to(0.0), hold=0.05)
     rb.release("sieve:stack")
     sv.v["lid"] = 1.0
     sv.apply()
-    for side in ("L", "R"):
-        sx = -1 if side == "L" else 1
-        k_top = sieve_w(sv, (sx * rod_x, 0, zl + 36.0))
-        sc.step(f"2/{n}", cap, 0.7, rb.line_to(A.down(k_top + (0, 0, 70), spin=90.0)), hold=0.02)
-        sc.step(f"2/{n}", cap, 0.4, rb.line_to(A.down(k_top, spin=90.0)), hold=0.02)
-        sc.step(f"2/{n}", cap, 0.25, rb.grip_to(GRIP_KNOB), hold=0.02)
-        q1 = rb.q.copy()
-        q1[5] += -2 * math.pi if q1[5] > 0 else 2 * math.pi       # one full turn of the wrist, with the knob
-        sc.step(f"2/{n}", cap, 0.9, RB.both(rb.joint_to(q1), sv.move({f"knob{side}": (0.0, 0.5)})), hold=0.02)
-        sc.step(f"2/{n}", cap, 0.25, rb.grip_to(0.0), hold=0.02)
-        sc.step(f"2/{n}", cap, 0.4, rb.line_to(A.down(k_top + (0, 0, 70), spin=90.0)), hold=0.02)
+
+    def knobs(a, b, sign):
+        for side in ("L", "R"):
+            sx = -1 if side == "L" else 1
+            k_top = sieve_w(sv, (sx * rod_x, 0, zl + 36.0))
+            sc.step(f"2/{n}", cap, 0.6, rb.line_to(A.down(k_top + (0, 0, 70), spin=90.0)), hold=0.02)
+            sc.step(f"2/{n}", cap, 0.35, rb.line_to(A.down(k_top, spin=90.0)), hold=0.02)
+            sc.step(f"2/{n}", cap, 0.25, rb.grip_to(GRIP_KNOB), hold=0.02)
+            q1 = rb.q.copy()
+            q1[5] += sign * (-2 * math.pi if q1[5] > 0 else 2 * math.pi)     # one full turn of the wrist
+            sc.step(f"2/{n}", cap, 0.8, RB.both(rb.joint_to(q1), svmove({f"knob{side}": (a, b)})), hold=0.02)
+            sc.step(f"2/{n}", cap, 0.25, rb.grip_to(0.0), hold=0.02)
+            sc.step(f"2/{n}", cap, 0.35, rb.line_to(A.down(k_top + (0, 0, 70), spin=90.0)), hold=0.02)
+    knobs(0.0, 0.5, 1)
     sc.step(f"2/{n}", cap, 1.2, rb.joint_to(PARK), hold=0.05)
     status(sc, Arm="parked", Sieve="lid clamped")
 
     cap = "Sieving, the stack drawn see-through: 3-D throwing motion, amplitude 0.2-3 mm (Retsch). Each size class " \
-          "falls until a cloth stops it. Al powder under 63 um is among the most ignitable metal dusts: the bench " \
-          "wants bonding, grounding and extraction (DAL's sieve note)."
+          "falls until a cloth stops it. The enclosure draws air down and out through the roof."
     status(sc, Sieve="shaking")
-    sc.step(f"2/{n}", cap, 1.2, sv.move({"~stack": (0.0, 1.0), "~lid": (0.0, 1.0), "~knobL": (0.0, 1.0),
-                                         "~knobR": (0.0, 1.0)}), hold=0.05, cam_to=CAM_SV_IN)
-    sc.step(f"2/{n}", cap, 5.0, sv.move({"stack": (0.0, 1.0), **{f"fall_{k}": (0.0, 1.0) for k, *_ in IC.STACK}}),
+    sv_names = [f"sv_{k}" for k in ORDER_UP]
+
+    def see_through(f1):
+        f0 = getattr(sc, "_svg", 0.0)
+
+        def up(u):
+            sc._svg = f0 + (f1 - f0) * u
+            for g in sv_names:
+                for nm in sc.members(g):
+                    if "powder" not in nm:
+                        sc.alpha[nm] = 1.0 - 0.75 * sc._svg
+        return up
+    sc.step(f"2/{n}", cap, 1.2, RB.both(svmove({"~lid": (0.0, 1.0), "~knobL": (0.0, 1.0), "~knobR": (0.0, 1.0)}),
+                                        see_through(1.0)), hold=0.05, cam_to=CAM_SV_IN)
+    sc.step(f"2/{n}", cap, 5.0, svmove({"stack": (0.0, 1.0), **{f"fall_{k}": (0.0, 1.0) for k, *_ in IC.STACK}}),
             hold=0.1)
 
     def panel(u):
@@ -423,57 +602,154 @@ def movie():
     status(sc, Sieve="done: six fractions")
     cap = "The fractions, by the sieve that keeps each. The LPBF cut, 20-63 um, is the No. 325 and the pan: there " \
           "is no 20 um sieve, and DAL found under 20 um is about 0.05 % by mass."
-    sc.step(f"2/{n}", cap, 0.8, panel, hold=3.4,
+    sc.step(f"2/{n}", cap, 0.8, panel, hold=3.0,
             labels=[("No. 325 (45 um)", tuple(sieve_w(sv, (IC.RW + IC.LIP, 0, 212.0 + IC.DEPTH + 10))), (0.40, 0.70)),
                     ("pan", tuple(sieve_w(sv, (IC.RW + IC.LIP, 0, 212.0 + 10))), (0.40, 0.80))])
+    # each fraction now rides on its own sieve
+    for key in ORDER_UP:
+        sv.v[f"frac_{key}"] = 0.0
+        sc.alpha[f"sv_{key}/powder"] = 1.0
+    sv.apply()
 
-    # ------------------------------------------------------------------ 3. the LPBF cut into a bottle (a person)
-    bott_seat = sieve_w(sv, (IC.SIEVE_SPECS["W"] / 2 + 122.0, -215.0, 0.0))
-    sc.gmat["bottle"] = T(bott_seat)
-    sc.alpha["bottle/body"] = 0.0
-    sc.alpha["bottle/powder"] = 0.0
-    cap = "Taking the stack apart is left to a person, in a respirator, under extraction: the cut is the finest, " \
-          "most ignitable powder of the run. The No. 325's and the pan's powder go into a jar."
-
-    def unclamp(u):
-        sv.move({"~stack": (1.0, 0.0), "~lid": (1.0, 0.0), "~knobL": (1.0, 0.0), "~knobR": (1.0, 0.0),
-                 "knobL": (0.5, 0.0), "knobR": (0.5, 0.0)})(u)
+    def panel_off(u):
         sc.panel_a = 1.0 - u
-    status(sc, Sieve="unclamped (by hand)", Powder="20-63 um, into a jar (by hand)")
-    sc.step(f"3/{n}", cap, 1.2, unclamp, hold=0.1, cam_to=CAM_SV)
+
+    # ------------------------------------------------------------------ 3. the stack taken apart, each fraction to its jar
+    cap = "Now the part the lab does by hand (Gage Erickson's videos of 29 Oct): the arm unclamps the lid and puts it " \
+          "back on the tipper's roof."
+    status(sc, Arm="unclamping", Sieve="unclamped")
+    sc.step(f"3/{n}", cap, 1.0, RB.both(svmove({"~lid": (1.0, 0.0), "~knobL": (1.0, 0.0), "~knobR": (1.0, 0.0)}),
+                                        see_through(0.0), panel_off),
+            hold=0.05, cam_to=CAM_SV, labels=[])
     sc.panel_a = 0.0
-    lid_home = sv.move({"lid": (1.0, 0.0)})
+    sc.step(f"3/{n}", cap, 1.4, rb.joint_to(Tw=A.down(sieve_w(sv, (-rod_x, 0, zl + 36.0)) + (0, 0, 70), spin=90.0)),
+            hold=0.02)
+    knobs(0.5, 0.0, -1)
+    sc.step(f"3/{n}", cap, 0.8, rb.line_to(A.down(lid_grasp(1.0) + (0, 0, 60), spin=90.0)), hold=0.02)
+    sc.step(f"3/{n}", cap, 0.5, rb.line_to(A.down(lid_grasp(1.0), spin=90.0)), hold=0.02)
+    sc.step(f"3/{n}", cap, 0.4, rb.grip_to(GRIP_BAR36), hold=0.05)
+    rb.grasp("sieve:lid")
+    sc.step(f"3/{n}", cap, 1.0, rb.line_to(A.down(lid_grasp(2 / 3), spin=90.0)), hold=0.02)
+    sc.step(f"3/{n}", cap, 0.5, rb.line_to(A.down(lid_grasp(2 / 3) + (0, 0, 40), spin=90.0)), hold=0.02)
+    sc.step(f"3/{n}", cap, 1.4, rb.joint_to(Tw=A.down(p_lpark + (0, 0, 90), spin=90.0)), hold=0.02)
+    sc.step(f"3/{n}", cap, 0.7, rb.line_to(A.down(p_lpark, spin=90.0)), hold=0.02)
+    sc.step(f"3/{n}", cap, 0.4, rb.grip_to(0.0), hold=0.05)
+    rb.release("tipper")
+    sc.lid_parked = True
+    lid_fix()
+    sc.step(f"3/{n}", cap, 0.6, rb.line_to(A.down(p_lpark + (0, 0, 120), spin=90.0)), hold=0.05)
 
-    def bottle_in(u):
-        lid_home(u)
-        sc.alpha["bottle/body"] = 0.55 * u
-        sc.alpha["bottle/powder"] = u
-        sc.gmat["bottle_pow"] = T((0, 0, 3.5)) @ S((1, 1, 58.0))
-        for k in ("pan", "s325"):
-            sv.v[f"frac_{k}"] = 1.0 - u
-        sv.apply()
-    sc.step(f"3/{n}", cap, 1.8, bottle_in, hold=0.8,
-            labels=[("the LPBF cut, 20-63 um", tuple(bott_seat + (0, 0, 160)), (0.70, 0.30))])
-    status(sc, Powder="20-63 um, in the jar")
+    # the jars, labelled
+    jar_lbl = []
+    for j, (key, txt) in enumerate(SS.JARS):
+        g = "bottle" if j == 4 else f"jar{j}"
+        jar_lbl.append((txt, tuple(sc.world(g)[:3, 3] + (0, -40, 150)), (0.06 + 0.12 * j, 0.80)))
+    table = {"deg": 0.0}
 
-    # the arm takes the bottle to the MiR's cup
-    b_grasp = bott_seat + (0, 0, 58.0)
-    seat = mo.amr.world(np.r_[HOLDER_LOCAL[0], HOLDER_LOCAL[1], amr.top + HOLDER_H + 6.0])
-    cap = "The arm takes the jar and stands it in the cup on the MiR's cabinet."
-    status(sc, Arm="taking the jar")
-    sc.step(f"3/{n}", cap, 1.6, RB.both(rb.joint_to(Tw=level_y(b_grasp - (0, 150, 0), 0.0)), rb.grip_to(0.0)), hold=0.05,
-            cam_to=CAM_JAR)
+    def table_to(j):
+        d0, d1 = table["deg"], -72.0 * j
+
+        def up(u):
+            table["deg"] = d0 + (d1 - d0) * u
+            sc.gmat["tip_table"] = R((0, 0, 1), table["deg"], (0.0, SS.TIP["table_dy"], 0.0))
+        return up
+    jar_fill = {j: 0.0 for j in range(5)}
+    share = {"s60": 10.0, "s100": 16.0, "s140": 24.0, "s230": 30.0, "s325": 30.0, "pan": 28.0}   # mm drawn: example
+    zc = SS.TIP["zc"]
+
+    def flip(key, k=1.0, cap="", lab_=f"3/{n}"):
+        j = SS.JAR_OF[key]
+        g = "bottle" if j == 4 else f"jar{j}"
+        pg = "bottle_pow" if j == 4 else f"{g}_pow"
+        pn = "bottle/powder" if j == 4 else f"{g}/powder"
+        h0, h1 = jar_fill[j], jar_fill[j] + share[key]
+        jar_fill[j] = h1
+        top = (sc.world("tipper") @ np.r_[0.0, 0.0, zc - 40.0, 1.0])[:3]
+        bot = (sc.world("tipper") @ np.r_[0.0, 0.0, SS.TIP["jar_h"] + 26.0, 1.0])[:3]
+
+        def clamp(f0, f1):
+            def up(u):
+                kk = 1.0 - (4.0 / 113.0) * (f0 + (f1 - f0) * u)
+                sc.gmat["tip_clamps"] = S((kk, kk, 1.0))
+            return up
+
+        def over(u):
+            ang = 180.0 * u
+            sc.gmat["tip_cradle"] = R((1, 0, 0), ang, (0.0, 0.0, zc))
+            fall = min(1.0, max(0.0, (ang - 100.0) / 60.0))
+            sc.alpha[f"sv_{key}/powder"] = 1.0 - fall
+            sc.alpha[pn] = 1.0 if (h0 > 0.5 or fall > 0) else 0.0
+            sc.gmat[pg] = T((0, 0, 3.5)) @ S((1, 1, max(0.01, h0 + (h1 - h0) * fall)))
+            pts = stream_pts(top, bot, u * 4.0, on=1.0 if 0.0 < fall < 1.0 else 0.0, spread=6.0)
+            sc.alpha["pstream"] = 1.0 if len(pts) else 0.0
+            if len(pts):
+                sc.set_mesh("pstream", pv.PolyData(pts))
+
+        def knock(u):
+            sc.gmat["tip_knocker"] = T((-3.5 * abs(math.sin(math.pi * u * 6.0)), 0, 0))
+            sc.gmat["tip_cradle"] = R((1, 0, 0), 180.0, (0.0, 0.0, zc)) @ T((0, 0, 0.8 * math.sin(math.pi * u * 12)))
+
+        def back(u):
+            sc.gmat["tip_cradle"] = R((1, 0, 0), 180.0 * (1 - u), (0.0, 0.0, zc))
+        sc.step(lab_, cap, 0.35 * k, clamp(0.0, 1.0), hold=0.02)
+        sc.step(lab_, cap, 1.3 * k, over, hold=0.02, live=False)
+        sc.alpha["pstream"] = 0.0
+        sc.step(lab_, cap, 0.9 * k, knock, hold=0.02)
+        sc.gmat["tip_knocker"] = np.eye(4)
+        sc.step(lab_, cap, 1.0 * k, back, hold=0.02)
+        sc.step(lab_, cap, 0.3 * k, clamp(1.0, 0.0), hold=0.02)
+
+    for i, key in enumerate(reversed(ORDER_UP)):
+        first = i == 0
+        k = 1.0 if first else 0.42
+        j = SS.JAR_OF[key]
+        if first:
+            cap = "The No. 60 comes off the top, out between the rods and into the tipper's cradle, which is open at " \
+                  "the front for the tab. The cradle clamps the frame."
+        else:
+            cap = "The same for the No. 100, 140, 230, 325 and the pan, top down, each into its own jar; the No. 325 " \
+                  "and the pan both into the LPBF jar (sped up)."
+        status(sc, Arm="taking the stack apart", Sieve=f"{LABEL[key]}: to the tipper")
+        if table["deg"] != -72.0 * j:
+            sc.step(f"3/{n}", cap, 0.7 * k, table_to(j), hold=0.02)
+        transfer(f"3/{n}", cap, key, "tip_cradle", in_cradle, k=k, lift0=26.0, out0=0.0, lift1=58.0, in1=200.0,
+                 cam=CAM_TIP if first else (CAM_SV if i == 1 else None), labels=jar_lbl if first else ())
+        if first:
+            cap = "The cradle turns the sieve over the funnel, and a pneumatic knocker taps the frame, not the cloth " \
+                  "(DAL #234: tap the frame; no brush on 63 um or finer, no air jet on any cloth). The fraction runs " \
+                  "down the funnel into its labelled jar."
+        status(sc, Sieve=f"{LABEL[key]}: tipped into the {SS.JARS[j][1]} jar", Arm="waiting")
+        sc.step(f"3/{n}", cap, 0.6 * k, rb.joint_to(Tw=GR(tab_at("tip_cradle", in_cradle, key) - (0, 260, -60))),
+                hold=0.02)
+        flip(key, k=k, cap=cap)
+        if first:
+            cap = "Empty, it goes back on the stand, the first of the set again: put back top down, the set ends in " \
+                  "storage order for the next run. Between alloys it would go to an ultrasonic bath first."
+        status(sc, Sieve=f"{LABEL[key]}: back on the stand", Arm="putting the sieve back")
+        transfer(f"3/{n}", cap, key, "stand", on_stand(key), k=k, lift0=58.0, out0=200.0, lift1=26.0, in1=0.0,
+                 cam=CAM_STAND if first else None)
+    status(sc, Sieve="the set back on its stand", Powder="five fractions in five jars")
+
+    # the LPBF jar to the MiR's second cup
+    b_seat = sc.world("bottle")[:3, 3]
+    b_grasp = b_seat + (0, 0, 58.0)
+    seat2 = mo.amr.world(np.r_[HOLDER2_LOCAL[0], HOLDER2_LOCAL[1], amr.top + HOLDER_H + 6.0])
+    cap = "The arm draws the LPBF jar out from under the funnel and stands it in a cup on the MiR. The lab weighs " \
+          "and labels each jar now; here the label is printed before the run."
+    status(sc, Arm="taking the LPBF jar")
+    sc.step(f"3/{n}", cap, 1.6, RB.both(rb.joint_to(Tw=level_y(b_grasp - (0, 160, 0), 0.0)), rb.grip_to(0.0)),
+            hold=0.05, cam_to=CAM_TIP, labels=jar_lbl)
     sc.step(f"3/{n}", cap, 0.9, rb.line_to(level_y(b_grasp, 0.0)), hold=0.05)
     sc.step(f"3/{n}", cap, 0.4, rb.grip_to(GRIP_BOTTLE), hold=0.05)
     rb.grasp("bottle")
-    sc.step(f"3/{n}", cap, 0.8, rb.line_to(level_y(b_grasp + (0, 0, 120), 0.0)), hold=0.05)
-    sc.step(f"3/{n}", cap, 1.6, rb.line_to(level_y(seat + (0, 0, 58.0 + 110), 0.0)), hold=0.05)
-    sc.step(f"3/{n}", cap, 0.8, rb.line_to(level_y(seat + (0, 0, 58.0), 0.0)), hold=0.05)
+    sc.step(f"3/{n}", cap, 0.9, rb.line_to(level_y(b_grasp - (0, 170, -10), 0.0)), hold=0.05)
+    sc.step(f"3/{n}", cap, 1.6, rb.joint_to(Tw=level_y(seat2 + (0, 0, 58.0 + 110), 0.0)), hold=0.05, labels=[])
+    sc.step(f"3/{n}", cap, 0.8, rb.line_to(level_y(seat2 + (0, 0, 58.0), 0.0)), hold=0.05)
     sc.step(f"3/{n}", cap, 0.4, rb.grip_to(0.0), hold=0.05)
     rb.release("amr")
-    sc.step(f"3/{n}", cap, 0.7, rb.line_to(level_y(seat + (0, -140, 58.0), 0.0)), hold=0.05)
+    sc.step(f"3/{n}", cap, 0.7, rb.line_to(level_y(seat2 + (0, -140, 58.0), 0.0)), hold=0.05)
     sc.step(f"3/{n}", cap, 1.2, rb.joint_to(PARK), hold=0.05)
-    status(sc, Arm="parked", Powder="20-63 um, in the jar on the MiR")
+    status(sc, Arm="parked", Powder="< 63 um, in the jar on the MiR")
 
     # ------------------------------------------------------------------ 4. to the Aconity; into the powder supply
     cap = f"To the Aconity MIDI, {(aco_x - x_sv) / 1000:.1f} m along the line, past the VLM's opening."
@@ -492,9 +768,9 @@ def movie():
     sc.step(f"4/{n}", cap, 1.0, supply_down, hold=0.1)
     # take the bottle again, carry it in level, over the supply, and tip it
     seat_now = held_point(sc, "bottle", (0, 0, 58.0))
-    cap = "The arm carries the jar in, level, over the supply cylinder, and turns its wrist to pour. One run's " \
-          "cut is tens of grams; a 30 mm build in a 170 mm cylinder takes about 1 kg in the bed, so in practice " \
-          "the supply is topped up from many runs, or a smaller build cylinder is fitted."
+    cap = "The arm carries the jar in, level, over the supply cylinder, and turns its wrist to pour. A full MIDI " \
+          "build cylinder takes about 440 g of powder, and its 55 mm reduction kit about 30 g (DAL #138). Four cups " \
+          "make 157 g of charge; the 225 cm³ crucible has taken 1,080 g of 630 bronze in one run (DAL #219)."
     status(sc, Arm="filling the supply")
     sc.step(f"4/{n}", cap, 1.4, RB.both(rb.joint_to(Tw=level_y(seat_now - (0, 150, 0), 0.0)), rb.grip_to(0.0)),
             hold=0.05, cam_to=CAM_FILL)
