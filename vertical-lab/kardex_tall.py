@@ -135,9 +135,9 @@ TRAY_RATINGS = [
     dict(model="Shuttle XP 500", tray="3050 x 864, Strong", w=3050, d=864, kg=265, src=["pof6"],
          note="wider is weaker: 265 kg against 500 at 2450 mm"),
     dict(model="Shuttle XP 500", tray="3050 x 864, 75-3-Medium-100", w=3050, d=864, kg=505, src=["pof6"], note=""),
-    dict(model="Shuttle XP 700", tray="up to 4050 x 1270", w=2450, d=864, kg=725, src=["xp", "fact"],
-         note="'up to 725 kg'; the rating at a given width isn't published"),
-    dict(model="Shuttle XP 1000", tray="2450 wide, 610-1778 deep", w=2450, d=864, kg=900, src=["xp", "heavy"],
+    dict(model="Shuttle XP 700", tray="2450 x 864 ('up to 725 kg')", w=2450, d=864, kg=725, src=["xp", "fact"],
+         note="trays up to 4050 x 1270 mm; the rating at a given width isn't published, so 725 kg is an upper bound"),
+    dict(model="Shuttle XP 1000", tray="2450 x 864", w=2450, d=864, kg=900, src=["xp", "heavy"],
          note="900 kg at 2450 mm (brochure); Kardex's page now says up to 825 kg; special trays take pallets and mesh "
               "boxes, i.e. concentrated loads"),
 ]
@@ -290,19 +290,19 @@ LOADS3 = {        # (key, x on the tray, turn about z); fronts 30 mm behind the 
     "K": [("metalone", -780.0, 0.0), ("mx100", 60.0, 0.0), ("fusionx", 760.0, 0.0)],
     "L": [("form4", -820.0, 0.0), ("form4", -330.0, 0.0), ("n2gen", 420.0, 0.0)],
 }
-BACK = [("meltio_m450", -2400.0), ("instron_small", 0.0), ("mprint", 2400.0)]   # (key, x) on red 1000 mm boxes
-BACK_Y = 1250.0
+BACK = [("meltio_m450", 5000.0), ("instron_small", 6300.0), ("mprint", 7900.0)]   # (key, x) on red 1000 mm boxes
+BACK_Y = -300.0                 # their fronts, in line with the trays
 BLUE = (0.30, 0.55, 0.90)
 GREEN = (0.20, 0.66, 0.36)
 ORANGE = (0.95, 0.55, 0.12)
 RED = (0.88, 0.30, 0.25)
 BOXC = {"mxlab_base": (0.20, 0.20, 0.22), "mx100": (0.62, 0.64, 0.68), "fusionx": (0.78, 0.79, 0.81),
         "n2gen": (0.86, 0.87, 0.89)}
-CAM_ALL = [(-2600, -8800, 4300), (0, 400, 800), (0, 0, 1)]
-CAM_J = [(-3900, -4300, 2500), (-2700, 0, 520), (0, 0, 1)]
-CAM_K = [(-1100, -4300, 2500), (0, 0, 560), (0, 0, 1)]
-CAM_L = [(3900, -4300, 2500), (2700, 0, 520), (0, 0, 1)]
-CAM_BACK = [(1800, -7600, 3600), (0, BACK_Y, 1000), (0, 0, 1)]
+CAM_ALL = [(2000, -13800, 6200), (2200, 300, 500), (0, 0, 1)]
+CAM_BACK = [(4600, -6400, 3400), (6400, 0, 900), (0, 0, 1)]
+CAM_J = [(-4700, -6300, 3300), (-2700, 0, 650), (0, 0, 1)]
+CAM_K = [(-1500, -6300, 3300), (0, 0, 650), (0, 0, 1)]
+CAM_L = [(4400, -6300, 3300), (2700, 0, 650), (0, 0, 1)]
 MXLAB_BASE = ("base cabinet", "caster", "levelling foot", "base vent", "base panel", "base power", "shelf",
               "balance", "exhaust duct", "duct bellows")
 
@@ -342,6 +342,10 @@ def load_models() -> dict:
     import fab_metal
     import fab_resin
     import instruments
+    import instruments_lab
+    for mod in (instruments_lab, fab_metal, fab_resin):        # their materials, as tour._modules and fab_tour do
+        tour.MATS.update(getattr(mod, "MATERIALS", {}))
+        tour.GLOWY.update(m for m in getattr(mod, "MATERIALS", {}) if "glow" in m)
     CACHE.mkdir(exist_ok=True)
     h = hashlib.sha256()
     for f in _sources():
@@ -398,19 +402,12 @@ def placed(inst, x, y, turn, z) -> np.ndarray:
     return T((x, y, z)) @ R((0, 0, 1), turn) @ T(-c)
 
 
-def first_action(rig) -> dict:
-    for cap, _, targets in rig.inst.actions:
-        if cap:
-            return targets
-    return {}
-
-
 def build():
     data = load_models()
     sizes = {m["key"]: m["size"] for m in MACHINES}
     sc = Scene(NAME, TITLE, gif=False)
     sc.cam = list(CAM_ALL)
-    tour.studio(sc, size=17000, at=(0, 700))
+    tour.studio(sc, size=24000, at=(2600, 700))
     rigs = {}
     for k, (tx, _) in TRAYS3.items():
         add_tray(sc, k, tx)
@@ -426,7 +423,7 @@ def build():
                 rig = tour.Rig(sc, inst, ents, f"{k}{i}_{key}:", at=placed(inst, x, None, turn, V.T_FLOOR),
                                parent=f"tray_{k}")
                 if key == "form4":
-                    rig.move(first_action(rig))(1.0)          # the cover open, 844 mm
+                    rig.move({"cover": (0.0, 1.0)})(1.0)      # the cover open on its rear hinge, 844 mm
                 rigs[f"{k}{i}"] = rig
             else:
                 w, d, h = sizes[key]
@@ -447,15 +444,15 @@ def movie():
     r = report()["machines"]
     tx = {k: v[0] for k, v in TRAYS3.items()}
     zt = V.T_FLOOR
-    n = 5
+    n = 6
     sc.step(f"1/{n}", "Kardex publishes 727.5 mm of product height through the opening (blue, its order sheet). "
             "Green is 1000 mm: the Shuttle 1000 stores Euro mesh boxes, 970 mm tall, on special trays, so a taller "
             f"opening exists, but Kardex publishes no figure. Orange, about {H_996:.0f} mm: one used XP 500's 996 mm "
             "opening, estimated.", 3.4, None, hold=1.6,
-            labels=[("727.5 mm today", (tx["L"] + IN_W / 2, -IN_D / 2, zt + H_STD), (0.90, 0.56)),
-                    (f"~{H_996:.0f} mm (996 mm opening, est.)", (tx["L"] + IN_W / 2, -IN_D / 2, zt + H_996),
-                     (0.90, 0.44)),
-                    ("1000 mm", (tx["L"] + IN_W / 2, -IN_D / 2, zt + H_TALL), (0.90, 0.32))])
+            labels=[("727.5 mm today", (tx["J"] - IN_W / 2, -IN_D / 2, zt + H_STD), (0.07, 0.62)),
+                    (f"~{H_996:.0f} mm (996 mm opening, est.)", (tx["J"] - IN_W / 2, -IN_D / 2, zt + H_996),
+                     (0.07, 0.48)),
+                    ("1000 mm", (tx["J"] - IN_W / 2, -IN_D / 2, zt + H_TALL), (0.07, 0.34))])
     mx = r["mxlab"]
     sc.step(f"2/{n}", f"The InssTek MX-Lab, 835 mm, {mx['kg']} kg: under 1000 mm with 165 mm to spare, and under a "
             f"strong XP 500 tray's 500 kg. But it puts {mx['kg_per_m2_on_its_footprint']} kg/m2 on its footprint, "
@@ -475,11 +472,17 @@ def movie():
             "too.", 3.8, None, hold=1.4, cam_to=CAM_L,
             labels=[("Form 4, cover open", (tx["L"] - 820, -IN_D / 2, zt + 844), (0.26, 0.20)),
                     ("N2 generator (box)", (tx["L"] + 420, -IN_D / 2, zt + 889), (0.72, 0.22))])
-    sc.step(f"5/{n}", "Still too tall at 1000 mm: the Meltio M450 (1400 mm), the Instron 68SC-2 (1410; the shortest "
-            "single column is 1020) and the MPRINT (1900). The Kobelco HIP (1300 mm, 1100 kg) is over every Shuttle "
-            "tray's rating as well.", 3.8, None, hold=2.4, cam_to=CAM_ALL, still=True,
-            labels=[(f"tray {k}: {role}", (tx[k], -IN_D / 2, zt + H_TALL + 60), (0.18 + 0.32 * i, 0.20))
-                    for i, (k, (_, role)) in enumerate(TRAYS3.items())])
+    tall = [(f"{data[k][0].model}, {data[k][0].size[2]:.0f} mm", (x, BACK_Y, data[k][0].size[2]),
+             (0.16 + 0.34 * i, 0.16 + 0.06 * (i % 2))) for i, (k, x) in enumerate(BACK)]
+    sc.step(f"5/{n}", "Still too tall at 1000 mm (red boxes): the Meltio M450, the Instron 68SC-2 (its shortest "
+            "single column, the 68SC-05, is 1020 mm) and the MPRINT. The Kobelco HIP, 1300 mm and 1100 kg, is over "
+            "every Shuttle tray's rating as well.", 3.8, None, hold=1.6, cam_to=CAM_BACK, labels=tall)
+    sc.step(f"6/{n}", "About 1000 mm would put DED, desktop LPBF, an open Form 4 and an N2 generator on trays. Ask "
+            "Kardex for the Shuttle 700 and 1000's tallest opening, and a pallet tray's rating for a point load.",
+            3.6, None, hold=2.4, cam_to=CAM_ALL, still=True,
+            labels=[(f"tray {k}: {role}", (tx[k], -IN_D / 2, zt + H_TALL + 60), (0.08 + 0.22 * i, 0.18 + 0.07 * i))
+                    for i, (k, (_, role)) in enumerate(TRAYS3.items())]
+            + [("too tall at 1000 mm", (BACK[1][1], BACK_Y, H_TALL + 500), (0.84, 0.16))])
     return sc.save()
 
 
