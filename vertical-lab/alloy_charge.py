@@ -39,7 +39,7 @@ import props as P                      # noqa: E402
 import vlm as V                        # noqa: E402
 from robot import both                 # noqa: E402
 
-NAME = "alloy_charge"
+NAME = "alloy_charge_vacuum"          # out/alloy_charge_vacuum.*: alloy_charge_doser.py (round 5) writes out/alloy_charge.*
 TITLE = "Vertical cloud lab, the alloy route 1/4: the atomizer charge"
 RACK_AT = (-250.0, -372.0)             # tray B frame: where round 2's vial rack stood (animate.LOADS)
 PRESS_AT = (-610.0, -250.0)
