@@ -41,6 +41,10 @@ comment Sterling linked:
 | Head | capper (Ben's PAW-V2 mount [STEP](../../modules/electromagnetic-capper/cad/PAW-V2-ElectromagnetMount.step), magnet face 16 below the carriage), P20 (+55, +11), camera (−40, +10) |
 | Electrode cap | leak-free Ag/AgCl reference, tip 3 mm above the metal, in a Pt coil; two pogo pins at ±11 mm |
 
+One difference, kept on purpose: DAL's render draws a small potentiostat box behind the deck (x 0–80, y 290–330, its
+EmStat Pico plan). The clip keeps the potentiostat the lab has, NuVant's EZstat Pro, beside the frame with its cell
+cable to the tray's bus, as before ([#231](https://github.com/vertical-cloud-lab/byu-vcl/issues/231)).
+
 Before this, the clip drew the **aluminium** plan of [`cubxl-setup.md`](https://github.com/vertical-cloud-lab/digital-alloy-lab/blob/aeda51a/alloy-corrosion/cubxl-setup.md)
 (0.6/0.06/0.006 M NaCl stocks, one rinse cup, coupons of one alloy, OCP then cyclic polarization on every spot), with
 the stocks and rack 2 moved, and the P20 drawing 150 µL in one go.

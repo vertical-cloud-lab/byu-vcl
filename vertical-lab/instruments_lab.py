@@ -389,7 +389,6 @@ def _corr_spot() -> Timeline:
     TZ = p["travel_z"]
     tl = Timeline(_corr_start())
     h = Head(tl)
-    speed = h
     go, travel, down, pip_to, bare_to, capper_to, camera_to = (h.go, h.travel, h.down, h.pip_to, h.bare_to,
                                                                h.capper_to, h.camera_to)
     st = p["stations"]
@@ -415,14 +414,14 @@ def _corr_spot() -> Timeline:
     go(0.2, vcap="asw", what="the capper lifts the ASW cap")
     go(0.25, z=TZ)
     for k in range(1, 8):
-        speed.speed = 1.0 if k == 1 else 0.18
+        h.speed = 1.0 if k == 1 else 0.18
         lapse = 0 if k == 1 else 1
         pip_to(*asw, 35.0)
         go(0.35, tip_ul=TIP_UL, liq="ASW", asw=p["stock_ml"] - k * TIP_UL / 1000, xfer=f"ASW transfer {k} of 7",
            what=f"draws {TIP_UL:.1f} µL of ASW", lapse=lapse)
         pip_to(*S1, over)
         go(0.35, tip_ul=0.0, well=k * TIP_UL, what=f"dispenses it into S1, above the meniscus")
-    speed.speed = 1.0
+    h.speed = 1.0
     capper_to(*asw, p["vial_cap"])
     go(0.2, vcap="", lapse=0, what="the ASW cap goes back")
     go(0.25, z=TZ)
@@ -473,21 +472,21 @@ def _corr_spot() -> Timeline:
     go(0.2, tip2="head", what="a new tip")
     go(0.3, z=TZ)
     for k in range(1, 9):
-        speed.speed = 1.0 if k == 1 else 0.15
+        h.speed = 1.0 if k == 1 else 0.15
         pip_to(*S1, face + 0.5)
         go(0.35, tip_ul=18.75, liq="the well's liquid", well=150.0 - k * 18.75, xfer=f"collect: transfer {k} of 8",
            what="draws 18.75 µL from S1", lapse=0 if k == 1 else 1)
         pip_to(*tube1, 40.0)
         go(0.35, tip_ul=0.0, tube=k * 18.75, what="dispenses it into tube 1, above the rim")
-    speed.speed = 1.0
+    h.speed = 1.0
     go(0.6, well=150.0, xfer="DI rinse: 150 µL into S1", liq="", lapse=1, what="the 150 µL DI rinse")
     for k in range(1, 9):
-        speed.speed = 0.10
+        h.speed = 0.10
         pip_to(*S1, face + 0.5)
         go(0.35, tip_ul=18.75, liq="the rinse", well=150.0 - k * 18.75, xfer=f"rinse: transfer {k} of 8", lapse=1)
         pip_to(*tube1, 40.0)
         go(0.35, tip_ul=0.0, tube=150.0 + k * 18.75)
-    speed.speed = 1.0
+    h.speed = 1.0
     pip_to(*p["waste"], 60.0)
     go(0.3, tip2="waste", xfer="", liq="", lapse=0, what="the tip drops into the waste")
     tl.mark("collected")
@@ -843,7 +842,6 @@ def _corr_parts(inst: Instrument):
     _piece(inst, "tubeliq").add("tube 1 liquid", liq.translate((_cx(xs[0]), _cy(p["tubes_y"][0]), dz + 1)), "lab_well")
     # ---- tip racks: Ben's (rack 1) and DAL's printed rack 2, 2 x 15 tips each; the three tips the spot uses move
     tip = _revolve_rz([(0, 0), (0.45, 0), (2.6, 30), (2.9, 37), (3.3, p["tip_len"]), (0, p["tip_len"])])
-    used = {}
     tips = []
     for rk, (ax, ay) in (("rack 1", p["rack1"]), ("rack 2", CORR["rack2_drawn"])):
         cols = (ax, ax - p["rack_pitch"])
@@ -856,7 +854,6 @@ def _corr_parts(inst: Instrument):
                 at = (_cx(cx_), _cy(ay + r * p["rack_pitch"]), _cz(p["tip_top"] - p["tip_len"]))
                 key = {("rack 1", 0, 0): "tip", ("rack 1", 0, 1): "tip2", ("rack 2", 0, 0): "tip3"}.get((rk, r, c))
                 if key:
-                    used[key] = (cx_, ay)
                     _piece(inst, key).add(f"{key} ({rk})", tip.translate(at), "lab_tip")
                     continue
                 tips.append(tip.translate(at).val())
@@ -864,7 +861,7 @@ def _corr_parts(inst: Instrument):
     wx, wy = _cx(p["waste"][0]), _cy(p["waste"][1])
     body.add("tip waste", tube(p["waste_d"], p["waste_d"] - 3, p["waste_top"], x=wx, y=wy, z=dz)
              .union(cyl(p["waste_d"], 2, x=wx, y=wy, z=dz)), "printer_grey")
-    return body, used, xs
+    return body
 
 
 def _revolve_rz(prof):
@@ -945,7 +942,7 @@ def cubxl_corrosion() -> Instrument:
             continue
         target = gantry if part.name in gantry_names else carriage if part.name in carriage_names else body
         target.parts.append(part)
-    body, used, xs = _corr_parts(inst)
+    body = _corr_parts(inst)
     dz = p["deck_z"]
     # ---- the potentiostat beside the frame, and its cell cable to the tray's back edge
     ew, ed, eh = p["ez"]
@@ -1036,10 +1033,9 @@ def cubxl_corrosion() -> Instrument:
         out = {k: (tl.v(a), tl.v(b)) for k in moving}
         out.update(extra)
         return out
-    marks = [m for m, _ in _CORR_SEGS]
     inst.actions = []
     prev = None
-    for i, (m, cap_txt) in enumerate(_CORR_SEGS):
+    for m, cap_txt in _CORR_SEGS:
         if prev is None:
             # the carriage's 220 x 290 mm tool plate (#199's model) stands behind the head: drawn see-through
             inst.actions.append((cap_txt, tl.t[tl.marks[m]] * PACE,
@@ -1049,13 +1045,14 @@ def cubxl_corrosion() -> Instrument:
             secs = (tl.t[tl.marks[m]] - tl.t[tl.marks[prev]]) * PACE
             inst.actions.append((cap_txt, secs, seg(prev, m, **extra)))
         prev = m
-    del marks
     hxw = _cx(p["holder_x"])
-    inst.labels = [("electrode cap,\nparked", (kx, ky, kz + 18), (0.10, 0.30)),
-                   ("S1-S4: Cu-Ni, NAB,\nDED pad, PTFE blank", (_cx(222), _cy(p["tray"][2]), _cz(p["lid"])), (0.10, 0.58)),
-                   ("Ben's 9-vial holder:\nASW, sulfide, acid, DI", (hxw, _cy(130), _cz(60)), (0.62, 0.86)),
-                   ("ICP-MS tubes", (_cx(220), _cy(37), _cz(32)), (0.36, 0.88)),
-                   ("NuVant EZstat Pro", (ex - 40, 60 - ed / 2, eh), (0.88, 0.62))]
+    # labels for the opening wide view only: the camera moves in after it (CAMS), where leaders would cross the deck
+    inst.labels = [("electrode cap, parked", (kx, ky, kz + 18), (0.10, 0.24)),
+                   ("S1-S4: Cu-Ni, NAB, DED pad, PTFE blank", (_cx(222), _cy(p["tray"][3]), _cz(p["lid"])), (0.40, 0.13)),
+                   ("Ben's 9-vial holder: ASW, sulfide, acid, DI", (hxw, _cy(150), _cz(60)), (0.74, 0.80)),
+                   ("ICP-MS tubes", (_cx(200), _cy(28), _cz(32)), (0.14, 0.70)),
+                   ("NuVant EZstat Pro", (ex - 40, 60 - ed / 2, eh), (0.90, 0.40))]
+    inst.step_labels = {i: [] for i in range(1, len(inst.actions))}
     inst.cam = (0.55, -1.5, 1.25)
     inst.framing = (0.80, 0.30)
     inst.notes = ["Deck, head and spot: DAL PR #180's copper plan (aeda51a), not yet built",
