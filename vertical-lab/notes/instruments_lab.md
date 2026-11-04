@@ -90,7 +90,14 @@ MX-Lab from its six hoppers; that is to be confirmed with Prof. Fang.
   - The touchscreen, E-stop and buttons are above a seam a little over half height.
   - The worktable is perforated, and six orange powder lines run to a coaxial nozzle.
 - **The base cabinet is an estimate.** Its size isn't published: about 900 mm wide and 1000 mm tall, scaled from the
-  Chalmers photo against the published 680 mm width.
+  Chalmers photo against the published 680 mm width. Round 5's fixes found it still unpublished. InssTek's own
+  figures:
+  - the MX-Lab Technical Data (Ver1.0): 680 × 684 × 835 or 685 × 775 × 835 mm "without accessories", 250 kg (350 max),
+    a 300 W laser (500 max), 220 V single phase and 15 A full load (20 A);
+  - its 2024 brochure: an exploded view of the machine with the laser generator, the powder feeders and the E-box in
+    it, which suggests that the cabinet holds none of them.
+
+  Its size and contents are for InssTek to say.
 - **Illustrative parts.**
   - The six spokes' colours, copper to a pale alloy grey, stand for blends and are not compositions.
   - The O2 readout runs from 20.9 % to 50 ppm on a log scale; how long the purge takes is not published.

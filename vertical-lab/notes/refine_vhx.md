@@ -62,7 +62,9 @@ somewhere different in every shot.
   base this wide predicts. Either the shot is a composite, or the knob or base is placed wrong. The EA-300's two top
   corners do match (2.4 px and 1.1 px).
 - **At 0:19 the model shows more of its left side than the photo does.** The model's base (435 mm) and EA-300 (280
-  mm) are deeper than the plain stand seen there, so the base depth is a guess. Keyence publishes no outer size for
-  the VHX-S750E.
+  mm) are deeper than the plain stand seen there, so the base depth is a guess. Keyence does publish the VHX-S750E's
+  outline, on the model's Dimensions tab (found in round 5's fixes, listed in instruments_char.md): 286 mm wide at the
+  base, 530.5 mm deep to the base's front, 674 mm tall, its stage top at 258.5 mm. The fit's 290.7 mm base agrees; its
+  225 mm stage top is 33.5 mm low, and the depths are still to refit.
 - **The EA-300's orientation** (narrow face forward), and where the VH-ZST hangs relative to the laser's axis.
 - **The console's place** changes from shot to shot. It is drawn in front of the monitor's centre.

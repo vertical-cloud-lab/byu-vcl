@@ -59,18 +59,18 @@
   {
    "key": "glovebox",
    "what": "Inert PureLab HE 2GB glovebox",
-   "supply": "not found",
-   "load": "not found",
-   "source": "Inert's manual (NIST copy) has a pre-installation chapter, not read",
-   "kind": "not found"
+   "supply": "110-120 or 200-240 V 1-phase, 50/60 Hz, on two outlets (the box and its internal power strip)",
+   "load": "main breaker 15 A at 110 V or 10 A at 220 V (vacuum pump 10/5 A, blower 5/3 A, column heaters 4/2 A each); Inert's 2018 data sheet gives 20 A",
+   "source": "Inert's PureLab HE manual (NIST copy): Tables 4 and 5, section 3.1.3; Inert PureLab data sheet 2018 (fetched)",
+   "kind": "published"
   },
   {
    "key": "aconity",
    "what": "Aconity MIDI LPBF printer",
-   "supply": "not found",
-   "load": "laser 500 W (Gauss) or 1200 W (ring); the machine's supply was not found",
-   "source": "zhaw.ch's page on its MIDI (snippet)",
-   "kind": "snippet"
+   "supply": "400 V 3-phase + N + PE, 32 A, 50 Hz (third party; a US unit would be 60 Hz: ask Aconity)",
+   "load": "up to about 22 kVA at that breaker; laser 500 W (Gauss) or 1200 W (ring)",
+   "source": "3Dnatives' MIDI listing (fetched; the same line is on its MIDI+ and MINI pages); zhaw.ch (snippet)",
+   "kind": "third party"
   },
   {
    "key": "instron_floor",

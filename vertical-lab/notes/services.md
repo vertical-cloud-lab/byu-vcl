@@ -226,10 +226,13 @@ the rail's end. The MiR's charger is in the gap left of the VLM; it matters only
 | Vention MachineMotion 2 | 85-264 V | 1200 W typical |
 | UR10e control box | 100-240 V | 350 W typical, 615 W maximum |
 | MiR Charge 48V | 100-240 V, a 15 A outlet | 48 V, 40 A out |
-| Aconity MIDI, Inert glovebox | not found | not found |
+| Aconity MIDI | 400 V 3-phase + N + PE, 32 A, 50 Hz (3Dnatives' listing, round 5; not Aconity's own figure) | up to about 22 kVA at that breaker |
+| Inert PureLab HE 2GB glovebox | 110-120 or 200-240 V 1-phase, 50/60 Hz, two outlets (Inert's manual, NIST copy, round 5) | main breaker 15 A at 110 V, 10 A at 220 V; "20 Amp" (Inert's 2018 data sheet) |
 
-The wire EDM is the biggest single load. With the VLM, the rePowder and the trays, the line needs a three-phase panel
-of its own. Its size waits on the two figures not found.
+The wire EDM's 13 kVA is the biggest published load. The MIDI's 32 A at 400 V three-phase is a breaker rating, up to
+about 22 kVA, and from a third party at 50 Hz, so confirm it with Aconity before sizing anything on it. With the VLM,
+the rePowder and the trays, the line needs a three-phase panel of its own. The glovebox's data sheets give it as 2000 ×
+1067 × 1921 mm outside, against the 2005 × 834 × 1794 mm of the manual's drawing that `instruments.glovebox()` uses.
 
 ### The tether, instead of a coupling
 
@@ -260,8 +263,13 @@ these spools covers it.
   be checked against the makers' sheets.
 - **Some loads are ours.** Five tray loads are estimates: the CubXL, the doser, the PIP, the nanoindenter and the
   OpenFlexures.
-- **The bay camera is checked against `reach.py`'s poses only** (197 mm clear, above). The chapters' own arm paths,
-  between those poses, aren't checked.
+- **The bay camera against the arm's own paths (round 5's fixes).** Besides `reach.py`'s poses (197 mm clear,
+  above), `audit_baycam.py` runs collide.py's audit with the bay unit added to a clip. The round-1 workflow (dose,
+  swap trays, CubXL) and chapter 1 of the alloy route (the charge at the opening, tray B) never touch the unit, its
+  post or its bar ([`vlm_workflow_baycam.json`](../out/collisions/vlm_workflow_baycam.json): 0 of 1140 frames).
+  Chapter 1's audit does show 55 of 2752 frames of the gripper against cup 1 and the vacuum press, identically with
+  and without the camera, where the committed `alloy_charge_vacuum.json` has 0. That is left to #318's collision
+  work.
 - **Some boxes are not to size:** the e-spool and the MiR charger are markers, and the chiller is a placeholder.
 
 ### Calling these from other scenes

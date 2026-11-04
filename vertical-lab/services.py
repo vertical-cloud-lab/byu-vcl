@@ -1212,10 +1212,14 @@ CIRCUITS = [   # (key, what, supply, load, source, kind)
      "(services.json)", "the instruments' ratings in POWER; CombiTac catalogue p.26", "derived"),
     ("repowder", "AMAZEMET rePowder atomizer and its chiller", "400 V 3-phase and 230 V, 32 A plugs; the optimizer "
      "draws up to about 60 A", "as left", "rePowder-BYU-Installation-Details.txt (the install call)", "published"),
-    ("glovebox", "Inert PureLab HE 2GB glovebox", "not found", "not found", "Inert's manual (NIST copy) has a "
-     "pre-installation chapter, not read", "not found"),
-    ("aconity", "Aconity MIDI LPBF printer", "not found", "laser 500 W (Gauss) or 1200 W (ring); the machine's supply "
-     "was not found", "zhaw.ch's page on its MIDI (snippet)", "snippet"),
+    ("glovebox", "Inert PureLab HE 2GB glovebox", "110-120 or 200-240 V 1-phase, 50/60 Hz, on two outlets (the box "
+     "and its internal power strip)", "main breaker 15 A at 110 V or 10 A at 220 V (vacuum pump 10/5 A, blower 5/3 A, "
+     "column heaters 4/2 A each); Inert's 2018 data sheet gives 20 A", "Inert's PureLab HE manual (NIST copy): "
+     "Tables 4 and 5, section 3.1.3; Inert PureLab data sheet 2018 (fetched)", "published"),
+    ("aconity", "Aconity MIDI LPBF printer", "400 V 3-phase + N + PE, 32 A, 50 Hz (third party; a US unit would be "
+     "60 Hz: ask Aconity)", "up to about 22 kVA at that breaker; laser 500 W (Gauss) or 1200 W (ring)",
+     "3Dnatives' MIDI listing (fetched; the same line is on its MIDI+ and MINI pages); zhaw.ch (snippet)",
+     "third party"),
     ("instron_floor", "Instron 68FM-100", "208-240 V 1-phase (reduced ratings) or 208/240/400 V 3-phase (preferred)",
      "not found", "Instron 6800 floor-model sheet (snippet)", "snippet"),
     ("instron_small", "Instron 68SC-2", "100/120/220/240 V 1-phase, 47-63 Hz", "1400 VA max (table models)",
@@ -1380,11 +1384,12 @@ def movie_cabling(data, idata):
             cam_to=[(4600, -16800, 11500), (1200, -300, 1200), (0, 0, 1)],
             labels=[lbl("ladder tray, 2.8 m up", (-4500, LADDER_Y, LADDER_Z + 90), (0.30, 0.12)),
                     lbl("208Y/120 V panel (placement ours)", (0, 2375, 2100), (0.66, 0.22))])
-    sc.step(f"2/{n}", "Left: the glovebox (rating not found) and the rePowder atomizer, which needs 400 V three-phase "
-            "and 230 V on 32 A plugs, its optimizer drawing up to about 60 A (the install call).", 3.0, None, hold=1.6,
+    sc.step(f"2/{n}", "Left: the glovebox, single phase on two outlets with a 15 A main breaker at 120 V (Inert's "
+            "manual), and the rePowder atomizer, which needs 400 V three-phase and 230 V on 32 A plugs, its optimizer "
+            "drawing up to about 60 A (the install call).", 3.0, None, hold=1.6,
             cam_to=[(-7400, -8200, 4600), (-4600, -900, 1300), (0, 0, 1)],
             labels=[lbl("rePowder: 400 V 3-ph + 230 V, 32 A plugs", drops["repowder"], (0.70, 0.18)),
-                    lbl("glovebox: rating not found", drops["glovebox"], (0.20, 0.18)),
+                    lbl("glovebox: 1-ph, 15 A main at 120 V", drops["glovebox"], (0.20, 0.18)),
                     lbl("MiR Charge 48V: 100-240 V in, 48 V 40 A out", (mx, my, 450), (0.80, 0.42))])
     sc.step(f"3/{n}", "The VLM: its 208 V three-phase supply (#53) into the back, and the dock circuits up and over the "
             "top into the two risers. A PoE+ switch on its side feeds the risers and the bay camera; N2 and chilled "
@@ -1396,10 +1401,11 @@ def movie_cabling(data, idata):
                     lbl("N2 generator (Parker UHPN2-1100)", (nx + 150, ny, N2GEN["h"]), (0.84, 0.46)),
                     lbl("chiller (ThermoFlex 900; box not to size)", (cx + 250, cy, 700), (0.84, 0.58)),
                     lbl("service risers", (RISER["x"], V.Y_FRONT + PLATE_Y + RISER["dy"], 2600), (0.20, 0.40))])
-    sc.step(f"4/{n}", "Right: the Aconity MIDI (supply not found), the two Instrons and the wire EDM, the biggest load "
-            "here at 13 kVA, three-phase 200 V.", 3.0, None, hold=1.8,
+    sc.step(f"4/{n}", "Right: the Aconity MIDI, listed at 400 V three-phase and 32 A (a third party's figure), the "
+            "two Instrons and the wire EDM, the biggest published load here at 13 kVA, three-phase 200 V.", 3.0, None,
+            hold=1.8,
             cam_to=[(9400, -9800, 5200), (6000, -800, 1300), (0, 0, 1)],
-            labels=[lbl("Aconity MIDI: not found", drops["aconity"], (0.16, 0.16)),
+            labels=[lbl("Aconity MIDI: 400 V 3-ph, 32 A (listed)", drops["aconity"], (0.16, 0.16)),
                     lbl("68FM-100: 208-240 V 1-ph or 3-ph", drops["instron_floor"], (0.36, 0.10)),
                     lbl("68SC-2: 1-ph, 1400 VA", drops["instron_small"], (0.62, 0.10)),
                     lbl("ROBOCUT: 200 V 3-ph, 13 kVA", drops["wire_edm"], (0.84, 0.16))])

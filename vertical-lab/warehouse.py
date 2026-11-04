@@ -239,7 +239,8 @@ def target_xy(key: str) -> np.ndarray:
 TARGET_Z = 900.0
 SPEED = 1500.0                                 # mm/s at most, as drawn; the MiR250 does up to 2.0 m/s (MiR), and
 #                                                each leg speeds up and slows down at its 0.3 m/s^2 (P.ramp_secs)
-GIF = dict(fps=5, width=640, lossy=90)         # line.mp4_to_gif settings: these movies are long, so a smaller GIF
+GIF = dict(fps=3, width=560, lossy=100)        # line.mp4_to_gif settings: 137 s since the drives keep to 0.3 m/s^2,
+#                                                so 3 fps keeps the GIF near 6 MB
 
 
 def upright(p, toward):

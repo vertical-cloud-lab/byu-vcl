@@ -185,9 +185,10 @@ The pages:
 - **The catch shelf** sits under 1 mm from the wire's path. A real cell might use a basket, or leave tabs and break
   them off.
 - **The drives keep to MiR's 0.3 m/s² (round 5's fixes).** Each one speeds up at 0.3 m/s² and slows down again,
-  up to 1.5 m/s (`props.ramp_secs`, `ramp_frac`). Along the line it never gets that fast: 5.5 m takes 8.6 s and peaks
-  at 1.28 m/s. Before, it was drawn at 1.5 m/s plus a flat 0.8 s for the ramps, so 5.5 m took 4.5 s, about twice as
-  fast as the MiR250 can go. The same profile drives chapters 2 and 3 and the warehouse.
+  up to 1.5 m/s (`props.ramp_secs`, `ramp_frac`). Along the line it never gets that fast: the 3.7 m from the
+  depowdering box to the wire EDM takes 7.0 s and peaks at 1.05 m/s. Before, it was drawn at 1.5 m/s plus a flat
+  0.8 s for the ramps, 3.3 s, about twice as fast as the MiR250 can go. The same profile drives chapters 2 and 3 and
+  the warehouse.
 - **The chamber is still open to the air** when the arm reaches in. Whether the MIDI's chamber can be opened before
   the plate is cool, and under what gas, isn't covered here.
 
