@@ -489,7 +489,7 @@ def movie():
           "(sped up)."
     for i, key in enumerate(ORDER_UP[1:], start=1):
         status(sc, Sieve=f"stacking: {LABEL[key]}")
-        transfer(f"2/{n}", cap, key, "sieve:stack", on_shaker(i), k=0.42, cam=CAM_SV if i == 1 else None)
+        transfer(f"2/{n}", cap, key, "sieve:stack", on_shaker(i), k=0.34, cam=CAM_SV if i == 1 else None)
     status(sc, Sieve="stacked: No. 60 to pan", Arm="taking the container")
     # the container: from the MiR's cup, poured onto the No. 60
     g_hold = held_point(sc, "pcont", HANDLE_GRASP)
@@ -703,7 +703,7 @@ def movie():
 
     for i, key in enumerate(reversed(ORDER_UP)):
         first = i == 0
-        k = 1.0 if first else 0.42
+        k = 1.0 if first else 0.34
         j = SS.JAR_OF[key]
         if first:
             cap = "The No. 60 comes off the top, out between the rods and into the tipper's cradle, which is open at " \
