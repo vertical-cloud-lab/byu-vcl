@@ -430,5 +430,59 @@
   "fits_tray": true,
   "floor": false,
   "where": "on a tray"
+ },
+ "h2d": {
+  "title": "FDM printer, enclosed, CoreXY, two nozzles",
+  "model": "Bambu Lab H2D",
+  "source": "round 2's model (lab_models/equipment.py) from Bambu's spec: 492 x 514 x 626 mm",
+  "model_mm": [
+   492,
+   515,
+   626
+  ],
+  "published_mm": [
+   492.0,
+   514.0,
+   626.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "a1_mini": {
+  "title": "FDM printer, open bed slinger",
+  "model": "Bambu Lab A1 mini",
+  "source": "round 2's model (lab_models/equipment.py) from Bambu's spec and outline drawing: 347 x 315 x 365 mm",
+  "model_mm": [
+   360,
+   295,
+   365
+  ],
+  "published_mm": [
+   347.0,
+   315.0,
+   365.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
+ },
+ "cubxl_lh": {
+  "title": "Liquid-handling gantry: pipette over the vial rack",
+  "model": "CubXL (Genmitsu PROVerXL 4030 V2 frame)",
+  "source": "round 2's model (lab_models/equipment.py) from the frame's spec and lab photos (#133, #200)",
+  "model_mm": [
+   1015,
+   605,
+   538
+  ],
+  "published_mm": [
+   740.0,
+   605.0,
+   488.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
  }
 }

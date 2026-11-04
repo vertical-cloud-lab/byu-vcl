@@ -34,7 +34,8 @@ CACHE = HERE / ".cache"
 MATS = dict(lab.MATS)
 MATS.update(I.MATERIALS)
 # Round 4 adds its instruments in modules of their own, each with a REGISTRY ({key: build}) and, optionally,
-# MATERIALS; a module that isn't there yet is skipped. Each module is cached on its own sources.
+# MATERIALS; a module that isn't there yet is skipped. Each module is cached on its own sources. instruments_round2
+# (PR #320) is round 2's equipment (the OT-2, the two Bambu printers, the CubXL, the multi-doser) split into pieces.
 MODULES = ["instruments", "instruments_char", "instruments_lab", "services", "instruments_round2"]
 
 

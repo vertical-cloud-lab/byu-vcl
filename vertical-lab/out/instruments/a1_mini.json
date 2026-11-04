@@ -1,0 +1,41 @@
+{
+ "name": "instruments/a1_mini",
+ "fps": 15,
+ "n_frames": 247,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/5",
+   "caption": "A bed slinger: the bed moves front to back, the toolhead left to right along the arm, and the arm up and down the column.",
+   "start_frame": 0,
+   "end_frame": 43
+  },
+  {
+   "label": "2/5",
+   "caption": "Printing a small vial rack in PLA: the head and the bed trace each layer between them, and the arm climbs a layer at a time as the part grows.",
+   "start_frame": 44,
+   "end_frame": 141
+  },
+  {
+   "label": "3/5",
+   "caption": "Done. The arm lifts clear.",
+   "start_frame": 142,
+   "end_frame": 170
+  },
+  {
+   "label": "4/5",
+   "caption": "The magnetic PEI plate lifts off with the rack on it: the arm takes the plate, not the part.",
+   "start_frame": 171,
+   "end_frame": 214
+  },
+  {
+   "label": "5/5",
+   "caption": "The arm parks, ready for a fresh plate.",
+   "start_frame": 215,
+   "end_frame": 246
+  }
+ ]
+}

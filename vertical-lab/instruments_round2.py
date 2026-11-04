@@ -168,8 +168,6 @@ def h2d() -> Instrument:
         ("Done. The head parks and the bed drops, so the arm can reach in.", 1.8, {"bed": (q["h"], H2D_DROP)}),
         ("The door opens and the flexible plate comes out with the rack on it, for the arm to take.", 2.6,
          {"door": (0.0, 1.0), "plate": (0.0, 1.0), "~door": (1.0, 0.0)}),
-        ("The plate goes back and the door shuts.", 1.8, {"plate": (1.0, 0.0), "door": (1.0, 0.0),
-                                                           "~shell": (1.0, 0.0)}),
     ]
     inst.labels = [("CoreXY gantry", (0.0, 0.0, gz + 30.0), (0.82, 0.16)),
                    ("toolhead, two nozzles", (15.0, -50.0, gz - 40.0), (0.16, 0.22)),
@@ -231,8 +229,7 @@ def a1_mini() -> Instrument:
         ("Done. The arm lifts clear.", 1.4, {"arm": (q["h"], q["h"] + A1_LIFT)}),
         ("The magnetic PEI plate lifts off with the rack on it: the arm takes the plate, not the part.", 2.4,
          {"plate": (0.0, 1.0)}),
-        ("A fresh plate goes back on and the arm parks.", 1.8, {"plate": (1.0, 0.0), "arm": (q["h"] + A1_LIFT,
-                                                                                            A1_LIFT)}),
+        ("The arm parks, ready for a fresh plate.", 1.6, {"arm": (q["h"] + A1_LIFT, A1_LIFT)}),
     ]
     inst.labels = [("toolhead (x, on the arm)", (th_x, th_y, p["bed_top"] + 60.0), (0.16, 0.20)),
                    ("arm (z, on the column)", (x0 + 279.0, 0.0, p["H"] - 40.0), (0.80, 0.16)),
@@ -361,10 +358,11 @@ def cubxl_lh() -> Instrument:
     draw[(c2, 0, 1)] = {"~carriage": (0.0, 1.0)}                      # the tool plate see-through: the pipette shows
     draw[(c6, 14, 15)] = {"~carriage": (1.0, 0.0)}
     inst.actions = [(c1, 2.6, {})] + [(c, secs, go(i, j, **draw.get((c, i, j), {}))) for c, secs, i, j in legs]
-    inst.labels = [("pipette", tuple(noz + (0, 0, 120.0)), (0.16, 0.18)),
-                   ("vial 6: powder from the multi-doser", (vx[6], vy, vz + 40.0), (0.80, 0.80)),
-                   ("stock (vial 1)", (vx[1], vy, vz + 40.0), (0.16, 0.80)),
-                   ("tip rack", (r["x"], r["y"], tip_top), (0.84, 0.30))]
+    deck = [("vial 6: powder from the multi-doser", (vx[6], vy, vz + 40.0), (0.80, 0.80)),
+            ("stock (vial 1)", (vx[1], vy, vz + 40.0), (0.16, 0.80)),
+            ("tip rack", (r["x"], r["y"], tip_top), (0.84, 0.30))]
+    inst.labels = [("pipette", tuple(noz + off[0] + (0, 0, 120.0)), (0.16, 0.18))] + deck
+    inst.step_labels = {i: deck for i in range(1, len(inst.actions) - 2)}     # the close-ups: the deck only
     inst.zoom = {1: ((tip0[0], tip0[1], tip0[2] + 10.0), 520.0), 3: ((vx[1], vy, vz + 50.0), 430.0),
                  7: ((vx[6], vy, vz + 45.0), 430.0), 14: "out"}
     inst.cam = (0.75, -1.7, 1.0)
