@@ -177,8 +177,9 @@ Code: [`instruments_r7.py`](instruments_r7.py). Sources: [`notes/instruments_r7.
   - At the rack the gripper opens to 23.5 mm, and every approach must have a clear straight line in and out.
   - One move is left: rack cup 7 has no clear straight-line approach, so six of its moves in the sped-up section aren't
     checked. Moving the rack 120 mm left would fix it.
-- **Chapter 1 is not re-rendered yet.** The render was stopped at frame 1300 of 2420 by a background timeout.
-  `VIZ3D_FPS=10 CHARGE_FXAA=1 xvfb-run -a python3 alloy_charge.py` takes 35-50 min.
+- **Chapter 1 is re-rendered on the round-7 code** at 6 fps (282 s; [GIF](out/alloy_charge.gif),
+  [MP4](out/mp4/alloy_charge.mp4)): the catch ring, the low carrier, the wrist camera. `VIZ3D_FPS=10 CHARGE_FXAA=1
+  xvfb-run -a python3 alloy_charge.py` gives 10 fps in 35-50 min.
 
 ### Alloy chapter 2: the lid's latch, the MiR's margin, a loading tong, the crucible
 
@@ -299,9 +300,8 @@ FLAIME's DAG (the DOE Genesis proposal) is the same chain with four coarser node
 It runs 41 min because nothing asked for in the thread is left out. The chapters are there to skip around.
 
 **Still wrong in it, or open:**
-- **Chapter 1 of the alloy route is still round 6's render**, with the old raised carrier and the cup on the bare pin.
-  The press's own clip after it shows the catch ring. Chapter 1's code is fixed and audited at 0 frames in collision,
-  but its render was stopped part-way.
+- **Chapter 1 is rendered at 6 fps**, the set-up movie at 6 fps, and the other new chapters at 10 fps (the long-form
+  is 15 fps, so their frames repeat).
 - **Chapters 3 and 4 still have arm collisions** (97 and 60 frames, round 6's audit) and the old raised holders on the
   MiR.
 - **Two floor layouts.** The set-up movie uses the new two-Shuttle floor plan (`setup_lab.FLOOR_PLAN`). The alloy

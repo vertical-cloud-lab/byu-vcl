@@ -100,14 +100,12 @@ CHAPTERS = [
     dict(key="alloy1", title="Alloy route 1/5: the charge cups, dosed, weighed and pressed under vacuum",
          card=["The atomizer melts the lab's own charge cups (#222), turned from 5N Al and oxygen-free Cu bar. Each "
                "is dosed through its powder's own funnel, weighed on an A&D HR-202i, and its vented plug pressed "
-               "fully home under vacuum in a Specac Atlas Autotouch, compacting the powder to a set load.",
-               "This chapter is still round 6's render: the old carrier, and the cup on the bare pin. The press's "
-               "own clip after it has the new catch ring."],
+               "fully home under vacuum in a Specac Atlas Autotouch, compacting the powder to a set load. The "
+               "cup now stands in a catch ring in the die's mouth when it is raised."],
          parts=[("mp4", "dag/route_dag_ch1.mp4", "The route as a function network (DAL's ONR YIP DAG)"),
                 ("still", "dal_workflow_table.png", 12.0, "DAL's alloy workflow, step by step (notes/dal_workflow.md): "
                  "the station each step uses here, and what is still missing", "DAL's 17 steps, and where each runs"),
-                ("mp4", "alloy_charge.mp4", "The charge cups"),
-                ("mp4", "vacuum_press.mp4", "The vacuum press with its catch ring")]),
+                ("mp4", "alloy_charge.mp4", "The charge cups")]),
     dict(key="alloy2", title="Alloy route 2/5: melt and atomize in the rePowder",
          card=["The MiR250 takes the four Al cups to the AMAZEMET rePowder. A loading tool lowers each cup into the "
                "crucible. Pump-downs with argon, induction melt, the pour, the ultrasonic spray, powder in the "
