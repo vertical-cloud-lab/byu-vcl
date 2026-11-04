@@ -66,9 +66,9 @@ lines; "after" is with the planner. The JSONs are in [`out/collisions/`](../out/
 | Lab set up from scratch | | 0 of 1376 | Its two joint moves were clear. Not re-rendered, but its floor shares the warehouse's moved post, so its committed render shows the old one. |
 | Alloy route 1, vacuum-press version (`alloy_charge.py`) | | **0** of 2752 | Rebuilt round the vacuum press (`alloy_press.py`). Four things were needed beyond the planner. The plug goes into the cup at the rack, low down. The punch is handled level. Level grasps are aimed along a direction the checker finds clear (`aim()`), nearest the line from the arm's base: square to the tray, the rack cups nearest the base, the carrier's second pocket and the press off to the side all folded the arm into itself. Detours may not lift the arm more than 150 mm over the move's higher end: one RRT sample had sent it up to 2.2 m. Rendered as `out/alloy_charge_vacuum.*`. |
 | Alloy route 1, round 5's doser version (`alloy_charge_doser.py`) | | 59 of 1875 | Rendered by round 5 before the check. Left: the arm in the press and in the rack's back cups (4/8). |
-| Alloy route 2, atomize (round 5) | | 257 of 1421 | Rendered by round 5 before the check. Left: the gripper in the rePowder's hood (2/5), the arm in the MiR (5/5). |
-| Alloy route 3, sieve and print (round 5) | | 543 of 2372 | Rendered by round 5 before the check. Left: the arm in the sieves of the stack (2/5), in the Aconity's cabinet (4/5). The planner's branch choice made one of its line moves flip the wrist; `line_to` now falls back to a planned joint move rather than stopping the render. |
-| Alloy route 4, cut and test (round 5) | | 539 of 2068 | Rendered by round 5 before the check. Left: the gripper in the depowdering lance's hose (2/6), the arm in the Aconity and the shaker box (3/6). |
+| Alloy route 2, atomize (round 5) | | 257 of 1421, then 257 of 1583 | Rendered by round 5 before the check. Round 5's fixes re-rendered it with the planner and the MiR at 0.3 m/s²: more frames, the same 257 in collision, and the MiR's own body clear (0, `alloy_atomize_mir.json`, `audit_mir.py`). Left: the gripper in the rePowder's hood (2/5), the arm in the MiR (5/5). |
+| Alloy route 3, sieve and print (round 5) | | 543 of 2372, then 543 of 2502 | Rendered by round 5 before the check. Left: the arm in the sieves of the stack (2/5), in the Aconity's cabinet (4/5). The planner's branch choice made one of its line moves flip the wrist; `line_to` now falls back to a planned joint move rather than stopping the render. Round 5's fixes re-rendered it with the MiR at 0.3 m/s², leaving the rePowder on an S-curve rather than sideways: the same 543 frames, and the MiR's body clear (0, `alloy_print_mir.json`). |
+| Alloy route 4, cut and test (round 5) | | 539 of 2068, then 582 of 2251 | Rendered by round 5 before the check. Left: the gripper in the depowdering lance's hose (2/6), the arm in the Aconity and the shaker box (3/6). Round 5's fixes re-rendered it with the MiR at 0.3 m/s². The 43 more frames are all in 3/6: the same arm-in-the-Aconity's-cabinet contacts last longer while the MiR pulls away, more slowly now. The MiR's body is clear (0, `alloy_workflow_mir.json`). |
 
 The round-4 versions of chapters 3 and 4, before round 5 rewrote them, went from 717 to 227 of 1310 frames and from
 331 to 77 of 1466 with the planner.
@@ -81,5 +81,6 @@ The round-4 versions of chapters 3 and 4, before round 5 rewrote them, went from
   same, so a run of frames is the measure.
 - **Moving obstacles are planned against as they stand.** A move planned while a door is open doesn't know the door
   closes during it. The audit catches that.
-- **Only the arms (and the warehouse's MiRs) are checked.** Instruments' own moving parts are `interference.py`'s
+- **Only the arms and the MiRs are checked** (the warehouse's MiRs by `warehouse.py`, the alloy route's with
+  `audit_mir.py`). Instruments' own moving parts are `interference.py`'s
   job (round 5's MuJoCo sweep).

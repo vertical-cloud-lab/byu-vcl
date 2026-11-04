@@ -615,12 +615,14 @@ route. Four chapters, each rendered on its own and joined by [`alloy_route.py`](
 <!-- alloy-route-table -->
 | Chapter | Code | GIF | MP4 | Notes |
 |---|---|---|---|---|
-| **All four, joined** (11 min 9 s, a title card before each) | [`alloy_route.py`](alloy_route.py) | | [MP4](out/mp4/alloy_route.mp4) | [on YouTube](https://www.youtube.com/watch?v=GE33p9N0x7c) (unlisted), chapters in [`out/alloy_route.json`](out/alloy_route.json). The 7 min 40 s round-4 version is [`9qnGCtPwCTM`](https://www.youtube.com/watch?v=9qnGCtPwCTM) |
+| **All four, joined** (11 min 33 s, a title card before each) | [`alloy_route.py`](alloy_route.py) | | [MP4](out/mp4/alloy_route.mp4) | [on YouTube](https://www.youtube.com/watch?v=GE33p9N0x7c) (unlisted), chapters in [`out/alloy_route.json`](out/alloy_route.json). The 7 min 40 s round-4 version is [`9qnGCtPwCTM`](https://www.youtube.com/watch?v=9qnGCtPwCTM) |
 | **1. The charge** (147 s): four 5N Al and four OFE Cu cups dosed through one funnel per powder, weighed on an A&D HR-202i and plugged, on tray B | [`alloy_charge_doser.py`](alloy_charge_doser.py), [`charge.py`](charge.py) | [GIF](out/alloy_charge.gif) | [MP4](out/mp4/alloy_charge.mp4), [on YouTube](https://www.youtube.com/watch?v=1Hnt4v2J_mI) | [`notes/alloy_charge_doser.md`](notes/alloy_charge_doser.md). The vacuum-press version, [`alloy_charge.py`](alloy_charge.py), [below](#the-plug-pressed-home-under-vacuum), is rendered on its own: [MP4](out/mp4/alloy_charge_vacuum.mp4), [on YouTube](https://www.youtube.com/watch?v=UjGb47I3fy0) |
-| **2. Melt and atomize** (157 s): the four Al cups in the rePowder, cut with the lab's own footage of its bronze and Al runs | [`alloy_atomize.py`](alloy_atomize.py) | [GIF](out/alloy_atomize.gif) | [MP4](out/mp4/alloy_atomize.mp4), [on YouTube](https://www.youtube.com/watch?v=znw55hE_dGs) | [`notes/alloy_atomize.md`](notes/alloy_atomize.md) |
-| **3. Sieve and print** (194 s): the arm runs a sieving cell, then the Aconity MIDI prints | [`alloy_print.py`](alloy_print.py), [`sieve_station.py`](sieve_station.py) | [GIF](out/alloy_print.gif) | [MP4](out/mp4/alloy_print.mp4), [on YouTube](https://www.youtube.com/watch?v=rm_XR5-2F5g) | [`notes/alloy_print.md`](notes/alloy_print.md) |
-| **4. Cut and test** (159 s): a suction lance and a depowdering box, the wire EDM, a rinse, the 68FM-100 | [`alloy_workflow.py`](alloy_workflow.py) | [GIF](out/alloy_workflow.gif) | [MP4](out/mp4/alloy_workflow.mp4), [on YouTube](https://www.youtube.com/watch?v=T16hQ4M-IkU) | [`notes/alloy_workflow.md`](notes/alloy_workflow.md) |
+| **2. Melt and atomize** (167 s): the four Al cups in the rePowder, cut with the lab's own footage of its bronze and Al runs | [`alloy_atomize.py`](alloy_atomize.py) | [GIF](out/alloy_atomize.gif) | [MP4](out/mp4/alloy_atomize.mp4), [on YouTube](https://www.youtube.com/watch?v=znw55hE_dGs) | [`notes/alloy_atomize.md`](notes/alloy_atomize.md) |
+| **3. Sieve and print** (198 s): the arm runs a sieving cell, then the Aconity MIDI prints | [`alloy_print.py`](alloy_print.py), [`sieve_station.py`](sieve_station.py) | [GIF](out/alloy_print.gif) | [MP4](out/mp4/alloy_print.mp4), [on YouTube](https://www.youtube.com/watch?v=rm_XR5-2F5g) | [`notes/alloy_print.md`](notes/alloy_print.md) |
+| **4. Cut and test** (169 s): a suction lance and a depowdering box, the wire EDM, a rinse, the 68FM-100 | [`alloy_workflow.py`](alloy_workflow.py) | [GIF](out/alloy_workflow.gif) | [MP4](out/mp4/alloy_workflow.mp4), [on YouTube](https://www.youtube.com/watch?v=T16hQ4M-IkU) | [`notes/alloy_workflow.md`](notes/alloy_workflow.md) |
 <!-- /alloy-route-table -->
+
+Chapters 2-4 and the joined route were re-rendered in [round 5's fixes](#round-5s-fixes-what-round-4s-review-left-open), with the MiR250 at its 0.3 m/s². Their YouTube copies are the earlier renders.
 
 ![The four chapters at work: a plug pressed into a cup, the cups atomized, the plate printed, the bars cut off](out/alloy_route_sheet.png)
 
@@ -854,6 +856,78 @@ frame. Details are in [`notes/interference.md`](notes/interference.md), every fi
 - **`collide.py` is a different check.** Another session wrote it to test the UR arm's own moves against the lab, with
   FCL and RRT-Connect planning.
 
+## Round 5's fixes: what round 4's review left open
+
+Specified in [`notes/next/round5-fixes.md`](notes/next/round5-fixes.md) and done on
+[PR #321](https://github.com/vertical-cloud-lab/byu-vcl/pull/321), which is stacked on #318. Two of the seven items
+had already been done on #318.
+
+| # | Item | Now |
+|---|---|---|
+| 1 | The wire EDM's tour cut a flat plate with a vertical wire | Done on #318 (`0cdbaf3`): the plate stands on edge |
+| 2 | The 68SC-2's bar needed about 2.4 kN, over its 2 kN | A 3 × 1 mm bar: 1.24–1.38 kN |
+| 3 | The bay camera had not been checked against the arm | Done on #318: 197 mm clear of `reach.py`'s poses. Now also clear along the arm's own paths |
+| 4 | The MiR250 drove about twice as fast as its 0.3 m/s² allows | Every drive speeds up and slows down at 0.3 m/s² |
+| 5 | Monkeypatched `Scene` methods in place of `tour.py` hooks | `Instrument.cams`, `.step_labels` and `.overlay` |
+| 6 | A placeholder QR pattern on the jar label | A real code, which scans |
+| 7 | Published figures still to confirm | Three found, two still to ask for ([below](#published-figures-still-to-confirm)) |
+
+### The MiR250 at 0.3 m/s²
+- **Each drive is rest to rest:** up to speed at 0.3 m/s², at most 1.5 m/s, and down again (`props.ramp_secs`,
+  `props.ramp_frac`). Along the line it never reaches 1.5 m/s. In chapter 4, the 3.7 m from the depowdering box to
+  the wire EDM takes 7.0 s and peaks at 1.05 m/s; it was 3.3 s. `scene.unease` undoes `Scene.step`'s easing, so a
+  drive keeps its own profile while the camera still eases.
+- **The warehouse is re-rendered:** 137 s, up from 89 s. Re-audited with the new timing, its two arms and its two
+  MiR250s' own bodies touch nothing in any of 1846 frames (`out/collisions/warehouse.json`, `warehouse_mir.json`).
+- **Chapter 3's MiR no longer slides sideways** off the rePowder. A MiR250 is differential drive, so it now drives
+  chapter 2's S-curve (`props.s_curve`), facing along it.
+- **Chapters 2–4 are re-rendered with the new drives, at 15 fps:** 167, 198 and 169 s, up from 157, 194 and 159 s.
+  The joined route is 11 min 33 s. Their arm-collision audits are unchanged: #318's collision session left those
+  as a follow-up. Chapter 4 has 43 more frames in collision, because one existing contact lasts longer while the MiR
+  pulls away. The MiR bodies are clear in all three (`audit_mir.py`).
+
+### Hooks in `tour.py`, not monkeypatches
+- `tour.tour_one` now takes from the instrument a camera per action (`Instrument.cams`), leader labels per view
+  (`Instrument.step_labels`) and a 2-D overlay over every frame (`Instrument.overlay`, through `Scene.overlays`).
+- `instruments_char.py` and `instruments_lab.py` no longer wrap `scene.Scene.overlay` and `.step` on import, and
+  `fab_tour.tour_one` is `tour.tour_one`.
+- The seven tours that used the wrappers render pixel-identical (PREVIEW, every step's last frame, old code against
+  new): the VHX, XRF, sieve shaker, CubXL corrosion, DED, packaging and HIP.
+
+### A QR code that scans
+
+![The jar label inset: a real QR code beside the printed lines](out/packaging_qr.png)
+
+The jar label's code is a real one, made with the `qrcode` package (version 5, error correction L). It holds the
+label's own lines. zbar and OpenCV both decode it from frames of the packaging tour's MP4, and zbar also from its GIF.
+The values are still examples.
+
+### The 68SC-2's bar
+`instruments.instron_small()`'s bar is 3 × 1 mm in section (`instruments.SC_BAR`). As-built AlSi10Mg breaks it at
+1.24 kN (AddUp's 412 MPa) to 1.38 kN (EOS's 461 MPa), 62–69 % of the frame's 2 kN, so an alloy up to about 660 MPa
+still fits. The old 4 × 1.5 mm bar needed about 2.4 kN. The tour says so on screen.
+
+### Published figures still to confirm
+Searched for, not asked: nobody was contacted. Each figure is in its notes file.
+- **Keyence VHX-S750E: published.** Keyence's own drawing is on the model's public
+  [Dimensions tab](https://www.keyence.com/products/microscope/digital-microscope/vhx-7000/models/vhx-s750e/dimensions/).
+  The stand is 674 mm tall and 530.5 mm deep to the base's front, with the stage 37 mm beyond it. The base is 286 mm
+  wide and the stage top is 258.5 mm up. The fitted model's base is 290.7 mm wide, but its stage top is 33.5 mm low
+  and its depths were guesses, so a refit to the drawing is next
+  ([`notes/instruments_char.md`](notes/instruments_char.md)).
+- **Inert PureLab HE glovebox: published.** It takes 110-120 or 200-240 V, single phase, on two outlets. The main
+  breaker is 15 A at 110 V and 10 A at 220 V (the manual's Table 4); Inert's 2018 data sheet says 20 A. That data
+  sheet gives the 2GB as 2000 × 1067 × 1921 mm outside, against the 2005 × 834 × 1794 mm drawing the model uses.
+- **Aconity MIDI: a third party's figure only.** 3Dnatives lists 400 V three-phase + N + PE, 32 A, 50 Hz. Aconity's
+  flyers give none, and a US machine would run at 60 Hz, so this one is for Aconity to confirm.
+- **Bruker S2 PUMA's open-lid height: still unpublished.** Ask Bruker (`info.baxs@bruker.com`, from its brochure).
+- **InssTek MX-Lab's base cabinet: still unpublished.** InssTek's technical data gives the machine without
+  accessories (680 × 684 × 835 mm, 250 kg, 220 V single phase, 15 A). Its brochure draws the laser source inside the
+  machine. The cabinet's size and contents are for InssTek to say.
+
+The cabling notes and `out/cabling.json` carry the two ratings now. The cabling clip still shows "not found" until
+it is next rendered: its tray D needs the OpenFlexure meshes, which this run didn't build.
+
 ## The workflow
 
 An example run, with every move a real one:
@@ -1053,7 +1127,7 @@ electric one, open to the air.
 ## Running it
 
 ```bash
-pip install cadquery pyvista trimesh pycollada pillow numpy scipy python-fcl   # plus ffmpeg and gifsicle
+pip install cadquery pyvista trimesh pycollada pillow numpy scipy python-fcl qrcode   # plus ffmpeg and gifsicle
 xvfb-run -a python3 animate.py assembly loading workflow disassembly full   # full joins the first three MP4s
 PREVIEW=1 xvfb-run -a python3 animate.py workflow        # the last frame of each sub-step, to /tmp
 python3 reach.py                                          # the arm study -> out/reach.json

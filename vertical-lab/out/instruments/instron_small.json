@@ -1,7 +1,7 @@
 {
  "name": "instruments/instron_small",
  "fps": 15,
- "n_frames": 100,
+ "n_frames": 109,
  "size": [
   1280,
   720
@@ -9,15 +9,15 @@
  "substeps": [
   {
    "label": "1/2",
-   "caption": "A sub-size printed bar in its grips. The arm rides up the single column and pulls it.",
+   "caption": "A sub-size printed bar, 3 x 1 mm in section, in its grips. The arm rides up the single column and pulls it: AlSi10Mg breaks it at 1.2-1.4 kN, within the frame's 2 kN.",
    "start_frame": 0,
-   "end_frame": 55
+   "end_frame": 64
   },
   {
    "label": "2/2",
    "caption": "Back to the start. A tabletop frame, but 1410 mm tall: even the shortest single column (1020 mm) is taller than a tray takes, so it stands beside the VLM.",
-   "start_frame": 56,
-   "end_frame": 99
+   "start_frame": 65,
+   "end_frame": 108
   }
  ]
 }

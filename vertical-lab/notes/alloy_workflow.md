@@ -9,8 +9,8 @@ and wire head, and the holders on the MiR.
 
 | | |
 |---|---|
-| MP4, 1280 × 720, 10 fps, 159 s (round 5; re-render at 15 fps when the runner is free) | [`out/mp4/alloy_workflow.mp4`](out/mp4/alloy_workflow.mp4) (8.9 MB) |
-| GIF, 640 × 360, 5 fps | [`out/alloy_workflow.gif`](out/alloy_workflow.gif) (5.1 MB) |
+| MP4, 1280 × 720, 15 fps, 169 s (re-rendered in round 5's fixes, with the MiR250 at its 0.3 m/s²) | [`out/mp4/alloy_workflow.mp4`](out/mp4/alloy_workflow.mp4) (11.4 MB) |
+| GIF, 640 × 360, 5 fps | [`out/alloy_workflow.gif`](out/alloy_workflow.gif) (6.2 MB) |
 | Stills: the lance, the depowdering box | [`out/alloy_workflow_lance.png`](out/alloy_workflow_lance.png), [`out/alloy_workflow_depowder.png`](out/alloy_workflow_depowder.png) |
 | Frame range of every sub-step, and the numbers used | [`out/alloy_workflow.json`](out/alloy_workflow.json) |
 | Stills: the cut, the broken bar | [`out/alloy_workflow_cut.png`](out/alloy_workflow_cut.png), [`out/alloy_workflow_still.png`](out/alloy_workflow_still.png) |
@@ -126,7 +126,8 @@ The pages:
   every machine, so it drives straight along the line.
 - **The bar needs the 68FM-100, not the 68SC-2.** Its 6 × 6 mm section at AddUp's 412 MPa is a 14.8 kN pull; at
   EOS's 461 MPa it is 16.6 kN. The 68SC-2's 2 kN is reached at 56 MPa on this section, below yield. On the 68SC-2, a
-  bar would need a section under 4.9 mm², say 3 × 1.5 mm.
+  bar needs a section under 4.9 mm² at 412 MPa, or 4.3 mm² at 461 MPa. `instruments.instron_small()`'s bar is now
+  3 × 1 mm: 1.24–1.38 kN, 62–69 % of the frame (round 5's fixes).
 - **The cut is about 3390 mm².** That is four bars at 847 mm² each, the bar's outline. At GF's 300 mm²/min it would
   take at least 11 minutes; FANUC publishes no rate.
 - **The wire EDM must take the plate on edge.** Its wire is vertical. To cut bars off at their base, the plate's face
@@ -148,7 +149,8 @@ The pages:
 - **Drawn, not sourced:**
   - Aconity publishes no drawing of the chamber's inside. The supply cylinder behind the build cylinder, the
     recoater parked at the back, the piston and the powder are layout choices; only the 170 mm sizes are from DAL.
-  - The wire head is drawn here. `instruments.wire_edm()`'s own head can't span a plate on edge, so it is hidden.
+  - The wire head is drawn here, and `instruments.wire_edm()`'s own head and plate are hidden. That model now stands
+    its plate on edge too (`0cdbaf3`), but its plate is a round one without the lug.
 - **Depowdering (round 5): our design, on a commercial principle.** No source found documents automatic
   depowdering on the MIDI, and Utah's page lists the AconitySIEVE as a separate unit. So:
   - **In the chamber, the arm does what a person does** with an ATEX vacuum: a suction lance (Ø28 × 300 mm tube,
@@ -182,17 +184,20 @@ The pages:
   - The grips' jaws aren't drawn closing: the status line says when they close.
 - **The catch shelf** sits under 1 mm from the wire's path. A real cell might use a basket, or leave tabs and break
   them off.
-- **The drives are about twice as fast as real.** The animation allows the MiR 1.5 m/s and no ramp: 5.5 m takes
-  4.4 s. At MiR's 0.3 m/s² it never gets past 1.3 m/s on that distance, and takes about 8.5 s.
+- **The drives keep to MiR's 0.3 m/s² (round 5's fixes).** Each one speeds up at 0.3 m/s² and slows down again,
+  up to 1.5 m/s (`props.ramp_secs`, `ramp_frac`). Along the line it never gets that fast: the 3.7 m from the
+  depowdering box to the wire EDM takes 7.0 s and peaks at 1.05 m/s. Before, it was drawn at 1.5 m/s plus a flat
+  0.8 s for the ramps, 3.3 s, about twice as fast as the MiR250 can go. The same profile drives chapters 2 and 3 and
+  the warehouse.
 - **The chamber is still open to the air** when the arm reaches in. Whether the MIDI's chamber can be opened before
   the plate is cool, and under what gas, isn't covered here.
 
-### Changes to the shared files I'd suggest (not made)
+### Changes to the shared files (both made)
 
-- `instruments.wire_edm()`: its tour cuts a flat plate with a vertical wire moving across it. That doesn't separate
-  parts at their base. Standing the plate on edge, as here, would.
-- `instruments.instron_small()`: its specimen is 4 × 1.5 mm = 6 mm². At about 400 MPa that is 2.4 kN, over the
-  frame's 2 kN.
+- `instruments.wire_edm()`: its tour cut a flat plate with a vertical wire moving across it, which doesn't separate
+  parts at their base. Its plate now stands on edge, as here (`0cdbaf3`, the per-model refinements).
+- `instruments.instron_small()`: its specimen was 4 × 1.5 mm = 6 mm², about 2.4 kN at 400 MPa, over the frame's
+  2 kN. It is 3 × 1 mm now (round 5's fixes).
 
 ### Running it
 

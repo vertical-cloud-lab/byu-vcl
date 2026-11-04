@@ -94,7 +94,9 @@ Still too tall at 1000 mm:
 
 Other things come with it:
 - **Its base cabinet.** InssTek's 835 mm is "without accessories", and what the cabinet holds is not published. If it
-  holds the laser source, it rides on the same tray, because a process fibre can't go through a dock. On our estimate
+  holds the laser source, it rides on the same tray, because a process fibre can't go through a dock. InssTek's 2024
+  brochure draws the laser generator inside the machine itself, which would leave the cabinet off the tray, but it
+  doesn't say so (instruments_lab.md). On our estimate
   the cabinet is itself 1000 mm tall.
 - **Argon and exhaust go through the dock.** That means a gas line in the CombiTac and an extraction duct, which the
   dock doesn't have yet.

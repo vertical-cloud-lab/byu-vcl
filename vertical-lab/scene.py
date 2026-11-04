@@ -114,6 +114,13 @@ def ease(u: float) -> float:
     return u * u * (3 - 2 * u)
 
 
+def unease(e: float) -> float:
+    """The inverse of ease: the step's own time (0-1) for the eased u that Scene.step passes, for a motion that keeps a
+    profile of its own (a MiR250's drive, props.ramp_frac)."""
+    e = min(max(e, 0.0), 1.0)
+    return 0.5 - math.sin(math.asin(1.0 - 2.0 * e) / 3.0)
+
+
 def window(u, t0, t1):
     """Re-map u so the action happens between t0 and t1 of the step (eased)."""
     return ease((u - t0) / max(t1 - t0, 1e-6))
@@ -213,6 +220,8 @@ class Scene:
         self.intro = 1.0          # seconds of establishing view before the first sub-step's motion
         self.robots: list = []    # robot.Robot instances in the scene (they register themselves)
         self.frame_hooks: list = []   # f(scene) after every frame's update, before it is drawn
+        self.overlays: list = []      # f(scene, img, scale) over every frame's text, but not under VIZ3D_CLEAN: plots,
+        #                               spectra, insets (tour.py adds an Instrument's overlay)
         self.auditor = None
         if AUDIT:
             import collide
@@ -374,6 +383,8 @@ class Scene:
             d.line([(0, H - h - 8 * s), (W, H - h - 8 * s)], fill=(30, 60, 140, 255), width=max(1, int(2 * s)))
             for i, t in enumerate(lines):
                 d.text((30 * s, H - h - 8 * s + pad + i * lh), t, font=fc, fill=(15, 15, 20))
+        for f in getattr(self, "overlays", ()):      # alloy_atomize's _dress draws on a stand-in without them
+            f(self, img, scale)
         return img
 
     # ------------------------------------------------------------------------------- frames

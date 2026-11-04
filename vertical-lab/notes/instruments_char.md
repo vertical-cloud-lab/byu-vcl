@@ -81,8 +81,15 @@ Keyence's EA-300 model page.
 | 27 in 4K screen | 596.7 × 335.7 mm | Brochure p. 38 |
 
 What is estimated, and why:
-- **The stand's base and column are scaled from photos.** Keyence publishes the S750E's outline only as a drawing
-  on its download tab.
+- **The stand's base and column are scaled from photos.** Keyence does publish the S750E's outline, on the model's
+  public [Dimensions tab](https://www.keyence.com/products/microscope/digital-microscope/vhx-7000/models/vhx-s750e/dimensions/) (found in round 5's fixes). The drawing gives:
+  - 674 mm tall with the head upright, to the top of its cable hook;
+  - 530.5 mm deep from the rear knob to the base's front, and the stage 37 mm further forward;
+  - a 286 mm wide base, the head swinging 219.3 mm past it tilted 60° left and 272.5 mm tilted 90° right;
+  - the stage top 258.5 mm up, 50 mm of stage Z and 49 mm of focus, a ϕ357 mm stage rotation range.
+
+  The model is still the one fitted to Keyence's video ([refine_vhx.md](refine_vhx.md)): a 290.7 mm base (1.6 % wide
+  of the drawing), its stage top at 225 mm (33.5 mm low), and its depths guessed. Refitting to the drawing is next.
 - **The screen is drawn built into the controller.** That is an inference: the screen is in the controller's own
   spec table, and 625 mm fits a 27 in panel.
 - **The head's tilt range is third-party.** Keyence's text gives none. Georgia Tech's facility page says −60° to
@@ -130,7 +137,9 @@ Things to know:
 - **The lid's open height isn't published.** Drawn 35° open on a rear hinge, its front edge rises to about 905 mm
   (an estimate). That is above the roughly 844 mm between a presented tray's floor and the opening's header. If the
   real lid is that big, the arm can open it only once the tray is out, under full tray extraction, or on a bench.
-  Ask Bruker for the open height.
+  Ask Bruker for the open height. Round 5's fixes looked again and found none: the Series 2 brochure (DOC-B80-EXS015
+  V7, 2026), the product page and the automation flyers give only the closed 670 × 710 × 610 mm, 108 kg and 600 VA.
+  Bruker's manuals are behind its support portal; its brochure gives info.baxs@bruker.com.
 - **The layout is from Bruker's photos and is approximate:** the sloped front, the lid over the tray, the touch screen
   on the right.
 - **It measures from below,** like most benchtop EDXRF. The cup sits film side down over the window, so the film
@@ -242,10 +251,9 @@ don't know whether Kardex's configuration leaves another.
 
 - **The spectra are illustrative.** Both the LIBS and the XRF spectra are; the line positions are real and the
   heights made up. Each panel says so on screen.
-- **The overlay hook.** `tour.tour_one` has no hook for a 2-D overlay. So `instruments_char.py` wraps
-  `scene.Scene.overlay`, once, on import. It draws a panel only in scenes named `instruments/<key>` for its own keys,
-  at the opacity of that instrument's `readout` piece. Every other scene is untouched.
-  - **The cleaner fix** would be an `Instrument.overlay(img, scale, alpha)` that `tour_one` calls.
+- **The panels are each instrument's `Instrument.overlay`** (round 5's fixes), which `tour.tour_one` draws over
+  every frame of that instrument's clip, at the opacity of its `readout` piece. Until round 5 this module wrapped
+  `scene.Scene.overlay` on import instead, keyed on the scene's name. The three clips render pixel-identical either way.
 - **`CharInstrument` subclasses `Instrument`.** Its `aside` pieces stay out of the size and the framing, but
   keep their place in the hero still. They are the container, the VHX controller and the readouts.
 - **Display trouble.** Under the load of five agents, `xvfb-run` on this runner sometimes gave VTK a "bad X server

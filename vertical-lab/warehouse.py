@@ -31,13 +31,13 @@ import line
 import props as P
 import tour
 import vlm as V
-from scene import AUDIT, FPS, OUT, PREVIEW, Scene, T, R
+from scene import AUDIT, FPS, OUT, PREVIEW, Scene, T, R, unease
 
 TITLE = "Vertical cloud lab, warehouse version: MiR250 + UR10e on an open floor"
 
 # ============================================================================================ sourced figures
 MIR250 = dict(                    # MiR250 Specifications, 2023-06-28 (see the module docstring)
-    size_mm=(800, 580, 300), mass_kg=97, payload_kg=250, max_speed_m_s=2.0,
+    size_mm=(800, 580, 300), mass_kg=97, payload_kg=250, max_speed_m_s=2.0, accel_m_s2=P.MIR_ACCEL / 1000.0,
     corridor_mm=1450,             # operational corridor width, default footprint and SICK safety configuration
     corridor_two_mm=3000,         # two robots passing, default setup (2100-2450 with the dynamic setups)
     turn90_mm=1500, uturn_mm=1600, pivot_mm=1800,
@@ -237,8 +237,10 @@ def target_xy(key: str) -> np.ndarray:
 
 
 TARGET_Z = 900.0
-SPEED = 1500.0                                 # mm/s as drawn; the MiR250 does up to 2.0 m/s (MiR)
-GIF = dict(fps=5, width=640, lossy=90)         # line.mp4_to_gif settings: these movies are long, so a smaller GIF
+SPEED = 1500.0                                 # mm/s at most, as drawn; the MiR250 does up to 2.0 m/s (MiR), and
+#                                                each leg speeds up and slows down at its 0.3 m/s^2 (P.ramp_secs)
+GIF = dict(fps=3, width=560, lossy=100)        # line.mp4_to_gif settings: 137 s since the drives keep to 0.3 m/s^2,
+#                                                so 3 fps keeps the GIF near 6 MB
 
 
 def upright(p, toward):
@@ -282,8 +284,9 @@ class Amr:
 
     def route(self, pts, end_heading=None, reverse_first=False, reverse_last=False):
         """Timeline of a drive through the (x, y) points: pivot to face each leg (MiR250s turn on the spot), drive it
-        straight; then pivot to end_heading. reverse_first backs the first leg out (off a charger), reverse_last backs
-        into the dock. Returns (update(u), seconds at SPEED mm/s and 60 deg/s)."""
+        straight from rest to rest at 0.3 m/s^2, up to SPEED mm/s; then pivot to end_heading. Pivots at 60 deg/s.
+        reverse_first backs the first leg out (off a charger), reverse_last backs into the dock. Returns (update(u),
+        seconds)."""
         segs, (x, y, hd) = [], self.pose
         for i, (px, py) in enumerate(pts):
             dx, dy = px - x, py - y
@@ -297,7 +300,7 @@ class Amr:
             if abs(turn) > 0.5:
                 segs.append(("turn", (x, y, hd), (x, y, hd + turn), abs(turn) / 60.0))
                 hd += turn
-            segs.append(("drive", (x, y, hd), (px, py, hd), dist / SPEED))
+            segs.append(("drive", (x, y, hd), (px, py, hd), P.ramp_secs(dist, SPEED)))
             x, y = px, py
         if end_heading is not None:
             turn = (end_heading - hd + 180.0) % 360.0 - 180.0
@@ -307,10 +310,13 @@ class Amr:
         bounds = np.cumsum([0.0] + [s[3] / total for s in segs])
 
         def up(u):
+            u = unease(u)              # the step's own time: each leg keeps its ramp rather than the step's ease
             for k, s in enumerate(segs):
                 if u <= bounds[k + 1] + 1e-9 or k == len(segs) - 1:
                     f = min(1.0, max(0.0, (u - bounds[k]) / max(bounds[k + 1] - bounds[k], 1e-9)))
                     a, b = np.array(s[1]), np.array(s[2])
+                    if s[0] == "drive":
+                        f = P.ramp_frac(f, float(np.hypot(*(b - a)[:2])), SPEED)
                     self.set(a + (b - a) * f)
                     return
         return up, total
@@ -326,8 +332,11 @@ class MirCheck:
 
     DECAL_Z = 35.0
 
-    def __init__(self, sc: Scene, names):
+    def __init__(self, sc: Scene, names, arms=None):
+        """names: the MiR groups; arms: {name: its arm's robot.Robot prefix}, default "<name>ur" as here (the alloy
+        chapters' single MiR is "amr", its arm "ur")."""
         self.sc, self.names, self.frames = sc, names, []
+        self.arms = arms or {}
 
     def __call__(self, sc):
         import collide
@@ -338,7 +347,7 @@ class MirCheck:
         robots = {rb.prefix: rb for rb in getattr(sc, "robots", [])}
         hits = []
         for name in self.names:
-            rb = robots.get(f"{name}ur")
+            rb = robots.get(self.arms.get(name, f"{name}ur"))
             held = collide._subtree(sc, rb.held[0]) if rb is not None and rb.held is not None else set()
             sub = collide._subtree(sc, name)
             mine = (sub - set(rb.groups() if rb is not None else ())) - held      # the arm is collide.py's
@@ -606,10 +615,10 @@ def movie(data, idata):
     def show_routes(u):
         sc.alpha["route1"] = sc.alpha["route2"] = min(1.0, u * 2)
     sc.step(f"3/{n}", "Two units leave their chargers on the routes they are given: unit 1 to the VLM's opening, unit "
-            "2 to the 100 kN Instron. Drawn at 1.5 m/s; the MiR250 does up to 2.0 m/s.", 1.0, show_routes, hold=0.2,
+            "2 to the 100 kN Instron. Each leg starts and stops at the MiR250's 0.3 m/s^2, up to 1.5 m/s (it does 2.0).", 1.0, show_routes, hold=0.2,
             cam_to=CAM_ALL)
     sc.step(f"3/{n}", "Two units leave their chargers on the routes they are given: unit 1 to the VLM's opening, unit "
-            "2 to the 100 kN Instron. Drawn at 1.5 m/s; the MiR250 does up to 2.0 m/s.", max(t1, t2),
+            "2 to the 100 kN Instron. Each leg starts and stops at the MiR250's 0.3 m/s^2, up to 1.5 m/s (it does 2.0).", max(t1, t2),
             A.both(u1, u2), hold=0.3, labels=auto(sc, CAM_ALL, [("unit 1: to the VLM", (xv, yv, 1500)),
                                                                ("unit 2: to the Instron", (xi, yi, 1500))]))
     # ------------------------------------------------------------------ 4. dock, camera check, the vial

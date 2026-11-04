@@ -4,7 +4,7 @@ Links are relative to `vertical-lab/`, so this section can go into the README as
 
 | Scene | GIF (640 px, 5 fps) | MP4 (1280 × 720, 15 fps) | Still |
 |---|---|---|---|
-| **Warehouse**: the VLM and the floor machines on an open floor, two MiR250 + UR10e units driving between docks (89 s) | [`out/warehouse.gif`](out/warehouse.gif) | [`out/mp4/warehouse.mp4`](out/mp4/warehouse.mp4) | [`out/warehouse_still.png`](out/warehouse_still.png) |
+| **Warehouse**: the VLM and the floor machines on an open floor, two MiR250 + UR10e units driving between docks (137 s; 89 s before the drives kept to 0.3 m/s²) | [`out/warehouse.gif`](out/warehouse.gif) | [`out/mp4/warehouse.mp4`](out/mp4/warehouse.mp4) | [`out/warehouse_still.png`](out/warehouse_still.png) |
 | **Set up from scratch**: tape, utilities, the VLM, the machines, the arms, trays A-F, the cameras, an orbit (1 min 51 s) | [`out/setup_lab.gif`](out/setup_lab.gif) | [`out/mp4/setup_lab.mp4`](out/mp4/setup_lab.mp4) | [`out/setup_lab_still.png`](out/setup_lab_still.png) |
 
 `out/<name>.json` gives the frame range of every sub-step, as for the other chapters.
@@ -38,7 +38,7 @@ What the movie shows:
 7. Both go back to charge.
 
 Every arm move is solved with the UR's inverse kinematics, as in the workflow. The MiR250s drive straight legs and turn
-on the spot, which they can do. They are drawn at 1.5 m/s; the MiR250's top speed is 2.0 m/s.
+on the spot, which they can do. Each leg starts and stops at the MiR250's 0.3 m/s², up to 1.5 m/s; its top speed is 2.0 m/s.
 
 **The floor plan, from MiR's own figures** ("MiR250 Specifications", 2023-06-28):
 

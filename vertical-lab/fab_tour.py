@@ -71,28 +71,7 @@ def load(keys=None, rebuild=False) -> dict:
 
 def tour_one(inst, entries: dict) -> str:
     """tour.tour_one, writing to out/fabrication/ and out/mp4/fabrication/."""
-    (OUT / DIR).mkdir(parents=True, exist_ok=True)
-    (OUT / "mp4" / DIR).mkdir(parents=True, exist_ok=True)
-    sc = Scene(f"{DIR}/{inst.key}", f"{inst.title}: {inst.model}")
-    sc.intro = 0.6
-    tour.studio(sc, shadow_of=inst.bbox())
-    rig = tour.Rig(sc, inst, entries, f"{inst.key}:")
-    bb = inst.bbox()
-    tall = (bb[5] - bb[4]) > 1.3 * max(bb[1] - bb[0], bb[3] - bb[2])
-    pad, look_z = inst.framing or ((1.0, 0.5) if tall else (0.85, 0.42))
-    sc.cam = tour.frame_cam(bb, inst.cam, pad=pad, look_z=look_z)
-    n = len([a for a in inst.actions if a[0]])
-    whole = sc.cam
-    for i, (cap, secs, targets) in enumerate(inst.actions):
-        z = getattr(inst, "zoom", {}).get(i)               # close-ups, as tour.tour_one does them
-        cam_to = None if z is None else whole if z == "out" else tour.close_cam(*z, direction=inst.cam)
-        sc.step(f"{min(i + 1, n)}/{n}", cap, secs, rig.move(targets), hold=0.5, labels=list(inst.labels),
-                cam_to=cam_to)
-    # the hero still for the gallery: closed, the load in place, nothing see-through, no text
-    rig.move({k: (None, 1.0 if k in inst.props else j.v0) for k, j in inst.joints.items()})(1.0)
-    rig.move({f"~{k}": (None, 0.0) for k in entries})(1.0)
-    Image.fromarray(sc.render_base()).save(OUT / DIR / f"{inst.key}.png", optimize=True)
-    return sc.save()
+    return tour.tour_one(inst, entries, subdir=DIR)
 
 
 def still(keys) -> None:
