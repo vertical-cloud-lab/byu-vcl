@@ -2,10 +2,17 @@
 the utilities and their heat.
 
     xvfb-run -a python3 services.py services      # the dock close-up            -> out/vlm_services.gif, out/mp4/...
+    xvfb-run -a python3 services.py hookups       # one tray's hookups and UPS   -> out/vlm_hookups.gif, out/mp4/...
+    xvfb-run -a python3 services.py baycam        # the bay camera and its view  -> out/bay_camera.gif, out/mp4/...
     xvfb-run -a python3 services.py cabling       # the line with its cabling    -> out/vlm_cabling.gif, out/mp4/...
-    xvfb-run -a python3 services.py tether        # a tray on a retractable line -> out/vlm_tether.gif, out/mp4/...
+    python3 services.py clearance                 # docks against the lift       -> out/dock_lift_clearance.png, .json
     python3 services.py json                      # out/services.json (heat budget), out/cabling.json (circuits)
+    python3 services.py join                      # out/mp4/vlm_services_all.mp4 from the clips above
     xvfb-run -a python3 tour.py tray_dock stream_cam   # the two models on their own -> out/instruments/
+
+The retractable line (an igus e-spool on the rear wall, round 4's ``tether`` clip) was dropped on PR #318: "Let's
+remove the retractable line option for now. It overcomplicates things for now." notes/services.md says why it was
+a poor fit anyway.
 
 What Kardex gives (#53): a tray has power in its storage slot and again at the opening, not while the extractor carries
 it. The dealer offered a quick-connect cord to the device on the tray. This module puts every service a tray needs
@@ -101,11 +108,6 @@ SOURCES = {
     "chiller": "Thermo Scientific ThermoFlex 900: up to 900 W of cooling at a +20 C setpoint and 25 C ambient (60 Hz), "
                "5-40 C, pump 15.1 L/min at 4.1 bar (thermofisher.com TF900, snippet). Its size and electrical input "
                "were not found.",
-    "e_spool": "igus e-spool flex 2.0: extension up to 15 m, cables 5-15 mm, spring (SP, SB) or crank; 'No slip ring: "
-               "Uninterrupted supply of power, data and air.' igus e-spool power: motor-driven, up to 25 m, 1.2 m/s, "
-               "power, data, fibre, air and liquids, no slip ring (igus.com).",
-    "spring_reels": "Conductix-Wampfler SR spring reels: up to 56 m horizontal, 34 m lift; power 4G2.5-4G6 "
-                    "(conductix.com). Hannay 800 series spring-rewind: 3/4 in x 85 ft hose (retailer listing).",
 }
 
 # Electrical figures for what the trays and the line carry: (watts used for the budget, kind, source). 'kind' says what
@@ -1414,83 +1416,6 @@ def movie_cabling(data, idata):
     return sc.save()
 
 
-# ----------------------------------------------------------------------------------------------- the tether
-TETHER_X = V.TRAY_W / 2 + 15.0          # the line runs in the 30 mm between the tray's side (1225) and the rails (1255)
-TETHER_ATTACH = (TETHER_X, V.TRAY_D / 2 - 20, 60.0)     # on the tray's back right corner, tray frame
-
-
-def movie_tether(data, idata):
-    """Tray A on a retractable line from an e-spool on the rear wall, from R2 to the opening."""
-    import pyvista as pv
-    k = "A"
-    slot = HOME[k]
-    sc, L, _ = build_vlm("vlm_tether", data, idata, "Vertical cloud lab: a tray on a retractable line", docks=False,
-                         cams=False)
-    L.skin(1.0)(1.0)
-    hide(sc, ("skin_R",))
-    M = mats()
-    ys, zs = V.SLOTS[slot]
-    spool = np.array([TETHER_X, V.UNIT_D / 2 - 60, zs + TETHER_ATTACH[2]])
-    drum = pv.Cylinder(center=(TETHER_X + 10, spool[1] + 20, spool[2] + 120), direction=(1, 0, 0), radius=150,
-                       height=70).triangulate()
-    sc.add("tether/spool", drum, M["svc_chain"][:3], "tether", specular=0.4)
-
-    def attach():
-        y, z = L.tray[k]
-        return np.array([TETHER_ATTACH[0], y + TETHER_ATTACH[1], z + TETHER_ATTACH[2]])
-
-    sc.add("tether/line", _tube([spool, attach()], 9), M["svc_power"][:3], "tether")
-    state = {"bad": False}
-
-    def redraw():
-        a = attach()
-        sc.set_mesh("tether/line", _tube([spool, a], 9))
-        sc.color["tether/line"] = (0.9, 0.1, 0.1) if state["bad"] else M["svc_power"][:3]
-        pay = float(np.linalg.norm(a - spool))
-        L.svc_lines = [(f"Tray {k}", "on its line: mains, the whole way"), ("Payout", f"{pay / 1000:.2f} m"),
-                       ("Extractor", state.get("ext", "free"))]
-        L.gauges()
-
-    def wrap(f):
-        def up(u):
-            f(u)
-            redraw()
-        return up
-    redraw()
-    cam = [(4300, 900, 2300), (700, 0, 1050), (0, 0, 1)]
-    n = 5
-    sc.step(f"1/{n}", "The other way: no plug at all. Tray A's line runs from an e-spool on the rear wall (igus: power, "
-            "data and air on one spool, no slip ring, up to 15 m), along the 30 mm between the tray's side and the "
-            "extractor's guide rails.", 3.2, None, hold=1.4, cam_to=cam,
-            labels=[("e-spool (marker, not to size)", tuple(spool + (0, 20, 120)), (0.80, 0.20)),
-                    ("the line", tuple((spool + attach()) / 2), (0.80, 0.40))])
-    sc.step(f"2/{n}", "Out of the slot: the line pays out as the extractor pulls the tray.", 0.6 + abs(L.lift_z - zs)
-            / 1333, wrap(L.lift_to(zs)), hold=0.1)
-    sc.step(f"2/{n}", "Out of the slot: the line pays out as the extractor pulls the tray.", 2.2, wrap(L.slide(k, 0.0)),
-            hold=0.2)
-    yt, zt = V.SLOTS["open"]
-    pay = tether_payout()["rows"]
-    cap3 = (f"Down {abs(zs - zt):.0f} mm and through the shutter to the opening: {pay[k]['payout_mm'] / 1000:.1f} m of "
-            "line from R2. The shutter needs a notch at its right-hand end for it.")
-    sc.step(f"3/{n}", cap3, max(0.6, abs(zs - zt) / 1333), wrap(L.lift_to(zt, carry=k)),
-            hold=0.1)
-    sc.step(f"3/{n}", cap3, 0.6, wrap(L.shut(1.0)), hold=0.0)
-    sc.step(f"3/{n}", cap3, 2.2, wrap(L.slide(k, yt)), hold=0.0)
-    sc.step(f"3/{n}", cap3, 0.6, wrap(L.shut(0.0)), hold=1.0)
-    L.where[k] = "open"
-    state["bad"], state["ext"] = True, "blocked: the line spans the shaft"
-    redraw()
-    sc.step(f"4/{n}", "The catch: while tray A is out, its line spans the shaft at the extractor's height, so the "
-            "extractor can't move to fetch any other tray until tray A goes home.", 2.4, None, hold=2.0,
-            cam_to=[(3600, -2600, 2600), (600, 0, 1000), (0, 0, 1)],
-            labels=[("the line across the shaft", tuple((spool + attach()) / 2), (0.80, 0.30))])
-    sc.step(f"5/{n}", "So a tether suits one tray, stored at the opening's own height so it never moves up or down. "
-            f"From the top slot here (R4, 2700 mm) it would need {pay['E']['payout_mm'] / 1000:.1f} m and cross the "
-            "shaft on the slant.", 3.0,
-            None, hold=2.6, still=True)
-    return sc.save()
-
-
 # ----------------------------------------------------------------------------------------------- the numbers
 def heat_budget() -> dict:
     """Per tray: the load from the instruments' ratings, the cameras and the UPS's loss; for the VLM: what that puts
@@ -1554,26 +1479,6 @@ def heat_budget() -> dict:
             "a quick-connect cord).",
         ],
     )
-
-
-def tether_payout() -> dict:
-    """How much line a tray on a tether needs: from a spool on the wall behind its slot (the rear wall for a rear slot,
-    the front wall for a front one), at the slot's height, to the tray's back right corner, wherever the tray goes on its
-    way to the opening (in the slot, on the extractor at the slot's height and at the opening's, presented)."""
-    rows = {}
-    for k, slot in HOME.items():
-        ys, zs = V.SLOTS[slot]
-        sy = math.copysign(V.UNIT_D / 2 - 60, ys)
-        spool = np.array([sy, zs + TETHER_ATTACH[2]])
-        pts = [(ys, zs), (0.0, zs), (0.0, V.Z_OPEN), (V.Y_OPEN, V.Z_OPEN)]
-        d = [float(np.linalg.norm(np.array([y + TETHER_ATTACH[1], z + TETHER_ATTACH[2]]) - spool)) for y, z in pts]
-        rows[k] = dict(slot=slot, column="rear" if ys > 0 else "front", vertical_mm=round(abs(zs - V.Z_OPEN)),
-                       payout_mm=round(max(d)))
-    return dict(rows=rows, note="The line has to stay in the 30 mm between the tray's side and the extractor's guide "
-                                "rails, the shutter needs a notch for it, and while the tray is out the line spans the "
-                                "shaft, so the extractor can't fetch any other tray. It suits one tray stored at the "
-                                "opening's own height.",
-                source=SOURCES["e_spool"])
 
 
 def _rig_points(post_h=POST_H, foot=True) -> dict:
@@ -1644,6 +1549,52 @@ def bay_view(step=25.0) -> dict:
                       missed_y_range=None if not len(miss) else [round(float(miss[:, 1].min())),
                                                                  round(float(miss[:, 1].max()))])
     out["tray_y_range"] = [V.Y_OPEN - V.TRAY_D / 2, V.Y_OPEN + V.TRAY_D / 2]
+    return out
+
+
+FOV_HALF = {"wide": (51.0, 33.5), "hq": (11.1, 8.35)}      # half-angles, degrees (FOV in SOURCES; hq is 22.2 x 16.7)
+
+
+def frustum_rays(f, r, u, half, n=(41, 27)) -> np.ndarray:
+    """Unit directions over a rectilinear picture of half-angles `half` (degrees) about forward f, right r and up u."""
+    a = math.tan(math.radians(half[0])) * np.linspace(-1.0, 1.0, n[0])
+    b = math.tan(math.radians(half[1])) * np.linspace(-1.0, 1.0, n[1])
+    A, B = np.meshgrid(a, b)
+    d = f[None, :] + A.reshape(-1, 1) * r[None, :] + B.reshape(-1, 1) * u[None, :]
+    return d / np.linalg.norm(d, axis=1)[:, None]
+
+
+def out_of_bay(c, d) -> np.ndarray:
+    """Rays from c along d (world, the tray presented): True where a ray leaves through the opening into the room
+    before it meets the presented tray's floor. Nothing else counts as cover: the instruments have windows, so a camera
+    that would see the room through one does."""
+    y_face = -V.UNIT_D / 2 - V.SKIN
+    zf = V.Z_OPEN + V.T_FLOOR
+    with np.errstate(divide="ignore", invalid="ignore"):
+        tf = np.where(d[:, 2] < -1e-9, (zf - c[2]) / d[:, 2], np.inf)
+        ty = np.where(d[:, 1] < -1e-9, (y_face - c[1]) / d[:, 1], np.inf)
+    pf = c + d * np.where(np.isfinite(tf), tf, 0.0)[:, None]
+    on_floor = np.isfinite(tf) & (np.abs(pf[:, 0]) <= V.TRAY_W / 2) & (np.abs(pf[:, 1] - V.Y_OPEN) <= V.TRAY_D / 2)
+    py = c + d * np.where(np.isfinite(ty), ty, 0.0)[:, None]
+    through = np.isfinite(ty) & (np.abs(py[:, 0]) <= V.OPEN_W / 2) & (py[:, 2] >= V.Z_SILL) & \
+        (py[:, 2] <= V.Z_OPEN_TOP)
+    return through & ~(on_floor & (tf < ty))
+
+
+def unit_view(x, y, ax, ay, az, post=None, h=None) -> dict:
+    """What a tray unit at (x, y) aimed at (ax, ay, az) (tray frame) sees with its tray presented: the share of the
+    Wide's and the HQ's picture that looks out through the opening into the room (out_of_bay), and how far the HQ is
+    from what it is aimed at."""
+    from scene import T
+    h = CAM_H if h is None else h
+    post, pan, tilt = rig_pose(x, y, (ax, ay, az), h, post=post)
+    opt = camera_optics(T((x, V.Y_OPEN + y, V.Z_OPEN + V.T_FLOOR)), post, h, pan, tilt)
+    out = {}
+    for k, (c, f, r, u) in opt.items():
+        out[f"{k}_sees_room"] = round(float(out_of_bay(c, frustum_rays(f, r, u, FOV_HALF[k])).mean()), 3)
+    c = opt["hq"][0]
+    out["hq_to_aim_mm"] = round(float(np.linalg.norm(c - np.array([ax, V.Y_OPEN + ay, V.Z_OPEN + az]))))
+    out.update(post_yaw_deg=round(post), pan_deg=round(pan, 1), tilt_down_deg=round(tilt, 1))
     return out
 
 
@@ -1796,7 +1747,7 @@ def write_json():
                               hq_16mm="22.2 x 16.7 deg: Raspberry Pi's figure for its 16 mm C-mount lens on the HQ "
                                       "Camera (robot-arms lenses.py)"),
                      bay_view=bay_view()),
-        heat=heat_budget(), tether=tether_payout())
+        heat=heat_budget())
     (OUT / "services.json").write_text(json.dumps(services, indent=1) + "\n")
     cab = dict(route=dict(ladder_z_mm=LADDER_Z, ladder_y_mm=LADDER_Y, width_mm=LADDER_W, path_xy_mm=LADDER_PATH,
                           note="placements of the ladder, panel, switch and controls are ours"),
@@ -1810,7 +1761,7 @@ def _main():
     args = sys.argv[1:] or ["services"]
     data = idata = None
     for word in args:
-        if word in ("services", "cabling", "tether", "cameras") and data is None:
+        if word in ("services", "hookups", "baycam", "cabling", "cameras") and data is None:
             import lab
             import tour
             data, idata = lab.meshes(), tour.load()
@@ -1822,16 +1773,12 @@ def _main():
             _gif("vlm_cabling")
         elif word == "cameras":
             print(still_cameras(data, idata), flush=True)
-        elif word == "tether":
-            print(movie_tether(data, idata), flush=True)
-            _gif("vlm_tether")
         elif word == "json":
             s, c = write_json()
             for k, t in s["heat"]["trays"].items():
                 print(k, t["slot"], t["total_w"], "W", "UPS ok" if t["ups_ok"] else "over the UPS")
             for name, r in s["heat"]["vlm"]["scenarios"].items():
                 print(name, r)
-            print(json.dumps(s["tether"]["rows"]))
 
 
 def _gif(name):
