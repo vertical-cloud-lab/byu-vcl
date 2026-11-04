@@ -4,8 +4,9 @@
 The bought parts (fan, magnet carrier and magnets, inserts, MOSFET, Hall sensor) are the Onshape
 model's, read with assembly_video.onshape_parts() (read-only, cached under .cache/). The base and
 the vial holder are the compact STLs. The junction board, the cable, the four M3 washers and the
-four M3 x 20 screws are drawn here, to BUILD.md's dimensions: the 8 x 6-hole board on the rails
-against the stop, with its cores from the -Y notch along the board's -Y margin to column A.
+four M3 x 20 screws are drawn here, to BUILD.md's dimensions: the 8 x 6-hole board on the rails,
+where the stop held it until 2026-11-04, with the cable in through the -X notch and its cores
+straight into column A, and the MOSFET's legs straight into H2-H4.
 
     xvfb-run -a python compact/render_compact_steps.py img/compact_assembly.png
 
@@ -30,10 +31,10 @@ COL = {"base": (0.33, 0.35, 0.39), "holder": (0.10, 0.58, 0.60), "keys": (0.92, 
        "carrier": (0.93, 0.92, 0.88), "mag_n": (0.85, 0.13, 0.13), "mag_s": (0.15, 0.30, 0.85),
        "fan": (0.16, 0.16, 0.18), "ins_fan": BRASS, "mosfet": (0.10, 0.10, 0.10), "mosfet_tab": STEEL,
        "hall": (0.15, 0.15, 0.15), "board": (0.13, 0.42, 0.24), "parts": (0.86, 0.76, 0.56),
-       "cable": (0.60, 0.60, 0.62), "washers": STEEL, "screws": STEEL}
+       "cable": (0.60, 0.60, 0.62), "washers": STEEL, "screws": STEEL, "mosfet_legs": STEEL}
 FP = 16.0                                   # fan screw positions, +-x +-y
 Z_FAN0, Z_FAN1, Z_FLANGE = 9.0, 19.5, 20.0  # fan bottom and top, holder flange underside (on 0.5 mm washers)
-BOARD = (-21.42, -1.1, -10.0, 10.0, 3.7, 5.3)   # the compact base's board: against the stop, on the rails
+BOARD = (-21.42, -1.1, -10.0, 10.0, 3.7, 5.3)   # the compact base's board on its rails, where the stop held it
 COLS = [BOARD[0] + 1.27 + 2.54 * i for i in range(8)]   # A-H, -X to +X
 ROWS = [6.35 - 2.54 * j for j in range(6)]              # 1-6, +Y to -Y
 
@@ -46,7 +47,8 @@ def onshape() -> dict[str, pv.PolyData]:
         key = av.actor_key(p["name"], np.array(m.center))
         if key in ("ins_fan", "carrier", "mag_n", "mag_s", "fan", "mosfet", "mosfet_tab", "hall", "keys"):
             if key in ("mosfet", "mosfet_tab"):
-                m = m.translate((0.5, 0, 0), inplace=False)     # the compact stop is 0.5 mm further toward +X
+                # the compact board is 0.5 mm further toward +X, and the legs go into H2-H4, centred on row 3
+                m = m.translate((0.5, ROWS[2], 0), inplace=False)
             out.setdefault(key, []).append(m)
     return {k: pv.merge(v) for k, v in out.items()}
 
@@ -63,21 +65,27 @@ def drawn() -> dict[str, pv.PolyData]:
         flat.append(pv.Cylinder(center=(*mid, zt + rad), direction=axis, radius=rad, height=5.6))
     flat.append(pv.Box((COLS[4] - 0.8, COLS[4] + 0.8, ROWS[5] - 0.3, ROWS[4] + 0.3, zt, zt + 1.0)))   # C1, 1206
     d["parts"] = pv.merge(flat)
-    # The four cores, as a bundle two wide and two high along the board's -Y margin, then to column A
-    r, zf, zm = 0.7, 3.2 + 0.7, zt + 0.7
+    # The cable comes in through the -X wall's notch (y -6.5 to 6.5, floor at z 2.6) and its jacket
+    # ends at the wall's inner face. The four cores fan out from there, up over the board's -X edge
+    # and down into column A: A6 (5V), A5 (GND), A3 (Hall), A1 (PWM).
+    r, zj = 0.7, 2.6 + 2.3
     cores = []
-    for k, (row, dy, dz, x_in) in enumerate(((5, -8.0, 0.0, -6.4), (4, -9.4, 0.0, -7.8),
-                                             (2, -8.0, 1.4, -6.4), (0, -9.4, 1.4, -7.8))):
-        pts = [(x_in, -21.5, zf + dz * 0.6), (x_in, -13.0, zf + dz * 0.6), (x_in - 0.6, dy - 0.8, zm + dz),
-               (-12.0, dy, zm + dz), (-19.6, dy, zm + dz)]
-        if row >= 4:
-            pts += [(COLS[0] + 0.2, ROWS[row] - 0.9, zm + dz * 0.5), (COLS[0], ROWS[row], zt + 0.2)]
-        else:   # Hall and PWM go on up the -X edge, over column A, to A3 and A1
-            pts += [(-20.9, dy + 2.5, zm + dz), (-20.9, ROWS[row] - 1.6, zm + dz), (COLS[0], ROWS[row], zt + 0.2)]
+    for row, y0 in ((5, -1.2), (4, -0.4), (2, 0.4), (0, 1.2)):
+        y = ROWS[row]
+        pts = [(-24.0, y0, zj), (-22.9, y0 + 0.35 * (y - y0), zj + 0.3), (-21.9, y, zt + 1.0),
+               (COLS[0] - 0.4, y, zt + 1.0), (COLS[0], y, zt + 0.2)]
         cores.append(pv.Spline(np.array(pts), 60).tube(radius=r, n_sides=12, capping=True))
     d["cores"] = cores
-    d["cable"] = pv.Spline(np.array([(-7.1, -20.0, 4.9), (-7.1, -26.0, 4.9), (-7.1, -34.0, 2.6), (-7.1, -60.0, 2.3)]),
+    d["cable"] = pv.Spline(np.array([(-23.0, 0.0, zj), (-29.0, 0.0, zj), (-37.0, 0.0, 2.6), (-62.0, 0.0, 2.3)]),
                            40).tube(radius=2.3, n_sides=28, capping=True)
+    # The MOSFET's three legs, from its body (the Onshape model's leads stop at x 0) straight into
+    # H2, H3 and H4: nothing stands between them now
+    legs = []
+    for row in (1, 2, 3):
+        y = ROWS[row]
+        legs.append(pv.Spline(np.array([(0.2, y, 5.05), (-1.2, y, 5.6), (COLS[7] + 0.4, y, 5.75), (COLS[7], y, 5.4),
+                                        (COLS[7], y, 4.4)]), 40).tube(radius=0.32, n_sides=10, capping=True))
+    d["mosfet_legs"] = pv.merge(legs)
     d["washers"] = pv.merge([pv.Disc(center=(sx * FP, sy * FP, Z_FAN1), inner=1.6, outer=3.5, c_res=48)
                              .extrude((0, 0, 0.5), capping=True) for sx in (-1, 1) for sy in (-1, 1)])
     screws = []
@@ -92,17 +100,17 @@ def drawn() -> dict[str, pv.PolyData]:
 CORE_COL = [(0.80, 0.10, 0.10), (0.10, 0.10, 0.10), (0.92, 0.92, 0.92), (0.10, 0.55, 0.20)]   # 5V, GND, Hall, PWM
 
 STEPS = [   # caption, actors shown, actors highlighted (HL, AMBER), lift in mm for actors not yet in place
-    ("2. Board on its rails, cable in the −Y notch, MOSFET at +X",
-     ["keys", "base", "ins_fan", "board", "parts", "cores", "cable", "mosfet", "mosfet_tab"],
-     (["board", "parts", "mosfet", "mosfet_tab"], ["cores", "cable"]), {}),
+    ("2. Board on its rails, cable in through the −X notch, MOSFET at +X",
+     ["keys", "base", "ins_fan", "board", "parts", "cores", "cable", "mosfet", "mosfet_tab", "mosfet_legs"],
+     (["board", "parts", "mosfet", "mosfet_tab", "mosfet_legs"], ["cores", "cable"]), {}),
     ("3. Fan onto its four posts, the carrier already on its hub",
-     ["keys", "base", "ins_fan", "board", "parts", "cores", "cable", "mosfet", "mosfet_tab", "fan", "carrier",
+     ["keys", "base", "ins_fan", "board", "parts", "cores", "cable", "mosfet", "mosfet_tab", "mosfet_legs", "fan", "carrier",
       "mag_n", "mag_s"], (["fan"], ["carrier", "mag_n", "mag_s"]), {}),
-    ("5–6. A washer on each of the fan's corners, then the holder, its groove over the −X wall",
-     ["keys", "base", "ins_fan", "board", "parts", "cores", "cable", "mosfet", "mosfet_tab", "fan", "carrier",
+    ("5–6. A washer on each of the fan's corners, then the holder, its groove over the notch (−X)",
+     ["keys", "base", "ins_fan", "board", "parts", "cores", "cable", "mosfet", "mosfet_tab", "mosfet_legs", "fan", "carrier",
       "mag_n", "mag_s", "washers", "holder", "hall"], (["washers"], ["holder", "hall"]), {"holder": 22, "hall": 22}),
     ("7. Four M3 × 20 through the holder, the washers and the fan into the inserts",
-     ["keys", "base", "ins_fan", "board", "parts", "cores", "cable", "mosfet", "mosfet_tab", "fan", "carrier",
+     ["keys", "base", "ins_fan", "board", "parts", "cores", "cable", "mosfet", "mosfet_tab", "mosfet_legs", "fan", "carrier",
       "mag_n", "mag_s", "washers", "holder", "hall", "screws"], (["screws"], []), {"screws": 16}),
 ]
 

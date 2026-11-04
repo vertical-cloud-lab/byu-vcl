@@ -24,6 +24,8 @@ Where the numbers come from:
 - The rails, the stop, the notch and where the MOSFET lies: onshape/vial_stirrer.fs, and for
   the compact base compact/build_compact.py. The MOSFET lies flat, printed face up, tab toward
   +X, so seen from above its gate is the lead nearest +Y, the top of the figure.
+- 2026-11-04: the compact base has no stop, and its cable notch moved to the -X wall, so the
+  figure is now right for both bases except that the 56 x 56 mm one still has its stop.
 """
 
 import math
@@ -119,10 +121,13 @@ BRIDGES = [
     ((4, 5), (5, 5)), ((5, 5), (6, 5)),
     ((0, 2), (1, 2)), ((1, 2), (2, 2)), ((2, 2), (2, 1)),                      # HALL
 ]
-# Where the board goes, against the stop on the two rails at -X: the -X wall's inner face and the
-# stop's -X face (vial_stirrer.fs makeBase; build_compact.py moves both 0.5 mm in), the rails at
-# |y| 7.4-8.9, and the fan posts, R4 at (+-16, +-16).
-BASES = {"56 x 56 mm base": (-23.5, -1.6), "compact base": (-22.9, -1.1)}
+# Where the board goes, on the two rails at -X: the -X wall's inner face, where the board's +X
+# edge is, and the rails' ends in X (vial_stirrer.fs makeBase; build_compact.py moves the rails
+# 0.5 mm in). The 56 x 56 mm base's stop holds the board's +X edge at x -1.6. The compact base has
+# had no stop since 2026-11-04, and its board goes where its stop held it, the +X edge 0.4 mm past
+# the rails' ends. Then the rails at |y| 7.4-8.9, and the fan posts, R4 at (+-16, +-16).
+BASES = {"56 x 56 mm base": (-23.5, -1.6, (-22.6, -2.0), "against its stop"),
+         "compact base": (-22.9, -1.1, (-22.1, -1.5), "where its stop was; it has none since 2026-11-04")}
 RAIL_Y = (7.4, 8.9)
 FAN_POST, FAN_POST_R = 16.0, 4.0
 
@@ -235,22 +240,24 @@ def check():
 
 
 def fit():
-    """Stop unless the piece fits on the rails of both bases, pushed against the stop. It is
-    snapped through the next column of holes at each end, so it is NCOL pitches long, and it is
-    the strip's full width. Returns, by base, the room left at the -X wall and the gap from the
-    piece's long edges to the fan posts, in mm."""
+    """Stop unless the piece fits on the rails of both bases, with its +X edge where BASES puts it.
+    It is snapped through the next column of holes at each end, so it is NCOL pitches long, and it
+    is the strip's full width. Returns, by base, the room left at the -X wall, the gap from the
+    piece's long edges to the fan posts, and how far the piece runs past the rails at -X and +X,
+    in mm."""
     length = NCOL * PITCH
     if STRIP_W / 2 < RAIL_Y[1]:
         raise SystemExit(f"a {STRIP_W} mm board doesn't reach across both rails")
     out = {}
-    for name, (wall, stop) in BASES.items():
-        spare = stop - wall - length
-        dx = max(stop - length + FAN_POST, 0.0, -FAN_POST - stop)    # the -X fan posts, at x = -16
+    for name, (wall, edge, (r0, r1), _) in BASES.items():
+        spare = edge - wall - length
+        dx = max(edge - length + FAN_POST, 0.0, -FAN_POST - edge)    # the -X fan posts, at x = -16
         post = math.hypot(dx, FAN_POST - STRIP_W / 2) - FAN_POST_R
-        if spare < 0.2 or post < 0.2:
+        past = (r0 - (edge - length), edge - r1)
+        if spare < 0.2 or post < 0.2 or max(past) > 1.0:
             raise SystemExit(f"the board doesn't fit the {name}: {spare:.2f} mm left at the wall, "
-                             f"{post:.2f} mm from the fan posts")
-        out[name] = (spare, post)
+                             f"{post:.2f} mm from the fan posts, past the rails by {past[0]:.2f} and {past[1]:.2f}")
+        out[name] = (spare, post, past)
     return out
 
 
@@ -515,7 +522,7 @@ def figure(nets):
     text(ax, 0.3, 10.88, "Stirrer wiring, Uno version (BUILD.md stage 5): the CubXL's Uno drives the fan from D10 "
          "and counts turns on D2", 15.5, "bold", ha="left")
     text(ax, 0.3, 10.53, "Drawn from BUILD.md's netlist by wiring_diagram.py, which checks this layout against it. "
-         "Nothing has been built yet: the junction board is a piece of the 6-hole-wide perfboard strip, 8 × 6 holes.",
+         "The junction board is a piece of the 6-hole-wide perfboard strip, 8 × 6 holes.",
          10.5, colour="#444444", ha="left")
 
     # --- Pi and Uno -------------------------------------------------------------------------------
@@ -583,23 +590,22 @@ def figure(nets):
             wire(ax, [(8.3, ey), (ex, ey), (ex, ty), (tx, ty)], CORE_NET[c], lw=2.4, halo=2.5, z=9)
             ax.add_patch(Circle((tx, ty), 0.075, fc=C[CORE_NET[c]], ec="white", lw=1, zorder=10))
 
-    # --- board, MOSFET, stop ------------------------------------------------------------------------
+    # --- board, MOSFET -------------------------------------------------------------------------------
     board.draw()
     board.parts()
     for term, (s_, colour) in FLYING.items():
         x, y = board.xy(landing(term))
         marker(ax, x, y, s_, colour)
-    stop_x = bx_ + bw_ + 0.42
+    mos_x = bx_ + bw_ + 0.42
     legs = [landing(f"IRLZ44N pin {i}") for i in (1, 2, 3)]
-    ax.add_patch(Rectangle((stop_x, yj - 5 * MM), 1.2 * MM, 10 * MM, fc="#b9bec4", ec="#7d848c", lw=1, zorder=2))
-    text(ax, stop_x + 0.6 * MM, yj + 5 * MM + 0.14, "stop", 8.5, colour="#555555")
-    draw_mosfet(ax, board, [r for _, r in legs], stop_x + 0.5)
+    draw_mosfet(ax, board, [r for _, r in legs], mos_x + 0.5)
     g, d, s_ = (hole_name(h) for h in legs)
     for i, line in enumerate((
-            "IRLZ44N, flat on the floor past the stop: printed face up,",
-            "tab toward +X and touching nothing. Its legs bend up over",
-            f"the stop into {g}, {d} and {s_}; short wires work too.")):
-        text(ax, stop_x - 0.05, 4.43 - 0.23 * i, line, 9, colour="#222222", ha="left")
+            "IRLZ44N, flat on the floor at +X: printed face up, tab",
+            f"toward +X and touching nothing. Its legs go into {g}, {d}",
+            f"and {s_}. The compact base has no stop in their way; the",
+            "56 × 56 mm base's 3 mm stop: bend them over it.")):
+        text(ax, mos_x - 0.05, 4.43 - 0.23 * i, line, 9, colour="#222222", ha="left")
 
     # --- Hall sensor and fan: their leads come down onto the board from above --------------------
     hx, hy = 8.95, 9.62
@@ -694,8 +700,9 @@ if __name__ == "__main__":
     nets = check()
     print("layout matches BUILD.md's netlist:", len(BRIDGES), "bridges")
     print(f"board: {NCOL} x {NROW} holes, {NCOL * PITCH:.2f} x {STRIP_W:.1f} mm")
-    for name, (spare, post) in fit().items():
-        print(f"  {name}: {spare:.2f} mm left at the -X wall, {post:.2f} mm from the fan posts")
+    for name, (spare, post, past) in fit().items():
+        print(f"  {name}, {BASES[name][3]}: {spare:.2f} mm left at the -X wall, {post:.2f} mm from the fan posts, "
+              f"rails {-past[0]:.2f} mm beyond its -X edge and ending {past[1]:.2f} mm short of its +X edge")
     print(hole_list(nets))
     save(figure(nets), OUT)
     print("wrote", OUT)
