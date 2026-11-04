@@ -1,14 +1,18 @@
-"""The vertical cloud lab with its characterization instruments, and the backup layout: the alloy equipment in a line
-with the VLM, all facing the same way, along a floor rail for the arm (#303).
+"""The vertical cloud lab with its characterization instruments, and round 3's layout: the alloy equipment in a line
+with the VLM, all facing the same way, served by the MiR250 + UR10e (#303).
 
     xvfb-run -a python3 line.py            # -> out/vlm_line.gif, out/mp4/vlm_line.mp4, out/vlm_line_still.png
     PREVIEW=1 xvfb-run -a python3 line.py  # the last frame of each sub-step -> /tmp/preview_vlm_line.png
 
 What fits through the opening (727.5 mm of product height, Kardex's order sheet) goes on three more trays, D, E and F,
 in the three storage slots round 2 left free. What doesn't stands in the line, fronts in line with the VLM's: the
-glovebox and the rePowder atomizer on the left; the Aconity MIDI, the two Instrons and the wire EDM on the right. The
-rail is the backup to the mobile base: a Vention rack-and-pinion seventh axis along the fronts, with the UR10e on its
-carriage at the same 800 mm as on the MiR250, parked at the VLM's opening. No workflow uses it yet.
+glovebox and the rePowder atomizer on the left; the Aconity MIDI, the two Instrons and the wire EDM on the right.
+
+Mobile manipulator only (Sterling, PR #318: "Just stick with the mobile manipulator setup"): the Vention rail that was
+the backup here is gone, and the arm rides its MiR250, parked at the opening. ``TRAY_LOADS`` is where trays D-F's
+instruments sit, for every scene; ``LINE`` is the line's layout, which alloy_workflow.py still uses. The warehouse
+floor plan (warehouse.py, setup_lab.FLOOR_PLAN) replaces the line for the lab as a whole. Not re-rendered in round 7:
+the trays coming to the opening were called redundant.
 
 Builds on ``animate.Lab`` (round 2's scene: the VLM, trays A-C and their equipment, the rePowder) and ``tour.Rig``
 (the instruments and their moving pieces).
@@ -36,8 +40,10 @@ EXTRA = {"D": ("R1", "microscopy and diffraction"), "E": ("R4", "mechanical test
 TRAY_LOADS = {
     # the six OpenFlexures (4 x v7, 2 x Delta) on one pocketed sub-tray, in place of round 3's two freestanding ones
     # (PR #318: "put them in an array on some kind of sub-tray with cutouts"); setup_lab.py fit placed it here
+    # round 7 (setup_lab.py fit, with each tray's UPS, dock plate and camera posts): the Mastersizer 60 mm forward,
+    # clear of the UPS and the tray lines. The sieve shaker went to the sieving cell on the floor, the XRF to tray M
     "D": [("sem", -760.0, 0.0), ("xrd", 60.0, 0.0), ("openflexure_array", 792.0, -148.0)],
-    "E": [("pip", -880.0, 0.0), ("nanoindenter", -250.0, 0.0), ("mastersizer", 590.0, 0.0)],
+    "E": [("pip", -880.0, 0.0), ("nanoindenter", -250.0, 0.0), ("mastersizer", 590.0, -60.0)],
     "F": [("polisher", -420.0, 0.0), ("furnace", 280.0, 0.0)],      # the PX500 with its bottle holder: 630 wide
 }
 # the line, left to right: x of each machine's centre; fronts at Y_FACE (the rePowder stays where round 2 put it)
@@ -45,9 +51,11 @@ LINE = {"glovebox": -6350.0, "aconity": 3250.0, "instron_floor": 5600.0, "instro
 NAMES = {"glovebox": "inert glovebox, automatic antechamber", "aconity": "Aconity MIDI metal printer",
          "instron_floor": "Instron 68FM-100, 100 kN", "instron_small": "Instron 68SC-2",
          "wire_edm": "FANUC ROBOCUT wire EDM"}
-RAIL_Y = A.AMR_XY[1] + A.ARM_LOCAL[1]          # the arm's base over the same spot as on the MiR250
+# the rail's old line, for services.py's cabling scene, which still draws a trough along it (services.py is not this
+# module's); nothing here draws a rail
+RAIL_Y = A.AMR_XY[1] + A.ARM_LOCAL[1]
 RAIL_X = (-7700.0, 10000.0)
-PARK_X = 0.0                                   # the carriage parked at the VLM's opening
+PARK_X = 0.0
 
 CAM_LINE = [(4400, -19800, 8600), (1100, -600, 900), (0, 0, 1)]
 CAM_LEFT = [(-7200, -7600, 3300), (-4700, -1300, 1000), (0, 0, 1)]
@@ -94,7 +102,7 @@ def place_floor(inst_bbox, x: float) -> np.ndarray:
 def build(name: str, data: dict, idata: dict):
     sc = Scene(name, TITLE, gif=False)          # the GIF is made from the MP4 (mp4_to_gif)
     sc.cam = list(CAM_LINE)
-    L = A.Lab(sc, data, robot=False)
+    L = A.Lab(sc, data, robot=True)               # the MiR250 + UR10e, parked at the opening
     import pyvista as pv
     sc.add("line floor", pv.Plane(center=(1200, -900, -1.5), direction=(0, 0, 1), i_size=34000, j_size=18000),
            A.FLOOR_C, "floor", ambient=1.0, diffuse=0.0, specular=0.0, smooth_shading=False)
@@ -118,14 +126,6 @@ def build(name: str, data: dict, idata: dict):
             continue
         inst, ents = idata[key]
         rigs[key] = tour.Rig(sc, inst, ents, f"line_{key}:", at=place_floor(inst.bbox(), x))
-    rail = I.rail(length=RAIL_X[1] - RAIL_X[0], travel=1.0)
-    rents = tour.piece_entries(rail)
-    rc = (RAIL_X[0] + RAIL_X[1]) / 2
-    rigs["rail"] = tour.Rig(sc, rail, rents, "rail:", at=T((rc, RAIL_Y, 0)))
-    rigs["rail"].v["carriage"] = PARK_X - rc            # the carriage's joint is in mm along x (travel = 1 mm)
-    rigs["rail"].apply()
-    import robot
-    L.robot = robot.Robot(sc, A.ROBOT, "rail:carriage", T((0, 0, I.RAIL["top"])), q0=A.PARK_DEG, prefix="ur")
     L.apply_state()
     return sc, L, rigs
 
@@ -166,13 +166,11 @@ def mp4_to_gif(mp4, gif, fps=6, width=720, lossy=80):
 
 def movie(data, idata):
     sc, L, rigs = build("vlm_line", data, idata)
-    rail = rigs["rail"]
-    rc = (RAIL_X[0] + RAIL_X[1]) / 2
     L.skin(0.0)(1.0)
     L.apply_state()
-    n = 7
-    sc.step(f"1/{n}", "The backup layout: the alloy equipment in a line with the VLM, every front facing the same way, "
-            "along a floor rail. The VLM now holds six trays: round 2's three and three for characterization.", 3.2,
+    n = 6
+    sc.step(f"1/{n}", "The alloy equipment in a line with the VLM, every front facing the same way, served by the MiR250 "
+            "and its UR10e. The VLM now holds six trays: round 2's three and three for characterization.", 3.2,
             None, hold=1.4,
             labels=lab_at(line_labels() + [A.REPOWDER_LBL[:2] + (None,),
                                            ("Kardex Shuttle XP 500, six trays", (0, Y_FACE, 3950), None)]))
@@ -201,13 +199,8 @@ def movie(data, idata):
     sc.step(f"5/{n}", "Right of it: the Aconity MIDI, the floor and tabletop Instrons (neither fits a tray: the "
             "shortest Instron frame is 1020 mm tall) and the wire EDM that cuts parts off their build plates.", 3.4,
             None, hold=1.2, cam_to=CAM_RIGHT, labels=lab_at(line_labels((2000, 11000))))
-    sc.step(f"6/{n}", "The backup to the mobile base: a Vention rack-and-pinion seventh axis along the fronts, the "
-            "UR10e on its carriage at 800 mm, as on the MiR250. It can carry the arm from machine to machine.", 3.4,
-            rail.move({"carriage": (None, LINE["instron_floor"] - rc)}), hold=0.6,
-            labels=[("Vention 7th axis", (6500, RAIL_Y, 700), (0.70, 0.75))])
-    sc.step(f"6/{n}", "Not used by any workflow yet: it parks at the VLM's opening, where the MiR250 parks.", 3.2,
-            rail.move({"carriage": (None, PARK_X - rc)}), hold=0.4, cam_to=CAM_VLM)
-    sc.step(f"7/{n}", "The whole line, about 17 m along the rail.", 2.4, None, hold=2.4, cam_to=CAM_LINE, still=True,
+    sc.step(f"6/{n}", "The whole line, about 17 m long; the MiR250 parks at the opening between jobs.", 2.4, None,
+            hold=2.4, cam_to=CAM_LINE, still=True,
             labels=lab_at(line_labels() + [A.REPOWDER_LBL[:2] + (None,),
                                            ("VLM: trays A-F", (0, Y_FACE, 3950), None)]))
     return sc.save()

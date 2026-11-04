@@ -10,7 +10,9 @@ fronts to the tray's front edge, where the arm works. Over each tray, a blue box
 tray's inside (2426 x 840 mm) by Kardex's 727.5 mm of product height. Behind them, the next most compact LPBF machines
 and the most compact DED found (``fab_metal.py``) stand on boxes of the same height.
 
-The Shuttle's six slots are full (trays A-F), so trays G, H and I need another Shuttle: see the README.
+Not re-rendered in round 7 (the trays coming to the opening were called redundant). ``LOADS`` stays the layout of trays
+G, H and I, which now live in the second Shuttle (setup_lab.TRAYS, notes/tray_plan.md); the movie still shows Kardex's
+published 727.5 mm, not the 996 mm opening's estimated 856.5 mm (vlm.MAX_GOODS_H).
 """
 from __future__ import annotations
 
@@ -32,7 +34,7 @@ TRAYS = {"G": (-2600.0, "resin printing"), "H": (0.0, "PCB assembly"), "I": (260
 LOADS = {
     "G": [("form4", -920.0, None, 0.0), ("form4", -470.0, None, 0.0), ("form_wash", -40.0, None, 0.0),
           ("form_cure", 360.0, None, 0.0)],
-    "H": [("stencil", -640.0, 0.0, 90.0), ("lumenpnp", 400.0, 0.0, 0.0)],
+    "H": [("stencil", -640.0, 0.0, 90.0), ("lumenpnp", 400.0, -70.0, 0.0)],     # 70 mm forward of the UPS (round 7)
     "I": [("snowpod", -500.0, None, 0.0), ("snowpod", 300.0, None, 0.0)],
 }
 METAL = [("metalone", -2200.0), ("meltio_m450", 0.0), ("mprint", 2200.0)]    # (key, x), fronts on METAL_Y

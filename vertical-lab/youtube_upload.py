@@ -46,7 +46,7 @@ ROUND4 = ["vhx", "xrf", "sieve", "openflexure_array", "cubxl_corrosion", "ded", 
           "stream_cam"]
 JOINED = {
     "vertical_lab_full.mp4": ["vlm_assembly.mp4", "vlm_loading.mp4", "vlm_workflow.mp4"],
-    "vlm_services_all.mp4": ["vlm_services.mp4", "vlm_tether.mp4", "vlm_cabling.mp4"],
+    "vlm_services_all.mp4": ["vlm_services.mp4", "vlm_hookups.mp4", "bay_camera.mp4", "vlm_cabling.mp4"],
     "instruments_round4_tour.mp4": [f"instruments/{k}.mp4" for k in ROUND4],
 }
 
@@ -77,16 +77,21 @@ LAB = {
     "vlm_services.mp4": ("Vertical cloud lab: one docking coupling per tray, in its slot and at the opening",
                          "Round 4: every service a tray needs (mains, Ethernet, air, N2, chilled water) through one "
                          "automatic coupling, docked in its slot and again at the opening, with a UPS for transit."),
-    "vlm_tether.mp4": ("Vertical cloud lab: a tray on a retractable tether instead of a coupling (3-D animation)",
-                       "Round 4: the alternative to the coupling, a retractable tether that stays connected while "
-                       "the tray travels."),
+    "vlm_hookups.mp4": ("Vertical cloud lab: one tray's automatic hookups and its UPS, slot to bay (3-D animation)",
+                        "One tray followed from its storage slot to the opening: the dock's mains, Ethernet, air, N2 "
+                        "and chilled water live in the slot, shut and vented before it lets go, the tray on its own "
+                        "UPS in transit, and the bay's dock taking over."),
+    "bay_camera.mp4": ("Vertical cloud lab: the overhead camera at the bay, and what it sees (3-D animation)",
+                       "The bay's overhead camera from an operator's eye height in front of the opening, then its own "
+                       "two pictures, the Camera Module 3 Wide's and the HQ Camera's with the 16 mm lens, while the "
+                       "arm works on a presented tray."),
     "vlm_cabling.mp4": ("Vertical cloud lab: the cabling, an overhead ladder tray with drops (3-D animation)",
                         "Round 4: the lab's wired power and network, in one overhead ladder tray behind the line and "
                         "round the VLM, with drops and risers."),
-    "vlm_services_all.mp4": ("Vertical cloud lab: tray docking couplings, a tethered tray, and the cabling "
-                             "(3-D animation)",
-                             "Round 4's tray services, joined: the docking coupling, the tethered alternative and the "
-                             "cabling."),
+    "vlm_services_all.mp4": ("Vertical cloud lab: tray docking couplings, each tray's UPS, the bay camera, the "
+                             "cabling (3-D)",
+                             "The tray services, joined: the docking coupling, one tray's hookups and UPS from slot to "
+                             "bay, the bay's overhead camera and what it sees, and the cabling."),
     "vlm_tall_opening.mp4": ("Vertical cloud lab: what a taller Kardex opening, about 1000 mm, would put on a tray",
                              "Round 5: the 727.5 mm product height Kardex publishes for the opening, against about "
                              "1000 mm, and which machines a taller opening would let onto a tray."),
