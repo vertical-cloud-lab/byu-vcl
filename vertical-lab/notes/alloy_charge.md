@@ -25,6 +25,13 @@ time, and this chapter is the two merged:
 | 9 | The first Cu cup topped up with Cu, worked out from its weighed Ni so it stays 10 wt % Ni, weighed, plugged, pressed, back on the rack. Then the other three. The Cu funnel goes back | |
 | 10 | Tray B goes back into storage. Four Al-10Si cups are on the MiR for the rePowder, where chapter 2 picks them up | the carrier |
 
+**Not yet re-rendered for round 7** (the catch ring, the low carrier, the wrist camera, the rack approaches below).
+The round-7 render (`VIZ3D_FPS=10 CHARGE_FXAA=1 ARM_AUDIT_RENDER=1`, 0.8-1.5 s a frame on a shared runner) was
+stopped by the session's 30-minute limit on a background job at about frame 1300 of 2420, so the clip, GIF and stills
+in `out/` are still the long-form round's, which show the cup on the bare pin and the carrier on its post. Re-render
+with the same command, run in the foreground or with a longer limit; `scene.GIF_SIZE` is now 512 × 288, to bring the
+GIF under 4.9 MB. The audit of the round-7 code is below.
+
 **Rendered** 2026-11-04 at `VIZ3D_FPS=10 CHARGE_FXAA=1 ARM_AUDIT_RENDER=1` (four other renders shared the runner, and
 at 1280 × 720 with SSAA a frame took 1.6-2.2 s): 245 s, 2451 frames, [MP4](../out/mp4/alloy_charge.mp4),
 [GIF](../out/alloy_charge.gif) (5.3 MB, over the 4.9 MB aim). A plain `xvfb-run -a python3 alloy_charge.py` renders
@@ -224,11 +231,36 @@ checks every frame: the arm against itself, and the arm, gripper and what it hol
     MiR's carrier. Square to the rack, or a slightly wider rack pitch, would clear it.
   - **One joint move in 5/10's time-lapse** started from a pose with the upper arm against the gripper (the
     planner's warning); no checked frame shows it.
-- **The render checked itself** (`ARM_AUDIT_RENDER=1`, every drawn frame, [`out/collisions/alloy_charge.json`](../out/collisions/alloy_charge.json)):
-  **8 of 1926 frames**, four runs of 2, all the next-cup brush above (3/10, 5/10). The first plug's run is gone.
-- **Not checked:** in the time-lapse, sub-steps shorter than 0.1 s (approaches, grips, retreats) happen between two
-  frames, so no frame shows them and the audit doesn't see them. The planner's warning in 5/10 (a joint move that
-  starts with the upper arm against the gripper) most likely comes from one of these, in the time-lapse's Al cups.
+- **The long-form round's render checked itself** (`ARM_AUDIT_RENDER=1`, every drawn frame): **8 of 1926 frames**,
+  four runs of 2, all the next-cup brush above (3/10, 5/10). The first plug's run is gone.
+- **Not checked then:** in the time-lapse, sub-steps shorter than 0.1 s (approaches, grips, retreats) happen between
+  two frames, so no frame shows them and the audit doesn't see them. The planner's warning in 5/10 (a joint move that
+  starts with the upper arm against the gripper) most likely came from one of these, in the time-lapse's Al cups.
+
+### Round 7: the catch ring, the low carrier, the wrist camera
+
+Round 7 changed what the arm works among: the press's catch ring (the cup's bottom 10 mm in the die's mouth, the pin
+15 mm lower), the MiR's low pocketed carrier (`charge.carrier`, its pockets 26 mm deep and 85 mm apart, no post), the
+D405 wrist camera on the gripper, checked as part of it (`ur_arm.camera_meshes`), and the 996 mm opening.
+
+- **Before** (as rendered in the long-form round): 8 of 1926 frames, the open fingertip on the next Al cup.
+- **The rack rule was too kind.** The audit lets the gripper touch what stands in the fixture it works at, but reads
+  that fixture at the end of the clip. The Cu cups end up back in the rack, so the fingertips brushing them (cups 6
+  to 8, the cups nearest the arm's base) were never counted; only the Al cup that ends up on the MiR was. With the
+  approaches checked properly (above), cups 6 to 8 had no clear approach at all once the camera rode on the gripper:
+  square, from 150 mm back, folds the arm into the MiR's cabinet or puts the flange inside the base's unreachable
+  cylinder (they are 396-425 mm from the base); at an angle, the fingers sweep through the cups beside them.
+- **What changed:** the gripper opens to 23.5 mm at the rack (2.2 mm a side), the approach may start 110 or 80 mm
+  back, each rack direction needs a clear straight line in one IK branch in and out (`line_clear`), and the
+  carrier's placement is checked with the gripper open as well as closed.
+- **The audit after that** (`ARM_AUDIT=1`, 15 fps, before the line checks): **0 of 2979 frames**, the planner's 5/10
+  warning gone. Two approach lines in the time-lapse had no clear IK branch (cup 7's in, cup 8's back in, holding
+  it); they happen between frames, so no frame showed them. The line checks fix cup 8's.
+- **Left: rack cup 7** (slot 6, 409 mm from the base) has no approach whose line in is clear in any IK branch, at
+  40-150 mm back and 30-90 mm up: in the one branch that reaches it, the upper arm passes within touching distance of
+  wrist 2 partway along the line. Its poses are clear, it touches only its own cup, and the line is in the
+  time-lapse, between frames. A rack 120 mm further left (the punch's rest moved to make room) would put every cup at
+  least 444 mm from the arm's base, where cups 1-5 are all reached square or within 10° of it.
 
 ## Assumed
 
