@@ -1,0 +1,53 @@
+{
+ "name": "instruments/cnc",
+ "fps": 15,
+ "n_frames": 425,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/7",
+   "caption": "The lid actuator (ours: Makera's lid is lifted by hand) opens the lid. Open, it reaches 836 mm, under the 856.5 mm.",
+   "start_frame": 0,
+   "end_frame": 46
+  },
+  {
+   "label": "2/7",
+   "caption": "The arm sets a printed blank on the parallels in the open vise.",
+   "start_frame": 47,
+   "end_frame": 90
+  },
+  {
+   "label": "3/7",
+   "caption": "The pneumatic vise (ours) clamps it, and the lid closes.",
+   "start_frame": 91,
+   "end_frame": 128
+  },
+  {
+   "label": "4/7",
+   "caption": "Tool change: the spindle takes a 6 mm end mill from the 6-tool changer.",
+   "start_frame": 129,
+   "end_frame": 184
+  },
+  {
+   "label": "5/7",
+   "caption": "It faces the top: the as-printed skin comes off in five passes.",
+   "start_frame": 185,
+   "end_frame": 297
+  },
+  {
+   "label": "6/7",
+   "caption": "Another change: the end mill goes back and the next tool comes on.",
+   "start_frame": 298,
+   "end_frame": 374
+  },
+  {
+   "label": "7/7",
+   "caption": "Park. The lid opens and the vise lets go for the arm. 200 W: light passes in aluminium, not hogging.",
+   "start_frame": 375,
+   "end_frame": 424
+  }
+ ]
+}

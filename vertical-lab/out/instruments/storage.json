@@ -1,0 +1,53 @@
+{
+ "name": "instruments/storage",
+ "fps": 15,
+ "n_frames": 356,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/7",
+   "caption": "A storage tray: what the arm picks from. 1760 x 760 mm and 300 mm tall; the tray's right end stays free for its UPS and dock.",
+   "start_frame": 0,
+   "end_frame": 55
+  },
+  {
+   "label": "2/7",
+   "caption": "Charge cups turned from 5N Al (blue rack) and C10100 Cu (orange rack), 48 of each, in the front rows where a level gripper takes them.",
+   "start_frame": 56,
+   "end_frame": 108
+  },
+  {
+   "label": "3/7",
+   "caption": "Their plugs, Al and Cu apart; 54 capped 20 mL vials; 112 15 mL ICP-MS tubes.",
+   "start_frame": 109,
+   "end_frame": 161
+  },
+  {
+   "label": "4/7",
+   "caption": "The top drawer: 96 SEM pin stubs, 12.7 mm, carbon tabs on.",
+   "start_frame": 162,
+   "end_frame": 211
+  },
+  {
+   "label": "5/7",
+   "caption": "The lower drawer: 32 polished 1.25 in mounts.",
+   "start_frame": 212,
+   "end_frame": 261
+  },
+  {
+   "label": "6/7",
+   "caption": "Tensile bars (E8 sub-size), sealed 250 mL powder jars with lids by powder, labelled bins.",
+   "start_frame": 262,
+   "end_frame": 314
+  },
+  {
+   "label": "7/7",
+   "caption": "Every pocket is a seat: storage_seats() lists them for the arm's planner.",
+   "start_frame": 315,
+   "end_frame": 355
+  }
+ ]
+}

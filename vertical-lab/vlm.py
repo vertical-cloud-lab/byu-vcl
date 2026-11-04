@@ -93,13 +93,47 @@ Y_FRONT, Y_LIFT, Y_REAR = -1030.0, 0.0, 1030.0      # tray centres: front column
 Y_OPEN = Y_FRONT        # the opening is a gap in the front column: the tray is presented 75 mm behind the front
 Y_SHUTTER = Y_FRONT + TRAY_D / 2 + 35.0             # the shutter: behind the presented tray, between it and the shaft
 Z_TOP_IN = UNIT_H - 260.0                           # underside of the drive bay
-SLOTS = {               # tray-bottom heights of the storage positions used here, on the 25 mm pitch
-    "R1": (Y_REAR, 300.0), "R2": (Y_REAR, 1100.0), "R3": (Y_REAR, 1900.0), "R4": (Y_REAR, 2700.0),
-    "F1": (Y_FRONT, 1900.0), "F2": (Y_FRONT, 2700.0),
-    "open": (Y_OPEN, Z_OPEN),
+
+# --- the tray plan (#303, PR #318 round 7; notes/tray_plan.md) --------------------------------------------------------
+# Each slot is as tall as its own tray needs: the tray floor, the tallest thing on it (an instrument, the UPS or a
+# camera head) and Kardex's 20 mm clear above that, rounded up to the 25 mm pitch. ``setup_lab.py fit`` measures every
+# tray as it is drawn and checks it against its slot's span. Each column is filled from the bottom: the rear one from
+# the lowest position the extractor reaches, the front one under the access table (short trays only) and over the
+# opening's header. Fourteen trays don't fit one Shuttle, so a second one of the same size stands beside the first;
+# its slots are named "2R1" and so on.
+Z_LOW = 300.0                   # the lowest tray position: the extractor's carriages reach 160 mm under the tray
+Z_FRONT_LOW_TOP = Z_SILL - 40.0                     # the front column's lower part ends under the access table: 793
+Z_FRONT_HI = PITCH * -(-(Z_OPEN_TOP + 120.0) // PITCH)    # its upper part starts over the header: 1950
+SHUTTLE_GAP = 800.0             # between the two Shuttles' cladding: room for a MiR250 to turn on the spot (setup_lab)
+SHUTTLE_X = {1: 0.0, 2: UNIT_W + 2 * SKIN + SHUTTLE_GAP}  # the second Shuttle's centre: 3630 mm right of the first
+COLUMNS = {     # Shuttle: column: [(slot, span in mm)], bottom to top
+    1: {"rear": [("R1", 750), ("R2", 750), ("R3", 775), ("R4", 725)],          # trays D, A, B, E
+        "front_low": [("F0", 475)],                                             # tray J
+        "front": [("F1", 725), ("F2", 725)]},                                   # trays C, F
+    2: {"rear": [("2R1", 850), ("2R2", 725), ("2R3", 750), ("2R4", 550)],      # trays K, L, M, H
+        "front_low": [],
+        "front": [("2F1", 725), ("2F2", 725)]},                                 # trays G, I
 }
+SLOTS = {"open": (Y_OPEN, Z_OPEN)}  # slot -> (y, tray-bottom z) of each storage position used, on the 25 mm pitch
+SPAN: dict[str, float] = {}         # slot -> its height, tray bottom to the next tray's bottom (or the column's end)
+SLOT_SHUTTLE: dict[str, int] = {"open": 1}
+for _u, _cols in COLUMNS.items():
+    for _col, _lst in _cols.items():
+        _z = Z_FRONT_HI if _col == "front" else Z_LOW
+        _top = Z_FRONT_LOW_TOP if _col == "front_low" else Z_TOP_IN
+        for _k, _span in _lst:
+            SLOTS[_k] = (Y_REAR if _col == "rear" else Y_FRONT, _z)
+            SPAN[_k], SLOT_SHUTTLE[_k] = float(_span), _u
+            _z += _span
+        assert _z <= _top + 1e-6, (_u, _col, _z, _top)
 for _k, (_y, _z) in SLOTS.items():
     assert _k == "open" or abs(_z / PITCH - round(_z / PITCH)) < 1e-9, _k
+    assert _k == "open" or abs(SPAN[_k] / PITCH - round(SPAN[_k] / PITCH)) < 1e-9, _k
+
+
+def slot_x(slot: str) -> float:
+    """x of the Shuttle a slot is in."""
+    return SHUTTLE_X[SLOT_SHUTTLE.get(slot, 1)]
 
 # materials: name -> (r, g, b, opacity, specular)
 RAL7035 = (203 / 255, 208 / 255, 204 / 255)        # light grey panels (Kardex's order sheet: RAL 7035)

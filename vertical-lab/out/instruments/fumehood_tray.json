@@ -1,0 +1,35 @@
+{
+ "name": "instruments/fumehood_tray",
+ "fps": 15,
+ "n_frames": 212,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/4",
+   "caption": "A beaker of solvent goes in through the 235 mm front opening.",
+   "start_frame": 0,
+   "end_frame": 52
+  },
+  {
+   "label": "2/4",
+   "caption": "The blower draws air in at the face, about 100 fpm with HEPA and 60 with carbon, through the filters at the back...",
+   "start_frame": 53,
+   "end_frame": 108
+  },
+  {
+   "label": "3/4",
+   "caption": "...and over to the blower, which returns it to the room: here, into the VLM. Nothing is ducted out.",
+   "start_frame": 109,
+   "end_frame": 164
+  },
+  {
+   "label": "4/4",
+   "caption": "660 x 610 x 635 mm and 41 kg: it fits a tray, 715 mm with the hose. Carbon takes solvent vapours; acids with HF go to the ducted hood.",
+   "start_frame": 165,
+   "end_frame": 211
+  }
+ ]
+}
