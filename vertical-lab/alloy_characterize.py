@@ -627,7 +627,7 @@ def movie():
         clock("TM4000", 3.0, 18.0)(u)
     sc.step(st["lbl"], "No image of this section exists yet. The inset is real data from the lab, of the powder this "
                        "plate was printed from (chapter 4's), not of the section, and not from the TM4000.",
-            4.2, sem_on, hold=0.6)
+            4.2, sem_on, hold=0.6, still=True)     # the still: the chapter at work (alloy_route.py)
 
     def sem_off(u):
         sc.inset_a = 1.0 - u
@@ -788,7 +788,7 @@ def movie():
 def finish(sc, L, rb):
     sc.step("5/5", "Done: the build's coupon ground and polished on tray F, imaged in the SEM on tray D and indented on "
             "tray E, and its powder sized on tray E, every tray brought to the opening only when it was needed, and "
-            "every arm move checked against everything in the scene.", 1.4, None, hold=3.0, still=True)
+            "every arm move checked against everything in the scene.", 1.4, None, hold=3.0)
     print(f"highest forearm/wrist point {rb.max_z_world:.0f} mm", flush=True)
     return sc.save()
 

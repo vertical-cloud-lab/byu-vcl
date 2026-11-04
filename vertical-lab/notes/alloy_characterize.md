@@ -15,11 +15,15 @@ hard-coded position, so a re-planned tray layout is picked up on the next run.
 
 | | |
 |---|---|
-| MP4, 1280 × 720, 10 fps | [`out/mp4/alloy_characterize.mp4`](../out/mp4/alloy_characterize.mp4) |
-| GIF, 640 × 360, 5 fps | [`out/alloy_characterize.gif`](../out/alloy_characterize.gif) |
+| MP4, 1280 × 720, 10 fps, 143 s (1431 frames) | [`out/mp4/alloy_characterize.mp4`](../out/mp4/alloy_characterize.mp4) (8.1 MB) |
+| GIF, 640 × 360, 5 fps | [`out/alloy_characterize.gif`](../out/alloy_characterize.gif) (4.8 MB) |
 | Frame range of every sub-step | [`out/alloy_characterize.json`](../out/alloy_characterize.json) |
-| Last frame | [`out/alloy_characterize_still.png`](../out/alloy_characterize_still.png) |
+| The still: the SEM step, with the inset | [`out/alloy_characterize_still.png`](../out/alloy_characterize_still.png) |
+| Eight moments, from the MP4 | [`out/alloy_characterize_sheet.png`](../out/alloy_characterize_sheet.png) |
 | Collision audit, every frame | [`out/collisions/alloy_characterize.json`](../out/collisions/alloy_characterize.json) |
+
+![Eight moments: the holder onto the PX500's head, grinding, the holder back face up, the SEM loaded, the SEM's inset,
+the iMicro loaded, the pour, the Mastersizer measuring](../out/alloy_characterize_sheet.png)
 
 ### The steps
 
