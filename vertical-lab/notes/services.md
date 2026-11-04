@@ -275,11 +275,11 @@ render didn't have.
 **One overhead unit at the bay, on the machine.** The same head and yoke, tilted 64° down, on a 2020 bar across the
 back of the bay.
 - **It had to lose its post for the 996 mm opening.** The taller opening (vlm.py) raises the top of Kardex's product
-  envelope to 854 + 3 + 856.5 + 20 = 1733.5 mm. Tray F1, stored over the opening, is still at 1900 mm. That leaves
+  envelope to 854 + 3 + 856.5 + 20 = 1733.5 mm. Tray F1, stored over the opening, was at 1900 mm. That left
   166.5 mm, and the unit on its 90 mm post and sliding block was 221 mm tall. So its yoke is now bolted straight onto
   a printed saddle clamp on the bar (`bay_at()`): 144 mm from the clamp's underside to the head's top.
 - **Height.** The clamp is the lowest point, at 1744.5 mm: 11 mm over the envelope. The head's top is at 1888 mm,
-  12 mm under tray F1. If F1 moves up a slot or two, the post can come back.
+  62 mm under tray F1, which the tray plan has since moved up to 1950 mm; with F1 there the post could come back.
 - **Depth.** The bar is 72 mm in front of the shutter's plane; the head's back is 24 mm clear of the shutter.
 - **What it sees.** The Wide sees 95 % of the presented tray's floor. Its axis meets the floor 65 mm in front of the
   tray's centre, 1028 mm away. It misses two triangles at the back corners nearest it. The HQ sees 7 %: the detail.
