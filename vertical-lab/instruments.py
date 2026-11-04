@@ -703,87 +703,190 @@ CHECKS["xrd"] = lambda p: [p["body_w"] / 2 - p["panel_x"] - 15, p["H"] - p["pane
 
 
 # ===================================================================================================== SEM
-# Hitachi TM4000PlusII tabletop SEM: main unit 330 W x 614 D x 547 H mm (Hitachi High-Tech); the look from Hitachi's
-# product photo: white body and top hood, a dark blue front with the EVAC/AIR button, and the sample chamber's drawer
-# below it with a black handle. The stage rides on the drawer and comes out with it. EDS and EBSD detectors mount on
-# the chamber's sides; their electronics stand beside it, the diaphragm pump behind.
-SEM = dict(W=330.0, D=614.0, H=547.0, feet=25.0, front_z0=30.0, drawer_top=250.0, blue_top=430.0, draw=170.0)
+# Hitachi TM4000PlusII tabletop SEM: main unit 330 W x 614 D x 547 H mm, 54 kg (Hitachi High-Tech). The proportions
+# are fitted with register.py (refs/sem/) to Hitachi's product shot of the TM4000II / TM4000PlusII (the opening of
+# its own launch video) and to the Canadian Centre for Electron Microscopy's TM4000Plus videos, whose body is the same.
+# Look, from those: a white body whose top front edge rolls over in a large radius, with a raised strip along the
+# middle of the top that ramps down at its front end; the top cover's seam sweeps down each side from the back of the
+# top to the front; two vent grilles on the left side. The front is a dark navy panel set into a white frame: a lit
+# strip between "EVAC" and "AIR" along its top, "TM4000Plus", the II badge, an icon and HITACHI, and the round
+# EVAC/AIR button at the right. Below it the sample chamber's door, a navy block standing a little proud of the frame
+# with a black bar handle on two posts near its top. The door is a drawer: pulled straight out by the handle once
+# AIR has vented the chamber, it brings the motorized X-Y stage out on its inside face, and the sample, on a
+# cylindrical holder whose height is set on a gauge at the bench, drops into the socket in the middle of the stage
+# (CCEM, "Loading the specimen"; Microscopy Australia's workflow video). EDS and EBSD detectors mount on the chamber's
+# sides; their electronics stand beside it, the diaphragm pump behind.
+SEM = dict(W=330.0, D=614.0, H=547.0, feet=12.0, front_z0=30.0, drawer_top=236.0, blue_top=417.0, draw=170.0,
+           frame_w=35.0, recess=20.0, proud=6.0, nose_r=80.0, cap_z=400.0, hump_w=151.0, hump_h=31.0, hump_y0=59.0,
+           hump_run=15.0, hump_len=200.0, door_w=201.0, btn_x=107.0, btn_z=277.0, badge_z=320.0, handle_z=212.0,
+           handle_w=149.0)
+
+
+def _tm4000(p) -> dict:
+    """The positions the model and its anchors share."""
+    W, D, H = p["W"], p["D"], p["H"]
+    yf = -D / 2
+    xb = W / 2 - p["frame_w"]                      # the navy recess's sides
+    Ht, r, y0 = H - p["hump_h"], p["nose_r"], p["hump_y0"]
+    return dict(W=W, D=D, H=H, yf=yf, yb=D / 2, Ht=Ht, xb=xb, xd=p["door_w"] / 2, yp=yf + p["recess"],
+                ydf=yf - p["proud"], ys=yf + 130.0,                                        # ys: the stage's socket
+                zh=Ht - r + math.sqrt(max(r * r - (r - y0) ** 2, 0.0)))   # the rolled edge's top where the wedge stands
+
+
+def sem_anchors(p, pose=None) -> dict:
+    """Named points and lines of the model, for register.py; the door follows pose["drawer"] (0 in, 1 out)."""
+    g = _tm4000(p)
+    W, H, yf, yb, Ht, xb, xd = g["W"], g["H"], g["yf"], g["yb"], g["Ht"], g["xb"], g["xd"]
+    yd = g["ydf"] - p["draw"] * float((pose or {}).get("drawer", 0.0))
+    z0, hx, hy, hw = p["feet"], p["handle_w"] / 2, yf + p["hump_y0"], p["hump_w"] / 2
+    a = {"blue tl": (-xb, yf, p["blue_top"]), "blue tr": (xb, yf, p["blue_top"]),
+         "button": (p["btn_x"], g["yp"] - 4, p["btn_z"]), "badge": (0.0, g["yp"], p["badge_z"]),
+         "drawer tl": (-xd, yd, p["drawer_top"]), "drawer tr": (xd, yd, p["drawer_top"]),
+         "drawer bl": (-xd, yd, p["front_z0"]), "drawer br": (xd, yd, p["front_z0"]),
+         "handle l": (-hx, yd - 26, p["handle_z"]), "handle r": (hx, yd - 26, p["handle_z"]),
+         "wedge tl": (-hw, hy + p["hump_run"], H), "wedge tr": (hw, hy + p["hump_run"], H),
+         "wedge bl": (-hw, hy, g["zh"]), "wedge br": (hw, hy, g["zh"])}
+    for s, nm in ((-1, "left"), (1, "right")):
+        x = s * W / 2
+        a.update({f"front {nm} bottom": (x, yf, z0), f"back {nm} bottom": (x, yb, z0), f"back {nm} top": (x, yb, Ht),
+                  f"front {nm} edge": ("line", (x, yf, z0 + 30), (x, yf, Ht - p["nose_r"])),
+                  f"back {nm} edge": ("line", (x, yb, z0 + 30), (x, yb, Ht - 15)),
+                  f"{nm} bottom": ("line", (x, yf + 30, z0), (x, yb - 30, z0))})
+    return a
 
 
 def sem() -> Instrument:
     p = SEM
-    inst = Instrument("sem", "Tabletop SEM with EDS and EBSD", "Hitachi TM4000PlusII", (p["W"], p["D"], p["H"]),
+    g = _tm4000(p)
+    W, D, H, yf, yb, Ht, xb, xd, yp, ydf, ys = (g[k] for k in ("W", "D", "H", "yf", "yb", "Ht", "xb", "xd", "yp",
+                                                                "ydf", "ys"))
+    inst = Instrument("sem", "Tabletop SEM with EDS and EBSD", "Hitachi TM4000PlusII", (W, D, H),
                       "Hitachi High-Tech TM4000PlusII specifications (main unit 330 W x 614 D x 547 H mm, 54 kg; "
-                      "pump 144 x 270 x 216 mm); Hitachi's EDS brochure (AZtecOne analyser 290 x 260 x 330 mm); look "
-                      "from Hitachi's photo; envelope and the 17 cm drawer travel cross-checked against ac-dev-lab "
-                      "#132's TM4000II model")
-    W, D, H = p["W"], p["D"], p["H"]
-    yf, yb = -D / 2, D / 2
+                      "pump 144 x 270 x 216 mm); Hitachi's EDS brochure (AZtecOne analyser 290 x 260 x 330 mm); "
+                      "proportions fitted with register.py to Hitachi's TM4000II/PlusII product shot and CCEM's "
+                      "TM4000Plus videos; the 17 cm drawer travel from ac-dev-lab #132's TM4000II model")
+    z0, fz, dt, bt = p["feet"], p["front_z0"], p["drawer_top"], p["blue_top"]
     body = _piece(inst, "body")
     for sx in (-1, 1):
         for sy in (-1, 1):
-            body.add(f"foot {sx}{sy}", cyl(40, p["feet"], x=sx * (W / 2 - 40), y=sy * (D / 2 - 50)), "chrome")
-    shell = rbox(W, D - 10, H - p["feet"] - 70, 18, y=5, z=p["feet"])
-    shell = shell.cut(box(-W / 2 + 32, yf - 1, p["front_z0"], W / 2 - 32, yf + 40, p["blue_top"]))
-    # the sample chamber behind the drawer, so the stage comes out of an opening rather than out of solid shell
-    chamber = box(-115, yf + 39, 45, 115, yf + 240, 235)
-    shell = shell.cut(chamber)
-    body.add("body", shell, "inst_white")
-    body.add("chamber", chamber.cut(box(-111, yf + 38, 49, 111, yf + 236, 231)), "inst_dark")
-    hood = rbox(W - 6, D - 60, 70, 30, y=20, z=H - 70).edges(">Z").fillet(20)
-    body.add("top hood", hood, "inst_offwhite")
-    body.add("hood ridge", rbox(175, D - 120, 14, 10, y=40, z=H - 14), "inst_white")
-    body.add("front panel", box(-W / 2 + 36, yf + 8, p["drawer_top"], W / 2 - 36, yf + 40, p["blue_top"]), "inst_blue")
-    body.add("status lights", box(-60, yf + 6, p["blue_top"] - 22, 60, yf + 8, p["blue_top"] - 14), "screen_on")
-    body.add("model plate", box(-70, yf + 6, p["blue_top"] - 80, 70, yf + 8, p["blue_top"] - 50), "inst_light")
-    body.add("EVAC/AIR button", _ycyl(30, 6, x=W / 2 - 55, y=yf + 2, z=p["blue_top"] - 110), "chrome")
-    body.add("drawer frame", box(-W / 2 + 32, yf + 8, p["front_z0"], W / 2 - 32, yf + 40, p["front_z0"] + 4), "inst_navy")
+            body.add(f"foot {sx}{sy}", cyl(36, z0, x=sx * (W / 2 - 35), y=sy * (D / 2 - 45)), "inst_light")
+    # the shell: its top front edge rolls over in a large radius; the navy recess, and the chamber behind the door
+    shell = box(-W / 2, yf, z0, W / 2, yb, Ht).edges("<Y and >Z").fillet(p["nose_r"])
+    try:
+        shell = shell.edges("|Z").fillet(10)
+    except Exception:                              # noqa: BLE001 - square side edges if the kernel refuses
+        pass
+    recess = box(-xb, yf - 1, fz, xb, yp, bt).edges("|Y").fillet(8)
+    chamber = box(-xd + 4, yp - 1, fz + 6, xd - 4, yf + 270, dt - 6)
+    shell = shell.cut(recess).cut(chamber)
+    # the top cover: its seam sweeps down each side from the back of the top to the front, below the recess's top
+    seam = [(yf + 0.30 * D, p["cap_z"] + 30), (yf + 0.62 * D, Ht - 45), (yb + 2, Ht - 22)]
+    above = (cq.Workplane("YZ").moveTo(yf - 2, p["cap_z"]).spline(seam, includeCurrent=True)
+             .lineTo(yb + 2, H + 5).lineTo(yf - 2, H + 5).close().extrude(W + 4).translate((-W / 2 - 2, 0, 0)))
+    body.add("body", shell.cut(above), "inst_offwhite")
+    body.add("top cover", shell.intersect(above), "inst_white")
+    # a wedge on the top's front: its face stands on the rolled edge, and it tapers back into the top
+    hy0, hy1 = yf + p["hump_y0"], yf + p["hump_y0"] + p["hump_run"]
+    body.add("top wedge", cq.Workplane("YZ").polyline([(hy0, g["zh"] - 30), (hy0, g["zh"]), (hy1, H),
+                                                      (hy1 + p["hump_len"], Ht), (hy1 + p["hump_len"], Ht - 30)])
+             .close().extrude(p["hump_w"]).translate((-p["hump_w"] / 2, 0, 0)), "inst_white")
+    for i, vy in enumerate((-30.0, 60.0)):         # the vent grilles on the left side
+        for k in range(6):
+            body.add(f"vent {i} {k}", box(-W / 2 - 1.5, vy - 22, 330 + 12 * k, -W / 2 + 1, vy + 22, 335 + 12 * k),
+                     "inst_dark")
+    # the front: a navy panel set into the white frame, lined in navy, its lit strip, lettering, badges and button
+    navy = "inst_navy"
+    body.add("recess lining", box(-xb, yf + 0.5, fz, xb, yp, bt).edges("|Y").fillet(8)
+             .cut(box(-xb + 2.5, yf, fz + 2.5, xb - 2.5, yp + 1, bt - 2.5)), navy)
+    body.add("front panel", box(-xb + 1, yp - 0.5, dt - 4, xb - 1, yp + 6, bt - 1), navy)
+    body.add("door surround", box(-xb + 1, yp - 0.5, fz, xb - 1, yp + 2, dt - 4).cut(
+        box(-xd + 4, yp - 1, fz + 6, xd - 4, yp + 3, dt - 6)), "inst_black")
+    body.add("EVAC-AIR strip", box(-75, yp - 1.5, bt - 30, 75, yp - 0.4, bt - 24), "led_blue")
+    body.add("model name", box(-58, yp - 1.2, bt - 62, 58, yp - 0.4, bt - 48), "inst_light")
+    body.add("II badge", box(-9, yp - 1.6, p["badge_z"] - 9, 9, yp - 0.4, p["badge_z"] + 9), "inst_light")
+    body.add("icon badge", box(-16, yp - 1.6, p["badge_z"] - 44, 16, yp - 0.4, p["badge_z"] - 20), "inst_light")
+    body.add("HITACHI", box(-45, yp - 1.2, dt + 14, 45, yp - 0.4, dt + 24), "inst_light")
+    body.add("EVAC/AIR ring", _ycyl(30, 3, x=p["btn_x"], y=yp - 3, z=p["btn_z"]), "inst_light")
+    body.add("EVAC/AIR button", _ycyl(22, 3, x=p["btn_x"], y=yp - 5, z=p["btn_z"]), "chrome")
+    body.add("chamber", chamber.cut(box(-xd + 6, yp - 2, fz + 9, xd - 6, yf + 266, dt - 9)), "inst_dark")
     # EDS: the detector is built in (Hitachi); only Oxford's AZtecOne analyser box stands beside. EBSD: Hitachi lists
     # no EBSD option for the TM4000 series; drawn here is Bruker's e-Flash XS (sold for tabletop SEMs, 48 x 84 mm
-    # outside the chamber) on a side port, with a 70 degree pre-tilted stub holder. A proposal, not a documented mount.
+    # outside the chamber) on a side port level with the stage, with a 70 degree pre-tilted stub holder. A proposal,
+    # not a documented mount.
     cz = 150.0
     body.add("EDS analyser", rbox(260, 290, 330, 12, x=W / 2 + 190, y=-90, z=0), "inst_white")
-    body.add("EDS analyser front", box(W / 2 + 70, -236, 40, W / 2 + 310, -235, 300), "inst_navy")
+    body.add("EDS analyser front", box(W / 2 + 70, -236, 40, W / 2 + 310, -235, 300), navy)
     body.add("EDS analyser light", _ycyl(14, 3, x=W / 2 + 190, y=-237, z=250), "inst_orange")
-    body.add("EBSD port", _xcyl(70, 20, x=-W / 2 - 20, y=-40, z=cz), "inst_light")
-    body.add("EBSD detector", _xcyl(48, 84, x=-W / 2 - 104, y=-40, z=cz), "inst_dark")
-    body.add("EBSD camera", _xcyl(56, 40, x=-W / 2 - 144, y=-40, z=cz), "inst_black")
+    body.add("EBSD port", _xcyl(70, 20, x=-W / 2 - 20, y=ys, z=cz), "inst_light")
+    body.add("EBSD detector", _xcyl(48, 84, x=-W / 2 - 104, y=ys, z=cz), "inst_dark")
+    body.add("EBSD camera", _xcyl(56, 40, x=-W / 2 - 144, y=ys, z=cz), "inst_black")
     body.add("pump", rbox(144, 270, 216, 10, x=-W / 2 - 110, y=D / 2 - 160, z=0), "inst_white")
     body.add("pump hose", cyl(22, 30, x=-W / 2 - 110, y=D / 2 - 160, z=216), "inst_black")
-    # the drawer: the chamber's front door, with the stage on its inside face
+    # the door: a navy block a little proud of the frame, its bar handle near the top, the stage on its inside face
     drawer = _piece(inst, "drawer")
-    drawer.add("drawer front", rbox(W - 72, 30, p["drawer_top"] - p["front_z0"] - 12, 6, y=yf + 15,
-                                    z=p["front_z0"] + 6), "inst_blue")
-    drawer.add("handle", rbox(160, 16, 22, 8, y=yf - 6, z=p["drawer_top"] - 70), "inst_black")
-    # rails long enough to stay in the chamber with the drawer out, and a carrier plate under the stage's column
-    drawer.add("stage rails", box(-80, yf + 30, 60, -60, yf + 230, 75).union(box(60, yf + 30, 60, 80, yf + 230, 75)),
-               "steel")
-    drawer.add("stage carrier", box(-80, yf + 30, 52, 80, yf + 200, 60), "steel")
-    drawer.add("stage", cyl(70, 30, y=yf + 120, z=95), "aluminium")
-    drawer.add("stage column", cyl(30, 35, y=yf + 120, z=60), "steel")
-    stub = _piece(inst, "stub")
-    stub.add("mount", cyl(25, 10, z=0), "mount")
-    stub.add("polished face", cyl(15, 0.6, z=10), "sample")
+    drawer.add("door", box(-xd, ydf, fz + 3, xd, yp + 16, dt - 2).edges("<Y").fillet(5), navy)
+    hx = p["handle_w"] / 2
+    drawer.add("handle", box(-hx, ydf - 30, p["handle_z"] - 8, hx, ydf - 18, p["handle_z"] + 8).edges("|Y")
+               .fillet(5), "inst_black")
+    for s in (-1, 1):
+        drawer.add(f"handle post {s}", _ycyl(14, 19, x=s * (hx - 10), y=ydf - 19, z=p["handle_z"]), "inst_black")
+    # the motorized X-Y stage: a carrier on rails long enough to stay in the chamber, two slides, lead screws, and
+    # the holder's socket in the middle
+    st = fz + 62.0                                 # the socket's top, where the holder stands
+    drawer.add("stage carrier", box(-xd + 12, yp + 16, fz + 10, xd - 12, yf + 255, fz + 20), "steel")
+    drawer.add("stage y slide", box(-85, ys - 70, fz + 20, 85, ys + 70, fz + 38), "aluminium")
+    drawer.add("stage x slide", box(-65, ys - 55, fz + 38, 65, ys + 55, fz + 54), "aluminium")
+    drawer.add("socket", cyl(34, st - fz - 54, y=ys, z=fz + 54), "steel")
+    drawer.add("y lead screw", _ycyl(8, 150, x=78, y=ys - 75, z=fz + 30), "steel")
+    drawer.add("x lead screw", _xcyl(8, 130, x=-65, y=ys + 62, z=fz + 46), "steel")
     # its left face, where the sample goes, stands 70 degrees from horizontal and faces the EBSD detector on the left
     drawer.add("pre-tilted holder", box(-14, -8, 0, 14, 8, 26).rotate((0, 0, 0), (0, 1, 0), 20)
-               .translate((32, yf + 120, 110)), "aluminium")
+               .translate((45, ys, fz + 54)), "aluminium")
+    # the sample: the polisher's 1.25 in Bakelite mount on a cylindrical holder, its height set at the bench
+    stub = _piece(inst, "stub")
+    stub.add("holder pin", cyl(12, 10, z=0), "steel")
+    stub.add("holder post", cyl(20, 28, z=8), "aluminium")
+    stub.add("holder collar", cyl(30, 8, z=22), "steel")
+    stub.add("mount", cyl(MOUNT_D, 14, z=36), "mount_red")
+    stub.add("polished face", cyl(MOUNT_D - 8, 0.6, z=50), "sample")
     inst.joints = {
         "drawer": Joint("slide", vec=(0, -p["draw"], 0)),
-        "stub": Joint("path", parent="drawer", path=((0, yf - 250, 330), (0, yf + 120, 270), (0, yf + 120, 125))),
+        "stub": Joint("path", parent="drawer", path=((W / 2 + 70, ys - 230, st + 200), (0, ys, st + 150),
+                                                      (0, ys, st))),
     }
     inst.actions = [
-        ("AIR vents the chamber; the drawer slides out with the stage on its inside face.", 1.6,
-         {"drawer": (0.0, 1.0), "stub": (0.0, 0.0)}),
-        ("A polished, mounted sample (25 mm) goes onto the stage.", 2.0, {"stub": (0.0, 1.0)}),
-        ("Drawer in, EVAC: about three minutes to vacuum. The EDS detector is built in, its analyser beside. "
+        ("EVAC/AIR vents the chamber; the door is pulled straight out by its handle, the stage on its inside face.",
+         1.6, {"drawer": (0.0, 1.0), "stub": (0.0, 0.0)}),
+        ("The polished mount, on a holder set to height at the bench, drops into the socket in the stage.", 2.0,
+         {"stub": (0.0, 1.0)}),
+        ("Door in, EVAC/AIR again: about three minutes to vacuum. The EDS detector is built in, its analyser beside. "
          "EBSD (left) is a proposal: no TM4000 option exists, and it needs a 70 degree pre-tilted holder.", 2.6,
          {"drawer": (1.0, 0.0)}),
     ]
     inst.labels = [("EDS analyser (AZtecOne)", (W / 2 + 190, -90, 330), (0.84, 0.22)),
-                   ("EBSD (proposed)", (-W / 2 - 110, -40, cz + 30), (0.14, 0.28)),
-                   ("sample drawer", (0, yf, 180), (0.18, 0.70))]
-    inst.cam = (-0.9, -2.0, 0.85)
+                   ("EBSD (proposed)", (-W / 2 - 110, ys, cz + 30), (0.14, 0.28)),
+                   ("sample drawer", (0, ydf, 150), (0.18, 0.70)),
+                   ("EVAC/AIR", (p["btn_x"], yp, p["btn_z"]), (0.62, 0.42))]
+    inst.notes = ["The door is a drawer: AIR vents the chamber, the door comes straight out with the X-Y stage on "
+                  "its inside face, and the sample holder drops into the stage's socket (CCEM's and Microscopy "
+                  "Australia's TM4000Plus videos)."]
+    # from the front left, steep enough, and far enough round, to see past the open door into the stage's socket
+    inst.cam = (-1.5, -1.2, 1.2)
+    inst.zoom = {1: ((0, yf - 40, st + 60), 800.0), 2: "out"}
     return inst
+
+
+# register.py: the SEM's anchors, the parameters fitted to the frames in refs/sem/, and what keeps a fitted model
+# buildable: the door under the panel with room for the handle, the button and badges on the panel, the top strip
+# behind the rolled front edge.
+ANCHORS["sem"] = (SEM, sem_anchors)
+FREE["sem"] = ["front_z0", "drawer_top", "blue_top", "frame_w", "recess", "proud", "door_w", "btn_x", "btn_z", "badge_z",
+               "handle_z", "handle_w", "hump_w", "hump_h", "hump_y0", "hump_run", "feet"]
+CHECKS["sem"] = lambda p: [p["blue_top"] - p["drawer_top"] - 120, p["drawer_top"] - p["front_z0"] - 150,
+                           p["btn_z"] - p["drawer_top"] - 20, p["blue_top"] - p["btn_z"] - 40,
+                           p["drawer_top"] - p["handle_z"] - 14, p["W"] / 2 - p["frame_w"] - p["btn_x"] - 15,
+                           p["door_w"] - p["handle_w"] - 20, p["W"] - 2 * p["frame_w"] - p["door_w"] - 6,
+                           p["hump_y0"] - 20, p["nose_r"] - p["hump_y0"] - 5, p["feet"] - 5]
 
 
 # ===================================================================================================== PIP
