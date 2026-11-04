@@ -1,0 +1,30 @@
+2026-11-04T15:37:43-07:00 rpi-5-des4 kernel: usb 3-2: New USB device found, idVendor=1a86, idProduct=7523, bcdDevice= 2.64
+2026-11-04T15:37:43-07:00 rpi-5-des4 kernel: usb 3-2: New USB device strings: Mfr=0, Product=2, SerialNumber=0
+2026-11-04T15:37:43-07:00 rpi-5-des4 kernel: usb 3-2: Product: USB Serial
+2026-11-04T15:37:43-07:00 rpi-5-des4 kernel: usb 3-2: new full-speed USB device number 2 using xhci-hcd
+2026-11-04T15:37:44-07:00 rpi-5-des4 kernel: ch341 3-2:1.0: ch341-uart converter detected
+2026-11-04T15:37:44-07:00 rpi-5-des4 kernel: usb 3-2: ch341-uart converter now attached to ttyUSB0
+2026-11-04T15:37:44-07:00 rpi-5-des4 kernel: usbcore: registered new interface driver ch341
+2026-11-04T15:37:44-07:00 rpi-5-des4 kernel: usbserial: USB Serial support registered for ch341-uart
+2026-11-04T15:43:17-07:00 rpi-5-des4 kernel: cdc_acm 1-2:1.0: ttyACM0: USB ACM device
+2026-11-04T15:43:17-07:00 rpi-5-des4 kernel: cdc_acm: USB Abstract Control Model driver for USB modems and ISDN adapters
+2026-11-04T15:43:17-07:00 rpi-5-des4 kernel: usb 1-2: Manufacturer: Arduino (www.arduino.cc)
+2026-11-04T15:43:17-07:00 rpi-5-des4 kernel: usb 1-2: New USB device found, idVendor=2341, idProduct=0043, bcdDevice= 0.01
+2026-11-04T15:43:17-07:00 rpi-5-des4 kernel: usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=220
+2026-11-04T15:43:17-07:00 rpi-5-des4 kernel: usb 1-2: SerialNumber: 03535343335351018130
+2026-11-04T15:43:17-07:00 rpi-5-des4 kernel: usb 1-2: new full-speed USB device number 2 using xhci-hcd
+2026-11-04T15:43:17-07:00 rpi-5-des4 kernel: usbcore: registered new interface driver cdc_acm
+2026-11-04T15:49:50-07:00 rpi-5-des4 kernel: usb 1-2: USB disconnect, device number 2
+2026-11-04T15:49:51-07:00 rpi-5-des4 kernel: cdc_acm 1-2:1.0: ttyACM0: USB ACM device
+2026-11-04T15:49:51-07:00 rpi-5-des4 kernel: usb 1-2: Manufacturer: Arduino (www.arduino.cc)
+2026-11-04T15:49:51-07:00 rpi-5-des4 kernel: usb 1-2: New USB device found, idVendor=2341, idProduct=0043, bcdDevice= 0.01
+2026-11-04T15:49:51-07:00 rpi-5-des4 kernel: usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=220
+2026-11-04T15:49:51-07:00 rpi-5-des4 kernel: usb 1-2: SerialNumber: 03535343335351018130
+2026-11-04T15:49:51-07:00 rpi-5-des4 kernel: usb 1-2: new full-speed USB device number 3 using xhci-hcd
+2026-11-04T15:49:58-07:00 rpi-5-des4 kernel: usb 1-2: USB disconnect, device number 3
+2026-11-04T15:50:31-07:00 rpi-5-des4 kernel: usb 1-2: new full-speed USB device number 4 using xhci-hcd
+2026-11-04T15:50:32-07:00 rpi-5-des4 kernel: cdc_acm 1-2:1.0: ttyACM0: USB ACM device
+2026-11-04T15:50:32-07:00 rpi-5-des4 kernel: usb 1-2: Manufacturer: Arduino (www.arduino.cc)
+2026-11-04T15:50:32-07:00 rpi-5-des4 kernel: usb 1-2: New USB device found, idVendor=2341, idProduct=0043, bcdDevice= 0.01
+2026-11-04T15:50:32-07:00 rpi-5-des4 kernel: usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=220
+2026-11-04T15:50:32-07:00 rpi-5-des4 kernel: usb 1-2: SerialNumber: 03535343335351018130
