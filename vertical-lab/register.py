@@ -484,9 +484,9 @@ def sheet(keys: list[str], before: str, out: Path | None = None) -> Path:
             d.text((x + 6, y + 34), cap, fill=(255, 255, 255) if cap == "footage" else (60, 60, 66), font=f2)
             x += im.width + 12
         y += th + 64
-    out = out or OUT / "before_after.png"
+    out = out or OUT / "before_after.jpg"
     out.parent.mkdir(parents=True, exist_ok=True)
-    canvas.save(out, optimize=True)
+    canvas.save(out, quality=86, optimize=True) if out.suffix == ".jpg" else canvas.save(out, optimize=True)
     print(out, canvas.size)
     return out
 

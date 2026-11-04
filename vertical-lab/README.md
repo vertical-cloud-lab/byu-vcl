@@ -31,7 +31,11 @@ view, and [`out/reach.json`](out/reach.json) is the arm study below.
 Asked for in [PR #318](https://github.com/vertical-cloud-lab/byu-vcl/pull/318): refine the equipment piece by piece
 against the lab's SOP videos and other footage, registering each model to frames taken from different angles.
 
-![The polisher: the lab's machine, the old model, the new one](out/register/polisher_before_after.png)
+Ten models are refitted this way. Each row of the sheet below shows a frame of the real machine, then the model
+before this round ([`379df6b`](https://github.com/vertical-cloud-lab/byu-vcl/tree/379df6b/vertical-lab)), then the
+model now. `register.py sheet` makes it.
+
+![Footage, before and after, for the ten refitted models](out/register/before_after.jpg)
 
 **The method.**
 1. [`frames.py`](frames.py) finds the moments that show a machine whole. It fetches storyboard thumbnails, then
