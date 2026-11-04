@@ -110,6 +110,17 @@
     "privacy": "unlisted"
    }
   ],
+  "instruments/multidoser.mp4": [
+   {
+    "id": "3BqVNi7t5DQ",
+    "sha256": "bb871308169302a1f94b9413f1d5028cda1fef02d632c396c2c73a1097295c03",
+    "bytes": 3176825,
+    "commit": "c6fb89a",
+    "uploaded": "2026-11-04T07:52:55Z",
+    "title": "Vertical cloud lab: the multi-doser (chain carousel v2) dosing a powder, the vial in half section",
+    "privacy": "unlisted"
+   }
+  ],
   "instruments/ot2.mp4": [
    {
     "id": "iwYZM4PX32Y",

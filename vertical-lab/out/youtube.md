@@ -31,6 +31,7 @@ Every MP4 under `out/mp4/` and its video on the lab's channel (unlisted). Writte
 | [`instruments/instron_floor.mp4`](mp4/instruments/instron_floor.mp4) | 0:06 | not uploaded |  |
 | [`instruments/instron_small.mp4`](mp4/instruments/instron_small.mp4) | 0:06 | not uploaded |  |
 | [`instruments/mastersizer.mp4`](mp4/instruments/mastersizer.mp4) | 0:11 | not uploaded |  |
+| [`instruments/multidoser.mp4`](mp4/instruments/multidoser.mp4) | 0:22 | [3BqVNi7t5DQ](https://www.youtube.com/watch?v=3BqVNi7t5DQ) |  |
 | [`instruments/nanoindenter.mp4`](mp4/instruments/nanoindenter.mp4) | 0:10 | not uploaded |  |
 | [`instruments/openflexure_array.mp4`](mp4/instruments/openflexure_array.mp4) | 0:21 | not uploaded |  |
 | [`instruments/openflexure_delta.mp4`](mp4/instruments/openflexure_delta.mp4) | 0:09 | not uploaded |  |
