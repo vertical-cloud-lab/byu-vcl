@@ -294,11 +294,17 @@ class DBox:
         return (self.sc.world("lstand") @ np.r_[p, 1.0])[:3]
 
     def hose(self):
+        """The hose from the barb on the lance's handle to the port on its post: out along the barb, which points away
+        from the gripper (down, or to the front), then forward of the machines' fronts before it drops to the port,
+        so it never runs back through the gripper nor down through the printer's cabinet."""
         Lw = self.sc.world("lance")
-        p0 = (Lw @ np.r_[0.0, -M.LANCE["grip"] - 30.0, 0.0, 1.0])[:3]
-        d0 = -Lw[:3, 1]
+        bx, by, _, bz = M.BARB
+        p0 = (Lw @ np.r_[bx, by, bz, 1.0])[:3]
+        a = p0 - Lw[:3, 2] * 45.0
         p1 = self.lworld(M.STAND_PORT) + (0, 0, 20.0)
-        return M.hose_mesh(p0, d0, p1, (0.0, 0.0, 1.0), sag=120.0)
+        x = np.array([0.5 * (a[0] + p1[0]), min(a[1], line.Y_FACE - 60.0), max(min(a[2] - 60.0, 1080.0), 700.0)])
+        pts = np.array([p0, a, x, p1 + (0, 0, 260.0), p1])
+        return pv.Spline(pts, 80).tube(radius=13.0, n_sides=14).triangulate()
 
     def update_hose(self):
         self.sc.set_mesh("lance hose", self.hose())
@@ -346,6 +352,7 @@ def rinse_stand(sc, E):
     sc.gmat["rinse"] = T((x, line.Y_FACE - 80.0, 0))
     for name, (mesh, col, spec, op) in M.rinse_cup().items():
         sc.add(f"rinse/{name}", mesh, col, "rinse", opacity=op, specular=spec)
+    sc.fluids = getattr(sc, "fluids", set()) | {"rinse/liquid"}   # the bar is dipped in it: not an obstacle (collide.py)
     return x
 
 
@@ -513,6 +520,20 @@ class Mir:
 
 
 # ================================================================================================= poses
+def branch_q(rb, Tw, Tw_ref):
+    """The IK solution for the tool pose Tw in the branch of the first clear solution for Tw_ref (collide.py), so that
+    a straight line from one to the other stays in a branch that is clear at its end: the branch nearest the arm's
+    current joints may reach Tw but put the forearm through the machine at Tw_ref."""
+    import collide
+    chk = rb.checker()
+    Wd = chk.snapshot()
+    Tb = np.linalg.inv(rb.sc.world(rb.root)) @ Tw_ref
+    for q in collide.ik_all(rb.model, Tb, rb.q):
+        if not chk.collisions(q, rb.close, Wd, chk.touching(q, rb.close, Wd)):
+            return rb.solve(Tw, seed=q)
+    return rb.solve(Tw)
+
+
 def tilt(p, toward=(0.0, 1.0), down=TILT, spin=0.0):
     """Gripper pointing along `toward` (xy) and `down` degrees below level; fingers close along world x (spin 0)."""
     c, s = math.cos(math.radians(down)), math.sin(math.radians(down))
@@ -521,7 +542,7 @@ def tilt(p, toward=(0.0, 1.0), down=TILT, spin=0.0):
 
 def save_still(sc, name):
     """The current view with its text, as a PNG in out/ (not in a preview)."""
-    if PREVIEW or CLEAN:
+    if PREVIEW or CLEAN or scene.AUDIT:
         return
     base = sc.render_base()
     anchors = [sc.project(xyz) for _, xyz, _, _ in sc.labels]
@@ -614,13 +635,24 @@ def movie():
     sc.step(f"2/{n}", cap, 0.7, D.with_hose(rb.line_to(A.down(p_hold + (0, -120, 14), spin=0.0))), hold=0.02)
     sc.step(f"2/{n}", cap, 0.9, D.with_hose(rb.line_to(A.down(p_hold + (0, -300, 260), spin=0.0))), hold=0.02)
     # into the chamber, 25 deg down, the nozzle just over the chamber floor
-    rows = (-55.0, -20.0, 15.0, 50.0)
+    # the far row first, while the nozzle is lowest, so the gripper stays under the chamber's roof; the two middle
+    # rows stop short of the lug, and the nozzle rides the build as it rises: its mouth (r 22 mm, 20 mm under its
+    # centre at 25 deg) clear of the powder at the floor, then of the bars once they are out
+    rows = (50.0, 15.0, -20.0, -55.0)
     path = []
     for i, dy in enumerate(rows):
-        xs = (-72.0, 72.0) if i % 2 == 0 else (72.0, -72.0)
-        path += [aco_bp + (xs[0], dy, 5.0), aco_bp + (xs[1], dy, 5.0)]
+        x_lo = -72.0 if abs(dy) > 40 else -36.0
+        xs = (x_lo, 72.0) if i % 2 == 0 else (72.0, x_lo)
+        path += [aco_bp + (xs[0], dy, 0.0), aco_bp + (xs[1], dy, 0.0)]
     path = np.array(path)
     seg = np.r_[0.0, np.cumsum(np.linalg.norm(np.diff(path, axis=0), axis=1))]
+    NOZ = 24.0                                    # the nozzle's centre over the powder, mm
+
+    def noz_z(z_piston):
+        """The nozzle's centre height (world) with the piston's top at z_piston: over the powder or the bars."""
+        bars_top = z_piston + M.PLATE["t"] + M.E8_SUB["T"]
+        return max(W.floor + NOZ, bars_top + NOZ + 2.0)
+    path[:, 2] = noz_z(W.piston_top)
     entry = path[0] - l_dir * 150
     cap = "It vacuums the plate as the platform rises a step at a time, the nozzle sweeping the build cylinder at " \
           "floor level: what a person does with a brush and an ATEX vacuum. The powder goes to the box's separator, " \
@@ -637,8 +669,10 @@ def movie():
         k = min(int(np.searchsorted(seg, s, side="right")) - 1, len(path) - 2)
         f = (s - seg[k]) / max(seg[k + 1] - seg[k], 1e-6)
         tip = path[k] + (path[k + 1] - path[k]) * f
+        zp = z_p0 + (lift_to - z_p0) * u
+        tip[2] = noz_z(zp)
         rb.set(rb.solve(lance_at(tip), rb.q))
-        W.set_piston(z_p0 + (lift_to - z_p0) * u)
+        W.set_piston(zp)
         D.update_hose()
         ph = (u * 22.0 + np.arange(len(ring)) * 0.37) % 1.0
         pts = tip + ring * (34.0 * (1 - ph))[:, None] + np.c_[np.zeros((len(ring), 2)), 6.0 * (1 - ph)]
@@ -652,7 +686,8 @@ def movie():
     sc.alpha["plate residue"] = 1.0
     cap = "The lance goes back on the box. What it leaves is loose grains round the bars and the lug."
     status(sc, Arm="putting the lance back", Plate="out of the powder; grains left on it")
-    sc.step(f"2/{n}", cap, 0.9, D.with_hose(rb.line_to(lance_at(path[-1] - l_dir * 200))), hold=0.05)
+    sc.step(f"2/{n}", cap, 0.9, D.with_hose(rb.line_to(lance_at(path[-1] + (0, 0, noz_z(lift_to) - path[-1][2])
+                                                             - l_dir * 200))), hold=0.05)
     sc.step(f"2/{n}", cap, 1.8, D.with_hose(rb.joint_to(Tw=A.down(p_hold + (0, -300, 260), spin=0.0))), hold=0.02,
             cam_to=CAM_DEP)
     sc.step(f"2/{n}", cap, 0.9, D.with_hose(rb.line_to(A.down(p_hold + (0, -120, 14), spin=0.0))), hold=0.02)
@@ -669,14 +704,22 @@ def movie():
     p_g = held_point(sc, "plate", (-78.0, 0, 28.0))   # the grasp point: the lug's centre line, 28 mm up
     a_dir = np.array([0, math.cos(math.radians(TILT)), -math.sin(math.radians(TILT))])
     status(sc, Arm="taking the plate")
-    sc.step(f"3/{n}", cap, 1.8, RB.both(rb.joint_to(Tw=tilt(p_g - a_dir * 150)), rb.grip_to(0.0)), hold=0.05,
+    # in the way the plate comes out, fingers over the lug, then down onto it: backed off along its own axis, 30 deg
+    # down, the gripper's wrist would be up in the chamber's roof
+    p_out = p_g + (0, -470, 52)
+    sc.step(f"3/{n}", cap, 1.8, RB.both(rb.joint_to(Tw=tilt(p_out)), rb.grip_to(0.0)), hold=0.05,
             cam_to=CAM_ACO_IN, labels=[("handling lug", tuple(p_g + (0, 0, 20)), (0.20, 0.30))])
-    sc.step(f"3/{n}", cap, 1.0, rb.line_to(tilt(p_g)), hold=0.05)
+    sc.step(f"3/{n}", cap, 1.2, rb.line_to(tilt(p_g + (0, -40, 32))), hold=0.05)
+    sc.step(f"3/{n}", cap, 0.6, rb.line_to(tilt(p_g)), hold=0.05)
     sc.step(f"3/{n}", cap, 0.5, rb.grip_to(GRIP_LUG), hold=0.05)
     status(sc, Plate="clamp released; in the gripper")
     rb.grasp("plate")
     sc.step(f"3/{n}", cap, 0.8, rb.line_to(tilt(p_g + (0, 0, 32))), hold=0.05)
-    sc.step(f"3/{n}", cap, 1.8, rb.line_to(tilt(p_g + (0, -470, 52))), hold=0.05, labels=[])
+    sc.step(f"3/{n}", cap, 1.8, rb.line_to(tilt(p_out)), hold=0.05, labels=[])
+    # tucked in over the MiR for the drive: held out of the chamber, the plate is still over the printer's cabinet,
+    # in line with the lance's post and the box
+    p_carry = amr.world((-330.0, 300.0, 0.0)) + (0, 0, 1250.0)
+    sc.step(f"3/{n}", cap, 1.4, rb.joint_to(Tw=tilt(p_carry)), hold=0.05)
     p_box = D.seat_tcp()
     cap = "Into the depowdering box beside the printer: the door slides up and the arm sets the plate's stud in a " \
           "zero-point chuck on a turning shaft. The box is our design, on the principle of Solukon's SFM-AT200, the " \
@@ -684,7 +727,9 @@ def movie():
     status(sc, Arm="loading the depowdering box")
     sc.step(f"3/{n}", cap, amr.secs(box_x), RB.both(amr.drive(box_x), D.door(1.0), W.door(0.0)), hold=0.05,
             cam_to=CAM_BOX)
-    sc.step(f"3/{n}", cap, 1.6, rb.joint_to(Tw=tilt(p_box - a_dir * 280 + (0, 0, 40))), hold=0.05,
+    # the plate half in the door, the arm in the branch that reaches the chuck with its forearm clear of the box's frame
+    p_mid = p_box + (0, -200, 100)
+    sc.step(f"3/{n}", cap, 1.6, rb.joint_to(q1=branch_q(rb, tilt(p_mid), tilt(p_box))), hold=0.05,
             labels=[("zero-point chuck", tuple(box_c + (0, 0, -30)), (0.80, 0.40))])
     sc.step(f"3/{n}", cap, 1.2, rb.line_to(tilt(p_box + (0, 0, 14))), hold=0.05)
     sc.step(f"3/{n}", cap, 0.5, rb.line_to(tilt(p_box)), hold=0.05)
@@ -732,7 +777,7 @@ def movie():
     sc.step(f"3/{n}", cap, 0.4, rb.grip_to(GRIP_LUG), hold=0.02)
     rb.grasp("plate")
     sc.step(f"3/{n}", cap, 0.5, rb.line_to(tilt(p_box + (0, 0, 14))), hold=0.02)
-    sc.step(f"3/{n}", cap, 1.0, rb.line_to(tilt(p_box - a_dir * 280 + (0, 0, 40))), hold=0.05)
+    sc.step(f"3/{n}", cap, 1.0, rb.line_to(tilt(p_mid)), hold=0.05)
     # onto the carrier on the MiR: turned half a turn, so the lug ends up on the plate's right
     c_top = amr.world(M.carrier_top(amr.top))
     p_c = c_top + (78.0, 0, M.PLATE["t"] + 28.0)
@@ -740,14 +785,14 @@ def movie():
     b_dir = np.array([0, -math.cos(math.radians(TILT)), -math.sin(math.radians(TILT))])
     cap = "It sets the plate on a carrier on the MiR250, half a turn round, so the lug ends up on the plate's right. " \
           "Plate and parts weigh about 1 kg, against the UR10e's 12.5 kg."
-    sc.step(f"3/{n}", cap, 2.2, RB.both(rb.joint_to(Tw=tilt(p_c + (0, 0, 120), toward=cdir, spin=180.0)), D.door(0.0)),
+    sc.step(f"3/{n}", cap, 2.2, rb.joint_to(Tw=tilt(p_c + (0, 0, 120), toward=cdir, spin=180.0)),
             hold=0.05, cam_to=CAM_ACO)
     sc.step(f"3/{n}", cap, 1.0, rb.line_to(tilt(p_c, toward=cdir, spin=180.0)), hold=0.05)
     sc.step(f"3/{n}", cap, 0.5, rb.grip_to(0.0), hold=0.05)
     rb.release("amr")
     status(sc, Plate="on the MiR's carrier")
     sc.step(f"3/{n}", cap, 0.8, rb.line_to(tilt(p_c - b_dir * 110, toward=cdir, spin=180.0)), hold=0.05)
-    sc.step(f"3/{n}", cap, 1.4, RB.both(rb.joint_to(PARK), W.door(0.0), W.ghost(0.0)), hold=0.1)
+    sc.step(f"3/{n}", cap, 1.4, RB.both(rb.joint_to(PARK), D.door(0.0), W.door(0.0), W.ghost(0.0)), hold=0.1)
     status(sc, Arm="parked")
 
     # ------------------------------------------------------------------ 4. to the wire EDM, plate in
@@ -875,7 +920,9 @@ def movie():
     d_tcp = rb.tcp_world()[:3, 3] - bottom_w            # TCP relative to the bar's lower end (gripper pointing down)
     # rinse and dry: dipped in the cup's isopropanol, pulled out slowly through its air knife
     cup_w = (sc.world("rinse") @ np.r_[0.0, 0.0, M.RINSE["z0"] + 34.0, 1.0])[:3]
-    p_r = cup_w + d_tcp
+    # as deep as the fingers allow: their tips go into the cup, inside the air knife, and the fingers stop over it
+    rim = (sc.world("rinse") @ np.r_[0.0, 0.0, M.RINSE["z1"], 1.0])[:3]
+    p_r = np.array([rim[0] + d_tcp[0], rim[1] + d_tcp[1], rim[2] - 1.0])
     CAM_RINSE = [tuple(cup_w + (-520, -760, 380)), tuple(cup_w + (60, 0, 60)), (0, 0, 1)]
     cap = "A rinse and dry: the arm dips the bar in a cup of isopropanol in front of the EDM and pulls it out slowly " \
           "through the air knife on the cup's rim (our design, assumed)."
@@ -963,7 +1010,7 @@ def movie():
                                                                (0.34, 0.30))])
     print(f"highest forearm/wrist point {rb.max_z_world:.0f} mm", flush=True)
     info = sc.save()
-    if not PREVIEW:
+    if not PREVIEW and not scene.AUDIT:
         meta_path = OUT / f"{NAME}.json"
         meta = json.loads(meta_path.read_text())
         meta.update(numbers=dict(specimen=M.E8_SUB, plate=M.PLATE, cut_area_mm2=round(area), peak_kN=round(peak, 1),

@@ -247,8 +247,9 @@ class World:
         """Every visible body not in exclude_groups, placed where its group is now, with its world box."""
         sc = self.sc
         cache, out = {}, []
+        fluids = getattr(sc, "fluids", ())          # actors that are liquids: a part may be dipped in them
         for name, b in self.bodies.items():
-            if b.group in exclude_groups or not _visible(sc, name):
+            if b.group in exclude_groups or not _visible(sc, name) or name in fluids:
                 continue
             if b.group not in cache:
                 cache[b.group] = sc.world(b.group)

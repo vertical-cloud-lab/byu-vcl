@@ -9,7 +9,7 @@ and wire head, and the holders on the MiR.
 
 | | |
 |---|---|
-| MP4, 1280 × 720, 10 fps, 159 s (round 5; re-render at 15 fps when the runner is free) | [`out/mp4/alloy_workflow.mp4`](out/mp4/alloy_workflow.mp4) (8.9 MB) |
+| MP4, 1280 × 720, 10 fps, 161 s (round 6, the arm's moves collision-checked; re-render at 15 fps when the runner is free) | [`out/mp4/alloy_workflow.mp4`](out/mp4/alloy_workflow.mp4) (9.0 MB) |
 | GIF, 640 × 360, 5 fps | [`out/alloy_workflow.gif`](out/alloy_workflow.gif) (5.1 MB) |
 | Stills: the lance, the depowdering box | [`out/alloy_workflow_lance.png`](out/alloy_workflow_lance.png), [`out/alloy_workflow_depowder.png`](out/alloy_workflow_depowder.png) |
 | Frame range of every sub-step, and the numbers used | [`out/alloy_workflow.json`](out/alloy_workflow.json) |
@@ -26,12 +26,15 @@ and wire head, and the holders on the MiR.
    lab's AlSi10Mg powder.
 2. **Door, suction lance, platform (round 5: no person).** The chamber door opens and the MiR250 rolls up. The arm
    takes a suction lance off a post in front of the printer, right of the chamber, and vacuums the build cylinder
-   at floor level, pointing 25° down, in four passes, while the platform rises out of the powder. A pipe along the
-   floor takes the powder to the depowdering box's separator. The lance goes back on its post. Loose grains are
-   left round the bars and the lug.
-3. **The arm takes the plate; the depowdering box.** The platform's clamp lets go. The arm takes the lug, with the
-   gripper pointing 30° down, lifts the plate 32 mm and draws it out. Holding it, the MiR moves 1.6 m to the
-   depowdering box between the printer and the 68FM-100. The box's door slides up, and the arm sets the plate's
+   at floor level, pointing 25° down, in four passes, while the platform rises out of the powder. The far pass goes
+   first, and the nozzle rides just over the powder, then over the bars once they are out; the two middle passes stop
+   short of the lug (round 6). The hose leaves the lance's handle from its side, past the gripper's fingers, and runs
+   forward of the printer's front before it drops to the post. A pipe along the floor takes the powder to the
+   depowdering box's separator. The lance goes back on its post. Loose grains are left round the bars and the lug.
+3. **The arm takes the plate; the depowdering box.** The platform's clamp lets go. The arm comes in the way the
+   plate will come out, level, its fingers over the lug, then down onto it, with the gripper pointing 30° down. It
+   lifts the plate 32 mm, draws it out and tucks it in over the MiR's left half. Holding it, the MiR moves 1.6 m to
+   the depowdering box between the printer and the 68FM-100. The box's door slides up, and the arm sets the plate's
    zero-point stud in a chuck on a horizontal shaft and backs off. The door shuts; under argon the shaft turns the
    plate over and back on a set path while a vibrator on it shakes the grains off, down a hopper into a closed
    bottle. The arm takes the clean plate out and sets it on the MiR's carrier, turned half a turn.
@@ -40,17 +43,50 @@ and wire head, and the holders on the MiR.
    an angle plate, bars to the front. The door goes up and the tank fills.
 5. **The cut.** It is drawn see-through. The wire runs between its guides, 0.15 mm off the plate's face, and crosses
    the plate. The sparks show where it is inside a bar. Each bar drops 14 mm onto a catch shelf once it is cut
-   through. The tank drains and the door drops. The arm takes the first bar by its end, dips it in a cup of
-   isopropanol on a stand left of the EDM, pulls it out slowly through the air knife on the cup's rim, and stands it
-   in a holder on the MiR (round 5: the rinse and dry).
+   through. The tank drains and the door drops. The arm takes the first bar by its end, dips its lower 70 mm in a
+   cup of isopropanol on a stand left of the EDM (as deep as the fingers allow: their tips go into the cup, inside
+   the air knife on its rim), pulls it out slowly through the air knife, and stands it in a holder on the MiR (round
+   5: the rinse and dry).
 6. **The tensile test.** The MiR drives to the 68FM-100, and the crosshead rises out of the way. The arm lowers the
    bar into the lower wedge grip, which closes, then lets go and backs off. The crosshead comes down until 40 mm of
    the bar is free between the jaws, and the upper grip closes. Then the pull: the stress-strain curve draws in step
    with the crosshead, to fracture at 14.8 kN. The crosshead backs off 20 mm to show the break.
 
 Every arm move is a straight line of the grasp point solved with the UR10e's IK every frame, or a joint move between
-two solved poses (`robot.py`), as in `animate.workflow()`. The moves are not checked for collisions with the
-machines; the highest point the forearm or wrists reach is 1642 mm.
+two solved poses (`robot.py`), as in `animate.workflow()`. Since round 6 they are checked for collisions
+(`collide.py`, FCL on the drawn meshes): the arm against itself, and the arm, gripper and what it holds against
+everything visible. A joint move takes the nearest clear IK branch and is planned round anything in the way.
+
+### Round 6: the arm's collisions
+
+Sterling, on PR #318: "the robot arm didn't respect collisions with itself, at all." The audit (`ARM_AUDIT=1`, every
+frame at 15 fps; [`out/collisions/alloy_workflow.json`](../out/collisions/alloy_workflow.json)) of round 5's version,
+with the planner, found **539 of 2068 frames** in collision. Now: **60 of 2101**: 57 in the bar's pick at the EDM, below, and three single brushes, a fingertip and the plate's rim against the lance's hose for two frames as the arm tucks the plate in, and the wrist against the box's door for one as it shuts while the arm parks.
+
+| Where | Frames | What it was | What was done |
+| --- | --- | --- | --- |
+| The lance, 2/6 | 268 | The hose left the barb on the handle's end, straight up through the gripper, which takes the handle end-on. With the hose in the way of every pose, the planner fell back to the nearest IK branch, which put the upper arm and forearm through the printer's cabinet and shell. The nozzle swept at floor + 5 mm: its 22 mm mouth was in the powder and the chamber's floor, then in the bars as the platform rose. | The barb is on the handle's side (`alloy_models.BARB`), so the hose leaves past the fingers (28 mm across) and is routed forward of the fronts before it drops. The nozzle rides 24 mm over the powder, then 26 mm over the bars; the far pass first, while it is lowest, so the gripper stays under the 280 mm chamber's roof; the middle passes stop short of the lug. |
+| The plate out of the printer, 3/6 | 93 | Backed off 150 mm along its own axis, 30° down, the gripper's wrist was in the chamber's roof. | It comes in along the way the plate goes out: level, fingers over the lug, then 40 mm forward and 32 mm down onto it. |
+| The drive to the box, 3/6 | 28 | Held 470 mm out of the chamber, the plate was still over the printer's cabinet, so it drove through the lance's post, its hose and the box's frame. | Tucked in over the MiR's left half first (the tuck still brushes the hose for 2 frames). |
+| Into the box and out, 3/6 | 76 | The nearest IK branch reached the chuck with the upper arm and forearm through the box's frame and the printer beside it, and the plate caught the box's front on the way in and out. | The arm goes to a pose with the plate half in the door, in the branch that is clear at the chuck (`branch_q`), and the lines in and out stay in it. The door shuts as the arm parks, not as it leaves: shutting as it left, it caught the gripper (it still touches the wrist for 1 frame). |
+| The rinse, 5/6 | 17 | The fingers hit the air knife on the cup's rim, and the bar "hit" the isopropanol. | The knife sits on the rim with its slot facing in, so the fingertips pass inside it; the liquid stands 17 mm under the rim. Liquids are not obstacles to the checker (`sc.fluids`, `collide.py`). |
+| The bar off the EDM's catch shelf, 5/6 | 57 | The fingers between the bars and in the plate's edge; the wrist in the EDM's upper housing. | Not fixed: see below. |
+
+**Left: taking the bar off the catch shelf (57 frames, 5/6).** Neither problem is one a pose can fix:
+
+- **The fingers can't get between the bars.** The four bars stand on the shelf 25 mm apart, so their grip ends leave
+  15 mm gaps, and a 2F-85 fingertip is about 31 mm across. The bar's back is against the plate's face, so the fingers
+  can't close front to back either. Gripped by its top end, the inner finger is in the next bar and the fingertips
+  are in the plate's edge.
+- **There is no room to point down at the shelf.** The EDM's upper housing (`instruments.wire_edm()`) comes down to
+  1230 mm from 200 mm behind the machine's front; the shelf is 390 mm in, and the bars' tops are 264 mm under the
+  housing. Pointing down, the gripper and the UR's wrist need about 320 mm over the grasp point, so the wrist is in
+  the housing (`inst_white`, `inst_dark`), as the audit says.
+
+A fix, not made for lack of time: an ejector pin under the first bar's place on the shelf lifts it about 100 mm once
+the tank has drained, clear of the others and of the plate's edge. The arm takes it level, as it handles the plate in
+the EDM, rinses it and stands it in the holder on the MiR still level, then takes it again from above at the
+holder, so that the Instron's grips are loaded as now. Printing the bars further apart would change chapter 3.
 
 ### Sources
 
@@ -199,7 +235,8 @@ The pages:
 ```bash
 xvfb-run -a python3 alloy_workflow.py            # -> out/mp4/alloy_workflow.mp4, out/alloy_workflow.gif, .json, stills
 PREVIEW=1 xvfb-run -a python3 alloy_workflow.py  # the last frame of each sub-step -> /tmp/preview_alloy_workflow.png
+ARM_AUDIT=1 xvfb-run -a python3 alloy_workflow.py  # every frame checked, nothing drawn -> out/collisions/alloy_workflow.json
 ```
 
 The opened Aconity is tessellated once, in about 10 s, and cached in `.cache/alloy_aconity_<hash>.pkl`. The full
-render took 38 minutes on the shared 4-core runner.
+render took 38 minutes on the shared 4-core runner (round 6, at 10 fps: 43 minutes, with five sessions sharing it).

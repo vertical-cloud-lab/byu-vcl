@@ -1,7 +1,7 @@
 {
  "name": "alloy_workflow",
  "fps": 10,
- "n_frames": 1590,
+ "n_frames": 1614,
  "size": [
   1280,
   720
@@ -137,439 +137,451 @@
    "label": "3/6",
    "caption": "The platform's clamp lets go (a zero-point clamp: Aconity's platform takes a screwed plate, so this is an assumption). The chamber is 280 mm tall inside, too low for the gripper pointing down, so it takes the lug pointing 30° down and lifts the plate out.",
    "start_frame": 386,
-   "end_frame": 396
+   "end_frame": 398
   },
   {
    "label": "3/6",
    "caption": "The platform's clamp lets go (a zero-point clamp: Aconity's platform takes a screwed plate, so this is an assumption). The chamber is 280 mm tall inside, too low for the gripper pointing down, so it takes the lug pointing 30° down and lifts the plate out.",
-   "start_frame": 397,
-   "end_frame": 402
+   "start_frame": 399,
+   "end_frame": 405
   },
   {
    "label": "3/6",
    "caption": "The platform's clamp lets go (a zero-point clamp: Aconity's platform takes a screwed plate, so this is an assumption). The chamber is 280 mm tall inside, too low for the gripper pointing down, so it takes the lug pointing 30° down and lifts the plate out.",
-   "start_frame": 403,
+   "start_frame": 406,
    "end_frame": 411
   },
   {
    "label": "3/6",
    "caption": "The platform's clamp lets go (a zero-point clamp: Aconity's platform takes a screwed plate, so this is an assumption). The chamber is 280 mm tall inside, too low for the gripper pointing down, so it takes the lug pointing 30° down and lifts the plate out.",
    "start_frame": 412,
-   "end_frame": 430
+   "end_frame": 420
+  },
+  {
+   "label": "3/6",
+   "caption": "The platform's clamp lets go (a zero-point clamp: Aconity's platform takes a screwed plate, so this is an assumption). The chamber is 280 mm tall inside, too low for the gripper pointing down, so it takes the lug pointing 30° down and lifts the plate out.",
+   "start_frame": 421,
+   "end_frame": 439
+  },
+  {
+   "label": "3/6",
+   "caption": "The platform's clamp lets go (a zero-point clamp: Aconity's platform takes a screwed plate, so this is an assumption). The chamber is 280 mm tall inside, too low for the gripper pointing down, so it takes the lug pointing 30° down and lifts the plate out.",
+   "start_frame": 440,
+   "end_frame": 454
   },
   {
    "label": "3/6",
    "caption": "Into the depowdering box beside the printer: the door slides up and the arm sets the plate's stud in a zero-point chuck on a turning shaft. The box is our design, on the principle of Solukon's SFM-AT200, the smallest made for this (plates to 300 × 300 × 230 mm, 60 kg), which would need about a metre more of line.",
-   "start_frame": 431,
-   "end_frame": 451
+   "start_frame": 455,
+   "end_frame": 475
   },
   {
    "label": "3/6",
    "caption": "Into the depowdering box beside the printer: the door slides up and the arm sets the plate's stud in a zero-point chuck on a turning shaft. The box is our design, on the principle of Solukon's SFM-AT200, the smallest made for this (plates to 300 × 300 × 230 mm, 60 kg), which would need about a metre more of line.",
-   "start_frame": 452,
-   "end_frame": 468
-  },
-  {
-   "label": "3/6",
-   "caption": "Into the depowdering box beside the printer: the door slides up and the arm sets the plate's stud in a zero-point chuck on a turning shaft. The box is our design, on the principle of Solukon's SFM-AT200, the smallest made for this (plates to 300 × 300 × 230 mm, 60 kg), which would need about a metre more of line.",
-   "start_frame": 469,
-   "end_frame": 481
-  },
-  {
-   "label": "3/6",
-   "caption": "Into the depowdering box beside the printer: the door slides up and the arm sets the plate's stud in a zero-point chuck on a turning shaft. The box is our design, on the principle of Solukon's SFM-AT200, the smallest made for this (plates to 300 × 300 × 230 mm, 60 kg), which would need about a metre more of line.",
-   "start_frame": 482,
-   "end_frame": 487
-  },
-  {
-   "label": "3/6",
-   "caption": "Into the depowdering box beside the printer: the door slides up and the arm sets the plate's stud in a zero-point chuck on a turning shaft. The box is our design, on the principle of Solukon's SFM-AT200, the smallest made for this (plates to 300 × 300 × 230 mm, 60 kg), which would need about a metre more of line.",
-   "start_frame": 488,
+   "start_frame": 476,
    "end_frame": 492
   },
   {
    "label": "3/6",
    "caption": "Into the depowdering box beside the printer: the door slides up and the arm sets the plate's stud in a zero-point chuck on a turning shaft. The box is our design, on the principle of Solukon's SFM-AT200, the smallest made for this (plates to 300 × 300 × 230 mm, 60 kg), which would need about a metre more of line.",
    "start_frame": 493,
-   "end_frame": 502
+   "end_frame": 505
   },
   {
    "label": "3/6",
    "caption": "Into the depowdering box beside the printer: the door slides up and the arm sets the plate's stud in a zero-point chuck on a turning shaft. The box is our design, on the principle of Solukon's SFM-AT200, the smallest made for this (plates to 300 × 300 × 230 mm, 60 kg), which would need about a metre more of line.",
-   "start_frame": 503,
-   "end_frame": 515
+   "start_frame": 506,
+   "end_frame": 511
+  },
+  {
+   "label": "3/6",
+   "caption": "Into the depowdering box beside the printer: the door slides up and the arm sets the plate's stud in a zero-point chuck on a turning shaft. The box is our design, on the principle of Solukon's SFM-AT200, the smallest made for this (plates to 300 × 300 × 230 mm, 60 kg), which would need about a metre more of line.",
+   "start_frame": 512,
+   "end_frame": 516
+  },
+  {
+   "label": "3/6",
+   "caption": "Into the depowdering box beside the printer: the door slides up and the arm sets the plate's stud in a zero-point chuck on a turning shaft. The box is our design, on the principle of Solukon's SFM-AT200, the smallest made for this (plates to 300 × 300 × 230 mm, 60 kg), which would need about a metre more of line.",
+   "start_frame": 517,
+   "end_frame": 526
+  },
+  {
+   "label": "3/6",
+   "caption": "Into the depowdering box beside the printer: the door slides up and the arm sets the plate's stud in a zero-point chuck on a turning shaft. The box is our design, on the principle of Solukon's SFM-AT200, the smallest made for this (plates to 300 × 300 × 230 mm, 60 kg), which would need about a metre more of line.",
+   "start_frame": 527,
+   "end_frame": 539
   },
   {
    "label": "3/6",
    "caption": "The door shuts and the box fills with argon. The shaft turns the plate over and back on a set path while a vibrator on it shakes the grains loose; they fall through the hopper into a closed bottle.",
-   "start_frame": 516,
-   "end_frame": 528
+   "start_frame": 540,
+   "end_frame": 552
   },
   {
    "label": "3/6",
    "caption": "The door shuts and the box fills with argon. The shaft turns the plate over and back on a set path while a vibrator on it shakes the grains loose; they fall through the hopper into a closed bottle.",
-   "start_frame": 529,
-   "end_frame": 600
+   "start_frame": 553,
+   "end_frame": 624
   },
   {
    "label": "3/6",
    "caption": "Clean. The door opens and the arm takes the plate out by its lug.",
-   "start_frame": 601,
-   "end_frame": 613
+   "start_frame": 625,
+   "end_frame": 637
   },
   {
    "label": "3/6",
    "caption": "Clean. The door opens and the arm takes the plate out by its lug.",
-   "start_frame": 614,
-   "end_frame": 627
+   "start_frame": 638,
+   "end_frame": 651
   },
   {
    "label": "3/6",
    "caption": "Clean. The door opens and the arm takes the plate out by its lug.",
-   "start_frame": 628,
-   "end_frame": 635
+   "start_frame": 652,
+   "end_frame": 659
   },
   {
    "label": "3/6",
    "caption": "Clean. The door opens and the arm takes the plate out by its lug.",
-   "start_frame": 636,
-   "end_frame": 641
+   "start_frame": 660,
+   "end_frame": 665
   },
   {
    "label": "3/6",
    "caption": "Clean. The door opens and the arm takes the plate out by its lug.",
-   "start_frame": 642,
-   "end_frame": 646
+   "start_frame": 666,
+   "end_frame": 670
   },
   {
    "label": "3/6",
    "caption": "Clean. The door opens and the arm takes the plate out by its lug.",
-   "start_frame": 647,
-   "end_frame": 652
+   "start_frame": 671,
+   "end_frame": 676
   },
   {
    "label": "3/6",
    "caption": "Clean. The door opens and the arm takes the plate out by its lug.",
-   "start_frame": 653,
-   "end_frame": 663
+   "start_frame": 677,
+   "end_frame": 687
   },
   {
    "label": "3/6",
    "caption": "It sets the plate on a carrier on the MiR250, half a turn round, so the lug ends up on the plate's right. Plate and parts weigh about 1 kg, against the UR10e's 12.5 kg.",
-   "start_frame": 664,
-   "end_frame": 686
+   "start_frame": 688,
+   "end_frame": 710
   },
   {
    "label": "3/6",
    "caption": "It sets the plate on a carrier on the MiR250, half a turn round, so the lug ends up on the plate's right. Plate and parts weigh about 1 kg, against the UR10e's 12.5 kg.",
-   "start_frame": 687,
-   "end_frame": 697
+   "start_frame": 711,
+   "end_frame": 721
   },
   {
    "label": "3/6",
    "caption": "It sets the plate on a carrier on the MiR250, half a turn round, so the lug ends up on the plate's right. Plate and parts weigh about 1 kg, against the UR10e's 12.5 kg.",
-   "start_frame": 698,
-   "end_frame": 703
-  },
-  {
-   "label": "3/6",
-   "caption": "It sets the plate on a carrier on the MiR250, half a turn round, so the lug ends up on the plate's right. Plate and parts weigh about 1 kg, against the UR10e's 12.5 kg.",
-   "start_frame": 704,
-   "end_frame": 712
-  },
-  {
-   "label": "3/6",
-   "caption": "It sets the plate on a carrier on the MiR250, half a turn round, so the lug ends up on the plate's right. Plate and parts weigh about 1 kg, against the UR10e's 12.5 kg.",
-   "start_frame": 713,
+   "start_frame": 722,
    "end_frame": 727
+  },
+  {
+   "label": "3/6",
+   "caption": "It sets the plate on a carrier on the MiR250, half a turn round, so the lug ends up on the plate's right. Plate and parts weigh about 1 kg, against the UR10e's 12.5 kg.",
+   "start_frame": 728,
+   "end_frame": 736
+  },
+  {
+   "label": "3/6",
+   "caption": "It sets the plate on a carrier on the MiR250, half a turn round, so the lug ends up on the plate's right. Plate and parts weigh about 1 kg, against the UR10e's 12.5 kg.",
+   "start_frame": 737,
+   "end_frame": 751
   },
   {
    "label": "4/6",
    "caption": "To the FANUC ROBOCUT wire EDM, 3.7 m along the line, at up to 1.5 m/s (the MiR250 does 2.0).",
-   "start_frame": 728,
-   "end_frame": 762
+   "start_frame": 752,
+   "end_frame": 786
   },
   {
    "label": "4/6",
    "caption": "The tank is drained and its yellow door drops. The arm takes the plate by the lug again, from above, turns it on edge and pushes it onto a zero-point receiver on an angle plate on the table, bars to the front.",
-   "start_frame": 763,
-   "end_frame": 781
+   "start_frame": 787,
+   "end_frame": 805
   },
   {
    "label": "4/6",
    "caption": "The tank is drained and its yellow door drops. The arm takes the plate by the lug again, from above, turns it on edge and pushes it onto a zero-point receiver on an angle plate on the table, bars to the front.",
-   "start_frame": 782,
-   "end_frame": 798
+   "start_frame": 806,
+   "end_frame": 822
   },
   {
    "label": "4/6",
    "caption": "The tank is drained and its yellow door drops. The arm takes the plate by the lug again, from above, turns it on edge and pushes it onto a zero-point receiver on an angle plate on the table, bars to the front.",
-   "start_frame": 799,
-   "end_frame": 808
+   "start_frame": 823,
+   "end_frame": 832
   },
   {
    "label": "4/6",
    "caption": "The tank is drained and its yellow door drops. The arm takes the plate by the lug again, from above, turns it on edge and pushes it onto a zero-point receiver on an angle plate on the table, bars to the front.",
-   "start_frame": 809,
-   "end_frame": 814
+   "start_frame": 833,
+   "end_frame": 838
   },
   {
    "label": "4/6",
    "caption": "The tank is drained and its yellow door drops. The arm takes the plate by the lug again, from above, turns it on edge and pushes it onto a zero-point receiver on an angle plate on the table, bars to the front.",
-   "start_frame": 815,
-   "end_frame": 824
+   "start_frame": 839,
+   "end_frame": 848
   },
   {
    "label": "4/6",
    "caption": "The tank is drained and its yellow door drops. The arm takes the plate by the lug again, from above, turns it on edge and pushes it onto a zero-point receiver on an angle plate on the table, bars to the front.",
-   "start_frame": 825,
-   "end_frame": 847
+   "start_frame": 849,
+   "end_frame": 871
   },
   {
    "label": "4/6",
    "caption": "The tank is drained and its yellow door drops. The arm takes the plate by the lug again, from above, turns it on edge and pushes it onto a zero-point receiver on an angle plate on the table, bars to the front.",
-   "start_frame": 848,
-   "end_frame": 862
+   "start_frame": 872,
+   "end_frame": 886
   },
   {
    "label": "4/6",
    "caption": "The tank is drained and its yellow door drops. The arm takes the plate by the lug again, from above, turns it on edge and pushes it onto a zero-point receiver on an angle plate on the table, bars to the front.",
-   "start_frame": 863,
-   "end_frame": 869
+   "start_frame": 887,
+   "end_frame": 893
   },
   {
    "label": "4/6",
    "caption": "The tank is drained and its yellow door drops. The arm takes the plate by the lug again, from above, turns it on edge and pushes it onto a zero-point receiver on an angle plate on the table, bars to the front.",
-   "start_frame": 870,
-   "end_frame": 875
+   "start_frame": 894,
+   "end_frame": 899
   },
   {
    "label": "4/6",
    "caption": "The tank is drained and its yellow door drops. The arm takes the plate by the lug again, from above, turns it on edge and pushes it onto a zero-point receiver on an angle plate on the table, bars to the front.",
-   "start_frame": 876,
-   "end_frame": 888
+   "start_frame": 900,
+   "end_frame": 912
   },
   {
    "label": "4/6",
    "caption": "The tank is drained and its yellow door drops. The arm takes the plate by the lug again, from above, turns it on edge and pushes it onto a zero-point receiver on an angle plate on the table, bars to the front.",
-   "start_frame": 889,
-   "end_frame": 903
+   "start_frame": 913,
+   "end_frame": 927
   },
   {
    "label": "4/6",
    "caption": "Door up; the tank fills with deionised water, the dielectric. The plate is cut under water.",
-   "start_frame": 904,
-   "end_frame": 918
+   "start_frame": 928,
+   "end_frame": 942
   },
   {
    "label": "4/6",
    "caption": "Door up; the tank fills with deionised water, the dielectric. The plate is cut under water.",
-   "start_frame": 919,
-   "end_frame": 937
+   "start_frame": 943,
+   "end_frame": 961
   },
   {
    "label": "5/6",
    "caption": "The cut, with the machine drawn see-through: the brass wire (0.25 mm; FANUC takes 0.10-0.30 mm) runs between its upper and lower guides, 0.15 mm off the plate, and sparks its way through the base of each bar.",
-   "start_frame": 938,
-   "end_frame": 960
+   "start_frame": 962,
+   "end_frame": 984
   },
   {
    "label": "5/6",
    "caption": "The cut, with the machine drawn see-through: the brass wire (0.25 mm; FANUC takes 0.10-0.30 mm) runs between its upper and lower guides, 0.15 mm off the plate, and sparks its way through the base of each bar.",
-   "start_frame": 961,
-   "end_frame": 994
+   "start_frame": 985,
+   "end_frame": 1018
   },
   {
    "label": "5/6",
    "caption": "The cut, with the machine drawn see-through: the brass wire (0.25 mm; FANUC takes 0.10-0.30 mm) runs between its upper and lower guides, 0.15 mm off the plate, and sparks its way through the base of each bar.",
-   "start_frame": 995,
-   "end_frame": 1052
+   "start_frame": 1019,
+   "end_frame": 1076
   },
   {
    "label": "5/6",
    "caption": "Four cuts, 3389 mm² in all. FANUC gives no cutting rate for aluminium; at the 300 mm²/min GF quotes as the maximum of its CUT AM 500, made for this job, it would take at least 11 minutes. The tank drains and the door drops.",
-   "start_frame": 1053,
-   "end_frame": 1069
+   "start_frame": 1077,
+   "end_frame": 1093
   },
   {
    "label": "5/6",
    "caption": "Four cuts, 3389 mm² in all. FANUC gives no cutting rate for aluminium; at the 300 mm²/min GF quotes as the maximum of its CUT AM 500, made for this job, it would take at least 11 minutes. The tank drains and the door drops.",
-   "start_frame": 1070,
-   "end_frame": 1084
+   "start_frame": 1094,
+   "end_frame": 1108
   },
   {
    "label": "5/6",
    "caption": "The arm takes the first bar off the shelf by its end, the gripper opened just enough to fit between the bars. Wire-cut parts come out wet with deionised water.",
-   "start_frame": 1085,
-   "end_frame": 1103
+   "start_frame": 1109,
+   "end_frame": 1127
   },
   {
    "label": "5/6",
    "caption": "The arm takes the first bar off the shelf by its end, the gripper opened just enough to fit between the bars. Wire-cut parts come out wet with deionised water.",
-   "start_frame": 1104,
-   "end_frame": 1112
+   "start_frame": 1128,
+   "end_frame": 1136
   },
   {
    "label": "5/6",
    "caption": "The arm takes the first bar off the shelf by its end, the gripper opened just enough to fit between the bars. Wire-cut parts come out wet with deionised water.",
-   "start_frame": 1113,
-   "end_frame": 1120
+   "start_frame": 1137,
+   "end_frame": 1144
   },
   {
    "label": "5/6",
    "caption": "The arm takes the first bar off the shelf by its end, the gripper opened just enough to fit between the bars. Wire-cut parts come out wet with deionised water.",
-   "start_frame": 1121,
-   "end_frame": 1125
+   "start_frame": 1145,
+   "end_frame": 1149
   },
   {
    "label": "5/6",
    "caption": "The arm takes the first bar off the shelf by its end, the gripper opened just enough to fit between the bars. Wire-cut parts come out wet with deionised water.",
-   "start_frame": 1126,
-   "end_frame": 1134
+   "start_frame": 1150,
+   "end_frame": 1158
   },
   {
    "label": "5/6",
    "caption": "The arm takes the first bar off the shelf by its end, the gripper opened just enough to fit between the bars. Wire-cut parts come out wet with deionised water.",
-   "start_frame": 1135,
-   "end_frame": 1145
+   "start_frame": 1159,
+   "end_frame": 1169
   },
   {
    "label": "5/6",
    "caption": "A rinse and dry: the arm dips the bar in a cup of isopropanol in front of the EDM and pulls it out slowly through the air knife on the cup's rim (our design, assumed).",
-   "start_frame": 1146,
-   "end_frame": 1162
+   "start_frame": 1170,
+   "end_frame": 1186
   },
   {
    "label": "5/6",
    "caption": "A rinse and dry: the arm dips the bar in a cup of isopropanol in front of the EDM and pulls it out slowly through the air knife on the cup's rim (our design, assumed).",
-   "start_frame": 1163,
-   "end_frame": 1178
+   "start_frame": 1187,
+   "end_frame": 1202
   },
   {
    "label": "5/6",
    "caption": "A rinse and dry: the arm dips the bar in a cup of isopropanol in front of the EDM and pulls it out slowly through the air knife on the cup's rim (our design, assumed).",
-   "start_frame": 1179,
-   "end_frame": 1199
+   "start_frame": 1203,
+   "end_frame": 1223
   },
   {
    "label": "5/6",
    "caption": "A rinse and dry: the arm dips the bar in a cup of isopropanol in front of the EDM and pulls it out slowly through the air knife on the cup's rim (our design, assumed).",
-   "start_frame": 1200,
-   "end_frame": 1218
+   "start_frame": 1224,
+   "end_frame": 1242
   },
   {
    "label": "5/6",
    "caption": "A rinse and dry: the arm dips the bar in a cup of isopropanol in front of the EDM and pulls it out slowly through the air knife on the cup's rim (our design, assumed).",
-   "start_frame": 1219,
-   "end_frame": 1227
+   "start_frame": 1243,
+   "end_frame": 1251
   },
   {
    "label": "5/6",
    "caption": "A rinse and dry: the arm dips the bar in a cup of isopropanol in front of the EDM and pulls it out slowly through the air knife on the cup's rim (our design, assumed).",
-   "start_frame": 1228,
-   "end_frame": 1232
+   "start_frame": 1252,
+   "end_frame": 1256
   },
   {
    "label": "5/6",
    "caption": "A rinse and dry: the arm dips the bar in a cup of isopropanol in front of the EDM and pulls it out slowly through the air knife on the cup's rim (our design, assumed).",
-   "start_frame": 1233,
-   "end_frame": 1240
+   "start_frame": 1257,
+   "end_frame": 1264
   },
   {
    "label": "5/6",
    "caption": "A rinse and dry: the arm dips the bar in a cup of isopropanol in front of the EDM and pulls it out slowly through the air knife on the cup's rim (our design, assumed).",
-   "start_frame": 1241,
-   "end_frame": 1253
+   "start_frame": 1265,
+   "end_frame": 1277
   },
   {
    "label": "6/6",
    "caption": "To the Instron. The bar's 6 × 6 mm section at 412 MPa is a 14.8 kN pull: the 68SC-2 stops at 2 kN, so it goes to the 68FM-100 (100 kN). The crosshead rises out of the arm's way.",
-   "start_frame": 1254,
-   "end_frame": 1282
+   "start_frame": 1278,
+   "end_frame": 1306
   },
   {
    "label": "6/6",
    "caption": "To the Instron. The bar's 6 × 6 mm section at 412 MPa is a 14.8 kN pull: the 68SC-2 stops at 2 kN, so it goes to the 68FM-100 (100 kN). The crosshead rises out of the arm's way.",
-   "start_frame": 1283,
-   "end_frame": 1299
+   "start_frame": 1307,
+   "end_frame": 1323
   },
   {
    "label": "6/6",
    "caption": "To the Instron. The bar's 6 × 6 mm section at 412 MPa is a 14.8 kN pull: the 68SC-2 stops at 2 kN, so it goes to the 68FM-100 (100 kN). The crosshead rises out of the arm's way.",
-   "start_frame": 1300,
-   "end_frame": 1307
+   "start_frame": 1324,
+   "end_frame": 1331
   },
   {
    "label": "6/6",
    "caption": "To the Instron. The bar's 6 × 6 mm section at 412 MPa is a 14.8 kN pull: the 68SC-2 stops at 2 kN, so it goes to the 68FM-100 (100 kN). The crosshead rises out of the arm's way.",
-   "start_frame": 1308,
-   "end_frame": 1312
+   "start_frame": 1332,
+   "end_frame": 1336
   },
   {
    "label": "6/6",
    "caption": "To the Instron. The bar's 6 × 6 mm section at 412 MPa is a 14.8 kN pull: the 68SC-2 stops at 2 kN, so it goes to the 68FM-100 (100 kN). The crosshead rises out of the arm's way.",
-   "start_frame": 1313,
-   "end_frame": 1320
+   "start_frame": 1337,
+   "end_frame": 1344
   },
   {
    "label": "6/6",
    "caption": "The arm lowers the bar's end into the lower wedge grip, which closes on it (Instron sells 100 kN wedge grips with automatic hydraulic actuation and front loading for flat specimens). The arm lets go and backs off.",
-   "start_frame": 1321,
-   "end_frame": 1339
-  },
-  {
-   "label": "6/6",
-   "caption": "The arm lowers the bar's end into the lower wedge grip, which closes on it (Instron sells 100 kN wedge grips with automatic hydraulic actuation and front loading for flat specimens). The arm lets go and backs off.",
-   "start_frame": 1340,
-   "end_frame": 1350
-  },
-  {
-   "label": "6/6",
-   "caption": "The arm lowers the bar's end into the lower wedge grip, which closes on it (Instron sells 100 kN wedge grips with automatic hydraulic actuation and front loading for flat specimens). The arm lets go and backs off.",
-   "start_frame": 1351,
-   "end_frame": 1355
-  },
-  {
-   "label": "6/6",
-   "caption": "The arm lowers the bar's end into the lower wedge grip, which closes on it (Instron sells 100 kN wedge grips with automatic hydraulic actuation and front loading for flat specimens). The arm lets go and backs off.",
-   "start_frame": 1356,
+   "start_frame": 1345,
    "end_frame": 1363
   },
   {
    "label": "6/6",
    "caption": "The arm lowers the bar's end into the lower wedge grip, which closes on it (Instron sells 100 kN wedge grips with automatic hydraulic actuation and front loading for flat specimens). The arm lets go and backs off.",
    "start_frame": 1364,
-   "end_frame": 1377
+   "end_frame": 1374
   },
   {
    "label": "6/6",
    "caption": "The arm lowers the bar's end into the lower wedge grip, which closes on it (Instron sells 100 kN wedge grips with automatic hydraulic actuation and front loading for flat specimens). The arm lets go and backs off.",
-   "start_frame": 1378,
-   "end_frame": 1390
+   "start_frame": 1375,
+   "end_frame": 1379
+  },
+  {
+   "label": "6/6",
+   "caption": "The arm lowers the bar's end into the lower wedge grip, which closes on it (Instron sells 100 kN wedge grips with automatic hydraulic actuation and front loading for flat specimens). The arm lets go and backs off.",
+   "start_frame": 1380,
+   "end_frame": 1387
+  },
+  {
+   "label": "6/6",
+   "caption": "The arm lowers the bar's end into the lower wedge grip, which closes on it (Instron sells 100 kN wedge grips with automatic hydraulic actuation and front loading for flat specimens). The arm lets go and backs off.",
+   "start_frame": 1388,
+   "end_frame": 1401
+  },
+  {
+   "label": "6/6",
+   "caption": "The arm lowers the bar's end into the lower wedge grip, which closes on it (Instron sells 100 kN wedge grips with automatic hydraulic actuation and front loading for flat specimens). The arm lets go and backs off.",
+   "start_frame": 1402,
+   "end_frame": 1414
   },
   {
    "label": "6/6",
    "caption": "The crosshead comes down until the upper grip takes the bar's other end, 40 mm of it free between the jaws, and the upper grip closes.",
-   "start_frame": 1391,
-   "end_frame": 1413
+   "start_frame": 1415,
+   "end_frame": 1437
   },
   {
    "label": "6/6",
    "caption": "The test: the crosshead pulls at a constant rate and the load cell reads the force. The curve is not a measurement: it runs through AddUp's published as-built values (AddUp AlSi10Mg data sheet, as built, XY, ASTM E8). The bar breaks at about 412 MPa, 5 % strain, with little necking.",
-   "start_frame": 1414,
-   "end_frame": 1495
+   "start_frame": 1438,
+   "end_frame": 1519
   },
   {
    "label": "6/6",
    "caption": "Broken. The crosshead backs off 20 mm to show the break; the halves go on to the SEM for fractography.",
-   "start_frame": 1496,
-   "end_frame": 1525
+   "start_frame": 1520,
+   "end_frame": 1549
   },
   {
    "label": "6/6",
    "caption": "Done: printed, depowdered, cut, rinsed and tested, every arm move a real one, and no step left to a person. The depowdering box and the rinse cup are new stations of our own design.",
-   "start_frame": 1526,
-   "end_frame": 1589
+   "start_frame": 1550,
+   "end_frame": 1613
   }
  ],
  "numbers": {
@@ -607,14 +619,5 @@
    "by": "Gage Erickson (byu-vcl#48, comment 4181040112)"
   },
   "curve": "illustrative fit through published values, not measured"
- },
- "depowdering": {
-  "lance": "suction lance (tube 28 x 300 mm, 12 mm handle) on a post at x = 3420, swept 25 deg down over the build cylinder as the platform rises; floor pipe to the box's separator (our design)",
-  "box": "420 x 620 x 1540 mm at x = 4758, between the Aconity (to 4486) and the 68FM-100 (from 5030): zero-point chuck on a shaft turning about x, vibrator, hopper to a closed bottle, argon (our design)",
-  "principle": "Solukon SFM-AT200: parts up to 300 x 300 x 230 mm, 60 kg, one-axis rotation on a programmed path, variable-frequency vibration, N2 or Ar (TCT Magazine); outer size not published; installation space 2 x 2 x 2 m (3devaluate)",
-  "on_screen_s": 7.0
- },
- "rinse": {
-  "cup": "isopropanol in a 92 mm cup with an annular air knife on its rim, on a stand at x = 7520, between the 68SC-2 and the EDM (our design, assumed)"
  }
 }

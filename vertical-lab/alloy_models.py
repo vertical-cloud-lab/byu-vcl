@@ -355,9 +355,14 @@ def lance_stand() -> dict:
             "port": (port, (0.62, 0.63, 0.66), 0.5, 1.0)}
 
 
+BARB = (0.0, 6.0, -15.0, -45.0)                 # the hose barb: on the handle's -z face at y = 6, out to z = -45
+
+
 def lance() -> dict:
     """The suction lance in its own frame: the grasp point at the origin, the tube along +y, the handle block 12 mm
-    thick in x (gripped like the plate's lug), the hose barb behind it. {name: (mesh, colour, specular)}."""
+    thick in x (gripped like the plate's lug), the hose barb on its side (-z). The gripper takes the handle end-on,
+    its fingers along x and its body behind (-y), so a barb on the end would put the hose through the gripper: on
+    the -z face it leaves past the fingers, which are 28 mm across in z. {name: (mesh, colour, specular)}."""
     import charge
     L, r, g = LANCE["L"], LANCE["r"], LANCE["grip"]
     tube = _cyl(r, (0, g, 0), (0, g + L, 0), 32)
@@ -366,7 +371,8 @@ def lance() -> dict:
     noz.translate((0, g + L, 0), inplace=True)
     return {"tube": (tube.merge(noz), (0.75, 0.76, 0.78), 0.5),
             "handle": (_box(-6, 6, -g, g, -15, 15), (0.12, 0.40, 0.75), 0.2),
-            "barb": (_cyl(9, (0, -g, 0), (0, -g - 30, 0), 24), (0.25, 0.26, 0.28), 0.3)}
+            "barb": (_cyl(9, (BARB[0], BARB[1], BARB[2] + 1), (BARB[0], BARB[1], BARB[3]), 24), (0.25, 0.26, 0.28),
+                     0.3)}
 
 
 def hose_mesh(p0, d0, p1, d1, sag=180.0, r=13.0) -> pv.PolyData:
@@ -385,7 +391,7 @@ def hose_mesh(p0, d0, p1, d1, sag=180.0, r=13.0) -> pv.PolyData:
 # ------------------------------------------------------------------------------------------------- rinse and dry
 # A dip-and-blow cup on a stand in front of the EDM: isopropanol in the lower part, an annular air knife on the rim
 # that blows the bar dry as it is pulled out. Our design (assumed): wire-cut parts come out wet with deionised water.
-RINSE = dict(r=46.0, z0=900.0, z1=1062.0, liquid=1000.0)
+RINSE = dict(r=46.0, z0=900.0, z1=1062.0, liquid=1045.0)
 
 
 def rinse_cup() -> dict:
@@ -395,8 +401,9 @@ def rinse_cup() -> dict:
     cup = charge.lathe([(0, p["z0"]), (p["r"], p["z0"]), (p["r"], p["z1"]), (p["r"] - 3, p["z1"]),
                         (p["r"] - 3, p["z0"] + 3), (0, p["z0"] + 3)], res=48)
     liquid = _cyl(p["r"] - 3.5, (0, 0, p["z0"] + 3), (0, 0, p["liquid"]), 48)
-    ring = charge.lathe([(p["r"] - 8, p["z1"]), (p["r"] + 10, p["z1"]), (p["r"] + 10, p["z1"] + 16),
-                         (p["r"] - 8, p["z1"] + 16)], res=48)
+    # the air knife sits on the rim, its slot facing in: the gripper's fingertips pass inside it, into the cup
+    ring = charge.lathe([(p["r"] - 1, p["z1"]), (p["r"] + 10, p["z1"]), (p["r"] + 10, p["z1"] + 16),
+                         (p["r"] - 1, p["z1"] + 16)], res=48)
     line_ = _cyl(4, (p["r"] + 10, 0, p["z1"] + 8), (p["r"] + 60, 0, p["z1"] + 8), 12).merge(
         _cyl(4, (p["r"] + 60, 0, p["z1"] + 8), (p["r"] + 60, 0, 12), 12))
     return {"stand": (stand, (0.24, 0.25, 0.27), 0.2, 1.0), "cup": (cup, (0.86, 0.90, 0.94), 0.5, 0.45),
