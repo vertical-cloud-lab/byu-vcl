@@ -50,6 +50,7 @@ import scene
 scene.GIF_FPS = 5                     # a ~90 s GIF under 4.9 MB: 5 fps at 640 x 360 (the MP4 keeps every frame)
 scene.GIF_SIZE = (640, 360)
 from scene import FPS, OUT, PREVIEW, Scene, T, R, S, ease, mix, window  # noqa: E402
+_OVERLAY = Scene.overlay              # scene's own: instruments_char and instruments_lab patch Scene.overlay later
 
 import animate as A                   # noqa: E402
 import charge as C                    # noqa: E402
@@ -1314,8 +1315,8 @@ def _dress(img: Image.Image, label: str, badge: str, caption: str, scale: float,
     img = img.convert("RGB")
     if img.size != tuple(size):
         img = img.resize(size, Image.LANCZOS)
-    ns = SimpleNamespace(title=TITLE, label=label, gauges=[], labels=[], caption=" ".join(caption.split()))
-    img = Scene.overlay(ns, img, scale, [])
+    ns = SimpleNamespace(name=NAME, title=TITLE, label=label, gauges=[], labels=[], caption=" ".join(caption.split()))
+    img = _OVERLAY(ns, img, scale, [])
     if scene.CLEAN:
         return img
     d = ImageDraw.Draw(img, "RGBA")

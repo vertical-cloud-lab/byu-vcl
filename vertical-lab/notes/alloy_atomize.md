@@ -8,7 +8,7 @@ powder.
 
 | | |
 |---|---|
-| Clip | [GIF](../out/alloy_atomize.gif), [MP4](../out/mp4/alloy_atomize.mp4), [still](../out/alloy_atomize_still.png), sub-steps in [`alloy_atomize.json`](../out/alloy_atomize.json), powder sums in [`alloy_atomize_powder.json`](../out/alloy_atomize_powder.json) |
+| Clip | 156.5 s, 43.6 s of it the lab's own footage; [GIF](../out/alloy_atomize.gif) (640 × 360, 5 fps, 4.9 MB), [MP4](../out/mp4/alloy_atomize.mp4), [still](../out/alloy_atomize_still.png), sub-steps in [`alloy_atomize.json`](../out/alloy_atomize.json), powder sums in [`alloy_atomize_powder.json`](../out/alloy_atomize_powder.json) |
 | Starts | MiR250 at the VLM's opening (`animate.AMR_XY`), the four Al cups in `charge.carrier()`'s four pockets at `animate.BUFFER_LOCAL` on the cabinet: where chapter 1 ends |
 | Ends | MiR250 at world (−3487, −2230), yaw 0: square to the container's axis, 41 mm off the view port's flange, the hand-off chapter 3 (sieve, print) starts from. The container stands in a cradle at MiR-local (280, 10), seat z = 933 mm; the arm is parked. While the arm works the MiR stands 220 mm further out (y = −2450), because at y = −2230 the lid knob and the container's handle fall inside the UR10e's unreachable cylinder over its base; it drives onto the hand-off spot at the end |
 | Scene | `line.py`'s layout as `alloy_workflow.py` builds it, the rePowder loaded part by part from `repowder/model.py` (the merged copy `animate.Lab` adds is hidden) |
@@ -16,8 +16,8 @@ powder.
 | Footage | [`out/footage/`](../out/footage/): the excerpts and photos used, small, with a [manifest](../out/footage/manifest.json) of credits |
 
 ```bash
-xvfb-run -a python3 alloy_atomize.py        # render (about 1650 frames), then splice
-python3 alloy_atomize.py splice             # only cut the footage into the last render, a minute or two
+xvfb-run -a python3 alloy_atomize.py        # render (1,693 frames, 33 min on a busy 4-core runner), then splice
+python3 alloy_atomize.py splice             # only cut the footage into the last render (3-13 min, mostly the GIF)
 python3 alloy_atomize.py keep               # copy the excerpts PLAN uses from /tmp/footage (FOOTAGE=...) to out/footage/
 python3 alloy_atomize.py powder             # print the powder sums
 ```
