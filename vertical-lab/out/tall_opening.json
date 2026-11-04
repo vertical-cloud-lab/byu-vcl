@@ -7,7 +7,7 @@
   "mesh_box": 970.0,
   "checked": 1000.0
  },
- "heights_note": "727.5 mm is Kardex's order sheet. 856 mm is an estimate: a 996 mm opening (one used XP 500) over the same 833 mm table, if its header stands where it does on the order sheet's unit (vlm.py's mouth, from Kardex's renders, about 846 mm for 727.5 mm of goods). 970 mm is a Euro mesh box, which the Shuttle 1000 stores on special trays: so those trays pass about 1 m. 1000 mm is the height checked.",
+ "heights_note": "727.5 mm is Kardex's order sheet. 856 mm is an estimate: a 996 mm opening (one used XP 500) over the same 833 mm table, if its header stands where it does on the order sheet's unit (vlm.py's header, from Kardex's renders, 867 mm over the table for 727.5 mm of goods). 970 mm is a Euro mesh box, which the Shuttle 1000 stores on special trays: so those trays pass about 1 m. 1000 mm is the height checked.",
  "found": [
   "Kardex's order sheets (POF) for the XP 500 give 727.5 mm (2450 x 864) and 727 mm (3050 x 864) of product height, plus 20 mm clear, 'depends on tray type selection'.",
   "No Kardex brochure, factsheet, product page or blog found gives a taller opening for any Shuttle; Kardex's blog says 'just over 28 inches'.",

@@ -17,7 +17,8 @@ found gives a taller opening for any Shuttle (notes/kardex_opening.md lists what
   (UIC 435-3, the old DIN 15155) is 1240 x 835 x 970 mm outside, so those trays must pass about 1 m.
 - One used Shuttle XP 500 (2005/2006, 3050 x 864 mm) is listed with "Bedienoeffnung frontseitig auf 833 mm, Hoehe
   996 mm" (lagersysteme-paternoster.de, Pos. 89). If its header stands as far above the goods as on the order sheet's
-  unit (vlm.py draws the mouth about 846 mm tall for 727.5 mm of goods), that opening takes about 856 mm: an estimate.
+  unit (vlm.py puts the header 867 mm over the 833 mm table for 727.5 mm of goods), that opening takes about 856 mm:
+  an estimate.
 
 So three heights are checked: 727.5 mm (today), about 856 mm (the 996 mm opening, estimated) and 1000 mm (Sterling's
 figure, about a mesh box). Each machine is also checked against the load per tray, which Kardex rates per tray and per
@@ -55,8 +56,8 @@ TITLE = "Vertical cloud lab: what a taller Kardex opening would put on a tray"
 # ----------------------------------------------------------------------------------------------- the heights checked
 H_STD = V.MAX_GOODS_H         # 727.5 mm, Kardex's order sheet (POF) for the XP 500 at 2450 x 864
 CLEAR = V.GOODS_CLEAR         # 20 mm clear above the goods, required (POF)
-MOUTH_STD = V.Z_OPEN_TOP - V.Z_OPEN        # the mouth vlm.py draws for 727.5 mm of goods, from Kardex's renders
-H_996 = round(H_STD + 996.0 - (V.Z_OPEN_TOP - V.Z_SILL), 1)  # a 996 mm opening over the same 833 mm access table
+HEADER_STD = V.Z_OPEN_TOP - V.Z_SILL       # 867 mm: vlm.py's header over the table for 727.5 mm of goods (renders)
+H_996 = round(H_STD + 996.0 - HEADER_STD, 1)  # a 996 mm opening over the same 833 mm access table: about 856 mm
 H_MESH = 970.0                # a Euro mesh box's outside height (UIC 435-3 / DIN 15155)
 H_TALL = 1000.0               # the height checked: Sterling's figure, about a mesh box
 HEIGHTS = {"today_727_5": H_STD, "opening_996_est": H_996, "mesh_box_970": H_MESH, "tall_1000": H_TALL}
@@ -245,7 +246,7 @@ def report() -> dict:
                         checked=H_TALL),
         heights_note=(f"727.5 mm is Kardex's order sheet. {H_996:.0f} mm is an estimate: a 996 mm opening (one used "
                       f"XP 500) over the same 833 mm table, if its header stands where it does on the order sheet's "
-                      f"unit (vlm.py's mouth, from Kardex's renders, about {MOUTH_STD:.0f} mm for 727.5 mm of goods). "
+                      f"unit (vlm.py's header, from Kardex's renders, {HEADER_STD:.0f} mm over the table for 727.5 mm of goods). "
                       "970 mm is a Euro mesh box, which the Shuttle 1000 stores on special trays: so those trays pass "
                       "about 1 m. 1000 mm is the height checked."),
         found=[
