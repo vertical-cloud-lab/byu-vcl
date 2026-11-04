@@ -161,6 +161,13 @@ class Robot:
         path = np.array(path)
         jump = np.abs(np.diff(path, axis=0)).max()
         if jump > np.radians(25):
+            if not NO_PLAN:
+                # an earlier joint move went to another IK branch to stay clear of something, and in this branch the
+                # line crosses a wrist or elbow flip: go there by a planned joint move instead (the gripper then
+                # doesn't run exactly straight, but nothing passes through anything)
+                print(f"{self.sc.name} {self.sc.label}: line move would flip the arm in this IK branch "
+                      f"({np.degrees(jump):.0f} deg in one step); a planned joint move instead", flush=True)
+                return self.joint_to(Tw=Tw1)
             raise ValueError(f"line move would flip the arm ({np.degrees(jump):.0f} deg in one step)")
 
         def up(u):
