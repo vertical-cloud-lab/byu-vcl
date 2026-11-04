@@ -2224,7 +2224,7 @@ def splice() -> str:
             if video:
                 t0, t1 = item["window"]
                 off = e.get("window_offset", 0.0)
-                raw = _clip(e["path"], t0 - off, t1 - t0, int(round(fps * item.get("speed", 1.0))))
+                raw = _clip(e["path"], t0 - off, t1 - t0, max(1, int(round(fps / item.get("speed", 1.0)))))
             else:
                 pic = _photo(e["path"])
                 raw = None
