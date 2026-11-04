@@ -93,6 +93,11 @@ LAB = {
     "setup_lab.mp4": ("Vertical cloud lab, set up from scratch: VLM, floor machines, arms, every tray loaded",
                       "The whole vertical cloud lab set up in an empty warehouse bay, from the tape on the floor to "
                       "every tray loaded and the cameras in place."),
+    "alloy_charge_vacuum.mp4": ("Vertical cloud lab, alloy route 1/4: charge cups pressed home in a vacuum press (3-D)",
+                                "Chapter 1 of the alloy route with a vacuum press (alloy_charge.py, PR #318 review): each "
+                                "cup's bore filled to the plug (Si, then AlSi10Mg; Ni, then Cu), the plug pressed home at "
+                                "3.2 t under vacuum in a Specac Atlas Autotouch 15T with the lab's evacuable die round F1, "
+                                "and every arm move collision-checked (collide.py)."),
     "alloy_charge.mp4": ("Vertical cloud lab, alloy route 1/4: the charge cups filled and plugged (3-D animation)",
                          "Chapter 1 of the alloy route: the lab's charge cups filled with powder and closed with "
                          "their plugs, on a tray of the VLM."),
