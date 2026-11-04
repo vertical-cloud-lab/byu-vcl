@@ -2,10 +2,17 @@
 the utilities and their heat.
 
     xvfb-run -a python3 services.py services      # the dock close-up            -> out/vlm_services.gif, out/mp4/...
+    xvfb-run -a python3 services.py hookups       # one tray's hookups and UPS   -> out/vlm_hookups.gif, out/mp4/...
+    xvfb-run -a python3 services.py baycam        # the bay camera and its view  -> out/bay_camera.gif, out/mp4/...
     xvfb-run -a python3 services.py cabling       # the line with its cabling    -> out/vlm_cabling.gif, out/mp4/...
-    xvfb-run -a python3 services.py tether        # a tray on a retractable line -> out/vlm_tether.gif, out/mp4/...
+    python3 services.py clearance                 # docks against the lift       -> out/dock_lift_clearance.png, .json
     python3 services.py json                      # out/services.json (heat budget), out/cabling.json (circuits)
+    python3 services.py join                      # out/mp4/vlm_services_all.mp4 from the clips above
     xvfb-run -a python3 tour.py tray_dock stream_cam   # the two models on their own -> out/instruments/
+
+The retractable line (an igus e-spool on the rear wall, round 4's ``tether`` clip) was dropped on PR #318: "Let's
+remove the retractable line option for now. It overcomplicates things for now." notes/services.md says why it was
+a poor fit anyway.
 
 What Kardex gives (#53): a tray has power in its storage slot and again at the opening, not while the extractor carries
 it. The dealer offered a quick-connect cord to the device on the tray. This module puts every service a tray needs
@@ -101,11 +108,6 @@ SOURCES = {
     "chiller": "Thermo Scientific ThermoFlex 900: up to 900 W of cooling at a +20 C setpoint and 25 C ambient (60 Hz), "
                "5-40 C, pump 15.1 L/min at 4.1 bar (thermofisher.com TF900, snippet). Its size and electrical input "
                "were not found.",
-    "e_spool": "igus e-spool flex 2.0: extension up to 15 m, cables 5-15 mm, spring (SP, SB) or crank; 'No slip ring: "
-               "Uninterrupted supply of power, data and air.' igus e-spool power: motor-driven, up to 25 m, 1.2 m/s, "
-               "power, data, fibre, air and liquids, no slip ring (igus.com).",
-    "spring_reels": "Conductix-Wampfler SR spring reels: up to 56 m horizontal, 34 m lift; power 4G2.5-4G6 "
-                    "(conductix.com). Hannay 800 series spring-rewind: 3/4 in x 85 ft hose (retailer listing).",
 }
 
 # Electrical figures for what the trays and the line carry: (watts used for the budget, kind, source). 'kind' says what
@@ -191,15 +193,19 @@ MEDIA = [   # (key, label for the leader lines, material, coupling)
 # One plate per tray, at its back right corner, facing out through the tray's right-hand side (+x). A plate on the
 # back edge itself would face the rear wall in a rear-column slot but the shaft in a front-column slot and at the
 # opening, where the dock would sit in the extractor's path and the shutter's (see notes/services.md). Trays are
-# never turned, so a side plate meets an identical dock in every slot and in the bay, and the dock's 45 mm stroke is
+# never turned, so a side plate meets an identical dock in every slot and in the bay, and the dock's 60 mm stroke is
 # across the tray's travel, out of the way of the extractor and the shutter.
-PLATE_Y = V.TRAY_D / 2 - 12 - 140      # centre of the plate along the tray's depth (tray frame): 290
+# The plate's face is sunk 6 mm inside the tray's side (PR #318 review, "are any of the docks going to interfere with
+# the lift itself?", dock_clearance()): the tray rides the extractor 5 mm from its carriages, and with the face flush
+# the inserts, 1.5 mm proud, passed them at 3.5 mm. Now nothing on a tray stands proud of its side.
+PLATE_Y = V.TRAY_D / 2 - 12 - 140      # centre of the plate along the tray's depth (tray frame): 280
 PLATE_L = 200.0                        # along y
 PLATE_Z0 = V.T_FLOOR + 10.0            # bottom of the plate, over the support it slides on
 PLATE_H = 90.0
 PLATE_T = 16.0
-X_FACE = V.TRAY_W / 2                  # the tray's outer side face: 1225; the mated faces meet here
-STROKE = 45.0                          # the dock pulls back this far: 20 mm clear of the tray's side
+SIDE = V.TRAY_W / 2                    # the tray's outer side face: 1225
+X_FACE = SIDE - 6.0                    # the mated faces meet here, 6 mm inside it: 1219
+STROKE = 60.0                          # the dock pulls back this far: its pins' tips (32 mm) 22 mm clear of the tray
 PIN_DY = 86.0                          # guide pins either side of the plate's centre
 INSERT_DY = (-60.0, -36.0, -12.0, 12.0, 36.0, 60.0)
 ZC = PLATE_Z0 + PLATE_H / 2
@@ -279,7 +285,7 @@ def dock_parts(head=True) -> dict:
         # the rod of the actuator, through the side wall's window
         p["dock rod"] = (box(X_FACE + PLATE_T, PLATE_Y - 14, ZC - 14, 1300, PLATE_Y + 14, ZC + 14), "svc_steel")
         return p
-    hx0, hx1 = 1288.0, 1372.0
+    hx0, hx1 = X_FACE + STROKE + PLATE_T + 3.0, 1372.0      # behind the head pulled back: 1298 to 1372
     p["dock housing"] = (box(hx0, y0 + 20, PLATE_Z0 - 15, hx1, y1 - 20, PLATE_Z0 + PLATE_H + 25), "svc_housing")
     # its hoses: six lines from the housing's front into the column's riser
     ry = PLATE_Y + RISER["dy"]
@@ -716,9 +722,10 @@ def tray_dock() -> Instrument:
     for n, (s, m) in dock_parts(head=False).items():
         body.add(n, _shape(s).moved(off), m)
     tray = _piece(inst, "tray")
-    pan = box(-300, -330, 0, 0, 142, V.T_FLOOR + V.T_RIM)
-    pan = pan.cut(box(-301, -331, V.T_FLOOR, -12, 130, V.T_FLOOR + V.T_RIM + 1))
-    pan = pan.cut(box(-13, -PLATE_L / 2 - 2, PLATE_Z0 - 2, 1, PLATE_L / 2 + 2, V.T_FLOOR + V.T_RIM + 1))
+    sx = SIDE - X_FACE                                    # the tray's side, 6 mm outside the mated faces
+    pan = box(-300, -330, 0, sx, 142, V.T_FLOOR + V.T_RIM)
+    pan = pan.cut(box(-301, -331, V.T_FLOOR, sx - 12, 130, V.T_FLOOR + V.T_RIM + 1))
+    pan = pan.cut(box(-PLATE_T - 1, -PLATE_L / 2 - 2, PLATE_Z0 - 2, sx + 1, PLATE_L / 2 + 2, V.T_FLOOR + V.T_RIM + 1))
     tray.add("tray corner", pan, "svc_tray")
     for n, (s, m) in plate_parts().items():
         tray.add(n, _shape(s).moved(off), m)
@@ -737,9 +744,10 @@ def tray_dock() -> Instrument:
         ("In its slot the tray's plate is held against the dock: mains, Ethernet, compressed air, N2 and chilled water "
          "are all live through one coupling.", 2.4, {"live": (1.0, 1.0)}),
         ("Before the tray moves: air, N2 and water are shut and vented (CombiTac's couplings must not part under "
-         "pressure), the tray's UPS takes the load, and the dock pulls back 45 mm.", 2.6,
+         f"pressure), the tray's UPS takes the load, and the dock pulls back {STROKE:.0f} mm.", 2.6,
          {"live": (1.0, 0.0), "head": (0.0, 1.0)}),
-        ("The extractor pulls the tray out of the slot, across the dock, which is now 20 mm clear.", 2.0,
+        (f"The extractor pulls the tray out of the slot, across the dock, whose pins are now "
+         f"{X_FACE - 24 + STROKE - SIDE:.0f} mm clear of the tray's side.", 2.0,
          {"tray": (0.0, 1.0)}),
         ("At the opening an identical dock waits in the bay's side wall. The tray stops against it ...", 2.0,
          {"tray": (1.0, 0.0)}),
@@ -763,7 +771,7 @@ def tray_dock() -> Instrument:
 
 # ===================================================================================================== utilities
 UPS = dict(w=86.0, d=447.0, h=437.0)        # Eaton 5PX1500RTNG2 standing as a tower: 86 thick (y), 447 deep (x)
-UPS_AT = (X_FACE - 165 - UPS["d"] / 2, 276.0 + UPS["w"] / 2)    # tray frame: just ahead of the power strip
+UPS_AT = (SIDE - 165 - UPS["d"] / 2, 276.0 + UPS["w"] / 2)      # tray frame: just ahead of the power strip
 N2GEN = dict(w=305.0, d=406.0, h=889.0)     # Parker Balston UHPN2-1100
 CHILLER = dict(w=0.0, d=0.0, h=0.0)         # ThermoFlex 900: size not found; not drawn to a size
 
@@ -786,8 +794,26 @@ REGISTRY = {"tray_dock": tray_dock, "stream_cam": stream_cam}
 # ===================================================================================================== scenes
 # Below here: the pieces in the VLM (docks, plates, risers, UPSs, cameras), the animations and the JSON. The scene
 # modules are imported late, so tour.py can import this module for REGISTRY without loading the lab's meshes.
-TRAY_CAMS = {   # per tray: (mast x, mast y, aim x, aim y, aim z[, post yaw]) in the tray's frame; the post's foot on
-                # the floor. A post yaw is given where the default (rig_pose) would put the head in an instrument.
+TRAY_CAMS = {   # per tray: (mast x, mast y, aim x, aim y, aim z, post yaw) in the tray's frame; the post's foot on the
+                # floor.
+    # Placed (PR #318: "positioned closer to the front or middle to avoid capturing irrelevant things outside the bay
+    # (e.g., people/faces)") by a search over post positions and yaws and a few aim points on each instrument: the
+    # least of the room in either camera's picture with the tray presented (unit_view), then the closest view; posts
+    # 15 mm or more clear of every instrument's box, the UPS and the service plate, inside the rim, off the middle
+    # half of each instrument's front (where the arm works) and, on tray B, off the front between the rack and the
+    # doser's cup. Each unit stands in front of or beside its instrument and looks back or down at it. Tray B's rack
+    # and doser are at the front edge and the OT-2 has no room in front, so B0, B1, A1 and D2 still see some of the
+    # room (cameras.views in services.json).
+    "A": [(-680.0, -270.0, -467.0, 6.0, 92.0, 90.0), (210.0, 275.0, 916.0, 102.0, 600.0, 90.0)],
+    "B": [(-120.0, -25.0, -250.0, -356.0, 43.0, 0.0), (685.0, -340.0, 460.0, -222.0, 339.0, 270.0)],
+    "C": [(-960.0, -340.0, -560.0, 0.0, 600.0, 90.0), (125.0, -235.0, 360.0, 0.0, 486.0, 90.0)],
+    "D": [(-225.0, -305.0, -552.0, 0.0, 550.0, 270.0), (300.0, -340.0, 60.0, 0.0, 600.0, 270.0),
+          (860.0, 185.0, 1066.0, -43.0, 109.0, 90.0)],
+    "E": [(-470.0, -340.0, -880.0, 0.0, 420.0, 270.0), (-50.0, -340.0, -250.0, 0.0, 524.0, 180.0),
+          (965.0, -375.0, 860.0, 0.0, 509.0, 180.0)],
+    "F": [(-960.0, -305.0, -578.0, 0.0, 600.0, 90.0), (685.0, -235.0, 408.0, 0.0, 513.0, 270.0)],
+}
+TRAY_CAMS_ROUND5 = {   # where they stood before: at the back, looking forward over their instruments and out of the bay
     "A": [(-760.0, 320.0, -150.0, -150.0, 150.0), (380.0, 350.0, 760.0, -60.0, 330.0, 90.0)],
     "B": [(-560.0, 320.0, -250.0, -372.0, 60.0), (480.0, 320.0, 250.0, -316.0, 300.0)],
     "C": [(-1150.0, -330.0, -560.0, -60.0, 330.0), (380.0, 320.0, 360.0, 0.0, 200.0)],
@@ -1114,9 +1140,9 @@ def movie_services(data, idata):
         L.apply_state()
     lines_(f"in {slot}, releasing", f"carrying the tray, about {load_w:.0f} W", "pulling back", "pulled back, waiting")
     sc.step(f"3/{n}", "To let it go: the air, N2 and water supplies close and vent (the couplings must not part under "
-            "pressure), the tray's UPS takes the load, and the dock pulls back 45 mm, 20 mm clear of the tray.", 2.8,
+            f"pressure), the tray's UPS takes the load, and the dock pulls back {STROKE:.0f} mm, clear of the tray.", 2.8,
             release, hold=1.2, labels=[("UPS takes over", (UPS_AT[0], yc + UPS_AT[1], zs + UPS["h"]), (0.84, 0.55)),
-                                       ("dock pulled back 45 mm", (1290, wy, wz), (0.84, 0.30))])
+                                       (f"dock pulled back {STROKE:.0f} mm", (1290, wy, wz), (0.84, 0.30))])
     hide(sc, cut, 1.0)
     L.where[k] = None
     lines_("in transit, unplugged", f"carrying the tray, about {load_w:.0f} W", "pulled back", "pulled back, waiting")
@@ -1414,83 +1440,6 @@ def movie_cabling(data, idata):
     return sc.save()
 
 
-# ----------------------------------------------------------------------------------------------- the tether
-TETHER_X = V.TRAY_W / 2 + 15.0          # the line runs in the 30 mm between the tray's side (1225) and the rails (1255)
-TETHER_ATTACH = (TETHER_X, V.TRAY_D / 2 - 20, 60.0)     # on the tray's back right corner, tray frame
-
-
-def movie_tether(data, idata):
-    """Tray A on a retractable line from an e-spool on the rear wall, from R2 to the opening."""
-    import pyvista as pv
-    k = "A"
-    slot = HOME[k]
-    sc, L, _ = build_vlm("vlm_tether", data, idata, "Vertical cloud lab: a tray on a retractable line", docks=False,
-                         cams=False)
-    L.skin(1.0)(1.0)
-    hide(sc, ("skin_R",))
-    M = mats()
-    ys, zs = V.SLOTS[slot]
-    spool = np.array([TETHER_X, V.UNIT_D / 2 - 60, zs + TETHER_ATTACH[2]])
-    drum = pv.Cylinder(center=(TETHER_X + 10, spool[1] + 20, spool[2] + 120), direction=(1, 0, 0), radius=150,
-                       height=70).triangulate()
-    sc.add("tether/spool", drum, M["svc_chain"][:3], "tether", specular=0.4)
-
-    def attach():
-        y, z = L.tray[k]
-        return np.array([TETHER_ATTACH[0], y + TETHER_ATTACH[1], z + TETHER_ATTACH[2]])
-
-    sc.add("tether/line", _tube([spool, attach()], 9), M["svc_power"][:3], "tether")
-    state = {"bad": False}
-
-    def redraw():
-        a = attach()
-        sc.set_mesh("tether/line", _tube([spool, a], 9))
-        sc.color["tether/line"] = (0.9, 0.1, 0.1) if state["bad"] else M["svc_power"][:3]
-        pay = float(np.linalg.norm(a - spool))
-        L.svc_lines = [(f"Tray {k}", "on its line: mains, the whole way"), ("Payout", f"{pay / 1000:.2f} m"),
-                       ("Extractor", state.get("ext", "free"))]
-        L.gauges()
-
-    def wrap(f):
-        def up(u):
-            f(u)
-            redraw()
-        return up
-    redraw()
-    cam = [(4300, 900, 2300), (700, 0, 1050), (0, 0, 1)]
-    n = 5
-    sc.step(f"1/{n}", "The other way: no plug at all. Tray A's line runs from an e-spool on the rear wall (igus: power, "
-            "data and air on one spool, no slip ring, up to 15 m), along the 30 mm between the tray's side and the "
-            "extractor's guide rails.", 3.2, None, hold=1.4, cam_to=cam,
-            labels=[("e-spool (marker, not to size)", tuple(spool + (0, 20, 120)), (0.80, 0.20)),
-                    ("the line", tuple((spool + attach()) / 2), (0.80, 0.40))])
-    sc.step(f"2/{n}", "Out of the slot: the line pays out as the extractor pulls the tray.", 0.6 + abs(L.lift_z - zs)
-            / 1333, wrap(L.lift_to(zs)), hold=0.1)
-    sc.step(f"2/{n}", "Out of the slot: the line pays out as the extractor pulls the tray.", 2.2, wrap(L.slide(k, 0.0)),
-            hold=0.2)
-    yt, zt = V.SLOTS["open"]
-    pay = tether_payout()["rows"]
-    cap3 = (f"Down {abs(zs - zt):.0f} mm and through the shutter to the opening: {pay[k]['payout_mm'] / 1000:.1f} m of "
-            "line from R2. The shutter needs a notch at its right-hand end for it.")
-    sc.step(f"3/{n}", cap3, max(0.6, abs(zs - zt) / 1333), wrap(L.lift_to(zt, carry=k)),
-            hold=0.1)
-    sc.step(f"3/{n}", cap3, 0.6, wrap(L.shut(1.0)), hold=0.0)
-    sc.step(f"3/{n}", cap3, 2.2, wrap(L.slide(k, yt)), hold=0.0)
-    sc.step(f"3/{n}", cap3, 0.6, wrap(L.shut(0.0)), hold=1.0)
-    L.where[k] = "open"
-    state["bad"], state["ext"] = True, "blocked: the line spans the shaft"
-    redraw()
-    sc.step(f"4/{n}", "The catch: while tray A is out, its line spans the shaft at the extractor's height, so the "
-            "extractor can't move to fetch any other tray until tray A goes home.", 2.4, None, hold=2.0,
-            cam_to=[(3600, -2600, 2600), (600, 0, 1000), (0, 0, 1)],
-            labels=[("the line across the shaft", tuple((spool + attach()) / 2), (0.80, 0.30))])
-    sc.step(f"5/{n}", "So a tether suits one tray, stored at the opening's own height so it never moves up or down. "
-            f"From the top slot here (R4, 2700 mm) it would need {pay['E']['payout_mm'] / 1000:.1f} m and cross the "
-            "shaft on the slant.", 3.0,
-            None, hold=2.6, still=True)
-    return sc.save()
-
-
 # ----------------------------------------------------------------------------------------------- the numbers
 def heat_budget() -> dict:
     """Per tray: the load from the instruments' ratings, the cameras and the UPS's loss; for the VLM: what that puts
@@ -1554,26 +1503,6 @@ def heat_budget() -> dict:
             "a quick-connect cord).",
         ],
     )
-
-
-def tether_payout() -> dict:
-    """How much line a tray on a tether needs: from a spool on the wall behind its slot (the rear wall for a rear slot,
-    the front wall for a front one), at the slot's height, to the tray's back right corner, wherever the tray goes on its
-    way to the opening (in the slot, on the extractor at the slot's height and at the opening's, presented)."""
-    rows = {}
-    for k, slot in HOME.items():
-        ys, zs = V.SLOTS[slot]
-        sy = math.copysign(V.UNIT_D / 2 - 60, ys)
-        spool = np.array([sy, zs + TETHER_ATTACH[2]])
-        pts = [(ys, zs), (0.0, zs), (0.0, V.Z_OPEN), (V.Y_OPEN, V.Z_OPEN)]
-        d = [float(np.linalg.norm(np.array([y + TETHER_ATTACH[1], z + TETHER_ATTACH[2]]) - spool)) for y, z in pts]
-        rows[k] = dict(slot=slot, column="rear" if ys > 0 else "front", vertical_mm=round(abs(zs - V.Z_OPEN)),
-                       payout_mm=round(max(d)))
-    return dict(rows=rows, note="The line has to stay in the 30 mm between the tray's side and the extractor's guide "
-                                "rails, the shutter needs a notch for it, and while the tray is out the line spans the "
-                                "shaft, so the extractor can't fetch any other tray. It suits one tray stored at the "
-                                "opening's own height.",
-                source=SOURCES["e_spool"])
 
 
 def _rig_points(post_h=POST_H, foot=True) -> dict:
@@ -1647,6 +1576,71 @@ def bay_view(step=25.0) -> dict:
     return out
 
 
+FOV_HALF = {"wide": (51.0, 33.5), "hq": (11.1, 8.35)}      # half-angles, degrees (FOV in SOURCES; hq is 22.2 x 16.7)
+
+
+def frustum_rays(f, r, u, half, n=(41, 27)) -> np.ndarray:
+    """Unit directions over a rectilinear picture of half-angles `half` (degrees) about forward f, right r and up u."""
+    a = math.tan(math.radians(half[0])) * np.linspace(-1.0, 1.0, n[0])
+    b = math.tan(math.radians(half[1])) * np.linspace(-1.0, 1.0, n[1])
+    A, B = np.meshgrid(a, b)
+    d = f[None, :] + A.reshape(-1, 1) * r[None, :] + B.reshape(-1, 1) * u[None, :]
+    return d / np.linalg.norm(d, axis=1)[:, None]
+
+
+def out_of_bay(c, d) -> np.ndarray:
+    """Rays from c along d (world, the tray presented): True where a ray leaves through the opening into the room
+    before it meets the presented tray's floor. Nothing else counts as cover: the instruments have windows, so a camera
+    that would see the room through one does."""
+    y_face = -V.UNIT_D / 2 - V.SKIN
+    zf = V.Z_OPEN + V.T_FLOOR
+    with np.errstate(divide="ignore", invalid="ignore"):
+        tf = np.where(d[:, 2] < -1e-9, (zf - c[2]) / d[:, 2], np.inf)
+        ty = np.where(d[:, 1] < -1e-9, (y_face - c[1]) / d[:, 1], np.inf)
+    pf = c + d * np.where(np.isfinite(tf), tf, 0.0)[:, None]
+    on_floor = np.isfinite(tf) & (np.abs(pf[:, 0]) <= V.TRAY_W / 2) & (np.abs(pf[:, 1] - V.Y_OPEN) <= V.TRAY_D / 2)
+    py = c + d * np.where(np.isfinite(ty), ty, 0.0)[:, None]
+    through = np.isfinite(ty) & (np.abs(py[:, 0]) <= V.OPEN_W / 2) & (py[:, 2] >= V.Z_SILL) & \
+        (py[:, 2] <= V.Z_OPEN_TOP)
+    return through & ~(on_floor & (tf < ty))
+
+
+def unit_view(x, y, ax, ay, az, post=None, h=None) -> dict:
+    """What a tray unit at (x, y) aimed at (ax, ay, az) (tray frame) sees with its tray presented: the share of the
+    Wide's and the HQ's picture that looks out through the opening into the room (out_of_bay), and how far the HQ is
+    from what it is aimed at."""
+    from scene import T
+    h = CAM_H if h is None else h
+    post, pan, tilt = rig_pose(x, y, (ax, ay, az), h, post=post)
+    opt = camera_optics(T((x, V.Y_OPEN + y, V.Z_OPEN + V.T_FLOOR)), post, h, pan, tilt)
+    out = {}
+    for k, (c, f, r, u) in opt.items():
+        out[f"{k}_sees_room"] = round(float(out_of_bay(c, frustum_rays(f, r, u, FOV_HALF[k])).mean()), 3)
+    c = opt["hq"][0]
+    out["hq_to_aim_mm"] = round(float(np.linalg.norm(c - np.array([ax, V.Y_OPEN + ay, V.Z_OPEN + az]))))
+    out.update(post_yaw_deg=round(post), pan_deg=round(pan, 1), tilt_down_deg=round(tilt, 1))
+    return out
+
+
+def camera_views() -> dict:
+    """Every tray unit, with its tray presented: the share of the Wide's and the HQ's picture that looks out through
+    the opening into the room, now and where round 5 stood it (TRAY_CAMS_ROUND5)."""
+    out = {}
+    for k, layout in TRAY_CAMS.items():
+        for i, (x, y, ax, ay, az, *fixed) in enumerate(layout):
+            v = unit_view(x, y, ax, ay, az, post=fixed[0] if fixed else None)
+            old = TRAY_CAMS_ROUND5.get(k, [])
+            if i < len(old):
+                ox, oy, oax, oay, oaz, *of = old[i]
+                o = unit_view(ox, oy, oax, oay, oaz, post=of[0] if of else None)
+                v["round5"] = dict(post_xy=[ox, oy], wide_sees_room=o["wide_sees_room"],
+                                   hq_sees_room=o["hq_sees_room"])
+            v["post_xy"] = [x, y]
+            v["aim"] = [ax, ay, az]
+            out[f"{k}{i}"] = v
+    return out
+
+
 def _seg_dist(P, a, b):
     """Distance of each point in P (n, 3) to the segment a-b."""
     ab = b - a
@@ -1714,6 +1708,17 @@ def tray_instrument_boxes() -> dict:
                 out.setdefault(k, []).append((key, (x - w / 2, x + w / 2, y - d / 2, y + d / 2, V.T_FLOOR,
                                                     V.T_FLOOR + h)))
     out.setdefault("B", []).append(("carousel", (-50.0, 550.0, -551.0, -81.0, V.T_FLOOR, V.T_FLOOR + 560.0)))
+    if "rack" in dict((key, 0) for key, *_ in A.LOADS.get("B", [])) and not any(n == "rack" for n, _ in out["B"]):
+        import props
+        _, rx, ry = next(item for item in A.LOADS["B"] if item[0] == "rack")
+        b = props.vial_rack()[0].bounds                     # the printed vial rack the arm takes the vial from
+        out["B"].append(("rack", (rx + b[0], rx + b[1], ry + b[2], ry + b[3], V.T_FLOOR, V.T_FLOOR + b[5])))
+    for k in HOME:                       # every tray's UPS, and its service plate with the bracket and the lines
+        x, y = UPS_AT
+        out.setdefault(k, []).append(("UPS", (x - UPS["d"] / 2, x + UPS["d"] / 2, y - UPS["w"] / 2, y + UPS["w"] / 2,
+                                              V.T_FLOOR, V.T_FLOOR + UPS["h"])))
+        out[k].append(("service plate", (X_FACE - PLATE_T - 60 - 120 - 18 * 5 - 4, SIDE, PLATE_Y - PLATE_L / 2,
+                                         PLATE_Y + PLATE_L / 2, V.T_FLOOR, PLATE_Z0 + PLATE_H + 30)))
     return out
 
 
@@ -1766,18 +1771,256 @@ def camera_clearances() -> dict:
                           gap_to_yoke_base_at_max_tilt_mm=r["gap_to_base"], tilt_max_deg=TILT_MAX))
 
 
+# ----------------------------------------------------------------------------------------------- docks and the lift
+def _bbox(shape) -> np.ndarray:
+    b = _shape(shape).BoundingBox()
+    return np.array([b.xmin, b.xmax, b.ymin, b.ymax, b.zmin, b.zmax])
+
+
+def _bboxes(name: str, shape) -> dict:
+    """{name (#i): box} for each solid of a shape: the two carriages, say, are two boxes, not one across the shaft."""
+    solids = _shape(shape).Solids()
+    if len(solids) <= 1:
+        return {name: _bbox(shape)}
+    return {f"{name} #{i + 1}": _bbox(s) for i, s in enumerate(solids)}
+
+
+def _shift(bb, d) -> np.ndarray:
+    return np.asarray(bb, float) + np.array([d[0], d[0], d[1], d[1], d[2], d[2]], float)
+
+
+def _gap(a, b) -> float:
+    """Distance between two boxes [x0, x1, y0, y1, z0, z1]; 0 where they touch or overlap."""
+    d = np.maximum(0.0, np.maximum(np.asarray(a)[0::2] - np.asarray(b)[1::2], np.asarray(b)[0::2] - np.asarray(a)[1::2]))
+    return float(np.linalg.norm(d))
+
+
+def _nearest(A: dict, B: dict) -> tuple:
+    """(gap, name in A, name in B) of the closest pair of boxes."""
+    return min((_gap(a, b), na, nb) for na, a in A.items() for nb, b in B.items())
+
+
+def tray_boxes(k: str) -> dict:
+    """{part: box} of tray k with everything on it, tray frame: the pan, the plate, its bracket and lines, the UPS,
+    each instrument's box and each camera unit's pieces."""
+    from scene import T
+    out = {"tray pan": np.array([-V.TRAY_W / 2, V.TRAY_W / 2, -V.TRAY_D / 2, V.TRAY_D / 2, 0.0, V.T_FLOOR + V.T_RIM])}
+    for parts in (plate_parts(), tray_lines(), ups_parts()):
+        for n, (s, _) in parts.items():
+            out.update(_bboxes(n, s))
+    for key, bb in tray_instrument_boxes().get(k, []):
+        if key not in ("UPS", "service plate"):
+            out[key] = np.array(bb, float)
+    for i, (x, y, ax, ay, az, *fixed) in enumerate(TRAY_CAMS.get(k, [])):
+        post, pan, tilt = rig_pose(x, y, (ax, ay, az), post=fixed[0] if fixed else None)
+        for piece, P in _world_points(T((x, y, V.T_FLOOR)), post, CAM_H, pan, tilt).items():
+            out[f"camera {k}{i} {piece}"] = np.array([P[:, 0].min(), P[:, 0].max(), P[:, 1].min(), P[:, 1].max(),
+                                                      P[:, 2].min(), P[:, 2].max()])
+    return out
+
+
+def dock_boxes(pos: str, u: float) -> dict:
+    """{part: box} of the dock at a slot or the bay, world; u = 0 engaged, 1 pulled back."""
+    yc, zs = V.SLOTS[pos]
+    out = {}
+    for head in (False, True):
+        for n, (s, _) in dock_parts(head=head).items():
+            out.update({m: _shift(b, (STROKE * u if head else 0.0, yc, zs)) for m, b in _bboxes(n, s).items()})
+    return out
+
+
+def dock_clearance(dz: float = 10.0) -> dict:
+    """Are the docks in the lift's way? Every part is taken as its bounding box, so each gap is a lower bound.
+    * The extractor (platform, carriages, tray-pull unit), empty and carrying each tray with all it holds, travels the
+      shaft from 300 mm under the lowest slot to 300 mm over the highest, past every dock (each slot a tray uses, and
+      the bay's), engaged and pulled back.
+    * Each tray slides out of its slot onto the extractor, and from the extractor into the bay, past that place's dock,
+      pulled back.
+    * The plate's inserts against the extractor's carriages, with the tray on the extractor, as built and as it was
+      with the plate's face flush with the tray's side."""
+    ext = {}
+    for n, (s, _, _) in V.extractor().items():
+        ext.update(_bboxes(n, s))
+    places = sorted({*HOME.values(), "open"}, key=lambda p: (V.SLOTS[p][0], V.SLOTS[p][1]))
+    docks = {(p, u): dock_boxes(p, u) for p in places for u in (0.0, 1.0)}
+    zs_all = [V.SLOTS[p][1] for p in places]
+    zz = np.arange(min(zs_all) - 300.0, max(zs_all) + 300.0 + 1, dz)
+    trays = {k: tray_boxes(k) for k in HOME}
+    lift = {}
+    for load in ["empty"] + list(HOME):
+        rows = {}
+        for (p, u), D in docks.items():
+            best = (1e9, None, None, None)
+            for z in zz:
+                moving = {f"extractor: {n}": _shift(b, (0, 0, z)) for n, b in ext.items()}
+                if load != "empty":
+                    moving.update({f"tray {load}: {n}": _shift(b, (0, 0, z)) for n, b in trays[load].items()})
+                g, a, b = _nearest(moving, D)
+                if g < best[0]:
+                    best = (g, a, b, z)
+            rows[f"{p} {'engaged' if u == 0 else 'pulled back'}"] = dict(gap_mm=round(best[0], 1), moving=best[1],
+                                                                         dock=best[2], lift_z=float(best[3]))
+        lift[load] = rows
+    slide = {}
+    moves = [(k, HOME[k], V.SLOTS[HOME[k]][0], 0.0, V.SLOTS[HOME[k]][1]) for k in HOME] + \
+            [(k, "open", 0.0, V.Y_OPEN, V.Z_OPEN) for k in HOME]
+    for k, p, y0, y1, z in moves:
+        best = (1e9, None, None)
+        for y in np.linspace(y0, y1, 121):
+            moving = {n: _shift(b, (0, y, z)) for n, b in trays[k].items()}
+            g, a, b = _nearest(moving, docks[(p, 1.0)])
+            if g < best[0]:
+                best = (g, a, b)
+        slide[f"tray {k} {'out of ' + p if p != 'open' else 'into the bay'}"] = dict(
+            gap_mm=round(best[0], 1), tray_part=best[1], dock_part=best[2])
+    plate = {n: b for n, b in trays["A"].items() if n.startswith("plate ")}
+    car = {n: b for n, b in ext.items() if n.startswith("extractor carriages")}
+    now = _nearest(plate, car)
+    flush = _nearest({n: _shift(b, (SIDE - X_FACE, 0, 0)) for n, b in plate.items()}, car)
+    shutter = np.array([-V.OPEN_W / 2, V.OPEN_W / 2, V.Y_SHUTTER - 6, V.Y_SHUTTER + 6, V.Z_OPEN - 10,
+                        V.Z_OPEN_TOP + 40 + (V.Z_OPEN_TOP - V.Z_SILL + 10)])
+    shut = min(_nearest({"shutter": shutter}, docks[("open", u)]) for u in (0.0, 1.0))
+    lift_min = min((r["gap_mm"], load, name) for load, rows in lift.items() for name, r in rows.items())
+    slide_min = min((r["gap_mm"], name) for name, r in slide.items())
+    return dict(
+        method="every part as its bounding box (a lower bound on each gap); the extractor at every height from "
+               f"{zz[0]:.0f} to {zz[-1]:.0f} mm in {dz:.0f} mm steps; each slide in 121 steps",
+        lift=lift, slide=slide,
+        plate_inserts_to_carriages_mm=dict(now=round(now[0], 1), with_the_face_flush=round(flush[0], 1)),
+        bay_dock_to_shutter_mm=round(shut[0], 1),
+        smallest=dict(lift_mm=lift_min[0], lift_case=f"{lift_min[1]}, {lift_min[2]}",
+                      slide_mm=slide_min[0], slide_case=slide_min[1]),
+        walls="each dock's head passes through a window in its side wall (a column's perforated wall, or the bay's "
+              "slatted one); the window takes out the tray supports 25-100 mm over the slot on that side, which only "
+              "a tray stored in that slot would use",
+    )
+
+
+def draw_clearance(res: dict | None = None, path=None):
+    """out/dock_lift_clearance.png: the right-hand side in plan at a front slot's height, with the gaps, and every
+    case's smallest gap."""
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    from matplotlib.patches import Rectangle
+    res = res or dock_clearance()
+    path = path or OUT / "dock_lift_clearance.png"
+    ink, muted, grid = "#1f2328", "#59636e", "#d0d7de"
+    c_lift, c_dock, c_tray, c_plate = "#c0392b", "#57606a", "#8c959f", "#24292f"
+    fig = plt.figure(figsize=(13.0, 6.6), dpi=130)
+    ax = fig.add_axes([0.04, 0.10, 0.50, 0.80])
+    yf, yr = V.Y_FRONT, V.Y_REAR
+
+    def rect(bb, color, alpha=1.0, lw=0.0, fill=True, z=1, ls="-"):
+        ax.add_patch(Rectangle((bb[0], bb[2]), bb[1] - bb[0], bb[3] - bb[2], facecolor=color if fill else "none",
+                               edgecolor=color, alpha=alpha, lw=lw, zorder=z, ls=ls))
+    # columns' side walls, the shaft's guide rails, the extractor's carriage and platform edge
+    wall_x = V.TRAY_W / 2 + 45
+    for yc in (yf, yr):
+        rect([wall_x, wall_x + 12, yc - V.TRAY_D / 2 - 30, yc + V.TRAY_D / 2 + 30], "#afb8c1", 0.9)
+    ext = {}
+    for n, (s, _, _) in V.extractor().items():
+        ext.update(_bboxes(n, s))
+    rect(ext["extractor platform"], c_lift, 0.25)
+    for n, b in ext.items():
+        if n.startswith("extractor carriages"):
+            rect(b, c_lift, 0.9, z=3)
+    for sy in (-1, 1):
+        x = V.UNIT_W / 2 - 115
+        y = sy * (V.TRAY_D / 2 + 38)
+        rect([x - 20, x + 20, y - 15, y + 15], "#6e7781", 1.0, z=4)
+    # a tray on the extractor, and the trays in a front and a rear slot, with their plates
+    plate = {n: _bbox(s) for n, (s, _) in plate_parts().items()}
+    for yc, ls in ((0.0, "--"), (yf, "-"), (yr, "-")):
+        rect([-V.TRAY_W / 2, V.TRAY_W / 2, yc - V.TRAY_D / 2, yc + V.TRAY_D / 2], c_tray, 1.0, lw=1.2, fill=False,
+             z=2, ls=ls)
+        for n, b in plate.items():
+            rect(_shift(b, (0, yc, 0)), c_plate if n in ("service plate", "plate bracket") else "#e36209", 1.0, z=5)
+    for p, u in (("F1", 1.0), ("R2", 0.0)):
+        for n, b in dock_boxes(p, u).items():
+            if n.startswith("hose"):
+                continue
+            rect(b, c_dock, 0.55 if n == "dock housing" else 1.0, z=4)
+    ax.set_xlim(820, 1420)
+    ax.set_ylim(-1500, 1500)
+    ax.set_aspect("auto")
+    ax.set_xlabel("x, mm (right-hand side of the machine)", color=muted)
+    ax.set_ylabel("y, mm (front to back)", color=muted)
+    ax.tick_params(colors=muted)
+    for s in ax.spines.values():
+        s.set_color(grid)
+    ax.grid(color=grid, lw=0.5)
+    lm = res["lift"]["empty"]
+    g_front = min(r["gap_mm"] for n, r in lm.items() if n.startswith(("F", "open")))
+    g_rear = min(r["gap_mm"] for n, r in lm.items() if n.startswith("R"))
+    car = max((b for n, b in ext.items() if n.startswith("extractor carriages")), key=lambda b: b[0])
+    fd = dock_boxes("F1", 1.0)
+    y_dock = max(b[3] for n, b in fd.items() if not n.startswith("hose"))
+    ax.annotate("", xy=(1290, car[2]), xytext=(1290, y_dock), arrowprops=dict(arrowstyle="<->", color=ink, lw=1.2))
+    ax.text(1080, (car[2] + y_dock) / 2 - 20, f"{g_front:.0f} mm: the extractor to\nthe front-column and bay docks",
+            color=ink, fontsize=8.5, va="center", ha="center",
+            bbox=dict(boxstyle="round,pad=0.25", fc="white", ec="none", alpha=0.85))
+    rd = dock_boxes("R2", 0.0)
+    y_rd = min(b[2] for n, b in rd.items() if not n.startswith("hose"))
+    ax.annotate("", xy=(1290, car[3]), xytext=(1290, y_rd), arrowprops=dict(arrowstyle="<->", color=ink, lw=1.2))
+    ax.text(1300, (car[3] + y_rd) / 2, f"{g_rear:.0f} mm: to the\nrear-column docks", color=ink, fontsize=8.5,
+            va="center")
+    sl = min(r["gap_mm"] for r in res["slide"].values())
+    pc = res["plate_inserts_to_carriages_mm"]
+    ax.text(840, yf - 300, f"tray in F1 (the bay's dock is the same, lower):\nits dock pulled back, the tray "
+                           f"slides past\nthe pins' tips {sl:.0f} mm clear", color=ink, fontsize=8.5)
+    ax.text(840, 40, f"tray on the extractor (dashed): the plate's\ninserts {pc['now']:.1f} mm from the carriage\n"
+                     f"(it was {pc['with_the_face_flush']:.1f} mm with the face flush)", color=ink, fontsize=8.5)
+    ax.text(840, yr - 380, "tray in R2, docked", color=ink, fontsize=8.5)
+    ax.set_title("Plan of the right-hand side at a slot's height (x stretched): the extractor (red) rides the shaft,\n"
+                 "the docks (grey) sit in the columns' side walls; plates dark, their inserts orange",
+                 fontsize=9.5, color=ink, loc="left")
+    # each case's smallest gap
+    bx = fig.add_axes([0.70, 0.12, 0.27, 0.74])
+    lift_f = min(r["gap_mm"] for rr in res["lift"].values() for n, r in rr.items() if n.startswith(("F", "open")))
+    lift_r = min(r["gap_mm"] for rr in res["lift"].values() for n, r in rr.items() if n.startswith("R"))
+    rows = [("lift past the rear-column docks", lift_r, False),
+            ("lift past the front-column\nand bay docks", lift_f, False),
+            ("bay dock to the shutter", res["bay_dock_to_shutter_mm"], False),
+            ("a tray past its own dock,\npulled back (slot or bay)", sl, False),
+            ("plate inserts to the\nextractor's carriages", pc["now"], False),
+            ("the same, face flush (before)", pc["with_the_face_flush"], True)][::-1]
+    vals = [r[1] for r in rows]
+    bx.barh(range(len(rows)), vals, color=["#9fb7dc" if r[2] else "#3b6fb6" for r in rows], height=0.6)
+    for i, v in enumerate(vals):
+        bx.text(v + 8, i, f"{v:.0f} mm" if v >= 10 else f"{v:.1f} mm", va="center", fontsize=8.5, color=ink)
+    bx.set_yticks(range(len(rows)), [r[0] for r in rows], fontsize=8.5, color=ink)
+    bx.set_xlabel("smallest gap, mm", color=muted)
+    bx.tick_params(axis="x", colors=muted)
+    for sp in ("top", "right"):
+        bx.spines[sp].set_visible(False)
+    for sp in ("left", "bottom"):
+        bx.spines[sp].set_color(grid)
+    bx.set_xlim(0, max(vals) * 1.2)
+    bx.set_title("Smallest gap in each case", fontsize=10, color=ink, loc="left")
+    fig.text(0.04, 0.012, "Every part as its bounding box, so each gap is a lower bound. The extractor empty and carrying "
+                          "each of trays A-F with its instruments, UPS and cameras,\nfrom 300 mm under the lowest slot "
+                          "to 300 mm over the highest, docks engaged and pulled back. services.py dock_clearance().",
+             fontsize=8, color=muted)
+    OUT.mkdir(exist_ok=True)
+    fig.savefig(path, dpi=130)
+    plt.close(fig)
+    return path
+
+
 def write_json():
     OUT.mkdir(exist_ok=True)
     services = dict(coupling=dict(
         design="one plate per tray at its back right corner, facing out through the right-hand side; an actuated "
-               "dock in the side wall of each slot a tray uses and of the bay; stroke 45 mm across the tray's travel",
+               f"dock in the side wall of each slot a tray uses and of the bay; stroke {STROKE:.0f} mm across the "
+               "tray's travel; the plate's face 6 mm inside the tray's side",
         plate_mm=dict(along_tray=PLATE_L, height=PLATE_H, centre_from_back=V.TRAY_D / 2 - PLATE_Y),
         media=[dict(key=k, what=lab_, coupling=c) for k, lab_, _, c in MEDIA],
         why_not_the_back_edge="in a front-column slot and at the opening the back edge faces the shaft; a dock there "
                               "would sit in the 106-146 mm between the tray and the extractor's platform, in the path "
                               "of every tray it pulls, and at the opening the shutter is 35 mm behind the tray",
         sequence=["shut and vent air, N2 and water (CombiTac: no mating or parting under pressure)",
-                  "UPS takes the load", "dock pulls back 45 mm", "extractor moves the tray",
+                  "UPS takes the load", f"dock pulls back {STROKE:.0f} mm", "extractor moves the tray",
                   "bay dock pushes in, pins first", "contacts mate, supplies open, back on mains"],
         sources={k: SOURCES[k] for k in ("kardex_tray_power", "combitac_align4", "combitac_power", "combitac_data",
                                          "combitac_air", "combitac_fluid", "odu_dock", "harting_dock", "cpc_everis")}),
@@ -1795,8 +2038,14 @@ def write_json():
                      fov=dict(wide="102 x 67 deg (Camera Module 3 Wide)",
                               hq_16mm="22.2 x 16.7 deg: Raspberry Pi's figure for its 16 mm C-mount lens on the HQ "
                                       "Camera (robot-arms lenses.py)"),
-                     bay_view=bay_view()),
-        heat=heat_budget(), tether=tether_payout())
+                     bay_view=bay_view(),
+                     views=dict(method="the tray presented, the share of each camera's rectilinear picture (Wide 102 x "
+                                       "67 deg, HQ with the 16 mm lens 22.2 x 16.7 deg) whose rays leave through the "
+                                       "opening into the room before they meet the tray's floor; nothing else counts "
+                                       "as cover",
+                                units=camera_views())),
+        docks_and_lift=dock_clearance(),
+        heat=heat_budget())
     (OUT / "services.json").write_text(json.dumps(services, indent=1) + "\n")
     cab = dict(route=dict(ladder_z_mm=LADDER_Z, ladder_y_mm=LADDER_Y, width_mm=LADDER_W, path_xy_mm=LADDER_PATH,
                           note="placements of the ladder, panel, switch and controls are ours"),
@@ -1810,7 +2059,7 @@ def _main():
     args = sys.argv[1:] or ["services"]
     data = idata = None
     for word in args:
-        if word in ("services", "cabling", "tether", "cameras") and data is None:
+        if word in ("services", "hookups", "baycam", "cabling", "cameras") and data is None:
             import lab
             import tour
             data, idata = lab.meshes(), tour.load()
@@ -1822,16 +2071,51 @@ def _main():
             _gif("vlm_cabling")
         elif word == "cameras":
             print(still_cameras(data, idata), flush=True)
-        elif word == "tether":
-            print(movie_tether(data, idata), flush=True)
-            _gif("vlm_tether")
+        elif word == "hookups":
+            print(movie_hookups(data, idata), flush=True)
+            _gif("vlm_hookups")
+        elif word == "baycam":
+            print(movie_bay_camera(data, idata), flush=True)
+            _gif("bay_camera")
+        elif word == "clearance":
+            res = dock_clearance()
+            (OUT / "dock_lift_clearance.json").write_text(json.dumps(res, indent=1) + "\n")
+            print(json.dumps(res["smallest"]), res["plate_inserts_to_carriages_mm"], flush=True)
+            print(draw_clearance(res), flush=True)
+        elif word == "join":
+            print(join(), flush=True)
         elif word == "json":
             s, c = write_json()
             for k, t in s["heat"]["trays"].items():
                 print(k, t["slot"], t["total_w"], "W", "UPS ok" if t["ups_ok"] else "over the UPS")
             for name, r in s["heat"]["vlm"]["scenarios"].items():
                 print(name, r)
-            print(json.dumps(s["tether"]["rows"]))
+
+
+JOIN = ["vlm_services", "vlm_hookups", "bay_camera", "vlm_cabling"]     # out/mp4/vlm_services_all.mp4, in order
+
+
+def join(parts=JOIN, name="vlm_services_all") -> str:
+    """The services video: the clips' MP4s end to end. Each is brought to 1280 x 720 at 15 fps first (a clip
+    rendered at VIZ3D_FPS=10 joins the others), then the concat demuxer copies them."""
+    import subprocess
+    import tempfile
+    mp4 = OUT / "mp4"
+    with tempfile.TemporaryDirectory() as tmp:
+        lst = Path(tmp) / "concat.txt"
+        lines = []
+        for i, part in enumerate(parts):
+            src = mp4 / f"{part}.mp4"
+            dst = Path(tmp) / f"{i}.mp4"
+            subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(src), "-vf",
+                            "scale=1280:720:flags=lanczos,fps=15", "-an", "-c:v", "libx264", "-preset", "medium", "-crf",
+                            "21", "-pix_fmt", "yuv420p", str(dst)], check=True)
+            lines.append(f"file '{dst}'")
+        lst.write_text("\n".join(lines) + "\n")
+        out = mp4 / f"{name}.mp4"
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", str(lst), "-c", "copy",
+                        "-movflags", "+faststart", str(out)], check=True)
+    return f"{out}: {out.stat().st_size / 1e6:.1f} MB"
 
 
 def _gif(name):
