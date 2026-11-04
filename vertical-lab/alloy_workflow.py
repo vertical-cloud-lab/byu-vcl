@@ -1010,7 +1010,7 @@ def movie():
                                                                (0.34, 0.30))])
     print(f"highest forearm/wrist point {rb.max_z_world:.0f} mm", flush=True)
     info = sc.save()
-    if not PREVIEW:
+    if not PREVIEW and not scene.AUDIT:
         meta_path = OUT / f"{NAME}.json"
         meta = json.loads(meta_path.read_text())
         meta.update(numbers=dict(specimen=M.E8_SUB, plate=M.PLATE, cut_area_mm2=round(area), peak_kN=round(peak, 1),
