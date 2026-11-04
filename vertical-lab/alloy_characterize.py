@@ -186,11 +186,11 @@ HOLDER = dict(d=150.0, t=12.0, r=52.0, tab_w=24.0, tab_l=55.0, below=13.0, above
 POCKET = 90.0                         # our coupon's pocket in the 6-position holder (deg, holder frame)
 MOUNT_H = HOLDER["below"] + HOLDER["t"] + HOLDER["above"]      # 25 mm: 13 proud of the face side, flush at the back
 TCP_OUT = 5.0                         # the grasp point 5 mm out from the polished face: the pads hold its top 13 mm
-REST = dict(d=164.0, ledge=20.0, post=190.0)
-CADDY = dict(w=110.0, d=64.0, h=22.0, post=200.0, mount_bore=8.0, vial_bore=12.0)
+REST = dict(d=160.0, h=20.0, ledge=16.0)             # the holder's rest: a block 20 mm tall, the rim on a ledge 16 up
+CADDY = dict(w=124.0, d=56.0, h=P.DECK_H, mount_bore=10.0, vial_bore=P.DECK_DEPTH)
 CUP = dict(d=44.0, h=18.0, bore=8.0, dy=-30.0)  # the SEM's mount cup on the stage, 30 mm ahead of its socket, so the
                                                  # wrist clears the SEM's front with the door out
-ARM_CADDY = (255.0, -165.0)           # the caddy's post on the MiR's cabinet (MiR frame), behind the arm on the right
+ARM_CADDY = (40.0, -180.0)            # the caddy on the MiR's cabinet (MiR frame), behind the arm, clear of the e-stop
 ARM_REST = (-245.0, -165.0)           # the holder rest's post, behind the arm on the left
 
 
@@ -238,32 +238,37 @@ def mount_parts():
 
 
 def rest_parts():
-    """The holder rest on the MiR: a post, a plate and a ledge ring the holder's rim sits on, the mounts hanging into
-    the recess on either side. Frame: the post's foot on the cabinet top."""
+    """The holder's rest on the MiR: a low block on the cabinet top, like the MiR's other storage (props.pocket_block,
+    no post). The holder's rim sits on a ledge in a 152 mm recess, 4 mm of wall round it; a deeper middle takes the
+    mounts' faces when it lies face down; a notch lets the tab out. Frame: the block's foot on the cabinet top."""
     import cadquery as cq
     p = REST
-    post = cq.Workplane("XY").circle(22).extrude(p["post"])
-    plate = cq.Workplane("XY").circle(p["d"] / 2).extrude(5).translate((0, 0, p["post"]))
-    ring = cq.Workplane("XY").circle(p["d"] / 2).circle(HOLDER["d"] / 2 - 6).extrude(p["ledge"]) \
-        .translate((0, 0, p["post"]))
-    return {"rest": (_cq_mesh(post.union(plate).union(ring)), (0.94, 0.94, 0.92), 0.25)}
+    blk = cq.Workplane("XY").circle(p["d"] / 2).extrude(p["h"])
+    blk = blk.cut(cq.Workplane("XY").circle(HOLDER["d"] / 2 + 1.0).extrude(p["h"]).translate((0, 0, p["ledge"])))
+    blk = blk.cut(cq.Workplane("XY").circle(HOLDER["r"] + MOUNT_D / 2 + 2.0).extrude(p["h"])
+                  .translate((0, 0, P.DECK_FLOOR)))
+    blk = blk.cut(cq.Workplane("XY").box(HOLDER["tab_w"] + 8.0, p["d"], p["h"]).translate(
+        (0, -p["d"] / 2, p["ledge"] + p["h"] / 2)))
+    return {"rest": (_cq_mesh(blk), (0.94, 0.94, 0.92), 0.25)}
 
 
 CADDY_VIAL, CADDY_MOUNT = 32.0, -32.0     # the pockets along the caddy's x, which points away from the arm's base
 
 
 def caddy_parts():
-    """A two-pocket caddy on a post: the mount (in an 8 mm bore) nearer the arm, the powder vial (12 mm) beyond it,
-    where the gripper takes it from outside, pointing back at the arm."""
+    """A low two-pocket block on the cabinet top: the mount (a 10 mm pocket) nearer the arm, the powder vial (26 mm,
+    as props.buffer_holder's) beyond it, where the gripper takes it from outside, pointing back at the arm. 1 mm
+    clearance and a lead-in at each mouth, as on the MiR's other storage."""
     import cadquery as cq
     p = CADDY
-    post = cq.Workplane("XY").circle(16).extrude(p["post"])
-    block = cq.Workplane("XY").box(p["w"], p["d"], p["h"]).translate((0, 0, p["post"] + p["h"] / 2))
-    block = block.cut(cq.Workplane("XY").circle(MOUNT_D / 2 + 0.6).extrude(20)
-                      .translate((CADDY_MOUNT, 0, p["post"] + p["h"] - p["mount_bore"])))
-    block = block.cut(cq.Workplane("XY").circle(P.VIAL_R + 0.8).extrude(20)
-                      .translate((CADDY_VIAL, 0, p["post"] + p["h"] - p["vial_bore"])))
-    return {"caddy": (_cq_mesh(post.union(block)), (0.94, 0.94, 0.92), 0.25)}
+    blk = cq.Workplane("XY").box(p["w"], p["d"], p["h"]).translate((0, 0, p["h"] / 2))
+    for x, r, depth in ((CADDY_MOUNT, MOUNT_D / 2 + P.POCKET_CLEAR, p["mount_bore"]),
+                        (CADDY_VIAL, P.VIAL_R + P.POCKET_CLEAR, p["vial_bore"])):
+        blk = blk.cut(cq.Workplane("XY").circle(r).extrude(depth + 1.0).translate((x, 0, p["h"] - depth)))
+        cone = cq.Solid.makeCone(r, r + P.POCKET_LEAD + 0.5, P.POCKET_LEAD + 0.5,
+                                 pnt=cq.Vector(x, 0, p["h"] - P.POCKET_LEAD), dir=cq.Vector(0, 0, 1))
+        blk = blk.cut(cq.Workplane("XY").add(cone))
+    return {"caddy": (_cq_mesh(blk), (0.94, 0.94, 0.92), 0.25)}
 
 
 def caddy_angle() -> float:
@@ -313,7 +318,7 @@ def add_parts(sc, rigs):
     sc.parent["c_mount"] = "c_holder"
     sc.gmat["c_mount"] = mount_in_holder()
     sc.parent["c_vial"] = "c_caddy"
-    sc.gmat["c_vial"] = T((CADDY_VIAL, 0.0, CADDY["post"] + CADDY["h"] - CADDY["vial_bore"]))
+    sc.gmat["c_vial"] = T((CADDY_VIAL, 0.0, CADDY["h"] - CADDY["vial_bore"]))
 
 
 def rest_dir():
@@ -326,7 +331,7 @@ def rest_matrix(face_up: bool) -> np.ndarray:
     """The holder on its rest (rest frame), its tab towards the arm; face up (the polished faces up) or down."""
     d = rest_dir()
     th = math.degrees(math.atan2(d[0], -d[1]))            # holder -y (the tab) along d
-    M = R((0, 0, 1), th) @ T((0, 0, REST["post"] + REST["ledge"]))
+    M = R((0, 0, 1), th) @ T((0, 0, REST["ledge"]))
     if face_up:
         M = M @ T((0, 0, HOLDER["t"])) @ R((0, 1, 0), 180.0)
     return M
@@ -600,7 +605,7 @@ def movie():
     sc.step(st["lbl"], st["cap"], 1.4, sem.move({"drawer": (0.0, 1.0)}), hold=0.1, cam_to=CAM_SEM,
             labels=[("Hitachi TM4000PlusII", tuple(sw((0, 0, 600))), (0.22, 0.22))])
     cup_top = sc.world("c_cup") @ np.r_[0, 0, CUP["h"] - CUP["bore"] + MOUNT_H + TCP_OUT, 1.0]
-    T_cup = A.down(cup_top[:3], spin=0.0)
+    T_cup = A.down(cup_top[:3], spin=180.0)    # the wrist camera on the side away from the SEM
     go_to(sh(T_cup, (0, 0, 90)), T_cup, secs=1.8)
     lin(T_cup, 0.8)
     grip(OPEN_NEAR)
@@ -632,7 +637,7 @@ def movie():
     status(sc, SEM="vented, door out", Arm="unloading the SEM")
     sc.step(st["lbl"], st["cap"], 1.4, sem_off, hold=0.1)
     sc.inset, sc.clock = None, None
-    T_cup = A.down(face(), spin=0.0)
+    T_cup = A.down(face(), spin=180.0)
     go_to(sh(T_cup, (0, 0, 90)), T_cup, secs=1.6, grip=OPEN_NEAR)
     lin(T_cup, 0.8)
     grip(GRIP_MOUNT)
@@ -654,18 +659,28 @@ def movie():
     sz = NP["feet"] + 70 + NP["stage_z"] - 60
     nw = lambda q: inst_world(sc, nano, q)                        # noqa: E731
     CAM_NANO = [tuple(nw((0, -200, 250)) + (900, -1500, 800)), tuple(nw((60, -60, 230))), (0, 0, 1)]
-    LOAD = -1.0                                                   # the stage out from under the objective, to load
-    st["cap"] = "The iMicro's hood lifts and the stage runs the mount's place out from under the objective. The arm " \
-                "sets the mount on the stage."
+    # the stage's load position: 60 mm out in x and 60 mm forward of the objective. Further in, every IK solution
+    # for a gripper pointing down puts the forearm or the wrist into the cabinet (ARM_AUDIT; /tmp probe of 8 branches x
+    # 4 spins x 7 stage positions)
+    LOAD, NDY = -0.6, -60.0
+    st["cap"] = "The iMicro's hood lifts and its XY stage runs out to a load position, clear of the objective. The " \
+                "arm sets the mount on the stage."
     status(sc, Nanoindenter="hood up, stage to load", Arm="loading the nanoindenter")
     sc.step(st["lbl"], st["cap"], 1.6, nano.move({"lid": (0.0, 1.0), "stage": (0.0, LOAD)}), hold=0.1,
             cam_to=CAM_NANO, labels=[("KLA iMicro nanoindenter", tuple(nw((0, 0, 560))), (0.22, 0.22))])
-    spot = sc.world(f"{nano.prefix}stage") @ np.r_[NP["scope_x"], 0.0, sz + MOUNT_H + TCP_OUT, 1.0]
-    T_n = A.down(spot[:3], spin=90.0)
+    spot = sc.world(f"{nano.prefix}stage") @ np.r_[NP["scope_x"], NDY, sz + MOUNT_H + TCP_OUT, 1.0]
+    T_n = A.down(spot[:3], spin=180.0)   # the fingers along x, the camera to the open front
     go_to(sh(T_n, (0, 0, 100)), T_n, secs=1.8)
     lin(T_n, 0.8)
     grip(OPEN_NEAR)
     rb.release(f"{nano.prefix}stage")
+    m_on = sc.gmat["c_mount"].copy()
+
+    def stage_y(a, b):
+        """The stage's y travel, drawn as the mount's (the model's stage moves in x only)."""
+        def up(u):
+            sc.gmat["c_mount"] = T((0, a + (b - a) * u, 0)) @ m_on
+        return up
     lin(sh(T_n, (0, 0, 100)), 0.7)
     park(1.4)
     status(sc, Arm="parked")
@@ -674,24 +689,24 @@ def movie():
                 "image them."
     status(sc, Nanoindenter="indenting, 25 indents")
     sc.step(st["lbl"], st["cap"], 1.6, RB.both(nano.move({"lid": (1.0, 0.0), "stage": (LOAD, 0.0)}),
-                                               clock("iMicro", 0.0, 2.0)), hold=0.1)
+                                               stage_y(0.0, -NDY), clock("iMicro", 0.0, 2.0)), hold=0.1)
     sc.step(st["lbl"], st["cap"], 3.0, RB.both(nano.move({"stage": (0.0, 1.0), "~lid": (0.0, 1.0)}),
                                                clock("iMicro", 2.0, 40.0)), hold=0.1)
     sc.step(st["lbl"], st["cap"], 1.4, RB.both(nano.move({"stage": (1.0, 0.0)}), clock("iMicro", 40.0, 45.0)),
             hold=0.2)
     st["cap"] = "Hood up, stage out; the mount goes back to the caddy on the MiR."
     status(sc, Nanoindenter="done", Arm="unloading the nanoindenter")
-    sc.step(st["lbl"], st["cap"], 1.4, nano.move({"lid": (0.0, 1.0), "stage": (0.0, LOAD), "~lid": (1.0, 0.0)}),
-            hold=0.1)
+    sc.step(st["lbl"], st["cap"], 1.4, RB.both(nano.move({"lid": (0.0, 1.0), "stage": (0.0, LOAD), "~lid": (1.0, 0.0)}),
+                                               stage_y(-NDY, 0.0)), hold=0.1)
     sc.clock = None
-    T_n = A.down(face(), spin=90.0)
+    T_n = A.down(face(), spin=180.0)
     go_to(sh(T_n, (0, 0, 100)), T_n, secs=1.6, grip=OPEN_NEAR)
     lin(T_n, 0.8)
     grip(GRIP_MOUNT)
     rb.grasp("c_mount")
     lin(sh(T_n, (0, 0, 100)), 0.7)
     caddy_m = sc.world("c_caddy") @ np.r_[CADDY_MOUNT, 0.0,
-                                          CADDY["post"] + CADDY["h"] - CADDY["mount_bore"] + MOUNT_H + TCP_OUT, 1.0]
+                                          CADDY["h"] - CADDY["mount_bore"] + MOUNT_H + TCP_OUT, 1.0]
     T_c = A.down(caddy_m[:3], spin=90.0 - caddy_angle())      # the fingers across the caddy, clear of the vial
     go_to(sh(T_c, (0, 0, 90)), T_c, secs=2.0, cam=CAM_OPEN)
     lin(T_c, 0.7, extra=nano.move({"lid": (1.0, 0.0), "stage": (LOAD, 0.0)}))
@@ -709,7 +724,7 @@ def movie():
     st["cap"] = "Then the powder: the arm takes the vial from the caddy by its side. The Aero S's clear cover lifts " \
                 "off (by hand in Malvern's videos; an actuator is assumed here)."
     status(sc, Arm="taking the vial", Mastersizer="cover off")
-    v_at = sc.world("c_vial")[:3, 3] + (0, 0, 40.0)
+    v_at = sc.world("c_vial")[:3, 3] + (0, 0, 45.0)
     d = -sc.world("c_caddy")[:3, 0]                  # from outside the caddy, pointing back at the arm's base
     d = np.r_[d[:2] / np.linalg.norm(d[:2]), 0.0]
     T_v = A.level(v_at, toward=tuple(d), spin=0.0)
