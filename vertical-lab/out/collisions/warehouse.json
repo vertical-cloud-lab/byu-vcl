@@ -1,0 +1,331 @@
+{
+ "clip": "warehouse",
+ "frames_checked": 1138,
+ "frames_with_collisions": 24,
+ "runs": [
+  {
+   "label": "3/7",
+   "first_frame": 308,
+   "last_frame": 315,
+   "frames": 8,
+   "pairs": [
+    {
+     "arm": "amr2ur",
+     "kind": "arm",
+     "part": "shoulder",
+     "other": "docks"
+    }
+   ]
+  },
+  {
+   "label": "5/7",
+   "first_frame": 672,
+   "last_frame": 673,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "amr1ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "bay"
+    },
+    {
+     "arm": "amr1ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "bay"
+    }
+   ]
+  },
+  {
+   "label": "5/7",
+   "first_frame": 674,
+   "last_frame": 674,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "amr1ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "bay"
+    },
+    {
+     "arm": "amr1ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "bay"
+    },
+    {
+     "arm": "amr1ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "bay"
+    },
+    {
+     "arm": "amr1ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "bay"
+    },
+    {
+     "arm": "amr1ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "bay"
+    }
+   ]
+  },
+  {
+   "label": "5/7",
+   "first_frame": 675,
+   "last_frame": 675,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "amr1ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "bay"
+    },
+    {
+     "arm": "amr1ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "bay"
+    },
+    {
+     "arm": "amr1ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "bay"
+    },
+    {
+     "arm": "amr1ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "bay"
+    },
+    {
+     "arm": "amr1ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "bay"
+    },
+    {
+     "arm": "amr1ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "bay"
+    },
+    {
+     "arm": "amr1ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "bay"
+    }
+   ]
+  },
+  {
+   "label": "5/7",
+   "first_frame": 676,
+   "last_frame": 677,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "amr1ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "bay"
+    },
+    {
+     "arm": "amr1ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "bay"
+    },
+    {
+     "arm": "amr1ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "bay"
+    },
+    {
+     "arm": "amr1ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "bay"
+    },
+    {
+     "arm": "amr1ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "bay"
+    },
+    {
+     "arm": "amr1ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "bay"
+    },
+    {
+     "arm": "amr1ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "bay"
+    },
+    {
+     "arm": "amr1ur",
+     "kind": "gripper",
+     "part": "right_knuckle",
+     "other": "bay"
+    }
+   ]
+  },
+  {
+   "label": "5/7",
+   "first_frame": 678,
+   "last_frame": 678,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "amr1ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "bay"
+    },
+    {
+     "arm": "amr1ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "bay"
+    },
+    {
+     "arm": "amr1ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "bay"
+    },
+    {
+     "arm": "amr1ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "bay"
+    },
+    {
+     "arm": "amr1ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "bay"
+    },
+    {
+     "arm": "amr1ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "bay"
+    },
+    {
+     "arm": "amr1ur",
+     "kind": "gripper",
+     "part": "right_knuckle",
+     "other": "bay"
+    }
+   ]
+  },
+  {
+   "label": "5/7",
+   "first_frame": 679,
+   "last_frame": 679,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "amr1ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "bay"
+    },
+    {
+     "arm": "amr1ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "bay"
+    },
+    {
+     "arm": "amr1ur",
+     "kind": "gripper",
+     "part": "right_knuckle",
+     "other": "bay"
+    }
+   ]
+  },
+  {
+   "label": "5/7",
+   "first_frame": 811,
+   "last_frame": 811,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "amr1ur",
+     "kind": "arm",
+     "part": "shoulder",
+     "other": "docks"
+    }
+   ]
+  },
+  {
+   "label": "5/7",
+   "first_frame": 812,
+   "last_frame": 814,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "amr1ur",
+     "kind": "arm",
+     "part": "base",
+     "other": "docks"
+    },
+    {
+     "arm": "amr1ur",
+     "kind": "arm",
+     "part": "shoulder",
+     "other": "docks"
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 1093,
+   "last_frame": 1093,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "amr1ur",
+     "kind": "arm",
+     "part": "shoulder",
+     "other": "docks"
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 1094,
+   "last_frame": 1096,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "amr1ur",
+     "kind": "arm",
+     "part": "base",
+     "other": "docks"
+    },
+    {
+     "arm": "amr1ur",
+     "kind": "arm",
+     "part": "shoulder",
+     "other": "docks"
+    }
+   ]
+  }
+ ],
+ "rules": "What may touch: the gripper and whatever group it is picking up, holding or putting down, within 4 s of the\n    grasp or release; a held part and the groups it touches when it is taken and when it is let go (where it came\n    from and where it goes).",
+ "method": "FCL 0.7 (python-fcl) mesh-mesh collision on the drawn meshes, arm links decimated to 8000 triangles; every frame of the clip, after its update"
+}

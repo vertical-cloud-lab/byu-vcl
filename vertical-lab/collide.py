@@ -77,13 +77,24 @@ def _bvh(v: np.ndarray, f: np.ndarray) -> fcl.BVHModel:
 class Body:
     """One mesh in its own (group) frame: its FCL object and its local box corners for a quick overlap test."""
 
-    __slots__ = ("name", "group", "obj", "corners", "tf")
+    __slots__ = ("name", "group", "obj", "corners", "tf", "pending")
 
     def __init__(self, name: str, group: str, v: np.ndarray, f: np.ndarray):
         self.name, self.group = name, group
         self.obj = fcl.CollisionObject(_bvh(v, f), fcl.Transform())
-        lo, hi = v.min(0), v.max(0)
-        self.corners = np.array([[x, y, z] for x in (lo[0], hi[0]) for y in (lo[1], hi[1]) for z in (lo[2], hi[2])])
+        self.corners = _corners(v.min(0), v.max(0))
+        self.tf = None
+        self.pending = None            # a re-meshed VTK input whose BVH isn't built yet (built when something is near)
+
+    def ensure(self):
+        """Build the BVH of a re-meshed actor now (it was only marked when its mesh changed)."""
+        if self.pending is None:
+            return
+        t = _tris(self.pending)
+        self.pending = None
+        if t is None:
+            return
+        self.obj = fcl.CollisionObject(_bvh(*t), fcl.Transform())
         self.tf = None
 
     def place(self, M: np.ndarray):
@@ -95,6 +106,10 @@ class Body:
     def box(self, M: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
         w = self.corners @ M[:3, :3].T + M[:3, 3]
         return w.min(0), w.max(0)
+
+
+def _corners(lo, hi) -> np.ndarray:
+    return np.array([[x, y, z] for x in (lo[0], hi[0]) for y in (lo[1], hi[1]) for z in (lo[2], hi[2])])
 
 
 def _hit(a: fcl.CollisionObject, b: fcl.CollisionObject) -> bool:
@@ -199,15 +214,29 @@ class World:
         self.sc = sc
         self.bodies: dict[str, Body] = {}
         self._seen: dict[str, int] = {}
+        self._builds: dict[str, int] = {}
+        self._last: dict[str, int] = {}
+        self._tick = 0
         self.refresh()
 
     def refresh(self):
+        """Pick up actors added or re-meshed since the last call. A re-meshed actor (the multi-doser's carousel
+        rewrites its merged meshes every frame it moves) only gets its new bounds now; its BVH is rebuilt when an arm
+        part comes near it (Body.ensure), since a BVH per frame would cost more than the rest of the check."""
+        self._tick += 1
         for name, actor in self.sc.actors.items():
             inp = actor.GetMapper().GetInput()
             key = (inp.__this__, inp.GetMTime()) if inp is not None else None     # the VTK object, not its wrapper
             if self._seen.get(name) == key:
                 continue
             self._seen[name] = key
+            b = self.bodies.get(name)
+            if b is not None and inp is not None and inp.GetNumberOfPolys() > 0:
+                lo = np.array(inp.GetBounds()[0::2])
+                hi = np.array(inp.GetBounds()[1::2])
+                b.corners = _corners(lo, hi)
+                b.pending = inp
+                continue
             t = _tris(inp)
             if t is None:
                 self.bodies.pop(name, None)
@@ -226,7 +255,7 @@ class World:
             M = cache[b.group]
             b.place(M)
             lo, hi = b.box(M)
-            out.append((b, lo, hi))
+            out.append((b, lo, hi, M))
         return Snap(out)
 
 
@@ -235,9 +264,10 @@ class Snap:
 
     def __init__(self, items):
         self.items = items
-        self.bodies = [b for b, _, _ in items]
-        self.lo = np.array([lo for _, lo, _ in items]).reshape(-1, 3)
-        self.hi = np.array([hi for _, _, hi in items]).reshape(-1, 3)
+        self.bodies = [b for b, _, _, _ in items]
+        self.M = [m for _, _, _, m in items]
+        self.lo = np.array([lo for _, lo, _, _ in items]).reshape(-1, 3)
+        self.hi = np.array([hi for _, _, hi, _ in items]).reshape(-1, 3)
 
 
 def _subtree(sc, group: str) -> set[str]:
@@ -372,6 +402,9 @@ class Checker:
                     continue
                 if kind in ("gripper", "held") and w.group in allow:
                     continue
+                if w.pending is not None:
+                    w.ensure()
+                    w.place(world.M[j])
                 if _hit(b.obj, w.obj):
                     out.append((kind, b.name if kind != "held" else f"held:{b.group}", w.name, w.group))
                     if first:
@@ -419,10 +452,19 @@ def ik_all(model: str, T_tcp: np.ndarray, q_seed, tcp: float | None = None) -> l
     return out
 
 
-def _segment_free(chk: Checker, world, allow, qa, qb, close) -> bool:
+def _top(chk: Checker, q) -> float:
+    """The highest of the elbow and the wrists (world z, mm) at q."""
+    W = chk.sc.world(chk.rb.root)
+    F = ur_arm.fk(chk.rb.model, q)
+    return max(float((W @ F[k])[2, 3]) for k in ("forearm", "wrist1", "wrist2", "wrist3"))
+
+
+def _segment_free(chk: Checker, world, allow, qa, qb, close, zmax=None) -> bool:
     n = max(1, int(math.ceil(np.abs(qb - qa).max() / STEP_RAD)))
     for i in range(1, n + 1):
         q = qa + (qb - qa) * (i / n)
+        if zmax is not None and _top(chk, q) > zmax:
+            return False
         if chk.collisions(q, close, world, allow, first=True):
             return False
     return True
@@ -453,13 +495,16 @@ def plan_joint_move(chk: Checker, q0, q1, close, seed: int = 0, iters: int = 250
         return None, dict(reason="end pose in collision", start=bad0[:4], goal=bad1[:4])
     if _segment_free(chk, world, allow, q0, q1, close):
         return [q0, q1], dict(planned=False)
+    # a detour may not lift the elbow or the wrists more than 150 mm over the higher end of the move (or 1.8 m): a
+    # random sample can otherwise send the arm straight up, which is clear but nothing a person would program
+    zmax = max(_top(chk, q0), _top(chk, q1), 1650.0) + 150.0
     rng = np.random.default_rng(seed)
     lim = ur_arm._LIMIT
     lo = np.maximum(np.minimum(q0, q1) - math.pi, -lim)
     hi = np.minimum(np.maximum(q0, q1) + math.pi, lim)
 
     def free(q):
-        return not chk.collisions(q, close, world, allow, first=True)
+        return _top(chk, q) <= zmax and not chk.collisions(q, close, world, allow, first=True)
 
     def extend(tree, parent, q_to):
         """Step from the nearest node of `tree` towards q_to; returns the new index or None."""
@@ -469,7 +514,7 @@ def plan_joint_move(chk: Checker, q0, q1, close, seed: int = 0, iters: int = 250
         v = q_to - qn
         L = float(np.linalg.norm(v))
         q_new = q_to if L <= step else qn + v * (step / L)
-        if not free(q_new) or not _segment_free(chk, world, allow, qn, q_new, close):
+        if not free(q_new) or not _segment_free(chk, world, allow, qn, q_new, close, zmax):
             return None
         tree.append(q_new)
         parent.append(i)
@@ -503,14 +548,14 @@ def plan_joint_move(chk: Checker, q0, q1, close, seed: int = 0, iters: int = 250
                 path = pA[::-1] + pB[1:]
                 if swapped:
                     path = path[::-1]
-                path = _shortcut(chk, world, allow, path, close, rng)
+                path = _shortcut(chk, world, allow, path, close, rng, zmax=zmax)
                 return path, dict(planned=True, iterations=it + 1, nodes=len(A) + len(B), waypoints=len(path))
         A, pa, B, pb = B, pb, A, pa
         swapped = not swapped
     return None, dict(reason=f"no path in {iters} iterations")
 
 
-def _shortcut(chk, world, allow, path, close, rng, rounds: int = 120):
+def _shortcut(chk, world, allow, path, close, rng, rounds: int = 120, zmax=None):
     path = [np.asarray(p, float) for p in path]
     for _ in range(rounds):
         if len(path) <= 2:
@@ -518,12 +563,12 @@ def _shortcut(chk, world, allow, path, close, rng, rounds: int = 120):
         i, j = sorted(rng.choice(len(path), 2, replace=False))
         if j - i < 2:
             continue
-        if _segment_free(chk, world, allow, path[i], path[j], close):
+        if _segment_free(chk, world, allow, path[i], path[j], close, zmax):
             path = path[:i + 1] + path[j:]
     # then try to drop each remaining via point in turn
     k = 1
     while k < len(path) - 1:
-        if _segment_free(chk, world, allow, path[k - 1], path[k + 1], close):
+        if _segment_free(chk, world, allow, path[k - 1], path[k + 1], close, zmax):
             path.pop(k)
         else:
             k += 1
@@ -604,7 +649,6 @@ class Auditor:
         img.convert("RGB").save(OUT / f"{sc.name}_{tag}_{sc.n:05d}.png", optimize=True)
 
     def __call__(self, sc):
-        world_by = {}
         rec = []
         for rb in getattr(sc, "robots", []):
             chk = self.checkers.get(rb.prefix)
