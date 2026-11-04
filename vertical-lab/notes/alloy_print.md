@@ -4,8 +4,8 @@ The atomized powder goes through a sieving cell, into the Aconity MIDI's powder 
 plate that chapter 4 ([`alloy_workflow.py`](../alloy_workflow.py)) takes out.
 [GIF](../out/alloy_print.gif), [MP4](../out/mp4/alloy_print.mp4), [still](../out/alloy_print_still.png),
 [steps](../out/alloy_print.json), stills of the [cell](../out/alloy_print_cell.png) and the
-[tipper](../out/alloy_print_tipper.png). 194 s at 1280 × 720 and 10 fps (round 5, to fit the session; re-render at
-15 fps when the runner is free); the GIF is 640 × 360 at 5 fps.
+[tipper](../out/alloy_print_tipper.png). 198 s at 1280 × 720 and 10 fps (round 6, with the arm's collisions planned
+round, below; 10 fps to fit the session; re-render at 15 fps when the runner is free); the GIF is 640 × 360 at 5 fps.
 
 **Round 5 (PR #318): no person.** Sterling, on "a person still takes the sieve stack apart": "The idea would be to
 have the robot take care of this, or to use something more automated. ... some kind of clamping mechanism or clever
@@ -74,8 +74,9 @@ with the vial holder." Round 5 of this chapter was rendered before `collide.py` 
 frames in collision: the arm folded into itself, and its lower finger in the shaker and the bench, at the sieves'
 tabs (2/5, 3/5); the container through the tipper and the parked lid; the forearm through the enclosure, the tipper
 and the stack over the lid and the knobs; the forearm and wrist in the Aconity's base cabinet and chamber (4/5).
-After the changes below, all but the last three: **140 of 2417** (see the end of this section). Nothing was
-hidden or left out of the check; `robot.py`, `collide.py` and the other shared modules are unchanged.
+Now, as rendered: **97 of 2426**, every one of them in the Aconity (4/5); the sieving cell (2/5, 3/5) is clear
+([`out/collisions/alloy_print.json`](../out/collisions/alloy_print.json)). Nothing was hidden or left out of the
+check; `robot.py`, `collide.py` and the other shared modules are unchanged.
 
 | What collided (round 5) | What changed | Why |
 | --- | --- | --- |
@@ -86,16 +87,23 @@ hidden or left out of the check; `robot.py`, `collide.py` and the other shared m
 | The forearm in the enclosure's roof and front rail, over the tipper and the knobs | The enclosure is 1150 mm tall, not 950 | The lid and the knobs are taken from above: the wrist stands 300 mm over them |
 | The fingertips on the knobs they turn | A grasp and a release are recorded for the knob the gripper turns | The rules let the gripper touch what it takes, within 4 s; the knob is taken and turned, just not lifted off its rod |
 | The forearm in the bench's front edge, reaching under the funnel for the LPBF jar | The MiR rolls back up to its usual line first | From 300 mm further out the reach down to the jar was too long and low |
-| The forearm and wrist in the Aconity's base cabinet and chamber, carrying the jar in | The MiR stops 250 mm further off the Aconity (`ACO_DY`); the jar goes in 20 mm lower and is poured 60 mm short of the supply's axis; door to cylinder and back are planned joint moves | The chamber's opening is 280 mm tall and the cylinder 540 mm behind the door. From the usual spot the forearm comes down into the cabinet's top; from further back the arm reaches in nearly straight |
+| The forearm and wrist in the Aconity's base cabinet and chamber, carrying the jar in | The MiR stops 250 mm further off the Aconity (`ACO_DY`); the jar goes in 20 mm lower and is poured 60 mm short of the supply's axis; door to cylinder and back are planned joint moves | The chamber's opening is 280 mm tall and the cylinder 540 mm behind the door. From the usual spot the forearm comes down into the cabinet's top. From further back both ends of the move are clear, but the move between them is not yet: see below |
 
-**What the 140 frames were, and the last changes.** Three runs were left when the audit was last run: the lid
-going down the rods (8 frames), the container tipping over the No. 60 (36), and the arm going in through the
-Aconity's door (96). The table's rows on the lid (lowered from straight above), the container (tipped in two
-moves) and the Aconity (planned moves through the door) are the fixes for them. The lid's is checked: on the rig's
-own path straight down the rods, the line the arm now takes, it touches nothing until it sits on the No. 60, where
-it is let go. The other two are not yet re-audited: the render was started with them so that it would finish in
-the session, and the machine was too loaded to audit and render at once. `ARM_AUDIT=1 xvfb-run -a python3
-alloy_print.py` gives the count for what is rendered.
+**What is left: the jar into the Aconity (97 frames).** Each end of the move is clear (a grid search found IK
+branches with the jar's foot 17 mm over the chamber floor, 60 mm short of the supply's axis, from 250 mm further
+off), but the planner finds no joint path between the door and the cylinder in 2500 iterations: the opening is 280 mm tall and
+the cylinder 540 mm behind the door. It then falls back to the straight joint line to the nearest solution, which
+puts the forearm and the wrist in the base cabinet's top and the chamber's wall (91 frames going in, tipping and
+pouring; 6 coming out). The next thing to try is a straight line of the gripper from the door to the cylinder in
+the branch that is clear at the cylinder (solve the line backwards from there and start the move at the door in
+that branch); if no branch is clear all the way, the pour needs a different reach: a funnel or chute at the
+door, or the supply filled from outside the chamber. The highest point of the elbow and the wrists in the clip is
+2.15 m.
+
+Along the way: round 5, 543 frames; 159 after the MiR's spot at the cell, the tabs, the pedestal and the taller
+enclosure; 140 after the knobs, the MiR rolling up for the jar, the container tipped towards the stand and the
+MiR's spot at the Aconity; 97 after the lid straight down the rods, the container tipped in two moves and the
+planned moves through the door, which took the cell to 0.
 
 ### Sources and assumptions
 
