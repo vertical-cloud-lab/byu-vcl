@@ -1492,6 +1492,7 @@ def movie():
     q_knob = arc_branch(rb, sc, grasp_k, lambda u: R((0, 1, 0), -HOOD_OPEN * u, hinge_w) @ grasp_k,
                         lambda u: hood(sc, HOOD_OPEN * u), GRIP_KNOB, ("hood_knob",))   # clear all the way up
     sc.step(f"2/{n}", cap, 1.6, RB.both(rb.joint_to(q1=rb.solve(pre_k, q_knob)), rb.grip_to(0.0)), hold=0.05,
+            cam_to=CAM_LOAD,                     # back out from the latch's close-up (not in the round-6 render)
             labels=[("lid knob", tuple(W(knob + (0, 0, 30))), (0.70, 0.22)),
                     ("sealing-rod lever", tuple(W((80, 0, 1400))), (0.74, 0.46))])
     sc.step(f"2/{n}", cap, 0.8, rb.line_to(grasp_k), hold=0.05)

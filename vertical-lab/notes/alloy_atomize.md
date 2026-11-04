@@ -8,7 +8,7 @@ powder.
 
 | | |
 |---|---|
-| Clip | 170.3 s at 10 fps (rendered so to fit the session), 43.5 s of it the lab's own footage; [GIF](../out/alloy_atomize.gif) (640 × 360, 5 fps, 4.9 MB), [MP4](../out/mp4/alloy_atomize.mp4), [still](../out/alloy_atomize_still.png), sub-steps in [`alloy_atomize.json`](../out/alloy_atomize.json), powder sums in [`alloy_atomize_powder.json`](../out/alloy_atomize_powder.json) |
+| Clip | 197.4 s at 10 fps (round 6), 35.1 s of it the lab's own footage, the melt at 2×; [GIF](../out/alloy_atomize.gif) (560 × 315, 4 fps, 5.8 MB: over the 4.9 MB budget), [MP4](../out/mp4/alloy_atomize.mp4), [still](../out/alloy_atomize_still.png), sub-steps in [`alloy_atomize.json`](../out/alloy_atomize.json), powder sums in [`alloy_atomize_powder.json`](../out/alloy_atomize_powder.json) |
 | Starts | MiR250 at the VLM's opening (`animate.AMR_XY`), the four Al cups in `charge.carrier()`'s four pockets at `animate.BUFFER_LOCAL` on the cabinet: where chapter 1 ends |
 | Ends | MiR250 at world (−3487, −2230), yaw 0: square to the container's axis, 41 mm off the view port's flange, the hand-off chapter 3 (sieve, print) starts from. The container stands in a cradle at MiR-local (280, 10), a low ring on the cabinet top, seat z = 783 mm (round 6; it was 933 on a post); the loading tong hangs in its sleeve on the cabinet's −x end; the arm is parked. While the arm works the MiR stands further out: 220 mm (y = −2450) for the lid and the cups, because at y = −2230 the lid knob falls inside the UR10e's unreachable cylinder over its base; 420 mm (y = −2650) for the container, because closer the forearm comes down through the MiR's own cabinet to the handle, 275 mm off the floor. It drives onto the hand-off spot at the end |
 | Scene | `line.py`'s layout as `alloy_workflow.py` builds it, the rePowder loaded part by part from `repowder/model.py` (the merged copy `animate.Lab` adds is hidden) |
@@ -16,7 +16,7 @@ powder.
 | Footage | [`out/footage/`](../out/footage/): the excerpts and photos used, small, with a [manifest](../out/footage/manifest.json) of credits |
 
 ```bash
-xvfb-run -a python3 alloy_atomize.py        # render (1,693 frames, 33 min on a busy 4-core runner), then splice
+xvfb-run -a python3 alloy_atomize.py        # render (round 6: 1,623 frames, 40 min on a very busy 4-core runner), then splice (15 min)
 python3 alloy_atomize.py splice             # only cut the footage into the last render (3-13 min, mostly the GIF)
 python3 alloy_atomize.py keep               # copy the excerpts PLAN uses from /tmp/footage (FOOTAGE=...) to out/footage/
 python3 alloy_atomize.py powder             # print the powder sums
@@ -169,8 +169,11 @@ sensing it would take: the UR10e's own sensor is good to ±5.5 N and ±0.5 N·m;
 #### The rest
 
 - **The wrist camera** (the round's shared foundation) shows in the close-up of the tong being picked up.
-- **The melt footage runs at 2×** (`MELT_SPEED`): the three 2brsz-90seg excerpts, 16.5 s of real time in about 8 s,
+- **The melt footage runs at 2×** (`MELT_SPEED`): the three 2brsz-90seg excerpts, 16.5 s of real time in 7.8 s,
   badged `2× SPEED`. Only the kept excerpts exist (`out/footage/`); longer windows at 3× would need a fresh fetch.
+- **One camera move came after the render.** In the committed round-6 render the lid's knob and the lever are seen
+  from the latch's close-up, and the camera passes through the machine for a few frames on its way to the tong. The
+  knob step now moves the camera back out (`cam_to=CAM_LOAD`); the next render picks it up.
 - **The container's cradle is a low ring on the cabinet top**, where it was a ring on a 150 mm post that the upper arm
   crossed.
 - **Collisions: 0 of 1,339 frames** at 10 fps (`ARM_AUDIT=1`, [`out/collisions/alloy_atomize.json`](../out/collisions/alloy_atomize.json); round 5: 10 of 1,586 at 15 fps). On the way: the wrist camera in the hood on the latch grasp (the grasp turned 180° so the camera rides outboard), a fingertip on the bolt's cylinder (the gripper opens only to 0.72 round the tab), the tong's handle grazing the open lid's edge for one frame (a staging pose in front of the furnace), and the arm's upper arm through the cradle on its post (now a low ring).
