@@ -1,0 +1,60 @@
+{
+ "source": "https://youtu.be/6ZuKAAHb_20?t=180 (Malvern Panalytical, Demonstration: Measuring metal powders with the Mastersizer 3000, 3:00)",
+ "video": "6ZuKAAHb_20",
+ "t": 180,
+ "pose": {},
+ "points": {
+  "bay right top": [
+   623,
+   159
+  ],
+  "top front right": [
+   1120,
+   236
+  ],
+  "cut at bay right": [
+   622,
+   549
+  ],
+  "swoosh tip": [
+   1020,
+   167
+  ]
+ },
+ "curves": {
+  "front top edge": [
+   [
+    771,
+    181
+   ],
+   [
+    943,
+    207
+   ]
+  ],
+  "right cut": [
+   [
+    747,
+    604
+   ],
+   [
+    872,
+    654
+   ],
+   [
+    935,
+    679
+   ]
+  ],
+  "panel right edge": [
+   [
+    1107,
+    413
+   ],
+   [
+    1095,
+    580
+   ]
+  ]
+ }
+}

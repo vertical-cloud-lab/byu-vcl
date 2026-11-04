@@ -9,7 +9,7 @@
  "substeps": [
   {
    "label": "1/3",
-   "caption": "The door swings open on its right-hand hinge.",
+   "caption": "The door swings open on its two right-hand hinges; its insulating plug comes out of the chamber's mouth.",
    "start_frame": 0,
    "end_frame": 40
   },

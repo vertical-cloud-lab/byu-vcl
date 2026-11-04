@@ -48,7 +48,7 @@ def _modules() -> dict:
             out[name] = mod
             MATS.update(getattr(mod, "MATERIALS", {}))
     return out
-GLOWY = {"glow", "laser", "screen_on", "vlm_led"}
+GLOWY = {"glow", "laser", "screen_on", "vlm_led", "led_blue", "px_ui", "nat_screen"}
 scene.GIF_SIZE = (640, 360)          # one GIF per instrument: smaller than the chapters'
 FIT = dict(W=2450.0 - 24, D=864.0 - 24, H=727.5)     # inside a tray's rim; Kardex's product height
 
@@ -269,11 +269,22 @@ def tour_one(inst: I.Instrument, entries: dict) -> str:
 
 
 # ================================================================================================= gallery
+def _stand_in(key: str, row: dict) -> I.Instrument:
+    """An instrument that can't be built here (its vendor meshes aren't fetched), as out/instruments.json last saw it:
+    enough for its gallery tile and its table row."""
+    inst = I.Instrument(key, row["title"], row["model"], tuple(row["published_mm"]), row.get("source", ""),
+                        floor=row.get("floor", False))
+    inst.stand_in = row
+    return inst
+
+
 def gallery(data: dict, cols=4) -> Path:
     tiles = []
-    for key, (inst, _) in data.items():
+    old = json.loads((OUT / "instruments.json").read_text()) if (OUT / "instruments.json").exists() else {}
+    for key in registry():
         p = OUT / "instruments" / f"{key}.png"
-        if p.exists():
+        inst = data[key][0] if key in data else _stand_in(key, old[key]) if key in old else None
+        if p.exists() and inst is not None:
             tiles.append((inst, Image.open(p).convert("RGB")))
     tw, th, cap = 480, 270, 58
     rows = (len(tiles) + cols - 1) // cols
@@ -283,7 +294,7 @@ def gallery(data: dict, cols=4) -> Path:
     for i, (inst, im) in enumerate(tiles):
         x, y = (i % cols) * tw, (i // cols) * (th + cap)
         sheet.paste(im.resize((tw, th), Image.LANCZOS), (x, y))
-        fr = fit_report(inst)
+        fr = getattr(inst, "stand_in", None) or fit_report(inst)
         where = "beside the VLM" if inst.floor or not fr["fits_tray"] else "on a VLM tray"
         d.text((x + 10, y + th + 4), inst.model, font=f1, fill=(20, 20, 24))
         w, dd, h = inst.size
@@ -329,7 +340,14 @@ if __name__ == "__main__":
         for word in args:
             if word == "table":                 # out/instruments.json: what each model is, its size, where it goes
                 rows = {}
-                for key, (inst, _) in load().items():
+                old = json.loads((OUT / "instruments.json").read_text()) if (OUT / "instruments.json").exists() else {}
+                built = load()
+                for key in registry():
+                    if key not in built:            # not buildable here (vendor meshes missing): keep its last row
+                        if key in old:
+                            rows[key] = old[key]
+                        continue
+                    inst = built[key][0]
                     fr = fit_report(inst)
                     rows[key] = dict(title=inst.title, model=inst.model, source=inst.source, **fr,
                                      where="beside the VLM" if inst.floor or not fr["fits_tray"] else "on a tray")

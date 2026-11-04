@@ -14,8 +14,8 @@ framework, [`scene.py`](scene.py), is `atomizer-training/viz3d/scene.py` from #1
 | **Assembly**: base, frame, columns, extractor, trays, then the cladding goes on, opaque | [`out/vlm_assembly.gif`](out/vlm_assembly.gif) | [`out/mp4/vlm_assembly.mp4`](out/mp4/vlm_assembly.mp4) |
 | **Loading**: the closed machine, then see-through; every piece of equipment goes onto its tray through the opening, one at a time; the arm rolls up | [`out/vlm_loading.gif`](out/vlm_loading.gif) | [`out/mp4/vlm_loading.mp4`](out/mp4/vlm_loading.mp4) |
 | **Workflow** (round 2; for the alloy work, superseded by [the alloy route](#the-alloy-route-start-to-finish-charge-cups-to-tensile-bar), where the vial is the lab's charge cups): the arm doses a powder with the multi-doser and takes the vial to the CubXL, which adds liquid | [`out/vlm_workflow.gif`](out/vlm_workflow.gif) | [`out/mp4/vlm_workflow.mp4`](out/mp4/vlm_workflow.mp4) |
-| **Disassembly**: unloaded one piece at a time, then taken apart | [`out/vlm_disassembly.gif`](out/vlm_disassembly.gif) | [`out/mp4/vlm_disassembly.mp4`](out/mp4/vlm_disassembly.mp4) |
-| **All four**, one after the other (4 min 5 s) | [on YouTube](https://www.youtube.com/watch?v=ro-pUo0ie_M) (unlisted, BYU Vertical Cloud Lab channel) | [`out/mp4/vertical_lab_full.mp4`](out/mp4/vertical_lab_full.mp4) |
+| **Disassembly**: unloaded one piece at a time, then taken apart. A clip of its own, left out of the joined video ("no need to remove the equipment at the end of the video", PR #318) | [`out/vlm_disassembly.gif`](out/vlm_disassembly.gif) | [`out/mp4/vlm_disassembly.mp4`](out/mp4/vlm_disassembly.mp4) |
+| **Assembly, loading and workflow**, one after the other (3 min 4 s), ending with the lab loaded and working. The earlier join of all four ([`ro-pUo0ie_M`](https://www.youtube.com/watch?v=ro-pUo0ie_M)) ended with the disassembly | [on YouTube](https://www.youtube.com/watch?v=xI1d0kkX8VA) (unlisted) | [`out/mp4/vertical_lab_full.mp4`](out/mp4/vertical_lab_full.mp4) |
 
 ![The alloy route, chapter 1: the lab's charge cups dosed and plugged on tray B](out/alloy_charge.gif)
 
@@ -25,6 +25,48 @@ framework, [`scene.py`](scene.py), is `atomizer-training/viz3d/scene.py` from #1
 
 `out/<name>.json` gives the frame range of every sub-step in the MP4, `out/<name>_still.png` is a still of the last
 view, and [`out/reach.json`](out/reach.json) is the arm study below.
+
+## The models against real footage
+
+Asked for in [PR #318](https://github.com/vertical-cloud-lab/byu-vcl/pull/318): refine the equipment piece by piece
+against the lab's SOP videos and other footage, registering each model to frames taken from different angles.
+
+Ten models are refitted this way. Each row of the sheet below shows a frame of the real machine, then the model
+before this round ([`379df6b`](https://github.com/vertical-cloud-lab/byu-vcl/tree/379df6b/vertical-lab)), then the
+model now. `register.py sheet` makes it.
+
+![Footage, before and after, for the ten refitted models](out/register/before_after.jpg)
+
+**The method.**
+1. [`frames.py`](frames.py) finds the moments that show a machine whole. It fetches storyboard thumbnails, then
+   single 720p frames, through a stream-cam Pi, because YouTube refuses the runner.
+2. Points and edges are picked on each frame: corners, screen corners, circle edges.
+3. [`register.py`](register.py) fits the camera of each frame. Frames from one video share a lens. It fits the
+   model's own unpublished proportions too, with the published size, or a part of known size, as the scale.
+4. `register.py` then draws the model's outline over each frame
+   ([`out/register/<key>/`](out/register/)), so a wrong shape shows up as a gap.
+5. A held-out frame checks the result.
+
+Each model publishes its anchors (named points, circles and lines) from the same parameters that build it. So a
+fitted number is a model dimension, and the same picks re-test the model after every change.
+
+- **Frames from the lab's own videos are committed** in `refs/<key>/`.
+- **Frames from others' videos are not.** They are fetched again from their video id and time, as the vendor CAD is.
+- **The overlays are committed.**
+
+| Model | What the footage changed | Fit (RMS) | Notes |
+|---|---|---|---|
+| **Grinder-polisher** | It is the lab's **LECO PX500**, not the Buehler EcoMet 30 that was modelled. The model is rebuilt from the SOP frames: round bowl drum, screen block, tall rounded head, gooseneck spigot, bottle holder. The clip follows the SOP: SiC papers at the screen's settings, then the white cloth with alumina | 8.6 and 4.5 px on two frames of [SOP part 2](https://www.youtube.com/watch?v=nfnl0aPJPZc); 11.8 px on a held-out frame of [part 3](https://www.youtube.com/watch?v=eLrJxxBAcnE) | [`notes/refine_polisher.md`](notes/refine_polisher.md), [overlays](out/register/polisher/) |
+| **Furnace** (Nabertherm NAT 15/65) | A chamber unit on a separate controller unit with a wide, centred touchscreen; a vent strip along the top; the door a panel with a white fibre plug, a bar handle and two right-hand hinges; a 72 mm fan guard. Before: one box, a strip controller, a lever latch | 1.2 and 6.3 px, two shots of [Nabertherm's NAT video](https://www.youtube.com/watch?v=WE6O8EccLyc) | [`notes/refine_furnace.md`](notes/refine_furnace.md), [overlays](out/register/furnace/) |
+| **XRF** (Bruker S2 PUMA Series 2) | A full-width white hood with a dark window, hinged at the back, over a white body with the touchscreen in its vertical front and navy side panels. Before: a small dark lid on a sloped body, with the screen on top | 12.7 px, [Bruker's S2 PUMA Overview](https://www.youtube.com/watch?v=ogSg0j6j2Gw) | [`notes/refine_xrf.md`](notes/refine_xrf.md), [overlays](out/register/xrf/) |
+| **PIP** (Plastometrex PLX-Benchtop) | The profilometer is a slotted arm on a carriage under the crosshead, not on a column: its pick-up runs in under the lifted indenter. A pancake load cell in the floor; a matte black body with a blue LED U, louvred columns and a fixed crosshead cowl | 6.3 px, [Plastometrex's introduction](https://www.youtube.com/watch?v=w7OZsrru9AI) | [`notes/refine_pip.md`](notes/refine_pip.md), [overlays](out/register/pip/) |
+| **XRD** (Rigaku MiniFlex) | It is the 6th-generation MiniFlex the envelope came from, not the MiniFlex 600 its title said. A navy front in three parts (Rigaku band, door, button strip), a flat top, side bulges and the lamp on top centre | 2.1, 1.1 and 1.2 px, [Rigaku's 6G video](https://www.youtube.com/watch?v=8tI9uFKevr0) | [`notes/refine_xrd.md`](notes/refine_xrd.md), [overlays](out/register/xrd/) |
+| **SEM** (Hitachi TM4000PlusII) | No overhanging hood: the top's front edge rolls over in an 80 mm radius, with a wedge on top and the cover's seam down each side; a navy front panel (it was bright blue) set into a white frame; a 201 mm door with a bar handle; an X-Y stage whose socket the holder drops into, as in the videos | 4.6, 5.0, 4.0 and 2.1 px, four views ([Hitachi](https://www.youtube.com/watch?v=cg1S2WZVWr8), [CCEM](https://www.youtube.com/watch?v=IqZkvBX-7cU)) | [`notes/refine_sem.md`](notes/refine_sem.md), [overlays](out/register/sem/) |
+| **Particle sizer** (Malvern Mastersizer 3000 + Aero S) | A satin silver bench under a charcoal deck, not black. A narrow bay holds the cell's AERO cassette, and the panels' lower edges sweep down over a set-back plinth. The deck has a round lid, an oval tail and an end cap. The Aero S stands in front of the left panel, with its hose to the cassette. Its clear cover lifts off by hand, as in Malvern's demo, rather than hinging | 4.2, 2.6 and 3.0 px, three views ([Malvern's metal-powder demo](https://www.youtube.com/watch?v=6ZuKAAHb_20), [Aero demo](https://www.youtube.com/watch?v=iaHJ8QEwJ-I)) | [`notes/refine_mastersizer.md`](notes/refine_mastersizer.md), [overlays](out/register/mastersizer/) |
+| **Resin printer** (Formlabs Form 4) | A silver base, 170 mm to an 18 mm lip, with the touchscreen in a black bezel across the right half of its front. One orange cover over the whole footprint, which pivots on hinges on the Z tower, as Formlabs' hinge-replacement page shows, and ends above the machine; it used to swing out in front. Inside: a black deck, a light grey tank and a two-column Z tower | 2.2, 2.4, 1.6 and 2.4 px; 4.6 px on a held-out frame from another video | [`notes/refine_form4.md`](notes/refine_form4.md), [overlays](out/register/form4/) |
+| **Pick-and-place** (Opulo LumenPnP v4.2) | **Rebuilt from Opulo's own CAD**, `src/assembly.FCStd` at `opulo-inc/lumenpnp@64cf68d`, read and cited, not committed: 707 × 673 × 342 mm, against the estimated 680 × 680 × 450. The frame, legs, tension arms, head (diamond Z motor, red and blue nozzle motors, top camera in its diffuser), v4.2 staging plate and drag chains are where the CAD puts them. The motion is the real travel, with counterweighted nozzles. Only the feeders, which aren't in the CAD, are fitted | 6.1 and 7.4 px; 5.6 px held out | [`notes/refine_lumenpnp.md`](notes/refine_lumenpnp.md), [overlays](out/register/lumenpnp/) |
+| **Digital microscope** (Keyence VHX-7000 + EA-300) | The beige box stand and plain monitor become Keyence's: a dark, flared pedestal with the VHX badge and focus knob, the XY stage on its own column, a back column whose silver arch runs over the EA-300, the zoom lens down the EA-300's front, and the monitor-controller on a silver "VHX" foot bar with the console and joystick in front. On tray C the monitor now stands 130 mm closer to the stand, so the pair fits beside the A1 mini | 3.3, 3.3 and 4.6 px; **33.6 px on the held-out EA-300 stand view**, which fails: its knob and base land 66 px off while the EA-300's top matches to 1–2 px | [`notes/refine_vhx.md`](notes/refine_vhx.md), [overlays](out/register/vhx/) |
+<!-- refine-table -->
 
 ## Characterization instruments, the alloy line and the backup rail (round 3)
 
@@ -40,14 +82,14 @@ microscopes, from OpenFlexure's own OpenSCAD:
 
 | Instrument | Model | What the animation shows | GIF, MP4 | Size W × D × H (mm), published | Where |
 |---|---|---|---|---|---|
-| Benchtop XRD | Rigaku MiniFlex 600 | The door swings open on its right-hand hinge; a powder sample goes onto the stage; the door shuts; the scan is drawn see-through, with the sample tilting by θ and the detector sweeping 2θ on its arm; the door opens and the sample comes out | [GIF](out/instruments/xrd.gif), [MP4](out/mp4/instruments/xrd.mp4) | 620 × 456 × 722 | tray D: 5.5 mm under Kardex's limit |
+| Benchtop XRD | Rigaku MiniFlex, 6th generation (the "MiniFlex 6G"; this was titled MiniFlex 600) | The door swings open on its right-hand hinge; a powder sample goes onto the stage; the door shuts; the scan is drawn see-through, with the sample tilting by θ and the detector sweeping 2θ on its arm; the door opens and the sample comes out | [GIF](out/instruments/xrd.gif), [MP4](out/mp4/instruments/xrd.mp4) | 620 × 456 × 722 | tray D: 5.5 mm under Kardex's limit |
 | Tabletop SEM, EDS, EBSD | Hitachi TM4000PlusII | The drawer slides out with the stage; a mounted sample goes on; EVAC | [GIF](out/instruments/sem.gif), [MP4](out/mp4/instruments/sem.mp4) | 330 × 614 × 547 (main unit) | tray D |
 | Microscope, reflection | OpenFlexure Microscope v7 | A polished coupon goes under the clips; the stage scans on its four flexure legs, which lean and shear with it (the camera moves in on them), and the optics focus | [GIF](out/instruments/openflexure_v7.gif), [MP4](out/mp4/instruments/openflexure_v7.mp4) | 171 × 139 × 169 | tray D |
 | Microscope, reflection | OpenFlexure Delta Stage | The same, with the delta stage moving in x, y and z: each actuator tips a lever, and the leg standing on it pushes the stage | [GIF](out/instruments/openflexure_delta.gif), [MP4](out/mp4/instruments/openflexure_delta.mp4) | 166 × 156 × 173 | tray D |
 | Indentation plastometer (PIP) | Plastometrex PLX-Benchtop | The sample goes onto the platen by hand; the indenter goes in and lifts; the profilometer's arm reaches in under it and the stylus traces the indent | [GIF](out/instruments/pip.gif), [MP4](out/mp4/instruments/pip.mp4) | about 500 × 500 × 680, estimated | tray E |
 | Nanoindenter | KLA iMicro | The hood lifts; a mount goes onto the XY stage; the stage carries it from the microscope to the indenter | [GIF](out/instruments/nanoindenter.gif), [MP4](out/mp4/instruments/nanoindenter.mp4) | about 540 × 520 × 520, estimated | tray E |
 | Laser diffraction | Malvern Mastersizer 3000 + Aero S | The Aero S's dome lifts and powder goes into its hopper; the laser and the dispersed powder are drawn see-through | [GIF](out/instruments/mastersizer.gif), [MP4](out/mp4/instruments/mastersizer.mp4) | 690 × 300 × 450 (bench); Aero S 260 × 180 × 380 | tray E |
-| Grinder-polisher | Buehler EcoMet 30 semi-automatic | The power head presses six mounts onto the 12 in platen; platen and holder turn | [GIF](out/instruments/polisher.gif), [MP4](out/mp4/instruments/polisher.mp4) | 488 × 638 × 650 | tray F |
+| Grinder-polisher | LECO PX500 semi-automatic, the lab's (was the Buehler EcoMet 30; see [above](#the-models-against-real-footage)) | As in the lab's SOP: SiC papers from 320 to 1200 grit with water, then a white cloth with alumina; the head presses six mounts down while platen and holder turn | [GIF](out/instruments/polisher.gif), [MP4](out/mp4/instruments/polisher.mp4) | 558 × 711 × 677 (fitted; plus the bottle holder) | tray F |
 | Heat treatment and ageing furnace | Nabertherm NAT 15/65 | The door swings open; a tray of coupons goes in; the circulation fan runs | [GIF](out/instruments/furnace.gif), [MP4](out/mp4/instruments/furnace.mp4) | 470 × 790 × 460 | tray F |
 | Tabletop testing machine | Instron 68SC-2 | The arm rides up the column and pulls a sub-size bar | [GIF](out/instruments/instron_small.gif), [MP4](out/mp4/instruments/instron_small.mp4) | 460 × 615 × 1410 | beside the VLM |
 | Floor testing machine | Instron 68FM-100 | The crosshead pulls a printed tensile bar | [GIF](out/instruments/instron_floor.gif), [MP4](out/mp4/instruments/instron_floor.mp4) | 1140 × 786 × 2287 | beside the VLM |
@@ -78,8 +120,9 @@ No maker here publishes CAD without a login or a form. Instron's STEP files come
 Vention's export from MachineBuilder needs an account, which a residential IP doesn't get around, so the Pi wasn't
 needed. GrabCAD, TraceParts and CADENAS block the runner and need logins anyway. So each model is built from these:
 
-- **Rigaku MiniFlex 600:** the outline drawings in Rigaku's MiniFlex brochure (620 × 456 × 722 mm, 80 kg) and the
-  MiniFlex 6G sheet.
+- **Rigaku MiniFlex, 6th generation:** the outline drawings in Rigaku's MiniFlex brochure (620 × 456 × 722 mm, 80 kg)
+  and the MiniFlex 6G sheet. The front is fitted to Rigaku's 6G video: see
+  [`notes/refine_xrd.md`](notes/refine_xrd.md).
   - The door hinges on its right edge and has no window.
   - The goniometer is vertical, 150 mm radius, θ-2θ.
   - The MiniFlex600-C, with its built-in chiller, is 526 mm deep.
@@ -105,8 +148,11 @@ needed. GrabCAD, TraceParts and CADENAS block the runner and need logins anyway.
   - KLA publishes no dimensions; scaled from photos, about 0.5-0.55 m on a side.
 - **Malvern Mastersizer 3000 + Aero S:** Malvern's Mastersizer 3000 and 3000+ brochures (bench 690 × 300 × 450 mm,
   30 kg; Aero S 260 × 180 × 380 mm, 10.5 kg) and product photos.
-- **Buehler EcoMet 30 semi-automatic:** Buehler's instruction manual (drawing 488 × 638 × 650 mm, 75 kg; 12 in
-  platen; 25-200 N head force).
+- **LECO PX500 semi-automatic** (until the SOP footage was checked, a Buehler EcoMet 30):
+  - **The lab's own SOP videos,** fitted with `register.py`.
+  - **LECO's PX400/PX500 brochure** (form 209-254) for the features.
+  - **LECO publishes no dimensions.** 533 × 711 × 635 mm is a reseller's figure for the series.
+  - See [`notes/refine_polisher.md`](notes/refine_polisher.md).
 - **Nabertherm NAT 15/65:** Nabertherm's forced-convection tabletop range (470 × 790 × 460 mm, 60 kg, 15 L, 650 °C,
   ±5 °C).
   - It covers solution treatment (about 530 °C) and ageing (160-200 °C) in one furnace.
@@ -176,7 +222,7 @@ stencil printer. Nine models, in `instruments.py`'s framework (pieces, joints an
 | Wash | Formlabs Form Wash (2nd Gen) | The lid lifts; the Form 4's platform goes onto the elevator; it lowers the parts into the IPA while the impeller stirs, then lifts them out to dry | [GIF](out/fabrication/form_wash.gif), [MP4](out/mp4/fabrication/form_wash.mp4) | 315 × 293 × 405; 714 tall open | tray G |
 | Post-cure | Formlabs Form Cure (2nd Gen) | The door opens; the parts go onto the turntable; it turns under 405 nm light | [GIF](out/fabrication/form_cure.gif), [MP4](out/mp4/fabrication/form_cure.mp4) | 337 × 356 × 404, 12.1 kg | tray G |
 | Stencil printer, semi-automatic | DDM Novastar SPR-45VA | A bare board onto the vacuum nest; the frame comes down; the squeegee drives the paste across; the frame lifts off, leaving paste on the pads | [GIF](out/fabrication/stencil.gif), [MP4](out/mp4/fabrication/stencil.mp4) | 762 × 889 × 406, about 73 kg | tray H, turned 90° |
-| Pick-and-place, open source | Opulo LumenPnP v4 | The pasted board goes onto the staging plate; three parts, each picked from a feeder, checked over the up-looking camera and placed | [GIF](out/fabrication/lumenpnp.gif), [MP4](out/mp4/fabrication/lumenpnp.mp4) | about 680 × 680 × 450, estimated | tray H |
+| Pick-and-place, open source | Opulo LumenPnP v4.2 | The top camera finds the board's fiducials; each part is picked from a front or back feeder, turned over the up-looking camera and placed, the two counterweighted nozzles moving opposite ways | [GIF](out/fabrication/lumenpnp.gif), [MP4](out/mp4/fabrication/lumenpnp.mp4) | 707 × 673 × 342, from Opulo's CAD (see [below](#the-models-against-real-footage)) | tray H |
 
 All nine, one after the other: [`out/mp4/fabrication_tour.mp4`](out/mp4/fabrication_tour.mp4).
 [`out/fabrication.json`](out/fabrication.json) has each model's source, its size as drawn, whether it fits a tray, how
@@ -234,8 +280,10 @@ model is built from these:
   - seven 600 mm lengths of 20 × 20 V-slot on four printed legs, an X gantry on two Y gantries;
   - two nozzles on hollow-shaft NEMA 11s, top and bottom cameras with ring lights;
   - 120 × 600 mm staging-plate PCBs, powered feeders, boards up to 225 × 400 mm.
-  - Opulo publishes no overall size. 680 × 680 × 450 mm is the extrusions plus the legs, with the height scaled from the
-    photo (about ±15 %).
+  - Opulo publishes no overall size, so 680 × 680 × 450 mm was first estimated from the extrusions and a photo.
+  - **Opulo's CAD gives every part's position:** `src/assembly.FCStd` at `opulo-inc/lumenpnp@64cf68d`, read, not
+    committed. The model is now built from it, at 707 × 673 × 342 mm, about 25 % lower. See
+    [`notes/refine_lumenpnp.md`](notes/refine_lumenpnp.md).
 
 ### Things the fabrication models show
 
@@ -475,6 +523,27 @@ Real data and illustrative data:
 - **The MiR250 can't power the arm.** Its top-module supply is 480 W at 48 V. The UR10e can draw 615 W, and its
   standard control box wants mains.
 
+### Getting a tray out for maintenance, with the rail in front
+
+![Plan and side view at the opening](out/maintenance_access.png)
+
+- **The tray service dock is round 4's coupling, not a way out.** Its docks are inside the VLM, so the rail doesn't
+  affect it.
+- **Kardex's way out is full tray extraction onto a transport cart.** Both are Shuttle XP options. The tray comes out
+  in front of the opening, which needs at least its 864 mm of clear floor there.
+- **With the rail where `line.py` puts it, that floor is taken.**
+  - The rail fills 26–442 mm in front of the cladding. Its beam is 436–699 mm high, and one leg stands under the
+    opening.
+  - From the beam, the tray's front edge is 464 mm away and its back edge 1328 mm, so a person can't work there either.
+- **What would work:**
+  - a second opening at the back for service (Kardex offers front or rear). It costs two rear slots at the front
+    opening's height, and about 2 m of floor behind the VLM;
+  - a floor-flush rail section with covers;
+  - a removable rail section, for rare instrument swaps;
+  - the mobile base, which leaves nothing fixed in front of the opening.
+
+  [`notes/maintenance.md`](notes/maintenance.md) has the sources and the questions for Kardex.
+
 ### The lab set up from scratch
 
 The set-up scene, in order:
@@ -708,7 +777,7 @@ The cost of the UR10e is clearance: its closest approach to the header is 118 mm
 
 ```bash
 pip install cadquery pyvista trimesh pycollada pillow numpy scipy   # plus ffmpeg and gifsicle on the PATH
-xvfb-run -a python3 animate.py assembly loading workflow disassembly full   # full joins the four MP4s
+xvfb-run -a python3 animate.py assembly loading workflow disassembly full   # full joins the first three MP4s
 PREVIEW=1 xvfb-run -a python3 animate.py workflow        # the last frame of each sub-step, to /tmp
 python3 reach.py                                          # the arm study -> out/reach.json
 xvfb-run -a python3 tour.py                               # round 3: every instrument -> out/instruments/, out/mp4/instruments/
@@ -721,6 +790,15 @@ xvfb-run -a python3 alloy_print.py                        # 3/4: sieved, printed
 python3 alloy_route.py                                    # the four (4/4 is alloy_workflow.py) -> out/mp4/alloy_route.mp4
 ```
 
+Fitting the models to footage (see [above](#the-models-against-real-footage)):
+
+```bash
+python3 frames.py storyboard VIDEO_ID; python3 frames.py grab VIDEO_ID 180 219   # through the Pi -> .frames/
+python3 frames.py grid .frames/VIDEO_ID_0180.0.jpg 50                           # a gridded copy, to read picks off
+python3 register.py solve polisher                       # cameras and free dimensions -> refs/polisher/fit.json
+xvfb-run -a python3 register.py draw polisher            # the model over each frame -> out/register/polisher/
+```
+
 Round 4:
 
 ```bash
@@ -729,6 +807,7 @@ xvfb-run -a python3 services.py services cabling tether cameras json   # -> out/
 xvfb-run -a python3 alloy_workflow.py                                   # -> out/alloy_workflow.*
 xvfb-run -a python3 warehouse.py; python3 warehouse.py sway compare     # the warehouse; out/rail_vs_amr.{json,png}
 python3 setup_lab.py fit; xvfb-run -a python3 setup_lab.py              # check every tray item, then the set-up movie
+python3 maintenance.py                                                  # the rail against the opening -> out/maintenance_access.{png,json}
 ```
 
 Under load, Xvfb sometimes drops the render window ("bad X server connection", "Render window is not current"). Retrying

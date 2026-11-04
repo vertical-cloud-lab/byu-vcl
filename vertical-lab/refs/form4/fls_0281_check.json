@@ -1,0 +1,63 @@
+{
+ "source": "https://youtu.be/U29JzSdHs9c?t=281 (Formlabs Support, Getting Started with Form 4 & Form 4L, 4:41: cover shut, front left from just above; another video and camera, held out of the fit)",
+ "video": "U29JzSdHs9c",
+ "t": 281.0,
+ "pose": {
+  "cover": 0.0
+ },
+ "holdout": true,
+ "points": {
+  "lip fl under": [
+   659,
+   600
+  ],
+  "bezel tl": [
+   791,
+   544
+  ],
+  "cover fl top": [
+   674,
+   223
+  ],
+  "lip bl": [
+   474,
+   507
+  ]
+ },
+ "curves": {
+  "cover left edge": [
+   [
+    669,
+    260
+   ],
+   [
+    668,
+    400
+   ],
+   [
+    668,
+    540
+   ]
+  ],
+  "cover top front": [
+   [
+    740,
+    217
+   ],
+   [
+    840,
+    210
+   ]
+  ],
+  "cover back left edge": [
+   [
+    473,
+    260
+   ],
+   [
+    474,
+    400
+   ]
+  ]
+ }
+}

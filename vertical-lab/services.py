@@ -119,7 +119,8 @@ POWER = {
     "a1mini": (150.0, "snippet", "Bambu Lab A1 mini: max power 150 W (Bambu's TDS via a retailer)"),
     "sem": (500.0, "snippet", "Hitachi TM4000PlusIII: 'Single phase AC100-240 V ... 500 VA', PC separate (Series III "
                               "brochure; the PlusII's figure was not found)"),
-    "xrd": (600.0, "published", "Rigaku MiniFlex 600: '600 W X-ray tube', '1-phase, 100-240 V' (rigaku.com); the "
+    "xrd": (600.0, "published", "Rigaku MiniFlex (6th generation; the 600 before it had the same tube): '600 W X-ray "
+                                "tube', '1-phase, 100-240 V' (rigaku.com); the "
                                 "total draw was not found, so this counts the tube alone"),
     "openflexure_v7": (10.0, "estimate", "a Pi and three small steppers: ours, 10 W"),
     "openflexure_delta": (10.0, "estimate", "the same: ours, 10 W"),
@@ -127,8 +128,9 @@ POWER = {
     "nanoindenter": (200.0, "estimate", "KLA iMicro: no rating found; 200 W is ours"),
     "mastersizer": (200.0, "snippet", "Malvern Mastersizer 3000+ Ultra: '50 W (no dispersion) up to 200 W' "
                                       "(DirectIndustry, snippet)"),
-    "polisher": (740.0, "snippet", "Buehler EcoMet 30: base motor 440 W, semi-automatic head 300 W (distributors' "
-                                   "sheets, snippets)"),
+    "polisher": (740.0, "estimate", "LECO PX500 (the lab's): LECO publishes no rating, so this is the Buehler "
+                                    "EcoMet 30's, a machine of the same class: base motor 440 W, semi-automatic head "
+                                    "300 W (distributors' sheets, snippets)"),
     "furnace": (2800.0, "published", "Nabertherm NAT 15/65: connected load 2.8 kW, 1-phase (nabertherm.com)"),
     "pi_unit": (4.0, "published", "Raspberry Pi 5: typical bare-board active current 800 mA at 5 V; the supply is "
                                   "rated 27 W (raspberrypi.com). Cameras add well under 1 W"),
