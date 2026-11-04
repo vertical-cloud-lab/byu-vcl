@@ -174,14 +174,14 @@
      "item": "dock plate and tray lines",
      "kind": "plate",
      "box_mm": [
-      933,
+      550,
       1220,
       180,
-      380,
+      420,
       3,
-      132
+      166
      ],
-     "height_mm": 129.0,
+     "height_mm": 163.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -195,7 +195,7 @@
    "shuttle": 1,
    "slot_z_mm": 1050.0,
    "span_mm": 750.0,
-   "tallest_mm": 703.0,
+   "tallest_mm": 702.2,
    "span_needed_mm": 750.0,
    "span_ok": true,
    "items": [
@@ -229,9 +229,7 @@
      "height_mm": 538.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": [
-      "cam_A0 post"
-     ]
+     "overlaps": []
     },
     {
      "item": "UPS",
@@ -253,32 +251,30 @@
      "item": "cam_A0 post",
      "kind": "cam",
      "box_mm": [
-      -725,
-      -635,
-      -315,
-      -225,
+      -1105,
+      -1015,
+      -55,
+      35,
       3,
       593
      ],
      "height_mm": 590.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": [
-      "CubXL + NuVant EZstat Pro"
-     ]
+     "overlaps": []
     },
     {
      "item": "cam_A0 head",
      "kind": "cam",
      "box_mm": [
-      -672,
-      -536,
-      -337,
-      -184,
+      -1056,
+      -903,
+      -82,
+      75,
       511,
-      706
+      705
      ],
-     "height_mm": 703.0,
+     "height_mm": 702.2,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -319,20 +315,20 @@
      "item": "dock plate and tray lines",
      "kind": "plate",
      "box_mm": [
-      933,
+      550,
       1220,
       180,
-      380,
+      420,
       3,
-      132
+      166
      ],
-     "height_mm": 129.0,
+     "height_mm": 163.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
     }
    ],
-   "ok": false
+   "ok": true
   },
   "B": {
    "role": "powder dosing, vacuum press",
@@ -374,9 +370,7 @@
      "height_mm": 731.0,
      "under_goods_height": true,
      "inside_rim": true,
-     "overlaps": [
-      "cam_B1 post"
-     ]
+     "overlaps": []
     },
     {
      "item": "Specac Atlas Autotouch 15T, vacuum press",
@@ -414,10 +408,10 @@
      "item": "cam_B0 post",
      "kind": "cam",
      "box_mm": [
-      -165,
-      -75,
-      -70,
-      20,
+      875,
+      965,
+      -265,
+      -175,
       3,
       593
      ],
@@ -430,48 +424,14 @@
      "item": "cam_B0 head",
      "kind": "cam",
      "box_mm": [
-      -195,
+      824,
+      991,
+      -213,
       -60,
-      -175,
-      -27,
       511,
-      706
+      681
      ],
-     "height_mm": 703.1,
-     "under_goods_height": true,
-     "inside_rim": true,
-     "overlaps": []
-    },
-    {
-     "item": "cam_B1 post",
-     "kind": "cam",
-     "box_mm": [
-      640,
-      730,
-      -385,
-      -295,
-      3,
-      593
-     ],
-     "height_mm": 590.0,
-     "under_goods_height": true,
-     "inside_rim": true,
-     "overlaps": [
-      "multi-doser: chain carousel v2, 13 powders"
-     ]
-    },
-    {
-     "item": "cam_B1 head",
-     "kind": "cam",
-     "box_mm": [
-      530,
-      689,
-      -399,
-      -256,
-      511,
-      706
-     ],
-     "height_mm": 702.7,
+     "height_mm": 677.6,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -480,20 +440,20 @@
      "item": "dock plate and tray lines",
      "kind": "plate",
      "box_mm": [
-      933,
+      550,
       1220,
       180,
-      380,
+      420,
       3,
-      132
+      166
      ],
-     "height_mm": 129.0,
+     "height_mm": 163.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
     }
    ],
-   "ok": false
+   "ok": true
   },
   "E": {
    "role": "mechanical testing, particle size",
@@ -669,14 +629,14 @@
      "item": "dock plate and tray lines",
      "kind": "plate",
      "box_mm": [
-      933,
+      550,
       1220,
       180,
-      380,
+      420,
       3,
-      132
+      166
      ],
-     "height_mm": 129.0,
+     "height_mm": 163.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -794,14 +754,14 @@
      "item": "dock plate and tray lines",
      "kind": "plate",
      "box_mm": [
-      933,
+      550,
       1220,
       180,
-      380,
+      420,
       3,
-      132
+      166
      ],
-     "height_mm": 129.0,
+     "height_mm": 163.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -935,14 +895,14 @@
      "item": "dock plate and tray lines",
      "kind": "plate",
      "box_mm": [
-      933,
+      550,
       1220,
       180,
-      380,
+      420,
       3,
-      132
+      166
      ],
-     "height_mm": 129.0,
+     "height_mm": 163.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -1076,14 +1036,14 @@
      "item": "dock plate and tray lines",
      "kind": "plate",
      "box_mm": [
-      933,
+      550,
       1220,
       180,
-      380,
+      420,
       3,
-      132
+      166
      ],
-     "height_mm": 129.0,
+     "height_mm": 163.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -1185,14 +1145,14 @@
      "item": "dock plate and tray lines",
      "kind": "plate",
      "box_mm": [
-      933,
+      550,
       1220,
       180,
-      380,
+      420,
       3,
-      132
+      166
      ],
-     "height_mm": 129.0,
+     "height_mm": 163.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -1326,14 +1286,14 @@
      "item": "dock plate and tray lines",
      "kind": "plate",
      "box_mm": [
-      933,
+      550,
       1220,
       180,
-      380,
+      420,
       3,
-      132
+      166
      ],
-     "height_mm": 129.0,
+     "height_mm": 163.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -1483,14 +1443,14 @@
      "item": "dock plate and tray lines",
      "kind": "plate",
      "box_mm": [
-      933,
+      550,
       1220,
       180,
-      380,
+      420,
       3,
-      132
+      166
      ],
-     "height_mm": 129.0,
+     "height_mm": 163.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -1624,14 +1584,14 @@
      "item": "dock plate and tray lines",
      "kind": "plate",
      "box_mm": [
-      933,
+      550,
       1220,
       180,
-      380,
+      420,
       3,
-      132
+      166
      ],
-     "height_mm": 129.0,
+     "height_mm": 163.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -1797,14 +1757,14 @@
      "item": "dock plate and tray lines",
      "kind": "plate",
      "box_mm": [
-      933,
+      550,
       1220,
       180,
-      380,
+      420,
       3,
-      132
+      166
      ],
-     "height_mm": 129.0,
+     "height_mm": 163.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -1938,14 +1898,14 @@
      "item": "dock plate and tray lines",
      "kind": "plate",
      "box_mm": [
-      933,
+      550,
       1220,
       180,
-      380,
+      420,
       3,
-      132
+      166
      ],
-     "height_mm": 129.0,
+     "height_mm": 163.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
