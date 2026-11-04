@@ -1,0 +1,707 @@
+{
+ "name": "alloy_characterize",
+ "fps": 10,
+ "n_frames": 1431,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/5",
+   "caption": "Chapter 4 broke one bar from the AlSi10Mg plate in the Instron. Now samples of the same build go through the characterization trays: a coupon cut from the plate and hot-mounted in a 1.25 in Bakelite mount, in the polisher's 6-position holder, and a vial of the sieved powder it was printed from.",
+   "start_frame": 0,
+   "end_frame": 41
+  },
+  {
+   "label": "1/5",
+   "caption": "Chapter 4 broke one bar from the AlSi10Mg plate in the Instron. Now samples of the same build go through the characterization trays: a coupon cut from the plate and hot-mounted in a 1.25 in Bakelite mount, in the polisher's 6-position holder, and a vial of the sieved powder it was printed from.",
+   "start_frame": 42,
+   "end_frame": 63
+  },
+  {
+   "label": "2/5",
+   "caption": "Tray F (sample prep) comes to the opening: the LECO PX500 grinder-polisher, the lab's own, and the Nabertherm furnace.",
+   "start_frame": 64,
+   "end_frame": 72
+  },
+  {
+   "label": "2/5",
+   "caption": "Tray F (sample prep) comes to the opening: the LECO PX500 grinder-polisher, the lab's own, and the Nabertherm furnace.",
+   "start_frame": 73,
+   "end_frame": 85
+  },
+  {
+   "label": "2/5",
+   "caption": "Tray F (sample prep) comes to the opening: the LECO PX500 grinder-polisher, the lab's own, and the Nabertherm furnace.",
+   "start_frame": 86,
+   "end_frame": 94
+  },
+  {
+   "label": "2/5",
+   "caption": "Tray F (sample prep) comes to the opening: the LECO PX500 grinder-polisher, the lab's own, and the Nabertherm furnace.",
+   "start_frame": 95,
+   "end_frame": 98
+  },
+  {
+   "label": "2/5",
+   "caption": "Tray F (sample prep) comes to the opening: the LECO PX500 grinder-polisher, the lab's own, and the Nabertherm furnace.",
+   "start_frame": 99,
+   "end_frame": 110
+  },
+  {
+   "label": "2/5",
+   "caption": "Tray F (sample prep) comes to the opening: the LECO PX500 grinder-polisher, the lab's own, and the Nabertherm furnace.",
+   "start_frame": 111,
+   "end_frame": 114
+  },
+  {
+   "label": "2/5",
+   "caption": "The PX500's head lifts 70 mm for a holder change (assumed: LECO doesn't publish its stroke), and the arm takes the 6-position holder off its rest by a tab, our addition, with the coupon's mount in it.",
+   "start_frame": 117,
+   "end_frame": 127
+  },
+  {
+   "label": "2/5",
+   "caption": "The PX500's head lifts 70 mm for a holder change (assumed: LECO doesn't publish its stroke), and the arm takes the 6-position holder off its rest by a tab, our addition, with the coupon's mount in it.",
+   "start_frame": 128,
+   "end_frame": 144
+  },
+  {
+   "label": "2/5",
+   "caption": "The PX500's head lifts 70 mm for a holder change (assumed: LECO doesn't publish its stroke), and the arm takes the 6-position holder off its rest by a tab, our addition, with the coupon's mount in it.",
+   "start_frame": 145,
+   "end_frame": 152
+  },
+  {
+   "label": "2/5",
+   "caption": "The PX500's head lifts 70 mm for a holder change (assumed: LECO doesn't publish its stroke), and the arm takes the 6-position holder off its rest by a tab, our addition, with the coupon's mount in it.",
+   "start_frame": 153,
+   "end_frame": 157
+  },
+  {
+   "label": "2/5",
+   "caption": "The PX500's head lifts 70 mm for a holder change (assumed: LECO doesn't publish its stroke), and the arm takes the 6-position holder off its rest by a tab, our addition, with the coupon's mount in it.",
+   "start_frame": 158,
+   "end_frame": 164
+  },
+  {
+   "label": "2/5",
+   "caption": "The PX500's head lifts 70 mm for a holder change (assumed: LECO doesn't publish its stroke), and the arm takes the 6-position holder off its rest by a tab, our addition, with the coupon's mount in it.",
+   "start_frame": 165,
+   "end_frame": 172
+  },
+  {
+   "label": "2/5",
+   "caption": "In under the head, level, and up onto the spindle's quick-change coupling. The holder's other five pockets hold mounts from the same build.",
+   "start_frame": 173,
+   "end_frame": 193
+  },
+  {
+   "label": "2/5",
+   "caption": "In under the head, level, and up onto the spindle's quick-change coupling. The holder's other five pockets hold mounts from the same build.",
+   "start_frame": 194,
+   "end_frame": 206
+  },
+  {
+   "label": "2/5",
+   "caption": "In under the head, level, and up onto the spindle's quick-change coupling. The holder's other five pockets hold mounts from the same build.",
+   "start_frame": 207,
+   "end_frame": 210
+  },
+  {
+   "label": "2/5",
+   "caption": "In under the head, level, and up onto the spindle's quick-change coupling. The holder's other five pockets hold mounts from the same build.",
+   "start_frame": 211,
+   "end_frame": 215
+  },
+  {
+   "label": "2/5",
+   "caption": "In under the head, level, and up onto the spindle's quick-change coupling. The holder's other five pockets hold mounts from the same build.",
+   "start_frame": 216,
+   "end_frame": 225
+  },
+  {
+   "label": "2/5",
+   "caption": "In under the head, level, and up onto the spindle's quick-change coupling. The holder's other five pockets hold mounts from the same build.",
+   "start_frame": 226,
+   "end_frame": 240
+  },
+  {
+   "label": "2/5",
+   "caption": "Grinding, as in the lab's SOP: the head comes down, water on, platen 150 rpm and head 35 rpm, 30 s each on 320, 400, 600, 800 and 1200 grit SiC paper (the papers are changed between steps, not shown).",
+   "start_frame": 241,
+   "end_frame": 252
+  },
+  {
+   "label": "2/5",
+   "caption": "Grinding, as in the lab's SOP: the head comes down, water on, platen 150 rpm and head 35 rpm, 30 s each on 320, 400, 600, 800 and 1200 grit SiC paper (the papers are changed between steps, not shown).",
+   "start_frame": 253,
+   "end_frame": 293
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the final polish: a white cloth with 1 µm alumina suspension from a dispenser, force 3-5, 150 rpm, 3 min. Then rinse.",
+   "start_frame": 294,
+   "end_frame": 303
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the final polish: a white cloth with 1 µm alumina suspension from a dispenser, force 3-5, 150 rpm, 3 min. Then rinse.",
+   "start_frame": 304,
+   "end_frame": 340
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the final polish: a white cloth with 1 µm alumina suspension from a dispenser, force 3-5, 150 rpm, 3 min. Then rinse.",
+   "start_frame": 341,
+   "end_frame": 352
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm takes the holder off and turns it face up on its way back to the rest, so the polished face comes up with the mount.",
+   "start_frame": 353,
+   "end_frame": 369
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm takes the holder off and turns it face up on its way back to the rest, so the polished face comes up with the mount.",
+   "start_frame": 370,
+   "end_frame": 379
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm takes the holder off and turns it face up on its way back to the rest, so the polished face comes up with the mount.",
+   "start_frame": 380,
+   "end_frame": 384
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm takes the holder off and turns it face up on its way back to the rest, so the polished face comes up with the mount.",
+   "start_frame": 385,
+   "end_frame": 388
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm takes the holder off and turns it face up on its way back to the rest, so the polished face comes up with the mount.",
+   "start_frame": 389,
+   "end_frame": 401
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm takes the holder off and turns it face up on its way back to the rest, so the polished face comes up with the mount.",
+   "start_frame": 402,
+   "end_frame": 424
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm takes the holder off and turns it face up on its way back to the rest, so the polished face comes up with the mount.",
+   "start_frame": 425,
+   "end_frame": 432
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm takes the holder off and turns it face up on its way back to the rest, so the polished face comes up with the mount.",
+   "start_frame": 433,
+   "end_frame": 438
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm takes the holder off and turns it face up on its way back to the rest, so the polished face comes up with the mount.",
+   "start_frame": 439,
+   "end_frame": 443
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm takes the holder off and turns it face up on its way back to the rest, so the polished face comes up with the mount.",
+   "start_frame": 444,
+   "end_frame": 451
+  },
+  {
+   "label": "2/5",
+   "caption": "Tray F goes back to its slot. The arm lifts the mount out of the holder by its polished end; the pocket is slotted for the fingertips (our design).",
+   "start_frame": 452,
+   "end_frame": 468
+  },
+  {
+   "label": "2/5",
+   "caption": "Tray F goes back to its slot. The arm lifts the mount out of the holder by its polished end; the pocket is slotted for the fingertips (our design).",
+   "start_frame": 469,
+   "end_frame": 476
+  },
+  {
+   "label": "2/5",
+   "caption": "Tray F goes back to its slot. The arm lifts the mount out of the holder by its polished end; the pocket is slotted for the fingertips (our design).",
+   "start_frame": 477,
+   "end_frame": 481
+  },
+  {
+   "label": "2/5",
+   "caption": "Tray F goes back to its slot. The arm lifts the mount out of the holder by its polished end; the pocket is slotted for the fingertips (our design).",
+   "start_frame": 482,
+   "end_frame": 489
+  },
+  {
+   "label": "2/5",
+   "caption": "Tray F goes back to its slot. The arm lifts the mount out of the holder by its polished end; the pocket is slotted for the fingertips (our design).",
+   "start_frame": 490,
+   "end_frame": 504
+  },
+  {
+   "label": "2/5",
+   "caption": "Tray F goes back to its slot. The arm lifts the mount out of the holder by its polished end; the pocket is slotted for the fingertips (our design).",
+   "start_frame": 505,
+   "end_frame": 508
+  },
+  {
+   "label": "2/5",
+   "caption": "Tray F goes back to its slot. The arm lifts the mount out of the holder by its polished end; the pocket is slotted for the fingertips (our design).",
+   "start_frame": 509,
+   "end_frame": 520
+  },
+  {
+   "label": "2/5",
+   "caption": "Tray F goes back to its slot. The arm lifts the mount out of the holder by its polished end; the pocket is slotted for the fingertips (our design).",
+   "start_frame": 521,
+   "end_frame": 525
+  },
+  {
+   "label": "2/5",
+   "caption": "Tray F goes back to its slot. The arm lifts the mount out of the holder by its polished end; the pocket is slotted for the fingertips (our design).",
+   "start_frame": 526,
+   "end_frame": 534
+  },
+  {
+   "label": "2/5",
+   "caption": "Tray F goes back to its slot. The arm lifts the mount out of the holder by its polished end; the pocket is slotted for the fingertips (our design).",
+   "start_frame": 535,
+   "end_frame": 546
+  },
+  {
+   "label": "3/5",
+   "caption": "Tray D (microscopy and diffraction) comes down: the Hitachi TM4000PlusII SEM, the MiniFlex XRD and six OpenFlexure microscopes. The arm holds the mount meanwhile.",
+   "start_frame": 548,
+   "end_frame": 558
+  },
+  {
+   "label": "3/5",
+   "caption": "Tray D (microscopy and diffraction) comes down: the Hitachi TM4000PlusII SEM, the MiniFlex XRD and six OpenFlexure microscopes. The arm holds the mount meanwhile.",
+   "start_frame": 559,
+   "end_frame": 571
+  },
+  {
+   "label": "3/5",
+   "caption": "Tray D (microscopy and diffraction) comes down: the Hitachi TM4000PlusII SEM, the MiniFlex XRD and six OpenFlexure microscopes. The arm holds the mount meanwhile.",
+   "start_frame": 572,
+   "end_frame": 578
+  },
+  {
+   "label": "3/5",
+   "caption": "Tray D (microscopy and diffraction) comes down: the Hitachi TM4000PlusII SEM, the MiniFlex XRD and six OpenFlexure microscopes. The arm holds the mount meanwhile.",
+   "start_frame": 579,
+   "end_frame": 582
+  },
+  {
+   "label": "3/5",
+   "caption": "Tray D (microscopy and diffraction) comes down: the Hitachi TM4000PlusII SEM, the MiniFlex XRD and six OpenFlexure microscopes. The arm holds the mount meanwhile.",
+   "start_frame": 583,
+   "end_frame": 594
+  },
+  {
+   "label": "3/5",
+   "caption": "Tray D (microscopy and diffraction) comes down: the Hitachi TM4000PlusII SEM, the MiniFlex XRD and six OpenFlexure microscopes. The arm holds the mount meanwhile.",
+   "start_frame": 595,
+   "end_frame": 598
+  },
+  {
+   "label": "3/5",
+   "caption": "The SEM vents and its door comes out with the stage on it. A cup for 1.25 in mounts stays in the stage's socket (our fixture); the arm sets the mount in it, polished face up.",
+   "start_frame": 601,
+   "end_frame": 615
+  },
+  {
+   "label": "3/5",
+   "caption": "The SEM vents and its door comes out with the stage on it. A cup for 1.25 in mounts stays in the stage's socket (our fixture); the arm sets the mount in it, polished face up.",
+   "start_frame": 616,
+   "end_frame": 634
+  },
+  {
+   "label": "3/5",
+   "caption": "The SEM vents and its door comes out with the stage on it. A cup for 1.25 in mounts stays in the stage's socket (our fixture); the arm sets the mount in it, polished face up.",
+   "start_frame": 635,
+   "end_frame": 643
+  },
+  {
+   "label": "3/5",
+   "caption": "The SEM vents and its door comes out with the stage on it. A cup for 1.25 in mounts stays in the stage's socket (our fixture); the arm sets the mount in it, polished face up.",
+   "start_frame": 644,
+   "end_frame": 648
+  },
+  {
+   "label": "3/5",
+   "caption": "The SEM vents and its door comes out with the stage on it. A cup for 1.25 in mounts stays in the stage's socket (our fixture); the arm sets the mount in it, polished face up.",
+   "start_frame": 649,
+   "end_frame": 656
+  },
+  {
+   "label": "3/5",
+   "caption": "The SEM vents and its door comes out with the stage on it. A cup for 1.25 in mounts stays in the stage's socket (our fixture); the arm sets the mount in it, polished face up.",
+   "start_frame": 657,
+   "end_frame": 671
+  },
+  {
+   "label": "3/5",
+   "caption": "Door in, EVAC: about three minutes to vacuum. Then backscattered-electron images of the polished section (the Si network round the melt pools, any porosity) and an EDS map of Al, Si and Mg.",
+   "start_frame": 672,
+   "end_frame": 686
+  },
+  {
+   "label": "3/5",
+   "caption": "Door in, EVAC: about three minutes to vacuum. Then backscattered-electron images of the polished section (the Si network round the melt pools, any porosity) and an EDS map of Al, Si and Mg.",
+   "start_frame": 687,
+   "end_frame": 701
+  },
+  {
+   "label": "3/5",
+   "caption": "No image of this section exists yet. The inset is real data from the lab, of the powder this plate was printed from (chapter 4's), not of the section, and not from the TM4000.",
+   "start_frame": 702,
+   "end_frame": 749
+  },
+  {
+   "label": "3/5",
+   "caption": "Vented, door out; the arm takes the mount back.",
+   "start_frame": 750,
+   "end_frame": 764
+  },
+  {
+   "label": "3/5",
+   "caption": "Vented, door out; the arm takes the mount back.",
+   "start_frame": 765,
+   "end_frame": 781
+  },
+  {
+   "label": "3/5",
+   "caption": "Vented, door out; the arm takes the mount back.",
+   "start_frame": 782,
+   "end_frame": 790
+  },
+  {
+   "label": "3/5",
+   "caption": "Vented, door out; the arm takes the mount back.",
+   "start_frame": 791,
+   "end_frame": 795
+  },
+  {
+   "label": "3/5",
+   "caption": "Vented, door out; the arm takes the mount back.",
+   "start_frame": 796,
+   "end_frame": 803
+  },
+  {
+   "label": "3/5",
+   "caption": "Vented, door out; the arm takes the mount back.",
+   "start_frame": 804,
+   "end_frame": 818
+  },
+  {
+   "label": "3/5",
+   "caption": "Tray D goes back up; tray E comes down.",
+   "start_frame": 819,
+   "end_frame": 822
+  },
+  {
+   "label": "3/5",
+   "caption": "Tray D goes back up; tray E comes down.",
+   "start_frame": 823,
+   "end_frame": 834
+  },
+  {
+   "label": "3/5",
+   "caption": "Tray D goes back up; tray E comes down.",
+   "start_frame": 835,
+   "end_frame": 839
+  },
+  {
+   "label": "3/5",
+   "caption": "Tray D goes back up; tray E comes down.",
+   "start_frame": 840,
+   "end_frame": 846
+  },
+  {
+   "label": "3/5",
+   "caption": "Tray D goes back up; tray E comes down.",
+   "start_frame": 847,
+   "end_frame": 858
+  },
+  {
+   "label": "4/5",
+   "caption": "Tray E (mechanical testing and particle size): the Plastometrex PIP, the KLA iMicro nanoindenter and the Malvern Mastersizer 3000.",
+   "start_frame": 860,
+   "end_frame": 870
+  },
+  {
+   "label": "4/5",
+   "caption": "Tray E (mechanical testing and particle size): the Plastometrex PIP, the KLA iMicro nanoindenter and the Malvern Mastersizer 3000.",
+   "start_frame": 871,
+   "end_frame": 883
+  },
+  {
+   "label": "4/5",
+   "caption": "Tray E (mechanical testing and particle size): the Plastometrex PIP, the KLA iMicro nanoindenter and the Malvern Mastersizer 3000.",
+   "start_frame": 884,
+   "end_frame": 892
+  },
+  {
+   "label": "4/5",
+   "caption": "Tray E (mechanical testing and particle size): the Plastometrex PIP, the KLA iMicro nanoindenter and the Malvern Mastersizer 3000.",
+   "start_frame": 893,
+   "end_frame": 896
+  },
+  {
+   "label": "4/5",
+   "caption": "Tray E (mechanical testing and particle size): the Plastometrex PIP, the KLA iMicro nanoindenter and the Malvern Mastersizer 3000.",
+   "start_frame": 897,
+   "end_frame": 908
+  },
+  {
+   "label": "4/5",
+   "caption": "Tray E (mechanical testing and particle size): the Plastometrex PIP, the KLA iMicro nanoindenter and the Malvern Mastersizer 3000.",
+   "start_frame": 909,
+   "end_frame": 912
+  },
+  {
+   "label": "4/5",
+   "caption": "The iMicro's hood lifts and its XY stage runs out to a load position, clear of the objective. The arm sets the mount on the stage.",
+   "start_frame": 915,
+   "end_frame": 931
+  },
+  {
+   "label": "4/5",
+   "caption": "The iMicro's hood lifts and its XY stage runs out to a load position, clear of the objective. The arm sets the mount on the stage.",
+   "start_frame": 932,
+   "end_frame": 950
+  },
+  {
+   "label": "4/5",
+   "caption": "The iMicro's hood lifts and its XY stage runs out to a load position, clear of the objective. The arm sets the mount on the stage.",
+   "start_frame": 951,
+   "end_frame": 959
+  },
+  {
+   "label": "4/5",
+   "caption": "The iMicro's hood lifts and its XY stage runs out to a load position, clear of the objective. The arm sets the mount on the stage.",
+   "start_frame": 960,
+   "end_frame": 964
+  },
+  {
+   "label": "4/5",
+   "caption": "The iMicro's hood lifts and its XY stage runs out to a load position, clear of the objective. The arm sets the mount on the stage.",
+   "start_frame": 965,
+   "end_frame": 972
+  },
+  {
+   "label": "4/5",
+   "caption": "The iMicro's hood lifts and its XY stage runs out to a load position, clear of the objective. The arm sets the mount on the stage.",
+   "start_frame": 973,
+   "end_frame": 987
+  },
+  {
+   "label": "4/5",
+   "caption": "Hood down, shutting out air currents and noise. The stage carries the mount under the microscope, then under the indenter, for a 5 × 5 grid of indents to 500 nm (hardness and modulus), and back to image them.",
+   "start_frame": 988,
+   "end_frame": 1004
+  },
+  {
+   "label": "4/5",
+   "caption": "Hood down, shutting out air currents and noise. The stage carries the mount under the microscope, then under the indenter, for a 5 × 5 grid of indents to 500 nm (hardness and modulus), and back to image them.",
+   "start_frame": 1005,
+   "end_frame": 1035
+  },
+  {
+   "label": "4/5",
+   "caption": "Hood down, shutting out air currents and noise. The stage carries the mount under the microscope, then under the indenter, for a 5 × 5 grid of indents to 500 nm (hardness and modulus), and back to image them.",
+   "start_frame": 1036,
+   "end_frame": 1051
+  },
+  {
+   "label": "4/5",
+   "caption": "Hood up, stage out; the mount goes back to the caddy on the MiR.",
+   "start_frame": 1052,
+   "end_frame": 1066
+  },
+  {
+   "label": "4/5",
+   "caption": "Hood up, stage out; the mount goes back to the caddy on the MiR.",
+   "start_frame": 1067,
+   "end_frame": 1083
+  },
+  {
+   "label": "4/5",
+   "caption": "Hood up, stage out; the mount goes back to the caddy on the MiR.",
+   "start_frame": 1084,
+   "end_frame": 1092
+  },
+  {
+   "label": "4/5",
+   "caption": "Hood up, stage out; the mount goes back to the caddy on the MiR.",
+   "start_frame": 1093,
+   "end_frame": 1097
+  },
+  {
+   "label": "4/5",
+   "caption": "Hood up, stage out; the mount goes back to the caddy on the MiR.",
+   "start_frame": 1098,
+   "end_frame": 1105
+  },
+  {
+   "label": "4/5",
+   "caption": "Hood up, stage out; the mount goes back to the caddy on the MiR.",
+   "start_frame": 1106,
+   "end_frame": 1126
+  },
+  {
+   "label": "4/5",
+   "caption": "Hood up, stage out; the mount goes back to the caddy on the MiR.",
+   "start_frame": 1127,
+   "end_frame": 1134
+  },
+  {
+   "label": "4/5",
+   "caption": "Hood up, stage out; the mount goes back to the caddy on the MiR.",
+   "start_frame": 1135,
+   "end_frame": 1139
+  },
+  {
+   "label": "4/5",
+   "caption": "Hood up, stage out; the mount goes back to the caddy on the MiR.",
+   "start_frame": 1140,
+   "end_frame": 1146
+  },
+  {
+   "label": "4/5",
+   "caption": "Then the powder: the arm takes the vial from the caddy by its side. The Aero S's clear cover lifts off (by hand in Malvern's videos; an actuator is assumed here).",
+   "start_frame": 1147,
+   "end_frame": 1163
+  },
+  {
+   "label": "4/5",
+   "caption": "Then the powder: the arm takes the vial from the caddy by its side. The Aero S's clear cover lifts off (by hand in Malvern's videos; an actuator is assumed here).",
+   "start_frame": 1164,
+   "end_frame": 1170
+  },
+  {
+   "label": "4/5",
+   "caption": "Then the powder: the arm takes the vial from the caddy by its side. The Aero S's clear cover lifts off (by hand in Malvern's videos; an actuator is assumed here).",
+   "start_frame": 1171,
+   "end_frame": 1175
+  },
+  {
+   "label": "4/5",
+   "caption": "Then the powder: the arm takes the vial from the caddy by its side. The Aero S's clear cover lifts off (by hand in Malvern's videos; an actuator is assumed here).",
+   "start_frame": 1176,
+   "end_frame": 1182
+  },
+  {
+   "label": "4/5",
+   "caption": "A few grams into the hopper, over the vibrating tray: the wrist rolls the vial over.",
+   "start_frame": 1183,
+   "end_frame": 1203
+  },
+  {
+   "label": "4/5",
+   "caption": "A few grams into the hopper, over the vibrating tray: the wrist rolls the vial over.",
+   "start_frame": 1204,
+   "end_frame": 1217
+  },
+  {
+   "label": "4/5",
+   "caption": "A few grams into the hopper, over the vibrating tray: the wrist rolls the vial over.",
+   "start_frame": 1218,
+   "end_frame": 1229
+  },
+  {
+   "label": "4/5",
+   "caption": "A few grams into the hopper, over the vibrating tray: the wrist rolls the vial over.",
+   "start_frame": 1230,
+   "end_frame": 1240
+  },
+  {
+   "label": "4/5",
+   "caption": "A few grams into the hopper, over the vibrating tray: the wrist rolls the vial over.",
+   "start_frame": 1241,
+   "end_frame": 1261
+  },
+  {
+   "label": "4/5",
+   "caption": "A few grams into the hopper, over the vibrating tray: the wrist rolls the vial over.",
+   "start_frame": 1262,
+   "end_frame": 1268
+  },
+  {
+   "label": "4/5",
+   "caption": "A few grams into the hopper, over the vibrating tray: the wrist rolls the vial over.",
+   "start_frame": 1269,
+   "end_frame": 1273
+  },
+  {
+   "label": "4/5",
+   "caption": "A few grams into the hopper, over the vibrating tray: the wrist rolls the vial over.",
+   "start_frame": 1274,
+   "end_frame": 1280
+  },
+  {
+   "label": "4/5",
+   "caption": "Cover on, air on and the background measured; the tray vibrates the powder into the venturi and the air carries it to the cell, across the laser (drawn see-through). Three measurements, under a minute each.",
+   "start_frame": 1281,
+   "end_frame": 1295
+  },
+  {
+   "label": "4/5",
+   "caption": "Cover on, air on and the background measured; the tray vibrates the powder into the venturi and the air carries it to the cell, across the laser (drawn see-through). Three measurements, under a minute each.",
+   "start_frame": 1296,
+   "end_frame": 1331
+  },
+  {
+   "label": "4/5",
+   "caption": "Cover on, air on and the background measured; the tray vibrates the powder into the venturi and the air carries it to the cell, across the laser (drawn see-through). Three measurements, under a minute each.",
+   "start_frame": 1332,
+   "end_frame": 1343
+  },
+  {
+   "label": "4/5",
+   "caption": "Tray E goes back up to its slot and its power.",
+   "start_frame": 1344,
+   "end_frame": 1347
+  },
+  {
+   "label": "4/5",
+   "caption": "Tray E goes back up to its slot and its power.",
+   "start_frame": 1348,
+   "end_frame": 1359
+  },
+  {
+   "label": "4/5",
+   "caption": "Tray E goes back up to its slot and its power.",
+   "start_frame": 1360,
+   "end_frame": 1364
+  },
+  {
+   "label": "4/5",
+   "caption": "Tray E goes back up to its slot and its power.",
+   "start_frame": 1365,
+   "end_frame": 1373
+  },
+  {
+   "label": "4/5",
+   "caption": "Tray E goes back up to its slot and its power.",
+   "start_frame": 1374,
+   "end_frame": 1385
+  },
+  {
+   "label": "5/5",
+   "caption": "Done: the build's coupon ground and polished on tray F, imaged in the SEM on tray D and indented on tray E, and its powder sized on tray E, every tray brought to the opening only when it was needed, and every arm move checked against everything in the scene.",
+   "start_frame": 1387,
+   "end_frame": 1430
+  }
+ ]
+}
