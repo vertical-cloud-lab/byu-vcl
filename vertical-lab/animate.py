@@ -57,7 +57,8 @@ HOME = {"A": "R2", "B": "R3", "C": "F1"}       # storage slot of each tray
 # its front half
 AMR_XY = (0.0, -V.UNIT_D / 2 - V.SKIN - 50.0 - 30.0 - P.MIR["W"] / 2)
 ARM_LOCAL = (0.0, 130.0)
-BUFFER_LOCAL = (-300.0, -150.0)                # the one-vial holder on the cabinet top
+BUFFER_LOCAL = (-300.0, -150.0)                # the MiR's storage block on the cabinet top, beside the arm's plate:
+                                               # the vial's pocket (props.buffer_holder) or the cups' (charge.carrier)
 RACK_SEAT = 5                                  # the rack's seat with the vial the workflow uses
 CUB_SLOT = (100.0, -60.0, 80.0)                # the CubXL rack's sixth seat (base of the vial), CubXL frame
 MODULE = 5                                     # the powder module the workflow doses from (0-based; "module 6")
@@ -353,7 +354,9 @@ class Lab:
         return self.groups(*kids)
 
 
-PARK_DEG = (-90.0, -150.0, 135.0, -75.0, -90.0, 0.0)    # folded over its base, facing the opening (q0 = -90: +y)
+PARK_DEG = (-90.0, -150.0, 135.0, -75.0, -90.0, 180.0)  # folded over its base, facing the opening (q0 = -90: +y);
+# wrist 3 at 180 deg (round 7) turns the wrist camera (ur_arm.camera_meshes) to the MiR's back: at 0 it stuck out
+# 71 mm past the MiR's side towards the machine it docks at, and caught the Kardex opening's post while docking
 
 
 def both(*fs):

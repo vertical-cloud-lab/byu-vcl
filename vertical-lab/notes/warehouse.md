@@ -57,6 +57,8 @@ The MiR Charge 48V is 622 × 237 × 287 mm, 487 mm deep with its charging plate 
 both are MiR distributors).
 
 The docks sit between the aisle and the machines: a 0.84 m band on each side, taped, with a camera target on a post.
+The target is a 120 mm cube with a tag on its top and on all four sides, each one different. So the wrist camera, or
+a camera on the MiR, sees a tag from any side as well as from above (round 7; it was one flat tag facing up).
 So a docked unit blocks nothing. From front line to front line the band is 4.68 m: 3.0 m of aisle and two dock bands.
 
 **A unit drives into a dock along the dock's line, from the end without the post.** A docked MiR250 stands 80 mm off
@@ -237,7 +239,8 @@ script draws stand-ins: a camera on a post at each tray's back corner, and two d
   compliance, and a lumped mass for the first mode. The damping is assumed.
 - **The tipping check uses an estimated cabinet mass** and ignores where the wheels actually are.
 - **These are layout choices, not a design:** the racking sizes, the cable trays, the argon line, the camera targets
-  and the reserved footprints. The targets are drawn like AprilTags, schematically.
+  and the reserved footprints. The targets are drawn like AprilTag 36h11 tags, schematically: a white ring, a black
+  ring and 6 x 6 data cells per face. The bits are seeded at random, not real tag IDs.
 - **The collision checks cover only the drawn meshes, at the drawn speeds.** They know nothing of the MiR250's safety
   scanners. In practice those keep a moving unit farther from things than these routes do: MiR's corridor for one
   unit is 1.45 m.

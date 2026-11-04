@@ -1,6 +1,6 @@
 """The atomizer charge that the alloy workflow carries instead of a vial: the lab's charge cup, vented plug and press
 sleeve, turned from high-purity Al or Cu bar, as PyVista meshes. A fixture rack, the doser's cup adapter, a press for
-the plug, the AMR's cup carrier and the run's recipe go with them.
+the plug, the AMR's cup carrier (a low pocketed block on its cabinet) and the run's recipe go with them.
 
 Geometry is #222's ``atomizer-charge/cad/charge_cad.py`` (branch ``claude/issue-222-20260925-0343``, commit
 2a608d6), the parametric CAD behind the lab's STEP files, shop drawing and process sheets. The profiles below are
@@ -317,17 +317,25 @@ def press():
     return out
 
 
-def carrier(n=4, pitch=34.0):
-    """A four-cup carrier on the AMR's cabinet top, where the charged cups ride to the atomizer: a block on a
-    post (props.buffer_holder's post), its pockets in a row along x. Returns the mesh and the seats (cup base
-    centres) in its own frame."""
+CARRIER_X = -30.0           # the carrier's row of pockets, in its own frame (origin on the cabinet top at
+CARRIER_Y0 = -88.0          # animate.BUFFER_LOCAL): 30 mm further out than the vial's pocket, first pocket at y0
+CARRIER_PITCH = 85.0        # pocket to pocket: the 2F-85's open fingertips (73.7 mm out) clear the next cup
+
+
+def carrier(n=4, pitch=CARRIER_PITCH):
+    """The MiR's cup carrier, where the charged cups ride to the atomizer (round 7): a low block standing on the AMR's
+    cabinet top beside the arm's mounting plate, no post (props.pocket_block), with n bored pockets in a row along y.
+    Each is the cup's 19.05 mm plus 1 mm all round, 26 mm deep (41 % of the cup), with a 45 deg lead-in, so a cup
+    can't tip out while the MiR drives. The row is 30 mm outboard of the frame's origin, so a level gripper reaches a
+    cup from either side with its body clear of the mounting plate. Returns the mesh and the seats (cup base centres)
+    in its own frame."""
     import props as P
-    post = _cylz(16.0, 0.0, P.HOLDER_H)
-    foot = _box(-45, 45, -45, 45, 0, 8)
-    w = n * pitch + 16
-    blk = _box(-w / 2, w / 2, -24, 24, P.HOLDER_H, P.HOLDER_H + 30.0)
-    seats = [(-w / 2 + 8 + pitch * (i + 0.5), 0.0, P.HOLDER_H + 30.0 - CUP_POCKET) for i in range(n)]
-    return post.merge(foot).merge(blk), seats
+    r = STOCK_D / 2 + P.POCKET_CLEAR
+    wall = 9.0
+    ys = [CARRIER_Y0 + pitch * i for i in range(n)]
+    mesh = P.pocket_block(CARRIER_X - r - wall, CARRIER_X + r + wall, ys[0] - r - wall, ys[-1] + r + wall,
+                          [(CARRIER_X, y, r) for y in ys])
+    return mesh, [(CARRIER_X, y, P.DECK_FLOOR) for y in ys]
 
 
 # ------------------------------------------------------------------ the run
