@@ -18,7 +18,7 @@ time, and this chapter is the two merged:
 | 2 | The arm sets the Si funnel in the doser's fork. Its stem stops 4 mm over a cup's rim | the station |
 | 3 | The first 5N Al cup goes from the rack into the doser's cradle. The carousel indexes the Si module, docks, tilts and doses 3.92 g by auger turns. The cup goes into the HR-202i, which reads it, and back to the rack. Then the other three, faster | cup and funnel in half section; the balance |
 | 4 | The Si funnel goes back to the stand; the AlSi10Mg funnel takes the fork | the station |
-| 5 | The first Al cup again: topped up with 3.91 g of AlSi10Mg to the plug line, weighed, its plug set in the mouth at the rack, onto the die's ejector pin, the punch on; shuttle in, pumped below 1 mbar, pressed flush at 3.2 t, vented with Ar; onto the MiR250's carrier. Then the other three, faster | half sections of the cup, the die and the press stroke |
+| 5 | The first Al cup again: topped up with 3.91 g of AlSi10Mg to the plug line, weighed, its plug set in the mouth at the rack, into the die's catch ring on the raised ejector pin, the punch on; shuttle in, pumped below 1 mbar, pressed flush at 3.2 t, vented with Ar; onto the MiR250's carrier. Then the other three, faster | half sections of the cup, the die and the press stroke |
 | 6 | The AlSi10Mg funnel back; the Ni funnel in | |
 | 7 | The first OFE Cu cup in full, briefer: 14.62 g of Ni, weighed. Then the other three | |
 | 8 | The Ni funnel back; the Cu funnel in | |
@@ -164,6 +164,14 @@ tonnage. Also, it would be better if it were a vacuum press" ([`alloy_press.py`]
   cup rides to the press with its plug in the mouth, on its 15° lead-in, 8.0 mm proud.
 - **The press opens above the die.** The shuttle carries the die out of the press to the arm, and the ejector pin
   raises the cup out of F1 when it is pressed. The punch is handled level by its flange, from a rest beside the press.
+- **The cup stands in a catch ring, not on the bare pin** (Sterling: on the raised pin it "looks very unstable. There
+  should probably be a custom underneath catch that holds it in place somewhat"). Nothing riding up on the pin can
+  hold the cup round its base, because the cup leaves F1 through a line-to-line bore. So the catch is the die's mouth:
+  a hardened ring on F1, bored Ø19.30 over the 19.05 mm cup with a 30° lead-in, and the pin stops 75.5 mm up (was
+  90.5), with the cup's bottom 10 mm still in the ring. The arm sets the cup into it and lifts it out level, 45 mm up
+  the cup, so the fingers pass at least 20 mm over the die. The punch got a Ø19.20 nose to run in the ring and a collar
+  that lands on it at flush, so F1 still takes the load past flush ([`vacuum_press.md`](vacuum_press.md#the-catch-the-cup-stands-in-the-dies-mouth-not-on-the-bare-pin)).
+- **The press has been on tray B since the lab was set up** (`setup_lab.py`). Its first label in the chapter says so.
 
 ## What the chapter showed
 
@@ -218,8 +226,9 @@ checks every frame: the arm against itself, and the arm, gripper and what it hol
 ## Assumed
 
 - **The rack, the station's post, cradle and fork, the funnels and their stand, the balance's cup holder and block,
-  the die, its shuttle and the punch's rest, and the MiR's carrier** are this model's designs. The carrier stands
-  where round 2's one-vial holder stood.
+  the die, its catch ring, its shuttle and the punch's rest, and the MiR's carrier** are this model's designs. The
+  carrier is round 7's low pocketed block on the MiR's cabinet top (`charge.carrier`, `props.pocket_block`): four
+  bored pockets 1 mm over the cup, 26 mm deep, with a 45° lead-in, 85 mm apart, where round 2's one-vial holder stood.
 - **The balance's doors open on their own** (a door drive; the HR-i's are manual).
 - **Dosing by auger turns** lands within ±1 % of the dose (the readings shown are made up to be inside it).
 - **Tapped densities of Ni, Fe and Cu powder**: 55 % of the solid. The Si and Al values are #222's.

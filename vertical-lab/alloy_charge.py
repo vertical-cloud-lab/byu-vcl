@@ -43,8 +43,8 @@ import numpy as np
 import pyvista as pv
 
 import scene
-scene.GIF_FPS = 4                      # a ~4-minute GIF under 4.9 MB (the MP4 keeps every frame, 15 fps)
-scene.GIF_SIZE = (560, 315)
+scene.GIF_FPS = 4                      # a ~4-minute GIF under 4.9 MB (the MP4 keeps every frame, 15 fps); at
+scene.GIF_SIZE = (512, 288)            # 560 x 315 the last render's came out at 5.3 MB
 from scene import Scene, T, R, S, OUT  # noqa: E402
 
 import animate as A                    # noqa: E402
@@ -384,9 +384,10 @@ def movie():
         the moves use, as (distance back along the direction, height up) from p; each must have an IK solution clear of
         everything (collide.py), and the arm's own links, with what it holds. Square to the tray, a target near the
         arm's base or off to one side folds the arm into itself; the cups and the punch are round, so any horizontal
-        approach grips them. `close`: the gripper's closure to check with (default: as it is now). `only`: the groups
-        the gripper may touch at the contact pose (default: whatever it touches there), so that an open fingertip
-        brushing the next cup in a rack rules a direction out."""
+        approach grips them. An entry of offs may carry a third number, the gripper's closure there; `close` is the
+        default (the closure as it is now if None). `only`: the groups the gripper may touch at the contact pose
+        (default: whatever it touches there), so that an open fingertip brushing the next cup in a rack rules a
+        direction out; if no direction passes with it, any contact there is allowed, as before."""
         import collide
         chk = rb.checker()
         W = chk.snapshot()
@@ -399,15 +400,17 @@ def movie():
             a = math.radians(g)
             d = np.array([math.sin(a), math.cos(a), 0.0])
             ok = True
-            for back, up in offs:
+            for o in offs:
+                back, up = o[:2]
+                cc = o[2] if len(o) > 2 else c
                 Tb = inv @ lvl(np.asarray(p, float) - d * back + (0, 0, up), d)
                 contact = back < 1 and up < 3
                 good = False
                 for q in collide.ik_all(rb.model, Tb, rb.q):
-                    allow = chk.touching(q, c, W) if contact else set()
+                    allow = chk.touching(q, cc, W) if contact else set()
                     if only is not None:
                         allow &= set(only)
-                    if not chk.collisions(q, c, W, allow, first=True):
+                    if not chk.collisions(q, cc, W, allow, first=True):
                         good = True
                         break
                 if not good:
@@ -415,6 +418,10 @@ def movie():
                     break
             if ok:
                 return d
+        if only is not None:
+            print(f"note: {sc.label}: no level approach at {np.round(p).tolist()} touching only {sorted(only)}; "
+                  f"any contact allowed", flush=True)
+            return aim(p, offs, prefer, step, close, None)
         print(f"warning: no clear level approach at {np.round(p).tolist()}", flush=True)
         return np.array([prefer[0], prefer[1], 0.0], float)
 
@@ -467,7 +474,7 @@ def movie():
     def rack_aim(i):
         if i not in rack_dir:            # open, the fingertips may touch cup i and its rack, not the cups beside it
             p0 = K.rack_cup(i) + (0, 0, CUP_GRASP)
-            rack_dir[i] = aim(p0, [(150, 30), (0, 0), (0, 30)], radial(p0), close=OPEN_CUP,
+            rack_dir[i] = aim(p0, [(150, 30, OPEN_CUP), (0, 0, OPEN_CUP), (0, 30, GRIP_CUP)], radial(p0), step=5,
                               only={f"cup{i}", f"plug{i}", "crack"})
         return rack_dir[i]
 
