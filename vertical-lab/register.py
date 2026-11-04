@@ -332,7 +332,8 @@ def render(key: str, cam, size, pose: dict, params: dict | None = None):
         for e in ents:
             if not e["mesh"].n_points:
                 continue
-            pl.add_mesh(e["mesh"].transform(m, inplace=False), color=e["color"], opacity=max(e["opacity"], 0.6),
+            # opaque, all of it: a see-through cover leaves nothing in the depth buffer, so it would get no outline
+            pl.add_mesh(e["mesh"].transform(m, inplace=False), color=e["color"], opacity=1.0,
                         smooth_shading=True, split_sharp_edges=True, feature_angle=scene.FEATURE_ANGLE,
                         ambient=0.25, diffuse=0.8, **scene.surface_style(e["specular"]))
     R = rodrigues(cam[:3])
