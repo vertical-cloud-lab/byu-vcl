@@ -3,47 +3,59 @@
   {
    "cup": 1,
    "angle_deg": 145.0,
-   "fingers_lowest_below_rim_mm": 14.7,
-   "over_seated_cups": [],
-   "into_crucible_wall_mm": 4.9
+   "descent_fraction": 0.765,
+   "foot_under_rim_mm": 13.4,
+   "fingers_lowest_above_rim_mm": 22.3,
+   "into_crucible_wall_mm": 0.0,
+   "closest_to_filling_cone_mm": 3.9,
+   "over_seated_cups": []
   },
   {
    "cup": 2,
    "angle_deg": 70.0,
-   "fingers_lowest_below_rim_mm": 14.7,
+   "descent_fraction": 0.217,
+   "foot_under_rim_mm": -19.1,
+   "fingers_lowest_above_rim_mm": 55.0,
+   "into_crucible_wall_mm": 0.0,
+   "closest_to_filling_cone_mm": null,
    "over_seated_cups": [
     {
      "cup": 1,
-     "gap_mm": 5.4
+     "gap_mm": 75.3
     }
-   ],
-   "into_crucible_wall_mm": 4.9
+   ]
   },
   {
    "cup": 3,
    "angle_deg": 220.0,
-   "fingers_lowest_below_rim_mm": 14.6,
+   "descent_fraction": 0.774,
+   "foot_under_rim_mm": 14.7,
+   "fingers_lowest_above_rim_mm": 21.0,
+   "into_crucible_wall_mm": 0.0,
+   "closest_to_filling_cone_mm": 3.9,
    "over_seated_cups": [
     {
      "cup": 1,
-     "gap_mm": 5.4
+     "gap_mm": 41.1
     }
-   ],
-   "into_crucible_wall_mm": 4.2
+   ]
   },
   {
    "cup": 4,
    "angle_deg": 295.0,
-   "fingers_lowest_below_rim_mm": 14.6,
+   "descent_fraction": 0.774,
+   "foot_under_rim_mm": 14.7,
+   "fingers_lowest_above_rim_mm": 21.0,
+   "into_crucible_wall_mm": 0.0,
+   "closest_to_filling_cone_mm": 3.9,
    "over_seated_cups": [
     {
      "cup": 3,
-     "gap_mm": 5.4
+     "gap_mm": 41.1
     }
-   ],
-   "into_crucible_wall_mm": 4.2
+   ]
   }
  ],
  "seated_cup_tops_below_rim_mm": 19.1,
- "note": "2F-85 at closure GRIP_CUP, holding the cup 13 mm below its top as the movie does, at the release pose (#222's tight spot under the rod's adapter). into_crucible_wall_mm: how far the fingers' outer corners reach past the 57.1 mm bore while below the rim, i.e. into the graphite."
+ "note": "2F-85 at closure GRIP_CUP, holding the cup GRIP_AT = 8 mm under its top, at the pose where the movie lets go: as far down `descent` as the collision checker finds the gripper clear (release_at). Below the rim the fingers' outer corners don't fit the 57.1 mm bore, so the arm lets go with them over it and the cup slides the rest of the way. closest_to_filling_cone_mm: the fingers' least clearance to the top insulation's bore (negative: into it); into_crucible_wall_mm: how far any finger point under the rim reaches past the bore."
 }
