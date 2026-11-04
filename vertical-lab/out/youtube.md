@@ -35,6 +35,7 @@ Every MP4 under `out/mp4/` and its video on the lab's channel (unlisted). Writte
 | [`instruments/openflexure_array.mp4`](mp4/instruments/openflexure_array.mp4) | 0:21 | not uploaded |  |
 | [`instruments/openflexure_delta.mp4`](mp4/instruments/openflexure_delta.mp4) | 0:09 | not uploaded |  |
 | [`instruments/openflexure_v7.mp4`](mp4/instruments/openflexure_v7.mp4) | 0:09 | not uploaded |  |
+| [`instruments/ot2.mp4`](mp4/instruments/ot2.mp4) | 0:24 | [iwYZM4PX32Y](https://www.youtube.com/watch?v=iwYZM4PX32Y) |  |
 | [`instruments/packaging.mp4`](mp4/instruments/packaging.mp4) | 0:29 | not uploaded |  |
 | [`instruments/pip.mp4`](mp4/instruments/pip.mp4) | 0:15 | not uploaded |  |
 | [`instruments/polisher.mp4`](mp4/instruments/polisher.mp4) | 0:18 | not uploaded |  |

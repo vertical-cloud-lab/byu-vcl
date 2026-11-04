@@ -110,6 +110,17 @@
     "privacy": "unlisted"
    }
   ],
+  "instruments/ot2.mp4": [
+   {
+    "id": "iwYZM4PX32Y",
+    "sha256": "96fe4daf9bcf99e836ce1d852cfb3b85bbd3833051f06e8048fe1769500b1eb0",
+    "bytes": 1838442,
+    "commit": "8acb26a",
+    "uploaded": "2026-11-04T07:47:46Z",
+    "title": "Vertical cloud lab: Opentrons OT-2, the gantry and pipette over the deck, the panels see-through",
+    "privacy": "unlisted"
+   }
+  ],
   "instruments_round4_tour.mp4": [
    {
     "id": "IEbhMjcAUOQ",
