@@ -1174,9 +1174,9 @@ PLAN = [
     dict(beat="melt", file="nab_melt1.mp4", window=(10.0, 15.0),
          caption="Real footage, Oct 27 2026, through the furnace port: the four bronze pieces stand round the sealing "
                  "rod and glow (youtu.be/2brsz-90seg, DAL #219). 630 bronze at 1300 °C, not Al-10Si."),
-    dict(beat="melt", file="nab_melt2.mp4", window=(48.0, 55.0),
-         caption="The pieces slump and run together round the rod: \"It's melting in right now\" (2brsz-90seg, "
-                 "03:55)."),
+    dict(beat="melt", file="nab_melt2.mp4", window=(70.0, 77.0),
+         caption="A few minutes on, the pieces sink into their own melt round the rod (2brsz-90seg, about 4:36; at "
+                 "3:55 Gage says \"It's melting in right now\")."),
     dict(beat="melt", file="nab_melt3.mp4", window=(14.0, 18.5),
          caption="The charge fully molten, a bright pool round the sealing rod (2brsz-90seg, DAL #219)."),
     dict(beat="pour", file="nab_pour1.mp4", window=(15.0, 22.5),

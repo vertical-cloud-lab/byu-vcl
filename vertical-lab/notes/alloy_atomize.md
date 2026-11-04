@@ -100,9 +100,9 @@ Every piece is the lab's, credited on screen. None of it is Al-10Si: each captio
 | Beat | Piece | What it shows | Source |
 |---|---|---|---|
 | Four cups in | photo | the Oct 27 charge: four 630 bronze rod pieces, 1,079.886 g on the balance | Gage Erickson, DAL #219 comment 6457884447 |
-| The melt | 3 clips, 5 + 7 + 4.5 s | through the furnace port: the bronze pieces round the sealing rod glowing, slumping ("It's melting in right now"), then fully molten | [2brsz-90seg](https://youtu.be/2brsz-90seg) from 0:52, 3:26, 5:14 (k7m2q9, Oct 27) |
-| The pour | clip, 7.5 s | through the view port: the bronze jet on the tip of the W-coated CF plate, atomizing | [2brsz-90seg](https://youtu.be/2brsz-90seg) from 8:02 |
-| The pour | clip, 6 s | an Al 6063 stream on a CF plate, which **dripped rather than atomized** that day (CF plate with the 1.5:1 booster) | [dTyuZmqYxHA](https://youtu.be/dTyuZmqYxHA) from 1:26 (Oct 8, DAL #159, PR #176) |
+| The melt | 3 clips, 5 + 7 + 4.5 s | through the furnace port: the bronze pieces round the sealing rod glowing, sinking into their own melt, then fully molten | [2brsz-90seg](https://youtu.be/2brsz-90seg) at about 1:02, 4:36 and 5:28 (k7m2q9, Oct 27) |
+| The pour | clip, 7.5 s | through the view port: the bronze jet on the tip of the W-coated CF plate, atomizing | [2brsz-90seg](https://youtu.be/2brsz-90seg) at about 8:17 |
+| The pour | clip, 6 s | an Al 6063 stream on a CF plate, which **dripped rather than atomized** that day (CF plate with the 1.5:1 booster) | [dTyuZmqYxHA](https://youtu.be/dTyuZmqYxHA) at about 1:40 (Oct 8, DAL #159, PR #176) |
 | The powder | 2 photos | a jar of the k7m2q9 bronze powder; the Oct 22 Al 4047 run c3k0n5, a bag of splats and a jar | DAL #219 comment 6457884447; Ronnie Guymon, DAL #159 comment 6353788099 |
 | Sieved | photo | the bronze sieved: < 63 µm, 63–250 µm, flakes over 250 µm | Gage Erickson, DAL #219 comment 6509252104 |
 
