@@ -576,8 +576,7 @@ def mast_parts(post_h: float, foot=True) -> dict:
                 .extrude(2.5, both=True).rotate((0, 0, 0), (0, 0, 1), ang)
             sock = sock.union(g)
         p["foot"] = (plate.union(sock), "svc_petg")
-        p["PoE lead"] = (hose([(0, e + 3.0, post_h - 40.0), (0, e + 3.0, 66.0), (0, 60.0, 8.0), (0, 140.0, 8.0)], 6.0),
-                         "svc_print")
+        p["PoE lead"] = (hose([(0, e + 3.0, post_h - 40.0), (0, e + 3.0, 66.0), (0, 40.0, 8.0)], 6.0), "svc_print")
     return p
 
 
@@ -783,14 +782,16 @@ REGISTRY = {"tray_dock": tray_dock, "stream_cam": stream_cam}
 # ===================================================================================================== scenes
 # Below here: the pieces in the VLM (docks, plates, risers, UPSs, cameras), the animations and the JSON. The scene
 # modules are imported late, so tour.py can import this module for REGISTRY without loading the lab's meshes.
-TRAY_CAMS = {   # per tray: (mast x, mast y, aim x, aim y, aim z) in the tray's frame; the post's foot on the floor
-    "A": [(-760.0, 320.0, -150.0, -150.0, 150.0), (420.0, 320.0, 760.0, -60.0, 330.0)],
+TRAY_CAMS = {   # per tray: (mast x, mast y, aim x, aim y, aim z[, post yaw]) in the tray's frame; the post's foot on
+                # the floor. A post yaw is given where the default (rig_pose) would put the head in an instrument.
+    "A": [(-760.0, 320.0, -150.0, -150.0, 150.0), (380.0, 350.0, 760.0, -60.0, 330.0, 90.0)],
     "B": [(-560.0, 320.0, -250.0, -372.0, 60.0), (480.0, 320.0, 250.0, -316.0, 300.0)],
     "C": [(-1150.0, -330.0, -560.0, -60.0, 330.0), (380.0, 320.0, 360.0, 0.0, 200.0)],
-    "D": [(-1150.0, 320.0, -760.0, -150.0, 300.0), (-300.0, -380.0, 60.0, -230.0, 360.0),
+    "D": [(-1150.0, 361.0, -760.0, -150.0, 300.0, 90.0), (-290.0, -345.0, 60.0, -230.0, 360.0, 90.0),
           (560.0, 320.0, 680.0, -150.0, 100.0)],
-    "E": [(-1150.0, 320.0, -880.0, 0.0, 420.0), (-570.0, 320.0, -250.0, 0.0, 300.0), (90.0, 320.0, 590.0, 0.0, 300.0)],
-    "F": [(-1150.0, 320.0, -500.0, 0.0, 420.0), (-200.0, 320.0, 300.0, -200.0, 300.0)],
+    "E": [(-1150.0, 361.0, -880.0, 0.0, 420.0, 90.0), (-570.0, 320.0, -250.0, 0.0, 300.0, 90.0),
+          (90.0, 361.0, 590.0, 0.0, 300.0, 90.0)],
+    "F": [(-1150.0, 320.0, -500.0, 0.0, 420.0), (-170.0, 350.0, 300.0, -200.0, 300.0, 90.0)],
 }
 CAM_PIVOT = 640.0                       # the tilt axis over the tray floor; the head's top stays under 727.5 mm
 POST_H = 590.0                          # the tray posts: 22 mm over the sliding block at its CAM_PIVOT height
@@ -839,15 +840,16 @@ def add_meshes(sc, prefix: str, by_mat: dict, group: str, **kw) -> list:
     return names
 
 
-def rig_pose(mx, my, t, h=CAM_H, z0=V.T_FLOOR):
-    """How a rig standing at (mx, my) is set to look at t (all in the tray's frame): the post's yaw, snapped to 90
-    degrees (its foot goes on square to the tray), the pan that does the rest and the tilt down, both from where
-    the yoke and the head then are. -> (post yaw, pan, tilt), degrees."""
+def rig_pose(mx, my, t, h=CAM_H, z0=V.T_FLOOR, post=None):
+    """How a rig standing at (mx, my) is set to look at t (all in the tray's frame): the post's yaw (its foot goes on
+    square to the tray: the nearest multiple of 90 degrees to the target's bearing, unless `post` is given, where that
+    would put the head in an instrument), the pan that does the rest and the tilt down, both from where the yoke and
+    the head then are. -> (post yaw, pan, tilt), degrees."""
     def yaw_tilt(px, py, pz):
         dx, dy, dz = t[0] - px, t[1] - py, t[2] - pz
         return math.degrees(math.atan2(dx, -dy)), math.degrees(math.atan2(-dz, math.hypot(dx, dy)))
     yaw0, _ = yaw_tilt(mx, my, z0 + h + TILT_AXIS[2])
-    post = 90.0 * round(yaw0 / 90.0)
+    post = 90.0 * round(yaw0 / 90.0) if post is None else float(post)
     c, s = math.cos(math.radians(post)), math.sin(math.radians(post))
     px, py = mx - s * PAN_AXIS[1], my + c * PAN_AXIS[1]
     yaw1, _ = yaw_tilt(px, py, z0 + h + TILT_AXIS[2])
@@ -895,8 +897,8 @@ def add_tray_cameras(sc, tray: str, layout=None, h=CAM_H) -> list:
     from scene import T
     layout = TRAY_CAMS.get(tray, []) if layout is None else layout
     groups = []
-    for i, (x, y, ax, ay, az) in enumerate(layout):
-        post, pan, tilt = rig_pose(x, y, (ax, ay, az), h)
+    for i, (x, y, ax, ay, az, *fixed) in enumerate(layout):
+        post, pan, tilt = rig_pose(x, y, (ax, ay, az), h, post=fixed[0] if fixed else None)
         g = f"cam_{tray}{i}"
         _add_rig(sc, g, f"tray_{tray}", T((x, y, V.T_FLOOR)), post, h, pan, tilt)
         groups.append(g)
@@ -908,9 +910,9 @@ def bay_cam_point() -> tuple:
     return (0.0, BAY_CAM["pivot_y"], BAY_CAM["pivot_z"])
 
 
-def head_point(x, y, ax, ay, az, h=CAM_H, dz=0.0) -> tuple:
+def head_point(x, y, ax, ay, az, post=None, h=CAM_H, dz=0.0) -> tuple:
     """A tray rig's tilt axis (plus dz), in the tray's frame: where its labels point."""
-    post, pan, _ = rig_pose(x, y, (ax, ay, az), h)
+    post, pan, _ = rig_pose(x, y, (ax, ay, az), h, post=post)
     m = rig_matrices(I._T((x, y, V.T_FLOOR)), post, h, pan, 0.0)["pan"]
     return tuple(float(c) for c in (m @ np.array([*TILT_AXIS[:2], TILT_AXIS[2] + dz, 1.0]))[:3])
 
@@ -1684,6 +1686,54 @@ def bay_arm_clearance(radius=75.0) -> dict:
                 note="reach.py's poses; the arm as capsules round its joint origins, the 2F-85 to the TCP")
 
 
+def tray_instrument_boxes() -> dict:
+    """{tray: [(name, (x0, x1, y0, y1, z0, z1))]}: each instrument's box as modelled, tray frame, where line.py
+    (trays D-F, sizes from out/instruments.json) and animate.py (trays A-C, lab.meshes()) put it. The multi-doser on
+    tray B is a 600 x 470 x 560 mm box round its model."""
+    import animate as A
+    import lab
+    import line
+    sizes = json.loads((OUT / "instruments.json").read_text())
+    out = {}
+    for k, loads in line.TRAY_LOADS.items():
+        for key, x, y in loads:
+            w, d, h = sizes[key]["model_mm"]
+            out.setdefault(k, []).append((key, (x - w / 2, x + w / 2, y - d / 2, y + d / 2, V.T_FLOOR, V.T_FLOOR + h)))
+    eq = lab.meshes()["equipment"]
+    for k, items in A.LOADS.items():
+        for key, x, y in items:
+            ent = eq.get(key) or eq.get(f"{key}_frame")
+            if ent is not None:
+                b = ent[1]
+                w, d, h = b[1] - b[0], b[3] - b[2], b[5] - b[4]
+                out.setdefault(k, []).append((key, (x - w / 2, x + w / 2, y - d / 2, y + d / 2, V.T_FLOOR,
+                                                    V.T_FLOOR + h)))
+    out.setdefault("B", []).append(("carousel", (-50.0, 550.0, -551.0, -81.0, V.T_FLOOR, V.T_FLOOR + 560.0)))
+    return out
+
+
+def tray_unit_gaps() -> dict:
+    """{unit: smallest gap (mm) from the rig to an instrument's box on its tray, which instrument, and whether it
+    stays 12 mm inside the tray's rim}. Boxes are coarse: a unit over a low instrument shows its gap to the box."""
+    from scene import T
+    boxes = tray_instrument_boxes()
+    out = {}
+    for k, layout in TRAY_CAMS.items():
+        for i, (x, y, ax, ay, az, *fixed) in enumerate(layout):
+            post, pan, tilt = rig_pose(x, y, (ax, ay, az), post=fixed[0] if fixed else None)
+            P = np.vstack(list(_world_points(T((x, y, V.T_FLOOR)), post, CAM_H, pan, tilt).values()))
+            best = (1e9, None)
+            for key, (x0, x1, y0, y1, z0, z1) in boxes.get(k, []):
+                d = np.sqrt(np.maximum(np.maximum(x0 - P[:, 0], P[:, 0] - x1), 0) ** 2 +
+                            np.maximum(np.maximum(y0 - P[:, 1], P[:, 1] - y1), 0) ** 2 +
+                            np.maximum(np.maximum(z0 - P[:, 2], P[:, 2] - z1), 0) ** 2)
+                if float(d.min()) < best[0]:
+                    best = (float(d.min()), key)
+            inside = bool(((np.abs(P[:, 0]) <= V.TRAY_W / 2 - 12) & (np.abs(P[:, 1]) <= V.TRAY_D / 2 - 12)).all())
+            out[f"{k}{i}"] = dict(gap_mm=round(best[0]), nearest=best[1], inside_rim=inside)
+    return out
+
+
 def camera_clearances() -> dict:
     """The top of every tray unit over the tray floor (against Kardex's 727.5 mm), and the bay unit's lowest point
     against the top of the product envelope at the opening (tray floor + 727.5 + 20 mm) and its highest against
@@ -1691,8 +1741,8 @@ def camera_clearances() -> dict:
     from scene import T
     tops = {}
     for k, layout in TRAY_CAMS.items():
-        for i, (x, y, ax, ay, az) in enumerate(layout):
-            post, pan, tilt = rig_pose(x, y, (ax, ay, az))
+        for i, (x, y, ax, ay, az, *fixed) in enumerate(layout):
+            post, pan, tilt = rig_pose(x, y, (ax, ay, az), post=fixed[0] if fixed else None)
             pts = _world_points(T((x, y, V.T_FLOOR)), post, CAM_H, pan, tilt)
             top = max(float(p[:, 2].max()) for p in pts.values()) - V.T_FLOOR
             tops[f"{k}{i}"] = dict(top_over_floor_mm=round(top, 1), post_yaw_deg=round(post), pan_deg=round(pan, 1),
@@ -1706,6 +1756,7 @@ def camera_clearances() -> dict:
                 bay_highest_mm=round(float(P[:, 2].max()), 1), tray_F1_underside_mm=f1,
                 bay_margin_to_F1_mm=round(f1 - float(P[:, 2].max()), 1),
                 bay_to_shutter_mm=round(V.Y_SHUTTER - float(P[:, 1].max()), 1),
+                tray_units_to_instruments=tray_unit_gaps(),
                 head=dict(rises_over_tilt_axis_mm=r["up"], reaches_below_mm=-r["down"],
                           gap_to_yoke_base_at_max_tilt_mm=r["gap_to_base"], tilt_max_deg=TILT_MAX))
 
