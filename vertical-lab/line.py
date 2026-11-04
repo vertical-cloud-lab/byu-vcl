@@ -32,10 +32,11 @@ TITLE = "Vertical cloud lab: characterization trays and the alloy line"
 Y_FACE = -V.UNIT_D / 2 - V.SKIN                 # the VLM's front face; every machine in the line has its front here
 EXTRA = {"D": ("R1", "microscopy and diffraction"), "E": ("R4", "mechanical testing and particle size"),
          "F": ("F2", "sample prep and heat treatment")}
-# what goes on each new tray, in the tray's frame (centre of its floor, y to the back): (instrument key, x, y)
+# what goes on each new tray, in the tray's frame (centre of its floor, y to the back): (instrument key, x, y). Tray D's
+# two freestanding OpenFlexures are now instruments_char's array, six of them on one sub-tray, at the spot
+# `setup_lab.py fit` found for it
 TRAY_LOADS = {
-    "D": [("sem", -760.0, 0.0), ("xrd", 60.0, 0.0), ("openflexure_v7", 560.0, -150.0),
-          ("openflexure_delta", 800.0, -150.0)],
+    "D": [("sem", -760.0, 0.0), ("xrd", 60.0, 0.0), ("openflexure_array", 792.0, -148.0)],
     "E": [("pip", -880.0, 0.0), ("nanoindenter", -250.0, 0.0), ("mastersizer", 590.0, 0.0)],
     "F": [("polisher", -420.0, 0.0), ("furnace", 280.0, 0.0)],      # the PX500 with its bottle holder: 630 wide
 }
@@ -179,8 +180,9 @@ def movie(data, idata):
             "727.5 mm opening.", 2.4, L.skin(1.0), hold=0.6, cam_to=CAM_VLM,
             labels=[(f"tray {k}: {EXTRA[k][1]}", (V.TRAY_W / 2 - 200, *V.SLOTS[EXTRA[k][0]]), (0.84, 0.18 + 0.14 * i))
                     for i, k in enumerate(("F", "E", "D"))])
-    steps = {"D": "Tray D: the Hitachi TM4000PlusII SEM (EDS; EBSD proposed), the Rigaku MiniFlex XRD and the two "
-                  "OpenFlexure microscopes, in reflection.",
+    steps = {"D": "Tray D: the Hitachi TM4000PlusII SEM (EDS; EBSD proposed), the Rigaku MiniFlex XRD and six "
+                  "OpenFlexure microscopes in reflection, four v7 and two Delta Stages, on one sub-tray that lifts out "
+                  "by its handles.",
              "E": "Tray E: the Plastometrex PLX-Benchtop (PIP), the KLA iMicro nanoindenter and the Malvern Mastersizer "
                   "3000 with its Aero S.",
              "F": "Tray F: the LECO PX500 polisher (the lab's) and the Nabertherm NAT 15/65 furnace."}
