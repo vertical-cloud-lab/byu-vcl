@@ -1,0 +1,41 @@
+{
+ "name": "instruments/fumehood",
+ "fps": 15,
+ "n_frames": 253,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/5",
+   "caption": "The sash rises to its stop, 457 mm (18 in) open. The arm works through that opening, as a person does.",
+   "start_frame": 0,
+   "end_frame": 49
+  },
+  {
+   "label": "2/5",
+   "caption": "Air sweeps in under the sash, over the airfoil, through the baffle's slots and up the 325 mm collar to the building's exhaust.",
+   "start_frame": 50,
+   "end_frame": 105
+  },
+  {
+   "label": "3/5",
+   "caption": "A polished Al coupon goes into Keller's reagent (HF, HCl and HNO3 in water) for 10-20 s.",
+   "start_frame": 106,
+   "end_frame": 158
+  },
+  {
+   "label": "4/5",
+   "caption": "Then into the rinse water, while the hood keeps pulling.",
+   "start_frame": 159,
+   "end_frame": 211
+  },
+  {
+   "label": "5/5",
+   "caption": "Sash down. HF belongs in a ducted hood. 1219 mm wide, 2.4 m tall with its base: it stands on the floor.",
+   "start_frame": 212,
+   "end_frame": 252
+  }
+ ]
+}
