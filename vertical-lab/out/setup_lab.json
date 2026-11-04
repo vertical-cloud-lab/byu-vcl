@@ -351,7 +351,7 @@
   },
   {
    "label": "7/9",
-   "caption": "Tray D: Hitachi TM4000PlusII, Rigaku MiniFlex 600, OpenFlexure array: 4 x v7 + 2 x Delta Stage.",
+   "caption": "Tray D: Hitachi TM4000PlusII, Rigaku MiniFlex (6th generation), OpenFlexure array: 4 x v7 + 2 x Delta Stage.",
    "start_frame": 1108,
    "end_frame": 1151
   },
@@ -489,7 +489,7 @@
   },
   {
    "label": "7/9",
-   "caption": "Tray F: Buehler EcoMet 30 semi-automatic, Nabertherm NAT 15/65, Retsch AS 200 control, Bruker S2 PUMA Series 2, XY Autochanger.",
+   "caption": "Tray F: LECO PX500 semi-automatic, Nabertherm NAT 15/65, Retsch AS 200 control, Bruker S2 PUMA Series 2, XY Autochanger.",
    "start_frame": 1367,
    "end_frame": 1418
   },
