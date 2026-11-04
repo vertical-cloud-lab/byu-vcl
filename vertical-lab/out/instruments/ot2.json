@@ -1,0 +1,47 @@
+{
+ "name": "instruments/ot2",
+ "fps": 15,
+ "n_frames": 366,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/6",
+   "caption": "Opentrons' own CAD of the OT-2. Its door, windows and frame fade, and the head's cover too, to show the P300 pipette on the right mount and a P20 on the left.",
+   "start_frame": 0,
+   "end_frame": 55
+  },
+  {
+   "label": "2/6",
+   "caption": "The gantry slides forward and the head along it, to the tip rack in slot 1. The pipette comes down and presses its nozzle into tip A1.",
+   "start_frame": 56,
+   "end_frame": 114
+  },
+  {
+   "label": "3/6",
+   "caption": "It lifts the tip out, crosses to the deep-well plate in slot 2 and draws up 300 uL from well H1. The plate is cut through row H, so the level can be seen dropping.",
+   "start_frame": 115,
+   "end_frame": 188
+  },
+  {
+   "label": "4/6",
+   "caption": "Over the 96-well plate in slot 3 it dispenses the 300 uL into well H1.",
+   "start_frame": 189,
+   "end_frame": 262
+  },
+  {
+   "label": "5/6",
+   "caption": "Then over the fixed trash in slot 12, the pipette pushes the used tip off, and it drops into the bin.",
+   "start_frame": 263,
+   "end_frame": 327
+  },
+  {
+   "label": "6/6",
+   "caption": "The head goes back to where it started, ready for the next tip.",
+   "start_frame": 328,
+   "end_frame": 365
+  }
+ ]
+}
