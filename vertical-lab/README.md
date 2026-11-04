@@ -17,6 +17,8 @@ framework, [`scene.py`](scene.py), is `atomizer-training/viz3d/scene.py` from #1
 | **Disassembly**: unloaded one piece at a time, then taken apart. A clip of its own, left out of the joined video ("no need to remove the equipment at the end of the video", PR #318) | [`out/vlm_disassembly.gif`](out/vlm_disassembly.gif) | [`out/mp4/vlm_disassembly.mp4`](out/mp4/vlm_disassembly.mp4) |
 | **Assembly, loading and workflow**, one after the other (3 min 4 s), ending with the lab loaded and working. The earlier join of all four ([`ro-pUo0ie_M`](https://www.youtube.com/watch?v=ro-pUo0ie_M)) ended with the disassembly | [on YouTube](https://www.youtube.com/watch?v=FHjg3R7of4g) (unlisted; re-rendered with the arm's moves collision-checked, replacing `xI1d0kkX8VA`) | [`out/mp4/vertical_lab_full.mp4`](out/mp4/vertical_lab_full.mp4) |
 
+Every MP4 under `out/mp4/` is also on the lab's YouTube channel, unlisted: each clip on its own as well as the joined ones. [`out/youtube.md`](out/youtube.md) lists every file and its video. It is written from [`out/youtube.json`](out/youtube.json), which [`youtube_upload.py`](youtube_upload.py) fills in as it uploads.
+
 ![The alloy route, chapter 1: the lab's charge cups dosed and plugged on tray B](out/alloy_charge.gif)
 
 ![The dose into a charge cup, in half section](out/alloy_charge_dose.png)
@@ -334,11 +336,11 @@ its own notes file, with every source:
 
 | Video | GIF | MP4 | YouTube (unlisted) |
 |---|---|---|---|
-| **The lab set up from scratch**: an empty warehouse bay, the layout, utilities, the VLM, the floor machines, the two MiR250 + UR10e units put together, every tray loaded (A–F, with round 4's instruments), the cameras | [GIF](out/setup_lab.gif) | [MP4](out/mp4/setup_lab.mp4) | [on YouTube](https://www.youtube.com/watch?v=bITROBu1NNE) |
+| **The lab set up from scratch**: an empty warehouse bay, the layout, utilities, the VLM, the floor machines, the two MiR250 + UR10e units put together, every tray loaded (A–F, with round 4's instruments), the cameras | [GIF](out/setup_lab.gif) | [MP4](out/mp4/setup_lab.mp4) | [on YouTube](https://www.youtube.com/watch?v=oMvGIGQOKA4) (re-rendered; was `bITROBu1NNE`) |
 | **The warehouse version**: two MiR250 + UR10e units drive between the VLM and the floor machines along marked aisles | [GIF](out/warehouse.gif) | [MP4](out/mp4/warehouse.mp4) | [on YouTube](https://www.youtube.com/watch?v=3IrSB9-meN8) (collision-checked; was `KbrkulS07EM`) |
-| **From the printer to the tensile test**: the build plate out of the Aconity MIDI, the bars cut off in the wire EDM, one pulled to fracture in the 68FM-100 | [GIF](out/alloy_workflow.gif) | [MP4](out/mp4/alloy_workflow.mp4) | [on YouTube](https://www.youtube.com/watch?v=YVdpGTLvxhI) |
-| **Tray services**: the docking coupling in the slot and at the opening, the tethered alternative, the cabling | [docking](out/vlm_services.gif), [tether](out/vlm_tether.gif), [cabling](out/vlm_cabling.gif) | [MP4](out/mp4/vlm_services_all.mp4) | [on YouTube](https://www.youtube.com/watch?v=ed2M0u5Rjw0) |
-| **The round-4 instruments**, each doing its job | [gallery](out/instruments_gallery.png) | [MP4](out/mp4/instruments_round4_tour.mp4) | [on YouTube](https://www.youtube.com/watch?v=IEbhMjcAUOQ) |
+| **From the printer to the tensile test**: the build plate out of the Aconity MIDI, the bars cut off in the wire EDM, one pulled to fracture in the 68FM-100 | [GIF](out/alloy_workflow.gif) | [MP4](out/mp4/alloy_workflow.mp4) | [on YouTube](https://www.youtube.com/watch?v=T16hQ4M-IkU) (round 5's chapter 4; round 4's was `YVdpGTLvxhI`) |
+| **Tray services**: the docking coupling in the slot and at the opening, the tethered alternative, the cabling | [docking](out/vlm_services.gif), [tether](out/vlm_tether.gif), [cabling](out/vlm_cabling.gif) | [MP4](out/mp4/vlm_services_all.mp4) | [on YouTube](https://www.youtube.com/watch?v=TryzW_phOcw) (re-rendered; was `ed2M0u5Rjw0`) |
+| **The round-4 instruments**, each doing its job | [gallery](out/instruments_gallery.png) | [MP4](out/mp4/instruments_round4_tour.mp4) | [on YouTube](https://www.youtube.com/watch?v=WG_DAtSHg50) (re-rendered and rejoined; was `IEbhMjcAUOQ`) |
 
 ![The lab set up from scratch](out/setup_lab_still.png)
 
@@ -596,11 +598,12 @@ vibration data). The VLM also appears in two talks:
   Alloys*](https://www.youtube.com/watch?v=6uJP2CKMbEM) (Fall MRS 2025; "vertical automation" runs 00:00–14:00);
 - Matterhorn Studio's [*Vertical Cloud Lab*](https://www.youtube.com/watch?v=3xRSuz3zBww).
 
-Earlier rounds, on YouTube (unlisted):
-- [round 3's instruments](https://www.youtube.com/watch?v=ISyVIHtmvZc);
-- [trays D–F and the line](https://www.youtube.com/watch?v=oWM3fCZiwRs);
-- [the fabrication tools](https://www.youtube.com/watch?v=HYN9dYyRkrQ);
-- [trays G–I](https://www.youtube.com/watch?v=5q5Pv2Mhbn8).
+Earlier rounds, on YouTube (unlisted), as re-rendered:
+- [every instrument, one after another](https://www.youtube.com/watch?v=J7EJQsmyAtk) (round 3's 14 on their own
+  were `ISyVIHtmvZc`);
+- [trays D–F and the line](https://www.youtube.com/watch?v=4M2j2etqiB0) (was `oWM3fCZiwRs`);
+- [the fabrication tools](https://www.youtube.com/watch?v=45-L9BnfBMw) (was `HYN9dYyRkrQ`);
+- [trays G–I](https://www.youtube.com/watch?v=7ISk_ULnVbQ) (was `5q5Pv2Mhbn8`).
 
 ## The alloy route, start to finish: charge cups to tensile bar
 
@@ -613,10 +616,10 @@ route. Four chapters, each rendered on its own and joined by [`alloy_route.py`](
 | Chapter | Code | GIF | MP4 | Notes |
 |---|---|---|---|---|
 | **All four, joined** (11 min 9 s, a title card before each) | [`alloy_route.py`](alloy_route.py) | | [MP4](out/mp4/alloy_route.mp4) | [on YouTube](https://www.youtube.com/watch?v=GE33p9N0x7c) (unlisted), chapters in [`out/alloy_route.json`](out/alloy_route.json). The 7 min 40 s round-4 version is [`9qnGCtPwCTM`](https://www.youtube.com/watch?v=9qnGCtPwCTM) |
-| **1. The charge** (147 s): four 5N Al and four OFE Cu cups dosed through one funnel per powder, weighed on an A&D HR-202i and plugged, on tray B | [`alloy_charge_doser.py`](alloy_charge_doser.py), [`charge.py`](charge.py) | [GIF](out/alloy_charge.gif) | [MP4](out/mp4/alloy_charge.mp4) | [`notes/alloy_charge_doser.md`](notes/alloy_charge_doser.md). The vacuum-press version, [`alloy_charge.py`](alloy_charge.py), [below](#the-plug-pressed-home-under-vacuum), is rendered on its own: [MP4](out/mp4/alloy_charge_vacuum.mp4), [on YouTube](https://www.youtube.com/watch?v=UjGb47I3fy0) |
+| **1. The charge** (147 s): four 5N Al and four OFE Cu cups dosed through one funnel per powder, weighed on an A&D HR-202i and plugged, on tray B | [`alloy_charge_doser.py`](alloy_charge_doser.py), [`charge.py`](charge.py) | [GIF](out/alloy_charge.gif) | [MP4](out/mp4/alloy_charge.mp4), [on YouTube](https://www.youtube.com/watch?v=1Hnt4v2J_mI) | [`notes/alloy_charge_doser.md`](notes/alloy_charge_doser.md). The vacuum-press version, [`alloy_charge.py`](alloy_charge.py), [below](#the-plug-pressed-home-under-vacuum), is rendered on its own: [MP4](out/mp4/alloy_charge_vacuum.mp4), [on YouTube](https://www.youtube.com/watch?v=UjGb47I3fy0) |
 | **2. Melt and atomize** (157 s): the four Al cups in the rePowder, cut with the lab's own footage of its bronze and Al runs | [`alloy_atomize.py`](alloy_atomize.py) | [GIF](out/alloy_atomize.gif) | [MP4](out/mp4/alloy_atomize.mp4), [on YouTube](https://www.youtube.com/watch?v=znw55hE_dGs) | [`notes/alloy_atomize.md`](notes/alloy_atomize.md) |
-| **3. Sieve and print** (194 s): the arm runs a sieving cell, then the Aconity MIDI prints | [`alloy_print.py`](alloy_print.py), [`sieve_station.py`](sieve_station.py) | [GIF](out/alloy_print.gif) | [MP4](out/mp4/alloy_print.mp4) | [`notes/alloy_print.md`](notes/alloy_print.md) |
-| **4. Cut and test** (159 s): a suction lance and a depowdering box, the wire EDM, a rinse, the 68FM-100 | [`alloy_workflow.py`](alloy_workflow.py) | [GIF](out/alloy_workflow.gif) | [MP4](out/mp4/alloy_workflow.mp4) | [`notes/alloy_workflow.md`](notes/alloy_workflow.md) |
+| **3. Sieve and print** (194 s): the arm runs a sieving cell, then the Aconity MIDI prints | [`alloy_print.py`](alloy_print.py), [`sieve_station.py`](sieve_station.py) | [GIF](out/alloy_print.gif) | [MP4](out/mp4/alloy_print.mp4), [on YouTube](https://www.youtube.com/watch?v=rm_XR5-2F5g) | [`notes/alloy_print.md`](notes/alloy_print.md) |
+| **4. Cut and test** (159 s): a suction lance and a depowdering box, the wire EDM, a rinse, the 68FM-100 | [`alloy_workflow.py`](alloy_workflow.py) | [GIF](out/alloy_workflow.gif) | [MP4](out/mp4/alloy_workflow.mp4), [on YouTube](https://www.youtube.com/watch?v=T16hQ4M-IkU) | [`notes/alloy_workflow.md`](notes/alloy_workflow.md) |
 <!-- /alloy-route-table -->
 
 ![The four chapters at work: a plug pressed into a cup, the cups atomized, the plate printed, the bars cut off](out/alloy_route_sheet.png)
@@ -966,17 +969,22 @@ planned round it with RRT-Connect, then shortcut, and a detour may not lift the 
 higher end. `ARM_AUDIT=1` runs a clip without rendering and checks every frame, line moves too, writing
 `out/collisions/<clip>.json`. The details are in [`notes/arm_collisions.md`](notes/arm_collisions.md).
 
-| Clip | Frames in collision, as it was | Now | |
+| Clip | Frames in collision, as it was | With the planner | |
 | --- | --- | --- | --- |
 | Round 2 workflow (`animate.py workflow`) | 130 of 1140 | **0** | re-rendered; [on YouTube](https://www.youtube.com/watch?v=255o9IVEOEs) |
-| Warehouse (`warehouse.py`) | 216 of 1138 | **0** of 1120, the MiR bodies checked too | re-rendered: one target post moved, three routes changed ([notes](notes/warehouse.md)) |
+| Warehouse (`warehouse.py`) | 216 of 1138 | **0** of 1120, the MiR bodies checked too | re-rendered: one target post moved, three routes changed ([notes](notes/warehouse.md)); [on YouTube](https://www.youtube.com/watch?v=3IrSB9-meN8) |
 | Lab set up from scratch (`setup_lab.py`) | | 0 of 1376 | not re-rendered: its two joint moves were already clear |
-| Alloy route 1, the charge, vacuum-press version (`alloy_charge.py`) | | **0** of 2752 | rebuilt round the vacuum press, below; [on YouTube](https://www.youtube.com/watch?v=UjGb47I3fy0) |
-| Alloy route 3, sieve and print (`alloy_print.py`) | 717 of 1310 | 227 | not re-rendered: the poses themselves collide (the jar onto the MiR's own cabinet) |
-| Alloy route 4, cut and test (`alloy_workflow.py`) | 331 of 1466 | 77 | not re-rendered: the wrist enters the Aconity's shell and the wire EDM's body |
-| Alloy route 2, atomize (`alloy_atomize.py`) | | | doesn't run: it reads `charge.RUNS` in its pre-round-5 form |
+| Alloy route 1, vacuum-press version (`alloy_charge.py`) | | **0** of 2752 | rendered, [below](#the-plug-pressed-home-under-vacuum); [on YouTube](https://www.youtube.com/watch?v=UjGb47I3fy0) |
+| Alloy route 1, round 5's doser version (`alloy_charge_doser.py`) | | 59 of 1875 | its render predates the check. Left: the arm in the press and the rack's back cups in 4/8 |
+| Alloy route 2, atomize (`alloy_atomize.py`, round 5) | | 257 of 1421 | its render predates the check. Left: the gripper in the rePowder's hood (2/5), the arm in the MiR (5/5) |
+| Alloy route 3, sieve and print (`alloy_print.py`, round 5) | | 543 of 2372 | its render predates the check. Left: the arm in the sieves of the stack (2/5), in the Aconity's cabinet (4/5) |
+| Alloy route 4, cut and test (`alloy_workflow.py`, round 5) | | 539 of 2068 | its render predates the check. Left: the gripper in the depowdering lance's hose (2/6), the arm in the Aconity and the shaker box (3/6) |
 
-Chapters 2-4 were being rewritten by another session at the time, so their remaining poses were left to it.
+The four round-5 chapters were rendered by another session while the check was being written. What the planner
+leaves in them are poses the scripts ask for, where every IK solution touches something, and line moves through
+machines. They need new poses, as `alloy_charge.py`'s needed (aiming the level grasps, the plug set at the rack);
+`ARM_AUDIT=1` shows which. If a line move would flip the arm in the IK branch a clear joint move chose, `robot.py`
+now goes there by a planned joint move instead of stopping the render, which `alloy_print.py` needed.
 
 ## The plug pressed home, under vacuum
 
@@ -1096,6 +1104,14 @@ python3 kardex_tall.py json; xvfb-run -a python3 kardex_tall.py   # out/tall_ope
 python3 interference.py                            # every model's tour through MuJoCo -> out/interference.json
 xvfb-run -a python3 interference.py sheet          # out/interference_sheet.png
 xvfb-run -a python3 tour.py stream_cam rail        # the camera unit and the rail
+```
+
+Putting them on YouTube (needs `YOUTUBE_UPLOAD_TOKEN_PICKLE_B64`; see [`youtube/README.md`](../youtube/README.md)):
+
+```bash
+python3 youtube_upload.py plan      # every MP4 whose current bytes aren't on the channel, with its title
+python3 youtube_upload.py upload    # upload them unlisted, recording each in out/youtube.json as it lands
+python3 youtube_upload.py table     # out/youtube.md: every MP4 and its video
 ```
 
 Under load, Xvfb sometimes drops the render window ("bad X server connection", "Render window is not current"). Retrying
