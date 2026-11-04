@@ -739,6 +739,7 @@ def vhx() -> Instrument:
 
 
 MATERIALS["plasma_halo"] = (0.85, 0.80, 1.00, 0.35, 0.0)
+MATERIALS["xrf_window"] = (0.20, 0.22, 0.26, 0.80, 0.6)        # the S2 PUMA hood's dark window
 
 
 def _libs_panel(img, scale, alpha):
@@ -773,33 +774,60 @@ XRF_SPECS = dict(W=670.0, D=710.0, H=610.0, kg=108, positions=20, cup_d=40.0, cu
                  source="Bruker S2 PUMA Series 2 specifications, DKSH (technology-products.dksh.com/?p=1219)")
 
 
+# The exterior follows Bruker's own "S2 PUMA Overview" video (youtu.be/ogSg0j6j2Gw, 0:08-0:16, the XY Autochanger),
+# fitted with register.py (refs/xrf/): a full-width white hood over the top 44 % with a dark window in its top and
+# BRUKER at its front right, hinged at the back; under it a white body whose vertical front holds the touch screen,
+# left of centre, with "S2 PUMA" up its right edge; navy side panels; dark feet. (It was a small dark lid on a sloped
+# white body, with the screen on top.)
+XRF_LOOK = dict(deck=322.0, side_t=45.0, scr_w=253.0, scr_h=184.0, scr_x=-17.0, scr_z=172.0, win_w=300.0,
+                win_y0=40.0, win_d=150.0)
+
+
+def xrf_anchors(p, pose=None) -> dict:
+    W, D, H = XRF_SPECS["W"], XRF_SPECS["D"], XRF_SPECS["H"]
+    yf, dk = -D / 2, p["deck"]
+    a = {"lid top front left": (-W / 2 + 5, yf + 5, H), "lid top front right": (W / 2 - 5, yf + 5, H),
+         "lid bottom front left": (-W / 2 + 5, yf + 5, dk + 4), "lid bottom front right": (W / 2 - 5, yf + 5, dk + 4),
+         "lid top back right": (W / 2 - 5, D / 2 - 5, H), "foot front left": (-W / 2, yf, 15.0),
+         "foot front right": (W / 2, yf, 15.0),
+         "window front left": (-p["win_w"] / 2, yf + p["win_y0"], H), "window front right": (p["win_w"] / 2, yf + p["win_y0"], H),
+         "window back left": (-p["win_w"] / 2, yf + p["win_y0"] + p["win_d"], H),
+         "window back right": (p["win_w"] / 2, yf + p["win_y0"] + p["win_d"], H)}
+    for nm, (fx, fz) in {"screen tl": (-1, 1), "screen tr": (1, 1), "screen bl": (-1, -1), "screen br": (1, -1)}.items():
+        a[nm] = (p["scr_x"] + fx * p["scr_w"] / 2, yf, p["scr_z"] + fz * p["scr_h"] / 2)
+    return a
+
+
 def xrf() -> Instrument:
     p = XRF_SPECS
+    q = XRF_LOOK
     W, D, H = p["W"], p["D"], p["H"]
     inst = CharInstrument("xrf", "Benchtop EDXRF for powders and coupons", "Bruker S2 PUMA Series 2, XY Autochanger",
                           (W, D, H), "Bruker S2 PUMA Series 2 specifications via DKSH (XY Autochanger 67 x 71 x 61 cm, "
                           "108 kg; 20-position tray; 50 W Pd/Ag tube; HighSense SDD; reduced-pressure He for loose "
-                          "powders); look from Bruker's photos")
+                          "powders); the look from Bruker's S2 PUMA Overview video, fitted with register.py")
     yf, yb = -D / 2, D / 2
-    deck = 420.0                                  # the sample deck under the lid (estimate from photos)
+    deck = q["deck"]                              # the top of the body: the sample deck under the hood
+    st = q["side_t"]
     body = _piece(inst, "body")
-    body.add("feet", rbox(W - 80, D - 80, 15, 20), "inst_black")
-    shell = I._wedge(W, D, D - 140, deck - 15, y0=yf, z=15).edges("|Y").fillet(25)
-    body.add("housing", shell, "inst_white")
-    lean = math.degrees(math.atan2(140.0, deck - 15.0))   # the front leans back 140 mm over its 405 mm height
-
-    def on_front(x0, x1, z0, z1, t=1.0):
-        """A thin plate lying on the sloped front, from z0 to z1 (as measured up the face's height)."""
-        zc = (z0 + z1) / 2
-        yc = yf + 140.0 * (zc - 15.0) / (deck - 15.0)
-        return box(x0, -t, z0 - zc, x1, 0.0, z1 - zc).rotate((0, 0, 0), (1, 0, 0), -lean).translate((0, yc, zc))
-    body.add("front band", on_front(-W / 2 + 30, W / 2 - 30, 40, 70), "inst_navy")
-    body.add("logo", on_front(-W / 2 + 40, -W / 2 + 180, deck - 80, deck - 60, 1.5), "inst_blue")
-    body.add("touch screen", box(W / 2 - 190, yf + 140 - 30, deck - 15, W / 2 - 40, yf + 140, deck + 75).rotate(
-        (0, yf + 140, deck - 15), (1, yf + 140, deck - 15), -25), "screen_on")
-    deck_plate = box(-W / 2 + 20, yf + 150, deck - 15, W / 2 - 230, yb - 40, deck + 1)
+    feet = None
+    for sx in (-1, 1):
+        for sy in (-1, 1):
+            f_ = cyl(40, 15, x=sx * (W / 2 - 60), y=sy * (D / 2 - 60))
+            feet = f_ if feet is None else feet.union(f_)
+    body.add("feet", feet, "inst_black")
+    body.add("housing", box(-W / 2 + st, yf, 15, W / 2 - st, yb - 5, deck).edges("|Y").fillet(4), "inst_white")
+    body.add("side panels", box(-W / 2, yf + 8, 15, -W / 2 + st, yb, deck - 2).edges("|Y").fillet(8).union(
+        box(W / 2 - st, yf + 8, 15, W / 2, yb, deck - 2).edges("|Y").fillet(8)), "inst_navy")
+    sx0, sx1 = q["scr_x"] - q["scr_w"] / 2, q["scr_x"] + q["scr_w"] / 2
+    sz0, sz1 = q["scr_z"] - q["scr_h"] / 2, q["scr_z"] + q["scr_h"] / 2
+    body.add("screen bezel", box(sx0 - 8, yf - 1.5, sz0 - 8, sx1 + 8, yf, sz1 + 8), "inst_dark")
+    body.add("touch screen", box(sx0, yf - 2.2, sz0, sx1, yf - 1.5, sz1), "nat_screen")
+    body.add("S2 PUMA label", box(W / 2 - st - 50, yf - 0.8, sz0 + 10, W / 2 - st - 30, yf, sz1), "inst_light")
+    body.add("status light", box(-W / 2 + st + 10, yf - 1, deck - 14, -W / 2 + st + 70, yf, deck - 10), "inst_orange")
+    deck_plate = box(-W / 2 + st + 10, yf + 30, deck - 15, W / 2 - st - 10, yb - 60, deck + 1)
     # the XY sample tray: 4 x 5 = 20 cups' seats, removable
-    tx, ty = -W / 2 + 20 + (W - 250) / 2, (yf + 150 + yb - 40) / 2
+    tx, ty = 40.0, (yf + 30 + yb - 60) / 2 + 30
     tray = box(tx - 150, ty - 190, deck, tx + 150, ty + 190, deck + 12)
     seats = []
     for i in range(4):
@@ -813,12 +841,13 @@ def xrf() -> Instrument:
     body.add("deck", deck_plate.cut(cyl(46, 20, x=mx, y=my, z=deck - 18)), "inst_grey")   # open under the window
     body.add("measuring window", tube(70, 46, 3, x=mx, y=my, z=deck - 1), "steel")
     lid = _piece(inst, "lid")
-    lw, ld = W - 230, D - 190
-    lid.add("lid", rbox(lw, ld, H - deck - 10, 30, x=-W / 2 + 20 + lw / 2, y=yf + 150 + ld / 2 - 5, z=deck)
-            .edges(">Z").fillet(20).cut(rbox(lw - 16, ld - 16, H - deck - 18, 24, x=-W / 2 + 20 + lw / 2,
-                                             y=yf + 150 + ld / 2 - 5, z=deck - 1)), "inst_dark")
-    lid.add("lid window", box(-W / 2 + 80, yf + 170, H - 11, -W / 2 + lw - 40, yf + 300, H - 9), "polycarb")
-    lid.add("lid grip", box(-W / 2 + 120, yf + 140, deck + 40, -W / 2 + lw - 80, yf + 150, deck + 60), "chrome")
+    hood = rbox(W - 10, D - 10, H - deck - 4, 10, z=deck + 4).edges(">Z").fillet(8)
+    hood = hood.cut(rbox(W - 26, D - 26, H - deck - 12, 6, z=deck + 3))
+    hood = hood.cut(box(-q["win_w"] / 2, yf + q["win_y0"], H - 20, q["win_w"] / 2, yf + q["win_y0"] + q["win_d"], H + 1))
+    lid.add("hood", hood, "inst_white")
+    lid.add("hood window", box(-q["win_w"] / 2, yf + q["win_y0"], H - 9, q["win_w"] / 2, yf + q["win_y0"] + q["win_d"],
+                               H - 7), "xrf_window")
+    lid.add("BRUKER badge", box(W / 2 - 150, yf + 4, deck + 120, W / 2 - 50, yf + 5, deck + 150), "inst_navy")
     # inside, under the window: the tube and the detector, seen when the body goes see-through
     inner = _piece(inst, "inner")
     spot = np.array([mx, my, deck + 2.0])
@@ -836,7 +865,7 @@ def xrf() -> Instrument:
     beam.add("primary", _cone(tube_end, spot, 3.0, 12.0), "xray")
     beam.add("fluorescence", _cone(spot, det_end, 12.0, 8.0), "fluor")
     inst.meshes["readout"] = _dummy((0, 0, H))
-    hinge_y = yb - 40
+    hinge_y = yb - 5
     s0 = seats[2]
     path = ((s0[0] - 60, yf - 260, H + 220), (s0[0], s0[1] - 30, H + 120), (s0[0], s0[1], deck + 40),
             (s0[0], s0[1], deck + 3), (s0[0], s0[1], deck + 40), (mx, my, deck + 40), (mx, my, deck + 2))
@@ -851,11 +880,11 @@ def xrf() -> Instrument:
     inst.aside = ("readout",)
     inst.props = ("sample", "beam")
     inst.actions = [
-        ("The lid lifts on its rear hinge, uncovering the XY Autochanger's 20-position tray.", 2.2,
+        ("The hood lifts on its rear hinge, uncovering the XY Autochanger's 20-position tray.", 2.2,
          {"lid": (0.0, 1.0), "sample": (0.0, 0.0), "beam": (0.0, 0.0), "readout": (0.0, 0.0)}),
         ("A cup of atomized powder, closed underneath by a thin prolene film, goes into a free seat.", 2.6,
          {"sample": (0.0, v_seat)}),
-        ("Lid down; drawn see-through.", 1.6, {"lid": (1.0, 0.0), "~body": (0.0, 1.0), "~lid": (0.0, 1.0)}),
+        ("Hood down; drawn see-through.", 1.6, {"lid": (1.0, 0.0), "~body": (0.0, 1.0), "~lid": (0.0, 1.0)}),
         ("The changer takes the cup to the measuring position, film side down over the window: the tube and the "
          "detector are underneath. Helium at reduced pressure keeps loose powder in place.", 2.8,
          {"sample": (v_seat, 1.0)}),
@@ -864,9 +893,10 @@ def xrf() -> Instrument:
         ("The spectrum: peaks at each element's lines give the composition, Na to Am, in minutes.", 4.8,
          {"readout": (0.0, 1.0)}),
     ]
-    inst.labels = [("lid", (-W / 2 + 60, yf + 300, H - 5), (0.10, 0.22)),
+    inst.labels = [("hood, hinged at the back", (-W / 2 + 60, yf + 200, H - 5), (0.10, 0.22)),
                    ("20-position XY tray", (tx - 140, ty, deck + 12), (0.10, 0.52)),
-                   ("touch screen", (W / 2 - 115, yf + 150, deck + 40), (0.86, 0.74))]
+                   ("touch screen", (sx1, yf - 2, q["scr_z"]), (0.86, 0.74))]
+    inst.anchors = xrf_anchors(q)
     inst.cam = (0.75, -1.75, 0.9)
     inst.framing = (0.95, 0.50)
     # how tall the lid stands open, against the ~844 mm between a presented tray's floor and the opening's header
@@ -877,6 +907,13 @@ def xrf() -> Instrument:
     inst.notes = [f"lid drawn opening {XRF_LID_DEG:.0f} deg: its front edge rises to {top:.0f} mm (estimate)"]
     return inst
 
+
+
+# register.py: the S2 PUMA's anchors and the parts of its look fitted to Bruker's video (refs/xrf/)
+ANCHORS = {"xrf": (XRF_LOOK, xrf_anchors)}
+FREE = {"xrf": ["deck", "scr_w", "scr_h", "scr_x", "scr_z"]}     # the window isn't picked: it isn't fitted
+CHECKS = {"xrf": lambda q: [q["deck"] - q["scr_z"] - q["scr_h"] / 2 - 30, q["scr_z"] - q["scr_h"] / 2 - 40,
+                            XRF_SPECS["H"] - q["deck"] - 150]}
 
 def _cone(a, b, ra, rb):
     """A truncated cone from point a (radius ra) to point b (radius rb)."""
