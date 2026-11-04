@@ -232,13 +232,18 @@ def close_cam(target, dist, direction=(1.0, -1.6, 0.9)):
     return [tuple(c + d * dist), tuple(c), (0, 0, 1)]
 
 
-def tour_one(inst: I.Instrument, entries: dict) -> str:
+def tour_one(inst: I.Instrument, entries: dict, subdir: str = "instruments") -> str:
+    """The instrument's clip, out/<subdir>/<key>.gif and out/mp4/<subdir>/<key>.mp4, and its hero still: each action
+    in turn. The instrument steers it: `zoom` and `cams` move the camera for an action, `step_labels` replace the
+    leader labels from an action on, and `overlay` draws over every frame (fab_tour.py's clips go through here too)."""
     ents = entries
-    out = OUT / "instruments"
+    out = OUT / subdir
     out.mkdir(parents=True, exist_ok=True)
-    (OUT / "mp4" / "instruments").mkdir(parents=True, exist_ok=True)
-    sc = Scene(f"instruments/{inst.key}", f"{inst.title}: {inst.model}")
+    (OUT / "mp4" / subdir).mkdir(parents=True, exist_ok=True)
+    sc = Scene(f"{subdir}/{inst.key}", f"{inst.title}: {inst.model}")
     sc.intro = 0.6
+    if getattr(inst, "overlay", None) is not None:
+        sc.overlays.append(inst.overlay)
     bb = inst.bbox()
     studio(sc, shadow_of=bb)
     rig = Rig(sc, inst, entries, f"{inst.key}:")
@@ -254,12 +259,17 @@ def tour_one(inst: I.Instrument, entries: dict) -> str:
         sc.cam = frame_cam(inst.bbox(), inst.cam, pad=0.75, look_z=0.9)
     n = len([a for a in inst.actions if a[0]])
     whole = sc.cam
-    own = getattr(inst, "step_labels", {})         # {action index: labels} for an action with labels of its own
+    own = getattr(inst, "step_labels", {})         # {action index: labels}, from that action to the next entry
+    cams = getattr(inst, "cams", {})               # {action index: (eye, focus)}
     for i, (cap, secs, targets) in enumerate(inst.actions):
         z = getattr(inst, "zoom", {}).get(i)
         cam_to = None if z is None else whole if z == "out" else close_cam(*z, direction=inst.cam)
-        sc.step(f"{min(i + 1, n)}/{n}", cap, secs, rig.move(targets), hold=0.5, labels=own.get(i, labels),
-                cam_to=cam_to)
+        if cam_to is None and i in cams:
+            eye, focus = cams[i]
+            cam_to = [tuple(eye), tuple(focus), (0, 0, 1)]
+        k = max((j for j in own if j <= i), default=None)
+        sc.step(f"{min(i + 1, n)}/{n}", cap, secs, rig.move(targets), hold=0.5,
+                labels=labels if k is None else own[k], cam_to=cam_to)
     # the hero still for the gallery: closed, the sample in place, no text
     rig.move({k: (None, 1.0 if k in inst.props else j.v0) for k, j in inst.joints.items()})(1.0)
     rig.move({f"~{k}": (None, 0.0) for k in ents})(1.0)

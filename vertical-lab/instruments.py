@@ -192,6 +192,12 @@ class Instrument:
     anchors: dict = field(default_factory=dict)    # name -> point, ("circle", c, r) or ("line", p0, p1): register.py
     zoom: dict = field(default_factory=dict)       # action index -> ((x, y, z), distance mm): the camera moves in;
                                                    # -> "out": back to the whole instrument (tour.py)
+    cams: dict = field(default_factory=dict)       # action index -> (eye, focus): the camera moves to that view, for a
+                                                   # clip whose views aren't close-ups along `cam` (tour.py)
+    step_labels: dict = field(default_factory=dict)    # action index -> [labels like `labels`]: shown from that action
+                                                   # until the next entry, in place of `labels` (tour.py)
+    overlay: object = None           # f(scene, img, scale): drawn over every frame of the tour, after its text (a plot,
+                                     # a spectrum, an inset); module-level, or a functools.partial of one, so it pickles
     props: tuple = ("load", "sample", "specimen", "holder", "stub", "slide", "beam", "glow", "powder")  # not the machine
 
     def bbox(self, all_pieces=False) -> tuple:
@@ -474,6 +480,10 @@ def instron_floor() -> Instrument:
 # base with a silver strip, the red badge and the red e-stop, and the touchscreen on a swing arm.
 INSTRON_SC = dict(W=460.0, D=615.0, H=1410.0, base_h=130.0, col_w=170.0, col_d=200.0, throat=100.0, arm_h=110.0,
                   xh_z=760.0, travel=60.0)
+# The sub-size bar's gauge section, sized to the frame's 2 kN: 3 x 1 mm = 3 mm^2 breaks at 1.24 kN at AddUp's 412 MPa
+# and 1.38 kN at EOS's 461 MPa (AlSi10Mg as built; alloy_workflow.py's sources), 62-69 % of capacity, so an alloy up
+# to about 660 MPa still fits. The 4 x 1.5 mm it had needed about 2.4 kN at 400 MPa (notes/alloy_workflow.md).
+SC_BAR = dict(w=3.0, t=1.0, grip_w=8.0, cap_kN=2.0, uts_MPa=(412.0, 461.0))
 
 
 def instron_small() -> Instrument:
@@ -510,12 +520,15 @@ def instron_small() -> Instrument:
     xh.add("upper grip", _wedge_grip(z - 50, up=False, w=60, h=70).translate((0, gy, 0)), "steel")
     spec = _piece(inst, "specimen")
     g0, g1 = p["base_h"] + 60 + 70, z - 50 - 70
-    spec.add("specimen", _dogbone(L=g1 - g0 + 70, w=4, grip_w=8, t=1.5, gauge=g1 - g0 - 30)
+    b = SC_BAR
+    spec.add("specimen", _dogbone(L=g1 - g0 + 70, w=b["w"], grip_w=b["grip_w"], t=b["t"], gauge=g1 - g0 - 30)
              .translate((0, gy, (g0 + g1) / 2)), "sample")
+    peak = [b["w"] * b["t"] * s / 1000.0 for s in b["uts_MPa"]]          # kN
     inst.joints = {"crosshead": Joint("slide", vec=(0, 0, p["travel"]))}
     inst.actions = [
-        ("A sub-size printed bar in its grips. The arm rides up the single column and pulls it.", 2.6,
-         {"crosshead": (0.0, 0.25)}),
+        (f"A sub-size printed bar, {b['w']:.0f} x {b['t']:.0f} mm in section, in its grips. The arm rides up the "
+         f"single column and pulls it: AlSi10Mg breaks it at {peak[0]:.1f}-{peak[1]:.1f} kN, within the frame's "
+         f"{b['cap_kN']:.0f} kN.", 3.2, {"crosshead": (0.0, 0.25)}),
         ("Back to the start. A tabletop frame, but 1410 mm tall: even the shortest single column (1020 mm) is "
          "taller than a tray takes, so it stands beside the VLM.", 2.4, {"crosshead": (0.25, 0.0)}),
     ]

@@ -11,13 +11,14 @@ Frame and units as in ``instruments.py``: mm, x to the right, y away from you fa
 centre of the footprint. Every published figure is in a ``*_SPECS`` dict with its source; anything read off photos is
 marked as an estimate there.
 
-Spectra. ``tour.tour_one`` has no hook for 2-D overlays, so this module wraps ``scene.Scene.overlay`` (once, on import)
-to draw a spectrum panel in the scenes named ``instruments/<key>`` for the keys in ``OVERLAYS``. The panel's opacity
-follows the opacity of that instrument's ``readout`` piece, a fade joint, so the actions script decides when it shows.
-Nothing changes for any other scene. The spectra are illustrative, and say so on screen.
+Spectra. The VHX, the XRF and the sieve shaker each draw a 2-D panel (a spectrum, the fractions) through their
+``Instrument.overlay``, which ``tour.tour_one`` draws over every frame. The panel's opacity follows the opacity of that
+instrument's ``readout`` piece, a fade joint, so the actions script decides when it shows. The spectra are
+illustrative, and say so on screen.
 """
 from __future__ import annotations
 
+import functools
 import math
 
 import cadquery as cq
@@ -49,31 +50,13 @@ MATERIALS = {
     "powder_coarse": (0.30, 0.31, 0.33, 1.0, 0.05),
 }
 
-# key -> function(image, scale, alpha) drawing the 2-D panel; see the docstring
-OVERLAYS: dict = {}
-
-
-def _install_overlay_hook():
-    """Wrap Scene.overlay so a scene called instruments/<key> also draws OVERLAYS[key], at the opacity of that
-    instrument's `readout` piece. Every other scene is untouched."""
-    import scene
-    if getattr(scene.Scene, "_char_overlay", False):
-        return
-    orig = scene.Scene.overlay
-
-    def overlay(self, img, scale, anchors):
-        img = orig(self, img, scale, anchors)
-        key = self.name.split("/", 1)[1] if self.name.startswith("instruments/") else None
-        draw = OVERLAYS.get(key)
-        if draw is not None and not scene.CLEAN:
-            pre = f"{key}:readout/"
-            a = max((v for n, v in self.alpha.items() if n.startswith(pre)), default=0.0)
-            if a > 0.02:
-                draw(img, scale, min(1.0, a))
-        return img
-
-    scene.Scene.overlay = overlay
-    scene.Scene._char_overlay = True
+def _readout_overlay(key, draw, sc, img, scale):
+    """An Instrument.overlay: draw(img, scale, alpha), a 2-D panel, at the opacity of the instrument's `readout`
+    piece. Set as functools.partial(_readout_overlay, key, draw), which pickles with the instrument."""
+    pre = f"{key}:readout/"                     # tour.Rig's actor names: <key>:<piece>/<material><i>
+    a = max((v for n, v in sc.alpha.items() if n.startswith(pre)), default=0.0)
+    if a > 0.02:
+        draw(img, scale, min(1.0, a))
 
 
 def _spectrum_panel(img, scale, alpha, *, title, xlabel, x, y, peaks, note, box_frac=(0.585, 0.105, 0.985, 0.60),
@@ -133,8 +116,6 @@ def _spectrum_panel(img, scale, alpha, *, title, xlabel, x, y, peaks, note, box_
 def _gauss(x, mu, sig, h):
     return h * np.exp(-0.5 * ((x - mu) / sig) ** 2)
 
-
-_install_overlay_hook()
 
 
 # ===================================================================================================== helpers
@@ -584,6 +565,7 @@ def sieve() -> Instrument:
     inst.cam = (0.5, -1.8, 0.62)
     inst.framing = (1.25, 0.66)
     inst.notes = [f"stack top rim {z_rim:.1f} mm, lid closed about {z_rim + 30:.0f} mm, rods {rod_top:.0f} mm"]
+    inst.overlay = functools.partial(_readout_overlay, inst.key, _sieve_panel)
     return inst
 
 
@@ -847,6 +829,7 @@ def vhx() -> Instrument:
     inst.framing = (0.95, 0.46)
     bb = inst.bbox()
     inst.size = (round(bb[1] - bb[0]), round(bb[3] - bb[2]), round(bb[5] - bb[4]))
+    inst.overlay = functools.partial(_readout_overlay, inst.key, _libs_panel)
     return inst
 
 
@@ -1032,6 +1015,7 @@ def xrf() -> Instrument:
     m = I._R((1, 0, 0), -XRF_LID_DEG, (0, hinge_y, H - 10))
     top = float((corners @ m[:3, :3].T + m[:3, 3])[:, 2].max())
     inst.notes = [f"lid drawn opening {XRF_LID_DEG:.0f} deg: its front edge rises to {top:.0f} mm (estimate)"]
+    inst.overlay = functools.partial(_readout_overlay, inst.key, _xrf_panel)
     return inst
 
 
@@ -1072,5 +1056,3 @@ REGISTRY = {
     "xrf": xrf,
     "sieve": sieve,
 }
-# at module level, not in the builders: tour.load() may take the instruments from its cache without calling them
-OVERLAYS.update(vhx=_libs_panel, xrf=_xrf_panel, sieve=_sieve_panel)

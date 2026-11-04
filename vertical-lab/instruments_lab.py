@@ -10,13 +10,13 @@ Two things here go beyond what ``instruments.Joint`` does, so they live in this 
 * ``Track``, a joint moved by a shared timeline. The CubXL's gantry, carriage and head, the electrode cap, the
   pipette tips and the liquid levels each get a track with the same knots, so one action can carry the head
   through several waypoints and pick up or set down the cap on the way, and everything stays in step.
-* Two wrappers on ``scene.Scene``, installed on import and keyed on the scene's name, so they touch only these
-  instruments' clips: ``step`` takes a camera move per action from ``CAMS``, and ``overlay`` draws a live plot
-  from ``PLOTS`` (the potentiostat's curve). The change I'd want in ``tour.py`` instead: an ``Instrument.cams``
-  list and an ``Instrument.overlay(sc, img, s)`` hook that ``tour_one`` passes to its Scene.
+* What ``tour.tour_one`` takes from each instrument: a camera move per action (``Instrument.cams``), the leader
+  labels for each view (``Instrument.step_labels``), and a live plot or inset over every frame
+  (``Instrument.overlay``: the potentiostat's curve, the labels, the O2 readout).
 """
 from __future__ import annotations
 
+import functools
 import math
 import sys
 from dataclasses import dataclass
@@ -51,7 +51,7 @@ MATERIALS = {
 }
 
 
-# ===================================================================================================== joints, hooks
+# ===================================================================================================== joints, overlays
 @dataclass
 class Track(Joint):
     """A translation that follows knots ((v, (dx, dy, dz)), ...) piecewise linearly in v, not by arc length, so
@@ -107,41 +107,10 @@ class Timeline:
         return tuple((t / T, tuple(float(c) for c in fn(s))) for t, s in zip(self.t, self.states))
 
 
-PLOTS: dict = {}            # scene name -> draw(sc, img, s)
-CAMS: dict = {}             # scene name -> {action index: (eye, focus)}
-LABELS: dict = {}           # scene name -> {action index: [(text, xyz, (fx, fy))]}, for clips whose camera moves
-
-
-def _install_hooks():
-    import scene as S
-    if getattr(S.Scene, "_lab_hooks", False):
-        return
-    orig_overlay, orig_step = S.Scene.overlay, S.Scene.step
-
-    def overlay(self, img, scale, anchors):
-        img = orig_overlay(self, img, scale, anchors)
-        fn = PLOTS.get(self.name)
-        if fn is not None and not S.CLEAN:
-            fn(self, img, max(scale, 0.80))
-        return img
-
-    def step(self, label, caption, seconds, update=None, hold=1.2, cam_to=None, *a, **kw):
-        labs = LABELS.get(self.name)
-        if labs:
-            idx = max((k for k in labs if k <= len(self.substeps)), default=None)
-            if idx is not None:
-                kw["labels"] = labs[idx]
-        cams = CAMS.get(self.name)
-        if cam_to is None and cams and len(self.substeps) in cams:
-            eye, focus = cams[len(self.substeps)]
-            cam_to = [tuple(eye), tuple(focus), (0, 0, 1)]
-        return orig_step(self, label, caption, seconds, update, hold, cam_to, *a, **kw)
-
-    S.Scene.overlay, S.Scene.step = overlay, step
-    S.Scene._lab_hooks = True
-
-
-_install_hooks()
+def _overlay(draw, sc, img, scale):
+    """An Instrument.overlay: draw(sc, img, s), with text no smaller than the frame's own (s >= 0.8, as in the GIFs).
+    Set as functools.partial(_overlay, draw), which pickles with the instrument."""
+    draw(sc, img, max(scale, 0.80))
 
 
 def _gv(sc, key) -> float:
@@ -573,6 +542,8 @@ def cubxl_corrosion() -> Instrument:
     inst.cam = (0.55, -1.5, 1.25)
     inst.framing = (0.80, 0.30)
     inst.notes = ["Deck, cap and head: DAL PR #180's plan, not yet built", "Curve: illustrative"]
+    inst.cams = {0: _DECK, 4: _CELL, 6: _DECK, 8: _OVER}
+    inst.overlay = functools.partial(_overlay, _draw_corrosion_plot)
     return inst
 
 
@@ -580,8 +551,6 @@ def cubxl_corrosion() -> Instrument:
 _DECK = ((330.0, -560.0, 780.0), (20.0, -70.0, 90.0))
 _CELL = ((300.0, -1025.0, 865.0), (300.0, 40.0, 120.0))
 _OVER = ((560.0, -1450.0, 1250.0), (60.0, 0.0, 180.0))
-CAMS["instruments/cubxl_corrosion"] = {0: _DECK, 4: _CELL, 6: _DECK, 8: _OVER}
-PLOTS["instruments/cubxl_corrosion"] = _draw_corrosion_plot
 
 
 # ===================================================================================================== packaging
@@ -610,21 +579,24 @@ PACK = dict(front=-254.0,
             nest_x=-900.0, label=(102.0, 152.0))
 
 
-def _qr(rng_seed=3, n=21):
-    """A QR-like module grid for the drawing: three finder squares and seeded noise. Not a real, scannable code."""
-    rng = np.random.default_rng(rng_seed)
-    g = rng.random((n, n)) < 0.45
-    for (r, c) in ((0, 0), (0, n - 7), (n - 7, 0)):
-        g[r:r + 7, c:c + 7] = False
-        g[r:r + 7, c] = True
-        g[r:r + 7, c + 6] = True
-        g[r, c:c + 7] = True
-        g[r + 6, c:c + 7] = True
-        g[r + 2:r + 5, c + 2:c + 5] = True
-    return g
+# the jar label's lines, as printed beside its QR code; the code holds the same text, a line each (example values)
+JAR_LABEL = ("SAMPLE ID  <run ID>-P01", "AlSi10Mg, 15-45 um", "net 212.4 g", "2026-11-03", "BYU Vertical Cloud Lab")
 
 
-_QR = _qr()
+@functools.lru_cache(maxsize=None)
+def _qr(text: str) -> np.ndarray:
+    """A real QR code of `text` (the qrcode package), as a boolean module grid without its quiet zone. Error correction
+    L: 87 bytes of label text make a version 5 code, 37 x 37 modules."""
+    import qrcode
+    q = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_L, border=0)
+    q.add_data(text)
+    q.make(fit=True)
+    return np.array(q.get_matrix(), bool)
+
+
+def jar_qr_text() -> str:
+    """What the jar label's QR code holds: its printed lines, one per line, single-spaced."""
+    return "\n".join(" ".join(line.split()) for line in JAR_LABEL)
 
 
 def _draw_packaging_insets(sc, img, s):
@@ -637,23 +609,26 @@ def _draw_packaging_insets(sc, img, s):
     fb, fs, fm = font(13 * s, bold=True), font(11.5 * s), font(12 * s, mono=True)
     if aj > 0.02:
         al = int(255 * aj)
+        qr = _qr(jar_qr_text())
+        q = 3.0 * s                                 # px a module: 37 modules, 111 px at 720p
         x0, y0 = W * 0.60, 46 * s
-        x1, y1 = W - 10 * s, y0 + 150 * s
+        x1, y1 = W - 10 * s, y0 + 64 * s + qr.shape[0] * q
         d.rounded_rectangle((x0, y0, x1, y1), 6 * s, fill=(255, 255, 255, int(240 * aj)), outline=(120, 124, 130, al))
         d.text((x0 + 10 * s, y0 + 6 * s), "The jar label, from the LX500c (an example layout)", font=fb,
                fill=(20, 20, 24, al))
-        q = 4.2 * s
-        qx, qy = x0 + 12 * s, y0 + 30 * s
-        for r in range(_QR.shape[0]):
-            for c in range(_QR.shape[1]):
-                if _QR[r, c]:
+        qx, qy = x0 + 14 * s, y0 + 34 * s
+        n = qr.shape[0]
+        # a white quiet zone, a little under the standard's 4 modules where the panel's title is above it
+        d.rectangle((qx - 4 * q, qy - 4 * q, qx + (n + 4) * q, qy + (n + 4) * q), fill=(255, 255, 255, al))
+        for r in range(n):
+            for c in range(n):
+                if qr[r, c]:
                     d.rectangle((qx + c * q, qy + r * q, qx + (c + 1) * q - 1, qy + (r + 1) * q - 1),
                                 fill=(10, 10, 12, al))
-        tx = qx + _QR.shape[1] * q + 14 * s
-        for i, line in enumerate(["SAMPLE ID  <run ID>-P01", "AlSi10Mg, 15-45 um", "net 212.4 g", "2026-11-03",
-                                  "BYU Vertical Cloud Lab"]):
-            d.text((tx, qy + i * 17 * s), line, font=fm, fill=(20, 20, 24, al))
-        d.text((x0 + 10 * s, y1 - 18 * s), "QR: a placeholder pattern, not a real code. Values are examples.",
+        tx = qx + (n + 5) * q
+        for i, line in enumerate(JAR_LABEL):
+            d.text((tx, qy + 4 * s + i * 17 * s), line, font=fm, fill=(20, 20, 24, al))
+        d.text((x0 + 10 * s, y1 - 18 * s), "The QR code holds the label's text and scans. Values are examples.",
                font=fs, fill=(150, 40, 30, al))
     if asl > 0.02:
         al = int(255 * asl)
@@ -934,6 +909,9 @@ def packaging() -> Instrument:
     inst.labels = _pack_labels()[9]
     inst.cam = (0.25, -1.6, 0.85)
     inst.framing = (0.62, 0.30)
+    inst.cams = {0: _PK_LEFT, 4: _PK_SEAL, 6: _PK_BOX, 9: _PK_OVER}
+    inst.step_labels = _pack_labels()
+    inst.overlay = functools.partial(_overlay, _draw_packaging_insets)
     return inst
 
 
@@ -941,9 +919,6 @@ _PK_OVER = ((0.0, -2300.0, 1450.0), (0.0, 0.0, 120.0))
 _PK_LEFT = ((-780.0, -1250.0, 760.0), (-560.0, -60.0, 110.0))
 _PK_SEAL = ((260.0, -950.0, 560.0), (260.0, -150.0, 110.0))
 _PK_BOX = ((700.0, -1050.0, 760.0), (650.0, -80.0, 90.0))
-CAMS["instruments/packaging"] = {0: _PK_LEFT, 4: _PK_SEAL, 6: _PK_BOX, 9: _PK_OVER}
-PLOTS["instruments/packaging"] = _draw_packaging_insets
-LABELS["instruments/packaging"] = _pack_labels()
 
 
 # ===================================================================================================== DED
@@ -1159,14 +1134,14 @@ def ded() -> Instrument:
                    ("175 mm worktable", (tcx - 80, tcy - 80, tz), (0.14, 0.70)),
                    ("door with laser-\nfilter window", (dx1 - 20, yf - 30, dz1 - 120), (0.84, 0.66))]
     inst.cam = (0.9, -1.9, 0.75)
+    inst.cams = {1: _DED_DOOR, 3: _DED_IN, 6: _DED_OVER}
+    inst.overlay = functools.partial(_overlay, _draw_ded_overlay)
     return inst
 
 
 _DED_OVER = ((1900.0, -3300.0, 2300.0), (0.0, 0.0, 950.0))
 _DED_DOOR = ((900.0, -1650.0, 1650.0), (-30.0, -200.0, 1250.0))
 _DED_IN = ((260.0, -620.0, 1420.0), (-65.0, -40.0, 1145.0))
-CAMS["instruments/ded"] = {1: _DED_DOOR, 3: _DED_IN, 6: _DED_OVER}
-PLOTS["instruments/ded"] = _draw_ded_overlay
 
 
 # ===================================================================================================== HIP
@@ -1324,10 +1299,10 @@ def hip() -> Instrument:
     inst.cam = (0.55, -1.7, 0.75)
     inst.framing = (0.80, 0.45)
     inst.notes = [f"{k}: {v}" for k, v in n.items()]
+    inst.overlay = functools.partial(_overlay, _draw_hip_overlay)
     return inst
 
 
-PLOTS["instruments/hip"] = _draw_hip_overlay
 
 
 # ===================================================================================================== registry
