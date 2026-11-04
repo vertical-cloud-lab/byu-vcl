@@ -127,13 +127,20 @@ def buffer_holder() -> tuple[pv.PolyData, tuple[float, float, float]]:
 
 
 def tcp_frame(p, approach=(0, 0, -1), spin_deg: float = 0.0) -> np.ndarray:
-    """A 4x4 tool pose at point p with the tool's z along `approach` (unit vector) and its x picked by `spin_deg`."""
+    """A 4x4 tool pose at point p with the tool's z along `approach` (unit vector) and its x picked by `spin_deg`.
+
+    For an approach within 60 deg of level, spin 0 always has the tool's y pointing down (round 7). Until then it
+    pointed down or up depending on the heading. That rolled the gripper 180 deg between headings, which put the wrist
+    camera (ur_arm.camera_meshes, on tool0's -y side) under the gripper for some of them, and turned a part held level
+    upside down between two headings. Straight-down and steep approaches are as before."""
     z = np.asarray(approach, float)
     z /= np.linalg.norm(z)
     ref = np.array([1.0, 0.0, 0.0]) if abs(z[0]) < 0.9 else np.array([0.0, 1.0, 0.0])
     x = ref - z * (ref @ z)
     x /= np.linalg.norm(x)
     y = np.cross(z, x)
+    if y[2] > 0.5:                     # level-ish with y up: roll 180 deg about z, so y points down
+        x, y = -x, -y
     a = np.radians(spin_deg)
     x, y = x * np.cos(a) + y * np.sin(a), -x * np.sin(a) + y * np.cos(a)
     M = np.eye(4)
