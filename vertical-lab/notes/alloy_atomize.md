@@ -8,19 +8,175 @@ powder.
 
 | | |
 |---|---|
-| Clip | 170.3 s at 10 fps (rendered so to fit the session), 43.5 s of it the lab's own footage; [GIF](../out/alloy_atomize.gif) (640 × 360, 5 fps, 4.9 MB), [MP4](../out/mp4/alloy_atomize.mp4), [still](../out/alloy_atomize_still.png), sub-steps in [`alloy_atomize.json`](../out/alloy_atomize.json), powder sums in [`alloy_atomize_powder.json`](../out/alloy_atomize_powder.json) |
+| Clip | 197.4 s at 10 fps (round 6), 35.1 s of it the lab's own footage, the melt at 2×; [GIF](../out/alloy_atomize.gif) (560 × 315, 4 fps, 5.8 MB: over the 4.9 MB budget), [MP4](../out/mp4/alloy_atomize.mp4), [still](../out/alloy_atomize_still.png), sub-steps in [`alloy_atomize.json`](../out/alloy_atomize.json), powder sums in [`alloy_atomize_powder.json`](../out/alloy_atomize_powder.json) |
 | Starts | MiR250 at the VLM's opening (`animate.AMR_XY`), the four Al cups in `charge.carrier()`'s four pockets at `animate.BUFFER_LOCAL` on the cabinet: where chapter 1 ends |
-| Ends | MiR250 at world (−3487, −2230), yaw 0: square to the container's axis, 41 mm off the view port's flange, the hand-off chapter 3 (sieve, print) starts from. The container stands in a cradle at MiR-local (280, 10), seat z = 933 mm; the arm is parked. While the arm works the MiR stands further out: 220 mm (y = −2450) for the lid and the cups, because at y = −2230 the lid knob falls inside the UR10e's unreachable cylinder over its base; 420 mm (y = −2650) for the container, because closer the forearm comes down through the MiR's own cabinet to the handle, 275 mm off the floor. It drives onto the hand-off spot at the end |
+| Ends | MiR250 at world (−3487, −2230), yaw 0: square to the container's axis, 41 mm off the view port's flange, the hand-off chapter 3 (sieve, print) starts from. The container stands in a cradle at MiR-local (280, 10), a low ring on the cabinet top, seat z = 783 mm (round 6; it was 933 on a post); the loading tong hangs in its sleeve on the cabinet's −x end; the arm is parked. While the arm works the MiR stands further out: 220 mm (y = −2450) for the lid and the cups, because at y = −2230 the lid knob falls inside the UR10e's unreachable cylinder over its base; 420 mm (y = −2650) for the container, because closer the forearm comes down through the MiR's own cabinet to the handle, 275 mm off the floor. It drives onto the hand-off spot at the end |
 | Scene | `line.py`'s layout as `alloy_workflow.py` builds it, the rePowder loaded part by part from `repowder/model.py` (the merged copy `animate.Lab` adds is hidden) |
 | Ported | `Pool`, `Powder`, `Particles`, `stream`, `film`, `shake`, the heat colours, the argon volumes, `load_machine`/`set_cut`: #124's rePowder training animations (`atomizer-training/viz3d/steps.py` and `scene.py`, branch `claude/issue-124-20261003-0335`) |
 | Footage | [`out/footage/`](../out/footage/): the excerpts and photos used, small, with a [manifest](../out/footage/manifest.json) of credits |
 
 ```bash
-xvfb-run -a python3 alloy_atomize.py        # render (1,693 frames, 33 min on a busy 4-core runner), then splice
+xvfb-run -a python3 alloy_atomize.py        # render (round 6: 1,623 frames, 40 min on a very busy 4-core runner), then splice (15 min)
 python3 alloy_atomize.py splice             # only cut the footage into the last render (3-13 min, mostly the GIF)
 python3 alloy_atomize.py keep               # copy the excerpts PLAN uses from /tmp/footage (FOOTAGE=...) to out/footage/
 python3 alloy_atomize.py powder             # print the powder sums
 ```
+
+### Round 6 (PR #318, 2026-11-04): the lid's latch, the base, a loading tong, the crucible
+
+Sterling's notes on the round-5 render, and what changed.
+
+#### The lid shuts with one draw latch
+
+> "That lid for the atomizer; check the videos, but I'm pretty sure it's a clamp of sorts that would require a fair
+> bit of pressure to undo."
+
+**What the footage shows.** Three frames of the lab's training video T4
+([`1F9_4ccwhss`](https://youtu.be/1F9_4ccwhss?t=308)), kept small in [`refs/repowder_lid/`](../refs/repowder_lid/):
+- **5:08, lid up** ([frame](../refs/repowder_lid/t4_0508_lid_open_latch.jpg)). A stainless over-centre draw latch
+  (a toggle latch) sits on a flat on the furnace body's front right. Its lever stands up, its loop on top.
+- **5:17, lid down** ([frame](../refs/repowder_lid/t4_0517_latch_and_keeper.jpg)). The keeper is on the lid above it:
+  a plate with a lip and two screws. A horizontal bolt comes out of the machine's blue cabinet right beside the latch.
+- **5:23** ([frame](../refs/repowder_lid/t4_0523_closing.jpg)). One hand presses the lid down; the other works the
+  latch.
+
+**What the lab's notes say.**
+- The SOP (`atomizer-training/sop.md`, #124 branch): "Close the furnace lid and secure the latch just tight enough to
+  seal; if it hisses, loosen, adjust the latch and retighten" (T4 5:17). So the loop is threaded to set the draw.
+- Bartosz Kalicki (AMAZEMET) at the install call
+  ([`rePowder-BYU-Installation-Details.txt`](../../rePowder-BYU-Installation-Details.txt), 20:21 and 21:51-22:11):
+  "on the right you have the lock", and "once you close the furnace and you change the pressure in the furnace, it
+  automatically locks; there is like a bolt coming and locking the furnace".
+- T8 9:09's "how tight?" is the chamber door's star-knob swing bolts (frame checked), not the lid.
+
+So the lid has **one latch, opened by pulling its lever over centre, and a pneumatic bolt that blocks the lever
+whenever the furnace is off atmosphere.** No screws to undo.
+
+**In the chapter.** The latch, its keeper and the bolt are drawn in `alloy_atomize.py` (`latch_meshes`), so the
+rePowder model's mesh cache is untouched. The arm takes the lever by a pull tab from above and swings it out 105°;
+the loop comes off the keeper. It then opens the lid by its knob, as before. At the end it shuts the lid and swings
+the lever back up over centre. When the first pump-down starts, the bolt comes out in front of the lever; when the
+chamber is vented at the end, it goes back.
+- **The pull tab is an addition.** The real lever ends in a plain plate with a hole. The tab ends in a T, so the
+  2F-85's pads sit inside its head and the pull is taken by shape. A friction grip would hold about 2 × 235 N × 0.3 =
+  141 N (Robotiq's own friction figure), under the 200 N design load below.
+- **The hinge is probably wrong.** At 5:08 the open lid stands up behind the crucible with its inside to the camera,
+  so it likely hinges at the back. The model hinges it on the left (#124's guess). Not changed: the arm's whole lid
+  move depends on it.
+
+**How hard to undo: not measured; an estimate.** An over-centre latch holds its preload with the loop's pull a few
+mm past the lever's pivot. To open it, the lever has to come back over centre against that. Kipp publishes the hand
+force for its K0080 cover latches: **100, 150 and 200 N for 2, 4 and 7 kN held**
+([K0080 sheet](https://www.marek.eu/data/katalogove-listy/kipp/K0080.pdf)). DESTACO's stainless latches hold 1.6-8.9 kN
+and give no lever force. The lid's seal sets the preload: a 6 mm O-ring cord about 790 mm round, at 10 % squeeze,
+takes 1.3-3.6 N/mm ([Parker O-Ring Handbook](https://nfc.arizona.edu/sites/default/files/2022-02/parker_o-ring_handbook.pdf),
+Fig. 2-8, 0.275 in section), so 1-2.8 kN, about half of it on the latch and half on the hinge. So the sums below take
+**100 N expected and 200 N for a stiff one**. Under pressure it can't be opened at all: the bolt blocks it, and at
++150 to +350 mbar the lid carries 750-1,750 N (π · 126² mm² × the over-pressure).
+
+#### Will the MiR tip? No, with margin; a ballast plate adds more
+
+> "I'm also a bit worried about whether the base is heavy enough to be able to compensate for a lot of load from
+> being exerted via the arm. This is where a rail would more or less address that, but a heavy enough base that's
+> low enough to the ground could be fine, too."
+
+`stability()` sums it at the pose the chapter uses: the arm on the pull tab, the MiR where it stands for the lid.
+Results in [`out/alloy_atomize_stability.json`](../out/alloy_atomize_stability.json).
+
+| | Mass, CoG height | Tips at | Slides at | 100 N latch (expected) | 200 N latch (stiff) |
+|---|---|---|---|---|---|
+| MiR250, cabinet, control box, UR10e, 2F-85 | 172 kg, 442 mm | 466 N | 505 N | 4.7× tipping, 5.1× sliding | 2.3×, 2.5× |
+| the same with the 95 kg ballast plate (as drawn) | 267 kg, 397 mm | 730 N | 785 N | 7.3×, 7.9× | 3.7×, 3.9× |
+
+Closing the latch pushes the other way: it would tip the MiR at 483 N (746 N with the plate).
+
+- **The force** acts at the tab, 1,331 mm up and 664 mm out from the MiR's centre, toward the furnace (the lever pulls
+  back on the arm). Closing the latch pushes the other way.
+- **The masses:** MiR250 97 kg ([2023 spec sheet](https://www.hartfiel.com/wp-content/uploads/2024/04/MiR250-Specs.pdf);
+  MiR's page now says 94), UR10e 33.3 kg and its control box 12 kg
+  ([datasheet](https://www.universal-robots.com/manuals/latest/en/datasheets/ur10e/)). The cabinet's frame (25 kg) and
+  the gripper with its camera (1.2 kg) are estimates. The arm's links are placed by its forward kinematics at the pose,
+  with UR's published link masses.
+- **The support:** MiR250 has two drive wheels at mid-length and four corner casters (spec sheet). Their positions
+  aren't published; the sums take the casters at ±325 × ±225 mm (estimate).
+- **Sliding:** the drive wheels carry half the weight (estimate); μ = 0.6, the low end of the 0.6-0.8 floor friction
+  MiR's user guide asks for (§16). The casters roll.
+- **The arm's own limits.** Its joints give 330 N·m (base, shoulder), 150 N·m (elbow) and 54 N·m (wrists)
+  ([UR](https://www.universal-robots.com/articles/ur/robot-care-maintenance/max-joint-torques-cb3-and-e-series/)); its
+  rated payload is 12.5 kg. At the tab the wrists are the limit, about 0.2 m from the pull: 200 N is 40 N·m.
+
+**So the base is heavy enough for this latch: it holds more than twice a stiff one, unballasted.** Sterling's rail
+or a floor-anchored dock would be the answer for jobs that push harder. The chapter still draws a **95 kg steel
+plate, 32 mm thick, under the cabinet** (the dark band at its foot): cheap margin, within the MiR250's 250 kg
+payload (cabinet, control box, arm, gripper and plate come to about 170 kg). A dock at this spot would stand where
+chapter 3's hand-off pose puts the MiR.
+
+#### A loading tong: no drop, nothing near the rod
+
+> "It almost looks like there's some interference between the gripper and the sealing rod when adding the charges
+> into the melting chamber. I also don't like that it's just getting dropped inside from a high height. This also
+> seems like something where a custom end effector might help."
+
+Round 5 let go of each cup with its foot 13-15 mm into the bore (cup 2: 19 mm over the rim), and the cup slid the
+rest of the way. Now the 2F-85 picks up a **loading tong** from a sleeve on the MiR's cabinet end (`tong_meshes`):
+- two spring-steel jaws, 1.2 mm thick and 8 mm wide, take the cup's top 12 mm on the two sides square to the
+  crucible's radius;
+- a 6 × 8 mm stem runs up to a handle 185 mm over the jaws, where the 2F-85 clamps it;
+- closing the 2F-85 the last 3 mm shuts the jaws; opening it 3 mm opens them (custom fingertip blocks pinned into the
+  handle's two halves). Opening it fully leaves the tong in its sleeve. A design, not built;
+- below the gripper nothing is wider than the cup or the stem.
+
+The tong carries each cup all the way (`tong_path`): over the crucible; down #222's descent (beside the adapter, tipped
+4.1° with the foot over the bore's lip, down the line until the top passes under the adapter); upright as it goes on
+down, its outer side 0.3 mm inside the bore at the rim; in to its place; onto the floor cone. Only then do the jaws
+open, and the tong comes straight up.
+
+**Clearances** ([`alloy_atomize_clearance.json`](../out/alloy_atomize_clearance.json)), by FCL on the meshes, the
+least along each cup's whole path:
+
+| Least clearance, mm | Sealing rod | Rod adapter | Crucible bore | Filling cone | Thermocouple | Cups already in |
+|---|---|---|---|---|---|---|
+| Jaws (all four cups) | 10.2 | 7.6 | 3.3 | 3.3 | 4.4 (cup 2) | 1.3 |
+| Stem and bridge | 7.1 | **2.6** | 3.2 | 3.1 | 3.5 (cup 2) | 4.2 |
+| The cup it carries | −0.3 to −0.4 | −0.5 to −0.9 | +0.2 | +0.1 to +0.2 | ≥ 3 | 1.1 |
+
+- **The gripper's lowest point stays 136 mm over the rim** (the cup seated, its top 19.1 mm under the rim). Nothing
+  of the 2F-85 comes near the rod, the adapter's stub, the raised lever or the filling cone.
+- **The tightest spots** are the stem passing the adapter's rim as the cup goes upright (2.6 mm), and a jaw passing a
+  cup already seated (1.3 mm; neighbours stand 2.2 mm apart).
+
+- **The cup's own squeeze is unchanged.** A 3/4 in cup only passes the adapter tipped, at #222's −0.09 mm. In the
+  model the cup overlaps the adapter by 0.5-0.9 mm and the rod by 0.3-0.4 mm at the tight spot. These are FCL's
+  contact depths, which are rough, and the meshes' facets cost up to 0.2 mm of the bore. No tool changes this; a
+  5/8 in cup goes straight in (+1.83 mm, #222).
+- **The audit's bookkeeping.** Down the bore, the arm "holds" the cup (the tong riding on it) as far as the tight spot,
+  then the tong (with the cup in it). A held part may touch where it came from and where it goes. So the cup's squeeze
+  past the adapter, the rod and the rim is allowed, as the old release point allowed it. The tong's own parts are
+  checked like everything else.
+
+#### The crucible stack, as it would have to be automated
+
+> "Things related to the crucible in terms of automation are going to be very difficult. Fragile graphite materials
+> that are getting screwed onto other graphite materials. Custom end effector attachments, high-sensitivity force
+> sensing (torque for example), are all things that would be very important for trying to do this automation."
+
+Step 3 now stops on the cut-open stack for a few seconds: the crucible, its threaded shank, the graphite seal and the
+thin graphite nut that goes on from below, through the chamber's door. The nut turns, and the caption gives the force
+sensing it would take: the UR10e's own sensor is good to ±5.5 N and ±0.5 N·m; a Robotiq FT 300-S resolves 0.1 N and
+0.005 N·m, an ATI Mini45 1/16 N and 1/752 N·m. The plan, the hard parts and the risks are in
+[`crucible_automation.md`](crucible_automation.md).
+
+#### The rest
+
+- **The wrist camera** (the round's shared foundation) shows in the close-up of the tong being picked up.
+- **The melt footage runs at 2×** (`MELT_SPEED`): the three 2brsz-90seg excerpts, 16.5 s of real time in 7.8 s,
+  badged `2× SPEED`. Only the kept excerpts exist (`out/footage/`); longer windows at 3× would need a fresh fetch.
+- **One camera move came after the render.** In the committed round-6 render the lid's knob and the lever are seen
+  from the latch's close-up, and the camera passes through the machine for a few frames on its way to the tong. The
+  knob step now moves the camera back out (`cam_to=CAM_LOAD`); the next render picks it up.
+- **The container's cradle is a low ring on the cabinet top**, where it was a ring on a 150 mm post that the upper arm
+  crossed.
+- **Collisions: 0 of 1,339 frames** at 10 fps (`ARM_AUDIT=1`, [`out/collisions/alloy_atomize.json`](../out/collisions/alloy_atomize.json); round 5: 10 of 1,586 at 15 fps). On the way: the wrist camera in the hood on the latch grasp (the grasp turned 180° so the camera rides outboard), a fingertip on the bolt's cylinder (the gripper opens only to 0.72 round the tab), the tong's handle grazing the open lid's edge for one frame (a staging pose in front of the furnace), and the arm's upper arm through the cradle on its post (now a low ring).
 
 **The render and the footage are kept apart.** The render writes the 3-D chapter to `out/clean/` (git-ignored):
 `alloy_atomize_3d.mp4`, its GIF frames and a JSON with a marker wherever footage goes. With each marker it keeps the
@@ -135,23 +291,23 @@ above, and the reason a cup charge is so much smaller than a rod charge.
 - **The 400 cm³ crucible's fill**, taken as the Oct 27 run's 63 %. Its shape isn't known here.
 - **The furnace/chamber gauges** (+150 mbar during the melt, +350/+150 at the pour) are the training's style of
   reading with #222's 200 mbar difference. They are not a recipe.
-- **The cradle and the cup carrier on the MiR** are this model's; chapter 1 owns the carrier.
-- **The arm opens the lid by its knob** and swings it 110° (the training animation's angle). Nobody has checked
-  that a UR10e can do this on the real hood, nor whether the lid's latch needs releasing first.
+- **The cradle, the tong's sleeve and the ballast plate on the MiR** are this model's; chapter 1 owns the carrier.
+- **The arm opens the lid by its knob** and swings it 110° (the training animation's angle) about a hinge on the left,
+  after it has undone the latch (round 6). The footage suggests the real lid hinges at the back. Nobody has checked
+  that a UR10e can lift the real hood.
+- **The latch's force** (100 N, 200 N stiff) is Kipp's published hand force for cover latches of this kind, not a
+  measurement on our lid. A spring scale on the lever would settle it.
+- **The loading tong** is a design, not a part: the jaws' spring, the fingertip blocks that work them and a ceramic
+  lining against hot Al are all assumed.
 - **The arm swings the sealing-rod lever up** on its pivot to load, and back down over the adapter after. Nobody has
   checked that it can pull the eye's safety pin, nor that the rod stays seated with the lever up.
 
 **Open questions the clip raises**
-- **Can a robot load the cups at all? Only partly with the 2F-85 as it is.** Two problems:
-  - The 3/4 in cup only goes past the rod's adapter tipped, and #222 calls that too close to call (−0.09 mm).
-  - The 2F-85's fingers don't fit the bore, so the arm can't carry the cup past the adapter: it lets go with the
-    foot in the bore, and the cup has to squeeze past on its own.
-
-  Options:
-  - thin, narrow fingers that fit between the cup and the wall: with the pad faces on the cup, a 3 mm thick
-    finger can be about 19 mm wide, and the 2F-85's are 22 mm;
+- **Can a robot load the cups? With the tong, yes, but a 3/4 in cup still squeezes past the adapter** (#222's
+  −0.09 mm, too close to call). Round 5's problem, the 2F-85's fingers not fitting the bore, is gone: the tong
+  carries the cup to the floor (round 6, above). What is left:
   - a 5/8 in cup, which goes straight in (+1.83 mm);
-  - ask AMAZEMET whether the adapter can be pinned on after loading.
+  - or ask AMAZEMET whether the adapter can be pinned on after loading.
 - **Four cups leave 2.2 mm between neighbours.** A cup that lands off its place can block the next one.
 - **The vent can misbehave.** #222's README warns that a Ø1/16 in hole can draw powder out during pump-down
   and wick liquid Al under the 200 mbar over-pressure.
@@ -162,6 +318,9 @@ above, and the reason a cup charge is so much smaller than a rod charge.
   through the MiR's cabinet to the container's handle. Check the floor space in front of the real rePowder.
 
 ### Checked for collisions, and the cups let go higher (PR #318, 2026-11-04)
+
+*Round 5. Round 6 replaced the release over the bore with the loading tong, and the cradle on a post with a low
+ring; see above. Kept for the record.*
 
 Sterling: "the robot arm didn't respect collisions with itself, at all. Passed through the MiR250 and collided with
 the vial holder." Round 5 rendered this chapter before the arm was checked. `ARM_AUDIT=1` (`collide.py`, FCL on the

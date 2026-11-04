@@ -1,57 +1,8 @@
 {
  "clip": "alloy_atomize",
- "frames_checked": 1586,
- "frames_with_collisions": 10,
- "runs": [
-  {
-   "label": "2/5",
-   "first_frame": 631,
-   "last_frame": 636,
-   "frames": 6,
-   "pairs": [
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "upper_arm",
-     "other": "amr"
-    }
-   ]
-  },
-  {
-   "label": "2/5",
-   "first_frame": 688,
-   "last_frame": 688,
-   "frames": 1,
-   "pairs": [
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_finger_tip",
-     "other": "rp:arm"
-    },
-    {
-     "arm": "ur",
-     "kind": "gripper",
-     "part": "left_inner_knuckle",
-     "other": "rp:arm"
-    }
-   ]
-  },
-  {
-   "label": "2/5",
-   "first_frame": 690,
-   "last_frame": 692,
-   "frames": 3,
-   "pairs": [
-    {
-     "arm": "ur",
-     "kind": "arm",
-     "part": "upper_arm",
-     "other": "amr"
-    }
-   ]
-  }
- ],
+ "frames_checked": 1339,
+ "frames_with_collisions": 0,
+ "runs": [],
  "rules": "What may touch: the gripper and whatever group it is picking up, holding or putting down, within 4 s of the\n    grasp or release; a held part and the groups it touches when it is taken and when it is let go (where it came\n    from and where it goes).",
  "method": "FCL 0.7 (python-fcl) mesh-mesh collision on the drawn meshes, arm links decimated to 8000 triangles; every frame of the clip, after its update"
 }
