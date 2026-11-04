@@ -25,7 +25,7 @@ import numpy as np
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE / "lab_models"))
-from common import Model, box, cyl, rbox, tube  # noqa: E402
+from common import Model, box, cyl, hose, rbox, tube  # noqa: E402
 
 # name: (r, g, b, opacity, specular), merged into lab.MATS by tour.py
 MATERIALS = {
@@ -59,6 +59,14 @@ MATERIALS = {
     "brass_wire": (0.86, 0.68, 0.28, 1.0, 0.7),
     "water": (0.35, 0.60, 0.80, 0.45, 0.8),
     "powder": (0.45, 0.46, 0.48, 1.0, 0.05),
+    "px_grey": (0.83, 0.84, 0.83, 1.0, 0.20),          # LECO's light grey (PX500), from the lab's SOP frames
+    "sic_paper": (0.17, 0.19, 0.27, 1.0, 0.05),        # the dark SiC papers in the SOP
+    "cloth_white": (0.96, 0.96, 0.95, 1.0, 0.05),      # the white final-polish cloth
+    "mount_red": (0.46, 0.09, 0.11, 1.0, 0.35),        # the lab's maroon Bakelite mounts
+    "led_blue": (0.40, 0.62, 1.00, 1.0, 0.10),         # the PX500's lit ring under the head
+    "px_screen": (0.07, 0.13, 0.22, 1.0, 0.6),          # the PX500's dark navy screen
+    "px_ui": (0.62, 0.86, 0.92, 1.0, 0.1),              # its light-cyan dial and setting rows
+    "alumina": (0.93, 0.93, 0.90, 0.85, 0.30),         # alumina suspension
 }
 
 
@@ -143,6 +151,7 @@ class Instrument:
     cam: tuple = (1.0, -1.6, 0.9)    # camera direction for the tour, scaled by the instrument's size
     framing: tuple = ()              # (pad, look_z) for the tour's camera, when the default doesn't suit
     meshes: dict = field(default_factory=dict)     # name -> [(PolyData, rgb, opacity)]: pieces that are meshes, not CAD
+    anchors: dict = field(default_factory=dict)    # name -> point, ("circle", c, r) or ("line", p0, p1): register.py
     zoom: dict = field(default_factory=dict)       # action index -> ((x, y, z), distance mm): the camera moves in;
                                                    # -> "out": back to the whole instrument (tour.py)
     props: tuple = ("load", "sample", "specimen", "holder", "stub", "slide", "beam", "glow", "powder")  # not the machine
@@ -803,91 +812,216 @@ def rail(length: float = 4000.0, travel: float = 1600.0) -> Instrument:
 
 
 # ===================================================================================================== polisher
-# Buehler EcoMet 30 semi-automatic grinder-polisher, single 12 in (305 mm) platen, with its built-in power head:
-# 488 W x 638 D x 650 H mm (drawing; 500 x 650 x 650 in the table), 75 kg; 50-500 rpm, 25-200 N head force; it needs
-# water, compressed air (> 0.4 MPa) and a drain (EcoMet 30 manual). Layout from the manual's drawing and Buehler's
-# photos: a cream base with its deck at 254.5 mm and a blue side panel, the bowl front-centre with a blue rim, a tower
-# at the back right (444.5 mm) with the 7 in touchscreen, and the power head (blue body, white cap) on a column at the
-# back left, reaching over the platen with a six-hole specimen holder.
-POLISHER = dict(W=488.0, D=638.0, H=650.0, deck=254.5, platen_d=305.0, bowl_d=400.0, tower_h=444.5, head_drop=40.0)
+# LECO PX500 semi-automatic grinder-polisher: the machine in the lab's own SOP videos (BYU Vertical Cloud Lab channel,
+# "Alumina polish" parts 1-3 and "320-1200 Polishing + Alumina on pad"). Until the SOP footage was checked this was a
+# Buehler EcoMet 30. LECO's brochure (form 209-254, 2020): wheels up to 12 in (300 mm); a motorized head for fixed
+# and individual specimen holders; up to five metered dispensers; a 7 in multi-touch screen with the emergency stop
+# under it; a spiral bowl with automatic bowl wash; a detachable water spigot; LED work light. LECO publishes no
+# dimensions (533 W x 711 D x 635 H mm, 21 x 28 x 25 in, is a reseller's figure for the PX400/PX500 series), so the
+# proportions are fitted to the lab's frames with register.py (refs/polisher/), the 7 in screen (155 x 87 mm active)
+# setting the scale. Look, from those frames and LECO's photos: light grey; the round front-left of the base holds the
+# bowl, its lip a raised grey ring; the right of the front is a block with the screen on a steep slope, "PX500" above
+# it and the red e-stop in a yellow collar below; the head is a tall, rounded grey housing over the back of the bowl,
+# with a blue-lit ring around the spindle under it and the 6-position holder below that; a stainless gooseneck spigot
+# comes out of the head's right side; five dispenser bottles stand in a rack on the left side.
+POLISHER = dict(W=558.0, D=711.0, deck=312.0, drum_r=226.0, rim_gap=8.0, lip_w=24.0, rim_h=16.0, block_k=0.90,
+                platen_d=305.0, platen_z=-33.0, slope_z0=191.0, slope_d=82.0, scr_x=191.0, scr_s=0.30,
+                estop_x=247.0, estop_z=94.0, head_w=281.0, head_d=360.0, head_h=253.0, head_back=100.0,
+                head_up=112.0, head_drop=95.0, hold_dx=-29.0, hold_dy=35.0, hold_d=150.0)
+SCREEN = (155.0, 87.0)          # a 7 in 16:9 display's active area, mm
+MOUNT_D = 31.75                 # 1.25 in Bakelite mounts, as in the lab's "Making Bakelite Polishing Puck"
+
+
+def _px500(p) -> dict:
+    """The positions the model and its anchors share."""
+    W, D = p["W"], p["D"]
+    yf = -D / 2
+    bx, by = -W / 2 + p["drum_r"], yf + p["drum_r"]
+    hx, hy = bx + p["hold_dx"], by + p["hold_dy"]                  # the holder's axis, under the head
+    sy, sz = p["slope_d"], p["deck"] - p["slope_z0"]
+    L = math.hypot(sy, sz)
+    up = np.array([0.0, sy / L, sz / L])                           # up the screen's slope
+    sc = np.array([p["scr_x"], yf, p["slope_z0"]]) + up * (p["scr_s"] * L)
+    rim_r = p["drum_r"] - p["rim_gap"]                             # the bowl's lip, a little inside the drum
+    return dict(W=W, D=D, yf=yf, bx=bx, by=by, hx=hx, hy=hy, up=up, L=L, sc=sc, rim_r=rim_r, bowl_r=rim_r - p["lip_w"],
+                xb=bx + p["block_k"] * p["drum_r"],                # the screen block's left side
+                hcy=hy + p["head_back"] - p["head_d"] / 2)        # the housing's centre: it reaches back to the column
+
+
+def polisher_anchors(p, pose=None) -> dict:
+    """Named points, circles and lines of the model, for register.py; the head's follow pose["head"] (0 up, 1 down)."""
+    g = _px500(p)
+    dk, yf, W = p["deck"], g["yf"], g["W"]
+    a = {"platen edge": ("circle", (g["bx"], g["by"], dk + p["platen_z"]), p["platen_d"] / 2),
+         "rim outer": ("circle", (g["bx"], g["by"], dk + p["rim_h"]), g["rim_r"]),
+         "rim inner": ("circle", (g["bx"], g["by"], dk + p["rim_h"]), g["bowl_r"]),
+         "drum foot": ("circle", (g["bx"], g["by"], 0.0), p["drum_r"]),
+         "drum top": ("circle", (g["bx"], g["by"], dk), p["drum_r"]),
+         "block foot right": (W / 2, yf, 0.0),
+         "block top right": (W / 2, yf, p["slope_z0"]),
+         "deck front right": (W / 2, yf + p["slope_d"], dk),
+         "block top left": (g["xb"], yf, p["slope_z0"]),
+         "estop": (p["estop_x"], yf - 14.0, p["estop_z"])}
+    w, h = SCREEN
+    for nm, (fx, fz) in {"screen tl": (-1, 1), "screen tr": (1, 1), "screen bl": (-1, -1), "screen br": (1, -1)}.items():
+        a[nm] = tuple(g["sc"] + np.array([fx * w / 2, 0, 0]) + g["up"] * (fz * h / 2))
+    dz = -p["head_drop"] * float((pose or {}).get("head", 0.0))
+    z0, z1 = dk + p["head_up"] + dz, dk + p["head_up"] + p["head_h"] + dz
+    hcy = g["hcy"]
+    hy0 = hcy - p["head_d"] / 2                                     # the housing's front
+    a.update({"head front bottom": (g["hx"], hy0, z0), "head front top": (g["hx"], hy0, z1),
+              "head left": ("line", (g["hx"] - p["head_w"] / 2, hcy, z0 + 40), (g["hx"] - p["head_w"] / 2, hcy, z1 - 40)),
+              "head right": ("line", (g["hx"] + p["head_w"] / 2, hcy, z0 + 40), (g["hx"] + p["head_w"] / 2, hcy, z1 - 40)),
+              "head top": ("line", (g["hx"] - p["head_w"] / 2 + 60, hcy, z1), (g["hx"] + p["head_w"] / 2 - 60, hcy, z1)),
+              "holder": ("circle", (g["hx"], g["hy"], dk + p["head_up"] - 120 + dz), p["hold_d"] / 2)})
+    return a
 
 
 def polisher() -> Instrument:
     p = POLISHER
-    inst = Instrument("polisher", "Metallographic grinder-polisher", "Buehler EcoMet 30 semi-automatic",
-                      (p["W"], p["D"], p["H"]), "Buehler EcoMet 30 instruction manual (drawing 488 x 638 x 650 mm, "
-                      "75 kg, platens, services); look from Buehler's photos")
-    W, D, H = p["W"], p["D"], p["H"]
-    yf, yb = -D / 2, D / 2
-    pc = (0.0, yf + 230.0)                      # platen centre, front-centre
+    g = _px500(p)
+    W, D, yf, bx, by, hx, hy, dk = g["W"], g["D"], g["yf"], g["bx"], g["by"], g["hx"], g["hy"], p["deck"]
+    H = dk + p["head_up"] + p["head_h"]
+    inst = Instrument("polisher", "Metallographic grinder-polisher", "LECO PX500 semi-automatic", (W, D, round(H)),
+                      "the lab's SOP videos (BYU Vertical Cloud Lab channel), fitted with register.py; LECO's PX400/PX500 "
+                      "brochure (form 209-254) for the features; 533 x 711 x 635 mm is a reseller's series figure")
     body = _piece(inst, "body")
-    base = box(-W / 2, yf, 0, W / 2, yb, p["deck"]).edges("|Z").fillet(30)
-    body.add("base", base, "inst_offwhite")
-    body.add("side panel", box(-W / 2 - 2, yf + 60, 30, -W / 2, yb - 60, p["deck"] - 30), "inst_blue")
-    body.add("e-stop", _ycyl(34, 16, x=W / 2 - 50, y=yf - 14, z=p["deck"] - 50), "inst_red")
-    body.add("e-stop collar", _ycyl(46, 4, x=W / 2 - 50, y=yf - 2, z=p["deck"] - 50), "inst_yellow")
-    bowl = cyl(p["bowl_d"], 90, x=pc[0], y=pc[1], z=p["deck"]).cut(
-        cyl(p["bowl_d"] - 24, 91, x=pc[0], y=pc[1], z=p["deck"] + 8))
-    body.add("splash bowl", bowl, "inst_light")
-    body.add("bowl rim", cyl(p["bowl_d"] + 6, 10, x=pc[0], y=pc[1], z=p["deck"] + 85).cut(
-        cyl(p["bowl_d"] - 24, 12, x=pc[0], y=pc[1], z=p["deck"] + 84)), "inst_blue")
-    tx, ty = W / 2 - 75, yb - 95
-    body.add("tower", rbox(130, 150, p["tower_h"] - p["deck"], 14, x=tx, y=ty, z=p["deck"]), "inst_offwhite")
-    tscr = box(-80, -4, 0, 80, 0, 100).rotate((0, 0, 0), (1, 0, 0), -20).translate((tx - 30, ty - 77, p["tower_h"] - 115))
-    body.add("touchscreen", tscr.rotate((tx, ty, 0), (tx, ty, 1), 0), "screen_on")
-    cx, cy = -W / 2 + 80, yb - 90
-    # the column ends inside the head even with the head down (it came up through the cap)
-    body.add("column", rbox(90, 90, H - p["deck"] - 90, 10, x=cx, y=cy, z=p["deck"]), "inst_offwhite")
-    pz = p["deck"] + 70                         # the platen's underside; the cloth's top is 18 mm above it
-    # the spout comes out of the tower over the bowl's rim, its nozzle 10 mm above the cloth (it went into the platen)
-    sz0 = pz + 28
-    body.add("water spout", box(pc[0] + 120, pc[1] + 60, p["deck"] + 110, pc[0] + 132, yb - 160, p["deck"] + 122)
-             .union(box(pc[0] + 120, pc[1] + 60, sz0, pc[0] + 132, pc[1] + 72, p["deck"] + 122)), "steel")
+    R = p["drum_r"]
+    # the base: the round drum around the bowl, the full-width back, and the screen block at the front right
+    base = (cyl(2 * R, dk, x=bx, y=by)
+            .union(box(-W / 2, by, 0, W / 2, D / 2, dk).edges("|Z and >Y").fillet(25))
+            .union(box(g["xb"], yf, 0, W / 2, by + 1, dk).edges("|Z and <Y and >X").fillet(14)))
+    # the screen's slope across the block's front: from slope_z0 at the front edge up to the deck
+    pts = [(yf - 1, p["slope_z0"]), (yf + p["slope_d"], dk + 1), (yf - 1, dk + 1)]
+    cut = cq.Workplane("YZ").polyline(pts).close().extrude(W / 2 - g["xb"] + 2).translate((g["xb"] - 1, 0, 0))
+    base = base.cut(cut)
+    bowl_floor = dk - 120.0
+    rim_r, bowl_r = g["rim_r"], g["bowl_r"]
+    base = base.cut(cyl(2 * bowl_r, dk - bowl_floor + 1, x=bx, y=by, z=bowl_floor))
+    body.add("base", base, "px_grey")
+    body.add("bowl", cyl(2 * bowl_r + 2, 4, x=bx, y=by, z=bowl_floor).union(
+        tube(2 * bowl_r + 2, 2 * bowl_r - 6, dk - bowl_floor, x=bx, y=by, z=bowl_floor)), "inst_grey")
+    body.add("bowl lip", tube(2 * rim_r, 2 * bowl_r, p["rim_h"], x=bx, y=by, z=dk).edges(">Z").fillet(5), "inst_light")
+    # the screen in its bezel on the slope, PX500 above it, the e-stop under it
+    up = g["up"]
+    tilt = -math.degrees(math.atan2(up[1], up[2]))               # the slope's angle from vertical, about x
+    sc = g["sc"]
+    bez = box(-SCREEN[0] / 2 - 12, -3, -SCREEN[1] / 2 - 6, SCREEN[0] / 2 + 12, 0, SCREEN[1] / 2 + 8)
+    scr = box(-SCREEN[0] / 2, -4, -SCREEN[1] / 2, SCREEN[0] / 2, -3, SCREEN[1] / 2)
+    lab = box(SCREEN[0] / 2 - 50, -1.2, SCREEN[1] / 2 + 20, SCREEN[0] / 2, -0.5, SCREEN[1] / 2 + 30)
+    # the SOP's screen: three setting rows on the left, the timer dial on the right, light on dark navy
+    ui = box(-SCREEN[0] / 2 + 8, -4.6, -SCREEN[1] / 2 + 12, -SCREEN[0] / 2 + 70, -4.0, -SCREEN[1] / 2 + 14)
+    for k in (1, 2):
+        ui = ui.union(box(-SCREEN[0] / 2 + 8, -4.6, -SCREEN[1] / 2 + 12 + 22 * k, -SCREEN[0] / 2 + 70, -4.0,
+                          -SCREEN[1] / 2 + 14 + 22 * k))
+    dial = cq.Workplane("XZ").circle(24).circle(21).extrude(0.6).translate((SCREEN[0] / 2 - 42, -4.0, 2))
+    for nm, solid, mat in (("bezel", bez, "inst_black"), ("touchscreen", scr, "px_screen"), ("screen rows", ui, "px_ui"),
+                           ("screen dial", dial, "px_ui"), ("PX500 label", lab, "inst_dark")):
+        body.add(nm, solid.rotate((0, 0, 0), (1, 0, 0), tilt).translate(tuple(sc)), mat)
+    ex, ez = p["estop_x"], p["estop_z"]
+    body.add("e-stop collar", _ycyl(54, 6, x=ex, y=yf - 6, z=ez), "inst_yellow")
+    body.add("e-stop", _ycyl(38, 14, x=ex, y=yf - 18, z=ez).union(_ycyl(26, 8, x=ex, y=yf - 6, z=ez)), "inst_red")
+    # the dark mat over the deck behind the bowl, as in the SOP frames
+    body.add("deck mat", box(-W / 2 + 15, by + p["drum_r"] * 0.55, dk, W / 2 - 15, D / 2 - 15, dk + 3)
+             .cut(cyl(2 * rim_r + 4, 10, x=bx, y=by, z=dk - 1)), "inst_dark")
+    # the head's column, at the back under the housing (it stays inside the housing with the head down)
+    cy = hy + p["head_back"] - 40
+    body.add("column", rbox(110, 80, p["head_up"] + 60, 12, x=hx, y=cy, z=dk), "inst_grey")
+    # five dispenser bottles in a rack on the left side
+    rx = -W / 2 - 38                                               # the 5-position bottle holder, low on the left side
+    body.add("bottle rack", box(rx - 34, by - 150, 12, rx + 34, by + 150, 18).union(
+        box(-W / 2 - 2, by - 150, 12, -W / 2, by + 150, 90)), "steel")
+    for i in range(5):
+        y = by - 120 + 60 * i
+        body.add(f"bottle {i + 1}", cyl(52, 150, x=rx, y=y, z=18).edges(">Z").fillet(10)
+                 .union(cyl(20, 14, x=rx, y=y, z=168)), "inst_white")
+    # the head: housing, the lit ring and spindle under it, the water spigot and the dispenser nozzles
     head = _piece(inst, "head")
-    hz = H - 150
-    hz0 = pz + 18.6 + p["head_drop"]            # the mounts' faces: on the cloth with the head down
-    hcx, hcy = pc[0] - 30, pc[1] + 20             # the holder's axis, off the platen's centre
-    head.add("head arm", box(cx - 50, hcy - 60, hz, cx + 50, cy + 40, hz + 110).edges("|Z").fillet(20).union(
-        box(cx - 50, hcy - 60, hz, hcx + 70, hcy + 60, hz + 110).edges("|Z").fillet(20)), "inst_blue")
-    head.add("head cap", box(cx - 45, hcy - 55, hz + 110, hcx + 65, hcy + 55, hz + 125).edges("|Z").fillet(18)
-             .union(box(cx - 45, hcy - 55, hz + 110, cx + 45, cy + 35, hz + 125)), "inst_white")
-    head.add("chevron", box(hcx - 20, hcy - 61, hz + 40, hcx + 40, hcy - 60, hz + 70), "inst_white")
-    head.add("spindle", cyl(36, hz - (hz0 + 40), x=hcx, y=hcy, z=hz0 + 40), "chrome")
+    hz = dk + p["head_up"]
+    hcy = g["hcy"]
+    housing = rbox(p["head_w"], p["head_d"], p["head_h"], 0.42 * p["head_w"], x=hx, y=hcy, z=hz).edges(">Z").fillet(30)
+    head.add("housing", housing.edges("<Z").fillet(8), "px_grey")
+    head.add("housing skirt", rbox(p["head_w"] - 70, p["head_d"] - 70, 18, 0.35 * p["head_w"], x=hx, y=hcy, z=hz - 18),
+             "inst_dark")
+    head.add("lit ring", cyl(118, 34, x=hx, y=hy, z=hz - 52), "led_blue")
+    head.add("hub", cyl(70, 26, x=hx, y=hy, z=hz - 78), "inst_dark")
+    head.add("spindle", cyl(34, 30, x=hx, y=hy, z=hz - 108), "chrome")
+    sx = hx + p["head_w"] / 2
+    spout_end = (bx + 105, by + 20, dk + 62)
+    hh = p["head_h"]
+    head.add("spigot fitting", _xcyl(26, 34, x=sx - 20, y=hy, z=hz + 0.78 * hh), "inst_white")
+    head.add("spigot", hose([(sx + 10, hy, hz + 0.78 * hh), (sx + 34, hy - 4, hz + 0.70 * hh),
+                             (sx + 44, hy - 8, hz + 0.40 * hh), (sx + 38, hy - 12, hz + 0.05 * hh),
+                             (spout_end[0] + 18, spout_end[1], dk + 110), spout_end], 10), "chrome")
+    for i in range(2):
+        head.add(f"dispenser nozzle {i + 1}", cyl(7, 40, x=hx + 70 + 14 * i, y=hy - 70, z=hz - 40), "steel")
     holder = _piece(inst, "holder")
-    holder.add("specimen holder", cyl(160, 18, x=hcx, y=hcy, z=hz0 + 22).cut(cyl(30, 20, x=hcx, y=hcy, z=hz0 + 21)),
-               "steel")
+    hz_h = hz - 120.0                                              # the holder's underside, head up
+    flower = cyl(p["hold_d"], 12, x=hx, y=hy, z=hz_h)
     for i in range(6):
-        a_ = math.radians(90 + 60 * i)
-        holder.add(f"mount {i + 1}", cyl(30, 25, x=hcx + 52 * math.cos(a_), y=hcy + 52 * math.sin(a_), z=hz0),
-                   "mount")
-    holder.add("mark", box(hcx + 60, hcy - 4, hz0 + 40, hcx + 78, hcy + 4, hz0 + 41), "inst_red")
+        a_ = math.radians(30 + 60 * i)
+        flower = flower.cut(cyl(MOUNT_D + 1, 14, x=hx + 52 * math.cos(a_), y=hy + 52 * math.sin(a_), z=hz_h - 1))
+        flower = flower.cut(cyl(40, 14, x=hx + 84 * math.cos(a_ + math.pi / 6), y=hy + 84 * math.sin(a_ + math.pi / 6),
+                                z=hz_h - 1))
+    holder.add("6-position holder", flower, "stainless")
+    for i in range(6):
+        a_ = math.radians(30 + 60 * i)
+        holder.add(f"mount {i + 1}", cyl(MOUNT_D, 25, x=hx + 52 * math.cos(a_), y=hy + 52 * math.sin(a_),
+                                         z=hz_h - 13), "mount_red")
+    pz = dk + p["platen_z"]                                        # the abrasive's top
     platen = _piece(inst, "platen")
-    platen.add("platen", cyl(p["platen_d"], 15, x=pc[0], y=pc[1], z=pz), "aluminium")
-    platen.add("platen hub", cyl(80, pz - p["deck"] - 8, x=pc[0], y=pc[1], z=p["deck"] + 8), "steel")
-    platen.add("cloth", cyl(p["platen_d"] - 6, 3, x=pc[0], y=pc[1], z=pz + 15), "cloth")
-    for i in range(4):
-        bar = box(-p["platen_d"] / 2 + 10, -3, pz + 18, p["platen_d"] / 2 - 10, 3, pz + 18.6)
-        platen.add(f"groove {i}", bar.rotate((0, 0, 0), (0, 0, 1), i * 45.0).translate((pc[0], pc[1], 0)), "inst_grey")
+    platen.add("platen", cyl(p["platen_d"], 16, x=bx, y=by, z=pz - 17), "aluminium")
+    platen.add("platen hub", cyl(90, pz - 17 - bowl_floor, x=bx, y=by, z=bowl_floor), "steel")
+    platen.add("magnetic disc", cyl(p["platen_d"] - 4, 0.8, x=bx, y=by, z=pz - 1.2), "inst_dark")
+    paper = _piece(inst, "paper")
+    paper.add("SiC paper", cyl(p["platen_d"] - 2, 0.6, x=bx, y=by, z=pz - 0.6).union(
+        box(bx - 2, by - p["platen_d"] / 2 + 6, pz, bx + 2, by - p["platen_d"] / 2 + 60, pz + 0.3)), "sic_paper")
+    cloth = _piece(inst, "cloth")
+    cloth.add("polishing cloth", cyl(p["platen_d"] - 2, 1.4, x=bx, y=by, z=pz - 0.6), "cloth_white")
+    drop = hz_h - 13 - pz                                          # the head comes down until the mounts touch
+    # the water and the suspension are drawn as they fall with the head down (they ride on the head)
     water = _piece(inst, "glow")
-    water.add("water", cyl(6, sz0 - (pz + 18), x=pc[0] + 126, y=pc[1] + 66, z=pz + 18), "water")     # nozzle to cloth
+    ls = spout_end[2] - drop - pz
+    water.add("water", cyl(5, ls, x=spout_end[0], y=spout_end[1], z=spout_end[2] - ls), "water")
+    stream = _piece(inst, "powder")
+    ls = hz - 40 - drop - pz - 1.4
+    stream.add("alumina stream", cyl(4, ls, x=hx + 70, y=hy - 70, z=hz - 40 - ls), "alumina")
+    film = _piece(inst, "alumina")
+    film.add("alumina on the cloth", tube(250, 90, 0.5, x=bx, y=by, z=pz + 0.8), "alumina")
     inst.joints = {
-        "head": Joint("slide", vec=(0, 0, -p["head_drop"])),
-        "holder": Joint("spin", parent="head", axis=(0, 0, 1), pivot=(hcx, hcy, 0), deg=-720.0),
-        "platen": Joint("spin", axis=(0, 0, 1), pivot=(pc[0], pc[1], 0), deg=1800.0),
-        "glow": Joint("fade"),
+        "head": Joint("slide", vec=(0, 0, -drop)),
+        "holder": Joint("spin", parent="head", axis=(0, 0, 1), pivot=(hx, hy, 0), deg=-150.0),
+        "platen": Joint("spin", axis=(0, 0, 1), pivot=(bx, by, 0), deg=-720.0),
+        "paper": Joint("fade", parent="platen"),
+        "cloth": Joint("fade", parent="platen"),
+        "glow": Joint("fade", parent="head"),
+        "powder": Joint("fade", parent="head"),
+        "alumina": Joint("fade", parent="platen"),
     }
     inst.actions = [
-        ("Six mounted samples (30 mm) in the power head's holder, over a 12 in platen with a polishing cloth.",
-         1.4, {"glow": (0.0, 0.0)}),
-        ("The head presses the holder onto the cloth (25-200 N); water on; platen and holder turn, 50-500 rpm.", 3.6,
+        ("The lab's LECO PX500, as in its SOP videos: six Bakelite mounts in the 6-position holder; a 12 in platen.",
+         1.4, {}),
+        ("A 320-grit SiC paper on the platen (by hand in the SOP; by the arm on a tray).", 1.2, {"paper": (0.0, 1.0)}),
+        ("Head down, water on. The SOP's grinding step: head 35 rpm, force 30, platen 150 rpm, 30 s.", 3.4,
          {"head": (0.0, 1.0), "platen": (0.0, 1.0), "holder": (0.0, 1.0), "glow": (0.0, 1.0)}),
-        ("Done: the head lifts. It needs water, air and a drain, so on a tray it needs a recirculating unit.", 1.8,
-         {"head": (1.0, 0.0), "glow": (1.0, 0.0)}),
+        ("Head up and rinse; then 400, 600, 800 and 1200 grit, a fresh paper each time.", 1.6,
+         {"head": (1.0, 0.0), "glow": (1.0, 0.0), "paper": (1.0, 0.0)}),
+        ("The final polish: a white cloth on the platen, for 1 um alumina suspension.", 1.4, {"cloth": (0.0, 1.0)}),
+        ("Head down, suspension from a dispenser (squeezed from a bottle in the SOP): force 3-5, 150 rpm, 3 min.", 3.4,
+         {"head": (0.0, 1.0), "platen": (1.0, 2.0), "holder": (1.0, 2.0), "powder": (0.0, 1.0),
+          "alumina": (0.0, 1.0)}),
+        ("Done: the head lifts; the mounts are rinsed at the sink and dried. On a tray it needs water, a drain and air.",
+         1.8, {"head": (1.0, 0.0), "powder": (1.0, 0.0)}),
     ]
-    inst.labels = [("power head", (cx, hcy, hz + 125), (0.16, 0.22)),
-                   ("touchscreen", (tx - 30, ty - 77, p["tower_h"] - 70), (0.84, 0.25)),
-                   ("platen", (pc[0] + 140, pc[1] - 60, pz + 15), (0.84, 0.62))]
-    inst.cam = (0.8, -1.7, 1.1)
+    inst.labels = [("power head", (hx - p["head_w"] / 2, hcy, hz + p["head_h"] * 0.7), (0.14, 0.22)),
+                   ("7 in touchscreen", tuple(sc + np.array([SCREEN[0] / 2, 0, 0])), (0.86, 0.36)),
+                   ("6-position holder", (hx - p["hold_d"] / 2, hy, hz_h), (0.12, 0.52)),
+                   ("dispenser bottles", (rx, by - 120, 170), (0.12, 0.80))]
+    inst.anchors = polisher_anchors(p)
+    inst.cam = (0.7, -1.7, 0.8)
+    inst.framing = (1.0, 0.40)
+    near = ((hx + 40, hy - 40, dk - 10), 1350.0)                   # in on the holder, on the abrasive
+    inst.zoom = {2: near, 3: "out", 5: near, 6: "out"}
     return inst
 
 
@@ -1260,3 +1394,13 @@ def _registry() -> dict:
 
 
 REGISTRY = _registry()
+
+# Anchors for register.py: instrument key -> (its parameter dict, a function of those parameters and a pose giving its
+# named points, circles and lines), and the parameters register.py may fit to the reference frames in refs/<key>/.
+ANCHORS = {"polisher": (POLISHER, polisher_anchors)}
+FREE = {"polisher": ["W", "deck", "drum_r", "platen_z", "block_k", "slope_z0", "slope_d", "scr_x", "scr_s", "estop_x",
+                     "estop_z", "head_w", "head_h", "head_up", "hold_dx", "head_back"]}
+# what keeps a fitted polisher buildable: the lip inside the drum, the platen inside the bowl and below the lip, the
+# screen on its slope, the e-stop under it, the housing over the holder
+CHECKS = {"polisher": lambda p: [p["drum_r"] - p["rim_gap"] - p["lip_w"] - p["platen_d"] / 2 - 8, -p["platen_z"] - 15, p["deck"] - p["slope_z0"] - 60,
+                                 p["slope_z0"] - p["estop_z"] - 35, p["head_back"] - 60, p["W"] / 2 - p["estop_x"] - 30]}
