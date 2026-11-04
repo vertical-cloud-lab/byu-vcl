@@ -1,7 +1,8 @@
 """The alloy route as a function network: the DAG from DAL's ONR YIP figures, brought in one stage at a time before each
 chapter of the alloy route (byu-vcl #303, PR #318).
 
-    python3 route_dag.py          # -> out/dag/route_dag_ch{1..5}.png and .mp4, out/dag/route_dag_sheet.png, out/dag/route_dag.json
+    python3 route_dag.py          # -> out/dag/route_dag_ch{1..5}.png, out/mp4/dag/route_dag_ch{1..5}.mp4,
+                                  #    out/dag/route_dag_sheet.png, out/dag/route_dag.json
 
 Asked for on PR #318 (2026-11-04): "For the alloy workflow, you should bring in some version of the DAG either from the
 Cu YIP proposal or the Genesis Mission FLAIME proposal, both from DAL repo; showing the progression of steps. This will
@@ -42,6 +43,7 @@ from PIL import Image  # noqa: E402
 
 HERE = Path(__file__).resolve().parent
 OUT = HERE / "out" / "dag"
+OUT_MP4 = HERE / "out" / "mp4" / "dag"
 SOURCE = ("digital-alloy-lab, onr-yip-figs-oct27-integrate @ b553306, benchmarks/bofn-prelim/dag/network_dag.py",
           "https://github.com/vertical-cloud-lab/digital-alloy-lab/blob/b553306/benchmarks/bofn-prelim/dag/network_dag.py")
 
@@ -232,6 +234,7 @@ def clip(frames_png: list[Path], holds: list[float], path: Path, fps=15, fade=0.
 
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
+    OUT_MP4.mkdir(parents=True, exist_ok=True)
     record = {"source": SOURCE, "chapters": {}}
     last = None
     finals = []
@@ -244,12 +247,12 @@ def main():
         final = OUT / f"route_dag_ch{ch}.png"
         Image.open(pngs[-1]).save(final)
         holds = [3.2] * (len(pngs) - 1) + [5.5]
-        secs = clip(pngs, holds, OUT / f"route_dag_ch{ch}.mp4", lead=last)
+        secs = clip(pngs, holds, OUT_MP4 / f"route_dag_ch{ch}.mp4", lead=last)
         for p in pngs:
             if p != final:
                 p.unlink()
         record["chapters"][ch] = {"seconds": round(secs, 2), "captions": [b[4] for b in beats],
-                                  "mp4": f"out/dag/route_dag_ch{ch}.mp4", "png": f"out/dag/route_dag_ch{ch}.png"}
+                                  "mp4": f"out/mp4/dag/route_dag_ch{ch}.mp4", "png": f"out/dag/route_dag_ch{ch}.png"}
         last = final
         finals.append(final)
         print(f"chapter {ch}: {secs:.1f} s")
