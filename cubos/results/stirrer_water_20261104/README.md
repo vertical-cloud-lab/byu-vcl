@@ -7,9 +7,10 @@ holder on and no vial, the same stirrer spun and counted every turn
 ([`stirrer_spin_20261104`](../stirrer_spin_20261104/README.md)). **With the vial and bar in,
 the fan did not start at any speed from 300 to 2000 rpm. The Hall sensor gave no pulses, the
 firmware stopped each step after 12 s with `stalled` set, and nothing in camera 1's view of
-the vial moved. Then (23:32) the fan was started with the vial out and Ben lowered the vial in: it kept
-turning, the water moved on camera, and for about 15 s the Hall sensor read 300–360 rpm. After
-that the reading jumped between 0 and 810 rpm while the firmware raised the duty to 0.74.**
+the vial moved. Then (23:32) the fan was started with the vial out and Ben lowered the vial in: it stirred,
+the water moved on camera, and for about 15 s the Hall sensor read 300–360 rpm. Ben saw it
+stir until the vial was about 3 mm from fully down, and stop there. The Hall reading also
+went wrong: it jumped between 0 and 810 rpm while the firmware raised the duty to 0.74.**
 All times UTC (the lab is on MST, UTC−7). `~/cubxl_runs/HOLD` was set from 23:14:15.
 
 ## What the cameras see
@@ -114,9 +115,16 @@ reflection moving in the acrylic deck makes the bare-deck patch too noisy to com
 *+20 to +36 s, the stretch with the vial in and hands off, with the Uno's replies burned in
 ([MP4](stir_vial_lowered_300rpm.mp4)).*
 
+**Ben, at the bench (23:40):** *"I was able to see that the stirring worked as I was lowering
+the vial down into the vial holder. It stopped working about 3mm from the top. It seems like
+when it gets too close, the force pulling the bar down is too great for the fan to get past
+when it tries to spin."*
+
 **What this says:**
-- **The fan can turn with the vial in, once it is going.** Run 1's problem was starting
-  from rest.
+- **It stirs with the vial held about 3 mm above its seat, and stalls when the vial is
+  fully down.** Camera 1 can't resolve 3 mm, so which stretches of run 2 had the vial fully
+  down isn't known from the frames; the steady 300–360 rpm from +18 to +36 s may have been
+  with it partly raised.
 - **The Hall reading with the vial in can't be trusted.** It read 30 rpm just before
   `30,0`, then 600 rpm over the 2 s after it, with the fan unpowered and coasting down.
   Nobody touched the vial then (frames from +86 to +94 s). A coasting fan only slows, so
@@ -147,10 +155,11 @@ stops a 40 mm fan at 5 V:
    If the fan's sleeve bearing lets the rotor rise that far, the carrier rubs the ceiling.
    Nobody has measured the rotor's end play.
 
-Run 2 points to the first: started with the vial out, the fan kept turning with the vial
-in. The fix `BUILD.md` names is a spacer disc under the vial (1, 2 or 3 mm; none has been
-printed yet), which weakens the pull. Starting the fan before the vial goes in also works,
-but a CubOS run can't do that yet.
+Ben's view settles it as far as it goes: the pull is too strong within about 3 mm of the
+seat, turning or not. Either mechanism fits that. The fix `BUILD.md` names is a spacer disc
+under the vial (1, 2 or 3 mm; none has been printed yet), which is the same as seating the
+vial higher. Ben's follow-up question on this PR (23:40: more torque, a weaker bar, or the
+vial 3 mm higher and whether the pipette then has the clearance) went to the next run.
 
 The Hall reading is a separate problem, and a spacer barely helps it (about 0.6 mT for 1 mm,
 by `BUILD.md`). What does help: the sensor closer to the carrier, keeping 0.5 mm clear (about
@@ -162,4 +171,5 @@ where the bar's field adds to the magnets' instead of cancelling it.
 `~/stir_20261104b/` has `stir_video.py`, the logs, and both full recordings with their
 frame times: `water_1104.mjpeg` (236 MB, 6809 frames) and `lower_1104.mjpeg` (120 MB, 3150
 frames). They are not committed; run 2's has a person's hair in frame at about 23:32:12.
-`HOLD` was set at 23:14:15. Nothing else on the Pi changed; `deckcam.py` was left as it was.
+`HOLD` was set at 23:14:15 and removed at 23:41:30, after Ben's reply. Nothing else on the Pi changed; `deckcam.py` was left as it was. Camera 1
+was moved between the two runs, not by this session.
