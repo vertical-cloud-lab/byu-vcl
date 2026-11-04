@@ -1,0 +1,2 @@
+frames 6809; vial vs prev: median 1.046, p99 1.170, max 2.722 (frame 2); still vs prev: median 1.365, p99 1.496, max 2.880
+vial vs first frame: max 9.919; still vs first: max 9.431

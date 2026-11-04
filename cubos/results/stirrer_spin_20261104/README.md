@@ -118,7 +118,9 @@ as `STIR_KP` 0.0002 × 60 rpm gives.
 into the 1200 rpm run. A compact stirrer sits in the deck's front row with its cable, and a
 second one is on the bench. With the holder on, the fan can't be seen turning.*
 
-Not done: water, a vial and the stir bar, and the coupling test (`BUILD.md` stage 8).
+Not done here: water, a vial and the stir bar, and the coupling test (`BUILD.md` stage 8).
+**Tried at 23:19 with a vial of water and the bar in: the fan didn't start at any speed**
+([`stirrer_water_20261104`](../stirrer_water_20261104/README.md)).
 `pipette_test` still hasn't been run on the stirrer image.
 
 ## On the Pi
