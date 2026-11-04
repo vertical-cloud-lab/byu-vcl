@@ -6,9 +6,13 @@
 A view is ``refs/<key>/<name>.json`` next to its frame ``refs/<key>/<name>.jpg``::
 
     {"source": "https://youtu.be/nfnl0aPJPZc?t=219",      # where the frame comes from
+     "video": "nfnl0aPJPZc", "t": 219,                    # optional: lets a missing frame be fetched (frames.py)
      "pose": {"head": 0.0},                               # joint values of the model in that frame (Instrument.joints)
      "points": {"screen tl": [771, 548], ...},            # a point of the model at pixel (u, v)
      "curves": {"platen edge": [[402, 455], ...], ...}}   # pixels anywhere along a circle or a line of the model
+
+Frames from the lab's own videos are committed; frames from makers' and others' videos are not (refs/.gitignore),
+as vendor CAD is not: give their "video" and "t" and the frame is fetched through the Pi when it is missing.
 
 The names are anchors: the model publishes them (``ANCHORS[key] = (params, anchors(params))`` in the instrument's
 module), as points ``(x, y, z)``, circles ``("circle", centre, radius)`` (horizontal) and lines ``("line", p0, p1)``,
@@ -171,7 +175,7 @@ def solve(key: str) -> dict:
         if p.name == "fit.json":
             continue
         v = json.loads(p.read_text())
-        v["size"] = Image.open(p.with_suffix(".jpg")).size
+        v["size"] = Image.open(frame_path(key, p.stem, v)).size
         views[p.stem] = v
     cams = {name: fit_camera(fn(params, v.get("pose", {})), v, v["size"]) for name, v in views.items()}
     before = {n: rms(residuals(cams[n], fn(params, v.get("pose", {})), v, v["size"])) for n, v in views.items()}
@@ -232,6 +236,16 @@ def group(view) -> str:
         return view["camera"]
     m = re.search(r"(?:youtu\.be/|v=)([\w-]{11})", view.get("source", ""))
     return m.group(1) if m else view.get("source", "")
+
+
+def frame_path(key: str, name: str, view: dict) -> Path:
+    """refs/<key>/<name>.jpg, fetched through the Pi from the view's "video" and "t" if it isn't there."""
+    p = REFS / key / f"{name}.jpg"
+    if not p.exists() and view.get("video") is not None:
+        import shutil
+        import frames
+        shutil.copy(frames.grab(view["video"], [float(view["t"])])[0], p)
+    return p
 
 
 def rms(r) -> float:
@@ -341,7 +355,7 @@ def draw(key: str, names=None, rebuild=False) -> list[Path]:
         anchors = fn(params, view.get("pose", {}))
         size = tuple(fv["size"])
         cam = np.asarray(fv["camera"])
-        frame = np.asarray(Image.open(REFS / key / f"{name}.jpg").convert("RGB"))
+        frame = np.asarray(Image.open(frame_path(key, name, view)).convert("RGB"))
         und = _undistort(frame, cam, size)
         rgb, mask = render(key, cam, size, view.get("pose", {}), fit.get("params") or None)
         pin = np.r_[cam[:7], 0.0]                        # the undistorted frame is a pinhole image
