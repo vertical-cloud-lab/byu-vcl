@@ -1,7 +1,10 @@
 """Chapter 2 of the alloy route, atomize: the MiR250 brings the four charged 5N Al cups from the VLM to the rePowder,
-the UR10e loads them into the crucible round the sealing rod, and the machine melts and atomizes them; the arm takes
-the powder container off onto the MiR (#303, rounds 4 and 5). Clips and photos of the lab's own runs are cut in where
-the animation reaches the same moment: the charge melting, the stream on the plate, the powder, the sieved powder.
+the UR10e undoes the lid's draw latch, opens the lid, and sets the cups on the crucible's floor round the sealing rod
+with a loading tong; the machine melts and atomizes them; the arm takes the powder container off onto the MiR (#303,
+rounds 4 to 6). Clips and photos of the lab's own runs are cut in where the animation reaches the same moment: the
+charge melting (at 2x), the stream on the plate, the powder, the sieved powder. Round 6 also sums the MiR's tipping
+and sliding for the pull on the latch (``stability``), the tong's clearances down the bore (``tong_clearance``), and
+stops on the crucible stack, the part that is hardest to automate (notes/crucible_automation.md).
 
     xvfb-run -a python3 alloy_atomize.py            # render, then splice -> out/alloy_atomize.gif, out/mp4/alloy_atomize.mp4,
                                                     #   .json, _still.png
