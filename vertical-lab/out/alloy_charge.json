@@ -3985,5 +3985,11 @@
    "start_frame": 2411,
    "end_frame": 2450
   }
- ]
+ ],
+ "stills": {
+  "funnels": 255,
+  "dose": 361,
+  "weigh": 456,
+  "press": 1111
+ }
 }
