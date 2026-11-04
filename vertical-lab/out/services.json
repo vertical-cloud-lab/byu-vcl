@@ -69,99 +69,168 @@
    "F": 2
   },
   "bay": 1,
-  "unit": "DAL PR #189 (atomizer-viewport-cameras): the front unit pairs an HQ Camera (M12) with a 16 mm M12 lens (about O16 x 18 mm) and a Camera Module 3 Wide side by side, boards 2 mm apart, HQ lens 15 mm left of the axis and the Wide's 18.5 mm right; Pi 5 4 GB with Active Cooler and 27 W PSU; black PETG; the top unit rides a 2020 extrusion arm. DAL #147: 1/4-20 insert to a bought arm rather than a printed ball joint; cameras within the 200/300/500 mm ribbons of the board.",
+  "unit": {
+   "models": "robot-arms PR #10 (branch claude/issue-239-20260926-2347), piper-camera-mount/cad/piper_mount.py: make_pi5_local (Pi 5 board, holes, connectors), make_hq_camera_local (HQ board, CS seat 14.43 mm, O36 back-focus ring, O34.8 housing, tripod mount and lock block off Raspberry Pi's drawing RP-008200-DS-1), make_cm_camera_local (Camera Module 3 board 25 x 23.862, housing 10.8, lens 8.3 mm proud); lenses.py: the 16 mm C-mount lens, O39 x 50 mm, 133.7 g, 22.2 x 16.7 deg on the HQ, with its 5 mm C-CS adapter.",
+   "mount": "robot-arms PR #40 (branch claude/issue-24-20261021-2053), docs/issue-24/camera-fixtures: 2020 posts in printed 90 x 90 mm feet with 50 mm sockets, wedges and Pi 5 plates on M5 drop-in T-nuts in the slot, a Camera Module 3 case on M2 standoffs, ribbon clips; one Pi per camera post, so a 200-300 mm ribbon is enough.",
+   "earlier_unit": "DAL PR #189 (atomizer-viewport-cameras): the front unit pairs an HQ Camera (M12) with a 16 mm M12 lens (about O16 x 18 mm) and a Camera Module 3 Wide side by side, boards 2 mm apart, HQ lens 15 mm left of the axis and the Wide's 18.5 mm right; Pi 5 4 GB with Active Cooler and 27 W PSU; black PETG; the top unit rides a 2020 extrusion arm. DAL #147: 1/4-20 insert to a bought arm rather than a printed ball joint; cameras within the 200/300/500 mm ribbons of the board.",
+   "adjust": {
+    "height": "block on the post's T-slot, two M5 drop-in T-nuts",
+    "pan": "yoke on an M6 bolt through the block's arm, 45 deg each way",
+    "tilt": "head between the yoke's arms, two thumb knobs, 15 deg up to 65 down"
+   }
+  },
   "clearances": {
    "tray_units": {
     "A0": {
-     "top_over_floor_mm": 686.9,
-     "yaw_deg": 52.4,
-     "tilt_down_deg": 32.6
+     "top_over_floor_mm": 684.2,
+     "post_yaw_deg": 90,
+     "pan_deg": -40.9,
+     "tilt_down_deg": 35.0
     },
     "A1": {
-     "top_over_floor_mm": 687.0,
-     "yaw_deg": 41.8,
-     "tilt_down_deg": 31.5
+     "top_over_floor_mm": 684.1,
+     "post_yaw_deg": 0,
+     "pan_deg": 45.0,
+     "tilt_down_deg": 34.9
     },
     "B0": {
-     "top_over_floor_mm": 686.5,
-     "yaw_deg": 24.1,
-     "tilt_down_deg": 37.6
+     "top_over_floor_mm": 685.7,
+     "post_yaw_deg": 0,
+     "pan_deg": 26.4,
+     "tilt_down_deg": 40.4
     },
     "B1": {
-     "top_over_floor_mm": 687.0,
-     "yaw_deg": -19.9,
-     "tilt_down_deg": 26.9
+     "top_over_floor_mm": 682.3,
+     "post_yaw_deg": 0,
+     "pan_deg": -22.0,
+     "tilt_down_deg": 29.7
     },
     "C0": {
-     "top_over_floor_mm": 686.9,
-     "yaw_deg": 114.6,
-     "tilt_down_deg": 25.8
+     "top_over_floor_mm": 681.8,
+     "post_yaw_deg": 90,
+     "pan_deg": 27.3,
+     "tilt_down_deg": 28.5
     },
     "C1": {
-     "top_over_floor_mm": 682.7,
-     "yaw_deg": -3.6,
-     "tilt_down_deg": 54.1
+     "top_over_floor_mm": 687.8,
+     "post_yaw_deg": 0,
+     "pan_deg": -4.5,
+     "tilt_down_deg": 61.5
     },
     "D0": {
-     "top_over_floor_mm": 687.0,
-     "yaw_deg": 39.7,
-     "tilt_down_deg": 29.3
+     "top_over_floor_mm": 683.2,
+     "post_yaw_deg": 0,
+     "pan_deg": 44.1,
+     "tilt_down_deg": 32.1
     },
     "D1": {
-     "top_over_floor_mm": 686.7,
-     "yaw_deg": 112.6,
-     "tilt_down_deg": 36.0
+     "top_over_floor_mm": 686.1,
+     "post_yaw_deg": 90,
+     "pan_deg": 27.1,
+     "tilt_down_deg": 41.8
     },
     "D2": {
-     "top_over_floor_mm": 684.5,
-     "yaw_deg": 14.3,
-     "tilt_down_deg": 48.2
+     "top_over_floor_mm": 687.8,
+     "post_yaw_deg": 0,
+     "pan_deg": 16.6,
+     "tilt_down_deg": 53.1
     },
     "E0": {
-     "top_over_floor_mm": 687.0,
-     "yaw_deg": 40.2,
-     "tilt_down_deg": 28.0
+     "top_over_floor_mm": 683.1,
+     "post_yaw_deg": 0,
+     "pan_deg": 45.0,
+     "tilt_down_deg": 32.0
     },
     "E1": {
-     "top_over_floor_mm": 686.6,
-     "yaw_deg": 45.0,
-     "tilt_down_deg": 37.2
+     "top_over_floor_mm": 685.9,
+     "post_yaw_deg": 0,
+     "pan_deg": 45.0,
+     "tilt_down_deg": 41.0
     },
     "E2": {
-     "top_over_floor_mm": 687.0,
-     "yaw_deg": 57.4,
-     "tilt_down_deg": 30.0
+     "top_over_floor_mm": 683.5,
+     "post_yaw_deg": 90,
+     "pan_deg": -36.5,
+     "tilt_down_deg": 33.1
     },
     "F0": {
-     "top_over_floor_mm": 686.0,
-     "yaw_deg": 63.8,
-     "tilt_down_deg": 17.1
+     "top_over_floor_mm": 677.3,
+     "post_yaw_deg": 90,
+     "pan_deg": -28.8,
+     "tilt_down_deg": 18.9
     },
     "F1": {
-     "top_over_floor_mm": 686.9,
-     "yaw_deg": 43.9,
-     "tilt_down_deg": 25.4
+     "top_over_floor_mm": 681.3,
+     "post_yaw_deg": 0,
+     "pan_deg": 45.0,
+     "tilt_down_deg": 27.4
     }
    },
    "limit_mm": 727.5,
-   "bay_lowest_mm": 1632.6,
+   "bay_lowest_mm": 1636.0,
    "envelope_top_mm": 1604.5,
-   "bay_margin_mm": 28.1
+   "bay_margin_mm": 31.5,
+   "bay_highest_mm": 1856.7,
+   "tray_F1_underside_mm": 1900.0,
+   "bay_margin_to_F1_mm": 43.3,
+   "bay_to_shutter_mm": 23.0,
+   "head": {
+    "rises_over_tilt_axis_mm": 47.9,
+    "reaches_below_mm": 68.4,
+    "gap_to_yoke_base_at_max_tilt_mm": 15.8,
+    "tilt_max_deg": 65.0
+   }
   },
   "bay_camera": {
-   "y": -650.0,
-   "pivot_z": 1672.0,
-   "tilt_deg": 58.0
+   "bar_y": -600.0,
+   "bar_z": 1650.0,
+   "tilt_axis_y": -680.0,
+   "tilt_axis_z": 1809.0,
+   "tilt_deg": 64.0,
+   "arm": {
+    "poses_checked": 320,
+    "smallest_gap_mm": 197,
+    "at_pose": "grid 25 218 250",
+    "highest_joint_there_mm": 1378,
+    "capsule_radius_mm": 75.0,
+    "note": "reach.py's poses; the arm as capsules round its joint origins, the 2F-85 to the TCP"
+   }
   },
   "fov": {
    "wide": "102 x 67 deg (Camera Module 3 Wide)",
-   "hq_16mm": "about 22 x 17 deg: the IMX477's 6.29 x 4.71 mm active area behind a 16 mm lens (2 atan(w / 2f)); ours, from the published sensor"
+   "hq_16mm": "22.2 x 16.7 deg: Raspberry Pi's figure for its 16 mm C-mount lens on the HQ Camera (robot-arms lenses.py)"
   },
   "bay_view": {
-   "axis_hits_tray_at_y": -1159,
-   "distance_mm": 961,
-   "wide_width_mm": 2374,
-   "hq_width_mm": 378,
+   "wide": {
+    "share_of_tray": 0.919,
+    "axis_hits_y": -1147,
+    "axis_hits_from_tray_centre_mm": -117,
+    "distance_mm": 993,
+    "lens_at": [
+     24,
+     -711,
+     1750
+    ],
+    "missed_y_range": [
+     -1187,
+     -612
+    ]
+   },
+   "hq": {
+    "share_of_tray": 0.059,
+    "axis_hits_y": -1144,
+    "axis_hits_from_tray_centre_mm": -114,
+    "distance_mm": 993,
+    "lens_at": [
+     -15,
+     -709,
+     1749
+    ],
+    "missed_y_range": [
+     -1462,
+     -612
+    ]
+   },
    "tray_y_range": [
     -1462.0,
     -598.0

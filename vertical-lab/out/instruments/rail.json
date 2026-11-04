@@ -9,7 +9,7 @@
  "substeps": [
   {
    "label": "1/2",
-   "caption": "The backup to the mobile base: a Vention seventh axis. The carriage carries the arm along the line on a rack and pinion.",
+   "caption": "The backup to the mobile base: a Vention seventh axis. The carriage carries the arm along the line on a rack and pinion; its energy chain's bend travels at half the carriage's speed.",
    "start_frame": 0,
    "end_frame": 55
   },

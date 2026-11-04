@@ -855,7 +855,7 @@ def rig_pose(mx, my, t, h=CAM_H, z0=V.T_FLOOR):
     a = math.radians(post + pan)
     tx, ty = px - math.sin(a) * YOKE["tilt"][0], py + math.cos(a) * YOKE["tilt"][0]
     _, tilt = yaw_tilt(tx, ty, z0 + h + TILT_AXIS[2])
-    return post, max(-45.0, min(45.0, pan)), max(-15.0, min(TILT_MAX, tilt))
+    return post, max(-75.0, min(75.0, pan)), max(-15.0, min(TILT_MAX, tilt))
 
 
 def rig_matrices(at: np.ndarray, post: float, h: float, pan: float, tilt: float) -> dict:
@@ -1154,8 +1154,9 @@ def movie_services(data, idata):
     return sc.save()
 
 
-def still_cameras(data, idata, k="D"):
-    """out/vlm_cameras_still.png: tray k presented, its stream cameras and the bay's overhead one."""
+def still_cameras(data, idata, k="E"):
+    """out/vlm_cameras_still.png: tray k presented, its stream cameras and the bay's overhead one. Tray E, as tray D's
+    OpenFlexures need their OpenSCAD meshes in .cache/ (openflexure/README.md)."""
     import animate as A
     sc, L, live = build_vlm("vlm_cameras", data, idata, f"Stream cameras: tray {k} at the opening", mp4=False)
     L.skin(1.0)(1.0)
@@ -1728,7 +1729,7 @@ def write_json():
                      unit=dict(models=SOURCES["robot_arms_models"], mount=SOURCES["robot_arms_fixtures"],
                                earlier_unit=SOURCES["lab_units"],
                                adjust=dict(height="block on the post's T-slot, two M5 drop-in T-nuts",
-                                           pan="yoke on an M6 bolt through the block's arm, 45 deg each way",
+                                           pan="yoke on an M6 bolt through the block's arm, up to 75 deg each way",
                                            tilt=f"head between the yoke's arms, two thumb knobs, 15 deg up to "
                                                 f"{TILT_MAX:.0f} down")),
                      clearances=camera_clearances(),

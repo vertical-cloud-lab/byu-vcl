@@ -868,9 +868,14 @@ def rail(length: float = 4000.0, travel: float = 1600.0, chain: bool | None = No
     inst.labels = [("carriage and gearmotor", (0, -cw / 2 - 70, z1 - 60), (0.16, 0.30)),
                    ("rack and guides", (L / 2 - 400, -bw / 2, z1), (0.82, 0.40)),
                    ("control cabinet", (-L / 2 + 700, -150, z0 - 220), (0.16, 0.72))]
-    if chain:
-        inst.labels.append(("energy chain: fixed end mid-travel", (x_fix + 15, cy1, z0 + 60), (0.82, 0.66)))
     inst.cam = (0.55, -1.5, 0.6)
+    if chain:                   # seen from behind, where the chain runs; the gearmotor and rack are on the far side
+        inst.labels = [("carriage (gearmotor, pinion and rack on the far side)", (0, cw / 2, top), (0.16, 0.24)),
+                       ("guides", (L / 2 - 400, bw / 2 - 30, z1 + 15), (0.84, 0.30)),
+                       ("energy chain: fixed end halfway along the travel", (x_fix + 15, cy1 + 4, z0 + 70),
+                        (0.84, 0.62)),
+                       ("control cabinet", (-L / 2 + 700, 150, z0 - 220), (0.16, 0.74))]
+        inst.cam = (0.5, 1.6, 0.75)
     return inst
 
 
