@@ -334,7 +334,7 @@ def cubxl_corrosion() -> Instrument:
         "The CubXL from lab_models.equipment.cubxl() (#199); the corrosion deck, electrode cap and head as DAL PR #180 "
         "proposes them (alloy-corrosion/cubxl-setup.md, CubOS deck frame of Ben's 2026-10-02 calibration); NuVant's "
         "EZstat Pro (255 x 245 x 102 mm, nuvant.com) beside it, as in byu-vcl #231 / DAL #221",
-        props=("cap", "tip", "tip2", "well", "tubefill", "led", "plot", "ocp", "scan"))
+        props=("cap", "scap", "tip", "tip2", "well", "tubefill", "led", "plot", "ocp", "scan"))
     cub = equipment.cubxl(0.05, 0.0, 0.5)          # carriage at CubOS x 0, gantry at y 0
     gantry_names = ("gantry upright L", "gantry upright R", "gantry beam", "cable chain")
     carriage_names = ("z carriage", "tool plate", "controller")
@@ -370,9 +370,9 @@ def cubxl_corrosion() -> Instrument:
         x, y = _cx(sx), _cy(sy)
         body.add(f"stock {i + 1}", tube(28, 25, 57, x=x, y=y, z=dz + 5).union(cyl(28, 2, x=x, y=y, z=dz + 5)), "glass")
         body.add(f"stock {i + 1} liquid", cyl(24.5, 36, x=x, y=y, z=dz + 7), "lab_nacl")
-        if i > 0:                                   # the 0.6 M stock is open: the capper has its cap
-            body.add(f"stock {i + 1} cap", cyl(28, 9, x=x, y=y, z=_cz(62)), "pp_black")
-            body.add(f"stock {i + 1} disc", cyl(16, 1, x=x, y=y, z=_cz(71)), "steel")
+        tgt = body if i > 0 else _piece(inst, "scap")     # the 0.6 M stock's cap: the capper takes it off and back
+        tgt.add(f"stock {i + 1} cap", cyl(28, 9, x=x, y=y, z=_cz(62)), "pp_black")
+        tgt.add(f"stock {i + 1} disc", cyl(16, 1, x=x, y=y, z=_cz(71)), "steel")
     for name, (sx, sy) in (("rinse cup", p["rinse"]), ("park cup", p["park"])):
         x, y = _cx(sx), _cy(sy)
         body.add(name, tube(15, 12.6, _cz(p["cup_top"]) - dz - 2, x=x, y=y, z=dz + 2).union(cyl(15, 2, x=x, y=y, z=dz + 2)),
@@ -466,7 +466,7 @@ def cubxl_corrosion() -> Instrument:
     def pip_at(x, y):
         return dict(x=x - p["pip"][0], y=y - p["pip"][1])
     TZ = p["travel_z"]
-    tl = Timeline(dict(x=150.0, y=60.0, z=TZ, cap="park", tip="rack", tip2="rack", well=0.0, tube=0.0))
+    tl = Timeline(dict(x=150.0, y=60.0, z=TZ, cap="park", scap="vial", tip="rack", tip2="rack", well=0.0, tube=0.0))
     xy = lambda a, b: max(0.35, math.hypot(b["x"] - a["x"], b["y"] - a["y"]) / 170.0)   # noqa: E731
 
     def move(**kw):
@@ -478,8 +478,11 @@ def cubxl_corrosion() -> Instrument:
     s1, s2 = p["stations"][0], p["stations"][1]
     # 0: a tip
     move(**pip_at(*p["rack1"])); z(p["tip_top"]); z(TZ, tip="head"); tl.mark("tip")
-    # 1: 150 uL of 0.6 M NaCl into S1
-    move(**pip_at(p["stocks"][0][0], p["stocks"][0][1])); z(70); tl.go(0.35); z(TZ)
+    # 1: 150 uL of 0.6 M NaCl into S1: the capper lifts the stock's cap (its disc at 72), the P20 draws, the cap goes back
+    sk = p["stocks"][0][:2]
+    move(**head_at(*sk)); z(72 + 16); z(TZ, scap="head")
+    move(**pip_at(*sk)); z(70); tl.go(0.35); z(TZ)
+    move(**head_at(*sk)); z(72 + 16); z(TZ, scap="vial")
     move(**pip_at(*s1)); z(p["face"] + 3 + p["tip_len"]); tl.go(0.6, well=1.0); tl.mark("filled")
     # 2: tip off, cap from the park cup
     z(TZ); move(**pip_at(*p["waste"])); tl.go(0.35, tip="waste")
@@ -508,11 +511,16 @@ def cubxl_corrosion() -> Instrument:
             at = cap_rest[s["cap"]]
         return (at[0] - p["park"][0], at[1] - p["park"][1], at[2] - p["cup_top"])
 
+    def scap_off(s):             # the stock's cap (62 to 72 tall, modelled on its vial) under the capper's magnet
+        if s["scap"] != "head":
+            return (0.0, 0.0, 0.0)
+        return (s["x"] - sk[0], s["y"] - sk[1], s["z"] - 16 - 10 - 62)
+
     def tip_off(s, key, home):
         if s[key] == "head":
             at = (s["x"] + p["pip"][0], s["y"] + p["pip"][1], s["z"] - p["tip_len"])
-        elif s[key] == "waste":
-            at = (p["waste"][0], p["waste"][1], 8.0)
+        elif s[key] == "waste":              # the second tip lands beside the first, not in it (collide.py)
+            at = (p["waste"][0] + (p["rack_dx"] if key == "tip2" else 0.0), p["waste"][1], 8.0)
         else:
             at = (home[0], home[1], p["tip_top"] - p["tip_len"])
         return (at[0] - home[0], at[1] - home[1], at[2] - (p["tip_top"] - p["tip_len"]))
@@ -522,6 +530,7 @@ def cubxl_corrosion() -> Instrument:
         "carriage": Track(parent="gantry", knots=tl.knots(lambda s: (s["x"], 0, 0))),
         "tools": Track(parent="carriage", knots=tl.knots(lambda s: (0, 0, s["z"] - TZ))),
         "cap": Track(knots=tl.knots(cap_off)),
+        "scap": Track(knots=tl.knots(scap_off)),
         "tip": Track(knots=tl.knots(lambda s: tip_off(s, "tip", p["rack1"]))),
         "tip2": Track(knots=tl.knots(lambda s: tip_off(s, "tip2", a2))),
         "well": Track(knots=tl.knots(lambda s: (0, 0, -4.0 * (1 - s["well"])))),
@@ -531,7 +540,7 @@ def cubxl_corrosion() -> Instrument:
         "ocp": Joint("slide", vec=(1, 0, 0)),
         "scan": Joint("slide", vec=(1, 0, 0)),
     }
-    head = ("gantry", "carriage", "tools", "cap", "tip", "tip2", "well", "tubefill")
+    head = ("gantry", "carriage", "tools", "cap", "scap", "tip", "tip2", "well", "tubefill")
 
     def seg(a, b, **extra):
         out = {k: (tl.v(a), tl.v(b)) for k in head}
@@ -540,8 +549,8 @@ def cubxl_corrosion() -> Instrument:
     inst.actions = [
         ("Four polished coupons under O-ring lids, face up on pogo pins (DAL PR #180's plan). The P20 on the CubXL's "
          "head takes a tip.", 2.6, seg("start", "tip")),
-        ("It fills well S1 with 150 uL of 0.6 M NaCl (3.5 wt%) from the stocks, which the capper uncaps. The O-ring "
-         "leaves 3 mm of the coupon wet: 0.071 cm2.", 3.4, seg("tip", "filled")),
+        ("It fills well S1 with 150 uL of 0.6 M NaCl (3.5 wt%) from its stock vial, which the capper uncaps and caps "
+         "again. The O-ring leaves 3 mm of the coupon wet: 0.071 cm2.", 4.8, seg("tip", "filled")),
         ("Tip off. The capper's magnet picks up the electrode cap: a leak-free 2 mm Ag/AgCl reference inside a coil "
          "of Pt wire, the counter.", 3.0, seg("filled", "capped up")),
         ("The cap goes on S1. Its pogo pins land on the RE and CE pads; the coupon's back is on the WE pin. The head "
@@ -821,6 +830,18 @@ def packaging() -> Instrument:
     bag.add("liner bag", box(jx - 42, jy - 42, jz - 3, jx + 42, jy + 42, jz + j["h"] + 30).cut(
         box(jx - 40, jy - 40, jz - 1, jx + 40, jy + 40, jz + j["h"] + 31)), "lab_bag")
     bag.add("bag mouth", box(jx - 42, jy - 3, jz + j["h"] + 30, jx + 42, jy + 3, jz + j["h"] + 52), "lab_bag")
+    # the bag's open neck, laid back over the H-190's front and across its jaw for the seal: drawn where it lies with
+    # the jar on the bag stand (bag_at, below), then carried into the jar's frame; shown only at the sealer
+    bag_at = (sx_, yf - 80, 4.0)                           # the jar standing on the bag stand, in front of the sealer
+    top = bag_at[2] + j["h"] + 52                          # the top of the bag's mouth there
+    neck = None
+    for p0, p1 in (((bag_at[1], top), (yf - 4, 128.0)), ((yf - 4, 128.0), (yf + 36, 127.0))):
+        d = np.subtract(p1, p0) / np.linalg.norm(np.subtract(p1, p0))
+        n = np.array([-d[1], d[0]]) * 1.5
+        quad = [tuple(p0), tuple(p1), tuple(np.add(p1, n)), tuple(np.add(p0, n))]
+        s = cq.Workplane("YZ").polyline(quad).close().extrude(84).translate((bag_at[0] - 42, 0, 0))
+        neck = s if neck is None else neck.union(s)
+    _piece(inst, "neck").add("bag neck", neck.translate((jx - bag_at[0], jy - bag_at[1], jz - bag_at[2])), "lab_bag")
     lw, ll = P["label"]
     ship = _piece(inst, "shiplabel")
     ship.add("4 x 6 label", box(bx_ - lw / 2, by_ - ll / 2, b["H"], bx_ + lw / 2, by_ + ll / 2, b["H"] + 0.6),
@@ -831,22 +852,29 @@ def packaging() -> Instrument:
     # ---- choreography on one timeline
     mid = jz + j["h"] / 2                                  # the jar's tilt pivot: the middle of its axis
     ap_c = (ax, cy0, 95 + 12.5 + j["d"] / 2)               # the jar's axis, lying in the AP380's cradle
-    bag_at = (sx_, yf - 80, 4.0)                           # standing on the bag stand, the bag's mouth over the jaw
-    pocket = (bx_, by_, 12 + 2 + j["d"] / 2)               # the jar's axis, lying in the foam pocket
-    tl = Timeline(dict(p=(jx - 260, jy - 80, jz + 220), tilt=0.0, spin=0.0, ship=0.0))
+    # the jar's axis, lying in the foam pocket: set left so the jar and its bag's sealed mouth (186 mm) fit the 190
+    pocket = (bx_ - 24.5, by_, 12 + 2 + j["d"] / 2)
+    # press: the AP380's pressure arm, arm: the H-190's (1 up, 0 down); they ride the timeline, so each is up before
+    # the jar comes in or goes out under it
+    tl = Timeline(dict(p=(jx - 260, jy - 80, jz + 220), tilt=0.0, spin=0.0, ship=0.0, press=1.0, arm=1.0))
 
     def to(secs, x, y, z, **kw):
         tl.go(secs, p=(x, y, z), **kw)
     lie = lambda c: c[2] - (mid - jz)                      # noqa: E731  the jar's base z when its axis is at c lying
-    to(1.0, jx, jy, jz + 80); to(0.6, jx, jy, jz); tl.mark("nested")
+    # in over the next jar, clear of its cap (lower, it went through it: collide.py), then down into the seat
+    to(1.0, jx, jy, jz + j["h"] + 30); to(0.6, jx, jy, jz); tl.mark("nested")
     to(0.5, jx, jy, jz + 160); to(1.0, ap_c[0], ap_c[1], lie(ap_c) + 160, tilt=90.0)
-    to(0.6, ap_c[0], ap_c[1], lie(ap_c)); tl.mark("in AP380")
+    to(0.6, ap_c[0], ap_c[1], lie(ap_c)); tl.go(0.4, press=0.0); tl.mark("in AP380")
     tl.go(2.0, spin=360.0); tl.mark("labelled")
-    to(0.6, ap_c[0], ap_c[1], lie(ap_c) + 160); to(1.0, bag_at[0], bag_at[1], bag_at[2] + 160, tilt=0.0)
+    # out once the pressure arm is up; forward, clear of the H-190's raised arm; along its front; down on the stand
+    tl.go(0.4, press=1.0); to(0.5, ap_c[0], ap_c[1], lie(ap_c) + 160); to(0.5, ap_c[0], bag_at[1], lie(ap_c) + 160)
+    to(0.9, bag_at[0], bag_at[1], bag_at[2] + 160, tilt=0.0)
     to(0.6, *bag_at); tl.mark("at sealer")
-    tl.go(1.6); tl.mark("sealed")
-    to(0.5, bag_at[0], bag_at[1], bag_at[2] + 200); to(1.0, pocket[0], pocket[1], lie(pocket) + 150, tilt=90.0)
-    to(0.6, pocket[0], pocket[1], lie(pocket)); tl.mark("boxed")
+    tl.go(0.5); tl.go(0.5, arm=0.0); tl.go(0.8); tl.mark("sealed")
+    # arm up, the neck drawn forward out of the jaw, then up, over the sealer and down into the foam
+    tl.go(0.5, arm=1.0); to(0.4, bag_at[0], bag_at[1] - 60, bag_at[2] + 4)
+    to(0.5, bag_at[0], bag_at[1] - 60, bag_at[2] + 300); to(1.0, pocket[0], pocket[1], lie(pocket) + 260, tilt=90.0)
+    to(0.7, pocket[0], pocket[1], lie(pocket)); tl.mark("boxed")
     tl.go(1.0); tl.mark("lid on")
     tl.go(0.8, ship=1.0); tl.go(0.9, ship=2.0); tl.go(0.6, ship=3.0); tl.mark("shipped")
     # the label's track: inside the ZD621, out of its front, over the lid, onto it
@@ -866,16 +894,19 @@ def packaging() -> Instrument:
                     knots=tuple((v, c[0]) for v, c in tl.knots(lambda st: (st["spin"], 0, 0)))),
         "jarlabel": Joint("fade", parent="jar"),
         "bag": Joint("fade", parent="jartilt"),
+        "neck": Joint("fade", parent="jartilt"),
         "stripslide": Joint("slide", vec=(0, -60, 0)),
         "strip": Joint("fade", parent="stripslide"),
-        "press": Joint("hinge", axis=(1, 0, 0), pivot=(ax, yf + a["D"] - 200, pz), deg=-14.0, v0=1.0),
-        "arm": Joint("hinge", axis=(1, 0, 0), pivot=(sx_, yf + se["D"], 126), deg=-35.0, v0=1.0),
+        "press": Turn(axis=(1, 0, 0), pivot=(ax, yf + a["D"] - 200, pz),
+                      knots=tuple((v, c[0]) for v, c in tl.knots(lambda st: (-14.0 * st["press"], 0, 0)))),
+        "arm": Turn(axis=(1, 0, 0), pivot=(sx_, yf + se["D"], 126),
+                    knots=tuple((v, c[0]) for v, c in tl.knots(lambda st: (-35.0 * st["arm"], 0, 0)))),
         "lid": Joint("hinge", axis=(1, 0, 0), pivot=(bx_, yf + b["D"], b["H"] - 40), deg=-105.0, v0=1.0),
         "shiplabel": Track(knots=tl.knots(ship_off)),
         "inset_jar": Joint("slide", vec=(1, 0, 0)),
         "inset_ship": Joint("slide", vec=(1, 0, 0)),
     }
-    track = ("jarpos", "jartilt", "jar", "shiplabel")
+    track = ("jarpos", "jartilt", "jar", "shiplabel", "press", "arm")
 
     def seg(a_, b_, **extra):
         out = {k: (tl.v(a_), tl.v(b_)) for k in track}
@@ -885,14 +916,15 @@ def packaging() -> Instrument:
         ("A 250 mL jar of powder goes into the printed nest.", 1.8, seg("start", "nested")),
         ("The LX500c prints its label: sample ID, alloy, mass, date and a QR code. The AP380 takes such labels "
          "die-cut on a roll.", 2.4, {"stripslide": (0.0, 1.0), "strip": (0.0, 1.0), "inset_jar": (0.0, 1.0)}),
-        ("The jar goes into the AP380, lying down on its rollers; the pressure arm comes down.", 2.6,
-         {**seg("nested", "in AP380"), "strip": (1.0, 0.0), "press": (1.0, 0.0)}),
+        ("The jar goes into the AP380, lying down on its rollers; the pressure arm comes down.", 2.8,
+         {**seg("nested", "in AP380"), "strip": (1.0, 0.0)}),
         ("One press of the foot switch: the rollers turn the jar once and the label wraps on.", 2.2,
          {**seg("in AP380", "labelled"), "jarlabel": (0.0, 1.0)}),
-        ("Out, and into a clear liner bag, its mouth across the H-190's jaw.", 2.4,
-         {**seg("labelled", "at sealer"), "press": (0.0, 1.0), "bag": (0.0, 1.0), "inset_jar": (1.0, 0.0)}),
-        ("The impulse sealer closes the bag: a 12 in seal.", 1.8, {**seg("at sealer", "sealed"), "arm": (1.0, 0.0)}),
-        ("Into the foam insert's cut-out, lying down.", 2.2, {**seg("sealed", "boxed"), "arm": (0.0, 1.0)}),
+        ("The pressure arm lifts. Out, and into a clear liner bag, standing in front of the H-190 impulse sealer.", 2.8,
+         {**seg("labelled", "at sealer"), "bag": (0.0, 1.0), "inset_jar": (1.0, 0.0), "neck": (0.0, 0.0)}),
+        ("The bag's mouth goes across the jaw, and the sealer closes on it: a 12 in seal.", 1.9,
+         {**seg("at sealer", "sealed"), "neck": (0.0, 1.0)}),
+        ("Into the foam insert's cut-out, lying down.", 2.8, {**seg("sealed", "boxed"), "neck": (1.0, 0.0)}),
         ("The lid goes on.", 1.4, {**seg("boxed", "lid on"), "lid": (1.0, 0.0)}),
         ("The ZD621 prints the 4 x 6 in shipping label, and it goes on the lid. Whether the box needs dangerous-goods "
          "marks depends on a test, not on the alloy's name.", 3.4,
@@ -1088,9 +1120,10 @@ def ded() -> Instrument:
     tl.go(0.25, h=(0.0, 0.0, 60.0))
     joints = {
         "door": Joint("hinge", axis=(0, 0, 1), pivot=(dx0, yf - 30, 0), deg=-105.0),
+        # off the balance, forward past the cabinet's right side, across in front of it, in through the door
         "load": Joint("path", path=((bw / 2 + 160, 0.0, bh - 30), (bw / 2 + 160, 0.0, bh + 120),
-                                    (tcx + 60, yf - 260, tz + 80), (tcx, yf - 120, tz + 40), (tcx, tcy, tz + 25),
-                                    (tcx, tcy, tz))),
+                                    (bw / 2 + 160, yf - 260, tz + 80), (tcx + 60, yf - 260, tz + 80),
+                                    (tcx, yf - 120, tz + 40), (tcx, tcy, tz + 25), (tcx, tcy, tz))),
         "head": Track(knots=tl.knots(lambda st: st["h"])),
         "glow": Track(parent="head", knots=tl.knots(lambda st: (0, 0, (1 - st["pool"]) * 30.0))),
         "purge": Joint("slide", vec=(1, 0, 0)),
@@ -1112,7 +1145,7 @@ def ded() -> Instrument:
         ("The MX-Lab stands on the floor beside the VLM: 680 x 684 x 835 mm and 250 kg without its base, taller "
          "than the 727.5 mm a tray takes. Up to six powder hoppers feed one nozzle.", 2.6, {"load": (0.0, 0.0)}),
         ("The door swings open on its left hinge.", 1.6, {"door": (0.0, 1.0)}),
-        ("A steel substrate goes from the shelf onto the 175 x 175 mm worktable.", 2.2, {"load": (0.0, 1.0)}),
+        ("A steel substrate goes from the shelf onto the 175 x 175 mm worktable.", 2.6, {"load": (0.0, 1.0)}),
         ("Door shut. Argon purges the chamber: InssTek's inert option holds O2 at or below 50 ppm.", 2.8,
          {"door": (1.0, 0.0), "gauge": (0.0, 1.0), "purge": (0.0, 1.0), "~door": (0.0, 1.0)}),
         ("The laser and the powder streams meet at the melt pool. Spoke by spoke, layer by layer: a wagon wheel, each "
@@ -1227,7 +1260,8 @@ def hip() -> Instrument:
     iw, idp = h["inside"]
     env.add("product height", box(-iw / 2, -idp / 2, 0, iw / 2, idp / 2, h["h_max"]), "window")
     env.add("height line", box(-iw / 2, -idp / 2 - 1, h["h_max"] - 2, iw / 2, -idp / 2 + 1, h["h_max"] + 2), "inst_blue")
-    # ---- the O2-Dr.HIP, centred on the tray: drum housing on the left, cabinet on the right, plinth, red band
+    # ---- the O2-Dr.HIP, modelled centred on the tray (hipdrop sets it back): drum housing on the left, cabinet on the
+    # right, plinth, red band
     _piece(inst, "hipdrop")                              # an empty parent: lowers the HIP onto the tray
     hp = _piece(inst, "hip")
     xd = -W / 2 + 350                                    # the drum's axis
@@ -1253,14 +1287,17 @@ def hip() -> Instrument:
     vessel.add("frame", box(xd - 300, -D / 2 + 320, 120, xd + 300, -D / 2 + 380, 900).cut(
         box(xd - 240, -D / 2 + 300, 180, xd + 240, -D / 2 + 400, 840)), "inst_dark")
     vessel.add("hot zone", cyl(75, 100, x=xd, y=-D / 2 + 350, z=450), "glow")
+    # Centred, the HIP's front would stand 118 mm over the tray's front edge, through the opening's header, which is
+    # 20-80 mm in front of the tray. So it is set back on the tray until its door handle clears the header, and the
+    # whole 236 mm it is deeper than the tray overhangs the back.
+    back = -td / 2 - 20 + 2 - (-D / 2 - 30)              # 130 mm: the handle 2 mm behind the header's back face
     over = _piece(inst, "over")
     e = 14.0                                             # proud of the HIP's faces, so they don't fight
-    over.add("too tall", box(-W / 2 - e, -D / 2 - 40, h["h_max"], W / 2 + e, D / 2 + e, H + e), "lab_over")
-    over.add("too deep, front", box(-W / 2 - e, -D / 2 - 40, 0, W / 2 + e, -td / 2, h["h_max"]), "lab_over")
-    over.add("too deep, back", box(-W / 2 - e, td / 2, 0, W / 2 + e, D / 2 + e, h["h_max"]), "lab_over")
+    over.add("too tall", box(-W / 2 - e, -td / 2 - 19, h["h_max"], W / 2 + e, back + D / 2 + e, H + e), "lab_over")
+    over.add("too deep, back", box(-W / 2 - e, td / 2, 0, W / 2 + e, back + D / 2 + e, h["h_max"]), "lab_over")
     inst.joints = {
         "env": Joint("fade"),
-        "hipdrop": Joint("path", path=((0, 0, 1500.0), (0, 0, 300.0), (0, 0, 0)), v0=1.0),
+        "hipdrop": Joint("path", path=((0, back, 1500.0), (0, back, 300.0), (0, back, 0)), v0=1.0),
         "hip": Joint("fade", parent="hipdrop"),
         "vessel": Joint("fade", parent="hip"),
         "over": Joint("fade"),

@@ -1,7 +1,7 @@
 {
  "name": "warehouse",
  "fps": 15,
- "n_frames": 1350,
+ "n_frames": 1332,
  "size": [
   1280,
   720
@@ -161,103 +161,103 @@
    "label": "5/7",
    "caption": "Unit 1 carries the vial to the glovebox's antechamber, along the aisle. At the Instron, unit 2's camera finds that dock's target.",
    "start_frame": 641,
-   "end_frame": 838
+   "end_frame": 850
   },
   {
    "label": "6/7",
    "caption": "At the glovebox: camera check, then the automatic antechamber's outer door opens to the aisle.",
-   "start_frame": 839,
-   "end_frame": 869
+   "start_frame": 851,
+   "end_frame": 881
   },
   {
    "label": "6/7",
    "caption": "At the glovebox: camera check, then the automatic antechamber's outer door opens to the aisle.",
-   "start_frame": 870,
-   "end_frame": 896
+   "start_frame": 882,
+   "end_frame": 908
   },
   {
    "label": "6/7",
    "caption": "The arm takes the vial from its holder, gripper level, ...",
-   "start_frame": 897,
-   "end_frame": 918
+   "start_frame": 909,
+   "end_frame": 930
   },
   {
    "label": "6/7",
    "caption": "The arm takes the vial from its holder, gripper level, ...",
-   "start_frame": 919,
-   "end_frame": 926
+   "start_frame": 931,
+   "end_frame": 938
   },
   {
    "label": "6/7",
    "caption": "The arm takes the vial from its holder, gripper level, ...",
-   "start_frame": 927,
-   "end_frame": 937
+   "start_frame": 939,
+   "end_frame": 949
   },
   {
    "label": "6/7",
    "caption": "The arm takes the vial from its holder, gripper level, ...",
-   "start_frame": 938,
-   "end_frame": 944
+   "start_frame": 950,
+   "end_frame": 956
   },
   {
    "label": "6/7",
    "caption": "The arm takes the vial from its holder, gripper level, ...",
-   "start_frame": 945,
-   "end_frame": 952
+   "start_frame": 957,
+   "end_frame": 964
   },
   {
    "label": "6/7",
    "caption": "The arm takes the vial from its holder, gripper level, ...",
-   "start_frame": 953,
-   "end_frame": 962
+   "start_frame": 965,
+   "end_frame": 974
   },
   {
    "label": "6/7",
    "caption": "... and puts it into the antechamber through the open door.",
-   "start_frame": 963,
-   "end_frame": 985
+   "start_frame": 975,
+   "end_frame": 997
   },
   {
    "label": "6/7",
    "caption": "... and puts it into the antechamber through the open door.",
-   "start_frame": 986,
-   "end_frame": 1001
+   "start_frame": 998,
+   "end_frame": 1013
   },
   {
    "label": "6/7",
    "caption": "... and puts it into the antechamber through the open door.",
-   "start_frame": 1002,
-   "end_frame": 1008
+   "start_frame": 1014,
+   "end_frame": 1020
   },
   {
    "label": "6/7",
    "caption": "... and puts it into the antechamber through the open door.",
-   "start_frame": 1009,
-   "end_frame": 1023
+   "start_frame": 1021,
+   "end_frame": 1035
   },
   {
    "label": "6/7",
    "caption": "... and puts it into the antechamber through the open door.",
-   "start_frame": 1024,
-   "end_frame": 1043
+   "start_frame": 1036,
+   "end_frame": 1055
   },
   {
    "label": "6/7",
    "caption": "Door shut: the PLC evacuates and refills the antechamber before the vial goes inside.",
-   "start_frame": 1044,
-   "end_frame": 1070
+   "start_frame": 1056,
+   "end_frame": 1082
   },
   {
    "label": "7/7",
    "caption": "Both units go back to charge: 10 to 90 % takes 52 min on a MiR Charge 48V (MiR).",
-   "start_frame": 1071,
-   "end_frame": 1280
+   "start_frame": 1083,
+   "end_frame": 1262
   },
   {
    "label": "7/7",
    "caption": "The trade against the rail: every front on the floor is reachable and the floor stays free, but a dock comes back to within millimetres, not the rail's ±0.3 mm, so every station needs a target the arm checks before it works.",
-   "start_frame": 1281,
-   "end_frame": 1349
+   "start_frame": 1263,
+   "end_frame": 1331
   }
  ]
 }

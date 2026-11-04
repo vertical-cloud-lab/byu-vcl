@@ -27,7 +27,20 @@ MATERIALS = {
     "fl_resin": (0.42, 0.43, 0.45, 0.80, 0.6),        # liquid resin in the tank
     "ipa": (0.78, 0.88, 0.96, 0.32, 0.8),             # isopropyl alcohol in the wash bucket
     "uv_glow": (0.56, 0.30, 1.00, 0.40, 0.0),         # 405 nm light filling the cure chamber
+    "fl_alu": (0.74, 0.74, 0.73, 1.0, 0.45),          # the Form 4's satin silver base (Formlabs' frames)
+    "fl_lip": (0.86, 0.86, 0.85, 1.0, 0.35),          # the lighter lip the cover sits on
+    "fl_tank": (0.84, 0.85, 0.86, 1.0, 0.30),         # the Form 4 resin tank's light grey frame
+    "fl_blue": (0.16, 0.45, 0.85, 1.0, 0.30),         # the blue latch at the front of its deck
+    "fl_screen": (0.09, 0.12, 0.17, 1.0, 0.75),       # its touchscreen: a black UI, lit green and white
+    "fl_ui": (0.36, 0.78, 0.42, 1.0, 0.2),            # the UI's green drawing and rows
 }
+
+# register.py's view of a model (see its docstring and instruments.py): key -> (its parameter dict, a function of
+# (params, pose) giving named points and lines); FREE[key], the parameters fitted to the frames in refs/<key>/;
+# CHECKS[key](params), numbers that must stay >= 0 for the fitted model to make sense.
+ANCHORS: dict = {}
+FREE: dict = {}
+CHECKS: dict = {}
 
 FEET = 10.0
 
@@ -43,9 +56,10 @@ def _feet(W, D, inset=30.0, d=22.0, h=FEET) -> cq.Workplane:
 
 def _build_platform(y0: float, z0: float, handle=True) -> cq.Workplane:
     """A Form 4 build platform, plate face down at z0, centred on y0: the 200 x 125 mm plate, its spine to the carrier
-    at the back, and the handle on top, grip at the front."""
+    at the back, and the handle on top, grip at the front. The spine stands 58 mm tall so that, with the plate down on
+    the Form 4's tank floor, the carrier it hangs from clears the tank's back wall."""
     plate = box(-100, y0 - 62.5, z0, 100, y0 + 62.5, z0 + 10)
-    spine = box(-28, y0 + 40, z0 + 10, 28, y0 + 92, z0 + 40)
+    spine = box(-28, y0 + 40, z0 + 10, 28, y0 + 88, z0 + 58)
     plate = plate.union(spine)
     if handle:
         plate = plate.union(box(-14, y0 - 70, z0 + 10, 14, y0 + 45, z0 + 34)).union(
@@ -70,81 +84,202 @@ def _parts(y0: float, z_top: float, n=3) -> list:
 # ===================================================================================================== Form 4
 # Formlabs Form 4 (MSLA: a 405 nm LCD under the resin tank): 398 W x 367 D x 554 H mm, 18.3 kg; minimum access
 # dimensions 407 x 478 x 844 mm, i.e. with the cover open; build volume 200 x 125 x 210 mm (Formlabs, "Stereolithography
-# 3D Printers Tech Specs", formlabs.com/3d-printers/resin/tech-specs/). The look is from Formlabs' photos: a light grey
-# base with the touchscreen on its front, right of centre; the orange-tinted cover over the tank and the Z tower; the
-# resin cartridge at the back. The cover is modelled hinged along its top rear edge, lifting the front, because that is
-# what makes the published open envelope: 73 degrees takes it to 844 mm tall and about 460 mm deep, against Formlabs'
-# 844 and 478. The base height (225 mm), the tank and the tower are read off photos.
-FORM4 = dict(W=398.0, D=367.0, H=554.0, base_h=225.0, hinge_y=118.0, cover_t=4.0, raise_=170.0, cover_deg=-73.0)
+# 3D Printers Tech Specs", formlabs.com/3d-printers/resin/tech-specs/). Registered to Formlabs' and a reseller's videos
+# (refs/form4/, notes/refine_form4.md): a silver base, 170 mm to the top of its light lip, whose front right is a
+# black bezel holding the touchscreen (about 150 x 95 mm), "formlabs" small at the lower left; above it one orange
+# shell, the cover, over the whole footprint, with rounded vertical edges. Its top fits at 537 mm, not 554: the
+# published height is taken to be to the resin cartridge's cap, a knob just proud of the top at the back. Inside: a
+# black deck round the LCD with a blue latch at its front left, the light grey resin tank, and at the back the Z tower,
+# two aluminium columns either side of the lead screw, as tall as the cover, the build platform's black carrier riding
+# up the screw; the cartridge stands behind it. The cover hinges sit "at the rear of the printer under the back panel"
+# and "slide into the slots on the Z-tower" (Formlabs, "Replacing the Form 4 cover hinges"): it pivots on the tower's
+# top, the front rising and the open side towards you, and stops where its front top edge reaches the published
+# 844 mm. Proportions not published (the base, the bezel, the screen, the cover's top, the hinge) are fitted to frames.
+FORM4 = dict(W=398.0, D=367.0, H=554.0, foot=10.0, base_h=169.8, lip_h=18.1, base_r=14.0, cover_r=24.0, top_r=12.0,
+             cover_t=4.0, cover_h=537.1, bez_x0=5.3, bez_z0=12.0, bez_z1=160.7, scr_x0=26.6, scr_x1=174.8, scr_z0=36.9,
+             scr_z1=131.7, hinge_y=162.3, hinge_z=495.7, open_h=844.0, raise_=170.0, tank_y=-45.0)
+
+
+def _f4_open_deg(p) -> float:
+    """The cover's opening angle: its front top edge, the point farthest from the hinge, ends at the published open
+    height (844 mm), or the cover stops upright over the hinge if it can't reach that."""
+    a, b = -p["D"] / 2 - p["hinge_y"], p["cover_h"] - p["hinge_z"]
+    r, alpha = math.hypot(a, b), math.atan2(-a, b)
+    need = p["open_h"] - p["hinge_z"]
+    return math.degrees(alpha if need >= r else alpha - math.acos(need / r))
+
+
+def _f4_turn(p, pt, v=1.0) -> tuple:
+    """A point of the cover, closed, carried by the cover's hinge opened to the fraction v."""
+    th = math.radians(_f4_open_deg(p)) * v
+    y, z = pt[1] - p["hinge_y"], pt[2] - p["hinge_z"]
+    c, s = math.cos(th), math.sin(th)
+    return (pt[0], p["hinge_y"] + y * c + z * s, p["hinge_z"] - y * s + z * c)
+
+
+def form4_anchors(p, pose=None) -> dict:
+    """Named points and lines of the Form 4 model for register.py; the cover's follow pose["cover"] (0 shut, 1 open)."""
+    W, D, H = p["W"], p["D"], p["H"]
+    yf, yb, zb, ft = -D / 2, D / 2, p["base_h"], p["foot"]
+    zl = zb - p["lip_h"]                                           # the lip's underside, the base's front face's top
+    a = {"base fl bottom": (-W / 2, yf, ft), "base bl bottom": (-W / 2, yb, ft), "base fr bottom": (W / 2, yf, ft),
+         "lip fl": (-W / 2, yf, zb), "lip bl": (-W / 2, yb, zb), "lip fr": (W / 2, yf, zb),
+         "lip fl under": (-W / 2, yf, zl),
+         "base left edge": ("line", (-W / 2, yf, ft + 20), (-W / 2, yf, zl - 15)),
+         "base back left edge": ("line", (-W / 2, yb, ft + 20), (-W / 2, yb, zl - 15)),
+         "base bottom": ("line", (-W / 2 + 25, yf, ft), (p["bez_x0"] - 10, yf, ft)),
+         "lip underside": ("line", (-W / 2 + 25, yf, zl), (p["bez_x0"] - 10, yf, zl)),
+         "bezel tl": (p["bez_x0"], yf, p["bez_z1"]), "bezel bl": (p["bez_x0"], yf, p["bez_z0"]),
+         "bezel left": ("line", (p["bez_x0"], yf, p["bez_z0"] + 15), (p["bez_x0"], yf, p["bez_z1"] - 15)),
+         "screen tl": (p["scr_x0"], yf - 4, p["scr_z1"]), "screen tr": (p["scr_x1"], yf - 4, p["scr_z1"]),
+         "screen bl": (p["scr_x0"], yf - 4, p["scr_z0"]), "screen br": (p["scr_x1"], yf - 4, p["scr_z0"])}
+    v = float((pose or {}).get("cover", 0.0))
+    H = p["cover_h"]                                               # the cover's top; the cartridge cap is at p["H"]
+    cov = {"cover fl top": (-W / 2, yf, H), "cover fr top": (W / 2, yf, H), "cover bl top": (-W / 2, yb, H),
+           "cover left edge": ("line", (-W / 2, yf, zb + 30), (-W / 2, yf, H - 30)),
+           "cover right edge": ("line", (W / 2, yf, zb + 30), (W / 2, yf, H - 30)),
+           "cover back left edge": ("line", (-W / 2, yb, zb + 30), (-W / 2, yb, H - 30)),
+           "cover back right edge": ("line", (W / 2, yb, zb + 30), (W / 2, yb, H - 30)),
+           "cover top front": ("line", (-W / 2 + 30, yf, H), (W / 2 - 30, yf, H)),
+           "cover top back": ("line", (-W / 2 + 30, yb, H), (W / 2 - 30, yb, H)),
+           "cover top left": ("line", (-W / 2, yf + 30, H), (-W / 2, yb - 30, H)),
+           "cover bottom front": ("line", (-W / 2 + 30, yf, zb), (W / 2 - 30, yf, zb))}
+    for k, s in cov.items():
+        if isinstance(s, tuple) and s and s[0] == "line":
+            a[k] = ("line", _f4_turn(p, s[1], v), _f4_turn(p, s[2], v))
+        else:
+            a[k] = _f4_turn(p, s, v)
+    return a
 
 
 def form4() -> Instrument:
     p = FORM4
     W, D, H = p["W"], p["D"], p["H"]
     yf, yb = -D / 2, D / 2
-    zb = p["base_h"]
+    zb, ft = p["base_h"], p["foot"]
+    zl = zb - p["lip_h"]
     inst = Instrument("form4", "Resin 3D printer (MSLA)", "Formlabs Form 4", (W, D, H),
                       "Formlabs Form 4 tech specs (398 x 367 x 554 mm, 18.3 kg; 407 x 478 x 844 mm with the cover "
-                      "open; 200 x 125 x 210 mm build volume); look from Formlabs' photos")
+                      "open; 200 x 125 x 210 mm build volume); proportions registered to videos of it (refs/form4/)")
     body = _piece(inst, "body")
-    body.add("feet", _feet(W, D), "rubber")
-    body.add("base", rbox(W, D, zb - FEET, 18, z=FEET), "fl_grey")
-    body.add("deck", box(-W / 2 + 6, yf + 6, zb - 2, W / 2 - 6, p["hinge_y"], zb + 2), "fl_dark")
-    body.add("screen bezel", box(55, yf - 1.5, 95, 185, yf, 185), "inst_black")
-    body.add("touchscreen", box(62, yf - 2, 102, 178, yf - 1.5, 178), "screen_on")
-    body.add("logo", box(-160, yf - 1, 170, -90, yf, 180), "fl_dark")
-    # the rear housing behind the cover: the Z drive, and the cartridge bay on top
-    body.add("rear housing", rbox(W, yb - p["hinge_y"], H - 8 - zb, 14, y=(yb + p["hinge_y"]) / 2, z=zb), "fl_grey")
-    body.add("cartridge", rbox(118, 48, 150, 10, x=0, y=(yb + p["hinge_y"]) / 2 + 2, z=H - 158), "inst_black")
-    body.add("cartridge cap", rbox(60, 30, 8, 6, x=0, y=(yb + p["hinge_y"]) / 2 + 2, z=H - 8), "fl_dark")
-    # the resin tank and the Z tower inside the cover
-    ty = -35.0
-    tank = rbox(290, 200, 48, 10, y=ty, z=zb + 2).cut(rbox(270, 180, 50, 6, y=ty, z=zb + 6))
-    body.add("resin tank", tank, "fl_dark")
-    body.add("resin", rbox(268, 178, 20, 6, y=ty, z=zb + 6), "fl_resin")
-    body.add("Z tower", box(-40, 78, zb + 2, 40, p["hinge_y"] - 2, H - 40), "aluminium")
-    body.add("Z rail", box(-12, 70, zb + 40, 12, 78, H - 60), "steel")
-    # the carrier on the tower (moves with the print) and the build platform on it
+    body.add("plinth", rbox(W - 40, D - 40, ft, 10, z=0), "fl_dark")
+    body.add("base", rbox(W, D, zl - ft, p["base_r"], z=ft), "fl_alu")
+    body.add("lip", rbox(W, D, p["lip_h"], p["base_r"], z=zl), "fl_lip")
+    # the touchscreen's black bezel takes the front right of the base, up into the lip, round the right-hand corner
+    bez = box(p["bez_x0"], yf - 3, p["bez_z0"], W / 2, yf + 30, p["bez_z1"]).intersect(
+        rbox(W + 0.6, D + 6, H, p["base_r"], z=0))
+    body.add("screen bezel", bez, "inst_black")
+    body.add("touchscreen", box(p["scr_x0"], yf - 3.6, p["scr_z0"], p["scr_x1"], yf - 3, p["scr_z1"]), "fl_screen")
+    # its home screen, as in Formlabs' frames: the printer drawn in green, and the cartridge, platform and tank rows
+    sw, sh = p["scr_x1"] - p["scr_x0"], p["scr_z1"] - p["scr_z0"]
+    sx, sz = p["scr_x0"], p["scr_z0"]
+    ui = box(sx + 0.16 * sw, yf - 3.9, sz + 0.16 * sh, sx + 0.44 * sw, yf - 3.6, sz + 0.72 * sh)
+    for k in range(3):
+        ui = ui.union(box(sx + 0.50 * sw, yf - 3.9, sz + (0.62 - 0.2 * k) * sh, sx + 0.80 * sw, yf - 3.6,
+                          sz + (0.66 - 0.2 * k) * sh))
+    body.add("screen UI", ui, "fl_ui")
+    body.add("logo", box(-176, yf - 1, 40, -126, yf, 47), "fl_dark")
+    # inside the cover: the black deck round the LCD, its blue latch, the Z tower and the cartridge at the back
+    body.add("deck", box(-W / 2 + 10, yf + 10, zb, W / 2 - 10, yb - 10, zb + 4), "fl_dark")
+    body.add("latch", box(-150, yf + 22, zb + 4, -70, yf + 34, zb + 14), "fl_blue")
+    ty = p["tank_y"]
+    tz = zb + 4
+    tank = rbox(310, 220, 46, 12, y=ty, z=tz).cut(rbox(286, 196, 50, 8, y=ty, z=tz + 6))
+    body.add("resin tank", tank, "fl_tank")
+    body.add("resin", rbox(284, 194, 16, 8, y=ty, z=tz + 6), "fl_resin")
+    tw0, tw1 = yb - 112, yb - 14                                  # the tower's depth
+    Hc = p["cover_h"]                              # the cover's top; the cartridge's cap stands to the published H
+    top = Hc - p["cover_t"] - 8
+    body.add("Z column left", rbox(112, tw1 - tw0, top - zb, 10, x=-94, y=(tw0 + tw1) / 2, z=zb), "aluminium")
+    body.add("Z column right", rbox(92, tw1 - tw0, top - zb, 10, x=74, y=(tw0 + tw1) / 2, z=zb), "aluminium")
+    body.add("Z rail", box(-38, tw0 + 6, zb + 4, 28, tw0 + 50, top - 30), "inst_black")
+    body.add("lead screw", cyl(12, top - 50 - zb, x=-5, y=tw0 + 14, z=zb + 20), "steel")
+    body.add("cartridge", rbox(104, 40, 200, 10, x=0, y=yb - 34, z=Hc - 210), "inst_black")
+    body.add("cartridge cap", rbox(56, 26, H - (Hc - 10), 8, x=0, y=yb - 34, z=Hc - 10), "fl_dark")   # above the top
+    # the carrier on the Z rail (moves with the print) and the build platform on it. Its arm reaches over the tank's
+    # back wall to the platform's spine, its block in front of the rail.
     holder = _piece(inst, "holder")
-    z0 = zb + 8                                    # plate underside at the start of a print: just over the tank floor
-    holder.add("carrier", box(-50, 52, z0 + 22, 50, 70, z0 + 62).union(box(-30, 62, z0 + 10, 30, 78, z0 + 80)),
-               "fl_dark")
+    z0 = tz + 6                                    # plate underside at the start of a print: just over the tank floor
+    holder.add("carrier", box(-50, ty + 85, z0 + 48, 50, tw0 + 6, z0 + 88).union(
+        box(-34, tw0 - 10, z0 + 48, 24, tw0 + 8, z0 + 118)), "fl_dark")
     load = _piece(inst, "load")
     load.add("build platform", _build_platform(ty, z0), "aluminium")
-    sample = _piece(inst, "sample")
-    for name, shape in _parts(ty, z0):
+    # The parts grow downward from the plate as it rises, so they are drawn in 10 mm bands, each one appearing as the
+    # plate lifts its lower face off the tank floor (the film, at tz + 6); a band is never drawn below the film.
+    band, film = 10.0, tz + 6
+    parts = _parts(ty, z0)
+    depth = max(z0 - s.val().BoundingBox().zmin for _, s in parts)
+    layers = [f"layer{k}" for k in range(1, int(math.ceil(depth / band - 1e-6)) + 1)]
+    for k, lname in enumerate(layers):
+        cut = box(-150, ty - 150, z0 - (k + 1) * band, 150, ty + 150, z0 - k * band)
+        for name, shape in parts:
+            s = shape.intersect(cut)
+            if s.vals() and s.val().Volume() > 1.0:
+                _piece(inst, lname).add(f"{name}, band {k + 1}", s, "fl_part")
+    # each band's fade runs 0 -> 1 over the last 3 mm of the plate's rise that prints it, in the same step as the
+    # rise; Rig/Scene clip opacities to 0..1, so values past either end just hold it hidden or shown
+    grow = {lname: ((z0 - film - (k + 1) * band + 3.0) / 3.0, (z0 - film + p["raise_"] - (k + 1) * band + 3.0) / 3.0)
+            for k, lname in enumerate(layers)}
+    sample = _piece(inst, "sample")                # the same parts whole, swapped in for the bands once printed
+    for name, shape in parts:
         sample.add(name, shape, "fl_part")
+    whole = {"sample": (1.0, 1.0), **{lname: (0.0, 0.0) for lname in layers}}
+    inst.props = ("load", "holder", "sample")
+    # the cover: one orange shell over the whole footprint, open below, rounded on its vertical and top edges; its back
+    # is closed but for the slot the Z tower stands in, and its top has a notch for the cartridge's cap
     cover = _piece(inst, "cover")
     t = p["cover_t"]
-    shell = box(-W / 2 + 1, yf, zb + 2, W / 2 - 1, p["hinge_y"], H).cut(
-        box(-W / 2 + 1 + t, yf + t, zb, W / 2 - 1 - t, p["hinge_y"] + 1, H - t))
+    outer = rbox(W, D, Hc - zb, p["cover_r"], z=zb).edges(">Z").fillet(p["top_r"])
+    inner = rbox(W - 2 * t, D - 2 * t, Hc - zb - t, p["cover_r"] - t, z=zb - 1)
+    shell = outer.cut(inner).cut(box(-152, yb - t - 2, zb - 1, 122, yb + 1, top + 2)).cut(
+        box(-32, yb - 50, Hc - 20, 32, yb - 18, Hc + 1))
     cover.add("cover", shell, "fl_orange")
-    cover.add("cover lip", box(-60, yf - 2, zb + 4, 60, yf, zb + 14), "fl_dark")
+    open_deg = _f4_open_deg(p)
     inst.joints = {
         "holder": Joint("slide", vec=(0, 0, p["raise_"])),
+        # the platform slides off its mount towards you and on again ("Slide a clean build platform onto the build
+        # platform mount. Close the latch to lock it.", the Form 4's own screen)
         "load": Joint("path", path=((0, -470, -30), (0, -175, 0), (0, 0, 0)), parent="holder", v0=1.0),
+        **{lname: Joint("fade", parent="load") for lname in layers},
         "sample": Joint("fade", parent="load"),
-        "cover": Joint("hinge", axis=(1, 0, 0), pivot=(0, p["hinge_y"], H), deg=p["cover_deg"]),
+        "cover": Joint("hinge", axis=(1, 0, 0), pivot=(0, p["hinge_y"], p["hinge_z"]), deg=-open_deg),
     }
     inst.actions = [
         ("Printing: the build platform rises out of the resin layer by layer, the parts growing upside down.", 3.0,
-         {"holder": (0.0, 1.0), "sample": (0.0, 1.0), "~cover": (0.0, 0.6)}),
-        ("Done. The cover lifts on its rear hinge, to 844 mm: only at the VLM's opening, never in a slot.", 1.6,
-         {"cover": (0.0, 1.0), "~cover": (0.6, 0.0)}),
-        ("The build platform comes off its carrier by the handle, parts and all, for the Form Wash.", 1.8,
+         {"holder": (0.0, 1.0), **grow, "~cover": (0.0, 0.6)}),
+        ("Done. The cover swings up and back on hinges at the Z tower's top, to 844 mm: only at the VLM's opening, "
+         "never in a slot.", 1.6, {"cover": (0.0, 1.0), "~cover": (0.6, 0.0), **whole}),
+        ("The build platform slides off its mount towards you by the handle, parts and all, for the Form Wash.", 1.8,
          {"load": (1.0, 0.0)}),
-        ("A fresh platform goes on and the cover shuts.", 1.6, {"load": (0.0, 1.0), "sample": (1.0, 0.0),
-                                                                 "holder": (1.0, 0.0), "cover": (1.0, 0.0)}),
+        # the fresh platform is bare: the old parts are gone in the step's first quarter, while it is still outside
+        ("A fresh platform slides onto the raised mount; it lowers to the tank and the cover shuts.", 1.6,
+         {"load": (0.0, 1.0), "sample": (1.0, -3.0)}),
+        ("", 1.4, {"holder": (1.0, 0.0), "cover": (1.0, 0.0)}),
     ]
-    inst.labels = [("tinted cover", (-W / 2 + 40, yf, H - 60), (0.14, 0.24)),
-                   ("touchscreen", (120, yf - 2, 140), (0.84, 0.70)),
-                   ("resin cartridge", (0, (yb + p["hinge_y"]) / 2, H - 20), (0.80, 0.18))]
+    inst.labels = [("tinted cover", (-W / 2 + 40, yf, Hc - 60), (0.14, 0.24)),
+                   ("touchscreen", ((p["scr_x0"] + p["scr_x1"]) / 2, yf - 4, p["scr_z1"] - 20), (0.84, 0.70)),
+                   ("resin cartridge", (0, yb - 34, H - 4), (0.80, 0.18))]
     inst.notes = ["Fits a tray with 173.5 mm to spare under Kardex's 727.5 mm, but the cover opens to 844 mm: the arm "
                   "can open it at the opening (about 845 mm under the header), never while the tray is in a slot",
-                  "The cover's rear hinge is inferred from the published open envelope, not from a drawing"]
+                  f"The cover pivots on the Z tower's top (Formlabs' hinge-replacement guide) through {open_deg:.0f} "
+                  f"degrees, its front top edge to {_f4_turn(p, (0, yf, Hc))[2]:.0f} mm against the published 844; "
+                  "the hinge's position is fitted to a frame of the open cover"]
+    inst.anchors = form4_anchors(p)
     inst.cam = (1.0, -1.7, 0.9)
-    inst.framing = (1.1, 0.72)                  # room above for the open cover
+    inst.framing = (1.32, 0.69)                # the base whole, and room above for the open cover (844 mm)
     return inst
+
+
+# register.py: the Form 4's anchors, the proportions fitted to the frames in refs/form4/ (its published W x D x H is
+# the scale and stays fixed), and what keeps a fitted model buildable: the lip and the bezel on the base, the screen
+# inside its bezel, the hinge under the cover's top and inside its footprint.
+ANCHORS["form4"] = (FORM4, form4_anchors)
+FREE["form4"] = ["base_h", "lip_h", "bez_x0", "bez_z1", "scr_x0", "scr_x1", "scr_z0", "scr_z1", "hinge_y", "hinge_z",
+                 "cover_h"]
+CHECKS["form4"] = lambda p: [p["base_h"] - 2 - p["bez_z1"], p["bez_z1"] - p["scr_z1"] - 8,
+                             p["scr_z0"] - p["bez_z0"] - 8, p["scr_x0"] - p["bez_x0"] - 8,
+                             p["W"] / 2 - p["scr_x1"] - 8, p["cover_h"] - p["hinge_z"] - 20,
+                             p["D"] / 2 - p["hinge_y"] - 5, p["scr_x1"] - p["scr_x0"] - 60, p["H"] - p["cover_h"]]
 
 
 # ===================================================================================================== Form Wash
@@ -172,7 +307,7 @@ def form_wash() -> Instrument:
     body.add("bucket", box(-128, yf + 18, 36, 128, yb - 34, 40), "fl_dark")
     body.add("display", box(-40, yf - 2, zl - 46, 40, yf, zl - 18), "screen_on")
     body.add("button", _ycyl(16, 3, x=70, y=yf - 3, z=zl - 32), "fl_dark")
-    body.add("elevator rail", box(-14, yb - 34, 40, 14, yb - 26, zl - 4), "steel")
+    body.add("elevator rail", box(-14, yb - 42, 40, 14, yb - 34, zl - 4), "steel")    # proud of the bucket's back
     solvent = _piece(inst, "solvent")
     solvent.add("IPA", box(-126, yf + 20, 40, 126, yb - 36, p["solvent_top"]), "ipa")
     imp = _piece(inst, "impeller")
@@ -183,7 +318,8 @@ def form_wash() -> Instrument:
     holder = _piece(inst, "holder")
     py = -10.0                                     # the platform's centre over the bucket
     z_plate = zl - 62                              # plate underside with the elevator up: parts clear of the IPA
-    holder.add("carriage", box(-40, yb - 60, z_plate + 18, 40, yb - 36, z_plate + 58), "fl_dark")
+    # from the rail's face to the platform's spine (which ends at py + 88), so the platform hangs from it
+    holder.add("carriage", box(-40, py + 80, z_plate + 18, 40, yb - 42, z_plate + 58), "fl_dark")
     load = _piece(inst, "load")
     load.add("build platform", _build_platform(py, z_plate), "aluminium")
     for name, shape in _parts(py, z_plate):
@@ -257,15 +393,16 @@ def form_cure() -> Instrument:
                "fl_part")
     glow = _piece(inst, "glow")
     glow.add("405 nm light", box(-133, yf + dt + 2, p["ch_z0"] + 18, 133, yb - 33, p["ch_z1"] - 4), "uv_glow")
-    door = _piece(inst, "door")
-    door.add("door", rbox(W - 4, dt, H - FEET - 10, 8, y=yf + dt / 2, z=FEET + 4).cut(
+    door = _piece(inst, "door")                    # up to just over the chamber, so the display shows above it
+    door.add("door", rbox(W - 4, dt, p["ch_z1"] + 6 - FEET - 4, 8, y=yf + dt / 2, z=FEET + 4).cut(
         box(-115, yf - 1, 80, 115, yf + dt + 1, 320)), "fl_dark")
     door.add("door window", box(-116, yf + 6, 79, 116, yf + 10, 321), "fl_orange")
     door.add("door handle", box(W / 2 - 40, yf - 4, 150, W / 2 - 22, yf, 260), "fl_dark")
     inst.joints = {
         "door": Joint("hinge", axis=(0, 0, 1), pivot=(-W / 2 + 4, yf, 0), deg=-105.0),
         "turntable": Joint("spin", axis=(0, 0, 1), pivot=(0, cy, 0), deg=720.0),
-        "sample": Joint("path", path=((0, -460, 160), (0, -180, 40), (0, 0, 0)), parent="turntable"),
+        # the parts wait over the top of the door, out of its swing, and come in once it is open
+        "sample": Joint("path", path=((0, -460, 300), (0, -180, 40), (0, 0, 0)), parent="turntable"),
         "glow": Joint("fade"),
     }
     inst.actions = [

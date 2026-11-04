@@ -1,0 +1,66 @@
+{
+ "yields": {
+  "usable_under_250um": 0.9117,
+  "under_63um": 0.1688,
+  "source": "DAL #219 (Gage, Oct 27-29 2026): 1,079.886 g in 4 rod pieces; both runs sieved: <63 um 187.973 g, 64-250 um 827.063 g, >251 um 181.903 g, left in the crucible 732.034 g; 97 % of the usable powder from the first run"
+ },
+ "charges": [
+  {
+   "charge": "4 cups (this chapter)",
+   "al_g": 156.7,
+   "how": "out/alloy_recipe.json: 4 x 5N Al cup + plug + 3.92 g Si",
+   "usable_g": 142.9,
+   "under_63um_g": 26.5,
+   "runs_per_build": {
+    "the lab's planning figure": 17,
+    "a 30 mm build in the full 170 mm cylinder": 39
+   }
+  },
+  {
+   "charge": "225 cm3 crucible, filled as on Oct 27",
+   "al_g": 384.7,
+   "how": "142.5 cm3 of metal (63 % of 225 cm3), the volume of k7m2q9's bronze, in Al at 2.70",
+   "usable_g": 350.7,
+   "under_63um_g": 64.9,
+   "runs_per_build": {
+    "the lab's planning figure": 7,
+    "a 30 mm build in the full 170 mm cylinder": 16
+   }
+  },
+  {
+   "charge": "400 cm3 crucible, the same fill",
+   "al_g": 683.8,
+   "how": "63 % of 400 cm3 in Al at 2.70 (assumed: the same fill as Oct 27)",
+   "usable_g": 623.5,
+   "under_63um_g": 115.5,
+   "runs_per_build": {
+    "the lab's planning figure": 4,
+    "a 30 mm build in the full 170 mm cylinder": 9
+   }
+  }
+ ],
+ "midi_builds": {
+  "the lab's planning figure": {
+   "g": 440,
+   "source": "powder-doser design/brainstorming.md, section 3: \"Aconity MIDI ~440 g/build\", from Sterling's PR-thread comment"
+  },
+  "a 30 mm build in the full 170 mm cylinder": {
+   "g": 1021,
+   "source": "notes/alloy_print.md: pi/4 x 170^2 x 30 mm at 1.5 g/cm3"
+  }
+ },
+ "reconcile": "440 g of bed powder at 1.5 g/cm3 is 293 cm3: a 12.9 mm layer of the 170 mm cylinder, i.e. a short build (or a smaller cylinder), where chapter 3's 30 mm build in the full cylinder takes about 1 kg. Both are the bed alone; the supply's excess is on top.",
+ "caveats": [
+  "k7m2q9 is 630 bronze. Al atomizes coarser at the same 40 kHz (the capillary wavelength goes as (surface tension / density)^(1/3), about 1.3x for Al against Cu alloys), so its share under 63 um is an upper estimate for Al. The lab's Al 4047 powders looked coarse under the SEM (DAL #159).",
+  "The 63-250 um and >250 um powder can be remelted in a later run (more oxygen each time), so little metal is lost; it doesn't cut the number of runs, since each run still makes the same share of fines.",
+  "A cup charge is limited by the cups, not the crucible: four 2.5 in cups hold 59 cm3 of metal, a quarter of the 225. The Oct 27 rod pieces were about 125 mm long (270 g each of 3/4 in rod), so cups that long would about double the charge."
+ ],
+ "model": {
+  "pool_level_mm": 21.6,
+  "powder_level_mm": 15.1,
+  "melt_density": 2.37,
+  "powder_bulk": 1.4,
+  "cup_gap_mm": 2.17,
+  "rod_to_wall_less_cup_mm": 3.2
+ }
+}

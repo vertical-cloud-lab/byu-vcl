@@ -1,7 +1,7 @@
 {
  "name": "instruments/cubxl_corrosion",
  "fps": 15,
- "n_frames": 519,
+ "n_frames": 540,
  "size": [
   1280,
   720
@@ -15,51 +15,51 @@
   },
   {
    "label": "2/9",
-   "caption": "It fills well S1 with 150 uL of 0.6 M NaCl (3.5 wt%) from the stocks, which the capper uncaps. The O-ring leaves 3 mm of the coupon wet: 0.071 cm2.",
+   "caption": "It fills well S1 with 150 uL of 0.6 M NaCl (3.5 wt%) from its stock vial, which the capper uncaps and caps again. The O-ring leaves 3 mm of the coupon wet: 0.071 cm2.",
    "start_frame": 56,
-   "end_frame": 114
+   "end_frame": 135
   },
   {
    "label": "3/9",
    "caption": "Tip off. The capper's magnet picks up the electrode cap: a leak-free 2 mm Ag/AgCl reference inside a coil of Pt wire, the counter.",
-   "start_frame": 115,
-   "end_frame": 167
+   "start_frame": 136,
+   "end_frame": 188
   },
   {
    "label": "4/9",
    "caption": "The cap goes on S1. Its pogo pins land on the RE and CE pads; the coupon's back is on the WE pin. The head is free.",
-   "start_frame": 168,
-   "end_frame": 214
+   "start_frame": 189,
+   "end_frame": 235
   },
   {
    "label": "5/9",
    "caption": "The EZstat Pro beside the deck holds the cell at open circuit for 30 min: OCP settles to E_corr.",
-   "start_frame": 215,
-   "end_frame": 270
+   "start_frame": 236,
+   "end_frame": 291
   },
   {
    "label": "6/9",
    "caption": "LPR, then a cyclic polarization at 1 mV/s: up from 50 mV below OCP, reversing at 1 mA/cm2, back to E_corr. 44 min a spot at 1 mV/s.",
-   "start_frame": 271,
-   "end_frame": 344
+   "start_frame": 292,
+   "end_frame": 365
   },
   {
    "label": "7/9",
    "caption": "The capper lifts the cap off, dips it in the rinse cup and parks it.",
-   "start_frame": 345,
-   "end_frame": 403
+   "start_frame": 366,
+   "end_frame": 424
   },
   {
    "label": "8/9",
    "caption": "A fresh tip takes the well's liquid to tube 1, for ICP: dissolved Al and Mg, element by element.",
-   "start_frame": 404,
-   "end_frame": 474
+   "start_frame": 425,
+   "end_frame": 495
   },
   {
    "label": "9/9",
    "caption": "On to S2. At 44 min a spot, a 12 h night screens 16 spots; at the G61 rate, 6.",
-   "start_frame": 475,
-   "end_frame": 518
+   "start_frame": 496,
+   "end_frame": 539
   }
  ]
 }

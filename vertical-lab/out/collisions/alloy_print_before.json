@@ -1,0 +1,3555 @@
+{
+ "clip": "alloy_print",
+ "frames_checked": 1310,
+ "frames_with_collisions": 717,
+ "runs": [
+  {
+   "label": "1/5",
+   "first_frame": 114,
+   "last_frame": 115,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "pcont"
+    }
+   ]
+  },
+  {
+   "label": "1/5",
+   "first_frame": 116,
+   "last_frame": 118,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "pcont"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "pcont_pow"
+    }
+   ]
+  },
+  {
+   "label": "1/5",
+   "first_frame": 119,
+   "last_frame": 134,
+   "frames": 15,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "1/5",
+   "first_frame": 135,
+   "last_frame": 155,
+   "frames": 19,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "1/5",
+   "first_frame": 156,
+   "last_frame": 162,
+   "frames": 7,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 164,
+   "last_frame": 172,
+   "frames": 9,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 173,
+   "last_frame": 177,
+   "frames": 5,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 178,
+   "last_frame": 183,
+   "frames": 6,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 188,
+   "last_frame": 205,
+   "frames": 17,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "bench"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 206,
+   "last_frame": 210,
+   "frames": 5,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "bench"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:pcont",
+     "other": "sieve:stack"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 211,
+   "last_frame": 211,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "bench"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 212,
+   "last_frame": 257,
+   "frames": 42,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "bench"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "bench"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 258,
+   "last_frame": 258,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "bench"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 259,
+   "last_frame": 262,
+   "frames": 4,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "bench"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:pcont",
+     "other": "sieve:stack"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 263,
+   "last_frame": 277,
+   "frames": 14,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "bench"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 281,
+   "last_frame": 288,
+   "frames": 8,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 289,
+   "last_frame": 335,
+   "frames": 43,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 336,
+   "last_frame": 337,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 338,
+   "last_frame": 338,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "sieve:stack"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 339,
+   "last_frame": 339,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "bench"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "sieve:stack"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 340,
+   "last_frame": 340,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "bench"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "sieve:stack"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 341,
+   "last_frame": 342,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "bench"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "sieve:stack"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 343,
+   "last_frame": 343,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "bench"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "sieve:stack"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 344,
+   "last_frame": 344,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "bench"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 345,
+   "last_frame": 365,
+   "frames": 19,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "bench"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 366,
+   "last_frame": 367,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "bench"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "bench"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "bench"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 369,
+   "last_frame": 373,
+   "frames": 5,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "bench"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 374,
+   "last_frame": 374,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "bench"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "bench"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 375,
+   "last_frame": 378,
+   "frames": 4,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "bench"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "bench"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 379,
+   "last_frame": 384,
+   "frames": 5,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:body"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 385,
+   "last_frame": 386,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:sieve:knobL",
+     "other": "forearm"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 387,
+   "last_frame": 388,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:sieve:knobL",
+     "other": "forearm"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:sieve:lid",
+     "other": "forearm"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 389,
+   "last_frame": 390,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:sieve:knobL",
+     "other": "forearm"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:sieve:lid",
+     "other": "forearm"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 391,
+   "last_frame": 396,
+   "frames": 5,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:sieve:knobL",
+     "other": "forearm"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 397,
+   "last_frame": 397,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:sieve:knobL",
+     "other": "forearm"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:sieve:lid",
+     "other": "forearm"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 398,
+   "last_frame": 398,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_pan"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s230"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s325"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:sieve:lid",
+     "other": "forearm"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 399,
+   "last_frame": 399,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_pan"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s140"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s230"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:sieve:lid",
+     "other": "forearm"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 400,
+   "last_frame": 400,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s100"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s140"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:sieve:lid",
+     "other": "forearm"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 401,
+   "last_frame": 401,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_pan"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s100"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s140"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:sieve:lid",
+     "other": "forearm"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 402,
+   "last_frame": 402,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s230"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:sieve:lid",
+     "other": "forearm"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 403,
+   "last_frame": 403,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:sieve:lid",
+     "other": "forearm"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 404,
+   "last_frame": 417,
+   "frames": 12,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:stack"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 418,
+   "last_frame": 418,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:stack"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 419,
+   "last_frame": 429,
+   "frames": 10,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:stack"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 430,
+   "last_frame": 458,
+   "frames": 25,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:stack"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 459,
+   "last_frame": 467,
+   "frames": 8,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:stack"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 468,
+   "last_frame": 468,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:stack"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 469,
+   "last_frame": 469,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:lid"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:stack"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 470,
+   "last_frame": 470,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s100"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:lid"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:stack"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 471,
+   "last_frame": 471,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s100"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s140"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s230"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:lid"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:stack"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 472,
+   "last_frame": 472,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s100"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s140"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s325"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:lid"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:stack"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 473,
+   "last_frame": 473,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_pan"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s140"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s230"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:lid"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:stack"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 474,
+   "last_frame": 477,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_pan"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s100"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s325"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:lid"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:stack"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 478,
+   "last_frame": 478,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_pan"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s100"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:lid"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:stack"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 479,
+   "last_frame": 479,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s100"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s140"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s230"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:lid"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:stack"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 480,
+   "last_frame": 480,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s100"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s140"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:lid"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:stack"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 481,
+   "last_frame": 484,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s100"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s140"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:lid"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:stack"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 485,
+   "last_frame": 489,
+   "frames": 4,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s100"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s140"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:lid"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "sieve:knobR"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "sieve:knobR"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 490,
+   "last_frame": 493,
+   "frames": 4,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s100"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s140"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:lid"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "sieve:knobR"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "sieve:lid"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "sieve:knobR"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 494,
+   "last_frame": 494,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s100"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s140"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:lid"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "sieve:knobR"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "sieve:knobR"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 495,
+   "last_frame": 498,
+   "frames": 4,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s100"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s140"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:lid"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "sieve:knobR"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "sieve:knobR"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "sieve:lid"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 499,
+   "last_frame": 503,
+   "frames": 4,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s100"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s140"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:lid"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "sieve:knobR"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "sieve:knobR"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 504,
+   "last_frame": 506,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s100"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s140"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:lid"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:stack"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 508,
+   "last_frame": 508,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s100"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s140"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:lid"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:stack"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 509,
+   "last_frame": 509,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s100"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s140"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s230"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:lid"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:stack"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 510,
+   "last_frame": 510,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_pan"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s100"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:lid"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:stack"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 511,
+   "last_frame": 513,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_pan"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s100"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s325"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:lid"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:stack"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 515,
+   "last_frame": 515,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s100"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s140"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:lid"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:stack"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 516,
+   "last_frame": 516,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_pan"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s100"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:frac_s140"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:lid"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:stack"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 517,
+   "last_frame": 517,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "sieve:stack"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:stack"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 518,
+   "last_frame": 518,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "sieve:stack"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 757,
+   "last_frame": 760,
+   "frames": 4,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 761,
+   "last_frame": 767,
+   "frames": 7,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 768,
+   "last_frame": 769,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 770,
+   "last_frame": 770,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 771,
+   "last_frame": 771,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 772,
+   "last_frame": 777,
+   "frames": 5,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 778,
+   "last_frame": 780,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 781,
+   "last_frame": 781,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 782,
+   "last_frame": 805,
+   "frames": 22,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 806,
+   "last_frame": 816,
+   "frames": 10,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 817,
+   "last_frame": 817,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "base",
+     "other": "forearm"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 818,
+   "last_frame": 820,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "base",
+     "other": "forearm"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "upper_arm",
+     "other": "wrist2"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 821,
+   "last_frame": 821,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "base",
+     "other": "forearm"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "shoulder",
+     "other": "wrist2"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "upper_arm",
+     "other": "wrist1"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "upper_arm",
+     "other": "wrist2"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 822,
+   "last_frame": 822,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "base",
+     "other": "forearm"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "upper_arm",
+     "other": "wrist2"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 823,
+   "last_frame": 823,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "base",
+     "other": "forearm"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "shoulder",
+     "other": "gripper"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 824,
+   "last_frame": 824,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:bottle",
+     "other": "shoulder"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "shoulder",
+     "other": "gripper"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 825,
+   "last_frame": 826,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:bottle",
+     "other": "shoulder"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "shoulder",
+     "other": "gripper"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 827,
+   "last_frame": 827,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:bottle",
+     "other": "shoulder"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 828,
+   "last_frame": 872,
+   "frames": 41,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 873,
+   "last_frame": 877,
+   "frames": 5,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "4/5",
+   "first_frame": 1004,
+   "last_frame": 1010,
+   "frames": 7,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "4/5",
+   "first_frame": 1011,
+   "last_frame": 1064,
+   "frames": 50,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "4/5",
+   "first_frame": 1065,
+   "last_frame": 1067,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "4/5",
+   "first_frame": 1068,
+   "last_frame": 1068,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "4/5",
+   "first_frame": 1069,
+   "last_frame": 1081,
+   "frames": 12,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "4/5",
+   "first_frame": 1082,
+   "last_frame": 1082,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_cabinet"
+    }
+   ]
+  },
+  {
+   "label": "4/5",
+   "first_frame": 1083,
+   "last_frame": 1087,
+   "frames": 5,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_cabinet"
+    }
+   ]
+  },
+  {
+   "label": "4/5",
+   "first_frame": 1088,
+   "last_frame": 1093,
+   "frames": 6,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_shell"
+    }
+   ]
+  },
+  {
+   "label": "4/5",
+   "first_frame": 1094,
+   "last_frame": 1095,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_shell"
+    }
+   ]
+  },
+  {
+   "label": "4/5",
+   "first_frame": 1096,
+   "last_frame": 1097,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_bore"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_piston"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "4/5",
+   "first_frame": 1098,
+   "last_frame": 1169,
+   "frames": 66,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_bore"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_piston"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "bar0"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "4/5",
+   "first_frame": 1170,
+   "last_frame": 1170,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_bore"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_piston"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "4/5",
+   "first_frame": 1171,
+   "last_frame": 1171,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_bore"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_shell"
+    }
+   ]
+  },
+  {
+   "label": "4/5",
+   "first_frame": 1172,
+   "last_frame": 1172,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_shell"
+    }
+   ]
+  },
+  {
+   "label": "4/5",
+   "first_frame": 1173,
+   "last_frame": 1177,
+   "frames": 5,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_shell"
+    }
+   ]
+  },
+  {
+   "label": "4/5",
+   "first_frame": 1178,
+   "last_frame": 1178,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_cabinet"
+    }
+   ]
+  },
+  {
+   "label": "4/5",
+   "first_frame": 1179,
+   "last_frame": 1182,
+   "frames": 4,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_cabinet"
+    }
+   ]
+  },
+  {
+   "label": "4/5",
+   "first_frame": 1183,
+   "last_frame": 1183,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_cabinet"
+    }
+   ]
+  },
+  {
+   "label": "4/5",
+   "first_frame": 1184,
+   "last_frame": 1195,
+   "frames": 11,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "4/5",
+   "first_frame": 1196,
+   "last_frame": 1196,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "4/5",
+   "first_frame": 1197,
+   "last_frame": 1199,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "4/5",
+   "first_frame": 1200,
+   "last_frame": 1251,
+   "frames": 48,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "4/5",
+   "first_frame": 1252,
+   "last_frame": 1258,
+   "frames": 7,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    }
+   ]
+  }
+ ],
+ "rules": "What may touch: the gripper and whatever group it is picking up, holding or putting down, within 4 s of the\n    grasp or release; a held part and the groups it touches when it is taken and when it is let go (where it came\n    from and where it goes).",
+ "method": "FCL 0.7 (python-fcl) mesh-mesh collision on the drawn meshes, arm links decimated to 8000 triangles; every frame of the clip, after its update"
+}

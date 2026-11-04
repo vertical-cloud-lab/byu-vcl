@@ -1,0 +1,118 @@
+{
+ "source": "https://youtu.be/cg1S2WZVWr8?t=1 (Hitachi, The new TM4000II / TM4000PlusII Tabletop Microscope: product shot, 0:01)",
+ "video": "cg1S2WZVWr8",
+ "t": 1,
+ "pose": {
+  "drawer": 0.0
+ },
+ "points": {
+  "blue tl": [
+   277,
+   307
+  ],
+  "blue tr": [
+   443,
+   293
+  ],
+  "button": [
+   431,
+   383
+  ],
+  "badge": [
+   365,
+   364
+  ],
+  "drawer tl": [
+   297,
+   428
+  ],
+  "drawer tr": [
+   426,
+   421
+  ],
+  "drawer br": [
+   425,
+   550
+  ],
+  "drawer bl": [
+   300,
+   566
+  ],
+  "handle l": [
+   322,
+   440
+  ],
+  "handle r": [
+   418,
+   438
+  ],
+  "wedge tl": [
+   300,
+   202
+  ],
+  "wedge tr": [
+   400,
+   195
+  ],
+  "wedge bl": [
+   300,
+   232
+  ],
+  "wedge br": [
+   402,
+   225
+  ],
+  "back left bottom": [
+   191,
+   440
+  ],
+  "back left top": [
+   178,
+   150
+  ]
+ },
+ "curves": {
+  "back left edge": [
+   [
+    179,
+    160
+   ],
+   [
+    181,
+    250
+   ],
+   [
+    184,
+    350
+   ],
+   [
+    189,
+    420
+   ]
+  ],
+  "front left edge": [
+   [
+    261,
+    400
+   ],
+   [
+    262,
+    480
+   ],
+   [
+    264,
+    550
+   ]
+  ],
+  "left bottom": [
+   [
+    220,
+    493
+   ],
+   [
+    245,
+    543
+   ]
+  ]
+ }
+}

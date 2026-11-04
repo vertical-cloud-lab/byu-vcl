@@ -1,0 +1,163 @@
+{
+ "key": "xrd",
+ "free": [
+  "body_w",
+  "panel_x",
+  "panel_top",
+  "door_top",
+  "seam_z",
+  "strip_z0",
+  "bulge_z0",
+  "bulge_z1",
+  "estop_x",
+  "estop_z",
+  "handle_x",
+  "handle_z0",
+  "handle_z1"
+ ],
+ "params": {
+  "body_w": 560.2,
+  "panel_x": 199.6,
+  "panel_top": 707.6,
+  "door_top": 628.2,
+  "seam_z": 305.3,
+  "strip_z0": 210.4,
+  "bulge_z0": 353.5,
+  "bulge_z1": 554.7,
+  "estop_x": 153.0,
+  "estop_z": 254.8,
+  "handle_x": -179.4,
+  "handle_z0": 368.4,
+  "handle_z1": 467.4
+ },
+ "start": {
+  "body_w": 560.6,
+  "panel_x": 199.8,
+  "panel_top": 707.6,
+  "door_top": 628.2,
+  "seam_z": 304.8,
+  "strip_z0": 209.9,
+  "bulge_z0": 353.5,
+  "bulge_z1": 554.8,
+  "estop_x": 152.3,
+  "estop_z": 251.8,
+  "handle_x": -179.8,
+  "handle_z0": 367.8,
+  "handle_z1": 467.0
+ },
+ "views": {
+  "6g_lab_door_open": {
+   "source": "https://youtu.be/8tI9uFKevr0?t=28 (Rigaku, 'New 6th generation MiniFlex', 0:28: door open, loading)",
+   "size": [
+    640,
+    360
+   ],
+   "camera": [
+    1.6526514832623764,
+    0.2442830232429251,
+    -0.1890925401529658,
+    124.01174953448466,
+    381.86820470744806,
+    1729.7869232510832,
+    6.276526336091309,
+    -3.7244780389616e-05
+   ],
+   "focal_px": 531.9,
+   "k1": -0.0,
+   "rms_px_camera_only": 1.19,
+   "rms_px": 1.18,
+   "residual_px": {
+    "panel tl": 1.0,
+    "panel tr": 1.1,
+    "band bl": 0.3,
+    "band br": 0.8,
+    "strip tl": 2.0,
+    "strip bl": 1.5,
+    "strip br": 0.4,
+    "estop": 0.3,
+    "lamp": 0.9,
+    "handle top": 1.6,
+    "handle bottom": 1.5
+   }
+  },
+  "6g_lab_front_right": {
+   "source": "https://youtu.be/8tI9uFKevr0?t=20 (Rigaku, 'New 6th generation MiniFlex', 0:20: in a lab, door shut)",
+   "size": [
+    640,
+    360
+   ],
+   "camera": [
+    1.6606596642080864,
+    0.24814127635819358,
+    -0.1937010658745804,
+    125.15417777210376,
+    379.0892058960228,
+    1729.1785188061028,
+    6.276526336091309,
+    -3.7244780389616e-05
+   ],
+   "focal_px": 531.9,
+   "k1": -0.0,
+   "rms_px_camera_only": 1.22,
+   "rms_px": 1.09,
+   "residual_px": {
+    "panel tl": 0.7,
+    "panel tr": 1.5,
+    "strip bl": 0.3,
+    "strip br": 0.8,
+    "strip tr": 1.0,
+    "estop": 0.9,
+    "seam left": 0.9,
+    "front bottom left": 1.1,
+    "lamp": 0.9,
+    "handle top": 2.2,
+    "handle bottom": 0.1
+   }
+  },
+  "6g_product_front": {
+   "source": "https://youtu.be/8tI9uFKevr0?t=62 (Rigaku, 'New 6th generation MiniFlex', 1:02: the product shot)",
+   "size": [
+    640,
+    360
+   ],
+   "camera": [
+    1.592790467341443,
+    -0.11610327198385033,
+    0.12622696892792426,
+    -551.9592611469545,
+    472.5090226589243,
+    2323.5259050837217,
+    6.481456203530357,
+    -0.0006657056847745421
+   ],
+   "focal_px": 652.9,
+   "k1": -0.0007,
+   "rms_px_camera_only": 2.07,
+   "rms_px": 2.09,
+   "residual_px": {
+    "front top left": 2.6,
+    "front top right": 1.9,
+    "front bottom left": 5.1,
+    "front bottom right": 0.5,
+    "seam left": 2.0,
+    "seam right": 0.7,
+    "panel tl": 1.1,
+    "panel tr": 1.5,
+    "strip tl": 1.1,
+    "strip tr": 0.2,
+    "strip bl": 0.6,
+    "strip br": 1.3,
+    "estop": 0.9,
+    "lamp": 1.0,
+    "handle top": 1.0,
+    "handle bottom": 1.6,
+    "foot left": 3.2,
+    "foot right": 3.7,
+    "bulge left top": 3.0,
+    "bulge left bottom": 3.0,
+    "bulge right top": 1.0,
+    "bulge right bottom": 0.4
+   }
+  }
+ }
+}

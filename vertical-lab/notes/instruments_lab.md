@@ -180,7 +180,9 @@ MX-Lab from its six hoppers; that is to be confirmed with Prof. Fang.
 - **So a HIP stands beside the VLM, like the wire EDM,** with its gas, water and compressor, and the arm brings it
   work.
 - **In the model.** The vessel and its frame inside are drawn schematically from Kobelco's cutaway, since their sizes
-  aren't published. The tray, its 727.5 mm envelope and the opening's posts and header are drawn to Kardex's figures
+  aren't published. The HIP is set 130 mm back on the tray rather than centred: centred, its front would stand
+  through the opening's header, which is only 20-80 mm in front of the tray. So the whole 236 mm it is deeper than
+  the tray overhangs the back, and the red box there shows it. The tray, its 727.5 mm envelope and the opening's posts and header are drawn to Kardex's figures
   (#53, the order sheet).
 
 ### How these four are animated

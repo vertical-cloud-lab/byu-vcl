@@ -1,0 +1,1085 @@
+{
+ "clip": "alloy_print",
+ "frames_checked": 1310,
+ "frames_with_collisions": 227,
+ "runs": [
+  {
+   "label": "2/5",
+   "first_frame": 206,
+   "last_frame": 210,
+   "frames": 5,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:pcont",
+     "other": "sieve:stack"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 259,
+   "last_frame": 262,
+   "frames": 4,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:pcont",
+     "other": "sieve:stack"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 366,
+   "last_frame": 367,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "bench"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "bench"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 485,
+   "last_frame": 488,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "sieve:knobR"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "sieve:knobR"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 489,
+   "last_frame": 489,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "sieve:knobR"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 490,
+   "last_frame": 490,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "sieve:knobR"
+    }
+   ]
+  },
+  {
+   "label": "2/5",
+   "first_frame": 501,
+   "last_frame": 503,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "sieve:knobR"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "sieve:knobR"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 757,
+   "last_frame": 760,
+   "frames": 4,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 761,
+   "last_frame": 767,
+   "frames": 7,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 768,
+   "last_frame": 769,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 770,
+   "last_frame": 770,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 771,
+   "last_frame": 771,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 772,
+   "last_frame": 777,
+   "frames": 5,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 778,
+   "last_frame": 780,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 781,
+   "last_frame": 781,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 782,
+   "last_frame": 805,
+   "frames": 22,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 806,
+   "last_frame": 816,
+   "frames": 10,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 817,
+   "last_frame": 817,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "base",
+     "other": "forearm"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 818,
+   "last_frame": 820,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "base",
+     "other": "forearm"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "upper_arm",
+     "other": "wrist2"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 821,
+   "last_frame": 821,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "base",
+     "other": "forearm"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "shoulder",
+     "other": "wrist2"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "upper_arm",
+     "other": "wrist1"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "upper_arm",
+     "other": "wrist2"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 822,
+   "last_frame": 822,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "base",
+     "other": "forearm"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "upper_arm",
+     "other": "wrist2"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 823,
+   "last_frame": 823,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "base",
+     "other": "forearm"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "shoulder",
+     "other": "gripper"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 824,
+   "last_frame": 824,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:bottle",
+     "other": "shoulder"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "shoulder",
+     "other": "gripper"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 825,
+   "last_frame": 826,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:bottle",
+     "other": "shoulder"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "shoulder",
+     "other": "gripper"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 827,
+   "last_frame": 827,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:bottle",
+     "other": "shoulder"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 828,
+   "last_frame": 872,
+   "frames": 41,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "amr"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "3/5",
+   "first_frame": 873,
+   "last_frame": 877,
+   "frames": 5,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "amr"
+    }
+   ]
+  },
+  {
+   "label": "4/5",
+   "first_frame": 1082,
+   "last_frame": 1082,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_cabinet"
+    }
+   ]
+  },
+  {
+   "label": "4/5",
+   "first_frame": 1083,
+   "last_frame": 1087,
+   "frames": 5,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_cabinet"
+    }
+   ]
+  },
+  {
+   "label": "4/5",
+   "first_frame": 1088,
+   "last_frame": 1095,
+   "frames": 8,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_shell"
+    }
+   ]
+  },
+  {
+   "label": "4/5",
+   "first_frame": 1096,
+   "last_frame": 1097,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_bore"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_piston"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "4/5",
+   "first_frame": 1098,
+   "last_frame": 1169,
+   "frames": 66,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_bore"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_piston"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "bar0"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "4/5",
+   "first_frame": 1170,
+   "last_frame": 1170,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_bore"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_piston"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "4/5",
+   "first_frame": 1171,
+   "last_frame": 1171,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_bore"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_shell"
+    }
+   ]
+  },
+  {
+   "label": "4/5",
+   "first_frame": 1172,
+   "last_frame": 1177,
+   "frames": 6,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_shell"
+    }
+   ]
+  },
+  {
+   "label": "4/5",
+   "first_frame": 1178,
+   "last_frame": 1182,
+   "frames": 5,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_cabinet"
+    }
+   ]
+  },
+  {
+   "label": "4/5",
+   "first_frame": 1183,
+   "last_frame": 1183,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_cabinet"
+    }
+   ]
+  }
+ ],
+ "rules": "What may touch: the gripper and whatever group it is picking up, holding or putting down, within 4 s of the\n    grasp or release; a held part and the groups it touches when it is taken and when it is let go (where it came\n    from and where it goes).",
+ "method": "FCL 0.7 (python-fcl) mesh-mesh collision on the drawn meshes, arm links decimated to 8000 triangles; every frame of the clip, after its update"
+}
