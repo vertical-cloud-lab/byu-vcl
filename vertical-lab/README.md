@@ -475,6 +475,27 @@ Real data and illustrative data:
 - **The MiR250 can't power the arm.** Its top-module supply is 480 W at 48 V. The UR10e can draw 615 W, and its
   standard control box wants mains.
 
+### Getting a tray out for maintenance, with the rail in front
+
+![Plan and side view at the opening](out/maintenance_access.png)
+
+- **The tray service dock is round 4's coupling, not a way out.** Its docks are inside the VLM, so the rail doesn't
+  affect it.
+- **Kardex's way out is full tray extraction onto a transport cart.** Both are Shuttle XP options. The tray comes out
+  in front of the opening, which needs at least its 864 mm of clear floor there.
+- **With the rail where `line.py` puts it, that floor is taken.**
+  - The rail fills 26–442 mm in front of the cladding. Its beam is 436–699 mm high, and one leg stands under the
+    opening.
+  - From the beam, the tray's front edge is 464 mm away and its back edge 1328 mm, so a person can't work there either.
+- **What would work:**
+  - a second opening at the back for service (Kardex offers front or rear). It costs two rear slots at the front
+    opening's height, and about 2 m of floor behind the VLM;
+  - a floor-flush rail section with covers;
+  - a removable rail section, for rare instrument swaps;
+  - the mobile base, which leaves nothing fixed in front of the opening.
+
+  [`notes/maintenance.md`](notes/maintenance.md) has the sources and the questions for Kardex.
+
 ### The lab set up from scratch
 
 The set-up scene, in order:
@@ -729,6 +750,7 @@ xvfb-run -a python3 services.py services cabling tether cameras json   # -> out/
 xvfb-run -a python3 alloy_workflow.py                                   # -> out/alloy_workflow.*
 xvfb-run -a python3 warehouse.py; python3 warehouse.py sway compare     # the warehouse; out/rail_vs_amr.{json,png}
 python3 setup_lab.py fit; xvfb-run -a python3 setup_lab.py              # check every tray item, then the set-up movie
+python3 maintenance.py                                                  # the rail against the opening -> out/maintenance_access.{png,json}
 ```
 
 Under load, Xvfb sometimes drops the render window ("bad X server connection", "Render window is not current"). Retrying
