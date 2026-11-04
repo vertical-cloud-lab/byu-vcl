@@ -8,8 +8,8 @@ MiR and the vial holder included, and through the arm's own links. Sterling caug
 This module checks, with FCL (the Flexible Collision Library, the checker MoveIt uses by default), on the meshes that
 are drawn:
 
-* **the arm against itself**: every pair of links that isn't adjacent in the chain, with the gripper (all its parts)
-  as one body on the flange. Pairs that touch in every pose (the joints' own housings) are found by sampling and left
+* **the arm against itself**: every pair of links that isn't adjacent in the chain, with the gripper (all its parts,
+  the wrist camera on its coupling included: ``ur_arm.camera_meshes``) as one body on the flange. Pairs that touch in every pose (the joints' own housings) are found by sampling and left
   out, the way MoveIt's setup assistant writes UR's SRDF;
 * **the arm, gripper and whatever it holds against everything else that is visible**: the MiR it rides on, holders,
   racks, trays, machines, the VLM, the other arm. The arm's base may touch its own mounting (the MiR's cabinet); the
