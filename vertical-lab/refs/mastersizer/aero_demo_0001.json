@@ -1,0 +1,110 @@
+{
+ "source": "https://youtu.be/iaHJ8QEwJ-I?t=1 (Malvern Panalytical, Mastersizer Aero S - Rapid & efficient dry powder dispersion, 0:01)",
+ "video": "iaHJ8QEwJ-I",
+ "t": 1,
+ "pose": {},
+ "points": {
+  "top front left": [
+   462.5,
+   118
+  ],
+  "bay left top": [
+   600,
+   139
+  ],
+  "bay right top": [
+   688,
+   151
+  ],
+  "top front right": [
+   1048,
+   190
+  ],
+  "cassette bottom left": [
+   600,
+   316
+  ],
+  "cassette bottom right": [
+   684,
+   326
+  ],
+  "hose fitting": [
+   634,
+   255
+  ],
+  "cut at bay right": [
+   685,
+   429
+  ],
+  "dome top": [
+   705,
+   70
+  ],
+  "swoosh tip": [
+   958,
+   150
+  ],
+  "aero LED": [
+   563,
+   512
+  ],
+  "hopper top": [
+   472,
+   200
+  ]
+ },
+ "curves": {
+  "back top edge": [
+   [
+    850,
+    114
+   ],
+   [
+    950,
+    126
+   ],
+   [
+    1050,
+    139
+   ]
+  ],
+  "right cut": [
+   [
+    760,
+    466
+   ],
+   [
+    860,
+    496
+   ],
+   [
+    920,
+    522
+   ]
+  ],
+  "panel right edge": [
+   [
+    1045.6,
+    253
+   ],
+   [
+    1037,
+    403
+   ],
+   [
+    1029,
+    503
+   ]
+  ],
+  "left edge": [
+   [
+    462.5,
+    135
+   ],
+   [
+    462.5,
+    160
+   ]
+  ]
+ }
+}
