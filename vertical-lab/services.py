@@ -250,7 +250,7 @@ def plate_parts() -> dict:
     return p
 
 
-MANIFOLD_X = 520.0          # tray frame: the end of the tray's lines, a manifold block left of the UPS on the back rim
+MANIFOLD_X = 580.0          # tray frame: the end of the tray's lines, a manifold block left of the UPS on the back rim
 
 
 def line_paths() -> dict:
@@ -878,8 +878,8 @@ TRAY_CAMS = {   # per tray: (mast x, mast y, aim x, aim y, aim z, post yaw) in t
     # doser's cup. Each unit stands in front of or beside its instrument and looks back or down at it. Tray B's doser
     # is at the front edge and the OT-2 has no room in front, so B0, A1 and D2 still see some of the
     # room (cameras.views in services.json).
-    "A": [(-680.0, -270.0, -467.0, 6.0, 92.0, 90.0), (210.0, 275.0, 916.0, 102.0, 600.0, 90.0)],
-    "B": [(685.0, -340.0, 460.0, -222.0, 339.0, 270.0)],     # one: a unit over the rack stood in the middle of the tray
+    "A": [(-1060.0, -10.0, -850.0, 100.0, 400.0, 90.0), (210.0, 275.0, 916.0, 102.0, 600.0, 90.0)],
+    "B": [(920.0, -220.0, 750.0, 0.0, 600.0, 180.0)],     # one: a unit over the rack stood in the middle of the tray
     "C": [(-960.0, -340.0, -560.0, 0.0, 600.0, 90.0), (125.0, -235.0, 360.0, 0.0, 486.0, 90.0)],
     "D": [(-225.0, -305.0, -552.0, 0.0, 550.0, 270.0), (300.0, -340.0, 60.0, 0.0, 600.0, 270.0),
           (860.0, 185.0, 1066.0, -43.0, 109.0, 90.0)],
