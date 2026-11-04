@@ -125,4 +125,5 @@ Not done: water, a vial and the stir bar, and the coupling test (`BUILD.md` stag
 
 `~/stir_20261104/` holds copies of `check_board.py` and `spin.py`. While the session ran, a
 `journalctl -k -f` copied the kernel log into it, so that another reboot wouldn't lose it.
-`HOLD` is removed at the end. Nothing else on the Pi changed.
+That copy was stopped and `HOLD` removed at 23:03:34; the Uno is still on USB, idle. Nothing
+else on the Pi changed.
