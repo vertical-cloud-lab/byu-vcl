@@ -623,100 +623,161 @@ def sem() -> Instrument:
 
 
 # ===================================================================================================== PIP
-# Plastometrex PLX-Benchtop (profilometry-based indentation plastometry): a matte charcoal portal, two side columns
-# under a rounded housing with a U-shaped blue LED band, an open test bay with no door or guard: a crosshead with the
-# indenter over a round stainless platen on a load cell (Plastometrex's product render and brochure). The sample is
-# set on the platen by hand, unclamped; up to 160 mm across, under 8 mm thick on a fixture (Illinois MRL and a
-# published SOP). PLX-AutoStage is Plastometrex's add-on that automates the loading and places indents within 150 um.
-# Plastometrex publishes no dimensions: the envelope is scaled from photos (about 0.5 m wide and 0.65-0.7 m tall,
-# +-20 %), so whether it fits a tray is not settled.
-# The profile is measured with a stylus profilometer on the Benchtop (an interferometer on the PLX-Portable,
-# Plastometrex's "What is PIP?" page). Where the stylus sits and how it reaches the indent is not published: here it is
-# a traverse unit on the left-hand column, its arm level with the sample. It stays parked well clear of the indenter
-# while the indent is made; then, with the indenter lifted, the arm reaches in under it, sets the stylus down in the
-# indent and traces across it. Without the AutoStage the sample can't move, so the stylus has to come to the indent.
-PIP = dict(W=500.0, D=500.0, H=680.0, pillar=100.0, base_h=60.0, top_z0=390.0, stage_d=150.0, stage_t=16.0,
-           cell_d=80.0, cell_h=24.0, head_z=185.0, reach=40.0, drop=8.0, scan=3.0, lift=0.4)
+# Plastometrex PLX-Benchtop (profilometry-based indentation plastometry), from Plastometrex's own videos: "Introducing
+# the PLX-Benchtop" (w7OZsrru9AI), "Benchtop Indentation Plastometer Demonstration" (1qGM3JY2tFM, which labels the load
+# cell, indenter and profilometer) and the "How a PIP test works!" animation (wL5z5wjLI1U); the proportions are fitted
+# to the first one's frames with register.py (refs/pip/). Matte black: a housing with rounded top edges over a
+# portal of two columns, a silver trim at the waist and a silver plinth; on the housing's front a recessed panel with
+# "PX" and a U of blue LEDs; a red e-stop on its right side. In the bay, open at the front with no door or guard: a dark
+# crosshead between the columns with two yellow hazard labels and silver blocks at its ends, louvres on the columns'
+# inner faces; under it the indenter in a stainless cylinder, and a stainless platen on eight posts on a pancake load
+# cell set into the floor. The sample goes on the platen by hand, unclamped; up to 160 mm across, under 8 mm thick on
+# a fixture (Illinois MRL and a published SOP). PLX-AutoStage is Plastometrex's add-on that automates the loading.
+# The stylus profilometer is beside the indenter, not on a column: a slotted aluminium arm hangs from a carriage under
+# the right of the crosshead, leaning outwards, with a short shaft at its foot pointing to the front and the stylus
+# pick-up on that. The carriage runs along x: parked, the stylus is about 110 mm right of the indenter's axis, outside
+# the platen, at the sample's height (demonstration video, 0:36); it runs in towards the indenter (0:55), and with the
+# indenter lifted the pick-up goes in under it, over the indent (animation, 0:09). Plastometrex publishes no
+# dimensions: the width, 500 mm, is the scale (from photos, +-20 %); the other proportions are fitted to the frames.
+PIP = dict(W=500.0, D=560.0, H=689.0, feet=8.0, base_h=43.0, col_w=104.0, top_z0=387.0, trim_h=12.0, led_x=172.0,
+           led_z0=52.0, led_z1=196.0, xh_y=18.0, xh_z0=184.0, xh_z1=369.0, lab_x=126.0, stack=56.0, stage_d=154.0,
+           yc=-30.0, estop_y=45.0, estop_z=79.0, park=112.0, arm_deg=27.0, drop=3.0, scan=3.0, lift=-2.0)
+
+
+def _plx(p) -> dict:
+    """The positions the PIP model and its anchors share."""
+    W, D = p["W"], p["D"]
+    yf = -D / 2
+    zb = p["feet"] + p["base_h"]                  # the plinth's top: the bay floor, the columns' feet
+    bx = W / 2 - p["col_w"]                       # the columns' inner faces, at +-bx
+    stz = zb + p["stack"]                         # the platen's top face
+    return dict(W=W, D=D, yf=yf, zb=zb, bx=bx, stz=stz, s_top=stz + 6.0, yc=p["yc"],
+                lab_z=p["xh_z0"] + 0.62 * (p["xh_z1"] - p["xh_z0"]))
+
+
+def pip_anchors(p, pose=None) -> dict:
+    """Named points, circles and lines of the PIP model for register.py (the machine doesn't move in the frames)."""
+    g = _plx(p)
+    W, yf, zb, bx, z0 = g["W"], g["yf"], g["zb"], g["bx"], p["top_z0"]
+    a = {"base fl": (-W / 2, yf, p["feet"]), "base fr": (W / 2, yf, p["feet"]),
+         "col fl foot": (-W / 2, yf, zb), "col fr foot": (W / 2, yf, zb),
+         "bay bl": (-bx, yf, zb), "bay br": (bx, yf, zb), "bay tl": (-bx, yf, z0), "bay tr": (bx, yf, z0),
+         "trim fl": (-W / 2, yf, z0), "trim fr": (W / 2, yf, z0),
+         "led bl": (-p["led_x"], yf - 2, z0 + p["led_z0"]), "led br": (p["led_x"], yf - 2, z0 + p["led_z0"]),
+         "led tl": (-p["led_x"], yf - 2, z0 + p["led_z1"]), "led tr": (p["led_x"], yf - 2, z0 + p["led_z1"]),
+         "estop": (W / 2 + 22, yf + p["estop_y"], z0 + p["estop_z"]),
+         "label L": (-p["lab_x"], yf + p["xh_y"] - 1, g["lab_z"]), "label R": (p["lab_x"], yf + p["xh_y"] - 1, g["lab_z"]),
+         "xh bottom": ("line", (-bx + 30, yf + p["xh_y"] + 30, p["xh_z0"]), (bx - 30, yf + p["xh_y"] + 30, p["xh_z0"])),
+         "platen edge": ("circle", (0.0, g["yc"], g["stz"]), p["stage_d"] / 2),
+         "top": ("line", (-W / 2 + 60, yf + 32, p["H"]), (W / 2 - 60, yf + 32, p["H"])),
+         "left edge": ("line", (-W / 2, yf, zb + 40), (-W / 2, yf, p["H"] - 60)),
+         "right edge": ("line", (W / 2, yf, zb + 40), (W / 2, yf, p["H"] - 60))}
+    return a
 
 
 def pip() -> Instrument:
     p = PIP
-    inst = Instrument("pip", "Indentation plastometer (PIP)", "Plastometrex PLX-Benchtop", (p["W"], p["D"], p["H"]),
-                      "Plastometrex's product render, brochure and FAQ; Illinois MRL's instrument page and a published "
-                      "SOP for loading; no published dimensions, so the envelope is scaled from photos")
-    W, D, H = p["W"], p["D"], p["H"]
-    yf = -D / 2
-    yc = -20.0                                   # the indenter's axis, and so the indent, is at (0, yc)
+    g = _plx(p)
+    W, D, H, yf, zb, bx, stz, s_top, yc = g["W"], g["D"], p["H"], g["yf"], g["zb"], g["bx"], g["stz"], g["s_top"], g["yc"]
+    z0, z1 = p["top_z0"], p["top_z0"] + p["trim_h"]
+    inst = Instrument("pip", "Indentation plastometer (PIP)", "Plastometrex PLX-Benchtop", (W, D, H),
+                      "Plastometrex's videos (PLX-Benchtop introduction, benchtop demonstration, 'How a PIP test "
+                      "works!'), fitted with register.py; Illinois MRL and a published SOP for loading; no published "
+                      "dimensions, so the 500 mm width is the scale")
     body = _piece(inst, "body")
-    body.add("base", rbox(W, D, p["base_h"], 20), "inst_dark")
-    plate_z = p["base_h"] + 8
-    body.add("base plate", box(-W / 2 + p["pillar"], yf + 20, p["base_h"] - 2, W / 2 - p["pillar"], D / 2 - 40,
-                               plate_z), "aluminium")
     for sx in (-1, 1):
-        x0, x1 = sorted((sx * W / 2, sx * (W / 2 - p["pillar"])))
-        pil = box(x0, yf, p["base_h"], x1, D / 2, p["top_z0"] + 20).edges("|Z").fillet(18)
-        body.add(f"pillar {'LR'[sx > 0]}", pil, "inst_dark")
-    body.add("back wall", box(-W / 2 + p["pillar"], D / 2 - 60, p["base_h"], W / 2 - p["pillar"], D / 2 - 20,
-                              p["top_z0"]), "inst_black")
+        for sy in (-1, 1):
+            body.add(f"foot {sx} {sy}", box(sx * (W / 2 - 15) - 15, sy * (D / 2 - 25) - 15, 0,
+                                            sx * (W / 2 - 15) + 15, sy * (D / 2 - 25) + 15, p["feet"]), "inst_black")
+    body.add("plinth", box(-W / 2, yf, p["feet"], W / 2, D / 2, zb).edges("|Z").fillet(10)
+             .faces(">Z").edges("<Y").chamfer(4), "aluminium")
+    for sx in (-1, 1):
+        x0, x1 = sorted((sx * W / 2, sx * bx))
+        col = box(x0, yf, zb, x1, D / 2, z0).edges("|Z").fillet(10)
+        body.add(f"column {'LR'[sx > 0]}", col, "inst_dark")
+        # louvres on the column's inner face, from the floor up to the crosshead
+        xi = sx * bx
+        for i in range(int((p["xh_z0"] - zb - 20) // 9)):
+            z = zb + 12 + 9 * i
+            body.add(f"louvre {'LR'[sx > 0]} {i}", box(min(xi, xi - sx * 3), yf + 40, z, max(xi, xi - sx * 3),
+                                                       D / 2 - 40, z + 4), "inst_black")
+    body.add("back panel", box(-bx, D / 2 - 30, zb, bx, D / 2 - 18, z0), "inst_light")
+    body.add("trim", box(-W / 2 - 1.5, yf - 1.5, z0, W / 2 + 1.5, D / 2 + 1.5, z1).edges("|Z").fillet(10), "aluminium")
+    for sx in (-1, 1):                           # the silver lozenge on each side at the waist
+        tab = cq.Workplane("YZ").polyline([(-60, 0), (-45, 12), (45, 12), (60, 0), (45, -8), (-45, -8)]).close() \
+            .extrude(2).translate((sx * (W / 2 + 1.5) - (2 if sx < 0 else 0), 0, z0 + 6))
+        body.add(f"waist tab {sx}", tab, "aluminium")
+    housing = box(-W / 2, yf, z1, W / 2, D / 2, H).edges("|Z").fillet(10).faces(">Z").edges().fillet(32)
+    body.add("housing", housing, "inst_dark")
+    # the recessed front panel ("PX"), framed by a U of blue LEDs
+    lx, lz0, lz1 = p["led_x"], z0 + p["led_z0"], z0 + p["led_z1"]
+    body.add("front panel", box(-lx + 5, yf - 1, lz0 + 5, lx - 5, yf, H - 40), "inst_black")
+    led = box(-lx - 3, yf - 2, lz0 - 3, lx + 3, yf, lz0 + 3).union(box(-lx - 3, yf - 2, lz0 - 3, -lx + 3, yf, lz1)) \
+        .union(box(lx - 3, yf - 2, lz0 - 3, lx + 3, yf, lz1))
+    body.add("LED band", led, "led_blue")
+    body.add("PX logo", box(-38, yf - 1.6, lz0 + 70, 38, yf - 1, lz0 + 110), "inst_dark")
+    ey, ez = yf + p["estop_y"], z0 + p["estop_z"]
+    body.add("e-stop base", _xcyl(30, 10, x=W / 2, y=ey, z=ez), "inst_black")
+    body.add("e-stop", _xcyl(34, 12, x=W / 2 + 10, y=ey, z=ez).edges(">X").fillet(4), "inst_red")
+    # the crosshead between the columns: a dark cowl, its lower front edge bevelled, a raised panel in the middle
+    xy0 = yf + p["xh_y"]
+    xz0, xz1 = p["xh_z0"], p["xh_z1"]
+    cowl = box(-bx, xy0, xz0, bx, D / 2 - 40, xz1).faces("<Z").edges("<Y").chamfer(28)
+    body.add("crosshead", cowl, "inst_dark")
+    body.add("crosshead panel", box(-60, xy0 - 4, xz0 + 34, 60, xy0, xz1 - 14).edges("|Y").fillet(6), "inst_dark")
+    for sx in (-1, 1):
+        tri = cq.Workplane("XZ").polyline([(-13, -11), (13, -11), (0, 12)]).close().extrude(1) \
+            .translate((sx * p["lab_x"], xy0 - 0.5, g["lab_z"]))
+        body.add(f"hazard label {sx}", tri, "inst_yellow")
+        body.add(f"guide block {sx}", box(sx * bx - (16 if sx > 0 else 0), xy0 + 6, xz0 - 34, sx * bx + (0 if sx > 0 else 16),
+                                          xy0 + 36, xz0 + 8), "aluminium")
+    # the load string: a pancake load cell set into the floor, eight posts, a plain stainless disc for the platen
+    cell_top = stz - 12 - 9
+    body.add("load cell", cyl(0.9 * p["stage_d"], cell_top - zb + 6, y=yc, z=zb - 6).edges(">Z").chamfer(2), "steel")
+    body.add("load cell connector", _xcyl(14, 34, x=0.45 * p["stage_d"] - 4, y=yc, z=zb + 8), "steel")
     for i in range(8):
-        z = p["base_h"] + 30 + i * 30
-        body.add(f"louvre {i}", box(-W / 2 + p["pillar"] + 20, D / 2 - 62, z, W / 2 - p["pillar"] - 20, D / 2 - 60,
-                                    z + 8), "inst_grey")
-    top = box(-W / 2, yf, p["top_z0"], W / 2, D / 2, H).edges("|Y").fillet(60)
-    body.add("top housing", top, "inst_dark")
-    body.add("trim", box(-W / 2 - 2, yf - 2, p["top_z0"] - 6, W / 2 + 2, D / 2 + 2, p["top_z0"]), "aluminium")
-    body.add("front panel", box(-W / 2 + 70, yf - 3, p["top_z0"] + 60, W / 2 - 70, yf, H - 35), "inst_black")
-    led = box(-W / 2 + 64, yf - 5, p["top_z0"] + 54, W / 2 - 64, yf - 3, p["top_z0"] + 62).union(
-        box(-W / 2 + 64, yf - 5, p["top_z0"] + 54, -W / 2 + 72, yf - 3, H - 80)).union(
-        box(W / 2 - 72, yf - 5, p["top_z0"] + 54, W / 2 - 64, yf - 3, H - 80))
-    body.add("LED band", led, "screen_on")
-    body.add("e-stop", _xcyl(36, 22, x=W / 2, y=yf + 60, z=p["top_z0"] - 30), "inst_red")
-    body.add("e-stop collar", _xcyl(48, 8, x=W / 2, y=yf + 60, z=p["top_z0"] - 30), "inst_yellow")
-    body.add("guide columns", cyl(26, p["top_z0"] - p["base_h"], x=-W / 2 + p["pillar"] + 28, y=60, z=p["base_h"])
-             .union(cyl(26, p["top_z0"] - p["base_h"], x=W / 2 - p["pillar"] - 28, y=60, z=p["base_h"])), "chrome")
-    # the load string under the sample: a load cell, then a plain stainless disc for the platen
-    body.add("load cell", cyl(p["cell_d"], p["cell_h"], y=yc, z=plate_z), "steel")
-    platen_z = plate_z + p["cell_h"]
-    body.add("platen", cyl(p["stage_d"], p["stage_t"], y=yc, z=platen_z).faces(">Z").edges().chamfer(1.5),
-             "stainless")
-    stz = platen_z + p["stage_t"]                 # the platen's top face
-    s_top = stz + 6                               # the sample's top face, where the indent is
-    # the profilometer's traverse unit, on the left-hand column's inner face (in view from the front right), level
-    # with the sample
-    xl = -(W / 2 - p["pillar"])                   # the column's inner face
-    arm_z = s_top + 16                            # underside of the stylus arm when it travels
-    ux1 = -62.0                                   # the unit's inner end
-    body.add("profilometer traverse unit", rbox(ux1 - xl, 44, 46, 6, x=(xl + ux1) / 2, y=yc, z=arm_z - 14),
-             "inst_light")
-    body.add("profilometer unit window", box(xl + 12, yc - 23, arm_z + 10, ux1 - 12, yc - 22, arm_z + 26),
-             "inst_dark")
-    body.add("profilometer bracket", box(xl, yc - 30, arm_z - 22, xl + 12, yc + 30, arm_z + 40), "inst_dark")
+        t = math.radians(22.5 + 45 * i)
+        body.add(f"post {i}", cyl(14, 9, x=0.36 * p["stage_d"] * math.cos(t), y=yc + 0.36 * p["stage_d"] * math.sin(t),
+                                  z=cell_top), "stainless")
+    body.add("platen", cyl(p["stage_d"], 12, y=yc, z=stz - 12).faces(">Z").edges().chamfer(1.5), "stainless")
+    # the profilometer's rail under the crosshead, behind the indenter
+    ya = yc + 30.0                                # the arm's plane; its shaft reaches 30 mm forward to the indent's y
+    body.add("profilometer rail", box(-20, ya - 6, xz0 - 10, bx - 10, ya + 6, xz0), "aluminium")
+    # the indenter: a stainless cylinder down from the crosshead, a dark tip holder, the ball (the "head" piece)
     head = _piece(inst, "head")
-    hz = p["head_z"] + p["base_h"]
-    head.add("crosshead", box(-W / 2 + p["pillar"] + 10, -60, hz + 40, W / 2 - p["pillar"] - 10, 120, hz + 110)
-             .edges("|Y").fillet(12), "inst_dark")
-    head.add("crosshead nose", box(-100, -95, hz + 10, 100, 40, hz + 70).edges("|Y").chamfer(25), "inst_dark")
-    for sx in (-1, 1):
-        head.add(f"warning {sx}", box(sx * 80 - 13, -97, hz + 42, sx * 80 + 13, -95, hz + 62), "inst_yellow")
-    head.add("indenter holder", cyl(32, 55, y=yc, z=hz - 45), "chrome")
-    head.add("indenter", cyl(12, 10, y=yc, z=hz - 55).union(
-        cq.Workplane("XY").sphere(3.0).translate((0, yc, hz - 55))), "inst_black")   # a WC ball in its seat
-    # the stylus arm, parked: it slides out of the traverse unit along +x; its stylus hangs under the tip
+    hold_z = s_top + 7.0 + 12.0                   # the holder's underside with the ram up: the ball 7 mm above the sample
+    head.add("indenter cylinder", cyl(40, xz0 - hold_z + 10, y=yc, z=hold_z), "stainless")
+    head.add("indenter collar", cyl(32, 4, y=yc, z=hold_z - 4), "inst_black")
+    head.add("indenter tip", cq.Workplane("XY").circle(8).workplane(offset=8).circle(3).loft()
+             .rotate((0, 0, 0), (1, 0, 0), 180).translate((0, yc, hold_z - 4)), "inst_dark")
+    head.add("indenter", cq.Workplane("XY").sphere(1.0).translate((0, yc, hold_z - 12)), "inst_black")  # a 1 mm-radius WC ball
+    # the profilometer: carriage, inclined arm, a shaft forward at its foot, the pick-up with its stylus
     sty = _piece(inst, "stylus")
-    park = p["reach"]                              # the tip parks this far to the left of the indenter's axis
-    sty.add("profilometer arm", box(xl + 20, yc - 3, arm_z, -park, yc + 3, arm_z + 6), "steel")
-    sty.add("stylus", cyl(2.5, 10, x=-park - 2, y=yc, z=arm_z - 10 + 1).union(
-        cq.Workplane("XY").sphere(1.0).translate((-park - 2, yc, arm_z - 9))), "inst_black")
+    tip_z = s_top + p["drop"]                      # the stylus tip, parked: just above the sample's top face
+    foot = np.array([p["park"], ya, tip_z + 14.0])  # the arm's foot, where the shaft comes out
+    rise = xz0 - 10 - foot[2]
+    t = math.radians(p["arm_deg"])
+    top = foot + np.array([-rise * math.tan(t), 0, rise])   # it leans outwards going down
+    sty.add("profilometer carriage", box(top[0] - 18, ya - 7, xz0 - 22, top[0] + 18, ya + 7, xz0 - 10), "inst_dark")
+    L = float(np.linalg.norm(foot - top))
+    arm = (cq.Workplane("XZ").rect(18, L + 10).extrude(-6).edges("|Y").fillet(8.5)
+           .faces("<Y").workplane().rect(9, L - 20).cutBlind(-2)
+           .rotate((0, 0, 0), (0, 1, 0), -p["arm_deg"]).translate(tuple((foot + top) / 2 + np.array([0, -3, 0]))))
+    sty.add("profilometer arm", arm, "aluminium")
+    sty.add("profilometer shaft", _ycyl(6, 30, x=foot[0], y=ya - 30, z=foot[2]), "steel")
+    sty.add("stylus pick-up", box(foot[0] - 5, ya - 36, foot[2] - 11, foot[0] + 5, ya - 26, foot[2] + 3), "inst_black")
+    sty.add("stylus", cyl(1.6, 3.5, x=foot[0], y=yc, z=tip_z).union(
+        cq.Workplane("XY").sphere(0.5).translate((foot[0], yc, tip_z))), "steel")
     sample = _piece(inst, "sample")
     sample.add("sample", box(-20, -20, 0, 20, 20, 6), "sample")
     dent = _piece(inst, "indent")                  # shows once the ball lifts off; rides on the sample
-    dent.add("indent", cyl(2.5, 0.3, z=6.0), "inst_dark")        # in the sample's own frame
-    gap = hz - 58 - s_top                          # the ball's lowest point to the sample's top face
-    tip = arm_z - 10                               # the stylus tip, parked
-    dx, dz, sc = park + 2, tip - s_top, p["scan"]
-    # the stylus's route: in under the indenter, down into the indent, across it and back, up, and parked again
-    route = ((0, 0, 0), (dx, 0, 0), (dx, 0, -dz), (dx - sc, 0, -dz), (dx + sc, 0, -dz), (dx, 0, -dz), (dx, 0, 0),
-             (0, 0, 0))
+    dent.add("indent", cyl(2.0, 0.3, z=6.0), "inst_dark")        # in the sample's own frame
+    gap = 7.0                                      # the ball's lowest point to the sample's top face, ram up
+    dx, sc, dz = p["park"], p["scan"], p["drop"]
+    # the stylus's route: in along x until it is just past the indent, down onto the surface, across the indent and
+    # back, up, and out to its parking place again
+    route = ((0, 0, 0), (-dx + sc, 0, 0), (-dx + sc, 0, -dz), (-dx - sc, 0, -dz), (-dx + sc, 0, -dz),
+             (-dx + sc, 0, 0), (0, 0, 0))
     seg = np.linalg.norm(np.diff(np.asarray(route, float), axis=0), axis=1)
     at = np.concatenate([[0], np.cumsum(seg)]) / seg.sum()      # v at each waypoint
     inst.joints = {
@@ -728,26 +789,40 @@ def pip() -> Instrument:
     inst.actions = [
         ("No door or guard: a flat sample (here a 40 mm square cut from a print; 3 x 3 x 1.5 mm at the least) goes "
          "on the platen by hand, unclamped.", 2.4, {"sample": (0.0, 1.0)}),
-        ("Hands clear: the crosshead drives the spherical indenter in, an indent 0.25-1 mm wide. The profilometer's "
-         "stylus stays parked at the side.", 1.8, {"head": (0.0, 1.0)}),
-        ("The indenter lifts; the stylus arm reaches in under it and sets the stylus down in the indent.", 2.2,
+        ("Hands clear: the indenter comes down out of its cylinder and presses the 1 mm-radius ball in, an indent "
+         "0.25-1 mm wide. The profilometer waits at the right, clear of the platen.", 1.8, {"head": (0.0, 1.0)}),
+        ("The indenter lifts well clear; the profilometer's carriage runs in along the crosshead and its pick-up "
+         "passes under the indenter to the indent.", 2.2,
          {"head": (1.0, p["lift"]), "stylus": (0.0, float(at[2])), "indent": (0.0, 1.0)}),
         ("The stylus traces across the indent, line by line, to map its 3D shape.", 1.8,
-         {"stylus": (float(at[2]), float(at[5]))}),
-        ("It lifts and parks, and the crosshead goes back up.", 1.6,
-         {"stylus": (float(at[5]), 1.0), "head": (p["lift"], 0.0)}),
+         {"stylus": (float(at[2]), float(at[4]))}),
+        ("It lifts and runs back out to the right, and the indenter goes back to its start.", 1.6,
+         {"stylus": (float(at[4]), 1.0), "head": (p["lift"], 0.0)}),
         ("CORSICA fits a stress-strain curve to that profile in minutes. The sample comes off.", 2.0,
          {"sample": (1.0, 0.0), "indent": (1.0, 1.0)}),
     ]
-    inst.labels = [("indenter", (0, yc, hz - 40), (0.84, 0.34)),
-                   ("profilometer stylus", (-park - 10, yc - 3, arm_z + 3), (0.12, 0.46)),
-                   ("platen on a load cell", (0, yc - p["stage_d"] / 2, platen_z + 8), (0.84, 0.72))]
-    inst.zoom = {2: ((0.0, yc, s_top + 30), 520.0), 4: "out"}      # in on the bay for the profile, then back out
-    inst.notes = ["The stylus profilometer's mounting is not published; the traverse unit on the left-hand column "
-                  "is this model's choice."]
-    inst.cam = (0.75, -1.9, 0.6)
+    inst.labels = [("indenter", (-20, yc, hold_z + 30), (0.16, 0.30)),
+                   ("profilometer", (float(foot[0]) + 8, ya, float(foot[2]) + 30), (0.86, 0.34)),
+                   ("platen on a load cell", (0, yc - p["stage_d"] / 2, stz - 6), (0.84, 0.72))]
+    inst.anchors = pip_anchors(p)
+    inst.zoom = {2: ((30.0, yc, s_top + 30), 520.0), 4: "out"}      # in on the bay for the profile, then back out
+    inst.notes = ["The profilometer's place is from Plastometrex's own footage; how its pick-up is lowered onto the "
+                  "surface (the animation shows a rotation at the arm's foot) is simplified to a small drop here."]
+    inst.cam = (0.32, -1.9, 0.28)                   # low and nearly frontal, as the videos show the bay
     inst.framing = (0.66, 0.30)
     return inst
+
+
+# register.py: the PIP's anchors, the proportions fitted to Plastometrex's frames (refs/pip/), with the 500 mm width
+# as the scale, and what keeps a fitted model buildable: the LED U inside the panel, the crosshead under the waist and
+# above the platen, the labels on the crosshead, the platen between the columns.
+ANCHORS["pip"] = (PIP, pip_anchors)
+FREE["pip"] = ["H", "base_h", "col_w", "top_z0", "led_x", "led_z0", "led_z1", "xh_y", "xh_z0", "xh_z1", "lab_x",
+               "stack", "stage_d", "yc", "estop_y", "estop_z"]
+CHECKS["pip"] = lambda p: [p["W"] / 2 - p["led_x"] - 30, p["led_z1"] - p["led_z0"] - 60,
+                           p["H"] - p["top_z0"] - p["led_z1"] - 30, p["top_z0"] - p["xh_z1"] - 10,
+                           p["xh_z1"] - p["xh_z0"] - 60, p["xh_z0"] - p["feet"] - p["base_h"] - p["stack"] - 35,
+                           p["W"] / 2 - p["col_w"] - p["lab_x"] - 20, p["W"] / 2 - p["col_w"] - p["stage_d"] / 2 - 10]
 
 
 # ===================================================================================================== rail
