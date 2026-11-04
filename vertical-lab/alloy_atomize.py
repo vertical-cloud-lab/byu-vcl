@@ -109,7 +109,8 @@ MIR_SPEED = 1500.0                    # mm/s, as alloy_workflow.py
 PARK = np.radians(A.PARK_DEG)
 CARRIER_AT = (A.BUFFER_LOCAL[0], A.BUFFER_LOCAL[1], P.AMR_TOP - 20.0)    # where chapter 1 puts the cup carrier
 CRADLE_AT = (280.0, 10.0, P.AMR_TOP - 20.0)                           # the container's cradle, beside the arm
-CRADLE_H = 150.0
+CRADLE_H = 12.0                       # a low ring on the cabinet top (was a ring on a 150 mm post: the upper arm
+                                      # crossed it on two joint moves, PR #318 round 5)
 END_POSE = (A.REPOWDER_AT[0] + 288.0, -2230.0)     # the hand-off to chapter 3 (sieve, print): MiR250 centre, yaw 0,
                                                    # square to the container's axis, 41 mm off the view port's flange
 
@@ -573,15 +574,16 @@ class Mir:
         sc.add("amr/cup carrier", carrier.translate(CARRIER_AT, inplace=False), P.RACK_C, "amr")
         self.seats = [np.array(s, float) + CARRIER_AT for s in seats]
         cx, cy, cz = CRADLE_AT
-        post = pv.Cylinder(center=(cx, cy, cz + CRADLE_H / 2), direction=(0, 0, 1), radius=16,
-                           height=CRADLE_H).triangulate()
-        foot = pv.Box(bounds=(cx - 50, cx + 50, cy - 50, cy + 50, cz, cz + 8)).triangulate()
-        ring = C.lathe([(M.CONT_R + 1.0, 0), (M.CONT_R + 7.0, 0), (M.CONT_R + 7.0, 40), (M.CONT_R + 1.0, 40)],
-                       res=64).translate((cx, cy, cz + CRADLE_H), inplace=False)
-        floor = pv.Cylinder(center=(cx, cy, cz + CRADLE_H + 1.5), direction=(0, 0, 1), radius=M.CONT_R + 7.0,
+        ring = C.lathe([(M.CONT_R + 1.0, 0), (M.CONT_R + 7.0, 0), (M.CONT_R + 7.0, CRADLE_H + 25.0),
+                        (M.CONT_R + 1.0, CRADLE_H + 25.0)], res=64).translate((cx, cy, cz), inplace=False)
+        floor = pv.Cylinder(center=(cx, cy, cz + 1.5), direction=(0, 0, 1), radius=M.CONT_R + 7.0,
                             height=3.0, resolution=64).triangulate()
-        sc.add("amr/cradle", post.merge(foot).merge(ring).merge(floor), (0.30, 0.32, 0.36), "amr")
-        self.cradle_seat = np.array([cx, cy, cz + CRADLE_H + 3.0])
+        sc.add("amr/cradle", ring.merge(floor), (0.30, 0.32, 0.36), "amr")
+        self.cradle_seat = np.array([cx, cy, cz + 3.0])
+        # ballast: a 25 mm steel plate under the cabinet, 96 kg (stability(): the arm's pull on the lid's latch)
+        L, Wd, H = P.MIR["L"], P.MIR["W"], P.MIR["H"]
+        bal = pv.Box(bounds=(-L / 2 + 38, L / 2 - 38, -Wd / 2 + 28, Wd / 2 - 28, H, H + BALLAST_T)).triangulate()
+        sc.add("amr/ballast plate", bal, (0.16, 0.17, 0.19), "amr", specular=0.2)
         self.x, self.y, self.yaw = 0.0, 0.0, 0.0
         self.rb = RB.Robot(sc, A.ROBOT, "amr", T((*A.ARM_LOCAL, P.AMR_TOP)), q0=A.PARK_DEG)
 
@@ -756,6 +758,100 @@ def tip_in_path(k, release=0.78):
     return held, slide
 
 
+TONG_LINE_OUT = 0.0                   # mm the tong's line runs further out than LINE_R (see tong_clearance)
+
+
+def tong_path(k) -> list:
+    """Cup k's poses (model frame) as the tong carries it, all the way: over the crucible; #222's descent (beside the
+    adapter, tipped 4.1 deg with the foot over the bore's lip, the foot at the rim by the rod, down the line to where
+    the top passes under the adapter); then upright and in to its place, and down onto the floor cone."""
+    seat = cup_seat(k)
+    d = [cup_pose(k, 30.0, M.RIM + 150.0, 0.0)] + descent(k)
+    if TONG_LINE_OUT:                                  # the two poses on the line, moved out along the radius
+        a = math.radians(CUP_ANGLES[k])
+        d = d[:3] + [T(np.array([math.cos(a), math.sin(a), 0.0]) * TONG_LINE_OUT) @ Mx for Mx in d[3:]]
+    # under the adapter the top is free: stand the cup up as it goes on down, its outer side 0.3 mm inside the bore
+    # at the rim all the way (line_pose for a tilt going from TIP_DEG to 0), then in to its place and down
+    d_tight = C.SLUG_L * math.cos(math.radians(TIP_DEG)) - M.ROD_ADAPTER_ABOVE_RIM + 0.3
+    up = []
+    for s_ in (0.35, 0.7, 1.0):
+        th = TIP_DEG * (1 - s_)
+        dep = d_tight + (66.0 - d_tight) * s_
+        lr = M.CRUCIBLE_ID / 2 - 0.3 - C.STOCK_D / 2 / math.cos(math.radians(th)) + TONG_LINE_OUT
+        up.append(cup_pose(k, lr - dep * math.tan(math.radians(th)), M.RIM - dep, th))
+    return d + up + [cup_pose(k, CUP_R, seat[2] + 5.0, 0.0), cup_pose(k, CUP_R, seat[2], 0.0)]
+
+
+def _fcl_obj(mesh, Mx=None):
+    import fcl
+    m = mesh.triangulate()
+    f = np.asarray(m.faces).reshape(-1, 4)[:, 1:].astype(np.int32)
+    v = np.asarray(m.points, float)
+    bvh = fcl.BVHModel()
+    bvh.beginModel(len(v), len(f))
+    bvh.addSubModel(v, f)
+    bvh.endModel()
+    o = fcl.CollisionObject(bvh, fcl.Transform())
+    if Mx is not None:
+        o.setTransform(fcl.Transform(Mx[:3, :3], Mx[:3, 3]))
+    return o
+
+
+def _dist(a, b) -> float:
+    """Least distance between two FCL objects, mm; negative (the depth, roughly) when they overlap."""
+    import fcl
+    if fcl.collide(a, b, fcl.CollisionRequest(), fcl.CollisionResult()):
+        res = fcl.CollisionResult()
+        fcl.collide(a, b, fcl.CollisionRequest(num_max_contacts=50, enable_contact=True), res)
+        return -max((c.penetration_depth for c in res.contacts), default=0.0)
+    return float(fcl.distance(a, b, fcl.DistanceRequest(), fcl.DistanceResult()))
+
+
+def tong_clearance(n_per_seg: int = 14) -> dict:
+    """Along each cup's tong path: the least clearance of the tong (jaws, bridge, stem), and of the cup it carries,
+    to the sealing rod, its adapter, the crucible, the filling cone, the wall thermocouple and the cups already in;
+    and the gripper's lowest point over the rim. Model frame, the rod seated and the lever up. Written to
+    out/alloy_atomize_clearance.json."""
+    ms = M.meshes()
+    fixed = {"sealing rod": "sealing_rod", "rod adapter": "rod_adapter", "crucible": "crucible",
+             "filling cone (top insulation)": "top_insulation", "thermocouple": "thermocouple"}
+    obj = {k: _fcl_obj(ms[v]["whole"]) for k, v in fixed.items()}
+    tm = tong_meshes()
+    tong_parts = {"jaws": tm["tong_a jaw"][0].merge(tm["tong_b jaw"][0]), "stem and bridge": tm["tong stem"][0]}
+    cup_mesh = C.cup().merge(C.plug().translate((0, 0, C.PLUG_HOME_Z), inplace=False))
+    rows = []
+    for k in range(N_CUPS):
+        path = tong_path(k)
+        dense = [pose_path(path, f) for f in np.linspace(0, 1, n_per_seg * (len(path) - 1) + 1)]
+        seated = {f"cup {j + 1}": _fcl_obj(cup_mesh, T(cup_seat(j))) for j in range(k)}
+        best = {}
+        for Mx in dense:
+            F = tong_frame_for(k, Mx)
+            movers = {"cup": _fcl_obj(cup_mesh, Mx)}
+            movers.update({p: _fcl_obj(mesh, F) for p, mesh in tong_parts.items()})
+            for who, o in movers.items():
+                for what, w in list(obj.items()) + list(seated.items()):
+                    if who == "cup" and what == "crucible" and Mx is dense[-1]:
+                        continue                               # standing on its floor
+                    d = _dist(o, w)
+                    key = (who, what)
+                    if key not in best or d < best[key][0]:
+                        best[key] = (d, float(M.RIM - Mx[2, 3]))
+        rows.append(dict(cup=k + 1, angle_deg=CUP_ANGLES[k],
+                         least_clearance_mm={f"{a} to {b}": round(d, 2) for (a, b), (d, _) in sorted(best.items())},
+                         where_foot_under_rim_mm={f"{a} to {b}": round(z, 1) for (a, b), (_, z) in
+                                                  sorted(best.items())}))
+    top_seated = cup_seat(0)[2] + C.SLUG_L
+    return dict(cups=rows, seated_cup_tops_below_rim_mm=round(float(M.RIM - top_seated), 1),
+                gripper_lowest_over_rim_mm=round(float(top_seated + TONG_GRASP - 30.0 - M.RIM), 1),
+                note="The loading tong (tong_meshes): jaws 1.2 mm spring steel, 8 mm wide, 12 mm down the cup's top "
+                     "on the two sides square to the crucible's radius; a 6 x 8 mm stem; the 2F-85 on its handle "
+                     f"{TONG_GRASP:.0f} mm up. Distances by FCL on the meshes (the model's facets stand up to 0.2 mm "
+                     "proud of the drawn circles), each the least along that cup's whole path (tong_path), with the "
+                     "foot's depth under the rim where it happens; negative is an overlap. The cup's own squeeze past "
+                     "the adapter is #222's -0.09 mm for a 3/4 in cup, which no tool changes.")
+
+
 def release_at(rb, k, grip_of, steps: int = 90) -> tuple[float, np.ndarray]:
     """How far down `descent` (0..1) the arm can carry cup k, as it holds it now, with the gripper and the arm clear
     of everything (the filling cone, the crucible, the adapter, the thermocouple, the cups already in) and the cup
@@ -878,6 +974,252 @@ def lever(sc, deg):
     sc.gmat[g("arm")] = R(tuple(M.LEVER_AXIS), deg, tuple(M.PIVOT))
 
 
+# ------------------------------------------------------------------------------------------------ the lid's latch
+# How the furnace lid really shuts (PR #318 round 6, from the lab's own training video T4, youtu.be/1F9_4ccwhss at
+# 5:08, 5:17 and 5:23): one stainless over-centre draw latch (a toggle latch) on a flat on the furnace body's front
+# right, its keeper (a plate with a lip, two screws) on the lid above it. The operator presses the lid down with one
+# hand and closes the latch's lever with the other. The SOP: "close the furnace lid and secure the latch just tight
+# enough to seal; if it hisses, loosen, adjust the latch and retighten" (T4 5:17, T8 9:09), so its loop is threaded
+# to set the draw. Beside it a horizontal bolt comes out of the machine: "once you close the furnace and you change the
+# pressure in the furnace, it automatically locks; there is like a bolt coming and locking the furnace" (Bartosz
+# Kalicki, AMAZEMET, rePowder-BYU-Installation-Details.txt, 22:04-22:11). Drawn here in the chapter (the model's
+# cache stays as it is): the latch's base on the body, its lever, its loop, the keeper on the lid, and the bolt on a
+# bracket in front of the lever. The lever gets a pull tab for the robot (the real one has a plain end with a hole).
+LATCH_AZ = -30.0                      # the hood's front-right face (model.py hexframe: a vertex on +x)
+LATCH_PIVOT_R = M.BODY_R + 14.0       # the lever's pivot: 14 mm off the body
+LATCH_Z = M.BODY_TOP - 74.0           # and 74 mm under the deck
+LATCH_OPEN = 105.0                    # degrees the lever swings out and down to let the loop off the keeper
+TAB = np.array([22.0, 0.0, 60.0])     # the pull tab's grasp point, latch frame (x out, y along the face, z up)
+GRIP_TAB = 0.79                       # the 2F-85 on the 20 mm tab
+BOLT_TRAVEL = 37.0                    # the locking bolt: out in front of the lever, or back clear of it
+
+
+def latch_frame() -> np.ndarray:
+    """The latch's frame in the model's: x out of the body at LATCH_AZ, y along the face, z up, origin the pivot."""
+    a = math.radians(LATCH_AZ)
+    n = np.array([math.cos(a), math.sin(a), 0.0])
+    t = np.cross((0.0, 0.0, 1.0), n)
+    Mx = np.eye(4)
+    Mx[:3, 0], Mx[:3, 1], Mx[:3, 2], Mx[:3, 3] = n, t, (0, 0, 1), n * LATCH_PIVOT_R + np.array([0, 0, LATCH_Z])
+    return Mx
+
+
+def _bx(x0, x1, y0, y1, z0, z1):
+    return pv.Box(bounds=(x0, x1, y0, y1, z0, z1)).triangulate()
+
+
+def _cy(c, d, r, h, res=24):
+    return pv.Cylinder(center=c, direction=d, radius=r, height=h, resolution=res).triangulate()
+
+
+def latch_meshes() -> dict:
+    """{part: (mesh, colour, group)} in the latch frame. Groups: latch_base (on the body), latch_lever (turns about
+    the frame's y axis), latch_loop (on the lever, turns about its pin), keeper (on the lid), lockbolt (slides on y)."""
+    st, dk = (0.82, 0.83, 0.85), (0.55, 0.57, 0.60)
+    base = _bx(-18, -2, -23, 23, -10, 62).merge(_bx(-4, 6, -19, -15, -6, 6)).merge(_bx(-4, 6, 15, 19, -6, 6))
+    lever_ = _bx(0, 4, -15, 15, -4, 62).merge(_bx(4, 34, -10, 10, 56, 64)).merge(_cy((0, 0, 0), (0, 1, 0), 4, 34))
+    loop = None
+    for y in (-10.0, 10.0):                       # the U-loop: two rods from the lever's pin up over the keeper's lip
+        a, b = np.array([6.0, y, 30.0]), np.array([-4.0, y, 102.5])
+        rod = pv.Line(a, b).tube(radius=2.2, n_sides=12).triangulate()
+        loop = rod if loop is None else loop.merge(rod)
+    loop = loop.merge(_cy((-4.0, 0, 102.5), (0, 1, 0), 2.2, 22, res=12))
+    keeper = _bx(-17.4, -7.4, -17, 17, 76, 100).merge(_bx(-7.4, -1.5, -17, 17, 95, 100))
+    for y in (-10, 10):
+        keeper = keeper.merge(_cy((-7.0, y, 86), (1, 0, 0), 3.0, 1.5, res=16))
+    body = _cy((12, 52, 48), (0, 1, 0), 10, 50).merge(_bx(-25, 4, 40, 64, 42, 54))
+    bolt = _cy((10, 8.5, 48), (0, 1, 0), 4, 37, res=16)       # out: from the cylinder to past the lever's far edge
+    return {"latch base": (base, st, "latch_base"), "latch lever": (lever_, st, "latch_lever"),
+            "latch loop": (loop, st, "latch_loop"), "latch keeper": (keeper, st, "keeper"),
+            "lock cylinder": (body, dk, "latch_base"), "lock bolt": (bolt, (0.70, 0.71, 0.73), "lockbolt")}
+
+
+def add_latch(sc):
+    Lf = latch_frame()
+    for name, (mesh, col, grp) in latch_meshes().items():
+        sc.add(f"rp {name}", mesh, col, g(grp), specular=0.6)
+    for grp in ("latch_base", "latch_lever", "lockbolt"):
+        sc.parent[g(grp)] = "rp"
+    sc.parent[g("latch_loop")] = g("latch_lever")
+    sc.parent[g("keeper")] = g("hood")
+    sc.gmat[g("latch_base")] = sc.gmat[g("keeper")] = Lf
+    latch(sc, 0.0)
+    lock_bolt(sc, 0.0)                    # back: the furnace is at atmosphere
+
+
+LATCH_NAMES = ("rp latch base", "rp latch lever", "rp latch loop", "rp latch keeper", "rp lock cylinder",
+               "rp lock bolt")
+
+
+def latch(sc, deg):
+    """The lever swung out `deg` about its pivot; the loop with it, turned back a little so it lifts off the lip."""
+    Lf = latch_frame()
+    sc.gmat[g("latch_lever")] = Lf @ R((0, 1, 0), deg, (0, 0, 0))
+    pin = (6.0, 0.0, 30.0)
+    sc.gmat[g("latch_loop")] = R((0, 1, 0), -0.35 * deg, pin)
+
+
+def lock_bolt(sc, f):
+    """f = 1: the bolt out in front of the lever (the furnace under pressure); 0: back, clear of it."""
+    sc.gmat[g("lockbolt")] = latch_frame() @ T((0, BOLT_TRAVEL * (1 - f), 0))
+
+
+def latch_fade(sc, a):
+    """The latch is on the half the cutaway removes: it fades with it."""
+    for n in LATCH_NAMES:
+        sc.alpha[n] = a
+
+
+def tab_grasp(deg=0.0) -> np.ndarray:
+    """The 2F-85 on the pull tab from above, fingers along the face, with the lever out `deg`; world frame."""
+    Mx = np.eye(4)
+    Mx[:3, 0], Mx[:3, 1], Mx[:3, 2], Mx[:3, 3] = (0, 1, 0), (1, 0, 0), (0, 0, -1), TAB
+    return T(RP) @ latch_frame() @ R((0, 1, 0), deg, (0, 0, 0)) @ Mx
+
+
+# ------------------------------------------------------------------------------------------------ the loading tong
+# Sterling (PR #318): "some interference between the gripper and the sealing rod when adding the charges ... I also
+# don't like that it's just getting dropped inside from a high height. This also seems like something where a custom
+# end effector might help." So the 2F-85 now loads the cups with a tong: two spring-steel jaws on a slim stem, which
+# take a cup by its plug end, its top 12 mm, on the two sides square to the crucible's radius. Everything below the
+# handle stays inside a 6 x 8 mm stem and the cup's own outline, so the tong goes down the bore with the cup, sets it
+# on the floor cone, opens and comes straight up. The 2F-85's fingers clamp the handle's two halves (custom fingertip
+# blocks, pinned): closing it the last 3 mm shuts the jaws, opening it 3 mm opens them, opening it fully lets the
+# tong go in its holder on the MiR. Steel throughout; the jaws' faces lined with a ceramic paper, so they don't weld
+# to hot Al (assumed design, not built).
+TONG_JAW_T, TONG_JAW_W, TONG_JAW_L = 1.2, 8.0, 12.0
+TONG_STEM = (6.0, 8.0)                # x (square to the radius, the jaws' closing line) and y (along the radius)
+TONG_GRASP = 205.0                    # the handle's centre, mm over the jaws' top (the cup's top)
+TONG_OPEN = 1.6                       # mm each jaw opens
+GRIP_TONG, GRIP_TONG_OPEN = 0.80, 0.77
+CUP_RAD = C.STOCK_D / 2
+TONG_AT = (-300.0, 165.0)             # its holder on the cabinet top, MiR-local, beside the cup carrier
+
+
+def tong_meshes() -> dict:
+    """{part: (mesh, colour, group)} in the tong's frame: origin the cup's top centre, z up its axis, x the jaws'
+    closing line. Groups: tong (stem, bridge, handle), tong_a / tong_b (a jaw each, they slide on x)."""
+    sx, sy = TONG_STEM
+    xj = CUP_RAD + TONG_JAW_T / 2
+    stem = _bx(-sx / 2, sx / 2, -sy / 2, sy / 2, 9.0, TONG_GRASP - 18)
+    bridge = _bx(-xj - TONG_JAW_T / 2 - 1.0, xj + TONG_JAW_T / 2 + 1.0, -TONG_JAW_W / 2, TONG_JAW_W / 2, 4.0, 9.0)
+    # the handle: two halves, 19 mm across where the 2F-85's pads clamp them, joined above by a flexure block
+    handle = _bx(-9.5, 9.5, -15, 15, TONG_GRASP - 18, TONG_GRASP + 18).merge(
+        _bx(-12, 12, -15, 15, TONG_GRASP + 18, TONG_GRASP + 26))
+    steel, dark = (0.66, 0.68, 0.71), (0.20, 0.21, 0.24)
+    out = {"tong stem": (stem.merge(bridge), steel, "tong"), "tong handle": (handle, dark, "tong")}
+    for s, grp in ((-1, "tong_a"), (1, "tong_b")):
+        jaw = _bx(s * xj - TONG_JAW_T / 2, s * xj + TONG_JAW_T / 2, -TONG_JAW_W / 2, TONG_JAW_W / 2, -TONG_JAW_L,
+                  4.0)
+        out[f"{grp} jaw"] = (jaw, steel, grp)
+    return out
+
+
+def add_tong(sc, mir):
+    """The tong standing in its holder (a sleeve) on the MiR's cabinet top."""
+    for name, (mesh, col, grp) in tong_meshes().items():
+        sc.add(name, mesh, col, grp, specular=0.6)
+    sc.parent["tong_a"] = sc.parent["tong_b"] = "tong"
+    tong_jaws(sc, 0.0)
+    top = P.MIR["H"] + P.CAB_H
+    sleeve = C.lathe([(14.0, 0), (18.0, 0), (18.0, 150.0), (14.0, 150.0)], res=40).merge(
+        _bx(-30, 30, -30, 30, 0, 6)).translate((TONG_AT[0], TONG_AT[1], top), inplace=False)
+    sc.add("amr/tong holder", sleeve, (0.30, 0.32, 0.36), "amr")
+    sc.parent["tong"] = "amr"
+    sc.gmat["tong"] = T((TONG_AT[0], TONG_AT[1], top + 6.0 + TONG_JAW_L + 1.0)) @ R((0, 0, 1), 90.0)
+    return sc.gmat["tong"].copy()
+
+
+def tong_jaws(sc, f):
+    """f = 1: the jaws open TONG_OPEN each; 0: shut on a cup."""
+    sc.gmat["tong_a"] = T((-TONG_OPEN * f, 0, 0))
+    sc.gmat["tong_b"] = T((TONG_OPEN * f, 0, 0))
+
+
+def tong_frame_for(k, Mx) -> np.ndarray:
+    """The tong's frame (model) holding cup k whose frame is Mx: at the cup's top centre, along its axis, the jaws
+    square to the crucible's radius at the cup's place."""
+    a = math.radians(CUP_ANGLES[k])
+    t = np.array([-math.sin(a), math.cos(a), 0.0])
+    z = Mx[:3, 2] / np.linalg.norm(Mx[:3, 2])
+    x = t - z * (t @ z)
+    x /= np.linalg.norm(x)
+    F = np.eye(4)
+    F[:3, 0], F[:3, 1], F[:3, 2] = x, np.cross(z, x), z
+    F[:3, 3] = (Mx @ np.r_[0.0, 0.0, C.SLUG_L, 1.0])[:3]
+    return F
+
+
+# ------------------------------------------------------------------------------------------------ will the MiR tip?
+# Sterling (PR #318): "whether the base is heavy enough to compensate for a lot of load from being exerted via the
+# arm". The sums for the arm pulling the latch open and pressing the lid shut, at the pose the chapter uses.
+MASS = dict(mir250=97.0,                      # MiR250 spec sheet
+            ur10e=33.5,                       # UR10e spec sheet (its links below, UR's dynamics parameters)
+            control_box=12.0,                 # UR e-Series control box (UR spec sheet: 12 kg)
+            cabinet=25.0,                     # the top cabinet's frame and panels: estimate
+            gripper=1.2,                      # 2F-85 0.925 kg + wrist camera and adapter: estimate
+            on_top=3.0)                       # carrier, cups, tong, cradle: estimate
+UR10E_LINKS = (7.369, 13.051, 3.989, 2.1, 1.98, 0.615)   # kg, shoulder .. wrist 3 (UR's DH/dynamics page); base: rest
+BALLAST_T = 32.0                              # mm of steel under the cabinet
+BALLAST_KG = 7.85e-6 * (P.MIR["L"] - 76) * (P.MIR["W"] - 56) * BALLAST_T
+WHEELS = (325.0, 225.0)                       # the support rectangle, +-x, +-y, MiR-local: the corner casters (estimate)
+DRIVE_SHARE = 0.5                             # share of the weight on the two drive wheels (estimate)
+MU = 0.5                                      # polyurethane tread on sealed concrete, static (estimate)
+LATCH_F = dict(expected=50.0, design=150.0)   # N to pull the lever over centre: see notes/alloy_atomize.md
+PRESS_F = dict(expected=80.0, design=150.0)   # N pressing the lid down to hook the loop on
+
+
+def stability(mir, q, P_tool, F_dir, ballast: bool) -> dict:
+    """Tipping and sliding of the MiR250 with the UR10e at joints q, a force F_dir (unit, world, on the robot) at
+    P_tool. Returns the force that would tip it about its weakest edge, the force that would slide it, and the CoG."""
+    import ur_arm
+    W0 = mir.sc.world("amr")
+    inv0 = inv(W0)
+    fk = ur_arm.fk(A.ROBOT, q)
+    root = inv0 @ mir.sc.world(mir.rb.root)
+    pos = {k: (root @ fk[k])[:3, 3] for k in ("base", "shoulder", "upper_arm", "forearm", "wrist1", "wrist2",
+                                              "wrist3", "tool0")}
+    H = P.MIR["H"]
+    items = [(MASS["mir250"], (0.0, 0.0, 120.0)), (MASS["control_box"], (0.0, 0.0, H + 150.0)),
+             (MASS["cabinet"], (0.0, 0.0, H + P.CAB_H / 2)), (MASS["on_top"], (-100.0, 0.0, H + P.CAB_H + 40.0)),
+             (MASS["ur10e"] - sum(UR10E_LINKS), pos["base"]), (UR10E_LINKS[0], pos["shoulder"]),
+             (UR10E_LINKS[1], (pos["upper_arm"] + pos["forearm"]) / 2),
+             (UR10E_LINKS[2], (pos["forearm"] + pos["wrist1"]) / 2), (UR10E_LINKS[3], pos["wrist1"]),
+             (UR10E_LINKS[4], pos["wrist2"]), (UR10E_LINKS[5], pos["wrist3"]), (MASS["gripper"], pos["tool0"])]
+    if ballast:
+        items.append((BALLAST_KG, (0.0, 0.0, H + BALLAST_T / 2)))
+    m = sum(k for k, _ in items)
+    G = sum(k * np.asarray(p, float) for k, p in items) / m
+    Wt = m * 9.81
+    Pl = (inv0 @ np.r_[P_tool, 1.0])[:3]
+    Fl = inv0[:3, :3] @ np.asarray(F_dir, float)
+    ax, ay = WHEELS
+    edges = {"+x": ((ax, -ay), (1, 0)), "-x": ((-ax, ay), (-1, 0)), "+y": ((ax, ay), (0, 1)), "-y": ((-ax, -ay), (0, -1))}
+    tip = {}
+    for name, (a, u) in edges.items():
+        A_ = np.array([a[0], a[1], 0.0])
+        u = np.array([u[0], u[1], 0.0])
+        e = np.cross((0, 0, 1.0), u)
+        arm_F = float(np.cross(Pl - A_, Fl) @ e)               # N mm per N of force: > 0 overturns
+        keep = Wt * float(-(G - A_) @ u)                       # N mm the weight holds it down with
+        tip[name] = dict(restoring_Nm=round(keep / 1000, 1), lever_mm=round(arm_F, 1),
+                         tips_at_N=round(keep / arm_F, 0) if arm_F > 1e-6 else None)
+    worst = min((v["tips_at_N"], k) for k, v in tip.items() if v["tips_at_N"] is not None)
+    h = float(np.hypot(Fl[0], Fl[1]))
+    slide = MU * DRIVE_SHARE * Wt / h if h > 1e-6 else None
+    return dict(mass_kg=round(m, 1), cog_mm=[round(float(x)) for x in G], force_point_mm=[round(float(x)) for x in Pl],
+                force_dir=[round(float(x), 3) for x in Fl], edges=tip, tips_at_N=worst[0], tips_about=worst[1],
+                slides_at_N=round(slide, 0) if slide else None)
+
+
+def tong_tcp(F) -> np.ndarray:
+    """The 2F-85's grasp of the tong whose frame is F: on the handle, pointing down the tong, fingers on its x."""
+    G = np.eye(4)
+    G[:3, 0], G[:3, 1], G[:3, 2] = F[:3, 0], -F[:3, 1], -F[:3, 2]
+    G[:3, 3] = F[:3, 3] + F[:3, 2] * TONG_GRASP
+    return G
+
+
 # ------------------------------------------------------------------------------------------------ the movie
 def build():
     data = lab.meshes()
@@ -928,6 +1270,8 @@ def build():
     mir = Mir(sc)
     mir.set(*A.AMR_XY, 0.0)
     add_cups(sc, mir)
+    add_latch(sc)
+    sc.tong_home = add_tong(sc, mir)
     hood(sc, 0.0)
     flange_clamp(sc, 1.0)
     return sc, L, mir, pool, powder, spray, drops, vent
@@ -1065,6 +1409,59 @@ def movie():
     show_g(mir="at the rePowder")
 
     # ------------------------------------------------------------------ 2. lid open, cups in, lid shut
+    # the latch first: the arm takes the lever's pull tab from above and swings it out and down
+    CAM_LATCH = cam((560, -820, 1600), (105, -70, 1300))
+    Lw = T(RP) @ latch_frame()
+    g_tab = tab_grasp(0.0)
+    q_tab = arc_branch(rb, sc, g_tab, lambda u: tab_grasp(LATCH_OPEN * u), lambda u: latch(sc, LATCH_OPEN * u),
+                       GRIP_TAB, ("latch lever", "latch loop"), back=110.0)
+    n_out = Lw[:3, 0]
+    stab = {}
+    for key, ball in (("as_drawn_with_ballast", True), ("without_ballast", False)):
+        stab[key] = dict(latch_pull=stability(mir, q_tab, g_tab[:3, 3], -n_out, ball),
+                         latch_push=stability(mir, q_tab, g_tab[:3, 3], n_out, ball))
+    sp, sb = stab["without_ballast"]["latch_pull"], stab["as_drawn_with_ballast"]["latch_pull"]
+    stab.update(loads=dict(latch_N=LATCH_F, lid_press_N=PRESS_F), masses_kg=dict(MASS, ballast=round(BALLAST_KG, 1)),
+                wheels_mm=WHEELS, drive_share=DRIVE_SHARE, mu=MU,
+                note="tips_at_N: the force at the pull tab, in that direction, that would lift the MiR250 off its "
+                     "weakest edge (the support rectangle WHEELS); slides_at_N: the horizontal force the drive wheels "
+                     "hold by friction (MU x DRIVE_SHARE x weight). The arm is at the tab's grasp (the IK branch the "
+                     "chapter uses), the MiR where it stands for the lid. latch_pull: the robot pulls the tab out, so "
+                     "the lever pulls the arm toward the furnace; latch_push: closing it, the other way.")
+    if not PREVIEW:
+        (OUT / f"{NAME}_stability.json").write_text(json.dumps(stab, indent=1) + "\n")
+    print("stability:", {k: (v["latch_pull"]["tips_at_N"], v["latch_pull"]["slides_at_N"],
+                             v["latch_push"]["tips_at_N"]) for k, v in stab.items()
+                         if isinstance(v, dict) and "latch_pull" in v}, flush=True)
+    cap = ("The lid is held down by one over-centre draw latch on the furnace's front right, its keeper on the lid, "
+           "set just tight enough that the seal doesn't hiss (the lab's training video T4, 5:17). The machine's own "
+           "locking bolt beside it is back: the furnace is at atmosphere. The arm takes the lever by a pull tab.")
+    show_g(arm="lid latch")
+    pre_tab = g_tab @ T((0, 0, -110))
+    sc.step(f"2/{n}", cap, 1.6, RB.both(rb.joint_to(q1=rb.solve(pre_tab, q_tab)), rb.grip_to(0.0)), hold=0.05,
+            cam_to=CAM_LATCH,
+            labels=[("draw latch", tuple((Lw @ np.r_[2.0, -16.0, 20.0, 1.0])[:3]), (0.70, 0.62)),
+                    ("keeper, on the lid", tuple((Lw @ np.r_[-8.0, -14.0, 92.0, 1.0])[:3]), (0.70, 0.22)),
+                    ("locking bolt, back", tuple((Lw @ np.r_[12.0, 40.0, 48.0, 1.0])[:3]), (0.08, 0.30))])
+    sc.step(f"2/{n}", cap, 0.7, rb.line_to(g_tab), hold=0.05)
+    sc.step(f"2/{n}", cap, 0.4, rb.grip_to(GRIP_TAB), hold=0.05)
+    rb.events.append((sc.n, "grasp", g("latch_lever"), g("latch_loop")))
+    tab_out = follow(rb, [tab_grasp(d) for d in np.linspace(0.0, LATCH_OPEN, 12)])
+
+    def latch_open(u):
+        tab_out(u)
+        latch(sc, LATCH_OPEN * u)
+    cap = (f"Pulled out over centre, the lever lets the loop off the keeper. How hard is not measured: about "
+           f"{LATCH_F['expected']:.0f} N is assumed, {LATCH_F['design']:.0f} N for a stiff one. Pulled toward the "
+           f"furnace, the MiR250 with its arm would tip at {sp['tips_at_N']:.0f} N; with a {BALLAST_KG:.0f} kg steel "
+           f"plate under its cabinet, at {sb['tips_at_N']:.0f} N. It would slide at {sb['slides_at_N']:.0f} N.")
+    sc.step(f"2/{n}", cap, 1.6, latch_open, hold=0.6,
+            labels=[(f"ballast plate, {BALLAST_KG:.0f} kg",
+                     tuple(mir.world((0.0, -P.MIR["W"] / 2 + 28, P.MIR["H"] + 16))), (0.08, 0.80))])
+    sc.step(f"2/{n}", cap, 0.3, rb.grip_to(0.0), hold=0.05)
+    rb.events.append((sc.n, "release", g("latch_lever"), g("latch_loop")))
+    q_tab_open = rb.q.copy()
+    sc.step(f"2/{n}", cap, 0.6, rb.line_to(tab_grasp(LATCH_OPEN) @ T((0, 0, -110))), hold=0.05)
     knob = np.array([(90 + 131) / 2, -20.0, 1470.0])          # the lid's knob (model.py hood_knob), model frame
     grasp_k = knob_grasp()
     pre_k = grasp_k @ T((0, 0, -110))
@@ -1124,60 +1521,113 @@ def movie():
     q_lev_off = rb.solve(lev_off, rb.q)
     sc.step(f"2/{n}", cap, 0.5, rb.line_to(lev_off), hold=0.05)
 
-    releases = []                     # where the arm lets go of each cup: written to out/alloy_atomize_clearance.json
+    # the loading tong out of its holder on the MiR's cabinet
+    cap = ("The cups go in with a loading tong, a tool the 2F-85 holds: two thin spring-steel jaws on a slim stem. "
+           "The gripper clamps its handle; closing the last 3 mm shuts the jaws, opening 3 mm opens them. Its "
+           "wrist camera looks down past the tong.")
+    show_g(arm="loading tong")
+    home_w = sc.world("tong")
+    g_home = tong_tcp(home_w)
+    hw = home_w[:3, 3]
+    CAM_TONG = [tuple(hw + (-420.0, -640.0, 520.0)), tuple(hw + (0.0, 0.0, 230.0)), (0, 0, 1)]
+    sc.step(f"2/{n}", cap, 1.6, RB.both(rb.joint_to(Tw=T((0, 0, 130)) @ g_home), rb.grip_to(0.0)), hold=0.05,
+            cam_to=CAM_TONG,
+            labels=[("loading tong", tuple(hw + (0.0, 0.0, 120.0)), (0.70, 0.30)),
+                    ("wrist camera", tuple(rb.tcp_world()[:3, 3]), (0.08, 0.26))])
+    sc.step(f"2/{n}", cap, 0.8, rb.line_to(g_home), hold=0.05)
+    sc.step(f"2/{n}", cap, 0.4, rb.grip_to(GRIP_TONG), hold=0.05)
+    rb.grasp("tong")
+    sc.step(f"2/{n}", cap, 0.9, rb.line_to(T((0, 0, 210)) @ rb.tcp_world()), hold=0.05,
+            labels=[("loading tong", tuple(hw + (0.0, 0.0, 330.0)), (0.70, 0.30)),
+                    ("wrist camera", tuple(rb.tcp_world()[:3, 3] + (0.0, 0.0, 330.0)), (0.08, 0.26))])
+
+    def hold_cup(cg):
+        """The tong has shut on the cup: the arm holds the cup now, the tong riding on it (the audit's bookkeeping:
+        a held part may touch where it came from and where it goes)."""
+        tw, cw = sc.world("tong"), sc.world(cg)
+        rb.events.append((sc.n, "release", "tong", None))
+        sc.parent.pop(cg, None)
+        sc.gmat[cg] = cw
+        rb.held = (cg, inv(rb.tcp_world()) @ cw)
+        rb.events.append((sc.n, "grasp", cg, "amr"))
+        sc.parent["tong"] = cg
+        sc.gmat["tong"] = inv(cw) @ tw
+
+    def hold_tong(cg):
+        """The arm holds the tong again, the cup still in its jaws (or, after cup_down, standing on its own)."""
+        tw, cw = sc.world("tong"), sc.world(cg)
+        sc.parent.pop("tong", None)
+        sc.gmat["tong"] = tw
+        if sc.parent.get(cg) is None:
+            sc.parent[cg] = "tong"
+            sc.gmat[cg] = inv(tw) @ cw
+        rb.events.append((sc.n, "release", cg, None))
+        rb.held = ("tong", inv(rb.tcp_world()) @ tw)
+        rb.events.append((sc.n, "grasp", "tong", None))
+
+    def cup_down(k, cg):
+        """The jaws open: the cup stays, standing on the floor cone at its place."""
+        sc.parent[cg] = g("crucible")
+        sc.gmat[cg] = inv(sc.world(g("crucible"))) @ T(RP) @ cup_pose(k, CUP_R, cup_seat(k)[2], 0.0)
+        rb.events.append((sc.n, "release", cg, g("crucible")))
+
+    def jaws(f0, f1):
+        def up(u):
+            tong_jaws(sc, f0 + (f1 - f0) * u)
+        return up
+    xm = sc.world("amr")[:3, 0]
     for k in range(N_CUPS):
-        cup_w = sc.world(f"cup{k}")
-        top = cup_w[:3, 3] + np.array([0, 0, C.SLUG_L - GRIP_AT])
-        spin = (90.0 - CUP_ANGLES[k] + 90.0) % 180.0 - 90.0     # fingers along the cup's tangent (either way round)
-        g_pick = A.down(top, spin=spin)
+        cg = f"cup{k}"
+        top = (sc.world(cg) @ np.r_[0.0, 0.0, C.SLUG_L, 1.0])[:3]
+        F_pick = np.eye(4)
+        F_pick[:3, 0], F_pick[:3, 1], F_pick[:3, 2], F_pick[:3, 3] = xm, np.cross((0, 0, 1.0), xm), (0, 0, 1), top
+        g_pick = tong_tcp(F_pick)
         f = 1.0 if k == 0 else 0.7                               # the first one at full speed, the rest quicker
         if k == 0:
-            cap = (f"Cup 1 of {N_CUPS} out of the carrier and over the open crucible. Past the rod's adapter a 3/4 in "
-                   "cup only goes in tipped, foot by the rod and top leaning away: #222 finds -0.09 mm in the scaled "
-                   "drawing, too close to call, so try one first. The gripper's fingers don't fit the 57 mm bore, so "
-                   "it lets go with the foot in the bore and the fingers over it; the cup slides on down past the "
-                   "adapter to the floor cone, plug up.")
+            cap = ("Cup 1 of 4. The jaws take the cup's top 12 mm, on the two sides square to the crucible's radius, "
+                   "so below the gripper nothing is wider than the cup and a 6 x 8 mm stem. The tong carries it down "
+                   "#222's path: tipped 4.1° past the rod's adapter, then upright, and sets it on the floor cone. The "
+                   "gripper stays 156 mm over the rim.")
         else:
-            cap = (f"Cup {k + 1} of {N_CUPS}, the same way, at #222's next place round the rod. The places are 75° "
-                   f"apart and clear of where the lever lies; neighbours stand {CUP_GAP:.1f} mm apart, and a cup "
-                   f"has {RADIAL_ROOM:.1f} mm between the rod and the wall.")
+            cap = (f"Cup {k + 1} of {N_CUPS}, the same way, at #222's next place round the rod. Nothing is dropped: "
+                   f"the jaws open only with the cup standing. Neighbours stand {CUP_GAP:.1f} mm apart; the jaws pass "
+                   f"them with 1.3 mm to spare.")
         show_g(arm=f"cup {k + 1}: carrier to crucible")
-        sc.step(f"2/{n}", cap, 1.4 * f, RB.both(rb.joint_to(Tw=A.down(top + (0, 0, 110), spin=spin)),
-                                               rb.grip_to(0.0)), hold=0.05, cam_to=CAM_LOAD if k == 0 else None)
+        sc.step(f"2/{n}", cap, 1.4 * f, RB.both(rb.joint_to(Tw=T((0, 0, 90)) @ g_pick), rb.grip_to(GRIP_TONG_OPEN),
+                                               jaws(0.0, 1.0)), hold=0.05)
         sc.step(f"2/{n}", cap, 0.7 * f, rb.line_to(g_pick), hold=0.05)
-        sc.step(f"2/{n}", cap, 0.4, rb.grip_to(GRIP_CUP), hold=0.05)
-        rb.grasp(f"cup{k}")
-        _, off = rb.held
-
-        def grip_of(Mx, off=off):
-            return T(RP) @ Mx @ inv(off)
-        lift = T((0, 0, 140)) @ rb.tcp_world()
-        sc.step(f"2/{n}", cap, 0.6 * f, rb.line_to(lift), hold=0.05)
-        rel, q_above = release_at(rb, k, grip_of)               # the IK branch that goes deepest, clear
-        sc.step(f"2/{n}", cap, 1.4 * f, rb.joint_to(q1=q_above), hold=0.05, cam_to=CAM_TOP if k == 0 else None)
-        held_w, slide_w = tip_in_path(k, rel)
-        releases.append(dict(cup=k + 1, descent_fraction=rel))
-        slide_world = [T(RP) @ Mx for Mx in slide_w]
-        go = follow(rb, [grip_of(Mx) for Mx in held_w])
-        sc.step(f"2/{n}", cap, 2.4 * f, go, hold=0.05,
+        sc.step(f"2/{n}", cap, 0.4, RB.both(rb.grip_to(GRIP_TONG), jaws(1.0, 0.0)), hold=0.05)
+        hold_cup(cg)
+        sc.step(f"2/{n}", cap, 0.6 * f, rb.line_to(T((0, 0, 150)) @ rb.tcp_world()), hold=0.05)
+        path = tong_path(k)
+        grips = [tong_tcp(T(RP) @ tong_frame_for(k, Mx)) for Mx in path]
+        sc.step(f"2/{n}", cap, 1.6 * f, rb.joint_to(Tw=grips[0]), hold=0.05, cam_to=CAM_TOP if k == 0 else None)
+        down1 = follow(rb, grips[:5])
+        sc.step(f"2/{n}", cap, 1.8 * f, down1, hold=0.05,
                 labels=[("rod adapter", tuple(W((0, 0, M.RIM + 40))), (0.10, 0.30)),
                         ("crucible, 57 mm bore", tuple(W((-26, 0, M.RIM - 6))), (0.10, 0.62))] if k == 0 else ())
-        sc.step(f"2/{n}", cap, 0.3, rb.grip_to(GRIP_LET_GO), hold=0.0)
-        rb.release(g("crucible"))
-        cup_g = f"cup{k}"
-
-        def slide_down(u, cup_g=cup_g, slide_world=slide_world):
-            sc.gmat[cup_g] = T(-RP) @ pose_path(slide_world, u)
-        up_tcp = T((0, 0, 160)) @ rb.tcp_world()
-        sc.step(f"2/{n}", cap, 0.8, RB.both(slide_down, rb.line_to(up_tcp)), hold=0.1)
+        hold_tong(cg)
+        down2 = follow(rb, grips[4:])
+        sc.step(f"2/{n}", cap, 1.4 * f, down2, hold=0.05)
+        sc.step(f"2/{n}", cap, 0.4, RB.both(rb.grip_to(GRIP_TONG_OPEN), jaws(0.0, 1.0)), hold=0.05)
+        cup_down(k, cg)
+        sc.step(f"2/{n}", cap, 0.8 * f, rb.line_to(T((0, 0, 170)) @ rb.tcp_world()), hold=0.05)
         if DEBUG:
-            print("cup", k, "world", np.round(sc.world(cup_g)[:3, 3] - RP, 1), "seat", np.round(cup_seat(k), 1),
-                  "parent", sc.parent.get(cup_g), flush=True)
+            print("cup", k, "world", np.round(sc.world(cg)[:3, 3] - RP, 1), "seat", np.round(cup_seat(k), 1),
+                  flush=True)
     if not PREVIEW:
-        cl = clearance([r_["descent_fraction"] for r_ in releases])
+        cl = tong_clearance()
         (OUT / f"{NAME}_clearance.json").write_text(json.dumps(cl, indent=1) + "\n")
-        print("released:", [(r_["cup"], r_["foot_under_rim_mm"], r_["fingers_lowest_above_rim_mm"])
-                            for r_ in cl["cups"]], flush=True)
+    cap = "The tong goes back in its holder on the MiR."
+    show_g(arm="loading tong")
+    home_w = sc.world("amr") @ sc.tong_home
+    g_home = tong_tcp(home_w)
+    sc.step(f"2/{n}", cap, 1.6, RB.both(rb.joint_to(Tw=T((0, 0, 220)) @ g_home), rb.grip_to(GRIP_TONG),
+                                       jaws(1.0, 0.0)), hold=0.05)
+    sc.step(f"2/{n}", cap, 0.9, rb.line_to(g_home), hold=0.05)
+    sc.step(f"2/{n}", cap, 0.4, rb.grip_to(0.0), hold=0.05)
+    rb.release("amr")
+    sc.step(f"2/{n}", cap, 0.6, rb.line_to(T((0, 0, 120)) @ rb.tcp_world()), hold=0.05)
     cap = (f"All four cups stand round the rod, plug and vent up, {CUP_GAP:.1f} mm apart: {m_cup:.1f} g, about the "
            "size of the lab's own Al runs. The crucible could take far more metal than the cups bring.")
     show_g(arm="lid", charge=f"in the crucible, {m_cup:.1f} g")
@@ -1219,6 +1669,25 @@ def movie():
     sc.step(f"2/{n}", cap, 0.4, rb.grip_to(0.0), hold=0.05)
     rb.events.append((sc.n, "release", g("knob"), None))
     sc.step(f"2/{n}", cap, 0.6, rb.line_to(pre_k), hold=0.05)
+    cap = ("Then the latch: the arm swings the lever back up, the loop goes over the keeper's lip and the lever goes "
+           "over centre, drawing the lid down onto its seal. A person can do this step, and the one that opened it, "
+           "in a few seconds; it is the one place the arm pushes hard on the machine.")
+    show_g(arm="lid latch")
+    g_tab_o = tab_grasp(LATCH_OPEN)
+    sc.step(f"2/{n}", cap, 1.4, rb.joint_to(q1=rb.solve(g_tab_o @ T((0, 0, -110)), q_tab_open)), hold=0.05,
+            cam_to=CAM_LATCH)
+    sc.step(f"2/{n}", cap, 0.6, rb.line_to(g_tab_o), hold=0.05)
+    sc.step(f"2/{n}", cap, 0.4, rb.grip_to(GRIP_TAB), hold=0.05)
+    rb.events.append((sc.n, "grasp", g("latch_lever"), g("latch_loop")))
+    tab_in = follow(rb, [tab_grasp(d) for d in np.linspace(LATCH_OPEN, 0.0, 12)])
+
+    def latch_shut(u):
+        tab_in(u)
+        latch(sc, LATCH_OPEN * (1 - u))
+    sc.step(f"2/{n}", cap, 1.6, latch_shut, hold=0.2)
+    sc.step(f"2/{n}", cap, 0.3, rb.grip_to(0.0), hold=0.05)
+    rb.events.append((sc.n, "release", g("latch_lever"), g("latch_loop")))
+    sc.step(f"2/{n}", cap, 0.6, rb.line_to(pre_tab), hold=0.05)
     sc.step(f"2/{n}", cap, 1.2, rb.joint_to(PARK), hold=0.05)
     show_g(arm="parked", mir="waiting beside it")
     sc.step(f"2/{n}", cap, mir.secs(x_wait), mir.drive(x_wait, y_park), hold=0.1, cam_to=CAM_SEC)
@@ -1231,12 +1700,36 @@ def movie():
     vents = [cup_seat(k) + (0, 0, C.SLUG_L - C.PLUG_SEAT + 1.0) for k in range(N_CUPS)]
     show_g(p_abs=1013.0, o2=2.1e5)
 
+    def bolt_out(u):
+        lock_bolt(sc, u)
+    sc.step(f"3/{n}", "The first pump-down starts. As the furnace leaves atmosphere, the machine's bolt comes out in "
+            "front of the latch's lever: the lid can't be opened under vacuum or pressure (AMAZEMET, install call).",
+            1.0, bolt_out, hold=0.9, cam_to=CAM_LATCH,
+            labels=[("locking bolt, out", tuple((Lw @ np.r_[12.0, 10.0, 48.0, 1.0])[:3]), (0.08, 0.30))])
+
     def cut_open(u):
         set_cut(sc, window(u, 0.0, 0.6))
+        latch_fade(sc, 1.0 - window(u, 0.0, 0.5))
     k0 = back[0]
-    sc.step(f"3/{n}", cap, 1.5, cut_open, hold=0.2,
+    sc.step(f"3/{n}", cap, 1.5, cut_open, hold=0.2, cam_to=CAM_SEC,
             labels=[("vented plug, 5N Al", tuple(W(vents[k0]) + (0, 4, 1)), (0.08, 0.26)),
                     ("Si powder under it", tuple(W(cup_seat(k0) + (0, 3, 22))), (0.08, 0.56))])
+    # an aside: building this stack is still by hand, and why it is the hard part to automate
+    CAM_STACK = cam((-250, -470, 1240), (0, 0, 1150))
+    cap = ("Still by hand: building this stack. The graphite crucible's threaded shank runs down into the chamber, "
+           "where a thin graphite nut goes on from below, through the chamber's door, while someone holds the "
+           "crucible still at the top: \"snug but never forced\" (the lab's SOP). A robot would need a tool at each "
+           "end and fine force sensing: the UR10e's own reads to ±5.5 N and ±0.6 N·m, a wrist sensor (Robotiq FT "
+           "300-S, ATI Mini45) to about 0.1 N and a few mN·m. See notes/crucible_automation.md.")
+
+    def nut_turn(u):
+        sc.gmat[g("nut")] = R((0, 0, 1), 540.0 * u, (0, 0, 0))
+    sc.step(f"3/{n}", cap, 4.0, nut_turn, hold=3.0, cam_to=CAM_STACK,
+            labels=[("crucible, graphite", tuple(W((-31, 0, M.Z_CR + 30))), (0.08, 0.24)),
+                    ("threaded shank", tuple(W((-M.SHANK_R, 0, M.Z_PLATFORM[0] - 2))), (0.08, 0.52)),
+                    ("graphite nut, from below", tuple(W((-M.NUT_R + 2, 0, sum(M.NUT_Z) / 2))), (0.08, 0.76)),
+                    ("graphite seal", tuple(W((M.NUT_R - 6, 0, M.NUT_Z[1] + 3))), (0.70, 0.70))])
+    sc.step(f"3/{n}", cap, 1.2, None, hold=0.0, cam_to=CAM_SEC)
     o2s = [2.1e5, 3000.0, 300.0, 45.0]
 
     def wash(u):
@@ -1356,6 +1849,8 @@ def movie():
 
     def close_up(u):
         set_cut(sc, 1.0 - window(u, 0.0, 0.5))
+        latch_fade(sc, window(u, 0.0, 0.5))
+        lock_bolt(sc, 1.0 - window(u, 0.5, 1.0))             # vented: the bolt goes back
         set_gas(sc, 0.8 * (1.0 - window(u, 0.0, 0.5)))
         flange_clamp(sc, 1.0 - window(u, 0.5, 1.0))
     sc.step(f"5/{n}", cap, 1.6, close_up, hold=0.1, cam_to=CAM_CONT)
@@ -1420,17 +1915,18 @@ def movie():
 # What goes in at each slot: the lab's own runs (DAL #159, #219; the BYU VCL channel). File names are those of the
 # parent session's fetch (FOOTAGE/manifest.json); `window` is seconds inside that file, `seconds` a photo's time on
 # screen. None of it is Al-10Si: the captions say what it is.
+MELT_SPEED = 2.0                  # the melt excerpts run at twice real time (Sterling, PR #318: "sped up a bit")
 PLAN = [
     dict(beat="charge", file="nab_k7m2q9_four_rod_pieces_1079.886g.jpg", seconds=3.6,
          caption="The lab's own four charges, Oct 27 2026: four 630 bronze rod pieces, 1,079.886 g on the balance, "
                  "melted in one run (Gage Erickson, DAL #219). Bronze, not this chapter's Al-10Si."),
-    dict(beat="melt", file="nab_melt1.mp4", window=(10.0, 15.0),
+    dict(beat="melt", file="nab_melt1.mp4", window=(10.0, 15.0), speed=MELT_SPEED,
          caption="Real footage, Oct 27 2026, through the furnace port: the four bronze pieces stand round the sealing "
                  "rod and glow (youtu.be/2brsz-90seg, DAL #219). 630 bronze at 1300 °C, not Al-10Si."),
-    dict(beat="melt", file="nab_melt2.mp4", window=(70.0, 77.0),
+    dict(beat="melt", file="nab_melt2.mp4", window=(70.0, 77.0), speed=MELT_SPEED,
          caption="A few minutes on, the pieces sink into their own melt round the rod (2brsz-90seg, about 4:36; at "
                  "3:55 Gage says \"It's melting in right now\")."),
-    dict(beat="melt", file="nab_melt3.mp4", window=(14.0, 18.5),
+    dict(beat="melt", file="nab_melt3.mp4", window=(14.0, 18.5), speed=MELT_SPEED,
          caption="The charge fully molten, a bright pool round the sealing rod (2brsz-90seg, DAL #219)."),
     dict(beat="pour", file="nab_pour1.mp4", window=(15.0, 22.5),
          caption="Real footage, Oct 27 2026, through the view port: the bronze jet lands on the tip of the W-coated "
@@ -1695,7 +2191,7 @@ def splice() -> str:
             if video:
                 t0, t1 = item["window"]
                 off = e.get("window_offset", 0.0)
-                raw = _clip(e["path"], t0 - off, t1 - t0, fps)
+                raw = _clip(e["path"], t0 - off, t1 - t0, int(round(fps * item.get("speed", 1.0))))
             else:
                 pic = _photo(e["path"])
                 raw = None
@@ -1711,7 +2207,9 @@ def splice() -> str:
                 pics = _push_in(still, int(round(item["seconds"] * fps / 3)) * 3, 0.04)
             if not pics:
                 continue
-            badge = " · ".join(x for x in ("REAL FOOTAGE" if video else "REAL PHOTO", _alloy(e), _date(e)) if x)
+            sp_ = item.get("speed", 1.0)
+            badge = " · ".join(x for x in ("REAL FOOTAGE" if video else "REAL PHOTO", _alloy(e), _date(e),
+                                            f"{sp_:g}× SPEED" if sp_ != 1.0 else "") if x)
             k0 = len(frames)
             frames += [np.asarray(_dress(p, sl["label"], badge, item["caption"], 1.0, size)) for p in pics]
             gifs += [_dress(p, sl["label"], badge, item["caption"], gsize[0] / size[0], gsize).convert("RGB")
@@ -1719,7 +2217,7 @@ def splice() -> str:
             subs.append(dict(label=sl["label"], caption=" ".join(item["caption"].split()), start_frame=k0,
                              end_frame=len(frames) - 1,
                              footage=dict(file=item["file"], source=e.get("source"), date=e.get("date"),
-                                          alloy=_alloy(e), window_s=item.get("window"))))
+                                          alloy=_alloy(e), window_s=item.get("window"), speed=item.get("speed", 1.0))))
         if frames:
             inserts.append((sl, frames, gifs, subs))
     # the MP4: the render's frames, with the footage at each slot
@@ -1806,6 +2304,10 @@ if __name__ == "__main__":
         merge()
     elif arg == "keep":
         print("kept", keep_footage(), "files in", KEEP)
+    elif arg == "tongclear":
+        cl = tong_clearance(int(os.environ.get("TONG_N", "14")))
+        (OUT / f"{NAME}_clearance.json").write_text(json.dumps(cl, indent=1) + "\n")
+        print(json.dumps(cl, indent=1))
     elif arg == "clearance":
         cl = clearance()
         (OUT / f"{NAME}_clearance.json").write_text(json.dumps(cl, indent=1) + "\n")
