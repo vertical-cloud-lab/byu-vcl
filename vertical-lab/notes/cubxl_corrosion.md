@@ -82,11 +82,11 @@ R_p 48.8 kΩ from its C71500 well simulation, an assumed 30 µF/cm² on 0.0661 c
 
 **For DAL, from building it in 3-D** (not changed in the drawing):
 - DAL's deck check is in plan, with the capper as a 10 mm-radius disc. Ben's PAW-V2 mount, placed as
-  `render_cubxl_cu.py` places it, spans x −25.2 to +15.7 and y −16.7 to +14.5 mm about the capper's axis in its
-  lowest 16 mm. With one well at each station's centre (DAL's render, and this clip) it clears rack 2 by 0.3 mm while
-  the P20 is in S1. With the **two wells per station** of the deck check (y 235.5 / 244.5), the front well puts the
-  mount 9 × 4 mm over rack 2's back right corner, 8–15 mm below the rack's top. Drawing from a stock, it comes 1.6 mm
-  into the side of Ben's rack 1, 1 mm below its top, if that rack is DAL's tips ± 5.75 mm.
+  `render_cubxl_cu.py` places it, is 41 × 31 mm in its lowest 16 mm (x −25.2 to +15.7, y −16.7 to +14.5 about the
+  capper's axis). Every waypoint of the spot and of the powder test was checked against the deck with CadQuery
+  booleans. The one hit: drawing from the ASW and the 10 mg/L S stocks (carriage at 70), the mount's lower edge is
+  1.6 mm into Ben's rack 1 over 12 mm, 1 mm below the rack's top, if that rack is DAL's tips ± 5.75 mm wide and 55 mm
+  tall (as `render_cubxl_cu.py` draws it). Measuring the real rack settles it.
 - The DI rinse: protocol §4 step 11 moves "150 µL plus one 150 µL DI rinse" into the tube, and §3's tip rule says a
   tip that has touched well liquid never goes back into a stock, while 17 tips a night is two a well plus the acid
   tip. Where the rinse's DI water is drawn from, with which tip, isn't written down. The clip shows it as a sped-up

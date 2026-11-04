@@ -212,13 +212,12 @@ CORR = dict(
     # the potentiostat the lab has now: NuVant's EZstat Pro, lent by Dr. Porter (byu-vcl #231, DAL #221), 255 x 245 x 102
     # mm. It has no EIS: until the requested potentiostat comes, DAL skips the EIS step and runs OCP for 30 min
     ez=(255.0, 245.0, 102.0), ez_x=530.0)
-# Everything is where DAL puts it, rack 2 included. One thing to raise with DAL: its deck check is in plan, with the
-# capper as a 10 mm-radius disc (plot_deck_layout.RADIUS). Ben's real mount, the PAW-V2 STEP placed as
-# render_cubxl_cu.py places it, reaches 25 mm to the left of the capper's axis in its lowest 16 mm (x -25.2 to +15.7,
-# y -16.7 to +14.5). With one well at the station's centre, as DAL's render and this clip draw it, it clears rack 2's
-# back right corner by 0.3 mm while the P20 is in S1. With the two wells per station of the deck check (y 240 -+ 4.5),
-# the front one puts the mount 9 x 4 mm over that corner, 8-15 mm below the rack's 55 mm top. And drawing from a stock
-# (carriage at 70) it comes 1.6 mm into the side of Ben's rack 1, 1 mm below its top, if the rack is DAL's tips +- 5.75 mm.
+# Everything is where DAL puts it. One thing to raise with DAL: its deck check is in plan, with the capper as a 10 mm-
+# radius disc (plot_deck_layout.RADIUS). Ben's real mount, the PAW-V2 STEP placed as render_cubxl_cu.py places it, is
+# 41 x 31 mm in its lowest 16 mm (x -25.2 to +15.7, y -16.7 to +14.5 about the capper's axis). Every waypoint of this
+# clip, checked against the deck with CadQuery booleans: it clears everything but one. Drawing from the ASW and the
+# 10 mg/L S stocks (carriage at 70), the mount's lower edge is 1.6 mm into Ben's rack 1 over 12 mm, 1 mm below the
+# rack's top, if that rack is DAL's tips +- 5.75 mm wide and 55 mm tall (render_cubxl_cu.py draws it so).
 CORR["rack2_drawn"] = CORR["rack2"]
 MATERIALS.update({
     "lab_cuni": (0.72, 0.60, 0.54, 1.0, 0.8),          # C71500 70/30 Cu-Ni, polished (render_cubxl_cu.py colours)
