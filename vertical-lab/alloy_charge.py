@@ -62,6 +62,9 @@ import labware as LW                   # noqa: E402
 
 NAME = "alloy_charge"
 TITLE = "Vertical cloud lab, the alloy route 1/4: the atomizer charge"
+# the punch's rest, 40 mm further left than alloy_press puts it (still in front of the control tower): with eight cups
+# the rack's first plug stands beside the rest, and taking it from above put the gripper's knuckles in the rest's post
+AP.REST_LOCAL = (110.0, AP.REST_LOCAL[1])
 # tray B frame. Left to right: the vacuum press (alloy_press.PRESS_AT), the cup rack in front, the HR-202i on its block
 # behind the rack, the multi-doser, and the funnel stand right of the doser
 RACK_AT = (-250.0, -372.0)             # where round 2's vial rack stood (animate.LOADS)
