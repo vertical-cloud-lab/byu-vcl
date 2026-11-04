@@ -290,15 +290,44 @@ class TwoLab(A.Lab):
                                                       f"stored ({w}), powered")
         self.sc.gauges = [(f"Tray {k}", state), ("Shuttle", str(self.unit.get(k, 1)))]
 
-    def fetch(self, k, *a, **kw):
+    def fetch(self, k, label, caption, fast=1.0, cam=None, hold=0.4, mint=0.6):
+        """animate.Lab.fetch on tray k's own Shuttle, to its opening; mint: the shortest lift move (s)."""
         self.use(self.unit.get(k, 1))
         self.focus = k
-        super().fetch(k, *a, **kw)
+        sc = self.sc
+        ys, zs = V.SLOTS[self.where[k]]
+        yt, zt = V.SLOTS["open"]
+        if abs(self.lift_z - zs) > 1:
+            sc.step(label, caption, max(mint, abs(self.lift_z - zs) / 1333 * fast), self.lift_to(zs), hold=0.1,
+                    cam_to=cam)
+            cam = None
+        self.where[k] = None
+        self.apply_state()
+        sc.step(label, caption, 2.2 * fast, self.slide(k, 0.0), hold=0.1, cam_to=cam)
+        sc.step(label, caption, max(mint, abs(zs - zt) / 1333 * fast), self.lift_to(zt, carry=k), hold=0.1)
+        sc.step(label, caption, 0.7 * fast, self.shut(1.0), hold=0.0)
+        sc.step(label, caption, 2.2 * fast, self.slide(k, yt), hold=0.0)
+        sc.step(label, caption, 0.7 * fast, self.shut(0.0), hold=0.0)
+        self.where[k] = "open"
+        self.apply_state()
+        sc.snap(max(1, int(round(hold * FPS))))
 
-    def store(self, k, *a, **kw):
+    def store(self, k, label, caption, fast=1.0, cam=None, hold=0.3, mint=0.6):
+        """animate.Lab.store on tray k's own Shuttle."""
         self.use(self.unit.get(k, 1))
         self.focus = k
-        super().store(k, *a, **kw)
+        self.where[k] = None
+        self.apply_state()
+        ys, zs = V.SLOTS[A.HOME[k]]
+        sc = self.sc
+        sc.step(label, caption, 0.7 * fast, self.shut(1.0), hold=0.0, cam_to=cam)
+        sc.step(label, caption, 2.2 * fast, self.slide(k, 0.0), hold=0.0)
+        sc.step(label, caption, 0.7 * fast, self.shut(0.0), hold=0.1)
+        sc.step(label, caption, max(mint, abs(self.lift_z - zs) / 1333 * fast), self.lift_to(zs, carry=k), hold=0.1)
+        sc.step(label, caption, 2.2 * fast, self.slide(k, ys), hold=0.0)
+        self.where[k] = A.HOME[k]
+        self.apply_state()
+        sc.snap(max(1, int(round(hold * FPS))))
 
 
 def add_tray(sc: Scene, L: TwoLab, k: str):
@@ -847,14 +876,19 @@ def movie(data, idata):
             "its slot and its power.", 2.2, L.skin(1.0), hold=0.3, cam_to=CAM_OPEN)
     L.show_gauges = True
     cam_now = CAM_OPEN
+    first = set()
     for k in trays:
         lst = items.get(k, [])
         role = A.ROLE.get(k, "")
-        want = CAM_OPEN if L.unit.get(k, 1) == 1 else CAM_OPEN2
+        unit = L.unit.get(k, 1)
+        want = CAM_OPEN if unit == 1 else CAM_OPEN2
         cam = None if want is cam_now else want
         cam_now = want
-        L.fetch(k, f"7/{n}", f"Tray {k} ({role}) comes to the opening of Shuttle {L.unit.get(k, 1)}.", fast=0.28,
-                hold=0.05, cam=cam)
+        full = unit not in first                 # the first tray of each Shuttle at full pace, the rest quicker
+        first.add(unit)
+        fast, mint = (0.28, 0.6) if full else (0.17, 0.35)
+        L.fetch(k, f"7/{n}", f"Tray {k} ({role}) comes to the opening of Shuttle {unit}.", fast=fast,
+                hold=0.05, cam=cam, mint=mint)
         if lst:
             fs, lbls = [], []
             for key, g, names, nm in lst:
@@ -864,10 +898,10 @@ def movie(data, idata):
             ncam = sum(1 for it in lst if it[0] == "cam")
             extra = ", its UPS" + (f" and {ncam} camera post{'s' if ncam > 1 else ''}" if ncam else "")
             cap = f"Tray {k}: " + ", ".join(lb[0] for lb in lbls) + extra + "."
-            sc.step(f"7/{n}", cap, 1.0 + 0.32 * len(lst), stagger(fs, overlap=0.5), hold=0.6,
-                    labels=W.auto(sc, cam_now, lbls, dy=0.16))
+            sc.step(f"7/{n}", cap, (1.0 + 0.32 * len(lst)) if full else (0.8 + 0.24 * len(lst)),
+                    stagger(fs, overlap=0.5), hold=0.6 if full else 0.45, labels=W.auto(sc, cam_now, lbls, dy=0.16))
         L.store(k, f"7/{n}", f"Tray {k} goes back to its slot ({A.HOME[k]}), {V.SPAN[A.HOME[k]]:.0f} mm tall, "
-                "where it has power.", fast=0.28, hold=0.05)
+                "where it has power.", fast=fast, hold=0.05, mint=mint)
     L.focus = None
     # ------------------------------------------------------------------ 8. the bay cameras
     services.add_bay_camera(sc)
