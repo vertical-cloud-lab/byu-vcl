@@ -13,6 +13,17 @@
     "privacy": "unlisted"
    }
   ],
+  "alloy_charge.mp4": [
+   {
+    "id": "1Hnt4v2J_mI",
+    "sha256": "fc8c48f8386cf6fd180e3aba5793d3867e8bcb967f04cd6aa9d7b79af95a2748",
+    "bytes": 11188264,
+    "commit": "eec03ee",
+    "uploaded": "2026-11-04T07:07:50Z",
+    "title": "Vertical cloud lab, alloy route 1/4: eight charge cups dosed, a funnel per powder, and plugged",
+    "privacy": "unlisted"
+   }
+  ],
   "alloy_charge_vacuum.mp4": [
    {
     "id": "UjGb47I3fy0",
@@ -21,6 +32,17 @@
     "commit": "0e9805a",
     "uploaded": "2026-11-04T06:54:07Z",
     "title": "Vertical cloud lab, alloy route 1/4: charge cups pressed home in a vacuum press (3-D)",
+    "privacy": "unlisted"
+   }
+  ],
+  "alloy_print.mp4": [
+   {
+    "id": "rm_XR5-2F5g",
+    "sha256": "cd359501b5b78bc8ad61fb063d58e6a6c69b0c7316f37e49426dc75d65472ebb",
+    "bytes": 9690222,
+    "commit": "9fe7903",
+    "uploaded": "2026-11-04T07:07:53Z",
+    "title": "Vertical cloud lab, alloy route 3/4: the arm runs a sieving cell, then the print (3-D animation)",
     "privacy": "unlisted"
    }
   ],
@@ -53,6 +75,16 @@
     "commit": "f9f9144",
     "uploaded": "2026-11-03T21:22:36Z",
     "title": "Vertical cloud lab: from the metal printer to the tensile test (3-D animation)",
+    "privacy": "unlisted",
+    "superseded_by": "T16hQ4M-IkU"
+   },
+   {
+    "id": "T16hQ4M-IkU",
+    "sha256": "f8a645ee2714b05e81966204741fdb3bc43156e95a0caafdf6c944454ed387d4",
+    "bytes": 8948078,
+    "commit": "218f9dc",
+    "uploaded": "2026-11-04T07:07:55Z",
+    "title": "Vertical cloud lab, alloy route 4/4: depowder, wire EDM, rinse, tensile test (3-D animation)",
     "privacy": "unlisted"
    }
   ],

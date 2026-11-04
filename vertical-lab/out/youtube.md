@@ -5,11 +5,11 @@ Every MP4 under `out/mp4/` and its video on the lab's channel (unlisted). Writte
 | File | Length | Video | Earlier uploads |
 |---|---|---|---|
 | [`alloy_atomize.mp4`](mp4/alloy_atomize.mp4) | 2:36 | [znw55hE_dGs](https://www.youtube.com/watch?v=znw55hE_dGs) |  |
-| [`alloy_charge.mp4`](mp4/alloy_charge.mp4) | 2:26 | not uploaded |  |
+| [`alloy_charge.mp4`](mp4/alloy_charge.mp4) | 2:26 | [1Hnt4v2J_mI](https://www.youtube.com/watch?v=1Hnt4v2J_mI) |  |
 | [`alloy_charge_vacuum.mp4`](mp4/alloy_charge_vacuum.mp4) | 3:38 | [UjGb47I3fy0](https://www.youtube.com/watch?v=UjGb47I3fy0) |  |
-| [`alloy_print.mp4`](mp4/alloy_print.mp4) | 3:14 | not uploaded |  |
+| [`alloy_print.mp4`](mp4/alloy_print.mp4) | 3:14 | [rm_XR5-2F5g](https://www.youtube.com/watch?v=rm_XR5-2F5g) |  |
 | [`alloy_route.mp4`](mp4/alloy_route.mp4) | 11:08 | [GE33p9N0x7c](https://www.youtube.com/watch?v=GE33p9N0x7c) | [9qnGCtPwCTM](https://www.youtube.com/watch?v=9qnGCtPwCTM) |
-| [`alloy_workflow.mp4`](mp4/alloy_workflow.mp4) | 2:39 | not uploaded | [YVdpGTLvxhI](https://www.youtube.com/watch?v=YVdpGTLvxhI) |
+| [`alloy_workflow.mp4`](mp4/alloy_workflow.mp4) | 2:39 | [T16hQ4M-IkU](https://www.youtube.com/watch?v=T16hQ4M-IkU) | [YVdpGTLvxhI](https://www.youtube.com/watch?v=YVdpGTLvxhI) |
 | [`fabrication/form4.mp4`](mp4/fabrication/form4.mp4) | 0:12 | [OhYFK00uplo](https://www.youtube.com/watch?v=OhYFK00uplo) |  |
 | [`fabrication/form_cure.mp4`](mp4/fabrication/form_cure.mp4) | 0:09 | [2onKGbvpitg](https://www.youtube.com/watch?v=2onKGbvpitg) |  |
 | [`fabrication/form_wash.mp4`](mp4/fabrication/form_wash.mp4) | 0:12 | [YxCa5PSPo70](https://www.youtube.com/watch?v=YxCa5PSPo70) |  |

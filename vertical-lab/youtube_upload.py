@@ -101,18 +101,26 @@ LAB = {
                                 "cup's bore filled to the plug (Si, then AlSi10Mg; Ni, then Cu), the plug pressed home at "
                                 "3.2 t under vacuum in a Specac Atlas Autotouch 15T with the lab's evacuable die round F1, "
                                 "and every arm move collision-checked (collide.py)."),
-    "alloy_charge.mp4": ("Vertical cloud lab, alloy route 1/4: the charge cups filled and plugged (3-D animation)",
-                         "Chapter 1 of the alloy route: the lab's charge cups filled with powder and closed with "
-                         "their plugs, on a tray of the VLM."),
+    "alloy_charge.mp4": ("Vertical cloud lab, alloy route 1/4: eight charge cups dosed, a funnel per powder, and plugged",
+                         "Chapter 1 of the alloy route as round 5 rendered it (alloy_charge_doser.py): four 5N Al and "
+                         "four OFE Cu cups dosed through one funnel per powder on an A&D HR-202i balance and plugged, "
+                         "on tray B of the VLM. The vacuum-press version is a separate video. Rendered before the "
+                         "arm's collision check: in some frames the arm passes through the press and the rack "
+                         "(notes/arm_collisions.md)."),
     "alloy_atomize.mp4": ("Vertical cloud lab, alloy route 2/4: melt and atomize in the rePowder (3-D animation)",
                           "Chapter 2 of the alloy route: the charged cups into the AMAZEMET rePowder's crucible, "
                           "induction melting under argon, ultrasonic atomization."),
-    "alloy_print.mp4": ("Vertical cloud lab, alloy route 3/4: sieve the powder and print (3-D animation)",
-                        "Chapter 3 of the alloy route: the powder through the sieve stack, and the LPBF cut into "
-                        "the Aconity MIDI."),
-    "alloy_workflow.mp4": ("Vertical cloud lab: from the metal printer to the tensile test (3-D animation)",
-                           "Chapter 4 of the alloy route: the build plate out of the Aconity MIDI, the bars cut off "
-                           "in a FANUC wire EDM, one pulled to fracture in an Instron 68FM-100."),
+    "alloy_print.mp4": ("Vertical cloud lab, alloy route 3/4: the arm runs a sieving cell, then the print (3-D animation)",
+                        "Chapter 3 of the alloy route: the arm builds the sieve stack, runs the shaker and tips each "
+                        "cut into a labelled jar, and the LPBF cut goes into the Aconity MIDI. Rendered before the "
+                        "arm's collision check: in some frames the arm passes through the sieves and the Aconity's "
+                        "cabinet (notes/arm_collisions.md)."),
+    "alloy_workflow.mp4": ("Vertical cloud lab, alloy route 4/4: depowder, wire EDM, rinse, tensile test (3-D animation)",
+                           "Chapter 4 of the alloy route: the build vacuumed with a suction lance and shaken clean in "
+                           "a depowdering box, the bars cut off in a FANUC wire EDM, one rinsed, dried and pulled to "
+                           "fracture in an Instron 68FM-100. Rendered before the arm's collision check: in some "
+                           "frames the arm passes through the lance's hose, the Aconity and the shaker box "
+                           "(notes/arm_collisions.md)."),
     "alloy_route.mp4": ("Vertical cloud lab: the alloy route, start to finish (charge cups to tensile bar)",
                         "The alloy route of the Vertical Cloud Lab at BYU, start to finish, in four chapters."),
     "instruments_tour.mp4": ("Vertical cloud lab: every instrument at work, one after another (3-D animation)",
