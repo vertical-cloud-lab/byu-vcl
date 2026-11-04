@@ -49,6 +49,7 @@ Every MP4 under `out/mp4/` and its video on the lab's channel (unlisted). Writte
 | [`instruments/wire_edm.mp4`](mp4/instruments/wire_edm.mp4) | 0:12 | not uploaded |  |
 | [`instruments/xrd.mp4`](mp4/instruments/xrd.mp4) | 0:17 | not uploaded |  |
 | [`instruments/xrf.mp4`](mp4/instruments/xrf.mp4) | 0:20 | not uploaded |  |
+| [`instruments_round2_tour.mp4`](mp4/instruments_round2_tour.mp4) | 1:47 | [ki0yLSfdTIk](https://www.youtube.com/watch?v=ki0yLSfdTIk) |  |
 | [`instruments_round4_tour.mp4`](mp4/instruments_round4_tour.mp4) | 3:49 | [WG_DAtSHg50](https://www.youtube.com/watch?v=WG_DAtSHg50) | [IEbhMjcAUOQ](https://www.youtube.com/watch?v=IEbhMjcAUOQ) |
 | [`instruments_tour.mp4`](mp4/instruments_tour.mp4) | 6:22 | [J7EJQsmyAtk](https://www.youtube.com/watch?v=J7EJQsmyAtk) | [ISyVIHtmvZc](https://www.youtube.com/watch?v=ISyVIHtmvZc) |
 | [`setup_lab.mp4`](mp4/setup_lab.mp4) | 1:53 | not uploaded | [bITROBu1NNE](https://www.youtube.com/watch?v=bITROBu1NNE) |

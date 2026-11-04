@@ -132,6 +132,17 @@
     "privacy": "unlisted"
    }
   ],
+  "instruments_round2_tour.mp4": [
+   {
+    "id": "ki0yLSfdTIk",
+    "sha256": "fbe47f66d45eb77c2ba7211b6b635a60adb14a2dec624f655a3d17624fa61080",
+    "bytes": 7338345,
+    "commit": "f9b4847",
+    "uploaded": "2026-11-04T07:53:19Z",
+    "title": "Vertical cloud lab: OT-2, H2D, A1 mini, CubXL and multi-doser at work, the insides showing",
+    "privacy": "unlisted"
+   }
+  ],
   "instruments_round4_tour.mp4": [
    {
     "id": "IEbhMjcAUOQ",
