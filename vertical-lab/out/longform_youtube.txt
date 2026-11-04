@@ -1,48 +1,55 @@
 Everything on PR #318 of the BYU Vertical Cloud Lab, in one video: a Kardex Shuttle XP 500 vertical lift module holding the lab's equipment on electrified trays, a UR10e on a MiR250 at its opening, the alloy route from charge cups to a tensile bar, every instrument doing its job, and the alternatives. 3-D animation built from makers' published figures and photos; real footage is badged as such.
 
-Code, notes and sources: https://github.com/vertical-cloud-lab/byu-vcl/tree/a1e4b2d/vertical-lab
+Code, notes and sources: https://github.com/vertical-cloud-lab/byu-vcl/tree/c004ab5/vertical-lab
 PR: https://github.com/vertical-cloud-lab/byu-vcl/pull/318
 
 Chapters
 0:00 A real VLM, then the plan
 0:23 The lab set up from scratch
-2:22 What the trays carry, and the line beside the VLM
-3:37 Trays G-I: resin, PCB, desktop LPBF
-4:11 Trays A-C at work, in cutaway: OT-2, H2D, A1 mini, CubXL, multi-doser
-6:04 Services to every tray: docking, UPS, tether, cabling, cameras
-6:43 A retractable tether instead
-7:07 Cabling
-7:38 The stream camera unit: height, pan, tilt
-7:58 Alloy route 1/4: the charge cups, dosed, weighed and pressed under vacuum
-8:17 The charge cups
-12:22 Alloy route 2/4: melt and atomize in the rePowder
-15:18 Alloy route 3/4: sieve and print
-18:42 Alloy route 4/4: depowder, cut and test
-21:28 Characterization instruments, one by one
-21:43 XRD (Rigaku MiniFlex) and SEM (Hitachi TM4000PlusII)
-22:08 Keyence VHX-7000 with the EA-300 LIBS head
-22:30 Benchtop XRF: Bruker S2 PUMA
-22:51 OpenFlexure v7 and Delta Stage
-23:09 Six OpenFlexures on one sub-tray
-23:31 Malvern Mastersizer 3000 + Aero S
-23:46 KLA iMicro nanoindenter
-23:56 Plastometrex PLX-Benchtop (PIP)
-24:12 The CubXL set up for corrosion
-24:48 Sample prep, testing, powder handling and shipping
-25:12 Nabertherm furnace and the two Instrons
-25:36 FANUC ROBOCUT wire EDM
-25:48 Sieve shaker: Retsch AS 200
-26:11 Inert glovebox and the packaging station
-26:50 Fabrication: metal printers, DED, resin and PCB assembly
-30:01 InssTek MX-Lab DED
-30:25 The alternatives: a floor rail, or a warehouse with mobile manipulators
-30:46 The warehouse version
-33:03 What doesn't fit, and what it would take
-33:27 A taller opening
-34:01 Getting a tray out for maintenance
-34:13 How the models were checked
-34:34 MuJoCo interference check
-34:45 Arm collisions, checked and planned round
+2:15 What goes on which tray
+2:29 Services: UPS, automatic hookups, cabling and cameras
+3:14 The docks in every slot
+3:48 The docks against the lift
+4:29 The stream camera unit: height, pan, tilt
+4:49 The camera over the bay, and what it sees
+5:21 Tray A: the corrosion station, OT-2 and CubXL
+6:26 The CubXL's corrosion screen
+7:45 Atomized powder dosed for the CubXL
+9:15 Alloy route 1/5: the charge cups, dosed, weighed and pressed under vacuum
+9:34 DAL's 17 steps, and where each runs
+9:46 The charge cups
+13:51 The vacuum press with its catch ring
+14:42 Alloy route 2/5: melt and atomize in the rePowder
+18:11 Alloy route 3/5: sieve and print
+21:42 Alloy route 4/5: depowder, cut and test
+24:36 Alloy route 5/5: the trays at work, characterizing the build
+27:11 Characterization instruments, one by one
+27:25 XRD (Rigaku MiniFlex) and SEM (Hitachi TM4000PlusII)
+27:51 Keyence VHX-7000 with the EA-300 LIBS head, remoted in
+28:13 Benchtop XRF: Bruker S2 PUMA
+28:34 Six OpenFlexures on one sub-tray
+28:56 Malvern Mastersizer 3000 + Aero S
+29:10 KLA iMicro nanoindenter
+29:20 Plastometrex PLX-Benchtop (PIP)
+29:36 A micro-Vickers tester: Mitutoyo HM-220
+29:56 Sample prep, testing, powder handling, fume hoods and shipping
+30:20 Nabertherm furnace
+30:58 FANUC ROBOCUT wire EDM
+31:11 A tensile tester on its side: zwickiLine Z5.0 TN
+31:29 The two Instrons
+31:43 Sieve shaker: Retsch AS 200
+32:05 A glovebox on a tray
+32:37 The floor glovebox
+33:18 The sample store: cups, plugs, vials
+33:42 Packaging
+34:11 Fabrication: metal printers, DED, resin and PCB assembly
+37:21 InssTek MX-Lab DED
+37:46 The same machines on a warehouse floor
+40:08 What doesn't fit, and getting a tray out
+40:32 How the models were checked
+40:47 Fitted to footage of the real machines
+41:03 MuJoCo interference check
+41:14 Arm collisions, checked and planned round
 
 The real VLM at the start: Sterling Baird, "Vertical Lift Module in operation - from the sample's perspective", https://www.youtube.com/watch?v=ck8QJhVqPiY . The atomizer footage in chapter 2 is the lab's own (DAL #159, #219).
 

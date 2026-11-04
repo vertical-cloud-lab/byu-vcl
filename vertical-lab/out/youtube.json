@@ -20,6 +20,27 @@
     "commit": "b4f18a1",
     "uploaded": "2026-11-04T09:18:03Z",
     "title": "Vertical cloud lab, alloy route 2/4: melt and atomize in the rePowder (3-D animation)",
+    "privacy": "unlisted",
+    "superseded_by": "1yb9NnB0yMo"
+   },
+   {
+    "id": "1yb9NnB0yMo",
+    "sha256": "4940b0430b14860a607858b860cfa6873942c62c3fcf58e8c9bd58de4169dcac",
+    "bytes": 12409124,
+    "commit": "10c3cf2",
+    "uploaded": "2026-11-04T20:46:51Z",
+    "title": "Vertical cloud lab, alloy route 2/5: melt and atomize in the rePowder (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "alloy_characterize.mp4": [
+   {
+    "id": "dmuv60qyJic",
+    "sha256": "6e1b245087eac209f546b2183bb0970bb911b9dbe33a5cd6197f1b5d77e6b7ca",
+    "bytes": 8081090,
+    "commit": "e38474b",
+    "uploaded": "2026-11-04T20:46:53Z",
+    "title": "Vertical cloud lab, alloy route 5/5: the trays at work, characterizing the build (3-D)",
     "privacy": "unlisted"
    }
   ],
@@ -135,6 +156,17 @@
     "commit": "850ed61",
     "uploaded": "2026-11-04T09:18:07Z",
     "title": "Vertical cloud lab, alloy route 4/4: depowder, wire EDM, rinse, tensile test (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "bay_camera.mp4": [
+   {
+    "id": "QOtSLMDGElA",
+    "sha256": "b90c7f2e8275a54a39ec6b6f6389c95a5e0848af2292742e40a2c8aa42dc1faf",
+    "bytes": 2268895,
+    "commit": "b0e235e",
+    "uploaded": "2026-11-04T20:46:54Z",
+    "title": "Vertical cloud lab: the overhead camera at the bay, and what it sees (3-D animation)",
     "privacy": "unlisted"
    }
   ],
@@ -712,6 +744,16 @@
     "commit": "e3708ea",
     "uploaded": "2026-11-04T09:18:09Z",
     "title": "Vertical cloud lab, set up from scratch: VLM, floor machines, arms, every tray loaded",
+    "privacy": "unlisted",
+    "superseded_by": "t7svXAHr5Lo"
+   },
+   {
+    "id": "t7svXAHr5Lo",
+    "sha256": "4176d4cf877cdb4ecc49d6204fceea2073e4f8f992738f7d711ff4202d27d5e5",
+    "bytes": 10880593,
+    "commit": "7b7f410",
+    "uploaded": "2026-11-04T20:46:57Z",
+    "title": "Vertical cloud lab, set up from scratch: VLM, floor machines, arms, every tray loaded",
     "privacy": "unlisted"
    }
   ],
@@ -776,6 +818,15 @@
     "bytes": 123187710,
     "commit": "a1e4b2d",
     "uploaded": "2026-11-04T09:16:37Z",
+    "title": "The vertical cloud lab, start to finish: a Kardex VLM, its instruments and the alloy route (3-D)",
+    "privacy": "unlisted"
+   },
+   {
+    "id": "myUrMHN7VBA",
+    "sha256": "39fb982271afab9aeeaac009d974d178201f51464f0503986162b52a83c679d6",
+    "bytes": 140381532,
+    "commit": "c004ab5",
+    "uploaded": "2026-11-04T20:48:09Z",
     "title": "The vertical cloud lab, start to finish: a Kardex VLM, its instruments and the alloy route (3-D)",
     "privacy": "unlisted"
    }
@@ -945,6 +996,16 @@
     "commit": "58358ba",
     "uploaded": "2026-11-04T09:18:01Z",
     "title": "Vertical cloud lab: tray docking couplings, a tethered tray, and the cabling (3-D animation)",
+    "privacy": "unlisted",
+    "superseded_by": "IbxYy68N3Zw"
+   },
+   {
+    "id": "IbxYy68N3Zw",
+    "sha256": "4ec831900a6a6b85d0074993934f9e8fcbdaccf4eb765fdd46919079c2a6c041",
+    "bytes": 15603094,
+    "commit": "2775666",
+    "uploaded": "2026-11-04T20:46:50Z",
+    "title": "Vertical cloud lab: tray docking couplings, each tray's UPS, the bay camera, the cabling (3-D)",
     "privacy": "unlisted"
    }
   ],
