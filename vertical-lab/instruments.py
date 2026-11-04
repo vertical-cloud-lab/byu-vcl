@@ -876,7 +876,7 @@ def pip() -> Instrument:
     inst.notes = ["The profilometer's place is from Plastometrex's own footage; how its pick-up is lowered onto the "
                   "surface (the animation shows a rotation at the arm's foot) is simplified to a small drop here."]
     inst.cam = (0.32, -1.9, 0.28)                   # low and nearly frontal, as the videos show the bay
-    inst.framing = (0.66, 0.30)
+    inst.framing = (0.86, 0.44)                     # the whole machine in view, the bay still large
     return inst
 
 

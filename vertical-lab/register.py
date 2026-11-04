@@ -2,6 +2,7 @@
 
     python3 register.py solve polisher              # fit the cameras, and the model's free dimensions, to every view
     xvfb-run -a python3 register.py draw polisher   # draw the model over each frame -> out/register/polisher/*.jpg
+    python3 register.py sheet 379df6b polisher furnace  # footage, the model at that commit, the model now, per row
 
 A view is ``refs/<key>/<name>.json`` next to its frame ``refs/<key>/<name>.jpg``::
 
@@ -419,6 +420,76 @@ def _caption(im, text):
     d.text((6, 3), text, fill=(255, 255, 255), font=f)
 
 
+def sheet(keys: list[str], before: str, out: Path | None = None) -> Path:
+    """One row per model: a reference frame, the model's still at git revision `before`, and its still now
+    (out/instruments/<key>.png, or out/fabrication/<key>.png for the fabrication tools)."""
+    import subprocess
+    from PIL import Image, ImageDraw, ImageFont
+    f1 = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 20)
+    f2 = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 15)
+    th, rows = 300, []
+
+    def still(key, rev=None):
+        for sub in ("instruments", "fabrication"):
+            rel = f"out/{sub}/{key}.png"
+            if rev is None:
+                if (HERE / rel).exists():
+                    return Image.open(HERE / rel).convert("RGB")
+            else:
+                r = subprocess.run(["git", "show", f"{rev}:vertical-lab/{rel}"], cwd=HERE, capture_output=True)
+                if r.returncode == 0:
+                    import io
+                    return Image.open(io.BytesIO(r.stdout)).convert("RGB")
+        return None
+
+    def trim(im):
+        a = np.asarray(im).astype(int)
+        m = np.abs(a - a[2, 2]).sum(2) > 30
+        ys, xs = np.where(m)
+        if not len(xs):
+            return im
+        pad = 16
+        return im.crop((max(xs.min() - pad, 0), max(ys.min() - pad, 0), min(xs.max() + pad, im.width),
+                        min(ys.max() + pad, im.height)))
+    for key in keys:
+        views = [p for p in sorted((REFS / key).glob("*.json")) if p.name != "fit.json"]
+        fit = json.loads((REFS / key / "fit.json").read_text()) if (REFS / key / "fit.json").exists() else {}
+        tiles = []
+        if views:
+            v = json.loads(views[0].read_text())
+            tiles.append((Image.open(frame_path(key, views[0].stem, v)).convert("RGB"), "footage"))
+        for im, cap in ((still(key, before), "before"), (still(key), "after")):
+            if im is not None:
+                tiles.append((trim(im), cap))
+        row = []
+        for im, cap in tiles:
+            im = im.resize((int(im.width * th / im.height), th), Image.LANCZOS)
+            row.append((im, cap))
+        title = key
+        if fit.get("views"):
+            title += "   fit: " + ", ".join(f"{v['rms_px']} px" + (" (held out)" if v.get("holdout") else "")
+                                           for v in fit["views"].values())
+        rows.append((title, row))
+    W = max(sum(im.width for im, _ in row) + 12 * (len(row) - 1) for _, row in rows) + 24
+    H = sum(th + 64 for _ in rows) + 12
+    canvas = Image.new("RGB", (W, H), "white")
+    d = ImageDraw.Draw(canvas)
+    y = 12
+    for title, row in rows:
+        d.text((12, y), title, fill=(20, 20, 24), font=f1)
+        x = 12
+        for im, cap in row:
+            canvas.paste(im, (x, y + 30))
+            d.text((x + 6, y + 34), cap, fill=(255, 255, 255) if cap == "footage" else (60, 60, 66), font=f2)
+            x += im.width + 12
+        y += th + 64
+    out = out or OUT / "before_after.png"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    canvas.save(out, optimize=True)
+    print(out, canvas.size)
+    return out
+
+
 if __name__ == "__main__":
     cmd, key = sys.argv[1], sys.argv[2]
     if cmd == "solve":
@@ -429,5 +500,7 @@ if __name__ == "__main__":
             print(f"{n}{tag}: rms {v['rms_px_camera_only']} -> {v['rms_px']} px, f {v['focal_px']}, k1 {v['k1']}")
             worst = sorted(v["residual_px"].items(), key=lambda kv: -kv[1])[:6]
             print("   worst:", ", ".join(f"{a} {b}" for a, b in worst))
+    elif cmd == "sheet":                   # register.py sheet <rev> key [key ...]: footage, before, after
+        sheet(sys.argv[4:], sys.argv[3]) if key == "--before" else sheet(sys.argv[3:], key)
     elif cmd == "draw":
         draw(key, [a for a in sys.argv[3:] if not a.startswith("--")] or None, rebuild="--rebuild" in sys.argv)
