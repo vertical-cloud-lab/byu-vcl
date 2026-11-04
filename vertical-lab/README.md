@@ -615,12 +615,14 @@ route. Four chapters, each rendered on its own and joined by [`alloy_route.py`](
 <!-- alloy-route-table -->
 | Chapter | Code | GIF | MP4 | Notes |
 |---|---|---|---|---|
-| **All four, joined** (11 min 9 s, a title card before each) | [`alloy_route.py`](alloy_route.py) | | [MP4](out/mp4/alloy_route.mp4) | [on YouTube](https://www.youtube.com/watch?v=GE33p9N0x7c) (unlisted), chapters in [`out/alloy_route.json`](out/alloy_route.json). The 7 min 40 s round-4 version is [`9qnGCtPwCTM`](https://www.youtube.com/watch?v=9qnGCtPwCTM) |
+| **All four, joined** (11 min 33 s, a title card before each) | [`alloy_route.py`](alloy_route.py) | | [MP4](out/mp4/alloy_route.mp4) | [on YouTube](https://www.youtube.com/watch?v=GE33p9N0x7c) (unlisted), chapters in [`out/alloy_route.json`](out/alloy_route.json). The 7 min 40 s round-4 version is [`9qnGCtPwCTM`](https://www.youtube.com/watch?v=9qnGCtPwCTM) |
 | **1. The charge** (147 s): four 5N Al and four OFE Cu cups dosed through one funnel per powder, weighed on an A&D HR-202i and plugged, on tray B | [`alloy_charge_doser.py`](alloy_charge_doser.py), [`charge.py`](charge.py) | [GIF](out/alloy_charge.gif) | [MP4](out/mp4/alloy_charge.mp4), [on YouTube](https://www.youtube.com/watch?v=1Hnt4v2J_mI) | [`notes/alloy_charge_doser.md`](notes/alloy_charge_doser.md). The vacuum-press version, [`alloy_charge.py`](alloy_charge.py), [below](#the-plug-pressed-home-under-vacuum), is rendered on its own: [MP4](out/mp4/alloy_charge_vacuum.mp4), [on YouTube](https://www.youtube.com/watch?v=UjGb47I3fy0) |
-| **2. Melt and atomize** (157 s): the four Al cups in the rePowder, cut with the lab's own footage of its bronze and Al runs | [`alloy_atomize.py`](alloy_atomize.py) | [GIF](out/alloy_atomize.gif) | [MP4](out/mp4/alloy_atomize.mp4), [on YouTube](https://www.youtube.com/watch?v=znw55hE_dGs) | [`notes/alloy_atomize.md`](notes/alloy_atomize.md) |
-| **3. Sieve and print** (194 s): the arm runs a sieving cell, then the Aconity MIDI prints | [`alloy_print.py`](alloy_print.py), [`sieve_station.py`](sieve_station.py) | [GIF](out/alloy_print.gif) | [MP4](out/mp4/alloy_print.mp4), [on YouTube](https://www.youtube.com/watch?v=rm_XR5-2F5g) | [`notes/alloy_print.md`](notes/alloy_print.md) |
-| **4. Cut and test** (159 s): a suction lance and a depowdering box, the wire EDM, a rinse, the 68FM-100 | [`alloy_workflow.py`](alloy_workflow.py) | [GIF](out/alloy_workflow.gif) | [MP4](out/mp4/alloy_workflow.mp4), [on YouTube](https://www.youtube.com/watch?v=T16hQ4M-IkU) | [`notes/alloy_workflow.md`](notes/alloy_workflow.md) |
+| **2. Melt and atomize** (167 s): the four Al cups in the rePowder, cut with the lab's own footage of its bronze and Al runs | [`alloy_atomize.py`](alloy_atomize.py) | [GIF](out/alloy_atomize.gif) | [MP4](out/mp4/alloy_atomize.mp4), [on YouTube](https://www.youtube.com/watch?v=znw55hE_dGs) | [`notes/alloy_atomize.md`](notes/alloy_atomize.md) |
+| **3. Sieve and print** (198 s): the arm runs a sieving cell, then the Aconity MIDI prints | [`alloy_print.py`](alloy_print.py), [`sieve_station.py`](sieve_station.py) | [GIF](out/alloy_print.gif) | [MP4](out/mp4/alloy_print.mp4), [on YouTube](https://www.youtube.com/watch?v=rm_XR5-2F5g) | [`notes/alloy_print.md`](notes/alloy_print.md) |
+| **4. Cut and test** (169 s): a suction lance and a depowdering box, the wire EDM, a rinse, the 68FM-100 | [`alloy_workflow.py`](alloy_workflow.py) | [GIF](out/alloy_workflow.gif) | [MP4](out/mp4/alloy_workflow.mp4), [on YouTube](https://www.youtube.com/watch?v=T16hQ4M-IkU) | [`notes/alloy_workflow.md`](notes/alloy_workflow.md) |
 <!-- /alloy-route-table -->
+
+Chapters 2-4 and the joined route were re-rendered in [round 5's fixes](#round-5s-fixes-what-round-4s-review-left-open), with the MiR250 at its 0.3 m/s². Their YouTube copies are the earlier renders.
 
 ![The four chapters at work: a plug pressed into a cup, the cups atomized, the plate printed, the bars cut off](out/alloy_route_sheet.png)
 
@@ -879,8 +881,10 @@ had already been done on #318.
   MiR250s' own bodies touch nothing in any of 1846 frames (`out/collisions/warehouse.json`, `warehouse_mir.json`).
 - **Chapter 3's MiR no longer slides sideways** off the rePowder. A MiR250 is differential drive, so it now drives
   chapter 2's S-curve (`props.s_curve`), facing along it.
-- **Chapters 2–4 of the alloy route have the new drives in their code but not yet in their renders.** #318's
-  collision session is reworking their arm moves (`21ca898`), so each gets one render with both fixes.
+- **Chapters 2–4 are re-rendered with the new drives, at 15 fps:** 167, 198 and 169 s, up from 157, 194 and 159 s.
+  The joined route is 11 min 33 s. Their arm-collision audits are unchanged: #318's collision session left those
+  as a follow-up. Chapter 4 has 43 more frames in collision, because one existing contact lasts longer while the MiR
+  pulls away. The MiR bodies are clear in all three (`audit_mir.py`).
 
 ### Hooks in `tour.py`, not monkeypatches
 - `tour.tour_one` now takes from the instrument a camera per action (`Instrument.cams`), leader labels per view

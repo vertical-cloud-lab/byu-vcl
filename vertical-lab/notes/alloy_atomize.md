@@ -8,7 +8,7 @@ powder.
 
 | | |
 |---|---|
-| Clip | 156.5 s, 43.6 s of it the lab's own footage; [GIF](../out/alloy_atomize.gif) (640 × 360, 5 fps, 4.9 MB), [MP4](../out/mp4/alloy_atomize.mp4), [still](../out/alloy_atomize_still.png), sub-steps in [`alloy_atomize.json`](../out/alloy_atomize.json), powder sums in [`alloy_atomize_powder.json`](../out/alloy_atomize_powder.json) |
+| Clip | 167.3 s (156.5 s before the MiR250 kept to its 0.3 m/s², round 5's fixes), 43.6 s of it the lab's own footage; [GIF](../out/alloy_atomize.gif) (640 × 360, 5 fps, 5.5 MB), [MP4](../out/mp4/alloy_atomize.mp4), [still](../out/alloy_atomize_still.png), sub-steps in [`alloy_atomize.json`](../out/alloy_atomize.json), powder sums in [`alloy_atomize_powder.json`](../out/alloy_atomize_powder.json) |
 | Starts | MiR250 at the VLM's opening (`animate.AMR_XY`), the four Al cups in `charge.carrier()`'s four pockets at `animate.BUFFER_LOCAL` on the cabinet: where chapter 1 ends |
 | Ends | MiR250 at world (−3487, −2230), yaw 0: square to the container's axis, 41 mm off the view port's flange, the hand-off chapter 3 (sieve, print) starts from. The container stands in a cradle at MiR-local (280, 10), seat z = 933 mm; the arm is parked. While the arm works the MiR stands 220 mm further out (y = −2450), because at y = −2230 the lid knob and the container's handle fall inside the UR10e's unreachable cylinder over its base; it drives onto the hand-off spot at the end |
 | Scene | `line.py`'s layout as `alloy_workflow.py` builds it, the rePowder loaded part by part from `repowder/model.py` (the merged copy `animate.Lab` adds is hidden) |
