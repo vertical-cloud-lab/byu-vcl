@@ -1,6 +1,6 @@
 # Polishing SOP
 
-*Steps 1-6 are copied word for word from [Ronnie's Google Doc](https://docs.google.com/document/d/1XJjOSDlwKRht6PhplwmZmqG202qoPPqnPQxjfCyigtU/edit) on 2026-10-05. Steps 7-11 are a draft that fills in the Doc's Step 7 ("Use a vibrating polisher"), with 0.1 µm diamond instead of colloidal silica.*
+*Steps 1-6 are copied word for word from [Ronnie's Google Doc](https://docs.google.com/document/d/1XJjOSDlwKRht6PhplwmZmqG202qoPPqnPQxjfCyigtU/edit) on 2026-10-05, except the box in Step 4, which holds his later notes on the polishing plate. Steps 7-11 are a draft that fills in the Doc's Step 7 ("Use a vibrating polisher"), with 0.1 µm diamond instead of colloidal silica.*
 
 ### Step 1
 
@@ -35,6 +35,13 @@
 ### Step 4
 
 * Initial polisher testing: Turn on the machine and open water valve. Gentle settings (from top down) are 35, 30, 150. Set the clock to 30 seconds. Press the "link" button in the top right corner well and "H2O" button simultaneously to turn on the water, then the "link" and "play" buttons simultaneously to start it spinning. If nothing is wrong, press the stop button.
+
+> **The polishing plate.** Ronnie's notes from [#258](https://github.com/vertical-cloud-lab/byu-vcl/pull/258#issuecomment-6620570016), 2026-11-04:
+>
+> * The o-rings that go around the stubs that hold up the polishing plate (the table the sandpaper sits on) can get lost if you take the plate off. Keep good track of them.
+> * The plate seems to need to go in a certain position, where certain holes line up with certain columns. Otherwise it spins the sandpaper and the sandpaper ring off the plate and destroys everything. If in doubt, start the polisher with the paper and ring on, then listen for a bump or kick at the very beginning when it starts spinning. If there is one, try rotating the plate and see if that works.
+> * Use the test puck to check that the plate is positioned correctly: try polishing it on an old piece of sandpaper and see if it works before risking a new sheet of sandpaper and the actual sample. The test puck is the old one, whose sample was polished all the way through ([video](https://youtu.be/Y2Li2uXmxlg)).
+
 * Rinse off all parts of the puck, the metal puck holder, metal sand paper ring, and table the sandpaper sits on to get all previous particles off.
 * **Wear gloves when handling the sample, do not contaminate the surface.**
 * Press "link" and "up" arrow simultaneously to pull up the puck holder.
