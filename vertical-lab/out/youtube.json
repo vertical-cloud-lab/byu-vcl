@@ -236,6 +236,16 @@
     "commit": "6366a63",
     "uploaded": "2026-11-03T20:01:52Z",
     "title": "Vertical cloud lab: trays D-F and the alloy line along a backup rail (3-D animation)",
+    "privacy": "unlisted",
+    "superseded_by": "rYAapCN5nIE"
+   },
+   {
+    "id": "rYAapCN5nIE",
+    "sha256": "915f0fd88473ce8d469de554062d29106a92b32a27d6d07ba56f7b66b32c6e8e",
+    "bytes": 5806996,
+    "commit": "f0e9b2d",
+    "uploaded": "2026-11-04T07:34:35Z",
+    "title": "Vertical cloud lab: trays D-F and the alloy line along a backup rail (3-D animation)",
     "privacy": "unlisted"
    }
   ],

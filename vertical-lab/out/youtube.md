@@ -56,7 +56,7 @@ Every MP4 under `out/mp4/` and its video on the lab's channel (unlisted). Writte
 | [`vlm_cabling.mp4`](mp4/vlm_cabling.mp4) | 0:30 | not uploaded |  |
 | [`vlm_disassembly.mp4`](mp4/vlm_disassembly.mp4) | 1:01 | not uploaded |  |
 | [`vlm_fab_trays.mp4`](mp4/vlm_fab_trays.mp4) | 0:33 | not uploaded | [5q5Pv2Mhbn8](https://www.youtube.com/watch?v=5q5Pv2Mhbn8) |
-| [`vlm_line.mp4`](mp4/vlm_line.mp4) | 1:09 | not uploaded | [oWM3fCZiwRs](https://www.youtube.com/watch?v=oWM3fCZiwRs) |
+| [`vlm_line.mp4`](mp4/vlm_line.mp4) | 1:09 | [rYAapCN5nIE](https://www.youtube.com/watch?v=rYAapCN5nIE) | [oWM3fCZiwRs](https://www.youtube.com/watch?v=oWM3fCZiwRs) |
 | [`vlm_loading.mp4`](mp4/vlm_loading.mp4) | 1:09 | not uploaded |  |
 | [`vlm_services.mp4`](mp4/vlm_services.mp4) | 0:34 | not uploaded |  |
 | [`vlm_services_all.mp4`](mp4/vlm_services_all.mp4) | 1:28 | not uploaded | [ed2M0u5Rjw0](https://www.youtube.com/watch?v=ed2M0u5Rjw0) |
