@@ -1370,10 +1370,10 @@ def movie_services(data, idata):
     hide(sc, ("skin_R",) + cut2, 1.0)
     cam_lbl = [(f"stream camera on tray {k}", A.tray_world(k, head_point(*c, dz=40.0)),
                 (0.14 if c[0] < 0 else 0.86, 0.30)) for c in TRAY_CAMS[k]]
-    sc.step(f"6/{n}", "The cameras: two Pi 5 units on tray A, on 2020 posts under the 727.5 mm product height, and an "
-            "overhead one at the back of the bay, above Kardex's product envelope, looking down on the presented "
-            "tray.", 3.2, None, hold=2.6, cam_to=CAM_S_CAMS, still=True,
-            labels=cam_lbl + [("overhead camera at the bay", bay_cam_point(), (0.60, 0.13))])
+    sc.step(f"6/{n}", "The cameras: two Pi 5 units on tray A, standing in front of or beside their instruments and "
+            "looking back, so they keep the room out of the picture, and an overhead one at the back of the bay, above "
+            "Kardex's product envelope, looking down on the presented tray.", 3.2, None, hold=2.6, cam_to=CAM_S_CAMS,
+            still=True, labels=cam_lbl + [("overhead camera at the bay", bay_cam_point(), (0.60, 0.13))])
     return sc.save()
 
 
@@ -1401,10 +1401,10 @@ def still_cameras(data, idata, k="E"):
     top = max(v["top_over_floor_mm"] for kk, v in cl["tray_units"].items() if kk.startswith(k))
     sc.step("", f"Tray {k} at the opening: {len(TRAY_CAMS[k])} Pi 5 units, each on a 2020 post with a sliding block and "
             f"a pan-tilt head, aimed at an instrument's working face; the highest stands {top:.0f} mm over the tray "
-            f"floor, under the 727.5 mm product height. The overhead unit stands on a bar at the back of the bay, "
-            f"{cl['bay_margin_mm']:.0f} mm over Kardex's product envelope and {cl['bay_margin_to_F1_mm']:.0f} mm "
-            "under the tray stored above the opening.", 0.1, None, hold=0.0, labels=lbl, still=True)
-    return sc.save()
+            f"floor. They stand in front of or beside their instruments and look back, away from the opening. The overhead "
+            f"unit sits on a bar at the back of the bay, {cl['bay_margin_mm']:.0f} mm over Kardex's product envelope and "
+            f"{cl['bay_margin_to_F1_mm']:.0f} mm under the tray stored above the opening.", 0.1, None, hold=0.0, labels=lbl,
+            still=True)
 
 
 # ----------------------------------------------------------------------------------------------- vlm_hookups

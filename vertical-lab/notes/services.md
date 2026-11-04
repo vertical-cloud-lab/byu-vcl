@@ -153,11 +153,11 @@ its close-ups. Its size and place (`UPS`, `UPS_AT` in `services.py`) are unchang
 | Tray | Slot | Load, W | What dominates | Share that is our estimate |
 |---|---|---|---|---|
 | A | R2 | 297 | OT-2, 100-180 W active (Opentrons) | 37 % (the CubXL's 100 W) |
-| B | R3 | 49 | the doser, 40 W (ours) | 84 % |
+| B | R3 | 45 | the doser, 40 W (ours) | 91 % |
 | C | F1 | 1244 | H2D, 1050 W average, 1320 W max at 110 V (Bambu, snippet) | 3 % |
-| D | R1 | 1166 | SEM 500 VA (TM4000PlusIII; the II's figure wasn't found), XRD's 600 W tube | 5 % |
+| D | R1 | 1207 | SEM 500 VA (TM4000PlusIII; the II's figure wasn't found), XRD's 600 W tube | 8 % (the OpenFlexure array's 60 W) |
 | E | R4 | 630 | three instruments with no published rating, 200 W each (ours) | 66 % |
-| F | F2 | 3654 | Nabertherm NAT 15/65, 2.8 kW (Nabertherm) | 3 % |
+| F | F2 | 3654 | Nabertherm NAT 15/65, 2.8 kW (Nabertherm) | 23 % (the polisher's 740 W) |
 
 Tray F is over the UPS. Its furnace's heaters have to pause in transit, and its thermal mass carries the few seconds.
 At 120 V the furnace alone would draw 23 A, so each dock carries L1, L2, N and PE on a 30 A breaker. That gives 208 V
@@ -176,7 +176,7 @@ and 120 V, 5 kVA continuous at 80 %, inside the contacts' 39 A.
 
   | Case | Heat, W | Rise with no ventilation (estimate) | Air for a 5 K rise | Air for a 10 K rise |
   |---|---|---|---|---|
-  | Everything on at its rating | 7040 | 23 K | 4200 m³/h | 2100 m³/h |
+  | Everything on at its rating | 7077 | 23 K | 4225 m³/h | 2113 m³/h |
   | Tray C printing in storage, the furnace holding at a third of 2.8 kW | 2277 | 7 K | 1360 m³/h | 680 m³/h |
   | Idle: controllers, cameras and UPSs, about 60 W a tray (ours) | 360 | 1 K | 215 m³/h | 107 m³/h |
 
@@ -282,9 +282,10 @@ back of the bay.
 - **Depth.** The bar is 72 mm in front of the shutter's plane; the head's back is 24 mm clear of the shutter.
 - **What it sees.** The Wide sees 95 % of the presented tray's floor. Its axis meets the floor 65 mm in front of the
   tray's centre, 1028 mm away. It misses two triangles at the back corners nearest it. The HQ sees 7 %: the detail.
-- **Against the arm** (`bay_arm_clearance()`, `cameras.bay_camera.arm` in `services.json`): 320 of `reach.py`'s
+- **Against the arm: 295 mm clear** (`bay_arm_clearance()`, `cameras.bay_camera.arm` in `services.json`) over 320 of `reach.py`'s
   poses, the workflow's seats and every reachable point of the presented tray on a 100 mm grid, gripper down, 100 and
-  250 mm over its floor. It draws the UR10e as 75 mm capsules round its links from the shoulder to the TCP.
+  250 mm over its floor. It draws the UR10e as 75 mm capsules round its links from the shoulder to the TCP. The
+  nearest approach is 250 mm over the tray, near the middle of its back, with the highest joint at 1378 mm.
 - Round 4's unit hung from the bar at 1735 mm, tilted 58°; round 5's stood on a 90 mm post on a bar at 1650 mm.
 
 **Its own clip** (`services.py baycam`, [`out/bay_camera.gif`](../out/bay_camera.gif); PR #318: "It probably deserves
