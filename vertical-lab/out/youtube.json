@@ -213,6 +213,16 @@
     "commit": "44e8548",
     "uploaded": "2026-11-03T21:36:49Z",
     "title": "Vertical cloud lab, set up from scratch: VLM, floor machines, arms, every tray loaded",
+    "privacy": "unlisted",
+    "superseded_by": "pLrpXrrSmAs"
+   },
+   {
+    "id": "pLrpXrrSmAs",
+    "sha256": "498230b8ecbb2b449b55c70bf35c6edc8423b49badd92b9dbf3c2d3b8a6acb89",
+    "bytes": 13526947,
+    "commit": "49ab594",
+    "uploaded": "2026-11-04T08:14:35Z",
+    "title": "Vertical cloud lab, set up from scratch: VLM, floor machines, arms, every tray loaded",
     "privacy": "unlisted"
    }
   ],

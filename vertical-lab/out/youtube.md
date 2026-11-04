@@ -52,7 +52,7 @@ Every MP4 under `out/mp4/` and its video on the lab's channel (unlisted). Writte
 | [`instruments_round2_tour.mp4`](mp4/instruments_round2_tour.mp4) | 1:47 | [7eXydqM6OAk](https://www.youtube.com/watch?v=7eXydqM6OAk) | [ki0yLSfdTIk](https://www.youtube.com/watch?v=ki0yLSfdTIk) |
 | [`instruments_round4_tour.mp4`](mp4/instruments_round4_tour.mp4) | 3:49 | [WG_DAtSHg50](https://www.youtube.com/watch?v=WG_DAtSHg50) | [IEbhMjcAUOQ](https://www.youtube.com/watch?v=IEbhMjcAUOQ) |
 | [`instruments_tour.mp4`](mp4/instruments_tour.mp4) | 6:22 | [J7EJQsmyAtk](https://www.youtube.com/watch?v=J7EJQsmyAtk) | [ISyVIHtmvZc](https://www.youtube.com/watch?v=ISyVIHtmvZc) |
-| [`setup_lab.mp4`](mp4/setup_lab.mp4) | 1:53 | not uploaded | [bITROBu1NNE](https://www.youtube.com/watch?v=bITROBu1NNE) |
+| [`setup_lab.mp4`](mp4/setup_lab.mp4) | 2:22 | [pLrpXrrSmAs](https://www.youtube.com/watch?v=pLrpXrrSmAs) | [bITROBu1NNE](https://www.youtube.com/watch?v=bITROBu1NNE) |
 | [`vacuum_press.mp4`](mp4/vacuum_press.mp4) | 0:49 | [UGTGpEfyUeQ](https://www.youtube.com/watch?v=UGTGpEfyUeQ) |  |
 | [`vertical_lab_full.mp4`](mp4/vertical_lab_full.mp4) | 3:03 | [FHjg3R7of4g](https://www.youtube.com/watch?v=FHjg3R7of4g) | [ro-pUo0ie_M](https://www.youtube.com/watch?v=ro-pUo0ie_M), [9A9XuBT0BYk](https://www.youtube.com/watch?v=9A9XuBT0BYk), [xI1d0kkX8VA](https://www.youtube.com/watch?v=xI1d0kkX8VA) |
 | [`vlm_assembly.mp4`](mp4/vlm_assembly.mp4) | 0:27 | not uploaded |  |
