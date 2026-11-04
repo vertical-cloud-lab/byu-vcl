@@ -263,6 +263,9 @@ FLAIME's DAG (the DOE Genesis proposal) is the same chain with four coarser node
 - [`longform.py`](longform.py) joins the parts below, with a title card before each chapter.
 - [`out/longform.json`](out/longform.json) lists every part, where it came from and where it starts.
 - [`out/longform_youtube.txt`](out/longform_youtube.txt) is the video's description, with its chapter timestamps.
+- **The upload is the 20:47 UTC build,** with round 6's chapter 1 followed by the press's catch-ring clip. A rebuild
+  with the re-rendered chapter 1 (41 min 18 s) was refused by YouTube's daily upload limit. To upload it once
+  the limit resets: `python3 longform.py; python3 longform.py upload`.
 - The MP4 (1280 × 720 at 15 fps, 140 MB) is too big for git, so it isn't committed. `python3 longform.py` rebuilds it
   from the committed clips, and its sha256 is in [`out/youtube.json`](out/youtube.json).
 

@@ -1,20 +1,20 @@
 {
  "name": "alloy_route",
- "seconds": 1001.0,
+ "seconds": 1038.0,
  "card_seconds": 3.0,
  "chapters": [
   {
    "key": "alloy_charge",
    "title": "1/5  The charge",
    "start_s": 16.5,
-   "seconds": 245.1,
+   "seconds": 282.2,
    "source": "alloy_charge.py",
    "mp4": "out/mp4/alloy_charge.mp4"
   },
   {
    "key": "alloy_atomize",
    "title": "2/5  Melt and atomize",
-   "start_s": 271.4,
+   "start_s": 308.5,
    "seconds": 197.4,
    "source": "alloy_atomize.py",
    "mp4": "out/mp4/alloy_atomize.mp4"
@@ -22,7 +22,7 @@
   {
    "key": "alloy_print",
    "title": "3/5  Sieve and print",
-   "start_s": 478.7,
+   "start_s": 515.8,
    "seconds": 198.0,
    "source": "alloy_print.py",
    "mp4": "out/mp4/alloy_print.mp4"
@@ -30,7 +30,7 @@
   {
    "key": "alloy_workflow",
    "title": "4/5  Cut and test",
-   "start_s": 686.6,
+   "start_s": 723.6,
    "seconds": 161.4,
    "source": "alloy_workflow.py",
    "mp4": "out/mp4/alloy_workflow.mp4"
@@ -38,7 +38,7 @@
   {
    "key": "alloy_characterize",
    "title": "5/5  Characterize",
-   "start_s": 857.9,
+   "start_s": 894.9,
    "seconds": 143.1,
    "source": "alloy_characterize.py",
    "mp4": "out/mp4/alloy_characterize.mp4"
