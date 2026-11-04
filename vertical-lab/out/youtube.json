@@ -2,6 +2,17 @@
  "channel": "UCKC7WzMu6QEh7O55zZlT2lw",
  "note": "Every upload of a file under out/mp4, oldest first. sha256 is of the file uploaded; the newest entry whose sha256 matches the file as it is now is its current video.",
  "videos": {
+  "alloy_atomize.mp4": [
+   {
+    "id": "znw55hE_dGs",
+    "sha256": "c2f088f3907236683240a5f74cb91f75452514a1d206787edf63c392bd957d21",
+    "bytes": 11651198,
+    "commit": "2464301",
+    "uploaded": "2026-11-04T06:43:45Z",
+    "title": "Vertical cloud lab, alloy route 2/4: melt and atomize in the rePowder (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
   "alloy_route.mp4": [
    {
     "id": "9qnGCtPwCTM",
@@ -9,6 +20,16 @@
     "bytes": 22989712,
     "commit": "2a010a7",
     "uploaded": "2026-11-03T22:31:22Z",
+    "title": "Vertical cloud lab: the alloy route, start to finish (charge cups to tensile bar)",
+    "privacy": "unlisted",
+    "superseded_by": "GE33p9N0x7c"
+   },
+   {
+    "id": "GE33p9N0x7c",
+    "sha256": "cc433ec6ee6136c5b9366973d1d3551065a0670397f5e0d9b8196087dc95c968",
+    "bytes": 31345363,
+    "commit": "b5e0594",
+    "uploaded": "2026-11-04T06:43:43Z",
     "title": "Vertical cloud lab: the alloy route, start to finish (charge cups to tensile bar)",
     "privacy": "unlisted"
    }
@@ -152,6 +173,17 @@
     "commit": "4dd3bdc",
     "uploaded": "2026-11-03T21:22:38Z",
     "title": "Vertical cloud lab: tray docking couplings, a tethered tray, and the cabling (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "vlm_tall_opening.mp4": [
+   {
+    "id": "NDFdZDjTXlo",
+    "sha256": "820da40526a3f8d32103c72971862a46b9af4182b298c396ccc24df1aa65806c",
+    "bytes": 2148525,
+    "commit": "180ad6e",
+    "uploaded": "2026-11-04T06:43:45Z",
+    "title": "Vertical cloud lab: vlm tall opening (3-D animation)",
     "privacy": "unlisted"
    }
   ],
