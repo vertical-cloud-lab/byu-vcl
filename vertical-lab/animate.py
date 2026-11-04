@@ -3,7 +3,7 @@ UR arm on a mobile base working at its access opening.
 
     xvfb-run -a python3 animate.py assembly      # the machine goes together            -> out/vlm_assembly.gif, out/mp4/...
     xvfb-run -a python3 animate.py loading       # opaque, then see-through; the trays are loaded one piece at a time
-    xvfb-run -a python3 animate.py workflow      # the arm doses a powder with the multi-doser and takes it to the CubXL
+    xvfb-run -a python3 animate.py workflow      # the doser doses 25 mg of atomized powder; the CubXL adds electrolyte
     xvfb-run -a python3 animate.py disassembly   # unloaded and taken apart
     python3 animate.py full                      # -> out/mp4/vertical_lab_full.mp4: assembly, loading, workflow
     PREVIEW=1 xvfb-run -a python3 animate.py workflow   # last frame of each sub-step -> /tmp/preview_*.png
@@ -571,17 +571,45 @@ def stream_points(L: Lab, t: float, on: float) -> np.ndarray:
 
 
 def workflow(data):
+    """Round 2's run, re-scripted (PR #318: "Why are you dosing salt?"): the multi-doser doses 25 mg of an atomized
+    powder, and the CubXL on tray A, laid out for DAL's copper corrosion screen (instruments_lab.cubxl_corrosion), adds
+    electrolyte to it: DAL's powder reactivity test (digital-alloy-lab PR #180, alloy-corrosion/cubxl-setup.md section
+    8, at aeda51a). Salt is never dosed as a powder: DAL's section 8 rules that out ("Making electrolyte from solid NaCl
+    on the deck is possible but pointless here"); the electrolyte is a stock the P20 draws from."""
     import carousel as C
+    import cubxl_rig
+    import instruments_lab as IL
     sc, L = new_scene("vlm_workflow", data, highlight=MODULE)
     rb, car = L.robot, L.carousel
+    cub = cubxl_rig.CubRig(L)
+    test = IL.powder_test()
+    cub.pose(cubxl_rig.state_at(test, 0.0))
+    q = IL.POWDER_TEST
     sc.cam = list(CAM_WIDE)
     L.extra_gauges = [("Arm", f"{ROBOT_NAME}, parked"), ("Doser", "module 1 at the station"),
-                      ("Load cell", "0.000 g")]
+                      ("Load cell", "0.0 mg"), ("CubXL P20", "parked, no tip")]
     L.apply_state()
     n = 6
+    # the powder: a heap on the vial's floor at its angle of repose, to scale (25 mg at a poured 1.4 g/cm3 is 18 mm3:
+    # a cone 6 mm across and 2 mm tall), growing as the load cell counts; L.powder_h stays 0 (no layer under it)
+    rep = math.radians(34.0)
+    vol = q["mg"] / 1.4
+    r_heap = (3 * vol / (math.pi * math.tan(rep))) ** (1 / 3)
+    heap = pv.Cone(center=(0, 0, 0.5), direction=(0, 0, -1), height=1.0, radius=1.0, resolution=40).triangulate()
+    sc.add("vial/heap", heap, P.POWDER, "vial_heap")
+    sc.parent["vial_heap"] = "vial"
+    sc.alpha["vial/heap"] = 0.0
+
+    def set_heap(mg):
+        k = (max(mg, 1e-3) / q["mg"]) ** (1 / 3)
+        sc.gmat["vial_heap"] = T((0, 0, P.VIAL_FLOOR)) @ S((r_heap * k, r_heap * k, r_heap * math.tan(rep) * k))
+        sc.alpha["vial/heap"] = 1.0 if mg > 0.05 else 0.0
+    set_heap(0.0)
+    area = math.pi * (P.VIAL_R - P.VIAL_WALL) ** 2                    # the vial's floor, mm2: 200 uL is 0.39 mm deep
     # ------------------------------------------------------------------ 1. tray B down
-    cap = "An example run: dose 0.5 g of a powder from the multi-doser, then add liquid to it in the CubXL. The arm " \
-          "asks for tray B: the extractor pulls it off its supports, carries it down and pushes it into the opening."
+    cap = f"An example run: the multi-doser doses {q['mg']:.0f} mg of an atomized powder and the CubXL adds " \
+          "electrolyte to it, DAL's powder reactivity test (PR #180, cubxl-setup.md §8: 10-50 mg of each atomizer " \
+          "run's powder; the metal it gives up tracks its oxide). The arm asks for tray B, the powder doser."
     sc.step(f"1/{n}", cap, 1.0, None, hold=0.5,
             labels=[("tray B: powder dosing", (V.TRAY_W / 2 - 300, *V.SLOTS["R3"]), (0.86, 0.34))])
     L.fetch("B", f"1/{n}", cap, cam=CAM_WORK)
@@ -592,8 +620,8 @@ def workflow(data):
     p_rack = tray_world("B", seat + (0, 0, grasp_z))
     car_xy = LOADS["B"][1][1:]
     vs = C.vial_seat()                                       # rig frame; the rig is turned 90 deg on the tray
-    cup = np.array([car_xy[0] - vs[1], car_xy[1] + vs[0], V.T_FLOOR + vs[2]])
-    p_cup = tray_world("B", cup + (0, 0, 32.0))
+    cupc = np.array([car_xy[0] - vs[1], car_xy[1] + vs[0], V.T_FLOOR + vs[2]])
+    p_cup = tray_world("B", cupc + (0, 0, 32.0))
     cap = f"The {ROBOT_NAME} takes an empty 20 mL vial from the rack at the front of the tray and sets it in the " \
           "multi-doser's cup, on its 100 g load cell under the station."
     L.note(0, "Arm", "vial: rack to doser")
@@ -608,45 +636,47 @@ def workflow(data):
     sc.step(f"2/{n}", cap, 0.9, rb.line_to(level(p_cup + (0, -190, 0))), hold=0.05)
     sc.step(f"2/{n}", cap, 1.2, rb.joint_to(PARK_RAD), hold=0.1, cam_to=CAM_MID)
     L.note(0, "Arm", "parked, clear of the doser")
-    # ------------------------------------------------------------------ 3. dose
-    cap = f"The carousel indexes powder module {MODULE + 1} (green) to the station, 8 chain links per module, and the " \
-          "Actuonix P16 lifts the electronics carriage and docks it under the module's plate, magnet on."
+    # ------------------------------------------------------------------ 3. dose the atomized powder
+    cap = f"Module {MODULE + 1} (green) holds atomized AlSi10Mg from a rePowder run, its 20-63 µm cut. The carousel " \
+          "indexes it to the station, 8 chain links per module, and the Actuonix P16 docks the electronics carriage " \
+          "under its plate, magnet on."
     L.note(1, "Doser", f"indexing to module {MODULE + 1}")
     sc.step(f"3/{n}", cap, 2.6, car.to(shift=car.index_to(MODULE)), hold=0.2, cam_to=CAM_DOSE,
-            labels=[(f"module {MODULE + 1}", p_cup + (0, 80, 90), (0.74, 0.20))])
+            labels=[(f"module {MODULE + 1}: atomized AlSi10Mg", p_cup + (0, 80, 90), (0.74, 0.20))])
     L.note(1, "Doser", f"module {MODULE + 1} docking")
     cap = cap + " The other modules are drawn see-through: the docked one rides inside the loop."
     sc.step(f"3/{n}", cap, 1.4, both(car.to(ext=C.DOCK_EXT, magnet_on=True), car.ghost(0.18)), hold=0.2)
-    cap = f"Module {MODULE + 1} tilts {C.CP.TILT_DOSE_WORLD:.0f}°, cap end up into the loop, and the auger turns through " \
-          "the steel pinion: the powder drops through the D-cut funnel into the vial while the load cell counts it. Then " \
-          "hold, tilt back, reverse one turn at rest, undock (powder-doser's leakage study)."
+    cap = f"Module {MODULE + 1} tilts {C.CP.TILT_DOSE_WORLD:.0f}°, cap end up, and the auger turns in short steps " \
+          f"until the load cell reads {q['mg']:.0f} mg: a heap 6 mm across, drawn to scale. DAL asks for a weighed " \
+          "10-50 mg; mg resolution is a requirement on the doser (PR #270 §5), not yet shown. Then tilt back, reverse " \
+          "one turn at rest, undock."
     L.note(1, "Doser", f"module {MODULE + 1} tilted, dosing")
     sc.step(f"3/{n}", cap, 1.6, car.to(tilt=C.TILT), hold=0.1)
     spin0 = car.state["spin"]
-    st = car.to(spin=spin0 + 2 * math.pi * 2.0)
+    st = car.to(spin=spin0 + 2 * math.pi * 0.25)
 
     def dose(u):
         st(u)
-        on = 1.0 if 0.05 < u < 0.95 else 0.0
-        pts = stream_points(L, u * 6.0, on)
+        on = 1.0 if 0.05 < u < 0.90 else 0.0
+        pts = stream_points(L, u * 6.0, on)[::3]                # a thin trickle: tens of mg, not grams
         sc.alpha["stream"] = 1.0 if len(pts) else 0.0
         if len(pts):
             sc.set_mesh("stream", pv.PolyData(pts))
-        L.powder_h = 14.0 * min(1.0, max(0.0, (u - 0.12) / 0.83))
-        L.set_fill()
-        L.note(2, "Load cell", f"{DOSE_G * min(1.0, max(0.0, (u - 0.12) / 0.83)):.3f} g")
+        mg = q["mg"] * min(1.0, max(0.0, (u - 0.12) / 0.80))
+        set_heap(mg)
+        L.note(2, "Load cell", f"{mg:.1f} mg")
     sc.parent["stream"] = L.eq_groups["B"][1]
     sc.step(f"3/{n}", cap, 3.6, dose, hold=0.4, live=False)
     sc.alpha["stream"] = 0.0
     L.note(1, "Doser", f"module {MODULE + 1} back, undocking")
     sc.step(f"3/{n}", cap, 1.2, car.to(tilt=0.0), hold=0.1)
-    sc.step(f"3/{n}", cap, 0.8, car.to(spin=spin0 + 2 * math.pi), hold=0.1)
+    sc.step(f"3/{n}", cap, 0.8, car.to(spin=spin0 - 2 * math.pi * 0.75), hold=0.1)
     sc.step(f"3/{n}", cap, 1.0, both(car.to(ext=0.0, magnet_on=False), car.ghost(1.0)), hold=0.2)
     L.note(1, "Doser", f"module {MODULE + 1} undocked")
     # ------------------------------------------------------------------ 4. vial to the arm's base, tray B up
     buf = np.array(L.buffer_seat)
     p_buf = (sc.world("amr") @ np.r_[buf + (0, 0, grasp_z), 1.0])[:3]
-    cap = f"The arm takes the vial out ({DOSE_G:.3f} g in it) and stands it in the holder on its own base, so the " \
+    cap = f"The arm takes the vial out ({q['mg']:.1f} mg in it) and stands it in the holder on its own base, so the " \
           "VLM can swap trays. Tray B goes back to its slot and its power."
     L.note(0, "Arm", "vial: doser to its base")
     sc.step(f"4/{n}", cap, 1.2, rb.joint_to(Tw=level(p_cup + (0, -190, 0))), hold=0.05, cam_to=CAM_WORK)
@@ -659,47 +689,45 @@ def workflow(data):
     sc.step(f"4/{n}", cap, 1.2, rb.joint_to(PARK_RAD), hold=0.1)
     L.note(0, "Arm", "parked, vial on its base")
     L.store("B", f"4/{n}", cap, cam=CAM_OPEN)
-    # ------------------------------------------------------------------ 5. tray A down, vial into the CubXL
-    cap = "Tray A (liquid handling) comes down. The CubXL's gantry is parked at the back, so the arm can put the vial " \
-          "in the free seat of its rack."
+    # ------------------------------------------------------------------ 5. tray A down, the vial into the CubXL's holder
+    cap = "Tray A, the corrosion station, comes down: the CubXL laid out for DAL's copper screen, its head parked at " \
+          "the back. The arm stands the vial in the free front seat of Ben's 9-vial holder, beside the seawater and " \
+          "sulfide stocks (the seat a FeSO4 vial takes on other nights)."
     L.fetch("A", f"5/{n}", cap, cam=CAM_CUB)
-    sc.step(f"5/{n}", cap, 1.0, L.cub_to(x=0.2, y=1.0, z=1.0), hold=0.2)
-    slot = (sc.world(L.cub) @ np.r_[CUB_SLOT, 1.0])[:3]          # tray A is at the opening now
-    p_slot = slot + (0, 0, grasp_z - 8.0)
-    L.note(0, "Arm", "vial: base to CubXL")
+    p_slot = cub.deck_world(*q["seat"], 0.0) + (0, 0, grasp_z)
+    L.note(0, "Arm", "vial: base to the CubXL")
     pick(L, rb, f"5/{n}", cap, down(p_buf), down(p_buf + (0, 0, 120)), "vial")
-    place(L, rb, f"5/{n}", cap, down(p_slot), down(p_slot + (0, 0, 130)), L.cub,
-          labels=[("CubXL: free seat in its rack", p_slot + (0, 0, 40), (0.74, 0.24))])
+    place(L, rb, f"5/{n}", cap, down(p_slot, spin=0.0), down(p_slot + (0, 0, 130), spin=0.0), cub.body,
+          labels=[("CubXL: the holder's free seat", p_slot + (0, 0, 40), (0.74, 0.24))])
     sc.step(f"5/{n}", cap, 1.4, rb.joint_to(PARK_RAD), hold=0.1)
     L.note(0, "Arm", "parked")
-    # ------------------------------------------------------------------ 6. CubXL adds liquid; tray A up
-    cap = "The CubXL's gantry brings its pipette over the vial and adds the liquid; the vial stays there for the " \
-          "measurement. Tray A goes back to its slot, where it has power, so the CubXL keeps working while it is stored."
-    import equipment
-    tr = equipment.CUBXL["travel"]
-    px = (CUB_SLOT[0] + 50.0 + tr[0] / 2) / tr[0]                       # pipette at cx - 50 (equipment.cubxl)
-    py = (CUB_SLOT[1] + 80.0 + equipment.CUBXL["D"] / 2 - 150.0) / tr[1]   # pipette at gy - 80
-    sc.step(f"6/{n}", cap, 2.0, L.cub_to(x=px, y=py), hold=0.1, cam_to=CAM_CUB,
-            labels=[("CubXL pipette", p_slot + (0, 0, 260), (0.74, 0.24))])
-    sc.step(f"6/{n}", cap, 1.0, L.cub_to(z=0.55), hold=0.1)
-    tip = lambda: (sc.world(f"{L.cub}_tools") @ np.r_[CUB_SLOT[0], CUB_SLOT[1], 100.0 + 0.5 * tr[2] - 40.0 + 0.0, 1.0])[:3]  # noqa: E731
+    # ------------------------------------------------------------------ 6. the P20 adds 200 uL of ASW; tray A up
+    each = q["ul"] / q["n"]
+    cap = f"The CubXL's own P20 (1-20 µL) takes a 20 µL tip, the capper lifts the seawater cap, and {q['n']} " \
+          f"transfers of {each:.0f} µL put {q['ul']:.0f} µL on the powder, {q['ul'] / area:.1f} mm deep (to scale). " \
+          "The copper deck's chloride stock is seawater; DAL's §8 names 0.6 M NaCl."
+    cam6 = [tuple(cub.deck_world(560.0, -420.0, 420.0)), tuple(cub.deck_world(250.0, 80.0, 30.0)), (0, 0, 1)]
 
-    def pour(u):
-        L.liquid_h = 22.0 * u
+    def on_state(s):
+        L.liquid_h = s["vial"] / area
         L.set_fill()
-        on = 0.08 < u < 0.95
-        sc.alpha["pipette stream"] = 1.0 if on else 0.0
-        if on:
-            top = tip()
-            bot = (sc.world("vial") @ np.r_[0, 0, P.VIAL_FLOOR + L.powder_h + L.liquid_h, 1.0])[:3]
-            sc.gmat["pstream"] = T(bot) @ S((1, 1, max(1.0, top[2] - bot[2])))
-    sc.step(f"6/{n}", cap, 2.2, pour, hold=0.3)
-    sc.alpha["pipette stream"] = 0.0
-    sc.step(f"6/{n}", cap, 1.0, L.cub_to(z=1.0), hold=0.1)
+        if s["tip"] == "head":
+            L.note(3, "CubXL P20", f"{s['tip_ul']:.1f} µL in the tip; vial {s['vial']:.0f} µL"
+                   + (f" ({s['xfer']})" if s["xfer"] else ""))
+        elif s["tip"] == "waste":
+            L.note(3, "CubXL P20", f"tip off; vial {s['vial']:.0f} µL")
+    sc.step(f"6/{n}", cap, 2.4, cub.play(test, "start", "open", on_state), hold=0.1, cam_to=cam6,
+            labels=[("CubXL P20 and capper", cub.deck_world(250.0, 120.0, 140.0), (0.70, 0.18)),
+                    ("seawater (ASW) stock", cub.deck_world(318.0, 101.0, 75.0), (0.84, 0.46))])
+    sc.step(f"6/{n}", cap, 3.2, cub.play(test, "open", "first", on_state), hold=0.1)
+    sc.step(f"6/{n}", cap, 5.0, cub.play(test, "first", "end", on_state), hold=0.4)
+    cap = "DAL's test then holds the liquid on the powder for a set time and sends it to ICP-MS with the corrosion " \
+          "tubes: dissolved metal per gram, run by run. Tray A goes back up with the vial, to a slot with power."
     L.store("A", f"6/{n}", cap, cam=CAM_WIDE)
     L.note(0, "Arm", "parked; next request")
-    sc.step(f"6/{n}", "Done: the dosed vial is in the CubXL on tray A, in storage and powered. The arm and the opening "
-            "are free for the next request.", 1.0, None, hold=2.5, still=True)
+    sc.step(f"6/{n}", f"Done: {q['mg']:.0f} mg of atomized powder under {q['ul']:.0f} µL of seawater in the CubXL on "
+            "tray A, stored and powered. The arm and the opening are free for the next request.", 1.0, None, hold=2.5,
+            still=True)
     print(f"highest forearm/wrist point {rb.max_z_world:.0f} mm; opening top {V.Z_OPEN_TOP:.0f} mm", flush=True)
     return sc.save()
 
