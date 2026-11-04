@@ -891,6 +891,12 @@ piece up from its base.
 
 ![The CubXL's pipette over its rack, the vials in half section](out/instruments/cubxl_lh.gif)
 
+The same PR also does the spec's other two items:
+- Tray D in [the line](#the-line) now carries the OpenFlexure array:
+  [on YouTube](https://www.youtube.com/watch?v=rYAapCN5nIE).
+- Trays G–I are now in [the set-up scene](#the-lab-set-up-from-scratch), in a Shuttle assumed 4450 mm tall:
+  [on YouTube](https://www.youtube.com/watch?v=pLrpXrrSmAs).
+
 What is assumed, model by model:
 - **OT-2.** It comes from Opentrons' reference STEP (`lab_models/vendor.py`). The moving parts are split out of it by
   bounding box:

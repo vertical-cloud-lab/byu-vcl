@@ -18,3 +18,26 @@ Stacked on PR #318. Comment `@claude` on this PR to start it. What to do:
 3. **Trays G–I in the set-up scene.** Add `fab_trays.py`'s trays G, H and I to `setup_lab.py` (`NEW_TRAYS`,
    `ROUND4_TRAY`), check them with `python3 setup_lab.py fit`, then re-render.
 4. Upload the new videos, unlisted, with `youtube/yt_service.py`.
+
+## Status (2026-11-04)
+
+Checked against PR #318's branch at `dc50de4`: none of the four items had been done there or was in progress, so
+all four were done on [PR #320](https://github.com/vertical-cloud-lab/byu-vcl/pull/320), on top of that branch.
+
+1. **Done.** [`instruments_round2.py`](../../instruments_round2.py), loaded by `tour.MODULES`, has the OT-2, the H2D,
+   the A1 mini, the CubXL set up for liquid handling, and the multi-doser. The doser plays through `TOURS` with its own
+   `layout.placements(State(...))`. The README's
+   [section](../../README.md#round-5-next-round-2s-equipment-at-work-with-the-insides-showing) has what each clip shows
+   and what is assumed.
+2. **Done.** `line.TRAY_LOADS["D"]` has the array at (792, -148), and `vlm_line` is re-rendered (70 s).
+   `setup_lab.py` no longer adds the array itself, which would have placed it twice.
+3. **Done.** Trays G-I are in `setup_lab.py`, and `fit` passes for every item. The 3950 mm unit's six slots are full,
+   so this scene alone assumes a 4450 mm unit: G and I take new top slots, and H the front column under the opening.
+   The scene is re-rendered (2 min 22 s).
+4. **Done.** Every new video is uploaded unlisted (`youtube_upload.py`) and recorded in `out/youtube.json`. The OT-2
+   clip and the join were uploaded a second time after the OT-2 got a close-up on the trash.
+
+Left over:
+- `services.TRAY_ITEMS["D"]` (tray D's power list) still names the two freestanding OpenFlexures.
+- `services.add_cameras` puts no cameras on trays G-I.
+
