@@ -651,7 +651,7 @@ def workflow(data):
     sc.step(f"3/{n}", cap, 1.4, both(car.to(ext=C.DOCK_EXT, magnet_on=True), car.ghost(0.18)), hold=0.2)
     cap = f"Module {MODULE + 1} tilts {C.CP.TILT_DOSE_WORLD:.0f}°, cap end up, and the auger turns in short steps " \
           f"until the load cell reads {q['mg']:.0f} mg: a heap 6 mm across, drawn to scale. DAL asks for a weighed " \
-          "10-50 mg; mg resolution is a requirement on the doser (PR #270 §5), not yet shown. Then tilt back, reverse " \
+          "10-50 mg; mg resolution is a requirement on the doser (byu-vcl PR #270 §5), not yet shown. Then tilt back, reverse " \
           "one turn at rest, undock."
     L.note(1, "Doser", f"module {MODULE + 1} tilted, dosing")
     sc.step(f"3/{n}", cap, 1.6, car.to(tilt=C.TILT), hold=0.1)

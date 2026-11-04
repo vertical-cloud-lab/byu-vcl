@@ -117,8 +117,8 @@ closest documented use, so the workflow shows it:
 
 1. Tray B: the doser's module 6 holds atomized AlSi10Mg from a rePowder run, its 20–63 µm cut. The auger turns in
    short steps until the load cell reads **25 mg**: a heap 6 mm across and 2 mm tall at a 34° angle of repose and an
-   assumed poured 1.4 g/cm³, drawn to scale. mg resolution on the doser's 100 g cell is a requirement (powder-doser
-   PR #270 §5), not a demonstrated figure.
+   assumed poured 1.4 g/cm³, drawn to scale. mg resolution on the doser's 100 g cell is a requirement ([byu-vcl
+   PR #270](https://github.com/vertical-cloud-lab/byu-vcl/pull/270) §5, which DAL cites), not a demonstrated figure.
 2. The arm brings the vial to tray A and stands it in the **spare seat** of Ben's holder (318, 35), which DAL keeps for
    a FeSO₄ vial on non-sulfide nights only.
 3. The CubXL's P20 takes a tip, the capper lifts the seawater cap, and **10 transfers of 20 µL** put **200 µL** on the
