@@ -14,11 +14,12 @@ compressed to a certain tonnage. Also, it would be better if it were a vacuum pr
   plug the 8.03 mm to flush on a 3.2 t program (load on the powder plus #222's 2 t reserve for the plug's press fit;
   ``vacuum_press.compaction``). Pressed with no air in it, the compact has none to throw molten metal out of the cup
   when it melts (DAL #140).
-* **What the arm does.** It sets the cup on the die's ejector pin at the shuttle's out position, then the plug in the
-  cup's mouth there, before the pin lowers the cup into F1: the gripper can't reach into the die's 31.8 mm bore. Then
+* **What the arm does.** It sets the cup on the die's ejector pin at the shuttle's out position, its bottom 10 mm in
+  the catch ring on F1 (``vacuum_press.CATCH``), so the cup stands in a socket rather than on a bare pin, with its plug
+  already in the mouth (set at the rack). The pin lowers the cup into F1: the gripper can't follow it into the die. Then
   it sets the punch, from a rest beside the press, into the die on the plug. The shuttle carries the die in, the guard
-  closes, the press runs, the die is vented with dry Ar and comes back out; the arm puts the punch back on its rest and
-  takes the cup off the raised pin.
+  closes, the press runs, the die is vented with dry Ar and comes back out; the arm puts the punch back on its rest,
+  the pin pushes the cup back up into the catch ring, and the arm lifts it out.
 
 Press frame (``vacuum_press``): origin on the tray floor at the centre of the press's footprint, z up, front = -y.
 """
@@ -38,7 +39,7 @@ HERE = Path(__file__).resolve().parent
 PRESS_AT = (-620.0, -50.0)              # tray B frame: the press's frame origin. Pump at x = -1180, stand front -411
 REST_LOCAL = (150.0, -300.0)            # the punch's rest, press frame: in front of the control tower
 REST_TOP = VPm.Z_PISTON                 # the rest's top: the punch stands in a pocket in it, flange up
-REST_POCKET = 26.0
+REST_POCKET = VPm.GUIDE                 # its nose in the pocket, its collar on the rest's top (as on the catch ring)
 GRIP_FLANGE = 0.455                     # 2F-85 closure on the punch's 50 mm flange, held level from the front:
 #                                         gap = 28 - 90 (c - 0.70)
 OPEN_FLANGE = 0.12
@@ -121,6 +122,7 @@ class VacPress:
             sc.add(f"vpress/sh/{k}", m, col, "vp_shuttle", specular=0.5)
         sc.add("vpress/sh/body_cut", cut["body"], C.STEEL, "vp_shuttle", specular=0.5, shown=False)
         sc.add("vpress/sh/f1_cut", cut["f1"], (0.47, 0.48, 0.52), "vp_shuttle", specular=0.5, shown=False)
+        sc.add("vpress/sh/catch_cut", cut["catch"], VPm.CATCH_C, "vp_shuttle", specular=0.5, shown=False)
         sc.add("vpress/sh/hole", cut["hole"], VPm.DARK, "vp_shuttle", shown=False)
         sc.add("vpress/pin", parts["pin"]["pin"][0], VPm.BRIGHT, "vp_pin", specular=0.5)
         sc.add("vpress/pin_cut", cut["pin"].translate((0, 0, VPm.CUP_BASE), inplace=False), VPm.BRIGHT, "vp_pin",
@@ -130,12 +132,12 @@ class VacPress:
         sc.add("vpress/punch_cut", cut["punch"], VPm.TOOL, "vp_punch", specular=0.5, shown=False)
         sc.add("vpress/oring", parts["punch"]["oring"][0], VPm.DARK, "vp_punch")
         sc.add("vpress/oring_cut", cut["oring"], VPm.DARK, "vp_punch", shown=False)
-        # the punch's rest: a post with a pocket the punch stands in, flange up
+        # the punch's rest: a post with a pocket for the punch's nose; its collar sits on the post's top, flange up
         rx, ry = REST_LOCAL
         rest = C._cylz(20.0, 0.0, REST_TOP, rx, ry).merge(C._box(rx - 45, rx + 45, ry - 45, ry + 45, 0, 10))
         sc.add("vpress/rest", rest, C.PRINT, "vpress", specular=0.2)
-        sc.add("vpress/rest_rim", C._ring(20.6, 16.4, REST_TOP - 0.3, REST_TOP + 0.6, rx, ry), (0.08, 0.40, 0.40),
-               "vpress")
+        sc.add("vpress/rest_rim", C._ring(VPm.NOSE_R + 3.2, VPm.NOSE_R + 0.5, REST_TOP - 0.3, REST_TOP + 0.6, rx, ry),
+               (0.08, 0.40, 0.40), "vpress")
         sc.add("vpress/hose", VPm.hose((0, 0, 300)), VPm.BRIGHT, "vpress", specular=0.4)
         sc.add("vpress/air", pv.PolyData(np.zeros((30, 3))), (0.35, 0.65, 0.95), "vpress", shown=False,
                style="points", point_size=5.0, render_points_as_spheres=True)
@@ -165,8 +167,8 @@ class VacPress:
             port = (sc.gmat["vp_shuttle"] @ np.r_[VPm.VP["port_local"], 1.0])[:3]
             sc.set_mesh("vpress/hose", VPm.hose(port))
         for whole, half in (("vpress/sh/body", "vpress/sh/body_cut"), ("vpress/sh/f1", "vpress/sh/f1_cut"),
-                            ("vpress/pin", "vpress/pin_cut"), ("vpress/punch", "vpress/punch_cut"),
-                            ("vpress/oring", "vpress/oring_cut")):
+                            ("vpress/sh/catch", "vpress/sh/catch_cut"), ("vpress/pin", "vpress/pin_cut"),
+                            ("vpress/punch", "vpress/punch_cut"), ("vpress/oring", "vpress/oring_cut")):
             sc.alpha[whole] = 0.0 if self.cutaway else 1.0
             sc.alpha[half] = 1.0 if self.cutaway else 0.0
         sc.alpha["vpress/sh/hole"] = 1.0 if self.cutaway else 0.0
@@ -219,8 +221,9 @@ class VacPress:
         sc = self.sc
         cup = sc.world(cup_group)
         top = plug_z + C.PLUG_L + 0.3
-        path = [(0, 0, plug_z - 10), (0, 0, top), (0, C.CUP_BORE_D / 2 - 0.5, top), (-4.0, 11.0, C.SLUG_L + 1.5),
-                (-VPm.BORE_R + 1, 0, VPm.PORT_Z - VPm.CUP_BASE), (-VPm.BODY_R - 18, 0, VPm.PORT_Z - VPm.CUP_BASE)]
+        path = [(0, 0, plug_z - 10), (0, 0, top), (0, C.CUP_BORE_D / 2 - 0.5, top), (-3.0, 7.6, C.SLUG_L + 1.5),
+                (-VPm.RING_D / 2 + 0.6, 0, VPm.PORT_Z - VPm.CUP_BASE),
+                (-VPm.BODY_R - 18, 0, VPm.PORT_Z - VPm.CUP_BASE)]
         P = [(cup @ np.r_[p, 1.0])[:3] for p in path]
         port = (sc.gmat["vp_shuttle"] @ np.r_[VPm.VP["port_local"], 1.0])[:3]
         W = sc.world("vpress")

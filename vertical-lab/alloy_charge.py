@@ -379,15 +379,18 @@ def movie():
     def charge_line():
         L.note(4, "Charge", f"{made['Al']} of 4 Al-10Si, {made['Cu']} of 4 Cu-10Ni cups made up")
 
-    def aim(p, offs, prefer, step=15):
+    def aim(p, offs, prefer, step=15, close=None, only=None):
         """The horizontal direction to aim a level gripper at p: the clear one nearest `prefer`. offs lists the poses
         the moves use, as (distance back along the direction, height up) from p; each must have an IK solution clear of
         everything (collide.py), and the arm's own links, with what it holds. Square to the tray, a target near the
         arm's base or off to one side folds the arm into itself; the cups and the punch are round, so any horizontal
-        approach grips them."""
+        approach grips them. `close`: the gripper's closure to check with (default: as it is now). `only`: the groups
+        the gripper may touch at the contact pose (default: whatever it touches there), so that an open fingertip
+        brushing the next cup in a rack rules a direction out."""
         import collide
         chk = rb.checker()
         W = chk.snapshot()
+        c = rb.close if close is None else close
         a0 = math.atan2(prefer[0], prefer[1])
         angs = sorted(range(-180, 180, step),
                       key=lambda g: abs((math.radians(g) - a0 + math.pi) % (2 * math.pi) - math.pi))
@@ -401,8 +404,10 @@ def movie():
                 contact = back < 1 and up < 3
                 good = False
                 for q in collide.ik_all(rb.model, Tb, rb.q):
-                    allow = chk.touching(q, rb.close, W) if contact else set()
-                    if not chk.collisions(q, rb.close, W, allow, first=True):
+                    allow = chk.touching(q, c, W) if contact else set()
+                    if only is not None:
+                        allow &= set(only)
+                    if not chk.collisions(q, c, W, allow, first=True):
                         good = True
                         break
                 if not good:
@@ -460,9 +465,10 @@ def movie():
     rack_dir = {}
 
     def rack_aim(i):
-        if i not in rack_dir:
+        if i not in rack_dir:            # open, the fingertips may touch cup i and its rack, not the cups beside it
             p0 = K.rack_cup(i) + (0, 0, CUP_GRASP)
-            rack_dir[i] = aim(p0, [(150, 30), (0, 0), (0, 30)], radial(p0))
+            rack_dir[i] = aim(p0, [(150, 30), (0, 0), (0, 30)], radial(p0), close=OPEN_CUP,
+                              only={f"cup{i}", f"plug{i}", "crack"})
         return rack_dir[i]
 
     # ------------------------------------------------------------------ 1. tray B down
@@ -476,7 +482,7 @@ def movie():
     sc.step(f"1/{n}", cap, 1.6, None, hold=2.2, cam_to=CAM_WORK,
             labels=[("charge rack: 4 x 5N Al and 4 x OFE Cu cups, a plug for each", K.rack_cup(1) + (0, 0, 70),
                      (0.16, 0.18)),
-                    ("vacuum press: Specac Atlas Autotouch 15T, our die round F1",
+                    ("vacuum press, on tray B since set-up: Specac Atlas Autotouch 15T, our die round F1",
                      K.vp.die_top() + (0, 0, 300), (0.10, 0.36)),
                     ("A&D HR-202i balance, 220 g x 0.1 mg", K.bal_cup() + (0, 0, 250), (0.40, 0.12)),
                     ("multi-doser (powder-doser #185), its station rebuilt for cups", tray_xyz(L, (250, -250, 560)),
@@ -793,10 +799,11 @@ def movie():
         rb.release(f"cup{i}")
         sc.step(st, cap, 0.6 * f, rb.line_to(dwn(g1 + (0, 0, 140))), hold=H(0.05))
         if detail:
-            cap = ("Then the cup, its plug riding in the mouth, goes to the vacuum press, a Specac Atlas Autotouch 15T. "
-                   "The arm stands it on the ejector pin of the lab's evacuable die, out on its shuttle, and the pin "
-                   "lowers it into F1, #222's steel sleeve." if first else
-                   "Onto the die's ejector pin, which lowers it into F1.")
+            cap = (f"Then the cup, its plug riding in the mouth, goes to the vacuum press (a Specac Atlas Autotouch 15T, on "
+                   f"tray B since set-up). The arm stands it on the raised ejector pin of the lab's evacuable die, its "
+                   f"bottom {VPm.CATCH:.0f} mm down in the catch ring on F1, so it can't tip; the pin lowers it into F1, "
+                   f"#222's steel sleeve." if first else
+                   "Into the die's catch ring, on the pin, which lowers it into F1.")
             L.note(0, "Arm", f"cup {i + 1}: rack to press")
         sc.step(st, cap, 1.2 * f, both(pre(lvl(c_r - d1 * 150 + (0, 0, 30), d1), lvl(c_r, d1), OPEN_CUP),
                                        rb.grip_to(OPEN_CUP)), hold=H(0.05))
@@ -811,8 +818,10 @@ def movie():
         sc.step(st, cap, 1.5 * f, pre(lvl(q_up - dq * 170 + (0, 0, 50), dq), lvl(q_up + (0, 0, 50), dq)), hold=H(0.05),
                 cam_to=cam_press if detail else None,
                 labels=[] if not first else [
-                    ("vacuum press: Specac Atlas Autotouch 15T", vp.die_top() + (120, 150, 260), (0.62, 0.20)),
-                    ("our evacuable die round F1, on its shuttle", vp.die_top() + (0, 0, 10), (0.16, 0.56)),
+                    ("vacuum press, on tray B since set-up: Specac Atlas Autotouch 15T", vp.die_top() + (120, 150, 260),
+                     (0.56, 0.20)),
+                    ("our evacuable die round F1, on its shuttle", vp.die_top() + (30, 0, -30), (0.16, 0.62)),
+                    (f"catch ring: holds the cup's bottom {VPm.CATCH:.0f} mm", vp.die_top() + (-12, -6, 0), (0.62, 0.70)),
                     ("vacuum pump, valves, gauge", vp.world("vpress", (-420, -20, 240)), (0.12, 0.34))])
         sc.step(st, cap, 0.8 * f, rb.line_to(lvl(q_up + (0, 0, 50), dq)), hold=H(0.05))
         sc.step(st, cap, 0.7 * f, rb.line_to(lvl(q_up + (0, 0, 1), dq)), hold=H(0.05))
@@ -877,8 +886,8 @@ def movie():
             cap = (f"Start: program 1 pumps up to {AP.SET_T:.1f} t ({AP.SET_T * 9.80665:.1f} kN). The ram lifts the die "
                    f"2 mm to the leadscrew, then drives the plug {VPm.TRAVEL:.1f} mm to flush: the powder goes from "
                    f"{100 * pr['rel_density_set']:.0f} to {100 * pr['rel_density_flush']:.0f} % dense, with no air in it "
-                   f"(DAL #140). It holds a minute, topping the load up as the powder settles; F1 takes what's left "
-                   f"once the plug is flush." if first else
+                   f"(DAL #140). It holds a minute, topping the load up as the powder settles; at flush the punch's "
+                   f"collar lands on the catch ring, and F1 under it takes what's left." if first else
                    f"{AP.SET_T:.1f} t: the plug goes {VPm.TRAVEL:.1f} mm to flush, the powder from "
                    f"{100 * pr['rel_density_set']:.0f} to {100 * pr['rel_density_flush']:.0f} % dense.")
         h_set = pr["column_mm_set"]
@@ -911,9 +920,10 @@ def movie():
         L.note(3, "Press", "shuttle out, plug flush")
         # the punch back to its rest; the pin pushes the cup up out of F1
         if detail:
-            cap = ("The arm lifts the punch off, now the die is vented (under vacuum it would be held down with about "
-                   "80 N), and puts it back on its rest. The pin pushes the cup up out of F1." if first else
-                   "The punch back on its rest; the pin pushes the cup up.")
+            cap = (f"The arm lifts the punch off, now the die is vented (under vacuum it would be held down with about "
+                   f"30 N), and puts it back on its rest. The pin pushes the cup up out of F1 and stops with its bottom "
+                   f"{VPm.CATCH:.0f} mm in the catch ring: it stands there, steady, until the arm takes it." if first else
+                   "The punch back on its rest; the pin pushes the cup up into the catch ring.")
             L.note(0, "Arm", "punch: die to rest")
         gd2 = vp.punch_grasp_die() - (0, 0, VPm.TRAVEL)
         sc.step(st, cap, 1.2 * f, both(pre(lvl(gd2 - dd * 160, dd), lvl(gd2, dd), AP.OPEN_FLANGE),
