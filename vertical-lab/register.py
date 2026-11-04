@@ -6,9 +6,14 @@
 A view is ``refs/<key>/<name>.json`` next to its frame ``refs/<key>/<name>.jpg``::
 
     {"source": "https://youtu.be/nfnl0aPJPZc?t=219",      # where the frame comes from
+     "video": "nfnl0aPJPZc", "t": 219,                    # optional: lets a missing frame be fetched (frames.py)
      "pose": {"head": 0.0},                               # joint values of the model in that frame (Instrument.joints)
      "points": {"screen tl": [771, 548], ...},            # a point of the model at pixel (u, v)
-     "curves": {"platen edge": [[402, 455], ...], ...}}   # pixels anywhere along a circle or a line of the model
+     "curves": {"platen edge": [[402, 455], ...], ...},   # pixels anywhere along a circle or a line of the model
+     "holdout": false}                                    # true: a check, left out of the fit of the model's dimensions
+
+Frames from the lab's own videos are committed; frames from makers' and others' videos are not (refs/.gitignore),
+as vendor CAD is not: give their "video" and "t" and the frame is fetched through the Pi when it is missing.
 
 The names are anchors: the model publishes them (``ANCHORS[key] = (params, anchors(params))`` in the instrument's
 module), as points ``(x, y, z)``, circles ``("circle", centre, radius)`` (horizontal) and lines ``("line", p0, p1)``,
@@ -171,10 +176,12 @@ def solve(key: str) -> dict:
         if p.name == "fit.json":
             continue
         v = json.loads(p.read_text())
-        v["size"] = Image.open(p.with_suffix(".jpg")).size
+        v["size"] = Image.open(frame_path(key, p.stem, v)).size
         views[p.stem] = v
     cams = {name: fit_camera(fn(params, v.get("pose", {})), v, v["size"]) for name, v in views.items()}
     before = {n: rms(residuals(cams[n], fn(params, v.get("pose", {})), v, v["size"])) for n, v in views.items()}
+    held = {n: v for n, v in views.items() if v.get("holdout")}
+    views = {n: v for n, v in views.items() if not v.get("holdout")}
     fitted = dict(params)
     if free or len(set(group(v) for v in views.values())) < len(views):
         # views from the same video share the lens: one focal length and one radial term per video
@@ -209,6 +216,9 @@ def solve(key: str) -> dict:
         sol = least_squares(f, np.clip(x, lo + 1e-9, hi - 1e-9), bounds=(lo, hi), x_scale="jac", loss="soft_l1",
                             f_scale=6.0, max_nfev=20000)
         fitted, cams = unpack(sol.x)
+    for n, v in held.items():                       # the checks: only their own camera is fitted, to the result
+        cams[n] = fit_camera(fn(fitted, v.get("pose", {})), v, v["size"])
+    views.update(held)
     out = {"key": key, "free": free, "params": {k: round(float(fitted[k]), 1) for k in free},
            "start": {k: params[k] for k in free}, "views": {}}
     for name, v in views.items():
@@ -216,7 +226,7 @@ def solve(key: str) -> dict:
         r = residuals(c, fn(fitted, v.get("pose", {})), v, v["size"]).reshape(-1, 2)
         names = list(v.get("points", {})) + [f"{n} ({i + 1})" for n, uvs in v.get("curves", {}).items()
                                              for i in range(len(uvs))]
-        out["views"][name] = {"source": v.get("source", ""), "size": list(v["size"]),
+        out["views"][name] = {"source": v.get("source", ""), "size": list(v["size"]), "holdout": bool(v.get("holdout")),
                               "camera": [float(t) for t in c], "focal_px": round(math.exp(c[6]), 1),
                               "k1": round(float(c[7]), 4), "rms_px_camera_only": round(before[name], 2),
                               "rms_px": round(rms(r), 2),
@@ -232,6 +242,16 @@ def group(view) -> str:
         return view["camera"]
     m = re.search(r"(?:youtu\.be/|v=)([\w-]{11})", view.get("source", ""))
     return m.group(1) if m else view.get("source", "")
+
+
+def frame_path(key: str, name: str, view: dict) -> Path:
+    """refs/<key>/<name>.jpg, fetched through the Pi from the view's "video" and "t" if it isn't there."""
+    p = REFS / key / f"{name}.jpg"
+    if not p.exists() and view.get("video") is not None:
+        import shutil
+        import frames
+        shutil.copy(frames.grab(view["video"], [float(view["t"])])[0], p)
+    return p
 
 
 def rms(r) -> float:
@@ -251,28 +271,32 @@ _BUILT: dict = {}
 
 
 def build(key: str, params: dict | None = None):
-    """(Instrument, entries) with the given parameters (the fitted ones), built afresh rather than from tour's cache."""
+    """(Instrument, entries) of any model in MODULES, built afresh with the given parameters (the fitted ones) put in
+    its parameter dict for the duration, and tessellated as tour.py does, with its module's materials."""
     import tour
     tag = (key, json.dumps(params, sort_keys=True))
-    if tag not in _BUILT:
-        if params:
-            p0, _, _ = anchor_sets(key)
-            for name in MODULES:
-                mod = importlib.import_module(name) if (HERE / f"{name}.py").exists() else None
-                if mod is not None and key in getattr(mod, "ANCHORS", {}):
-                    live = mod.ANCHORS[key][0]
-                    saved = dict(live)
-                    live.update(params)
-                    try:
-                        inst = mod.REGISTRY[key]()
-                    finally:
-                        live.clear()
-                        live.update(saved)
-                    _BUILT[tag] = (inst, tour.piece_entries(inst))
-                    break
-        else:
-            _BUILT[tag] = tour.load([key])[key]
-    return _BUILT[tag]
+    if tag in _BUILT:
+        return _BUILT[tag]
+    for name in MODULES:
+        if not (HERE / f"{name}.py").exists():
+            continue
+        mod = importlib.import_module(name)
+        if key not in getattr(mod, "REGISTRY", {}):
+            continue
+        tour.MATS.update(getattr(mod, "MATERIALS", {}))
+        live = getattr(mod, "ANCHORS", {}).get(key, (None,))[0] if params else None
+        saved = dict(live) if live is not None else None
+        if live is not None:
+            live.update(params)
+        try:
+            inst = mod.REGISTRY[key]()
+        finally:
+            if live is not None:
+                live.clear()
+                live.update(saved)
+        _BUILT[tag] = (inst, tour.piece_entries(inst))
+        return _BUILT[tag]
+    raise KeyError(f"{key!r} is in no module's REGISTRY ({', '.join(MODULES)})")
 
 
 def render(key: str, cam, size, pose: dict, params: dict | None = None):
@@ -341,7 +365,7 @@ def draw(key: str, names=None, rebuild=False) -> list[Path]:
         anchors = fn(params, view.get("pose", {}))
         size = tuple(fv["size"])
         cam = np.asarray(fv["camera"])
-        frame = np.asarray(Image.open(REFS / key / f"{name}.jpg").convert("RGB"))
+        frame = np.asarray(Image.open(frame_path(key, name, view)).convert("RGB"))
         und = _undistort(frame, cam, size)
         rgb, mask = render(key, cam, size, view.get("pose", {}), fit.get("params") or None)
         pin = np.r_[cam[:7], 0.0]                        # the undistorted frame is a pinhole image
@@ -401,7 +425,8 @@ if __name__ == "__main__":
         res = solve(key)
         print(json.dumps({k: res[k] for k in ("free", "start", "params")}, indent=1))
         for n, v in res["views"].items():
-            print(f"{n}: rms {v['rms_px_camera_only']} -> {v['rms_px']} px, f {v['focal_px']}, k1 {v['k1']}")
+            tag = " (held out of the fit)" if v.get("holdout") else ""
+            print(f"{n}{tag}: rms {v['rms_px_camera_only']} -> {v['rms_px']} px, f {v['focal_px']}, k1 {v['k1']}")
             worst = sorted(v["residual_px"].items(), key=lambda kv: -kv[1])[:6]
             print("   worst:", ", ".join(f"{a} {b}" for a, b in worst))
     elif cmd == "draw":

@@ -70,6 +70,14 @@ MATERIALS = {
 }
 
 
+# register.py's view of a model (see its docstring): key -> (the parameter dict the model is built from, a function of
+# (params, pose) giving named points, circles and lines); FREE[key], the parameters it may fit to the reference frames
+# in refs/<key>/; CHECKS[key](params), numbers that must stay >= 0 for the fitted model to make sense. Each
+# instrument registers itself after its build function.
+ANCHORS: dict = {}
+FREE: dict = {}
+CHECKS: dict = {}
+
 # ===================================================================================================== joints
 def _T(v) -> np.ndarray:
     m = np.eye(4)
@@ -1025,6 +1033,17 @@ def polisher() -> Instrument:
     return inst
 
 
+# register.py: the polisher's anchors, the parameters fitted to the SOP frames (refs/polisher/), and what keeps a
+# fitted model buildable: the bowl inside the drum and the platen inside the bowl, below the lip; the screen on its
+# slope with the e-stop under it; the housing reaching back over its column; the e-stop on the block.
+ANCHORS["polisher"] = (POLISHER, polisher_anchors)
+FREE["polisher"] = ["W", "deck", "drum_r", "platen_z", "block_k", "slope_z0", "slope_d", "scr_x", "scr_s", "estop_x",
+                     "estop_z", "head_w", "head_h", "head_up", "hold_dx", "head_back"]
+CHECKS["polisher"] = lambda p: [p["drum_r"] - p["rim_gap"] - p["lip_w"] - p["platen_d"] / 2 - 8, -p["platen_z"] - 15,
+                                p["deck"] - p["slope_z0"] - 60, p["slope_z0"] - p["estop_z"] - 35, p["head_back"] - 60,
+                                p["W"] / 2 - p["estop_x"] - 30]
+
+
 # ===================================================================================================== nanoindenter
 # KLA iMicro nanoindenter (the iNano's cabinet, with a 1 N actuator for metals): a white cabinet, roughly a cube, with
 # vibration isolation and the controller built in; an L-shaped hood (top and front) hinged along the top rear edge
@@ -1395,12 +1414,3 @@ def _registry() -> dict:
 
 REGISTRY = _registry()
 
-# Anchors for register.py: instrument key -> (its parameter dict, a function of those parameters and a pose giving its
-# named points, circles and lines), and the parameters register.py may fit to the reference frames in refs/<key>/.
-ANCHORS = {"polisher": (POLISHER, polisher_anchors)}
-FREE = {"polisher": ["W", "deck", "drum_r", "platen_z", "block_k", "slope_z0", "slope_d", "scr_x", "scr_s", "estop_x",
-                     "estop_z", "head_w", "head_h", "head_up", "hold_dx", "head_back"]}
-# what keeps a fitted polisher buildable: the lip inside the drum, the platen inside the bowl and below the lip, the
-# screen on its slope, the e-stop under it, the housing over the holder
-CHECKS = {"polisher": lambda p: [p["drum_r"] - p["rim_gap"] - p["lip_w"] - p["platen_d"] / 2 - 8, -p["platen_z"] - 15, p["deck"] - p["slope_z0"] - 60,
-                                 p["slope_z0"] - p["estop_z"] - 35, p["head_back"] - 60, p["W"] / 2 - p["estop_x"] - 30]}

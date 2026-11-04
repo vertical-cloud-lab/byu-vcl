@@ -1,0 +1,68 @@
+{
+ "vlm_front_face_y_mm": -1562.0,
+ "opening_width_mm": 2500.0,
+ "access_table_z_mm": 833.0,
+ "header_z_mm": 1700.0,
+ "tray_at_opening_mm": {
+  "front_edge_behind_face": 100.0,
+  "back_edge_behind_face": 964.0,
+  "floor_z": 857.0
+ },
+ "rail": {
+  "centre_y": -1802.0,
+  "x_extent": [
+   -7700.0,
+   10000.0
+  ],
+  "legs_x": [
+   -7550.0,
+   -4070.0,
+   -590.0,
+   2890.0,
+   6370.0,
+   9850.0
+  ],
+  "leg_in_front_of_opening_x": [
+   -590.0
+  ],
+  "nearest_to_face_mm": 26.25,
+  "farthest_fixed_from_face_mm": 442.5,
+  "carriage_and_gearmotor_from_face_mm": 534.0,
+  "beam_z_mm": [
+   436.5,
+   684.0
+  ],
+  "carriage_top_z_mm": 800.0
+ },
+ "reach_from_beam_outer_face_mm": {
+  "tray_front_edge": 463.75,
+  "tray_back_edge": 1327.75
+ },
+ "full_extraction": {
+  "tray_travel_out_mm": 964.0,
+  "least_floor_in_front_of_face_mm": 864.0,
+  "overlaps_rail_mm": 416.2,
+  "note": "the tray alone; Kardex publishes no size for the extraction device or the cart"
+ },
+ "rear_opening": {
+  "tray_out_behind_mm": [
+   1562.0,
+   2426.0
+  ],
+  "rear_slots_lost_at_the_front_openings_height": [
+   "R1",
+   "R2"
+  ],
+  "trays_in_them": [
+   "A",
+   "D"
+  ],
+  "warehouse_racks_behind_face_mm": 1238.0
+ },
+ "bay_dock_y_mm": -750.0,
+ "sources": {
+  "kardex_extraction": "Kardex Remstar Shuttle XP brochure, p.6: 'With the full tray extraction device, a tray is placed in front of the access opening for loading and unloading purposes. This can be loaded onto the optional transport cart'; options list: automatic and manual tray extraction, transit trolley, factory-fitted crane, up to six access openings per unit",
+  "kardex_rear": "Same brochure, p.6: 'up to six access openings placed on the front or rear side of the unit'; Kardex Shuttle brochure (2021), p.5: 'an access opening on the front and rear of the device'",
+  "geometry": "vlm.py, instruments.RAIL and rail(), line.py (RAIL_Y, RAIL_X, PARK_X), services.py (the dock), warehouse.py (RACKS)"
+ }
+}
