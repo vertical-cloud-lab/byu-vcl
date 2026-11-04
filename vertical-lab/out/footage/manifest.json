@@ -1,5 +1,5 @@
 {
- "note": "The excerpts and photos alloy_atomize.py cuts into chapter 2, kept small: clips cut to the window used (excerpt_window_s, seconds in the parent's fetch), 720 px tall, no sound; photos at 1600 px. All the lab's own (BYU VCL channel, DAL #159 and #219); credits per file.",
+ "note": "The excerpts and photos alloy_atomize.py cuts into chapter 2, kept small: clips cut to the window used (excerpt_window_s, seconds in the parent's fetch), 720 px tall, no sound; photos at 1600 px. All the lab's own (BYU VCL channel, DAL #159 and #219); credits per file. vlm_real_ck8QJhVqPiY.mp4 is Sterling Baird's own video of a real VLM, used to open the long-form video.",
  "files": [
   {
    "file": "nab_k7m2q9_four_rod_pieces_1079.886g.jpg",
@@ -114,6 +114,17 @@
    "shows": "the sieved NAB: <63 um (left), 63-250 um (middle), >250 um flakes (right)",
    "source": "Gage Erickson, DAL #219 comment 6509252104 ('Far left jar is <63um 630 Bronze powder')",
    "date": "2026-10-29"
+  },
+  {
+   "file": "vlm_real_ck8QJhVqPiY.mp4",
+   "source": "https://www.youtube.com/watch?v=ck8QJhVqPiY",
+   "title": "Vertical Lift Module in operation - from the sample's perspective",
+   "channel": "Sterling Baird",
+   "date": "2025-09-15",
+   "source_start_s": 0.0,
+   "source_end_s": 17.8,
+   "shows": "Camera riding on a vertical lift module tray: it looks out of the access opening at the storeroom (operator panel, pallet racking), is drawn back into the machine, then rises with the lift past the column of stored trays (toothed drive rack at left) and fades to black at 16.6-17.3 s as it climbs into the unlit column.",
+   "used_in": "longform.py, the opening of out/mp4/vertical_lab_longform.mp4 (PR #318: \"I think I have a link ... showing my testing with a real VLM which I'd like to have on hand\")"
   }
  ]
 }

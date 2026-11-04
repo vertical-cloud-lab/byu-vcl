@@ -31,7 +31,7 @@ OUT = HERE / "out"
 MP4 = OUT / "mp4"
 NAME = "vertical_lab_longform"
 SIZE, FPS = (1280, 720), 15
-CARD_S = 4.0
+CARD_S = 5.5
 GAP = 10.4                     # YouTube drops every chapter if one is under 10 s
 BLUE = (30, 60, 140)
 GREY = (110, 114, 120)
@@ -91,7 +91,9 @@ CHAPTERS = [
          card=["The atomizer melts the lab's own charge cups (#222), turned from 5N Al and oxygen-free Cu bar. Each "
                "is dosed through its powder's own funnel, weighed on an A&D HR-202i, and its vented plug pressed "
                "fully home under vacuum in a Specac Atlas Autotouch, compacting the powder to a set load."],
-         parts=[("mp4", "alloy_charge.mp4", None)]),
+         parts=[("still", "dal_workflow_table.png", 14.0, "DAL's alloy workflow, step by step (notes/dal_workflow.md): "
+                 "the station each step uses here, and what is still missing", "DAL's 17 steps, and where each runs"),
+                ("mp4", "alloy_charge.mp4", "The charge cups")]),
     dict(key="alloy2", title="Alloy route 2/4: melt and atomize in the rePowder",
          card=["The MiR250 takes the four Al cups to the AMAZEMET rePowder: pump-downs with argon, induction melt, "
                "the pour, the ultrasonic spray, powder in the container. Cut with the lab's own footage of its "
@@ -314,9 +316,61 @@ def normalise(src: Path, dst: Path, overlay: Path | None = None):
         "-pix_fmt", "yuv420p", "-video_track_timescale", "15360", dst)
 
 
+# ===================================================================================================== DAL's steps
+DAL_STEPS = [   # notes/dal_workflow.md, condensed: (step, station in the vertical lab, still missing)
+    ("Pick a composition", "software: BO over a CALPHAD-screened space", ""),
+    ("Weigh the charge", "multi-doser + A&D HR-202i on tray B; vacuum press", "cutting rod or wire to mass"),
+    ("Coat the crucible (BN)", "by hand, under extraction", "stays manual: an aerosol job"),
+    ("Atomize", "AMAZEMET rePowder, beside the VLM", "computer control of the rePowder"),
+    ("Recover and sieve", "sieving cell beside the rePowder (Retsch AS 200)", ""),
+    ("Store", "jars in the glovebox", "a dry cabinet on a tray"),
+    ("Characterize the powder", "SEM, Mastersizer, XRF, VHX with LIBS", "SEM stub prep"),
+    ("Ship powder out", "packaging station", "a dangerous-goods check per powder"),
+    ("Print", "Aconity MIDI, DED, beside the VLM; depowdering box", ""),
+    ("Cut parts off the plate", "FANUC ROBOCUT wire EDM", ""),
+    ("Heat treat", "Nabertherm NAT 15/65, tray F", ""),
+    ("Density (Archimedes)", "not modelled", "a balance with a density kit"),
+    ("Metallography", "LECO PX500 on tray F; OpenFlexure array, VHX", "a mounting press"),
+    ("Mechanical testing", "Instrons; PIP and iMicro on tray E", "a hardness tester"),
+    ("Corrosion", "the CubXL set up for corrosion, tray A", ""),
+    ("Long-term monitoring", "OpenFlexure array, stream cameras", ""),
+    ("Records", "Pi 5 stream cameras on every tray; MongoDB", ""),
+]
+
+
+def dal_table(path: Path):
+    """notes/dal_workflow.md's 17 steps as one table, 1920 x 951 (the still area at 1080p)."""
+    W, H = 1920, 951
+    im = Image.new("RGB", (W, H), (246, 247, 249))
+    d = ImageDraw.Draw(im)
+    fh, fb, fn = font(30, bold=True), font(27), font(27, bold=True)
+    cols = [(40, "#"), (100, "Step (DAL, by hand today)"), (600, "Station in the vertical lab"),
+            (1360, "Still missing")]
+    y = 26
+    d.text((40, y), "The alloy workflow, step by step: what DAL does by hand, and where it goes", font=font(36, True),
+           fill=BLUE)
+    y += 62
+    for x, h in cols:
+        d.text((x, y), h, font=fh, fill=GREY)
+    y += 44
+    d.line((40, y - 6, W - 40, y - 6), fill=BLUE, width=3)
+    row_h = (H - y - 10) / len(DAL_STEPS)
+    for i, (step, where, gap) in enumerate(DAL_STEPS):
+        yy = int(y + i * row_h)
+        if i % 2 == 0:
+            d.rectangle((30, yy - 3, W - 30, int(yy + row_h) - 3), fill=(235, 238, 244))
+        d.text((40, yy), f"{i + 1}", font=fn, fill=BLUE)
+        d.text((100, yy), step, font=fb, fill=INK)
+        d.text((600, yy), where, font=fb, fill=INK)
+        d.text((1360, yy), gap or "-", font=fb, fill=(170, 60, 30) if gap else GREY)
+    im.save(path, optimize=True)
+
+
 # ===================================================================================================== the plan
 def plan() -> list[dict]:
     """[{chapter, kind, src, seconds, label, missing}] for every part, cards included, in order."""
+    if not (OUT / "dal_workflow_table.png").exists():
+        dal_table(OUT / "dal_workflow_table.png")
     rows = []
     n = len(CHAPTERS)
     for ci, ch in enumerate(CHAPTERS, 1):
