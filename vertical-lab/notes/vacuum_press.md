@@ -7,8 +7,8 @@ and what a robot needs to run it. The model is drop-in for the plug press in `ch
 `alloy_charge.py` can use it. That swap has not been made yet.
 
 ```
-python3 vacuum_press.py                      # the numbers -> out/vacuum_press.json
-xvfb-run -a python3 vacuum_press.py movie    # the clip -> out/vacuum_press.gif, out/mp4/vacuum_press.mp4, still
+xvfb-run -a python3 vacuum_press.py          # the clip -> out/vacuum_press.gif, out/mp4/vacuum_press.mp4, still, .json
+python3 vacuum_press.py numbers              # the numbers only -> out/vacuum_press.json
 ```
 
 ## The press: Specac Atlas Autotouch 15T

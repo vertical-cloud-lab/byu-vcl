@@ -1,9 +1,9 @@
 """A vacuum press for the charge cups (#303; DAL #140, #156): a Specac Atlas Autotouch 15T automatic hydraulic press,
 with the lab's own evacuable die built round #222's F1 sleeve, a vacuum pump, two valves and a Pirani gauge.
 
-    python3 vacuum_press.py                       # the compaction numbers -> out/vacuum_press.json (no rendering)
-    xvfb-run -a python3 vacuum_press.py movie     # -> out/vacuum_press.gif, out/mp4/vacuum_press.mp4, .json, still
-    PREVIEW=1 xvfb-run -a python3 vacuum_press.py movie   # last frame of each sub-step -> /tmp/preview_vacuum_press.png
+    xvfb-run -a python3 vacuum_press.py           # -> out/vacuum_press.gif, out/mp4/vacuum_press.mp4, .json, still
+    PREVIEW=1 xvfb-run -a python3 vacuum_press.py # last frame of each sub-step -> /tmp/preview_vacuum_press.png
+    python3 vacuum_press.py numbers               # the compaction numbers only -> out/vacuum_press.json
 
 **Why this press.** It is automatic: a program of up to 10 steps ("pump up to", "maintain for", "release to") runs
 from one Start press and tops the load back up as the powder settles ("Maintain Load"). Its numbers are published.
@@ -644,7 +644,7 @@ if __name__ == "__main__":
     r = report()
     (HERE / "out").mkdir(exist_ok=True)
     path = HERE / "out" / "vacuum_press.json"
-    if len(sys.argv) > 1 and sys.argv[1] == "movie":
+    if not (len(sys.argv) > 1 and sys.argv[1] == "numbers"):
         movie()                                   # scene.save writes the clip's frame record to the same file
         try:
             r["clip"] = json.loads(path.read_text())
