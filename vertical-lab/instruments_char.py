@@ -648,7 +648,7 @@ VHX_SPECS = dict(ea_W=280.0, ea_D=210.0, ea_H=375.0, ea_kg=7.2, laser_nm=355, sp
 VHX_LOOK = dict(base_w=290.7, base_d=435.0, base_h=115.0, base_y=60.0, logo_z=73.7, knob_y=60.0,
                 stage_w=213.4, stage_d=200.0, stage_h=53.4, stage_z=225.0, plate_t=6.0,
                 col_w=150.0, col_d=110.0, ea_w=210.0, ea_d=280.0, ea_z=345.0, ea_h=250.0, ea_x=-30.0, arch_rise=50.0,
-                mon_x=600.0, mon_y=40.0, scr_top=12.2, bez0=84.9, foot_h=33.0, foot_w=430.0)
+                mon_x=470.0, mon_y=40.0, scr_top=12.2, bez0=84.9, foot_h=33.0, foot_w=430.0)
 VHX_STAGE_Y = -40.0               # the stage's centre, and the laser's axis, in front of the stand's centre
 VHX_COL_Y = 225.0                 # the back column's centre
 
