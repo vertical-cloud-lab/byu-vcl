@@ -32,6 +32,8 @@ views). I fetched frames 0:05 and 1:02 of C4IBBj20OpE but didn't pick from them.
   body with dark keys, a jog dial on the left and a joystick on the right.
 - **Joints and actions:** the head tilt, the focus sweep, the laser, the plasma and the spectrum panel are unchanged.
   The last caption now gives the height computed from the model: 656 mm with the arch, under Kardex's 727.5 mm.
+  Since then the column and arch stand 60 mm higher, so that the arch clears the EA-300 as it tilts
+  ([interference.md](interference.md)): 716 mm, still under 727.5.
 
 ## The fit
 

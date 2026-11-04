@@ -1,35 +1,47 @@
 {
  "name": "instruments/mastersizer",
  "fps": 15,
- "n_frames": 179,
+ "n_frames": 213,
  "size": [
   1280,
   720
  ],
  "substeps": [
   {
-   "label": "1/4",
-   "caption": "The Aero S's clear cover lifts off; a few grams of atomized powder go into its hopper, over the vibrating tray.",
+   "label": "1/6",
+   "caption": "The Aero S's clear cover lifts off and is set aside.",
    "start_frame": 0,
-   "end_frame": 52
+   "end_frame": 34
   },
   {
-   "label": "2/4",
-   "caption": "The hopper's gap sets the feed; the cover goes back on.",
-   "start_frame": 53,
-   "end_frame": 84
+   "label": "2/6",
+   "caption": "A few grams of atomized powder go into its hopper, over the vibrating tray.",
+   "start_frame": 35,
+   "end_frame": 69
   },
   {
-   "label": "3/4",
+   "label": "3/6",
+   "caption": "The hopper's gap sets the feed.",
+   "start_frame": 70,
+   "end_frame": 95
+  },
+  {
+   "label": "4/6",
+   "caption": "The cover goes back on.",
+   "start_frame": 96,
+   "end_frame": 118
+  },
+  {
+   "label": "5/6",
    "caption": "Air on and the background measured, then the tray vibrates the powder into the venturi, and the air carries it down the hose to the cell in the bay, across the laser (drawn see-through).",
-   "start_frame": 85,
-   "end_frame": 140
+   "start_frame": 119,
+   "end_frame": 174
   },
   {
-   "label": "4/4",
+   "label": "6/6",
    "caption": "The scattering gives the size distribution, 0.1 um to 3.5 mm, in under a minute; the extractor draws the powder away from under the cell.",
-   "start_frame": 141,
-   "end_frame": 178
+   "start_frame": 175,
+   "end_frame": 212
   }
  ]
 }

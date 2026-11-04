@@ -343,8 +343,14 @@ def lumenpnp() -> Instrument:
                                                 ("zr", NZ[1], (444.9, 482.0), "lumen_blue", "inst_blue")):
         z = _piece(inst, side)
         Z = lambda *a: _lpbox(p, *a, dx=hx0, dy=gy0)    # noqa: E731
-        z.add("z gantry", Z(nx - 19.5, 166.2, 118.1, nx + 19.5, 171.2, 160.6), "lumen_black")
-        z.add("back plate", Z(plate_x[0], 171.2, 130.6, plate_x[1], 179.0, 165.6), col)
+        # The top inner corners of the Z gantry and its back plate are cut at 45 deg under the Z motor's lower flank,
+        # which leaves 2.9 mm at the top of the 31 mm stroke: square, the rising plate ran 4 mm into the motor as the
+        # other nozzle placed a part (interference.py). The plates are printed; their exact shape isn't in the files
+        # used here
+        si = -1.0 if side == "zl" else 1.0
+        notch = _prism(p, "xz", [(H0, 151.48), (H0, 166.6), (H0 + si * 15.12, 166.6)], 165.2, 180.0, dx=hx0, dy=gy0)
+        z.add("z gantry", Z(nx - 19.5, 166.2, 118.1, nx + 19.5, 171.2, 160.6).cut(notch), "lumen_black")
+        z.add("back plate", Z(plate_x[0], 171.2, 130.6, plate_x[1], 179.0, 165.6).cut(notch), col)
         z.add("nema 11", Z(nx - 14.1, ny - 14.1, 118.0, nx + 14.1, ny + 14.1, 160.0), "inst_dark")
         z.add("nema 11 cap", Z(nx - 13.0, ny - 13.0, 160.0, nx + 13.0, ny + 13.0, 166.6), "lumen_black")
         z.add("rotary union", _lpcyl(p, 12.8, 166.6, 207.2, nx, ny, hx0, gy0), "aluminium")

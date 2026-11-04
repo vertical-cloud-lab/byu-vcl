@@ -180,7 +180,9 @@ def form4() -> Instrument:
     body.add("screen UI", ui, "fl_ui")
     body.add("logo", box(-176, yf - 1, 40, -126, yf, 47), "fl_dark")
     # inside the cover: the black deck round the LCD, its blue latch, the Z tower and the cartridge at the back
-    body.add("deck", box(-W / 2 + 10, yf + 10, zb, W / 2 - 10, yb - 10, zb + 4), "fl_dark")
+    # the deck stops 2 mm short of the cover's back corners, which sweep forward over it, a few mm up, as it opens
+    c_in = W / 2 - p["cover_r"] - 2
+    body.add("deck", box(-c_in, yf + 10, zb, c_in, yb - 10, zb + 4), "fl_dark")
     body.add("latch", box(-150, yf + 22, zb + 4, -70, yf + 34, zb + 14), "fl_blue")
     ty = p["tank_y"]
     tz = zb + 4
@@ -225,14 +227,17 @@ def form4() -> Instrument:
         sample.add(name, shape, "fl_part")
     whole = {"sample": (1.0, 1.0), **{lname: (0.0, 0.0) for lname in layers}}
     inst.props = ("load", "holder", "sample")
-    # the cover: one orange shell over the whole footprint, open below, rounded on its vertical and top edges; its back
-    # is closed but for the slot the Z tower stands in, and its top has a notch for the cartridge's cap
+    # the cover: one orange shell over the whole footprint, open below, rounded on its vertical and top edges. Its back
+    # is open below the top between the rounded corners, where the Z tower stands (the hinges are "under the back
+    # panel"): below the hinge, a back wall would swing forward through the tank and the deck as the cover opens
+    # (interference.py: 5.2 mm into the tank). The top has a slot for the cartridge's cap, open to the back edge and
+    # 80 mm long: as the cover turns about a hinge just under the cap, a closed notch's front edge ran 6.7 mm into it
     cover = _piece(inst, "cover")
     t = p["cover_t"]
     outer = rbox(W, D, Hc - zb, p["cover_r"], z=zb).edges(">Z").fillet(p["top_r"])
     inner = rbox(W - 2 * t, D - 2 * t, Hc - zb - t, p["cover_r"] - t, z=zb - 1)
-    shell = outer.cut(inner).cut(box(-152, yb - t - 2, zb - 1, 122, yb + 1, top + 2)).cut(
-        box(-32, yb - 50, Hc - 20, 32, yb - 18, Hc + 1))
+    shell = outer.cut(inner).cut(box(-c_in - 2, yb - t - 2, zb - 1, c_in + 2, yb + 1, top + 2)).cut(
+        box(-34, yb - 80, Hc - 20, 34, yb + 1, Hc + 1))
     cover.add("cover", shell, "fl_orange")
     open_deg = _f4_open_deg(p)
     inst.joints = {

@@ -749,7 +749,11 @@ def vhx() -> Instrument:
     # the back column, and its silver arch running forward over the head
     cw, cd = q["col_w"], q["col_d"]
     ez0, ez1 = q["ea_z"], q["ea_z"] + q["ea_h"]
-    ctop = ez1 - 30.0
+    # The column's top, where the arch starts: 30 mm over the EA-300's top, so that the arch's ends, which come down to
+    # 7 mm under it, clear the head as it tilts under them (its top reaches 601 mm partway over, and 607 mm with the
+    # focus sweep). 30 mm under the EA-300's top, the arch's front end was 22 mm into the EA-300 as modelled and its
+    # side panel ran 3.2 mm into it as the head tilted (interference.py). Neither is fitted: no view sees them
+    ctop = ez1 + 30.0
     body.add("column", rbox(cw, cd, ctop - bh + 5, 30, x=sx0, y=VHX_COL_Y, z=bh - 5), "char_vhx_dark")
     for fx in (-1, 1):
         body.add(f"column flank {fx}", box(sx0 + fx * cw / 2 - 6, VHX_COL_Y - cd / 2 + 15, bh + 20,

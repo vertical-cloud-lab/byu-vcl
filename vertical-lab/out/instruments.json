@@ -276,12 +276,12 @@
   "model_mm": [
    636,
    499,
-   656
+   716
   ],
   "published_mm": [
    635,
    499,
-   656
+   716
   ],
   "fits_tray": true,
   "floor": false,
@@ -415,17 +415,17 @@
  },
  "stream_cam": {
   "title": "Stream camera unit for a tray",
-  "model": "Raspberry Pi 5, HQ Camera + Camera Module 3 Wide",
-  "source": "the lab's Pi 5 dual-camera unit, DAL PR #189's front unit without its display (Raspberry Pi's drawings for the boards, a 16 mm M12 lens), on a 2020 post as its top unit; the post's height is ours",
+  "model": "Raspberry Pi 5, HQ Camera (16 mm) + Camera Module 3 Wide",
+  "source": "robot-arms' Pi 5, HQ Camera, 16 mm lens and Camera Module 3 models (PR #10, from Raspberry Pi's drawings) on a printed pan-tilt head and sliding block on a 2020 post, after robot-arms PR #40's fixtures; the mount's layout is ours",
   "model_mm": [
-   107,
-   85,
-   301
+   128,
+   192,
+   600
   ],
   "published_mm": [
-   107.0,
-   70.0,
-   301.0
+   140.0,
+   210.0,
+   620.0
   ],
   "fits_tray": true,
   "floor": false,
