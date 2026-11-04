@@ -1,65 +1,83 @@
 {
  "name": "instruments/cubxl_corrosion",
- "fps": 15,
- "n_frames": 540,
+ "fps": 10,
+ "n_frames": 785,
  "size": [
   1280,
   720
  ],
  "substeps": [
   {
-   "label": "1/9",
-   "caption": "Four polished coupons under O-ring lids, face up on pogo pins (DAL PR #180's plan). The P20 on the CubXL's head takes a tip.",
+   "label": "1/12",
+   "caption": "Copper corrosion on the CubXL, as DAL's copper screen lays it out (PR #180): four stations, S1 C71500 Cu-Ni, S2 C95800 NAB, S3 a DED pad, S4 a PTFE blank; Ben's 9-vial holder of stocks; three cups; 2 x 8 ICP-MS tubes; two tip racks. On the head: the capper, a P20 and a camera.",
    "start_frame": 0,
-   "end_frame": 55
+   "end_frame": 32
   },
   {
-   "label": "2/9",
-   "caption": "It fills well S1 with 150 uL of 0.6 M NaCl (3.5 wt%) from its stock vial, which the capper uncaps and caps again. The O-ring leaves 3 mm of the coupon wet: 0.071 cm2.",
-   "start_frame": 56,
-   "end_frame": 135
+   "label": "2/12",
+   "caption": "1 The CubXL's P20 (1-20 µL) takes a 20 µL tip from Ben's rack.",
+   "start_frame": 33,
+   "end_frame": 48
   },
   {
-   "label": "3/9",
-   "caption": "Tip off. The capper's magnet picks up the electrode cap: a leak-free 2 mm Ag/AgCl reference inside a coil of Pt wire, the counter.",
-   "start_frame": 136,
-   "end_frame": 188
+   "label": "3/12",
+   "caption": "2 The capper lifts the seawater cap (ASTM D1141, no heavy metals). The P20 builds S1's well from 135 µL of it: 7 transfers of 19.3 µL, each dispensed from above the meniscus.",
+   "start_frame": 49,
+   "end_frame": 158
   },
   {
-   "label": "4/9",
-   "caption": "The cap goes on S1. Its pogo pins land on the RE and CE pads; the coupon's back is on the WE pin. The head is free.",
-   "start_frame": 189,
-   "end_frame": 235
+   "label": "4/12",
+   "caption": "3 Sulfide last: 15 µL of the 10 mg/L S stock, with the same tip, makes 150 µL at 1 mg/L S. The tip goes to the waste.",
+   "start_frame": 159,
+   "end_frame": 229
   },
   {
-   "label": "5/9",
-   "caption": "The EZstat Pro beside the deck holds the cell at open circuit for 30 min: OCP settles to E_corr.",
-   "start_frame": 236,
-   "end_frame": 291
+   "label": "5/12",
+   "caption": "4 The head camera checks for liquid outside the O-ring (2 min).",
+   "start_frame": 230,
+   "end_frame": 256
   },
   {
-   "label": "6/9",
-   "caption": "LPR, then a cyclic polarization at 1 mV/s: up from 50 mV below OCP, reversing at 1 mA/cm2, back to E_corr. 44 min a spot at 1 mV/s.",
-   "start_frame": 292,
-   "end_frame": 365
+   "label": "6/12",
+   "caption": "5 The capper carries the electrode cap (leak-free Ag/AgCl reference, Pt coil counter) from its park cup and sets it over S1's boss: no O-ring, two small lid magnets hold it. No tip on.",
+   "start_frame": 257,
+   "end_frame": 299
   },
   {
-   "label": "7/9",
-   "caption": "The capper lifts the cap off, dips it in the rinse cup and parks it.",
-   "start_frame": 366,
-   "end_frame": 424
+   "label": "7/12",
+   "caption": "6 Cap on, head free: OCP 20 min, EIS at OCP 10 min, LPR ±10 mV, rest 5 min, a +50 mV hold for 10 min, OCP 5 min. EIS needs the requested potentiostat: the EZstat Pro has none, so until then OCP runs 30 min.",
+   "start_frame": 300,
+   "end_frame": 380
   },
   {
-   "label": "8/9",
-   "caption": "A fresh tip takes the well's liquid to tube 1, for ICP: dissolved Al and Mg, element by element.",
-   "start_frame": 425,
-   "end_frame": 495
+   "label": "8/12",
+   "caption": "7 The magnet lifts the cap off S1. It is dipped in DI water, then seawater, and parked.",
+   "start_frame": 381,
+   "end_frame": 443
   },
   {
-   "label": "9/9",
-   "caption": "On to S2. At 44 min a spot, a 12 h night screens 16 spots; at the G61 rate, 6.",
-   "start_frame": 496,
-   "end_frame": 539
+   "label": "9/12",
+   "caption": "8 A new tip moves the well's 150 µL to tube 1 for ICP-MS, 8 transfers of 18.75 µL, then a 150 µL DI rinse the same way: 16 transfers.",
+   "start_frame": 444,
+   "end_frame": 607
+  },
+  {
+   "label": "10/12",
+   "caption": "9 Acidify at once: the capper opens the acid vial and the night's one acid tip adds 20 µL of 1 M HNO3 from above the rim: 320 µL at 62 mM HNO3. The acid tip goes back to rack 2.",
+   "start_frame": 608,
+   "end_frame": 714
+  },
+  {
+   "label": "11/12",
+   "caption": "10 The head camera images the spot. Next: S2. A spot is 67 min of deck time: eight wells (three pieces, two wells each, and S4's two blanks) take about 9 h of a 12 h night.",
+   "start_frame": 715,
+   "end_frame": 745
+  },
+  {
+   "label": "12/12",
+   "caption": "Cyclic polarization runs only on selected spots, and last on each: fill to EIS, then the scan, then its own tube. On every spot it would swamp the tube's copper (3.4 mC against the hold's 0.2-2.8 mC).",
+   "start_frame": 746,
+   "end_frame": 784
   }
  ]
 }
