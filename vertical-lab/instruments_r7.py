@@ -135,7 +135,7 @@ MATERIALS = {
     "r7_lid": (0.18, 0.36, 0.70, 1.0, 0.3),
     "r7_al_powder": (0.62, 0.63, 0.66, 1.0, 0.05),
     "r7_flow_n2": (0.30, 0.55, 0.95, 0.55, 0.0),         # gas, drawn see-through
-    "r7_flow_air": (0.35, 0.75, 0.95, 0.55, 0.0),
+    "r7_flow_air": (0.10, 0.62, 1.00, 0.85, 0.0),
     "r7_zwick": (0.86, 0.87, 0.86, 1.0, 0.3),            # zwickiLine light grey
     "r7_zwick_dk": (0.22, 0.23, 0.25, 1.0, 0.35),
     "r7_zwick_green": (0.42, 0.66, 0.20, 1.0, 0.3),
@@ -838,15 +838,21 @@ def cnc() -> Instrument:
 
 
 # ===================================================================================================== e. fume hoods
-def _flow_dots(inst, prefix, paths, d=36.0, mat="r7_flow_air"):
+def _flow_dots(inst, prefix, paths, d=36.0, mat="r7_flow_air", seen=3, frac=0.72):
     """Puffs of air that ride a path each (offsets from the path's last point, where the puff is modelled: inside a
-    duct or a blower, so it is hidden at v = 1). Played 0 -> 1, they flow in, through and out of sight."""
+    duct or a blower, so it is hidden at v = 1). Played 0 -> 1, they flow in, through and out of sight. The first
+    `seen` legs, the ones in view, take `frac` of the time; the rest, inside the ducts, the remainder."""
     names = []
     for k, pts in enumerate(paths):
-        end = np.asarray(pts[-1], float)
+        P = np.asarray(pts, float)
+        end = P[-1]
         nm = f"{prefix}{k}"
         _piece(inst, nm).add(nm, cq.Workplane("XY").sphere(d / 2).translate(tuple(end)), mat)
-        inst.joints[nm] = Joint("path", path=tuple(tuple(np.asarray(q, float) - end) for q in pts), v0=1.0)
+        seg = np.linalg.norm(np.diff(P, axis=0), axis=1)
+        a, b = np.cumsum(seg[:seen]), np.cumsum(seg[seen:])
+        vs = [0.0] + list(frac * a / a[-1]) + list(frac + (1 - frac) * b / b[-1])
+        inst.joints[nm] = Track(knots=tuple((float(v), tuple(float(c) for c in q - end)) for v, q in zip(vs, P)),
+                                v0=1.0)
         names.append(nm)
     return names
 
@@ -915,7 +921,7 @@ def fumehood() -> Instrument:
         zz = z0 + 80 + 60 * (k % 3)
         paths.append([(x, yf - 120, zz + 40), (x, yf + 60, zz), (x * 0.9, yb - 120, zz + 30), (x * 0.8, yb - 50, zz + 200),
                       (x * 0.4, yb - 50, zt - 260), (0.0, 200.0, zt + 60)])
-    flow = _flow_dots(inst, "flow", paths, d=52.0)
+    flow = _flow_dots(inst, "flow", paths, d=60.0, seen=3)
     inst.joints.update({"sash": Joint("slide", vec=(0, 0, p["stop"])), "load": Joint("path", path=path)})
     fl = lambda a, b: {k: (a, b) for k in flow}  # noqa: E731
     inst.actions = [
@@ -964,7 +970,8 @@ def fumehood_tray() -> Instrument:
     body.add("back", box(x0, yb - t, t, x1, yb, h - t), "inst_light")
     for xx in (x0, x1 - t):
         body.add(f"side {xx:.0f}", box(xx, yf, t, xx + t, yb - t, h - t), "r7_pc")
-    body.add("front", box(x0 + t, yf, oz1, x1 - t, yf + t, h - t), "inst_light")
+    body.add("front", box(x0 + t, yf, oz1 + 20, x1 - t, yf + t, h - t), "r7_pc")
+    body.add("opening lip", box(x0 + t, yf, oz1, x1 - t, yf + t, oz1 + 20), "inst_light")
     body.add("front sill", box(x0 + t, yf, t, x1 - t, yf + t, oz0), "inst_light")
     body.add("filters", box(x0 + 30, yb - 60, 30, x1 - 30, yb - t, h - 40), "inst_dark")
     body.add("filter frame", box(x0 + 20, yb - 64, 20, x1 - 20, yb - 60, h - 30).cut(
@@ -990,7 +997,7 @@ def fumehood_tray() -> Instrument:
         paths.append([(x, yf - 160, zz), (x, yf + 40, zz), (x, yb - 120, zz + 120), (x, yb - 70, h - 120),
                       ((x0 + x1) / 2, yb - 60, h + 30), ((x0 + x1) / 2, 160, h + 40), (bxc - 60, 60, h + 40),
                       (bxc - 60, 60, bh - 40), (bxc, 0, bh * 0.5)])
-    flow = _flow_dots(inst, "flow", paths, d=30.0)
+    flow = _flow_dots(inst, "flow", paths, d=34.0, seen=4)
     inst.joints["load"] = Joint("path", path=((0, -420, 160), (0, -260, 60), (0, 0, 0)))
     fl = lambda a, b: {k: (a, b) for k in flow}  # noqa: E731
     inst.actions = [
