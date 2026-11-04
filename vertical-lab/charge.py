@@ -263,11 +263,12 @@ def volumes() -> dict:
             "slug": math.pi / 4 * STOCK_D ** 2 * SLUG_L / 1000.0}
 
 
-# The cups the workflow charges: two 5N Al cups with Si for this run's Al-10Si (the Si of the AlSi10Mg the line prints;
-# two slugs a run is #222's default, 80-100 g), and two OFE Cu cups with Ni for the next run's 90/10 Cu-Ni (the Navy's
-# seawater alloy, C70600 less its 1-1.8 % Fe; DAL's Cu work, #162, #219). The doser fills each bore with one powder;
-# the fraction of the cavity under the plug that it fills sets the composition.
-RUNS = {"Al-10Si": ("Al", "Si", 10.0, 2), "Cu-10Ni": ("Cu", "Ni", 10.0, 2)}   # cup metal, powder, powder wt%, cups
+# The cups the workflow charges: four 5N Al cups with Si for this run's Al-10Si (the Si of the AlSi10Mg the line prints),
+# and four OFE Cu cups with Ni for the next run's 90/10 Cu-Ni (the Navy's seawater alloy, C70600 less its 1-1.8 % Fe;
+# DAL's Cu work, #162, #219). Four charges a crucible is how the lab loads the rePowder (byu-vcl PR #318; the Oct 27
+# 630 bronze run, DAL #219/#230, went in as 4 rod pieces, 1,080 g); #222 has four places round the sealing rod. The
+# doser fills each bore with one powder; the fraction of the cavity under the plug that it fills sets the composition.
+RUNS = {"Al-10Si": ("Al", "Si", 10.0, 4), "Cu-10Ni": ("Cu", "Ni", 10.0, 4)}   # cup metal, powder, powder wt%, cups
 
 
 def fill_fraction(metal: str, pw: str, wt: float) -> float:
