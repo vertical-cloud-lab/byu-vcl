@@ -1169,7 +1169,8 @@ def still_cameras(data, idata, k="E"):
     set_dock(sc, HOME[k], 1.0)
     L.svc_lines = [(f"Tray {k}", f"at the opening, {len(TRAY_CAMS[k])} cameras"), ("Bay", "one overhead camera")]
     L.apply_state()
-    sc.cam = [(1500, -3900, 1560), (-150, -1000, 1180), (0, 0, 1)]
+    # over the header, through the ghosted cladding: the bay unit stands above the header's underside
+    sc.cam = [(1400, -3700, 2150), (-150, -950, 1250), (0, 0, 1)]
     lbl = []
     for i, c in enumerate(TRAY_CAMS[k]):
         lbl.append((f"Pi 5 + HQ + Wide, on tray {k}", tuple(A.tray_world(k, head_point(*c, dz=30.0))),

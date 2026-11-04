@@ -75,7 +75,7 @@
    "earlier_unit": "DAL PR #189 (atomizer-viewport-cameras): the front unit pairs an HQ Camera (M12) with a 16 mm M12 lens (about O16 x 18 mm) and a Camera Module 3 Wide side by side, boards 2 mm apart, HQ lens 15 mm left of the axis and the Wide's 18.5 mm right; Pi 5 4 GB with Active Cooler and 27 W PSU; black PETG; the top unit rides a 2020 extrusion arm. DAL #147: 1/4-20 insert to a bought arm rather than a printed ball joint; cameras within the 200/300/500 mm ribbons of the board.",
    "adjust": {
     "height": "block on the post's T-slot, two M5 drop-in T-nuts",
-    "pan": "yoke on an M6 bolt through the block's arm, 45 deg each way",
+    "pan": "yoke on an M6 bolt through the block's arm, up to 75 deg each way",
     "tilt": "head between the yoke's arms, two thumb knobs, 15 deg up to 65 down"
    }
   },
@@ -88,10 +88,10 @@
      "tilt_down_deg": 35.0
     },
     "A1": {
-     "top_over_floor_mm": 684.1,
-     "post_yaw_deg": 0,
-     "pan_deg": 45.0,
-     "tilt_down_deg": 34.9
+     "top_over_floor_mm": 683.1,
+     "post_yaw_deg": 90,
+     "pan_deg": -52.6,
+     "tilt_down_deg": 31.9
     },
     "B0": {
      "top_over_floor_mm": 685.7,
@@ -118,16 +118,16 @@
      "tilt_down_deg": 61.5
     },
     "D0": {
-     "top_over_floor_mm": 683.2,
-     "post_yaw_deg": 0,
-     "pan_deg": 44.1,
-     "tilt_down_deg": 32.1
+     "top_over_floor_mm": 682.4,
+     "post_yaw_deg": 90,
+     "pan_deg": -57.7,
+     "tilt_down_deg": 30.1
     },
     "D1": {
-     "top_over_floor_mm": 686.1,
+     "top_over_floor_mm": 686.6,
      "post_yaw_deg": 90,
-     "pan_deg": 27.1,
-     "tilt_down_deg": 41.8
+     "pan_deg": 22.1,
+     "tilt_down_deg": 44.1
     },
     "D2": {
      "top_over_floor_mm": 687.8,
@@ -136,22 +136,22 @@
      "tilt_down_deg": 53.1
     },
     "E0": {
-     "top_over_floor_mm": 683.1,
-     "post_yaw_deg": 0,
-     "pan_deg": 45.0,
-     "tilt_down_deg": 32.0
+     "top_over_floor_mm": 682.0,
+     "post_yaw_deg": 90,
+     "pan_deg": -60.6,
+     "tilt_down_deg": 29.1
     },
     "E1": {
      "top_over_floor_mm": 685.9,
-     "post_yaw_deg": 0,
-     "pan_deg": 45.0,
+     "post_yaw_deg": 90,
+     "pan_deg": -51.7,
      "tilt_down_deg": 41.0
     },
     "E2": {
-     "top_over_floor_mm": 683.5,
+     "top_over_floor_mm": 683.1,
      "post_yaw_deg": 90,
-     "pan_deg": -36.5,
-     "tilt_down_deg": 33.1
+     "pan_deg": -39.8,
+     "tilt_down_deg": 31.9
     },
     "F0": {
      "top_over_floor_mm": 677.3,
@@ -160,10 +160,10 @@
      "tilt_down_deg": 18.9
     },
     "F1": {
-     "top_over_floor_mm": 681.3,
-     "post_yaw_deg": 0,
-     "pan_deg": 45.0,
-     "tilt_down_deg": 27.4
+     "top_over_floor_mm": 681.2,
+     "post_yaw_deg": 90,
+     "pan_deg": -53.8,
+     "tilt_down_deg": 27.1
     }
    },
    "limit_mm": 727.5,
@@ -174,6 +174,78 @@
    "tray_F1_underside_mm": 1900.0,
    "bay_margin_to_F1_mm": 43.3,
    "bay_to_shutter_mm": 23.0,
+   "tray_units_to_instruments": {
+    "A0": {
+     "gap_mm": 132,
+     "nearest": "cubxl",
+     "inside_rim": true
+    },
+    "A1": {
+     "gap_mm": 28,
+     "nearest": "ot2",
+     "inside_rim": true
+    },
+    "B0": {
+     "gap_mm": 526,
+     "nearest": "carousel",
+     "inside_rim": true
+    },
+    "B1": {
+     "gap_mm": 253,
+     "nearest": "carousel",
+     "inside_rim": true
+    },
+    "C0": {
+     "gap_mm": 204,
+     "nearest": "h2d",
+     "inside_rim": true
+    },
+    "C1": {
+     "gap_mm": 115,
+     "nearest": "a1mini",
+     "inside_rim": true
+    },
+    "D0": {
+     "gap_mm": 2,
+     "nearest": "sem",
+     "inside_rim": true
+    },
+    "D1": {
+     "gap_mm": 9,
+     "nearest": "sem",
+     "inside_rim": true
+    },
+    "D2": {
+     "gap_mm": 130,
+     "nearest": "xrd",
+     "inside_rim": true
+    },
+    "E0": {
+     "gap_mm": 26,
+     "nearest": "pip",
+     "inside_rim": true
+    },
+    "E1": {
+     "gap_mm": 16,
+     "nearest": "nanoindenter",
+     "inside_rim": true
+    },
+    "E2": {
+     "gap_mm": 42,
+     "nearest": "mastersizer",
+     "inside_rim": true
+    },
+    "F0": {
+     "gap_mm": 247,
+     "nearest": "polisher",
+     "inside_rim": true
+    },
+    "F1": {
+     "gap_mm": 40,
+     "nearest": "polisher",
+     "inside_rim": true
+    }
+   },
    "head": {
     "rises_over_tilt_axis_mm": 47.9,
     "reaches_below_mm": 68.4,

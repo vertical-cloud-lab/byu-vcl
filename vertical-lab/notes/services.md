@@ -145,9 +145,15 @@ etc. See robot-arms ... able to be adjusted in terms of angle and height."
 
   The Pi rides on the head behind the cameras, so neither ribbon flexes. One PoE lead leaves its Ethernet jack. The
   printed parts are drawn dark grey; DAL #189's are black PETG.
-- **In a scene**, `rig_pose()` stands each post square to its tray, with its yaw a multiple of 90°. The pan and tilt then
-  aim the head at the instrument. Each unit's yaw, pan and tilt are in `services.json`
-  (`cameras.clearances.tray_units`).
+- **In a scene**, `rig_pose()` stands each post square to its tray, with its yaw a multiple of 90°. The pan and tilt
+  then aim the head at the instrument.
+- **Placement.** The head now stands 80 mm off its post, so it could reach into an instrument. To prevent that, seven
+  posts have a fixed yaw, and six of round 4's posts moved by up to 50 mm. `tray_unit_gaps()` checks each rig against
+  the instruments' boxes on its tray:
+  - every unit stays clear of them and 12 mm inside the rim;
+  - the tightest is tray D's left unit, whose foot stands 2 mm behind the SEM.
+
+  Each unit's yaw, pan, tilt and gap are in `services.json` (`cameras.clearances`).
 
 **On the trays, not the machine.** The cameras go on 2020 posts clamped to each tray, 2 or 3 to a tray:
 - They watch the instrument wherever the tray is. The printers and the CubXL keep working in storage, where nothing
@@ -171,7 +177,8 @@ of the bay. The head is 80 mm in front of the bar and tilted 64° down.
   the opening at 1900 mm.
 - **Depth.** The bar is 23 mm in front of the shutter's plane.
 - **What it sees.** The Wide sees 92 % of the presented tray's floor. Its axis meets the floor 117 mm in front of the
-  tray's centre, 993 mm away. It misses only the two back corners nearest it. The HQ sees 6 %: the detail.
+  tray's centre, 993 mm away. It misses only two triangles at the back corners nearest it, which run along the sides
+  to 157 mm in front of the tray's centre. The HQ sees 6 %: the detail.
 - **Against the arm: 197 mm clear.** `bay_arm_clearance()` checks 320 of `reach.py`'s poses: the workflow's seats,
   and every reachable point of the presented tray on a 100 mm grid, gripper down, 100 and 250 mm over its floor.
   It draws the UR10e as 75 mm capsules round its links from the shoulder to the TCP. The nearest approach to the
