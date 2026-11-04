@@ -13,6 +13,11 @@ Code: [`instruments_lab.py`](../instruments_lab.py) (`cubxl_corrosion`, `powder_
 [`animate.py`](../animate.py) (`workflow`). Clips: [`cubxl_corrosion.mp4`](../out/mp4/instruments/cubxl_corrosion.mp4),
 [`vlm_workflow.mp4`](../out/mp4/vlm_workflow.mp4).
 
+Both clips were rendered at 10 fps (`VIZ3D_FPS=10`) to finish in the session; `xvfb-run --server-num=80 python3
+tour.py cubxl_corrosion` and `xvfb-run --server-num=81 python3 animate.py workflow` give 15 fps. Round 2's workflow
+was arm-audited after the opening went to 996 mm (`ARM_AUDIT=1`): **0 of 1191 frames** in collision
+([`out/collisions/vlm_workflow.json`](../out/collisions/vlm_workflow.json)).
+
 ## What DAL's copper screen is
 
 Everything is from digital-alloy-lab PR #180's branch `claude/issue-213-20261013-2132` at
