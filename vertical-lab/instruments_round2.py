@@ -25,11 +25,11 @@ from pathlib import Path
 import cadquery as cq
 import numpy as np
 
-from instruments import Instrument, Joint, _piece, _xcyl, _ycyl  # noqa: F401
+from instruments import Instrument, Joint, _piece
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE / "lab_models"))
-from common import Model, box, cyl, hose, rbox, tube  # noqa: E402,F401
+from common import Model, box, cyl, rbox, tube  # noqa: E402
 
 # files the builds read besides this one and tour.py's common sources: tour.load() re-tessellates when they change
 SOURCES = ["lab_models/equipment.py", "lab_models/vendor.py", "lab_models/labware.py", "carousel.py",
