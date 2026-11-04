@@ -4,3 +4,4 @@ lab_models/.cache/
 multidoser/reference/
 out/clean/
 __pycache__/
+.frames/

@@ -96,10 +96,10 @@
  "form4": {
   "title": "Resin 3D printer (MSLA)",
   "model": "Formlabs Form 4",
-  "source": "Formlabs Form 4 tech specs (398 x 367 x 554 mm, 18.3 kg; 407 x 478 x 844 mm with the cover open; 200 x 125 x 210 mm build volume); look from Formlabs' photos",
+  "source": "Formlabs Form 4 tech specs (398 x 367 x 554 mm, 18.3 kg; 407 x 478 x 844 mm with the cover open; 200 x 125 x 210 mm build volume); proportions registered to videos of it (refs/form4/)",
   "model_mm": [
    398,
-   369,
+   371,
    554
   ],
   "published_mm": [
@@ -113,7 +113,7 @@
   "over_opening_mm": 0.0,
   "notes": [
    "Fits a tray with 173.5 mm to spare under Kardex's 727.5 mm, but the cover opens to 844 mm: the arm can open it at the opening (about 845 mm under the header), never while the tray is in a slot",
-   "The cover's rear hinge is inferred from the published open envelope, not from a drawing"
+   "The cover pivots on the Z tower's top (Formlabs' hinge-replacement guide) through 83 degrees, its front top edge to 844 mm against the published 844; the hinge's position is fitted to a frame of the open cover"
   ]
  },
  "form_wash": {
@@ -189,26 +189,26 @@
  },
  "lumenpnp": {
   "title": "Pick-and-place, open source",
-  "model": "Opulo LumenPnP v4",
-  "source": "Opulo's LumenPnP repository (DESIGN_DECISIONS.md, bom.json: 600 mm V-slot, two nozzles, top and bottom vision, 120 x 600 mm staging plates, boards to 225 x 400 mm) and its v4 photo; overall size estimated from the extrusions and the photo",
+  "model": "Opulo LumenPnP v4.2",
+  "source": "Opulo's CAD (github.com/opulo-inc/lumenpnp at 64cf68d: src/assembly.FCStd, src/CSM plates, bom.json): seven 600 mm V-slot extrusions, two nozzles, top and bottom vision; the powered feeders from Opulo's videos; checked against them with register.py (refs/lumenpnp/)",
   "model_mm": [
-   690,
-   795,
-   450
+   707,
+   673,
+   364
   ],
   "published_mm": [
-   680.0,
-   680.0,
-   450.0
+   707.0,
+   673.0,
+   342.0
   ],
   "fits_tray": true,
   "floor": false,
   "where": "on a VLM tray",
   "over_opening_mm": 0.0,
   "notes": [
-   "Opulo publishes no overall size; 680 x 680 x 450 mm is the 600 mm extrusions plus the legs, and the height scaled from Opulo's photo (about +-15 %).",
-   "Open hardware: the CAD is FreeCAD and the firmware is Marlin, driven by OpenPnP.",
-   "It needs no compressed air: its vacuum pumps are on board."
+   "707 x 673 x 342 mm is the envelope of Opulo's own assembly (src/assembly.FCStd at 64cf68d): legs and their extensions, the X motor and control box on the left, the X idler on the right; the nozzle tubes loop about 40 mm higher.",
+   "Work area 360 x 270 mm (Opulo's v4 video); boards up to 225 x 400 mm (DESIGN_DECISIONS.md).",
+   "Open hardware: the CAD is FreeCAD, the firmware Marlin, driven by OpenPnP. Its vacuum pumps are in the control box, so it needs no compressed air."
   ]
  }
 }

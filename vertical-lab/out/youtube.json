@@ -1,0 +1,149 @@
+{
+ "channel": "UCKC7WzMu6QEh7O55zZlT2lw",
+ "note": "Every upload of a file under out/mp4, oldest first. sha256 is of the file uploaded; the newest entry whose sha256 matches the file as it is now is its current video.",
+ "videos": {
+  "alloy_route.mp4": [
+   {
+    "id": "9qnGCtPwCTM",
+    "sha256": "9ac88d4bdd26e05baa91580b66d6f35a21e596f073d148a42a59a96a7291fd0d",
+    "bytes": 22989712,
+    "commit": "2a010a7",
+    "uploaded": "2026-11-03T22:31:22Z",
+    "title": "Vertical cloud lab: the alloy route, start to finish (charge cups to tensile bar)",
+    "privacy": "unlisted"
+   }
+  ],
+  "alloy_workflow.mp4": [
+   {
+    "id": "YVdpGTLvxhI",
+    "sha256": "cf74c49c32039eacd55773bd22a5feac5cc096fe3aad17391bf334bc1297391d",
+    "bytes": 7783614,
+    "commit": "f9f9144",
+    "uploaded": "2026-11-03T21:22:36Z",
+    "title": "Vertical cloud lab: from the metal printer to the tensile test (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "fabrication_tour.mp4": [
+   {
+    "id": "HYN9dYyRkrQ",
+    "sha256": "c1c110e2638d774c87ade22fe61b40d24c69751b2e0adfac4ed9d31d8467b770",
+    "bytes": 3553747,
+    "commit": "c41eb55",
+    "uploaded": "2026-11-03T20:33:08Z",
+    "title": "Vertical cloud lab: compact metal printers, resin printing and PCB assembly (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "instruments_round4_tour.mp4": [
+   {
+    "id": "IEbhMjcAUOQ",
+    "sha256": "e73ee3fe5a44203181996af9403252c81983c460e3f22ce19f952a8815353153",
+    "bytes": 8719186,
+    "commit": "4dd3bdc",
+    "uploaded": "2026-11-03T21:22:40Z",
+    "title": "Vertical cloud lab: VHX + LIBS, XRF, sieving, OpenFlexure array, corrosion, DED, packaging, HIP",
+    "privacy": "unlisted"
+   }
+  ],
+  "instruments_tour.mp4": [
+   {
+    "id": "ISyVIHtmvZc",
+    "sha256": "0bc973b60ee12b5957ffc936923b23527fb27c73f96d169ef6c73eb4318f2444",
+    "bytes": 2839471,
+    "commit": "6366a63",
+    "uploaded": "2026-11-03T20:01:50Z",
+    "title": "Vertical cloud lab: 14 characterization and test instruments at work (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "setup_lab.mp4": [
+   {
+    "id": "bITROBu1NNE",
+    "sha256": "0b300d48d32d25c2021220b9632e673fc20261fdfa8fc1ac032daa37bd5e3ff5",
+    "bytes": 12815707,
+    "commit": "44e8548",
+    "uploaded": "2026-11-03T21:36:49Z",
+    "title": "Vertical cloud lab, set up from scratch: VLM, floor machines, arms, every tray loaded",
+    "privacy": "unlisted"
+   }
+  ],
+  "vertical_lab_full.mp4": [
+   {
+    "id": "ro-pUo0ie_M",
+    "sha256": "adc34f24b8a1c8ff2fc75e1858638296707d30d8bdfc69768e2af3eae67c4d38",
+    "bytes": 11453514,
+    "commit": "516f796",
+    "uploaded": "2026-10-27T20:09:29Z",
+    "title": "Vertical cloud lab: Kardex Shuttle XP 500 VLM with a UR10e, multi-doser and CubXL (3-D animation)",
+    "privacy": "unlisted",
+    "branch": "claude/issue-303-20261027-1834",
+    "superseded_by": "xI1d0kkX8VA"
+   },
+   {
+    "id": "9A9XuBT0BYk",
+    "sha256": "966ed2d0594962e285c8ea2560de9e03446ffcff4cc920f7a0fe77578219c41f",
+    "bytes": 20511832,
+    "commit": "03801d8",
+    "uploaded": "2026-11-03T18:34:54Z",
+    "title": "Vertical cloud lab: Kardex Shuttle XP 500 with 16 instruments, a UR10e workflow and a 50 ft scale-up",
+    "privacy": "unlisted",
+    "branch": "claude/issue-303-20261103-1726",
+    "note": "That branch's own join, with its 50 ft scale-up chapter; not an older render of this file."
+   },
+   {
+    "id": "xI1d0kkX8VA",
+    "sha256": "b4873acdc294f8e28aac3ea48a55211347b056644c7093046c6b07eba5a3e428",
+    "bytes": 9551032,
+    "commit": "74794c2",
+    "uploaded": "2026-11-04T04:58:28Z",
+    "title": "Vertical cloud lab: the VLM assembled, loaded and at work (round 1, ends loaded)",
+    "privacy": "unlisted"
+   }
+  ],
+  "vlm_fab_trays.mp4": [
+   {
+    "id": "5q5Pv2Mhbn8",
+    "sha256": "7f9e545efce33f8fac18085dd19aa54116547493efdb546ec783284875b558c0",
+    "bytes": 2997463,
+    "commit": "8eeb8b8",
+    "uploaded": "2026-11-03T20:33:16Z",
+    "title": "Vertical cloud lab: trays G (resin), H (PCB) and I (two SnowPods) on the Kardex Shuttle",
+    "privacy": "unlisted"
+   }
+  ],
+  "vlm_line.mp4": [
+   {
+    "id": "oWM3fCZiwRs",
+    "sha256": "33bcebed28961814393696e897cee7937d2d8dbadb5d59dda37aa1fd717d82c6",
+    "bytes": 5771336,
+    "commit": "6366a63",
+    "uploaded": "2026-11-03T20:01:52Z",
+    "title": "Vertical cloud lab: trays D-F and the alloy line along a backup rail (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "vlm_services_all.mp4": [
+   {
+    "id": "ed2M0u5Rjw0",
+    "sha256": "9f4737aa8726beadb19932fe0bb5d8586c9ea4ae99fc97b498d853815b981d06",
+    "bytes": 12041179,
+    "commit": "4dd3bdc",
+    "uploaded": "2026-11-03T21:22:38Z",
+    "title": "Vertical cloud lab: tray docking couplings, a tethered tray, and the cabling (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "warehouse.mp4": [
+   {
+    "id": "KbrkulS07EM",
+    "sha256": "4d7b162b100f97ff9e0b0da0e81de3aff324bc0de6cdc7155d49ca8d73d5d6d0",
+    "bytes": 7324434,
+    "commit": "4bf5904",
+    "uploaded": "2026-11-03T21:32:07Z",
+    "title": "Vertical cloud lab, warehouse version: two MiR250 + UR10e units on an open floor",
+    "privacy": "unlisted"
+   }
+  ]
+ }
+}

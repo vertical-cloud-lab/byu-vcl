@@ -690,14 +690,39 @@ def _intended(key, a, b):
     return None
 
 
+def _not_rigid(inst, fr) -> list[str]:
+    """Pieces whose joint (or a parent's) scales or shears as it moves, such as a cable chain whose runs stretch with
+    the carriage (a `follow` joint): no rigid body can do that, so MuJoCo can't check them."""
+    bad = set()
+    for k, j in inst.joints.items():
+        for v in sorted({f[3].get(k, j.v0) for f in fr})[::7] + [fr[-1][3].get(k, j.v0)]:
+            m = j.matrix(v)[:3, :3]
+            if np.abs(m.T @ m - np.eye(3)).max() > 1e-6:
+                bad.add(k)
+                break
+    out = set()
+    for k in set(inst.pieces) | set(inst.meshes):
+        p = k
+        while p is not None:
+            if p in bad:
+                out.add(k)
+                break
+            j = inst.joints.get(p)
+            p = j.parent if j is not None else None
+    return sorted(out)
+
+
 def check(key: str, module: str, build, verbose=True) -> dict:
     t0 = time.time()
     geo = geometry(key, module, build)
     t_geo = time.time() - t0
     inst = geo["inst"]
+    fr = frames(inst)
+    stretch = _not_rigid(inst, fr)
+    if stretch:
+        geo = dict(geo, parts=[p for p in geo["parts"] if p["piece"] not in stretch])
     parts = geo["parts"]
     sim = Sim(geo)
-    fr = frames(inst)
     pose_err = max(sim.check_pose(fr[k][3]) for k in sorted({0, len(fr) // 2, len(fr) - 1}))
     ex = Exact(parts)
     hits = {}                                     # (i, j) -> dict
@@ -789,7 +814,7 @@ def check(key: str, module: str, build, verbose=True) -> dict:
                intended_not_rechecked=n_skip, rejected_by_exact=n_cand - n_conf - n_skip,
                seconds=dict(geometry=round(t_geo, 1), sweep=round(t_sweep, 1), loose=round(t_gap, 1),
                             total=round(time.time() - t0, 1)),
-               findings=findings, loose=loose)
+               findings=findings, loose=loose, not_rigid_left_out=stretch)
     if verbose:
         nf = sum(1 for f in findings if f["level"] == "fault" and not f["intended"])
         nm = sum(1 for f in findings if f["level"] == "minor" and not f["intended"])

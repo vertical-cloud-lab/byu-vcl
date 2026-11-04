@@ -29,6 +29,11 @@ from common import box, cyl, hose, rbox, tube  # noqa: F401  (lab_models helpers
 from instruments import Instrument, Joint, _piece, _xcyl, _ycyl
 
 # name: (r, g, b, opacity, specular), merged into tour's MATS
+# register.py's view of these models (see its docstring), filled in after each build function
+ANCHORS: dict = {}
+FREE: dict = {}
+CHECKS: dict = {}
+
 MATERIALS = {
     "char_plate": (0.80, 0.81, 0.83, 1.0, 0.55),        # cast aluminium tooling plate, milled
     "char_duct": (0.36, 0.37, 0.40, 1.0, 0.25),         # cable duct
@@ -629,89 +634,195 @@ def _sieve_panel(img, scale, alpha):
 # elemental mapping to the "Keyence VHX-7000 Optical Microscope (BYU)" it lists.
 VHX_SPECS = dict(ea_W=280.0, ea_D=210.0, ea_H=375.0, ea_kg=7.2, laser_nm=355, spot_um=10, wd=25.0,
                  ctrl_W=625.0, ctrl_H=460.0, ctrl_D=180.0, screen=(596.7, 335.7), stage=(171.0, 168.0), disk=100.0,
-                 xy=20.0, focus_z=49.0, stand_kg=23.8,
-                 base=(330.0, 430.0, 95.0), column=(150.0, 120.0, 560.0))     # base and column: estimates from photos
+                 xy=20.0, focus_z=49.0, stand_kg=23.8)
+# The look follows Keyence's own footage, fitted with register.py (refs/vhx/, notes/refine_vhx.md): "Versatile
+# User-Friendly Digital Microscope | VHX-7000N Series" (youtu.be/C4IBBj20OpE), 0:19 (front, the plain stand beside
+# the monitor) and 1:25 (the EA-300 configuration, from the front right). Dark grey and black with silver flanks,
+# not white: a flared pedestal base (silver skirt, dark top, VHX badge, the focus knob on its right), a dark stage
+# column carrying the motorized XY stage at mid-height, a column rising at the back whose silver arch runs forward
+# over the head, the EA-300 as a dark box under that arch with the VH-ZST zoom lens down its front right, and the
+# controller as a monitor: a black bezel round the 27 in screen over a silver "VHX" bar on a narrower silver foot,
+# with the console (jog dial, keys, joystick) in front. Sizes below are fitted or estimated; the published ones are
+# in VHX_SPECS. The stand's outer size is not published, so the stage top (171 x 168 mm) and the monitor
+# (625 x 460 mm, screen 596.7 x 335.7 mm) set the scale.
+VHX_LOOK = dict(base_w=290.7, base_d=435.0, base_h=115.0, base_y=60.0, logo_z=73.7, knob_y=60.0,
+                stage_w=213.4, stage_d=200.0, stage_h=53.4, stage_z=225.0, plate_t=6.0,
+                col_w=150.0, col_d=110.0, ea_w=210.0, ea_d=280.0, ea_z=345.0, ea_h=250.0, ea_x=-30.0, arch_rise=50.0,
+                mon_x=470.0, mon_y=40.0, scr_top=12.2, bez0=84.9, foot_h=33.0, foot_w=430.0)
+VHX_STAGE_Y = -40.0               # the stage's centre, and the laser's axis, in front of the stand's centre
+VHX_COL_Y = 225.0                 # the back column's centre
+
+
+def _vhx_ea_y(p) -> float:
+    """The EA-300's centre: its back against the column's front face."""
+    return VHX_COL_Y - p["col_d"] / 2 - p["ea_d"] / 2 + 20.0
+
+
+def vhx_anchors(p, pose=None) -> dict:
+    """Points of the stand and of the monitor, from the same parameters vhx() builds them with."""
+    s = VHX_SPECS
+    ys = VHX_STAGE_Y
+    sf = ys - p["stage_d"] / 2                      # the stage body's front face
+    pw, pd = s["stage"]
+    zt = p["stage_z"] + p["plate_t"]
+    a = {"stage top front left": (-p["stage_w"] / 2, sf, p["stage_z"]),
+         "stage top front right": (p["stage_w"] / 2, sf, p["stage_z"]),
+         "stage bottom front left": (-p["stage_w"] / 2, sf, p["stage_z"] - p["stage_h"]),
+         "stage bottom front right": (p["stage_w"] / 2, sf, p["stage_z"] - p["stage_h"]),
+         "plate front left": (-pw / 2, ys - pd / 2, zt), "plate front right": (pw / 2, ys - pd / 2, zt),
+         "base logo": (0.0, p["base_y"] - p["base_d"] / 2, p["logo_z"])}
+    ey = _vhx_ea_y(p)
+    ez1 = p["ea_z"] + p["ea_h"]
+    for nm, (fx, fy) in {"EA top front left": (-1, -1), "EA top front right": (1, -1),
+                         "EA top back right": (1, 1)}.items():
+        a[nm] = (p["ea_x"] + fx * p["ea_w"] / 2, ey + fy * p["ea_d"] / 2, ez1)
+    a["EA bottom front right"] = (p["ea_x"] + p["ea_w"] / 2, ey - p["ea_d"] / 2, p["ea_z"])
+    a["knob end"] = (p["base_w"] / 2 + 35.0, p["base_y"] - p["base_d"] / 2 + p["knob_y"], 0.62 * p["base_h"])
+    a["base front bottom"] = (0.0, p["base_y"] - (p["base_d"] + 30.0) / 2, 8.0)
+    # the monitor, in its own place: each frame's view of it has its own camera pose, so where it stands doesn't matter
+    mx, yf, H, W = p["mon_x"], p["mon_y"] - 15.0, s["ctrl_H"], s["ctrl_W"]
+    sw, sh = s["screen"]
+    a.update({"bezel top left": (mx - W / 2, yf, H), "bezel top right": (mx + W / 2, yf, H),
+              "bezel bottom left": (mx - W / 2, yf, p["bez0"]), "bezel bottom right": (mx + W / 2, yf, p["bez0"]),
+              "screen tl": (mx - sw / 2, yf, H - p["scr_top"]), "screen tr": (mx + sw / 2, yf, H - p["scr_top"]),
+              "screen bl": (mx - sw / 2, yf, H - p["scr_top"] - sh),
+              "screen br": (mx + sw / 2, yf, H - p["scr_top"] - sh)})
+    return a
+
+
+def _arch(y0, y1, z0, rise, w, t, x=0.0, n=28):
+    """A flat bar (w across, t thick) bent into a half-ellipse in the y-z plane, from (y0, z0) up over to (y1, z0)."""
+    yc, ry = (y0 + y1) / 2, abs(y1 - y0) / 2
+    pts = [(yc + ry * math.cos(math.pi * k / n), z0 + rise * math.sin(math.pi * k / n)) for k in range(n + 1)]
+    out = None
+    for (ya, za), (yb, zb) in zip(pts[:-1], pts[1:]):
+        L = math.hypot(yb - ya, zb - za) + t * 0.6
+        seg = box(x - w / 2, -L / 2, -t / 2, x + w / 2, L / 2, t / 2)
+        seg = seg.rotate((0, 0, 0), (1, 0, 0), math.degrees(math.atan2(zb - za, yb - ya)))
+        seg = seg.translate((0, (ya + yb) / 2, (za + zb) / 2))
+        out = seg if out is None else out.union(seg)
+    return out
 
 
 def vhx() -> Instrument:
     p = VHX_SPECS
+    q = VHX_LOOK
     inst = CharInstrument("vhx", "Digital microscope with laser elemental analysis (LIBS)",
                           "Keyence VHX-7000 + EA-300", (0.0, 0.0, 0.0),
                           "Keyence VHX-7000N brochure KA1-1099 pp. 34-38 (EA-300 280 x 210 x 375 mm, 7.2 kg, 355 nm "
                           "Nd:YAG, 10 um spot, H-U; VHX-S750E stage 171 x 168 mm, XY +-20 mm; controller 625 x 460 x "
-                          "180 mm); EA-300 model page; stand base and column scaled from Keyence's photos")
-    bw, bd, bh = p["base"]
-    cw, cd, ch = p["column"]
-    sx0 = 0.0                                     # the stand's centre; the controller stands to its right
+                          "180 mm); EA-300 model page; the look from Keyence's VHX-7000N video, fitted with register.py")
+    sx0, ys = 0.0, VHX_STAGE_Y
+    bw, bd, bh = q["base_w"], q["base_d"], q["base_h"]
     body = _piece(inst, "body")
-    body.add("stand base", rbox(bw, bd, bh, 30, x=sx0).edges(">Z").fillet(10), "char_keyence")
-    body.add("base trim", box(sx0 - bw / 2 + 20, -bd / 2 - 1, 20, sx0 + bw / 2 - 20, -bd / 2, 40), "char_keyence_dk")
-    yc = bd / 2 - cd / 2 - 15
-    body.add("column", rbox(cw, cd, ch, 20, x=sx0, y=yc, z=bh), "char_keyence")
-    body.add("column face", box(sx0 - cw / 2 + 15, yc - cd / 2 - 1, bh + 40, sx0 + cw / 2 - 15, yc - cd / 2, bh + ch - 40),
-             "char_keyence_dk")
-    zs = bh + 40.0                                 # the stage top
-    body.add("XY stage", rbox(p["stage"][0], p["stage"][1], 40, 8, x=sx0, y=-40, z=bh), "char_keyence_dk")
-    body.add("stage disk", cyl(p["disk"], 2, x=sx0, y=-40, z=zs - 1), "inst_grey")
-    # the free-angle arm: a pivot on the column at the head's focal height, so the view stays centred as it tilts
-    zf = zs + 1.0 + 12.6                           # the sample surface: a 12.6 mm mounted coupon on the stage disk
-    pivot = (sx0, -40.0, zf)
+    # the pedestal: a silver skirt flaring out at the floor, a dark top, the badge and the focus knob on its right
+    by = q["base_y"]
+    yb0 = by - bd / 2                                # the base's front face
+    skirt = (cq.Workplane("XY").sketch().rect(bw + 40, bd + 30).vertices().fillet(60).finalize()
+             .extrude(0.5 * bh, taper=math.degrees(math.atan2(20.0, 0.5 * bh))))
+    body.add("base skirt", skirt.translate((sx0, by, 8)), "char_vhx_silver")
+    lean = math.atan2(20.0, 0.5 * bh)                # the skirt's front leans back as it tapers: dark between the flanks
+    panel = box(-0.3 * bw, 0, 0, 0.3 * bw, 3, math.hypot(20.0, 0.5 * bh)).rotate((0, 0, 0), (1, 0, 0), -math.degrees(lean))
+    body.add("base front", panel.translate((sx0, by - (bd + 30) / 2 - 1.5, 8)), "char_vhx_dark")
+    body.add("base top", rbox(bw - 10, bd - 10, bh - 0.5 * bh - 8, 40, x=sx0, y=by, z=0.5 * bh + 8)
+             .edges(">Z").fillet(12), "char_vhx_dark")
+    for fx in (-1, 1):
+        for fy in (-1, 1):
+            body.add(f"foot {fx} {fy}", cyl(50, 8, x=sx0 + fx * (bw / 2 - 10), y=by + fy * (bd / 2 - 25)),
+                     "char_vhx_dark")
+    body.add("base badge", box(sx0 - 30, yb0 + 4, q["logo_z"] - 6, sx0 + 30, yb0 + 5, q["logo_z"] + 6), "inst_light")
+    body.add("base light", box(sx0 - 22, yb0 + 4, q["logo_z"] + 16, sx0 + 22, yb0 + 5, q["logo_z"] + 20),
+             "char_vhx_blue")
+    body.add("focus knob", _xcyl(46, 40, x=sx0 + bw / 2 - 5, y=yb0 + q["knob_y"], z=0.62 * bh), "char_vhx_dark")
+    body.add("knob ring", _xcyl(52, 8, x=sx0 + bw / 2 - 8, y=yb0 + q["knob_y"], z=0.62 * bh), "char_vhx_silver")
+    # the stage column and the motorized XY stage at mid-height (stage top 171 x 168 mm, its theta disk 100 mm)
+    sz, sh_ = q["stage_z"], q["stage_h"]
+    body.add("stage column", cyl(130, sz - sh_ - bh + 2, x=sx0, y=ys + 10, z=bh - 1), "char_vhx_dark")
+    body.add("stage column band", cyl(134, 14, x=sx0, y=ys + 10, z=sz - sh_ - 40), "char_vhx_grey")
+    body.add("XY stage", rbox(q["stage_w"], q["stage_d"], sh_, 6, x=sx0, y=ys, z=sz - sh_).edges(">Z").fillet(4),
+             "char_vhx_dark")
+    body.add("stage badge", box(sx0 - 55, ys - q["stage_d"] / 2 - 0.6, sz - sh_ / 2 - 4, sx0 - 5,
+                                ys - q["stage_d"] / 2, sz - sh_ / 2 + 4), "inst_light")
+    zs = sz + q["plate_t"]                           # the top of the stage plate
+    body.add("stage plate", rbox(p["stage"][0], p["stage"][1], q["plate_t"], 4, x=sx0, y=ys, z=sz), "char_vhx_grey")
+    body.add("stage disk", cyl(p["disk"], 1.0, x=sx0, y=ys, z=zs), "inst_grey")
+    # the back column, and its silver arch running forward over the head
+    cw, cd = q["col_w"], q["col_d"]
+    ez0, ez1 = q["ea_z"], q["ea_z"] + q["ea_h"]
+    ctop = ez1 - 30.0
+    body.add("column", rbox(cw, cd, ctop - bh + 5, 30, x=sx0, y=VHX_COL_Y, z=bh - 5), "char_vhx_dark")
+    for fx in (-1, 1):
+        body.add(f"column flank {fx}", box(sx0 + fx * cw / 2 - 6, VHX_COL_Y - cd / 2 + 15, bh + 20,
+                                           sx0 + fx * cw / 2 + 6, VHX_COL_Y + cd / 2 - 15, ctop - 20),
+                 "char_vhx_silver")
+    # the free-angle head: the EA-300 under the arch, the VH-ZST zoom lens down its front right, the reflective
+    # objective under its centre; it all tilts about the focal point
+    zf = zs + 1.0 + 12.6                             # the sample surface: a 12.6 mm mounted coupon on the stage disk
+    pivot = (sx0, ys, zf)
     head = _piece(inst, "head")
-    eh = p["ea_H"]
-    z_ea = zf + p["wd"] + 40.0                     # the EA-300's underside: objective nose + working distance
-    # the EA-300's back stands 4 mm clear of the tilt guide on the column face, the arm bridging the gap
-    ey = yc - cd / 2 - 14 - 4 - p["ea_D"] / 2
-    ly = ey - 110.0                                # the zoom lens, half sunk in the EA-300's front as before
-    head.add("arm", box(sx0 - 40, -40 + 60, z_ea + 120, sx0 + 40, yc - cd / 2, z_ea + 200), "char_keyence_dk")
-    head.add("EA-300", rbox(p["ea_W"], p["ea_D"], eh, 18, x=sx0, y=ey, z=z_ea).edges(">Z").fillet(10),
-             "char_keyence")
-    head.add("EA-300 band", box(sx0 - p["ea_W"] / 2 - 0.5, ey - p["ea_D"] / 2 - 0.5, z_ea + 150,
-                                sx0 + p["ea_W"] / 2 + 0.5, ey + p["ea_D"] / 2 + 0.5, z_ea + 175), "char_keyence_dk")
-    head.add("objective", cyl(46, 40, x=sx0, y=-40, z=z_ea - 40), "inst_dark")
-    head.add("objective ring", cyl(52, 6, x=sx0, y=-40, z=z_ea - 12), "chrome")
-    head.add("VH-ZST zoom lens", cyl(58, 150, x=sx0 + 95, y=ly, z=z_ea + 60), "char_keyence_dk")
-    head.add("camera", rbox(60, 60, 50, 6, x=sx0 + 95, y=ly, z=z_ea + 210), "char_keyence")
-    head.add("lens joint", box(sx0 + 60, ly - 15, z_ea + 150, sx0 + 140, ly + 20, z_ea + 180), "inst_grey")
-    # the free-angle guide: an arc on the column face about the focal point, which the arm rides as the head tilts
-    R_arm = z_ea + 160 - zf
-    for k in range(-6, 7):
-        seg = box(sx0 - R_arm * math.sin(math.radians(5.5)), yc - cd / 2 - 14, zf + R_arm - 12,
-                  sx0 + R_arm * math.sin(math.radians(5.5)), yc - cd / 2, zf + R_arm + 12)
-        body.add(f"tilt guide {k}", seg.rotate((sx0, 0, zf), (sx0, 1, zf), 10.0 * k), "char_keyence_dk")
-    body.add("cable", hose([(sx0 + cw / 2 - 20, yc + cd / 2, bh + ch - 80), (sx0 + cw / 2 - 20, yc + cd / 2 + 40, bh + ch - 80),
-                            (sx0 + 200, yc + cd / 2 + 40, 60), (390.0, yc + cd / 2 + 40, 60)], 10), "char_cable")
-    # the controller with its 27 in screen
-    cx = 540.0                                     # drawn, but left out of the framing and the size (aside)
+    ex, ey = sx0 + q["ea_x"], _vhx_ea_y(q)
+    eW, eD = q["ea_w"], q["ea_d"]                    # narrow side to the front, as the footage shows it
+    head.add("EA-300", rbox(eW, eD, q["ea_h"], 22, x=ex, y=ey, z=ez0).edges(">Z").fillet(14), "char_vhx_dark")
+    head.add("EA-300 side panel", box(ex + eW / 2 - 1, ey - eD / 2 + 30, ez0 + 30, ex + eW / 2 + 1.5, ey + eD / 2 - 20,
+                                      ez1 - 25), "char_vhx_grey")
+    head.add("EA-300 badge", box(ex - 30, ey - eD / 2 - 0.6, ez1 - 70, ex + 30, ey - eD / 2, ez1 - 62), "inst_light")
+    body.add("arch", _arch(VHX_COL_Y + cd / 2 - 10, ey - eD / 2 + 25, ctop - 10, q["arch_rise"] + 40, 46, 22, x=sx0),
+             "char_vhx_silver")                     # the column's, so it stays put as the head tilts under it
+    head.add("objective", cyl(44, ez0 - (zf + p["wd"]), x=sx0, y=ys, z=zf + p["wd"]), "char_vhx_dark")
+    head.add("objective ring", cyl(50, 6, x=sx0, y=ys, z=zf + p["wd"] + 4), "chrome")
+    lx, ly = ex + eW / 2 - 35, ey - eD / 2 - 32      # the VH-ZST, on the EA-300's front right
+    head.add("VH-ZST zoom lens", cyl(54, ez1 - 60 - (ez0 - 40), x=lx, y=ly, z=ez0 - 40), "char_vhx_silver")
+    head.add("zoom lens grip", cyl(58, 90, x=lx, y=ly, z=ez0 + 40), "char_vhx_dark")
+    head.add("lens nose", cyl(46, 40, x=lx, y=ly, z=ez0 - 80), "char_vhx_dark")
+    head.add("lens joint", box(lx - 20, ly, ez0 + 140, lx + 20, ey - eD / 2 + 2, ez0 + 175), "char_vhx_grey")
+    body.add("cable", hose([(sx0 - cw / 2 + 20, VHX_COL_Y + cd / 2, ctop - 60),
+                            (sx0 - cw / 2 + 20, VHX_COL_Y + cd / 2 + 40, ctop - 60),
+                            (sx0 + 200, VHX_COL_Y + cd / 2 + 40, 40), (q["mon_x"], VHX_COL_Y + cd / 2 + 40, 40)], 10),
+             "char_cable")
+    # the controller: a 27 in monitor on a silver "VHX" bar and foot, and its console in front
+    cx, cy = q["mon_x"], q["mon_y"]
+    W, H, sw, sh = p["ctrl_W"], p["ctrl_H"], p["screen"][0], p["screen"][1]
     ctrl = _piece(inst, "controller")
-    ctrl.add("controller", rbox(p["ctrl_W"], p["ctrl_D"], 110, 10, x=cx, y=60), "char_keyence")
-    ctrl.add("screen frame", box(cx - p["ctrl_W"] / 2, 60 - 20, 110, cx + p["ctrl_W"] / 2, 60 + 20, p["ctrl_H"]),
-             "inst_black")
-    sw, sh = p["screen"]
-    ctrl.add("screen", box(cx - sw / 2, 60 - 21, 110 + (p["ctrl_H"] - 110 - sh) / 2, cx + sw / 2, 60 - 20,
-                           110 + (p["ctrl_H"] - 110 + sh) / 2), "screen_on")
-    body.add("handheld controller", rbox(110, 70, 30, 12, x=sx0 + 260, y=-120, z=0), "char_keyence_dk")
+    ctrl.add("controller foot", rbox(q["foot_w"], p["ctrl_D"], q["foot_h"], 30, x=cx, y=cy + 10).edges(">Z").fillet(8),
+             "char_vhx_silver")
+    ctrl.add("VHX bar", rbox(W, 60, q["bez0"] - q["foot_h"] + 6, 12, x=cx, y=cy, z=q["foot_h"] - 4)
+             .edges("<Z and |X").fillet(16), "char_vhx_silver")
+    yf = cy - 15.0
+    ctrl.add("bezel", rbox(W, 30, H - q["bez0"], 8, x=cx, y=cy, z=q["bez0"]), "inst_black")
+    ctrl.add("back", rbox(W - 60, 70, H - q["bez0"] - 60, 30, x=cx, y=cy + 45, z=q["bez0"] + 10), "char_vhx_dark")
+    ctrl.add("screen", box(cx - sw / 2, yf - 0.8, H - q["scr_top"] - sh, cx + sw / 2, yf, H - q["scr_top"]),
+             "screen_on")
+    ctrl.add("VHX badge", box(cx - 25, cy - 30.6, q["bez0"] - 22, cx + 25, cy - 30, q["bez0"] - 12), "inst_dark")
+    kx, ky = cx - 20, cy - 200                       # the console: jog dial, keys and joystick
+    ctrl.add("console", rbox(215, 100, 34, 20, x=kx, y=ky).edges(">Z").fillet(6), "char_vhx_silver")
+    ctrl.add("console keys", rbox(130, 66, 4, 6, x=kx - 5, y=ky - 5, z=34), "char_vhx_dark")
+    ctrl.add("jog dial", _xcyl(44, 30, x=kx - 107.5 - 28, y=ky - 10, z=26), "char_vhx_dark")
+    ctrl.add("joystick", cyl(14, 50, x=kx + 85, y=ky + 15, z=34).union(
+        cq.Workplane("XY").sphere(11).translate((kx + 85, ky + 15, 88))), "char_vhx_dark")
     # the sample, the laser and the plasma
     smp = _piece(inst, "sample")
     smp.add("mount", cyl(30, 12, z=0), "mount")
     smp.add("polished face", cyl(22, 0.6, z=12), "sample")
     inst.joints = {
         # in under the objective's nose, then down onto the stage disk (its top at zs + 1)
-        "sample": Joint("path", path=((sx0, -320, zs + 150), (sx0, -160, zs + 14), (sx0, -40, zs + 6), (sx0, -40, zs + 1))),
+        "sample": Joint("path", path=((sx0, ys - 280, zs + 150), (sx0, ys - 120, zs + 14), (sx0, ys, zs + 6),
+                                      (sx0, ys, zs + 1))),
         "head": Joint("hinge", axis=(0, 1, 0), pivot=pivot, deg=-35.0, parent="focus"),
         "laser": Joint("fade"),
         "plasma": Joint("fade"),
         "readout": Joint("fade"),
     }
-    inst.meshes["focus"] = _dummy((sx0, -40, zf))
+    inst.meshes["focus"] = _dummy((sx0, ys, zf))
     inst.joints["focus"] = Joint("path", path=((0, 0, 0), (0, 0, -6), (0, 0, 6), (0, 0, 0)))
     las = _piece(inst, "laser")
-    las.add("beam", cyl(6.0, z_ea - 40 - zf, x=sx0, y=-40, z=zf), "laser")
+    las.add("beam", cyl(6.0, p["wd"], x=sx0, y=ys, z=zf), "laser")
     pl = _piece(inst, "plasma")
-    pl.add("plasma core", cq.Workplane("XY").sphere(2.4).translate((sx0, -40, zf + 1.5)), "plasma")
-    pl.add("plasma glow", cq.Workplane("XY").sphere(14.0).translate((sx0, -40, zf + 3.0)), "plasma_halo")
-    inst.meshes["readout"] = _dummy((cx, 60, 300))
+    pl.add("plasma core", cq.Workplane("XY").sphere(2.4).translate((sx0, ys, zf + 1.5)), "plasma")
+    pl.add("plasma glow", cq.Workplane("XY").sphere(14.0).translate((sx0, ys, zf + 3.0)), "plasma_halo")
+    inst.meshes["readout"] = _dummy((cx, cy, 300))
     inst.aside = ("readout", "controller")
     inst.props = ("sample",)
+    top = ctop - 10 + q["arch_rise"] + 40 + 11      # the arch's crown
     inst.actions = [
         ("A polished, mounted coupon goes onto the VHX-S750E's motorized XY stage (+-20 mm).", 2.4,
          {"sample": (0.0, 1.0), "laser": (0.0, 0.0), "plasma": (0.0, 0.0), "readout": (0.0, 0.0)}),
@@ -723,14 +834,15 @@ def vhx() -> Instrument:
          "surface into a plasma.", 2.4, {"laser": (0.0, 1.0), "plasma": (0.0, 1.0)}),
         ("Its spectrometer reads the plasma's light: elements from H to U, in seconds, at the spot the camera is "
          "looking at.", 4.2, {"laser": (1.0, 0.0), "plasma": (1.0, 0.3), "readout": (0.0, 1.0)}),
-        ("The EA-300 adds 7.2 kg and 375 mm to the stand. Stand and head are 655 mm tall: under Kardex's 727.5 mm.",
+        (f"The EA-300 adds 7.2 kg to the stand. Stand and head are about {top:.0f} mm tall: under Kardex's 727.5 mm.",
          2.4, {"plasma": (0.3, 0.0), "readout": (1.0, 0.0)}),
     ]
-    inst.labels = [("EA-300 LIBS head", (sx0 - p["ea_W"] / 2, -40, z_ea + 250), (0.10, 0.25)),
-                   ("VH-ZST zoom lens", (sx0 + 95 + 29, ly, z_ea + 120), (0.42, 0.14)),
-                   ("motorized XY stage", (sx0 - p["stage"][0] / 2, -40 - p["stage"][1] / 2, zs), (0.08, 0.72)),
-                   ("controller, 27 in 4K screen", (cx - 250, 40, p["ctrl_H"] - 60), (0.84, 0.80)),
-                   ("laser spot", (sx0, -40 - 15, zf + 2), (0.12, 0.50))]
+    inst.labels = [("EA-300 LIBS head", (ex - eW / 2, ey - eD / 2, ez1 - 60), (0.10, 0.25)),
+                   ("VH-ZST zoom lens", (lx + 27, ly, ez0 + 80), (0.42, 0.14)),
+                   ("motorized XY stage", (sx0 - q["stage_w"] / 2, ys - q["stage_d"] / 2, sz - 20), (0.08, 0.72)),
+                   ("controller, 27 in 4K screen", (cx - 250, yf, H - 60), (0.84, 0.80)),
+                   ("laser spot", (sx0, ys - 15, zf + 2), (0.12, 0.50))]
+    inst.anchors = vhx_anchors(q)
     inst.cam = (0.55, -1.7, 0.62)
     inst.framing = (0.95, 0.46)
     bb = inst.bbox()
@@ -738,7 +850,20 @@ def vhx() -> Instrument:
     return inst
 
 
+# register.py: the stand's and the monitor's anchors, fitted to Keyence's video (refs/vhx/)
+ANCHORS["vhx"] = (VHX_LOOK, vhx_anchors)
+FREE["vhx"] = ["base_w", "logo_z", "stage_w", "stage_h", "stage_z", "scr_top", "bez0"]   # depths aren't seen: not fitted
+CHECKS["vhx"] = lambda q: [q["stage_z"] - q["stage_h"] - q["base_h"] - 20, q["ea_z"] - q["stage_z"] - 70,
+                           727.5 - (q["ea_z"] + q["ea_h"] + q["arch_rise"] + 21), q["bez0"] - q["foot_h"] - 15,
+                           VHX_SPECS["ctrl_H"] - q["scr_top"] - VHX_SPECS["screen"][1] - q["bez0"] - 10]
+MATERIALS["char_vhx_dark"] = (0.14, 0.145, 0.16, 1.0, 0.45)      # the VHX stand's near-black
+MATERIALS["char_vhx_grey"] = (0.36, 0.37, 0.40, 1.0, 0.45)
+MATERIALS["char_vhx_silver"] = (0.74, 0.75, 0.77, 1.0, 0.70)     # its brushed-silver flanks, arch and bars
+MATERIALS["char_vhx_blue"] = (0.30, 0.55, 1.00, 1.0, 0.2)        # the blue status light
+
+
 MATERIALS["plasma_halo"] = (0.85, 0.80, 1.00, 0.35, 0.0)
+MATERIALS["xrf_window"] = (0.20, 0.22, 0.26, 0.80, 0.6)        # the S2 PUMA hood's dark window
 
 
 def _libs_panel(img, scale, alpha):
@@ -773,33 +898,60 @@ XRF_SPECS = dict(W=670.0, D=710.0, H=610.0, kg=108, positions=20, cup_d=40.0, cu
                  source="Bruker S2 PUMA Series 2 specifications, DKSH (technology-products.dksh.com/?p=1219)")
 
 
+# The exterior follows Bruker's own "S2 PUMA Overview" video (youtu.be/ogSg0j6j2Gw, 0:08-0:16, the XY Autochanger),
+# fitted with register.py (refs/xrf/): a full-width white hood over the top 44 % with a dark window in its top and
+# BRUKER at its front right, hinged at the back; under it a white body whose vertical front holds the touch screen,
+# left of centre, with "S2 PUMA" up its right edge; navy side panels; dark feet. (It was a small dark lid on a sloped
+# white body, with the screen on top.)
+XRF_LOOK = dict(deck=322.0, side_t=45.0, scr_w=253.0, scr_h=184.0, scr_x=-17.0, scr_z=172.0, win_w=300.0,
+                win_y0=40.0, win_d=150.0)
+
+
+def xrf_anchors(p, pose=None) -> dict:
+    W, D, H = XRF_SPECS["W"], XRF_SPECS["D"], XRF_SPECS["H"]
+    yf, dk = -D / 2, p["deck"]
+    a = {"lid top front left": (-W / 2 + 5, yf + 5, H), "lid top front right": (W / 2 - 5, yf + 5, H),
+         "lid bottom front left": (-W / 2 + 5, yf + 5, dk + 4), "lid bottom front right": (W / 2 - 5, yf + 5, dk + 4),
+         "lid top back right": (W / 2 - 5, D / 2 - 5, H), "foot front left": (-W / 2, yf, 15.0),
+         "foot front right": (W / 2, yf, 15.0),
+         "window front left": (-p["win_w"] / 2, yf + p["win_y0"], H), "window front right": (p["win_w"] / 2, yf + p["win_y0"], H),
+         "window back left": (-p["win_w"] / 2, yf + p["win_y0"] + p["win_d"], H),
+         "window back right": (p["win_w"] / 2, yf + p["win_y0"] + p["win_d"], H)}
+    for nm, (fx, fz) in {"screen tl": (-1, 1), "screen tr": (1, 1), "screen bl": (-1, -1), "screen br": (1, -1)}.items():
+        a[nm] = (p["scr_x"] + fx * p["scr_w"] / 2, yf, p["scr_z"] + fz * p["scr_h"] / 2)
+    return a
+
+
 def xrf() -> Instrument:
     p = XRF_SPECS
+    q = XRF_LOOK
     W, D, H = p["W"], p["D"], p["H"]
     inst = CharInstrument("xrf", "Benchtop EDXRF for powders and coupons", "Bruker S2 PUMA Series 2, XY Autochanger",
                           (W, D, H), "Bruker S2 PUMA Series 2 specifications via DKSH (XY Autochanger 67 x 71 x 61 cm, "
                           "108 kg; 20-position tray; 50 W Pd/Ag tube; HighSense SDD; reduced-pressure He for loose "
-                          "powders); look from Bruker's photos")
+                          "powders); the look from Bruker's S2 PUMA Overview video, fitted with register.py")
     yf, yb = -D / 2, D / 2
-    deck = 420.0                                  # the sample deck under the lid (estimate from photos)
+    deck = q["deck"]                              # the top of the body: the sample deck under the hood
+    st = q["side_t"]
     body = _piece(inst, "body")
-    body.add("feet", rbox(W - 80, D - 80, 15, 20), "inst_black")
-    shell = I._wedge(W, D, D - 140, deck - 15, y0=yf, z=15).edges("|Y").fillet(25)
-    body.add("housing", shell, "inst_white")
-    lean = math.degrees(math.atan2(140.0, deck - 15.0))   # the front leans back 140 mm over its 405 mm height
-
-    def on_front(x0, x1, z0, z1, t=1.0):
-        """A thin plate lying on the sloped front, from z0 to z1 (as measured up the face's height)."""
-        zc = (z0 + z1) / 2
-        yc = yf + 140.0 * (zc - 15.0) / (deck - 15.0)
-        return box(x0, -t, z0 - zc, x1, 0.0, z1 - zc).rotate((0, 0, 0), (1, 0, 0), -lean).translate((0, yc, zc))
-    body.add("front band", on_front(-W / 2 + 30, W / 2 - 30, 40, 70), "inst_navy")
-    body.add("logo", on_front(-W / 2 + 40, -W / 2 + 180, deck - 80, deck - 60, 1.5), "inst_blue")
-    body.add("touch screen", box(W / 2 - 190, yf + 140 - 30, deck - 15, W / 2 - 40, yf + 140, deck + 75).rotate(
-        (0, yf + 140, deck - 15), (1, yf + 140, deck - 15), -25), "screen_on")
-    deck_plate = box(-W / 2 + 20, yf + 150, deck - 15, W / 2 - 230, yb - 40, deck + 1)
+    feet = None
+    for sx in (-1, 1):
+        for sy in (-1, 1):
+            f_ = cyl(40, 15, x=sx * (W / 2 - 60), y=sy * (D / 2 - 60))
+            feet = f_ if feet is None else feet.union(f_)
+    body.add("feet", feet, "inst_black")
+    body.add("housing", box(-W / 2 + st, yf, 15, W / 2 - st, yb - 5, deck).edges("|Y").fillet(4), "inst_white")
+    body.add("side panels", box(-W / 2, yf + 8, 15, -W / 2 + st, yb, deck - 2).edges("|Y").fillet(8).union(
+        box(W / 2 - st, yf + 8, 15, W / 2, yb, deck - 2).edges("|Y").fillet(8)), "inst_navy")
+    sx0, sx1 = q["scr_x"] - q["scr_w"] / 2, q["scr_x"] + q["scr_w"] / 2
+    sz0, sz1 = q["scr_z"] - q["scr_h"] / 2, q["scr_z"] + q["scr_h"] / 2
+    body.add("screen bezel", box(sx0 - 8, yf - 1.5, sz0 - 8, sx1 + 8, yf, sz1 + 8), "inst_dark")
+    body.add("touch screen", box(sx0, yf - 2.2, sz0, sx1, yf - 1.5, sz1), "nat_screen")
+    body.add("S2 PUMA label", box(W / 2 - st - 50, yf - 0.8, sz0 + 10, W / 2 - st - 30, yf, sz1), "inst_light")
+    body.add("status light", box(-W / 2 + st + 10, yf - 1, deck - 14, -W / 2 + st + 70, yf, deck - 10), "inst_orange")
+    deck_plate = box(-W / 2 + st + 10, yf + 30, deck - 15, W / 2 - st - 10, yb - 60, deck + 1)
     # the XY sample tray: 4 x 5 = 20 cups' seats, removable
-    tx, ty = -W / 2 + 20 + (W - 250) / 2, (yf + 150 + yb - 40) / 2
+    tx, ty = 40.0, (yf + 30 + yb - 60) / 2 + 30
     tray = box(tx - 150, ty - 190, deck, tx + 150, ty + 190, deck + 12)
     seats = []
     for i in range(4):
@@ -813,12 +965,13 @@ def xrf() -> Instrument:
     body.add("deck", deck_plate.cut(cyl(46, 20, x=mx, y=my, z=deck - 18)), "inst_grey")   # open under the window
     body.add("measuring window", tube(70, 46, 3, x=mx, y=my, z=deck - 1), "steel")
     lid = _piece(inst, "lid")
-    lw, ld = W - 230, D - 190
-    lid.add("lid", rbox(lw, ld, H - deck - 10, 30, x=-W / 2 + 20 + lw / 2, y=yf + 150 + ld / 2 - 5, z=deck)
-            .edges(">Z").fillet(20).cut(rbox(lw - 16, ld - 16, H - deck - 18, 24, x=-W / 2 + 20 + lw / 2,
-                                             y=yf + 150 + ld / 2 - 5, z=deck - 1)), "inst_dark")
-    lid.add("lid window", box(-W / 2 + 80, yf + 170, H - 11, -W / 2 + lw - 40, yf + 300, H - 9), "polycarb")
-    lid.add("lid grip", box(-W / 2 + 120, yf + 140, deck + 40, -W / 2 + lw - 80, yf + 150, deck + 60), "chrome")
+    hood = rbox(W - 10, D - 10, H - deck - 4, 10, z=deck + 4).edges(">Z").fillet(8)
+    hood = hood.cut(rbox(W - 26, D - 26, H - deck - 12, 6, z=deck + 3))
+    hood = hood.cut(box(-q["win_w"] / 2, yf + q["win_y0"], H - 20, q["win_w"] / 2, yf + q["win_y0"] + q["win_d"], H + 1))
+    lid.add("hood", hood, "inst_white")
+    lid.add("hood window", box(-q["win_w"] / 2, yf + q["win_y0"], H - 9, q["win_w"] / 2, yf + q["win_y0"] + q["win_d"],
+                               H - 7), "xrf_window")
+    lid.add("BRUKER badge", box(W / 2 - 150, yf + 4, deck + 120, W / 2 - 50, yf + 5, deck + 150), "inst_navy")
     # inside, under the window: the tube and the detector, seen when the body goes see-through
     inner = _piece(inst, "inner")
     spot = np.array([mx, my, deck + 2.0])
@@ -836,7 +989,7 @@ def xrf() -> Instrument:
     beam.add("primary", _cone(tube_end, spot, 3.0, 12.0), "xray")
     beam.add("fluorescence", _cone(spot, det_end, 12.0, 8.0), "fluor")
     inst.meshes["readout"] = _dummy((0, 0, H))
-    hinge_y = yb - 40
+    hinge_y = yb - 5
     s0 = seats[2]
     # down in front of the lid, in under its front edge (the lid opens only 35 degrees: coming in from above, the cup
     # clipped that edge, collide.py), then down into the seat
@@ -854,11 +1007,11 @@ def xrf() -> Instrument:
     inst.aside = ("readout",)
     inst.props = ("sample", "beam")
     inst.actions = [
-        ("The lid lifts on its rear hinge, uncovering the XY Autochanger's 20-position tray.", 2.2,
+        ("The hood lifts on its rear hinge, uncovering the XY Autochanger's 20-position tray.", 2.2,
          {"lid": (0.0, 1.0), "sample": (0.0, 0.0), "beam": (0.0, 0.0), "readout": (0.0, 0.0)}),
         ("A cup of atomized powder, closed underneath by a thin prolene film, goes into a free seat.", 2.6,
          {"sample": (0.0, v_seat)}),
-        ("Lid down; drawn see-through.", 1.6, {"lid": (1.0, 0.0), "~body": (0.0, 1.0), "~lid": (0.0, 1.0)}),
+        ("Hood down; drawn see-through.", 1.6, {"lid": (1.0, 0.0), "~body": (0.0, 1.0), "~lid": (0.0, 1.0)}),
         ("The changer takes the cup to the measuring position, film side down over the window: the tube and the "
          "detector are underneath. Helium at reduced pressure keeps loose powder in place.", 2.8,
          {"sample": (v_seat, 1.0)}),
@@ -867,9 +1020,10 @@ def xrf() -> Instrument:
         ("The spectrum: peaks at each element's lines give the composition, Na to Am, in minutes.", 4.8,
          {"readout": (0.0, 1.0)}),
     ]
-    inst.labels = [("lid", (-W / 2 + 60, yf + 300, H - 5), (0.10, 0.22)),
+    inst.labels = [("hood, hinged at the back", (-W / 2 + 60, yf + 200, H - 5), (0.10, 0.22)),
                    ("20-position XY tray", (tx - 140, ty, deck + 12), (0.10, 0.52)),
-                   ("touch screen", (W / 2 - 115, yf + 150, deck + 40), (0.86, 0.74))]
+                   ("touch screen", (sx1, yf - 2, q["scr_z"]), (0.86, 0.74))]
+    inst.anchors = xrf_anchors(q)
     inst.cam = (0.75, -1.75, 0.9)
     inst.framing = (0.95, 0.50)
     # how tall the lid stands open, against the ~844 mm between a presented tray's floor and the opening's header
@@ -880,6 +1034,13 @@ def xrf() -> Instrument:
     inst.notes = [f"lid drawn opening {XRF_LID_DEG:.0f} deg: its front edge rises to {top:.0f} mm (estimate)"]
     return inst
 
+
+
+# register.py: the S2 PUMA's anchors and the parts of its look fitted to Bruker's video (refs/xrf/)
+ANCHORS["xrf"] = (XRF_LOOK, xrf_anchors)
+FREE["xrf"] = ["deck", "scr_w", "scr_h", "scr_x", "scr_z"]     # the window isn't picked: it isn't fitted
+CHECKS["xrf"] = lambda q: [q["deck"] - q["scr_z"] - q["scr_h"] / 2 - 30, q["scr_z"] - q["scr_h"] / 2 - 40,
+                           XRF_SPECS["H"] - q["deck"] - 150]
 
 def _cone(a, b, ra, rb):
     """A truncated cone from point a (radius ra) to point b (radius rb)."""
