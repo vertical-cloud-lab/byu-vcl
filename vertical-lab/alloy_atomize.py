@@ -743,7 +743,12 @@ def build():
     sc = Scene(NAME, TITLE, mp4=False)
     if not PREVIEW:                         # the 3-D render goes to out/clean/ first; splice() writes the final MP4
         RAW.mkdir(parents=True, exist_ok=True)
-        sc.mp4, sc.mp4_path = scene.encoder(RAW_MP4, sc.size, crf=17), RAW_MP4
+        # fragmented, so a render that is cut off still leaves a playable file; fast, since splice() re-encodes it
+        sc.mp4 = subprocess.Popen(
+            ["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{sc.size[0]}x{sc.size[1]}",
+             "-r", str(FPS), "-i", "-", "-an", "-c:v", "libx264", "-preset", "veryfast", "-crf", "16",
+             "-pix_fmt", "yuv420p", "-movflags", "+frag_keyframe+empty_moov", str(RAW_MP4)], stdin=subprocess.PIPE)
+        sc.mp4_path = RAW_MP4
     sc.slots = []                           # where the real footage goes: (beat, MP4 frame, GIF frame, step label)
     sc.intro = 0.8
     L = A.Lab(sc, data, robot=False)
