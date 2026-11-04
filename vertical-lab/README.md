@@ -851,6 +851,38 @@ frame. Details are in [`notes/interference.md`](notes/interference.md), every fi
 - **`collide.py` is a different check.** Another session wrote it to test the UR arm's own moves against the lab, with
   FCL and RRT-Connect planning.
 
+## Round 5, next: round 2's equipment at work, with the insides showing
+
+Specified in [`notes/next/round5-cutaways.md`](notes/next/round5-cutaways.md) and done on
+[PR #320](https://github.com/vertical-cloud-lab/byu-vcl/pull/320), which is stacked on #318. Round 2's equipment had
+no clips of its own. [`instruments_round2.py`](instruments_round2.py) splits round 2's models into the pieces that
+move, and `tour.py` plays them like the round-3 and round-4 instruments (`tour.MODULES` loads the module). While each
+process runs, whatever hides it is drawn see-through or cut in half: the H2D's enclosure, the CubXL's tool plate, the
+OT-2's panels, and the vials. Liquid, powder and the printed parts grow with `grow()`, a `follow` joint that stretches a
+piece up from its base.
+
+| Clip | What it does | GIF | MP4 | YouTube (unlisted) |
+|---|---|---|---|---|
+| **Bambu Lab H2D** | The enclosure goes see-through. The bed rises to the nozzles, and the toolhead traces a vial rack in PETG while the bed steps down a layer at a time. The door opens and the flexible plate comes out with the rack on it | [GIF](out/instruments/h2d.gif) | [MP4](out/mp4/instruments/h2d.mp4) | [on YouTube](https://www.youtube.com/watch?v=r-ymcfZ-EAQ) |
+| **Bambu Lab A1 mini** | A bed slinger: the head (x) and the bed (y) trace each layer between them while the arm climbs the column (z). Then the PEI plate lifts off with the part | [GIF](out/instruments/a1_mini.gif) | [MP4](out/mp4/instruments/a1_mini.mp4) | [on YouTube](https://www.youtube.com/watch?v=CuI7t6pSOS8) |
+| **CubXL, liquid handling** | The tool plate goes see-through. The pipette takes a tip, draws from the stock and dispenses onto the powder in the vial the multi-doser filled, mixes, then puts the tip back. The vials and the rack are in half section | [GIF](out/instruments/cubxl_lh.gif) | [MP4](out/mp4/instruments/cubxl_lh.mp4) | [on YouTube](https://www.youtube.com/watch?v=9X6Q8AGsfoY) |
+
+![The CubXL's pipette over its rack, the vials in half section](out/instruments/cubxl_lh.gif)
+
+What is assumed, model by model:
+- **H2D and A1 mini.** These are round 2's models (`lab_models/equipment.py`), built from Bambu's spec pages and
+  outline drawing. The parts are vial racks: prisms, so stretching one is the same as adding layers. The head's path
+  is the part's outline, a few loops standing for the layers.
+  - On the H2D the left nozzle prints.
+  - The A1 mini's PTFE feed tube is left out. In round 2's model it is a fixed sweep, so the moving head would leave it
+    behind.
+- **CubXL.**
+  - Round 2's tip rack stood mostly behind the pipette's reach: the pipette's y travel ends at 67.5 mm, and the rack
+    ran to 133 mm. The clip uses a rack of 20 µL tips moved forward into reach, with its top low enough that a carried
+    tip clears the vials at the top of z travel.
+  - The pipette is round 2's generic one, not a named model.
+  - Vials 1 and 6 and the vial rack are cut in half. The other four vials are round 2's.
+
 ## The workflow
 
 An example run, with every move a real one:
