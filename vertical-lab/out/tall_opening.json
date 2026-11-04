@@ -1,0 +1,843 @@
+{
+ "question": "byu-vcl PR #318, 2026-11-04: are there Kardex bay (opening) heights close to 1000 mm, and what would a taller opening allow (the MX-Lab?)",
+ "heights_mm": {
+  "today": 727.5,
+  "clearance_above": 20.0,
+  "opening_996_estimate": 856.5,
+  "mesh_box": 970.0,
+  "checked": 1000.0
+ },
+ "heights_note": "727.5 mm is Kardex's order sheet. 856 mm is an estimate: a 996 mm opening (one used XP 500) over the same 833 mm table, if its header stands where it does on the order sheet's unit (vlm.py's mouth, from Kardex's renders, about 846 mm for 727.5 mm of goods). 970 mm is a Euro mesh box, which the Shuttle 1000 stores on special trays: so those trays pass about 1 m. 1000 mm is the height checked.",
+ "found": [
+  "Kardex's order sheets (POF) for the XP 500 give 727.5 mm (2450 x 864) and 727 mm (3050 x 864) of product height, plus 20 mm clear, 'depends on tray type selection'.",
+  "No Kardex brochure, factsheet, product page or blog found gives a taller opening for any Shuttle; Kardex's blog says 'just over 28 inches'.",
+  "The Shuttle 1000 stores Euro pallets and mesh boxes on special trays, loaded by forklift. A Euro mesh box is 970 mm tall outside. Inference: the Shuttle 1000's pallet configuration passes about 1 m.",
+  "One used XP 500 (2005/2006, 3050 x 864) is listed with a 996 mm opening over an 833 mm access table.",
+  "ac-dev-lab has no opening height; its XP-500 quote (#372) says the 32.8 in floor-to-tray height is standard but can be changed before ordering.",
+  "The Kardex TowerMat (heavy, oversized goods and pallets, 3-5 t carriers) publishes no goods height."
+ ],
+ "tray_ratings": [
+  {
+   "model": "Shuttle XP 500",
+   "tray": "2450 x 864, Strong",
+   "w": 2450,
+   "d": 864,
+   "kg": 500,
+   "src": [
+    "pof1",
+    "q53"
+   ],
+   "note": "the quote in #53 gives 1,080 lb (490 kg) for the strong tray",
+   "kg_per_m2": 236,
+   "sources": [
+    "Kardex Shuttle POF (order sheet), SHUTTLE-01-500-2450x864x6750: 'Maximum Product Height: 727.5 mm / 28.64 in. Depends on Tray Type selection', 'Clearance Required Above Product: 20 mm', access table 833 mm; tray ratings Light 230, Medium 360, Strong 500, 66-1-Medium-100 525 kg (StoreMoreStore option 1)",
+    "byu-vcl #53, the quote's spec: XP 500, 96.46 x 34 in trays, light 502 lb (22.3 lb/sq ft), medium 794 lb, strong 1,080 lb (47.4 lb/sq ft)"
+   ]
+  },
+  {
+   "model": "Shuttle XP 500",
+   "tray": "2450 x 864, 66-1-Medium-100",
+   "w": 2450,
+   "d": 864,
+   "kg": 525,
+   "src": [
+    "pof1"
+   ],
+   "note": "the strongest tray type on the POF at this width",
+   "kg_per_m2": 248,
+   "sources": [
+    "Kardex Shuttle POF (order sheet), SHUTTLE-01-500-2450x864x6750: 'Maximum Product Height: 727.5 mm / 28.64 in. Depends on Tray Type selection', 'Clearance Required Above Product: 20 mm', access table 833 mm; tray ratings Light 230, Medium 360, Strong 500, 66-1-Medium-100 525 kg (StoreMoreStore option 1)"
+   ]
+  },
+  {
+   "model": "Shuttle XP 500",
+   "tray": "3050 x 864, Strong",
+   "w": 3050,
+   "d": 864,
+   "kg": 265,
+   "src": [
+    "pof6"
+   ],
+   "note": "wider is weaker: 265 kg against 500 at 2450 mm",
+   "kg_per_m2": 101,
+   "sources": [
+    "Kardex Shuttle POF, SHUTTLE-01-500-3050x864x6750: 'Maximum Product Height: 727 mm / 28.62 in'; tray ratings Light 120, Medium 205, Strong 265 kg (20.6 lb/sq ft), 66-1-Medium-100 470, 75-3-Medium-100 505 kg (StoreMoreStore option 6)"
+   ]
+  },
+  {
+   "model": "Shuttle XP 500",
+   "tray": "3050 x 864, 75-3-Medium-100",
+   "w": 3050,
+   "d": 864,
+   "kg": 505,
+   "src": [
+    "pof6"
+   ],
+   "note": "",
+   "kg_per_m2": 192,
+   "sources": [
+    "Kardex Shuttle POF, SHUTTLE-01-500-3050x864x6750: 'Maximum Product Height: 727 mm / 28.62 in'; tray ratings Light 120, Medium 205, Strong 265 kg (20.6 lb/sq ft), 66-1-Medium-100 470, 75-3-Medium-100 505 kg (StoreMoreStore option 6)"
+   ]
+  },
+  {
+   "model": "Shuttle XP 700",
+   "tray": "up to 4050 x 1270",
+   "w": 2450,
+   "d": 864,
+   "kg": 725,
+   "src": [
+    "xp",
+    "fact"
+   ],
+   "note": "'up to 725 kg'; the rating at a given width isn't published",
+   "kg_per_m2": 342,
+   "sources": [
+    "Kardex Remstar Shuttle XP brochure: XP 250/500 trays 1,250-4,050 x 610-1,270 mm, up to 560 kg, 25 mm pitch; XP 700 up to 725 kg, 50 mm pitch; XP 1000 trays 610-1,778 mm deep, 1,000 kg at 1,250 mm wide, 900 kg at 2,450 mm, 800 kg at 4,050 mm; options 'Special trays for pallet storage', 'Tray extraction for forklift operation'. No product or opening height",
+    "Kardex Shuttle factsheet (8103-US-2112): 250/500 up to 555 kg, 700 up to 725 kg, 1000 up to 1,000 kg; 'When storing heavy loads or even pallets, the Kardex Shuttle 1000 is the perfect choice'; 'Standard technical data, other sizes possible on request'"
+   ]
+  },
+  {
+   "model": "Shuttle XP 1000",
+   "tray": "2450 wide, 610-1778 deep",
+   "w": 2450,
+   "d": 864,
+   "kg": 900,
+   "src": [
+    "xp",
+    "heavy"
+   ],
+   "note": "900 kg at 2450 mm (brochure); Kardex's page now says up to 825 kg; special trays take pallets and mesh boxes, i.e. concentrated loads",
+   "kg_per_m2": 425,
+   "sources": [
+    "Kardex Remstar Shuttle XP brochure: XP 250/500 trays 1,250-4,050 x 610-1,270 mm, up to 560 kg, 25 mm pitch; XP 700 up to 725 kg, 50 mm pitch; XP 1000 trays 610-1,778 mm deep, 1,000 kg at 1,250 mm wide, 900 kg at 2,450 mm, 800 kg at 4,050 mm; options 'Special trays for pallet storage', 'Tray extraction for forklift operation'. No product or opening height",
+    "kardex.com, heavy-duty units: 'Use a forklift to stack and store EURO pallets and mesh boxes on special trays'; Shuttle 1000 'up to 825 kg per tray'"
+   ]
+  }
+ ],
+ "machines": {
+  "mxlab": {
+   "model": "InssTek MX-Lab (DED, powder-fed laser)",
+   "size_mm": [
+    680,
+    684,
+    835
+   ],
+   "height_in_use_mm": 835,
+   "kg": 250,
+   "fits_height": {
+    "today_727_5": false,
+    "opening_996_est": true,
+    "mesh_box_970": true,
+    "tall_1000": true
+   },
+   "margin_mm": {
+    "today_727_5": -107.5,
+    "opening_996_est": 21.5,
+    "mesh_box_970": 135.0,
+    "tall_1000": 165.0
+   },
+   "footprint_fits_864_tray": true,
+   "needs_deeper_tray_mm": null,
+   "needs": "argon (> 99.999 %, O2 <= 50 ppm option), powder carrier gas, 220 V 1-phase 15(20) A; exhaust; its laser's cooling and what its base cabinet holds are not published",
+   "sources": [
+    "InssTek MX-Lab Technical Data Rev.3 (2020): 680 x 684 x 835 mm without accessories, 250 kg, 1-phase 220 V 15(20) A; 2024 brochure: up to 500 W Yb fibre laser, six hoppers, Ar > 99.999 % with O2 <= 50 ppm as an option (via notes/instruments_lab.md)"
+   ],
+   "source_urls": [
+    "notes/instruments_lab.md"
+   ],
+   "drawn": "model",
+   "note": "",
+   "kg_per_m2_on_its_footprint": 537,
+   "times_strong_tray_per_area": 2.28,
+   "trays_that_carry_its_mass": [
+    "Shuttle XP 500 2450 x 864, Strong: 500 kg",
+    "Shuttle XP 500 2450 x 864, 66-1-Medium-100: 525 kg",
+    "Shuttle XP 500 3050 x 864, Strong: 265 kg",
+    "Shuttle XP 500 3050 x 864, 75-3-Medium-100: 505 kg",
+    "Shuttle XP 700 up to 4050 x 1270: 725 kg",
+    "Shuttle XP 1000 2450 wide, 610-1778 deep: 900 kg"
+   ],
+   "verdict": "needs 835 mm: fits under a 996 mm opening's ~856 mm (estimated); 250 kg is under a strong XP 500 tray's 500 kg, but on its footprint it is 2.3x that tray's rating per area: ask Kardex about point loads (a spreader plate, or a Shuttle 1000 pallet tray)"
+  },
+  "mxlab_base": {
+   "model": "MX-Lab base cabinet (size estimated)",
+   "size_mm": [
+    900,
+    760,
+    1000
+   ],
+   "height_in_use_mm": 1000,
+   "kg": null,
+   "fits_height": {
+    "today_727_5": false,
+    "opening_996_est": false,
+    "mesh_box_970": false,
+    "tall_1000": true
+   },
+   "margin_mm": {
+    "today_727_5": -272.5,
+    "opening_996_est": -143.5,
+    "mesh_box_970": -30.0,
+    "tall_1000": 0.0
+   },
+   "footprint_fits_864_tray": true,
+   "needs_deeper_tray_mm": null,
+   "needs": "unknown: not published",
+   "sources": [
+    "instruments.py, instruments_lab.py, from the makers' figures (out/instruments.json)"
+   ],
+   "source_urls": [
+    "out/instruments.json"
+   ],
+   "drawn": "box",
+   "note": "instruments_lab.ded()'s estimate, scaled from a photo; if it holds the laser source, it rides with the MX-Lab, since a process fibre can't go through a dock",
+   "verdict": "needs 1000 mm: exactly the 1000 mm checked, no margin, so not at 970 mm; mass not published"
+  },
+  "mx100": {
+   "model": "Mastrex MX100 (LPBF)",
+   "size_mm": [
+    560,
+    560,
+    800
+   ],
+   "height_in_use_mm": 800,
+   "kg": 125,
+   "fits_height": {
+    "today_727_5": false,
+    "opening_996_est": true,
+    "mesh_box_970": true,
+    "tall_1000": true
+   },
+   "margin_mm": {
+    "today_727_5": -72.5,
+    "opening_996_est": 56.5,
+    "mesh_box_970": 170.0,
+    "tall_1000": 200.0
+   },
+   "footprint_fits_864_tray": true,
+   "needs_deeper_tray_mm": null,
+   "needs": "120 V; nitrogen (an NG150 generator is the accessory)",
+   "sources": [
+    "Tech-Labs, Mastrex MX-100: 22.05 x 22.05 x 31.50 in (560 x 560 x 800 mm), 276 lb (125 kg), 120 V, 300 W laser; NG150 nitrogen generator as an accessory"
+   ],
+   "source_urls": [
+    "https://tech-labs.com/products/mastrex-mx-100-metal-3d-printer"
+   ],
+   "drawn": "box",
+   "note": "",
+   "kg_per_m2_on_its_footprint": 399,
+   "times_strong_tray_per_area": 1.69,
+   "trays_that_carry_its_mass": [
+    "Shuttle XP 500 2450 x 864, Strong: 500 kg",
+    "Shuttle XP 500 2450 x 864, 66-1-Medium-100: 525 kg",
+    "Shuttle XP 500 3050 x 864, Strong: 265 kg",
+    "Shuttle XP 500 3050 x 864, 75-3-Medium-100: 505 kg",
+    "Shuttle XP 700 up to 4050 x 1270: 725 kg",
+    "Shuttle XP 1000 2450 wide, 610-1778 deep: 900 kg"
+   ],
+   "verdict": "needs 800 mm: fits under a 996 mm opening's ~856 mm (estimated); 125 kg is under a strong XP 500 tray's 500 kg, but on its footprint it is 1.7x that tray's rating per area: ask Kardex about point loads (a spreader plate, or a Shuttle 1000 pallet tray)"
+  },
+  "fusionx": {
+   "model": "Lasefinity Fusion X (LPBF)",
+   "size_mm": [
+    600,
+    650,
+    860
+   ],
+   "height_in_use_mm": 860,
+   "kg": null,
+   "fits_height": {
+    "today_727_5": false,
+    "opening_996_est": false,
+    "mesh_box_970": true,
+    "tall_1000": true
+   },
+   "margin_mm": {
+    "today_727_5": -132.5,
+    "opening_996_est": -3.5,
+    "mesh_box_970": 110.0,
+    "tall_1000": 140.0
+   },
+   "footprint_fits_864_tray": true,
+   "needs_deeper_tray_mm": null,
+   "needs": "N2 or Ar; on-board filtration",
+   "sources": [
+    "TCT Magazine, Lasefinity Fusion X launch: 600 x 650 x 860 mm, 500 W fibre laser, sealed N2 or Ar chamber, 'permanent filtration system'; no mass published"
+   ],
+   "source_urls": [
+    "https://tctmagazine.com/lasefinity-fusionx-compact-desktop-metal-3d-printer-launches-at-tct-3sixty"
+   ],
+   "drawn": "box",
+   "note": "",
+   "verdict": "needs 860 mm: over the 996 mm opening's ~856 mm (estimated), under a mesh box's 970 mm; mass not published"
+  },
+  "metalone": {
+   "model": "Sharebot MetalONE (LPBF)",
+   "size_mm": [
+    740,
+    630,
+    1000
+   ],
+   "height_in_use_mm": 1000,
+   "kg": 150,
+   "fits_height": {
+    "today_727_5": false,
+    "opening_996_est": false,
+    "mesh_box_970": false,
+    "tall_1000": true
+   },
+   "margin_mm": {
+    "today_727_5": -272.5,
+    "opening_996_est": -143.5,
+    "mesh_box_970": -30.0,
+    "tall_1000": 0.0
+   },
+   "footprint_fits_864_tray": true,
+   "needs_deeper_tray_mm": null,
+   "needs": "inert gas; later listings give 1470 mm and 270-315 kg, probably with a stand",
+   "sources": [
+    "Sharebot MetalONE launch figures: 740 x 630 x 1000 mm, 150 kg (later listings 1000 x 600 x 1470 mm, 270-315 kg) (fab_metal.py)"
+   ],
+   "source_urls": [
+    "out/fabrication.json"
+   ],
+   "drawn": "model",
+   "note": "",
+   "kg_per_m2_on_its_footprint": 322,
+   "times_strong_tray_per_area": 1.36,
+   "trays_that_carry_its_mass": [
+    "Shuttle XP 500 2450 x 864, Strong: 500 kg",
+    "Shuttle XP 500 2450 x 864, 66-1-Medium-100: 525 kg",
+    "Shuttle XP 500 3050 x 864, Strong: 265 kg",
+    "Shuttle XP 500 3050 x 864, 75-3-Medium-100: 505 kg",
+    "Shuttle XP 700 up to 4050 x 1270: 725 kg",
+    "Shuttle XP 1000 2450 wide, 610-1778 deep: 900 kg"
+   ],
+   "verdict": "needs 1000 mm: exactly the 1000 mm checked, no margin, so not at 970 mm; 150 kg is under a strong XP 500 tray's 500 kg, but on its footprint it is 1.4x that tray's rating per area: ask Kardex about point loads (a spreader plate, or a Shuttle 1000 pallet tray)"
+  },
+  "dimetal": {
+   "model": "Kings 3D DiMetal-100 (LPBF)",
+   "size_mm": [
+    690,
+    720,
+    1000
+   ],
+   "height_in_use_mm": 1000,
+   "kg": 140,
+   "fits_height": {
+    "today_727_5": false,
+    "opening_996_est": false,
+    "mesh_box_970": false,
+    "tall_1000": true
+   },
+   "margin_mm": {
+    "today_727_5": -272.5,
+    "opening_996_est": -143.5,
+    "mesh_box_970": -30.0,
+    "tall_1000": 0.0
+   },
+   "footprint_fits_864_tray": true,
+   "needs_deeper_tray_mm": null,
+   "needs": "220 V 50 Hz; inert gas",
+   "sources": [
+    "All3DP, 2026-07-31, Kings 3D DiMetal-100: 690 x 720 x 1000 mm, about 140 kg, 220 V 50 Hz, 300 W"
+   ],
+   "source_urls": [
+    "https://all3dp.com/4/kings-3ds-140-kg-dimetal-100-proves-desktop-sized-isnt-always-desktop-friendly/"
+   ],
+   "drawn": null,
+   "note": "",
+   "kg_per_m2_on_its_footprint": 282,
+   "times_strong_tray_per_area": 1.19,
+   "trays_that_carry_its_mass": [
+    "Shuttle XP 500 2450 x 864, Strong: 500 kg",
+    "Shuttle XP 500 2450 x 864, 66-1-Medium-100: 525 kg",
+    "Shuttle XP 500 3050 x 864, Strong: 265 kg",
+    "Shuttle XP 500 3050 x 864, 75-3-Medium-100: 505 kg",
+    "Shuttle XP 700 up to 4050 x 1270: 725 kg",
+    "Shuttle XP 1000 2450 wide, 610-1778 deep: 900 kg"
+   ],
+   "verdict": "needs 1000 mm: exactly the 1000 mm checked, no margin, so not at 970 mm; 140 kg is under a strong XP 500 tray's 500 kg, but on its footprint it is 1.2x that tray's rating per area: ask Kardex about point loads (a spreader plate, or a Shuttle 1000 pallet tray)"
+  },
+  "n2gen": {
+   "model": "Parker Balston UHPN2-1100 (N2 generator)",
+   "size_mm": [
+    305,
+    406,
+    889
+   ],
+   "height_in_use_mm": 889,
+   "kg": 50,
+   "fits_height": {
+    "today_727_5": false,
+    "opening_996_est": false,
+    "mesh_box_970": true,
+    "tall_1000": true
+   },
+   "margin_mm": {
+    "today_727_5": -161.5,
+    "opening_996_est": -32.5,
+    "mesh_box_970": 81.0,
+    "tall_1000": 111.0
+   },
+   "footprint_fits_864_tray": true,
+   "needs_deeper_tray_mm": null,
+   "needs": "compressed air 60-125 psig, 120 V",
+   "sources": [
+    "Parker Balston UHPN2-1100 (notes/services.md): 305 x 406 x 889 mm, 50 kg, 120 V, 500-1100 cc/min at 99.9999 %, needs compressed air at 60-125 psig"
+   ],
+   "source_urls": [
+    "notes/services.md"
+   ],
+   "drawn": "box",
+   "note": "",
+   "kg_per_m2_on_its_footprint": 404,
+   "times_strong_tray_per_area": 1.71,
+   "trays_that_carry_its_mass": [
+    "Shuttle XP 500 2450 x 864, Strong: 500 kg",
+    "Shuttle XP 500 2450 x 864, 66-1-Medium-100: 525 kg",
+    "Shuttle XP 500 3050 x 864, Strong: 265 kg",
+    "Shuttle XP 500 3050 x 864, 75-3-Medium-100: 505 kg",
+    "Shuttle XP 700 up to 4050 x 1270: 725 kg",
+    "Shuttle XP 1000 2450 wide, 610-1778 deep: 900 kg"
+   ],
+   "verdict": "needs 889 mm: over the 996 mm opening's ~856 mm (estimated), under a mesh box's 970 mm"
+  },
+  "form4": {
+   "model": "Formlabs Form 4, cover open",
+   "size_mm": [
+    398,
+    367,
+    554
+   ],
+   "height_in_use_mm": 844,
+   "kg": 18.3,
+   "fits_height": {
+    "today_727_5": false,
+    "opening_996_est": true,
+    "mesh_box_970": true,
+    "tall_1000": true
+   },
+   "margin_mm": {
+    "today_727_5": -116.5,
+    "opening_996_est": 12.5,
+    "mesh_box_970": 126.0,
+    "tall_1000": 156.0
+   },
+   "footprint_fits_864_tray": true,
+   "needs_deeper_tray_mm": null,
+   "needs": "power; the resin and the IPA are open questions for Kardex and EHS (README)",
+   "sources": [
+    "fab_metal.py and fab_resin.py, from the makers' figures (out/fabrication.json)"
+   ],
+   "source_urls": [
+    "out/fabrication.json"
+   ],
+   "drawn": "model",
+   "note": "",
+   "kg_per_m2_on_its_footprint": 125,
+   "times_strong_tray_per_area": 0.53,
+   "trays_that_carry_its_mass": [
+    "Shuttle XP 500 2450 x 864, Strong: 500 kg",
+    "Shuttle XP 500 2450 x 864, 66-1-Medium-100: 525 kg",
+    "Shuttle XP 500 3050 x 864, Strong: 265 kg",
+    "Shuttle XP 500 3050 x 864, 75-3-Medium-100: 505 kg",
+    "Shuttle XP 700 up to 4050 x 1270: 725 kg",
+    "Shuttle XP 1000 2450 wide, 610-1778 deep: 900 kg"
+   ],
+   "verdict": "needs 844 mm: fits under a 996 mm opening's ~856 mm (estimated)"
+  },
+  "meltio_m450": {
+   "model": "Meltio M450 (wire-laser DED)",
+   "size_mm": [
+    560,
+    600,
+    1400
+   ],
+   "height_in_use_mm": 1400,
+   "kg": 250,
+   "fits_height": {
+    "today_727_5": false,
+    "opening_996_est": false,
+    "mesh_box_970": false,
+    "tall_1000": false
+   },
+   "margin_mm": {
+    "today_727_5": -672.5,
+    "opening_996_est": -543.5,
+    "mesh_box_970": -430.0,
+    "tall_1000": -400.0
+   },
+   "footprint_fits_864_tray": true,
+   "needs_deeper_tray_mm": null,
+   "needs": "argon, cooling, 2-5 kW peak",
+   "sources": [
+    "fab_metal.py and fab_resin.py, from the makers' figures (out/fabrication.json)"
+   ],
+   "source_urls": [
+    "out/fabrication.json"
+   ],
+   "drawn": "model",
+   "note": "",
+   "kg_per_m2_on_its_footprint": 744,
+   "times_strong_tray_per_area": 3.15,
+   "trays_that_carry_its_mass": [
+    "Shuttle XP 500 2450 x 864, Strong: 500 kg",
+    "Shuttle XP 500 2450 x 864, 66-1-Medium-100: 525 kg",
+    "Shuttle XP 500 3050 x 864, Strong: 265 kg",
+    "Shuttle XP 500 3050 x 864, 75-3-Medium-100: 505 kg",
+    "Shuttle XP 700 up to 4050 x 1270: 725 kg",
+    "Shuttle XP 1000 2450 wide, 610-1778 deep: 900 kg"
+   ],
+   "verdict": "still too tall at 1000 mm (1400 mm)"
+  },
+  "instron_small": {
+   "model": "Instron 68SC-2",
+   "size_mm": [
+    460,
+    615,
+    1410
+   ],
+   "height_in_use_mm": 1410,
+   "kg": 62,
+   "fits_height": {
+    "today_727_5": false,
+    "opening_996_est": false,
+    "mesh_box_970": false,
+    "tall_1000": false
+   },
+   "margin_mm": {
+    "today_727_5": -682.5,
+    "opening_996_est": -553.5,
+    "mesh_box_970": -440.0,
+    "tall_1000": -410.0
+   },
+   "footprint_fits_864_tray": true,
+   "needs_deeper_tray_mm": null,
+   "needs": "power; the shortest single column, the 68SC-05, is 1020 mm",
+   "sources": [
+    "instruments.py, instruments_lab.py, from the makers' figures (out/instruments.json)"
+   ],
+   "source_urls": [
+    "out/instruments.json"
+   ],
+   "drawn": "model",
+   "note": "",
+   "kg_per_m2_on_its_footprint": 219,
+   "times_strong_tray_per_area": 0.93,
+   "trays_that_carry_its_mass": [
+    "Shuttle XP 500 2450 x 864, Strong: 500 kg",
+    "Shuttle XP 500 2450 x 864, 66-1-Medium-100: 525 kg",
+    "Shuttle XP 500 3050 x 864, Strong: 265 kg",
+    "Shuttle XP 500 3050 x 864, 75-3-Medium-100: 505 kg",
+    "Shuttle XP 700 up to 4050 x 1270: 725 kg",
+    "Shuttle XP 1000 2450 wide, 610-1778 deep: 900 kg"
+   ],
+   "verdict": "still too tall at 1000 mm (1410 mm)"
+  },
+  "mprint": {
+   "model": "One Click Metal MPRINT (LPBF)",
+   "size_mm": [
+    1100,
+    790,
+    1900
+   ],
+   "height_in_use_mm": 1900,
+   "kg": 445,
+   "fits_height": {
+    "today_727_5": false,
+    "opening_996_est": false,
+    "mesh_box_970": false,
+    "tall_1000": false
+   },
+   "margin_mm": {
+    "today_727_5": -1172.5,
+    "opening_996_est": -1043.5,
+    "mesh_box_970": -930.0,
+    "tall_1000": -900.0
+   },
+   "footprint_fits_864_tray": true,
+   "needs_deeper_tray_mm": null,
+   "needs": "inert gas; 440-450 kg",
+   "sources": [
+    "fab_metal.py and fab_resin.py, from the makers' figures (out/fabrication.json)"
+   ],
+   "source_urls": [
+    "out/fabrication.json"
+   ],
+   "drawn": "model",
+   "note": "",
+   "kg_per_m2_on_its_footprint": 512,
+   "times_strong_tray_per_area": 2.17,
+   "trays_that_carry_its_mass": [
+    "Shuttle XP 500 2450 x 864, Strong: 500 kg",
+    "Shuttle XP 500 2450 x 864, 66-1-Medium-100: 525 kg",
+    "Shuttle XP 500 3050 x 864, 75-3-Medium-100: 505 kg",
+    "Shuttle XP 700 up to 4050 x 1270: 725 kg",
+    "Shuttle XP 1000 2450 wide, 610-1778 deep: 900 kg"
+   ],
+   "verdict": "still too tall at 1000 mm (1900 mm)"
+  },
+  "hip": {
+   "model": "Kobelco O2-Dr.HIP",
+   "size_mm": [
+    1315,
+    1100,
+    1300
+   ],
+   "height_in_use_mm": 1300,
+   "kg": 1100,
+   "fits_height": {
+    "today_727_5": false,
+    "opening_996_est": false,
+    "mesh_box_970": false,
+    "tall_1000": false
+   },
+   "margin_mm": {
+    "today_727_5": -572.5,
+    "opening_996_est": -443.5,
+    "mesh_box_970": -330.0,
+    "tall_1000": -300.0
+   },
+   "footprint_fits_864_tray": false,
+   "needs_deeper_tray_mm": 1100,
+   "needs": "argon, cooling water that must never stop, air",
+   "sources": [
+    "instruments.py, instruments_lab.py, from the makers' figures (out/instruments.json)"
+   ],
+   "source_urls": [
+    "out/instruments.json"
+   ],
+   "drawn": null,
+   "note": "",
+   "kg_per_m2_on_its_footprint": 760,
+   "times_strong_tray_per_area": 3.22,
+   "trays_that_carry_its_mass": [],
+   "verdict": "still too tall at 1000 mm (1300 mm), and 1100 kg is over every Shuttle tray's rating"
+  },
+  "repowder": {
+   "model": "AMAZEMET rePowder",
+   "size_mm": [
+    1000,
+    800,
+    1600
+   ],
+   "height_in_use_mm": 1600,
+   "kg": 300,
+   "fits_height": {
+    "today_727_5": false,
+    "opening_996_est": false,
+    "mesh_box_970": false,
+    "tall_1000": false
+   },
+   "margin_mm": {
+    "today_727_5": -872.5,
+    "opening_996_est": -743.5,
+    "mesh_box_970": -630.0,
+    "tall_1000": -600.0
+   },
+   "footprint_fits_864_tray": true,
+   "needs_deeper_tray_mm": null,
+   "needs": "400 V 3-phase, chiller, argon",
+   "sources": [
+    "lab_models/equipment.py (#199): Aconity MIDI 2450 x 1500 x 2320 mm, 1450 kg; rePowder 1000 x 800 x 1600 mm, about 300 kg"
+   ],
+   "source_urls": [
+    "lab_models/equipment.py"
+   ],
+   "drawn": null,
+   "note": "",
+   "kg_per_m2_on_its_footprint": 375,
+   "times_strong_tray_per_area": 1.59,
+   "trays_that_carry_its_mass": [
+    "Shuttle XP 500 2450 x 864, Strong: 500 kg",
+    "Shuttle XP 500 2450 x 864, 66-1-Medium-100: 525 kg",
+    "Shuttle XP 500 3050 x 864, 75-3-Medium-100: 505 kg",
+    "Shuttle XP 700 up to 4050 x 1270: 725 kg",
+    "Shuttle XP 1000 2450 wide, 610-1778 deep: 900 kg"
+   ],
+   "verdict": "still too tall at 1000 mm (1600 mm)"
+  },
+  "glovebox": {
+   "model": "Inert PureLab HE 2GB",
+   "size_mm": [
+    2005,
+    834,
+    1794
+   ],
+   "height_in_use_mm": 1794,
+   "kg": null,
+   "fits_height": {
+    "today_727_5": false,
+    "opening_996_est": false,
+    "mesh_box_970": false,
+    "tall_1000": false
+   },
+   "margin_mm": {
+    "today_727_5": -1066.5,
+    "opening_996_est": -937.5,
+    "mesh_box_970": -824.0,
+    "tall_1000": -794.0
+   },
+   "footprint_fits_864_tray": true,
+   "needs_deeper_tray_mm": null,
+   "needs": "",
+   "sources": [
+    "instruments.py, instruments_lab.py, from the makers' figures (out/instruments.json)"
+   ],
+   "source_urls": [
+    "out/instruments.json"
+   ],
+   "drawn": null,
+   "note": "",
+   "verdict": "still too tall at 1000 mm (1794 mm)"
+  },
+  "aconity_midi": {
+   "model": "Aconity MIDI",
+   "size_mm": [
+    2450,
+    1500,
+    2320
+   ],
+   "height_in_use_mm": 2320,
+   "kg": 1450,
+   "fits_height": {
+    "today_727_5": false,
+    "opening_996_est": false,
+    "mesh_box_970": false,
+    "tall_1000": false
+   },
+   "margin_mm": {
+    "today_727_5": -1592.5,
+    "opening_996_est": -1463.5,
+    "mesh_box_970": -1350.0,
+    "tall_1000": -1320.0
+   },
+   "footprint_fits_864_tray": false,
+   "needs_deeper_tray_mm": 1500,
+   "needs": "",
+   "sources": [
+    "lab_models/equipment.py (#199): Aconity MIDI 2450 x 1500 x 2320 mm, 1450 kg; rePowder 1000 x 800 x 1600 mm, about 300 kg"
+   ],
+   "source_urls": [
+    "lab_models/equipment.py"
+   ],
+   "drawn": null,
+   "note": "",
+   "kg_per_m2_on_its_footprint": 395,
+   "times_strong_tray_per_area": 1.67,
+   "trays_that_carry_its_mass": [],
+   "verdict": "still too tall at 1000 mm (2320 mm), and 1450 kg is over every Shuttle tray's rating"
+  }
+ },
+ "enabled_at_1000": [
+  "InssTek MX-Lab (DED, powder-fed laser)",
+  "MX-Lab base cabinet (size estimated)",
+  "Mastrex MX100 (LPBF)",
+  "Lasefinity Fusion X (LPBF)",
+  "Sharebot MetalONE (LPBF)",
+  "Kings 3D DiMetal-100 (LPBF)",
+  "Parker Balston UHPN2-1100 (N2 generator)",
+  "Formlabs Form 4, cover open"
+ ],
+ "still_too_tall_at_1000": [
+  "Meltio M450 (wire-laser DED)",
+  "Instron 68SC-2",
+  "One Click Metal MPRINT (LPBF)",
+  "Kobelco O2-Dr.HIP",
+  "AMAZEMET rePowder",
+  "Inert PureLab HE 2GB",
+  "Aconity MIDI"
+ ],
+ "ask_kardex": [
+  "The tallest product height through the opening on the Shuttle 700 and 1000, standard and as a special, and on the XP 500 (the used unit's 996 mm opening).",
+  "The product height of the Shuttle 1000's pallet and mesh-box trays, and their rating for a concentrated load (a 250 kg machine on 0.47 m2).",
+  "Whether a tall opening changes the tray delivery height (833 mm) or the unit height."
+ ],
+ "sources": {
+  "pof1": {
+   "what": "Kardex Shuttle POF (order sheet), SHUTTLE-01-500-2450x864x6750: 'Maximum Product Height: 727.5 mm / 28.64 in. Depends on Tray Type selection', 'Clearance Required Above Product: 20 mm', access table 833 mm; tray ratings Light 230, Medium 360, Strong 500, 66-1-Medium-100 525 kg (StoreMoreStore option 1)",
+   "url": "https://products.storemorestore.com/hubfs/StoreMoreStore/Kardex-Vertical-Lift-Module/VLM-Option-1-96x34-Light-Specification-Sheet.pdf"
+  },
+  "pof6": {
+   "what": "Kardex Shuttle POF, SHUTTLE-01-500-3050x864x6750: 'Maximum Product Height: 727 mm / 28.62 in'; tray ratings Light 120, Medium 205, Strong 265 kg (20.6 lb/sq ft), 66-1-Medium-100 470, 75-3-Medium-100 505 kg (StoreMoreStore option 6)",
+   "url": "https://products.storemorestore.com/hubfs/StoreMoreStore/Kardex-Vertical-Lift-Module/VLM-Option-6-120x34Medium-Specification-Sheet.pdf"
+  },
+  "q53": {
+   "what": "byu-vcl #53, the quote's spec: XP 500, 96.46 x 34 in trays, light 502 lb (22.3 lb/sq ft), medium 794 lb, strong 1,080 lb (47.4 lb/sq ft)",
+   "url": "https://github.com/vertical-cloud-lab/byu-vcl/issues/53"
+  },
+  "xp": {
+   "what": "Kardex Remstar Shuttle XP brochure: XP 250/500 trays 1,250-4,050 x 610-1,270 mm, up to 560 kg, 25 mm pitch; XP 700 up to 725 kg, 50 mm pitch; XP 1000 trays 610-1,778 mm deep, 1,000 kg at 1,250 mm wide, 900 kg at 2,450 mm, 800 kg at 4,050 mm; options 'Special trays for pallet storage', 'Tray extraction for forklift operation'. No product or opening height",
+   "url": "https://www.supplycore.com/wp-content/uploads/2022/01/Shuttle-XP-Vertical-Lift-Module-1108-1.pdf"
+  },
+  "xp_de": {
+   "what": "Kardex Remstar Shuttle XP brochure, German, 2017: the same tables; 'Sonder-Tablare fuer Palettenlagerung'. No product or opening height",
+   "url": "https://wtp.hoechsmann.com/lexikon/pdf/kad_shuttlexp_2017_de.pdf"
+  },
+  "fact": {
+   "what": "Kardex Shuttle factsheet (8103-US-2112): 250/500 up to 555 kg, 700 up to 725 kg, 1000 up to 1,000 kg; 'When storing heavy loads or even pallets, the Kardex Shuttle 1000 is the perfect choice'; 'Standard technical data, other sizes possible on request'",
+   "url": "https://info.southwestsolutions.com/hubfs/Brochures/SSG-Brochures/KAR-198/Shuttle.pdf"
+  },
+  "heavy": {
+   "what": "kardex.com, heavy-duty units: 'Use a forklift to stack and store EURO pallets and mesh boxes on special trays'; Shuttle 1000 'up to 825 kg per tray'",
+   "url": "https://www.kardex.com/en/products/heavy-duty-units"
+  },
+  "blog": {
+   "what": "Kardex blog, VLMs vs vertical carousels: VLM trays 'with a max product height of just over 28 inches'",
+   "url": "https://www.kardex.com/en-us/blog/vertical-lift-modules-vs-vertical-carousels"
+  },
+  "towermat": {
+   "what": "Kardex TowerMat (heavy, oversized goods, pallets): EE carriers up to 8.2 x 1.5 m, 3,000 kg; FE up to 12.2 x 2.1 m, 5,000 kg; no goods height published (Kardex product guide 5009-EN-0825)",
+   "url": "https://www.kardex.com/en-us/products/vertical-lift-module/towermat"
+  },
+  "used996": {
+   "what": "A used Kardex Shuttle XP 500, 3050 x 864 mm, built 2005/2006: 'Bedienoeffnung Frontseitig auf 833 mm, Hoehe 996 mm'",
+   "url": "https://www.lagersysteme-paternoster.de/gebrauchte-lagertechnik/kardex-shuttle-xp500-3050x864-pos-89/"
+  },
+  "meshbox": {
+   "what": "Euro mesh box pallet (UIC 435-3, DIN 15155): outside 1240 x 835 x 970 mm, inside 1200 x 800 x 800 mm",
+   "url": "https://www.hellopro.fr//documentation/pdf_prod/3/0/9/88526_697b113fadeb2d9921786be336dce08a.pdf"
+  },
+  "acdev": {
+   "what": "ac-dev-lab #372 (the AC's XP-500 quote: 49.21 x 24 in trays, 992 lb per tray, floor to tray 32.8 in, 'standard on all shuttles. They can change this height if necessary'); #471, #216, #370: no opening height",
+   "url": "https://github.com/AccelerationConsortium/ac-dev-lab/issues/372"
+  },
+  "mxlab": {
+   "what": "InssTek MX-Lab Technical Data Rev.3 (2020): 680 x 684 x 835 mm without accessories, 250 kg, 1-phase 220 V 15(20) A; 2024 brochure: up to 500 W Yb fibre laser, six hoppers, Ar > 99.999 % with O2 <= 50 ppm as an option (via notes/instruments_lab.md)",
+   "url": "notes/instruments_lab.md"
+  },
+  "mx100": {
+   "what": "Tech-Labs, Mastrex MX-100: 22.05 x 22.05 x 31.50 in (560 x 560 x 800 mm), 276 lb (125 kg), 120 V, 300 W laser; NG150 nitrogen generator as an accessory",
+   "url": "https://tech-labs.com/products/mastrex-mx-100-metal-3d-printer"
+  },
+  "fusionx": {
+   "what": "TCT Magazine, Lasefinity Fusion X launch: 600 x 650 x 860 mm, 500 W fibre laser, sealed N2 or Ar chamber, 'permanent filtration system'; no mass published",
+   "url": "https://tctmagazine.com/lasefinity-fusionx-compact-desktop-metal-3d-printer-launches-at-tct-3sixty"
+  },
+  "metalone": {
+   "what": "Sharebot MetalONE launch figures: 740 x 630 x 1000 mm, 150 kg (later listings 1000 x 600 x 1470 mm, 270-315 kg) (fab_metal.py)",
+   "url": "out/fabrication.json"
+  },
+  "dimetal": {
+   "what": "All3DP, 2026-07-31, Kings 3D DiMetal-100: 690 x 720 x 1000 mm, about 140 kg, 220 V 50 Hz, 300 W",
+   "url": "https://all3dp.com/4/kings-3ds-140-kg-dimetal-100-proves-desktop-sized-isnt-always-desktop-friendly/"
+  },
+  "fab": {
+   "what": "fab_metal.py and fab_resin.py, from the makers' figures (out/fabrication.json)",
+   "url": "out/fabrication.json"
+  },
+  "inst": {
+   "what": "instruments.py, instruments_lab.py, from the makers' figures (out/instruments.json)",
+   "url": "out/instruments.json"
+  },
+  "n2": {
+   "what": "Parker Balston UHPN2-1100 (notes/services.md): 305 x 406 x 889 mm, 50 kg, 120 V, 500-1100 cc/min at 99.9999 %, needs compressed air at 60-125 psig",
+   "url": "notes/services.md"
+  },
+  "equip": {
+   "what": "lab_models/equipment.py (#199): Aconity MIDI 2450 x 1500 x 2320 mm, 1450 kg; rePowder 1000 x 800 x 1600 mm, about 300 kg",
+   "url": "lab_models/equipment.py"
+  }
+ }
+}
