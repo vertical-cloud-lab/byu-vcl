@@ -167,11 +167,14 @@ def _cone(d_top, d_bot, h, x=0.0, y=0.0, z=0.0) -> cq.Workplane:
 #  - The electrode cap: 20 mm across, 16 mm tall; a leak-free 2 mm Ag/AgCl reference down the middle inside five
 #    turns of 0.25 mm Pt wire (the counter), protruding 4.5 mm; a steel disc on top for the capper's 50 N magnet; two
 #    pogo pins at +-11 mm that land on RE and CE pads beside each station. About 15 g of PETG.
-#  - Stocks: 0.6, 0.06, 0.006 M NaCl and DI water in capped 20 mL vials at (318, 101/134/167/200), caps at 71.
+#  - Stocks: 0.6, 0.06, 0.006 M NaCl and DI water in capped 20 mL vials at (318, 101/134/167/200), caps at 71. Moved
+#    here to x 375 (interference.py): at 318, whenever the P20 dipped into a stock (carriage at 70), the capper, 55 mm
+#    to its left and 16 mm below the carriage, came down 6 mm into Ben's rack beside them (its right edge at 297).
 #  - Rinse cup (60, 245) and park cup (90, 245), 4 mL vials, top 45 (61 with the cap on).
 #  - Tube rack, 2 x 8 open 0.5 mL PP tubes at x 176 + 12k, y 28/46, top 32: each spot's liquid, for ICP.
 #  - Tip racks: Ben's, A1 (291.3, 89), unmoved; a printed 2 x 15 rack, A1 (108, 89), A2 (99.5, 89). Tip waste
-#    (335, 40), 30 mm across, top 50.
+#    (335, 40), 30 mm across, top 50. The printed rack is moved here to A1 (102, 79): at (108, 89) the capper came down
+#    4.6 mm into it with the P20 in well S1, and its magnet into the back row as it picked the cap off the park cup.
 #  - The head: capper (0, 0), lowest point 16 below the carriage, 36.5 carrying the cap; P20 single Gen2 at
 #    (+55, +11), 35 below with a tip on; camera_3 at (-40, +10). Travel height: carriage at z 122. Setting the cap:
 #    carriage at 58; the pipette in a well, likewise.
@@ -186,11 +189,11 @@ def _cone(d_top, d_bot, h, x=0.0, y=0.0, z=0.0) -> cq.Workplane:
 CORR = dict(deck_z=80.0, x0=-180.0, y0=-232.5, travel_z=122.0,
             stations=((185.0, 240.0), (210.0, 240.0), (235.0, 240.0), (260.0, 240.0)),
             tray=(170.0, 275.0, 220.0, 260.0), face=20.0, lid=26.0,
-            stocks=((318.0, 101.0, "0.6 M"), (318.0, 134.0, "0.06 M"), (318.0, 167.0, "0.006 M"),
-                    (318.0, 200.0, "water")),
+            stocks=((375.0, 101.0, "0.6 M"), (375.0, 134.0, "0.06 M"), (375.0, 167.0, "0.006 M"),
+                    (375.0, 200.0, "water")),
             rinse=(60.0, 245.0), park=(90.0, 245.0), cup_top=45.0,
             tubes_x0=176.0, tubes_dx=12.0, tubes_y=(28.0, 46.0), tube_top=32.0,
-            rack1=(291.3, 89.0), rack2=(108.0, 89.0), rack_dx=8.5, rack_dy=10.0, rack_top=66.0, tip_top=71.0,
+            rack1=(291.3, 89.0), rack2=(102.0, 79.0), rack_dx=8.5, rack_dy=10.0, rack_top=66.0, tip_top=71.0,
             tip_len=35.0, waste=(335.0, 40.0), waste_top=50.0,
             pip=(55.0, 11.0), cam=(-40.0, 10.0), cap_d=20.0, cap_h=16.0, cap_el=4.5,
             ez=(255.0, 245.0, 102.0), ez_x=530.0)
@@ -798,15 +801,17 @@ def packaging() -> Instrument:
     shell = box(bx_ - b["W"] / 2, yf, 0, bx_ + b["W"] / 2, yf + b["D"], b["H"] - 40).cut(
         box(bx_ - b["W"] / 2 + 5, yf + 5, 5, bx_ + b["W"] / 2 - 5, yf + b["D"] - 5, b["H"]))
     body.add("box", shell, "lab_kraft")
-    foam = box(bx_ - b["W"] / 2 + 5, yf + 5, 5, bx_ + b["W"] / 2 - 5, yf + b["D"] - 5, b["H"] - 40).cut(
-        box(bx_ - 95, by_ - 40, 12, bx_ + 95, by_ + 40, b["H"]))
+    # the pocket, plucked from the pick-and-pack foam: 190 x 108 mm, room for the bagged jar lying down with its sealed
+    # mouth flat; the lid's foam has the same cut-out, 8 mm deep, over the bag's top
+    pocket_cut = box(bx_ - 95, by_ - 54, 12, bx_ + 95, by_ + 54, b["H"] - 27)
+    foam = box(bx_ - b["W"] / 2 + 5, yf + 5, 5, bx_ + b["W"] / 2 - 5, yf + b["D"] - 5, b["H"] - 40).cut(pocket_cut)
     body.add("foam insert", foam, "lab_foam")
     lid = _piece(inst, "lid")
     lid.add("box lid", box(bx_ - b["W"] / 2, yf, b["H"] - 5, bx_ + b["W"] / 2, yf + b["D"], b["H"]), "lab_kraft")
     lid.add("lid sides", box(bx_ - b["W"] / 2, yf, b["H"] - 40, bx_ + b["W"] / 2, yf + b["D"], b["H"] - 5).cut(
         box(bx_ - b["W"] / 2 + 5, yf + 5, b["H"] - 41, bx_ + b["W"] / 2 - 5, yf + b["D"] - 5, b["H"] - 4)), "lab_kraft")
     lid.add("lid foam", box(bx_ - b["W"] / 2 + 6, yf + 6, b["H"] - 35, bx_ + b["W"] / 2 - 6, yf + b["D"] - 6,
-                            b["H"] - 5), "lab_foam")
+                            b["H"] - 5).cut(pocket_cut), "lab_foam")
     # ---- the jar nest, with the next jar waiting in its left seat
     nx = P["nest_x"]
     body.add("jar nest", box(nx - 85, yf + 80, 0, nx + 85, yf + 200, 30).cut(
@@ -826,20 +831,25 @@ def packaging() -> Instrument:
     lab = _piece(inst, "jarlabel")
     lab.add("jar label", tube(j["d"] + 1.2, j["d"] - 0.5, 60, x=jx, y=jy, z=jz + 25), "lab_label")
     lab.add("QR patch", box(jx - 9, jy - j["d"] / 2 - 0.9, jz + 45, jx + 9, jy - j["d"] / 2 + 2, jz + 63), "inst_black")
+    # the liner bag as film: a 0.5 mm sleeve close round the jar (66 mm, over the 62 mm label), the jar standing on its
+    # 0.6 mm bottom, and its mouth flattened to a 100 mm strip (half the sleeve's girth) for the seal. Drawn as a rigid
+    # 84 mm box, it went 2.5-6 mm into the foam pocket, the lid's foam, the box's floor and the bag stand
     bag = _piece(inst, "bag")
-    bag.add("liner bag", box(jx - 42, jy - 42, jz - 3, jx + 42, jy + 42, jz + j["h"] + 30).cut(
-        box(jx - 40, jy - 40, jz - 1, jx + 40, jy + 40, jz + j["h"] + 31)), "lab_bag")
-    bag.add("bag mouth", box(jx - 42, jy - 3, jz + j["h"] + 30, jx + 42, jy + 3, jz + j["h"] + 52), "lab_bag")
+    bag_d, bag_up, mouth_w = 66.0, 20.0, 100.0
+    bag.add("liner bag", tube(bag_d, bag_d - 1.0, j["h"] + bag_up + 0.6, x=jx, y=jy, z=jz - 0.6).union(
+        cyl(bag_d, 0.6, x=jx, y=jy, z=jz - 0.6)), "lab_bag")
+    bag.add("bag mouth", box(jx - mouth_w / 2, jy - 3, jz + j["h"] + bag_up, jx + mouth_w / 2, jy + 3,
+                             jz + j["h"] + bag_up + 22), "lab_bag")
     # the bag's open neck, laid back over the H-190's front and across its jaw for the seal: drawn where it lies with
     # the jar on the bag stand (bag_at, below), then carried into the jar's frame; shown only at the sealer
-    bag_at = (sx_, yf - 80, 4.0)                           # the jar standing on the bag stand, in front of the sealer
-    top = bag_at[2] + j["h"] + 52                          # the top of the bag's mouth there
+    bag_at = (sx_, yf - 80, 4.6)                           # the jar in its bag on the bag stand, in front of the sealer
+    top = bag_at[2] + j["h"] + bag_up + 22                 # the top of the bag's mouth there
     neck = None
     for p0, p1 in (((bag_at[1], top), (yf - 4, 128.0)), ((yf - 4, 128.0), (yf + 36, 127.0))):
         d = np.subtract(p1, p0) / np.linalg.norm(np.subtract(p1, p0))
         n = np.array([-d[1], d[0]]) * 1.5
         quad = [tuple(p0), tuple(p1), tuple(np.add(p1, n)), tuple(np.add(p0, n))]
-        s = cq.Workplane("YZ").polyline(quad).close().extrude(84).translate((bag_at[0] - 42, 0, 0))
+        s = cq.Workplane("YZ").polyline(quad).close().extrude(mouth_w).translate((bag_at[0] - mouth_w / 2, 0, 0))
         neck = s if neck is None else neck.union(s)
     _piece(inst, "neck").add("bag neck", neck.translate((jx - bag_at[0], jy - bag_at[1], jz - bag_at[2])), "lab_bag")
     lw, ll = P["label"]
@@ -851,9 +861,25 @@ def packaging() -> Instrument:
 
     # ---- choreography on one timeline
     mid = jz + j["h"] / 2                                  # the jar's tilt pivot: the middle of its axis
-    ap_c = (ax, cy0, 95 + 12.5 + j["d"] / 2)               # the jar's axis, lying in the AP380's cradle
-    # the jar's axis, lying in the foam pocket: set left so the jar and its bag's sealed mouth (186 mm) fit the 190
-    pocket = (bx_ - 24.5, by_, 12 + 2 + j["d"] / 2)
+    # the jar's axis, lying in the AP380's cradle: on both rollers (30 mm either side of it), the label just touching
+    ap_c = (ax, cy0, 95 + math.sqrt((12.5 + j["d"] / 2 + 0.6) ** 2 - 30.0 ** 2) + 0.1)
+    # the pressure arm, hinged at the back: down, its roller rests on the jar's label (0.3 mm off); up, 50 deg, its
+    # roller is clear of the jar as it comes down into the cradle and goes out again (raised only 14 deg, the roller
+    # and the arm's end were in the jar's way, 3.6 mm: interference.py)
+    press_pivot, press_up = (ax, yf + a["D"] - 200, pz), -50.0
+    r_dy, r_dz = (cy0 + 10) - press_pivot[1], (pz - 10) - pz       # the pressure roller's axis from the hinge
+
+    def roller_gap(deg):
+        t = math.radians(deg)
+        y_, z_ = r_dy * math.cos(t) - r_dz * math.sin(t), r_dy * math.sin(t) + r_dz * math.cos(t)
+        return math.hypot(press_pivot[1] + y_ - cy0, pz + z_ - ap_c[2]) - (13.0 + j["d"] / 2 + 0.6) - 0.3
+    lo_, hi_ = -20.0, 40.0
+    for _ in range(50):                                            # the angle at which the roller meets the label
+        lo_, hi_ = ((lo_ + hi_) / 2, hi_) if roller_gap((lo_ + hi_) / 2) > 0 else (lo_, (lo_ + hi_) / 2)
+    press_down = lo_
+    # the jar's axis, lying in the foam pocket: set left so the jar and its bag's sealed mouth (174 mm) fit the 190,
+    # the bag 0.6 mm over the pocket's floor
+    pocket = (bx_ - 24.5, by_, 12 + 0.6 + bag_d / 2)
     # press: the AP380's pressure arm, arm: the H-190's (1 up, 0 down); they ride the timeline, so each is up before
     # the jar comes in or goes out under it
     tl = Timeline(dict(p=(jx - 260, jy - 80, jz + 220), tilt=0.0, spin=0.0, ship=0.0, press=1.0, arm=1.0))
@@ -873,7 +899,9 @@ def packaging() -> Instrument:
     tl.go(0.5); tl.go(0.5, arm=0.0); tl.go(0.8); tl.mark("sealed")
     # arm up, the neck drawn forward out of the jaw, then up, over the sealer and down into the foam
     tl.go(0.5, arm=1.0); to(0.4, bag_at[0], bag_at[1] - 60, bag_at[2] + 4)
-    to(0.5, bag_at[0], bag_at[1] - 60, bag_at[2] + 300); to(1.0, pocket[0], pocket[1], lie(pocket) + 260, tilt=90.0)
+    # turned a quarter on its axis as it goes over, so that the bag's flat seal lies flat in the pocket
+    to(0.5, bag_at[0], bag_at[1] - 60, bag_at[2] + 300)
+    to(1.0, pocket[0], pocket[1], lie(pocket) + 260, tilt=90.0, spin=450.0)
     to(0.7, pocket[0], pocket[1], lie(pocket)); tl.mark("boxed")
     tl.go(1.0); tl.mark("lid on")
     tl.go(0.8, ship=1.0); tl.go(0.9, ship=2.0); tl.go(0.6, ship=3.0); tl.mark("shipped")
@@ -893,12 +921,13 @@ def packaging() -> Instrument:
         "jar": Turn(parent="jartilt", axis=(0, 0, 1), pivot=(jx, jy, 0),
                     knots=tuple((v, c[0]) for v, c in tl.knots(lambda st: (st["spin"], 0, 0)))),
         "jarlabel": Joint("fade", parent="jar"),
-        "bag": Joint("fade", parent="jartilt"),
+        "bag": Joint("fade", parent="jar"),                # it turns with the jar on the way to the foam
         "neck": Joint("fade", parent="jartilt"),
         "stripslide": Joint("slide", vec=(0, -60, 0)),
         "strip": Joint("fade", parent="stripslide"),
-        "press": Turn(axis=(1, 0, 0), pivot=(ax, yf + a["D"] - 200, pz),
-                      knots=tuple((v, c[0]) for v, c in tl.knots(lambda st: (-14.0 * st["press"], 0, 0)))),
+        "press": Turn(axis=(1, 0, 0), pivot=press_pivot,
+                      knots=tuple((v, c[0]) for v, c in tl.knots(
+                          lambda st: (press_down + (press_up - press_down) * st["press"], 0, 0)))),
         "arm": Turn(axis=(1, 0, 0), pivot=(sx_, yf + se["D"], 126),
                     knots=tuple((v, c[0]) for v, c in tl.knots(lambda st: (-35.0 * st["arm"], 0, 0)))),
         "lid": Joint("hinge", axis=(1, 0, 0), pivot=(bx_, yf + b["D"], b["H"] - 40), deg=-105.0, v0=1.0),
@@ -924,7 +953,7 @@ def packaging() -> Instrument:
          {**seg("labelled", "at sealer"), "bag": (0.0, 1.0), "inset_jar": (1.0, 0.0), "neck": (0.0, 0.0)}),
         ("The bag's mouth goes across the jaw, and the sealer closes on it: a 12 in seal.", 1.9,
          {**seg("at sealer", "sealed"), "neck": (0.0, 1.0)}),
-        ("Into the foam insert's cut-out, lying down.", 2.8, {**seg("sealed", "boxed"), "neck": (1.0, 0.0)}),
+        ("Into the foam insert's cut-out, lying down.", 2.8, {**seg("sealed", "boxed"), "neck": (1.0, -1.0)}),
         ("The lid goes on.", 1.4, {**seg("boxed", "lid on"), "lid": (1.0, 0.0)}),
         ("The ZD621 prints the 4 x 6 in shipping label, and it goes on the lid. Whether the box needs dangerous-goods "
          "marks depends on a test, not on the alloy's name.", 3.4,
