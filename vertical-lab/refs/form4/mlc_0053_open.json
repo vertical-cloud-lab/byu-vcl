@@ -1,0 +1,48 @@
+{
+ "source": "https://youtu.be/NXrAn3QfKYw?t=53 (MLC CAD Systems, Formlabs Form 4 Setup Guide, 0:53: the cover open, same camera as 0:48)",
+ "video": "NXrAn3QfKYw",
+ "t": 53.0,
+ "pose": {
+  "cover": 1.0
+ },
+ "points": {
+  "base fl bottom": [
+   621,
+   580
+  ],
+  "lip fl under": [
+   620,
+   445
+  ],
+  "bezel tl": [
+   742,
+   402
+  ]
+ },
+ "curves": {
+  "cover back left edge": [
+   [
+    380,
+    147
+   ],
+   [
+    460,
+    148
+   ],
+   [
+    540,
+    149
+   ]
+  ],
+  "cover back right edge": [
+   [
+    670,
+    160
+   ],
+   [
+    720,
+    161
+   ]
+  ]
+ }
+}
