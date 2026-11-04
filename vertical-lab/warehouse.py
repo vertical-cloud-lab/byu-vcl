@@ -128,15 +128,54 @@ def tape_rect(cx, cy, w, d, t=60.0, ang=0.0):
     return m.rotate_z(ang, inplace=False).translate((cx, cy, 0), inplace=False)
 
 
-def tag(size=110.0):
-    """A camera target: a square fiducial, black with a white pattern (drawn like an AprilTag; schematic), facing up,
-    origin at its centre. Returns (black, white)."""
-    s = size / 2
-    black = _box(-s, -s, 0, s, s, 4)
-    c = size / 8
-    cells = [(1, 1), (1, 4), (2, 2), (3, 1), (4, 3), (4, 5), (5, 2), (2, 5), (5, 5), (3, 3)]
-    white = _merge([_box(-s + c * i, -s + c * j, 4, -s + c * (i + 1), -s + c * (j + 1), 5) for i, j in cells])
-    return black, white
+TAG_CUBE = 120.0                  # the camera target's cube, mm (a layout choice)
+
+
+def tag_bits(ident: int) -> np.ndarray:
+    """A 6 x 6 data pattern drawn like an AprilTag 36h11 code, one per ident. Schematic: seeded random bits with 14-22
+    of them set, distinct from each other, not a decodable 36h11 ID."""
+    rng = np.random.default_rng(36011 + ident)
+    while True:
+        b = rng.random((6, 6)) < 0.5
+        if 14 <= b.sum() <= 22:
+            return b
+
+
+def tag(size=TAG_CUBE, ident=0):
+    """A camera target (round 7): a cube on its post with an AprilTag-36h11-like fiducial on its top and all four
+    sides, each face a different pattern (idents 5 * ident .. 5 * ident + 4), so the arm's wrist camera, or a camera on
+    a MiR, sees one from any side as well as from above. Sterling, PR #318: "why are the AprilTags ... only facing up?
+    Wouldn't it make more sense to make this a cube with the repeating AprilTag pattern on each face". Each face is a
+    10 x 10 grid as a 36h11 tag is laid out: a white outer ring, a black ring, and 6 x 6 data cells. Origin at the
+    centre of the cube's bottom face. Returns (black, white): the cube, and the white cells 0.8 mm proud of the faces."""
+    s, c, t = size / 2, size / 10, 0.8
+    black = _box(-s, -s, 0, s, s, size)
+    faces = [((0, 0, size), (1, 0, 0), (0, 1, 0), (0, 0, 1))]      # (centre, u, v, outward normal): the top, then sides
+    for n in ((1, 0, 0), (0, 1, 0), (-1, 0, 0), (0, -1, 0)):
+        u = (-n[1], n[0], 0)
+        faces.append(((n[0] * s, n[1] * s, s), u, (0, 0, 1), n))
+    whites = []
+    for f, (o, u, v, n) in enumerate(faces):
+        o, u, v, n = (np.array(a, float) for a in (o, u, v, n))
+        bits = tag_bits(5 * ident + f)
+
+        def cell(i0, i1, j0, j1):                 # a white patch over cells i0..i1-1 (along u) by j0..j1-1 (along v)
+            p0 = o + u * (-s + c * i0) + v * (-s + c * j0)
+            p1 = o + u * (-s + c * i1) + v * (-s + c * j1) + n * t
+            return _box(*np.minimum(p0, p1), *np.maximum(p0, p1))
+        whites += [cell(0, 10, 0, 1), cell(0, 10, 9, 10), cell(0, 1, 1, 9), cell(9, 10, 1, 9)]   # the outer ring
+        for j in range(6):                        # the data cells, a run of white cells in a row as one patch
+            i = 0
+            while i < 6:
+                if not bits[j, i]:
+                    i += 1
+                    continue
+                k = i
+                while k < 6 and bits[j, k]:
+                    k += 1
+                whites.append(cell(2 + i, 2 + k, 2 + j, 3 + j))
+                i = k
+    return black, _merge(whites)
 
 
 def racking():
@@ -490,7 +529,7 @@ class Floor:
         sc.add("aisle dashes", _merge(dashes), TAPE_W, "tape", specular=0.0, ambient=0.5)
         self.groups["tape"] = ["aisle tape", "aisle dashes"]
         docks, blacks, whites, posts = [], [], [], []
-        for key in STATIONS:
+        for ident, key in enumerate(STATIONS):
             if key not in ("vlm", "repowder") and key not in self.groups:      # nothing stands there: no dock
                 continue
             x, y, hd = dock_pose(key)
@@ -499,7 +538,7 @@ class Floor:
             posts.append(pv.Cylinder(center=(tx, ty, TARGET_Z / 2), direction=(0, 0, 1), radius=25,
                                      height=TARGET_Z, resolution=20).triangulate())
             posts.append(_box(tx - 150, ty - 150, 0, tx + 150, ty + 150, 12))
-            b, w = tag()
+            b, w = tag(ident=ident)                    # a cube, a distinct pattern on each of its five faces
             blacks.append(b.translate((tx, ty, TARGET_Z), inplace=False))
             whites.append(w.translate((tx, ty, TARGET_Z), inplace=False))
         sc.add("dock tape", _merge(docks), TAPE_W, "docks", specular=0.0, ambient=0.5)
