@@ -264,14 +264,19 @@ def tour_one(inst: I.Instrument, entries: dict) -> str:
         top = I.RAIL["top"]
         robot.Robot(sc, "ur10e", f"{inst.key}:carriage", T((0, 0, top)), q0=animate.PARK_DEG, prefix="railarm")
         sc.cam = frame_cam(inst.bbox(), inst.cam, pad=0.75, look_z=0.9)
-    n = len([a for a in inst.actions if a[0]])
+    # an action whose caption repeats the one before it continues that step (a move in several straight legs): it
+    # keeps the step's number
+    caps = [a[0] for a in inst.actions]
+    rep = [bool(c) and i > 0 and c == caps[i - 1] for i, c in enumerate(caps)]
+    n = len([c for c in caps if c]) - sum(rep)
     whole = sc.cam
     own = getattr(inst, "step_labels", {})         # {action index: labels} for an action with labels of its own
     for i, (cap, secs, targets) in enumerate(inst.actions):
         z = getattr(inst, "zoom", {}).get(i)
         cam_to = None if z is None else whole if z == "out" else close_cam(*z, direction=inst.cam)
-        sc.step(f"{min(i + 1, n)}/{n}", cap, secs, rig.move(targets), hold=0.5, labels=own.get(i, labels),
-                cam_to=cam_to)
+        k = min(i + 1 - sum(rep[:i + 1]), n)
+        sc.step(f"{k}/{n}", cap, secs, rig.move(targets), hold=0.15 if i + 1 < len(rep) and rep[i + 1] else 0.5,
+                labels=own.get(i, labels), cam_to=cam_to)
     # the hero still for the gallery: closed, the sample in place, no text
     rig.move({k: (None, 1.0 if k in inst.props else j.v0) for k, j in inst.joints.items()})(1.0)
     rig.move({f"~{k}": (None, 0.0) for k in ents})(1.0)
