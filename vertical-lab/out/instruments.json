@@ -484,5 +484,23 @@
   "fits_tray": true,
   "floor": false,
   "where": "on a tray"
+ },
+ "ot2": {
+  "title": "Liquid-handling robot",
+  "model": "Opentrons OT-2",
+  "source": "Opentrons' reference STEP (github.com/Opentrons/ot2), its envelope as the size; deck slots from Opentrons' ot2_standard.json deck definition; labware from lab_models/labware.py",
+  "model_mm": [
+   624,
+   567,
+   662
+  ],
+  "published_mm": [
+   624.3,
+   567.4,
+   662.0
+  ],
+  "fits_tray": true,
+  "floor": false,
+  "where": "on a tray"
  }
 }
