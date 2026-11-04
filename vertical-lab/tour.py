@@ -35,7 +35,7 @@ MATS = dict(lab.MATS)
 MATS.update(I.MATERIALS)
 # Round 4 adds its instruments in modules of their own, each with a REGISTRY ({key: build}) and, optionally,
 # MATERIALS; a module that isn't there yet is skipped. Each module is cached on its own sources.
-MODULES = ["instruments", "instruments_char", "instruments_lab", "services"]
+MODULES = ["instruments", "instruments_char", "instruments_lab", "services", "instruments_round2"]
 
 
 def _modules() -> dict:
@@ -88,7 +88,8 @@ def load(keys=None, rebuild=False) -> dict:
         if keys is not None and not set(keys) & set(mod.REGISTRY):
             continue
         h = hashlib.sha256()
-        for f in _sources(name):
+        # a module's SOURCES: other files its builds read (round 2's equipment models, the carousel's layout)
+        for f in [*_sources(name), *(HERE / s for s in getattr(mod, "SOURCES", ()))]:
             if f.exists():
                 h.update(f.read_bytes())
         # rebuilt once the OpenFlexure meshes are there (the two microscopes, and the array in instruments_char)
@@ -109,6 +110,17 @@ def load(keys=None, rebuild=False) -> dict:
             path.write_bytes(pickle.dumps(part))
         data.update(part)
     return {k: v for k, v in data.items() if keys is None or k in keys}
+
+
+def custom_tours() -> dict:
+    """{key: clip(inst, entries) -> str} for the instruments whose clip tour_one can't play: a module names them in
+    TOURS (instruments_round2's multi-doser, whose chain moves by its own kinematics)."""
+    out = {}
+    for mod in _modules().values():
+        for key, fname in getattr(mod, "TOURS", {}).items():
+            if hasattr(mod, fname):
+                out[key] = getattr(mod, fname)
+    return out
 
 
 def registry() -> dict:
@@ -359,7 +371,8 @@ if __name__ == "__main__":
             else:
                 print(join(list(registry())))
     else:
-        data = load(args or None, rebuild="--rebuild" in args)
+        data = load([a for a in args if a != "--rebuild"] or None, rebuild="--rebuild" in args)
+        tours = custom_tours()
         for key, (inst, ents) in data.items():
             print(key, fit_report(inst), flush=True)
-            print(tour_one(inst, ents), flush=True)
+            print(tours.get(key, tour_one)(inst, ents), flush=True)
