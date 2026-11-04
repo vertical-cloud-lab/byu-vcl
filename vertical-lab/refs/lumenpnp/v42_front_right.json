@@ -1,0 +1,24 @@
+{
+ "source": "https://youtu.be/awn-P1sYTt0?t=19",
+ "video": "awn-P1sYTt0",
+ "t": 19.0,
+ "pose": {"gantry": 0.94, "head": 0.46, "load": 1.0},
+ "points": {
+  "FR arm top inner": [510, 512],
+  "FR arm bottom inner": [511, 538],
+  "FR arm bottom outer": [541, 540],
+  "FL arm top outer": [249, 452],
+  "FL arm top inner": [267, 451],
+  "FL arm bottom outer": [250, 476],
+  "FL foot outer": [262, 589],
+  "FL foot inner back": [282, 590],
+  "FR foot back outer": [558, 699],
+  "x tension arm top front left": [781, 431],
+  "x motor top left": [463, 367],
+  "nozzle 1 tip": [583, 447],
+  "nozzle 2 tip": [602, 457]
+ },
+ "curves": {
+  "right y rail top": [[580, 499], [620, 494], [650, 490]]
+ }
+}

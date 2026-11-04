@@ -9,7 +9,7 @@
  "substeps": [
   {
    "label": "1/6",
-   "caption": "The lid lifts on its rear hinge, uncovering the XY Autochanger's 20-position tray.",
+   "caption": "The hood lifts on its rear hinge, uncovering the XY Autochanger's 20-position tray.",
    "start_frame": 0,
    "end_frame": 49
   },
@@ -21,7 +21,7 @@
   },
   {
    "label": "3/6",
-   "caption": "Lid down; drawn see-through.",
+   "caption": "Hood down; drawn see-through.",
    "start_frame": 97,
    "end_frame": 128
   },

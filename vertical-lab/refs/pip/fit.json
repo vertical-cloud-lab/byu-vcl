@@ -1,0 +1,103 @@
+{
+ "key": "pip",
+ "free": [
+  "H",
+  "base_h",
+  "col_w",
+  "top_z0",
+  "led_x",
+  "led_z0",
+  "led_z1",
+  "xh_y",
+  "xh_z0",
+  "xh_z1",
+  "lab_x",
+  "stack",
+  "stage_d",
+  "yc",
+  "estop_y",
+  "estop_z"
+ ],
+ "params": {
+  "H": 696.1,
+  "base_h": 42.7,
+  "col_w": 102.1,
+  "top_z0": 391.6,
+  "led_x": 173.6,
+  "led_z0": 55.7,
+  "led_z1": 199.3,
+  "xh_y": 18.0,
+  "xh_z0": 185.3,
+  "xh_z1": 377.9,
+  "lab_x": 127.9,
+  "stack": 50.7,
+  "stage_d": 159.4,
+  "yc": -30.2,
+  "estop_y": 45.0,
+  "estop_z": 79.8
+ },
+ "start": {
+  "H": 689.0,
+  "base_h": 43.0,
+  "col_w": 104.0,
+  "top_z0": 387.0,
+  "led_x": 172.0,
+  "led_z0": 52.0,
+  "led_z1": 196.0,
+  "xh_y": 18.0,
+  "xh_z0": 184.0,
+  "xh_z1": 369.0,
+  "lab_x": 126.0,
+  "stack": 56.0,
+  "stage_d": 154.0,
+  "yc": -30.0,
+  "estop_y": 45.0,
+  "estop_z": 79.0
+ },
+ "views": {
+  "intro_0109_front": {
+   "source": "https://youtu.be/w7OZsrru9AI?t=69 (Plastometrex, Introducing the PLX-Benchtop, 1:09)",
+   "size": [
+    1280,
+    720
+   ],
+   "camera": [
+    1.5494340204306192,
+    -0.06474259153442066,
+    -0.0031487568009230557,
+    -327.78731050098366,
+    438.8021340767447,
+    2382.8890855381237,
+    7.300566788368381,
+    -0.0008987429082137682
+   ],
+   "focal_px": 1481.1,
+   "k1": -0.0009,
+   "rms_px_camera_only": 6.67,
+   "rms_px": 6.31,
+   "residual_px": {
+    "trim fl": 7.5,
+    "bay tl": 5.4,
+    "bay tr": 10.4,
+    "led bl": 9.3,
+    "led br": 6.0,
+    "led tl": 3.3,
+    "led tr": 2.3,
+    "estop": 11.3,
+    "label L": 3.3,
+    "label R": 1.8,
+    "bay bl": 12.4,
+    "bay br": 4.1,
+    "col fl foot": 10.1,
+    "top (1)": 3.3,
+    "top (2)": 0.5,
+    "top (3)": 4.3,
+    "left edge (1)": 0.6,
+    "left edge (2)": 0.4,
+    "left edge (3)": 6.3,
+    "platen edge (1)": 2.0,
+    "platen edge (2)": 4.4
+   }
+  }
+ }
+}

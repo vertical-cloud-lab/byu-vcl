@@ -109,7 +109,8 @@ POWER = {
     "a1mini": (150.0, "snippet", "Bambu Lab A1 mini: max power 150 W (Bambu's TDS via a retailer)"),
     "sem": (500.0, "snippet", "Hitachi TM4000PlusIII: 'Single phase AC100-240 V ... 500 VA', PC separate (Series III "
                               "brochure; the PlusII's figure was not found)"),
-    "xrd": (600.0, "published", "Rigaku MiniFlex 600: '600 W X-ray tube', '1-phase, 100-240 V' (rigaku.com); the "
+    "xrd": (600.0, "published", "Rigaku MiniFlex (6th generation; the 600 before it had the same tube): '600 W X-ray "
+                                "tube', '1-phase, 100-240 V' (rigaku.com); the "
                                 "total draw was not found, so this counts the tube alone"),
     "openflexure_v7": (10.0, "estimate", "a Pi and three small steppers: ours, 10 W"),
     "openflexure_delta": (10.0, "estimate", "the same: ours, 10 W"),
