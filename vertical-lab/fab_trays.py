@@ -10,7 +10,9 @@ fronts to the tray's front edge, where the arm works. Over each tray, a blue box
 tray's inside (2426 x 840 mm) by Kardex's 727.5 mm of product height. Behind them, the next most compact LPBF machines
 and the most compact DED found (``fab_metal.py``) stand on boxes of the same height.
 
-The Shuttle's six slots are full (trays A-F), so trays G, H and I need another Shuttle: see the README.
+Not re-rendered in round 7 (the trays coming to the opening were called redundant). ``LOADS`` stays the layout of trays
+G, H and I, which now live in the second Shuttle (setup_lab.TRAYS, notes/tray_plan.md); the movie still shows Kardex's
+published 727.5 mm, not the 996 mm opening's estimated 856.5 mm (vlm.MAX_GOODS_H).
 """
 from __future__ import annotations
 
