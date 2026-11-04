@@ -1116,6 +1116,7 @@ PREVIEW=1 xvfb-run -a python3 animate.py workflow        # the last frame of eac
 python3 reach.py                                          # the arm study -> out/reach.json
 xvfb-run -a python3 tour.py                               # round 3: every instrument -> out/instruments/, out/mp4/instruments/
 python3 tour.py gallery join table                        # the gallery, the joined tour MP4, out/instruments.json
+xvfb-run -a python3 tour.py ot2 h2d a1_mini cubxl_lh multidoser   # round 2's equipment at work (instruments_round2.py)
 xvfb-run -a python3 line.py                               # the trays D-F, the line and the rail -> out/vlm_line.gif
 python3 charge.py                                         # the alloy route's charge recipe -> out/alloy_recipe.json
 xvfb-run -a python3 alloy_charge.py                       # chapter 1 with the vacuum press -> out/alloy_charge_vacuum.*
