@@ -5,7 +5,7 @@ UR arm on a mobile base working at its access opening.
     xvfb-run -a python3 animate.py loading       # opaque, then see-through; the trays are loaded one piece at a time
     xvfb-run -a python3 animate.py workflow      # the arm doses a powder with the multi-doser and takes it to the CubXL
     xvfb-run -a python3 animate.py disassembly   # unloaded and taken apart
-    python3 animate.py full                      # -> out/mp4/vertical_lab_full.mp4, the four joined
+    python3 animate.py full                      # -> out/mp4/vertical_lab_full.mp4: assembly, loading, workflow
     PREVIEW=1 xvfb-run -a python3 animate.py workflow   # last frame of each sub-step -> /tmp/preview_*.png
 
 ``lab.py`` tessellates the models once and caches them in ``.cache/``. Every move is a real one: trays only move on
@@ -741,10 +741,12 @@ def disassembly(data):
 
 
 def full():
-    """Join the four MP4s without re-encoding."""
+    """Join the assembly, loading and workflow MP4s without re-encoding. The joined video ends with the lab loaded and
+    working: the disassembly chapter stays a clip of its own and is left out (PR #318: "no need to remove the
+    equipment at the end of the video")."""
     import subprocess
     from scene import OUT
-    parts = [OUT / "mp4" / f"vlm_{c}.mp4" for c in ("assembly", "loading", "workflow", "disassembly")]
+    parts = [OUT / "mp4" / f"vlm_{c}.mp4" for c in ("assembly", "loading", "workflow")]
     lst = OUT / "mp4" / "concat.txt"
     lst.write_text("".join(f"file '{p.name}'\n" for p in parts))
     out = OUT / "mp4" / "vertical_lab_full.mp4"
