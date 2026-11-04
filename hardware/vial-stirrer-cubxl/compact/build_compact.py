@@ -8,9 +8,14 @@ compact parts could be printed from a run without the Onshape API keys (2026-10-
 today's parts with the same code and compares them with the Onshape STLs, so the port can be
 checked part by part before the compact parts are trusted.
 
-    python compact/build_compact.py            # writes stl/compact/*.stl, step/compact/*.step, compact/check_output.txt
+    python compact/build_compact.py            # writes stl/compact/*.stl, step/compact/base_compact.step, compact/check_output.txt
 
 Needs cadquery, trimesh and manifold3d.
+
+2026-11-04, at @benwhitney5463's request on PR #269: the compact base has no board stop (it stood
+between the junction board and the MOSFET, whose legs had to cross it), and its cable notch moved
+from the -Y wall to the -X wall, the board's column-A end, where the 56 x 56 mm base has its notch.
+The parts printed on 2026-10-28 and 2026-10-30 are the earlier base, at commit b9f57f5.
 """
 
 from __future__ import annotations
@@ -48,11 +53,13 @@ COMPACT = {
     "CBORE_D": 6.5,           # counterbores for the M3 x 20 heads in the flange
     "CBORE_SEAT": C["Z_WALL"] + C["FLANGE_T"] - 3.0,   # 3 mm deep, as deck_tiling.py checked
     "THRU_D": 3.4,            # M3 clearance through the flange, as today's corner holes
-    "NOTCH": (-11.0, -3.0),   # cable notch in the -Y wall, between the fan posts
-    "BOARD_IN": 0.5,          # junction board's rails and stop move this far toward +X
+    "NOTCH": (-6.5, 6.5),     # cable notch in the -X wall, y -6.5 to 6.5 as in the 56 x 56 mm base (2026-11-04;
+                              # it was in the -Y wall at x -11 to -3)
+    "BOARD_IN": 0.5,          # junction board's rails move this far toward +X
+    "STOP": False,            # no board stop (2026-11-04): it was in the way of the MOSFET's legs
     "WALL_DROP": 1.0,         # base walls end 1 mm under the flange: the holder sits on the fan, not the walls
     "HOLE_DEPTH": 7.5,        # insert holes 1 mm deeper than today's 6.5, so an M3 x 20 never bottoms out
-    # and no vents in the -Y wall, where the cable notch is (make_base)
+    # and no vents in the -Y wall, which had the cable notch until 2026-11-04 (make_base)
 }
 
 
@@ -102,8 +109,9 @@ def make_base(compact: bool):
             if not compact:
                 adds.append(cyl(sx * C["POST"], sy * C["POST"], floor - 0.01, C["Z_WALL"], 4.0))  # corner posts
     adds += [box(-22.6 + dx, -8.9, floor - 0.01, -2.0 + dx, -7.4, floor + 0.5),        # board rails
-             box(-22.6 + dx, 7.4, floor - 0.01, -2.0 + dx, 8.9, floor + 0.5),
-             box(-1.6 + dx, -5.0, floor - 0.01, -0.4 + dx, 5.0, floor + 3.0)]           # board stop
+             box(-22.6 + dx, 7.4, floor - 0.01, -2.0 + dx, 8.9, floor + 0.5)]
+    if not compact or COMPACT["STOP"]:
+        adds.append(box(-1.6 + dx, -5.0, floor - 0.01, -0.4 + dx, 5.0, floor + 3.0))  # board stop
     for a in adds:
         body = body.union(a)
     cuts = []
@@ -114,13 +122,13 @@ def make_base(compact: bool):
                 cuts.append(cyl(sx * C["POST"], sy * C["POST"], C["Z_WALL"] - 6.5, C["Z_WALL"] + 1, C["INSERT_HOLE"] / 2))
     if compact:
         n0, n1 = COMPACT["NOTCH"]
-        cuts.append(box(n0, -D / 2 - 1, floor - 0.6, n1, -(D / 2 - wall) + 0.5, ztop + 1))   # cable notch, -Y wall
+        cuts.append(box(-W / 2 - 1, n0, floor - 0.6, -(W / 2 - wall) + 0.5, n1, ztop + 1))   # cable notch, -X wall
     else:
         cuts.append(box(-W / 2 - 1, -6.5, floor - 0.6, -C["CAV"] / 2 + 0.5, 6.5, ztop + 1))  # USB-C notch, -X wall
     for k in range(3):
         z0 = zf0 + 1.5 + k * 3.0
-        # vents, +-Y walls. The compact base's -Y wall has the cable notch, which would leave the
-        # bars between that wall's vents attached at one end only, so it has none.
+        # vents, +-Y walls. The compact base has none in its -Y wall: they went on 2026-10-28, when
+        # that wall had the cable notch, which left the bars between them attached at one end only.
         cuts.append(box(-13, 0 if compact else -D / 2 - 1, z0, 13, D / 2 + 1, z0 + 1.6))
         cuts.append(box(0, -13, z0, W / 2 + 1, 13, z0 + 1.6))               # vents, +X wall
     cuts.append(nub(-C["KEY_X"], 0, -0.01, C["NUB_H"] + 0.1, C["POCKET_R"]))   # key pockets
@@ -237,11 +245,41 @@ def section_dims(m, z):
     return float(round(hi[0] - lo[0], 3)), float(round(hi[1] - lo[1], 3))
 
 
+def wall_openings(m, z, wall):
+    """Where a ray fired at a base wall from outside, at height z, gets through it: the open spans
+    along the wall, in mm. wall is "-X" or "-Y"."""
+    import numpy as np
+    W, D, wall_t = COMPACT["W"], COMPACT["D"], COMPACT["WALL"]
+    along = np.arange(-30.0, 30.0, 0.05) + 0.025
+    if wall == "-X":
+        origins = np.column_stack([np.full_like(along, -40.0), along, np.full_like(along, z)])
+        direction, face = (1.0, 0.0, 0.0), -W / 2
+    else:
+        origins = np.column_stack([along, np.full_like(along, -40.0), np.full_like(along, z)])
+        direction, face = (0.0, 1.0, 0.0), -D / 2
+    locs, idx, _ = m.ray.intersects_location(origins, np.tile(direction, (len(along), 1)), multiple_hits=True)
+    k = 0 if wall == "-X" else 1
+    first = np.full(len(along), np.inf)
+    np.minimum.at(first, idx, locs[:, k])
+    hit_wall = first < face + wall_t / 2        # the first surface hit is the wall's outer face
+    inside = np.abs(along) < (D if wall == "-X" else W) / 2 - COMPACT["R"]   # the wall's straight part
+    spans, start = [], None
+    for a, open_ in zip(along, inside & ~hit_wall):
+        if open_ and start is None:
+            start = a
+        if not open_ and start is not None:
+            spans.append((float(round(start - 0.025, 2)), float(round(a - 0.025, 2))))
+            start = None
+    return spans
+
+
 def main():
     import tempfile
     import trimesh
     out_stl = ROOT / "stl" / "compact"
     out_stl.mkdir(parents=True, exist_ok=True)
+    out_step = ROOT / "step" / "compact"
+    out_step.mkdir(parents=True, exist_ok=True)
     tmp = pathlib.Path(tempfile.mkdtemp())
     lines = []
     say = lines.append
@@ -255,8 +293,11 @@ def main():
         say(f"   {name:12s} port {a.volume:9.1f}  Onshape {ref.volume:9.1f}  port-only {(A - R).volume():6.1f}  "
             f"Onshape-only {(R - A).volume():6.1f}  bounds equal: {bool((abs(a.bounds - ref.bounds) < 0.01).all())}")
 
-    # 2. The compact parts
-    base = cq_mesh(make_base(True), out_stl / "base_compact.stl")
+    # 2. The compact parts. The base is a CadQuery solid, so it also goes out as STEP; the holder's
+    # cup comes from the Onshape mesh (compact_holder_mesh), so the holder is STL only.
+    base_solid = make_base(True)
+    base = cq_mesh(base_solid, out_stl / "base_compact.stl")
+    cq.exporters.export(base_solid, str(out_step / "base_compact.step"))
     holder = compact_holder_mesh(tmp)
     holder.export(str(out_stl / "vial_holder_compact.stl"))
     say("")
@@ -287,6 +328,19 @@ def main():
             f"{C['Z_FAN0'] - (s - 20):.2f} of thread below the insert's top (insert {C['INSERT_L']})")
     say(f"   counterbores Ø{COMPACT['CBORE_D']} x {top - seat:.1f} deep at (+-{C['FAN_PITCH'] / 2:.0f}, +-{C['FAN_PITCH'] / 2:.0f}); "
         f"through holes Ø{COMPACT['THRU_D']}")
+
+    # 4. The 2026-11-04 changes, read back off the base's mesh
+    import manifold3d
+    say("")
+    say("4. The 2026-11-04 changes, read back off base_compact.stl (mm)")
+    floor, inner_x = C["FLOOR_T"], COMPACT["W"] / 2 - COMPACT["WALL"]
+    strip = manifold3d.Manifold.cube([2 * inner_x - 0.02, 20.0, zt - floor - 0.51]).translate([-inner_x + 0.01, -10.0, floor + 0.51])
+    say(f"   material above the rails' top (z {floor + 0.5:.1f}) across the cavity at |y| < 10, where the board and the "
+        f"MOSFET lie: {(to_manifold(base) ^ strip).volume():.2f} mm3 (the stop was 1.2 x 10 x 3 mm there)")
+    for z in (floor + 0.3, 10.0, zt - 0.3):
+        say(f"   z {z:5.2f}: open in the -X wall at y {wall_openings(base, z, '-X')}, in the -Y wall at x {wall_openings(base, z, '-Y')}")
+    say(f"   notch floor z {floor - 0.6:.1f}, {0.6:.1f} below the cavity floor, as before; wall top z {zt:.1f}. "
+        f"Rails x {-22.6 + COMPACT['BOARD_IN']:.1f} to {-2.0 + COMPACT['BOARD_IN']:.1f}, |y| {7.4} to {8.9}, unchanged")
     (ROOT / "compact" / "check_output.txt").write_text("\n".join(lines) + "\n")
     print("\n".join(lines))
 

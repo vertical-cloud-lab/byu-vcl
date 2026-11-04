@@ -3,7 +3,7 @@
    vial_holder  port   17136.7  Onshape   17114.8  port-only   30.1  Onshape-only    8.2  bounds equal: True
 
 2. Compact parts written to stl/compact/
-   base_compact         49.0 x 44.0 x 19.0 mm, z 0.00 to 19.00,  11288.5 mm3, watertight True, 1 body
+   base_compact         49.0 x 44.0 x 19.0 mm, z 0.00 to 19.00,  11119.8 mm3, watertight True, 1 body
    vial_holder_compact  49.0 x 44.0 x 22.03 mm, z 20.00 to 42.03,  11449.4 mm3, watertight True, 1 body
    holder inside r = 16.9: 4651.181 mm3, Onshape's 4651.181 mm3
 
@@ -13,3 +13,10 @@
    M3 x 20, with washers: head seat z 23.00, tip z 3.00, 1.50 above the insert hole's floor (z 1.50), 6.00 of thread below the insert's top (insert 5.7)
    M3 x 20, without washers: head seat z 22.50, tip z 2.50, 1.00 above the insert hole's floor (z 1.50), 6.50 of thread below the insert's top (insert 5.7)
    counterbores Ø6.5 x 3.0 deep at (+-16, +-16); through holes Ø3.4
+
+4. The 2026-11-04 changes, read back off base_compact.stl (mm)
+   material above the rails' top (z 3.7) across the cavity at |y| < 10, where the board and the MOSFET lie: 0.00 mm3 (the stop was 1.2 x 10 x 3 mm there)
+   z  3.50: open in the -X wall at y [(-6.5, 6.5)], in the -Y wall at x []
+   z 10.00: open in the -X wall at y [(-6.5, 6.5)], in the -Y wall at x []
+   z 18.70: open in the -X wall at y [(-6.5, 6.5)], in the -Y wall at x []
+   notch floor z 2.6, 0.6 below the cavity floor, as before; wall top z 19.0. Rails x -22.1 to -1.5, |y| 7.4 to 8.9, unchanged
