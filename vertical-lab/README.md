@@ -69,7 +69,7 @@ microscopes, from OpenFlexure's own OpenSCAD:
 
 | Instrument | Model | What the animation shows | GIF, MP4 | Size W × D × H (mm), published | Where |
 |---|---|---|---|---|---|
-| Benchtop XRD | Rigaku MiniFlex 600 | The door swings open on its right-hand hinge; a powder sample goes onto the stage; the door shuts; the scan is drawn see-through, with the sample tilting by θ and the detector sweeping 2θ on its arm; the door opens and the sample comes out | [GIF](out/instruments/xrd.gif), [MP4](out/mp4/instruments/xrd.mp4) | 620 × 456 × 722 | tray D: 5.5 mm under Kardex's limit |
+| Benchtop XRD | Rigaku MiniFlex, 6th generation (the "MiniFlex 6G"; this was titled MiniFlex 600) | The door swings open on its right-hand hinge; a powder sample goes onto the stage; the door shuts; the scan is drawn see-through, with the sample tilting by θ and the detector sweeping 2θ on its arm; the door opens and the sample comes out | [GIF](out/instruments/xrd.gif), [MP4](out/mp4/instruments/xrd.mp4) | 620 × 456 × 722 | tray D: 5.5 mm under Kardex's limit |
 | Tabletop SEM, EDS, EBSD | Hitachi TM4000PlusII | The drawer slides out with the stage; a mounted sample goes on; EVAC | [GIF](out/instruments/sem.gif), [MP4](out/mp4/instruments/sem.mp4) | 330 × 614 × 547 (main unit) | tray D |
 | Microscope, reflection | OpenFlexure Microscope v7 | A polished coupon goes under the clips; the stage scans on its four flexure legs, which lean and shear with it (the camera moves in on them), and the optics focus | [GIF](out/instruments/openflexure_v7.gif), [MP4](out/mp4/instruments/openflexure_v7.mp4) | 171 × 139 × 169 | tray D |
 | Microscope, reflection | OpenFlexure Delta Stage | The same, with the delta stage moving in x, y and z: each actuator tips a lever, and the leg standing on it pushes the stage | [GIF](out/instruments/openflexure_delta.gif), [MP4](out/mp4/instruments/openflexure_delta.mp4) | 166 × 156 × 173 | tray D |
@@ -107,8 +107,9 @@ No maker here publishes CAD without a login or a form. Instron's STEP files come
 Vention's export from MachineBuilder needs an account, which a residential IP doesn't get around, so the Pi wasn't
 needed. GrabCAD, TraceParts and CADENAS block the runner and need logins anyway. So each model is built from these:
 
-- **Rigaku MiniFlex 600:** the outline drawings in Rigaku's MiniFlex brochure (620 × 456 × 722 mm, 80 kg) and the
-  MiniFlex 6G sheet.
+- **Rigaku MiniFlex, 6th generation:** the outline drawings in Rigaku's MiniFlex brochure (620 × 456 × 722 mm, 80 kg)
+  and the MiniFlex 6G sheet. The front is fitted to Rigaku's 6G video: see
+  [`notes/refine_xrd.md`](notes/refine_xrd.md).
   - The door hinges on its right edge and has no window.
   - The goniometer is vertical, 150 mm radius, θ-2θ.
   - The MiniFlex600-C, with its built-in chiller, is 526 mm deep.
