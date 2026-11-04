@@ -119,8 +119,9 @@ into the 1200 rpm run. A compact stirrer sits in the deck's front row with its c
 second one is on the bench. With the holder on, the fan can't be seen turning.*
 
 Not done here: water, a vial and the stir bar, and the coupling test (`BUILD.md` stage 8).
-**Tried at 23:19 with a vial of water and the bar in: the fan didn't start at any speed**
-([`stirrer_water_20261104`](../stirrer_water_20261104/README.md)).
+**Tried at 23:19 with a vial of water and the bar in: the fan didn't start at any speed.
+Started with the vial out and the vial then lowered in, it kept turning and the water moved,
+but the Hall sensor missed turns** ([`stirrer_water_20261104`](../stirrer_water_20261104/README.md)).
 `pipette_test` still hasn't been run on the stirrer image.
 
 ## On the Pi
