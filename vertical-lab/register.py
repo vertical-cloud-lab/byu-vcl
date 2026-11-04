@@ -271,28 +271,32 @@ _BUILT: dict = {}
 
 
 def build(key: str, params: dict | None = None):
-    """(Instrument, entries) with the given parameters (the fitted ones), built afresh rather than from tour's cache."""
+    """(Instrument, entries) of any model in MODULES, built afresh with the given parameters (the fitted ones) put in
+    its parameter dict for the duration, and tessellated as tour.py does, with its module's materials."""
     import tour
     tag = (key, json.dumps(params, sort_keys=True))
-    if tag not in _BUILT:
-        if params:
-            p0, _, _ = anchor_sets(key)
-            for name in MODULES:
-                mod = importlib.import_module(name) if (HERE / f"{name}.py").exists() else None
-                if mod is not None and key in getattr(mod, "ANCHORS", {}):
-                    live = mod.ANCHORS[key][0]
-                    saved = dict(live)
-                    live.update(params)
-                    try:
-                        inst = mod.REGISTRY[key]()
-                    finally:
-                        live.clear()
-                        live.update(saved)
-                    _BUILT[tag] = (inst, tour.piece_entries(inst))
-                    break
-        else:
-            _BUILT[tag] = tour.load([key])[key]
-    return _BUILT[tag]
+    if tag in _BUILT:
+        return _BUILT[tag]
+    for name in MODULES:
+        if not (HERE / f"{name}.py").exists():
+            continue
+        mod = importlib.import_module(name)
+        if key not in getattr(mod, "REGISTRY", {}):
+            continue
+        tour.MATS.update(getattr(mod, "MATERIALS", {}))
+        live = getattr(mod, "ANCHORS", {}).get(key, (None,))[0] if params else None
+        saved = dict(live) if live is not None else None
+        if live is not None:
+            live.update(params)
+        try:
+            inst = mod.REGISTRY[key]()
+        finally:
+            if live is not None:
+                live.clear()
+                live.update(saved)
+        _BUILT[tag] = (inst, tour.piece_entries(inst))
+        return _BUILT[tag]
+    raise KeyError(f"{key!r} is in no module's REGISTRY ({', '.join(MODULES)})")
 
 
 def render(key: str, cam, size, pose: dict, params: dict | None = None):
