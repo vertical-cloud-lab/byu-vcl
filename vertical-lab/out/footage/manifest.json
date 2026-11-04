@@ -1,0 +1,119 @@
+{
+ "note": "The excerpts and photos alloy_atomize.py cuts into chapter 2, kept small: clips cut to the window used (excerpt_window_s, seconds in the parent's fetch), 720 px tall, no sound; photos at 1600 px. All the lab's own (BYU VCL channel, DAL #159 and #219); credits per file.",
+ "files": [
+  {
+   "file": "nab_k7m2q9_four_rod_pieces_1079.886g.jpg",
+   "shows": "the charge: four 630 bronze rod pieces on the balance, 1079.886 g",
+   "source": "Gage Erickson, DAL #219 comment 6457884447",
+   "date": "2026-10-27"
+  },
+  {
+   "file": "nab_melt1.mp4",
+   "source": "https://youtu.be/2brsz-90seg",
+   "source_start_s": 52,
+   "shows": "630 bronze (NAB, UNS C63000) rod pieces standing round the sealing rod in the graphite crucible, glowing, seen through the furnace port",
+   "date": "2026-10-27",
+   "run": "k7m2q9 (DAL #219)",
+   "alloy": "630 bronze (Cu-10Al-5Ni-3Fe)",
+   "best_window_s": [
+    4,
+    40
+   ],
+   "excerpt_of": "nab_melt1.mp4",
+   "excerpt_window_s": [
+    10.0,
+    15.0
+   ]
+  },
+  {
+   "file": "nab_melt2.mp4",
+   "source": "https://youtu.be/2brsz-90seg",
+   "source_start_s": 206,
+   "shows": "the NAB rods slumping and melting into a pool, furnace port; narration at 03:55 'It's melting in right now'",
+   "date": "2026-10-27",
+   "run": "k7m2q9",
+   "alloy": "630 bronze",
+   "best_window_s": [
+    20,
+    90
+   ],
+   "excerpt_of": "nab_melt2.mp4",
+   "excerpt_window_s": [
+    70.0,
+    77.0
+   ]
+  },
+  {
+   "file": "nab_melt3.mp4",
+   "source": "https://youtu.be/2brsz-90seg",
+   "source_start_s": 314,
+   "shows": "the NAB charge fully molten, a bright pool round the sealing rod",
+   "date": "2026-10-27",
+   "run": "k7m2q9",
+   "alloy": "630 bronze",
+   "best_window_s": [
+    8,
+    48
+   ],
+   "excerpt_of": "nab_melt3.mp4",
+   "excerpt_window_s": [
+    14.0,
+    18.5
+   ]
+  },
+  {
+   "file": "nab_pour1.mp4",
+   "source": "https://youtu.be/2brsz-90seg",
+   "source_start_s": 482,
+   "shows": "through the chamber's view port: the NAB melt jet landing on the W-coated carbon-fibre plate and atomizing (spray)",
+   "date": "2026-10-27",
+   "run": "k7m2q9",
+   "alloy": "630 bronze",
+   "best_window_s": [
+    11,
+    28
+   ],
+   "excerpt_of": "nab_pour1.mp4",
+   "excerpt_window_s": [
+    15.0,
+    22.5
+   ]
+  },
+  {
+   "file": "al_pour_oct08.mp4",
+   "source": "https://youtu.be/dTyuZmqYxHA",
+   "source_start_s": 86,
+   "shows": "view port: a thin Al stream on the carbon-fibre plate (it dripped rather than atomized that day: CF plate + 1.5:1 booster; DAL PR #176)",
+   "date": "2026-10-08",
+   "run": "kj0461 (DAL #159)",
+   "alloy": "Al 6063",
+   "best_window_s": [
+    8,
+    34
+   ],
+   "excerpt_of": "al_pour_oct08.mp4",
+   "excerpt_window_s": [
+    14.0,
+    20.0
+   ]
+  },
+  {
+   "file": "nab_k7m2q9_jar_of_powder.jpg",
+   "shows": "a jar of the k7m2q9 NAB powder in a gloved hand",
+   "source": "DAL #219 comment 6457884447",
+   "date": "2026-10-27"
+  },
+  {
+   "file": "al4047_oct22_c3k0n5_bag_and_jar.jpg",
+   "shows": "Oct 22 Al 4047 run c3k0n5: bag and jar",
+   "source": "Ronnie Guymon, DAL #159 comment 6353788099",
+   "date": "2026-10-22"
+  },
+  {
+   "file": "nab_k7m2q9_sieved_three_jars.jpg",
+   "shows": "the sieved NAB: <63 um (left), 63-250 um (middle), >250 um flakes (right)",
+   "source": "Gage Erickson, DAL #219 comment 6509252104 ('Far left jar is <63um 630 Bronze powder')",
+   "date": "2026-10-29"
+  }
+ ]
+}

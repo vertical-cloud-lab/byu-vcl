@@ -48,7 +48,7 @@ def _modules() -> dict:
             out[name] = mod
             MATS.update(getattr(mod, "MATERIALS", {}))
     return out
-GLOWY = {"glow", "laser", "screen_on", "vlm_led"}
+GLOWY = {"glow", "laser", "screen_on", "vlm_led", "led_blue", "px_ui", "nat_screen"}
 scene.GIF_SIZE = (640, 360)          # one GIF per instrument: smaller than the chapters'
 FIT = dict(W=2450.0 - 24, D=864.0 - 24, H=727.5)     # inside a tray's rim; Kardex's product height
 
@@ -73,10 +73,10 @@ def piece_entries(inst: I.Instrument) -> dict:
 
 
 def _sources(module: str = "instruments") -> list[Path]:
-    common = [HERE / "lab_models" / "common.py", HERE / "instruments.py", HERE / "lab.py"]   # lab.py: to_mesh
-    if module == "instruments":
-        return [*common, HERE / "openflexure.py", *sorted((HERE / "openflexure").glob("*.json"))]
-    return [*common, HERE / f"{module}.py"]
+    # lab.py has to_mesh; the OpenFlexure files feed the array in instruments_char as well as the two microscopes
+    common = [HERE / "lab_models" / "common.py", HERE / "instruments.py", HERE / "lab.py", HERE / "openflexure.py",
+              *sorted((HERE / "openflexure").glob("*.json"))]
+    return common if module == "instruments" else [*common, HERE / f"{module}.py"]
 
 
 def load(keys=None, rebuild=False) -> dict:
@@ -91,8 +91,8 @@ def load(keys=None, rebuild=False) -> dict:
         for f in _sources(name):
             if f.exists():
                 h.update(f.read_bytes())
-        if name == "instruments":                  # rebuilt once the OpenFlexure meshes are there
-            h.update(str((CACHE / "openflexure" / "v7").is_dir() and (CACHE / "openflexure" / "delta").is_dir()).encode())
+        # rebuilt once the OpenFlexure meshes are there (the two microscopes, and the array in instruments_char)
+        h.update(str((CACHE / "openflexure" / "v7").is_dir() and (CACHE / "openflexure" / "delta").is_dir()).encode())
         path = CACHE / f"{name}_{h.hexdigest()[:12]}.pkl"
         if path.exists() and not rebuild:
             part = pickle.loads(path.read_bytes())
@@ -254,10 +254,12 @@ def tour_one(inst: I.Instrument, entries: dict) -> str:
         sc.cam = frame_cam(inst.bbox(), inst.cam, pad=0.75, look_z=0.9)
     n = len([a for a in inst.actions if a[0]])
     whole = sc.cam
+    own = getattr(inst, "step_labels", {})         # {action index: labels} for an action with labels of its own
     for i, (cap, secs, targets) in enumerate(inst.actions):
         z = getattr(inst, "zoom", {}).get(i)
         cam_to = None if z is None else whole if z == "out" else close_cam(*z, direction=inst.cam)
-        sc.step(f"{min(i + 1, n)}/{n}", cap, secs, rig.move(targets), hold=0.5, labels=labels, cam_to=cam_to)
+        sc.step(f"{min(i + 1, n)}/{n}", cap, secs, rig.move(targets), hold=0.5, labels=own.get(i, labels),
+                cam_to=cam_to)
     # the hero still for the gallery: closed, the sample in place, no text
     rig.move({k: (None, 1.0 if k in inst.props else j.v0) for k, j in inst.joints.items()})(1.0)
     rig.move({f"~{k}": (None, 0.0) for k in ents})(1.0)
@@ -267,11 +269,22 @@ def tour_one(inst: I.Instrument, entries: dict) -> str:
 
 
 # ================================================================================================= gallery
+def _stand_in(key: str, row: dict) -> I.Instrument:
+    """An instrument that can't be built here (its vendor meshes aren't fetched), as out/instruments.json last saw it:
+    enough for its gallery tile and its table row."""
+    inst = I.Instrument(key, row["title"], row["model"], tuple(row["published_mm"]), row.get("source", ""),
+                        floor=row.get("floor", False))
+    inst.stand_in = row
+    return inst
+
+
 def gallery(data: dict, cols=4) -> Path:
     tiles = []
-    for key, (inst, _) in data.items():
+    old = json.loads((OUT / "instruments.json").read_text()) if (OUT / "instruments.json").exists() else {}
+    for key in registry():
         p = OUT / "instruments" / f"{key}.png"
-        if p.exists():
+        inst = data[key][0] if key in data else _stand_in(key, old[key]) if key in old else None
+        if p.exists() and inst is not None:
             tiles.append((inst, Image.open(p).convert("RGB")))
     tw, th, cap = 480, 270, 58
     rows = (len(tiles) + cols - 1) // cols
@@ -281,7 +294,7 @@ def gallery(data: dict, cols=4) -> Path:
     for i, (inst, im) in enumerate(tiles):
         x, y = (i % cols) * tw, (i // cols) * (th + cap)
         sheet.paste(im.resize((tw, th), Image.LANCZOS), (x, y))
-        fr = fit_report(inst)
+        fr = getattr(inst, "stand_in", None) or fit_report(inst)
         where = "beside the VLM" if inst.floor or not fr["fits_tray"] else "on a VLM tray"
         d.text((x + 10, y + th + 4), inst.model, font=f1, fill=(20, 20, 24))
         w, dd, h = inst.size
@@ -311,7 +324,7 @@ if __name__ == "__main__":
             sc = Scene(f"still_{key}", inst.model, gif=False, mp4=False)
             studio(sc, shadow_of=inst.bbox())
             rig = Rig(sc, inst, ents, f"{key}:")
-            sc.cam = frame_cam(inst.bbox(), inst.cam)
+            sc.cam = frame_cam(inst.bbox(), inst.cam, *(inst.framing or ()))
             shots = [sc.render_base()]
             for cap, secs, targets in inst.actions:
                 rig.move(targets)(1.0)
@@ -327,7 +340,14 @@ if __name__ == "__main__":
         for word in args:
             if word == "table":                 # out/instruments.json: what each model is, its size, where it goes
                 rows = {}
-                for key, (inst, _) in load().items():
+                old = json.loads((OUT / "instruments.json").read_text()) if (OUT / "instruments.json").exists() else {}
+                built = load()
+                for key in registry():
+                    if key not in built:            # not buildable here (vendor meshes missing): keep its last row
+                        if key in old:
+                            rows[key] = old[key]
+                        continue
+                    inst = built[key][0]
                     fr = fit_report(inst)
                     rows[key] = dict(title=inst.title, model=inst.model, source=inst.source, **fr,
                                      where="beside the VLM" if inst.floor or not fr["fits_tray"] else "on a tray")

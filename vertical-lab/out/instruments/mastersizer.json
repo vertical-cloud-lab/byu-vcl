@@ -1,29 +1,35 @@
 {
  "name": "instruments/mastersizer",
  "fps": 15,
- "n_frames": 135,
+ "n_frames": 179,
  "size": [
   1280,
   720
  ],
  "substeps": [
   {
-   "label": "1/3",
-   "caption": "The Aero S's clear dome lifts; a vial of atomized powder (a few grams) is emptied into its hopper.",
+   "label": "1/4",
+   "caption": "The Aero S's clear cover lifts off; a few grams of atomized powder go into its hopper, over the vibrating tray.",
    "start_frame": 0,
-   "end_frame": 49
+   "end_frame": 52
   },
   {
-   "label": "2/3",
-   "caption": "Dome down. A vibrating tray feeds the powder to a venturi in the cell bay; compressed air disperses it across the laser (drawn see-through).",
-   "start_frame": 50,
-   "end_frame": 96
+   "label": "2/4",
+   "caption": "The hopper's gap sets the feed; the cover goes back on.",
+   "start_frame": 53,
+   "end_frame": 84
   },
   {
-   "label": "3/3",
-   "caption": "The scattering pattern gives the size distribution, 0.1 um to 3.5 mm, in under a minute; the vacuum extractor takes the powder away.",
-   "start_frame": 97,
-   "end_frame": 134
+   "label": "3/4",
+   "caption": "Air on and the background measured, then the tray vibrates the powder into the venturi, and the air carries it down the hose to the cell in the bay, across the laser (drawn see-through).",
+   "start_frame": 85,
+   "end_frame": 140
+  },
+  {
+   "label": "4/4",
+   "caption": "The scattering gives the size distribution, 0.1 um to 3.5 mm, in under a minute; the extractor draws the powder away from under the cell.",
+   "start_frame": 141,
+   "end_frame": 178
   }
  ]
 }

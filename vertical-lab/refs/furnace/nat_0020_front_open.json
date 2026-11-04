@@ -1,0 +1,47 @@
+{
+ "source": "https://youtu.be/WE6O8EccLyc?t=20 (Nabertherm, Discover the NAT Series, 0:20: the NAT 15/65, door open)",
+ "video": "WE6O8EccLyc",
+ "t": 20.0,
+ "camera": "nabertherm close shot",
+ "pose": {
+  "door": 1.0
+ },
+ "points": {
+  "mouth tl": [
+   308,
+   212
+  ],
+  "mouth tr": [
+   806,
+   212
+  ],
+  "mouth bl": [
+   308,
+   472
+  ],
+  "mouth br": [
+   806,
+   472
+  ],
+  "top front left": [
+   214,
+   121
+  ],
+  "split left": [
+   214,
+   586
+  ],
+  "fan": [
+   636,
+   320
+  ],
+  "screen tl": [
+   395,
+   652
+  ],
+  "screen tr": [
+   738,
+   652
+  ]
+ }
+}

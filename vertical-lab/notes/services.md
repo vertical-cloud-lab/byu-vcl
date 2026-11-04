@@ -13,7 +13,7 @@ coupling instead: mains, Ethernet, compressed air, N2 and chilled water. A UPS o
 | **The coupling on its own** (`tour.py tray_dock`) | [`out/instruments/tray_dock.gif`](../out/instruments/tray_dock.gif) | [`out/mp4/instruments/tray_dock.mp4`](../out/mp4/instruments/tray_dock.mp4) |
 | **The camera unit on its own** (`tour.py stream_cam`) | [`out/instruments/stream_cam.gif`](../out/instruments/stream_cam.gif) | [`out/mp4/instruments/stream_cam.mp4`](../out/mp4/instruments/stream_cam.mp4) |
 
-![Tray D at the opening with its three cameras and the bay camera](../out/vlm_cameras_still.png)
+![Tray E at the opening with its three cameras and the bay camera](../out/vlm_cameras_still.png)
 
 [`out/services.json`](../out/services.json) has the coupling, the camera clearances, the heat budget and the tether's
 payout. [`out/cabling.json`](../out/cabling.json) has the circuits.
@@ -120,16 +120,40 @@ and 120 V, 5 kVA continuous at 80 %, inside the contacts' 39 A.
 
 ### The stream cameras
 
-**The unit is the lab's own design.** It is DAL PR #189's front unit without its display, since no one stands at a
-tray:
-- An HQ Camera (M12) with a 16 mm M12 lens, beside a Camera Module 3 Wide. The boards are 2 mm apart, the HQ's lens
-  15 mm left of the axis and the Wide's 18.5 mm right.
-- The Pi 5 and its Active Cooler behind them, in a black PETG box of 95 x 66 x 46 mm. The box size is ours.
-- A 2020 extrusion post, as on PR #189's top unit, with a 1/4-20 tilt joint, as DAL #147 recommends over a printed
-  ball joint.
-- The board sizes are Raspberry Pi's drawings: HQ 38 x 38 mm, Camera Module 3 25 x 24 mm, Pi 5 85 x 56 mm.
-- The Wide sees 102 x 67°. The HQ behind a 16 mm lens sees about 22 x 17°; that is our figure, from the IMX477's
-  6.29 x 4.71 mm active area.
+**The unit as it would be built** (round 5). Asked for on PR #318: "more realistic by using actual Pi 5, camera,
+etc. See robot-arms ... able to be adjusted in terms of angle and height."
+
+![The camera unit: height, pan and tilt](../out/instruments/stream_cam.gif)
+
+- **The boards and the lens are robot-arms' CAD**, from Raspberry Pi's drawings (robot-arms PR #10,
+  `piper-camera-mount/cad/piper_mount.py` and `lenses.py`):
+  - a Raspberry Pi 5, 85 × 56 mm, with its ports and camera connectors, and its Active Cooler;
+  - an HQ Camera with the CS mount's back-focus ring and tripod foot, and Raspberry Pi's 16 mm C-mount lens: Ø39 ×
+    50 mm, 22.2 × 16.7°;
+  - a Camera Module 3 Wide, 102 × 67°.
+
+  The Active Cooler's fins and blower are ours, drawn from photos over robot-arms' 52 × 38 mm block.
+- **The Wide sits on a nose 56 mm forward, level with the front of the lens.** Side by side on one plate, as DAL PR
+  #189 mounts its M12 lens and the Wide, the 39 mm lens would sit in the left of the Wide's 102° picture. DAL #189's
+  M12 lens, about Ø16 × 18 mm, is short enough not to.
+- **The mount is ours**, after robot-arms PR #40's printed 2020 fixtures (a foot with a post socket, blocks on M5
+  T-nuts, a Pi 5 plate on standoffs). Each adjustment is a joint:
+  - **height:** a block slides up the post's T-slot and locks on two M5 drop-in T-nuts;
+  - **pan:** a yoke turns on an M6 bolt through the block's arm, up to 75° each way;
+  - **tilt:** the head turns between the yoke's arms on two thumb knobs, from 15° up to 65° down. At 65° the lens's
+    front is 16 mm above the yoke's base.
+
+  The Pi rides on the head behind the cameras, so neither ribbon flexes. One PoE lead leaves its Ethernet jack. The
+  printed parts are drawn dark grey; DAL #189's are black PETG.
+- **In a scene**, `rig_pose()` stands each post square to its tray, with its yaw a multiple of 90°. The pan and tilt
+  then aim the head at the instrument.
+- **Placement.** The head now stands 80 mm off its post, so it could reach into an instrument. To prevent that, seven
+  posts have a fixed yaw, and six of round 4's posts moved by up to 50 mm. `tray_unit_gaps()` checks each rig against
+  the instruments' boxes on its tray:
+  - every unit stays clear of them and 12 mm inside the rim;
+  - the tightest is tray D's left unit, whose foot stands 2 mm behind the SEM.
+
+  Each unit's yaw, pan, tilt and gap are in `services.json` (`cameras.clearances`).
 
 **On the trays, not the machine.** The cameras go on 2020 posts clamped to each tray, 2 or 3 to a tray:
 - They watch the instrument wherever the tray is. The printers and the CubXL keep working in storage, where nothing
@@ -137,22 +161,38 @@ tray:
 - The tray's dock already brings power and Ethernet, so a Pi needs no wiring of its own.
 - A camera fixed to a slot would have to be re-aimed whenever a tray changes slot or load.
 
-Every tray unit's top is at most 687 mm over the tray floor, 40 mm under the 727.5 mm limit. Each unit is aimed at
-its instrument's working face. The tall instruments (the MiniFlex at 722 mm, the OT-2 at 662 mm) can't be looked into
-from above within the limit, so their cameras stand beside them and look in through the side or the door.
+Every tray unit's top is at most 688 mm over the tray floor, 40 mm under the 727.5 mm limit. The tilt axis stands
+640 mm up and, tilted down, the head rises at most 48 mm above it. The tall instruments (the MiniFlex at 722 mm, the
+OT-2 at 662 mm) can't be looked into from above within the limit, so their cameras stand beside them and look in
+through the side or the door.
 
-[`out/vlm_cameras_still.png`](../out/vlm_cameras_still.png) (`services.py cameras`) shows tray D at the opening with its
-three units and the bay's.
+[`out/vlm_cameras_still.png`](../out/vlm_cameras_still.png) (`services.py cameras`) shows tray E at the opening with
+its three units and the bay's. It was tray D. D's two OpenFlexures need their OpenSCAD meshes in `.cache/`, which this
+render didn't have.
 
-**One overhead unit at the bay, on the machine.** It hangs from a 2020 bar across the back of the bay, 650 mm behind
-the front, tilted 58° down:
-- Its lowest point is 1633 mm, 28 mm above the top of Kardex's product envelope at the opening (854 + 3 + 727.5 + 20
-  = 1604.5 mm). It stays clear of the shutter's plane.
-- Its axis meets the tray 129 mm in front of the tray's centre, 961 mm away. There the Wide spans about 2.37 m of the
-  2.45 m tray, and the HQ about 0.38 m.
+**One overhead unit at the bay, on the machine.** The same unit stands on a 90 mm post on a 2020 bar across the back
+of the bay. The head is 80 mm in front of the bar and tilted 64° down.
+- **Height.** The bar is the unit's lowest point, at 1636 mm: 31.5 mm over the top of Kardex's product envelope at the
+  opening (854 + 3 + 727.5 + 20 = 1604.5 mm). Its highest point is 43 mm under the underside of tray F1, stored over
+  the opening at 1900 mm.
+- **Depth.** The bar is 23 mm in front of the shutter's plane.
+- **What it sees.** The Wide sees 92 % of the presented tray's floor. Its axis meets the floor 117 mm in front of the
+  tray's centre, 993 mm away. It misses only two triangles at the back corners nearest it, which run along the sides
+  to 157 mm in front of the tray's centre. The HQ sees 6 %: the detail.
+- **Against the arm: 197 mm clear.** `bay_arm_clearance()` checks 320 of `reach.py`'s poses: the workflow's seats,
+  and every reachable point of the presented tray on a 100 mm grid, gripper down, 100 and 250 mm over its floor.
+  It draws the UR10e as 75 mm capsules round its links from the shoulder to the TCP. The nearest approach to the
+  unit, its post or its bar is 197 mm, reaching 250 mm over the tray's middle near its back, with the highest
+  joint at 1378 mm.
+- Round 4's unit hung from the bar at 1735 mm, tilted 58°. The new head is longer, so it stands on the bar instead,
+  and the bar is lower.
 
 Power: Raspberry Pi's PoE+ HAT lists only the Pi 4 and 3B+. For a Pi 5 that means Waveshare's PoE HAT (H) or (J), or
 the 27 W USB-C supply from the tray's power strip. A Pi 5 takes about 4 W typical (800 mA at 5 V).
+
+**Not re-rendered with the new unit:** the docking, cabling and tether chapters and `setup_lab` still show round 4's
+box camera. Re-running them picks up the new one, since they all place it through `add_tray_cameras` and
+`add_bay_camera`.
 
 ### Cabling
 
@@ -169,7 +209,9 @@ There is a drop to each machine's back or top.
 - a PoE+ switch on the VLM's side feeds the risers and the bay camera;
 - N2 and chilled water come from the units beside it, and house air from the ladder.
 
-**The rail:** its cable chain lies in a trough in front of the beam. MachineMotion 2 and the UR control box stand at
+**The rail:** its energy chain lies in a trough on the beam's side towards the machines. The chain's fixed end is
+halfway along the carriage's travel, and its bend follows the carriage at half its speed (the rail's tour clip).
+`vlm_line` drives its 17 m beam in mm and keeps the old fixed chain. MachineMotion 2 and the UR control box stand at
 the rail's end. The MiR's charger is in the gap left of the VLM; it matters only for the MiR layout.
 
 **Published ratings** (with each source in `cabling.json`):
@@ -218,8 +260,8 @@ these spools covers it.
   be checked against the makers' sheets.
 - **Some loads are ours.** Five tray loads are estimates: the CubXL, the doser, the PIP, the nanoindenter and the
   OpenFlexures.
-- **The bay camera hasn't been checked against the arm.** It is about 910 mm behind the front face, where `reach.py`'s closest
-  approach to the header (118 mm) doesn't apply. Run the workflow's poses against it.
+- **The bay camera is checked against `reach.py`'s poses only** (197 mm clear, above). The chapters' own arm paths,
+  between those poses, aren't checked.
 - **Some boxes are not to size:** the e-spool and the MiR charger are markers, and the chiller is a placeholder.
 
 ### Calling these from other scenes
@@ -227,7 +269,9 @@ these spools covers it.
 ```python
 import services as S
 S.add_tray_cameras(sc, "D")                  # units on tray D (rides tray_D); layout=[(x, y, aim_x, aim_y, aim_z)]
-S.add_bay_camera(sc)                         # the overhead unit at the bay; returns its group
+S.add_bay_camera(sc)                         # the overhead unit at the bay; returns its head's group
+S.rig_pose(x, y, (ax, ay, az))               # a unit at (x, y) aimed at a point: (post yaw, pan, tilt), degrees
+S.head_point(x, y, ax, ay, az)               # where that unit's head is, tray frame; S.bay_cam_point() for the bay's
 S.add_docks(sc, ["R2", "open"])              # docks (and the two risers) at slots / the bay; returns {pos: head group}
 S.set_dock(sc, "open", u)                    # 0 engaged, 1 pulled back 45 mm
 names = S.add_tray_services(sc, "A")         # plate, lines and UPS on tray A; returns the line actors

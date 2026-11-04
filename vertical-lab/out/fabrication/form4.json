@@ -1,7 +1,7 @@
 {
  "name": "fabrication/form4",
  "fps": 15,
- "n_frames": 161,
+ "n_frames": 190,
  "size": [
   1280,
   720
@@ -15,21 +15,27 @@
   },
   {
    "label": "2/4",
-   "caption": "Done. The cover lifts on its rear hinge, to 844 mm: only at the VLM's opening, never in a slot.",
+   "caption": "Done. The cover swings up and back on hinges at the Z tower's top, to 844 mm: only at the VLM's opening, never in a slot.",
    "start_frame": 62,
    "end_frame": 93
   },
   {
    "label": "3/4",
-   "caption": "The build platform comes off its carrier by the handle, parts and all, for the Form Wash.",
+   "caption": "The build platform slides off its mount towards you by the handle, parts and all, for the Form Wash.",
    "start_frame": 94,
    "end_frame": 128
   },
   {
    "label": "4/4",
-   "caption": "A fresh platform goes on and the cover shuts.",
+   "caption": "A fresh platform slides onto the raised mount; it lowers to the tank and the cover shuts.",
    "start_frame": 129,
    "end_frame": 160
+  },
+  {
+   "label": "4/4",
+   "caption": "",
+   "start_frame": 161,
+   "end_frame": 189
   }
  ]
 }

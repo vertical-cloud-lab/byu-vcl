@@ -340,6 +340,13 @@ PART = "main_body_full";
 if (PART == "main_body_full") main_body();
 if (PART == "moving_stage") moving_stage();
 if (PART == "legs_and_levers") legs();
+// legs() one moving part at a time, i = 0, 1, 2 at rotate(i*120) as in each_lever(): the parallelogram leg, the
+// lever with the flexures that hinge it to the casing (lever_flexures), and the actuator column on the lever's end
+for (i = [0:2]) {
+    if (PART == str("leg", i)) rotate(i*120) translate([0, stage_r, 0]) leg();
+    if (PART == str("lever", i)) rotate(i*120) translate([0, stage_r, 0]) { lever(); lever_flexures(); }
+    if (PART == str("column", i)) rotate(i*120) translate([0, stage_r + nut_y, 0]) actuator_column(actuator_h);
+}
 if (PART == "casing") { casing(); if (transmission_illumination) condenser_mount(); }
 
 

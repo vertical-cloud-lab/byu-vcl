@@ -42,26 +42,28 @@ NOTES = {
 
 # ===================================================================================================== shared LPBF
 def _lpbf(inst: Instrument, cx: float, cy: float, P: float, well: float, ceiling: float, hopper_x: float,
-          n_layers: int = 3, t: float = 3.0, plate_t: float = 12.0) -> dict:
+          n_layers: int = 3, t: float = 3.0, plate_t: float = 12.0, come_x: float = 0.0) -> dict:
     """The process chamber of a powder-bed machine, around a square build well of side `well` centred on (cx, cy),
     with the powder surface at z = P. Adds the pieces "deck" (static), "platform", "load" (the build plate, riding the
     platform), "layer1".."layerN" (riding the plate), "powder", "recoater", "scan" and "beam" (riding the scan), and
-    returns the joints and some heights."""
+    returns the joints and some heights. Left to right: the dosing hopper (0.7 x `well` wide at the top), the recoater
+    parked just clear of it and of the well, the well, and the overflow slot, over which the recoater stops. The build
+    plate waits `come_x` to the right of the well, clear of the chamber door's swing."""
     deck = _piece(inst, "deck")
     half = well / 2
     deck_plate = box(hopper_x - 60, cy - half - 70, P - 15, cx + half + 80, cy + half + 70, P)
     deck_plate = deck_plate.cut(box(cx - half, cy - half, P - 16, cx + half, cy + half, P + 1))
-    deck_plate = deck_plate.cut(box(cx + half + 25, cy - half, P - 16, cx + half + 50, cy + half, P + 1))  # overflow
+    deck_plate = deck_plate.cut(box(cx + half + 15, cy - half, P - 16, cx + half + 40, cy + half, P + 1))  # overflow
     deck.add("deck", deck_plate, "stainless")
-    deck.add("overflow", box(cx + half + 25, cy - half, P - 60, cx + half + 50, cy + half, P - 15), "inst_black")
+    deck.add("overflow", box(cx + half + 15, cy - half, P - 60, cx + half + 40, cy + half, P - 15), "inst_black")
     deck.add("build well", box(cx - half - 12, cy - half - 12, P - well - 40, cx + half + 12, cy + half + 12, P - 15)
              .cut(box(cx - half, cy - half, P - well - 41, cx + half, cy + half, P - 14)), "steel")
-    hop = (cq.Workplane("XY").rect(36, 0.8 * well).workplane(offset=60).rect(70, well + 10).loft()
+    hop = (cq.Workplane("XY").rect(0.36 * well, 0.8 * well).workplane(offset=60).rect(0.7 * well, well + 10).loft()
            .translate((hopper_x, cy, P)))
     deck.add("dosing hopper", hop, "stainless")
     deck.add("scanner", box(cx - 70, cy - 60, ceiling - 70, cx + 70, cy + 60, ceiling), "inst_dark")
     deck.add("scanner window", cyl(56, 4, x=cx, y=cy, z=ceiling - 74), "window")
-    deck.add("gas inlet", box(hopper_x - 55, cy + half + 40, P + 20, cx + half + 70, cy + half + 60, P + 45), "inst_grey")
+    deck.add("gas inlet", box(hopper_x - 55, cy + half + 48, P + 20, cx + half + 70, cy + half + 68, P + 45), "inst_grey")
     platform = _piece(inst, "platform")
     platform.add("piston", box(cx - half + 1, cy - half + 1, P - t - plate_t - 30, cx + half - 1, cy + half - 1,
                                P - t - plate_t), "steel")
@@ -74,10 +76,11 @@ def _lpbf(inst: Instrument, cx: float, cy: float, P: float, well: float, ceiling
     powder.add("powder bed", box(cx - half + 0.5, cy - half + 0.5, P - 0.7, cx + half - 0.5, cy + half - 0.5, P - 0.1),
                "powder")
     rec = _piece(inst, "recoater")
-    rx0 = hopper_x + 45
+    rx0 = hopper_x + 0.35 * well + 3               # parked against the hopper, left of the well and the plate
+    assert rx0 + 18 < cx - half + 2, f"{inst.key}: the parked recoater is over the build well"
     rec.add("recoater arm", box(rx0, cy - half - 45, P + 4, rx0 + 18, cy + half + 45, P + 40), "inst_grey")
     rec.add("recoater blade", box(rx0 + 6, cy - half - 8, P + 0.2, rx0 + 12, cy + half + 8, P + 6), "rubber")
-    sweep = (cx + half + 52) - rx0
+    sweep = (cx + half + 24) - rx0                 # the blade stops over the overflow slot
     scan = _piece(inst, "scan")
     scan.add("galvo target", box(cx - 1, cy - 1, P - 40, cx + 1, cy + 1, P - 38), "inst_dark")
     beam = _piece(inst, "beam")
@@ -90,7 +93,10 @@ def _lpbf(inst: Instrument, cx: float, cy: float, P: float, well: float, ceiling
         raster += [(-r, y, 0), (r, y, 0)] if i % 2 == 0 else [(r, y, 0), (-r, y, 0)]
     joints = {
         "platform": Joint("slide", vec=(0, 0, -n_layers * t)),
-        "load": Joint("path", path=((0, -480, 170), (0, -160, 60), (0, 0, 30), (0, 0, 0)), parent="platform"),
+        # it lines up square to the door before it goes in (straight from the side, the MPRINT's plate clipped the
+        # door frame: collide.py)
+        "load": Joint("path", path=((come_x, -480, 170), (0, -400, 120), (0, -160, 60), (0, 0, 30), (0, 0, 0)),
+                      parent="platform"),
         "recoater": Joint("slide", vec=(sweep, 0, 0)),
         "powder": Joint("fade"),
         "scan": Joint("path", path=tuple(raster)),
@@ -164,7 +170,7 @@ def metalone() -> Instrument:
     door.add("door window", box(x0 + 30, yb - 6, z0 + 30, x1 - 30, yb + 4, z1 - 30), "laser_window")
     door.add("door handle", box(x1 - 22, yf, (z0 + z1) / 2 - 60, x1 - 8, yb - 12, (z0 + z1) / 2 + 60), "aluminium")
     cx, cy = (x0 + x1) / 2 + 30, yf + 230
-    joints = _lpbf(inst, cx, cy, p["P"], p["well"], z1, hopper_x=x0 + 60)
+    joints = _lpbf(inst, cx, cy, p["P"], p["well"], z1, hopper_x=x0 + 60, come_x=260.0)
     joints["door"] = Joint("hinge", axis=(0, 0, 1), pivot=(x0 - 8, yb - 12, 0), deg=-100.0)
     inst.joints = joints
     inst.actions = [
@@ -212,16 +218,18 @@ def mprint() -> Instrument:
     yb = yf + 38                                   # the front face; handles stand proud of it, to yf
     x0, x1, z0, z1 = p["ch_x0"], p["ch_x1"], p["ch_z0"], p["ch_z1"]
     rx, ry, rz, rr = p["rev_x"], p["rev_y"], p["rev_z"], p["rev_r"]
-    hx0, hx1, hz0, hz1 = rx - 230, rx + 230, rz - 20, rz + p["cart_h"] + 60      # the cartridge hatch
+    # the cartridge hatch; the bay behind it has room over a cartridge for the 20 mm lift off the turntable, and
+    # clears the turntable's rim
+    hx0, hx1, hz0, hz1 = rx - 230, rx + 230, rz - 20, rz + p["cart_h"] + 80
     body = _piece(inst, "body")
     body.add("plinth", box(-W / 2 + 15, yb + 15, 0, W / 2 - 15, D / 2 - 15, p["plinth"]), "inst_black")
     shell = box(-W / 2, yb + 24, p["plinth"], W / 2, D / 2, H).edges("|Y").fillet(20)
     shell = shell.cut(box(x0, yb + 10, z0, x1, D / 2 - 160, z1))                 # process chamber
-    shell = shell.cut(box(hx0 + 20, yb + 10, hz0 + 20, hx1 - 20, D / 2 - 120, hz1 - 20))   # cartridge bay
+    shell = shell.cut(box(hx0 + 10, yb + 10, hz0 + 20, hx1 - 10, D / 2 - 120, hz1 - 20))   # cartridge bay
     body.add("housing", shell, "inst_white")
     body.add("front panel", box(-W / 2 + 2, yb, z0 - 120, W / 2 - 2, yb + 24, H - 30)
              .cut(box(x0 - 10, yb - 1, z0 - 10, x1 + 10, yb + 25, z1 + 10))
-             .cut(box(hx0 + 10, yb - 1, hz0 + 10, hx1 - 10, yb + 25, hz1 - 10)), "inst_offwhite")
+             .cut(box(hx0 - 2, yb - 1, hz0 - 2, hx1 + 2, yb + 25, hz1 + 2)), "inst_offwhite")   # the hatch sits in it
     body.add("accent", box(-W / 2 + 2, yb - 2, z0 - 150, W / 2 - 2, yb + 1, z0 - 130), "ocm_teal")
     body.add("lower doors", box(-W / 2 + 20, yb + 6, p["plinth"] + 30, W / 2 - 20, yb + 24, z0 - 190), "inst_light")
     body.add("lower door seam", box(-2, yb + 4, p["plinth"] + 30, 2, yb + 6, z0 - 190), "inst_grey")
@@ -229,7 +237,7 @@ def mprint() -> Instrument:
     body.add("touchscreen", box(x1 + 120, yb - 4, z1 - 60, W / 2 - 60, yb - 2, z1 + 170), "screen_on")
     body.add("logo", box(x1 + 120, yb - 3, H - 140, W / 2 - 60, yb, H - 110), "ocm_teal")
     body.add("e-stop", _ycyl(36, 16, x=W / 2 - 110, y=yb - 16, z=z0 - 40), "inst_red")
-    body.add("feed tube", cyl(36, rz - z1 + 10, x=rx, y=ry - rr, z=z1 - 5), "stainless")
+    body.add("feed tube", cyl(36, rz - z1 + 5, x=rx, y=ry - rr, z=z1 - 5), "stainless")     # up to the turntable
     door = _piece(inst, "door")
     door.add("door frame", box(x0 - 8, yb - 14, z0 - 8, x1 + 8, yb + 14, z1 + 8)
              .cut(box(x0 + 35, yb - 15, z0 + 35, x1 - 35, yb + 15, z1 - 35)), "inst_dark")
@@ -255,7 +263,7 @@ def mprint() -> Instrument:
     cart.add("cartridge", cyl(p["cart_d"], p["cart_h"], x=front[0], y=front[1], z=rz + 14), "stainless")
     cart.add("cartridge cap", cyl(p["cart_d"] + 6, 18, x=front[0], y=front[1], z=rz + 14 + p["cart_h"]), "ocm_teal")
     cx, cy = (x0 + x1) / 2 + 70, yf + 290
-    joints = _lpbf(inst, cx, cy, p["P"], p["well"], z1, hopper_x=x0 + 70)
+    joints = _lpbf(inst, cx, cy, p["P"], p["well"], z1, hopper_x=x0 + 70, come_x=400.0)
     out = -(front[1] - yf)
     joints.update({
         "door": Joint("hinge", axis=(0, 0, 1), pivot=(x0 - 8, yb - 14, 0), deg=-100.0),
@@ -271,8 +279,10 @@ def mprint() -> Instrument:
         ("A spent cartridge comes out to be refilled outside; a full one goes in. No open powder.", 2.4,
          {"cartridge": (0.0, 1.0)}),
         ("", 1.6, {"cartridge": (1.0, 0.0)}),
-        ("Hatch shut. The chamber door opens and a 150 mm build plate goes onto the platform.", 2.6,
-         {"hatch": (1.0, 0.0), "door": (0.0, 1.0), "load": (0.0, 1.0)}),
+        # the door is open before the plate moves (opening as it came in, it swung through the plate: collide.py)
+        ("Hatch shut. The chamber door opens and a 150 mm build plate goes onto the platform.", 1.2,
+         {"hatch": (1.0, 0.0), "door": (0.0, 1.0)}),
+        ("", 1.8, {"load": (0.0, 1.0)}),
         ("Door shut; argon purge. See-through: the revolver turns a full cartridge over the feed to the hopper.", 2.0,
          {"door": (1.0, 0.0), "revolver": (0.0, 1.0), "~body": (0.0, 0.8), "~hatch": (0.0, 0.8),
           "~door": (0.0, 0.8)}),
@@ -352,7 +362,7 @@ def meltio_m450() -> Instrument:
     for i in range(6):                                   # the six laser fibres into the head
         a = math.radians(60 * i)
         head.add(f"fibre {i}", cyl(10, 90, x=46 * math.cos(a), y=46 * math.sin(a), z=tip + 210), "inst_orange")
-    head.add("wire guide", cyl(8, 160, z=tip + 210), "brass")
+    head.add("wire guide", cyl(8, 95, z=tip + 210), "brass")       # under the ceiling with the head at its highest
     head.add("carriage", box(-40, 50, tip + 120, 40, D / 2 - 160, tip + 200), "inst_grey")
     glow = _piece(inst, "glow")
     glow.add("laser cone", cq.Workplane("XY").circle(3).workplane(offset=26).circle(16).loft()
@@ -379,7 +389,9 @@ def meltio_m450() -> Instrument:
     f_start = float(s[1] / s[-1])
     inst.joints = {
         "door": Joint("hinge", axis=(0, 0, 1), pivot=(x0 - 8, yb - 12, 0), deg=-100.0),
-        "load": Joint("path", path=((0, -480, 200), (0, -170, 80), (0, 0, 25), (0, 0, 0))),
+        # clear of the door, then square to the opening before it goes in (from the side, it clipped the front frame:
+        # collide.py)
+        "load": Joint("path", path=((220, -560, 200), (0, -430, 130), (0, -170, 80), (0, 0, 25), (0, 0, 0))),
         "head": Joint("path", path=tuple(pts)),
         "glow": Joint("fade", parent="head"),
         **{f"wall{k}": Joint("fade") for k in range(1, n + 1)},
@@ -454,8 +466,8 @@ def snowpod() -> Instrument:
              .cut(box(x0 + 22, yb - 11, z0 + 22, x1 - 22, yb + 13, z1 - 22)), "inst_dark")
     door.add("door window", box(x0 + 22, yb - 5, z0 + 22, x1 - 22, yb + 3, z1 - 22), "laser_window")
     door.add("door handle", box(x1 - 18, yf, (z0 + z1) / 2 - 40, x1 - 6, yb - 10, (z0 + z1) / 2 + 40), "aluminium")
-    cx, cy = (x0 + x1) / 2 + 20, yf + 150
-    joints = _lpbf(inst, cx, cy, p["P"], p["well"], z1, hopper_x=x0 + 45)
+    cx, cy = (x0 + x1) / 2 + 18, yf + 150         # hopper, parked recoater, well and overflow just fit across it
+    joints = _lpbf(inst, cx, cy, p["P"], p["well"], z1, hopper_x=x0 + 32)
     joints["door"] = Joint("hinge", axis=(0, 0, 1), pivot=(x0 - 6, yb - 10, 0), deg=-100.0)
     inst.joints = joints
     inst.actions = [

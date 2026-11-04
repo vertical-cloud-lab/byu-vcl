@@ -1,11 +1,11 @@
 {
  "xrd": {
   "title": "Benchtop X-ray diffractometer",
-  "model": "Rigaku MiniFlex 600",
-  "source": "Rigaku MiniFlex brochure (outline drawings: 620 W x 456 D x 722 H mm with the feet and the top hump, 80 kg; 150 mm vertical goniometer, theta-2theta) and the MiniFlex 6G sheet",
+  "model": "Rigaku MiniFlex (6th generation)",
+  "source": "Rigaku MiniFlex 6G sheet and brochure (620 W x 456 D x 722 H mm, 80 kg; 150 mm vertical goniometer, theta-2theta, 600 W); the front fitted with register.py to Rigaku's 6G launch video",
   "model_mm": [
    620,
-   453,
+   454,
    722
   ],
   "published_mm": [
@@ -20,10 +20,10 @@
  "sem": {
   "title": "Tabletop SEM with EDS and EBSD",
   "model": "Hitachi TM4000PlusII",
-  "source": "Hitachi High-Tech TM4000PlusII specifications (main unit 330 W x 614 D x 547 H mm, 54 kg; pump 144 x 270 x 216 mm); Hitachi's EDS brochure (AZtecOne analyser 290 x 260 x 330 mm); look from Hitachi's photo; envelope and the 17 cm drawer travel cross-checked against ac-dev-lab #132's TM4000II model",
+  "source": "Hitachi High-Tech TM4000PlusII specifications (main unit 330 W x 614 D x 547 H mm, 54 kg; pump 144 x 270 x 216 mm); Hitachi's EDS brochure (AZtecOne analyser 290 x 260 x 330 mm); proportions fitted with register.py to Hitachi's TM4000II/PlusII product shot and CCEM's TM4000Plus videos; the 17 cm drawer travel from ac-dev-lab #132's TM4000II model",
   "model_mm": [
    832,
-   628,
+   653,
    547
   ],
   "published_mm": [
@@ -38,16 +38,16 @@
  "pip": {
   "title": "Indentation plastometer (PIP)",
   "model": "Plastometrex PLX-Benchtop",
-  "source": "Plastometrex's product render, brochure and FAQ; Illinois MRL's instrument page and a published SOP for loading; no published dimensions, so the envelope is scaled from photos",
+  "source": "Plastometrex's videos (PLX-Benchtop introduction, benchtop demonstration, 'How a PIP test works!'), fitted with register.py; Illinois MRL and a published SOP for loading; no published dimensions, so the 500 mm width is the scale",
   "model_mm": [
-   524,
-   507,
-   680
+   526,
+   564,
+   689
   ],
   "published_mm": [
    500.0,
-   500.0,
-   680.0
+   560.0,
+   689.0
   ],
   "fits_tray": true,
   "floor": false,
@@ -109,17 +109,17 @@
  },
  "polisher": {
   "title": "Metallographic grinder-polisher",
-  "model": "Buehler EcoMet 30 semi-automatic",
-  "source": "Buehler EcoMet 30 instruction manual (drawing 488 x 638 x 650 mm, 75 kg, platens, services); look from Buehler's photos",
+  "model": "LECO PX500 semi-automatic",
+  "source": "the lab's SOP videos (BYU Vertical Cloud Lab channel), fitted with register.py; LECO's PX400/PX500 brochure (form 209-254) for the features; 533 x 711 x 635 mm is a reseller's series figure",
   "model_mm": [
-   490,
-   652,
-   625
+   632,
+   729,
+   677
   ],
   "published_mm": [
-   488.0,
-   638.0,
-   650.0
+   558.0,
+   711.0,
+   677
   ],
   "fits_tray": true,
   "floor": false,
@@ -128,10 +128,10 @@
  "furnace": {
   "title": "Heat treatment and ageing furnace",
   "model": "Nabertherm NAT 15/65",
-  "source": "Nabertherm forced-convection chamber furnaces, tabletop (NAT 15/65: 470 x 790 x 460 mm, 60 kg, 650 C); look from Nabertherm's photos",
+  "source": "Nabertherm forced-convection chamber furnaces, tabletop (NAT 15/65: 470 x 790 x 460 mm, 60 kg, 650 C); the look from Nabertherm's NAT video, measured with register.py",
   "model_mm": [
-   470,
-   820,
+   510,
+   824,
    510
   ],
   "published_mm": [
@@ -146,11 +146,11 @@
  "mastersizer": {
   "title": "Laser diffraction particle sizer",
   "model": "Malvern Mastersizer 3000 + Aero S",
-  "source": "Malvern Panalytical Mastersizer 3000 and 3000+ brochures (bench 690 x 300 x 450 mm, 30 kg; Aero S 260 x 180 x 380 mm, 10.5 kg); look from Malvern's product photos",
+  "source": "Malvern Panalytical Mastersizer 3000 brochure (bench 690 x 300 x 450 mm, 30 kg; Aero S 260 x 180 x 380 mm, 10.5 kg); proportions fitted with register.py to frames of Malvern's videos",
   "model_mm": [
-   1084,
-   550,
-   482
+   1080,
+   591,
+   506
   ],
   "published_mm": [
    690.0,
@@ -239,7 +239,7 @@
   "source": "Vention design 337010 and its part pages (beam, guides, carriage plate) and actuator docs",
   "model_mm": [
    4105,
-   523,
+   508,
    800
   ],
   "published_mm": [
@@ -272,16 +272,16 @@
  "vhx": {
   "title": "Digital microscope with laser elemental analysis (LIBS)",
   "model": "Keyence VHX-7000 + EA-300",
-  "source": "Keyence VHX-7000N brochure KA1-1099 pp. 34-38 (EA-300 280 x 210 x 375 mm, 7.2 kg, 355 nm Nd:YAG, 10 um spot, H-U; VHX-S750E stage 171 x 168 mm, XY +-20 mm; controller 625 x 460 x 180 mm); EA-300 model page; stand base and column scaled from Keyence's photos",
+  "source": "Keyence VHX-7000N brochure KA1-1099 pp. 34-38 (EA-300 280 x 210 x 375 mm, 7.2 kg, 355 nm Nd:YAG, 10 um spot, H-U; VHX-S750E stage 171 x 168 mm, XY +-20 mm; controller 625 x 460 x 180 mm); EA-300 model page; the look from Keyence's VHX-7000N video, fitted with register.py",
   "model_mm": [
-   606,
-   461,
-   655
+   636,
+   499,
+   656
   ],
   "published_mm": [
-   606,
-   461,
-   655
+   635,
+   499,
+   656
   ],
   "fits_tray": true,
   "floor": false,
@@ -290,11 +290,11 @@
  "xrf": {
   "title": "Benchtop EDXRF for powders and coupons",
   "model": "Bruker S2 PUMA Series 2, XY Autochanger",
-  "source": "Bruker S2 PUMA Series 2 specifications via DKSH (XY Autochanger 67 x 71 x 61 cm, 108 kg; 20-position tray; 50 W Pd/Ag tube; HighSense SDD; reduced-pressure He for loose powders); look from Bruker's photos",
+  "source": "Bruker S2 PUMA Series 2 specifications via DKSH (XY Autochanger 67 x 71 x 61 cm, 108 kg; 20-position tray; 50 W Pd/Ag tube; HighSense SDD; reduced-pressure He for loose powders); the look from Bruker's S2 PUMA Overview video, fitted with register.py",
   "model_mm": [
    670,
    712,
-   601
+   610
   ],
   "published_mm": [
    670.0,

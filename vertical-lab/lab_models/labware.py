@@ -736,6 +736,99 @@ def balance(lid: str = "autotrickler") -> Model:
     return m
 
 
+# A&D HR-202i (HR-i series): 220 g x 0.1 mg, with a 51 g x 0.01 mg fine range. The larger sibling of
+# the lab's HR-100A, and one of the balances powder-doser's design/brainstorming.md weighs for the
+# doser (FZ-523 / HR-202i / HR-300i / HR-100A). Outline from A&D's HR-i manual, section 15.1
+# "External Dimensions" (manual p. 60): 217 x 442 x 316 mm overall (body 200 wide, 428 deep, 310
+# tall); pan dia. 90, its centre 163 mm behind the front; weighing chamber 183 x 164.5 inside and
+# 250 above the pan, the pan 86.5 mm behind the chamber's front glass; side doors 148.5 x 251; top
+# door 164 x 148.5; rear feet 166 apart. The pan's height (50 mm) and the display's slope are read
+# off that drawing, not dimensioned, so caliper them. The display and keys are at the front (-y),
+# the mechanism tower at the back (+y), and both side doors and the top door slide back.
+HR202I = dict(W=200.0, W_doors=217.0, D=428.0, D_all=442.0, H=310.0, H_all=316.0, pan_d=90.0, pan_y=163.0,
+              pan_top=50.0, ch_w=183.0, ch_d=164.5, ch_h=250.0, ch_y=163.0 - 86.5, door=(148.5, 251.0),
+              top_door=(164.0, 148.5), feet_x=166.0, glass=4.0, frame=7.0, nose=(22.0, 46.0))
+
+
+def hr202i_parts(door_open: float = 0.0, doors_closed: bool = True) -> dict[str, list[tuple[str, cq.Workplane, str]]]:
+    """The HR-202i in moving groups: {"body": [...], "door_left": [...], "door_right": [...], "top_door": [...]},
+    each [(name, shape, material)], in the balance's frame: x across, y from the front (display, -y) to the back
+    (the tower), z = 0 on the bench, origin at the body's centre. `door_open` (mm) slides the left door (-x) back."""
+    p = HR202I
+    W, D, H = p["W"], p["D"], p["H"]
+    y0 = -D / 2
+    g, fr = p["glass"], p["frame"]
+    cy0 = y0 + p["ch_y"]                       # the chamber's front glass (inside face)
+    cy1 = cy0 + p["ch_d"]                      # its back: the tower's front
+    zf = p["pan_top"] - 5.0                    # the chamber's floor, under the pan
+    ztop = zf + 5.0 + p["ch_h"]                # the chamber's ceiling (inside)
+    hw = p["ch_w"] / 2
+    body = []
+    # base under the chamber and the tower behind it
+    body.append(("base", rbox(W, D, zf, 6.0, y=0.0, z=0.0), "printer_white"))
+    body.append(("tower", box(-W / 2, cy1 + g, zf, W / 2, -y0, H), "printer_white"))
+    # the display nose in front of the chamber: a slab sloping up from the front
+    n0, n1 = p["nose"]
+    nose = cq.Workplane("YZ").polyline([(y0, zf), (cy0 - g, zf), (cy0 - g, n1 + 4), (y0 + 8, n0 + 4), (y0, n0)]) \
+        .close().extrude(W / 2, both=True)
+    body.append(("display unit", nose, "printer_white"))
+    ang = math.atan2(n1 - n0, cy0 - g - y0 - 8)
+    org = (0.0, (y0 + 8 + cy0 - g) / 2, (n0 + 4 + n1 + 4) / 2)
+    pl = cq.Plane(origin=org, xDir=(1, 0, 0), normal=(0, -math.sin(ang), math.cos(ang)))
+    body.append(("display", cq.Workplane(pl).rect(110.0, 30.0).extrude(0.8).translate((-30, 0, 0)), "screen"))
+    for i in range(4):
+        org = (45.0 + (i % 2) * 18.0, (y0 + 8 + cy0 - g) / 2 + (i // 2 - 0.5) * 16.0,
+               (n0 + 4 + n1 + 4) / 2 + (i // 2 - 0.5) * 16.0 * math.tan(ang))
+        pl = cq.Plane(origin=org, xDir=(1, 0, 0), normal=(0, -math.sin(ang), math.cos(ang)))
+        body.append((f"key {i + 1}", cq.Workplane(pl).circle(5.0).extrude(1.6), "printer_grey"))
+    # the chamber: front glass (fixed), the corner posts and the top frame round the top door
+    body.append(("front glass", box(-hw, cy0 - g, zf, hw, cy0, ztop), "glass"))
+    for sx in (-1, 1):
+        xa, xb = sorted((sx * hw, sx * (hw + fr)))
+        body.append((f"front post {sx:+d}", box(xa, cy0 - g - 2, zf, xb, cy0 + 4, ztop), "printer_grey"))
+        body.append((f"sill {sx:+d}", box(xa, cy0, zf, xb, cy1, zf + 6), "printer_grey"))
+    tw, td = p["top_door"]
+    ring = box(-hw - fr, cy0 - g - 2, ztop, hw + fr, cy1 + g, H) \
+        .cut(box(-tw / 2, cy0 + 8, ztop - 1, tw / 2, cy0 + 8 + td, H + 1))
+    body.append(("top frame", ring, "printer_grey"))
+    body.append(("pan", cyl(p["pan_d"], 2.0, y=y0 + p["pan_y"], z=p["pan_top"] - 2.0)
+                 .union(cyl(14.0, p["pan_top"] - 2.0 - zf, y=y0 + p["pan_y"], z=zf)), "steel"))
+    body.append(("breeze ring", tube(p["pan_d"] + 14, p["pan_d"] + 6, 4.0, y=y0 + p["pan_y"], z=zf), "printer_grey"))
+    for sx in (-1, 1):
+        body.append((f"rear foot {sx:+d}", cyl(22.0, 4.0, x=sx * p["feet_x"] / 2, y=-y0 - 20.0, z=-4.0), "printer_black"))
+    body.append(("front foot", cyl(22.0, 4.0, y=y0 + 93.0, z=-4.0), "printer_black"))
+    # sliding glass doors: two side doors (148.5 x 251) and the top door, each with a grip strip
+    dw, dh = p["door"]
+
+    def side_door(sx, slide):
+        x = sx * (hw + fr / 2)
+        ya = cy0 + (p["ch_d"] - dw) / 2 + slide
+        pane = box(x - g / 2, ya, zf + 6, x + g / 2, ya + dw, zf + 6 + dh - 6)
+        ga, gb = sorted((x + sx * g / 2, x + sx * (g / 2 + 7)))
+        grip = box(ga, ya + 4, zf + 60, gb, ya + 16, zf + 200)
+        return [("door glass", pane, "glass"), ("door grip", grip, "printer_grey")]
+
+    top = [("top door glass", box(-tw / 2, cy0 + 8, H - 5, tw / 2, cy0 + 8 + td, H - 1), "glass"),
+           ("top door grip", box(-30, cy0 + 4, H - 1, 30, cy0 + 16, H + 6), "printer_grey")]
+    return {"body": body, "door_left": side_door(-1, door_open), "door_right": side_door(1, 0.0), "top_door": top}
+
+
+def balance_hr202i(door_open: float = 0.0) -> Model:
+    """A&D HR-202i, assembled (see HR202I and hr202i_parts)."""
+    p = HR202I
+    m = Model("balance_hr202i", "A&D HR-202i analytical balance, 220 g x 0.1 mg (51 g x 0.01 mg)",
+              source="A&D HR-i instruction manual, 15.1 External Dimensions (p. 60); A&D product page (chamber)")
+    for grp in hr202i_parts(door_open).values():
+        for name, shape, mat in grp:
+            m.add(name, shape, mat)
+    m.notes = {"envelope_mm": [p["W_doors"], p["D_all"], p["H_all"]], "body_mm": [p["W"], p["D"], p["H"]],
+               "pan_d_mm": p["pan_d"], "pan_top_mm": p["pan_top"], "pan_from_front_mm": p["pan_y"],
+               "chamber_inside_mm": [p["ch_w"], p["ch_d"], p["ch_h"]], "side_door_mm": list(p["door"]),
+               "capacity_g": 220, "readability_mg": 0.1, "fine_range": "51 g x 0.01 mg",
+               "read_off_drawing": "pan height 50 mm, display slope"}
+    return m
+
+
 def arbor_press() -> Model:
     """A 1-ton arbor press (station for the plug press-fit). Rough, assumed dims."""
     m = Model("arbor_press_1t", "Arbor press, 1 t (press-fit station)", source="assumed dims")

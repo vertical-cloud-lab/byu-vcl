@@ -37,7 +37,7 @@ TRAY_LOADS = {
     "D": [("sem", -760.0, 0.0), ("xrd", 60.0, 0.0), ("openflexure_v7", 560.0, -150.0),
           ("openflexure_delta", 800.0, -150.0)],
     "E": [("pip", -880.0, 0.0), ("nanoindenter", -250.0, 0.0), ("mastersizer", 590.0, 0.0)],
-    "F": [("polisher", -500.0, 0.0), ("furnace", 300.0, 0.0)],
+    "F": [("polisher", -420.0, 0.0), ("furnace", 280.0, 0.0)],      # the PX500 with its bottle holder: 630 wide
 }
 # the line, left to right: x of each machine's centre; fronts at Y_FACE (the rePowder stays where round 2 put it)
 LINE = {"glovebox": -6350.0, "aconity": 3250.0, "instron_floor": 5600.0, "instron_small": 7000.0, "wire_edm": 8700.0}
@@ -183,7 +183,7 @@ def movie(data, idata):
                   "OpenFlexure microscopes, in reflection.",
              "E": "Tray E: the Plastometrex PLX-Benchtop (PIP), the KLA iMicro nanoindenter and the Malvern Mastersizer "
                   "3000 with its Aero S.",
-             "F": "Tray F: the Buehler EcoMet 30 polisher and the Nabertherm NAT 15/65 furnace."}
+             "F": "Tray F: the LECO PX500 polisher (the lab's) and the Nabertherm NAT 15/65 furnace."}
     cam = CAM_OPEN
     for i, k in enumerate(("D", "E", "F")):
         L.fetch(k, f"3/{n}", f"Tray {k} comes to the opening.", fast=0.6, cam=cam, hold=0.2)
