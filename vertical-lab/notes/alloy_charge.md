@@ -25,14 +25,14 @@ time, and this chapter is the two merged:
 | 9 | The first Cu cup topped up with Cu, worked out from its weighed Ni so it stays 10 wt % Ni, weighed, plugged, pressed, back on the rack. Then the other three. The Cu funnel goes back | |
 | 10 | Tray B goes back into storage. Four Al-10Si cups are on the MiR for the rePowder, where chapter 2 picks them up | the carrier |
 
-**Not rendered yet** (2026-11-04): `out/alloy_charge.*` and its stills are still round 5's doser render. Four other
-renders were sharing the runner, and at 1.6-2.2 s a frame a 1280 × 720 render of this chapter would have taken over an
-hour. Render it with `xvfb-run -a python3 alloy_charge.py`: it writes `out/alloy_charge.{gif,json}`,
-`out/mp4/alloy_charge.mp4`, the end still `out/alloy_charge_still.png`, and cuts four more from the MP4 (`STILLS`):
-`_dose` (the Si dose, in half section), `_weigh` (the first reading), `_press` (the press stroke, which
-`alloy_route.py`'s sheet uses) and `_funnels` (the Si funnel in the fork). `ARM_AUDIT_RENDER=1` checks every frame in
-the same pass and writes `out/collisions/alloy_charge.json`; `VIZ3D_FPS=10` keeps every move's time with a third
-fewer frames, and `CHARGE_FXAA=1` swaps SSAA for FXAA. About 3.9 min, from its timings.
+**Rendered** 2026-11-04 at `VIZ3D_FPS=10 CHARGE_FXAA=1 ARM_AUDIT_RENDER=1` (four other renders shared the runner, and
+at 1280 × 720 with SSAA a frame took 1.6-2.2 s): 245 s, 2451 frames, [MP4](../out/mp4/alloy_charge.mp4),
+[GIF](../out/alloy_charge.gif) (5.3 MB, over the 4.9 MB aim). A plain `xvfb-run -a python3 alloy_charge.py` renders
+it at 15 fps with SSAA. Besides the end still `out/alloy_charge_still.png`, the script cuts four from the MP4
+(`STILLS`): the Si dose, the first reading, the press stroke (`alloy_route.py`'s sheet uses it) and the Si funnel in
+the fork:
+
+![The first Al cup's press stroke: 3.2 t, 0.8 mbar](../out/alloy_charge_press.png)
 
 ## The charge
 
@@ -209,7 +209,11 @@ checks every frame: the arm against itself, and the arm, gripper and what it hol
     MiR's carrier. Square to the rack, or a slightly wider rack pitch, would clear it.
   - **One joint move in 5/10's time-lapse** started from a pose with the upper arm against the gripper (the
     planner's warning); no checked frame shows it.
-- **The render checks itself** (`ARM_AUDIT_RENDER=1`), into [`out/collisions/alloy_charge.json`](../out/collisions/alloy_charge.json).
+- **The render checked itself** (`ARM_AUDIT_RENDER=1`, every drawn frame, [`out/collisions/alloy_charge.json`](../out/collisions/alloy_charge.json)):
+  **8 of 1926 frames**, four runs of 2, all the next-cup brush above (3/10, 5/10). The first plug's run is gone.
+- **Not checked:** in the time-lapse, sub-steps shorter than 0.1 s (approaches, grips, retreats) happen between two
+  frames, so no frame shows them and the audit doesn't see them. The planner's warning in 5/10 (a joint move that
+  starts with the upper arm against the gripper) most likely comes from one of these, in the time-lapse's Al cups.
 
 ## Assumed
 
