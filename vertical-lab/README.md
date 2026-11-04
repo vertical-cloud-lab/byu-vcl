@@ -613,7 +613,7 @@ route. Four chapters, each rendered on its own and joined by [`alloy_route.py`](
 | Chapter | Code | GIF | MP4 | Notes |
 |---|---|---|---|---|
 | **All four, joined** (11 min 9 s, a title card before each) | [`alloy_route.py`](alloy_route.py) | | [MP4](out/mp4/alloy_route.mp4) | [on YouTube](https://www.youtube.com/watch?v=GE33p9N0x7c) (unlisted), chapters in [`out/alloy_route.json`](out/alloy_route.json). The 7 min 40 s round-4 version is [`9qnGCtPwCTM`](https://www.youtube.com/watch?v=9qnGCtPwCTM) |
-| **1. The charge** (147 s): four 5N Al and four OFE Cu cups dosed through one funnel per powder, weighed on an A&D HR-202i and plugged, on tray B | [`alloy_charge_doser.py`](alloy_charge_doser.py), [`charge.py`](charge.py) | [GIF](out/alloy_charge.gif) | [MP4](out/mp4/alloy_charge.mp4) | [`notes/alloy_charge_doser.md`](notes/alloy_charge_doser.md). The vacuum-press version, [`alloy_charge.py`](alloy_charge.py), [below](#the-plug-pressed-home-under-vacuum), isn't rendered yet |
+| **1. The charge** (147 s): four 5N Al and four OFE Cu cups dosed through one funnel per powder, weighed on an A&D HR-202i and plugged, on tray B | [`alloy_charge_doser.py`](alloy_charge_doser.py), [`charge.py`](charge.py) | [GIF](out/alloy_charge.gif) | [MP4](out/mp4/alloy_charge.mp4) | [`notes/alloy_charge_doser.md`](notes/alloy_charge_doser.md). The vacuum-press version, [`alloy_charge.py`](alloy_charge.py), [below](#the-plug-pressed-home-under-vacuum), is rendered on its own: [MP4](out/mp4/alloy_charge_vacuum.mp4), [on YouTube](https://www.youtube.com/watch?v=UjGb47I3fy0) |
 | **2. Melt and atomize** (157 s): the four Al cups in the rePowder, cut with the lab's own footage of its bronze and Al runs | [`alloy_atomize.py`](alloy_atomize.py) | [GIF](out/alloy_atomize.gif) | [MP4](out/mp4/alloy_atomize.mp4), [on YouTube](https://www.youtube.com/watch?v=znw55hE_dGs) | [`notes/alloy_atomize.md`](notes/alloy_atomize.md) |
 | **3. Sieve and print** (194 s): the arm runs a sieving cell, then the Aconity MIDI prints | [`alloy_print.py`](alloy_print.py), [`sieve_station.py`](sieve_station.py) | [GIF](out/alloy_print.gif) | [MP4](out/mp4/alloy_print.mp4) | [`notes/alloy_print.md`](notes/alloy_print.md) |
 | **4. Cut and test** (159 s): a suction lance and a depowdering box, the wire EDM, a rinse, the 68FM-100 | [`alloy_workflow.py`](alloy_workflow.py) | [GIF](out/alloy_workflow.gif) | [MP4](out/mp4/alloy_workflow.mp4) | [`notes/alloy_workflow.md`](notes/alloy_workflow.md) |
@@ -971,7 +971,7 @@ higher end. `ARM_AUDIT=1` runs a clip without rendering and checks every frame, 
 | Round 2 workflow (`animate.py workflow`) | 130 of 1140 | **0** | re-rendered; [on YouTube](https://www.youtube.com/watch?v=255o9IVEOEs) |
 | Warehouse (`warehouse.py`) | 216 of 1138 | **0** of 1120, the MiR bodies checked too | re-rendered: one target post moved, three routes changed ([notes](notes/warehouse.md)) |
 | Lab set up from scratch (`setup_lab.py`) | | 0 of 1376 | not re-rendered: its two joint moves were already clear |
-| Alloy route 1, the charge (`alloy_charge.py`) | | **0** of 2752 | rebuilt round the vacuum press, below |
+| Alloy route 1, the charge, vacuum-press version (`alloy_charge.py`) | | **0** of 2752 | rebuilt round the vacuum press, below; [on YouTube](https://www.youtube.com/watch?v=UjGb47I3fy0) |
 | Alloy route 3, sieve and print (`alloy_print.py`) | 717 of 1310 | 227 | not re-rendered: the poses themselves collide (the jar onto the MiR's own cabinet) |
 | Alloy route 4, cut and test (`alloy_workflow.py`) | 331 of 1466 | 77 | not re-rendered: the wrist enters the Aconity's shell and the wire EDM's body |
 | Alloy route 2, atomize (`alloy_atomize.py`) | | | doesn't run: it reads `charge.RUNS` in its pre-round-5 form |
@@ -980,9 +980,14 @@ Chapters 2-4 were being rewritten by another session at the time, so their remai
 
 ## The plug pressed home, under vacuum
 
-**Not rendered yet.** This is the version of `alloy_charge.py` written alongside round 5's chapter 1. The chapter-1
-render in the alloy route comes from [`alloy_charge_doser.py`](alloy_charge_doser.py): the HR-202i, one funnel per
-powder and four cups a run, with the old plug press. The two still need merging into one chapter.
+**Rendered on its own** as `out/alloy_charge_vacuum.*` (219 s, two Al and two Cu cups): [GIF](out/alloy_charge_vacuum.gif),
+[MP4](out/mp4/alloy_charge_vacuum.mp4), [on YouTube](https://www.youtube.com/watch?v=UjGb47I3fy0) (unlisted).
+This is the version of `alloy_charge.py` written alongside round 5's chapter 1. The chapter-1 render in the alloy
+route comes from [`alloy_charge_doser.py`](alloy_charge_doser.py): the HR-202i, one funnel per powder and four cups a
+run, with the old plug press, rendered before the collision check landed. The two still need merging into one
+chapter.
+
+![The die cut open during the press stroke: 3.1 of 3.2 t, 0.8 mbar](out/alloy_charge_vacuum_press.png)
 
 Also from Sterling: the plug "is supposed to be pushed in all the way such that the powder gets compressed to a
 certain tonnage. Also, it would be better if it were a vacuum press." Neither was true before. The doses stood 18 mm
@@ -1048,7 +1053,7 @@ xvfb-run -a python3 tour.py                               # round 3: every instr
 python3 tour.py gallery join table                        # the gallery, the joined tour MP4, out/instruments.json
 xvfb-run -a python3 line.py                               # the trays D-F, the line and the rail -> out/vlm_line.gif
 python3 charge.py                                         # the alloy route's charge recipe -> out/alloy_recipe.json
-xvfb-run -a python3 alloy_charge.py                       # alloy route 1/4: cups dosed and plugged on tray B
+xvfb-run -a python3 alloy_charge.py                       # chapter 1 with the vacuum press -> out/alloy_charge_vacuum.*
 python3 alloy_press.py                                    # the pressed fill per run -> out/alloy_recipe_pressed.json
 xvfb-run -a python3 vacuum_press.py                       # the vacuum press's own clip -> out/vacuum_press.gif, mp4
 ARM_AUDIT=1 xvfb-run -a python3 alloy_charge.py           # no render: every frame collision-checked -> out/collisions/
