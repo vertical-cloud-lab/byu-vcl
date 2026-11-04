@@ -589,6 +589,17 @@
     "privacy": "unlisted"
    }
   ],
+  "vertical_lab_longform.mp4": [
+   {
+    "id": "c-xBEmRLq5k",
+    "sha256": "fb1404b11af15e37b0100fc9a9f45c7b2252c52e225c5581982187f3bae54549",
+    "bytes": 123187710,
+    "commit": "a1e4b2d",
+    "uploaded": "2026-11-04T09:16:37Z",
+    "title": "The vertical cloud lab, start to finish: a Kardex VLM, its instruments and the alloy route (3-D)",
+    "privacy": "unlisted"
+   }
+  ],
   "vlm_assembly.mp4": [
    {
     "id": "ql5TQjkd0Jw",
