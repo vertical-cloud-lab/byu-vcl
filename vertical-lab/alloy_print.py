@@ -1,17 +1,19 @@
-"""Chapter 3 of the alloy route, start to finish (#303): the atomized powder through the sieve shaker, and into the
+"""Chapter 3 of the alloy route, start to finish (#303): the atomized powder through the sieving cell, and into the
 Aconity MIDI, which prints the plate that ``alloy_workflow.py`` (chapter 4) takes out.
 
     xvfb-run -a python3 alloy_print.py            # -> out/alloy_print.gif, out/mp4/alloy_print.mp4, .json, still
     PREVIEW=1 xvfb-run -a python3 alloy_print.py  # the last frame of each sub-step -> /tmp/preview_alloy_print.png
 
 It starts where the atomizer chapter ends: the MiR250 parked in front of the AMAZEMET rePowder with the rePowder's
-powder container on its cabinet (two 5N Al cups with Si: Al-10Si, ``out/alloy_recipe.json``). It ends where chapter
+powder container on its cabinet (four 5N Al cups with Si: Al-10Si, ``out/alloy_recipe.json``). It ends where chapter
 4 begins: the plate printed and buried in powder in the closed Aconity, the MiR back at x = 1400 with its arm parked,
 and chapter 4's opening camera.
 
 The scene is chapter 4's own (``alloy_workflow.build()``: the line, the opened Aconity MIDI, the EDM, the Instrons, the
-MiR250 and its UR10e) plus the Retsch AS 200 control on a bench between the rePowder and the VLM. The shaker, its
-8 in stack, lid, knobs and powder fractions are ``instruments_char.sieve()``'s, driven through its own joints. Every
+MiR250 and its UR10e) plus the sieving cell on a bench between the rePowder and the VLM (``sieve_station.py``, round 5):
+the Retsch AS 200 control, a tipper over a funnel and five jars, the Al set's stand, a downdraft enclosure. The shaker,
+its lid, knobs and the falling fractions are ``instruments_char.sieve()``'s, driven through its own joints; its sieves
+are replaced by ``sieve_station``'s, each its own group with a handling tab, so the arm stacks and unstacks them. Every
 arm move is a straight line of the gripper or a joint move between two solved poses (``robot.py``). See
 ``notes/alloy_print.md`` for what is measured and what is assumed.
 """
