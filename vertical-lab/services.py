@@ -1165,12 +1165,13 @@ class Flow:
     the line, at the places given (slots, or 'open' for the bay): a frame hook moves them. on[(pos, key)] is how much
     of the path, from the riser end, is filled: 0 shut, 1 flowing all the way."""
 
-    def __init__(self, sc, places, speed=160.0, pitch=45.0):
+    def __init__(self, sc, places, speed=160.0, pitch=45.0, bead=6.5):
         import pyvista as pv
-        from scene import FPS
+        from scene import FPS, lighter
         self.sc, self.speed, self.pitch, self.dt = sc, speed, pitch, 1.0 / FPS
         self.t = 0.0
         self.on, self.paths = {}, {}
+        self.ball = pv.Sphere(radius=bead, theta_resolution=10, phi_resolution=8)   # wider than the 7-8 mm lines
         M = mats()
         lp, dp = line_paths(), dock_paths()
         for pos in places:
@@ -1180,8 +1181,8 @@ class Flow:
                 cum = np.r_[0.0, np.cumsum(np.linalg.norm(np.diff(pts, axis=0), axis=1))]
                 self.paths[(pos, key)] = (pts, cum)
                 name = f"flow_{pos}_{key}"
-                sc.add(name, pv.PolyData(pts[:1].copy()), M[mat][:3], name, style="points", point_size=7.0,
-                       render_points_as_spheres=True, ambient=0.55, specular=0.2)
+                sc.add(name, self.ball.translate(pts[0], inplace=False), lighter(M[mat][:3], 0.55), name,
+                       ambient=0.75, specular=0.1)
                 sc.alpha[name] = 0.0
                 self.on[(pos, key)] = 0.0
         sc.frame_hooks.append(self)
@@ -1205,7 +1206,7 @@ class Flow:
                 sc.alpha[name] = 0.0
                 continue
             P = np.c_[np.interp(s, cum, pts[:, 0]), np.interp(s, cum, pts[:, 1]), np.interp(s, cum, pts[:, 2])]
-            sc.set_mesh(name, pv.PolyData(P))
+            sc.set_mesh(name, pv.PolyData(P).glyph(geom=self.ball, scale=False, orient=False))
             sc.alpha[name] = 1.0
 
 
