@@ -77,6 +77,39 @@
     "privacy": "unlisted"
    }
   ],
+  "instruments/a1_mini.mp4": [
+   {
+    "id": "CuI7t6pSOS8",
+    "sha256": "f5061303dfa6d83eb4a2e7967837d17fd77125b12684354ab1f44a6709ec6f86",
+    "bytes": 489257,
+    "commit": "d8d46a8",
+    "uploaded": "2026-11-04T07:26:40Z",
+    "title": "Vertical cloud lab: Bambu Lab A1 mini printing a part (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "instruments/cubxl_lh.mp4": [
+   {
+    "id": "9X6Q8AGsfoY",
+    "sha256": "ce265e51f8f8e9e02536f746b7502760e68db35d0b707a2252a446f74ad9e7e3",
+    "bytes": 1114058,
+    "commit": "d8d46a8",
+    "uploaded": "2026-11-04T07:26:42Z",
+    "title": "Vertical cloud lab: the CubXL's pipette over its vial rack, the vials in half section",
+    "privacy": "unlisted"
+   }
+  ],
+  "instruments/h2d.mp4": [
+   {
+    "id": "r-ymcfZ-EAQ",
+    "sha256": "8abf6e692d65f55a76a32e7125450b6afb772ed8ab6dc75e0f5e00beb9627f5e",
+    "bytes": 722800,
+    "commit": "d8d46a8",
+    "uploaded": "2026-11-04T07:26:44Z",
+    "title": "Vertical cloud lab: Bambu Lab H2D printing a part, the enclosure see-through (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
   "instruments_round4_tour.mp4": [
    {
     "id": "IEbhMjcAUOQ",
