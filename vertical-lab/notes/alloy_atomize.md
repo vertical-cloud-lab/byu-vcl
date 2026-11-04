@@ -173,7 +173,7 @@ sensing it would take: the UR10e's own sensor is good to ±5.5 N and ±0.5 N·m;
   badged `2× SPEED`. Only the kept excerpts exist (`out/footage/`); longer windows at 3× would need a fresh fetch.
 - **The container's cradle is a low ring on the cabinet top**, where it was a ring on a 150 mm post that the upper arm
   crossed.
-- **Collisions:** AUDIT_LINE
+- **Collisions: 0 of 1,339 frames** at 10 fps (`ARM_AUDIT=1`, [`out/collisions/alloy_atomize.json`](../out/collisions/alloy_atomize.json); round 5: 10 of 1,586 at 15 fps). On the way: the wrist camera in the hood on the latch grasp (the grasp turned 180° so the camera rides outboard), a fingertip on the bolt's cylinder (the gripper opens only to 0.72 round the tab), the tong's handle grazing the open lid's edge for one frame (a staging pose in front of the furnace), and the arm's upper arm through the cradle on its post (now a low ring).
 
 **The render and the footage are kept apart.** The render writes the 3-D chapter to `out/clean/` (git-ignored):
 `alloy_atomize_3d.mp4`, its GIF frames and a JSON with a marker wherever footage goes. With each marker it keeps the
@@ -288,23 +288,23 @@ above, and the reason a cup charge is so much smaller than a rod charge.
 - **The 400 cm³ crucible's fill**, taken as the Oct 27 run's 63 %. Its shape isn't known here.
 - **The furnace/chamber gauges** (+150 mbar during the melt, +350/+150 at the pour) are the training's style of
   reading with #222's 200 mbar difference. They are not a recipe.
-- **The cradle and the cup carrier on the MiR** are this model's; chapter 1 owns the carrier.
-- **The arm opens the lid by its knob** and swings it 110° (the training animation's angle). Nobody has checked
-  that a UR10e can do this on the real hood, nor whether the lid's latch needs releasing first.
+- **The cradle, the tong's sleeve and the ballast plate on the MiR** are this model's; chapter 1 owns the carrier.
+- **The arm opens the lid by its knob** and swings it 110° (the training animation's angle) about a hinge on the left,
+  after it has undone the latch (round 6). The footage suggests the real lid hinges at the back. Nobody has checked
+  that a UR10e can lift the real hood.
+- **The latch's force** (100 N, 200 N stiff) is Kipp's published hand force for cover latches of this kind, not a
+  measurement on our lid. A spring scale on the lever would settle it.
+- **The loading tong** is a design, not a part: the jaws' spring, the fingertip blocks that work them and a ceramic
+  lining against hot Al are all assumed.
 - **The arm swings the sealing-rod lever up** on its pivot to load, and back down over the adapter after. Nobody has
   checked that it can pull the eye's safety pin, nor that the rod stays seated with the lever up.
 
 **Open questions the clip raises**
-- **Can a robot load the cups at all? Only partly with the 2F-85 as it is.** Two problems:
-  - The 3/4 in cup only goes past the rod's adapter tipped, and #222 calls that too close to call (−0.09 mm).
-  - The 2F-85's fingers don't fit the bore, so the arm can't carry the cup past the adapter: it lets go with the
-    foot in the bore, and the cup has to squeeze past on its own.
-
-  Options:
-  - thin, narrow fingers that fit between the cup and the wall: with the pad faces on the cup, a 3 mm thick
-    finger can be about 19 mm wide, and the 2F-85's are 22 mm;
+- **Can a robot load the cups? With the tong, yes, but a 3/4 in cup still squeezes past the adapter** (#222's
+  −0.09 mm, too close to call). Round 5's problem, the 2F-85's fingers not fitting the bore, is gone: the tong
+  carries the cup to the floor (round 6, above). What is left:
   - a 5/8 in cup, which goes straight in (+1.83 mm);
-  - ask AMAZEMET whether the adapter can be pinned on after loading.
+  - or ask AMAZEMET whether the adapter can be pinned on after loading.
 - **Four cups leave 2.2 mm between neighbours.** A cup that lands off its place can block the next one.
 - **The vent can misbehave.** #222's README warns that a Ø1/16 in hole can draw powder out during pump-down
   and wick liquid Al under the 200 mbar over-pressure.
@@ -315,6 +315,9 @@ above, and the reason a cup charge is so much smaller than a rod charge.
   through the MiR's cabinet to the container's handle. Check the floor space in front of the real rePowder.
 
 ### Checked for collisions, and the cups let go higher (PR #318, 2026-11-04)
+
+*Round 5. Round 6 replaced the release over the bore with the loading tong, and the cradle on a post with a low
+ring; see above. Kept for the record.*
 
 Sterling: "the robot arm didn't respect collisions with itself, at all. Passed through the MiR250 and collided with
 the vial holder." Round 5 rendered this chapter before the arm was checked. `ARM_AUDIT=1` (`collide.py`, FCL on the

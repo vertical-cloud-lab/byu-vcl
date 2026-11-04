@@ -1428,7 +1428,7 @@ def movie():
 
     # ------------------------------------------------------------------ 2. lid open, cups in, lid shut
     # the latch first: the arm takes the lever's pull tab from above and swings it out and down
-    CAM_LATCH = cam((560, -820, 1600), (105, -70, 1300))
+    CAM_LATCH = cam((420, -330, 1360), (120, -75, 1300))     # from the right, so the arm (from the front) is clear
     Lw = T(RP) @ latch_frame()
     g_tab = tab_grasp(0.0)
     q_tab = arc_branch(rb, sc, g_tab, lambda u: tab_grasp(LATCH_OPEN * u), lambda u: latch(sc, LATCH_OPEN * u),
@@ -1460,7 +1460,7 @@ def movie():
             cam_to=CAM_LATCH,
             labels=[("draw latch", tuple((Lw @ np.r_[2.0, -16.0, 20.0, 1.0])[:3]), (0.70, 0.62)),
                     ("keeper, on the lid", tuple((Lw @ np.r_[-8.0, -14.0, 92.0, 1.0])[:3]), (0.70, 0.22)),
-                    ("locking bolt, back", tuple((Lw @ np.r_[12.0, 62.0, 48.0, 1.0])[:3]), (0.08, 0.30))])
+                    ("locking bolt, back", tuple((Lw @ np.r_[10.0, 65.0, 58.0, 1.0])[:3]), (0.70, 0.40))])
     sc.step(f"2/{n}", cap, 0.7, rb.line_to(g_tab), hold=0.05)
     sc.step(f"2/{n}", cap, 0.4, rb.grip_to(GRIP_TAB), hold=0.05)
     rb.events.append((sc.n, "grasp", g("latch_lever"), g("latch_loop")))
