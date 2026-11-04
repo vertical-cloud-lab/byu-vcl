@@ -212,13 +212,14 @@ CORR = dict(
     # the potentiostat the lab has now: NuVant's EZstat Pro, lent by Dr. Porter (byu-vcl #231, DAL #221), 255 x 245 x 102
     # mm. It has no EIS: until the requested potentiostat comes, DAL skips the EIS step and runs OCP for 30 min
     ez=(255.0, 245.0, 102.0), ez_x=530.0)
-# One change from DAL's deck. DAL checks its deck in plan with the capper as a 10 mm-radius disc
-# (plot_deck_layout.RADIUS). Ben's real mount, the PAW-V2 STEP placed as render_cubxl_cu.py places it, reaches 25 mm to
-# the left of the capper's axis in its lowest 16 mm (x -25.2 to +15.7, y -16.7 to +14.5). So with the P20 in well S1
-# (carriage at 56) the mount comes down to z 40 over rack 2's back right corner at DAL's A1 (108, 89): 9 x 4 mm in plan,
-# 15 mm deep into the 55 mm rack. Rack 2 is drawn 10 mm further forward, A1 (108, 79), which clears it by 5.8 mm in y;
-# its 15 rows then end at y 198 + 4. Everything else is where DAL puts it.
-CORR["rack2_drawn"] = (108.0, 79.0)
+# Everything is where DAL puts it, rack 2 included. One thing to raise with DAL: its deck check is in plan, with the
+# capper as a 10 mm-radius disc (plot_deck_layout.RADIUS). Ben's real mount, the PAW-V2 STEP placed as
+# render_cubxl_cu.py places it, reaches 25 mm to the left of the capper's axis in its lowest 16 mm (x -25.2 to +15.7,
+# y -16.7 to +14.5). With one well at the station's centre, as DAL's render and this clip draw it, it clears rack 2's
+# back right corner by 0.3 mm while the P20 is in S1. With the two wells per station of the deck check (y 240 -+ 4.5),
+# the front one puts the mount 9 x 4 mm over that corner, 8-15 mm below the rack's 55 mm top. And drawing from a stock
+# (carriage at 70) it comes 1.6 mm into the side of Ben's rack 1, 1 mm below its top, if the rack is DAL's tips +- 5.75 mm.
+CORR["rack2_drawn"] = CORR["rack2"]
 MATERIALS.update({
     "lab_cuni": (0.72, 0.60, 0.54, 1.0, 0.8),          # C71500 70/30 Cu-Ni, polished (render_cubxl_cu.py colours)
     "lab_nab": (0.76, 0.61, 0.33, 1.0, 0.8),           # C95800 nickel-aluminium bronze
@@ -1058,7 +1059,7 @@ def cubxl_corrosion() -> Instrument:
                    ("NuVant EZstat Pro", (ex - 40, 60 - ed / 2, eh), (0.88, 0.62))]
     inst.cam = (0.55, -1.5, 1.25)
     inst.framing = (0.80, 0.30)
-    inst.notes = ["Deck, head and spot: DAL PR #180's copper plan (aeda51a), not yet built; rack 2 drawn 10 mm forward",
+    inst.notes = ["Deck, head and spot: DAL PR #180's copper plan (aeda51a), not yet built",
                   "P20 volumes and levels to scale; the measurement plot is illustrative"]
     return inst
 
@@ -1067,11 +1068,12 @@ def cubxl_corrosion() -> Instrument:
 # (225, 150, 30)) for the deck; closer in for the fill and the cell.
 _C_WIDE = (_corr_w(700.0, -560.0, 640.0), _corr_w(205.0, 150.0, 30.0))
 _C_FILL = (_corr_w(540.0, -330.0, 430.0), _corr_w(250.0, 170.0, 30.0))
-_C_CELL = (_corr_w(30.0, -110.0, 230.0), _corr_w(185.0, 235.0, 25.0))
+_C_CELL = (_corr_w(400.0, 360.0, 230.0), _corr_w(150.0, 225.0, 25.0))     # from behind, right: the parked head is in front
+_C_WELL = (_corr_w(120.0, 60.0, 170.0), _corr_w(200.0, 235.0, 22.0))
 _C_TUBE = (_corr_w(400.0, -340.0, 400.0), _corr_w(210.0, 100.0, 30.0))
 _C_OVER = ((560.0, -1450.0, 1250.0), (60.0, 0.0, 180.0))
-CAMS["instruments/cubxl_corrosion"] = {0: _C_WIDE, 2: _C_FILL, 5: _C_CELL, 6: _C_CELL, 7: _C_FILL, 8: _C_TUBE,
-                                       10: _C_WIDE, 11: _C_OVER}
+CAMS["instruments/cubxl_corrosion"] = {0: _C_WIDE, 2: _C_FILL, 3: _C_WELL, 4: _C_FILL, 5: _C_CELL, 6: _C_CELL,
+                                       7: _C_FILL, 8: _C_TUBE, 10: _C_WIDE, 11: _C_OVER}
 PLOTS["instruments/cubxl_corrosion"] = _draw_corr_overlay
 
 
