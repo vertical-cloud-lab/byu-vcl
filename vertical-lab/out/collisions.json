@@ -3,54 +3,59 @@
   "xrd": {
    "key": "xrd",
    "title": "Benchtop X-ray diffractometer",
-   "model": "Rigaku MiniFlex 600",
+   "model": "Rigaku MiniFlex (6th generation)",
    "module": "instruments",
    "frames": 193,
-   "parts": 32,
+   "parts": 53,
    "nonconvex_parts": 5,
-   "mujoco_geoms": 70,
-   "moving_pieces": 4,
+   "mujoco_geoms": 103,
+   "moving_pieces": 5,
    "pose_error_mm": 0.0,
-   "candidates": 56,
+   "candidates": 1,
    "confirmed": 1,
    "intended_not_rechecked": 0,
-   "rejected_by_exact": 55,
+   "rejected_by_exact": 0,
    "seconds": {
     "geometry": 0.0,
-    "sweep": 2.7,
-    "loose": 0.2,
-    "total": 3.7
+    "sweep": 0.2,
+    "loose": 0.4,
+    "total": 1.5
    },
    "findings": [
     {
-     "a": "stage / sample stage",
-     "b": "holder / sample holder",
+     "a": "hood / upper housing",
+     "b": "door / door",
      "pieces": [
-      "stage",
-      "holder"
+      "hood",
+      "door"
      ],
      "level": "touching",
      "kind": "motion",
      "intended": null,
      "at_rest": false,
      "all_frames": false,
-     "thickness_mm": 0.0,
-     "volume_mm3": 0.0,
-     "mujoco_depth_mm": 6.46,
+     "thickness_mm": 0.14,
+     "volume_mm3": 53.7,
+     "mujoco_depth_mm": 0.15,
      "frames": 1,
-     "first_frame": 120,
-     "last_frame": 120,
-     "worst_frame": 120,
-     "at_mm": null,
+     "first_frame": 166,
+     "last_frame": 166,
+     "worst_frame": 166,
+     "at_mm": [
+      -199.6,
+      -194.2,
+      466.8
+     ],
      "actions": [
-      3
+      4
      ],
      "captions": [
-      "Scan, drawn see-through: the tube stays put, the sample tilts by theta and the detector sw"
+      "X-rays off, the detector parks and the door opens again."
      ]
     }
    ],
-   "loose": []
+   "loose": [],
+   "not_rigid_left_out": []
   },
   "sem": {
    "key": "sem",
@@ -58,23 +63,165 @@
    "model": "Hitachi TM4000PlusII",
    "module": "instruments",
    "frames": 94,
-   "parts": 30,
-   "nonconvex_parts": 3,
-   "mujoco_geoms": 62,
+   "parts": 54,
+   "nonconvex_parts": 5,
+   "mujoco_geoms": 90,
    "moving_pieces": 2,
    "pose_error_mm": 0.0,
-   "candidates": 11,
-   "confirmed": 0,
+   "candidates": 59,
+   "confirmed": 52,
    "intended_not_rechecked": 0,
-   "rejected_by_exact": 11,
+   "rejected_by_exact": 7,
    "seconds": {
     "geometry": 0.0,
-    "sweep": 0.1,
-    "loose": 0.2,
-    "total": 0.4
+    "sweep": 2.1,
+    "loose": 0.1,
+    "total": 2.5
    },
-   "findings": [],
-   "loose": []
+   "findings": [
+    {
+     "a": "body / body",
+     "b": "drawer / door",
+     "pieces": [
+      "body",
+      "drawer"
+     ],
+     "level": "fault",
+     "kind": "built in",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": false,
+     "thickness_mm": 6.08,
+     "volume_mm3": 47344.0,
+     "mujoco_depth_mm": 4.21,
+     "frames": 13,
+     "first_frame": 0,
+     "last_frame": 117,
+     "worst_frame": 0,
+     "at_mm": [
+      0.0,
+      -279.0,
+      133.2
+     ],
+     "actions": [
+      -1,
+      0,
+      2
+     ],
+     "captions": [
+      "as modelled",
+      "EVAC/AIR vents the chamber; the door is pulled straight out by its handle, the stage on it",
+      "Door in, EVAC/AIR again: about three minutes to vacuum. The EDS detector is built in, its "
+     ]
+    },
+    {
+     "a": "body / chamber",
+     "b": "drawer / door",
+     "pieces": [
+      "body",
+      "drawer"
+     ],
+     "level": "fault",
+     "kind": "built in",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": false,
+     "thickness_mm": 4.36,
+     "volume_mm3": 32470.0,
+     "mujoco_depth_mm": 7.43,
+     "frames": 13,
+     "first_frame": 0,
+     "last_frame": 117,
+     "worst_frame": 0,
+     "at_mm": [
+      0.0,
+      -279.5,
+      133.0
+     ],
+     "actions": [
+      -1,
+      0,
+      2
+     ],
+     "captions": [
+      "as modelled",
+      "EVAC/AIR vents the chamber; the door is pulled straight out by its handle, the stage on it",
+      "Door in, EVAC/AIR again: about three minutes to vacuum. The EDS detector is built in, its "
+     ]
+    },
+    {
+     "a": "body / door surround",
+     "b": "drawer / door",
+     "pieces": [
+      "body",
+      "drawer"
+     ],
+     "level": "fault",
+     "kind": "built in",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": false,
+     "thickness_mm": 2.5,
+     "volume_mm3": 6392.5,
+     "mujoco_depth_mm": 4.14,
+     "frames": 13,
+     "first_frame": 0,
+     "last_frame": 117,
+     "worst_frame": 0,
+     "at_mm": [
+      0.0,
+      -286.2,
+      132.8
+     ],
+     "actions": [
+      -1,
+      0,
+      2
+     ],
+     "captions": [
+      "as modelled",
+      "EVAC/AIR vents the chamber; the door is pulled straight out by its handle, the stage on it",
+      "Door in, EVAC/AIR again: about three minutes to vacuum. The EDS detector is built in, its "
+     ]
+    },
+    {
+     "a": "body / front panel",
+     "b": "drawer / door",
+     "pieces": [
+      "body",
+      "drawer"
+     ],
+     "level": "fault",
+     "kind": "built in",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": false,
+     "thickness_mm": 2.0,
+     "volume_mm3": 818.5,
+     "mujoco_depth_mm": 2.0,
+     "frames": 13,
+     "first_frame": 0,
+     "last_frame": 117,
+     "worst_frame": 110,
+     "at_mm": [
+      0.0,
+      -286.5,
+      233.0
+     ],
+     "actions": [
+      -1,
+      0,
+      2
+     ],
+     "captions": [
+      "as modelled",
+      "EVAC/AIR vents the chamber; the door is pulled straight out by its handle, the stage on it",
+      "Door in, EVAC/AIR again: about three minutes to vacuum. The EDS detector is built in, its "
+     ]
+    }
+   ],
+   "loose": [],
+   "not_rigid_left_out": []
   },
   "pip": {
    "key": "pip",
@@ -82,25 +229,91 @@
    "model": "Plastometrex PLX-Benchtop",
    "module": "instruments",
    "frames": 178,
-   "parts": 35,
-   "nonconvex_parts": 4,
-   "mujoco_geoms": 39,
+   "parts": 70,
+   "nonconvex_parts": 5,
+   "mujoco_geoms": 77,
    "moving_pieces": 4,
    "pose_error_mm": 0.0,
-   "candidates": 407,
-   "confirmed": 407,
+   "candidates": 434,
+   "confirmed": 434,
    "intended_not_rechecked": 0,
    "rejected_by_exact": 0,
    "seconds": {
-    "geometry": 0.0,
-    "sweep": 0.6,
+    "geometry": 0.1,
+    "sweep": 0.3,
     "loose": 0.1,
-    "total": 1.7
+    "total": 1.8
    },
    "findings": [
     {
-     "a": "body / guide columns",
-     "b": "head / crosshead",
+     "a": "head / indenter cylinder",
+     "b": "sample / sample",
+     "pieces": [
+      "head",
+      "sample"
+     ],
+     "level": "fault",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 6.0,
+     "volume_mm3": 6178.0,
+     "mujoco_depth_mm": 20.02,
+     "frames": 9,
+     "first_frame": 35,
+     "last_frame": 202,
+     "worst_frame": 201,
+     "at_mm": [
+      -0.2,
+      -37.0,
+      148.7
+     ],
+     "actions": [
+      0,
+      5
+     ],
+     "captions": [
+      "No door or guard: a flat sample (here a 40 mm square cut from a print; 3 x 3 x 1.5 mm at t",
+      "CORSICA fits a stress-strain curve to that profile in minutes. The sample comes off."
+     ]
+    },
+    {
+     "a": "head / indenter tip",
+     "b": "sample / sample",
+     "pieces": [
+      "head",
+      "sample"
+     ],
+     "level": "fault",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 4.95,
+     "volume_mm3": 505.6,
+     "mujoco_depth_mm": 6.33,
+     "frames": 3,
+     "first_frame": 40,
+     "last_frame": 198,
+     "worst_frame": 198,
+     "at_mm": [
+      0.0,
+      -30.0,
+      123.6
+     ],
+     "actions": [
+      0,
+      5
+     ],
+     "captions": [
+      "No door or guard: a flat sample (here a 40 mm square cut from a print; 3 x 3 x 1.5 mm at t",
+      "CORSICA fits a stress-strain curve to that profile in minutes. The sample comes off."
+     ]
+    },
+    {
+     "a": "body / crosshead",
+     "b": "head / indenter cylinder",
      "pieces": [
       "body",
       "head"
@@ -110,17 +323,17 @@
      "intended": null,
      "at_rest": true,
      "all_frames": true,
-     "thickness_mm": 25.98,
-     "volume_mm3": 73969.0,
-     "mujoco_depth_mm": 31.0,
+     "thickness_mm": 21.8,
+     "volume_mm3": 30109.3,
+     "mujoco_depth_mm": 24.0,
      "frames": 178,
      "first_frame": 0,
      "last_frame": 225,
-     "worst_frame": 169,
+     "worst_frame": 129,
      "at_mm": [
-      123.7,
-      60.0,
-      295.4
+      -0.0,
+      -30.0,
+      196.0
      ],
      "actions": [
       -1,
@@ -134,15 +347,15 @@
      "captions": [
       "as modelled",
       "No door or guard: a flat sample (here a 40 mm square cut from a print; 3 x 3 x 1.5 mm at t",
-      "Hands clear: the crosshead drives the spherical indenter in, an indent 0.25-1 mm wide. The",
-      "The indenter lifts; the stylus arm reaches in under it and sets the stylus down in the ind",
+      "Hands clear: the indenter comes down out of its cylinder and presses the 1 mm-radius ball ",
+      "The indenter lifts well clear; the profilometer's carriage runs in along the crosshead and",
       "The stylus traces across the indent, line by line, to map its 3D shape.",
-      "It lifts and parks, and the crosshead goes back up.",
+      "It lifts and runs back out to the right, and the indenter goes back to its start.",
       "CORSICA fits a stress-strain curve to that profile in minutes. The sample comes off."
      ]
     },
     {
-     "a": "body / profilometer traverse unit",
+     "a": "body / profilometer rail",
      "b": "stylus / profilometer arm",
      "pieces": [
       "body",
@@ -153,17 +366,17 @@
      "intended": null,
      "at_rest": true,
      "all_frames": true,
-     "thickness_mm": 8.49,
-     "volume_mm3": 1544.7,
-     "mujoco_depth_mm": 20.0,
+     "thickness_mm": 4.45,
+     "volume_mm3": 403.9,
+     "mujoco_depth_mm": 5.6,
      "frames": 178,
      "first_frame": 0,
      "last_frame": 225,
      "worst_frame": 104,
      "at_mm": [
-      -83.5,
-      -20.0,
-      133.0
+      32.5,
+      0.0,
+      177.4
      ],
      "actions": [
       -1,
@@ -177,11 +390,178 @@
      "captions": [
       "as modelled",
       "No door or guard: a flat sample (here a 40 mm square cut from a print; 3 x 3 x 1.5 mm at t",
-      "Hands clear: the crosshead drives the spherical indenter in, an indent 0.25-1 mm wide. The",
-      "The indenter lifts; the stylus arm reaches in under it and sets the stylus down in the ind",
+      "Hands clear: the indenter comes down out of its cylinder and presses the 1 mm-radius ball ",
+      "The indenter lifts well clear; the profilometer's carriage runs in along the crosshead and",
       "The stylus traces across the indent, line by line, to map its 3D shape.",
-      "It lifts and parks, and the crosshead goes back up.",
+      "It lifts and runs back out to the right, and the indenter goes back to its start.",
       "CORSICA fits a stress-strain curve to that profile in minutes. The sample comes off."
+     ]
+    },
+    {
+     "a": "head / indenter collar",
+     "b": "sample / sample",
+     "pieces": [
+      "head",
+      "sample"
+     ],
+     "level": "minor",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 1.87,
+     "volume_mm3": 1499.8,
+     "mujoco_depth_mm": 1.87,
+     "frames": 2,
+     "first_frame": 40,
+     "last_frame": 199,
+     "worst_frame": 199,
+     "at_mm": [
+      -0.0,
+      -30.0,
+      131.1
+     ],
+     "actions": [
+      0,
+      5
+     ],
+     "captions": [
+      "No door or guard: a flat sample (here a 40 mm square cut from a print; 3 x 3 x 1.5 mm at t",
+      "CORSICA fits a stress-strain curve to that profile in minutes. The sample comes off."
+     ]
+    },
+    {
+     "a": "head / indenter",
+     "b": "sample / sample",
+     "pieces": [
+      "head",
+      "sample"
+     ],
+     "level": "minor",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 1.33,
+     "volume_mm3": 4.2,
+     "mujoco_depth_mm": 3.38,
+     "frames": 14,
+     "first_frame": 41,
+     "last_frame": 198,
+     "worst_frame": 41,
+     "at_mm": [
+      0.0,
+      -30.0,
+      120.0
+     ],
+     "actions": [
+      0,
+      1,
+      2,
+      5
+     ],
+     "captions": [
+      "No door or guard: a flat sample (here a 40 mm square cut from a print; 3 x 3 x 1.5 mm at t",
+      "Hands clear: the indenter comes down out of its cylinder and presses the 1 mm-radius ball ",
+      "The indenter lifts well clear; the profilometer's carriage runs in along the crosshead and",
+      "CORSICA fits a stress-strain curve to that profile in minutes. The sample comes off."
+     ]
+    },
+    {
+     "a": "head / indenter",
+     "b": "stylus / stylus pick-up",
+     "pieces": [
+      "head",
+      "stylus"
+     ],
+     "level": "minor",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.73,
+     "volume_mm3": 1.3,
+     "mujoco_depth_mm": 0.86,
+     "frames": 3,
+     "first_frame": 116,
+     "last_frame": 166,
+     "worst_frame": 116,
+     "at_mm": [
+      0.1,
+      -30.0,
+      132.5
+     ],
+     "actions": [
+      2,
+      4
+     ],
+     "captions": [
+      "The indenter lifts well clear; the profilometer's carriage runs in along the crosshead and",
+      "It lifts and runs back out to the right, and the indenter goes back to its start."
+     ]
+    },
+    {
+     "a": "stylus / stylus",
+     "b": "sample / sample",
+     "pieces": [
+      "stylus",
+      "sample"
+     ],
+     "level": "touching",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.44,
+     "volume_mm3": 0.3,
+     "mujoco_depth_mm": 0.52,
+     "frames": 29,
+     "first_frame": 119,
+     "last_frame": 155,
+     "worst_frame": 155,
+     "at_mm": [
+      3.0,
+      -30.0,
+      112.7
+     ],
+     "actions": [
+      2,
+      3
+     ],
+     "captions": [
+      "The indenter lifts well clear; the profilometer's carriage runs in along the crosshead and",
+      "The stylus traces across the indent, line by line, to map its 3D shape."
+     ]
+    },
+    {
+     "a": "head / indenter tip",
+     "b": "stylus / stylus pick-up",
+     "pieces": [
+      "head",
+      "stylus"
+     ],
+     "level": "touching",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.34,
+     "volume_mm3": 1.2,
+     "mujoco_depth_mm": 0.3,
+     "frames": 1,
+     "first_frame": 115,
+     "last_frame": 115,
+     "worst_frame": 115,
+     "at_mm": [
+      2.6,
+      -30.0,
+      132.9
+     ],
+     "actions": [
+      2
+     ],
+     "captions": [
+      "The indenter lifts well clear; the profilometer's carriage runs in along the crosshead and"
      ]
     },
     {
@@ -196,87 +576,121 @@
      "intended": null,
      "at_rest": false,
      "all_frames": false,
-     "thickness_mm": 0.38,
-     "volume_mm3": 0.2,
-     "mujoco_depth_mm": 0.37,
-     "frames": 22,
-     "first_frame": 119,
-     "last_frame": 164,
-     "worst_frame": 150,
+     "thickness_mm": 0.34,
+     "volume_mm3": 0.5,
+     "mujoco_depth_mm": 0.34,
+     "frames": 12,
+     "first_frame": 134,
+     "last_frame": 149,
+     "worst_frame": 136,
      "at_mm": [
-      0.9,
-      -20.0,
-      114.1
+      0.4,
+      -30.0,
+      113.1
      ],
      "actions": [
-      2,
-      3,
-      4
+      3
      ],
      "captions": [
-      "The indenter lifts; the stylus arm reaches in under it and sets the stylus down in the ind",
-      "The stylus traces across the indent, line by line, to map its 3D shape.",
-      "It lifts and parks, and the crosshead goes back up."
+      "The stylus traces across the indent, line by line, to map its 3D shape."
      ]
     },
     {
      "a": "head / indenter",
-     "b": "sample / sample",
+     "b": "indent / indent",
      "pieces": [
       "head",
-      "sample"
+      "indent"
      ],
      "level": "touching",
      "kind": "motion",
      "intended": null,
      "at_rest": false,
      "all_frames": false,
-     "thickness_mm": 0.0,
-     "volume_mm3": 0.0,
-     "mujoco_depth_mm": 0.08,
+     "thickness_mm": 0.3,
+     "volume_mm3": 0.4,
+     "mujoco_depth_mm": 0.38,
      "frames": 1,
-     "first_frame": 79,
-     "last_frame": 79,
-     "worst_frame": 79,
-     "at_mm": null,
+     "first_frame": 197,
+     "last_frame": 197,
+     "worst_frame": 197,
+     "at_mm": [
+      0.0,
+      -30.0,
+      119.2
+     ],
      "actions": [
-      1
+      5
      ],
      "captions": [
-      "Hands clear: the crosshead drives the spherical indenter in, an indent 0.25-1 mm wide. The"
+      "CORSICA fits a stress-strain curve to that profile in minutes. The sample comes off."
      ]
     },
     {
-     "a": "stylus / stylus",
-     "b": "sample / sample",
+     "a": "head / indenter tip",
+     "b": "indent / indent",
      "pieces": [
-      "stylus",
-      "sample"
+      "head",
+      "indent"
      ],
      "level": "touching",
      "kind": "motion",
      "intended": null,
      "at_rest": false,
      "all_frames": false,
-     "thickness_mm": 0.0,
-     "volume_mm3": 0.0,
-     "mujoco_depth_mm": 0.07,
-     "frames": 28,
-     "first_frame": 120,
-     "last_frame": 155,
-     "worst_frame": 120,
-     "at_mm": null,
+     "thickness_mm": 0.3,
+     "volume_mm3": 0.9,
+     "mujoco_depth_mm": 1.67,
+     "frames": 1,
+     "first_frame": 198,
+     "last_frame": 198,
+     "worst_frame": 198,
+     "at_mm": [
+      -0.0,
+      -30.0,
+      126.5
+     ],
      "actions": [
-      2,
-      3
+      5
      ],
      "captions": [
-      "The indenter lifts; the stylus arm reaches in under it and sets the stylus down in the ind",
-      "The stylus traces across the indent, line by line, to map its 3D shape."
+      "CORSICA fits a stress-strain curve to that profile in minutes. The sample comes off."
+     ]
+    },
+    {
+     "a": "head / indenter cylinder",
+     "b": "indent / indent",
+     "pieces": [
+      "head",
+      "indent"
+     ],
+     "level": "touching",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.3,
+     "volume_mm3": 0.9,
+     "mujoco_depth_mm": 16.56,
+     "frames": 3,
+     "first_frame": 199,
+     "last_frame": 201,
+     "worst_frame": 199,
+     "at_mm": [
+      -0.0,
+      -30.0,
+      136.3
+     ],
+     "actions": [
+      5
+     ],
+     "captions": [
+      "CORSICA fits a stress-strain curve to that profile in minutes. The sample comes off."
      ]
     }
    ],
-   "loose": []
+   "loose": [],
+   "not_rigid_left_out": []
   },
   "openflexure_v7": {
    "key": "openflexure_v7",
@@ -340,53 +754,282 @@
      ]
     }
    ],
-   "loose": []
+   "loose": [],
+   "not_rigid_left_out": []
   },
   "polisher": {
    "key": "polisher",
    "title": "Metallographic grinder-polisher",
-   "model": "Buehler EcoMet 30 semi-automatic",
+   "model": "LECO PX500 semi-automatic",
    "module": "instruments",
-   "frames": 103,
-   "parts": 29,
-   "nonconvex_parts": 6,
-   "mujoco_geoms": 76,
-   "moving_pieces": 4,
+   "frames": 214,
+   "parts": 41,
+   "nonconvex_parts": 12,
+   "mujoco_geoms": 160,
+   "moving_pieces": 8,
    "pose_error_mm": 0.0,
-   "candidates": 103,
-   "confirmed": 103,
+   "candidates": 1899,
+   "confirmed": 1878,
    "intended_not_rechecked": 0,
-   "rejected_by_exact": 0,
+   "rejected_by_exact": 21,
    "seconds": {
     "geometry": 0.0,
-    "sweep": 0.1,
+    "sweep": 1.1,
     "loose": 0.4,
-    "total": 0.8
+    "total": 3.4
    },
    "findings": [
     {
      "a": "body / column",
-     "b": "head / head arm",
+     "b": "holder / mount 4",
      "pieces": [
       "body",
-      "head"
+      "holder"
      ],
      "level": "fault",
-     "kind": "guide",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 4.0,
+     "volume_mm3": 3161.7,
+     "mujoco_depth_mm": 4.0,
+     "frames": 53,
+     "first_frame": 80,
+     "last_frame": 202,
+     "worst_frame": 156,
+     "at_mm": [
+      -56.0,
+      -49.5,
+      314.0
+     ],
+     "actions": [
+      2,
+      3,
+      4,
+      5
+     ],
+     "captions": [
+      "Head down, water on. The SOP's grinding step: head 35 rpm, force 30, platen 150 rpm, 30 s.",
+      "Head up and rinse; then 400, 600, 800 and 1200 grit, a fresh paper each time.",
+      "The final polish: a white cloth on the platen, for 1 um alumina suspension.",
+      "Head down, suspension from a dispenser (squeezed from a bottle in the SOP): force 3-5, 150"
+     ]
+    },
+    {
+     "a": "body / column",
+     "b": "holder / mount 5",
+     "pieces": [
+      "body",
+      "holder"
+     ],
+     "level": "fault",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 4.0,
+     "volume_mm3": 3161.7,
+     "mujoco_depth_mm": 4.0,
+     "frames": 50,
+     "first_frame": 137,
+     "last_frame": 202,
+     "worst_frame": 146,
+     "at_mm": [
+      -108.0,
+      -49.5,
+      314.0
+     ],
+     "actions": [
+      3,
+      4,
+      5
+     ],
+     "captions": [
+      "Head up and rinse; then 400, 600, 800 and 1200 grit, a fresh paper each time.",
+      "The final polish: a white cloth on the platen, for 1 um alumina suspension.",
+      "Head down, suspension from a dispenser (squeezed from a bottle in the SOP): force 3-5, 150"
+     ]
+    },
+    {
+     "a": "body / column",
+     "b": "holder / mount 6",
+     "pieces": [
+      "body",
+      "holder"
+     ],
+     "level": "fault",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 4.0,
+     "volume_mm3": 1864.5,
+     "mujoco_depth_mm": 4.0,
+     "frames": 24,
+     "first_frame": 190,
+     "last_frame": 269,
+     "worst_frame": 269,
+     "at_mm": [
+      -39.0,
+      -63.4,
+      314.0
+     ],
+     "actions": [
+      5,
+      6
+     ],
+     "captions": [
+      "Head down, suspension from a dispenser (squeezed from a bottle in the SOP): force 3-5, 150",
+      "Done: the head lifts; the mounts are rinsed at the sink and dried. On a tray it needs wate"
+     ]
+    },
+    {
+     "a": "body / column",
+     "b": "holder / 6-position holder",
+     "pieces": [
+      "body",
+      "holder"
+     ],
+     "level": "fault",
+     "kind": "built in",
      "intended": null,
      "at_rest": true,
-     "all_frames": true,
-     "thickness_mm": 85.0,
-     "volume_mm3": 754086.8,
-     "mujoco_depth_mm": 85.0,
-     "frames": 103,
+     "all_frames": false,
+     "thickness_mm": 4.03,
+     "volume_mm3": 12691.9,
+     "mujoco_depth_mm": 4.0,
+     "frames": 120,
      "first_frame": 0,
-     "last_frame": 126,
-     "worst_frame": 90,
+     "last_frame": 269,
+     "worst_frame": 162,
      "at_mm": [
-      -164.0,
-      216.9,
-      510.0
+      -82.1,
+      -50.1,
+      314.0
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "captions": [
+      "as modelled",
+      "The lab's LECO PX500, as in its SOP videos: six Bakelite mounts in the 6-position holder; ",
+      "A 320-grit SiC paper on the platen (by hand in the SOP; by the arm on a tray).",
+      "Head down, water on. The SOP's grinding step: head 35 rpm, force 30, platen 150 rpm, 30 s.",
+      "Head up and rinse; then 400, 600, 800 and 1200 grit, a fresh paper each time.",
+      "The final polish: a white cloth on the platen, for 1 um alumina suspension.",
+      "Head down, suspension from a dispenser (squeezed from a bottle in the SOP): force 3-5, 150",
+      "Done: the head lifts; the mounts are rinsed at the sink and dried. On a tray it needs wate"
+     ]
+    },
+    {
+     "a": "body / column",
+     "b": "holder / mount 1",
+     "pieces": [
+      "body",
+      "holder"
+     ],
+     "level": "fault",
+     "kind": "built in",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": false,
+     "thickness_mm": 4.0,
+     "volume_mm3": 1864.5,
+     "mujoco_depth_mm": 4.0,
+     "frames": 63,
+     "first_frame": 0,
+     "last_frame": 269,
+     "worst_frame": 0,
+     "at_mm": [
+      -39.0,
+      -63.4,
+      314.0
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      6
+     ],
+     "captions": [
+      "as modelled",
+      "The lab's LECO PX500, as in its SOP videos: six Bakelite mounts in the 6-position holder; ",
+      "A 320-grit SiC paper on the platen (by hand in the SOP; by the arm on a tray).",
+      "Head down, water on. The SOP's grinding step: head 35 rpm, force 30, platen 150 rpm, 30 s.",
+      "Done: the head lifts; the mounts are rinsed at the sink and dried. On a tray it needs wate"
+     ]
+    },
+    {
+     "a": "body / column",
+     "b": "holder / mount 2",
+     "pieces": [
+      "body",
+      "holder"
+     ],
+     "level": "fault",
+     "kind": "built in",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": false,
+     "thickness_mm": 4.0,
+     "volume_mm3": 1864.5,
+     "mujoco_depth_mm": 4.0,
+     "frames": 70,
+     "first_frame": 0,
+     "last_frame": 269,
+     "worst_frame": 269,
+     "at_mm": [
+      -125.0,
+      -63.4,
+      314.0
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      6
+     ],
+     "captions": [
+      "as modelled",
+      "The lab's LECO PX500, as in its SOP videos: six Bakelite mounts in the 6-position holder; ",
+      "A 320-grit SiC paper on the platen (by hand in the SOP; by the arm on a tray).",
+      "Head down, water on. The SOP's grinding step: head 35 rpm, force 30, platen 150 rpm, 30 s.",
+      "Done: the head lifts; the mounts are rinsed at the sink and dried. On a tray it needs wate"
+     ]
+    },
+    {
+     "a": "body / column",
+     "b": "holder / mount 3",
+     "pieces": [
+      "body",
+      "holder"
+     ],
+     "level": "fault",
+     "kind": "built in",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": false,
+     "thickness_mm": 4.0,
+     "volume_mm3": 1864.5,
+     "mujoco_depth_mm": 4.0,
+     "frames": 59,
+     "first_frame": 0,
+     "last_frame": 82,
+     "worst_frame": 0,
+     "at_mm": [
+      -125.0,
+      -63.4,
+      314.0
      ],
      "actions": [
       -1,
@@ -396,13 +1039,836 @@
      ],
      "captions": [
       "as modelled",
-      "Six mounted samples (30 mm) in the power head's holder, over a 12 in platen with a polishi",
-      "The head presses the holder onto the cloth (25-200 N); water on; platen and holder turn, 5",
-      "Done: the head lifts. It needs water, air and a drain, so on a tray it needs a recirculati"
+      "The lab's LECO PX500, as in its SOP videos: six Bakelite mounts in the 6-position holder; ",
+      "A 320-grit SiC paper on the platen (by hand in the SOP; by the arm on a tray).",
+      "Head down, water on. The SOP's grinding step: head 35 rpm, force 30, platen 150 rpm, 30 s."
+     ]
+    },
+    {
+     "a": "body / column",
+     "b": "head / housing",
+     "pieces": [
+      "body",
+      "head"
+     ],
+     "level": "fault",
+     "kind": "guide",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": true,
+     "thickness_mm": 57.56,
+     "volume_mm3": 604616.2,
+     "mujoco_depth_mm": 72.0,
+     "frames": 214,
+     "first_frame": 0,
+     "last_frame": 269,
+     "worst_frame": 222,
+     "at_mm": [
+      -82.0,
+      -17.7,
+      430.8
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "captions": [
+      "as modelled",
+      "The lab's LECO PX500, as in its SOP videos: six Bakelite mounts in the 6-position holder; ",
+      "A 320-grit SiC paper on the platen (by hand in the SOP; by the arm on a tray).",
+      "Head down, water on. The SOP's grinding step: head 35 rpm, force 30, platen 150 rpm, 30 s.",
+      "Head up and rinse; then 400, 600, 800 and 1200 grit, a fresh paper each time.",
+      "The final polish: a white cloth on the platen, for 1 um alumina suspension.",
+      "Head down, suspension from a dispenser (squeezed from a bottle in the SOP): force 3-5, 150",
+      "Done: the head lifts; the mounts are rinsed at the sink and dried. On a tray it needs wate"
+     ]
+    },
+    {
+     "a": "body / column",
+     "b": "head / lit ring",
+     "pieces": [
+      "body",
+      "head"
+     ],
+     "level": "fault",
+     "kind": "guide",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": true,
+     "thickness_mm": 29.19,
+     "volume_mm3": 105397.4,
+     "mujoco_depth_mm": 38.97,
+     "frames": 214,
+     "first_frame": 0,
+     "last_frame": 269,
+     "worst_frame": 222,
+     "at_mm": [
+      -81.4,
+      -60.0,
+      378.7
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "captions": [
+      "as modelled",
+      "The lab's LECO PX500, as in its SOP videos: six Bakelite mounts in the 6-position holder; ",
+      "A 320-grit SiC paper on the platen (by hand in the SOP; by the arm on a tray).",
+      "Head down, water on. The SOP's grinding step: head 35 rpm, force 30, platen 150 rpm, 30 s.",
+      "Head up and rinse; then 400, 600, 800 and 1200 grit, a fresh paper each time.",
+      "The final polish: a white cloth on the platen, for 1 um alumina suspension.",
+      "Head down, suspension from a dispenser (squeezed from a bottle in the SOP): force 3-5, 150",
+      "Done: the head lifts; the mounts are rinsed at the sink and dried. On a tray it needs wate"
+     ]
+    },
+    {
+     "a": "body / column",
+     "b": "head / housing skirt",
+     "pieces": [
+      "body",
+      "head"
+     ],
+     "level": "fault",
+     "kind": "guide",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": true,
+     "thickness_mm": 18.0,
+     "volume_mm3": 80897.6,
+     "mujoco_depth_mm": 45.0,
+     "frames": 214,
+     "first_frame": 0,
+     "last_frame": 269,
+     "worst_frame": 222,
+     "at_mm": [
+      -82.0,
+      -59.8,
+      404.7
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "captions": [
+      "as modelled",
+      "The lab's LECO PX500, as in its SOP videos: six Bakelite mounts in the 6-position holder; ",
+      "A 320-grit SiC paper on the platen (by hand in the SOP; by the arm on a tray).",
+      "Head down, water on. The SOP's grinding step: head 35 rpm, force 30, platen 150 rpm, 30 s.",
+      "Head up and rinse; then 400, 600, 800 and 1200 grit, a fresh paper each time.",
+      "The final polish: a white cloth on the platen, for 1 um alumina suspension.",
+      "Head down, suspension from a dispenser (squeezed from a bottle in the SOP): force 3-5, 150",
+      "Done: the head lifts; the mounts are rinsed at the sink and dried. On a tray it needs wate"
+     ]
+    },
+    {
+     "a": "body / column",
+     "b": "head / hub",
+     "pieces": [
+      "body",
+      "head"
+     ],
+     "level": "fault",
+     "kind": "guide",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": true,
+     "thickness_mm": 14.09,
+     "volume_mm3": 15670.5,
+     "mujoco_depth_mm": 14.98,
+     "frames": 214,
+     "first_frame": 0,
+     "last_frame": 269,
+     "worst_frame": 203,
+     "at_mm": [
+      -82.7,
+      -65.5,
+      354.9
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "captions": [
+      "as modelled",
+      "The lab's LECO PX500, as in its SOP videos: six Bakelite mounts in the 6-position holder; ",
+      "A 320-grit SiC paper on the platen (by hand in the SOP; by the arm on a tray).",
+      "Head down, water on. The SOP's grinding step: head 35 rpm, force 30, platen 150 rpm, 30 s.",
+      "Head up and rinse; then 400, 600, 800 and 1200 grit, a fresh paper each time.",
+      "The final polish: a white cloth on the platen, for 1 um alumina suspension.",
+      "Head down, suspension from a dispenser (squeezed from a bottle in the SOP): force 3-5, 150",
+      "Done: the head lifts; the mounts are rinsed at the sink and dried. On a tray it needs wate"
+     ]
+    },
+    {
+     "a": "body / bowl",
+     "b": "platen / platen hub",
+     "pieces": [
+      "body",
+      "platen"
+     ],
+     "level": "fault",
+     "kind": "guide",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": true,
+     "thickness_mm": 4.0,
+     "volume_mm3": 25404.7,
+     "mujoco_depth_mm": 4.06,
+     "frames": 214,
+     "first_frame": 0,
+     "last_frame": 269,
+     "worst_frame": 101,
+     "at_mm": [
+      -53.0,
+      -129.5,
+      194.0
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "captions": [
+      "as modelled",
+      "The lab's LECO PX500, as in its SOP videos: six Bakelite mounts in the 6-position holder; ",
+      "A 320-grit SiC paper on the platen (by hand in the SOP; by the arm on a tray).",
+      "Head down, water on. The SOP's grinding step: head 35 rpm, force 30, platen 150 rpm, 30 s.",
+      "Head up and rinse; then 400, 600, 800 and 1200 grit, a fresh paper each time.",
+      "The final polish: a white cloth on the platen, for 1 um alumina suspension.",
+      "Head down, suspension from a dispenser (squeezed from a bottle in the SOP): force 3-5, 150",
+      "Done: the head lifts; the mounts are rinsed at the sink and dried. On a tray it needs wate"
+     ]
+    },
+    {
+     "a": "holder / mount 1",
+     "b": "cloth / polishing cloth",
+     "pieces": [
+      "holder",
+      "cloth"
+     ],
+     "level": "minor",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.8,
+     "volume_mm3": 632.3,
+     "mujoco_depth_mm": 0.8,
+     "frames": 12,
+     "first_frame": 227,
+     "last_frame": 246,
+     "worst_frame": 234,
+     "at_mm": [
+      -82.0,
+      -42.5,
+      279.4
+     ],
+     "actions": [
+      5,
+      6
+     ],
+     "captions": [
+      "Head down, suspension from a dispenser (squeezed from a bottle in the SOP): force 3-5, 150",
+      "Done: the head lifts; the mounts are rinsed at the sink and dried. On a tray it needs wate"
+     ]
+    },
+    {
+     "a": "holder / mount 2",
+     "b": "cloth / polishing cloth",
+     "pieces": [
+      "holder",
+      "cloth"
+     ],
+     "level": "minor",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.8,
+     "volume_mm3": 632.3,
+     "mujoco_depth_mm": 0.8,
+     "frames": 12,
+     "first_frame": 227,
+     "last_frame": 246,
+     "worst_frame": 234,
+     "at_mm": [
+      -127.0,
+      -68.5,
+      279.4
+     ],
+     "actions": [
+      5,
+      6
+     ],
+     "captions": [
+      "Head down, suspension from a dispenser (squeezed from a bottle in the SOP): force 3-5, 150",
+      "Done: the head lifts; the mounts are rinsed at the sink and dried. On a tray it needs wate"
+     ]
+    },
+    {
+     "a": "holder / mount 3",
+     "b": "cloth / polishing cloth",
+     "pieces": [
+      "holder",
+      "cloth"
+     ],
+     "level": "minor",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.8,
+     "volume_mm3": 632.3,
+     "mujoco_depth_mm": 0.8,
+     "frames": 12,
+     "first_frame": 227,
+     "last_frame": 246,
+     "worst_frame": 234,
+     "at_mm": [
+      -127.0,
+      -120.5,
+      279.4
+     ],
+     "actions": [
+      5,
+      6
+     ],
+     "captions": [
+      "Head down, suspension from a dispenser (squeezed from a bottle in the SOP): force 3-5, 150",
+      "Done: the head lifts; the mounts are rinsed at the sink and dried. On a tray it needs wate"
+     ]
+    },
+    {
+     "a": "holder / mount 4",
+     "b": "cloth / polishing cloth",
+     "pieces": [
+      "holder",
+      "cloth"
+     ],
+     "level": "minor",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.8,
+     "volume_mm3": 632.3,
+     "mujoco_depth_mm": 0.8,
+     "frames": 12,
+     "first_frame": 227,
+     "last_frame": 246,
+     "worst_frame": 234,
+     "at_mm": [
+      -82.0,
+      -146.5,
+      279.4
+     ],
+     "actions": [
+      5,
+      6
+     ],
+     "captions": [
+      "Head down, suspension from a dispenser (squeezed from a bottle in the SOP): force 3-5, 150",
+      "Done: the head lifts; the mounts are rinsed at the sink and dried. On a tray it needs wate"
+     ]
+    },
+    {
+     "a": "holder / mount 5",
+     "b": "cloth / polishing cloth",
+     "pieces": [
+      "holder",
+      "cloth"
+     ],
+     "level": "minor",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.8,
+     "volume_mm3": 632.3,
+     "mujoco_depth_mm": 0.8,
+     "frames": 12,
+     "first_frame": 227,
+     "last_frame": 246,
+     "worst_frame": 234,
+     "at_mm": [
+      -37.0,
+      -120.5,
+      279.4
+     ],
+     "actions": [
+      5,
+      6
+     ],
+     "captions": [
+      "Head down, suspension from a dispenser (squeezed from a bottle in the SOP): force 3-5, 150",
+      "Done: the head lifts; the mounts are rinsed at the sink and dried. On a tray it needs wate"
+     ]
+    },
+    {
+     "a": "holder / mount 6",
+     "b": "cloth / polishing cloth",
+     "pieces": [
+      "holder",
+      "cloth"
+     ],
+     "level": "minor",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.8,
+     "volume_mm3": 632.3,
+     "mujoco_depth_mm": 0.8,
+     "frames": 12,
+     "first_frame": 227,
+     "last_frame": 246,
+     "worst_frame": 234,
+     "at_mm": [
+      -37.0,
+      -68.5,
+      279.4
+     ],
+     "actions": [
+      5,
+      6
+     ],
+     "captions": [
+      "Head down, suspension from a dispenser (squeezed from a bottle in the SOP): force 3-5, 150",
+      "Done: the head lifts; the mounts are rinsed at the sink and dried. On a tray it needs wate"
+     ]
+    },
+    {
+     "a": "holder / mount 1",
+     "b": "alumina / alumina on the cloth",
+     "pieces": [
+      "holder",
+      "alumina"
+     ],
+     "level": "touching",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.5,
+     "volume_mm3": 395.2,
+     "mujoco_depth_mm": 1.3,
+     "frames": 16,
+     "first_frame": 224,
+     "last_frame": 247,
+     "worst_frame": 234,
+     "at_mm": [
+      -82.0,
+      -42.5,
+      280.0
+     ],
+     "actions": [
+      5,
+      6
+     ],
+     "captions": [
+      "Head down, suspension from a dispenser (squeezed from a bottle in the SOP): force 3-5, 150",
+      "Done: the head lifts; the mounts are rinsed at the sink and dried. On a tray it needs wate"
+     ]
+    },
+    {
+     "a": "holder / mount 2",
+     "b": "alumina / alumina on the cloth",
+     "pieces": [
+      "holder",
+      "alumina"
+     ],
+     "level": "touching",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.5,
+     "volume_mm3": 395.2,
+     "mujoco_depth_mm": 1.3,
+     "frames": 16,
+     "first_frame": 224,
+     "last_frame": 247,
+     "worst_frame": 227,
+     "at_mm": [
+      -130.1,
+      -74.8,
+      280.0
+     ],
+     "actions": [
+      5,
+      6
+     ],
+     "captions": [
+      "Head down, suspension from a dispenser (squeezed from a bottle in the SOP): force 3-5, 150",
+      "Done: the head lifts; the mounts are rinsed at the sink and dried. On a tray it needs wate"
+     ]
+    },
+    {
+     "a": "holder / mount 3",
+     "b": "alumina / alumina on the cloth",
+     "pieces": [
+      "holder",
+      "alumina"
+     ],
+     "level": "touching",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.5,
+     "volume_mm3": 395.2,
+     "mujoco_depth_mm": 1.3,
+     "frames": 16,
+     "first_frame": 224,
+     "last_frame": 247,
+     "worst_frame": 234,
+     "at_mm": [
+      -127.0,
+      -120.5,
+      280.0
+     ],
+     "actions": [
+      5,
+      6
+     ],
+     "captions": [
+      "Head down, suspension from a dispenser (squeezed from a bottle in the SOP): force 3-5, 150",
+      "Done: the head lifts; the mounts are rinsed at the sink and dried. On a tray it needs wate"
+     ]
+    },
+    {
+     "a": "holder / mount 6",
+     "b": "alumina / alumina on the cloth",
+     "pieces": [
+      "holder",
+      "alumina"
+     ],
+     "level": "touching",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.5,
+     "volume_mm3": 395.2,
+     "mujoco_depth_mm": 1.3,
+     "frames": 16,
+     "first_frame": 224,
+     "last_frame": 247,
+     "worst_frame": 232,
+     "at_mm": [
+      -37.3,
+      -68.0,
+      280.0
+     ],
+     "actions": [
+      5,
+      6
+     ],
+     "captions": [
+      "Head down, suspension from a dispenser (squeezed from a bottle in the SOP): force 3-5, 150",
+      "Done: the head lifts; the mounts are rinsed at the sink and dried. On a tray it needs wate"
+     ]
+    },
+    {
+     "a": "holder / mount 4",
+     "b": "alumina / alumina on the cloth",
+     "pieces": [
+      "holder",
+      "alumina"
+     ],
+     "level": "touching",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.5,
+     "volume_mm3": 40.7,
+     "mujoco_depth_mm": 1.3,
+     "frames": 12,
+     "first_frame": 228,
+     "last_frame": 247,
+     "worst_frame": 234,
+     "at_mm": [
+      -93.1,
+      -152.8,
+      280.0
+     ],
+     "actions": [
+      5,
+      6
+     ],
+     "captions": [
+      "Head down, suspension from a dispenser (squeezed from a bottle in the SOP): force 3-5, 150",
+      "Done: the head lifts; the mounts are rinsed at the sink and dried. On a tray it needs wate"
+     ]
+    },
+    {
+     "a": "holder / mount 5",
+     "b": "alumina / alumina on the cloth",
+     "pieces": [
+      "holder",
+      "alumina"
+     ],
+     "level": "touching",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.1,
+     "volume_mm3": 1.1,
+     "mujoco_depth_mm": 0.1,
+     "frames": 1,
+     "first_frame": 224,
+     "last_frame": 224,
+     "worst_frame": 224,
+     "at_mm": [
+      -20.8,
+      -97.7,
+      280.3
+     ],
+     "actions": [
+      5
+     ],
+     "captions": [
+      "Head down, suspension from a dispenser (squeezed from a bottle in the SOP): force 3-5, 150"
+     ]
+    },
+    {
+     "a": "holder / mount 1",
+     "b": "paper / SiC paper",
+     "pieces": [
+      "holder",
+      "paper"
+     ],
+     "level": "touching",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.0,
+     "volume_mm3": 0.0,
+     "mujoco_depth_mm": 0.19,
+     "frames": 1,
+     "first_frame": 114,
+     "last_frame": 114,
+     "worst_frame": 114,
+     "at_mm": null,
+     "actions": [
+      2
+     ],
+     "captions": [
+      "Head down, water on. The SOP's grinding step: head 35 rpm, force 30, platen 150 rpm, 30 s."
+     ]
+    },
+    {
+     "a": "holder / mount 2",
+     "b": "paper / SiC paper",
+     "pieces": [
+      "holder",
+      "paper"
+     ],
+     "level": "touching",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.0,
+     "volume_mm3": 0.0,
+     "mujoco_depth_mm": 0.22,
+     "frames": 1,
+     "first_frame": 114,
+     "last_frame": 114,
+     "worst_frame": 114,
+     "at_mm": null,
+     "actions": [
+      2
+     ],
+     "captions": [
+      "Head down, water on. The SOP's grinding step: head 35 rpm, force 30, platen 150 rpm, 30 s."
+     ]
+    },
+    {
+     "a": "holder / mount 3",
+     "b": "paper / SiC paper",
+     "pieces": [
+      "holder",
+      "paper"
+     ],
+     "level": "touching",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.0,
+     "volume_mm3": 0.0,
+     "mujoco_depth_mm": 0.16,
+     "frames": 1,
+     "first_frame": 114,
+     "last_frame": 114,
+     "worst_frame": 114,
+     "at_mm": null,
+     "actions": [
+      2
+     ],
+     "captions": [
+      "Head down, water on. The SOP's grinding step: head 35 rpm, force 30, platen 150 rpm, 30 s."
+     ]
+    },
+    {
+     "a": "holder / mount 4",
+     "b": "paper / SiC paper",
+     "pieces": [
+      "holder",
+      "paper"
+     ],
+     "level": "touching",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.0,
+     "volume_mm3": 0.0,
+     "mujoco_depth_mm": 0.11,
+     "frames": 1,
+     "first_frame": 114,
+     "last_frame": 114,
+     "worst_frame": 114,
+     "at_mm": null,
+     "actions": [
+      2
+     ],
+     "captions": [
+      "Head down, water on. The SOP's grinding step: head 35 rpm, force 30, platen 150 rpm, 30 s."
+     ]
+    },
+    {
+     "a": "holder / mount 5",
+     "b": "paper / SiC paper",
+     "pieces": [
+      "holder",
+      "paper"
+     ],
+     "level": "touching",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.0,
+     "volume_mm3": 0.0,
+     "mujoco_depth_mm": 0.09,
+     "frames": 1,
+     "first_frame": 114,
+     "last_frame": 114,
+     "worst_frame": 114,
+     "at_mm": null,
+     "actions": [
+      2
+     ],
+     "captions": [
+      "Head down, water on. The SOP's grinding step: head 35 rpm, force 30, platen 150 rpm, 30 s."
+     ]
+    },
+    {
+     "a": "holder / mount 6",
+     "b": "paper / SiC paper",
+     "pieces": [
+      "holder",
+      "paper"
+     ],
+     "level": "touching",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.0,
+     "volume_mm3": 0.0,
+     "mujoco_depth_mm": 0.12,
+     "frames": 1,
+     "first_frame": 114,
+     "last_frame": 114,
+     "worst_frame": 114,
+     "at_mm": null,
+     "actions": [
+      2
+     ],
+     "captions": [
+      "Head down, water on. The SOP's grinding step: head 35 rpm, force 30, platen 150 rpm, 30 s."
+     ]
+    },
+    {
+     "a": "body / base",
+     "b": "platen / platen hub",
+     "pieces": [
+      "body",
+      "platen"
+     ],
+     "level": "touching",
+     "kind": "guide",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": true,
+     "thickness_mm": 0.0,
+     "volume_mm3": 0.0,
+     "mujoco_depth_mm": 6.3,
+     "frames": 214,
+     "first_frame": 0,
+     "last_frame": 269,
+     "worst_frame": 0,
+     "at_mm": null,
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "captions": [
+      "as modelled",
+      "The lab's LECO PX500, as in its SOP videos: six Bakelite mounts in the 6-position holder; ",
+      "A 320-grit SiC paper on the platen (by hand in the SOP; by the arm on a tray).",
+      "Head down, water on. The SOP's grinding step: head 35 rpm, force 30, platen 150 rpm, 30 s.",
+      "Head up and rinse; then 400, 600, 800 and 1200 grit, a fresh paper each time.",
+      "The final polish: a white cloth on the platen, for 1 um alumina suspension.",
+      "Head down, suspension from a dispenser (squeezed from a bottle in the SOP): force 3-5, 150",
+      "Done: the head lifts; the mounts are rinsed at the sink and dried. On a tray it needs wate"
      ]
     }
    ],
-   "loose": []
+   "loose": [],
+   "not_rigid_left_out": []
   },
   "furnace": {
    "key": "furnace",
@@ -410,24 +1876,314 @@
    "model": "Nabertherm NAT 15/65",
    "module": "instruments",
    "frames": 109,
-   "parts": 20,
-   "nonconvex_parts": 5,
-   "mujoco_geoms": 52,
+   "parts": 28,
+   "nonconvex_parts": 8,
+   "mujoco_geoms": 90,
    "moving_pieces": 3,
    "pose_error_mm": 0.0,
-   "candidates": 58,
-   "confirmed": 58,
+   "candidates": 611,
+   "confirmed": 583,
    "intended_not_rechecked": 0,
-   "rejected_by_exact": 0,
+   "rejected_by_exact": 28,
    "seconds": {
     "geometry": 0.0,
-    "sweep": 0.2,
-    "loose": 0.1,
-    "total": 0.4
+    "sweep": 0.1,
+    "loose": 0.0,
+    "total": 0.2
    },
    "findings": [
     {
-     "a": "body / chamber",
+     "a": "body / chamber floor",
+     "b": "door / door plug",
+     "pieces": [
+      "body",
+      "door"
+     ],
+     "level": "fault",
+     "kind": "built in",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": false,
+     "thickness_mm": 2.0,
+     "volume_mm3": 1800.0,
+     "mujoco_depth_mm": 2.01,
+     "frames": 18,
+     "first_frame": 0,
+     "last_frame": 140,
+     "worst_frame": 0,
+     "at_mm": [
+      -1.0,
+      -344.0,
+      234.5
+     ],
+     "actions": [
+      -1,
+      0,
+      2,
+      3
+     ],
+     "captions": [
+      "as modelled",
+      "The door swings open on its two right-hand hinges; its insulating plug comes out of the ch",
+      "Door shut. Solution treatment at about 530 C, quench, then ageing at 160-200 C: the circul",
+      ""
+     ]
+    },
+    {
+     "a": "body / chamber unit",
+     "b": "fan / blade 0",
+     "pieces": [
+      "body",
+      "fan"
+     ],
+     "level": "fault",
+     "kind": "guide",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": true,
+     "thickness_mm": 4.0,
+     "volume_mm3": 2688.0,
+     "mujoco_depth_mm": 4.1,
+     "frames": 109,
+     "first_frame": 0,
+     "last_frame": 140,
+     "worst_frame": 93,
+     "at_mm": [
+      -1.0,
+      -23.0,
+      311.0
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3
+     ],
+     "captions": [
+      "as modelled",
+      "The door swings open on its two right-hand hinges; its insulating plug comes out of the ch",
+      "A tray of printed tensile coupons goes in.",
+      "Door shut. Solution treatment at about 530 C, quench, then ageing at 160-200 C: the circul",
+      ""
+     ]
+    },
+    {
+     "a": "body / chamber unit",
+     "b": "fan / blade 1",
+     "pieces": [
+      "body",
+      "fan"
+     ],
+     "level": "fault",
+     "kind": "guide",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": true,
+     "thickness_mm": 4.0,
+     "volume_mm3": 2688.0,
+     "mujoco_depth_mm": 4.1,
+     "frames": 109,
+     "first_frame": 0,
+     "last_frame": 140,
+     "worst_frame": 112,
+     "at_mm": [
+      -1.0,
+      -23.0,
+      311.0
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3
+     ],
+     "captions": [
+      "as modelled",
+      "The door swings open on its two right-hand hinges; its insulating plug comes out of the ch",
+      "A tray of printed tensile coupons goes in.",
+      "Door shut. Solution treatment at about 530 C, quench, then ageing at 160-200 C: the circul",
+      ""
+     ]
+    },
+    {
+     "a": "body / chamber unit",
+     "b": "fan / blade 2",
+     "pieces": [
+      "body",
+      "fan"
+     ],
+     "level": "fault",
+     "kind": "guide",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": true,
+     "thickness_mm": 4.0,
+     "volume_mm3": 2688.0,
+     "mujoco_depth_mm": 4.1,
+     "frames": 109,
+     "first_frame": 0,
+     "last_frame": 140,
+     "worst_frame": 130,
+     "at_mm": [
+      -1.0,
+      -23.0,
+      311.0
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3
+     ],
+     "captions": [
+      "as modelled",
+      "The door swings open on its two right-hand hinges; its insulating plug comes out of the ch",
+      "A tray of printed tensile coupons goes in.",
+      "Door shut. Solution treatment at about 530 C, quench, then ageing at 160-200 C: the circul",
+      ""
+     ]
+    },
+    {
+     "a": "body / chamber unit",
+     "b": "fan / blade 3",
+     "pieces": [
+      "body",
+      "fan"
+     ],
+     "level": "fault",
+     "kind": "guide",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": true,
+     "thickness_mm": 4.0,
+     "volume_mm3": 2688.0,
+     "mujoco_depth_mm": 4.1,
+     "frames": 109,
+     "first_frame": 0,
+     "last_frame": 140,
+     "worst_frame": 130,
+     "at_mm": [
+      -1.0,
+      -23.0,
+      311.0
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3
+     ],
+     "captions": [
+      "as modelled",
+      "The door swings open on its two right-hand hinges; its insulating plug comes out of the ch",
+      "A tray of printed tensile coupons goes in.",
+      "Door shut. Solution treatment at about 530 C, quench, then ageing at 160-200 C: the circul",
+      ""
+     ]
+    },
+    {
+     "a": "body / hinge 244",
+     "b": "door / door",
+     "pieces": [
+      "body",
+      "door"
+     ],
+     "level": "minor",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 1.48,
+     "volume_mm3": 143.6,
+     "mujoco_depth_mm": 1.96,
+     "frames": 35,
+     "first_frame": 12,
+     "last_frame": 113,
+     "worst_frame": 98,
+     "at_mm": [
+      230.3,
+      -400.4,
+      244.0
+     ],
+     "actions": [
+      0,
+      2
+     ],
+     "captions": [
+      "The door swings open on its two right-hand hinges; its insulating plug comes out of the ch",
+      "Door shut. Solution treatment at about 530 C, quench, then ageing at 160-200 C: the circul"
+     ]
+    },
+    {
+     "a": "body / hinge 378",
+     "b": "door / door",
+     "pieces": [
+      "body",
+      "door"
+     ],
+     "level": "minor",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 1.48,
+     "volume_mm3": 143.6,
+     "mujoco_depth_mm": 1.96,
+     "frames": 35,
+     "first_frame": 12,
+     "last_frame": 113,
+     "worst_frame": 98,
+     "at_mm": [
+      230.3,
+      -400.4,
+      378.0
+     ],
+     "actions": [
+      0,
+      2
+     ],
+     "captions": [
+      "The door swings open on its two right-hand hinges; its insulating plug comes out of the ch",
+      "Door shut. Solution treatment at about 530 C, quench, then ageing at 160-200 C: the circul"
+     ]
+    },
+    {
+     "a": "body / chamber unit",
+     "b": "door / door plug",
+     "pieces": [
+      "body",
+      "door"
+     ],
+     "level": "touching",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.25,
+     "volume_mm3": 49.8,
+     "mujoco_depth_mm": 5.64,
+     "frames": 1,
+     "first_frame": 114,
+     "last_frame": 114,
+     "worst_frame": 114,
+     "at_mm": [
+      -151.1,
+      -338.8,
+      311.0
+     ],
+     "actions": [
+      2
+     ],
+     "captions": [
+      "Door shut. Solution treatment at about 530 C, quench, then ageing at 160-200 C: the circul"
+     ]
+    },
+    {
+     "a": "body / chamber unit",
      "b": "load / tray",
      "pieces": [
       "body",
@@ -458,47 +2214,309 @@
      ]
     }
    ],
-   "loose": [
-    {
-     "piece": "door",
-     "gap_at_rest_mm": 0.0,
-     "worst_gap_mm": 21.1,
-     "worst_frame": 32,
-     "when": "The door swings open on its right-hand hinge."
-    }
-   ]
+   "loose": [],
+   "not_rigid_left_out": []
   },
   "mastersizer": {
    "key": "mastersizer",
    "title": "Laser diffraction particle sizer",
    "model": "Malvern Mastersizer 3000 + Aero S",
    "module": "instruments",
-   "frames": 103,
-   "parts": 20,
-   "nonconvex_parts": 6,
-   "mujoco_geoms": 78,
-   "moving_pieces": 3,
+   "frames": 139,
+   "parts": 41,
+   "nonconvex_parts": 12,
+   "mujoco_geoms": 129,
+   "moving_pieces": 5,
    "pose_error_mm": 0.0,
-   "candidates": 0,
-   "confirmed": 0,
+   "candidates": 693,
+   "confirmed": 690,
    "intended_not_rechecked": 0,
-   "rejected_by_exact": 0,
+   "rejected_by_exact": 3,
    "seconds": {
     "geometry": 0.1,
-    "sweep": 0.1,
-    "loose": 0.2,
-    "total": 0.6
+    "sweep": 0.5,
+    "loose": 0.3,
+    "total": 2.3
    },
-   "findings": [],
+   "findings": [
+    {
+     "a": "lid / clear cover",
+     "b": "vial / vial",
+     "pieces": [
+      "lid",
+      "vial"
+     ],
+     "level": "fault",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 2.04,
+     "volume_mm3": 580.7,
+     "mujoco_depth_mm": 14.35,
+     "frames": 11,
+     "first_frame": 34,
+     "last_frame": 59,
+     "worst_frame": 34,
+     "at_mm": [
+      -385.0,
+      -185.2,
+      492.0
+     ],
+     "actions": [
+      0,
+      1
+     ],
+     "captions": [
+      "The Aero S's clear cover lifts off; a few grams of atomized powder go into its hopper, ove",
+      "The hopper's gap sets the feed; the cover goes back on."
+     ]
+    },
+    {
+     "a": "body / sample hose",
+     "b": "lid / clear cover",
+     "pieces": [
+      "body",
+      "lid"
+     ],
+     "level": "fault",
+     "kind": "built in",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": false,
+     "thickness_mm": 4.24,
+     "volume_mm3": 1252.1,
+     "mujoco_depth_mm": 17.38,
+     "frames": 90,
+     "first_frame": 0,
+     "last_frame": 170,
+     "worst_frame": 0,
+     "at_mm": [
+      -267.3,
+      -152.0,
+      266.9
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3
+     ],
+     "captions": [
+      "as modelled",
+      "The Aero S's clear cover lifts off; a few grams of atomized powder go into its hopper, ove",
+      "The hopper's gap sets the feed; the cover goes back on.",
+      "Air on and the background measured, then the tray vibrates the powder into the venturi, an",
+      "The scattering gives the size distribution, 0.1 um to 3.5 mm, in under a minute; the extra"
+     ]
+    },
+    {
+     "a": "body / Aero S deck",
+     "b": "lid / clear cover",
+     "pieces": [
+      "body",
+      "lid"
+     ],
+     "level": "fault",
+     "kind": "built in",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": false,
+     "thickness_mm": 3.07,
+     "volume_mm3": 9279.9,
+     "mujoco_depth_mm": 6.0,
+     "frames": 83,
+     "first_frame": 0,
+     "last_frame": 170,
+     "worst_frame": 0,
+     "at_mm": [
+      -388.0,
+      -198.0,
+      253.6
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3
+     ],
+     "captions": [
+      "as modelled",
+      "The Aero S's clear cover lifts off; a few grams of atomized powder go into its hopper, ove",
+      "The hopper's gap sets the feed; the cover goes back on.",
+      "Air on and the background measured, then the tray vibrates the powder into the venturi, an",
+      "The scattering gives the size distribution, 0.1 um to 3.5 mm, in under a minute; the extra"
+     ]
+    },
+    {
+     "a": "body / venturi outlet",
+     "b": "lid / clear cover",
+     "pieces": [
+      "body",
+      "lid"
+     ],
+     "level": "fault",
+     "kind": "built in",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": false,
+     "thickness_mm": 3.0,
+     "volume_mm3": 1138.5,
+     "mujoco_depth_mm": 6.0,
+     "frames": 93,
+     "first_frame": 0,
+     "last_frame": 170,
+     "worst_frame": 0,
+     "at_mm": [
+      -266.5,
+      -183.0,
+      280.0
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3
+     ],
+     "captions": [
+      "as modelled",
+      "The Aero S's clear cover lifts off; a few grams of atomized powder go into its hopper, ove",
+      "The hopper's gap sets the feed; the cover goes back on.",
+      "Air on and the background measured, then the tray vibrates the powder into the venturi, an",
+      "The scattering gives the size distribution, 0.1 um to 3.5 mm, in under a minute; the extra"
+     ]
+    },
+    {
+     "a": "body / tray carrier",
+     "b": "tray / vibrating tray",
+     "pieces": [
+      "body",
+      "tray"
+     ],
+     "level": "fault",
+     "kind": "guide",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": true,
+     "thickness_mm": 3.4,
+     "volume_mm3": 689.0,
+     "mujoco_depth_mm": 8.08,
+     "frames": 139,
+     "first_frame": 0,
+     "last_frame": 170,
+     "worst_frame": 112,
+     "at_mm": [
+      -457.5,
+      -183.0,
+      303.4
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3
+     ],
+     "captions": [
+      "as modelled",
+      "The Aero S's clear cover lifts off; a few grams of atomized powder go into its hopper, ove",
+      "The hopper's gap sets the feed; the cover goes back on.",
+      "Air on and the background measured, then the tray vibrates the powder into the venturi, an",
+      "The scattering gives the size distribution, 0.1 um to 3.5 mm, in under a minute; the extra"
+     ]
+    },
+    {
+     "a": "body / venturi",
+     "b": "tray / vibrating tray",
+     "pieces": [
+      "body",
+      "tray"
+     ],
+     "level": "fault",
+     "kind": "guide",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": false,
+     "thickness_mm": 3.06,
+     "volume_mm3": 339.7,
+     "mujoco_depth_mm": 4.5,
+     "frames": 135,
+     "first_frame": 0,
+     "last_frame": 170,
+     "worst_frame": 111,
+     "at_mm": [
+      -303.1,
+      -183.0,
+      303.8
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3
+     ],
+     "captions": [
+      "as modelled",
+      "The Aero S's clear cover lifts off; a few grams of atomized powder go into its hopper, ove",
+      "The hopper's gap sets the feed; the cover goes back on.",
+      "Air on and the background measured, then the tray vibrates the powder into the venturi, an",
+      "The scattering gives the size distribution, 0.1 um to 3.5 mm, in under a minute; the extra"
+     ]
+    },
+    {
+     "a": "body / hopper",
+     "b": "tray / vibrating tray",
+     "pieces": [
+      "body",
+      "tray"
+     ],
+     "level": "fault",
+     "kind": "guide",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": true,
+     "thickness_mm": 2.32,
+     "volume_mm3": 1165.5,
+     "mujoco_depth_mm": 7.51,
+     "frames": 139,
+     "first_frame": 0,
+     "last_frame": 170,
+     "worst_frame": 112,
+     "at_mm": [
+      -439.1,
+      -183.0,
+      303.8
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3
+     ],
+     "captions": [
+      "as modelled",
+      "The Aero S's clear cover lifts off; a few grams of atomized powder go into its hopper, ove",
+      "The hopper's gap sets the feed; the cover goes back on.",
+      "Air on and the background measured, then the tray vibrates the powder into the venturi, an",
+      "The scattering gives the size distribution, 0.1 um to 3.5 mm, in under a minute; the extra"
+     ]
+    }
+   ],
    "loose": [
     {
-     "piece": "lid",
-     "gap_at_rest_mm": 0.6,
-     "worst_gap_mm": 22.1,
-     "worst_frame": 41,
-     "when": "The Aero S's clear dome lifts; a vial of atomized powder (a few grams) is emptied into its"
+     "piece": "vial",
+     "gap_at_rest_mm": 111.0,
+     "worst_gap_mm": 111.0,
+     "worst_frame": 0,
+     "when": "as modelled"
     }
-   ]
+   ],
+   "not_rigid_left_out": []
   },
   "instron_small": {
    "key": "instron_small",
@@ -517,9 +2535,9 @@
    "rejected_by_exact": 0,
    "seconds": {
     "geometry": 0.0,
-    "sweep": 0.0,
+    "sweep": 0.1,
     "loose": 0.0,
-    "total": 0.1
+    "total": 0.2
    },
    "findings": [
     {
@@ -558,7 +2576,8 @@
      ]
     }
    ],
-   "loose": []
+   "loose": [],
+   "not_rigid_left_out": []
   },
   "instron_floor": {
    "key": "instron_floor",
@@ -577,9 +2596,9 @@
    "rejected_by_exact": 79,
    "seconds": {
     "geometry": 0.0,
-    "sweep": 0.0,
+    "sweep": 0.2,
     "loose": 0.0,
-    "total": 0.1
+    "total": 0.5
    },
    "findings": [
     {
@@ -653,7 +2672,8 @@
      ]
     }
    ],
-   "loose": []
+   "loose": [],
+   "not_rigid_left_out": []
   },
   "wire_edm": {
    "key": "wire_edm",
@@ -672,9 +2692,9 @@
    "rejected_by_exact": 213,
    "seconds": {
     "geometry": 0.0,
-    "sweep": 1.1,
+    "sweep": 1.0,
     "loose": 0.0,
-    "total": 1.3
+    "total": 1.1
    },
    "findings": [
     {
@@ -763,7 +2783,7 @@
      "intended": "the wire cutting the bars off at their base: the cut itself",
      "at_rest": false,
      "all_frames": false,
-     "thickness_mm": 2.0,
+     "thickness_mm": 1.95,
      "volume_mm3": 125.5,
      "mujoco_depth_mm": 4.0,
      "frames": 1,
@@ -794,7 +2814,7 @@
      "intended": "the wire cutting the bars off at their base: the cut itself",
      "at_rest": false,
      "all_frames": false,
-     "thickness_mm": 2.0,
+     "thickness_mm": 1.95,
      "volume_mm3": 125.5,
      "mujoco_depth_mm": 4.0,
      "frames": 1,
@@ -825,7 +2845,7 @@
      "intended": "the wire cutting the bars off at their base: the cut itself",
      "at_rest": false,
      "all_frames": false,
-     "thickness_mm": 2.0,
+     "thickness_mm": 1.95,
      "volume_mm3": 125.5,
      "mujoco_depth_mm": 4.0,
      "frames": 1,
@@ -856,7 +2876,7 @@
      "intended": "the wire cutting the bars off at their base: the cut itself",
      "at_rest": false,
      "all_frames": false,
-     "thickness_mm": 2.0,
+     "thickness_mm": 1.95,
      "volume_mm3": 125.5,
      "mujoco_depth_mm": 4.0,
      "frames": 1,
@@ -887,7 +2907,7 @@
      "intended": "the wire cutting the bars off at their base: the cut itself",
      "at_rest": false,
      "all_frames": false,
-     "thickness_mm": 2.0,
+     "thickness_mm": 1.95,
      "volume_mm3": 125.5,
      "mujoco_depth_mm": 4.0,
      "frames": 2,
@@ -920,7 +2940,7 @@
      "intended": "the wire cutting the bars off at their base: the cut itself",
      "at_rest": false,
      "all_frames": false,
-     "thickness_mm": 2.0,
+     "thickness_mm": 1.95,
      "volume_mm3": 125.5,
      "mujoco_depth_mm": 4.0,
      "frames": 2,
@@ -942,7 +2962,8 @@
      ]
     }
    ],
-   "loose": []
+   "loose": [],
+   "not_rigid_left_out": []
   },
   "glovebox": {
    "key": "glovebox",
@@ -961,9 +2982,9 @@
    "rejected_by_exact": 55,
    "seconds": {
     "geometry": 0.0,
-    "sweep": 0.5,
-    "loose": 0.0,
-    "total": 0.6
+    "sweep": 0.3,
+    "loose": 0.1,
+    "total": 0.4
    },
    "findings": [],
    "loose": [
@@ -974,7 +2995,8 @@
      "worst_frame": 35,
      "when": "The automatic antechamber's outer door swings open on the side facing the line, where an a"
     }
-   ]
+   ],
+   "not_rigid_left_out": []
   },
   "rail": {
    "key": "rail",
@@ -998,7 +3020,8 @@
     "total": 0.1
    },
    "findings": [],
-   "loose": []
+   "loose": [],
+   "not_rigid_left_out": []
   },
   "openflexure_array": {
    "key": "openflexure_array",
@@ -1010,45 +3033,121 @@
    "model": "Keyence VHX-7000 + EA-300",
    "module": "instruments_char",
    "frames": 265,
-   "parts": 34,
-   "nonconvex_parts": 1,
-   "mujoco_geoms": 36,
+   "parts": 43,
+   "nonconvex_parts": 4,
+   "mujoco_geoms": 51,
    "moving_pieces": 6,
    "pose_error_mm": 0.0,
-   "candidates": 1065,
-   "confirmed": 339,
-   "intended_not_rechecked": 726,
+   "candidates": 770,
+   "confirmed": 770,
+   "intended_not_rechecked": 0,
    "rejected_by_exact": 0,
    "seconds": {
-    "geometry": 0.0,
-    "sweep": 0.6,
-    "loose": 0.2,
-    "total": 1.1
+    "geometry": 0.2,
+    "sweep": 0.8,
+    "loose": 0.3,
+    "total": 1.9
    },
    "findings": [
     {
-     "a": "body / column face",
-     "b": "head / arm",
+     "a": "body / arch",
+     "b": "head / EA-300 side panel",
      "pieces": [
       "body",
       "head"
      ],
-     "level": "minor",
+     "level": "fault",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 3.16,
+     "volume_mm3": 627.1,
+     "mujoco_depth_mm": 19.92,
+     "frames": 19,
+     "first_frame": 65,
+     "last_frame": 135,
+     "worst_frame": 67,
+     "at_mm": [
+      11.2,
+      -53.0,
+      566.3
+     ],
+     "actions": [
+      1,
+      2
+     ],
+     "captions": [
+      "The free-angle head tilts to look at the surface from the side; the view stays centred on ",
+      "Upright again. Depth composition: the motorized Z focus sweeps through the relief and the "
+     ]
+    },
+    {
+     "a": "body / column",
+     "b": "head / EA-300",
+     "pieces": [
+      "body",
+      "head"
+     ],
+     "level": "fault",
+     "kind": "built in",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": true,
+     "thickness_mm": 22.45,
+     "volume_mm3": 565398.8,
+     "mujoco_depth_mm": 20.0,
+     "frames": 265,
+     "first_frame": 0,
+     "last_frame": 312,
+     "worst_frame": 0,
+     "at_mm": [
+      9.8,
+      179.4,
+      455.0
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "captions": [
+      "as modelled",
+      "A polished, mounted coupon goes onto the VHX-S750E's motorized XY stage (+-20 mm).",
+      "The free-angle head tilts to look at the surface from the side; the view stays centred on ",
+      "Upright again. Depth composition: the motorized Z focus sweeps through the relief and the ",
+      "The EA-300 fires: a 355 nm Nd:YAG pulse (drawn red, and far wider than its 10 um spot) tur",
+      "Its spectrometer reads the plasma's light: elements from H to U, in seconds, at the spot t",
+      "The EA-300 adds 7.2 kg to the stand. Stand and head are about 656 mm tall: under Kardex's "
+     ]
+    },
+    {
+     "a": "body / arch",
+     "b": "head / EA-300",
+     "pieces": [
+      "body",
+      "head"
+     ],
+     "level": "fault",
      "kind": "built in",
      "intended": null,
      "at_rest": true,
      "all_frames": false,
-     "thickness_mm": 1.0,
-     "volume_mm3": 4638.4,
-     "mujoco_depth_mm": 1.0,
-     "frames": 245,
+     "thickness_mm": 21.83,
+     "volume_mm3": 53823.8,
+     "mujoco_depth_mm": 51.98,
+     "frames": 221,
      "first_frame": 0,
      "last_frame": 312,
-     "worst_frame": 133,
+     "worst_frame": 148,
      "at_mm": [
-      -31.5,
-      79.5,
-      376.2
+      0.2,
+      -62.1,
+      578.2
      ],
      "actions": [
       -1,
@@ -1066,164 +3165,32 @@
       "Upright again. Depth composition: the motorized Z focus sweeps through the relief and the ",
       "The EA-300 fires: a 355 nm Nd:YAG pulse (drawn red, and far wider than its 10 um spot) tur",
       "Its spectrometer reads the plasma's light: elements from H to U, in seconds, at the spot t",
-      "The EA-300 adds 7.2 kg and 375 mm to the stand. Stand and head are 655 mm tall: under Kard"
+      "The EA-300 adds 7.2 kg to the stand. Stand and head are about 656 mm tall: under Kardex's "
      ]
     },
     {
-     "a": "body / tilt guide -2",
-     "b": "head / arm",
+     "a": "body / column flank -1",
+     "b": "head / EA-300",
      "pieces": [
       "body",
       "head"
      ],
      "level": "fault",
-     "kind": "motion",
-     "intended": "the free-angle head's arm rides its tilt guide",
-     "at_rest": false,
-     "all_frames": false,
-     "thickness_mm": 14.0,
-     "volume_mm3": 14491.9,
-     "mujoco_depth_mm": 14.0,
-     "frames": 9,
-     "first_frame": 60,
-     "last_frame": 140,
+     "kind": "guide",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": true,
+     "thickness_mm": 6.88,
+     "volume_mm3": 13635.1,
+     "mujoco_depth_mm": 5.0,
+     "frames": 265,
+     "first_frame": 0,
+     "last_frame": 312,
      "worst_frame": 120,
      "at_mm": [
-      -77.0,
-      73.0,
-      360.0
-     ],
-     "actions": [
-      1,
-      2
-     ],
-     "captions": [
-      "The free-angle head tilts to look at the surface from the side; the view stays centred on ",
-      "Upright again. Depth composition: the motorized Z focus sweeps through the relief and the "
-     ]
-    },
-    {
-     "a": "body / tilt guide -3",
-     "b": "head / arm",
-     "pieces": [
-      "body",
-      "head"
-     ],
-     "level": "fault",
-     "kind": "motion",
-     "intended": "the free-angle head's arm rides its tilt guide",
-     "at_rest": false,
-     "all_frames": false,
-     "thickness_mm": 14.0,
-     "volume_mm3": 14491.9,
-     "mujoco_depth_mm": 14.0,
-     "frames": 8,
-     "first_frame": 69,
-     "last_frame": 130,
-     "worst_frame": 80,
-     "at_mm": [
-      -112.5,
-      73.0,
-      343.5
-     ],
-     "actions": [
-      1,
-      2
-     ],
-     "captions": [
-      "The free-angle head tilts to look at the surface from the side; the view stays centred on ",
-      "Upright again. Depth composition: the motorized Z focus sweeps through the relief and the "
-     ]
-    },
-    {
-     "a": "body / tilt guide -4",
-     "b": "head / arm",
-     "pieces": [
-      "body",
-      "head"
-     ],
-     "level": "fault",
-     "kind": "motion",
-     "intended": "the free-angle head's arm rides its tilt guide",
-     "at_rest": false,
-     "all_frames": false,
-     "thickness_mm": 14.0,
-     "volume_mm3": 14081.3,
-     "mujoco_depth_mm": 14.0,
-     "frames": 6,
-     "first_frame": 77,
-     "last_frame": 120,
-     "worst_frame": 100,
-     "at_mm": [
-      -144.2,
-      73.0,
-      321.4
-     ],
-     "actions": [
-      1,
-      2
-     ],
-     "captions": [
-      "The free-angle head tilts to look at the surface from the side; the view stays centred on ",
-      "Upright again. Depth composition: the motorized Z focus sweeps through the relief and the "
-     ]
-    },
-    {
-     "a": "body / tilt guide -5",
-     "b": "head / arm",
-     "pieces": [
-      "body",
-      "head"
-     ],
-     "level": "fault",
-     "kind": "motion",
-     "intended": "the free-angle head's arm rides its tilt guide",
-     "at_rest": false,
-     "all_frames": false,
-     "thickness_mm": 5.73,
-     "volume_mm3": 871.5,
-     "mujoco_depth_mm": 5.58,
-     "frames": 3,
-     "first_frame": 87,
-     "last_frame": 100,
-     "worst_frame": 100,
-     "at_mm": [
-      -156.0,
-      73.0,
-      305.2
-     ],
-     "actions": [
-      1,
-      2
-     ],
-     "captions": [
-      "The free-angle head tilts to look at the surface from the side; the view stays centred on ",
-      "Upright again. Depth composition: the motorized Z focus sweeps through the relief and the "
-     ]
-    },
-    {
-     "a": "body / tilt guide -1",
-     "b": "head / arm",
-     "pieces": [
-      "body",
-      "head"
-     ],
-     "level": "fault",
-     "kind": "built in",
-     "intended": "the free-angle head's arm rides its tilt guide",
-     "at_rest": true,
-     "all_frames": false,
-     "thickness_mm": 14.0,
-     "volume_mm3": 7563.0,
-     "mujoco_depth_mm": 14.0,
-     "frames": 24,
-     "first_frame": 0,
-     "last_frame": 310,
-     "worst_frame": 0,
-     "at_mm": [
-      -28.9,
-      73.0,
-      372.0
+      -73.5,
+      188.3,
+      468.1
      ],
      "actions": [
       -1,
@@ -1241,97 +3208,12 @@
       "Upright again. Depth composition: the motorized Z focus sweeps through the relief and the ",
       "The EA-300 fires: a 355 nm Nd:YAG pulse (drawn red, and far wider than its 10 um spot) tur",
       "Its spectrometer reads the plasma's light: elements from H to U, in seconds, at the spot t",
-      "The EA-300 adds 7.2 kg and 375 mm to the stand. Stand and head are 655 mm tall: under Kard"
-     ]
-    },
-    {
-     "a": "body / tilt guide 0",
-     "b": "head / arm",
-     "pieces": [
-      "body",
-      "head"
-     ],
-     "level": "fault",
-     "kind": "built in",
-     "intended": "the free-angle head's arm rides its tilt guide",
-     "at_rest": true,
-     "all_frames": false,
-     "thickness_mm": 14.0,
-     "volume_mm3": 14086.0,
-     "mujoco_depth_mm": 14.0,
-     "frames": 23,
-     "first_frame": 0,
-     "last_frame": 310,
-     "worst_frame": 140,
-     "at_mm": [
-      -0.6,
-      73.0,
-      373.6
-     ],
-     "actions": [
-      -1,
-      0,
-      1,
-      2,
-      3,
-      4,
-      5
-     ],
-     "captions": [
-      "as modelled",
-      "A polished, mounted coupon goes onto the VHX-S750E's motorized XY stage (+-20 mm).",
-      "The free-angle head tilts to look at the surface from the side; the view stays centred on ",
-      "Upright again. Depth composition: the motorized Z focus sweeps through the relief and the ",
-      "The EA-300 fires: a 355 nm Nd:YAG pulse (drawn red, and far wider than its 10 um spot) tur",
-      "Its spectrometer reads the plasma's light: elements from H to U, in seconds, at the spot t",
-      "The EA-300 adds 7.2 kg and 375 mm to the stand. Stand and head are 655 mm tall: under Kard"
-     ]
-    },
-    {
-     "a": "body / tilt guide 1",
-     "b": "head / arm",
-     "pieces": [
-      "body",
-      "head"
-     ],
-     "level": "fault",
-     "kind": "built in",
-     "intended": "the free-angle head's arm rides its tilt guide",
-     "at_rest": true,
-     "all_frames": false,
-     "thickness_mm": 14.0,
-     "volume_mm3": 7151.7,
-     "mujoco_depth_mm": 14.0,
-     "frames": 21,
-     "first_frame": 0,
-     "last_frame": 310,
-     "worst_frame": 150,
-     "at_mm": [
-      28.3,
-      73.0,
-      372.1
-     ],
-     "actions": [
-      -1,
-      0,
-      1,
-      2,
-      3,
-      4,
-      5
-     ],
-     "captions": [
-      "as modelled",
-      "A polished, mounted coupon goes onto the VHX-S750E's motorized XY stage (+-20 mm).",
-      "The free-angle head tilts to look at the surface from the side; the view stays centred on ",
-      "Upright again. Depth composition: the motorized Z focus sweeps through the relief and the ",
-      "The EA-300 fires: a 355 nm Nd:YAG pulse (drawn red, and far wider than its 10 um spot) tur",
-      "Its spectrometer reads the plasma's light: elements from H to U, in seconds, at the spot t",
-      "The EA-300 adds 7.2 kg and 375 mm to the stand. Stand and head are 655 mm tall: under Kard"
+      "The EA-300 adds 7.2 kg to the stand. Stand and head are about 656 mm tall: under Kardex's "
      ]
     }
    ],
-   "loose": []
+   "loose": [],
+   "not_rigid_left_out": []
   },
   "xrf": {
    "key": "xrf",
@@ -1339,104 +3221,22 @@
    "model": "Bruker S2 PUMA Series 2, XY Autochanger",
    "module": "instruments_char",
    "frames": 256,
-   "parts": 17,
-   "nonconvex_parts": 5,
-   "mujoco_geoms": 110,
+   "parts": 19,
+   "nonconvex_parts": 7,
+   "mujoco_geoms": 119,
    "moving_pieces": 4,
    "pose_error_mm": 0.0,
-   "candidates": 523,
-   "confirmed": 431,
+   "candidates": 186,
+   "confirmed": 95,
    "intended_not_rechecked": 0,
-   "rejected_by_exact": 92,
+   "rejected_by_exact": 91,
    "seconds": {
-    "geometry": 0.1,
-    "sweep": 2.0,
-    "loose": 0.1,
-    "total": 2.9
+    "geometry": 0.0,
+    "sweep": 1.1,
+    "loose": 0.2,
+    "total": 1.5
    },
    "findings": [
-    {
-     "a": "body / measuring window",
-     "b": "lid / lid",
-     "pieces": [
-      "body",
-      "lid"
-     ],
-     "level": "fault",
-     "kind": "built in",
-     "intended": null,
-     "at_rest": true,
-     "all_frames": false,
-     "thickness_mm": 2.0,
-     "volume_mm3": 112.7,
-     "mujoco_depth_mm": 2.0,
-     "frames": 163,
-     "first_frame": 0,
-     "last_frame": 303,
-     "worst_frame": 0,
-     "at_mm": [
-      -209.3,
-      -203.7,
-      421.0
-     ],
-     "actions": [
-      -1,
-      0,
-      2,
-      3,
-      4,
-      5
-     ],
-     "captions": [
-      "as modelled",
-      "The lid lifts on its rear hinge, uncovering the XY Autochanger's 20-position tray.",
-      "Lid down; drawn see-through.",
-      "The changer takes the cup to the measuring position, film side down over the window: the t",
-      "The beam, drawn see-through: up to 50 kV and 50 W from the tube; each element in the powde",
-      "The spectrum: peaks at each element's lines give the composition, Na to Am, in minutes."
-     ]
-    },
-    {
-     "a": "body / deck",
-     "b": "lid / lid",
-     "pieces": [
-      "body",
-      "lid"
-     ],
-     "level": "minor",
-     "kind": "built in",
-     "intended": null,
-     "at_rest": true,
-     "all_frames": false,
-     "thickness_mm": 1.0,
-     "volume_mm3": 8625.9,
-     "mujoco_depth_mm": 1.0,
-     "frames": 173,
-     "first_frame": 0,
-     "last_frame": 303,
-     "worst_frame": 0,
-     "at_mm": [
-      -205.0,
-      78.2,
-      420.5
-     ],
-     "actions": [
-      -1,
-      0,
-      2,
-      3,
-      4,
-      5
-     ],
-     "captions": [
-      "as modelled",
-      "The lid lifts on its rear hinge, uncovering the XY Autochanger's 20-position tray.",
-      "Lid down; drawn see-through.",
-      "The changer takes the cup to the measuring position, film side down over the window: the t",
-      "The beam, drawn see-through: up to 50 kV and 50 W from the tube; each element in the powde",
-      "The spectrum: peaks at each element's lines give the composition, Na to Am, in minutes."
-     ]
-    },
     {
      "a": "sample / film",
      "b": "beam / fluorescence",
@@ -1449,7 +3249,7 @@
      "intended": null,
      "at_rest": false,
      "all_frames": false,
-     "thickness_mm": 0.42,
+     "thickness_mm": 0.43,
      "volume_mm3": 79.6,
      "mujoco_depth_mm": 4.76,
      "frames": 95,
@@ -1457,9 +3257,9 @@
      "last_frame": 303,
      "worst_frame": 201,
      "at_mm": [
-      -202.9,
-      -170.1,
-      422.8
+      -58.4,
+      -209.9,
+      324.8
      ],
      "actions": [
       4,
@@ -1474,12 +3274,13 @@
    "loose": [
     {
      "piece": "lid",
-     "gap_at_rest_mm": 0.0,
-     "worst_gap_mm": 23.4,
+     "gap_at_rest_mm": 4.0,
+     "worst_gap_mm": 41.6,
      "worst_frame": 41,
-     "when": "The lid lifts on its rear hinge, uncovering the XY Autochanger's 20-position tray."
+     "when": "The hood lifts on its rear hinge, uncovering the XY Autochanger's 20-position tray."
     }
-   ]
+   ],
+   "not_rigid_left_out": []
   },
   "sieve": {
    "key": "sieve",
@@ -1498,9 +3299,9 @@
    "rejected_by_exact": 537,
    "seconds": {
     "geometry": 0.1,
-    "sweep": 3.4,
+    "sweep": 5.4,
     "loose": 0.1,
-    "total": 4.1
+    "total": 6.1
    },
    "findings": [
     {
@@ -1642,7 +3443,8 @@
      "worst_frame": 0,
      "when": "as modelled"
     }
-   ]
+   ],
+   "not_rigid_left_out": []
   },
   "cubxl_corrosion": {
    "key": "cubxl_corrosion",
@@ -1661,9 +3463,9 @@
    "rejected_by_exact": 155,
    "seconds": {
     "geometry": 0.1,
-    "sweep": 6.4,
-    "loose": 0.9,
-    "total": 9.1
+    "sweep": 3.9,
+    "loose": 1.1,
+    "total": 7.1
    },
    "findings": [
     {
@@ -1702,39 +3504,6 @@
      ]
     },
     {
-     "a": "body / tip rack 2",
-     "b": "tools / capper magnet",
-     "pieces": [
-      "body",
-      "tools"
-     ],
-     "level": "fault",
-     "kind": "motion",
-     "intended": null,
-     "at_rest": false,
-     "all_frames": false,
-     "thickness_mm": 4.43,
-     "volume_mm3": 107.8,
-     "mujoco_depth_mm": 4.39,
-     "frames": 2,
-     "first_frame": 171,
-     "last_frame": 407,
-     "worst_frame": 407,
-     "at_mm": [
-      -83.1,
-      0.1,
-      143.5
-     ],
-     "actions": [
-      2,
-      6
-     ],
-     "captions": [
-      "Tip off. The capper's magnet picks up the electrode cap: a leak-free 2 mm Ag/AgCl referenc",
-      "The capper lifts the cap off, dips it in the rinse cup and parks it."
-     ]
-    },
-    {
      "a": "body / tip rack 1",
      "b": "tools / capper",
      "pieces": [
@@ -1766,6 +3535,39 @@
      ]
     },
     {
+     "a": "body / tip rack 2",
+     "b": "tools / capper magnet",
+     "pieces": [
+      "body",
+      "tools"
+     ],
+     "level": "fault",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 2.88,
+     "volume_mm3": 107.8,
+     "mujoco_depth_mm": 4.39,
+     "frames": 2,
+     "first_frame": 171,
+     "last_frame": 407,
+     "worst_frame": 407,
+     "at_mm": [
+      -83.1,
+      0.1,
+      143.5
+     ],
+     "actions": [
+      2,
+      6
+     ],
+     "captions": [
+      "Tip off. The capper's magnet picks up the electrode cap: a leak-free 2 mm Ag/AgCl referenc",
+      "The capper lifts the cap off, dips it in the rinse cup and parks it."
+     ]
+    },
+    {
      "a": "tools / capper",
      "b": "tip2 / tip A2",
      "pieces": [
@@ -1777,17 +3579,17 @@
      "intended": null,
      "at_rest": false,
      "all_frames": false,
-     "thickness_mm": 2.88,
-     "volume_mm3": 45.4,
+     "thickness_mm": 2.57,
+     "volume_mm3": 81.3,
      "mujoco_depth_mm": 2.74,
      "frames": 4,
      "first_frame": 82,
      "last_frame": 85,
-     "worst_frame": 85,
+     "worst_frame": 83,
      "at_mm": [
-      101.5,
+      101.6,
       -143.4,
-      148.9
+      146.4
      ],
      "actions": [
       1
@@ -1808,7 +3610,7 @@
      "intended": null,
      "at_rest": false,
      "all_frames": false,
-     "thickness_mm": 2.27,
+     "thickness_mm": 2.09,
      "volume_mm3": 33.0,
      "mujoco_depth_mm": 1.99,
      "frames": 31,
@@ -1845,7 +3647,7 @@
      "intended": null,
      "at_rest": true,
      "all_frames": false,
-     "thickness_mm": 4.6,
+     "thickness_mm": 2.97,
      "volume_mm3": 208.8,
      "mujoco_depth_mm": 8.28,
      "frames": 30,
@@ -1878,7 +3680,7 @@
      "intended": null,
      "at_rest": true,
      "all_frames": false,
-     "thickness_mm": 4.6,
+     "thickness_mm": 2.97,
      "volume_mm3": 208.8,
      "mujoco_depth_mm": 8.27,
      "frames": 379,
@@ -2179,43 +3981,6 @@
     },
     {
      "a": "body / pad S1 +1",
-     "b": "cap / cap body",
-     "pieces": [
-      "body",
-      "cap"
-     ],
-     "level": "touching",
-     "kind": "motion",
-     "intended": null,
-     "at_rest": false,
-     "all_frames": false,
-     "thickness_mm": 0.5,
-     "volume_mm3": 1.2,
-     "mujoco_depth_mm": 0.5,
-     "frames": 153,
-     "first_frame": 206,
-     "last_frame": 382,
-     "worst_frame": 206,
-     "at_mm": [
-      14.7,
-      7.5,
-      106.3
-     ],
-     "actions": [
-      3,
-      4,
-      5,
-      6
-     ],
-     "captions": [
-      "The cap goes on S1. Its pogo pins land on the RE and CE pads; the coupon's back is on the ",
-      "The EZstat Pro beside the deck holds the cell at open circuit for 30 min: OCP settles to E",
-      "LPR, then a cyclic polarization at 1 mV/s: up from 50 mV below OCP, reversing at 1 mA/cm2,",
-      "The capper lifts the cap off, dips it in the rinse cup and parks it."
-     ]
-    },
-    {
-     "a": "body / pad S1 +1",
      "b": "cap / pogo +1",
      "pieces": [
       "body",
@@ -2263,7 +4028,7 @@
      "intended": null,
      "at_rest": false,
      "all_frames": false,
-     "thickness_mm": 0.49,
+     "thickness_mm": 0.43,
      "volume_mm3": 1.2,
      "mujoco_depth_mm": 0.49,
      "frames": 153,
@@ -2272,6 +4037,43 @@
      "worst_frame": 206,
      "at_mm": [
       -4.7,
+      7.5,
+      106.3
+     ],
+     "actions": [
+      3,
+      4,
+      5,
+      6
+     ],
+     "captions": [
+      "The cap goes on S1. Its pogo pins land on the RE and CE pads; the coupon's back is on the ",
+      "The EZstat Pro beside the deck holds the cell at open circuit for 30 min: OCP settles to E",
+      "LPR, then a cyclic polarization at 1 mV/s: up from 50 mV below OCP, reversing at 1 mA/cm2,",
+      "The capper lifts the cap off, dips it in the rinse cup and parks it."
+     ]
+    },
+    {
+     "a": "body / pad S1 +1",
+     "b": "cap / cap body",
+     "pieces": [
+      "body",
+      "cap"
+     ],
+     "level": "touching",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.43,
+     "volume_mm3": 1.2,
+     "mujoco_depth_mm": 0.5,
+     "frames": 153,
+     "first_frame": 206,
+     "last_frame": 382,
+     "worst_frame": 206,
+     "at_mm": [
+      14.7,
       7.5,
       106.3
      ],
@@ -2331,7 +4133,7 @@
      "intended": "the cap's pogo pins compress on the lid's pads",
      "at_rest": false,
      "all_frames": false,
-     "thickness_mm": 1.4,
+     "thickness_mm": 1.17,
      "volume_mm3": 5.4,
      "mujoco_depth_mm": 3.1,
      "frames": 16,
@@ -2368,7 +4170,7 @@
      "intended": "the cap's pogo pins compress on the lid's pads",
      "at_rest": false,
      "all_frames": false,
-     "thickness_mm": 1.4,
+     "thickness_mm": 1.17,
      "volume_mm3": 5.4,
      "mujoco_depth_mm": 3.1,
      "frames": 16,
@@ -2394,7 +4196,8 @@
      ]
     }
    ],
-   "loose": []
+   "loose": [],
+   "not_rigid_left_out": []
   },
   "ded": {
    "key": "ded",
@@ -2413,9 +4216,9 @@
    "rejected_by_exact": 0,
    "seconds": {
     "geometry": 0.2,
-    "sweep": 26.0,
-    "loose": 0.7,
-    "total": 100.6
+    "sweep": 24.1,
+    "loose": 0.8,
+    "total": 88.3
    },
    "findings": [
     {
@@ -2475,62 +4278,17 @@
      "intended": null,
      "at_rest": true,
      "all_frames": false,
-     "thickness_mm": 6.04,
-     "volume_mm3": 1672.5,
+     "thickness_mm": 5.71,
+     "volume_mm3": 1706.5,
      "mujoco_depth_mm": 58.79,
      "frames": 266,
      "first_frame": 0,
      "last_frame": 360,
-     "worst_frame": 185,
-     "at_mm": [
-      6.1,
-      9.9,
-      1447.8
-     ],
-     "actions": [
-      -1,
-      0,
-      1,
-      2,
-      3,
-      4,
-      5,
-      6
-     ],
-     "captions": [
-      "as modelled",
-      "The MX-Lab stands on the floor beside the VLM: 680 x 684 x 835 mm and 250 kg without its b",
-      "The door swings open on its left hinge.",
-      "A steel substrate goes from the shelf onto the 175 x 175 mm worktable.",
-      "Door shut. Argon purges the chamber: InssTek's inert option holds O2 at or below 50 ppm.",
-      "The laser and the powder streams meet at the melt pool. Spoke by spoke, layer by layer: a ",
-      "Laser off; the door opens on six compositions in one build.",
-      ""
-     ]
-    },
-    {
-     "a": "body / cabinet",
-     "b": "head / powder line 1",
-     "pieces": [
-      "body",
-      "head"
-     ],
-     "level": "fault",
-     "kind": "built in",
-     "intended": null,
-     "at_rest": true,
-     "all_frames": false,
-     "thickness_mm": 6.0,
-     "volume_mm3": 1642.2,
-     "mujoco_depth_mm": 58.21,
-     "frames": 262,
-     "first_frame": 0,
-     "last_frame": 360,
      "worst_frame": 0,
      "at_mm": [
-      -25.0,
-      17.1,
-      1448.5
+      6.0,
+      9.7,
+      1448.2
      ],
      "actions": [
       -1,
@@ -2565,17 +4323,62 @@
      "intended": null,
      "at_rest": true,
      "all_frames": false,
-     "thickness_mm": 6.0,
-     "volume_mm3": 1672.5,
+     "thickness_mm": 5.71,
+     "volume_mm3": 1706.5,
      "mujoco_depth_mm": 58.79,
      "frames": 266,
      "first_frame": 0,
      "last_frame": 360,
-     "worst_frame": 185,
+     "worst_frame": 0,
      "at_mm": [
-      -55.8,
-      10.0,
-      1447.8
+      -56.0,
+      9.8,
+      1448.2
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "captions": [
+      "as modelled",
+      "The MX-Lab stands on the floor beside the VLM: 680 x 684 x 835 mm and 250 kg without its b",
+      "The door swings open on its left hinge.",
+      "A steel substrate goes from the shelf onto the 175 x 175 mm worktable.",
+      "Door shut. Argon purges the chamber: InssTek's inert option holds O2 at or below 50 ppm.",
+      "The laser and the powder streams meet at the melt pool. Spoke by spoke, layer by layer: a ",
+      "Laser off; the door opens on six compositions in one build.",
+      ""
+     ]
+    },
+    {
+     "a": "body / cabinet",
+     "b": "head / powder line 1",
+     "pieces": [
+      "body",
+      "head"
+     ],
+     "level": "fault",
+     "kind": "built in",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": false,
+     "thickness_mm": 5.7,
+     "volume_mm3": 1642.2,
+     "mujoco_depth_mm": 58.21,
+     "frames": 262,
+     "first_frame": 0,
+     "last_frame": 360,
+     "worst_frame": 0,
+     "at_mm": [
+      -25.0,
+      17.1,
+      1448.5
      ],
      "actions": [
       -1,
@@ -2651,62 +4454,17 @@
      "intended": null,
      "at_rest": true,
      "all_frames": false,
-     "thickness_mm": 6.06,
-     "volume_mm3": 1853.9,
+     "thickness_mm": 5.73,
+     "volume_mm3": 2123.7,
      "mujoco_depth_mm": 59.89,
      "frames": 286,
      "first_frame": 0,
      "last_frame": 360,
-     "worst_frame": 292,
+     "worst_frame": 0,
      "at_mm": [
-      -22.2,
-      -13.1,
-      1445.7
-     ],
-     "actions": [
-      -1,
-      0,
-      1,
-      2,
-      3,
-      4,
-      5,
-      6
-     ],
-     "captions": [
-      "as modelled",
-      "The MX-Lab stands on the floor beside the VLM: 680 x 684 x 835 mm and 250 kg without its b",
-      "The door swings open on its left hinge.",
-      "A steel substrate goes from the shelf onto the 175 x 175 mm worktable.",
-      "Door shut. Argon purges the chamber: InssTek's inert option holds O2 at or below 50 ppm.",
-      "The laser and the powder streams meet at the melt pool. Spoke by spoke, layer by layer: a ",
-      "Laser off; the door opens on six compositions in one build.",
-      ""
-     ]
-    },
-    {
-     "a": "body / cabinet",
-     "b": "head / powder line 5",
-     "pieces": [
-      "body",
-      "head"
-     ],
-     "level": "fault",
-     "kind": "guide",
-     "intended": null,
-     "at_rest": true,
-     "all_frames": false,
-     "thickness_mm": 6.05,
-     "volume_mm3": 1813.7,
-     "mujoco_depth_mm": 59.58,
-     "frames": 284,
-     "first_frame": 0,
-     "last_frame": 360,
-     "worst_frame": 293,
-     "at_mm": [
-      7.3,
-      -5.9,
-      1446.8
+      -25.0,
+      -12.3,
+      1448.1
      ],
      "actions": [
       -1,
@@ -2741,7 +4499,7 @@
      "intended": null,
      "at_rest": true,
      "all_frames": false,
-     "thickness_mm": 6.01,
+     "thickness_mm": 5.72,
      "volume_mm3": 1954.2,
      "mujoco_depth_mm": 59.58,
      "frames": 284,
@@ -2752,6 +4510,51 @@
       -56.1,
       -4.9,
       1448.1
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "captions": [
+      "as modelled",
+      "The MX-Lab stands on the floor beside the VLM: 680 x 684 x 835 mm and 250 kg without its b",
+      "The door swings open on its left hinge.",
+      "A steel substrate goes from the shelf onto the 175 x 175 mm worktable.",
+      "Door shut. Argon purges the chamber: InssTek's inert option holds O2 at or below 50 ppm.",
+      "The laser and the powder streams meet at the melt pool. Spoke by spoke, layer by layer: a ",
+      "Laser off; the door opens on six compositions in one build.",
+      ""
+     ]
+    },
+    {
+     "a": "body / cabinet",
+     "b": "head / powder line 5",
+     "pieces": [
+      "body",
+      "head"
+     ],
+     "level": "fault",
+     "kind": "guide",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": false,
+     "thickness_mm": 5.72,
+     "volume_mm3": 1954.2,
+     "mujoco_depth_mm": 59.58,
+     "frames": 284,
+     "first_frame": 0,
+     "last_frame": 360,
+     "worst_frame": 0,
+     "at_mm": [
+      6.0,
+      -4.9,
+      1448.2
      ],
      "actions": [
       -1,
@@ -8247,293 +10050,6 @@
      ]
     },
     {
-     "a": "bead2_0_1 / bead",
-     "b": "bead2_1_0 / bead",
-     "pieces": [
-      "bead2_0_1",
-      "bead2_1_0"
-     ],
-     "level": "touching",
-     "kind": "built in",
-     "intended": "weld beads fuse with the beads beside and under them",
-     "at_rest": true,
-     "all_frames": false,
-     "thickness_mm": 0.56,
-     "volume_mm3": 1.3,
-     "mujoco_depth_mm": 0.4,
-     "frames": 17,
-     "first_frame": 0,
-     "last_frame": 200,
-     "worst_frame": 0,
-     "at_mm": [
-      -33.6,
-      -24.8,
-      1132.5
-     ],
-     "actions": [
-      -1,
-      0,
-      1,
-      2,
-      3,
-      4
-     ],
-     "captions": [
-      "as modelled",
-      "The MX-Lab stands on the floor beside the VLM: 680 x 684 x 835 mm and 250 kg without its b",
-      "The door swings open on its left hinge.",
-      "A steel substrate goes from the shelf onto the 175 x 175 mm worktable.",
-      "Door shut. Argon purges the chamber: InssTek's inert option holds O2 at or below 50 ppm.",
-      "The laser and the powder streams meet at the melt pool. Spoke by spoke, layer by layer: a "
-     ]
-    },
-    {
-     "a": "bead2_0_2 / bead",
-     "b": "bead2_1_3 / bead",
-     "pieces": [
-      "bead2_0_2",
-      "bead2_1_3"
-     ],
-     "level": "touching",
-     "kind": "built in",
-     "intended": "weld beads fuse with the beads beside and under them",
-     "at_rest": true,
-     "all_frames": false,
-     "thickness_mm": 0.56,
-     "volume_mm3": 1.3,
-     "mujoco_depth_mm": 0.4,
-     "frames": 18,
-     "first_frame": 0,
-     "last_frame": 210,
-     "worst_frame": 0,
-     "at_mm": [
-      -42.9,
-      -8.8,
-      1132.4
-     ],
-     "actions": [
-      -1,
-      0,
-      1,
-      2,
-      3,
-      4
-     ],
-     "captions": [
-      "as modelled",
-      "The MX-Lab stands on the floor beside the VLM: 680 x 684 x 835 mm and 250 kg without its b",
-      "The door swings open on its left hinge.",
-      "A steel substrate goes from the shelf onto the 175 x 175 mm worktable.",
-      "Door shut. Argon purges the chamber: InssTek's inert option holds O2 at or below 50 ppm.",
-      "The laser and the powder streams meet at the melt pool. Spoke by spoke, layer by layer: a "
-     ]
-    },
-    {
-     "a": "bead4_1_2 / bead",
-     "b": "bead4_2_3 / bead",
-     "pieces": [
-      "bead4_1_2",
-      "bead4_2_3"
-     ],
-     "level": "touching",
-     "kind": "built in",
-     "intended": "weld beads fuse with the beads beside and under them",
-     "at_rest": true,
-     "all_frames": false,
-     "thickness_mm": 0.56,
-     "volume_mm3": 1.3,
-     "mujoco_depth_mm": 0.4,
-     "frames": 21,
-     "first_frame": 0,
-     "last_frame": 240,
-     "worst_frame": 0,
-     "at_mm": [
-      -42.9,
-      -71.2,
-      1132.5
-     ],
-     "actions": [
-      -1,
-      0,
-      1,
-      2,
-      3,
-      4
-     ],
-     "captions": [
-      "as modelled",
-      "The MX-Lab stands on the floor beside the VLM: 680 x 684 x 835 mm and 250 kg without its b",
-      "The door swings open on its left hinge.",
-      "A steel substrate goes from the shelf onto the 175 x 175 mm worktable.",
-      "Door shut. Argon purges the chamber: InssTek's inert option holds O2 at or below 50 ppm.",
-      "The laser and the powder streams meet at the melt pool. Spoke by spoke, layer by layer: a "
-     ]
-    },
-    {
-     "a": "bead4_1_3 / bead",
-     "b": "bead4_2_2 / bead",
-     "pieces": [
-      "bead4_1_3",
-      "bead4_2_2"
-     ],
-     "level": "touching",
-     "kind": "built in",
-     "intended": "weld beads fuse with the beads beside and under them",
-     "at_rest": true,
-     "all_frames": false,
-     "thickness_mm": 0.56,
-     "volume_mm3": 1.3,
-     "mujoco_depth_mm": 0.4,
-     "frames": 21,
-     "first_frame": 0,
-     "last_frame": 240,
-     "worst_frame": 0,
-     "at_mm": [
-      -42.9,
-      -71.2,
-      1132.5
-     ],
-     "actions": [
-      -1,
-      0,
-      1,
-      2,
-      3,
-      4
-     ],
-     "captions": [
-      "as modelled",
-      "The MX-Lab stands on the floor beside the VLM: 680 x 684 x 835 mm and 250 kg without its b",
-      "The door swings open on its left hinge.",
-      "A steel substrate goes from the shelf onto the 175 x 175 mm worktable.",
-      "Door shut. Argon purges the chamber: InssTek's inert option holds O2 at or below 50 ppm.",
-      "The laser and the powder streams meet at the melt pool. Spoke by spoke, layer by layer: a "
-     ]
-    },
-    {
-     "a": "bead5_0_2 / bead",
-     "b": "bead5_1_1 / bead",
-     "pieces": [
-      "bead5_0_2",
-      "bead5_1_1"
-     ],
-     "level": "touching",
-     "kind": "built in",
-     "intended": "weld beads fuse with the beads beside and under them",
-     "at_rest": true,
-     "all_frames": false,
-     "thickness_mm": 0.56,
-     "volume_mm3": 1.3,
-     "mujoco_depth_mm": 0.4,
-     "frames": 19,
-     "first_frame": 0,
-     "last_frame": 220,
-     "worst_frame": 0,
-     "at_mm": [
-      -11.7,
-      -63.1,
-      1132.4
-     ],
-     "actions": [
-      -1,
-      0,
-      1,
-      2,
-      3,
-      4
-     ],
-     "captions": [
-      "as modelled",
-      "The MX-Lab stands on the floor beside the VLM: 680 x 684 x 835 mm and 250 kg without its b",
-      "The door swings open on its left hinge.",
-      "A steel substrate goes from the shelf onto the 175 x 175 mm worktable.",
-      "Door shut. Argon purges the chamber: InssTek's inert option holds O2 at or below 50 ppm.",
-      "The laser and the powder streams meet at the melt pool. Spoke by spoke, layer by layer: a "
-     ]
-    },
-    {
-     "a": "bead5_0_2 / bead",
-     "b": "bead5_1_3 / bead",
-     "pieces": [
-      "bead5_0_2",
-      "bead5_1_3"
-     ],
-     "level": "touching",
-     "kind": "built in",
-     "intended": "weld beads fuse with the beads beside and under them",
-     "at_rest": true,
-     "all_frames": false,
-     "thickness_mm": 0.56,
-     "volume_mm3": 1.3,
-     "mujoco_depth_mm": 0.4,
-     "frames": 19,
-     "first_frame": 0,
-     "last_frame": 220,
-     "worst_frame": 0,
-     "at_mm": [
-      -7.0,
-      -71.1,
-      1132.4
-     ],
-     "actions": [
-      -1,
-      0,
-      1,
-      2,
-      3,
-      4
-     ],
-     "captions": [
-      "as modelled",
-      "The MX-Lab stands on the floor beside the VLM: 680 x 684 x 835 mm and 250 kg without its b",
-      "The door swings open on its left hinge.",
-      "A steel substrate goes from the shelf onto the 175 x 175 mm worktable.",
-      "Door shut. Argon purges the chamber: InssTek's inert option holds O2 at or below 50 ppm.",
-      "The laser and the powder streams meet at the melt pool. Spoke by spoke, layer by layer: a "
-     ]
-    },
-    {
-     "a": "bead5_0_3 / bead",
-     "b": "bead5_1_2 / bead",
-     "pieces": [
-      "bead5_0_3",
-      "bead5_1_2"
-     ],
-     "level": "touching",
-     "kind": "built in",
-     "intended": "weld beads fuse with the beads beside and under them",
-     "at_rest": true,
-     "all_frames": false,
-     "thickness_mm": 0.56,
-     "volume_mm3": 1.3,
-     "mujoco_depth_mm": 0.4,
-     "frames": 20,
-     "first_frame": 0,
-     "last_frame": 250,
-     "worst_frame": 0,
-     "at_mm": [
-      -7.0,
-      -71.1,
-      1132.5
-     ],
-     "actions": [
-      -1,
-      0,
-      1,
-      2,
-      3,
-      4
-     ],
-     "captions": [
-      "as modelled",
-      "The MX-Lab stands on the floor beside the VLM: 680 x 684 x 835 mm and 250 kg without its b",
-      "The door swings open on its left hinge.",
-      "A steel substrate goes from the shelf onto the 175 x 175 mm worktable.",
-      "Door shut. Argon purges the chamber: InssTek's inert option holds O2 at or below 50 ppm.",
-      "The laser and the powder streams meet at the melt pool. Spoke by spoke, layer by layer: a "
-     ]
-    },
-    {
      "a": "bead1_0_0 / bead",
      "b": "bead1_1_1 / bead",
      "pieces": [
@@ -8616,6 +10132,47 @@
      ]
     },
     {
+     "a": "bead2_0_1 / bead",
+     "b": "bead2_1_0 / bead",
+     "pieces": [
+      "bead2_0_1",
+      "bead2_1_0"
+     ],
+     "level": "touching",
+     "kind": "built in",
+     "intended": "weld beads fuse with the beads beside and under them",
+     "at_rest": true,
+     "all_frames": false,
+     "thickness_mm": 0.54,
+     "volume_mm3": 1.3,
+     "mujoco_depth_mm": 0.4,
+     "frames": 17,
+     "first_frame": 0,
+     "last_frame": 200,
+     "worst_frame": 0,
+     "at_mm": [
+      -33.6,
+      -24.8,
+      1132.5
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "captions": [
+      "as modelled",
+      "The MX-Lab stands on the floor beside the VLM: 680 x 684 x 835 mm and 250 kg without its b",
+      "The door swings open on its left hinge.",
+      "A steel substrate goes from the shelf onto the 175 x 175 mm worktable.",
+      "Door shut. Argon purges the chamber: InssTek's inert option holds O2 at or below 50 ppm.",
+      "The laser and the powder streams meet at the melt pool. Spoke by spoke, layer by layer: a "
+     ]
+    },
+    {
      "a": "bead2_0_2 / bead",
      "b": "bead2_1_1 / bead",
      "pieces": [
@@ -8638,6 +10195,47 @@
       -38.3,
       -16.8,
       1132.5
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "captions": [
+      "as modelled",
+      "The MX-Lab stands on the floor beside the VLM: 680 x 684 x 835 mm and 250 kg without its b",
+      "The door swings open on its left hinge.",
+      "A steel substrate goes from the shelf onto the 175 x 175 mm worktable.",
+      "Door shut. Argon purges the chamber: InssTek's inert option holds O2 at or below 50 ppm.",
+      "The laser and the powder streams meet at the melt pool. Spoke by spoke, layer by layer: a "
+     ]
+    },
+    {
+     "a": "bead2_0_2 / bead",
+     "b": "bead2_1_3 / bead",
+     "pieces": [
+      "bead2_0_2",
+      "bead2_1_3"
+     ],
+     "level": "touching",
+     "kind": "built in",
+     "intended": "weld beads fuse with the beads beside and under them",
+     "at_rest": true,
+     "all_frames": false,
+     "thickness_mm": 0.54,
+     "volume_mm3": 1.3,
+     "mujoco_depth_mm": 0.4,
+     "frames": 18,
+     "first_frame": 0,
+     "last_frame": 210,
+     "worst_frame": 0,
+     "at_mm": [
+      -42.9,
+      -8.8,
+      1132.4
      ],
      "actions": [
       -1,
@@ -8985,6 +10583,88 @@
      ]
     },
     {
+     "a": "bead4_1_2 / bead",
+     "b": "bead4_2_3 / bead",
+     "pieces": [
+      "bead4_1_2",
+      "bead4_2_3"
+     ],
+     "level": "touching",
+     "kind": "built in",
+     "intended": "weld beads fuse with the beads beside and under them",
+     "at_rest": true,
+     "all_frames": false,
+     "thickness_mm": 0.54,
+     "volume_mm3": 1.3,
+     "mujoco_depth_mm": 0.4,
+     "frames": 21,
+     "first_frame": 0,
+     "last_frame": 240,
+     "worst_frame": 0,
+     "at_mm": [
+      -42.9,
+      -71.2,
+      1132.5
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "captions": [
+      "as modelled",
+      "The MX-Lab stands on the floor beside the VLM: 680 x 684 x 835 mm and 250 kg without its b",
+      "The door swings open on its left hinge.",
+      "A steel substrate goes from the shelf onto the 175 x 175 mm worktable.",
+      "Door shut. Argon purges the chamber: InssTek's inert option holds O2 at or below 50 ppm.",
+      "The laser and the powder streams meet at the melt pool. Spoke by spoke, layer by layer: a "
+     ]
+    },
+    {
+     "a": "bead4_1_3 / bead",
+     "b": "bead4_2_2 / bead",
+     "pieces": [
+      "bead4_1_3",
+      "bead4_2_2"
+     ],
+     "level": "touching",
+     "kind": "built in",
+     "intended": "weld beads fuse with the beads beside and under them",
+     "at_rest": true,
+     "all_frames": false,
+     "thickness_mm": 0.54,
+     "volume_mm3": 1.3,
+     "mujoco_depth_mm": 0.4,
+     "frames": 21,
+     "first_frame": 0,
+     "last_frame": 240,
+     "worst_frame": 0,
+     "at_mm": [
+      -42.9,
+      -71.2,
+      1132.5
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "captions": [
+      "as modelled",
+      "The MX-Lab stands on the floor beside the VLM: 680 x 684 x 835 mm and 250 kg without its b",
+      "The door swings open on its left hinge.",
+      "A steel substrate goes from the shelf onto the 175 x 175 mm worktable.",
+      "Door shut. Argon purges the chamber: InssTek's inert option holds O2 at or below 50 ppm.",
+      "The laser and the powder streams meet at the melt pool. Spoke by spoke, layer by layer: a "
+     ]
+    },
+    {
      "a": "bead5_0_0 / bead",
      "b": "bead5_1_1 / bead",
      "pieces": [
@@ -9088,6 +10768,129 @@
      "at_mm": [
       -11.7,
       -63.2,
+      1132.5
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "captions": [
+      "as modelled",
+      "The MX-Lab stands on the floor beside the VLM: 680 x 684 x 835 mm and 250 kg without its b",
+      "The door swings open on its left hinge.",
+      "A steel substrate goes from the shelf onto the 175 x 175 mm worktable.",
+      "Door shut. Argon purges the chamber: InssTek's inert option holds O2 at or below 50 ppm.",
+      "The laser and the powder streams meet at the melt pool. Spoke by spoke, layer by layer: a "
+     ]
+    },
+    {
+     "a": "bead5_0_2 / bead",
+     "b": "bead5_1_1 / bead",
+     "pieces": [
+      "bead5_0_2",
+      "bead5_1_1"
+     ],
+     "level": "touching",
+     "kind": "built in",
+     "intended": "weld beads fuse with the beads beside and under them",
+     "at_rest": true,
+     "all_frames": false,
+     "thickness_mm": 0.54,
+     "volume_mm3": 1.3,
+     "mujoco_depth_mm": 0.4,
+     "frames": 19,
+     "first_frame": 0,
+     "last_frame": 220,
+     "worst_frame": 0,
+     "at_mm": [
+      -11.7,
+      -63.1,
+      1132.4
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "captions": [
+      "as modelled",
+      "The MX-Lab stands on the floor beside the VLM: 680 x 684 x 835 mm and 250 kg without its b",
+      "The door swings open on its left hinge.",
+      "A steel substrate goes from the shelf onto the 175 x 175 mm worktable.",
+      "Door shut. Argon purges the chamber: InssTek's inert option holds O2 at or below 50 ppm.",
+      "The laser and the powder streams meet at the melt pool. Spoke by spoke, layer by layer: a "
+     ]
+    },
+    {
+     "a": "bead5_0_2 / bead",
+     "b": "bead5_1_3 / bead",
+     "pieces": [
+      "bead5_0_2",
+      "bead5_1_3"
+     ],
+     "level": "touching",
+     "kind": "built in",
+     "intended": "weld beads fuse with the beads beside and under them",
+     "at_rest": true,
+     "all_frames": false,
+     "thickness_mm": 0.54,
+     "volume_mm3": 1.3,
+     "mujoco_depth_mm": 0.4,
+     "frames": 19,
+     "first_frame": 0,
+     "last_frame": 220,
+     "worst_frame": 0,
+     "at_mm": [
+      -7.0,
+      -71.1,
+      1132.4
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "captions": [
+      "as modelled",
+      "The MX-Lab stands on the floor beside the VLM: 680 x 684 x 835 mm and 250 kg without its b",
+      "The door swings open on its left hinge.",
+      "A steel substrate goes from the shelf onto the 175 x 175 mm worktable.",
+      "Door shut. Argon purges the chamber: InssTek's inert option holds O2 at or below 50 ppm.",
+      "The laser and the powder streams meet at the melt pool. Spoke by spoke, layer by layer: a "
+     ]
+    },
+    {
+     "a": "bead5_0_3 / bead",
+     "b": "bead5_1_2 / bead",
+     "pieces": [
+      "bead5_0_3",
+      "bead5_1_2"
+     ],
+     "level": "touching",
+     "kind": "built in",
+     "intended": "weld beads fuse with the beads beside and under them",
+     "at_rest": true,
+     "all_frames": false,
+     "thickness_mm": 0.54,
+     "volume_mm3": 1.3,
+     "mujoco_depth_mm": 0.4,
+     "frames": 20,
+     "first_frame": 0,
+     "last_frame": 250,
+     "worst_frame": 0,
+     "at_mm": [
+      -7.0,
+      -71.1,
       1132.5
      ],
      "actions": [
@@ -15113,7 +16916,8 @@
      "worst_frame": 79,
      "when": "The door swings open on its left hinge."
     }
-   ]
+   ],
+   "not_rigid_left_out": []
   },
   "packaging": {
    "key": "packaging",
@@ -15131,124 +16935,17 @@
    "intended_not_rechecked": 16,
    "rejected_by_exact": 6,
    "seconds": {
-    "geometry": 0.1,
-    "sweep": 5.6,
-    "loose": 1.0,
-    "total": 7.5
+    "geometry": 0.0,
+    "sweep": 5.0,
+    "loose": 0.7,
+    "total": 6.7
    },
    "findings": [
     {
-     "a": "body / foam insert",
-     "b": "bag / liner bag",
-     "pieces": [
-      "body",
-      "bag"
-     ],
-     "level": "fault",
-     "kind": "motion",
-     "intended": null,
-     "at_rest": false,
-     "all_frames": false,
-     "thickness_mm": 66.54,
-     "volume_mm3": 42448.0,
-     "mujoco_depth_mm": 8.64,
-     "frames": 109,
-     "first_frame": 300,
-     "last_frame": 432,
-     "worst_frame": 318,
-     "at_mm": [
-      561.9,
-      -98.5,
-      29.8
-     ],
-     "actions": [
-      6,
-      7,
-      8,
-      9
-     ],
-     "captions": [
-      "Into the foam insert's cut-out, lying down.",
-      "The lid goes on.",
-      "The ZD621 prints the 4 x 6 in shipping label, and it goes on the lid. Whether the box need",
-      ""
-     ]
-    },
-    {
-     "a": "lid / lid foam",
-     "b": "bag / liner bag",
-     "pieces": [
-      "lid",
-      "bag"
-     ],
-     "level": "fault",
-     "kind": "motion",
-     "intended": null,
-     "at_rest": false,
-     "all_frames": false,
-     "thickness_mm": 13.51,
-     "volume_mm3": 36936.0,
-     "mujoco_depth_mm": 13.5,
-     "frames": 85,
-     "first_frame": 332,
-     "last_frame": 432,
-     "worst_frame": 348,
-     "at_mm": [
-      569.5,
-      -98.5,
-      79.2
-     ],
-     "actions": [
-      7,
-      8,
-      9
-     ],
-     "captions": [
-      "The lid goes on.",
-      "The ZD621 prints the 4 x 6 in shipping label, and it goes on the lid. Whether the box need",
-      ""
-     ]
-    },
-    {
      "a": "lid / lid foam",
      "b": "bag / bag mouth",
      "pieces": [
       "lid",
-      "bag"
-     ],
-     "level": "fault",
-     "kind": "motion",
-     "intended": null,
-     "at_rest": false,
-     "all_frames": false,
-     "thickness_mm": 7.4,
-     "volume_mm3": 822.0,
-     "mujoco_depth_mm": 13.5,
-     "frames": 84,
-     "first_frame": 333,
-     "last_frame": 432,
-     "worst_frame": 333,
-     "at_mm": [
-      662.0,
-      -98.5,
-      83.4
-     ],
-     "actions": [
-      7,
-      8,
-      9
-     ],
-     "captions": [
-      "The lid goes on.",
-      "The ZD621 prints the 4 x 6 in shipping label, and it goes on the lid. Whether the box need",
-      ""
-     ]
-    },
-    {
-     "a": "body / foam insert",
-     "b": "bag / bag mouth",
-     "pieces": [
-      "body",
       "bag"
      ],
      "level": "fault",
@@ -15257,6 +16954,41 @@
      "at_rest": false,
      "all_frames": false,
      "thickness_mm": 6.0,
+     "volume_mm3": 1782.0,
+     "mujoco_depth_mm": 13.5,
+     "frames": 84,
+     "first_frame": 333,
+     "last_frame": 432,
+     "worst_frame": 349,
+     "at_mm": [
+      662.0,
+      -98.5,
+      79.8
+     ],
+     "actions": [
+      7,
+      8,
+      9
+     ],
+     "captions": [
+      "The lid goes on.",
+      "The ZD621 prints the 4 x 6 in shipping label, and it goes on the lid. Whether the box need",
+      ""
+     ]
+    },
+    {
+     "a": "body / foam insert",
+     "b": "bag / bag mouth",
+     "pieces": [
+      "body",
+      "bag"
+     ],
+     "level": "fault",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 5.63,
      "volume_mm3": 924.0,
      "mujoco_depth_mm": 10.59,
      "frames": 105,
@@ -15282,6 +17014,78 @@
      ]
     },
     {
+     "a": "lid / lid foam",
+     "b": "bag / liner bag",
+     "pieces": [
+      "lid",
+      "bag"
+     ],
+     "level": "fault",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 3.89,
+     "volume_mm3": 36936.0,
+     "mujoco_depth_mm": 13.5,
+     "frames": 85,
+     "first_frame": 332,
+     "last_frame": 432,
+     "worst_frame": 348,
+     "at_mm": [
+      569.5,
+      -98.5,
+      79.2
+     ],
+     "actions": [
+      7,
+      8,
+      9
+     ],
+     "captions": [
+      "The lid goes on.",
+      "The ZD621 prints the 4 x 6 in shipping label, and it goes on the lid. Whether the box need",
+      ""
+     ]
+    },
+    {
+     "a": "body / foam insert",
+     "b": "bag / liner bag",
+     "pieces": [
+      "body",
+      "bag"
+     ],
+     "level": "fault",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 3.81,
+     "volume_mm3": 42448.0,
+     "mujoco_depth_mm": 8.64,
+     "frames": 109,
+     "first_frame": 300,
+     "last_frame": 432,
+     "worst_frame": 318,
+     "at_mm": [
+      561.9,
+      -98.5,
+      29.8
+     ],
+     "actions": [
+      6,
+      7,
+      8,
+      9
+     ],
+     "captions": [
+      "Into the foam insert's cut-out, lying down.",
+      "The lid goes on.",
+      "The ZD621 prints the 4 x 6 in shipping label, and it goes on the lid. Whether the box need",
+      ""
+     ]
+    },
+    {
      "a": "press / pressure roller",
      "b": "jar / jar",
      "pieces": [
@@ -15293,17 +17097,17 @@
      "intended": null,
      "at_rest": false,
      "all_frames": false,
-     "thickness_mm": 5.24,
-     "volume_mm3": 3725.8,
+     "thickness_mm": 3.61,
+     "volume_mm3": 3749.8,
      "mujoco_depth_mm": 12.1,
      "frames": 4,
      "first_frame": 113,
      "last_frame": 192,
-     "worst_frame": 113,
+     "worst_frame": 192,
      "at_mm": [
       -250.0,
-      -90.6,
-      223.4
+      -91.4,
+      225.7
      ],
      "actions": [
       2,
@@ -15326,17 +17130,17 @@
      "intended": null,
      "at_rest": false,
      "all_frames": false,
-     "thickness_mm": 4.08,
-     "volume_mm3": 1251.5,
+     "thickness_mm": 3.34,
+     "volume_mm3": 1017.0,
      "mujoco_depth_mm": 12.43,
      "frames": 5,
      "first_frame": 113,
      "last_frame": 192,
-     "worst_frame": 191,
+     "worst_frame": 113,
      "at_mm": [
       -250.0,
-      -78.3,
-      234.0
+      -79.1,
+      233.3
      ],
      "actions": [
       2,
@@ -15344,37 +17148,6 @@
      ],
      "captions": [
       "The jar goes into the AP380, lying down on its rollers; the pressure arm comes down.",
-      "The pressure arm lifts. Out, and into a clear liner bag, standing in front of the H-190 im"
-     ]
-    },
-    {
-     "a": "press / pressure roller",
-     "b": "jarlabel / jar label",
-     "pieces": [
-      "press",
-      "jarlabel"
-     ],
-     "level": "fault",
-     "kind": "motion",
-     "intended": null,
-     "at_rest": false,
-     "all_frames": false,
-     "thickness_mm": 3.8,
-     "volume_mm3": 1239.9,
-     "mujoco_depth_mm": 10.25,
-     "frames": 2,
-     "first_frame": 190,
-     "last_frame": 192,
-     "worst_frame": 192,
-     "at_mm": [
-      -257.8,
-      -91.2,
-      224.2
-     ],
-     "actions": [
-      4
-     ],
-     "captions": [
       "The pressure arm lifts. Out, and into a clear liner bag, standing in front of the H-190 im"
      ]
     },
@@ -15411,72 +17184,6 @@
       "The pressure arm lifts. Out, and into a clear liner bag, standing in front of the H-190 im",
       "The bag's mouth goes across the jaw, and the sealer closes on it: a 12 in seal.",
       "Into the foam insert's cut-out, lying down."
-     ]
-    },
-    {
-     "a": "press / pressure arm",
-     "b": "jarlabel / jar label",
-     "pieces": [
-      "press",
-      "jarlabel"
-     ],
-     "level": "fault",
-     "kind": "motion",
-     "intended": null,
-     "at_rest": false,
-     "all_frames": false,
-     "thickness_mm": 2.59,
-     "volume_mm3": 515.0,
-     "mujoco_depth_mm": 11.36,
-     "frames": 2,
-     "first_frame": 191,
-     "last_frame": 192,
-     "worst_frame": 191,
-     "at_mm": [
-      -250.0,
-      -76.5,
-      233.3
-     ],
-     "actions": [
-      4
-     ],
-     "captions": [
-      "The pressure arm lifts. Out, and into a clear liner bag, standing in front of the H-190 im"
-     ]
-    },
-    {
-     "a": "lid / lid foam",
-     "b": "jarlabel / jar label",
-     "pieces": [
-      "lid",
-      "jarlabel"
-     ],
-     "level": "fault",
-     "kind": "motion",
-     "intended": null,
-     "at_rest": false,
-     "all_frames": false,
-     "thickness_mm": 2.56,
-     "volume_mm3": 1175.3,
-     "mujoco_depth_mm": 2.56,
-     "frames": 83,
-     "first_frame": 334,
-     "last_frame": 432,
-     "worst_frame": 349,
-     "at_mm": [
-      545.0,
-      -98.5,
-      74.2
-     ],
-     "actions": [
-      7,
-      8,
-      9
-     ],
-     "captions": [
-      "The lid goes on.",
-      "The ZD621 prints the 4 x 6 in shipping label, and it goes on the lid. Whether the box need",
-      ""
      ]
     },
     {
@@ -15576,6 +17283,103 @@
       548.5,
       -98.5,
       74.0
+     ],
+     "actions": [
+      7,
+      8,
+      9
+     ],
+     "captions": [
+      "The lid goes on.",
+      "The ZD621 prints the 4 x 6 in shipping label, and it goes on the lid. Whether the box need",
+      ""
+     ]
+    },
+    {
+     "a": "press / pressure roller",
+     "b": "jarlabel / jar label",
+     "pieces": [
+      "press",
+      "jarlabel"
+     ],
+     "level": "minor",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 1.62,
+     "volume_mm3": 1239.9,
+     "mujoco_depth_mm": 10.25,
+     "frames": 2,
+     "first_frame": 190,
+     "last_frame": 192,
+     "worst_frame": 192,
+     "at_mm": [
+      -257.8,
+      -91.2,
+      224.2
+     ],
+     "actions": [
+      4
+     ],
+     "captions": [
+      "The pressure arm lifts. Out, and into a clear liner bag, standing in front of the H-190 im"
+     ]
+    },
+    {
+     "a": "press / pressure arm",
+     "b": "jarlabel / jar label",
+     "pieces": [
+      "press",
+      "jarlabel"
+     ],
+     "level": "minor",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 1.57,
+     "volume_mm3": 444.8,
+     "mujoco_depth_mm": 11.36,
+     "frames": 2,
+     "first_frame": 191,
+     "last_frame": 192,
+     "worst_frame": 192,
+     "at_mm": [
+      -250.0,
+      -79.6,
+      233.1
+     ],
+     "actions": [
+      4
+     ],
+     "captions": [
+      "The pressure arm lifts. Out, and into a clear liner bag, standing in front of the H-190 im"
+     ]
+    },
+    {
+     "a": "lid / lid foam",
+     "b": "jarlabel / jar label",
+     "pieces": [
+      "lid",
+      "jarlabel"
+     ],
+     "level": "minor",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 1.53,
+     "volume_mm3": 1175.3,
+     "mujoco_depth_mm": 2.56,
+     "frames": 83,
+     "first_frame": 334,
+     "last_frame": 432,
+     "worst_frame": 349,
+     "at_mm": [
+      545.0,
+      -98.5,
+      74.2
      ],
      "actions": [
       7,
@@ -16151,7 +17955,8 @@
      "worst_frame": 0,
      "when": "as modelled"
     }
-   ]
+   ],
+   "not_rigid_left_out": []
   },
   "hip": {
    "key": "hip",
@@ -16175,7 +17980,8 @@
     "total": 0.2
    },
    "findings": [],
-   "loose": []
+   "loose": [],
+   "not_rigid_left_out": []
   },
   "tray_dock": {
    "key": "tray_dock",
@@ -16196,7 +18002,7 @@
     "geometry": 0.0,
     "sweep": 0.7,
     "loose": 0.2,
-    "total": 2.6
+    "total": 2.4
    },
    "findings": [
     {
@@ -16211,7 +18017,7 @@
      "intended": null,
      "at_rest": true,
      "all_frames": true,
-     "thickness_mm": 39.6,
+     "thickness_mm": 22.48,
      "volume_mm3": 44688.0,
      "mujoco_depth_mm": 57.0,
      "frames": 172,
@@ -16252,7 +18058,7 @@
      "intended": "the dock's CombiTac half mates with the tray's: pins in bushings, contacts in contacts",
      "at_rest": true,
      "all_frames": false,
-     "thickness_mm": 11.33,
+     "thickness_mm": 7.87,
      "volume_mm3": 2520.8,
      "mujoco_depth_mm": 10.0,
      "frames": 8,
@@ -16706,7 +18512,8 @@
      "worst_frame": 129,
      "when": "The extractor pulls the tray out of the slot, across the dock, which is now 20 mm clear."
     }
-   ]
+   ],
+   "not_rigid_left_out": []
   },
   "stream_cam": {
    "key": "stream_cam",
@@ -16742,7 +18549,7 @@
      "intended": null,
      "at_rest": false,
      "all_frames": false,
-     "thickness_mm": 1.67,
+     "thickness_mm": 1.31,
      "volume_mm3": 67.1,
      "mujoco_depth_mm": 1.64,
      "frames": 62,
@@ -16764,7 +18571,8 @@
      ]
     }
    ],
-   "loose": []
+   "loose": [],
+   "not_rigid_left_out": []
   },
   "metalone": {
    "key": "metalone",
@@ -16784,8 +18592,8 @@
    "seconds": {
     "geometry": 0.0,
     "sweep": 0.9,
-    "loose": 0.1,
-    "total": 1.1
+    "loose": 0.3,
+    "total": 1.4
    },
    "findings": [
     {
@@ -16832,7 +18640,8 @@
      "worst_frame": 29,
      "when": "The chamber door swings open on its left-hand hinge."
     }
-   ]
+   ],
+   "not_rigid_left_out": []
   },
   "snowpod": {
    "key": "snowpod",
@@ -16851,9 +18660,9 @@
    "rejected_by_exact": 0,
    "seconds": {
     "geometry": 0.0,
-    "sweep": 0.2,
-    "loose": 0.2,
-    "total": 0.4
+    "sweep": 0.6,
+    "loose": 0.3,
+    "total": 1.0
    },
    "findings": [
     {
@@ -16947,7 +18756,8 @@
      "worst_frame": 26,
      "when": "The chamber door swings open on its left-hand hinge."
     }
-   ]
+   ],
+   "not_rigid_left_out": []
   },
   "mprint": {
    "key": "mprint",
@@ -16966,9 +18776,9 @@
    "rejected_by_exact": 214,
    "seconds": {
     "geometry": 0.0,
-    "sweep": 2.1,
-    "loose": 0.9,
-    "total": 3.2
+    "sweep": 1.8,
+    "loose": 0.6,
+    "total": 2.5
    },
    "findings": [
     {
@@ -17073,7 +18883,8 @@
      "worst_frame": 32,
      "when": "The hatch opens on the powder revolver: five sealed cartridges, 250 % of the build volume "
     }
-   ]
+   ],
+   "not_rigid_left_out": []
   },
   "meltio_m450": {
    "key": "meltio_m450",
@@ -17092,9 +18903,9 @@
    "rejected_by_exact": 0,
    "seconds": {
     "geometry": 0.0,
-    "sweep": 0.1,
-    "loose": 0.1,
-    "total": 0.3
+    "sweep": 0.5,
+    "loose": 0.5,
+    "total": 1.1
    },
    "findings": [
     {
@@ -17150,7 +18961,8 @@
      "worst_frame": 166,
      "when": "Up a layer, and round again: a wall one bead wide (beads drawn about 5x)."
     }
-   ]
+   ],
+   "not_rigid_left_out": []
   },
   "form4": {
    "key": "form4",
@@ -17158,76 +18970,267 @@
    "model": "Formlabs Form 4",
    "module": "fab_resin",
    "frames": 142,
-   "parts": 40,
+   "parts": 43,
    "nonconvex_parts": 21,
-   "mujoco_geoms": 174,
+   "mujoco_geoms": 194,
    "moving_pieces": 13,
    "pose_error_mm": 0.0,
-   "candidates": 101,
-   "confirmed": 16,
-   "intended_not_rechecked": 85,
-   "rejected_by_exact": 0,
+   "candidates": 678,
+   "confirmed": 492,
+   "intended_not_rechecked": 84,
+   "rejected_by_exact": 102,
    "seconds": {
-    "geometry": 0.0,
-    "sweep": 0.5,
-    "loose": 0.2,
-    "total": 0.8
+    "geometry": 0.1,
+    "sweep": 1.5,
+    "loose": 0.1,
+    "total": 2.2
    },
    "findings": [
     {
-     "a": "body / resin tank",
-     "b": "layer8 / bracket, band 8",
+     "a": "body / cartridge cap",
+     "b": "cover / cover",
      "pieces": [
       "body",
-      "layer8"
+      "cover"
+     ],
+     "level": "fault",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 6.72,
+     "volume_mm3": 4451.5,
+     "mujoco_depth_mm": 14.32,
+     "frames": 20,
+     "first_frame": 65,
+     "last_frame": 178,
+     "worst_frame": 72,
+     "at_mm": [
+      0.0,
+      159.0,
+      546.9
+     ],
+     "actions": [
+      1,
+      4
+     ],
+     "captions": [
+      "Done. The cover swings up and back on hinges at the Z tower's top, to 844 mm: only at the ",
+      ""
+     ]
+    },
+    {
+     "a": "body / resin tank",
+     "b": "cover / cover",
+     "pieces": [
+      "body",
+      "cover"
+     ],
+     "level": "fault",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 5.18,
+     "volume_mm3": 1559.9,
+     "mujoco_depth_mm": 17.02,
+     "frames": 6,
+     "first_frame": 69,
+     "last_frame": 174,
+     "worst_frame": 173,
+     "at_mm": [
+      147.8,
+      38.8,
+      210.5
+     ],
+     "actions": [
+      1,
+      4
+     ],
+     "captions": [
+      "Done. The cover swings up and back on hinges at the Z tower's top, to 844 mm: only at the ",
+      ""
+     ]
+    },
+    {
+     "a": "body / deck",
+     "b": "cover / cover",
+     "pieces": [
+      "body",
+      "cover"
+     ],
+     "level": "fault",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 3.88,
+     "volume_mm3": 1700.3,
+     "mujoco_depth_mm": 4.68,
+     "frames": 11,
+     "first_frame": 62,
+     "last_frame": 180,
+     "worst_frame": 65,
+     "at_mm": [
+      175.1,
+      144.8,
+      171.8
+     ],
+     "actions": [
+      1,
+      4
+     ],
+     "captions": [
+      "Done. The cover swings up and back on hinges at the Z tower's top, to 844 mm: only at the ",
+      ""
+     ]
+    },
+    {
+     "a": "body / Z column right",
+     "b": "holder / carrier",
+     "pieces": [
+      "body",
+      "holder"
+     ],
+     "level": "fault",
+     "kind": "guide",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": true,
+     "thickness_mm": 7.05,
+     "volume_mm3": 4461.6,
+     "mujoco_depth_mm": 6.0,
+     "frames": 142,
+     "first_frame": 0,
+     "last_frame": 181,
+     "worst_frame": 46,
+     "at_mm": [
+      35.1,
+      73.8,
+      406.7
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "captions": [
+      "as modelled",
+      "Printing: the build platform rises out of the resin layer by layer, the parts growing upsi",
+      "Done. The cover swings up and back on hinges at the Z tower's top, to 844 mm: only at the ",
+      "The build platform slides off its mount towards you by the handle, parts and all, for the ",
+      "A fresh platform slides onto the raised mount; it lowers to the tank and the cover shuts.",
+      ""
+     ]
+    },
+    {
+     "a": "body / Z column left",
+     "b": "holder / carrier",
+     "pieces": [
+      "body",
+      "holder"
+     ],
+     "level": "fault",
+     "kind": "guide",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": true,
+     "thickness_mm": 6.19,
+     "volume_mm3": 2061.6,
+     "mujoco_depth_mm": 6.27,
+     "frames": 142,
+     "first_frame": 0,
+     "last_frame": 181,
+     "worst_frame": 0,
+     "at_mm": [
+      -43.8,
+      73.8,
+      247.8
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "captions": [
+      "as modelled",
+      "Printing: the build platform rises out of the resin layer by layer, the parts growing upsi",
+      "Done. The cover swings up and back on hinges at the Z tower's top, to 844 mm: only at the ",
+      "The build platform slides off its mount towards you by the handle, parts and all, for the ",
+      "A fresh platform slides onto the raised mount; it lowers to the tank and the cover shuts.",
+      ""
+     ]
+    },
+    {
+     "a": "body / Z rail",
+     "b": "holder / carrier",
+     "pieces": [
+      "body",
+      "holder"
+     ],
+     "level": "fault",
+     "kind": "guide",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": true,
+     "thickness_mm": 2.0,
+     "volume_mm3": 8120.0,
+     "mujoco_depth_mm": 2.0,
+     "frames": 142,
+     "first_frame": 0,
+     "last_frame": 181,
+     "worst_frame": 21,
+     "at_mm": [
+      -5.0,
+      78.5,
+      297.2
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "captions": [
+      "as modelled",
+      "Printing: the build platform rises out of the resin layer by layer, the parts growing upsi",
+      "Done. The cover swings up and back on hinges at the Z tower's top, to 844 mm: only at the ",
+      "The build platform slides off its mount towards you by the handle, parts and all, for the ",
+      "A fresh platform slides onto the raised mount; it lowers to the tank and the cover shuts.",
+      ""
+     ]
+    },
+    {
+     "a": "body / resin tank",
+     "b": "layer4 / lattice block, band 4",
+     "pieces": [
+      "body",
+      "layer4"
      ],
      "level": "minor",
      "kind": "motion",
      "intended": null,
      "at_rest": false,
      "all_frames": false,
-     "thickness_mm": 1.49,
-     "volume_mm3": 2826.1,
-     "mujoco_depth_mm": 1.49,
+     "thickness_mm": 0.88,
+     "volume_mm3": 224.1,
+     "mujoco_depth_mm": 0.91,
      "frames": 1,
-     "first_frame": 29,
-     "last_frame": 29,
-     "worst_frame": 29,
-     "at_mm": [
-      69.0,
-      -35.0,
-      230.3
-     ],
-     "actions": [
-      0
-     ],
-     "captions": [
-      "Printing: the build platform rises out of the resin layer by layer, the parts growing upsi"
-     ]
-    },
-    {
-     "a": "body / resin tank",
-     "b": "layer2 / lattice block, band 2",
-     "pieces": [
-      "body",
-      "layer2"
-     ],
-     "level": "touching",
-     "kind": "motion",
-     "intended": null,
-     "at_rest": false,
-     "all_frames": false,
-     "thickness_mm": 0.32,
-     "volume_mm3": 81.9,
-     "mujoco_depth_mm": 0.34,
-     "frames": 1,
-     "first_frame": 17,
-     "last_frame": 17,
-     "worst_frame": 17,
+     "first_frame": 22,
+     "last_frame": 22,
+     "worst_frame": 22,
      "at_mm": [
       -76.0,
-      -61.0,
-      230.8
+      -71.0,
+      179.4
      ],
      "actions": [
       0
@@ -17238,27 +19241,27 @@
     },
     {
      "a": "body / resin tank",
-     "b": "layer2 / gear blank, band 2",
+     "b": "layer4 / gear blank, band 4",
      "pieces": [
       "body",
-      "layer2"
+      "layer4"
      ],
-     "level": "touching",
+     "level": "minor",
      "kind": "motion",
      "intended": null,
      "at_rest": false,
      "all_frames": false,
-     "thickness_mm": 0.32,
-     "volume_mm3": 722.6,
-     "mujoco_depth_mm": 0.32,
+     "thickness_mm": 0.88,
+     "volume_mm3": 1976.6,
+     "mujoco_depth_mm": 0.9,
      "frames": 1,
-     "first_frame": 17,
-     "last_frame": 17,
-     "worst_frame": 17,
+     "first_frame": 22,
+     "last_frame": 22,
+     "worst_frame": 22,
      "at_mm": [
       10.0,
-      -35.0,
-      230.8
+      -45.0,
+      179.4
      ],
      "actions": [
       0
@@ -17269,27 +19272,27 @@
     },
     {
      "a": "body / resin tank",
-     "b": "layer2 / bracket, band 2",
+     "b": "layer4 / bracket, band 4",
      "pieces": [
       "body",
-      "layer2"
+      "layer4"
      ],
-     "level": "touching",
+     "level": "minor",
      "kind": "motion",
      "intended": null,
      "at_rest": false,
      "all_frames": false,
-     "thickness_mm": 0.32,
-     "volume_mm3": 192.0,
-     "mujoco_depth_mm": 0.32,
+     "thickness_mm": 0.88,
+     "volume_mm3": 525.2,
+     "mujoco_depth_mm": 0.89,
      "frames": 1,
-     "first_frame": 17,
-     "last_frame": 17,
-     "worst_frame": 17,
+     "first_frame": 22,
+     "last_frame": 22,
+     "worst_frame": 22,
      "at_mm": [
       56.0,
-      -35.0,
-      230.8
+      -45.0,
+      179.4
      ],
      "actions": [
       0
@@ -17300,33 +19303,281 @@
     },
     {
      "a": "body / resin tank",
-     "b": "layer9 / bracket, band 9",
+     "b": "layer5 / lattice block, band 5",
      "pieces": [
       "body",
-      "layer9"
+      "layer5"
      ],
-     "level": "touching",
+     "level": "minor",
      "kind": "motion",
      "intended": null,
      "at_rest": false,
      "all_frames": false,
-     "thickness_mm": 0.17,
-     "volume_mm3": 317.6,
-     "mujoco_depth_mm": 0.17,
+     "thickness_mm": 0.81,
+     "volume_mm3": 207.0,
+     "mujoco_depth_mm": 0.84,
      "frames": 1,
-     "first_frame": 31,
-     "last_frame": 31,
-     "worst_frame": 31,
+     "first_frame": 24,
+     "last_frame": 24,
+     "worst_frame": 24,
      "at_mm": [
-      69.0,
-      -35.0,
-      230.9
+      -76.0,
+      -71.0,
+      179.4
      ],
      "actions": [
       0
      ],
      "captions": [
       "Printing: the build platform rises out of the resin layer by layer, the parts growing upsi"
+     ]
+    },
+    {
+     "a": "body / resin tank",
+     "b": "layer5 / bracket, band 5",
+     "pieces": [
+      "body",
+      "layer5"
+     ],
+     "level": "minor",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.81,
+     "volume_mm3": 485.2,
+     "mujoco_depth_mm": 0.82,
+     "frames": 1,
+     "first_frame": 24,
+     "last_frame": 24,
+     "worst_frame": 24,
+     "at_mm": [
+      56.0,
+      -45.0,
+      179.4
+     ],
+     "actions": [
+      0
+     ],
+     "captions": [
+      "Printing: the build platform rises out of the resin layer by layer, the parts growing upsi"
+     ]
+    },
+    {
+     "a": "body / lip",
+     "b": "cover / cover",
+     "pieces": [
+      "body",
+      "cover"
+     ],
+     "level": "minor",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.69,
+     "volume_mm3": 233.2,
+     "mujoco_depth_mm": 0.69,
+     "frames": 7,
+     "first_frame": 62,
+     "last_frame": 180,
+     "worst_frame": 64,
+     "at_mm": [
+      -181.8,
+      158.3,
+      169.6
+     ],
+     "actions": [
+      1,
+      4
+     ],
+     "captions": [
+      "Done. The cover swings up and back on hinges at the Z tower's top, to 844 mm: only at the ",
+      ""
+     ]
+    },
+    {
+     "a": "body / resin tank",
+     "b": "layer3 / lattice block, band 3",
+     "pieces": [
+      "body",
+      "layer3"
+     ],
+     "level": "touching",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.18,
+     "volume_mm3": 46.3,
+     "mujoco_depth_mm": 0.21,
+     "frames": 1,
+     "first_frame": 20,
+     "last_frame": 20,
+     "worst_frame": 20,
+     "at_mm": [
+      -76.0,
+      -71.0,
+      179.7
+     ],
+     "actions": [
+      0
+     ],
+     "captions": [
+      "Printing: the build platform rises out of the resin layer by layer, the parts growing upsi"
+     ]
+    },
+    {
+     "a": "body / resin tank",
+     "b": "layer3 / gear blank, band 3",
+     "pieces": [
+      "body",
+      "layer3"
+     ],
+     "level": "touching",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.18,
+     "volume_mm3": 408.1,
+     "mujoco_depth_mm": 0.2,
+     "frames": 1,
+     "first_frame": 20,
+     "last_frame": 20,
+     "worst_frame": 20,
+     "at_mm": [
+      10.0,
+      -45.0,
+      179.7
+     ],
+     "actions": [
+      0
+     ],
+     "captions": [
+      "Printing: the build platform rises out of the resin layer by layer, the parts growing upsi"
+     ]
+    },
+    {
+     "a": "body / resin tank",
+     "b": "layer3 / bracket, band 3",
+     "pieces": [
+      "body",
+      "layer3"
+     ],
+     "level": "touching",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.18,
+     "volume_mm3": 108.4,
+     "mujoco_depth_mm": 0.19,
+     "frames": 1,
+     "first_frame": 20,
+     "last_frame": 20,
+     "worst_frame": 20,
+     "at_mm": [
+      56.0,
+      -45.0,
+      179.7
+     ],
+     "actions": [
+      0
+     ],
+     "captions": [
+      "Printing: the build platform rises out of the resin layer by layer, the parts growing upsi"
+     ]
+    },
+    {
+     "a": "body / resin tank",
+     "b": "layer6 / lattice block, band 6",
+     "pieces": [
+      "body",
+      "layer6"
+     ],
+     "level": "touching",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.16,
+     "volume_mm3": 41.0,
+     "mujoco_depth_mm": 0.19,
+     "frames": 1,
+     "first_frame": 26,
+     "last_frame": 26,
+     "worst_frame": 26,
+     "at_mm": [
+      -76.0,
+      -71.0,
+      179.7
+     ],
+     "actions": [
+      0
+     ],
+     "captions": [
+      "Printing: the build platform rises out of the resin layer by layer, the parts growing upsi"
+     ]
+    },
+    {
+     "a": "body / resin tank",
+     "b": "layer6 / bracket, band 6",
+     "pieces": [
+      "body",
+      "layer6"
+     ],
+     "level": "touching",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.16,
+     "volume_mm3": 96.0,
+     "mujoco_depth_mm": 0.17,
+     "frames": 1,
+     "first_frame": 26,
+     "last_frame": 26,
+     "worst_frame": 26,
+     "at_mm": [
+      56.0,
+      -45.0,
+      179.7
+     ],
+     "actions": [
+      0
+     ],
+     "captions": [
+      "Printing: the build platform rises out of the resin layer by layer, the parts growing upsi"
+     ]
+    },
+    {
+     "a": "body / resin tank",
+     "b": "load / build platform",
+     "pieces": [
+      "body",
+      "load"
+     ],
+     "level": "touching",
+     "kind": "built in",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": false,
+     "thickness_mm": 0.0,
+     "volume_mm3": 0.0,
+     "mujoco_depth_mm": 1.99,
+     "frames": 2,
+     "first_frame": 0,
+     "last_frame": 181,
+     "worst_frame": 0,
+     "at_mm": null,
+     "actions": [
+      -1,
+      4
+     ],
+     "captions": [
+      "as modelled",
+      ""
      ]
     },
     {
@@ -17341,35 +19592,34 @@
      "intended": "the build platform's spine slots into the carrier",
      "at_rest": true,
      "all_frames": false,
-     "thickness_mm": 10.0,
-     "volume_mm3": 7280.0,
-     "mujoco_depth_mm": 10.0,
-     "frames": 11,
+     "thickness_mm": 3.0,
+     "volume_mm3": 1680.0,
+     "mujoco_depth_mm": 3.0,
+     "frames": 10,
      "first_frame": 0,
      "last_frame": 180,
-     "worst_frame": 0,
+     "worst_frame": 20,
      "at_mm": [
       0.0,
-      46.5,
-      286.0
+      41.5,
+      262.6
      ],
      "actions": [
       -1,
       0,
       1,
-      3,
       4
      ],
      "captions": [
       "as modelled",
       "Printing: the build platform rises out of the resin layer by layer, the parts growing upsi",
-      "Done. The cover lifts on its rear hinge, to 844 mm: only at the VLM's opening, never in a ",
-      "A fresh platform goes onto the raised carrier; it lowers to the tank and the cover shuts.",
+      "Done. The cover swings up and back on hinges at the Z tower's top, to 844 mm: only at the ",
       ""
      ]
     }
    ],
-   "loose": []
+   "loose": [],
+   "not_rigid_left_out": []
   },
   "form_wash": {
    "key": "form_wash",
@@ -17388,9 +19638,9 @@
    "rejected_by_exact": 0,
    "seconds": {
     "geometry": 0.0,
-    "sweep": 0.2,
+    "sweep": 0.1,
     "loose": 0.1,
-    "total": 0.4
+    "total": 0.3
    },
    "findings": [
     {
@@ -17439,7 +19689,8 @@
      "worst_frame": 29,
      "when": "The lid lifts on its rear hinge, to 714 mm."
     }
-   ]
+   ],
+   "not_rigid_left_out": []
   },
   "form_cure": {
    "key": "form_cure",
@@ -17458,9 +19709,9 @@
    "rejected_by_exact": 0,
    "seconds": {
     "geometry": 0.0,
-    "sweep": 0.1,
-    "loose": 0.1,
-    "total": 0.3
+    "sweep": 0.2,
+    "loose": 0.2,
+    "total": 0.5
    },
    "findings": [],
    "loose": [
@@ -17471,7 +19722,8 @@
      "worst_frame": 29,
      "when": "The door swings open on its left-hand hinge."
     }
-   ]
+   ],
+   "not_rigid_left_out": []
   },
   "stencil": {
    "key": "stencil",
@@ -17492,56 +19744,98 @@
     "geometry": 0.0,
     "sweep": 0.1,
     "loose": 0.2,
-    "total": 0.3
+    "total": 0.4
    },
    "findings": [],
-   "loose": []
+   "loose": [],
+   "not_rigid_left_out": []
   },
   "lumenpnp": {
    "key": "lumenpnp",
    "title": "Pick-and-place, open source",
-   "model": "Opulo LumenPnP v4",
+   "model": "Opulo LumenPnP v4.2",
    "module": "fab_pcb",
-   "frames": 275,
-   "parts": 216,
-   "nonconvex_parts": 6,
-   "mujoco_geoms": 241,
-   "moving_pieces": 8,
+   "frames": 372,
+   "parts": 206,
+   "nonconvex_parts": 34,
+   "mujoco_geoms": 442,
+   "moving_pieces": 17,
    "pose_error_mm": 0.0,
-   "candidates": 553,
-   "confirmed": 553,
+   "candidates": 4899,
+   "confirmed": 3625,
    "intended_not_rechecked": 0,
-   "rejected_by_exact": 0,
+   "rejected_by_exact": 1274,
    "seconds": {
-    "geometry": 0.1,
-    "sweep": 0.5,
-    "loose": 2.7,
-    "total": 3.8
+    "geometry": 0.2,
+    "sweep": 3.4,
+    "loose": 11.6,
+    "total": 15.9
    },
    "findings": [
     {
-     "a": "body / y guide -1",
-     "b": "gantry / y carriage -1",
+     "a": "head / z motor",
+     "b": "zr / back plate",
      "pieces": [
-      "body",
-      "gantry"
+      "head",
+      "zr"
+     ],
+     "level": "fault",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 4.01,
+     "volume_mm3": 291.9,
+     "mujoco_depth_mm": 7.18,
+     "frames": 15,
+     "first_frame": 256,
+     "last_frame": 571,
+     "worst_frame": 409,
+     "at_mm": [
+      39.0,
+      76.1,
+      292.7
+     ],
+     "actions": [
+      10,
+      11,
+      19,
+      20,
+      28,
+      29
+     ],
+     "captions": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+     ]
+    },
+    {
+     "a": "gantry / x extrusion",
+     "b": "head / head carriage",
+     "pieces": [
+      "gantry",
+      "head"
      ],
      "level": "fault",
      "kind": "guide",
      "intended": null,
      "at_rest": true,
-     "all_frames": true,
-     "thickness_mm": 4.0,
-     "volume_mm3": 3840.0,
-     "mujoco_depth_mm": 4.0,
-     "frames": 275,
+     "all_frames": false,
+     "thickness_mm": 18.0,
+     "volume_mm3": 36000.0,
+     "mujoco_depth_mm": 25.0,
+     "frames": 370,
      "first_frame": 0,
-     "last_frame": 466,
-     "worst_frame": 115,
+     "last_frame": 627,
+     "worst_frame": 149,
      "at_mm": [
-      -318.0,
-      -152.1,
-      301.0
+      -138.4,
+      -110.0,
+      245.8
      ],
      "actions": [
       -1,
@@ -17568,23 +19862,28 @@
       20,
       21,
       22,
-      23
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
      ],
      "captions": [
       "as modelled",
-      "A bare board, pasted on tray H's stencil printer, goes onto the staging plate against the ",
-      "The head goes to a feeder; nozzle 1 drops and picks a part by vacuum.",
+      "Opulo's LumenPnP v4.2, built to Opulo's own CAD. A pasted board goes onto the build plate,",
+      "The top camera finds the board's two fiducials.",
+      "",
+      "Nozzle 1 to a feeder's pick window (front and back rails, 25 slots each).",
+      "One Z motor drives both nozzles on one belt: as nozzle 1 goes down, nozzle 2 goes up. Vacu",
+      "",
+      "Over the up-looking camera, its ring light on: it measures the part's offset and angle, an",
       "",
       "",
-      "Over the up-looking camera, which measures the part's offset and rotation on the nozzle.",
-      "To its place on the board, found by the top camera from the board's fiducials; down, and t",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
+      "To its place, found from the fiducials; down, and the vacuum lets go.",
       "",
       "",
       "",
@@ -17594,13 +19893,24 @@
       "",
       "",
       "",
-      "Three parts placed; the head parks and the board goes on to reflow.",
+      "",
+      "",
+      "The third part from a feeder on the back rail.",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Three parts placed; the head goes home and the board goes on to reflow.",
       ""
      ]
     },
     {
-     "a": "body / y guide 1",
-     "b": "gantry / y carriage 1",
+     "a": "body / upper side rail 0",
+     "b": "gantry / y gantry 10",
      "pieces": [
       "body",
       "gantry"
@@ -17610,17 +19920,17 @@
      "intended": null,
      "at_rest": true,
      "all_frames": true,
-     "thickness_mm": 4.0,
-     "volume_mm3": 3840.0,
-     "mujoco_depth_mm": 4.0,
-     "frames": 275,
+     "thickness_mm": 17.46,
+     "volume_mm3": 27524.2,
+     "mujoco_depth_mm": 25.39,
+     "frames": 372,
      "first_frame": 0,
-     "last_frame": 466,
-     "worst_frame": 115,
+     "last_frame": 627,
+     "worst_frame": 50,
      "at_mm": [
-      318.0,
-      -152.1,
-      301.0
+      -278.4,
+      165.6,
+      201.0
      ],
      "actions": [
       -1,
@@ -17647,23 +19957,28 @@
       20,
       21,
       22,
-      23
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
      ],
      "captions": [
       "as modelled",
-      "A bare board, pasted on tray H's stencil printer, goes onto the staging plate against the ",
-      "The head goes to a feeder; nozzle 1 drops and picks a part by vacuum.",
+      "Opulo's LumenPnP v4.2, built to Opulo's own CAD. A pasted board goes onto the build plate,",
+      "The top camera finds the board's two fiducials.",
+      "",
+      "Nozzle 1 to a feeder's pick window (front and back rails, 25 slots each).",
+      "One Z motor drives both nozzles on one belt: as nozzle 1 goes down, nozzle 2 goes up. Vacu",
+      "",
+      "Over the up-looking camera, its ring light on: it measures the part's offset and angle, an",
       "",
       "",
-      "Over the up-looking camera, which measures the part's offset and rotation on the nozzle.",
-      "To its place on the board, found by the top camera from the board's fiducials; down, and t",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
+      "To its place, found from the fiducials; down, and the vacuum lets go.",
       "",
       "",
       "",
@@ -17673,47 +19988,1010 @@
       "",
       "",
       "",
-      "Three parts placed; the head parks and the board goes on to reflow.",
+      "",
+      "",
+      "The third part from a feeder on the back rail.",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Three parts placed; the head goes home and the board goes on to reflow.",
       ""
      ]
     },
     {
-     "a": "body / feeder tape 1",
-     "b": "part / part on the nozzle",
+     "a": "body / upper side rail 580",
+     "b": "gantry / y gantry 590",
      "pieces": [
       "body",
-      "part"
+      "gantry"
+     ],
+     "level": "fault",
+     "kind": "guide",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": true,
+     "thickness_mm": 17.46,
+     "volume_mm3": 27524.2,
+     "mujoco_depth_mm": 25.39,
+     "frames": 372,
+     "first_frame": 0,
+     "last_frame": 627,
+     "worst_frame": 199,
+     "at_mm": [
+      301.6,
+      -35.4,
+      201.0
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+     ],
+     "captions": [
+      "as modelled",
+      "Opulo's LumenPnP v4.2, built to Opulo's own CAD. A pasted board goes onto the build plate,",
+      "The top camera finds the board's two fiducials.",
+      "",
+      "Nozzle 1 to a feeder's pick window (front and back rails, 25 slots each).",
+      "One Z motor drives both nozzles on one belt: as nozzle 1 goes down, nozzle 2 goes up. Vacu",
+      "",
+      "Over the up-looking camera, its ring light on: it measures the part's offset and angle, an",
+      "",
+      "",
+      "To its place, found from the fiducials; down, and the vacuum lets go.",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "The third part from a feeder on the back rail.",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Three parts placed; the head goes home and the board goes on to reflow.",
+      ""
+     ]
+    },
+    {
+     "a": "body / y rail 0",
+     "b": "gantry / y gantry 10",
+     "pieces": [
+      "body",
+      "gantry"
+     ],
+     "level": "fault",
+     "kind": "guide",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": true,
+     "thickness_mm": 8.02,
+     "volume_mm3": 6676.5,
+     "mujoco_depth_mm": 23.0,
+     "frames": 372,
+     "first_frame": 0,
+     "last_frame": 627,
+     "worst_frame": 0,
+     "at_mm": [
+      -278.5,
+      -33.7,
+      215.0
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+     ],
+     "captions": [
+      "as modelled",
+      "Opulo's LumenPnP v4.2, built to Opulo's own CAD. A pasted board goes onto the build plate,",
+      "The top camera finds the board's two fiducials.",
+      "",
+      "Nozzle 1 to a feeder's pick window (front and back rails, 25 slots each).",
+      "One Z motor drives both nozzles on one belt: as nozzle 1 goes down, nozzle 2 goes up. Vacu",
+      "",
+      "Over the up-looking camera, its ring light on: it measures the part's offset and angle, an",
+      "",
+      "",
+      "To its place, found from the fiducials; down, and the vacuum lets go.",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "The third part from a feeder on the back rail.",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Three parts placed; the head goes home and the board goes on to reflow.",
+      ""
+     ]
+    },
+    {
+     "a": "body / y rail 580",
+     "b": "gantry / y gantry 590",
+     "pieces": [
+      "body",
+      "gantry"
+     ],
+     "level": "fault",
+     "kind": "guide",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": true,
+     "thickness_mm": 8.02,
+     "volume_mm3": 6676.5,
+     "mujoco_depth_mm": 22.6,
+     "frames": 372,
+     "first_frame": 0,
+     "last_frame": 627,
+     "worst_frame": 0,
+     "at_mm": [
+      301.5,
+      -33.7,
+      215.0
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+     ],
+     "captions": [
+      "as modelled",
+      "Opulo's LumenPnP v4.2, built to Opulo's own CAD. A pasted board goes onto the build plate,",
+      "The top camera finds the board's two fiducials.",
+      "",
+      "Nozzle 1 to a feeder's pick window (front and back rails, 25 slots each).",
+      "One Z motor drives both nozzles on one belt: as nozzle 1 goes down, nozzle 2 goes up. Vacu",
+      "",
+      "Over the up-looking camera, its ring light on: it measures the part's offset and angle, an",
+      "",
+      "",
+      "To its place, found from the fiducials; down, and the vacuum lets go.",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "The third part from a feeder on the back rail.",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Three parts placed; the head goes home and the board goes on to reflow.",
+      ""
+     ]
+    },
+    {
+     "a": "body / y rail 0",
+     "b": "gantry / y carriage 10",
+     "pieces": [
+      "body",
+      "gantry"
+     ],
+     "level": "fault",
+     "kind": "guide",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": true,
+     "thickness_mm": 8.0,
+     "volume_mm3": 4416.0,
+     "mujoco_depth_mm": 8.0,
+     "frames": 372,
+     "first_frame": 0,
+     "last_frame": 627,
+     "worst_frame": 50,
+     "at_mm": [
+      -278.5,
+      166.2,
+      215.0
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+     ],
+     "captions": [
+      "as modelled",
+      "Opulo's LumenPnP v4.2, built to Opulo's own CAD. A pasted board goes onto the build plate,",
+      "The top camera finds the board's two fiducials.",
+      "",
+      "Nozzle 1 to a feeder's pick window (front and back rails, 25 slots each).",
+      "One Z motor drives both nozzles on one belt: as nozzle 1 goes down, nozzle 2 goes up. Vacu",
+      "",
+      "Over the up-looking camera, its ring light on: it measures the part's offset and angle, an",
+      "",
+      "",
+      "To its place, found from the fiducials; down, and the vacuum lets go.",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "The third part from a feeder on the back rail.",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Three parts placed; the head goes home and the board goes on to reflow.",
+      ""
+     ]
+    },
+    {
+     "a": "body / y rail 580",
+     "b": "gantry / y carriage 590",
+     "pieces": [
+      "body",
+      "gantry"
+     ],
+     "level": "fault",
+     "kind": "guide",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": true,
+     "thickness_mm": 8.0,
+     "volume_mm3": 4416.0,
+     "mujoco_depth_mm": 8.0,
+     "frames": 372,
+     "first_frame": 0,
+     "last_frame": 627,
+     "worst_frame": 50,
+     "at_mm": [
+      301.5,
+      166.2,
+      215.0
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+     ],
+     "captions": [
+      "as modelled",
+      "Opulo's LumenPnP v4.2, built to Opulo's own CAD. A pasted board goes onto the build plate,",
+      "The top camera finds the board's two fiducials.",
+      "",
+      "Nozzle 1 to a feeder's pick window (front and back rails, 25 slots each).",
+      "One Z motor drives both nozzles on one belt: as nozzle 1 goes down, nozzle 2 goes up. Vacu",
+      "",
+      "Over the up-looking camera, its ring light on: it measures the part's offset and angle, an",
+      "",
+      "",
+      "To its place, found from the fiducials; down, and the vacuum lets go.",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "The third part from a feeder on the back rail.",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Three parts placed; the head goes home and the board goes on to reflow.",
+      ""
+     ]
+    },
+    {
+     "a": "gantry / x rail",
+     "b": "head / head carriage",
+     "pieces": [
+      "gantry",
+      "head"
+     ],
+     "level": "fault",
+     "kind": "guide",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": false,
+     "thickness_mm": 8.0,
+     "volume_mm3": 8640.0,
+     "mujoco_depth_mm": 21.0,
+     "frames": 363,
+     "first_frame": 0,
+     "last_frame": 627,
+     "worst_frame": 199,
+     "at_mm": [
+      -144.6,
+      -34.8,
+      259.8
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+     ],
+     "captions": [
+      "as modelled",
+      "Opulo's LumenPnP v4.2, built to Opulo's own CAD. A pasted board goes onto the build plate,",
+      "The top camera finds the board's two fiducials.",
+      "",
+      "Nozzle 1 to a feeder's pick window (front and back rails, 25 slots each).",
+      "One Z motor drives both nozzles on one belt: as nozzle 1 goes down, nozzle 2 goes up. Vacu",
+      "",
+      "Over the up-looking camera, its ring light on: it measures the part's offset and angle, an",
+      "",
+      "",
+      "To its place, found from the fiducials; down, and the vacuum lets go.",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "The third part from a feeder on the back rail.",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Three parts placed; the head goes home and the board goes on to reflow.",
+      ""
+     ]
+    },
+    {
+     "a": "head / z motor",
+     "b": "zr / z gantry",
+     "pieces": [
+      "head",
+      "zr"
      ],
      "level": "minor",
      "kind": "motion",
      "intended": null,
      "at_rest": false,
      "all_frames": false,
-     "thickness_mm": 0.6,
-     "volume_mm3": 48.0,
-     "mujoco_depth_mm": 0.6,
-     "frames": 3,
-     "first_frame": 80,
-     "last_frame": 332,
-     "worst_frame": 80,
+     "thickness_mm": 0.78,
+     "volume_mm3": 2.3,
+     "mujoco_depth_mm": 1.1,
+     "frames": 5,
+     "first_frame": 258,
+     "last_frame": 561,
+     "worst_frame": 561,
      "at_mm": [
-      -150.0,
-      -273.0,
-      240.3
+      68.2,
+      48.6,
+      291.9
      ],
      "actions": [
-      2,
-      9,
-      16
+      10,
+      19,
+      28
      ],
      "captions": [
       "",
       "",
       ""
      ]
+    },
+    {
+     "a": "body / build plate 1 holes",
+     "b": "load / board",
+     "pieces": [
+      "body",
+      "load"
+     ],
+     "level": "touching",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.25,
+     "volume_mm3": 18.1,
+     "mujoco_depth_mm": 0.25,
+     "frames": 315,
+     "first_frame": 41,
+     "last_frame": 595,
+     "worst_frame": 41,
+     "at_mm": [
+      -25.9,
+      5.8,
+      144.2
+     ],
+     "actions": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30
+     ],
+     "captions": [
+      "Opulo's LumenPnP v4.2, built to Opulo's own CAD. A pasted board goes onto the build plate,",
+      "The top camera finds the board's two fiducials.",
+      "",
+      "Nozzle 1 to a feeder's pick window (front and back rails, 25 slots each).",
+      "One Z motor drives both nozzles on one belt: as nozzle 1 goes down, nozzle 2 goes up. Vacu",
+      "",
+      "Over the up-looking camera, its ring light on: it measures the part's offset and angle, an",
+      "",
+      "",
+      "To its place, found from the fiducials; down, and the vacuum lets go.",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "The third part from a feeder on the back rail.",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Three parts placed; the head goes home and the board goes on to reflow."
+     ]
+    },
+    {
+     "a": "body / build plate 2 holes",
+     "b": "load / board",
+     "pieces": [
+      "body",
+      "load"
+     ],
+     "level": "touching",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.25,
+     "volume_mm3": 9.1,
+     "mujoco_depth_mm": 0.25,
+     "frames": 315,
+     "first_frame": 41,
+     "last_frame": 595,
+     "worst_frame": 41,
+     "at_mm": [
+      -25.9,
+      55.8,
+      144.2
+     ],
+     "actions": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30
+     ],
+     "captions": [
+      "Opulo's LumenPnP v4.2, built to Opulo's own CAD. A pasted board goes onto the build plate,",
+      "The top camera finds the board's two fiducials.",
+      "",
+      "Nozzle 1 to a feeder's pick window (front and back rails, 25 slots each).",
+      "One Z motor drives both nozzles on one belt: as nozzle 1 goes down, nozzle 2 goes up. Vacu",
+      "",
+      "Over the up-looking camera, its ring light on: it measures the part's offset and angle, an",
+      "",
+      "",
+      "To its place, found from the fiducials; down, and the vacuum lets go.",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "The third part from a feeder on the back rail.",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "Three parts placed; the head goes home and the board goes on to reflow."
+     ]
+    },
+    {
+     "a": "tip / nozzle 1 tip",
+     "b": "chip1 / chip1 pin 1",
+     "pieces": [
+      "tip",
+      "chip1"
+     ],
+     "level": "touching",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.2,
+     "volume_mm3": 0.1,
+     "mujoco_depth_mm": 0.2,
+     "frames": 1,
+     "first_frame": 259,
+     "last_frame": 259,
+     "worst_frame": 259,
+     "at_mm": [
+      -11.9,
+      21.5,
+      147.1
+     ],
+     "actions": [
+      10
+     ],
+     "captions": [
+      ""
+     ]
+    },
+    {
+     "a": "tip / nozzle 1 tip",
+     "b": "chip2 / chip2 pin 1",
+     "pieces": [
+      "tip",
+      "chip2"
+     ],
+     "level": "touching",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.2,
+     "volume_mm3": 0.1,
+     "mujoco_depth_mm": 0.2,
+     "frames": 1,
+     "first_frame": 410,
+     "last_frame": 410,
+     "worst_frame": 410,
+     "at_mm": [
+      13.2,
+      51.5,
+      147.1
+     ],
+     "actions": [
+      19
+     ],
+     "captions": [
+      ""
+     ]
+    },
+    {
+     "a": "tip / nozzle 1 tip",
+     "b": "chip3 / chip3 pin 1",
+     "pieces": [
+      "tip",
+      "chip3"
+     ],
+     "level": "touching",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.2,
+     "volume_mm3": 0.1,
+     "mujoco_depth_mm": 0.2,
+     "frames": 1,
+     "first_frame": 561,
+     "last_frame": 561,
+     "worst_frame": 561,
+     "at_mm": [
+      41.2,
+      28.5,
+      147.1
+     ],
+     "actions": [
+      28
+     ],
+     "captions": [
+      ""
+     ]
+    },
+    {
+     "a": "body / front feeder 5",
+     "b": "part / part on the nozzle",
+     "pieces": [
+      "body",
+      "part"
+     ],
+     "level": "touching",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.02,
+     "volume_mm3": 0.1,
+     "mujoco_depth_mm": 1.7,
+     "frames": 2,
+     "first_frame": 310,
+     "last_frame": 311,
+     "worst_frame": 311,
+     "at_mm": [
+      -111.7,
+      -167.0,
+      154.9
+     ],
+     "actions": [
+      13
+     ],
+     "captions": [
+      ""
+     ]
+    },
+    {
+     "a": "body / front feeder 2",
+     "b": "part / part on the nozzle",
+     "pieces": [
+      "body",
+      "part"
+     ],
+     "level": "touching",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.01,
+     "volume_mm3": 0.1,
+     "mujoco_depth_mm": 1.7,
+     "frames": 3,
+     "first_frame": 136,
+     "last_frame": 138,
+     "worst_frame": 137,
+     "at_mm": [
+      -165.1,
+      -167.0,
+      155.2
+     ],
+     "actions": [
+      4
+     ],
+     "captions": [
+      "One Z motor drives both nozzles on one belt: as nozzle 1 goes down, nozzle 2 goes up. Vacu"
+     ]
+    },
+    {
+     "a": "body / back feeder 3",
+     "b": "part / part on the nozzle",
+     "pieces": [
+      "body",
+      "part"
+     ],
+     "level": "touching",
+     "kind": "motion",
+     "intended": null,
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 0.0,
+     "volume_mm3": 0.0,
+     "mujoco_depth_mm": 1.7,
+     "frames": 2,
+     "first_frame": 461,
+     "last_frame": 462,
+     "worst_frame": 462,
+     "at_mm": [
+      -149.3,
+      133.0,
+      154.9
+     ],
+     "actions": [
+      22
+     ],
+     "captions": [
+      ""
+     ]
     }
    ],
-   "loose": []
+   "loose": [
+    {
+     "piece": "ychain bend",
+     "gap_at_rest_mm": 20.0,
+     "worst_gap_mm": 20.0,
+     "worst_frame": 0,
+     "when": "as modelled"
+    }
+   ],
+   "not_rigid_left_out": [
+    "xchain low",
+    "xchain up",
+    "ychain low",
+    "ychain up"
+   ]
   },
   "press": {
    "key": "press",
@@ -17732,9 +21010,9 @@
    "rejected_by_exact": 161,
    "seconds": {
     "geometry": 0.0,
-    "sweep": 2.7,
+    "sweep": 1.9,
     "loose": 0.1,
-    "total": 3.7
+    "total": 2.7
    },
    "findings": [
     {
@@ -17749,7 +21027,7 @@
      "intended": null,
      "at_rest": false,
      "all_frames": false,
-     "thickness_mm": 9.0,
+     "thickness_mm": 7.57,
      "volume_mm3": 1522.5,
      "mujoco_depth_mm": 26.91,
      "frames": 101,
@@ -17792,7 +21070,7 @@
      "intended": null,
      "at_rest": false,
      "all_frames": false,
-     "thickness_mm": 6.0,
+     "thickness_mm": 5.14,
      "volume_mm3": 380.6,
      "mujoco_depth_mm": 24.54,
      "frames": 104,
@@ -17835,7 +21113,7 @@
      "intended": null,
      "at_rest": true,
      "all_frames": false,
-     "thickness_mm": 30.0,
+     "thickness_mm": 21.78,
      "volume_mm3": 28193.7,
      "mujoco_depth_mm": 42.74,
      "frames": 61,
@@ -17878,7 +21156,7 @@
      "intended": null,
      "at_rest": true,
      "all_frames": false,
-     "thickness_mm": 18.0,
+     "thickness_mm": 16.34,
      "volume_mm3": 12687.1,
      "mujoco_depth_mm": 37.27,
      "frames": 64,
@@ -17921,7 +21199,7 @@
      "intended": null,
      "at_rest": true,
      "all_frames": true,
-     "thickness_mm": 9.0,
+     "thickness_mm": 6.8,
      "volume_mm3": 888.1,
      "mujoco_depth_mm": 28.99,
      "frames": 111,
@@ -17988,7 +21266,8 @@
      ]
     }
    ],
-   "loose": []
+   "loose": [],
+   "not_rigid_left_out": []
   }
  },
  "summary": {
@@ -17998,17 +21277,17 @@
    "openflexure_delta",
    "openflexure_v7"
   ],
-  "frames": 5771,
-  "mujoco_geoms": 3063,
-  "candidates": 70985,
-  "confirmed": 16888,
-  "rejected_by_exact": 1865,
-  "faults": 48,
-  "minor": 18,
-  "moving_faults": 20,
-  "intended": 339,
+  "frames": 6015,
+  "mujoco_geoms": 3580,
+  "candidates": 78338,
+  "confirmed": 23600,
+  "rejected_by_exact": 3233,
+  "faults": 90,
+  "minor": 35,
+  "moving_faults": 28,
+  "intended": 332,
   "loose": 16,
-  "seconds": 152.6
+  "seconds": 156.6
  },
  "method": {
   "tessellation_mm_rad": [

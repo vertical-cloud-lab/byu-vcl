@@ -601,7 +601,10 @@ class Exact:
                 continue
             c0 = cv.mean(0)
             _, _, vt = np.linalg.svd(cv - c0, full_matrices=False)
-            t = float(np.ptp((cv - c0) @ vt.T, axis=0).min())
+            # its thinnest principal extent, but no more than 4 V / A: a U-shaped overlap (a bag's floor and two
+            # walls in a foam pocket) is one piece whose extents are all large, while 4 V / A stays near twice its
+            # walls' thickness (a slab of thickness t gives 2t, a cube of side a gives 2a/3)
+            t = min(float(np.ptp((cv - c0) @ vt.T, axis=0).min()), 4.0 * comp.volume() / max(comp.surface_area(), 1e-9))
             if t > thick:
                 thick, cen = t, c0
         mesh = x.to_mesh()
