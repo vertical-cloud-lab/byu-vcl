@@ -2,8 +2,9 @@
 
     python3 alloy_route.py        # -> out/mp4/alloy_route.mp4, out/alloy_route.json, out/alloy_route_sheet.png
 
-1. ``alloy_charge.py``: the charge cups, 5N Al and OFE Cu, filled by the multi-doser and their plugs pressed home
-   under vacuum (``alloy_press.py``: a Specac Atlas Autotouch 15T and the lab's evacuable die; VLM, tray B)
+1. ``alloy_charge.py``: the charge cups, four 5N Al and four OFE Cu, dosed by the multi-doser through one funnel per
+   powder, weighed on an A&D HR-202i, and their plugs pressed home under vacuum (``alloy_press.py``: a Specac Atlas
+   Autotouch 15T and the lab's evacuable die; VLM, tray B)
 2. ``alloy_atomize.py``: the Al cups melted in the rePowder and atomized
 3. ``alloy_print.py``: the powder sieved to the LPBF cut and printed in the Aconity MIDI
 4. ``alloy_workflow.py`` (round 4): the build plate to the wire EDM, a tensile bar to the Instron 68FM-100
@@ -25,8 +26,9 @@ from scene import OUT, font
 
 CHAPTERS = [
     ("alloy_charge", "1/4  The charge",
-     "Four 5N Al and four oxygen-free Cu charge cups dosed by the multi-doser through one funnel per powder, "
-     "weighed on an A&D HR-202i and plugged, on tray B of the VLM (alloy_charge_doser.py; the vacuum press is next)"),
+     "Four 5N Al and four oxygen-free Cu charge cups on tray B of the VLM: dosed by the multi-doser through one "
+     "funnel per powder, weighed on an A&D HR-202i, topped up to the plug, and the plug pressed home under vacuum "
+     "in a Specac Atlas Autotouch 15T"),
     ("alloy_atomize", "2/4  Melt and atomize",
      "The four Al cups melted in the rePowder's induction furnace and atomized ultrasonically under argon, cut "
      "with the lab's own footage of its bronze and Al runs"),
