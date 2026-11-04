@@ -55,7 +55,7 @@ camera-carrying tray needs 725-750 mm, because a camera head on a standard post 
 have short posts (block at 270 mm) so their slots stay low.
 
 What is left: Shuttle 1 has 390 mm free at the top of its rear column (3300-3690), too little for a tray with a UPS.
-Its front column has 265 mm free. Shuttle 2 has 590 mm free in the rear column (one more short tray, up to a 575 mm
+Its front column has 290 mm free. Shuttle 2 has 590 mm free in the rear column (one more short tray, up to a 575 mm
 span) and 290 mm in the front.
 
 ## What moved, and why
