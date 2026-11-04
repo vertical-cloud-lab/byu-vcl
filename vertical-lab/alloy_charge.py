@@ -381,7 +381,36 @@ def movie():
     def charge_line():
         L.note(4, "Charge", f"{made['Al']} of 4 Al-10Si, {made['Cu']} of 4 Cu-10Ni cups made up")
 
-    def aim(p, offs, prefer, step=15, close=None, only=None, fallback=True):
+    def line_clear(chk, W, inv, T0, T1, c, only, n=20, free=()):
+        """Whether some IK branch at T0, clear, follows the straight tool line to T1 without a wrist flip and clear of
+        everything but `only` (at T1, where the gripper may touch what it takes) and `free` (anywhere: the part the arm
+        will be carrying along this line), as pre() will need."""
+        import collide
+        import ur_arm
+        from scipy.spatial.transform import Rotation, Slerp
+        sl = Slerp([0.0, 1.0], Rotation.from_matrix(np.stack([T0[:3, :3], T1[:3, :3]])))
+        for q0 in collide.ik_all(rb.model, inv @ T0, rb.q):
+            if chk.collisions(q0, c, W, set(free), first=True):
+                continue
+            q, path, ok = q0, [], True
+            for s_ in np.linspace(0.0, 1.0, n + 1)[1:]:
+                M = np.eye(4)
+                M[:3, :3] = sl([s_]).as_matrix()[0]
+                M[:3, 3] = T0[:3, 3] + (T1[:3, 3] - T0[:3, 3]) * s_
+                qn = ur_arm.ik(rb.model, inv @ M, q)
+                if np.abs(qn - q).max() > np.radians(25):
+                    ok = False
+                    break
+                q = qn
+                path.append(q)
+            if not ok:
+                continue
+            allow = (chk.touching(path[-1], c, W) & set(only or ())) | set(free)
+            if not any(chk.collisions(x, c, W, allow, first=True) for x in path):
+                return True
+        return False
+
+    def aim(p, offs, prefer, step=15, close=None, only=None, fallback=True, lines=()):
         """The horizontal direction to aim a level gripper at p: the clear one nearest `prefer`. offs lists the poses
         the moves use, as (distance back along the direction, height up) from p; each must have an IK solution clear of
         everything (collide.py), and the arm's own links, with what it holds. Square to the tray, a target near the
@@ -389,7 +418,9 @@ def movie():
         approach grips them. An entry of offs may carry a third number, the gripper's closure there; `close` is the
         default (the closure as it is now if None). `only`: the groups the gripper may touch at the contact pose
         (default: whatever it touches there), so that an open fingertip brushing the next cup in a rack rules a
-        direction out; if no direction passes with it, any contact there is allowed, as before."""
+        direction out; if no direction passes with it, any contact there is allowed, as before. `lines`: straight
+        tool lines ((back, up), (back, up), closure, free groups) that must also be clear in one IK branch
+        (line_clear)."""
         import collide
         chk = rb.checker()
         W = chk.snapshot()
@@ -416,6 +447,12 @@ def movie():
                         good = True
                         break
                 if not good:
+                    ok = False
+                    break
+            for (b0, u0), (b1, u1), cc, free in (lines if ok else ()):
+                P = np.asarray(p, float)
+                if not line_clear(chk, W, inv, lvl(P - d * b0 + (0, 0, u0), d), lvl(P - d * b1 + (0, 0, u1), d), cc,
+                                  only, free=free):
                     ok = False
                     break
             if ok:
@@ -484,12 +521,16 @@ def movie():
             only = {f"cup{i}", f"plug{i}", "crack"}
             for bk in (150, 110, 80):
                 d = aim(p0, [(bk, 30, OPEN_RACK), (0, 0, OPEN_RACK), (0, 30, GRIP_CUP), (bk, 0, OPEN_RACK)],
-                        radial(p0), step=5, only=only, fallback=False)
+                        radial(p0), step=5, only=only, fallback=False,
+                        lines=[((bk, 30), (0, 0), OPEN_RACK, ()),
+                               ((bk, 30), (0, 30), GRIP_CUP, (f"cup{i}", f"plug{i}"))])
                 if d is not None:
                     break
-            else:
+            else:                        # its poses clear, but no IK branch with clear lines between them
                 bk = 150
-                d = aim(p0, [(bk, 30, OPEN_RACK), (0, 0, OPEN_RACK), (0, 30, GRIP_CUP)], radial(p0), step=5)
+                print(f"note: {sc.label}: rack cup {i + 1}: no approach with clear lines; poses only", flush=True)
+                d = aim(p0, [(bk, 30, OPEN_RACK), (0, 0, OPEN_RACK), (0, 30, GRIP_CUP), (bk, 0, OPEN_RACK)],
+                        radial(p0), step=5, only=only)
             rack_dir[i], rack_bk[i] = d, bk
         return rack_dir[i]
 
