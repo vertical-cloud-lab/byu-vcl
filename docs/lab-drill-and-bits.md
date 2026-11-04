@@ -2,7 +2,8 @@
 
 Purchase decision for a general-purpose lab drill and bits, from
 [issue #309](https://github.com/vertical-cloud-lab/byu-vcl/issues/309). Prices are the last
-ones found on 2026-10-28, not live ones; check them at checkout.
+ones found on 2026-10-28, not live ones; check them at checkout. The orders for these, along
+with the rest of the lab's wishlist, are in [lab-supplies.md](lab-supplies.md).
 
 ## Drill: DeWalt DCD793D1 (~$99 at Lowe's)
 
