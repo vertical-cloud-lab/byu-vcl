@@ -106,12 +106,13 @@ rails' top (z 3.7) anywhere across the cavity at |y| < 10, where the board and t
 the −X wall open at y −6.5 to 6.5 from z 2.6 up; the −Y wall closed. The base comes to
 11,120 mm³, against 11,289 for the printed one.
 
-**On the deck,** the cable now leaves from −X, the side the stirrer's two keys are lined up
-along. Next to each other in X, 1 mm apart, a stirrer's −X wall faces its neighbour, so a
-block of stirrers can be two columns wide and any number of rows deep, with each turned so
-its −X wall faces out. Four fit as a 2 × 2 block with the cables leaving left and right, or
-as a column of four. A row of three or more in X no longer works. The 10-22 tiling figures in
-the main README still show the notch on −Y.
+**On the deck,** the cable now leaves from −X. Stirrers side by side in X sit 1 mm apart with
+their X walls facing, so a cable can only get out at the ends of a row. A block of stirrers can
+therefore be two stirrers wide in X and any number deep in Y, each turned so its −X wall faces
+out (a stirrer can be turned 180°; its keys still drop into the same two slots). Four fit as a
+2 × 2 block with the cables leaving left and right, or as a column of four. A row of three or
+more in X no longer works. The 10-22 tiling figures in the main README still show the notch
+on −Y.
 
 ## Building it
 
@@ -135,8 +136,8 @@ its parts list, prints, inserts, cable route and its own assembly steps
 - **The junction board** is wired as in BUILD.md's [wiring diagram](../BUILD.md#circuit), hole
   for hole, and goes in as in the 56 × 56 mm base, but with no stop: on the rails, about
   1.5 mm from the −X wall. The cable's cores go from the notch straight into column A, and the
-  MOSFET's legs straight into H2–H4. The Hall sensor's leads come down the −X wall beside the
-  notch.
+  MOSFET's legs straight into H2–H4. The Hall sensor's leads come down from the holder's
+  groove, which ends over the notch, inside the base.
 - **On a base printed on 10-28 or 10-30,** with the stop and the −Y notch, follow
   [BUILD.md as it was](https://github.com/vertical-cloud-lab/byu-vcl/blob/bee02b8/hardware/vial-stirrer-cubxl/BUILD.md)
   for the board, the cable and stage 6.

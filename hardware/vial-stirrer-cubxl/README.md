@@ -191,8 +191,8 @@ What else changes:
   of the block. With the notch on −Y, and each stirrer turned so that side faces out, a block
   two rows deep and any number of columns long works. A third row's cables would have to go
   up or down through the deck, which hasn't been worked out. **Since 2026-11-04 the notch is
-  on −X,** so it is the other way round: a block two columns wide and any number of rows
-  deep, each stirrer turned so its −X wall faces out.
+  on −X,** so it is the other way round: a block two stirrers wide in X and any number deep
+  in Y, each stirrer turned so its −X wall faces out.
 - **The fan's ±0.5 mm thickness moves the vial instead of the magnet gap.** The carrier and
   the holder would then both sit on the fan, so the gap between the magnets and the bar no
   longer depends on how thick the fan is. The vial height does, so teach it.

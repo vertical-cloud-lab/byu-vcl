@@ -546,10 +546,10 @@ washers and screws are drawn to this guide's dimensions
    1.1 to 0.6 mm.
 6. **Holder on.** It fits on two ways round, and only one is right: **the groove goes over
    the −X wall**, the short wall with the cable notch and no vents. Turned the other way, the
-   groove would sit over the vented +X wall and the MOSFET. Fold the Hall leads down the
-   inside of the −X wall, beside the notch, into the 2.9 mm gap between the fan and the
-   wall, and lower the holder straight down onto the washers without knocking them off
-   their holes.
+   groove would sit over the vented +X wall and the MOSFET. The groove ends over the notch:
+   fold the Hall leads straight down from it into the 2.9 mm gap between the fan and the −X
+   wall, inside the base and clear of the cable's jacket, and lower the holder straight down
+   onto the washers without knocking them off their holes.
 7. **Four M3 × 20 through the counterbores,** each through the holder, a washer and the fan
    into its post insert. A screw finds the washer's hole by feel. If one catches, lift the
    holder and re-centre that washer. Start all four by two turns before tightening any, then
@@ -631,8 +631,8 @@ Set the stirrer in its two slots and run the cable clear of the gantry: flat on 
 along its edge, taped, never across a path the head or its cables sweep. Plug in the JST.
 **Compact:** its cable leaves from the −X side. Turn the stirrer so that side faces where
 the cable is to go, and if other labware or a second stirrer is to sit next to it, so that
-the −X side faces out of the block: a block two columns wide, any number of rows deep
-([README](README.md#side-by-side-on-the-deck)). A stirrer on a base printed before
+the −X side faces out of the block: a block two stirrers wide in X, any number deep in Y
+([compact README](compact/README.md#the-2026-11-04-changes)). A stirrer on a base printed before
 2026-11-04 has its cable on the −Y side instead.
 
 This script, on the Pi, starts a timed run and prints the status every 2 s. The two numbers
