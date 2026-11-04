@@ -914,7 +914,7 @@ What is assumed, model by model:
     a count.
   - The heap is a cone on the vial's axis, though the real stream leaves the spout off-centre.
   - As drawn the rig stands 731 mm, 3.5 mm over Kardex's 727.5 mm, so `out/instruments.json` lists it as "beside the
-    VLM". Round 2 has it on tray B (see [the vial](#things-the-model-shows) below).
+    VLM". Round 2 has it on tray B; [Things the model shows](#things-the-model-shows) has the height check.
 
 ## The workflow
 
