@@ -129,6 +129,16 @@
     "commit": "8acb26a",
     "uploaded": "2026-11-04T07:47:46Z",
     "title": "Vertical cloud lab: Opentrons OT-2, the gantry and pipette over the deck, the panels see-through",
+    "privacy": "unlisted",
+    "superseded_by": "1n3WRGPHOr8"
+   },
+   {
+    "id": "1n3WRGPHOr8",
+    "sha256": "0e04f05a742de97526abb7a833ff067aaeebe5e9bf194d9445fcd0ded80a773b",
+    "bytes": 2047966,
+    "commit": "49943cd",
+    "uploaded": "2026-11-04T08:01:07Z",
+    "title": "Vertical cloud lab: Opentrons OT-2, the gantry and pipette over the deck, the panels see-through",
     "privacy": "unlisted"
    }
   ],
@@ -139,6 +149,16 @@
     "bytes": 7338345,
     "commit": "f9b4847",
     "uploaded": "2026-11-04T07:53:19Z",
+    "title": "Vertical cloud lab: OT-2, H2D, A1 mini, CubXL and multi-doser at work, the insides showing",
+    "privacy": "unlisted",
+    "superseded_by": "7eXydqM6OAk"
+   },
+   {
+    "id": "7eXydqM6OAk",
+    "sha256": "4a22c0abc6c9e2b6139d3f0052cd9c8bfc82447dd0afc6ce848fb6783e7b833e",
+    "bytes": 7547869,
+    "commit": "6465606",
+    "uploaded": "2026-11-04T08:01:06Z",
     "title": "Vertical cloud lab: OT-2, H2D, A1 mini, CubXL and multi-doser at work, the insides showing",
     "privacy": "unlisted"
    }

@@ -36,7 +36,7 @@ Every MP4 under `out/mp4/` and its video on the lab's channel (unlisted). Writte
 | [`instruments/openflexure_array.mp4`](mp4/instruments/openflexure_array.mp4) | 0:21 | not uploaded |  |
 | [`instruments/openflexure_delta.mp4`](mp4/instruments/openflexure_delta.mp4) | 0:09 | not uploaded |  |
 | [`instruments/openflexure_v7.mp4`](mp4/instruments/openflexure_v7.mp4) | 0:09 | not uploaded |  |
-| [`instruments/ot2.mp4`](mp4/instruments/ot2.mp4) | 0:24 | [iwYZM4PX32Y](https://www.youtube.com/watch?v=iwYZM4PX32Y) |  |
+| [`instruments/ot2.mp4`](mp4/instruments/ot2.mp4) | 0:24 | [1n3WRGPHOr8](https://www.youtube.com/watch?v=1n3WRGPHOr8) | [iwYZM4PX32Y](https://www.youtube.com/watch?v=iwYZM4PX32Y) |
 | [`instruments/packaging.mp4`](mp4/instruments/packaging.mp4) | 0:29 | not uploaded |  |
 | [`instruments/pip.mp4`](mp4/instruments/pip.mp4) | 0:15 | not uploaded |  |
 | [`instruments/polisher.mp4`](mp4/instruments/polisher.mp4) | 0:18 | not uploaded |  |
@@ -49,7 +49,7 @@ Every MP4 under `out/mp4/` and its video on the lab's channel (unlisted). Writte
 | [`instruments/wire_edm.mp4`](mp4/instruments/wire_edm.mp4) | 0:12 | not uploaded |  |
 | [`instruments/xrd.mp4`](mp4/instruments/xrd.mp4) | 0:17 | not uploaded |  |
 | [`instruments/xrf.mp4`](mp4/instruments/xrf.mp4) | 0:20 | not uploaded |  |
-| [`instruments_round2_tour.mp4`](mp4/instruments_round2_tour.mp4) | 1:47 | [ki0yLSfdTIk](https://www.youtube.com/watch?v=ki0yLSfdTIk) |  |
+| [`instruments_round2_tour.mp4`](mp4/instruments_round2_tour.mp4) | 1:47 | [7eXydqM6OAk](https://www.youtube.com/watch?v=7eXydqM6OAk) | [ki0yLSfdTIk](https://www.youtube.com/watch?v=ki0yLSfdTIk) |
 | [`instruments_round4_tour.mp4`](mp4/instruments_round4_tour.mp4) | 3:49 | [WG_DAtSHg50](https://www.youtube.com/watch?v=WG_DAtSHg50) | [IEbhMjcAUOQ](https://www.youtube.com/watch?v=IEbhMjcAUOQ) |
 | [`instruments_tour.mp4`](mp4/instruments_tour.mp4) | 6:22 | [J7EJQsmyAtk](https://www.youtube.com/watch?v=J7EJQsmyAtk) | [ISyVIHtmvZc](https://www.youtube.com/watch?v=ISyVIHtmvZc) |
 | [`setup_lab.mp4`](mp4/setup_lab.mp4) | 1:53 | not uploaded | [bITROBu1NNE](https://www.youtube.com/watch?v=bITROBu1NNE) |
