@@ -875,11 +875,11 @@ TRAY_CAMS = {   # per tray: (mast x, mast y, aim x, aim y, aim z, post yaw) in t
     # least of the room in either camera's picture with the tray presented (unit_view), then the closest view; posts
     # 15 mm or more clear of every instrument's box, the UPS and the service plate, inside the rim, off the middle
     # half of each instrument's front (where the arm works) and, on tray B, off the front between the rack and the
-    # doser's cup. Each unit stands in front of or beside its instrument and looks back or down at it. Tray B's rack
-    # and doser are at the front edge and the OT-2 has no room in front, so B0, B1, A1 and D2 still see some of the
+    # doser's cup. Each unit stands in front of or beside its instrument and looks back or down at it. Tray B's doser
+    # is at the front edge and the OT-2 has no room in front, so B0, A1 and D2 still see some of the
     # room (cameras.views in services.json).
     "A": [(-680.0, -270.0, -467.0, 6.0, 92.0, 90.0), (210.0, 275.0, 916.0, 102.0, 600.0, 90.0)],
-    "B": [(-120.0, -25.0, -250.0, -356.0, 43.0, 0.0), (685.0, -340.0, 460.0, -222.0, 339.0, 270.0)],
+    "B": [(685.0, -340.0, 460.0, -222.0, 339.0, 270.0)],     # one: a unit over the rack stood in the middle of the tray
     "C": [(-960.0, -340.0, -560.0, 0.0, 600.0, 90.0), (125.0, -235.0, 360.0, 0.0, 486.0, 90.0)],
     "D": [(-225.0, -305.0, -552.0, 0.0, 550.0, 270.0), (300.0, -340.0, 60.0, 0.0, 600.0, 270.0),
           (860.0, 185.0, 1066.0, -43.0, 109.0, 90.0)],
@@ -889,7 +889,7 @@ TRAY_CAMS = {   # per tray: (mast x, mast y, aim x, aim y, aim z, post yaw) in t
 }
 TRAY_CAMS_ROUND5 = {   # where they stood before: at the back, looking forward over their instruments and out of the bay
     "A": [(-760.0, 320.0, -150.0, -150.0, 150.0), (380.0, 350.0, 760.0, -60.0, 330.0, 90.0)],
-    "B": [(-560.0, 320.0, -250.0, -372.0, 60.0), (480.0, 320.0, 250.0, -316.0, 300.0)],
+    "B": [(480.0, 320.0, 250.0, -316.0, 300.0), (-560.0, 320.0, -250.0, -372.0, 60.0)],     # doser first, as now
     "C": [(-1150.0, -330.0, -560.0, -60.0, 330.0), (380.0, 320.0, 360.0, 0.0, 200.0)],
     "D": [(-1150.0, 361.0, -760.0, -150.0, 300.0, 90.0), (-290.0, -345.0, 60.0, -230.0, 360.0, 90.0),
           (560.0, 320.0, 680.0, -150.0, 100.0)],
@@ -900,13 +900,14 @@ TRAY_CAMS_ROUND5 = {   # where they stood before: at the back, looking forward o
 CAM_PIVOT = 640.0                       # the tilt axis over the tray floor; the head's top stays under 727.5 mm
 POST_H = 590.0                          # the tray posts: 22 mm over the sliding block at its CAM_PIVOT height
 CAM_H = CAM_PIVOT - TILT_AXIS[2]        # the block's height on a tray post: 543 mm
-# The bay unit stands on a 2020 bar across the back of the bay, 37 mm in front of the shutter's plane and 35.5 mm
-# over the top of Kardex's product envelope at the opening, and under tray F1, which is stored over the opening:
-# y and bar_z are the bar's centre; h the block's height on its 90 mm post; the head looks forward (-y), tilted down.
-BAY_CAM = dict(y=-600.0, bar_z=V.Z_OPEN + V.T_FLOOR + V.MAX_GOODS_H + V.GOODS_CLEAR + 45.5, post_h=90.0, h=52.0,
-               tilt=64.0)     # bar_z: the clamp's underside 31.5 mm over Kardex's product envelope (1650 at 727.5 mm)
-BAY_CAM["pivot_z"] = BAY_CAM["bar_z"] + 10.0 + BAY_CAM["h"] + TILT_AXIS[2]   # the tilt axis: 1809 mm
-BAY_CAM["pivot_y"] = BAY_CAM["y"] + TILT_AXIS[1]                              # 80 mm in front of the bar
+# The bay unit sits on a 2020 bar across the back of the bay, 72 mm in front of the shutter's plane, over the top of
+# Kardex's product envelope at the opening and under tray F1, which is stored over the opening. With the 996 mm
+# opening (vlm.py) that envelope tops out at 1733.5 mm, only 166.5 mm under F1 at 1900, so the bay unit has no post or
+# sliding block: its yoke is bolted straight onto a saddle clamp on the bar (bay_at). y and bar_z are the bar's centre;
+# the head looks forward (-y), tilted down.
+BAY_CAM = dict(y=-635.0, bar_z=V.Z_OPEN + V.T_FLOOR + V.MAX_GOODS_H + V.GOODS_CLEAR + 25.0, tilt=64.0)
+BAY_CAM["pivot_z"] = BAY_CAM["bar_z"] + 14.0 + TILT_AXIS[2] - PAN_AXIS[2]     # the tilt axis, 68 mm over the clamp
+BAY_CAM["pivot_y"] = BAY_CAM["y"] + TILT_AXIS[1] - PAN_AXIS[1]               # 13 mm in front of the bar
 LAMP_UPS = (1.0, 0.62, 0.10)
 
 
@@ -1036,25 +1037,36 @@ def add_cameras(sc, L=None, trays="ABCDEF") -> list:
 
 
 def bay_parts() -> dict:
-    """The bar across the bay and the printed clamp that holds the bay unit's post on it, world frame."""
+    """The bar across the bay and the printed saddle clamp the bay unit's yoke is bolted to, world frame."""
     b = BAY_CAM
     x0, x1 = -V.OPEN_W / 2, V.OPEN_W / 2
     bar = box(x0, b["y"] - 10, b["bar_z"] - 10, x1, b["y"] + 10, b["bar_z"] + 10)
-    clamp = box(-22, b["y"] - 14, b["bar_z"] - 14, 22, b["y"] + 14, b["bar_z"] + 26).edges("|X").fillet(3.0)
-    clamp = clamp.cut(box(-23, b["y"] - 10.2, b["bar_z"] - 10.2, 23, b["y"] + 10.2, b["bar_z"] + 10.2))
-    clamp = clamp.cut(box(-10.2, b["y"] - 10.2, b["bar_z"] + 9.8, 10.2, b["y"] + 10.2, b["bar_z"] + 27))
-    return {"bay bar": (bar, "svc_alu"), "post clamp": (clamp, "svc_petg")}
+    clamp = box(-24, b["y"] - 14, b["bar_z"] - 14, 24, b["y"] + 14, b["bar_z"] + 14).edges("|X").fillet(3.0)
+    clamp = clamp.cut(box(-25, b["y"] - 10.2, b["bar_z"] - 10.2, 25, b["y"] + 10.2, b["bar_z"] + 10.2))
+    return {"bay bar": (bar, "svc_alu"), "saddle clamp": (clamp, "svc_petg")}
+
+
+def bay_at(x: float = 0.0) -> np.ndarray:
+    """The bay unit's rig frame, world: placed so that its pan axis stands on the saddle clamp's top (no post, no
+    block); use with h = 0."""
+    return I._T((x, BAY_CAM["y"] - PAN_AXIS[1], BAY_CAM["bar_z"] + 14.0 - PAN_AXIS[2]))
 
 
 def add_bay_camera(sc, x=0.0) -> str:
-    """The overhead unit at the bay: its post stands on a 2020 bar across the back of the bay, over Kardex's product
-    envelope and under the tray stored over the opening; the head looks down and forward over the presented tray."""
-    from scene import T
+    """The overhead unit at the bay: its yoke on a saddle clamp on a 2020 bar across the back of the bay, over Kardex's
+    product envelope and under the tray stored over the opening; the head looks down and forward over the presented
+    tray. Returns the head's group."""
     b = BAY_CAM
     add_meshes(sc, "baycam", meshes_of("baybar", bay_parts, 0.5), "baycam")
     sc.gmat["baycam"] = np.eye(4)
-    return _add_rig(sc, "baycamrig", None, T((x, b["y"], b["bar_z"] + 10.0)), 0.0, b["h"], 0.0, b["tilt"],
-                    post_h=b["post_h"], foot=False)
+    sc.gmat["baycamrig"] = bay_at(x)
+    for k in ("pan", "head"):
+        add_meshes(sc, f"baycamrig{k}", meshes_of(f"rig_{k}", lambda k=k: rig_pieces()[k], 0.3), f"baycamrig{k}")
+    sc.gmat["baycamrigpan"] = I._R((0, 0, 1), 0.0, PAN_AXIS)
+    sc.parent["baycamrigpan"] = "baycamrig"
+    sc.gmat["baycamrighead"] = I._R((1, 0, 0), b["tilt"], TILT_AXIS)
+    sc.parent["baycamrighead"] = "baycamrigpan"
+    return "baycamrighead"
 
 
 def add_docks(sc, positions) -> dict:
@@ -1664,7 +1676,7 @@ def movie_bay_camera(data, idata):
     sc.cam = [(2500, -6600, 2500), (0, -900, 1350), (0, 0, 1)]
     rb = L.robot
     b = BAY_CAM
-    opt = camera_optics(T((0.0, b["y"], b["bar_z"] + 10.0)), 0.0, b["h"], 0.0, b["tilt"])
+    opt = camera_optics(bay_at(), 0.0, 0.0, 0.0, b["tilt"])
     fov = camera_fov()
     zf = V.Z_OPEN + V.T_FLOOR
     M = mats()
@@ -2072,10 +2084,10 @@ def _world_points(at, post, h, pan, tilt, post_h=POST_H, foot=True) -> dict:
 
 
 def bay_points() -> np.ndarray:
-    """Every point of the bay unit, its post, clamp and bar, world."""
+    """Every point of the bay unit, its clamp and bar, world."""
     from scene import T
     b = BAY_CAM
-    pts = _world_points(T((0.0, b["y"], b["bar_z"] + 10.0)), 0.0, b["h"], 0.0, b["tilt"], b["post_h"], False)
+    pts = {k: v for k, v in _world_points(bay_at(), 0.0, 0.0, 0.0, b["tilt"]).items() if k in ("pan", "head")}
     bar = np.vstack([m.points for m in meshes_of("baybar", bay_parts, 0.5).values() if m.n_points])
     return np.vstack([*pts.values(), bar])
 
@@ -2100,7 +2112,7 @@ def bay_view(step=25.0) -> dict:
     axis meets the floor, and what it misses."""
     from scene import T
     b = BAY_CAM
-    opt = camera_optics(T((0.0, b["y"], b["bar_z"] + 10.0)), 0.0, b["h"], 0.0, b["tilt"])
+    opt = camera_optics(bay_at(), 0.0, 0.0, 0.0, b["tilt"])
     z = V.Z_OPEN + V.T_FLOOR
     xs = np.arange(-V.TRAY_W / 2, V.TRAY_W / 2 + 1, step)
     ys = np.arange(V.Y_OPEN - V.TRAY_D / 2, V.Y_OPEN + V.TRAY_D / 2 + 1, step)
