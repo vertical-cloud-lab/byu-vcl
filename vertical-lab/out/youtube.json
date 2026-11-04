@@ -68,6 +68,17 @@
     "privacy": "unlisted"
    }
   ],
+  "vacuum_press.mp4": [
+   {
+    "id": "UGTGpEfyUeQ",
+    "sha256": "c95dd9cc113e57549bcaff2d4ddc15d7e476819c318838ba3fd9e92e1430b01b",
+    "bytes": 1616326,
+    "commit": "33da700",
+    "uploaded": "2026-11-04T06:32:20Z",
+    "title": "Vertical cloud lab: vacuum press (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
   "vertical_lab_full.mp4": [
    {
     "id": "ro-pUo0ie_M",
@@ -97,6 +108,16 @@
     "bytes": 9551032,
     "commit": "74794c2",
     "uploaded": "2026-11-04T04:58:28Z",
+    "title": "Vertical cloud lab: the VLM assembled, loaded and at work (round 1, ends loaded)",
+    "privacy": "unlisted",
+    "superseded_by": "FHjg3R7of4g"
+   },
+   {
+    "id": "FHjg3R7of4g",
+    "sha256": "0d9239f2506f649ac1bfb9a2760094f9a46fb93874756fa5818724fafaa09e2f",
+    "bytes": 9596236,
+    "commit": "27b4998",
+    "uploaded": "2026-11-04T06:32:19Z",
     "title": "Vertical cloud lab: the VLM assembled, loaded and at work (round 1, ends loaded)",
     "privacy": "unlisted"
    }
@@ -134,6 +155,17 @@
     "privacy": "unlisted"
    }
   ],
+  "vlm_workflow.mp4": [
+   {
+    "id": "255o9IVEOEs",
+    "sha256": "9a6a502ce7f6fa0b047c19ece9c6ca92ebb3efaa687495512f40b85d686dc81b",
+    "bytes": 5507672,
+    "commit": "27b4998",
+    "uploaded": "2026-11-04T06:32:21Z",
+    "title": "Vertical cloud lab: dose a powder, then add liquid in the CubXL (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
   "warehouse.mp4": [
    {
     "id": "KbrkulS07EM",
@@ -141,6 +173,16 @@
     "bytes": 7324434,
     "commit": "4bf5904",
     "uploaded": "2026-11-03T21:32:07Z",
+    "title": "Vertical cloud lab, warehouse version: two MiR250 + UR10e units on an open floor",
+    "privacy": "unlisted",
+    "superseded_by": "3IrSB9-meN8"
+   },
+   {
+    "id": "3IrSB9-meN8",
+    "sha256": "294ed114621d0253a207625a7795fae298a838e7c010d1596fbccef50ff82d5a",
+    "bytes": 6988146,
+    "commit": "6a8fa94",
+    "uploaded": "2026-11-04T06:32:22Z",
     "title": "Vertical cloud lab, warehouse version: two MiR250 + UR10e units on an open floor",
     "privacy": "unlisted"
    }
