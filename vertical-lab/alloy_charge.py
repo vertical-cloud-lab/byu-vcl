@@ -323,6 +323,9 @@ def movie():
     data = lab.meshes()
     CR.SKIP = CR.SKIP | STATION_GONE           # the rig's load cell, vial cup, vial post and catch funnel come out
     sc = Scene(NAME, TITLE)
+    if os.environ.get("CHARGE_FXAA"):          # FXAA in place of SSAA: about a quarter of the pixel work, for a render
+        sc.pl.disable_anti_aliasing()           # on a loaded machine (scene.py's default is SSAA)
+        sc.pl.enable_anti_aliasing("fxaa")
     sc.cam = list(A.CAM_WIDE)
     L = A.Lab(sc, data, robot=True, highlight=MODULE["Si"])
     K = Charge(sc, L)
