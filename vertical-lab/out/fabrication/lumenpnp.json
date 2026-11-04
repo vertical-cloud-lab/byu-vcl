@@ -1,7 +1,7 @@
 {
  "name": "fabrication/lumenpnp",
  "fps": 15,
- "n_frames": 622,
+ "n_frames": 636,
  "size": [
   1280,
   720
@@ -189,9 +189,15 @@
   },
   {
    "label": "8/8",
-   "caption": "Three parts placed; the board goes on to reflow.",
+   "caption": "Three parts placed; the head goes home and the board goes on to reflow.",
    "start_frame": 584,
-   "end_frame": 621
+   "end_frame": 603
+  },
+  {
+   "label": "8/8",
+   "caption": "",
+   "start_frame": 604,
+   "end_frame": 635
   }
  ]
 }
