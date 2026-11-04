@@ -64,61 +64,66 @@ FIXES = "a34367a"
 # A label starts a YouTube chapter of its own inside the chapter (merged into the next if it would be under 10 s).
 CHAPTERS = [
     dict(key="intro", title="A real VLM, then the plan",
-         card=["A Kardex vertical lift module (VLM) holds the lab's equipment on electrified trays. A UR10e on a MiR250 "
-               "mobile base works at its opening, and the machines too big for a tray stand beside it.",
+         card=["A Kardex vertical lift module (VLM) holds the lab's equipment on electrified trays, each with its own "
+               "UPS. UR10e arms on MiR250 mobile bases work at its opening and at the machines too big for a tray.",
                "Everything after the first clip is a 3-D animation, built from the makers' published figures and "
                "photos and checked for collisions. Real footage and photos are badged as such."],
          parts=[("footage", "footage/vlm_real_ck8QJhVqPiY.mp4",
                  "A real VLM in operation, from the sample's perspective (Sterling Baird, youtu.be/ck8QJhVqPiY)",
                  None)]),
     dict(key="setup", title="The lab set up from scratch",
-         card=["An empty bay: the layout taped out, utilities and cable trays overhead, the Kardex Shuttle XP 500 "
-               "going up, the floor machines, two UR10e arms assembled onto MiR250 bases, then trays A-F loaded by "
-               "people and the stream cameras fitted."],
-         parts=[("mp4", "setup_lab.mp4", None)]),
-    dict(key="trays", title="What the trays carry, and the line beside the VLM",
-         card=["Trays D, E and F: microscopy and diffraction (the SEM, the XRD and six OpenFlexures on one sub-tray), "
-               "mechanical testing and particle size, sample prep and heat treatment.",
-               "What doesn't fit through the 727.5 mm opening stands in a line with the VLM, along a backup rail. "
-               "Then trays G, H and I: resin printing, PCB assembly and desktop LPBF."],
-         parts=[("mp4", "vlm_line.mp4", "Trays D-F and the line along the rail"),
-                ("mp4", "vlm_fab_trays.mp4", "Trays G-I: resin, PCB, desktop LPBF")]),
-    dict(key="round2", title="Trays A-C at work, in cutaway: OT-2, H2D, A1 mini, CubXL, multi-doser",
-         card=["Round 2's equipment doing its job with the casing faded out: the OT-2 pipetting, the H2D and A1 mini "
-               "printing, the CubXL handling liquid, and the multi-doser dispensing.",
-               "These five clips are from PR #320's branch (stacked on this one), rendered by its own session."],
-         parts=[("gitmp4", R2, "vertical-lab/out/mp4/instruments_round2_tour.mp4", None)]),
-    dict(key="services", title="Services to every tray: docking, UPS, tether, cabling, cameras",
-         card=["One automatic coupling per tray (Staubli CombiTac: mains, Ethernet, air, N2, chilled water), docked "
-               "in its slot and again at the opening, with a UPS for the seconds in transit. The alternative is a "
-               "retractable tether. Then the cabling, and the stream cameras: a Pi 5 with an HQ Camera and a "
-               "Camera Module 3 Wide, two or three per tray and one over the bay."],
-         parts=[("mp4", "vlm_services.mp4", "Docking couplings and the UPS"),
-                ("mp4", "vlm_tether.mp4", "A retractable tether instead"),
+         card=["An empty bay: the layout taped out, utilities overhead, the Kardex Shuttle XP 500 going up with a "
+               "996 mm opening, the floor machines, the arms assembled onto MiR250 bases, then every tray loaded by "
+               "people, its UPS and the vacuum press among them, and the stream cameras fitted."],
+         parts=[("mp4", "setup_lab.mp4", None),
+                ("still", "tray_plan.png", 14.0, "Every tray from above, with its UPS, dock plate and cameras, and the "
+                 "slot each one takes", "What goes on which tray")]),
+    dict(key="services", title="Services: UPS, automatic hookups, cabling and cameras",
+         card=["Each tray carries a UPS. In its slot and again in the picking bay, a dock in the side wall mates "
+               "with the tray's coupling plate: mains, Ethernet, air, N2 and chilled water. In transit the dock "
+               "shuts and vents the lines, and the tray runs on its UPS.",
+               "Then the cabling, the stream camera unit, and what the camera over the bay sees."],
+         parts=[("mp4", "vlm_hookups.mp4", "Storage to the bay: the hookups and the UPS"),
+                ("mp4", "vlm_services.mp4", "The docks in every slot"),
+                ("still", "dock_lift_clearance.png", 10.0, "Do the docks reach into the lift's path? Clearances, "
+                 "docks in and out", "The docks against the lift"),
                 ("mp4", "vlm_cabling.mp4", "Cabling"),
-                ("mp4", "instruments/stream_cam.mp4", "The stream camera unit: height, pan, tilt")]),
-    dict(key="alloy1", title="Alloy route 1/4: the charge cups, dosed, weighed and pressed under vacuum",
+                ("mp4", "instruments/stream_cam.mp4", "The stream camera unit: height, pan, tilt"),
+                ("mp4", "bay_camera.mp4", "The camera over the bay, and what it sees")]),
+    dict(key="corrosion", title="Tray A: the corrosion station, OT-2 and CubXL",
+         card=["The OT-2 makes up the CubXL's electrolyte and dilutes the corrosion wells' ICP-MS samples "
+               "(digital-wetlab PR #83, direction 5). The CubXL runs DAL's copper corrosion screen spot by spot "
+               "(DAL PR #180), with the volumes a real pipette moves. The multi-doser doses atomized powder for it."],
+         parts=[("mp4", "instruments/ot2_corrosion_prep.mp4", "The OT-2: electrolyte and ICP dilutions"),
+                ("mp4", "instruments/cubxl_corrosion.mp4", "The CubXL's corrosion screen"),
+                ("mp4", "vlm_workflow.mp4", "Atomized powder dosed for the CubXL")]),
+    dict(key="alloy1", title="Alloy route 1/5: the charge cups, dosed, weighed and pressed under vacuum",
          card=["The atomizer melts the lab's own charge cups (#222), turned from 5N Al and oxygen-free Cu bar. Each "
                "is dosed through its powder's own funnel, weighed on an A&D HR-202i, and its vented plug pressed "
                "fully home under vacuum in a Specac Atlas Autotouch, compacting the powder to a set load."],
-         parts=[("still", "dal_workflow_table.png", 14.0, "DAL's alloy workflow, step by step (notes/dal_workflow.md): "
+         parts=[("mp4", "dag/route_dag_ch1.mp4", "The route as a function network (DAL's ONR YIP DAG)"),
+                ("still", "dal_workflow_table.png", 12.0, "DAL's alloy workflow, step by step (notes/dal_workflow.md): "
                  "the station each step uses here, and what is still missing", "DAL's 17 steps, and where each runs"),
                 ("mp4", "alloy_charge.mp4", "The charge cups")]),
-    dict(key="alloy2", title="Alloy route 2/4: melt and atomize in the rePowder",
-         card=["The MiR250 takes the four Al cups to the AMAZEMET rePowder: pump-downs with argon, induction melt, "
-               "the pour, the ultrasonic spray, powder in the container. Cut with the lab's own footage of its "
-               "bronze and Al runs, each badged with its alloy, date and source."],
-         parts=[("mp4", "alloy_atomize.mp4", None)]),
-    dict(key="alloy3", title="Alloy route 3/4: sieve and print",
+    dict(key="alloy2", title="Alloy route 2/5: melt and atomize in the rePowder",
+         card=["The MiR250 takes the four Al cups to the AMAZEMET rePowder. A loading tool lowers each cup into the "
+               "crucible. Pump-downs with argon, induction melt, the pour, the ultrasonic spray, powder in the "
+               "container. Cut with the lab's own footage, each piece badged with its alloy, date and source."],
+         parts=[("mp4", "dag/route_dag_ch2.mp4", None), ("mp4", "alloy_atomize.mp4", None)]),
+    dict(key="alloy3", title="Alloy route 3/5: sieve and print",
          card=["The arm runs a sieving cell on its own: it stacks the sieves, the Retsch AS 200 shakes them, a tipper "
                "empties each into its labelled jar. The 20-63 um cut goes into the Aconity MIDI, which prints "
                "tensile bars."],
-         parts=[("mp4", "alloy_print.mp4", None)]),
-    dict(key="alloy4", title="Alloy route 4/4: depowder, cut and test",
+         parts=[("mp4", "dag/route_dag_ch3.mp4", None), ("mp4", "alloy_print.mp4", None)]),
+    dict(key="alloy4", title="Alloy route 4/5: depowder, cut and test",
          card=["The build vacuumed with a lance, the plate depowdered in a turning, shaking box under argon, the "
                "bars cut off in the FANUC ROBOCUT wire EDM, one rinsed and dried, and pulled in the Instron "
                "68FM-100."],
-         parts=[("mp4", "alloy_workflow.mp4", None)]),
+         parts=[("mp4", "dag/route_dag_ch4.mp4", None), ("mp4", "alloy_workflow.mp4", None)]),
+    dict(key="alloy5", title="Alloy route 5/5: the trays at work, characterizing the build",
+         card=["Samples from the same build go through the characterization trays: the VLM brings each tray to the "
+               "opening, the arm loads and unloads each instrument, and the instrument does its job."],
+         parts=[("mp4", "dag/route_dag_ch5.mp4", None), ("mp4", "alloy_characterize.mp4", None)]),
     dict(key="charact", title="Characterization instruments, one by one",
          card=["Each modelled from its maker's published figures and photos, with its moving pieces, doing its job. "
                "Ten were refitted against footage of the real machine."],
@@ -126,48 +131,46 @@ CHAPTERS = [
                  "the VLM", None),
                 ("mp4", "instruments/xrd.mp4", "XRD (Rigaku MiniFlex) and SEM (Hitachi TM4000PlusII)"),
                 ("mp4", "instruments/sem.mp4", None),
-                ("mp4", "instruments/vhx.mp4", "Keyence VHX-7000 with the EA-300 LIBS head"),
+                ("mp4", "instruments/vhx.mp4", "Keyence VHX-7000 with the EA-300 LIBS head, remoted in"),
                 ("mp4", "instruments/xrf.mp4", "Benchtop XRF: Bruker S2 PUMA"),
-                ("mp4", "instruments/openflexure_v7.mp4", "OpenFlexure v7 and Delta Stage"),
-                ("mp4", "instruments/openflexure_delta.mp4", None),
                 ("mp4", "instruments/openflexure_array.mp4", "Six OpenFlexures on one sub-tray"),
                 ("mp4", "instruments/mastersizer.mp4", "Malvern Mastersizer 3000 + Aero S"),
                 ("mp4", "instruments/nanoindenter.mp4", "KLA iMicro nanoindenter"),
                 ("mp4", "instruments/pip.mp4", "Plastometrex PLX-Benchtop (PIP)"),
-                ("mp4", "instruments/cubxl_corrosion.mp4", "The CubXL set up for corrosion")]),
-    dict(key="prep", title="Sample prep, testing, powder handling and shipping",
-         card=["The LECO PX500 grinder-polisher, the Nabertherm furnace, two Instrons and the wire EDM; the sieve "
-               "shaker, an inert glovebox, and a packaging station that labels and seals powder for shipping."],
+                ("mp4", "instruments/hardness.mp4", "An automatic Vickers hardness tester")]),
+    dict(key="prep", title="Sample prep, testing, powder handling, fume hoods and shipping",
+         card=["Polishing, heat treatment, a CNC that loads itself, the wire EDM, tensile testers (one lying on a "
+               "tray), sieving, a glovebox on a tray and one on the floor, fume hoods, the sample store, and a "
+               "packaging station that labels and seals powder for shipping."],
          parts=[("mp4", "instruments/polisher.mp4", "LECO PX500 grinder-polisher"),
-                ("mp4", "instruments/furnace.mp4", "Nabertherm furnace and the two Instrons"),
-                ("gitmp4", FIXES, "vertical-lab/out/mp4/instruments/instron_small.mp4", None),
-                ("mp4", "instruments/instron_floor.mp4", None),
+                ("mp4", "instruments/furnace.mp4", "Nabertherm furnace"),
+                ("mp4", "instruments/cnc.mp4", "An autonomous CNC"),
                 ("mp4", "instruments/wire_edm.mp4", "FANUC ROBOCUT wire EDM"),
+                ("mp4", "instruments/tensile_horizontal.mp4", "A tensile tester lying on a tray"),
+                ("gitmp4", FIXES, "vertical-lab/out/mp4/instruments/instron_small.mp4", "The two Instrons"),
+                ("mp4", "instruments/instron_floor.mp4", None),
                 ("mp4", "instruments/sieve.mp4", "Sieve shaker: Retsch AS 200"),
-                ("mp4", "instruments/glovebox.mp4", "Inert glovebox and the packaging station"),
-                ("mp4", "instruments/packaging.mp4", None)]),
+                ("mp4", "instruments/glovebox_tray.mp4", "A glovebox on a tray"),
+                ("mp4", "instruments/glovebox.mp4", "The floor glovebox"),
+                ("mp4", "instruments/fume_hood.mp4", "Fume hoods"),
+                ("mp4", "instruments/fume_hood_tray.mp4", None),
+                ("mp4", "instruments/sample_store.mp4", "The sample store: cups, plugs, vials"),
+                ("mp4", "instruments/packaging.mp4", "Packaging")]),
     dict(key="fab", title="Fabrication: metal printers, DED, resin and PCB assembly",
-         card=["Desktop LPBF (the SnowPod fits the opening; the MPRINT and MetalONE don't), the Meltio M450 wire DED "
-               "and the InssTek MX-Lab powder DED beside the VLM, Formlabs Form 4 with Wash and Cure, a stencil "
-               "printer and the open-source LumenPnP pick-and-place."],
+         card=["Desktop LPBF, the Meltio M450 wire DED and the InssTek MX-Lab powder DED, Formlabs Form 4 with Wash "
+               "and Cure, a stencil printer and the open-source LumenPnP pick-and-place."],
          parts=[("mp4", "fabrication_tour.mp4", "Metal, resin and PCB tools"),
                 ("mp4", "instruments/ded.mp4", "InssTek MX-Lab DED")]),
-    dict(key="alt", title="The alternatives: a floor rail, or a warehouse with mobile manipulators",
-         card=["The backup to the mobile base is a Vention seventh axis along the fronts. The other way is a "
-               "warehouse floor: the VLM and the floor machines facing one aisle, served by MiR250 + UR10e units "
-               "that dock with a target the arm checks at every station."],
-         parts=[("mp4", "instruments/rail.mp4", None),
-                ("still", "rail_vs_amr.png", 9.0, "Rail or mobile base: pedestal sway, docking accuracy, tipping",
-                 None),
-                ("gitmp4", FIXES, "vertical-lab/out/mp4/warehouse.mp4", "The warehouse version")]),
-    dict(key="limits", title="What doesn't fit, and what it would take",
-         card=["A hot isostatic press is too tall, too deep and too heavy for a tray. A taller opening, about "
-               "1000 mm, would take the MX-Lab and most desktop LPBF machines, but Kardex publishes no figure. And "
-               "with the rail in front, a tray comes out for maintenance only through a second opening at the back."],
+    dict(key="alt", title="The same machines on a warehouse floor",
+         card=["The mobile base needs no fixed track: the VLM and the floor machines can face one aisle, served by "
+               "MiR250 + UR10e units that dock at a target the wrist camera checks at every station."],
+         parts=[("gitmp4", FIXES, "vertical-lab/out/mp4/warehouse.mp4", None)]),
+    dict(key="limits", title="What doesn't fit, and getting a tray out",
+         card=["A hot isostatic press is too tall, too deep and too heavy for a tray. With no rail in front, a tray "
+               "comes out for maintenance through the front opening, by Kardex's full tray extraction."],
          parts=[("mp4", "instruments/hip.mp4", "A HIP against a tray"),
-                ("mp4", "vlm_tall_opening.mp4", "A taller opening"),
-                ("still", "maintenance_access.png", 12.0, "Getting a tray out for maintenance with the rail in front: "
-                 "the floor it needs (hatched), and a rear service opening", "Getting a tray out for maintenance")]),
+                ("still", "maintenance_access.png", 10.0, "Getting a tray out for maintenance: the floor it needs in "
+                 "front of the opening", "Getting a tray out for maintenance")]),
     dict(key="checks", title="How the models were checked",
          card=["Ten models fitted to frames of the real machines, the lab's own SOP videos among them. Every "
                "instrument's motion played through MuJoCo for interferences. Every frame of the arm's moves "
