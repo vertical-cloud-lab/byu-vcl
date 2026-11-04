@@ -332,7 +332,7 @@ def movie():
     sc.step(f"1/{n}", cap, 1.0, None, hold=0.6,
             labels=[("tray B: powder dosing and the charge", (V.TRAY_W / 2 - 300, *V.SLOTS["R3"]), (0.84, 0.34))])
     L.fetch("B", f"1/{n}", cap, cam=CAM_WORK)
-    sc.step(f"1/{n}", cap, 1.6, None, hold=2.0, cam_to=CAM_WORK,
+    sc.step(f"1/{n}", cap, 1.6, None, hold=1.6, cam_to=CAM_WORK,
             labels=[("charge rack: 4 x 5N Al and 4 x OFE Cu cups, a plug for each", K.rack_cup(1) + (0, 0, 70),
                      (0.10, 0.20)),
                     ("plug press with #222's steel sleeve (F1)", K.nest_seat(0) + (0, 0, 330), (0.12, 0.40)),
@@ -400,7 +400,7 @@ def movie():
     def cycle(i, fast):
         metal, pw = SLOTS[i]
         m = ms[metal]
-        f = 0.09 if fast else 0.85
+        f = 0.075 if fast else 0.85
         H = (lambda x: x) if not fast else (lambda x: 0.0)     # no holds in the time-lapse
         k_al = sum(1 for s in SLOTS[:i] if s[0] == "Al")
         detail = not fast
@@ -668,7 +668,7 @@ def movie():
            f"gram dissolves; out/alloy_recipe.json). Tray B goes back into storage.")
     L.store("B", f"8/{n}", cap, cam=CAM_AMR)
     L.note(0, "Arm", "parked; next: the atomizer")
-    sc.step(f"8/{n}", cap, 1.6, None, hold=2.6, still=True,
+    sc.step(f"8/{n}", cap, 1.6, None, hold=2.0, still=True,
             cam_to=cam_near(K.carrier_seat(1) + (17, 0, 0), (-600.0, -640.0, 340.0), (0.0, 0.0, 25.0)),
             labels=[("four charged 5N Al cups, for the rePowder", K.carrier_seat(1) + (17, 0, 90), (0.30, 0.25))])
     print(f"highest forearm/wrist point {rb.max_z_world:.0f} mm; opening top {V.Z_OPEN_TOP:.0f} mm", flush=True)

@@ -130,9 +130,12 @@ a stem 9 mm across (6 mm bore) and 12 mm long, and a 42 mm band to grip by. The 
   lifts it 36 mm so the gripper can take it.
 - **Eight cups and two funnels fill tray B's left half.** The rack is 336 mm long, the HR-202i 442 mm. The press now
   stands behind the rack, and the arm reaches over the rack's cups to its nest.
-- **The balance stands 110 mm back from the tray's front.** It sits almost straight ahead of the arm. With its pan
-  460 mm from the arm's base, a level approach puts the UR10e's flange over its own base, which it can't reach. At
-  570 mm it can.
+- **The balance stands 200 mm back from the tray's front.** It sits almost straight ahead of the arm. With its pan
+  460 mm in front of the arm's base, the level approach through the side door puts the UR10e's wrist inside the
+  cylinder over its base that it can't reach, and at 570 mm the approach still does. At 660 mm it reaches.
+- **The cup goes onto the press from above, held level.** The press now stands beside the arm rather than in front
+  of it, and a straight approach from the front flips the wrist halfway (the wrist crosses the line through the arm's
+  base). Coming down onto the nest from 150 mm above avoids it.
 
 Replaced since round 4: "a Cu cup is over the doser's load cell" (there is no load cell), and "the doser's funnel
 is wrong for a cup" (there is no shared funnel; each powder's funnel is sized for the bore).
