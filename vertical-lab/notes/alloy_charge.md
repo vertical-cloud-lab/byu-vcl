@@ -25,9 +25,14 @@ time, and this chapter is the two merged:
 | 9 | The first Cu cup topped up with Cu, worked out from its weighed Ni so it stays 10 wt % Ni, weighed, plugged, pressed, back on the rack. Then the other three. The Cu funnel goes back | |
 | 10 | Tray B goes back into storage. Four Al-10Si cups are on the MiR for the rePowder, where chapter 2 picks them up | the carrier |
 
-The stills: [the Si dose](../out/alloy_charge_dose.png), [the weighing](../out/alloy_charge_weigh.png),
-[the press stroke](../out/alloy_charge_press.png), [the Si funnel in the fork](../out/alloy_charge_funnels.png) and
-[the end](../out/alloy_charge_still.png).
+**Not rendered yet** (2026-11-04): `out/alloy_charge.*` and its stills are still round 5's doser render. Four other
+renders were sharing the runner, and at 1.6-2.2 s a frame a 1280 × 720 render of this chapter would have taken over an
+hour. Render it with `xvfb-run -a python3 alloy_charge.py`: it writes `out/alloy_charge.{gif,json}`,
+`out/mp4/alloy_charge.mp4`, the end still `out/alloy_charge_still.png`, and cuts four more from the MP4 (`STILLS`):
+`_dose` (the Si dose, in half section), `_weigh` (the first reading), `_press` (the press stroke, which
+`alloy_route.py`'s sheet uses) and `_funnels` (the Si funnel in the fork). `ARM_AUDIT_RENDER=1` checks every frame in
+the same pass and writes `out/collisions/alloy_charge.json`; `VIZ3D_FPS=10` keeps every move's time with a third
+fewer frames, and `CHARGE_FXAA=1` swaps SSAA for FXAA. About 3.9 min, from its timings.
 
 ## The charge
 
@@ -181,7 +186,30 @@ tonnage. Also, it would be better if it were a vacuum press" ([`alloy_press.py`]
 
 The audit (`ARM_AUDIT=1 xvfb-run -a python3 alloy_charge.py`, [`out/collisions/alloy_charge.json`](../out/collisions/alloy_charge.json))
 checks every frame: the arm against itself, and the arm, gripper and what it holds against everything visible.
-AUDIT_RESULT
+
+- **Before the merge**, the doser version's moves had never been checked: audited with the planner, round 5's
+  `alloy_charge_doser.py` had 59 of 1875 frames in collision (the arm in the press and in the rack's back cups).
+- **The first audit of the merged chapter** stopped in its third step: a line move into the balance crossed a wrist
+  flip in the IK branch the planner had picked for the pose before it, and every branch of the fallback joint move's
+  end pose was in self-collision. The HR-202i's door, slid back 140 mm, also still covered 8 mm of its opening.
+- **What changed:**
+  - every approach now starts from the IK branch, nearest first, from which the straight line on to the grasp or
+    place is clear and doesn't flip (`pre()`); the planner alone picks a clear branch for the pose, not for the line
+    after it;
+  - the door slides 150 mm, clear of its opening;
+  - the balance stands on a granite block (above), so the wrist passes over the rack's cups.
+- **The audit after that** (2026-11-04, stopped in 9/10 at the deadline, 2215 frames checked): 32 frames in 10 runs.
+  - **20 frames in 5/10: the first plug.** With eight cups the rack's first plug stands beside the punch's rest, and
+    every IK branch for taking it from above put the gripper's right knuckle and finger in the rest's post or the
+    punch. Fixed after the audit: the rest stands 40 mm further left (press frame x = 110; `alloy_press.REST_LOCAL`
+    has 150), and the pick then has three clear IK branches with clear lines, checked at the pose.
+  - **12 frames in four runs of 3 (3/10, 5/10): the next cup.** The open left fingertip brushes the second Al cup
+    while the first is taken from the rack at an angle (`aim()`). The rules let the gripper touch what stands in the
+    fixture it works at, but the audit reads the parenting at the end of the clip, when the second cup is on the
+    MiR's carrier. Square to the rack, or a slightly wider rack pitch, would clear it.
+  - **One joint move in 5/10's time-lapse** started from a pose with the upper arm against the gripper (the
+    planner's warning); no checked frame shows it.
+- **The render checks itself** (`ARM_AUDIT_RENDER=1`), into [`out/collisions/alloy_charge.json`](../out/collisions/alloy_charge.json).
 
 ## Assumed
 
