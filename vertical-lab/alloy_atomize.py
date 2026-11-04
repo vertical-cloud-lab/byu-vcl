@@ -1,12 +1,22 @@
-"""Chapter 2 of the alloy route, atomize: the MiR250 brings the two charged 5N Al cups from the VLM to the rePowder, the
-UR10e loads them into the crucible round the sealing rod, and the machine melts and atomizes them; the arm takes the
-powder container off onto the MiR (#303, round 4).
+"""Chapter 2 of the alloy route, atomize: the MiR250 brings the four charged 5N Al cups from the VLM to the rePowder,
+the UR10e loads them into the crucible round the sealing rod, and the machine melts and atomizes them; the arm takes
+the powder container off onto the MiR (#303, rounds 4 and 5). Clips and photos of the lab's own runs are cut in where
+the animation reaches the same moment: the charge melting, the stream on the plate, the powder, the sieved powder.
 
-    xvfb-run -a python3 alloy_atomize.py            # -> out/alloy_atomize.gif, out/mp4/alloy_atomize.mp4, .json, _still.png
+    xvfb-run -a python3 alloy_atomize.py            # render, then splice -> out/alloy_atomize.gif, out/mp4/alloy_atomize.mp4,
+                                                    #   .json, _still.png
+    python3 alloy_atomize.py splice                 # only cut the real footage into the last render (seconds)
+    python3 alloy_atomize.py powder                 # the powder sums -> out/alloy_atomize_powder.json
     PREVIEW=1 xvfb-run -a python3 alloy_atomize.py  # the last frame of each sub-step -> /tmp/preview_alloy_atomize.png
 
+The render and the footage are kept apart. The render writes the 3-D chapter, with a marker wherever footage goes, to
+``out/clean/`` (git-ignored): ``alloy_atomize_3d.mp4``, its GIF frames and its JSON. ``splice`` then reads the clips
+and photos listed in ``FOOTAGE/manifest.json`` (default ``/tmp/footage``), fits each one to the frame, draws the same
+title, step label and caption on it, and writes the final MP4, GIF and JSON with the footage in. So new or better
+footage needs no re-render.
+
 Hand-offs: it starts where chapter 1 (the VLM charge) ends, the MiR250 at the VLM's opening (``animate.AMR_XY``) with
-the two Al cups in ``charge.carrier()``'s first two pockets on its cabinet, and it ends with the MiR parked in front of
+the four Al cups in ``charge.carrier()``'s four pockets on its cabinet, and it ends with the MiR parked in front of
 the rePowder holding the powder container in a cradle, the arm parked, where chapter 3 (sieve and print) picks up.
 
 The scene is ``line.py``'s layout, as ``alloy_workflow.py`` builds it (the VLM, the line's machines), except that the
@@ -24,11 +34,16 @@ from __future__ import annotations
 import importlib.util
 import json
 import math
+import os
+import shutil
+import subprocess
 import sys
 from pathlib import Path
+from types import SimpleNamespace
 
 import numpy as np
 import pyvista as pv
+from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageOps
 from scipy.spatial.transform import Rotation, Slerp
 
 import scene
@@ -65,9 +80,15 @@ CHAMBER_CUT = ("chamber", "door", "bowl", "splash", "container", "flange_clamp",
 MELT = (1.0, 0.45, 0.10)
 ARGON = (0.45, 0.72, 1.0)
 PER_FRAME = 15 / FPS
-CUP_ANGLES = (110.0, 180.0)           # 70 deg apart round the rod (#222's four places are 75): the second on the cut
-                                      # plane, so the cutaway shows its powder, plug and vent
+# Four cups a run (byu-vcl PR #318: "we load multiple charges into the crucible (4)"), at #222's four places round the
+# rod: the model's SLUG_ANGLES, 75 deg apart and clear of the sealing-rod lever, which lies over the crucible along +x.
+# Loaded back pair first. The two at the back (y > 0) stay in the cutaway and are drawn cut through their own axes (a
+# stepped section), so it shows their powder, plug and vent; the two at the front go with the half that is cut away.
+CUP_ANGLES = (145.0, 70.0, 220.0, 295.0)
+N_CUPS = len(CUP_ANGLES)
 CUP_R = (M.SEALING_ROD_D / 2 + M.CRUCIBLE_ID / 2) / 2      # #222 SLUG_CIRCLE_R: halfway between the rod and the wall
+CUP_GAP = 2 * CUP_R * math.sin(math.radians(75.0 / 2)) - C.STOCK_D      # between neighbours: 2.17 mm
+RADIAL_ROOM = M.CRUCIBLE_ID / 2 - M.SEALING_ROD_D / 2 - C.STOCK_D        # rod to wall, less a cup: 3.20 mm
 GRIP_CUP = 0.80                       # 2F-85 closure for the 19.05 mm cup (ur_arm.gripper_fk: 0.78 -> 21 mm)
 GRIP_KNOB = 0.52                      # the lid's knob, 41 mm across
 GRIP_HANDLE = 0.86                    # the container's 12 mm handle bar
@@ -79,6 +100,112 @@ CRADLE_AT = (280.0, 10.0, P.AMR_TOP - 20.0)                           # the cont
 CRADLE_H = 150.0
 END_POSE = (A.REPOWDER_AT[0] + 288.0, -2230.0)     # the hand-off to chapter 3 (sieve, print): MiR250 centre, yaw 0,
                                                    # square to the container's axis, 41 mm off the view port's flange
+
+RAW = OUT / "clean"                                # git-ignored: the 3-D render before the footage goes in
+RAW_MP4, RAW_JSON, RAW_GIF = RAW / f"{NAME}_3d.mp4", RAW / f"{NAME}_3d.json", RAW / f"{NAME}_3d_gif"
+FOOTAGE = Path(os.environ.get("FOOTAGE", "/tmp/footage"))
+
+
+# ------------------------------------------------------------------------------------------------ how much powder
+AL_LIQUID = 2.37         # g/cm3: liquid Al near 700-750 C; taken for Al-10Si too (assumed)
+AL_SOLID = 2.70          # g/cm3: 5N Al and 6063
+NAB_SOLID = 7.58         # g/cm3: C63000, 0.274 lb/in3 (National Bronze's C63000 sheet, the one DAL #219 links)
+POWDER_BULK = 1.40       # g/cm3: loose Al-Si powder in the container (assumed; #222's AlSi10Mg tapped by hand is 1.60)
+BED_BULK = 1.50          # g/cm3: powder in the MIDI's bed, as notes/alloy_print.md
+# The lab's best run so far, k7m2q9: 630 bronze on Oct 27 2026 (DAL #219, PR #230). Gage sieved both bronze runs
+# together and put 97 % of the usable powder down to the first (#219, comments 6509252104 and 6509485831).
+K7M2Q9 = dict(charge_g=1079.886, pieces=4, fines_g=187.973, mid_g=827.063, run1_share=0.97,
+              source="DAL #219 (Gage, Oct 27-29 2026): 1,079.886 g in 4 rod pieces; both runs sieved: <63 um "
+                     "187.973 g, 64-250 um 827.063 g, >251 um 181.903 g, left in the crucible 732.034 g; 97 % of "
+                     "the usable powder from the first run")
+MIDI_BUILDS = {"the lab's planning figure": (440.0, "powder-doser design/brainstorming.md, section 3: \"Aconity MIDI "
+                                                    "~440 g/build\", from Sterling's PR-thread comment"),
+               "a 30 mm build in the full 170 mm cylinder": (math.pi / 4 * 170.0 ** 2 * 30.0 / 1000.0 * BED_BULK,
+                                                             "notes/alloy_print.md: pi/4 x 170^2 x 30 mm at 1.5 g/cm3")}
+CRUCIBLES = {"225 cm3": 225.0, "400 cm3": 400.0}   # DAL #219 comment 6475748437 (the ONR YIP plan); the model: 225.2
+
+
+def _pappus(pts) -> float:
+    """cm3 of a closed (r, z) profile, mm, turned about z."""
+    p = np.array(list(pts) + [pts[0]], float)
+    r, z = p[:, 0], p[:, 1]
+    a = r[:-1] * z[1:] - r[1:] * z[:-1]
+    area = a.sum() / 2
+    return float(abs(2 * math.pi * area * ((r[:-1] + r[1:]) * a).sum() / (6 * area)) / 1000.0)
+
+
+def pool_volume(level: float) -> float:
+    """cm3 of the drawn melt (model.pool_solid's profile) standing `level` mm above Z_CR."""
+    rr = M.SEALING_ROD_D / 2 + 0.4
+    level = max(level, M.floor_z(rr) + 0.5)
+    if level >= 0:
+        pts = [(rr, M.floor_z(rr)), (M.CRUCIBLE_ID / 2 - 0.3, -0.3), (M.CRUCIBLE_ID / 2 - 0.3, level), (rr, level)]
+    else:
+        pts = [(rr, M.floor_z(rr)), (M.CRUCIBLE_ID / 2 * (1 + level / M.FLOOR_CONE_H) - 0.3, level), (rr, level)]
+    return _pappus(pts)
+
+
+def powder_volume(level: float) -> float:
+    """cm3 of the drawn heap (model.powder_solid's profile), `level` mm deep at the container's wall."""
+    level, r = max(level, 2.0), M.CONT_R - 5
+    pts = [(0, 4), (r - 14, 4), (r, 18), (r, level), (0, level + min(18.0, level * 0.3))]
+    if level < 18:
+        pts = [(0, 4), (r - 14, 4), (r - 14 + level * 0.7, level), (0, level + 3)]
+    return _pappus(pts)
+
+
+def level_for(volume_fn, cm3: float, lo: float, hi: float) -> float:
+    for lv in np.linspace(lo, hi, int((hi - lo) * 10) + 1):
+        if volume_fn(lv) >= cm3:
+            return float(lv)
+    return hi
+
+
+def powder_sums() -> dict:
+    """Powder per run for four cups, a full 225 cm3 crucible and the 400 cm3 one, at k7m2q9's yields, and runs per
+    MIDI build. Written to out/alloy_atomize_powder.json."""
+    k = K7M2Q9
+    usable = (k["fines_g"] + k["mid_g"]) * k["run1_share"] / k["charge_g"]
+    fines = k["fines_g"] * k["run1_share"] / k["charge_g"]
+    metal_cm3 = k["charge_g"] / NAB_SOLID
+    fill = metal_cm3 / CRUCIBLES["225 cm3"]
+    charges = {"4 cups (this chapter)": (RUN["charge_g"], "out/alloy_recipe.json: 4 x 5N Al cup + plug + 3.92 g Si"),
+               "225 cm3 crucible, filled as on Oct 27": (metal_cm3 * AL_SOLID,
+                                                          f"{metal_cm3:.1f} cm3 of metal ({100 * fill:.0f} % of 225 "
+                                                          f"cm3), the volume of k7m2q9's bronze, in Al at 2.70"),
+               "400 cm3 crucible, the same fill": (fill * CRUCIBLES["400 cm3"] * AL_SOLID,
+                                                   f"{100 * fill:.0f} % of 400 cm3 in Al at 2.70 (assumed: the "
+                                                   f"same fill as Oct 27)")}
+    rows = []
+    for name, (g_in, how) in charges.items():
+        row = dict(charge=name, al_g=round(g_in, 1), how=how, usable_g=round(g_in * usable, 1),
+                   under_63um_g=round(g_in * fines, 1))
+        row["runs_per_build"] = {b: math.ceil(m / (g_in * fines)) for b, (m, _) in MIDI_BUILDS.items()}
+        rows.append(row)
+    bed_440 = MIDI_BUILDS["the lab's planning figure"][0] / BED_BULK * 1000.0 / (math.pi / 4 * 170.0 ** 2)
+    return dict(
+        yields=dict(usable_under_250um=round(usable, 4), under_63um=round(fines, 4), source=k["source"]),
+        charges=rows,
+        midi_builds={b: dict(g=round(m), source=s) for b, (m, s) in MIDI_BUILDS.items()},
+        reconcile=f"440 g of bed powder at {BED_BULK} g/cm3 is {440 / BED_BULK:.0f} cm3: a {bed_440:.1f} mm layer "
+                  "of the 170 mm cylinder, i.e. a short build (or a smaller cylinder), where chapter 3's 30 mm build "
+                  "in the full cylinder takes about 1 kg. Both are the bed alone; the supply's excess is on top.",
+        caveats=["k7m2q9 is 630 bronze. Al atomizes coarser at the same 40 kHz (the capillary wavelength goes as "
+                 "(surface tension / density)^(1/3), about 1.3x for Al against Cu alloys), so its share under 63 um "
+                 "is an upper estimate for Al. The lab's Al 4047 powders looked coarse under the SEM (DAL #159).",
+                 "The 63-250 um and >250 um powder can be remelted in a later run (more oxygen each time), so little "
+                 "metal is lost; it doesn't cut the number of runs, since each run still makes the same share of "
+                 "fines.",
+                 "A cup charge is limited by the cups, not the crucible: four 2.5 in cups hold 59 cm3 of metal, a quarter of the 225. "
+                 "The Oct 27 rod pieces were about 125 mm long (270 g each of 3/4 in rod), so cups that long would "
+                 "about double the charge."],
+        model=dict(pool_level_mm=round(POOL_LEVEL, 1), powder_level_mm=round(POWDER_END, 1),
+                   melt_density=AL_LIQUID, powder_bulk=POWDER_BULK, cup_gap_mm=round(CUP_GAP, 2),
+                   rod_to_wall_less_cup_mm=round(RADIAL_ROOM, 2)))
+
+
+POOL_LEVEL = level_for(pool_volume, RUN["charge_g"] / AL_LIQUID, -14.0, 37.0)     # 21.6 mm for 156.7 g
+POWDER_END = level_for(powder_volume, RUN["charge_g"] * 0.912 / POWDER_BULK, 3.0, 70.0)   # 15 mm: 143 g
 
 
 def lighter(c, k=0.45):
@@ -515,24 +642,29 @@ def cam(eye, at) -> list:
 
 # ------------------------------------------------------------------------------------------------ the cups
 def add_cups(sc, mir):
-    """The two charged Al cups (cup, Si powder to 74 % of the cavity, plug pressed home), standing in the carrier's
-    first two pockets on the MiR. Each is a group cup0 / cup1, its frame at the cup's base centre."""
-    top = C.FLOOR_Z + (C.FILL_TOP - C.FLOOR_Z) * C.RUNS["Al-10Si"][0][2]
-    for k in range(2):
+    """The four charged Al cups (cup, Si powder to 73 % of the cavity, plug pressed home), standing in the carrier's
+    four pockets on the MiR. Each is a group cup0..cup3, its frame at the cup's base centre. The cups that end up at
+    the back of the crucible (y > 0) get a copy halved through their own axis for the cutaway, and those at the front
+    go with the half that is cut away."""
+    top = C.FLOOR_Z + (C.FILL_TOP - C.FLOOR_Z) * C.fill_fraction("Al", "Si", 10.0)
+    for k in range(N_CUPS):
         grp = f"cup{k}"
         sc.add(f"{grp}/cup", C.cup(), C.AL_5N, grp, specular=0.6)
         sc.add(f"{grp}/plug", C.plug().translate((0, 0, C.PLUG_HOME_Z), inplace=False), C.AL_5N, grp, specular=0.6)
         sc.add(f"{grp}/powder", C.powder(top), C.POWDERS["Si"][0], grp, specular=0.05)
         sc.parent[grp] = "amr"
         sc.gmat[grp] = T(mir.seats[k])
-        if CUP_ANGLES[k] % 180.0 == 0.0:          # on the cut plane: a halved copy for the cutaway (y >= 0 kept)
+        if math.sin(math.radians(CUP_ANGLES[k])) > 0:       # at the back: halved through its axis (y >= 0 kept)
             for part, prof, col in (("cup", C.cup_profile(), C.AL_5N),
                                     ("plug", [(r, z + C.PLUG_HOME_Z) for r, z in C.plug_profile()], C.AL_5N),
                                     ("powder", C.powder_profile(top), C.POWDERS["Si"][0])):
                 sc.add(f"{grp}/{part}#h", half_lathe(prof), col, grp, specular=0.4 if part != "powder" else 0.05)
                 sc.cutrole[f"{grp}/{part}#h"] = "half"
                 sc.cutrole[f"{grp}/{part}"] = "whole"
-            sc.cut_f[grp] = 0.0
+        else:                                               # at the front: in the half the cutaway removes
+            for part in ("cup", "plug", "powder"):
+                sc.cutrole[f"{grp}/{part}"] = "whole"
+        sc.cut_f[grp] = 0.0
 
 
 def half_lathe(profile, res: int = 40) -> pv.PolyData:
@@ -545,7 +677,7 @@ def half_lathe(profile, res: int = 40) -> pv.PolyData:
 def heat_cups(sc, temp):
     c = temp_color(temp)
     amb = 0.18 + 0.55 * max(0.0, min(1.0, (temp - 450) / 400))
-    for k in range(2):
+    for k in range(N_CUPS):
         for part in ("cup", "plug", "cup#h", "plug#h"):
             if f"cup{k}/{part}" in sc.actors:
                 sc.color[f"cup{k}/{part}"] = c
@@ -608,7 +740,11 @@ def inv(Mx):
 def build():
     data = lab.meshes()
     idata = tour.load(["glovebox"])
-    sc = Scene(NAME, TITLE)
+    sc = Scene(NAME, TITLE, mp4=False)
+    if not PREVIEW:                         # the 3-D render goes to out/clean/ first; splice() writes the final MP4
+        RAW.mkdir(parents=True, exist_ok=True)
+        sc.mp4, sc.mp4_path = scene.encoder(RAW_MP4, sc.size, crf=17), RAW_MP4
+    sc.slots = []                           # where the real footage goes: (beat, MP4 frame, GIF frame, step label)
     sc.intro = 0.8
     L = A.Lab(sc, data, robot=False)
     L.show_gauges = False
@@ -659,6 +795,36 @@ def fast_forward(sc, first: int):
     sc.snap = maybe
 
 
+def slot(sc, beat: str):
+    """Mark where the real footage for `beat` goes: the frame the next sub-step would start on. The view at that
+    moment is kept without its text, for footage shown beside the model."""
+    if PREVIEW or len(sc.substeps) < TAIL:
+        return
+    png = RAW / f"{NAME}_slot_{beat}.png"
+    Image.fromarray(sc.render_base()).save(png)
+    sc.slots.append(dict(beat=beat, frame=sc.n, gif=len(sc.gif_frames), label=sc.label, model_png=str(png)))
+
+
+def finish(sc):
+    """Save the 3-D render to out/clean/ (its MP4, its GIF frames as PNGs, its JSON with the footage slots), then
+    splice the footage in."""
+    if PREVIEW:
+        return sc.save()
+    if RAW_GIF.exists():
+        shutil.rmtree(RAW_GIF)
+    RAW_GIF.mkdir(parents=True)
+    for i, im in enumerate(sc.gif_frames):
+        im.save(RAW_GIF / f"{i:05d}.png", compress_level=1)
+    n_gif = len(sc.gif_frames)
+    sc.gif_frames, sc.gif = [], False
+    info = sc.save()                                   # the MP4 in RAW, the still and out/alloy_atomize.json
+    meta = json.loads((OUT / f"{NAME}.json").read_text())
+    meta.update(slots=sc.slots, gif_frames=n_gif, gif_fps=scene.GIF_FPS, gif_size=list(scene.GIF_SIZE))
+    RAW_JSON.write_text(json.dumps(meta, indent=1, ensure_ascii=False) + "\n")
+    print(info, flush=True)
+    return splice()
+
+
 def movie():
     sc, L, mir, pool, powder, spray, drops, vent = build()
     if TAIL:
@@ -666,6 +832,8 @@ def movie():
     rb = mir.rb
     n = 5
     m_cup = RUN["charge_g"]
+    ps = powder_sums()
+    four, full225, full400 = ps["charges"]
     st = dict(pf=0.0, pc=0.0, o2=None, t=24.0, us="off")
 
     def show_g(**kw):
@@ -674,8 +842,8 @@ def movie():
                 "Pressure": f"{st['p_abs']:.1f} mbar" if st.get("p_abs") is not None else None,
                 "Furnace": f"{st['pf']:+.0f} mbar" if st.get("p_on") else None,
                 "Chamber": f"{st['pc']:+.0f} mbar" if st.get("p_on") else None,
-                "O\u2082": f"{st['o2']:.0f} ppm" if st.get("o2") is not None else None,
-                "T (wall)": f"{st['t']:.0f} \u00b0C" if st.get("t_on") else None,
+                "O₂": f"{st['o2']:.0f} ppm" if st.get("o2") is not None else None,
+                "T (wall)": f"{st['t']:.0f} °C" if st.get("t_on") else None,
                 "US": st.get("us") if st.get("us_on") else None,
                 "Container": st.get("cont")}
         sc._rows = {}
@@ -690,21 +858,22 @@ def movie():
     CAM_LOAD = cam((-1000, -2050, 2150), (-20, -300, 1200))
     CAM_TOP = cam((-480, -560, 1700), (0, 10, 1290))
     CAM_SEC = cam((-330, -820, 1430), (5, 0, 1262))
-    CAM_COLUMN = cam((-820, -2750, 1120), (70, 0, 860))
     CAM_POUR = cam((-620, -1720, 1140), (10, 0, 970))
     CAM_CHAMBER = cam((-900, -2200, 1000), (110, 0, 760))
     CAM_CONT = cam((1450, -1650, 1250), (250, -300, 520))
     CAM_CRADLE = cam((1900, -2500, 1750), (150, -560, 760))
 
-    show_g(arm="UR10e on MiR250, parked", mir="at the VLM's opening", charge=f"2 × 5N Al cup, Si, {m_cup:.1f} g")
+    show_g(arm="UR10e on MiR250, parked", mir="at the VLM's opening",
+           charge=f"{N_CUPS} × 5N Al cup, Si, {m_cup:.1f} g")
     sc.cam = list(CAM_WIDE)
     # ------------------------------------------------------------------ 1. drive over
-    cap = (f"From the VLM to the atomizer: the MiR250 carries the two charged 5N Al cups, {m_cup:.1f} g of Al-10Si "
-           f"(Si powder under each plug), to the AMAZEMET rePowder. Two cups a run is #222's default (80-100 g).")
+    cap = (f"From the VLM to the atomizer: the MiR250 carries the four charged 5N Al cups, {m_cup:.1f} g of Al-10Si "
+           f"(Si powder under each plug), to the AMAZEMET rePowder. Four charges is how the lab loads the crucible; "
+           f"its own Al runs were 169-180 g (DAL #159).")
     lbl = [("AMAZEMET rePowder atomizer", tuple(W((250, 0, 1700))), (0.16, 0.24)),
-           ("2 charged Al cups", tuple(mir.world((-340, -150, 1110))), (0.62, 0.30)),
+           ("4 charged Al cups", tuple(mir.world((-300, -150, 1110))), (0.62, 0.30)),
            ("Kardex VLM", (0, -1700, 2700), (0.80, 0.16))]
-    sc.step(f"1/{n}", cap, 1.0, None, hold=0.8, labels=lbl)
+    sc.step(f"1/{n}", cap, 1.0, None, hold=1.0, labels=lbl)
     show_g(mir="driving")
     sc.step(f"1/{n}", cap, mir.secs(x_load, y_park), mir.drive(x_load, y_park), hold=0.2, cam_to=CAM_LOAD,
             labels=[("AMAZEMET rePowder atomizer", tuple(W((250, 0, 1700))), (0.16, 0.24))])
@@ -735,31 +904,37 @@ def movie():
     away = R((0, 1, 0), -HOOD_OPEN, hinge_w) @ pre_k
     sc.step(f"2/{n}", cap, 0.7, rb.line_to(away), hold=0.05)
 
-    for k in range(2):
+    for k in range(N_CUPS):
         held_w, slide_w = tip_in_path(k)
         seat_w = [T(RP) @ Mx for Mx in held_w]
         slide_world = [T(RP) @ Mx for Mx in slide_w]
         cup_w = sc.world(f"cup{k}")
         top = cup_w[:3, 3] + np.array([0, 0, C.SLUG_L - 13.0])
-        a = math.radians(CUP_ANGLES[k])
-        spin = 90.0 - CUP_ANGLES[k]                            # fingers along the cup's tangent in the crucible
+        spin = (90.0 - CUP_ANGLES[k] + 90.0) % 180.0 - 90.0     # fingers along the cup's tangent (either way round)
         g_pick = A.down(top, spin=spin)
-        cap = (f"Cup {k + 1} of 2 out of the carrier and over the open crucible. Past the rod's adapter a 3/4 in cup "
-               "only goes in tipped, foot by the rod and top leaning away: #222 finds -0.09 mm in the scaled drawing, "
-               "too close to call, so try one first. Let go below the adapter; it slides to the floor cone, plug up.")
+        f = 1.0 if k == 0 else 0.7                               # the first one at full speed, the rest quicker
+        if k == 0:
+            cap = (f"Cup 1 of {N_CUPS} out of the carrier and over the open crucible. Past the rod's adapter a 3/4 in "
+                   "cup only goes in tipped, foot by the rod and top leaning away: #222 finds -0.09 mm in the scaled "
+                   "drawing, too close to call, so try one first. Let go below the adapter; it slides to the floor "
+                   "cone, plug up.")
+        else:
+            cap = (f"Cup {k + 1} of {N_CUPS}, the same way, at #222's next place round the rod. The places are 75° "
+                   f"apart and clear of the sealing-rod lever; neighbours stand {CUP_GAP:.1f} mm apart, and a cup "
+                   f"has {RADIAL_ROOM:.1f} mm between the rod and the wall.")
         show_g(arm=f"cup {k + 1}: carrier to crucible")
-        sc.step(f"2/{n}", cap, 1.4, RB.both(rb.joint_to(Tw=A.down(top + (0, 0, 110), spin=spin)), rb.grip_to(0.0)),
-                hold=0.05, cam_to=CAM_LOAD if k == 0 else None)
-        sc.step(f"2/{n}", cap, 0.7, rb.line_to(g_pick), hold=0.05)
+        sc.step(f"2/{n}", cap, 1.4 * f, RB.both(rb.joint_to(Tw=A.down(top + (0, 0, 110), spin=spin)),
+                                               rb.grip_to(0.0)), hold=0.05, cam_to=CAM_LOAD if k == 0 else None)
+        sc.step(f"2/{n}", cap, 0.7 * f, rb.line_to(g_pick), hold=0.05)
         sc.step(f"2/{n}", cap, 0.4, rb.grip_to(GRIP_CUP), hold=0.05)
         rb.grasp(f"cup{k}")
         _, off = rb.held
         tcp_of = [Mx @ inv(off) for Mx in seat_w]
         lift = T((0, 0, 140)) @ rb.tcp_world()
-        sc.step(f"2/{n}", cap, 0.6, rb.line_to(lift), hold=0.05)
-        sc.step(f"2/{n}", cap, 1.4, rb.joint_to(Tw=tcp_of[0]), hold=0.05, cam_to=CAM_TOP if k == 0 else None)
+        sc.step(f"2/{n}", cap, 0.6 * f, rb.line_to(lift), hold=0.05)
+        sc.step(f"2/{n}", cap, 1.4 * f, rb.joint_to(Tw=tcp_of[0]), hold=0.05, cam_to=CAM_TOP if k == 0 else None)
         go = follow(rb, tcp_of)
-        sc.step(f"2/{n}", cap, 2.4, go, hold=0.05,
+        sc.step(f"2/{n}", cap, 2.4 * f, go, hold=0.05,
                 labels=[("rod adapter", tuple(W((0, 0, M.RIM + 40))), (0.10, 0.30)),
                         ("crucible, 57 mm bore", tuple(W((-26, 0, M.RIM - 6))), (0.10, 0.62))] if k == 0 else ())
         sc.step(f"2/{n}", cap, 0.3, rb.grip_to(0.0), hold=0.0)
@@ -773,13 +948,20 @@ def movie():
         if DEBUG:
             print("cup", k, "world", np.round(sc.world(cup_g)[:3, 3] - RP, 1), "seat", np.round(cup_seat(k), 1),
                   "parent", sc.parent.get(cup_g), flush=True)
-    cap = "Both cups stand round the rod, plug and vent up. The arm swings the lid shut, then the MiR backs off along " \
-          "the front so the window stays clear."
+    cap = (f"All four cups stand round the rod, plug and vent up, {CUP_GAP:.1f} mm apart: {m_cup:.1f} g, about the "
+           "size of the lab's own Al runs. The crucible could take far more metal than the cups bring.")
     show_g(arm="lid", charge=f"in the crucible, {m_cup:.1f} g")
     lid_open_grasp = R((0, 1, 0), -HOOD_OPEN, hinge_w) @ grasp_k
     sc.step(f"2/{n}", cap, 1.4, rb.joint_to(Tw=R((0, 1, 0), -HOOD_OPEN, hinge_w) @ pre_k), hold=0.05,
             cam_to=CAM_LOAD)
-    sc.step(f"2/{n}", cap, 0.7, rb.line_to(lid_open_grasp), hold=0.05)
+    CAM_DOWN = cam((-22, -80, 1610), (0, 2, 1262))            # down into the open crucible
+    sc.step(f"2/{n}", cap, 1.3, None, hold=1.8, cam_to=CAM_DOWN,
+            labels=[("4 cups round the sealing rod", tuple(W(cup_seat(2) + (0, 0, C.SLUG_L))), (0.70, 0.30)),
+                    (f"cup tops {M.RIM - cup_seat(1)[2] - C.SLUG_L:.0f} mm under the rim",
+                     tuple(W(cup_seat(1) + (0, 0, C.SLUG_L))), (0.70, 0.62))])
+    slot(sc, "charge")
+    cap = "The arm swings the lid shut, then the MiR backs off along the front so the window stays clear."
+    sc.step(f"2/{n}", cap, 0.7, rb.line_to(lid_open_grasp), hold=0.05, cam_to=CAM_LOAD)
     sc.step(f"2/{n}", cap, 0.4, rb.grip_to(GRIP_KNOB), hold=0.05)
     lid_dn = follow(rb, arc[::-1])
 
@@ -794,17 +976,19 @@ def movie():
     sc.step(f"2/{n}", cap, mir.secs(x_wait), mir.drive(x_wait, y_park), hold=0.1, cam_to=CAM_SEC)
 
     # ------------------------------------------------------------------ 3. gas wash, heat, melt
-    cap = ("Cut open at the furnace axis. Three cycles of pumping down to 4×10⁻¹ mbar and back-filling "
-           "with 5N argon take the oxygen under 50 ppm. On each pump-down the air under the plugs leaves through "
-           "their 1/16 in vents (#104).")
-    vents = [W(cup_seat(k) + (0, 0, C.SLUG_L - C.PLUG_SEAT + 1.0)) - RP for k in range(2)]
+    back = [k for k in range(N_CUPS) if math.sin(math.radians(CUP_ANGLES[k])) > 0]
+    cap = ("Cut open at the furnace axis; the two back cups are cut through their own axes. Three cycles of pumping "
+           "down to 4×10⁻¹ mbar and back-filling with 5N argon take the oxygen under 50 ppm. On each "
+           "pump-down the air under the plugs leaves through their 1/16 in vents (#104).")
+    vents = [cup_seat(k) + (0, 0, C.SLUG_L - C.PLUG_SEAT + 1.0) for k in range(N_CUPS)]
     show_g(p_abs=1013.0, o2=2.1e5)
 
     def cut_open(u):
         set_cut(sc, window(u, 0.0, 0.6))
+    k0 = back[0]
     sc.step(f"3/{n}", cap, 1.5, cut_open, hold=0.2,
-            labels=[("vented plug, 5N Al", tuple(W(vents[1]) + (0, 4, 1)), (0.08, 0.26)),
-                    ("Si powder under it", tuple(W(cup_seat(1) + (0, 3, 22))), (0.08, 0.56))])
+            labels=[("vented plug, 5N Al", tuple(W(vents[k0]) + (0, 4, 1)), (0.08, 0.26)),
+                    ("Si powder under it", tuple(W(cup_seat(k0) + (0, 3, 22))), (0.08, 0.56))])
     o2s = [2.1e5, 3000.0, 300.0, 45.0]
 
     def wash(u):
@@ -815,8 +999,8 @@ def movie():
         o2 = o2s[c] + (o2s[c + 1] - o2s[c]) * up_
         set_gas(sc, 0.0 if v < 0.5 else 0.8 * up_)
         if 0.05 < v < 0.45 and sc.n % 2 == 0:
-            for vp in vents:
-                vent.add(np.array([vp]) + vent.rng.normal(0, 0.8, (1, 3)),
+            for kk in back:
+                vent.add(np.array([vents[kk]]) + vent.rng.normal(0, 0.8, (1, 3)),
                          np.array([[vent.rng.normal(0, 40), vent.rng.normal(0, 40), 260.0]]))
         vent.step()
         show_g(p_abs=p, o2=o2)
@@ -836,27 +1020,30 @@ def movie():
             labels=[("coil on (10 kW, 7 kHz)", tuple(W((-47, 0, M.Z_CR - 28 + 31))), (0.08, 0.62)),
                     ("Type N thermocouple, wall", tuple(W((40, 50, M.Z_CR + 60))), (0.74, 0.28))])
 
-    seats = [cup_seat(k) for k in range(2)]
+    seats = [cup_seat(k) for k in range(N_CUPS)]
 
     def slump(u):
         tt = 700 + 50 * u
-        for k in range(2):
-            f = 1 - 0.95 * window(u, 0.05 + 0.08 * k, 0.75 + 0.05 * k)
+        for k in range(N_CUPS):
+            f = 1 - 0.95 * window(u, 0.05 + 0.06 * k, 0.72 + 0.05 * k)
             s = seats[k]
             sc.gmat[f"cup{k}"] = T(s) @ S((1 + 0.12 * (1 - f), 1 + 0.12 * (1 - f), f))
             for part in ("cup", "plug", "powder", "cup#h", "plug#h", "powder#h"):
                 if f"cup{k}/{part}" in sc.actors:
                     sc.alpha[f"cup{k}/{part}"] = 1.0 if f > 0.07 else 0.0
-        pool.set(-14 + 22 * window(u, 0.05, 0.95))
+        pool.set(-14 + (POOL_LEVEL + 14) * window(u, 0.05, 0.95))
         heat_cups(sc, max(tt, 680))
         rod_lift(sc, -1.5 * u)
         show_g(t=tt)
-    sc.step(f"3/{n}", cap, 4.0, slump, hold=0.6, labels=[("melt pool, Al-10Si", tuple(W((-14, 0, M.Z_CR + 6))),
-                                                          (0.08, 0.40))])
+    sc.step(f"3/{n}", cap, 4.0, slump, hold=0.6,
+            labels=[(f"melt pool, Al-10Si, {m_cup:.0f} g", tuple(W((-14, 0, M.Z_CR + POOL_LEVEL - 4))),
+                     (0.08, 0.40))])
+    slot(sc, "melt")
     # ------------------------------------------------------------------ 4. pour and atomize
     cap = ("Vibration on, then 200 mbar of argon over-pressure on the furnace: the pour runs on the pressure, not the "
            "melt's weight (#222). Sealing rod up: the stream falls through the nozzle onto the vibrating plate.")
-    st_lv = dict(level=8.0)
+    st_lv = dict(level=POOL_LEVEL)
+    drain = (POOL_LEVEL + 4.0) / (11.0 * FPS)          # mm a frame: near the floor cone by the end of the pour
     show_g(us_on=True, us="40 kHz")
 
     def rod_up(u):
@@ -878,21 +1065,23 @@ def movie():
         spray.emit_spray(int(round(rate * PER_FRAME)))
         spray.step()
         drops.step()
-        st_lv["level"] = max(-12.0, st_lv["level"] - 0.07 * PER_FRAME)
+        st_lv["level"] = max(-12.0, st_lv["level"] - drain)
         pool.set(st_lv["level"])
-        powder.set(3 + 5 * min(1.0, spray.landed / 3800))
+        powder.set(3 + (POWDER_END - 3) * min(1.0, spray.landed / 3800))
         shake(sc, True)
         show_g(pf=350.0, pc=150.0)
     cap = ("Droplets fly off the plate, freeze in the argon and run down the cone into the container. AMAZEMET's "
            "training fits a 0.7 mm nozzle for Al alloys (0.5 mm standard); which one our unit has is not known (#222).")
     sc.step(f"4/{n}", cap, 6.0, atomize, hold=0.6, live=True, still=True,
             labels=[("droplets freeze into powder", tuple(W(M.IMPACT + np.array([90, 0, -40]))), (0.70, 0.62))])
-    cap = "The powder collects in the container under the chamber's valve, still under argon."
-    sc.step(f"4/{n}", cap, 4.0, atomize, hold=0.4, live=True, cam_to=CAM_CHAMBER,
+    slot(sc, "pour")
+    cap = (f"The powder collects in the container under the chamber's valve, still under argon. At the Oct 27 bronze "
+           f"run's yield, 91 % usable (DAL #219), the four cups make about {four['usable_g']:.0f} g of powder.")
+    sc.step(f"4/{n}", cap, 4.0, atomize, hold=0.6, live=True, cam_to=CAM_CHAMBER,
             labels=[("powder container", tuple(W((M.CHUTE_X + M.CONT_R - 2, 0, 200))), (0.70, 0.74))])
 
     def tail(u):
-        st_lv["level"] = max(-12.0, st_lv["level"] - 0.2 * PER_FRAME)
+        st_lv["level"] = max(-12.0, st_lv["level"] - 3 * drain)
         pool.set(st_lv["level"] if u < 0.8 else -30)
         stream(sc, 1.0 if u < 0.6 else 0.0, 1.0 - 0.6 * u)
         film(sc, u < 0.7)
@@ -900,7 +1089,7 @@ def movie():
             spray.emit_spray(int(round(20 * (1 - u) * PER_FRAME)))
         spray.step()
         drops.step()
-        powder.set(3 + 5 * min(1.0, spray.landed / 3800))
+        powder.set(3 + (POWDER_END - 3) * min(1.0, spray.landed / 3800))
         coil_glow(sc, 1.0 - u)
         shake(sc, u < 0.7)
         show_g(us="off" if u > 0.7 else "40 kHz", t=750 - 200 * u)
@@ -909,6 +1098,7 @@ def movie():
     spray.clear()
     drops.clear()
     rod_lift(sc, 0.0)
+    slot(sc, "powder")
 
     # ------------------------------------------------------------------ 5. the container onto the MiR
     cap = ("Closed again. The chamber's valve and the container's own valve are shut, so the powder comes off under "
@@ -937,7 +1127,6 @@ def movie():
     sc.step(f"5/{n}", cap, 1.0, rb.line_to(T((0, -170, -20)) @ grasp_h), hold=0.05)
     _, off = rb.held
     seat_w = mir.world(mir.cradle_seat)
-    cont_home = sc.world(g("container"))
     # the container stands in the cradle, its base on the seat, turned half round so the handle faces the arm
     target = T(seat_w) @ R((0, 0, 1), 180.0) @ T(-np.array([M.CHUTE_X, 0.0, M.CONT_Z[0]]))
     t_place = target @ inv(off)
@@ -957,13 +1146,350 @@ def movie():
     sc.step(f"5/{n}", cap, mir.secs(x_back, y_park), mir.drive(x_back, y_park), hold=0.0)
     sc.step(f"5/{n}", cap, mir.secs(*END_POSE) + 0.6, mir.drive(*END_POSE), hold=0.2)
     show_g(mir="at the rePowder")
+    b440 = next(iter(MIDI_BUILDS))
+    cap = (f"How much powder: the four cups make about {four['under_63um_g']:.0f} g of the MIDI's 20-63 um cut, at "
+           f"the Oct 27 run's 17 % under 63 um (DAL #219). The crucible takes much more: filled as on Oct 27, about "
+           f"{full225['al_g']:.0f} g of Al ({full225['under_63um_g']:.0f} g of the cut), and the 400 cm³ one about "
+           f"{full400['al_g']:.0f} g ({full400['under_63um_g']:.0f} g). A 440 g MIDI build then takes "
+           f"{four['runs_per_build'][b440]}, {full225['runs_per_build'][b440]} or "
+           f"{full400['runs_per_build'][b440]} runs.")
+    sc.step(f"5/{n}", cap, 0.4, None, hold=6.5)
+    slot(sc, "sieved")
     sc.step(f"5/{n}", "Done: the powder is on the MiR250, in front of the rePowder. Next: the AS 200 sieve shaker and "
             "the printer.", 0.4, None, hold=2.0)
     if DEBUG:
         print("end pose", round(mir.x, 1), round(mir.y, 1), round(mir.yaw, 2), flush=True)
     print(f"highest forearm/wrist point {rb.max_z_world:.0f} mm", flush=True)
-    return sc.save()
+    return finish(sc)
+
+
+# ------------------------------------------------------------------------------------------------ the real footage
+# What goes in at each slot: the lab's own runs (DAL #159, #219; the BYU VCL channel). File names are those of the
+# parent session's fetch (FOOTAGE/manifest.json); `window` is seconds inside that file, `seconds` a photo's time on
+# screen. None of it is Al-10Si: the captions say what it is.
+PLAN = [
+    dict(beat="charge", file="nab_k7m2q9_four_rod_pieces_1079.886g.jpg", seconds=3.6,
+         caption="The lab's own four charges, Oct 27 2026: four 630 bronze rod pieces, 1,079.886 g on the balance, "
+                 "melted in one run (Gage Erickson, DAL #219). Bronze, not this chapter's Al-10Si."),
+    dict(beat="melt", file="nab_melt1.mp4", window=(10.0, 15.0),
+         caption="Real footage, Oct 27 2026, through the furnace port: the four bronze pieces stand round the sealing "
+                 "rod and glow (youtu.be/2brsz-90seg, DAL #219). 630 bronze at 1300 °C, not Al-10Si."),
+    dict(beat="melt", file="nab_melt2.mp4", window=(48.0, 55.0),
+         caption="The pieces slump and run together round the rod: \"It's melting in right now\" (2brsz-90seg, "
+                 "03:55)."),
+    dict(beat="melt", file="nab_melt3.mp4", window=(14.0, 18.5),
+         caption="The charge fully molten, a bright pool round the sealing rod (2brsz-90seg, DAL #219)."),
+    dict(beat="pour", file="nab_pour1.mp4", window=(15.0, 22.5),
+         caption="Real footage, Oct 27 2026, through the view port: the bronze jet lands on the tip of the W-coated "
+                 "carbon-fibre plate and atomizes (2brsz-90seg). 91 % of the 1,080 g became usable powder (DAL #219)."),
+    dict(beat="pour", file="al_pour_oct08.mp4", window=(14.0, 20.0),
+         caption="Real footage, Oct 8 2026: an Al 6063 stream on a carbon-fibre plate (youtu.be/dTyuZmqYxHA). That "
+                 "day it dripped rather than atomized: a CF plate with the 1.5:1 booster (DAL #159, PR #176)."),
+    dict(beat="powder", file="nab_k7m2q9_jar_of_powder.jpg", seconds=3.0,
+         caption="Real photo: a jar of the Oct 27 bronze powder, lot k7m2q9 (DAL #219)."),
+    dict(beat="powder", file="al4047_oct22_c3k0n5_bag_and_jar.jpg", seconds=3.0,
+         caption="Real photo: the Oct 22 Al 4047 run, lot c3k0n5, 169 g in: a bag of splats and a jar of powder "
+                 "(Ronnie Guymon, DAL #159)."),
+    dict(beat="sieved", file="nab_k7m2q9_sieved_three_jars.jpg", seconds=4.2,
+         caption="Real photo: the Oct 27 bronze sieved. Left, under 63 µm, the LPBF cut: 188 g from both bronze "
+                 "runs; middle, 63-250 µm, 827 g; right, flakes over 250 µm (Gage Erickson, DAL #219)."),
+]
+BEATS = ("charge", "melt", "pour", "powder", "sieved")
+BADGE = (178, 34, 34)
+KEEP = OUT / "footage"            # the excerpts and photos used, small, committed: splice() reads these when present
+
+
+def manifest(root: Path) -> dict:
+    """{file name: entry} from root/manifest.json ("clips" and "photos", or a plain list)."""
+    path = root / "manifest.json"
+    if not path.exists():
+        return {}
+    raw = json.loads(path.read_text())
+    items = raw if isinstance(raw, list) else [e for k in ("clips", "photos", "items", "files")
+                                                for e in raw.get(k, []) if isinstance(e, dict)]
+    out = {}
+    for e in items:
+        f = e.get("file") or e.get("path")
+        if not f:
+            continue
+        p = Path(f) if Path(f).is_absolute() else root / f
+        if p.exists():
+            out[p.name] = dict(e, path=p)
+    return out
+
+
+def _date(e: dict) -> str:
+    d = str(e.get("date", ""))
+    try:
+        y, m, dd = d.split("-")
+        return f"{['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][int(m) - 1]} " \
+               f"{int(dd)} {y}"
+    except (ValueError, IndexError):
+        return d
+
+
+def _alloy(e: dict) -> str:
+    a = str(e.get("alloy", "")).lower()
+    name = e["path"].name.lower()
+    if "bronze" in a or name.startswith("nab"):
+        return "630 bronze (NAB)"
+    if "4047" in a or "4047" in name:
+        return "Al 4047"
+    if "6063" in a or "6063" in name or name.startswith("al"):
+        return "Al 6063"
+    return e.get("alloy", "")
+
+
+def _fit(img: Image.Image, size) -> Image.Image:
+    """`img` inside `size`, on a blurred, darkened copy of itself that fills the frame."""
+    bg = ImageOps.fit(img, size, Image.LANCZOS).filter(ImageFilter.GaussianBlur(18))
+    bg = ImageEnhance.Brightness(bg).enhance(0.45)
+    fg = ImageOps.contain(img, size, Image.LANCZOS)
+    bg.paste(fg, ((size[0] - fg.width) // 2, (size[1] - fg.height) // 2))
+    return bg
+
+
+def _side(real: Image.Image, model: Image.Image, size) -> Image.Image:
+    """A portrait picture beside the model at the same moment: the model on the left, the real one on the right."""
+    W_, H_ = size
+    canvas = Image.new("RGB", size, (22, 24, 28))
+    r = ImageOps.contain(real, (W_, H_), Image.LANCZOS)
+    m = ImageOps.contain(model, (W_ - r.width - 30, H_), Image.LANCZOS)
+    canvas.paste(m, (10, (H_ - m.height) // 2 - 20))
+    canvas.paste(r, (W_ - r.width, (H_ - r.height) // 2))
+    d = ImageDraw.Draw(canvas, "RGBA")
+    f = scene.font(15 * H_ / 720, bold=True)
+    for text, x, y in (("the model", 18, (H_ - m.height) // 2 - 20 + m.height - 34 * H_ / 720),
+                       ("the lab", W_ - r.width + 10, 84 * H_ / 720)):
+        w = d.textlength(text, font=f)
+        d.rounded_rectangle((x, y, x + w + 16, y + 26 * H_ / 720), 5, fill=(255, 255, 255, 220))
+        d.text((x + 8, y + 4 * H_ / 720), text, font=f, fill=(20, 20, 24))
+    return canvas
+
+
+def _clip(path: Path, t0: float, span: float, fps: int) -> list[Image.Image]:
+    """Frames of a clip from t0 for span seconds at fps, as decoded (rotation applied, size kept)."""
+    probe = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries",
+                            "stream=width,height:stream_side_data=rotation:format=duration", "-of", "json", str(path)],
+                           capture_output=True, text=True).stdout
+    info = json.loads(probe or "{}")
+    st = (info.get("streams") or [{}])[0]
+    w, h = int(st.get("width", 1280)), int(st.get("height", 720))
+    rot = next((abs(int(float(sd.get("rotation", 0)))) for sd in st.get("side_data_list", []) if "rotation" in sd), 0)
+    if rot in (90, 270):
+        w, h = h, w
+    dur = float(info.get("format", {}).get("duration", t0 + span))
+    t0 = min(t0, max(0.0, dur - span))
+    cmd = ["ffmpeg", "-v", "error", "-ss", f"{t0:.2f}", "-t", f"{span:.2f}", "-i", str(path), "-an", "-vf",
+           f"fps={fps},format=rgb24", "-f", "rawvideo", "-pix_fmt", "rgb24", "-"]
+    buf = subprocess.run(cmd, capture_output=True, check=True).stdout
+    n = len(buf) // (w * h * 3)
+    frames = [Image.frombuffer("RGB", (w, h), buf[i * w * h * 3:(i + 1) * w * h * 3], "raw", "RGB", 0, 1)
+              for i in range(n)]
+    return frames[:n - n % 3] if n > 3 else frames
+
+
+def _photo(path: Path) -> Image.Image:
+    return ImageOps.exif_transpose(Image.open(path)).convert("RGB")
+
+
+def _push_in(img: Image.Image, n: int, k: float = 0.05) -> list[Image.Image]:
+    """n frames of a slow push-in on img (k: how far)."""
+    out = []
+    for i in range(n):
+        z = 1.0 - k * i / max(1, n - 1)
+        w, h = img.width * z, img.height * z
+        box = ((img.width - w) / 2, (img.height - h) / 2, (img.width + w) / 2, (img.height + h) / 2)
+        out.append(img.resize(img.size, Image.BILINEAR, box=box))
+    return out
+
+
+def _dress(img: Image.Image, label: str, badge: str, caption: str, scale: float, size) -> Image.Image:
+    """The chapter's title, step label and caption on a footage frame, plus a badge saying it is real."""
+    img = img.convert("RGB")
+    if img.size != tuple(size):
+        img = img.resize(size, Image.LANCZOS)
+    ns = SimpleNamespace(title=TITLE, label=label, gauges=[], labels=[], caption=" ".join(caption.split()))
+    img = Scene.overlay(ns, img, scale, [])
+    if scene.CLEAN:
+        return img
+    d = ImageDraw.Draw(img, "RGBA")
+    s = max(scale, 0.80)
+    fb = scene.font(15 * s, bold=True)
+    w = d.textlength(badge, font=fb)
+    d.rounded_rectangle((10 * s, 44 * s, 10 * s + w + 20 * s, 44 * s + 28 * s), 6 * s, fill=(*BADGE, 235))
+    d.text((20 * s, 49 * s), badge, font=fb, fill=(255, 255, 255))
+    return img
+
+
+def _model_frame(frame: int, size) -> Image.Image:
+    """Frame `frame` of the 3-D render."""
+    buf = subprocess.run(["ffmpeg", "-v", "error", "-i", str(RAW_MP4), "-vf", f"select=eq(n\\,{max(0, frame)})",
+                          "-vframes", "1", "-f", "rawvideo", "-pix_fmt", "rgb24", "-"],
+                         capture_output=True, check=True).stdout
+    return Image.frombuffer("RGB", size, buf[:size[0] * size[1] * 3], "raw", "RGB", 0, 1)
+
+
+def keep_footage(src: Path = FOOTAGE) -> int:
+    """Copy what PLAN uses from `src` into out/footage/, small: each clip cut to its window (720 px tall, CRF 28, no
+    sound), each photo at 1600 px, plus a manifest with the credits. Returns the number of files."""
+    have = manifest(src)
+    if not have:
+        return 0
+    KEEP.mkdir(parents=True, exist_ok=True)
+    kept = []
+    for item in PLAN:
+        e = have.get(item["file"])
+        if e is None:
+            print("footage missing:", item["file"], flush=True)
+            continue
+        dst = KEEP / item["file"]
+        entry = {k: v for k, v in e.items() if k != "path"}
+        entry["file"] = dst.name
+        if "window" in item:
+            t0, t1 = item["window"]
+            subprocess.run(["ffmpeg", "-y", "-v", "error", "-ss", f"{t0:.2f}", "-t", f"{t1 - t0:.2f}", "-i",
+                            str(e["path"]), "-an", "-vf", "scale=-2:'min(720,ih)'", "-c:v", "libx264", "-crf", "28",
+                            "-preset", "slow", "-pix_fmt", "yuv420p", "-movflags", "+faststart", str(dst)], check=True)
+            entry.update(excerpt_of=e["path"].name, excerpt_window_s=[t0, t1])
+        else:
+            im = _photo(e["path"])
+            im.thumbnail((1600, 1600), Image.LANCZOS)
+            im.save(dst, quality=84, optimize=True)
+        kept.append(entry)
+    (KEEP / "manifest.json").write_text(json.dumps(dict(
+        note="The excerpts and photos alloy_atomize.py cuts into chapter 2, kept small: clips cut to the window "
+             "used (excerpt_window_s, seconds in the parent's fetch), 720 px tall, no sound; photos at 1600 px. "
+             "All the lab's own (BYU VCL channel, DAL #159 and #219); credits per file.",
+        files=kept), indent=1, ensure_ascii=False) + "\n")
+    return len(kept)
+
+
+def splice() -> str:
+    """Cut the footage in PLAN into the last 3-D render at its slots, and write the final MP4, GIF and JSON. Reads
+    out/footage/ (the kept excerpts) if it has them, else FOOTAGE; with neither, writes the render out as it is."""
+    meta = json.loads(RAW_JSON.read_text())
+    size, fps = tuple(meta["size"]), meta["fps"]
+    gsize = tuple(meta.get("gif_size", scene.GIF_SIZE))
+    gstep = max(1, round(fps / meta.get("gif_fps", scene.GIF_FPS)))
+    kept = KEEP / "manifest.json"
+    if kept.exists():
+        have = {}
+        for e in json.loads(kept.read_text())["files"]:
+            if (KEEP / e["file"]).exists():
+                have[e["file"]] = dict(e, path=KEEP / e["file"], window_offset=e.get("excerpt_window_s", [0, 0])[0])
+    else:
+        have = manifest(FOOTAGE)
+    inserts = []                                    # (slot, MP4 frames, GIF frames, sub-steps)
+    for sl in meta.get("slots", []):
+        frames, gifs, subs = [], [], []
+        model = None
+        for item in (it for it in PLAN if it["beat"] == sl["beat"]):
+            e = have.get(item["file"])
+            if e is None:
+                continue
+            video = "window" in item
+            if video:
+                t0, t1 = item["window"]
+                off = e.get("window_offset", 0.0)
+                raw = _clip(e["path"], t0 - off, t1 - t0, fps)
+            else:
+                pic = _photo(e["path"])
+                raw = None
+            portrait = (raw[0].height > raw[0].width) if video and raw else (not video and pic.height > pic.width)
+            if portrait and model is None:
+                png = Path(sl.get("model_png", ""))
+                model = (Image.open(png).convert("RGB") if sl.get("model_png") and png.exists()
+                         else _model_frame(sl["frame"] - 1, size))
+            if video:
+                pics = [(_side(f, model, size) if portrait else _fit(f, size)) for f in raw]
+            else:
+                still = _side(pic, model, size) if portrait else _fit(pic, size)
+                pics = _push_in(still, int(round(item["seconds"] * fps / 3)) * 3, 0.04)
+            if not pics:
+                continue
+            badge = " · ".join(x for x in ("REAL FOOTAGE" if video else "REAL PHOTO", _alloy(e), _date(e)) if x)
+            k0 = len(frames)
+            frames += [np.asarray(_dress(p, sl["label"], badge, item["caption"], 1.0, size)) for p in pics]
+            gifs += [_dress(p, sl["label"], badge, item["caption"], gsize[0] / size[0], gsize).convert("RGB")
+                     for p in pics[::gstep]]
+            subs.append(dict(label=sl["label"], caption=" ".join(item["caption"].split()), start_frame=k0,
+                             end_frame=len(frames) - 1,
+                             footage=dict(file=item["file"], source=e.get("source"), date=e.get("date"),
+                                          alloy=_alloy(e), window_s=item.get("window"))))
+        if frames:
+            inserts.append((sl, frames, gifs, subs))
+    # the MP4: the render's frames, with the footage at each slot
+    enc = scene.encoder(OUT / "mp4" / f"{NAME}.mp4", size, crf=21)
+    dec = subprocess.Popen(["ffmpeg", "-v", "error", "-i", str(RAW_MP4), "-f", "rawvideo", "-pix_fmt", "rgb24", "-"],
+                           stdout=subprocess.PIPE)
+    nbytes = size[0] * size[1] * 3
+    pending = {sl["frame"]: (frames, subs) for sl, frames, _, subs in inserts}
+    placed, k, written = [], 0, 0
+
+    def put(frames, subs):
+        nonlocal written
+        for f in frames:
+            enc.stdin.write(np.ascontiguousarray(f).tobytes())
+        placed.extend(dict(s_, start_frame=s_["start_frame"] + written, end_frame=s_["end_frame"] + written)
+                      for s_ in subs)
+        written += len(frames)
+    while True:
+        if k in pending:
+            put(*pending.pop(k))
+        buf = dec.stdout.read(nbytes)
+        if len(buf) < nbytes:
+            break
+        enc.stdin.write(buf)
+        written += 1
+        k += 1
+    for f_at in sorted(pending):                    # slots past the render's last frame
+        put(*pending[f_at])
+    enc.stdin.close()
+    enc.wait()
+    dec.wait()
+    # the JSON: each 3-D sub-step moved on by the footage before it; the footage's own sub-steps in between
+    ins = sorted((sl["frame"], len(fr)) for sl, fr, _, _ in inserts)
+    out_subs = []
+    for sub in meta["substeps"]:
+        sh = sum(nf for f0, nf in ins if f0 <= sub["start_frame"])
+        out_subs.append(dict(sub, start_frame=sub["start_frame"] + sh, end_frame=sub["end_frame"] + sh))
+    out_subs = sorted(out_subs + placed, key=lambda s_: s_["start_frame"])
+    meta_out = {k_: v for k_, v in meta.items() if k_ not in ("slots", "gif_frames", "gif_fps", "gif_size")}
+    meta_out.update(n_frames=written, substeps=out_subs,
+                    footage=[dict(beat=sl["beat"], seconds=round(len(fr) / fps, 1),
+                                  files=[s_["footage"]["file"] for s_ in subs]) for sl, fr, _, subs in inserts])
+    (OUT / f"{NAME}.json").write_text(json.dumps(meta_out, indent=1, ensure_ascii=False, default=str) + "\n")
+    # the GIF: the render's frames, with the footage's at each slot
+    gat = {}
+    for sl, _, gifs, _ in inserts:
+        gat.setdefault(sl["gif"], []).extend(gifs)
+    gframes = []
+    for i, pth in enumerate(sorted(RAW_GIF.glob("*.png"))):
+        gframes += gat.pop(i, [])
+        gframes.append(Image.open(pth).convert("RGB"))
+    for i in sorted(gat):
+        gframes += gat[i]
+    gif = OUT / f"{NAME}.gif"
+    if gframes:
+        scene.write_gif(gframes, gif)
+    n_ft = sum(len(fr) for _, fr, _, _ in inserts)
+    info = (f"{NAME}: {written} frames, {written / fps:.1f} s, {n_ft / fps:.1f} s of it the lab's footage "
+            f"({sum(len(s_) for *_, s_ in inserts)} pieces); gif {len(gframes)} frames "
+            f"{gif.stat().st_size / 1e6 if gif.exists() else 0:.2f} MB")
+    print(info, flush=True)
+    return info
 
 
 if __name__ == "__main__":
-    movie()
+    arg = sys.argv[1] if len(sys.argv) > 1 else ""
+    sums = powder_sums()
+    (OUT / f"{NAME}_powder.json").write_text(json.dumps(sums, indent=1, ensure_ascii=False) + "\n")
+    if arg == "splice":
+        splice()
+    elif arg == "keep":
+        print("kept", keep_footage(), "files in", KEEP)
+    elif arg == "powder":
+        print(json.dumps(sums, indent=1, ensure_ascii=False))
+    else:
+        movie()
