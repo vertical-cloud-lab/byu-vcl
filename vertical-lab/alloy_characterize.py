@@ -484,7 +484,7 @@ def movie():
     status(sc, Trays="F at the opening")
     head_g = f"{pol.prefix}head"
     pw = lambda q: inst_world(sc, pol, q)                         # noqa: E731
-    CAM_POL = [tuple(pw((g["hx"], g["hy"], 300)) + (900, -1500, 650)), tuple(pw((g["hx"], g["hy"], 330))),
+    CAM_POL = [tuple(pw((g["hx"], g["hy"], 300)) + (-950, -1650, 800)), tuple(pw((g["hx"], g["hy"], 330))),
                (0, 0, 1)]
     st["cap"] = "The PX500's head lifts 70 mm for a holder change (assumed: LECO doesn't publish its stroke), and the " \
                 "arm takes the 6-position holder off its rest by a tab, our addition, with the coupon's mount in it."
@@ -586,7 +586,7 @@ def movie():
     lin(sh(T_m, (0, 0, 70)), 0.7)
     park(1.4)
     status(sc, Arm="parked, holding the mount")
-    L.store("F", st["lbl"], st["cap"], fast=0.55, hold=0.1)
+    L.store("F", st["lbl"], st["cap"], fast=0.55, hold=0.1, cam=CAM_OPEN)
     status(sc, Trays="F stored", Polisher="")
 
     # ------------------------------------------------------------------ 2. tray D: the SEM
@@ -598,7 +598,7 @@ def movie():
     status(sc, Trays="D at the opening")
     ys = I._tm4000(I.SEM)["ys"]
     sw = lambda q: inst_world(sc, sem, q)                         # noqa: E731
-    CAM_SEM = [tuple(sw((0, -300, 200)) + (1250, -1300, 650)), tuple(sw((0, -330, 180))), (0, 0, 1)]
+    CAM_SEM = [tuple(sw((0, -300, 200)) + (-950, -1750, 850)), tuple(sw((0, -330, 180))), (0, 0, 1)]
     st["cap"] = "The SEM vents and its door comes out with the stage on it. A cup for 1.25 in mounts stays in the " \
                 "stage's socket (our fixture); the arm sets the mount in it, polished face up."
     status(sc, SEM="venting, door out", Arm="loading the SEM")
@@ -646,26 +646,26 @@ def movie():
     park(1.4, extra=sem.move({"drawer": (1.0, 0.0)}))
     status(sc, Arm="parked, holding the mount", SEM="")
     st["cap"] = "Tray D goes back up; tray E comes down."
-    L.store("D", st["lbl"], st["cap"], fast=0.55, hold=0.1)
+    L.store("D", st["lbl"], st["cap"], fast=0.55, hold=0.1, cam=CAM_OPEN)
 
     # ------------------------------------------------------------------ 3. tray E: nanoindentation
     st["lbl"] = f"4/{n}"
     st["cap"] = "Tray E (mechanical testing and particle size): the Plastometrex PIP, the KLA iMicro nanoindenter " \
                 "and the Malvern Mastersizer 3000."
     status(sc, Trays="E to the opening")
-    L.fetch("E", st["lbl"], st["cap"], fast=0.55, hold=0.2)
+    L.fetch("E", st["lbl"], st["cap"], fast=0.55, hold=0.2, cam=CAM_OPEN)
     status(sc, Trays="E at the opening")
     NP = I.NANO
     sz = NP["feet"] + 70 + NP["stage_z"] - 60
     nw = lambda q: inst_world(sc, nano, q)                        # noqa: E731
-    CAM_NANO = [tuple(nw((0, -200, 250)) + (900, -1500, 800)), tuple(nw((60, -60, 230))), (0, 0, 1)]
+    CAM_NANO = [tuple(nw((0, -200, 250)) + (-900, -1650, 850)), tuple(nw((60, -60, 230))), (0, 0, 1)]
     # the stage's load position: 60 mm out in x and 60 mm forward of the objective. Further in, every IK solution
     # for a gripper pointing down puts the forearm or the wrist into the cabinet (ARM_AUDIT; /tmp probe of 8 branches x
     # 4 spins x 7 stage positions)
     LOAD, NDY = -0.6, -60.0
     st["cap"] = "The iMicro's hood lifts and its XY stage runs out to a load position, clear of the objective. The " \
                 "arm sets the mount on the stage."
-    status(sc, Nanoindenter="hood up, stage to load", Arm="loading the nanoindenter")
+    status(sc, iMicro="hood up, stage to load", Arm="loading the nanoindenter")
     sc.step(st["lbl"], st["cap"], 1.6, nano.move({"lid": (0.0, 1.0), "stage": (0.0, LOAD)}), hold=0.1,
             cam_to=CAM_NANO, labels=[("KLA iMicro nanoindenter", tuple(nw((0, 0, 560))), (0.22, 0.22))])
     spot = sc.world(f"{nano.prefix}stage") @ np.r_[NP["scope_x"], NDY, sz + MOUNT_H + TCP_OUT, 1.0]
@@ -687,7 +687,7 @@ def movie():
     st["cap"] = "Hood down, shutting out air currents and noise. The stage carries the mount under the microscope, " \
                 "then under the indenter, for a 5 × 5 grid of indents to 500 nm (hardness and modulus), and back to " \
                 "image them."
-    status(sc, Nanoindenter="indenting, 25 indents")
+    status(sc, iMicro="indenting, 25 indents")
     sc.step(st["lbl"], st["cap"], 1.6, RB.both(nano.move({"lid": (1.0, 0.0), "stage": (LOAD, 0.0)}),
                                                stage_y(0.0, -NDY), clock("iMicro", 0.0, 2.0)), hold=0.1)
     sc.step(st["lbl"], st["cap"], 3.0, RB.both(nano.move({"stage": (0.0, 1.0), "~lid": (0.0, 1.0)}),
@@ -695,7 +695,7 @@ def movie():
     sc.step(st["lbl"], st["cap"], 1.4, RB.both(nano.move({"stage": (1.0, 0.0)}), clock("iMicro", 40.0, 45.0)),
             hold=0.2)
     st["cap"] = "Hood up, stage out; the mount goes back to the caddy on the MiR."
-    status(sc, Nanoindenter="done", Arm="unloading the nanoindenter")
+    status(sc, iMicro="done", Arm="unloading the nanoindenter")
     sc.step(st["lbl"], st["cap"], 1.4, RB.both(nano.move({"lid": (0.0, 1.0), "stage": (0.0, LOAD), "~lid": (1.0, 0.0)}),
                                                stage_y(-NDY, 0.0)), hold=0.1)
     sc.clock = None
@@ -713,7 +713,7 @@ def movie():
     grip(OPEN_NEAR)
     rb.release("c_caddy")
     lin(sh(T_c, (0, 0, 90)), 0.6)
-    status(sc, Nanoindenter="", Coupon="polished, imaged, indented; in the caddy")
+    status(sc, iMicro="", Coupon="polished, imaged, indented; in the caddy")
 
     # ------------------------------------------------------------------ 4. tray E: the powder through the Mastersizer
     MP = I.MS3000
@@ -723,7 +723,7 @@ def movie():
     CAM_MS = [tuple(hop + (700, -1300, 600)), tuple(hop + (60, 0, -60)), (0, 0, 1)]
     st["cap"] = "Then the powder: the arm takes the vial from the caddy by its side. The Aero S's clear cover lifts " \
                 "off (by hand in Malvern's videos; an actuator is assumed here)."
-    status(sc, Arm="taking the vial", Mastersizer="cover off")
+    status(sc, Arm="taking the vial", Malvern="cover off")
     v_at = sc.world("c_vial")[:3, 3] + (0, 0, 45.0)
     d = -sc.world("c_caddy")[:3, 0]                  # from outside the caddy, pointing back at the arm's base
     d = np.r_[d[:2] / np.linalg.norm(d[:2]), 0.0]
@@ -757,6 +757,7 @@ def movie():
     sc.step(st["lbl"], st["cap"], 1.2, pour_fx, hold=0.0)
     sc.alpha["c_stream"] = 0.0
     sc.gmat["c_vial_powder"] = T((0, 0, P.VIAL_FLOOR)) @ S((1, 1, 14.0))
+    status(sc, Powder="about 3 g in the Aero S's hopper")
     lin(T_p, 1.0)
     status(sc, Arm="the vial back to the caddy")
     go(sh(T_v, (0, 0, 60)), secs=2.0, cam=CAM_OPEN)
@@ -767,7 +768,7 @@ def movie():
     st["cap"] = "Cover on, air on and the background measured; the tray vibrates the powder into the venturi and the " \
                 "air carries it to the cell, across the laser (drawn see-through). Three measurements, under a " \
                 "minute each."
-    status(sc, Arm="parked", Mastersizer="measuring")
+    status(sc, Arm="parked", Malvern="measuring")
     park(1.4, extra=ms.move({"lid": (1.0, 0.0), "powder": (0.0, 1.0)}), cam=CAM_MS)
 
     def measure(u):
@@ -777,15 +778,17 @@ def movie():
     sc.step(st["lbl"], st["cap"], 1.0, RB.both(ms.move({"beam": (1.0, 0.0), "~body": (1.0, 0.0)}),
                                                clock("Mastersizer", 3.0, 3.5)), hold=0.2)
     sc.clock = None
-    status(sc, Mastersizer="done", Powder="measured")
+    status(sc, Malvern="done", Powder="measured: the size distribution")
     st["cap"] = "Tray E goes back up to its slot and its power."
     L.store("E", st["lbl"], st["cap"], fast=0.55, hold=0.1, cam=CAM_IN)
-    status(sc, Trays="D, E, F in their slots", Mastersizer="")
+    status(sc, Trays="D, E, F in their slots", Malvern="")
     return finish(sc, L, rb)
 
 
 def finish(sc, L, rb):
-    sc.step("5/5", "Done.", 1.0, None, hold=1.0, still=True)
+    sc.step("5/5", "Done: the build's coupon ground and polished on tray F, imaged in the SEM on tray D and indented on "
+            "tray E, and its powder sized on tray E, every tray brought to the opening only when it was needed, and "
+            "every arm move checked against everything in the scene.", 1.4, None, hold=3.0, still=True)
     print(f"highest forearm/wrist point {rb.max_z_world:.0f} mm", flush=True)
     return sc.save()
 
