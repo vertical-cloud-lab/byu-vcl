@@ -383,7 +383,7 @@ class Scene:
             d.line([(0, H - h - 8 * s), (W, H - h - 8 * s)], fill=(30, 60, 140, 255), width=max(1, int(2 * s)))
             for i, t in enumerate(lines):
                 d.text((30 * s, H - h - 8 * s + pad + i * lh), t, font=fc, fill=(15, 15, 20))
-        for f in self.overlays:
+        for f in getattr(self, "overlays", ()):      # alloy_atomize's _dress draws on a stand-in without them
             f(self, img, scale)
         return img
 

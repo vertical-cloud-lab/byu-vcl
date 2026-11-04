@@ -741,7 +741,7 @@ def build():
     data = lab.meshes()
     idata = tour.load(["glovebox"])
     sc = Scene(NAME, TITLE, mp4=False)
-    if not PREVIEW:                         # the 3-D render goes to out/clean/ first; splice() writes the final MP4
+    if not (PREVIEW or scene.AUDIT):        # the 3-D render goes to out/clean/ first; splice() writes the final MP4
         RAW.mkdir(parents=True, exist_ok=True)
         # fragmented, so a render that is cut off still leaves a playable file; fast, since splice() re-encodes it
         sc.mp4 = subprocess.Popen(
@@ -813,7 +813,7 @@ def slot(sc, beat: str):
 def finish(sc):
     """Save the 3-D render to out/clean/ (its MP4, its GIF frames as PNGs, its JSON with the footage slots), then
     splice the footage in."""
-    if PREVIEW:
+    if PREVIEW or scene.AUDIT:          # ARM_AUDIT=1 renders nothing, so there is nothing to splice into
         return sc.save()
     if RAW_GIF.exists():
         shutil.rmtree(RAW_GIF)

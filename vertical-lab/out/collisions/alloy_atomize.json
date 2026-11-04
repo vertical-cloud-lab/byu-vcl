@@ -1,12 +1,12 @@
 {
  "clip": "alloy_atomize",
- "frames_checked": 1421,
+ "frames_checked": 1583,
  "frames_with_collisions": 257,
  "runs": [
   {
    "label": "2/5",
-   "first_frame": 122,
-   "last_frame": 123,
+   "first_frame": 178,
+   "last_frame": 179,
    "frames": 2,
    "pairs": [
     {
@@ -19,8 +19,8 @@
   },
   {
    "label": "2/5",
-   "first_frame": 124,
-   "last_frame": 124,
+   "first_frame": 180,
+   "last_frame": 180,
    "frames": 1,
    "pairs": [
     {
@@ -39,8 +39,8 @@
   },
   {
    "label": "2/5",
-   "first_frame": 125,
-   "last_frame": 128,
+   "first_frame": 181,
+   "last_frame": 184,
    "frames": 4,
    "pairs": [
     {
@@ -65,8 +65,8 @@
   },
   {
    "label": "2/5",
-   "first_frame": 129,
-   "last_frame": 133,
+   "first_frame": 185,
+   "last_frame": 189,
    "frames": 4,
    "pairs": [
     {
@@ -91,8 +91,8 @@
   },
   {
    "label": "2/5",
-   "first_frame": 134,
-   "last_frame": 175,
+   "first_frame": 190,
+   "last_frame": 231,
    "frames": 40,
    "pairs": [
     {
@@ -123,8 +123,8 @@
   },
   {
    "label": "2/5",
-   "first_frame": 176,
-   "last_frame": 180,
+   "first_frame": 232,
+   "last_frame": 236,
    "frames": 4,
    "pairs": [
     {
@@ -149,8 +149,8 @@
   },
   {
    "label": "2/5",
-   "first_frame": 181,
-   "last_frame": 183,
+   "first_frame": 237,
+   "last_frame": 239,
    "frames": 3,
    "pairs": [
     {
@@ -175,8 +175,8 @@
   },
   {
    "label": "2/5",
-   "first_frame": 184,
-   "last_frame": 184,
+   "first_frame": 240,
+   "last_frame": 240,
    "frames": 1,
    "pairs": [
     {
@@ -195,8 +195,8 @@
   },
   {
    "label": "2/5",
-   "first_frame": 185,
-   "last_frame": 186,
+   "first_frame": 241,
+   "last_frame": 242,
    "frames": 2,
    "pairs": [
     {
@@ -209,8 +209,8 @@
   },
   {
    "label": "2/5",
-   "first_frame": 284,
-   "last_frame": 284,
+   "first_frame": 340,
+   "last_frame": 340,
    "frames": 1,
    "pairs": [
     {
@@ -229,8 +229,8 @@
   },
   {
    "label": "2/5",
-   "first_frame": 285,
-   "last_frame": 295,
+   "first_frame": 341,
+   "last_frame": 351,
    "frames": 11,
    "pairs": [
     {
@@ -255,8 +255,8 @@
   },
   {
    "label": "2/5",
-   "first_frame": 296,
-   "last_frame": 307,
+   "first_frame": 352,
+   "last_frame": 363,
    "frames": 11,
    "pairs": [
     {
@@ -275,8 +275,8 @@
   },
   {
    "label": "2/5",
-   "first_frame": 383,
-   "last_frame": 383,
+   "first_frame": 439,
+   "last_frame": 439,
    "frames": 1,
    "pairs": [
     {
@@ -295,8 +295,8 @@
   },
   {
    "label": "2/5",
-   "first_frame": 384,
-   "last_frame": 391,
+   "first_frame": 440,
+   "last_frame": 447,
    "frames": 8,
    "pairs": [
     {
@@ -321,8 +321,8 @@
   },
   {
    "label": "2/5",
-   "first_frame": 392,
-   "last_frame": 402,
+   "first_frame": 448,
+   "last_frame": 458,
    "frames": 10,
    "pairs": [
     {
@@ -341,8 +341,8 @@
   },
   {
    "label": "2/5",
-   "first_frame": 478,
-   "last_frame": 486,
+   "first_frame": 534,
+   "last_frame": 542,
    "frames": 9,
    "pairs": [
     {
@@ -355,8 +355,8 @@
   },
   {
    "label": "2/5",
-   "first_frame": 573,
-   "last_frame": 581,
+   "first_frame": 629,
+   "last_frame": 637,
    "frames": 9,
    "pairs": [
     {
@@ -369,8 +369,8 @@
   },
   {
    "label": "2/5",
-   "first_frame": 671,
-   "last_frame": 672,
+   "first_frame": 727,
+   "last_frame": 728,
    "frames": 2,
    "pairs": [
     {
@@ -383,8 +383,8 @@
   },
   {
    "label": "2/5",
-   "first_frame": 673,
-   "last_frame": 673,
+   "first_frame": 729,
+   "last_frame": 729,
    "frames": 1,
    "pairs": [
     {
@@ -403,8 +403,8 @@
   },
   {
    "label": "2/5",
-   "first_frame": 674,
-   "last_frame": 676,
+   "first_frame": 730,
+   "last_frame": 732,
    "frames": 3,
    "pairs": [
     {
@@ -429,8 +429,8 @@
   },
   {
    "label": "2/5",
-   "first_frame": 677,
-   "last_frame": 681,
+   "first_frame": 733,
+   "last_frame": 737,
    "frames": 4,
    "pairs": [
     {
@@ -455,8 +455,8 @@
   },
   {
    "label": "2/5",
-   "first_frame": 682,
-   "last_frame": 720,
+   "first_frame": 738,
+   "last_frame": 776,
    "frames": 37,
    "pairs": [
     {
@@ -487,8 +487,8 @@
   },
   {
    "label": "2/5",
-   "first_frame": 721,
-   "last_frame": 725,
+   "first_frame": 777,
+   "last_frame": 781,
    "frames": 4,
    "pairs": [
     {
@@ -513,8 +513,8 @@
   },
   {
    "label": "2/5",
-   "first_frame": 726,
-   "last_frame": 728,
+   "first_frame": 782,
+   "last_frame": 784,
    "frames": 3,
    "pairs": [
     {
@@ -539,8 +539,8 @@
   },
   {
    "label": "2/5",
-   "first_frame": 729,
-   "last_frame": 730,
+   "first_frame": 785,
+   "last_frame": 786,
    "frames": 2,
    "pairs": [
     {
@@ -553,8 +553,8 @@
   },
   {
    "label": "5/5",
-   "first_frame": 1342,
-   "last_frame": 1342,
+   "first_frame": 1467,
+   "last_frame": 1467,
    "frames": 1,
    "pairs": [
     {
@@ -585,8 +585,8 @@
   },
   {
    "label": "5/5",
-   "first_frame": 1343,
-   "last_frame": 1343,
+   "first_frame": 1468,
+   "last_frame": 1468,
    "frames": 1,
    "pairs": [
     {
@@ -629,8 +629,8 @@
   },
   {
    "label": "5/5",
-   "first_frame": 1344,
-   "last_frame": 1344,
+   "first_frame": 1469,
+   "last_frame": 1469,
    "frames": 1,
    "pairs": [
     {
@@ -667,8 +667,8 @@
   },
   {
    "label": "5/5",
-   "first_frame": 1345,
-   "last_frame": 1345,
+   "first_frame": 1470,
+   "last_frame": 1470,
    "frames": 1,
    "pairs": [
     {
@@ -699,8 +699,8 @@
   },
   {
    "label": "5/5",
-   "first_frame": 1346,
-   "last_frame": 1346,
+   "first_frame": 1471,
+   "last_frame": 1471,
    "frames": 1,
    "pairs": [
     {
@@ -725,8 +725,8 @@
   },
   {
    "label": "5/5",
-   "first_frame": 1347,
-   "last_frame": 1347,
+   "first_frame": 1472,
+   "last_frame": 1472,
    "frames": 1,
    "pairs": [
     {
@@ -745,8 +745,8 @@
   },
   {
    "label": "5/5",
-   "first_frame": 1355,
-   "last_frame": 1365,
+   "first_frame": 1480,
+   "last_frame": 1490,
    "frames": 10,
    "pairs": [
     {
@@ -771,8 +771,8 @@
   },
   {
    "label": "5/5",
-   "first_frame": 1366,
-   "last_frame": 1366,
+   "first_frame": 1491,
+   "last_frame": 1491,
    "frames": 1,
    "pairs": [
     {
@@ -791,8 +791,8 @@
   },
   {
    "label": "5/5",
-   "first_frame": 1367,
-   "last_frame": 1393,
+   "first_frame": 1492,
+   "last_frame": 1518,
    "frames": 24,
    "pairs": [
     {
@@ -805,8 +805,8 @@
   },
   {
    "label": "5/5",
-   "first_frame": 1394,
-   "last_frame": 1394,
+   "first_frame": 1519,
+   "last_frame": 1519,
    "frames": 1,
    "pairs": [
     {
@@ -825,8 +825,8 @@
   },
   {
    "label": "5/5",
-   "first_frame": 1395,
-   "last_frame": 1402,
+   "first_frame": 1520,
+   "last_frame": 1527,
    "frames": 8,
    "pairs": [
     {
@@ -851,8 +851,8 @@
   },
   {
    "label": "5/5",
-   "first_frame": 1403,
-   "last_frame": 1406,
+   "first_frame": 1528,
+   "last_frame": 1531,
    "frames": 3,
    "pairs": [
     {
@@ -883,8 +883,8 @@
   },
   {
    "label": "5/5",
-   "first_frame": 1407,
-   "last_frame": 1407,
+   "first_frame": 1532,
+   "last_frame": 1532,
    "frames": 1,
    "pairs": [
     {
@@ -921,8 +921,8 @@
   },
   {
    "label": "5/5",
-   "first_frame": 1408,
-   "last_frame": 1408,
+   "first_frame": 1533,
+   "last_frame": 1533,
    "frames": 1,
    "pairs": [
     {
@@ -965,8 +965,8 @@
   },
   {
    "label": "5/5",
-   "first_frame": 1409,
-   "last_frame": 1409,
+   "first_frame": 1534,
+   "last_frame": 1534,
    "frames": 1,
    "pairs": [
     {
@@ -1003,8 +1003,8 @@
   },
   {
    "label": "5/5",
-   "first_frame": 1410,
-   "last_frame": 1414,
+   "first_frame": 1535,
+   "last_frame": 1539,
    "frames": 5,
    "pairs": [
     {
@@ -1041,8 +1041,8 @@
   },
   {
    "label": "5/5",
-   "first_frame": 1415,
-   "last_frame": 1425,
+   "first_frame": 1540,
+   "last_frame": 1550,
    "frames": 10,
    "pairs": [
     {
@@ -1073,8 +1073,8 @@
   },
   {
    "label": "5/5",
-   "first_frame": 1426,
-   "last_frame": 1426,
+   "first_frame": 1551,
+   "last_frame": 1551,
    "frames": 1,
    "pairs": [
     {
@@ -1099,8 +1099,8 @@
   },
   {
    "label": "5/5",
-   "first_frame": 1427,
-   "last_frame": 1427,
+   "first_frame": 1552,
+   "last_frame": 1552,
    "frames": 1,
    "pairs": [
     {
@@ -1119,8 +1119,8 @@
   },
   {
    "label": "5/5",
-   "first_frame": 1428,
-   "last_frame": 1429,
+   "first_frame": 1553,
+   "last_frame": 1554,
    "frames": 2,
    "pairs": [
     {
@@ -1133,8 +1133,8 @@
   },
   {
    "label": "5/5",
-   "first_frame": 1434,
-   "last_frame": 1434,
+   "first_frame": 1559,
+   "last_frame": 1559,
    "frames": 1,
    "pairs": [
     {
@@ -1153,46 +1153,8 @@
   },
   {
    "label": "5/5",
-   "first_frame": 1435,
-   "last_frame": 1435,
-   "frames": 1,
-   "pairs": [
-    {
-     "arm": "ur",
-     "kind": "self",
-     "part": "held:rp:container",
-     "other": "base"
-    },
-    {
-     "arm": "ur",
-     "kind": "self",
-     "part": "held:rp:container",
-     "other": "shoulder"
-    },
-    {
-     "arm": "ur",
-     "kind": "self",
-     "part": "held:rp:container",
-     "other": "upper_arm"
-    },
-    {
-     "arm": "ur",
-     "kind": "self",
-     "part": "held:rp:splash",
-     "other": "shoulder"
-    },
-    {
-     "arm": "ur",
-     "kind": "self",
-     "part": "held:rp:splash",
-     "other": "upper_arm"
-    }
-   ]
-  },
-  {
-   "label": "5/5",
-   "first_frame": 1436,
-   "last_frame": 1436,
+   "first_frame": 1560,
+   "last_frame": 1560,
    "frames": 1,
    "pairs": [
     {
@@ -1218,13 +1180,51 @@
      "kind": "self",
      "part": "held:rp:splash",
      "other": "shoulder"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:rp:splash",
+     "other": "upper_arm"
     }
    ]
   },
   {
    "label": "5/5",
-   "first_frame": 1437,
-   "last_frame": 1437,
+   "first_frame": 1561,
+   "last_frame": 1561,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:rp:container",
+     "other": "base"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:rp:container",
+     "other": "shoulder"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:rp:container",
+     "other": "upper_arm"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:rp:splash",
+     "other": "shoulder"
+    }
+   ]
+  },
+  {
+   "label": "5/5",
+   "first_frame": 1562,
+   "last_frame": 1562,
    "frames": 1,
    "pairs": [
     {
@@ -1249,8 +1249,8 @@
   },
   {
    "label": "5/5",
-   "first_frame": 1438,
-   "last_frame": 1438,
+   "first_frame": 1563,
+   "last_frame": 1563,
    "frames": 1,
    "pairs": [
     {
