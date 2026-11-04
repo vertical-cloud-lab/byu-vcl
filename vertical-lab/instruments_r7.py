@@ -370,7 +370,7 @@ def glovebox_tray() -> Instrument:
         ("In goes the atomizer's catch jar, sealed, on a sled.", 2.2, {**tv(0.0, V("ante"))}),
         ("Door shut. The PLC pumps the antechamber down and refills it with N2 from the tray's dock line, three "
          "times.", 3.6, {"door": (1.0, 0.0), "needle": (0.0, 1.0)}),
-        ("The inner door slides up.", 1.4, {"inner_door": (0.0, 1.0), "~body": (0.0, 0.85)}),
+        ("The inner door slides up.", 1.4, {"inner_door": (0.0, 1.0), "~body": (0.0, 0.85), "~inner_door": (0.0, 0.85)}),
         ("The sled runs onto the shelf inside.", 2.0, {**tv(V("ante"), V("inside"))}),
         ("The capper unscrews the jar's lid and lifts it clear.", 3.6, {**tv(V("inside"), V("lid_off"))}),
         ("Two arms lift the jar's cradle and tip it: the powder pours into the storage jar on the balance.", 3.6,
@@ -379,9 +379,9 @@ def glovebox_tray() -> Instrument:
          5.2,
          {**tv(V("poured"), V("sealed")), "stream": (1.0, 0.0)}),
         ("Sealed under N2, the jar leaves the same way. Purge-only: no purifier to regenerate inside the VLM. "
-         "The box is 1100 x 520 x 640 mm; 810 mm tall with its fittings.", 2.6, {"inner_door": (1.0, 0.0), "~body": (0.85, 0.0)}),
+         "The box is 1100 x 520 x 640 mm; 810 mm tall with its fittings.", 2.6, {"inner_door": (1.0, 0.0), "~body": (0.85, 0.0), "~inner_door": (0.85, 0.0)}),
     ]
-    inst.zoom = {5: ((240.0, 180.0, 260.0), 1500.0), 8: "out"}
+    inst.zoom = {5: ((240.0, 170.0, 280.0), 2100.0), 8: "out"}
     inst.labels = [("mini antechamber, 150 mm", (ax, -300, az + 85), (0.80, 0.18)),
                    ("outer door: the arm slides it", (ax + 60, dy0 - 12, az), (0.86, 0.55)),
                    ("220 mm glove ports", (p["ports"][0], Y0 - 22, p["port_z"] + 130), (0.12, 0.20)),
