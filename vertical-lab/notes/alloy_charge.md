@@ -89,3 +89,26 @@ part in another metal. A 5N cup turned from Ø20 bar would be 0.95 mm larger acr
 - How tight is the plug in a Cu cup? A Cu plug in a Cu bore needs the same interference as Al, or a new one.
 - Should the cups be weighed on a separate balance after pressing, as #222 asks ("weigh it"), rather than on the
   doser's cell before the plug goes in? With a Cu cup, the doser's cell can't do it anyway.
+
+## Revised on review (PR #318, 2026-11-04): the plug pressed home, in a vacuum press
+
+Sterling: "the plug is supposed to be pushed in all the way such that the powder gets compressed to a certain
+tonnage. Also, it would be better if it were a vacuum press". Both are now in the chapter
+([`alloy_press.py`](../alloy_press.py), [`vacuum_press.md`](vacuum_press.md)):
+
+- **The doses above compacted nothing.** They stood 18 mm (Si) and 25 mm (Ni) under the set plug. The bore is now
+  tapped full to the set plug: the alloying powder, then a top-up of the cup's own metal. For Al-10Si that is 3.92 g
+  Si and 3.91 g AlSi10Mg (itself 10 % Si). For Cu-10Ni it is 14.62 g Ni and 14.81 g Cu. See
+  [`out/alloy_recipe_pressed.json`](../out/alloy_recipe_pressed.json).
+- **The press is a Specac Atlas Autotouch 15T** with our evacuable die round F1. It replaces the assumed electric
+  press with its shuttle nest:
+  - the die is pumped below 1 mbar;
+  - the plug goes 8.0 mm to flush on a 3.2 t program;
+  - the powder goes from 52 to 63 % dense (Al) or 55 to 66 % (Cu);
+  - the die is vented with dry Ar.
+- **The plug goes in at the rack.** A gripper pointing down at the press's working height puts the wrist into the
+  VLM's opening, and it couldn't follow the plug into the die's 31.8 mm bore anyway. The cup rides to the press with
+  its plug in the mouth.
+- **The press's own notes** answer "the press has to open above the nest" and "the ram bottoms out on F1" above.
+  The shuttle carries the die out of the press to the arm, and the ejector pin raises the cup out of F1.
+- **Collision-checked** (`collide.py`): 0 of 2752 frames.

@@ -15,7 +15,7 @@ framework, [`scene.py`](scene.py), is `atomizer-training/viz3d/scene.py` from #1
 | **Loading**: the closed machine, then see-through; every piece of equipment goes onto its tray through the opening, one at a time; the arm rolls up | [`out/vlm_loading.gif`](out/vlm_loading.gif) | [`out/mp4/vlm_loading.mp4`](out/mp4/vlm_loading.mp4) |
 | **Workflow** (round 2; for the alloy work, superseded by [the alloy route](#the-alloy-route-start-to-finish-charge-cups-to-tensile-bar), where the vial is the lab's charge cups): the arm doses a powder with the multi-doser and takes the vial to the CubXL, which adds liquid | [`out/vlm_workflow.gif`](out/vlm_workflow.gif) | [`out/mp4/vlm_workflow.mp4`](out/mp4/vlm_workflow.mp4) |
 | **Disassembly**: unloaded one piece at a time, then taken apart. A clip of its own, left out of the joined video ("no need to remove the equipment at the end of the video", PR #318) | [`out/vlm_disassembly.gif`](out/vlm_disassembly.gif) | [`out/mp4/vlm_disassembly.mp4`](out/mp4/vlm_disassembly.mp4) |
-| **Assembly, loading and workflow**, one after the other (3 min 4 s), ending with the lab loaded and working. The earlier join of all four ([`ro-pUo0ie_M`](https://www.youtube.com/watch?v=ro-pUo0ie_M)) ended with the disassembly | [on YouTube](https://www.youtube.com/watch?v=xI1d0kkX8VA) (unlisted) | [`out/mp4/vertical_lab_full.mp4`](out/mp4/vertical_lab_full.mp4) |
+| **Assembly, loading and workflow**, one after the other (3 min 4 s), ending with the lab loaded and working. The earlier join of all four ([`ro-pUo0ie_M`](https://www.youtube.com/watch?v=ro-pUo0ie_M)) ended with the disassembly | [on YouTube](https://www.youtube.com/watch?v=FHjg3R7of4g) (unlisted; re-rendered with the arm's moves collision-checked, replacing `xI1d0kkX8VA`) | [`out/mp4/vertical_lab_full.mp4`](out/mp4/vertical_lab_full.mp4) |
 
 ![The alloy route, chapter 1: the lab's charge cups dosed and plugged on tray B](out/alloy_charge.gif)
 
@@ -335,7 +335,7 @@ its own notes file, with every source:
 | Video | GIF | MP4 | YouTube (unlisted) |
 |---|---|---|---|
 | **The lab set up from scratch**: an empty warehouse bay, the layout, utilities, the VLM, the floor machines, the two MiR250 + UR10e units put together, every tray loaded (A–F, with round 4's instruments), the cameras | [GIF](out/setup_lab.gif) | [MP4](out/mp4/setup_lab.mp4) | [on YouTube](https://www.youtube.com/watch?v=bITROBu1NNE) |
-| **The warehouse version**: two MiR250 + UR10e units drive between the VLM and the floor machines along marked aisles | [GIF](out/warehouse.gif) | [MP4](out/mp4/warehouse.mp4) | [on YouTube](https://www.youtube.com/watch?v=KbrkulS07EM) |
+| **The warehouse version**: two MiR250 + UR10e units drive between the VLM and the floor machines along marked aisles | [GIF](out/warehouse.gif) | [MP4](out/mp4/warehouse.mp4) | [on YouTube](https://www.youtube.com/watch?v=3IrSB9-meN8) (collision-checked; was `KbrkulS07EM`) |
 | **From the printer to the tensile test**: the build plate out of the Aconity MIDI, the bars cut off in the wire EDM, one pulled to fracture in the 68FM-100 | [GIF](out/alloy_workflow.gif) | [MP4](out/mp4/alloy_workflow.mp4) | [on YouTube](https://www.youtube.com/watch?v=YVdpGTLvxhI) |
 | **Tray services**: the docking coupling in the slot and at the opening, the tethered alternative, the cabling | [docking](out/vlm_services.gif), [tether](out/vlm_tether.gif), [cabling](out/vlm_cabling.gif) | [MP4](out/mp4/vlm_services_all.mp4) | [on YouTube](https://www.youtube.com/watch?v=ed2M0u5Rjw0) |
 | **The round-4 instruments**, each doing its job | [gallery](out/instruments_gallery.png) | [MP4](out/mp4/instruments_round4_tour.mp4) | [on YouTube](https://www.youtube.com/watch?v=IEbhMjcAUOQ) |
@@ -760,6 +760,78 @@ No arm ever has to go over the header to reach a point. The header limits none o
 
 The cost of the UR10e is clearance: its closest approach to the header is 118 mm, against the UR7e's 327 mm.
 
+## The arm's collisions: checked, and planned round
+
+Sterling, on PR #318: "the robot arm didn't respect collisions with itself, at all. Passed through the MiR250 and
+collided with the vial holder." It did. [`robot.py`](robot.py)'s joint moves interpolated straight from one joint
+pose to the next, and nothing checked them against anything. The IK also took the nearest of the UR's eight
+solutions every time. For the reach into the multi-doser, that put the elbow down through the MiR's cabinet and the
+VLM's front panel. Over the holder on the MiR, it put the upper arm through the holder.
+
+[`collide.py`](collide.py) checks the arm with FCL, the collision library MoveIt uses, on the meshes as drawn:
+- the arm against itself, every pair of links that isn't adjacent, with the gripper as one body;
+- the arm, gripper and what it holds against everything visible: the MiR it rides on, holders, racks, trays, machines,
+  the VLM, the other arm.
+
+A joint move now takes the nearest IK solution that is clear. If the straight joint line hits something, it is
+planned round it with RRT-Connect, then shortcut, and a detour may not lift the arm more than 150 mm over the move's
+higher end. `ARM_AUDIT=1` runs a clip without rendering and checks every frame, line moves too, writing
+`out/collisions/<clip>.json`. The details are in [`notes/arm_collisions.md`](notes/arm_collisions.md).
+
+| Clip | Frames in collision, as it was | Now | |
+| --- | --- | --- | --- |
+| Round 2 workflow (`animate.py workflow`) | 130 of 1140 | **0** | re-rendered; [on YouTube](https://www.youtube.com/watch?v=255o9IVEOEs) |
+| Warehouse (`warehouse.py`) | 216 of 1138 | **0** of 1120, the MiR bodies checked too | re-rendered: one target post moved, three routes changed ([notes](notes/warehouse.md)) |
+| Lab set up from scratch (`setup_lab.py`) | | 0 of 1376 | not re-rendered: its two joint moves were already clear |
+| Alloy route 1, the charge (`alloy_charge.py`) | | **0** of 2752 | rebuilt round the vacuum press, below |
+| Alloy route 3, sieve and print (`alloy_print.py`) | 717 of 1310 | 227 | not re-rendered: the poses themselves collide (the jar onto the MiR's own cabinet) |
+| Alloy route 4, cut and test (`alloy_workflow.py`) | 331 of 1466 | 77 | not re-rendered: the wrist enters the Aconity's shell and the wire EDM's body |
+| Alloy route 2, atomize (`alloy_atomize.py`) | | | doesn't run: it reads `charge.RUNS` in its pre-round-5 form |
+
+Chapters 2-4 were being rewritten by another session at the time, so their remaining poses were left to it.
+
+## The plug pressed home, under vacuum
+
+Also from Sterling: the plug "is supposed to be pushed in all the way such that the powder gets compressed to a
+certain tonnage. Also, it would be better if it were a vacuum press." Neither was true before. The doses stood 18 mm
+(Si) and 25 mm (Ni) below where the plug is set, so pressing it flush compacted nothing. The press was an assumed
+electric one, open to the air.
+
+- **The press** ([`vacuum_press.py`](vacuum_press.py), [notes](notes/vacuum_press.md)) is a **Specac Atlas Autotouch
+  15T**: an automatic hydraulic press, 425 × 405 × 640 mm, 95 kg, which runs programs of up to ten steps from one
+  Start ("pump up to", "maintain", "release"). It is drawn from Specac's published figures and its own videos
+  ([`BH___JpLYeE`](https://www.youtube.com/watch?v=BH___JpLYeE), [`b2jWgsfSmMQ`](https://www.youtube.com/watch?v=b2jWgsfSmMQ),
+  and [`ehN10mMm-T8`](https://www.youtube.com/watch?v=ehN10mMm-T8) for the evacuable-die procedure). The evacuable
+  die round F1, its punch with an O-ring, the ejector pin and the shuttle are ours. So are the pump, the two valves
+  and the gauge, as drawn. The press's own clip: [GIF](out/vacuum_press.gif),
+  [MP4](out/mp4/vacuum_press.mp4), [on YouTube](https://www.youtube.com/watch?v=UGTGpEfyUeQ).
+- **The fill** ([`alloy_press.py`](alloy_press.py), [`out/alloy_recipe_pressed.json`](out/alloy_recipe_pressed.json)).
+  The bore is tapped full to the set plug, 46.1 mm up. The alloying powder goes in first, then a top-up of the cup's
+  own metal, each run keeping its 10 wt %:
+
+  | Run | Alloying powder | Top-up | Tapped → pressed | Charged cup |
+  | --- | --- | --- | --- | --- |
+  | Al-10Si (5N Al cups) | 3.92 g Si (unchanged) | 3.91 g AlSi10Mg, itself 10 % Si | 52 → 63 % dense | 43.1 g |
+  | Cu-10Ni (OFE Cu cups) | 14.62 g Ni (was 12.97) | 14.81 g Cu | 55 → 66 % dense | 146.2 g |
+
+- **The cycle:**
+  1. The die is pumped below 1 mbar through its port, so no air is sealed into the compact (DAL #140: compacted
+     powder with air in it can throw molten metal out of the cup).
+  2. The press drives the plug 8.0 mm to flush on a **3.2 t (31.4 kN)** program. That is 1.05 t on the powder plus
+     #222's 2 t reserve for the plug's press fit. F1 stops the plug at flush, so the dose, not the force, sets the
+     final density.
+  3. The die is vented with dry Ar.
+- **The arm.** The plug goes into the cup at the rack, not at the press. A gripper pointing down at the press's
+  working height, about 450 mm above the tray, puts the wrist into the VLM's opening, and the gripper can't follow
+  the plug into the die's 31.8 mm bore anyway. The cup, its plug riding in the mouth, goes onto the raised ejector
+  pin, which lowers it into F1. The punch is handled level by its flange, from a rest beside the press. Level
+  grasps are aimed along whichever direction the checker finds clear, nearest the line from the arm's base.
+- **Open:**
+  - the Heckel line behind the set point is #222's E4 estimate for AlSi10Mg, and Si and Ni aren't calibrated;
+  - a Si layer is harder to compact, so check the plug reaches flush on the first cups;
+  - whether the Autotouch takes a remote start;
+  - the force to push a pressed cup out of F1.
+
 ## Things the model shows
 
 - **The multi-doser is 3.5 mm too tall for the opening.** The chain carousel v2 stands 731 mm on its levelling feet,
@@ -776,7 +848,7 @@ The cost of the UR10e is clearance: its closest approach to the header is 118 mm
 ## Running it
 
 ```bash
-pip install cadquery pyvista trimesh pycollada pillow numpy scipy   # plus ffmpeg and gifsicle on the PATH
+pip install cadquery pyvista trimesh pycollada pillow numpy scipy python-fcl   # plus ffmpeg and gifsicle
 xvfb-run -a python3 animate.py assembly loading workflow disassembly full   # full joins the first three MP4s
 PREVIEW=1 xvfb-run -a python3 animate.py workflow        # the last frame of each sub-step, to /tmp
 python3 reach.py                                          # the arm study -> out/reach.json
@@ -785,6 +857,11 @@ python3 tour.py gallery join table                        # the gallery, the joi
 xvfb-run -a python3 line.py                               # the trays D-F, the line and the rail -> out/vlm_line.gif
 python3 charge.py                                         # the alloy route's charge recipe -> out/alloy_recipe.json
 xvfb-run -a python3 alloy_charge.py                       # alloy route 1/4: cups dosed and plugged on tray B
+python3 alloy_press.py                                    # the pressed fill per run -> out/alloy_recipe_pressed.json
+xvfb-run -a python3 vacuum_press.py                       # the vacuum press's own clip -> out/vacuum_press.gif, mp4
+ARM_AUDIT=1 xvfb-run -a python3 alloy_charge.py           # no render: every frame collision-checked -> out/collisions/
+ARM_AUDIT=1 ARM_NO_PLAN=1 ARM_AUDIT_TAG=before xvfb-run -a python3 animate.py workflow   # the old straight joint moves
+ARM_AUDIT=1 ARM_AUDIT_SNAP=540,930 xvfb-run -a python3 animate.py workflow   # those frames drawn, collisions in red
 xvfb-run -a python3 alloy_atomize.py                      # 2/4: melted and atomized in the rePowder
 xvfb-run -a python3 alloy_print.py                        # 3/4: sieved, printed in the Aconity MIDI
 python3 alloy_route.py                                    # the four (4/4 is alloy_workflow.py) -> out/mp4/alloy_route.mp4
