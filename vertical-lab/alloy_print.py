@@ -49,7 +49,17 @@ SIEVE_DX = 11.5                                         # the shaker's centre, f
 TIPPER_DX = -367.5                                      # the tipper's, left of the shaker (sieve_station.py)
 STAND_DX = 359.5                                        # the Al set's stand, right of the shaker
 GRIP_TAB = 0.88                                         # a sieve's 12 mm handling tab, as the plate's 12 mm lug
+GRIP_PAN = 0.69                                         # the pan's tab, held by its sides, 28 mm across (see GR)
+OPEN_TAB = 0.5                                          # open only so far for a tab: wide open, the lower finger and
+                                                        # its knuckle reach down into the bench or the shaker
+CELL_DY = -300.0                                        # the MiR parks 300 mm further off the bench than off the line:
+                                                        # nearer, the arm folds into itself to reach the tabs level
 HOLDER2_LOCAL = (-190.0, -160.0)                        # a second cup on the MiR's cabinet, for the jar
+ACO_DY = -250.0                                         # and 250 mm further off the Aconity: from its usual spot the
+                                                        # arm reaching into the chamber folded its forearm into the
+                                                        # base cabinet; from here it reaches in nearly straight
+ENCL_H = 1150.0                                         # the enclosure's height over the bench: at 950 its roof and
+                                                        # front rail left the arm no room over the tipper and the knobs
 ORDER_UP = ["pan", "s325", "s230", "s140", "s100", "s60"]          # bottom to top on the shaker (instruments_char)
 LABEL = {"pan": "pan", "s325": "No. 325", "s230": "No. 230", "s140": "No. 140", "s100": "No. 100", "s60": "No. 60"}
 START = (A.REPOWDER_AT[0] + 288.0, -2230.0)             # MiR parked in front of the rePowder's container axis, clear
@@ -132,7 +142,7 @@ def build_cell(sc, sv):
     y_c = sieve_w(sv, (0, 0, 0))[1]                       # the shaker's centre line: the cell's front-back axis
     zb = b["h"]
     sc.gmat["encl"] = T((b["x"], line.Y_FACE + b["d"] / 2, zb))
-    for name, (mesh, col, spec, op) in SS.enclosure_parts(b["w"], b["d"], 950.0).items():
+    for name, (mesh, col, spec, op) in SS.enclosure_parts(b["w"], b["d"], ENCL_H).items():
         sc.add(f"encl/{name}", mesh, col, "encl", opacity=op, specular=spec)
     # the tipper
     sc.gmat["tipper"] = T((b["x"] + TIPPER_DX, y_c, zb))
@@ -381,6 +391,8 @@ def movie():
     aco_x = aco_bp[0] - 146.0
     sup = W.world(M.build_point() + (0, M.ACO["sy"] - M.ACO["by"], 0))      # the supply cylinder's axis, floor level
     x_sv = sv_c[0] + 60.0                                                     # MiR at the bench
+    y_sv = AW.MIR_Y + CELL_DY
+    y_aco = AW.MIR_Y + ACO_DY
 
     CAM_RP = [(START[0] + 2300, -6400, 2600), (START[0] + 900, -1500, 900), (0, 0, 1)]
     CAM_SV = [tuple(sv_c + (-1250, -1650, 1250)), tuple(sv_c + (0, -120, 420)), (0, 0, 1)]
@@ -412,7 +424,7 @@ def movie():
     stand_w = sc.world("stand")[:3, 3]
     CAM_CELL = [tuple(sv_c + (-420, -2450, 1350)), tuple(sv_c + (-40, 60, 230)), (0, 0, 1)]
     CAM_TIP = [tuple(tip_w + (-560, -1150, 640)), tuple(tip_w + (60, 30, 330)), (0, 0, 1)]
-    CAM_STAND = [tuple(stand_w + (650, -1450, 800)), tuple(stand_w + (-260, 40, 260)), (0, 0, 1)]
+    CAM_STAND = [tuple(stand_w + (650, -1450, 900)), tuple(stand_w + (-260, 40, 360)), (0, 0, 1)]
     status(sc, Arm="UR10e on MiR250, parked", Powder="in the rePowder's container, on the MiR",
            Sieve="the Al set, on its stand", Aconity="idle")
     sc.cam = list(CAM_RP)
@@ -429,13 +441,15 @@ def movie():
           "tipper over a funnel and five labelled jars, the Retsch AS 200, and the Al set's own stand: the lab's 8 in " \
           "stack (DAL PR #175), nested in reverse, each sieve with a 12 mm handling tab at the front."
     status(sc, Arm="driving to the sieving cell")
-    sc.step(f"1/{n}", cap, mo.secs(x_sv), mo.drive(x_sv), hold=2.0, cam_to=CAM_CELL,
+    sc.step(f"1/{n}", cap, mo.secs(x_sv, y_sv), mo.drive(x_sv, y_sv), hold=2.0, cam_to=CAM_CELL,
             labels=[("tipper, funnel, jars", tuple(tip_w + (0, 0, 640)), (0.14, 0.22)),
                     ("Retsch AS 200 control", tuple(sv_c + (0, -120, 230)), (0.44, 0.16)),
-                    ("Al set: No. 60 at the bottom, pan on top", tuple(stand_w + (0, 0, 360)), (0.80, 0.22))])
+                    ("Al set: No. 60 at the bottom, pan on top", tuple(stand_w + (0, 0, 460)), (0.80, 0.22))])
 
-    def GR(p):
-        return level_y(p, 90.0)          # level, pointing at the machines, fingers closing up and down on a tab
+    def GR(p, key=None):
+        # level, pointing at the machines, fingers closing up and down on a tab; the pan's tab is held by its sides:
+        # it is the bottom piece on the shaker, and fingers above and below it put the lower one in the shaker's housing
+        return level_y(p, 0.0 if key == "pan" else 90.0)
 
     def tab_now(key):
         return (sc.world(f"sv_{key}") @ np.r_[SS.grasp_local(key), 1.0])[:3]
@@ -449,12 +463,12 @@ def movie():
         tipper's cradle, under its roof); 0: lifted up and over (the stand; the shaker, between its rods)."""
         g0 = tab_now(key)
         g1 = tab_at(parent, M_, key)
-        sc.step(lab_, cap, 1.0 * k, RB.both(rb.joint_to(Tw=GR(g0 - (0, 90, 0))), rb.grip_to(0.0)), hold=0.02,
-                cam_to=cam, labels=labels)
-        sc.step(lab_, cap, 0.5 * k, rb.line_to(GR(g0)), hold=0.02)
-        sc.step(lab_, cap, 0.3 * k, rb.grip_to(GRIP_TAB), hold=0.02)
+        sc.step(lab_, cap, 1.0 * k, RB.both(rb.joint_to(Tw=GR(g0 - (0, 90, 0), key)), rb.grip_to(OPEN_TAB)),
+                hold=0.02, cam_to=cam, labels=labels)
+        sc.step(lab_, cap, 0.5 * k, rb.line_to(GR(g0, key)), hold=0.02)
+        sc.step(lab_, cap, 0.3 * k, rb.grip_to(GRIP_PAN if key == "pan" else GRIP_TAB), hold=0.02)
         rb.grasp(f"sv_{key}")
-        sc.step(lab_, cap, 0.4 * k, rb.line_to(GR(g0 + (0, 0, lift0))), hold=0.02)
+        sc.step(lab_, cap, 0.4 * k, rb.line_to(GR(g0 + (0, 0, lift0), key)), hold=0.02)
         a = g0 + ((0, -out0, lift0) if out0 else (0, 0, lift0 + up))
         b = g1 + ((0, -in1, lift1) if in1 else (0, 0, lift1 + up))
         z_over = rod_top_w + 30.0 + SS.tab_z(key)       # the sieve's foot over the shaker's rods
@@ -462,14 +476,14 @@ def movie():
             a[2] = max(a[2], z_over)
         if not in1:
             b[2] = max(b[2], z_over)
-        sc.step(lab_, cap, 0.6 * k, rb.line_to(GR(a)), hold=0.02)
-        sc.step(lab_, cap, 1.0 * k, rb.joint_to(Tw=GR(b)), hold=0.02)
-        sc.step(lab_, cap, 0.6 * k, rb.line_to(GR(g1 + (0, 0, lift1))), hold=0.02)
-        sc.step(lab_, cap, 0.4 * k, rb.line_to(GR(g1)), hold=0.02)
-        sc.step(lab_, cap, 0.3 * k, rb.grip_to(0.0), hold=0.02)
+        sc.step(lab_, cap, 0.6 * k, rb.line_to(GR(a, key)), hold=0.02)
+        sc.step(lab_, cap, 1.0 * k, rb.joint_to(Tw=GR(b, key)), hold=0.02)
+        sc.step(lab_, cap, 0.6 * k, rb.line_to(GR(g1 + (0, 0, lift1), key)), hold=0.02)
+        sc.step(lab_, cap, 0.4 * k, rb.line_to(GR(g1, key)), hold=0.02)
+        sc.step(lab_, cap, 0.3 * k, rb.grip_to(OPEN_TAB), hold=0.02)
         rb.release(parent)
         sc.gmat[f"sv_{key}"] = M_
-        sc.step(lab_, cap, 0.4 * k, rb.line_to(GR(g1 - (0, 90, 0))), hold=0.02)
+        sc.step(lab_, cap, 0.4 * k, rb.line_to(GR(g1 - (0, 90, 0), key)), hold=0.02)
 
     def on_shaker(i):
         return T((0, 0, 212.0 + SS.stack_seat(i)))
@@ -502,16 +516,22 @@ def movie():
     sc.step(f"2/{n}", cap, 0.4, rb.grip_to(GRIP_HANDLE), hold=0.05)
     rb.grasp("pcont")
     sc.step(f"2/{n}", cap, 0.8, rb.line_to(level_y(g_hold + (0, 0, 120), 90.0)), hold=0.05)
-    th = 115.0
+    th = -115.0                                            # tipped to the right, its body over the stand's side: to
+                                                           # the left it swung through the tipper and the parked lid
     m_rel = np.array([-45.0, 94.0, -13.0])                 # mouth from the grasp, upright
     c, s_ = math.cos(math.radians(th)), math.sin(math.radians(th))
     m_rot = np.array([m_rel[0] * c + m_rel[2] * s_, m_rel[1], -m_rel[0] * s_ + m_rel[2] * c])
-    target = sieve_w(sv, (-30.0, 0.0, z_rim + 90.0))
+    target = sieve_w(sv, (30.0, 0.0, z_rim + 100.0))
     p_tip = target - m_rot
-    p_up = sieve_w(sv, (0, 0, 0)) + np.array([-215.0, -94.0, z_rim + 105.0])
+    # the container comes to a spot in front of the stack, clear of the sieves' tabs (beside it, it stood in the tipper
+    # and the parked lid), tips part way there, then goes in over the No. 60 as it tips the rest of the way: tipped in
+    # one move from upright, its foot swept through the tabs
+    p_up = p_tip + np.array([0.0, -260.0, 0.0])
+    th1 = -70.0
     status(sc, Arm="pouring", Powder="onto the No. 60")
     sc.step(f"2/{n}", cap, 1.8, rb.joint_to(Tw=level_y(p_up, 90.0)), hold=0.05, cam_to=CAM_SV_IN)
-    sc.step(f"2/{n}", cap, 1.6, rb.line_to(level_y(p_tip, 90.0 + th)), hold=0.05)
+    sc.step(f"2/{n}", cap, 0.8, rb.line_to(level_y(p_up, 90.0 + th1)), hold=0.02)
+    sc.step(f"2/{n}", cap, 1.2, rb.line_to(level_y(p_tip, 90.0 + th)), hold=0.05)
     heap_in = svmove({f"frac_{k}": (0.0, 1.0) for k, *_ in IC.STACK})
 
     def pour(u):
@@ -519,7 +539,7 @@ def movie():
         sc.gmat["pcont_pow"] = T((0, 0, 4)) @ S((1, 1, max(0.01, 60.0 * (1 - u))))
         sc.alpha["pcont/powder"] = 1.0 if u < 0.97 else 0.0
         mouth = held_point(sc, "pcont", MOUTH)
-        pts = stream_pts(mouth, sieve_w(sv, (-20, 0, IC.MESH_DZ + z_rim - IC.DEPTH)), u * 5.0,
+        pts = stream_pts(mouth, sieve_w(sv, (20, 0, IC.MESH_DZ + z_rim - IC.DEPTH)), u * 5.0,
                          on=1.0 if 0.03 < u < 0.92 else 0.0)
         sc.alpha["pstream"] = 1.0 if len(pts) else 0.0
         if len(pts):
@@ -532,7 +552,8 @@ def movie():
     g_back = seat_c + HANDLE_GRASP
     cap = "The empty container goes back in its cup on the MiR, to ride back to the rePowder for cleaning."
     status(sc, Arm="the container back on the MiR", Powder="on the No. 60")
-    sc.step(f"2/{n}", cap, 1.2, rb.line_to(level_y(p_up, 90.0)), hold=0.05)
+    sc.step(f"2/{n}", cap, 0.8, rb.line_to(level_y(p_up, 90.0 + th1)), hold=0.02)
+    sc.step(f"2/{n}", cap, 0.6, rb.line_to(level_y(p_up, 90.0)), hold=0.05)
     sc.step(f"2/{n}", cap, 1.6, rb.joint_to(Tw=level_y(g_back + (0, 0, 120), 90.0)), hold=0.05)
     sc.step(f"2/{n}", cap, 0.8, rb.line_to(level_y(g_back, 90.0)), hold=0.05)
     sc.step(f"2/{n}", cap, 0.4, rb.grip_to(0.0), hold=0.05)
@@ -544,6 +565,9 @@ def movie():
 
     def lid_grasp(v):
         return (sc.world("sieve:stack") @ jl.matrix(v) @ np.r_[0.0, 0.0, zl + 17.0, 1.0])[:3]
+    # the lid straight over its seat, its holes over the rods' tops: the corner of the rig's own path, which runs by arc
+    # length (lid_grasp(2/3) is still on the way across, so a line from there cut the corner through a rod)
+    lid_over = lid_grasp(1.0) + (0.0, 0.0, 212.0 + 6 * IC.DEPTH + 50.0 - zl + 25.0)
     p_lpark = (sc.world("tipper") @ np.r_[0.0, 0.0, SS.TIP["top"] + 29.0, 1.0])[:3]
     cap = "The lid comes off the tipper's roof, over the two rods and down onto the stack, and the arm turns its two " \
           "knobs to clamp it. No shaker found is sold for robot loading, so it does what a person does; Fritsch's " \
@@ -555,8 +579,8 @@ def movie():
     rb.grasp("sieve:lid")
     sc.lid_parked = False
     sc.step(f"2/{n}", cap, 0.7, rb.line_to(A.down(p_lpark + (0, 0, 90), spin=90.0)), hold=0.02)
-    sc.step(f"2/{n}", cap, 1.4, rb.joint_to(Tw=A.down(lid_grasp(2 / 3) + (0, 0, 40), spin=90.0)), hold=0.02)
-    sc.step(f"2/{n}", cap, 0.5, rb.line_to(A.down(lid_grasp(2 / 3), spin=90.0)), hold=0.02)
+    sc.step(f"2/{n}", cap, 1.4, rb.joint_to(Tw=A.down(lid_over + (0, 0, 40), spin=90.0)), hold=0.02)
+    sc.step(f"2/{n}", cap, 0.5, rb.line_to(A.down(lid_over, spin=90.0)), hold=0.02)
     sc.step(f"2/{n}", cap, 1.0, rb.line_to(A.down(lid_grasp(1.0), spin=90.0)), hold=0.02)
     sc.step(f"2/{n}", cap, 0.4, rb.grip_to(0.0), hold=0.05)
     rb.release("sieve:stack")
@@ -566,14 +590,19 @@ def movie():
     def knobs(a, b, sign):
         for side in ("L", "R"):
             sx = -1 if side == "L" else 1
-            k_top = sieve_w(sv, (sx * rod_x, 0, zl + 36.0))
+            # the grasp point near the knob's top (zl + 25 to zl + 47), so the fingertips stay off the crossbar below
+            k_top = sieve_w(sv, (sx * rod_x, 0, zl + 48.0))
             sc.step(f"2/{n}", cap, 0.6, rb.line_to(A.down(k_top + (0, 0, 70), spin=90.0)), hold=0.02)
             sc.step(f"2/{n}", cap, 0.35, rb.line_to(A.down(k_top, spin=90.0)), hold=0.02)
             sc.step(f"2/{n}", cap, 0.25, rb.grip_to(GRIP_KNOB), hold=0.02)
+            # the gripper holds the knob while it turns it (the knob stays on its rod, so it isn't reparented): a grasp
+            # and a release for the audit, as for any part the gripper takes
+            rb.events.append((sc.n, "grasp", f"sieve:knob{side}", None))
             q1 = rb.q.copy()
             q1[5] += sign * (-2 * math.pi if q1[5] > 0 else 2 * math.pi)     # one full turn of the wrist
             sc.step(f"2/{n}", cap, 0.8, RB.both(rb.joint_to(q1), svmove({f"knob{side}": (a, b)})), hold=0.02)
             sc.step(f"2/{n}", cap, 0.25, rb.grip_to(0.0), hold=0.02)
+            rb.events.append((sc.n, "release", f"sieve:knob{side}", None))
             sc.step(f"2/{n}", cap, 0.35, rb.line_to(A.down(k_top + (0, 0, 70), spin=90.0)), hold=0.02)
     knobs(0.0, 0.5, 1)
     sc.step(f"2/{n}", cap, 1.2, rb.joint_to(PARK), hold=0.05)
@@ -624,15 +653,15 @@ def movie():
                                         see_through(0.0), panel_off),
             hold=0.05, cam_to=CAM_SV, labels=[])
     sc.panel_a = 0.0
-    sc.step(f"3/{n}", cap, 1.4, rb.joint_to(Tw=A.down(sieve_w(sv, (-rod_x, 0, zl + 36.0)) + (0, 0, 70), spin=90.0)),
+    sc.step(f"3/{n}", cap, 1.4, rb.joint_to(Tw=A.down(sieve_w(sv, (-rod_x, 0, zl + 48.0)) + (0, 0, 70), spin=90.0)),
             hold=0.02)
     knobs(0.5, 0.0, -1)
     sc.step(f"3/{n}", cap, 0.8, rb.line_to(A.down(lid_grasp(1.0) + (0, 0, 60), spin=90.0)), hold=0.02)
     sc.step(f"3/{n}", cap, 0.5, rb.line_to(A.down(lid_grasp(1.0), spin=90.0)), hold=0.02)
     sc.step(f"3/{n}", cap, 0.4, rb.grip_to(GRIP_BAR36), hold=0.05)
     rb.grasp("sieve:lid")
-    sc.step(f"3/{n}", cap, 1.0, rb.line_to(A.down(lid_grasp(2 / 3), spin=90.0)), hold=0.02)
-    sc.step(f"3/{n}", cap, 0.5, rb.line_to(A.down(lid_grasp(2 / 3) + (0, 0, 40), spin=90.0)), hold=0.02)
+    sc.step(f"3/{n}", cap, 1.0, rb.line_to(A.down(lid_over, spin=90.0)), hold=0.02)
+    sc.step(f"3/{n}", cap, 0.5, rb.line_to(A.down(lid_over + (0, 0, 40), spin=90.0)), hold=0.02)
     sc.step(f"3/{n}", cap, 1.4, rb.joint_to(Tw=A.down(p_lpark + (0, 0, 90), spin=90.0)), hold=0.02)
     sc.step(f"3/{n}", cap, 0.7, rb.line_to(A.down(p_lpark, spin=90.0)), hold=0.02)
     sc.step(f"3/{n}", cap, 0.4, rb.grip_to(0.0), hold=0.05)
@@ -721,7 +750,7 @@ def movie():
                   "(DAL #234: tap the frame; no brush on 63 um or finer, no air jet on any cloth). The fraction runs " \
                   "down the funnel into its labelled jar."
         status(sc, Sieve=f"{LABEL[key]}: tipped into the {SS.JARS[j][1]} jar", Arm="waiting")
-        sc.step(f"3/{n}", cap, 0.6 * k, rb.joint_to(Tw=GR(tab_at("tip_cradle", in_cradle, key) - (0, 260, -60))),
+        sc.step(f"3/{n}", cap, 0.6 * k, rb.joint_to(Tw=GR(tab_at("tip_cradle", in_cradle, key) - (0, 260, -60), key)),
                 hold=0.02)
         flip(key, k=k, cap=cap)
         if first:
@@ -732,7 +761,11 @@ def movie():
                  cam=CAM_STAND if first else None)
     status(sc, Sieve="the set back on its stand", Powder="five fractions in five jars")
 
-    # the LPBF jar to the MiR's second cup
+    # the LPBF jar to the MiR's second cup. The MiR first rolls 300 mm back up to its usual line: from the cell's spot
+    # the reach down to the jar under the funnel put the forearm in the bench's front edge
+    cap = "The arm parks and the MiR rolls up to the bench, for the jar under the funnel."
+    sc.step(f"3/{n}", cap, 1.2, rb.joint_to(PARK), hold=0.05)
+    sc.step(f"3/{n}", cap, mo.secs(x_sv, AW.MIR_Y), mo.drive(x_sv, AW.MIR_Y), hold=0.05)
     b_seat = sc.world("bottle")[:3, 3]
     b_grasp = b_seat + (0, 0, 58.0)
     seat2 = mo.amr.world(np.r_[HOLDER2_LOCAL[0], HOLDER2_LOCAL[1], amr.top + HOLDER_H + 6.0])
@@ -756,7 +789,7 @@ def movie():
     # ------------------------------------------------------------------ 4. to the Aconity; into the powder supply
     cap = f"To the Aconity MIDI, {(aco_x - x_sv) / 1000:.1f} m along the line, past the VLM's opening."
     status(sc, Arm="driving to the Aconity MIDI")
-    sc.step(f"4/{n}", cap, mo.secs(aco_x), mo.drive(aco_x), hold=0.2, cam_to=CAM_DRIVE)
+    sc.step(f"4/{n}", cap, mo.secs(aco_x, y_aco), mo.drive(aco_x, y_aco), hold=0.2, cam_to=CAM_DRIVE)
     cap = "The door opens, and the chamber is drawn see-through. The MIDI's 170 mm build cylinder is at the front; " \
           "the 170 mm powder supply cylinder is behind it (DAL PR #169). Its piston drops to take the powder."
     status(sc, Aconity="door open, supply down")
@@ -781,10 +814,12 @@ def movie():
     rb.grasp("bottle")
     sc.step(f"4/{n}", cap, 0.8, rb.line_to(level_y(seat_now + (0, 0, 150), 0.0)), hold=0.05)
     door_front = W.world(np.array(M.door_pivot()))[1]
-    p_in0 = np.array([sup[0] - 60.0, door_front - 150.0, sup[2] + 95.0])
-    p_pour = np.array([sup[0] - 60.0, sup[1], sup[2] + 95.0])
+    p_in0 = np.array([sup[0] - 60.0, door_front - 150.0, sup[2] + 75.0])
+    p_pour = np.array([sup[0] - 60.0, sup[1] - 60.0, sup[2] + 75.0])      # tipped, the mouth is over the cylinder
     sc.step(f"4/{n}", cap, 1.6, rb.joint_to(Tw=level_y(p_in0, 0.0)), hold=0.05)
-    sc.step(f"4/{n}", cap, 1.6, rb.line_to(level_y(p_pour, 0.0)), hold=0.05)
+    # in through the door by a planned joint move: the straight line from the door to the cylinder kept the arm in the
+    # IK branch it had at the door, which puts the forearm in the base cabinet's top on the way
+    sc.step(f"4/{n}", cap, 1.6, rb.joint_to(Tw=level_y(p_pour, 0.0)), hold=0.05)
     sc.step(f"4/{n}", cap, 1.0, rb.line_to(level_y(p_pour, 112.0)), hold=0.05)
 
     def fill(u):
@@ -803,7 +838,7 @@ def movie():
     cap = "The empty jar goes back on the MiR, and the door shuts. The chamber is purged with argon before the " \
           "laser runs."
     sc.step(f"4/{n}", cap, 0.8, rb.line_to(level_y(p_pour, 0.0)), hold=0.05)
-    sc.step(f"4/{n}", cap, 1.4, rb.line_to(level_y(p_in0, 0.0)), hold=0.05)
+    sc.step(f"4/{n}", cap, 1.4, rb.joint_to(Tw=level_y(p_in0, 0.0)), hold=0.05)
     sc.step(f"4/{n}", cap, 1.6, rb.joint_to(Tw=level_y(seat_now + (0, 0, 150), 0.0)), hold=0.05)
     sc.step(f"4/{n}", cap, 0.8, rb.line_to(level_y(seat_now, 0.0)), hold=0.05)
     sc.step(f"4/{n}", cap, 0.4, rb.grip_to(0.0), hold=0.05)

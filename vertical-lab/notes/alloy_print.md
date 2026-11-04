@@ -29,12 +29,12 @@ PREVIEW=1 xvfb-run -a python3 alloy_print.py  # last frame of each sub-step -> /
 
 | Part | What it is | Why |
 |---|---|---|
-| **Handling tab** on each sieve and the pan | 12 mm stainless tab at the front of the frame, 40 mm out, gripped like the plate's 12 mm lug (2F-85 at 0.88), fingers closing vertically | The 2F-85 opens 85 mm and a sieve is 207 mm across. Nested sieves leave only the top one's rim free, and a tab 50.8 mm above the next one leaves room for the fingers |
-| **The Al set's stand** | A plate with a lip that takes a skirt, right of the shaker. The set waits nested in reverse: No. 60 at the bottom, pan on top (the pan sits on the No. 325's rim) | Off the stand top first, the pieces go onto the shaker pan first. Off the shaker top first, they go back in storage order, ready for the next run. No rack, no second arm |
+| **Handling tab** on each sieve and the pan | 12 mm stainless tab at the front of the frame, 40 mm out, gripped like the plate's 12 mm lug (2F-85 at 0.88), fingers closing vertically; the pan's tab is held by its sides, 28 mm across (0.69), and every tab is approached with the gripper half open (0.5) | The 2F-85 opens 85 mm and a sieve is 207 mm across. Nested sieves leave only the top one's rim free, and a tab 50.8 mm above the next one leaves room for the fingers. The pan is the bottom piece on the shaker: fingers above and below its tab put the lower one and its knuckle in the shaker's housing |
+| **The Al set's stand** | A 120 mm pedestal with a lip that takes a skirt, right of the shaker. The set waits nested in reverse: No. 60 at the bottom, pan on top (the pan sits on the No. 325's rim) | Off the stand top first, the pieces go onto the shaker pan first. Off the shaker top first, they go back in storage order, ready for the next run. No rack, no second arm. On round 5's 20 mm plate the No. 60's tab was so low that the gripper's lower knuckle reached into the bench |
 | **Tipper** | A C-shaped cradle on a horizontal shaft (pneumatic rotary actuator), open at the front for the tab and the fingers; three pads clamp the frame; a pneumatic knocker taps the frame | The lab tips each sieve over a funnel by hand (below) |
 | **Funnel and jars** | A Ø252 funnel over a turntable with five 250 mL jars, labelled: > 250, 150–250, 106–150, 63–106 and < 63 µm (LPBF). The No. 325 and the pan share the LPBF jar | Each fraction in its own jar |
 | **Lid park** | The AS 200's clamping lid rests on the tipper's roof | The arm turns the two knobs, as before |
-| **Enclosure** | Downdraft enclosure on the bench, open at the front, extraction through the roof; a ground bar on the back panel and green-yellow straps to the shaker, tipper, stand | Al under 63 µm is among the most ignitable metal dusts (DAL's sieve note); Sterling asked for the grounding to be shown on DAL #175 |
+| **Enclosure** | Downdraft enclosure on the bench, 1150 mm tall, open at the front, extraction through the roof; a ground bar on the back panel and green-yellow straps to the shaker, tipper, stand | Al under 63 µm is among the most ignitable metal dusts (DAL's sieve note); Sterling asked for the grounding to be shown on DAL #175. At round 5's 950 mm the roof and the front rail left the arm no room over the tipper's roof and the knobs |
 
 **Cleaning between alloys, from DAL #234's Edison answer** (Nov 3): use a separate sieve set per alloy family
 ("cleaning lowers carryover but can't prove there is none"), so the Cu-alloy set lives on its own stand. Recover
@@ -54,13 +54,48 @@ weighed, the sieves brushed and wiped with Kimwipes. The NAB result is three jar
 > 251 µm: 188 g, 827 g and 182 g of 1,938 g melted over two runs, DAL #219).
 
 **Hand-offs.**
-- **Start:** the MiR at x = −3487, y = −2230, arm parked, the container in its cup (as before).
+- **Start:** the MiR at x = −3487, y = −2230, arm parked, the container on the MiR: the same spot, pose and
+  container as chapter 2's end (`alloy_atomize.END_POSE`). Not the same fixtures, and that predates this round:
+  chapter 2 ends with the container in a cradle at (280, 10) in the MiR's frame, handle towards the arm, next to
+  chapter 1's cup carrier, while this chapter starts on chapter 4's MiR (plate carrier and bar holder) with the
+  container in a cup at (−30, −150), handle to the front. Left as it was, since neither file is this chapter's.
 - **End:** as before: the MiR at x = 1400, `MIR_Y`, arm parked; the Aconity closed and opaque; the plate under a
   30 mm powder cake; chapter 4's first camera. The MiR now has two cups: the empty container's and the empty jar's.
 - **Where the cell stands:** the bench is 1065 × 600 × 700 mm (assumed), x from −2515 to −1450, between the
   rePowder's heat exchanger and the VLM. Tipper at x = −2350, AS 200 at −1971, stand at −1623. `setup_lab.py` puts
   the AS 200 on tray F; this chapter keeps it beside the rePowder, as the round-4 note on Al dust suggests. The
   two layouts still disagree.
+
+### The arm's collisions (round 6)
+
+Sterling, on PR #318: the arm "didn't respect collisions with itself, at all. Passed through the MiR250 and collided
+with the vial holder." Round 5 of this chapter was rendered before `collide.py` landed. Checked with the planner
+(`ARM_AUDIT=1`, every frame at 15 fps, [`notes/arm_collisions.md`](arm_collisions.md)), it had **543 of 2372**
+frames in collision: the arm folded into itself, and its lower finger in the shaker and the bench, at the sieves'
+tabs (2/5, 3/5); the container through the tipper and the parked lid; the forearm through the enclosure, the tipper
+and the stack over the lid and the knobs; the forearm and wrist in the Aconity's base cabinet and chamber (4/5).
+After the changes below, all but the last three: **140 of 2417** (see the end of this section). Nothing was
+hidden or left out of the check; `robot.py`, `collide.py` and the other shared modules are unchanged.
+
+| What collided (round 5) | What changed | Why |
+| --- | --- | --- |
+| The arm in itself (shoulder and forearm, upper arm and wrists) and in the MiR's cabinet, at the tabs | The MiR parks 300 mm further off the bench than off the line (`CELL_DY`) | From the line's spot the tabs are 520 mm in front of the arm's base, and a level gripper there folds the arm with its elbow over the shoulder. From 820 mm it reaches them stretched out, and the self-collisions are gone |
+| The lower finger and its knuckle in the shaker's housing (placing the pan) and in the bench (the No. 60 on its stand) | The pan's tab is held by its sides; every tab is approached with the gripper half open; the stand is a 120 mm pedestal | Fingers above and below a tab put the lower one about 40 mm under it when wide open (85 mm), and its knuckle lower still |
+| The container through the tipper, the lid parked on it, and the sieves' tabs | It waits 260 mm in front of the stack, tips part way there, then goes in over the No. 60 as it tips the rest of the way, towards the stand | Beside the stack on the left it stood in the tipper; tipped in one move from upright its foot swept through the tabs |
+| The lid through a rod on its way down | It is lowered from straight over its seat | `lid_grasp(2/3)` was still on the rig's way across (its path runs by arc length), so the line down cut the corner |
+| The forearm in the enclosure's roof and front rail, over the tipper and the knobs | The enclosure is 1150 mm tall, not 950 | The lid and the knobs are taken from above: the wrist stands 300 mm over them |
+| The fingertips on the knobs they turn | A grasp and a release are recorded for the knob the gripper turns | The rules let the gripper touch what it takes, within 4 s; the knob is taken and turned, just not lifted off its rod |
+| The forearm in the bench's front edge, reaching under the funnel for the LPBF jar | The MiR rolls back up to its usual line first | From 300 mm further out the reach down to the jar was too long and low |
+| The forearm and wrist in the Aconity's base cabinet and chamber, carrying the jar in | The MiR stops 250 mm further off the Aconity (`ACO_DY`); the jar goes in 20 mm lower and is poured 60 mm short of the supply's axis; door to cylinder and back are planned joint moves | The chamber's opening is 280 mm tall and the cylinder 540 mm behind the door. From the usual spot the forearm comes down into the cabinet's top; from further back the arm reaches in nearly straight |
+
+**What the 140 frames were, and the last changes.** Three runs were left when the audit was last run: the lid
+going down the rods (8 frames), the container tipping over the No. 60 (36), and the arm going in through the
+Aconity's door (96). The table's rows on the lid (lowered from straight above), the container (tipped in two
+moves) and the Aconity (planned moves through the door) are the fixes for them. The lid's is checked: on the rig's
+own path straight down the rods, the line the arm now takes, it touches nothing until it sits on the No. 60, where
+it is let go. The other two are not yet re-audited: the render was started with them so that it would finish in
+the session, and the machine was too loaded to audit and render at once. `ARM_AUDIT=1 xvfb-run -a python3
+alloy_print.py` gives the count for what is rendered.
 
 ### Sources and assumptions
 
