@@ -1754,8 +1754,11 @@ def movie_bay_camera(data, idata):
     sc.step(f"3/{n}", capw, 3.4, arm(1, 3), hold=0.2)
     L.svc_lines[2] = ("Arm", "to the doser's cup")
     L.gauges()
-    sc.step(f"3/{n}", capw, 3.4, arm(3, 5), hold=0.6)
-    c, f, r, u = opt["hq"]
+    sc.step(f"3/{n}", capw, 3.4, arm(3, 5), hold=0.6, still=True)
+    # the head turns on its pan and tilt joints to put the HQ on the doser's cup, where the gripper is
+    at = bay_at()
+    _, pan_c, tilt_c = rig_pose(float(at[0, 3]), float(at[1, 3]), tuple(cup[:3, 3]), h=0.0, z0=float(at[2, 3]), post=0.0)
+    c, f, r, u = camera_optics(at, 0.0, 0.0, pan_c, tilt_c)["hq"]
     hq = fov["hq_16mm"]
     cam_hq = [tuple(c), tuple(c + f * 1000.0), tuple(u)]
     va_hq = hq["up_down"]
@@ -1765,15 +1768,18 @@ def movie_bay_camera(data, idata):
     def to_hq(s):
         sc.mask_y = 0.0
         sc.mask_x = mx * s
+        sc.gmat["baycamrigpan"] = I._R((0, 0, 1), pan_c * s, PAN_AXIS)
+        sc.gmat["baycamrighead"] = I._R((1, 0, 0), b["tilt"] + (tilt_c - b["tilt"]) * s, TILT_AXIS)
     L.svc_lines = [("Camera", "HQ Camera, 16 mm lens"), ("Picture", f"{hq['across']:.1f} x {hq['up_down']:.1f} deg, "
                                                                      "4:3"), ("Arm", "at the doser's cup")]
     L.gauges()
-    caph = (f"What the HQ Camera sees through the 16 mm lens: {hq['across']:.1f} x {hq['up_down']:.1f} degrees "
-            f"(its sensor is {hq['sensor_mm'][0]} x {hq['sensor_mm'][1]} mm: 2 atan(6.29 / 32) across), a 4:3 "
-            "picture of the middle of the tray, close up, as the arm passes through it.")
-    sc.step(f"4/{n}", caph, 1.2, to_hq, hold=0.2, cam_to=cam_hq, view_angle_to=va_hq)
+    caph = (f"What the HQ Camera sees through the 16 mm lens, {hq['across']:.1f} x {hq['up_down']:.1f} degrees (its "
+            f"sensor is {hq['sensor_mm'][0]} x {hq['sensor_mm'][1]} mm: 2 atan(6.29 / 32) across), with the head "
+            f"turned {abs(pan_c):.0f} degrees and tilted {tilt_c:.0f} down onto the doser's cup: a 4:3 close-up of "
+            "the gripper at work.")
+    sc.step(f"4/{n}", caph, 1.4, to_hq, hold=0.2, cam_to=cam_hq, view_angle_to=va_hq)
     sc.step(f"4/{n}", caph, 3.2, arm(5, 6), hold=0.4)
-    sc.step(f"4/{n}", caph, 3.0, arm(6, 7), hold=1.6, still=True)
+    sc.step(f"4/{n}", caph, 3.0, arm(6, 7), hold=1.6)
     return sc.save()
 
 
