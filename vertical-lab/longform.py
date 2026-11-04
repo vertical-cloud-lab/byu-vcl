@@ -50,6 +50,12 @@ def font(size, bold=False):
     return ImageFont.load_default()
 
 
+# Clips taken from the two PRs stacked on this one, at the commit named, without merging them (they are still under
+# review): PR #320 (claude/issue-303-r5-cutaways), round 2's equipment in cutaway; PR #321 (claude/issue-303-r5-fixes),
+# round 4's review fixes, among them every MiR250 drive at its published 0.3 m/s^2 and the 68SC-2's bar at 3 x 1 mm.
+R2 = "5a39245"
+FIXES = "a34367a"
+
 # ===================================================================================================== the chapters
 # Each chapter: a key, its title (also the YouTube chapter line), the card's lines, and its parts in order. A part is
 #   ("mp4", rel under out/mp4, label or None)                    a rendered clip, whole
@@ -77,6 +83,11 @@ CHAPTERS = [
                "Then trays G, H and I: resin printing, PCB assembly and desktop LPBF."],
          parts=[("mp4", "vlm_line.mp4", "Trays D-F and the line along the rail"),
                 ("mp4", "vlm_fab_trays.mp4", "Trays G-I: resin, PCB, desktop LPBF")]),
+    dict(key="round2", title="Trays A-C at work, in cutaway: OT-2, H2D, A1 mini, CubXL, multi-doser",
+         card=["Round 2's equipment doing its job with the casing faded out: the OT-2 pipetting, the H2D and A1 mini "
+               "printing, the CubXL handling liquid, and the multi-doser dispensing.",
+               "These five clips are from PR #320's branch (stacked on this one), rendered by its own session."],
+         parts=[("gitmp4", R2, "vertical-lab/out/mp4/instruments_round2_tour.mp4", None)]),
     dict(key="services", title="Services to every tray: docking, UPS, tether, cabling, cameras",
          card=["One automatic coupling per tray (Staubli CombiTac: mains, Ethernet, air, N2, chilled water), docked "
                "in its slot and again at the opening, with a UPS for the seconds in transit. The alternative is a "
@@ -85,7 +96,6 @@ CHAPTERS = [
          parts=[("mp4", "vlm_services.mp4", "Docking couplings and the UPS"),
                 ("mp4", "vlm_tether.mp4", "A retractable tether instead"),
                 ("mp4", "vlm_cabling.mp4", "Cabling"),
-                ("mp4", "instruments/tray_dock.mp4", "The tray dock, close up"),
                 ("mp4", "instruments/stream_cam.mp4", "The stream camera unit: height, pan, tilt")]),
     dict(key="alloy1", title="Alloy route 1/4: the charge cups, dosed, weighed and pressed under vacuum",
          card=["The atomizer melts the lab's own charge cups (#222), turned from 5N Al and oxygen-free Cu bar. Each "
@@ -130,7 +140,7 @@ CHAPTERS = [
                "shaker, an inert glovebox, and a packaging station that labels and seals powder for shipping."],
          parts=[("mp4", "instruments/polisher.mp4", "LECO PX500 grinder-polisher"),
                 ("mp4", "instruments/furnace.mp4", "Nabertherm furnace and the two Instrons"),
-                ("mp4", "instruments/instron_small.mp4", None),
+                ("gitmp4", FIXES, "vertical-lab/out/mp4/instruments/instron_small.mp4", None),
                 ("mp4", "instruments/instron_floor.mp4", None),
                 ("mp4", "instruments/wire_edm.mp4", "FANUC ROBOCUT wire EDM"),
                 ("mp4", "instruments/sieve.mp4", "Sieve shaker: Retsch AS 200"),
@@ -149,7 +159,7 @@ CHAPTERS = [
          parts=[("mp4", "instruments/rail.mp4", None),
                 ("still", "rail_vs_amr.png", 9.0, "Rail or mobile base: pedestal sway, docking accuracy, tipping",
                  None),
-                ("mp4", "warehouse.mp4", "The warehouse version")]),
+                ("gitmp4", FIXES, "vertical-lab/out/mp4/warehouse.mp4", "The warehouse version")]),
     dict(key="limits", title="What doesn't fit, and what it would take",
          card=["A hot isostatic press is too tall, too deep and too heavy for a tray. A taller opening, about "
                "1000 mm, would take the MX-Lab and most desktop LPBF machines, but Kardex publishes no figure. And "
@@ -220,6 +230,19 @@ def encode_frames(frames, path: Path, n: int):
     p.stdin.close()
     if p.wait():
         raise RuntimeError(f"ffmpeg failed on {path}")
+
+
+def from_git(commit: str, path: str) -> Path | None:
+    """A file as it is at `commit` (another branch's render), copied to /tmp; None if that commit isn't here."""
+    dst = Path(tempfile.gettempdir()) / "longform_git" / f"{commit}_{path.replace('/', '_')}"
+    if not dst.exists():
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        r = subprocess.run(["git", "show", f"{commit}:{path}"], capture_output=True, cwd=HERE)
+        if r.returncode:
+            print(f"  not available: {commit}:{path} (git fetch origin first)", flush=True)
+            return None
+        dst.write_bytes(r.stdout)
+    return dst
 
 
 # ===================================================================================================== cards
@@ -387,6 +410,10 @@ def plan() -> list[dict]:
                 src = OUT / part[1]
                 rows.append(dict(chapter=ch["key"], kind=kind, src=src, seconds=part[2], caption=part[3],
                                  label=part[4], missing=not src.exists()))
+            elif kind == "gitmp4":
+                src = from_git(part[1], part[2])
+                rows.append(dict(chapter=ch["key"], kind="mp4", src=src, seconds=duration(src) if src else 0,
+                                 label=part[3], missing=src is None, git=f"{part[1]}:{part[2]}"))
             elif kind == "footage":
                 src = OUT / part[1]
                 rows.append(dict(chapter=ch["key"], kind=kind, src=src, seconds=duration(src) if src.exists() else 0,
@@ -413,7 +440,7 @@ def show_plan(rows):
     t = 0.0
     for r in rows:
         src = r.get("src")
-        rel = src.relative_to(OUT) if src else ""
+        rel = r.get("git") or (src.relative_to(OUT) if src else "")
         flag = "  MISSING" if r.get("missing") else ""
         print(f"{stamp(t):>6} {r['seconds']:6.1f} s  {r['kind']:7s} {r['chapter']:9s} {rel}{flag}")
         if not r.get("missing"):
@@ -431,7 +458,7 @@ def build():
     n = len(CHAPTERS)
     for i, r in enumerate(rows):
         if r.get("missing"):
-            print(f"  left out (not rendered): {r['src'].relative_to(OUT)}", flush=True)
+            print(f"  left out (not rendered): {r.get('git') or r['src']}", flush=True)
             continue
         out = tmp / f"p{i:03d}.mp4"
         if r["kind"] == "card":
@@ -454,11 +481,12 @@ def build():
         else:
             normalise(r["src"], out)
         d = duration(out)
+        src = r.get("git") or (str(r["src"].relative_to(HERE)) if r.get("src") else None)
         record.append(dict(chapter=r["chapter"], kind=r["kind"], start_s=round(t, 2), seconds=round(d, 2),
-                           src=str(r["src"].relative_to(HERE)) if r.get("src") else None, label=r.get("label")))
+                           src=src, label=r.get("label")))
         t += d
         parts.append(out)
-        print(f"{stamp(t):>6}  {r['kind']:7s} {r.get('src', '') and r['src'].name}", flush=True)
+        print(f"{stamp(t):>6}  {r['kind']:7s} {src or ''}", flush=True)
     lst = tmp / "list.txt"
     lst.write_text("".join(f"file '{p}'\n" for p in parts))
     dst = MP4 / f"{NAME}.mp4"
