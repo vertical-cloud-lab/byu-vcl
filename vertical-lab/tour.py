@@ -34,8 +34,9 @@ CACHE = HERE / ".cache"
 MATS = dict(lab.MATS)
 MATS.update(I.MATERIALS)
 # Round 4 adds its instruments in modules of their own, each with a REGISTRY ({key: build}) and, optionally,
-# MATERIALS; a module that isn't there yet is skipped. Each module is cached on its own sources.
-MODULES = ["instruments", "instruments_char", "instruments_lab", "services"]
+# MATERIALS; a module that isn't there yet is skipped. Each module is cached on its own sources. instruments_round2
+# (PR #320) is round 2's equipment (the OT-2, the two Bambu printers, the CubXL, the multi-doser) split into pieces.
+MODULES = ["instruments", "instruments_char", "instruments_lab", "services", "instruments_round2"]
 
 
 def _modules() -> dict:
@@ -88,7 +89,8 @@ def load(keys=None, rebuild=False) -> dict:
         if keys is not None and not set(keys) & set(mod.REGISTRY):
             continue
         h = hashlib.sha256()
-        for f in _sources(name):
+        # a module's SOURCES: other files its builds read (round 2's equipment models, the carousel's layout)
+        for f in [*_sources(name), *(HERE / s for s in getattr(mod, "SOURCES", ()))]:
             if f.exists():
                 h.update(f.read_bytes())
         # rebuilt once the OpenFlexure meshes are there (the two microscopes, and the array in instruments_char)
@@ -109,6 +111,17 @@ def load(keys=None, rebuild=False) -> dict:
             path.write_bytes(pickle.dumps(part))
         data.update(part)
     return {k: v for k, v in data.items() if keys is None or k in keys}
+
+
+def custom_tours() -> dict:
+    """{key: clip(inst, entries) -> str} for the instruments whose clip tour_one can't play: a module names them in
+    TOURS (instruments_round2's multi-doser, whose chain moves by its own kinematics)."""
+    out = {}
+    for mod in _modules().values():
+        for key, fname in getattr(mod, "TOURS", {}).items():
+            if hasattr(mod, fname):
+                out[key] = getattr(mod, fname)
+    return out
 
 
 def registry() -> dict:
@@ -252,14 +265,19 @@ def tour_one(inst: I.Instrument, entries: dict) -> str:
         top = I.RAIL["top"]
         robot.Robot(sc, "ur10e", f"{inst.key}:carriage", T((0, 0, top)), q0=animate.PARK_DEG, prefix="railarm")
         sc.cam = frame_cam(inst.bbox(), inst.cam, pad=0.75, look_z=0.9)
-    n = len([a for a in inst.actions if a[0]])
+    # an action whose caption repeats the one before it continues that step (a move in several straight legs): it
+    # keeps the step's number
+    caps = [a[0] for a in inst.actions]
+    rep = [bool(c) and i > 0 and c == caps[i - 1] for i, c in enumerate(caps)]
+    n = len([c for c in caps if c]) - sum(rep)
     whole = sc.cam
     own = getattr(inst, "step_labels", {})         # {action index: labels} for an action with labels of its own
     for i, (cap, secs, targets) in enumerate(inst.actions):
         z = getattr(inst, "zoom", {}).get(i)
         cam_to = None if z is None else whole if z == "out" else close_cam(*z, direction=inst.cam)
-        sc.step(f"{min(i + 1, n)}/{n}", cap, secs, rig.move(targets), hold=0.5, labels=own.get(i, labels),
-                cam_to=cam_to)
+        k = min(i + 1 - sum(rep[:i + 1]), n)
+        sc.step(f"{k}/{n}", cap, secs, rig.move(targets), hold=0.15 if i + 1 < len(rep) and rep[i + 1] else 0.5,
+                labels=own.get(i, labels), cam_to=cam_to)
     # the hero still for the gallery: closed, the sample in place, no text
     rig.move({k: (None, 1.0 if k in inst.props else j.v0) for k, j in inst.joints.items()})(1.0)
     rig.move({f"~{k}": (None, 0.0) for k in ents})(1.0)
@@ -359,7 +377,8 @@ if __name__ == "__main__":
             else:
                 print(join(list(registry())))
     else:
-        data = load(args or None, rebuild="--rebuild" in args)
+        data = load([a for a in args if a != "--rebuild"] or None, rebuild="--rebuild" in args)
+        tours = custom_tours()
         for key, (inst, ents) in data.items():
             print(key, fit_report(inst), flush=True)
-            print(tour_one(inst, ents), flush=True)
+            print(tours.get(key, tour_one)(inst, ents), flush=True)

@@ -1,0 +1,41 @@
+{
+ "name": "instruments/h2d",
+ "fps": 15,
+ "n_frames": 273,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/5",
+   "caption": "The enclosure drawn see-through: a CoreXY gantry at the top carries the two-nozzle toolhead, and the bed below it moves only in Z.",
+   "start_frame": 0,
+   "end_frame": 49
+  },
+  {
+   "label": "2/5",
+   "caption": "The bed rises on its Z screws until the build plate is a first layer below the nozzles.",
+   "start_frame": 50,
+   "end_frame": 84
+  },
+  {
+   "label": "3/5",
+   "caption": "Printing a vial rack in PETG: the toolhead traces each layer, and the bed steps down a layer at a time as the part grows.",
+   "start_frame": 85,
+   "end_frame": 190
+  },
+  {
+   "label": "4/5",
+   "caption": "Done. The head parks and the bed drops, so the arm can reach in.",
+   "start_frame": 191,
+   "end_frame": 225
+  },
+  {
+   "label": "5/5",
+   "caption": "The door opens and the flexible plate comes out with the rack on it, for the arm to take.",
+   "start_frame": 226,
+   "end_frame": 272
+  }
+ ]
+}

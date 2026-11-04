@@ -44,7 +44,9 @@ TITLE_CHARS = 100
 # ``chapters`` checks that the parts add up to the joined file before it writes any timestamp.
 ROUND4 = ["vhx", "xrf", "sieve", "openflexure_array", "cubxl_corrosion", "ded", "packaging", "hip", "tray_dock",
           "stream_cam"]
+ROUND2_CUT = ["ot2", "h2d", "a1_mini", "cubxl_lh", "multidoser"]      # instruments_round2.py (PR #320)
 JOINED = {
+    "instruments_round2_tour.mp4": [f"instruments/{k}.mp4" for k in ROUND2_CUT],
     "vertical_lab_full.mp4": ["vlm_assembly.mp4", "vlm_loading.mp4", "vlm_workflow.mp4"],
     "vlm_services_all.mp4": ["vlm_services.mp4", "vlm_tether.mp4", "vlm_cabling.mp4"],
     "instruments_round4_tour.mp4": [f"instruments/{k}.mp4" for k in ROUND4],
@@ -53,6 +55,9 @@ JOINED = {
 # Titles and a first line for the clips that aren't one instrument each. The steps under the first line come from
 # the clip's JSON, so they follow the render; these lines only say what the clip is and where it belongs.
 LAB = {
+    "instruments_round2_tour.mp4": ("Vertical cloud lab: OT-2, H2D, A1 mini, CubXL and multi-doser at work, the insides "
+                                    "showing", "Round 2's equipment, each doing its job with what is around the "
+                                    "process drawn see-through or in half section (instruments_round2.py)."),
     "vertical_lab_full.mp4": ("Vertical cloud lab: the VLM assembled, loaded and at work (round 1, ends loaded)",
                               "The Kardex Shuttle XP 500 assembled, the lab's equipment loaded onto its trays through "
                               "the opening, and a UR10e on a MiR250 dosing a powder and taking the vial to the CubXL."),
@@ -144,6 +149,11 @@ WHERE = {
 WHERE_KEY = {"rail": "It runs along the front of the line, for the arm.",
              "hip": "It is shown against a tray of the vertical lift module, which it doesn't fit."}
 TITLE_KEY = {   # where "<model>, <title>" reads badly or runs over 100 characters
+    "ot2": "Opentrons OT-2, the gantry and pipette over the deck, the panels see-through",
+    "h2d": "Bambu Lab H2D printing a part, the enclosure see-through",
+    "a1_mini": "Bambu Lab A1 mini printing a part",
+    "cubxl_lh": "the CubXL's pipette over its vial rack, the vials in half section",
+    "multidoser": "the multi-doser (chain carousel v2) dosing a powder, the vial in half section",
     "rail": "Vention robot 7th axis, a floor rail for the arm",
     "openflexure_array": "six OpenFlexure microscopes (4 x v7, 2 x Delta Stage) on one sub-tray",
     "openflexure_v7": "OpenFlexure Microscope v7, in reflection",

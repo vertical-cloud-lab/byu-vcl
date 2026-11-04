@@ -1,0 +1,119 @@
+{
+ "name": "instruments/cubxl_lh",
+ "fps": 15,
+ "n_frames": 386,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/6",
+   "caption": "The CubXL's gantry carries a pipette and a capper over its deck: a six-vial rack and a tip rack. The stock (vial 1) and the vial dosed by the multi-doser (vial 6) are drawn in half section.",
+   "start_frame": 0,
+   "end_frame": 55
+  },
+  {
+   "label": "2/6",
+   "caption": "The pipette goes down onto a tip in the rack and lifts it.",
+   "start_frame": 56,
+   "end_frame": 78
+  },
+  {
+   "label": "2/6",
+   "caption": "The pipette goes down onto a tip in the rack and lifts it.",
+   "start_frame": 79,
+   "end_frame": 101
+  },
+  {
+   "label": "3/6",
+   "caption": "Over the stock, down into the liquid, and it draws.",
+   "start_frame": 102,
+   "end_frame": 124
+  },
+  {
+   "label": "3/6",
+   "caption": "Over the stock, down into the liquid, and it draws.",
+   "start_frame": 125,
+   "end_frame": 144
+  },
+  {
+   "label": "3/6",
+   "caption": "Over the stock, down into the liquid, and it draws.",
+   "start_frame": 145,
+   "end_frame": 170
+  },
+  {
+   "label": "4/6",
+   "caption": "Up, over to vial 6, down to just above the powder, and it dispenses onto it.",
+   "start_frame": 171,
+   "end_frame": 187
+  },
+  {
+   "label": "4/6",
+   "caption": "Up, over to vial 6, down to just above the powder, and it dispenses onto it.",
+   "start_frame": 188,
+   "end_frame": 210
+  },
+  {
+   "label": "4/6",
+   "caption": "Up, over to vial 6, down to just above the powder, and it dispenses onto it.",
+   "start_frame": 211,
+   "end_frame": 230
+  },
+  {
+   "label": "4/6",
+   "caption": "Up, over to vial 6, down to just above the powder, and it dispenses onto it.",
+   "start_frame": 231,
+   "end_frame": 256
+  },
+  {
+   "label": "5/6",
+   "caption": "It mixes: two draws and dispenses in the vial.",
+   "start_frame": 257,
+   "end_frame": 266
+  },
+  {
+   "label": "5/6",
+   "caption": "It mixes: two draws and dispenses in the vial.",
+   "start_frame": 267,
+   "end_frame": 276
+  },
+  {
+   "label": "5/6",
+   "caption": "It mixes: two draws and dispenses in the vial.",
+   "start_frame": 277,
+   "end_frame": 286
+  },
+  {
+   "label": "5/6",
+   "caption": "It mixes: two draws and dispenses in the vial.",
+   "start_frame": 287,
+   "end_frame": 302
+  },
+  {
+   "label": "6/6",
+   "caption": "The tip goes back in its rack, and the gantry parks.",
+   "start_frame": 303,
+   "end_frame": 319
+  },
+  {
+   "label": "6/6",
+   "caption": "The tip goes back in its rack, and the gantry parks.",
+   "start_frame": 320,
+   "end_frame": 345
+  },
+  {
+   "label": "6/6",
+   "caption": "The tip goes back in its rack, and the gantry parks.",
+   "start_frame": 346,
+   "end_frame": 362
+  },
+  {
+   "label": "6/6",
+   "caption": "The tip goes back in its rack, and the gantry parks.",
+   "start_frame": 363,
+   "end_frame": 385
+  }
+ ]
+}
