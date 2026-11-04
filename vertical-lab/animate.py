@@ -57,7 +57,8 @@ HOME = {"A": "R2", "B": "R3", "C": "F1"}       # storage slot of each tray
 # its front half
 AMR_XY = (0.0, -V.UNIT_D / 2 - V.SKIN - 50.0 - 30.0 - P.MIR["W"] / 2)
 ARM_LOCAL = (0.0, 130.0)
-BUFFER_LOCAL = (-300.0, -150.0)                # the one-vial holder on the cabinet top
+BUFFER_LOCAL = (-300.0, -150.0)                # the MiR's storage block on the cabinet top, beside the arm's plate:
+                                               # the vial's pocket (props.buffer_holder) or the cups' (charge.carrier)
 RACK_SEAT = 5                                  # the rack's seat with the vial the workflow uses
 CUB_SLOT = (100.0, -60.0, 80.0)                # the CubXL rack's sixth seat (base of the vial), CubXL frame
 MODULE = 5                                     # the powder module the workflow doses from (0-based; "module 6")
