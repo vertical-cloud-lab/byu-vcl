@@ -83,6 +83,8 @@ PLUG_GRASP = 21.5                      # above a plug's base: the pads' lower en
 GRIP_CUP = 0.80                        # 2F-85 closure on the 19.05 mm cup: gap = 28 - 90 (c - 0.70) (ur_arm.gripper_fk)
 GRIP_PLUG = 0.87                       # on the 12.7 mm plug
 OPEN_CUP = 0.66                        # 31.6 mm between the pads: clear of a neighbouring cup in a pocket row
+OPEN_RACK = 0.75                       # 23.5 mm, 2.2 mm a side, at the rack: its cups stand 40 mm apart, and the cups
+#                                        nearest the arm's base are reached at an angle, past their neighbours
 OPEN_PLUG = 0.60
 GRIP_FUNNEL = 0.70 + (28.0 - C.FUNNEL["band_d"]) / 90.0      # on the funnel's 42 mm band
 OPEN_FUNNEL = 0.70 + (28.0 - C.FUNNEL["band_d"] - 12.0) / 90.0
@@ -379,7 +381,7 @@ def movie():
     def charge_line():
         L.note(4, "Charge", f"{made['Al']} of 4 Al-10Si, {made['Cu']} of 4 Cu-10Ni cups made up")
 
-    def aim(p, offs, prefer, step=15, close=None, only=None):
+    def aim(p, offs, prefer, step=15, close=None, only=None, fallback=True):
         """The horizontal direction to aim a level gripper at p: the clear one nearest `prefer`. offs lists the poses
         the moves use, as (distance back along the direction, height up) from p; each must have an IK solution clear of
         everything (collide.py), and the arm's own links, with what it holds. Square to the tray, a target near the
@@ -418,6 +420,8 @@ def movie():
                     break
             if ok:
                 return d
+        if not fallback:
+            return None
         if only is not None:
             print(f"note: {sc.label}: no level approach at {np.round(p).tolist()} touching only {sorted(only)}; "
                   f"any contact allowed", flush=True)
@@ -469,13 +473,24 @@ def movie():
               flush=True)
         return rb.joint_to(Tw=T_pre)
 
-    rack_dir = {}
+    rack_dir, rack_bk = {}, {}
 
     def rack_aim(i):
-        if i not in rack_dir:            # open, the fingertips may touch cup i and its rack, not the cups beside it
+        """The level direction to rack cup i, and how far back the approach starts (rack_bk[i]): the open fingertips
+        (OPEN_RACK) may touch cup i and its rack, not the cups beside it. The cups nearest the arm's base can't be
+        reached square from 150 mm back, so a shorter approach is tried before an angled one is ruled out."""
+        if i not in rack_dir:
             p0 = K.rack_cup(i) + (0, 0, CUP_GRASP)
-            rack_dir[i] = aim(p0, [(150, 30, OPEN_CUP), (0, 0, OPEN_CUP), (0, 30, GRIP_CUP)], radial(p0), step=5,
-                              only={f"cup{i}", f"plug{i}", "crack"})
+            only = {f"cup{i}", f"plug{i}", "crack"}
+            for bk in (150, 110, 80):
+                d = aim(p0, [(bk, 30, OPEN_RACK), (0, 0, OPEN_RACK), (0, 30, GRIP_CUP), (bk, 0, OPEN_RACK)],
+                        radial(p0), step=5, only=only, fallback=False)
+                if d is not None:
+                    break
+            else:
+                bk = 150
+                d = aim(p0, [(bk, 30, OPEN_RACK), (0, 0, OPEN_RACK), (0, 30, GRIP_CUP)], radial(p0), step=5)
+            rack_dir[i], rack_bk[i] = d, bk
         return rack_dir[i]
 
     # ------------------------------------------------------------------ 1. tray B down
@@ -557,14 +572,15 @@ def movie():
     def rack_to_cradle(i, st, cap, f, H, detail):
         p0 = K.rack_cup(i) + (0, 0, CUP_GRASP)
         d0 = rack_aim(i)
+        bk = rack_bk[i]
         p1 = K.station_cup() + (0, 0, CUP_GRASP)
-        sc.step(st, cap, 1.6 * f, both(pre(lvl(p0 - d0 * 150 + (0, 0, 30), d0), lvl(p0, d0), OPEN_CUP),
-                                       rb.grip_to(OPEN_CUP)), hold=H(0.05), cam_to=CAM_WORK if detail else None)
+        sc.step(st, cap, 1.6 * f, both(pre(lvl(p0 - d0 * bk + (0, 0, 30), d0), lvl(p0, d0), OPEN_RACK),
+                                       rb.grip_to(OPEN_RACK)), hold=H(0.05), cam_to=CAM_WORK if detail else None)
         sc.step(st, cap, 0.8 * f, rb.line_to(lvl(p0, d0)), hold=H(0.05))
         sc.step(st, cap, 0.4 * f, rb.grip_to(GRIP_CUP), hold=H(0.05))
         rb.grasp(f"cup{i}")
         sc.step(st, cap, 0.6 * f, rb.line_to(lvl(p0 + (0, 0, 30), d0)), hold=0.0)
-        sc.step(st, cap, 0.8 * f, rb.line_to(lvl(p0 - d0 * 150 + (0, 0, 30), d0)), hold=H(0.05))
+        sc.step(st, cap, 0.8 * f, rb.line_to(lvl(p0 - d0 * bk + (0, 0, 30), d0)), hold=H(0.05))
         sc.step(st, cap, 1.4 * f, pre(lvl(p1 + (0, -200, 2)), lvl(p1 + (0, 0, 2))), hold=H(0.05))
         sc.step(st, cap, 1.0 * f, rb.line_to(lvl(p1 + (0, 0, 2))), hold=H(0.05),
                 cam_to=cam_near(K.station_cup(), (230.0, -430.0, 170.0), (0.0, 0.0, 70.0)) if detail else None)
@@ -611,6 +627,7 @@ def movie():
     def balance_to_rack(i, st, cap, f, H, detail):
         q = K.bal_cup() + (0, 0, CUP_GRASP)
         d1 = rack_aim(i)
+        bk = rack_bk[i]
         c_r = K.rack_cup(i) + (0, 0, CUP_GRASP)
         sc.step(st, cap, 0.9 * f, rb.line_to(lvl(q)), hold=H(0.05))
         sc.step(st, cap, 0.4 * f, rb.grip_to(GRIP_CUP), hold=H(0.05))
@@ -619,13 +636,13 @@ def movie():
         sc.step(st, cap, 0.3 * f, rb.line_to(lvl(q + (0, 0, 2))), hold=0.0)
         sc.step(st, cap, 0.9 * f, rb.line_to(lvl(q + (0, -150, 2))), hold=H(0.05))
         sc.step(st, cap, 0.5 * f, K.to(door=0.0), hold=0.0)
-        sc.step(st, cap, 1.3 * f, pre(lvl(c_r - d1 * 150 + (0, 0, 30), d1), lvl(c_r + (0, 0, 30), d1)), hold=H(0.05),
+        sc.step(st, cap, 1.3 * f, pre(lvl(c_r - d1 * bk + (0, 0, 30), d1), lvl(c_r + (0, 0, 30), d1)), hold=H(0.05),
                 cam_to=CAM_RACK if detail else None)
         sc.step(st, cap, 0.7 * f, rb.line_to(lvl(c_r + (0, 0, 30), d1)), hold=H(0.05))
         sc.step(st, cap, 0.5 * f, rb.line_to(lvl(c_r + (0, 0, 1), d1)), hold=H(0.05))
-        sc.step(st, cap, 0.4 * f, rb.grip_to(OPEN_CUP), hold=H(0.05))
+        sc.step(st, cap, 0.4 * f, rb.grip_to(OPEN_RACK), hold=H(0.05))
         rb.release("crack")
-        sc.step(st, cap, 0.7 * f, rb.line_to(lvl(c_r - d1 * 150, d1)), hold=H(0.05))
+        sc.step(st, cap, 0.7 * f, rb.line_to(lvl(c_r - d1 * bk, d1)), hold=H(0.05))
 
     def dose(i, layer, st, cap, f, H, detail, still=None):
         """Index, dock, tilt and dose one layer into cup i in the cradle (layer 0: the alloying powder, to its column;
@@ -812,13 +829,14 @@ def movie():
                    f"#222's steel sleeve." if first else
                    "Into the die's catch ring, on the pin, which lowers it into F1.")
             L.note(0, "Arm", f"cup {i + 1}: rack to press")
-        sc.step(st, cap, 1.2 * f, both(pre(lvl(c_r - d1 * 150 + (0, 0, 30), d1), lvl(c_r, d1), OPEN_CUP),
-                                       rb.grip_to(OPEN_CUP)), hold=H(0.05))
+        bk = rack_bk[i]
+        sc.step(st, cap, 1.2 * f, both(pre(lvl(c_r - d1 * bk + (0, 0, 30), d1), lvl(c_r, d1), OPEN_RACK),
+                                       rb.grip_to(OPEN_RACK)), hold=H(0.05))
         sc.step(st, cap, 0.7 * f, rb.line_to(lvl(c_r, d1)), hold=H(0.05))
         sc.step(st, cap, 0.4 * f, rb.grip_to(GRIP_CUP), hold=H(0.05))
         rb.grasp(f"cup{i}")
         sc.step(st, cap, 0.6 * f, rb.line_to(lvl(c_r + (0, 0, 30), d1)), hold=0.0)
-        sc.step(st, cap, 0.7 * f, rb.line_to(lvl(c_r - d1 * 150 + (0, 0, 30), d1)), hold=H(0.05))
+        sc.step(st, cap, 0.7 * f, rb.line_to(lvl(c_r - d1 * bk + (0, 0, 30), d1)), hold=H(0.05))
         q_up = vp.cup_seat() + (0, 0, CUP_GRASP)
         dq = aim(q_up, [(170, 50), (0, 50), (0, 1), (170, 0)], radial(q_up))
         cam_press = cam_near(vp.die_top(), (-430.0, -760.0, 420.0), (60.0, 0.0, 40.0))
@@ -972,7 +990,8 @@ def movie():
         if metal == "Al":
             k = sum(1 for s in SLOTS[:i] if s[0] == "Al")
             c = K.carrier_seat(k) + (0, 0, CUP_GRASP)
-            d = aim(c, [(170, 40), (0, 40), (0, 1), (170, 0)], (0.0, -1.0))
+            d = aim(c, [(170, 40, GRIP_CUP), (0, 40, GRIP_CUP), (0, 1, GRIP_CUP), (0, 1, OPEN_CUP), (170, 0, OPEN_CUP)],
+                    (0.0, -1.0), only={f"cup{i}", f"plug{i}", "amr"})
             sc.step(st, cap, 1.6 * f, pre(lvl(c - d * 170 + (0, 0, 40), d), lvl(c + (0, 0, 40), d)), hold=H(0.05),
                     cam_to=CAM_AMR if detail else None)
             sc.step(st, cap, 0.7 * f, rb.line_to(lvl(c + (0, 0, 40), d)), hold=H(0.05))
@@ -981,13 +1000,13 @@ def movie():
             rb.release("amr")
             sc.step(st, cap, 0.7 * f, rb.line_to(lvl(c - d * 170, d)), hold=H(0.05))
         else:
-            sc.step(st, cap, 1.4 * f, pre(lvl(c_r - d1 * 150 + (0, 0, 30), d1), lvl(c_r + (0, 0, 30), d1)),
+            sc.step(st, cap, 1.4 * f, pre(lvl(c_r - d1 * bk + (0, 0, 30), d1), lvl(c_r + (0, 0, 30), d1)),
                     hold=H(0.05), cam_to=CAM_RACK if detail else None)
             sc.step(st, cap, 0.7 * f, rb.line_to(lvl(c_r + (0, 0, 30), d1)), hold=H(0.05))
             sc.step(st, cap, 0.5 * f, rb.line_to(lvl(c_r + (0, 0, 1), d1)), hold=H(0.05))
-            sc.step(st, cap, 0.4 * f, rb.grip_to(OPEN_CUP), hold=H(0.05))
+            sc.step(st, cap, 0.4 * f, rb.grip_to(OPEN_RACK), hold=H(0.05))
             rb.release("crack")
-            sc.step(st, cap, 0.7 * f, rb.line_to(lvl(c_r - d1 * 150, d1)), hold=H(0.05))
+            sc.step(st, cap, 0.7 * f, rb.line_to(lvl(c_r - d1 * bk, d1)), hold=H(0.05))
         park(st, f, H, cap=cap)
 
     pa, pc = PRUN["Al"], PRUN["Cu"]

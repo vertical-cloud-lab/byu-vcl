@@ -187,6 +187,13 @@ tonnage. Also, it would be better if it were a vacuum press" ([`alloy_press.py`]
   square to the tray, the rack cups nearest the base, the carrier's second pocket and the press off to the side all
   folded the arm into itself. The cradle, the funnel stand and the balance's door only open to the front, so those are
   approached square.
+- **At the rack the open fingers may touch only the cup they take** (since round 7). The cups stand 40 mm apart, and
+  an angled approach sweeps the open fingertips, and further back the fingers, through the cups beside it. The audit
+  had only caught this where the next cup ended up elsewhere (the Al cups, on the MiR), so the Cu cups' brushes were
+  never counted. Now each rack approach is checked open on the way in and closed on the way out, at 5° steps, with
+  nothing but its own cup and the rack to touch; the gripper opens to 23.5 mm there (2.2 mm a side on the cup, not
+  6.3); and for the three cups nearest the arm's base, 400-425 mm from it, where a square approach from 150 mm back
+  folds the arm into the MiR or out of reach, the approach starts 110 or 80 mm back instead.
 - **Tray B is full.** The press and its pump take the left 780 mm, the rack and the balance the middle, the doser
   680 mm, and the funnel stand the right end. The funnels' pockets are 1.1 m out from the arm's base.
 
