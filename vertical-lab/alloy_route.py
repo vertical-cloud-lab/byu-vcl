@@ -27,16 +27,19 @@ CHAPTERS = [
      "Charge cups turned from 5N Al and oxygen-free Cu bar, filled by the multi-doser and closed with a press-fit plug, "
      "on tray B of the VLM"),
     ("alloy_atomize", "2/4  Melt and atomize",
-     "The two Al cups melted in the rePowder's induction furnace and atomized ultrasonically under argon"),
+     "The four Al cups melted in the rePowder's induction furnace and atomized ultrasonically under argon, cut "
+     "with the lab's own footage of its bronze and Al runs"),
     ("alloy_print", "3/4  Sieve and print",
      "The powder sieved to the LPBF cut, then printed into tensile bars in the Aconity MIDI"),
     ("alloy_workflow", "4/4  Cut and test",
      "The build plate to the wire EDM, a tensile bar to the Instron 68FM-100"),
 ]
 SIZE, FPS, CARD_S = (1280, 720), 15, 3.0
-# the 2 x 2 sheet: a picture of each chapter at work (a still it saves, or a frame of its MP4)
+# the 2 x 2 sheet: a picture of each chapter at work (a still it saves, or a frame of its MP4 as a fraction of its
+# length, so a re-rendered chapter of another length still gives the same moment); <key>_still.png if the named still
+# is missing
 SHEET = {"alloy_charge": "alloy_charge_press.png", "alloy_atomize": "alloy_atomize_still.png",
-         "alloy_print": 1380, "alloy_workflow": "alloy_workflow_cut.png"}
+         "alloy_print": 0.908, "alloy_workflow": "alloy_workflow_cut.png"}
 BLUE = (30, 60, 140)
 
 
@@ -103,13 +106,17 @@ def main():
     sheet = Image.new("RGB", (2 * w, 2 * h), "white")
     for i, (k, _, _) in enumerate(CHAPTERS):
         src = SHEET[k]
-        if isinstance(src, int):
+        if isinstance(src, float):
             p = tmp / f"{k}_frame.png"
-            if (OUT / "mp4" / f"{k}.mp4").exists():
-                subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(OUT / "mp4" / f"{k}.mp4"), "-vf",
-                                f"select=eq(n\\,{src})", "-vframes", "1", str(p)], check=True)
+            mp4, meta = OUT / "mp4" / f"{k}.mp4", OUT / f"{k}.json"
+            if mp4.exists():
+                n = json.loads(meta.read_text())["n_frames"] if meta.exists() else int(duration(mp4) * FPS)
+                subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(mp4), "-vf",
+                                f"select=eq(n\\,{int(src * (n - 1))})", "-vframes", "1", str(p)], check=True)
         else:
             p = OUT / src
+            if not p.exists():
+                p = OUT / f"{k}_still.png"
         if p.exists():
             sheet.paste(Image.open(p).convert("RGB").resize((w, h), Image.LANCZOS), ((i % 2) * w, (i // 2) * h))
     sheet.save(OUT / "alloy_route_sheet.png")

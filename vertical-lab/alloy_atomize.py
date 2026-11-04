@@ -1330,6 +1330,41 @@ def _model_frame(frame: int, size) -> Image.Image:
     return Image.frombuffer("RGB", size, buf[:size[0] * size[1] * 3], "raw", "RGB", 0, 1)
 
 
+def clearance() -> dict:
+    """At each cup's release (its top just under the rod's adapter, tipped 4 deg), how close the 2F-85's fingers come
+    to the cups already seated and to the crucible's bore. The same poses the movie uses, from the gripper's meshes
+    (ur_arm). Written to out/alloy_atomize_clearance.json."""
+    import ur_arm
+    gfk = ur_arm.gripper_fk(GRIP_CUP)
+    parts = ("left_finger_tip", "right_finger_tip", "left_finger", "right_finger", "left_inner_knuckle",
+             "right_inner_knuckle", "left_knuckle", "right_knuckle")
+    pts = {p: np.vstack([m.points for m, _, _ in lst]) for p, lst in ur_arm.gripper_meshes().items() if p in parts}
+    top_seated = cup_seat(0)[2] + C.SLUG_L
+    rows = []
+    for k in range(N_CUPS):
+        held, _ = tip_in_path(k)
+        spin = (90.0 - CUP_ANGLES[k] + 90.0) % 180.0 - 90.0
+        pick = A.down(np.array([0.0, 0.0, C.SLUG_L - 13.0]), spin=spin)     # the grasp, relative to the cup's base
+        tool0 = held[-1] @ pick @ T((0, 0, -ur_arm.TCP_MM))
+        Wp = np.vstack([(tool0 @ gfk[p] @ np.c_[P_, np.ones(len(P_))].T).T[:, :3] for p, P_ in pts.items()])
+        r = np.hypot(Wp[:, 0], Wp[:, 1])
+        below = Wp[:, 2] < M.RIM
+        over = []
+        for j in range(k):
+            s = cup_seat(j)
+            on = np.hypot(Wp[:, 0] - s[0], Wp[:, 1] - s[1]) < C.STOCK_D / 2
+            if on.any():
+                over.append(dict(cup=j + 1, gap_mm=round(float(Wp[on, 2].min() - top_seated), 1)))
+        rows.append(dict(cup=k + 1, angle_deg=CUP_ANGLES[k], fingers_lowest_below_rim_mm=round(float(M.RIM - Wp[:, 2].min()), 1),
+                         over_seated_cups=over,
+                         into_crucible_wall_mm=round(float(max(0.0, (r[below] - M.CRUCIBLE_ID / 2).max())), 1)
+                         if below.any() else 0.0))
+    return dict(cups=rows, seated_cup_tops_below_rim_mm=round(float(M.RIM - top_seated), 1),
+                note="2F-85 at closure GRIP_CUP, holding the cup 13 mm below its top as the movie does, at the "
+                     "release pose (#222's tight spot under the rod's adapter). into_crucible_wall_mm: how far the "
+                     "fingers' outer corners reach past the 57.1 mm bore while below the rim, i.e. into the graphite.")
+
+
 def keep_footage(src: Path = FOOTAGE) -> int:
     """Copy what PLAN uses from `src` into out/footage/, small: each clip cut to its window (720 px tall, CRF 28, no
     sound), each photo at 1600 px, plus a manifest with the credits. Returns the number of files."""
@@ -1489,6 +1524,10 @@ if __name__ == "__main__":
         splice()
     elif arg == "keep":
         print("kept", keep_footage(), "files in", KEEP)
+    elif arg == "clearance":
+        cl = clearance()
+        (OUT / f"{NAME}_clearance.json").write_text(json.dumps(cl, indent=1) + "\n")
+        print(json.dumps(cl, indent=1))
     elif arg == "powder":
         print(json.dumps(sums, indent=1, ensure_ascii=False))
     else:
