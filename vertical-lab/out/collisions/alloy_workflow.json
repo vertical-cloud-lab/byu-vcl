@@ -1,60 +1,4570 @@
 {
  "clip": "alloy_workflow",
- "frames_checked": 1466,
- "frames_with_collisions": 77,
+ "frames_checked": 2068,
+ "frames_with_collisions": 539,
  "runs": [
   {
-   "label": "3/6",
-   "first_frame": 335,
-   "last_frame": 335,
-   "frames": 1,
+   "label": "2/6",
+   "first_frame": 259,
+   "last_frame": 260,
+   "frames": 2,
    "pairs": [
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "right_finger_tip",
-     "other": "aco"
+     "part": "base",
+     "other": "hose"
     }
    ]
   },
   {
-   "label": "3/6",
-   "first_frame": 336,
-   "last_frame": 336,
+   "label": "2/6",
+   "first_frame": 261,
+   "last_frame": 262,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 263,
+   "last_frame": 267,
+   "frames": 4,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_knuckle",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 268,
+   "last_frame": 270,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_knuckle",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 271,
+   "last_frame": 285,
+   "frames": 13,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_knuckle",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 286,
+   "last_frame": 286,
    "frames": 1,
    "pairs": [
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "right_finger",
-     "other": "aco_door"
+     "part": "base",
+     "other": "hose"
     },
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "right_finger",
-     "other": "aco_shell"
+     "part": "left_finger",
+     "other": "hose"
     },
     {
      "arm": "ur",
      "kind": "gripper",
-     "part": "right_finger_tip",
-     "other": "aco"
+     "part": "left_finger_tip",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 287,
+   "last_frame": 287,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
     },
     {
      "arm": "ur",
      "kind": "gripper",
      "part": "right_inner_knuckle",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 288,
+   "last_frame": 288,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 289,
+   "last_frame": 291,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 293,
+   "last_frame": 297,
+   "frames": 5,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 298,
+   "last_frame": 298,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 299,
+   "last_frame": 300,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 301,
+   "last_frame": 304,
+   "frames": 4,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 305,
+   "last_frame": 308,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 309,
+   "last_frame": 317,
+   "frames": 9,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 318,
+   "last_frame": 327,
+   "frames": 10,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 328,
+   "last_frame": 328,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
      "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_door"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 329,
+   "last_frame": 329,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_door"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 330,
+   "last_frame": 330,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_door"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 331,
+   "last_frame": 332,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 333,
+   "last_frame": 339,
+   "frames": 6,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 340,
+   "last_frame": 345,
+   "frames": 6,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 346,
+   "last_frame": 366,
+   "frames": 20,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "aco_shell"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 367,
+   "last_frame": 373,
+   "frames": 7,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 374,
+   "last_frame": 384,
+   "frames": 11,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "aco_shell"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 385,
+   "last_frame": 386,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar3"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 387,
+   "last_frame": 388,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar2"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar3"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 389,
+   "last_frame": 389,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar2"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 390,
+   "last_frame": 391,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar1"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar2"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 392,
+   "last_frame": 393,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar0"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar1"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 394,
+   "last_frame": 396,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar0"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 397,
+   "last_frame": 401,
+   "frames": 5,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 402,
+   "last_frame": 402,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar0"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 403,
+   "last_frame": 404,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "aco_cake"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar0"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 405,
+   "last_frame": 406,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "aco_cake"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar0"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar1"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 407,
+   "last_frame": 407,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar1"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar2"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 408,
+   "last_frame": 408,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "aco_piston"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar1"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar2"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 409,
+   "last_frame": 409,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "aco_piston"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar2"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar3_b"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 410,
+   "last_frame": 410,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "aco_piston"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar2"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar3"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar3_b"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 411,
+   "last_frame": 411,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "aco_piston"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar2"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar3"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 412,
+   "last_frame": 412,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "aco_piston"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar3"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 413,
+   "last_frame": 413,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "aco_piston"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar3"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar3_b"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 414,
+   "last_frame": 414,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "aco_piston"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar3_b"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 415,
+   "last_frame": 419,
+   "frames": 5,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "aco_piston"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 420,
+   "last_frame": 421,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "aco_piston"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar3_b"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 422,
+   "last_frame": 422,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "aco_piston"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar3"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar3_b"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 423,
+   "last_frame": 423,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "aco_piston"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar2"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar3"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar3_b"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 424,
+   "last_frame": 425,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "aco_piston"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar2"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar3_b"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 426,
+   "last_frame": 429,
+   "frames": 4,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "aco_piston"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar1"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar2"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 430,
+   "last_frame": 433,
+   "frames": 4,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "aco_piston"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar0"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar1"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 434,
+   "last_frame": 436,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "aco_piston"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar0"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 437,
+   "last_frame": 438,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "aco_piston"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "bar0"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 439,
+   "last_frame": 452,
+   "frames": 12,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "aco_piston"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 453,
+   "last_frame": 453,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "aco_piston"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 454,
+   "last_frame": 454,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 455,
+   "last_frame": 460,
+   "frames": 6,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 461,
+   "last_frame": 467,
+   "frames": 6,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 468,
+   "last_frame": 470,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 471,
+   "last_frame": 471,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 472,
+   "last_frame": 473,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 474,
+   "last_frame": 474,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "aco_shell"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 475,
+   "last_frame": 475,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:lance",
+     "other": "aco_shell"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 476,
+   "last_frame": 478,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 479,
+   "last_frame": 479,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 480,
+   "last_frame": 481,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 482,
+   "last_frame": 482,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_knuckle",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 483,
+   "last_frame": 484,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_knuckle",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 485,
+   "last_frame": 485,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:lance",
+     "other": "upper_arm"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 486,
+   "last_frame": 487,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:lance",
+     "other": "upper_arm"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 488,
+   "last_frame": 489,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:lance",
+     "other": "upper_arm"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 490,
+   "last_frame": 490,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:lance",
+     "other": "upper_arm"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 491,
+   "last_frame": 493,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:lance",
+     "other": "upper_arm"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 494,
+   "last_frame": 497,
+   "frames": 4,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:lance",
+     "other": "upper_arm"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 498,
+   "last_frame": 499,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:lance",
+     "other": "upper_arm"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 500,
+   "last_frame": 500,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:lance",
+     "other": "upper_arm"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 501,
+   "last_frame": 505,
+   "frames": 5,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "lstand"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:lance",
+     "other": "upper_arm"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 506,
+   "last_frame": 509,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "lstand"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:lance",
+     "other": "upper_arm"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 510,
+   "last_frame": 510,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "lstand"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:lance",
+     "other": "upper_arm"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 511,
+   "last_frame": 511,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "lstand"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:lance",
+     "other": "upper_arm"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 512,
+   "last_frame": 512,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "lstand"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:lance",
+     "other": "upper_arm"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 513,
+   "last_frame": 521,
+   "frames": 8,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:lance",
+     "other": "upper_arm"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 522,
+   "last_frame": 524,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "lstand"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:lance",
+     "other": "upper_arm"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 526,
+   "last_frame": 528,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "lstand"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:lance",
+     "other": "upper_arm"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 529,
+   "last_frame": 531,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "lstand"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "self",
+     "part": "held:lance",
+     "other": "upper_arm"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 533,
+   "last_frame": 533,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "lance"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "lstand"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_knuckle",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 534,
+   "last_frame": 535,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "lance"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 536,
+   "last_frame": 537,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "lance"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "lstand"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 538,
+   "last_frame": 538,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "lance"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "lstand"
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 539,
+   "last_frame": 541,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "lstand"
     }
    ]
   },
   {
    "label": "3/6",
-   "first_frame": 337,
-   "last_frame": 337,
+   "first_frame": 543,
+   "last_frame": 544,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "lstand"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 545,
+   "last_frame": 547,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "lance"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "lstand"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 548,
+   "last_frame": 548,
    "frames": 1,
    "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "lstand"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 553,
+   "last_frame": 554,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 555,
+   "last_frame": 555,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 556,
+   "last_frame": 556,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
     {
      "arm": "ur",
      "kind": "gripper",
@@ -64,7 +4574,19 @@
     {
      "arm": "ur",
      "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
      "part": "right_finger",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
      "other": "aco_shell"
     },
     {
@@ -77,10 +4599,176 @@
   },
   {
    "label": "3/6",
-   "first_frame": 338,
-   "last_frame": 338,
+   "first_frame": 557,
+   "last_frame": 557,
    "frames": 1,
    "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_knuckle",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_knuckle",
+     "other": "aco_shell"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 558,
+   "last_frame": 558,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_knuckle",
+     "other": "aco_shell"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 559,
+   "last_frame": 559,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "aco"
+    },
     {
      "arm": "ur",
      "kind": "gripper",
@@ -91,10 +4779,102 @@
   },
   {
    "label": "3/6",
-   "first_frame": 339,
-   "last_frame": 340,
-   "frames": 2,
+   "first_frame": 560,
+   "last_frame": 560,
+   "frames": 1,
    "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "aco_shell"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 561,
+   "last_frame": 561,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "aco_shell"
+    },
     {
      "arm": "ur",
      "kind": "arm",
@@ -117,10 +4897,34 @@
   },
   {
    "label": "3/6",
-   "first_frame": 341,
-   "last_frame": 341,
+   "first_frame": 562,
+   "last_frame": 562,
    "frames": 1,
    "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
     {
      "arm": "ur",
      "kind": "arm",
@@ -143,10 +4947,34 @@
   },
   {
    "label": "3/6",
-   "first_frame": 342,
-   "last_frame": 343,
-   "frames": 2,
+   "first_frame": 563,
+   "last_frame": 563,
+   "frames": 1,
    "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
     {
      "arm": "ur",
      "kind": "arm",
@@ -163,22 +4991,2140 @@
   },
   {
    "label": "3/6",
-   "first_frame": 344,
-   "last_frame": 355,
+   "first_frame": 564,
+   "last_frame": 564,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "aco_shell"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 565,
+   "last_frame": 565,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "aco_shell"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 566,
+   "last_frame": 566,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "aco_shell"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 567,
+   "last_frame": 578,
    "frames": 11,
    "pairs": [
     {
      "arm": "ur",
      "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
      "part": "wrist2",
      "other": "aco_shell"
     }
    ]
   },
   {
+   "label": "3/6",
+   "first_frame": 579,
+   "last_frame": 580,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_shell"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 581,
+   "last_frame": 604,
+   "frames": 22,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_shell"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 605,
+   "last_frame": 612,
+   "frames": 7,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "aco_shell"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 613,
+   "last_frame": 616,
+   "frames": 4,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "aco_shell"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 617,
+   "last_frame": 618,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_shell"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 619,
+   "last_frame": 619,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_shell"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_shell"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 620,
+   "last_frame": 620,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "aco_shell"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 621,
+   "last_frame": 644,
+   "frames": 23,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 645,
+   "last_frame": 645,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:plate",
+     "other": "aco"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 646,
+   "last_frame": 646,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "lance"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "lstand"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "lance"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "lstand"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "lstand"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:plate",
+     "other": "aco"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 647,
+   "last_frame": 647,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "lance"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "lstand"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "lance"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "lstand"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "lance"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "lstand"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "lstand"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:plate",
+     "other": "aco"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 648,
+   "last_frame": 648,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "lance"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "lstand"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:plate",
+     "other": "aco"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 649,
+   "last_frame": 649,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_cabinet"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "lance"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "lstand"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "aco"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 650,
+   "last_frame": 657,
+   "frames": 8,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "aco"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 658,
+   "last_frame": 658,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:plate",
+     "other": "aco"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 659,
+   "last_frame": 659,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_knuckle",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:bar0",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:bar3",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:bar3_b",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:plate",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:plate",
+     "other": "dbox_walls"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 660,
+   "last_frame": 660,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_knuckle",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:plate",
+     "other": "dbox_walls"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 661,
+   "last_frame": 661,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_knuckle",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:plate",
+     "other": "dbox_walls"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 662,
+   "last_frame": 662,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_knuckle",
+     "other": "dbox_walls"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 663,
+   "last_frame": 663,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_knuckle",
+     "other": "dbox_walls"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 664,
+   "last_frame": 673,
+   "frames": 9,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "dbox"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 674,
+   "last_frame": 675,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox_walls"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 676,
+   "last_frame": 676,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox_rotor"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox_walls"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 677,
+   "last_frame": 677,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox_rotor"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox_walls"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 678,
+   "last_frame": 678,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox_rotor"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox_walls"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 679,
+   "last_frame": 685,
+   "frames": 7,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox_rotor"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox_walls"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 686,
+   "last_frame": 686,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox_rotor"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 687,
+   "last_frame": 688,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 689,
+   "last_frame": 692,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:plate",
+     "other": "dbox"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 693,
+   "last_frame": 693,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 694,
+   "last_frame": 695,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox_rotor"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 696,
+   "last_frame": 696,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "dbox_rotor"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox_rotor"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 697,
+   "last_frame": 697,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox_rotor"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 698,
+   "last_frame": 736,
+   "frames": 36,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 737,
+   "last_frame": 738,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox_rotor"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 739,
+   "last_frame": 740,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox_rotor"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 742,
+   "last_frame": 742,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox_rotor"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 743,
+   "last_frame": 743,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox_rotor"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox_walls"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 744,
+   "last_frame": 744,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "dbox"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 745,
+   "last_frame": 745,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "dbox_walls"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "dbox"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "dbox"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 746,
+   "last_frame": 746,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "dbox"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 747,
+   "last_frame": 747,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 748,
+   "last_frame": 748,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "aco"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 978,
+   "last_frame": 981,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:plate",
+     "other": "dbox"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 987,
+   "last_frame": 989,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:plate",
+     "other": "dbox"
+    }
+   ]
+  },
+  {
    "label": "5/6",
-   "first_frame": 1079,
-   "last_frame": 1079,
+   "first_frame": 1628,
+   "last_frame": 1628,
    "frames": 1,
    "pairs": [
     {
@@ -209,8 +7155,8 @@
   },
   {
    "label": "5/6",
-   "first_frame": 1080,
-   "last_frame": 1080,
+   "first_frame": 1629,
+   "last_frame": 1629,
    "frames": 1,
    "pairs": [
     {
@@ -253,8 +7199,8 @@
   },
   {
    "label": "5/6",
-   "first_frame": 1081,
-   "last_frame": 1082,
+   "first_frame": 1630,
+   "last_frame": 1631,
    "frames": 2,
    "pairs": [
     {
@@ -285,8 +7231,8 @@
   },
   {
    "label": "5/6",
-   "first_frame": 1083,
-   "last_frame": 1083,
+   "first_frame": 1632,
+   "last_frame": 1632,
    "frames": 1,
    "pairs": [
     {
@@ -311,8 +7257,8 @@
   },
   {
    "label": "5/6",
-   "first_frame": 1084,
-   "last_frame": 1085,
+   "first_frame": 1633,
+   "last_frame": 1634,
    "frames": 2,
    "pairs": [
     {
@@ -337,8 +7283,8 @@
   },
   {
    "label": "5/6",
-   "first_frame": 1086,
-   "last_frame": 1089,
+   "first_frame": 1635,
+   "last_frame": 1638,
    "frames": 3,
    "pairs": [
     {
@@ -357,8 +7303,8 @@
   },
   {
    "label": "5/6",
-   "first_frame": 1090,
-   "last_frame": 1090,
+   "first_frame": 1639,
+   "last_frame": 1639,
    "frames": 1,
    "pairs": [
     {
@@ -383,8 +7329,8 @@
   },
   {
    "label": "5/6",
-   "first_frame": 1091,
-   "last_frame": 1091,
+   "first_frame": 1640,
+   "last_frame": 1640,
    "frames": 1,
    "pairs": [
     {
@@ -409,8 +7355,8 @@
   },
   {
    "label": "5/6",
-   "first_frame": 1092,
-   "last_frame": 1096,
+   "first_frame": 1641,
+   "last_frame": 1645,
    "frames": 5,
    "pairs": [
     {
@@ -435,8 +7381,8 @@
   },
   {
    "label": "5/6",
-   "first_frame": 1097,
-   "last_frame": 1098,
+   "first_frame": 1646,
+   "last_frame": 1647,
    "frames": 2,
    "pairs": [
     {
@@ -461,8 +7407,8 @@
   },
   {
    "label": "5/6",
-   "first_frame": 1099,
-   "last_frame": 1103,
+   "first_frame": 1648,
+   "last_frame": 1652,
    "frames": 4,
    "pairs": [
     {
@@ -493,8 +7439,8 @@
   },
   {
    "label": "5/6",
-   "first_frame": 1104,
-   "last_frame": 1104,
+   "first_frame": 1653,
+   "last_frame": 1653,
    "frames": 1,
    "pairs": [
     {
@@ -531,8 +7477,8 @@
   },
   {
    "label": "5/6",
-   "first_frame": 1105,
-   "last_frame": 1105,
+   "first_frame": 1654,
+   "last_frame": 1654,
    "frames": 1,
    "pairs": [
     {
@@ -575,8 +7521,8 @@
   },
   {
    "label": "5/6",
-   "first_frame": 1106,
-   "last_frame": 1106,
+   "first_frame": 1655,
+   "last_frame": 1655,
    "frames": 1,
    "pairs": [
     {
@@ -625,8 +7571,8 @@
   },
   {
    "label": "5/6",
-   "first_frame": 1107,
-   "last_frame": 1108,
+   "first_frame": 1656,
+   "last_frame": 1657,
    "frames": 2,
    "pairs": [
     {
@@ -681,8 +7627,8 @@
   },
   {
    "label": "5/6",
-   "first_frame": 1109,
-   "last_frame": 1109,
+   "first_frame": 1658,
+   "last_frame": 1658,
    "frames": 1,
    "pairs": [
     {
@@ -743,8 +7689,8 @@
   },
   {
    "label": "5/6",
-   "first_frame": 1110,
-   "last_frame": 1115,
+   "first_frame": 1659,
+   "last_frame": 1664,
    "frames": 5,
    "pairs": [
     {
@@ -811,8 +7757,8 @@
   },
   {
    "label": "5/6",
-   "first_frame": 1116,
-   "last_frame": 1120,
+   "first_frame": 1665,
+   "last_frame": 1669,
    "frames": 4,
    "pairs": [
     {
@@ -885,8 +7831,8 @@
   },
   {
    "label": "5/6",
-   "first_frame": 1121,
-   "last_frame": 1123,
+   "first_frame": 1670,
+   "last_frame": 1672,
    "frames": 3,
    "pairs": [
     {
@@ -941,8 +7887,8 @@
   },
   {
    "label": "5/6",
-   "first_frame": 1124,
-   "last_frame": 1125,
+   "first_frame": 1673,
+   "last_frame": 1674,
    "frames": 2,
    "pairs": [
     {
@@ -991,8 +7937,8 @@
   },
   {
    "label": "5/6",
-   "first_frame": 1126,
-   "last_frame": 1127,
+   "first_frame": 1675,
+   "last_frame": 1676,
    "frames": 2,
    "pairs": [
     {
@@ -1029,8 +7975,8 @@
   },
   {
    "label": "5/6",
-   "first_frame": 1128,
-   "last_frame": 1129,
+   "first_frame": 1677,
+   "last_frame": 1678,
    "frames": 2,
    "pairs": [
     {
@@ -1061,8 +8007,8 @@
   },
   {
    "label": "5/6",
-   "first_frame": 1130,
-   "last_frame": 1133,
+   "first_frame": 1679,
+   "last_frame": 1682,
    "frames": 3,
    "pairs": [
     {
@@ -1087,8 +8033,8 @@
   },
   {
    "label": "5/6",
-   "first_frame": 1134,
-   "last_frame": 1134,
+   "first_frame": 1683,
+   "last_frame": 1683,
    "frames": 1,
    "pairs": [
     {
@@ -1113,8 +8059,8 @@
   },
   {
    "label": "5/6",
-   "first_frame": 1135,
-   "last_frame": 1136,
+   "first_frame": 1684,
+   "last_frame": 1685,
    "frames": 2,
    "pairs": [
     {
@@ -1139,8 +8085,8 @@
   },
   {
    "label": "5/6",
-   "first_frame": 1137,
-   "last_frame": 1137,
+   "first_frame": 1686,
+   "last_frame": 1686,
    "frames": 1,
    "pairs": [
     {
@@ -1159,8 +8105,8 @@
   },
   {
    "label": "5/6",
-   "first_frame": 1138,
-   "last_frame": 1140,
+   "first_frame": 1687,
+   "last_frame": 1689,
    "frames": 3,
    "pairs": [
     {
@@ -1174,6 +8120,112 @@
      "kind": "arm",
      "part": "wrist3",
      "other": "wire_edm:body"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1732,
+   "last_frame": 1733,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:bar3_b",
+     "other": "rinse"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1734,
+   "last_frame": 1734,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "rinse"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rinse"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:bar3_b",
+     "other": "rinse"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1735,
+   "last_frame": 1751,
+   "frames": 8,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "rinse"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rinse"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:bar3",
+     "other": "rinse"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1752,
+   "last_frame": 1753,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "rinse"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "rinse"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:bar3_b",
+     "other": "rinse"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1754,
+   "last_frame": 1757,
+   "frames": 4,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:bar3_b",
+     "other": "rinse"
     }
    ]
   }

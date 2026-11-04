@@ -969,17 +969,22 @@ planned round it with RRT-Connect, then shortcut, and a detour may not lift the 
 higher end. `ARM_AUDIT=1` runs a clip without rendering and checks every frame, line moves too, writing
 `out/collisions/<clip>.json`. The details are in [`notes/arm_collisions.md`](notes/arm_collisions.md).
 
-| Clip | Frames in collision, as it was | Now | |
+| Clip | Frames in collision, as it was | With the planner | |
 | --- | --- | --- | --- |
 | Round 2 workflow (`animate.py workflow`) | 130 of 1140 | **0** | re-rendered; [on YouTube](https://www.youtube.com/watch?v=255o9IVEOEs) |
-| Warehouse (`warehouse.py`) | 216 of 1138 | **0** of 1120, the MiR bodies checked too | re-rendered: one target post moved, three routes changed ([notes](notes/warehouse.md)) |
+| Warehouse (`warehouse.py`) | 216 of 1138 | **0** of 1120, the MiR bodies checked too | re-rendered: one target post moved, three routes changed ([notes](notes/warehouse.md)); [on YouTube](https://www.youtube.com/watch?v=3IrSB9-meN8) |
 | Lab set up from scratch (`setup_lab.py`) | | 0 of 1376 | not re-rendered: its two joint moves were already clear |
-| Alloy route 1, the charge, vacuum-press version (`alloy_charge.py`) | | **0** of 2752 | rebuilt round the vacuum press, below; [on YouTube](https://www.youtube.com/watch?v=UjGb47I3fy0) |
-| Alloy route 3, sieve and print (`alloy_print.py`) | 717 of 1310 | 227 | not re-rendered: the poses themselves collide (the jar onto the MiR's own cabinet) |
-| Alloy route 4, cut and test (`alloy_workflow.py`) | 331 of 1466 | 77 | not re-rendered: the wrist enters the Aconity's shell and the wire EDM's body |
-| Alloy route 2, atomize (`alloy_atomize.py`) | | | doesn't run: it reads `charge.RUNS` in its pre-round-5 form |
+| Alloy route 1, vacuum-press version (`alloy_charge.py`) | | **0** of 2752 | rendered, [below](#the-plug-pressed-home-under-vacuum); [on YouTube](https://www.youtube.com/watch?v=UjGb47I3fy0) |
+| Alloy route 1, round 5's doser version (`alloy_charge_doser.py`) | | 59 of 1875 | its render predates the check. Left: the arm in the press and the rack's back cups in 4/8 |
+| Alloy route 2, atomize (`alloy_atomize.py`, round 5) | | 257 of 1421 | its render predates the check. Left: the gripper in the rePowder's hood (2/5), the arm in the MiR (5/5) |
+| Alloy route 3, sieve and print (`alloy_print.py`, round 5) | | 543 of 2372 | its render predates the check. Left: the arm in the sieves of the stack (2/5), in the Aconity's cabinet (4/5) |
+| Alloy route 4, cut and test (`alloy_workflow.py`, round 5) | | 539 of 2068 | its render predates the check. Left: the gripper in the depowdering lance's hose (2/6), the arm in the Aconity and the shaker box (3/6) |
 
-Chapters 2-4 were being rewritten by another session at the time, so their remaining poses were left to it.
+The four round-5 chapters were rendered by another session while the check was being written. What the planner
+leaves in them are poses the scripts ask for, where every IK solution touches something, and line moves through
+machines. They need new poses, as `alloy_charge.py`'s needed (aiming the level grasps, the plug set at the rack);
+`ARM_AUDIT=1` shows which. If a line move would flip the arm in the IK branch a clear joint move chose, `robot.py`
+now goes there by a planned joint move instead of stopping the render, which `alloy_print.py` needed.
 
 ## The plug pressed home, under vacuum
 
