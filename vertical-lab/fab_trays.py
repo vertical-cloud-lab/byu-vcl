@@ -32,7 +32,7 @@ TRAYS = {"G": (-2600.0, "resin printing"), "H": (0.0, "PCB assembly"), "I": (260
 LOADS = {
     "G": [("form4", -920.0, None, 0.0), ("form4", -470.0, None, 0.0), ("form_wash", -40.0, None, 0.0),
           ("form_cure", 360.0, None, 0.0)],
-    "H": [("stencil", -640.0, 0.0, 90.0), ("lumenpnp", 400.0, 0.0, 0.0)],
+    "H": [("stencil", -640.0, 0.0, 90.0), ("lumenpnp", 400.0, -70.0, 0.0)],     # 70 mm forward of the UPS (round 7)
     "I": [("snowpod", -500.0, None, 0.0), ("snowpod", 300.0, None, 0.0)],
 }
 METAL = [("metalone", -2200.0), ("meltio_m450", 0.0), ("mprint", 2200.0)]    # (key, x), fronts on METAL_Y

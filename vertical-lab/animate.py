@@ -40,7 +40,7 @@ REPOWDER_LBL = ("AMAZEMET rePowder atomizer", (REPOWDER_AT[0] + 250, REPOWDER_AT
 # what goes on each tray, in the tray's frame (centre of its floor, y to the back): (key, x, y). Items the arm works
 # with are at the front edge, and the vial seats are within the arm's reach from its parking spot (reach.py)
 LOADS = {
-    "A": [("cubxl", -112.0, -114.5), ("ot2", 760.0, -40.0)],
+    "A": [("cubxl", -112.0, -114.5), ("ot2", 760.0, -50.0)],       # OT-2 10 mm forward of the tray's lines (round 7)
     "B": [("rack", -250.0, -372.0), ("carousel", 250.0, -316.0)],
     "C": [("h2d", -560.0, 0.0), ("a1mini", 360.0, 0.0)],
 }
