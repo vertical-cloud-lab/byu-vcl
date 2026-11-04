@@ -106,7 +106,9 @@ All fourteen, one after the other: [`out/mp4/instruments_tour.mp4`](out/mp4/inst
 
 [`line.py`](line.py) puts it together:
 - **Three more trays.** Round 2 left three storage slots free, R1, R4 and F2. They now hold trays D (microscopy and
-  diffraction), E (mechanical testing and particle size) and F (sample prep and heat treatment).
+  diffraction), E (mechanical testing and particle size) and F (sample prep and heat treatment). Since PR #320, tray D
+  carries round 4's six-microscope OpenFlexure array (`instruments_char.py`) at (792, −148), in place of the two
+  freestanding microscopes, as the set-up scene already did.
 - **The line.** Everything taller than the opening takes stands in a line with the VLM, fronts in line with its
   front. Left: the glovebox and the rePowder. Right: the Aconity MIDI (#199's model), the two Instrons and the wire EDM.
 - **The rail.** A Vention seventh axis runs about 17 m along the fronts. The UR10e rides its carriage at 800 mm, the
@@ -598,7 +600,8 @@ vibration data). The VLM also appears in two talks:
 
 Earlier rounds, on YouTube (unlisted):
 - [round 3's instruments](https://www.youtube.com/watch?v=ISyVIHtmvZc);
-- [trays D–F and the line](https://www.youtube.com/watch?v=oWM3fCZiwRs);
+- [trays D–F and the line](https://www.youtube.com/watch?v=rYAapCN5nIE), re-rendered with the OpenFlexure array on tray D
+  (PR #320; it was [`oWM3fCZiwRs`](https://www.youtube.com/watch?v=oWM3fCZiwRs));
 - [the fabrication tools](https://www.youtube.com/watch?v=HYN9dYyRkrQ);
 - [trays G–I](https://www.youtube.com/watch?v=5q5Pv2Mhbn8).
 
