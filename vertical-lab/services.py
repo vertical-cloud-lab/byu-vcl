@@ -193,7 +193,7 @@ MEDIA = [   # (key, label for the leader lines, material, coupling)
 # One plate per tray, at its back right corner, facing out through the tray's right-hand side (+x). A plate on the
 # back edge itself would face the rear wall in a rear-column slot but the shaft in a front-column slot and at the
 # opening, where the dock would sit in the extractor's path and the shutter's (see notes/services.md). Trays are
-# never turned, so a side plate meets an identical dock in every slot and in the bay, and the dock's 50 mm stroke is
+# never turned, so a side plate meets an identical dock in every slot and in the bay, and the dock's 60 mm stroke is
 # across the tray's travel, out of the way of the extractor and the shutter.
 # The plate's face is sunk 6 mm inside the tray's side (PR #318 review, "are any of the docks going to interfere with
 # the lift itself?", dock_clearance()): the tray rides the extractor 5 mm from its carriages, and with the face flush
@@ -205,7 +205,7 @@ PLATE_H = 90.0
 PLATE_T = 16.0
 SIDE = V.TRAY_W / 2                    # the tray's outer side face: 1225
 X_FACE = SIDE - 6.0                    # the mated faces meet here, 6 mm inside it: 1219
-STROKE = 50.0                          # the dock pulls back this far: its pins' tips 20 mm clear of the tray's side
+STROKE = 60.0                          # the dock pulls back this far: its pins' tips (32 mm) 22 mm clear of the tray
 PIN_DY = 86.0                          # guide pins either side of the plate's centre
 INSERT_DY = (-60.0, -36.0, -12.0, 12.0, 36.0, 60.0)
 ZC = PLATE_Z0 + PLATE_H / 2
@@ -285,7 +285,7 @@ def dock_parts(head=True) -> dict:
         # the rod of the actuator, through the side wall's window
         p["dock rod"] = (box(X_FACE + PLATE_T, PLATE_Y - 14, ZC - 14, 1300, PLATE_Y + 14, ZC + 14), "svc_steel")
         return p
-    hx0, hx1 = 1288.0, 1372.0
+    hx0, hx1 = X_FACE + STROKE + PLATE_T + 3.0, 1372.0      # behind the head pulled back: 1298 to 1372
     p["dock housing"] = (box(hx0, y0 + 20, PLATE_Z0 - 15, hx1, y1 - 20, PLATE_Z0 + PLATE_H + 25), "svc_housing")
     # its hoses: six lines from the housing's front into the column's riser
     ry = PLATE_Y + RISER["dy"]
@@ -1777,6 +1777,14 @@ def _bbox(shape) -> np.ndarray:
     return np.array([b.xmin, b.xmax, b.ymin, b.ymax, b.zmin, b.zmax])
 
 
+def _bboxes(name: str, shape) -> dict:
+    """{name (#i): box} for each solid of a shape: the two carriages, say, are two boxes, not one across the shaft."""
+    solids = _shape(shape).Solids()
+    if len(solids) <= 1:
+        return {name: _bbox(shape)}
+    return {f"{name} #{i + 1}": _bbox(s) for i, s in enumerate(solids)}
+
+
 def _shift(bb, d) -> np.ndarray:
     return np.asarray(bb, float) + np.array([d[0], d[0], d[1], d[1], d[2], d[2]], float)
 
@@ -1798,7 +1806,8 @@ def tray_boxes(k: str) -> dict:
     from scene import T
     out = {"tray pan": np.array([-V.TRAY_W / 2, V.TRAY_W / 2, -V.TRAY_D / 2, V.TRAY_D / 2, 0.0, V.T_FLOOR + V.T_RIM])}
     for parts in (plate_parts(), tray_lines(), ups_parts()):
-        out.update({n: _bbox(s) for n, (s, _) in parts.items()})
+        for n, (s, _) in parts.items():
+            out.update(_bboxes(n, s))
     for key, bb in tray_instrument_boxes().get(k, []):
         if key not in ("UPS", "service plate"):
             out[key] = np.array(bb, float)
@@ -1813,8 +1822,10 @@ def tray_boxes(k: str) -> dict:
 def dock_boxes(pos: str, u: float) -> dict:
     """{part: box} of the dock at a slot or the bay, world; u = 0 engaged, 1 pulled back."""
     yc, zs = V.SLOTS[pos]
-    out = {n: _shift(_bbox(s), (0.0, yc, zs)) for n, (s, _) in dock_parts(head=False).items()}
-    out.update({n: _shift(_bbox(s), (STROKE * u, yc, zs)) for n, (s, _) in dock_parts(head=True).items()})
+    out = {}
+    for head in (False, True):
+        for n, (s, _) in dock_parts(head=head).items():
+            out.update({m: _shift(b, (STROKE * u if head else 0.0, yc, zs)) for m, b in _bboxes(n, s).items()})
     return out
 
 
@@ -1827,7 +1838,9 @@ def dock_clearance(dz: float = 10.0) -> dict:
       pulled back.
     * The plate's inserts against the extractor's carriages, with the tray on the extractor, as built and as it was
       with the plate's face flush with the tray's side."""
-    ext = {n: _bbox(s) for n, (s, _, _) in V.extractor().items()}
+    ext = {}
+    for n, (s, _, _) in V.extractor().items():
+        ext.update(_bboxes(n, s))
     places = sorted({*HOME.values(), "open"}, key=lambda p: (V.SLOTS[p][0], V.SLOTS[p][1]))
     docks = {(p, u): dock_boxes(p, u) for p in places for u in (0.0, 1.0)}
     zs_all = [V.SLOTS[p][1] for p in places]
@@ -1861,7 +1874,7 @@ def dock_clearance(dz: float = 10.0) -> dict:
         slide[f"tray {k} {'out of ' + p if p != 'open' else 'into the bay'}"] = dict(
             gap_mm=round(best[0], 1), tray_part=best[1], dock_part=best[2])
     plate = {n: b for n, b in trays["A"].items() if n.startswith("plate ")}
-    car = {"carriages": ext["extractor carriages"]}
+    car = {n: b for n, b in ext.items() if n.startswith("extractor carriages")}
     now = _nearest(plate, car)
     flush = _nearest({n: _shift(b, (SIDE - X_FACE, 0, 0)) for n, b in plate.items()}, car)
     shutter = np.array([-V.OPEN_W / 2, V.OPEN_W / 2, V.Y_SHUTTER - 6, V.Y_SHUTTER + 6, V.Z_OPEN - 10,
@@ -1905,10 +1918,13 @@ def draw_clearance(res: dict | None = None, path=None):
     wall_x = V.TRAY_W / 2 + 45
     for yc in (yf, yr):
         rect([wall_x, wall_x + 12, yc - V.TRAY_D / 2 - 30, yc + V.TRAY_D / 2 + 30], "#afb8c1", 0.9)
-    ext = {n: _bbox(s) for n, (s, _, _) in V.extractor().items()}
+    ext = {}
+    for n, (s, _, _) in V.extractor().items():
+        ext.update(_bboxes(n, s))
     rect(ext["extractor platform"], c_lift, 0.25)
-    rect(ext["extractor carriages"], c_lift, 0.9, z=3)
-    rails = _bbox(V.lift_rails()["extractor guide rails"][0])
+    for n, b in ext.items():
+        if n.startswith("extractor carriages"):
+            rect(b, c_lift, 0.9, z=3)
     for sy in (-1, 1):
         x = V.UNIT_W / 2 - 115
         y = sy * (V.TRAY_D / 2 + 38)
@@ -1919,7 +1935,7 @@ def draw_clearance(res: dict | None = None, path=None):
         rect([-V.TRAY_W / 2, V.TRAY_W / 2, yc - V.TRAY_D / 2, yc + V.TRAY_D / 2], c_tray, 1.0, lw=1.2, fill=False,
              z=2, ls=ls)
         for n, b in plate.items():
-            rect(_shift(b, (0, yc, 0)), c_plate if n == "service plate" else "#e36209", 1.0, z=5)
+            rect(_shift(b, (0, yc, 0)), c_plate if n in ("service plate", "plate bracket") else "#e36209", 1.0, z=5)
     for p, u in (("F1", 1.0), ("R2", 0.0)):
         for n, b in dock_boxes(p, u).items():
             if n.startswith("hose"):
@@ -1937,52 +1953,55 @@ def draw_clearance(res: dict | None = None, path=None):
     lm = res["lift"]["empty"]
     g_front = min(r["gap_mm"] for n, r in lm.items() if n.startswith(("F", "open")))
     g_rear = min(r["gap_mm"] for n, r in lm.items() if n.startswith("R"))
-    car = ext["extractor carriages"]
+    car = max((b for n, b in ext.items() if n.startswith("extractor carriages")), key=lambda b: b[0])
     fd = dock_boxes("F1", 1.0)
     y_dock = max(b[3] for n, b in fd.items() if not n.startswith("hose"))
     ax.annotate("", xy=(1290, car[2]), xytext=(1290, y_dock), arrowprops=dict(arrowstyle="<->", color=ink, lw=1.2))
-    ax.text(1300, (car[2] + y_dock) / 2, f"{g_front:.0f} mm: front-column\nand bay docks to the\nextractor, any height",
-            color=ink, fontsize=8.5, va="center")
+    ax.text(1080, (car[2] + y_dock) / 2 - 20, f"{g_front:.0f} mm: the extractor to\nthe front-column and bay docks",
+            color=ink, fontsize=8.5, va="center", ha="center",
+            bbox=dict(boxstyle="round,pad=0.25", fc="white", ec="none", alpha=0.85))
     rd = dock_boxes("R2", 0.0)
     y_rd = min(b[2] for n, b in rd.items() if not n.startswith("hose"))
     ax.annotate("", xy=(1290, car[3]), xytext=(1290, y_rd), arrowprops=dict(arrowstyle="<->", color=ink, lw=1.2))
-    ax.text(1300, (car[3] + y_rd) / 2, f"{g_rear:.0f} mm: rear-column\ndocks", color=ink, fontsize=8.5, va="center")
+    ax.text(1300, (car[3] + y_rd) / 2, f"{g_rear:.0f} mm: to the\nrear-column docks", color=ink, fontsize=8.5,
+            va="center")
     sl = min(r["gap_mm"] for r in res["slide"].values())
-    ax.text(840, yf - 250, f"tray in F1, its dock pulled back:\nthe plate slides past it {sl:.0f} mm clear",
-            color=ink, fontsize=8.5)
-    ax.text(840, 60, f"tray on the extractor (dashed): its plate's inserts\n"
-                     f"{res['plate_inserts_to_carriages_mm']['now']:.1f} mm from the carriage "
-                     f"(was {res['plate_inserts_to_carriages_mm']['with_the_face_flush']:.1f} mm flush)",
-            color=ink, fontsize=8.5)
-    ax.text(840, yr + 470, "tray in R2, docked", color=ink, fontsize=8.5)
-    ax.set_title("Plan, right-hand side: extractor (red) in the shaft, docks (grey) in the columns' side walls",
-                 fontsize=10, color=ink, loc="left")
-    # every case's smallest gap
-    bx = fig.add_axes([0.66, 0.10, 0.31, 0.80])
-    rows = []
-    for load, rr in res["lift"].items():
-        rows.append((f"lift, {'empty' if load == 'empty' else 'tray ' + load}", min(r["gap_mm"] for r in rr.values())))
-    for name, r in res["slide"].items():
-        rows.append((name.replace("tray ", "slide: tray "), r["gap_mm"]))
-    rows.append(("bay dock to the shutter", res["bay_dock_to_shutter_mm"]))
-    rows.append(("plate inserts to the carriages", res["plate_inserts_to_carriages_mm"]["now"]))
-    names = [r[0] for r in rows][::-1]
-    vals = [r[1] for r in rows][::-1]
-    bx.barh(range(len(vals)), vals, color="#3b6fb6", height=0.62)
+    pc = res["plate_inserts_to_carriages_mm"]
+    ax.text(840, yf - 300, f"tray in F1 (the bay's dock is the same, lower):\nits dock pulled back, the tray "
+                           f"slides past\nthe pins' tips {sl:.0f} mm clear", color=ink, fontsize=8.5)
+    ax.text(840, 40, f"tray on the extractor (dashed): the plate's\ninserts {pc['now']:.1f} mm from the carriage\n"
+                     f"(it was {pc['with_the_face_flush']:.1f} mm with the face flush)", color=ink, fontsize=8.5)
+    ax.text(840, yr - 380, "tray in R2, docked", color=ink, fontsize=8.5)
+    ax.set_title("Plan of the right-hand side at a slot's height (x stretched): the extractor (red) rides the shaft,\n"
+                 "the docks (grey) sit in the columns' side walls; plates dark, their inserts orange",
+                 fontsize=9.5, color=ink, loc="left")
+    # each case's smallest gap
+    bx = fig.add_axes([0.70, 0.12, 0.27, 0.74])
+    lift_f = min(r["gap_mm"] for rr in res["lift"].values() for n, r in rr.items() if n.startswith(("F", "open")))
+    lift_r = min(r["gap_mm"] for rr in res["lift"].values() for n, r in rr.items() if n.startswith("R"))
+    rows = [("lift past the rear-column docks", lift_r, False),
+            ("lift past the front-column\nand bay docks", lift_f, False),
+            ("bay dock to the shutter", res["bay_dock_to_shutter_mm"], False),
+            ("a tray past its own dock,\npulled back (slot or bay)", sl, False),
+            ("plate inserts to the\nextractor's carriages", pc["now"], False),
+            ("the same, face flush (before)", pc["with_the_face_flush"], True)][::-1]
+    vals = [r[1] for r in rows]
+    bx.barh(range(len(rows)), vals, color=["#9fb7dc" if r[2] else "#3b6fb6" for r in rows], height=0.6)
     for i, v in enumerate(vals):
-        bx.text(v + 4, i, f"{v:.0f}" if v >= 10 else f"{v:.1f}", va="center", fontsize=8, color=ink)
-    bx.set_yticks(range(len(vals)), names, fontsize=8, color=ink)
-    bx.set_xlabel("smallest gap, mm (bounding boxes: a lower bound)", color=muted)
+        bx.text(v + 8, i, f"{v:.0f} mm" if v >= 10 else f"{v:.1f} mm", va="center", fontsize=8.5, color=ink)
+    bx.set_yticks(range(len(rows)), [r[0] for r in rows], fontsize=8.5, color=ink)
+    bx.set_xlabel("smallest gap, mm", color=muted)
     bx.tick_params(axis="x", colors=muted)
-    for s in ("top", "right"):
-        bx.spines[s].set_visible(False)
-    for s in ("left", "bottom"):
-        bx.spines[s].set_color(grid)
-    bx.set_xlim(0, max(vals) * 1.15)
+    for sp in ("top", "right"):
+        bx.spines[sp].set_visible(False)
+    for sp in ("left", "bottom"):
+        bx.spines[sp].set_color(grid)
+    bx.set_xlim(0, max(vals) * 1.2)
     bx.set_title("Smallest gap in each case", fontsize=10, color=ink, loc="left")
-    fig.text(0.04, 0.02, "Docks engaged and pulled back; extractor empty and carrying each tray A-F with its "
-                         "instruments, UPS and cameras, from 300 mm under the lowest slot to 300 mm over the highest. "
-                         "services.py dock_clearance().", fontsize=8, color=muted)
+    fig.text(0.04, 0.012, "Every part as its bounding box, so each gap is a lower bound. The extractor empty and carrying "
+                          "each of trays A-F with its instruments, UPS and cameras,\nfrom 300 mm under the lowest slot "
+                          "to 300 mm over the highest, docks engaged and pulled back. services.py dock_clearance().",
+             fontsize=8, color=muted)
     OUT.mkdir(exist_ok=True)
     fig.savefig(path, dpi=130)
     plt.close(fig)
@@ -2019,7 +2038,13 @@ def write_json():
                      fov=dict(wide="102 x 67 deg (Camera Module 3 Wide)",
                               hq_16mm="22.2 x 16.7 deg: Raspberry Pi's figure for its 16 mm C-mount lens on the HQ "
                                       "Camera (robot-arms lenses.py)"),
-                     bay_view=bay_view()),
+                     bay_view=bay_view(),
+                     views=dict(method="the tray presented, the share of each camera's rectilinear picture (Wide 102 x "
+                                       "67 deg, HQ with the 16 mm lens 22.2 x 16.7 deg) whose rays leave through the "
+                                       "opening into the room before they meet the tray's floor; nothing else counts "
+                                       "as cover",
+                                units=camera_views())),
+        docks_and_lift=dock_clearance(),
         heat=heat_budget())
     (OUT / "services.json").write_text(json.dumps(services, indent=1) + "\n")
     cab = dict(route=dict(ladder_z_mm=LADDER_Z, ladder_y_mm=LADDER_Y, width_mm=LADDER_W, path_xy_mm=LADDER_PATH,
@@ -2046,12 +2071,51 @@ def _main():
             _gif("vlm_cabling")
         elif word == "cameras":
             print(still_cameras(data, idata), flush=True)
+        elif word == "hookups":
+            print(movie_hookups(data, idata), flush=True)
+            _gif("vlm_hookups")
+        elif word == "baycam":
+            print(movie_bay_camera(data, idata), flush=True)
+            _gif("bay_camera")
+        elif word == "clearance":
+            res = dock_clearance()
+            (OUT / "dock_lift_clearance.json").write_text(json.dumps(res, indent=1) + "\n")
+            print(json.dumps(res["smallest"]), res["plate_inserts_to_carriages_mm"], flush=True)
+            print(draw_clearance(res), flush=True)
+        elif word == "join":
+            print(join(), flush=True)
         elif word == "json":
             s, c = write_json()
             for k, t in s["heat"]["trays"].items():
                 print(k, t["slot"], t["total_w"], "W", "UPS ok" if t["ups_ok"] else "over the UPS")
             for name, r in s["heat"]["vlm"]["scenarios"].items():
                 print(name, r)
+
+
+JOIN = ["vlm_services", "vlm_hookups", "bay_camera", "vlm_cabling"]     # out/mp4/vlm_services_all.mp4, in order
+
+
+def join(parts=JOIN, name="vlm_services_all") -> str:
+    """The services video: the clips' MP4s end to end. Each is brought to 1280 x 720 at 15 fps first (a clip
+    rendered at VIZ3D_FPS=10 joins the others), then the concat demuxer copies them."""
+    import subprocess
+    import tempfile
+    mp4 = OUT / "mp4"
+    with tempfile.TemporaryDirectory() as tmp:
+        lst = Path(tmp) / "concat.txt"
+        lines = []
+        for i, part in enumerate(parts):
+            src = mp4 / f"{part}.mp4"
+            dst = Path(tmp) / f"{i}.mp4"
+            subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(src), "-vf",
+                            "scale=1280:720:flags=lanczos,fps=15", "-an", "-c:v", "libx264", "-preset", "medium", "-crf",
+                            "21", "-pix_fmt", "yuv420p", str(dst)], check=True)
+            lines.append(f"file '{dst}'")
+        lst.write_text("\n".join(lines) + "\n")
+        out = mp4 / f"{name}.mp4"
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", str(lst), "-c", "copy",
+                        "-movflags", "+faststart", str(out)], check=True)
+    return f"{out}: {out.stat().st_size / 1e6:.1f} MB"
 
 
 def _gif(name):
