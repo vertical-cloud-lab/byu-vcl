@@ -332,6 +332,19 @@ def movie():
     rb, car = L.robot, L.carousel
     sc.parent["stream"] = K.rig
     auditor = None
+    if os.environ.get("ARM_AUDIT_PARTIAL") and sc.auditor is not None:     # the audit so far, every 300 frames
+        mark = [0]
+
+        def partial(sc):
+            if sc.n >= mark[0] + 300:
+                mark[0] = sc.n
+                rep = sc.auditor.report()
+                rep["label"] = sc.label
+                with open(os.environ["ARM_AUDIT_PARTIAL"], "w") as fh:
+                    json.dump(rep, fh, indent=1)
+                print(f"audit so far: {rep['frames_with_collisions']} of {rep['frames_checked']} frames, "
+                      f"at {sc.label}", flush=True)
+        sc.frame_hooks.append(partial)
     if not os.environ.get("ARM_AUDIT"):
         import time
         t_start = time.time()
