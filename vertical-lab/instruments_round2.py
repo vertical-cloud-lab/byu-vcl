@@ -295,11 +295,11 @@ def ot2() -> Instrument:
           (0.003, dict(dst=(0.0, -1.0))), (0.324, dict(dst=(0.0, 0.0), tl=(0.0, -1.0))),
           (0.003, dict(tl=(hide, -1.0)))]),
         ("Then over the fixed trash in slot 12, the pipette pushes the used tip off, and it drops into the bin.",
-         3.8, {},
+         3.8, {"~frame": (0.55, 0.8)},
          [(0.18, dict(head=head(dx, dy, z_trav), tip=carried(head(dx, dy, z_trav)))),
           (0.47, dict(head=head(tcx, tcy, z_trav), tip=carried(head(tcx, tcy, z_trav)))),
           (0.35, dict(tip=tip_fall))]),
-        ("The head goes back to where it started, ready for the next tip.", 2.0, {},
+        ("The head goes back to where it started, ready for the next tip.", 2.0, {"~frame": (0.8, 0.55)},
          [(1.0, dict(head=(0.0, 0.0, 0.0)))]),
     ]
     state = dict(head=(0.0, 0.0, 0.0), tip=(0.0, 0.0, 0.0), src=0.0, dst=(hide, -1.0), tl=(hide, -1.0))
@@ -365,8 +365,12 @@ def ot2() -> Instrument:
     fixed = [lab for lab in inst.labels if lab[0] in ("tip rack", "96-well plate")]
     inst.step_labels = {1: fixed, 2: [("deep-well plate, cut through row H", sw, (0.22, 0.85))],
                         3: [("96-well plate, cut through row H", dw, (0.78, 0.85))],
-                        4: fixed + [("fixed trash", (tcx, tcy - 60.0, ttop), (0.86, 0.60))], 5: fixed}
-    inst.zoom = {2: ((sx, sy + 10.0, s_bot + 30.0), 330.0), 3: ((dx, dy + 10.0, d_bot + 30.0), 330.0), 4: "out"}
+                        4: [("fixed trash", (tcx - 50.0, tcy - 70.0, ttop), (0.18, 0.70))], 5: fixed}
+    # close-ups on the well being drawn from, the well being filled and the trash (from far enough out that the
+    # camera stays outside the frame on its way between them, and aimed 60 mm right of the bin so that the frame's
+    # front-right post is out of the picture), then back out
+    inst.zoom = {2: ((sx, sy + 10.0, s_bot + 30.0), 330.0), 3: ((dx, dy + 10.0, d_bot + 30.0), 330.0),
+                 4: ((tcx + 60.0, tcy - 20.0, ttop + 20.0), 650.0), 5: "out"}
     inst.cam = (1.0, -1.7, 1.05)
     inst.notes = ["Opentrons' reference STEP; the head split out of it by bounding box (OT2_SOLIDS, OT2['beam'])",
                   "one pipette per mount kept of the STEP's four variants: P20 left, P300 right",
