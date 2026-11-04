@@ -465,7 +465,10 @@ def lumenpnp() -> Instrument:
             ("", 0.6 if first else 0.5, {**z(0.0, 1.0), "part": (1.0, 0.0), k: (0.0, 1.0)}),
             ("", 0.4, {**z(1.0, 0.0), "tip": (1.0, 0.0)}),       # the nozzle turns back, empty
         ]
-    acts += [("Three parts placed; the board goes on to reflow.", 2.0, {**go(*home), "load": (1.0, 0.0)})]
+    # the head goes home first: lifting out under it, the board ran through the nozzle holder, the camera mask and
+    # the Z motor (collide.py)
+    acts += [("Three parts placed; the head goes home and the board goes on to reflow.", 0.8, go(*home)),
+             ("", 1.6, {"load": (1.0, 0.0)})]
     inst.actions = acts
     inst.labels = [("two nozzles, counterweighted Z", _lp(p, H0, 160.0, 200.0, hx0 + 0.5 * p["htravel"],
                                                            gy0 + 0.5 * p["gtravel"]), (0.20, 0.16)),

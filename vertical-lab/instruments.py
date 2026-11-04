@@ -1781,12 +1781,15 @@ def wire_edm() -> Instrument:
     yf, yb = -D / 2, D / 2
     bz, tz = p["base_h"], p["tank_top"]
     body = _piece(inst, "body")
-    body.add("base", box(xl, yf, 40, xm, yb, bz), "inst_white")
+    tx0, tx1 = xl + 200, xm - 150           # the work tank
+    ty0, ty1 = yf + 60, yf + 760
+    drop = tz - bz - 30                     # how far the tank door drops: into a slot in the base (collide.py found it
+    #                                         going through a solid base)
+    body.add("base", box(xl, yf, 40, xm, yb, bz).cut(box(tx0 - 14, ty0 - 4, bz + 10 - drop - 6, tx1 + 14, ty0 + 34,
+                                                          bz + 1)), "inst_white")
     body.add("plinth", box(xl + 20, yf + 20, 0, xm - 20, yb - 20, 40), "inst_grey")
     body.add("base panel", box(xl + 120, yf - 2, 90, xm - 120, yf, bz - 220), "inst_offwhite")
     body.add("base badge", box(xl + 450, yf - 4, bz - 160, xl + 800, yf - 2, bz - 120), "inst_light")
-    tx0, tx1 = xl + 200, xm - 150           # the work tank
-    ty0, ty1 = yf + 60, yf + 760
     body.add("tank", box(tx0, ty0 + 30, bz, tx1, ty1, tz).cut(box(tx0 + 20, ty0 + 20, bz + 20, tx1 - 20, ty1 - 20,
                                                                     tz + 1)), "stainless")
     # a U-shaped table, open at the back for the lower arm. A vertical wire can only cut parts off their build plate
@@ -1837,7 +1840,7 @@ def wire_edm() -> Instrument:
     water = _piece(inst, "glow")
     water.add("dielectric", box(tx0 + 22, ty0 + 52, bz + 22, tx1 - 22, ty1 - 22, tz - 40), "water")
     inst.joints = {
-        "door": Joint("slide", vec=(0, 0, -(tz - bz) + 30)),
+        "door": Joint("slide", vec=(0, 0, -drop)),
         "load": Joint("path", path=((px, yf - 700, 1250), (px, yf - 200, 1200), (px, py - 200, pz + 40), (px, py, pz))),
         "wirehead": Joint("slide", vec=(p["travel_x"], 0, 0)),
         "glow": Joint("fade"),
