@@ -1406,6 +1406,7 @@ def still_cameras(data, idata, k="E"):
             f"unit sits on a bar at the back of the bay, {cl['bay_margin_mm']:.0f} mm over Kardex's product envelope and "
             f"{cl['bay_margin_to_F1_mm']:.0f} mm under the tray stored above the opening.", 0.1, None, hold=0.0, labels=lbl,
             still=True)
+    return sc.save()
 
 
 # ----------------------------------------------------------------------------------------------- vlm_hookups
