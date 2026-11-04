@@ -25,7 +25,7 @@ import numpy as np
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE / "lab_models"))
-from common import Model, box, cyl, rbox, tube  # noqa: E402
+from common import Model, box, cyl, hose, rbox, tube  # noqa: E402
 
 # name: (r, g, b, opacity, specular), merged into lab.MATS by tour.py
 MATERIALS = {
@@ -84,6 +84,30 @@ def _R(axis, deg, pivot=(0, 0, 0)) -> np.ndarray:
     return _T(p) @ m @ _T(-p)
 
 
+def chain_params(s, x_fixed, x_end0, travel, straight, radius, z_low) -> tuple:
+    """A link `s` mm along a horizontal energy chain from its fixed end at x_fixed: the chain lies in its lower run
+    from there towards -x, bends up round radius `radius` and comes back along the upper run to its moving end, at
+    x_end0 + travel * v. straight is the chain's length less its bend; z_low the lower run's centre line."""
+    return (float(s), float(x_fixed), float(x_end0), float(travel), float(straight), float(radius), float(z_low))
+
+
+def chain_pose(params, v: float) -> np.ndarray:
+    """The 4x4 pose (link frame: x along the chain, z out of the bend) of a link at v. The bend sits where the two runs
+    meet, (x_fixed + x_end - straight) / 2, so it moves at half the carriage's speed."""
+    s, xf, xe0, travel, straight, r, z_low = params
+    xe = xe0 + travel * v
+    xl = (xf + xe - straight) / 2.0
+    a = xf - xl                                          # the lower run
+    if s <= a:
+        x, z, ang = xf - s, z_low, 0.0
+    elif s <= a + math.pi * r:
+        phi = (s - a) / r
+        x, z, ang = xl - r * math.sin(phi), z_low + r - r * math.cos(phi), phi
+    else:
+        x, z, ang = xl + (s - a - math.pi * r), z_low + 2 * r, math.pi
+    return _T((x, 0.0, z)) @ _R((0, 1, 0), math.degrees(ang))
+
+
 @dataclass
 class Joint:
     """How a piece moves with a value v (0 = as modelled, 1 = the far end of its travel).
@@ -93,6 +117,8 @@ class Joint:
     follow: a linkage driven by another piece's displacement d, which is v * vec or, given a path, the path's offset
     at v (as slide and path move that piece): the matrix is I + sum_k d[k] * jac[k], jac being three 3x4 matrices,
     the motion per mm of d along x, y and z. For small motions, such as flexure legs and levers (openflexure.py).
+    chain: one link of an energy chain whose moving end rides a carriage (v as the carriage's slide), path =
+    chain_params(...): the link lies in the lower run, rolls round the bend or rides the upper run (rail()).
     A piece with a parent rides on that piece."""
     kind: str
     vec: tuple = (0.0, 0.0, 0.0)
@@ -105,6 +131,8 @@ class Joint:
     jac: tuple = ()                  # follow: three 3x4 matrices
 
     def matrix(self, v: float) -> np.ndarray:
+        if self.kind == "chain":
+            return chain_pose(self.path, v) @ np.linalg.inv(chain_pose(self.path, 0.0))
         if self.kind == "follow":
             d = Joint("path", path=self.path).matrix(v)[:3, 3] if self.path else np.asarray(self.vec, float) * v
             m = np.eye(4)
@@ -743,8 +771,12 @@ def pip() -> Instrument:
 RAIL = dict(beam_w=247.5, beam_h=247.5, top=800.0, leg_pitch=3330.0, car_l=426.5, car_w=358.0, car_t=86.0)
 
 
-def rail(length: float = 4000.0, travel: float = 1600.0) -> Instrument:
+def rail(length: float = 4000.0, travel: float = 1600.0, chain: bool | None = None) -> Instrument:
+    """Vention's seventh axis with the carriage at x = 0 (v = 0) to `travel` (v = 1). chain: its energy chain as
+    links that follow the carriage (the default for a travel in mm; line.py drives the carriage with travel = 1 and
+    a 17 m beam, so its chain is the fixed one it had)."""
     p = RAIL
+    chain = travel >= 200.0 if chain is None else chain
     inst = Instrument("rail", "Backup: a floor rail for the arm", "Vention robot 7th axis", (length, 628.0, p["top"]),
                       "Vention design 337010 and its part pages (beam, guides, carriage plate) and actuator docs",
                       floor=True)
@@ -762,7 +794,23 @@ def rail(length: float = 4000.0, travel: float = 1600.0) -> Instrument:
     body.add("rack", box(-L / 2 + 20, -bw / 2 - 12, z1 - 40, L / 2 - 20, -bw / 2, z1), "steel")
     body.add("chain tray", box(-L / 2, bw / 2, z0 + 20, L / 2, bw / 2 + 90, z0 + 30).union(
         box(-L / 2, bw / 2 + 85, z0 + 20, L / 2, bw / 2 + 90, z0 + 70)), "vention_blue")
-    body.add("cable chain", box(-L / 2 + 100, bw / 2 + 10, z0 + 30, 0, bw / 2 + 80, z0 + 75), "inst_black")
+    # the energy chain, in its tray behind the beam: its fixed end halfway along the moving end's travel, its lower
+    # run on the tray's floor, the bend rising to the upper run, which ends on a bracket under the carriage's back
+    # edge; the bend travels at half the carriage's speed. Link 70 x 44 mm, bend radius 98 mm: ours, to suit the
+    # 73 mm chain and the 230 mm between the tray's floor and the carriage plate.
+    cy0, cy1 = bw / 2 + 10, bw / 2 + 80
+    ch = dict(h=44.0, r=98.0, z_low=z0 + 30 + 22.0, end_dx=-p["car_l"] / 2 + 20.0)
+    x_end0 = ch["end_dx"]
+    x_fix = x_end0 + travel / 2.0
+    straight = travel / 2.0 + 100.0
+    if not chain:
+        body.add("cable chain", box(-L / 2 + 100, cy0, z0 + 30, 0, cy1, z0 + 75), "inst_black")
+    else:
+        body.add("chain fixed end", box(x_fix, cy0 - 4, z0 + 30, x_fix + 30, cy1 + 4, z0 + 30 + ch["h"] + 8),
+                 "aluminium")
+        body.add("chain cable", hose([(x_fix + 15, (cy0 + cy1) / 2, z0 + 20), (x_fix + 15, (cy0 + cy1) / 2, 300.0),
+                                      (-L / 2 + 900, (cy0 + cy1) / 2, 300.0), (-L / 2 + 900, 120.0, 300.0)], 24.0),
+                 "inst_black")
     n_legs = max(2, int(round(L / p["leg_pitch"])) + 1)
     legs = None
     for i in range(n_legs):
@@ -789,15 +837,39 @@ def rail(length: float = 4000.0, travel: float = 1600.0) -> Instrument:
     car.add("pinion", cyl(44, 40, x=0, y=-bw / 2 - 12 - 22, z=z1 - 42), "steel")
     car.add("robot adapter", cyl(210, 12, z=top - 12), "aluminium")
     inst.joints = {"carriage": Joint("slide", vec=(travel, 0, 0))}
+    links = []
+    if chain:
+        zu = ch["z_low"] + 2 * ch["r"]
+        car.add("chain bracket", box(x_end0 - 22, cy0 - 4, zu - ch["h"] / 2 - 6, x_end0 + 8, p["car_w"] / 2,
+                                     top - p["car_t"]), "aluminium")
+        total = straight + math.pi * ch["r"]
+        n = int(round(total / 36.0))
+        pitch = total / n
+        for i in range(n):
+            prm = chain_params((i + 0.5) * pitch, x_fix, x_end0, travel, straight, ch["r"], ch["z_low"])
+            pose = chain_pose(prm, 0.0)
+            link = box(-pitch / 2 + 1.2, cy0, -ch["h"] / 2, pitch / 2 - 1.2, cy1, ch["h"] / 2)
+            link = link.union(box(-pitch / 2 + 4, cy0 + 8, -ch["h"] / 2 - 1, pitch / 2 - 4, cy1 - 8, ch["h"] / 2 + 1))
+            ang = math.degrees(math.atan2(pose[0, 2], pose[0, 0]))
+            link = link.rotate((0, 0, 0), (0, 1, 0), ang).translate((float(pose[0, 3]), 0.0, float(pose[2, 3])))
+            key = f"chain {i:02d}"
+            _piece(inst, key).add("link", link, "inst_black")
+            inst.joints[key] = Joint("chain", path=prm)
+            links.append(key)
+
+    def drive(a, b):
+        return {"carriage": (a, b), **{k: (a, b) for k in links}}
     inst.actions = [
         ("The backup to the mobile base: a Vention seventh axis. The carriage carries the arm along the line on a "
-         "rack and pinion.", 2.6, {"carriage": (0.0, 1.0)}),
+         "rack and pinion; its energy chain's bend travels at half the carriage's speed.", 2.6, drive(0.0, 1.0)),
         ("Up to 4 m/s. Its legs are cut so the arm's base is at 800 mm, where it sits on the MiR250.", 2.2,
-         {"carriage": (1.0, 0.0)}),
+         drive(1.0, 0.0)),
     ]
     inst.labels = [("carriage and gearmotor", (0, -cw / 2 - 70, z1 - 60), (0.16, 0.30)),
                    ("rack and guides", (L / 2 - 400, -bw / 2, z1), (0.82, 0.40)),
                    ("control cabinet", (-L / 2 + 700, -150, z0 - 220), (0.16, 0.72))]
+    if chain:
+        inst.labels.append(("energy chain: fixed end mid-travel", (x_fix + 15, cy1, z0 + 60), (0.82, 0.66)))
     inst.cam = (0.55, -1.5, 0.6)
     return inst
 
