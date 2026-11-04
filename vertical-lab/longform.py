@@ -328,6 +328,28 @@ def badge_png(text: str, caption: str, path: Path):
     im.save(path)
 
 
+CACHE = Path(tempfile.gettempdir()) / "longform_parts"     # normalised parts, keyed by their source's bytes
+
+
+def cached(key_parts: list, make, dst: Path):
+    """Run make(tmp) once per distinct input (sha256 of the source bytes and the settings), then copy to dst."""
+    h = hashlib.sha256()
+    for k in key_parts:
+        if isinstance(k, Path):
+            with open(k, "rb") as f:
+                for chunk in iter(lambda: f.read(1 << 20), b""):
+                    h.update(chunk)
+        else:
+            h.update(str(k).encode())
+    CACHE.mkdir(parents=True, exist_ok=True)
+    hit = CACHE / f"{h.hexdigest()[:20]}.mp4"
+    if not hit.exists():
+        tmp = hit.with_suffix(".part.mp4")
+        make(tmp)
+        tmp.rename(hit)
+    dst.write_bytes(hit.read_bytes())
+
+
 def normalise(src: Path, dst: Path, overlay: Path | None = None):
     vf = (f"scale={SIZE[0]}:{SIZE[1]}:force_original_aspect_ratio=decrease,"
           f"pad={SIZE[0]}:{SIZE[1]}:(ow-iw)/2:(oh-ih)/2:color=white,fps={FPS},setsar=1")
@@ -477,9 +499,9 @@ def build():
         elif r["kind"] == "footage":
             ov = tmp / f"badge{i:03d}.png"
             badge_png("REAL FOOTAGE", r["caption"], ov)
-            normalise(r["src"], out, ov)
+            cached([r["src"], ov, SIZE, FPS, "footage"], lambda d, r=r, ov=ov: normalise(r["src"], d, ov), out)
         else:
-            normalise(r["src"], out)
+            cached([r["src"], SIZE, FPS, "mp4"], lambda d, r=r: normalise(r["src"], d), out)
         d = duration(out)
         src = r.get("git") or (str(r["src"].relative_to(HERE)) if r.get("src") else None)
         record.append(dict(chapter=r["chapter"], kind=r["kind"], start_s=round(t, 2), seconds=round(d, 2),
