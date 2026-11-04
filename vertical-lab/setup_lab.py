@@ -131,11 +131,11 @@ CAM_UTIL = [(9600, -17500, 9800), (300, -2600, 2400), (0, 0, 1)]
 CAM_VLM = [(9800, -10400, 6600), (1800, -400, 1900), (0, 0, 1)]
 CAM_FLOOR = [(6200, -21500, 17500), (700, -2900, 0), (0, 0, 1)]
 CAM_UNIT = [(1900, -2900, 2300), (-1300, -5600, 800), (0, 0, 1)]
-CAM_OPEN = [(4300, -7700, 3100), (0, -1000, 1300), (0, 0, 1)]
-CAM_OPEN2 = [(X2 + 4300, -7700, 3100), (X2, -1000, 1300), (0, 0, 1)]
+CAM_OPEN = [(3500, -5900, 2700), (0, -1000, 1300), (0, 0, 1)]      # north of the south row's cable tray and argon
+CAM_OPEN2 = [(X2 + 3500, -5900, 2700), (X2, -1000, 1300), (0, 0, 1)]
 ORBIT = [[(-9000, -16500, 9000), (700, -2300, 600), (0, 0, 1)],
          [(-15500, -2000, 9500), (700, -2300, 600), (0, 0, 1)],
-         [(-4500, 10500, 10500), (700, -2300, 600), (0, 0, 1)],
+         [(3500, -15500, 5600), (700, -2300, 900), (0, 0, 1)],
          [(11500, -18500, 12500), (700, -2600, 300), (0, 0, 1)]]
 
 
@@ -738,7 +738,7 @@ def movie(data, idata):
     have = set(idata)
     # ------------------------------------------------------------------ 1. the empty bay
     sc.step(f"1/{n}", "An empty bay in a warehouse, about 24 m between the racks on its side walls. Everything that "
-            "follows goes into it.", 2.4, None, hold=1.2)
+            "follows goes into it.", 2.0, None, hold=0.8)
     # ------------------------------------------------------------------ 2. the layout on the floor
     fl = {nm: 1.0 for nm in layout}
 
@@ -873,7 +873,8 @@ def movie(data, idata):
     # ------------------------------------------------------------------ 7. the trays
     sc.step(f"7/{n}", "Loading, drawn see-through: each tray comes to its Shuttle's opening, people put its instruments, "
             "its UPS and its camera posts on through it (most weigh more than the arm's 12.5 kg), and it goes back to "
-            "its slot and its power.", 2.2, L.skin(1.0), hold=0.3, cam_to=CAM_OPEN)
+            "its slot and its power. After the first tray of each Shuttle, a time-lapse.", 2.2, L.skin(1.0), hold=0.3,
+            cam_to=CAM_OPEN)
     L.show_gauges = True
     cam_now = CAM_OPEN
     first = set()
@@ -884,11 +885,19 @@ def movie(data, idata):
         want = CAM_OPEN if unit == 1 else CAM_OPEN2
         cam = None if want is cam_now else want
         cam_now = want
-        full = unit not in first                 # the first tray of each Shuttle at full pace, the rest quicker
+        full = unit not in first                 # the first tray of each Shuttle in full, the rest a time-lapse
         first.add(unit)
-        fast, mint = (0.28, 0.6) if full else (0.17, 0.35)
-        L.fetch(k, f"7/{n}", f"Tray {k} ({role}) comes to the opening of Shuttle {unit}.", fast=fast,
-                hold=0.05, cam=cam, mint=mint)
+        fast, mint = 0.28, 0.6
+        if full:
+            L.fetch(k, f"7/{n}", f"Tray {k} ({role}) comes to the opening of Shuttle {unit}.", fast=fast,
+                    hold=0.05, cam=cam, mint=mint)
+        else:                                    # a cut: the tray is at the opening, the extractor under it
+            L.use(unit)
+            L.focus = k
+            L.where[k] = "open"
+            L.tray[k] = [*V.SLOTS["open"]]
+            L.lift_z = A.LIFT_HOME
+            L.apply_state()
         if lst:
             fs, lbls = [], []
             for key, g, names, nm in lst:
@@ -898,10 +907,16 @@ def movie(data, idata):
             ncam = sum(1 for it in lst if it[0] == "cam")
             extra = ", its UPS" + (f" and {ncam} camera post{'s' if ncam > 1 else ''}" if ncam else "")
             cap = f"Tray {k}: " + ", ".join(lb[0] for lb in lbls) + extra + "."
-            sc.step(f"7/{n}", cap, (1.0 + 0.32 * len(lst)) if full else (0.8 + 0.24 * len(lst)),
-                    stagger(fs, overlap=0.5), hold=0.6 if full else 0.45, labels=W.auto(sc, cam_now, lbls, dy=0.16))
-        L.store(k, f"7/{n}", f"Tray {k} goes back to its slot ({A.HOME[k]}), {V.SPAN[A.HOME[k]]:.0f} mm tall, "
-                "where it has power.", fast=fast, hold=0.05, mint=mint)
+            sc.step(f"7/{n}", cap, (1.0 + 0.32 * len(lst)) if full else (0.7 + 0.18 * len(lst)),
+                    stagger(fs, overlap=0.5), hold=0.6 if full else 0.5, labels=W.auto(sc, cam_now, lbls, dy=0.16),
+                    cam_to=None if full else cam)
+        if full:
+            L.store(k, f"7/{n}", f"Tray {k} goes back to its slot ({A.HOME[k]}), {V.SPAN[A.HOME[k]]:.0f} mm tall, "
+                    "where it has power.", fast=fast, hold=0.05, mint=mint)
+        else:
+            L.where[k] = A.HOME[k]
+            L.tray[k] = [*V.SLOTS[A.HOME[k]]]
+            L.apply_state()
     L.focus = None
     # ------------------------------------------------------------------ 8. the bay cameras
     services.add_bay_camera(sc)
@@ -929,7 +944,7 @@ def movie(data, idata):
     sc.step(f"9/{n}", cap, 1.2, L.skin(0.0), hold=0.0)
     for i, cam in enumerate(ORBIT):
         last = i == len(ORBIT) - 1
-        sc.step(f"9/{n}", cap, 2.4, None, hold=2.4 if last else 0.0, cam_to=cam, still=last)
+        sc.step(f"9/{n}", cap, 2.2, None, hold=2.0 if last else 0.0, cam_to=cam, still=last)
     return sc.save()
 
 
