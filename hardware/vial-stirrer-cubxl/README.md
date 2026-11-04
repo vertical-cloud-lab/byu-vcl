@@ -68,6 +68,7 @@ the capper and the pipette, instead of its own XIAO RP2040.
 | [`analysis/field_check.py`](analysis/field_check.py) | magpylib check of the field at the Hall sensor (with and without a coupled bar) and at the bar, and its [output](analysis/field_check_output.txt) |
 | [`analysis/key_fit.py`](analysis/key_fit.py) | The deck key's nub against the base's pocket, in the model, the STLs and the printed G-code; draws [`img/key_fit.png`](img/key_fit.png). Its [output](analysis/key_fit_output.txt) |
 | [`analysis/deck_tiling.py`](analysis/deck_tiling.py) | Whether stirrers can sit side by side on the deck's slot grid, and a 49 × 44 mm layout that can, checked in plan; draws [`img/deck_tiling.png`](img/deck_tiling.png) and [`img/deck_tiling_plan.png`](img/deck_tiling_plan.png). Its [output](analysis/deck_tiling_output.txt) |
+| [`analysis/interference_mujoco.py`](analysis/interference_mujoco.py) | The compact stirrer as a MuJoCo model: every pair of parts, and the rotor turned through 360° with the holder on, as built and with deviations; draws [`img/interference_mujoco.png`](img/interference_mujoco.png). Its [output](analysis/interference_mujoco_output.txt). See [Interference check in MuJoCo](#interference-check-in-mujoco-2026-11-04) |
 | [`../../outputs/issue-169-magnetic-stirrer/`](../../outputs/issue-169-magnetic-stirrer) | Edison answers and the raw vendor lookups |
 
 The Onshape document is
@@ -744,6 +745,80 @@ z is measured from the top of the deck plate, in mm.
 From the magnet faces it is 2.4 mm to the vial's outside bottom, and ~4 mm to its inside
 bottom with 1.6 mm glass. magpylib puts the horizontal field at the axis of a
 15 × 6 mm bar at **~18 mT**. At the Pioreactor's estimated ~7 mm spacing it is ~4 mT.
+
+## Interference check in MuJoCo (2026-11-04)
+
+Asked for by @sgbaird on [PR #269](https://github.com/vertical-cloud-lab/byu-vcl/pull/269),
+after the compact stirrer's fan turned with the holder off and not with it on
+([11-03 record](../../cubos/results/stirrer_first_spins_20261103/README.md)).
+[`analysis/interference_mujoco.py`](analysis/interference_mujoco.py) builds the compact
+stirrer as `BUILD.md` stage 6 assembles it, as a [MuJoCo](https://mujoco.org) 3.17 model, and
+checks it ([output](analysis/interference_mujoco_output.txt)). It runs in about 3 min.
+
+![Free height between the rotor's swept top and the holder's underside, and the closest approach of the turning rotor for each variant](img/interference_mujoco.png)
+
+**The model.**
+- **Printed parts** are the STLs that were printed: `base_compact`, `vial_holder_compact`, the
+  magnet carrier and two 0.05 mm deck keys.
+- **Bought parts** are `vial_stirrer.fs`'s: the fan (`makeFan`), the Hall sensor and its leads
+  (`makeHall`), the screws, inserts and MOSFET. Added to them: four ISO 7089 washers, the
+  junction board on its rails, and the cable's cores as a 2 × 2 bundle under the fan.
+- **Convex pieces.** MuJoCo collides a mesh as its convex hull, which would fill the holder's
+  recess and groove. So each printed part is first cut into convex prisms, 13,424 in all: the
+  STL is sliced between its horizontal faces, and each section is ear-cut and merged into convex
+  pieces. The base and the carrier come out at exactly their STLs' volume. The holder comes out
+  0.8 % over, all of it in the cup, where the walls slope and the slices can only add material.
+- **Moving parts:** the fan's hub and seven blades, the carrier and the magnets, on one hinge.
+  They are turned through 360° in 1° steps, and MuJoCo reports every pair closer than 2 mm.
+
+**Calibration.** MuJoCo measures the deck key's press fit at **0.051 mm** a side, where the
+model has 0.050. It also finds the other intended overlaps: the inserts at 0.30 mm, and the
+vial against the cup's fingers at 0.86 mm at their tips. No other fixed parts overlap.
+
+**As `BUILD.md` assembles it, nothing touches the rotor.** The smallest gaps, with the holder
+on:
+
+| Turning part → fixed part | Gap, mm |
+|---|---|
+| Carrier's rim → Hall sensor | 0.80 |
+| Carrier's top → holder's ceiling | 1.10 |
+| Magnets → holder's ceiling | 1.19 |
+| Blades → washers | 1.45 |
+| Blades → holder's underside | 1.81: the washers' 0.5, plus the 1.31 that `makeFan` puts the blades' top edge below the frame's face |
+
+**What closes a gap.** Each line is the same sweep, with one deviation from `BUILD.md`:
+
+| Deviation | Closest approach, mm |
+|---|---|
+| No washers | carrier to ceiling 0.60; still clear |
+| Blades level with the frame's face | blades to holder 0.50 |
+| Both | **blades touch the holder's underside (0.00)** |
+| Carrier glued 0.3 mm off-centre (`BUILD.md`'s limit) | carrier to sensor 0.50 |
+| Carrier 1.2 mm higher, or the fan's middle pushed up 1.2 mm from below | **carrier 0.10 into the ceiling**; first touch at +1.1 |
+| Sensor slid 1.0 mm in along the groove | **sensor 0.20 into the carrier**; first touch at 0.8 mm |
+| Sensor resting on the fan's face beside the carrier, not on the ceiling | **sensor on the turning hub (0.00)** |
+
+**Where there is room** (the map above, from MuJoCo ray casts): with the holder on, a sensor
+and its leads fit only inside the recess and the groove, which give 4.3 mm over the fan's face.
+Everywhere else, the flange leaves 0.5 mm over the fan's frame (the washers) and 1.8 mm over the
+blades. Outside that outline, a Ø1 mm wire crossing the frame is pinched when the holder goes
+on. A 1.6 mm sensor body over the blades has 0.2 mm left, and none if the real blades sit nearer
+the face than the model's.
+
+**Where it falls short.**
+- **No magnetics.** MuJoCo models contact, not fields, so it can't explain the jerky feel when
+  the fan is turned by hand.
+- **Rigid parts.** Nothing flexes: not the fan's frame or the holder under the screws, and not
+  the leads.
+- **The fan isn't measured.** Its hub and blades are `makeFan`'s outline, and the blades' height
+  below the face sets the 1.81 mm gap.
+- **The sensor's as-built position is unknown.** The 11-03 holder-off run counted pulses with
+  the holder set aside, so the sensor was in the base, not on the holder's ceiling.
+
+So, before the next spin: lift the holder and look for the sensor, a lead or a wire outside the
+recess and groove. Measure the carrier's top above the frame's face: `BUILD.md` expects 3.3 mm,
+and from 4.3 mm it hits the ceiling (3.8 mm without washers). Check how far the blades sit below the face, and that all
+four washers are there.
 
 ## Risks and open questions
 

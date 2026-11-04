@@ -99,7 +99,9 @@ it, and he suspects the Hall sensor.
 That fits: with the holder off the sensor still counted, so it isn't glued into the holder
 as `BUILD.md` stage 6 has it. It sits somewhere in the base near the carrier, where the
 holder coming down can push it, or its leads, into the carrier or the blades. **Not
-resolved in this run.**
+resolved in this run.** A MuJoCo interference check of the compact stirrer, done
+afterwards (2026-11-04), finds nothing touching the rotor as `BUILD.md` assembles it, and lists
+the deviations that would: [stirrer README](../../../hardware/vial-stirrer-cubxl/README.md#interference-check-in-mujoco-2026-11-04).
 
 `HOLD` was removed at the end of the run. The Uno stays on the stirrer image.
 
