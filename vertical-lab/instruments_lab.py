@@ -519,8 +519,8 @@ def cubxl_corrosion() -> Instrument:
     def tip_off(s, key, home):
         if s[key] == "head":
             at = (s["x"] + p["pip"][0], s["y"] + p["pip"][1], s["z"] - p["tip_len"])
-        elif s[key] == "waste":
-            at = (p["waste"][0], p["waste"][1], 8.0)
+        elif s[key] == "waste":              # the second tip lands beside the first, not in it (collide.py)
+            at = (p["waste"][0] + (p["rack_dx"] if key == "tip2" else 0.0), p["waste"][1], 8.0)
         else:
             at = (home[0], home[1], p["tip_top"] - p["tip_len"])
         return (at[0] - home[0], at[1] - home[1], at[2] - (p["tip_top"] - p["tip_len"]))
@@ -861,7 +861,8 @@ def packaging() -> Instrument:
     def to(secs, x, y, z, **kw):
         tl.go(secs, p=(x, y, z), **kw)
     lie = lambda c: c[2] - (mid - jz)                      # noqa: E731  the jar's base z when its axis is at c lying
-    to(1.0, jx, jy, jz + 80); to(0.6, jx, jy, jz); tl.mark("nested")
+    # in over the next jar, clear of its cap (lower, it went through it: collide.py), then down into the seat
+    to(1.0, jx, jy, jz + j["h"] + 30); to(0.6, jx, jy, jz); tl.mark("nested")
     to(0.5, jx, jy, jz + 160); to(1.0, ap_c[0], ap_c[1], lie(ap_c) + 160, tilt=90.0)
     to(0.6, ap_c[0], ap_c[1], lie(ap_c)); tl.go(0.4, press=0.0); tl.mark("in AP380")
     tl.go(2.0, spin=360.0); tl.mark("labelled")

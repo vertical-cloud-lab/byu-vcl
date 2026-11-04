@@ -83,6 +83,8 @@ INTENDED = [
     ("cubxl_corrosion", "cap/pogo", "body/lids", "the cap's pogo pins compress on the lid's pads"),
     ("tray_dock", "head", "tray", "the dock's CombiTac half mates with the tray's: pins in bushings, contacts in "
                                   "contacts"),
+    ("form4", "holder/carrier", "load/build platform", "the build platform's spine slots into the carrier"),
+    ("form_wash", "holder/carriage", "load/build platform", "the build platform's spine slots into the elevator"),
 ]
 
 
@@ -218,6 +220,8 @@ def geometry(key: str, module: str, build) -> dict:
             pd = pd.triangulate()
             parts.append(dict(piece=piece, part=f"mesh {i}", material="mesh", pd=pd))
     out = []
+    known = _hull_cache()
+    n0 = len(known)
     for p in parts:
         pd = p.pop("pd")
         f = pd.faces.reshape(-1, 4)[:, 1:] if pd.faces.size else np.zeros((0, 3), int)
@@ -226,12 +230,42 @@ def geometry(key: str, module: str, build) -> dict:
         tm = _tri(pd.points, f)
         if len(tm.faces) < 4:
             continue
-        hulls, ratio = _hulls(tm)
-        out.append(dict(p, verts=np.asarray(tm.vertices), faces=np.asarray(tm.faces), hulls=hulls, ratio=ratio,
-                        watertight=bool(tm.is_watertight)))
+        v, fc = np.asarray(tm.vertices), np.asarray(tm.faces)
+        hk = _mesh_key(v, fc)
+        if hk not in known:                       # only a part that changed is decomposed again
+            known[hk] = _hulls(tm)
+        hulls, ratio = known[hk]
+        out.append(dict(p, verts=v, faces=fc, hulls=hulls, ratio=ratio, watertight=bool(tm.is_watertight)))
     data = dict(inst=inst, parts=out)
     path.write_bytes(pickle.dumps(data))
+    if len(known) > n0:
+        (CACHE / "hulls.pkl").write_bytes(pickle.dumps(known))
     return _solid(data)
+
+
+def _mesh_key(v, f) -> str:
+    return hashlib.sha1(np.ascontiguousarray(v, np.float64).tobytes() + np.ascontiguousarray(f, np.int64).tobytes()
+                        + CODE.encode()).hexdigest()
+
+
+_HULLS = None
+
+
+def _hull_cache() -> dict:
+    """{mesh key: (hulls, ratio)}: every part ever decomposed, so editing one part of a model redoes only that part.
+    Seeded from the per-model caches the first time."""
+    global _HULLS
+    if _HULLS is None:
+        p = CACHE / "hulls.pkl"
+        _HULLS = pickle.loads(p.read_bytes()) if p.exists() else {}
+        if not _HULLS:
+            for g in CACHE.glob("geo_*.pkl"):
+                try:
+                    for q in pickle.loads(g.read_bytes())["parts"]:
+                        _HULLS.setdefault(_mesh_key(q["verts"], q["faces"]), (q["hulls"], q["ratio"]))
+                except Exception:
+                    continue
+    return _HULLS
 
 
 def _solid(data: dict) -> dict:
@@ -557,13 +591,23 @@ class Exact:
         vol = float(x.volume())
         if vol <= 1e-6:
             return (0.0, 0.0, None, None)
+        # the thickness is the deepest single overlap: each connected piece's thinnest extent along its own principal
+        # axes, so a bag's two thin walls through a foam block read as their own depth, not as the gap between them
+        thick, cen = 0.0, None
+        for comp in x.decompose():
+            cm = comp.to_mesh()
+            cv = np.asarray(cm.vert_properties, float)[:, :3]
+            if len(cv) < 4 or comp.volume() <= 1e-6:
+                continue
+            c0 = cv.mean(0)
+            _, _, vt = np.linalg.svd(cv - c0, full_matrices=False)
+            t = float(np.ptp((cv - c0) @ vt.T, axis=0).min())
+            if t > thick:
+                thick, cen = t, c0
         mesh = x.to_mesh()
         v = np.asarray(mesh.vert_properties, float)[:, :3]
         f = np.asarray(mesh.tri_verts, np.int64)
-        c = v.mean(0)
-        _, _, vt = np.linalg.svd(v - c, full_matrices=False)
-        ext = np.ptp((v - c) @ vt.T, axis=0)
-        return (vol, float(ext.min()), c, (v, f))
+        return (vol, thick, v.mean(0) if cen is None else cen, (v, f))
 
 
 # ================================================================================================= coming loose
@@ -657,6 +701,7 @@ def check(key: str, module: str, build, verbose=True) -> dict:
     pose_err = max(sim.check_pose(fr[k][3]) for k in sorted({0, len(fr) // 2, len(fr) - 1}))
     ex = Exact(parts)
     hits = {}                                     # (i, j) -> dict
+    meant = {}                                    # (i, j) -> listed in INTENDED
     n_cand = n_conf = 0
     t1 = time.time()
     for a, fno, u, v in fr:
@@ -672,6 +717,10 @@ def check(key: str, module: str, build, verbose=True) -> dict:
             if not (present(inst, v, pi) and present(inst, v, pj)):
                 continue
             n_cand += 1
+            if (i, j) not in meant:
+                meant[(i, j)] = _intended(key, parts[i], parts[j]) is not None
+            if meant[(i, j)] and (i, j) in hits and fno % 10:      # intended (DED's fused beads): every 10th frame
+                continue
             if not ex.overlap(i, j, w[pi], w[pj]):
                 continue
             n_conf += 1
@@ -765,23 +814,28 @@ def sheet(n=12, cols=4):
     rep = json.loads((OUT / "collisions.json").read_text())
     rows = []
     for key, r in rep["models"].items():
-        for f in r["findings"]:
-            if f["level"] in ("fault", "minor") and not f["intended"] and f["at_mm"] is not None:
-                rows.append((key, f))
+        best = {}
+        for f in r.get("findings", []):
+            if f["level"] == "fault" and f["kind"] == "motion" and not f["intended"] and f["at_mm"] is not None:
+                pair = tuple(sorted(f["pieces"]))           # one tile per pair of pieces: the deepest
+                if pair not in best or f["thickness_mm"] > best[pair]["thickness_mm"]:
+                    best[pair] = f
+        rows += [(key, f) for f in best.values()]
     rows.sort(key=lambda kf: -(kf[1]["thickness_mm"] or 0))
     rows = rows[:n]
     reg = registry()
     tw, th, cap = 480, 330, 62
     sh = Image.new("RGB", (tw * cols, (th + cap) * max(1, (len(rows) + cols - 1) // cols)), "white")
     dr = ImageDraw.Draw(sh)
+    pl = pv.Plotter(off_screen=True, window_size=(tw * 2, th * 2))
+    pl.set_background("white")
     for idx, (key, f) in enumerate(rows):
         module, build = reg[key]
         geo = geometry(key, module, build)
         inst, parts = geo["inst"], geo["parts"]
         v = next(vv for a, fno, u, vv in frames(inst) if fno >= f["worst_frame"])
         w = world(inst, v)
-        pl = pv.Plotter(off_screen=True, window_size=(tw * 2, th * 2))
-        pl.set_background("white")
+        pl.clear_actors()
         ia = ib = None
         for i, p in enumerate(parts):
             if not present(inst, v, p["piece"]):
@@ -806,18 +860,20 @@ def sheet(n=12, cols=4):
         c = np.asarray(f["at_mm"], float)
         x0, x1, y0, y1, z0, z1 = inst.bbox()
         size = np.linalg.norm([x1 - x0, y1 - y0, z1 - z0])
-        dist = max(120.0, 0.55 * size)
+        dist = max(250.0, 0.45 * size)
         dd = np.asarray(inst.cam, float)
         dd /= np.linalg.norm(dd)
         pl.camera_position = [tuple(c + dd * dist), tuple(c), (0, 0, 1)]
+        pl.camera.view_angle = 30.0
+        pl.render()
         img = pl.screenshot(return_img=True)
-        pl.close()
         x, y = (idx % cols) * tw, (idx // cols) * (th + cap)
         sh.paste(Image.fromarray(img).resize((tw, th), Image.LANCZOS), (x, y))
         dr.text((x + 8, y + th + 3), f"{inst.model[:46]}", font=font(14, bold=True), fill=(20, 20, 24))
         dr.text((x + 8, y + th + 21), f"{f['a'][:30]}  x  {f['b'][:30]}", font=font(12), fill=(70, 72, 78))
-        dr.text((x + 8, y + th + 38), f"{f['thickness_mm']} mm thick, {f['volume_mm3']:.0f} mm3, tour frame "
-                f"{f['worst_frame']}", font=font(12), fill=(170, 30, 30))
+        dr.text((x + 8, y + th + 38), f"{f['thickness_mm']:.1f} mm deep, tour frames {f['first_frame']}-"
+                f"{f['last_frame']} (worst {f['worst_frame']})", font=font(12), fill=(170, 30, 30))
+    pl.close()
     path = OUT / "collisions_sheet.png"
     sh.save(path, optimize=True)
     return path

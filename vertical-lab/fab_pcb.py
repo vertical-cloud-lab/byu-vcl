@@ -154,7 +154,9 @@ def lumenpnp() -> Instrument:
             ("", 0.5, {"nozzle": (0.0, 1.0), "part": (1.0, 0.0), k: (0.0, 1.0)}),
             ("", 0.4, {"nozzle": (1.0, 0.0)}),
         ]
-    acts += [("Three parts placed; the board goes on to reflow.", 2.0, {**go(1.0, 1.0), "load": (1.0, 0.0)})]
+    # the head parks first: lifting out under it, the board ran through the nozzle and the ring light (collide.py)
+    acts += [("Three parts placed; the head parks and the board goes on to reflow.", 0.8, go(1.0, 1.0)),
+             ("", 1.6, {"load": (1.0, 0.0)})]
     inst.actions = acts
     inst.labels = [("two nozzles, top camera", (hx, hy - 30, rz + 60), (0.16, 0.20)),
                    ("powered feeders", (-150, -yl - 20, 200), (0.14, 0.78)),

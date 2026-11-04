@@ -93,7 +93,10 @@ def _lpbf(inst: Instrument, cx: float, cy: float, P: float, well: float, ceiling
         raster += [(-r, y, 0), (r, y, 0)] if i % 2 == 0 else [(r, y, 0), (-r, y, 0)]
     joints = {
         "platform": Joint("slide", vec=(0, 0, -n_layers * t)),
-        "load": Joint("path", path=((come_x, -480, 170), (0, -160, 60), (0, 0, 30), (0, 0, 0)), parent="platform"),
+        # it lines up square to the door before it goes in (straight from the side, the MPRINT's plate clipped the
+        # door frame: collide.py)
+        "load": Joint("path", path=((come_x, -480, 170), (0, -400, 120), (0, -160, 60), (0, 0, 30), (0, 0, 0)),
+                      parent="platform"),
         "recoater": Joint("slide", vec=(sweep, 0, 0)),
         "powder": Joint("fade"),
         "scan": Joint("path", path=tuple(raster)),
@@ -276,8 +279,10 @@ def mprint() -> Instrument:
         ("A spent cartridge comes out to be refilled outside; a full one goes in. No open powder.", 2.4,
          {"cartridge": (0.0, 1.0)}),
         ("", 1.6, {"cartridge": (1.0, 0.0)}),
-        ("Hatch shut. The chamber door opens and a 150 mm build plate goes onto the platform.", 2.6,
-         {"hatch": (1.0, 0.0), "door": (0.0, 1.0), "load": (0.0, 1.0)}),
+        # the door is open before the plate moves (opening as it came in, it swung through the plate: collide.py)
+        ("Hatch shut. The chamber door opens and a 150 mm build plate goes onto the platform.", 1.2,
+         {"hatch": (1.0, 0.0), "door": (0.0, 1.0)}),
+        ("", 1.8, {"load": (0.0, 1.0)}),
         ("Door shut; argon purge. See-through: the revolver turns a full cartridge over the feed to the hopper.", 2.0,
          {"door": (1.0, 0.0), "revolver": (0.0, 1.0), "~body": (0.0, 0.8), "~hatch": (0.0, 0.8),
           "~door": (0.0, 0.8)}),
@@ -384,7 +389,9 @@ def meltio_m450() -> Instrument:
     f_start = float(s[1] / s[-1])
     inst.joints = {
         "door": Joint("hinge", axis=(0, 0, 1), pivot=(x0 - 8, yb - 12, 0), deg=-100.0),
-        "load": Joint("path", path=((220, -560, 200), (0, -170, 80), (0, 0, 25), (0, 0, 0))),    # clear of the door
+        # clear of the door, then square to the opening before it goes in (from the side, it clipped the front frame:
+        # collide.py)
+        "load": Joint("path", path=((220, -560, 200), (0, -430, 130), (0, -170, 80), (0, 0, 25), (0, 0, 0))),
         "head": Joint("path", path=tuple(pts)),
         "glow": Joint("fade", parent="head"),
         **{f"wall{k}": Joint("fade") for k in range(1, n + 1)},
