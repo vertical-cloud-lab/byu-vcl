@@ -523,13 +523,15 @@ def movie():
     m_rot = np.array([m_rel[0] * c + m_rel[2] * s_, m_rel[1], -m_rel[0] * s_ + m_rel[2] * c])
     target = sieve_w(sv, (30.0, 0.0, z_rim + 100.0))
     p_tip = target - m_rot
-    # upright, the container waits in front of the stack (beside it, it stood in the tipper and the parked lid); the
-    # line move then tips it over the No. 60
-    p_up = p_tip + np.array([0.0, -190.0, 0.0])
-    p_up[2] = sieve_w(sv, (0, 0, z_rim + 105.0))[2]
+    # the container comes to a spot in front of the stack, clear of the sieves' tabs (beside it, it stood in the tipper
+    # and the parked lid), tips part way there, then goes in over the No. 60 as it tips the rest of the way: tipped in
+    # one move from upright, its foot swept through the tabs
+    p_up = p_tip + np.array([0.0, -260.0, 0.0])
+    th1 = -70.0
     status(sc, Arm="pouring", Powder="onto the No. 60")
     sc.step(f"2/{n}", cap, 1.8, rb.joint_to(Tw=level_y(p_up, 90.0)), hold=0.05, cam_to=CAM_SV_IN)
-    sc.step(f"2/{n}", cap, 1.6, rb.line_to(level_y(p_tip, 90.0 + th)), hold=0.05)
+    sc.step(f"2/{n}", cap, 0.8, rb.line_to(level_y(p_up, 90.0 + th1)), hold=0.02)
+    sc.step(f"2/{n}", cap, 1.2, rb.line_to(level_y(p_tip, 90.0 + th)), hold=0.05)
     heap_in = svmove({f"frac_{k}": (0.0, 1.0) for k, *_ in IC.STACK})
 
     def pour(u):
@@ -550,7 +552,8 @@ def movie():
     g_back = seat_c + HANDLE_GRASP
     cap = "The empty container goes back in its cup on the MiR, to ride back to the rePowder for cleaning."
     status(sc, Arm="the container back on the MiR", Powder="on the No. 60")
-    sc.step(f"2/{n}", cap, 1.2, rb.line_to(level_y(p_up, 90.0)), hold=0.05)
+    sc.step(f"2/{n}", cap, 0.8, rb.line_to(level_y(p_up, 90.0 + th1)), hold=0.02)
+    sc.step(f"2/{n}", cap, 0.6, rb.line_to(level_y(p_up, 90.0)), hold=0.05)
     sc.step(f"2/{n}", cap, 1.6, rb.joint_to(Tw=level_y(g_back + (0, 0, 120), 90.0)), hold=0.05)
     sc.step(f"2/{n}", cap, 0.8, rb.line_to(level_y(g_back, 90.0)), hold=0.05)
     sc.step(f"2/{n}", cap, 0.4, rb.grip_to(0.0), hold=0.05)
@@ -814,7 +817,9 @@ def movie():
     p_in0 = np.array([sup[0] - 60.0, door_front - 150.0, sup[2] + 75.0])
     p_pour = np.array([sup[0] - 60.0, sup[1] - 60.0, sup[2] + 75.0])      # tipped, the mouth is over the cylinder
     sc.step(f"4/{n}", cap, 1.6, rb.joint_to(Tw=level_y(p_in0, 0.0)), hold=0.05)
-    sc.step(f"4/{n}", cap, 1.6, rb.line_to(level_y(p_pour, 0.0)), hold=0.05)
+    # in through the door by a planned joint move: the straight line from the door to the cylinder kept the arm in the
+    # IK branch it had at the door, which puts the forearm in the base cabinet's top on the way
+    sc.step(f"4/{n}", cap, 1.6, rb.joint_to(Tw=level_y(p_pour, 0.0)), hold=0.05)
     sc.step(f"4/{n}", cap, 1.0, rb.line_to(level_y(p_pour, 112.0)), hold=0.05)
 
     def fill(u):
@@ -833,7 +838,7 @@ def movie():
     cap = "The empty jar goes back on the MiR, and the door shuts. The chamber is purged with argon before the " \
           "laser runs."
     sc.step(f"4/{n}", cap, 0.8, rb.line_to(level_y(p_pour, 0.0)), hold=0.05)
-    sc.step(f"4/{n}", cap, 1.4, rb.line_to(level_y(p_in0, 0.0)), hold=0.05)
+    sc.step(f"4/{n}", cap, 1.4, rb.joint_to(Tw=level_y(p_in0, 0.0)), hold=0.05)
     sc.step(f"4/{n}", cap, 1.6, rb.joint_to(Tw=level_y(seat_now + (0, 0, 150), 0.0)), hold=0.05)
     sc.step(f"4/{n}", cap, 0.8, rb.line_to(level_y(seat_now, 0.0)), hold=0.05)
     sc.step(f"4/{n}", cap, 0.4, rb.grip_to(0.0), hold=0.05)
