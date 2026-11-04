@@ -866,13 +866,28 @@ piece up from its base.
 
 | Clip | What it does | GIF | MP4 | YouTube (unlisted) |
 |---|---|---|---|---|
+| **Opentrons OT-2** | The door, windows, frame and head cover fade. The P300 presses into tip A1 in slot 1, draws 300 µL from well H1 of a deep-well plate in slot 2, and dispenses it into H1 of a 96-well plate in slot 3. Both plates are cut through row H, so the levels show. Then it drops the tip in the fixed trash and goes home | [GIF](out/instruments/ot2.gif) | [MP4](out/mp4/instruments/ot2.mp4) | [on YouTube](https://www.youtube.com/watch?v=iwYZM4PX32Y) |
 | **Bambu Lab H2D** | The enclosure goes see-through. The bed rises to the nozzles, and the toolhead traces a vial rack in PETG while the bed steps down a layer at a time. The door opens and the flexible plate comes out with the rack on it | [GIF](out/instruments/h2d.gif) | [MP4](out/mp4/instruments/h2d.mp4) | [on YouTube](https://www.youtube.com/watch?v=r-ymcfZ-EAQ) |
 | **Bambu Lab A1 mini** | A bed slinger: the head (x) and the bed (y) trace each layer between them while the arm climbs the column (z). Then the PEI plate lifts off with the part | [GIF](out/instruments/a1_mini.gif) | [MP4](out/mp4/instruments/a1_mini.mp4) | [on YouTube](https://www.youtube.com/watch?v=CuI7t6pSOS8) |
 | **CubXL, liquid handling** | The tool plate goes see-through. The pipette takes a tip, draws from the stock and dispenses onto the powder in the vial the multi-doser filled, mixes, then puts the tip back. The vials and the rack are in half section | [GIF](out/instruments/cubxl_lh.gif) | [MP4](out/mp4/instruments/cubxl_lh.mp4) | [on YouTube](https://www.youtube.com/watch?v=9X6Q8AGsfoY) |
+| **Multi-doser** (chain carousel v2) | The chain brings module 6 to the station, and the P16 docks the electronics carriage to it. The other modules fade. The module tilts to 30°, and the auger turns 5 times at 60 rpm while the solenoid taps. Salt falls through the catch funnel into the 20 mL vial. The vial, its cup and the funnel are cut in half, and the heap is re-meshed every frame. Then the module tilts back, the auger turns back once, and the carriage undocks | [GIF](out/instruments/multidoser.gif) | [MP4](out/mp4/instruments/multidoser.mp4) | [on YouTube](https://www.youtube.com/watch?v=3BqVNi7t5DQ) |
+| **All five, joined** (1 min 48 s, a chapter each) | | [gallery](out/instruments_round2_gallery.png) | [MP4](out/mp4/instruments_round2_tour.mp4) | [on YouTube](https://www.youtube.com/watch?v=ki0yLSfdTIk) |
+
+![Round 2's equipment at work](out/instruments_round2_gallery.png)
 
 ![The CubXL's pipette over its rack, the vials in half section](out/instruments/cubxl_lh.gif)
 
 What is assumed, model by model:
+- **OT-2.** It comes from Opentrons' reference STEP (`lab_models/vendor.py`). The moving parts are split out of it by
+  bounding box:
+  - the X beam, cut out of the frame solid (the gantry, moving in y);
+  - the head's carriage, back plate, lid and cover (moving in x, on the gantry);
+  - the P300 on the right mount, with its slide (moving in z).
+
+  The STEP draws all four pipette variants on both mounts, so one is kept per mount: a P20 on the left and the P300 on
+  the right. The deck slots come from Opentrons' `ot2_standard.json` deck definition, whose footprint matches the STEP
+  frame to 0.1 mm. The tip rack, the deep-well plate and the 96-well plate stand in slots 1–3. The fixed trash in
+  slot 12 gets a bin cut into it.
 - **H2D and A1 mini.** These are round 2's models (`lab_models/equipment.py`), built from Bambu's spec pages and
   outline drawing. The parts are vial racks: prisms, so stretching one is the same as adding layers. The head's path
   is the part's outline, a few loops standing for the layers.
@@ -885,6 +900,21 @@ What is assumed, model by model:
     tip clears the vials at the top of z travel.
   - The pipette is round 2's generic one, not a named model.
   - Vials 1 and 6 and the vial rack are cut in half. The other four vials are round 2's.
+- **Multi-doser.** The rig moves by its own kinematics: `carousel.Carousel` over powder-doser `1c135e0`'s
+  `layout.placements(State(...))`. That is not rigid pieces, so its clip is `instruments_round2.multidoser_tour`,
+  which tour.py calls through `TOURS`.
+  - The dose follows powder-doser's protocol and figures. The protocol is to dock, tilt 30°, dose, hold 0.5 s, tilt
+    back and make one reverse turn at rest. The yield is 105 mg of salt per turn through the Ø3 mm exit, the rig's
+    measured yield, matched by its DEM twin (`AUGER-SIM.md`). At 60 rpm (test plan T6c), 5 turns give 0.525 g. The
+    taps run at 2 Hz, and the heap stands at salt's 34° angle of repose.
+  - The bulk density (1.2 g/cm³) and the salt's speed down the funnel are assumed.
+  - The station weighs on the rig's own 100 g load cell, as powder-doser's CAD has it. The alloy route's chapter 1
+    weighs the charge cups on an HR-202i instead.
+  - The solenoid's plunger doesn't move, because the CAD's `layout.py` multiplies the tap by 0. The taps show only as
+    a count.
+  - The heap is a cone on the vial's axis, though the real stream leaves the spout off-centre.
+  - As drawn the rig stands 731 mm, 3.5 mm over Kardex's 727.5 mm, so `out/instruments.json` lists it as "beside the
+    VLM". Round 2 has it on tray B (see [the vial](#things-the-model-shows) below).
 
 ## The workflow
 
