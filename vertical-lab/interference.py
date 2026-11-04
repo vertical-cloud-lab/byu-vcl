@@ -55,7 +55,8 @@ TOUCH_MM = 0.6                          # thinner overlaps are tessellation erro
 FAULT_MM = 2.0                          # at least this thick: a fault; between the two: minor
 LOOSE_MM = 10.0                         # a moving machine piece this far from the rest of the machine has come loose
 CODE = "interference-v1"                     # bump to rebuild the geometry caches
-MODULES = ["instruments", "instruments_char", "instruments_lab", "services", "fab_metal", "fab_resin", "fab_pcb"]
+MODULES = ["instruments", "instruments_char", "instruments_lab", "services", "fab_metal", "fab_resin", "fab_pcb",
+           "instruments_r7"]
 
 # not solids: fluids, powders, glows, beams, overlays (by material), and the mesh pieces that are powder heaps,
 # falling powder or a readout panel's carrier (by piece name)

@@ -100,11 +100,14 @@ CHAPTERS = [
     dict(key="alloy1", title="Alloy route 1/5: the charge cups, dosed, weighed and pressed under vacuum",
          card=["The atomizer melts the lab's own charge cups (#222), turned from 5N Al and oxygen-free Cu bar. Each "
                "is dosed through its powder's own funnel, weighed on an A&D HR-202i, and its vented plug pressed "
-               "fully home under vacuum in a Specac Atlas Autotouch, compacting the powder to a set load."],
+               "fully home under vacuum in a Specac Atlas Autotouch, compacting the powder to a set load.",
+               "This chapter is still round 6's render: the old carrier, and the cup on the bare pin. The press's "
+               "own clip after it has the new catch ring."],
          parts=[("mp4", "dag/route_dag_ch1.mp4", "The route as a function network (DAL's ONR YIP DAG)"),
                 ("still", "dal_workflow_table.png", 12.0, "DAL's alloy workflow, step by step (notes/dal_workflow.md): "
                  "the station each step uses here, and what is still missing", "DAL's 17 steps, and where each runs"),
-                ("mp4", "alloy_charge.mp4", "The charge cups")]),
+                ("mp4", "alloy_charge.mp4", "The charge cups"),
+                ("mp4", "vacuum_press.mp4", "The vacuum press with its catch ring")]),
     dict(key="alloy2", title="Alloy route 2/5: melt and atomize in the rePowder",
          card=["The MiR250 takes the four Al cups to the AMAZEMET rePowder. A loading tool lowers each cup into the "
                "crucible. Pump-downs with argon, induction melt, the pour, the ultrasonic spray, powder in the "
@@ -137,24 +140,24 @@ CHAPTERS = [
                 ("mp4", "instruments/mastersizer.mp4", "Malvern Mastersizer 3000 + Aero S"),
                 ("mp4", "instruments/nanoindenter.mp4", "KLA iMicro nanoindenter"),
                 ("mp4", "instruments/pip.mp4", "Plastometrex PLX-Benchtop (PIP)"),
-                ("mp4", "instruments/hardness.mp4", "An automatic Vickers hardness tester")]),
+                ("mp4", "instruments/hardness.mp4", "A micro-Vickers tester: Mitutoyo HM-220")]),
     dict(key="prep", title="Sample prep, testing, powder handling, fume hoods and shipping",
          card=["Polishing, heat treatment, a CNC that loads itself, the wire EDM, tensile testers (one lying on a "
                "tray), sieving, a glovebox on a tray and one on the floor, fume hoods, the sample store, and a "
                "packaging station that labels and seals powder for shipping."],
          parts=[("mp4", "instruments/polisher.mp4", "LECO PX500 grinder-polisher"),
                 ("mp4", "instruments/furnace.mp4", "Nabertherm furnace"),
-                ("mp4", "instruments/cnc.mp4", "An autonomous CNC"),
+                ("mp4", "instruments/cnc.mp4", "A CNC with a tool changer: Makera Carvera"),
                 ("mp4", "instruments/wire_edm.mp4", "FANUC ROBOCUT wire EDM"),
-                ("mp4", "instruments/tensile_horizontal.mp4", "A tensile tester lying on a tray"),
+                ("mp4", "instruments/tensile_h.mp4", "A tensile tester on its side: zwickiLine Z5.0 TN"),
                 ("gitmp4", FIXES, "vertical-lab/out/mp4/instruments/instron_small.mp4", "The two Instrons"),
                 ("mp4", "instruments/instron_floor.mp4", None),
                 ("mp4", "instruments/sieve.mp4", "Sieve shaker: Retsch AS 200"),
                 ("mp4", "instruments/glovebox_tray.mp4", "A glovebox on a tray"),
                 ("mp4", "instruments/glovebox.mp4", "The floor glovebox"),
-                ("mp4", "instruments/fume_hood.mp4", "Fume hoods"),
-                ("mp4", "instruments/fume_hood_tray.mp4", None),
-                ("mp4", "instruments/sample_store.mp4", "The sample store: cups, plugs, vials"),
+                ("mp4", "instruments/fumehood.mp4", "Fume hoods: a ducted XStream, a ductless tray hood"),
+                ("mp4", "instruments/fumehood_tray.mp4", None),
+                ("mp4", "instruments/storage.mp4", "The sample store: cups, plugs, vials"),
                 ("mp4", "instruments/packaging.mp4", "Packaging")]),
     dict(key="fab", title="Fabrication: metal printers, DED, resin and PCB assembly",
          card=["Desktop LPBF, the Meltio M450 wire DED and the InssTek MX-Lab powder DED, Formlabs Form 4 with Wash "
