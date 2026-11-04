@@ -3,21 +3,26 @@
 [`vacuum_press.py`](../vacuum_press.py), byu-vcl #303, for DAL #140 ("Vacuum Hydraulic Powder Press to Avoid
 Explosions") and DAL #156. Sterling: the plug should go in all the way and compress the powder to a set tonnage, and
 a vacuum press would be better. This note covers the press chosen, what it looks like, how it is run, the numbers,
-and what a robot needs to run it. The model is drop-in for the plug press in `charge.press_parts()`, so
-`alloy_charge.py` can use it. That swap has not been made yet.
+and what a robot needs to run it. Chapter 1 of the alloy route (`alloy_charge.py`, through `alloy_press.py`) runs it
+on tray B, where it has stood since the lab was set up.
 
 ```
 xvfb-run -a python3 vacuum_press.py          # the clip -> out/vacuum_press.gif, out/mp4/vacuum_press.mp4, still, .json
 python3 vacuum_press.py numbers              # the numbers only -> out/vacuum_press.json
 ```
 
+Re-rendered 2026-11-04 with the catch ring ([below](#the-catch-the-cup-stands-in-the-dies-mouth-not-on-the-bare-pin)):
+50.4 s, 756 frames at 15 fps, [MP4](../out/mp4/vacuum_press.mp4) (1.8 MB), [GIF](../out/vacuum_press.gif) (2.25 MB).
+
+![The pressed cup standing in the catch ring, waiting for the arm](../out/vacuum_press_still.png)
+
 ## The press: Specac Atlas Autotouch 15T
 
 **Off the shelf:** the Specac Atlas Autotouch 15T (part no. GS2581X, 230 V; there are 110 V versions), a two-stage
 rotary-vane pump, isolation valve V1, vent valve V2 with a needle valve, and a Pirani gauge.
 
-**Ours:** the evacuable die round F1, the punch, the ejector pin, the shuttle with its rails and stand, the ejector
-under the shuttle's out position, and the dry Ar line on V2.
+**Ours:** the evacuable die round F1, the catch ring on F1 that a raised cup stands in, the punch, the ejector pin,
+the shuttle with its rails and stand, the ejector under the shuttle's out position, and the dry Ar line on V2.
 
 Why the Autotouch:
 
@@ -105,12 +110,46 @@ and front is -y.
 - **The die** is a Ø80 steel body with F1 in a Ø31.80 bore, standing on a 15 mm floor.
   - The cup's base is on the bore floor, on a Ø15.9 (5/8 in) ejector pin. The pin is flush with the floor and backed
     by the piston, so it is #222's drift built in.
-  - The bore runs 22 mm above F1, to guide the punch.
-  - The vacuum port (KF16) opens into the bore 4 mm above F1. It needs a sintered filter disc against the powder.
-- **The punch** is Ø31.70 hardened steel, 30 mm long, with a Ø50 x 12 flange for the gripper. Its Viton O-ring is
-  10 mm above its face, so it seals before the plug moves and never passes the port.
+  - **The catch ring** fills the bore's top 22 mm, on F1 (below).
+  - The vacuum port (KF16) opens into the bore 4 mm above F1, through the catch ring's wall. It needs a sintered
+    filter disc against the powder.
+- **The punch** is hardened steel, 42 mm long: a Ø19.20 nose, 22 mm long, that runs in the catch ring; a Ø31.70
+  collar, 8 mm; and a Ø50 x 12 flange for the gripper. Its Viton O-ring is on the nose, 10 mm above its face, so it
+  seals in the ring before the plug moves and never passes the port.
 - **The shuttle** is a 110 x 110 x 15 mm plate on two rails, 230 mm of travel, out to a stand in front of the press.
   It sits on the rails, and the piston lifts it off them.
+
+## The catch: the cup stands in the die's mouth, not on the bare pin
+
+Sterling, on PR #318: "When the press raises up a cup + plug combo, it looks very unstable. There should probably be a
+custom underneath catch that holds it in place somewhat." It was: the pin lifted the cup 90.5 mm, its base 4.5 mm
+over the die, on a Ø15.9 pin under a Ø19.05 cup.
+
+**Nothing riding on the pin can hold the cup round its base.** The pin pushes the cup up through F1, a line-to-line
+fit on the cup (bore 19.063 on a 19.050 cup). Whatever goes up with the cup has to pass through F1 too, so it must fit
+inside the cup's own diameter: a nest, a collet's fingers, a sleeve round the base all would jam on F1's top. So the
+catch is in the die's mouth, where the cup comes out:
+
+- **A catch ring:** hardened tool steel, Ø31.75 (F1's own OD, a slip fit in the body's bore) x 22 mm, standing on F1
+  and flush with the body's top, held by the body (a cap screw or a retaining ring). Bored **Ø19.30**, 0.25 mm over
+  the cup (0.125 mm a side), with a **30° lead-in, 1.5 mm across and 2.6 mm deep**.
+- **The pin stops lower:** 75.5 mm up, not 90.5, so the cup's bottom **10 mm** stay in the ring. A cup in it can lean
+  1.4° at most (0.25 mm over 10 mm), so it stands in a socket while the arm sets it and lifts it off.
+- **The arm sets it into the ring** from 40 mm over the die, on the lead-in: 0.25 mm of diametral clearance is an
+  ordinary peg-in-hole for a UR10e (±0.05 mm repeatability). Out of it, it lifts the cup 40 mm straight up before
+  moving away.
+- **The arm's grasp clears it.** The level grasp is 45 mm above the cup's base, 35 mm over the die's top. The 2F-85's
+  fingertips reach 12 mm below the grasp point, held level, and the finger links 14.4 mm, so they pass at least 20 mm
+  over the ring and the die.
+- **The punch was changed to fit it.** Its lower 22 mm are now a Ø19.20 nose that runs in the ring (0.05 mm a side;
+  the O-ring seals on it), and the 8 mm above is a Ø31.70 collar that lands on the ring's top as the plug reaches
+  flush. The load past flush goes collar, ring, F1, floor: still into F1, as #222 intends, through a 401 mm² annulus
+  on the ring's top (78 MPa at 3.2 t). The punch is as tall as before (42 mm), so the leadscrew, the flange's height
+  and the arm's grasp on it are unchanged. Under vacuum about 30 N now holds it down (Ø19.3 sealed), not 80 N.
+- **The rest:** the punch's nose stands in a Ø20.2 pocket in its rest, its collar on the rest's top.
+
+Not done: a light drag on the cup in the ring (a spring ball plunger or an O-ring in a groove) would stop it rattling
+if the shuttle moves with a cup in the catch. It doesn't here: the shuttle only moves with the pin down.
 
 ## The cycle, as a robot runs it
 
@@ -118,18 +157,18 @@ and front is -y.
 | --- | --- | --- | --- |
 | 1 | Guard up | guard actuator (or the arm, by its handle) | a guard actuator; the interlock stays in circuit |
 | 2 | Shuttle out (230 mm) | shuttle drive | rails, a drive, end sensors |
-| 3 | Ejector pin up 90.5 mm, the cup's base 4.5 mm over the body | ejector | an actuator under the out position |
-| 4 | Dosed cup onto the pin; pin down lowers it into F1 (line-to-line fit) | arm, ejector | as `alloy_charge.py` already does with the nest's ejector |
+| 3 | Ejector pin up 75.5 mm, its top 10 mm down in the catch ring | ejector | an actuator under the out position |
+| 4 | Dosed cup into the catch ring, onto the pin; pin down lowers it into F1 (line-to-line fit) | arm, ejector | the ring's lead-in |
 | 5 | Plug set in the mouth on its lead-in, 8.0 mm proud | arm, from above | as now |
-| 6 | Punch into the bore; O-ring seals; it rests on the plug | arm (punch weighs about 0.3 kg) | a rack spot for the punch |
+| 6 | Punch's nose into the catch ring; O-ring seals; it rests on the plug | arm (punch weighs about 0.3 kg) | a rest for the punch |
 | 7 | Shuttle in; guard down | shuttle, guard | the hose and rails pass under the guard's bottom rail |
 | 8 | V1 opens through the needle valve, then fully; hold 2 min under 1 mbar | PLC | V1 (solenoid), needle valve, Pirani gauge readout |
 | 9 | Start: program P1 (pump up to 3.2 t, maintain 1.0 min, slow release to 0 t) | the arm presses Start, or a remote input | the Start button within the arm's reach |
-| 10 | The ram closes the 2 mm gap to the leadscrew, pushes the plug 8.03 mm to flush, then F1 takes the rest | press | |
+| 10 | The ram closes the 2 mm gap to the leadscrew, pushes the plug 8.03 mm to flush; the punch's collar lands on the ring and F1 takes the rest | press | |
 | 11 | V1 shuts; V2 lets in dry Ar to 1013 mbar | PLC | V2, Ar regulator |
 | 12 | Release to 0 t; ram down | press (end of P1) | |
-| 13 | Guard up; shuttle out; arm lifts the punch | | vent first: under vacuum, about 80 N holds the punch down |
-| 14 | Ejector pushes the cup up out of F1; the arm takes it | ejector, arm | the push-out force (below) |
+| 13 | Guard up; shuttle out; arm lifts the punch | | vent first: under vacuum, about 30 N holds the punch down |
+| 14 | Ejector pushes the cup up out of F1 into the catch ring, where it stands; the arm lifts it out | ejector, arm | the push-out force (below) |
 
 The leadscrew is wound down by hand once, to 2 mm over the punch's top. That leaves 145.5 mm between the faces. The
 cycle uses 10.0 of the 24 mm stroke.
@@ -207,15 +246,16 @@ bore.
   - **`guard`:** frame, handle, panel. Draw the panel at `PETG_ALPHA`. Shown closed; open is +`VP["guard_open"]`
     (165) in z.
   - **`ram`:** the piston, face at `VP["piston_down"]` (245). It moves +z by 0-24.
-  - **`shuttle`:** plate, body, f1, port. The frame's origin is the plate's underside on the die axis. Place it at
-    `(AXX, y, 245 + ram)`, with y from `VP["shuttle_out_y"]` (-286) to `VP["shuttle_in_y"]` (-56).
+  - **`shuttle`:** plate, body, f1, catch (the catch ring), port. The frame's origin is the plate's underside on the
+    die axis. Place it at `(AXX, y, 245 + ram)`, with y from `VP["shuttle_out_y"]` (-286) to `VP["shuttle_in_y"]`
+    (-56).
   - **`pin`:** child of the shuttle. Its top is at `VP["cup_base_local"]` (30) + e, with e from 0 to `VP["eject"]`
-    (90.5).
+    (75.5: the cup's bottom `VP["catch"]`, 10 mm, still in the catch ring).
   - **`ejector`:** the push rod in the stand, top at 0. Place it at `(AXX, -286, 245 + e)`.
   - **`punch`:** face at 0. It sits in the shuttle frame at `VP["punch_set_local"]` (101.53) minus the plug's travel.
   - **`vacuum`:** pump, fan, handle, block, valves, knob, gauge, display, line, ar_line.
 - `hose(p_port)`: the flexible hose from the die's port (world) to the valve block. Rebuild it each frame.
-- `die_parts(cut=True)`: half sections of the body, F1, punch, O-ring and pin, as `charge.lathe`.
+- `die_parts(cut=True)`: half sections of the body, F1, the catch ring, punch, O-ring and pin, as `charge.lathe`.
 - `channel_strip()`: DAL #156's channel across the plug's top.
 - `press()`: the press assembled, for static scenes.
 - `compaction(powder, mass_g)`, `runs_vs_set_line()`, `report()`: the numbers.
@@ -225,7 +265,7 @@ bore.
   | --- | --- |
   | Cup base, in the press, ram down | (-66, -56, 275) |
   | Cup base, out, pin down | (-66, -286, 275) |
-  | Cup base where the arm sets and picks the cup (pin up) | (-66, -286, 365.5) |
+  | Cup base where the arm sets and picks the cup (pin up, 10 mm down in the catch ring) | (-66, -286, 350.5) |
   | F1 top, out | (-66, -286, 338.5) |
   | Die body top, out | (-66, -286, 360.5) |
   | Leadscrew nose | (-66, -56, 390.5) |
@@ -234,8 +274,8 @@ bore.
   the plate's underside.
 - **Footprint:** the press is 425 x 405 x 640 mm. With the shuttle's stand in front (to y = -361) and the pump on the
   left (to x = -560), it is 773 x 766 mm.
-- **The arm works only at the out position:** cup and plug from the front and above, as now, and the punch by its
-  flange from above.
+- **The arm works only at the out position:** the cup level, into and out of the catch ring; the punch level, by its
+  flange. The plug goes into the cup's mouth before the cup comes to the press (`alloy_charge.py`).
 
 ## Open questions for the lab
 

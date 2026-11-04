@@ -18,12 +18,19 @@ time, and this chapter is the two merged:
 | 2 | The arm sets the Si funnel in the doser's fork. Its stem stops 4 mm over a cup's rim | the station |
 | 3 | The first 5N Al cup goes from the rack into the doser's cradle. The carousel indexes the Si module, docks, tilts and doses 3.92 g by auger turns. The cup goes into the HR-202i, which reads it, and back to the rack. Then the other three, faster | cup and funnel in half section; the balance |
 | 4 | The Si funnel goes back to the stand; the AlSi10Mg funnel takes the fork | the station |
-| 5 | The first Al cup again: topped up with 3.91 g of AlSi10Mg to the plug line, weighed, its plug set in the mouth at the rack, onto the die's ejector pin, the punch on; shuttle in, pumped below 1 mbar, pressed flush at 3.2 t, vented with Ar; onto the MiR250's carrier. Then the other three, faster | half sections of the cup, the die and the press stroke |
+| 5 | The first Al cup again: topped up with 3.91 g of AlSi10Mg to the plug line, weighed, its plug set in the mouth at the rack, into the die's catch ring on the raised ejector pin, the punch on; shuttle in, pumped below 1 mbar, pressed flush at 3.2 t, vented with Ar; onto the MiR250's carrier. Then the other three, faster | half sections of the cup, the die and the press stroke |
 | 6 | The AlSi10Mg funnel back; the Ni funnel in | |
 | 7 | The first OFE Cu cup in full, briefer: 14.62 g of Ni, weighed. Then the other three | |
 | 8 | The Ni funnel back; the Cu funnel in | |
 | 9 | The first Cu cup topped up with Cu, worked out from its weighed Ni so it stays 10 wt % Ni, weighed, plugged, pressed, back on the rack. Then the other three. The Cu funnel goes back | |
 | 10 | Tray B goes back into storage. Four Al-10Si cups are on the MiR for the rePowder, where chapter 2 picks them up | the carrier |
+
+**Not yet re-rendered for round 7** (the catch ring, the low carrier, the wrist camera, the rack approaches below).
+The round-7 render (`VIZ3D_FPS=10 CHARGE_FXAA=1 ARM_AUDIT_RENDER=1`, 0.8-1.5 s a frame on a shared runner) was
+stopped by the session's 30-minute limit on a background job at about frame 1300 of 2420, so the clip, GIF and stills
+in `out/` are still the long-form round's, which show the cup on the bare pin and the carrier on its post. Re-render
+with the same command, run in the foreground or with a longer limit; `scene.GIF_SIZE` is now 512 × 288, to bring the
+GIF under 4.9 MB. The audit of the round-7 code is below.
 
 **Rendered** 2026-11-04 at `VIZ3D_FPS=10 CHARGE_FXAA=1 ARM_AUDIT_RENDER=1` (four other renders shared the runner, and
 at 1280 × 720 with SSAA a frame took 1.6-2.2 s): 245 s, 2451 frames, [MP4](../out/mp4/alloy_charge.mp4),
@@ -164,6 +171,14 @@ tonnage. Also, it would be better if it were a vacuum press" ([`alloy_press.py`]
   cup rides to the press with its plug in the mouth, on its 15° lead-in, 8.0 mm proud.
 - **The press opens above the die.** The shuttle carries the die out of the press to the arm, and the ejector pin
   raises the cup out of F1 when it is pressed. The punch is handled level by its flange, from a rest beside the press.
+- **The cup stands in a catch ring, not on the bare pin** (Sterling: on the raised pin it "looks very unstable. There
+  should probably be a custom underneath catch that holds it in place somewhat"). Nothing riding up on the pin can
+  hold the cup round its base, because the cup leaves F1 through a line-to-line bore. So the catch is the die's mouth:
+  a hardened ring on F1, bored Ø19.30 over the 19.05 mm cup with a 30° lead-in, and the pin stops 75.5 mm up (was
+  90.5), with the cup's bottom 10 mm still in the ring. The arm sets the cup into it and lifts it out level, 45 mm up
+  the cup, so the fingers pass at least 20 mm over the die. The punch got a Ø19.20 nose to run in the ring and a collar
+  that lands on it at flush, so F1 still takes the load past flush ([`vacuum_press.md`](vacuum_press.md#the-catch-the-cup-stands-in-the-dies-mouth-not-on-the-bare-pin)).
+- **The press has been on tray B since the lab was set up** (`setup_lab.py`). Its first label in the chapter says so.
 
 ## What the chapter showed
 
@@ -179,6 +194,13 @@ tonnage. Also, it would be better if it were a vacuum press" ([`alloy_press.py`]
   square to the tray, the rack cups nearest the base, the carrier's second pocket and the press off to the side all
   folded the arm into itself. The cradle, the funnel stand and the balance's door only open to the front, so those are
   approached square.
+- **At the rack the open fingers may touch only the cup they take** (since round 7). The cups stand 40 mm apart, and
+  an angled approach sweeps the open fingertips, and further back the fingers, through the cups beside it. The audit
+  had only caught this where the next cup ended up elsewhere (the Al cups, on the MiR), so the Cu cups' brushes were
+  never counted. Now each rack approach is checked open on the way in and closed on the way out, at 5° steps, with
+  nothing but its own cup and the rack to touch; the gripper opens to 23.5 mm there (2.2 mm a side on the cup, not
+  6.3); and for the three cups nearest the arm's base, 400-425 mm from it, where a square approach from 150 mm back
+  folds the arm into the MiR or out of reach, the approach starts 110 or 80 mm back instead.
 - **Tray B is full.** The press and its pump take the left 780 mm, the rack and the balance the middle, the doser
   680 mm, and the funnel stand the right end. The funnels' pockets are 1.1 m out from the arm's base.
 
@@ -209,17 +231,43 @@ checks every frame: the arm against itself, and the arm, gripper and what it hol
     MiR's carrier. Square to the rack, or a slightly wider rack pitch, would clear it.
   - **One joint move in 5/10's time-lapse** started from a pose with the upper arm against the gripper (the
     planner's warning); no checked frame shows it.
-- **The render checked itself** (`ARM_AUDIT_RENDER=1`, every drawn frame, [`out/collisions/alloy_charge.json`](../out/collisions/alloy_charge.json)):
-  **8 of 1926 frames**, four runs of 2, all the next-cup brush above (3/10, 5/10). The first plug's run is gone.
-- **Not checked:** in the time-lapse, sub-steps shorter than 0.1 s (approaches, grips, retreats) happen between two
-  frames, so no frame shows them and the audit doesn't see them. The planner's warning in 5/10 (a joint move that
-  starts with the upper arm against the gripper) most likely comes from one of these, in the time-lapse's Al cups.
+- **The long-form round's render checked itself** (`ARM_AUDIT_RENDER=1`, every drawn frame): **8 of 1926 frames**,
+  four runs of 2, all the next-cup brush above (3/10, 5/10). The first plug's run is gone.
+- **Not checked then:** in the time-lapse, sub-steps shorter than 0.1 s (approaches, grips, retreats) happen between
+  two frames, so no frame shows them and the audit doesn't see them. The planner's warning in 5/10 (a joint move that
+  starts with the upper arm against the gripper) most likely came from one of these, in the time-lapse's Al cups.
+
+### Round 7: the catch ring, the low carrier, the wrist camera
+
+Round 7 changed what the arm works among: the press's catch ring (the cup's bottom 10 mm in the die's mouth, the pin
+15 mm lower), the MiR's low pocketed carrier (`charge.carrier`, its pockets 26 mm deep and 85 mm apart, no post), the
+D405 wrist camera on the gripper, checked as part of it (`ur_arm.camera_meshes`), and the 996 mm opening.
+
+- **Before** (as rendered in the long-form round): 8 of 1926 frames, the open fingertip on the next Al cup.
+- **The rack rule was too kind.** The audit lets the gripper touch what stands in the fixture it works at, but reads
+  that fixture at the end of the clip. The Cu cups end up back in the rack, so the fingertips brushing them (cups 6
+  to 8, the cups nearest the arm's base) were never counted; only the Al cup that ends up on the MiR was. With the
+  approaches checked properly (above), cups 6 to 8 had no clear approach at all once the camera rode on the gripper:
+  square, from 150 mm back, folds the arm into the MiR's cabinet or puts the flange inside the base's unreachable
+  cylinder (they are 396-425 mm from the base); at an angle, the fingers sweep through the cups beside them.
+- **What changed:** the gripper opens to 23.5 mm at the rack (2.2 mm a side), the approach may start 110 or 80 mm
+  back, each rack direction needs a clear straight line in one IK branch in and out (`line_clear`), and the
+  carrier's placement is checked with the gripper open as well as closed.
+- **The audit after that** (`ARM_AUDIT=1`, 15 fps, before the line checks): **0 of 2979 frames**, the planner's 5/10
+  warning gone. Two approach lines in the time-lapse had no clear IK branch (cup 7's in, cup 8's back in, holding
+  it); they happen between frames, so no frame showed them. The line checks fix cup 8's.
+- **Left: rack cup 7** (slot 6, 409 mm from the base) has no approach whose line in is clear in any IK branch, at
+  40-150 mm back and 30-90 mm up: in the one branch that reaches it, the upper arm passes within touching distance of
+  wrist 2 partway along the line. Its poses are clear, it touches only its own cup, and the line is in the
+  time-lapse, between frames. A rack 120 mm further left (the punch's rest moved to make room) would put every cup at
+  least 444 mm from the arm's base, where cups 1-5 are all reached square or within 10° of it.
 
 ## Assumed
 
 - **The rack, the station's post, cradle and fork, the funnels and their stand, the balance's cup holder and block,
-  the die, its shuttle and the punch's rest, and the MiR's carrier** are this model's designs. The carrier stands
-  where round 2's one-vial holder stood.
+  the die, its catch ring, its shuttle and the punch's rest, and the MiR's carrier** are this model's designs. The
+  carrier is round 7's low pocketed block on the MiR's cabinet top (`charge.carrier`, `props.pocket_block`): four
+  bored pockets 1 mm over the cup, 26 mm deep, with a 45° lead-in, 85 mm apart, where round 2's one-vial holder stood.
 - **The balance's doors open on their own** (a door drive; the HR-i's are manual).
 - **Dosing by auger turns** lands within ±1 % of the dose (the readings shown are made up to be inside it).
 - **Tapped densities of Ni, Fe and Cu powder**: 55 % of the solid. The Si and Al values are #222's.

@@ -52,7 +52,9 @@
   "travel": 8.031480000000002,
   "plug_set": 62.00648,
   "gap": 2.0,
-  "eject": 90.5,
+  "eject": 75.5,
+  "catch": 10.0,
+  "ring_d": 19.299999999999997,
   "guard_open": 165.0,
   "nose_z": 390.53148,
   "faces_set": 145.53148,
@@ -71,7 +73,7 @@
   "cup_base_eject": [
    -66.0,
    -286.0,
-   365.5
+   350.5
   ],
   "footprint_with_shuttle": {
    "x": [
@@ -586,7 +588,7 @@
  "clip": {
   "name": "vacuum_press",
   "fps": 15,
-  "n_frames": 740,
+  "n_frames": 756,
   "size": [
    1280,
    720
@@ -612,111 +614,111 @@
    },
    {
     "label": "3/9",
-    "caption": "Cut open. The ejector raises its pin. The arm sets a dosed cup on it: 9.61 g of AlSi10Mg, tapped up to where the plug will stand. The pin lowers the cup into F1.",
+    "caption": "Cut open. The ejector raises its pin. The arm sets a dosed cup in the die's mouth, on the pin: a catch ring on F1 holds its bottom 10 mm, so it stands in a socket, not on a bare pin. 9.61 g of AlSi10Mg, tapped up to where the plug will stand. The pin lowers the cup into F1.",
     "start_frame": 127,
     "end_frame": 146
    },
    {
     "label": "3/9",
-    "caption": "Cut open. The ejector raises its pin. The arm sets a dosed cup on it: 9.61 g of AlSi10Mg, tapped up to where the plug will stand. The pin lowers the cup into F1.",
+    "caption": "Cut open. The ejector raises its pin. The arm sets a dosed cup in the die's mouth, on the pin: a catch ring on F1 holds its bottom 10 mm, so it stands in a socket, not on a bare pin. 9.61 g of AlSi10Mg, tapped up to where the plug will stand. The pin lowers the cup into F1.",
     "start_frame": 147,
-    "end_frame": 163
+    "end_frame": 179
    },
    {
     "label": "3/9",
-    "caption": "Cut open. The ejector raises its pin. The arm sets a dosed cup on it: 9.61 g of AlSi10Mg, tapped up to where the plug will stand. The pin lowers the cup into F1.",
-    "start_frame": 164,
-    "end_frame": 189
+    "caption": "Cut open. The ejector raises its pin. The arm sets a dosed cup in the die's mouth, on the pin: a catch ring on F1 holds its bottom 10 mm, so it stands in a socket, not on a bare pin. 9.61 g of AlSi10Mg, tapped up to where the plug will stand. The pin lowers the cup into F1.",
+    "start_frame": 180,
+    "end_frame": 205
    },
    {
     "label": "4/9",
-    "caption": "The arm sets the plug in the mouth, on its lead-in, 8.0 mm proud. Then the punch: its O-ring seals the bore, and the channel across the plug's top (DAL #156) keeps the vent open under it.",
-    "start_frame": 190,
-    "end_frame": 212
+    "caption": "The arm sets the plug in the mouth, on its lead-in, 8.0 mm proud. Then the punch: the O-ring on its nose seals in the catch ring, and the channel across the plug's top (DAL #156) keeps the vent open under it.",
+    "start_frame": 206,
+    "end_frame": 228
    },
    {
     "label": "4/9",
-    "caption": "The arm sets the plug in the mouth, on its lead-in, 8.0 mm proud. Then the punch: its O-ring seals the bore, and the channel across the plug's top (DAL #156) keeps the vent open under it.",
-    "start_frame": 213,
-    "end_frame": 245
+    "caption": "The arm sets the plug in the mouth, on its lead-in, 8.0 mm proud. Then the punch: the O-ring on its nose seals in the catch ring, and the channel across the plug's top (DAL #156) keeps the vent open under it.",
+    "start_frame": 229,
+    "end_frame": 261
    },
    {
     "label": "5/9",
     "caption": "The shuttle slides in under the leadscrew. The guard closes: the press will not start with it open.",
-    "start_frame": 246,
-    "end_frame": 271
+    "start_frame": 262,
+    "end_frame": 287
    },
    {
     "label": "5/9",
     "caption": "The shuttle slides in under the leadscrew. The guard closes: the press will not start with it open.",
-    "start_frame": 272,
-    "end_frame": 293
+    "start_frame": 288,
+    "end_frame": 309
    },
    {
     "label": "6/9",
     "caption": "V1 opens to the pump, slowly at first through the needle valve, so the powder stays put. Air leaves the cup through the vent and out of the port. Hold 2 min under 1 mbar.",
-    "start_frame": 294,
-    "end_frame": 367
+    "start_frame": 310,
+    "end_frame": 383
    },
    {
     "label": "7/9",
     "caption": "Start: program P1 pumps up to 3.2 t. The ram lifts the die 2 mm to the leadscrew, then drives the plug 8.0 mm to flush. The powder goes from 60 to 72 % dense.",
-    "start_frame": 368,
-    "end_frame": 453
+    "start_frame": 384,
+    "end_frame": 469
    },
    {
     "label": "7/9",
-    "caption": "It holds 3.2 t for a minute, topping up as the powder settles. F1 is as long as the cup, so it takes the load past flush: 1.1 t is on the powder.",
-    "start_frame": 454,
-    "end_frame": 501
+    "caption": "It holds 3.2 t for a minute, topping up as the powder settles. At flush the punch's collar lands on the catch ring, so F1 under it takes the load past flush: 1.1 t is on the powder.",
+    "start_frame": 470,
+    "end_frame": 517
    },
    {
     "label": "8/9",
     "caption": "V1 closes. V2 lets in dry argon, back to 1013 mbar, so the pores fill with argon, not room air.",
-    "start_frame": 502,
-    "end_frame": 541
+    "start_frame": 518,
+    "end_frame": 557
    },
    {
     "label": "8/9",
     "caption": "Slow release to 0 t. The ram goes down; the plug stays where it is, flush.",
-    "start_frame": 542,
-    "end_frame": 563
+    "start_frame": 558,
+    "end_frame": 579
    },
    {
     "label": "8/9",
     "caption": "Slow release to 0 t. The ram goes down; the plug stays where it is, flush.",
-    "start_frame": 564,
-    "end_frame": 581
+    "start_frame": 580,
+    "end_frame": 597
    },
    {
     "label": "9/9",
-    "caption": "The guard opens and the shuttle comes out. The arm lifts the punch off. The ejector pushes the cup up out of F1, and the arm takes it.",
-    "start_frame": 582,
-    "end_frame": 600
+    "caption": "The guard opens and the shuttle comes out. The arm lifts the punch off. The ejector pushes the cup up out of F1 and stops with its bottom 10 mm still in the catch ring, where it stands until the arm takes it.",
+    "start_frame": 598,
+    "end_frame": 616
    },
    {
     "label": "9/9",
-    "caption": "The guard opens and the shuttle comes out. The arm lifts the punch off. The ejector pushes the cup up out of F1, and the arm takes it.",
-    "start_frame": 601,
-    "end_frame": 624
+    "caption": "The guard opens and the shuttle comes out. The arm lifts the punch off. The ejector pushes the cup up out of F1 and stops with its bottom 10 mm still in the catch ring, where it stands until the arm takes it.",
+    "start_frame": 617,
+    "end_frame": 640
    },
    {
     "label": "9/9",
-    "caption": "The guard opens and the shuttle comes out. The arm lifts the punch off. The ejector pushes the cup up out of F1, and the arm takes it.",
-    "start_frame": 625,
-    "end_frame": 646
+    "caption": "The guard opens and the shuttle comes out. The arm lifts the punch off. The ejector pushes the cup up out of F1 and stops with its bottom 10 mm still in the catch ring, where it stands until the arm takes it.",
+    "start_frame": 641,
+    "end_frame": 662
    },
    {
     "label": "9/9",
-    "caption": "The guard opens and the shuttle comes out. The arm lifts the punch off. The ejector pushes the cup up out of F1, and the arm takes it.",
-    "start_frame": 647,
-    "end_frame": 676
+    "caption": "The guard opens and the shuttle comes out. The arm lifts the punch off. The ejector pushes the cup up out of F1 and stops with its bottom 10 mm still in the catch ring, where it stands until the arm takes it.",
+    "start_frame": 663,
+    "end_frame": 692
    },
    {
     "label": "9/9",
-    "caption": "Charged: the plug flush and the powder 72 % dense, pressed under vacuum. Set point 3.2 t: 1.1 t on the powder plus #222's 2 t reserve for the plug's press fit.",
-    "start_frame": 677,
-    "end_frame": 739
+    "caption": "Charged: the plug flush and the powder 72 % dense, pressed under vacuum. Set point 3.2 t: 1.1 t on the powder plus #222's 2 t reserve for the plug's press fit. The cup waits in the catch ring for the arm.",
+    "start_frame": 693,
+    "end_frame": 755
    }
   ]
  }

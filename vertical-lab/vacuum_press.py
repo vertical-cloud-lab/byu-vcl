@@ -12,8 +12,8 @@ It takes evacuable dies (Specac sells them), and Specac's own videos show the wh
 
 **Off the shelf:** the press; a two-stage rotary-vane pump; isolation valve V1, vent valve V2 with a needle valve for
 a soft start, and a Pirani gauge. **Ours:** the evacuable die (body, punch with an O-ring, ejector pin) round F1, the
-shuttle that carries it out of the press to the arm, the ejector under the shuttle's out position, and the dry Ar line
-on V2.
+catch ring on F1 that the ejected cup stands in, the shuttle that carries the die out of the press to the arm, the
+ejector under the shuttle's out position, and the dry Ar line on V2.
 
 Sources of every dimension (mm; press frame: origin on the bench at the centre of the press's footprint, z up, front
 = -y, as ``charge.press_parts``):
@@ -68,14 +68,25 @@ GUARD_Z0, GUARD_H, GUARD_OPEN = Z_PISTON + 2.0, Z_XHEAD + 22.0 - (Z_PISTON + 2.0
 PLATE_T, BASE_T = 15.0, 15.0
 CUP_BASE = PLATE_T + BASE_T                      # 30: the bore floor, where the cup stands
 F1_TOP = CUP_BASE + C.SLEEVE_L                   # 93.5
-GUIDE = 22.0                                     # bore above F1 that guides the punch, so its O-ring seals first
+GUIDE = 22.0                                     # the catch ring on F1 (below): guides the punch's nose, which seals
 BODY_TOP = F1_TOP + GUIDE                        # 115.5
-BODY_R, BORE_R = 40.0, C.SLEEVE_OD / 2 + 0.025   # Ø80 body; F1 a slip fit
-PORT_Z = F1_TOP + 4.0                            # the vacuum port opens into the bore 4 mm above F1
+BODY_R, BORE_R = 40.0, C.SLEEVE_OD / 2 + 0.025   # Ø80 body; F1 and the catch ring a slip fit in its bore
+PORT_Z = F1_TOP + 4.0                            # the vacuum port opens into the bore 4 mm above F1, through the ring
 LEAD = C.PLUG_LEADIN_L * 0.98                    # the plug stands in the mouth on its lead-in (as alloy_charge)
 PLUG_SET = C.SLUG_L - LEAD                       # plug bottom when set by the arm, cup frame
 TRAVEL = PLUG_SET - C.PLUG_HOME_Z                # 8.03 mm to flush
+# The catch (Sterling, PR #318: a cup raised on the bare pin "looks very unstable"). Nothing riding on the pin can hold
+# the cup round its base: the pin pushes the cup up through F1, a line-to-line fit on the cup (+0.013 mm), so whatever
+# goes up with it has to fit inside the cup's own diameter. The catch is in the die's mouth instead: a hardened ring
+# as wide as F1, standing on it in the top of the bore, bored 0.25 mm over the cup with a 30° lead-in. The pin stops
+# with the cup's bottom CATCH mm still in the ring, so the cup stands in a socket, not on a pin, while the arm sets it
+# and lifts it off. The punch gets a nose that fits the ring and a collar that lands on the ring's top at flush, so the
+# load past flush still goes into F1 (through the ring), and the punch is as tall as before.
+RING_D, RING_LEAD = C.STOCK_D + 0.25, (1.5, 2.6)  # Ø19.30 bore; lead-in 1.5 mm across over 2.6 mm (30° off the axis)
+CATCH = 10.0                                     # the cup's bottom 10 mm stay in the ring with the pin up
 PUNCH_R, PUNCH_L, FLANGE_R, FLANGE_T, ORING_Z = 15.85, 30.0, 25.0, 12.0, 10.0
+NOSE_R = 9.60                                    # the punch's nose, Ø19.20 and as long as the ring; then a Ø31.70
+#                                                  collar, 8 mm, that lands on the ring at flush; then the flange
 PUNCH_SET = CUP_BASE + PLUG_SET + C.PLUG_L      # punch face resting on the set plug
 GAP = 2.0                                        # leadscrew nose over the punch's top, ram down (set once by hand)
 Y_OUT = AXY - 230.0                              # the shuttle's out position, in front of the press
@@ -84,7 +95,7 @@ VP = dict(axis=(AXX, AXY), W=AT["W"], D=AT["D"], H=AT["H"], piston_down=Z_PISTON
           shuttle_in_y=AXY, shuttle_out_y=Y_OUT, plate_t=PLATE_T, cup_base_local=CUP_BASE, f1_top_local=F1_TOP,
           body_top_local=BODY_TOP, port_local=(-BODY_R - 18.0, 0.0, PORT_Z), punch_set_local=PUNCH_SET,
           punch_top_local=PUNCH_SET + PUNCH_L + FLANGE_T, travel=TRAVEL, plug_set=PLUG_SET, gap=GAP,
-          eject=BODY_TOP - CUP_BASE + 5.0, guard_open=GUARD_OPEN)
+          eject=BODY_TOP - CUP_BASE - CATCH, catch=CATCH, ring_d=RING_D, guard_open=GUARD_OPEN)
 VP["nose_z"] = Z_PISTON + VP["punch_top_local"] + GAP                  # leadscrew nose (set once for this die)
 VP["faces_set"] = VP["nose_z"] - Z_PISTON                              # within 40-155
 VP["ram_touch"] = GAP                                                  # ram travel when the nose meets the punch
@@ -104,6 +115,7 @@ BRIGHT = (0.74, 0.75, 0.78)
 PETG = (0.82, 0.88, 0.94)
 PETG_ALPHA = 0.20
 TOOL = (0.52, 0.53, 0.57)          # hardened tool steel
+CATCH_C = (0.66, 0.58, 0.36)       # the catch ring (hardened steel, drawn bronze-toned so it reads against the body)
 PUMP = (0.25, 0.27, 0.30)
 AR = (0.20, 0.45, 0.78)
 
@@ -139,31 +151,44 @@ def _merge(*ms):
 def body_profile():
     c = 1.0
     return [(8.0, PLATE_T), (BODY_R - c, PLATE_T), (BODY_R, PLATE_T + c), (BODY_R, BODY_TOP - c),
-            (BODY_R - c, BODY_TOP), (BORE_R + 1.6, BODY_TOP), (BORE_R, BODY_TOP - 2.5), (BORE_R, CUP_BASE),
+            (BODY_R - c, BODY_TOP), (BORE_R + 0.6, BODY_TOP), (BORE_R, BODY_TOP - 0.6), (BORE_R, CUP_BASE),
             (8.0, CUP_BASE)]
 
 
 def punch_profile():
-    return [(0.0, 0.0), (PUNCH_R - 0.5, 0.0), (PUNCH_R, 0.5), (PUNCH_R, PUNCH_L), (FLANGE_R - 1.0, PUNCH_L),
-            (FLANGE_R, PUNCH_L + 1.0), (FLANGE_R, PUNCH_L + FLANGE_T - 1.0), (FLANGE_R - 1.0, PUNCH_L + FLANGE_T),
-            (0.0, PUNCH_L + FLANGE_T)]
+    """The nose (Ø19.20, as long as the catch ring, the O-ring on it), the collar (Ø31.70) whose underside lands on
+    the ring at flush, and the flange the gripper holds. Face at z = 0."""
+    return [(0.0, 0.0), (NOSE_R - 0.5, 0.0), (NOSE_R, 0.5), (NOSE_R, GUIDE), (PUNCH_R, GUIDE), (PUNCH_R, PUNCH_L),
+            (FLANGE_R - 1.0, PUNCH_L), (FLANGE_R, PUNCH_L + 1.0), (FLANGE_R, PUNCH_L + FLANGE_T - 1.0),
+            (FLANGE_R - 1.0, PUNCH_L + FLANGE_T), (0.0, PUNCH_L + FLANGE_T)]
+
+
+def ring_profile():
+    """The catch ring, shuttle frame: on F1, filling the bore up to the body's top, bored 0.25 mm over the cup, with
+    a 30° lead-in."""
+    ri, ro = RING_D / 2, C.SLEEVE_OD / 2
+    dl, hl = RING_LEAD
+    return [(ri, F1_TOP), (ro, F1_TOP), (ro, BODY_TOP - 0.5), (ro - 0.5, BODY_TOP), (ri + dl, BODY_TOP),
+            (ri, BODY_TOP - hl)]
 
 
 def die_parts(cut=False) -> dict:
     """The die's lathe parts, whole or cut in half (back half kept, as charge.lathe): body (with its port), F1, the
-    punch (face at z = 0) and the ejector pin (top at z = 0). Body and F1 are in the shuttle frame."""
+    catch ring on F1, the punch (face at z = 0) and the ejector pin (top at z = 0). Body, F1 and the catch ring are
+    in the shuttle frame."""
     body = lathe(body_profile(), cut)
     f1 = C.sleeve(cut).translate((0, 0, CUP_BASE), inplace=False)
+    catch = lathe(ring_profile(), cut)
     punch = lathe(punch_profile(), cut)
-    ring = pv.ParametricTorus(ringradius=PUNCH_R - 0.6, crosssectionradius=1.2).translate((0, 0, ORING_Z),
-                                                                                           inplace=False)
+    ring = pv.ParametricTorus(ringradius=NOSE_R - 0.6, crosssectionradius=1.2).translate((0, 0, ORING_Z),
+                                                                                          inplace=False)
     if cut:
         ring = ring.clip(normal=(0, 1, 0), origin=(0, 0, 0), invert=False)
     pin = lathe([(0, -CUP_BASE), (7.9, -CUP_BASE), (7.9, 0.0), (0, 0.0)], cut, res=32)
     x0 = -BODY_R + 0.5
     port = _merge(_cylx(7.0, x0, -BODY_R - 14.0, 0.0, PORT_Z), _cylx(15.0, -BODY_R - 14.0, -BODY_R - 18.0, 0.0, PORT_Z))
-    hole = _cylx(1.6, -BORE_R + 0.2, -BODY_R - 18.2, 0.0, PORT_Z, res=16)      # shows in the cut wall as a groove
-    return dict(body=body, f1=f1, punch=punch, oring=ring, pin=pin, port=port, hole=hole)
+    hole = _cylx(1.6, -RING_D / 2 + 0.2, -BODY_R - 18.2, 0.0, PORT_Z, res=16)  # through the ring and the body wall
+    return dict(body=body, f1=f1, catch=catch, punch=punch, oring=ring, pin=pin, port=port, hole=hole)
 
 
 def channel_strip(cut=False):
@@ -181,9 +206,10 @@ def press_parts() -> dict:
     * screen: the tower's touchscreen, buttons and labels (press frame; separate so it can be highlighted).
     * guard: frame and clear panel ("panel", draw it at PETG_ALPHA) at closed; open = +VP["guard_open"] in z.
     * ram: the piston, face at Z_PISTON; moves +z by 0 to VP["stroke"].
-    * shuttle: plate, die body, F1, the port; its frame's origin is the plate's underside on the die axis. Place it
-      at (AXX, y, Z_PISTON + ram) with y from VP["shuttle_out_y"] to VP["shuttle_in_y"].
-    * pin: the ejector pin, child of the shuttle, top at the bore floor (VP["cup_base_local"]) + 0 to VP["eject"].
+    * shuttle: plate, die body, F1, the catch ring on F1, the port; its frame's origin is the plate's underside on
+      the die axis. Place it at (AXX, y, Z_PISTON + ram) with y from VP["shuttle_out_y"] to VP["shuttle_in_y"].
+    * pin: the ejector pin, child of the shuttle, top at the bore floor (VP["cup_base_local"]) + 0 to VP["eject"]
+      (the cup's bottom VP["catch"] mm still in the catch ring).
     * ejector: the push rod in the stand at the out position, top at 0 (place it at (AXX, Y_OUT, Z_PISTON + e)).
     * punch: the die's punch (lid), face at z = 0; the arm sets it in the bore on the plug (VP["punch_set_local"]).
     * vacuum: pump, valve block (V1, V2, needle valve), Pirani gauge and the fixed lines (press frame).
@@ -239,7 +265,7 @@ def press_parts() -> dict:
     ram = {"piston": (_cylz(AT["piston_d"] / 2, Z_DRUM - 40.0, Z_PISTON, AXX, AXY, res=64), BRIGHT)}
     d = die_parts()
     shuttle = {"plate": (_box(-55, 55, -55, 55, 0, PLATE_T), TOOL), "body": (d["body"], C.STEEL),
-               "f1": (d["f1"], (0.47, 0.48, 0.52)), "port": (d["port"], BRIGHT)}
+               "f1": (d["f1"], (0.47, 0.48, 0.52)), "catch": (d["catch"], CATCH_C), "port": (d["port"], BRIGHT)}
     pin = {"pin": (d["pin"].translate((0, 0, CUP_BASE), inplace=False), BRIGHT)}
     ejector = {"rod": (_cylz(7.5, -130.0, 0.0, res=24), BRIGHT)}
     punch = {"punch": (d["punch"], TOOL), "oring": (d["oring"], DARK)}
@@ -450,6 +476,7 @@ def movie():
         sc.add(f"sh/{k}", m, col, "shuttle", specular=0.5)
     sc.add("sh/body_cut", cut["body"], C.STEEL, "shuttle", specular=0.5, shown=False)
     sc.add("sh/f1_cut", cut["f1"], (0.47, 0.48, 0.52), "shuttle", specular=0.5, shown=False)
+    sc.add("sh/catch_cut", cut["catch"], CATCH_C, "shuttle", specular=0.5, shown=False)
     sc.add("sh/hole", cut["hole"], DARK, "shuttle", shown=False)
     sc.add("pin/pin", parts["pin"]["pin"][0], BRIGHT, "pin", specular=0.5)
     sc.add("pin/cut", cut["pin"].translate((0, 0, CUP_BASE), inplace=False), BRIGHT, "pin", specular=0.5, shown=False)
@@ -493,8 +520,8 @@ def movie():
             sc.alpha[n] = 1.0 if on and not st["cutaway"] else 0.0
         for n in ("cup/cut", "plug/cut", "plug/chan_cut", "cup/point", "powder/col"):
             sc.alpha[n] = 1.0 if on and st["cutaway"] else 0.0
-        for whole, half in (("sh/body", "sh/body_cut"), ("sh/f1", "sh/f1_cut"), ("punch/whole", "punch/cut"),
-                            ("punch/oring", "punch/oring_cut")):
+        for whole, half in (("sh/body", "sh/body_cut"), ("sh/f1", "sh/f1_cut"), ("sh/catch", "sh/catch_cut"),
+                            ("punch/whole", "punch/cut"), ("punch/oring", "punch/oring_cut")):
             sc.alpha[whole] = 0.0 if st["cutaway"] else 1.0
             sc.alpha[half] = 1.0 if st["cutaway"] else 0.0
         sc.alpha["sh/hole"] = 1.0 if st["cutaway"] else 0.0
@@ -533,8 +560,8 @@ def movie():
         """Air leaving the cup: up the vent, along the plug's channel, out of the port and down the hose."""
         cup = sc.world("cup")
         top = PLUG_SET - st["x"] + C.PLUG_L + 0.3
-        path = [(0, 0, PLUG_SET - 12), (0, 0, top), (0, C.CUP_BORE_D / 2 - 0.5, top), (-4.0, 11.0, C.SLUG_L + 1.5),
-                (-BORE_R + 1, 0, PORT_Z - CUP_BASE), (-BODY_R - 18, 0, PORT_Z - CUP_BASE)]
+        path = [(0, 0, PLUG_SET - 12), (0, 0, top), (0, C.CUP_BORE_D / 2 - 0.5, top), (-3.0, 7.6, C.SLUG_L + 1.5),
+                (-RING_D / 2 + 0.6, 0, PORT_Z - CUP_BASE), (-BODY_R - 18, 0, PORT_Z - CUP_BASE)]
         P = [(cup @ np.r_[p, 1.0])[:3] for p in path]
         line = hose_line((sc.world("shuttle") @ np.r_[VP["port_local"], 1.0])[:3])
         P += [np.asarray(q) for q in line.points[4::8]]
@@ -571,15 +598,20 @@ def movie():
     sc.step(f"2/{n}", cap, 1.4, to(guard=1.0), hold=0.1)
     sc.step(f"2/{n}", cap, 1.6, to(y=Y_OUT), hold=0.3, cam_to=cam_load)
 
-    cap = ("Cut open. The ejector raises its pin. The arm sets a dosed cup on it: 9.61 g of AlSi10Mg, tapped up to "
-           "where the plug will stand. The pin lowers the cup into F1.")
+    cap = (f"Cut open. The ejector raises its pin. The arm sets a dosed cup in the die's mouth, on the pin: a catch "
+           f"ring on F1 holds its bottom {CATCH:.0f} mm, so it stands in a socket, not on a bare pin. 9.61 g of "
+           f"AlSi10Mg, tapped up to where the plug will stand. The pin lowers the cup into F1.")
     st["cutaway"] = True
+    ring_lbl = [("catch ring: Ø19.30 on the 19.05 mm cup, 30° lead-in", (AXX - 14, Y_OUT, Z_PISTON + BODY_TOP - 4),
+                 (0.10, 0.55)),
+                ("F1, #222's sleeve", (AXX - 14, Y_OUT, Z_PISTON + CUP_BASE + 30), (0.10, 0.80)),
+                ("ejector pin", (AXX - 6, Y_OUT, Z_PISTON + 18), (0.60, 0.78))]
     sc.step(f"3/{n}", cap, 1.2, to(e=VP["eject"]), hold=0.1, cam_to=cam_out)
     st.update(loaded=True, cup_up=110.0, plug_up=200.0)
-    sc.step(f"3/{n}", cap, 1.0, to(cup_up=0.0), hold=0.1)
+    sc.step(f"3/{n}", cap, 1.0, to(cup_up=0.0), hold=1.2, labels=ring_lbl)
     sc.step(f"3/{n}", cap, 1.5, to(e=0.0), hold=0.3)
-    cap = ("The arm sets the plug in the mouth, on its lead-in, 8.0 mm proud. Then the punch: its O-ring seals the "
-           "bore, and the channel across the plug's top (DAL #156) keeps the vent open under it.")
+    cap = ("The arm sets the plug in the mouth, on its lead-in, 8.0 mm proud. Then the punch: the O-ring on its nose "
+           "seals in the catch ring, and the channel across the plug's top (DAL #156) keeps the vent open under it.")
     sc.step(f"4/{n}", cap, 1.3, to(plug_up=0.0), hold=0.2)
     sc.step(f"4/{n}", cap, 1.6, to(punch_up=0.0), hold=0.6)
 
@@ -617,8 +649,9 @@ def movie():
             st["load"] = float(fs[-1] + (set_t - fs[-1]) * window(u, 0.78, 1.0))
         apply()
     sc.step(f"7/{n}", cap, 5.5, press_up, hold=0.3)
-    cap = (f"It holds {set_t:.1f} t for a minute, topping up as the powder settles. F1 is as long as the cup, so it "
-           f"takes the load past flush: {model['powder_t_at_flush']:.1f} t is on the powder.")
+    cap = (f"It holds {set_t:.1f} t for a minute, topping up as the powder settles. At flush the punch's collar lands "
+           f"on the catch ring, so F1 under it takes the load past flush: {model['powder_t_at_flush']:.1f} t is on the "
+           f"powder.")
     sc.step(f"7/{n}", cap, 2.2, None, hold=1.0)
 
     cap = "V1 closes. V2 lets in dry argon, back to 1013 mbar, so the pores fill with argon, not room air."
@@ -627,16 +660,23 @@ def movie():
     sc.step(f"8/{n}", cap, 1.4, to(load=0.0), hold=0.05)
     sc.step(f"8/{n}", cap, 1.0, to(s=0.0), hold=0.2)
 
-    cap = ("The guard opens and the shuttle comes out. The arm lifts the punch off. The ejector pushes the cup up out "
-           "of F1, and the arm takes it.")
+    cap = (f"The guard opens and the shuttle comes out. The arm lifts the punch off. The ejector pushes the cup up out "
+           f"of F1 and stops with its bottom {CATCH:.0f} mm still in the catch ring, where it stands until the arm "
+           f"takes it.")
     sc.step(f"9/{n}", cap, 1.2, to(guard=1.0), hold=0.05)
     sc.step(f"9/{n}", cap, 1.5, to(y=Y_OUT), hold=0.1, cam_to=cam_out)
     sc.step(f"9/{n}", cap, 1.3, to(punch_up=200.0), hold=0.1)
-    sc.step(f"9/{n}", cap, 1.6, to(e=VP["eject"]), hold=0.4)
+    sc.step(f"9/{n}", cap, 1.6, to(e=VP["eject"]), hold=0.4, labels=ring_lbl[:1])
     cap = (f"Charged: the plug flush and the powder {100 * model['rel_density_after']:.0f} % dense, pressed under "
            f"vacuum. Set point {set_t:.1f} t: {model['powder_t_at_flush']:.1f} t on the powder plus #222's 2 t "
-           f"reserve for the plug's press fit.")
-    sc.step(f"9/{n}", cap, 1.6, None, hold=2.6, still=True, cam_to=cam_load)
+           f"reserve for the plug's press fit. The cup waits in the catch ring for the arm.")
+    st["cutaway"] = False
+    apply()
+    look = np.array([AXX, Y_OUT, Z_PISTON + BODY_TOP + 20.0])
+    cam_end = [tuple(look + (300.0, -620.0, 260.0)), tuple(look), (0, 0, 1)]
+    sc.step(f"9/{n}", cap, 1.6, None, hold=2.6, still=True, cam_to=cam_end,
+            labels=[(f"catch ring: the cup's bottom {CATCH:.0f} mm stay in it", (AXX - 8, Y_OUT - 8, Z_PISTON + BODY_TOP),
+                     (0.14, 0.62))])
     return sc.save()
 
 
