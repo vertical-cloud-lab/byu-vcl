@@ -142,7 +142,7 @@ MATERIALS = {
     "r7_mitu": (0.90, 0.90, 0.88, 1.0, 0.3),             # Mitutoyo's off-white
     "r7_mitu_dk": (0.25, 0.27, 0.30, 1.0, 0.35),
     "r7_carvera": (0.93, 0.93, 0.92, 1.0, 0.3),
-    "r7_carvera_lid": (0.20, 0.20, 0.22, 0.45, 0.9),     # the Carvera's tinted lid
+    "r7_carvera_lid": (0.32, 0.33, 0.36, 0.22, 0.9),     # the Carvera's tinted lid, drawn lighter to see in
     "r7_carbide": (0.55, 0.56, 0.60, 1.0, 0.8),
     "r7_lab_white": (0.95, 0.95, 0.94, 1.0, 0.25),
     "r7_liner": (0.86, 0.87, 0.88, 1.0, 0.2),
@@ -229,23 +229,24 @@ def glovebox_tray() -> Instrument:
     body.add("antechamber", tube_, "r7_steel")
     body.add("antechamber flange", _ycyl(210, 12, x=ax, y=p["a_y0"], z=az).cut(
         _ycyl(p["a_id"], 14, x=ax, y=p["a_y0"] - 1, z=az)), "r7_steel")
-    fr = box(150, p["a_y0"], az - 125, 530, p["a_y0"] + 10, az + 125).cut(_ycyl(212, 12, x=ax, y=p["a_y0"] - 1, z=az))
+    fr = box(70, p["a_y0"], az - 125, 530, p["a_y0"] + 10, az + 125).cut(_ycyl(212, 12, x=ax, y=p["a_y0"] - 1, z=az))
     body.add("door frame", fr, "r7_frame")
     body.add("door rail top", box(160, p["a_y0"] - 26, az + 112, 530, p["a_y0"], az + 122), "r7_frame")
     body.add("door rail bottom", box(160, p["a_y0"] - 26, az - 122, 530, p["a_y0"], az - 112), "r7_frame")
     body.add("frame post", box(495, p["a_y0"], 0, 530, p["a_y0"] + 35, az - 125), "r7_frame")
     body.add("antechamber foot", box(225, -330, 0, 315, -290, az - p["a_od"] / 2 - 1), "r7_frame")
-    # the vacuum gauge on the door frame (its needle swings with each pump-down)
-    body.add("gauge", _ycyl(70, 14, x=470, y=p["a_y0"] - 14, z=az + 60), "r7_lab_white")
-    body.add("gauge rim", _ycyl(76, 4, x=470, y=p["a_y0"] - 15, z=az + 60).cut(
-        _ycyl(66, 6, x=470, y=p["a_y0"] - 16, z=az + 60)), "r7_frame")
+    # the vacuum gauge on the door frame, left of the door's travel (its needle swings with each pump-down)
+    gx = 110.0
+    body.add("gauge", _ycyl(70, 14, x=gx, y=p["a_y0"] - 14, z=az + 60), "r7_lab_white")
+    body.add("gauge rim", _ycyl(76, 4, x=gx, y=p["a_y0"] - 15, z=az + 60).cut(
+        _ycyl(66, 6, x=gx, y=p["a_y0"] - 16, z=az + 60)), "r7_frame")
     # inside: the transfer shelf the sled runs onto, the balance and storage jar, the lid holder, the capper's gantry,
     # the O2 and H2O sensors on the back wall
     sz = p["sled_z"]
     ins = _piece(inst, "inside")                       # its own piece, so it stays solid when the box goes see-through
     ins.add("shelf", box(205, -100, sz - 10, 335, 170, sz), "r7_steel")
-    for gx in (155.0, 375.0):                          # the inner door's guides: it slides up, clear of the shelf
-        body.add(f"inner door guide {gx:.0f}", box(gx, -105, 120, gx + 10, -100, 560), "r7_frame")
+    for gdx in (155.0, 375.0):                         # the inner door's guides: it slides up, clear of the shelf
+        body.add(f"inner door guide {gdx:.0f}", box(gdx, -105, 120, gdx + 10, -100, 560), "r7_frame")
     ins.add("shelf leg", box(215, 150, Z0 + t, 325, 168, sz - 10), "r7_steel")
     sx, sy = p["sjar"]
     ins.add("balance", box(sx - 40, sy - 35, Z0 + t, sx + 40, sy + 35, 108), "r7_lab_white")
@@ -283,7 +284,11 @@ def glovebox_tray() -> Instrument:
     sled = _piece(inst, "load")
     yc = p["sled_y"]
     sled.add("sled", box(ax - 55, yc - 70, sz, ax + 55, yc + 35, sz + 8), "aluminium")
-    sled.add("cradle pivot", box(ax - 45, yc + 35, sz + 8, ax + 45, yc + 41, sz + 40), "r7_frame")
+    lifter = _piece(inst, "lifter")                    # two arms beside the jar, with the cradle's trunnions
+    for x0 in (ax - 50, ax + 43):
+        lifter.add(f"lift arm {x0:.0f}", box(x0, yc + 28, sz + 13, x0 + 7, yc + 42, sz + 98), "r7_frame")
+    lifter.add("trunnions", _xcyl(10, 6, x=ax - 43, y=yc + 35, z=sz + 93).union(
+        _xcyl(10, 6, x=ax + 37, y=yc + 35, z=sz + 93)), "steel")
     tip = _piece(inst, "tipper")
     jd, jh = p["jar_d"], p["jar_h"]
     jz = sz + 8
@@ -303,7 +308,7 @@ def glovebox_tray() -> Instrument:
     cap_z.add("capper rod", cyl(20, 260, x=270, y=300, z=zb + 40), "steel")
     # the pour and the fill
     stream = _piece(inst, "stream")
-    s0, s1 = np.array([ax, 188.0, 240.0]), np.array([ax, 207.0, 150.0])
+    s0, s1 = np.array([ax, 188.0, 310.0]), np.array([ax, 210.0, 155.0])
     v = s1 - s0
     stream.add("powder stream", cq.Workplane().add(cq.Solid.makeCylinder(5, float(np.linalg.norm(v)),
                                                                         cq.Vector(*s0), cq.Vector(*(v / np.linalg.norm(v))))),
@@ -314,14 +319,14 @@ def glovebox_tray() -> Instrument:
     # one timeline for the sled, the cradle, the capper and the two lids
     lid_top = jz + jh + 12                              # 287: where the capper's pad meets the catch jar's lid
     hold = 330.0 - lid_top                              # head offsets are from its parked bottom, 330
-    tl = Timeline(dict(s=-760.0, tip=0.0, cy=0.0, cz=0.0, lid="jar", lid2="holder"))
+    tl = Timeline(dict(s=-760.0, tip=0.0, lift=0.0, cy=0.0, cz=0.0, lid="jar", lid2="holder"))
     tl.go(2.2, s=-440.0).mark("ante")
     tl.go(2.0, s=0.0).mark("inside")
     tl.go(1.3, cy=yc - 300.0).go(0.8, cz=lid_top - zb).mark("grip")
-    tl.go(0.6, lid="cap").go(1.2, cz=40.0).go(1.0, cy=0.0).mark("lid_off")
-    tl.go(2.6, tip=125.0).mark("poured")
-    tl.go(1.6, tip=0.0)
-    tl.go(1.0, cy=yc - 300.0).go(1.0, cz=lid_top - zb).go(0.4, lid="jar").go(0.8, cz=0.0).mark("lid_back")
+    tl.go(0.6, lid="cap").go(1.2, cz=40.0).mark("lid_off")
+    tl.go(1.0, lift=70.0).go(2.2, tip=125.0).mark("poured")
+    tl.go(1.6, tip=0.0).go(1.0, lift=0.0)
+    tl.go(1.0, cz=lid_top - zb).go(0.4, lid="jar").go(0.8, cz=0.0).mark("lid_back")
     tl.go(1.0, cy=0.0).go(0.8, cz=193.0 - zb).go(0.4, lid2="cap").go(0.8, cz=0.0)
     tl.go(1.0, cy=GB["sjar"][1] - 300.0).go(0.8, cz=193.0 - zb).go(0.4, lid2="jar").go(0.8, cz=0.0)
     tl.go(1.0, cy=0.0).mark("sealed")
@@ -343,21 +348,22 @@ def glovebox_tray() -> Instrument:
         "door": Joint("slide", vec=(230.0, 0.0, 0.0)),
         "inner_door": Joint("slide", vec=(0.0, 0.0, 215.0)),
         "load": Track(knots=tl.knots(lambda s: (0.0, s["s"], 0.0))),
-        "tipper": Turn(axis=(1, 0, 0), pivot=pivot, knots=_turn_knots(tl, lambda s: s["tip"]), parent="load"),
+        "lifter": Track(knots=tl.knots(lambda s: (0.0, 0.0, s["lift"])), parent="load"),
+        "tipper": Turn(axis=(1, 0, 0), pivot=pivot, knots=_turn_knots(tl, lambda s: s["tip"]), parent="lifter"),
         "lid": Track(knots=tl.knots(lid_pos)),
         "lid2": Track(knots=tl.knots(lid2_pos)),
         "capper_y": Track(knots=tl.knots(lambda s: (0.0, s["cy"], 0.0))),
         "capper_z": Track(knots=tl.knots(lambda s: (0.0, 0.0, s["cz"])), parent="capper_y"),
-        "needle": Turn(axis=(0, 1, 0), pivot=(470, p["a_y0"] - 15, az + 60),
+        "needle": Turn(axis=(0, 1, 0), pivot=(gx, p["a_y0"] - 15, az + 60),
                        knots=((0.0, 0.0), (0.15, -230.0), (0.30, 0.0), (0.48, -230.0), (0.63, 0.0), (0.81, -230.0),
                               (1.0, 0.0))),
         "stream": Joint("fade"),
         "fill": Joint("fade"),
     }
     ndl = _piece(inst, "needle")
-    ndl.add("gauge needle", box(468, p["a_y0"] - 16, az + 60, 472, p["a_y0"] - 15, az + 88), "inst_red")
+    ndl.add("gauge needle", box(gx - 2, p["a_y0"] - 16, az + 60, gx + 2, p["a_y0"] - 15, az + 88), "inst_red")
     V = tl.v
-    tv = lambda a, b: {k: (a, b) for k in ("load", "tipper", "lid", "lid2", "capper_y", "capper_z")}  # noqa: E731
+    tv = lambda a, b: {k: (a, b) for k in ("load", "lifter", "tipper", "lid", "lid2", "capper_y", "capper_z")}  # noqa
     inst.actions = [
         ("The arm slides the mini antechamber's outer door open. It slides rather than swings, so it never leaves "
          "the tray's footprint.", 1.8, {"door": (0.0, 1.0), **tv(0.0, 0.0)}),
@@ -367,22 +373,23 @@ def glovebox_tray() -> Instrument:
         ("The inner door slides up.", 1.4, {"inner_door": (0.0, 1.0), "~body": (0.0, 0.85)}),
         ("The sled runs onto the shelf inside.", 2.0, {**tv(V("ante"), V("inside"))}),
         ("The capper unscrews the jar's lid and lifts it clear.", 3.6, {**tv(V("inside"), V("lid_off"))}),
-        ("The cradle tips the jar: the powder pours into the storage jar on the balance.", 2.8,
+        ("Two arms lift the jar's cradle and tip it: the powder pours into the storage jar on the balance.", 3.6,
          {**tv(V("lid_off"), V("poured")), "stream": (0.0, 1.0), "fill": (0.0, 1.0)}),
-        ("Upright again. The capper puts the catch jar's lid back, then screws the storage jar's lid on.", 4.4,
+        ("Upright and down again. The capper puts the catch jar's lid back, then screws the storage jar's lid on.",
+         5.2,
          {**tv(V("poured"), V("sealed")), "stream": (1.0, 0.0)}),
         ("Sealed under N2, the jar leaves the same way. Purge-only: no purifier to regenerate inside the VLM. "
          "The box is 1100 x 520 x 640 mm; 810 mm tall with its fittings.", 2.6, {"inner_door": (1.0, 0.0), "~body": (0.85, 0.0)}),
     ]
-    inst.zoom = {5: ((230.0, 170.0, 240.0), 1150.0), 8: "out"}
+    inst.zoom = {5: ((240.0, 180.0, 260.0), 1500.0), 8: "out"}
     inst.labels = [("mini antechamber, 150 mm", (ax, -300, az + 85), (0.80, 0.18)),
                    ("outer door: the arm slides it", (ax + 60, dy0 - 12, az), (0.86, 0.55)),
                    ("220 mm glove ports", (p["ports"][0], Y0 - 22, p["port_z"] + 130), (0.12, 0.20)),
                    ("PLC, O2 and dew point", (550, -121, 480), (0.88, 0.30)),
                    ("N2 purge out: oil bubbler", (-600, 300, Z1 + 110), (0.16, 0.10)),
                    ("antechamber pump", (550, 150, 250), (0.90, 0.72))]
-    inst.cam = (-0.45, -1.5, 1.0)
-    inst.props = ("load", "tipper", "lid", "lid2", "fill")
+    inst.cam = (-0.35, -1.3, 1.5)
+    inst.props = ("load", "lifter", "tipper", "lid", "lid2", "fill")
     return inst
 
 
@@ -495,7 +502,7 @@ def tensile_h() -> Instrument:
         ("The jaws open for the arm. The alloy route's 6 x 6 mm bar needs 14.8 kN: no motorized horizontal machine "
          "with a published size pulls that.", 2.6, {**jaws_to(0.0, 1.0), "readout": (1.0, 0.0)}),
     ]
-    inst.zoom = {1: ((xs + 40, yax, zc), 900.0), 5: "out"}
+    inst.zoom = {1: ((xs, yax, zc + 20), 480.0), 5: "out"}
     inst.labels = [("zwickiLine Z5.0 TN, on its side", (xR - 300, ycf, zc + cw / 2), (0.70, 0.16)),
                    ("pneumatic grips", (xb1 + 45, gy0, zc + 30), (0.14, 0.24)),
                    ("crosshead and load cell", (xa0 + 35, yax - 45, zc + 45), (0.56, 0.20)),
@@ -580,8 +587,8 @@ def hardness() -> Instrument:
     body.add("head band", box(-116, -251, 470, 116, d / 2 - 30, 480), "r7_mitu_dk")
     body.add("camera", rbox(50, 60, 35, 8, x=ax, y=ay - 30 + 30, z=560), "r7_mitu_dk")
     # the AVPAK PC and the joystick beside it (estimate)
-    body.add("PC", box(185, -120, 0, 355, 220, 330), "inst_dark")
-    body.add("PC light", box(250, -121.5, 280, 290, -120, 286), "led_blue")
+    body.add("PC", box(185, 0, 0, 355, 335, 330), "inst_dark")
+    body.add("PC light", box(250, -1.5, 280, 290, 0, 286), "led_blue")
     body.add("joystick box", box(205, -320, 0, 335, -200, 45).edges(">Z").fillet(8), "r7_mitu_dk")
     body.add("joystick", cyl(14, 50, x=290, y=-260, z=45).union(cq.Workplane("XY").sphere(11).translate((290, -260, 98))),
              "inst_black")
@@ -647,7 +654,7 @@ def hardness() -> Instrument:
     inst.labels = [("motorized turret: indenter, objectives", (tx - 75, ty, 367), (0.12, 0.30)),
                    ("motorized XY stage", (-75, ay - 65, 233), (0.12, 0.70)),
                    ("3 MP camera", (ax, ay, 595), (0.40, 0.10)),
-                   ("AVPAK PC and joystick", (270, -120, 300), (0.86, 0.30))]
+                   ("AVPAK PC and joystick", (270, 0, 300), (0.86, 0.30))]
     inst.cam = (0.9, -1.6, 0.85)
     inst.props = ("sample",)
     return inst
@@ -712,14 +719,15 @@ def cnc() -> Instrument:
     body.add("front screen", box(-60, -d / 2 - 1.5, 110, 20, -d / 2 - 1, 150), "screen_on")
     body.add("back wall", box(-w / 2, hy, bz - 15, w / 2, d / 2, h).edges("|Z").fillet(10), "r7_carvera")
     for x0 in (-w / 2, w / 2 - 10):                    # the side sills, under the lid's sides
-        body.add(f"sill {x0:.0f}", box(x0, -d / 2, bz - 15, x0 + 10, hy, 300), "r7_carvera")
+        body.add(f"sill {x0:.0f}", box(x0, -d / 2 + 10, bz - 15, x0 + 10, hy, 300), "r7_carvera")
     for x0 in (-275.0, 255.0):                         # the gantry's rails on the sills
         body.add(f"rail {x0:.0f}", box(x0, -240, 290, x0 + 20, hy, 300), "steel")
     body.add("bed", box(-200, -150, bz - 15, 200, 150, bz), "aluminium")
     for k in range(5):
         y = -120 + 60 * k
         body.add(f"T-slot {k}", box(-200, y - 4, bz - 0.4, 200, y + 4, bz + 0.2), "inst_dark")
-    body.add("tool rack", box(-200, -125, 280, -170, 125, 290), "inst_dark")
+    body.add("tool rack", box(-200, -125, 280, -170, 125, 290).cut(
+        cq.Workplane("XY").pushPoints(list(p["slots"])).circle(4.5).extrude(12).translate((0, 0, 279))), "inst_dark")
     body.add("rack post", box(-200, -125, bz, -190, 125, 280), "inst_dark")
     for i, (x, y) in enumerate(p["slots"][2:]):
         col, sh = _tool(x, y, p["tool_top"])
@@ -907,7 +915,7 @@ def fumehood() -> Instrument:
         zz = z0 + 80 + 60 * (k % 3)
         paths.append([(x, yf - 120, zz + 40), (x, yf + 60, zz), (x * 0.9, yb - 120, zz + 30), (x * 0.8, yb - 50, zz + 200),
                       (x * 0.4, yb - 50, zt - 260), (0.0, 200.0, zt + 60)])
-    flow = _flow_dots(inst, "flow", paths)
+    flow = _flow_dots(inst, "flow", paths, d=52.0)
     inst.joints.update({"sash": Joint("slide", vec=(0, 0, p["stop"])), "load": Joint("path", path=path)})
     fl = lambda a, b: {k: (a, b) for k in flow}  # noqa: E731
     inst.actions = [
@@ -926,6 +934,7 @@ def fumehood() -> Instrument:
                    ("baffle slots", (-xi + 100, yb - 79, z0 + 615), (0.12, 0.30)),
                    ("Keller's reagent", (-150, -140, z0 + 90), (0.14, 0.72)),
                    ("airflow monitor", (xi + 50, yf, 1660), (0.88, 0.44))]
+    inst.zoom = {2: ((-25.0, -100.0, 1060.0), 1500.0), 4: "out"}
     inst.cam = (0.7, -1.7, 0.75)
     inst.props = ("load",)
     return inst
@@ -955,7 +964,7 @@ def fumehood_tray() -> Instrument:
     body.add("back", box(x0, yb - t, t, x1, yb, h - t), "inst_light")
     for xx in (x0, x1 - t):
         body.add(f"side {xx:.0f}", box(xx, yf, t, xx + t, yb - t, h - t), "r7_pc")
-    body.add("front", box(x0 + t, yf, oz1, x1 - t, yf + t, h - t), "r7_pc")
+    body.add("front", box(x0 + t, yf, oz1, x1 - t, yf + t, h - t), "inst_light")
     body.add("front sill", box(x0 + t, yf, t, x1 - t, yf + t, oz0), "inst_light")
     body.add("filters", box(x0 + 30, yb - 60, 30, x1 - 30, yb - t, h - 40), "inst_dark")
     body.add("filter frame", box(x0 + 20, yb - 64, 20, x1 - 20, yb - 60, h - 30).cut(
@@ -1111,10 +1120,10 @@ def storage() -> Instrument:
         dp.add(nm + " label", box(-840, -158, z0 + 30, -760, -157, z0 + 56), "r7_label")
         if kind == "sem_stub":
             dp.add("stub box", _rack(-845, -100, -515, 150, 10, xy("sem_stub"), 3.4, 8).translate((0, 0, z0 + 4)),
-                   "inst_dark")
+                   "r7_lab_white")
             stub = pv.Cylinder(center=(0, 0, 1), direction=(0, 0, 1), radius=6.35, height=2).triangulate().merge(
                 pv.Cylinder(center=(0, 0, -4), direction=(0, 0, 1), radius=1.6, height=8).triangulate())
-            tab = pv.Cylinder(center=(0, 0, 2.1), direction=(0, 0, 1), radius=6.0, height=0.2).triangulate()
+            tab = pv.Cylinder(center=(0, 0, 2.1), direction=(0, 0, 1), radius=4.5, height=0.2).triangulate()
             inst.meshes[nm] = [(_merged(stub, seats[kind]), (0.80, 0.81, 0.83), 1.0),
                                (_merged(tab, seats[kind]), (0.08, 0.08, 0.09), 1.0)]
         else:
