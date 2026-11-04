@@ -607,5 +607,14 @@
    "by": "Gage Erickson (byu-vcl#48, comment 4181040112)"
   },
   "curve": "illustrative fit through published values, not measured"
+ },
+ "depowdering": {
+  "lance": "suction lance (tube 28 x 300 mm, 12 mm handle) on a post at x = 3420, swept 25 deg down over the build cylinder as the platform rises; floor pipe to the box's separator (our design)",
+  "box": "420 x 620 x 1540 mm at x = 4758, between the Aconity (to 4486) and the 68FM-100 (from 5030): zero-point chuck on a shaft turning about x, vibrator, hopper to a closed bottle, argon (our design)",
+  "principle": "Solukon SFM-AT200: parts up to 300 x 300 x 230 mm, 60 kg, one-axis rotation on a programmed path, variable-frequency vibration, N2 or Ar (TCT Magazine); outer size not published; installation space 2 x 2 x 2 m (3devaluate)",
+  "on_screen_s": 7.0
+ },
+ "rinse": {
+  "cup": "isopropanol in a 92 mm cup with an annular air knife on its rim, on a stand at x = 7520, between the 68SC-2 and the EDM (our design, assumed)"
  }
 }
