@@ -590,8 +590,8 @@ _CORR_SEGS = (("start", "Copper corrosion on the CubXL, as DAL's copper screen l
                             "a 150 µL DI rinse the same way: 16 transfers."),
               ("acid", "9  Acidify at once: the capper opens the acid vial and the night's one acid tip adds 20 µL of "
                        "1 M HNO3 from above the rim: 320 µL at 62 mM HNO3. The acid tip goes back to rack 2."),
-              ("imaged", "10  The head camera images the spot. Next: S2. A spot is 67 min of deck time, so 8 wells "
-                         "and the two blanks on S4 fit a 12 h night."),
+              ("imaged", "10  The head camera images the spot. Next: S2. A spot is 67 min of deck time: eight wells "
+                         "(three pieces, two wells each, and S4's two blanks) take about 9 h of a 12 h night."),
               ("end", "Cyclic polarization runs only on selected spots, and last on each: fill to EIS, then the scan, "
                       "then its own tube. On every spot it would swamp the tube's copper (3.4 mC against the "
                       "hold's 0.2-2.8 mC)."))
