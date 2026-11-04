@@ -111,7 +111,7 @@ LAB = {
                          "through its powder's own funnel, weighed on an A&D HR-202i, topped up to the plug line, then "
                          "plugged and pressed home at 3.2 t under vacuum in a Specac Atlas Autotouch 15T, on tray B of "
                          "the VLM. Every frame of the arm's moves collision-checked (collide.py)."),
-    "alloy_atomize.mp4": ("Vertical cloud lab, alloy route 2/4: melt and atomize in the rePowder (3-D animation)",
+    "alloy_atomize.mp4": ("Vertical cloud lab, alloy route 2/5: melt and atomize in the rePowder (3-D animation)",
                           "Chapter 2 of the alloy route: the charged cups into the AMAZEMET rePowder's crucible, "
                           "induction melting under argon, ultrasonic atomization."),
     "alloy_print.mp4": ("Vertical cloud lab, alloy route 3/4: the arm runs a sieving cell, then the print (3-D animation)",
@@ -136,6 +136,38 @@ LAB = {
     "fabrication_tour.mp4": ("Vertical cloud lab: compact metal printers, resin printing and PCB assembly "
                              "(3-D animation)",
                              "The fabrication tools, each doing its job."),
+    'alloy_characterize.mp4': ('Vertical cloud lab, alloy route 5/5: the trays at work, characterizing the build (3-D)',
+        "Chapter 5 of the alloy route (alloy_characterize.py, PR #318 round 7): samples of the printed AlSi10Mg build go through the characterization trays at the VLM's opening. A coupon is ground and polished on the LECO PX500 (tray F), imaged in the Hitachi TM4000PlusII (tray D) and indented in the KLA iMicro (tray E); its powder goes through the Malvern Mastersizer 3000 (tray E). Every arm move collision-checked: 0 frames in collision."),
+    'vacuum_press.mp4': ('Vertical cloud lab: the Specac Autotouch vacuum press, with a catch ring in the die (3-D)',
+        "The plug press of the alloy route (vacuum_press.py, PR #318 round 7): the cup now stands in a hardened catch ring in the die's mouth when the ejector raises it, so it can't topple while the arm sets it and lifts it off."),
+    'vlm_workflow.mp4': ("Vertical cloud lab: atomized powder dosed for the CubXL's powder test (3-D animation)",
+        "Round 2's workflow, re-scripted (PR #318 round 7): the multi-doser doses 25 mg of atomized AlSi10Mg for DAL's powder reactivity test, and the CubXL's P20 adds 200 uL of seawater in 10 transfers. No salt is dosed. Every arm move collision-checked."),
+    'instruments/cnc.mp4': ('Vertical cloud lab: a Makera Carvera CNC with a tool changer, for a tray (3-D animation)',
+        "A compact CNC mill with an automatic tool changer for the vertical cloud lab (instruments_r7.py), with an added lid actuator and pneumatic vise. Sizes from Makera's published figures; the actuator and vise are our design."),
+    'instruments/fumehood.mp4': ('Vertical cloud lab: a ducted fume hood, Labconco Protector XStream 4 ft (3-D animation)',
+        "A ducted floor fume hood the mobile arm serves through its sash, for etching (Keller's reagent) and wet chemistry (instruments_r7.py)."),
+    'instruments/fumehood_tray.mp4': ('Vertical cloud lab: a ductless fume hood on a VLM tray, Sentry Air 24 in (3-D)',
+        'A ductless benchtop hood with its blower, sized for a tray of the VLM (instruments_r7.py). Not for HF: its air returns into the VLM.'),
+    'instruments/glovebox_tray.mp4': ('Vertical cloud lab: a purge-only N2 glovebox on a VLM tray (3-D animation)',
+        "A custom inert glovebox that fits a tray of the VLM with its UPS and dock (instruments_r7.py): glove ports at the front, a 150 mm mini antechamber the arm loads, N2 purge through the tray's dock."),
+    'instruments/hardness.mp4': ('Vertical cloud lab: Mitutoyo HM-220 automatic micro-Vickers hardness tester (3-D)',
+        'An automatic micro-Vickers hardness tester on a tray (instruments_r7.py): an indent series and its measurement.'),
+    'instruments/ot2_corrosion_prep.mp4': ("Vertical cloud lab: the OT-2 making the CubXL's stocks and ICP-MS dilutions (3-D)",
+        "The Opentrons OT-2 as tray A's liquid station for the corrosion screen (digital-wetlab PR #83, direction 5): it makes the CubXL's 0.1 mg/L sulfide stock and dilutes the ICP-MS tubes, at real P300 and P20 volumes."),
+    'instruments/storage.mp4': ('Vertical cloud lab: the sample store tray, Al and Cu cups and plugs, vials, tubes (3-D)',
+        'The sample store on its own tray (instruments_r7.py): racks of machined Al and Cu charge cups and plugs, 20 mL vials, ICP-MS tubes, SEM stubs, mounts, tensile bars and powder jars, every pocket listed for the arm.'),
+    'instruments/tensile_h.mp4': ('Vertical cloud lab: a tensile tester on its side on a tray, zwickiLine Z5.0 TN (3-D)',
+        "A 5 kN ZwickRoell zwickiLine run horizontally on a tray (instruments_r7.py): a pull to break on a bar faced to 6 x 1.5 mm. The route's 6 x 6 mm bar (14.8 kN) stays on the Instron 68FM-100."),
+    'dag/route_dag_ch1.mp4': ('Vertical cloud lab: the alloy route as a function network, stage 1 of 5',
+        "DAL's ONR YIP function network (network_dag.py), brought in one stage at a time before chapter 1 of the alloy route (route_dag.py, PR #318)."),
+    'dag/route_dag_ch2.mp4': ('Vertical cloud lab: the alloy route as a function network, stage 2 of 5',
+        "DAL's ONR YIP function network (network_dag.py), brought in one stage at a time before chapter 2 of the alloy route (route_dag.py, PR #318)."),
+    'dag/route_dag_ch3.mp4': ('Vertical cloud lab: the alloy route as a function network, stage 3 of 5',
+        "DAL's ONR YIP function network (network_dag.py), brought in one stage at a time before chapter 3 of the alloy route (route_dag.py, PR #318)."),
+    'dag/route_dag_ch4.mp4': ('Vertical cloud lab: the alloy route as a function network, stage 4 of 5',
+        "DAL's ONR YIP function network (network_dag.py), brought in one stage at a time before chapter 4 of the alloy route (route_dag.py, PR #318)."),
+    'dag/route_dag_ch5.mp4': ('Vertical cloud lab: the alloy route as a function network, stage 5 of 5',
+        "DAL's ONR YIP function network (network_dag.py), brought in one stage at a time before chapter 5 of the alloy route (route_dag.py, PR #318)."),
 }
 # Clips added by later rounds get a title from their file name until they have a line here.
 
