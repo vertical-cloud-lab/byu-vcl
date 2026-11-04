@@ -18,8 +18,8 @@ and where they sit. Kardex's 208 V three-phase supply is #53's. Installing the a
 Trays G-I (``fab_trays.py``: resin printing, PCB assembly, desktop LPBF) need room the 3950 mm Shuttle of #53 doesn't
 have: its six 800 mm slots hold A-F. So in this scene, and only here, the Shuttle is assumed 500 mm taller, 4450 mm
 (``UNIT_H``). Kardex builds the XP 250/500 from 2550 to 30 050 mm in 100 mm steps and can change a unit's height after it
-is built (Shuttle XP brochure, "Technical data" and "Flexible and modular design"); #53's 13 ft is that room's ceiling,
-and this warehouse's racking alone is 16 ft. That adds a top slot to each column, for G and I. H, the shortest, goes in
+is built (the Kardex Remstar Shuttle XP brochure, kardex_tall.py's source "xp": "Technical data" and "Flexible and
+modular design"); #53's 13 ft is that room's ceiling, and this warehouse's racking alone is 16 ft. That adds a top slot to each column, for G and I. H, the shortest, goes in
 the front column under the opening, which the 3950 mm unit already has. Every other scene keeps the 3950 mm unit.
 """
 from __future__ import annotations
