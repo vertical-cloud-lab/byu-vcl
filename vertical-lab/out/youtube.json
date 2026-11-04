@@ -53,6 +53,16 @@
     "commit": "c41eb55",
     "uploaded": "2026-11-03T20:33:08Z",
     "title": "Vertical cloud lab: compact metal printers, resin printing and PCB assembly (3-D animation)",
+    "privacy": "unlisted",
+    "superseded_by": "45-L9BnfBMw"
+   },
+   {
+    "id": "45-L9BnfBMw",
+    "sha256": "82323f73d9f9212c02c1524f0795611e7ba85c239178b17c22357131b4d2c549",
+    "bytes": 3895280,
+    "commit": "fca656c",
+    "uploaded": "2026-11-04T06:46:41Z",
+    "title": "Vertical cloud lab: compact metal printers, resin printing and PCB assembly (3-D animation)",
     "privacy": "unlisted"
    }
   ],
@@ -63,6 +73,16 @@
     "bytes": 8719186,
     "commit": "4dd3bdc",
     "uploaded": "2026-11-03T21:22:40Z",
+    "title": "Vertical cloud lab: VHX + LIBS, XRF, sieving, OpenFlexure array, corrosion, DED, packaging, HIP",
+    "privacy": "unlisted",
+    "superseded_by": "WG_DAtSHg50"
+   },
+   {
+    "id": "WG_DAtSHg50",
+    "sha256": "4246e2e3491a18c18a18c2b29a803f90a6b6bcb70b32a80a69165394fff42ef8",
+    "bytes": 8341419,
+    "commit": "fca656c",
+    "uploaded": "2026-11-04T06:46:42Z",
     "title": "Vertical cloud lab: VHX + LIBS, XRF, sieving, OpenFlexure array, corrosion, DED, packaging, HIP",
     "privacy": "unlisted"
    }
@@ -75,6 +95,16 @@
     "commit": "6366a63",
     "uploaded": "2026-11-03T20:01:50Z",
     "title": "Vertical cloud lab: 14 characterization and test instruments at work (3-D animation)",
+    "privacy": "unlisted",
+    "superseded_by": "J7EJQsmyAtk"
+   },
+   {
+    "id": "J7EJQsmyAtk",
+    "sha256": "5e689009f162c405bcbd0ded8483f312d8fb19aebbb8ccf5ce98ff3d3a9f351b",
+    "bytes": 13079179,
+    "commit": "fca656c",
+    "uploaded": "2026-11-04T06:46:44Z",
+    "title": "Vertical cloud lab: every instrument at work, one after another (3-D animation)",
     "privacy": "unlisted"
    }
   ],
