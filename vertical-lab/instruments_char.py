@@ -654,8 +654,9 @@ VHX_COL_Y = 225.0                 # the back column's centre
 
 
 def _vhx_ea_y(p) -> float:
-    """The EA-300's centre: its back against the column's front face."""
-    return VHX_COL_Y - p["col_d"] / 2 - p["ea_d"] / 2 + 20.0
+    """The EA-300's centre: its back 7 mm in front of the column's face, clear of the tilt guide there (it was drawn
+    20 mm into the column until round 7)."""
+    return VHX_COL_Y - p["col_d"] / 2 - p["ea_d"] / 2 - 7.0
 
 
 def vhx_anchors(p, pose=None) -> dict:
@@ -779,30 +780,41 @@ def vhx() -> Instrument:
     head.add("zoom lens grip", cyl(58, 90, x=lx, y=ly, z=ez0 + 40), "char_vhx_dark")
     head.add("lens nose", cyl(46, 40, x=lx, y=ly, z=ez0 - 80), "char_vhx_dark")
     head.add("lens joint", box(lx - 20, ly, ez0 + 140, lx + 20, ey - eD / 2 + 2, ez0 + 175), "char_vhx_grey")
+    # The head hangs on the column through its tilt guide (#303, round 7): the EA-300 used to be drawn 20 mm into the
+    # column (interference.py's two built-in faults). Now its back is 7 mm clear, and an arm on the head rides a guide
+    # plate on the column's face (the contact interference.py lists as intended).
+    yg = VHX_COL_Y - cd / 2                          # the column's front face
+    body.add("tilt guide", box(sx0 - 250, yg - 6, ez0 + 20, sx0 + 60, yg, ez1 - 10), "char_vhx_grey")
+    head.add("arm", box(ex - 40, ey + eD / 2 - 2, ez0 + 60, ex + 40, yg - 5, ez1 - 60), "char_vhx_grey")
+    # The controller without its stand-up monitor (#303, round 7). The VHX-7000's controller is the 27 in 4K monitor
+    # unit itself, 625 W x 460 H x 180 D mm stored, 12 kg, with Gigabit LAN, USB and a DisplayPort output (Keyence's
+    # VHX-7000 model page); the head and the EA-300 cable into it, so a separate PC can't take its place. Keyence
+    # documents no remote-desktop option. So the minimum is: the controller turned sideways beside the stand (its
+    # screen facing +x, unused), the console gone, and a KVM-over-IP box, a PiKVM V4 Mini (120 x 68 x 24 mm, 0.35 kg;
+    # HDMI capture up to 1920 x 1200, USB keyboard and mouse emulation; PiKVM's datasheet), on its DisplayPort output
+    # (through a DP-to-HDMI adapter) and a USB port, so anyone on the LAN works the VHX from a browser. Nothing is
+    # installed on Keyence's controller. If Keyence will enable Remote Desktop on it, the PiKVM isn't needed either.
+    # Before: a 625 mm monitor on a foot 470 mm right of the stand, left out of the model's size, so the fit check
+    # never saw it; on tray C it ran 430 mm past the tray's right rim, into the VLM's side wall, and its silver bar
+    # touched the stand's base skirt.
+    W, H = p["ctrl_W"], p["ctrl_H"]
+    cx0, cy = 190.0, VHX_COL_Y - 185.0               # the controller's left face (10 mm clear of the focus knob); centre y
+    D_ = p["ctrl_D"]
     body.add("cable", hose([(sx0 - cw / 2 + 20, VHX_COL_Y + cd / 2, ctop - 60),
                             (sx0 - cw / 2 + 20, VHX_COL_Y + cd / 2 + 40, ctop - 60),
-                            (sx0 + 200, VHX_COL_Y + cd / 2 + 40, 40), (q["mon_x"], VHX_COL_Y + cd / 2 + 40, 40)], 10),
+                            (sx0 + 120, VHX_COL_Y + cd / 2 + 40, 60), (cx0, VHX_COL_Y + cd / 2 + 40, 60)], 10),
              "char_cable")
-    # the controller: a 27 in monitor on a silver "VHX" bar and foot, and its console in front
-    cx, cy = q["mon_x"], q["mon_y"]
-    W, H, sw, sh = p["ctrl_W"], p["ctrl_H"], p["screen"][0], p["screen"][1]
     ctrl = _piece(inst, "controller")
-    ctrl.add("controller foot", rbox(q["foot_w"], p["ctrl_D"], q["foot_h"], 30, x=cx, y=cy + 10).edges(">Z").fillet(8),
-             "char_vhx_silver")
-    ctrl.add("VHX bar", rbox(W, 60, q["bez0"] - q["foot_h"] + 6, 12, x=cx, y=cy, z=q["foot_h"] - 4)
-             .edges("<Z and |X").fillet(16), "char_vhx_silver")
-    yf = cy - 15.0
-    ctrl.add("bezel", rbox(W, 30, H - q["bez0"], 8, x=cx, y=cy, z=q["bez0"]), "inst_black")
-    ctrl.add("back", rbox(W - 60, 70, H - q["bez0"] - 60, 30, x=cx, y=cy + 45, z=q["bez0"] + 10), "char_vhx_dark")
-    ctrl.add("screen", box(cx - sw / 2, yf - 0.8, H - q["scr_top"] - sh, cx + sw / 2, yf, H - q["scr_top"]),
-             "screen_on")
-    ctrl.add("VHX badge", box(cx - 25, cy - 30.6, q["bez0"] - 22, cx + 25, cy - 30, q["bez0"] - 12), "inst_dark")
-    kx, ky = cx - 20, cy - 200                       # the console: jog dial, keys and joystick
-    ctrl.add("console", rbox(215, 100, 34, 20, x=kx, y=ky).edges(">Z").fillet(6), "char_vhx_silver")
-    ctrl.add("console keys", rbox(130, 66, 4, 6, x=kx - 5, y=ky - 5, z=34), "char_vhx_dark")
-    ctrl.add("jog dial", _xcyl(44, 30, x=kx - 107.5 - 28, y=ky - 10, z=26), "char_vhx_dark")
-    ctrl.add("joystick", cyl(14, 50, x=kx + 85, y=ky + 15, z=34).union(
-        cq.Workplane("XY").sphere(11).translate((kx + 85, ky + 15, 88))), "char_vhx_dark")
+    ctrl.add("controller", rbox(D_, W, H - 20, 10, x=cx0 + D_ / 2, y=cy, z=20), "char_vhx_dark")
+    ctrl.add("controller foot", rbox(D_ + 20, W - 120, 20, 8, x=cx0 + D_ / 2, y=cy), "char_vhx_silver")
+    ctrl.add("screen (off)", box(cx0 + D_, cy - W / 2 + 14, 100, cx0 + D_ + 0.8, cy + W / 2 - 14, H - 14), "inst_black")
+    ctrl.add("VHX bar", box(cx0 + D_, cy - W / 2 + 14, 24, cx0 + D_ + 1.0, cy + W / 2 - 14, 96), "char_vhx_silver")
+    kx, ky = cx0 + D_ / 2, cy + W / 2 - 110          # the PiKVM on top, and its two short leads
+    ctrl.add("PiKVM V4 Mini", box(kx - 34, ky - 60, H, kx + 34, ky + 60, H + 24), "inst_dark")
+    ctrl.add("PiKVM light", box(kx - 34.6, ky + 30, H + 9, kx - 34, ky + 40, H + 15), "led_blue")
+    ctrl.add("KVM leads", hose([(kx, ky + 60, H + 12), (kx, ky + 75, H + 12), (kx, ky + 75, H - 60),
+                                (cx0 - 0.5, ky + 75, H - 60)], 6), "char_cable")
+    yf = cy
     # the sample, the laser and the plasma
     smp = _piece(inst, "sample")
     smp.add("mount", cyl(30, 12, z=0), "mount")
@@ -823,8 +835,8 @@ def vhx() -> Instrument:
     pl = _piece(inst, "plasma")
     pl.add("plasma core", cq.Workplane("XY").sphere(2.4).translate((sx0, ys, zf + 1.5)), "plasma")
     pl.add("plasma glow", cq.Workplane("XY").sphere(14.0).translate((sx0, ys, zf + 3.0)), "plasma_halo")
-    inst.meshes["readout"] = _dummy((cx, cy, 300))
-    inst.aside = ("readout", "controller")
+    inst.meshes["readout"] = _dummy((cx0, cy, 300))
+    inst.aside = ("readout",)                        # the controller counts in the size now
     inst.props = ("sample",)
     top = ctop - 10 + q["arch_rise"] + 40 + 11      # the arch's crown
     inst.actions = [
@@ -838,13 +850,16 @@ def vhx() -> Instrument:
          "surface into a plasma.", 2.4, {"laser": (0.0, 1.0), "plasma": (0.0, 1.0)}),
         ("Its spectrometer reads the plasma's light: elements from H to U, in seconds, at the spot the camera is "
          "looking at.", 4.2, {"laser": (1.0, 0.0), "plasma": (1.0, 0.3), "readout": (0.0, 1.0)}),
-        (f"The EA-300 adds 7.2 kg to the stand. Stand and head are about {top:.0f} mm tall: under Kardex's 727.5 mm.",
-         2.4, {"plasma": (0.3, 0.0), "readout": (1.0, 0.0)}),
+        (f"The EA-300 adds 7.2 kg to the stand. Stand and head are about {top:.0f} mm tall, under the opening's "
+         "856.5 mm. No monitor or console: the controller stands sideways, and a PiKVM puts its screen on the LAN.",
+         3.0, {"plasma": (0.3, 0.0), "readout": (1.0, 0.0)}),
     ]
     inst.labels = [("EA-300 LIBS head", (ex - eW / 2, ey - eD / 2, ez1 - 60), (0.10, 0.25)),
                    ("VH-ZST zoom lens", (lx + 27, ly, ez0 + 80), (0.42, 0.14)),
                    ("motorized XY stage", (sx0 - q["stage_w"] / 2, ys - q["stage_d"] / 2, sz - 20), (0.08, 0.72)),
-                   ("controller, 27 in 4K screen", (cx - 250, yf, H - 60), (0.84, 0.80)),
+                   ("VHX-7000 controller (its 27 in screen built in), turned sideways", (cx0 + D_ / 2, cy - W / 2, H - 80),
+                    (0.80, 0.86)),
+                   ("PiKVM V4 Mini: remote in over the LAN", (kx, ky, H + 24), (0.86, 0.12)),
                    ("laser spot", (sx0, ys - 15, zf + 2), (0.12, 0.50))]
     inst.anchors = vhx_anchors(q)
     inst.cam = (0.55, -1.7, 0.62)
