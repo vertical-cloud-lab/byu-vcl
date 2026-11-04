@@ -58,7 +58,7 @@ the capper and the pipette, instead of its own XIAO RP2040.
 | [`BOM.md`](BOM.md) | Bill of materials for the Uno-driven version: parts to buy with links and prices, parts to print |
 | [`step/`](step) | Printed parts as STEP: `base`, `vial_holder`, `magnet_carrier`, `deck_key` (the 0.05 mm press fit; print two), plus `vial_stirrer_assembly.step`, the whole stirrer for fit checks |
 | [`stl/`](stl) | The same printed parts as STL. Both sets are in assembly position, which is also each part's print orientation. [`stl/key_fit_test/`](stl/key_fit_test) has the deck keys at 0.10 and 0.15 mm, the two sizes from the fit test that aren't printed by default |
-| [`compact/`](compact/README.md), [`stl/compact/`](stl/compact) | The compact 49 × 44 mm base and vial holder, built in CadQuery by `compact/build_compact.py` from `vial_stirrer.fs`'s numbers, and checked against the Onshape parts. STL only. `compact/render_compact_steps.py` draws its assembly for BUILD.md, [`img/compact_assembly.png`](img/compact_assembly.png) |
+| [`compact/`](compact/README.md), [`stl/compact/`](stl/compact) | The compact 49 × 44 mm base and vial holder, built in CadQuery by `compact/build_compact.py` from `vial_stirrer.fs`'s numbers, and checked against the Onshape parts. STLs, and the base as STEP. `compact/render_compact_steps.py` draws its assembly for BUILD.md, [`img/compact_assembly.png`](img/compact_assembly.png). Since 2026-11-04 the compact base has no board stop and its cable notch is in the −X wall ([why](compact/README.md#the-2026-11-04-changes)) |
 | [`print/`](print) | Print records. [`2026-10-21-a1mini/`](print/2026-10-21-a1mini/README.md): all five parts on one A1 mini plate in white PETG Basic, sent from Bambu Studio by an `@claude-print` run. It has the file the printer ran, the settings and a camera timelapse. [`2026-10-22-a1mini-keys/`](print/2026-10-22-a1mini-keys/README.md): the deck key at 0.05, 0.10 and 0.15 mm, for the fit test, the same way. 0.05 fit best. [`2026-10-28-a1mini-compact/`](print/2026-10-28-a1mini-compact/README.md): the compact stirrer's base and holder, a carrier and two 0.05 keys. [`2026-10-30-a1mini-compact/`](print/2026-10-30-a1mini-compact/README.md): the same plate again, from the same file; finished after a pause at 80 % on the AMS Lite slot 4 warning |
 | [`img/`](img) | Onshape's renders (steps 1–10 of the XIAO version, assembled, exploded, section, contact sheet), the assembly video, GIF and contact sheet of the Uno version, and its wiring diagram |
 | [`firmware/main.py`](firmware/main.py) | MicroPython speed controller for the XIAO RP2040 (untested) |
@@ -161,7 +161,9 @@ model's numbers ([output](analysis/deck_tiling_output.txt)).
 **A 49 × 44 mm layout.** It was checked in plan on 2026-10-22, as below. On 2026-10-28 it was
 modelled and printed ([`compact/`](compact/README.md)). Modelling changed four things: the
 pads became M3 washers, the base walls came down 1 mm, the insert holes went 1 mm deeper, and
-the −Y wall lost its vents. The plan:
+the −Y wall lost its vents. On 2026-11-04 the stop went and the notch moved back to the −X
+wall ([why](compact/README.md#the-2026-11-04-changes)); the figures above still show it on
+−Y. The plan:
 
 - The base and the holder's flange are 49 × 44 mm, with 1.6 mm walls.
 - The corner posts, their four inserts and the four M3 × 12 go. The fan's four screws
@@ -188,7 +190,9 @@ What else changes:
 - **Cables.** With 1 mm between stirrers, a cable can only leave from a side that faces out
   of the block. With the notch on −Y, and each stirrer turned so that side faces out, a block
   two rows deep and any number of columns long works. A third row's cables would have to go
-  up or down through the deck, which hasn't been worked out.
+  up or down through the deck, which hasn't been worked out. **Since 2026-11-04 the notch is
+  on −X,** so it is the other way round: a block two columns wide and any number of rows
+  deep, each stirrer turned so its −X wall faces out.
 - **The fan's ±0.5 mm thickness moves the vial instead of the magnet gap.** The carrier and
   the holder would then both sit on the fan, so the gap between the magnets and the bar no
   longer depends on how thick the fan is. The vial height does, so teach it.
@@ -519,8 +523,10 @@ reaches its 500 mA USB fuse. Running them together would need the fans fed from 
 electromagnet's 5 V supply.
 
 **On the deck,** four compact stirrers fit as a 2 × 2 block, 100 × 90 mm, with the cables
-leaving front and back, or as a row of four
-([Side by side on the deck](#side-by-side-on-the-deck)).
+leaving left and right, or as a column of four, 50 × 180 mm
+([Side by side on the deck](#side-by-side-on-the-deck)). That is with the notch in the −X
+wall, as since 2026-11-04. Compact bases printed before then have it in the −Y wall: a 2 × 2
+block with the cables leaving front and back, or a row of four.
 
 **For four compact stirrers, besides ME order 13518 and item 13:**
 
@@ -759,7 +765,9 @@ checks it ([output](analysis/interference_mujoco_output.txt)). It runs in about 
 
 **The model.**
 - **Printed parts** are the STLs that were printed: `base_compact`, `vial_holder_compact`, the
-  magnet carrier and two 0.05 mm deck keys.
+  magnet carrier and two 0.05 mm deck keys. The base is the one printed on 10-28 and 10-30
+  (at `b9f57f5`). Since 2026-11-04 `base_compact.stl` has no board stop and its notch in the
+  −X wall; neither is near the rotor, but a rerun would model the cores on the old route.
 - **Bought parts** are `vial_stirrer.fs`'s: the fan (`makeFan`), the Hall sensor and its leads
   (`makeHall`), the screws, inserts and MOSFET. Added to them: four ISO 7089 washers, the
   junction board on its rails, and the cable's cores as a 2 × 2 bundle under the fan.

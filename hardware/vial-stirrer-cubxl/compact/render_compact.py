@@ -21,7 +21,7 @@ p.set_background("white")
 for path, col, (dx, dz) in parts:
     m = pv.read(path).translate((dx, 0, dz), inplace=False)
     p.add_mesh(m, color=col, smooth_shading=False, specular=0.15, ambient=0.25, diffuse=0.75)
-p.camera_position = [(105, -160, 130), (0, 0, 20), (0, 0, 1)]
+p.camera_position = [(-105, -160, 130), (0, 0, 20), (0, 0, 1)]   # from the -X/-Y corner: the cable notch is in the -X wall (2026-11-04)
 p.camera.zoom(0.78)
 p.enable_anti_aliasing("ssaa")
 p.screenshot(sys.argv[1])

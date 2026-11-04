@@ -41,7 +41,7 @@ keys are out of view. Right: the pause, with the same two parts on the right. St
 
 | | |
 |---|---|
-| Parts | [`base_compact.stl`](../../stl/compact/base_compact.stl), [`vial_holder_compact.stl`](../../stl/compact/vial_holder_compact.stl), [`magnet_carrier.stl`](../../stl/magnet_carrier.stl) and [`deck_key.stl`](../../stl/deck_key.stl) twice, laid out as on 10-28 ([layout](../2026-10-28-a1mini-compact/plate_layout.png)) |
+| Parts | [`base_compact.stl`](../../stl/compact/base_compact.stl), [`vial_holder_compact.stl`](../../stl/compact/vial_holder_compact.stl), [`magnet_carrier.stl`](../../stl/magnet_carrier.stl) and [`deck_key.stl`](../../stl/deck_key.stl) twice, laid out as on 10-28 ([layout](../2026-10-28-a1mini-compact/plate_layout.png)). The base is the one at `b9f57f5`, with the board stop and the −Y notch; it changed on 2026-11-04 ([why](../../compact/README.md#the-2026-11-04-changes)) |
 | Printer | "Thumbelina, the A1 Mini", 0.4 mm stainless nozzle, standard flow (read off the printer), Textured PEI |
 | Filament | Bambu PETG Basic, white, AMS Lite A4. Nozzle 245 °C, bed 70 °C |
 | Process | As sliced on 10-28: `0.20mm Standard @BBL A1M` with `BUILD.md`'s changes (4 walls, 30 % infill, 0.15 mm elephant-foot compensation), the magnet carrier alone at 100 % |

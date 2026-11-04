@@ -20,13 +20,21 @@ step differs, it says **Compact:**, and stage 6 has a part for each.
 | Inserts | 4, in the fan posts | 8: 4 in the fan posts, 4 in the corner posts |
 | Screws | 4 × M3 × 20, through the holder, 4 washers and the fan into the inserts | 4 × M3 × 16 through the fan, 4 × M3 × 12 through the holder |
 | The holder sits on | the fan's corners, on four 0.5 mm M3 washers | the base's walls |
-| The cable leaves through | the −Y wall | the −X wall |
+| The cable leaves through | the −X wall (the −Y wall on the bases printed before 2026-11-04) | the −X wall |
+| Junction board stop | none (bases printed before 2026-11-04 have one) | a 3 mm stop between the board and the MOSFET |
 | Vents | +X and +Y walls | +X, +Y and −Y walls |
 
 <img src="img/compact_parts.png" width="300" alt="The compact stirrer's printed parts, exploded">
 
 *The compact stirrer's printed parts, exploded: vial holder, magnet carrier, base, two deck
-keys. The cable notch is in the base's front (−Y) wall.*
+keys. The cable notch is in the base's −X wall, on the left.*
+
+**The compact base changed on 2026-11-04,** at @benwhitney5463's request: it has no stop for
+the junction board, and its cable notch moved from the −Y wall to the −X wall, the board's
+column-A end, where the 56 × 56 mm base has its notch
+([compact README](compact/README.md#the-2026-11-04-changes)). This guide describes the new base.
+For a compact base printed on 2026-10-28 or 2026-10-30, with the stop and the −Y notch, follow
+[this guide as it was](https://github.com/vertical-cloud-lab/byu-vcl/blob/bee02b8/hardware/vial-stirrer-cubxl/BUILD.md) for the board, the cable and stage 6.
 
 **No stirrer has been built yet,** so this is the first build. Some of the design's
 numbers are estimates, and the steps marked **Check** are where they get tested. Please
@@ -150,12 +158,12 @@ print orientation, so a slicer only has to drop them onto the bed.
 
 **Compact:** print [`base_compact.stl`](stl/compact/base_compact.stl) and
 [`vial_holder_compact.stl`](stl/compact/vial_holder_compact.stl) in place of the base and the
-holder above. The carrier, the keys and the discs are the same. There are no STEP files of the
-compact parts.
+holder above. The carrier, the keys and the discs are the same. The base is also a STEP file,
+[`step/compact/base_compact.step`](step/compact/base_compact.step); the holder is STL only.
 
 | Part | Qty | On the bed | Notes |
 |---|---|---|---|
-| [Compact base](stl/compact/base_compact.stl) | 1 | Floor down | 49 × 44 × 19 mm. The same key pockets and fan posts as the 56 × 56 mm base, and the same rails and stop 0.5 mm further toward +X, but no corner posts. The walls stop 1 mm under the holder, and the −Y wall has the cable notch and no vents |
+| [Compact base](stl/compact/base_compact.stl) | 1 | Floor down | 49 × 44 × 19 mm. The same key pockets and fan posts as the 56 × 56 mm base, and the same rails 0.5 mm further toward +X, but no stop and no corner posts. The walls stop 1 mm under the holder. The −X wall has the cable notch, 13 mm wide as in the 56 × 56 mm base, and the −Y wall has no vents |
 | [Compact vial holder](stl/compact/vial_holder_compact.stl) | 1 | Flange down | 49 × 44 × 22 mm. The cup, the recess and its bridge are the 56 × 56 mm holder's, copied from its STL. The flange's underside is flat, with four Ø3.4 mm holes and Ø6.5 × 3 mm counterbores for the M3 × 20 heads |
 
 Settings, as Cubware gives them for its keyed deck parts: at least 4 walls, 30 % infill
@@ -286,7 +294,8 @@ drawing, it checks that the leads, wires and solder bridges join exactly those s
 that every part lies flat at a lead spacing it can take, that no two parts' bodies overlap,
 and that the board fits on the rails of both bases. To change the layout, edit the
 script, not the PNG. The [compact stirrer](compact/README.md#building-it) uses the same board,
-hole for hole, but its cable comes in through the −Y wall instead.
+hole for hole, and its cable comes in the same way, through the −X wall. Its base has no stop,
+so nothing stands between the board and the MOSFET.
 
 The same circuit as six nodes. Tick each one off as you solder it:
 
@@ -337,10 +346,10 @@ place: on the two rails at the −X end of the base, against the small stop, wit
 leaving through the notch in the −X wall. The MOSFET lies flat on the floor on the other
 side of the stop, under the fan, printed face up and tab toward +X.
 
-**Compact:** the same board, wired hole for hole the same, on the same rails and stop,
-0.5 mm further toward +X. Only the cable arrives from another side: the compact base's
-notch is in its −Y wall, below columns E–G of the board, so the cable's cores run under the
-fan to reach column A ([below](#the-cable-the-connector-and-the-uno-end)).
+**Compact:** the same board, wired hole for hole the same, on the same rails, 0.5 mm further
+toward +X, and the cable leaves through the notch in the −X wall too. There is no stop: the
+board goes where the stop used to hold it, and the MOSFET lies flat on the floor beyond the
+board's +X end, with nothing in between.
 
 1. **Cut a piece 8 holes long from one strip.** The BOM's strips are 20 × 80 mm, with 6 rows
    of 28 holes, so the piece is the strip's full width: 8 × 6 holes, 20.3 × 20 mm. Score
@@ -350,7 +359,10 @@ fan to reach column A ([below](#the-cable-the-connector-and-the-uno-end)).
    and an end piece is about 25 mm long, too long for the base. Cutting through the strip's
    printed columns A, J, S and the last B gives three pieces per strip.
 2. **Check the fit.** The piece lies across both rails, its 20 mm width resting on them, and
-   slides against the stop with about 1.5 mm to spare at the −X wall, in both bases.
+   slides against the stop with about 1.5 mm to spare at the −X wall. **Compact:** there is
+   no stop. Set the piece on the rails with about 1.5 mm between it and the −X wall, room
+   for the cable's cores to bend into column A. The rails then end 0.4 mm short of its +X
+   edge.
 3. **Mark A1.** The strip prints its own letters along one long edge, so the piece shows
    other letters than the diagram's (B to I, for the first piece). Ignore them. Put a dot
    beside the corner hole that will be A1, at the cable end, on both faces, and count from
@@ -397,10 +409,11 @@ fan to reach column A ([below](#the-cable-the-connector-and-the-uno-end)).
    soldered at each hole is quicker than a run of solder blobs. Before going on, look along
    the underside for solder joining row 5 to row 6, or H2, H3 and H4 to each other: those
    holes sit side by side on different nodes.
-7. The MOSFET's leads have to cross the 3 mm stop to reach the board. With it printed face
-   up and the tab toward +X, its legs come in gate, drain, source from the top, which is H2,
-   H3, H4. Bend them up over the stop into those holes if they reach, or join them with
-   short wires.
+7. With the MOSFET printed face up and the tab toward +X, its legs come in gate, drain,
+   source from the top, which is H2, H3, H4. **Compact:** nothing stands in their way, so
+   they go straight into those holes; the body lies about 9 mm beyond column H. In the
+   56 × 56 mm base they have to cross its 3 mm stop: bend them up over it into those holes
+   if they reach, or join them with short wires.
 8. Cut the fan's leads to reach the board with some slack, about 70 mm, and solder red to
    **G6** (the 5V rail) and black to **E3** (Drain). Dress the leads along a strut, clear
    of the blades.
@@ -426,23 +439,14 @@ and down the inside of the −X wall to the board, so it needs longer leads.
    solder the four conductors to **A6** (1, 5V), **A5** (2, GND), **A1** (3, PWM) and
    **A3** (4, Hall). Write down which colour is which pin.
 
-   **Compact:** strip about **50 mm** of jacket, so that the jacket ends in the −Y wall's
-   notch and the cores reach the board. With the board on its rails, lay the cores from
-   the notch across the floor to the board's −Y edge, which they meet below columns E–G,
-   and along that edge's margin, which has no holes, to column A. The margin is under
-   3 mm wide clear of the pads, and the fan is only about 3.5 mm above the board, so the four
-   go as a bundle two wide and two high, not side by side. At column A, two go into **A6**
-   (5V) and **A5** (GND), and the other two go on up the board's −X edge, over column A, to
-   **A3** (Hall) and **A1** (PWM). A1 is the farthest, about 40 mm from the notch. Keep
-   the cores off the parts' bodies, and clear of the fan post just −X of the notch. Shape
-   them with the board sitting in the base before you solder, then lift it out to solder.
-   This route hasn't been tried; check it with the fan set on its posts before soldering.
+   **Compact:** the same, through the notch in its −X wall. The jacket ends in the notch,
+   and the cores fan out from there over the board's −X edge into column A, no more than
+   about 7 mm each. Keep them low: the fan's frame is about 3.5 mm above the board.
 3. **Strain relief**, once the board is in the base ([stage 6](#6-assemble)): a dab of hot
    glue over the jacket in the notch, so a tug on the cable pulls on the jacket and not on
    the joints. A small zip tie through the board also works, but the board's holes are
-   about 1 mm, so drill out the two free ones at its −X edge first (A2 and A4).
-   **Compact:** hot glue in the −Y notch only. A zip tie at the board's −X edge would be
-   too far from the notch to help.
+   about 1 mm, so drill out the two free ones at its −X edge first (A2 and A4). The same
+   goes for the compact base.
 4. **Uno end:** splice the cable to the leads of one half of the JST-XH pair, pin 1 to cable 1
    and so on, with heat shrink on each joint. Put the half with recessed contacts (the
    housing) on the Uno side, so its live pins can't be touched when unplugged.
@@ -511,8 +515,8 @@ fan, the washers and the holder go on together.
 ![The compact stirrer's assembly: the board, cable and MOSFET in the base; the fan on its posts; a washer on each corner and the holder above; the four M3 × 20](img/compact_assembly.png)
 
 *Steps 2, 3, 5–6 and 7 below. Orange is what the step adds, amber a second kind of part. The
-base is see-through in the first view, to show the board, and the cores run as described in
-[stage 5](#the-cable-the-connector-and-the-uno-end). The fan, carrier, MOSFET, Hall sensor and
+base is see-through in the first view, to show the board, the cable in through the −X notch
+and the MOSFET's legs straight into H2–H4. The fan, carrier, MOSFET, Hall sensor and
 inserts are the Onshape model's; the base and holder are the compact STLs; the board, cable,
 washers and screws are drawn to this guide's dimensions
 ([`compact/render_compact_steps.py`](compact/render_compact_steps.py)).*
@@ -524,15 +528,16 @@ washers and screws are drawn to this guide's dimensions
    carrier's top stands about 3.3 mm above the frame's top face. With 0.5 mm washers, the
    underside of the holder's floor will be 4.3 mm above that face, the same as in the
    56 × 56 mm stirrer.
-2. **Board and MOSFET.** Slide the junction board onto the rails against the stop. Lay the
-   cable's jacket in the −Y wall's notch, with the cores along the route from
-   [stage 5](#the-cable-the-connector-and-the-uno-end), and fix the jacket there with a dab
-   of hot glue. Lay the MOSFET flat on the floor at +X, printed face up, with a dab of hot
-   glue, its tab touching nothing.
+2. **Board and MOSFET.** Set the junction board on the rails about 1.5 mm from the −X wall
+   (there is no stop), with the cable's jacket in the −X wall's notch, and fix the jacket
+   there with a dab of hot glue. Lay the MOSFET flat on the floor at +X, printed face up,
+   its legs straight into H2–H4, with a dab of hot glue, its tab touching nothing. The
+   jacket and the MOSFET then hold the board; a dab of hot glue on each rail as well does
+   no harm.
 3. **Fan onto its four posts, rotor side up** (carrier up), with its leads to the board.
    The ±Y walls hold it within 0.2 mm, but in X it can slide 2.9 mm each way until the
-   screws are in, so set it square over the posts. Check that the cable's cores lie flat
-   under it, and spin the blades by hand: nothing touches them.
+   screws are in, so set it square over the posts. Check that the cores at column A sit
+   below its frame, and spin the blades by hand: nothing touches them.
 4. **Hall sensor into the holder,** exactly as in the 56 × 56 mm stirrer's step 4: holder
    upside down, the sensor flat on the recess ceiling at the groove's mouth, marked face
    toward you, its lead edge on the recess's circle, and the leads tacked into the groove.
@@ -540,10 +545,11 @@ washers and screws are drawn to this guide's dimensions
    rests on them. Without them it sits 0.5 mm lower, and the carrier's gap shrinks from
    1.1 to 0.6 mm.
 6. **Holder on.** It fits on two ways round, and only one is right: **the groove goes over
-   the −X wall**, the short wall with neither vents nor the notch. Turned the other way, the
+   the −X wall**, the short wall with the cable notch and no vents. Turned the other way, the
    groove would sit over the vented +X wall and the MOSFET. Fold the Hall leads down the
-   inside of the −X wall, into the 2.9 mm gap between the fan and the wall, and lower the
-   holder straight down onto the washers without knocking them off their holes.
+   inside of the −X wall, beside the notch, into the 2.9 mm gap between the fan and the
+   wall, and lower the holder straight down onto the washers without knocking them off
+   their holes.
 7. **Four M3 × 20 through the counterbores,** each through the holder, a washer and the fan
    into its post insert. A screw finds the washer's hole by feel. If one catches, lift the
    holder and re-centre that washer. Start all four by two turns before tightening any, then
@@ -623,9 +629,11 @@ EOF
 
 Set the stirrer in its two slots and run the cable clear of the gantry: flat on the deck or
 along its edge, taped, never across a path the head or its cables sweep. Plug in the JST.
-**Compact:** its cable leaves from the −Y side. Turn the stirrer so that side faces where
+**Compact:** its cable leaves from the −X side. Turn the stirrer so that side faces where
 the cable is to go, and if other labware or a second stirrer is to sit next to it, so that
-the −Y side faces out of the block ([README](README.md#side-by-side-on-the-deck)).
+the −X side faces out of the block: a block two columns wide, any number of rows deep
+([README](README.md#side-by-side-on-the-deck)). A stirrer on a base printed before
+2026-11-04 has its cable on the −Y side instead.
 
 This script, on the Pi, starts a timed run and prints the status every 2 s. The two numbers
 after `-` are the rpm (100–2000; the firmware clamps it) and the seconds. The fan stops by
@@ -744,7 +752,8 @@ README's estimates can be replaced with measurements:
 - The deck plate's thickness, and whether the keys bottom out.
 - The holder recess depth (sag).
 - The fan's thickness, and for the compact stirrer the washers' thickness.
-- Compact: whether the fan dropped into the base, and whether the cable's cores fitted under it.
+- Compact: whether the fan dropped into the base, and whether the cable's cores fitted between
+  the notch and column A, under the fan's frame.
 - The fan's current at 5 V, full speed, and its peak when it starts.
 - Whether the Hall output toggles cleanly, and whether `rpm` ever reads above 0 with the fan off.
 - Whether `rpm` kept reading with a vial and bar in, or stalled only then.

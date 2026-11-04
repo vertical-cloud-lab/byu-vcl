@@ -16,7 +16,10 @@ it for interference:
 
 Where the geometry comes from:
   - printed parts: stl/compact/base_compact.stl, stl/compact/vial_holder_compact.stl,
-    stl/magnet_carrier.stl and stl/deck_key.stl, the files that were printed;
+    stl/magnet_carrier.stl and stl/deck_key.stl, the files that were printed. The base was then
+    the one printed on 2026-10-28 and 2026-10-30 (commit b9f57f5). Later on 2026-11-04 the base
+    lost its board stop and its cable notch moved to the -X wall; neither is near the rotor, but
+    a rerun reads the new base and still lays the cable's cores on the old route under the fan;
   - bought parts (fan, washers, screws, inserts, Hall sensor and leads, junction board, MOSFET,
     vial): onshape/vial_stirrer.fs's numbers (makeFan, makeHall, makeScrew, makeInsert,
     makeDriver), BUILD.md's and wiring_diagram.py's for the compact build.

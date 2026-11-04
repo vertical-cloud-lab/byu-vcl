@@ -70,12 +70,12 @@ so a slicer only has to drop them onto the bed.
 | Vial holder | [`step/vial_holder.step`](step/vial_holder.step) | [`stl/vial_holder.stl`](stl/vial_holder.stl) | 1 | 17.1 cm³ | Flange down, so the fingers print upright as in the 9-vial holder. The 1.2 mm floor bridges the Ø27 mm carrier pocket; support it if the bridge sags |
 | Magnet carrier | [`step/magnet_carrier.step`](step/magnet_carrier.step) | [`stl/magnet_carrier.stl`](stl/magnet_carrier.stl) | 1 | 0.8 cm³ | Pockets up |
 | Deck key | [`step/deck_key.step`](step/deck_key.step) | [`stl/deck_key.stl`](stl/deck_key.stl) | **2** | 2.3 cm³ each | Nub up. Fix elephant's foot first; Cubware says to. The nub presses into the base, 0.05 mm a side, the best fit of the [2026-10-22 fit test](print/2026-10-22-a1mini-keys/README.md). Keep printing this one. The 0.10 and 0.15 mm keys are in [`stl/key_fit_test/`](stl/key_fit_test), in case another printer or filament comes out loose |
-| Compact base | none | [`stl/compact/base_compact.stl`](stl/compact/base_compact.stl) | 1 | 11.3 cm³ | For the compact stirrer, in place of the base. Floor down |
+| Compact base | [`step/compact/base_compact.step`](step/compact/base_compact.step) | [`stl/compact/base_compact.stl`](stl/compact/base_compact.stl) | 1 | 11.1 cm³ | For the compact stirrer, in place of the base. Floor down. Since 2026-11-04 it has no board stop and its cable notch is in the −X wall ([why](compact/README.md#the-2026-11-04-changes)) |
 | Compact vial holder | none | [`stl/compact/vial_holder_compact.stl`](stl/compact/vial_holder_compact.stl) | 1 | 11.4 cm³ | For the compact stirrer, in place of the vial holder. Flange down |
 
 The compact stirrer takes the same carrier and keys. Its base and holder were built in
-CadQuery by [`compact/build_compact.py`](compact/build_compact.py), not in Onshape, so they
-have STLs only.
+CadQuery by [`compact/build_compact.py`](compact/build_compact.py), not in Onshape. The base
+is also a STEP file; the holder is STL only, since its cup comes from the Onshape STL.
 
 [`step/vial_stirrer_assembly.step`](step/vial_stirrer_assembly.step) is the whole
 stirrer as 39 solids: the printed parts, the bought parts modelled from their datasheet
