@@ -3,7 +3,9 @@
 The atomized powder goes through a sieving cell, into the Aconity MIDI's powder supply, and the MIDI prints the
 plate that chapter 4 ([`alloy_workflow.py`](../alloy_workflow.py)) takes out.
 [GIF](../out/alloy_print.gif), [MP4](../out/mp4/alloy_print.mp4), [still](../out/alloy_print_still.png),
-[steps](../out/alloy_print.json). 1280 × 720 at 15 fps; the GIF is 640 × 360 at 5 fps.
+[steps](../out/alloy_print.json), stills of the [cell](../out/alloy_print_cell.png) and the
+[tipper](../out/alloy_print_tipper.png). 194 s at 1280 × 720 and 10 fps (round 5, to fit the session; re-render at
+15 fps when the runner is free); the GIF is 640 × 360 at 5 fps.
 
 **Round 5 (PR #318): no person.** Sterling, on "a person still takes the sieve stack apart": "The idea would be to
 have the robot take care of this, or to use something more automated. ... some kind of clamping mechanism or clever

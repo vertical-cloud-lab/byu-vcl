@@ -9,8 +9,9 @@ and wire head, and the holders on the MiR.
 
 | | |
 |---|---|
-| MP4, 1280 × 720, 15 fps, 115 s | [`out/mp4/alloy_workflow.mp4`](out/mp4/alloy_workflow.mp4) (7.8 MB) |
-| GIF, 640 × 360, 5 fps | [`out/alloy_workflow.gif`](out/alloy_workflow.gif) (4.5 MB) |
+| MP4, 1280 × 720, 10 fps, 159 s (round 5; re-render at 15 fps when the runner is free) | [`out/mp4/alloy_workflow.mp4`](out/mp4/alloy_workflow.mp4) (8.9 MB) |
+| GIF, 640 × 360, 5 fps | [`out/alloy_workflow.gif`](out/alloy_workflow.gif) (5.1 MB) |
+| Stills: the lance, the depowdering box | [`out/alloy_workflow_lance.png`](out/alloy_workflow_lance.png), [`out/alloy_workflow_depowder.png`](out/alloy_workflow_depowder.png) |
 | Frame range of every sub-step, and the numbers used | [`out/alloy_workflow.json`](out/alloy_workflow.json) |
 | Stills: the cut, the broken bar | [`out/alloy_workflow_cut.png`](out/alloy_workflow_cut.png), [`out/alloy_workflow_still.png`](out/alloy_workflow_still.png) |
 
