@@ -63,6 +63,10 @@ Sterling: "The gripper of the arm should have a camera on it."
 - It never touches wrist 1, 2 or 3 in 2000 random poses, so the cached self-collision pairs still hold.
 - **The park pose turns it away from the machines.** With wrist 3 at 0°, the camera stuck out 71 mm past the MiR's
   side and caught the opening's post as the MiR docked. `animate.PARK_DEG` now has wrist 3 at 180°.
+- **Level grips keep it on top.** `props.tcp_frame` gave a level gripper's y axis up or down depending on the heading
+  (up when pointing towards −y, or within 26° of +x). That put the camera under the gripper for those headings. It
+  also turned a part held level upside down between two such headings. Now spin 0 always has y down for approaches
+  within 60° of level. Straight-down grips are unchanged. `warehouse.upright()` ends up with the same frames as before.
 - `ur_arm._cached` now keys the vendor meshes on what they are built from, not on the whole file. It no longer deletes
   old pickles, since checkouts share `.cache/`.
 
@@ -85,6 +89,13 @@ repeating AprilTag pattern on each face or something?"
 | `warehouse.py`, MiR bodies | 0 of 1120 | 0 of 1120 |
 
 Before the park pose changed, `warehouse.py` had 4 of 1120 frames: the camera against the opening's post.
+
+**`alloy_charge.py` stops at 7/10 with the camera on.** For one rack cup, at (−190, −1422, 910) mm, `aim()` finds no
+clear level heading. It falls back to the radial one, whose pose 150 mm back is out of the arm's reach, and `ur_arm.ik`
+raises. With the camera left off (everything else of this round in), it gets past 7/10. Self-collision is not the
+cause: the same headings are clear with and without the camera. So it is the camera against the scene, probably the
+balance or the rack behind the cup. The tcp_frame fix above does not change it. This needs a change in the chapter,
+for example another grip height or approach for that cup. Not yet done.
 
 ## For the other scenes
 
