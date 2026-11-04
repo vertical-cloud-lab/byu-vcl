@@ -1,7 +1,7 @@
 {
  "name": "alloy_atomize",
  "fps": 15,
- "n_frames": 1375,
+ "n_frames": 2347,
  "size": [
   1280,
   720
@@ -9,339 +9,620 @@
  "substeps": [
   {
    "label": "1/5",
-   "caption": "From the VLM to the atomizer: the MiR250 carries the two charged 5N Al cups, 78.3 g of Al-10Si (Si powder under each plug), to the AMAZEMET rePowder. Two cups a run is #222's default (80-100 g).",
+   "caption": "From the VLM to the atomizer: the MiR250 carries the four charged 5N Al cups, 156.7 g of Al-10Si (Si powder under each plug), to the AMAZEMET rePowder. Four charges is how the lab loads the crucible; its own Al runs were 169-180 g (DAL #159).",
    "start_frame": 0,
-   "end_frame": 38
+   "end_frame": 41
   },
   {
    "label": "1/5",
-   "caption": "From the VLM to the atomizer: the MiR250 carries the two charged 5N Al cups, 78.3 g of Al-10Si (Si powder under each plug), to the AMAZEMET rePowder. Two cups a run is #222's default (80-100 g).",
-   "start_frame": 39,
-   "end_frame": 90
+   "caption": "From the VLM to the atomizer: the MiR250 carries the four charged 5N Al cups, 156.7 g of Al-10Si (Si powder under each plug), to the AMAZEMET rePowder. Four charges is how the lab loads the crucible; its own Al runs were 169-180 g (DAL #159).",
+   "start_frame": 42,
+   "end_frame": 93
   },
   {
    "label": "2/5",
    "caption": "The sealing rod is already fitted and its lever down over the adapter: rod first, then the metal (GU500 manual, #222). The arm takes the lid's knob and swings the lid up about its hinge, to the left.",
-   "start_frame": 91,
-   "end_frame": 115
+   "start_frame": 94,
+   "end_frame": 118
   },
   {
    "label": "2/5",
    "caption": "The sealing rod is already fitted and its lever down over the adapter: rod first, then the metal (GU500 manual, #222). The arm takes the lid's knob and swings the lid up about its hinge, to the left.",
-   "start_frame": 116,
-   "end_frame": 128
+   "start_frame": 119,
+   "end_frame": 131
   },
   {
    "label": "2/5",
    "caption": "The sealing rod is already fitted and its lever down over the adapter: rod first, then the metal (GU500 manual, #222). The arm takes the lid's knob and swings the lid up about its hinge, to the left.",
-   "start_frame": 129,
-   "end_frame": 135
+   "start_frame": 132,
+   "end_frame": 138
   },
   {
    "label": "2/5",
    "caption": "The sealing rod is already fitted and its lever down over the adapter: rod first, then the metal (GU500 manual, #222). The arm takes the lid's knob and swings the lid up about its hinge, to the left.",
-   "start_frame": 136,
-   "end_frame": 169
+   "start_frame": 139,
+   "end_frame": 172
   },
   {
    "label": "2/5",
    "caption": "The sealing rod is already fitted and its lever down over the adapter: rod first, then the metal (GU500 manual, #222). The arm takes the lid's knob and swings the lid up about its hinge, to the left.",
-   "start_frame": 170,
-   "end_frame": 176
+   "start_frame": 173,
+   "end_frame": 179
   },
   {
    "label": "2/5",
    "caption": "The sealing rod is already fitted and its lever down over the adapter: rod first, then the metal (GU500 manual, #222). The arm takes the lid's knob and swings the lid up about its hinge, to the left.",
-   "start_frame": 177,
-   "end_frame": 187
+   "start_frame": 180,
+   "end_frame": 190
   },
   {
    "label": "2/5",
-   "caption": "Cup 1 of 2 out of the carrier and over the open crucible. Past the rod's adapter a 3/4 in cup only goes in tipped, foot by the rod and top leaning away: #222 finds -0.09 mm in the scaled drawing, too close to call, so try one first. Let go below the adapter; it slides to the floor cone, plug up.",
-   "start_frame": 188,
-   "end_frame": 209
+   "caption": "Cup 1 of 4 out of the carrier and over the open crucible. Past the rod's adapter a 3/4 in cup only goes in tipped, foot by the rod and top leaning away: #222 finds -0.09 mm in the scaled drawing, too close to call, so try one first. Let go below the adapter; it slides to the floor cone, plug up.",
+   "start_frame": 191,
+   "end_frame": 212
   },
   {
    "label": "2/5",
-   "caption": "Cup 1 of 2 out of the carrier and over the open crucible. Past the rod's adapter a 3/4 in cup only goes in tipped, foot by the rod and top leaning away: #222 finds -0.09 mm in the scaled drawing, too close to call, so try one first. Let go below the adapter; it slides to the floor cone, plug up.",
-   "start_frame": 210,
-   "end_frame": 220
+   "caption": "Cup 1 of 4 out of the carrier and over the open crucible. Past the rod's adapter a 3/4 in cup only goes in tipped, foot by the rod and top leaning away: #222 finds -0.09 mm in the scaled drawing, too close to call, so try one first. Let go below the adapter; it slides to the floor cone, plug up.",
+   "start_frame": 213,
+   "end_frame": 223
   },
   {
    "label": "2/5",
-   "caption": "Cup 1 of 2 out of the carrier and over the open crucible. Past the rod's adapter a 3/4 in cup only goes in tipped, foot by the rod and top leaning away: #222 finds -0.09 mm in the scaled drawing, too close to call, so try one first. Let go below the adapter; it slides to the floor cone, plug up.",
-   "start_frame": 221,
-   "end_frame": 227
+   "caption": "Cup 1 of 4 out of the carrier and over the open crucible. Past the rod's adapter a 3/4 in cup only goes in tipped, foot by the rod and top leaning away: #222 finds -0.09 mm in the scaled drawing, too close to call, so try one first. Let go below the adapter; it slides to the floor cone, plug up.",
+   "start_frame": 224,
+   "end_frame": 230
   },
   {
    "label": "2/5",
-   "caption": "Cup 1 of 2 out of the carrier and over the open crucible. Past the rod's adapter a 3/4 in cup only goes in tipped, foot by the rod and top leaning away: #222 finds -0.09 mm in the scaled drawing, too close to call, so try one first. Let go below the adapter; it slides to the floor cone, plug up.",
-   "start_frame": 228,
-   "end_frame": 237
+   "caption": "Cup 1 of 4 out of the carrier and over the open crucible. Past the rod's adapter a 3/4 in cup only goes in tipped, foot by the rod and top leaning away: #222 finds -0.09 mm in the scaled drawing, too close to call, so try one first. Let go below the adapter; it slides to the floor cone, plug up.",
+   "start_frame": 231,
+   "end_frame": 240
   },
   {
    "label": "2/5",
-   "caption": "Cup 1 of 2 out of the carrier and over the open crucible. Past the rod's adapter a 3/4 in cup only goes in tipped, foot by the rod and top leaning away: #222 finds -0.09 mm in the scaled drawing, too close to call, so try one first. Let go below the adapter; it slides to the floor cone, plug up.",
-   "start_frame": 238,
-   "end_frame": 259
+   "caption": "Cup 1 of 4 out of the carrier and over the open crucible. Past the rod's adapter a 3/4 in cup only goes in tipped, foot by the rod and top leaning away: #222 finds -0.09 mm in the scaled drawing, too close to call, so try one first. Let go below the adapter; it slides to the floor cone, plug up.",
+   "start_frame": 241,
+   "end_frame": 262
   },
   {
    "label": "2/5",
-   "caption": "Cup 1 of 2 out of the carrier and over the open crucible. Past the rod's adapter a 3/4 in cup only goes in tipped, foot by the rod and top leaning away: #222 finds -0.09 mm in the scaled drawing, too close to call, so try one first. Let go below the adapter; it slides to the floor cone, plug up.",
-   "start_frame": 260,
-   "end_frame": 296
+   "caption": "Cup 1 of 4 out of the carrier and over the open crucible. Past the rod's adapter a 3/4 in cup only goes in tipped, foot by the rod and top leaning away: #222 finds -0.09 mm in the scaled drawing, too close to call, so try one first. Let go below the adapter; it slides to the floor cone, plug up.",
+   "start_frame": 263,
+   "end_frame": 299
   },
   {
    "label": "2/5",
-   "caption": "Cup 1 of 2 out of the carrier and over the open crucible. Past the rod's adapter a 3/4 in cup only goes in tipped, foot by the rod and top leaning away: #222 finds -0.09 mm in the scaled drawing, too close to call, so try one first. Let go below the adapter; it slides to the floor cone, plug up.",
-   "start_frame": 297,
-   "end_frame": 300
+   "caption": "Cup 1 of 4 out of the carrier and over the open crucible. Past the rod's adapter a 3/4 in cup only goes in tipped, foot by the rod and top leaning away: #222 finds -0.09 mm in the scaled drawing, too close to call, so try one first. Let go below the adapter; it slides to the floor cone, plug up.",
+   "start_frame": 300,
+   "end_frame": 303
   },
   {
    "label": "2/5",
-   "caption": "Cup 1 of 2 out of the carrier and over the open crucible. Past the rod's adapter a 3/4 in cup only goes in tipped, foot by the rod and top leaning away: #222 finds -0.09 mm in the scaled drawing, too close to call, so try one first. Let go below the adapter; it slides to the floor cone, plug up.",
-   "start_frame": 301,
-   "end_frame": 311
+   "caption": "Cup 1 of 4 out of the carrier and over the open crucible. Past the rod's adapter a 3/4 in cup only goes in tipped, foot by the rod and top leaning away: #222 finds -0.09 mm in the scaled drawing, too close to call, so try one first. Let go below the adapter; it slides to the floor cone, plug up.",
+   "start_frame": 304,
+   "end_frame": 314
   },
   {
    "label": "2/5",
-   "caption": "Cup 2 of 2 out of the carrier and over the open crucible. Past the rod's adapter a 3/4 in cup only goes in tipped, foot by the rod and top leaning away: #222 finds -0.09 mm in the scaled drawing, too close to call, so try one first. Let go below the adapter; it slides to the floor cone, plug up.",
-   "start_frame": 312,
-   "end_frame": 333
+   "caption": "Cup 2 of 4, the same way, at #222's next place round the rod. The places are 75° apart and clear of the sealing-rod lever; neighbours stand 2.2 mm apart, and a cup has 3.2 mm between the rod and the wall.",
+   "start_frame": 315,
+   "end_frame": 330
   },
   {
    "label": "2/5",
-   "caption": "Cup 2 of 2 out of the carrier and over the open crucible. Past the rod's adapter a 3/4 in cup only goes in tipped, foot by the rod and top leaning away: #222 finds -0.09 mm in the scaled drawing, too close to call, so try one first. Let go below the adapter; it slides to the floor cone, plug up.",
-   "start_frame": 334,
-   "end_frame": 344
+   "caption": "Cup 2 of 4, the same way, at #222's next place round the rod. The places are 75° apart and clear of the sealing-rod lever; neighbours stand 2.2 mm apart, and a cup has 3.2 mm between the rod and the wall.",
+   "start_frame": 331,
+   "end_frame": 338
   },
   {
    "label": "2/5",
-   "caption": "Cup 2 of 2 out of the carrier and over the open crucible. Past the rod's adapter a 3/4 in cup only goes in tipped, foot by the rod and top leaning away: #222 finds -0.09 mm in the scaled drawing, too close to call, so try one first. Let go below the adapter; it slides to the floor cone, plug up.",
-   "start_frame": 345,
-   "end_frame": 351
+   "caption": "Cup 2 of 4, the same way, at #222's next place round the rod. The places are 75° apart and clear of the sealing-rod lever; neighbours stand 2.2 mm apart, and a cup has 3.2 mm between the rod and the wall.",
+   "start_frame": 339,
+   "end_frame": 345
   },
   {
    "label": "2/5",
-   "caption": "Cup 2 of 2 out of the carrier and over the open crucible. Past the rod's adapter a 3/4 in cup only goes in tipped, foot by the rod and top leaning away: #222 finds -0.09 mm in the scaled drawing, too close to call, so try one first. Let go below the adapter; it slides to the floor cone, plug up.",
-   "start_frame": 352,
-   "end_frame": 361
+   "caption": "Cup 2 of 4, the same way, at #222's next place round the rod. The places are 75° apart and clear of the sealing-rod lever; neighbours stand 2.2 mm apart, and a cup has 3.2 mm between the rod and the wall.",
+   "start_frame": 346,
+   "end_frame": 352
   },
   {
    "label": "2/5",
-   "caption": "Cup 2 of 2 out of the carrier and over the open crucible. Past the rod's adapter a 3/4 in cup only goes in tipped, foot by the rod and top leaning away: #222 finds -0.09 mm in the scaled drawing, too close to call, so try one first. Let go below the adapter; it slides to the floor cone, plug up.",
-   "start_frame": 362,
-   "end_frame": 383
+   "caption": "Cup 2 of 4, the same way, at #222's next place round the rod. The places are 75° apart and clear of the sealing-rod lever; neighbours stand 2.2 mm apart, and a cup has 3.2 mm between the rod and the wall.",
+   "start_frame": 353,
+   "end_frame": 368
   },
   {
    "label": "2/5",
-   "caption": "Cup 2 of 2 out of the carrier and over the open crucible. Past the rod's adapter a 3/4 in cup only goes in tipped, foot by the rod and top leaning away: #222 finds -0.09 mm in the scaled drawing, too close to call, so try one first. Let go below the adapter; it slides to the floor cone, plug up.",
-   "start_frame": 384,
-   "end_frame": 420
+   "caption": "Cup 2 of 4, the same way, at #222's next place round the rod. The places are 75° apart and clear of the sealing-rod lever; neighbours stand 2.2 mm apart, and a cup has 3.2 mm between the rod and the wall.",
+   "start_frame": 369,
+   "end_frame": 394
   },
   {
    "label": "2/5",
-   "caption": "Cup 2 of 2 out of the carrier and over the open crucible. Past the rod's adapter a 3/4 in cup only goes in tipped, foot by the rod and top leaning away: #222 finds -0.09 mm in the scaled drawing, too close to call, so try one first. Let go below the adapter; it slides to the floor cone, plug up.",
-   "start_frame": 421,
-   "end_frame": 424
+   "caption": "Cup 2 of 4, the same way, at #222's next place round the rod. The places are 75° apart and clear of the sealing-rod lever; neighbours stand 2.2 mm apart, and a cup has 3.2 mm between the rod and the wall.",
+   "start_frame": 395,
+   "end_frame": 398
   },
   {
    "label": "2/5",
-   "caption": "Cup 2 of 2 out of the carrier and over the open crucible. Past the rod's adapter a 3/4 in cup only goes in tipped, foot by the rod and top leaning away: #222 finds -0.09 mm in the scaled drawing, too close to call, so try one first. Let go below the adapter; it slides to the floor cone, plug up.",
-   "start_frame": 425,
-   "end_frame": 435
+   "caption": "Cup 2 of 4, the same way, at #222's next place round the rod. The places are 75° apart and clear of the sealing-rod lever; neighbours stand 2.2 mm apart, and a cup has 3.2 mm between the rod and the wall.",
+   "start_frame": 399,
+   "end_frame": 409
   },
   {
    "label": "2/5",
-   "caption": "Both cups stand round the rod, plug and vent up. The arm swings the lid shut, then the MiR backs off along the front so the window stays clear.",
-   "start_frame": 436,
-   "end_frame": 457
+   "caption": "Cup 3 of 4, the same way, at #222's next place round the rod. The places are 75° apart and clear of the sealing-rod lever; neighbours stand 2.2 mm apart, and a cup has 3.2 mm between the rod and the wall.",
+   "start_frame": 410,
+   "end_frame": 425
   },
   {
    "label": "2/5",
-   "caption": "Both cups stand round the rod, plug and vent up. The arm swings the lid shut, then the MiR backs off along the front so the window stays clear.",
-   "start_frame": 458,
-   "end_frame": 468
+   "caption": "Cup 3 of 4, the same way, at #222's next place round the rod. The places are 75° apart and clear of the sealing-rod lever; neighbours stand 2.2 mm apart, and a cup has 3.2 mm between the rod and the wall.",
+   "start_frame": 426,
+   "end_frame": 433
   },
   {
    "label": "2/5",
-   "caption": "Both cups stand round the rod, plug and vent up. The arm swings the lid shut, then the MiR backs off along the front so the window stays clear.",
-   "start_frame": 469,
-   "end_frame": 475
+   "caption": "Cup 3 of 4, the same way, at #222's next place round the rod. The places are 75° apart and clear of the sealing-rod lever; neighbours stand 2.2 mm apart, and a cup has 3.2 mm between the rod and the wall.",
+   "start_frame": 434,
+   "end_frame": 440
   },
   {
    "label": "2/5",
-   "caption": "Both cups stand round the rod, plug and vent up. The arm swings the lid shut, then the MiR backs off along the front so the window stays clear.",
-   "start_frame": 476,
-   "end_frame": 506
+   "caption": "Cup 3 of 4, the same way, at #222's next place round the rod. The places are 75° apart and clear of the sealing-rod lever; neighbours stand 2.2 mm apart, and a cup has 3.2 mm between the rod and the wall.",
+   "start_frame": 441,
+   "end_frame": 447
   },
   {
    "label": "2/5",
-   "caption": "Both cups stand round the rod, plug and vent up. The arm swings the lid shut, then the MiR backs off along the front so the window stays clear.",
-   "start_frame": 507,
-   "end_frame": 513
+   "caption": "Cup 3 of 4, the same way, at #222's next place round the rod. The places are 75° apart and clear of the sealing-rod lever; neighbours stand 2.2 mm apart, and a cup has 3.2 mm between the rod and the wall.",
+   "start_frame": 448,
+   "end_frame": 463
   },
   {
    "label": "2/5",
-   "caption": "Both cups stand round the rod, plug and vent up. The arm swings the lid shut, then the MiR backs off along the front so the window stays clear.",
-   "start_frame": 514,
-   "end_frame": 523
+   "caption": "Cup 3 of 4, the same way, at #222's next place round the rod. The places are 75° apart and clear of the sealing-rod lever; neighbours stand 2.2 mm apart, and a cup has 3.2 mm between the rod and the wall.",
+   "start_frame": 464,
+   "end_frame": 489
   },
   {
    "label": "2/5",
-   "caption": "Both cups stand round the rod, plug and vent up. The arm swings the lid shut, then the MiR backs off along the front so the window stays clear.",
-   "start_frame": 524,
+   "caption": "Cup 3 of 4, the same way, at #222's next place round the rod. The places are 75° apart and clear of the sealing-rod lever; neighbours stand 2.2 mm apart, and a cup has 3.2 mm between the rod and the wall.",
+   "start_frame": 490,
+   "end_frame": 493
+  },
+  {
+   "label": "2/5",
+   "caption": "Cup 3 of 4, the same way, at #222's next place round the rod. The places are 75° apart and clear of the sealing-rod lever; neighbours stand 2.2 mm apart, and a cup has 3.2 mm between the rod and the wall.",
+   "start_frame": 494,
+   "end_frame": 504
+  },
+  {
+   "label": "2/5",
+   "caption": "Cup 4 of 4, the same way, at #222's next place round the rod. The places are 75° apart and clear of the sealing-rod lever; neighbours stand 2.2 mm apart, and a cup has 3.2 mm between the rod and the wall.",
+   "start_frame": 505,
+   "end_frame": 520
+  },
+  {
+   "label": "2/5",
+   "caption": "Cup 4 of 4, the same way, at #222's next place round the rod. The places are 75° apart and clear of the sealing-rod lever; neighbours stand 2.2 mm apart, and a cup has 3.2 mm between the rod and the wall.",
+   "start_frame": 521,
+   "end_frame": 528
+  },
+  {
+   "label": "2/5",
+   "caption": "Cup 4 of 4, the same way, at #222's next place round the rod. The places are 75° apart and clear of the sealing-rod lever; neighbours stand 2.2 mm apart, and a cup has 3.2 mm between the rod and the wall.",
+   "start_frame": 529,
+   "end_frame": 535
+  },
+  {
+   "label": "2/5",
+   "caption": "Cup 4 of 4, the same way, at #222's next place round the rod. The places are 75° apart and clear of the sealing-rod lever; neighbours stand 2.2 mm apart, and a cup has 3.2 mm between the rod and the wall.",
+   "start_frame": 536,
    "end_frame": 542
   },
   {
    "label": "2/5",
-   "caption": "Both cups stand round the rod, plug and vent up. The arm swings the lid shut, then the MiR backs off along the front so the window stays clear.",
+   "caption": "Cup 4 of 4, the same way, at #222's next place round the rod. The places are 75° apart and clear of the sealing-rod lever; neighbours stand 2.2 mm apart, and a cup has 3.2 mm between the rod and the wall.",
    "start_frame": 543,
-   "end_frame": 566
+   "end_frame": 558
+  },
+  {
+   "label": "2/5",
+   "caption": "Cup 4 of 4, the same way, at #222's next place round the rod. The places are 75° apart and clear of the sealing-rod lever; neighbours stand 2.2 mm apart, and a cup has 3.2 mm between the rod and the wall.",
+   "start_frame": 559,
+   "end_frame": 584
+  },
+  {
+   "label": "2/5",
+   "caption": "Cup 4 of 4, the same way, at #222's next place round the rod. The places are 75° apart and clear of the sealing-rod lever; neighbours stand 2.2 mm apart, and a cup has 3.2 mm between the rod and the wall.",
+   "start_frame": 585,
+   "end_frame": 588
+  },
+  {
+   "label": "2/5",
+   "caption": "Cup 4 of 4, the same way, at #222's next place round the rod. The places are 75° apart and clear of the sealing-rod lever; neighbours stand 2.2 mm apart, and a cup has 3.2 mm between the rod and the wall.",
+   "start_frame": 589,
+   "end_frame": 599
+  },
+  {
+   "label": "2/5",
+   "caption": "All four cups stand round the rod, plug and vent up, 2.2 mm apart: 156.7 g, about the size of the lab's own Al runs. The crucible could take far more metal than the cups bring.",
+   "start_frame": 600,
+   "end_frame": 621
+  },
+  {
+   "label": "2/5",
+   "caption": "All four cups stand round the rod, plug and vent up, 2.2 mm apart: 156.7 g, about the size of the lab's own Al runs. The crucible could take far more metal than the cups bring.",
+   "start_frame": 622,
+   "end_frame": 668
+  },
+  {
+   "label": "2/5",
+   "caption": "The lab's own four charges, Oct 27 2026: four 630 bronze rod pieces, 1,079.886 g on the balance, melted in one run (Gage Erickson, DAL #219). Bronze, not this chapter's Al-10Si.",
+   "start_frame": 669,
+   "end_frame": 722,
+   "footage": {
+    "file": "nab_k7m2q9_four_rod_pieces_1079.886g.jpg",
+    "source": "Gage Erickson, DAL #219 comment 6457884447",
+    "date": "2026-10-27",
+    "alloy": "630 bronze (NAB)",
+    "window_s": null
+   }
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm swings the lid shut, then the MiR backs off along the front so the window stays clear.",
+   "start_frame": 723,
+   "end_frame": 733
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm swings the lid shut, then the MiR backs off along the front so the window stays clear.",
+   "start_frame": 734,
+   "end_frame": 740
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm swings the lid shut, then the MiR backs off along the front so the window stays clear.",
+   "start_frame": 741,
+   "end_frame": 771
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm swings the lid shut, then the MiR backs off along the front so the window stays clear.",
+   "start_frame": 772,
+   "end_frame": 778
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm swings the lid shut, then the MiR backs off along the front so the window stays clear.",
+   "start_frame": 779,
+   "end_frame": 788
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm swings the lid shut, then the MiR backs off along the front so the window stays clear.",
+   "start_frame": 789,
+   "end_frame": 807
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm swings the lid shut, then the MiR backs off along the front so the window stays clear.",
+   "start_frame": 808,
+   "end_frame": 831
   },
   {
    "label": "3/5",
-   "caption": "Cut open at the furnace axis. Three cycles of pumping down to 4×10⁻¹ mbar and back-filling with 5N argon take the oxygen under 50 ppm. On each pump-down the air under the plugs leaves through their 1/16 in vents (#104).",
-   "start_frame": 567,
-   "end_frame": 591
+   "caption": "Cut open at the furnace axis; the two back cups are cut through their own axes. Three cycles of pumping down to 4×10⁻¹ mbar and back-filling with 5N argon take the oxygen under 50 ppm. On each pump-down the air under the plugs leaves through their 1/16 in vents (#104).",
+   "start_frame": 832,
+   "end_frame": 856
   },
   {
    "label": "3/5",
-   "caption": "Cut open at the furnace axis. Three cycles of pumping down to 4×10⁻¹ mbar and back-filling with 5N argon take the oxygen under 50 ppm. On each pump-down the air under the plugs leaves through their 1/16 in vents (#104).",
-   "start_frame": 592,
-   "end_frame": 687
+   "caption": "Cut open at the furnace axis; the two back cups are cut through their own axes. Three cycles of pumping down to 4×10⁻¹ mbar and back-filling with 5N argon take the oxygen under 50 ppm. On each pump-down the air under the plugs leaves through their 1/16 in vents (#104).",
+   "start_frame": 857,
+   "end_frame": 952
   },
   {
    "label": "3/5",
    "caption": "The 10 kW, 7 kHz coil heats the graphite and the graphite the charge. The Type N thermocouple sits in the crucible wall, so the metal lags its reading. The cups glow, then slump into a pool round the rod (Al-10Si is liquid above about 595 °C; a 750 °C hold is assumed).",
-   "start_frame": 688,
-   "end_frame": 734
+   "start_frame": 953,
+   "end_frame": 999
   },
   {
    "label": "3/5",
    "caption": "The 10 kW, 7 kHz coil heats the graphite and the graphite the charge. The Type N thermocouple sits in the crucible wall, so the metal lags its reading. The cups glow, then slump into a pool round the rod (Al-10Si is liquid above about 595 °C; a 750 °C hold is assumed).",
-   "start_frame": 735,
-   "end_frame": 803
+   "start_frame": 1000,
+   "end_frame": 1068
+  },
+  {
+   "label": "3/5",
+   "caption": "Real footage, Oct 27 2026, through the furnace port: the four bronze pieces stand round the sealing rod and glow (youtu.be/2brsz-90seg, DAL #219). 630 bronze at 1300 °C, not Al-10Si.",
+   "start_frame": 1069,
+   "end_frame": 1143,
+   "footage": {
+    "file": "nab_melt1.mp4",
+    "source": "https://youtu.be/2brsz-90seg",
+    "date": "2026-10-27",
+    "alloy": "630 bronze (NAB)",
+    "window_s": [
+     10.0,
+     15.0
+    ]
+   }
+  },
+  {
+   "label": "3/5",
+   "caption": "A few minutes on, the pieces sink into their own melt round the rod (2brsz-90seg, about 4:36; at 3:55 Gage says \"It's melting in right now\").",
+   "start_frame": 1144,
+   "end_frame": 1248,
+   "footage": {
+    "file": "nab_melt2.mp4",
+    "source": "https://youtu.be/2brsz-90seg",
+    "date": "2026-10-27",
+    "alloy": "630 bronze (NAB)",
+    "window_s": [
+     70.0,
+     77.0
+    ]
+   }
+  },
+  {
+   "label": "3/5",
+   "caption": "The charge fully molten, a bright pool round the sealing rod (2brsz-90seg, DAL #219).",
+   "start_frame": 1249,
+   "end_frame": 1314,
+   "footage": {
+    "file": "nab_melt3.mp4",
+    "source": "https://youtu.be/2brsz-90seg",
+    "date": "2026-10-27",
+    "alloy": "630 bronze (NAB)",
+    "window_s": [
+     14.0,
+     18.5
+    ]
+   }
   },
   {
    "label": "4/5",
    "caption": "Vibration on, then 200 mbar of argon over-pressure on the furnace: the pour runs on the pressure, not the melt's weight (#222). Sealing rod up: the stream falls through the nozzle onto the vibrating plate.",
-   "start_frame": 804,
-   "end_frame": 854
+   "start_frame": 1315,
+   "end_frame": 1365
   },
   {
    "label": "4/5",
    "caption": "Droplets fly off the plate, freeze in the argon and run down the cone into the container. AMAZEMET's training fits a 0.7 mm nozzle for Al alloys (0.5 mm standard); which one our unit has is not known (#222).",
-   "start_frame": 855,
-   "end_frame": 953
+   "start_frame": 1366,
+   "end_frame": 1464
   },
   {
    "label": "4/5",
-   "caption": "The powder collects in the container under the chamber's valve, still under argon.",
-   "start_frame": 954,
-   "end_frame": 1019
+   "caption": "Real footage, Oct 27 2026, through the view port: the bronze jet lands on the tip of the W-coated carbon-fibre plate and atomizes (2brsz-90seg). 91 % of the 1,080 g became usable powder (DAL #219).",
+   "start_frame": 1465,
+   "end_frame": 1575,
+   "footage": {
+    "file": "nab_pour1.mp4",
+    "source": "https://youtu.be/2brsz-90seg",
+    "date": "2026-10-27",
+    "alloy": "630 bronze (NAB)",
+    "window_s": [
+     15.0,
+     22.5
+    ]
+   }
+  },
+  {
+   "label": "4/5",
+   "caption": "Real footage, Oct 8 2026: an Al 6063 stream on a carbon-fibre plate (youtu.be/dTyuZmqYxHA). That day it dripped rather than atomized: a CF plate with the 1.5:1 booster (DAL #159, PR #176).",
+   "start_frame": 1576,
+   "end_frame": 1665,
+   "footage": {
+    "file": "al_pour_oct08.mp4",
+    "source": "https://youtu.be/dTyuZmqYxHA",
+    "date": "2026-10-08",
+    "alloy": "Al 6063",
+    "window_s": [
+     14.0,
+     20.0
+    ]
+   }
+  },
+  {
+   "label": "4/5",
+   "caption": "The powder collects in the container under the chamber's valve, still under argon. At the Oct 27 bronze run's yield, 91 % usable (DAL #219), the four cups make about 143 g of powder.",
+   "start_frame": 1666,
+   "end_frame": 1734
   },
   {
    "label": "4/5",
    "caption": "The crucible runs empty; vibration and the coil off, the sealing rod down.",
-   "start_frame": 1020,
-   "end_frame": 1068
+   "start_frame": 1735,
+   "end_frame": 1783
+  },
+  {
+   "label": "4/5",
+   "caption": "Real photo: a jar of the Oct 27 bronze powder, lot k7m2q9 (DAL #219).",
+   "start_frame": 1784,
+   "end_frame": 1828,
+   "footage": {
+    "file": "nab_k7m2q9_jar_of_powder.jpg",
+    "source": "DAL #219 comment 6457884447",
+    "date": "2026-10-27",
+    "alloy": "630 bronze (NAB)",
+    "window_s": null
+   }
+  },
+  {
+   "label": "4/5",
+   "caption": "Real photo: the Oct 22 Al 4047 run, lot c3k0n5, 169 g in: a bag of splats and a jar of powder (Ronnie Guymon, DAL #159).",
+   "start_frame": 1829,
+   "end_frame": 1873,
+   "footage": {
+    "file": "al4047_oct22_c3k0n5_bag_and_jar.jpg",
+    "source": "Ronnie Guymon, DAL #159 comment 6353788099",
+    "date": "2026-10-22",
+    "alloy": "Al 4047",
+    "window_s": null
+   }
   },
   {
    "label": "5/5",
    "caption": "Closed again. The chamber's valve and the container's own valve are shut, so the powder comes off under argon; the flange clamp opens and the MiR comes back to the container.",
-   "start_frame": 1069,
-   "end_frame": 1094
+   "start_frame": 1874,
+   "end_frame": 1899
   },
   {
    "label": "5/5",
    "caption": "Closed again. The chamber's valve and the container's own valve are shut, so the powder comes off under argon; the flange clamp opens and the MiR comes back to the container.",
-   "start_frame": 1095,
-   "end_frame": 1120
+   "start_frame": 1900,
+   "end_frame": 1925
   },
   {
    "label": "5/5",
    "caption": "The arm takes the container by its handle, lowers it off the outlet and carries it to the cradle on the MiR's cabinet. It goes next to the sieve shaker.",
-   "start_frame": 1121,
-   "end_frame": 1145
+   "start_frame": 1926,
+   "end_frame": 1950
   },
   {
    "label": "5/5",
    "caption": "The arm takes the container by its handle, lowers it off the outlet and carries it to the cradle on the MiR's cabinet. It goes next to the sieve shaker.",
-   "start_frame": 1146,
-   "end_frame": 1158
+   "start_frame": 1951,
+   "end_frame": 1963
   },
   {
    "label": "5/5",
    "caption": "The arm takes the container by its handle, lowers it off the outlet and carries it to the cradle on the MiR's cabinet. It goes next to the sieve shaker.",
-   "start_frame": 1159,
-   "end_frame": 1165
+   "start_frame": 1964,
+   "end_frame": 1970
   },
   {
    "label": "5/5",
    "caption": "The arm takes the container by its handle, lowers it off the outlet and carries it to the cradle on the MiR's cabinet. It goes next to the sieve shaker.",
-   "start_frame": 1166,
-   "end_frame": 1175
+   "start_frame": 1971,
+   "end_frame": 1980
   },
   {
    "label": "5/5",
    "caption": "The arm takes the container by its handle, lowers it off the outlet and carries it to the cradle on the MiR's cabinet. It goes next to the sieve shaker.",
-   "start_frame": 1176,
-   "end_frame": 1191
+   "start_frame": 1981,
+   "end_frame": 1996
   },
   {
    "label": "5/5",
    "caption": "The arm takes the container by its handle, lowers it off the outlet and carries it to the cradle on the MiR's cabinet. It goes next to the sieve shaker.",
-   "start_frame": 1192,
-   "end_frame": 1207
+   "start_frame": 1997,
+   "end_frame": 2012
   },
   {
    "label": "5/5",
    "caption": "The arm takes the container by its handle, lowers it off the outlet and carries it to the cradle on the MiR's cabinet. It goes next to the sieve shaker.",
-   "start_frame": 1208,
-   "end_frame": 1235
+   "start_frame": 2013,
+   "end_frame": 2040
   },
   {
    "label": "5/5",
    "caption": "The arm takes the container by its handle, lowers it off the outlet and carries it to the cradle on the MiR's cabinet. It goes next to the sieve shaker.",
-   "start_frame": 1236,
-   "end_frame": 1248
+   "start_frame": 2041,
+   "end_frame": 2053
   },
   {
    "label": "5/5",
    "caption": "The arm takes the container by its handle, lowers it off the outlet and carries it to the cradle on the MiR's cabinet. It goes next to the sieve shaker.",
-   "start_frame": 1249,
-   "end_frame": 1255
+   "start_frame": 2054,
+   "end_frame": 2060
   },
   {
    "label": "5/5",
    "caption": "The arm takes the container by its handle, lowers it off the outlet and carries it to the cradle on the MiR's cabinet. It goes next to the sieve shaker.",
-   "start_frame": 1256,
-   "end_frame": 1266
+   "start_frame": 2061,
+   "end_frame": 2071
   },
   {
    "label": "5/5",
    "caption": "The arm parks, and the MiR250 lines up in front of the rePowder for the next leg: the AS 200 sieve shaker.",
-   "start_frame": 1267,
-   "end_frame": 1289
+   "start_frame": 2072,
+   "end_frame": 2094
   },
   {
    "label": "5/5",
    "caption": "The arm parks, and the MiR250 lines up in front of the rePowder for the next leg: the AS 200 sieve shaker.",
-   "start_frame": 1290,
-   "end_frame": 1307
+   "start_frame": 2095,
+   "end_frame": 2112
   },
   {
    "label": "5/5",
    "caption": "The arm parks, and the MiR250 lines up in front of the rePowder for the next leg: the AS 200 sieve shaker.",
-   "start_frame": 1308,
-   "end_frame": 1338
+   "start_frame": 2113,
+   "end_frame": 2143
+  },
+  {
+   "label": "5/5",
+   "caption": "How much powder: the four cups make about 26 g of the MIDI's 20-63 um cut, at the Oct 27 run's 17 % under 63 um (DAL #219). The crucible takes much more: filled as on Oct 27, about 385 g of Al (65 g of the cut), and the 400 cm³ one about 684 g (116 g). A 440 g MIDI build then takes 17, 7 or 4 runs.",
+   "start_frame": 2144,
+   "end_frame": 2247
+  },
+  {
+   "label": "5/5",
+   "caption": "Real photo: the Oct 27 bronze sieved. Left, under 63 µm, the LPBF cut: 188 g from both bronze runs; middle, 63-250 µm, 827 g; right, flakes over 250 µm (Gage Erickson, DAL #219).",
+   "start_frame": 2248,
+   "end_frame": 2310,
+   "footage": {
+    "file": "nab_k7m2q9_sieved_three_jars.jpg",
+    "source": "Gage Erickson, DAL #219 comment 6509252104 ('Far left jar is <63um 630 Bronze powder')",
+    "date": "2026-10-29",
+    "alloy": "630 bronze (NAB)",
+    "window_s": null
+   }
   },
   {
    "label": "5/5",
    "caption": "Done: the powder is on the MiR250, in front of the rePowder. Next: the AS 200 sieve shaker and the printer.",
-   "start_frame": 1339,
-   "end_frame": 1374
+   "start_frame": 2311,
+   "end_frame": 2346
+  }
+ ],
+ "footage": [
+  {
+   "beat": "charge",
+   "seconds": 3.6,
+   "files": [
+    "nab_k7m2q9_four_rod_pieces_1079.886g.jpg"
+   ]
+  },
+  {
+   "beat": "melt",
+   "seconds": 16.4,
+   "files": [
+    "nab_melt1.mp4",
+    "nab_melt2.mp4",
+    "nab_melt3.mp4"
+   ]
+  },
+  {
+   "beat": "pour",
+   "seconds": 13.4,
+   "files": [
+    "nab_pour1.mp4",
+    "al_pour_oct08.mp4"
+   ]
+  },
+  {
+   "beat": "powder",
+   "seconds": 6.0,
+   "files": [
+    "nab_k7m2q9_jar_of_powder.jpg",
+    "al4047_oct22_c3k0n5_bag_and_jar.jpg"
+   ]
+  },
+  {
+   "beat": "sieved",
+   "seconds": 4.2,
+   "files": [
+    "nab_k7m2q9_sieved_three_jars.jpg"
+   ]
   }
  ]
 }
