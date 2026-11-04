@@ -101,12 +101,11 @@ LAB = {
                                 "cup's bore filled to the plug (Si, then AlSi10Mg; Ni, then Cu), the plug pressed home at "
                                 "3.2 t under vacuum in a Specac Atlas Autotouch 15T with the lab's evacuable die round F1, "
                                 "and every arm move collision-checked (collide.py)."),
-    "alloy_charge.mp4": ("Vertical cloud lab, alloy route 1/4: eight charge cups dosed, a funnel per powder, and plugged",
-                         "Chapter 1 of the alloy route as round 5 rendered it (alloy_charge_doser.py): four 5N Al and "
-                         "four OFE Cu cups dosed through one funnel per powder on an A&D HR-202i balance and plugged, "
-                         "on tray B of the VLM. The vacuum-press version is a separate video. Rendered before the "
-                         "arm's collision check: in some frames the arm passes through the press and the rack "
-                         "(notes/arm_collisions.md)."),
+    "alloy_charge.mp4": ("Vertical cloud lab, alloy route 1/4: charge cups dosed, weighed, and pressed under vacuum",
+                         "Chapter 1 of the alloy route (alloy_charge.py): four 5N Al and four OFE Cu cups, each dosed "
+                         "through its powder's own funnel, weighed on an A&D HR-202i, topped up to the plug line, then "
+                         "plugged and pressed home at 3.2 t under vacuum in a Specac Atlas Autotouch 15T, on tray B of "
+                         "the VLM. Every frame of the arm's moves collision-checked (collide.py)."),
     "alloy_atomize.mp4": ("Vertical cloud lab, alloy route 2/4: melt and atomize in the rePowder (3-D animation)",
                           "Chapter 2 of the alloy route: the charged cups into the AMAZEMET rePowder's crucible, "
                           "induction melting under argon, ultrasonic atomization."),

@@ -616,10 +616,10 @@ route. Four chapters, each rendered on its own and joined by [`alloy_route.py`](
 | Chapter | Code | GIF | MP4 | Notes |
 |---|---|---|---|---|
 | **All four, joined** (11 min 9 s, a title card before each) | [`alloy_route.py`](alloy_route.py) | | [MP4](out/mp4/alloy_route.mp4) | [on YouTube](https://www.youtube.com/watch?v=GE33p9N0x7c) (unlisted), chapters in [`out/alloy_route.json`](out/alloy_route.json). The 7 min 40 s round-4 version is [`9qnGCtPwCTM`](https://www.youtube.com/watch?v=9qnGCtPwCTM) |
-| **1. The charge** (147 s): four 5N Al and four OFE Cu cups dosed through one funnel per powder, weighed on an A&D HR-202i and plugged, on tray B | [`alloy_charge_doser.py`](alloy_charge_doser.py), [`charge.py`](charge.py) | [GIF](out/alloy_charge.gif) | [MP4](out/mp4/alloy_charge.mp4), [on YouTube](https://www.youtube.com/watch?v=1Hnt4v2J_mI) | [`notes/alloy_charge_doser.md`](notes/alloy_charge_doser.md). The vacuum-press version, [`alloy_charge.py`](alloy_charge.py), [below](#the-plug-pressed-home-under-vacuum), is rendered on its own: [MP4](out/mp4/alloy_charge_vacuum.mp4), [on YouTube](https://www.youtube.com/watch?v=UjGb47I3fy0) |
-| **2. Melt and atomize** (157 s): the four Al cups in the rePowder, cut with the lab's own footage of its bronze and Al runs | [`alloy_atomize.py`](alloy_atomize.py) | [GIF](out/alloy_atomize.gif) | [MP4](out/mp4/alloy_atomize.mp4), [on YouTube](https://www.youtube.com/watch?v=znw55hE_dGs) | [`notes/alloy_atomize.md`](notes/alloy_atomize.md) |
-| **3. Sieve and print** (194 s): the arm runs a sieving cell, then the Aconity MIDI prints | [`alloy_print.py`](alloy_print.py), [`sieve_station.py`](sieve_station.py) | [GIF](out/alloy_print.gif) | [MP4](out/mp4/alloy_print.mp4), [on YouTube](https://www.youtube.com/watch?v=rm_XR5-2F5g) | [`notes/alloy_print.md`](notes/alloy_print.md) |
-| **4. Cut and test** (159 s): a suction lance and a depowdering box, the wire EDM, a rinse, the 68FM-100 | [`alloy_workflow.py`](alloy_workflow.py) | [GIF](out/alloy_workflow.gif) | [MP4](out/mp4/alloy_workflow.mp4), [on YouTube](https://www.youtube.com/watch?v=T16hQ4M-IkU) | [`notes/alloy_workflow.md`](notes/alloy_workflow.md) |
+| **1. The charge** (245 s, 10 fps): four 5N Al and four OFE Cu cups, each dosed through its powder's own funnel, weighed on an A&D HR-202i, topped up to the plug line, then plugged and pressed home at 3.2 t under vacuum (shuttle out, onto the ejector pin, shuttle in, pumped down, pressed, vented, ejected), on tray B. One chapter now: round 5's doser version and the vacuum-press version merged | [`alloy_charge.py`](alloy_charge.py), [`alloy_press.py`](alloy_press.py), [`charge.py`](charge.py) | [GIF](out/alloy_charge.gif) | [MP4](out/mp4/alloy_charge.mp4) | [`notes/alloy_charge.md`](notes/alloy_charge.md). Earlier renders on YouTube: the doser version [`1Hnt4v2J_mI`](https://www.youtube.com/watch?v=1Hnt4v2J_mI), the vacuum-press version [`UjGb47I3fy0`](https://www.youtube.com/watch?v=UjGb47I3fy0) |
+| **2. Melt and atomize** (170 s, 10 fps): the four Al cups in the rePowder, cut with the lab's own footage of its bronze and Al runs; the arm swings the sealing-rod lever up first, and lets each cup go with its foot in the bore | [`alloy_atomize.py`](alloy_atomize.py) | [GIF](out/alloy_atomize.gif) (round 5's) | [MP4](out/mp4/alloy_atomize.mp4), round 5's [on YouTube](https://www.youtube.com/watch?v=znw55hE_dGs) | [`notes/alloy_atomize.md`](notes/alloy_atomize.md) |
+| **3. Sieve and print** (198 s, 10 fps): the arm runs a sieving cell, then the Aconity MIDI prints | [`alloy_print.py`](alloy_print.py), [`sieve_station.py`](sieve_station.py) | [GIF](out/alloy_print.gif) | [MP4](out/mp4/alloy_print.mp4), round 5's [on YouTube](https://www.youtube.com/watch?v=rm_XR5-2F5g) | [`notes/alloy_print.md`](notes/alloy_print.md) |
+| **4. Cut and test** (161 s, 10 fps): a suction lance and a depowdering box, the wire EDM, a rinse, the 68FM-100 | [`alloy_workflow.py`](alloy_workflow.py) | [GIF](out/alloy_workflow.gif) | [MP4](out/mp4/alloy_workflow.mp4), round 5's [on YouTube](https://www.youtube.com/watch?v=T16hQ4M-IkU) | [`notes/alloy_workflow.md`](notes/alloy_workflow.md) |
 <!-- /alloy-route-table -->
 
 ![The four chapters at work: a plug pressed into a cup, the cups atomized, the plate printed, the bars cut off](out/alloy_route_sheet.png)
@@ -975,10 +975,10 @@ higher end. `ARM_AUDIT=1` runs a clip without rendering and checks every frame, 
 | Warehouse (`warehouse.py`) | 216 of 1138 | **0** of 1120, the MiR bodies checked too | re-rendered: one target post moved, three routes changed ([notes](notes/warehouse.md)); [on YouTube](https://www.youtube.com/watch?v=3IrSB9-meN8) |
 | Lab set up from scratch (`setup_lab.py`) | | 0 of 1376 | not re-rendered: its two joint moves were already clear |
 | Alloy route 1, vacuum-press version (`alloy_charge.py`) | | **0** of 2752 | rendered, [below](#the-plug-pressed-home-under-vacuum); [on YouTube](https://www.youtube.com/watch?v=UjGb47I3fy0) |
-| Alloy route 1, round 5's doser version (`alloy_charge_doser.py`) | | 59 of 1875 | its render predates the check. Left: the arm in the press and the rack's back cups in 4/8 |
-| Alloy route 2, atomize (`alloy_atomize.py`, round 5) | | 257 of 1421 | its render predates the check. Left: the gripper in the rePowder's hood (2/5), the arm in the MiR (5/5) |
-| Alloy route 3, sieve and print (`alloy_print.py`, round 5) | | 543 of 2372 | its render predates the check. Left: the arm in the sieves of the stack (2/5), in the Aconity's cabinet (4/5) |
-| Alloy route 4, cut and test (`alloy_workflow.py`, round 5) | | 539 of 2068 | its render predates the check. Left: the gripper in the depowdering lance's hose (2/6), the arm in the Aconity and the shaker box (3/6) |
+| Alloy route 1, the charge, merged (`alloy_charge.py`, the doser and the vacuum press in one) | round 5's doser version: 59 of 1875 | **8** of 1926 | re-rendered (the long-form round, below). Left: four 2-frame brushes of the open left fingertip on the second Al cup as the first is taken from the rack |
+| Alloy route 2, atomize (`alloy_atomize.py`) | 257 of 1421 | **10** of 1586 | re-rendered. Left: two joint moves the planner can't route take the upper arm through the container's cradle on the MiR (9 frames), and one fingertip frame on the lever |
+| Alloy route 3, sieve and print (`alloy_print.py`) | 543 of 2372 | **97** of 2426 | re-rendered; the sieving cell is clear. Left: all in 4/5, the jar carried in through the Aconity's 280 mm door: no path found, so the forearm and wrist pass through the base cabinet's top and the chamber wall |
+| Alloy route 4, cut and test (`alloy_workflow.py`) | 539 of 2068 | **60** of 2101 | re-rendered. Left: 57 frames taking the bar off the wire EDM's catch shelf, which no pose can do as modelled (an ejector pin to lift the bar is the fix, in the notes), and 3 single-frame brushes |
 
 The four round-5 chapters were rendered by another session while the check was being written. What the planner
 leaves in them are poses the scripts ask for, where every IK solution touches something, and line moves through
@@ -990,10 +990,9 @@ now goes there by a planned joint move instead of stopping the render, which `al
 
 **Rendered on its own** as `out/alloy_charge_vacuum.*` (219 s, two Al and two Cu cups): [GIF](out/alloy_charge_vacuum.gif),
 [MP4](out/mp4/alloy_charge_vacuum.mp4), [on YouTube](https://www.youtube.com/watch?v=UjGb47I3fy0) (unlisted).
-This is the version of `alloy_charge.py` written alongside round 5's chapter 1. The chapter-1 render in the alloy
-route comes from [`alloy_charge_doser.py`](alloy_charge_doser.py): the HR-202i, one funnel per powder and four cups a
-run, with the old plug press, rendered before the collision check landed. The two still need merging into one
-chapter.
+This was the first version of the vacuum press in `alloy_charge.py`. Since the long-form round it is merged with round 5's
+doser version (the HR-202i, one funnel per powder, four cups a run) into the one chapter 1 that the alloy route
+uses: [`out/mp4/alloy_charge.mp4`](out/mp4/alloy_charge.mp4).
 
 ![The die cut open during the press stroke: 3.1 of 3.2 t, 0.8 mbar](out/alloy_charge_vacuum_press.png)
 
@@ -1095,7 +1094,7 @@ python3 maintenance.py                                                  # the ra
 Round 5:
 
 ```bash
-xvfb-run -a python3 alloy_charge_doser.py          # chapter 1 as rendered: the HR-202i, a funnel per powder, four cups a run
+xvfb-run -a python3 alloy_charge.py                # chapter 1: the HR-202i, a funnel per powder, the vacuum press (CHARGE_FXAA=1 VIZ3D_FPS=10 as rendered)
 xvfb-run -a python3 alloy_atomize.py               # chapter 2: renders the 3-D to out/clean/, then cuts the footage in
 python3 alloy_atomize.py splice                    # re-cut the footage without re-rendering; 'powder' prints the sums
 xvfb-run -a python3 alloy_print.py; xvfb-run -a python3 alloy_workflow.py   # chapters 3 and 4
