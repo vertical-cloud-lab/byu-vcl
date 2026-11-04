@@ -188,7 +188,8 @@ def jar_powder() -> pv.PolyData:
 
 
 # ------------------------------------------------------------------------------------------------- stand, enclosure
-STAND = dict(r=118.0, h=20.0)
+STAND = dict(r=118.0, h=120.0)                    # a pedestal: on a 20 mm plate the No. 60's tab was so low that the
+                                                  # gripper's lower knuckle reached into the bench
 
 
 def stand_parts() -> dict:
