@@ -1,11 +1,13 @@
-# Stir test on the compact stirrer, after Ben's fix (2026-11-04): not run, the stirrer's 5V lead shorts the Uno
+# Stir test on the compact stirrer, after Ben's fix (2026-11-04): it spins with the holder on, after a short was cleared
 
 Asked for by Ben on [PR #269](https://github.com/vertical-cloud-lab/byu-vcl/pull/269)
 (22:29 UTC): he thought he had fixed what stopped the fan with the holder on
 ([11-03 record](../stirrer_first_spins_20261103/README.md)), and wanted to know what the Hall
-sensor sees in a stir test. **The test didn't run.** The Uno was off the CubXL Pi's USB when
-the session started, and each time the stirrer's 5V lead went into the Uno, the Uno turned
-off. All times UTC (the lab is on MST, UTC−7). `~/cubxl_runs/HOLD` was set from 22:43:54.
+sensor sees in a stir test. First the Uno was off the CubXL Pi's USB, and it turned off again
+when the stirrer's 5V lead went in: a short, which Ben cleared by 22:58. **Then, with the
+holder on, the fan started on the first kick, and the Hall sensor gave one pulse a turn:
+300 rpm held for 30 s, and 1200 rpm followed the ramp to 1290 and settled at 1260.** All
+times UTC (the lab is on MST, UTC−7). `~/cubxl_runs/HOLD` was set from 22:43:54.
 
 ## What the Pi saw
 
@@ -71,10 +73,53 @@ touching the GND socket next to 5V on the Uno's power header. `BUILD.md`'s power
 check (5.0 V, 0.3 A limit, on the stirrer half's pins 1 and 2) shows whether the short is in
 the stirrer.
 
+**Ben cleared the short by 22:58** (next section). What it turned out to be isn't recorded
+here yet; if it was something other than swapped leads, add it.
+
 <img src="frames/223244Z_stirrer_on_bench.jpg" width="360"> <img src="frames/224303Z_meter_on_bench.jpg" width="360">
 
 *Deck camera, cropped to the bench in front of the deck. Left, 22:32:44: the stirrer, holder
 on, its cable running up to the Uno. Right, 22:43:03: the meter out.*
+
+## The stir test (22:58:48): it spins, no stall
+
+Ben (22:58): *"Try stirring again. It is all plugged in, and the Uno is on."* The Uno had
+stayed on USB as the stirrer went in. [`spin_frames.py`](spin_frames.py) is the 11-03
+[`spin.py`](../stirrer_first_spins_20261103/spin.py) plus a deck-camera snapshot every 2 s:
+it sends `30,<rpm>,<seconds>` and polls `31` every second ([log](holderon_1104.log),
+[data](holderon_1104.jsonl)). `rpm` is Hall pulses counted over a 2 s window, x 30, so it
+moves in 30 rpm steps. No over-current and no USB drop during either run.
+
+![rpm from the Hall sensor during both runs, with the 11-03 holder-off run for comparison](rpm_holderon_1104.png)
+
+*[`plot_rpm.py`](plot_rpm.py). Orange: the 11-03 holder-off run, which was 16 s long.*
+
+**300 rpm for 30 s:** 420 at 2 s, after the kick, then 240–300 while the duty crept up from
+0.276 to 0.312, then **300 steady from 16 s to the end**, at duty 0.312.
+
+**1200 rpm for 30 s:** it followed the setpoint's 100 rpm/s ramp.
+
+| s | 2 | 4 | 6 | 8 | 10 | 12 | 14 | 16 | 18 | 20 | 22 | 24–30 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| setpoint | 300 | 500 | 700 | 900 | 1100 | 1200 | | | | | | |
+| `rpm` | 420 | 330 | 300 | 450 | 570 | 750 | 930 | 1110 | 1200 | 1230 | 1290 | 1260 |
+| duty | 0.276 | 0.310 | 0.385 | 0.460 | 0.535 | 0.610 | 0.664 | 0.682 | 0.682 | 0.676 | 0.658 | 0.646 → 0.622 |
+
+It reached 1110 rpm at 16 s, as on 11-03 with the holder off, at duty 0.68 against 0.62
+then. That may be a little drag from the holder, or just a different start. Either way there
+is headroom at 5 V. After the stop it coasted from 1230 rpm to rest in about 4 s.
+
+The loop was still correcting the 5 % overshoot when the run ended, by 0.012 duty an update,
+as `STIR_KP` 0.0002 × 60 rpm gives.
+
+<img src="frames/225846Z_run.jpg" width="360"> <img src="frames/225940Z_run.jpg" width="360">
+
+*Deck camera, cropped. Left, 22:58:46, as the 300 rpm run started; right, 22:59:40, at 16 s
+into the 1200 rpm run. A compact stirrer sits in the deck's front row with its cable, and a
+second one is on the bench. With the holder on, the fan can't be seen turning.*
+
+Not done: water, a vial and the stir bar, and the coupling test (`BUILD.md` stage 8).
+`pipette_test` still hasn't been run on the stirrer image.
 
 ## On the Pi
 

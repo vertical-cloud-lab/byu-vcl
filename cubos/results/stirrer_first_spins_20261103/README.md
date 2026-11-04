@@ -102,6 +102,8 @@ holder coming down can push it, or its leads, into the carrier or the blades. **
 resolved in this run.** A MuJoCo interference check of the compact stirrer, done
 afterwards (2026-11-04), finds nothing touching the rotor as `BUILD.md` assembles it, and lists
 the deviations that would: [stirrer README](../../../hardware/vial-stirrer-cubxl/README.md#interference-check-in-mujoco-2026-11-04).
+On 11-04 Ben fixed it, and with the holder on the fan spun at 300 and 1200 rpm with no
+stall: [`stirrer_spin_20261104`](../stirrer_spin_20261104/README.md).
 
 `HOLD` was removed at the end of the run. The Uno stays on the stirrer image.
 
