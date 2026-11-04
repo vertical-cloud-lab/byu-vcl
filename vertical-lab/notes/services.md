@@ -295,7 +295,8 @@ rendered view of what the camera would see"):
 2. Its two pictures drawn as see-through pyramids down to the tray: the Wide's (blue) and the HQ's (orange).
 3. The Wide's own picture, rendered from its lens's position and aim, 102° across, while the arm takes a vial from
    tray B's rack to the doser's cup.
-4. The HQ's, 22.2 × 16.8°, pillarboxed to its 4:3 sensor.
+4. The HQ's, 22.2 × 16.8°, pillarboxed to its 4:3 sensor, with the head turned on its joints onto the doser's cup
+   (pan 20°, tilt 44° down): a close-up of the gripper.
 
 **The fields of view, with sources:**
 
