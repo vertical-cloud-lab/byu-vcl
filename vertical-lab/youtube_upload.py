@@ -87,6 +87,9 @@ LAB = {
                              "(3-D animation)",
                              "Round 4's tray services, joined: the docking coupling, the tethered alternative and the "
                              "cabling."),
+    "vlm_tall_opening.mp4": ("Vertical cloud lab: what a taller Kardex opening, about 1000 mm, would put on a tray",
+                             "Round 5: the 727.5 mm product height Kardex publishes for the opening, against about "
+                             "1000 mm, and which machines a taller opening would let onto a tray."),
     "warehouse.mp4": ("Vertical cloud lab, warehouse version: two MiR250 + UR10e units on an open floor",
                       "The vertical cloud lab laid out on a warehouse floor, with two MiR250 + UR10e units driving "
                       "between the VLM and the floor machines."),
