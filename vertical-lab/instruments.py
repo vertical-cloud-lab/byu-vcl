@@ -1075,8 +1075,11 @@ def pip() -> Instrument:
              (-dx + sc, 0, 0), (0, 0, 0))
     seg = np.linalg.norm(np.diff(np.asarray(route, float), axis=0), axis=1)
     at = np.concatenate([[0], np.cumsum(seg)]) / seg.sum()      # v at each waypoint
+    # The sample slides in flat, 3 mm over the platen and under the ball (3 mm clear of it with the ram up), then down
+    # onto the platen; brought in from above, it ran 6 mm through the indenter's cylinder and tip (interference.py)
     inst.joints = {
-        "sample": Joint("path", path=((0, -420, 260), (0, -220, 120), (0, yc, stz + 40), (0, yc, stz))),
+        "sample": Joint("path", path=((0, -420, 260), (0, -220, 120), (0, -150, stz + 3), (0, yc, stz + 3),
+                                      (0, yc, stz))),
         "head": Joint("slide", vec=(0, 0, -gap)),
         "stylus": Joint("path", path=route),
         "indent": Joint("fade", parent="sample"),
@@ -1351,9 +1354,11 @@ def polisher() -> Instrument:
     # the dark mat over the deck behind the bowl, as in the SOP frames
     body.add("deck mat", box(-W / 2 + 15, by + p["drum_r"] * 0.55, dk, W / 2 - 15, D / 2 - 15, dk + 3)
              .cut(cyl(2 * rim_r + 4, 10, x=bx, y=by, z=dk - 1)), "inst_dark")
-    # the head's column, at the back under the housing (it stays inside the housing with the head down)
+    # the head's column, at the back under the housing (it stays inside the housing with the head down). Its foot is
+    # 5 mm over the deck, clear of the holder: down to the deck, the holder and its mounts, 4 mm proud of the deck with
+    # the head up, turned through it (interference.py)
     cy = hy + p["head_back"] - 40
-    body.add("column", rbox(110, 80, p["head_up"] + 60, 12, x=hx, y=cy, z=dk), "inst_grey")
+    body.add("column", rbox(110, 80, p["head_up"] + 55, 12, x=hx, y=cy, z=dk + 5), "inst_grey")
     # five dispenser bottles in a rack on the left side
     rx = -W / 2 - 38                                               # the 5-position bottle holder, low on the left side
     body.add("bottle rack", box(rx - 34, by - 150, 12, rx + 34, by + 150, 18).union(
@@ -1716,8 +1721,10 @@ def mastersizer() -> Instrument:
         beam.add(f"grain {i}", cq.Workplane("XY").sphere(4.0).translate(tuple(q + (0, 0, 3.0 * math.sin(i * 2.3)))),
                  "powder")
     buzz = tuple((2.5 * (-1) ** i, 0.0, 0.0) if 0 < i < 24 else (0.0, 0.0, 0.0) for i in range(25))
+    # The cover comes off and is set aside, clear of the hopper, before the vial comes in, and goes back on once the
+    # vial has gone: moving together, the vial ran 2 mm through the cover's top (interference.py)
     inst.joints = {
-        "lid": Joint("path", path=((0, 0, 0), (0, 0, 130), (-170, -60, 170))),           # lifted off by hand
+        "lid": Joint("path", path=((0, 0, 0), (0, 0, 130), (-280, -60, 170))),           # lifted off by hand
         "vial": Joint("path", path=((fx + 170, yf - 150, 0), (fx + 170, yf - 150, h + 90), (hx, hy, h + 90),
                                     (hx, hy, p["hop_z"] + 25))),                         # from the bench to the hopper
         "powder": Joint("fade"),
@@ -1725,10 +1732,11 @@ def mastersizer() -> Instrument:
         "beam": Joint("fade"),
     }
     inst.actions = [
-        ("The Aero S's clear cover lifts off; a few grams of atomized powder go into its hopper, over the vibrating "
-         "tray.", 2.4, {"lid": (0.0, 1.0), "vial": (0.0, 1.0), "powder": (0.0, 0.0), "beam": (0.0, 0.0)}),
-        ("The hopper's gap sets the feed; the cover goes back on.", 1.6, {"vial": (1.0, 0.0), "powder": (0.0, 1.0),
-                                                                         "lid": (1.0, 0.0)}),
+        ("The Aero S's clear cover lifts off and is set aside.", 1.2,
+         {"lid": (0.0, 1.0), "vial": (0.0, 0.0), "powder": (0.0, 0.0), "beam": (0.0, 0.0)}),
+        ("A few grams of atomized powder go into its hopper, over the vibrating tray.", 1.8, {"vial": (0.0, 1.0)}),
+        ("The hopper's gap sets the feed.", 1.2, {"vial": (1.0, 0.0), "powder": (0.0, 1.0)}),
+        ("The cover goes back on.", 1.0, {"lid": (1.0, 0.0)}),
         ("Air on and the background measured, then the tray vibrates the powder into the venturi, and the air carries "
          "it down the hose to the cell in the bay, across the laser (drawn see-through).", 3.2,
          {"tray": (0.0, 1.0), "beam": (0.0, 1.0), "~body": (0.0, 1.0), "powder": (1.0, 0.0)}),
@@ -1741,7 +1749,7 @@ def mastersizer() -> Instrument:
                    ("vacuum extractor", (vac_x, vac_y - p["vac_d"] / 2, 300), (0.88, 0.55))]
     inst.anchors = mastersizer_anchors(p)
     inst.cam = (0.5, -1.7, 0.8)
-    inst.zoom = {0: ((hx + 60, hy, cz + 40), 1700.0), 2: "out"}
+    inst.zoom = {0: ((hx + 60, hy, cz + 40), 1700.0), 4: "out"}
     return inst
 
 

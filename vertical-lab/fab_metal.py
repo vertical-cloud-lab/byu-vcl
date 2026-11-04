@@ -22,6 +22,7 @@ import cadquery as cq
 import numpy as np
 
 from instruments import Instrument, Joint, _piece, _wedge, _xcyl, _ycyl, box, cyl, rbox, tube  # noqa: F401
+from instruments_lab import Track                    # knots in v, so the M450's table and head move in step
 
 MATERIALS = {
     "sharebot_orange": (0.93, 0.42, 0.10, 1.0, 0.35),
@@ -341,7 +342,11 @@ def meltio_m450() -> Instrument:
     body.add("touchscreen", box(x1 + 15, yb - 3, z1 - 230, W / 2 - 20, yb, z1 - 60), "screen_on")
     body.add("e-stop", _ycyl(34, 16, x=W / 2 - 60, y=yb - 16, z=z0 - 110), "inst_red")
     frame = _piece(inst, "frame")                  # what stays opaque when the housing goes see-through
-    frame.add("bed", box(-110, -115, p["bed_z"] - 20, 110, 115, p["bed_z"]), "steel")
+    # The bed is a table that moves in x and y under a head that moves in z only, on a carriage up the z column (a
+    # 145 x 168 mm envelope under 390 mm of z). With the head moving in all three, its carriage ran 30 mm into the
+    # column on the far side of the wall and stood 30 mm off it on the near side (interference.py). The bed is 210 mm
+    # deep, not 230, so that it stays 5 mm clear of the column at full travel.
+    _piece(inst, "table").add("bed", box(-110, -105, p["bed_z"] - 19.5, 110, 105, p["bed_z"]), "steel")
     frame.add("bed column", box(-60, -60, p["plinth"], 60, 60, p["bed_z"] - 20), "inst_grey")
     frame.add("spool", _xcyl(300, 100, x=-50, y=D / 2 - 200, z=380).cut(_xcyl(60, 102, x=-51, y=D / 2 - 200, z=380)),
               "inst_dark")
@@ -363,7 +368,7 @@ def meltio_m450() -> Instrument:
         a = math.radians(60 * i)
         head.add(f"fibre {i}", cyl(10, 90, x=46 * math.cos(a), y=46 * math.sin(a), z=tip + 210), "inst_orange")
     head.add("wire guide", cyl(8, 95, z=tip + 210), "brass")       # under the ceiling with the head at its highest
-    head.add("carriage", box(-40, 50, tip + 120, 40, D / 2 - 160, tip + 200), "inst_grey")
+    head.add("carriage", box(-40, 50, tip + 120, 40, D / 2 - 160.5, tip + 200), "inst_grey")   # on the z column
     glow = _piece(inst, "glow")
     glow.add("laser cone", cq.Workplane("XY").circle(3).workplane(offset=26).circle(16).loft()
              .translate((0, 0, tip - p["standoff"] - 2)), "laser")
@@ -375,7 +380,8 @@ def meltio_m450() -> Instrument:
         ring = box(-L / 2 - b / 2, -Wd / 2 - b / 2, 0, L / 2 + b / 2, Wd / 2 + b / 2, h).cut(
             box(-L / 2 + b / 2, -Wd / 2 + b / 2, -1, L / 2 - b / 2, Wd / 2 - b / 2, h + 1))
         _piece(inst, f"wall{k}").add(f"bead layer {k}", ring.translate((0, 0, top + (k - 1) * h)), "steel")
-    # the head's path: from home down to a corner, round the wall, up a layer, round again ...
+    # the head's path over the plate: from home down to a corner, round the wall, up a layer, round again ... The
+    # table makes the x and y of it (moving the other way) and the head the z, on the same knots so they keep in step
     pts = [(0, 0, 160)]
     s_marks = []
     for k in range(n):
@@ -387,32 +393,36 @@ def meltio_m450() -> Instrument:
     s = np.concatenate([[0], np.cumsum(np.linalg.norm(np.diff(arr, axis=0), axis=1))])
     f = [float(s[i] / s[-1]) for i in s_marks]
     f_start = float(s[1] / s[-1])
+    u = s / s[-1]
     inst.joints = {
         "door": Joint("hinge", axis=(0, 0, 1), pivot=(x0 - 8, yb - 12, 0), deg=-100.0),
+        "table": Track("track", knots=tuple((float(ui), (-float(x), -float(y), 0.0)) for ui, (x, y, _) in zip(u, arr))),
         # clear of the door, then square to the opening before it goes in (from the side, it clipped the front frame:
         # collide.py)
-        "load": Joint("path", path=((220, -560, 200), (0, -430, 130), (0, -170, 80), (0, 0, 25), (0, 0, 0))),
-        "head": Joint("path", path=tuple(pts)),
+        "load": Joint("path", parent="table",
+                      path=((220, -560, 200), (0, -430, 130), (0, -170, 80), (0, 0, 25), (0, 0, 0))),
+        "head": Track("track", knots=tuple((float(ui), (0.0, 0.0, float(z))) for ui, (_, _, z) in zip(u, arr))),
         "glow": Joint("fade", parent="head"),
-        **{f"wall{k}": Joint("fade") for k in range(1, n + 1)},
+        **{f"wall{k}": Joint("fade", parent="table") for k in range(1, n + 1)},
     }
     acts = [
         ("The door opens on its left-hand hinge.", 1.4, {"door": (0.0, 1.0), "load": (0.0, 0.0)}),
         ("A steel substrate plate goes onto the bed.", 1.8, {"load": (0.0, 1.0)}),
         ("Door shut; the chamber fills with argon. Drawn see-through from here.", 1.6,
-         {"door": (1.0, 0.0), "~body": (0.0, 0.8), "~door": (0.0, 0.8), "head": (0.0, f_start)}),
+         {"door": (1.0, 0.0), "~body": (0.0, 0.8), "~door": (0.0, 0.8), "head": (0.0, f_start),
+          "table": (0.0, f_start)}),
     ]
     prev = f_start
     for k in range(1, n + 1):
-        cap = ("Six 200 W diode lasers converge on the wire fed through the head's centre; a bead of metal "
-               "follows the head." if k == 1 else "Up a layer, and round again: a wall one bead wide (beads drawn "
-               "about 5x)." if k == 2 else "")
-        acts.append((cap, 1.8, {"head": (prev, f[k - 1]), "glow": (0.0 if k == 1 else 1.0, 1.0),
-                                f"wall{k}": (0.0, 1.0)}))
+        cap = ("Six 200 W diode lasers converge on the wire fed through the head's centre; the table moves the "
+               "plate under it, and a bead of metal follows." if k == 1 else "Up a layer, and round again: a wall "
+               "one bead wide (beads drawn about 5x)." if k == 2 else "")
+        acts.append((cap, 1.8, {"head": (prev, f[k - 1]), "table": (prev, f[k - 1]),
+                                "glow": (0.0 if k == 1 else 1.0, 1.0), f"wall{k}": (0.0, 1.0)}))
         prev = f[k - 1]
     acts.append(("Lasers off; the head lifts. 1400 mm tall, about twice what the VLM's opening takes, so it stands "
-                 "beside the VLM.", 2.4, {"glow": (1.0, 0.0), "head": (prev, 1.0), "~body": (0.8, 0.0),
-                                          "~door": (0.8, 0.0)}))
+                 "beside the VLM.", 2.4, {"glow": (1.0, 0.0), "head": (prev, 1.0), "table": (prev, 1.0),
+                                          "~body": (0.8, 0.0), "~door": (0.8, 0.0)}))
     inst.actions = acts
     inst.labels = [("deposition head: 6 lasers, wire at the centre", (0, -55, tip + 120), (0.80, 0.20)),
                    ("laser-safe window", (x0 + 40, yb - 6, z1 - 60), (0.15, 0.30)),
