@@ -109,17 +109,17 @@
  },
  "polisher": {
   "title": "Metallographic grinder-polisher",
-  "model": "Buehler EcoMet 30 semi-automatic",
-  "source": "Buehler EcoMet 30 instruction manual (drawing 488 x 638 x 650 mm, 75 kg, platens, services); look from Buehler's photos",
+  "model": "LECO PX500 semi-automatic",
+  "source": "the lab's SOP videos (BYU Vertical Cloud Lab channel), fitted with register.py; LECO's PX400/PX500 brochure (form 209-254) for the features; 533 x 711 x 635 mm is a reseller's series figure",
   "model_mm": [
-   490,
-   652,
-   625
+   632,
+   729,
+   677
   ],
   "published_mm": [
-   488.0,
-   638.0,
-   650.0
+   558.0,
+   711.0,
+   677
   ],
   "fits_tray": true,
   "floor": false,
