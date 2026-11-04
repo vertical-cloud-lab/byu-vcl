@@ -43,10 +43,10 @@ two units (see the floor plan below).
 | 1 | F0 | 300 | 475 | J | sample storage: cups and plugs (Al, Cu), vials, tubes, stubs, coupons, bars, jars | 437 (UPS) |
 | 1 | F1 | 1950 | 725 | C | Bambu Lab H2D, Bambu Lab A1 mini | 692 |
 | 1 | F2 | 2675 | 725 | F | LECO PX500 polisher, Nabertherm NAT 15/65 furnace | 687 |
-| 2 | 2R1 | 300 | 800 | K | tray glovebox (N2, purge-only), Keyence VHX-7000 | 760 (glovebox) |
-| 2 | 2R2 | 1100 | 725 | L | ZwickRoell zwickiLine Z5.0 lying on its side, Mitutoyo HM-220 micro-Vickers | 689 |
-| 2 | 2R3 | 1825 | 725 | M | Bruker S2 PUMA XRF, Sentry Air ductless hood, Makera Carvera CNC | 688 |
-| 2 | 2R4 | 2550 | 550 | H | DDM Novastar stencil printer, Opulo LumenPnP | 516 (stencil printer) |
+| 2 | 2R1 | 300 | 850 | K | tray glovebox (N2, purge-only), Keyence VHX-7000 | 810 (glovebox) |
+| 2 | 2R2 | 1150 | 725 | L | ZwickRoell zwickiLine Z5.0 lying on its side, Mitutoyo HM-220 micro-Vickers | 693 |
+| 2 | 2R3 | 1875 | 750 | M | Bruker S2 PUMA XRF, Sentry Air ductless hood, Makera Carvera CNC | 714 (hood) |
+| 2 | 2R4 | 2625 | 550 | H | DDM Novastar stencil printer, Opulo LumenPnP | 516 (stencil printer) |
 | 2 | 2F1 | 1950 | 725 | G | two Formlabs Form 4s, Form Wash, Form Cure | 696 |
 | 2 | 2F2 | 2675 | 725 | I | two SnowX SnowPods | 686 |
 
@@ -55,7 +55,7 @@ camera-carrying tray needs 725-750 mm, because a camera head on a standard post 
 have short posts (block at 270 mm) so their slots stay low.
 
 What is left: Shuttle 1 has 390 mm free at the top of its rear column (3300-3690), too little for a tray with a UPS.
-Its front column has 290 mm free. Shuttle 2 has 590 mm free in the rear column (one more short tray, up to a 575 mm
+Its front column has 290 mm free. Shuttle 2 has 515 mm free in the rear column (one more short tray, up to a 500 mm
 span) and 290 mm in the front.
 
 ## What moved, and why
@@ -67,13 +67,17 @@ span) and 290 mm in the front.
   the VLM (`sieve_station.py`, `alloy_print.BENCH`). The set-up movie now builds that cell on the floor.
 - **The XRF leaves tray F.** Tray F had four instruments, and the UPS took the back right corner. The Bruker S2 PUMA
   went to tray M.
-- **The Keyence VHX leaves tray C.** With its controller beside it, it is 948 mm wide. That doesn't fit beside the
-  A1 mini and in front of the UPS, so it went to tray K, beside the tray glovebox.
+- **The Keyence VHX leaves tray C.** As modelled it is 624 mm deep. In front of the dock plate and the UPS there are
+  595 mm, and the rest of tray C is the two printers and the camera posts. So it went to tray K, beside the tray
+  glovebox, in front of the UPS.
+- **Tray L:** the micro-Vickers at the left, and the zwickiLine (on its side, 638 mm deep) in front of the UPS.
+  The HM-220 is 767 mm deep as modelled, too deep to stand there.
 - **Small moves** (`line.TRAY_LOADS`, `animate.LOADS`, `fab_trays.LOADS`): the Mastersizer 60 mm forward, clear of
   the UPS and the tray's lines; the OT-2 10 mm forward of the lines; the LumenPnP 70 mm forward of the UPS.
 - **New trays:** J (storage), K (glovebox), L (sideways tensile and hardness), M (XRF, ductless hood and CNC). Their
-  models are `instruments_r7.py`'s. Until a model is built, `setup_lab.load_all` stands in a box of its
-  `FOOTPRINTS` size, and the item's name says "stand-in box".
+  models are `instruments_r7.py`'s, placed from the meshes, which run larger than `FOOTPRINTS` in places: the
+  glovebox is 826 mm deep and 813 mm tall, the hood 1030 mm wide and 717 mm tall. If a model isn't built,
+  `setup_lab.load_all` stands in a box of its `FOOTPRINTS` size, and the item's name says "stand-in box".
 - **Considered and not moved onto a tray:**
   - The InssTek MX-Lab (835 mm without its base cabinet) would pass a 996 mm opening. It stays on the floor. It needs
     argon, and the tray coupling carries N2. It needs an exhaust and its base cabinet, whose contents aren't published.
