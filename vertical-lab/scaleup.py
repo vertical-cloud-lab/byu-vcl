@@ -42,6 +42,12 @@ XC = 5500.0                  # the Meltio cell's centre, right of the EOS
 XD = -3400.0                 # the MX-Lab, left of it, for scale
 SAW = dict(dx=1250.0, dy=-1800.0, dz=-90.0, table=(900.0, 700.0, 900.0))   # the plate's last offset: onto the saw table
 BR_SHIFT = 325.0             # the cut brackets, turned 90 degrees, to the saw table's right-hand margin (see eos_apply)
+# Round 8, continuation 2: the plate rides on a lift table cart (a scissor lift on casters, our stand-in for the
+# operator's plate trolley) instead of floating 1.3 m from the door to the saw. Its top is the saw table's 900 x 700.
+# It brings the plate to the door, follows it down while it is slid across onto the deck, rolls aside for the build,
+# comes back, takes the plate as it slides out, and rolls it to the saw position, lowering to 900 mm. Assumed sizes.
+CART = dict(top=(900.0, 700.0, 40.0), base=(860.0, 660.0), base_z=(90.0, 150.0), wheel_r=45.0, bar=1000.0,
+            bar_r=16.0, park=(1700.0, -600.0), arrive=1500.0)
 
 # powder: the lab's figures (alloy_atomize.K7M2Q9, MIDI_BUILDS) and the EOS bed, an estimate
 RUN_FINES_G = 187.973        # DAL #219: one rePowder run, < 63 um (1079.886 g charged)
@@ -74,6 +80,50 @@ def check_head(cell_inst, tl, n=400) -> float:
             dz = np.maximum(z0 - near[:, 2], 0)
             worst = min(worst, float(np.sqrt(dx ** 2 + dy ** 2 + dz ** 2).min()))
     return worst
+
+
+def cart_parts(h: float) -> dict:
+    """The lift table cart in its own frame (origin on the floor under the top's centre), its top surface at h:
+    {name: mesh}. The scissor's bars keep their length (CART['bar']); their feet slide as the top rises."""
+    c = CART
+    tw_, td_, tt = c["top"]
+    bw, bd = c["base"]
+    z0, z1 = c["base_z"]
+    rise = max(h - tt - z1, 50.0)
+    sp = math.sqrt(max(c["bar"] ** 2 - rise ** 2, 0.0))          # the X's spread along y
+    bars = []
+    for x in (-bw / 2 + 40, bw / 2 - 40):
+        for ya, yb_ in ((-sp / 2, sp / 2), (sp / 2, -sp / 2)):
+            bars.append(pv.Line((x, ya, z1), (x, yb_, h - tt)).tube(radius=c["bar_r"], n_sides=10))
+    scissor = bars[0].merge(bars[1:])
+    top = pv.Box(bounds=(-tw_ / 2, tw_ / 2, -td_ / 2, td_ / 2, h - tt, h))
+    return {"top": top, "scissor": scissor}
+
+
+def cart_static() -> dict:
+    """The parts that don't move: the base frame, four casters, the push handle behind the top."""
+    c = CART
+    bw, bd = c["base"]
+    z0, z1 = c["base_z"]
+    tw_, td_, _ = c["top"]
+    base = pv.Box(bounds=(-bw / 2, bw / 2, -bd / 2, bd / 2, z0, z1))
+    wheels = None
+    for x in (-bw / 2 + 60, bw / 2 - 60):
+        for y in (-bd / 2 + 60, bd / 2 - 60):
+            w = pv.Cylinder(center=(x, y, c["wheel_r"]), direction=(1, 0, 0), radius=c["wheel_r"], height=30,
+                            resolution=20).triangulate()
+            fork = pv.Box(bounds=(x - 22, x + 22, y - 12, y + 12, c["wheel_r"], z0))
+            w = w.merge(fork.triangulate())
+            wheels = w if wheels is None else wheels.merge(w)
+    yh = -td_ / 2 - 40.0                                   # behind the top, clear of it at any height
+    handle = None
+    for x in (-bw / 2 + 50, bw / 2 - 50):
+        post = pv.Box(bounds=(x - 12, x + 12, yh - 12, yh + 12, z1, 1000.0)).triangulate()
+        handle = post if handle is None else handle.merge(post)
+    handle = handle.merge(pv.Cylinder(center=(0, yh, 1000.0), direction=(1, 0, 0), radius=14, height=bw - 76,
+                                      resolution=16).triangulate())
+    base = base.merge(pv.Box(bounds=(-bw / 2, bw / 2, yh - 14, -bd / 2, z0, z1)).triangulate())
+    return {"base": base, "wheels": wheels, "handle": handle}
 
 
 def main():
@@ -124,12 +174,20 @@ def main():
     sc.parent["saw"] = "eos:load"
     tw, td, th = SAW["table"]
     tx, ty = cx + SAW["dx"], cy + SAW["dy"]
-    table = [pv.Box(bounds=(tx - tw / 2, tx + tw / 2, ty - td / 2, ty + td / 2, th - 40, th))]
-    table += [pv.Box(bounds=(x - 25, x + 25, y - 25, y + 25, 0, th - 40)) for x in (tx - tw / 2 + 40, tx + tw / 2 - 40)
-              for y in (ty - td / 2 + 40, ty + td / 2 - 40)]
-    sc.add("saw table", table[0].merge(table[1:]), (0.32, 0.33, 0.36), "static", specular=0.3)
+    # the lift table cart (CART): the saw table is its top, at th once it has rolled the plate there
+    for name, mesh in cart_static().items():
+        col = {"base": (0.20, 0.36, 0.62), "wheels": (0.13, 0.13, 0.14), "handle": (0.20, 0.36, 0.62)}[name]
+        sc.add(f"cart/{name}", mesh, col, "cart", specular=0.3)
+    for name, mesh in cart_parts(th).items():
+        col = {"top": (0.32, 0.33, 0.36), "scissor": (0.55, 0.57, 0.60)}[name]
+        sc.add(f"cart/{name}", mesh, col, "cart", specular=0.3)
+    cart_names = [f"cart/{k}" for k in ("base", "wheels", "handle", "top", "scissor")]
+    pt = S8.EOS["plate_t"]
+    y_face = -S8.EOS["D"] / 2                             # the EOS's front face
+    Y_STOP = y_face - CART["top"][1] / 2 - 5.0              # the cart's centre with its top 5 mm off the face
     rng = np.random.default_rng(7)
-    state = dict(f=0.0, beams=0.0, lift=0.0, saw=-1.0, out=0.0, plate=0.0)
+    state = dict(f=0.0, beams=0.0, lift=0.0, saw=-1.0, out=0.0, plate=0.0, cart=0.0, carry=True, away=0.0,
+                 arrive=0.0, cart_h=None)
     plate_names = E.names["load"] + ["build/bars", "build/brackets"]
 
     def eos_apply():
@@ -139,6 +197,22 @@ def main():
         if o > 0:                     # past the load path's start: on to the saw table
             sc.gmat["eos:load"] = E.inst.joints["load"].matrix(0.0) @ T((SAW["dx"] * o, (SAW["dy"] + 1300) * o,
                                                                         (SAW["dz"] - 160) * o))
+        elif state["arrive"] > 0:     # on the cart, still rolling up to the load path's start
+            sc.gmat["eos:load"] = E.inst.joints["load"].matrix(0.0) @ T((0, -CART["arrive"] * state["arrive"], 0))
+        # the cart: under the plate while it carries it (stopped at the face while the plate slides across), its top
+        # at the plate's underside while any of the plate is over it; else parked aside, its top where it was left
+        pb = (sc.world("eos:load") @ np.array([cx, cy, P - pt, 1.0]))[:3]
+        if state["carry"]:
+            cxw, cyw = pb[0], min(pb[1], Y_STOP)
+            if pb[1] - 200.0 < cyw + CART["top"][1] / 2 or state["cart_h"] is None:
+                state["cart_h"] = float(pb[2])
+        else:
+            a = state["away"]
+            cxw, cyw = cx + CART["park"][0] * a, Y_STOP + CART["park"][1] * a
+        for name, mesh in cart_parts(state["cart_h"]).items():
+            sc.set_mesh(f"cart/{name}", mesh)
+        sc.gmat["cart"] = T((cxw, cyw, 0.0))
+        sc.show(cart_names, state["cart"])
         h = P + f * Hb
         if f < 1.0:
             for k, m in full.items():
@@ -265,12 +339,16 @@ def main():
 
     # 3. the plate in
     sc.panel = []
-    sc.step(f"3/{n}", "The chamber door opens, and a 400 mm build plate goes onto the platform.", 3.5,
-            lambda u: (E.v.update(door=window(u, 0, 0.4), load=window(u, 0.45, 1.0)),
-                       state.update(plate=1.0 if u > 0.42 else 0.0), eos_apply()), hold=0.4,
+    state.update(plate=1.0, cart=1.0, carry=True, arrive=1.0)
+    sc.step(f"3/{n}", "The chamber door opens. A 400 mm build plate comes up on a lift table cart and is slid "
+            "across onto the platform, the table lowering with it.", 4.5,
+            lambda u: (E.v.update(door=window(u, 0, 0.35), load=window(u, 0.45, 1.0)),
+                       state.update(arrive=1.0 - window(u, 0.0, 0.4)), eos_apply()), hold=0.4,
             cam_to=CAM_CH)
-    sc.step(f"3/{n}", "Door shut; argon in. Drawn see-through from here.", 2.0,
-            lambda u: (E.v.update({"door": 1 - u, "~body": 0.85 * u, "~door": 0.85 * u}), eos_apply()), hold=0.3)
+    state.update(carry=False, away=0.0, arrive=0.0)
+    sc.step(f"3/{n}", "Door shut; argon in. Drawn see-through from here. The cart rolls aside.", 2.0,
+            lambda u: (E.v.update({"door": 1 - u, "~body": 0.85 * u, "~door": 0.85 * u}),
+                       state.update(away=u), eos_apply()), hold=0.3)
 
     # 4. the build
     nsweep = 9
@@ -303,6 +381,7 @@ def main():
         state["cake"] = 1.0 - window(u, 0.25, 0.55)
         E.v.update({"~body": 0.85 * (1 - window(u, 0.45, 0.65)), "~door": 0.85 * (1 - window(u, 0.45, 0.65)),
                     "door": window(u, 0.55, 0.8)})
+        state["away"] = 1.0 - window(u, 0.55, 1.0)            # the cart back to the door
         eos_apply()
     sc.step(f"5/{n}", "Done. The platform lifts the plate out of the powder, which is unpacked and sieved for reuse "
             "under argon in the setup station; the door opens.", 5.0, unpack, hold=0.3, cam_to=CAM_CH)
@@ -311,16 +390,17 @@ def main():
         E.v["load"] = 1.0 - window(u, 0.0, 0.6)
         state["out"] = window(u, 0.6, 1.0)
         eos_apply()
-    sc.step(f"5/{n}", "The plate comes out to the saw. (AlSi10Mg builds are usually stress-relieved on the plate "
-            "first.)", 4.0, carry, hold=0.3, cam_to=CAM_SAW)
+    state["carry"] = True
+    sc.step(f"5/{n}", "The plate is slid back out onto the lift table, which rolls it to the saw and lowers it. "
+            "(AlSi10Mg builds are usually stress-relieved on the plate first.)", 5.0, carry, hold=0.3, cam_to=CAM_SAW)
 
     # 6. off the plate
     def cut(u):
         state["saw"] = window(u, 0.0, 0.55)
         state["lift"] = window(u, 0.6, 1.0)
         eos_apply()
-    sc.step(f"6/{n}", "A band saw (drawn as its blade) parts the brackets from the plate, and they are lifted off "
-            "by hand and laid beside it: antenna brackets after RUAG Space's, 380 x 110 x 100 mm as drawn. The tensile "
+    sc.step(f"6/{n}", "On the cart, a band saw (drawn as its blade) parts the brackets from the plate, and they "
+            "are lifted off by hand and laid beside it: antenna brackets after RUAG Space's, 380 x 110 x 100 mm as drawn. The tensile "
             "bars stay for testing.",
             6.0, cut, hold=1.2,
             still=True,
