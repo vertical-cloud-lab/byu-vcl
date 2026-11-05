@@ -16,9 +16,10 @@ and ``docs/``); the only real image used is of the powder, and it is labelled so
   42-58 um deep in 30 um layers at a 110 um hatch, the later pools remelting the earlier, so that their lower edges
   make the "fish scales" of LPBF AlSi10Mg (Thijs et al. 2013, https://doi.org/10.1016/j.actamat.2012.11.052); the
   boundaries a little brighter (coarser Si), a faint cellular texture, six round gas pores (6-30 um) and one
-  lack-of-fusion void with an unmelted particle in it. The inset is real but is the powder: the lab's AlSi10Mg on
-  carbon adhesive, BYU's Apreo, 500x, 5 kV, Gage Erickson, 2 Apr 2026
-  (https://github.com/vertical-cloud-lab/byu-vcl/issues/48).
+  lack-of-fusion void with an unmelted particle in it. The inset is real but is the powder: the lab's own
+  atomized Al 4047, run c3k0n5 (rePowder, 22 Oct 2026, https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/159),
+  BYU's Apreo, 1000x, 5 kV, Ronnie Guymon, 26 Oct 2026 (https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/157).
+  Round 7 used a stock AlSi10Mg powder here; Sterling asked for the powder the lab atomized (PR #318, 5 Nov 2026).
 * **eds (illustrative).** Real line energies (X-ray Data Booklet, https://xdb.lbl.gov/Section1/Table_1-2.pdf):
   C K 0.277 keV (the conductive carbon-filled mount), O K 0.525, Mg K 1.254, Al K 1.486, Si K 1.740, Fe K-alpha 6.404.
   The heights are made up, in keeping with AlSi10Mg's composition: Si 9-11, Mg 0.20-0.45, Fe <= 0.55 wt % (EOS's
@@ -66,7 +67,7 @@ OUT = HERE / "out"
 KEYS = ("sem", "eds", "hv", "nano", "pip", "vhx")
 PANELS = {k: OUT / f"alloy_characterize_panel_{k}.png" for k in KEYS}
 DATA = OUT / "alloy_characterize_data.json"
-POWDER_SEM = OUT / "alloy_sem_AlSi10Mg_carbon_adhesive.png"
+POWDER_SEM = OUT / "footage" / "sem_c3k0n5_3.png"       # the lab's own atomized Al 4047 (r8_powder_data.SEM_FILES)
 
 # colours (the dataviz reference palette, light mode), as in r8_powder_data.py
 INK, INK2, MUTED = "#0b0b0b", "#52514e", "#8a8984"
@@ -79,6 +80,8 @@ FIGSIZE, DPI = (9.0, 6.3), 110                  # 990 x 693 px
 
 SRC = dict(
     byu_vcl_48="https://github.com/vertical-cloud-lab/byu-vcl/issues/48",
+    dal_157="https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/157",
+    dal_159="https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/159",
     thijs2013="https://doi.org/10.1016/j.actamat.2012.11.052",
     xray_data_booklet="https://xdb.lbl.gov/Section1/Table_1-2.pdf",
     eos_alsi10mg_mds="https://www.eos.info/en-us/metal-solutions/metal-materials/data-sheets/mds-eos-aluminium-alsi10mg",
@@ -287,16 +290,18 @@ def panel_sem(path: Path) -> dict:
     top = 0.42 + h_frac
     fig.text(0.665, top + 0.035, "REAL DATA", ha="left", va="center", fontsize=13, fontweight="bold", color="white",
              bbox=dict(boxstyle="round,pad=0.3", fc=REAL, ec="none"))
-    fig.text(0.665, 0.405, "The powder, not the section:\nBYU Apreo, 500x, 5 kV,\nG. Erickson, 2 Apr 2026\n"
-             "(byu-vcl #48)", ha="left", va="top", fontsize=13, color=INK, linespacing=1.35)
+    fig.text(0.665, 0.405, "The powder, not the section:\nthe lab's atomized Al 4047,\nrun c3k0n5 (DAL #159).\n"
+             "BYU Apreo, 1000x, 5 kV,\nR. Guymon, 26 Oct 2026\n(DAL #157)", ha="left", va="top", fontsize=13, color=INK,
+             linespacing=1.35)
     _save(plt, fig, path)
     return dict(status="illustrative", what="a computed BSE-like section; no micrograph of the printed section exists",
                 field_um=[W * um, H * um], um_per_px=um, layer_um=30, hatch_um=110, melt_pool_width_um=[105, 140],
                 melt_pool_depth_um=[42, 58], gas_pore_diameters_um=[p[2] for p in SEM_PORES], **info,
                 scale_bar_um=100, source=SRC["thijs2013"],
-                inset=dict(status="real", file=POWDER_SEM.name, what="the lab's AlSi10Mg powder on carbon adhesive "
-                           "(not the section)", instrument="BYU Apreo", mag="500x", kV=5, by="Gage Erickson",
-                           date="2026-04-02", source=SRC["byu_vcl_48"]),
+                inset=dict(status="real", file=f"footage/{POWDER_SEM.name}", what="the lab's own atomized Al 4047, "
+                           "run c3k0n5 (rePowder, 22 Oct 2026, DAL #159), not the section; replaces round 7's stock "
+                           "AlSi10Mg powder image (PR #318 review)", instrument="BYU Apreo, ETD", mag="1000x", kV=5,
+                           by="Ronnie Guymon", date="2026-10-26", source=SRC["dal_157"], run=SRC["dal_159"]),
                 real_section_image_found=False)
 
 
