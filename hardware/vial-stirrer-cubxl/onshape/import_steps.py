@@ -11,6 +11,12 @@ Part Studio is checked against the STEP's own (CadQuery). The record goes to imp
 
 Needs ONSHAPE_ACCESS_KEY / ONSHAPE_SECRET_KEY with write access to the folder, plus cadquery for the check.
 About 5 API calls a file. Nothing is printed about the keys.
+
+Finding the folder again: GET /globaltreenodes/folder/222f47147b861ce6fc04396f lists vcl-shared, one call.
+Don't page through the magic folders to look for it: on 2026-11-05 magic folder 3 listed over 10,000
+items, and paging through it cost about 200 calls of the plan's yearly allowance. Creating the document
+with parentId plus the lab's ownerId and ownerType 1 puts it straight in the folder, lab-owned, so no
+copy step or leftover document in the key owner's account is needed.
 """
 from __future__ import annotations
 
