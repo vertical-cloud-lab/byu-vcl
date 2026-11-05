@@ -23,7 +23,7 @@ few things on board").
 | 3 | Tray D, Rigaku MiniFlex | The door, drawn see-through from the start, opens to 80 deg; the goniometer stands still. The arm carries the holder in by its fin and sets it on the stage. Door shut and locked, X-ray lamp on, then the goniometer moves: theta 5 deg / 2theta 10 deg to 45 / 90 deg, the holder spinning. The pattern (computed). |
 | 4 | Tray D, Hitachi TM4000PlusII | The stub, on a 1.5 in carrier, goes into the SEM's mount cup (r8_char's, with the spring plunger), door in, pump-down; the lab's real images of the same powder, and the particle count. The XRF cup goes onto the MiR. |
 | 5 | Tray E, Mastersizer 3000 + Aero S | About 5 g poured into the Aero S. The optical bench in cutaway: the background, the feeder running, large particles scattering narrow onto the focal-plane arcs and small ones wide onto the large-angle detectors; then the size distribution. |
-| 6 | Tray M (Shuttle 2), Bruker S2 PUMA | The MiR drives to Shuttle 2 at its 0.3 m/s² (props.ramp_frac, from PR #321). A hatch in the hood's top slides back and the port opens; the arm sets the cup on the chamber's lift ring, which lowers it over the tube and the detector under helium; the spectrum (illustrative). |
+| 6 | Tray M (Shuttle 2), Bruker S2 PUMA | The MiR drives to Shuttle 2 at its 0.3 m/s² (props.ramp_frac, from PR #321). A hatch in the hood's top slides back, the port opens and the chamber's lift ring rises 60 mm through it; the arm sets the cup on the ring, which lowers it over the tube and the detector under helium; the spectrum (illustrative). |
 | 7 | | The record: size, phases, shape and composition, each tray brought to an opening only when needed. |
 
 ## Real, computed, illustrative
@@ -80,6 +80,11 @@ summarized in [`edison_r8.md`](edison_r8.md)):
   slides back over the chamber's port. The real mechanism is a question for Bruker.
 - **The XRF seat** used in the tour is now the front-right one (`XRF_SEAT`), nearest the arm.
 - **The MiR at Shuttle 2** stops 450 mm left of the dock's centre, in front of the XRF's end of tray M.
+- **The holder goes onto the stage turned 25 deg about its axis.** Square to the door, the arm's wrist and forearm
+  went into the door (open to 80 deg) and tray D's camera post on the hinge side (`ARM_AUDIT`); turned, the arm comes in
+  from the left of the doorway. The spinner takes the holder any way round.
+- **The S2 PUMA's lift ring rises 60 mm through the open port** to take the cup, then lowers it into the chamber. Set
+  down at deck level, the arm's forearm went into the hood round the hatch (`ARM_AUDIT`). The ring's travel is ours.
 - **The XRD door opens to 80 deg, not the tour's 100:** tray D's middle camera post (`services.TRAY_CAMS["D"]`, its
   mast 140 mm in front of the door's hinge) is in the way past about 85 deg.
 - **The Aero S cover** lifts off by an actuator (by hand in Malvern's videos), as in round 7.
