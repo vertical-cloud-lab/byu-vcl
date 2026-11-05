@@ -43,6 +43,22 @@
      "overlaps": []
     },
     {
+     "item": "Powder prep station: XRD holder, SEM stub, XRF cup (our design)",
+     "kind": "item",
+     "box_mm": [
+      402,
+      838,
+      -397,
+      -164,
+      3,
+      147
+     ],
+     "height_mm": 144.0,
+     "under_goods_height": true,
+     "inside_rim": true,
+     "overlaps": []
+    },
+    {
      "item": "UPS",
      "kind": "ups",
      "box_mm": [
@@ -455,8 +471,8 @@
      "box_mm": [
       -1143,
       -617,
-      -282,
-      282,
+      -338,
+      338,
       3,
       692
      ],
@@ -940,14 +956,14 @@
      "item": "LECO MX400",
      "kind": "item",
      "box_mm": [
-      -1197,
+      -1200,
       -994,
       -107,
       357,
       3,
-      549
+      669
      ],
-     "height_mm": 546.0,
+     "height_mm": 666.0,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -969,17 +985,17 @@
      "overlaps": []
     },
     {
-     "item": "water tank, our design",
+     "item": "water tank with a lift basket, our design",
      "kind": "item",
      "box_mm": [
       560,
       800,
-      -150,
-      50,
+      -169,
+      69,
       3,
-      213
+      329
      ],
-     "height_mm": 210.0,
+     "height_mm": 326.0,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -1224,8 +1240,8 @@
      "box_mm": [
       -1210,
       -678,
-      -419,
-      347,
+      -337,
+      359,
       3,
       598
      ],
@@ -1352,9 +1368,9 @@
       -390,
       322,
       3,
-      613
+      623
      ],
-     "height_mm": 610.0,
+     "height_mm": 620.0,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -2654,6 +2670,13 @@
     "y": -190.0,
     "turn": 0.0,
     "module": "r8_prep"
+   },
+   "pxrd_prep": {
+    "tray": "D",
+    "x": 620.0,
+    "y": -280.0,
+    "turn": 0.0,
+    "module": "r8_powder"
    },
    "quench_tank": {
     "tray": "F",
