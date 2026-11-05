@@ -1,8 +1,273 @@
 {
  "clip": "alloy_characterize",
- "frames_checked": 1266,
- "frames_with_collisions": 0,
- "runs": [],
+ "frames_checked": 1269,
+ "frames_with_collisions": 13,
+ "runs": [
+  {
+   "label": "iMicro",
+   "first_frame": 574,
+   "last_frame": 575,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ]
+  },
+  {
+   "label": "iMicro",
+   "first_frame": 576,
+   "last_frame": 576,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "bay"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "skin_front"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "bay"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "skin_front"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "skin_front"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "skin_front"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "skin_front"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "bay"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "skin_front"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "bay"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "skin_front"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "bay"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "skin_front"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "bay"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_knuckle",
+     "other": "bay"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_knuckle",
+     "other": "skin_front"
+    }
+   ]
+  },
+  {
+   "label": "iMicro",
+   "first_frame": 577,
+   "last_frame": 577,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "E1_nanoindenter:lid"
+    }
+   ]
+  },
+  {
+   "label": "iMicro",
+   "first_frame": 579,
+   "last_frame": 582,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "cam_E1head"
+    }
+   ]
+  },
+  {
+   "label": "iMicro",
+   "first_frame": 592,
+   "last_frame": 593,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "cam_E1head"
+    }
+   ]
+  },
+  {
+   "label": "PIP",
+   "first_frame": 596,
+   "last_frame": 596,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "E1_nanoindenter:lid"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "E1_nanoindenter:lid"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "E0_pip:body"
+    }
+   ]
+  },
+  {
+   "label": "PIP",
+   "first_frame": 597,
+   "last_frame": 597,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "bay"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "bay"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "skin_front"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "skin_front"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "skin_front"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "skin_front"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "camera",
+     "other": "skin_front"
+    }
+   ]
+  },
+  {
+   "label": "PIP",
+   "first_frame": 598,
+   "last_frame": 598,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "self",
+     "part": "forearm",
+     "other": "gripper"
+    }
+   ]
+  },
+  {
+   "label": "VHX",
+   "first_frame": 1246,
+   "last_frame": 1246,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "K1_vhx:body"
+    }
+   ]
+  }
+ ],
  "rules": "What may touch: the gripper and whatever group it is picking up, holding or putting down, within 4 s of the\n    grasp or release; a held part and the groups it touches when it is taken and when it is let go (where it came\n    from and where it goes).",
  "method": "FCL 0.7 (python-fcl) mesh-mesh collision on the drawn meshes, arm links decimated to 8000 triangles; every frame of the clip, after its update"
 }
