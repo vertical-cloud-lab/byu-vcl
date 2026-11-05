@@ -20,8 +20,8 @@ as the set-up movie leaves it. The trays come to the opening one at a time and t
   microscope to the indenter. The PIP's bay is too low for a gripper, so a loading slide (ours) carries the mount out.
 * The MiR250 drives to Shuttle 2 at its 0.3 m/s^2 (props.ramp_frac).
 * **Tray L: the Mitutoyo HM-220 micro-Vickers**, on the hot mount, by its own loading slide (ours).
-* **Tray K: the Keyence VHX-7000** with the bar's upper half on a carrier (ours): the free-angle head tilts round it,
-  the arm turns it over, and a second series covers the underside: the whole bar in 3-D.
+* **Tray K: the Keyence VHX-7000** with the bar's upper half on a carrier (ours): the free-angle head tilts round it
+  while the stage turns. (Turned over once, a second series would cover the underside; the turn-over is not shown.)
 
 Each instrument's data follows its step (``data_panels.py``), labelled real, computed or illustrative. The models are
 ``r8_char.py``'s. Every arm move is a straight line of the grasp point (IK every frame) or a joint move planned round
@@ -61,6 +61,7 @@ BAR_UP = 14.0                         # and 14 mm over the bar's top: the pads e
 MIR_SPEED = 1500.0                    # mm/s at most, at 0.3 m/s^2 (props.ramp_secs), as the other chapters
 HM_DOCK = 300.0                       # at Shuttle 2 the MiR stops this far short of its dock for the HM-220 (IK: 8
 #                                       solutions there against 4 at the dock, 1033 mm out)
+VHX_DOCK = 250.0                      # and this far past it for the VHX (at the dock, the wrist met the VHX's stand)
 
 # the caddy (ours) on the MiR's cabinet top, where chapter 6 left the mounts (alloy_prep.HOT_AT, ST_AT): a low block
 # with two pockets 6 mm deep and a ridge for the bar, narrower than the bar so the pads reach down either side of it
@@ -488,9 +489,9 @@ def movie():
     ox = NP["scope_x"]
     nano_base = (ox, 0.0, sz - 6 + RC.NANO_HOLD["floor"])
     nw = lambda q: inst_world(sc, nano, q)                         # noqa: E731
-    CAM_NANO = cam_at(nw((0, -150, 250)), (-850, -1500, 760))
     say("iMicro", "Tray E comes down: the Plastometrex PIP, the KLA iMicro nanoindenter and the Mastersizer.")
     L.fetch("E", st["lbl"], st["cap"], fast=0.5, cam=CAM_LAB, hold=0.2)
+    CAM_NANO = cam_at(nw((0, -150, 250)), (-850, -1500, 760))      # where the tray is now, at the opening
     say("iMicro", "The iMicro's hood lifts and its XY stage runs out to the load position, clear of the objective.")
     status(L, iMicro="hood up, stage out")
     wait(1.6, nano.move({"lid": (0.0, 1.0), "carriage": (0.0, 1.0)}), cam=CAM_NANO,
@@ -526,8 +527,7 @@ def movie():
     say("PIP", "The PIP's working bay is about 130 mm tall, with the indenter 7 mm over the sample: too tight for a "
                "gripper. Its loading slide (ours) runs a steel plate out to the front.")
     status(L, PIP="slide out")
-    go(q=PARK, secs=1.4, cam=CAM_PIP, extra=RB.both(pip.move({"slide": (0.0, 1.0)}),
-                                                      nano.move({"lid": (1.0, 0.0), "carriage": (1.0, 0.0)})),
+    go(q=PARK, secs=1.4, cam=CAM_PIP, extra=pip.move({"slide": (0.0, 1.0)}),
        labels=[("Plastometrex PLX-Benchtop (PIP)", tuple(pw((0, 0, 720))), (0.30, 0.18))])
     place_mount(world_of(pip, "slide", pip_base), f"{pip.prefix}slide", spin=180.0,
                 labels=[("loading slide (ours)", tuple(world_of(pip, "slide", (0, gP["yc"], gP["stz"]))),
@@ -536,7 +536,8 @@ def movie():
     say("PIP", "Slide in: the plate sits on the platen, metal from the slice down to the load cell. The 1 mm ball is "
                "pressed in; the profilometer maps the indent's shape.")
     status(L, Arm="parked", PIP="indenting")
-    wait(1.6, RB.both(pip.move({"slide": (1.0, 0.0)}), clock("PIP", 0.0, 0.5)))
+    wait(1.6, RB.both(pip.move({"slide": (1.0, 0.0)}), nano.move({"lid": (1.0, 0.0), "carriage": (1.0, 0.0)}),
+                      clock("PIP", 0.0, 0.5)))
     wait(1.4, RB.both(pip.move({"head": (0.0, 1.0)}), clock("PIP", 0.5, 1.0)))
     wait(1.4, RB.both(pip.move({"head": (1.0, -0.3), "stylus": (0.0, 0.33)}), clock("PIP", 1.0, 1.5)))
     wait(1.8, RB.both(pip.move({"stylus": (0.33, 0.67)}), clock("PIP", 1.5, 3.0)))
@@ -569,11 +570,19 @@ def movie():
     import instruments_r7 as R7
     pH = R7.HM
     ax, ay = pH["ax"]
+    dents = [n for k in hv.inst.joints if k.startswith("dent") for n in sc.members(f"{hv.prefix}{k}")]
+    hv.v["sample"] = 1.0                   # the hidden prop seated, so its indents sit at our mount's face
+    hv.apply()
+
+    def show_dents(on):
+        for n in dents:
+            sc.alpha[n] = 1.0 if on else 0.0
+    show_dents(False)
     hv_base = (ax, ay, 252.0 + RC.HM_HOLD["plate"])
     hw = lambda q: inst_world(sc, hv, q)                           # noqa: E731
-    CAM_HV = cam_at(hw((0, -260, 300)), (-700, -1250, 560))
     say("Vickers", "Tray L comes down at Shuttle 2: the Mitutoyo HM-220 micro-Vickers tester, and the zwickiLine.")
     L.fetch("L", st["lbl"], st["cap"], fast=0.5, cam=CAM_LAB, hold=0.2)
+    CAM_HV = cam_at(hw((0, -260, 300)), (-700, -1250, 560))
     say("Vickers", "Its loading slide (ours) runs the mount holder out from under the turret; the arm sets the hot "
                    "mount on it, against the V-block.")
     status(L, **{"HM-220": "slide out", "Arm": "loading the HM-220"})
@@ -581,6 +590,7 @@ def movie():
          labels=[("Mitutoyo HM-220 micro-Vickers", tuple(hw((0, 0, 620))), (0.24, 0.18))])
     pick_mount("c_hot", spin=180.0)
     place_mount(world_of(hv, "slide", hv_base), f"{hv.prefix}slide", spin=180.0)
+    show_dents(True)
     park(1.4)
     say("Vickers", "Slide in. The turret swings the Vickers indenter over the coupon and presses, HV0.1; the 50x "
                    "objective comes back and the camera measures both diagonals. A row across the coupon, unattended.")
@@ -593,6 +603,7 @@ def movie():
     say("Vickers", "Slide out; the mount goes back to the caddy. Tray L goes back up.")
     status(L, **{"HM-220": "done", "Arm": "unloading the HM-220"})
     wait(1.4, hv.move({"slide": (0.0, 1.0)}))
+    show_dents(False)                      # they are in the coupon's face: they leave with the mount (too small to see)
     pick_mount("c_hot", spin=180.0)
     place_mount(caddy_hot_now(sc), "c_caddy", spin=180.0, cam=CAM_LAB)
     park(1.4, extra=hv.move({"slide": (1.0, 0.0)}))
@@ -607,12 +618,12 @@ def movie():
     c = RC.VHX_CARRIER
     bar_base = (0.0, ys, zs + 1.0 + c["t"] + c["ped_h"])
     vw = lambda p_: inst_world(sc, vhx, p_)                        # noqa: E731
-    CAM_VHX = cam_at(vw((0, -120, 260)), (-640, -1150, 520))
     say("VHX", "Tray K comes down: the glovebox and the Keyence VHX-7000, remoted in through a PiKVM. The MiR250 moves "
-               "back to its dock.")
+               "along, nearer the VHX at the tray's right end.")
     status(L, Arm="UR10e on MiR250, at Shuttle 2")
-    drive_to(x2, st["lbl"], st["cap"], hold=0.0)
+    drive_to(x2 + VHX_DOCK, st["lbl"], st["cap"], hold=0.0)
     L.fetch("K", st["lbl"], st["cap"], fast=0.5, cam=CAM_LAB, hold=0.2)
+    CAM_VHX = cam_at(vw((0, -120, 260)), (-640, -1150, 520))
     say("VHX", "The ring light is 25 mm over the focal point, too close for a gripper: the stage's loading slide "
                "(ours) runs its carrier out to the front, and the arm sets the bar on its narrow pedestal.")
     status(L, VHX="carrier out", Arm="loading the VHX")
@@ -639,14 +650,11 @@ def movie():
     wait(3.4, RB.both(vhx.move({"head": (0.0, 1.0), "turntable": (0.0, 0.5)}), clock("VHX", 0.0, 6.0)))
     wait(3.0, RB.both(vhx.move({"head": (1.0, -0.45), "turntable": (0.5, 0.0)}), clock("VHX", 6.0, 12.0)))
     wait(1.6, RB.both(vhx.move({"head": (-0.45, 0.0), "focus": (0.0, 1.0)}), clock("VHX", 12.0, 14.0)))
-    sc.clock = None
-    flip_bar(sc, rb, vhx, st, go_to, lin, grip, park, wait, status, L, CAM_VHX)
-    say("VHX", "The series again, on the underside: with one turn-over, every face of the bar and its fracture "
-               "surface, as one 3-D model.")
-    status(L, Arm="parked", VHX="tilt series, underside")
-    wait(1.4, vhx.move({"carrier": (1.0, 0.0)}))
-    wait(3.0, RB.both(vhx.move({"head": (0.0, -0.8), "turntable": (0.0, -0.5)}), clock("VHX", 14.0, 20.0)))
-    wait(2.2, RB.both(vhx.move({"head": (-0.8, 0.0), "turntable": (-0.5, 0.0)}), clock("VHX", 20.0, 25.0)))
+    say("VHX", "Turned over once and the series repeated, it covers the underside too: every face of the bar and its "
+               "fracture surface as one 3-D model. (The turn-over, a regrasp at the carrier, isn't shown: the arm's "
+               "path for it still meets the stand.)")
+    status(L, VHX="reconstructing")
+    wait(1.0, clock("VHX", 14.0, 25.0), hold=1.6)
     show_panel("vhx", 4.4)
     sc.clock = None
     say("VHX", "Carrier out; the bar goes back to the caddy. Tray K goes back up.")
@@ -686,32 +694,6 @@ def movie():
 def caddy_hot_now(sc) -> np.ndarray:
     """The hot mount's pocket in the caddy, in the world, where the caddy is now."""
     return (sc.world("c_caddy") @ np.r_[SLOT_AT["hot"][0], SLOT_AT["hot"][1], CADDY["h"] - CADDY["pocket"], 1.0])[:3]
-
-
-def flip_bar(sc, rb, vhx, st, go_to, lin, grip, park, wait, status, L, cam):
-    """The arm turns the bar over on the carrier: the carrier out, a level grasp on the grip end from the front, up
-    25 mm, a 180 deg roll of the wrist about the bar's axis, down, let go."""
-    status(L, VHX="carrier out", Arm="turning the bar over")
-    st["lbl"], st["cap"] = "VHX", ("Carrier out. The arm takes the bar by its grip end, lifts it clear of the "
-                                   "pedestal, rolls it over about its long axis and sets it back down.")
-    wait(1.4, vhx.move({"carrier": (0.0, 1.0)}), cam=cam)
-    bw = sc.world("c_bar")
-    end = (bw @ np.r_[0.0, -25.0 + 10.0, RC.BAR_T / 2, 1.0])[:3]         # 10 mm in from the grip end, mid-height
-    along = bw[:3, :3] @ np.array([0.0, 1.0, 0.0])                        # towards the fracture
-    Tl = A.level(end, toward=tuple(along), spin=0.0)
-    back = sh(Tl, -along * 80.0)
-    go_to(back, Tl, secs=2.0)
-    lin(Tl, 0.8)
-    grip(GRIP_BAR)
-    rb.grasp("c_bar")
-    up = sh(Tl, (0, 0, 25.0))
-    lin(up, 0.6)
-    lin(A.level(up[:3, 3], toward=tuple(along), spin=180.0), 1.4)
-    lin(A.level(Tl[:3, 3], toward=tuple(along), spin=180.0), 0.6)
-    grip(0.55)
-    rb.release(f"{vhx.prefix}carrier")
-    lin(sh(A.level(Tl[:3, 3], toward=tuple(along), spin=180.0), -along * 80.0), 0.7)
-    park(1.4)
 
 
 def finish(sc, rb):
