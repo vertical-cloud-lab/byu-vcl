@@ -166,8 +166,9 @@ Take the puck out and clean it, then clean up the VibroMet.
 * Take the puck out of the holder and put it face up in the dish of DI water. Cover the dish (lid or parafilm, as Gage did) and stand it in the ultrasonicator for 2 minutes. PACE's cleaning guide gives 1-3 minutes. Don't go much longer, because pores and the gap between the metal and the Bakelite can hold liquid and debris.
 * Move the puck to the dish of alcohol, cover it, and give it 2 more minutes. Methanol works too, as in Step 6, but Edison found nothing that needs methanol in particular, and ethanol is less toxic. Alcohol always stays in the covered dish, never straight in the tank, because it's flammable.
 * Dry it right away, sweeping the gas across the face. Gage: "I always just blow right along the sample, and the sides just have to dry slow." No heat: PACE's aluminum guide says "no heated drying". Dry the edges of the face completely too. The tape in Step 9 won't seal on a wet surface, and it would trap whatever is under it. Never leave the puck sitting in water, and never let water dry on the face.
-* Look at it under the optical microscope. If there's haze or specks, repeat both baths. If they're still there, add a drop of neutral lab detergent to the water bath for one more round, then rinse with DI water and finish with the alcohol bath. Detergent isn't routine because it leaves its own residue.
-* Then go straight on to Step 9. If you have to stop, this is the place to do it (see Step 11).
+* There's no need to look at it under the microscope here. The last check in 7e has already shown that the alumina scratches are gone, and residue is left to the SEM (see [Checking the first sample](#checking-the-first-sample)). This saves time, not oxide: about 1.7 nm forms within 10 minutes whatever you do (Step 11), and a few minutes at the microscope would add under 0.1 nm more.
+* Instead, look across the face under the hood light while you dry it, as for the haze in Step 6. If you see haze or spots, repeat both baths with fresh DI water and alcohol and dry it again. If they're still there, add a drop of neutral lab detergent to the water bath for one more round, then rinse with DI water and finish with the alcohol bath. Detergent isn't routine because it leaves its own residue.
+* Then tape the face straight away (Step 9). Set the saw up while the VibroMet runs, so the tape only stays on for the cut. If you have to stop, stop before taping (see Step 11).
 
 #### 8b. Clean up the VibroMet
 
@@ -181,7 +182,7 @@ Tape the face and cut the sample out of the puck. The tape keeps the saw's water
 
 * Cover the whole face with Kapton tape: the metal plus 2-3 mm of Bakelite on every side. The roll in the cabinet is 1/4" (6 mm) wide, narrower than a ~1 cm sample, so lay strips side by side in the same direction, each overlapping the one before by a couple of millimeters.
 * Press every edge and seam down firmly with a clean gloved finger, working out any bubbles. The edges and seams are where water gets in.
-* Set up the diamond saw as in Step 1. Clamp the puck by the Bakelite, never across the taped face.
+* Set up the diamond saw as in Step 1, if you didn't while the VibroMet ran (8a). Clamp the puck by the Bakelite, never across the taped face.
 * Cut through the Bakelite 1-2 mm outside the metal on all four sides. That way, if the tape lifts at a cut edge, it lifts over Bakelite instead of over the polished metal.
 * Then cut parallel to the face, a few millimeters less deep than the sample is tall, so the cut goes through the metal. The piece then has a bare metal back, which is what conducts to the SEM stub (Bakelite doesn't conduct), and it is no taller than about 1 cm, as in Step 1.
 * Do the four side cuts first, while there's plenty of Bakelite to clamp, and the parallel cut last. Slow down at the end of each cut. If the piece drops into the water, only reach for it after the blade has stopped.
@@ -220,6 +221,7 @@ Store the stub under vacuum until the SEM ([caliber#16](https://github.com/verti
     * BSE: embedded diamond is carbon, so it shows as dark specks, mostly in the aluminum between the Si.
     * SE: bright, raised Si walls and rounded pore edges mean relief, from too long a run or too much nap. Relief reads as low Si. In the [Oct 22 estimate](https://github.com/vertical-cloud-lab/caliber/pull/6#issuecomment-6352466860), a facet tilted 10° away from the detector read Si 4.5% low.
     * Scratches left over from the alumina.
+    * Residue from the cleaning: films, smears or drying marks. 8a has no microscope look, so this is the first close look at the cleaned face. Dried PEG and surfactant from the suspension are mostly carbon, so they also show dark in BSE, but they are usually patchy with soft edges, where embedded diamond shows as separate sub-micron dots. Keep EDS areas off them.
 * Run EDS at 5 kV with C and O left in the element list. About 1 wt% O at 5 kV is the native oxide, and on its own doesn't mean anything went wrong ([10-08 estimate](https://github.com/vertical-cloud-lab/byu-vcl/pull/258#issuecomment-6067927580)).
 * If you can, put the pure Al pellet through Steps 7-11 with it: same cloth, same day, same jar and same SEM session, so both oxides are the same age. Pure Al has no Si and no O inside, so any Si it shows came from the process, and its O is the oxide plus any residue. Compare its C with the sample's.
 * If BSE shows a lot of embedded diamond, don't polish longer or harder. Tell the thread, and ask Mike what he does (see Open questions). The other options:
