@@ -111,7 +111,7 @@ GRIP_HANDLE = 0.86                    # the container's 12 mm handle bar
 GRIP_LEVER = 0.875                    # the sealing-rod lever's 12 mm bar
 LEVER_AT = 40.0                       # where the arm takes the lever: mm along it from the rod
 HOOD_OPEN = 110.0                     # degrees the lid swings up (#124's training animation)
-MIR_SPEED = 1500.0                    # mm/s, as alloy_workflow.py
+MIR_SPEED = 1500.0                    # mm/s at most, at 0.3 m/s^2 (props.ramp_secs), as PR #321
 PARK = np.radians(A.PARK_DEG)
 CARRIER_AT = (A.BUFFER_LOCAL[0], A.BUFFER_LOCAL[1], P.AMR_TOP - 20.0)    # where chapter 1 puts the cup carrier
 CRADLE_AT = (280.0, 10.0, P.AMR_TOP - 20.0)                           # the container's cradle, beside the arm
@@ -602,19 +602,19 @@ class Mir:
             self.rb.set()
 
     def drive(self, x1, y1):
-        """Along a smoothstep S-curve to (x1, y1), its long axis on the tangent (it drives along its length)."""
-        x0, y0 = self.x, self.y
+        """Along a smoothstep S-curve to (x1, y1), its long axis on the tangent (it drives along its length), from rest
+        to rest at the MiR250's 0.3 m/s^2 along the curve (props.s_curve, props.ramp_frac), over the step's time.
+        Round 8: PR #321's ramped drive, brought over (it had the MiR at about twice its published acceleration)."""
+        at, ps, s = P.s_curve(self.x, self.y, x1, y1)
 
         def up(u):
-            x = x0 + (x1 - x0) * u
-            y = y0 + (y1 - y0) * (3 * u * u - 2 * u ** 3)
-            dydx = (y1 - y0) * (6 * u - 6 * u * u) / (x1 - x0) if abs(x1 - x0) > 1 else 0.0
-            self.set(x, y, math.degrees(math.atan(dydx)))
+            f = P.ramp_frac(P.unease(u), s[-1], MIR_SPEED)
+            self.set(*at(float(np.interp(f * s[-1], s, ps))))
         return up
 
     def secs(self, x1, y1=None):
-        d = math.hypot(x1 - self.x, (y1 if y1 is not None else self.y) - self.y)
-        return max(1.2, d / MIR_SPEED + 0.8)
+        s = P.s_curve(self.x, self.y, x1, self.y if y1 is None else y1)[2]
+        return max(1.2, P.ramp_secs(s[-1], MIR_SPEED))
 
     def world(self, p):
         return (self.sc.world("amr") @ np.r_[p, 1.0])[:3]
@@ -1029,6 +1029,8 @@ def latch_meshes() -> dict:
     """{part: (mesh, colour, group)} in the latch frame. Groups: latch_base (on the body), latch_lever (turns about
     the frame's y axis), latch_loop (on the lever, turns about its pin), keeper (on the lid), lockbolt (slides on y)."""
     st, dk = (0.82, 0.83, 0.85), (0.55, 0.57, 0.60)
+    dk2 = (0.36, 0.38, 0.41)              # round 8: the base and keeper darker, so the bright lever and loop read
+    #                                       against them (all light grey, the latch vanished into the furnace body)
     base = _bx(-18, -2, -23, 23, -10, 62).merge(_bx(-4, 6, -19, -15, -6, 6)).merge(_bx(-4, 6, 15, 19, -6, 6))
     # the pull tab ends in a T: the 2F-85's pads sit inside its head, so the pull is taken by shape, not friction
     lever_ = _bx(0, 4, -15, 15, -4, 62).merge(_bx(4, 46, -10, 10, 56, 64)).merge(_bx(46, 50, -17, 17, 54, 66)).merge(
@@ -1044,8 +1046,8 @@ def latch_meshes() -> dict:
         keeper = keeper.merge(_cy((-7.0, y, 86), (1, 0, 0), 3.0, 1.5, res=16))
     body = _cy((10, 65, 48), (0, 1, 0), 10, 50).merge(_bx(-33, 2, 53, 77, 42, 54))
     bolt = _cy((10, 8.5, 48), (0, 1, 0), 4, 53, res=16)       # out: from the cylinder to past the lever's far edge
-    return {"latch base": (base, st, "latch_base"), "latch lever": (lever_, st, "latch_lever"),
-            "latch loop": (loop, st, "latch_loop"), "latch keeper": (keeper, st, "keeper"),
+    return {"latch base": (base, dk2, "latch_base"), "latch lever": (lever_, st, "latch_lever"),
+            "latch loop": (loop, st, "latch_loop"), "latch keeper": (keeper, dk2, "keeper"),
             "lock cylinder": (body, dk, "latch_base"), "lock bolt": (bolt, (0.70, 0.71, 0.73), "lockbolt")}
 
 
@@ -1480,9 +1482,9 @@ def movie():
            f"Pulled that hard, the MiR250 and its arm would tip at {sp['tips_at_N']:.0f} N and slide at "
            f"{sp['slides_at_N']:.0f} N; with a {BALLAST_KG:.0f} kg steel plate under the cabinet, at "
            f"{sb['tips_at_N']:.0f} and {sb['slides_at_N']:.0f} N.")
-    sc.step(f"2/{n}", cap, 1.6, latch_open, hold=0.6,
-            labels=[(f"ballast plate, {BALLAST_KG:.0f} kg",
-                     tuple(mir.world((0.0, -P.MIR["W"] / 2 + 28, P.MIR["H"] + 16))), (0.08, 0.80))])
+    # round 8: no "ballast plate" label here: from the latch's close-up the plate (under the MiR's cabinet) is off
+    # screen, so its leader line ran in from outside the frame; the caption names it
+    sc.step(f"2/{n}", cap, 1.6, latch_open, hold=0.6, labels=[])
     sc.step(f"2/{n}", cap, 0.3, rb.grip_to(GRIP_TAB_OPEN), hold=0.05)
     rb.events.append((sc.n, "release", g("latch_lever"), g("latch_loop")))
     q_tab_open = rb.q.copy()

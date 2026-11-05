@@ -331,32 +331,34 @@ def _panel(img, scale, alpha):
 
 class Mir2:
     """alloy_workflow.Mir, which drives along x at MIR_Y, given a y as well, for the spot in front of the rePowder
-    (whose front stands 300 mm proud of the line's)."""
+    (whose front stands 300 mm proud of the line's). Off that spot it drives an S-curve with its long axis on the
+    tangent, as chapter 2 drives onto it (props.s_curve): a MiR250 is differential drive and can't slide sideways.
+    Round 8: PR #321's version, brought over. The old one slid the MiR sideways for the y leg, and drove at about
+    twice its published acceleration; now every drive is from rest to rest at 0.3 m/s^2 (props.ramp_frac)."""
 
     def __init__(self, amr):
         self.amr, self.sc, self.rb = amr, amr.sc, amr.rb
         self.y = AW.MIR_Y
 
-    def place(self, x, y):
+    def place(self, x, y, heading=0.0):
         self.amr.x, self.y = x, y
-        self.sc.gmat["amr"] = T((x, y, 0))
+        self.sc.gmat["amr"] = T((x, y, 0)) @ R((0, 0, 1), heading)
         if self.rb.held is not None:
             self.rb.set()
 
     def drive(self, x1, y1=None):
-        x0, y0 = self.amr.x, self.y
+        """From rest to rest at the MiR250's 0.3 m/s^2 along the path (props.ramp_frac), over the step's time."""
         y1 = AW.MIR_Y if y1 is None else y1
+        at, ps, s = P.s_curve(self.amr.x, self.y, x1, y1)
 
         def up(u):
-            # turn the corner: y first for the first third, then along x
-            uy = min(1.0, u / 0.35)
-            ux = max(0.0, (u - 0.25) / 0.75) if abs(y1 - y0) > 1 else u
-            self.place(x0 + (x1 - x0) * ux, y0 + (y1 - y0) * uy)
+            f = P.ramp_frac(P.unease(u), s[-1], AW.MIR_SPEED)
+            self.place(*at(float(np.interp(f * s[-1], s, ps))))
         return up
 
     def secs(self, x1, y1=None):
-        y1 = AW.MIR_Y if y1 is None else y1
-        return max(1.4, (abs(x1 - self.amr.x) + abs(y1 - self.y)) / AW.MIR_SPEED + 1.0)
+        s = P.s_curve(self.amr.x, self.y, x1, AW.MIR_Y if y1 is None else y1)[2]
+        return max(1.4, P.ramp_secs(s[-1], AW.MIR_SPEED))
 
 
 def build():
@@ -873,8 +875,13 @@ def movie():
 
     # the LPBF jar to the MiR's second cup. The MiR first rolls 300 mm back up to its usual line: from the cell's spot
     # the reach down to the jar under the funnel put the forearm in the bench's front edge
-    cap = "The arm parks and the MiR rolls up to the bench, for the jar under the funnel."
+    cap = "The arm parks and the MiR250 pulls up to the bench for the jar under the funnel: forward onto its usual " \
+          "line, then back along it. It can't drive sideways."
     sc.step(f"3/{n}", cap, 1.2, rb.joint_to(PARK), hold=0.05)
+    # round 8: these 300 mm were a sideways slide, which a differential-drive MiR250 can't do: now a short S-curve
+    # forward onto the line (at most 27 degrees off it), then straight back, each from rest to rest at 0.3 m/s^2
+    x_fwd = x_sv + 900.0
+    sc.step(f"3/{n}", cap, mo.secs(x_fwd, AW.MIR_Y), mo.drive(x_fwd, AW.MIR_Y), hold=0.05)
     sc.step(f"3/{n}", cap, mo.secs(x_sv, AW.MIR_Y), mo.drive(x_sv, AW.MIR_Y), hold=0.05)
     b_seat = sc.world("bottle")[:3, 3]
     b_grasp = b_seat + (0, 0, 58.0)
