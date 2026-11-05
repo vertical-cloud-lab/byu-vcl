@@ -9,7 +9,13 @@ row at x 6950, the wire EDM across the aisle in the south row, the 68FM-100 at t
 furnace on tray F in Shuttle 1. Round 4-7's flow on the old one-Shuttle line is in git history; its `build()` stays,
 because chapter 3 (`alloy_print.py`) borrows it.
 
-RENDER_TABLE
+| | |
+|---|---|
+| MP4, 1280 x 720, 6 fps, 356 s, 2,137 frames (rendered 20:12-20:58 UTC, only tray F populated, Shuttles clad) | [`out/mp4/alloy_workflow.mp4`](../out/mp4/alloy_workflow.mp4) (17.4 MB) |
+| GIF, 400 px, 2 fps | [`out/alloy_workflow.gif`](../out/alloy_workflow.gif) (4.4 MB) |
+| Stills: the cut over the comb, the broken bar | [`out/alloy_workflow_cut.png`](../out/alloy_workflow_cut.png), [`out/alloy_workflow_still.png`](../out/alloy_workflow_still.png) |
+| Every sub-step's frames, and the numbers used | [`out/alloy_workflow.json`](../out/alloy_workflow.json) |
+| Tour clips at 8 fps: the furnace with the upright rack, the 68FM-100 with its chamber, the quench tank's basket | [`furnace`](../out/mp4/instruments/furnace.mp4), [`instron_floor`](../out/mp4/instruments/instron_floor.mp4), [`quench_tank`](../out/mp4/instruments/quench_tank.mp4) |
 
 ### What changed, step by step
 
@@ -83,9 +89,12 @@ collision**, which the planner cannot route round:
 
 - section 5, twice: the arm folded on itself (shoulder against forearm, upper arm against the wrist) at a pose
   carrying a bar between the IPA jar and the rack;
-- section 7: the park pose with the tongs back on their rest (wrist 2 against the tongs' handle and the rest: the rest
-  is 233 mm off the arm's axis, the closest the UR10e reaches, and the folded park pose comes closer), and the park
-  pose beside the Instron's open chamber door (wrist 2 against the door), twice each.
+- section 7, four times: the park pose the arm returns to between the Instron's steps. Folded over its base, it puts
+  wrist 2 against the tongs' handle on their rest (233 mm off the arm's axis, the closest the UR10e reaches) and the
+  gripper against the upper arm, and once wrist 2 against the chamber's open door.
+
+The same six were reported while the render ran (20:12-20:58 UTC), so they are in the MP4: the arm holds each of
+those poses for about a second.
 
 Each is a few frames. The fixes are new poses: a waypoint for the bar moves, the tongs' rest further out on the cabinet
 (or a different park pose while it is loaded), and a park pose that clears the door. Run
