@@ -39,6 +39,11 @@ Sterling's review of 2026-11-05 00:37 UTC, verbatim:
 | The floor | `line.py`'s one-Shuttle line, the Aconity at x = 3250 | `setup_lab.py`'s floor ([`alloy_atomize_floor.py`](../alloy_atomize_floor.py)): the second Shuttle at x = 3630, the Aconity at 6950, the glovebox at −7300 turned to the aisle |
 | The container in its cradle | turned half round, the handle to the arm | the handle to the front, as it came out of the rePowder: chapter 3 takes it from there, level from the front, so the two chapters now meet in the same state (`CRADLE_TURN`) |
 | Framing | the latch steps seen from the close-up; the camera through the machine for a few frames (fixed in code in round 7, not rendered) | rendered |
+| The MiR250's drives | the old smoothstep ease: about twice the MiR250's published acceleration | from rest to rest at its published 0.3 m/s², up to 1.5 m/s, along the same S-curves (`props.ramp_frac`, `props.ramp_secs`, `props.s_curve`: PR #321's ramps, brought over in round 8). The drives take longer: 1071 frames of 3-D instead of about 1000 |
+| The latch | base, lever, loop and keeper all the furnace's light grey, so the latch all but vanished in its close-ups | the base and the keeper on the lid dark (0.36-0.41 grey), the lever and the loop bright stainless, so the over-centre motion reads |
+| The pull on the latch | a "ballast plate, 95 kg" label whose leader ran in from off screen (the plate is under the MiR's cabinet, out of the latch's close-up) | no label; the caption names the plate |
+
+**Rendered (continuation 2, 2026-11-05 16:22 UTC):** 210.5 s at 6 fps, 1263 frames: 178.5 s of 3-D and 32.0 s of the lab's footage in 8 pieces (the charge photo, three melt excerpts at 2x, the MS&T stream, the bronze jet, the k7m2q9 jar, the c3k0n5 bag and jar). Arm audit at 6 fps: **0 of 866 frames in collision** (`out/collisions/alloy_atomize.json`). The GIF the splice wrote was 5.9 MB, over the 4.9 MB budget even at its 4 fps fallback, so `out/alloy_atomize.gif` was remade from the MP4 at 3 fps and 512 x 288 (4.8 MB).
 
 ### Round 6 (PR #318, 2026-11-04): the lid's latch, the base, a loading tong, the crucible
 

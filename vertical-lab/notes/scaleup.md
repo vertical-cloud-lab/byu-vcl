@@ -17,7 +17,9 @@ models carry their own `actions` for it).
 
 ## The chapter
 
-`VIZ3D_FPS=8 LP_NUM_THREADS=2 nice -n 5 xvfb-run --server-num=17 -a python3 scaleup.py` (render in progress when these notes were first committed; its figures follow in the next commit).
+`VIZ3D_FPS=6 python3 runner_guard.py slot -- xvfb-run --server-num=17 -a python3 scaleup.py`. Rendered 2026-11-05 16:08-16:16 UTC: **679 frames, 113.2 s at 6 fps** (`out/mp4/scaleup.mp4`, 4.9 MB), GIF 566 frames at 5 fps and 640 x 360, 4.8 MB. The printhead's least clearance to the propeller over the program: 75 mm.
+
+**Fixed before the render (continuation 2):** in step 6 the two brackets, cut free, rose 260 mm and tilted, and then hung there over the plate with nothing holding them. They are now lifted off by hand (80 mm up, as the caption says) and laid on the saw table's free right-hand margin, turned 90°: the table is 900 x 700 mm with the 400 mm plate on its centre, so the margin is 250 mm and the pair, turned, is 245.6 mm across. They come to rest on the table's top, 30 mm lower than they were printed (the plate's thickness), and pass 18 mm over the tensile bars on the way. The band saw is still drawn as its blade alone.
 
 Nine steps on a plain floor, the lab's InssTek MX-Lab beside the two for scale:
 
