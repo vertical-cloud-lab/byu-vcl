@@ -388,13 +388,16 @@ def normalise(src: Path, dst: Path, overlay: Path | None = None):
         "-crf", "21", "-pix_fmt", "yuv420p", "-video_track_timescale", "15360", dst)
 
 
-def warm():
+def warm(skip=()):
     """Normalise every clip the plan has into the cache, without joining: run while renders are still going, so the
-    final build only encodes what changed (each part is keyed on its source's bytes)."""
+    final build only encodes what changed (each part is keyed on its source's bytes). `skip`: substrings of the
+    sources still to be re-rendered."""
     tmp = Path(tempfile.mkdtemp(prefix="longform_warm_"))
     n = 0
     for i, r in enumerate(plan()):
         if r.get("missing") or r["kind"] not in ("mp4", "footage"):
+            continue
+        if any(k in str(r.get("git") or r["src"]) for k in skip):
             continue
         out = tmp / f"w{i:03d}.mp4"
         if r["kind"] == "footage":
@@ -725,7 +728,7 @@ if __name__ == "__main__":
     elif args and args[0] == "upload":
         upload(json.loads((OUT / "longform.json").read_text()))
     elif args and args[0] == "warm":                  # normalise the clips into the cache ahead of the build
-        warm()
+        warm(args[1:])
     elif args and args[0] == "cards":                 # the cards alone, to /tmp, to read them
         for i, ch in enumerate(CHAPTERS, 1):
             card_image(f"Part {i} of {len(CHAPTERS)}", ch["title"], ch["card"]).save(f"/tmp/card_{ch['key']}.png")
