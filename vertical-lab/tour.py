@@ -35,7 +35,10 @@ MATS = dict(lab.MATS)
 MATS.update(I.MATERIALS)
 # Round 4 adds its instruments in modules of their own, each with a REGISTRY ({key: build}) and, optionally,
 # MATERIALS; a module that isn't there yet is skipped. Each module is cached on its own sources.
-MODULES = ["instruments", "instruments_char", "instruments_lab", "services", "instruments_r7"]
+MODULES = ["instruments", "instruments_char", "instruments_lab", "services", "instruments_r7",
+           # round 8: each module's REGISTRY overrides an earlier key of the same name (later wins), so a refitted
+           # model replaces its old one in every scene that calls load(); modules not written yet are skipped
+           "r8_prep", "r8_char", "r8_powder", "r8_test", "r8_store", "r8_scale"]
 
 
 def _modules() -> dict:
