@@ -128,11 +128,23 @@ ENVELOPES = {
 # end. No MiR dock: the powder comes by the 100 kg in EOS's containers and a propeller (400 kg) by forklift or crane.
 # The EOS is placed so that it also clears everything at the 5140 x 2490 mm its US page now gives (x -12020..-6880,
 # y -11945..-9455: 255 mm south of the west racking's end).
-# x, y: the centre of the footprint; turn: degrees about z, counterclockwise from above; 0 = front to -y (the north
-# row's way), 180 = front to +y.
+#
+# In setup_lab.merge_r8's terms, which are warehouse.place's: y only picks the row (here "S"); x is the centre of the
+# model's whole bounding box (BBOX: the published footprint plus what stands outside it); turn is about z relative to
+# the row (0 = front to the aisle, which for the south row is north); the front, the box's face towards the aisle,
+# stands on the south row's face (Y_FACE_S) moved back by warehouse.SETBACK[key]. merge_r8 doesn't set SETBACK, so
+# each placement carries its own `setback` (mm, away from the aisle), which merge_r8 has to apply, for example
+# W.SETBACK[key] = p.get("setback", 0.0). Without it both land in the south row: the EOS fits the west gap, but the
+# cell, 4354 mm wide with its control unit, overlaps the east racking. `y` is the enclosure's centre, for reading.
+# No MiR dock (merge_r8 gives every floor key one on the south dock line, at dock_x = x; nothing docks there).
 FLOOR_PLACEMENT = {
-    "eos_m400": dict(x=-9450.0, y=-10700.0, turn=180.0),       # x -11541..-7360, y -11507..-9894
-    "meltio_cell": dict(x=9700.0, y=-10600.0, turn=180.0),     # x 7675..11725, y -11775..-9425
+    "eos_m400": dict(x=-9450.0, y=-10700.0, turn=0.0, setback=3525.0),       # x -11541..-7359, y -11507..-9763
+    "meltio_cell": dict(x=9602.0, y=-10600.0, turn=0.0, setback=2747.0),     # x 7425..11779, y -12415..-8985
+}
+Y_FACE_S = -6238.0                         # warehouse.Y_FACE_S: the south row's fronts
+BBOX = {                                   # inst.bbox() in plan (x0, x1, y0, y1): the EOS's touchscreen in front; the
+    "eos_m400": (-2091.0, 2091.0, -937.0, 807.0),          # cell's control unit (left), HMI (front), argon and wire
+    "meltio_cell": (-2329.0, 2025.0, -1615.0, 1815.0),     # drum (back)
 }
 FLOOR_RECTS = {      # setup_lab fit's rectangles (out/tray_plan.json, 2026-11-04) and the racking, for check_floor()
     "instron_floor": (-7187, -5613, -7034, -6238), "instron_small": (-4540, -4060, -6873, -6238),
@@ -141,23 +153,45 @@ FLOOR_RECTS = {      # setup_lab fit's rectangles (out/tray_plan.json, 2026-11-0
     "racking west": (-12900, -11833, -9200, 4515), "racking east": (11833, 12900, -9200, 4515),
     "aisle": (-10200, 10200, -5400, -2400),
 }
+FLOOR_EXTENT = (-15000.0, 15000.0, -14000.0, 7000.0)      # warehouse.py's floor plane
 
 
-def check_floor() -> dict:
-    """Each placement's rectangle against FLOOR_RECTS: the least gap in mm (negative = overlap)."""
+def placed_rects(key: str, setback=None) -> dict:
+    """Where merge_r8 and warehouse.place put a placement: the model's origin, its bounding box and its published
+    footprint in plan, in the floor frame. setback=0 is where it lands if merge_r8 ignores the setback."""
+    p = FLOOR_PLACEMENT[key]
+    sb = p.get("setback", 0.0) if setback is None else setback
+    a = math.radians(p["turn"] + 180.0)                     # the south row's own half turn, as warehouse.place
+    c, s = math.cos(a), math.sin(a)
+
+    def rot(x0, x1, y0, y1):
+        pts = np.array([(c * x - s * y, s * x + c * y) for x in (x0, x1) for y in (y0, y1)])
+        return pts.min(0), pts.max(0)
+    lo, hi = rot(*BBOX[key])
+    ox, oy = p["x"] - (lo[0] + hi[0]) / 2, Y_FACE_S - sb - hi[1]
+    w, d = FOOTPRINTS[key][:2]
+    flo, fhi = rot(-w / 2, w / 2, -d / 2, d / 2)
+    return dict(origin=(ox, oy), bbox=(lo[0] + ox, hi[0] + ox, lo[1] + oy, hi[1] + oy),
+                footprint=(flo[0] + ox, fhi[0] + ox, flo[1] + oy, fhi[1] + oy))
+
+
+def check_floor(setback=None) -> dict:
+    """Each placement's bounding box and published footprint, placed as merge_r8 would, against FLOOR_RECTS: the
+    least gap in mm (negative = overlap), and whether the box is on the floor."""
+    def gap(r, q):
+        gx, gy = max(q[0] - r[1], r[0] - q[1]), max(q[2] - r[3], r[2] - q[3])
+        return max(gx, gy)
     out = {}
-    for key, p in FLOOR_PLACEMENT.items():
-        w, d = FOOTPRINTS[key][:2]
-        if abs(p["turn"]) % 180 > 1:
-            w, d = d, w
-        r = (p["x"] - w / 2, p["x"] + w / 2, p["y"] - d / 2, p["y"] + d / 2)
-        gaps = {}
-        for k, (x0, x1, y0, y1) in FLOOR_RECTS.items():
-            gx = max(x0 - r[1], r[0] - x1)
-            gy = max(y0 - r[3], r[2] - y1)
-            gaps[k] = round(max(gx, gy) if (gx > 0 or gy > 0) else max(gx, gy))
-        out[key] = dict(rect=[round(v) for v in r], least_gap=min(gaps.values()),
-                        nearest=min(gaps, key=gaps.get))
+    for key in FLOOR_PLACEMENT:
+        pr = placed_rects(key, setback)
+        res = dict(origin=[round(v) for v in pr["origin"]])
+        for what in ("footprint", "bbox"):
+            r = pr[what]
+            gaps = {k: round(gap(r, q)) for k, q in FLOOR_RECTS.items()}
+            res[what] = dict(rect=[round(v) for v in r], least_gap=min(gaps.values()), nearest=min(gaps, key=gaps.get))
+        b, f = pr["bbox"], FLOOR_EXTENT
+        res["on_floor"] = bool(b[0] >= f[0] and b[1] <= f[1] and b[2] >= f[2] and b[3] <= f[3])
+        out[key] = res
     return out
 
 
@@ -887,7 +921,8 @@ REGISTRY = {"eos_m400": eos_m400, "meltio_cell": meltio_cell}
 
 if __name__ == "__main__":
     import json
-    print(json.dumps(check_floor(), indent=1))
+    print(json.dumps(check_floor()))
+    print("if merge_r8 ignores the setbacks:", json.dumps(check_floor(setback=0.0)))
     tl, beads, tilt = repair_program()
     print("tilt", tilt, "beads", len(beads), "program", round(tl.t[-1], 1), "s")
     worst = 0.0
