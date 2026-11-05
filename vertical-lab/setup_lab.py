@@ -25,6 +25,7 @@ from __future__ import annotations
 import hashlib
 import importlib
 import json
+import os
 import math
 import pickle
 import sys
@@ -133,6 +134,7 @@ CAM_TOP = [(2000, -15000, 22500), (300, -2800, 0), (0, 0, 1)]
 CAM_UTIL = [(9600, -17500, 9800), (300, -2600, 2400), (0, 0, 1)]
 CAM_VLM = [(9800, -10400, 6600), (1800, -400, 1900), (0, 0, 1)]
 CAM_FLOOR = [(6200, -21500, 17500), (700, -2900, 0), (0, 0, 1)]
+CAM_SCALE = [(0, 4000, 26000), (0, -9000, 0), (0, 0, 1)]          # round 8: the EOS and the Meltio cell, both ends
 CAM_UNIT = [(1900, -2900, 2300), (-1300, -5600, 800), (0, 0, 1)]
 CAM_OPEN = [(3500, -5900, 2700), (0, -1000, 1300), (0, 0, 1)]      # north of the south row's cable tray and argon
 CAM_OPEN2 = [(X2 + 3500, -5900, 2700), (X2, -1000, 1300), (0, 0, 1)]
@@ -361,6 +363,13 @@ def load_all() -> dict:
     idata.update(load_r7())
     idata.update(r7_stand_ins(idata))
     return idata
+
+
+def item_label(inst) -> str:
+    """The name a tray item goes by in captions and labels: its model, unless the model is only "our design" (round
+    8's powder-prep station), when its name says what it is."""
+    m = inst.model.strip()
+    return f"{inst.title} (our design)" if m.lower() in ("our design", "ours", "(ours)") else m
 
 
 def placed(inst, x, y, turn) -> np.ndarray:
@@ -761,7 +770,13 @@ def build(data, idata, mp4=True, name="setup_lab", title=TITLE, highlight=None):
             add_tray(sc, L, k)
     items, rigs = {k: [] for k in ORDER}, {}
     vp = None
+    # VLAB_ONLY_TRAYS=DEFKL: only those trays get their instruments, UPS and cameras (round 8, runner_guard.py). A
+    # chapter that presents a few trays at the opening never shows the rest, which stand clad inside the Shuttles, and a
+    # scene with all fifteen loaded holds about 5.5 GB, so only two fit on the runner at once. Unset: every tray.
+    only = os.environ.get("VLAB_ONLY_TRAYS")
     for k in ORDER:
+        if only is not None and k not in only:
+            continue
         for i, (key, x, y, turn) in enumerate(ITEMS.get(k, [])):
             if k in A.LOADS and any(it[0] == key for it in A.LOADS[k]) and key != "cubxl":
                 g = next(gg for gg in L.eq_groups[k] if L.eq_key[gg] == key)
@@ -787,7 +802,7 @@ def build(data, idata, mp4=True, name="setup_lab", title=TITLE, highlight=None):
                 for nm in rig.names.pop(piece):
                     sc.alpha[nm] = 0.0
             rigs[pre[:-1]] = rig
-            items[k].append((key, f"{pre}body", rig.all_names(), inst.model))
+            items[k].append((key, f"{pre}body", rig.all_names(), item_label(inst)))
         ups = add_ups(sc, k)
         items[k].append(("ups", f"ups_{k}", ups, "UPS"))
         for g in add_cams(sc, k):
@@ -972,12 +987,24 @@ def movie(data, idata):
         names = F.groups[k]
         roots = [root] + (["wh_sieve:body"] if k == "sieve_cell" and "sieve_cell" in F.rigs else []) + \
             ([f"bench_{k}"] if k in W.BENCH else [])
-        fs.append(s(L, roots, (0, -2600 if row == "N" else 2600, 0), names=names))
+        dy = -2600 if row == "N" or k in R8_MERGED["floor"] else 2600   # the scale-up machines come in from outside
+        fs.append(s(L, roots, (0, dy, 0), names=names))
+    late = [k for k in R8_MERGED["floor"] if k in order]      # round 8's scale-up machines, past the south row's ends
+    main = [k for k in order if k not in late]
+    fs_main = [f for k, f in zip(order, fs) if k not in late]
     sc.step(f"5/{n}", "The floor machines come in on their footprints, fronts to the aisle: the glovebox (its "
             "antechamber to the aisle), the rePowder, the sieving cell, the Aconity MIDI, the packaging station; "
             "across the aisle the two Instrons, the ducted fume hood, the DED and the wire EDM.", 5.4,
-            stagger(fs, overlap=0.36), hold=1.2, cam_to=CAM_FLOOR,
-            labels=W.auto(sc, CAM_FLOOR, W.floor_labels(F, order, have)))
+            stagger(fs_main, overlap=0.36), hold=1.2, cam_to=CAM_FLOOR,
+            labels=W.auto(sc, CAM_FLOOR, W.floor_labels(F, main, have)))
+    if late:
+        names_late = {"eos_m400": "an EOS M 400-4 (large-format LPBF)", "meltio_cell": "a Meltio robot cell (DED repair)"}
+        fs_late = [f for k, f in zip(order, fs) if k in late]
+        sc.step(f"5/{n}", "For scaling up, beyond the south row's ends, " +
+                " and ".join(names_late.get(k, k) for k in late) + ", fronts to the north, each with a clear strip to "
+                "the aisle. No MiR250 serves them: their powder, wire and parts come by forklift (notes/scaleup.md).",
+                3.6, stagger(fs_late, overlap=0.5), hold=1.4, cam_to=CAM_SCALE,
+                labels=W.auto(sc, CAM_SCALE, W.floor_labels(F, late, have)))
     # ------------------------------------------------------------------ 6. the arms
     u0 = units[INSTALL_AT]
     x, y, hd = u0.pose
