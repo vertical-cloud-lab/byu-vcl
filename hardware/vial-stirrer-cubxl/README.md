@@ -932,7 +932,9 @@ up**; or **both** with the vial seated.
 spacer** on the cup's floor, under the vial. That is the height of the spacer and 3 washers
 Ben stacked there. Ben is drawing it in Onshape ([`Stir module spacer`](https://cad.onshape.com/documents/793acc919f1bebafa8462ee6)). To try
 another height, stack M3 washers under the vial, as he did, and check that it starts from rest
-three times running at 300 rpm. To build a height in instead, the compact holder's floor
+three times running at 300 rpm. Check again after the capper has opened and closed the vial.
+In the stir-module trial that followed, the same stack lost speed after that (next section),
+and a loose stack can shift. To build a height in instead, the compact holder's floor
 under the cup can be made that much thicker. The recess, and the Hall sensor on its
 ceiling, stay where they are, so only the vial moves. That isn't modelled yet. Either way,
 add the height to the vial's `location.z` ([`BUILD.md` stage 9](BUILD.md#9-add-the-vial-to-the-deck-file)).
@@ -989,6 +991,10 @@ stayed with the magnets.** It didn't break loose. The spacer to keep is that hei
   against 0.62–0.68 with no vial on 11-04.
 - **Coupling:** the model has today's bar coupled at 1200 rpm up to about 5 mm, tight only for
   the weakest guessed core. Ben's look at 4.6 mm agrees.
+- **But after the trial protocol** (22:55 UTC, [record](../../cubos/results/stir_module_trial_20261105/README.md)), on the same stack, it
+  started on the first kick, reached only 540 rpm, then turned in bursts at 600 for the rest of
+  the minute. The decap and recap in between pull on and press down on the vial, and may have
+  shifted the washers. It is worth repeating with the one-piece spacer.
 - **The rim:** 63 seated plus 4.6 is about 67.6 by the model's numbers. The stir-module trial's
   deck file ([`stir_module_trial.yaml`](../../cubos/configs/deck/stir_module_trial.yaml)) has
   vial_1 at 66, from Ben. A rim height taught on the deck beats both.
@@ -1006,8 +1012,8 @@ above the rim, is too generous.
    Another's stirring stopped at random at 200–250 rpm, which staff put down to the
    magnets sitting too close to the heater board
    ([forum 789](https://forum.pioreactor.com/t/stirring-randomly-stops/789/4)).
-   **It happened on 2026-11-04,** and a Ø10 × 4.6 mm spacer under the vial fixed it on
-   2026-11-05: see
+   **It happened on 2026-11-04.** On 2026-11-05 a 4.6 mm stack under the vial let it start
+   every time, though it lost speed after the trial protocol's decap and recap: see
    [Stalls with a vial in](#stalls-with-a-vial-in-2026-11-04-what-each-fix-buys).
 2. **A fan-side rpm is not the bar's rpm.** The Hall sensor measures the magnets. The
    Edison coupling summary is explicit that drive feedback cannot see the bar slip.

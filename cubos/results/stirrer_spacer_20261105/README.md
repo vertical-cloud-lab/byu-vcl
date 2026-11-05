@@ -186,6 +186,9 @@ stirrer, and over a patch that doesn't move, for the camera's own noise
     protocol request in the same comment went to the run that comment started.
 - **The bar at 1200 rpm stayed with the magnets** and didn't break loose (Ben, after this
   run). Camera 1 can't see it.
+- **After the trial protocol, the same stack lost speed:** it started, reached 540 rpm, then
+  turned in bursts at 600 ([`stir_module_trial_20261105`](../stir_module_trial_20261105/README.md)).
+  The capper's decap and recap may have shifted the washers.
 - **Not done:** no firmware change, and the Uno wasn't reflashed. `pipette_test` still
   hasn't been run on the stirrer image.
 

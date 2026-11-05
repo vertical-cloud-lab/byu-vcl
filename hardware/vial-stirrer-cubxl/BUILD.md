@@ -683,7 +683,8 @@ following.** The bar shows through the slots between the fingers, and from above
    [Stalls with a vial in](README.md#stalls-with-a-vial-in-2026-11-04-what-each-fix-buys)). So put
    the Ø10 × 4.6 mm spacer under the vial, check it starts from rest three times at 300 rpm,
    then repeat step 3. If it won't start, add M3 washers under the vial one at a time until it
-   does. A spacer raises the vial by its thickness, so add it to the vial's height in
+   does. Check it again after the capper has opened and closed the vial: in the 2026-11-05
+   trial, the same height fell into bursts at 600 rpm after that. A spacer raises the vial by its thickness, so add it to the vial's height in
    [stage 9](#9-add-the-vial-to-the-deck-file).
 5. **Paint.** Ben's mixture, at the working rpm, 30–60 s, then compare with what `mix` did.
 
@@ -734,7 +735,7 @@ likely.
 |---|---|---|
 | The fan runs in bursts for about 12 s, then stops, and `31` says `"stalled":1` | No Hall pulses reach D2: wiring, a dead sensor, both magnets the same pole up. Or the fan really is jammed | Redo the Hall test in [stage 6](#6-assemble). Spin the fan through a vent |
 | As above, but only with a vial and bar in: without one, `rpm` reads fine | The coupled bar's field cancels part of the Hall signal, and what is left is under the sensor's trip point | Re-glue the sensor closer to the carrier, keeping 0.5 mm clear of it: each 0.5 mm is worth about 4 mT. A spacer disc barely helps here (about 0.6 mT for 1 mm). The 12 × 3 mm bar takes far less off the signal than the 15 × 6 mm one (README, [Stalls with a vial in](README.md#stalls-with-a-vial-in-2026-11-04-what-each-fix-buys)). Failing that, the SS49E linear sensor (README) |
-| Won't start with a vial and bar in, but starts with the vial out; or stirs until the vial is nearly down, then stops | The magnets pull the bar onto the vial's floor harder than the fan can drag it round (2026-11-04) | Raise the vial: the Ø10 × 4.6 mm spacer, which fixed it on 2026-11-05, plus an M3 washer or two if it still stalls; or 2 mm with the 12 × 3 mm bar; or 2.5 mm with the OD4010-05HSS fan. README, [Stalls with a vial in](README.md#stalls-with-a-vial-in-2026-11-04-what-each-fix-buys) |
+| Won't start with a vial and bar in, but starts with the vial out; or stirs until the vial is nearly down, then stops | The magnets pull the bar onto the vial's floor harder than the fan can drag it round (2026-11-04) | Raise the vial: the Ø10 × 4.6 mm spacer (4.6 mm worked on 2026-11-05), plus an M3 washer or two if it still stalls; or 2 mm with the 12 × 3 mm bar; or 2.5 mm with the OD4010-05HSS fan. README, [Stalls with a vial in](README.md#stalls-with-a-vial-in-2026-11-04-what-each-fix-buys) |
 | The fan never runs | The gate isn't driven: the PWM lead isn't on D10, the MOSFET's pins are wrong, or the board still has the old firmware | If `31` gets an error reply, the board has the old firmware. Otherwise meter from the gate to GND while `31` shows a duty above 0: a DC meter reads about duty × 5 V |
 | The fan runs flat out whatever you send | Drain and source shorted (a damaged MOSFET), or the gate tied to 5V | Bench check, stage 5 |
 | The Uno resets, or the Pi loses its port, when the fan starts | The 0.5 s start kick pulls the Uno's 5 V down | Feed the fan from the electromagnet's 5 V supply instead, with the grounds joined |
