@@ -288,10 +288,18 @@ def _stand_in(key: str, row: dict) -> I.Instrument:
     return inst
 
 
+# Models the lab no longer uses, kept buildable but out of the gallery: the OpenFlexures (round 8: "I'm now not
+# entirely sure what to use the OpenFlexures for, especially if we already have a VHX") and the floor rail (round 7:
+# "Just stick with the mobile manipulator setup").
+GALLERY_SKIP = {"openflexure_v7", "openflexure_delta", "openflexure_array", "rail"}
+
+
 def gallery(data: dict, cols=4) -> Path:
     tiles = []
     old = json.loads((OUT / "instruments.json").read_text()) if (OUT / "instruments.json").exists() else {}
     for key in registry():
+        if key in GALLERY_SKIP:
+            continue
         p = OUT / "instruments" / f"{key}.png"
         inst = data[key][0] if key in data else _stand_in(key, old[key]) if key in old else None
         if p.exists() and inst is not None:
