@@ -91,6 +91,15 @@ NEW_TRAYS = {"N": ("2F0", "powder store: feedstock"), "O": ("2R5", "powder store
 NEW_SLOTS = {"2F0": ("front_low", 475.0), "2R5": ("rear", 500.0)}     # Shuttle 2's free short slots (tray_plan.md)
 
 
+def _quiet(c, k=0.35, grey=0.6) -> tuple:
+    """A lid colour mixed towards grey: the store reads as rows of jars, not a carpet of colour."""
+    return tuple(round(x + (grey - x) * k, 3) for x in c)
+
+
+FEED = [(el, _quiet(c)) for el, c in FEED]
+LOT_C = [_quiet(c) for c in LOT_C]
+
+
 def _ids(n: int, seed: int = 157) -> list[str]:
     """Six-character lowercase IDs, as DAL #157 labels its runs: its own first, then made-up ones."""
     rnd = random.Random(seed)
@@ -224,7 +233,8 @@ def store(key: str) -> Instrument:
         inst.zoom = {1: ((-600.0, -300.0, 50.0), 800.0), 2: ((200.0, -120.0, 60.0), 650.0), 3: "out"}
         inst.labels = [("30 mL: c3k0n5 < 63 um", (seats[6]["x"], seats[6]["y"] - 20, 60), (0.10, 0.80)),
                        ("60 mL", (0, -60, 75), (0.45, 0.86)), ("125 mL", (400, 230, 95), (0.80, 0.80))]
-    inst.cam = (0.35, -1.45, 1.25)
+    inst.cam = (0.25, -1.5, 0.80)          # low enough to see the labels on the jars' sides
+    inst.framing = (0.56, 0.30)
     inst.notes = [f"{n} jars: {sizes}", "jar sizes are typical wide-mouth jars: estimates"]
     return inst
 
