@@ -491,16 +491,16 @@ def movie():
     st["cap"] = ("Onto the holder first. Turned over and shaken, the vial sifts the powder through its mesh cap, an even "
                  "layer with no pressing (as A-Lab's UR5e does it), a little more than the 0.5 mm well holds.")
     status(Arm="sifting onto the XRD holder")
-    sift(zt, 6.0, 3.0, RB.both(drain(LEVEL0, LEVEL0 - 1.5), lambda uu: set_heap(sc, uu)))
+    sift(zt, 6.0, 3.0, RB.both(drain(LEVEL0, LEVEL0 - 1.5), lambda uu: set_heap(sc, uu)), gap=26.0)
     st["cap"] = "A dusting on the SEM stub's carbon tab, from the same vial."
     status(Arm="dusting the SEM stub")
     sift(wpt("p_puck", (0, 0, RP.PREP["puck_h"] + 2.8)), 3.0, 1.2, RB.both(
         drain(LEVEL0 - 1.5, LEVEL0 - 1.6), lambda uu: [sc.alpha.__setitem__(nm, min(1.0, uu * 2)) for nm in
-                                                        sc.members("p_dust")]), gap=16.0, rate=3.0)
+                                                        sc.members("p_dust")]), gap=26.0, rate=3.0)
     st["cap"] = "And about 4 g into the XRF cup, onto its film."
     status(Arm="filling the XRF cup")
     sift(wpt("p_cup", (0, 0, 26.5)), 9.0, 3.0, RB.both(drain(LEVEL0 - 1.6, LEVEL0 - 6.5),
-                                                       lambda uu: set_fill(sc, 11.0 * uu)), gap=12.0)
+                                                       lambda uu: set_fill(sc, 11.0 * uu)), gap=22.0)
     st["cap"] = "The vial goes back to its block on the MiR."
     status(Arm="the vial back")
     go(sh(T_v, (0, 0, 70)), secs=2.0, cam=CAM_OPEN)
@@ -545,12 +545,13 @@ def movie():
     step(1.6, xrd.move({"door": (0.0, 0.8)}), hold=0.2, cam=CAM_XRD,
          labels=[("Rigaku MiniFlex", tuple(xw((0, g["yf"], I.XRD["H"] + 30))), (0.22, 0.22)),
                  ("goniometer, at rest", tuple(axis + (0, 0, 60)), (0.62, 0.20))])
-    st["cap"] = ("The arm carries the holder by its fin, level, in through the door and onto the stage. Nothing has "
-                 "touched the powder's face since it was struck off.")
+    st["cap"] = ("The arm carries the holder by its fin, level, in through the door and onto the stage, turned a "
+                 "little (the spinner takes it any way round). Nothing has touched the powder's face since it was "
+                 "struck off.")
     status(Arm="loading the XRD")
     fin = (0.0, RP.ZBH["fin_y"], RP.ZBH["fin_h"] - 4.0)
     stage_g = f"{xrd.prefix}stage"
-    H_on = sc.world(stage_g) @ T((0.0, g["gy"], g["gz"] - 3.0))
+    H_on = sc.world(stage_g) @ T((0.0, g["gy"], g["gz"] - 3.0)) @ R((0, 0, 1), -25.0)
     rolls = (0.0, 180.0)
     cands = []
     for rl in rolls:
@@ -560,7 +561,7 @@ def movie():
     roll = rolls[clear_of(cands)]
     T_fin = sc.world("p_zbh") @ T(fin) @ _level_y() @ R((0, 0, 1), roll)
     CAM_XRDL = [tuple(axis + (760, -1350, 620)), tuple(axis + (-40, -170, -80)), (0, 0, 1)]
-    go_to(sh(along(T_fin, -110), (0, 0, 30)), T_fin, secs=1.8, grip=0.62, cam=CAM_SIFT)
+    go(sh(along(T_fin, -110), (0, 0, 30)), secs=1.8, grip=0.62, cam=CAM_SIFT)
     lin(T_fin, 0.8)
     grip(GRIP_FIN)
     rb.grasp("p_zbh")
@@ -568,7 +569,7 @@ def movie():
     lin(sh(along(T_fin, -90), (0, 0, 30)), 0.6)
     # onto the stage: the holder's frame at (0, gy, gz - 3) in the stage's frame (r8_powder.xrd's holder path)
     T_on = H_on @ T(fin) @ _level_y() @ R((0, 0, 1), roll)
-    go_to(sh(along(T_on, -230), (0, 0, 30)), sh(T_on, (0, 0, 30)), secs=2.2, cam=CAM_XRDL)
+    go(sh(along(T_on, -230), (0, 0, 30)), secs=2.2, cam=CAM_XRDL)
     lin(sh(T_on, (0, 0, 30)), 1.2)
     lin(T_on, 0.6)
     grip(0.62)
@@ -809,9 +810,12 @@ def movie():
     CAM_XRF = [tuple(port_w + (520, -900, 640)), tuple(port_w + (60, 40, 20)), (0, 0, 1)]
     st["cap"] = ("The S2 PUMA measures from below, so the film-bottomed cup only has to reach the chamber's port. For a "
                  "robot, Bruker's Automation version takes samples \"into the sample chamber directly\": drawn here as a "
-                 "hatch in the hood's top (our assumption), which slides back, and the port's shutter opens.")
+                 "hatch in the hood's top (our assumption), which slides back; the port opens and the chamber's lift "
+                 "ring rises through it to take the cup.")
     status(XRF="hatch open, port open")
-    step(1.8, xrf.move({"hatch": (0.0, 1.0), "port": (0.0, 1.0)}), hold=0.3, cam=CAM_XRF,
+    RING_UP = -60.0 / RP.XRF_G["sink"]          # the ring 60 mm up through the open port, to meet the cup
+    step(1.8, RB.both(xrf.move({"hatch": (0.0, 1.0), "port": (0.0, 1.0)}),
+                      lambda uu: xrf.move({"ring": (0.0, RING_UP)})(max(0.0, uu * 2 - 1))), hold=0.3, cam=CAM_XRF,
          labels=[("Bruker S2 PUMA Series 2", tuple(fw((0, gx["yf"], gx["H"] + 40))), (0.20, 0.22)),
                  ("hatch (assumed)", tuple(fw((0, gx["yf"] + 120, gx["H"] + 10))), (0.56, 0.16)),
                  ("chamber port", tuple(port_w + (0, 0, 6)), (0.30, 0.70))])
@@ -824,7 +828,7 @@ def movie():
     rb.grasp("p_cup")
     lin(sh(T_c, (0, 0, 90)), 0.7)
     ring_g = f"{xrf.prefix}ring"
-    on_ring = (sc.world(ring_g) @ np.r_[mx, my, dk + 2.0, 1.0])[:3]
+    on_ring = (sc.world(ring_g) @ np.r_[mx, my, dk + 2.0, 1.0])[:3]        # the ring up: 60 mm over the deck
     hsp = (0.0, 90.0, 180.0, 270.0)
     k = clear_of([[A.down(on_ring + (0, 0, 290.5), spin=sp), A.down(on_ring + (0, 0, 30.5), spin=sp)]
                   for sp in hsp])
@@ -843,7 +847,7 @@ def movie():
                  "port shuts; the chamber fills with helium, which keeps loose powder in place and lets the light "
                  "elements' X-rays through.")
     step(1.2, xrf.move({"hatch": (1.0, 0.0)}), hold=0.1)
-    step(2.0, xrf.move({"ring": (0.0, 1.0), "~lid": (0.0, 1.0), "~body": (0.0, 1.0)}), hold=0.1)
+    step(2.4, xrf.move({"ring": (RING_UP, 1.0), "~lid": (0.0, 1.0), "~body": (0.0, 1.0)}), hold=0.1)
     step(0.8, xrf.move({"port": (1.0, 0.0)}), hold=0.1)
     st["cap"] = ("The beam, drawn see-through: up to 50 kV from the tube; each element answers with its own X-ray lines, "
                  "which the silicon drift detector counts.")
