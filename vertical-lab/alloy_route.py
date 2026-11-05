@@ -1,4 +1,4 @@
-"""The alloy route, start to finish (#303): the five chapters joined into one MP4, each with a title card and then
+"""The alloy route, start to finish (#303): the seven chapters joined into one MP4, each with a title card and then
 the route's function network (``route_dag.py``: DAL's ONR YIP DAG, brought in a stage at a time) before it.
 
     python3 alloy_route.py        # -> out/mp4/alloy_route.mp4, out/alloy_route.json, out/alloy_route_sheet.png
@@ -8,8 +8,10 @@ the route's function network (``route_dag.py``: DAL's ONR YIP DAG, brought in a 
    Autotouch 15T and the lab's evacuable die; VLM, tray B)
 2. ``alloy_atomize.py``: the Al cups melted in the rePowder and atomized
 3. ``alloy_print.py``: the powder sieved to the LPBF cut and printed in the Aconity MIDI
-4. ``alloy_workflow.py`` (round 4): the build plate to the wire EDM, a tensile bar to the Instron 68FM-100
-5. ``alloy_characterize.py``: samples from the build through the characterization trays at the VLM's opening
+4. ``alloy_powder.py`` (round 8): the retained powder through laser diffraction, powder XRD, XRF and the SEM
+5. ``alloy_workflow.py``: depowder, the wire EDM, heat treatment, tensile tests at room and elevated temperature
+6. ``alloy_prep.py`` (round 8): sectioning, hot mounting, grinding and polishing
+7. ``alloy_characterize.py``: the mounts through the characterization trays at the VLM's opening
 
 Each chapter renders on its own (its GIF, MP4 and JSON). This only joins the MP4s: they are re-encoded once, so the
 cards (drawn here with PIL) and the clips don't have to share an encoder's settings.
@@ -27,30 +29,37 @@ from PIL import Image, ImageDraw
 from scene import OUT, font
 
 CHAPTERS = [
-    ("alloy_charge", "1/5  The charge",
+    ("alloy_charge", "1/7  The charge",
      "Four 5N Al and four oxygen-free Cu charge cups on tray B of the VLM: dosed by the multi-doser through one "
      "funnel per powder, weighed on an A&D HR-202i, topped up to the plug, and the plug pressed home under vacuum "
      "in a Specac Atlas Autotouch 15T"),
-    ("alloy_atomize", "2/5  Melt and atomize",
+    ("alloy_atomize", "2/7  Melt and atomize",
      "The four Al cups melted in the rePowder's induction furnace and atomized ultrasonically under argon, cut "
-     "with the lab's own footage of its bronze and Al runs"),
-    ("alloy_print", "3/5  Sieve and print",
+     "with the lab's own footage"),
+    ("alloy_print", "3/7  Sieve and print",
      "The arm runs a sieving cell: it stacks the sieves, the AS 200 shakes them, and a tipper empties each into its "
      "own labelled jar. The LPBF cut is printed into tensile bars in the Aconity MIDI"),
-    ("alloy_workflow", "4/5  Cut and test",
-     "The build vacuumed with a lance, the plate depowdered in a turning, shaking box under argon, the bars cut off "
-     "in the wire EDM, one rinsed and dried, and pulled in the Instron 68FM-100"),
-    ("alloy_characterize", "5/5  Characterize",
-     "Samples from the same build go through the characterization trays: the VLM brings each tray to the opening and "
-     "the arm loads and unloads each instrument"),
+    ("alloy_powder", "4/7  The powder, checked",
+     "While the build prints, a retained sample of the sieved cut goes round the trays: laser diffraction, powder "
+     "XRD after its sample prep, XRF and the SEM"),
+    ("alloy_workflow", "5/7  Cut, heat treat and test",
+     "The build depowdered, the bars cut off in the wire EDM and caught, rinsed, heat treated as tensile specimens, "
+     "and pulled with automatic loading at room and elevated temperature"),
+    ("alloy_prep", "6/7  Sample prep",
+     "Sections cut from the build, hot-mounted in conductive compound or set in a steel mount, then ground and "
+     "polished with every paper and cloth change shown"),
+    ("alloy_characterize", "7/7  Characterize",
+     "The mounts through the characterization trays: the VLM brings each tray to the opening, the arm loads each "
+     "instrument, and each shows its data"),
 ]
 SIZE, FPS, CARD_S = (1280, 720), 15, 3.0
 # the 2 x 2 sheet: a picture of each chapter at work (a still it saves, or a frame of its MP4 as a fraction of its
 # length, so a re-rendered chapter of another length still gives the same moment); <key>_still.png if the named still
 # is missing
 SHEET = {"alloy_charge": "alloy_charge_press.png", "alloy_atomize": "alloy_atomize_still.png",
-         "alloy_print": 0.908, "alloy_workflow": "alloy_workflow_cut.png",
-         "alloy_characterize": "alloy_characterize_still.png", "dag": "dag/route_dag_ch5.png"}
+         "alloy_print": 0.908, "alloy_powder": "alloy_powder_still.png", "alloy_workflow": "alloy_workflow_cut.png",
+         "alloy_prep": "alloy_prep_still.png", "alloy_characterize": "alloy_characterize_still.png",
+         "dag": "dag/route_dag_ch7.png"}
 BLUE = (30, 60, 140)
 
 
@@ -124,9 +133,9 @@ def main():
                     "-movflags", "+faststart", str(dst)], check=True)
     (OUT / "alloy_route.json").write_text(json.dumps(dict(name="alloy_route", seconds=round(t, 1),
                                                           card_seconds=CARD_S, chapters=chapters), indent=1) + "\n")
-    # a 2 x 3 sheet of each chapter's still and the network, for the README
+    # a 2 x 4 sheet of each chapter's still and the network, for the README
     w, h = 640, 360
-    sheet = Image.new("RGB", (2 * w, 3 * h), "white")
+    sheet = Image.new("RGB", (2 * w, 4 * h), "white")
     for i, k in enumerate([c[0] for c in CHAPTERS] + ["dag"]):
         src = SHEET[k]
         if isinstance(src, float):
