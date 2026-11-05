@@ -33,8 +33,10 @@ Light work (matplotlib panels, JSON, notes) needs no slot.
   whole-lab jobs and a preview, admitted one by one, grew to 15 GB together and the watchdog had to stop one.
 * The job runs under ``nice -n 5`` with LP_NUM_THREADS=2 (llvmpipe), OMP_NUM_THREADS=2 and FFMPEG_THREADS=2 unless
   they are already set, and with VLAB_SLOT=<label> in its environment, which is how the watchdog finds it.
-* The watchdog sends SIGTERM to the slotted process with the largest resident memory when MemAvailable falls below
-  900 MB (VLAB_MEM_FLOOR_MB). Losing one render is better than losing the runner and every unpushed commit.
+* The watchdog sends SIGTERM to a slotted process when MemAvailable falls below 900 MB (VLAB_MEM_FLOOR_MB; 1200 in
+  round 8): the youngest one holding at least 1.5 GB, so the least finished work is lost (until 18:40 it took the
+  largest, which is often a render twenty minutes in). Losing one job is better than losing the runner and every
+  unpushed commit.
 """
 from __future__ import annotations
 
@@ -314,6 +316,16 @@ def slotted_procs() -> list[tuple[int, int, str]]:
     return sorted(out, reverse=True)
 
 
+def age_s(pid: int) -> float:
+    """Seconds since the process started."""
+    try:
+        start = int(Path(f"/proc/{pid}/stat").read_text().rsplit(")", 1)[1].split()[19])
+        up = float(Path("/proc/uptime").read_text().split()[0])
+        return up - start / os.sysconf("SC_CLK_TCK")
+    except (OSError, ValueError, IndexError):
+        return 1e9
+
+
 def top_procs(n=5) -> str:
     r = subprocess.run(["ps", "-eo", "rss,comm", "--sort=-rss", "--no-headers"], capture_output=True, text=True)
     items = []
@@ -336,6 +348,12 @@ def watch():
                      f"top: {top_procs()}")
         if avail < MEM_FLOOR:
             procs = slotted_procs()
+            # the youngest job holding at least 1.5 GB: the least finished work lost (the biggest is often a render
+            # twenty minutes in); the biggest if none is that large
+            big = [(age_s(pid), rss, pid, lab) for rss, pid, lab in procs if rss >= 1500]
+            if big:
+                _, rss, pid, lab = min(big)
+                procs = [(rss, pid, lab)]
             if procs:
                 rss, pid, lab = procs[0]
                 try:
