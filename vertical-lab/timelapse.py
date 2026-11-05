@@ -427,18 +427,17 @@ PHASES = [
      "The lab as set up: two Shuttles with every tray loaded and powered, the floor machines, two MiR250 + UR10e "
      "units on charge. The clock starts on a Monday at 06:00."),
     (30.0, 0.0, 24.0, "1/4  Hour by hour",
-     "Hour by hour, the first day. A person is on site 08:00-16:00 to change the atomizer's crucible, which stays "
-     "manual; the arms, the MiR250s and the Shuttles do the rest, through the night with the lights off. | Beacons: "
-     "green running, blue a unit at it, amber a person at it, red a failed run."),
+     "Hour by hour, the first day. A person comes in 08:00-16:00 to change the atomizer's crucible; the arms, the "
+     "MiR250s and the Shuttles do the rest, and keep going with the lights off."),
     (16.0, 24.0, 14 * 24.0, "2/4  Day by day",
-     "Day by day. The atomizer runs only when someone is there: one run a day while the lab is commissioned, then "
-     "three a weekday. Everything downstream of it runs round the clock and over the weekend."),
+     "Day by day. The atomizer runs only while someone is on site: one run a day while the lab is commissioned, then "
+     "three a weekday. The rest runs round the clock and over the weekends."),
     (14.0, 14 * 24.0, 13 * 7 * 24.0, "3/4  Week by week",
-     "Week by week. An alloy is fully tested a few days after it is atomized; the chart counts them. One in ten "
-     "fully tested alloys is promoted to a full plate of E8 bars, which takes about eight more atomizer runs."),
+     "Week by week. An alloy is fully tested about half a day after it is atomized. One in ten is promoted to a full "
+     "plate of E8 bars, which takes eight more atomizer runs."),
     (16.0, 13 * 7 * 24.0, YEAR_H, "4/4  Month by month",
-     "Month by month, to the end of the first year. The counters are a model from each chapter's step times and the "
-     "assumptions in notes/timelapse.md, not measurements."),
+     "Month by month, to the end of the first year. The counters are a model built from each chapter's step times "
+     "and the assumptions in notes/timelapse.md, not measurements."),
     (9.0, YEAR_H, YEAR_H, "The first year", ""),
 ]
 
@@ -518,15 +517,20 @@ FLOOR_BEACONS = ["repowder", "sieve_cell", "aconity", "wire_edm", "instron_floor
                  "packaging", "glovebox", "ded"]
 C_RUN, C_UNIT, C_PERSON, C_IDLE, C_FAIL = (0.15, 0.78, 0.30), (0.20, 0.45, 0.95), (1.0, 0.68, 0.10), \
     (0.62, 0.64, 0.67), (0.92, 0.18, 0.16)
-CAM0 = [(9500, -24500, 14500), (1800, -3600, 300), (0, 0, 1)]
-CAM1 = [(-6500, -23500, 13500), (1200, -3600, 300), (0, 0, 1)]
-CAM2 = [(13500, -21500, 15500), (1800, -3300, 300), (0, 0, 1)]
+FOCUS = (700.0, -4300.0, 300.0)
+CAM_W = [(-4300, -27500, 17800), FOCUS, (0, 0, 1)]
+CAM_E = [(5700, -27500, 17800), FOCUS, (0, 0, 1)]
+CAM_END = [(700, -24000, 23500), (700, -4000, 0), (0, 0, 1)]
+# The trays the schedule brings to an opening (STEPS' trays). With the Shuttles clad, only those can show, so the
+# scene is built with only their instruments (setup_lab's VLAB_ONLY_TRAYS): about 3 GB instead of about 5.5 GB.
+SHOWN_TRAYS = "ABDEFKLM"
 
 
 def cam_at(f: int, n: int) -> list:
-    """A slow sweep over the whole film: CAM1 -> CAM0 -> CAM2, eased."""
+    """A slow pan from the south-west to the south-east over the film, rising at the end, eased."""
     u = f / max(1, n - 1)
-    a, b, w = (CAM1, CAM0, u / 0.5) if u < 0.5 else (CAM0, CAM2, (u - 0.5) / 0.5)
+    a, b, w = (CAM_W, CAM_E, u / 0.8) if u < 0.8 else (CAM_E, CAM_END, (u - 0.8) / 0.2)
+    w = min(1.0, max(0.0, w))
     w = w * w * (3 - 2 * w)
     return [tuple(float(x) + (float(y) - float(x)) * w for x, y in zip(p, q)) for p, q in zip(a, b)]
 
@@ -540,23 +544,32 @@ class Movie:
         import vlm as V
         import warehouse as W
         self.sim, self.ncam, self.A, self.V, self.W = sim, ncam, A, V, W
+        os.environ.setdefault("VLAB_ONLY_TRAYS", SHOWN_TRAYS)
         data = lab.meshes()
         idata = SL.load_all()
+        il = getattr(SL, "item_label", None)            # setup_lab's tray-item label, mid-edit in another stream:
+        if il is not None:                                # the clip uses no item labels, so never let it stop the build
+            def safe_label(inst, il=il):
+                try:
+                    return il(inst)
+                except Exception:                       # noqa: BLE001
+                    return getattr(inst, "model", "")
+            SL.item_label = safe_label
         (self.sc, self.L, self.F, self.items, self.rigs, self.units, self.util, _, self.vp) = SL.build(
             data, idata, mp4=not PREVIEW, name=NAME, title=TITLE)
         sc, L = self.sc, self.L
         SL.add_bay_cams(sc)
         L.show_gauges = False
-        L.skin(1.0)(1.0)
+        L.skin(0.0)(1.0)                 # clad, as the real Shuttles are: a tray shows when it comes to an opening
         # a beacon over every floor machine and each Shuttle: a pole and a lens, coloured by the schedule each frame
         self.beacons = {}
 
         def beacon(key, x, y, z):
-            sc.add(f"beacon {key} pole", pv.Cylinder(center=(x, y, z + 150), direction=(0, 0, 1), radius=14,
-                                                     height=300, resolution=16), (0.25, 0.26, 0.28), "beacons")
+            sc.add(f"beacon {key} pole", pv.Cylinder(center=(x, y, z + 250), direction=(0, 0, 1), radius=22,
+                                                     height=500, resolution=16), (0.25, 0.26, 0.28), "beacons")
             lens = f"beacon {key} lens"
-            sc.add(lens, pv.Cylinder(center=(x, y, z + 345), direction=(0, 0, 1), radius=58, height=110,
-                                     resolution=32), C_IDLE, "beacons", ambient=0.85, diffuse=0.3)
+            sc.add(lens, pv.Cylinder(center=(x, y, z + 630), direction=(0, 0, 1), radius=150, height=260,
+                                     resolution=32), C_IDLE, "beacons", ambient=0.9, diffuse=0.25, specular=0.0)
             self.beacons[key] = lens
         for key in FLOOR_BEACONS:
             names = self.F.groups.get(key)
@@ -651,11 +664,14 @@ class Movie:
         # the units: docked at the station of their nearest transfer, else on charge
         at = [None, None]
         if 0 < phase < len(PHASES) - 1:
+            linger = 1.5                                  # a unit waits where it last delivered, up to 1.5 h
+            last = [None, None]
             for (t0, t1, u, st) in sim["unit_log"]:
                 if t0 > t + win:
                     break
-                if t1 >= t - win and u < 2:
-                    at[u] = st
+                if u < 2 and t0 <= t + win and t1 >= t - linger:
+                    last[u] = st
+            at = last
         poses = []
         for i in range(2):
             st = at[i]
@@ -708,86 +724,115 @@ class Movie:
 
 # ================================================================================================ the overlay
 def draw_panels(img, mv: Movie, t: float, phase: int, s: float):
+    """The ribbon under the title (the clock, then the counters), what is running now with the beacons' key (hours
+    and days, bottom left), the chart (weeks and months, bottom right), the totals card at the end."""
     from PIL import ImageDraw
     from scene import font
     W, H = img.size
     d = ImageDraw.Draw(img, "RGBA")
     c = counters(mv.sim, t, mv.ncam)
-    ink, grey, blue = (15, 15, 20), (90, 94, 100), (30, 60, 140)
+    ink, grey, blue = (15, 15, 20), (95, 99, 106), (30, 60, 140)
     if phase == len(PHASES) - 1:
         totals_card(d, W, H, c, mv, s)
         return img
-    # the clock, under the title
-    x0, y0 = 10 * s, 44 * s
+    # ---- the ribbon
+    y0, y1 = 42 * s, 134 * s
+    d.rounded_rectangle((8 * s, y0, W - 8 * s, y1), 8 * s, fill=(255, 255, 255, 232), outline=(190, 196, 204, 255))
     day, hm = clock_text(t)
-    sp = speed_text(phase)
-    w = 300 * s
-    d.rounded_rectangle((x0, y0, x0 + w, y0 + 96 * s), 8 * s, fill=(255, 255, 255, 228), outline=(190, 196, 204, 255))
-    d.text((x0 + 12 * s, y0 + 6 * s), day, font=font(17 * s, bold=True), fill=ink)
-    d.text((x0 + 12 * s, y0 + 28 * s), hm, font=font(30 * s, bold=True), fill=blue)
-    d.text((x0 + 12 * s, y0 + 66 * s), sp or "the clock starts", font=font(13 * s), fill=grey)
-    on = people_on(t)
-    tag = "people on site" if on else "nobody on site: lights out" if phase in (1, 2) else ""
-    if tag and phase >= 1:
-        tw = d.textlength(tag, font=font(12 * s))
-        d.rounded_rectangle((x0 + w - tw - 22 * s, y0 + 8 * s, x0 + w - 8 * s, y0 + 26 * s), 5 * s,
-                            fill=(255, 236, 200, 255) if on else (215, 222, 238, 255))
-        d.text((x0 + w - tw - 15 * s, y0 + 10 * s), tag, font=font(12 * s), fill=ink)
-    # what is running now (hours and days)
+    d.text((20 * s, y0 + 5 * s), day, font=font(14 * s, bold=True), fill=ink)
+    d.text((20 * s, y0 + 23 * s), hm, font=font(26 * s, bold=True), fill=blue)
+    d.text((20 * s, y0 + 58 * s), speed_text(phase) or "the clock starts", font=font(11.5 * s), fill=grey)
+    if phase in (1, 2):
+        on = people_on(t)
+        tag = "people on site" if on else "nobody on site: lights out"
+        tw = d.textlength(tag, font=font(11.5 * s))
+        d.rounded_rectangle((18 * s, y0 + 73 * s, 30 * s + tw, y0 + 89 * s), 5 * s,
+                            fill=(255, 232, 190, 255) if on else (205, 214, 236, 255))
+        d.text((24 * s, y0 + 74 * s), tag, font=font(11.5 * s), fill=ink)
+    xd = 292 * s
+    d.line([(xd, y0 + 8 * s), (xd, y1 - 8 * s)], fill=(205, 209, 215, 255), width=1)
+    d.text((xd + 12 * s, y0 + 4 * s), "made and measured so far (model)", font=font(11 * s), fill=grey)
+    for i, (name, v) in enumerate((("alloys atomized", c["atomized"]), ("alloys printed", c["printed"]),
+                                   ("alloys fully tested", c["tested"]))):
+        x = xd + 12 * s + i * 128 * s
+        d.text((x, y0 + 20 * s), f"{v:,}", font=font(30 * s, bold=True), fill=blue)
+        d.text((x, y0 + 60 * s), name, font=font(12 * s), fill=ink)
+    d.text((xd + 12 * s, y0 + 76 * s), f"of them promoted to a full plate: {c['promoted']:,}", font=font(11 * s),
+           fill=grey)
+    xg = xd + 400 * s
+    d.line([(xg, y0 + 8 * s), (xg, y1 - 8 * s)], fill=(205, 209, 215, 255), width=1)
+    cells = [("atomizer runs", f"{c['runs']:,}"), ("powder made", f"{c['powder_kg']:,.1f} kg"),
+             ("tensile tests", f"{c['tensile']:,}"),
+             ("SEM/EDS images", f"{c['sem_images']:,}"), ("XRD, XRF, PSD", f"{c['xrd']:,} each"),
+             ("hardness, nano, PIP", f"{c['indents']:,}"),
+             ("corrosion spots", f"{c['corrosion']:,}"), ("instrument data", gb(c["data_gb"])),
+             ("stream video kept", gb(c["video_tb"] * 1000))]
+    cw = (W - 8 * s - 10 * s - xg) / 3
+    for i, (name, val) in enumerate(cells):
+        col, row = i % 3, i // 3
+        x = xg + 12 * s + col * cw
+        y = y0 + 12 * s + row * 27 * s
+        d.text((x, y + 1 * s), name, font=font(11.5 * s), fill=grey)
+        f = font(13 * s, bold=True)
+        vw = d.textlength(val, font=f)
+        d.text((x + cw - 20 * s - vw, y), val, font=f, fill=ink)
+        if row < 2:
+            d.line([(x, y + 21 * s), (x + cw - 20 * s, y + 21 * s)], fill=(232, 234, 238, 255), width=1)
+    # ---- running now, and the beacons' key (hours and days)
+    cap_top = H - caption_h(d, mv.sc.caption, W, s) - 8 * s
     if phase in (1, 2):
         rows = []
         for st, e in sorted(mv.now.items(), key=lambda kv: kv[1]["t0"]):
             word = STEP_WORDS.get(e["step"], e["step"])
             if e["step"] == "atomize" and e.get("failed"):
-                word = "atomizing: the melt dripped, run again"
+                word = "atomizing; the melt dripped"
             elif e["step"] == "print" and e.get("failed"):
-                word = "printing (this build will crack)"
-            rows.append(f"alloy {e['alloy'] + 1}: {word}")
-        rows = rows[:7]
-        y = y0 + 104 * s
-        d.rounded_rectangle((x0, y, x0 + w, y + (26 + 18 * max(1, len(rows))) * s), 8 * s, fill=(255, 255, 255, 215),
-                            outline=(190, 196, 204, 255))
-        d.text((x0 + 12 * s, y + 5 * s), "Running now", font=font(13 * s, bold=True), fill=grey)
-        for i, r in enumerate(rows or ["(waiting for the next run)"]):
-            d.text((x0 + 12 * s, y + (23 + 18 * i) * s), r[:44], font=font(12.5 * s), fill=ink)
-    # the counters, right
-    rows = [("Alloys atomized", f"{c['atomized']:,}", True), ("Alloys printed", f"{c['printed']:,}", True),
-            ("Alloys fully tested", f"{c['tested']:,}", True),
-            ("Atomizer runs", f"{c['runs']:,}", False), ("Powder made", f"{c['powder_kg']:,.1f} kg", False),
-            ("Tensile tests", f"{c['tensile']:,}", False), ("SEM images, EDS maps", f"{c['sem_images']:,}", False),
-            ("XRD · XRF · PSD", f"{c['xrd']:,} · {c['xrf']:,} · {c['psd']:,}", False),
-            ("Hardness · nano · PIP", f"{c['indents']:,}", False), ("Corrosion spots", f"{c['corrosion']:,}", False),
-            ("Instrument data", gb(c["data_gb"]), False), ("Stream video archived", gb(c["video_tb"] * 1000), False)]
-    pw = 352 * s
-    px0 = W - pw - 10 * s
-    py0 = 46 * s
-    hh = (34 + 3 * 27 + 9 * 19) * s
-    d.rounded_rectangle((px0, py0, W - 10 * s, py0 + hh), 8 * s, fill=(255, 255, 255, 232), outline=(190, 196, 204, 255))
-    d.text((px0 + 12 * s, py0 + 6 * s), "Made and measured so far (model)", font=font(13 * s, bold=True), fill=grey)
-    y = py0 + 28 * s
-    for lab_, val, big in rows:
-        f = font(16 * s, bold=True) if big else font(13 * s)
-        d.text((px0 + 12 * s, y + (3 if big else 0) * s), lab_, font=font(14 * s) if big else font(12.5 * s),
-               fill=ink if big else grey)
-        vw = d.textlength(val, font=f)
-        d.text((W - 22 * s - vw, y), val, font=f, fill=blue if big else ink)
-        y += (27 if big else 19) * s
-    # the chart (weeks, months, the end)
+                word = "printing; this build cracks"
+            where = STATION_NAMES.get(st, st)
+            rows.append(f"alloy {e['alloy'] + 1}: {word}, {where}")
+        rows = rows[:6] or ["waiting for the next atomizer run"]
+        bw = 430 * s
+        bh = (30 + 17 * len(rows) + 24) * s
+        x, y = 8 * s, cap_top - bh - 6 * s
+        d.rounded_rectangle((x, y, x + bw, y + bh), 8 * s, fill=(255, 255, 255, 222), outline=(190, 196, 204, 255))
+        d.text((x + 12 * s, y + 6 * s), "Running now", font=font(12.5 * s, bold=True), fill=grey)
+        for i, r in enumerate(rows):
+            while d.textlength(r, font=font(12 * s)) > bw - 24 * s and len(r) > 10:
+                r = r[:-2].rstrip(" ,") + "…"
+            d.text((x + 12 * s, y + (25 + 17 * i) * s), r, font=font(12 * s), fill=ink)
+        ly = y + bh - 22 * s
+        lx = x + 12 * s
+        for name, col in (("running", C_RUN), ("a unit at it", C_UNIT), ("a person at it", C_PERSON),
+                          ("idle", C_IDLE), ("failed run", C_FAIL)):
+            d.ellipse((lx, ly + 3 * s, lx + 11 * s, ly + 14 * s), fill=tuple(int(255 * v) for v in col) + (255,))
+            d.text((lx + 15 * s, ly + 1 * s), name, font=font(11 * s), fill=ink)
+            lx += 26 * s + d.textlength(name, font=font(11 * s))
+    # ---- the chart (weeks and months)
     if phase >= 3:
-        chart(d, mv, t, px0, py0 + hh + 8 * s, pw, 190 * s, s, phase)
-    # beacon legend (hours, days)
-    if phase in (1, 2):
-        items = [("running", C_RUN), ("a unit at it", C_UNIT), ("a person at it", C_PERSON), ("idle", C_IDLE),
-                 ("failed run", C_FAIL)]
-        x, y = 12 * s, H - 118 * s
-        d.rounded_rectangle((x - 4 * s, y - 4 * s, x + 520 * s, y + 20 * s), 6 * s, fill=(255, 255, 255, 215))
-        d.text((x + 2 * s, y), "Beacons:", font=font(12.5 * s, bold=True), fill=grey)
-        x += 66 * s
-        for name, col in items:
-            d.ellipse((x, y + 2 * s, x + 12 * s, y + 14 * s), fill=tuple(int(255 * v) for v in col) + (255,))
-            d.text((x + 16 * s, y), name, font=font(12.5 * s), fill=ink)
-            x += (24 + d.textlength(name, font=font(12.5 * s)) / s) * s
+        w, h = 400 * s, 196 * s
+        chart(d, mv, t, W - w - 8 * s, cap_top - h - 6 * s, w, h, s, phase)
     return img
+
+
+def caption_h(d, caption: str, W, s) -> float:
+    """The height of Scene.overlay's caption box for this caption (its own wrapping)."""
+    from scene import font
+    if not caption:
+        return 0.0
+    fc = font(18 * s)
+    maxw = W - 60 * s
+    n = 0
+    for para in [q.strip() for q in caption.split("|")]:
+        cur = ""
+        for w_ in para.split():
+            tt = (cur + " " + w_).strip()
+            if d.textlength(tt, font=fc) > maxw and cur:
+                n += 1
+                cur = w_
+            else:
+                cur = tt
+        n += 1
+    return n * 24 * s + 20 * s
 
 
 def gb(x: float) -> str:
@@ -921,7 +966,10 @@ def movie():
         sc.label = PHASES[ph][3]
         sc.caption = " ".join(PHASES[ph][4].split())
         sc.labels = []
+        t_f = time.time()
         base = sc.render_base()
+        if mv.dark:                                   # lights out: the floor is unlit (ambient), so dim the frame
+            base = (base.astype(np.float32) * np.array([0.62, 0.66, 0.80], np.float32)).astype(np.uint8)
         img = orig(Image.fromarray(base), 1.0, [])
         img = draw_panels(img, mv, t, ph, 1.0)
         if sc.mp4 is not None:
@@ -931,6 +979,7 @@ def movie():
         if picks is not None:
             shots.append(img.convert("RGB"))
             img.convert("RGB").save(f"/tmp/timelapse_preview_{f:04d}.png")
+            print(f"preview frame {f} (lab {t:.1f} h, phase {ph}): {time.time() - t_f:.1f} s", flush=True)
         sc.n += 1
         if f % 30 == 0:
             el = time.time() - t_start
