@@ -1,5 +1,5 @@
 {
- "note": "The excerpts and photos alloy_atomize.py cuts into chapter 2, kept small: clips cut to the window used (excerpt_window_s, seconds in the parent's fetch), 720 px tall, no sound; photos at 1600 px. All the lab's own (BYU VCL channel, DAL #159 and #219); credits per file. vlm_real_ck8QJhVqPiY.mp4 is Sterling Baird's own video of a real VLM, used to open the long-form video.",
+ "note": "The excerpts and photos alloy_atomize.py cuts into chapter 2 and alloy_print.py into chapter 3, kept small: clips cut to the window used (excerpt_window_s, seconds in the parent's fetch), 720 px tall, no sound; photos at 1600 px. The lab's own (BYU VCL channel, DAL #159 and #219), plus one excerpt of Sterling Baird's MS&T 2026 talk; credits per file. vlm_real_ck8QJhVqPiY.mp4 is Sterling Baird's own video of a real VLM, used to open the long-form video. Round 8 dropped al_pour_oct08.mp4 (Oct 8, Al 6063: it dripped rather than atomized).",
  "files": [
   {
    "file": "nab_k7m2q9_four_rod_pieces_1079.886g.jpg",
@@ -80,22 +80,22 @@
    ]
   },
   {
-   "file": "al_pour_oct08.mp4",
-   "source": "https://youtu.be/dTyuZmqYxHA",
-   "source_start_s": 86,
-   "shows": "view port: a thin Al stream on the carbon-fibre plate (it dripped rather than atomized that day: CF plate + 1.5:1 booster; DAL PR #176)",
-   "date": "2026-10-08",
-   "run": "kj0461 (DAL #159)",
-   "alloy": "Al 6063",
-   "best_window_s": [
-    8,
-    34
-   ],
-   "excerpt_of": "al_pour_oct08.mp4",
+   "file": "mst2026_stream.mp4",
+   "source": "https://youtu.be/YmvaeqOQAU4",
+   "title": "Let's discover stronger aerospace alloys 10x faster with AI at a tenth of the cost [MS&T 2026]",
+   "channel": "Sterling Baird (youtube.com/@sterling-baird)",
+   "source_start_s": 298.0,
+   "source_end_s": 305.0,
+   "shows": "a melt stream (a line of drops) falling onto the tip of a vibrating plate and breaking up into a spray of droplets, lit red; full-frame video in the talk after the slide 'Ultrasonic atomization enables chemical whitespace AM alloy discovery'. The talk's webcam inset (lower right) and the black bar (left) are cropped off in alloy_atomize.py (PLAN crop).",
+   "alloy": "not stated",
+   "run": "not stated in the talk",
+   "date": "",
+   "excerpt_of": "a 294-312 s fetch of YmvaeqOQAU4 (720p, format 136) through the stream-cam Pi",
    "excerpt_window_s": [
-    14.0,
-    20.0
-   ]
+    4.0,
+    11.0
+   ],
+   "used_in": "alloy_atomize.py, chapter 2's pour beat (round 8), after Sterling's review: \"You could find the stream from a recent youtube video from me probably\". Replaces al_pour_oct08.mp4 (Oct 8 Al 6063, which dripped rather than atomized: 'a dud')."
   },
   {
    "file": "nab_k7m2q9_jar_of_powder.jpg",
