@@ -1,0 +1,11 @@
+{
+ "name": "alloy_prep",
+ "fps": 6,
+ "n_frames": 1172,
+ "size": [
+  1280,
+  720
+ ],
+ "note": "Rendered on all trays at 6 fps from alloy_prep.py, stopped at frame 1142 (during the 320 grind) to meet the long-form's 20:45 UTC cutoff, then a 5 s closing card. The script runs to the end (about 1630 frames, 272 s); the scene's per-step frame ranges were not written because the run was stopped before Scene.save().",
+ "substeps": []
+}
