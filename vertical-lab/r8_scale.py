@@ -89,7 +89,8 @@ SOURCES = {
         "400 kg, nickel aluminium bronze, wire arc additive manufacturing on a Valk Welding system at RAMLAB, Port of "
         "Rotterdam; triple-blade, after Promarin's design for Damen's Stan Tug 1606; CNC milled afterwards",
         "Blade geometry here: chord, thickness, pitch ratio 0.9, skew 15 deg at the tip and NACA-like sections are a "
-        "standard-series estimate, not Promarin's design (which is not public)",
+        "standard-series estimate, not Promarin's design (which is not public). Drawn left-handed: the Stan Tug 1606 "
+        "is twin-screw, so it carries one propeller of each hand (which hand the WAAMpeller was is not stated)",
     ],
 }
 
@@ -303,14 +304,16 @@ def _section_xy(x: float, s: np.ndarray):
 
 def _wrap(x: float, xi, eta) -> np.ndarray:
     """Section coordinates at r = x R -> 3D points of blade 0 (pointing +x), on the helix of pitch P_D x D, with the
-    skew. The axis is z; the blade's mid-plane at z = 0."""
+    skew. The axis is z; the blade's mid-plane at z = 0. Left-handed (the angle runs clockwise about +z): a twin-screw
+    tug such as the Stan Tug 1606 has one of each hand, and this one tilts its face, not its back, towards the cell's
+    front when the positioner turns the damaged edge up."""
     R = PROP["D"] / 2
     r = x * R
     phi = math.atan(PROP["P_D"] / (math.pi * x))
     skew = math.radians(PROP["skew_tip"]) * ((x - 0.2) / 0.8) ** 2 if x > 0.2 else 0.0
     arc = xi * math.cos(phi) - eta * math.sin(phi)
     ax = xi * math.sin(phi) + eta * math.cos(phi)
-    th = arc / r + skew
+    th = -(arc / r + skew)
     return np.stack([r * np.cos(th), r * np.sin(th), ax], axis=-1)
 
 
@@ -698,13 +701,19 @@ def meltio_cell() -> Instrument:
     yf, yb_ = -D / 2, D / 2
     post = c["post"]
     body = _piece(inst, "body")                       # the enclosure: posts, rails, panels, the roof
+    dw = c["door_w"]
+    ox0, ox1 = -dw, dw                                # the door opening: no post or rail across it
     for x in (-W / 2, -W / 2 + 1013, 0.0, W / 2 - 1013, W / 2):
         x0 = min(max(x - post / 2, -W / 2), W / 2 - post)
         for y0 in (yf, yb_ - post):
+            if y0 == yf and ox0 < x < ox1:
+                continue
             body.add(f"post {x:.0f} {y0:.0f}", box(x0, y0, 0, x0 + post, y0 + post, H), "r8s_meltio")
     for y in (yf, yb_ - post):
         body.add(f"top rail {y:.0f}", box(-W / 2, y, H - 120, W / 2, y + post, H), "r8s_meltio")
-        body.add(f"low rail {y:.0f}", box(-W / 2, y, c["low"] - 60, W / 2, y + post, c["low"]), "r8s_meltio")
+        spans = ((-W / 2, ox0 - 40), (ox1 + 40, W / 2)) if y == yf else ((-W / 2, W / 2),)
+        for a, b in spans:
+            body.add(f"low rail {y:.0f} {a:.0f}", box(a, y, c["low"] - 60, b, y + post, c["low"]), "r8s_meltio")
     for x in (-W / 2, W / 2 - post):
         body.add(f"side top {x:.0f}", box(x, yf, H - 120, x + post, yb_, H), "r8s_meltio")
         body.add(f"side low {x:.0f}", box(x, yf, c["low"] - 60, x + post, yb_, c["low"]), "r8s_meltio")
@@ -716,9 +725,7 @@ def meltio_cell() -> Instrument:
     body.add("back window", box(-W / 2 + post, yb_ - post + 30, c["low"], W / 2 - post, yb_ - 30, H - 120),
              "r8s_amber")
     body.add("roof", box(-W / 2, yf, H - 20, W / 2, yb_, H), "r8s_panel")
-    dw = c["door_w"]
     # the fixed front panels either side of the door opening, low panels and windows
-    ox0, ox1 = -dw, dw
     for (a, b) in ((-W / 2 + post, ox0 - 40), (ox1 + 40, W / 2 - post)):
         body.add(f"front panel {a:.0f}", box(a, yf + 20, 0, b, yf + post - 20, c["low"] - 60), "r8s_panel")
         body.add(f"front window {a:.0f}", box(a, yf + 30, c["low"], b, yf + post - 30, H - 120), "r8s_amber")

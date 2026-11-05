@@ -178,10 +178,14 @@ def main():
     clear = check_head(cell_i, tl)
     print(f"the printhead's least clearance to the propeller over the program: {clear:.0f} mm", flush=True)
 
+    pool_t, pool_v = np.array(tl.t), np.array([s["pool"] for s in tl.states], float)
+
     def cell_prog(v):
         for k in prog:
             C.v[k] = v
         C.apply()
+        # the blue light and the melt pool only while a bead is being laid, not while the head moves between passes
+        sc.show(C.names.get("glow", []), float(np.interp(v * Tt, pool_t, pool_v)))
 
     # the repair zone, in the world: the beads' centre with the edge turned up
     allp = np.vstack([s for segs, _ in beads for s in segs])
@@ -199,7 +203,7 @@ def main():
         s = max(scale, 0.80)
         d = ImageDraw.Draw(img, "RGBA")
         W_ = img.size[0]
-        f1, f2 = font(14 * s, bold=True), font(13 * s)
+        f1, f2 = font(14 * s, bold=True), font(13 * s, mono=True)       # mono: the figures line up in columns
         head, rows = self.panel[0], self.panel[1:]
         wmax = max([d.textlength(head, font=f1)] + [d.textlength(r, font=f2) for r in rows])
         x0, y0 = W_ - wmax - 34 * s, 46 * s
@@ -215,14 +219,14 @@ def main():
     # ---- cameras
     CAM_WIDE = [(2600, -15200, 5600), (1900, -300, 1000), (0, 0, 1)]
     CAM_EOS = [(1400, -5600, 2500), (-700, -500, 1200), (0, 0, 1)]
-    CAM_CH = [(-150, -2350, 1750), (cx, cy, P + 40), (0, 0, 1)]
+    CAM_CH = [(cx + 60, -2750, 1900), (cx, cy, P + 40), (0, 0, 1)]       # square on: the touchscreen at the edge
     CAM_CH2 = [(-1750, -2150, 1850), (cx, cy, P + 30), (0, 0, 1)]
     CAM_OUT = [(600, -3900, 2300), (cx, cy - 1300, 1050), (0, 0, 1)]
     CAM_SAW = [(-150, -3350, 1700), (tx, ty, th + 60), (0, 0, 1)]
-    CAM_CELL = [(XC + 1500, -7400, 3200), (XC, 0, 1250), (0, 0, 1)]
+    CAM_CELL = [(XC + 650, -5600, 2350), (XC + 350, 100, 1150), (0, 0, 1)]     # in through the open doors
     CAM_ZONE = [tuple(zone + (-80, -880, 330)), tuple(zone + (0, 0, 10)), (0, 0, 1)]
-    CAM_ZONE2 = [tuple(zone + (420, -760, 420)), tuple(zone + (0, 0, 0)), (0, 0, 1)]
-    CAM_ROBOT = [(XC - 300, -3900, 2300), (XC + 150, 200, 1350), (0, 0, 1)]
+    CAM_ZONE2 = [tuple(zone + (-450, -900, 450)), tuple(zone + (0, 0, 0)), (0, 0, 1)]   # the robot's base off frame
+    CAM_ROBOT = [(XC - 250, -3700, 2350), (XC + 350, 0, 1050), (0, 0, 1)]
     sc.cam = CAM_WIDE
     n = 9
     E.v.update({"load": 0.0, "door": 0.0, "platform": 0.0, "recoater": 0.0})
@@ -239,11 +243,11 @@ def main():
                     ("InssTek MX-Lab (in the lab)", (XD, -380, 1835), (0.10, 0.30))])
 
     # 2. the powder
-    sc.panel = ["Powder, AlSi10Mg",
-                f"one rePowder run, < 63 um      {RUN_FINES_G:7.0f} g   (DAL #219)",
-                f"one Aconity MIDI build          {MIDI_BUILD_G:7.0f} g   (lab's figure)",
-                f"EOS bed, 400 x 400 x {S8.EOS['Hb']:.0f} mm     {EOS_BED_G / 1000:7.1f} kg",
-                f"*  = {EOS_BED_G / RUN_FINES_G:.0f} rePowder runs (bulk {BULK} g/cm3: an estimate)"]
+    rows = [("one rePowder run, < 63 um", f"{RUN_FINES_G:.0f} g", "DAL #219"),
+            ("one Aconity MIDI build", f"{MIDI_BUILD_G:.0f} g", "the lab's figure"),
+            (f"EOS bed, 400 x 400 x {S8.EOS['Hb']:.0f} mm", f"{EOS_BED_G / 1000:.1f} kg", "estimate")]
+    sc.panel = ["Powder, AlSi10Mg"] + [f"{a:<29}{b:>9}   ({c})" for a, b, c in rows] + \
+               [f"*= {EOS_BED_G / RUN_FINES_G:.0f} rePowder runs (bulk density {BULK} g/cm3 assumed)"]
     sc.step(f"2/{n}", "Powder first. The rePowder made 188 g under 63 um in one run; the Aconity MIDI builds on "
             "about 440 g. A 100 mm build in the EOS's 400 x 400 mm bed takes about 22 kg. So at this scale the "
             "recipe is what the route hands on, and the powder is bought by the 100 kg: EOS sells AlSi10Mg.", 5.5,
@@ -321,9 +325,9 @@ def main():
     sc.step(f"7/{n}", "Ship parts. On the cell's positioner, a nickel aluminium bronze propeller after the "
             "WAAMpeller of Damen and RAMLAB: three blades, 1350 mm, about 400 kg, inside the positioner's 500 kg. "
             "One blade's leading edge is eroded, 30 mm deep (illustrative).", 5.0, doors, hold=0.6, cam_to=CAM_CELL,
-            labels=[("NAB propeller, 1350 mm, ~400 kg", (XC + 780, -400, 1330), (0.80, 0.22)),
+            labels=[("NAB propeller, 1350 mm, ~400 kg", (XC + 780, 120, 1262), (0.80, 0.22)),
                     ("two-axis positioner", (XC + 1640, 120, 900), (0.84, 0.55)),
-                    ("ABB robot, blue-laser head", (XC - 280, 120, 1700), (0.16, 0.24))])
+                    ("ABB robot, blue-laser head", (XC - 595, 215, 1694), (0.16, 0.24))])
 
     def tilt_up(u):
         cell_prog(window(u, 0.0, 1.0) * mk["tilted"])
@@ -361,6 +365,9 @@ def main():
                                        C.v.update({"~body": 0.85 * (1 - u), "~door0": 0.85 * (1 - u),
                                                    "~door1": 0.85 * (1 - u)}), C.apply()),
             hold=2.6, cam_to=CAM_WIDE, labels=[])
+    if PREVIEW:                                      # each preview still at full size too, for checking details
+        for i, im in enumerate(sc.preview):
+            im.convert("RGB").save(f"/tmp/preview_scaleup_{i:02d}.png")
     print(sc.save())
 
 
