@@ -31,6 +31,7 @@ Every arm move is a straight line of the grasp point or a joint move planned rou
 from __future__ import annotations
 
 import math
+import os
 import sys
 from pathlib import Path
 
@@ -168,7 +169,9 @@ def build():
     L.robot = u.robot
     L.amr_group = f"{u.name}_cab"
     L.units, L.items, L.floor = units, items, F
-    L.skin(1.0)(1.0)                  # the cladding see-through, so every tray shows (animate.lab_scene)
+    # VLAB_ONLY_TRAYS=DEM (setup_lab.build) loads only the trays this chapter presents; the cladding is then opaque, as
+    # on a real Kardex, so the trays left empty are never seen. Unset, every tray is loaded and the cladding see-through.
+    L.skin(0.0 if os.environ.get("VLAB_ONLY_TRAYS") else 1.0)(1.0)
     L.show_gauges = True
     L.extra_gauges = []
     sc.intro = 0.8
@@ -276,16 +279,21 @@ def vial_level(sc, mm: float, inverted=False):
 
 
 def branch_q(rb, Tw, Tw_ref):
-    """The IK solution for Tw in the branch of the first clear solution for Tw_ref (alloy_workflow's way), so the
-    straight line that follows stays in a branch that is clear where it ends."""
+    """The IK solution for Tw in the branch of a clear solution for Tw_ref (alloy_workflow's way), so the straight line
+    that follows stays in a branch that is clear where it ends; of those, the first whose Tw solution is clear too."""
     import collide
     chk = rb.checker()
     Wd = chk.snapshot()
     Tb = np.linalg.inv(rb.sc.world(rb.root)) @ Tw_ref
+    first = None
     for q in collide.ik_all(rb.model, Tb, rb.q):
         if not chk.collisions(q, rb.close, Wd, chk.touching(q, rb.close, Wd)):
-            return rb.solve(Tw, seed=q)
-    return rb.solve(Tw)
+            qq = rb.solve(Tw, seed=q)
+            if first is None:
+                first = qq
+            if not chk.collisions(qq, rb.close, Wd, chk.touching(qq, rb.close, Wd)):
+                return qq
+    return first if first is not None else rb.solve(Tw)
 
 
 # ================================================================================================= the movie
@@ -470,7 +478,8 @@ def movie():
         step(1.0, RB.both(rb.line_to(T_up), lambda uu: vial_level(sc, lvl["mm"], inverted=uu < 0.45)), hold=0.05)
 
     lvl = {"mm": LEVEL0}
-    CAM_SIFT = [tuple(c_st + (420, -640, 330)), tuple(c_st + (-60, 0, 40)), (0, 0, 1)]
+    CAM_SIFT = [tuple(c_st + (600, -380, 640)), tuple(c_st + (-90, 10, 20)), (0, 0, 1)]   # above right: the arm
+    #                                                                                         comes in from the left
 
     def drain(mm0, mm1):
         def up(uu):
@@ -816,9 +825,10 @@ def movie():
     lin(sh(T_c, (0, 0, 90)), 0.7)
     ring_g = f"{xrf.prefix}ring"
     on_ring = (sc.world(ring_g) @ np.r_[mx, my, dk + 2.0, 1.0])[:3]
+    hsp = (0.0, 90.0, 180.0, 270.0)
     k = clear_of([[A.down(on_ring + (0, 0, 290.5), spin=sp), A.down(on_ring + (0, 0, 30.5), spin=sp)]
-                  for sp in (0.0, 180.0)])
-    T_r = A.down(on_ring + (0, 0, 30.5), spin=(0.0, 180.0)[k])
+                  for sp in hsp])
+    T_r = A.down(on_ring + (0, 0, 30.5), spin=hsp[k])
     CAM_XRFL = [tuple(port_w + (1150, -1450, 950)), tuple(port_w + (0, -120, 60)), (0, 0, 1)]
     go_to(sh(T_r, (0, 0, 260)), T_r, secs=2.2, cam=CAM_XRFL)
     lin(sh(T_r, (0, 0, 40)), 1.4)

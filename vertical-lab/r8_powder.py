@@ -308,6 +308,7 @@ def mastersizer() -> I.Instrument:
 # to a port in the deck and sets it on a ring that lowers it into the chamber, film side down over the tube and the
 # detector; a shutter closes the port. The gantry, the port, the ring and their travels are assumptions.
 XRF_G = dict(park=(150.0, 170.0), up=100.0, grip=18.0, sink=44.0, port_dx=72.0)
+XRF_HATCH = (-170.0, 170.0, -330.0, -90.0)   # the hatch's opening in the hood's top (x0, x1, y0, y1), over the port
 XRF_SEAT = 15           # seats[i * 5 + j]: i = 3, j = 0, the front-right seat, the one nearest the arm at Shuttle 2's
                         # opening (alloy_powder.py); the grabber carries the cup from it to the port
 
@@ -402,15 +403,17 @@ def xrf() -> I.Instrument:
     # itself can't open far enough at the VLM's opening for an arm to reach under it. The hatch is our assumption.
     q_ = IC.XRF_LOOK
     H_ = g["H"]
+    hx0, hx1, hy0, hy1 = XRF_HATCH
     lid = inst.pieces["lid"]
     lid.parts = [pt for pt in lid.parts if "window" not in pt.name]
+    for pt in lid.parts:                              # the opening, wider than the window it replaces
+        if pt.name == "hood":
+            pt.shape = pt.shape.cut(box(hx0, hy0, H_ - 30, hx1, hy1, H_ + 1).val())
     hatch = _piece(inst, "hatch")
-    hatch.add("top hatch", box(-q_["win_w"] / 2 - 6, g["yf"] + q_["win_y0"] - 6, H_ - 4, q_["win_w"] / 2 + 6,
-                               g["yf"] + q_["win_y0"] + q_["win_d"] + 6, H_ - 1), "xrf_window")
-    hatch.add("hatch handle", box(-40, g["yf"] + q_["win_y0"] - 4, H_ - 1, 40, g["yf"] + q_["win_y0"] + 6, H_ + 6),
-              "inst_navy")
+    hatch.add("top hatch", box(hx0 - 6, hy0 - 6, H_ + 0.5, hx1 + 6, hy1 + 6, H_ + 3.5), "xrf_window")
+    hatch.add("hatch handle", box(-40, hy0 - 4, H_ + 3.5, 40, hy0 + 6, H_ + 10), "inst_navy")
     j = inst.joints
-    j["hatch"] = Joint("slide", vec=(0, q_["win_d"] + 20.0, 0), parent="lid")
+    j["hatch"] = Joint("slide", vec=(0, hy1 - hy0 + 20.0, 0), parent="lid")
     j["sample"] = Joint("path", path=kk["path"])
     j["gbeam"] = Joint("slide", vec=(0, 1, 0))
     j["gcar"] = Joint("slide", vec=(1, 0, 0), parent="gbeam")
