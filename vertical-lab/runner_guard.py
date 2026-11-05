@@ -123,6 +123,10 @@ def slot(argv: list[str]) -> int:
                         f.close()
                 if len(held) == weight:
                     break
+                for f in held:                                # not all of them: give the partial ones back now
+                    fcntl.flock(f, fcntl.LOCK_UN)
+                    f.close()
+                held = []
             if time.time() - last_note > 300:
                 print(f"[runner_guard] waiting for {weight} slot(s), {need} MB: {'; '.join(holders()) or 'none held'}",
                       file=sys.stderr, flush=True)
