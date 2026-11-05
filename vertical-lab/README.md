@@ -314,7 +314,29 @@ unique alloys fully tested and printed."
 
 ### The long-form, round 8
 
-The long-form is being rebuilt from round 8's clips (this section is updated when it is on YouTube).
+**[The vertical cloud lab, round 8](https://www.youtube.com/watch?v=gBCTmjrows8)** (unlisted, 53 min 26 s, 37 YouTube chapters), built at 20:59 UTC on 2026-11-05 from the clips committed by then. The MP4 isn't committed (170 MB); its sha256 is in `out/youtube.json`. The chapters, and the sheet of one frame from each:
+
+![The long-form, one frame per part](out/longform_sheet.png)
+
+| # | Starts | Chapter | Parts |
+|---|---|---|---|
+| 1 | 0:00 | A real VLM, then the plan | [`vlm_real_ck8QJhVqPiY.mp4`](out/footage/vlm_real_ck8QJhVqPiY.mp4) |
+| 2 | 0:23 | The lab set up from scratch | [`setup_lab.mp4`](out/mp4/setup_lab.mp4), [`tray_plan.png`](out/tray_plan.png) |
+| 3 | 2:38 | Services: UPS, automatic hookups, cabling and cameras | [`vlm_hookups.mp4`](out/mp4/vlm_hookups.mp4), [`vlm_services.mp4`](out/mp4/vlm_services.mp4), [`dock_lift_clearance.png`](out/dock_lift_clearance.png), [`vlm_cabling.mp4`](out/mp4/vlm_cabling.mp4), [`stream_cam.mp4`](out/mp4/instruments/stream_cam.mp4), [`bay_camera.mp4`](out/mp4/bay_camera.mp4) |
+| 4 | 5:32 | Tray A: the corrosion station, OT-2 and CubXL | [`ot2_corrosion_prep.mp4`](out/mp4/instruments/ot2_corrosion_prep.mp4), [`cubxl_corrosion.mp4`](out/mp4/instruments/cubxl_corrosion.mp4), [`vlm_workflow.mp4`](out/mp4/vlm_workflow.mp4) |
+| 5 | 9:33 | Alloy route 1/7: the charge cups, dosed, weighed and pressed under vacuum | [`route_dag_ch1.mp4`](out/mp4/dag/route_dag_ch1.mp4), [`dal_workflow_table.png`](out/dal_workflow_table.png), [`alloy_charge.mp4`](out/mp4/alloy_charge.mp4), [`vacuum_press.mp4`](out/mp4/vacuum_press.mp4) |
+| 6 | 15:36 | Alloy route 2/7: melt and atomize in the rePowder | [`route_dag_ch2.mp4`](out/mp4/dag/route_dag_ch2.mp4), [`alloy_atomize.mp4`](out/mp4/alloy_atomize.mp4) |
+| 7 | 19:19 | Alloy route 3/7: sieve and print | [`route_dag_ch3.mp4`](out/mp4/dag/route_dag_ch3.mp4), [`alloy_print.mp4`](out/mp4/alloy_print.mp4) |
+| 8 | 23:45 | Alloy route 4/7: the powder, checked | [`route_dag_ch4.mp4`](out/mp4/dag/route_dag_ch4.mp4), [`alloy_powder.mp4`](out/mp4/alloy_powder.mp4) |
+| 9 | 27:30 | Alloy route 5/7: depowder, cut, heat treat, tensile at room and elevated temperature | [`route_dag_ch5.mp4`](out/mp4/dag/route_dag_ch5.mp4), [`alloy_workflow.mp4`](out/mp4/alloy_workflow.mp4) |
+| 10 | 33:39 | Alloy route 6/7: sample prep: section, mount, grind and polish | [`route_dag_ch6.mp4`](out/mp4/dag/route_dag_ch6.mp4), [`alloy_prep.mp4`](out/mp4/alloy_prep.mp4) |
+| 11 | 37:06 | Alloy route 7/7: characterizing the build | [`route_dag_ch7.mp4`](out/mp4/dag/route_dag_ch7.mp4), [`alloy_characterize.mp4`](out/mp4/alloy_characterize.mp4) |
+| 12 | 41:33 | The other stations: a tensile tester on its side, gloveboxes, fume hoods, stores, shipping | [`instruments_gallery.png`](out/instruments_gallery.png), [`tensile_h.mp4`](out/mp4/instruments/tensile_h.mp4), [`glovebox_tray.mp4`](out/mp4/instruments/glovebox_tray.mp4), [`glovebox.mp4`](out/mp4/instruments/glovebox.mp4), [`fumehood.mp4`](out/mp4/instruments/fumehood.mp4), [`fumehood_tray.mp4`](out/mp4/instruments/fumehood_tray.mp4), [`storage.mp4`](out/mp4/instruments/storage.mp4), [`powder_store_feed.mp4`](out/mp4/instruments/powder_store_feed.mp4), [`powder_store_lots.mp4`](out/mp4/instruments/powder_store_lots.mp4), [`packaging.mp4`](out/mp4/instruments/packaging.mp4) |
+| 13 | 44:41 | Fabrication: metal printers, DED, resin and PCB assembly | [`fabrication_tour.mp4`](out/mp4/fabrication_tour.mp4), [`ded.mp4`](out/mp4/instruments/ded.mp4) |
+| 14 | 48:15 | Scaling up: large-format printing and ship-part repair | [`scaleup.mp4`](out/mp4/scaleup.mp4) |
+| 15 | 50:16 | What doesn't fit, and getting a tray out | [`hip.mp4`](out/mp4/instruments/hip.mp4), [`tall_opening_bays.png`](out/tall_opening_bays.png), [`maintenance_access.png`](out/maintenance_access.png) |
+| 16 | 51:03 | How the models were checked | [`before_after.jpg`](out/register/before_after.jpg), [`interference_sheet.png`](out/interference_sheet.png), [`vlm_workflow_before_after.png`](out/collisions/vlm_workflow_before_after.png) |
+| 17 | 51:45 | The whole lab at speed: an hour, a day, a week, a month | [`timelapse.mp4`](out/mp4/timelapse.mp4) |
 
 - **Chapters 4 and 6, the scale-up and the finale are new.** Chapters 2, 3, 5 and 7, the set-up and the 9:09 clip are
   re-rendered on round 8's code.
@@ -335,7 +357,31 @@ The long-form is being rebuilt from round 8's clips (this section is updated whe
 
 ### Still open after round 8
 
-- Being written as the last renders land.
+- **No measured data on the build.** Each panel is badged with what it is:
+  - SEM/EDS, hardness and VHX panels: illustrative;
+  - nanoindentation, XRD and laser diffraction: computed;
+  - XRF: illustrative;
+  - the tensile curves: illustrative.
+
+  The real data are the c3k0n5 SEM images and the particle count made from them.
+- **Chapter 7's committed render has 13 frames in collision** at the iMicro's unload (frames 574–598) and one at the
+  VHX stand.
+  - Its HM-220 close-up looks into Shuttle 2's frame, and the VHX turn-over isn't shown.
+  - The fixes are in the code (`5518d3e`, `2d0fc50`) but not rendered. `CH7_WINDOW=560:610,890:1155` re-renders just
+    those stretches for splicing.
+- **Chapter 3 was rendered against round 7's EDM and Instron models in the background,** before chapter 5's catch
+  comb.
+- **The MiR250 bodies aren't collision-checked** in chapters 2–7: #321's `audit_mir.py` wasn't brought over.
+- **Not modelled, captions only:**
+  - the SOP's 0.1 µm diamond step on the VibroMet 2, and its ultrasonic cleans (chapter 6);
+  - the tongs' linkage (chapter 5).
+- **The finale's arm poses come straight from IK and aren't collision-checked,** and its counters are a model.
+- **Open from the lab stream:**
+  - re-fitting the trays to Modula's 2,500 × 857 mm tray;
+  - building the collision world lazily (it is most of a whole-floor scene's memory);
+  - the services and bay-camera clips, which still show round 7's trays.
+- **On YouTube:** round 7's clips and long-forms are superseded and still up, because the upload token can't delete.
+  A `@claude-youtube` run can remove them or leave them out of a playlist.
 
 ## Round 7: a 996 mm opening, two Shuttles, a UPS on every tray, new stations, the trays at work
 
