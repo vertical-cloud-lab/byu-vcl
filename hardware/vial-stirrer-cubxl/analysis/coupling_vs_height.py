@@ -44,6 +44,7 @@ TRIP = 9.5                      # US1881 worst-case operate/release point, mT
 FAN_5V_MODEL = 12.0 / 5.0       # OD4010-05HSS at 5 V against today's OD4010-12HSS at 5 V
 SEEN = 3.0                      # where Ben saw it stop, mm above the seat
 HS = np.round(np.arange(0.0, 8.01, 0.5), 2)
+TH = (0.0, 2.0, 3.0, 5.0)  # heights for the pull-out torque
 
 # bar: (axis height above the vial's inner floor, length, cores (J tesla, core diameter, core length))
 BARS = {
@@ -94,7 +95,7 @@ def main():
         for core in b["cores"]:
             z0 = FLOOR_IN + b["axis"]
             F = np.array([-fz(core, z0 + h) for h in HS])
-            T = np.array([pullout(core, z0 + h) for h in (0.0, 3.0, 6.0)])
+            T = np.array([pullout(core, z0 + h) for h in TH])
             H = np.array([hall_peak(HALL[0], HALL[1], (core[0], core[1], core[2], z0 + h)) for h in HS])
             res[name].append(dict(core=core, F=F, T=T, H=H))
 
@@ -115,12 +116,12 @@ def main():
             J, d, l = r["core"]
             rel = r["F"] / r["F"][list(HS).index(SEEN)]
             print(f"   {J:.1f}, {d:g} x {l:g}".ljust(23) + "".join(f"{v:6.2f}" for v in rel))
-        print("  pull-out torque, mN m, at h 0 / 3 / 6:  "
+        print("  pull-out torque, mN m, at h " + " / ".join(f"{h:g}" for h in TH) + ":  "
               + "   ".join(f"{r['core'][1]:g}x{r['core'][2]:g} J{r['core'][0]:.1f}: "
                          + "/".join(f"{t:.2f}" for t in r["T"]) for r in rows))
-        print(f"  friction torque at mu 0.1, r = L/4 = {L / 4:.2f} mm, mN m, at h 0 / 3 / 6:  "
+        print(f"  friction torque at mu 0.1, r = L/4 = {L / 4:.2f} mm, mN m, at h " + " / ".join(f"{h:g}" for h in TH) + ":  "
               + "   ".join(f"{r['core'][1]:g}x{r['core'][2]:g} J{r['core'][0]:.1f}: "
-                         + "/".join(f"{0.1 * r['F'][list(HS).index(h)] * L / 4:.2f}" for h in (0.0, 3.0, 6.0))
+                         + "/".join(f"{0.1 * r['F'][list(HS).index(h)] * L / 4:.3f}" for h in TH)
                          for r in rows))
         print("  Hall element's smaller peak over a turn, bar following, mT (US1881 needs 9.5 worst case):")
         for r in rows:

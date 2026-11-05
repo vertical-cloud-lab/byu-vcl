@@ -1,0 +1,61 @@
+# Pipette tip-end clearance over the vials, with the vials raised (2026-11-04, PR #269)
+# cubos/tools/tip_clearance.py on CubOS 496819c + the four patches cubxl_run.py applies,
+# gantry cub_xl_ben_3_instrument.yaml, protocol pipette_test_mix.yaml (pipette_test and
+# pipette_test_stir give the same minimum), cap 13 mm above the rim (passive_shadow's default;
+# subtract 2 mm for the gantry file's engage_depth_mm 15). Deck: ben_2vials_tiprack.yaml with
+# both vials' location.z raised by DZ (56 -> 56 + DZ), nothing else changed.
+# DZ 0 = 9-vial holder, 7 = stirrer as built, 10 = stirrer + 3 mm, 12 = stirrer + 5 mm.
+# validate_setup, the mock run and passive_shadow (nominal and --tip-stuck) all pass at every DZ
+# here and up to rim 122: none of them checks the MOVING pipette's tip against labware.
+
+######## DZ = 0 mm (rims at 56)
+== pipette_test_mix.yaml | ben_2vials_tiprack.yaml | nominal | 34 poses | travel_z computed-not-logged: 0 | passive_shadow vial hits 0 (cross-check OK)
+  pipette min         : +18.000 mm  step 4 mix (moving pipette, tip on) over vial_2 [capped, top 69.0], X move at tool Z 87.0, 11.0 mm from axis; seg [291.332, 89.0, 87.0] -> [136.668, 89.0, 87.0]
+  pipette moving min  : +18.000 mm  step 4 mix (moving pipette, tip on) over vial_2 [capped, top 69.0], X move at tool Z 87.0, 11.0 mm from axis; seg [291.332, 89.0, 87.0] -> [136.668, 89.0, 87.0]
+  pipette passive min : none (never within a vial radius)
+  vial_1   min        : +30.000 mm  step 5 move (moving pipette, tip on) over vial_1 [open, top 56.0], X move at tool Z 86.0, 0.0 mm from axis; seg [136.668, 45.0, 86.0] -> [258.0, 45.0, 86.0]
+  vial_2   min        : +18.000 mm  step 4 mix (moving pipette, tip on) over vial_2 [capped, top 69.0], X move at tool Z 87.0, 11.0 mm from axis; seg [291.332, 89.0, 87.0] -> [136.668, 89.0, 87.0]
+  capper lateral min  : +46.000 mm  step 7 decap (moving vial_capper_decapper, tip off) over vial_1 [capped, top 69.0], Z move at tool Z 115.0, 0.0 mm from axis; seg [136.668, 45.0, 115.0] -> [136.668, 45.0, 138.0]
+  pipette lateral at gantry Z   122.0 depth  0.0 -> tool Z   122.0  steps 2:decap:passive, 3:pick_up_tip:moving, 10:cap:passive
+  pipette lateral at gantry Z   122.0 depth 35.0 -> tool Z    87.0  steps 4:mix:moving, 6:cap:passive, 7:decap:passive, 8:mix:moving, 9:drop_tip:moving
+  pipette lateral at gantry Z   121.0 depth 35.0 -> tool Z    86.0  steps 5:move:moving
+  pipette lateral at gantry Z    99.0 depth  0.0 -> tool Z    99.0  steps 1:move:passive
+
+######## DZ = 7 mm (rims at 63)
+== pipette_test_mix.yaml | ben_2vials_tiprack_both_p7.yaml | nominal | 34 poses | travel_z computed-not-logged: 0 | passive_shadow vial hits 0 (cross-check OK)
+  pipette min         : +11.000 mm  step 4 mix (moving pipette, tip on) over vial_2 [capped, top 76.0], X move at tool Z 87.0, 11.0 mm from axis; seg [291.332, 89.0, 87.0] -> [136.668, 89.0, 87.0]
+  pipette moving min  : +11.000 mm  step 4 mix (moving pipette, tip on) over vial_2 [capped, top 76.0], X move at tool Z 87.0, 11.0 mm from axis; seg [291.332, 89.0, 87.0] -> [136.668, 89.0, 87.0]
+  pipette passive min : none (never within a vial radius)
+  vial_1   min        : +23.000 mm  step 5 move (moving pipette, tip on) over vial_1 [open, top 63.0], X move at tool Z 86.0, 0.0 mm from axis; seg [136.668, 45.0, 86.0] -> [258.0, 45.0, 86.0]
+  vial_2   min        : +11.000 mm  step 4 mix (moving pipette, tip on) over vial_2 [capped, top 76.0], X move at tool Z 87.0, 11.0 mm from axis; seg [291.332, 89.0, 87.0] -> [136.668, 89.0, 87.0]
+  capper lateral min  : +39.000 mm  step 7 decap (moving vial_capper_decapper, tip off) over vial_1 [capped, top 76.0], Z move at tool Z 115.0, 0.0 mm from axis; seg [136.668, 45.0, 115.0] -> [136.668, 45.0, 138.0]
+  pipette lateral at gantry Z   122.0 depth  0.0 -> tool Z   122.0  steps 2:decap:passive, 3:pick_up_tip:moving, 10:cap:passive
+  pipette lateral at gantry Z   122.0 depth 35.0 -> tool Z    87.0  steps 4:mix:moving, 6:cap:passive, 7:decap:passive, 8:mix:moving, 9:drop_tip:moving
+  pipette lateral at gantry Z   121.0 depth 35.0 -> tool Z    86.0  steps 5:move:moving
+  pipette lateral at gantry Z    99.0 depth  0.0 -> tool Z    99.0  steps 1:move:passive
+
+######## DZ = 10 mm (rims at 66)
+== pipette_test_mix.yaml | ben_2vials_tiprack_both_p10.yaml | nominal | 34 poses | travel_z computed-not-logged: 0 | passive_shadow vial hits 0 (cross-check OK)
+  pipette min         : +8.000 mm  step 4 mix (moving pipette, tip on) over vial_2 [capped, top 79.0], X move at tool Z 87.0, 11.0 mm from axis; seg [291.332, 89.0, 87.0] -> [136.668, 89.0, 87.0]
+  pipette moving min  : +8.000 mm  step 4 mix (moving pipette, tip on) over vial_2 [capped, top 79.0], X move at tool Z 87.0, 11.0 mm from axis; seg [291.332, 89.0, 87.0] -> [136.668, 89.0, 87.0]
+  pipette passive min : none (never within a vial radius)
+  vial_1   min        : +20.000 mm  step 5 move (moving pipette, tip on) over vial_1 [open, top 66.0], X move at tool Z 86.0, 0.0 mm from axis; seg [136.668, 45.0, 86.0] -> [258.0, 45.0, 86.0]
+  vial_2   min        : +8.000 mm  step 4 mix (moving pipette, tip on) over vial_2 [capped, top 79.0], X move at tool Z 87.0, 11.0 mm from axis; seg [291.332, 89.0, 87.0] -> [136.668, 89.0, 87.0]
+  capper lateral min  : +36.000 mm  step 7 decap (moving vial_capper_decapper, tip off) over vial_1 [capped, top 79.0], Z move at tool Z 115.0, 0.0 mm from axis; seg [136.668, 45.0, 115.0] -> [136.668, 45.0, 138.0]
+  pipette lateral at gantry Z   122.0 depth  0.0 -> tool Z   122.0  steps 2:decap:passive, 3:pick_up_tip:moving, 10:cap:passive
+  pipette lateral at gantry Z   122.0 depth 35.0 -> tool Z    87.0  steps 4:mix:moving, 6:cap:passive, 7:decap:passive, 8:mix:moving, 9:drop_tip:moving
+  pipette lateral at gantry Z   121.0 depth 35.0 -> tool Z    86.0  steps 5:move:moving
+  pipette lateral at gantry Z    99.0 depth  0.0 -> tool Z    99.0  steps 1:move:passive
+
+######## DZ = 12 mm (rims at 68)
+== pipette_test_mix.yaml | ben_2vials_tiprack_both_p12.yaml | nominal | 34 poses | travel_z computed-not-logged: 0 | passive_shadow vial hits 0 (cross-check OK)
+  pipette min         : +6.000 mm  step 4 mix (moving pipette, tip on) over vial_2 [capped, top 81.0], X move at tool Z 87.0, 11.0 mm from axis; seg [291.332, 89.0, 87.0] -> [136.668, 89.0, 87.0]
+  pipette moving min  : +6.000 mm  step 4 mix (moving pipette, tip on) over vial_2 [capped, top 81.0], X move at tool Z 87.0, 11.0 mm from axis; seg [291.332, 89.0, 87.0] -> [136.668, 89.0, 87.0]
+  pipette passive min : none (never within a vial radius)
+  vial_1   min        : +18.000 mm  step 5 move (moving pipette, tip on) over vial_1 [open, top 68.0], X move at tool Z 86.0, 0.0 mm from axis; seg [136.668, 45.0, 86.0] -> [258.0, 45.0, 86.0]
+  vial_2   min        : +6.000 mm  step 4 mix (moving pipette, tip on) over vial_2 [capped, top 81.0], X move at tool Z 87.0, 11.0 mm from axis; seg [291.332, 89.0, 87.0] -> [136.668, 89.0, 87.0]
+  capper lateral min  : +34.000 mm  step 7 decap (moving vial_capper_decapper, tip off) over vial_1 [capped, top 81.0], Z move at tool Z 115.0, 0.0 mm from axis; seg [136.668, 45.0, 115.0] -> [136.668, 45.0, 138.0]
+  pipette lateral at gantry Z   122.0 depth  0.0 -> tool Z   122.0  steps 2:decap:passive, 3:pick_up_tip:moving, 10:cap:passive
+  pipette lateral at gantry Z   122.0 depth 35.0 -> tool Z    87.0  steps 4:mix:moving, 6:cap:passive, 7:decap:passive, 8:mix:moving, 9:drop_tip:moving
+  pipette lateral at gantry Z   121.0 depth 35.0 -> tool Z    86.0  steps 5:move:moving
+  pipette lateral at gantry Z    99.0 depth  0.0 -> tool Z    99.0  steps 1:move:passive

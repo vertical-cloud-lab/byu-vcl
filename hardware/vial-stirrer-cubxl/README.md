@@ -69,6 +69,7 @@ the capper and the pipette, instead of its own XIAO RP2040.
 | [`analysis/key_fit.py`](analysis/key_fit.py) | The deck key's nub against the base's pocket, in the model, the STLs and the printed G-code; draws [`img/key_fit.png`](img/key_fit.png). Its [output](analysis/key_fit_output.txt) |
 | [`analysis/deck_tiling.py`](analysis/deck_tiling.py) | Whether stirrers can sit side by side on the deck's slot grid, and a 49 × 44 mm layout that can, checked in plan; draws [`img/deck_tiling.png`](img/deck_tiling.png) and [`img/deck_tiling_plan.png`](img/deck_tiling_plan.png). Its [output](analysis/deck_tiling_output.txt) |
 | [`analysis/interference_mujoco.py`](analysis/interference_mujoco.py) | The compact stirrer as a MuJoCo model: every pair of parts, and the rotor turned through 360° with the holder on, as built and with deviations; draws [`img/interference_mujoco.png`](img/interference_mujoco.png). Its [output](analysis/interference_mujoco_output.txt). See [Interference check in MuJoCo](#interference-check-in-mujoco-2026-11-04) |
+| [`analysis/coupling_vs_height.py`](analysis/coupling_vs_height.py) | magpylib: the pull on the bar, the coupling's pull-out torque and the Hall signal against vial height, for the 15 × 6 mm and 12 × 3 mm bars, calibrated on the 2026-11-04 stall; draws [`img/coupling_vs_height.png`](img/coupling_vs_height.png). Its [output](analysis/coupling_vs_height_output.txt). See [Stalls with a vial in](#stalls-with-a-vial-in-2026-11-04-what-each-fix-buys) |
 | [`../../outputs/issue-169-magnetic-stirrer/`](../../outputs/issue-169-magnetic-stirrer) | Edison answers and the raw vendor lookups |
 
 The Onshape document is
@@ -828,6 +829,112 @@ recess and groove. Measure the carrier's top above the frame's face: `BUILD.md` 
 and from 4.3 mm it hits the ceiling (3.8 mm without washers). Check how far the blades sit below the face, and that all
 four washers are there.
 
+## Stalls with a vial in (2026-11-04): what each fix buys
+
+Asked by @benwhitney5463 on [PR #269](https://github.com/vertical-cloud-lab/byu-vcl/pull/269):
+more fan torque, a weaker bar, or the vial 3 mm higher? With a vial of water and the 15 × 6 mm
+bar seated, the compact stirrer didn't start, through 36 full-power kicks at 5 V. Started with
+the vial out, it stirred while Ben lowered the vial in, and **stopped when the vial was about
+3 mm from fully down** ([record](../../cubos/results/stirrer_water_20261104/README.md)). That is
+[risk 1](#risks-and-open-questions): the magnets pull the bar onto the vial's floor harder than
+a 12 V fan at 5 V can drag it round.
+[`analysis/coupling_vs_height.py`](analysis/coupling_vs_height.py) puts numbers on it with
+magpylib ([output](analysis/coupling_vs_height_output.txt)), using `field_check.py`'s magnets,
+Hall position and vial seat.
+
+![Pull on the bar against vial height, relative to where the fan stopped, and the Hall signal with the bar following](img/coupling_vs_height.png)
+
+**How it is calibrated.** Neither the fan's torque at 5 V nor the friction under the bar is
+known. But the torque the fan needs scales with the pull on the bar, Fz: the friction under the
+bar is μ·Fz·r, and the bar pulls the fan's rotor up with the same Fz, which its sleeve bearing
+carries as thrust. So Fz relative to its value at 3 mm, where Ben saw the fan stop, is how much
+more torque the fan would need. That ratio barely depends on the bar's magnet core, which isn't
+published: four guessed cores give 2.63–2.76 at the seat.
+
+| Fan, at 5 V | Bar | Vial raised | Pull, × the 3 mm edge | Pull ÷ the fan's torque |
+|---|---|---|---|---|
+| OD4010-12HSS (today's) | 15 × 6 mm (today's) | 0 | 2.7 | **2.7, stalls** (seen) |
+| | | 3 mm | 1.0 | **1.0, the edge** (seen) |
+| | | 4 mm | 0.75 | 0.75 |
+| | | 5 mm | 0.56 | 0.56 |
+| | 12 × 3 mm | 0 | 1.2 | 1.2, stalls |
+| | | 2 mm | 0.55 | 0.55 |
+| OD4010-05HSS (2.4× the torque) | 15 × 6 mm | 0 | 2.7 | 1.1, stalls |
+| | | 2.5 mm | 1.16 | 0.48 |
+| | 12 × 3 mm | 0 | 1.2 | 0.49 |
+
+Under 1 the fan turns, by this model. **Aim for about 0.5,** because the 3 mm edge was seen with
+the fan already turning, at the duty the speed loop happened to choose (0.3–0.7). Starting
+from rest is what has to work in a protocol. Four ways get to about 0.5: the vial **5 mm up**;
+the **12 × 3 mm bar** with the vial **2 mm up**; the **OD4010-05HSS** with the vial **2.5 mm
+up**; or **both** with the vial seated.
+
+- **Weaker bar: the 12 × 3 mm bar** (the Pioreactor's, [`BOM.md`](BOM.md) item 3). The 9.8 mm
+  magnet spacing came from this bar. With a core of the same material, it is pulled about
+  44 % as hard as today's bar at the same height. It lies 1.5 mm lower, though, so seated
+  it is still 1.2× the edge. **It also all but removes the Hall misreads**: at the nominal sensor
+  position its field takes 0.4–1.8 mT off the sensor's ±20.1 mT, against 1.8–8.4 mT for
+  today's bar seated (right panel). Raising today's bar 3 mm gives back only 0.6–3.0 mT of that.
+- **More torque: the OD4010-05HSS,** the 5 V model of the same fan. Orion's datasheet (rev.
+  6/19/2024) gives it the same 8000 rpm, 9.2 CFM and 0.20 in H2O at 5 V that today's fan
+  gets at 12 V. A given winding's torque scales with the voltage across it, so today's fan at
+  5 V has about 5/12 of its rated torque, and the 05HSS has about 2.4× as much. It has the same
+  frame, mounting and two leads, and draws 0.10 A typical, 0.30 A max, against under 0.1 A
+  now. One running at a time is within the Uno's 500 mA USB fuse, as in
+  [four stirrers on one Uno](#four-stirrers-on-one-uno). Running today's fan on 12 V gives the
+  same torque, but it needs a 12 V supply and a fifth core, or the Hall pull-up moved to the
+  Uno end, so the 05HSS is the simpler way.
+- **What doesn't help:** a longer or stronger kick. The kick is already 100 % duty at 5 V.
+- **Coupling still holds** wherever the pull is about 0.5. Today's bar 5 mm up keeps a
+  0.09–0.34 mN·m pull-out torque, against at most 0.075 mN·m of water drag at 1200 rpm (an
+  upper bound with the water still) plus 0.01–0.03 mN·m of friction. That is tight only for
+  the weakest guessed core at 1200 rpm, so don't go much past 5 mm with today's bar. The 12 × 3
+  mm bar 2 mm up keeps 0.06–0.23 mN·m, against 0.015 mN·m of drag.
+- **The rotor is pulled up by the same Fz,** 0.11–0.39 N seated and 0.04–0.15 N at 3 mm. If
+  that lifts it in its sleeve bearing, the carrier closes on the holder's 1.1 mm ceiling gap
+  ([MuJoCo check](#interference-check-in-mujoco-2026-11-04)). A smaller pull eases that too.
+  More torque doesn't.
+- **Limits:** a static model. The friction coefficient, the fan's real torque, how the
+  bar sits on the vial's floor (pivot ring or not, domed floor or not) and the bars' cores
+  are not known. The calibration rests on one observation, Ben's ~3 mm by eye.
+
+**Raising the vial.** For a test, use spacer discs in the cup (Ø27 mm, [`BUILD.md`](BUILD.md)
+stage 1; 4 and 5 mm added to the 1–3 mm). Start with 5 mm, check that it starts from rest
+three times running at 300 rpm, then step down. To keep a height, the compact holder's floor
+under the cup can be made that much thicker. The recess, and the Hall sensor on its
+ceiling, stay where they are, so only the vial moves. That isn't modelled yet. Either way,
+add the height to the vial's `location.z` ([`BUILD.md` stage 9](BUILD.md#9-add-the-vial-to-the-deck-file)).
+
+**Clearance on the CubXL with the vial higher.** CubOS's own mock run of `pipette_test`,
+`pipette_test_mix` and `pipette_test_stir` was used, on Ben's 10-02 deck and gantry files with the
+vials' `location.z` raised ([`cubos/tools/tip_clearance.py`](../../cubos/tools/tip_clearance.py),
+[output](analysis/deck_clearance_output.txt)). With a tip on, CubOS carries the pipette at gantry
+Z 122 (121 for `pipette_park`), so the tip end travels at deck Z 87 (86) however high the vials
+are. There is no headroom above that. The lowest pass is step 4: the tip goes from the rack to
+vial_1 straight over the capped vial_2.
+
+| Vial | Rim, deck Z | Tip end over a capped vial |
+|---|---|---|
+| 9-vial holder | 56 | 18 mm |
+| Stirrer, seated | 63 | 11 mm |
+| Stirrer, 3 mm up | 66 | 8 mm |
+| Stirrer, 5 mm up | 68 | 6 mm |
+| Contact | 74 | 0 |
+
+The cap is taken as 13 mm above the rim, as `passive_shadow` has it. Subtract 2 mm if it is 15 mm,
+the gantry file's `engage_depth_mm`. The capper, and the pipette without a tip, have far more
+room. Steps that go into a vial are given relative to the rim (`height: -35`), so they follow it.
+
+- **No pre-run check would catch a collision here.** `validate_setup`, the mock run and
+  `passive_shadow` stay green up to rim 122. `passive_shadow` sweeps only the tool that isn't
+  moving, and the other two check the working volume, not labware heights. Run
+  `tip_clearance.py` on a deck with a raised vial before its first run.
+- **`pipette_test_stir`'s stir moves are at a fixed deck Z 21,** so on a raised vial the
+  nozzle goes that much further below the rim (10 mm at rim 66) while it moves sideways.
+  Regenerate them with `stir_moves.py --z` set to 21 plus the raise (31 at rim 66) before
+  using them there.
+- `pipette_park`'s `travel_z` of 86 is fixed too, but it stays above every rim in this table.
+
 ## Risks and open questions
 
 1. **Coupling may be too strong rather than too weak.** The field at the bar is about
@@ -837,8 +944,9 @@ four washers are there.
    Another's stirring stopped at random at 200–250 rpm, which staff put down to the
    magnets sitting too close to the heater board
    ([forum 789](https://forum.pioreactor.com/t/stirring-randomly-stops/789/4)).
-   It is cheap to test: print Ø27 mm spacer discs, 1, 2 and 3 mm thick, to go under
-   the vial, and try each. (The cup narrows upward, to Ø27.3 mm at 3 mm, so a Ø27.6 mm
+   It is cheap to test: print Ø27 mm spacer discs, 1 to 5 mm thick, to go under
+   the vial, and try each. **It happened on 2026-11-04:** see
+   [Stalls with a vial in](#stalls-with-a-vial-in-2026-11-04-what-each-fix-buys). (The cup narrows upward, to Ø27.3 mm at 3 mm, so a Ø27.6 mm
    disc would not reach the floor.)
 2. **A fan-side rpm is not the bar's rpm.** The Hall sensor measures the magnets. The
    Edison coupling summary is explicit that drive feedback cannot see the bar slip.
