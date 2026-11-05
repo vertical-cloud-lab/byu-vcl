@@ -67,7 +67,11 @@ def _cone(a, b, ra, rb):
 # well is 20 mm across and 0.5 mm deep: enough powder to be "infinitely thick" for Al-12Si (0.2 mm gives 99 % at
 # 2theta = 90 deg, r8_powder_data.thick_enough) and a flat, level face to strike off flush with the carrier's top,
 # which is the goniometer's reference plane. Our choice; plain plates and other wells are sold.
-ZBH = dict(w=44.0, l=52.0, t=2.5, si_d=32.0, si_t=2.0, well_d=20.0, well=0.5)
+ZBH = dict(w=44.0, l=52.0, t=2.5, si_d=32.0, si_t=2.0, well_d=20.0, well=0.5,
+           fin_w=14.0, fin_d=8.0, fin_h=24.0, fin_y=-36.0)
+# Round 8, continuation (alloy_powder.py): the arm carries the holder by an upright fin on a tab at its front edge, 30 mm
+# in front of the well, so the gripper's fingers close across the fin (14 mm) and never reach under the carrier, and
+# nothing of the gripper is near the beam's plane. Our design, as is the rest of the holder's carrier.
 SCAN = (10.0, 90.0)                 # 2theta, deg
 DET_REST = 10.0                     # the detector's 2theta as modelled (instruments.xrd)
 V_START = (SCAN[0] / 2) / 45.0      # the stage's joint value at theta = 5 deg (its joint runs to 45 deg)
@@ -78,9 +82,11 @@ def zbh_parts() -> dict:
     p = ZBH
     carrier = box(-p["w"] / 2, -p["l"] / 2, 0, p["w"] / 2, p["l"] / 2, p["t"]).edges("|Z").fillet(3).cut(
         cyl(p["si_d"] + 0.4, p["si_t"] + 1, z=p["t"] - p["si_t"]))
-    tab = box(-8, -p["l"] / 2 - 10, 0, 8, -p["l"] / 2 + 1, p["t"])           # a tab to hold it by
+    fy0 = p["fin_y"] - p["fin_d"] / 2
+    tab = box(-p["fin_w"] / 2, fy0, 0, p["fin_w"] / 2, -p["l"] / 2 + 1, p["t"])      # a tab to hold it by,
+    fin = box(-p["fin_w"] / 2, fy0, 0, p["fin_w"] / 2, fy0 + p["fin_d"], p["fin_h"])  # with a fin the gripper holds
     si = cyl(p["si_d"], p["si_t"], z=p["t"] - p["si_t"]).cut(cyl(p["well_d"], p["well"] + 0.1, z=p["t"] - p["well"]))
-    return {"carrier": (carrier.union(tab), "aluminium"), "Si plate": (si, "r8_si_wafer")}
+    return {"carrier": (carrier.union(tab).union(fin), "aluminium"), "Si plate": (si, "r8_si_wafer")}
 
 
 def zbh_powder() -> cq.Workplane:
@@ -302,6 +308,8 @@ def mastersizer() -> I.Instrument:
 # to a port in the deck and sets it on a ring that lowers it into the chamber, film side down over the tube and the
 # detector; a shutter closes the port. The gantry, the port, the ring and their travels are assumptions.
 XRF_G = dict(park=(150.0, 170.0), up=100.0, grip=18.0, sink=44.0, port_dx=72.0)
+XRF_SEAT = 15           # seats[i * 5 + j]: i = 3, j = 0, the front-right seat, the one nearest the arm at Shuttle 2's
+                        # opening (alloy_powder.py); the grabber carries the cup from it to the port
 
 
 def xrf_geometry() -> dict:
@@ -312,7 +320,7 @@ def xrf_geometry() -> dict:
     tx, ty = 40.0, (yf + 30 + yb - 60) / 2 + 30
     seats = [(tx - 105 + 70 * i, ty - 150 + 75 * j) for i in range(4) for j in range(5)]
     mx, my = tx - 105, ty - 150 - 75
-    return dict(deck=deck, seats=seats, port=(mx, my), seat=seats[0], yf=yf, yb=yb, W=p["W"], H=p["H"],
+    return dict(deck=deck, seats=seats, port=(mx, my), seat=seats[XRF_SEAT], yf=yf, yb=yb, W=p["W"], H=p["H"],
                 st=q["side_t"], cup_d=p["cup_d"])
 
 
@@ -385,7 +393,7 @@ def xrf() -> I.Instrument:
     inst.pieces["beam"] = beam
     # the other cups in the tray, for company
     others = _piece(inst, "cups")
-    for (sx_, sy_) in g["seats"][3:20:3]:
+    for (sx_, sy_) in [q for i, q in enumerate(g["seats"]) if i % 3 == 1 and i != XRF_SEAT]:
         others.add(f"cup {sx_:.0f} {sy_:.0f}", tube(g["cup_d"], g["cup_d"] - 3, 25, x=sx_, y=sy_, z=dk + 4.5), "pp_white")
         others.add(f"powder {sx_:.0f} {sy_:.0f}", cyl(g["cup_d"] - 4, 10, x=sx_, y=sy_, z=dk + 4.2), "powder")
     j = inst.joints
@@ -435,8 +443,105 @@ def xrf() -> I.Instrument:
     return inst
 
 
+# ===================================================================================================== the prep station
+# Our design, on tray D beside the MiniFlex (round 8, PR #318: "for powder XRD, you didn't show anything related to the
+# sample prep for it, which is actually kind of an art"). It follows the literature Edison found (notes/edison_r8.md,
+# out/edison/auto_pxrd_prep/): the powder as sieved, never ground (milling gas-atomized Al-Cu cold-welds spheres into
+# flakes); sifted onto the holder through a mesh-capped vial, as A-Lab's UR5e does (Szymanski 2024); struck off flush
+# with the holder's reference plane, with no pressing (Whitfield, Huq and Kaduk, International Tables H, 2019). On a
+# pedestal: the zero-background holder at the front edge (its fin over the edge, so the gripper's fingers clear the
+# pedestal), a 1.5 in stub carrier for the SEM (the same holder cup as the mounts, r8_char.SEM_CUP) and a film-bottomed
+# XRF cup; behind the holder, a blade on a small linear axis, and a trough the excess falls into. Sizes are ours.
+PREP = dict(w=380.0, d=220.0, h=100.0, zbh_x=-120.0, puck_x=15.0, cup_x=125.0, nest_y=50.0, blade_park=-62.0,
+            blade_run=112.0, puck_d=38.1, puck_h=25.0, stub_d=12.7, cup_d=40.0)
+
+
+def prep_frames() -> dict:
+    """Where things sit on the station (its frame: the pedestal's bottom centre, y to the back): the holder's frame
+    (the carrier's underside centre), the stub carrier's and the XRF cup's bases."""
+    p = PREP
+    y_zbh = -p["d"] / 2 + ZBH["l"] / 2 + 1.0              # the carrier's front edge 1 mm behind the pedestal's face
+    return dict(zbh=(p["zbh_x"], y_zbh, p["h"] - 1.0), puck=(p["puck_x"], -p["d"] / 2 + p["nest_y"], p["h"] - 6.0),
+                cup=(p["cup_x"], -p["d"] / 2 + p["nest_y"], p["h"] - 8.0), trough_x=p["zbh_x"] + 48.0)
+
+
+def stub_puck_parts() -> dict:
+    """The 1.5 in aluminium stub carrier (our design: it drops into the SEM's 1.5 in mount cup like a mount, so the
+    spring plunger grounds it) with a 12.7 mm pin stub and a carbon tab in its middle. Frame: its base centre."""
+    p = PREP
+    puck = cyl(p["puck_d"], p["puck_h"]).cut(cyl(3.3, 8, z=p["puck_h"] - 7.9))
+    stub = cyl(p["stub_d"], 2.5, z=p["puck_h"]).union(cyl(3.2, 8, z=p["puck_h"] - 7.5))
+    tab = cyl(12.0, 0.3, z=p["puck_h"] + 2.5)
+    return {"carrier": (puck, "aluminium"), "pin stub": (stub, "steel"), "carbon tab": (tab, "inst_black")}
+
+
+def xrf_cup_parts() -> dict:
+    """A 40 mm XRF cup, its film down (instruments_char.xrf's 'sample', without the powder). Frame: its base centre."""
+    d = PREP["cup_d"]
+    return {"cup": (tube(d, d - 3, 25, z=1.5), "pp_white"), "film": (cyl(d - 1, 0.4, z=0.6), "prolene"),
+            "ring": (tube(d + 2, d - 1, 6, z=0.0), "pp_white")}
+
+
+def pxrd_prep() -> I.Instrument:
+    p = PREP
+    f = prep_frames()
+    inst = I.Instrument("pxrd_prep", "Powder prep station: XRD holder, SEM stub, XRF cup", "our design",
+                        (p["w"], p["d"] + 14.0, p["h"] + 50.0),
+                        "Our design (round 8): the sifting and striking-off of Whitfield, Huq and Kaduk (2019) and "
+                        "A-Lab's mesh-capped vial (Szymanski 2024), as Edison summarized them (notes/edison_r8.md)")
+    body = _piece(inst, "body")
+    zx, zy, zz = f["zbh"]
+    ped = box(-p["w"] / 2, -p["d"] / 2, 0, p["w"] / 2, p["d"] / 2, p["h"]).edges("|Z").fillet(6)
+    ped = ped.cut(box(zx - ZBH["w"] / 2 - 1, zy - ZBH["l"] / 2 - 1, zz, zx + ZBH["w"] / 2 + 1, zy + ZBH["l"] / 2 + 1,
+                      p["h"] + 1))                                   # the holder's nest, 1 mm deep
+    tx = f["trough_x"]
+    ped = ped.cut(box(tx - 14, zy - 30, p["h"] - 16, tx + 14, zy + 30, p["h"] + 1))      # the trough
+    for key, (x, y, z), dia in (("puck", f["puck"], p["puck_d"] + 0.8), ("cup", f["cup"], p["cup_d"] + 3.0)):
+        ped = ped.cut(cyl(dia, p["h"] - z + 1, x=x, y=y, z=z))
+    body.add("pedestal", ped, "aluminium")
+    body.add("trough liner", box(tx - 13, zy - 29, p["h"] - 15.5, tx + 13, zy + 29, p["h"] - 15), "inst_dark")
+    # the blade's axis: a rail block behind the holder, the carriage on it, an arm forward over the nest
+    rx0, rx1 = zx + p["blade_park"] - 30, zx + p["blade_park"] + p["blade_run"] + 30
+    body.add("blade rail", box(rx0, zy + 34, p["h"], rx1, zy + 52, p["h"] + 40).edges("|X").fillet(3), "inst_dark")
+    body.add("blade motor", box(rx0 - 34, zy + 30, p["h"], rx0, zy + 56, p["h"] + 44), "inst_black")
+    bl = _piece(inst, "blade")
+    bx = zx + p["blade_park"]
+    top = zz + ZBH["t"]                                           # the holder's reference plane
+    bl.add("blade carriage", box(bx - 14, zy + 22, p["h"] + 18, bx + 14, zy + 36, p["h"] + 44), "aluminium")
+    bl.add("blade arm", box(bx - 5, zy - 22, top + 14, bx + 5, zy + 30, top + 22), "aluminium")
+    bl.add("blade", box(bx - 1.0, zy - 18, top + 0.2, bx + 1.0, zy + 18, top + 16), "steel")
+    # what it holds, as stocked: the holder, the stub carrier, an empty XRF cup
+    hz = _piece(inst, "zbh")
+    for nm, (shape, mat) in zbh_parts().items():
+        hz.add(nm, shape.translate((zx, zy, zz)), mat)
+    pk = _piece(inst, "stub_puck")
+    for nm, (shape, mat) in stub_puck_parts().items():
+        pk.add(nm, shape.translate(f["puck"]), mat)
+    cu = _piece(inst, "xrf_cup")
+    for nm, (shape, mat) in xrf_cup_parts().items():
+        cu.add(nm, shape.translate(f["cup"]), mat)
+    inst.joints = {"blade": Joint("slide", vec=(p["blade_run"], 0, 0))}
+    inst.props = ()
+    inst.actions = [("Our prep station for the powder: a zero-background holder, a stub carrier for the SEM and an XRF "
+                     "cup in their nests; a blade that strikes the powder off flush with the holder's face.", 2.0,
+                     {"blade": (0.0, 0.0)}),
+                    ("The blade's stroke, across the holder and over the trough.", 1.6, {"blade": (0.0, 1.0)}),
+                    ("And back.", 1.2, {"blade": (1.0, 0.0)})]
+    inst.labels = [("zero-background holder", (zx, zy, top + 20), (0.18, 0.30)),
+                   ("blade", (bx, zy + 40, p["h"] + 50), (0.30, 0.16)),
+                   ("SEM stub carrier", (f["puck"][0], f["puck"][1], p["h"] + 30), (0.62, 0.22)),
+                   ("XRF cup", (f["cup"][0], f["cup"][1], p["h"] + 30), (0.84, 0.30))]
+    inst.notes = ["Our design; every size an assumption."]
+    return inst
+
+
+# tray D: where the OpenFlexure array stood (round 8 dropped it), right of the MiniFlex, clear of the stream camera
+# posts (services.TRAY_CAMS["D"]) and the UPS; setup_lab.merge_r8 puts it in the set-up movie and the tray plan
+TRAY_PLACEMENT = {"pxrd_prep": dict(tray="D", x=620.0, y=-280.0, turn=0.0)}
+
+
 # ===================================================================================================== registry
-REGISTRY = {"xrd": xrd, "mastersizer": mastersizer, "xrf": xrf}
+REGISTRY = {"xrd": xrd, "mastersizer": mastersizer, "xrf": xrf, "pxrd_prep": pxrd_prep}
 
 
 def _overlay(key):
