@@ -54,11 +54,12 @@ the capper and the pipette, instead of its own XIAO RP2040.
 | [`wiring_diagram.py`](wiring_diagram.py) | Draws [`img/wiring_uno.png`](img/wiring_uno.png), the Uno version's wiring with the junction board hole by hole, after checking that layout against BUILD.md's netlist and that the board fits both bases. It also prints the hole list |
 | [`onshape/render_steps.json`](onshape/render_steps.json) | Camera and caption for each render |
 | [`onshape/document.json`](onshape/document.json) | Onshape document ids |
+| [`onshape/import_steps.py`](onshape/import_steps.py) | Imports the STEP files into the lab's Onshape folder vcl-shared › CubXL, one document each, and checks each against its STEP. Its [record](onshape/import_steps_2026-11-05.json) has the ids |
 | [`BUILD.md`](BUILD.md) | Build guide for the Uno-driven version, in both sizes: printing, keys, inserts, magnets, wiring, bench checks, assembly, flashing the Uno, first spins, the deck file |
 | [`BOM.md`](BOM.md) | Bill of materials for the Uno-driven version: parts to buy with links and prices, parts to print |
-| [`step/`](step) | Printed parts as STEP: `base`, `vial_holder`, `magnet_carrier`, `deck_key` (the 0.05 mm press fit; print two), plus `vial_stirrer_assembly.step`, the whole stirrer for fit checks |
+| [`step/`](step) | Printed parts as STEP: `base`, `vial_holder`, `magnet_carrier`, `deck_key` (the 0.05 mm press fit; print two), plus `vial_stirrer_assembly.step`, the whole stirrer for fit checks. [`step/compact/`](step/compact) has the compact base and vial holder. All seven are also documents in the lab's Onshape folder ([below](#the-step-files-in-onshape-2026-11-05)) |
 | [`stl/`](stl) | The same printed parts as STL. Both sets are in assembly position, which is also each part's print orientation. [`stl/key_fit_test/`](stl/key_fit_test) has the deck keys at 0.10 and 0.15 mm, the two sizes from the fit test that aren't printed by default |
-| [`compact/`](compact/README.md), [`stl/compact/`](stl/compact) | The compact 49 × 44 mm base and vial holder, built in CadQuery by `compact/build_compact.py` from `vial_stirrer.fs`'s numbers, and checked against the Onshape parts. STLs, and the base as STEP. `compact/render_compact_steps.py` draws its assembly for BUILD.md, [`img/compact_assembly.png`](img/compact_assembly.png). Since 2026-11-04 the compact base has no board stop and its cable notch is in the −X wall ([why](compact/README.md#the-2026-11-04-changes)) |
+| [`compact/`](compact/README.md), [`stl/compact/`](stl/compact) | The compact 49 × 44 mm base and vial holder, built in CadQuery by `compact/build_compact.py` from `vial_stirrer.fs`'s numbers, and checked against the Onshape parts. STLs, and both as STEP (the holder since 2026-11-05). `compact/render_compact_steps.py` draws its assembly for BUILD.md, [`img/compact_assembly.png`](img/compact_assembly.png). Since 2026-11-04 the compact base has no board stop and its cable notch is in the −X wall ([why](compact/README.md#the-2026-11-04-changes)) |
 | [`print/`](print) | Print records. [`2026-10-21-a1mini/`](print/2026-10-21-a1mini/README.md): all five parts on one A1 mini plate in white PETG Basic, sent from Bambu Studio by an `@claude-print` run. It has the file the printer ran, the settings and a camera timelapse. [`2026-10-22-a1mini-keys/`](print/2026-10-22-a1mini-keys/README.md): the deck key at 0.05, 0.10 and 0.15 mm, for the fit test, the same way. 0.05 fit best. [`2026-10-28-a1mini-compact/`](print/2026-10-28-a1mini-compact/README.md): the compact stirrer's base and holder, a carrier and two 0.05 keys. [`2026-10-30-a1mini-compact/`](print/2026-10-30-a1mini-compact/README.md): the same plate again, from the same file; finished after a pause at 80 % on the AMS Lite slot 4 warning |
 | [`img/`](img) | Onshape's renders (steps 1–10 of the XIAO version, assembled, exploded, section, contact sheet), the assembly video, GIF and contact sheet of the Uno version, and its wiring diagram |
 | [`firmware/main.py`](firmware/main.py) | MicroPython speed controller for the XIAO RP2040 (untested) |
@@ -79,6 +80,35 @@ Part Studio inserted, and Onshape's BOM of the assembly. It was made through the
 with the lab's key, so it sits in @sgbaird's Onshape account, unshared. It is
 disposable: `build_onshape.py --new` rebuilds it from the FeatureScript in a fresh
 document.
+
+### The STEP files in Onshape (2026-11-05)
+
+At Ben's request on PR #269, every STEP file in [`step/`](step) is also a document in the lab's
+Onshape folder [vcl-shared › CubXL](https://cad.onshape.com/documents?nodeId=a3519a23bb5dde572d2e8dbe&resourceType=folder), owned by Vertical Cloud Lab, beside the 9-vial
+holder and Ben's [`Stir module spacer`](https://cad.onshape.com/documents/793acc919f1bebafa8462ee6). Each document holds the STEP file and the Part
+Studio Onshape translated it into. Its description names the file and the commit it came from.
+[`onshape/import_steps.py`](onshape/import_steps.py) made them, and its
+[record](onshape/import_steps_2026-11-05.json) has the ids. The last column is Onshape's
+volume against the STEP's own (CadQuery).
+
+| Document | From | What it is | Onshape against the STEP |
+|---|---|---|---|
+| [Stir module base (compact)](https://cad.onshape.com/documents/b0a94bac496289d8dd8962c6/w/209a9017572cef08cf43ab11/e/8790585813322aad029f0dd7) | `step/compact/base_compact.step` | the 2026-11-04 base: no board stop, cable notch in −X. Not printed yet | 1 part, 11,121.4 mm³ against 11,121.4 |
+| [Stir module vial holder (compact)](https://cad.onshape.com/documents/68a93fd17c5379e566dbcdd8/w/9da3e01c0532c38803126726/e/a223552e5324c6c02e9c30fb) | `step/compact/vial_holder_compact.step` | as printed on 10-28 and 10-30 | 1 part, 11,447.4 mm³ against 11,451.0 |
+| [Stir module magnet carrier](https://cad.onshape.com/documents/a98c2a1ba66edcc3d83e79b3/w/787912a825c9269be6b103fa/e/73d85dc79512ef1ed13c848a) | `step/magnet_carrier.step` | both sizes | 1 part, 799.1 mm³ against 799.1 |
+| [Stir module deck key](https://cad.onshape.com/documents/78f56c77ba6ccdd186d25d6d/w/f07dde3e7d214250c82ae758/e/e970122e2d97747dd1562196) | `step/deck_key.step` | the 0.05 mm press fit; two per base, either size | 1 part, 2,295.0 mm³ against 2,295.1 |
+| [Stir module base (56 x 56)](https://cad.onshape.com/documents/16486637864da3fef98d58f9/w/64574d6774d5f14f39b1662f/e/8dd20414e333043b983be773) | `step/base.step` | printed 10-21 | 1 part, 23,754.2 mm³ against 23,754.1 |
+| [Stir module vial holder (56 x 56)](https://cad.onshape.com/documents/749fdc410a7fcf8118f934cb/w/dcfbeb8e868cf7d64ae87154/e/e42dee1f2080c7b2eb1aa428) | `step/vial_holder.step` | printed 10-21 | 1 part, 17,111.8 mm³ against 17,115.5 |
+| [Stir module assembly (56 x 56)](https://cad.onshape.com/documents/26ed1fa66c56b742374d9682/w/af7f8a2ac4be6e997df3a3f3/e/21c19fbbd3ad7baa4c40f801) | `step/vial_stirrer_assembly.step` | the whole stirrer, printed and bought parts, in one Part Studio | 39 parts, 65,486.4 mm³ against 65,490.2 |
+
+![The compact stirrer's printed parts, rendered by Onshape in the CubXL folder](img/onshape_cubxl_compact_parts.png)
+
+*The four compact-stirrer parts as Onshape shows them in the CubXL folder, each scaled to fit.*
+
+These are imports, so they don't update with the model. If a part changes, delete its document
+and rerun the script for that part (`--only base_compact`, say). The 56 × 56 mm parts' source is
+still the FeatureScript document above. The compact parts' source is
+[`compact/build_compact.py`](compact/build_compact.py).
 
 ## What comes from the Pioreactor, and what changed
 
@@ -898,9 +928,11 @@ up**; or **both** with the vial seated.
   bar sits on the vial's floor (pivot ring or not, domed floor or not) and the bars' cores
   are not known. The calibration rests on one observation, Ben's ~3 mm by eye.
 
-**Raising the vial.** For a test, use spacer discs in the cup (Ø27 mm, [`BUILD.md`](BUILD.md)
-stage 1; 4 and 5 mm added to the 1–3 mm). Start with 5 mm, check that it starts from rest
-three times running at 300 rpm, then step down. To keep a height, the compact holder's floor
+**Raising the vial.** What works, from the 2026-11-05 test (next section): **a Ø10 × 4.6 mm
+spacer** on the cup's floor, under the vial. That is the height of the spacer and 3 washers
+Ben stacked there. Ben is drawing it in Onshape ([`Stir module spacer`](https://cad.onshape.com/documents/793acc919f1bebafa8462ee6)). To try
+another height, stack M3 washers under the vial, as he did, and check that it starts from rest
+three times running at 300 rpm. To build a height in instead, the compact holder's floor
 under the cup can be made that much thicker. The recess, and the Hall sensor on its
 ceiling, stay where they are, so only the vial moves. That isn't modelled yet. Either way,
 add the height to the vial's `location.z` ([`BUILD.md` stage 9](BUILD.md#9-add-the-vial-to-the-deck-file)).
@@ -945,9 +977,24 @@ and 1200 rpm ([record](../../cubos/results/stirrer_spacer_20261105/README.md)):
 - **Plus 3 washers:** it started on the first kick all three times, held 300 rpm at a duty of
   0.33–0.35, and reached 600 and 1200 rpm. The Hall readings tracked the setpoint.
 
-The stack's thickness isn't measured yet, so it can't be placed on the curve above. Ben also
-reports that a tip doesn't clear a capped vial on the stirrer, though it clears an uncapped
-one at the vial's maximum height by about 8 mm. The table above, which took the cap as 13 mm
+**Ben's measurements:** the spacer plus 3 washers is **4.6 mm**, and **at 1200 rpm the bar
+stayed with the magnets.** It didn't break loose. The spacer to keep is that height at Ø10 mm.
+
+- **On the curve above,** 4.6 mm up is a pull of **0.62–0.63×** the 3 mm edge.
+- **The lower steps:** the washers weren't measured on their own. If they are 0.5 mm each (DIN
+  125 M3), the spacer alone was 3.1 mm (0.97–0.98×, the edge: no start), and +2 washers
+  4.1 mm (0.72–0.73×: bursts). By this model, then, the fan starts the bar from rest once the
+  pull is under about 0.7× the edge. 4.6 mm clears that, with less margin than the 0.5× aimed for.
+- **Little headroom at speed:** the duty reached 0.88 at 1200 rpm and was still rising,
+  against 0.62–0.68 with no vial on 11-04.
+- **Coupling:** the model has today's bar coupled at 1200 rpm up to about 5 mm, tight only for
+  the weakest guessed core. Ben's look at 4.6 mm agrees.
+- **The rim:** 63 seated plus 4.6 is about 67.6 by the model's numbers. The stir-module trial's
+  deck file ([`stir_module_trial.yaml`](../../cubos/configs/deck/stir_module_trial.yaml)) has
+  vial_1 at 66, from Ben. A rim height taught on the deck beats both.
+
+Ben also reports that a tip doesn't clear a capped vial on the stirrer, though it clears an
+uncapped one at the vial's maximum height by about 8 mm. The table above, which took the cap as 13 mm
 above the rim, is too generous.
 
 ## Risks and open questions
@@ -959,10 +1006,9 @@ above the rim, is too generous.
    Another's stirring stopped at random at 200–250 rpm, which staff put down to the
    magnets sitting too close to the heater board
    ([forum 789](https://forum.pioreactor.com/t/stirring-randomly-stops/789/4)).
-   It is cheap to test: print Ø27 mm spacer discs, 1 to 5 mm thick, to go under
-   the vial, and try each. **It happened on 2026-11-04:** see
-   [Stalls with a vial in](#stalls-with-a-vial-in-2026-11-04-what-each-fix-buys). (The cup narrows upward, to Ø27.3 mm at 3 mm, so a Ø27.6 mm
-   disc would not reach the floor.)
+   **It happened on 2026-11-04,** and a Ø10 × 4.6 mm spacer under the vial fixed it on
+   2026-11-05: see
+   [Stalls with a vial in](#stalls-with-a-vial-in-2026-11-04-what-each-fix-buys).
 2. **A fan-side rpm is not the bar's rpm.** The Hall sensor measures the magnets. The
    Edison coupling summary is explicit that drive feedback cannot see the bar slip.
    Confirm coupling by eye or on camera through the slots between the fingers; the

@@ -59,7 +59,7 @@ way for it, and stage 6 has its own steps ([compact](#compact-stirrer)).
 | Stage | What | Where the time goes |
 |---|---|---|
 | [0](#0-before-you-start) | Parts, tools, three measurements | |
-| [1](#1-print-the-parts) | Print five parts and three spacer discs, check them | Printing |
+| [1](#1-print-the-parts) | Print five parts and the spacer, check them | Printing |
 | [2](#2-press-the-deck-keys-into-the-base) | Deck keys pressed into the base | |
 | [3](#3-press-in-the-heat-set-inserts) | Heat-set inserts: eight, or four in the compact base | |
 | [4](#4-glue-the-magnets-into-the-carrier) | Two magnets, opposite poles up | Glue cure |
@@ -78,7 +78,7 @@ way for it, and stage 6 has its own steps ([compact](#compact-stirrer)).
 | Printed | Base and vial holder | 1 each, the compact ones | 1 each | Compact: [`stl/compact/`](stl/compact). 56 × 56 mm: [`step/`](step) or [`stl/`](stl). See [stage 1](#1-print-the-parts) |
 | Printed | Magnet carrier | 1 | 1 | [`step/`](step) or [`stl/`](stl), the same part for both |
 | Printed | Deck key, the 0.05 mm press fit | 2 | 2 | same |
-| Printed | Spacer discs, Ø27 × 1, 2, 3, 4 and 5 mm (for the coupling test) | 1 each | 1 each | a cylinder in any slicer |
+| Printed | Spacer, Ø10 × 4.6 mm, under the vial (2026-11-05) | 1 | 1 | Ben's Onshape document [`Stir module spacer`](https://cad.onshape.com/documents/793acc919f1bebafa8462ee6) |
 | Bought | Orion OD4010-12HSS fan | 1 | 1 | BOM item 1 |
 | Bought | N52 magnets, 1/4 × 1/16 in | 2, plus 1 spare for checking poles | same | BOM item 2 |
 | Bought | PTFE stir bar, 15 × 6 mm | 1 | 1 | BOM item 3 |
@@ -154,7 +154,7 @@ print orientation, so a slicer only has to drop them onto the bed.
 | [Vial holder](step/vial_holder.step) | 1 | Flange down | The fingers print upright, as in the 9-vial holder. The Ø27 mm recess under the floor is a bridge; print it without supports, since support marks would eat into the 1.1 mm gap |
 | [Magnet carrier](step/magnet_carrier.step) | 1 | Pockets up | 100 % infill. It has to come out flat |
 | [Deck key](step/deck_key.step) | 2 | Nub up | Elephant's foot on the bottom edge makes it bind in the deck slot. The nub is a press fit in the base, 0.05 mm a side, the best fit of the [2026-10-22 fit test](print/2026-10-22-a1mini-keys/README.md). Each key has one dimple in its top face |
-| Spacer discs | 5 | Flat | Ø27 mm, 1, 2, 3, 4 and 5 mm thick. The cup narrows by 3°, to Ø27.3 mm at 3 mm up, so a Ø27.6 mm disc would stop short of the floor |
+| Spacer | 1 | Flat | Ø10 × 4.6 mm, from Ben's Onshape document. It sits on the cup's floor under the vial, as the spacer and washers did in the 2026-11-05 test. At Ø10 mm it drops straight past the fingers (Ø25.8 mm at their tips) to the floor |
 
 **Compact:** print [`base_compact.stl`](stl/compact/base_compact.stl) and
 [`vial_holder_compact.stl`](stl/compact/vial_holder_compact.stl) in place of the base and the
@@ -677,12 +677,14 @@ following.** The bar shows through the slots between the fingers, and from above
 4. **Coupling test** (README [risk 1](README.md#risks-and-open-questions)). The magnets sit
    2.4 mm from the vial, against about 7 mm on the Pioreactor, so the pull on the bar may
    be too strong rather than too weak. Signs of too strong: the bar won't come up to speed
-   smoothly, or it jerks. Repeat step 3 with the spacer discs under the
-   vial, and keep the one that gives the widest smooth range. If it won't start with the vial
-   seated (the compact stirrer on 2026-11-04), begin with 5 mm, check it starts from rest
-   three times at 300 rpm, then step down (README,
-   [Stalls with a vial in](README.md#stalls-with-a-vial-in-2026-11-04-what-each-fix-buys)). A spacer raises the vial by
-   its thickness, so add it to the vial's height in [stage 9](#9-add-the-vial-to-the-deck-file).
+   smoothly, or it jerks. With the vial seated it was too strong: the compact stirrer
+   wouldn't start (2026-11-04). On 4.6 mm under the vial it started from rest every time, and the
+   bar stayed with the magnets at 1200 rpm (2026-11-05; README,
+   [Stalls with a vial in](README.md#stalls-with-a-vial-in-2026-11-04-what-each-fix-buys)). So put
+   the Ø10 × 4.6 mm spacer under the vial, check it starts from rest three times at 300 rpm,
+   then repeat step 3. If it won't start, add M3 washers under the vial one at a time until it
+   does. A spacer raises the vial by its thickness, so add it to the vial's height in
+   [stage 9](#9-add-the-vial-to-the-deck-file).
 5. **Paint.** Ben's mixture, at the working rpm, 30–60 s, then compare with what `mix` did.
 
 Stopping early: `link.send_command(30, 0)`, or let the timer run out. Bear in mind that **any
@@ -700,7 +702,7 @@ its location.
 |---|---|---|
 | `location.x` | Midway between the two slot columns the keys are in. Columns are at about X = 136.668 + 25n, so the vial is at about **149.168 + 25n** | Inferred from Ben's deck file, where vial_1 at (136.668, 45) sits over a slot centre. ±1.5 mm; teach it |
 | `location.y` | The row's centre, about **45 + 45m** | Same |
-| `location.z` | The rim height in the deck frame. Ben's vials in the 9-vial holder are at 56; on the stirrer start from **63** (+7 mm), plus the spacer thickness if you use one | The vial bottom is 25.0 mm above the deck here, against 18.0 in the 9-vial holder. The same on the compact stirrer with 0.5 mm washers. There it also moves with the fan's and the washers' thickness ([Measure first](#measure-first)) |
+| `location.z` | The rim height in the deck frame. Ben's vials in the 9-vial holder are at 56; on the stirrer start from **63** (+7 mm), plus the spacer's 4.6 mm: about **67.6**. Teach it on the rim | The vial bottom is 25.0 mm above the deck here, against 18.0 in the 9-vial holder. The same on the compact stirrer with 0.5 mm washers. There it also moves with the fan's and the washers' thickness ([Measure first](#measure-first)) |
 | `height`, `diameter` | Unchanged. They describe the vial, not where it is | CubOS's `Vial` model |
 
 The vial sits midway between its two keys on both sizes, so the same x and y apply.
@@ -732,7 +734,7 @@ likely.
 |---|---|---|
 | The fan runs in bursts for about 12 s, then stops, and `31` says `"stalled":1` | No Hall pulses reach D2: wiring, a dead sensor, both magnets the same pole up. Or the fan really is jammed | Redo the Hall test in [stage 6](#6-assemble). Spin the fan through a vent |
 | As above, but only with a vial and bar in: without one, `rpm` reads fine | The coupled bar's field cancels part of the Hall signal, and what is left is under the sensor's trip point | Re-glue the sensor closer to the carrier, keeping 0.5 mm clear of it: each 0.5 mm is worth about 4 mT. A spacer disc barely helps here (about 0.6 mT for 1 mm). The 12 × 3 mm bar takes far less off the signal than the 15 × 6 mm one (README, [Stalls with a vial in](README.md#stalls-with-a-vial-in-2026-11-04-what-each-fix-buys)). Failing that, the SS49E linear sensor (README) |
-| Won't start with a vial and bar in, but starts with the vial out; or stirs until the vial is nearly down, then stops | The magnets pull the bar onto the vial's floor harder than the fan can drag it round (2026-11-04) | Raise the vial: a 5 mm spacer; or 2 mm with the 12 × 3 mm bar; or 2.5 mm with the OD4010-05HSS fan. README, [Stalls with a vial in](README.md#stalls-with-a-vial-in-2026-11-04-what-each-fix-buys) |
+| Won't start with a vial and bar in, but starts with the vial out; or stirs until the vial is nearly down, then stops | The magnets pull the bar onto the vial's floor harder than the fan can drag it round (2026-11-04) | Raise the vial: the Ø10 × 4.6 mm spacer, which fixed it on 2026-11-05, plus an M3 washer or two if it still stalls; or 2 mm with the 12 × 3 mm bar; or 2.5 mm with the OD4010-05HSS fan. README, [Stalls with a vial in](README.md#stalls-with-a-vial-in-2026-11-04-what-each-fix-buys) |
 | The fan never runs | The gate isn't driven: the PWM lead isn't on D10, the MOSFET's pins are wrong, or the board still has the old firmware | If `31` gets an error reply, the board has the old firmware. Otherwise meter from the gate to GND while `31` shows a duty above 0: a DC meter reads about duty × 5 V |
 | The fan runs flat out whatever you send | Drain and source shorted (a damaged MOSFET), or the gate tied to 5V | Bench check, stage 5 |
 | The Uno resets, or the Pi loses its port, when the fan starts | The 0.5 s start kick pulls the Uno's 5 V down | Feed the fan from the electromagnet's 5 V supply instead, with the grounds joined |

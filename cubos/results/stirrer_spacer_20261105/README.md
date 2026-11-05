@@ -10,8 +10,8 @@ didn't start: in 5 starts from rest the Hall sensor counted 2 single pulses, and
 stopped the fan as stalled every time. With 2 washers added, it never stalled but turned
 in bursts until the duty passed about 0.8. With 3 washers it started on the first kick all
 three times, held 300 rpm at a duty of 0.33–0.35, followed the ramps to 600 and 1200 rpm,
-and coasted to rest in about 3 s.** The spacer's and washers' thicknesses haven't been
-measured yet. All times UTC (the lab is on MST, UTC−7).
+and coasted to rest in about 3 s.** Ben measured the spacer plus 3 washers afterwards at
+4.6 mm, and saw the bar stay with the magnets at 1200 rpm. All times UTC (the lab is on MST, UTC−7).
 
 ![Hall rpm and duty for the three heights](rpm_duty_1105.png)
 
@@ -157,7 +157,10 @@ stirrer, and over a patch that doesn't move, for the camera's own noise
    is above the spacer plus 2 washers.** With 3 washers it starts reliably (3 of 3) and holds
    its speed. The 11-04 model ([`coupling_vs_height.py`](../../../hardware/vial-stirrer-cubxl/analysis/coupling_vs_height.py))
    put the edge for a turning fan at about 3 mm. It aimed for about 5 mm, for twice the
-   margin, so that the fan would start from rest. Measuring the stack would test it.
+   margin, so that the fan would start from rest. **Ben measured the stack at 4.6 mm**, a pull
+   of 0.62–0.63× that edge on the model's curve. If the washers are 0.5 mm each (not measured),
+   the two lower steps were 3.1 mm (0.97–0.98×) and 4.1 mm (0.72–0.73×). So the fan starts the
+   bar from rest once the pull is under about 0.7× the edge.
 2. **The Hall readings didn't jump at this height.** They tracked the setpoint at every
    speed, and each coast started from the last reading, though the sensor hasn't moved. The
    11-04 field check gave only about 0.6 mT less cancelling field per mm of height. So the
@@ -170,17 +173,19 @@ stirrer, and over a patch that doesn't move, for the camera's own noise
 
 ## Next
 
-- **Measure the stack:** the spacer plus 3 washers.
-  - Make one Ø27 mm disc of that thickness, to replace it.
-  - Add the same amount to the vial's `location.z` in the deck file.
+- **The stack is 4.6 mm** (Ben, after this run).
+  - The spacer to replace it is Ø10 × 4.6 mm. Ben is drawing it in Onshape
+    ([`Stir module spacer`](https://cad.onshape.com/documents/793acc919f1bebafa8462ee6)).
+  - Add 4.6 mm to the vial's `location.z`: about 67.6, from the model's seated 63. The
+    stir-module trial's deck file has vial_1 at 66, from Ben. Teach it on the rim.
   - Check the tip's clearance over the raised vial. **Ben (22:34): on the stir module, the
     pipette with a tip on does not clear a capped vial. It clears an uncapped vial at
     maximum height by about 8 mm.** On 11-04, [`tip_clearance.py`](../../tools/tip_clearance.py)
     gave 8 mm over a capped vial raised 3 mm. It took the cap as 13 mm above the rim, so its
     cap height (or the tip's) needs measuring before it can be trusted for this deck. Ben's
     protocol request in the same comment went to the run that comment started.
-- **Check the bar:** does it follow the magnets at 1200 rpm, or break loose and rattle?
-  Camera 1 can't see it.
+- **The bar at 1200 rpm stayed with the magnets** and didn't break loose (Ben, after this
+  run). Camera 1 can't see it.
 - **Not done:** no firmware change, and the Uno wasn't reflashed. `pipette_test` still
   hasn't been run on the stirrer image.
 
