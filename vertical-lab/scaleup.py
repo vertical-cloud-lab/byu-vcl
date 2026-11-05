@@ -30,13 +30,18 @@ import pyvista as pv
 from PIL import ImageDraw
 
 import r8_scale as S8
+import scene
 import tour
 from scene import FPS, PREVIEW, Scene, T, R, font, window
+
+scene.GIF_FPS = 5                    # a ~2 min GIF under 4.9 MB: 5 fps at 640 x 360 (the MP4 keeps every frame)
+scene.GIF_SIZE = (640, 360)
 
 TITLE = "Scaling up: large-format printing and ship-part repair"
 XC = 5500.0                  # the Meltio cell's centre, right of the EOS
 XD = -3400.0                 # the MX-Lab, left of it, for scale
 SAW = dict(dx=1250.0, dy=-1800.0, dz=-90.0, table=(900.0, 700.0, 900.0))   # the plate's last offset: onto the saw table
+BR_SHIFT = 325.0             # the cut brackets, turned 90 degrees, to the saw table's right-hand margin (see eos_apply)
 
 # powder: the lab's figures (alloy_atomize.K7M2Q9, MIDI_BUILDS) and the EOS bed, an estimate
 RUN_FINES_G = 187.973        # DAL #219: one rePowder run, < 63 um (1079.886 g charged)
@@ -146,9 +151,14 @@ def main():
         top = P + max(f, 0.004) * Hb
         sc.set_mesh("build/cake", pv.Box(bounds=(cx - 196, cx + 196, cy - 196, cy + 196, P, top)))
         sc.show(["build/cake"], state.get("cake", 1.0))
+        # round 8: cut free, the two brackets are lifted off by hand and laid on the table's free right-hand margin,
+        # turned 90 degrees (they hovered 260 mm over the plate before: nothing held them). The table is 900 x 700 and
+        # the plate 400 x 400 on its centre, so the margin is 250 mm; the pair, turned, is 245.6 mm across. They
+        # come to rest 30 mm lower than they were printed: the plate's thickness, on the table's top.
         L = state["lift"]
-        sc.gmat["eos:lift"] = T((0, -120 * L, 260 * L)) @ R((0, 0, 1), 20 * L, (cx, cy, P)) @ R((1, 0, 0), -22 * L,
-                                                                                                (cx, cy, P + 50))
+        rise, over = window(L, 0.0, 0.3), window(L, 0.3, 0.75)
+        sc.gmat["eos:lift"] = T((BR_SHIFT * over, 0, 80 * rise - 110 * window(L, 0.75, 1.0))) @ \
+            R((0, 0, 1), 90 * over, (cx, cy, P))
         s = state["saw"]
         sc.show(["saw/band"], 1.0 if s >= 0 else 0.0)
         sc.gmat["saw"] = T((cx - 280 + 560 * max(s, 0.0), 0, 0))
@@ -309,11 +319,13 @@ def main():
         state["saw"] = window(u, 0.0, 0.55)
         state["lift"] = window(u, 0.6, 1.0)
         eos_apply()
-    sc.step(f"6/{n}", "A band saw (drawn as its blade) parts the brackets from the plate, and they lift off: "
-            "antenna brackets after RUAG Space's, 380 x 110 x 100 mm as drawn. The tensile bars stay for testing.",
+    sc.step(f"6/{n}", "A band saw (drawn as its blade) parts the brackets from the plate, and they are lifted off "
+            "by hand and laid beside it: antenna brackets after RUAG Space's, 380 x 110 x 100 mm as drawn. The tensile "
+            "bars stay for testing.",
             6.0, cut, hold=1.2,
             still=True,
-            labels=[("antenna bracket, after RUAG Space\n(shape schematic)", (tx, ty, th + 330), (0.18, 0.28)),
+            labels=[("antenna bracket, after RUAG Space\n(shape schematic)", (tx + BR_SHIFT, ty + 120, th + 80),
+                     (0.18, 0.28)),
                     ("30 tensile bars", (tx + 150, ty - 170, th + 60), (0.80, 0.62))])
     state["saw"] = -1.0
     eos_apply()
