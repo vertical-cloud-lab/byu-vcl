@@ -126,7 +126,7 @@ What changed in `setup_lab.merge_r8`, which takes each round-8 module's `TRAY_PL
 
 `setup_lab.py` was re-rendered at 6 fps between 19:02 and 19:28 UTC: 696 frames, 116 s, `out/mp4/setup_lab.mp4`
 (12.0 MB). At warehouse.py's GIF settings (640 px, 5 fps) its GIF came out at 9.1 MB, so `out/setup_lab.gif` is
-made smaller from the MP4 until it is under 4.9 MB.
+made from the MP4 at 480 px and 4 fps: 4.8 MB.
 
 What is new against round 7's render:
 
