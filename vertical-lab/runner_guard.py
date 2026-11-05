@@ -233,12 +233,19 @@ def slot(argv: list[str]) -> int:
     for k in ("LP_NUM_THREADS", "OMP_NUM_THREADS", "FFMPEG_THREADS"):
         env.setdefault(k, "2")
     t1 = time.time()
-    p = subprocess.Popen(["nice", "-n", "5", *cmd], env=env)
-    try:
-        rc = p.wait()
-    except KeyboardInterrupt:
-        p.terminate()
-        rc = p.wait()
+    # The job runs in its own process group, and a SIGTERM or SIGINT to this process is passed on to all of it. Without
+    # this, killing the slot process (by hand, or a caller's timeout) freed the slot while the render kept running and
+    # kept its memory (2.3 GB once, round 8).
+    p = subprocess.Popen(["nice", "-n", "5", *cmd], env=env, start_new_session=True)
+
+    def forward(signum, _frame):
+        try:
+            os.killpg(p.pid, signum)
+        except OSError:
+            pass
+    signal.signal(signal.SIGTERM, forward)
+    signal.signal(signal.SIGINT, forward)
+    rc = p.wait()
     log(SLOT_LOG, f"END   w{weight} rc={rc} after {(time.time() - t1) / 60:.1f} min: {label}")
     if rcfile:
         Path(rcfile).write_text(f"{rc}\n")
