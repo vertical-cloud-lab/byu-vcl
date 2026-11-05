@@ -173,3 +173,6 @@ watchdog stopped the 9:09 render, as designed. The gate now reserves memory: a j
 less what the running jobs may still grow into (each one's `--mem` less what it already holds), covers its own `--mem`.
 Declare `--mem 6500` for a whole-lab scene, leave the 3000 default for the rest, and build GIFs and other
 frame-hungry post-processing inside a slot too (or stream the frames from disk through ffmpeg, not a Python list).
+
+**17:30 change:** `--quick` for a job of a few minutes (a `PREVIEW=1` still, a tour still): it goes ahead of normal
+jobs in the queue. A normal job that has waited 20 minutes counts as quick, so renders still get their turn.

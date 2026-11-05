@@ -4,13 +4,13 @@
 Two round-8 sessions on PR #318 lost their runner to "The runner has received a shutdown signal" with eight agents
 rendering, auditing and encoding at the same moment. This caps the heavy jobs and watches memory:
 
-    python3 runner_guard.py slot [--weight N] [--mem MB] [--label TEXT] -- CMD ...
+    python3 runner_guard.py slot [--weight N] [--mem MB] [--quick] [--label TEXT] -- CMD ...
         run CMD once N of the render slots (3 by default, VLAB_SLOTS) are free and MB of memory is available
     python3 runner_guard.py watch
         log memory every minute to /tmp/vlab_memlog.txt; if memory runs out, stop the biggest slotted job
     python3 runner_guard.py status
         who holds the slots, the memory now, and the last lines of the logs
-    python3 runner_guard.py bg --log FILE [--weight N] [--mem MB] [--label TEXT] -- CMD ...
+    python3 runner_guard.py bg --log FILE [--weight N] [--mem MB] [--quick] [--label TEXT] -- CMD ...
         the same as slot, started detached (it outlives the calling shell), output to FILE, exit code to FILE.rc;
         prints the pid
     python3 runner_guard.py wait PID [--minutes M] [--log FILE]
@@ -24,7 +24,9 @@ in continuation 2; it left a slot and three cores idle behind a single-threaded 
 Light work (matplotlib panels, JSON, notes) needs no slot.
 
 * Slots are flock()ed files under /tmp/vlab_slots, so a slot frees itself when its process dies, however it dies.
-* Waiters queue on a turnstile lock, so a weight-2 job isn't starved by a stream of weight-1 jobs.
+* Waiters queue in arrival order, except that `--quick` jobs (a PREVIEW=1 still, a tour still: a few minutes) go
+  ahead of normal ones, and a normal job that has waited 20 minutes counts as quick. (Until 17:30 on 2026-11-05 it
+  was a plain first-come turnstile, and a two-minute preview waited a quarter of an hour behind three renders.)
 * A job also waits for memory: MemAvailable, less what the running jobs may still grow into (each one's declared
   --mem less what it already holds, plus 500 MB), must cover its own --mem (default 3 GB, VLAB_MEM_MB_PER_WEIGHT).
   Renders grow as they go, so checking MemAvailable alone at the start isn't enough: at 17:09 on 2026-11-05 two
@@ -69,6 +71,29 @@ def log(path: Path, msg: str):
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "a") as f:
         f.write(f"{now()} {msg}\n")
+
+
+QUEUE = SLOT_DIR / "queue"
+PROMOTE_S = 20 * 60          # a normal job waiting longer than this goes ahead of quick ones that came later
+
+
+def queue_rank(ticket: Path) -> int:
+    """This waiter's place among the live waiters: quick jobs first, then by arrival; a long wait counts as quick."""
+    live = []
+    for t in QUEUE.iterdir():
+        try:
+            ts, pid, prio = t.name.split("_")
+            if not Path(f"/proc/{pid}").exists():
+                t.unlink(missing_ok=True)
+                continue
+            ts, prio = float(ts), int(prio)
+        except (ValueError, OSError):
+            continue
+        eff = 0 if time.time() - ts > PROMOTE_S else prio
+        live.append((eff, ts, t.name))
+    live.sort()
+    names = [n for _, _, n in live]
+    return names.index(ticket.name) if ticket.name in names else 0
 
 
 def held_infos() -> list[dict]:
@@ -142,13 +167,15 @@ def holders() -> list[str]:
 
 
 def slot(argv: list[str]) -> int:
-    weight, label, rcfile, mem = 1, None, None, None
+    weight, label, rcfile, mem, prio = 1, None, None, None, 1
     while argv and argv[0] != "--":
         a = argv.pop(0)
         if a == "--weight":
             weight = int(argv.pop(0))
         elif a == "--mem":
             mem = int(argv.pop(0))
+        elif a == "--quick":
+            prio = 0
         elif a == "--label":
             label = argv.pop(0)
         elif a == "--rcfile":
@@ -164,15 +191,15 @@ def slot(argv: list[str]) -> int:
     need = mem if mem is not None else MEM_PER_WEIGHT * weight
     t0 = time.time()
     held = []
-    with open(SLOT_DIR / "turnstile.lock", "a+") as turn:
-        fcntl.flock(turn, fcntl.LOCK_EX)                  # queue: first come, first served
-        last_note = 0.0
+    QUEUE.mkdir(parents=True, exist_ok=True)
+    ticket = QUEUE / f"{time.time():.3f}_{os.getpid()}_{prio}"
+    ticket.write_text(label + "\n")
+    last_note = 0.0
+    try:
         while True:
-            for f in held:
-                fcntl.flock(f, fcntl.LOCK_UN)
-                f.close()
-            held = []
-            if meminfo().get("MemAvailable", 0) - reserved() >= need:
+            rank = queue_rank(ticket)
+            free = N_SLOTS - sum(int(d.get("weight", 1)) for d in held_infos())
+            if rank < free and meminfo().get("MemAvailable", 0) - reserved() >= need:
                 for i in range(N_SLOTS):
                     f = open(SLOT_DIR / f"slot{i}.lock", "a+")
                     try:
@@ -191,11 +218,13 @@ def slot(argv: list[str]) -> int:
                     f.close()
                 held = []
             if time.time() - last_note > 300:
-                print(f"[runner_guard] waiting for {weight} slot(s), {need} MB: {'; '.join(holders()) or 'none held'}",
+                print(f"[runner_guard] waiting ({'quick' if prio == 0 else 'normal'}, place {rank + 1} in the queue) "
+                      f"for {weight} slot(s), {need} MB: {'; '.join(holders()) or 'none held'}",
                       file=sys.stderr, flush=True)
                 last_note = time.time()
-            time.sleep(5)
-        fcntl.flock(turn, fcntl.LOCK_UN)
+            time.sleep(4)
+    finally:
+        ticket.unlink(missing_ok=True)
     waited = time.time() - t0
     log(SLOT_LOG, f"START w{weight} after {waited:.0f}s wait: {label}")
     env = dict(os.environ, VLAB_SLOT=label, VLAB_SLOT_PID=str(os.getpid()))
