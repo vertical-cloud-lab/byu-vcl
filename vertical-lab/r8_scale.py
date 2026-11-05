@@ -52,7 +52,11 @@ SOURCES = {
         "eos.info/en-us/metal-solutions/metal-printers/data-sheets/sds-eos-m-400-4): build volume 400 x 400 x 400 mm "
         "including the build plate; 4 x 400 W Yb fibre lasers, 4 F-theta lenses and 4 scanners, each over the whole "
         "400 x 400 mm field; up to 7.0 m/s; focus about 90 um; 3 x 50 A; 45 kW maximum, 22 kW typical; compressed air "
-        "7 bar, 20 m3/h; system 4181 x 1613 x 2355 mm, about 4835 kg; installation space at least 6500 x 6000 x 3300 mm",
+        "7 bar, 20 m3/h; system 4181 x 1613 x 2355 mm, about 4835 kg; installation space at least 6500 x 6000 x 3300 mm "
+        "(EOS's product page and data sheet as indexed by search, 2026-11-05). EOS's US page now gives 5140 x 2490 x "
+        "2625 mm (axes not labelled), about 4900 kg, and at least 7500 x 6000 x 3300 mm to install "
+        "(eos.info/en-us/metal-solutions/metal-printers/eos-m-400-4): probably with its peripherals or a later "
+        "revision, unverified. The model keeps the data sheet's 4181 x 1613 x 2355 mm",
         "Look (approximate, from EOS's product photos): the process station on the left, its chamber door with a large "
         "window at working height, the optics housing on top; the setup and unpacking station on the right with glove "
         "ports under a window; a touchscreen on an arm. The chamber's insides (dispenser, recoater, the four scanners' "
@@ -121,10 +125,12 @@ ENVELOPES = {
 # racking), and EOS asks for at least 6.5 x 6.0 m to install the M 400-4. So they stand south of the south row, past the
 # racking's ends, fronts to the north, each with a 2.4 m or wider clear strip in front of it running up to the aisle's
 # end. No MiR dock: the powder comes by the 100 kg in EOS's containers and a propeller (400 kg) by forklift or crane.
+# The EOS is placed so that it also clears everything at the 5140 x 2490 mm its US page now gives (x -12020..-6880,
+# y -11945..-9455: 255 mm south of the west racking's end).
 # x, y: the centre of the footprint; turn: degrees about z, counterclockwise from above; 0 = front to -y (the north
 # row's way), 180 = front to +y.
 FLOOR_PLACEMENT = {
-    "eos_m400": dict(x=-9600.0, y=-10300.0, turn=180.0),       # x -11691..-7510, y -11107..-9494
+    "eos_m400": dict(x=-9450.0, y=-10700.0, turn=180.0),       # x -11541..-7360, y -11507..-9894
     "meltio_cell": dict(x=9700.0, y=-10600.0, turn=180.0),     # x 7675..11725, y -11775..-9425
 }
 FLOOR_RECTS = {      # setup_lab fit's rectangles (out/tray_plan.json, 2026-11-04) and the racking, for check_floor()

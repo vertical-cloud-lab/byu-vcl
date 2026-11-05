@@ -72,7 +72,13 @@ def check_head(cell_inst, tl, n=400) -> float:
 
 
 def main():
-    data = tour.load(["eos_m400", "meltio_cell", "ded"])
+    data = tour.load(["eos_m400", "meltio_cell"])
+    mx = tour.CACHE / "scaleup_mxlab.pkl"        # the MX-Lab alone: instruments_lab's whole cache is 78 MB
+    if mx.exists():
+        import pickle
+        data["ded"] = pickle.loads(mx.read_bytes())
+    else:
+        data.update(tour.load(["ded"]))
     eos_i, eos_e = data["eos_m400"]
     cell_i, cell_e = data["meltio_cell"]
     sc = Scene("scaleup", TITLE)
