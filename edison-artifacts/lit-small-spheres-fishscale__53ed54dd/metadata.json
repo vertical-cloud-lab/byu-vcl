@@ -1,0 +1,9 @@
+{
+  "task_id": "53ed54dd-a61c-4074-8858-6c0da3e0d7c9",
+  "kind": "LITERATURE_HIGH",
+  "task_type": "PQATaskResponse",
+  "status": "success",
+  "job_name": "job-futurehouse-paperqa3-high",
+  "created_at": "2026-05-22 22:21:14.711968+00:00",
+  "query_summary": "What surface features are commonly observed on metallographically-polished cross-sections of LPBF/SLM AlSi10Mg samples that could appear as \"small spheres covering the surface\" under SEM at moderate magnification (1000-50000x)?\n1. Polishing-introduced artifacts: pulled-out eutectic Si particles, sme"
+}
