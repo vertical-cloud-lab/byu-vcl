@@ -178,6 +178,9 @@ chapter:
 - **The tour clips** move their samples on paths, with no arm, as every tour clip does; the chapter is where the arm
   does it.
 - **The arm audit**: see Outputs below.
+- **Left, from the last preview's planner log**: three joint moves in the disc changes start from a pose where the
+  forearm touches the gripper (a straight line before them ends there), and five straight moves would have flipped
+  the wrist, so the planner replaced them with planned joint moves. The disc changes need their own audit and poses.
 
 ## How the arm's stops were chosen
 
@@ -193,6 +196,25 @@ right of Shuttle 2's centre for the Carvera, and at Shuttle 1's dock for the PX5
 The caddy and the holder's rest on the MiR, the holder's tab, fingertip slots and clips, the press's doser, the
 Carvera's vise and lid actuator, the disc magazine and the pre-loaded discs, the magnetic platen, the head's extra
 lift, the ball plunger in the steel puck.
+
+## Outputs (round 8)
+
+- **`out/mp4/alloy_prep.mp4`: 195 s, 1172 frames at 6 fps, 1280 x 720, every tray built.** It is cut short. At about
+  2.9 s a frame, with two other whole-floor renders on the runner, the whole chapter (about 1630 frames, 272 s) would
+  have ended near 21:02 UTC, after the long-form's 20:45 cutoff. So the render was stopped at frame 1142, in the first
+  (320-grit) grind. ffmpeg closed the file cleanly, and a 5 s card summarises the rest: the other grits, the holder back
+  on the MiR face up, the SOP's steps 6 and 7. It shows everything up to the first grind: sectioning, the steel mount,
+  the Carvera facing it, the holder turned over, the MX400 procedure, the holder onto the PX500 and the first disc
+  change.
+- `out/alloy_prep.gif`: 3.7 MB, 2 fps, 480 x 270, made from the MP4 with ffmpeg and gifsicle. `out/alloy_prep_still.png`
+  is frame 1110: the arm laying the 320 disc on the platen.
+- `out/alloy_prep.json` notes the cut. The per-step frame ranges were not written, because the run stopped before
+  `Scene.save()`.
+- **To render the whole chapter:** `VIZ3D_FPS=6 python3 runner_guard.py bg --mem 7000 --log ... -- xvfb-run -a python3
+  alloy_prep.py`, about 80 min at today's load. The script runs to the end: preview v3 reached its last step.
+- **The arm audit** (`VLAB_ONLY_TRAYS=FM ARM_AUDIT=1 xvfb-run -a python3 alloy_prep.py`, trays F and M are the only ones
+  the arm works at) was queued after the render and had not run when these notes were written. The render does
+  **not** rest on a clean audit.
 
 ## Files
 
