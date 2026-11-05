@@ -521,9 +521,9 @@ FOCUS = (700.0, -4300.0, 300.0)
 CAM_W = [(-4300, -27500, 17800), FOCUS, (0, 0, 1)]
 CAM_E = [(5700, -27500, 17800), FOCUS, (0, 0, 1)]
 CAM_END = [(700, -24000, 23500), (700, -4000, 0), (0, 0, 1)]
-# The trays the schedule brings to an opening (STEPS' trays). With the Shuttles clad, only those can show, so the
-# scene is built with only their instruments (setup_lab's VLAB_ONLY_TRAYS): about 3 GB instead of about 5.5 GB.
-SHOWN_TRAYS = "ABDEFKLM"
+# Every tray is built and the Shuttles are drawn see-through, as in the set-up movie that comes before this clip: a
+# clad Shuttle, or one built with only the eight trays the schedule presents (setup_lab's VLAB_ONLY_TRAYS, about half
+# the memory), would look like a different machine (PR #318: "9:09: suddenly the VLM only has a few things on board").
 
 
 def cam_at(f: int, n: int) -> list:
@@ -544,7 +544,6 @@ class Movie:
         import vlm as V
         import warehouse as W
         self.sim, self.ncam, self.A, self.V, self.W = sim, ncam, A, V, W
-        os.environ.setdefault("VLAB_ONLY_TRAYS", SHOWN_TRAYS)
         data = lab.meshes()
         idata = SL.load_all()
         il = getattr(SL, "item_label", None)            # setup_lab's tray-item label, mid-edit in another stream:
@@ -560,7 +559,7 @@ class Movie:
         sc, L = self.sc, self.L
         SL.add_bay_cams(sc)
         L.show_gauges = False
-        L.skin(0.0)(1.0)                 # clad, as the real Shuttles are: a tray shows when it comes to an opening
+        L.skin(1.0)(1.0)                 # see-through, as in the set-up and every other clip: every tray shows
         # a beacon over every floor machine and each Shuttle: a pole and a lens, coloured by the schedule each frame
         self.beacons = {}
 
@@ -696,13 +695,13 @@ class Movie:
                 c = C_UNIT if shown[int(key[-1])] else C_IDLE
             elif phase >= 3:                                   # weeks and months: busy over the last day
                 c = C_RUN if util.get(key, 0.0) > 0.15 else C_IDLE
-            elif key in now:
+            elif key in now:                                 # a person, then a failed run, then a unit, then running
                 e = now[key]
-                c = C_FAIL if e.get("failed") and e["step"] == "atomize" else C_RUN
+                c = C_UNIT if key in docked else C_RUN
+                if e.get("failed") and e["step"] == "atomize":
+                    c = C_FAIL
                 if key == "repowder" and e["t0"] <= t < e["t0"] + PARAMS["atomize_h"]["value"]["person"]:
                     c = C_PERSON
-                if key in docked:
-                    c = C_UNIT
             elif key in docked:
                 c = C_UNIT
             sc.color[lens] = c

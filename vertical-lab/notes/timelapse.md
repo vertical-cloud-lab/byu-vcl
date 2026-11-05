@@ -13,11 +13,12 @@ python3 timelapse.py gif                                     # the GIF again fro
 
 ## What the clip shows
 
-The set-up movie's lab as it ends (`setup_lab.build`: two Shuttles, the floor machines, the two MiR250 + UR10e
-units), seen from the south and above while the camera pans slowly, in six parts. The Shuttles are clad, as the real
-ones are, so a tray shows only when it comes to an opening; the scene is therefore built with only the eight trays
-the schedule brings there (A, B, D, E, F, K, L, M; `setup_lab`'s `VLAB_ONLY_TRAYS`), about half the memory of all
-fifteen.
+The set-up movie's lab as it ends (`setup_lab.build`: two Shuttles with all fifteen trays loaded, the floor machines,
+the two MiR250 + UR10e units), seen from the south and above while the camera pans slowly, in six parts. The Shuttles
+are drawn see-through, as in the set-up movie just before it. A preview with the Shuttles clad and only the eight
+trays the schedule presents (A, B, D, E, F, K, L, M; `setup_lab`'s `VLAB_ONLY_TRAYS`) needed about half the memory,
+but the clad Shuttles looked like different machines from the open ones a minute earlier, the inconsistency Sterling
+flagged at 9:09 of the last long-form. So every tray is built (about 5.5 GB).
 
 | Part | Lab time | Video | One second of video is |
 |---|---|---|---|
