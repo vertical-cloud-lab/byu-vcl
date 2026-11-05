@@ -207,3 +207,173 @@ def tcp_frame(p, approach=(0, 0, -1), spin_deg: float = 0.0) -> np.ndarray:
     M = np.eye(4)
     M[:3, 0], M[:3, 1], M[:3, 2], M[:3, 3] = x, y, z, p
     return M
+
+
+# ------------------------------------------------------------------------------------------- powder jars (round 9)
+# Sterling (PR #318, 2026-11-05 22:56): "What's with the technicolor jars? Keep them all a normal black lid with
+# transparent glass, but if you want to point out something that's unique about them, use a legend and a color change
+# that then reverts once the legend has been shown for a bit of time." So every powder jar in the lab is drawn the same
+# way: clear glass (light grey-blue, about 35 % opaque, so the powder shows), a matte black cap, a white label. To point
+# something out (which lot, which size cut, which powder), tint only those jars or their powder for a few seconds while
+# a legend says what the tint means, then fade back. The helpers, for any stream's scenes:
+#   jar_style()                    the colours and opacities, as a dict
+#   jar_meshes(d, h, lid_h)        one jar's parts as PolyData, base centre at the origin, the label facing -y
+#   jar_parts(d, h, lid_h)         the same as {part: (mesh, rgb, opacity)}, for Instrument.meshes or sc.add
+#   tint_sleeve(d, h)              a tinted see-through sleeve just outside a jar's glass: fade it in to tint the jar
+#   TINT, tinted(rgb, tint, k)     the highlight colours; a colour k of the way from rgb to a tint (sc.color[name])
+#   pulse(t, t_on, t_off, ramp)    0 -> 1 -> 0: a tint's strength at time t, with smooth ramps
+#   use_legend(sc)                 a Scene then draws sc.legend = dict(title=, items=[(rgb, text)], alpha=0-1)
+#   draw_legend(img, title, items, alpha, s)   the legend box itself (PIL), top right under the step label
+#   piece_legend(key, legends)     for a tour clip (tour.py): a legend shown while a fade piece of the instrument shows
+JAR_GLASS = (0.76, 0.83, 0.90)               # clear glass, drawn light grey-blue so it reads on a white floor
+JAR_GLASS_OPACITY = 0.35
+JAR_LID = (0.07, 0.07, 0.08)                 # matte black cap (phenolic or PP; PTFE-lined: notes/powder_containers.md)
+JAR_LABEL = (0.97, 0.97, 0.95)               # a white paper label
+JAR_PRINT = (0.10, 0.10, 0.11)               # the ID printed on it
+JAR_POWDER = POWDER                          # grey metal powder
+JAR_WALL = 2.0                               # glass wall, mm (drawn: the powder's radius is the jar's less this)
+# highlight tints, one meaning each per clip; always shown with a legend, then back to the plain jar
+TINT = {"amber": (0.97, 0.60, 0.08), "teal": (0.00, 0.62, 0.66), "magenta": (0.84, 0.20, 0.58),
+        "blue": (0.15, 0.42, 0.92), "green": (0.30, 0.70, 0.25)}
+TINT_OPACITY = 0.72                          # a tint sleeve's opacity when fully on
+
+
+def jar_style() -> dict:
+    """The lab-wide powder jar: {"glass": rgb, "glass_opacity": a, "lid": rgb, "label": rgb, "print": rgb,
+    "powder": rgb, "wall": mm}."""
+    return dict(glass=JAR_GLASS, glass_opacity=JAR_GLASS_OPACITY, lid=JAR_LID, label=JAR_LABEL, print=JAR_PRINT,
+                powder=JAR_POWDER, wall=JAR_WALL)
+
+
+def _arc_band(r: float, z0: float, z1: float, deg: float, res: int = 18, facing: float = -90.0) -> pv.PolyData:
+    """A thin curved strip on a cylinder of radius r from z0 to z1, `deg` wide and centred on the direction `facing`
+    (degrees from +x; -90 is the front, -y): a label stuck on one side of a jar."""
+    th = np.radians(np.linspace(facing - deg / 2, facing + deg / 2, res + 1))
+    pts = np.array([(r * np.cos(t), r * np.sin(t), z) for t in th for z in (z0, z1)], float)
+    faces = []
+    for i in range(res):
+        a, b, c, d = 2 * i, 2 * i + 1, 2 * i + 3, 2 * i + 2
+        faces += [4, a, d, c, b]
+    return pv.PolyData(pts, np.array(faces)).triangulate().compute_normals(auto_orient_normals=False)
+
+
+def jar_meshes(d: float, h: float, lid_h: float, fill: float = 0.62, label=(0.14, 0.52), label_deg: float = 110.0,
+               res: int = 28) -> dict:
+    """One powder jar, base centre at the origin, z up, its label facing -y: {"glass", "powder", "label", "print",
+    "lid"} as PolyData. d and h are the glass body's outside diameter and height; the cap (lid_h tall, 2 mm wider)
+    sits on top. `fill` is the powder's height as a share of the inside; `label` its band as shares of h."""
+    r = d / 2
+    glass = _cyl(r, h, 0.0, res=res)
+    z_floor = 2.5
+    powder = _cyl(r - JAR_WALL, max(0.5, fill * (h - z_floor - 4.0)), z_floor, res=res)
+    lab = _arc_band(r + 0.4, label[0] * h, label[1] * h, label_deg)
+    zm = (label[0] + label[1]) / 2 * h
+    prt = _arc_band(r + 0.7, zm - 0.10 * h, zm + 0.02 * h, label_deg * 0.45)
+    lid = _cyl(r + 1.0, lid_h, h, res=res)
+    return dict(glass=glass, powder=powder, label=lab, print=prt, lid=lid)
+
+
+def jar_parts(d: float, h: float, lid_h: float, **kw) -> dict:
+    """jar_meshes() with the lab-wide look: {part: (mesh, rgb, opacity)}."""
+    m = jar_meshes(d, h, lid_h, **kw)
+    return {"glass": (m["glass"], JAR_GLASS, JAR_GLASS_OPACITY), "powder": (m["powder"], JAR_POWDER, 1.0),
+            "label": (m["label"], JAR_LABEL, 1.0), "print": (m["print"], JAR_PRINT, 1.0),
+            "lid": (m["lid"], JAR_LID, 1.0)}
+
+
+def tint_sleeve(d: float, h: float, res: int = 28) -> pv.PolyData:
+    """A see-through sleeve 1.2 mm outside a jar's glass (label included), base at z = 0: drawn in a tint at
+    TINT_OPACITY and faded in, it tints the whole jar body while the cap stays black."""
+    return _cyl(d / 2 + 1.2, h - 0.5, 0.25, res=res)
+
+
+def tinted(rgb, tint, k: float) -> tuple:
+    """A colour k (0-1) of the way from rgb to tint: for sc.color[name] in a step's update."""
+    k = min(max(float(k), 0.0), 1.0)
+    return tuple(float(a + (b - a) * k) for a, b in zip(rgb, tint))
+
+
+def pulse(t: float, t_on: float, t_off: float, ramp: float = 0.5) -> float:
+    """0 before t_on, up to 1 over `ramp` s, 1 until t_off - ramp, back to 0 at t_off (smoothstep ramps): a tint's
+    and its legend's strength at time t."""
+    if t <= t_on or t >= t_off:
+        return 0.0
+    k = min(1.0, (t - t_on) / ramp, (t_off - t) / ramp)
+    return k * k * (3.0 - 2.0 * k)
+
+
+def draw_legend(img, title: str, items, alpha: float = 1.0, s: float = 1.0, corner: str = "tr", top: float = 46.0):
+    """A legend box on a PIL image: a bold title, then a colour swatch and a line of text per item [(rgb, text)].
+    corner "tr" puts it top right under the step label, "tl" top left under the title; `top` is its top edge in
+    720p pixels (scaled by s). Returns the image."""
+    if alpha <= 0.02 or not items:
+        return img
+    from PIL import ImageDraw
+    from scene import font
+    d = ImageDraw.Draw(img, "RGBA")
+    W, _ = img.size
+    al = int(255 * min(alpha, 1.0))
+    ft, fi = font(14.5 * s, bold=True), font(13.5 * s)
+    pad, sw, lh = 9 * s, 15 * s, 21 * s
+    tw = max([d.textlength(title, font=ft)] + [d.textlength(t, font=fi) + sw + 9 * s for _, t in items])
+    w = tw + 2 * pad
+    h = 2 * pad + (21 * s if title else 0) + len(items) * lh - 4 * s
+    x0 = W - 10 * s - w if corner == "tr" else 10 * s
+    y0 = top * s
+    d.rounded_rectangle((x0, y0, x0 + w, y0 + h), 6 * s, fill=(255, 255, 255, int(238 * min(alpha, 1.0))),
+                        outline=(120, 124, 130, al))
+    y = y0 + pad
+    if title:
+        d.text((x0 + pad, y - 1 * s), title, font=ft, fill=(20, 20, 24, al))
+        y += 21 * s
+    for rgb, text in items:
+        c = tuple(int(round(255 * v)) for v in rgb[:3])
+        d.rounded_rectangle((x0 + pad, y + 1.5 * s, x0 + pad + sw, y + 1.5 * s + sw), 3 * s, fill=c + (al,),
+                            outline=(60, 60, 66, al))
+        d.text((x0 + pad + sw + 9 * s, y), text, font=fi, fill=(20, 20, 24, al))
+        y += lh
+    return img
+
+
+def use_legend(sc) -> None:
+    """Let a Scene draw a legend: in a step's update set sc.legend = dict(title=..., items=[(rgb, text)], alpha=0-1,
+    corner="tr") (None for none), and every frame shows it over the usual text. Wraps this scene's overlay only;
+    calling it twice is harmless; no legend with VIZ3D_CLEAN. A tint and its legend, in a chapter script:
+
+        P.use_legend(sc)
+        def up(u):                                   # inside a step of `secs` seconds
+            k = P.pulse(u * secs, 0.0, secs, ramp=0.6)
+            sc.color[name] = P.tinted(P.JAR_POWDER, P.TINT["amber"], k)
+            sc.legend = dict(title="Tinted for now", items=[(P.TINT["amber"], "the LPBF cut, < 63 um")], alpha=k)
+    """
+    if getattr(sc, "_legend_on", False):
+        return
+    import scene as S
+    base = sc.overlay
+    sc.legend = None
+
+    def overlay(img, scale, anchors):
+        img = base(img, scale, anchors)
+        lg = getattr(sc, "legend", None)
+        if lg and not S.CLEAN:
+            draw_legend(img, lg.get("title", ""), lg.get("items", ()), lg.get("alpha", 1.0), max(scale, 0.80),
+                        lg.get("corner", "tr"), lg.get("top", 46.0))
+        return img
+    sc.overlay = overlay
+    sc._legend_on = True
+
+
+def piece_legend(key: str, legends: dict, then=None, corner: str = "tr", top: float = 46.0):
+    """For a tour clip (tour.py plays an Instrument): a draw(sc, img, s) for instruments_lab.PLOTS[f"instruments/{key}"]
+    that shows legends[piece] = (title, [(rgb, text)]) while that piece shows, at its fade joint's value (the tint
+    sleeves are such a piece: Joint("fade"), v0 = 0, faded in and out by the actions). `then`: a drawer that already
+    sits in PLOTS for that clip, called first."""
+    def draw(sc, img, s):
+        if then is not None:
+            then(sc, img, s)
+        for piece, (title, items) in legends.items():
+            g = f"{key}:{piece}"
+            a = max((sc.alpha.get(n, 0.0) for n, gg in sc.group_of.items() if gg == g), default=0.0)
+            if a > 0.02:
+                draw_legend(img, title, items, min(1.0, a), s, corner, top)
+    return draw
