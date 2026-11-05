@@ -43,22 +43,6 @@
      "overlaps": []
     },
     {
-     "item": "OpenFlexure array: 4 x v7 + 2 x Delta Stage",
-     "kind": "item",
-     "box_mm": [
-      400,
-      1184,
-      -410,
-      114,
-      3,
-      180
-     ],
-     "height_mm": 177.4,
-     "under_goods_height": true,
-     "inside_rim": true,
-     "overlaps": []
-    },
-    {
      "item": "UPS",
      "kind": "ups",
      "box_mm": [
@@ -921,7 +905,7 @@
    "span_ok": true,
    "items": [
     {
-     "item": "LECO PX500 semi-automatic",
+     "item": "LECO PX500 + disc magazine",
      "kind": "item",
      "box_mm": [
       -736,
@@ -948,6 +932,54 @@
       513
      ],
      "height_mm": 510.0,
+     "under_goods_height": true,
+     "inside_rim": true,
+     "overlaps": []
+    },
+    {
+     "item": "LECO MX400",
+     "kind": "item",
+     "box_mm": [
+      -1197,
+      -994,
+      -107,
+      357,
+      3,
+      549
+     ],
+     "height_mm": 546.0,
+     "under_goods_height": true,
+     "inside_rim": true,
+     "overlaps": []
+    },
+    {
+     "item": "six-shelf disc magazine (ours)",
+     "kind": "item",
+     "box_mm": [
+      844,
+      1200,
+      -366,
+      -14,
+      3,
+      641
+     ],
+     "height_mm": 638.0,
+     "under_goods_height": true,
+     "inside_rim": true,
+     "overlaps": []
+    },
+    {
+     "item": "water tank, our design",
+     "kind": "item",
+     "box_mm": [
+      560,
+      800,
+      -150,
+      50,
+      3,
+      213
+     ],
+     "height_mm": 210.0,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -1078,7 +1110,7 @@
      "overlaps": []
     },
     {
-     "item": "Keyence VHX-7000 + EA-300",
+     "item": "Keyence VHX-7000 (VHX-S750E free-angle stand)",
      "kind": "item",
      "box_mm": [
       255,
@@ -1192,7 +1224,7 @@
      "box_mm": [
       -1210,
       -678,
-      -420,
+      -419,
       347,
       3,
       598
@@ -1912,6 +1944,256 @@
     }
    ],
    "ok": true
+  },
+  "N": {
+   "role": "powder store: feedstock",
+   "slot": "2F0",
+   "shuttle": 2,
+   "slot_z_mm": 300.0,
+   "span_mm": 475.0,
+   "tallest_mm": 437.0,
+   "span_needed_mm": 475.0,
+   "span_ok": true,
+   "items": [
+    {
+     "item": "Jar racks on a tray (our design)",
+     "kind": "item",
+     "box_mm": [
+      -1200,
+      560,
+      -330,
+      330,
+      3,
+      185
+     ],
+     "height_mm": 182.0,
+     "under_goods_height": true,
+     "inside_rim": true,
+     "overlaps": []
+    },
+    {
+     "item": "UPS",
+     "kind": "ups",
+     "box_mm": [
+      609,
+      1060,
+      276,
+      362,
+      3,
+      440
+     ],
+     "height_mm": 437.0,
+     "under_goods_height": true,
+     "inside_rim": true,
+     "overlaps": []
+    },
+    {
+     "item": "cam_N0 post",
+     "kind": "cam",
+     "box_mm": [
+      635,
+      725,
+      -405,
+      -315,
+      3,
+      323
+     ],
+     "height_mm": 320.0,
+     "under_goods_height": true,
+     "inside_rim": true,
+     "overlaps": []
+    },
+    {
+     "item": "cam_N0 head",
+     "kind": "cam",
+     "box_mm": [
+      519,
+      676,
+      -423,
+      -289,
+      238,
+      409
+     ],
+     "height_mm": 406.1,
+     "under_goods_height": true,
+     "inside_rim": true,
+     "overlaps": []
+    },
+    {
+     "item": "cam_N1 post",
+     "kind": "cam",
+     "box_mm": [
+      1115,
+      1205,
+      55,
+      145,
+      3,
+      323
+     ],
+     "height_mm": 320.0,
+     "under_goods_height": true,
+     "inside_rim": true,
+     "overlaps": []
+    },
+    {
+     "item": "cam_N1 head",
+     "kind": "cam",
+     "box_mm": [
+      1006,
+      1152,
+      34,
+      164,
+      238,
+      404
+     ],
+     "height_mm": 400.7,
+     "under_goods_height": true,
+     "inside_rim": true,
+     "overlaps": []
+    },
+    {
+     "item": "dock plate and tray lines",
+     "kind": "plate",
+     "box_mm": [
+      550,
+      1220,
+      180,
+      420,
+      3,
+      166
+     ],
+     "height_mm": 163.5,
+     "under_goods_height": true,
+     "inside_rim": true,
+     "overlaps": []
+    }
+   ],
+   "ok": true
+  },
+  "O": {
+   "role": "powder store: atomized lots",
+   "slot": "2R5",
+   "shuttle": 2,
+   "slot_z_mm": 3175.0,
+   "span_mm": 500.0,
+   "tallest_mm": 437.0,
+   "span_needed_mm": 475.0,
+   "span_ok": true,
+   "items": [
+    {
+     "item": "Jar racks on a tray (our design)",
+     "kind": "item",
+     "box_mm": [
+      -1200,
+      560,
+      -357,
+      357,
+      3,
+      107
+     ],
+     "height_mm": 104.0,
+     "under_goods_height": true,
+     "inside_rim": true,
+     "overlaps": []
+    },
+    {
+     "item": "UPS",
+     "kind": "ups",
+     "box_mm": [
+      609,
+      1060,
+      276,
+      362,
+      3,
+      440
+     ],
+     "height_mm": 437.0,
+     "under_goods_height": true,
+     "inside_rim": true,
+     "overlaps": []
+    },
+    {
+     "item": "cam_O0 post",
+     "kind": "cam",
+     "box_mm": [
+      635,
+      725,
+      -405,
+      -315,
+      3,
+      323
+     ],
+     "height_mm": 320.0,
+     "under_goods_height": true,
+     "inside_rim": true,
+     "overlaps": []
+    },
+    {
+     "item": "cam_O0 head",
+     "kind": "cam",
+     "box_mm": [
+      519,
+      676,
+      -423,
+      -289,
+      238,
+      409
+     ],
+     "height_mm": 406.1,
+     "under_goods_height": true,
+     "inside_rim": true,
+     "overlaps": []
+    },
+    {
+     "item": "cam_O1 post",
+     "kind": "cam",
+     "box_mm": [
+      1115,
+      1205,
+      55,
+      145,
+      3,
+      323
+     ],
+     "height_mm": 320.0,
+     "under_goods_height": true,
+     "inside_rim": true,
+     "overlaps": []
+    },
+    {
+     "item": "cam_O1 head",
+     "kind": "cam",
+     "box_mm": [
+      1006,
+      1152,
+      34,
+      164,
+      238,
+      404
+     ],
+     "height_mm": 400.7,
+     "under_goods_height": true,
+     "inside_rim": true,
+     "overlaps": []
+    },
+    {
+     "item": "dock plate and tray lines",
+     "kind": "plate",
+     "box_mm": [
+      550,
+      1220,
+      180,
+      420,
+      3,
+      166
+     ],
+     "height_mm": 163.5,
+     "under_goods_height": true,
+     "inside_rim": true,
+     "overlaps": []
+    }
+   ],
+   "ok": true
   }
  },
  "floor": {
@@ -2173,7 +2455,7 @@
    "instron_floor": [
     -7187,
     -5613,
-    -7034,
+    -7291,
     -6238
    ],
    "instron_small": [
@@ -2199,6 +2481,18 @@
     7660,
     -8782,
     -6238
+   ],
+   "eos_m400": [
+    -11540,
+    -7360,
+    -11506,
+    -9763
+   ],
+   "meltio_cell": [
+    7425,
+    11779,
+    -12415,
+    -8985
    ],
    "sieve_cell": [
     -2530,
@@ -2325,6 +2619,18 @@
    "z": 2675.0,
    "span": 725.0,
    "shuttle": 2
+  },
+  "2F0": {
+   "y": -1030.0,
+   "z": 300.0,
+   "span": 475.0,
+   "shuttle": 2
+  },
+  "2R5": {
+   "y": 1030.0,
+   "z": 3175.0,
+   "span": 500.0,
+   "shuttle": 2
   }
  },
  "shuttle_x": {
@@ -2333,5 +2639,94 @@
  },
  "max_goods_h_mm": 856.5,
  "goods_clear_mm": 20.0,
+ "r8": {
+  "trays": {
+   "mount_press": {
+    "tray": "F",
+    "x": -1095.0,
+    "y": 125.0,
+    "turn": 0.0,
+    "module": "r8_prep"
+   },
+   "disc_magazine": {
+    "tray": "F",
+    "x": 1022.0,
+    "y": -190.0,
+    "turn": 0.0,
+    "module": "r8_prep"
+   },
+   "quench_tank": {
+    "tray": "F",
+    "x": 860.0,
+    "y": -150.0,
+    "turn": 0.0,
+    "module": "r8_test"
+   },
+   "powder_store_feed": {
+    "tray": "N",
+    "x": -320.0,
+    "y": 0.0,
+    "turn": 0.0,
+    "module": "r8_store"
+   },
+   "powder_store_lots": {
+    "tray": "O",
+    "x": -320.0,
+    "y": 0.0,
+    "turn": 0.0,
+    "module": "r8_store"
+   }
+  },
+  "floor": {
+   "eos_m400": {
+    "x": -9450.0,
+    "y": -10700.0,
+    "turn": 0.0,
+    "setback": 3525.0,
+    "row": "S",
+    "module": "r8_scale"
+   },
+   "meltio_cell": {
+    "x": 9602.0,
+    "y": -10600.0,
+    "turn": 0.0,
+    "setback": 2747.0,
+    "row": "S",
+    "module": "r8_scale"
+   }
+  },
+  "new_trays": {
+   "N": {
+    "slot": "2F0",
+    "role": "powder store: feedstock",
+    "module": "r8_store"
+   },
+   "O": {
+    "slot": "2R5",
+    "role": "powder store: atomized lots",
+    "module": "r8_store"
+   }
+  },
+  "skipped": [],
+  "moved": {
+   "quench_tank": {
+    "tray": "F",
+    "x": 680.0,
+    "y": -50.0,
+    "turn": 0.0,
+    "was": {
+     "tray": "F",
+     "x": 860.0,
+     "y": -150.0,
+     "turn": 0.0,
+     "module": "r8_test"
+    }
+   }
+  },
+  "no_dock": [
+   "eos_m400",
+   "meltio_cell"
+  ]
+ },
  "method": "setup_lab.py fit: each item, UPS, dock plate (with its tray lines) and camera rig measured from its meshes as drawn, an axis-aligned box in the tray's frame; overlaps are 3-D box overlaps of more than 1 mm; a slot needs the tallest top + 20 mm, on the 25 mm pitch"
 }

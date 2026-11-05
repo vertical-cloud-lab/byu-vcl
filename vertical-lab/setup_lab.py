@@ -143,7 +143,17 @@ ORBIT = [[(-9000, -16500, 9000), (700, -2300, 600), (0, 0, 1)],
 
 
 # ------------------------------------------------------------------------------------------------ round 8's modules
-R8_MERGED: dict = {"trays": {}, "floor": {}, "new_trays": {}, "skipped": []}    # what merge_r8() took in, for the notes
+R8_MERGED: dict = {"trays": {}, "floor": {}, "new_trays": {}, "skipped": [], "moved": {}}  # what merge_r8() took in
+# Floor machines no MiR250 serves, so no dock tape, no target post and no dock check: the EOS M 400-4 and the Meltio
+# cell (notes/scaleup.md: "Neither has a MiR dock: the powder comes by the 100 kg in EOS's containers, and a propeller
+# by forklift or crane"). A module adds its own with NO_DOCK = {...}, or dock=False in a FLOOR_PLACEMENT.
+NO_DOCK = {"eos_m400", "meltio_cell"}
+# Where two streams' placements collide, the tray plan's call (fit found it; notes/lab_r8.md): tray F's quench tank
+# (r8_test, x 860, y -150) stood inside the disc magazine (r8_prep, x 1022, y -190). The magazine keeps its place in
+# front of the UPS; the tank moves left and back, between the furnace's right side and the magazine, behind camera
+# F1's post: 25 mm from the furnace, 44 mm from the magazine, 40 mm behind the post, clear of the furnace door's swing
+# (it opens to the front on its right-hand hinges). Its rig is where every scene built on setup_lab.build finds it.
+R8_MOVES = {"quench_tank": dict(tray="F", x=680.0, y=-50.0, turn=0.0)}
 
 
 def add_slots(slots: dict):
@@ -200,7 +210,21 @@ def merge_r8() -> dict:
         for key, p in getattr(mod, "FLOOR_PLACEMENT", {}).items():
             row = "N" if p["y"] > (W.AISLE[0] + W.AISLE[1]) / 2 else "S"     # its front on its row's face
             FLOOR_PLAN[key] = (float(p["x"]), row, float(p.get("turn", 0.0)), float(p.get("dock_x", p["x"])))
+            if "setback" in p:                       # back from its row's face, away from the aisle (warehouse.place)
+                W.SETBACK[key] = float(p["setback"])
+            if p.get("dock") is False:
+                NO_DOCK.add(key)
             R8_MERGED["floor"][key] = dict(p, row=row, module=name)
+        NO_DOCK.update(getattr(mod, "NO_DOCK", ()))
+    for key, p in R8_MOVES.items():                  # the tray plan's resolutions, last
+        if p["tray"] not in TRAYS or not any(it[0] == key for v in ITEMS.values() for it in v):
+            continue
+        for kk in ITEMS:
+            ITEMS[kk] = [it for it in ITEMS[kk] if it[0] != key]
+        ITEMS[p["tray"]].append((key, float(p["x"]), None if p.get("y") is None else float(p["y"]),
+                                 float(p.get("turn", 0.0))))
+        R8_MERGED["moved"][key] = dict(p, was=R8_MERGED["trays"].get(key))
+    R8_MERGED["no_dock"] = sorted(NO_DOCK)
     R8_MERGED["done"] = True
     return R8_MERGED
 
@@ -212,7 +236,8 @@ def use_floor_plan():
     W.BACK_IN.clear()
     W.BACK_IN.update(BACK_IN)
     W.RESERVED.clear()
-    W.NAMES.update(fumehood="ducted fume hood", sieve_cell="sieving cell", vlm2="second Kardex Shuttle")
+    W.NAMES.update(fumehood="ducted fume hood", sieve_cell="sieving cell", vlm2="second Kardex Shuttle",
+                   eos_m400="EOS M 400-4 (no MiR dock)", meltio_cell="Meltio robot cell (no MiR dock)")
     if getattr(W, "_setup_lab_patched", False):
         return
     dock0, target0 = W.dock_pose, W.target_xy
@@ -505,7 +530,15 @@ def group_names(sc: Scene, prefix: str) -> list[str]:
 
 # ================================================================================================ the floor
 class Floor(W.Floor):
-    """warehouse.Floor on FLOOR_PLAN, plus the second Shuttle's dock and the sieving cell's bench."""
+    """warehouse.Floor on FLOOR_PLAN, plus the second Shuttle's dock and the sieving cell's bench; no dock or target
+    for the machines in NO_DOCK."""
+
+    def _tape(self):
+        held = {k: W.STATIONS.pop(k) for k in list(W.STATIONS) if k in NO_DOCK}   # they come last: no tag id shifts
+        try:
+            super()._tape()
+        finally:
+            W.STATIONS.update(held)
 
     def _stations(self):
         super()._stations()
@@ -1207,7 +1240,8 @@ def check_floor(sc: Scene, F: Floor) -> dict:
     rects = machine_rects(sc, F)
     Lm, Wm = P.MIR["L"], P.MIR["W"]
     r_piv = math.hypot(Lm / 2, Wm / 2)
-    posts = {k: tuple(W.target_xy(k)) for k in FLOOR_PLAN if k in F.groups or k in ("vlm", "repowder")}
+    posts = {k: tuple(W.target_xy(k)) for k in FLOOR_PLAN
+             if (k in F.groups or k in ("vlm", "repowder")) and k not in NO_DOCK}
     feet = {k: (x - 150, x + 150, y - 150, y + 150) for k, (x, y) in posts.items()}
     docks = {}
     for key in posts:
@@ -1347,8 +1381,9 @@ def draw_floor(frep: dict, path):
         tx, ty = d["target_post"]
         ax.add_patch(Rectangle((tx - 150, ty - 150), 300, 300, fc="#222", ec="none"))
     ax.set_aspect("equal")
-    ax.set_xlim(-10800, 11800)
-    ax.set_ylim(-9300, 1900)
+    ys = [v for r in frep["machines"].values() for v in r[2:]]
+    ax.set_xlim(-12200, 12400)
+    ax.set_ylim(min(-9300, min(ys) - 300), 1900)
     ax.set_xlabel("x, mm", fontsize=7)
     ax.set_ylabel("y, mm", fontsize=7)
     ax.tick_params(labelsize=6.5)
@@ -1367,6 +1402,7 @@ def fit(data, idata) -> dict:
     out = dict(trays=rep, floor=frep, slots={k: dict(y=v[0], z=v[1], span=V.SPAN.get(k), shuttle=V.SLOT_SHUTTLE[k])
                                              for k, v in V.SLOTS.items()},
                shuttle_x=V.SHUTTLE_X, max_goods_h_mm=V.MAX_GOODS_H, goods_clear_mm=V.GOODS_CLEAR,
+               r8={k: v for k, v in R8_MERGED.items() if k != "done"},
                method="setup_lab.py fit: each item, UPS, dock plate (with its tray lines) and camera rig measured from "
                       "its meshes as drawn, an axis-aligned box in the tray's frame; overlaps are 3-D box overlaps "
                       "of more than 1 mm; a slot needs the tallest top + 20 mm, on the 25 mm pitch")
