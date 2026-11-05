@@ -29,6 +29,7 @@ Sources and what is assumed: notes/alloy_prep.md.
 from __future__ import annotations
 
 import math
+import os
 
 import numpy as np
 import pyvista as pv
@@ -52,9 +53,10 @@ CAM_LAB = [(9800, -12500, 6900), (1700, -1800, 1300), (0, 0, 1)]
 
 # where the MiR stops on the dock line in front of the two Shuttles (x of its centre; heading 0, the arm's side to
 # the VLM): at Shuttle 2 with the Carvera (tray M's right end) in reach, at Shuttle 1 with the MX400 (tray F's left
-# end) in reach, and at Shuttle 1's dock for the PX500 and its disc magazine
+# end) in reach, and at Shuttle 1's dock for the PX500 and its disc magazine. Chosen with PREP_PROBE=1 (below): at
+# -800 every gripper spin over the mold has a clear arm, at -720 a quarter of them collide with camera F0's head
 X_CNC = None                           # set from setup_lab.X2 in movie()
-X_PRESS = -720.0
+X_PRESS = -800.0
 X_POL = 0.0
 MIR_V = 900.0                          # mm/s, the MiR's top speed along the line here (at 0.3 m/s^2, props.ramp_secs)
 
@@ -249,7 +251,7 @@ def movie():
     import setup_lab as SL
     import warehouse as W
     global X_CNC
-    X_CNC = SL.X2 + 420.0
+    X_CNC = SL.X2 + 560.0
     sc, L, F, rigs, u = build()
     rb = u.robot
     cab = f"{u.name}_cab"
@@ -324,6 +326,8 @@ def movie():
     mir_at(X_CNC)
     rb.set(PARK)
     sc.apply()
+    if os.environ.get("PREP_PROBE"):
+        return probe(sc, L, rigs, u, rb, discs, mir_at)
 
     # ------------------------------------------------------------------ the arm's moves
     st = {"lbl": "6/7", "cap": ""}
@@ -661,21 +665,24 @@ def movie():
         rb.release(f"{mag.prefix}body")
         lin(sh(Hm, (0, -pre_back, 0)), 0.6 * f)
 
-    plat_v = [0.0]
+    plat_v = [0.0, 0.0]
+    H_TURN = 360.0 / abs(pol.inst.joints["holder"].deg)     # the holder's joint value for one whole turn: each grind
+    #                                                         ends with its tab to the front again, for the arm
 
     def grind(cap_, secs_, cloth=False, f=1.0, rinse=True):
         st["cap"] = cap_
         a, b = plat_v[0], plat_v[0] + 1.0
+        ha, hb = plat_v[1], plat_v[1] + H_TURN
         sc.step(st["lbl"], cap_, 0.8 * f, pol.move({"head": (up_, 1.0)}), hold=0.0)
         ws = {"powder": (0.0, 1.0)} if cloth else {"water": (0.0, 1.0)}
-        sc.step(st["lbl"], cap_, secs_ * f, pol.move({"platen": (a, b), "holder": (a, b), **ws}), hold=0.0)
+        sc.step(st["lbl"], cap_, secs_ * f, pol.move({"platen": (a, b), "holder": (ha, hb), **ws}), hold=0.0)
         we = {"powder": (1.0, 0.0)} if cloth else {"water": (1.0, 0.0)}
         sc.step(st["lbl"], cap_, 0.8 * f, pol.move({"head": (1.0, up_), **we}), hold=0.1)
         if rinse and not cloth:
             sc.step(st["lbl"], "Head up: the mounts, the holder and the disc rinsed under the spigot before the next "
                     "grit (the SOP, step 4).", 0.9 * f, pol.move({"water": (0.0, 1.0)}), hold=0.1)
             sc.step(st["lbl"], st["cap"], 0.3 * f, pol.move({"water": (1.0, 0.0)}), hold=0.0)
-        plat_v[0] = b
+        plat_v[0], plat_v[1] = b, hb
 
     st["cap"] = ("Why whole discs: changing a SiC paper means prying off its retaining ring, peeling the paper, laying "
                  "a new one flat and pressing the ring back on (the SOP, step 4). No robot has been shown doing that.")
@@ -707,8 +714,9 @@ def movie():
         set_alpha(sc, "p_hot_pol", 1.0 if on else 0.0)
         set_alpha(sc, "p_hot", 0.0 if on else 1.0)
     a, b = plat_v[0], plat_v[0] + 1.0
+    ha, hb = plat_v[1], plat_v[1] + H_TURN
     sc.step(st["lbl"], st["cap"], 0.8, pol.move({"head": (up_, 1.0)}), hold=0.0)
-    sc.step(st["lbl"], st["cap"], 3.6, RB.both(pol.move({"platen": (a, b), "holder": (a, b),
+    sc.step(st["lbl"], st["cap"], 3.6, RB.both(pol.move({"platen": (a, b), "holder": (ha, hb),
                                                          "powder": (0.0, 1.0)}), polished), hold=0.0)
     sc.step(st["lbl"], st["cap"], 0.8, pol.move({"head": (1.0, up_), "powder": (1.0, 0.0)}), hold=0.1)
     status(sc, Coupon="polished, in its hot mount", Slice="polished flush, in the steel mount")
@@ -749,6 +757,145 @@ def movie():
                  "mounting are what this chapter adds. Next, chapter 7: the MiR takes the holder to the trays.")
     sc.step(st["lbl"], st["cap"], 1.0, None, cam_to=CAM_LAB, hold=4.2)
     return sc.save()
+
+
+# ================================================================================================= pose probe
+def feasible(rb, Tw, close=0.5):
+    """(clear IK branches, all IK branches, the fewest hits of any branch) for the arm's grasp point at Tw."""
+    import collide
+    chk = rb.checker()
+    world = chk.snapshot()
+    Tb = np.linalg.inv(rb.sc.world(rb.root)) @ Tw
+    try:
+        qs = collide.ik_all(rb.model, Tb, rb.q)
+    except Exception:                       # noqa: BLE001
+        qs = []
+    res = [chk.collisions(q, close, world, chk.touching(q, close, world)) for q in qs]
+    best = min(res, key=len) if res else ["no IK"]
+    return sum(1 for h in res if not h), len(qs), [(h[0], h[1], h[2][-28:]) if isinstance(h, tuple) else h
+                                                   for h in best[:2]]
+
+
+def probe(sc, L, rigs, u, rb, discs, mir_at):
+    """PREP_PROBE=1: which MiR stops and gripper spins give the chapter's grasps a clear arm. No movie."""
+    import setup_lab as SL
+    import vlm as V
+    pol, press, mag, cnc = (rig_of(rigs, k) for k in ("polisher", "mount_press", "disc_magazine", "cnc"))
+
+    def present(k):
+        L.use(L.unit.get(k, 1))
+        L.tray[k] = [*V.SLOTS["open"]]
+        L.where[k] = "open"
+        L.apply_state()
+        sc.apply()
+
+    def report(tag, Tw, close=0.5):
+        n, m, worst = feasible(rb, Tw, close)
+        print(f"PROBE {tag}: {n}/{m} clear" + ("" if n else f"  {worst}"), flush=True)
+        return n
+    # 1. the caddy and the rest, relative to the MiR (the MiR at X_CNC, nothing presented)
+    for k in ("slice", "coupon", "puck", "stopper"):
+        for spin in (0.0, 90.0, 180.0, -90.0):
+            w = (sc.world("p_caddy") @ np.r_[SEAT[k], CADDY["y"], CADDY["h"] + DOWN_TIP, 1.0])[:3]
+            Tg = A.down(tuple(w), spin=spin)
+            report(f"caddy {k} spin {spin:.0f} grasp", Tg)
+            M = Tg.copy()
+            M[2, 3] += 70
+            report(f"caddy {k} spin {spin:.0f} above", M)
+    for face_up, ang in ((True, POCKET_STEEL), (False, POCKET_HOT)):
+        sc.gmat["p_holder"] = rest_matrix(face_up)
+        sc.apply()
+        hw = sc.world("p_holder")
+        Mh = hw @ mount_in_holder(ang)
+        fz = min((Mh @ np.r_[0, 0, 0, 1.0])[2], (Mh @ np.r_[0, 0, SP.FACE_Z, 1.0])[2])
+        ctr = Mh[:3, 3]
+        a = math.degrees(math.atan2(ctr[1] - hw[1, 3], ctr[0] - hw[0, 3]))
+        for spin in (-a, 180 - a):
+            Tg = A.down((ctr[0], ctr[1], fz + DOWN_TIP), spin=spin)
+            report(f"holder face_up={face_up} pocket {ang:.0f} spin {spin:.0f} seat", Tg)
+            M = Tg.copy()
+            M[2, 3] += 70
+            report(f"holder face_up={face_up} pocket {ang:.0f} spin {spin:.0f} above", M)
+        Tt = hw @ tab_grasp()
+        report(f"holder face_up={face_up} tab", Tt, GRIP_TAB)
+        M = Tt.copy()
+        M[:3, 3] -= Tt[:3, 2] * 110
+        report(f"holder face_up={face_up} tab back 110", M, 0.4)
+    sc.gmat["p_holder"] = rest_matrix(True)
+    # 2. the Carvera's vise, tray M at Shuttle 2
+    present("M")
+    G2 = RP.cnc_puck_geometry()
+    for lid in (-40.0, -65.0, -80.0):
+        cnc.inst.joints["lid"].deg = lid
+        cnc.v["lid"] = 1.0
+        cnc.apply()
+        for dx in (420.0, 560.0, 700.0):
+            mir_at(SL.X2 + dx)
+            sc.apply()
+            vise = (sc.world(f"{cnc.prefix}body") @ np.r_[G2["x"], G2["y"], G2["z_base"] + DOWN_TIP, 1.0])[:3]
+            for spin in (0.0, 180.0):
+                Tg = A.down(tuple(vise), spin=spin)
+                report(f"cnc lid {lid:.0f} mir +{dx:.0f} spin {spin:.0f} seat", Tg)
+                M = Tg.copy()
+                M[2, 3] += 70
+                report(f"cnc lid {lid:.0f} mir +{dx:.0f} spin {spin:.0f} above", M)
+    # 3. the MX400, tray F at Shuttle 1: closure off, ram up
+    present("F")
+    press.v["closure"] = 1.0
+    press.v["ram"] = 1.0
+    press.apply()
+    gm = RP.mx_geometry()
+    for x in (-720.0, -800.0, -860.0):
+        mir_at(x)
+        sc.apply()
+        mold = (sc.world(f"{press.prefix}body") @ np.r_[gm["mx"], gm["my"], gm["top"], 1.0])[:3]
+        for spin in (0.0, 45.0, 90.0, 135.0, 180.0, -45.0, -90.0, -135.0):
+            Tg = A.down((mold[0], mold[1], mold[2] + DOWN_TIP), spin=spin)
+            report(f"press mir {x:.0f} spin {spin:.0f} mold", Tg)
+            M = Tg.copy()
+            M[2, 3] += 70
+            report(f"press mir {x:.0f} spin {spin:.0f} above", M)
+    # 4. the PX500 and its magazine: head lifted, the disc handles
+    up_ = -RP.LIFT / (pol.inst.joints["head"].vec[2] * -1.0)
+    pol.v["head"] = up_
+    pol.apply()
+    G = RP.px_geometry()
+    m_off = np.array([G["mag"][0], G["mag"][1], 0.0])
+    for x in (0.0, 150.0, 300.0, 450.0):
+        mir_at(x)
+        sc.apply()
+        pw2 = sc.world(f"{pol.prefix}body")
+        plat = (pw2 @ np.r_[G["bx"], G["by"], G["disc_z"], 1.0])[:3]
+        Hp = T(plat) @ RP.handle_tcp()
+        report(f"px mir {x:.0f} platen handle", Hp, RP.GRIP_HANDLE)
+        M = Hp.copy()
+        M[1, 3] -= 140
+        report(f"px mir {x:.0f} platen pre", M, 0.0)
+        M = Hp.copy()
+        M[1, 3] -= 470
+        M[2, 3] += 62
+        report(f"px mir {x:.0f} platen out", M, RP.GRIP_HANDLE)
+        mw = sc.world(f"{mag.prefix}body")
+        for i in range(len(RP.GRITS)):
+            Hm = mw @ T(RP.disc_home(i)[:3, 3] - m_off) @ RP.handle_tcp()
+            report(f"px mir {x:.0f} magazine shelf {i} handle", Hm, RP.GRIP_HANDLE)
+            M = Hm.copy()
+            M[1, 3] -= 140
+            report(f"px mir {x:.0f} magazine shelf {i} pre", M, 0.0)
+            M = Hm.copy()
+            M[1, 3] -= 360
+            M[2, 3] += 8
+            report(f"px mir {x:.0f} magazine shelf {i} out", M, RP.GRIP_HANDLE)
+        p5 = RP.P5
+        hz = p5["deck"] + p5["head_up"]
+        H_on = sc.world(f"{pol.prefix}holder") @ T((G["hx"], G["hy"], hz - 120.0))
+        T_on = H_on @ tab_grasp()
+        report(f"px mir {x:.0f} holder on head tab", T_on, GRIP_TAB)
+        M = T_on.copy()
+        M[:3, 3] -= T_on[:3, 2] * 260
+        M[2, 3] -= 4
+        report(f"px mir {x:.0f} holder on head back 260", M, GRIP_TAB)
+    print("PROBE done", flush=True)
 
 
 if __name__ == "__main__":

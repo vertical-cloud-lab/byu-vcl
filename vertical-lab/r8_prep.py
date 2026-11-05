@@ -43,7 +43,7 @@ import instruments as I
 import instruments_r7 as R7
 import r8_specimens as SP
 from instruments import Instrument, Joint, _piece, _xcyl, _ycyl
-from instruments_lab import Timeline, Track, Turn
+from instruments_lab import Timeline, Track
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE / "lab_models"))
@@ -414,10 +414,17 @@ def polisher() -> Instrument:
     platen = _piece(inst, "platen")
     platen.add("magnetic platen", cyl(p["platen_d"], 16, x=bx, y=by, z=G["disc_z"] - 16), "r8p_magnet")
     platen.add("platen hub", cyl(90, G["disc_z"] - 16 - bowl_floor, x=bx, y=by, z=bowl_floor), "steel")
-    # the six pre-loaded discs: in the magazine, their handles to the front; the tour moves three of them
+    # the six pre-loaded discs: in the magazine, their handles to the front; the tour moves three of them. A moving
+    # disc is two pieces: disc_<kind> carries it along its path (an invisible speck), spin_<kind> holds the meshes and
+    # turns with the platen only while that disc is on it, so the discs parked in the magazine never swing round
+    MOVING = ("320", "400", "cloth")
     for i, kind in enumerate(GRITS):
-        pc = _piece(inst, f"disc_{kind}")
-        M = disc_on_platen() if kind in ("320", "400", "cloth") else disc_home(i)
+        M = disc_on_platen() if kind in MOVING else disc_home(i)
+        if kind in MOVING:
+            inst.meshes[f"disc_{kind}"] = _dummy(tuple(M[:3, 3]))
+            pc = _piece(inst, f"spin_{kind}")
+        else:
+            pc = _piece(inst, f"disc_{kind}")
         for nm, (solid, mat) in disc_solids(kind).items():
             v = M[:3, 3]
             pc.add(f"{kind} {nm}", solid.translate(tuple(v)), mat)
@@ -443,12 +450,15 @@ def polisher() -> Instrument:
         "head": Joint("slide", vec=(0, 0, -drop)),
         "holder": Joint("spin", parent="head", axis=(0, 0, 1), pivot=(hx, hy, 0), deg=-150.0),
         "platen": Joint("spin", axis=(0, 0, 1), pivot=(bx, by, 0), deg=-720.0),
-        "disc_320": Joint("path", parent="platen", path=disc_path(GRITS.index("320"))),
-        "disc_400": Joint("path", parent="platen", path=disc_path(GRITS.index("400"))),
-        "disc_cloth": Joint("path", parent="platen", path=disc_path(GRITS.index("cloth"))),
+        "disc_320": Joint("path", path=disc_path(GRITS.index("320"))),
+        "disc_400": Joint("path", path=disc_path(GRITS.index("400"))),
+        "disc_cloth": Joint("path", path=disc_path(GRITS.index("cloth"))),
+        "spin_320": Joint("spin", parent="disc_320", axis=(0, 0, 1), pivot=(bx, by, 0), deg=-720.0),
+        "spin_400": Joint("spin", parent="disc_400", axis=(0, 0, 1), pivot=(bx, by, 0), deg=-720.0),
+        "spin_cloth": Joint("spin", parent="disc_cloth", axis=(0, 0, 1), pivot=(bx, by, 0), deg=-720.0),
         "water": Joint("fade", parent="head"),
         "powder": Joint("fade", parent="head"),
-        "alumina": Joint("fade", parent="disc_cloth"),
+        "alumina": Joint("fade", parent="spin_cloth"),
     }
     up_ = -LIFT / drop                      # the head's joint value with the extra lift
     inst.actions = [
@@ -458,16 +468,19 @@ def polisher() -> Instrument:
          "the ring.", 1.4, {"head": (0.0, up_)}),
         ("320 grit: out of the magazine and onto the magnetic platen, which holds the steel disc flat.", 3.0,
          {"disc_320": (0.0, 1.0)}),
-        ("Head down, water on. The SOP's grinding step: head 35 rpm, force 30, platen 150 rpm, 30 s.", 3.4,
-         {"head": (up_, 1.0), "platen": (0.0, 1.0), "holder": (0.0, 1.0), "water": (0.0, 1.0)}),
+        ("Head down, water on: the lab's SOP (PR #258), its gentle settings 35, 30, 150, 30 s.", 3.4,
+         {"head": (up_, 1.0), "platen": (0.0, 1.0), "holder": (0.0, 1.0), "water": (0.0, 1.0),
+          "spin_320": (0.0, 1.0)}),
         ("Head up. The 320 disc goes back to its shelf and the 400 comes out: no paper peeled, no ring pried off.",
          3.6, {"head": (1.0, up_), "water": (1.0, 0.0), "disc_320": (1.0, 0.0), "disc_400": (0.0, 1.0)}),
-        ("400 grit, then 600, 800 and 1200 the same way (30 s each).", 3.0,
-         {"head": (up_, 1.0), "platen": (1.0, 2.0), "holder": (1.0, 2.0), "water": (0.0, 1.0)}),
+        ("400 grit, then 600, 800 and 1200 the same way (30 s each), rinsed between grits.", 3.0,
+         {"head": (up_, 1.0), "platen": (1.0, 2.0), "holder": (1.0, 2.0), "water": (0.0, 1.0),
+          "spin_400": (0.0, 1.0)}),
         ("The cloth disc for the final polish, 1 um alumina from a dispenser: force 3-5, 150 rpm, 3 min.", 3.6,
          {"head": (1.0, up_), "water": (1.0, 0.0), "disc_400": (1.0, 0.0), "disc_cloth": (0.0, 1.0)}),
-        ("Head down, suspension on.", 3.0, {"head": (up_, 1.0), "platen": (2.0, 3.0), "holder": (2.0, 3.0),
-                                           "powder": (0.0, 1.0), "alumina": (0.0, 1.0)}),
+        ("Head down, suspension on, no water (the SOP, step 5).", 3.0,
+         {"head": (up_, 1.0), "platen": (2.0, 3.0), "holder": (2.0, 3.0), "powder": (0.0, 1.0),
+          "alumina": (0.0, 1.0), "spin_cloth": (0.0, 1.0)}),
         ("Done. A person re-papers the five SiC discs between batches, off the machine: one fresh paper per grit per "
          "holder load (Buehler's note for its fully automatic VANGUARD: change SiC paper after each holder).", 2.6,
          {"head": (1.0, 0.0), "powder": (1.0, 0.0)}),
@@ -482,7 +495,8 @@ def polisher() -> Instrument:
     inst.framing = (0.95, 0.40)
     near = ((bx - 120, by - 60, dk), 1500.0)
     inst.zoom = {2: near, 4: near, 8: "out"}
-    inst.props = ("holder", "water", "powder", "alumina", "magazine", *[f"disc_{k}" for k in GRITS])
+    inst.props = ("holder", "water", "powder", "alumina", "magazine", *[f"disc_{k}" for k in GRITS],
+                  *[f"spin_{k}" for k in MOVING])
     return inst
 
 
@@ -516,6 +530,9 @@ def disc_magazine() -> Instrument:
 # mill, three passes. The puck sits on two short parallels in a small pneumatic vise (ours) whose jaws close across
 # it (along y), so the arm's fingers, closing along x, never meet them.
 CV = dict(R7.CV)
+CV["lid_deg"] = -65.0       # our lid actuator opens it to 65 deg (957 mm tall), past Makera's own 840 mm: at 40 deg the
+#                             UR10e's forearm can't reach the vise under it (alloy_prep.py PREP_PROBE=1: 0 of 8 IK
+#                             branches clear at 40 deg, 2 of 8 at 65); still under the 996 mm opening
 PUCK = dict(x=60.0, y=0.0, base=12.0, par_h=8.0, par_w=6.0, par_dy=9.0, jaw_h=14.0, jaw_t=14.0, jaw_open=20.0)
 
 
