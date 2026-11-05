@@ -772,10 +772,11 @@ def build(data, idata, mp4=True, name="setup_lab", title=TITLE, highlight=None):
             add_tray(sc, L, k)
     items, rigs = {k: [] for k in ORDER}, {}
     vp = None
-    # VLAB_ONLY_TRAYS=DEFKL: only those trays get their instruments, UPS and cameras (round 8, runner_guard.py), for an
-    # ARM_AUDIT=1 pass: the arm can't reach the trays in their slots, and a scene with all fifteen loaded holds about
-    # 5.5 GB and audits slowly. Not for a render: the Shuttles are drawn as open frames, so a wide shot would show them
-    # half empty (Sterling, 2026-11-05: "In 9:09, suddenly the VLM only has a few things on board"). Unset: every tray.
+    # VLAB_ONLY_TRAYS=DEFKL: only those trays get their instruments, UPS and cameras (round 8, runner_guard.py). For an
+    # ARM_AUDIT=1 pass (the arm can't reach the trays in their slots; a scene with all fifteen loaded holds about 5.5 GB
+    # and audits slowly), and for a render whose Shuttles stay clad, where only the tray at the opening shows. Not for a
+    # render that shows the Shuttles as open frames (the set-up, the 9:09 clip): they would look half empty (Sterling,
+    # 2026-11-05: "In 9:09, suddenly the VLM only has a few things on board"). Unset: every tray.
     only = os.environ.get("VLAB_ONLY_TRAYS")
     for k in ORDER:
         if only is not None and k not in only:

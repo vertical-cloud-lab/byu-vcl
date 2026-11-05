@@ -184,3 +184,6 @@ so only two run at once; set-up movie last among them.
 **18:16 / 18:40:** `VLAB_ONLY_TRAYS=<letters>` makes `setup_lab.build` load only those trays (1.5 GB for D-F against
 about 5 GB for all fifteen). Use it for `ARM_AUDIT=1` passes only. The Shuttles are drawn as open frames, so a render
 built with it would show them half empty, the inconsistency Sterling flagged at 9:09.
+
+**19:27:** chapters that keep the Shuttles clad (white cabinets; only the tray at the opening shows) may render with
+`VLAB_ONLY_TRAYS` too. Clips that draw them as open frames (the set-up, the 9:09 clip) build every tray.
