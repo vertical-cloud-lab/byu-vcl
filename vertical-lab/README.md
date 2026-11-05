@@ -364,6 +364,18 @@ unique alloys fully tested and printed."
   - the tensile curves: illustrative.
 
   The real data are the c3k0n5 SEM images and the particle count made from them.
+- **Chapter 6 stops at the first grind,** at 3:15 of about 4:30.
+  - The full render would have ended after the long-form's cutoff.
+  - The other grits, the cloth and alumina, and handing the holder to chapter 7 are coded but not rendered.
+  - Its arm audit hadn't finished.
+- **Chapter 4 has 23 of 1002 frames in collision,** in three places
+  ([`notes/alloy_powder.md`](notes/alloy_powder.md)):
+  - 16 frames as the arm returns to rest from the MiniFlex through the SEM and MiniFlex housings;
+  - 6 frames of a finger brushing the holder;
+  - 1 frame at the MiniFlex door.
+- **Chapter 5 wasn't audited frame by frame.** The planner reports six joint moves that end in a pose already in
+  collision, which the arm holds for about a second each: two carrying a bar, and four at its park pose against
+  the tongs' rest or the Instron chamber's door ([`notes/alloy_workflow.md`](notes/alloy_workflow.md)).
 - **Chapter 7's committed render has 13 frames in collision** at the iMicro's unload (frames 574–598) and one at the
   VHX stand.
   - Its HM-220 close-up looks into Shuttle 2's frame, and the VHX turn-over isn't shown.
