@@ -120,3 +120,44 @@ target is 0 frames in collision.
 - prep: `r8_specimens.py` (1.5 in mounts). **Left:** everything else.
 - char, tensile, timelapse: nothing landed.
 - orchestrator: Edison answers, DAG cards for seven chapters, `longform.py` round-8 chapter list, `alloy_route.py`.
+
+## Continuation 2, 2026-11-05 15:50 UTC (PR #318 comment "pick up round 8, at most 3 renders at once")
+
+Both earlier round-8 runs lost their runner to a shutdown signal (exit 143), with eight agents rendering at once on
+4 cores and 16 GB, not to the token. This run has 6 hours (the job's limit is now 360 minutes) and these rules:
+
+- **At most 3 scene jobs at once, enforced.** Every job that builds a 3-D scene (a render, a `PREVIEW=1` still, an
+  `ARM_AUDIT=1` pass, a tour clip, `interference.py`) and every long ffmpeg join goes through `runner_guard.py`:
+  `python3 runner_guard.py slot [--weight N] --label "<stream>: <what>" -- xvfb-run --server-num=<yours> -a python3 ...`.
+  Weight 2 for the whole-lab scenes (`setup_lab.py`, `animate.py workflow`, `timelapse.py`), 1 for the rest. A job
+  waits until its slots are free and there is memory for it. `runner_guard.py watch` logs memory every minute to
+  `/tmp/vlab_memlog.txt` and stops the biggest slotted job if memory runs out (you'll see rc -15 / 143: just retry).
+  `python3 runner_guard.py status` shows who holds the slots.
+- **Long renders outlive your shell:** `pid=$(VIZ3D_FPS=6 python3 runner_guard.py bg --log /tmp/<stream>/<clip>.log
+  --label "<stream>: <clip>" -- xvfb-run --server-num=<yours> -a python3 <script>.py)`, then
+  `python3 runner_guard.py wait $pid --minutes 50 --log /tmp/<stream>/<clip>.log` as one foreground call with a
+  long timeout (repeat it while it says STILL RUNNING). Never `sleep` in the shell.
+- **The orchestrator pushes every 10 minutes and re-mints the token every 40.** Commit as each piece lands (code
+  once a preview works, each render as it finishes). Don't push.
+- **Frames per second:** chapters at `VIZ3D_FPS=6`, tour clips at 8, unless the stream says otherwise. GIFs under
+  4.9 MB.
+- **Deadlines (UTC).** Renders committed by **19:45**. Notes by **19:55**. The orchestrator builds the long-form from
+  20:00 with whatever is committed.
+- **Physical sense.** Sterling asked whether there are other things like the bars dropping onto a catch shelf they'd
+  bounce off. Every stream checks its own clips for parts that drop, float, teleport, hang unsupported or pass
+  through something, fixes what it can, and lists the rest in its notes.
+- From other PRs: the lab's SEM/EDS polishing SOP is on PR #258 (`SOP/sem-eds-polishing-sop.md` on
+  `claude/issue-110-20261005-1730`; step 7 is now 0.1 um diamond on the VibroMet 2). PRs #320 and #321 have no
+  commits after the ones `longform.py` already pins (`5a39245`, `a34367a`), except #320's set-up re-render with trays
+  G-I in one 4450 mm Shuttle, which round 7's two-Shuttle set-up replaced.
+
+| Stream | Display | This run |
+|---|---|---|
+| atomize + scale | 15, 17 | render chapters 2 and 3 (code and audits done); preview and render `scaleup.py` |
+| powder | 13 | write `alloy_powder.py` (chapter 4), audit, render, notes |
+| tensile | 14 | rework `alloy_workflow.py` (chapter 5), audit, render; `furnace`, `wire_edm`, `instron_*` clips; notes |
+| prep | 11 | preview, audit and render `alloy_prep.py` (chapter 6); `polisher`, `mount_press`, `cnc` clips; notes |
+| char | 12 | rework `alloy_characterize.py` (chapter 7), audit, render; `sem`, `vhx`, `nanoindenter`, `pip`, `hardness` clips; notes |
+| lab | 16 | render `animate.py workflow` and the set-up movie with every r8 model, the tray plan; `notes/lab_r8.md` |
+| timelapse | 18 | write `timelapse.py` (the finale), its throughput model, render, notes |
+| orchestrator | | `runner_guard.py`, pushes, the token, `longform.py`, `alloy_route.py`, README, the PR description, the one upload |
