@@ -17,9 +17,11 @@ models carry their own `actions` for it).
 
 ## The chapter
 
-`VIZ3D_FPS=6 python3 runner_guard.py slot -- xvfb-run --server-num=17 -a python3 scaleup.py`. Rendered 2026-11-05 16:08-16:16 UTC: **679 frames, 113.2 s at 6 fps** (`out/mp4/scaleup.mp4`, 4.9 MB), GIF 566 frames at 5 fps and 640 x 360, 4.8 MB. The printhead's least clearance to the propeller over the program: 75 mm.
+`VIZ3D_FPS=6 python3 runner_guard.py slot -- xvfb-run --server-num=17 -a python3 scaleup.py`. Rendered 2026-11-05 17:10-17:18 UTC: **691 frames, 115.2 s at 6 fps** (`out/mp4/scaleup.mp4`, 5.1 MB), GIF 576 frames at 5 fps and 640 x 360, 4.6 MB. The printhead's least clearance to the propeller over the program: 75 mm.
 
 **Fixed before the render (continuation 2):** in step 6 the two brackets, cut free, rose 260 mm and tilted, and then hung there over the plate with nothing holding them. They are now lifted off by hand (80 mm up, as the caption says) and laid on the saw table's free right-hand margin, turned 90°: the table is 900 x 700 mm with the 400 mm plate on its centre, so the margin is 250 mm and the pair, turned, is 245.6 mm across. They come to rest on the table's top, 30 mm lower than they were printed (the plate's thickness), and pass 18 mm over the tensile bars on the way. The band saw is still drawn as its blade alone.
+
+**The plate rides a lift table cart (continuation 2).** The plate used to appear out of nowhere 1.3 m in front of the open door and float along the load path into the chamber, then float 1.3 m from the door to a separate saw table. A lift table cart (a scissor lift on casters, our stand-in for the operator's plate trolley; `CART`, sizes assumed) now does the carrying: it brings the plate up to the door, stops with its 900 x 700 mm top 5 mm off the machine's face, and lowers with the plate while it is slid across onto the deck (the plate's underside is at the deck's height, 1020 mm, when it reaches it: the load path ends 30 mm over the platform). It rolls aside while the door shuts, comes back while the door opens after the build, takes the plate as it is slid out (its top waits at the same 1028 mm where the plate left it), and rolls it to the saw position, lowering to 900 mm. Its top is the saw table now, so the brackets are laid on its margin. The door's swing was checked against the cart's path both ways: it clears by at least 90 mm. The scissor's bars keep their 1000 mm length; their feet slide as the top rises (`cart_parts`).
 
 Nine steps on a plain floor, the lab's InssTek MX-Lab beside the two for scale:
 
