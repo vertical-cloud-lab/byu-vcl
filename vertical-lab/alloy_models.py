@@ -491,7 +491,7 @@ def ejector_body(pc, bar_xs) -> pv.PolyData:
 # Also, it's positioned rather high". Round 4's plate carrier and bar holder stood on posts 120 and 230 mm tall; these
 # are low pockets on the cabinet's top plate instead, each with a 3 mm lead-in: the plate in a 30 mm block bored to
 # take it and its stud, the specimen rack in a frame, and a rest for the tongs. MiR frame (z from the cabinet's top).
-POCKETS = dict(plate=(255.0, -110.0), rack=(-255.0, -120.0), tongs=(-200.0, 250.0), block_h=40.0, rack_h=20.0,
+POCKETS = dict(plate=(255.0, -110.0), rack=(-255.0, -120.0), tongs=(-45.0, 255.0), block_h=40.0, rack_h=20.0,
                pocket=12.0, cradle=(250.0, 150.0), cradle_h=30.0, channel=(12.0, 5.0), channel_dx=15.0)
 
 
@@ -565,6 +565,8 @@ def rack_seat(top: float) -> np.ndarray:
 # gripper squeezes the handle's two plates, which closes the jaws on the fin through the shaft (a linkage of our design,
 # assumed); the jaws are drawn fixed. Frame: the handle's grasp point at the origin, the shaft along +y.
 TONGS = dict(L=300.0, shaft_r=7.0, handle=(12.0, 50.0, 40.0), jaw=(30.0, 40.0, 50.0), jaw_gap=12.4)
+TONGS_HANDLE = (-210.0, 255.0)    # on the MiR: the handle 233 mm off the arm's axis (closer is out of the UR10e's
+#                                   reach), the shaft along +x past the arm's base, all on the cabinet top
 
 
 def tongs() -> dict:
