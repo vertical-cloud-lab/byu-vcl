@@ -9,6 +9,8 @@ today's parts with the same code and compares them with the Onshape STLs, so the
 checked part by part before the compact parts are trusted.
 
     python compact/build_compact.py            # writes stl/compact/*.stl, step/compact/base_compact.step, compact/check_output.txt
+    python compact/build_compact.py --holder-step   # writes only step/compact/vial_holder_compact.step, checked
+                                                    # against stl/compact/vial_holder_compact.stl
 
 Needs cadquery, trimesh and manifold3d.
 
@@ -16,6 +18,10 @@ Needs cadquery, trimesh and manifold3d.
 between the junction board and the MOSFET, whose legs had to cross it), and its cable notch moved
 from the -Y wall to the -X wall, the board's column-A end, where the 56 x 56 mm base has its notch.
 The parts printed on 2026-10-28 and 2026-10-30 are the earlier base, at commit b9f57f5.
+
+2026-11-05: the compact holder gets a STEP file too, for the lab's Onshape folder. Its cup is the Onshape
+holder's B-rep (step/vial_holder.step, edge rounds included) inside r = HOLDER_STEP_R, and the CadQuery flange
+outside it, so it is a real solid rather than a mesh. The STL, which was printed, is unchanged.
 """
 
 from __future__ import annotations
@@ -273,6 +279,29 @@ def wall_openings(m, z, wall):
     return spans
 
 
+HOLDER_STEP_R = 17.5   # the B-rep join: the cup is CUP_OD / 2 = 16.7, and the compact layout changes nothing inside 19 mm
+
+
+def compact_holder_step(path: pathlib.Path) -> list:
+    """The compact holder as a STEP solid: the Onshape holder's B-rep inside r = HOLDER_STEP_R, the CadQuery
+    flange outside it. compact_holder_mesh does the same with meshes, for the STL. Returns check lines."""
+    import tempfile
+    import trimesh
+    ons = cq.importers.importStep(str(ROOT / "step" / "vial_holder.step"))
+    bb = ons.val().BoundingBox()
+    keep = cq.Workplane("XY").workplane(offset=bb.zmin - 1).circle(HOLDER_STEP_R).extrude(bb.zmax - bb.zmin + 2)
+    solid = ons.intersect(keep).union(make_holder(True, fillets=False).cut(keep), clean=True)
+    cq.exporters.export(solid, str(path))
+    tmp = pathlib.Path(tempfile.mkdtemp())
+    a = cq_mesh(solid, tmp / "holder_step.stl")
+    b = trimesh.load(str(ROOT / "stl" / "compact" / "vial_holder_compact.stl"))
+    A, B = to_manifold(a), to_manifold(b)
+    return [f"vial_holder_compact.step: {len(solid.solids().vals())} solid, valid {solid.val().isValid()}, "
+            f"{len(solid.faces().vals())} faces, {solid.val().Volume():.1f} mm3",
+            f"   against stl/compact/vial_holder_compact.stl ({b.volume:.1f} mm3): STEP-only {(A - B).volume():.1f} mm3, "
+            f"STL-only {(B - A).volume():.1f} mm3, bounds equal: {bool((abs(a.bounds - b.bounds) < 0.01).all())}"]
+
+
 def main():
     import tempfile
     import trimesh
@@ -346,4 +375,8 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+    if "--holder-step" in sys.argv[1:]:
+        print("\n".join(compact_holder_step(ROOT / "step" / "compact" / "vial_holder_compact.step")))
+    else:
+        main()
