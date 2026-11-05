@@ -35,7 +35,7 @@ import numpy as np
 import pyvista as pv
 
 import scene
-scene.GIF_FPS = 3                      # a ~5-minute GIF under 4.9 MB (the MP4 keeps every frame)
+scene.GIF_FPS = 2                      # a ~5-minute GIF under 4.9 MB (the MP4 keeps every frame)
 scene.GIF_SIZE = (480, 270)
 from scene import PREVIEW, T, R  # noqa: E402
 
@@ -413,7 +413,8 @@ def movie():
         return cam_at(c, (420, -760, 560), (0, 40, 0)), c
 
     def cam_rest():
-        return cam_at(sc.world("p_rest")[:3, 3], (520, -760, 620), (60, 40, 30))
+        """From the MiR's back left, so the arm, reaching from its base, stays behind the rest."""
+        return cam_at(sc.world("p_rest")[:3, 3], (-640, -560, 560), (40, 30, 20))
     cam_cad, cad = cam_caddy()
     st["lbl"] = "Steel mount"
     st["cap"] = ("At Shuttle 2, the pieces on the MiR's caddy (ours): the slice, the coupon, a 1.5 in steel puck "
@@ -520,7 +521,7 @@ def movie():
     pw = sc.world(f"{press.prefix}body")
     gm = RP.mx_geometry()
     mold = (pw @ np.r_[gm["mx"], gm["my"], gm["top"], 1.0])[:3]
-    cam_mx = cam_at(mold, (420, -860, 540), (0, 0, -40))
+    cam_mx = cam_at(mold, (-150, -1300, 450), (40, 0, -30))     # from the front left: the arm comes from the right
     pr = press.inst.actions
     st["cap"] = "Hot mounting, as in the lab's own MX400 video: the closure swings off the 1.5 in mold; ram up."
     sc.step(st["lbl"], st["cap"], 1.6, press.move({"closure": (0.0, 1.0)}), cam_to=cam_mx, hold=0.1)
