@@ -78,6 +78,9 @@ def _items() -> dict:
     out["K"] = [("glovebox_tray", -460.0, 7.0, 0.0), ("vhx", 570.0, -50.0, 0.0)]
     out["L"] = [("tensile_h", -23.5, None, 0.0), ("hardness", -944.0, 11.0, 0.0)]      # the tester in front of the UPS
     out["M"] = [("xrf", -875.0, None, 0.0), ("fumehood_tray", -13.0, None, 0.0), ("cnc", 819.0, None, 0.0)]
+    # round 8 (PR #318: "It's also not really clear why we'd want both v7's and delta stages"): the OpenFlexure array
+    # leaves tray D; the Keyence VHX does its imaging (notes/lab_r8.md)
+    out["D"] = [it for it in out["D"] if it[0] != "openflexure_array"]
     return out
 
 
@@ -137,6 +140,69 @@ ORBIT = [[(-9000, -16500, 9000), (700, -2300, 600), (0, 0, 1)],
          [(-15500, -2000, 9500), (700, -2300, 600), (0, 0, 1)],
          [(3500, -15500, 5600), (700, -2300, 900), (0, 0, 1)],
          [(11500, -18500, 12500), (700, -2600, 300), (0, 0, 1)]]
+
+
+# ------------------------------------------------------------------------------------------------ round 8's modules
+R8_MERGED: dict = {"trays": {}, "floor": {}, "new_trays": {}, "skipped": []}    # what merge_r8() took in, for the notes
+
+
+def add_slots(slots: dict):
+    """New storage slots {slot: (column, span)} on Shuttle 2, added for this process (vlm.py's own COLUMNS stay as
+    they are, so no cache that hashes vlm.py changes): each starts where its column's last slot ends."""
+    for slot, (col, span) in slots.items():
+        if slot in V.SLOTS:
+            continue
+        lst = V.COLUMNS[2][col]
+        if col == "front":
+            z = V.Z_FRONT_HI
+        else:
+            z = V.Z_LOW
+        z += sum(s for _, s in lst)
+        top = V.Z_FRONT_LOW_TOP if col == "front_low" else V.Z_TOP_IN
+        assert z + span <= top + 1e-6, (slot, z, span, top)
+        lst.append((slot, span))
+        V.SLOTS[slot] = (V.Y_REAR if col == "rear" else V.Y_FRONT, z)
+        V.SPAN[slot], V.SLOT_SHUTTLE[slot] = float(span), 2
+
+
+def merge_r8() -> dict:
+    """Every TRAY_PLACEMENT and FLOOR_PLACEMENT of the round-8 modules that exist (tour.MODULES' r8_* names) into
+    ITEMS and FLOOR_PLAN; new trays (a module's NEW_TRAYS: {tray: (slot, role)}, with NEW_SLOTS for the slots) into
+    TRAYS and ORDER. A placement of a key a tray already has moves it. Runs once per process, when the scene is built."""
+    if R8_MERGED.get("done"):
+        return R8_MERGED
+    for name in tour.MODULES:
+        if not name.startswith("r8_") or not (lab.HERE / f"{name}.py").exists():
+            continue
+        try:
+            mod = importlib.import_module(name)
+        except Exception as e:                       # noqa: BLE001  (a module mid-edit must not stop the set-up)
+            R8_MERGED["skipped"].append(f"{name}: {e}")
+            print(f"setup_lab: {name} not merged: {e}", flush=True)
+            continue
+        add_slots(getattr(mod, "NEW_SLOTS", {}))
+        for k, (slot, role) in getattr(mod, "NEW_TRAYS", {}).items():
+            if k not in TRAYS and slot in V.SLOTS:
+                TRAYS[k] = (slot, role)
+                ORDER.append(k)
+                CAMS.setdefault(k, CAMS["J"])          # short posts, as tray J's: a short slot
+                R8_MERGED["new_trays"][k] = dict(slot=slot, role=role, module=name)
+        for key, p in getattr(mod, "TRAY_PLACEMENT", {}).items():
+            k = p["tray"]
+            if k not in TRAYS:
+                R8_MERGED["skipped"].append(f"{name}: {key} on tray {k}, which has no slot")
+                continue
+            for kk in ITEMS:                           # a key placed again moves (from any tray)
+                ITEMS[kk] = [it for it in ITEMS[kk] if it[0] != key]
+            ITEMS.setdefault(k, []).append((key, float(p["x"]), None if p.get("y") is None else float(p["y"]),
+                                            float(p.get("turn", 0.0))))
+            R8_MERGED["trays"][key] = dict(p, module=name)
+        for key, p in getattr(mod, "FLOOR_PLACEMENT", {}).items():
+            row = "N" if p["y"] > (W.AISLE[0] + W.AISLE[1]) / 2 else "S"     # its front on its row's face
+            FLOOR_PLAN[key] = (float(p["x"]), row, float(p.get("turn", 0.0)), float(p.get("dock_x", p["x"])))
+            R8_MERGED["floor"][key] = dict(p, row=row, module=name)
+    R8_MERGED["done"] = True
+    return R8_MERGED
 
 
 def use_floor_plan():
@@ -238,12 +304,12 @@ class TwoLab(A.Lab):
     """animate.Lab with a second Shuttle at x = X2: a copy of the VLM's meshes (groups 'u2_*'), its own extractor and
     shutter, and the trays whose slot is in it (vlm.SLOT_SHUTTLE). fetch/store work on the tray's own Shuttle."""
 
-    def __init__(self, sc, data):
+    def __init__(self, sc, data, highlight=None):
         self.unit = {}
         self.other = dict(lift_z=A.LIFT_HOME, shutter=0.0)
         self.active = 1
         self.focus = None
-        super().__init__(sc, data, robot=False)
+        super().__init__(sc, data, robot=False, highlight=highlight)
         for name, e in data["vlm"].items():
             kw = {}
             if e["material"] in ("vlm_skin", "vlm_bay"):
@@ -588,11 +654,12 @@ def stagger(fs, overlap=0.45):
 
 
 # ================================================================================================ build
-def build(data, idata, mp4=True):
+def build(data, idata, mp4=True, name="setup_lab", title=TITLE, highlight=None):
+    merge_r8()
     use_floor_plan()
-    sc = Scene("setup_lab", TITLE, gif=False, mp4=mp4)       # fit: no encoder, so it leaves the MP4 alone
+    sc = Scene(name, title, gif=False, mp4=mp4)              # fit: no encoder, so it leaves the MP4 alone
     sc.cam = list(CAM_ROOM)
-    L = TwoLab(sc, data)
+    L = TwoLab(sc, data, highlight=highlight)
     for k in ("A", "B", "C"):
         add_tray(sc, L, k)
     for g in L.eq_groups.get("A", []):                  # round 2's CubXL stays hidden: the corrosion set-up replaces it
@@ -647,6 +714,18 @@ def build(data, idata, mp4=True):
     sc.apply()
     sc.add("footprints", footprints(sc, F), W.TAPE_W, "tape", specular=0.0, ambient=0.5)
     return sc, L, F, items, rigs, units, util, ulabel, vp
+
+
+def add_bay_cams(sc: Scene) -> list[str]:
+    """The overhead camera over each Shuttle's bay (services.py's, and a copy at X2). -> their actor names."""
+    import services
+    services.add_bay_camera(sc)
+    services.add_meshes(sc, "baycam2", services.meshes_of("baybar", services.bay_parts, 0.5), "baycam2")
+    sc.gmat["baycam2"] = T((X2, 0, 0))
+    b = services.BAY_CAM
+    services._add_rig(sc, "baycamrig2", None, T((X2, b["y"], b["bar_z"] + 10.0)), 0.0, b["h"], 0.0, b["tilt"],
+                      post_h=b["post_h"], foot=False)
+    return [nm for nm in sc.actors if sc.group_of[nm].startswith(("baycam", "baycamrig"))]
 
 
 def W_unit(sc, i):
@@ -775,8 +854,8 @@ def movie(data, idata):
             A.both(s(L, ["base", "u2_base"], (0, 0, 900)), s(L, ["posts", "u2_posts"], (0, 0, 1800)),
                    s(L, ["col_front", "col_rear", "u2_col_front", "u2_col_rear"], (2600, 0, 0))),
             hold=0.3, cam_to=CAM_VLM)
-    sc.step(f"4/{n}", f"The extractors and their drives, then {len(trays)} empty electrified trays, A to M, each with "
-            "its dock plate at the back right.", 2.6,
+    sc.step(f"4/{n}", f"The extractors and their drives, then {len(trays)} empty electrified trays, A to "
+            f"{max(trays)}, each with its dock plate at the back right.", 2.6,
             A.both(s(L, ["lift_rails", "u2_lift_rails"], (0, 0, 2500)), s(L, ["drive", "u2_drive"], (0, 0, 1400)),
                    s(L, ["lift", "belts", "u2_lift", "u2_belts"], (0, 0, 2400)), s(L, tray_groups, (3200, 0, 0))),
             hold=0.3)
@@ -789,7 +868,7 @@ def movie(data, idata):
     L.apply_state()
     # ------------------------------------------------------------------ 5. the floor machines
     order = [k for k in ("glovebox", "repowder", "sieve_cell", "aconity", "packaging", "instron_floor", "instron_small",
-                         "fumehood", "ded", "wire_edm") if k in F.groups and F.groups[k]]
+                         "fumehood", "ded", "wire_edm", *R8_MERGED["floor"]) if k in F.groups and F.groups[k]]
     fs = []
     for k in order:
         root = {"repowder": "repowder", "aconity": "aconity", "sieve_cell": "sieve_cell"}.get(k, f"wh_{k}:body")
@@ -919,15 +998,9 @@ def movie(data, idata):
             L.apply_state()
     L.focus = None
     # ------------------------------------------------------------------ 8. the bay cameras
-    services.add_bay_camera(sc)
-    services.add_meshes(sc, "baycam2", services.meshes_of("baybar", services.bay_parts, 0.5), "baycam2")
-    sc.gmat["baycam2"] = T((X2, 0, 0))
-    b = services.BAY_CAM
-    services._add_rig(sc, "baycamrig2", None, T((X2, b["y"], b["bar_z"] + 10.0)), 0.0, b["h"], 0.0, b["tilt"],
-                      post_h=b["post_h"], foot=False)
+    cam_names = add_bay_cams(sc)
     L.show_gauges = False
     L.apply_state()
-    cam_names = [nm for nm in sc.actors if sc.group_of[nm].startswith(("baycam", "baycamrig"))]
     for nm in cam_names:
         sc.alpha[nm] = 0.0
 
@@ -940,7 +1013,7 @@ def movie(data, idata):
                                         ("overhead camera at the bay", (X2, *services.bay_cam_point()[1:]))]))
     # ------------------------------------------------------------------ 9. orbit
     L.apply_state()
-    cap = (f"Set up: two Shuttles with trays A-M, the floor machines, two MiR250 + UR10e units on charge.")
+    cap = (f"Set up: two Shuttles with trays A-{max(trays)}, the floor machines, two MiR250 + UR10e units on charge.")
     sc.step(f"9/{n}", cap, 1.2, L.skin(0.0), hold=0.0)
     for i, cam in enumerate(ORBIT):
         last = i == len(ORBIT) - 1

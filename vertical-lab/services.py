@@ -153,13 +153,25 @@ TRAY_ITEMS = {      # what's on each tray (animate.LOADS, line.TRAY_LOADS)
 HOME = {"A": "R2", "B": "R3", "C": "F1", "D": "R1", "E": "R4", "F": "F2"}
 
 # ===================================================================================================== materials
+# the six media's colours. Round 8 (PR #318: "The rapid flowing of vibrant colors showing the connections/piping (e.g.,
+# liquid, gas) is a bit over the top."): each is mixed 45 % towards a mid grey, so the lines read as a quiet tint that
+# still tells the media apart; MEDIA_VIVID keeps round 4's colours
+MEDIA_VIVID = {"svc_power": (0.96, 0.55, 0.10), "svc_data": (0.18, 0.68, 0.32), "svc_air": (0.55, 0.80, 0.95),
+               "svc_n2": (0.55, 0.38, 0.78), "svc_cws": (0.12, 0.36, 0.85), "svc_cwr": (0.86, 0.18, 0.18)}
+MUTE = 0.45
+
+
+def muted(c, k=MUTE, grey=0.55) -> tuple:
+    return tuple(round(x + (grey - x) * k, 3) for x in c[:3])
+
+
 MATERIALS = {
-    "svc_power": (0.96, 0.55, 0.10, 1.0, 0.3),      # orange: mains
-    "svc_data": (0.18, 0.68, 0.32, 1.0, 0.3),       # green: Ethernet
-    "svc_air": (0.55, 0.80, 0.95, 1.0, 0.3),        # light blue: compressed dry air
-    "svc_n2": (0.55, 0.38, 0.78, 1.0, 0.3),         # purple: nitrogen
-    "svc_cws": (0.12, 0.36, 0.85, 1.0, 0.3),        # blue: chilled water supply
-    "svc_cwr": (0.86, 0.18, 0.18, 1.0, 0.3),        # red: chilled water return
+    "svc_power": (*muted(MEDIA_VIVID["svc_power"]), 1.0, 0.3),     # orange: mains
+    "svc_data": (*muted(MEDIA_VIVID["svc_data"]), 1.0, 0.3),       # green: Ethernet
+    "svc_air": (*muted(MEDIA_VIVID["svc_air"]), 1.0, 0.3),         # light blue: compressed dry air
+    "svc_n2": (*muted(MEDIA_VIVID["svc_n2"]), 1.0, 0.3),           # purple: nitrogen
+    "svc_cws": (*muted(MEDIA_VIVID["svc_cws"]), 1.0, 0.3),         # blue: chilled water supply
+    "svc_cwr": (*muted(MEDIA_VIVID["svc_cwr"]), 1.0, 0.3),         # red: chilled water return
     "svc_plate": (0.30, 0.31, 0.33, 1.0, 0.5),      # anodised carrier plates
     "svc_housing": (0.20, 0.21, 0.23, 0.55, 0.3),   # the dock's actuator housing, drawn see-through
     "svc_alu": (0.78, 0.79, 0.81, 1.0, 0.6),        # 2020 extrusion
@@ -1161,17 +1173,22 @@ def set_ups(sc, tray: str, battery: bool):
 
 
 class Flow:
-    """Dots running along each live medium, from the service riser through the dock and the plate to the tray's end of
-    the line, at the places given (slots, or 'open' for the bay): a frame hook moves them. on[(pos, key)] is how much
-    of the path, from the riser end, is filled: 0 shut, 1 flowing all the way."""
+    """Small markers creeping along each live medium, from the service riser through the dock and the plate to the
+    tray's end of the line, at the places given (slots, or 'open' for the bay): a frame hook moves them. on[(pos, key)]
+    is how much of the path, from the riser end, is filled: 0 shut, 1 live all the way.
 
-    def __init__(self, sc, places, speed=160.0, pitch=45.0, bead=6.5):
+    Round 8 (PR #318: "The rapid flowing of vibrant colors ... is a bit over the top"): round 4's beads ran at 160 mm/s,
+    45 mm apart, 13 mm across, in a light pastel of each medium's colour with a glow. They now creep at 40 mm/s, one
+    every 220 mm, 9 mm across (just proud of the 7-8 mm lines), a little darker than the line's own muted colour and
+    without the glow: they show which way each medium goes and no more."""
+
+    def __init__(self, sc, places, speed=40.0, pitch=220.0, bead=4.5):
         import pyvista as pv
-        from scene import FPS, lighter
+        from scene import FPS
         self.sc, self.speed, self.pitch, self.dt = sc, speed, pitch, 1.0 / FPS
         self.t = 0.0
         self.on, self.paths = {}, {}
-        self.ball = pv.Sphere(radius=bead, theta_resolution=10, phi_resolution=8)   # wider than the 7-8 mm lines
+        self.ball = pv.Sphere(radius=bead, theta_resolution=10, phi_resolution=8)   # just wider than the 7-8 mm lines
         M = mats()
         lp, dp = line_paths(), dock_paths()
         for pos in places:
@@ -1181,8 +1198,8 @@ class Flow:
                 cum = np.r_[0.0, np.cumsum(np.linalg.norm(np.diff(pts, axis=0), axis=1))]
                 self.paths[(pos, key)] = (pts, cum)
                 name = f"flow_{pos}_{key}"
-                sc.add(name, self.ball.translate(pts[0], inplace=False), lighter(M[mat][:3], 0.55), name,
-                       ambient=0.75, specular=0.1)
+                sc.add(name, self.ball.translate(pts[0], inplace=False), tuple(0.78 * c for c in M[mat][:3]), name,
+                       ambient=0.30, specular=0.1)
                 sc.alpha[name] = 0.0
                 self.on[(pos, key)] = 0.0
         sc.frame_hooks.append(self)
@@ -1199,7 +1216,7 @@ class Flow:
             name = f"flow_{pos}_{key}"
             f = self.on[(pos, key)]
             L = cum[-1]
-            n = max(4, int(L / self.pitch))
+            n = max(2, int(L / self.pitch))
             s = ((np.arange(n) / n + self.t * self.speed / L) % 1.0) * L
             s = s[s <= f * L]
             if f <= 0.01 or not len(s):
@@ -1491,8 +1508,8 @@ def movie_hookups(data, idata):
             ("dock head pressed on the plate", at_slot(X_FACE + 10, PLATE_Y + 70, PLATE_Z0 + PLATE_H), (0.88, 0.52)),
             ("lines on the tray: mains into the UPS,\nthe rest along the back rim", at_slot(1100, 400, 70), (0.10, 0.62))]
     sc.step(f"2/{n}", f"Stored in {slot}, docked: the dock in the side wall holds the plate home. Mains, Ethernet, "
-            "compressed air, nitrogen and chilled water in and out are all live (the dots), from the service riser "
-            "through the coupling to the tray; the UPS charges. Tray A's instruments are drawn faint.",
+            "compressed air, nitrogen and chilled water in and out are all live (the slow markers show which way each goes), "
+            "from the service riser through the coupling to the tray; the UPS charges. Tray A's instruments are drawn faint.",
             3.4, into, hold=3.2, cam_to=CAM_H_SLOT, labels=lbl2, live=True)
 
     # ---- 3: shut, vent, on battery, pull back
