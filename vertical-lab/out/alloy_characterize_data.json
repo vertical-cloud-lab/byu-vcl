@@ -1,0 +1,600 @@
+{
+ "specimen": "a coupon of the lab's LPBF AlSi10Mg build, polished; nothing here measured on it yet",
+ "real_section_image_found": false,
+ "searched": [
+  "vertical-cloud-lab/digital-alloy-lab main tree (figures/sem: powder only)",
+  "byu-vcl vertical-lab/out/, docs/"
+ ],
+ "sources": {
+  "byu_vcl_48": "https://github.com/vertical-cloud-lab/byu-vcl/issues/48",
+  "thijs2013": "https://doi.org/10.1016/j.actamat.2012.11.052",
+  "xray_data_booklet": "https://xdb.lbl.gov/Section1/Table_1-2.pdf",
+  "eos_alsi10mg_mds": "https://www.eos.info/en-us/metal-solutions/metal-materials/data-sheets/mds-eos-aluminium-alsi10mg",
+  "eos_alsi10mg_m400": "https://www.eos.info/metal-solutions/data-sheets/aluminium/pds-eos-aluminium-alsi10mg-eos-m-400-4-30um",
+  "kempen2012": "https://doi.org/10.1016/j.phpro.2012.10.059",
+  "oliver_pharr1992": "https://doi.org/10.1557/JMR.1992.1564",
+  "plastometrex": "https://www.plastometrex.com/"
+ },
+ "sem": {
+  "status": "illustrative",
+  "what": "a computed BSE-like section; no micrograph of the printed section exists",
+  "field_um": [
+   675.0,
+   480.0
+  ],
+  "um_per_px": 0.75,
+  "layer_um": 30,
+  "hatch_um": 110,
+  "melt_pool_width_um": [
+   105,
+   140
+  ],
+  "melt_pool_depth_um": [
+   42,
+   58
+  ],
+  "gas_pore_diameters_um": [
+   30,
+   14,
+   20,
+   9,
+   7,
+   12
+  ],
+  "lack_of_fusion_um": [
+   99,
+   22
+  ],
+  "unmelted_particle_um": 18,
+  "scale_bar_um": 100,
+  "source": "https://doi.org/10.1016/j.actamat.2012.11.052",
+  "inset": {
+   "status": "real",
+   "file": "alloy_sem_AlSi10Mg_carbon_adhesive.png",
+   "what": "the lab's AlSi10Mg powder on carbon adhesive (not the section)",
+   "instrument": "BYU Apreo",
+   "mag": "500x",
+   "kV": 5,
+   "by": "Gage Erickson",
+   "date": "2026-04-02",
+   "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/48"
+  },
+  "real_section_image_found": false
+ },
+ "eds": {
+  "status": "illustrative",
+  "kV": 15.0,
+  "analyser": "AZtecOne (Oxford Instruments)",
+  "sem": "Hitachi TM4000PlusII",
+  "lines_keV": {
+   "C K": 0.277,
+   "O K": 0.525,
+   "Mg K": 1.254,
+   "Al K": 1.486,
+   "Si K": 1.74,
+   "Fe K\u03b1": 6.404
+  },
+  "lines_source": "https://xdb.lbl.gov/Section1/Table_1-2.pdf",
+  "heights_relative_to_Al_K_made_up": {
+   "C K": 0.06,
+   "O K": 0.035,
+   "Mg K": 0.011,
+   "Al K": 1.0,
+   "Si K": 0.115,
+   "Fe K\u03b1": 0.0045
+  },
+  "detector_fwhm_eV_at_MnKa": 129,
+  "composition_wt_pct": {
+   "Si": "9.0-11.0",
+   "Mg": "0.20-0.45",
+   "Fe": "0.55 max",
+   "Al": "balance"
+  },
+  "composition_source": [
+   "https://www.eos.info/en-us/metal-solutions/metal-materials/data-sheets/mds-eos-aluminium-alsi10mg",
+   "EN 1706, EN AC-43000 (AlSi10Mg(a))"
+  ],
+  "maps": "the sem panel's melt-pool geometry, Si along the boundaries, Poisson counts (illustrative)"
+ },
+ "hv": {
+  "status": "illustrative",
+  "instrument": "Mitutoyo HM-220",
+  "load_kgf": 0.1,
+  "formula": "HV = 1.8544 F / d^2",
+  "indents": [
+   {
+    "d1_um": 38.3,
+    "d2_um": 38.7,
+    "HV": 125.1
+   },
+   {
+    "d1_um": 38.8,
+    "d2_um": 39.2,
+    "HV": 121.9
+   },
+   {
+    "d1_um": 37.9,
+    "d2_um": 38.3,
+    "HV": 127.7
+   },
+   {
+    "d1_um": 38.6,
+    "d2_um": 39.0,
+    "HV": 123.2
+   },
+   {
+    "d1_um": 39.2,
+    "d2_um": 39.6,
+    "HV": 119.5
+   }
+  ],
+  "mean_HV": 123.5,
+  "sd_HV": 3.1,
+  "literature": "as-built LPBF AlSi10Mg, about 120-130 HV (typical); e.g. Kempen et al. 2012 (the reference checked, its hardness figure not checked against the full text)",
+  "source": "https://doi.org/10.1016/j.phpro.2012.10.059"
+ },
+ "nano": {
+  "status": "computed",
+  "instrument": "KLA iMicro, Berkovich",
+  "H_set_GPa": 1.8,
+  "E_set_GPa": 77.0,
+  "H_E_source": "typical literature values for LPBF AlSi10Mg (not taken from one paper)",
+  "method": "https://doi.org/10.1557/JMR.1992.1564",
+  "h_max_nm": 500.0,
+  "unloading_m": 1.4,
+  "area": "A = 24.5 h_c^2",
+  "tip_E_GPa": 1141.0,
+  "tip_nu": 0.07,
+  "sample_nu": 0.33,
+  "grid": "5 x 5",
+  "pitch_um": 20.0,
+  "H_mean_GPa": 1.79,
+  "H_sd_GPa": 0.062,
+  "E_mean_GPa": 77.14,
+  "E_sd_GPa": 0.98,
+  "softest": {
+   "x_um": 40.0,
+   "y_um": 40.0,
+   "H_GPa": 1.575
+  },
+  "indents": [
+   {
+    "x_um": 0.0,
+    "y_um": 0.0,
+    "H_set": 1.8161,
+    "E_set": 78.0309,
+    "P_mN": 9.6513,
+    "S_mN_per_nm": 0.2125,
+    "h_c_nm": 466.346,
+    "A_nm2": 5328226.4587,
+    "m": 1.4069,
+    "h_f_nm": 435.9487,
+    "H_GPa": 1.8114,
+    "Er_GPa": 81.5742,
+    "E_GPa": 78.2583
+   },
+   {
+    "x_um": 20.0,
+    "y_um": 0.0,
+    "H_set": 1.868,
+    "E_set": 77.1438,
+    "P_mN": 9.8699,
+    "S_mN_per_nm": 0.2079,
+    "h_c_nm": 464.0023,
+    "A_nm2": 5274805.2848,
+    "m": 1.3947,
+    "h_f_nm": 433.906,
+    "H_GPa": 1.8711,
+    "Er_GPa": 80.2355,
+    "E_GPa": 76.8774
+   },
+   {
+    "x_um": 40.0,
+    "y_um": 0.0,
+    "H_set": 1.7196,
+    "E_set": 78.8304,
+    "P_mN": 9.2217,
+    "S_mN_per_nm": 0.2136,
+    "h_c_nm": 467.6443,
+    "A_nm2": 5357933.868,
+    "m": 1.3885,
+    "h_f_nm": 440.1852,
+    "H_GPa": 1.7211,
+    "Er_GPa": 81.7976,
+    "E_GPa": 78.4891
+   },
+   {
+    "x_um": 60.0,
+    "y_um": 0.0,
+    "H_set": 1.7679,
+    "E_set": 76.1055,
+    "P_mN": 9.4049,
+    "S_mN_per_nm": 0.2079,
+    "h_c_nm": 466.178,
+    "A_nm2": 5324387.8499,
+    "m": 1.4076,
+    "h_f_nm": 436.2716,
+    "H_GPa": 1.7664,
+    "Er_GPa": 79.8313,
+    "E_GPa": 76.4611
+   },
+   {
+    "x_um": 80.0,
+    "y_um": 0.0,
+    "H_set": 1.7979,
+    "E_set": 77.5441,
+    "P_mN": 9.5577,
+    "S_mN_per_nm": 0.2097,
+    "h_c_nm": 466.1318,
+    "A_nm2": 5323331.2522,
+    "m": 1.376,
+    "h_f_nm": 437.1477,
+    "H_GPa": 1.7954,
+    "Er_GPa": 80.559,
+    "E_GPa": 77.2108
+   },
+   {
+    "x_um": 0.0,
+    "y_um": 20.0,
+    "H_set": 1.764,
+    "E_set": 77.5762,
+    "P_mN": 9.413,
+    "S_mN_per_nm": 0.2094,
+    "h_c_nm": 466.0579,
+    "A_nm2": 5321645.009,
+    "m": 1.3945,
+    "h_f_nm": 437.5609,
+    "H_GPa": 1.7688,
+    "Er_GPa": 80.4353,
+    "E_GPa": 77.0833
+   },
+   {
+    "x_um": 20.0,
+    "y_um": 20.0,
+    "H_set": 1.7639,
+    "E_set": 76.0017,
+    "P_mN": 9.3853,
+    "S_mN_per_nm": 0.2079,
+    "h_c_nm": 466.3734,
+    "A_nm2": 5328850.9935,
+    "m": 1.4123,
+    "h_f_nm": 436.0994,
+    "H_GPa": 1.7612,
+    "Er_GPa": 79.7962,
+    "E_GPa": 76.425
+   },
+   {
+    "x_um": 40.0,
+    "y_um": 20.0,
+    "H_set": 1.7513,
+    "E_set": 75.6356,
+    "P_mN": 9.3179,
+    "S_mN_per_nm": 0.2074,
+    "h_c_nm": 466.2032,
+    "A_nm2": 5324962.7516,
+    "m": 1.4191,
+    "h_f_nm": 436.1115,
+    "H_GPa": 1.7499,
+    "Er_GPa": 79.668,
+    "E_GPa": 76.2931
+   },
+   {
+    "x_um": 60.0,
+    "y_um": 20.0,
+    "H_set": 1.7865,
+    "E_set": 78.1707,
+    "P_mN": 9.5163,
+    "S_mN_per_nm": 0.2138,
+    "h_c_nm": 466.6669,
+    "A_nm2": 5335561.3184,
+    "m": 1.4193,
+    "h_f_nm": 436.6474,
+    "H_GPa": 1.7836,
+    "Er_GPa": 82.016,
+    "E_GPa": 78.7148
+   },
+   {
+    "x_um": 80.0,
+    "y_um": 20.0,
+    "H_set": 1.8375,
+    "E_set": 77.5976,
+    "P_mN": 9.7407,
+    "S_mN_per_nm": 0.2136,
+    "h_c_nm": 465.8215,
+    "A_nm2": 5316246.1746,
+    "m": 1.4463,
+    "h_f_nm": 433.8666,
+    "H_GPa": 1.8322,
+    "Er_GPa": 82.1119,
+    "E_GPa": 78.8139
+   },
+   {
+    "x_um": 0.0,
+    "y_um": 40.0,
+    "H_set": 1.8263,
+    "E_set": 76.8123,
+    "P_mN": 9.6834,
+    "S_mN_per_nm": 0.2082,
+    "h_c_nm": 464.8585,
+    "A_nm2": 5294289.9623,
+    "m": 1.4022,
+    "h_f_nm": 434.9151,
+    "H_GPa": 1.829,
+    "Er_GPa": 80.1904,
+    "E_GPa": 76.8309
+   },
+   {
+    "x_um": 20.0,
+    "y_um": 40.0,
+    "H_set": 1.8287,
+    "E_set": 77.4555,
+    "P_mN": 9.7038,
+    "S_mN_per_nm": 0.2083,
+    "h_c_nm": 464.8399,
+    "A_nm2": 5293866.138,
+    "m": 1.3838,
+    "h_f_nm": 435.7153,
+    "H_GPa": 1.833,
+    "Er_GPa": 80.2434,
+    "E_GPa": 76.8855
+   },
+   {
+    "x_um": 40.0,
+    "y_um": 40.0,
+    "H_set": 1.5737,
+    "E_set": 76.22,
+    "P_mN": 8.5075,
+    "S_mN_per_nm": 0.2112,
+    "h_c_nm": 469.6187,
+    "A_nm2": 5403272.9193,
+    "m": 1.4425,
+    "h_f_nm": 441.9514,
+    "H_GPa": 1.5745,
+    "Er_GPa": 80.506,
+    "E_GPa": 77.1562
+   },
+   {
+    "x_um": 60.0,
+    "y_um": 40.0,
+    "H_set": 1.7293,
+    "E_set": 77.2753,
+    "P_mN": 9.2432,
+    "S_mN_per_nm": 0.2087,
+    "h_c_nm": 466.7438,
+    "A_nm2": 5337319.6364,
+    "m": 1.39,
+    "h_f_nm": 438.6749,
+    "H_GPa": 1.7318,
+    "Er_GPa": 80.0682,
+    "E_GPa": 76.7051
+   },
+   {
+    "x_um": 80.0,
+    "y_um": 40.0,
+    "H_set": 1.8699,
+    "E_set": 76.3011,
+    "P_mN": 9.8712,
+    "S_mN_per_nm": 0.2068,
+    "h_c_nm": 464.3817,
+    "A_nm2": 5283434.5083,
+    "m": 1.4069,
+    "h_f_nm": 432.7835,
+    "H_GPa": 1.8683,
+    "Er_GPa": 79.7347,
+    "E_GPa": 76.3617
+   },
+   {
+    "x_um": 0.0,
+    "y_um": 60.0,
+    "H_set": 1.8436,
+    "E_set": 77.2181,
+    "P_mN": 9.7605,
+    "S_mN_per_nm": 0.2101,
+    "h_c_nm": 465.0445,
+    "A_nm2": 5298526.1732,
+    "m": 1.3987,
+    "h_f_nm": 434.8555,
+    "H_GPa": 1.8421,
+    "Er_GPa": 80.8727,
+    "E_GPa": 77.5342
+   },
+   {
+    "x_um": 20.0,
+    "y_um": 60.0,
+    "H_set": 1.7598,
+    "E_set": 78.1389,
+    "P_mN": 9.4012,
+    "S_mN_per_nm": 0.2149,
+    "h_c_nm": 467.1848,
+    "A_nm2": 5347410.777,
+    "m": 1.4325,
+    "h_f_nm": 437.2476,
+    "H_GPa": 1.7581,
+    "Er_GPa": 82.3618,
+    "E_GPa": 79.0724
+   },
+   {
+    "x_um": 40.0,
+    "y_um": 60.0,
+    "H_set": 1.8544,
+    "E_set": 76.6077,
+    "P_mN": 9.8079,
+    "S_mN_per_nm": 0.209,
+    "h_c_nm": 464.9561,
+    "A_nm2": 5296511.4385,
+    "m": 1.4151,
+    "h_f_nm": 433.4217,
+    "H_GPa": 1.8518,
+    "Er_GPa": 80.4998,
+    "E_GPa": 77.1498
+   },
+   {
+    "x_um": 60.0,
+    "y_um": 60.0,
+    "H_set": 1.7539,
+    "E_set": 77.9815,
+    "P_mN": 9.3607,
+    "S_mN_per_nm": 0.2111,
+    "h_c_nm": 466.7101,
+    "A_nm2": 5336548.6839,
+    "m": 1.39,
+    "h_f_nm": 438.4138,
+    "H_GPa": 1.7541,
+    "Er_GPa": 81.0027,
+    "E_GPa": 77.6684
+   },
+   {
+    "x_um": 80.0,
+    "y_um": 60.0,
+    "H_set": 1.8578,
+    "E_set": 75.8055,
+    "P_mN": 9.8106,
+    "S_mN_per_nm": 0.2055,
+    "h_c_nm": 464.2376,
+    "A_nm2": 5280156.0658,
+    "m": 1.4083,
+    "h_f_nm": 432.7802,
+    "H_GPa": 1.858,
+    "Er_GPa": 79.2681,
+    "E_GPa": 75.8816
+   },
+   {
+    "x_um": 0.0,
+    "y_um": 80.0,
+    "H_set": 1.8282,
+    "E_set": 76.6668,
+    "P_mN": 9.6826,
+    "S_mN_per_nm": 0.2078,
+    "h_c_nm": 464.881,
+    "A_nm2": 5294800.7391,
+    "m": 1.3999,
+    "h_f_nm": 434.7675,
+    "H_GPa": 1.8287,
+    "Er_GPa": 80.0243,
+    "E_GPa": 76.6599
+   },
+   {
+    "x_um": 20.0,
+    "y_um": 80.0,
+    "H_set": 1.8097,
+    "E_set": 75.4237,
+    "P_mN": 9.5857,
+    "S_mN_per_nm": 0.2029,
+    "h_c_nm": 464.1642,
+    "A_nm2": 5278485.8432,
+    "m": 1.3815,
+    "h_f_nm": 434.9739,
+    "H_GPa": 1.816,
+    "Er_GPa": 78.2706,
+    "E_GPa": 74.8568
+   },
+   {
+    "x_um": 40.0,
+    "y_um": 80.0,
+    "H_set": 1.7631,
+    "E_set": 76.8838,
+    "P_mN": 9.3958,
+    "S_mN_per_nm": 0.2083,
+    "h_c_nm": 466.3942,
+    "A_nm2": 5329326.1019,
+    "m": 1.3931,
+    "h_f_nm": 437.1773,
+    "H_GPa": 1.763,
+    "Er_GPa": 79.9598,
+    "E_GPa": 76.5934
+   },
+   {
+    "x_um": 60.0,
+    "y_um": 80.0,
+    "H_set": 1.8001,
+    "E_set": 77.0908,
+    "P_mN": 9.5715,
+    "S_mN_per_nm": 0.2106,
+    "h_c_nm": 465.6817,
+    "A_nm2": 5313055.7883,
+    "m": 1.4284,
+    "h_f_nm": 435.1701,
+    "H_GPa": 1.8015,
+    "Er_GPa": 80.9707,
+    "E_GPa": 77.6353
+   },
+   {
+    "x_um": 80.0,
+    "y_um": 80.0,
+    "H_set": 1.7934,
+    "E_set": 76.7722,
+    "P_mN": 9.5196,
+    "S_mN_per_nm": 0.2091,
+    "h_c_nm": 466.1349,
+    "A_nm2": 5323402.7856,
+    "m": 1.4026,
+    "h_f_nm": 435.9868,
+    "H_GPa": 1.7882,
+    "Er_GPa": 80.3297,
+    "E_GPa": 76.9745
+   }
+  ],
+  "mount": "the slice is on steel in a steel mount (no polymer underneath)"
+ },
+ "pip": {
+  "status": "illustrative",
+  "instrument": "Plastometrex PLX-Benchtop",
+  "source_pip": "https://www.plastometrex.com/",
+  "law": "Voce: sigma = sigma_s - (sigma_s - sigma_0) exp(-eps_p / eps_0)",
+  "E_MPa": 70000.0,
+  "voce": {
+   "sigma_0_MPa": 212.0,
+   "sigma_s_MPa": 422.1,
+   "eps_0": 0.00964
+  },
+  "targets": {
+   "Rp02_MPa": 250.0,
+   "UTS_MPa": 400.0,
+   "uniform_elongation": 0.045
+  },
+  "Rp02_MPa": 250.0,
+  "UTS_MPa": 400.0,
+  "uniform_elongation_pct": 4.5,
+  "true_stress_at_necking_MPa": 418.0,
+  "eos_as_built": {
+   "horizontal": {
+    "yield_MPa": 250,
+    "UTS_MPa": 400,
+    "elongation_pct": 5
+   },
+   "vertical": {
+    "yield_MPa": 230,
+    "UTS_MPa": 430,
+    "elongation_pct": 3
+   },
+   "source": "https://www.eos.info/metal-solutions/data-sheets/aluminium/pds-eos-aluminium-alsi10mg-eos-m-400-4-30um"
+  },
+  "profile": {
+   "ball_radius_mm": 1.0,
+   "contact_radius_mm": 0.4,
+   "depth_below_pileup_um": 77.6,
+   "pileup_um": 6.5
+  }
+ },
+ "vhx": {
+  "status": "illustrative (computed)",
+  "instrument": "Keyence VHX, free-angle head",
+  "section_mm": [
+   6.0,
+   4.0
+  ],
+  "height_range_um": [
+   0.0,
+   536.9
+  ],
+  "shear_lip": "~0.22-0.45 mm wide, rising ~300 um at the edge",
+  "dimples_mm": 0.1,
+  "pore": {
+   "x_mm": 1.3,
+   "y_mm": -0.7,
+   "radius_mm": 0.16,
+   "depth_um": 120.0
+  },
+  "reconstruction": "a tilt series of the free-angle head (-60 to +90 deg) and one flip of the bar"
+ }
+}
