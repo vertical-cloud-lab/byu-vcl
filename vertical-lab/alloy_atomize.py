@@ -2,7 +2,8 @@
 the UR10e undoes the lid's draw latch, opens the lid, and sets the cups on the crucible's floor round the sealing rod
 with a loading tong; the machine melts and atomizes them; the arm takes the powder container off onto the MiR (#303,
 rounds 4 to 6). Clips and photos of the lab's own runs are cut in where the animation reaches the same moment: the
-charge melting (at 2x), the stream on the plate, the powder, the sieved powder. Round 6 also sums the MiR's tipping
+charge melting (at 2x), the stream on the plate, the powder as it comes out, not yet sieved (round 8: the sieved jars
+are chapter 3's, after its sieving). Round 6 also sums the MiR's tipping
 and sliding for the pull on the latch (``stability``), the tong's clearances down the bore (``tong_clearance``), and
 stops on the crucible stack, the part that is hardest to automate (notes/crucible_automation.md).
 
@@ -22,7 +23,8 @@ Hand-offs: it starts where chapter 1 (the VLM charge) ends, the MiR250 at the VL
 the four Al cups in ``charge.carrier()``'s four pockets on its cabinet, and it ends with the MiR parked in front of
 the rePowder holding the powder container in a cradle, the arm parked, where chapter 3 (sieve and print) picks up.
 
-The scene is ``line.py``'s layout, as ``alloy_workflow.py`` builds it (the VLM, the line's machines), except that the
+The scene is setup_lab.py's two-Shuttle floor (round 8, ``alloy_atomize_floor.py``: the second Shuttle at x = 3630, the
+Aconity at 6950, the glovebox at -7300), except that the
 rePowder is loaded part by part from ``repowder/model.py`` (the merged copy ``animate.Lab`` adds is hidden), so its lid,
 sealing rod, crucible and container can move and its furnace and chamber can be cut open at the furnace axis.
 
@@ -55,6 +57,7 @@ scene.GIF_SIZE = (640, 360)
 from scene import AUDIT, FPS, OUT, PREVIEW, Scene, T, R, S, ease, mix, window  # noqa: E402
 _OVERLAY = Scene.overlay              # scene's own: instruments_char and instruments_lab patch Scene.overlay later
 
+import alloy_atomize_floor as FL     # noqa: E402
 import animate as A                   # noqa: E402
 import charge as C                    # noqa: E402
 import lab                            # noqa: E402
@@ -112,6 +115,8 @@ MIR_SPEED = 1500.0                    # mm/s, as alloy_workflow.py
 PARK = np.radians(A.PARK_DEG)
 CARRIER_AT = (A.BUFFER_LOCAL[0], A.BUFFER_LOCAL[1], P.AMR_TOP - 20.0)    # where chapter 1 puts the cup carrier
 CRADLE_AT = (280.0, 10.0, P.AMR_TOP - 20.0)                           # the container's cradle, beside the arm
+CRADLE_TURN = float(os.environ.get("CRADLE_TURN", "0"))   # the container's turn in the cradle (round 7: 180, handle
+                                      # to the arm; round 8: 0, handle to the front, as chapter 3 takes it)
 CRADLE_H = 12.0                       # a low ring on the cabinet top (was a ring on a 150 mm post: the upper arm
                                       # crossed it on two joint moves, PR #318 round 5)
 END_POSE = (A.REPOWDER_AT[0] + 288.0, -2230.0)     # the hand-off to chapter 3 (sieve, print): MiR250 centre, yaw 0,
@@ -1258,20 +1263,21 @@ def build():
         sc.frame_hooks.append(sc.auditor)
     sc.slots = []                           # where the real footage goes: (beat, MP4 frame, GIF frame, step label)
     sc.intro = 0.8
-    L = A.Lab(sc, data, robot=False)
+    with FL.two_shuttle():                  # round 8: setup_lab's floor, the second Shuttle at x = 3630
+        L = A.Lab(sc, data, robot=False)
     L.show_gauges = False
     L.skin(0.0)(1.0)
     L.apply_state()
     sc.add("line floor", pv.Plane(center=(1200, -900, -1.5), direction=(0, 0, 1), i_size=34000, j_size=18000),
            A.FLOOR_C, "floor", ambient=1.0, diffuse=0.0, specular=0.0, smooth_shading=False)
     inst, ents = idata["glovebox"]
-    tour.Rig(sc, inst, ents, "glovebox:", at=line.place_floor(inst.bbox(), line.LINE["glovebox"]))
+    tour.Rig(sc, inst, ents, "glovebox:", at=FL.floor_at("glovebox", inst.bbox()))
     ents = line.aconity_entries()
     pts = np.vstack([e["mesh"].points for e in ents.values() if e["mesh"].n_points])
     lo, hi = pts.min(0), pts.max(0)
     for n, e in ents.items():
         sc.add(n, e["mesh"], e["color"], "aconity", opacity=e["opacity"])
-    sc.gmat["aconity"] = line.place_floor((lo[0], hi[0], lo[1], hi[1], lo[2], hi[2]), line.LINE["aconity"])
+    sc.gmat["aconity"] = FL.floor_at("aconity", (lo[0], hi[0], lo[1], hi[1], lo[2], hi[2]))     # x = 6950
     for n in list(sc.actors):                   # the merged rePowder: replaced by its parts
         if n.startswith("repowder:"):
             sc.alpha[n] = 0.0
@@ -1909,8 +1915,9 @@ def movie():
     sc.step(f"5/{n}", cap, 1.0, rb.line_to(T((0, -230, -20)) @ grasp_h), hold=0.05)
     _, off = rb.held
     seat_w = mir.world(mir.cradle_seat)
-    # the container stands in the cradle, its base on the seat, turned half round so the handle faces the arm
-    target = T(seat_w) @ R((0, 0, 1), 180.0) @ T(-np.array([M.CHUTE_X, 0.0, M.CONT_Z[0]]))
+    # the container stands in the cradle, its base on the seat, its handle to the front, as it came out of the
+    # rePowder: chapter 3 (alloy_print.py) takes it from there by the handle, level, from the front
+    target = T(seat_w) @ R((0, 0, 1), CRADLE_TURN) @ T(-np.array([M.CHUTE_X, 0.0, M.CONT_Z[0]]))
     t_place = target @ inv(off)
     up_w = T((0, 0, 380)) @ rb.tcp_world()
     sc.step(f"5/{n}", cap, 1.0, rb.line_to(up_w), hold=0.05)
@@ -1936,9 +1943,8 @@ def movie():
            f"{four['runs_per_build'][b440]}, {full225['runs_per_build'][b440]} or "
            f"{full400['runs_per_build'][b440]} runs.")
     sc.step(f"5/{n}", cap, 0.4, None, hold=6.5)
-    slot(sc, "sieved")
-    sc.step(f"5/{n}", "Done: the powder is on the MiR250, in front of the rePowder. Next: the AS 200 sieve shaker and "
-            "the printer.", 0.4, None, hold=2.0)
+    sc.step(f"5/{n}", "Done: the powder, not yet sieved, is on the MiR250 in front of the rePowder. Next: the "
+            "sieving cell and the printer.", 0.4, None, hold=2.0)
     if DEBUG:
         print("end pose", round(mir.x, 1), round(mir.y, 1), round(mir.yaw, 2), flush=True)
     print(f"highest forearm/wrist point {rb.max_z_world:.0f} mm", flush=True)
@@ -1962,22 +1968,22 @@ PLAN = [
                  "3:55 Gage says \"It's melting in right now\")."),
     dict(beat="melt", file="nab_melt3.mp4", window=(14.0, 18.5), speed=MELT_SPEED,
          caption="The charge fully molten, a bright pool round the sealing rod (2brsz-90seg, DAL #219)."),
+    dict(beat="pour", file="mst2026_stream.mp4", window=(4.0, 11.0), crop=(0.283, 0.0, 0.818, 1.0),
+         tag="Sterling Baird's MS&T 2026 talk",
+         caption="Real footage, from Sterling Baird's MS&T 2026 talk (youtu.be/YmvaeqOQAU4, 4:58): a melt stream, a "
+                 "line of drops, falls onto the tip of the vibrating plate and breaks up into a spray of droplets. The "
+                 "talk doesn't name the alloy or the run."),
     dict(beat="pour", file="nab_pour1.mp4", window=(15.0, 22.5),
          caption="Real footage, Oct 27 2026, through the view port: the bronze jet lands on the tip of the W-coated "
                  "carbon-fibre plate and atomizes (2brsz-90seg). 91 % of the 1,080 g became usable powder (DAL #219)."),
-    dict(beat="pour", file="al_pour_oct08.mp4", window=(14.0, 20.0),
-         caption="Real footage, Oct 8 2026: an Al 6063 stream on a carbon-fibre plate (youtu.be/dTyuZmqYxHA). That "
-                 "day it dripped rather than atomized: a CF plate with the 1.5:1 booster (DAL #159, PR #176)."),
     dict(beat="powder", file="nab_k7m2q9_jar_of_powder.jpg", seconds=3.0,
-         caption="Real photo: a jar of the Oct 27 bronze powder, lot k7m2q9 (DAL #219)."),
+         caption="Real photo: the Oct 27 bronze powder as it came out of the atomizer, not yet sieved: lot k7m2q9 "
+                 "(DAL #219). It is sieved in chapter 3."),
     dict(beat="powder", file="al4047_oct22_c3k0n5_bag_and_jar.jpg", seconds=3.0,
-         caption="Real photo: the Oct 22 Al 4047 run, lot c3k0n5, 169 g in: a bag of splats and a jar of powder "
-                 "(Ronnie Guymon, DAL #159)."),
-    dict(beat="sieved", file="nab_k7m2q9_sieved_three_jars.jpg", seconds=4.2,
-         caption="Real photo: the Oct 27 bronze sieved. Left, under 63 µm, the LPBF cut: 188 g from both bronze "
-                 "runs; middle, 63-250 µm, 827 g; right, flakes over 250 µm (Gage Erickson, DAL #219)."),
+         caption="Real photo: the Oct 22 Al 4047 run, lot c3k0n5, 169 g in, as collected that day: a bag of "
+                 "splats and a jar of powder (Ronnie Guymon, DAL #159)."),
 ]
-BEATS = ("charge", "melt", "pour", "powder", "sieved")
+BEATS = ("charge", "melt", "pour", "powder")       # round 8: the sieved jars moved to chapter 3, after the sieving
 BADGE = (178, 34, 34)
 KEEP = OUT / "footage"            # the excerpts and photos used, small, committed: splice() reads these when present
 
@@ -2226,6 +2232,10 @@ def splice() -> str:
                 t0, t1 = item["window"]
                 off = e.get("window_offset", 0.0)
                 raw = _clip(e["path"], t0 - off, t1 - t0, max(1, int(round(fps / item.get("speed", 1.0)))))
+                if item.get("crop"):                # (x0, y0, x1, y1), fractions: a talk's black bar and webcam inset
+                    cx0, cy0, cx1, cy1 = item["crop"]
+                    raw = [f.crop((round(cx0 * f.width), round(cy0 * f.height), round(cx1 * f.width),
+                                   round(cy1 * f.height))) for f in raw]
             else:
                 pic = _photo(e["path"])
                 raw = None
@@ -2242,7 +2252,8 @@ def splice() -> str:
             if not pics:
                 continue
             sp_ = item.get("speed", 1.0)
-            badge = " · ".join(x for x in ("REAL FOOTAGE" if video else "REAL PHOTO", _alloy(e), _date(e),
+            badge = " · ".join(x for x in ("REAL FOOTAGE" if video else "REAL PHOTO",
+                                            *((item["tag"],) if item.get("tag") else (_alloy(e), _date(e))),
                                             f"{sp_:g}× SPEED" if sp_ != 1.0 else "") if x)
             k0 = len(frames)
             frames += [np.asarray(_dress(p, sl["label"], badge, item["caption"], 1.0, size)) for p in pics]

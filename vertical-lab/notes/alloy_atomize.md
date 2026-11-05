@@ -3,8 +3,8 @@
 The MiR250 brings the four charged 5N Al cups from the VLM to the rePowder. The UR10e opens the lid, swings the
 sealing rod's lever up, loads the cups round the rod, lowers the lever and shuts the lid. The machine, cut open at the furnace axis, washes, melts and atomizes the
 charge. The arm then takes the powder container off onto the MiR. Clips and photos of the lab's own runs are cut in
-where the animation reaches the same moment: the charge, the melt, the pour onto the plate, the powder and the sieved
-powder.
+where the animation reaches the same moment: the charge, the melt, the pour onto the plate and the powder as it comes out,
+not yet sieved (the sieved jars are chapter 3's since round 8).
 
 | | |
 |---|---|
@@ -21,6 +21,24 @@ python3 alloy_atomize.py splice             # only cut the footage into the last
 python3 alloy_atomize.py keep               # copy the excerpts PLAN uses from /tmp/footage (FOOTAGE=...) to out/footage/
 python3 alloy_atomize.py powder             # print the powder sums
 ```
+
+### Round 8 (PR #318, 2026-11-05): the MS&T stream, the unsieved powder, two Shuttles
+
+Sterling's review of 2026-11-05 00:37 UTC, verbatim:
+
+> That Al6063 melt stream video that you found is a dud. Bad. You could find the stream from a recent youtube video
+> from me probably, and it is probably on our youtube somewhere.
+
+> The already sieved bronze powders are shown right after pulling it out, you should show the unsieved jar first,
+> then show the sieved results after you actually do the sieving. See DAL for the issues and PRs related to sieving
+
+| What | Round 7 | Round 8 |
+| --- | --- | --- |
+| The pour's footage | the lab's Oct 27 bronze jet, then an Oct 8 Al 6063 stream that dripped | a melt stream atomizing on the plate from Sterling's MS&T 2026 talk ([YmvaeqOQAU4](https://youtu.be/YmvaeqOQAU4?t=298), 4:58-5:05, after the slide "Ultrasonic atomization enables chemical whitespace AM alloy discovery"), cropped to the video and shown beside the model, badged REAL FOOTAGE · Sterling Baird's MS&T 2026 talk; then the Oct 27 bronze jet. The Oct 8 clip is out. The talk doesn't say which alloy or run it is, and the caption says so |
+| After the pour | the unsieved jar, the c3k0n5 bag and jar, then the three sieved jars | the unsieved powder only: the k7m2q9 jar on the day of the run ("not yet sieved; it is sieved in chapter 3") and the c3k0n5 bag and jar "as collected that day". The sieved jars are chapter 3's, after the arm's sieving ([`alloy_print.md`](alloy_print.md)) |
+| The floor | `line.py`'s one-Shuttle line, the Aconity at x = 3250 | `setup_lab.py`'s floor ([`alloy_atomize_floor.py`](../alloy_atomize_floor.py)): the second Shuttle at x = 3630, the Aconity at 6950, the glovebox at −7300 turned to the aisle |
+| The container in its cradle | turned half round, the handle to the arm | the handle to the front, as it came out of the rePowder: chapter 3 takes it from there, level from the front, so the two chapters now meet in the same state (`CRADLE_TURN`) |
+| Framing | the latch steps seen from the close-up; the camera through the machine for a few frames (fixed in code in round 7, not rendered) | rendered |
 
 ### Round 6 (PR #318, 2026-11-04): the lid's latch, the base, a loading tong, the crucible
 
@@ -255,9 +273,11 @@ Every piece is the lab's, credited on screen. None of it is Al-10Si: each captio
 | Four cups in | photo | the Oct 27 charge: four 630 bronze rod pieces, 1,079.886 g on the balance | Gage Erickson, DAL #219 comment 6457884447 |
 | The melt | 3 clips, 5 + 7 + 4.5 s | through the furnace port: the bronze pieces round the sealing rod glowing, sinking into their own melt, then fully molten | [2brsz-90seg](https://youtu.be/2brsz-90seg) at about 1:02, 4:36 and 5:28 (k7m2q9, Oct 27) |
 | The pour | clip, 7.5 s | through the view port: the bronze jet on the tip of the W-coated CF plate, atomizing | [2brsz-90seg](https://youtu.be/2brsz-90seg) at about 8:17 |
-| The pour | clip, 6 s | an Al 6063 stream on a CF plate, which **dripped rather than atomized** that day (CF plate with the 1.5:1 booster) | [dTyuZmqYxHA](https://youtu.be/dTyuZmqYxHA) at about 1:40 (Oct 8, DAL #159, PR #176) |
-| The powder | 2 photos | a jar of the k7m2q9 bronze powder; the Oct 22 Al 4047 run c3k0n5, a bag of splats and a jar | DAL #219 comment 6457884447; Ronnie Guymon, DAL #159 comment 6353788099 |
-| Sieved | photo | the bronze sieved: < 63 µm, 63–250 µm, flakes over 250 µm | Gage Erickson, DAL #219 comment 6509252104 |
+| The pour (round 8) | clip, 7 s, cropped to the video (the talk's black bar and webcam inset off), beside the model | a melt stream, a line of drops, onto the tip of the vibrating plate, breaking up into a spray; the talk names neither the alloy nor the run | Sterling Baird's MS&T 2026 talk, [YmvaeqOQAU4](https://youtu.be/YmvaeqOQAU4?t=298) at 4:58-5:05 |
+| The powder | 2 photos | the k7m2q9 bronze powder in a jar on the day of the run, not yet sieved; the Oct 22 Al 4047 run c3k0n5 as collected, a bag of splats and a jar | DAL #219 comment 6457884447; Ronnie Guymon, DAL #159 comment 6353788099 |
+
+Round 8 took out the Oct 8 Al 6063 clip ([dTyuZmqYxHA](https://youtu.be/dTyuZmqYxHA), which dripped rather than
+atomized: "a dud", Sterling) and moved the sieved-jars photo to chapter 3, after its sieving.
 
 The clips were fetched through a lab Pi (YouTube refuses the runner) and cut at keyframes. `out/footage/` keeps only
 the windows used, at 720 px tall with no sound, and the photos at 1600 px: 2.4 MB in all.

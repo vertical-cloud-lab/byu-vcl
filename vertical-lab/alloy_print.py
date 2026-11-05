@@ -16,19 +16,27 @@ its lid, knobs and the falling fractions are ``instruments_char.sieve()``'s, dri
 are replaced by ``sieve_station``'s, each its own group with a handling tab, so the arm stacks and unstacks them. Every
 arm move is a straight line of the gripper or a joint move between two solved poses (``robot.py``). See
 ``notes/alloy_print.md`` for what is measured and what is assumed.
+
+Round 8 (PR #318): setup_lab's two-Shuttle floor (``alloy_atomize_floor.py``: the Aconity at x = 6950, east of the
+second Shuttle); the MiR as chapter 2 leaves it (the empty cup carrier, the container in its low cradle) and the LPBF jar
+in a pocket block, no raised holders; the powder grey while it is poured and shaken, coloured by fraction only once it
+has settled, with the legend, then grey again; the lab's real sieved jars (DAL #219) after the arm's sieving; and the jar
+carried into the MIDI in the IK branch that is clear at the supply cylinder (``alloy_workflow.branch_q``).
 """
 from __future__ import annotations
 
 import math
 import sys
+from pathlib import Path
 
 import numpy as np
 import pyvista as pv
-from PIL import ImageDraw
+from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageOps
 
 import alloy_workflow as AW           # sets scene.GIF_FPS / GIF_SIZE as chapter 4 does
 from scene import CLEAN, PREVIEW, T, R, S, font
 
+import alloy_atomize_floor as FL     # noqa: E402
 import alloy_models as M              # noqa: E402
 import animate as A                   # noqa: E402
 import charge                         # noqa: E402
@@ -54,7 +62,7 @@ OPEN_TAB = 0.5                                          # open only so far for a
                                                         # its knuckle reach down into the bench or the shaker
 CELL_DY = -300.0                                        # the MiR parks 300 mm further off the bench than off the line:
                                                         # nearer, the arm folds into itself to reach the tabs level
-HOLDER2_LOCAL = (-190.0, -160.0)                        # a second cup on the MiR's cabinet, for the jar
+HOLDER2_LOCAL = (-190.0, -160.0)                        # the jar's pocket on the MiR's cabinet (MiR frame)
 ACO_DY = -250.0                                         # and 250 mm further off the Aconity: from its usual spot the
                                                         # arm reaching into the chamber folded its forearm into the
                                                         # base cabinet; from here it reaches in nearly straight
@@ -64,8 +72,17 @@ ORDER_UP = ["pan", "s325", "s230", "s140", "s100", "s60"]          # bottom to t
 LABEL = {"pan": "pan", "s325": "No. 325", "s230": "No. 230", "s140": "No. 140", "s100": "No. 100", "s60": "No. 60"}
 START = (A.REPOWDER_AT[0] + 288.0, -2230.0)             # MiR parked in front of the rePowder's container axis, clear
 MIR_END = 1400.0                                        # alloy_workflow.Mir's starting x: chapter 4 begins there
-HOLDER_LOCAL = (-30.0, -150.0)                          # container/bottle cup on the MiR's cabinet (MiR frame)
-HOLDER_H = 140.0
+# the MiR's cabinet as chapter 2 (alloy_atomize.py) leaves it: chapter 1's low cup carrier (empty now) and the low
+# cradle the container rides in, a ring 37 mm tall on the cabinet top. Round 8: no raised holders on posts any more
+# (round 7's low pocketed carrier instead); the LPBF jar rides in a pocket block like the carrier's (props.pocket_block)
+CAB_TOP = P.AMR_TOP - 20.0                              # the cabinet's top: the arm stands on a 20 mm plate
+CARRIER_AT = (A.BUFFER_LOCAL[0], A.BUFFER_LOCAL[1], CAB_TOP)     # alloy_atomize.CARRIER_AT
+CRADLE_AT = (280.0, 10.0, CAB_TOP)                      # alloy_atomize.CRADLE_AT
+CRADLE_H = 12.0                                         # alloy_atomize.CRADLE_H
+CONT_R_RP = 65.0                                        # the rePowder model's container radius (repowder/model.py)
+CRADLE_SEAT = np.array([CRADLE_AT[0], CRADLE_AT[1], CAB_TOP + 3.0])
+HOLDER_LOCAL = CRADLE_AT[:2]                            # the container's seat on the MiR (MiR frame)
+POCKET_SEAT = np.array([HOLDER2_LOCAL[0], HOLDER2_LOCAL[1], CAB_TOP + P.DECK_FLOOR])   # the jar's base in its pocket
 GRIP_HANDLE = 0.876                                     # 12 mm handle bar (alloy_workflow: 0.88 for the 12 mm lug)
 GRIP_BAR36 = 0.59                                       # the lid's 36 mm crossbar
 GRIP_KNOB = 0.36                                        # the 54 mm knob
@@ -73,7 +90,15 @@ GRIP_BOTTLE = 0.18                                      # the 70 mm bottle
 LAYER_UM = 50.0                                         # assumed: AddUp's AlSi10Mg sheet (chapter 4) prints 50 um
 
 POWDER = M.POWDER
+GREY = POWDER                       # all the powder, in the sieves and the jars, until it has settled (round 8)
 STREAM = (0.42, 0.43, 0.46)
+PHOTOS = Path(__file__).resolve().parent / "out" / "footage"
+SIEVED_PHOTO = dict(file="nab_k7m2q9_sieved_three_jars.jpg",
+                    badge="REAL PHOTO · 630 bronze (NAB) · Oct 29 2026 · Gage Erickson, DAL #219",
+                    caption="The lab's own sieving, by hand: the Oct 27 bronze runs (lot k7m2q9) in three jars. Left, "
+                            "under 63 µm, the LPBF cut: 188 g; middle, 63-250 µm, 827 g; right, flakes over 250 µm, "
+                            "182 g; of 1,938 g melted in two runs (Gage Erickson, DAL #219 comment 6509252104).")
+BADGE = (178, 34, 34)
 LASER = (1.0, 0.45, 0.12)
 
 # the rePowder's container, as instruments_char.sieve() draws it (CONT_LINE, "DAL, assumed size"): Ø128 x 228, a
@@ -112,13 +137,22 @@ def bottle_meshes():
     return body, cap, powder
 
 
-def holder_mesh(top, at=HOLDER_LOCAL):
-    hx, hy = at
-    post = pv.Cylinder(center=(hx, hy, top + HOLDER_H / 2), direction=(0, 0, 1), radius=18, height=HOLDER_H).triangulate()
-    foot = pv.Box(bounds=(hx - 50, hx + 50, hy - 50, hy + 50, top, top + 8)).triangulate()
-    cup = charge.lathe([(0, 0), (72, 0), (72, 34), (66, 34), (66, 6), (0, 6)], res=56).translate(
-        (hx, hy, top + HOLDER_H), inplace=False)
-    return post.merge(foot).merge(cup)
+def cradle_mesh():
+    """Chapter 2's container cradle (alloy_atomize.Mir): a low ring and its floor on the cabinet top, MiR frame."""
+    cx, cy, cz = CRADLE_AT
+    ring = charge.lathe([(CONT_R_RP + 1.0, 0), (CONT_R_RP + 7.0, 0), (CONT_R_RP + 7.0, CRADLE_H + 25.0),
+                         (CONT_R_RP + 1.0, CRADLE_H + 25.0)], res=64).translate((cx, cy, cz), inplace=False)
+    floor = pv.Cylinder(center=(cx, cy, cz + 1.5), direction=(0, 0, 1), radius=CONT_R_RP + 7.0, height=3.0,
+                        resolution=64).triangulate()
+    return ring.merge(floor)
+
+
+def jar_pocket_mesh():
+    """A pocket block for the 250 mL LPBF jar, as the cup carrier's (props.pocket_block: 26 mm deep, a lead-in)."""
+    hx, hy = HOLDER2_LOCAL
+    r = SS.TIP["jar_r"] + P.POCKET_CLEAR
+    blk = P.pocket_block(hx - r - 9.0, hx + r + 9.0, hy - r - 9.0, hy + r + 9.0, [(hx, hy, r)])
+    return blk.translate((0, 0, CAB_TOP), inplace=False)
 
 
 def bench_mesh():
@@ -139,6 +173,7 @@ def build_cell(sc, sv):
     a turntable, the Al set's stand with the set nested on it (storage order), the lid parked on the tipper's roof,
     the ground straps. The LPBF jar is the group "bottle", as the old single bottle was, so step 4 is unchanged."""
     b = BENCH
+    sc.frac_col = {}                                      # powder mesh -> its fraction's colour (the legend's)
     y_c = sieve_w(sv, (0, 0, 0))[1]                       # the shaker's centre line: the cell's front-back axis
     zb = b["h"]
     sc.gmat["encl"] = T((b["x"], line.Y_FACE + b["d"] / 2, zb))
@@ -165,7 +200,8 @@ def build_cell(sc, sv):
         pn = "bottle/powder" if j == 4 else f"{g}/powder"
         pg = "bottle_pow" if j == 4 else f"{g}_pow"
         frac_mat = IC.MATERIALS[dict((k, m) for k, _, _, _, m in IC.STACK)["s325" if key == "lpbf" else key]]
-        sc.add(pn, SS.jar_powder(), frac_mat[:3], pg, specular=0.05)
+        sc.add(pn, SS.jar_powder(), GREY, pg, specular=0.05)        # grey: the colours are only for the legend
+        sc.frac_col[pn] = frac_mat[:3]
         sc.parent[pg] = g
         sc.gmat[pg] = T((0, 0, 3.5)) @ S((1, 1, 0.01))
         sc.alpha[pn] = 0.0
@@ -181,7 +217,8 @@ def build_cell(sc, sv):
         g = f"sv_{key}"
         for name, (mesh, col, spec, op) in SS.sieve_parts(key).items():
             sc.add(f"{g}/{name}", mesh, col, g, opacity=op, specular=spec)
-        sc.add(f"{g}/powder", SS.powder_disc(key), IC.MATERIALS[fr[key]][:3], f"{g}_pow", specular=0.05)
+        sc.add(f"{g}/powder", SS.powder_disc(key), GREY, f"{g}_pow", specular=0.05)
+        sc.frac_col[f"{g}/powder"] = IC.MATERIALS[fr[key]][:3]
         sc.parent[f"{g}_pow"] = g
         sc.alpha[f"{g}/powder"] = 0.0
         sc.parent[g] = "stand"
@@ -225,12 +262,44 @@ class PrintScene(AW.AlloyScene):
     def __init__(self, *a, **kw):
         super().__init__(*a, **kw)
         self.panel_a = 0.0
+        self.photo = None                # (PIL image, badge): a real photo shown instead of the model, full frame
 
     def overlay(self, img, scale, anchors):
+        if self.photo is not None:
+            pic, badge = self.photo
+            img = _fit(pic, img.size)
+            keep = self.labels, self.gauges
+            self.labels, self.gauges = [], []
+            try:
+                img = super().overlay(img, scale, [])
+            finally:
+                self.labels, self.gauges = keep
+            if not CLEAN:
+                _badge(img, scale, badge)
+            return img
         img = super().overlay(img, scale, anchors)
         if not CLEAN and self.panel_a > 0.02:
             _panel(img, scale, self.panel_a)
         return img
+
+
+def _fit(img, size):
+    """`img` inside `size`, on a blurred, darkened copy of itself (alloy_atomize._fit)."""
+    bg = ImageOps.fit(img, size, Image.LANCZOS).filter(ImageFilter.GaussianBlur(18))
+    bg = ImageEnhance.Brightness(bg).enhance(0.45)
+    fg = ImageOps.contain(img, size, Image.LANCZOS)
+    bg.paste(fg, ((size[0] - fg.width) // 2, (size[1] - fg.height) // 2))
+    return bg
+
+
+def _badge(img, scale, text):
+    """A red badge under the title saying the picture is real (alloy_atomize._dress)."""
+    d = ImageDraw.Draw(img, "RGBA")
+    s = max(scale, 0.80)
+    fb = font(15 * s, bold=True)
+    w = d.textlength(text, font=fb)
+    d.rounded_rectangle((10 * s, 44 * s, 10 * s + w + 20 * s, 44 * s + 28 * s), 6 * s, fill=(*BADGE, 235))
+    d.text((20 * s, 49 * s), text, font=fb, fill=(255, 255, 255))
 
 
 def _panel(img, scale, alpha):
@@ -292,8 +361,19 @@ class Mir2:
 
 def build():
     AW.NAME, AW.TITLE, AW.AlloyScene = NAME, TITLE, PrintScene      # chapter 4's build(), our name and scene class
-    sc, L, rigs, W, E, amr = AW.build()
+    with FL.two_shuttle():                  # round 8: setup_lab's floor, two Shuttles, the Aconity at x = 6950
+        sc, L, rigs, W, E, amr = AW.build()
     AW.AlloyScene = PrintScene.__mro__[1]
+    for key, rig in rigs.items():           # the glovebox, the Instrons and the EDM where setup_lab's floor has them
+        sc.gmat[f"{key}:body"] = FL.floor_at(key, rig.inst.bbox())
+    # what chapter 5 adds round the old Aconity (the depowdering box, the lance and its post, the rinse cup) and the
+    # MiR's plate carrier and bar holder: not in this chapter, and on this floor they stood in front of Shuttle 2
+    gone = ("dbox", "lstand/", "lance", "floor pipe", "rinse/", "plate residue")
+    fixtures = {f"amr/{nm}" for nm in M.mir_fixtures(amr.top)}
+    for nm in list(sc.actors):
+        if nm.startswith(gone) or nm in fixtures:
+            sc.set_mesh(nm, pv.PolyData())
+            sc.alpha[nm] = 0.0
     # the bench and the AS 200 on it
     top, legs = bench_mesh()
     sc.add("bench top", top, (0.28, 0.29, 0.31), "bench", specular=0.2)
@@ -311,16 +391,17 @@ def build():
     build_cell(sc, sv)
     # the MiR's cups: the container's (it rides back to the rePowder) and the jar's; the container on its cup
     mo = Mir2(amr)
-    sc.add("amr/holder2", holder_mesh(amr.top), (0.94, 0.94, 0.92), "amr")
-    sc.add("amr/holder3", holder_mesh(amr.top, HOLDER2_LOCAL), (0.94, 0.94, 0.92), "amr")
+    carrier, _ = charge.carrier()           # chapter 1's cup carrier, empty: the cups went into the crucible
+    sc.add("amr/cup carrier", carrier.translate(CARRIER_AT, inplace=False), P.RACK_C, "amr")
+    sc.add("amr/cradle", cradle_mesh(), (0.30, 0.32, 0.36), "amr")
+    sc.add("amr/jar pocket", jar_pocket_mesh(), P.RACK_C, "amr")
     parts, cpow = container_meshes()
     for name, (mesh, col) in parts.items():
         sc.add(f"pcont/{name}", mesh, col, "pcont", specular=0.5)
     sc.add("pcont/powder", cpow, POWDER, "pcont_pow", specular=0.05)
     sc.parent["pcont_pow"] = "pcont"
-    seat = np.array([HOLDER_LOCAL[0], HOLDER_LOCAL[1], amr.top + HOLDER_H + 6.0])
     sc.parent["pcont"] = "amr"
-    sc.gmat["pcont"] = T(seat)
+    sc.gmat["pcont"] = T(CRADLE_SEAT)       # in chapter 2's cradle, its handle to the front
     # streams and the laser
     sc.add("pstream", pv.PolyData(np.zeros((1, 3))), STREAM, "pstream", style="points", point_size=4.0,
            render_points_as_spheres=True)
@@ -399,13 +480,20 @@ def movie():
     CAM_SV_IN = [tuple(sv_c + (-980, -1380, 1000)), tuple(sv_c + (40, -60, 400)), (0, 0, 1)]
     CAM_JAR = [tuple(sv_c + (-700, -2600, 1650)), tuple(sv_c + (220, -560, 320)), (0, 0, 1)]
     CAM_FILL = [tuple(sup + (-420, -1350, 700)), tuple(sup + (0, -160, 40)), (0, 0, 1)]
-    CAM_DRIVE = [(1200, -8800, 3600), (600, -1300, 900), (0, 0, 1)]
+    CAM_DRIVE = [(2500, -11600, 4600), (2500, -1400, 900), (0, 0, 1)]     # both Shuttles: the cell to the Aconity
     CAM_ACO = [tuple(aco_bp + (-1700, -2300, 1500)), tuple(aco_bp + (100, -520, -120)), (0, 0, 1)]
     CAM_PRINT = [tuple(aco_bp + (-430, -390, 560)), tuple(aco_bp + (10, 40, -15)), (0, 0, 1)]
-    CAM_LINE = [(aco_bp[0] + 2600, -9800, 4300), (aco_bp[0] + 2600, -1100, 900), (0, 0, 1)]    # chapter 4's first
+    CAM_LINE = [(MIR_END + 1700, -10400, 4400), (MIR_END + 1700, -1300, 900), (0, 0, 1)]    # the MiR between the
+                                                                                            # two Shuttles
 
     sc.lid_park = sc.gmat["sieve:lid"].copy()
     sc.lid_parked = True
+    frac_col = dict(sc.frac_col)                         # the jars' and the sieves' discs (build_cell)
+    for key, _, _, _, mat in IC.STACK:                    # the shaker's own falling clusters (instruments_char.sieve)
+        for nm in sv.names.get(f"frac_{key}", []):
+            frac_col[nm] = IC.MATERIALS[mat][:3]
+    for nm in frac_col:
+        sc.color[nm] = GREY
 
     def lid_fix():
         if sc.lid_parked:
@@ -430,7 +518,7 @@ def movie():
     sc.cam = list(CAM_RP)
     lbl = [A.REPOWDER_LBL[:2] + ((0.12, 0.26),),
            ("sieving cell", tuple(sv_c + (0, 250, 1000)), (0.50, 0.20)),
-           ("the rePowder's powder container", tuple(mo.amr.world(np.r_[HOLDER_LOCAL, amr.top + HOLDER_H + 120])),
+           ("the rePowder's powder container", tuple(mo.amr.world(CRADLE_SEAT + (0, 0, 260))),
             (0.30, 0.62))]
     cap = "From the atomizer to the printer. The run's powder is in the rePowder's container, on the MiR250: four 5N Al " \
           "cups with Si, Al-10Si, 157 g charged. Next, the sieving cell beside the rePowder, then the Aconity MIDI."
@@ -439,7 +527,8 @@ def movie():
     # ------------------------------------------------------------------ 1. the cell
     cap = "The sieving cell, in a downdraft enclosure, every metal part bonded to a ground bar. Left to right: a " \
           "tipper over a funnel and five labelled jars, the Retsch AS 200, and the Al set's own stand: the lab's 8 in " \
-          "stack (DAL PR #175), nested in reverse, each sieve with a 12 mm handling tab at the front."
+          "stack, No. 60, 100, 140, 230, 325 and the pan (DAL PR #175), nested in reverse, each sieve with a 12 mm " \
+          "handling tab at the front."
     status(sc, Arm="driving to the sieving cell")
     sc.step(f"1/{n}", cap, mo.secs(x_sv, y_sv), mo.drive(x_sv, y_sv), hold=2.0, cam_to=CAM_CELL,
             labels=[("tipper, funnel, jars", tuple(tip_w + (0, 0, 640)), (0.14, 0.22)),
@@ -548,7 +637,7 @@ def movie():
     sc.step(f"2/{n}", cap, 2.4, pour, hold=0.2, live=False)
     sc.alpha["pstream"] = 0.0
     # the empty container back in its cup on the MiR: it rides back to the rePowder to be cleaned
-    seat_c = mo.amr.world(np.r_[HOLDER_LOCAL[0], HOLDER_LOCAL[1], amr.top + HOLDER_H + 6.0])
+    seat_c = mo.amr.world(CRADLE_SEAT)
     g_back = seat_c + HANDLE_GRASP
     cap = "The empty container goes back in its cup on the MiR, to ride back to the rePowder for cleaning."
     status(sc, Arm="the container back on the MiR", Powder="on the No. 60")
@@ -628,14 +717,30 @@ def movie():
     sc.step(f"2/{n}", cap, 5.0, svmove({"stack": (0.0, 1.0), **{f"fall_{k}": (0.0, 1.0) for k, *_ in IC.STACK}}),
             hold=0.1)
 
-    def panel(u):
-        sc.panel_a = u
+    sc.step(f"2/{n}", "Settled: the shaker stops, and every grain is on the cloth that stopped it.", 0.4, None,
+            hold=1.0)
+
+    def tint(f1, show_panel):
+        """Every powder mesh from its current mix towards its fraction's colour (f = 1) or grey (0); the legend with
+        it. All grey while it is poured and shaken: it is one powder; coloured only once it has settled."""
+        f0 = getattr(sc, "_tint", 0.0)
+
+        def up(u):
+            f = f0 + (f1 - f0) * u
+            sc._tint = f
+            for nm, c in frac_col.items():
+                sc.color[nm] = tuple(g_ + (c_ - g_) * f for g_, c_ in zip(GREY, c))
+            sc.panel_a = f if show_panel else sc.panel_a
+        return up
     status(sc, Sieve="done: six fractions")
-    cap = "The fractions, by the sieve that keeps each. The LPBF cut, 20-63 um, is the No. 325 and the pan: there " \
-          "is no 20 um sieve, and DAL found under 20 um is about 0.05 % by mass."
-    sc.step(f"2/{n}", cap, 0.8, panel, hold=3.0,
+    cap = "Coloured now only to tell them apart: the fractions, by the sieve that keeps each. The LPBF cut, 20-63 um, " \
+          "is the No. 325 and the pan: there is no 20 um sieve, and DAL found under 20 um is about 0.05 % by mass."
+    sc.step(f"2/{n}", cap, 0.8, tint(1.0, True), hold=3.4,
             labels=[("No. 325 (45 um)", tuple(sieve_w(sv, (IC.RW + IC.LIP, 0, 212.0 + IC.DEPTH + 10))), (0.40, 0.70)),
                     ("pan", tuple(sieve_w(sv, (IC.RW + IC.LIP, 0, 212.0 + 10))), (0.40, 0.80))])
+    cap = "And back to grey: it is all the same powder, only sorted by size."
+    sc.step(f"2/{n}", cap, 0.8, tint(0.0, True), hold=0.6, labels=[])
+    sc.panel_a = 0.0
     # each fraction now rides on its own sieve
     for key in ORDER_UP:
         sv.v[f"frac_{key}"] = 0.0
@@ -643,7 +748,7 @@ def movie():
     sv.apply()
 
     def panel_off(u):
-        sc.panel_a = 1.0 - u
+        sc.panel_a = 0.0
 
     # ------------------------------------------------------------------ 3. the stack taken apart, each fraction to its jar
     cap = "Now the part the lab does by hand (Gage Erickson's videos of 29 Oct): the arm unclamps the lid and puts it " \
@@ -760,6 +865,11 @@ def movie():
         transfer(f"3/{n}", cap, key, "stand", on_stand(key), k=k, lift0=58.0, out0=200.0, lift1=26.0, in1=0.0,
                  cam=CAM_STAND if first else None)
     status(sc, Sieve="the set back on its stand", Powder="five fractions in five jars")
+    pic = PHOTOS / SIEVED_PHOTO["file"]
+    if pic.exists():                                      # the lab's real result, after the model's sieving
+        sc.photo = (ImageOps.exif_transpose(Image.open(pic)).convert("RGB"), SIEVED_PHOTO["badge"])
+        sc.step(f"3/{n}", SIEVED_PHOTO["caption"], 0.3, None, hold=5.0, labels=[])
+        sc.photo = None
 
     # the LPBF jar to the MiR's second cup. The MiR first rolls 300 mm back up to its usual line: from the cell's spot
     # the reach down to the jar under the funnel put the forearm in the bench's front edge
@@ -768,7 +878,7 @@ def movie():
     sc.step(f"3/{n}", cap, mo.secs(x_sv, AW.MIR_Y), mo.drive(x_sv, AW.MIR_Y), hold=0.05)
     b_seat = sc.world("bottle")[:3, 3]
     b_grasp = b_seat + (0, 0, 58.0)
-    seat2 = mo.amr.world(np.r_[HOLDER2_LOCAL[0], HOLDER2_LOCAL[1], amr.top + HOLDER_H + 6.0])
+    seat2 = mo.amr.world(POCKET_SEAT)
     cap = "The arm draws the LPBF jar out from under the funnel and stands it in a cup on the MiR. The lab weighs " \
           "and labels each jar now; here the label is printed before the run."
     status(sc, Arm="taking the LPBF jar")
@@ -787,7 +897,7 @@ def movie():
     status(sc, Arm="parked", Powder="< 63 um, in the jar on the MiR")
 
     # ------------------------------------------------------------------ 4. to the Aconity; into the powder supply
-    cap = f"To the Aconity MIDI, {(aco_x - x_sv) / 1000:.1f} m along the line, past the VLM's opening."
+    cap = f"To the Aconity MIDI, {(aco_x - x_sv) / 1000:.1f} m along the row, past both Kardex Shuttles' openings."
     status(sc, Arm="driving to the Aconity MIDI")
     sc.step(f"4/{n}", cap, mo.secs(aco_x, y_aco), mo.drive(aco_x, y_aco), hold=0.2, cam_to=CAM_DRIVE)
     cap = "The door opens, and the chamber is drawn see-through. The MIDI's 170 mm build cylinder is at the front; " \
@@ -814,12 +924,16 @@ def movie():
     rb.grasp("bottle")
     sc.step(f"4/{n}", cap, 0.8, rb.line_to(level_y(seat_now + (0, 0, 150), 0.0)), hold=0.05)
     door_front = W.world(np.array(M.door_pivot()))[1]
-    p_in0 = np.array([sup[0] - 60.0, door_front - 150.0, sup[2] + 75.0])
-    p_pour = np.array([sup[0] - 60.0, sup[1] - 60.0, sup[2] + 75.0])      # tipped, the mouth is over the cylinder
-    sc.step(f"4/{n}", cap, 1.6, rb.joint_to(Tw=level_y(p_in0, 0.0)), hold=0.05)
-    # in through the door by a planned joint move: the straight line from the door to the cylinder kept the arm in the
-    # IK branch it had at the door, which puts the forearm in the base cabinet's top on the way
-    sc.step(f"4/{n}", cap, 1.6, rb.joint_to(Tw=level_y(p_pour, 0.0)), hold=0.05)
+    # the jar's foot 32 mm over the chamber floor (the grasp is 58 mm up the jar), 60 mm short of the supply's axis:
+    # tipped, the mouth is over the cylinder
+    p_in0 = np.array([sup[0] - 60.0, door_front - 150.0, sup[2] + 90.0])
+    p_pour = np.array([sup[0] - 60.0, sup[1] - 60.0, sup[2] + 90.0])
+    # round 8: to the door in the IK branch that is clear at the cylinder (alloy_workflow.branch_q), then straight in.
+    # Round 7 went in by a planned joint move from the branch it had at the door, which the planner couldn't route
+    # through the 280 mm opening, so its fallback put the forearm in the base cabinet (97 frames)
+    q_in0 = AW.branch_q(rb, level_y(p_in0, 0.0), level_y(p_pour, 0.0))
+    sc.step(f"4/{n}", cap, 1.8, rb.joint_to(q1=q_in0), hold=0.05)
+    sc.step(f"4/{n}", cap, 1.6, rb.line_to(level_y(p_pour, 0.0)), hold=0.05)
     sc.step(f"4/{n}", cap, 1.0, rb.line_to(level_y(p_pour, 112.0)), hold=0.05)
 
     def fill(u):
@@ -838,7 +952,7 @@ def movie():
     cap = "The empty jar goes back on the MiR, and the door shuts. The chamber is purged with argon before the " \
           "laser runs."
     sc.step(f"4/{n}", cap, 0.8, rb.line_to(level_y(p_pour, 0.0)), hold=0.05)
-    sc.step(f"4/{n}", cap, 1.4, rb.joint_to(Tw=level_y(p_in0, 0.0)), hold=0.05)
+    sc.step(f"4/{n}", cap, 1.4, rb.line_to(level_y(p_in0, 0.0)), hold=0.05)          # straight out, same branch
     sc.step(f"4/{n}", cap, 1.6, rb.joint_to(Tw=level_y(seat_now + (0, 0, 150), 0.0)), hold=0.05)
     sc.step(f"4/{n}", cap, 0.8, rb.line_to(level_y(seat_now, 0.0)), hold=0.05)
     sc.step(f"4/{n}", cap, 0.4, rb.grip_to(0.0), hold=0.05)

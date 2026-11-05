@@ -7,6 +7,46 @@ plate that chapter 4 ([`alloy_workflow.py`](../alloy_workflow.py)) takes out.
 [tipper](../out/alloy_print_tipper.png). 198 s at 1280 × 720 and 10 fps (round 6, with the arm's collisions planned
 round, below; 10 fps to fit the session; re-render at 15 fps when the runner is free); the GIF is 640 × 360 at 5 fps.
 
+### Round 8 (PR #318, 2026-11-05): grey powder, the lab's real sieved jars, two Shuttles, 0 collisions
+
+Sterling's review of 2026-11-05 00:37 UTC, the two points for this chapter, verbatim:
+
+> The already sieved bronze powders are shown right after pulling it out, you should show the unsieved jar first,
+> then show the sieved results after you actually do the sieving. See DAL for the issues and PRs related to sieving
+
+> The powder that gets put into the sieve looks like multi-colored candy... keep it all gray at first, and only change
+> the color after it's all settled and then you show the legend. After you show the legend, you should change it back
+> to all gray.
+
+| What | Round 7 | Round 8 | Why |
+| --- | --- | --- | --- |
+| The powder's colour | Each fraction its own colour from the moment it was poured (`instruments_char.sieve()`'s clusters), in the sieves and in the jars | Grey (`alloy_models.POWDER`, the container's powder) while it is poured, shaken and settles; then 0.8 s to the fraction colours with the legend ("What stays on each sieve") for 3.4 s, labelled *Coloured now only to tell them apart*; then 0.8 s back to grey, *it is all the same powder, only sorted by size*. The jars fill grey | Sterling, above |
+| The lab's sieved result | In chapter 2, straight after the container came off the rePowder | Here, after the arm has done the sieving and every fraction is in its jar: Gage Erickson's photo of the Oct 27 bronze (lot k7m2q9) in three jars, < 63 µm (188 g), 63-250 µm (827 g) and > 250 µm (182 g), of 1,938 g melted in two runs, 5 s full frame, badged **REAL PHOTO · 630 bronze (NAB) · Oct 29 2026 · Gage Erickson, DAL #219** ([DAL #219 comment 6509252104](https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/219#issuecomment-6509252104)). Chapter 2 now shows the unsieved powder (the k7m2q9 jar on the day of the run and the c3k0n5 bag and jar) | Sterling, above |
+| The sieve set | The 8 in stack, No. 60 to the pan | The same six pieces, now named in the cell's caption: No. 60, 100, 140, 230, 325 and the pan, which is the lab's own stack since the No. 100, 140 and 325 arrived on Nov 4 ([DAL PR #175 comment 6642949111](https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/175#issuecomment-6642949111): McMaster 7969T42, T43, T48, 304 stainless, 8 × 2 in) | DAL |
+| The floor | `line.py`'s one-Shuttle line: the Aconity at x = 3250, where the second Shuttle now stands | `setup_lab.py`'s floor plan: the second Shuttle at x = 3630, the Aconity at 6950, the glovebox at −7300 turned to the aisle, the Instrons and the wire EDM on the south row ([`alloy_atomize_floor.py`](../alloy_atomize_floor.py), shared with chapter 2). The MiR drives 8.7 m from the cell to the Aconity, past both Shuttles. Chapter 5's depowdering box, lance post and rinse cup, which `alloy_workflow.build()` places round the old Aconity and which would stand in front of Shuttle 2, are left out of this chapter | the brief for round 8 |
+| The MiR's cabinet | Chapter 4's plate carrier and bar holder, and two cups on 140 mm posts for the container and the jar | As chapter 2 leaves it: chapter 1's low cup carrier (empty: the cups went into the crucible) and the container in chapter 2's low cradle (a ring 37 mm tall), handle to the front; the LPBF jar rides in a pocket block like the carrier's (`props.pocket_block`, 26 mm deep, a lead-in) | round 7's low pocketed carrier (`alloy_charge.py`, `props.py`) |
+| The jar into the MIDI | 97 frames in collision: the planner found no joint path through the 280 mm door, and its fallback put the forearm in the base cabinet's top | To the door in the IK branch that is clear at the supply cylinder (`alloy_workflow.branch_q`), then a straight line in and the same line out. A probe of 36 combinations (the MiR 250, 400 or 550 mm further off; the jar's grasp 60, 90 or 120 mm over the chamber floor; level or 12° down; on the cylinder's axis or 60 mm short) found four clear, all 250 mm off and level, with the grasp 60 or 90 mm up, on the axis or 60 mm short of it. Taken: 90 mm (the jar's foot 32 mm over the floor), 60 mm short, as before | the brief: collisions to 0 |
+
+**What the lab does now, from DAL.**
+- [DAL PR #175](https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/175), *Sieve order for atomized powder:
+  No. 60 scalp + 20–63 µm LPBF cut*: the lab's 8 in, 2 in deep, 304 stainless McMaster sieves. The Oct 28 review
+  there ([comment 6479961909](https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/175#issuecomment-6479961909)):
+  the powder has too little under 20 µm for a lower cut to matter; hand sieving is fine at 63 µm for now; a used
+  Ro-Tap (about $1.5–2.3k) before 45 µm cuts become routine. On grounding for the bronze
+  ([comment 6480413613](https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/175#issuecomment-6480413613)):
+  the ignition risk of copper-alloy dust is far lower than aluminium's, but clip the lead on every time, since the
+  same sieves and hood are used for Al.
+- [DAL #234](https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/234), *What is standard practice for
+  cleaning sieves?*: Gage, Nov 3: "we used our 63um and 250um sieves on the bronze powder. Now we want to run aluminum
+  through them". Its Edison answer is the cleaning paragraph below; on Nov 4 Gage asked whether to clean them or order
+  another set. That question is open, and it is why the cell keeps a set per alloy family.
+- [DAL #219 comment 6509252104](https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/219#issuecomment-6509252104)
+  (Gage, Oct 29): the photos of the sieved bronze, "Far left jar is <63um 630 Bronze powder", and the weights.
+- Gage Erickson's three videos of 29 Oct 2026 (below): sieving by hand over a funnel into glass jars.
+
+So the lab sieves by hand with two sieves (63 and 250 µm) today; the cell here, with six pieces, a shaker and a
+tipper, is our design for doing the same without a person, and is marked as such.
+
 **Round 5 (PR #318): no person.** Sterling, on "a person still takes the sieve stack apart": "The idea would be to
 have the robot take care of this, or to use something more automated. ... some kind of clamping mechanism or clever
 hardware-centric design." The arm now builds the stack, takes it apart, tips each sieve into its own jar and puts
@@ -54,17 +94,17 @@ weighed, the sieves brushed and wiped with Kimwipes. The NAB result is three jar
 > 251 µm: 188 g, 827 g and 182 g of 1,938 g melted over two runs, DAL #219).
 
 **Hand-offs.**
-- **Start:** the MiR at x = −3487, y = −2230, arm parked, the container on the MiR: the same spot, pose and
-  container as chapter 2's end (`alloy_atomize.END_POSE`). Not the same fixtures, and that predates this round:
-  chapter 2 ends with the container in a cradle at (280, 10) in the MiR's frame, handle towards the arm, next to
-  chapter 1's cup carrier, while this chapter starts on chapter 4's MiR (plate carrier and bar holder) with the
-  container in a cup at (−30, −150), handle to the front. Left as it was, since neither file is this chapter's.
-- **End:** as before: the MiR at x = 1400, `MIR_Y`, arm parked; the Aconity closed and opaque; the plate under a
-  30 mm powder cake; chapter 4's first camera. The MiR now has two cups: the empty container's and the empty jar's.
+- **Start (round 8):** the MiR at x = −3487, y = −2230, arm parked, as chapter 2 leaves it
+  (`alloy_atomize.END_POSE`): chapter 1's cup carrier, empty, and the container in chapter 2's low cradle at
+  MiR-local (280, 10), handle to the front. Round 7 started on chapter 4's MiR (plate carrier and bar holder) with
+  the container in a cup on a post; chapter 2 now also sets the container down handle to the front
+  (`alloy_atomize.CRADLE_TURN`), so the two chapters meet in the same state.
+- **End:** the MiR at x = 1400, `MIR_Y`, between the two Shuttles, arm parked; the Aconity closed and opaque; the
+  plate under a 30 mm powder cake. On the MiR: the empty container in its cradle and the empty jar in its pocket.
 - **Where the cell stands:** the bench is 1065 × 600 × 700 mm (assumed), x from −2515 to −1450, between the
-  rePowder's heat exchanger and the VLM. Tipper at x = −2350, AS 200 at −1971, stand at −1623. `setup_lab.py` puts
-  the AS 200 on tray F; this chapter keeps it beside the rePowder, as the round-4 note on Al dust suggests. The
-  two layouts still disagree.
+  rePowder's heat exchanger and the VLM. Tipper at x = −2350, AS 200 at −1971, stand at −1623. Since round 7
+  `setup_lab.py`'s floor plan has the same cell at the same place (`FLOOR_PLAN["sieve_cell"]`, `SIEVE_BENCH`), with a
+  MiR dock 300 mm off it, as here.
 
 ### The arm's collisions (round 6)
 
