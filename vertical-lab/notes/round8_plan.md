@@ -180,3 +180,7 @@ jobs in the queue. A normal job that has waited 20 minutes counts as quick, so r
 **17:40 deadlines moved:** renders committed by **20:10**, notes by **20:15**; the long-form is built from 20:15
 (most of its clips are already in the cache). Two whole-floor scenes at about 5.5 GB each fill the runner's memory,
 so only two run at once; set-up movie last among them.
+
+**18:16 / 18:40:** `VLAB_ONLY_TRAYS=<letters>` makes `setup_lab.build` load only those trays (1.5 GB for D-F against
+about 5 GB for all fifteen). Use it for `ARM_AUDIT=1` passes only. The Shuttles are drawn as open frames, so a render
+built with it would show them half empty, the inconsistency Sterling flagged at 9:09.
