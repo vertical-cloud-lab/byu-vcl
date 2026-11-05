@@ -1,3 +1,96 @@
+## Round 8: chapter 5, depowder, cut, heat treat, tensile at room and elevated temperature
+
+Sterling's review of 2026-11-05 (PR #318) asked for a catch shelf that catches, a capped IPA jar, real tensile
+specimens in the heat treatment, Instron's automated loading, and an elevated-temperature test. The chapter is
+re-staged as the alloy route's chapter 5 ([`alloy_workflow.py`](../alloy_workflow.py), `build_lab()` and `movie()`),
+in the whole lab as the set-up movie leaves it (`setup_lab.build`: two Shuttles, every tray loaded, the floor plan), so
+the VLM in its wide shots is the same one as in every other chapter. On that floor the Aconity MIDI stands in the north
+row at x 6950, the wire EDM across the aisle in the south row, the 68FM-100 at the south row's west end, and the
+furnace on tray F in Shuttle 1. Round 4-7's flow on the old one-Shuttle line is in git history; its `build()` stays,
+because chapter 3 (`alloy_print.py`) borrows it.
+
+RENDER_TABLE
+
+### What changed, step by step
+
+1. **The print, the lance, the depowdering box** (round 5's moves, on the new floor: the box and the lance's post
+   stand east of the printer, as they stood beside it on the old line).
+2. **The MiR250's storage is low pockets, not posts** (round 7: "no insertion gap ... positioned rather high"). The
+   plate drops 12 mm into a 40 mm block bored for it and its stud; the specimen rack sits in a 20 mm frame with a 3 mm
+   lead-in; the tongs lie on two V-blocks; a cradle with two channels takes the room-temperature halves
+   ([`alloy_models.mir_pockets`](../alloy_models.py)). Round 4's placement "half a turn round" rolled the plate 120
+   deg onto its side on its carrier; it is now a pure half turn about the vertical.
+3. **Drives.** The MiR250 docks on the floor plan, turns on the spot and drives straight legs, each from rest to rest
+   at its published 0.3 m/s^2 (PR #321's `props.ramp_*`, now on this branch); turning at 60 deg/s and 60 deg/s^2 is
+   assumed (MiR publishes neither). The long drives to tray F and the Instron are shown at 4x, and the caption says so.
+4. **A catch that catches** (Sterling: "it totally looks like they'd just bounce and fall straight off ... it should
+   actually be capable of catching it in terms of distance and a taller lip"). The plate stands on edge, so each cut
+   bar stands on end. Each gets its own slot in a comb under it whose floor is 0.5 mm under the bar's lower end: the
+   bar settles 0.5 mm onto a urethane pad instead of falling 14 mm. The slot is walled in front (75 mm), on both sides
+   (the comb's teeth) and, behind, by the plate's own face; the comb stops 1.4 mm in front of the plate, clear of the
+   wire (0.15 mm off it). An ejector pin in each slot lifts its bar 65 mm, its foot still 10 mm in the slot, so the
+   gripper takes the bar's upper end clear of the other three and of the plate's rim: round 6's 57 frames taking the
+   bar off the shelf are gone by construction ([`alloy_models.catch_comb`](../alloy_models.py)). Our design.
+5. **The IPA jar starts capped.** The arm lifts its lid off by the knob onto a rest beside it, dips each bar, and puts
+   the lid back after the fourth. The jar is slim (32 mm across, IPA to 6 mm under the rim) so a bar held level by its
+   upper end goes in up to the fingers; the air knife on the rim dries it on the way out. Round 5's 92 mm cup only
+   let a gripper pointing down reach in. The bar's upper 25 mm, where the fingers hold it, is not dipped.
+6. **Real specimens in the heat treatment** ("those aren't tensile specimens. They're just bars"). All four go
+   through the jar into a stainless rack, standing on end in slots 25 mm deep ([`r8_test.TRAY`](../r8_test.py)): the
+   arm carries every specimen level by its upper end, from the comb to the grips, so none is laid flat and picked up
+   again. On tray F the rack gets a T6: solution treatment at 530 C, a water quench, ageing at 160 C. The schedule's
+   times are assumptions until DAL sets one; the furnace tour clip's caption no longer credits EOS with it (that
+   attribution had no source). The rack is always handled with **tongs** that ride on the MiR: 300 mm of steel between
+   the gripper and the jaws, so the gripper stays out of the 530 C mouth (a gripper on the fin would also sit over the
+   specimens). The door hinges on the furnace's right, where the quench tank is, and its free edge sweeps 472 mm in
+   front, so the rack waits left of the mouth whenever the door moves and crosses to the tank in front of the closed
+   door. The **quench tank has a lift basket** (r8_test.quench_tank): the rack is set on its plate just over the rim
+   and dropped 150 mm into the water, about 7 s after the door opened (our figure; an aluminium alloy wants its quench
+   within seconds, so check it). The door actuator, the tongs' linkage and the basket's cylinder are assumptions.
+7. **The 68FM-100, loaded as in Instron's AT6 cells** (Sterling: "look at the automated tensile testing videos from
+   that expensive automated module ... how they automatically load and unload the samples"). r8_test's model (round
+   8, session 2) has a 3119-608 chamber round the load string on pull rods, an AVE 2 video extensometer reading
+   through the door's heated window, and a scrap chute. The arm takes a specimen from the rack by its upper end, the
+   chamber door opens (an actuator, assumed), the arm sets the specimen's foot in the lower wedge grip, lets go and
+   backs out; the door shuts and the crosshead brings the upper grip down onto the upper end. This is the order the
+   Volvo cobot cell in the Edison answer uses (lower grip first, then the upper grip approaches;
+   [`out/edison/auto_tensile/answer.md`](../out/edison/auto_tensile/answer.md)).
+8. **Elevated temperature** ("You're missing elevated temperature tensile tests"). The room-temperature test runs with
+   the chamber cold; the second specimen is loaded cold, the door shuts, the chamber heats the grips and specimen to
+   200 C and soaks 15 min, then the pull. The chamber cools before its door opens: the gripper isn't made for hot work.
+   Both curves are **illustrative**: the room-temperature one through AddUp's as-built values (as round 4), the 200 C
+   one assumed at about 60 % of its strength and twice its elongation. [Uzan et al.](https://cris.iucc.ac.il/en/publications/high-temperature-mechanical-properties-of-alsi10mg-specimens-fabr/)
+   (Additive Manufacturing 24, 2018, 257-263) report the trend for SLM AlSi10Mg (yield falls and elongation rises above 200 C); their numbers were not
+   retrieved here, so none are claimed. The room-temperature halves go to the MiR's cradle for fractography (chapter
+   7's VHX), lying flat with their fracture surfaces touching nothing; the hot test's go down the scrap chute, as the
+   AT6 drops them.
+
+### Physical sense, checked in the previews and left open
+
+- Fixed: the bars' 14 mm drop; the plate's roll on its carrier; the raised holders; the gripper reaching into a 530 C
+  furnace (tongs); the furnace door swinging through the rack (it waits left of the mouth).
+- Left: the jaws of the tongs are drawn fixed (the linkage that closes them is not modelled); the MiR works tray F
+  350 mm further out than its dock, so its camera target (round 7's AprilTag cube) sees it from further away; the
+  upper 25 mm of each bar is not rinsed; the furnace tour clip still slides its rack in from mid-air, as the tours do.
+
+### Collisions: not audited frame by frame this round
+
+The chapter was rewritten for round 8 and the runner's queue (two whole-floor scenes at a time) left no room for a
+finished `ARM_AUDIT=1` pass before the long-form's cutoff: one ran 47 minutes and reached section 5 before a fix made
+it stale. Every joint move is still planned round obstacles as it is rendered (`robot.py`, `collide.py`), so what is
+known is what the planner reported in the last full preview: **six joint moves end in a pose that is itself in
+collision**, which the planner cannot route round:
+
+- section 5, twice: the arm folded on itself (shoulder against forearm, upper arm against the wrist) at a pose
+  carrying a bar between the IPA jar and the rack;
+- section 7: the park pose with the tongs back on their rest (wrist 2 against the tongs' handle and the rest: the rest
+  is 233 mm off the arm's axis, the closest the UR10e reaches, and the folded park pose comes closer), and the park
+  pose beside the Instron's open chamber door (wrist 2 against the door), twice each.
+
+Each is a few frames. The fixes are new poses: a waypoint for the bar moves, the tongs' rest further out on the cabinet
+(or a different park pose while it is loaded), and a park pose that clears the door. Run
+`VLAB_ONLY_TRAYS=F ARM_AUDIT=1 xvfb-run -a python3 alloy_workflow.py` (about an hour) for the frame-by-frame count.
+
 ## The alloy workflow: printer, wire EDM, tensile test (round 4)
 
 ![The alloy workflow](out/alloy_workflow.gif)
@@ -240,3 +333,13 @@ ARM_AUDIT=1 xvfb-run -a python3 alloy_workflow.py  # every frame checked, nothin
 
 The opened Aconity is tessellated once, in about 10 s, and cached in `.cache/alloy_aconity_<hash>.pkl`. The full
 render took 38 minutes on the shared 4-core runner (round 6, at 10 fps: 43 minutes, with five sessions sharing it).
+
+Round 8 (the whole lab; through `runner_guard.py` on a shared runner):
+
+```bash
+VLAB_ONLY_TRAYS=F VIZ3D_FPS=6 xvfb-run -a python3 alloy_workflow.py        # as rendered: only tray F is populated,
+#                                         the Shuttles are clad (L.skin(0)), so the empty trays never show
+VLAB_ONLY_TRAYS=F CH5_FROM=6 PREVIEW=1 xvfb-run -a python3 alloy_workflow.py   # stills from the heat treatment on
+VLAB_ONLY_TRAYS=F ARM_AUDIT=1 xvfb-run -a python3 alloy_workflow.py        # the frame-by-frame collision count
+VIZ3D_FPS=8 xvfb-run -a python3 tour.py furnace instron_floor quench_tank   # the three tour clips (r8_test.py)
+```
