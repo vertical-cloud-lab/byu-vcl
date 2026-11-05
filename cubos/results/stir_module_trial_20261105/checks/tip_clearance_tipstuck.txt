@@ -1,0 +1,10 @@
+== stir_module_trial.yaml | stir_module_trial.yaml | tip-stuck | 21 poses | travel_z computed-not-logged: 0 | passive_shadow vial hits 0 (cross-check OK)
+  pipette min         : +21.000 mm  step 7 blowout (moving pipette, tip on) over vial_1 [open, top 66.0], X move at tool Z 87.0, 11.0 mm from axis; seg [181.0, 56.0, 87.0] -> [126.0, 56.0, 87.0]
+  pipette moving min  : +21.000 mm  step 7 blowout (moving pipette, tip on) over vial_1 [open, top 66.0], X move at tool Z 87.0, 11.0 mm from axis; seg [181.0, 56.0, 87.0] -> [126.0, 56.0, 87.0]
+  pipette passive min : +21.000 mm  step 8 cap (passive pipette, tip on) over vial_1 [open, top 66.0], X move at tool Z 87.0, 0.0 mm from axis; seg [126.0, 45.0, 87.0] -> [181.0, 45.0, 87.0]
+  vial_1   min        : +21.000 mm  step 7 blowout (moving pipette, tip on) over vial_1 [open, top 66.0], X move at tool Z 87.0, 11.0 mm from axis; seg [181.0, 56.0, 87.0] -> [126.0, 56.0, 87.0]
+  vial_2   min        : +31.000 mm  step 4 aspirate (moving pipette, tip on) over vial_2 [open, top 56.0], X move at tool Z 87.0, 0.0 mm from axis; seg [291.332, 89.0, 87.0] -> [136.668, 89.0, 87.0]
+  capper lateral min  : +36.000 mm  step 9 drop_tip (passive vial_capper_decapper, tip off) over vial_1 [capped, top 79.0], Z move at tool Z 115.0, 0.0 mm from axis; seg [126.0, 45.0, 115.0] -> [126.0, 45.0, 138.0]
+  pipette lateral at gantry Z   122.0 depth  0.0 -> tool Z   122.0  steps 3:pick_up_tip:moving
+  pipette lateral at gantry Z   122.0 depth 35.0 -> tool Z    87.0  steps 2:decap:passive, 4:aspirate:moving, 5:cap:passive, 6:decap:passive, 7:blowout:moving, 8:cap:passive, 9:drop_tip:moving
+  pipette lateral at gantry Z    99.0 depth 35.0 -> tool Z    64.0  steps 1:move:passive
