@@ -150,6 +150,44 @@ the wire EDM cut from the printed AlSi10Mg build, faced flush in its steel mount
   answer). Sectioning and mounting before it are not automated.
 - **Still hard here**: re-papering, judging the polish (by eye in the SOP), the holder's clips and coupling.
 
+## Physical sense: what was checked, what is left
+
+Sterling asked whether other things, like the bars dropping onto a catch shelf, would not work as drawn. In this
+chapter:
+
+- **Fixed: parts moving on their own.** The first version (28905c5) moved the slice into the CNC's vise, the coupon
+  onto the press's ram, the stopper, the slice into the steel puck and its set screw along the machines' own prop
+  paths, with nothing carrying them, and the two mounts appeared in the polisher's holder. Now the arm carries every
+  one of them, and a part is only ever let go where something holds it: a flat seat, the ram's face, a pocket's mouth
+  (then pressed home), the vise's parallels, the holder's pocket.
+- **Fixed: the slice turned over by the vise.** The first version faced both sides of the bare slice and turned it
+  over between them by a joint of the vise, which no gripper can do with a 10 mm part without a regrasp station.
+- **Fixed: the PX500 tour's parked discs swung round with the platen** (they were children of the spinning platen,
+  so a disc waiting in the magazine orbited the machine during grinding). A disc now spins only while it is on the
+  platen.
+- **Fixed: the holder's tab ended up at the back.** The holder turned a fraction of a turn per grind, so after six
+  grinds its tab faced away from the arm. Each grind now turns it whole turns.
+- **Fixed: the Carvera's lid was in the way.** At Makera's 40 degrees no arm pose reached the vise (`PREP_PROBE=1`
+  found 0 of 8 IK branches clear); our actuator opens it to 65 degrees (2 of 8 clear), 957 mm tall, still under the
+  996 mm opening.
+- **Simplified: the pushes.** Pressing the slice into a 0.05 mm-clearance pocket and the stopper into its "airtight"
+  bore are drawn as the closed fingers pushing the part down at a steady speed; a real cell would need force control
+  (the UR10e's own force-torque sensing) and might still jam a tilted slice.
+- **Assumed: the holder's coupling and clips.** LECO publishes no quick-change coupling for the PX500's holder, and
+  nothing holds a mount in a pocket of the stock holder when it is turned over.
+- **The tour clips** move their samples on paths, with no arm, as every tour clip does; the chapter is where the arm
+  does it.
+- **The arm audit**: see Outputs below.
+
+## How the arm's stops were chosen
+
+`PREP_PROBE=1 PREVIEW=1 xvfb-run -a python3 alloy_prep.py` builds the scene and, instead of the movie, prints for every
+grasp (the caddy's seats, the holder's pockets and tab on its rest, the Carvera's vise, the press's mold, the PX500's
+platen, the six magazine shelves and the holder on the head) how many of the UR10e's 8 IK branches are clear, at
+several MiR stops, gripper spins and lid angles. The chapter's stops come from it: the MiR stops at x = -800 mm for the
+press (at -720 a quarter of the spins hit camera F0's head; at -860 its tail would reach the VLM's target post), 560 mm
+right of Shuttle 2's centre for the Carvera, and at Shuttle 1's dock for the PX500.
+
 ## Our designs, at assumed sizes
 
 The caddy and the holder's rest on the MiR, the holder's tab, fingertip slots and clips, the press's doser, the
