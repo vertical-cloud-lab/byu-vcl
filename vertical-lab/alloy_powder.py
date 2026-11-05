@@ -538,17 +538,10 @@ def movie():
     xw = lambda q: at(xrd, q)                                 # noqa: E731
     axis = xw((0, g["gy"], g["gz"]))
     CAM_XRD = [tuple(axis + (420, -1050, 330)), tuple(axis + (-10, -60, -40)), (0, 0, 1)]
+    # the holder is taken with the door shut: opened, the door stands between the arm and the prep station
     st["cap"] = ("The Rigaku MiniFlex, its door drawn see-through so the goniometer shows: it stands still at its load "
-                 "position. An actuator on the hinge opens the door (our addition; Yotsumoto et al. 2024 drove theirs "
-                 "the same way); 80 deg clears the tray's camera post.")
-    status(XRD="door opening", Prep="")
-    step(1.6, xrd.move({"door": (0.0, 0.8)}), hold=0.2, cam=CAM_XRD,
-         labels=[("Rigaku MiniFlex", tuple(xw((0, g["yf"], I.XRD["H"] + 30))), (0.22, 0.22)),
-                 ("goniometer, at rest", tuple(axis + (0, 0, 60)), (0.62, 0.20))])
-    st["cap"] = ("The arm carries the holder by its fin, level, in through the door and onto the stage, turned a "
-                 "little (the spinner takes it any way round). Nothing has touched the powder's face since it was "
-                 "struck off.")
-    status(Arm="loading the XRD")
+                 "position. The arm takes the holder by its fin first, while the door is still shut.")
+    status(XRD="door shut", Prep="", Arm="taking the holder")
     fin = (0.0, RP.ZBH["fin_y"], RP.ZBH["fin_h"] - 4.0)
     stage_g = f"{xrd.prefix}stage"
     H_on = sc.world(stage_g) @ T((0.0, g["gy"], g["gz"] - 3.0)) @ R((0, 0, 1), -25.0)
@@ -558,18 +551,33 @@ def movie():
         Tf = sc.world("p_zbh") @ T(fin) @ _level_y() @ R((0, 0, 1), rl)
         To = H_on @ T(fin) @ _level_y() @ R((0, 0, 1), rl)
         cands.append([sh(along(Tf, -110), (0, 0, 30)), Tf, sh(along(To, -230), (0, 0, 30)), sh(To, (0, 0, 30)), To])
+    xrd.v["door"] = 0.8                      # judge the placing poses with the door open, as they will be
+    xrd.apply()
     roll = rolls[clear_of(cands)]
+    xrd.v["door"] = 0.0
+    xrd.apply()
     T_fin = sc.world("p_zbh") @ T(fin) @ _level_y() @ R((0, 0, 1), roll)
+    T_on = H_on @ T(fin) @ _level_y() @ R((0, 0, 1), roll)
     CAM_XRDL = [tuple(axis + (760, -1350, 620)), tuple(axis + (-40, -170, -80)), (0, 0, 1)]
-    go(sh(along(T_fin, -110), (0, 0, 30)), secs=1.8, grip=0.62, cam=CAM_SIFT)
+    go(sh(along(T_fin, -110), (0, 0, 30)), secs=1.8, grip=0.62, cam=CAM_SIFT,
+       labels=[("Rigaku MiniFlex", tuple(xw((0, g["yf"], I.XRD["H"] + 30))), (0.22, 0.22))])
     lin(T_fin, 0.8)
     grip(GRIP_FIN)
     rb.grasp("p_zbh")
     lin(sh(T_fin, (0, 0, 30)), 0.6)
     lin(sh(along(T_fin, -90), (0, 0, 30)), 0.6)
-    # onto the stage: the holder's frame at (0, gy, gz - 3) in the stage's frame (r8_powder.xrd's holder path)
-    T_on = H_on @ T(fin) @ _level_y() @ R((0, 0, 1), roll)
-    go(sh(along(T_on, -230), (0, 0, 30)), secs=2.2, cam=CAM_XRDL)
+    # it waits left of the MiniFlex, outside the door's swing (398 mm round the hinge), while the door opens
+    T_wait = sh(along(T_on, -380), (0, 0, 60))
+    go(T_wait, secs=2.2, cam=CAM_XRDL)
+    st["cap"] = ("An actuator on the hinge opens the door (our addition; Yotsumoto et al. 2024 drove theirs the same "
+                 "way), to 80 deg, which clears the tray's camera post; the arm waits outside its swing.")
+    status(XRD="door opening", Arm="holding the holder")
+    step(1.6, xrd.move({"door": (0.0, 0.8)}), hold=0.2,
+         labels=[("goniometer, at rest", tuple(axis + (0, 0, 60)), (0.62, 0.20))])
+    st["cap"] = ("In through the door and onto the stage, turned a little (the spinner takes it any way round). Nothing "
+                 "has touched the powder's face since it was struck off.")
+    status(Arm="loading the XRD")
+    lin(sh(along(T_on, -230), (0, 0, 30)), 1.0)
     lin(sh(T_on, (0, 0, 30)), 1.2)
     lin(T_on, 0.6)
     grip(0.62)
