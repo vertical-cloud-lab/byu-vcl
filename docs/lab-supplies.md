@@ -22,9 +22,9 @@ The reasoning behind the drill and bits is in [lab-drill-and-bits.md](lab-drill-
 
 ## Order 1: Amazon
 
-Purpose: soldering, heat-set inserts and M2–M4 hardware for assembling 3D-printed parts;
-cleaning and maintenance tools for the rePowder atomizer; electrical testing, tape and bench
-power for general lab use.
+Purpose: soldering, heat-set inserts, M2–M4 hardware and hobby knives for assembling and
+trimming 3D-printed parts; cleaning and maintenance tools for the rePowder atomizer;
+electrical testing, tape and bench power for general lab use.
 
 | Merchant Name | Item Description | Website link | Unit Cost | Qty | Asked for by |
 | --- | --- | --- | ---: | ---: | --- |
@@ -45,7 +45,8 @@ power for general lab use.
 | Amazon | Scotch Contractor Grade masking tape, 0.94 in × 60.1 yd, 9 rolls (2020-24AP9) | [B00125V10U](https://www.amazon.com/dp/B00125V10U) | $21.94 | 1 | jss265 |
 | Amazon | Duck Max Strength duct tape, black, 1.88 in × 35 yd, 1 roll | [B00LT1NAHY](https://www.amazon.com/dp/B00LT1NAHY) | $8.99 | 1 | jss265 |
 | Amazon | Amazon Basics 20 ft indoor extension cord, 3-prong, 16 AWG, 13 A / 125 V, black | [B076KFTT5B](https://www.amazon.com/dp/B076KFTT5B) | $8.99 | 1 | jss265 |
-| | | | **$456.29** | | |
+| Amazon | X-ACTO Compression Basic Knife Set (X5285): #1, #2 and #5 knives, 13 assorted blades, soft carry case. The #1 is the one for trimming 3D prints | [B00JWFIKOC](https://www.amazon.com/dp/B00JWFIKOC) | ~$20–27 (shown only in cart) | 1 | jss265 |
+| | | | **~$476–483** | | |
 
 ## Order 2: Lowe's
 
@@ -112,6 +113,10 @@ Purpose: large tongue-and-groove pliers for fittings on the rePowder atomizer.
   same fitting comes as a 6 mm union tee (often sold as PE-6).
 - **Files.** Diamond, because the file will also touch the tungsten, which dulls ordinary steel
   files. Aluminum clogs the grit, so brush it out with the brass brush as you go.
+- **Hobby knives.** Amazon shows X-ACTO prices only in the cart, so the set's price is an
+  estimate. Its page shows other sellers from $19.97 and says they undercut Amazon, and
+  WebstaurantStore lists the same set at $27.49. It is sold and shipped by Amazon (4.7★,
+  5,285 ratings). It comes with one #11 blade, the one that dulls first on 3D prints.
 
 ## Receipts
 
