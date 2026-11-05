@@ -2,12 +2,17 @@
 
 Owned by the prep stream. Others import it; please don't edit it (ask the prep stream). The names below are stable.
 
-* **The conductive hot mount** (``hot_mount``): a 1.25 in (31.75 mm) round mount, 20 mm tall, pressed from
+**1.5 in, not 1.25 in.** The lab's own LECO MX400 reads "Mold Size 1.50\"" on its screen in "Making Bakelite
+Polishing Puck" (https://www.youtube.com/watch?v=9m_hdgmu2Jw, 6:20), so both mounts are 38.1 mm across
+(``MOUNT_D``), not the 31.75 mm that ``instruments.MOUNT_D`` and round8_plan.md assumed. Read ``MOUNT_D`` from here
+rather than writing the number in.
+
+* **The conductive hot mount** (``hot_mount``): a 1.5 in (38.1 mm) round mount, 20 mm tall, pressed from
   carbon-filled conductive phenolic in the LECO hot mounting press, with the AlSi10Mg coupon (14 x 10 x 6 mm, cut on
   the wire EDM) set in it, its polished face flush with the top. The filler is the SEM's path to ground: coupon ->
   compound -> the mount's sides and base -> the SEM holder's cup and set screw. For the micrographs, the SEM/EDS and
   the micro-Vickers hardness.
-* **The steel mount for the mechanical tests** (``steel_mount``): a 31.75 mm steel puck (416 stainless: magnetic,
+* **The steel mount for the mechanical tests** (``steel_mount``): a 38.1 mm steel puck (416 stainless: magnetic,
   free-machining, doesn't rust in the polishing water), 20 mm tall, with a 10.1 x 10.1 mm pocket. The wire-EDM slice
   (10 x 10 mm, 6 mm as cut, 5.6 mm once the CNC has faced both sides flat and parallel) sits on the pocket's steel
   floor, metal on metal, held by an M3 set screw from the side, and is ground and polished flush with the puck's top.
@@ -50,7 +55,7 @@ import cadquery as cq
 import numpy as np
 import pyvista as pv
 
-MOUNT_D = 31.75                   # 1.25 in, the lab's mounts ("Making Bakelite Polishing Puck")
+MOUNT_D = 38.1                    # 1.5 in: the lab's MX400 mold ("Mold Size 1.50\"" on its screen, 9m_hdgmu2Jw 6:20)
 FACE_Z = 20.0                     # both mounts: the polished face 20 mm over the base
 
 # the conductive hot mount. The coupon is 14 x 10 x 6 mm (x, y, z), as alloy_characterize's was. Pressed, the mount
