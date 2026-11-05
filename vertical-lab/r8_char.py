@@ -103,7 +103,7 @@ def cup(d_out, floor, depth, bore=SP.MOUNT_D + 0.6) -> cq.Workplane:
 
 
 # ===================================================================================================== SEM
-SEM_CUP = dict(d=50.0, floor=5.0, depth=12.0)     # our holder: an aluminium cup in the stage's socket (estimate)
+SEM_CUP = dict(d=50.0, floor=5.0, depth=12.0, dy=-30.0, lift=6.0)   # our holder: an aluminium cup, 30 mm ahead of the stage's socket (estimate)
 AZTEC = "Oxford Instruments AZtecOne EDS analyser, 290 x 260 x 330 mm"
 
 
@@ -116,10 +116,15 @@ def sem() -> Instrument:
     c = SEM_CUP
     dr = inst.pieces["drawer"]
     _drop(dr, "pre-tilted holder")
-    dr.add("mount holder cup", cup(c["d"], c["floor"], c["depth"]).union(cyl(12, 10, z=-10)).translate((0, ys, st)),
-           "r8c_al")
-    zc = st + c["floor"] + c["depth"] / 2
-    dr.add("spring plunger", plunger(-(SP.MOUNT_D / 2 + 0.3), ys, zc, (1, 0), L=10.0), "steel")
+    # the cup stands on an adapter bar 30 mm ahead of the socket (its pin in the socket), as round 7's did: at the
+    # socket itself, 40 mm in front of the SEM's face with the door out, every IK solution put the wrist into the
+    # SEM's front (notes/alloy_characterize.md)
+    yc = ys + SEM_CUP["dy"]
+    za = st + SEM_CUP["lift"]                       # the cup's foot, on the adapter
+    dr.add("holder adapter", box(-12, yc - 12, st, 12, ys + 12, za).union(cyl(12, 10, y=ys, z=st - 10)), "r8c_al")
+    dr.add("mount holder cup", cup(c["d"], c["floor"], c["depth"]).translate((0, yc, za)), "r8c_al")
+    zc = za + c["floor"] + c["depth"] / 2
+    dr.add("spring plunger", plunger(-(SP.MOUNT_D / 2 + 0.3), yc, zc, (1, 0), L=10.0), "steel")
     body = inst.pieces["body"]
     # the AZtecOne: lettered on its front (rbox at x = W/2 + 190, y = -90, front face at y = -235)
     body.add("AZtecOne lettering", box(W / 2 + 115, -237.2, 262, W / 2 + 265, -236.0, 280), "r8c_label")
@@ -127,9 +132,9 @@ def sem() -> Instrument:
     inst.pieces.pop("stub")
     stub = _piece(inst, "stub")
     _add_solids(stub, SP.hot_mount_solids("polished"))
-    zf = st + c["floor"]
-    inst.joints["stub"] = Joint("path", parent="drawer", path=((W / 2 + 70, ys - 230, zf + 200),
-                                                                (0, ys, zf + 150), (0, ys, zf + 30), (0, ys, zf)))
+    zf = za + c["floor"]
+    inst.joints["stub"] = Joint("path", parent="drawer", path=((W / 2 + 70, yc - 230, zf + 200),
+                                                                (0, yc, zf + 150), (0, yc, zf + 30), (0, yc, zf)))
     inst.meshes["readout"] = _dummy((0, ys, 300))
     inst.joints["readout"] = Joint("fade")
     inst.props = tuple(inst.props) + ("readout",)
@@ -146,7 +151,7 @@ def sem() -> Instrument:
     ]
     inst.labels = [(AZTEC, (W / 2 + 190, -90, 330), (0.80, 0.16)),
                    ("EBSD (proposed)", (-W / 2 - 110, ys, 180), (0.12, 0.30)),
-                   ("1.5 in mount holder: Al cup + spring plunger", (0, ys - 25, st + 15), (0.20, 0.80)),
+                   ("1.5 in mount holder: Al cup + spring plunger", (0, yc - 25, st + 15), (0.20, 0.80)),
                    ("EVAC/AIR", (p["btn_x"], g["yp"], p["btn_z"]), (0.62, 0.42))]
     inst.zoom = {1: ((0, g["yf"] - 150, st + 40), 700.0), 2: "out"}
     inst.notes = inst.notes + ["Round 8: a cup holder with a spring plunger grounds the conductive 1.5 in mount; the "
@@ -255,12 +260,21 @@ def nanoindenter() -> Instrument:
 
 
 # ===================================================================================================== PIP
+# The PLX-Benchtop's working bay is about 130 mm tall with the indenter 7 mm over the sample, so a gripper can't
+# reach the platen from above. A loading slide (ours): a 6 mm steel plate on a linear guide, which runs 310 mm out of
+# the bay to the front, where the arm sets the steel mount on it from above, and back over the platen, where the plate
+# sits on it: steel from the slice down to the load cell. The indenter and the profilometer sit 6 mm higher for it.
+PIP_SLIDE = dict(t=6.0, w=70.0, l=90.0, travel=310.0, rail_w=40.0, ring_h=3.0)
+
+
 def pip() -> Instrument:
     inst = I.pip()
     p, g = I.PIP, I._plx(I.PIP)
-    W, D, stz, yc = g["W"], g["D"], g["stz"], g["yc"]
+    W, D, stz, yc, zb = g["W"], g["D"], g["stz"], g["yc"], g["zb"]
     yf = -D / 2
-    s_top = stz + SP.FACE_Z                        # the steel mount's face (was a 6 mm plate's)
+    sl = PIP_SLIDE
+    zs = stz + sl["t"]                             # the mount's base, on the slide plate
+    s_top = zs + SP.FACE_Z                         # the steel mount's face
     xz0 = p["xh_z0"]
     # the indenter, rebuilt for the taller sample: the ball 7 mm over the face with the ram up
     inst.pieces.pop("head")
@@ -290,35 +304,55 @@ def pip() -> Instrument:
     sty.add("stylus pick-up", box(foot[0] - 5, ya - 36, foot[2] - 11, foot[0] + 5, ya - 26, foot[2] + 3), "inst_black")
     sty.add("stylus", cyl(1.6, 3.5, x=foot[0], y=yc, z=tip_z).union(
         cq.Workplane("XY").sphere(0.5).translate((foot[0], yc, tip_z))), "steel")
+    # the slide: its rail on the plinth in front of the platen, out past the front; the plate and a locating ring
+    body = inst.pieces["body"]
+    y_rail0 = yc - sl["travel"] - sl["l"] / 2 - 10.0
+    body.add("loading slide rail (ours)", box(-sl["rail_w"] / 2, y_rail0, zb, sl["rail_w"] / 2, yc - p["stage_d"] / 2 - 2,
+                                              stz - 0.5), "r8c_steel")
+    slide = _piece(inst, "slide")
+    slide.add("slide plate", box(-sl["w"] / 2, yc - sl["l"] / 2, stz, sl["w"] / 2, yc + sl["l"] / 2, zs), "r8c_steel")
+    slide.add("locating ring", cq.Workplane("XY").circle(SP.MOUNT_D / 2 + 4.0).circle(SP.MOUNT_D / 2 + 0.4)
+              .extrude(sl["ring_h"]).translate((0, yc, zs)), "r8c_steel")
     inst.pieces.pop("sample")
     smp = _piece(inst, "sample")
     _add_solids(smp, SP.steel_mount_solids("polished"))
     inst.pieces.pop("indent")
     dent = _piece(inst, "indent")
     dent.add("indent", cyl(2.0, 0.3, z=SP.FACE_Z - 0.25), "inst_dark")
-    inst.joints["sample"] = Joint("path", path=((0, -420, 260), (0, -220, 140), (0, -150, stz + 3), (0, yc, stz + 3),
-                                                (0, yc, stz)))
+    inst.joints["slide"] = Joint("slide", vec=(0, -sl["travel"], 0))
+    # the sample in the slide's frame: down from above onto the plate (the slide is out when it arrives)
+    inst.joints["sample"] = Joint("path", parent="slide", path=((0, yc, zs + 240), (0, yc, zs + 60), (0, yc, zs)))
     inst.meshes["readout"] = _dummy((0, yc, 300))
     inst.joints["readout"] = Joint("fade")
     inst.props = tuple(inst.props) + ("readout",)
-    acts = list(inst.actions)
-    acts[0] = ("The steel mount from chapter 6 (the wire-EDM slice on steel, polished flush) goes on the platen: "
-               "metal on metal from the slice down to the load cell, nothing soft to compress.", 2.6,
-               {"sample": (0.0, 1.0), "readout": (0.0, 0.0)})
-    cap, secs, tg = acts[-1]
-    acts[-1] = ("CORSICA fits a stress-strain curve to that profile by finite elements, in minutes.", 4.0,
-                {**tg, "sample": (1.0, 1.0), "readout": (0.0, 1.0)})
-    acts.append(("The sample comes off.", 1.6, {"sample": (1.0, 0.0), "readout": (1.0, 0.0)}))
-    inst.actions = acts
+    acts = list(inst.actions)              # instruments.pip: [sample in, press, lift + profilometer in, trace, out, fit]
+    inst.actions = [
+        ("A loading slide (ours) runs its steel plate out of the working bay to the front: the bay is ~130 mm tall "
+         "and the indenter waits 7 mm over the sample, too tight for a gripper.", 2.0,
+         {"slide": (0.0, 1.0), "sample": (0.0, 0.0), "readout": (0.0, 0.0)}),
+        ("The steel mount from chapter 6 (the wire-EDM slice on steel, polished flush) goes on the plate, in its "
+         "locating ring.", 2.2, {"sample": (0.0, 1.0)}),
+        ("The slide runs back in and the plate sits on the platen: metal on metal from the slice down to the load cell, "
+         "nothing soft to compress.", 2.2, {"slide": (1.0, 0.0)}),
+        *acts[1:-1],
+        ("CORSICA fits a stress-strain curve to that profile by finite elements, in minutes.", 4.0,
+         {**acts[-1][2], "sample": (1.0, 1.0), "readout": (0.0, 1.0)}),
+        ("The slide runs out and the sample comes off.", 2.0, {"slide": (0.0, 1.0), "readout": (1.0, 0.0)}),
+        ("", 1.4, {"sample": (1.0, 0.0)}),
+    ]
+    inst.actions = [(c or inst.actions[i - 1][0], sec, tg) for i, (c, sec, tg) in enumerate(inst.actions)]
     s_lab = list(inst.labels)
-    s_lab.append(("steel mount: the slice on steel", (0, yc - SP.MOUNT_D / 2, stz + 12), (0.16, 0.74)))
+    s_lab.append(("loading slide (ours): steel plate on a linear guide", (0, yc - sl["travel"], zs), (0.16, 0.74)))
     inst.labels = s_lab
-    inst.zoom = {2: ((30.0, yc, s_top + 30), 520.0), 4: "out"}
+    inst.zoom = {3: ((30.0, yc, s_top + 30), 520.0), 8: "out"}
+    inst.notes = list(inst.notes) + ["Round 8: a loading slide (ours) carries the steel mount out of the bay for the "
+                                     "arm; the indenter and profilometer sit 6 mm higher for its plate."]
     return inst
 
 
 # ===================================================================================================== micro-Vickers
 HM_HOLD = dict(plate=5.0, w=64.0, d=64.0, vee=6.0)   # the mount holder on the HM-220's table (ours, estimate)
+HM_SLIDE = 130.0          # its loading slide's run to the front (ours)
 
 
 def hardness() -> Instrument:
@@ -331,15 +365,21 @@ def hardness() -> Instrument:
     table = 252.0                                 # the table's top (instruments_r7.hardness)
     stx = inst.pieces["stage_x"]
     h = HM_HOLD
-    stx.add("mount holder plate", box(ax - h["w"] / 2, ay - h["d"] / 2, table, ax + h["w"] / 2, ay + h["d"] / 2,
+    # the holder rides a loading slide (ours) on the XY table: out 130 mm to the front, clear of the head and the
+    # turret, where the arm sets the mount on it from above; back under the objectives for the test. Its rail runs
+    # forward of the table on the X carriage.
+    stx.add("loading slide rail (ours)", box(ax - 20, ay - HM_SLIDE - h["d"] / 2 - 8, 244.0, ax + 20, ay - 65.0, table),
+            "r8c_steel")
+    sld = _piece(inst, "slide")
+    sld.add("mount holder plate", box(ax - h["w"] / 2, ay - h["d"] / 2, table, ax + h["w"] / 2, ay + h["d"] / 2,
                                       table + h["plate"]), "r8c_steel")
-    # the V-block at the back: two jaws at +-45 deg the mount slides against (its base is on the plate)
+    # the V-block at the back: two jaws at +-45 deg the mount sits against (its base is on the plate)
     r = SP.MOUNT_D / 2
     for s in (-1, 1):
         a = math.radians(90 + s * 40)
         cx, cy = ax + (r + 4) * math.cos(a), ay + (r + 4) * math.sin(a)
         jaw = box(-12, -4, 0, 12, 4, h["vee"]).rotate((0, 0, 0), (0, 0, 1), math.degrees(a) - 90)
-        stx.add(f"V-block jaw {s}", jaw.translate((cx, cy, table + h["plate"])), "r8c_steel")
+        sld.add(f"V-block jaw {s}", jaw.translate((cx, cy, table + h["plate"])), "r8c_steel")
     inst.pieces.pop("sample")
     smp = _piece(inst, "sample")
     zb = table + h["plate"]
@@ -363,7 +403,8 @@ def hardness() -> Instrument:
         dn.add(f"indent {i}", sq.translate((ax - (x0 + i * step), ay, top - 1.0)), "r7_dent")
     inst.joints.update({
         "stage_x": R7.Track(knots=tl.knots(lambda s: (s["sx"], 0.0, 0.0))),
-        "sample": Joint("path", path=((0, -260, 0), (0, -60, 0), (0, 0, 0)), parent="stage_x"),
+        "slide": Joint("slide", vec=(0, -HM_SLIDE, 0), parent="stage_x"),
+        "sample": Joint("path", path=((0, 0, 220), (0, 0, 40), (0, 0, 0)), parent="slide"),
         "turret": R7.Turn(axis=(0, 0, 1), pivot=(tx, ty, 0), knots=R7._turn_knots(tl, lambda s: s["tur"])),
         "indenter": R7.Track(knots=tl.knots(lambda s: (0.0, 0.0, s["ind"])), parent="turret"),
         **{f"dent{i}": R7.Track(knots=tl.knots(lambda s, i=i: (0.0, 0.0, s[f"d{i}"])), parent="sample")
@@ -372,9 +413,11 @@ def hardness() -> Instrument:
     tv = lambda a, b: {k: (a, b) for k in ("stage_x", "turret", "indenter", *[f"dent{i}" for i in range(n)])}  # noqa
     V = tl.v
     inst.actions = [
-        ("The conductive hot mount slides in from the front onto the holder on the XY table, against its V-block, "
-         "under the turret (a 5 mm plate: the polished face where the objectives focus).", 2.4,
-         {"sample": (0.0, 1.0), "readout": (0.0, 0.0), **tv(0.0, 0.0)}),
+        ("A loading slide (ours) on the XY table runs the mount holder out to the front, clear of the head and the "
+         "turret.", 1.8, {"slide": (0.0, 1.0), "sample": (0.0, 0.0), "readout": (0.0, 0.0), **tv(0.0, 0.0)}),
+        ("The conductive hot mount goes on the holder from above, against its V-block (a 5 mm plate: the polished "
+         "face where the objectives focus).", 2.2, {"sample": (0.0, 1.0)}),
+        ("The slide runs back in, under the turret.", 1.8, {"slide": (1.0, 0.0)}),
         ("The motorized turret swings the Vickers indenter over it; the force motor presses: HV0.1, 0.98 N.", 3.2,
          {**tv(0.0, V("pressed"))}),
         ("The 50x objective comes back. The 3 MP camera images the indent; AVPAK measures both diagonals.", 2.6,
@@ -382,15 +425,21 @@ def hardness() -> Instrument:
         ("A row across the coupon, 0.25 mm apart (drawn 2.5 mm apart and 1.2 mm across), each made and read the "
          "same way, unattended.", 6.0, {**tv(V("read"), 1.0)}),
         ("315 x 671 x 595 mm and 43 kg: on a tray. HM-220: 0.05 gf to 2 kgf.", 2.4, {"readout": (1.0, 0.0)}),
+        ("The slide runs out and the mount comes off.", 1.8, {"slide": (0.0, 1.0)}),
+        ("", 1.4, {"sample": (1.0, 0.0)}),
     ]
+    inst.actions = [(c or inst.actions[i - 1][0], sec, tg) for i, (c, sec, tg) in enumerate(inst.actions)]
     lab = [x for x in inst.labels if not x[0].startswith("motorized XY")]
-    lab.append(("mount holder: plate and V-block", (ax, ay - h["d"] / 2, table + 3), (0.14, 0.74)))
+    lab.append(("mount holder on a loading slide (ours)", (ax, ay - h["d"] / 2, table + 3), (0.14, 0.74)))
     inst.labels = lab
+    inst.zoom = {1: ((ax, ay - HM_SLIDE / 2, 300.0), 560.0), 6: "out"}
     return inst
 
 
 # ===================================================================================================== VHX
 BAR_T = 6.0                 # the E8 subsize bar as printed (alloy_models.E8_SUB)
+VHX_SLIDE = 110.0           # the loading slide's run to the front, clear of the ring light and the camera (ours)
+VHX_CARRIER = dict(w=40.0, l=70.0, t=4.0, ped_w=8.0, ped_h=10.0)   # its carrier and the bar's pedestal (ours)
 
 
 def bar_half_mesh() -> pv.PolyData:
@@ -442,38 +491,58 @@ def vhx() -> Instrument:
     inst.joints["head"] = Joint("hinge", axis=(0, 1, 0), pivot=pivot, deg=-45.0, parent="focus")   # v = 1: 45 deg left
     inst.joints["table"] = Joint("slide", vec=(0, 0, 50.0))
     inst.joints["turntable"] = Joint("spin", axis=(0, 0, 1), pivot=(sx0, ys, 0), deg=180.0, parent="table")
-    # the sample: the broken bar's upper half, flat on the disk, the fracture at the stage's centre; the table rises
-    # 17 mm to put its top face at the focal point. "flip" turns it over about its long axis.
+    # A loading slide (ours) on the stage: the head's ring light is 25 mm over the focal point, so a gripper can't
+    # reach the stage from above. A carrier runs out VHX_SLIDE to the front on a rail fixed to the turntable (it turns
+    # with theta), where the arm sets the bar on it and turns it over, and back to the stage's centre. On the carrier
+    # a narrow pedestal (8 mm wide, narrower than the bar) holds the bar with its top face at the focal point and
+    # leaves room for the gripper's pads either side.
+    c = VHX_CARRIER
+    zc0 = zs + 1.0                                 # the disk's top
+    zb = zc0 + c["t"] + c["ped_h"]                 # the bar's underside
+    turn.add("loading slide rail (ours)", box(sx0 - 10, ys - VHX_SLIDE - c["l"] / 2 - 8, zs - 6.0, sx0 + 10,
+                                             ys - q["stage_d"] / 2 + 10, zc0), "r8c_steel")
+    car = _piece(inst, "carrier")
+    car.add("carrier plate", box(sx0 - c["w"] / 2, ys - c["l"] / 2, zc0, sx0 + c["w"] / 2, ys + c["l"] / 2,
+                                 zc0 + c["t"]), "r8c_al")
+    car.add("bar pedestal", box(sx0 - c["ped_w"] / 2, ys + 25.0 - 48.0, zc0 + c["t"], sx0 + c["ped_w"] / 2,
+                                ys + 25.0 - 12.0, zb), "r8c_steel")
+    inst.joints["carrier"] = Joint("slide", vec=(0, -VHX_SLIDE, 0), parent="turntable")
+    # the sample: the broken bar's upper half on the pedestal, its fracture to the back (+y) and its grip end to the
+    # front, where the arm takes it; its top face at the focal point. "bar" turns it over about its long axis.
     inst.pieces.pop("sample", None)
-    bar = bar_half_mesh()
-    bar_c = bar.translate((sx0, ys - 25.0, zs + 1.0), inplace=False)
-    inst.meshes["sample"] = _dummy((sx0, ys, zs + 1.0))
+    bar = bar_half_mesh()                          # x +-5, y 0 (fracture) .. 50 (grip end), z 0..6
+    bar_c = bar.rotate_z(180.0, inplace=False).translate((sx0, ys + 25.0, zb), inplace=False)
+    inst.meshes["sample"] = _dummy((sx0, ys, zb))
     inst.meshes["bar"] = [(bar_c, MATERIALS["r8c_bar"][:3], 1.0)]
-    zc = zs + 1.0 + BAR_T / 2
-    inst.meshes["lift"] = _dummy((sx0, ys, zs + 1.0))
-    inst.joints["lift"] = Joint("slide", vec=(0, 0, 12.0), parent="turntable")       # off the disk for the flip
-    inst.joints["sample"] = Joint("path", parent="lift",
-                                  path=((sx0, -280, 150), (0, -120, 40), (0, 0, 12), (0, 0, 0)))
+    zc = zb + BAR_T / 2
+    inst.meshes["lift"] = _dummy((sx0, ys, zb))
+    inst.joints["lift"] = Joint("slide", vec=(0, 0, 25.0), parent="carrier")       # off the pedestal for the flip
+    inst.joints["sample"] = Joint("path", parent="lift", path=((0, 0, 220), (0, 0, 40), (0, 0, 0)))
     inst.joints["bar"] = Joint("hinge", axis=(0, 1, 0), pivot=(sx0, ys, zc), deg=180.0, parent="sample")
     inst.joints["readout"] = Joint("fade")
     inst.props = ("sample", "bar", "readout", "lift")
-    raise_bar = SP.FACE_Z - BAR_T                  # 14 mm: the bar's top face up to the focal point
-    vz = raise_bar / 50.0
     inst.actions = [
-        ("Half of a broken tensile bar from chapter 5 goes flat on the middle of the stage; the motorized stage Z "
-         "lifts its top face to the focal point.", 2.6,
-         {"sample": (0.0, 1.0), "table": (0.0, vz), "head": (0.0, 0.0), "turntable": (0.0, 0.0),
+        ("A loading slide (ours) runs its carrier out of the stage to the front: the ring light is 25 mm over the "
+         "focal point, too close for a gripper.", 1.8,
+         {"carrier": (0.0, 1.0), "sample": (0.0, 0.0), "head": (0.0, 0.0), "turntable": (0.0, 0.0),
           "bar": (0.0, 0.0), "lift": (0.0, 0.0), "readout": (0.0, 0.0)}),
+        ("Half of a broken tensile bar from chapter 5 goes on the carrier's narrow pedestal, grip end to the front.",
+         2.2, {"sample": (0.0, 1.0)}),
+        ("Back to the stage's centre: the bar's top face at the focal point.", 1.8, {"carrier": (1.0, 0.0)}),
         ("The free-angle head tilts about the focal point (eucentric: the view stays on the bar) while the stage "
-         "turns: a series of views from every side.", 4.0, {"head": (0.0, 1.0), "turntable": (0.0, 1.0)}),
-        ("", 3.0, {"head": (1.0, -0.45), "turntable": (1.0, 0.0)}),
+         "turns: a series of views from every side.", 4.0, {"head": (0.0, 1.0), "turntable": (0.0, 0.5)}),
+        ("", 3.0, {"head": (1.0, -0.45), "turntable": (0.5, 0.0)}),
         ("Depth composition at each view: the motorized focus sweeps through the relief.", 2.0,
          {"head": (-0.45, 0.0), "focus": (0.0, 1.0)}),
         ("Turned over once (the arm does it in chapter 7), and the series again: the whole bar in 3-D, the fracture "
-         "surface included.", 1.0, {"lift": (0.0, 1.0)}),
+         "surface included.", 1.4, {"carrier": (0.0, 1.0)}),
+        ("", 0.8, {"lift": (0.0, 1.0)}),
         ("", 1.6, {"bar": (0.0, 1.0)}),
         ("", 0.8, {"lift": (1.0, 0.0)}),
+        ("", 1.4, {"carrier": (1.0, 0.0)}),
         ("The reconstruction: a height map of the fracture surface (illustrative).", 4.0, {"readout": (0.0, 1.0)}),
+        ("The carrier runs out and the bar comes off.", 1.6, {"carrier": (0.0, 1.0), "readout": (1.0, 0.0)}),
+        ("", 1.4, {"sample": (1.0, 0.0)}),
     ]
     acts = []
     for cap, secs, tg in inst.actions:
@@ -483,7 +552,8 @@ def vhx() -> Instrument:
     inst.labels = [("VH-ZST zoom lens on the free-angle head", (sx0 + 27, ys, z0 + 120), (0.40, 0.12)),
                    ("motorized XY, Z and theta stage", (sx0 - q["stage_w"] / 2, ys - q["stage_d"] / 2, sz - 20),
                     (0.08, 0.72)), *lx]
-    inst.zoom = {1: ((sx0, ys, zf + 40), 760.0), 6: "out"}
+    inst.labels.append(("loading slide (ours): carrier and pedestal", (sx0, ys - VHX_SLIDE, zb), (0.62, 0.80)))
+    inst.zoom = {1: ((sx0, ys - VHX_SLIDE / 2, zf + 40), 760.0), 12: "out"}
     inst.notes = ["Round 8: the head is on the sample's axis and tilts about the focal point on its surface; the "
                   "EA-300 is not drawn."]
     bb = inst.bbox()

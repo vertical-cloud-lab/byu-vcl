@@ -1,122 +1,126 @@
-## The alloy route, chapter 5: the build through the characterization trays
+## The alloy route, chapter 7: characterizing the build
 
-![Chapter 5](../out/alloy_characterize.gif)
+![Chapter 7](../out/alloy_characterize.gif)
 
-Sterling, on PR #318: "It seems a bit redundant to have the trays come to the opening with nothing else happening when
-we already saw them getting loaded. Better would be to see them being used in an actual workflow." And earlier: "we
-want to see the full alloy workflow going on, start to finish". So this chapter carries on from chapter 4 (a printed
-AlSi10Mg plate, one bar broken in the 68FM-100). Samples of the same build go through trays F, E and D at the VLM's
-opening. Each tray comes down only when it is needed, the UR10e on its MiR250 loads and unloads each instrument, and
-each instrument runs its own joints from `instruments.py`, sped up, with a clock on screen. Then the tray goes back.
+Round 8 (PR #318, Sterling's review of 2026-11-05 00:37 UTC). Until round 7 this was chapter 5, and it ground and
+polished its own coupon in a 1.25 in Bakelite puck. Chapter 6 ([`alloy_prep.py`](../alloy_prep.py),
+[`notes/alloy_prep.md`](alloy_prep.md)) now makes the specimens, so this chapter starts from them:
 
-[`alloy_characterize.py`](../alloy_characterize.py) is the scene. It is `animate.Lab` (the VLM, the MiR at the opening)
-plus trays D-F as `line.py` builds them. Every instrument is placed from `line.TRAY_LOADS` and its own frame, never a
-hard-coded position, so a re-planned tray layout is picked up on the next run.
+| Specimen | From | Used here for |
+|---|---|---|
+| Conductive hot mount, 1.5 in (38.1 mm), carbon-filled phenolic, the AlSi10Mg coupon polished flush | chapter 6, the LECO MX400 and the PX500 | SEM/BSE and EDS (the filler is the path to ground); micro-Vickers |
+| Steel mount, 1.5 in, the wire-EDM slice on the pocket's steel floor, polished flush | chapter 6, the Carvera and the PX500 | nanoindentation and PIP: nothing soft under the sample |
+| The upper half of a broken E8 subsize bar | chapter 5, the Instron 68FM-100 | the VHX's 3-D reconstruction of the whole piece |
+
+They ride a caddy (ours) on the MiR250's cabinet. The lab is the two-Shuttle floor of
+[`setup_lab.py`](../setup_lab.py) with every tray loaded, as the set-up movie leaves it, so the trays that aren't in use
+are seen full (Sterling, on the old 9:09 clip: "suddenly the VLM only has a few things on board"). The instruments are
+[`r8_char.py`](../r8_char.py)'s and the data panels [`data_panels.py`](../data_panels.py)'s.
+
+[`alloy_characterize.py`](../alloy_characterize.py) is the scene.
 
 | | |
 |---|---|
-| MP4, 1280 × 720, 10 fps, 143 s (1431 frames) | [`out/mp4/alloy_characterize.mp4`](../out/mp4/alloy_characterize.mp4) (8.1 MB) |
-| GIF, 640 × 360, 5 fps | [`out/alloy_characterize.gif`](../out/alloy_characterize.gif) (4.8 MB) |
+| MP4, 1280 x 720, 6 fps | [`out/mp4/alloy_characterize.mp4`](../out/mp4/alloy_characterize.mp4) |
+| GIF, 512 x 288, 3 fps | [`out/alloy_characterize.gif`](../out/alloy_characterize.gif) |
 | Frame range of every sub-step | [`out/alloy_characterize.json`](../out/alloy_characterize.json) |
-| The still: the SEM step, with the inset | [`out/alloy_characterize_still.png`](../out/alloy_characterize_still.png) |
-| Eight moments, from the MP4 | [`out/alloy_characterize_sheet.png`](../out/alloy_characterize_sheet.png) |
 | Collision audit, every frame | [`out/collisions/alloy_characterize.json`](../out/collisions/alloy_characterize.json) |
-
-![Eight moments: the holder onto the PX500's head, grinding, the holder back face up, the SEM loaded, the SEM's inset,
-the iMicro loaded, the pour, the Mastersizer measuring](../out/alloy_characterize_sheet.png)
+| The data panels, and every number on them with its status and source | `out/alloy_characterize_panel_{sem,eds,hv,nano,pip,vhx}.png`, [`out/alloy_characterize_data.json`](../out/alloy_characterize_data.json) |
 
 ### The steps
 
-1. **The samples arrive.** The MiR250 drives up to the opening from the line. It carries the coupon, cut from the
-   plate and hot-mounted in a 1.25 in Bakelite mount, sitting in the PX500's 6-position holder on a rest. It also
-   carries a 20 mL vial of the sieved powder in a two-pocket caddy.
-2. **Tray F: grinding and polishing on the LECO PX500.**
-   - The head lifts 70 mm for a holder change.
-   - The arm takes the holder off its rest by a tab, carries it in level under the head, 4 mm low, and lifts it onto
-     the spindle's coupling.
-   - Grinding follows the lab's SOP: 320 to 1200 grit SiC with water, 30 s a paper; the platen and the holder turn.
-     Then 1 µm alumina on a white cloth for 3 min. The clock shows the SOP's own time, 9 min.
-   - The head lifts. The arm takes the holder off and rolls it over on the way back, so it lies face up on the rest.
-   - The arm lifts the mount out by its polished end while tray F goes back.
-3. **Tray D: the Hitachi TM4000PlusII.**
-   - The SEM vents and its door comes out with the stage. The arm sets the mount, face up, in a cup on the stage.
-   - Door in, pump-down, BSE images and an EDS map (the clock shows about 20 min). The door comes out again and the
-     arm takes the mount back.
-   - Tray D goes back up; the arm holds the mount meanwhile.
-4. **Tray E: the KLA iMicro, then the Mastersizer 3000.**
-   - The hood lifts and the stage runs out to a load position. The arm sets the mount on the stage.
-   - Hood down; the stage carries the mount under the microscope, then the indenter, for a 5 × 5 grid of indents,
-     and back (the clock shows 45 min).
-   - The arm puts the mount in the caddy on the MiR.
-   - It takes the powder vial by its side, the Aero S's cover lifts off, and a 120° roll of the wrist pours the powder
-     into the hopper. The vial goes back to the caddy.
-   - Cover on; the tray feeds the powder through the venturi to the cell, past the laser (drawn see-through).
-   - Tray E goes back.
+1. **The specimens.** The MiR250 + UR10e at Shuttle 1's opening, the caddy on its cabinet.
+2. **Tray D, the Hitachi TM4000PlusII.** EVAC/AIR vents it and the door comes out with the stage. The arm sets the hot
+   mount in the stage's holder cup, where a spring plunger presses it against the cup's wall. Door in, pump-down,
+   BSE, then EDS through the built-in detector and its analyser, Oxford's AZtecOne, the box beside the SEM, now
+   lettered and labelled. The SEM and EDS panels follow. Vent, unload, tray D goes back.
+3. **Tray E, the KLA iMicro.** The hood lifts and the XY stage's carriage runs out to the load position. The steel
+   mount goes into the stage's steel cup, clamped by a plunger. Hood down, drawn see-through, so the inside is
+   readable: the stage carries the slice under the objective, then 100 mm across under the indenter head, the
+   Berkovich tip comes down for a 5 x 5 grid, and the stage carries it back to image the grid. The nanoindentation
+   panel follows.
+4. **Tray E, the Plastometrex PIP**, on the same steel mount. Its loading slide (ours) runs the mount out of the bay
+   for the arm and back over the platen. Indent, profilometer, CORSICA's fit; the PIP panel follows.
+5. **The MiR250 drives to Shuttle 2**, at its published 0.3 m/s^2 (`props.ramp_frac`, from PR #321).
+6. **Tray L, the Mitutoyo HM-220 micro-Vickers**, on the hot mount, by its own loading slide (ours). A row of HV0.1
+   indents across the coupon; the hardness panel follows.
+7. **Tray K, the Keyence VHX-7000.** The bar's half on the carrier of the stage's loading slide (ours). The free-angle
+   head tilts about the focal point while the stage turns; the arm turns the bar over, and a second series covers
+   the underside. The VHX panel (the fracture surface's height map) follows.
+8. **The data, all six panels at once**, with what is real, computed and illustrative.
 
-### What is assumed
+### Sterling's points, and what the chapter does about each
 
-None of these are the makers' published arrangements. They are our design choices, at assumed sizes:
-- **The coupon is already cut and mounted.** Cutting it from the plate (the wire EDM can do it in chapter 4's
-  fixture) and hot-mounting it are not shown. The lab has no mounting press in these models.
-- **The PX500's holder is changed by the arm, whole.** The head takes interchangeable specimen holders (LECO's
-  brochure: fixed and individual holders). These are ours:
-  - a 55 × 24 × 12 mm tab on the holder's rim for the gripper;
-  - a quick-change coupling the holder is lifted onto from 4 mm below;
-  - a 70 mm head lift for the change (LECO publishes no stroke);
-  - the other five pockets hold mounts from the same build.
+- **"there was no attempt made to make a conductive path between the sample and the SEM stage ... it needs to
+  actually mount onto the stage, not just be freestanding".** The mount is conductive (carbon-filled phenolic, made
+  in chapter 6). It sits in a holder cup in the stage's socket, and a spring plunger (a ball-nose set screw) clamps
+  it against the cup's wall, so the path is coupon -> compound -> cup -> stage. A robot needs no screwdriver for a
+  plunger: the mount pushes the ball back as it goes in. The cup stands on an adapter bar 30 mm ahead of the socket,
+  as round 7's did: at the socket itself, every IK solution put the wrist into the SEM's front.
+- **"What's that box off to the right of the SEM?"** Oxford Instruments' AZtecOne EDS analyser (290 x 260 x 330 mm,
+  in Hitachi's EDS brochure). It is lettered, and labelled when the SEM step starts.
+- **"for those mechanical tests like with PIP and nano-indentation, you can't just use the puck".** Both run on the
+  steel mount: the slice on the steel floor of a 416 stainless puck, polished flush. The iMicro clamps it in a steel
+  cup; the PIP's slide plate is steel and sits on the platen. Metal from the indent to the load cell either way.
+- **"The puck also does some weird, non-physical self-motion after getting loaded in, and I have no idea what's going
+  on inside of that indenter".** The specimen now only moves with the stage it sits in (it is parented to the stage's
+  piece, which the XY carriage and stage carry), and the iMicro's cabinet and hood are drawn see-through while it
+  works, so the objective, the indenter head and the tip coming down are visible.
+- **"something weird about the relative positioning of the VHX top module relative to the sample".** The head is on
+  the stage's axis and tilts about the focal point on the sample (r8_char.vhx; the EA-300 LIBS head, which hung the
+  lens 110 mm in front of the stage, is not drawn).
+- **"The VHX microscope can probably create a high-fidelity 3D morphological reconstruction of the entire part by
+  simply tilting the head around and flipping the sample once."** That is the VHX step: a tilt series while the stage
+  turns, the bar turned over by the arm, the series again.
+- **"You should be showing the characteristic data that comes from each of these techniques"**: a panel after each
+  instrument, badged REAL DATA, COMPUTED or ILLUSTRATIVE, and all six at the end. What each one is, with every
+  number and source, is in [`data_panels.py`](../data_panels.py)'s docstring and `out/alloy_characterize_data.json`.
+  In short: **nothing in them was measured on this build**; no micrograph of a section of the lab's prints was
+  found. The SEM panel's inset is real, but it is the powder.
+- **"Instead of the stock AlSi10Mg powder, you should pull SEM images from the Al powder we actually atomized."** The
+  SEM panel's real inset is now the lab's own atomized Al 4047, run c3k0n5 (rePowder, 22 Oct 2026,
+  [DAL #159](https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/159)), on BYU's Apreo at 1000x, 5 kV,
+  imaged by Ronnie Guymon on 26 Oct 2026 ([DAL #157](https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/157);
+  `out/footage/sem_c3k0n5_3.png`, as chapter 4 uses).
+- **The OpenFlexures** are not used: the array is off the tray plan (Sterling questioned what they were for, given
+  the VHX), and the VHX does the whole-piece imaging they were meant for.
+- **The trays come to the opening and the arm loads each instrument**, on the two-Shuttle floor.
 
-  Under the head, the holder's pockets can't be reached from above, and the 13 mm the mounts stand proud are too
-  little for the fingers from below, so the holder is swapped whole rather than the mounts.
-- **The mount is 25 mm tall.** It stands 13 mm proud of the holder's face side, and the back is flush.
-- **The coupon's pocket is slotted for the fingertips.** So with the holder face up, the arm can take the mount by its
-  polished end. The gripper's grasp point is 5 mm outside the face, so the pads hold the top 13 mm and stop short of a
-  cup's rim.
-- **The holder's rest and the caddy are low blocks on the MiR's cabinet top.** That is the round-7 rule for the MiR's
-  storage (`props.pocket_block`): no post, 1 mm clearance, lead-ins at the pockets.
-  - The holder's rim sits on a ledge 16 mm up inside a 4 mm wall, with a notch for the tab.
-  - The caddy's mount pocket is 10 mm deep (40 % of the mount); the vial's is 26 mm (43 %).
-- **The SEM's mount cup is ours.** It is an 18 mm cup with an 8 mm bore and a set screw, on the stage 30 mm ahead of
-  the stage's socket. At the socket itself, 40 mm in front of the SEM's face with the door out, every IK solution puts
-  the wrist into the SEM's front.
-- **The iMicro's stage loads 60 mm out in x and 60 mm forward.** The model's stage moves in x only. The y travel is
-  drawn as the mount's own move on the stage.
-  - A probe of 8 IK branches × 4 gripper turns × 7 stage positions found this the only clear load position.
-  - Further in, the forearm or the wrist runs into the cabinet.
-- **The Aero S's cover is lifted by an actuator.** Malvern's is lifted off by hand.
-- **The SEM inset is real data, but not of this section.** It is chapter 4's image of the lab's AlSi10Mg powder: BYU's
-  Apreo, Gage Erickson, 2 April 2026, byu-vcl#48. No image of a polished section of this build exists yet. The inset
-  says so.
-- **No results are shown for the indents or the size distribution.** None have been measured for this build.
+### What is ours, and what is assumed
+
+None of these are the makers' published arrangements. They are our designs, at assumed sizes:
+- **The caddy** on the MiR's cabinet top: two 6 mm-deep pockets for the 1.5 in mounts (1 mm clearance, a lead-in) and
+  an 8 mm ridge for the bar, narrower than the bar so the gripper's pads reach down either side. Where chapter 6 left
+  the mounts (`alloy_prep.HOT_AT`, `ST_AT`).
+- **The SEM's holder cup, adapter bar and plunger.** Hitachi's own holders are for stubs and small mounts; a 1.5 in
+  holder of this kind is an estimate.
+- **The iMicro's steel cup and its plunger,** and its carriage's 130 mm run to the load position (`r8_char.NANO_LOAD`).
+- **The loading slides on the PIP, the HM-220 and the VHX.** Each of these instruments leaves too little room over
+  its sample for a gripper from above (the PIP's bay is about 130 mm tall with the indenter 7 mm over the sample; the
+  HM-220's objectives are 3 mm over the face; the VHX's ring light is 25 mm over the focal point), and the VHX's own
+  XY stage moves only +-20 mm. So a plate or carrier on a short linear guide (ours) carries the specimen out to the
+  front, where the arm reaches it from above, and back:
+  - PIP: a 6 mm steel plate with a locating ring, 310 mm of travel; the indenter and profilometer sit 6 mm higher for
+    it (`r8_char.PIP_SLIDE`).
+  - HM-220: the holder plate and its V-block on the XY table, 130 mm (`r8_char.HM_SLIDE`).
+  - VHX: an aluminium carrier with an 8 mm pedestal on the turntable, 110 mm, so it turns with theta
+    (`r8_char.VHX_SLIDE`, `VHX_CARRIER`). The pedestal puts the bar's top face at the focal point and leaves room for
+    the pads on either side of the bar.
+- **The turn-over** is the arm's: a level grasp on the bar's grip end from the front, 25 mm up, a 180 deg roll of the
+  wrist about the bar's axis, back down.
+- **The instrument times** on the clock are typical, not measured: about 3 min to vacuum and 15-20 min of SEM/EDS,
+  45 min for 25 indents on the iMicro, minutes for a PIP test, about 12 min for a row of Vickers indents, about 25 min
+  for the VHX's two series.
 
 ### The arm's collisions
 
-`ARM_AUDIT=1 VIZ3D_FPS=10 xvfb-run -a python3 alloy_characterize.py` checks every rendered frame. The result is
-**0 of 1266 frames in collision**. At 15 fps it is 0 of 1883: the same moves, sampled more finely. The rules are
-`collide.Auditor`'s:
-- the gripper may touch what it is picking up or putting down, within 4 s of the grasp or the release;
-- a held part may touch where it came from and where it goes.
-
-The first draft had 245 frames in collision in its polisher steps alone, and the first full draft had 132 of 1875.
-
-It took these changes to get there:
-- The holder's rest and the caddy moved behind the arm. Beside the arm's base, the upper arm swept through them.
-  Pointing at the arm, the tab put the flange inside the UR's unreachable cylinder over its base.
-- The tab is gripped across its sides, not top and bottom. That way the gripper is its 75 mm thickness tall, not its
-  130 mm finger span, where it passes over the bowl's lip.
-- The holder goes in 4 mm low and is lifted onto the coupling. Slid in at its final height, the mounts would run
-  into the spindle.
-- The SEM cup sits ahead of the socket, and the iMicro's load position moved, as above.
-- Mounts are taken with the wrist camera on the side away from the instrument (gripper turned 180°). Otherwise the
-  D405 on the coupling hits the SEM's and the iMicro's fronts.
-- Each approach's joint move goes to the IK branch that is clear where its straight line ends (`branch_q`, as in
-  `alloy_workflow.py`).
+`ARM_AUDIT=1 VIZ3D_FPS=6 xvfb-run -a python3 alloy_characterize.py` checks every frame, with `collide.Auditor`'s rules
+(the gripper may touch what it picks up or puts down within 4 s of the grasp or release; a held part may touch where
+it came from and where it goes). The result is in the table above and in
+[`out/collisions/alloy_characterize.json`](../out/collisions/alloy_characterize.json).
 
 ### Not done
 
-- **The tray plan's re-arranged trays D-F,** if they land after this render, need a re-run. Nothing is hard-coded,
-  but the load positions above were checked only for the layout in `line.TRAY_LOADS` at the time.
-- **The PIP, the XRD, the OpenFlexures and the furnace are only seen, not used.** The PIP's bay is 77 mm tall between
-  the platen and the crosshead, so its sample can't go in on the 2F-85's fingers; Plastometrex's AutoStage would be
-  the way in.
-- **The SiC papers and the cloth are changed off screen.**
-- **Rendered at 10 fps,** like chapters 1-4 in the long-form.
+- **No section of the lab's prints has been imaged, indented or reconstructed.** The panels say so.
+- **The specimens' trip from the sample store (tray J) to the MiR's caddy is not shown;** the chapter starts with them
+  in it.
