@@ -5,11 +5,19 @@ high-speed, starting by the hour, then day-by-day, then by weeks and months show
 number of unique alloys fully tested and printed."
 
 ```bash
-python3 timelapse.py model                                   # the throughput model -> out/timelapse.json
+python3 timelapse.py model                                   # the throughput model -> out/timelapse_model.json
 PREVIEW=1 VIZ3D_FPS=6 xvfb-run -a python3 timelapse.py       # nine frames -> /tmp/preview_timelapse.png
 VIZ3D_FPS=6 xvfb-run -a python3 timelapse.py                 # -> out/mp4/timelapse.mp4, out/timelapse.gif, still
 python3 timelapse.py gif                                     # the GIF again from the MP4, under 4.9 MB
 ```
+
+## The render
+
+- **[MP4](../out/mp4/timelapse.mp4):** 525 frames at 6 fps, 87.5 s, 9.5 MB.
+- **[GIF](../out/timelapse.gif):** 400 px at 3 fps, 3.8 MB.
+- **[Still](../out/timelapse_still.png):** month by month.
+- **Cost:** 28 min in one slot (19:11-19:40 UTC), 2.8 s a frame with every tray built.
+- **Not checked:** no arm audit, since the units' poses are shown, not planned (see Caveats).
 
 ## What the clip shows
 
@@ -55,7 +63,8 @@ flagged at 9:09 of the last long-form. So every tray is built (about 5.5 GB).
 
 Each station and each unit keeps a sorted list of its bookings, so a later alloy can use an earlier gap. The steps are
 the route of chapters 1-7. Each step's time comes from this branch's notes or from DAL, or is marked as assumed in
-`STEPS` and `PARAMS`. `out/timelapse.json` holds all of them with their sources.
+`STEPS` and `PARAMS`. `out/timelapse_model.json` holds all of them with their sources (`out/timelapse.json` is the
+clip's own record of its parts, as every scene's is).
 
 **The atomizer's crucible is the one job left to people.** A person changes, cleans and coats the crucible. Sterling:
 "Things related to the crucible in terms of automation are going to be very difficult", and
