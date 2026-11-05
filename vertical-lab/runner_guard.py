@@ -4,25 +4,27 @@
 Two round-8 sessions on PR #318 lost their runner to "The runner has received a shutdown signal" with eight agents
 rendering, auditing and encoding at the same moment. This caps the heavy jobs and watches memory:
 
-    python3 runner_guard.py slot [--weight N] [--label TEXT] -- CMD ...
-        run CMD once N of the render slots (3 by default, VLAB_SLOTS) are free and there is memory for it
+    python3 runner_guard.py slot [--weight N] [--mem MB] [--label TEXT] -- CMD ...
+        run CMD once N of the render slots (3 by default, VLAB_SLOTS) are free and MB of memory is available
     python3 runner_guard.py watch
         log memory every minute to /tmp/vlab_memlog.txt; if memory runs out, stop the biggest slotted job
     python3 runner_guard.py status
         who holds the slots, the memory now, and the last lines of the logs
-    python3 runner_guard.py bg --log FILE [--weight N] [--label TEXT] -- CMD ...
+    python3 runner_guard.py bg --log FILE [--weight N] [--mem MB] [--label TEXT] -- CMD ...
         the same as slot, started detached (it outlives the calling shell), output to FILE, exit code to FILE.rc;
         prints the pid
     python3 runner_guard.py wait PID [--minutes M] [--log FILE]
         wait up to M minutes (default 50) for PID to finish, then print the end of FILE and its exit code
 
 What takes a slot: anything that builds a 3-D scene (a render, a PREVIEW=1 still, an ARM_AUDIT=1 pass, a tour clip,
-interference.py) and the long ffmpeg joins. Weight 2 for the whole-lab scenes (setup_lab.py, animate.py workflow,
-timelapse.py), weight 1 for the rest. Light work (matplotlib panels, JSON, notes) needs no slot.
+interference.py) and the long ffmpeg joins, one slot each. A whole-lab scene (setup_lab.py, animate.py workflow,
+timelapse.py, a chapter on the whole floor) holds about 5 GB, so give it --mem 6000. (Weight 2 was the first rule
+in continuation 2; it left a slot and three cores idle behind a single-threaded audit, so it was dropped at 16:45.)
+Light work (matplotlib panels, JSON, notes) needs no slot.
 
 * Slots are flock()ed files under /tmp/vlab_slots, so a slot frees itself when its process dies, however it dies.
 * Waiters queue on a turnstile lock, so a weight-2 job isn't starved by a stream of weight-1 jobs.
-* A job also waits for MemAvailable: 3.5 GB for weight 1, 6 GB for weight 2 (VLAB_MEM_MB_PER_WEIGHT, default 3000,
+* A job also waits for MemAvailable: --mem MB, or by default 3.5 GB a slot (VLAB_MEM_MB_PER_WEIGHT, default 3000,
   plus 500).
 * The job runs under ``nice -n 5`` with LP_NUM_THREADS=2 (llvmpipe), OMP_NUM_THREADS=2 and FFMPEG_THREADS=2 unless
   they are already set, and with VLAB_SLOT=<label> in its environment, which is how the watchdog finds it.
@@ -82,11 +84,13 @@ def holders() -> list[str]:
 
 
 def slot(argv: list[str]) -> int:
-    weight, label, rcfile = 1, None, None
+    weight, label, rcfile, mem = 1, None, None, None
     while argv and argv[0] != "--":
         a = argv.pop(0)
         if a == "--weight":
             weight = int(argv.pop(0))
+        elif a == "--mem":
+            mem = int(argv.pop(0))
         elif a == "--label":
             label = argv.pop(0)
         elif a == "--rcfile":
@@ -99,7 +103,7 @@ def slot(argv: list[str]) -> int:
     weight = max(1, min(weight, N_SLOTS))
     label = label or " ".join(Path(c).name for c in cmd[:4])[:80]
     SLOT_DIR.mkdir(parents=True, exist_ok=True)
-    need = MEM_PER_WEIGHT * weight + 500
+    need = mem if mem is not None else MEM_PER_WEIGHT * weight + 500
     t0 = time.time()
     held = []
     with open(SLOT_DIR / "turnstile.lock", "a+") as turn:

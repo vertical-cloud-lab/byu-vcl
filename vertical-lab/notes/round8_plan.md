@@ -161,3 +161,8 @@ Both earlier round-8 runs lost their runner to a shutdown signal (exit 143), wit
 | lab | 16 | render `animate.py workflow` and the set-up movie with every r8 model, the tray plan; `notes/lab_r8.md` |
 | timelapse | 18 | write `timelapse.py` (the finale), its throughput model, render, notes |
 | orchestrator | | `runner_guard.py`, pushes, the token, `longform.py`, `alloy_route.py`, README, the PR description, the one upload |
+
+**16:45 change:** every scene job takes one slot (`--weight 1`, the default). A whole-lab scene gives `--mem 6000`
+instead of `--weight 2`: weight 2 had a single-threaded whole-lab audit holding two slots for 25 minutes while three
+cores and a slot sat idle behind it. Still at most 3 scene jobs at once; the memory gate and the watchdog keep the
+whole-lab jobs (about 5 GB each) from running the runner out of memory.
