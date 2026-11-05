@@ -1,47 +1,95 @@
 {
  "name": "instruments/vhx",
- "fps": 15,
- "n_frames": 330,
+ "fps": 8,
+ "n_frames": 282,
  "size": [
   1280,
   720
  ],
  "substeps": [
   {
-   "label": "1/6",
-   "caption": "A polished, mounted coupon goes onto the VHX-S750E's motorized XY stage (+-20 mm).",
+   "label": "1/14",
+   "caption": "A loading slide (ours) runs its carrier out of the stage to the front: the ring light is 25 mm over the focal point, too close for a gripper.",
    "start_frame": 0,
-   "end_frame": 52
+   "end_frame": 22
   },
   {
-   "label": "2/6",
-   "caption": "The free-angle head tilts to look at the surface from the side; the view stays centred on the coupon.",
-   "start_frame": 53,
-   "end_frame": 99
+   "label": "2/14",
+   "caption": "Half of a broken tensile bar from chapter 5 goes on the carrier's narrow pedestal, grip end to the front.",
+   "start_frame": 23,
+   "end_frame": 44
   },
   {
-   "label": "3/6",
-   "caption": "Upright again. Depth composition: the motorized Z focus sweeps through the relief and the controller keeps the sharp part of each frame (VH-ZST zoom: 20-2000x).",
-   "start_frame": 100,
+   "label": "3/14",
+   "caption": "Back to the stage's centre: the bar's top face at the focal point.",
+   "start_frame": 45,
+   "end_frame": 62
+  },
+  {
+   "label": "4/14",
+   "caption": "The free-angle head tilts about the focal point (eucentric: the view stays on the bar) while the stage turns: a series of views from every side.",
+   "start_frame": 63,
+   "end_frame": 98
+  },
+  {
+   "label": "5/14",
+   "caption": "The free-angle head tilts about the focal point (eucentric: the view stays on the bar) while the stage turns: a series of views from every side.",
+   "start_frame": 99,
+   "end_frame": 126
+  },
+  {
+   "label": "6/14",
+   "caption": "Depth composition at each view: the motorized focus sweeps through the relief.",
+   "start_frame": 127,
+   "end_frame": 146
+  },
+  {
+   "label": "7/14",
+   "caption": "Turned over once (the arm does it in chapter 7), and the series again: the whole bar in 3-D, the fracture surface included.",
+   "start_frame": 147,
    "end_frame": 161
   },
   {
-   "label": "4/6",
-   "caption": "The EA-300 fires: a 355 nm Nd:YAG pulse (drawn red, and far wider than its 10 um spot) turns a speck of the surface into a plasma.",
+   "label": "8/14",
+   "caption": "Turned over once (the arm does it in chapter 7), and the series again: the whole bar in 3-D, the fracture surface included.",
    "start_frame": 162,
-   "end_frame": 205
+   "end_frame": 171
   },
   {
-   "label": "5/6",
-   "caption": "Its spectrometer reads the plasma's light: elements from H to U, in seconds, at the spot the camera is looking at.",
-   "start_frame": 206,
-   "end_frame": 276
+   "label": "9/14",
+   "caption": "Turned over once (the arm does it in chapter 7), and the series again: the whole bar in 3-D, the fracture surface included.",
+   "start_frame": 172,
+   "end_frame": 188
   },
   {
-   "label": "6/6",
-   "caption": "The EA-300 adds 7.2 kg to the stand. Stand and head are about 716 mm tall, under the opening's 856.5 mm. No monitor or console: the controller stands sideways, and a PiKVM puts its screen on the LAN.",
-   "start_frame": 277,
-   "end_frame": 329
+   "label": "10/14",
+   "caption": "Turned over once (the arm does it in chapter 7), and the series again: the whole bar in 3-D, the fracture surface included.",
+   "start_frame": 189,
+   "end_frame": 198
+  },
+  {
+   "label": "11/14",
+   "caption": "Turned over once (the arm does it in chapter 7), and the series again: the whole bar in 3-D, the fracture surface included.",
+   "start_frame": 199,
+   "end_frame": 213
+  },
+  {
+   "label": "12/14",
+   "caption": "The reconstruction: a height map of the fracture surface (illustrative).",
+   "start_frame": 214,
+   "end_frame": 249
+  },
+  {
+   "label": "13/14",
+   "caption": "The carrier runs out and the bar comes off.",
+   "start_frame": 250,
+   "end_frame": 266
+  },
+  {
+   "label": "14/14",
+   "caption": "The carrier runs out and the bar comes off.",
+   "start_frame": 267,
+   "end_frame": 281
   }
  ]
 }

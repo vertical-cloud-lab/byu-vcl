@@ -102,7 +102,7 @@ None of these are the makers' published arrangements. They are our designs, at a
   front, where the arm reaches it from above, and back:
   - PIP: a 6 mm steel plate with a locating ring, 310 mm of travel; the indenter and profilometer sit 6 mm higher for
     it (`r8_char.PIP_SLIDE`).
-  - HM-220: the holder plate and its V-block on the XY table, 130 mm (`r8_char.HM_SLIDE`).
+  - HM-220: the holder plate and its V-block on the XY table, 150 mm (`r8_char.HM_SLIDE`).
   - VHX: an aluminium carrier with an 8 mm pedestal on the turntable, 110 mm, so it turns with theta
     (`r8_char.VHX_SLIDE`, `VHX_CARRIER`). The pedestal puts the bar's top face at the focal point and leaves room for
     the pads on either side of the bar.

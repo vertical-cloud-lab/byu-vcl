@@ -1,29 +1,35 @@
 {
  "name": "instruments/sem",
- "fps": 15,
- "n_frames": 126,
+ "fps": 8,
+ "n_frames": 109,
  "size": [
   1280,
   720
  ],
  "substeps": [
   {
-   "label": "1/3",
-   "caption": "EVAC/AIR vents the chamber; the door is pulled straight out by its handle, the stage on its inside face.",
+   "label": "1/4",
+   "caption": "EVAC/AIR vents the chamber; the door comes straight out with the X-Y stage on it. In the stage's socket: our holder for 1.5 in mounts, an aluminium cup with a spring plunger through its side.",
    "start_frame": 0,
-   "end_frame": 40
+   "end_frame": 24
   },
   {
-   "label": "2/3",
-   "caption": "The polished mount, on a holder set to height at the bench, drops into the socket in the stage.",
-   "start_frame": 41,
-   "end_frame": 78
+   "label": "2/4",
+   "caption": "The conductive hot mount (carbon-filled phenolic) drops into the cup and the plunger presses it against the wall: coupon -> compound -> cup -> stage, the path to ground.",
+   "start_frame": 25,
+   "end_frame": 47
   },
   {
-   "label": "3/3",
-   "caption": "Door in, EVAC/AIR again: about three minutes to vacuum. The EDS detector is built in, its analyser beside. EBSD (left) is a proposal: no TM4000 option exists, and it needs a 70 degree pre-tilted holder.",
-   "start_frame": 79,
-   "end_frame": 125
+   "label": "3/4",
+   "caption": "Door in, EVAC/AIR: about three minutes to vacuum. Then BSE images and EDS; the detector is built in, and the box on the right is its analyser, Oxford Instruments' AZtecOne.",
+   "start_frame": 48,
+   "end_frame": 72
+  },
+  {
+   "label": "4/4",
+   "caption": "The polished section in backscattered electrons (illustrative: no image of this section exists yet).",
+   "start_frame": 73,
+   "end_frame": 108
   }
  ]
 }

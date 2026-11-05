@@ -1,41 +1,65 @@
 {
  "name": "instruments/hardness",
- "fps": 15,
- "n_frames": 301,
+ "fps": 8,
+ "n_frames": 226,
  "size": [
   1280,
   720
  ],
  "substeps": [
   {
-   "label": "1/5",
-   "caption": "A polished 1.25 in mount goes onto the motorized XY stage (50 x 50 mm travel).",
+   "label": "1/9",
+   "caption": "A loading slide (ours) on the XY table runs the mount holder out to the front, clear of the head and the turret.",
    "start_frame": 0,
-   "end_frame": 52
+   "end_frame": 22
   },
   {
-   "label": "2/5",
-   "caption": "The motorized turret swings the Vickers indenter over it; the force motor presses: HV0.5, 4.9 N.",
-   "start_frame": 53,
-   "end_frame": 108
+   "label": "2/9",
+   "caption": "The conductive hot mount goes on the holder from above, against its V-block (a 5 mm plate: the polished face where the objectives focus).",
+   "start_frame": 23,
+   "end_frame": 44
   },
   {
-   "label": "3/5",
+   "label": "3/9",
+   "caption": "The slide runs back in, under the turret.",
+   "start_frame": 45,
+   "end_frame": 62
+  },
+  {
+   "label": "4/9",
+   "caption": "The motorized turret swings the Vickers indenter over it; the force motor presses: HV0.1, 0.98 N.",
+   "start_frame": 63,
+   "end_frame": 92
+  },
+  {
+   "label": "5/9",
    "caption": "The 50x objective comes back. The 3 MP camera images the indent; AVPAK measures both diagonals.",
-   "start_frame": 109,
-   "end_frame": 155
+   "start_frame": 93,
+   "end_frame": 117
   },
   {
-   "label": "4/5",
-   "caption": "A series across the coupon: the stage steps (0.5 mm apart; drawn 3 mm), and each indent is made and read the same way, unattended.",
-   "start_frame": 156,
-   "end_frame": 253
+   "label": "6/9",
+   "caption": "A row across the coupon, 0.25 mm apart (drawn 2.5 mm apart and 1.2 mm across), each made and read the same way, unattended.",
+   "start_frame": 118,
+   "end_frame": 169
   },
   {
-   "label": "5/5",
-   "caption": "315 x 671 x 595 mm and 43 kg: on a tray, with 260 mm to spare under the opening. HM-220: 0.05 gf to 2 kgf, enough for HV0.5 on Al alloys.",
-   "start_frame": 254,
-   "end_frame": 300
+   "label": "7/9",
+   "caption": "315 x 671 x 595 mm and 43 kg: on a tray. HM-220: 0.05 gf to 2 kgf.",
+   "start_frame": 170,
+   "end_frame": 192
+  },
+  {
+   "label": "8/9",
+   "caption": "The slide runs out and the mount comes off.",
+   "start_frame": 193,
+   "end_frame": 210
+  },
+  {
+   "label": "9/9",
+   "caption": "The slide runs out and the mount comes off.",
+   "start_frame": 211,
+   "end_frame": 225
   }
  ]
 }

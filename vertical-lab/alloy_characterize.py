@@ -26,8 +26,6 @@ whatever is in the way (``robot.py``, ``collide.py``). What is assumed is in ``n
 """
 from __future__ import annotations
 
-import math
-import sys
 from pathlib import Path
 
 import numpy as np
@@ -37,7 +35,7 @@ from PIL import Image, ImageDraw
 import scene
 scene.GIF_FPS = 3                     # a ~4-minute GIF under 4.9 MB (the MP4 keeps every frame)
 scene.GIF_SIZE = (512, 288)
-from scene import CLEAN, FPS, OUT, PREVIEW, Scene, T, R, font  # noqa: E402
+from scene import CLEAN, PREVIEW, Scene, T, R, font  # noqa: E402
 
 import animate as A                   # noqa: E402
 import lab                            # noqa: E402
@@ -58,6 +56,8 @@ TCP_UP = 13.0                         # the grasp point 13 mm over a mount's fac
 #                                       clear of a holder cup's rim
 BAR_UP = 14.0                         # and 14 mm over the bar's top: the pads end level with its underside
 MIR_SPEED = 1500.0                    # mm/s at most, at 0.3 m/s^2 (props.ramp_secs), as the other chapters
+HM_DOCK = 300.0                       # at Shuttle 2 the MiR stops this far short of its dock for the HM-220 (IK: 8
+#                                       solutions there against 4 at the dock, 1033 mm out)
 
 # the caddy (ours) on the MiR's cabinet top, where chapter 6 left the mounts (alloy_prep.HOT_AT, ST_AT): a low block
 # with two pockets 6 mm deep and a ridge for the bar, narrower than the bar so the pads reach down either side of it
@@ -135,6 +135,11 @@ class ChScene(Scene):
 def build():
     import setup_lab as SL
     import warehouse as W
+    if hasattr(SL, "item_label"):           # setup_lab's in-progress item_label reads inst.name, which Instrument lacks
+        def item_label(inst):
+            m = inst.model.strip()
+            return f"{inst.title} (our design)" if m.lower() in ("our design", "ours", "(ours)") else m
+        SL.item_label = item_label
     data = lab.meshes()
     idata = SL.load_all()
     sc, L, F, items, rigs, units, util, ulabel, vp = SL.build(data, idata, name=NAME, title=TITLE)
@@ -260,7 +265,6 @@ def sh(Tw, d):
 # ================================================================================================= the movie
 def movie():
     import setup_lab as SL
-    import warehouse as W
     sc, L, F, rigs, u = build()
     rb = u.robot
     add_specimens(sc, u)
@@ -392,7 +396,7 @@ def movie():
     status(L, Arm="loading the SEM")
     pick_mount("c_hot", spin=180.0)
     place_mount(world_of(sem, "drawer", cup_base), f"{sem.prefix}drawer", spin=180.0,
-                labels=[("holder cup + spring plunger", tuple(world_of(sem, "drawer", cup_base) + (0, 0, 15))),
+                labels=[("holder cup + spring plunger", tuple(world_of(sem, "drawer", cup_base) + (0, 0, 15)),
                          (0.30, 0.78))])
     park(1.4)
     status(L, Arm="parked", SEM="pumping down")
@@ -495,9 +499,10 @@ def movie():
 
     # ------------------------------------------------------------------ 4. to Shuttle 2
     x2 = SL.X2
-    say("Shuttle 2", "The MiR250 drives along to Shuttle 2's opening, at its 0.3 m/s^2.")
+    say("Shuttle 2", "The MiR250 drives along to Shuttle 2's opening, at its 0.3 m/s^2, and stops 300 mm short of "
+                     "its usual dock, nearer the HM-220 at the tray's left end.")
     status(L, Arm="UR10e on MiR250, to Shuttle 2")
-    drive_to(x2, st["lbl"], st["cap"], cam=[(x2 + 6800, -9800, 5200), (x2 - 600, -1500, 1100), (0, 0, 1)])
+    drive_to(x2 - HM_DOCK, st["lbl"], st["cap"], cam=[(x2 + 6800, -9800, 5200), (x2 - 600, -1500, 1100), (0, 0, 1)])
     status(L, Arm="UR10e on MiR250, at Shuttle 2")
 
     # ------------------------------------------------------------------ 5. tray L: micro-Vickers
@@ -543,7 +548,10 @@ def movie():
     bar_base = (0.0, ys, zs + 1.0 + c["t"] + c["ped_h"])
     vw = lambda p_: inst_world(sc, vhx, p_)                        # noqa: E731
     CAM_VHX = cam_at(vw((0, -120, 260)), (-640, -1150, 520))
-    say("VHX", "Tray K comes down: the glovebox and the Keyence VHX-7000, remoted in through a PiKVM.")
+    say("VHX", "Tray K comes down: the glovebox and the Keyence VHX-7000, remoted in through a PiKVM. The MiR250 moves "
+               "back to its dock.")
+    status(L, Arm="UR10e on MiR250, at Shuttle 2")
+    drive_to(x2, st["lbl"], st["cap"], hold=0.0)
     L.fetch("K", st["lbl"], st["cap"], fast=0.5, cam=CAM_LAB, hold=0.2)
     say("VHX", "The ring light is 25 mm over the focal point, too close for a gripper: the stage's loading slide "
                "(ours) runs its carrier out to the front, and the arm sets the bar on its narrow pedestal.")

@@ -352,7 +352,7 @@ def pip() -> Instrument:
 
 # ===================================================================================================== micro-Vickers
 HM_HOLD = dict(plate=5.0, w=64.0, d=64.0, vee=6.0)   # the mount holder on the HM-220's table (ours, estimate)
-HM_SLIDE = 130.0          # its loading slide's run to the front (ours)
+HM_SLIDE = 150.0          # its loading slide's run to the front (ours): the gripper 32 mm clear of the head
 
 
 def hardness() -> Instrument:
@@ -404,12 +404,14 @@ def hardness() -> Instrument:
     inst.joints.update({
         "stage_x": R7.Track(knots=tl.knots(lambda s: (s["sx"], 0.0, 0.0))),
         "slide": Joint("slide", vec=(0, -HM_SLIDE, 0), parent="stage_x"),
+        "readout": Joint("fade"),           # instruments_r7's was a slide, which kept data_panels' panel on screen
         "sample": Joint("path", path=((0, 0, 220), (0, 0, 40), (0, 0, 0)), parent="slide"),
         "turret": R7.Turn(axis=(0, 0, 1), pivot=(tx, ty, 0), knots=R7._turn_knots(tl, lambda s: s["tur"])),
         "indenter": R7.Track(knots=tl.knots(lambda s: (0.0, 0.0, s["ind"])), parent="turret"),
         **{f"dent{i}": R7.Track(knots=tl.knots(lambda s, i=i: (0.0, 0.0, s[f"d{i}"])), parent="sample")
            for i in range(n)},
     })
+    inst.props = tuple(dict.fromkeys(tuple(inst.props) + ("readout",)))
     tv = lambda a, b: {k: (a, b) for k in ("stage_x", "turret", "indenter", *[f"dent{i}" for i in range(n)])}  # noqa
     V = tl.v
     inst.actions = [
