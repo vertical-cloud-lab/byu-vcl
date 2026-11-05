@@ -492,7 +492,7 @@ def ejector_body(pc, bar_xs) -> pv.PolyData:
 # are low pockets on the cabinet's top plate instead, each with a 3 mm lead-in: the plate in a 30 mm block bored to
 # take it and its stud, the specimen rack in a frame, and a rest for the tongs. MiR frame (z from the cabinet's top).
 POCKETS = dict(plate=(255.0, -110.0), rack=(-255.0, -120.0), tongs=(-200.0, 250.0), block_h=40.0, rack_h=20.0,
-               pocket=12.0)
+               pocket=12.0, cradle=(250.0, 150.0), cradle_h=30.0, channel=(12.0, 5.0), channel_dx=15.0)
 
 
 def mir_pockets(top: float) -> dict:
@@ -525,8 +525,26 @@ def mir_pockets(top: float) -> dict:
     for dx in (-110.0, 110.0):                    # two V-blocks under the shaft
         v = pv.Box(bounds=(tx + dx - 14, tx + dx + 14, ty - 20, ty + 20, top, top + 36)).triangulate()
         rest = v if rest is None else rest.merge(v)
+    # a cradle for the room-temperature halves, kept for fractography: two channels along y, each half lying flat in
+    # one with its fracture surface touching nothing
+    cx_, cy_ = POCKETS["cradle"]
+    ch_w, ch_d = POCKETS["channel"]
+    hc = POCKETS["cradle_h"]
+    cradle = pv.Box(bounds=(cx_ - 30, cx_ + 30, cy_ - 60, cy_ + 60, top, top + hc - ch_d)).triangulate()
+    for xx in (cx_ - 30, cx_ - ch_w / 2, cx_ + ch_w / 2):
+        pass
+    xs_ = [cx_ - 30, cx_ - POCKETS["channel_dx"] - ch_w / 2, cx_ - POCKETS["channel_dx"] + ch_w / 2,
+           cx_ + POCKETS["channel_dx"] - ch_w / 2, cx_ + POCKETS["channel_dx"] + ch_w / 2, cx_ + 30]
+    for a_, b_ in zip(xs_[0::2], xs_[1::2]):
+        cradle = cradle.merge(pv.Box(bounds=(a_, b_, cy_ - 60, cy_ + 60, top + hc - ch_d, top + hc)).triangulate())
     return {"plate block": (blk, (0.30, 0.32, 0.36)), "rack pocket": (rack, (0.94, 0.94, 0.92)),
-            "tongs rest": (rest, (0.30, 0.32, 0.36))}
+            "tongs rest": (rest, (0.30, 0.32, 0.36)), "halves cradle": (cradle, (0.20, 0.36, 0.62))}
+
+
+def cradle_seat(top: float, i: int) -> np.ndarray:
+    """Channel i's floor centre (i = 0, 1), MiR frame."""
+    cx_, cy_ = POCKETS["cradle"]
+    return np.array([cx_ + POCKETS["channel_dx"] * (2 * i - 1), cy_, top + POCKETS["cradle_h"] - POCKETS["channel"][1]])
 
 
 def plate_seat(top: float) -> np.ndarray:

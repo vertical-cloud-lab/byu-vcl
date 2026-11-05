@@ -815,7 +815,7 @@ def build_lab():
     sc.base_alpha[f"{u0.name}/holder"] = 0.0
     for name, (mesh, col) in M.mir_pockets(CAB_TOP).items():
         sc.add(f"{u0.name}/{name}", mesh, col, u0.cab, specular=0.2)
-    rack_mesh = lab.to_mesh(RT.spec_tray(), 0.6)
+    rack_mesh = lab.to_mesh(RT.spec_tray().val(), 0.6)
     sc.add("rack/rack", rack_mesh, (0.74, 0.75, 0.77), "rack", specular=0.45)
     sc.parent["rack"] = u0.cab
     sc.gmat["rack"] = T(tuple(M.rack_seat(CAB_TOP)))
@@ -1380,73 +1380,81 @@ def movie():
         Mt[:3, 0], Mt[:3, 1], Mt[:3, 2] = np.cross(y_, z_), y_, z_
         Mt[:3, 3] = np.asarray(p_fin, float) - Mt[:3, :3] @ bite
         return Mt @ np.linalg.inv(Tg)
-    # the tongs wait left of the furnace, clear of its door's swing (a 472 mm radius about the right-hand hinges)
-    wait = tcp_for_bite(fw((-560.0, FP["D"] / -2 - 260.0, 420.0)), f_dir)
+    # The door hinges on the furnace's right, where the quench tank stands, and its free edge sweeps 472 mm in front:
+    # so the rack waits LEFT of the mouth whenever the door moves, and crosses to the tank in front of the closed door.
+    f_left = f_out + rig_dir(fur, (-380.0, 0.0, 0.0))                          # clear of the door's sweep
+    q_plate = rig_w(qt, (0.0, -5.0, RT.QUENCH["plate_z"]))
+    q_fin = q_plate + rig_dir(qt, fin_off)          # the rack's floor on the plate's centre: its fin's grasp point
+    q_dir = rig_dir(qt, (0, 1, 0))
+    q_front = np.r_[q_fin[0], f_out[1], q_fin[2] + 40.0]                     # in front of the tank, at the door's front
+    TL = lambda p_: tcp_for_bite(p_, f_dir)          # noqa: E731
     fin_now = (sc.world("rack") @ np.r_[fin_off, 1.0])[:3]
-    st["cap"] = ("The jaws take the rack's fin on the MiR, and the door opens (an actuator, assumed: the NAT 15/65's "
-                 "door is opened by hand).")
-    go(Tw=tcp_for_bite(fin_now + (0, -60.0, 30.0), f_dir), secs=1.8)
-    lin(tcp_for_bite(fin_now, f_dir), 0.6)
+    st["cap"] = ("The jaws take the rack's fin on the MiR. The furnace door opens (an actuator, assumed: the NAT "
+                 "15/65's door is opened by hand) while the rack waits to its left, out of the door's swing.")
+    go(Tw=TL(fin_now + (0, -60.0, 30.0)), secs=1.8)
+    lin(TL(fin_now), 0.6)
     rb.reparent("rack", "tongs")
-    lin(tcp_for_bite(fin_now + (0, 0, 60.0), f_dir), 0.6)
-    go(Tw=wait, secs=1.6)
+    lin(TL(fin_now + (0, 0, 60.0)), 0.6)
+    go(Tw=TL(f_left + (0, 0, 6.0)), secs=1.6)
     status(sc, Furnace="door open", Arm="loading the rack")
     step(1.6, fur.move({"door": (0.0, 1.0)}), cam=CAM_F,
          labels=[("Nabertherm NAT 15/65", tuple(fw((0, 0, 520))), (0.20, 0.20)),
                  ("quench tank, lift basket", tuple(rig_w(qt, (0, 0, 330))), (0.80, 0.24))])
     st["cap"] = "The rack slides in, its fin 70 mm past the door's insulating plug."
-    go(Tw=tcp_for_bite(f_out + (0, 0, 6.0), f_dir), secs=1.4, labels=[])
-    lin(tcp_for_bite(f_in + (0, 0, 6.0), f_dir), 1.4)
-    lin(tcp_for_bite(f_in, f_dir), 0.4)
+    lin(TL(f_out + (0, 0, 6.0)), 0.8, labels=[])
+    lin(TL(f_in + (0, 0, 6.0)), 1.4)
+    lin(TL(f_in), 0.4)
     rb.reparent("rack", f"{fur.prefix}body")
-    lin(tcp_for_bite(f_in - f_dir * 70.0, f_dir), 0.6)
-    lin(tcp_for_bite(f_out, f_dir), 0.9)
-    go(Tw=wait, secs=1.2)
+    lin(TL(f_in - f_dir * 70.0), 0.6)
+    lin(TL(f_out), 0.8)
+    lin(TL(f_left), 0.8)
     glow_f = B["glow"]["furnace"]
     st["cap"] = ("Door shut. The T6: solution treatment at 530 C (shown here 1 h, an assumption; DAL's schedule is "
                  "still to be set), then a water quench, then ageing at 160 C.")
     status(sc, Furnace="530 C, solution treatment", Arm="waiting with the tongs")
     step(1.4, fur.move({"door": (1.0, 0.0)}))
     step(4.0, RB.both(fade(glow_f, 0.0, 1.0), clock("Furnace at 530 C", hm, 0, 60)), hold=0.3)
-    st["cap"] = "The quench: door open, the tongs draw the rack out and set it on the lift basket over the water."
+    st["cap"] = ("The quench: door open, the tongs draw the rack out to the left, the door shuts, and the rack crosses "
+                 "in front of it to the lift basket over the water.")
     status(sc, Furnace="530 C, door open", Arm="quench")
     step(1.4, RB.both(fur.move({"door": (0.0, 1.0)}), clock("Furnace at 530 C", lambda t: "1 h 00 min", 0, 1)),
          cam=CAM_F)
-    go(Tw=tcp_for_bite(f_out + (0, 0, 2.0), f_dir), secs=1.2)
-    lin(tcp_for_bite(f_in - f_dir * 70.0, f_dir), 0.5)
-    lin(tcp_for_bite(f_in, f_dir), 0.5)
+    lin(TL(f_out), 0.7)
+    lin(TL(f_in - f_dir * 70.0), 0.5)
+    lin(TL(f_in), 0.5)
     rb.reparent("rack", "tongs")
-    lin(tcp_for_bite(f_in + (0, 0, 4.0), f_dir), 0.3)
-    lin(tcp_for_bite(f_out + (0, 0, 4.0), f_dir), 1.0)
     sc.clock = ("Quench delay", "0 s")
-    q_plate = rig_w(qt, (0.0, -5.0, RT.QUENCH["plate_z"]))
-    q_fin = q_plate + rig_dir(qt, fin_off)          # the rack's floor on the plate's centre: its fin's grasp point
-    q_dir = rig_dir(qt, (0, 1, 0))
-    step(1.2, RB.both(fur.move({"door": (1.0, 0.0)}), clock("Quench delay", lambda t: f"{t:.0f} s", 0, 3)))
-    go(Tw=tcp_for_bite(q_fin + (0, 0, 40.0), q_dir), secs=1.4,
-       extra=clock("Quench delay", lambda t: f"{t:.0f} s", 3, 6))
-    lin(tcp_for_bite(q_fin, q_dir), 0.4)
+    lin(TL(f_in + (0, 0, 4.0)), 0.3)
+    lin(TL(f_out + (0, 0, 4.0)), 0.9, extra=clock("Quench delay", lambda t: f"{t:.0f} s", 0, 1))
+    lin(TL(f_left + (0, 0, 4.0)), 0.7, extra=clock("Quench delay", lambda t: f"{t:.0f} s", 1, 2))
+    step(1.2, RB.both(fur.move({"door": (1.0, 0.0)}), clock("Quench delay", lambda t: f"{t:.0f} s", 2, 3)))
+    lin(TL(q_front), 1.4, extra=clock("Quench delay", lambda t: f"{t:.0f} s", 3, 5))
+    lin(TL(q_fin + (0, 0, 40.0)), 0.8, extra=clock("Quench delay", lambda t: f"{t:.0f} s", 5, 6))
+    lin(TL(q_fin), 0.4)
     rb.reparent("rack", f"{qt.prefix}lift")
-    lin(tcp_for_bite(q_fin - q_dir * 60.0, q_dir), 0.5)
-    st["cap"] = ("The basket drops the rack into the water 7 s after the door opened (well inside the ~15 s an "
-                 "aluminium quench allows; the figure is an assumption to check), then lifts it out.")
+    lin(TL(q_fin - q_dir * 60.0), 0.5)
+    st["cap"] = ("The basket drops the rack into the water about 7 s after the door opened (an aluminium alloy wants "
+                 "its quench within seconds; the figure here is ours, to check), then lifts it out.")
     status(sc, Rack="quenched in water")
-    step(1.0, qt.move({"lift": (0.0, 1.0)}), hold=0.6)
+    step(1.0, RB.both(qt.move({"lift": (0.0, 1.0)}), clock("Quench delay", lambda t: f"{t:.0f} s", 6, 7)),
+         hold=0.6)
     sc.clock = None
     step(1.0, qt.move({"lift": (1.0, 0.0)}), hold=0.2)
-    st["cap"] = "Back into the furnace, now at 160 C, for the ageing."
+    st["cap"] = "Back into the furnace, now at 160 C, for the ageing: by the left again, as the door opens."
     status(sc, Furnace="160 C, ageing", Arm="loading the rack")
-    lin(tcp_for_bite(q_fin, q_dir), 0.5)
+    lin(TL(q_fin), 0.5)
     rb.reparent("rack", "tongs")
-    lin(tcp_for_bite(q_fin + (0, 0, 40.0), q_dir), 0.5)
+    lin(TL(q_fin + (0, 0, 40.0)), 0.5)
+    lin(TL(q_front), 0.8)
+    lin(TL(f_left + (0, 0, 4.0)), 1.4)
     step(1.2, fur.move({"door": (0.0, 1.0)}))
-    go(Tw=tcp_for_bite(f_out + (0, 0, 4.0), f_dir), secs=1.4)
-    lin(tcp_for_bite(f_in + (0, 0, 4.0), f_dir), 1.0)
-    lin(tcp_for_bite(f_in, f_dir), 0.3)
+    lin(TL(f_out + (0, 0, 4.0)), 0.8)
+    lin(TL(f_in + (0, 0, 4.0)), 1.0)
+    lin(TL(f_in), 0.3)
     rb.reparent("rack", f"{fur.prefix}body")
-    lin(tcp_for_bite(f_out, f_dir), 1.0)
-    step(1.2, fur.move({"door": (1.0, 0.0)}))
-    go(Tw=wait, secs=1.2)
+    lin(TL(f_in - f_dir * 70.0), 0.5)
+    lin(TL(f_out), 0.8)
+    lin(TL(f_left), 0.8)
     st["cap"] = "Ageing at 160 C, then the furnace cools with its door shut."
     status(sc, Furnace="160 C, ageing", Arm="waiting with the tongs")
     step(1.2, fur.move({"door": (1.0, 0.0)}))
@@ -1456,17 +1464,18 @@ def movie():
     st["cap"] = "Cool: the rack comes out and goes back in its pocket on the MiR, and the tongs on their rest."
     status(sc, Furnace="cool, door open", Arm="unloading the rack", Rack="T6")
     step(1.4, fur.move({"door": (0.0, 1.0)}))
-    go(Tw=tcp_for_bite(f_out, f_dir), secs=1.4)
-    lin(tcp_for_bite(f_in - f_dir * 70.0, f_dir), 0.6)
-    lin(tcp_for_bite(f_in, f_dir), 0.6)
+    lin(TL(f_out), 0.8)
+    lin(TL(f_in - f_dir * 70.0), 0.6)
+    lin(TL(f_in), 0.6)
     rb.reparent("rack", "tongs")
-    lin(tcp_for_bite(f_in + (0, 0, 4.0), f_dir), 0.3)
-    lin(tcp_for_bite(f_out + (0, 0, 4.0), f_dir), 1.2)
+    lin(TL(f_in + (0, 0, 4.0)), 0.3)
+    lin(TL(f_out + (0, 0, 4.0)), 1.0)
+    lin(TL(f_left + (0, 0, 4.0)), 0.8)
     seat_r = amr.world(M.rack_seat(CAB_TOP) + fin_off)
-    go(Tw=tcp_for_bite(seat_r + (0, 0, 60.0), f_dir), secs=2.0, extra=fur.move({"door": (1.0, 0.0)}))
-    lin(tcp_for_bite(seat_r, f_dir), 0.6)
+    go(Tw=TL(seat_r + (0, 0, 60.0)), secs=2.0, extra=fur.move({"door": (1.0, 0.0)}))
+    lin(TL(seat_r), 0.6)
     rb.reparent("rack", amr.cab)
-    lin(tcp_for_bite(seat_r + (0, -60.0, 30.0), f_dir), 0.6)
+    lin(TL(seat_r + (0, -60.0, 30.0)), 0.6)
     go(Tw=A.down(tong_g + (0, 0, 120), spin=90.0), secs=1.6)
     lin(A.down(tong_g, spin=90.0), 0.6)
     grip(0.0)
@@ -1571,7 +1580,8 @@ def movie():
             # 14 mm into the half from its broken end (the bar's centre, y = 0 in its own frame), on its axis
             p_h = held_point(sc, grp, (0.0, 14.0 if grp.endswith("_b") else -14.0, 3.0))
             st["cap"] = (("The arm takes each half by its broken end as its grip lets go: the room-temperature halves "
-                          "go back in the rack, for fractography in chapter 7.") if not hot else
+                          "lie flat in a cradle on the MiR, their fracture surfaces touching nothing, for fractography "
+                          "in chapter 7.") if not hot else
                          "The hot test's halves go down the scrap chute right of the grips, as the AT6 drops them.")
             go(Tw=back(lvl(p_h, ins_in), 240.0), secs=1.4, grip=0.0)
             lin(lvl(p_h, ins_in), 0.7)
@@ -1590,13 +1600,14 @@ def movie():
                 for nm in sc.members(grp):
                     sc.alpha[nm] = 0.0
             else:
-                slot_k = {TEST: 0, HOT: 1}.get(k, 0)
-                slot = rack_w((RT.SPEC_X[slot_k], 0.0, RT.TRAY["floor"] + 40.0))
-                go(Tw=up_(lvl(slot, (0.0, 1.0)), 60.0), secs=1.6)
-                lin(lvl(slot + (0, 0, 2.0), (0.0, 1.0)), 0.6)
+                # into the halves cradle on the MiR, lying flat: turned level -> pointing down about the fingers'
+                # axis, so the half comes down horizontal, along the channel
+                ch = amr.world(M.cradle_seat(CAB_TOP, 0 if where == "upper" else 1)) + (0, 0, M.E8_SUB["T"] / 2 + 0.5)
+                go(Tw=up_(A.down(ch, spin=0.0), 70.0), secs=1.8)
+                lin(A.down(ch, spin=0.0), 0.6)
                 grip(0.0, 0.3)
-                rb.release("rack")
-                lin(up_(lvl(slot, (0.0, 1.0)), 60.0), 0.5)
+                rb.release(amr.cab)
+                lin(up_(A.down(ch, spin=0.0), 70.0), 0.5)
         park(1.2, extra=ins.move(door_shut))
 
     test_one(TEST, hot=False)
