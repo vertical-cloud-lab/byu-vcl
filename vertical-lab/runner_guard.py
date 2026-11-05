@@ -18,14 +18,17 @@ rendering, auditing and encoding at the same moment. This caps the heavy jobs an
 
 What takes a slot: anything that builds a 3-D scene (a render, a PREVIEW=1 still, an ARM_AUDIT=1 pass, a tour clip,
 interference.py) and the long ffmpeg joins, one slot each. A whole-lab scene (setup_lab.py, animate.py workflow,
-timelapse.py, a chapter on the whole floor) holds about 5 GB, so give it --mem 6000. (Weight 2 was the first rule
+timelapse.py, a chapter on the whole floor) peaks near 6 GB (a render of animate.py workflow reached 5.7 GB), so
+give it --mem 6500. (Weight 2 was the first rule
 in continuation 2; it left a slot and three cores idle behind a single-threaded audit, so it was dropped at 16:45.)
 Light work (matplotlib panels, JSON, notes) needs no slot.
 
 * Slots are flock()ed files under /tmp/vlab_slots, so a slot frees itself when its process dies, however it dies.
 * Waiters queue on a turnstile lock, so a weight-2 job isn't starved by a stream of weight-1 jobs.
-* A job also waits for MemAvailable: --mem MB, or by default 3.5 GB a slot (VLAB_MEM_MB_PER_WEIGHT, default 3000,
-  plus 500).
+* A job also waits for memory: MemAvailable, less what the running jobs may still grow into (each one's declared
+  --mem less what it already holds, plus 500 MB), must cover its own --mem (default 3 GB, VLAB_MEM_MB_PER_WEIGHT).
+  Renders grow as they go, so checking MemAvailable alone at the start isn't enough: at 17:09 on 2026-11-05 two
+  whole-lab jobs and a preview, admitted one by one, grew to 15 GB together and the watchdog had to stop one.
 * The job runs under ``nice -n 5`` with LP_NUM_THREADS=2 (llvmpipe), OMP_NUM_THREADS=2 and FFMPEG_THREADS=2 unless
   they are already set, and with VLAB_SLOT=<label> in its environment, which is how the watchdog finds it.
 * The watchdog sends SIGTERM to the slotted process with the largest resident memory when MemAvailable falls below
@@ -34,6 +37,7 @@ Light work (matplotlib panels, JSON, notes) needs no slot.
 from __future__ import annotations
 
 import fcntl
+import json
 import os
 import signal
 import subprocess
@@ -67,6 +71,56 @@ def log(path: Path, msg: str):
         f.write(f"{now()} {msg}\n")
 
 
+def held_infos() -> list[dict]:
+    """The info of every slot that is held right now (one entry per holder)."""
+    out, seen = [], set()
+    for i in range(N_SLOTS):
+        lock, info = SLOT_DIR / f"slot{i}.lock", SLOT_DIR / f"slot{i}.info"
+        if not lock.exists():
+            continue
+        with open(lock, "a+") as f:
+            try:
+                fcntl.flock(f, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                fcntl.flock(f, fcntl.LOCK_UN)
+                continue
+            except BlockingIOError:
+                pass
+        try:
+            d = json.loads(info.read_text())
+        except (OSError, ValueError):
+            d = dict(pid=-1, mem=MEM_PER_WEIGHT)
+        if d.get("pid") not in seen:
+            seen.add(d.get("pid"))
+            out.append(d)
+    return out
+
+
+def rss_by_holder() -> dict[int, int]:
+    """MB resident in the process tree of each slot holder (processes with VLAB_SLOT_PID=<holder>)."""
+    out: dict[int, int] = {}
+    for d in Path("/proc").iterdir():
+        if not d.name.isdigit():
+            continue
+        try:
+            env = (d / "environ").read_bytes().split(b"\0")
+            hp = next((int(e[14:]) for e in env if e.startswith(b"VLAB_SLOT_PID=")), None)
+            if hp is None:
+                continue
+            for line in (d / "status").read_text().splitlines():
+                if line.startswith("VmRSS:"):
+                    out[hp] = out.get(hp, 0) + int(line.split()[1]) // 1024
+        except (OSError, ValueError):
+            continue
+    return out
+
+
+def reserved() -> int:
+    """MB the running jobs may still grow into: each one's declared peak less what it holds already, plus a margin."""
+    rss = rss_by_holder()
+    return sum(max(0, int(d.get("mem", MEM_PER_WEIGHT)) - rss.get(int(d.get("pid", -1)), 0))
+               for d in held_infos()) + 500
+
+
 def holders() -> list[str]:
     out = []
     for i in range(N_SLOTS):
@@ -79,7 +133,11 @@ def holders() -> list[str]:
                 fcntl.flock(f, fcntl.LOCK_EX | fcntl.LOCK_NB)
                 fcntl.flock(f, fcntl.LOCK_UN)
             except BlockingIOError:
-                out.append(f"slot{i}: " + (info.read_text().strip() if info.exists() else "?"))
+                try:
+                    d = json.loads(info.read_text())
+                    out.append(f"slot{i}: {d['label']} (pid {d['pid']}, {d['mem']} MB, {d['t']})")
+                except (OSError, ValueError, KeyError):
+                    out.append(f"slot{i}: " + (info.read_text().strip() if info.exists() else "?"))
     return out
 
 
@@ -103,7 +161,7 @@ def slot(argv: list[str]) -> int:
     weight = max(1, min(weight, N_SLOTS))
     label = label or " ".join(Path(c).name for c in cmd[:4])[:80]
     SLOT_DIR.mkdir(parents=True, exist_ok=True)
-    need = mem if mem is not None else MEM_PER_WEIGHT * weight + 500
+    need = mem if mem is not None else MEM_PER_WEIGHT * weight
     t0 = time.time()
     held = []
     with open(SLOT_DIR / "turnstile.lock", "a+") as turn:
@@ -114,13 +172,14 @@ def slot(argv: list[str]) -> int:
                 fcntl.flock(f, fcntl.LOCK_UN)
                 f.close()
             held = []
-            if meminfo().get("MemAvailable", 0) >= need:
+            if meminfo().get("MemAvailable", 0) - reserved() >= need:
                 for i in range(N_SLOTS):
                     f = open(SLOT_DIR / f"slot{i}.lock", "a+")
                     try:
                         fcntl.flock(f, fcntl.LOCK_EX | fcntl.LOCK_NB)
                         held.append(f)
-                        (SLOT_DIR / f"slot{i}.info").write_text(f"{label} (pid {os.getpid()}, w{weight}, {now()})\n")
+                        (SLOT_DIR / f"slot{i}.info").write_text(json.dumps(dict(
+                            label=label, pid=os.getpid(), weight=weight, mem=need, t=now())) + "\n")
                         if len(held) == weight:
                             break
                     except BlockingIOError:
@@ -139,7 +198,7 @@ def slot(argv: list[str]) -> int:
         fcntl.flock(turn, fcntl.LOCK_UN)
     waited = time.time() - t0
     log(SLOT_LOG, f"START w{weight} after {waited:.0f}s wait: {label}")
-    env = dict(os.environ, VLAB_SLOT=label)
+    env = dict(os.environ, VLAB_SLOT=label, VLAB_SLOT_PID=str(os.getpid()))
     for k in ("LP_NUM_THREADS", "OMP_NUM_THREADS", "FFMPEG_THREADS"):
         env.setdefault(k, "2")
     t1 = time.time()

@@ -166,3 +166,10 @@ Both earlier round-8 runs lost their runner to a shutdown signal (exit 143), wit
 instead of `--weight 2`: weight 2 had a single-threaded whole-lab audit holding two slots for 25 minutes while three
 cores and a slot sat idle behind it. Still at most 3 scene jobs at once; the memory gate and the watchdog keep the
 whole-lab jobs (about 5 GB each) from running the runner out of memory.
+
+**17:12 change:** at 17:09 two whole-lab jobs (the 9:09 clip's render, 5.7 GB, and the set-up's preview, 4.8 GB), a
+chapter-6 preview (3.4 GB) and a GIF assembled in Python outside any slot took the runner to 868 MB free, and the
+watchdog stopped the 9:09 render, as designed. The gate now reserves memory: a job starts only if the free memory,
+less what the running jobs may still grow into (each one's `--mem` less what it already holds), covers its own `--mem`.
+Declare `--mem 6500` for a whole-lab scene, leave the 3000 default for the rest, and build GIFs and other
+frame-hungry post-processing inside a slot too (or stream the frames from disk through ffmpeg, not a Python list).
