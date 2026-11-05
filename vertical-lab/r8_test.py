@@ -20,20 +20,23 @@ import cadquery as cq
 
 import instruments as I
 from common import box, cyl, rbox  # noqa: F401  (lab_models helpers, on the path via instruments)
-from instruments import Joint, _piece, _xcyl, _ycyl
+from instruments import Joint, _piece, _xcyl, _ycyl  # noqa: F401
 
 import alloy_models as M
 
-# ------------------------------------------------------------------------------------------------ the specimen tray
-# A stainless tray for the four cut specimens, flat, long axis along y, 30 mm apart; a fin at the front (-y) for the
-# gripper (12 mm thick, like the plate's lug, so GRIP_LUG closes on it). Our design: a heat-treatment basket of this
-# size is an assumption, not a product. Frame: the tray's floor centre, z up.
-TRAY = dict(W=150.0, D=124.0, H=14.0, floor=3.0, fin_t=12.0, fin_l=36.0, fin_h=64.0, pitch=30.0)
+# ------------------------------------------------------------------------------------------------ the specimen rack
+# A stainless rack for the four cut specimens, standing on end, 30 mm apart along x, each in a slot 25 mm deep: the arm
+# handles every specimen level, by its upper grip end (chapter 5), from the wire EDM's comb to the Instron's grips, so
+# they never have to be laid flat and picked up again. A fin at the front (-y) is for the gripper when the rack is cold
+# and for the tongs when it is hot (12 mm thick, like the plate's lug, so GRIP_LUG closes on it). Our design: a
+# heat-treatment rack of this size is an assumption, not a product. Frame: the rack's floor centre, z up.
+TRAY = dict(W=150.0, D=40.0, H=28.0, floor=3.0, slot_w=11.0, slot_d=7.5, fin_t=12.0, fin_l=36.0, fin_h=64.0,
+            pitch=30.0)
 SPEC_X = tuple(TRAY["pitch"] * (i - 1.5) for i in range(4))     # -45, -15, 15, 45
 
 
 def tray_fin_grasp() -> tuple:
-    """Where the gripper takes the fin (tray frame): its middle, 14 mm under its top."""
+    """Where the gripper takes the fin (rack frame): its middle, 14 mm under its top."""
     t = TRAY
     return (0.0, -t["D"] / 2 - t["fin_l"] / 2, t["fin_h"] - 14.0)
 
@@ -44,17 +47,23 @@ def dogbone(x=0.0, y=0.0, z=0.0) -> cq.Workplane:
     return cq.Workplane("XY").polyline(pts).close().extrude(M.E8_SUB["T"]).translate((x, y, z))
 
 
+def dogbone_up(x=0.0, y=0.0, z=0.0) -> cq.Workplane:
+    """The same specimen standing on end in the rack: long axis along z, its 6 mm thickness along y, its lower end at
+    z, centred on (x, y)."""
+    e = M.E8_SUB
+    return (dogbone(0.0, 0.0, -e["T"] / 2).rotate((0, 0, 0), (1, 0, 0), 90)
+            .translate((x, y, z + e["L"] / 2)))
+
+
 def spec_tray() -> cq.Workplane:
     t = TRAY
     w, d, h = t["W"], t["D"], t["H"]
-    tray = box(-w / 2, -d / 2, 0, w / 2, d / 2, h).cut(box(-w / 2 + 3, -d / 2 + 3, t["floor"], w / 2 - 3, d / 2 - 3,
-                                                           h + 1))
-    # low ribs between the specimens, so they can't slide into each other
-    for i in range(5):
-        x = t["pitch"] * (i - 2)
-        tray = tray.union(box(x - 1.5, -d / 2 + 3, t["floor"], x + 1.5, d / 2 - 3, t["floor"] + 5))
+    rack = box(-w / 2, -d / 2, 0, w / 2, d / 2, h).edges("|Z").fillet(3)
+    for x in SPEC_X:
+        rack = rack.cut(box(x - t["slot_w"] / 2, -t["slot_d"] / 2, t["floor"], x + t["slot_w"] / 2, t["slot_d"] / 2,
+                            h + 1))
     fin = box(-t["fin_t"] / 2, -d / 2 - t["fin_l"], 0, t["fin_t"] / 2, -d / 2, t["fin_h"])
-    return tray.union(fin)
+    return rack.union(fin)
 
 
 # ===================================================================================================== furnace
@@ -72,21 +81,23 @@ def furnace() -> I.Instrument:
     load.parts.clear()
     load.add("specimen tray", spec_tray(), "stainless")
     for i, x in enumerate(SPEC_X):
-        load.add(f"specimen {i + 1}", dogbone(x, 0.0, TRAY["floor"]), "sample")
+        load.add(f"specimen {i + 1}", dogbone_up(x, 0.0, TRAY["floor"]), "sample")
     glow = _piece(inst, "glow")
     glow.add("hot chamber", box(mx - cw / 2 + 2, y1 + cd - 6, cz + 2, mx + cw / 2 - 2, y1 + cd - 3, cz + chh - 2)
              .union(box(mx - cw / 2 + 2, y1 + 22, cz + chh - 5, mx + cw / 2 - 2, y1 + cd - 3, cz + chh - 2)), "glow")
-    # the tray in the chamber: its fin's front 70 mm behind the mouth, past the door's 60 mm plug
+    # the rack in the chamber: its fin's front 70 mm behind the mouth, past the door's 60 mm plug; the specimens'
+    # tops 47 mm under the chamber's roof (150 mm inside)
     chamber_c = (mx, y1 + 70 + TRAY["fin_l"] + TRAY["D"] / 2, cz)
     inst.joints["load"] = Joint("path", path=((-330, yf - 330, cz + 80), (mx, yf - 60, cz + 10), chamber_c))
     inst.joints["glow"] = Joint("fade")
     inst.actions = [
         ("The door swings open on its two right-hand hinges; its insulating plug comes out of the chamber's mouth.",
          1.6, {"door": (0.0, 1.0), "load": (0.0, 0.0), "glow": (0.0, 0.0)}),
-        ("A tray of the printed tensile specimens goes in: four ASTM E8 subsize dogbones, 100 mm long, cut off their "
-         "build plate.", 1.8, {"load": (0.0, 1.0)}),
-        ("Door shut. T6, as EOS gives it for AlSi10Mg: 30 min at 530 C, a water quench, then 6 h at 165 C. The "
-         "circulation fan holds +-5 C, so one furnace does both.", 3.0,
+        ("A rack of the printed tensile specimens goes in: four ASTM E8 subsize dogbones, 100 mm long, cut off their "
+         "build plate, standing on end.", 1.8, {"load": (0.0, 1.0)}),
+        ("Door shut. A T6: solution treatment at about 530 C, a water quench in the tank beside it, then ageing at "
+         "about 160 C (the schedule is an assumption until DAL sets one). The circulation fan holds +-5 C, so one "
+         "furnace does both.", 3.0,
          {"door": (1.0, 0.0), "fan": (0.0, 1.0), "~door": (0.0, 0.7), "glow": (0.0, 1.0)}),
         ("", 0.8, {"~door": (0.7, 0.0), "glow": (1.0, 0.0)}),
     ]
@@ -225,19 +236,36 @@ def instron_floor() -> I.Instrument:
 
 
 # ===================================================================================================== quench tank
-QUENCH = dict(W=240.0, D=200.0, H=210.0, water=170.0)
+# A water tank with a lift basket, so the arm never has to reach into the water: the rack is set on the basket's plate,
+# which stands just over the rim, and the basket drops it 150 mm into the water (a pneumatic cylinder behind the tank),
+# then lifts it out again. A drop quench of this kind is our design; the sizes are assumed.
+QUENCH = dict(W=240.0, D=200.0, H=210.0, water=170.0, plate_z=216.0, drop=150.0)
 
 
 def quench_tank() -> I.Instrument:
     q = QUENCH
-    inst = I.Instrument("quench_tank", "Quench tank", "water tank, our design", (q["W"], q["D"], q["H"]),
-                        "a stainless tank of water beside the furnace, for the T6's quench; size assumed")
+    inst = I.Instrument("quench_tank", "Quench tank", "water tank with a lift basket, our design",
+                        (q["W"], q["D"], q["H"]),
+                        "a stainless tank of water beside the furnace, for the T6's quench, with a basket that drops "
+                        "the rack in; size assumed")
     body = _piece(inst, "body")
     w, d, h = q["W"], q["D"], q["H"]
     body.add("tank", box(-w / 2, -d / 2, 0, w / 2, d / 2, h).cut(box(-w / 2 + 3, -d / 2 + 3, 3, w / 2 - 3, d / 2 - 3,
                                                                     h + 1)), "stainless")
     body.add("water", box(-w / 2 + 3.5, -d / 2 + 3.5, 3, w / 2 - 3.5, d / 2 - 3.5, q["water"]), "window")
-    inst.actions = [("A tank of water beside the furnace: the quench of the T6.", 2.0, {})]
+    body.add("lift cylinder", cyl(32, h + 90, x=0.0, y=d / 2 + 22, z=0), "aluminium")
+    lift = _piece(inst, "lift")
+    pz = q["plate_z"]
+    plate = box(-95, -80, pz - 6, 95, 70, pz)
+    for i in range(-3, 4):                                  # drain slots, so the water runs through
+        plate = plate.cut(box(i * 24 - 4, -70, pz - 7, i * 24 + 4, 60, pz + 1))
+    lift.add("basket plate", plate, "stainless")
+    lift.add("basket arm", box(-14, 70, pz - 6, 14, d / 2 + 22, pz + 6), "stainless")
+    lift.add("basket rod", cyl(14, 120, x=0.0, y=d / 2 + 22, z=pz - 10), "chrome")
+    inst.joints = {"lift": Joint("slide", vec=(0, 0, -q["drop"]))}
+    inst.actions = [("A tank of water beside the furnace for the T6's quench, with a lift basket: the rack is set on "
+                     "its plate at the rim and dropped into the water.", 2.0, {"lift": (0.0, 1.0)}),
+                    ("", 1.4, {"lift": (1.0, 0.0)})]
     return inst
 
 

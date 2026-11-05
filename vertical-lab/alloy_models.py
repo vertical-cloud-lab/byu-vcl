@@ -409,3 +409,212 @@ def rinse_cup() -> dict:
     return {"stand": (stand, (0.24, 0.25, 0.27), 0.2, 1.0), "cup": (cup, (0.86, 0.90, 0.94), 0.5, 0.45),
             "liquid": (liquid, (0.55, 0.72, 0.92), 0.3, 0.55), "air knife": (ring, (0.62, 0.63, 0.66), 0.5, 1.0),
             "air line": (line_, (0.20, 0.45, 0.80), 0.3, 1.0)}
+
+
+# =========================================================================================== round 8 (chapter 5)
+# Sterling (PR #318, 2026-11-05): "The bars dropping onto the catch shelf.. it totally looks like they'd just bounce and
+# fall straight off ... If there's going to be a catch shelf, it should actually be capable of catching it in terms of
+# distance and a taller lip and such." The plate stands on edge, so each cut bar stands on end. Each gets a slot of its
+# own in a comb under it, whose floor is 0.5 mm under the bar's lower end before the cut: the bar settles 0.5 mm onto a
+# urethane pad instead of falling 14 mm. The slot is walled in front (75 mm), on both sides (the comb's teeth) and, behind,
+# by the plate's own face. An ejector pin in each slot's floor lifts its bar 65 mm, so the gripper can take it by its
+# upper end clear of the other three and of the plate's rim (round 6's suggestion), its lower 10 mm still in the slot. Our design, sizes
+# assumed. Frame: the EDM's, like edm_fixture().
+COMB = dict(gap=0.5, wall_h=75.0, wall_t=5.0, slot_w=13.0, slot_d=7.0, floor_t=8.0, pad_t=2.0, lift=65.0, pin_r=2.5,
+            arm_dx=112.0, back_gap=1.4, pin_y=-4.0)
+
+
+def comb_floor_z(pc) -> float:
+    """The top of the slots' pads: 0.5 mm under the bars' lower ends (the plate's centre, less half a bar)."""
+    return float(pc[2]) - E8_SUB["L"] / 2 - COMB["gap"]
+
+
+def catch_comb(pc, bar_xs) -> dict:
+    """{name: (mesh, colour)}: the comb for bars at EDM x = bar_xs, the plate's bar face centre at pc. Its teeth and
+    floor stop COMB['back_gap'] in front of the plate's face, clear of the wire, which runs 0.15 mm off it."""
+    c = COMB
+    x, yf, _ = pc
+    yb = yf + PLATE["t"]
+    z_pad = comb_floor_z(pc)
+    z0 = z_pad - c["pad_t"] - c["floor_t"]
+    y_back = yf - c["back_gap"]                         # the comb's back, 1.4 mm in front of the plate's face
+    y_front = yf - E8_SUB["T"] - c["slot_d"] + E8_SUB["T"]   # the slot's front face (bars are 6 mm, slot 7 mm)
+    y_front = min(y_front, yf - c["slot_d"])
+    xs = sorted(float(b) for b in bar_xs)
+    xa, xb = xs[0] - c["slot_w"] / 2 - 12.0, xs[-1] + c["slot_w"] / 2 + 12.0
+    parts = [pv.Box(bounds=(xa, xb, y_front - c["wall_t"], y_back, z0, z_pad - c["pad_t"]))]            # the floor
+    wall = pv.Box(bounds=(xa, xb, y_front - c["wall_t"], y_front, z_pad - c["pad_t"], z_pad + c["wall_h"])).triangulate()
+    edges = [xa] + [xs[0] - c["slot_w"] / 2]
+    for i in range(len(xs) - 1):
+        edges += [xs[i] + c["slot_w"] / 2, xs[i + 1] - c["slot_w"] / 2]
+    edges += [xs[-1] + c["slot_w"] / 2, xb]
+    for a, b in zip(edges[0::2], edges[1::2]):                                                        # the teeth
+        parts.append(pv.Box(bounds=(a, b, y_front, y_back, z_pad - c["pad_t"], z_pad + c["wall_h"])))
+    # two arms round the plate's sides to the angle plate behind it (outside the wire's travel)
+    for xx in (x - c["arm_dx"], x + c["arm_dx"]):
+        lo, hi = min(xx, xa - 4 if xx < x else xb), max(xx, xa if xx < x else xb + 4)
+        parts.append(pv.Box(bounds=(lo - 7, hi + 7, y_front - c["wall_t"], yf - 2.0, z0, z0 + 12)))
+        parts.append(pv.Box(bounds=(xx - 7, xx + 7, yf - 2.0, yb + 30, z0, z0 + 12)))
+    body = parts[0]
+    for m in parts[1:]:
+        body = body.merge(m.triangulate())
+    pads = None
+    for b in xs:
+        pad = pv.Box(bounds=(b - c["slot_w"] / 2 + 0.5, b + c["slot_w"] / 2 - 0.5, y_front + 0.3, y_back - 0.3,
+                             z_pad - c["pad_t"], z_pad)).triangulate()
+        pads = pad if pads is None else pads.merge(pad)
+    return {"catch comb": (body.triangulate(), (0.30, 0.31, 0.33)), "comb wall": (wall, (0.30, 0.31, 0.33)),
+            "comb pads": (pads, (0.86, 0.55, 0.18))}
+
+
+def ejector_pin(pc, bx) -> pv.PolyData:
+    """One slot's ejector pin and its cylinder under the comb, EDM frame, at rest (its tip flush with the pad)."""
+    c = COMB
+    z_pad = comb_floor_z(pc)
+    y = pc[1] + c["pin_y"]
+    pin = pv.Cylinder(center=(bx, y, z_pad - 14.0), direction=(0, 0, 1), radius=c["pin_r"], height=28.0,
+                      resolution=16).triangulate()
+    return pin
+
+
+def ejector_body(pc, bar_xs) -> pv.PolyData:
+    """The pins' cylinders, one block under the comb's floor (they don't move)."""
+    c = COMB
+    z0 = comb_floor_z(pc) - c["pad_t"] - c["floor_t"]
+    xs = sorted(float(b) for b in bar_xs)
+    y = pc[1] + c["pin_y"]
+    return pv.Box(bounds=(xs[0] - 8, xs[-1] + 8, y - 7, pc[1] - 2.0, z0 - 34, z0)).triangulate()
+
+
+# ------------------------------------------------------------------------------------------------ MiR250, low
+# PR #318, round 7: "There's no insertion gap for the intermediary storage on the MiR250. They would just fall off.
+# Also, it's positioned rather high". Round 4's plate carrier and bar holder stood on posts 120 and 230 mm tall; these
+# are low pockets on the cabinet's top plate instead, each with a 3 mm lead-in: the plate in a 30 mm block bored to
+# take it and its stud, the specimen rack in a frame, and a rest for the tongs. MiR frame (z from the cabinet's top).
+POCKETS = dict(plate=(255.0, -110.0), rack=(-255.0, -120.0), tongs=(-200.0, 250.0), block_h=40.0, rack_h=20.0,
+               pocket=12.0)
+
+
+def mir_pockets(top: float) -> dict:
+    """{name: (mesh, colour)} on the cabinet top `top`: the plate block, the rack frame, the tongs' rest."""
+    import charge
+    px, py = POCKETS["plate"]
+    hb, dp = POCKETS["block_h"], POCKETS["pocket"]
+    p = PLATE
+    blk = charge.lathe([(0, top), (p["r"] + 14, top), (p["r"] + 14, top + hb), (p["r"] + 3.5, top + hb),
+                        (p["r"] + 0.5, top + hb - 3), (p["r"] + 0.5, top + hb - dp), (p["stud_r"] + 1.0, top + hb - dp),
+                        (p["stud_r"] + 1.0, top + hb - dp - p["stud_h"] - 2), (0, top + hb - dp - p["stud_h"] - 2)],
+                       res=72)
+    blk = blk.translate((px, py, 0), inplace=False)
+    rx, ry = POCKETS["rack"]
+    import r8_test as RT
+    t = RT.TRAY
+    fw, fd, fh = t["W"] + 2.0, t["D"] + 2.0, POCKETS["rack_h"]
+    frame = pv.Box(bounds=(rx - fw / 2 - 12, rx + fw / 2 + 12, ry - fd / 2 - 12, ry + fd / 2 + 12, top, top + 4))
+    walls = [pv.Box(bounds=(rx - fw / 2 - 12, rx + fw / 2 + 12, ry + fd / 2, ry + fd / 2 + 12, top, top + fh)),
+             pv.Box(bounds=(rx - fw / 2 - 12, rx - fw / 2, ry - fd / 2 - 12, ry + fd / 2 + 12, top, top + fh)),
+             pv.Box(bounds=(rx + fw / 2, rx + fw / 2 + 12, ry - fd / 2 - 12, ry + fd / 2 + 12, top, top + fh)),
+             # the front wall stops either side of the fin
+             pv.Box(bounds=(rx - fw / 2 - 12, rx - t["fin_t"] / 2 - 4, ry - fd / 2 - 12, ry - fd / 2, top, top + fh)),
+             pv.Box(bounds=(rx + t["fin_t"] / 2 + 4, rx + fw / 2 + 12, ry - fd / 2 - 12, ry - fd / 2, top, top + fh))]
+    rack = frame.triangulate()
+    for w_ in walls:
+        rack = rack.merge(w_.triangulate())
+    tx, ty = POCKETS["tongs"]
+    rest = None
+    for dx in (-110.0, 110.0):                    # two V-blocks under the shaft
+        v = pv.Box(bounds=(tx + dx - 14, tx + dx + 14, ty - 20, ty + 20, top, top + 36)).triangulate()
+        rest = v if rest is None else rest.merge(v)
+    return {"plate block": (blk, (0.30, 0.32, 0.36)), "rack pocket": (rack, (0.94, 0.94, 0.92)),
+            "tongs rest": (rest, (0.30, 0.32, 0.36))}
+
+
+def plate_seat(top: float) -> np.ndarray:
+    """The plate's top face centre in its block (3 mm proud of it), MiR frame."""
+    px, py = POCKETS["plate"]
+    return np.array([px, py, top + POCKETS["block_h"] - POCKETS["pocket"] + PLATE["t"]])
+
+
+def rack_seat(top: float) -> np.ndarray:
+    """The rack's floor centre in its pocket, MiR frame."""
+    rx, ry = POCKETS["rack"]
+    return np.array([rx, ry, top + 4.0])
+
+
+# ------------------------------------------------------------------------------------------------ the tongs
+# For the hot rack (the T6's solution treatment ends at 530 C), the gripper holds a pair of tongs rather than the rack's
+# fin: 300 mm of stainless shaft between the 2F-85 and the jaws, so the gripper stays out of the furnace's mouth. The
+# gripper squeezes the handle's two plates, which closes the jaws on the fin through the shaft (a linkage of our design,
+# assumed); the jaws are drawn fixed. Frame: the handle's grasp point at the origin, the shaft along +y.
+TONGS = dict(L=300.0, shaft_r=7.0, handle=(12.0, 50.0, 40.0), jaw=(30.0, 40.0, 50.0), jaw_gap=12.4)
+
+
+def tongs() -> dict:
+    t = TONGS
+    hx, hl, hh = t["handle"]
+    handle = pv.Box(bounds=(-hx / 2, hx / 2, -hl / 2, hl / 2, -hh / 2, hh / 2)).triangulate()
+    shaft = pv.Cylinder(center=(0, hl / 2 + t["L"] / 2, 0), direction=(0, 1, 0), radius=t["shaft_r"],
+                        height=t["L"], resolution=20).triangulate()
+    jx, jl, jh = t["jaw"]
+    y0 = hl / 2 + t["L"]
+    g = t["jaw_gap"] / 2
+    jaws = pv.Box(bounds=(-jx / 2, -g, y0 - 4, y0 + jl, -jh / 2, jh / 2)).triangulate().merge(
+        pv.Box(bounds=(g, jx / 2, y0 - 4, y0 + jl, -jh / 2, jh / 2)).triangulate())
+    sleeve = pv.Cylinder(center=(0, hl / 2 + 40, 0), direction=(0, 1, 0), radius=t["shaft_r"] + 4, height=60,
+                         resolution=20).triangulate()
+    return {"handle": (handle, (0.20, 0.21, 0.23)), "shaft": (shaft.merge(sleeve), (0.72, 0.73, 0.75)),
+            "jaws": (jaws, (0.55, 0.56, 0.58))}
+
+
+def tongs_bite() -> np.ndarray:
+    """Where the fin's grasp point sits between the jaws, tongs frame."""
+    t = TONGS
+    return np.array([0.0, t["handle"][1] / 2 + t["L"] + t["jaw"][1] / 2, 0.0])
+
+
+# ------------------------------------------------------------------------------------------------ the IPA jar's lid
+# PR #318: "The IPA rinse after wire EDM should probably be capped starting out and then uncapped". The cup gets a lid
+# with a knob that the gripper lifts off onto a rest beside the stand, and puts back afterwards.
+LID = dict(r=34.0, t=8.0, knob_r=10.0, knob_h=26.0)
+# The jar is slim (32 mm across) so the bar, held level by its upper end, goes in up to the fingers: the arm carries
+# every specimen that way from the comb to the grips, and round 5's 92 mm cup with its rim knife only let a gripper
+# pointing down reach in. IPA to 6 mm under the rim; an air knife ring on the rim dries the bar on the way out.
+JAR = dict(r=16.0, wall=2.0, z0=880.0, z1=1000.0, liquid=994.0, ring_r=25.0, ring_h=10.0)
+
+
+def ipa_jar() -> dict:
+    """{name: (mesh, colour, specular, opacity)} on its stand, stand frame (z from the floor)."""
+    import charge
+    j = JAR
+    stand = _cyl(18, (0, 0, 0), (0, 0, j["z0"]), 24).merge(_box(-90, 90, -90, 90, 0, 12))
+    jar = charge.lathe([(0, j["z0"]), (j["r"], j["z0"]), (j["r"], j["z1"]), (j["r"] - j["wall"], j["z1"]),
+                        (j["r"] - j["wall"], j["z0"] + 3), (0, j["z0"] + 3)], res=40)
+    liquid = _cyl(j["r"] - j["wall"] - 0.4, (0, 0, j["z0"] + 3), (0, 0, j["liquid"]), 40)
+    ring = charge.lathe([(j["r"] - 1, j["z1"]), (j["ring_r"], j["z1"]), (j["ring_r"], j["z1"] + j["ring_h"]),
+                         (j["r"] - 1, j["z1"] + j["ring_h"])], res=40)
+    line_ = _cyl(4, (j["ring_r"], 0, j["z1"] + 5), (j["ring_r"] + 50, 0, j["z1"] + 5), 12).merge(
+        _cyl(4, (j["ring_r"] + 50, 0, j["z1"] + 5), (j["ring_r"] + 50, 0, 12), 12))
+    return {"stand": (stand, (0.24, 0.25, 0.27), 0.2, 1.0), "jar": (jar, (0.86, 0.90, 0.94), 0.5, 0.45),
+            "liquid": (liquid, (0.55, 0.72, 0.92), 0.3, 0.55), "air knife": (ring, (0.62, 0.63, 0.66), 0.5, 1.0),
+            "air line": (line_, (0.20, 0.45, 0.80), 0.3, 1.0)}
+
+
+def rinse_lid() -> dict:
+    """{name: (mesh, colour)}: the lid, its knob; frame: the lid's underside centre."""
+    l = LID
+    disc = pv.Cylinder(center=(0, 0, l["t"] / 2), direction=(0, 0, 1), radius=l["r"], height=l["t"],
+                       resolution=48).triangulate()
+    knob = pv.Cylinder(center=(0, 0, l["t"] + l["knob_h"] / 2), direction=(0, 0, 1), radius=l["knob_r"],
+                       height=l["knob_h"], resolution=24).triangulate()
+    return {"lid": (disc, (0.82, 0.84, 0.86)), "knob": (knob, (0.20, 0.21, 0.23))}
+
+
+def lid_rest() -> pv.PolyData:
+    """A post with a shallow cup on top for the lid, beside the jar's stand (its own frame, set by the chapter)."""
+    import charge
+    l = LID
+    top = JAR["z1"] + JAR["ring_h"]
+    post = _cyl(14, (0, 0, 0), (0, 0, top - 10), 20).merge(_box(-70, 70, -70, 70, 0, 12))
+    cup = charge.lathe([(0, top - 10), (l["r"] + 6, top - 10), (l["r"] + 6, top + 4), (l["r"] + 2, top + 4),
+                        (l["r"] + 2, top), (0, top)], res=48)
+    return post.merge(cup)
