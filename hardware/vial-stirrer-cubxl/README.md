@@ -935,6 +935,21 @@ room. Steps that go into a vial are given relative to the rim (`height: -35`), s
   using them there.
 - `pipette_park`'s `travel_z` of 86 is fixed too, but it stays above every rim in this table.
 
+### Tested 2026-11-05: a spacer and washers under the vial
+
+Ben raised the vial in three steps, and each got three starts from rest at 300 rpm, then 600
+and 1200 rpm ([record](../../cubos/results/stirrer_spacer_20261105/README.md)):
+
+- **Spacer alone:** no start. There were 2 Hall pulses in 5 starts, and it stalled each time.
+- **Plus 2 washers:** no stall, but it turned in bursts until the duty passed about 0.8.
+- **Plus 3 washers:** it started on the first kick all three times, held 300 rpm at a duty of
+  0.33–0.35, and reached 600 and 1200 rpm. The Hall readings tracked the setpoint.
+
+The stack's thickness isn't measured yet, so it can't be placed on the curve above. Ben also
+reports that a tip doesn't clear a capped vial on the stirrer, though it clears an uncapped
+one at the vial's maximum height by about 8 mm. The table above, which took the cap as 13 mm
+above the rim, is too generous.
+
 ## Risks and open questions
 
 1. **Coupling may be too strong rather than too weak.** The field at the bar is about

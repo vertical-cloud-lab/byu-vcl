@@ -173,3 +173,7 @@ frame times: `water_1104.mjpeg` (236 MB, 6809 frames) and `lower_1104.mjpeg` (12
 frames). They are not committed; run 2's has a person's hair in frame at about 23:32:12.
 `HOLD` was set at 23:14:15 and removed at 23:41:30, after Ben's reply. Nothing else on the Pi changed; `deckcam.py` was left as it was. Camera 1
 was moved between the two runs, not by this session.
+
+**Follow-up (2026-11-05):** with a spacer and 3 washers under the vial, the fan started from
+rest every time and held 300–1200 rpm, and the Hall readings tracked the setpoint
+([`stirrer_spacer_20261105`](../stirrer_spacer_20261105/README.md)).
