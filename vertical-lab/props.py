@@ -12,6 +12,8 @@
 """
 from __future__ import annotations
 
+import math
+
 import numpy as np
 import pyvista as pv
 
@@ -25,6 +27,65 @@ RACK_C = (0.94, 0.94, 0.92)
 MIR = dict(L=800.0, W=580.0, H=300.0)        # MiR250: 800 x 580 x 300 mm
 CAB_H = 480.0                                # top cabinet with the UR control box (layout choice, see above)
 AMR_TOP = MIR["H"] + CAB_H + 20.0            # arm base height above the floor (20 mm mounting plate)
+MIR_ACCEL = 300.0                            # mm/s^2: the MiR250 speeds up and slows down at 0.3 m/s^2 at full
+#                                              payload; its top speed is 2.0 m/s (MiR250 spec sheet, Hartfiel's copy)
+
+
+# ------------------------------------------------------------------------------------------------- the drives
+# From PR #321 (claude/issue-303-r5-fixes, a34367a), brought over in round 8. A MiR250 drive from rest to rest: up to
+# speed at MIR_ACCEL, on at vmax, down again. A trapezoid in speed, or a triangle when the drive is too short to reach
+# vmax: at 0.3 m/s^2 it takes 7.5 m to reach 1.5 m/s and stop again, so along the line it never does. Scene.step eases
+# its u; drive with ramp_frac(unease(u), ...) to keep this profile instead.
+def unease(e: float) -> float:
+    """The inverse of scene.ease: the step's own time (0-1) for the eased u that Scene.step passes, for a motion that
+    keeps a profile of its own (a MiR250's drive, ramp_frac). (#321 put this in scene.py.)"""
+    e = min(max(e, 0.0), 1.0)
+    return 0.5 - math.sin(math.asin(1.0 - 2.0 * e) / 3.0)
+
+
+def ramp_secs(dist: float, vmax: float, accel: float = MIR_ACCEL) -> float:
+    """Seconds for a drive of `dist` (mm, or deg with a deg/s^2 accel) from rest to rest."""
+    d = abs(dist)
+    if d * accel <= vmax * vmax:
+        return 2.0 * math.sqrt(d / accel)
+    return d / vmax + vmax / accel
+
+
+def ramp_peak(dist: float, vmax: float, accel: float = MIR_ACCEL) -> float:
+    """The top speed that drive reaches: vmax, or less on a short one."""
+    return min(vmax, math.sqrt(abs(dist) * accel))
+
+
+def ramp_frac(u: float, dist: float, vmax: float, accel: float = MIR_ACCEL) -> float:
+    """The share of that drive covered at u (0-1) of its time; spread over a longer step, it is slower all through."""
+    d = abs(dist)
+    if d < 1e-9:
+        return 1.0
+    T = ramp_secs(d, vmax, accel)
+    t = min(max(u, 0.0), 1.0) * T
+    v = ramp_peak(d, vmax, accel)
+    ta = v / accel                                  # time to reach the top speed
+    if t <= ta:
+        s = 0.5 * accel * t * t
+    elif t >= T - ta:
+        s = d - 0.5 * accel * (T - t) ** 2
+    else:
+        s = 0.5 * accel * ta * ta + v * (t - ta)
+    return min(1.0, max(0.0, s / d))
+
+
+def s_curve(x0, y0, x1, y1, n=201):
+    """A MiR250's drive from (x0, y0) to (x1, y1) that also changes lanes: x even in p, y on a smoothstep, its long axis
+    on the tangent (it is differential drive, so it can't slide sideways). Returns (at, ps, s): at(p) -> (x, y, heading
+    in degrees) and the path's length s at each of ps, to drive it with ramp_frac by length."""
+    def at(p):
+        x = x0 + (x1 - x0) * p
+        y = y0 + (y1 - y0) * (3 * p * p - 2 * p ** 3)
+        dydx = (y1 - y0) * (6 * p - 6 * p * p) / (x1 - x0) if abs(x1 - x0) > 1 else 0.0
+        return x, y, math.degrees(math.atan(dydx))
+    ps = np.linspace(0.0, 1.0, n)
+    xy = np.array([at(q)[:2] for q in ps])
+    return at, ps, np.r_[0.0, np.cumsum(np.linalg.norm(np.diff(xy, axis=0), axis=1))]
 
 
 def _cyl(r, h, z0=0.0, x=0.0, y=0.0, res=40):
