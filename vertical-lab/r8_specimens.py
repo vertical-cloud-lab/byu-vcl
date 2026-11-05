@@ -15,8 +15,9 @@ rather than writing the number in.
 * **The steel mount for the mechanical tests** (``steel_mount``): a 38.1 mm steel puck (416 stainless: magnetic,
   free-machining, doesn't rust in the polishing water), 20 mm tall, with a 10.1 x 10.1 mm pocket. The wire-EDM slice
   (10 x 10 mm, 6 mm as cut, 5.6 mm once the CNC has faced both sides flat and parallel) sits on the pocket's steel
-  floor, metal on metal, held by an M3 set screw from the side, and is ground and polished flush with the puck's top.
-  For nanoindentation and PIP: nothing soft under the sample to add compliance.
+  floor, metal on metal, held by a ball plunger in the pocket wall (an M3 spring plunger, drawn as the "screw"
+  part), faced flush with the puck's top on the CNC and polished. For nanoindentation and PIP: nothing soft under the
+  sample to add compliance.
 
 Frame for both: millimetres, the mount's axis on z, its base at z = 0, centred on x = y = 0; the specimen's face is at
 ``FACE_Z`` (the top). The coupon's and the slice's long edges run along x. The set screw enters from +x.
@@ -34,8 +35,8 @@ works as it is. Opacity is always 1.
 * parts of ``steel_mount``: ``"puck"`` (the steel), ``"slice"`` (the AlSi10Mg slice), ``"screw"`` (the M3 set screw).
 * ``state``: ``"polished"`` (the default: what chapter 7 gets), ``"ground"`` (after the SiC papers, a matte face),
   ``"pressed"`` (hot mount only: as ejected from the press, the coupon's wire-EDM face under a skin of compound,
-  the mount 0.6 mm taller) or ``"seated"`` (steel mount only: the faced slice just set in, 0.1 mm proud, before
-  grinding). Only the colours and those offsets change; the part names are the same in every state.
+  the mount 0.6 mm taller) or ``"seated"`` (steel mount only: the slice as cut, 6.0 mm, just pressed into the 5.6 mm
+  pocket, 0.4 mm proud, before the CNC faces it flush). Only the colours and those offsets change; the part names are the same in every state.
 
 ``hot_mount_solids(...)`` and ``steel_mount_solids(...)`` take the same arguments and return the CadQuery solids,
 ``{part: (cadquery.Workplane, material key)}``, for an ``instruments.Instrument`` piece:
@@ -63,10 +64,11 @@ FACE_Z = 20.0                     # both mounts: the polished face 20 mm over th
 # the as-cut wire-EDM surface
 HOT = dict(d=MOUNT_D, h=FACE_Z, chamfer=0.5, coupon=(14.0, 10.0, 6.0), skin=0.6, contact_d=3.0)
 # the steel mount. pocket 10.1 x 10.1 mm (0.05 mm a side over the slice) with 2 mm corner reliefs (an end mill
-# leaves round corners: the reliefs let the square slice seat on the floor); the slice 5.6 mm thick once faced; the
-# pocket 5.6 mm deep, so the slice ends flush; the set screw M3, 3 mm under the face, from +x
+# leaves round corners: the reliefs let the square slice seat on the floor), 5.6 mm deep; the slice goes in as cut
+# (6.0 mm, 0.4 mm proud: "seated") and the CNC faces it flush (5.6 mm); the ball plunger M3, 3 mm under the face, from
+# +x (the part is still called "screw")
 STEEL = dict(d=MOUNT_D, h=FACE_Z, chamfer=0.5, slice=(10.0, 10.0, 5.6), as_cut=6.0, pocket=10.1, relief_d=2.0,
-             proud=0.1, screw_d=3.0, screw_z=FACE_Z - 3.0)
+             proud=0.4, screw_d=3.0, screw_z=FACE_Z - 3.0)
 COUPON_XY = (HOT["coupon"][0] / 2, HOT["coupon"][1] / 2)
 SLICE_XY = (STEEL["slice"][0] / 2, STEEL["slice"][1] / 2)
 
@@ -149,7 +151,7 @@ def steel_mount_solids(state: str = "polished") -> dict:
     L = p["d"] / 2 - 0.5 - sx / 2
     screw = cq.Workplane("YZ").circle(p["screw_d"] / 2 - 0.1).extrude(L).translate((sx / 2, 0, p["screw_z"]))
     screw = screw.cut(cq.Workplane("YZ").polygon(6, 1.7).extrude(1.6).translate((sx / 2 + L - 1.5, 0, p["screw_z"])))
-    face = {"polished": "r8s_polished", "ground": "r8s_ground", "seated": "r8s_ground"}[state]
+    face = {"polished": "r8s_polished", "ground": "r8s_ground", "seated": "r8s_edm"}[state]
     return {"puck": (puck, "r8s_steel"), "slice": (slab, face), "screw": (screw, "r8s_screw")}
 
 

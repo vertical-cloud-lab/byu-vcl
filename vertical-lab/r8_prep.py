@@ -87,6 +87,9 @@ MX = dict(W=203.0, D=460.0, H=480.0, slope_z0=300.0, slope_d=110.0, mold=(-25.0,
           bore=38.6, depth=75.0, bar_w=56.0, bar_h=36.0, bar_z=486.0, knob_d=50.0, knob_h=24.0, stopper_h=25.0,
           charge=55.0, press=35.0)
 RAM_PRESSED = MX["press"] / MX["depth"]          # the ram's joint value once the compound is pressed (rises 35 mm)
+# the compound doser (ours): its hopper's post on the deck behind and left of the mold, 74 mm off the closure's line;
+# the chute 60 mm over the deck; parked, it points to the back of the deck, out of the closure's swing and the arm's way
+DOSER = dict(at=(-60.0, 70.0), z=MX["H"] + 60.0, park_deg=162.0)
 
 
 def mx_geometry() -> dict:
@@ -172,6 +175,23 @@ def mount_press() -> Instrument:
     stop.add("green end", cyl(p["bore"] - 0.6, 2, x=mx, y=my, z=zs + p["stopper_h"] - 2), "r8p_green")
     heat = _piece(inst, "glow")
     heat.add("heater", tube(64, p["bore"] + 1.0, 0.6, x=mx, y=my, z=H + 1.2), "glow")
+    # the compound doser (ours, for the arm; Struers sells one for its own presses, the CitoDoser): a hopper on a
+    # post at the deck's back left, its chute swinging over the mold to pour the SOP's 3/4 scoop, then back
+    dx_, dy_ = DOSER["at"]
+    body.add("doser post", cyl(26, DOSER["z"] - H, x=dx_, y=dy_, z=H), "stainless")
+    body.add("doser hopper", cyl(70, 95, x=dx_, y=dy_, z=DOSER["z"] + 25).union(
+        cq.Workplane("XY").circle(35).workplane(offset=-25).circle(9).loft().translate((dx_, dy_, DOSER["z"] + 25))),
+        "inst_white")
+    body.add("doser lid", cyl(74, 6, x=dx_, y=dy_, z=DOSER["z"] + 120), "inst_dark")
+    dos = _piece(inst, "doser")
+    L_ = math.hypot(mx - dx_, my - dy_)
+    a_ = math.degrees(math.atan2(my - dy_, mx - dx_))
+    chute = box(0, -9, -6, L_ + 8, 9, 6).translate((0, 0, DOSER["z"] + 6))
+    dos.add("doser chute", chute.rotate((0, 0, 0), (0, 0, 1), a_).translate((dx_, dy_, 0)), "stainless")
+    dos.add("chute spout", cyl(16, 22, x=mx, y=my, z=DOSER["z"] - 12), "stainless")
+    pour = _piece(inst, "pour")
+    pour.add("compound falling", cyl(7, DOSER["z"] - 12 - (H - p["depth"] + p["charge"]), x=mx, y=my,
+                                     z=H - p["depth"] + p["charge"]), "r8p_granules")
     inst.joints = {
         "closure": Joint("hinge", axis=(0, 0, 1), pivot=(px_, py_, 0), deg=95.0),
         "ram": Joint("slide", vec=(0, 0, p["depth"])),
@@ -180,6 +200,9 @@ def mount_press() -> Instrument:
         "mount": Joint("fade", parent="ram"),
         "stopper": Joint("path", path=((150, -200, 150), (0, 0, 60), (0, 0, 0))),
         "glow": Joint("fade"),
+        "doser": Joint("hinge", axis=(0, 0, 1), pivot=(DOSER["at"][0], DOSER["at"][1], 0), deg=DOSER["park_deg"],
+                       v0=1.0),
+        "pour": Joint("fade", parent="doser"),
     }
     inst.actions = [
         ("The lab's LECO MX400 hot mounting press, as in its video 'Making Bakelite Polishing Puck': 8 in wide, a 1.5 in "
@@ -188,7 +211,10 @@ def mount_press() -> Instrument:
         ("Ram up: its face rises flush with the top of the mold.", 1.4, {"ram": (0.0, 1.0)}),
         ("The coupon goes on the ram face down: the face to be polished.", 1.8, {"specimen": (0.0, 1.0)}),
         ("Ram down, 75 mm, taking the coupon into the mold.", 1.4, {"ram": (1.0, 0.0)}),
-        ("Conductive phenolic (carbon-filled) poured in on top (5:00-5:15).", 1.8, {"charge": (0.0, 1.0)}),
+        ("Conductive phenolic (carbon-filled), the SOP's 3/4 scoop, poured in on top from a doser (ours) "
+         "(5:00-5:15 in the video, by hand).", 2.4,
+         {"doser": (1.0, 0.0), "pour": (0.0, 1.0), "charge": (0.0, 1.0)}),
+        ("The doser swings back.", 1.0, {"doser": (0.0, 1.0), "pour": (1.0, 0.0)}),
         ("The stopper on top, green end up, as the label says; the closure swung back and locked (5:20-5:30).", 2.2,
          {"stopper": (0.0, 1.0), "closure": (1.0, 0.0)}),
         ("Heating under pressure, the lab's settings on the screen: 300, 4.2, 100, 10:00 (5:40-5:59). The ram presses "
@@ -205,8 +231,8 @@ def mount_press() -> Instrument:
     inst.cam = (0.9, -1.5, 1.1)
     inst.framing = (1.0, 0.62)
     near = ((mx, my, H), 650.0)
-    inst.zoom = {1: near, 9: "out"}
-    inst.props = ("specimen", "charge", "mount", "stopper", "glow")
+    inst.zoom = {1: near, 10: "out"}
+    inst.props = ("specimen", "charge", "mount", "stopper", "glow", "pour")
     return inst
 
 
@@ -483,18 +509,29 @@ def disc_magazine() -> Instrument:
 
 
 # ===================================================================================================== c. Carvera
-# instruments_r7.cnc(), its job now the route's: the slice cut on the wire EDM from the printed build (10 x 10 x 6
-# mm), faced flat and parallel on both sides to 5.6 mm (0.2 mm a side: the EDM's recast layer, a few to ~20 um, and
-# the cut's waviness), for the steel mount. A 6 mm end mill, 0.1 mm a pass, two passes a side; the arm turns it over
-# between sides (the tour turns it with the part's own joint).
+# instruments_r7.cnc(), its job now the route's: the steel mount (r8_specimens.steel_mount) with the wire-EDM slice
+# of the printed AlSi10Mg build just seated in its pocket, 0.4 mm proud (6.0 mm as cut in a 5.6 mm pocket). The
+# Carvera faces the slice flush with the puck's top: the EDM's recast layer (a few to ~20 um) and the cut's waviness
+# come off, and the face ends up parallel to the puck's base, which is what nanoindentation and PIP need. A 6 mm end
+# mill, three passes. The puck sits on two short parallels in a small pneumatic vise (ours) whose jaws close across
+# it (along y), so the arm's fingers, closing along x, never meet them.
 CV = dict(R7.CV)
-SLICE = dict(x=60.0, y=0.0, as_cut=SP.STEEL["as_cut"], faced=SP.STEEL["slice"][2], w=SP.STEEL["slice"][0])
+PUCK = dict(x=60.0, y=0.0, base=12.0, par_h=8.0, par_w=6.0, par_dy=9.0, jaw_h=14.0, jaw_t=14.0, jaw_open=20.0)
+
+
+def cnc_puck_geometry() -> dict:
+    """Where the steel mount sits in the Carvera's vise (Carvera frame): its base, its top (= the faced slice), the
+    slice's top as seated."""
+    p = CV
+    z_base = p["bed_z"] + PUCK["base"] + PUCK["par_h"]
+    top = z_base + SP.STEEL["h"]
+    return dict(x=PUCK["x"], y=PUCK["y"], z_base=z_base, top=top, seated=top + SP.STEEL["proud"])
 
 
 def cnc() -> Instrument:
     p = CV
     W, D, H = R7.FOOTPRINTS["cnc"][:3]
-    inst = Instrument("cnc", "Desktop CNC mill with a tool changer, facing the wire-EDM slice", "Makera Carvera",
+    inst = Instrument("cnc", "Desktop CNC mill with a tool changer, facing the steel mount's slice", "Makera Carvera",
                       (W, D, H), "Makera's Carvera spec (580 x 520 x 540 mm, 50 kg, 840 mm lid open, 360 x 240 x "
                       "140 mm, 6-tool changer, 200 W); lid actuator and pneumatic vise ours; layout from photos")
     w, d, h = p["W"], p["D"], p["H"]
@@ -520,20 +557,24 @@ def cnc() -> Instrument:
         col, sh = R7._tool(x, y, p["tool_top"])
         body.add(f"tool {i + 2} collar", col, "steel")
         body.add(f"tool {i + 2}", sh, "r7_carbide")
-    # a small precision vise for the 10 mm slice (ours), on the bed: the slice on a parallel, 2 mm proud of the jaws
-    sx_, sy_ = SLICE["x"], SLICE["y"]
-    top0 = p["face_z"]                                 # the slice's top as cut
-    s_bot = top0 - SLICE["as_cut"]
-    body.add("vise base", box(sx_ - 45, sy_ - 50, bz, sx_ + 45, sy_ + 50, s_bot - 12), "steel")
-    body.add("fixed jaw", box(sx_ - 30, sy_ + SLICE["w"] / 2, s_bot - 12, sx_ + 30, sy_ + SLICE["w"] / 2 + 14,
-                              top0 - 2), "steel")
-    body.add("parallel", box(sx_ - 30, sy_ - 4, s_bot - 12, sx_ + 30, sy_ + 4, s_bot), "steel")
-    body.add("air cylinder", box(sx_ - 30, sy_ - 75, s_bot - 30, sx_ + 30, sy_ - 51, s_bot - 8), "inst_blue")
+    # the vise for a 1.5 in mount (ours): a base plate, two short parallels under the puck, jaws across it along y
+    G = cnc_puck_geometry()
+    sx_, sy_, zb = G["x"], G["y"], G["z_base"]
+    R_ = SP.STEEL["d"] / 2
+    pz0 = bz + PUCK["base"]
+    jz1 = zb + PUCK["jaw_h"]
+    body.add("vise base", box(sx_ - 45, sy_ - 52, bz, sx_ + 45, sy_ + 52, pz0), "steel")
+    for s_ in (-1, 1):
+        yc = sy_ + s_ * PUCK["par_dy"]
+        body.add(f"parallel {s_}", box(sx_ - 12, yc - PUCK["par_w"] / 2, pz0, sx_ + 12, yc + PUCK["par_w"] / 2, zb),
+                 "steel")
+    body.add("fixed jaw", box(sx_ - 30, sy_ + R_ + 0.05, pz0, sx_ + 30, sy_ + R_ + 0.05 + PUCK["jaw_t"], jz1), "steel")
+    body.add("air cylinder", box(sx_ - 30, sy_ - 80, bz, sx_ + 30, sy_ - R_ - PUCK["jaw_t"] - PUCK["jaw_open"] - 2,
+                                 pz0 + 16), "inst_blue")
     body.add("lid actuator", cyl(30, 220, x=w / 2 + 15, y=hy + 20, z=300), "inst_dark")
     body.add("actuator mount", box(w / 2, hy + 5, 300, w / 2 + 30, hy + 35, 315), "inst_dark")
     jaw = _piece(inst, "jaw")
-    jaw.add("moving jaw", box(sx_ - 30, sy_ - SLICE["w"] / 2 - 14, s_bot - 12, sx_ + 30, sy_ - SLICE["w"] / 2, top0 - 2),
-            "steel")
+    jaw.add("moving jaw", box(sx_ - 30, sy_ - R_ - 0.05 - PUCK["jaw_t"], pz0, sx_ + 30, sy_ - R_ - 0.05, jz1), "steel")
     lid = _piece(inst, "lid")
     lid.add("lid top", box(-w / 2, -d / 2, h - 10, w / 2, hy, h), "r7_carvera_lid")
     lid.add("lid front", box(-w / 2, -d / 2, bz - 15, w / 2, -d / 2 + 10, h - 10), "r7_carvera_lid")
@@ -561,36 +602,29 @@ def cnc() -> Instrument:
         tp.add(nm + " collar", col, "steel")
         tp.add(nm, sh, "r7_carbide")
         tools[nm] = (x, y)
-    # the slice: carried in (carrier: path), turned over (flip: about x through its centre), its two skins
-    zc = top0 - SLICE["as_cut"] / 2
-    inst.meshes["carrier"] = _dummy((sx_, sy_, zc))
-    inst.meshes["flip"] = _dummy((sx_, sy_, zc))
-    s2 = SLICE["w"] / 2
-    sk = (SLICE["as_cut"] - SLICE["faced"]) / 2
-    sl = _piece(inst, "part")
-    sl.add("slice", box(sx_ - s2, sy_ - s2, s_bot + sk, sx_ + s2, sy_ + s2, top0 - sk), "r8p_faced")
+    # the steel mount: carried in (carrier: path); the slice's 0.4 mm proud skin ("stock") goes under the end mill
+    inst.meshes["carrier"] = _dummy((sx_, sy_, zb + 10))
+    sol = SP.steel_mount_solids("polished")
+    part = _piece(inst, "part")
+    part.add("steel puck", sol["puck"][0].translate((sx_, sy_, zb)), "r8s_steel")
+    part.add("ball plunger", sol["screw"][0].translate((sx_, sy_, zb)), "r8s_screw")
+    part.add("slice, faced", sol["slice"][0].translate((sx_, sy_, zb)), "r8p_faced")
+    a2 = SP.STEEL["slice"][0] / 2
     st1 = _piece(inst, "stock")
-    st1.add("EDM skin, top", box(sx_ - s2, sy_ - s2, top0 - sk, sx_ + s2, sy_ + s2, top0), "r8p_slice")
-    st2 = _piece(inst, "stock2")
-    st2.add("EDM skin, bottom", box(sx_ - s2, sy_ - s2, s_bot, sx_ + s2, sy_ + s2, s_bot + sk), "r8p_slice")
+    st1.add("slice as cut, 0.4 mm proud", box(sx_ - a2, sy_ - a2, G["top"], sx_ + a2, sy_ + a2, G["seated"]),
+            "r8p_slice")
     # one timeline: gantry y, carriage x, spindle z, which tool rides the spindle
     tl = Timeline(dict(gy=120.0, cx=150.0, sz=20.0, a="rack", b="rack"))
-    ga, gb = tools["tool_a"][1] - sy, tools["tool_a"][1] - sy
-    gb = tools["tool_b"][1] - sy
+    ga = tools["tool_a"][1] - sy
     grab = p["tool_top"] - p["nose"]
-    cut_z = top0 - p["nose"] + 1.0 + 12.0          # the end mill's tip at the faced height (tool stick-out ~12 mm)
+    cut_z = G["top"] - p["nose"] + 1.0 + 12.0          # the end mill's tip at the puck's top (tool stick-out ~12 mm)
     tl.go(1.4, cx=tools["tool_a"][0], gy=ga).go(0.8, sz=grab).go(0.3, a="sp").go(0.8, sz=20.0).mark("tool_a")
-
-    def face(tag):
-        tl.go(1.0, cx=sx_ - 12.0, gy=sy_ - 4.0 - sy).go(0.5, sz=cut_z)
-        for k, yy in enumerate((-4.0, 0.0, 4.0)):
-            if k:
-                tl.go(0.25, gy=sy_ + yy - sy)
-            tl.go(0.9, cx=sx_ + 12.0 if k % 2 == 0 else sx_ - 12.0)
-        tl.go(0.5, sz=20.0).go(0.9, cx=-60.0, gy=120.0).mark(tag)
-    face("side1")
-    tl.go(1.4).mark("flipped")                    # the arm turns the slice over: the spindle waits, parked
-    face("side2")
+    tl.go(1.0, cx=sx_ - 12.0, gy=sy_ - 4.0 - sy).go(0.5, sz=cut_z)
+    for k, yy in enumerate((-4.0, 0.0, 4.0)):
+        if k:
+            tl.go(0.25, gy=sy_ + yy - sy)
+        tl.go(0.9, cx=sx_ + 12.0 if k % 2 == 0 else sx_ - 12.0)
+    tl.go(0.5, sz=20.0).mark("faced")
     tl.go(1.4, cx=tools["tool_a"][0], gy=ga).go(0.8, sz=grab).go(0.3, a="rack").go(0.8, sz=20.0)
     tl.go(1.4, cx=150.0, gy=120.0).mark("park")
 
@@ -604,13 +638,10 @@ def cnc() -> Instrument:
         return f
     inst.joints = {
         "lid": Joint("hinge", axis=(1, 0, 0), pivot=(0, hy, hz), deg=p["lid_deg"]),
-        "jaw": Joint("slide", vec=(0, -20, 0), v0=1.0),
-        "carrier": Joint("path", path=((0, -420, 200), (0, -160, 120), (0, 0, 40), (0, 0, 0))),
-        "flip": Turn(axis=(1, 0, 0), pivot=(sx_, sy_, zc), knots=((0.0, 0.0), (0.25, 0.0), (0.75, 180.0),
-                                                                  (1.0, 180.0)), parent="carrier"),
-        "part": Joint("fade", parent="flip", v0=1.0),
-        "stock": Joint("fade", parent="flip", v0=1.0),
-        "stock2": Joint("fade", parent="flip", v0=1.0),
+        "jaw": Joint("slide", vec=(0, -PUCK["jaw_open"], 0), v0=1.0),
+        "carrier": Joint("path", path=((0, -420, 220), (0, -160, 140), (0, 0, 40), (0, 0, 0))),
+        "part": Joint("fade", parent="carrier", v0=1.0),
+        "stock": Joint("fade", parent="carrier", v0=1.0),
         "gantry": Track(knots=tl.knots(lambda s: (0.0, s["gy"], 0.0))),
         "carriage": Track(knots=tl.knots(lambda s: (s["cx"], 0.0, 0.0)), parent="gantry"),
         "spindle": Track(knots=tl.knots(lambda s: (0.0, 0.0, s["sz"])), parent="carriage"),
@@ -619,32 +650,24 @@ def cnc() -> Instrument:
     }
     V = tl.v
     tv = lambda a, b: {k: (a, b) for k in ("gantry", "carriage", "spindle", "tool_a", "tool_b")}  # noqa: E731
-    # the flip: lift 40 mm (the carrier's path back to its last waypoint but one), turn, set down
-    lift = 1.0 - 40.0 / (40.0 + math.dist((0, -160, 120), (0, 0, 40)) + math.dist((0, -420, 200), (0, -160, 120)))
     inst.actions = [
-        ("Chapter 6's job for the Carvera: the slice the wire EDM cut from the printed AlSi10Mg build, 10 x 10 x 6 mm. "
-         "The lid opens.", 2.2, {"lid": (0.0, 1.0)}),
-        ("The arm sets the slice on the parallel in a small vise (ours).", 2.2, {"carrier": (0.0, 1.0)}),
+        ("Chapter 6's job for the Carvera: the steel mount, the wire-EDM slice of the printed AlSi10Mg build seated "
+         "in its pocket, 0.4 mm proud. The lid opens.", 2.2, {"lid": (0.0, 1.0)}),
+        ("The arm sets the mount on the parallels in a small vise (ours).", 2.2, {"carrier": (0.0, 1.0)}),
         ("The vise clamps it; the lid closes. A 6 mm end mill from the tool changer.", 3.0,
          {"jaw": (1.0, 0.0), "lid": (1.0, 0.0), **tv(0.0, V("tool_a"))}),
-        ("Side 1 faced: 0.2 mm off, the EDM's recast layer and the cut's waviness with it.", 5.6,
-         {**tv(V("tool_a"), V("side1")), "stock": (1.0, 0.0)}),
-        ("The lid opens and the vise lets go; the arm turns the slice over.", 3.2,
-         {**tv(V("side1"), V("flipped")), "lid": (0.0, 1.0), "jaw": (0.0, 1.0), "carrier": (1.0, lift),
-          "flip": (0.0, 1.0)}),
-        ("Set down, clamped, side 2 faced to 5.6 mm: flat, and parallel to side 1.", 6.0,
-         {**tv(V("flipped"), V("side2")), "carrier": (lift, 1.0), "jaw": (1.0, 0.0), "lid": (1.0, 0.0),
-          "stock2": (1.0, 0.0)}),
-        ("The end mill back in the rack; the lid opens for the arm. Next: the slice into the steel mount.", 3.0,
-         {**tv(V("side2"), 1.0), "lid": (0.0, 1.0), "jaw": (0.0, 1.0)}),
+        ("The slice faced flush with the puck: the EDM's recast layer off, the face parallel to the puck's base.", 5.0,
+         {**tv(V("tool_a"), V("faced")), "stock": (1.0, 0.0)}),
+        ("The end mill back in the rack; the lid opens and the vise lets go. Next: grinding and polishing.", 3.0,
+         {**tv(V("faced"), 1.0), "lid": (0.0, 1.0), "jaw": (0.0, 1.0)}),
     ]
-    inst.zoom = {1: ((sx_, sy_, top0), 520.0), 4: ((sx_, sy_, top0), 420.0), 6: "out"}
+    inst.zoom = {1: ((sx_, sy_, G["top"]), 520.0), 3: ((sx_, sy_, G["top"]), 420.0), 4: "out"}
     inst.labels = [("6-tool changer", (-185, -125, 290), (0.10, 0.30)),
-                   ("vise for the slice (ours)", (sx_, sy_ - 50, s_bot - 12), (0.20, 0.80)),
+                   ("vise for 1.5 in mounts (ours)", (sx_, sy_ - 52, pz0), (0.20, 0.80)),
                    ("lid actuator (ours)", (w / 2 + 15, hy + 20, 480), (0.88, 0.22)),
                    ("200 W spindle", (0, sy - 26, p["nose"] + 80), (0.62, 0.12))]
     inst.cam = (0.8, -1.7, 1.0)
-    inst.props = ("carrier", "flip", "part", "stock", "stock2")
+    inst.props = ("carrier", "part", "stock")
     return inst
 
 
