@@ -326,6 +326,14 @@ def opening() -> dict:
     # the blue cover under the tray, with the LED-Navigator strip along its top; a 50 mm lip, not a counter
     p["tray cover"] = (box(-ow, yo - 50, Z_SILL - 120, ow, yo + 30, Z_SILL), "vlm_cover", "bay")
     p["LED-Navigator"] = (box(-ow + 40, yo - 52, Z_SILL - 26, ow - 40, yo - 48, Z_SILL - 14), "vlm_led", "bay")
+    # the access table itself (the POF's TH1, 833 mm): a closed floor under the presented tray, from the cover back to
+    # the shutter, 21 mm under the tray's underside. Until round 9 only the cover's lip was drawn, so with no tray in
+    # the opening the bay showed empty air down to the floor (Sterling, PR #318, 2026-11-05: "In real systems, this
+    # has a real bottom beneath a tray when it's in the bay").
+    # A sill under the shutter closes the 11 mm between the table and the shutter's lower edge; the tray's underside
+    # passes 10 mm over it.
+    p["access table"] = (box(-ow, yo + 30, Z_SILL - 20, ow, Y_SHUTTER + 6, Z_SILL).union(
+        box(-ow, Y_SHUTTER - 6, Z_SILL - 1, ow, Y_SHUTTER + 6, Z_OPEN - 10)), "vlm_counter", "bay")
     # slatted side walls of the bay (the shelf rails' L-profiles), front panel to shutter
     yb0, yb1 = -UNIT_D / 2, Y_SHUTTER
     walls = None
