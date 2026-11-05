@@ -21,8 +21,10 @@ are seen full (Sterling, on the old 9:09 clip: "suddenly the VLM only has a few 
 
 | | |
 |---|---|
-| MP4, 1280 x 720, 6 fps | [`out/mp4/alloy_characterize.mp4`](../out/mp4/alloy_characterize.mp4) |
-| GIF, 512 x 288, 3 fps | [`out/alloy_characterize.gif`](../out/alloy_characterize.gif) |
+| MP4, 1280 x 720, 6 fps, 254 s (1526 frames) | [`out/mp4/alloy_characterize.mp4`](../out/mp4/alloy_characterize.mp4) (11.3 MB) |
+| GIF, 512 x 288, 3 fps | [`out/alloy_characterize.gif`](../out/alloy_characterize.gif) (under 4.9 MB) |
+| Eight moments, from the MP4 | [`out/alloy_characterize_sheet.png`](../out/alloy_characterize_sheet.png) |
+| The still: all six data panels | [`out/alloy_characterize_still.png`](../out/alloy_characterize_still.png) |
 | Frame range of every sub-step | [`out/alloy_characterize.json`](../out/alloy_characterize.json) |
 | Collision audit, every frame | [`out/collisions/alloy_characterize.json`](../out/collisions/alloy_characterize.json) |
 | The data panels, and every number on them with its status and source | `out/alloy_characterize_panel_{sem,eds,hv,nano,pip,vhx}.png`, [`out/alloy_characterize_data.json`](../out/alloy_characterize_data.json) |
@@ -114,10 +116,48 @@ None of these are the makers' published arrangements. They are our designs, at a
 
 ### The arm's collisions
 
-`ARM_AUDIT=1 VIZ3D_FPS=6 xvfb-run -a python3 alloy_characterize.py` checks every frame, with `collide.Auditor`'s rules
-(the gripper may touch what it picks up or puts down within 4 s of the grasp or release; a held part may touch where
-it came from and where it goes). The result is in the table above and in
+`VLAB_ONLY_TRAYS=DEKL ARM_AUDIT=1 VIZ3D_FPS=6 xvfb-run -a python3 alloy_characterize.py` checks every frame, with
+`collide.Auditor`'s rules (the gripper may touch what it picks up or puts down within 4 s of the grasp or release; a
+held part may touch where it came from and where it goes), in
 [`out/collisions/alloy_characterize.json`](../out/collisions/alloy_characterize.json).
+
+| Version | Frames checked | In collision | Where |
+|---|---|---|---|
+| First full draft | 3389 (15 fps) | 48 | the iMicro's unload and the move on to the PIP; the HM-220's indent marks, floating where the hidden prop started; the VHX's turn-over and its picks |
+| **The committed render's code** (`72bb1bf`; the JSON above) | 1269 | **13** | the iMicro's unload (its approach from the park pose put the wrist into tray E's camera head, then through the opening's frame and the iMicro's raised hood: frames 574-598); one frame of the wrist grazing the VHX's stand as the bar is set down (1246) |
+| Picks from the joints that placed (`5518d3e`, **not rendered**) | 1269 | 1 | the VHX graze at frame 1246 only |
+
+What fixed what:
+- **The cameras** for the iMicro, the HM-220 and the VHX were aimed before their trays came down, at the trays' slots
+  inside the Shuttles; they are aimed once each tray is at the opening. The HM-220's close-up is from the front right,
+  through Shuttle 2's opening: from the left it looked into the Shuttle's frame.
+- **The iMicro's hood** shut while the arm was still leaving; it shuts once the arm is clear.
+- **The HM-220's indent marks** belong to the model's own (hidden) sample, which waits 220 mm over the holder; they are
+  hidden until our mount is on the slide, with the hidden sample seated so they sit in its face.
+- **The VHX's turn-over** (a level grasp on the grip end, a 180 deg roll) put the fingertips into the stage and the
+  wrist into the stand; it is left out, and the caption says so. The MiR stops 250 mm past Shuttle 2's dock for the
+  VHX and 300 mm short of it for the HM-220 (IK: 8 solutions against 4 at the dock, 1033 mm out).
+- **A specimen is taken back from the joints that set it down** (`pick_mount(at=...)`): from the park pose the nearest
+  clear IK branch at the iMicro had the wrist in tray E's camera head.
+- **The audit was ~10 frames a minute on the whole lab**: `collide.World.refresh` asks VTK about every actor every
+  frame, and a whole-lab scene has tens of thousands. The chapter keeps its collision world to what the arm can
+  reach (`fast_collisions`: the trays it presents and everything within 2.8 m of the arm's base at its three stops)
+  and audits only its own arm; and with `VLAB_ONLY_TRAYS=DEKL` setup_lab populates only the trays it presents. The
+  cladding is opaque, so the empty trays inside the Shuttles aren't seen.
+
+### Known in the committed render
+
+The render (`b5ab9d8`) was made from `72bb1bf`, before the last two fixes, and the long-form was built from it:
+- **13 frames (about 2 s) with the arm in collision at the iMicro's unload, frames 574-598**: the wrist passes through
+  tray E's camera head, the opening's frame and the iMicro's raised hood on the way out. `5518d3e` takes the mount back
+  from the joints that set it down, and audits at 1 frame in 1269; not rendered.
+- **1 frame (1246)**: the wrist grazes the VHX's stand as the bar is set down on the carrier. Not fixed.
+- **The HM-220's close-up looks into Shuttle 2's frame** instead of at the tester (frames about 890-1150): its camera
+  was set from the left. `2d0fc50` moves it to the front right, through the opening; not rendered.
+- To re-render with both fixes: `VLAB_ONLY_TRAYS=DEKL VIZ3D_FPS=6 xvfb-run -a python3 alloy_characterize.py` (about
+  36 min on the runner, under `runner_guard.py`), or only those stretches, spliced in:
+  `CH7_NAME=alloy_characterize_window CH7_WINDOW=560:610,890:1155` renders them to their own MP4, with the frame
+  numbers in `/tmp/alloy_characterize_window_frames.txt`.
 
 ### Not done
 
