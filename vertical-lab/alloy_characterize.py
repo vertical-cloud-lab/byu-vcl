@@ -1,8 +1,11 @@
 """The alloy route, chapter 7: characterizing the build (#303, PR #318, round 8).
 
-    VIZ3D_FPS=6 xvfb-run -a python3 alloy_characterize.py    # -> out/alloy_characterize.gif, out/mp4/alloy_characterize.mp4
-    PREVIEW=1 xvfb-run -a python3 alloy_characterize.py      # the last frame of each sub-step -> /tmp/preview_*.png
-    ARM_AUDIT=1 xvfb-run -a python3 alloy_characterize.py    # no render: every frame collision-checked -> out/collisions/
+    VLAB_ONLY_TRAYS=DEKL VIZ3D_FPS=6 xvfb-run -a python3 alloy_characterize.py   # -> out/alloy_characterize.gif, .mp4
+    VLAB_ONLY_TRAYS=DEKL PREVIEW=1 xvfb-run -a python3 alloy_characterize.py     # the last frame of each sub-step
+    VLAB_ONLY_TRAYS=DEKL ARM_AUDIT=1 xvfb-run -a python3 alloy_characterize.py   # every frame collision-checked
+
+(``VLAB_ONLY_TRAYS``: setup_lab populates only the trays this chapter presents; the cladding is opaque, so the
+others, empty, aren't seen.)
 
 Chapter 6 (``alloy_prep.py``) made two specimens from the AlSi10Mg build, and chapter 5 (``alloy_workflow.py``) broke a
 tensile bar. They ride a caddy on the MiR250's cabinet (``r8_specimens``: the conductive hot mount and the steel
@@ -150,11 +153,67 @@ def build():
     u = units[0]
     u.set(W.dock_pose("vlm"))
     L.robot = u.robot
-    L.skin(1.0)(1.0)
+    # opaque cladding: with VLAB_ONLY_TRAYS=DEKL (runner_guard: 1.5 GB instead of 5) the other trays stand empty
+    # inside the Shuttles, so they are not shown through a see-through skin
+    L.skin(0.0)(1.0)
     L.show_gauges = True
     L.extra_gauges = []
     L.apply_state()
     return sc, L, F, rigs, u
+
+
+def fast_collisions(sc, L, u, trays=("D", "E", "K", "L"), reach=2800.0):
+    """Keep the arm's collision world (collide.World) to what it can reach: the trays this chapter presents and
+    whatever stands within `reach` of the arm's base at its three stops (both openings, and short of Shuttle 2's
+    dock), our parts included. The other trays (inside the Shuttles) and the far floor are left out. A whole-lab
+    scene has tens of thousands of actors, and World.refresh asks VTK about every one of them every frame: the
+    audit ran at ~10 frames a minute. Only this chapter's arm is audited (the second unit stays on its charger)."""
+    import collide as CL
+    import setup_lab as SL
+    keep, drop = set(), set()
+    for k in L.tray:
+        (keep if k in trays else drop).update(CL._subtree(sc, f"tray_{k}"))
+    y0 = u.pose[1] + A.ARM_LOCAL[1]
+    bases = np.array([[u.pose[0] + A.ARM_LOCAL[0], y0], [SL.X2 - HM_DOCK, y0], [SL.X2, y0]])
+    only, known = {}, set(sc.actors)
+
+    def near(name, actor):
+        g = sc.group_of.get(name)
+        if g in drop:
+            return False
+        if g in keep:
+            return True
+        inp = actor.GetMapper().GetInput()
+        if inp is None or inp.GetNumberOfPoints() == 0:
+            return False
+        b = np.array(inp.GetBounds()).reshape(3, 2)
+        c = np.array([[b[0, i], b[1, j], b[2, k]] for i in (0, 1) for j in (0, 1) for k in (0, 1)])
+        w = (sc.world(g) @ np.c_[c, np.ones(8)].T).T[:, :3]
+        lo, hi = w.min(axis=0), w.max(axis=0)
+        d = np.linalg.norm(np.maximum(np.maximum(lo[:2] - bases, bases - hi[:2]), 0.0), axis=1).min()
+        return d < reach and lo[2] < reach + P.AMR_TOP
+
+    for name, actor in sc.actors.items():
+        if near(name, actor):
+            only[name] = actor
+
+    class FastWorld(CL.World):
+        def refresh(self):
+            full = self.sc.actors
+            if len(full) != len(known):                     # actors added since: keep those near too
+                for name in set(full) - known:
+                    known.add(name)
+                    if near(name, full[name]):
+                        only[name] = full[name]
+            self.sc.actors = only
+            try:
+                CL.World.refresh(self)
+            finally:
+                self.sc.actors = full
+
+    sc._collide_world = FastWorld(sc)
+    sc.robots = [r for r in getattr(sc, "robots", []) if r is u.robot]
+    print(f"collision world: {len(only)} of {len(sc.actors)} actors", flush=True)
 
 
 def rig_of(rigs, key):
@@ -268,6 +327,7 @@ def movie():
     sc, L, F, rigs, u = build()
     rb = u.robot
     add_specimens(sc, u)
+    fast_collisions(sc, L, u)
     sem, nano, pip = rig_of(rigs, "sem"), rig_of(rigs, "nanoindenter"), rig_of(rigs, "pip")
     hv, vhx = rig_of(rigs, "hardness"), rig_of(rigs, "vhx")
     PARK = np.radians(A.PARK_DEG)
