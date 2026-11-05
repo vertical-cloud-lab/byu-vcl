@@ -134,7 +134,9 @@ CAM_TOP = [(2000, -15000, 22500), (300, -2800, 0), (0, 0, 1)]
 CAM_UTIL = [(9600, -17500, 9800), (300, -2600, 2400), (0, 0, 1)]
 CAM_VLM = [(9800, -10400, 6600), (1800, -400, 1900), (0, 0, 1)]
 CAM_FLOOR = [(6200, -21500, 17500), (700, -2900, 0), (0, 0, 1)]
-CAM_SCALE = [(0, 4000, 26000), (0, -9000, 0), (0, 0, 1)]          # round 8: the EOS and the Meltio cell, both ends
+# round 8: the scale-up machines past the south row's ends (the EOS lower left, the Meltio cell lower right) with the
+# whole lab behind them; a camera test of five views found this the one that shows both whole
+CAM_SCALE = [(6200, -31000, 24000), (0, -6500, 0), (0, 0, 1)]
 CAM_UNIT = [(1900, -2900, 2300), (-1300, -5600, 800), (0, 0, 1)]
 CAM_OPEN = [(3500, -5900, 2700), (0, -1000, 1300), (0, 0, 1)]      # north of the south row's cable tray and argon
 CAM_OPEN2 = [(X2 + 3500, -5900, 2700), (X2, -1000, 1300), (0, 0, 1)]
