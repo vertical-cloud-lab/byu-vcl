@@ -46,6 +46,10 @@ checkout of this branch at `d28c733` on the CubXL Pi; its record is in [`run/`](
   it to 32.5 mm; `drop_tip` to 46.5 and back to 28.0. The post-run `HOME` check took
   12.678 s, which puts the plunger at 28.00 mm (-0.00 mm), so no steps were lost.
 - **After the run:** magnet off, cap sensor 0, both vials capped, tip back in A1.
+- **The path was the one checked:** the 43 `G01` moves the run sent ([`gantry_command.log`](run/gantry_command.log))
+  are identical, in order, to the mock run's moves that `capped_vial_keepout.py` checked
+  ([comparison](checks/gcode_vs_mock.txt)). So the tip's axis came no closer than 45.3 mm to
+  vial 1's while vial 1 was capped. The dispense went to gantry Z 81, tip end at deck Z 46.
 - `HOLD` was set at 22:52:24 and removed at 22:57:01.
 - **New on the Pi:** `~/byu-vcl-stirtrial`, a sparse, shallow checkout of this branch (only
   `cubos/configs`, `cubos/tools`, `cubos/patches` and `cubos/docs/tic_p20.txt`, 848 kB). A
