@@ -1,4 +1,4 @@
-# The tray plan: which tray goes in which slot, and why (#303, PR #318 round 7)
+# The tray plan: which tray goes in which slot, and why (#303, PR #318 rounds 7 and 8)
 
 `vlm.COLUMNS` holds the plan, `setup_lab.TRAYS`/`ITEMS`/`CAMS` what is on each tray, and
 `xvfb-run --server-num=60 python3 setup_lab.py fit` checks it. The check writes `out/tray_plan.json`, draws
@@ -30,35 +30,58 @@ The whole unit stays at 3950 mm, under #53's 13 ft (3962 mm).
 
 ## The plan
 
-Fourteen trays don't fit one Shuttle. A second one, the same size, stands beside the first: x = 3630 mm, 800 mm of
+Fourteen trays don't fit one Shuttle (fifteen since round 8). A second one, the same size, stands beside the first: x = 3630 mm, 800 mm of
 floor between the claddings (`vlm.SHUTTLE_X`). The 800 mm gap is there so a MiR250 can turn on the spot between the
 two units (see the floor plan below).
 
 | Shuttle | Slot | Tray bottom (mm) | Span (mm) | Tray | What is on it | Tallest (mm) |
 |---|---|---|---|---|---|---|
-| 1 | R1 | 300 | 750 | D | Hitachi TM4000PlusII SEM, Rigaku MiniFlex XRD, OpenFlexure array | 722 (XRD) |
+| 1 | R1 | 300 | 750 | D | Hitachi TM4000PlusII SEM, Rigaku MiniFlex XRD, powder prep station (round 8; the OpenFlexure array is gone) | 722 (XRD) |
 | 1 | R2 | 1050 | 750 | A | CubXL corrosion set-up, Opentrons OT-2 | 703 (camera head) |
 | 1 | R3 | 1800 | 775 | B | vial rack, multi-doser (chain carousel v2), Specac Autotouch vacuum press | 731 (multi-doser) |
 | 1 | R4 | 2575 | 725 | E | Plastometrex PIP, KLA iMicro, Malvern Mastersizer 3000 + Aero S | 689 |
 | 1 | F0 | 300 | 475 | J | sample storage: cups and plugs (Al, Cu), vials, tubes, stubs, coupons, bars, jars | 437 (UPS) |
 | 1 | F1 | 1950 | 725 | C | Bambu Lab H2D, Bambu Lab A1 mini | 692 |
-| 1 | F2 | 2675 | 725 | F | LECO PX500 polisher, Nabertherm NAT 15/65 furnace | 687 |
+| 1 | F2 | 2675 | 725 | F | LECO PX500 polisher, Nabertherm NAT 15/65 furnace, LECO MX400 mounting press, disc magazine, quench tank (round 8) | 687 |
 | 2 | 2R1 | 300 | 850 | K | tray glovebox (N2, purge-only), Keyence VHX-7000 | 810 (glovebox) |
 | 2 | 2R2 | 1150 | 725 | L | ZwickRoell zwickiLine Z5.0 lying on its side, Mitutoyo HM-220 micro-Vickers | 693 |
 | 2 | 2R3 | 1875 | 750 | M | Bruker S2 PUMA XRF, Sentry Air ductless hood, Makera Carvera CNC | 714 (hood) |
 | 2 | 2R4 | 2625 | 550 | H | DDM Novastar stencil printer, Opulo LumenPnP | 516 (stencil printer) |
 | 2 | 2F1 | 1950 | 725 | G | two Formlabs Form 4s, Form Wash, Form Cure | 696 |
 | 2 | 2F2 | 2675 | 725 | I | two SnowX SnowPods | 686 |
+| 2 | 2F0 | 300 | 475 | N | powder-jar store, feedstock: 204 jars (round 8) | 437 (UPS) |
+| 2 | 2R5 | 3175 | 500 | O | powder-jar store, atomized lots: 377 jars (round 8) | 437 (UPS) |
 
 The table is from one run of `setup_lab.py fit`; `out/tray_plan.json` has the run that matches the code. Every
 camera-carrying tray needs 725-750 mm, because a camera head on a standard post reaches 690-706 mm. Trays H and J
 have short posts (block at 270 mm) so their slots stay low.
 
 What is left: Shuttle 1 has 390 mm free at the top of its rear column (3300-3690), too little for a tray with a UPS.
-Its front column has 290 mm free. Shuttle 2 has 515 mm free in the rear column (one more short tray, up to a 500 mm
-span) and 290 mm in the front.
+Its front column has 290 mm free. Shuttle 2 had 515 mm free in the rear column (one more short tray, up to a 500 mm
+span), 290 mm at the top of the front and its low front slot under the access table. Round 8's two jar trays took the
+rear 500 mm (2R5) and the low front slot (2F0), so Shuttle 2 now has 15 mm left in its rear column and 290 mm at the
+top of its front.
 
-## What moved, and why
+## Round 8
+
+`setup_lab.merge_r8` takes each round-8 module's `TRAY_PLACEMENT`, `FLOOR_PLACEMENT`, `NEW_TRAYS` and `NEW_SLOTS`
+into the plan, and `fit` checks the result (18:40 UTC run: all 15 trays and all 13 docks clear). notes/lab_r8.md has
+the details.
+
+- **Two new short trays in Shuttle 2** (`r8_store`): N in 2F0, the front column's low slot under the access table
+  (475 mm), and O in 2R5, the rear column's last 500 mm (the room round 7 left). Each carries a powder-jar store and
+  its UPS, dock plate and two short camera posts.
+- **Tray D:** the OpenFlexure array is gone; the powder stream's prep station (XRD holders, SEM stubs, XRF cups;
+  `r8_powder.pxrd_prep`) stands at the front right, 147 mm tall.
+- **Tray F:** the MX400 mounting press at the back left and the disc magazine at the front right (`r8_prep`), the
+  quench tank with its lift basket (`r8_test`). The tank's own placement (x 860, y -150) stood inside the magazine,
+  so the plan moves it to x 680, y -50 (`setup_lab.R8_MOVES`): 25 mm from the furnace, 44 mm from the magazine, 21 mm
+  behind camera F1's post, out of the furnace door's swing.
+- **On the floor:** the EOS M 400-4 and the Meltio robot cell (`r8_scale`) stand south of the south row's ends, set
+  back 3525 and 2747 mm (their `setback`, which the merge now applies), with no MiR dock or target (`NO_DOCK`).
+- **Round 6's camera clashes** (D0, E0 and F1 touching their instruments' boxes) are gone: every camera rig is clear.
+
+## What moved in round 7, and why
 
 - **Tray B gets the vacuum press.** The Specac Atlas Autotouch 15T is loaded onto tray B in the set-up movie, at
   `alloy_press.PRESS_AT`, where the alloy route uses it. It is stored with its guard down (640 mm). The multi-doser is
