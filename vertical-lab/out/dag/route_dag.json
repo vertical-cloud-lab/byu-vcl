@@ -33,7 +33,7 @@
   "4": {
    "seconds": 6.87,
    "captions": [
-    "Chapter 4: cut a bar and pull it. Strength is what the objective scores."
+    "Chapter 4: while the build prints, the kept powder is checked: size, phases, composition, shape. Powder quality, measured."
    ],
    "mp4": "out/mp4/dag/route_dag_ch4.mp4",
    "png": "out/dag/route_dag_ch4.png"
@@ -41,10 +41,26 @@
   "5": {
    "seconds": 6.87,
    "captions": [
-    "Chapter 5: cheaper looks at the same nodes, from the trays."
+    "Chapter 5: cut bars, heat-treat them, pull them at room and elevated temperature. Strength is what the objective scores."
    ],
    "mp4": "out/mp4/dag/route_dag_ch5.mp4",
    "png": "out/dag/route_dag_ch5.png"
+  },
+  "6": {
+   "seconds": 6.87,
+   "captions": [
+    "Chapter 6: sections cut, mounted and polished, so the build's pores and cracks can be seen."
+   ],
+   "mp4": "out/mp4/dag/route_dag_ch6.mp4",
+   "png": "out/dag/route_dag_ch6.png"
+  },
+  "7": {
+   "seconds": 6.87,
+   "captions": [
+    "Chapter 7: cheaper looks at the same nodes, from the trays."
+   ],
+   "mp4": "out/mp4/dag/route_dag_ch7.mp4",
+   "png": "out/dag/route_dag_ch7.png"
   }
  }
 }

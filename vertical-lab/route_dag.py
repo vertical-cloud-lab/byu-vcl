@@ -1,7 +1,7 @@
 """The alloy route as a function network: the DAG from DAL's ONR YIP figures, brought in one stage at a time before each
 chapter of the alloy route (byu-vcl #303, PR #318).
 
-    python3 route_dag.py          # -> out/dag/route_dag_ch{1..5}.png, out/mp4/dag/route_dag_ch{1..5}.mp4,
+    python3 route_dag.py          # -> out/dag/route_dag_ch{1..7}.png, out/mp4/dag/route_dag_ch{1..7}.mp4,
                                   #    out/dag/route_dag_sheet.png, out/dag/route_dag.json
 
 Asked for on PR #318 (2026-11-04): "For the alloy workflow, you should bring in some version of the DAG either from the
@@ -81,12 +81,14 @@ EDGES = [("comp", "s"), ("comp", "f"), ("comp", "g"), ("g", "q"), ("a", "q"), ("
 FROM_BELOW = {"a", "pv"}
 
 # the lab's five steps (this repository's chapters), each under the stage it serves
+# round 8: seven chapters; the powder is checked (4) while the build prints, and the build's sections are prepared (6)
 CHIPS = [("1", "Charge cups", "A"), ("2", "Melt + atomize", "A"), ("3", "Sieve + print", "L"),
-         ("4", "Depowder, cut, pull", "T"), ("5", "Characterize", "T")]
-CHIP_Y, CHIP_H, CHIP_W = 6.08, 0.42, 2.18
+         ("4", "Powder checks", "A"), ("5", "Cut, heat-treat, pull", "T"), ("6", "Section, mount, polish", "L"),
+         ("7", "Characterize", "T")]
+CHIP_Y, CHIP_H, CHIP_W = 6.08, 0.42, 1.66
 CAPTION_Y = 6.82
 # chapter 5: which instrument looks at which node (this repository's mapping)
-LOOKS = {"q": "Mastersizer: size distribution", "rho": "SEM, OpenFlexure: pores, cracks",
+LOOKS = {"q": "Mastersizer, XRD, XRF, SEM:\nthe powder", "rho": "SEM, VHX: pores, cracks",
          "U": "PIP, nanoindenter, Vickers:\nstrength without a bar"}
 
 # Each beat: (stages drawn, the stage in red, red chips, extra red nodes, caption). Stages before the red one are grey.
@@ -97,10 +99,14 @@ BEATS = {
          "Chapter 1: the composition becomes charge cups, dosed, weighed and pressed.")],
     2: [(["I", "C", "A"], "A", ["2"], ["q", "a"], "Chapter 2: melt and atomize. Its output is powder quality.")],
     3: [(["I", "C", "A", "L"], "L", ["3"], [], "Chapter 3: sieve the powder and print. Is the build dense and crack-free?")],
-    4: [(["I", "C", "A", "L", "T", "O"], "T", ["4"], ["U", "OBJ"], "Chapter 4: cut a bar and pull it. Strength is what the "
-         "objective scores.")],
-    5: [(["I", "C", "A", "L", "T", "O"], None, ["5"], ["q", "rho", "U"],
-         "Chapter 5: cheaper looks at the same nodes, from the trays.")],
+    4: [(["I", "C", "A", "L"], "A", ["4"], ["q"], "Chapter 4: while the build prints, the kept powder is checked: size, "
+         "phases, composition, shape. Powder quality, measured.")],
+    5: [(["I", "C", "A", "L", "T", "O"], "T", ["5"], ["U", "OBJ"], "Chapter 5: cut bars, heat-treat them, pull them at "
+         "room and elevated temperature. Strength is what the objective scores.")],
+    6: [(["I", "C", "A", "L", "T", "O"], "L", ["6"], ["rho"], "Chapter 6: sections cut, mounted and polished, so the "
+         "build's pores and cracks can be seen.")],
+    7: [(["I", "C", "A", "L", "T", "O"], None, ["7"], ["q", "rho", "U"],
+         "Chapter 7: cheaper looks at the same nodes, from the trays.")],
 }
 TITLE = "The alloy route as a function network"
 SUB = "DAL's ONR YIP network (network_dag.py): a column per stage, its cost above it"
@@ -188,7 +194,7 @@ def draw(ch, beat, path):
         ax.text(x + w / 2, y + h / 2, label, fontsize=11.5 if k in NODES else (9.6 if k == "comp" else 10.5),
                 color=text[t], ha="center",
                 va="center", zorder=4, linespacing=1.15)
-        if ch == 5 and k in LOOKS:
+        if ch == 7 and k in LOOKS:
             ax.text(x + w / 2, y + h + 0.08, LOOKS[k], fontsize=9.5, color=RED, ha="center", va="top", zorder=4,
                     linespacing=1.1)
     x0 = (W - (len(CHIPS) * CHIP_W + (len(CHIPS) - 1) * 0.16)) / 2
@@ -201,7 +207,7 @@ def draw(ch, beat, path):
         x = x0 + i * (CHIP_W + 0.16)
         ax.add_patch(FancyBboxPatch((x, CHIP_Y - CHIP_H / 2), CHIP_W, CHIP_H, boxstyle="round,pad=0,rounding_size=0.2",
                                     fc=WHITE, ec=line[t], lw=1.8 if t == "red" else 1.1, zorder=3))
-        ax.text(x + CHIP_W / 2, CHIP_Y, f"{n}  {name}", fontsize=11, color=RED if t == "red" else LIGHT,
+        ax.text(x + CHIP_W / 2, CHIP_Y, f"{n}  {name}", fontsize=9.6, color=RED if t == "red" else LIGHT,
                 ha="center", va="center", zorder=4, fontweight="bold" if t == "red" else "normal")
     ax.text(W / 2, CAPTION_Y, caption, fontsize=15, color=INK, ha="center", va="center")
     fig.savefig(path, dpi=DPI, facecolor=WHITE)
@@ -257,7 +263,7 @@ def main():
         finals.append(final)
         print(f"chapter {ch}: {secs:.1f} s")
     ims = [Image.open(p).convert("RGB").resize((640, 360), Image.LANCZOS) for p in finals]
-    sheet = Image.new("RGB", (640 * 2 + 30, 360 * 3 + 40), "white")
+    sheet = Image.new("RGB", (640 * 2 + 30, 360 * 4 + 50), "white")
     for i, im in enumerate(ims):
         sheet.paste(im, (10 + (i % 2) * 650, 10 + (i // 2) * 370))
     sheet.save(OUT / "route_dag_sheet.png")
