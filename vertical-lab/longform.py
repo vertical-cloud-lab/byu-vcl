@@ -138,32 +138,18 @@ CHAPTERS = [
                "micro-Vickers, the nanoindenter and PIP on the steel-mounted slice. Each instrument's data is "
                "shown, and labelled real or illustrative."],
          parts=[("mp4", "dag/route_dag_ch7.mp4", None), ("mp4", "alloy_characterize.mp4", None)]),
-    dict(key="charact", title="Characterization instruments, one by one",
-         card=["Each modelled from its maker's published figures and photos, with its moving pieces, doing its job. "
-               "Ten were refitted against footage of the real machine."],
+    # Round 8: the XRD, Mastersizer, XRF and SEM work in chapter 4, the furnace, wire EDM and Instrons in chapter 5, the
+    # mounting press, PX500 and Carvera in chapter 6, the SEM, VHX, HM-220, iMicro and PIP in chapter 7, the sieve shaker
+    # in chapter 3. Their stand-alone tour clips are left out (Sterling, of the XRD: "why isn't a tray coming and then the
+    # robot is putting something in there"); this chapter keeps the stations no chapter uses.
+    dict(key="stations", title="The other stations: a tensile tester on its side, gloveboxes, fume hoods, stores, shipping",
+         card=["Every instrument model at a glance, then the stations the alloy route doesn't pass through: a "
+               "horizontal tensile tester for small bars, a glovebox on a tray and one on the floor, fume hoods (no HF), "
+               "the sample store, the powder-jar store, and a packaging station that labels and seals powder for "
+               "shipping."],
          parts=[("still", "instruments_gallery.png", 9.0, "Every instrument model: size, and on a tray or beside "
-                 "the VLM", None),
-                ("mp4", "instruments/xrd.mp4", "XRD (Rigaku MiniFlex) and SEM (Hitachi TM4000PlusII)"),
-                ("mp4", "instruments/sem.mp4", None),
-                ("mp4", "instruments/vhx.mp4", "Keyence VHX-7000 with the EA-300 LIBS head, remoted in"),
-                ("mp4", "instruments/xrf.mp4", "Benchtop XRF: Bruker S2 PUMA"),
-                ("mp4", "instruments/mastersizer.mp4", "Malvern Mastersizer 3000 + Aero S"),
-                ("mp4", "instruments/nanoindenter.mp4", "KLA iMicro nanoindenter"),
-                ("mp4", "instruments/pip.mp4", "Plastometrex PLX-Benchtop (PIP)"),
-                ("mp4", "instruments/hardness.mp4", "A micro-Vickers tester: Mitutoyo HM-220")]),
-    dict(key="prep", title="Sample prep, testing, powder handling, fume hoods and shipping",
-         card=["Mounting and polishing, heat treatment, a CNC, the wire EDM, tensile testers and their automation, "
-               "sieving, a glovebox on a tray and one on the floor, fume hoods (no HF), the sample store, the "
-               "powder-jar store, and a packaging station that labels and seals powder for shipping."],
-         parts=[("mp4", "instruments/mount_press.mp4", "The hot mounting press"),
-                ("mp4", "instruments/polisher.mp4", "LECO PX500 grinder-polisher"),
-                ("mp4", "instruments/furnace.mp4", "Nabertherm furnace"),
-                ("mp4", "instruments/cnc.mp4", "A CNC with a tool changer: Makera Carvera"),
-                ("mp4", "instruments/wire_edm.mp4", "FANUC ROBOCUT wire EDM"),
+                 "the VLM", "Every instrument model"),
                 ("mp4", "instruments/tensile_h.mp4", "A tensile tester on its side: zwickiLine Z5.0 TN"),
-                ("mp4", "instruments/instron_small.mp4", "The two Instrons"),
-                ("mp4", "instruments/instron_floor.mp4", None),
-                ("mp4", "instruments/sieve.mp4", "Sieve shaker: Retsch AS 200"),
                 ("mp4", "instruments/glovebox_tray.mp4", "A glovebox on a tray"),
                 ("mp4", "instruments/glovebox.mp4", "The floor glovebox"),
                 ("mp4", "instruments/fumehood.mp4", "Fume hoods: a ducted XStream, a ductless tray hood"),
