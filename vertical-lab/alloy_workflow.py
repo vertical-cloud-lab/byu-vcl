@@ -596,7 +596,7 @@ GRIP_HANDLE = 0.88               # on the tongs' 12 mm handle (as GRIP_LUG)
 GRIP_KNOB = 0.79                 # on the IPA lid's 20 mm knob (gap = 28 - 90 (c - 0.70), ur_arm.gripper_fk)
 GRIP_HALF = 0.94                 # on a broken half's 6 mm reduced section
 CAB_TOP = P.MIR["H"] + P.CAB_H   # 780: the MiR cabinet's top plate
-DRIVE_SHOWN = 3.0                # the long drives are shown at 3x, and say so
+DRIVE_SHOWN = 4.0                # the long drives are shown at 4x, and say so
 SS_HOT = dict(E=65000.0, ys=190.0, uts=245.0, elong=0.10,
               src="illustrative: AddUp's room-temperature values scaled to about 60 % at 200 C (assumed)")
 
@@ -1140,9 +1140,8 @@ def _movie(B):
         D_.set_angle(0.0)
         sc.alpha["dbox fall"] = 0.0
         sc.alpha["plate residue"] = 0.0
-        st["cap"] = ("Clean. The arm takes the plate out by its lug and sets it in the low pocket on the MiR250's cabinet, "
-                     "half a turn round, its lug to the right: the plate drops 12 mm into a bored block (round 7 asked for "
-                     "pockets, not posts).")
+        st["cap"] = ("Clean. The arm takes the plate out by its lug and sets it in the low pocket on the MiR250's cabinet: "
+                     "the plate drops 12 mm into a bored block (round 7 asked for pockets, not posts).")
         status(sc, Plate="depowdered", Arm="taking the plate")
         step(1.2, RB.both(D_.ghost(0.0), D_.door(1.0)), hold=0.05, labels=[])
         go(Tw=tilt(p_box - a_dir * 260), secs=1.3, grip=0.0)
@@ -1153,23 +1152,17 @@ def _movie(B):
         lin(tilt(p_box + (0, 0, 14)), 0.5)
         lin(tilt(p_mid), 1.0)
         seat = amr.world(M.plate_seat(CAB_TOP))
-        p_c = seat + (78.0, 0, 28.0)
-        cdir = (0.0, -1.0)
-        b_dir = np.array([0, -math.cos(math.radians(TILT)), -math.sin(math.radians(TILT))])
-        def turned(p_):
-            """The box's grasp turned half a turn about the vertical: the plate stays flat, its lug to the right.
-            (Round 4's tilt(toward=-y, spin=180) also rolled it 120 deg onto its side.)"""
-            Tm = tilt(p_)
-            Tm[:3, :3] = R((0, 0, 1), 180.0)[:3, :3] @ Tm[:3, :3]
-            return Tm
+        # as it came out of the box, its lug to the left: on edge in the EDM that puts the lug at the plate's right,
+        # clear of the wire's path, and the bars over the comb's slots (a half turn here put them 156 mm off)
+        p_c = seat + (-78.0, 0, 28.0)
         CAM_POCKET = [tuple(seat + (-900, -1500, 900)), tuple(seat + (0, 0, 60)), (0, 0, 1)]
-        go(Tw=turned(p_c + (0, 0, 120)), secs=2.2, cam=CAM_POCKET,
+        go(Tw=tilt(p_c + (0, 0, 120)), secs=2.2, cam=CAM_POCKET,
            labels=[("plate pocket", tuple(seat + (0, 0, 40)), (0.30, 0.66))])
-        lin(turned(p_c), 1.0)
+        lin(tilt(p_c), 1.0)
         grip(0.0, 0.5)
         rb.release(amr.cab)
         status(sc, Plate="in its pocket on the MiR")
-        lin(turned(p_c - b_dir * 110), 0.8, labels=[])
+        lin(tilt(p_c - a_dir * 110), 0.8, labels=[])
         park(1.4, extra=RB.both(D_.door(0.0), W.ghost(0.0)))
         status(sc, Arm="parked")
 
@@ -1307,7 +1300,7 @@ def _movie(B):
         lift = M.COMB["lift"]
         for i, k in enumerate(SPEC_ORDER):
             g = f"bar{k}"
-            fast = 1.0 if i == 0 else 0.45
+            fast = 1.0 if i == 0 else 0.32
             end_up = -50.0 if held_point(sc, g, (0, -50.0, 3.0))[2] > held_point(sc, g, (0, 50.0, 3.0))[2] else 50.0
             grasp_local = (0.0, end_up - math.copysign(13.0, end_up), 3.0)
             if i == 0:
@@ -1553,7 +1546,7 @@ def _movie(B):
 
     def test_one(k, hot):
         g = f"bar{k}"
-        fastr = 1.0 if not hot else 0.7
+        fastr = 1.0 if not hot else 0.6
         end_up = -50.0 if held_point(sc, g, (0, -50.0, 3.0))[2] > held_point(sc, g, (0, 50.0, 3.0))[2] else 50.0
         grasp_local = (0.0, end_up - math.copysign(13.0, end_up), 3.0)
         p_top = held_point(sc, g, grasp_local)
