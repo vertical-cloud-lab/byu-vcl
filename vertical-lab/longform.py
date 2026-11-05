@@ -15,6 +15,7 @@ A clip that isn't there is left out with a warning, so the join always runs on w
 from __future__ import annotations
 
 import datetime as dt
+import os
 import hashlib
 import json
 import re
@@ -32,6 +33,7 @@ MP4 = OUT / "mp4"
 NAME = "vertical_lab_longform"
 SIZE, FPS = (1280, 720), 15
 CARD_S = 5.5
+THREADS = ["-threads", os.environ["FFMPEG_THREADS"]] if os.environ.get("FFMPEG_THREADS") else []   # runner_guard.py sets 2
 GAP = 10.4                     # YouTube drops every chapter if one is under 10 s
 BLUE = (30, 60, 140)
 GREY = (110, 114, 120)
@@ -248,7 +250,7 @@ def encode_frames(frames, path: Path, n: int):
     """Raw RGB frames (an iterator of HxWx3 uint8) to an H.264 MP4 at FPS."""
     p = subprocess.Popen(["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s",
                           f"{SIZE[0]}x{SIZE[1]}", "-r", str(FPS), "-i", "-", "-frames:v", str(n), "-c:v", "libx264",
-                          "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p", "-video_track_timescale", "15360",
+                          *THREADS, "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p", "-video_track_timescale", "15360",
                           str(path)], stdin=subprocess.PIPE)
     for fr in frames:
         p.stdin.write(np.ascontiguousarray(fr, dtype=np.uint8).tobytes())
@@ -382,8 +384,29 @@ def normalise(src: Path, dst: Path, overlay: Path | None = None):
         args = ["-i", src, "-vf", vf]
     else:
         args = ["-i", src, "-i", overlay, "-filter_complex", f"[0:v]{vf}[v];[v][1:v]overlay=0:0[o]", "-map", "[o]"]
-    run("ffmpeg", "-y", "-loglevel", "error", *args, "-an", "-c:v", "libx264", "-preset", "medium", "-crf", "21",
-        "-pix_fmt", "yuv420p", "-video_track_timescale", "15360", dst)
+    run("ffmpeg", "-y", "-loglevel", "error", *args, "-an", "-c:v", "libx264", *THREADS, "-preset", "medium",
+        "-crf", "21", "-pix_fmt", "yuv420p", "-video_track_timescale", "15360", dst)
+
+
+def warm():
+    """Normalise every clip the plan has into the cache, without joining: run while renders are still going, so the
+    final build only encodes what changed (each part is keyed on its source's bytes)."""
+    tmp = Path(tempfile.mkdtemp(prefix="longform_warm_"))
+    n = 0
+    for i, r in enumerate(plan()):
+        if r.get("missing") or r["kind"] not in ("mp4", "footage"):
+            continue
+        out = tmp / f"w{i:03d}.mp4"
+        if r["kind"] == "footage":
+            ov = tmp / f"badge{i:03d}.png"
+            badge_png("REAL FOOTAGE", r["caption"], ov)
+            cached([r["src"], ov, SIZE, FPS, "footage"], lambda d, r=r, ov=ov: normalise(r["src"], d, ov), out)
+        else:
+            cached([r["src"], SIZE, FPS, "mp4"], lambda d, r=r: normalise(r["src"], d), out)
+        out.unlink()
+        n += 1
+        print(f"  warm: {r.get('git') or r['src']}", flush=True)
+    print(f"{n} parts in {CACHE}", flush=True)
 
 
 # ===================================================================================================== DAL's steps
@@ -701,6 +724,8 @@ if __name__ == "__main__":
         print(readme_table(json.loads((OUT / "longform.json").read_text())))
     elif args and args[0] == "upload":
         upload(json.loads((OUT / "longform.json").read_text()))
+    elif args and args[0] == "warm":                  # normalise the clips into the cache ahead of the build
+        warm()
     elif args and args[0] == "cards":                 # the cards alone, to /tmp, to read them
         for i, ch in enumerate(CHAPTERS, 1):
             card_image(f"Part {i} of {len(CHAPTERS)}", ch["title"], ch["card"]).save(f"/tmp/card_{ch['key']}.png")
