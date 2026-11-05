@@ -1048,7 +1048,7 @@ def movie():
     status(sc, Aconity="print done, under powder")
 
     cap = "Printed: four ASTM E8 subsize bars and a handling lug on the 170 mm plate, buried in powder. The MiR " \
-          "comes back along the line, and chapter 4 takes the plate from here."
+          "comes back along the line. Chapter 4 checks the sieved powder; chapter 5 takes the plate from here."
 
     sc.step(f"5/{n}", cap, 1.2, W.ghost(0.0), hold=0.1, cam_to=CAM_ACO)
     status(sc, Arm="UR10e on MiR250, parked", Powder="", Sieve="", Aconity="", Plate="in the Aconity MIDI")
