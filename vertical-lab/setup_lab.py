@@ -392,17 +392,25 @@ class TwoLab(A.Lab):
             sc.gmat[f"{pre}lift"] = T((x, 0, z))
             sc.gmat[f"{pre}belts"] = T((x, 0, z + 40)) @ S((1, 1, max(1.0, A.Z_BELT_TOP - (z + 40))))
             sc.gmat[f"{pre}shutter"] = T((x, 0, s * (V.Z_OPEN_TOP - V.Z_SILL + 10)))
+        if self.robot is not None and self.robot.held is not None:     # animate.lab_scene's docked arm
+            self.robot.set()
         self.gauges()
 
     def gauges(self):
-        if not self.show_gauges or self.focus is None:
+        """The focused tray's state and Shuttle, then the scene's own status lines (extra_gauges: empty in the set-up
+        movie; animate.workflow's arm, doser, load cell and pipette)."""
+        extra = list(getattr(self, "extra_gauges", []) or [])
+        if not self.show_gauges or (self.focus is None and not extra):
             self.sc.gauges = []
             return
-        k = self.focus
-        w = self.where[k]
-        state = "moving, unpowered" if w is None else ("at the opening, powered" if w == "open" else
-                                                      f"stored ({w}), powered")
-        self.sc.gauges = [(f"Tray {k}", state), ("Shuttle", str(self.unit.get(k, 1)))]
+        g = []
+        if self.focus is not None:
+            k = self.focus
+            w = self.where[k]
+            state = "moving, unpowered" if w is None else ("at the opening, powered" if w == "open" else
+                                                          f"stored ({w}), powered")
+            g = [(f"Tray {k}", state), ("Shuttle", str(self.unit.get(k, 1)))]
+        self.sc.gauges = g + extra
 
     def fetch(self, k, label, caption, fast=1.0, cam=None, hold=0.4, mint=0.6):
         """animate.Lab.fetch on tray k's own Shuttle, to its opening; mint: the shortest lift move (s)."""

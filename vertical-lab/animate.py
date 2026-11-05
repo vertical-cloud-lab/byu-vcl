@@ -71,6 +71,12 @@ CAM_WORK = [(-1300, -4300, 2550), (60, -1450, 1060), (0, 0, 1)]
 CAM_MID = [(1700, -3300, 2100), (245, -1320, 1170), (0, 0, 1)]      # on the way to CAM_DOSE, clear of the arm
 CAM_DOSE = [(1000, -1600, 1330), (245, -1320, 1170), (0, 0, 1)]     # along the rig's loop, at the station
 CAM_CUB = [(1500, -3300, 2000), (60, -1420, 1010), (0, 0, 1)]
+# round 8, the workflow in the whole lab (PR #318: "In 9:09, suddenly the VLM only has a few things on board"): the wide
+# shots take in both Shuttles, every tray loaded, and the floor; the close-ups at Shuttle 1's opening are round 2's
+CAM_LAB = [(11500, -18500, 12500), (700, -2600, 300), (0, 0, 1)]        # the whole lab: setup_lab.ORBIT's last view
+CAM_LAB_VLM = [(7600, -9000, 5200), (1600, -900, 1700), (0, 0, 1)]      # both Shuttles, see-through, and the dock
+CAM_LAB_OPEN = [(3500, -5900, 2700), (0, -1000, 1300), (0, 0, 1)]       # setup_lab.CAM_OPEN: clear of the south row
+LAB_TITLE = "Vertical cloud lab: atomized powder dosed for the CubXL"
 
 
 class Lab:
@@ -573,22 +579,63 @@ def stream_points(L: Lab, t: float, on: float) -> np.ndarray:
     return np.c_[x, y, z]
 
 
-def workflow(data):
+def lab_scene(data, name="vlm_workflow", title=LAB_TITLE, highlight=None, unit=0):
+    """The whole lab as the set-up movie leaves it (setup_lab.build: two Shuttles, every tray loaded with its UPS and
+    camera posts, the floor machines, the utilities, both bay cameras), with MiR250 + UR10e unit `unit` (setup_lab.Unit:
+    round 7's arm with the D405 on its wrist, the low pocketed holder on its cabinet) docked at Shuttle 1's opening
+    (warehouse.dock_pose("vlm"), round 2's AMR_XY) and the other on its charger. The cladding is see-through, so every
+    tray shows. -> (scene, lab); lab.robot is the docked arm, lab.amr_group the group its holder rides on."""
+    import setup_lab as SL
+    import warehouse as W
+    idata = SL.load_all()
+    sc, L, F, items, rigs, units, util, ulabel, vp = SL.build(data, idata, name=name, title=title,
+                                                               highlight=highlight)
+    SL.add_bay_cams(sc)
+    u = units[unit]
+    u.set(W.dock_pose("vlm"))
+    L.robot = u.robot
+    L.amr_group = f"{u.name}_cab"
+    L.units, L.items, L.floor = units, items, F
+    _, seat = P.buffer_holder()
+    L.buffer_seat = (BUFFER_LOCAL[0], BUFFER_LOCAL[1], P.AMR_TOP - 20 + seat[2])
+    L.skin(1.0)(1.0)
+    L.apply_state()
+    return sc, L
+
+
+def workflow(data, lab=True):
     """Round 2's run, re-scripted (PR #318: "Why are you dosing salt?"): the multi-doser doses 25 mg of an atomized
     powder, and the CubXL on tray A, laid out for DAL's copper corrosion screen (instruments_lab.cubxl_corrosion), adds
     electrolyte to it: DAL's powder reactivity test (digital-alloy-lab PR #180, alloy-corrosion/cubxl-setup.md section
     8, at aeda51a). Salt is never dosed as a powder: DAL's section 8 rules that out ("Making electrolyte from solid NaCl
-    on the deck is possible but pointless here"); the electrolyte is a stock the P20 draws from."""
+    on the deck is possible but pointless here"); the electrolyte is a stock the P20 draws from.
+
+    Round 8 (PR #318: "In 9:09, suddenly the VLM only has a few things on board"): lab=True stages it in the whole lab
+    as the set-up movie leaves it (lab_scene): both Shuttles, every tray loaded, the floor machines, the docked MiR250 +
+    UR10e. lab=False is round 2's single Shuttle with trays A-C (-> vlm_workflow_r2)."""
     import carousel as C
     import cubxl_rig
     import instruments_lab as IL
-    sc, L = new_scene("vlm_workflow", data, highlight=MODULE)
+    if lab:
+        sc, L = lab_scene(data, highlight=MODULE)
+        amr = L.amr_group
+        cam_wide, cam_open = CAM_LAB_VLM, CAM_LAB_OPEN
+    else:
+        sc, L = new_scene("vlm_workflow_r2", data, highlight=MODULE)
+        amr = "amr"
+        cam_wide, cam_open = CAM_WIDE, CAM_OPEN
     rb, car = L.robot, L.carousel
     cub = cubxl_rig.CubRig(L)
+    if lab:            # the set-up's static corrosion CubXL goes: CubRig draws the same model with its head moving
+        for key, g, names, _ in L.items.get("A", []):
+            if key == "cubxl_corrosion":
+                for nm in names:
+                    sc.alpha[nm] = 0.0
+                    sc.base_alpha[nm] = 0.0
     test = IL.powder_test()
     cub.pose(cubxl_rig.state_at(test, 0.0))
     q = IL.POWDER_TEST
-    sc.cam = list(CAM_WIDE)
+    sc.cam = list(CAM_LAB if lab else CAM_WIDE)
     L.extra_gauges = [("Arm", f"{ROBOT_NAME}, parked"), ("Doser", "module 1 at the station"),
                       ("Load cell", "0.0 mg"), ("CubXL P20", "parked, no tip")]
     L.apply_state()
@@ -613,8 +660,25 @@ def workflow(data):
     cap = f"An example run: the multi-doser doses {q['mg']:.0f} mg of an atomized powder and the CubXL adds " \
           "electrolyte to it, DAL's powder reactivity test (PR #180, cubxl-setup.md §8: 10-50 mg of each atomizer " \
           "run's powder; the metal it gives up tracks its oxide). The arm asks for tray B, the powder doser."
-    sc.step(f"1/{n}", cap, 1.0, None, hold=0.5,
-            labels=[("tray B: powder dosing", (V.TRAY_W / 2 - 300, *V.SLOTS["R3"]), (0.86, 0.34))])
+    if lab:            # the whole lab first, as the set-up movie leaves it; then in to Shuttle 1
+        import warehouse as W
+        u0, u1 = L.units[0], L.units[1]
+        cap0 = f"An example run in the lab as set up: two Kardex Shuttles with every tray loaded (A-{max(L.tray)}), " \
+               "the floor machines, one MiR250 + UR10e docked at Shuttle 1's opening and the other on its charger. " \
+               f"The multi-doser doses {q['mg']:.0f} mg of an atomized powder and the CubXL adds electrolyte to it, " \
+               "DAL's powder reactivity test (PR #180, cubxl-setup.md §8: 10-50 mg of each atomizer run's powder; " \
+               "the metal it gives up tracks its oxide)."
+        sc.step(f"1/{n}", cap0, 1.6, None, hold=1.4,
+                labels=W.auto(sc, CAM_LAB, [("Shuttle 1: alloy route, characterization", (-700, 0, 2600)),
+                                            ("Shuttle 2: fabrication, testing, powder store",
+                                             (V.SHUTTLE_X[2] + 700, 0, 2600)),
+                                            ("MiR250 + UR10e, docked", (u0.pose[0], u0.pose[1], 1400)),
+                                            ("the other unit, on charge", (u1.pose[0], u1.pose[1], 1400))]))
+        sc.step(f"1/{n}", cap, 2.4, None, hold=0.5, cam_to=CAM_LAB_VLM,
+                labels=[("tray B: powder dosing", (V.TRAY_W / 2 - 300, *V.SLOTS["R3"]), (0.86, 0.34))])
+    else:
+        sc.step(f"1/{n}", cap, 1.0, None, hold=0.5,
+                labels=[("tray B: powder dosing", (V.TRAY_W / 2 - 300, *V.SLOTS["R3"]), (0.86, 0.34))])
     L.fetch("B", f"1/{n}", cap, cam=CAM_WORK)
     # ------------------------------------------------------------------ 2. an empty vial into the doser
     rack_xy = LOADS["B"][0][1:]
@@ -678,7 +742,7 @@ def workflow(data):
     L.note(1, "Doser", f"module {MODULE + 1} undocked")
     # ------------------------------------------------------------------ 4. vial to the arm's base, tray B up
     buf = np.array(L.buffer_seat)
-    p_buf = (sc.world("amr") @ np.r_[buf + (0, 0, grasp_z), 1.0])[:3]
+    p_buf = (sc.world(amr) @ np.r_[buf + (0, 0, grasp_z), 1.0])[:3]
     cap = f"The arm takes the vial out ({q['mg']:.1f} mg in it) and stands it in the holder on its own base, so the " \
           "VLM can swap trays. Tray B goes back to its slot and its power."
     L.note(0, "Arm", "vial: doser to its base")
@@ -688,10 +752,10 @@ def workflow(data):
     rb.grasp("vial")
     sc.step(f"4/{n}", cap, 0.4, rb.line_to(level(p_cup + (0, 0, 6))), hold=0.0)
     sc.step(f"4/{n}", cap, 1.0, rb.line_to(level(p_cup + (0, -190, 6))), hold=0.05)
-    place(L, rb, f"4/{n}", cap, down(p_buf), down(p_buf + (0, 0, 120)), "amr")
+    place(L, rb, f"4/{n}", cap, down(p_buf), down(p_buf + (0, 0, 120)), amr)
     sc.step(f"4/{n}", cap, 1.2, rb.joint_to(PARK_RAD), hold=0.1)
     L.note(0, "Arm", "parked, vial on its base")
-    L.store("B", f"4/{n}", cap, cam=CAM_OPEN)
+    L.store("B", f"4/{n}", cap, cam=cam_open)
     # ------------------------------------------------------------------ 5. tray A down, the vial into the CubXL's holder
     cap = "Tray A, the corrosion station, comes down: the CubXL laid out for DAL's copper screen, its head parked at " \
           "the back. The arm stands the vial in the free front seat of Ben's 9-vial holder, beside the seawater and " \
@@ -726,11 +790,11 @@ def workflow(data):
     sc.step(f"6/{n}", cap, 5.0, cub.play(test, "first", "end", on_state), hold=0.4)
     cap = "DAL's test then holds the liquid on the powder for a set time and sends it to ICP-MS with the corrosion " \
           "tubes: dissolved metal per gram, run by run. Tray A goes back up with the vial, to a slot with power."
-    L.store("A", f"6/{n}", cap, cam=CAM_WIDE)
+    L.store("A", f"6/{n}", cap, cam=cam_wide)
     L.note(0, "Arm", "parked; next request")
     sc.step(f"6/{n}", f"Done: {q['mg']:.0f} mg of atomized powder under {q['ul']:.0f} µL of seawater in the CubXL on "
-            "tray A, stored and powered. The arm and the opening are free for the next request.", 1.0, None, hold=2.5,
-            still=True)
+            "tray A, stored and powered. The arm and the opening are free for the next request.", 2.4 if lab else 1.0,
+            None, hold=2.5, still=True, cam_to=CAM_LAB if lab else None)
     print(f"highest forearm/wrist point {rb.max_z_world:.0f} mm; opening top {V.Z_OPEN_TOP:.0f} mm", flush=True)
     return sc.save()
 
@@ -793,10 +857,11 @@ def ur_reach() -> float:
 
 
 PARK_RAD = np.radians(PARK_DEG)
-CHAPTERS = {"assembly": assembly, "loading": loading, "workflow": workflow, "disassembly": disassembly}
+CHAPTERS = {"assembly": assembly, "loading": loading, "workflow": workflow, "disassembly": disassembly,
+            "workflow_r2": lambda data: workflow(data, lab=False)}     # round 2's one Shuttle -> vlm_workflow_r2
 
 if __name__ == "__main__":
-    names = sys.argv[1:] or [*CHAPTERS, "full"]
+    names = sys.argv[1:] or [*(c for c in CHAPTERS if c != "workflow_r2"), "full"]
     data = lab.meshes() if any(n in CHAPTERS for n in names) else None
     for name in names:
         print(full() if name == "full" else CHAPTERS[name](data), flush=True)

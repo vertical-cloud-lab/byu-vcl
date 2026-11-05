@@ -2715,12 +2715,21 @@ def join(parts=JOIN, name="vlm_services_all") -> str:
     return f"{out}: {out.stat().st_size / 1e6:.1f} MB"
 
 
+GIF_MAX = 4.9e6             # bytes: the PR's cap on a GIF (notes/round8_plan.md)
+
+
 def _gif(name):
+    """The clip's GIF at line.mp4_to_gif's settings; over GIF_MAX, again smaller (640 px, then 5 fps, more lossy)."""
     from scene import PREVIEW
     if PREVIEW:
         return
     import line
-    print(line.mp4_to_gif(OUT / "mp4" / f"{name}.mp4", OUT / f"{name}.gif"), flush=True)
+    mp4, gif = OUT / "mp4" / f"{name}.mp4", OUT / f"{name}.gif"
+    for kw in (dict(), dict(width=640, lossy=100), dict(width=640, fps=5, lossy=120), dict(width=560, fps=5, lossy=140)):
+        msg = line.mp4_to_gif(mp4, gif, **kw)
+        if gif.stat().st_size <= GIF_MAX:
+            break
+    print(msg, flush=True)
 
 
 if __name__ == "__main__":

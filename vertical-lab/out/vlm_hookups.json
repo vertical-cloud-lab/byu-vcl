@@ -1,7 +1,7 @@
 {
  "name": "vlm_hookups",
- "fps": 10,
- "n_frames": 396,
+ "fps": 6,
+ "n_frames": 241,
  "size": [
   1280,
   720
@@ -11,67 +11,67 @@
    "label": "1/6",
    "caption": "Every tray carries its own UPS, an Eaton 5PX 1500 standing at its back right (white 'UPS' on top, a status strip: green on mains, amber on battery). In its slot, a tray is plugged into the machine through one automatic coupling in the slot's right-hand side wall.",
    "start_frame": 0,
-   "end_frame": 67
+   "end_frame": 40
   },
   {
    "label": "2/6",
-   "caption": "Stored in R2, docked: the dock in the side wall holds the plate home. Mains, Ethernet, compressed air, nitrogen and chilled water in and out are all live (the dots), from the service riser through the coupling to the tray; the UPS charges. Tray A's instruments are drawn faint.",
-   "start_frame": 68,
-   "end_frame": 133
+   "caption": "Stored in R2, docked: the dock in the side wall holds the plate home. Mains, Ethernet, compressed air, nitrogen and chilled water in and out are all live (the slow markers show which way each goes), from the service riser through the coupling to the tray; the UPS charges. Tray A's instruments are drawn faint.",
+   "start_frame": 41,
+   "end_frame": 79
   },
   {
    "label": "3/6",
    "caption": "Before the tray may move: the air, N2 and water valves shut and their lines vent (Staubli: the couplings must not part under pressure); the contactor opens, so the UPS takes the load; then the dock pulls back 60 mm, its pins 22 mm clear of the tray.",
-   "start_frame": 134,
-   "end_frame": 195
+   "start_frame": 80,
+   "end_frame": 117
   },
   {
    "label": "4/6",
    "caption": "In transit, about 6 s from R2 to the opening: no coupling, the UPS carries the instruments, the cameras and the tray's switch. The tray's lamp and the UPS's strip are amber.",
-   "start_frame": 196,
-   "end_frame": 202
+   "start_frame": 118,
+   "end_frame": 122
   },
   {
    "label": "4/6",
    "caption": "In transit, about 6 s from R2 to the opening: no coupling, the UPS carries the instruments, the cameras and the tray's switch. The tray's lamp and the UPS's strip are amber.",
-   "start_frame": 203,
-   "end_frame": 223
+   "start_frame": 123,
+   "end_frame": 135
   },
   {
    "label": "4/6",
    "caption": "In transit, about 6 s from R2 to the opening: no coupling, the UPS carries the instruments, the cameras and the tray's switch. The tray's lamp and the UPS's strip are amber.",
-   "start_frame": 224,
-   "end_frame": 230
+   "start_frame": 136,
+   "end_frame": 140
   },
   {
    "label": "4/6",
    "caption": "In transit, about 6 s from R2 to the opening: no coupling, the UPS carries the instruments, the cameras and the tray's switch. The tray's lamp and the UPS's strip are amber.",
-   "start_frame": 231,
-   "end_frame": 236
+   "start_frame": 141,
+   "end_frame": 144
   },
   {
    "label": "4/6",
    "caption": "In transit, about 6 s from R2 to the opening: no coupling, the UPS carries the instruments, the cameras and the tray's switch. The tray's lamp and the UPS's strip are amber.",
-   "start_frame": 237,
-   "end_frame": 256
+   "start_frame": 145,
+   "end_frame": 156
   },
   {
    "label": "4/6",
    "caption": "In transit, about 6 s from R2 to the opening: no coupling, the UPS carries the instruments, the cameras and the tray's switch. The tray's lamp and the UPS's strip are amber.",
-   "start_frame": 257,
-   "end_frame": 265
+   "start_frame": 157,
+   "end_frame": 162
   },
   {
    "label": "5/6",
    "caption": "At the opening the bay's identical dock pushes in: the guide pins find the plate's bushings, the contacts and couplings mate, the contactor closes (the UPS recharges) and only then the valves open: the supplies fill the tray's lines again.",
-   "start_frame": 266,
-   "end_frame": 339
+   "start_frame": 163,
+   "end_frame": 206
   },
   {
    "label": "6/6",
    "caption": "Docked at the opening, as in its slot: on mains, with air, N2 and water. Where the tray is stored and where it is worked on, the same coupling; only the seconds between run on the tray's UPS.",
-   "start_frame": 340,
-   "end_frame": 395
+   "start_frame": 207,
+   "end_frame": 240
   }
  ]
 }
