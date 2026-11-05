@@ -157,7 +157,42 @@
     "Shuttle XP 700 2450 x 864 ('up to 725 kg'): 725 kg",
     "Shuttle XP 1000 2450 x 864: 900 kg"
    ],
-   "verdict": "needs 835 mm: fits under a 996 mm opening's ~856 mm (estimated); 250 kg is under a strong XP 500 tray's 500 kg, but on its footprint it is 2.3x that tray's rating per area: ask Kardex about point loads (a spreader plate, or a Shuttle 1000 pallet tray)"
+   "verdict": "needs 835 mm: fits under a 996 mm opening's ~856 mm (estimated); 250 kg is under a strong XP 500 tray's 500 kg, but on its footprint it is 2.3x that tray's rating per area: ask Kardex about point loads (a spreader plate, or a Shuttle 1000 pallet tray)",
+   "fits_bay": {
+    "modula_s_695": false,
+    "kardex_727_5": false,
+    "kardex_856_5_est": true,
+    "modula_m_895": true,
+    "modula_xl_1295": true
+   },
+   "bay_margin_mm": {
+    "modula_s_695": -140.0,
+    "kardex_727_5": -107.5,
+    "kardex_856_5_est": 21.5,
+    "modula_m_895": 60.0,
+    "modula_xl_1295": 460.0
+   },
+   "height_estimated": false,
+   "kg_status": "published (see sources)",
+   "footprint_fits_modula_857_tray": true,
+   "footprint_mm": "680 deep x 684 wide, against Kardex 840 x 2426 inside the rim and Modula 857 x 2460",
+   "strongest_tray_status": "both",
+   "strongest_tray_note": "within both strongest trays (Kardex strong 490 kg, Modula MC1000D 990 kg)",
+   "kg_within_kardex_tray": {
+    "light_228": false,
+    "medium_360": true,
+    "strong_490": true
+   },
+   "kg_within_modula_tray": {
+    "MC50D_500": true,
+    "MC75D_750": true,
+    "MC1000D_990": true
+   },
+   "over_tray_ratings": [
+    "Kardex 2450 x 864, light: 228 kg"
+   ],
+   "times_modula_mc1000d_per_area": 1.14,
+   "bays_verdict": "835 mm: fits Kardex ~856.5 (est.), Modula M 895, Modula XL 1295; too tall for Modula S 695 (the quoted bay), Kardex 727.5. 250 kg: within both strongest trays (Kardex strong 490 kg, Modula MC1000D 990 kg); over Kardex light 228 kg"
   },
   "mxlab_base": {
    "model": "MX-Lab base cabinet (size estimated)",
@@ -191,7 +226,31 @@
    ],
    "drawn": "box",
    "note": "instruments_lab.ded()'s estimate, scaled from a photo; if it holds the laser source, it rides with the MX-Lab, since a process fibre can't go through a dock",
-   "verdict": "needs 1000 mm: exactly the 1000 mm checked, no margin, so not at 970 mm; mass not published"
+   "verdict": "needs 1000 mm: exactly the 1000 mm checked, no margin, so not at 970 mm; mass not published",
+   "fits_bay": {
+    "modula_s_695": false,
+    "kardex_727_5": false,
+    "kardex_856_5_est": false,
+    "modula_m_895": false,
+    "modula_xl_1295": true
+   },
+   "bay_margin_mm": {
+    "modula_s_695": -305.0,
+    "kardex_727_5": -272.5,
+    "kardex_856_5_est": -143.5,
+    "modula_m_895": -105.0,
+    "modula_xl_1295": 295.0
+   },
+   "height_estimated": true,
+   "kg_status": "unknown: not published",
+   "footprint_fits_modula_857_tray": true,
+   "footprint_mm": "760 deep x 900 wide, against Kardex 840 x 2426 inside the rim and Modula 857 x 2460",
+   "strongest_tray_status": "unknown",
+   "strongest_tray_note": "mass not published",
+   "kg_within_kardex_tray": null,
+   "kg_within_modula_tray": null,
+   "over_tray_ratings": null,
+   "bays_verdict": "1000 mm (height estimated): fits Modula XL 1295; too tall for Modula S 695 (the quoted bay), Kardex 727.5, Kardex ~856.5 (est.), Modula M 895. Mass not published"
   },
   "mx100": {
    "model": "Mastrex MX100 (LPBF)",
@@ -235,7 +294,40 @@
     "Shuttle XP 700 2450 x 864 ('up to 725 kg'): 725 kg",
     "Shuttle XP 1000 2450 x 864: 900 kg"
    ],
-   "verdict": "needs 800 mm: fits under a 996 mm opening's ~856 mm (estimated); 125 kg is under a strong XP 500 tray's 500 kg, but on its footprint it is 1.7x that tray's rating per area: ask Kardex about point loads (a spreader plate, or a Shuttle 1000 pallet tray)"
+   "verdict": "needs 800 mm: fits under a 996 mm opening's ~856 mm (estimated); 125 kg is under a strong XP 500 tray's 500 kg, but on its footprint it is 1.7x that tray's rating per area: ask Kardex about point loads (a spreader plate, or a Shuttle 1000 pallet tray)",
+   "fits_bay": {
+    "modula_s_695": false,
+    "kardex_727_5": false,
+    "kardex_856_5_est": true,
+    "modula_m_895": true,
+    "modula_xl_1295": true
+   },
+   "bay_margin_mm": {
+    "modula_s_695": -105.0,
+    "kardex_727_5": -72.5,
+    "kardex_856_5_est": 56.5,
+    "modula_m_895": 95.0,
+    "modula_xl_1295": 495.0
+   },
+   "height_estimated": false,
+   "kg_status": "published (see sources)",
+   "footprint_fits_modula_857_tray": true,
+   "footprint_mm": "560 deep x 560 wide, against Kardex 840 x 2426 inside the rim and Modula 857 x 2460",
+   "strongest_tray_status": "both",
+   "strongest_tray_note": "within both strongest trays (Kardex strong 490 kg, Modula MC1000D 990 kg)",
+   "kg_within_kardex_tray": {
+    "light_228": true,
+    "medium_360": true,
+    "strong_490": true
+   },
+   "kg_within_modula_tray": {
+    "MC50D_500": true,
+    "MC75D_750": true,
+    "MC1000D_990": true
+   },
+   "over_tray_ratings": [],
+   "times_modula_mc1000d_per_area": 0.85,
+   "bays_verdict": "800 mm: fits Kardex ~856.5 (est.), Modula M 895, Modula XL 1295; too tall for Modula S 695 (the quoted bay), Kardex 727.5. 125 kg: within both strongest trays (Kardex strong 490 kg, Modula MC1000D 990 kg)"
   },
   "fusionx": {
    "model": "Lasefinity Fusion X (LPBF)",
@@ -269,7 +361,31 @@
    ],
    "drawn": "box",
    "note": "",
-   "verdict": "needs 860 mm: over the 996 mm opening's ~856 mm (estimated), under a mesh box's 970 mm; mass not published"
+   "verdict": "needs 860 mm: over the 996 mm opening's ~856 mm (estimated), under a mesh box's 970 mm; mass not published",
+   "fits_bay": {
+    "modula_s_695": false,
+    "kardex_727_5": false,
+    "kardex_856_5_est": false,
+    "modula_m_895": true,
+    "modula_xl_1295": true
+   },
+   "bay_margin_mm": {
+    "modula_s_695": -165.0,
+    "kardex_727_5": -132.5,
+    "kardex_856_5_est": -3.5,
+    "modula_m_895": 35.0,
+    "modula_xl_1295": 435.0
+   },
+   "height_estimated": false,
+   "kg_status": "unknown: not published",
+   "footprint_fits_modula_857_tray": true,
+   "footprint_mm": "600 deep x 650 wide, against Kardex 840 x 2426 inside the rim and Modula 857 x 2460",
+   "strongest_tray_status": "unknown",
+   "strongest_tray_note": "mass not published",
+   "kg_within_kardex_tray": null,
+   "kg_within_modula_tray": null,
+   "over_tray_ratings": null,
+   "bays_verdict": "860 mm: fits Modula M 895, Modula XL 1295; too tall for Modula S 695 (the quoted bay), Kardex 727.5, Kardex ~856.5 (est.). Mass not published"
   },
   "metalone": {
    "model": "Sharebot MetalONE (LPBF)",
@@ -313,7 +429,40 @@
     "Shuttle XP 700 2450 x 864 ('up to 725 kg'): 725 kg",
     "Shuttle XP 1000 2450 x 864: 900 kg"
    ],
-   "verdict": "needs 1000 mm: exactly the 1000 mm checked, no margin, so not at 970 mm; 150 kg is under a strong XP 500 tray's 500 kg, but on its footprint it is 1.4x that tray's rating per area: ask Kardex about point loads (a spreader plate, or a Shuttle 1000 pallet tray)"
+   "verdict": "needs 1000 mm: exactly the 1000 mm checked, no margin, so not at 970 mm; 150 kg is under a strong XP 500 tray's 500 kg, but on its footprint it is 1.4x that tray's rating per area: ask Kardex about point loads (a spreader plate, or a Shuttle 1000 pallet tray)",
+   "fits_bay": {
+    "modula_s_695": false,
+    "kardex_727_5": false,
+    "kardex_856_5_est": false,
+    "modula_m_895": false,
+    "modula_xl_1295": true
+   },
+   "bay_margin_mm": {
+    "modula_s_695": -305.0,
+    "kardex_727_5": -272.5,
+    "kardex_856_5_est": -143.5,
+    "modula_m_895": -105.0,
+    "modula_xl_1295": 295.0
+   },
+   "height_estimated": false,
+   "kg_status": "published: 150 kg at launch; later listings 270-315 kg (probably with a stand), under Kardex's strong 490 kg either way",
+   "footprint_fits_modula_857_tray": true,
+   "footprint_mm": "630 deep x 740 wide, against Kardex 840 x 2426 inside the rim and Modula 857 x 2460",
+   "strongest_tray_status": "both",
+   "strongest_tray_note": "within both strongest trays (Kardex strong 490 kg, Modula MC1000D 990 kg)",
+   "kg_within_kardex_tray": {
+    "light_228": true,
+    "medium_360": true,
+    "strong_490": true
+   },
+   "kg_within_modula_tray": {
+    "MC50D_500": true,
+    "MC75D_750": true,
+    "MC1000D_990": true
+   },
+   "over_tray_ratings": [],
+   "times_modula_mc1000d_per_area": 0.69,
+   "bays_verdict": "1000 mm: fits Modula XL 1295; too tall for Modula S 695 (the quoted bay), Kardex 727.5, Kardex ~856.5 (est.), Modula M 895. 150 kg: within both strongest trays (Kardex strong 490 kg, Modula MC1000D 990 kg)"
   },
   "dimetal": {
    "model": "Kings 3D DiMetal-100 (LPBF)",
@@ -357,7 +506,40 @@
     "Shuttle XP 700 2450 x 864 ('up to 725 kg'): 725 kg",
     "Shuttle XP 1000 2450 x 864: 900 kg"
    ],
-   "verdict": "needs 1000 mm: exactly the 1000 mm checked, no margin, so not at 970 mm; 140 kg is under a strong XP 500 tray's 500 kg, but on its footprint it is 1.2x that tray's rating per area: ask Kardex about point loads (a spreader plate, or a Shuttle 1000 pallet tray)"
+   "verdict": "needs 1000 mm: exactly the 1000 mm checked, no margin, so not at 970 mm; 140 kg is under a strong XP 500 tray's 500 kg, but on its footprint it is 1.2x that tray's rating per area: ask Kardex about point loads (a spreader plate, or a Shuttle 1000 pallet tray)",
+   "fits_bay": {
+    "modula_s_695": false,
+    "kardex_727_5": false,
+    "kardex_856_5_est": false,
+    "modula_m_895": false,
+    "modula_xl_1295": true
+   },
+   "bay_margin_mm": {
+    "modula_s_695": -305.0,
+    "kardex_727_5": -272.5,
+    "kardex_856_5_est": -143.5,
+    "modula_m_895": -105.0,
+    "modula_xl_1295": 295.0
+   },
+   "height_estimated": false,
+   "kg_status": "published (see sources)",
+   "footprint_fits_modula_857_tray": true,
+   "footprint_mm": "690 deep x 720 wide, against Kardex 840 x 2426 inside the rim and Modula 857 x 2460",
+   "strongest_tray_status": "both",
+   "strongest_tray_note": "within both strongest trays (Kardex strong 490 kg, Modula MC1000D 990 kg)",
+   "kg_within_kardex_tray": {
+    "light_228": true,
+    "medium_360": true,
+    "strong_490": true
+   },
+   "kg_within_modula_tray": {
+    "MC50D_500": true,
+    "MC75D_750": true,
+    "MC1000D_990": true
+   },
+   "over_tray_ratings": [],
+   "times_modula_mc1000d_per_area": 0.6,
+   "bays_verdict": "1000 mm: fits Modula XL 1295; too tall for Modula S 695 (the quoted bay), Kardex 727.5, Kardex ~856.5 (est.), Modula M 895. 140 kg: within both strongest trays (Kardex strong 490 kg, Modula MC1000D 990 kg)"
   },
   "n2gen": {
    "model": "Parker Balston UHPN2-1100 (N2 generator)",
@@ -401,7 +583,40 @@
     "Shuttle XP 700 2450 x 864 ('up to 725 kg'): 725 kg",
     "Shuttle XP 1000 2450 x 864: 900 kg"
    ],
-   "verdict": "needs 889 mm: over the 996 mm opening's ~856 mm (estimated), under a mesh box's 970 mm"
+   "verdict": "needs 889 mm: over the 996 mm opening's ~856 mm (estimated), under a mesh box's 970 mm",
+   "fits_bay": {
+    "modula_s_695": false,
+    "kardex_727_5": false,
+    "kardex_856_5_est": false,
+    "modula_m_895": true,
+    "modula_xl_1295": true
+   },
+   "bay_margin_mm": {
+    "modula_s_695": -194.0,
+    "kardex_727_5": -161.5,
+    "kardex_856_5_est": -32.5,
+    "modula_m_895": 6.0,
+    "modula_xl_1295": 406.0
+   },
+   "height_estimated": false,
+   "kg_status": "published (see sources)",
+   "footprint_fits_modula_857_tray": true,
+   "footprint_mm": "305 deep x 406 wide, against Kardex 840 x 2426 inside the rim and Modula 857 x 2460",
+   "strongest_tray_status": "both",
+   "strongest_tray_note": "within both strongest trays (Kardex strong 490 kg, Modula MC1000D 990 kg)",
+   "kg_within_kardex_tray": {
+    "light_228": true,
+    "medium_360": true,
+    "strong_490": true
+   },
+   "kg_within_modula_tray": {
+    "MC50D_500": true,
+    "MC75D_750": true,
+    "MC1000D_990": true
+   },
+   "over_tray_ratings": [],
+   "times_modula_mc1000d_per_area": 0.86,
+   "bays_verdict": "889 mm: fits Modula M 895, Modula XL 1295; too tall for Modula S 695 (the quoted bay), Kardex 727.5, Kardex ~856.5 (est.). 50 kg: within both strongest trays (Kardex strong 490 kg, Modula MC1000D 990 kg)"
   },
   "form4": {
    "model": "Formlabs Form 4, cover open",
@@ -445,7 +660,40 @@
     "Shuttle XP 700 2450 x 864 ('up to 725 kg'): 725 kg",
     "Shuttle XP 1000 2450 x 864: 900 kg"
    ],
-   "verdict": "needs 844 mm: fits under a 996 mm opening's ~856 mm (estimated)"
+   "verdict": "needs 844 mm: fits under a 996 mm opening's ~856 mm (estimated)",
+   "fits_bay": {
+    "modula_s_695": false,
+    "kardex_727_5": false,
+    "kardex_856_5_est": true,
+    "modula_m_895": true,
+    "modula_xl_1295": true
+   },
+   "bay_margin_mm": {
+    "modula_s_695": -149.0,
+    "kardex_727_5": -116.5,
+    "kardex_856_5_est": 12.5,
+    "modula_m_895": 51.0,
+    "modula_xl_1295": 451.0
+   },
+   "height_estimated": false,
+   "kg_status": "published (see sources)",
+   "footprint_fits_modula_857_tray": true,
+   "footprint_mm": "367 deep x 398 wide, against Kardex 840 x 2426 inside the rim and Modula 857 x 2460",
+   "strongest_tray_status": "both",
+   "strongest_tray_note": "within both strongest trays (Kardex strong 490 kg, Modula MC1000D 990 kg)",
+   "kg_within_kardex_tray": {
+    "light_228": true,
+    "medium_360": true,
+    "strong_490": true
+   },
+   "kg_within_modula_tray": {
+    "MC50D_500": true,
+    "MC75D_750": true,
+    "MC1000D_990": true
+   },
+   "over_tray_ratings": [],
+   "times_modula_mc1000d_per_area": 0.27,
+   "bays_verdict": "844 mm: fits Kardex ~856.5 (est.), Modula M 895, Modula XL 1295; too tall for Modula S 695 (the quoted bay), Kardex 727.5. 18.3 kg: within both strongest trays (Kardex strong 490 kg, Modula MC1000D 990 kg)"
   },
   "meltio_m450": {
    "model": "Meltio M450 (wire-laser DED)",
@@ -489,7 +737,42 @@
     "Shuttle XP 700 2450 x 864 ('up to 725 kg'): 725 kg",
     "Shuttle XP 1000 2450 x 864: 900 kg"
    ],
-   "verdict": "still too tall at 1000 mm (1400 mm)"
+   "verdict": "still too tall at 1000 mm (1400 mm)",
+   "fits_bay": {
+    "modula_s_695": false,
+    "kardex_727_5": false,
+    "kardex_856_5_est": false,
+    "modula_m_895": false,
+    "modula_xl_1295": false
+   },
+   "bay_margin_mm": {
+    "modula_s_695": -705.0,
+    "kardex_727_5": -672.5,
+    "kardex_856_5_est": -543.5,
+    "modula_m_895": -505.0,
+    "modula_xl_1295": -105.0
+   },
+   "height_estimated": false,
+   "kg_status": "published (see sources)",
+   "footprint_fits_modula_857_tray": true,
+   "footprint_mm": "560 deep x 600 wide, against Kardex 840 x 2426 inside the rim and Modula 857 x 2460",
+   "strongest_tray_status": "both",
+   "strongest_tray_note": "within both strongest trays (Kardex strong 490 kg, Modula MC1000D 990 kg)",
+   "kg_within_kardex_tray": {
+    "light_228": false,
+    "medium_360": true,
+    "strong_490": true
+   },
+   "kg_within_modula_tray": {
+    "MC50D_500": true,
+    "MC75D_750": true,
+    "MC1000D_990": true
+   },
+   "over_tray_ratings": [
+    "Kardex 2450 x 864, light: 228 kg"
+   ],
+   "times_modula_mc1000d_per_area": 1.58,
+   "bays_verdict": "1400 mm: too tall for all five (105 mm over Modula XL 1295). 250 kg: within both strongest trays (Kardex strong 490 kg, Modula MC1000D 990 kg); over Kardex light 228 kg"
   },
   "instron_small": {
    "model": "Instron 68SC-2",
@@ -516,13 +799,15 @@
    "needs_deeper_tray_mm": null,
    "needs": "power; the shortest single column, the 68SC-05, is 1020 mm",
    "sources": [
-    "instruments.py, instruments_lab.py, from the makers' figures (out/instruments.json)"
+    "instruments.py, instruments_lab.py, from the makers' figures (out/instruments.json)",
+    "Instron 6800 Series brochure, PDF p. 24, '6800 Single Column Series': footprint dimensions (h x w x d) 68SC-05 1020 x 460 x 615 mm, 55 kg; 68SC-1, 68SC-2 and 68SC-5 1410 x 460 x 615 mm, 62 kg; the 68SC-5's extra height (E2) adds 27 cm"
    ],
    "source_urls": [
-    "out/instruments.json"
+    "out/instruments.json",
+    "https://4spe.org/files/events/Webinars/Instron-6800-Series-Universal-Testing-Systems-Brochure.pdf"
    ],
    "drawn": "model",
-   "note": "",
+   "note": "1410 mm checked against Instron's brochure (h x w x d 1410 x 460 x 615 mm, 62 kg), not just the model",
    "kg_per_m2_on_its_footprint": 219,
    "times_strong_tray_per_area": 0.93,
    "trays_that_carry_its_mass": [
@@ -533,7 +818,40 @@
     "Shuttle XP 700 2450 x 864 ('up to 725 kg'): 725 kg",
     "Shuttle XP 1000 2450 x 864: 900 kg"
    ],
-   "verdict": "still too tall at 1000 mm (1410 mm)"
+   "verdict": "still too tall at 1000 mm (1410 mm)",
+   "fits_bay": {
+    "modula_s_695": false,
+    "kardex_727_5": false,
+    "kardex_856_5_est": false,
+    "modula_m_895": false,
+    "modula_xl_1295": false
+   },
+   "bay_margin_mm": {
+    "modula_s_695": -715.0,
+    "kardex_727_5": -682.5,
+    "kardex_856_5_est": -553.5,
+    "modula_m_895": -515.0,
+    "modula_xl_1295": -115.0
+   },
+   "height_estimated": false,
+   "kg_status": "published (see sources)",
+   "footprint_fits_modula_857_tray": true,
+   "footprint_mm": "460 deep x 615 wide, against Kardex 840 x 2426 inside the rim and Modula 857 x 2460",
+   "strongest_tray_status": "both",
+   "strongest_tray_note": "within both strongest trays (Kardex strong 490 kg, Modula MC1000D 990 kg)",
+   "kg_within_kardex_tray": {
+    "light_228": true,
+    "medium_360": true,
+    "strong_490": true
+   },
+   "kg_within_modula_tray": {
+    "MC50D_500": true,
+    "MC75D_750": true,
+    "MC1000D_990": true
+   },
+   "over_tray_ratings": [],
+   "times_modula_mc1000d_per_area": 0.47,
+   "bays_verdict": "1410 mm: too tall for all five (115 mm over Modula XL 1295). 62 kg: within both strongest trays (Kardex strong 490 kg, Modula MC1000D 990 kg)"
   },
   "mprint": {
    "model": "One Click Metal MPRINT (LPBF)",
@@ -576,7 +894,43 @@
     "Shuttle XP 700 2450 x 864 ('up to 725 kg'): 725 kg",
     "Shuttle XP 1000 2450 x 864: 900 kg"
    ],
-   "verdict": "still too tall at 1000 mm (1900 mm)"
+   "verdict": "still too tall at 1000 mm (1900 mm)",
+   "fits_bay": {
+    "modula_s_695": false,
+    "kardex_727_5": false,
+    "kardex_856_5_est": false,
+    "modula_m_895": false,
+    "modula_xl_1295": false
+   },
+   "bay_margin_mm": {
+    "modula_s_695": -1205.0,
+    "kardex_727_5": -1172.5,
+    "kardex_856_5_est": -1043.5,
+    "modula_m_895": -1005.0,
+    "modula_xl_1295": -605.0
+   },
+   "height_estimated": false,
+   "kg_status": "published (see sources)",
+   "footprint_fits_modula_857_tray": true,
+   "footprint_mm": "790 deep x 1100 wide, against Kardex 840 x 2426 inside the rim and Modula 857 x 2460",
+   "strongest_tray_status": "both",
+   "strongest_tray_note": "within both strongest trays (Kardex strong 490 kg, Modula MC1000D 990 kg)",
+   "kg_within_kardex_tray": {
+    "light_228": false,
+    "medium_360": false,
+    "strong_490": true
+   },
+   "kg_within_modula_tray": {
+    "MC50D_500": true,
+    "MC75D_750": true,
+    "MC1000D_990": true
+   },
+   "over_tray_ratings": [
+    "Kardex 2450 x 864, light: 228 kg",
+    "Kardex 2450 x 864, medium: 360 kg"
+   ],
+   "times_modula_mc1000d_per_area": 1.09,
+   "bays_verdict": "1900 mm: too tall for all five (605 mm over Modula XL 1295). 445 kg: within both strongest trays (Kardex strong 490 kg, Modula MC1000D 990 kg); over Kardex light 228, Kardex medium 360 kg"
   },
   "hip": {
    "model": "Kobelco O2-Dr.HIP",
@@ -613,7 +967,47 @@
    "kg_per_m2_on_its_footprint": 760,
    "times_strong_tray_per_area": 3.22,
    "trays_that_carry_its_mass": [],
-   "verdict": "still too tall at 1000 mm (1300 mm), and 1100 kg is over every Shuttle tray's rating"
+   "verdict": "still too tall at 1000 mm (1300 mm), and 1100 kg is over every Shuttle tray's rating",
+   "fits_bay": {
+    "modula_s_695": false,
+    "kardex_727_5": false,
+    "kardex_856_5_est": false,
+    "modula_m_895": false,
+    "modula_xl_1295": false
+   },
+   "bay_margin_mm": {
+    "modula_s_695": -605.0,
+    "kardex_727_5": -572.5,
+    "kardex_856_5_est": -443.5,
+    "modula_m_895": -405.0,
+    "modula_xl_1295": -5.0
+   },
+   "height_estimated": false,
+   "kg_status": "published (see sources)",
+   "footprint_fits_modula_857_tray": false,
+   "footprint_mm": "1100 deep x 1315 wide, against Kardex 840 x 2426 inside the rim and Modula 857 x 2460",
+   "strongest_tray_status": "neither",
+   "strongest_tray_note": "over both: Kardex strong 490 kg and Modula MC1000D 990 kg",
+   "kg_within_kardex_tray": {
+    "light_228": false,
+    "medium_360": false,
+    "strong_490": false
+   },
+   "kg_within_modula_tray": {
+    "MC50D_500": false,
+    "MC75D_750": false,
+    "MC1000D_990": false
+   },
+   "over_tray_ratings": [
+    "Kardex 2450 x 864, light: 228 kg",
+    "Kardex 2450 x 864, medium: 360 kg",
+    "Kardex 2450 x 864, strong: 490 kg",
+    "Modula Lift MC50D: 500 kg",
+    "Modula Lift MC75D: 750 kg",
+    "Modula Lift MC1000D: 990 kg"
+   ],
+   "times_modula_mc1000d_per_area": 1.62,
+   "bays_verdict": "1300 mm: too tall for all five (5 mm over Modula XL 1295). 1100 kg: over both: Kardex strong 490 kg and Modula MC1000D 990 kg; over Kardex light 228, Kardex medium 360, Kardex strong 490, Modula MC50D 500, Modula MC75D 750, Modula MC1000D 990 kg. 1100 mm deep: too deep for Kardex's 864 mm tray and Modula's 857 mm tray"
   },
   "repowder": {
    "model": "AMAZEMET rePowder",
@@ -656,7 +1050,42 @@
     "Shuttle XP 700 2450 x 864 ('up to 725 kg'): 725 kg",
     "Shuttle XP 1000 2450 x 864: 900 kg"
    ],
-   "verdict": "still too tall at 1000 mm (1600 mm)"
+   "verdict": "still too tall at 1000 mm (1600 mm)",
+   "fits_bay": {
+    "modula_s_695": false,
+    "kardex_727_5": false,
+    "kardex_856_5_est": false,
+    "modula_m_895": false,
+    "modula_xl_1295": false
+   },
+   "bay_margin_mm": {
+    "modula_s_695": -905.0,
+    "kardex_727_5": -872.5,
+    "kardex_856_5_est": -743.5,
+    "modula_m_895": -705.0,
+    "modula_xl_1295": -305.0
+   },
+   "height_estimated": false,
+   "kg_status": "published (see sources)",
+   "footprint_fits_modula_857_tray": true,
+   "footprint_mm": "800 deep x 1000 wide, against Kardex 840 x 2426 inside the rim and Modula 857 x 2460",
+   "strongest_tray_status": "both",
+   "strongest_tray_note": "within both strongest trays (Kardex strong 490 kg, Modula MC1000D 990 kg)",
+   "kg_within_kardex_tray": {
+    "light_228": false,
+    "medium_360": true,
+    "strong_490": true
+   },
+   "kg_within_modula_tray": {
+    "MC50D_500": true,
+    "MC75D_750": true,
+    "MC1000D_990": true
+   },
+   "over_tray_ratings": [
+    "Kardex 2450 x 864, light: 228 kg"
+   ],
+   "times_modula_mc1000d_per_area": 0.8,
+   "bays_verdict": "1600 mm: too tall for all five (305 mm over Modula XL 1295). 300 kg: within both strongest trays (Kardex strong 490 kg, Modula MC1000D 990 kg); over Kardex light 228 kg"
   },
   "glovebox": {
    "model": "Inert PureLab HE 2GB",
@@ -690,7 +1119,31 @@
    ],
    "drawn": null,
    "note": "",
-   "verdict": "still too tall at 1000 mm (1794 mm)"
+   "verdict": "still too tall at 1000 mm (1794 mm)",
+   "fits_bay": {
+    "modula_s_695": false,
+    "kardex_727_5": false,
+    "kardex_856_5_est": false,
+    "modula_m_895": false,
+    "modula_xl_1295": false
+   },
+   "bay_margin_mm": {
+    "modula_s_695": -1099.0,
+    "kardex_727_5": -1066.5,
+    "kardex_856_5_est": -937.5,
+    "modula_m_895": -899.0,
+    "modula_xl_1295": -499.0
+   },
+   "height_estimated": false,
+   "kg_status": "unknown: not published",
+   "footprint_fits_modula_857_tray": true,
+   "footprint_mm": "834 deep x 2005 wide, against Kardex 840 x 2426 inside the rim and Modula 857 x 2460",
+   "strongest_tray_status": "unknown",
+   "strongest_tray_note": "mass not published",
+   "kg_within_kardex_tray": null,
+   "kg_within_modula_tray": null,
+   "over_tray_ratings": null,
+   "bays_verdict": "1794 mm: too tall for all five (499 mm over Modula XL 1295). Mass not published"
   },
   "aconity_midi": {
    "model": "Aconity MIDI",
@@ -727,7 +1180,47 @@
    "kg_per_m2_on_its_footprint": 395,
    "times_strong_tray_per_area": 1.67,
    "trays_that_carry_its_mass": [],
-   "verdict": "still too tall at 1000 mm (2320 mm), and 1450 kg is over every Shuttle tray's rating"
+   "verdict": "still too tall at 1000 mm (2320 mm), and 1450 kg is over every Shuttle tray's rating",
+   "fits_bay": {
+    "modula_s_695": false,
+    "kardex_727_5": false,
+    "kardex_856_5_est": false,
+    "modula_m_895": false,
+    "modula_xl_1295": false
+   },
+   "bay_margin_mm": {
+    "modula_s_695": -1625.0,
+    "kardex_727_5": -1592.5,
+    "kardex_856_5_est": -1463.5,
+    "modula_m_895": -1425.0,
+    "modula_xl_1295": -1025.0
+   },
+   "height_estimated": false,
+   "kg_status": "published (see sources)",
+   "footprint_fits_modula_857_tray": false,
+   "footprint_mm": "1500 deep x 2450 wide, against Kardex 840 x 2426 inside the rim and Modula 857 x 2460",
+   "strongest_tray_status": "neither",
+   "strongest_tray_note": "over both: Kardex strong 490 kg and Modula MC1000D 990 kg",
+   "kg_within_kardex_tray": {
+    "light_228": false,
+    "medium_360": false,
+    "strong_490": false
+   },
+   "kg_within_modula_tray": {
+    "MC50D_500": false,
+    "MC75D_750": false,
+    "MC1000D_990": false
+   },
+   "over_tray_ratings": [
+    "Kardex 2450 x 864, light: 228 kg",
+    "Kardex 2450 x 864, medium: 360 kg",
+    "Kardex 2450 x 864, strong: 490 kg",
+    "Modula Lift MC50D: 500 kg",
+    "Modula Lift MC75D: 750 kg",
+    "Modula Lift MC1000D: 990 kg"
+   ],
+   "times_modula_mc1000d_per_area": 0.84,
+   "bays_verdict": "2320 mm: too tall for all five (1025 mm over Modula XL 1295). 1450 kg: over both: Kardex strong 490 kg and Modula MC1000D 990 kg; over Kardex light 228, Kardex medium 360, Kardex strong 490, Modula MC50D 500, Modula MC75D 750, Modula MC1000D 990 kg. 1500 mm deep: too deep for Kardex's 864 mm tray and Modula's 857 mm tray"
   }
  },
  "enabled_at_1000": [
@@ -754,6 +1247,283 @@
   "The product height of the Shuttle 1000's pallet and mesh-box trays, and their rating for a concentrated load (a 250 kg machine on 0.47 m2).",
   "Whether a tall opening changes the tray delivery height (833 mm) or the unit height."
  ],
+ "bay_heights_mm": {
+  "modula_s_695": {
+   "mm": 695.0,
+   "system": "Modula",
+   "bay": "Modula Lift Bay S",
+   "what": "Modula Lift Bay S, single delivery: maximum product height",
+   "estimate": false,
+   "note": "the bay the Apr 2 Modula quote is priced with, and the lowest of the five: 32.5 mm under Kardex's published 727.5 mm",
+   "sources": [
+    "Modula Lift catalogue (US, Sept 2025), PDF p. 5: 'Modula Lift is offered in 3 sizes of bays (S/M/XL) ... Maximum product height for single delivery level 27.36 / 35.24 / 50.98 in (695 / 895 / 1,295 mm)'; dual delivery 320-320 / 320-520 / 320-920 mm. PDF p. 8, models: MC50D tray 2,500 x 857 mm, walls 70-120 mm, 1,102 lb / 500 kg; MC75D 2,500 x 857 mm, 1,653 lb / 750 kg; MC1000D 2,460 x 857 mm, walls 120 mm, 2,200 lb / 990 kg ('Maximum Tray Load Capacity'). No clearance above the goods is stated, and the tray size isn't said to be inside or outside the walls",
+    "The Apr 2 Modula quote, as Sterling's review gives it (PR #318, 2026-11-04 18:41): priced with Lift Bay S. The quote itself is not in this repo"
+   ],
+   "source_urls": [
+    "https://modula.us/wp-content/uploads/2025/11/USA_MODULA_CAT-LIFT_SEPT2025_WEB.pdf",
+    "https://github.com/vertical-cloud-lab/byu-vcl/pull/318"
+   ]
+  },
+  "kardex_727_5": {
+   "mm": 727.5,
+   "system": "Kardex",
+   "bay": "Kardex Shuttle XP 500, standard opening",
+   "what": "Kardex's published maximum product height (the POF order sheet, 2450 x 864 tray)",
+   "estimate": false,
+   "note": "20 mm clear required above it; 727 mm at 3050 x 864",
+   "sources": [
+    "Kardex Shuttle POF (order sheet), SHUTTLE-01-500-2450x864x6750: 'Maximum Product Height: 727.5 mm / 28.64 in. Depends on Tray Type selection', 'Clearance Required Above Product: 20 mm', access table 833 mm; tray ratings Light 230, Medium 360, Strong 500, 66-1-Medium-100 525 kg (StoreMoreStore option 1)"
+   ],
+   "source_urls": [
+    "https://products.storemorestore.com/hubfs/StoreMoreStore/Kardex-Vertical-Lift-Module/VLM-Option-1-96x34-Light-Specification-Sheet.pdf"
+   ]
+  },
+  "kardex_856_5_est": {
+   "mm": 856.5,
+   "system": "Kardex",
+   "bay": "Kardex, a 996 mm opening (one used XP 500)",
+   "what": "our estimate (vlm.MAX_GOODS_H): 727.5 + (996 - 867) mm",
+   "estimate": true,
+   "note": "not published: the 867 mm header over the table is read off Kardex's renders, and Kardex has not confirmed the 996 mm opening",
+   "sources": [
+    "A used Kardex Shuttle XP 500, 3050 x 864 mm, built 2005/2006: 'Bedienoeffnung Frontseitig auf 833 mm, Hoehe 996 mm'"
+   ],
+   "source_urls": [
+    "https://www.lagersysteme-paternoster.de/gebrauchte-lagertechnik/kardex-shuttle-xp500-3050x864-pos-89/"
+   ]
+  },
+  "modula_m_895": {
+   "mm": 895.0,
+   "system": "Modula",
+   "bay": "Modula Lift Bay M",
+   "what": "Modula Lift Bay M, single delivery: maximum product height",
+   "estimate": false,
+   "note": "",
+   "sources": [
+    "Modula Lift catalogue (US, Sept 2025), PDF p. 5: 'Modula Lift is offered in 3 sizes of bays (S/M/XL) ... Maximum product height for single delivery level 27.36 / 35.24 / 50.98 in (695 / 895 / 1,295 mm)'; dual delivery 320-320 / 320-520 / 320-920 mm. PDF p. 8, models: MC50D tray 2,500 x 857 mm, walls 70-120 mm, 1,102 lb / 500 kg; MC75D 2,500 x 857 mm, 1,653 lb / 750 kg; MC1000D 2,460 x 857 mm, walls 120 mm, 2,200 lb / 990 kg ('Maximum Tray Load Capacity'). No clearance above the goods is stated, and the tray size isn't said to be inside or outside the walls"
+   ],
+   "source_urls": [
+    "https://modula.us/wp-content/uploads/2025/11/USA_MODULA_CAT-LIFT_SEPT2025_WEB.pdf"
+   ]
+  },
+  "modula_xl_1295": {
+   "mm": 1295.0,
+   "system": "Modula",
+   "bay": "Modula Lift Bay XL",
+   "what": "Modula Lift Bay XL, single delivery: maximum product height",
+   "estimate": false,
+   "note": "",
+   "sources": [
+    "Modula Lift catalogue (US, Sept 2025), PDF p. 5: 'Modula Lift is offered in 3 sizes of bays (S/M/XL) ... Maximum product height for single delivery level 27.36 / 35.24 / 50.98 in (695 / 895 / 1,295 mm)'; dual delivery 320-320 / 320-520 / 320-920 mm. PDF p. 8, models: MC50D tray 2,500 x 857 mm, walls 70-120 mm, 1,102 lb / 500 kg; MC75D 2,500 x 857 mm, 1,653 lb / 750 kg; MC1000D 2,460 x 857 mm, walls 120 mm, 2,200 lb / 990 kg ('Maximum Tray Load Capacity'). No clearance above the goods is stated, and the tray size isn't said to be inside or outside the walls"
+   ],
+   "source_urls": [
+    "https://modula.us/wp-content/uploads/2025/11/USA_MODULA_CAT-LIFT_SEPT2025_WEB.pdf"
+   ]
+  }
+ },
+ "bay_heights_note": "Five product heights, lowest first. 695 mm is Modula Lift Bay S, the bay the Apr 2 Modula quote is priced with: the lowest of the five, under Kardex's published 727.5 mm, so the quote as priced takes none of the machines checked here. 727.5 mm is Kardex's order sheet (20 mm clear above it); 856.5 mm is our estimate (vlm.MAX_GOODS_H, the used XP 500's 996 mm opening), not a Kardex figure; 895 and 1295 mm are Modula's Bay M and XL. Modula's figures are for a single-delivery bay (dual delivery: 320-920 mm) and state no clearance above the goods. The older keys (heights_mm, fits_height) are unchanged.",
+ "quote_bay": {
+  "key": "modula_s_695",
+  "mm": 695.0,
+  "flag": "the quote's bay is the lowest of the five",
+  "fits": [],
+  "source": "The Apr 2 Modula quote, as Sterling's review gives it (PR #318, 2026-11-04 18:41): priced with Lift Bay S. The quote itself is not in this repo"
+ },
+ "tray_ratings_by_system": {
+  "kardex": [
+   {
+    "model": "Kardex Shuttle XP 500 (#53 quote)",
+    "tray": "2450 x 864, light",
+    "key": "light_228",
+    "w": 2450.0,
+    "d": 864.0,
+    "kg": 228,
+    "src": [
+     "q53"
+    ],
+    "kg_per_m2": 108,
+    "sources": [
+     "byu-vcl #53, the quote's spec: XP 500, 96.46 x 34 in trays, light 502 lb (22.3 lb/sq ft), medium 794 lb, strong 1,080 lb (47.4 lb/sq ft)"
+    ]
+   },
+   {
+    "model": "Kardex Shuttle XP 500 (#53 quote)",
+    "tray": "2450 x 864, medium",
+    "key": "medium_360",
+    "w": 2450.0,
+    "d": 864.0,
+    "kg": 360,
+    "src": [
+     "q53"
+    ],
+    "kg_per_m2": 170,
+    "sources": [
+     "byu-vcl #53, the quote's spec: XP 500, 96.46 x 34 in trays, light 502 lb (22.3 lb/sq ft), medium 794 lb, strong 1,080 lb (47.4 lb/sq ft)"
+    ]
+   },
+   {
+    "model": "Kardex Shuttle XP 500 (#53 quote)",
+    "tray": "2450 x 864, strong",
+    "key": "strong_490",
+    "w": 2450.0,
+    "d": 864.0,
+    "kg": 490,
+    "src": [
+     "q53"
+    ],
+    "kg_per_m2": 231,
+    "sources": [
+     "byu-vcl #53, the quote's spec: XP 500, 96.46 x 34 in trays, light 502 lb (22.3 lb/sq ft), medium 794 lb, strong 1,080 lb (47.4 lb/sq ft)"
+    ]
+   }
+  ],
+  "modula": [
+   {
+    "model": "Modula Lift MC50D",
+    "tray": "2500 x 857, walls 70-120 mm",
+    "key": "MC50D_500",
+    "w": 2500.0,
+    "d": 857.0,
+    "kg": 500,
+    "src": [
+     "modula_cat"
+    ],
+    "kg_per_m2": 233,
+    "sources": [
+     "Modula Lift catalogue (US, Sept 2025), PDF p. 5: 'Modula Lift is offered in 3 sizes of bays (S/M/XL) ... Maximum product height for single delivery level 27.36 / 35.24 / 50.98 in (695 / 895 / 1,295 mm)'; dual delivery 320-320 / 320-520 / 320-920 mm. PDF p. 8, models: MC50D tray 2,500 x 857 mm, walls 70-120 mm, 1,102 lb / 500 kg; MC75D 2,500 x 857 mm, 1,653 lb / 750 kg; MC1000D 2,460 x 857 mm, walls 120 mm, 2,200 lb / 990 kg ('Maximum Tray Load Capacity'). No clearance above the goods is stated, and the tray size isn't said to be inside or outside the walls"
+    ]
+   },
+   {
+    "model": "Modula Lift MC75D",
+    "tray": "2500 x 857, walls 70-120 mm",
+    "key": "MC75D_750",
+    "w": 2500.0,
+    "d": 857.0,
+    "kg": 750,
+    "src": [
+     "modula_cat"
+    ],
+    "kg_per_m2": 350,
+    "sources": [
+     "Modula Lift catalogue (US, Sept 2025), PDF p. 5: 'Modula Lift is offered in 3 sizes of bays (S/M/XL) ... Maximum product height for single delivery level 27.36 / 35.24 / 50.98 in (695 / 895 / 1,295 mm)'; dual delivery 320-320 / 320-520 / 320-920 mm. PDF p. 8, models: MC50D tray 2,500 x 857 mm, walls 70-120 mm, 1,102 lb / 500 kg; MC75D 2,500 x 857 mm, 1,653 lb / 750 kg; MC1000D 2,460 x 857 mm, walls 120 mm, 2,200 lb / 990 kg ('Maximum Tray Load Capacity'). No clearance above the goods is stated, and the tray size isn't said to be inside or outside the walls"
+    ]
+   },
+   {
+    "model": "Modula Lift MC1000D",
+    "tray": "2460 x 857, walls 120 mm",
+    "key": "MC1000D_990",
+    "w": 2460.0,
+    "d": 857.0,
+    "kg": 990,
+    "src": [
+     "modula_cat"
+    ],
+    "note": "2460 mm wide in the catalogue, not 2500",
+    "kg_per_m2": 470,
+    "sources": [
+     "Modula Lift catalogue (US, Sept 2025), PDF p. 5: 'Modula Lift is offered in 3 sizes of bays (S/M/XL) ... Maximum product height for single delivery level 27.36 / 35.24 / 50.98 in (695 / 895 / 1,295 mm)'; dual delivery 320-320 / 320-520 / 320-920 mm. PDF p. 8, models: MC50D tray 2,500 x 857 mm, walls 70-120 mm, 1,102 lb / 500 kg; MC75D 2,500 x 857 mm, 1,653 lb / 750 kg; MC1000D 2,460 x 857 mm, walls 120 mm, 2,200 lb / 990 kg ('Maximum Tray Load Capacity'). No clearance above the goods is stated, and the tray size isn't said to be inside or outside the walls"
+    ]
+   }
+  ],
+  "strongest": {
+   "kardex": "Kardex Shuttle XP 500 (#53 quote) 2450 x 864, strong: 490 kg",
+   "modula": "Modula Lift MC1000D 2460 x 857, walls 120 mm: 990 kg"
+  },
+  "note": "Kardex's are the #53 quote's three trays (vlm.TRAYS); tray_ratings above has the order sheet's 500 and 525 kg trays and the Shuttle 700 (725 kg) and 1000 (900 kg) for comparison. Modula's MC1000D tray is 2460 mm wide, not 2500. Both rate a tray for a distributed load (per area: times_strong_tray_per_area, times_modula_mc1000d_per_area)."
+ },
+ "fits_at_bay": {
+  "modula_s_695": [],
+  "kardex_727_5": [],
+  "kardex_856_5_est": [
+   "InssTek MX-Lab (DED, powder-fed laser)",
+   "Mastrex MX100 (LPBF)",
+   "Formlabs Form 4, cover open"
+  ],
+  "modula_m_895": [
+   "InssTek MX-Lab (DED, powder-fed laser)",
+   "Mastrex MX100 (LPBF)",
+   "Lasefinity Fusion X (LPBF)",
+   "Parker Balston UHPN2-1100 (N2 generator)",
+   "Formlabs Form 4, cover open"
+  ],
+  "modula_xl_1295": [
+   "InssTek MX-Lab (DED, powder-fed laser)",
+   "MX-Lab base cabinet (size estimated)",
+   "Mastrex MX100 (LPBF)",
+   "Lasefinity Fusion X (LPBF)",
+   "Sharebot MetalONE (LPBF)",
+   "Kings 3D DiMetal-100 (LPBF)",
+   "Parker Balston UHPN2-1100 (N2 generator)",
+   "Formlabs Form 4, cover open"
+  ]
+ },
+ "fits_at_bay_short": {
+  "modula_s_695": [],
+  "kardex_727_5": [],
+  "kardex_856_5_est": [
+   "InssTek MX-Lab",
+   "Mastrex MX100",
+   "Formlabs Form 4, lid open"
+  ],
+  "modula_m_895": [
+   "InssTek MX-Lab",
+   "Mastrex MX100",
+   "Lasefinity Fusion X",
+   "Parker Balston N2 generator",
+   "Formlabs Form 4, lid open"
+  ],
+  "modula_xl_1295": [
+   "InssTek MX-Lab",
+   "MX-Lab base cabinet (est.)",
+   "Mastrex MX100",
+   "Lasefinity Fusion X",
+   "Sharebot MetalONE",
+   "Kings 3D DiMetal-100",
+   "Parker Balston N2 generator",
+   "Formlabs Form 4, lid open"
+  ]
+ },
+ "over_tray_rating": {
+  "kardex_light_228": [
+   "InssTek MX-Lab (DED, powder-fed laser)",
+   "Meltio M450 (wire-laser DED)",
+   "One Click Metal MPRINT (LPBF)",
+   "Kobelco O2-Dr.HIP",
+   "AMAZEMET rePowder",
+   "Aconity MIDI"
+  ],
+  "kardex_medium_360": [
+   "One Click Metal MPRINT (LPBF)",
+   "Kobelco O2-Dr.HIP",
+   "Aconity MIDI"
+  ],
+  "kardex_strong_490": [
+   "Kobelco O2-Dr.HIP",
+   "Aconity MIDI"
+  ],
+  "modula_MC50D_500": [
+   "Kobelco O2-Dr.HIP",
+   "Aconity MIDI"
+  ],
+  "modula_MC75D_750": [
+   "Kobelco O2-Dr.HIP",
+   "Aconity MIDI"
+  ],
+  "modula_MC1000D_990": [
+   "Kobelco O2-Dr.HIP",
+   "Aconity MIDI"
+  ]
+ },
+ "mass_unknown": [
+  "MX-Lab base cabinet (size estimated)",
+  "Lasefinity Fusion X (LPBF)",
+  "Inert PureLab HE 2GB"
+ ],
+ "too_deep_for_both_trays": [
+  "Kobelco O2-Dr.HIP",
+  "Aconity MIDI"
+ ],
+ "figure_bays": "out/tall_opening_bays.png (python3 kardex_tall.py json, or bays): the machines in Sterling's review (BAY_FIG) against the five heights, marked by their mass against each system's strongest tray",
  "sources": {
   "pof1": {
    "what": "Kardex Shuttle POF (order sheet), SHUTTLE-01-500-2450x864x6750: 'Maximum Product Height: 727.5 mm / 28.64 in. Depends on Tray Type selection', 'Clearance Required Above Product: 20 mm', access table 833 mm; tray ratings Light 230, Medium 360, Strong 500, 66-1-Medium-100 525 kg (StoreMoreStore option 1)",
@@ -838,6 +1608,18 @@
   "equip": {
    "what": "lab_models/equipment.py (#199): Aconity MIDI 2450 x 1500 x 2320 mm, 1450 kg; rePowder 1000 x 800 x 1600 mm, about 300 kg",
    "url": "lab_models/equipment.py"
+  },
+  "modula_cat": {
+   "what": "Modula Lift catalogue (US, Sept 2025), PDF p. 5: 'Modula Lift is offered in 3 sizes of bays (S/M/XL) ... Maximum product height for single delivery level 27.36 / 35.24 / 50.98 in (695 / 895 / 1,295 mm)'; dual delivery 320-320 / 320-520 / 320-920 mm. PDF p. 8, models: MC50D tray 2,500 x 857 mm, walls 70-120 mm, 1,102 lb / 500 kg; MC75D 2,500 x 857 mm, 1,653 lb / 750 kg; MC1000D 2,460 x 857 mm, walls 120 mm, 2,200 lb / 990 kg ('Maximum Tray Load Capacity'). No clearance above the goods is stated, and the tray size isn't said to be inside or outside the walls",
+   "url": "https://modula.us/wp-content/uploads/2025/11/USA_MODULA_CAT-LIFT_SEPT2025_WEB.pdf"
+  },
+  "modula_quote": {
+   "what": "The Apr 2 Modula quote, as Sterling's review gives it (PR #318, 2026-11-04 18:41): priced with Lift Bay S. The quote itself is not in this repo",
+   "url": "https://github.com/vertical-cloud-lab/byu-vcl/pull/318"
+  },
+  "instron": {
+   "what": "Instron 6800 Series brochure, PDF p. 24, '6800 Single Column Series': footprint dimensions (h x w x d) 68SC-05 1020 x 460 x 615 mm, 55 kg; 68SC-1, 68SC-2 and 68SC-5 1410 x 460 x 615 mm, 62 kg; the 68SC-5's extra height (E2) adds 27 cm",
+   "url": "https://4spe.org/files/events/Webinars/Instron-6800-Series-Universal-Testing-Systems-Brochure.pdf"
   }
  }
 }
