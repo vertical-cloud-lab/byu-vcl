@@ -278,11 +278,59 @@ def r7_stand_ins(have) -> dict:
     return out
 
 
+def tour_load_safe() -> dict:
+    """tour.load(), except that a module that won't import, or a model whose build raises (another stream's module in
+    the middle of an edit), is skipped with a note instead of stopping the scene. A module with a failed model is not
+    cached here, so its owner's next good build still caches normally."""
+    try:
+        return tour.load()
+    except Exception as e:                           # noqa: BLE001
+        print(f"setup_lab: tour.load() failed ({type(e).__name__}: {e}); loading module by module", flush=True)
+    data = {}
+    for name in tour.MODULES:
+        if not (lab.HERE / f"{name}.py").exists():
+            continue
+        try:
+            mod = tour.I if name == "instruments" else importlib.import_module(name)
+        except Exception as e:                       # noqa: BLE001
+            print(f"setup_lab: {name} skipped, it does not import: {e}", flush=True)
+            continue
+        if not getattr(mod, "REGISTRY", None):
+            continue
+        tour.MATS.update(getattr(mod, "MATERIALS", {}))
+        h = hashlib.sha256()
+        for f in tour._sources(name):
+            if f.exists():
+                h.update(f.read_bytes())
+        h.update(str((tour.CACHE / "openflexure" / "v7").is_dir() and
+                     (tour.CACHE / "openflexure" / "delta").is_dir()).encode())
+        path = tour.CACHE / f"{name}_{h.hexdigest()[:12]}.pkl"
+        if path.exists():
+            try:
+                data.update(pickle.loads(path.read_bytes()))
+                continue
+            except Exception:                        # noqa: BLE001  (a cache being written: build it here)
+                pass
+        part, failed = {}, []
+        for key, build in mod.REGISTRY.items():
+            try:
+                inst = build()
+            except Exception as e:                   # noqa: BLE001
+                print(f"  skipping {key} ({name}): {type(e).__name__}: {e}", flush=True)
+                failed.append(key)
+                continue
+            part[key] = (inst, tour.piece_entries(inst))
+        if not failed:
+            path.write_bytes(pickle.dumps(part))
+        data.update(part)
+    return data
+
+
 def load_all() -> dict:
     """{key: (Instrument, entries)}: tour.load()'s, fab_tour's for trays G-I, and instruments_r7's (stand-in boxes
     for the ones not built yet)."""
     import fab_tour
-    idata = tour.load()
+    idata = tour_load_safe()
     fab = {key for k in "GHI" for key, *_ in ITEMS[k]}
     idata.update(fab_tour.load(fab))
     idata.update(load_r7())
@@ -718,13 +766,20 @@ def build(data, idata, mp4=True, name="setup_lab", title=TITLE, highlight=None):
 
 def add_bay_cams(sc: Scene) -> list[str]:
     """The overhead camera over each Shuttle's bay (services.py's, and a copy at X2). -> their actor names."""
-    import services
-    services.add_bay_camera(sc)
-    services.add_meshes(sc, "baycam2", services.meshes_of("baybar", services.bay_parts, 0.5), "baycam2")
+    import services as S
+    S.add_bay_camera(sc)
+    S.add_meshes(sc, "baycam2", S.meshes_of("baybar", S.bay_parts, 0.5), "baycam2")
     sc.gmat["baycam2"] = T((X2, 0, 0))
-    b = services.BAY_CAM
-    services._add_rig(sc, "baycamrig2", None, T((X2, b["y"], b["bar_z"] + 10.0)), 0.0, b["h"], 0.0, b["tilt"],
-                      post_h=b["post_h"], foot=False)
+    # the second unit as services.add_bay_camera builds the first (on its bar, no post), over Shuttle 2's bay. Round 7's
+    # copy still called _add_rig with the post-mounted unit's BAY_CAM["h"], which services.py no longer has
+    sc.gmat["baycamrig2"] = S.bay_at(X2)
+    for k in ("pan", "head"):
+        S.add_meshes(sc, f"baycamrig2{k}", S.meshes_of(f"rig_{k}", lambda k=k: S.rig_pieces()[k], 0.3),
+                     f"baycamrig2{k}")
+    sc.gmat["baycamrig2pan"] = S.I._R((0, 0, 1), 0.0, S.PAN_AXIS)
+    sc.parent["baycamrig2pan"] = "baycamrig2"
+    sc.gmat["baycamrig2head"] = S.I._R((1, 0, 0), S.BAY_CAM["tilt"], S.TILT_AXIS)
+    sc.parent["baycamrig2head"] = "baycamrig2pan"
     return [nm for nm in sc.actors if sc.group_of[nm].startswith(("baycam", "baycamrig"))]
 
 

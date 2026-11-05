@@ -1254,15 +1254,27 @@ def make_lab(sc, data, robot=False):
     return SLab(sc, data, robot=robot)
 
 
-def build_vlm(name, data, idata, title, docks=True, cams=True, mp4=True, robot=False, scene_cls=None):
+def build_vlm(name, data, idata, title, docks=True, cams=True, mp4=True, robot=False, scene_cls=None, lab7=True):
     """The VLM with trays A-F and their equipment (as line.py has them, without the floor line), the docks, plates,
     UPSs and cameras; robot=True adds the MiR250 and UR10e at the opening. Returns (scene, lab, {tray: [line actor
-    names]})."""
+    names]}). lab7 (round 8): trays A and B carry what setup_lab.py puts on them, the corrosion CubXL in place of
+    round 2's and the vacuum press beside the doser, so these close-ups match the set-up movie."""
     import line
     import tour
     from scene import Scene, T
     sc = (scene_cls or Scene)(name, title, gif=False, mp4=mp4)
     L = make_lab(sc, data, robot=robot)
+    if lab7:
+        import alloy_press as AP
+        import cubxl_rig
+        L.cubrig = cubxl_rig.CubRig(L)
+        for g in L.eq_groups["A"]:              # round 2's CubXL stays out even where a clip fades tray A
+            if L.eq_key[g] == "cubxl":
+                for n in L.eq_names(g):
+                    sc.base_alpha[n] = 0.0
+        vp = AP.VacPress(sc, "tray_B", AP.PRESS_AT, V.T_FLOOR)
+        vp.st["guard"] = 0.0
+        vp.apply()
     for k, loads in line.TRAY_LOADS.items():
         line.add_tray(sc, L, k)
         for key, x, y in loads:
@@ -2646,8 +2658,8 @@ def _main():
     for word in args:
         if word in ("services", "hookups", "baycam", "cabling", "cameras") and data is None:
             import lab
-            import tour
-            data, idata = lab.meshes(), tour.load()
+            import setup_lab               # its tour_load_safe: another stream's failing model is skipped, not fatal
+            data, idata = lab.meshes(), setup_lab.tour_load_safe()
         if word == "services":
             print(movie_services(data, idata), flush=True)
             _gif("vlm_services")

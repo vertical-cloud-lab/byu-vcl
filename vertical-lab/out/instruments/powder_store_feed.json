@@ -1,0 +1,35 @@
+{
+ "name": "instruments/powder_store_feed",
+ "fps": 8,
+ "n_frames": 117,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/4",
+   "caption": "Tray N, the feedstock: 204 labelled jars (64 x 60 mL, 54 x 125 mL, 44 x 250 mL, 42 x 500 mL) in racks of white HDPE, one rack per size.",
+   "start_frame": 0,
+   "end_frame": 32
+  },
+  {
+   "label": "2/4",
+   "caption": "DAL's elements and master alloys (DAL #146: Al, Si, Mg, Cu, Mn, Cr, Zr, Ti, Fe, Ni, Ce, Sc, Er, Zn, Sn, Li as Al-Li), lids coloured by element; 100 g goes into each atomizer run.",
+   "start_frame": 33,
+   "end_frame": 63
+  },
+  {
+   "label": "3/4",
+   "caption": "Rows stand 20 mm apart front to back, room for the gripper's fingers; the arm takes a jar from above.",
+   "start_frame": 64,
+   "end_frame": 91
+  },
+  {
+   "label": "4/4",
+   "caption": "Each rack lifts out whole by its handles. The tray's right end keeps its UPS, dock and cameras.",
+   "start_frame": 92,
+   "end_frame": 116
+  }
+ ]
+}

@@ -1,0 +1,35 @@
+{
+ "name": "instruments/powder_store_lots",
+ "fps": 8,
+ "n_frames": 120,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/4",
+   "caption": "Tray O, the atomized lots: 377 labelled jars (195 x 30 mL, 128 x 60 mL, 54 x 125 mL). Every run gets a six-character ID (DAL #157: jz31op, 8rthq2, c3k0n5, ...).",
+   "start_frame": 0,
+   "end_frame": 35
+  },
+  {
+   "label": "2/4",
+   "caption": "Each run's sieve fractions go in jars of their own: < 63 um for LPBF, 63-106, 106-150, 150-250 and > 250 um.",
+   "start_frame": 36,
+   "end_frame": 65
+  },
+  {
+   "label": "3/4",
+   "caption": "Amber glass, a white label with the run and fraction, lids coloured by alloy.",
+   "start_frame": 66,
+   "end_frame": 91
+  },
+  {
+   "label": "4/4",
+   "caption": "The arm picks by seat: out/powder_store.json lists every jar, what is in it and whether the arm reaches it.",
+   "start_frame": 92,
+   "end_frame": 119
+  }
+ ]
+}
