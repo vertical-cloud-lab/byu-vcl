@@ -47,7 +47,11 @@ import r8_char as RC                  # noqa: E402
 import r8_specimens as SP             # noqa: E402
 import robot as RB                    # noqa: E402
 
-NAME = "alloy_characterize"
+import os                             # noqa: E402
+NAME = os.environ.get("CH7_NAME", "alloy_characterize")
+# CH7_WINDOW="560:610,1236:1256": draw only those frames (every other step still runs: IK, plans), for re-rendering a
+# stretch of the chapter after a fix and splicing it into the MP4 (the frame numbers don't move: steps keep their time)
+WINDOWS = [tuple(int(v) for v in w.split(":")) for w in os.environ.get("CH7_WINDOW", "").split(",") if ":" in w]
 TITLE = "Vertical cloud lab, the alloy route 7/7: characterizing the build"
 HERE = Path(__file__).resolve().parent
 
@@ -77,6 +81,15 @@ PANEL_W = 0.44                        # a data panel's width, as a share of the 
 # ================================================================================================= the scene
 class ChScene(Scene):
     """setup_lab.build's Scene, with a data panel (data_panels.py) and an instrument clock drawn over every frame."""
+
+    def snap(self, n=1):
+        if WINDOWS and not PREVIEW and not scene.AUDIT:
+            if not any(a <= k <= b for k in range(self.n, self.n + n) for a, b in WINDOWS):
+                self.n += n
+                return None
+            with open(f"/tmp/{NAME}_frames.txt", "a") as f:
+                f.write(" ".join(str(k) for k in range(self.n, self.n + n)) + "\n")
+        return super().snap(n)
 
     def setup_overlays(self):
         self.panel = None             # data_panels key, or "grid" for all six
@@ -382,19 +395,28 @@ def movie():
         wait(0.5, fade_out, hold=0.0)
         sc.panel = None
 
-    def pick_mount(grp, spin, cam=None, labels=(), secs=1.8):
-        """Take a mount (c_hot or c_steel) from wherever it is, top-down."""
+    approach_q = {}                    # the joints over each instrument's seat where a part was set down
+
+    def pick_mount(grp, spin, cam=None, labels=(), secs=1.8, at=None):
+        """Take a mount (c_hot or c_steel) from wherever it is, top-down. With `at`, from the same joints over the
+        seat that set it down there (the nearest clear IK branch from the park pose can differ, and at the iMicro its
+        approach met the tray's camera head)."""
         Tg = A.down(top_of(sc, grp, FACE + TCP_UP), spin=spin)
-        go_to(sh(Tg, (0, 0, 90)), Tg, secs=secs, grip=OPEN, cam=cam, labels=labels)
+        if at is not None and at in approach_q:
+            go(q=approach_q[at], secs=secs, grip=OPEN, cam=cam, labels=labels)
+        else:
+            go_to(sh(Tg, (0, 0, 90)), Tg, secs=secs, grip=OPEN, cam=cam, labels=labels)
         lin(Tg, 0.7)
         grip(GRIP_MOUNT)
         rb.grasp(grp)
         lin(sh(Tg, (0, 0, 90)), 0.7)
 
-    def place_mount(target_base, parent, spin, cam=None, labels=(), secs=2.0, approach=90.0):
+    def place_mount(target_base, parent, spin, cam=None, labels=(), secs=2.0, approach=90.0, key=None):
         """Set the held mount down with its base at target_base (world) and leave it with `parent`."""
         Tg = A.down(np.asarray(target_base, float) + (0, 0, FACE + TCP_UP), spin=spin)
         go_to(sh(Tg, (0, 0, approach)), Tg, secs=secs, cam=cam, labels=labels)
+        if key is not None:
+            approach_q[key] = rb.q.copy()
         lin(Tg, 0.8)
         grip(OPEN)
         rb.release(parent)
@@ -456,7 +478,7 @@ def movie():
                "carbon-filled phenolic -> cup -> stage, the path to ground (Sterling's point: a bare puck has none).")
     status(L, Arm="loading the SEM")
     pick_mount("c_hot", spin=180.0)
-    place_mount(world_of(sem, "drawer", cup_base), f"{sem.prefix}drawer", spin=180.0,
+    place_mount(world_of(sem, "drawer", cup_base), f"{sem.prefix}drawer", spin=180.0, key="sem",
                 labels=[("holder cup + spring plunger", tuple(world_of(sem, "drawer", cup_base) + (0, 0, 15)),
                          (0.30, 0.78))])
     park(1.4)
@@ -499,7 +521,7 @@ def movie():
     say("iMicro", "The steel mount into the stage's steel cup, clamped by a spring plunger: steel on steel.")
     status(L, Arm="loading the iMicro")
     pick_mount("c_steel", spin=180.0)
-    place_mount(world_of(nano, "stage", nano_base), f"{nano.prefix}stage", spin=180.0)
+    place_mount(world_of(nano, "stage", nano_base), f"{nano.prefix}stage", spin=180.0, key="nano")
     park(1.4)
     status(L, Arm="parked", iMicro="indenting")
     say("iMicro", "Hood down (drawn see-through). The stage carries the slice under the microscope objective, which "
@@ -517,7 +539,7 @@ def movie():
     say("iMicro", "Hood up, stage out; the arm takes the steel mount on to the PIP.")
     status(L, iMicro="done", Arm="unloading the iMicro")
     wait(1.4, nano.move({"lid": (0.0, 1.0), "carriage": (0.0, 1.0), "~cabinet": (1.0, 0.0), "~lid": (1.0, 0.0)}))
-    pick_mount("c_steel", spin=180.0)
+    pick_mount("c_steel", spin=180.0, at="nano")
 
     # ------------------------------------------------------------------ 3. tray E: the PIP
     gP = __import__("instruments")._plx(__import__("instruments").PIP)
@@ -638,6 +660,7 @@ def movie():
     target = world_of(vhx, "carrier", bar_base)
     Tp = A.down(target + (0, 0, RC.BAR_T + BAR_UP), spin=180.0)
     go_to(sh(Tp, (0, 0, 90)), Tp, secs=2.0, cam=CAM_VHX)
+    approach_q["vhx"] = rb.q.copy()
     lin(Tp, 0.8)
     grip(OPEN)
     rb.release(f"{vhx.prefix}carrier")
@@ -661,7 +684,7 @@ def movie():
     status(L, VHX="done", Arm="unloading the VHX")
     wait(1.4, vhx.move({"carrier": (0.0, 1.0)}))
     Tb = A.down(top_of(sc, "c_bar", RC.BAR_T + BAR_UP), spin=180.0)
-    go_to(sh(Tb, (0, 0, 90)), Tb, secs=1.8, grip=OPEN)
+    go(q=approach_q["vhx"], secs=1.8, grip=OPEN)          # the joints that set it down (see pick_mount)
     lin(Tb, 0.7)
     grip(GRIP_BAR)
     rb.grasp("c_bar")
