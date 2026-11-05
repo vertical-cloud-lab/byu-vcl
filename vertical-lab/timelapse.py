@@ -1,7 +1,7 @@
 """The finale (#303, round 8): the whole lab at speed, hour by hour, then day by day, week by week and month by month,
 with what it has made and measured so far.
 
-    python3 timelapse.py model                                  # the throughput model only -> out/timelapse.json
+    python3 timelapse.py model                                  # the throughput model only -> out/timelapse_model.json
     VIZ3D_FPS=6 xvfb-run -a python3 timelapse.py                # the movie -> out/mp4/timelapse.mp4, out/timelapse.gif
     PREVIEW=1 xvfb-run -a python3 timelapse.py                  # nine frames -> /tmp/preview_timelapse.png
 
@@ -416,7 +416,7 @@ def model(write=True) -> dict:
     )
     if write:
         OUT.mkdir(exist_ok=True)
-        (OUT / f"{NAME}.json").write_text(json.dumps(out, indent=1) + "\n")
+        (OUT / f"{NAME}_model.json").write_text(json.dumps(out, indent=1) + "\n")
     return out
 
 
@@ -1005,7 +1005,8 @@ def movie():
 def gif():
     import line
     mp4, out = OUT / "mp4" / f"{NAME}.mp4", OUT / f"{NAME}.gif"
-    for fps, width, lossy in ((5, 640, 90), (4, 560, 100), (4, 480, 120), (3, 480, 140)):
+    for fps, width, lossy in ((5, 640, 90), (4, 560, 100), (4, 480, 120), (3, 480, 140), (3, 400, 160),
+                              (2, 400, 160)):
         msg = line.mp4_to_gif(mp4, out, fps=fps, width=width, lossy=lossy)
         print(msg, flush=True)
         if out.stat().st_size < 4.9e6:
