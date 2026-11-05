@@ -47,6 +47,11 @@ checkout of this branch at `d28c733` on the CubXL Pi; its record is in [`run/`](
   12.678 s, which puts the plunger at 28.00 mm (-0.00 mm), so no steps were lost.
 - **After the run:** magnet off, cap sensor 0, both vials capped, tip back in A1.
 - `HOLD` was set at 22:52:24 and removed at 22:57:01.
+- **New on the Pi:** `~/byu-vcl-stirtrial`, a sparse, shallow checkout of this branch (only
+  `cubos/configs`, `cubos/tools`, `cubos/patches` and `cubos/docs/tic_p20.txt`, 848 kB). A
+  fast-forward of `~/byu-vcl-pipette` (still at `ed84bba`) would have pulled 72 MB of
+  blobs over the Pi's Wi-Fi. Also `~/stir_trial_20261105` (stir script, logs, frames) and the
+  run's own `~/cubxl_runs/stir_module_trial_20261105`.
 
 ### The stir (22:55:38 UTC)
 
