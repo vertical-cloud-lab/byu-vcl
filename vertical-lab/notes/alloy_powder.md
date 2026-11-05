@@ -114,9 +114,16 @@ summarized in [`edison_r8.md`](edison_r8.md)):
     the vial rolls over it (6 frames); the upper arm through the MiniFlex's open door (21 frames: open, the door
     stands between the arm and the prep station, so reaching for the holder swept through it); the forearm and
     wrist against the door and tray D's camera post going in (3 frames). The XRF's 8 were gone (the rising ring);
-  - the render is of the next version, which takes the holder with the door shut and waits outside the door's
-    swing while it opens. Its audit (audit 3) was still running when the render was committed: see below.
-- **Not fixed:** the finger brushing the holder during the vial's roll (6 frames, about 1 s) is in the render.
+  - **audit 3, the rendered version** (the holder taken with the door shut, the arm waiting outside the door's swing
+    while it opens): **23 of 1002 frames** ([`../out/collisions/alloy_powder.json`](../out/collisions/alloy_powder.json)).
+    The upper arm no longer sweeps through the open door. What is left, all in the render:
+    - **the arm's way back to its park pose after setting the holder in the MiniFlex: 16 frames, about 3 s**, its upper
+      arm and forearm through the SEM's and the MiniFlex's housings and tray D's left camera post (`cam_D0`). The fix is
+      a via pose straight back out of the doorway before the park move, or parking in front of tray D instead of over
+      the MiR;
+    - the gripper's right finger brushing the holder while the vial rolls over it, 6 frames (about 1 s);
+    - the holder touching the open door's edge on the way in, 1 frame.
+- **Not fixed in time** (the render was due at 20:45 and finished at 20:55): those 23 frames.
 
 ## Running it
 
