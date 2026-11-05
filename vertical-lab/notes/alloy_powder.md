@@ -100,6 +100,24 @@ summarized in [`edison_r8.md`](edison_r8.md)):
 - **Left as drawn:** the falling powder is a few dozen points; the dusting on the stub and the fills are simple solids;
   the holder spins on a stage with no spinner drawn.
 
+## As rendered (2026-11-05)
+
+- **`out/mp4/alloy_powder.mp4`: 1275 frames at 6 fps, 3 min 33 s**, 1280 × 720; `out/alloy_powder.gif` at 480 px and
+  3 fps (4.9 MB); `out/alloy_powder.json` (the sub-steps); `out/alloy_powder_still.png`.
+- **Built with `VLAB_ONLY_TRAYS=DEMKLH`, the Shuttles clad.** My call, after checking the previews: with only some
+  trays built, the chapter draws both Shuttles clad (opaque, as a real Kardex), so wide shots show white cabinets, and
+  the only trays seen are the one at an opening and the rear columns behind it: D, A, B and E behind Shuttle 1's
+  opening, K, L, M and H behind Shuttle 2's (A-C are always built). Every tray that could show is loaded.
+- **Arm collisions (`ARM_AUDIT=1`, at 6 fps on trays D, E and M):**
+  - audit 1, the first version: 24 of 994 frames;
+  - audit 2, after the first fixes: 27 of 996, in three places: the gripper's right finger brushing the holder while
+    the vial rolls over it (6 frames); the upper arm through the MiniFlex's open door (21 frames: open, the door
+    stands between the arm and the prep station, so reaching for the holder swept through it); the forearm and
+    wrist against the door and tray D's camera post going in (3 frames). The XRF's 8 were gone (the rising ring);
+  - the render is of the next version, which takes the holder with the door shut and waits outside the door's
+    swing while it opens. Its audit (audit 3) was still running when the render was committed: see below.
+- **Not fixed:** the finger brushing the holder during the vial's roll (6 frames, about 1 s) is in the render.
+
 ## Running it
 
 ```bash
