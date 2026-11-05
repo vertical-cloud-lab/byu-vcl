@@ -176,3 +176,7 @@ frame-hungry post-processing inside a slot too (or stream the frames from disk t
 
 **17:30 change:** `--quick` for a job of a few minutes (a `PREVIEW=1` still, a tour still): it goes ahead of normal
 jobs in the queue. A normal job that has waited 20 minutes counts as quick, so renders still get their turn.
+
+**17:40 deadlines moved:** renders committed by **20:10**, notes by **20:15**; the long-form is built from 20:15
+(most of its clips are already in the cache). Two whole-floor scenes at about 5.5 GB each fill the runner's memory,
+so only two run at once; set-up movie last among them.
