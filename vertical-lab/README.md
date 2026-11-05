@@ -9,6 +9,334 @@ the way the lab's other animations are (rePowder training, sieving, atomizer cha
 models tessellated into PyVista, rendered off-screen, text drawn with PIL, written as an MP4 and a GIF. The scene
 framework, [`scene.py`](scene.py), is `atomizer-training/viz3d/scene.py` from #124's branch.
 
+## Round 8: the route in seven chapters, sample prep, the powder checked, scaling up, the lab at speed
+
+Asked for on [PR #318](https://github.com/vertical-cloud-lab/byu-vcl/pull/318) (2026-11-05 00:37 UTC, after watching
+the long-form). Three sessions worked on it: two at 00:37 and 03:16 that lost their runner part-way (below), and one
+from 15:37 with six hours and seven sub-agents. Each stream has a notes file. The split, and the rules every stream
+worked to, are in [`notes/round8_plan.md`](notes/round8_plan.md).
+
+### Keeping the runner alive: at most three scene jobs, a memory gate and a watchdog
+
+Both earlier round-8 runs ended with "The runner has received a shutdown signal" (exit 143) after 61 and 41 minutes,
+with eight agents rendering, auditing and encoding on the runner's 4 cores and 16 GB at once. The last run used
+[`runner_guard.py`](runner_guard.py):
+
+- **At most three scene jobs at once.** Every render, `PREVIEW=1` still, `ARM_AUDIT=1` pass, tour clip and long
+  ffmpeg join takes a slot, a `flock()`ed file under `/tmp/vlab_slots`, which frees itself however its process ends.
+- **A memory gate.** A job starts only if the free memory, less what the running jobs may still grow into (each one's
+  declared peak less what it already holds), covers its own declared peak: 3 GB by default, 6.5 GB for a scene on the
+  whole two-Shuttle floor.
+- **A watchdog.** It logs memory every minute and stops the slotted job holding the most memory if less than
+  1.2 GB is left (900 MB until 17:12). It fired once, at 17:09: two whole-lab jobs, a chapter-6 preview and a GIF
+  built outside any slot had grown to 15.1 GB, and it stopped the 5.7 GB render of the 9:09 clip at 868 MB free.
+  The runner lived; the render was run again.
+- **A fast lane.** `--quick` jobs (previews, stills) go ahead of renders; a render that has waited 20 minutes is
+  promoted.
+- **What it changed on the way.** A whole-lab scene first took two of the three slots. That left a slot and three
+  cores idle for 25 minutes behind a single-threaded collision audit, so from 16:45 every job took one slot and the
+  memory gate did the rest. The gate first checked only the memory free at the start, which is how the 17:09 dip
+  happened.
+- **Lighter scenes for collision audits.** `setup_lab.build` used to load every instrument on all fifteen trays,
+  including the 581 jars, though a chapter presents only a few. `VLAB_ONLY_TRAYS=DEKL` loads just those: 1.5 GB against
+  about 5 GB, and the audits run several times faster. It's also fine for a render whose Shuttles stay clad, as the
+  chapters' do. It's never used for the clips that draw the Shuttles as open frames (the set-up, the 9:09 clip), where
+  the Shuttles would look half empty.
+- **Where the memory goes,** measured on the 9:09 clip (`notes/lab_r8.md`):
+  - building the scene, 1.5 GB;
+  - rendering, about 2 GB more;
+  - the arm planner's collision world of 2,439 FCL bodies, which takes it to 4.5–5.9 GB.
+
+  Building collision meshes only near the arm would cut this; `collide.py` is shared, so it wasn't changed mid-run.
+- **GitHub.** The session re-minted its token every 40 minutes and pushed every 10.
+
+### Chapters 2 and 3: the MS&T stream, the unsieved jar first, grey powder, the MiR at its real acceleration
+
+[`notes/alloy_atomize.md`](notes/alloy_atomize.md), [`notes/alloy_print.md`](notes/alloy_print.md).
+
+- **The Oct 8 Al 6063 clip is out.** It dripped rather than atomized. In its place is a melt stream breaking up on the
+  plate, from Sterling's MS&T 2026 talk ([YmvaeqOQAU4](https://youtu.be/YmvaeqOQAU4?t=298), 4:58–5:05), credited and
+  cropped. The talk names neither the alloy nor the run.
+- **The powder appears in order.** Chapter 2 shows only the unsieved powder: the k7m2q9 jar on the day of the run and the
+  c3k0n5 bag and jar as collected. Gage's photo of the three sieved bronze jars (< 63, 63–250 and > 250 µm; 188, 827
+  and 182 g) comes in chapter 3, after the arm has done the sieving.
+- **Grey until it settles.** The powder is grey while it is poured, shaken and settles. Then it takes the fraction
+  colours with a legend for 0.8 s, and goes back to grey.
+- **The sieve set is the lab's own stack:** No. 60, 100, 140, 230 and 325 and the pan, since the No. 100, 140 and 325
+  arrived on Nov 4 ([DAL PR #175](https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/175)).
+- **Both chapters run on the set-up's two-Shuttle floor** (`alloy_atomize_floor.py`). The Aconity is at x = 6950,
+  clear of the second Shuttle.
+- **The MiR250 drives at its published 0.3 m/s²**, from rest to rest along S-curves with its long axis on the tangent.
+  These are PR #321's ramps, brought over into [`props.py`](props.py): `ramp_secs`, `ramp_frac`, `s_curve` and
+  `unease`. A differential-drive base can't slide sideways, so chapter 3's 300 mm sideways slide up to the bench is now
+  900 mm forward onto the line and back.
+- **Rendered at 6 fps:**
+  - **Chapter 2:** 3 min 30 s, 32 s of it the lab's footage in 8 pieces. 0 of 866 arm frames in collision.
+  - **Chapter 3:** 4 min 14 s. 0 of 1112 in collision, where round 7 had 97.
+- **Still open:**
+  - Chapter 3 was rendered against round 7's EDM and Instron models in the background.
+  - The MiR bodies aren't collision-checked here: #321's `audit_mir.py` wasn't brought over.
+
+### Scaling up: an EOS M 400-4 and a Meltio robot cell
+
+![The scale-up chapter](out/scaleup_still.png)
+
+[`scaleup.py`](scaleup.py), [`r8_scale.py`](r8_scale.py), [`notes/scaleup.md`](notes/scaleup.md). Sterling: "add an EOS
+or some type of large-format printer and show later on the printing of real aerospace parts and repairs of real ship
+parts."
+
+- **The EOS M 400-4 builds antenna brackets after RUAG Space's,** with 30 tensile bars.
+  - The shape is schematic: 380 × 110 × 100 mm, 1667 layers at 60 µm.
+  - Its four lasers are drawn to the layer being melted.
+  - The plate goes in and out on a lift-table cart, our stand-in for the operator's trolley, and a band saw parts
+    the brackets.
+- **The Meltio robot cell rebuilds a damaged leading edge on a nickel-aluminium-bronze propeller.** The positioner tilts
+  it 72°, six passes of beads fill the notch, and the edge is machined back to the profile.
+  - The printhead stays at least 75 mm from the propeller over the whole program.
+  - The robot's links stay at least 334 mm away.
+- **Both stand beyond the south row's ends** on the set-up's floor, with no MiR dock. Their powder, wire and parts come
+  by forklift.
+- **Rendered:** 1 min 55 s at 6 fps.
+- **Fixed before the render:** the plate used to appear from nowhere and float 1.3 m, and the cut brackets hung over the
+  plate. Now the cart carries the plate, and the brackets are lifted off by hand and laid on the saw table.
+
+### Chapter 4: the powder, checked, in line at the trays
+
+[`alloy_powder.py`](alloy_powder.py), [`r8_powder.py`](r8_powder.py), [`r8_powder_data.py`](r8_powder_data.py),
+[`notes/alloy_powder.md`](notes/alloy_powder.md).
+
+Sterling asked why the XRD stood apart from the route: "why isn't a tray coming and then the robot is putting
+something in there". While the plate prints, the MiR250 + UR10e brings a retained sample of the sieved 20–63 µm cut,
+about 15 g in a vial with a mesh cap, round the trays.
+
+- **The XRD prep, at a prep station on tray D** (our design, where the OpenFlexure array stood).
+  - The arm turns the vial over and shakes it, sifting the powder onto a zero-background holder.
+  - A blade strikes the powder off flush with the holder's reference plane.
+  - **No grinding:** milling gas-atomized Al powder turns spheres into flakes by cold welding (Edison's answer,
+    [`out/edison/auto_pxrd_prep`](out/edison/auto_pxrd_prep/answer.md)).
+  - A-Lab's UR5e uses a vial with a mesh lid the same way.
+  - The same visit dusts an SEM stub and fills an XRF cup.
+- **The MiniFlex.**
+  - Its door is see-through from the start. The goniometer stands still until the door is shut and the X-rays are on.
+  - The holder spins during the scan.
+  - The XRD panel is COMPUTED, not measured: Al-12Si from Bragg's law and structure factors.
+- **The SEM shows the lab's own atomized Al 4047** (run c3k0n5, BYU's Apreo, DAL #157), badged REAL, in place of the
+  stock AlSi10Mg image. 972 particles are counted from those images.
+- **Laser diffraction gets time:**
+  - the Aero S disperses the powder;
+  - the optical bench is cut away;
+  - large particles scatter narrow onto the focal-plane arcs, and small ones wide.
+  - The PSD is COMPUTED from the SEM count through a soft-edged 20–63 µm sieve (Dv50 58 µm), since no Mastersizer
+    result exists for this powder.
+- **The XRF's own transfer.**
+  - A hatch in the S2 PUMA's hood slides back.
+  - The chamber's lift ring rises to take the cup from the arm, then lowers it over the tube.
+  - The panel is ILLUSTRATIVE: real line energies against Al 4047's limits.
+
+### Chapter 5: a catch that catches, a capped IPA jar, real specimens, automated loading, a hot test
+
+[`alloy_workflow.py`](alloy_workflow.py), [`alloy_models.py`](alloy_models.py), [`r8_test.py`](r8_test.py),
+[`notes/alloy_workflow.md`](notes/alloy_workflow.md).
+
+- **"The bars dropping onto the catch shelf ... they'd just bounce and fall straight off."**
+  - The plate stands on edge in the EDM, so each cut bar stands on end in its own slot of a comb under it. The slot's
+    floor is 0.5 mm under the bar, so the bar settles onto a urethane pad instead of falling 14 mm.
+  - The slot is walled in front (75 mm tall), on both sides and, behind, by the plate itself.
+  - An ejector pin then lifts the bar 65 mm for the gripper, which removes round 6's 57 frames of taking it off the
+    shelf.
+  - The comb is our design ([`alloy_models.catch_comb`](alloy_models.py)).
+- **The IPA jar starts capped.** The arm lifts the lid off onto a rest, dips each bar, dries it through the air knife
+  and puts the lid back.
+- **Real specimens in the heat treatment:** four E8 subsize dogbones standing in a stainless rack.
+  - The rack gets a T6 on tray F: 530 °C, a water quench, then 160 °C. The times are assumptions until DAL sets one.
+  - It is handled with 300 mm tongs that ride on the MiR, so the gripper stays out of the 530 °C mouth.
+  - The quench tank has a lift basket, and the quench comes about 7 s after the door opens.
+- **Loaded as in Instron's AT6 cells** (Instron's own footage). The 68FM-100 has a 3119-608 chamber on pull rods, an
+  AVE 2 video extensometer and a scrap chute.
+  - The arm sets each specimen in the lower wedge grip and backs out.
+  - The chamber door shuts and the crosshead brings the upper grip down.
+- **Elevated temperature.** The second specimen is pulled at 200 °C after a 15-minute soak.
+  - The room-temperature halves go to the MiR's cradle for chapter 7's fractography; the hot test's go down the chute.
+  - Both curves are **illustrative**.
+- **On the set-up's floor,** the MiR250 at 0.3 m/s². The long drives are shown at 4× and captioned so.
+
+### Chapter 6: sample prep, every transfer by the arm, to the lab's SOP
+
+[`alloy_prep.py`](alloy_prep.py), [`r8_prep.py`](r8_prep.py), [`r8_specimens.py`](r8_specimens.py),
+[`notes/alloy_prep.md`](notes/alloy_prep.md). Sterling: "You jumped straight to the mounted coupons, without all the
+prep involved". Chapter 5's build is sectioned and two specimens are made for chapter 7. Nothing drops, floats or
+teleports: the only things that move on their own are what a machine moves itself.
+
+- **Sectioning on the wire EDM** (the floor's FANUC). It cuts without force or burr. The Carvera's 200 W spindle takes
+  no slitting saw, and the lab's SOP sections with a diamond saw.
+- **A steel mount** (Sterling: "polish by bonding it to a metal mount (maybe with an inset ...)").
+  - The slice is pressed into a pocket of a 1.5 in 416-stainless puck, on its steel floor, and held by a ball plunger.
+  - The **Makera Carvera** on tray M faces it flush with a 6 mm end mill. That takes off the EDM's recast layer and
+    makes the face parallel to the base, as nanoindentation and PIP need.
+  - That's what the CNC is for (Sterling: "What did the CNC actually get used for?"). Its tour clip now faces this mount.
+- **The hot mount on the lab's LECO MX400,** modelled from the lab's own video,
+  [Making Bakelite Polishing Puck](https://www.youtube.com/watch?v=9m_hdgmu2Jw).
+  - The video's sequence: face down, a scoop of compound, the stopper "green marble end up", the lock bar, the cycle at
+    the screen's values, then the ram pushes the mount out.
+  - The compound is carbon-filled, so the mount conducts.
+  - Added for the arm: a compound doser (Struers sells one, the CitoDoser). The stopper is pressed home by the closed
+    fingers.
+  - Depth, height and the units of the screen's values are estimates.
+- **"You're not showing the robot arm swapping out different grits ... this retaining ring."**
+  - The PX500 gets a magnetic platen and six steel discs, each pre-loaded with its paper or cloth under its own retaining
+    ring.
+  - The arm changes disc, abrasive and ring as one piece from a six-shelf magazine.
+  - That's the one automated route the Edison search found: BAM's cell, a QATM QPOL 250 Bot with 16 pre-loaded discs.
+    Nobody has a robot re-papering under a ring.
+  - Re-papering the discs stays a person's job, between batches.
+- **The grits follow the lab's own SOP (PR #258):**
+  - 320, 400, 600, 800 and 1200 SiC at the SOP's "35, 30, 150", 30 s each, rinsed between grits;
+  - then 1 µm alumina on cloth for 3 min.
+  - The SOP's final step, 0.1 µm diamond for 1–2 h on a Buehler VibroMet 2, and its ultrasonic cleans, are captions,
+    not modelled.
+
+### Chapter 7: characterizing the build, on chapter 6's mounts
+
+![Chapter 7's data panels](out/alloy_characterize_still.png)
+
+[`alloy_characterize.py`](alloy_characterize.py), [`r8_char.py`](r8_char.py), [`data_panels.py`](data_panels.py),
+[`notes/alloy_characterize.md`](notes/alloy_characterize.md).
+
+The chapter starts from chapter 6's specimens:
+- a 1.5 in conductive hot mount (carbon-filled phenolic), for the SEM/EDS and micro-Vickers;
+- a steel mount with the wire-EDM slice on its steel floor, for nanoindentation and PIP;
+- the broken half of an E8 subsize bar from chapter 5, for the VHX.
+
+The trays come to the opening and the arm loads each instrument.
+
+- **"No conductive path between the sample and the SEM stage ... it needs to actually mount onto the stage."**
+  - The conductive mount sits in a holder cup in the TM4000's stage socket.
+  - A spring plunger (a ball-nose set screw) clamps it against the cup's wall, so the path runs coupon → compound →
+    cup → stage.
+  - The mount pushes the ball back as it goes in, so the arm needs no screwdriver.
+- **"What's that box off to the right of the SEM?"** It is Oxford's AZtecOne EDS analyser, now lettered and labelled.
+- **"You can't just use the puck" for PIP and nanoindentation.** Both run on the steel mount, so there is metal from
+  the indent to the load cell.
+- **"Non-physical self-motion ... no idea what's going on inside of that indenter."**
+  - The specimen now moves only with the stage it sits in.
+  - The iMicro's hood is drawn see-through while it works. The stage carries the slice under the objective, then
+    under the head, and the Berkovich tip comes down for a 5 × 5 grid.
+- **The VHX head is on the stage's axis** and tilts about the focal point. As Sterling suggested, it builds a 3-D
+  reconstruction of the broken bar: a tilt series, the arm turns the bar over, then the series again.
+- **Micro-Vickers on a Mitutoyo HM-220** on tray L, a row of HV0.1 indents.
+- **Data after every instrument,** each panel badged REAL DATA, COMPUTED or ILLUSTRATIVE.
+  - Nothing in them was measured on this build; no micrograph of a section of the lab's prints was found.
+  - The SEM panel's real inset is now the lab's own atomized Al 4047 (run c3k0n5, BYU's Apreo, DAL #157), not the stock
+    AlSi10Mg powder.
+  - The hardness is from Thijs et al. 2013 (127 ± 3 HV0.5).
+- **No OpenFlexures.**
+- **Rendered:** 4 min 14 s at 6 fps. Its audit has 13 of 1269 checked frames in collision, at the iMicro's unload;
+  [`notes/alloy_characterize.md`](notes/alloy_characterize.md) has the details.
+
+### The lab: the 9:09 clip in the whole lab, quieter service lines, the jar store, no HF, the set-up with everything
+
+[`notes/lab_r8.md`](notes/lab_r8.md), [`notes/tray_plan.md`](notes/tray_plan.md).
+
+- **"In 9:09, suddenly the VLM only has a few things on board."**
+  - 9:09 was round 2's `animate.py workflow` ("atomized powder dosed for the CubXL"), which built its own one-Shuttle
+    scene with trays A–C.
+  - `animate.lab_scene()` now builds the lab as the set-up movie leaves it: two Shuttles, all 15 trays loaded with
+    their UPSs, dock plates and cameras, the floor machines, and a MiR250 + UR10e docked at Shuttle 1.
+  - 1 min 38 s at 6 fps, 0 of 496 arm frames in collision. Round 2's one-Shuttle version is `animate.py workflow_r2`.
+- **The service lines are quieter.**
+  - Each medium's colour is mixed 45 % towards grey.
+  - The flow markers creep at 40 mm/s without a glow, where they ran at 160 mm/s.
+  - `vlm_hookups`, `vlm_services` and `vlm_cabling` are re-rendered.
+- **"A ton of powder jars ... hundreds, including of different sizes":** 581 labelled jars on two new short trays in
+  Shuttle 2 ([`r8_store.py`](r8_store.py), [`out/powder_store.json`](out/powder_store.json)).
+  - Tray N: 204 feedstock jars of 60–500 mL, DAL #146's elements and master alloys, with lids coloured by element.
+  - Tray O: 377 atomized lots of 30–125 mL, each run's ID with its five sieve fractions.
+  - No jar is wider than the 2F-85's stroke. The sizes are typical wide-mouth jars (estimates).
+- **No HF.** Round 7's ducted hood etched in Keller's reagent, which contains HF. It now uses Weck's reagent
+  (KMnO₄ + NaOH), an HF-free tint etch for Al. ICP-MS goes out to the
+  [BYU Spectroscopic Facility](https://labs.chem.byu.edu/byu-spectroscopic-facility/atomic-analysis)'s Agilent 8900,
+  which does its own digestion.
+- **The OpenFlexure array is dropped.** The VHX on tray K does the imaging. Tray D now carries the SEM, the MiniFlex
+  and the powder prep station.
+- **Modula's taller bays** (Sterling's find, 2026-11-04 18:41) are checked against our machines in
+  [`out/tall_opening_bays.png`](out/tall_opening_bays.png):
+
+  | Product height | Fits |
+  |---|---|
+  | Bay S (695 mm), Kardex's published 727.5 mm | none of them |
+  | 856.5 mm, the opening drawn here | MX-Lab, MX100, an open Form 4 |
+  | Bay M (895 mm) | also the Fusion X and the N₂ generator |
+  | Bay XL (1,295 mm) | also the MetalONE, the DiMetal-100 and the MX-Lab's base cabinet |
+
+  The trays are still fitted to Kardex's 2450 × 864 mm. Re-fitting them to Modula's 2,500 × 857 mm, and the requote,
+  are open.
+- **The tray plan takes every round-8 placement** (`setup_lab.merge_r8`): all 15 trays fit their slots and all 13
+  MiR250 docks are clear. Round 6's camera clashes on D0, E0 and F1 are gone.
+  - Two streams' parts clashed on tray F (the quench tank inside the disc magazine), so the tank moved left and back.
+  - The scale-up machines stand beyond the south row's ends, with no MiR dock.
+- **The set-up movie is re-rendered with all of it:** 15 trays, the jar store, tray F's press, magazine and quench
+  tank, and a new step for the EOS and the Meltio cell. 1 min 56 s at 6 fps, 3.5 GB peak without the arm planner.
+
+### The finale: the whole lab at speed
+
+![The finale, month by month](out/timelapse_still.png)
+
+[`timelapse.py`](timelapse.py), [`notes/timelapse.md`](notes/timelapse.md), the model in
+[`out/timelapse_model.json`](out/timelapse_model.json). Sterling: "show the entire laboratory operating in high-speed,
+starting by the hour, then day-by-day, then by weeks and months showing the total dataset sizes, including number of
+unique alloys fully tested and printed."
+
+- **The scene is the set-up's lab:** every tray, see-through Shuttles. It plays hour by hour (1 s = 48 min), day by
+  day, week by week, then month by month (1 s ≈ 17 days), and ends on the first year's totals.
+  - A clad, eight-tray version needed half the memory but looked like a different machine, so it wasn't used.
+- **A schedule drives every frame.**
+  - Each alloy goes through chapters 1–7, each step on its own station, carried by two MiR250 + UR10e units.
+  - Trays come to the openings when a step needs them.
+  - Beacons drawn for this clip show what each machine is doing.
+  - The room dims when nobody is on site.
+- **The counters are a model, not a measurement.** Step times come from the chapters' notes. The rest are assumptions,
+  each marked in the notes:
+  - one person on weekday day shifts, for the atomizer's crucible;
+  - up to three runs a day after a four-week ramp;
+  - one run in ten drips.
+- **What the model finds:**
+  - **The atomizer is the bottleneck,** because it needs a person; the MIDI runs at 27 % and the rePowder at 21 %.
+  - **The first alloy is fully tested 16 h after the lab starts.** A median alloy goes from atomized to fully tested in
+    12 h.
+  - **After one year:** 378 alloys atomized, 324 printed and fully tested, 1,420 tensile tests, 6,800 SEM/EDS images,
+    and about 2.1 TB of instrument data plus 126 TB of stream video if all of it were kept.
+  - **"Fully tested" means all of these:**
+    - the powder measured;
+    - printed, heat treated, and tensile tested at room and elevated temperature;
+    - sectioned, mounted, polished and characterized (SEM/EDS, VHX, micro-Vickers, nanoindentation, PIP);
+    - a corrosion screen on the CubXL.
+- **Rendered:** 87.5 s at 6 fps.
+
+### The long-form, round 8
+
+The long-form is being rebuilt from round 8's clips (this section is updated when it is on YouTube).
+
+- **Chapters 4 and 6, the scale-up and the finale are new.** Chapters 2, 3, 5 and 7, the set-up and the 9:09 clip are
+  re-rendered on round 8's code.
+- **Clips are dropped where a chapter now shows the same machine at work.** These are the stand-alone tour clips of
+  the XRD, Mastersizer, XRF, SEM, VHX, HM-220, iMicro, PIP, mounting press, PX500, Carvera, furnace, wire EDM,
+  Instrons and sieve shaker. One chapter keeps the gallery and the stations no chapter passes through.
+- **One video, no separate clip uploads,** as Sterling asked after YouTube's daily limit. Round 8's clips are in
+  `out/mp4/` and on this branch; `out/youtube.md` lists the round-7 uploads.
+
+### Other PRs
+
+- **#321's MiR250 ramps** are brought over into `props.py` (`ramp_secs`, `ramp_peak`, `ramp_frac`, `s_curve`, and
+  `unease`, there rather than in `scene.py`). Chapters 2–7 drive with them. Its `audit_mir.py` wasn't brought over.
+- **#320 and #321 had nothing newer** than the commits `longform.py` pins (`5a39245`, `a34367a`). The exception is
+  #320's set-up with trays G–I in one Shuttle, which round 7's two-Shuttle set-up replaced.
+- **#258, the lab's SEM/EDS polishing SOP,** sets chapter 6's grits, settings and rinses. Its step 7, now 0.1 µm diamond
+  on the VibroMet 2, is a caption.
+
+### Still open after round 8
+
+- Being written as the last renders land.
+
 ## Round 7: a 996 mm opening, two Shuttles, a UPS on every tray, new stations, the trays at work
 
 Asked for on [PR #318](https://github.com/vertical-cloud-lab/byu-vcl/pull/318) (2026-11-04, after watching the
@@ -1422,6 +1750,25 @@ xvfb-run -a python3 tour.py glovebox_tray tensile_h hardness cnc fumehood fumeho
 xvfb-run -a python3 alloy_characterize.py              # chapter 5, the trays at work (VIZ3D_FPS=10 as rendered)
 xvfb-run -a python3 ot2_corrosion.py                   # the OT-2 as the CubXL's liquid station
 python3 alloy_route.py; python3 longform.py; python3 longform.py upload
+```
+
+Round 8 (at most three scene jobs at once on a 4-core, 16 GB runner: see `runner_guard.py`):
+
+```bash
+python3 runner_guard.py watch &                        # memory log and watchdog; then every scene job through a slot:
+python3 runner_guard.py slot --mem 6500 --label ch2 -- env VIZ3D_FPS=6 xvfb-run -a python3 alloy_atomize.py
+VIZ3D_FPS=6 xvfb-run -a python3 alloy_print.py         # chapter 3
+VIZ3D_FPS=6 xvfb-run -a python3 alloy_powder.py        # chapter 4, the powder checked
+VIZ3D_FPS=6 xvfb-run -a python3 alloy_workflow.py      # chapter 5
+VIZ3D_FPS=6 xvfb-run -a python3 alloy_prep.py          # chapter 6, sample prep
+VIZ3D_FPS=6 xvfb-run -a python3 alloy_characterize.py  # chapter 7
+VIZ3D_FPS=6 xvfb-run -a python3 scaleup.py             # the EOS M 400-4 and the Meltio cell
+python3 timelapse.py model; VIZ3D_FPS=6 xvfb-run -a python3 timelapse.py   # the finale and its throughput model
+VIZ3D_FPS=6 xvfb-run -a python3 animate.py workflow    # the 9:09 clip, in the whole lab
+ARM_NO_PLAN=1 VIZ3D_FPS=6 xvfb-run -a python3 setup_lab.py   # the set-up, every round-8 model (3.5 GB without the planner)
+VLAB_ONLY_TRAYS=DEKL ARM_AUDIT=1 xvfb-run -a python3 alloy_characterize.py   # an audit with only the trays the arm works at
+xvfb-run -a python3 tour.py mount_press cnc polisher sem vhx nanoindenter pip hardness furnace xrd xrf
+python3 longform.py warm; python3 longform.py; python3 longform.py upload
 ```
 
 Putting them on YouTube (needs `YOUTUBE_UPLOAD_TOKEN_PICKLE_B64`; see [`youtube/README.md`](../youtube/README.md)):
