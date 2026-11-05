@@ -604,7 +604,7 @@ def movie():
     hw = lambda q: inst_world(sc, hv, q)                           # noqa: E731
     say("Vickers", "Tray L comes down at Shuttle 2: the Mitutoyo HM-220 micro-Vickers tester, and the zwickiLine.")
     L.fetch("L", st["lbl"], st["cap"], fast=0.5, cam=CAM_LAB, hold=0.2)
-    CAM_HV = cam_at(hw((0, -260, 300)), (-700, -1250, 560))
+    CAM_HV = cam_at(hw((0, -260, 300)), (380, -1150, 760))         # from the front right, through the opening
     say("Vickers", "Its loading slide (ours) runs the mount holder out from under the turret; the arm sets the hot "
                    "mount on it, against the V-block.")
     status(L, **{"HM-220": "slide out", "Arm": "loading the HM-220"})
