@@ -11,7 +11,7 @@
   "xray_data_booklet": "https://xdb.lbl.gov/Section1/Table_1-2.pdf",
   "eos_alsi10mg_mds": "https://www.eos.info/en-us/metal-solutions/metal-materials/data-sheets/mds-eos-aluminium-alsi10mg",
   "eos_alsi10mg_m400": "https://www.eos.info/metal-solutions/data-sheets/aluminium/pds-eos-aluminium-alsi10mg-eos-m-400-4-30um",
-  "kempen2012": "https://doi.org/10.1016/j.phpro.2012.10.059",
+  "thijs2013_postprint": "https://lirias.kuleuven.be/bitstream/123456789/369343/3/Thijs%20et%20al%202012_fine-structured%20aluminium%20products%20with%20controllable%20texture%20by%20SLM%20of%20AlSi10Mg%20powder_postprint.pdf",
   "oliver_pharr1992": "https://doi.org/10.1557/JMR.1992.1564",
   "plastometrex": "https://www.plastometrex.com/"
  },
@@ -130,8 +130,11 @@
   ],
   "mean_HV": 123.5,
   "sd_HV": 3.1,
-  "literature": "as-built LPBF AlSi10Mg, about 120-130 HV (typical); e.g. Kempen et al. 2012 (the reference checked, its hardness figure not checked against the full text)",
-  "source": "https://doi.org/10.1016/j.phpro.2012.10.059"
+  "literature": "as-built LPBF (SLM) AlSi10Mg: 127 +- 3 HV0.5, no precipitation hardening (Thijs et al. 2013, Acta Materialia 61, 1809-1819)",
+  "source": [
+   "https://doi.org/10.1016/j.actamat.2012.11.052",
+   "https://lirias.kuleuven.be/bitstream/123456789/369343/3/Thijs%20et%20al%202012_fine-structured%20aluminium%20products%20with%20controllable%20texture%20by%20SLM%20of%20AlSi10Mg%20powder_postprint.pdf"
+  ]
  },
  "nano": {
   "status": "computed",

@@ -28,9 +28,10 @@ and ``docs/``); the only real image used is of the powder, and it is labelled so
   the boundaries, as Poisson counts. Hitachi TM4000PlusII at 15 kV (its EDS runs at 5, 10, 15 or 20 kV), AZtecOne
   (Oxford Instruments).
 * **hv (illustrative).** HV = 1.8544 F / d^2 (F in kgf, d the mean diagonal in mm) at F = 0.1 kgf (HV0.1). The values,
-  119-128 HV, are typical of as-built LPBF AlSi10Mg (about 120-130 HV in the literature, e.g. Kempen et al. 2012,
-  https://doi.org/10.1016/j.phpro.2012.10.059; the reference was checked, its hardness figure was not checked against
-  the full text); the diagonals are chosen to give them and the indent is drawn to scale. Mitutoyo HM-220.
+  119-128 HV, are typical of as-built LPBF AlSi10Mg: Thijs et al. 2013 report 127 +- 3 HV0.5 without any
+  precipitation hardening (https://doi.org/10.1016/j.actamat.2012.11.052; the figure read from the KU Leuven
+  postprint, https://lirias.kuleuven.be/bitstream/123456789/369343/3/Thijs%20et%20al%202012_fine-structured%20aluminium%20products%20with%20controllable%20texture%20by%20SLM%20of%20AlSi10Mg%20powder_postprint.pdf);
+  the diagonals are chosen to give them and the indent is drawn to scale. Mitutoyo HM-220.
 * **nano (computed).** H = 1.80 GPa and E = 77 GPa, chosen as typical literature values for LPBF AlSi10Mg (not taken
   from one paper). 25 load-displacement curves (a 5 x 5 grid at a 20 um pitch, a few % scatter, softer next to a
   melt-pool boundary) are generated to 500 nm and analysed back by Oliver and Pharr
@@ -43,7 +44,7 @@ and ``docs/``); the only real image used is of the powder, and it is labelled so
   parameters solved to give Rp0.2 = 250 MPa, UTS = 400 MPa and 4.5 % uniform elongation, in keeping with EOS's as-built
   values (EOS M 400-4, 30 um layers, horizontal: yield 250 MPa, UTS 400 MPa, 5 % elongation; vertical: 230, 430, 3 %;
   https://www.eos.info/metal-solutions/data-sheets/aluminium/pds-eos-aluminium-alsi10mg-eos-m-400-4-30um). The
-  residual indent's profile: a 1 mm radius ball, about 0.8 mm across and 79 um deep below an 8 um pile-up. PIP gets
+  residual indent's profile: a 1 mm radius ball, about 0.8 mm across and 78 um deep below a 7 um pile-up. PIP gets
   the curve by fitting an FEM model to that profile (Plastometrex PLX-Benchtop, https://www.plastometrex.com/).
 * **vhx (illustrative, computed).** A height map of a 6 x 4 mm gauge section's fracture surface: roughly flat, finely
   dimpled (bowls ~0.1 mm), a shear lip round the edge and one gas pore, and a profile along A-B through the pore. As
@@ -82,7 +83,8 @@ SRC = dict(
     xray_data_booklet="https://xdb.lbl.gov/Section1/Table_1-2.pdf",
     eos_alsi10mg_mds="https://www.eos.info/en-us/metal-solutions/metal-materials/data-sheets/mds-eos-aluminium-alsi10mg",
     eos_alsi10mg_m400="https://www.eos.info/metal-solutions/data-sheets/aluminium/pds-eos-aluminium-alsi10mg-eos-m-400-4-30um",
-    kempen2012="https://doi.org/10.1016/j.phpro.2012.10.059",
+    thijs2013_postprint="https://lirias.kuleuven.be/bitstream/123456789/369343/3/Thijs%20et%20al%202012_fine-structured"
+                        "%20aluminium%20products%20with%20controllable%20texture%20by%20SLM%20of%20AlSi10Mg%20powder_postprint.pdf",
     oliver_pharr1992="https://doi.org/10.1557/JMR.1992.1564",
     plastometrex="https://www.plastometrex.com/",
 )
@@ -446,7 +448,7 @@ def panel_hv(path: Path) -> dict:
     vals = [hv_of(*d) for d in HV_D]
     mean, sd = float(np.mean(vals)), float(np.std(vals, ddof=1))
     d1, d2 = HV_D[0]
-    foot = ("A typical value for as-built LPBF AlSi10Mg (about 120-130 HV, e.g. Kempen et al. 2012);\n"
+    foot = ("A typical value for as-built LPBF AlSi10Mg (Thijs et al. 2013: 127 ± 3 HV0.5);\n"
             "the diagonals are computed from it and the indent drawn to scale. Mitutoyo HM-220, 100 gf.")
     plt, fig = _fig("Micro-Vickers, polished face", "ILLUSTRATIVE", foot)
     img, um = vickers_image(d1, d2)
@@ -499,9 +501,9 @@ def panel_hv(path: Path) -> dict:
     return dict(status="illustrative", instrument="Mitutoyo HM-220", load_kgf=HV_F, formula="HV = 1.8544 F / d^2",
                 indents=[dict(d1_um=a, d2_um=b, HV=round(v, 1)) for (a, b), v in zip(HV_D, vals)],
                 mean_HV=round(mean, 1), sd_HV=round(sd, 1),
-                literature="as-built LPBF AlSi10Mg, about 120-130 HV (typical); e.g. Kempen et al. 2012 (the "
-                           "reference checked, its hardness figure not checked against the full text)",
-                source=SRC["kempen2012"])
+                literature="as-built LPBF (SLM) AlSi10Mg: 127 +- 3 HV0.5, no precipitation hardening (Thijs et al. "
+                           "2013, Acta Materialia 61, 1809-1819)",
+                source=[SRC["thijs2013"], SRC["thijs2013_postprint"]])
 
 
 # ================================================================================================= nano
