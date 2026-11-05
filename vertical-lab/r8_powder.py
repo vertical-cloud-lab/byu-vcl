@@ -68,7 +68,7 @@ def _cone(a, b, ra, rb):
 # 2theta = 90 deg, r8_powder_data.thick_enough) and a flat, level face to strike off flush with the carrier's top,
 # which is the goniometer's reference plane. Our choice; plain plates and other wells are sold.
 ZBH = dict(w=44.0, l=52.0, t=2.5, si_d=32.0, si_t=2.0, well_d=20.0, well=0.5,
-           fin_w=14.0, fin_d=8.0, fin_h=24.0, fin_y=-36.0)
+           fin_w=14.0, fin_d=8.0, fin_h=30.0, fin_y=-36.0)
 # Round 8, continuation (alloy_powder.py): the arm carries the holder by an upright fin on a tab at its front edge, 30 mm
 # in front of the well, so the gripper's fingers close across the fin (14 mm) and never reach under the carrier, and
 # nothing of the gripper is near the beam's plane. Our design, as is the rest of the holder's carrier.
@@ -396,7 +396,21 @@ def xrf() -> I.Instrument:
     for (sx_, sy_) in [q for i, q in enumerate(g["seats"]) if i % 3 == 1 and i != XRF_SEAT]:
         others.add(f"cup {sx_:.0f} {sy_:.0f}", tube(g["cup_d"], g["cup_d"] - 3, 25, x=sx_, y=sy_, z=dk + 4.5), "pp_white")
         others.add(f"powder {sx_:.0f} {sy_:.0f}", cyl(g["cup_d"] - 4, 10, x=sx_, y=sy_, z=dk + 4.2), "powder")
+    # the robot's way in (round 8, alloy_powder.py): Bruker's Automation version takes samples "into the sample chamber
+    # directly or via buffer positions" (S2 PUMA Series 2 brochure). Drawn here as a hatch in the hood's top, where the
+    # window is, that slides back so a gripper can set a cup straight onto the chamber's ring under the port. The hood
+    # itself can't open far enough at the VLM's opening for an arm to reach under it. The hatch is our assumption.
+    q_ = IC.XRF_LOOK
+    H_ = g["H"]
+    lid = inst.pieces["lid"]
+    lid.parts = [pt for pt in lid.parts if "window" not in pt.name]
+    hatch = _piece(inst, "hatch")
+    hatch.add("top hatch", box(-q_["win_w"] / 2 - 6, g["yf"] + q_["win_y0"] - 6, H_ - 4, q_["win_w"] / 2 + 6,
+                               g["yf"] + q_["win_y0"] + q_["win_d"] + 6, H_ - 1), "xrf_window")
+    hatch.add("hatch handle", box(-40, g["yf"] + q_["win_y0"] - 4, H_ - 1, 40, g["yf"] + q_["win_y0"] + 6, H_ + 6),
+              "inst_navy")
     j = inst.joints
+    j["hatch"] = Joint("slide", vec=(0, q_["win_d"] + 20.0, 0), parent="lid")
     j["sample"] = Joint("path", path=kk["path"])
     j["gbeam"] = Joint("slide", vec=(0, 1, 0))
     j["gcar"] = Joint("slide", vec=(1, 0, 0), parent="gbeam")
@@ -489,6 +503,7 @@ def pxrd_prep() -> I.Instrument:
                         (p["w"], p["d"] + 14.0, p["h"] + 50.0),
                         "Our design (round 8): the sifting and striking-off of Whitfield, Huq and Kaduk (2019) and "
                         "A-Lab's mesh-capped vial (Szymanski 2024), as Edison summarized them (notes/edison_r8.md)")
+    inst.name = "Powder prep station"            # setup_lab.item_label's name for an "our design" model
     body = _piece(inst, "body")
     zx, zy, zz = f["zbh"]
     ped = box(-p["w"] / 2, -p["d"] / 2, 0, p["w"] / 2, p["d"] / 2, p["h"]).edges("|Z").fillet(6)
