@@ -82,3 +82,41 @@ The prep stream owns `r8_specimens.py` and commits a first version early. Others
 | scale | 17 | `scaleup.py`, `r8_scale.py`, `notes/scaleup.md`, `out/scaleup*` |
 | timelapse | 18 | `timelapse.py`, `notes/timelapse.md`, `out/timelapse*` |
 | orchestrator | | `longform.py`, `alloy_route.py`, `route_dag.py`, `README.md`, `youtube_upload.py`, `tour.py`'s module list, `out/edison/`, `notes/edison_r8.md` |
+
+## Continuation, 2026-11-05 03:25 UTC (PR #318 comment "pick up from where you left off")
+
+The first round-8 session's GitHub token expired 60 minutes in, so nothing it committed after **01:26 UTC**
+(`4eac506`) was pushed, and the runner took it with it. What is on the branch from round 8 is listed under "Landed"
+below; everything else starts again from there. This session re-mints the token every 40 minutes and the
+orchestrator pushes every 15 minutes or so, so **commit early and often**: code as soon as a preview works, then each
+render as it finishes. An unpushed commit is lost if the job ends.
+
+**Deadlines (UTC).** Renders committed by **05:05**. Notes by **05:15**. After 05:05 the orchestrator builds the
+long-form from whatever is committed; a clip that isn't there is left out, and an older version stays in its place.
+If a render won't make it, commit the code and a `PREVIEW=1` still, and say what is left in your notes.
+
+**Rendering, 4 cores for everyone.** Chapters at `VIZ3D_FPS=6` (1280 x 720), tour clips at 8. Prefix renders with
+`LP_NUM_THREADS=2 nice -n 5`. Use your display number below. `ARM_AUDIT=1` before any render with arm moves; the
+target is 0 frames in collision.
+
+**Reading DAL and other repos.** `GH_TOKEN=$(cat /tmp/.ghtok) gh api repos/vertical-cloud-lab/digital-alloy-lab/...`
+(the file is re-minted every 40 minutes; read it fresh on every call).
+
+### Landed in the first session
+
+- powder: `r8_powder.py` (MiniFlex with a see-through door and still goniometer, zero-background holder; Mastersizer
+  optical bench for a cutaway; S2 PUMA grabber, port and chamber), `r8_powder_data.py` (c3k0n5 SEM count, computed
+  XRD and LD, illustrative XRF) and its PNGs, the `xrd`, `mastersizer`, `xrf` tour clips at 8 fps.
+  **Left:** `alloy_powder.py` (chapter 4) and `notes/alloy_powder.md`.
+- scale: `r8_scale.py`, `scaleup.py`, `notes/scaleup.md` (draft). **Left:** preview, render `out/mp4/scaleup.mp4`,
+  finish the notes.
+- lab: `r8_store.py` (581 jars, trays N and O; fume hoods with Weck's reagent), the hood and jar-store clips,
+  `setup_lab.py` merging the r8 placements and dropping the OpenFlexure array, `services.py` media colours muted and
+  flow slowed (code only), `kardex_tall` Modula table. **Left:** the services clips re-rendered with the muted flow,
+  `animate.py workflow` (the 9:09 clip) re-staged in the two-Shuttle lab, the set-up movie and tray plan with every
+  r8 model, `notes/lab_r8.md`.
+- atomize: chapter 2's footage list (the Oct 8 drip out, the MS&T 2026 stream in: `out/footage/manifest.json`,
+  `mst2026_stream.mp4`). **Left:** everything else in its row of the table below.
+- prep: `r8_specimens.py` (1.5 in mounts). **Left:** everything else.
+- char, tensile, timelapse: nothing landed.
+- orchestrator: Edison answers, DAG cards for seven chapters, `longform.py` round-8 chapter list, `alloy_route.py`.

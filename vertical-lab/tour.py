@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import pickle
 import subprocess
 import sys
@@ -97,9 +98,13 @@ def load(keys=None, rebuild=False) -> dict:
         # rebuilt once the OpenFlexure meshes are there (the two microscopes, and the array in instruments_char)
         h.update(str((CACHE / "openflexure" / "v7").is_dir() and (CACHE / "openflexure" / "delta").is_dir()).encode())
         path = CACHE / f"{name}_{h.hexdigest()[:12]}.pkl"
+        part = None
         if path.exists() and not rebuild:
-            part = pickle.loads(path.read_bytes())
-        else:
+            try:                                          # another process may be writing it: rebuild if unreadable
+                part = pickle.loads(path.read_bytes())
+            except Exception as e:                        # noqa: BLE001
+                print(f"  cache {path.name} unreadable ({type(e).__name__}); rebuilding", flush=True)
+        if part is None:
             part = {}
             for key, build in mod.REGISTRY.items():
                 print(f"  building {key}", flush=True)
@@ -109,7 +114,9 @@ def load(keys=None, rebuild=False) -> dict:
                     print(f"  skipping {key}: {e}", flush=True)
                     continue
                 part[key] = (inst, piece_entries(inst))
-            path.write_bytes(pickle.dumps(part))
+            tmp = path.with_suffix(f".{os.getpid()}.tmp")      # atomic: readers never see half a file
+            tmp.write_bytes(pickle.dumps(part))
+            os.replace(tmp, path)
         data.update(part)
     return {k: v for k, v in data.items() if keys is None or k in keys}
 
