@@ -125,7 +125,7 @@ END_POSE = (A.REPOWDER_AT[0] + 288.0, -2230.0)     # the hand-off to chapter 3 (
 # be able to do the chamber opening and such on the atomizer"): the second MiR250 + UR10e waits in the aisle west of
 # the rePowder and comes in for the lid. It stands left of the first (100 mm between their bodies), 200 mm nearer the
 # machine: its arm holds the lid down while the first arm works the latch, and swings the lid open and shut.
-B_HOME = (A.REPOWDER_AT[0] - 1900.0, -2800.0)
+B_HOME = (A.REPOWDER_AT[0] - 1500.0, -2450.0)       # in the aisle, west of the first's spot
 B_AT = (A.REPOWDER_AT[0] - 760.0, -2190.0)       # its body 60 mm off the chamber's front, 100 mm off the first's
 LITE = bool(os.environ.get("ATOMIZE_LITE"))       # development only: the rePowder and the MiRs, no lab floor
 
@@ -1486,8 +1486,8 @@ def movie():
     CAM_CHAMBER = cam((-900, -2200, 1000), (110, 0, 760))
     CAM_CONT = cam((1450, -1650, 1250), (250, -300, 520))
     CAM_CRADLE = cam((1900, -2500, 1750), (150, -560, 760))
-    CAM_PAIR = cam((-420, -3350, 1250), (-330, -560, 760))   # round 9: both units from the front, their ballast plates
-    CAM_TWO = cam((880, -1350, 1820), (10, -100, 1380))      # round 9: both arms at the lid, from the front right
+    CAM_PAIR = cam((-800, -4300, 1500), (-280, -600, 520))   # round 9: both units from the front, their ballast plates
+    CAM_TWO = cam((640, -1000, 1700), (40, -90, 1390))       # round 9: both arms at the lid and the latch, front right
     rbB = mir_b.rb
 
     show_g(arm="parked", mir="at the VLM's opening", armB="parked", mirB="waiting in the aisle",
@@ -1499,7 +1499,6 @@ def movie():
            f"its own Al runs were 169-180 g (DAL #159). MiR250 2 comes over from the aisle for the lid.")
     lbl = [("AMAZEMET rePowder atomizer", tuple(W((250, 0, 1700))), (0.16, 0.24)),
            ("4 charged Al cups", tuple(mir.world((-300, -150, 1110))), (0.62, 0.30)),
-           ("MiR250 2 + UR10e", tuple(mir_b.world((0, 0, 1150))), (0.06, 0.46)),
            ("Kardex VLM", (0, -1700, 2700), (0.80, 0.16))]
     sc.step(f"1/{n}", cap, 1.0, None, hold=1.0, labels=lbl)
     show_g(mir="driving", mirB="driving")
@@ -1513,11 +1512,11 @@ def movie():
            f"low as a top module can carry it, so an arm can pull or press on the machine without tipping its base "
            f"(sums in notes/alloy_atomize.md).")
     sc.step(f"1/{n}", cap, 0.8, None, hold=2.6,
-            labels=[("MiR250 2: the lid", tuple(mir_b.world((0, 0, 1000))), (0.10, 0.20)),
-                    ("MiR250 1: the cups", tuple(mir.world((-250, -100, 1000))), (0.66, 0.20)),
+            labels=[("MiR250 2: the lid", tuple(mir_b.world((0, 0, 1000))), (0.06, 0.22)),
+                    ("MiR250 1: the cups", tuple(mir.world((-250, -100, 1000))), (0.72, 0.22)),
                     (f"ballast plate, {BALLAST_KG:.0f} kg steel", tuple(mir_b.world((-150, -BALLAST['W'] / 2, H_bal))),
-                     (0.08, 0.80)),
-                    ("the same under MiR250 1", tuple(mir.world((200, -BALLAST['W'] / 2, H_bal))), (0.70, 0.80))])
+                     (0.04, 0.74)),
+                    ("the same under MiR250 1", tuple(mir.world((200, -BALLAST['W'] / 2, H_bal))), (0.72, 0.74))])
 
     # ------------------------------------------------------------------ 2. lid open, cups in, lid shut
     # round 9: two arms, as a person does it with two hands (T4 5:23): arm 2 holds the lid down by its top while arm 1
@@ -1553,7 +1552,8 @@ def movie():
     for key, ball in (("as_drawn_with_ballast", True), ("without_ballast", False)):
         stab[key] = dict(latch_pull=stability(mir, q_tab, g_tab[:3, 3], -n_out, ball),
                          latch_push=stability(mir, q_tab, g_tab[:3, 3], n_out, ball),
-                         arm2_press=stability(mir_b, q_press, press[:3, 3], (0.0, 0.0, 1.0), ball))
+                         arm2_press=stability(mir_b, q_press, press[:3, 3], -press[:3, 2], ball))   # the lid pushes
+                                                                       # back up the tilted tool's axis
     sp, sb = stab["without_ballast"]["latch_pull"], stab["as_drawn_with_ballast"]["latch_pull"]
     show_g(arm="lid latch")
     pre_tab = g_tab @ T((0, 0, -110))
@@ -1562,7 +1562,7 @@ def movie():
                      (0.12, 0.20)),
                     ("arm 1", tuple(pre_tab[:3, 3] + (0.0, -60.0, 120.0)), (0.80, 0.20)),
                     ("locking bolt, back", tuple((Lw @ np.r_[10.0, 65.0, 58.0, 1.0])[:3]), (0.74, 0.62))])
-    sc.step(f"2/{n}", cap, 0.7, rb.line_to(g_tab), hold=0.05, cam_to=CAM_LATCH)
+    sc.step(f"2/{n}", cap, 0.7, rb.line_to(g_tab), hold=0.05)
     sc.step(f"2/{n}", cap, 0.4, rb.grip_to(GRIP_TAB), hold=0.05)
     rb.events.append((sc.n, "grasp", g("latch_lever"), g("latch_loop")))
     tab_out = follow(rb, [tab_grasp(d) for d in np.linspace(0.0, LATCH_OPEN, 12)])
@@ -1578,7 +1578,7 @@ def movie():
     sc.step(f"2/{n}", cap, 0.3, rb.grip_to(GRIP_TAB_OPEN), hold=0.05)
     rb.events.append((sc.n, "release", g("latch_lever"), g("latch_loop")))
     q_tab_open = rb.q.copy()
-    sc.step(f"2/{n}", cap, 0.6, rb.line_to(tab_grasp(LATCH_OPEN) @ T((0, 0, -110))), hold=0.05, cam_to=CAM_TWO)
+    sc.step(f"2/{n}", cap, 0.6, rb.line_to(tab_grasp(LATCH_OPEN) @ T((0, 0, -110))), hold=0.05)
     # arm 2 lets go of the top and opens the lid by its knob
     knob = np.array([(90 + 131) / 2, -20.0, 1470.0])          # the lid's knob (model.py hood_knob), model frame
     grasp_k = knob_grasp()
@@ -1613,7 +1613,7 @@ def movie():
                      "hold by friction (MU x DRIVE_SHARE x weight). latch_pull / latch_push: MiR250 1, arm 1 at the "
                      "latch's pull tab (the IK branch the chapter uses), the lever pulling the arm toward the furnace "
                      "/ closing it, the other way. arm2_press: MiR250 2, arm 2 pressing straight down on the lid's "
-                     "top (the lid pushes the arm up). arm2_lid: arm 2 at the lid's knob as it starts the swing (the "
+                     "top, the tool leaning PRESS_TILT (the lid pushes back up its axis). arm2_lid: arm 2 at the lid's knob as it starts the swing (the "
                      "lid's weight pulls the arm down). Round 9: two units, a 131 kg plate (was 95 kg).")
     if not PREVIEW:
         (OUT / f"{NAME}_stability.json").write_text(json.dumps(stab, indent=1) + "\n")
@@ -1627,7 +1627,8 @@ def movie():
     sc.step(f"2/{n}", cap, 2.2, lid_up, hold=0.05)
     sc.step(f"2/{n}", cap, 0.4, rbB.grip_to(0.0), hold=0.05)
     rbB.events.append((sc.n, "release", g("knob"), None))
-    away = R((0, 1, 0), -HOOD_OPEN, hinge_w) @ pre_k
+    # straight up off the knob: backed off along the fingers, as arm 1 did, arm 2's forearm folds into its wrist
+    away = T((0, 0, 100)) @ R((0, 1, 0), -HOOD_OPEN, hinge_w) @ grasp_k
     sc.step(f"2/{n}", cap, 0.7, rbB.line_to(away), hold=0.05)
     q_away = rbB.q.copy()
     show_g(armB="parked")
@@ -1840,7 +1841,7 @@ def movie():
            "and the lever goes over centre, drawing the lid down onto its seal. A person does this, and the opening, "
            "in a few seconds with two hands; it is the one place an arm pushes hard on the machine.")
     show_g(arm="lid latch")
-    sc.step(f"2/{n}", cap, 0.6, rb.line_to(g_tab_o), hold=0.05, cam_to=CAM_LATCH)
+    sc.step(f"2/{n}", cap, 0.6, rb.line_to(g_tab_o), hold=0.05)
     sc.step(f"2/{n}", cap, 0.4, rb.grip_to(GRIP_TAB), hold=0.05)
     rb.events.append((sc.n, "grasp", g("latch_lever"), g("latch_loop")))
     tab_in = follow(rb, [tab_grasp(d) for d in np.linspace(LATCH_OPEN, 0.0, 12)])
@@ -1851,7 +1852,7 @@ def movie():
     sc.step(f"2/{n}", cap, 1.6, latch_shut, hold=0.2)
     sc.step(f"2/{n}", cap, 0.3, rb.grip_to(GRIP_TAB_OPEN), hold=0.05)
     rb.events.append((sc.n, "release", g("latch_lever"), g("latch_loop")))
-    sc.step(f"2/{n}", cap, 0.6, rb.line_to(pre_tab), hold=0.05, cam_to=CAM_TWO)
+    sc.step(f"2/{n}", cap, 0.6, rb.line_to(pre_tab), hold=0.05)
     sc.step(f"2/{n}", cap, 0.5, rbB.line_to(pre_press), hold=0.05)
     rbB.events.append((sc.n, "release", g("hood"), None))
     sc.step(f"2/{n}", cap, 1.2, rb.joint_to(PARK), hold=0.05)
