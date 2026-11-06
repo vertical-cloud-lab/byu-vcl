@@ -119,7 +119,7 @@ the weakest case, and the one only the second unit has.
   instead, its forearm was in the open lid: the first audit-lite (rePowder and both units only, `ATOMIZE_LITE=1`,
   2026-11-06 05:33) found 13 of 920 frames, all of them arm 2's forearm in the lid, at the top of the swing and on the
   moves through it. So arm 1 swings the lid (above), and arm 2 only ever presses.
-- **The audit.** The render's own (`ARM_AUDIT_RENDER=1`, on the whole two-Shuttle floor, both arms): **0 of 920 frames in collision** ([`out/collisions/alloy_atomize.json`](../out/collisions/alloy_atomize.json); the other 421 frames are holds, where nothing moves). Before it, a pure-geometry check of the poses where the two arms come closest (every IK branch of arm 1 at the latch along the whole pull and push, against arm 2 on the lid; arm 1's lid swing against arm 2 parked and its MiR250, cabinet and plate) found nothing either.
+- **The audit.** The render's own (`ARM_AUDIT_RENDER=1`, on the whole two-Shuttle floor, both arms): **0 of 920 frames in collision** ([`out/collisions/alloy_atomize.json`](../out/collisions/alloy_atomize.json); the 3-D part's other 229 frames are holds, where nothing moves). Before it, a pure-geometry check of the poses where the two arms come closest (every IK branch of arm 1 at the latch along the whole pull and push, against arm 2 on the lid; arm 1's lid swing against arm 2 parked and its MiR250, cabinet and plate) found nothing either.
 
 **Rendered (2026-11-06, 05:43-06:18 UTC):** 223.5 s at 6 fps, 1341 frames: 191.5 s of 3-D (1149 frames, 13 s more than
 round 8's for the second unit's moves) and 32.0 s of the lab's footage in the same 8 pieces. The 3-D part took 20 min on
