@@ -663,13 +663,14 @@ def header(img, caption: str):
     return out
 
 
-def gif(width=GIF_W, lossy=0, colors=192):
+def gif(width=GIF_W, lossy=0, colors=128):
     """out/mp4/<NAME>.mp4 -> out/<NAME>.gif, every frame at SPEED x the MP4's rate, each under the header band; and the
     same frames as out/mp4/<NAME>_readme.mp4 (SPEED x, h264), for anyone who would rather embed a video. One palette
     for the whole clip (the camera holds still), no dithering, gifsicle -O3 and no --lossy: lossy re-encoding drifts
     where things moved, and the loop then flickers where the last frame meets the first. On a first cut of round 1's
     clip, --lossy=40 gave 3.3 MB with 38,771 px of the last frame off the first; lossless, 4.3 MB and 5,819 px, nearly
-    all by a shade (the MP4's own noise)."""
+    all by a shade (the MP4's own noise). Round 2's loop is 702 frames: 192 colours gave 8.7 MB, 128 give 7.7 MB with
+    no banding to see at the README's size."""
     from PIL import Image
 
     from scene import OUT

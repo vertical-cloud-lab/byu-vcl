@@ -14,22 +14,41 @@ framework, [`scene.py`](scene.py), is `atomizer-training/viz3d/scene.py` from #1
 ![The org page's GIF](out/org_vertical_lab.gif)
 
 [`out/org_vertical_lab.gif`](out/org_vertical_lab.gif) is made to replace that GIF on the org README, under the same
-title. It is one loop of the 9:09 clip's corrosion test (DAL's powder reactivity test) in the two-Shuttle lab:
+title. Round 2 ([PR #329](https://github.com/vertical-cloud-lab/byu-vcl/pull/329), Sterling: "way over-simplified. At
+the very least, it should show interaction with multiple trays and an interaction with at least one module sitting
+outside the VLM. Remove the warehouse stuff, remove the 2nd VLM") shows one Shuttle and one loop of the lab in steady
+state:
 
-1. Tray A is at Shuttle 1's opening. The MiR250 + UR10e stands a vial of atomized powder in the CubXL.
-2. The tray goes back to its slot, where its dock keeps it powered, and the CubXL runs the test there.
-3. The tray comes back, and the arm takes the vial out.
+1. At the sieving cell, on its bench beside the Shuttle, the MiR250 + UR10e takes the run's sample, a vial of the
+   sieved powder. Meanwhile the VLM brings tray A, the CubXL, to its opening.
+2. The MiR drives along the dock line to the opening. The arm swaps the vials in the CubXL: the last sample, its test
+   done, comes out, and the new one goes in.
+3. Tray A goes back to its slot, where its dock keeps it powered and the CubXL runs the test (DAL's powder reactivity
+   test). Tray B, powder dosing, comes down.
+4. The tested vial goes into tray B's rack, in the seat an empty vial comes out of.
+5. Tray B goes back up while the MiR drives back, and the arm leaves the empty vial at the cell for the next sample.
 
-- **It loops without a cut.** The last frame is the first one again.
-- **The file:** 1280 × 806, 408 frames at 20 fps: 20.4 s at 2× the modelled speed, 4.7 MB.
+- **It loops without a cut.** The last frame shows the lab as the first one does; only the caption changes. What
+  differs is too small to see: the vial at the cell is empty at the end, and the vial in tray B's rack holds the
+  tested sample.
+- **The file:** 1280 × 806, 702 frames at 25 fps: 28.1 s at 2.5× the modelled speed, 7.7 MB. The same frames
+  as an MP4, [`out/mp4/org_vertical_lab_readme.mp4`](out/mp4/org_vertical_lab_readme.mp4), are 1.2 MB.
   - It isn't lossy-compressed. With gifsicle's `--lossy`, the last frame drifted from the first where things had moved,
     so the loop would flicker.
-- **The arm audit: 0 of 364 checked frames in collision**
-  ([`out/collisions/org_vertical_lab.json`](out/collisions/org_vertical_lab.json)).
+- **The arm audit: 0 of 696 checked frames in collision**
+  ([`out/collisions/org_vertical_lab.json`](out/collisions/org_vertical_lab.json)). The first cut parked the MiR right
+  of the cell's bench, and its forearm went through the enclosure's side panel and the Shuttle's corner in 64 frames.
+  Every one of them was at the cell.
+- **Left out of this shot:** Shuttle 2 with its trays G–M, the pallet racking round the room, and the second MiR unit.
+  The south row and its overhead utilities are left out too, because the camera stands where they are.
 - **Changed for this shot only** ([`org_gif.py`](org_gif.py) says why):
-  - the camera stands where the south row is, so that row's floor machines and overhead utilities are left out;
-  - the bay's back shutter is drawn more see-through, so tray A's slot shows through the empty bay.
-- **The test is a time-lapse,** and its label says so.
+  - the VLM's camera target stands at the opening's right instead of its left, since the MiR comes in from the cell's
+    side;
+  - the MiR stops at the cell on the VLM's dock line, so it drives to the opening in a straight line;
+  - there is a vial pocket on the cell's bench, and a second pocket on the MiR, so the arm can swap vials at a tray;
+  - the bay's back shutter is drawn more see-through.
+- **The test is a time-lapse,** and its label says so. Everything else plays at 2.5× the modelled times, and a badge
+  says so.
 
 ## Round 8: the route in seven chapters, sample prep, the powder checked, scaling up, the lab at speed
 
@@ -1851,12 +1870,12 @@ xvfb-run -a python3 tour.py mount_press cnc polisher sem vhx nanoindenter pip ha
 python3 longform.py warm; python3 longform.py; python3 longform.py upload
 ```
 
-The org page's GIF (one scene job, about 18 min and 5.6 GB):
+The org page's GIF (one scene job, about 15 min and 4.5 GB, as Shuttle 2's trays aren't loaded):
 
 ```bash
 ARM_AUDIT=1 xvfb-run -a python3 org_gif.py            # every frame's arm checked -> out/collisions/org_vertical_lab.json
 VIZ3D_FPS=10 xvfb-run -a python3 org_gif.py           # the clip, real time -> out/mp4/org_vertical_lab.mp4
-python3 org_gif.py gif                                # 2x, under its header band -> out/org_vertical_lab.gif
+python3 org_gif.py gif                                # 2.5x, under its header band -> out/org_vertical_lab.gif
 ```
 
 Putting them on YouTube (needs `YOUTUBE_UPLOAD_TOKEN_PICKLE_B64`; see [`youtube/README.md`](../youtube/README.md)):
