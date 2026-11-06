@@ -11,6 +11,7 @@ from __future__ import annotations
 import numpy as np
 
 import instruments_lab as IL
+import r9_cubxl
 import vlm as V
 from scene import T
 
@@ -64,7 +65,7 @@ class CubRig:
     def pose(self, s: dict):
         self.state = s
         sc = self.sc
-        for k, d in IL.corr_offsets(s).items():
+        for k, d in r9_cubxl.corr_offsets(s).items():
             sc.gmat[f"{PREFIX}{k}"] = T(d)
         for k, h in IL.corr_levels(s).items():
             z0, h0, _ = IL.LEVEL_AT[k]
