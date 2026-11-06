@@ -19,7 +19,7 @@ The print run logged in to Bambu Studio and opened the A1 mini's Device page at 
 - **The spacer file:** print runs have no Onshape credentials, and the document isn't public.
   The run asked Ben whether the plate was clear, and for the file or the spacer's shape.
 
-The run ended at 23:20 UTC without an answer, so nothing was sent.
+The run ended at about 23:21 UTC without an answer, so nothing was sent.
 
 | File | What |
 |---|---|
