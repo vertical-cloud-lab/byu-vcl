@@ -9,7 +9,7 @@ round 8's open item, six joint moves ending in a pose already in collision, the 
 
 | | |
 |---|---|
-| MP4, 1280 x 720, 6 fps, 385 s, 2,308 frames (rendered 04:37-05:32 UTC, only tray F populated, Shuttles clad; 0 joint moves ending in a pose in collision, against round 8's six) | [`out/mp4/alloy_workflow.mp4`](../out/mp4/alloy_workflow.mp4) (20.1 MB) |
+| MP4, 1280 x 720, 6 fps, 385 s, 2,309 frames (rendered 06:01-06:59 UTC, only tray F populated, Shuttles clad; the planner reported no joint move starting or ending in collision, against round 8's six) | [`out/mp4/alloy_workflow.mp4`](../out/mp4/alloy_workflow.mp4) (19.4 MB) |
 | GIF, 380 px, 2 fps | [`out/alloy_workflow.gif`](../out/alloy_workflow.gif) (4.7 MB) |
 | `PREVIEW=1` stills: the lance, the cut with the vertical bars, a vertical bar picked and racked, the specimen loaded, the pull as a cutaway | [`out/alloy_workflow_preview.png`](../out/alloy_workflow_preview.png) |
 | The separate PR: the three orientations on the EDM | branch `claude/issue-303-edm-orientations`: `edm_orientations.py`, `notes/edm_orientations.md`, `out/edm_orientations.png` |
@@ -81,8 +81,8 @@ round 8's open item, six joint moves ending in a pose already in collision, the 
 ### Collisions: what is known
 
 Every joint move is planned round obstacles as it is rendered (`robot.py`, `collide.py`), and the planner reports any
-move whose start or end pose is itself in collision. Round 8's render had six; this round's first render (04:37-05:32
-UTC) had **none**, and the `PREVIEW=1` pass before the fixes had five (three at the IPA jar and the rack, two at the
+move whose start or end pose is itself in collision. Round 8's render had six; this round's two renders (04:37-05:32 and
+06:01-06:59 UTC; the second has the final shots) had **none**, and the `PREVIEW=1` pass before the fixes had five (three at the IPA jar and the rack, two at the
 Instron), which is what `pick_clear`/`go_pick` and `clear_park` removed. The hose touched nothing in the `PREVIEW=1`
 pass (`DBox.hose_hits`, every frame of section 2).
 
