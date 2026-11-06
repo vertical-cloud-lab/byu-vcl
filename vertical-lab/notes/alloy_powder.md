@@ -132,3 +132,22 @@ PREVIEW=1 python3 runner_guard.py bg --quick --mem 6500 --log /tmp/p.log -- xvfb
 ARM_AUDIT=1 python3 runner_guard.py bg --mem 6500 --log /tmp/a.log -- xvfb-run -a python3 alloy_powder.py
 VIZ3D_FPS=6 python3 runner_guard.py bg --mem 6500 --log /tmp/r.log -- xvfb-run -a python3 alloy_powder.py
 ```
+
+## Round 9 (2026-11-06): Sterling's points 10 and 11 on the round-8 long-form, and the collision frames
+
+- **Mastersizer view and transparency (point 10).** Round 8 ghosted the whole bench body at 18 % opacity, so the cover,
+  the cell cassette, the Aero S and the deck stacked over the laser. Now `r8_powder.mastersizer()` moves the outer covers
+  (bench shell, plinth, end cap, deck, bay plates, lid, handle, swoosh, status light) into their own piece `shell`, a fade
+  joint that goes fully out (not 18 %) for the measurement, leaving the optics bare on a dark base plate; the cell
+  cassette is sectioned in half along the beam so its pocket and windows show. No `~body` ghost is used any more (the
+  tour clip's actions were changed the same way). The chapter camera (`CAM_BENCH`) is high and in front, from the
+  laser's end, so the whole axis (laser, beam expander, lens, cell, detector arcs) is in one frame. Still:
+  `out/alloy_powder_preview_mastersizer.png` (the preview before the camera was pulled back a further 25 %).
+- **S2 PUMA (point 11).** The hood and body now go see-through in the first step (hatch and port opening), before the
+  cup is picked up, and stay so until the measurement is over. The lowering takes 3.6 s (was 2.4), with a held low camera
+  (`CAM_XRFI`, from the right so the parked arm is out of the picture) and labels on the lift ring and the tube/detector.
+- **Collisions.** Round 8 had 23 of 1002 frames. Fixes: a via pose up over the MiR after the holder is set in the
+  MiniFlex (instead of the joint-space move straight to park, which swept the SEM and MiniFlex housings and the camera
+  post); the vial held 48 mm over the holder (was 26) while sifting, for the finger brushing the holder. First audit
+  after the first pair of fixes: 19 of 1025 frames; the result of the second is in
+  `out/collisions/alloy_powder.json` once the audit has run.
