@@ -121,6 +121,13 @@ CRADLE_H = 12.0                       # a low ring on the cabinet top (was a rin
                                       # crossed it on two joint moves, PR #318 round 5)
 END_POSE = (A.REPOWDER_AT[0] + 288.0, -2230.0)     # the hand-off to chapter 3 (sieve, print): MiR250 centre, yaw 0,
                                                    # square to the container's axis, 41 mm off the view port's flange
+# Round 9 (Sterling, PR #318, 2026-11-05 22:56: "You're probably going to need both mobile robots (i.e., both arms) to
+# be able to do the chamber opening and such on the atomizer"): the second MiR250 + UR10e waits in the aisle west of
+# the rePowder and comes in for the lid. It stands left of the first (100 mm between their bodies), 200 mm nearer the
+# machine: its arm holds the lid down while the first arm works the latch, and swings the lid open and shut.
+B_HOME = (A.REPOWDER_AT[0] - 1900.0, -2800.0)
+B_AT = (A.REPOWDER_AT[0] - 760.0, -2190.0)       # its body 60 mm off the chamber's front, 100 mm off the first's
+LITE = bool(os.environ.get("ATOMIZE_LITE"))       # development only: the rePowder and the MiRs, no lab floor
 
 RAW = OUT / "clean"                                # git-ignored: the 3-D render before the footage goes in
 RAW_MP4, RAW_JSON, RAW_GIF = RAW / f"{NAME}_3d.mp4", RAW / f"{NAME}_3d.json", RAW / f"{NAME}_3d_gif"
@@ -570,34 +577,36 @@ def coil_glow(sc, on):
 
 # ------------------------------------------------------------------------------------------------ the MiR
 class Mir:
-    """A MiR250 with its cabinet and a UR10e (alloy_workflow.Mir), driving on (x, y, yaw), with chapter 1's cup
-    carrier and a cradle for the powder container."""
+    """A MiR250 with its cabinet and a UR10e (alloy_workflow.Mir), driving on (x, y, yaw). The first (group "amr",
+    arm "ur") carries chapter 1's cup carrier and a cradle for the powder container; round 9's second unit (group
+    "amrB", arm "urB", ``cargo=False``) comes for the lid. Both stand on a ballast plate (``BALLAST``)."""
 
-    def __init__(self, sc):
-        self.sc = sc
+    def __init__(self, sc, g: str = "amr", prefix: str = "ur", cargo: bool = True):
+        self.sc, self.g, self.cargo = sc, g, cargo
         for name, (mesh, col) in P.mir250().items():
             kw = dict(ambient=0.8) if "light" in name else {}
-            sc.add(f"amr/{name}", mesh, col, "amr", **kw)
-        carrier, seats = C.carrier()
-        sc.add("amr/cup carrier", carrier.translate(CARRIER_AT, inplace=False), P.RACK_C, "amr")
-        self.seats = [np.array(s, float) + CARRIER_AT for s in seats]
-        cx, cy, cz = CRADLE_AT
-        ring = C.lathe([(M.CONT_R + 1.0, 0), (M.CONT_R + 7.0, 0), (M.CONT_R + 7.0, CRADLE_H + 25.0),
-                        (M.CONT_R + 1.0, CRADLE_H + 25.0)], res=64).translate((cx, cy, cz), inplace=False)
-        floor = pv.Cylinder(center=(cx, cy, cz + 1.5), direction=(0, 0, 1), radius=M.CONT_R + 7.0,
-                            height=3.0, resolution=64).triangulate()
-        sc.add("amr/cradle", ring.merge(floor), (0.30, 0.32, 0.36), "amr")
-        self.cradle_seat = np.array([cx, cy, cz + 3.0])
-        # ballast: a 25 mm steel plate under the cabinet, 96 kg (stability(): the arm's pull on the lid's latch)
-        L, Wd, H = P.MIR["L"], P.MIR["W"], P.MIR["H"]
-        bal = pv.Box(bounds=(-L / 2 + 38, L / 2 - 38, -Wd / 2 + 28, Wd / 2 - 28, H, H + BALLAST_T)).triangulate()
-        sc.add("amr/ballast plate", bal, (0.16, 0.17, 0.19), "amr", specular=0.2)
+            sc.add(f"{g}/{name}", mesh, col, g, **kw)
+        if cargo:
+            carrier, seats = C.carrier()
+            sc.add(f"{g}/cup carrier", carrier.translate(CARRIER_AT, inplace=False), P.RACK_C, g)
+            self.seats = [np.array(s, float) + CARRIER_AT for s in seats]
+            cx, cy, cz = CRADLE_AT
+            ring = C.lathe([(M.CONT_R + 1.0, 0), (M.CONT_R + 7.0, 0), (M.CONT_R + 7.0, CRADLE_H + 25.0),
+                            (M.CONT_R + 1.0, CRADLE_H + 25.0)], res=64).translate((cx, cy, cz), inplace=False)
+            floor = pv.Cylinder(center=(cx, cy, cz + 1.5), direction=(0, 0, 1), radius=M.CONT_R + 7.0,
+                                height=3.0, resolution=64).triangulate()
+            sc.add(f"{g}/cradle", ring.merge(floor), (0.30, 0.32, 0.36), g)
+            self.cradle_seat = np.array([cx, cy, cz + 3.0])
+        # round 9: the ballast plate, as low as a top module goes (on the MiR250's deck, under the cabinet), and
+        # proud of the cabinet all round so it reads as a plate: dark steel with a yellow edge stripe (stability())
+        for name, (mesh, col) in ballast_meshes().items():
+            sc.add(f"{g}/{name}", mesh, col, g, specular=0.25)
         self.x, self.y, self.yaw = 0.0, 0.0, 0.0
-        self.rb = RB.Robot(sc, A.ROBOT, "amr", T((*A.ARM_LOCAL, P.AMR_TOP)), q0=A.PARK_DEG)
+        self.rb = RB.Robot(sc, A.ROBOT, g, T((*A.ARM_LOCAL, P.AMR_TOP)), q0=A.PARK_DEG, prefix=prefix)
 
     def set(self, x, y, yaw=0.0):
         self.x, self.y, self.yaw = x, y, yaw
-        self.sc.gmat["amr"] = T((x, y, 0)) @ R((0, 0, 1), yaw)
+        self.sc.gmat[self.g] = T((x, y, 0)) @ R((0, 0, 1), yaw)
         if self.rb.held is not None:
             self.rb.set()
 
@@ -617,7 +626,7 @@ class Mir:
         return max(1.2, P.ramp_secs(s[-1], MIR_SPEED))
 
     def world(self, p):
-        return (self.sc.world("amr") @ np.r_[p, 1.0])[:3]
+        return (self.sc.world(self.g) @ np.r_[p, 1.0])[:3]
 
 
 def follow(rb, poses, max_jump=25.0):
@@ -943,6 +952,42 @@ def knob_grasp() -> np.ndarray:
     return Mx
 
 
+HOOD_TOP = M.HOOD_Z0 + M.HOOD_H1 + M.HOOD_H2        # the lid's flat top, 1510 mm
+PRESS_AT = (-25.0, -15.0)              # where arm 2 presses on the lid's top, model x, y (round 9): 139 mm from the
+                                       # hinge, 0.47 of the latch's 293; 190 mm from arm 1's tool axis at the tab
+PRESS_TILT = 25.0                      # degrees: the press leans away from arm 2's base, so the wrist stays in reach
+PRESS_F = 100.0                        # N, arm 2's press (estimate): under the 111 N its 12.5 kg rated payload, less the
+                                       # 1.2 kg gripper, would weigh
+GRIP_PRESS = 1.0                       # the 2F-85 shut: its fingertips together make the pusher
+
+
+def gripper_low(Tw: np.ndarray, close: float) -> float:
+    """The lowest world z of the 2F-85 (fingers, coupling, wrist camera) with its grasp point at the pose Tw."""
+    import ur_arm
+    G = ur_arm.gripper_fk(close)
+    F = Tw @ T((0.0, 0.0, -ur_arm.TCP_MM))
+    low = 1e9
+    for part, lst in ur_arm.gripper_meshes().items():
+        for mesh, _, _ in lst:
+            pts = np.c_[np.asarray(mesh.points, float), np.ones(mesh.n_points)] @ (F @ G[part]).T
+            low = min(low, float(pts[:, 2].min()))
+    return low
+
+
+def press_pose(gap: float = 0.8) -> np.ndarray:
+    """Arm 2's tool pose pressing down on the lid's top with its shut fingertips, the lowest of them `gap` mm over it
+    (world). The tool leans PRESS_TILT away from arm 2's base (a straight-down press 1.5 m up is past its reach from
+    the left of the first MiR250), with the wrist camera (tool0's -y) to the side."""
+    base = np.array([B_AT[0] + A.ARM_LOCAL[0], B_AT[1] + A.ARM_LOCAL[1]])
+    p = W((PRESS_AT[0], PRESS_AT[1], HOOD_TOP + 40.0))
+    h = p[:2] - base
+    h /= np.linalg.norm(h)
+    a = math.radians(PRESS_TILT)
+    Tw = P.tcp_frame(p, (h[0] * math.sin(a), h[1] * math.sin(a), -math.cos(a)), 90.0)
+    Tw[2, 3] += HOOD_TOP + gap - gripper_low(Tw, GRIP_PRESS)
+    return Tw
+
+
 def arc_branch(rb, sc, grasp, pose_at, move, close, skip, n: int = 23, back: float = 110.0) -> np.ndarray:
     """The IK solution at `grasp` from which the arm can follow pose_at(u), u 0..1, while move(u) swings the part it
     holds (the lid, the lever), touching nothing but the actors named in `skip` (what it holds), and from which it
@@ -1179,21 +1224,38 @@ MASS = dict(mir250=97.0,                      # MiR250 spec sheet
             gripper=1.2,                      # 2F-85 0.925 kg + wrist camera and adapter: estimate
             on_top=3.0)                       # carrier, cups, tong, cradle: estimate
 UR10E_LINKS = (7.369, 13.051, 3.989, 2.1, 1.98, 0.615)   # kg, shoulder .. wrist 3 (UR's DH/dynamics page); base: rest
-BALLAST_T = 32.0                              # mm of steel under the cabinet
-BALLAST_KG = 7.85e-6 * (P.MIR["L"] - 76) * (P.MIR["W"] - 56) * BALLAST_T
+# Round 9 (Sterling, PR #318, 2026-11-05 22:56: "the mobile bases will need to be heavy enough (and the center of
+# gravity low enough)"): each MiR250 stands on a 40 mm steel plate, 760 x 550 mm, on its deck under the cabinet: the
+# lowest place a top module can carry weight (the MiR250 itself is a closed chassis). Ours, not a product; it doubles
+# as the top module's base plate. Round 6-8: 32 mm, 724 x 524, 95 kg, flush with the cabinet (a dark band at its foot)
+BALLAST = dict(L=760.0, W=550.0, T=40.0)      # mm
+BALLAST_T = BALLAST["T"]
+BALLAST_KG = 7.85e-6 * BALLAST["L"] * BALLAST["W"] * BALLAST["T"]          # 131 kg of steel
+MIR250_PAYLOAD = 250.0                        # kg (MiR250 spec sheet)
+
+
+def ballast_meshes() -> dict:
+    """The ballast plate, MiR-local: dark steel on the deck, a yellow band round its top edge."""
+    L, Wd, H, t = BALLAST["L"], BALLAST["W"], P.MIR["H"], BALLAST["T"]
+    plate = pv.Box(bounds=(-L / 2, L / 2, -Wd / 2, Wd / 2, H, H + t - 7)).triangulate()
+    band = pv.Box(bounds=(-L / 2, L / 2, -Wd / 2, Wd / 2, H + t - 7, H + t)).triangulate()
+    return {"ballast plate": (plate, (0.17, 0.18, 0.20)), "ballast edge": (band, (0.93, 0.74, 0.10))}
 WHEELS = (325.0, 225.0)                       # the support rectangle, +-x, +-y, MiR-local: the corner casters (estimate)
 DRIVE_SHARE = 0.5                             # share of the weight on the two drive wheels (estimate)
 MU = 0.6                                      # drive wheel on the floor: the low end of the 0.6-0.8 MiR asks of a
                                               # floor (MiR250 user guide, section 16)
 LATCH_F = dict(expected=100.0, design=200.0)  # N at the lever: Kipp's K0080 cover latches take 100 / 150 / 200 N of
                                               # hand force for 2 / 4 / 7 kN held (notes/alloy_atomize.md)
+LID_KG = 10.0                                 # the lid (estimate): the model's hood is 810 cm3 of 5 mm steel, 6.4 kg,
+                                              # with its CoG 166 mm from the hinge; a real one is lined: call it 10
+LID_KNOB_N = round(LID_KG * 9.81 * 166.0 / 281.0)   # its weight on the knob, 281 mm from the hinge, as it starts up: 58 N
 
 
 def stability(mir, q, P_tool, F_dir, ballast: bool) -> dict:
     """Tipping and sliding of the MiR250 with the UR10e at joints q, a force F_dir (unit, world, on the robot) at
     P_tool. Returns the force that would tip it about its weakest edge, the force that would slide it, and the CoG."""
     import ur_arm
-    W0 = mir.sc.world("amr")
+    W0 = mir.sc.world(mir.g)
     inv0 = inv(W0)
     fk = ur_arm.fk(A.ROBOT, q)
     root = inv0 @ mir.sc.world(mir.rb.root)
@@ -1201,7 +1263,8 @@ def stability(mir, q, P_tool, F_dir, ballast: bool) -> dict:
                                               "wrist3", "tool0")}
     H = P.MIR["H"]
     items = [(MASS["mir250"], (0.0, 0.0, 120.0)), (MASS["control_box"], (0.0, 0.0, H + 150.0)),
-             (MASS["cabinet"], (0.0, 0.0, H + P.CAB_H / 2)), (MASS["on_top"], (-100.0, 0.0, H + P.CAB_H + 40.0)),
+             (MASS["cabinet"], (0.0, 0.0, H + P.CAB_H / 2)),
+             (MASS["on_top"] if mir.cargo else 0.0, (-100.0, 0.0, H + P.CAB_H + 40.0)),
              (MASS["ur10e"] - sum(UR10E_LINKS), pos["base"]), (UR10E_LINKS[0], pos["shoulder"]),
              (UR10E_LINKS[1], (pos["upper_arm"] + pos["forearm"]) / 2),
              (UR10E_LINKS[2], (pos["forearm"] + pos["wrist1"]) / 2), (UR10E_LINKS[3], pos["wrist1"]),
@@ -1247,8 +1310,8 @@ def tong_tcp(F) -> np.ndarray:
 
 # ------------------------------------------------------------------------------------------------ the movie
 def build():
-    data = lab.meshes()
-    idata = tour.load(["glovebox"])
+    data = None if LITE else lab.meshes()
+    idata = None if LITE else tour.load(["glovebox"])
     sc = Scene(NAME, TITLE, mp4=False)
     if not (PREVIEW or AUDIT):              # the 3-D render goes to out/clean/ first; splice() writes the final MP4
         RAW.mkdir(parents=True, exist_ok=True)
@@ -1265,21 +1328,24 @@ def build():
         sc.frame_hooks.append(sc.auditor)
     sc.slots = []                           # where the real footage goes: (beat, MP4 frame, GIF frame, step label)
     sc.intro = 0.8
-    with FL.two_shuttle():                  # round 8: setup_lab's floor, the second Shuttle at x = 3630
-        L = A.Lab(sc, data, robot=False)
-    L.show_gauges = False
-    L.skin(0.0)(1.0)
-    L.apply_state()
+    L = None
+    if not LITE:
+        with FL.two_shuttle():              # round 8: setup_lab's floor, the second Shuttle at x = 3630
+            L = A.Lab(sc, data, robot=False)
+        L.show_gauges = False
+        L.skin(0.0)(1.0)
+        L.apply_state()
     sc.add("line floor", pv.Plane(center=(1200, -900, -1.5), direction=(0, 0, 1), i_size=34000, j_size=18000),
            A.FLOOR_C, "floor", ambient=1.0, diffuse=0.0, specular=0.0, smooth_shading=False)
-    inst, ents = idata["glovebox"]
-    tour.Rig(sc, inst, ents, "glovebox:", at=FL.floor_at("glovebox", inst.bbox()))
-    ents = line.aconity_entries()
-    pts = np.vstack([e["mesh"].points for e in ents.values() if e["mesh"].n_points])
-    lo, hi = pts.min(0), pts.max(0)
-    for n, e in ents.items():
-        sc.add(n, e["mesh"], e["color"], "aconity", opacity=e["opacity"])
-    sc.gmat["aconity"] = FL.floor_at("aconity", (lo[0], hi[0], lo[1], hi[1], lo[2], hi[2]))     # x = 6950
+    if not LITE:
+        inst, ents = idata["glovebox"]
+        tour.Rig(sc, inst, ents, "glovebox:", at=FL.floor_at("glovebox", inst.bbox()))
+        ents = line.aconity_entries()
+        pts = np.vstack([e["mesh"].points for e in ents.values() if e["mesh"].n_points])
+        lo, hi = pts.min(0), pts.max(0)
+        for n, e in ents.items():
+            sc.add(n, e["mesh"], e["color"], "aconity", opacity=e["opacity"])
+        sc.gmat["aconity"] = FL.floor_at("aconity", (lo[0], hi[0], lo[1], hi[1], lo[2], hi[2]))     # x = 6950
     for n in list(sc.actors):                   # the merged rePowder: replaced by its parts
         if n.startswith("repowder:"):
             sc.alpha[n] = 0.0
@@ -1295,12 +1361,14 @@ def build():
     vent = Particles(sc, "vent", (0.80, 0.86, 0.92), size=4.5, slowmo=0.6, seed=3, free=True, gravity=-0.02)
     mir = Mir(sc)
     mir.set(*A.AMR_XY, 0.0)
+    mir_b = Mir(sc, g="amrB", prefix="urB", cargo=False)      # round 9: the second unit, for the lid
+    mir_b.set(*B_HOME, 0.0)
     add_cups(sc, mir)
     add_latch(sc)
     sc.tong_home = add_tong(sc, mir)
     hood(sc, 0.0)
     flange_clamp(sc, 1.0)
-    return sc, L, mir, pool, powder, spray, drops, vent
+    return sc, L, mir, pool, powder, spray, drops, vent, mir_b
 
 
 def fast_forward(sc, first: int, last: int | None = None):
@@ -1379,7 +1447,7 @@ def merge() -> str:
 
 
 def movie():
-    sc, L, mir, pool, powder, spray, drops, vent = build()
+    sc, L, mir, pool, powder, spray, drops, vent, mir_b = build()
     if TAIL or PART:
         fast_forward(sc, *(PART or (TAIL,)))
     rb = mir.rb
@@ -1391,7 +1459,8 @@ def movie():
 
     def show_g(**kw):
         st.update(kw)
-        rows = {"Arm": st.get("arm"), "MiR250": st.get("mir"), "Charge": st.get("charge"),
+        rows = {"Arm 1": st.get("arm"), "MiR250 1": st.get("mir"), "Arm 2": st.get("armB"),
+                "MiR250 2": st.get("mirB"), "Charge": st.get("charge"),
                 "Pressure": f"{st['p_abs']:.1f} mbar" if st.get("p_abs") is not None else None,
                 "Furnace": f"{st['pf']:+.0f} mbar" if st.get("p_on") else None,
                 "Chamber": f"{st['pc']:+.0f} mbar" if st.get("p_on") else None,
@@ -1417,27 +1486,65 @@ def movie():
     CAM_CHAMBER = cam((-900, -2200, 1000), (110, 0, 760))
     CAM_CONT = cam((1450, -1650, 1250), (250, -300, 520))
     CAM_CRADLE = cam((1900, -2500, 1750), (150, -560, 760))
+    CAM_PAIR = cam((-420, -3350, 1250), (-330, -560, 760))   # round 9: both units from the front, their ballast plates
+    CAM_TWO = cam((880, -1350, 1820), (10, -100, 1380))      # round 9: both arms at the lid, from the front right
+    rbB = mir_b.rb
 
-    show_g(arm="UR10e on MiR250, parked", mir="at the VLM's opening",
+    show_g(arm="parked", mir="at the VLM's opening", armB="parked", mirB="waiting in the aisle",
            charge=f"{N_CUPS} × 5N Al cup, Si, {m_cup:.1f} g")
     sc.cam = list(CAM_WIDE)
     # ------------------------------------------------------------------ 1. drive over
-    cap = (f"From the VLM to the atomizer: the MiR250 carries the four charged 5N Al cups, {m_cup:.1f} g of Al-10Si "
+    cap = (f"From the VLM to the atomizer: MiR250 1 carries the four charged 5N Al cups, {m_cup:.1f} g of Al-10Si "
            f"(Si powder under each plug), to the AMAZEMET rePowder. Four charges is how the lab loads the crucible; "
-           f"its own Al runs were 169-180 g (DAL #159).")
+           f"its own Al runs were 169-180 g (DAL #159). MiR250 2 comes over from the aisle for the lid.")
     lbl = [("AMAZEMET rePowder atomizer", tuple(W((250, 0, 1700))), (0.16, 0.24)),
            ("4 charged Al cups", tuple(mir.world((-300, -150, 1110))), (0.62, 0.30)),
+           ("MiR250 2 + UR10e", tuple(mir_b.world((0, 0, 1150))), (0.06, 0.46)),
            ("Kardex VLM", (0, -1700, 2700), (0.80, 0.16))]
     sc.step(f"1/{n}", cap, 1.0, None, hold=1.0, labels=lbl)
-    show_g(mir="driving")
-    sc.step(f"1/{n}", cap, mir.secs(x_load, y_park), mir.drive(x_load, y_park), hold=0.2, cam_to=CAM_LOAD,
+    show_g(mir="driving", mirB="driving")
+    t_drive = max(mir.secs(x_load, y_park), mir_b.secs(*B_AT))
+    sc.step(f"1/{n}", cap, t_drive, RB.both(mir.drive(x_load, y_park), mir_b.drive(*B_AT)), hold=0.2, cam_to=CAM_PAIR,
             labels=[("AMAZEMET rePowder atomizer", tuple(W((250, 0, 1700))), (0.16, 0.24))])
-    show_g(mir="at the rePowder")
+    show_g(mir="at the rePowder", mirB="at the rePowder")
+    H_bal = P.MIR["H"] + BALLAST_T / 2
+    cap = (f"Two MiR250 + UR10e units: opening and shutting the lid takes two hands. Each MiR250 carries a "
+           f"{BALLAST_KG:.0f} kg steel plate, {BALLAST['T']:.0f} mm thick, on its deck under the cabinet: the weight as "
+           f"low as a top module can carry it, so an arm can pull or press on the machine without tipping its base "
+           f"(sums in notes/alloy_atomize.md).")
+    sc.step(f"1/{n}", cap, 0.8, None, hold=2.6,
+            labels=[("MiR250 2: the lid", tuple(mir_b.world((0, 0, 1000))), (0.10, 0.20)),
+                    ("MiR250 1: the cups", tuple(mir.world((-250, -100, 1000))), (0.66, 0.20)),
+                    (f"ballast plate, {BALLAST_KG:.0f} kg steel", tuple(mir_b.world((-150, -BALLAST['W'] / 2, H_bal))),
+                     (0.08, 0.80)),
+                    ("the same under MiR250 1", tuple(mir.world((200, -BALLAST['W'] / 2, H_bal))), (0.70, 0.80))])
 
     # ------------------------------------------------------------------ 2. lid open, cups in, lid shut
-    # the latch first: the arm takes the lever's pull tab from above and swings it out and down
+    # round 9: two arms, as a person does it with two hands (T4 5:23): arm 2 holds the lid down by its top while arm 1
+    # pulls the latch's lever (the lid can't jump when the loop lets go), then arm 2 swings the lid up by its knob
     CAM_LATCH = cam((420, -330, 1360), (120, -75, 1300))     # from the right, so the arm (from the front) is clear
     Lw = T(RP) @ latch_frame()
+    press = press_pose()
+    pre_press = press @ T((0, 0, -120))
+    cap = ("Arm 2 holds the lid down by its top while arm 1 works the latch, as a person does it with two hands (the "
+           "lab's training video T4, 5:23), so the lid can't jump when the latch lets go. The latch is one over-centre "
+           "draw latch on the furnace's front right, its keeper on the lid; the machine's own locking bolt beside it is "
+           "back: the furnace is at atmosphere.")
+    show_g(arm="lid latch", armB="holding the lid down")
+    sc.step(f"2/{n}", cap, 1.8, RB.both(rbB.joint_to(Tw=pre_press), rbB.grip_to(GRIP_PRESS)), hold=0.05,
+            cam_to=CAM_TWO,
+            labels=[("draw latch", tuple((Lw @ np.r_[2.0, -16.0, 20.0, 1.0])[:3]), (0.74, 0.62)),
+                    ("keeper, on the lid", tuple((Lw @ np.r_[-8.0, -14.0, 92.0, 1.0])[:3]), (0.74, 0.40)),
+                    ("arm 2", tuple(press[:3, 3] + (0.0, 0.0, 260.0)), (0.12, 0.20))])
+    sc.step(f"2/{n}", cap, 0.7, rbB.line_to(press), hold=0.1,
+            labels=[("draw latch", tuple((Lw @ np.r_[2.0, -16.0, 20.0, 1.0])[:3]), (0.74, 0.62)),
+                    ("keeper, on the lid", tuple((Lw @ np.r_[-8.0, -14.0, 92.0, 1.0])[:3]), (0.74, 0.40)),
+                    (f"arm 2 presses the lid down, ~{PRESS_F:.0f} N", tuple(W((PRESS_AT[0], PRESS_AT[1], HOOD_TOP))),
+                     (0.12, 0.20))])
+    rbB.events.append((sc.n, "grasp", g("hood"), None))           # its fingertips on the lid's top
+    q_press = rbB.q.copy()
+    # the latch: arm 1 takes the lever's pull tab from above and swings it out and down (the IK branch is picked now,
+    # with arm 2 on the lid, so arm 1's wrist stays clear of it)
     g_tab = tab_grasp(0.0)
     q_tab = arc_branch(rb, sc, g_tab, lambda u: tab_grasp(LATCH_OPEN * u), lambda u: latch(sc, LATCH_OPEN * u),
                        GRIP_TAB, ("latch lever", "latch loop"), back=110.0)
@@ -1445,31 +1552,17 @@ def movie():
     stab = {}
     for key, ball in (("as_drawn_with_ballast", True), ("without_ballast", False)):
         stab[key] = dict(latch_pull=stability(mir, q_tab, g_tab[:3, 3], -n_out, ball),
-                         latch_push=stability(mir, q_tab, g_tab[:3, 3], n_out, ball))
+                         latch_push=stability(mir, q_tab, g_tab[:3, 3], n_out, ball),
+                         arm2_press=stability(mir_b, q_press, press[:3, 3], (0.0, 0.0, 1.0), ball))
     sp, sb = stab["without_ballast"]["latch_pull"], stab["as_drawn_with_ballast"]["latch_pull"]
-    stab.update(loads=dict(latch_N=LATCH_F), masses_kg=dict(MASS, ballast=round(BALLAST_KG, 1)),
-                wheels_mm=WHEELS, drive_share=DRIVE_SHARE, mu=MU,
-                note="tips_at_N: the force at the pull tab, in that direction, that would lift the MiR250 off its "
-                     "weakest edge (the support rectangle WHEELS); slides_at_N: the horizontal force the drive wheels "
-                     "hold by friction (MU x DRIVE_SHARE x weight). The arm is at the tab's grasp (the IK branch the "
-                     "chapter uses), the MiR where it stands for the lid. latch_pull: the robot pulls the tab out, so "
-                     "the lever pulls the arm toward the furnace; latch_push: closing it, the other way.")
-    if not PREVIEW:
-        (OUT / f"{NAME}_stability.json").write_text(json.dumps(stab, indent=1) + "\n")
-    print("stability:", {k: (v["latch_pull"]["tips_at_N"], v["latch_pull"]["slides_at_N"],
-                             v["latch_push"]["tips_at_N"]) for k, v in stab.items()
-                         if isinstance(v, dict) and "latch_pull" in v}, flush=True)
-    cap = ("The lid is held down by one over-centre draw latch on the furnace's front right, its keeper on the lid, "
-           "set just tight enough that the seal doesn't hiss (the lab's training video T4, 5:17). The machine's own "
-           "locking bolt beside it is back: the furnace is at atmosphere. The arm takes the lever by a pull tab.")
     show_g(arm="lid latch")
     pre_tab = g_tab @ T((0, 0, -110))
     sc.step(f"2/{n}", cap, 1.6, RB.both(rb.joint_to(q1=rb.solve(pre_tab, q_tab)), rb.grip_to(GRIP_TAB_OPEN)), hold=0.05,
-            cam_to=CAM_LATCH,
-            labels=[("draw latch", tuple((Lw @ np.r_[2.0, -16.0, 20.0, 1.0])[:3]), (0.70, 0.62)),
-                    ("keeper, on the lid", tuple((Lw @ np.r_[-8.0, -14.0, 92.0, 1.0])[:3]), (0.70, 0.22)),
-                    ("locking bolt, back", tuple((Lw @ np.r_[10.0, 65.0, 58.0, 1.0])[:3]), (0.70, 0.40))])
-    sc.step(f"2/{n}", cap, 0.7, rb.line_to(g_tab), hold=0.05)
+            labels=[(f"arm 2 presses the lid down, ~{PRESS_F:.0f} N", tuple(W((PRESS_AT[0], PRESS_AT[1], HOOD_TOP))),
+                     (0.12, 0.20)),
+                    ("arm 1", tuple(pre_tab[:3, 3] + (0.0, -60.0, 120.0)), (0.80, 0.20)),
+                    ("locking bolt, back", tuple((Lw @ np.r_[10.0, 65.0, 58.0, 1.0])[:3]), (0.74, 0.62))])
+    sc.step(f"2/{n}", cap, 0.7, rb.line_to(g_tab), hold=0.05, cam_to=CAM_LATCH)
     sc.step(f"2/{n}", cap, 0.4, rb.grip_to(GRIP_TAB), hold=0.05)
     rb.events.append((sc.n, "grasp", g("latch_lever"), g("latch_loop")))
     tab_out = follow(rb, [tab_grasp(d) for d in np.linspace(0.0, LATCH_OPEN, 12)])
@@ -1479,48 +1572,69 @@ def movie():
         latch(sc, LATCH_OPEN * u)
     cap = (f"Pulled out over centre, the lever lets the loop off the keeper. Not measured: about "
            f"{LATCH_F['expected']:.0f} N, {LATCH_F['design']:.0f} N for a stiff one (cover latches of this kind). "
-           f"Pulled that hard, the MiR250 and its arm would tip at {sp['tips_at_N']:.0f} N and slide at "
-           f"{sp['slides_at_N']:.0f} N; with a {BALLAST_KG:.0f} kg steel plate under the cabinet, at "
-           f"{sb['tips_at_N']:.0f} and {sb['slides_at_N']:.0f} N.")
-    # round 8: no "ballast plate" label here: from the latch's close-up the plate (under the MiR's cabinet) is off
-    # screen, so its leader line ran in from outside the frame; the caption names it
+           f"MiR250 1 with its {BALLAST_KG:.0f} kg plate would tip at {sb['tips_at_N']:.0f} N and slide at "
+           f"{sb['slides_at_N']:.0f} N ({sp['tips_at_N']:.0f} and {sp['slides_at_N']:.0f} N without the plate).")
     sc.step(f"2/{n}", cap, 1.6, latch_open, hold=0.6, labels=[])
     sc.step(f"2/{n}", cap, 0.3, rb.grip_to(GRIP_TAB_OPEN), hold=0.05)
     rb.events.append((sc.n, "release", g("latch_lever"), g("latch_loop")))
     q_tab_open = rb.q.copy()
-    sc.step(f"2/{n}", cap, 0.6, rb.line_to(tab_grasp(LATCH_OPEN) @ T((0, 0, -110))), hold=0.05)
+    sc.step(f"2/{n}", cap, 0.6, rb.line_to(tab_grasp(LATCH_OPEN) @ T((0, 0, -110))), hold=0.05, cam_to=CAM_TWO)
+    # arm 2 lets go of the top and opens the lid by its knob
     knob = np.array([(90 + 131) / 2, -20.0, 1470.0])          # the lid's knob (model.py hood_knob), model frame
     grasp_k = knob_grasp()
     pre_k = grasp_k @ T((0, 0, -110))
-    cap = ("The sealing rod is already fitted and seated: rod first, then the metal (GU500 manual, #222). The arm "
-           "takes the lid's knob and swings the lid up about its hinge, to the left.")
-    show_g(arm="lid")
+    cap = ("Arm 2 lets go of the top, takes the lid's knob and swings the lid up about its hinge, to the left. The "
+           "sealing rod is already fitted and seated: rod first, then the metal (GU500 manual, #222).")
+    show_g(arm="waiting", armB="lid")
+    sc.step(f"2/{n}", cap, 0.6, rbB.line_to(pre_press), hold=0.05)
+    rbB.events.append((sc.n, "release", g("hood"), None))
     hinge_w = W(M.HINGE)
     arc = [R((0, 1, 0), -d, hinge_w) @ grasp_k for d in np.linspace(0, HOOD_OPEN, 12)]
-    q_knob = arc_branch(rb, sc, grasp_k, lambda u: R((0, 1, 0), -HOOD_OPEN * u, hinge_w) @ grasp_k,
+    q_knob = arc_branch(rbB, sc, grasp_k, lambda u: R((0, 1, 0), -HOOD_OPEN * u, hinge_w) @ grasp_k,
                         lambda u: hood(sc, HOOD_OPEN * u), GRIP_KNOB, ("hood_knob",))   # clear all the way up
-    sc.step(f"2/{n}", cap, 1.6, RB.both(rb.joint_to(q1=rb.solve(pre_k, q_knob)), rb.grip_to(0.0)), hold=0.05,
-            cam_to=CAM_LOAD,                     # back out from the latch's close-up (not in the round-6 render)
+    sc.step(f"2/{n}", cap, 1.6, RB.both(rbB.joint_to(q1=rbB.solve(pre_k, q_knob)), rbB.grip_to(0.0)), hold=0.05,
+            cam_to=CAM_LOAD,
             labels=[("lid knob", tuple(W(knob + (0, 0, 30))), (0.70, 0.22)),
                     ("sealing-rod lever", tuple(W((80, 0, 1400))), (0.74, 0.46))])
-    sc.step(f"2/{n}", cap, 0.8, rb.line_to(grasp_k), hold=0.05)
-    sc.step(f"2/{n}", cap, 0.4, rb.grip_to(GRIP_KNOB), hold=0.05)
-    rb.events.append((sc.n, "grasp", g("knob"), None))          # the audit: the pads may touch the knob
-
-    lid = follow(rb, arc)
+    sc.step(f"2/{n}", cap, 0.8, rbB.line_to(grasp_k), hold=0.05)
+    sc.step(f"2/{n}", cap, 0.4, rbB.grip_to(GRIP_KNOB), hold=0.05)
+    rbB.events.append((sc.n, "grasp", g("knob"), None))          # the audit: the pads may touch the knob
+    q_kb = rbB.q.copy()
+    for key, ball in (("as_drawn_with_ballast", True), ("without_ballast", False)):
+        stab[key]["arm2_lid"] = stability(mir_b, q_kb, grasp_k[:3, 3], (0.0, 0.0, -1.0), ball)
+    stab.update(loads=dict(latch_N=LATCH_F, arm2_press_N=PRESS_F, arm2_lid_N=LID_KNOB_N),
+                masses_kg=dict(MASS, ballast=round(BALLAST_KG, 1), ballast_plate_mm=BALLAST),
+                payload_kg={k: round(sum(MASS[m] for m in ("cabinet", "control_box", "ur10e", "gripper"))
+                                     + (MASS["on_top"] if c else 0.0) + BALLAST_KG, 1)
+                            for k, c in (("mir250_1", True), ("mir250_2", False))},
+                payload_limit_kg=MIR250_PAYLOAD, wheels_mm=WHEELS, drive_share=DRIVE_SHARE, mu=MU,
+                note="tips_at_N: the force at the tool, in that direction, that would lift that MiR250 off its "
+                     "weakest edge (the support rectangle WHEELS); slides_at_N: the horizontal force the drive wheels "
+                     "hold by friction (MU x DRIVE_SHARE x weight). latch_pull / latch_push: MiR250 1, arm 1 at the "
+                     "latch's pull tab (the IK branch the chapter uses), the lever pulling the arm toward the furnace "
+                     "/ closing it, the other way. arm2_press: MiR250 2, arm 2 pressing straight down on the lid's "
+                     "top (the lid pushes the arm up). arm2_lid: arm 2 at the lid's knob as it starts the swing (the "
+                     "lid's weight pulls the arm down). Round 9: two units, a 131 kg plate (was 95 kg).")
+    if not PREVIEW:
+        (OUT / f"{NAME}_stability.json").write_text(json.dumps(stab, indent=1) + "\n")
+    print("stability:", {k: {c: (v[c]["tips_at_N"], v[c]["slides_at_N"]) for c in v}
+                         for k, v in stab.items() if isinstance(v, dict) and "latch_pull" in v}, flush=True)
+    lid = follow(rbB, arc)
 
     def lid_up(u):
         lid(u)
         hood(sc, HOOD_OPEN * u)
     sc.step(f"2/{n}", cap, 2.2, lid_up, hold=0.05)
-    sc.step(f"2/{n}", cap, 0.4, rb.grip_to(0.0), hold=0.05)
-    rb.events.append((sc.n, "release", g("knob"), None))
+    sc.step(f"2/{n}", cap, 0.4, rbB.grip_to(0.0), hold=0.05)
+    rbB.events.append((sc.n, "release", g("knob"), None))
     away = R((0, 1, 0), -HOOD_OPEN, hinge_w) @ pre_k
-    q_away = rb.solve(away, rb.q)
-    sc.step(f"2/{n}", cap, 0.7, rb.line_to(away), hold=0.05)
+    sc.step(f"2/{n}", cap, 0.7, rbB.line_to(away), hold=0.05)
+    q_away = rbB.q.copy()
+    show_g(armB="parked")
+    sc.step(f"2/{n}", cap, 1.3, rbB.joint_to(PARK), hold=0.05)
     # the lever up off the adapter, out of the opening, as the machine is loaded by hand (training T4): down, its bar
     # lies over the places of the two cups nearest it, and the 2F-85's fingers would straddle it
-    cap = ("The arm lifts the sealing-rod lever off the rod's adapter and swings it up on its pivot, out of the "
+    cap = ("Arm 1 lifts the sealing-rod lever off the rod's adapter and swings it up on its pivot, out of the "
            "opening, as the machine is loaded by hand. Down, it lies over the places of two of the cups. The rod "
            "stays seated.")
     lev_g = P.tcp_frame(W((LEVER_AT, 0.0, M.Z_ARM)), (0, 0, -1), 90.0)   # from above, fingers across the bar
@@ -1671,19 +1785,20 @@ def movie():
     sc.step(f"2/{n}", cap, 0.6, rb.line_to(T((0, 0, 120)) @ rb.tcp_world()), hold=0.05)
     cap = (f"All four cups stand round the rod, plug and vent up, {CUP_GAP:.1f} mm apart: {m_cup:.1f} g, about the "
            "size of the lab's own Al runs. The crucible could take far more metal than the cups bring.")
-    show_g(arm="lid", charge=f"in the crucible, {m_cup:.1f} g")
+    show_g(arm="clear of the opening", charge=f"in the crucible, {m_cup:.1f} g")
     lid_open_grasp = R((0, 1, 0), -HOOD_OPEN, hinge_w) @ grasp_k
-    sc.step(f"2/{n}", cap, 1.4, RB.both(rb.joint_to(q1=q_away), rb.grip_to(0.0)), hold=0.05, cam_to=CAM_LOAD)
+    # round 9: arm 1 waits off the raised lever, right of the opening (round 8: over the open lid, where arm 2 works)
+    sc.step(f"2/{n}", cap, 1.4, RB.both(rb.joint_to(q1=q_lev_off), rb.grip_to(0.0)), hold=0.05, cam_to=CAM_LOAD)
     CAM_DOWN = cam((-22, -80, 1610), (0, 2, 1262))            # down into the open crucible
     sc.step(f"2/{n}", cap, 1.3, None, hold=1.8, cam_to=CAM_DOWN,
             labels=[("4 cups round the sealing rod", tuple(W(cup_seat(2) + (0, 0, C.SLUG_L))), (0.70, 0.30)),
                     (f"cup tops {M.RIM - cup_seat(1)[2] - C.SLUG_L:.0f} mm under the rim",
                      tuple(W(cup_seat(1) + (0, 0, C.SLUG_L))), (0.70, 0.62))])
     slot(sc, "charge")
-    cap = ("The lever goes back down over the adapter. The arm swings the lid shut, then the MiR backs off along the "
-           "front so the window stays clear.")
+    cap = ("Arm 1 lays the lever back down over the adapter. Then arm 2 swings the lid shut and holds it down on its "
+           "seal while arm 1 closes the latch, and both MiR250s back off so the window stays clear.")
     show_g(arm="sealing-rod lever")
-    sc.step(f"2/{n}", cap, 1.2, rb.joint_to(q1=q_lev_off), hold=0.05, cam_to=CAM_TOP)
+    sc.step(f"2/{n}", cap, 1.2, None, hold=0.05, cam_to=CAM_TOP)
     sc.step(f"2/{n}", cap, 0.5, rb.line_to(lev_arc[-1]), hold=0.05)
     sc.step(f"2/{n}", cap, 0.3, rb.grip_to(GRIP_LEVER), hold=0.05)
     rb.events.append((sc.n, "grasp", g("arm"), None))
@@ -1696,29 +1811,36 @@ def movie():
     sc.step(f"2/{n}", cap, 0.3, rb.grip_to(0.0), hold=0.05)
     rb.events.append((sc.n, "release", g("arm"), None))
     sc.step(f"2/{n}", cap, 0.5, rb.line_to(lev_g @ T((0, 0, -100))), hold=0.05)
-    show_g(arm="lid")
-    sc.step(f"2/{n}", cap, 1.4, rb.joint_to(q1=q_away), hold=0.05, cam_to=CAM_LOAD)
-    sc.step(f"2/{n}", cap, 0.7, rb.line_to(lid_open_grasp), hold=0.05)
-    sc.step(f"2/{n}", cap, 0.4, rb.grip_to(GRIP_KNOB), hold=0.05)
-    rb.events.append((sc.n, "grasp", g("knob"), None))
-    lid_dn = follow(rb, arc[::-1])
+    # round 9: the lid shut by arm 2, held down on its seal by arm 2 while arm 1 closes the latch (T4 5:23)
+    g_tab_o = tab_grasp(LATCH_OPEN)
+    show_g(arm="lid latch", armB="lid")
+    sc.step(f"2/{n}", cap, 1.4, RB.both(rb.joint_to(q1=rb.solve(g_tab_o @ T((0, 0, -110)), q_tab_open)),
+                                       rb.grip_to(GRIP_TAB_OPEN)), hold=0.05, cam_to=CAM_LOAD)
+    sc.step(f"2/{n}", cap, 1.4, rbB.joint_to(q1=q_away), hold=0.05)
+    sc.step(f"2/{n}", cap, 0.7, rbB.line_to(lid_open_grasp), hold=0.05)
+    sc.step(f"2/{n}", cap, 0.4, rbB.grip_to(GRIP_KNOB), hold=0.05)
+    rbB.events.append((sc.n, "grasp", g("knob"), None))
+    lid_dn = follow(rbB, arc[::-1])
 
     def lid_down(u):
         lid_dn(u)
         hood(sc, HOOD_OPEN * (1 - u))
     sc.step(f"2/{n}", cap, 2.0, lid_down, hold=0.05)
-    sc.step(f"2/{n}", cap, 0.4, rb.grip_to(0.0), hold=0.05)
-    rb.events.append((sc.n, "release", g("knob"), None))
-    sc.step(f"2/{n}", cap, 0.6, rb.line_to(pre_k), hold=0.05)
-    cap = ("Then the latch: the arm swings the lever back up, the loop goes over the keeper's lip and the lever goes "
-           "over centre, drawing the lid down onto its seal. A person can do this step, and the one that opened it, "
-           "in a few seconds; it is the one place the arm pushes hard on the machine.")
+    sc.step(f"2/{n}", cap, 0.4, rbB.grip_to(0.0), hold=0.05)
+    rbB.events.append((sc.n, "release", g("knob"), None))
+    sc.step(f"2/{n}", cap, 0.6, rbB.line_to(pre_k), hold=0.05)
+    show_g(armB="holding the lid down")
+    sc.step(f"2/{n}", cap, 1.2, RB.both(rbB.joint_to(Tw=pre_press), rbB.grip_to(GRIP_PRESS)), hold=0.05,
+            cam_to=CAM_TWO)
+    sc.step(f"2/{n}", cap, 0.6, rbB.line_to(press), hold=0.1,
+            labels=[(f"arm 2 holds the lid on its seal, ~{PRESS_F:.0f} N",
+                     tuple(W((PRESS_AT[0], PRESS_AT[1], HOOD_TOP))), (0.12, 0.20))])
+    rbB.events.append((sc.n, "grasp", g("hood"), None))
+    cap = ("Then the latch, with the lid held down: arm 1 swings the lever back up, the loop goes over the keeper's lip "
+           "and the lever goes over centre, drawing the lid down onto its seal. A person does this, and the opening, "
+           "in a few seconds with two hands; it is the one place an arm pushes hard on the machine.")
     show_g(arm="lid latch")
-    g_tab_o = tab_grasp(LATCH_OPEN)
-    sc.step(f"2/{n}", cap, 1.4, RB.both(rb.joint_to(q1=rb.solve(g_tab_o @ T((0, 0, -110)), q_tab_open)),
-                                       rb.grip_to(GRIP_TAB_OPEN)), hold=0.05,
-            cam_to=CAM_LATCH)
-    sc.step(f"2/{n}", cap, 0.6, rb.line_to(g_tab_o), hold=0.05)
+    sc.step(f"2/{n}", cap, 0.6, rb.line_to(g_tab_o), hold=0.05, cam_to=CAM_LATCH)
     sc.step(f"2/{n}", cap, 0.4, rb.grip_to(GRIP_TAB), hold=0.05)
     rb.events.append((sc.n, "grasp", g("latch_lever"), g("latch_loop")))
     tab_in = follow(rb, [tab_grasp(d) for d in np.linspace(LATCH_OPEN, 0.0, 12)])
@@ -1729,10 +1851,15 @@ def movie():
     sc.step(f"2/{n}", cap, 1.6, latch_shut, hold=0.2)
     sc.step(f"2/{n}", cap, 0.3, rb.grip_to(GRIP_TAB_OPEN), hold=0.05)
     rb.events.append((sc.n, "release", g("latch_lever"), g("latch_loop")))
-    sc.step(f"2/{n}", cap, 0.6, rb.line_to(pre_tab), hold=0.05)
+    sc.step(f"2/{n}", cap, 0.6, rb.line_to(pre_tab), hold=0.05, cam_to=CAM_TWO)
+    sc.step(f"2/{n}", cap, 0.5, rbB.line_to(pre_press), hold=0.05)
+    rbB.events.append((sc.n, "release", g("hood"), None))
     sc.step(f"2/{n}", cap, 1.2, rb.joint_to(PARK), hold=0.05)
-    show_g(arm="parked", mir="waiting beside it")
-    sc.step(f"2/{n}", cap, mir.secs(x_wait), mir.drive(x_wait, y_park), hold=0.1, cam_to=CAM_SEC)
+    sc.step(f"2/{n}", cap, 1.3, rbB.joint_to(PARK), hold=0.05)
+    show_g(arm="parked", mir="waiting beside it", armB="parked", mirB="back to the aisle")
+    sc.step(f"2/{n}", cap, max(mir.secs(x_wait), mir_b.secs(*B_HOME)),
+            RB.both(mir.drive(x_wait, y_park), mir_b.drive(*B_HOME)), hold=0.1, cam_to=CAM_SEC)
+    show_g(armB=None, mirB=None)
 
     # ------------------------------------------------------------------ 3. gas wash, heat, melt
     back = [k for k in range(N_CUPS) if math.sin(math.radians(CUP_ANGLES[k])) > 0]
