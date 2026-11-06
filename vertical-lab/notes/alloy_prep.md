@@ -260,3 +260,13 @@ so a ledge alone cannot be what holds a mount once the holder is turned face dow
    holder stays on the head, the chapter's holder transfers (steps 3 and 6) become mount-by-mount transfers instead.
 
 Estimates and assumptions: piston and aperture sizes, the 5 mm piston gap and press travel, the O-ring.
+
+**Round 9 outputs.** Whole chapter rendered (`VLAB_ONLY_TRAYS=FM VIZ3D_FPS=6`, 1280x720): 1816 frames, 302.7 s (5:03),
+mp4 14.0 MB, GIF 4.62 MB (606 frames), commit `c0828e5`. It ends at the holder back on its rest and the SOP card, not at
+the first grind as in round 8. **Arm audit (`VLAB_ONLY_TRAYS=FM ARM_AUDIT=1`): 456 of 3539 frames in collision, 90 runs
+(`out/collisions/alloy_prep.json`), not the target 0.** Mount step: 51 frames, the wrist camera against the press body.
+Polish: 405 frames, mostly the forearm into the gripper (270) and wrist 3 (45) and the upper arm into the bay (114) and the
+MiR's cabinet (57), plus a held 320/400 disc against the polisher body (25). They cluster in the move that fits the holder
+onto the head (the planner logs "line move would flip the arm... end pose in collision") and in the disc changes. Not fixed:
+the queue left no time to re-plan and re-render. The close-up camera on the pistons (`cam_pist`) was added after the
+only preview and was not previewed; the render is its first sight. The polisher tour clip was not re-rendered.
