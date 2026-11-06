@@ -189,10 +189,35 @@ def aconity_pieces() -> dict:
     return ents
 
 
+# Round 9 (Sterling, PR #318, 2026-11-05: "Aconity MIDI door swings the wrong way"). Rounds 4-8 hinged the door on
+# its left edge and turned it +100 deg about z, which swings its free edge back into the machine, through the
+# chamber's left wall. Aconity's chamber door lifts: on the MIDI the bar handle sits centred on the door's lower edge
+# (Amazemet's photo of their MIDI, https://www.amazemet.com/aconity-midi-lpbf-system-in-amazemets-rd-facility), and
+# Aconity's photo of the MIDI+ shows the chamber open with its front flap raised, standing up over the chamber on two
+# struts, the handle at its top (3Dnatives, https://www.3dnatives.com/3d-materials/en/3d-printers/aconity-midi-plus/).
+# So the door hinges along its top edge, at the chamber's front face, and swings out and up. DOOR_OPEN = 165 deg
+# leaves it leaning 15 deg forward of upright, as in that photo; the struts and the angle are our reading of it.
+DOOR_OPEN = 165.0
+
+
 def door_pivot() -> tuple:
-    """The door's hinge: its left edge, at the front of the chamber (model frame)."""
+    """The door's hinge line (along x): its top edge, at the chamber's front face (model frame). Its y is the
+    chamber's front, which is what alloy_print.py takes from it."""
     _, _, P = _aco_frame()
-    return P(634.0 + ACO["wall"] + 1, 250.0, 0.0)
+    return P(634.0 + ACO["wall"] + 1, 250.0, 1300.0 - ACO["wall"])
+
+
+def door_T(f: float) -> np.ndarray:
+    """The door's 4x4 (model frame) at f open (0 shut, 1 open): a turn about the hinge line (x) that takes its lower
+    edge out (-y) and up, never into the chamber."""
+    _, py, pz = door_pivot()
+    t = -math.radians(DOOR_OPEN * float(f))
+    c, s = math.cos(t), math.sin(t)
+    m = np.eye(4)
+    m[1, 1], m[1, 2], m[2, 1], m[2, 2] = c, -s, s, c
+    m[1, 3] = py - (c * py - s * pz)
+    m[2, 3] = pz - (s * py + c * pz)
+    return m
 
 
 # ------------------------------------------------------------------------------------------------- wire EDM

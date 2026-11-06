@@ -440,12 +440,12 @@ class Aconity:
         return up
 
     def door(self, f1):
+        """The chamber door from door_f to f1 (0 shut, 1 open): it lifts about its top edge (alloy_models.door_T)."""
         f0 = self.door_f
-        piv = M.door_pivot()
 
         def up(u):
             self.door_f = f0 + (f1 - f0) * u
-            self.sc.gmat["aco_door"] = R((0, 0, 1), 100.0 * self.door_f, piv)
+            self.sc.gmat["aco_door"] = M.door_T(self.door_f)
         return up
 
     def ghost(self, f1, pieces=("shell", "door", "cabinet")):
