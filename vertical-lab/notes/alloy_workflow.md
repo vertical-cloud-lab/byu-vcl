@@ -30,10 +30,13 @@ round 8's open item, six joint moves ending in a pose already in collision, the 
    inside the 1,005-1,285 mm opening. The nozzle's centre keeps within 60 mm of the bore's axis, so its 22 mm flare stays
    inside the 170 mm cylinder (round 8's path reached 72 mm out, the flare 94 mm, over the cylinder's rim), 36 mm right
    of the lug's rows and 28 mm off the vertical bars. The hose is now collision-checked too: `DBox.hose_hits` tests the
-   drawn hose against every mesh but the arm's, the lance's and its post's with collide.py's FCL as it moves. The shot
-   is new (`CAM_LANCE`): through the lifted door from the front-left, the gripper visibly outside. What Sterling saw at
-   28:08 was the old view: from the left, the chamber see-through and the control cabinet's side opaque behind it, the
-   lance and hose drawn over the cabinet as if they ran through it, and the door swung the wrong way.
+   drawn hose against every mesh but the arm's, the lance's and its post's with collide.py's FCL as it moves (a
+   `PREVIEW=1` pass: no contact). The shot is new (`CAM_LANCE`): from the front-right, low, through the open front, the
+   chamber drawn opaque once its flap is up (the opening is the window), so the gripper is plainly outside and the
+   tube plainly through the opening. What Sterling saw at 28:08 was round 8's view: from the left, the chamber
+   see-through and the control cabinet's side opaque behind it, so the lance and its hose were drawn over the cabinet as
+   if they ran through it, and the door had swung into the chamber's left wall. A check of the lance alone against the
+   opened MIDI (36 poses over the sweep, FCL) found no contact.
 3. **The depowdering box clamps the plate, twice over** ([`alloy_models.CLAMPS`](../alloy_models.py), `clamp_pose`).
    The plate's stud is pulled into the zero-point chuck (rounds 4-8 said so only in a caption), and three swing clamps on
    the rotor, 120 deg apart round the plate at 60, -60 and 140 deg (clear of the lug, the flat bars' ends and the
@@ -60,7 +63,7 @@ round 8's open item, six joint moves ending in a pose already in collision, the 
    ([`r8_test`](../r8_test.py) piece `chamber_cut`, with refractory-coloured cut faces), no front half, no door, nothing
    see-through, so the specimen, both wedge grips, the pull rods and the AVE 2 in front show while the crosshead closes,
    the chamber heats and the bar is pulled; the whole chamber comes back before the door opens. The camera is 1.6 m
-   off the frame at its front-right, over the MiR's end.
+   off, at the frame's right and low, past the right column's front face and the parked arm (`CAM_TEST`).
 6. **What was odd about the heated box** (r8_test.instron_floor). Its shell's front wall was solid: the door was drawn
    on top of a 30 mm wall with no opening behind it, so with the door open the arm reached through the wall. The shell
    now has the door's 400 x 560 mm opening (Instron's inside size for the 3119-608). And its controller stood in the
@@ -75,7 +78,32 @@ round 8's open item, six joint moves ending in a pose already in collision, the 
 8. **The IPA jar** is the lab-wide jar now (`props.jar_style`): clear glass, light grey-blue at 0.35 opacity, with a
    matte black cap (its knob too). The IPA inside stays blue.
 
-AUDIT_PARA
+### Collisions: what is known
+
+Every joint move is planned round obstacles as it is rendered (`robot.py`, `collide.py`), and the planner reports any
+move whose start or end pose is itself in collision. Round 8's render had six; this round's first render (04:37-05:32
+UTC) had **none**, and the `PREVIEW=1` pass before the fixes had five (three at the IPA jar and the rack, two at the
+Instron), which is what `pick_clear`/`go_pick` and `clear_park` removed. The hose touched nothing in the `PREVIEW=1`
+pass (`DBox.hose_hits`, every frame of section 2).
+
+**The frame-by-frame audit (`ARM_AUDIT=1`) was not completed.** It started at 05:32 after the first render, in the same
+runner_guard slot, and was stopped at 05:45, still in section 2, to free the slot for the six renders waiting on three
+slots. So straight-line moves (the IK solved along a line, not planned) are checked only as far as the planner's start
+and end poses: a link could still brush something in the middle of one. Run
+`VLAB_ONLY_TRAYS=F ARM_AUDIT=1 xvfb-run -a python3 alloy_workflow.py` (about an hour) for the count.
+
+### Left open
+
+- The tour clips (`furnace`, `instron_floor`) were not re-rendered: the furnace's rack in them still shows four
+  specimens (it has six slots now), and the 68FM-100's chamber still shows round 8's shell (no opening behind the
+  door, the controller against the column). The models are fixed in `r8_test.py`; the clips need a slot.
+- Chapter 3 (`alloy_print.py`, the print stream's) still prints the old plate: four flat bars and the lug. Passing
+  `zbars=True` to its `Aconity(...)` prints the two vertical bars too, so the two chapters show the same build.
+- The swing clamps' cylinders and the post that carries the vertical bars' troughs are our designs, as are the
+  troughs; the lance's 400 mm is chosen to keep the gripper out of the chamber, not taken from a product.
+- The MIDI's flap: that it lifts is read from Amazemet's photo of the MIDI (the handle centred on its lower edge) and
+  Aconity's photo of the MIDI+ with its flap up; no photo of a MIDI with its door open was found.
+
 
 ## Round 8: chapter 5, depowder, cut, heat treat, tensile at room and elevated temperature
 
