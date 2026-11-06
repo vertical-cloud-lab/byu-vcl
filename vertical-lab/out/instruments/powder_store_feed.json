@@ -1,35 +1,53 @@
 {
  "name": "instruments/powder_store_feed",
  "fps": 8,
- "n_frames": 117,
+ "n_frames": 175,
  "size": [
   1280,
   720
  ],
  "substeps": [
   {
-   "label": "1/4",
+   "label": "1/7",
    "caption": "Tray N, the feedstock: 204 labelled jars (64 x 60 mL, 54 x 125 mL, 44 x 250 mL, 42 x 500 mL) in racks of white HDPE, one rack per size.",
    "start_frame": 0,
    "end_frame": 32
   },
   {
-   "label": "2/4",
-   "caption": "DAL's elements and master alloys (DAL #146: Al, Si, Mg, Cu, Mn, Cr, Zr, Ti, Fe, Ni, Ce, Sc, Er, Zn, Sn, Li as Al-Li), lids coloured by element; 100 g goes into each atomizer run.",
+   "label": "2/7",
+   "caption": "DAL's elements and master alloys (DAL #146: Al, Si, Mg, Cu, Mn, Cr, Zr, Ti, Fe, Ni, Ce, Sc, Er, Zn, Sn, Li as Al-Li), each in clear glass with a black cap; 100 g goes into each atomizer run.",
    "start_frame": 33,
    "end_frame": 63
   },
   {
-   "label": "3/4",
-   "caption": "Rows stand 20 mm apart front to back, room for the gripper's fingers; the arm takes a jar from above.",
+   "label": "3/7",
+   "caption": "Tinted for now (legend, top right): the master alloys and the two elements of Al 4047.",
    "start_frame": 64,
-   "end_frame": 91
+   "end_frame": 81
   },
   {
-   "label": "4/4",
+   "label": "4/7",
+   "caption": "The tint is only a highlight, held for a few seconds...",
+   "start_frame": 82,
+   "end_frame": 103
+  },
+  {
+   "label": "5/7",
+   "caption": "...then it fades back: every jar is the same clear glass with a black cap.",
+   "start_frame": 104,
+   "end_frame": 121
+  },
+  {
+   "label": "6/7",
+   "caption": "Rows stand 20 mm apart front to back, room for the gripper's fingers; the arm takes a jar from above.",
+   "start_frame": 122,
+   "end_frame": 149
+  },
+  {
+   "label": "7/7",
    "caption": "Each rack lifts out whole by its handles. The tray's right end keeps its UPS, dock and cameras.",
-   "start_frame": 92,
-   "end_frame": 116
+   "start_frame": 150,
+   "end_frame": 174
   }
  ]
 }

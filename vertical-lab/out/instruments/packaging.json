@@ -1,7 +1,7 @@
 {
  "name": "instruments/packaging",
- "fps": 15,
- "n_frames": 441,
+ "fps": 8,
+ "n_frames": 231,
  "size": [
   1280,
   720
@@ -11,61 +11,61 @@
    "label": "1/9",
    "caption": "A 250 mL jar of powder goes into the printed nest.",
    "start_frame": 0,
-   "end_frame": 43
+   "end_frame": 22
   },
   {
    "label": "2/9",
    "caption": "The LX500c prints its label: sample ID, alloy, mass, date and a QR code. The AP380 takes such labels die-cut on a roll.",
-   "start_frame": 44,
-   "end_frame": 87
+   "start_frame": 23,
+   "end_frame": 45
   },
   {
    "label": "3/9",
    "caption": "The jar goes into the AP380, lying down on its rollers; the pressure arm comes down.",
-   "start_frame": 88,
-   "end_frame": 137
+   "start_frame": 46,
+   "end_frame": 71
   },
   {
    "label": "4/9",
    "caption": "One press of the foot switch: the rollers turn the jar once and the label wraps on.",
-   "start_frame": 138,
-   "end_frame": 178
+   "start_frame": 72,
+   "end_frame": 93
   },
   {
    "label": "5/9",
    "caption": "The pressure arm lifts. Out, and into a clear liner bag, standing in front of the H-190 impulse sealer.",
-   "start_frame": 179,
-   "end_frame": 228
+   "start_frame": 94,
+   "end_frame": 119
   },
   {
    "label": "6/9",
    "caption": "The bag's mouth goes across the jaw, and the sealer closes on it: a 12 in seal.",
-   "start_frame": 229,
-   "end_frame": 264
+   "start_frame": 120,
+   "end_frame": 138
   },
   {
    "label": "7/9",
    "caption": "Into the foam insert's cut-out, lying down.",
-   "start_frame": 265,
-   "end_frame": 314
+   "start_frame": 139,
+   "end_frame": 164
   },
   {
    "label": "8/9",
    "caption": "The lid goes on.",
-   "start_frame": 315,
-   "end_frame": 343
+   "start_frame": 165,
+   "end_frame": 179
   },
   {
    "label": "9/9",
    "caption": "The ZD621 prints the 4 x 6 in shipping label, and it goes on the lid. Whether the box needs dangerous-goods marks depends on a test, not on the alloy's name.",
-   "start_frame": 344,
-   "end_frame": 402
+   "start_frame": 180,
+   "end_frame": 210
   },
   {
    "label": "9/9",
    "caption": "",
-   "start_frame": 403,
-   "end_frame": 440
+   "start_frame": 211,
+   "end_frame": 230
   }
  ]
 }
