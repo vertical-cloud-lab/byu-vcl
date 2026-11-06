@@ -1,0 +1,53 @@
+{
+ "source": "https://youtu.be/1F9_4ccwhss?t=341",
+ "video": "1F9_4ccwhss",
+ "t": 341,
+ "pose": {},
+ "points": {
+  "lid foot left": [
+   165,
+   372
+  ],
+  "knob ball": [
+   338,
+   280
+  ],
+  "lid foot front mid": [
+   330,
+   400
+  ],
+  "keeper top": [
+   478,
+   314
+  ],
+  "latch lever top": [
+   485,
+   398
+  ],
+  "latch lug": [
+   521,
+   488
+  ],
+  "bolt cabinet": [
+   678,
+   466
+  ],
+  "latch foot": [
+   448,
+   658
+  ],
+  "lid foot front right": [
+   648,
+   375
+  ],
+  "lid shoulder left": [
+   162,
+   288
+  ],
+  "lid top left": [
+   300,
+   125
+  ]
+ },
+ "holdout": false
+}

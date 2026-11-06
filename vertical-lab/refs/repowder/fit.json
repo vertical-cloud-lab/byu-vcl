@@ -1,0 +1,159 @@
+{
+ "key": "repowder",
+ "free": [
+  "r1",
+  "ext",
+  "h1",
+  "h2",
+  "latch_x",
+  "latch_len",
+  "cabinet_x"
+ ],
+ "params": {
+  "r1": 45.6,
+  "ext": 187.6,
+  "h1": 53.1,
+  "h2": 128.1,
+  "latch_x": 71.8,
+  "latch_len": 156.8,
+  "cabinet_x": 193.1
+ },
+ "start": {
+  "r1": 65.0,
+  "ext": 205.0,
+  "h1": 75.0,
+  "h2": 125.0,
+  "latch_x": 70.0,
+  "latch_len": 170.0,
+  "cabinet_x": 305.0
+ },
+ "views": {
+  "t4_0308_open_lid": {
+   "source": "https://youtu.be/1F9_4ccwhss?t=308",
+   "size": [
+    1280,
+    720
+   ],
+   "holdout": false,
+   "camera": [
+    1.9546210633938612,
+    -0.2522346645395178,
+    0.2745526838194345,
+    -155.61011570825798,
+    1272.1311547655707,
+    943.9873031259557,
+    6.347904120706412,
+    0.0001745630542090057
+   ],
+   "focal_px": 571.3,
+   "k1": 0.0002,
+   "rms_px_camera_only": 33.71,
+   "rms_px": 14.63,
+   "residual_px": {
+    "latch lever top": 1.5,
+    "latch lug": 18.6,
+    "bolt cabinet": 16.8,
+    "deck front right": 8.9,
+    "lid foot left": 7.0,
+    "lid foot back right": 24.7,
+    "lid foot front right": 11.5
+   }
+  },
+  "t4_0341_front_closed": {
+   "source": "https://youtu.be/1F9_4ccwhss?t=341",
+   "size": [
+    1280,
+    720
+   ],
+   "holdout": false,
+   "camera": [
+    1.746744913072613,
+    -0.3054818402000505,
+    0.32771232543709966,
+    -298.12498982280454,
+    1317.4840168581582,
+    741.6752796572658,
+    6.347904120706412,
+    0.0001745630542090057
+   ],
+   "focal_px": 571.3,
+   "k1": 0.0002,
+   "rms_px_camera_only": 29.86,
+   "rms_px": 20.07,
+   "residual_px": {
+    "lid foot left": 9.4,
+    "knob ball": 40.9,
+    "lid foot front mid": 31.3,
+    "keeper top": 12.1,
+    "latch lever top": 5.2,
+    "latch lug": 4.5,
+    "bolt cabinet": 8.9,
+    "latch foot": 32.9,
+    "lid foot front right": 17.1,
+    "lid shoulder left": 5.1,
+    "lid top left": 3.7
+   }
+  },
+  "t4_0365_from_left": {
+   "source": "https://youtu.be/1F9_4ccwhss?t=365",
+   "size": [
+    1280,
+    720
+   ],
+   "holdout": false,
+   "camera": [
+    0.5344187482698818,
+    -1.1237388353341342,
+    1.6055761115542333,
+    -91.87991806496487,
+    980.8368080232098,
+    436.5467336533929,
+    6.347904120706412,
+    0.0001745630542090057
+   ],
+   "focal_px": 571.3,
+   "k1": 0.0002,
+   "rms_px_camera_only": 38.29,
+   "rms_px": 38.99,
+   "residual_px": {
+    "hinge barrel mid": 78.4,
+    "lid foot front mid": 35.6,
+    "door top back": 11.2,
+    "door top front": 7.3,
+    "door bottom mid": 4.2
+   }
+  },
+  "t4_0113_open_wide": {
+   "source": "https://youtu.be/1F9_4ccwhss?t=113",
+   "size": [
+    1280,
+    720
+   ],
+   "holdout": true,
+   "camera": [
+    1.9941105357302802,
+    -0.21116665295824516,
+    0.2041985797494427,
+    -47.66187362634621,
+    1216.40114875374,
+    1000.7340669265283,
+    6.1259565841101375,
+    0.0
+   ],
+   "focal_px": 457.6,
+   "k1": 0.0,
+   "rms_px_camera_only": 21.74,
+   "rms_px": 9.79,
+   "residual_px": {
+    "latch lever top": 8.5,
+    "latch lug": 16.1,
+    "bolt cabinet": 6.8,
+    "latch foot": 2.6,
+    "deck front right": 6.0,
+    "lid foot left": 5.9,
+    "lid foot back right": 3.2,
+    "lid foot front right": 17.4
+   }
+  }
+ }
+}

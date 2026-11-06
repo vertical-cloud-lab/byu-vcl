@@ -1,0 +1,39 @@
+{
+ "source": "https://youtu.be/1F9_4ccwhss?t=308",
+ "video": "1F9_4ccwhss",
+ "t": 308,
+ "pose": {
+  "lid": 0.95
+ },
+ "points": {
+  "latch lever top": [
+   738,
+   508
+  ],
+  "latch lug": [
+   782,
+   598
+  ],
+  "bolt cabinet": [
+   918,
+   580
+  ],
+  "deck front right": [
+   880,
+   468
+  ],
+  "lid foot left": [
+   375,
+   150
+  ],
+  "lid foot back right": [
+   715,
+   285
+  ],
+  "lid foot front right": [
+   718,
+   22
+  ]
+ },
+ "holdout": false
+}

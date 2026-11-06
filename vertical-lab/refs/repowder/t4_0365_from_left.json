@@ -1,0 +1,29 @@
+{
+ "source": "https://youtu.be/1F9_4ccwhss?t=365",
+ "video": "1F9_4ccwhss",
+ "t": 365,
+ "pose": {},
+ "points": {
+  "hinge barrel mid": [
+   385,
+   178
+  ],
+  "lid foot front mid": [
+   522,
+   300
+  ],
+  "door top back": [
+   372,
+   334
+  ],
+  "door top front": [
+   527,
+   326
+  ],
+  "door bottom mid": [
+   478,
+   566
+  ]
+ },
+ "holdout": false
+}
