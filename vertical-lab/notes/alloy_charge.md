@@ -43,6 +43,15 @@ So this chapter changed:
 | 5 | The first Cu cup topped up with Cu, worked out from its weighed Ni so it stays 10 wt % Ni, weighed, plugged, pressed, back on the rack. Then the other three | |
 | 6 | Tray B goes back into storage. Four Al-10Si cups are on the MiR for the rePowder, where chapter 2 picks them up | the carrier |
 
+**Rendered** 2026-11-06 07:07 UTC (`VIZ3D_FPS=6 ARM_AUDIT_RENDER=1`, SSAA, 1280 × 720): 254.3 s, 1526 frames,
+[MP4](../out/mp4/alloy_charge.mp4) (13.3 MB), [GIF](../out/alloy_charge.gif) (4.59 MB, 1018 frames), stills
+`out/alloy_charge_{dose,weigh,press,still}.png`. **Arm audit in the same pass: 0 of 1145 checked frames in
+collision** ([`out/collisions/alloy_charge.json`](../out/collisions/alloy_charge.json)). The round-8 funnel still
+(`alloy_charge_funnels.png`) is gone with the funnels. The dose close-up (`_dose.png`) is cluttered by the balance's
+frame and the doser's posts: a camera through the front hatch would show the bore filling better (not re-rendered).
+
+![Weighed where it was dosed: the cup on our pedestal on the HR-202i's pan, the EC parked over it](../out/alloy_charge_weigh.png)
+
 The sections below on the round-8 station ("Weighing: an A&D HR-202i, not a load cell" from "The balance can't go
 under the doser's outlet" on, and "One funnel per powder") describe what round 9 replaced; they stay as the record of
 why the funnels were there.
