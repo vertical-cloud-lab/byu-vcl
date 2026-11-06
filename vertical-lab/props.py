@@ -227,7 +227,7 @@ def tcp_frame(p, approach=(0, 0, -1), spin_deg: float = 0.0) -> np.ndarray:
 #   piece_legend(key, legends)     for a tour clip (tour.py): a legend shown while a fade piece of the instrument shows
 JAR_GLASS = (0.76, 0.83, 0.90)               # clear glass, drawn light grey-blue so it reads on a white floor
 JAR_GLASS_OPACITY = 0.35
-JAR_LID = (0.07, 0.07, 0.08)                 # matte black cap (phenolic or PP; PTFE-lined: notes/powder_containers.md)
+JAR_LID = (0.07, 0.07, 0.08)                 # matte black cap (phenolic or PP; PTFE-lined: notes/lab_r8.md, "Which containers for powder")
 JAR_LABEL = (0.97, 0.97, 0.95)               # a white paper label
 JAR_PRINT = (0.10, 0.10, 0.11)               # the ID printed on it
 JAR_POWDER = POWDER                          # grey metal powder
