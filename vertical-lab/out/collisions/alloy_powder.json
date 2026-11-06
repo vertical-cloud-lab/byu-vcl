@@ -1,22 +1,8 @@
 {
  "clip": "alloy_powder",
- "frames_checked": 1002,
- "frames_with_collisions": 23,
+ "frames_checked": 1025,
+ "frames_with_collisions": 19,
  "runs": [
-  {
-   "label": "2/7",
-   "first_frame": 132,
-   "last_frame": 132,
-   "frames": 1,
-   "pairs": [
-    {
-     "arm": "unit0ur",
-     "kind": "gripper",
-     "part": "right_finger",
-     "other": "p_zbh"
-    }
-   ]
-  },
   {
    "label": "2/7",
    "first_frame": 133,
@@ -33,54 +19,6 @@
      "arm": "unit0ur",
      "kind": "gripper",
      "part": "right_finger_tip",
-     "other": "p_zbh"
-    }
-   ]
-  },
-  {
-   "label": "2/7",
-   "first_frame": 134,
-   "last_frame": 134,
-   "frames": 1,
-   "pairs": [
-    {
-     "arm": "unit0ur",
-     "kind": "gripper",
-     "part": "right_inner_knuckle",
-     "other": "p_zbh"
-    }
-   ]
-  },
-  {
-   "label": "2/7",
-   "first_frame": 156,
-   "last_frame": 156,
-   "frames": 1,
-   "pairs": [
-    {
-     "arm": "unit0ur",
-     "kind": "gripper",
-     "part": "right_inner_knuckle",
-     "other": "p_zbh"
-    }
-   ]
-  },
-  {
-   "label": "2/7",
-   "first_frame": 157,
-   "last_frame": 157,
-   "frames": 1,
-   "pairs": [
-    {
-     "arm": "unit0ur",
-     "kind": "gripper",
-     "part": "right_finger_tip",
-     "other": "p_zbh"
-    },
-    {
-     "arm": "unit0ur",
-     "kind": "gripper",
-     "part": "right_inner_knuckle",
      "other": "p_zbh"
     }
    ]
