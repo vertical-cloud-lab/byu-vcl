@@ -184,7 +184,7 @@ parking vial, the parked cap or the extra capper moves. The new contacts are min
 on the parking vial (1.61 mm, the same seating as a cap on any of its own vial: `built in` 1.61 mm on the stocks). Round 7's
 finding stands, unchanged: Ben's capper mount brushes tip rack 1 by 1.06 mm over 13 mm3 (1.6 mm in round 7's CadQuery
 check) on the way to the stocks; the moves to the parking vial add none. The head at the parking vial puts the camera at
-x 278, y 243 over the coupon tray's far end at head height 87 mm: 61 mm above the lids.
+x 278, y 243 over the coupon tray's far end with its underside about 95 mm above the deck, roughly 70 mm over the lids (an estimate from the model).
 
 For the 8:37 clip (`animate.workflow`, the doser stream's): that clip shows the powder test (`powder_test`), whose only
 stock is the ASW for the 200 µL addition, so it needs no second cap. If it ever opens two stocks, call

@@ -507,7 +507,7 @@ _C_CELL = (_corr_w(400.0, 360.0, 230.0), _corr_w(150.0, 225.0, 25.0))
 _C_TUBE = (_corr_w(400.0, -340.0, 400.0), _corr_w(210.0, 100.0, 30.0))
 _C_OVER = ((560.0, -1450.0, 1250.0), (60.0, 0.0, 180.0))
 # the stock-and-parking-vial view: the holder from the side of the deck, the stocks and the parking vial in frame
-_C_HOLD = (_corr_w(560.0, -120.0, 300.0), _corr_w(318.0, 140.0, 40.0))
+_C_HOLD = (_corr_w(140.0, 40.0, 340.0), _corr_w(318.0, 175.0, 45.0))
 _CORR_TL = _corr_spot()
 IL._CORR_TL = _CORR_TL          # the measurement overlay (instruments_lab._draw_corr_overlay) reads the timeline there
 CAMS["instruments/cubxl_corrosion"] = {0: _C_WIDE, 2: _C_HOLD, 3: _C_HOLD, 4: _C_FILL, 5: _C_CELL, 6: _C_CELL,
