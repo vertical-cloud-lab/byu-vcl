@@ -105,7 +105,8 @@ CHAPTERS = [
                 ("mp4", "vlm_workflow.mp4", "Atomized powder dosed for the CubXL")]),
     dict(key="alloy1", title="Alloy route 1/7: the charge cups, dosed, weighed and pressed under vacuum",
          card=["The atomizer melts the lab's own charge cups (#222), turned from 5N Al and oxygen-free Cu bar. Each "
-               "is dosed through its powder's own funnel, weighed on an A&D HR-202i, and its vented plug pressed "
+               "is dosed by weight on the A&D HR-202i under the multi-doser's dose point (chain carousel v5, no funnel), "
+               "and its vented plug pressed "
                "fully home under vacuum in a Specac Atlas Autotouch, compacting the powder to a set load."],
          parts=[("mp4", "dag/route_dag_ch1.mp4", "The route as a function network (DAL's ONR YIP DAG)"),
                 ("still", "dal_workflow_table.png", 12.0, "DAL's alloy workflow, step by step (notes/dal_workflow.md): "
@@ -113,13 +114,15 @@ CHAPTERS = [
                 ("mp4", "alloy_charge.mp4", "The charge cups"),
                 ("mp4", "vacuum_press.mp4", "The vacuum press with its catch ring")]),
     dict(key="alloy2", title="Alloy route 2/7: melt and atomize in the rePowder",
-         card=["The MiR250 takes the four Al cups to the AMAZEMET rePowder. A loading tool lowers each cup into the "
-               "crucible. Pump-downs with argon, induction melt, the pour, the ultrasonic spray, powder in the "
+         card=["Both MiR250 + UR10e units go to the AMAZEMET rePowder, each with a 131 kg ballast plate low in its base: "
+               "one holds the furnace's lid down while the other works its latch. A loading tool lowers each of the "
+               "four Al cups into the crucible. Pump-downs with argon, induction melt, the pour, the ultrasonic spray, powder in the "
                "container. Cut with the lab's own footage, each piece badged with its alloy, date and source."],
          parts=[("mp4", "dag/route_dag_ch2.mp4", None), ("mp4", "alloy_atomize.mp4", None)]),
     dict(key="alloy3", title="Alloy route 3/7: sieve and print",
          card=["The arm runs a sieving cell on its own: it stacks the sieves, the Retsch AS 200 shakes them, a tipper "
-               "empties each into its labelled jar. The 20-63 um cut goes into the Aconity MIDI, which prints "
+               "empties each into its labelled jar, and a wash module cleans every sieve: shaken out, an ultrasonic IPA "
+               "bath, a warm-air knife. The 20-63 um cut goes into the Aconity MIDI, which prints "
                "tensile bars."],
          parts=[("mp4", "dag/route_dag_ch3.mp4", None), ("mp4", "alloy_print.mp4", None)]),
     dict(key="alloy4", title="Alloy route 4/7: the powder, checked",
@@ -128,16 +131,19 @@ CHAPTERS = [
                "and the SEM. The SEM images are the lab's own atomized Al 4047 (run c3k0n5, DAL #157)."],
          parts=[("mp4", "dag/route_dag_ch4.mp4", None), ("mp4", "alloy_powder.mp4", None)]),
     dict(key="alloy5", title="Alloy route 5/7: depowder, cut, heat treat, tensile at room and elevated temperature",
-         card=["The build depowdered, the bars cut off in the wire EDM and caught, rinsed in IPA, heat treated as "
-               "tensile specimens, then pulled with automatic loading, at room temperature and in a hot chamber."],
+         card=["The build depowdered with its plate clamped in the box, flat and vertical bars cut off in one pass in the "
+               "wire EDM and caught, rinsed in IPA, heat treated as "
+               "tensile specimens, then pulled with automatic loading, at room temperature and in a hot chamber, seen in cutaway."],
          parts=[("mp4", "dag/route_dag_ch5.mp4", None), ("mp4", "alloy_workflow.mp4", None),
                 ("gitstill", EDM, "vertical-lab/out/edm_orientations.png", 14.0, "Bars printed flat, vertical and at "
                  "45 deg, each cut off with the plate on edge from one fixture, each with its own catch (PR #328)",
                  "Three build orientations through the wire EDM (PR #328)")]),
     dict(key="alloy6", title="Alloy route 6/7: sample prep: section, mount, grind and polish",
          card=["Sections cut from the build, hot-mounted in conductive compound for the SEM, or set in a steel mount "
-               "for indentation, then ground and polished with every paper and cloth change shown. Automated "
-               "polishing is the hard part, and the chapter says where."],
+               "for indentation, then ground and polished with every disc change shown, the mounts standing free in the "
+               "PX500's holder while its pistons press them down. Automated "
+               "polishing is the hard part, and the chapter says where. Not yet fixed: in the disc changes the arm still "
+               "folds into itself and the bay's frame (notes/alloy_prep.md)."],
          parts=[("mp4", "dag/route_dag_ch6.mp4", None), ("mp4", "alloy_prep.mp4", None)]),
     dict(key="alloy7", title="Alloy route 7/7: characterizing the build",
          card=["The trays come to the opening in turn: the SEM with the mount clamped in its holder, the VHX, "
