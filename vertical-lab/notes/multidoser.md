@@ -107,6 +107,23 @@ the doser's cup with the gripper level: the vial turned with the gripper. Now th
 it down from above, upright, on the shuttle's fork, and the shuttle carries it in and out; it takes it from the fork
 from above again for the MiR's holder. It never leaves the vertical.
 
+## Rendered (2026-11-06)
+
+| Clip | Length | Frames (6 fps, 1280 × 720) | Arm audit (same pass) | Files |
+|---|---|---|---|---|
+| 8:37, `animate.py workflow` (the whole lab, Shuttles see-through) | 111.8 s | 671 | **0 of 574** checked frames in collision | [MP4](../out/mp4/vlm_workflow.mp4) (7.9 MB), [GIF](../out/vlm_workflow.gif) (4.6 MB, made from the MP4 at 4 fps, 560 px: `lab_scene` writes none), stills `out/vlm_workflow_{dose,vial,still}.png`, [audit](../out/collisions/vlm_workflow.json) |
+| Chapter 1, `alloy_charge.py` | 254.3 s | 1526 | **0 of 1145** | see [`alloy_charge.md`](alloy_charge.md) |
+
+![8:37: the vial upright on our pedestal on the HR-202i's pan while module 6 doses into it](../out/vlm_workflow_dose.png)
+
+Two things found on the way, both fixed: v5 swaps the station module's outlet-door spring for its compressed mesh as
+the EC docks (`door_spring` / `door_spring_open`), so `Carousel.set` allows that one key to change; and the first
+chapter-1 render died at its first frame because its X display (:32) never came up ("bad X server connection"), not
+because of the scene; re-queued on another display, it ran.
+
+The CubXL half of the 8:37 clip opens one cap only (the seawater stock), so it needs no parking spot for a second cap
+(the cubxl stream's note in [`cubxl_corrosion.md`](cubxl_corrosion.md), round 9).
+
 ## Open
 
 - **Which balance the lab has.** v5 found no record that the lab owns an HR-202i; the documented 0.1 mg balance is
