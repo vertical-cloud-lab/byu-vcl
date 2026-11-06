@@ -187,6 +187,7 @@ camera can't show them.
 | [`print.json`](print.json) | The 2026-11-06 print: request, plate check, slice, Send, timeline and outcome |
 | `20261106T2028*`–`20261106T2052*` | The Device page, the camera's failures, the nozzle, the HMS list before and after, the Send dialog, and the finished job |
 | [`watch_a1mini_nocam.py`](watch_a1mini_nocam.py), [`watch_monitor.jsonl`](watch_monitor.jsonl), `panels/` | The Device-page watcher, its log, and the job panel at each layer |
+| [`recording/`](recording/) | The session's screen recording, cut by wall-clock time ([`cut_plan.json`](recording/cut_plan.json), `cut_recording.py` from PR #234's branch): 6.1 min with [chapters](recording/spacers_d15_x2_A1mini_2026-11-06_chapters.txt). The login and the sign-out are not in it. Not uploaded: print runs have no YouTube token |
 | [`make_spacer.py`](make_spacer.py), [`make_spacer_output.txt`](make_spacer_output.txt) | Writes the Ø10 STL and checks both |
 | [`onshape_spacer_20261106.json`](onshape_spacer_20261106.json) | The Onshape read: document, part, volume, the export's options and MD5 |
 | [`20261106T181410Z_preflight.json`](20261106T181410Z_preflight.json) | The LAN pre-flight's summary and checks. The verdict is NO-GO because of the camera alone |
