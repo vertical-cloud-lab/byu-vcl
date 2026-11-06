@@ -1,7 +1,7 @@
 {
  "name": "instruments/cubxl_corrosion",
- "fps": 10,
- "n_frames": 785,
+ "fps": 8,
+ "n_frames": 652,
  "size": [
   1280,
   720
@@ -11,73 +11,73 @@
    "label": "1/12",
    "caption": "Copper corrosion on the CubXL, as DAL's copper screen lays it out (PR #180): four stations, S1 C71500 Cu-Ni, S2 C95800 NAB, S3 a DED pad, S4 a PTFE blank; Ben's 9-vial holder of stocks; three cups; 2 x 8 ICP-MS tubes; two tip racks. On the head: the capper, a P20 and a camera.",
    "start_frame": 0,
-   "end_frame": 32
+   "end_frame": 26
   },
   {
    "label": "2/12",
    "caption": "1 The CubXL's P20 (1-20 µL) takes a 20 µL tip from Ben's rack.",
-   "start_frame": 33,
-   "end_frame": 48
+   "start_frame": 27,
+   "end_frame": 39
   },
   {
    "label": "3/12",
-   "caption": "2 The capper lifts the seawater cap (ASTM D1141, no heavy metals). The P20 builds S1's well from 135 µL of it: 7 transfers of 19.3 µL, each dispensed from above the meniscus.",
-   "start_frame": 49,
-   "end_frame": 158
+   "caption": "2 The capper lifts the seawater cap and sets it on an empty parking vial in the same holder, so the magnet is free. The P20 builds S1's well from 135 µL of ASW: 7 transfers of 19.3 µL, each dispensed from above the meniscus.",
+   "start_frame": 40,
+   "end_frame": 123
   },
   {
    "label": "4/12",
-   "caption": "3 Sulfide last: 15 µL of the 10 mg/L S stock, with the same tip, makes 150 µL at 1 mg/L S. The tip goes to the waste.",
-   "start_frame": 159,
-   "end_frame": 229
+   "caption": "3 Sulfide last, with the ASW still open: the magnet takes the sulfide cap (two stocks open, one cap parked, one carried). 15 µL of the 10 mg/L S stock, same tip, makes 150 µL at 1 mg/L S; then each cap goes home in turn and the tip goes to the waste.",
+   "start_frame": 124,
+   "end_frame": 207
   },
   {
    "label": "5/12",
    "caption": "4 The head camera checks for liquid outside the O-ring (2 min).",
-   "start_frame": 230,
-   "end_frame": 256
+   "start_frame": 208,
+   "end_frame": 229
   },
   {
    "label": "6/12",
    "caption": "5 The capper carries the electrode cap (leak-free Ag/AgCl reference, Pt coil counter) from its park cup and sets it over S1's boss: no O-ring, two small lid magnets hold it. No tip on.",
-   "start_frame": 257,
-   "end_frame": 299
+   "start_frame": 230,
+   "end_frame": 263
   },
   {
    "label": "7/12",
    "caption": "6 Cap on, head free: OCP 20 min, EIS at OCP 10 min, LPR ±10 mV, rest 5 min, a +50 mV hold for 10 min, OCP 5 min. EIS needs the requested potentiostat: the EZstat Pro has none, so until then OCP runs 30 min.",
-   "start_frame": 300,
-   "end_frame": 380
+   "start_frame": 264,
+   "end_frame": 328
   },
   {
    "label": "8/12",
    "caption": "7 The magnet lifts the cap off S1. It is dipped in DI water, then seawater, and parked.",
-   "start_frame": 381,
-   "end_frame": 443
+   "start_frame": 329,
+   "end_frame": 378
   },
   {
    "label": "9/12",
    "caption": "8 A new tip moves the well's 150 µL to tube 1 for ICP-MS, 8 transfers of 18.75 µL, then a 150 µL DI rinse the same way: 16 transfers.",
-   "start_frame": 444,
-   "end_frame": 607
+   "start_frame": 379,
+   "end_frame": 509
   },
   {
    "label": "10/12",
    "caption": "9 Acidify at once: the capper opens the acid vial and the night's one acid tip adds 20 µL of 1 M HNO3 from above the rim: 320 µL at 62 mM HNO3. The acid tip goes back to rack 2.",
-   "start_frame": 608,
-   "end_frame": 714
+   "start_frame": 510,
+   "end_frame": 595
   },
   {
    "label": "11/12",
    "caption": "10 The head camera images the spot. Next: S2. A spot is 67 min of deck time: eight wells (three pieces, two wells each, and S4's two blanks) take about 9 h of a 12 h night.",
-   "start_frame": 715,
-   "end_frame": 745
+   "start_frame": 596,
+   "end_frame": 620
   },
   {
    "label": "12/12",
    "caption": "Cyclic polarization runs only on selected spots, and last on each: fill to EIS, then the scan, then its own tube. On every spot it would swamp the tube's copper (3.4 mC against the hold's 0.2-2.8 mC).",
-   "start_frame": 746,
-   "end_frame": 784
+   "start_frame": 621,
+   "end_frame": 651
   }
  ]
 }
