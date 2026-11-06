@@ -86,11 +86,11 @@ pocket, which is where the junction board (item 10) goes.
 About 46 cm³ in all, under 60 g of PETG even at 100% infill. The compact stirrer's five
 parts are about 28 cm³; Studio put the 2026-10-28 plate at 27 g.
 
-Also print the **spacer** that goes under the vial, Ø10 × 4.6 mm (2026-11-05), from
-[`stl/spacer/`](stl/spacer). Ben's Onshape document
-[`Stir module spacer`](https://cad.onshape.com/documents/793acc919f1bebafa8462ee6) holds a Ø15 × 4.6 mm cylinder
-instead (checked 2026-11-06), so which size is meant is still open
-([print record](print/2026-11-05-a1mini-spacers/README.md)).
+Also print the **spacer** that goes under the vial: Ø15 × 4.6 mm, Ben's Onshape document
+[`Stir module spacer`](https://cad.onshape.com/documents/793acc919f1bebafa8462ee6), as
+[`stl/spacer/spacer_d15_h4.6_onshape.stl`](stl/spacer/spacer_d15_h4.6_onshape.stl). Two of them
+took 1.48 g of PETG on 2026-11-06 ([print record](print/2026-11-05-a1mini-spacers/README.md)).
+A Ø10 × 4.6 mm version, as the spacer was first described (2026-11-05), is in the same folder.
 
 ## 3. Already on the CubXL or in lab stock
 

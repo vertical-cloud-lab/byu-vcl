@@ -78,7 +78,7 @@ way for it, and stage 6 has its own steps ([compact](#compact-stirrer)).
 | Printed | Base and vial holder | 1 each, the compact ones | 1 each | Compact: [`stl/compact/`](stl/compact). 56 × 56 mm: [`step/`](step) or [`stl/`](stl). See [stage 1](#1-print-the-parts) |
 | Printed | Magnet carrier | 1 | 1 | [`step/`](step) or [`stl/`](stl), the same part for both |
 | Printed | Deck key, the 0.05 mm press fit | 2 | 2 | same |
-| Printed | Spacer, Ø10 × 4.6 mm, under the vial (2026-11-05) | 1 | 1 | [`stl/spacer/`](stl/spacer). Ben's Onshape document [`Stir module spacer`](https://cad.onshape.com/documents/793acc919f1bebafa8462ee6) has a Ø15 × 4.6 mm cylinder instead (2026-11-06); which size is meant is open, see the [print record](print/2026-11-05-a1mini-spacers/README.md) |
+| Printed | Spacer, Ø15 × 4.6 mm, under the vial (2026-11-05) | 1 | 1 | [`stl/spacer/spacer_d15_h4.6_onshape.stl`](stl/spacer/spacer_d15_h4.6_onshape.stl), Ben's Onshape document [`Stir module spacer`](https://cad.onshape.com/documents/793acc919f1bebafa8462ee6). Two were printed on 2026-11-06 ([print record](print/2026-11-05-a1mini-spacers/README.md)). A Ø10 × 4.6 mm version, as the spacer was first described, is in the same folder |
 | Bought | Orion OD4010-12HSS fan | 1 | 1 | BOM item 1 |
 | Bought | N52 magnets, 1/4 × 1/16 in | 2, plus 1 spare for checking poles | same | BOM item 2 |
 | Bought | PTFE stir bar, 15 × 6 mm | 1 | 1 | BOM item 3 |
@@ -154,7 +154,7 @@ print orientation, so a slicer only has to drop them onto the bed.
 | [Vial holder](step/vial_holder.step) | 1 | Flange down | The fingers print upright, as in the 9-vial holder. The Ø27 mm recess under the floor is a bridge; print it without supports, since support marks would eat into the 1.1 mm gap |
 | [Magnet carrier](step/magnet_carrier.step) | 1 | Pockets up | 100 % infill. It has to come out flat |
 | [Deck key](step/deck_key.step) | 2 | Nub up | Elephant's foot on the bottom edge makes it bind in the deck slot. The nub is a press fit in the base, 0.05 mm a side, the best fit of the [2026-10-22 fit test](print/2026-10-22-a1mini-keys/README.md). Each key has one dimple in its top face |
-| Spacer | 1 | Flat | Ø10 × 4.6 mm, as Ben described it ([`stl/spacer/spacer_d10_h4.6.stl`](stl/spacer/spacer_d10_h4.6.stl)). His Onshape document has Ø15 × 4.6 mm ([`spacer_d15_h4.6_onshape.stl`](stl/spacer/spacer_d15_h4.6_onshape.stl)); either works the same way. It sits on the cup's floor under the vial, as the spacer and washers did in the 2026-11-05 test. At Ø10 mm it drops straight past the fingers (Ø25.8 mm at their tips) to the floor |
+| Spacer | 1 | Flat | Ø15 × 4.6 mm, Ben's Onshape part ([`spacer_d15_h4.6_onshape.stl`](stl/spacer/spacer_d15_h4.6_onshape.stl)). Two printed on the A1 mini with these settings on 2026-11-06 in 14 min ([print record](print/2026-11-05-a1mini-spacers/README.md)). A Ø10 × 4.6 mm one, as he first described it ([`spacer_d10_h4.6.stl`](stl/spacer/spacer_d10_h4.6.stl)), works the same way. It sits on the cup's floor under the vial, as the spacer and washers did in the 2026-11-05 test. Either size drops straight past the fingers (Ø25.8 mm at their tips) to the floor |
 
 **Compact:** print [`base_compact.stl`](stl/compact/base_compact.stl) and
 [`vial_holder_compact.stl`](stl/compact/vial_holder_compact.stl) in place of the base and the
