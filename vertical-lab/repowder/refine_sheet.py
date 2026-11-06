@@ -67,7 +67,6 @@ def main(old_path, out):
         cols = [und, outline(und, rgb_o, mo, (255, 80, 60)), outline(und, rn, mn, (255, 225, 0))]
         row = np.concatenate(cols, axis=1)
         im = Image.fromarray(row).resize((1800, int(row.shape[0] * 1800 / row.shape[1])), Image.LANCZOS)
-        cv2.putText(np.asarray(im), "", (0, 0), 0, 1, 0)
         a = np.asarray(im).copy()
         tag = "HELD OUT" if fv["holdout"] else "fitted"
         cv2.rectangle(a, (0, 0), (1800, 30), (0, 0, 0), -1)
