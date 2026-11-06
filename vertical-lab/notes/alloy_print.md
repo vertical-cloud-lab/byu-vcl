@@ -7,6 +7,54 @@ plate that chapter 4 ([`alloy_workflow.py`](../alloy_workflow.py)) takes out.
 [tipper](../out/alloy_print_tipper.png). 198 s at 1280 × 720 and 10 fps (round 6, with the arm's collisions planned
 round, below; 10 fps to fit the session; re-render at 15 fps when the runner is free); the GIF is 640 × 360 at 5 fps.
 
+### Round 9 (PR #318, 2026-11-06): cleaning the sieves without a person, clear-glass jars with a legend
+
+Sterling's review of 2026-11-05 22:56 UTC, verbatim: "Do we have some automation in place for cleaning the sieve stack? I
+guess we could use that depowdering module in combination with ultrasonic IPA rinses?"; "Aconity MIDI door swings the
+wrong way."; and, for every jar in the lab, "What's with the technicolor jars? Keep them all a normal black lid with
+transparent glass, but if you want to point out something that's unique about them, use a legend and a color change that
+then reverts once the legend has been shown for a bit of time."
+
+| Point | Before | Now |
+|---|---|---|
+| Sieve cleaning | The stack went back on the stand with "between alloys it would go to an ultrasonic bath" in a caption | A wash module on a 450 mm extension of the bench, left of the tipper (`sieve_station.wash_parts`, own hood and duct). The No. 325, the finest cloth, is drawn through the whole cycle: (1) back in the tipper, turned over the funnel, vibrated 3 s (the Solukon-style depowdering, in small); (2) the arm sets it on a basket ring, a lift lowers it into an ultrasonic IPA tank (sped up from minutes), the liquid shimmers; (3) the lift raises it into a warm-air knife (a slot nozzle above and one below, travelling along the cloth); (4) the arm puts it back in the cradle and the MiR rolls back to the stand. The other five go through the same cycle but are not drawn (a repeat of 25 s each would add about 2.5 min) |
+| Jars | white, lid off, 50 % | `props.jar_parts` style: clear glass (opacity 0.35), white label; the powder stays grey. Lids are off while a jar is under the funnel (not drawn; the black lid is `sieve_station.jar_lid`). After the sieving, each jar is tinted by its size cut for 6 s with a legend (`props.use_legend`, `pulse`), then fades back to plain |
+| MIDI door | | The door is `alloy_models.py`'s (tensile stream's fix); this render picks up whatever is committed there |
+
+**Is that a sound way to clean test sieves?** Mostly yes, with three cautions.
+
+* *Ultrasonics.* Retsch says sieves with meshes finer than 500 µm should be cleaned in an ultrasonic bath, usually 2-3 min
+  (3-5 min in the DAL #234 summary); its UR 1 takes one 8 in × 2 in sieve (the lab's size), UR range
+  [data sheet](https://www.retsch.com/files/452777/product-data-sheet-ur.pdf). Retsch's cleaning agent is water with a
+  surfactant ([white paper](https://www.retsch.com/files/17682/white-paper-different-sieving-methods-for-a-variety-of-applications.pdf)).
+  An Advantech manual asks for at most 150 W, at room temperature, short runs, the sieve suspended and off the tank floor
+  (DAL #234 summary, [comment](https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/234)). The basket ring here
+  holds the sieve off the floor. For a 45 µm cloth that is accepted practice; I found no source for sonicating 20 µm or
+  electroformed micromesh, so do not extend the cycle to those without the maker's say.
+* *Drying.* Retsch: dry below 80 °C, sieves upright, never hotter, since the fine wire mesh can warp and lose tension
+  ([AS 200 manual, drying](https://www.manualslib.com/manual/1922097/Retsch-As-200-Tap.html?page=37)). Warm air at about
+  60 °C through slot nozzles is inside that; remove rubber or plastic seal rings first (none on this stack). The air knife
+  is a fixed low-pressure slot, not a hand-held compressed-air jet, which DAL #234 and Advantech warn distorts openings.
+* *Why IPA for aluminium.* Fine Al in water makes hydrogen (DAL #234), and the lab's set is aluminium-only, so a solvent
+  rinse is sensible. But DAL #234's own advice is not to put IPA or other flammables in an ordinary ultrasonic cleaner.
+  Hence the module's shape: sonicate indirectly (IPA in a closed stainless vessel inside a water jacket; the drawing's tank
+  is that vessel), at most a few hundred mL, under extraction, grounded, away from ignition sources, an
+  explosion-proof or ATEX-rated unit if a direct bath is ever used (IPA flash point about 12 °C, and ultrasonic heating
+  raises it). Remove the powder dry first (the vibration step does that): that cuts the IPA's metal-fines load, and the
+  rinse slurry is hazardous waste, kept wet. Al fines under 63 µm are an ignitable dust, so the dry stages stay inside the
+  downdraft enclosure; the module's own hood is drawn for that.
+* *Standards.* ASTM E11 sets the wire cloth and frame tolerances; I did not find cleaning limits in it, and DAL #234's two
+  Edison runs found no standard that gives a cleaning recipe or a "clean sieve" test either. A cleaned sieve should still
+  be re-inspected (a calibrated-sample check or a microscope look at the cloth) per the lab's own schedule.
+
+*Time (estimate).* Vibrate 2 min, ultrasonic IPA 3-5 min, warm-air dry 3-5 min, three transfers by the arm about 2 min: some
+12-15 min per sieve, about 75-90 min for the six one after another with one module. Alternatives: a second module or a
+bath that takes the whole stack (one UR 1 takes only one sieve, bigger UR baths several); one disposable or dedicated set
+per alloy family, as DAL #234 advises (what the stand already assumes), which makes cleaning a between-campaign job
+rather than a between-run one; a Retsch-style ultrasonic sieve cleaner, or none at all for a dedicated Al set (dry
+recovery, frame tap, no wash) with the wash reserved for an alloy change. The module's sizes (tank 330 × 350 mm, hood,
+lift, nozzles) are assumptions, not a product.
+
 ### Round 8 (PR #318, 2026-11-05): grey powder, the lab's real sieved jars, two Shuttles, 0 collisions
 
 Sterling's review of 2026-11-05 00:37 UTC, the two points for this chapter, verbatim:
