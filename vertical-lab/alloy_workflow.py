@@ -960,23 +960,36 @@ def _movie(B):
     def grip(c, secs=0.4):
         step(secs, rb.grip_to(c))
 
-    def park(secs=1.4, **kw):
-        go(q=clear_park(), secs=secs, **kw)
+    def park(secs=1.4, away=None, **kw):
+        go(q=clear_park(away), secs=secs, **kw)
 
-    def clear_park():
+    def clear_park(away=None):
         """Round 9: PARK, or the first of a few variants of it (turned about the base, less folded) that touches
         nothing where the arm is now. Round 8's PARK put wrist 2 against the tongs on their rest and against the
         Instron chamber's open door."""
         import collide  # noqa: F401
+        import ur_arm
         chk = rb.checker()
         Wd = chk.snapshot()
+        clear = []
         for fold in (A.PARK_DEG, (-90.0, -120.0, 110.0, -80.0, -90.0, 180.0)):
             for dq0 in (0.0, 45.0, -45.0, 90.0, -90.0, 180.0):
                 q = np.radians(fold).copy()
                 q[0] += math.radians(dq0)
                 if not chk.collisions(q, rb.close, Wd, set(), first=True):
-                    return q
-        return PARK
+                    if away is None:
+                        return q
+                    clear.append(q)
+        if not clear:
+            return PARK
+        # `away`: of the clear ones, the one whose wrist is furthest from that point (the Instron's load string, so the
+        # camera sees the test past the parked arm)
+        Wr = sc.world(rb.root)
+
+        def dist(q):
+            w = (Wr @ ur_arm.fk(rb.model, q)["tool0"])[:2, 3]
+            return float(np.hypot(*(w - np.asarray(away, float)[:2])))
+        return max(clear, key=dist)
 
     def clear_q(Tw):
         """Round 9: the IK solution for the TCP pose Tw nearest the arm's joints now that touches nothing but what the
@@ -1112,7 +1125,7 @@ def _movie(B):
     CAM_ACO = [tuple(aco_bp + (-1700, -2300, 1500)), tuple(aco_bp + (100, -520, -120)), (0, 0, 1)]
     CAM_ACO_IN = [tuple(aco_bp + (-1250, -900, 850)), tuple(aco_bp + (30, -120, 10)), (0, 0, 1)]
     # round 9: the lance at work, seen through the open door from the front-left and above, the gripper outside
-    CAM_LANCE = [tuple(aco_bp + (760, -1180, 760)), tuple(aco_bp + (-30, -130, -20)), (0, 0, 1)]
+    CAM_LANCE = [tuple(aco_bp + (650, -1300, 200)), tuple(aco_bp + (-20, 0, -10)), (0, 0, 1)]
     sc.cam = list(CAM_WIDE)
     status(sc, Arm="UR10e on MiR250, at the Aconity", Plate="in the Aconity MIDI", Bar="", EDM="", Instron="")
     lbl = [("Aconity MIDI metal printer", (line.LINE["aconity"], WH.Y_FACE_N + 300, 2400), (0.80, 0.16)),
@@ -1134,7 +1147,7 @@ def _movie(B):
         lance_c = D_.lworld(M.HOLSTER)
         CAM_DEP = [tuple(lance_c + (700, -2500, 1250)), tuple(lance_c + (-250, -150, -280)), (0, 0, 1)]
         CAM_BOX = [tuple(box_c + (950, -1750, 850)), tuple(box_c + (-60, -60, -90)), (0, 0, 1)]
-        CAM_CLAMP = [tuple(box_c + (330, -700, 640)), tuple(box_c + (0, 10, 10)), (0, 0, 1)]
+        CAM_CLAMP = [tuple(box_c + (-300, -650, 560)), tuple(box_c + (0, 10, 10)), (0, 0, 1)]
         p_hold = D_.lworld(M.HOLSTER)
         box_x = box_c[0] - 78.0 - 146.0
         l_dir = np.array([0, math.cos(math.radians(LANCE_DOWN)), -math.sin(math.radians(LANCE_DOWN))])
@@ -1152,7 +1165,8 @@ def _movie(B):
         st["cap"] = ("The chamber door opens. The MIDI has no automatic depowdering, so the arm takes a suction lance off "
                      "its post; a pipe along the floor takes the powder to the depowdering box's separator.")
         status(sc, Arm="taking the suction lance", Plate="under powder")
-        step(1.6, RB.both(W.door(1.0), fade(W.names["door"], 0.2, 1.0)), cam=CAM_DEP,
+        step(1.6, RB.both(W.door(1.0), fade(W.names["door"], 0.2, 1.0), W.ghost(0.0, pieces=("shell", "cabinet"))),
+             cam=CAM_DEP,
              labels=[("depowdering box", tuple(D_.world((0, 0, M.DBOX["H"] + 60))), (0.80, 0.16)),
                      ("suction lance", tuple(p_hold + (0, -30, 60)), (0.62, 0.30))])
         step(1.6, D_.with_hose(RB.both(rb.joint_to(Tw=A.down(p_hold + (0, 0, 130), spin=0.0)), rb.grip_to(0.0))),
@@ -1234,7 +1248,7 @@ def _movie(B):
         a_dir = np.array([0, math.cos(math.radians(TILT)), -math.sin(math.radians(TILT))])
         status(sc, Arm="taking the plate")
         p_out = p_g + (0, -470, 52)
-        go(Tw=tilt(p_out), secs=1.8, grip=0.0, cam=CAM_ACO_IN, labels=[("handling lug", tuple(p_g + (0, 0, 20)),
+        go(Tw=tilt(p_out), secs=1.8, grip=0.0, cam=CAM_LANCE, labels=[("handling lug", tuple(p_g + (0, 0, 20)),
                                                                           (0.20, 0.30))])
         lin(tilt(p_g + (0, -40, 32)), 1.2)
         lin(tilt(p_g), 0.6)
@@ -1795,7 +1809,7 @@ def _movie(B):
         grip(0.0, 0.4)
         rb.release(f"{ins.prefix}body")
         lin(back(lvl(p_ins, ins_in), 260.0), 1.0 * fastr, labels=[])
-        park(1.4 * fastr)
+        park(1.4 * fastr, away=ins_axis)
         st["cap"] = ("The door shuts and the crosshead brings the upper grip down until it takes the specimen's upper "
                      "end; the AVE 2 reads the strain through the door's heated window, so nothing is clipped on by "
                      "hand." if not hot else st["cap"])
@@ -1881,7 +1895,7 @@ def _movie(B):
                 grip(0.0, 0.3)
                 rb.release(amr.cab)
                 lin(up_(A.down(ch, spin=sp), 70.0), 0.5)
-        park(1.2, extra=ins.move(door_shut))
+        park(1.2, away=ins_axis, extra=ins.move(door_shut))
 
     test_one(TEST, hot=False)
     test_one(HOT, hot=True)
