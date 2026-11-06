@@ -1,0 +1,41 @@
+{
+  "camera": "HQ Camera (IMX477) + 8-50 mm zoom on the lid mount's Pi 5 (RPI_STREAM_CAM_HOSTNAME)",
+  "taken with": "rpicam-still -n --width 4056 --height 3040 (third frame: --shutter 2500000 --gain 8)",
+  "OT-2 state": "no protocol run and no maintenance run; rail lights off, except 17:42:04-17:42:08 UTC for the second frame, then back off",
+  "frames": [
+    {
+      "caption": "17:39 UTC \u00b7 auto exposure \u00b7 OT-2 rail lights off",
+      "ExposureTime_us": 66654,
+      "AnalogueGain": 7.88,
+      "Lux": 0.172,
+      "mean_RGB_0_255": [
+        3.4,
+        2.3,
+        3.2
+      ]
+    },
+    {
+      "caption": "17:42 UTC \u00b7 auto exposure \u00b7 OT-2 rail lights ON",
+      "ExposureTime_us": 66654,
+      "AnalogueGain": 7.88,
+      "Lux": 0.173,
+      "mean_RGB_0_255": [
+        3.3,
+        2.3,
+        3.2
+      ]
+    },
+    {
+      "caption": "17:40 UTC \u00b7 2.5 s at gain 8 \u00b7 rail lights off",
+      "ExposureTime_us": 2499984,
+      "AnalogueGain": 8.0,
+      "Lux": 0.111,
+      "mean_RGB_0_255": [
+        48.9,
+        42.4,
+        39.6
+      ]
+    }
+  ],
+  "reading": "The rail lights changed nothing (Lux 0.172 vs 0.173, same exposure), so the lens is not seeing the deck. Only the frame corners get light, very blurred, which points at something close to the lens: a lens cap, blackout paper under the mount, or the mount not over the window."
+}

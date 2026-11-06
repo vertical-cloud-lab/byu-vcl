@@ -1,0 +1,75 @@
+{
+ "asked": "https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-6350897923 (show the live broadcast, to line the camera up over slot 7)",
+ "broadcast": {
+  "video_id": "c4p-guvavJA",
+  "title": "OT2 overhead stream hqcam-ot2-lid, 2026-10-22 UTC 19:00",
+  "playlist": "PLM4VC4X_7XKQ",
+  "yt_dlp": "live_status is_live, availability public; live renditions up to 1440x1080 (format 270)",
+  "device_service": "active since the 19:00 UTC scheduled reboot, 0 restarts; 18,941 frames, 0 dropped at 20:46 UTC; RTMP bytes acknowledged and climbing"
+ },
+ "frames": {
+  "stream_frame_2047Z_lights_off.jpg": "pulled from the broadcast on the Pi at 20:47:01 UTC (yt-dlp -g -f 270, then ffmpeg -live_start_index -1 -frames:v 1); overlay clock 14:46:47 MDT, so 14 s behind live. OT-2 rail lights off",
+  "stream_frame_2049Z_lights_on.jpg": "pulled the same way at 20:49:29 UTC; overlay clock 14:49:17 MDT, 12 s behind live. Rail lights on since 20:48:51 UTC"
+ },
+ "stills_full_resolution": {
+  "2046Z_lights_off": {
+   "ExposureTime_us": 66654,
+   "AnalogueGain": 16.0,
+   "Lux": 6.0,
+   "focus_centre": 4.3,
+   "focus_best_2min": 4.5,
+   "focus_grid": [
+    [
+     2.9,
+     2.6,
+     2.6
+    ],
+    [
+     4.3,
+     4.3,
+     4.3
+    ],
+    [
+     4.4,
+     4.3,
+     4.4
+    ]
+   ]
+  },
+  "2049Z_lights_on": {
+   "ExposureTime_us": 49963,
+   "AnalogueGain": 2.48,
+   "Lux": 103.8,
+   "focus_centre": 5.8,
+   "focus_best_2min": 28.1,
+   "best_note": "probably a one-frame spike as the rail lights came on during an exposure, not a focus peak: the picture did not change, and sampled every 5 s from 20:51:03 to 20:51:38 UTC the centre score stayed at 2.6-4.4",
+   "focus_grid": [
+    [
+     13.5,
+     2.8,
+     6.4
+    ],
+    [
+     10.0,
+     5.8,
+     9.4
+    ],
+    [
+     6.1,
+     2.5,
+     6.7
+    ]
+   ]
+  },
+  "for_comparison_2026-10-20_0358Z_in_focus_at_about_9mm": {
+   "focus_centre": 34.3,
+   "Lux": 87.9
+  }
+ },
+ "reading": "Both stills are a featureless grey blur, and a third at 20:51:49 UTC is the same. The lens is far out of focus, or something translucent is in front of it. The blur, about 300-550 px across in a full-resolution still, is what a lens zoomed in to about 27 mm at f/1.4 and focused near infinity would give at this distance (0.85 mm on the sensor); at 9 mm it would be about 60 px. So the zoom and focus have most likely been turned since the sharp frames of 2026-10-20.",
+ "ot2": {
+  "state_before": "/health 200, rail lights off, no maintenance run, no current protocol run",
+  "rail_lights": "turned on at 20:48:51 UTC for the line-up; a transient user timer on the Pi (ot2-rail-lights-off.timer, systemd-run --user, removes itself) turns them off at 2026-10-22 23:00 UTC (17:00 MDT) unless a maintenance or protocol run is active then",
+  "own_camera": "ot2_camera_2050Z.jpg, one picture at 20:50:24 UTC through POST /camera/picture: the layout is unchanged from 2026-10-18 (../2026-10-18/ot2_camera_0438Z_lights_on.jpg), so the plate is still in slot 7"
+ }
+}

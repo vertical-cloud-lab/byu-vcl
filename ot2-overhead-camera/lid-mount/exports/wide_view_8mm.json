@@ -1,0 +1,121 @@
+{
+  "mount": "lens axis halfway between slots 5 and 8: x 0, y -35.8 mm from the window's centre",
+  "focal length (mm)": 8.0,
+  "field at the plate top (mm)": [
+    477.3,
+    357.7
+  ],
+  "field (deck mm)": [
+    -42.2,
+    -0.1,
+    435.2,
+    357.6
+  ],
+  "resolution, full-resolution still (px/mm)": 8.5,
+  "one slot, 128 x 86 mm (px)": [
+    1088,
+    731
+  ],
+  "one 96-well plate, 127.76 x 85.48 mm (px)": [
+    1086,
+    726
+  ],
+  "pixels across one well (6.86 mm)": 58.3,
+  "pixels inside one well's opening": 2669,
+  "margin beyond the outermost wells, left/right and front/back (mm)": [
+    53.3,
+    8.2
+  ],
+  "margin beyond the slot outlines, left/right and front/back (mm)": [
+    42.2,
+    0.1
+  ],
+  "longest focal length that still fits every well front to back (mm)": 8.38,
+  "longest focal length that still fits every slot outline front to back (mm)": 8.01,
+  "per slot (plate of 96 wells in it)": {
+    "1": {
+      "steepest look into a well (deg)": 22.1,
+      "near-wall shadow on that well's floor (mm)": 4.4,
+      "floor of that well in view": 0.24
+    },
+    "2": {
+      "steepest look into a well (deg)": 16.0,
+      "near-wall shadow on that well's floor (mm)": 3.1,
+      "floor of that well in view": 0.44
+    },
+    "3": {
+      "steepest look into a well (deg)": 22.1,
+      "near-wall shadow on that well's floor (mm)": 4.4,
+      "floor of that well in view": 0.24
+    },
+    "4": {
+      "steepest look into a well (deg)": 18.0,
+      "near-wall shadow on that well's floor (mm)": 3.5,
+      "floor of that well in view": 0.37
+    },
+    "5": {
+      "steepest look into a well (deg)": 8.6,
+      "near-wall shadow on that well's floor (mm)": 1.6,
+      "floor of that well in view": 0.7
+    },
+    "6": {
+      "steepest look into a well (deg)": 18.0,
+      "near-wall shadow on that well's floor (mm)": 3.5,
+      "floor of that well in view": 0.37
+    },
+    "7": {
+      "steepest look into a well (deg)": 18.0,
+      "near-wall shadow on that well's floor (mm)": 3.5,
+      "floor of that well in view": 0.37
+    },
+    "8": {
+      "steepest look into a well (deg)": 8.6,
+      "near-wall shadow on that well's floor (mm)": 1.6,
+      "floor of that well in view": 0.7
+    },
+    "9": {
+      "steepest look into a well (deg)": 18.0,
+      "near-wall shadow on that well's floor (mm)": 3.5,
+      "floor of that well in view": 0.37
+    },
+    "10": {
+      "steepest look into a well (deg)": 22.1,
+      "near-wall shadow on that well's floor (mm)": 4.4,
+      "floor of that well in view": 0.24
+    },
+    "11": {
+      "steepest look into a well (deg)": 16.0,
+      "near-wall shadow on that well's floor (mm)": 3.1,
+      "floor of that well in view": 0.44
+    }
+  },
+  "preview_server.py as in PR #84 (16:9 crop)": {
+    "ScalerCrop (x, y, w, h)": [
+      108,
+      440,
+      3840,
+      2160
+    ],
+    "field shown (deck mm)": [
+      -29.5,
+      51.7,
+      422.4,
+      305.8
+    ],
+    "fraction of each slot's depth it hides": {
+      "1": 0.6,
+      "2": 0.6,
+      "3": 0.6,
+      "4": 0.0,
+      "5": 0.0,
+      "6": 0.0,
+      "7": 0.0,
+      "8": 0.0,
+      "9": 0.0,
+      "10": 0.6,
+      "11": 0.6,
+      "12": 0.6
+    }
+  },
+  "1352 x 1014 live view of camera/preview_server.py (px/mm)": 2.83
+}

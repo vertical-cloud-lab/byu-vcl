@@ -1,0 +1,108 @@
+{
+ "what": "Six more printed C-CS spacer rings for the OT-2 lid camera, C to H, each bigger than ring A on the threaded end and bigger than ring B in the bore (rim notches 3-8 give the letter)",
+ "result": "NOT SENT: the A1 mini's plate held the previous job's finished print ('Mounting Plate') in every frame from 16:57 to 18:54 UTC, and nobody replied that it had been removed; the run stopped at its stated 18:55 UTC cutoff so that the print would not run mostly unwatched past the run's 3-hour limit",
+ "request": {
+  "by": "sgbaird",
+  "comment": "https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-6474970526",
+  "text": "@claude-print get at least 5 more sizes spaced a bit bigger to try to make sure we get this in the next shot"
+ },
+ "why": "timothy-commins, 2026-10-27: both 23 Oct rings (A, B) too small in diameter on the male and the female side (https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-6453257144)",
+ "printer": {
+  "model": "Bambu Lab A1 mini",
+  "name_in_studio": "Thumbelina, the A1 Mini",
+  "nozzle": "0.4 mm stainless steel, standard flow (read from Studio's Printer Parts, 16:57:50 UTC)",
+  "ams": "AMS lite: A1 dark-blue PLA, A3 black PLA (mapped), A4 PETG, A2 empty",
+  "state": "idle; last job 'Mounting Plate' (2 h 51 min 51 s, 67.27 g, layer 541/541) at 100 % Finished; nozzle 22 C, bed 21 C; Assistant (HMS) tab empty",
+  "why_this_printer": "the same printer, process and filament as rings A and B, so that only the sizes change"
+ },
+ "h2d": "checked read-only at 17:43:50 UTC: printing someone's 'Part 1', 79 %, layer 391/457, about 38 min left, with warning 0700-8010 'The AMS assist motor is overloaded' on screen; nothing clicked",
+ "source": {
+  "model": "ot2-overhead-camera/lid-mount/exports/c_cs_spacer_sizes_C-H.stl",
+  "generated_by": "ot2-overhead-camera/lid-mount/cad/c_cs_spacer.py at 867559d",
+  "stl_md5": "cde895d65e6c5d65d9828aae01b3a032",
+  "rings": {
+   "C": {
+    "notches": 3,
+    "male_clear_mm": 0.06,
+    "female_clear_mm": 0.38
+   },
+   "D": {
+    "notches": 4,
+    "male_clear_mm": 0.0,
+    "female_clear_mm": 0.42
+   },
+   "E": {
+    "notches": 5,
+    "male_clear_mm": -0.06,
+    "female_clear_mm": 0.46
+   },
+   "F": {
+    "notches": 6,
+    "male_clear_mm": -0.12,
+    "female_clear_mm": 0.5
+   },
+   "G": {
+    "notches": 7,
+    "male_clear_mm": -0.18,
+    "female_clear_mm": 0.54
+   },
+   "H": {
+    "notches": 8,
+    "male_clear_mm": -0.24,
+    "female_clear_mm": 0.58
+   }
+  },
+  "layout": "one STL, six bodies on a 40 mm grid: C D E along the front row, F G H behind; Studio centred it (ring centres at x 50/90/130, y 70 front and 110 back)"
+ },
+ "presets": {
+  "machine": "Bambu Lab A1 mini 0.4 nozzle",
+  "process": "0.08mm High Quality @BBL A1M, wall loops 2 -> 6",
+  "filament": "Bambu PLA Basic @BBL A1M (black, AMS A3 by Synchronize AMS Filament Information; 'Add unused AMS filaments' unticked)",
+  "plate": "Textured PEI Plate (65 C)"
+ },
+ "slice_checks": {
+  "slicer_warnings": "none shown",
+  "layers": 111,
+  "filament_g": 10.63,
+  "filament_m": 3.51,
+  "model_time": "1h 28m 4s",
+  "total_time": "1h 34m 40s",
+  "plate_gcode_md5": "b38feb9e27220ea29137f97e394c9ae3",
+  "start_gcode": "Bambu's A1 mini start G-code (M140 S65, M620 S0A, G29.2)",
+  "settings_in_gcode": "layer_height 0.08, initial 0.2, wall_loops 6, enable_circle_compensation 0, enable_arc_fitting 1, seam aligned, classic walls, no supports, xy/elephant-foot compensation 0, same as 23 Oct",
+  "thread_check": "slice/c_cs_gcode_check.py: every ring within 0.007 mm of the model at the 5th/50th/95th percentile of the radius (gcode_check.json); notch counts 3-8 found where the letters put them"
+ },
+ "sliced_file": {
+  "path": "sliced/c_cs_spacer_sizes_C-H_A1mini.gcode.3mf",
+  "provenance": "Studio's File > Export > Export plate sliced file at 17:32 UTC; DesignerUserId blanked in 3D/3dmodel.model, nothing else changed",
+  "plate_1_gcode_md5": "b38feb9e27220ea29137f97e394c9ae3"
+ },
+ "plate_check": {
+  "rule": "sgbaird 2026-10-23: frame first, read the plate, wait at least 90 s; an occupied plate needs a person",
+  "first_frame": "20261028T165704Z_a1mini_camera_studio.jpg, posted 16:58:04 UTC",
+  "read": "not clear: a large black print standing on the front-left half of the textured plate, tree supports along its foot",
+  "later_frames": "every 3-4 min from 17:13 to 18:54:24 UTC (35 frames); the plate region never changed (mean absolute difference 1.5-1.9 of 255 against the first frame)",
+  "replies": [],
+  "notes": "the request was made in the tracking comment, which the run can only edit, and GitHub sends no notification for an edit"
+ },
+ "timeline_utc": {
+  "request": "2026-10-28T16:43:53Z",
+  "run_started": "2026-10-28T16:45:23Z (tracking comment created)",
+  "recording_started": "2026-10-28T16:52:32Z",
+  "login": "2026-10-28T16:55:10Z to 16:56:10Z (cut from the video); the first authenticator code worked",
+  "device_page_a1mini": "2026-10-28T16:56:20Z",
+  "first_frame": "2026-10-28T16:57:04Z",
+  "nozzle_read": "2026-10-28T16:57:50Z",
+  "frame_posted": "2026-10-28T16:58:04Z",
+  "rings_modelled": "2026-10-28T17:06Z (commit 867559d at 17:08)",
+  "sliced": "2026-10-28T17:12Z",
+  "hms_tab_empty": "2026-10-28T17:15:53Z",
+  "sliced_plate_exported": "2026-10-28T17:32:10Z",
+  "h2d_checked": "2026-10-28T17:43:50Z",
+  "last_frame": "2026-10-28T18:54:24Z",
+  "cutoff": "2026-10-28T18:55:20Z",
+  "signed_out": "2026-10-28T18:55:45Z, then Studio closed and ~/.config/BambuStudio deleted"
+ },
+ "recording": "recording/c_cs_spacer_sizes_A1mini_2026-10-28.mp4 (8.5 min, chapters in recording/*_chapters.txt, cut by bambu/studio/cut_recording.py from recording/cut_plan.json; the login and the sign-out are cut and the camera pane's upper corners are blurred; not on YouTube: claude-print.yml has no YouTube token)",
+ "github_token": "re-minted with scripts/refresh_github_app_token.py at 17:32, 18:19 and 19:10 UTC; works in claude-print.yml, which has id-token: write"
+}
