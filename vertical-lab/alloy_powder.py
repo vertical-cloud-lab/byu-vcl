@@ -491,7 +491,7 @@ def movie():
     st["cap"] = ("Onto the holder first. Turned over and shaken, the vial sifts the powder through its mesh cap, an even "
                  "layer with no pressing (as A-Lab's UR5e does it), a little more than the 0.5 mm well holds.")
     status(Arm="sifting onto the XRD holder")
-    sift(zt, 6.0, 3.0, RB.both(drain(LEVEL0, LEVEL0 - 1.5), lambda uu: set_heap(sc, uu)), gap=26.0)
+    sift(zt, 6.0, 3.0, RB.both(drain(LEVEL0, LEVEL0 - 1.5), lambda uu: set_heap(sc, uu)), gap=36.0)
     st["cap"] = "A dusting on the SEM stub's carbon tab, from the same vial."
     status(Arm="dusting the SEM stub")
     sift(wpt("p_puck", (0, 0, RP.PREP["puck_h"] + 2.8)), 3.0, 1.2, RB.both(
@@ -583,7 +583,8 @@ def movie():
     grip(0.62)
     rb.release(stage_g)
     lin(along(T_on, -230), 1.0)
-    park(1.4, cam=CAM_XRD)
+    go(T_wait, secs=1.6, cam=CAM_XRDL)            # straight back out of the doorway and left, round the housings
+    park(1.8, cam=CAM_XRD)
     sc.gmat["p_zbh"] = sc.gmat["p_zbh"].copy()
     status(Arm="parked", XRD="loaded")
     st["cap"] = ("Door shut and locked; only then does the interlock let the tube switch on, and the X-ray lamp on top "
@@ -744,7 +745,7 @@ def movie():
     # the optical bench, in cutaway
     m = RP.ms_geometry()
     bench = mw(m["cell"])
-    CAM_BENCH = [tuple(bench + (-120, -760, 330)), tuple(bench + (-200, 0, -10)), (0, 0, 1)]
+    CAM_BENCH = [tuple(bench + (-560, -620, 560)), tuple(bench + (-170, 10, -30)), (0, 0, 1)]
     o = RP.MSO
     blabels = [("He-Ne laser 632.8 nm", tuple(mw((-490.0, m["cy"], m["bz"] + 18))), (0.10, 0.22)),
                ("lens", tuple(mw((o["lens_x"], m["cy"], m["bz"] + o["lens_r"]))), (0.26, 0.14)),
@@ -755,7 +756,7 @@ def movie():
     st["cap"] = ("Cover on, air on. The instrument drawn see-through: the laser's beam is expanded, then focused so it "
                  "converges through the cell onto the focal-plane detector. First the background, with the cell "
                  "empty.")
-    step(2.0, RB.both(ms.move({"~body": (0.0, 1.0), "beam": (0.0, 1.0)}), clock("Mastersizer", 0.0, 0.5)), hold=0.4,
+    step(2.0, RB.both(ms.move({"shell": (1.0, 0.0), "beam": (0.0, 1.0)}), clock("Mastersizer", 0.0, 0.5)), hold=0.4,
          cam=CAM_BENCH, labels=blabels)
 
     def grains(on):
@@ -787,7 +788,7 @@ def movie():
 
     def done_ms(uu):
         ms.move({"beam": (1.0, 0.0), "scat_large": (1.0, 0.0), "scat_small": (1.0, 0.0), "arcs_lit": (1.0, 0.0),
-                 "~body": (1.0, 0.0), "powder": (0.3, 0.0)})(uu)
+                 "shell": (0.0, 1.0), "powder": (0.3, 0.0)})(uu)
         panel("psd", 1.0, 0.0)(uu)
         grains(uu < 0.4)
     step(1.4, done_ms, hold=0.2)
@@ -822,7 +823,9 @@ def movie():
                  "ring rises through it to take the cup.")
     status(XRF="hatch open, port open")
     RING_UP = -60.0 / RP.XRF_G["sink"]          # the ring 60 mm up through the open port, to meet the cup
-    step(1.8, RB.both(xrf.move({"hatch": (0.0, 1.0), "port": (0.0, 1.0)}),
+    # round 9 (Sterling, 27:13): the hood and the body go see-through HERE, before the cup moves, and stay so until the
+    # measurement is over, so the whole internal path (hatch, lift ring, down into the chamber) is seen
+    step(1.8, RB.both(xrf.move({"hatch": (0.0, 1.0), "port": (0.0, 1.0), "~lid": (0.0, 1.0), "~body": (0.0, 1.0)}),
                       lambda uu: xrf.move({"ring": (0.0, RING_UP)})(max(0.0, uu * 2 - 1))), hold=0.3, cam=CAM_XRF,
          labels=[("Bruker S2 PUMA Series 2", tuple(fw((0, gx["yf"], gx["H"] + 40))), (0.20, 0.22)),
                  ("hatch (assumed)", tuple(fw((0, gx["yf"] + 120, gx["H"] + 10))), (0.56, 0.16)),
@@ -854,9 +857,12 @@ def movie():
     st["cap"] = ("Hatch shut. The ring lowers the cup into the chamber, film down over the tube and the detector, and the "
                  "port shuts; the chamber fills with helium, which keeps loose powder in place and lets the light "
                  "elements' X-rays through.")
-    step(1.2, xrf.move({"hatch": (1.0, 0.0)}), hold=0.1)
-    step(2.4, xrf.move({"ring": (RING_UP, 1.0), "~lid": (0.0, 1.0), "~body": (0.0, 1.0)}), hold=0.1)
-    step(0.8, xrf.move({"port": (1.0, 0.0)}), hold=0.1)
+    CAM_XRFI = [tuple(port_w + (760, -1050, 120)), tuple(port_w + (0, 0, -110)), (0, 0, 1)]
+    step(1.2, xrf.move({"hatch": (1.0, 0.0)}), hold=0.1, cam=CAM_XRFI)
+    step(3.6, xrf.move({"ring": (RING_UP, 1.0)}), hold=0.6,
+         labels=[("lift ring, taking the cup down", tuple(port_w + (0, 0, -60)), (0.20, 0.30)),
+                 ("X-ray tube, detector", tuple(port_w + (0, 0, -230)), (0.62, 0.80))])
+    step(0.8, xrf.move({"port": (1.0, 0.0)}), hold=0.8)
     st["cap"] = ("The beam, drawn see-through: up to 50 kV from the tube; each element answers with its own X-ray lines, "
                  "which the silicon drift detector counts.")
     status(XRF="measuring, He")

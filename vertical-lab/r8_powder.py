@@ -254,7 +254,25 @@ def mastersizer() -> I.Instrument:
         q = (cx + rng.uniform(-6, 6), cy + rng.uniform(-14, 14), bz + rng.uniform(-30, 30))
         gr.add(f"grain {k}", cq.Workplane("XY").sphere(d).translate(q), "powder")
     inst.meshes["readout"] = _dummy((0, 0, I.MS3000["H"]))
+    # Round 9 (Sterling: "lots of overlapping transparency that obscures the laser"): no ghosted body. The bench's outer
+    # covers (shell, end cap, deck, lids) are their own piece "shell" that fades OUT, leaving the optics bare on a base
+    # plate; the cell cassette is cut in half along the beam so its pocket and windows show.
+    body = inst.pieces["body"]
+    cover_names = {"bench", "end cap", "deck", "plinth", "bay joints", "cassette plate", "AERO lettering", "green LED",
+                   "cassette fitting", "bay LED", "MASTERSIZER lettering", "lid ring", "cell lid", "lid handle",
+                   "swoosh", "status light"}
+    shell = _piece(inst, "shell")
+    keep = []
+    for pt in body.parts:
+        (shell.parts if pt.name in cover_names else keep).append(pt)
+    body.parts = keep
+    for pt in body.parts:
+        if pt.name == "cell":
+            pt.shape = pt.shape.cut(box(g["xl"], g["yf"], 0, g["xp"], cy, I.MS3000["H"]).val())
+    body.add("bench floor", box(g["xl"] + 8, g["yf"] + 30, I.MS3000["feet"], g["xp"], g["yb"] - 8,
+                                I.MS3000["feet"] + 10), "inst_dark")
     j = inst.joints
+    j["shell"] = Joint("fade", v0=1.0)
     fall = tuple((0.0, 0.0, -6.0 * (i % 2)) for i in range(17))
     j.update({"arcs_lit": Joint("fade"), "scat_large": Joint("fade"), "scat_small": Joint("fade"),
               "grains": Joint("path", path=fall), "readout": Joint("fade")})
@@ -268,7 +286,7 @@ def mastersizer() -> I.Instrument:
     inst.actions = acts[:4] + [
         ("Air on; the bench drawn see-through. The background is measured with the cell empty: the laser's beam "
          "expanded, then focused by the lens so it converges through the cell onto the focal-plane detector.", 2.6,
-         {"~body": (0.0, 1.0), "beam": (0.0, 1.0)}),
+         {"shell": (1.0, 0.0), "beam": (0.0, 1.0)}),
         ("The tray vibrates the powder into the venturi; the air disperses it and carries it through the cell. The "
          "obscuration, the share of the beam the particles take out, rises.", 2.6,
          {"tray": (0.0, 1.0), "powder": (1.0, 0.0), "grains": (0.0, 1.0)}),
@@ -279,7 +297,7 @@ def mastersizer() -> I.Instrument:
          "3.5 mm, in seconds; the extractor draws the powder away.", 3.4, {"readout": (0.0, 1.0)}),
         ("Done: the beam off, the bench closed.", 1.4,
          {"beam": (1.0, 0.0), "scat_large": (1.0, 0.0), "scat_small": (1.0, 0.0), "arcs_lit": (1.0, 0.0),
-          "~body": (1.0, 0.0), "readout": (1.0, 0.0)}),
+          "shell": (0.0, 1.0), "readout": (1.0, 0.0)}),
     ]
     inst.labels = [("Aero S dry disperser", (g["ax"] - I.MS3000["aero_l"] / 2, g["ay"], I.MS3000["aero_h"] - 80),
                     (0.12, 0.30)), ("cell cassette", (g["fx"], g["yf"], I.MS3000["deck"] - 60), (0.42, 0.10)),
