@@ -10,15 +10,16 @@ not yet sieved (the sieved jars are chapter 3's since round 8).
 
 | | |
 |---|---|
-| Clip | 197.4 s at 10 fps (round 6), 35.1 s of it the lab's own footage, the melt at 2×; [GIF](../out/alloy_atomize.gif) (560 × 315, 4 fps, 5.8 MB: over the 4.9 MB budget), [MP4](../out/mp4/alloy_atomize.mp4), [still](../out/alloy_atomize_still.png), sub-steps in [`alloy_atomize.json`](../out/alloy_atomize.json), powder sums in [`alloy_atomize_powder.json`](../out/alloy_atomize_powder.json) |
+| Clip | 223.5 s at 6 fps (round 9: 1,341 frames, 0 in collision), 32.0 s of it the lab's own footage, the melt at 2×; [GIF](../out/alloy_atomize.gif) (512 × 288, 3 fps, 4.7 MB), [MP4](../out/mp4/alloy_atomize.mp4), [still](../out/alloy_atomize_still.png), sub-steps in [`alloy_atomize.json`](../out/alloy_atomize.json), powder sums in [`alloy_atomize_powder.json`](../out/alloy_atomize_powder.json) |
 | Starts | MiR250 1 at the VLM's opening (`animate.AMR_XY`), the four Al cups in `charge.carrier()`'s four pockets at `animate.BUFFER_LOCAL` on the cabinet: where chapter 1 ends. MiR250 2 waits in the aisle at (−5275, −2450) (round 9) |
 | Ends | MiR250 at world (−3487, −2230), yaw 0: square to the container's axis, 41 mm off the view port's flange, the hand-off chapter 3 (sieve, print) starts from. The container stands in a cradle at MiR-local (280, 10), a low ring on the cabinet top, seat z = 783 mm (round 6; it was 933 on a post); the loading tong hangs in its sleeve on the cabinet's −x end; the arm is parked. While the arm works the MiR stands further out: 220 mm (y = −2450) for the lid and the cups, because at y = −2230 the lid knob falls inside the UR10e's unreachable cylinder over its base; 420 mm (y = −2650) for the container, because closer the forearm comes down through the MiR's own cabinet to the handle, 275 mm off the floor. It drives onto the hand-off spot at the end. MiR250 2 is back in the aisle at (−5275, −2450), its arm parked (round 9) |
-| Scene | `line.py`'s layout as `alloy_workflow.py` builds it, the rePowder loaded part by part from `repowder/model.py` (the merged copy `animate.Lab` adds is hidden) |
+| Scene | `setup_lab.py`'s two-Shuttle floor (round 8, `alloy_atomize_floor.py`), the rePowder loaded part by part from `repowder/model.py` (the merged copy `animate.Lab` adds is hidden) |
 | Ported | `Pool`, `Powder`, `Particles`, `stream`, `film`, `shake`, the heat colours, the argon volumes, `load_machine`/`set_cut`: #124's rePowder training animations (`atomizer-training/viz3d/steps.py` and `scene.py`, branch `claude/issue-124-20261003-0335`) |
 | Footage | [`out/footage/`](../out/footage/): the excerpts and photos used, small, with a [manifest](../out/footage/manifest.json) of credits |
 
 ```bash
-xvfb-run -a python3 alloy_atomize.py        # render (round 6: 1,623 frames, 40 min on a very busy 4-core runner), then splice (15 min)
+xvfb-run -a python3 alloy_atomize.py        # render (round 9 at 6 fps: 1,149 frames, 20 min on the shared runner), then splice (15 min)
+ATOMIZE_LITE=1 PREVIEW=1 xvfb-run -a python3 alloy_atomize.py   # development: the rePowder and both units only, no lab floor (minutes)
 python3 alloy_atomize.py splice             # only cut the footage into the last render (3-13 min, mostly the GIF)
 python3 alloy_atomize.py keep               # copy the excerpts PLAN uses from /tmp/footage (FOOTAGE=...) to out/footage/
 python3 alloy_atomize.py powder             # print the powder sums
@@ -64,8 +65,8 @@ at all. So arm 1's pull is still round 6's estimate: 100 N, 200 N for a stiff la
 **Why arm 2 doesn't swing the lid.** The lid hinges on the left (the model's hinge; see "Still open"), so it opens
 towards MiR250 2. Held by arm 2 at the knob, the open lid meets arm 2's forearm from 95° up, with either elbow (FCL on
 the meshes: elbow up, the forearm is in the lid from 95° to 110°; elbow down, it starts in the chamber's top plate), and
-the first audit-lite caught it (below). Arm 2 can't stand anywhere else: right of MiR250 1, the latch is 1.28 m from
-its shoulder, at the UR10e's limit, and MiR250 1 has to stand where it is for the cups. So arm 1 swings the lid both
+the first audit-lite caught it (below). Arm 2 can't stand anywhere else: right of MiR250 1, the latch would be about 1.28 m
+from its shoulder (estimate), at the UR10e's limit, and MiR250 1 has to stand where it is for the cups. So arm 1 swings the lid both
 ways, as in round 8, and the second pair of hands goes where the force is: on the lid while the latch is worked.
 
 **The lid's weight**, as arm 1 starts to swing it: the model's lid is 810 cm³ of 5 mm steel, 6.4 kg, with its centre of
@@ -118,7 +119,12 @@ the weakest case, and the one only the second unit has.
   instead, its forearm was in the open lid: the first audit-lite (rePowder and both units only, `ATOMIZE_LITE=1`,
   2026-11-06 05:33) found 13 of 920 frames, all of them arm 2's forearm in the lid, at the top of the swing and on the
   moves through it. So arm 1 swings the lid (above), and arm 2 only ever presses.
-- **The audit.** Pending: the render's own audit (`ARM_AUDIT_RENDER=1`, the whole floor) runs as this is written.
+- **The audit.** The render's own (`ARM_AUDIT_RENDER=1`, on the whole two-Shuttle floor, both arms): **0 of 920 frames in collision** ([`out/collisions/alloy_atomize.json`](../out/collisions/alloy_atomize.json); the other 421 frames are holds, where nothing moves). Before it, a pure-geometry check of the poses where the two arms come closest (every IK branch of arm 1 at the latch along the whole pull and push, against arm 2 on the lid; arm 1's lid swing against arm 2 parked and its MiR250, cabinet and plate) found nothing either.
+
+**Rendered (2026-11-06, 05:43-06:18 UTC):** 223.5 s at 6 fps, 1341 frames: 191.5 s of 3-D (1149 frames, 13 s more than
+round 8's for the second unit's moves) and 32.0 s of the lab's footage in the same 8 pieces. The 3-D part took 20 min on
+the shared runner, the splice 15. The splice's GIF was 6.3 MB, so `out/alloy_atomize.gif` is remade from the MP4 at
+3 fps and 512 × 288 with `scene.write_gif` (4.7 MB), as in round 8.
 
 #### Still open
 
@@ -129,6 +135,9 @@ the weakest case, and the one only the second unit has.
   (x = −4935 to −3225), MiR250 2's body 60 mm off the chamber's front. Check the room on the real floor.
 - **The container's flange clamp still opens on its own** (step 5). With two arms, arm 2 could open its wing screw while
   arm 1 holds the container by its handle, so the container can't drop when the clamp lets go. Not done.
+- **Two shots could be better.** From the right (`CAM_LATCH2`), arm 1's gripper hides much of the latch's lever as
+  it takes the tab, and arm 2's hand on the lid is out of the frame; coming back to the lid for the closing, arm 2's
+  forearm crosses `CAM_TWO` for about a second. Neither needs more than a camera change and a re-render.
 - **The hinge** is still the model's (on the left; round 6 thinks the footage puts it at the back). The repowder-pr
   stream is refining the model against the training videos on its own branch; this chapter uses `repowder/model.py` as
   it is here.
