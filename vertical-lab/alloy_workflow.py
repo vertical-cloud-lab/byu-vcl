@@ -1763,7 +1763,9 @@ def _movie(B):
     # shown as a cutaway: the chamber's back half (r8_test's "chamber_cut") without its front half and door, so the
     # specimen, the grips, the pull rods and the AVE 2 in front are all in plain view and opaque.
     CAM_GRIP = [tuple(rig_w(ins, (900, -1300, 1300))), tuple(rig_w(ins, (0, -60, 870))), (0, 0, 1)]
-    CAM_TEST = [tuple(rig_w(ins, (-760, -1350, 1650))), tuple(rig_w(ins, (40, 0, 860))), (0, 0, 1)]
+    # the parked arm stands in front of the frame, so the test is seen from the right, low, past the right column's
+    # front face and the arm: the cut face, the specimen, both grips, the pull rods and the AVE 2 beyond them
+    CAM_TEST = [tuple(rig_w(ins, (1300, -600, 1150))), tuple(rig_w(ins, (0, 20, 870))), (0, 0, 1)]
     cut_on = {"chamber": (1.0, 0.0), "chamber_cut": (0.0, 1.0), "~chamber_door": (0.0, 1.0 / 0.82)}
     cut_off = {"chamber": (0.0, 1.0), "chamber_cut": (1.0, 0.0), "~chamber_door": (1.0 / 0.82, 0.0)}
     st["cap"] = (f"West along the aisle to the Instron 68FM-100 (shown at {DRIVE_SHOWN:.0f}x). Its 3119-608 chamber "
@@ -1809,7 +1811,7 @@ def _movie(B):
         grip(0.0, 0.4)
         rb.release(f"{ins.prefix}body")
         lin(back(lvl(p_ins, ins_in), 260.0), 1.0 * fastr, labels=[])
-        park(1.4 * fastr, away=ins_axis)
+        park(1.4 * fastr)
         st["cap"] = ("The door shuts and the crosshead brings the upper grip down until it takes the specimen's upper "
                      "end; the AVE 2 reads the strain through the door's heated window, so nothing is clipped on by "
                      "hand." if not hot else st["cap"])
@@ -1895,7 +1897,7 @@ def _movie(B):
                 grip(0.0, 0.3)
                 rb.release(amr.cab)
                 lin(up_(A.down(ch, spin=sp), 70.0), 0.5)
-        park(1.2, away=ins_axis, extra=ins.move(door_shut))
+        park(1.2, extra=ins.move(door_shut))
 
     test_one(TEST, hot=False)
     test_one(HOT, hot=True)

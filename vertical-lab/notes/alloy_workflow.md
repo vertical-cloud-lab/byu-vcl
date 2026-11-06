@@ -7,7 +7,12 @@ automated EDM process? Do this, and also open a new PR focused on that"; "The an
 Can't see the tensile test happening. Can't tell if there are collisions. Something weird with that heated box"; and
 round 8's open item, six joint moves ending in a pose already in collision, the chapter never audited frame by frame.
 
-RENDER_TABLE
+| | |
+|---|---|
+| MP4, 1280 x 720, 6 fps, 385 s, 2,308 frames (rendered 04:37-05:32 UTC, only tray F populated, Shuttles clad; 0 joint moves ending in a pose in collision, against round 8's six) | [`out/mp4/alloy_workflow.mp4`](../out/mp4/alloy_workflow.mp4) (20.1 MB) |
+| GIF, 380 px, 2 fps | [`out/alloy_workflow.gif`](../out/alloy_workflow.gif) (4.7 MB) |
+| `PREVIEW=1` stills: the lance, the cut with the vertical bars, a vertical bar picked and racked, the specimen loaded, the pull as a cutaway | [`out/alloy_workflow_preview.png`](../out/alloy_workflow_preview.png) |
+| The separate PR: the three orientations on the EDM | branch `claude/issue-303-edm-orientations`: `edm_orientations.py`, `notes/edm_orientations.md`, `out/edm_orientations.png` |
 
 ### What changed
 
