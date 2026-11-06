@@ -1,7 +1,8 @@
 """Chapter 2 of the alloy route, atomize: the MiR250 brings the four charged 5N Al cups from the VLM to the rePowder,
 the UR10e undoes the lid's draw latch, opens the lid, and sets the cups on the crucible's floor round the sealing rod
 with a loading tong; the machine melts and atomizes them; the arm takes the powder container off onto the MiR (#303,
-rounds 4 to 6). Clips and photos of the lab's own runs are cut in where the animation reaches the same moment: the
+rounds 4 to 6). Round 9: a second MiR250 + UR10e comes for the lid, and its arm holds the lid down on its seal while
+the first opens and closes the latch; both MiR250s carry a 131 kg ballast plate (``BALLAST``, ``stability``). Clips and photos of the lab's own runs are cut in where the animation reaches the same moment: the
 charge melting (at 2x), the stream on the plate, the powder as it comes out, not yet sieved (round 8: the sieved jars
 are chapter 3's, after its sieving). Round 6 also sums the MiR's tipping
 and sliding for the pull on the latch (``stability``), the tong's clearances down the bore (``tong_clearance``), and
@@ -124,7 +125,8 @@ END_POSE = (A.REPOWDER_AT[0] + 288.0, -2230.0)     # the hand-off to chapter 3 (
 # Round 9 (Sterling, PR #318, 2026-11-05 22:56: "You're probably going to need both mobile robots (i.e., both arms) to
 # be able to do the chamber opening and such on the atomizer"): the second MiR250 + UR10e waits in the aisle west of
 # the rePowder and comes in for the lid. It stands left of the first (100 mm between their bodies), 200 mm nearer the
-# machine: its arm holds the lid down while the first arm works the latch, and swings the lid open and shut.
+# machine: its arm holds the lid down while the first arm opens and closes the latch. The first arm swings the lid: it
+# opens to the left, towards the second, whose forearm it meets from 95 deg up (notes/alloy_atomize.md, round 9).
 B_HOME = (A.REPOWDER_AT[0] - 1500.0, -2450.0)       # in the aisle, west of the first's spot
 B_AT = (A.REPOWDER_AT[0] - 760.0, -2190.0)       # its body 60 mm off the chamber's front, 100 mm off the first's
 LITE = bool(os.environ.get("ATOMIZE_LITE"))       # development only: the rePowder and the MiRs, no lab floor
