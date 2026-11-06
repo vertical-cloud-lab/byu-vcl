@@ -745,7 +745,8 @@ def movie():
     # the optical bench, in cutaway
     m = RP.ms_geometry()
     bench = mw(m["cell"])
-    CAM_BENCH = [tuple(bench + (-560, -620, 560)), tuple(bench + (-170, 10, -30)), (0, 0, 1)]
+    CAM_BENCH = [tuple(mw((-380.0, m["cy"] - 1000.0, m["bz"] + 1000.0))), tuple(mw((-190.0, m["cy"], m["bz"] - 20.0))),
+                 (0, 0, 1)]       # high and in front, from the laser's end: the whole axis, the cell and the detector
     o = RP.MSO
     blabels = [("He-Ne laser 632.8 nm", tuple(mw((-490.0, m["cy"], m["bz"] + 18))), (0.10, 0.22)),
                ("lens", tuple(mw((o["lens_x"], m["cy"], m["bz"] + o["lens_r"]))), (0.26, 0.14)),
@@ -857,7 +858,7 @@ def movie():
     st["cap"] = ("Hatch shut. The ring lowers the cup into the chamber, film down over the tube and the detector, and the "
                  "port shuts; the chamber fills with helium, which keeps loose powder in place and lets the light "
                  "elements' X-rays through.")
-    CAM_XRFI = [tuple(port_w + (760, -1050, 120)), tuple(port_w + (0, 0, -110)), (0, 0, 1)]
+    CAM_XRFI = [tuple(port_w + (1150, -850, 230)), tuple(port_w + (0, 0, -110)), (0, 0, 1)]
     step(1.2, xrf.move({"hatch": (1.0, 0.0)}), hold=0.1, cam=CAM_XRFI)
     step(3.6, xrf.move({"ring": (RING_UP, 1.0)}), hold=0.6,
          labels=[("lift ring, taking the cup down", tuple(port_w + (0, 0, -60)), (0.20, 0.30)),
