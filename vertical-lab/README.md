@@ -52,13 +52,15 @@ background that's still doing things") plays the same loop closer and slower:
   - Most of the size is the two pans, which change every pixel for about 115 frames.
   - It isn't lossy-compressed. With gifsicle's `--lossy`, the last frame drifted from the first where things had moved,
     so the loop would flicker.
-  - **Still parts are held still.** The MP4's noise changed nearly every pixel of every frame, so the GIF had to store
-    each frame whole: 47.5 MB. The GIF now keeps a pixel from the frame before wherever no channel has moved by more
-    than 6 levels of 255 (`ORG_STICKY`), which gives 40.0 MB. A first pass finds where the held pixels end up, and
+  - **Still parts are held still.** The MP4's noise flickers pixels in the parts that hold still, so each GIF frame
+    stored more than what moved: 47.5 MB. The GIF now keeps a pixel from the frame before wherever no channel has moved
+    by more than 6 levels of 255 (`ORG_STICKY`), which gives 40.0 MB. A first pass finds where the held pixels end up, and
     the first frame starts from there. The loop's seam is then cleaner than with nothing held: 1,706 px differ by
     more than 16 levels, against 2,837.
-- **The arm audit** of this render was still running when the GIF was pushed; the next commit adds it
-  ([`out/collisions/org_vertical_lab.json`](out/collisions/org_vertical_lab.json)).
+- **The arm audit: 0 of 955 checked frames in collision**
+  ([`out/collisions/org_vertical_lab.json`](out/collisions/org_vertical_lab.json)). It ran in its own pass, beside the
+  render-only one. Both passes made the same moves: 962 frames, the test on frames 477–885, the forearm's highest point
+  1593 mm.
   - Round 2's first cut parked the MiR right of the cell's bench, and its forearm went through the enclosure's side
     panel and the Shuttle's corner in 64 frames, every one of them at the cell. Round 2's own render was 0 of 696.
 - **Left out of this shot:** Shuttle 2 with its trays G–M, the pallet racking round the room, and the second MiR unit.

@@ -785,11 +785,11 @@ def gif(width=GIF_W, lossy=0, colors=128, sticky=int(os.environ.get("ORG_STICKY"
     clip, --lossy=40 gave 3.3 MB with 38,771 px of the last frame off the first; lossless, 4.3 MB and 5,819 px, nearly
     all by a shade (the MP4's own noise). Round 2's loop is 702 frames: 192 colours gave 8.7 MB, 128 give 7.7 MB with
     no banding to see at the README's size.
-    Round 3's is 962 frames of closer views, and gave 47.5 MB as it was, because the MP4's noise changes nearly every
-    pixel of every frame, so no frame could reuse the one before. `sticky` keeps a pixel from the frame before wherever
-    no channel has changed by more than that many levels (of 255), so the parts that hold still are the same bytes from
-    frame to frame, and the GIF stores only what moved. Nothing that moves is held: a move changes a pixel by far more."""
-    import numpy as np
+    Round 3's is 962 frames of closer views: 47.5 MB as it was. The MP4's noise flickers pixels in the parts that hold
+    still, so each frame stored more than what moved. `sticky` keeps a pixel from the frame before wherever no channel
+    has changed by more than that many levels (of 255), so those parts are the same bytes from frame to frame: 40.0 MB
+    at 6. Most of what is left is the two pans, which change every pixel for about 115 frames. Motion isn't held back:
+    something moving across a pixel changes it by far more than 6 levels."""
     from PIL import Image
 
     from scene import OUT
