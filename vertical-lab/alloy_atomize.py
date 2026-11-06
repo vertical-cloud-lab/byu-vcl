@@ -1488,6 +1488,8 @@ def movie():
     CAM_CRADLE = cam((1900, -2500, 1750), (150, -560, 760))
     CAM_PAIR = cam((-800, -4300, 1500), (-280, -600, 520))   # round 9: both units from the front, their ballast plates
     CAM_TWO = cam((640, -1000, 1700), (40, -90, 1390))       # round 9: both arms at the lid and the latch, front right
+    CAM_LATCH2 = cam((760, 40, 1520), (100, -60, 1400))      # round 9: the latch from the right, arm 2's hand above it
+                                                             # (from the front, arm 1's forearm hides the latch)
     rbB = mir_b.rb
 
     show_g(arm="parked", mir="at the VLM's opening", armB="parked", mirB="waiting in the aisle",
@@ -1562,7 +1564,7 @@ def movie():
                      (0.12, 0.20)),
                     ("arm 1", tuple(pre_tab[:3, 3] + (0.0, -60.0, 120.0)), (0.80, 0.20)),
                     ("locking bolt, back", tuple((Lw @ np.r_[10.0, 65.0, 58.0, 1.0])[:3]), (0.74, 0.62))])
-    sc.step(f"2/{n}", cap, 0.7, rb.line_to(g_tab), hold=0.05)
+    sc.step(f"2/{n}", cap, 0.7, rb.line_to(g_tab), hold=0.05, cam_to=CAM_LATCH2)
     sc.step(f"2/{n}", cap, 0.4, rb.grip_to(GRIP_TAB), hold=0.05)
     rb.events.append((sc.n, "grasp", g("latch_lever"), g("latch_loop")))
     tab_out = follow(rb, [tab_grasp(d) for d in np.linspace(0.0, LATCH_OPEN, 12)])
@@ -1578,7 +1580,7 @@ def movie():
     sc.step(f"2/{n}", cap, 0.3, rb.grip_to(GRIP_TAB_OPEN), hold=0.05)
     rb.events.append((sc.n, "release", g("latch_lever"), g("latch_loop")))
     q_tab_open = rb.q.copy()
-    sc.step(f"2/{n}", cap, 0.6, rb.line_to(tab_grasp(LATCH_OPEN) @ T((0, 0, -110))), hold=0.05)
+    sc.step(f"2/{n}", cap, 0.6, rb.line_to(tab_grasp(LATCH_OPEN) @ T((0, 0, -110))), hold=0.05, cam_to=CAM_TWO)
     # arm 2 lets go of the top and opens the lid by its knob
     knob = np.array([(90 + 131) / 2, -20.0, 1470.0])          # the lid's knob (model.py hood_knob), model frame
     grasp_k = knob_grasp()
@@ -1841,7 +1843,7 @@ def movie():
            "and the lever goes over centre, drawing the lid down onto its seal. A person does this, and the opening, "
            "in a few seconds with two hands; it is the one place an arm pushes hard on the machine.")
     show_g(arm="lid latch")
-    sc.step(f"2/{n}", cap, 0.6, rb.line_to(g_tab_o), hold=0.05)
+    sc.step(f"2/{n}", cap, 0.6, rb.line_to(g_tab_o), hold=0.05, cam_to=CAM_LATCH2)
     sc.step(f"2/{n}", cap, 0.4, rb.grip_to(GRIP_TAB), hold=0.05)
     rb.events.append((sc.n, "grasp", g("latch_lever"), g("latch_loop")))
     tab_in = follow(rb, [tab_grasp(d) for d in np.linspace(LATCH_OPEN, 0.0, 12)])
@@ -1852,7 +1854,7 @@ def movie():
     sc.step(f"2/{n}", cap, 1.6, latch_shut, hold=0.2)
     sc.step(f"2/{n}", cap, 0.3, rb.grip_to(GRIP_TAB_OPEN), hold=0.05)
     rb.events.append((sc.n, "release", g("latch_lever"), g("latch_loop")))
-    sc.step(f"2/{n}", cap, 0.6, rb.line_to(pre_tab), hold=0.05)
+    sc.step(f"2/{n}", cap, 0.6, rb.line_to(pre_tab), hold=0.05, cam_to=CAM_TWO)
     sc.step(f"2/{n}", cap, 0.5, rbB.line_to(pre_press), hold=0.05)
     rbB.events.append((sc.n, "release", g("hood"), None))
     sc.step(f"2/{n}", cap, 1.2, rb.joint_to(PARK), hold=0.05)
