@@ -10,22 +10,22 @@
   "cabinet_x"
  ],
  "params": {
-  "r1": 45.6,
-  "ext": 187.6,
-  "h1": 53.1,
-  "h2": 128.1,
-  "latch_x": 71.8,
-  "latch_len": 156.8,
-  "cabinet_x": 193.1
+  "r1": 41.6,
+  "ext": 185.0,
+  "h1": 50.0,
+  "h2": 125.8,
+  "latch_x": 71.4,
+  "latch_len": 155.1,
+  "cabinet_x": 189.0
  },
  "start": {
-  "r1": 65.0,
-  "ext": 205.0,
-  "h1": 75.0,
-  "h2": 125.0,
-  "latch_x": 70.0,
-  "latch_len": 170.0,
-  "cabinet_x": 305.0
+  "r1": 45.0,
+  "ext": 190.0,
+  "h1": 55.0,
+  "h2": 126.0,
+  "latch_x": 72.0,
+  "latch_len": 156.0,
+  "cabinet_x": 192.0
  },
  "views": {
   "t4_0308_open_lid": {
@@ -36,27 +36,27 @@
    ],
    "holdout": false,
    "camera": [
-    1.9546210633938612,
-    -0.2522346645395178,
-    0.2745526838194345,
-    -155.61011570825798,
-    1272.1311547655707,
-    943.9873031259557,
-    6.347904120706412,
-    0.0001745630542090057
+    1.9298464526515553,
+    -0.25171240287982116,
+    0.2850121892822572,
+    -159.15801729979813,
+    1286.183140427362,
+    963.0340238826069,
+    6.4692894681622395,
+    0.00014288947414766
    ],
-   "focal_px": 571.3,
-   "k1": 0.0002,
-   "rms_px_camera_only": 33.71,
-   "rms_px": 14.63,
+   "focal_px": 645.0,
+   "k1": 0.0001,
+   "rms_px_camera_only": 14.28,
+   "rms_px": 14.96,
    "residual_px": {
-    "latch lever top": 1.5,
-    "latch lug": 18.6,
-    "bolt cabinet": 16.8,
+    "latch lever top": 3.4,
+    "latch lug": 16.1,
+    "bolt cabinet": 11.6,
     "deck front right": 8.9,
-    "lid foot left": 7.0,
-    "lid foot back right": 24.7,
-    "lid foot front right": 11.5
+    "lid foot left": 8.9,
+    "lid foot back right": 29.2,
+    "lid foot front right": 12.1
    }
   },
   "t4_0341_front_closed": {
@@ -67,31 +67,31 @@
    ],
    "holdout": false,
    "camera": [
-    1.746744913072613,
-    -0.3054818402000505,
-    0.32771232543709966,
-    -298.12498982280454,
-    1317.4840168581582,
-    741.6752796572658,
-    6.347904120706412,
-    0.0001745630542090057
+    1.7761473390226215,
+    -0.2933929461464462,
+    0.29711182463837854,
+    -281.87112306514393,
+    1306.580140006883,
+    827.7931874727034,
+    6.4692894681622395,
+    0.00014288947414766
    ],
-   "focal_px": 571.3,
-   "k1": 0.0002,
-   "rms_px_camera_only": 29.86,
-   "rms_px": 20.07,
+   "focal_px": 645.0,
+   "k1": 0.0001,
+   "rms_px_camera_only": 19.94,
+   "rms_px": 19.74,
    "residual_px": {
-    "lid foot left": 9.4,
-    "knob ball": 40.9,
-    "lid foot front mid": 31.3,
-    "keeper top": 12.1,
-    "latch lever top": 5.2,
-    "latch lug": 4.5,
-    "bolt cabinet": 8.9,
-    "latch foot": 32.9,
-    "lid foot front right": 17.1,
-    "lid shoulder left": 5.1,
-    "lid top left": 3.7
+    "lid foot left": 11.6,
+    "knob ball": 34.5,
+    "lid foot front mid": 32.9,
+    "keeper top": 13.8,
+    "latch lever top": 5.6,
+    "latch lug": 4.8,
+    "bolt cabinet": 9.5,
+    "latch foot": 35.4,
+    "lid foot front right": 15.1,
+    "lid shoulder left": 6.8,
+    "lid top left": 2.9
    }
   },
   "t4_0365_from_left": {
@@ -102,25 +102,25 @@
    ],
    "holdout": false,
    "camera": [
-    0.5344187482698818,
-    -1.1237388353341342,
-    1.6055761115542333,
-    -91.87991806496487,
-    980.8368080232098,
-    436.5467336533929,
-    6.347904120706412,
-    0.0001745630542090057
+    1.3336836705705823,
+    -1.1698544379303255,
+    0.9498985544980567,
+    -149.26747394810496,
+    1046.6208169262684,
+    1120.0465526008165,
+    6.4692894681622395,
+    0.00014288947414766
    ],
-   "focal_px": 571.3,
-   "k1": 0.0002,
-   "rms_px_camera_only": 38.29,
-   "rms_px": 38.99,
+   "focal_px": 645.0,
+   "k1": 0.0001,
+   "rms_px_camera_only": 27.58,
+   "rms_px": 27.17,
    "residual_px": {
-    "hinge barrel mid": 78.4,
-    "lid foot front mid": 35.6,
-    "door top back": 11.2,
-    "door top front": 7.3,
-    "door bottom mid": 4.2
+    "hinge barrel mid": 6.1,
+    "door top back": 9.7,
+    "door top front": 5.2,
+    "door bottom mid": 1.8,
+    "viewport centre": 59.4
    }
   },
   "t4_0113_open_wide": {
@@ -131,28 +131,28 @@
    ],
    "holdout": true,
    "camera": [
-    1.9941105357302802,
-    -0.21116665295824516,
-    0.2041985797494427,
-    -47.66187362634621,
-    1216.40114875374,
-    1000.7340669265283,
-    6.1259565841101375,
+    1.9899605585420292,
+    -0.20365307937207267,
+    0.19332864159939372,
+    -41.145971551407044,
+    1217.5981100274687,
+    985.7759549456575,
+    6.105720670579286,
     0.0
    ],
-   "focal_px": 457.6,
+   "focal_px": 448.4,
    "k1": 0.0,
-   "rms_px_camera_only": 21.74,
-   "rms_px": 9.79,
+   "rms_px_camera_only": 9.85,
+   "rms_px": 9.1,
    "residual_px": {
-    "latch lever top": 8.5,
-    "latch lug": 16.1,
-    "bolt cabinet": 6.8,
-    "latch foot": 2.6,
-    "deck front right": 6.0,
-    "lid foot left": 5.9,
-    "lid foot back right": 3.2,
-    "lid foot front right": 17.4
+    "latch lever top": 8.1,
+    "latch lug": 15.6,
+    "bolt cabinet": 5.6,
+    "latch foot": 3.3,
+    "deck front right": 4.6,
+    "lid foot left": 4.7,
+    "lid foot back right": 3.8,
+    "lid foot front right": 15.9
    }
   }
  }

@@ -84,10 +84,10 @@ BODY_R, BODY_TOP = 135.0, 1345.0    # "BLUE POWER" furnace body
 Z_CR = 1219.2                        # crucible datum: where the straight bore meets the floor cone
 RIM = Z_CR + BORE_STRAIGHT
 CRUCIBLE_BASE = Z_CR - FLOOR_CONE_H - CRUCIBLE_BOTTOM
-HOOD_Z0, HOOD_H1, HOOD_H2 = BODY_TOP, 75.0, 125.0
+HOOD_Z0, HOOD_H1, HOOD_H2 = BODY_TOP, 55.0, 126.0
 # the lid: a cast shell, round at the front left, square over the housing's flat on the right, hinged at the BACK
 # (T4 1:53, 2:28, 5:08: open, it stands up behind the furnace). Fitted with register.py.
-LID = dict(r=140.0, r1=65.0, ext=205.0, h1=75.0, h2=125.0, wall=5.0, hinge_off=14.0, latch_x=70.0, latch_len=170.0, cabinet_x=305.0)
+LID = dict(r=140.0, r1=45.0, ext=190.0, h1=55.0, h2=126.0, wall=5.0, hinge_off=14.0, latch_x=72.0, latch_len=156.0, cabinet_x=192.0)
 HOOD_R0, HOOD_R1 = LID["r"], LID["r1"]
 LID_OPEN_DEG, LATCH_OPEN_DEG, BOLT_TRAVEL = 105.0, 95.0, 70.0
 LID_PARTS = ("hood", "hood_window", "hood_hot_label", "hood_knob", "hood_hinge_leaf", "latch_keeper")

@@ -52,6 +52,7 @@ def anchors(p: dict, pose: dict | None = None) -> dict:
         "lid back top": lid((0, r1, zt)),
         "hinge barrel left": np.array([-75.0, r + p["hinge_off"], BT + 6.0]),
         "hinge barrel right": np.array([75.0, r + p["hinge_off"], BT + 6.0]),
+        "viewport centre": tuple(M.VIEWPORT + M.VIEWPORT_N * 30.0),
         "door top back": np.array([M.CH_X[0], M.DOOR_OPEN_W / 2, M.DOOR_Z[1]]),
         "door top front": np.array([M.CH_X[0], -M.DOOR_OPEN_W / 2, M.DOOR_Z[1]]),
         "door bottom mid": np.array([M.CH_X[0], 0.0, M.DOOR_Z[0]]),
