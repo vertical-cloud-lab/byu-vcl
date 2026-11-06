@@ -1125,7 +1125,7 @@ def _movie(B):
     CAM_ACO = [tuple(aco_bp + (-1700, -2300, 1500)), tuple(aco_bp + (100, -520, -120)), (0, 0, 1)]
     CAM_ACO_IN = [tuple(aco_bp + (-1250, -900, 850)), tuple(aco_bp + (30, -120, 10)), (0, 0, 1)]
     # round 9: the lance at work, seen through the open door from the front-left and above, the gripper outside
-    CAM_LANCE = [tuple(aco_bp + (650, -1300, 200)), tuple(aco_bp + (-20, 0, -10)), (0, 0, 1)]
+    CAM_LANCE = [tuple(aco_bp + (650, -1300, 300)), tuple(aco_bp + (-20, 0, -10)), (0, 0, 1)]
     sc.cam = list(CAM_WIDE)
     status(sc, Arm="UR10e on MiR250, at the Aconity", Plate="in the Aconity MIDI", Bar="", EDM="", Instron="")
     lbl = [("Aconity MIDI metal printer", (line.LINE["aconity"], WH.Y_FACE_N + 300, 2400), (0.80, 0.16)),
@@ -1147,7 +1147,7 @@ def _movie(B):
         lance_c = D_.lworld(M.HOLSTER)
         CAM_DEP = [tuple(lance_c + (700, -2500, 1250)), tuple(lance_c + (-250, -150, -280)), (0, 0, 1)]
         CAM_BOX = [tuple(box_c + (950, -1750, 850)), tuple(box_c + (-60, -60, -90)), (0, 0, 1)]
-        CAM_CLAMP = [tuple(box_c + (-300, -650, 560)), tuple(box_c + (0, 10, 10)), (0, 0, 1)]
+        CAM_CLAMP = [tuple(box_c + (250, -700, 300)), tuple(box_c + (0, 10, 10)), (0, 0, 1)]
         p_hold = D_.lworld(M.HOLSTER)
         box_x = box_c[0] - 78.0 - 146.0
         l_dir = np.array([0, math.cos(math.radians(LANCE_DOWN)), -math.sin(math.radians(LANCE_DOWN))])
@@ -1765,7 +1765,7 @@ def _movie(B):
     CAM_GRIP = [tuple(rig_w(ins, (900, -1300, 1300))), tuple(rig_w(ins, (0, -60, 870))), (0, 0, 1)]
     # the parked arm stands in front of the frame, so the test is seen from the right, low, past the right column's
     # front face and the arm: the cut face, the specimen, both grips, the pull rods and the AVE 2 beyond them
-    CAM_TEST = [tuple(rig_w(ins, (1300, -600, 1150))), tuple(rig_w(ins, (0, 20, 870))), (0, 0, 1)]
+    CAM_TEST = [tuple(rig_w(ins, (1300, -900, 1150))), tuple(rig_w(ins, (0, 10, 870))), (0, 0, 1)]
     cut_on = {"chamber": (1.0, 0.0), "chamber_cut": (0.0, 1.0), "~chamber_door": (0.0, 1.0 / 0.82)}
     cut_off = {"chamber": (0.0, 1.0), "chamber_cut": (1.0, 0.0), "~chamber_door": (1.0 / 0.82, 0.0)}
     st["cap"] = (f"West along the aisle to the Instron 68FM-100 (shown at {DRIVE_SHOWN:.0f}x). Its 3119-608 chamber "
