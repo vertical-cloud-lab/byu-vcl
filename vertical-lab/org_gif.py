@@ -20,6 +20,17 @@ starts:
 6. tray B goes back up while the MiR drives back to the cell, and the arm leaves the empty vial in the cell's pocket
    for the next sample.
 
+Round 3 (PR #329, Sterling, 2026-11-06: "the GIF can be larger ... more like 50 MB, so you don't have to restrict
+yourself so much in terms of time. Also, you should probably zoom in to see what the robot's doing, while still in view
+of the CubXL in the background that's still doing things"). The same loop, closer and slower:
+- the camera stands about 3-4 m from the arm instead of 8 m, and follows the MiR: one framing at the cell ("cell"),
+  with the VLM's bay at its right, and one at the opening ("open"), panned between them as the MiR drives, at the
+  MiR's own pace (drive's `cams`). From the opening, tray A's CubXL stays in view after it goes back to R2: over and
+  between tray B's instruments, and through the empty bay once tray B has gone back up;
+- the CubXL's test runs for TEST_SECS of the clip (TestClock) instead of 5 s, from tray A's return to its slot through
+  tray B's visit and the drive back, so it is still running behind the arm; it ends before the loop does;
+- the arm's moves take the 9:09 clip's times again (ARM_S), and the GIF plays at 1.5x instead of 2.5x.
+
 The last frame is the first one again: the MiR at the cell with its arm parked, a vial in the cell's pocket, trays A and
 B in their slots, a tested vial in the CubXL, the extractor at tray B's slot. What differs is too small to see: the vial
 in the cell's pocket is empty at the end and holds the 25 mg sample at the start, and the rack's vial on tray B holds
@@ -43,10 +54,10 @@ Drawn differently for this shot only (all drawing choices):
 - The bay's back shutter is drawn at 12 % opacity instead of the usual 35 %, so tray A's slot shows through the empty
   bay while its test starts there.
 
-    VIZ3D_FPS=10 xvfb-run -a python3 org_gif.py views    # the candidate views, as stills -> /tmp/org_gif_views.png
-    PREVIEW=1 xvfb-run -a python3 org_gif.py             # the last frame of each step -> /tmp/preview_<NAME>.png
-    ARM_AUDIT=1 xvfb-run -a python3 org_gif.py           # no render: every frame's arm checked -> out/collisions/
-    VIZ3D_FPS=10 xvfb-run -a python3 org_gif.py          # -> out/mp4/<NAME>.mp4, out/<NAME>.json
+    VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py views    # the candidate views, as stills -> /tmp/org_gif_views.png
+    PREVIEW=1 VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py   # the last frame of each step -> /tmp/preview_<NAME>.png
+    ARM_AUDIT=1 VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py # no render: every frame's arm checked -> out/collisions/
+    VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py          # -> out/mp4/<NAME>.mp4, out/<NAME>.json
     python3 org_gif.py gif                               # -> out/<NAME>.gif (SPEED x), its still, mp4/<NAME>_readme.mp4
 """
 from __future__ import annotations
@@ -62,24 +73,39 @@ import numpy as np
 
 NAME = "org_vertical_lab"
 TITLE = "In a vertical lab, equipment is brought to the operator"
-SPEED = 2.5          # the GIF plays the clip at this many times its modelled speed, and says so (10 fps x 2.5: 4 cs)
+SPEED = 1.5          # the GIF plays the clip at this many times its modelled speed, and says so (12 fps x 1.5: 18 fps,
+                     # frame delays of 6 and 5 cs in turn)
 GIF_W = 1280         # px; the org README shows it about 830 px wide, so this stays sharp on a 2x display
 TEXT = 1.45          # the overlay's text, against the scenes' 720p sizes: the README shows the GIF at about 0.65x
 S1_TRAYS = "ABCDEFJ"     # Shuttle 1's trays (setup_lab.TRAYS): the only ones loaded
 
+
+
+def _cam(f, az, el, d, va):
+    """A view: the camera `d` mm from focal point `f`, `az` degrees right of straight on (from -y) and `el` up."""
+    a, e = math.radians(az), math.radians(el)
+    return [(f[0] + d * math.sin(a) * math.cos(e), f[1] - d * math.cos(a) * math.cos(e), f[2] + d * math.sin(e)),
+            tuple(f), (0, 0, 1), va]
+
+
 # the views: camera position, focal point, up (mm; Shuttle 1's centre at the origin, its opening facing -y), view angle.
+# Round 3's two: "cell", the MiR at the cell with the bay at the frame's right (tray A at the opening, or its slot R2
+# through the empty bay), about 3.6 m across at the arm; "open", the MiR at the opening, about 3 m across, tray A's
+# slot over and between tray B's instruments. Rounds 1 and 2 used "f2" and "c4", 8-9 m across.
 CAMS = {
+    "cell": _cam((-1150.0, -1500.0, 1080.0), 0.0, 18.0, 4000.0, 27.0),
+    "open": _cam((-120.0, -1460.0, 1010.0), 11.0, 19.0, 3300.0, 27.0),
     "c4": [(1300, -8600, 3400), (-650, -900, 1750), (0, 0, 1), 34.0],
     "c1": [(1300, -8600, 3200), (-650, -900, 1500), (0, 0, 1), 34.0],       # the VLM's roof cut off
     "c2": [(600, -8200, 2900), (-700, -900, 1450), (0, 0, 1), 36.0],
     "c3": [(2000, -8400, 3500), (-500, -800, 1500), (0, 0, 1), 34.0],
     "f2": [(2200, -8000, 3000), (100, -700, 1700), (0, 0, 1), 33.0],       # round 1's: Shuttle 1 alone
 }
-CAM = "c4"
+CAM = "cell"
 # leader-label boxes, as fractions of the frame (the overlay draws a line from each to its point in the lab)
 # (a box left of the middle has its left edge at fx, one right of it its right edge; fy is its middle)
-LBL = {"arm": (0.03, 0.93), "cell": (0.02, 0.08), "vlm": (0.985, 0.07), "A": (0.985, 0.47), "run": (0.985, 0.47),
-       "B": (0.985, 0.47)}
+LBL = {"arm": (0.03, 0.93), "cell": (0.02, 0.08), "vlm": (0.985, 0.07), "A": (0.985, 0.09), "run": (0.985, 0.09),
+       "B": (0.985, 0.70)}
 # The camera stands behind the south row (its fronts at y = -6238), so the row's overhead utilities (its cable tray at
 # 3.2 m with its network cable, hangers, drops and junction boxes, the DED's argon run, the fume hood's duct;
 # setup_lab.utilities) and its floor machines (SOUTH_OUT) would stand between it and Shuttle 1. For this shot they are
@@ -98,9 +124,12 @@ CELL_SEAT = (-1560.0, -1442.0)   # the cell's vial pocket: on its bench, 120 mm 
 M2_LOCAL = (300.0, -150.0)       # the MiR's second pocket (cabinet frame): BUFFER_LOCAL's mirror image across the arm
 TARGET_DX = 2 * 1330.0           # the VLM's camera target, from x = -1330 (setup_lab.TARGET_AT) to +1330
 GRASP_Z = 50.0                   # the gripper takes a vial 50 mm up (animate.workflow)
-ARM_S = (1.2, 0.7, 0.4, 0.6)     # a pick or a place: joint move, line in, grip, line out (s)
+ARM_S = (1.6, 0.9, 0.5, 0.8)     # a pick or a place: joint move, line in, grip, line out (s): the 9:09 clip's
+                                 # (animate.pick/place); round 2 ran them at 1.2/0.7/0.4/0.6
 HOLD = 0.1
 MIR_V = 1500.0                   # mm/s at most, with the MiR250's 0.3 m/s^2 ramps (props.ramp_secs)
+TEST_SECS = 34.0                 # the CubXL's test, minutes long, in this many seconds of the clip (a time-lapse): from
+                                 # tray A's return to R2 to the arm at the cell again, before its last park
 
 
 def _load_s1() -> dict:
@@ -491,11 +520,12 @@ def store(L, k):
     yield 0.3, None
 
 
-def drive(L, x1, follow):
+def drive(L, x1, follow, cams=None):
     """The docked unit along its own x to x1, from rest to rest at the MiR250's 0.3 m/s^2 (props.ramp_frac);
-    `follow` is a label's anchor (a list), moved with it."""
+    `follow` is a label's anchor (a list), moved with it. With `cams` (k0, k1), the camera goes from view k0 to view k1
+    at the MiR's own pace: the share of the way it has driven is the share of the way between the two views."""
     import props as P
-    u, rb = L.units[0], L.robot
+    u, rb, sc = L.units[0], L.robot, L.sc
     x0, y0, hd = u.pose
     at, ps, s = P.s_curve(x0, y0, x1, y0)
     d0 = [follow[0] - x0, follow[1] - y0]
@@ -506,11 +536,48 @@ def drive(L, x1, follow):
             x, y, h = at(float(np.interp(f * s[-1], s, ps)))
             u.set((x, y, h))
             follow[0], follow[1] = x + d0[0], y + d0[1]
+            if cams is not None:
+                cam_between(sc, cams[0], cams[1], f)
             if rb.held is not None:
                 rb.set()
         return up
     yield max(1.4, P.ramp_secs(s[-1], MIR_V)), fac
     yield HOLD, None
+
+
+def cam_between(sc, k0, k1, f):
+    """The camera f of the way from view k0 to view k1 (position, focal point and view angle, each in a line)."""
+    a, b = CAMS[k0], CAMS[k1]
+    sc.cam = [tuple(float(p + (q - p) * f) for p, q in zip(pa, pb)) for pa, pb in zip(a[:3], b[:3])]
+    sc.view_angle = float(a[3] + (b[3] - a[3]) * f)
+
+
+class TestClock:
+    """The CubXL's test as a frame hook (Scene.frame_hooks): from start() on it runs with the frames, TEST_SECS for the
+    whole test, whatever the tracks are doing, so it carries on behind the arm across steps; then it stays done."""
+
+    def __init__(self, cub, test, on_state):
+        self.cub, self.test, self.on_state = cub, test, on_state
+        self.va, self.vb = test.v("start"), test.v("end")
+        self.n0 = None
+        self.n1 = None             # the frame it ends on, for the log
+
+    def start(self, sc):
+        self.n0 = sc.n
+
+    def __call__(self, sc):
+        import cubxl_rig
+        from scene import FPS
+        if self.n0 is None:
+            return
+        u = min(1.0, max(0.0, (sc.n - self.n0) / (TEST_SECS * FPS)))
+        if u >= 1.0 and self.n1 is not None:
+            return
+        if u >= 1.0:
+            self.n1 = sc.n
+        s = cubxl_rig.state_at(self.test, self.va + (self.vb - self.va) * u)
+        self.cub.pose(s)
+        self.on_state(s)
 
 
 def movie():
@@ -529,6 +596,7 @@ def movie():
     rb, cab = L.robot, L.amr_group
     q = IL.POWDER_TEST
     set_cam(sc, os.environ.get("ORG_CAM", CAM))
+    cams = ("cell", "open") if os.environ.get("ORG_CAM", CAM) == "cell" else None   # a still camera if ORG_CAM is set
     sc.intro = 0.6
     rack = L.eq_groups["B"][0]
     rack_xy = A.LOADS["B"][0][1:]
@@ -552,8 +620,10 @@ def movie():
     arm_at = [CELL_X, W.DOCK_N - 300.0, 650.0]
     lbl_arm = ("the operator: a MiR250 + UR10e", arm_at, LBL["arm"])
     b = __import__("setup_lab").SIEVE_BENCH
-    lbl_cell = ("outside the VLM: the sieving cell", (b["x"] - 250.0, -1562.0, b["h"] + b["encl_h"]), LBL["cell"])
-    lbl_vlm = ("Kardex Shuttle XP 500:\nevery tray docked to power", (1000.0, -1540.0, 3500.0), LBL["vlm"])
+    lbl_cell = ("outside the VLM: the sieving cell", (b["x"] - 250.0, -1562.0, b["h"] + b["encl_h"] - 250.0),
+                LBL["cell"])
+    # the VLM's label points at its opening's header: the roof is out of these close views
+    lbl_vlm = ("Kardex Shuttle XP 500:\nevery tray docked to power", (0.0, -1590.0, V.Z_OPEN_TOP + 45.0), LBL["vlm"])
     at_cell = [lbl_arm, lbl_cell, lbl_vlm]
 
     def lbl_at(k, text, xyz_tray, box):
@@ -561,6 +631,8 @@ def movie():
 
     def on_state(s):
         vials["sample"].set(ul=s["vial"])
+    clock = TestClock(cub, test, on_state)
+    sc.frame_hooks.insert(0, clock)
 
     def labels(*ls):
         sc.sticky_labels = list(ls)
@@ -574,7 +646,7 @@ def movie():
         yield from park(rb)
         yield from call(lambda: (phase("It drives over. The VLM has already brought the tray it needs to the "
                                        "opening."), labels(lbl_arm, lbl_vlm)))
-        yield from drive(L, 0.0, arm_at)
+        yield from drive(L, 0.0, arm_at, cams)
     run(sc, cell_pick(), fetch(L, "A"))
     # ------------------------------------------------------------------ 2. tray A: the vials swapped
     lbl_A = lbl_at("A", "tray A at the opening:\nthe CubXL, a corrosion test", (31.0, -49.0, 455.0), LBL["A"])
@@ -593,20 +665,21 @@ def movie():
     run(sc, at_A())
     # ------------------------------------------------------------------ 3. tray A back, its test running; tray B down
     phase("Tray A goes back into storage, still powered, and runs the test there. Tray B comes down.")
-    labels(lbl_vlm)
+    labels(lbl_arm)
     run(sc, store(L, "A"))
     lbl_run = ("tray A in its slot: the test\nruns there (time-lapse)", tuple(cub.deck_world(200.0, 150.0, 200.0)),
                LBL["run"])
-    labels(lbl_vlm, lbl_run)
+    labels(lbl_arm, lbl_run)
     vials["sample"].set(ul=0.0)
-    run(sc, fetch(L, "B"), seq(wait(0.2), iter([(5.0, lambda: cub.play(test, "start", "end", on_state))])))
+    clock.start(sc)                       # the test runs from here, behind everything else, for TEST_SECS
+    run(sc, fetch(L, "B"))
     # ------------------------------------------------------------------ 4. tray B: the tested vial in, an empty one out
     lbl_B = lbl_at("B", "tray B at the opening:\npowder dosing, its vial rack",
                    np.array(L.rack_seats[A.RACK_SEAT]) + (*rack_xy, V.T_FLOOR + 90.0), LBL["B"])
 
     def at_B():
-        yield from call(lambda: (phase("Tray B: the tested sample goes into storage, and an empty vial comes out."),
-                                 labels(lbl_arm, lbl_B)))
+        yield from call(lambda: (phase("Tray B: the tested sample goes into storage, and an empty vial comes out, "
+                                       "while tray A's test runs behind it."), labels(lbl_arm, lbl_B, lbl_run)))
         yield from pick(rb, A.down(rack_seat()), A.down(rack_seat() + (0, 0, 110)), "vial", A.GRIP_VIAL)
         yield from place(rb, A.down(on_cab(L.buffer_seat)), A.down(on_cab(L.buffer_seat) + (0, 0, 120)), cab)
         yield from pick(rb, A.down(on_cab(L.m2_seat), spin=0.0), A.down(on_cab(L.m2_seat) + (0, 0, 120), spin=0.0),
@@ -618,17 +691,22 @@ def movie():
 
     def back():
         yield from call(lambda: (phase("The arm takes the empty vial back to the instrument for its next sample."),
-                                 labels(lbl_arm, lbl_vlm)))
-        yield from drive(L, CELL_X, arm_at)
-        yield from call(lambda: labels(*at_cell))
+                                 labels(lbl_arm, lbl_run)))
+        yield from drive(L, CELL_X, arm_at, cams[::-1] if cams else None)
+        yield from call(lambda: labels(lbl_arm, lbl_cell, lbl_run))
         yield from pick(rb, A.down(on_cab(L.buffer_seat)), A.down(on_cab(L.buffer_seat) + (0, 0, 120)), "vial",
                         A.GRIP_VIAL)
         yield from place(rb, A.down(p_cell), A.down(p_cell + (0, 0, 120)), "cell_pocket")
+        yield from call(lambda: (labels(*at_cell), print(f"test: frames {clock.n0}-{clock.n1}, last park from "
+                                                         f"{sc.n}", flush=True)))
         yield from park(rb)
         yield 0.4, None
     run(sc, back(), store(L, "B"))
     out = sc.save()
-    print(f"highest forearm/wrist point {rb.max_z_world:.0f} mm", flush=True)
+    print(f"highest forearm/wrist point {rb.max_z_world:.0f} mm; {sc.n} frames; the test ran frames {clock.n0}-"
+          f"{clock.n1}", flush=True)
+    if clock.n1 is None:
+        print("warning: the CubXL's test had not ended by the last frame, so the loop jumps", file=sys.stderr)
     meta_path = OUT / f"{NAME}.json"
     if meta_path.exists() and not os.environ.get("ARM_AUDIT") and not os.environ.get("PREVIEW"):
         meta = json.loads(meta_path.read_text())
