@@ -491,7 +491,7 @@ def movie():
     st["cap"] = ("Onto the holder first. Turned over and shaken, the vial sifts the powder through its mesh cap, an even "
                  "layer with no pressing (as A-Lab's UR5e does it), a little more than the 0.5 mm well holds.")
     status(Arm="sifting onto the XRD holder")
-    sift(zt, 6.0, 3.0, RB.both(drain(LEVEL0, LEVEL0 - 1.5), lambda uu: set_heap(sc, uu)), gap=36.0)
+    sift(zt, 6.0, 3.0, RB.both(drain(LEVEL0, LEVEL0 - 1.5), lambda uu: set_heap(sc, uu)), gap=48.0)
     st["cap"] = "A dusting on the SEM stub's carbon tab, from the same vial."
     status(Arm="dusting the SEM stub")
     sift(wpt("p_puck", (0, 0, RP.PREP["puck_h"] + 2.8)), 3.0, 1.2, RB.both(
@@ -583,7 +583,7 @@ def movie():
     grip(0.62)
     rb.release(stage_g)
     lin(along(T_on, -230), 1.0)
-    go(T_wait, secs=1.6, cam=CAM_XRDL)            # straight back out of the doorway and left, round the housings
+    go(sh(T_v, (0, 0, 220)), secs=2.2, cam=CAM_XRDL)   # back out of the doorway and up over the MiR, clear of the housings
     park(1.8, cam=CAM_XRD)
     sc.gmat["p_zbh"] = sc.gmat["p_zbh"].copy()
     status(Arm="parked", XRD="loaded")
