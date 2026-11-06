@@ -57,6 +57,9 @@ def font(size, bold=False):
 # round 4's review fixes, among them every MiR250 drive at its published 0.3 m/s^2 and the 68SC-2's bar at 3 x 1 mm.
 R2 = "5a39245"
 FIXES = "a34367a"
+# Round 9's two stacked PRs, figures only: #328 (claude/issue-303-edm-orientations), #327 (claude/issue-303-repowder-model)
+EDM = "193778b"
+REPOWDER = "4885eb7"
 
 # ===================================================================================================== the chapters
 # Each chapter: a key, its title (also the YouTube chapter line), the card's lines, and its parts in order. A part is
@@ -127,7 +130,10 @@ CHAPTERS = [
     dict(key="alloy5", title="Alloy route 5/7: depowder, cut, heat treat, tensile at room and elevated temperature",
          card=["The build depowdered, the bars cut off in the wire EDM and caught, rinsed in IPA, heat treated as "
                "tensile specimens, then pulled with automatic loading, at room temperature and in a hot chamber."],
-         parts=[("mp4", "dag/route_dag_ch5.mp4", None), ("mp4", "alloy_workflow.mp4", None)]),
+         parts=[("mp4", "dag/route_dag_ch5.mp4", None), ("mp4", "alloy_workflow.mp4", None),
+                ("gitstill", EDM, "vertical-lab/out/edm_orientations.png", 14.0, "Bars printed flat, vertical and at "
+                 "45 deg, each cut off with the plate on edge from one fixture, each with its own catch (PR #328)",
+                 "Three build orientations through the wire EDM (PR #328)")]),
     dict(key="alloy6", title="Alloy route 6/7: sample prep: section, mount, grind and polish",
          card=["Sections cut from the build, hot-mounted in conductive compound for the SEM, or set in a steel mount "
                "for indentation, then ground and polished with every paper and cloth change shown. Automated "
@@ -182,6 +188,9 @@ CHAPTERS = [
                "checked with FCL against itself, the MiR and everything visible, and planned round obstacles."],
          parts=[("still", "register/before_after.jpg", 16.0, "Each row: a frame of the real machine, the model "
                  "before, the model after refitting", "Fitted to footage of the real machines"),
+                ("gitstill", REPOWDER, "vertical-lab/out/repowder_refine/before_after.jpg", 12.0, "The rePowder "
+                 "refitted to the lab's training video T4: the lid hinges at the back, the latch and bolt are joints "
+                 "(PR #327; chapter 2 still has the old lid)", "The rePowder, refitted to the lab's video (PR #327)"),
                 ("still", "interference_sheet.png", 11.0, "MuJoCo interference check: what was left over after "
                  "the fixes", "MuJoCo interference check"),
                 ("still", "collisions/vlm_workflow_before_after.png", 9.0, "The arm before and after the collision "
@@ -473,6 +482,10 @@ def plan() -> list[dict]:
                 src = from_git(part[1], part[2])
                 rows.append(dict(chapter=ch["key"], kind="mp4", src=src, seconds=duration(src) if src else 0,
                                  label=part[3], missing=src is None, git=f"{part[1]}:{part[2]}"))
+            elif kind == "gitstill":                    # a figure from a stacked PR's branch, at a pinned commit
+                src = from_git(part[1], part[2])
+                rows.append(dict(chapter=ch["key"], kind="still", src=src, seconds=part[3], caption=part[4],
+                                 label=part[5], missing=src is None, git=f"{part[1]}:{part[2]}"))
             elif kind == "footage":
                 src = OUT / part[1]
                 rows.append(dict(chapter=ch["key"], kind=kind, src=src, seconds=duration(src) if src.exists() else 0,
