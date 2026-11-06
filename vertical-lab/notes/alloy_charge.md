@@ -12,18 +12,40 @@ time, and this chapter is the two merged:
   `out/alloy_charge_vacuum.*`, [on YouTube](https://www.youtube.com/watch?v=UjGb47I3fy0)): the bore filled to where
   the plug is set, then the plug driven to flush on a set load in a Specac Atlas Autotouch 15T, under vacuum.
 
+## Round 9: the multi-doser is v5, with the balance underneath (PR #318, 2026-11-05 22:56)
+
+Sterling: "we have an updated version of the multi-doser ... (both vial dosing and charge cup dosing) ... you'll be
+putting the balance underneath." The doser is now powder-doser's chain carousel v5 ([`multidoser.md`](multidoser.md)):
+the A&D HR-202i stands under its dose point and the dose falls straight into the cup on the pan, weighed as it doses.
+So this chapter changed:
+
+- **No funnels, no fork, no stand, no second balance on a granite block.** Nothing is shared between powders: the
+  dose's path is the module's own auger, 153 mm of air and the cup. Round 8's funnel steps (2, 4, 6, 8) are gone.
+- **Each cup goes onto the balance in the doser.** The arm can't reach v5's pan itself (its frame posts leave 117 mm
+  for the 2F-85's 127-138 mm knuckles), so it sets the cup level on the fork of our **vessel shuttle**, outside a port
+  in the doser's -y panel. Our pusher slides the balance's -y side door back; the shuttle carries the cup in and sets
+  it on our **pedestal** on the pan (an 11 mm neck on v5's riser tube), the cup's rim at 282.5 mm, its 12.7 mm bore
+  centred under the 8 mm stream, 153 mm under the exit; the fork backs out and the door shuts.
+- **Dosed by weight in place**: our second pusher slides the top door back, the module indexes, the P16s lift the EC
+  to dock, it tilts 30°, and v5's `dose-to` turns the auger a quarter turn at a time, reading the balance after each
+  (the HR-202i's gauge counts up in steps). Then tilt back, park, top door shut, and the reading settles: the cup is
+  weighed where it was dosed, both times (after its alloying powder and after its top-up).
+- **Out again by the shuttle**, then the arm takes it from the fork to the rack (or on to the plug and the press).
+- The cup cradle the brief asked for is the pedestal: a cradle round the cup on v5's riser would put the cup's rim at
+  296.5 mm, over the side door opening's 291 mm top, so the cup could not go in or out through it.
+
 | Step | What happens | Shown |
 | --- | --- | --- |
-| 1 | Tray B comes down to the opening. It carries the vacuum press, an eight-cup charge rack, the HR-202i on a granite block, the multi-doser with its station rebuilt for cups, and a stand of four funnels | wide, then labelled |
-| 2 | The arm sets the Si funnel in the doser's fork. Its stem stops 4 mm over a cup's rim | the station |
-| 3 | The first 5N Al cup goes from the rack into the doser's cradle. The carousel indexes the Si module, docks, tilts and doses 3.92 g by auger turns. The cup goes into the HR-202i, which reads it, and back to the rack. Then the other three, faster | cup and funnel in half section; the balance |
-| 4 | The Si funnel goes back to the stand; the AlSi10Mg funnel takes the fork | the station |
-| 5 | The first Al cup again: topped up with 3.91 g of AlSi10Mg to the plug line, weighed, its plug set in the mouth at the rack, into the die's catch ring on the raised ejector pin, the punch on; shuttle in, pumped below 1 mbar, pressed flush at 3.2 t, vented with Ar; onto the MiR250's carrier. Then the other three, faster | half sections of the cup, the die and the press stroke |
-| 6 | The AlSi10Mg funnel back; the Ni funnel in | |
-| 7 | The first OFE Cu cup in full, briefer: 14.62 g of Ni, weighed. Then the other three | |
-| 8 | The Ni funnel back; the Cu funnel in | |
-| 9 | The first Cu cup topped up with Cu, worked out from its weighed Ni so it stays 10 wt % Ni, weighed, plugged, pressed, back on the rack. Then the other three. The Cu funnel goes back | |
-| 10 | Tray B goes back into storage. Four Al-10Si cups are on the MiR for the rePowder, where chapter 2 picks them up | the carrier |
+| 1 | Tray B comes down to the opening: the vacuum press, the eight-cup charge rack, the multi-doser v5 with the HR-202i in its base, our shuttle | wide, then labelled; the doser close |
+| 2 | The first 5N Al cup goes from the rack onto the shuttle's fork; the shuttle sets it on the pedestal; the Si module is indexed, docked, tilted and doses 3.92 g by weight; the reading settles; the shuttle brings it out and the arm puts it back in the rack. Then the other three, faster | cup in half section; the balance's gauge |
+| 3 | The first Al cup again: topped up with 3.91 g of AlSi10Mg to the plug line on the pan, weighed there, its plug set in the mouth at the rack, into the die's catch ring on the raised ejector pin, the punch on; shuttle in, pumped below 1 mbar, pressed flush at 3.2 t, vented with Ar; onto the MiR250's carrier. Then the other three, faster | half sections of the cup, the die and the press stroke |
+| 4 | The first OFE Cu cup in full, briefer: 14.62 g of Ni, weighed on the pan. Then the other three | |
+| 5 | The first Cu cup topped up with Cu, worked out from its weighed Ni so it stays 10 wt % Ni, weighed, plugged, pressed, back on the rack. Then the other three | |
+| 6 | Tray B goes back into storage. Four Al-10Si cups are on the MiR for the rePowder, where chapter 2 picks them up | the carrier |
+
+The sections below on the round-8 station ("Weighing: an A&D HR-202i, not a load cell" from "The balance can't go
+under the doser's outlet" on, and "One funnel per powder") describe what round 9 replaced; they stay as the record of
+why the funnels were there.
 
 **Not yet re-rendered for round 7** (the catch ring, the low carrier, the wrist camera, the rack approaches below).
 The round-7 render (`VIZ3D_FPS=10 CHARGE_FXAA=1 ARM_AUDIT_RENDER=1`, 0.8-1.5 s a frame on a shared runner) was

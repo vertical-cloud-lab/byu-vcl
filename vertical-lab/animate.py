@@ -41,15 +41,16 @@ REPOWDER_LBL = ("AMAZEMET rePowder atomizer", (REPOWDER_AT[0] + 250, REPOWDER_AT
 # with are at the front edge, and the vial seats are within the arm's reach from its parking spot (reach.py)
 LOADS = {
     "A": [("cubxl", -112.0, -114.5), ("ot2", 760.0, -50.0)],       # OT-2 10 mm forward of the tray's lines (round 7)
-    "B": [("rack", -250.0, -372.0), ("carousel", 250.0, -316.0)],
+    "B": [("rack", -250.0, -372.0), ("carousel", 150.0, 50.0)],      # round 9: v5, unturned, its -y side to the arm
     "C": [("h2d", -560.0, 0.0), ("a1mini", 360.0, 0.0)],
 }
 ROLE = {"A": "liquid handling", "B": "powder dosing", "C": "3D printing"}
 NAMES = {"ot2": "Opentrons OT-2", "cubxl": "CubXL liquid-handling gantry", "rack": "vial rack",
-         "carousel": "multi-doser: chain carousel v2, 13 powders", "h2d": "Bambu Lab H2D", "a1mini": "Bambu Lab A1 mini"}
+         "carousel": "multi-doser: chain carousel v5 on an HR-202i, 13 powders", "h2d": "Bambu Lab H2D",
+         "a1mini": "Bambu Lab A1 mini"}
 SOURCE = {"ot2": "Opentrons' own reference STEP", "cubxl": "the lab's model from #199",
           "rack": "a printed rack for the doser's 20 mL vials",
-          "carousel": "powder-doser PR #185's CAD, driven by its own kinematics",
+          "carousel": "powder-doser PR #185's v5 CAD at 353dae7, driven by its own kinematics",
           "h2d": "the lab's model from Bambu's spec", "a1mini": "the lab's model from Bambu's outline drawing"}
 HOME = {"A": "R2", "B": "R3", "C": "F1"}       # storage slot of each tray
 
@@ -122,7 +123,7 @@ class Lab:
                 if key == "carousel":
                     import carousel
                     self.carousel = carousel.Carousel(sc, g, prefix=g, highlight=self.highlight)
-                    sc.gmat[g] = T((x, y, V.T_FLOOR)) @ R((0, 0, 1), 90)
+                    sc.gmat[g] = T((x, y, V.T_FLOOR))         # v5 unturned: the balance's -y side door to the arm
                 elif key == "rack":
                     self._rack(g)
                     sc.gmat[g] = T((x, y, V.T_FLOOR))
@@ -446,6 +447,7 @@ def place(L: Lab, rb, step, cap, M_place, M_pre, new_parent, seconds=(1.6, 0.9, 
 
 
 GRIP_VIAL = 0.70               # 2F-85 closure with its pads 28 mm apart: the vial (ur_arm.gripper_fk)
+SET_U = 0.6                    # the shuttle's fork state at which the vessel's foot meets the pedestal (6 of its 10 mm)
 
 
 # ======================================================================================= chapters
@@ -562,19 +564,19 @@ def loading(data):
 
 
 def stream_points(L: Lab, t: float, on: float) -> np.ndarray:
-    """The dose stream from the auger's outlet to the vial, in the rig's frame: grains falling under gravity."""
+    """The dose stream from the auger's exit straight down to the vial on the pan, in the rig's frame: grains falling
+    under gravity (v5: the exit is on the hinge axis, over the pan's centre, at every tilt)."""
     import carousel as C
-    car = L.carousel
-    top = car.exit_point()
-    bottom_z = C.VIAL_Z + P.VIAL_FLOOR + L.powder_h + 2.0
+    top = L.carousel.exit_point()
+    bottom_z = C.seat_base_z("vial") + P.VIAL_FLOOR + L.powder_h + 2.0
     n = 40
     s = (np.arange(n) / n + t * 1.7) % 1.0
     s = s[s < on]
     if not len(s):
         return np.zeros((0, 3))
-    seat = C.vial_seat()
-    x = top[0] + (seat[0] - top[0]) * s ** 0.5
-    y = np.full_like(s, top[1]) + np.sin(np.arange(len(s)) * 2.3) * 1.2
+    k = np.arange(len(s))
+    x = top[0] + np.cos(k * 2.3) * 1.2
+    y = top[1] + np.sin(k * 2.3) * 1.2
     z = top[2] - (top[2] - bottom_z) * s ** 2
     return np.c_[x, y, z]
 
@@ -625,6 +627,12 @@ def workflow(data, lab=True):
         amr = "amr"
         cam_wide, cam_open = CAM_WIDE, CAM_OPEN
     rb, car = L.robot, L.carousel
+    import os
+    import scene as SC
+    if os.environ.get("ARM_AUDIT_RENDER") and not (SC.PREVIEW or SC.AUDIT):   # round 9: the audit in the render's pass
+        import collide
+        sc.auditor = collide.Auditor(sc)
+        sc.frame_hooks.append(sc.auditor)
     cub = cubxl_rig.CubRig(L)
     if lab:            # the set-up's static corrosion CubXL goes: CubRig draws the same model with its head moving
         for key, g, names, _ in L.items.get("A", []):
@@ -637,7 +645,7 @@ def workflow(data, lab=True):
     q = IL.POWDER_TEST
     sc.cam = list(CAM_LAB if lab else CAM_WIDE)
     L.extra_gauges = [("Arm", f"{ROBOT_NAME}, parked"), ("Doser", "module 1 at the station"),
-                      ("Load cell", "0.0 mg"), ("CubXL P20", "parked, no tip")]
+                      ("HR-202i", "0.0000 g  (220 g x 0.1 mg)"), ("CubXL P20", "parked, no tip")]
     L.apply_state()
     n = 6
     # the powder: a heap on the vial's floor at its angle of repose, to scale (25 mg at a poured 1.4 g/cm3 is 18 mm3:
@@ -680,78 +688,112 @@ def workflow(data, lab=True):
         sc.step(f"1/{n}", cap, 1.0, None, hold=0.5,
                 labels=[("tray B: powder dosing", (V.TRAY_W / 2 - 300, *V.SLOTS["R3"]), (0.86, 0.34))])
     L.fetch("B", f"1/{n}", cap, cam=CAM_WORK)
-    # ------------------------------------------------------------------ 2. an empty vial into the doser
+    # ------------------------------------------------------------------ 2. an empty vial onto the balance
+    # round 9 (PR #318, 2026-11-05: "the vial ... is still oriented 90 degrees the wrong way"): round 8 took the vial
+    # from the rack from above and set it in the doser's cup with the gripper level, so it went in on its side. Now the
+    # gripper takes it from above and sets it down from above, upright, on the fork of our vessel shuttle outside the
+    # doser, and the shuttle carries it in to the HR-202i's pan (carousel.py: no gripper reaches that pan in v5).
     rack_xy = LOADS["B"][0][1:]
     seat = np.array(L.rack_seats[RACK_SEAT]) + (*rack_xy, V.T_FLOOR)
     grasp_z = 50.0                                           # grip 50 mm up the vial: above the rack's 40 mm block
     p_rack = tray_world("B", seat + (0, 0, grasp_z))
     car_xy = LOADS["B"][1][1:]
-    vs = C.vial_seat()                                       # rig frame; the rig is turned 90 deg on the tray
-    cupc = np.array([car_xy[0] - vs[1], car_xy[1] + vs[0], V.T_FLOOR + vs[2]])
-    p_cup = tray_world("B", cupc + (0, 0, 32.0))
-    cap = f"The {ROBOT_NAME} takes an empty 20 mL vial from the rack at the front of the tray and sets it in the " \
-          "multi-doser's cup, on its 100 g load cell under the station."
-    L.note(0, "Arm", "vial: rack to doser")
+    rig = L.eq_groups["B"][1]
+    fork = car.fork_group
+
+    def rig_w(xyz):
+        return tray_world("B", np.asarray(xyz, float) + (*car_xy, V.T_FLOOR))
+    p_hand = rig_w(C.vessel_at("vial", 1.0, 0.0) + (0, 0, grasp_z))      # gripping the vial on the fork, outside
+    p_cup = p_hand
+    pan = C.vial_seat()
+    cam_dose = [tuple(rig_w(pan + (-760.0, -980.0, 520.0))), tuple(rig_w(pan + (10.0, -40.0, 120.0))), (0, 0, 1)]
+    cam_close = [tuple(rig_w(pan + (-430.0, -520.0, 190.0))), tuple(rig_w(pan + (0.0, 0.0, 60.0))), (0, 0, 1)]
+    cap = f"The {ROBOT_NAME} takes an empty 20 mL vial from the rack at the front of the tray and stands it upright " \
+          "on the fork of our vessel shuttle, 71 mm outside a port in the multi-doser's -y panel: v5 leaves the " \
+          "balance's pan to a hand through its front hatch, and no gripper fits past its frame posts."
+    L.note(0, "Arm", "vial: rack to the shuttle")
     pick(L, rb, f"2/{n}", cap, down(p_rack), down(p_rack + (0, 0, 110)), "vial", cam=CAM_WORK,
          labels=[("vial rack", p_rack + (-120, 0, 60), (0.20, 0.30)),
-                 ("multi-doser (powder-doser #185)", p_cup + (0, 150, 420), (0.70, 0.18))])
-    sc.step(f"2/{n}", cap, 1.2, rb.joint_to(Tw=level(p_cup + (0, -190, 6))), hold=0.05)
-    sc.step(f"2/{n}", cap, 1.0, rb.line_to(level(p_cup + (0, 0, 6))), hold=0.05)
-    sc.step(f"2/{n}", cap, 0.4, rb.line_to(level(p_cup)), hold=0.05)
-    sc.step(f"2/{n}", cap, 0.5, rb.grip_to(0.0), hold=0.05)
-    rb.release(L.eq_groups["B"][1])
-    sc.step(f"2/{n}", cap, 0.9, rb.line_to(level(p_cup + (0, -190, 0))), hold=0.05)
-    sc.step(f"2/{n}", cap, 1.2, rb.joint_to(PARK_RAD), hold=0.1, cam_to=CAM_MID)
+                 ("multi-doser v5 (powder-doser #185)", rig_w((150, 0, 900)), (0.70, 0.16))])
+    place(L, rb, f"2/{n}", cap, down(p_hand, spin=180.0), down(p_hand + (0, 0, 120), spin=180.0), fork,
+          labels=[("our vessel shuttle", p_hand + (0, 0, 60), (0.60, 0.30))])
+    cap = "The arm parks. Our pusher slides the HR-202i's -y side door back, the shuttle carries the vial in, 6 mm " \
+          "over our pedestal on the pan, and drops: the vial stands on the pedestal, its rim 156 mm under the " \
+          "auger's exit, and the fork backs out round it. Nothing else touches the balance."
+    sc.step(f"2/{n}", cap, 1.2, both(rb.joint_to(PARK_RAD), car.to(side_door=C.SIDE_OPEN)), hold=0.1,
+            cam_to=cam_dose)
     L.note(0, "Arm", "parked, clear of the doser")
-    # ------------------------------------------------------------------ 3. dose the atomized powder
-    cap = f"Module {MODULE + 1} (green) holds atomized AlSi10Mg from a rePowder run, its 20-63 µm cut. The carousel " \
-          "indexes it to the station, 8 chain links per module, and the Actuonix P16 docks the electronics carriage " \
-          "under its plate, magnet on."
+    L.note(1, "Doser", "shuttle in")
+    sc.step(f"2/{n}", cap, 1.8, car.to(shuttle=0.0), hold=0.1, cam_to=cam_close,
+            labels=[("A&D HR-202i, -y side door open", rig_w(pan + (-80, -120, 120)), (0.24, 0.24)),
+                    ("our pedestal on the pan", rig_w(pan + (0, 0, -60)), (0.70, 0.66))])
+    sc.step(f"2/{n}", cap, 0.5, car.to(fork=SET_U), hold=0.0)
+    car.reparent("vial", rig)
+    sc.step(f"2/{n}", cap, 0.3, car.to(fork=1.0), hold=0.1)
+    sc.step(f"2/{n}", cap, 1.5, car.to(shuttle=1.0), hold=0.05)
+    sc.step(f"2/{n}", cap, 0.7, car.to(side_door=0.0, fork=0.0), hold=0.1)
+    # ------------------------------------------------------------------ 3. dose the atomized powder by weight
+    L.note(2, "HR-202i", "0.0000 g  tared")
+    cap = f"Module {MODULE + 1} (green) holds atomized AlSi10Mg from a rePowder run, its 20-63 µm cut. The side door " \
+          "shut, the balance tares; our second pusher slides the top door back, the carousel indexes the module to " \
+          "the station (8 chain links a module) and two P16s lift the electronics carriage on its bar to dock it."
+    L.note(1, "Doser", "top door open")
+    sc.step(f"3/{n}", cap, 1.0, car.to(top_door=C.TOP_OPEN), hold=0.1, cam_to=cam_dose,
+            labels=[("top door: our pusher", rig_w(pan + (-60, 120, 300)), (0.78, 0.30))])
     L.note(1, "Doser", f"indexing to module {MODULE + 1}")
-    sc.step(f"3/{n}", cap, 2.6, car.to(shift=car.index_to(MODULE)), hold=0.2, cam_to=CAM_DOSE,
-            labels=[(f"module {MODULE + 1}: atomized AlSi10Mg", p_cup + (0, 80, 90), (0.74, 0.20))])
+    sc.step(f"3/{n}", cap, 2.6, car.to(shift=car.index_to(MODULE)), hold=0.2,
+            labels=[(f"module {MODULE + 1}: atomized AlSi10Mg", rig_w(pan + (0, 60, 330)), (0.74, 0.20))])
     L.note(1, "Doser", f"module {MODULE + 1} docking")
     cap = cap + " The other modules are drawn see-through: the docked one rides inside the loop."
-    sc.step(f"3/{n}", cap, 1.4, both(car.to(ext=C.DOCK_EXT, magnet_on=True), car.ghost(0.18)), hold=0.2)
-    cap = f"Module {MODULE + 1} tilts {C.CP.TILT_DOSE_WORLD:.0f}°, cap end up, and the auger turns in short steps " \
-          f"until the load cell reads {q['mg']:.0f} mg: a heap 6 mm across, drawn to scale. DAL asks for a weighed " \
-          "10-50 mg; mg resolution is a requirement on the doser (byu-vcl PR #270 §5), not yet shown. Then tilt back, reverse " \
-          "one turn at rest, undock."
+    sc.step(f"3/{n}", cap, 1.4, both(car.to(ext=C.DOCK_EXT, magnet_on=True), car.ghost(0.18)), hold=0.2,
+            labels=[("lift bar on two P16s", rig_w((90, -150, 360)), (0.22, 0.40))])
+    cap = f"Module {MODULE + 1} tilts {C.CP.TILT_DOSE_WORLD:.0f}°, cap end up; the dose falls 156 mm through the " \
+          "open top door into the vial on the pan. v5's dose-to doses by weight: a quarter auger turn, then a " \
+          f"reading over RS-232, until the HR-202i reads {q['mg']:.0f} mg (readings illustrative): a heap 6 mm across, " \
+          "drawn to scale. Then tilt back, reverse one turn at rest, park."
     L.note(1, "Doser", f"module {MODULE + 1} tilted, dosing")
-    sc.step(f"3/{n}", cap, 1.6, car.to(tilt=C.TILT), hold=0.1)
+    sc.step(f"3/{n}", cap, 1.6, car.to(tilt=C.TILT), hold=0.1, cam_to=cam_close)
     spin0 = car.state["spin"]
-    st = car.to(spin=spin0 + 2 * math.pi * 0.25)
+    reads = [0.0, 8.7, 16.9, 22.6, 25.3]                     # mg after each quarter turn (illustrative)
+    sc.parent["stream"] = rig
+    for j in range(1, len(reads)):
+        st = car.to(spin=spin0 + 2 * math.pi * 0.25 * j)
+        m0, m1 = reads[j - 1], reads[j]
 
-    def dose(u):
-        st(u)
-        on = 1.0 if 0.05 < u < 0.90 else 0.0
-        pts = stream_points(L, u * 6.0, on)[::3]                # a thin trickle: tens of mg, not grams
-        sc.alpha["stream"] = 1.0 if len(pts) else 0.0
-        if len(pts):
-            sc.set_mesh("stream", pv.PolyData(pts))
-        mg = q["mg"] * min(1.0, max(0.0, (u - 0.12) / 0.80))
-        set_heap(mg)
-        L.note(2, "Load cell", f"{mg:.1f} mg")
-    sc.parent["stream"] = L.eq_groups["B"][1]
-    sc.step(f"3/{n}", cap, 3.6, dose, hold=0.4, live=False)
-    sc.alpha["stream"] = 0.0
-    L.note(1, "Doser", f"module {MODULE + 1} back, undocking")
+        def dose(u, st=st, m0=m0, m1=m1):
+            st(u)
+            on = 1.0 if 0.05 < u < 0.95 else 0.0
+            pts = stream_points(L, u * 2.0, on)[::3]               # a thin trickle: tens of mg, not grams
+            sc.alpha["stream"] = 1.0 if len(pts) else 0.0
+            if len(pts):
+                sc.set_mesh("stream", pv.PolyData(pts))
+            set_heap(m0 + (m1 - m0) * min(1.0, u * 1.3))
+        sc.step(f"3/{n}", cap, 0.9, dose, hold=0.0, live=False)
+        sc.alpha["stream"] = 0.0
+        L.note(2, "HR-202i", f"{m1 / 1000:.4f} g" + ("  stable: done" if j == len(reads) - 1 else "  (quarter turn)"))
+        sc.step(f"3/{n}", cap, 0.45, None, hold=0.0)
+    L.note(1, "Doser", f"module {MODULE + 1} back, parking")
     sc.step(f"3/{n}", cap, 1.2, car.to(tilt=0.0), hold=0.1)
-    sc.step(f"3/{n}", cap, 0.8, car.to(spin=spin0 - 2 * math.pi * 0.75), hold=0.1)
-    sc.step(f"3/{n}", cap, 1.0, both(car.to(ext=0.0, magnet_on=False), car.ghost(1.0)), hold=0.2)
-    L.note(1, "Doser", f"module {MODULE + 1} undocked")
-    # ------------------------------------------------------------------ 4. vial to the arm's base, tray B up
+    sc.step(f"3/{n}", cap, 0.8, car.to(spin=car.state["spin"] - 2 * math.pi), hold=0.1)
+    sc.step(f"3/{n}", cap, 1.2, both(car.to(ext=0.0, magnet_on=False, top_door=0.0), car.ghost(1.0)), hold=0.2,
+            cam_to=cam_dose)
+    L.note(1, "Doser", f"module {MODULE + 1} parked, top door shut")
+    # ------------------------------------------------------------------ 4. vial out, to the arm's base, tray B up
+    cap = f"The side door opens and the shuttle brings the vial out ({reads[-1]:.1f} mg in it) to the arm, which " \
+          "stands it in the holder on its own base, so the VLM can swap trays. Tray B goes back to its slot and power."
+    L.note(1, "Doser", "shuttle: the vial out")
+    sc.step(f"4/{n}", cap, 0.7, car.to(side_door=C.SIDE_OPEN, fork=1.0), hold=0.05, cam_to=cam_close)
+    sc.step(f"4/{n}", cap, 1.5, car.to(shuttle=0.0), hold=0.05)
+    sc.step(f"4/{n}", cap, 0.3, car.to(fork=SET_U), hold=0.0)
+    car.reparent("vial", fork)
+    sc.step(f"4/{n}", cap, 0.5, car.to(fork=0.0), hold=0.05)
+    sc.step(f"4/{n}", cap, 1.8, car.to(shuttle=1.0), hold=0.05)
+    sc.step(f"4/{n}", cap, 0.6, car.to(side_door=0.0), hold=0.05)
     buf = np.array(L.buffer_seat)
     p_buf = (sc.world(amr) @ np.r_[buf + (0, 0, grasp_z), 1.0])[:3]
-    cap = f"The arm takes the vial out ({q['mg']:.1f} mg in it) and stands it in the holder on its own base, so the " \
-          "VLM can swap trays. Tray B goes back to its slot and its power."
-    L.note(0, "Arm", "vial: doser to its base")
-    sc.step(f"4/{n}", cap, 1.2, rb.joint_to(Tw=level(p_cup + (0, -190, 0))), hold=0.05, cam_to=CAM_WORK)
-    sc.step(f"4/{n}", cap, 1.0, rb.line_to(level(p_cup)), hold=0.05)
-    sc.step(f"4/{n}", cap, 0.5, rb.grip_to(GRIP_VIAL), hold=0.05)
-    rb.grasp("vial")
-    sc.step(f"4/{n}", cap, 0.4, rb.line_to(level(p_cup + (0, 0, 6))), hold=0.0)
-    sc.step(f"4/{n}", cap, 1.0, rb.line_to(level(p_cup + (0, -190, 6))), hold=0.05)
+    L.note(0, "Arm", "vial: shuttle to its base")
+    pick(L, rb, f"4/{n}", cap, down(p_hand, spin=180.0), down(p_hand + (0, 0, 120), spin=180.0), "vial",
+         cam=CAM_WORK)
     place(L, rb, f"4/{n}", cap, down(p_buf), down(p_buf + (0, 0, 120)), amr)
     sc.step(f"4/{n}", cap, 1.2, rb.joint_to(PARK_RAD), hold=0.1)
     L.note(0, "Arm", "parked, vial on its base")
@@ -796,7 +838,10 @@ def workflow(data, lab=True):
             "tray A, stored and powered. The arm and the opening are free for the next request.", 2.4 if lab else 1.0,
             None, hold=2.5, still=True, cam_to=CAM_LAB if lab else None)
     print(f"highest forearm/wrist point {rb.max_z_world:.0f} mm; opening top {V.Z_OPEN_TOP:.0f} mm", flush=True)
-    return sc.save()
+    out = sc.save()
+    if sc.auditor is not None and not SC.AUDIT:
+        sc.auditor.save()
+    return out
 
 
 def disassembly(data):

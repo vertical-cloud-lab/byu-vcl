@@ -12,24 +12,27 @@ oxygen-free Cu cups for a 90/10 Cu-Ni run (DAL #162, #219), each with a plug of 
 
 The two versions of this chapter written for PR #318's review are merged here:
 
-* **Dosing and weighing** (was ``alloy_charge_doser.py``). The doser's 100 g load cell and its shared catch funnel come
-  out. The cup is dosed in a plain cradle at the doser's station, through a funnel that only ever carries one powder
-  (four on a stand: Si, AlSi10Mg, Ni, Cu), and weighed on an A&D HR-202i (220 g x 0.1 mg) beside the doser. The
-  balance stands on a granite block, so the arm reaches its side door over the cup rack.
+* **Dosing and weighing** (round 9: the multi-doser is now powder-doser's chain carousel v5, ``carousel.py``). The
+  A&D HR-202i (220 g x 0.1 mg) stands under the doser's dose point, inside its base, and there is no funnel: the arm
+  sets each cup on the fork of our vessel shuttle outside the doser, which carries it in through the balance's -y side
+  door onto our pedestal on the pan, its 12.7 mm bore under the 8 mm stream, and it is dosed by weight where it stands
+  (v5's ``dose-to``: quarter auger turns, a reading after each). Nothing touches the powder but the cup, so nothing is
+  shared between powders. (Round 8 had a funnel per powder in a fork at the station, and a second balance on a
+  granite block.)
 * **The plug pressed home under vacuum** (was this file's vacuum-press rewrite; ``alloy_press.py``). The bore is filled
   to where the plug is set: the alloying powder (Si, Ni), then a top-up of the cup's own metal (AlSi10Mg, Cu). The plug
   goes into the cup's mouth at the rack, and a Specac Atlas Autotouch 15T with the lab's evacuable die round #222's F1
   sleeve pumps the die down and drives the plug to flush on a set load (DAL #140).
 
-So each cup is dosed twice, one powder at a time, so that a funnel is swapped only when the powder changes: all four
-cups of a run get their alloying powder and are weighed, then the top-up funnel takes the fork and each cup is topped
-up to the plug line, weighed again, plugged, pressed, and put on the MiR250's carrier (Al, for the atomizer, chapter 2,
-``alloy_atomize.py``) or back in the rack (Cu, for its own run). Tray B goes back into storage.
+So each cup is dosed twice, one powder at a time, so the chain indexes only when the powder changes: all four cups of
+a run get their alloying powder, then each is topped up to the plug line, weighed both times on the pan it is dosed
+on, plugged, pressed, and put on the MiR250's carrier (Al, for the atomizer, chapter 2, ``alloy_atomize.py``) or back
+in the rack (Cu, for its own run). Tray B goes back into storage.
 
 Every arm move is a straight line of the grasp point or a joint move between two solved poses (``robot.py``), as in
 ``animate.workflow``; joint moves are collision-checked and planned round obstacles (``collide.py``). The cups and
-funnels are always held level (fingers closing sideways), so a cup never tilts in the gripper; the plugs are taken
-from above. Close-ups cut the cup, powder, funnel, plug and die in half (``charge.lathe``).
+are always held level (fingers closing sideways), so a cup never tilts in the gripper; the plugs are taken from above.
+Close-ups cut the cup, powder, plug and die in half (``charge.lathe``).
 """
 from __future__ import annotations
 
@@ -65,17 +68,10 @@ TITLE = "Vertical cloud lab, the alloy route 1/4: the atomizer charge"
 # the punch's rest, 40 mm further left than alloy_press puts it (still in front of the control tower): with eight cups
 # the rack's first plug stands beside the rest, and taking it from above put the gripper's knuckles in the rest's post
 AP.REST_LOCAL = (110.0, AP.REST_LOCAL[1])
-# tray B frame. Left to right: the vacuum press (alloy_press.PRESS_AT), the cup rack in front, the HR-202i on its block
-# behind the rack, the multi-doser, and the funnel stand right of the doser
-RACK_AT = (-250.0, -372.0)             # where round 2's vial rack stood (animate.LOADS)
-BAL_AT = (-102.0, -110.0)              # the HR-202i's body centre, turned so its left side door faces the arm
-BLOCK_H = 120.0                        # the granite block under it: the door's sill clears the rack's cups
-FSTAND_AT = (960.0, -372.0)
+# tray B frame. Left to right: the vacuum press (alloy_press.PRESS_AT), the cup rack in front, the multi-doser v5 with
+# the HR-202i in its base (animate.LOADS), its -y side door toward the arm
+RACK_AT = (-250.0, -372.0)             # where round 2's vial rack stood
 SLOTS = [("Al", "Si")] * 4 + [("Cu", "Ni")] * 4     # rack seat -> (cup metal, alloying powder)
-FUNNELS = ("Si", "AlSi10Mg", "Ni", "Cu")            # stand seat -> powder: one funnel per powder
-FUNNEL_COL = {"Si": C.FUNNEL_LABEL["Si"], "AlSi10Mg": C.FUNNEL_LABEL["Al"], "Ni": C.FUNNEL_LABEL["Ni"],
-              "Cu": C.FUNNEL_LABEL["Cu"]}
-FUNNEL_WORD = {"Si": "yellow", "AlSi10Mg": "blue", "Ni": "green", "Cu": "orange"}
 MODULE = {"Si": 5, "Ni": 2, "AlSi10Mg": AP.TOPUP_MODULE["Al"], "Cu": AP.TOPUP_MODULE["Cu"]}   # carousel modules
 #                                        (0-based): the two alloying powders and the two top-ups
 CUP_GRASP = 45.0                       # grasp point above a cup's base (its top 18.5 mm higher)
@@ -86,15 +82,10 @@ OPEN_CUP = 0.66                        # 31.6 mm between the pads: clear of a ne
 OPEN_RACK = 0.75                       # 23.5 mm, 2.2 mm a side, at the rack: its cups stand 40 mm apart, and the cups
 #                                        nearest the arm's base are reached at an angle, past their neighbours
 OPEN_PLUG = 0.60
-GRIP_FUNNEL = 0.70 + (28.0 - C.FUNNEL["band_d"]) / 90.0      # on the funnel's 42 mm band
-OPEN_FUNNEL = 0.70 + (28.0 - C.FUNNEL["band_d"] - 12.0) / 90.0
 CARRIER_LOCAL = A.BUFFER_LOCAL         # the MiR's cup carrier stands where round 2's one-vial holder stood
 METAL_C = {"Al": C.AL_5N, "Cu": C.CU}
 CUP_NAME = {"Al": "5N Al", "Cu": "OFE Cu"}
-BAL_HOLDER = 2.0                       # the cup holder's floor on the pan
-DOOR_OPEN = 150.0                      # the side door's travel: it slides back along the chamber, clear of its opening
 TOL = 0.01                             # dose tolerance, fraction of the dose (assumed)
-STATION_GONE = {"load_cell", "vial_cup", "vial_funnel", "ext_vial_post", "level_wedge"}
 ERR = [0.0006, -0.0013, 0.0009, -0.0004, 0.0011, -0.0008, 0.0003, -0.0010]   # each cup's dose off its target (made
 #                                        up, inside TOL: the readings shown)
 F_DETAIL = {"Al": 0.55, "Cu": 0.36}    # the first cup of each run, shown in full
@@ -140,10 +131,10 @@ def _model_meshes(parts) -> list[tuple[str, pv.PolyData, tuple, float, float]]:
 
 
 class Charge:
-    """The charge rack, the vacuum press (``alloy_press.VacPress``), the cups and plugs, the funnels and their stand,
-    the doser's rebuilt station, the HR-202i on its block and the MiR's carrier, added to round 2's scene (``A.Lab``);
-    the vial, its rack and the one-vial holder are hidden. Each cup's bore holds two powder layers (the alloying
-    powder, then the top-up of the cup's own metal), squeezed together when pressed."""
+    """The charge rack, the vacuum press (``alloy_press.VacPress``), the cups and plugs, our pedestal on the doser's
+    balance pan and the MiR's carrier, added to round 2's scene (``A.Lab``); the vial, its rack, its riser and the
+    one-vial holder are hidden. Each cup's bore holds two powder layers (the alloying powder, then the top-up of the
+    cup's own metal), squeezed together when pressed."""
 
     def __init__(self, sc: Scene, L: A.Lab):
         self.sc, self.L = sc, L
@@ -160,45 +151,6 @@ class Charge:
         sc.gmat["crack"] = T((*RACK_AT, V.T_FLOOR))
         # the vacuum press, its die and the punch's rest
         self.vp = AP.VacPress(sc, "tray_B", AP.PRESS_AT, V.T_FLOOR)
-        # the doser's cup station, rebuilt: post, cradle, funnel fork (rig frame)
-        fit, self.st_seat = C.station_fittings()
-        for k, (m, col) in fit.items():
-            sc.add(f"station/{k}", m, col, rig, specular=0.3)
-        # the HR-202i on its granite block, its left side door (facing the arm) on its own group
-        hp = LW.HR202I
-        blk = C._box(-hp["D_all"] / 2 - 10, hp["D_all"] / 2 + 10, -hp["W_doors"] / 2 - 10, hp["W_doors"] / 2 + 10, 0.0,
-                     BLOCK_H)
-        sc.add("balblock/body", blk, (0.30, 0.31, 0.33), "balblock", specular=0.35)
-        sc.parent["balblock"] = "tray_B"
-        sc.gmat["balblock"] = T((*BAL_AT, V.T_FLOOR))
-        bal = LW.hr202i_parts(0.0)
-        for j, (mat, m, col, a, spec) in enumerate(_model_meshes(bal["body"] + bal["door_right"] + bal["top_door"])):
-            sc.add(f"bal/{mat}{j}", m, col, "bal", opacity=a, specular=spec)
-        for j, (mat, m, col, a, spec) in enumerate(_model_meshes(bal["door_left"])):
-            sc.add(f"bal_door/{mat}{j}", m, col, "bal_door", opacity=a, specular=spec)
-        sc.parent["bal"] = "tray_B"
-        sc.gmat["bal"] = T((*BAL_AT, V.T_FLOOR + BLOCK_H)) @ R((0, 0, 1), 90)
-        sc.parent["bal_door"] = "bal"
-        self.door = 0.0
-        self.pan_xyz = np.array([0.0, -hp["D"] / 2 + hp["pan_y"], hp["pan_top"]])
-        holder = C.lathe([(0, 0), (20, 0), (20, BAL_HOLDER), (0, BAL_HOLDER)], res=48)
-        cwall = C.lathe([(C.STOCK_D / 2 + 0.6, BAL_HOLDER), (C.STOCK_D / 2 + 3.6, BAL_HOLDER),
-                         (C.STOCK_D / 2 + 3.6, BAL_HOLDER + 6.0), (C.STOCK_D / 2 + 0.6, BAL_HOLDER + 6.0)], cut=True)
-        cwall = cwall.rotate_z(-90.0, inplace=False)        # the C opens to the door (balance -x)
-        sc.add("bal/holder", holder.merge(cwall).translate(self.pan_xyz, inplace=False), C.PRINT, "bal")
-        # the funnels on their stand, one per powder
-        stand, self.fseats = C.funnel_stand(len(FUNNELS))
-        sc.add("fstand/body", stand, P.RACK_C, "fstand")
-        sc.parent["fstand"] = "tray_B"
-        sc.gmat["fstand"] = T((*FSTAND_AT, V.T_FLOOR))
-        fm, fcut = C.funnel(), C.funnel(cut=True)
-        for j, pw in enumerate(FUNNELS):
-            g = f"funnel_{pw}"
-            sc.add(f"{g}/body", fm["body"], (0.95, 0.95, 0.93), g, specular=0.2)
-            sc.add(f"{g}/cut", fcut["body"], (0.95, 0.95, 0.93), g, specular=0.2, shown=False)
-            sc.add(f"{g}/label", fm["label"], FUNNEL_COL[pw], g, specular=0.2)
-            sc.parent[g] = "fstand"
-            sc.gmat[g] = T(self.fseats[j])
         # the MiR's carrier
         mesh, self.carrier_seats = C.carrier()
         sc.add("amr/carrier", mesh.translate((*CARRIER_LOCAL, P.AMR_TOP - 20), inplace=False), P.RACK_C, "amr")
@@ -234,7 +186,6 @@ class Charge:
     # ------------------------------------------------------------------------------------------ state
     def apply(self):
         sc = self.sc
-        sc.gmat["bal_door"] = T((0, self.door, 0))
         for i in range(len(SLOTS)):
             k = self.squeeze[i]
             h1, h2 = self.powder_h[i] * k, self.powder_h2[i] * k
@@ -242,8 +193,8 @@ class Charge:
             sc.gmat[f"cup{i}_pw2"] = T((0, 0, C.FLOOR_Z + 0.05 + h1)) @ S((1, 1, max(h2 - h1, 0.01)))
         self.vp.apply()
 
-    def cut(self, i, on: bool, sleeve=False, funnel=None):
-        """Swap cup i (and its plug, the die and a funnel) for the half-section versions."""
+    def cut(self, i, on: bool, sleeve=False):
+        """Swap cup i (and its plug and the die) for the half-section versions."""
         sc = self.sc
         sc.alpha[f"cup{i}/whole"] = 0.0 if on else 1.0
         sc.alpha[f"cup{i}/cut"] = 1.0 if on else 0.0
@@ -257,19 +208,6 @@ class Charge:
         if sleeve is not None:
             self.vp.cutaway = bool(on and sleeve)
             self.vp.apply()
-        if funnel is not None:
-            sc.alpha[f"funnel_{funnel}/body"] = 0.0 if on else 1.0
-            sc.alpha[f"funnel_{funnel}/cut"] = 1.0 if on else 0.0
-
-    def to(self, **kw):
-        """An update(u) easing the balance's door to the given value."""
-        start = {k: getattr(self, k) for k in kw}
-
-        def up(u):
-            for k, v in kw.items():
-                setattr(self, k, start[k] + (v - start[k]) * u)
-            self.apply()
-        return up
 
     # ------------------------------------------------------------------------------------------ places (world)
     def _w(self, group, xyz):
@@ -281,17 +219,15 @@ class Charge:
     def rack_plug(self, i):
         return self._w("crack", self.seats["plug"][i])
 
-    def station_cup(self):
-        return self._w(self.rig, self.st_seat["cup"])
-
-    def station_funnel(self):
-        return self._w(self.rig, self.st_seat["funnel"])
-
-    def stand_funnel(self, j):
-        return self._w("fstand", self.fseats[j])
-
     def bal_cup(self):
-        return self._w("bal", self.pan_xyz + (0, 0, BAL_HOLDER))
+        """Base centre of a cup on our pedestal on the doser's balance pan, world."""
+        return self._w(self.rig, CR.vessel_at("cup", 0.0, 1.0))
+
+    def hand_cup(self):
+        """Base centre of a cup on the shuttle's fork at the hand-over, outside the doser's -y panel, world."""
+        return self._w(self.rig, CR.vessel_at("cup", 1.0, 0.0))
+
+    station_cup = bal_cup
 
     def nest_seat(self, eject=None):
         """Base centre of a cup on the press's raised ejector pin, shuttle out (world)."""
@@ -302,31 +238,21 @@ class Charge:
 
 
 def stream_points(L: A.Lab, K: Charge, i: int, t: float, on: float) -> np.ndarray:
-    """The dose, rig frame: grains falling from the auger's outlet onto the funnel's cone, and from its stem into cup
-    i's bore."""
+    """The dose, rig frame: grains falling from the auger's exit straight down the 8 mm column into cup i's bore on
+    the pan (v5: the exit stays on the hinge axis, over the pan's centre, at every tilt)."""
     top = L.carousel.exit_point()
-    ax, ay, tip = K.st_seat["funnel"]
-    r_hit = math.hypot(top[0] - ax, top[1] - ay)
-    f = C.FUNNEL
-    cone_z = tip + f["stem_l"] + f["flange_t"] + (r_hit - f["stem_od"] / 2) / (f["cone_r"] - f["stem_od"] / 2) \
-        * (f["cone_h"] - f["band_h"])
-    n = 30
+    bottom = CR.seat_base_z("cup") + C.FLOOR_Z + max(K.powder_h[i], K.powder_h2[i]) + 1.0
+    n = 36
     s = (np.arange(n) / n + t * 1.7) % 1.0
     s = s[s < on]
     if not len(s):
         return np.zeros((0, 3))
-    a = np.c_[top[0] + 0 * s, top[1] + np.sin(np.arange(len(s)) * 2.3) * 0.6, top[2] - (top[2] - cone_z) * s ** 2]
-    bottom = K.st_seat["cup"][2] + C.FLOOR_Z + max(K.powder_h[i], K.powder_h2[i]) + 1.0
-    m = 14
-    s2 = (np.arange(m) / m + t * 2.3) % 1.0
-    s2 = s2[s2 < on]
-    b = np.c_[ax + 0 * s2, ay + np.sin(np.arange(len(s2)) * 1.7) * 0.8, tip - (tip - bottom) * s2 ** 2]
-    return np.r_[a, b]
+    k = np.arange(len(s))
+    return np.c_[top[0] + np.cos(k * 2.3) * 1.6, top[1] + np.sin(k * 2.3) * 1.6, top[2] - (top[2] - bottom) * s ** 2]
 
 
 def movie():
     data = lab.meshes()
-    CR.SKIP = CR.SKIP | STATION_GONE           # the rig's load cell, vial cup, vial post and catch funnel come out
     sc = Scene(NAME, TITLE)
     if os.environ.get("CHARGE_FXAA"):          # FXAA in place of SSAA: about a quarter of the pixel work, for a render
         sc.pl.disable_anti_aliasing()           # on a loaded machine (scene.py's default is SSAA)
@@ -369,12 +295,21 @@ def movie():
     PRUN = {"Al": PRES["runs"]["Al-10Si"], "Cu": PRES["runs"]["Cu-10Ni"]}
     run = RECIPE["runs"]
     cup_g = {"Al": run["Al-10Si"]["cups"][0]["cup_g"], "Cu": run["Cu-10Ni"]["cups"][0]["cup_g"]}
-    L.extra_gauges = [("Arm", f"{A.ROBOT_NAME}, parked"), ("Doser", "module 1 at the station, no funnel"),
+    L.extra_gauges = [("Arm", f"{A.ROBOT_NAME}, parked"), ("Doser", "v5, module 1 at the station"),
                       ("HR-202i", "0.0000 g  (220 g x 0.1 mg)"), ("Press", "shuttle out, guard up"),
                       ("Charge", "0 of 4 Al-10Si, 0 of 4 Cu-10Ni cups made up")]
     L.apply_state()
-    n = 10
+    n = 6
     made = {"Al": 0, "Cu": 0}
+
+    def cam_side():                            # the doser's front and -y side (the tray at the opening)
+        return cam_near(K.bal_cup(), (-1050.0, -820.0, 420.0), (40.0, -60.0, 60.0))
+
+    def cam_close():                           # the pan, through the balance's glass and the doser's acrylic
+        return cam_near(K.bal_cup(), (-430.0, -520.0, 190.0), (0.0, 0.0, 60.0))
+
+    def cam_wide_dose():                       # the station over the balance
+        return cam_near(K.bal_cup(), (-1300.0, -1250.0, 700.0), (60.0, 0.0, 220.0))
     read = {}                                  # cup -> (after the alloying powder, after the top-up), g
     base_xy = sc.world(rb.root)[:2, 3].copy()           # the arm's base; the MiR stays parked for the chapter
 
@@ -547,74 +482,59 @@ def movie():
                      (0.16, 0.18)),
                     ("vacuum press, on tray B since set-up: Specac Atlas Autotouch 15T, our die round F1",
                      K.vp.die_top() + (0, 0, 300), (0.10, 0.36)),
-                    ("A&D HR-202i balance, 220 g x 0.1 mg", K.bal_cup() + (0, 0, 250), (0.40, 0.12)),
-                    ("multi-doser (powder-doser #185), its station rebuilt for cups", tray_xyz(L, (250, -250, 560)),
-                     (0.66, 0.12)),
-                    ("one funnel per powder", K.stand_funnel(1) + (30, 0, 50), (0.86, 0.30))])
-    cap = ("No load cell and no shared funnel. The doser doses into a plain cradle, through a funnel that only ever "
-           "carries one powder: Si (yellow), AlSi10Mg (blue), Ni (green), Cu (orange). An A&D HR-202i, 220 g to 0.1 mg, "
-           "weighs every cup, on a granite block so the arm reaches its door over the rack.")
-    sc.step(f"1/{n}", cap, 1.4, None, hold=3.0, cam_to=cam_near(K.station_cup(), (420.0, -1500.0, 620.0),
-                                                                 (180.0, 60.0, 80.0)))
-
-    # ------------------------------------------------------------------ the funnel moves
-    def funnel_to_station(pw, st, f=1.0, cam=None):
-        j = FUNNELS.index(pw)
-        g = f"funnel_{pw}"
-        gr = C.FUNNEL["grasp"]
-        H = (lambda x: x) if f > 0.3 else (lambda x: 0.0)
-        p0 = K.stand_funnel(j) + (0, 0, gr)
-        p1 = K.station_funnel() + (0, 0, gr)
-        L.note(0, "Arm", f"{pw} funnel: stand to the doser's fork")
-        sc.step(st, None, 1.4 * f, both(pre(lvl(p0 + (0, -170, 30)), lvl(p0 + (0, 0, 4)), OPEN_FUNNEL),
-                                        rb.grip_to(OPEN_FUNNEL)), hold=H(0.05), cam_to=cam)
-        sc.step(st, None, 0.7 * f, rb.line_to(lvl(p0 + (0, 0, 4))), hold=H(0.05))
-        sc.step(st, None, 0.3 * f, rb.line_to(lvl(p0)), hold=0.0)
-        sc.step(st, None, 0.4 * f, rb.grip_to(GRIP_FUNNEL), hold=H(0.05))
-        rb.grasp(g)
-        sc.step(st, None, 0.4 * f, rb.line_to(lvl(p0 + (0, 0, 6))), hold=0.0)
-        sc.step(st, None, 0.7 * f, rb.line_to(lvl(p0 + (0, -170, 6))), hold=H(0.05))
-        sc.step(st, None, 1.4 * f, pre(lvl(p1 + (0, -200, 6)), lvl(p1 + (0, 0, 6))), hold=H(0.05))
-        sc.step(st, None, 1.0 * f, rb.line_to(lvl(p1 + (0, 0, 6))), hold=H(0.05))
-        sc.step(st, None, 0.4 * f, rb.line_to(lvl(p1)), hold=H(0.05))
-        sc.step(st, None, 0.4 * f, rb.grip_to(OPEN_FUNNEL), hold=H(0.05))
-        rb.release(K.rig)
-        sc.step(st, None, 0.8 * f, rb.line_to(lvl(p1 + (0, -200, 0))), hold=H(0.05))
-        L.note(1, "Doser", f"{pw} funnel in the fork")
-
-    def funnel_to_stand(pw, st, f=1.0, cam=None):
-        j = FUNNELS.index(pw)
-        g = f"funnel_{pw}"
-        gr = C.FUNNEL["grasp"]
-        H = (lambda x: x) if f > 0.3 else (lambda x: 0.0)
-        p0 = K.station_funnel() + (0, 0, gr)
-        p1 = K.stand_funnel(j) + (0, 0, gr)
-        L.note(0, "Arm", f"{pw} funnel: back to its place on the stand")
-        sc.step(st, None, 1.3 * f, both(pre(lvl(p0 + (0, -200, 0)), lvl(p0), OPEN_FUNNEL), rb.grip_to(OPEN_FUNNEL)),
-                hold=H(0.05), cam_to=cam)
-        sc.step(st, None, 0.8 * f, rb.line_to(lvl(p0)), hold=H(0.05))
-        sc.step(st, None, 0.4 * f, rb.grip_to(GRIP_FUNNEL), hold=H(0.05))
-        rb.grasp(g)
-        sc.step(st, None, 0.4 * f, rb.line_to(lvl(p0 + (0, 0, 6))), hold=0.0)
-        sc.step(st, None, 0.9 * f, rb.line_to(lvl(p0 + (0, -200, 6))), hold=H(0.05))
-        sc.step(st, None, 1.4 * f, pre(lvl(p1 + (0, -170, 6)), lvl(p1 + (0, 0, 6))), hold=H(0.05))
-        sc.step(st, None, 0.7 * f, rb.line_to(lvl(p1 + (0, 0, 6))), hold=H(0.05))
-        sc.step(st, None, 0.3 * f, rb.line_to(lvl(p1)), hold=H(0.05))
-        sc.step(st, None, 0.4 * f, rb.grip_to(OPEN_FUNNEL), hold=H(0.05))
-        rb.release("fstand")
-        sc.step(st, None, 0.7 * f, rb.line_to(lvl(p1 + (0, -170, 0))), hold=H(0.05))
-        L.note(1, "Doser", "no funnel in the fork")
+                    ("multi-doser v5 (powder-doser #185 at 353dae7)", K.bal_cup() + (120, 60, 720), (0.66, 0.12)),
+                    ("A&D HR-202i in its base, under the dose point", K.bal_cup() + (-60, 0, -120), (0.46, 0.62))])
+    cap = ("The multi-doser is powder-doser's chain carousel v5: an A&D HR-202i, 220 g to 0.1 mg, stands on the tray "
+           "under the dose point, inside the doser's base and touching nothing of it, and the dose falls straight "
+           "into the cup on its pan, weighed as it doses. No funnel and no load cell: our shuttle sets each cup on "
+           "our pedestal on the pan, its 12.7 mm bore under the 8 mm stream, and only the cup touches the powder.")
+    sc.step(f"1/{n}", cap, 1.4, None, hold=3.0, cam_to=cam_side(),
+            labels=[("our pedestal on the pan", K.bal_cup() + (0, 0, -30), (0.70, 0.62)),
+                    ("our vessel shuttle, through a port in the -y panel", K.hand_cup() + (0, 0, -40),
+                     (0.24, 0.70))])
 
     def park(st, f, H, cam=None, cap=None):
         sc.step(st, cap, 1.1 * f, rb.joint_to(A.PARK_RAD), hold=H(0.05), cam_to=cam)
         L.note(0, "Arm", "parked")
 
-    # ------------------------------------------------------------------ the cup's moves
-    def rack_to_cradle(i, st, cap, f, H, detail):
+    # ------------------------------------------------------------------ the cup's moves (round 9: v5 and the shuttle)
+    def hand_aim():
+        """The level direction to the cup on the shuttle's fork at the hand-over (as rack_aim): the open fingertips
+        may touch the cup and the fork, nothing else."""
+        if "hand" not in rack_dir:
+            p0 = K.hand_cup() + (0, 0, CUP_GRASP)
+            rack_dir["hand"] = aim(p0, [(150, 6, GRIP_CUP), (0, 6, GRIP_CUP), (0, 0, OPEN_CUP), (150, 0, OPEN_CUP)],
+                                   (0.0, 1.0), step=5, only={car.fork_group, *(f"cup{j}" for j in range(len(SLOTS)))},
+                                   lines=[((150, 6), (0, 6), GRIP_CUP, ()), ((0, 0), (150, 0), OPEN_CUP, ())])
+        return rack_dir["hand"]
+
+    def shuttle_in(i, st, cap, f, H, detail):
+        """The side door back, the shuttle in, the cup set down on the pedestal, the fork out, the door shut."""
+        L.note(1, "Doser", "shuttle: the cup in")
+        sc.step(st, cap, 1.6 * f, car.to(side_door=CR.SIDE_OPEN, shuttle=0.0), hold=H(0.05),
+                cam_to=cam_close() if detail else None)
+        sc.step(st, cap, 0.4 * f, car.to(fork=A.SET_U), hold=0.0)
+        car.reparent(f"cup{i}", K.rig)
+        sc.step(st, cap, 0.3 * f, car.to(fork=1.0), hold=H(0.05))
+        sc.step(st, cap, 1.3 * f, car.to(shuttle=1.0), hold=H(0.05))
+        sc.step(st, cap, 0.5 * f, car.to(side_door=0.0, fork=0.0), hold=H(0.05))
+
+    def shuttle_out(i, st, cap, f, H, detail):
+        L.note(1, "Doser", "shuttle: the cup out")
+        sc.step(st, cap, 0.5 * f, car.to(side_door=CR.SIDE_OPEN, fork=1.0), hold=H(0.05))
+        sc.step(st, cap, 1.3 * f, car.to(shuttle=0.0), hold=H(0.05))
+        sc.step(st, cap, 0.3 * f, car.to(fork=A.SET_U), hold=0.0)
+        car.reparent(f"cup{i}", car.fork_group)
+        sc.step(st, cap, 0.4 * f, car.to(fork=0.0), hold=H(0.05))
+        sc.step(st, cap, 1.5 * f, car.to(shuttle=1.0), hold=H(0.05))
+        sc.step(st, cap, 0.5 * f, car.to(side_door=0.0), hold=H(0.05))
+
+    def rack_to_balance(i, st, cap, f, H, detail):
         p0 = K.rack_cup(i) + (0, 0, CUP_GRASP)
         d0 = rack_aim(i)
         bk = rack_bk[i]
-        p1 = K.station_cup() + (0, 0, CUP_GRASP)
+        ph = K.hand_cup() + (0, 0, CUP_GRASP)
+        dh = hand_aim()
         sc.step(st, cap, 1.6 * f, both(pre(lvl(p0 - d0 * bk + (0, 0, 30), d0), lvl(p0, d0), OPEN_RACK),
                                        rb.grip_to(OPEN_RACK)), hold=H(0.05), cam_to=CAM_WORK if detail else None)
         sc.step(st, cap, 0.8 * f, rb.line_to(lvl(p0, d0)), hold=H(0.05))
@@ -622,61 +542,37 @@ def movie():
         rb.grasp(f"cup{i}")
         sc.step(st, cap, 0.6 * f, rb.line_to(lvl(p0 + (0, 0, 30), d0)), hold=0.0)
         sc.step(st, cap, 0.8 * f, rb.line_to(lvl(p0 - d0 * bk + (0, 0, 30), d0)), hold=H(0.05))
-        sc.step(st, cap, 1.4 * f, pre(lvl(p1 + (0, -200, 2)), lvl(p1 + (0, 0, 2))), hold=H(0.05))
-        sc.step(st, cap, 1.0 * f, rb.line_to(lvl(p1 + (0, 0, 2))), hold=H(0.05),
-                cam_to=cam_near(K.station_cup(), (230.0, -430.0, 170.0), (0.0, 0.0, 70.0)) if detail else None)
-        sc.step(st, cap, 0.3 * f, rb.line_to(lvl(p1)), hold=H(0.05))
+        sc.step(st, cap, 1.4 * f, pre(lvl(ph - dh * 150 + (0, 0, 6), dh), lvl(ph + (0, 0, 6), dh)), hold=H(0.05))
+        sc.step(st, cap, 1.0 * f, rb.line_to(lvl(ph + (0, 0, 6), dh)), hold=H(0.05))
+        sc.step(st, cap, 0.3 * f, rb.line_to(lvl(ph, dh)), hold=H(0.05))
         sc.step(st, cap, 0.4 * f, rb.grip_to(OPEN_CUP), hold=H(0.05))
-        rb.release(K.rig)
-        sc.step(st, cap, 0.8 * f, rb.line_to(lvl(p1 + (0, -200, 0))), hold=H(0.05))
-
-    def cradle_to_balance(i, st, cap, f, H, detail):
-        p1 = K.station_cup() + (0, 0, CUP_GRASP)
-        q = K.bal_cup() + (0, 0, CUP_GRASP)
-        sc.step(st, cap, 1.0 * f, pre(lvl(p1 + (0, -200, 0)), lvl(p1)), hold=H(0.05))
-        sc.step(st, cap, 0.9 * f, rb.line_to(lvl(p1)), hold=H(0.05))
-        sc.step(st, cap, 0.4 * f, rb.grip_to(GRIP_CUP), hold=H(0.05))
-        rb.grasp(f"cup{i}")
-        sc.step(st, cap, 0.3 * f, rb.line_to(lvl(p1 + (0, 0, 2))), hold=0.0)
-        sc.step(st, cap, 0.9 * f, rb.line_to(lvl(p1 + (0, -200, 2))), hold=H(0.05))
-        cam_bal = cam_near(K.bal_cup(), (360.0, -660.0, 330.0), (0.0, 0.0, 55.0))
-        door0 = K.door
-        K.door = DOOR_OPEN                     # the move is planned with the door open, as it is when the line starts
-        K.apply()
-        mv = pre(lvl(q + (0, -150, 2)), lvl(q + (0, 0, 2)))
-        K.door = door0
-        K.apply()
-        sc.step(st, cap, 1.4 * f, both(mv, K.to(door=DOOR_OPEN)), hold=H(0.05), cam_to=cam_bal if detail else None)
-        sc.step(st, cap, 1.0 * f, rb.line_to(lvl(q + (0, 0, 2))), hold=H(0.05))
-        sc.step(st, cap, 0.3 * f, rb.line_to(lvl(q)), hold=H(0.05))
-        sc.step(st, cap, 0.4 * f, rb.grip_to(OPEN_CUP), hold=H(0.05))
-        rb.release("bal")
-        sc.step(st, cap, 0.9 * f, rb.line_to(lvl(q + (0, -150, 0))), hold=H(0.05))
+        rb.release(car.fork_group)
+        sc.step(st, cap, 0.8 * f, rb.line_to(lvl(ph - dh * 150, dh)), hold=H(0.05))
 
     def weigh(i, value, what, st, cap, f, H, detail, still=None):
-        metal = SLOTS[i][0]
-        sc.step(st, cap, 0.6 * f, K.to(door=0.0), hold=H(0.05))
-
+        """The reading settles with the doors shut and the station parked: the cup is weighed where it was dosed."""
         def settle(u, value=value):
-            v = cup_g[metal] + (value - cup_g[metal]) * min(1.0, u * 1.25) + (0.0007 * math.sin(u * 19) * (1 - u))
+            v = value + 0.0007 * math.sin(u * 19) * (1 - u)
             L.note(2, "HR-202i", f"{v:.4f} g{'  stable: ' + what if u > 0.85 else ''}")
         if still:
             STILLS[still] = sc.n + int(round(1.4 * f * scene.FPS)) + int(round(0.6 * scene.FPS))
         sc.step(st, cap, 1.4 * f, settle, hold=1.2 if detail else 0.0)
-        sc.step(st, cap, 0.6 * f, K.to(door=DOOR_OPEN), hold=H(0.05))
 
     def balance_to_rack(i, st, cap, f, H, detail):
-        q = K.bal_cup() + (0, 0, CUP_GRASP)
+        ph = K.hand_cup() + (0, 0, CUP_GRASP)
+        dh = hand_aim()
         d1 = rack_aim(i)
         bk = rack_bk[i]
         c_r = K.rack_cup(i) + (0, 0, CUP_GRASP)
-        sc.step(st, cap, 0.9 * f, rb.line_to(lvl(q)), hold=H(0.05))
+        shuttle_out(i, st, cap, f, H, detail)
+        sc.step(st, cap, 1.3 * f, both(pre(lvl(ph - dh * 150, dh), lvl(ph, dh), OPEN_CUP), rb.grip_to(OPEN_CUP)),
+                hold=H(0.05), cam_to=CAM_WORK if detail else None)
+        sc.step(st, cap, 0.8 * f, rb.line_to(lvl(ph, dh)), hold=H(0.05))
         sc.step(st, cap, 0.4 * f, rb.grip_to(GRIP_CUP), hold=H(0.05))
         rb.grasp(f"cup{i}")
         L.note(2, "HR-202i", "0.0000 g")
-        sc.step(st, cap, 0.3 * f, rb.line_to(lvl(q + (0, 0, 2))), hold=0.0)
-        sc.step(st, cap, 0.9 * f, rb.line_to(lvl(q + (0, -150, 2))), hold=H(0.05))
-        sc.step(st, cap, 0.5 * f, K.to(door=0.0), hold=0.0)
+        sc.step(st, cap, 0.3 * f, rb.line_to(lvl(ph + (0, 0, 6), dh)), hold=0.0)
+        sc.step(st, cap, 0.8 * f, rb.line_to(lvl(ph - dh * 150 + (0, 0, 6), dh)), hold=H(0.05))
         sc.step(st, cap, 1.3 * f, pre(lvl(c_r - d1 * bk + (0, 0, 30), d1), lvl(c_r + (0, 0, 30), d1)), hold=H(0.05),
                 cam_to=CAM_RACK if detail else None)
         sc.step(st, cap, 0.7 * f, rb.line_to(lvl(c_r + (0, 0, 30), d1)), hold=H(0.05))
@@ -686,8 +582,8 @@ def movie():
         sc.step(st, cap, 0.7 * f, rb.line_to(lvl(c_r - d1 * bk, d1)), hold=H(0.05))
 
     def dose(i, layer, st, cap, f, H, detail, still=None):
-        """Index, dock, tilt and dose one layer into cup i in the cradle (layer 0: the alloying powder, to its column;
-        layer 1: the top-up, to the set plug's line)."""
+        """Top door back, index, dock, tilt and dose one layer by weight into cup i on the pan (layer 0: the alloying
+        powder, to its column; layer 1: the top-up, to the set plug's line), then park and shut the top door."""
         metal, pw = SLOTS[i]
         pr = PRUN[metal]
         pname = pw if layer == 0 else AP.TOPUP[metal][0]
@@ -695,21 +591,27 @@ def movie():
         h_from = 0.0 if layer == 0 else pr["column_mm_alloying"]
         h_to = pr["column_mm_alloying"] if layer == 0 else pr["column_mm_set"]
         m = MODULE[pname]
+        g0 = cup_g[metal] if layer == 0 else read[i][0]           # on the pan before this dose
+        L.note(2, "HR-202i", f"{g0:.4f} g")
         if detail or car.state["shift"] != car.index_to(m):
-            L.note(1, "Doser", f"indexing to module {m + 1} ({pname})")
-            sc.step(st, cap, 2.2 * f, car.to(shift=car.index_to(m)), hold=H(0.1), cam_to=A.CAM_DOSE if detail else None)
+            L.note(1, "Doser", f"top door back; indexing to module {m + 1} ({pname})")
+            sc.step(st, cap, 2.2 * f, car.to(shift=car.index_to(m), top_door=CR.TOP_OPEN), hold=H(0.1),
+                    cam_to=cam_wide_dose() if detail else None)
+        else:
+            L.note(1, "Doser", "top door back")
+            sc.step(st, cap, 0.6 * f, car.to(top_door=CR.TOP_OPEN), hold=H(0.05))
         L.note(1, "Doser", f"module {m + 1} ({pname}) docking")
         ghost = m == MODULE["Si"]
-        seat = K.station_cup()
-        cam_dose = cam_near(seat, (120.0, -250.0, 95.0), (0.0, 0.0, 62.0))
+        seat = K.bal_cup()
+        cam_dose = cam_near(seat, (-210.0, -300.0, 150.0), (0.0, 0.0, 62.0))
         sc.step(st, cap, 1.2 * f, both(car.to(ext=CR.DOCK_EXT, magnet_on=True), car.ghost(0.18) if ghost else None),
                 hold=H(0.1), cam_to=cam_dose if detail else None)
         L.note(1, "Doser", f"module {m + 1} tilted, dosing {pname} by auger turns")
         sc.step(st, cap, 1.3 * f, car.to(tilt=CR.TILT), hold=H(0.05))
         if detail:
-            K.cut(i, True, sleeve=None, funnel=pname)
+            K.cut(i, True, sleeve=None)
         spin0 = car.state["spin"]
-        stt = car.to(spin=spin0 + 2 * math.pi * 2.0)
+        stt = car.to(spin=spin0 + 2 * math.pi * 2.0)              # eight quarter turns, a reading after each
 
         def run(u, stt=stt):
             stt(u)
@@ -727,8 +629,10 @@ def movie():
                 K.powder_h2[i] = h_from + (h_to - h_from) * k
             K.apply()
             if detail:
-                K.cut(i, True, sleeve=None, funnel=pname)
-            L.note(1, "Doser", f"module {m + 1}: {grams * k:.2f} of {grams:.2f} g {pname} by auger turns")
+                K.cut(i, True, sleeve=None)
+            kq = math.floor(k * 8.0 + 1e-6) / 8.0                  # the balance reads after each quarter turn
+            L.note(1, "Doser", f"module {m + 1}: dose-to {grams:.2f} g {pname}, quarter auger turns")
+            L.note(2, "HR-202i", f"{g0 + grams * kq:.4f} g")
         if still:
             STILLS[still] = sc.n + int(round(3.4 * f * 0.8 * scene.FPS))
         sc.step(st, cap, 3.4 * f, run, hold=0.3 if detail else 0.0, live=False)
@@ -738,13 +642,13 @@ def movie():
             K._point[i] = True
         K.powder_h2[i] = h_to
         K.apply()
-        L.note(1, "Doser", f"module {m + 1} back, undocking")
+        L.note(1, "Doser", f"module {m + 1} back, parking")
         sc.step(st, cap, 1.0 * f, car.to(tilt=0.0), hold=H(0.05))
         sc.step(st, cap, 0.7 * f, car.to(spin=spin0 + 2 * math.pi), hold=H(0.05))
-        sc.step(st, cap, 0.9 * f, both(car.to(ext=0.0, magnet_on=False), car.ghost(1.0) if ghost else None),
-                hold=H(0.1))
-        K.cut(i, False, sleeve=None, funnel=pname)
-        L.note(1, "Doser", f"module {m + 1} undocked")
+        sc.step(st, cap, 0.9 * f, both(car.to(ext=0.0, magnet_on=False, top_door=0.0),
+                                       car.ghost(1.0) if ghost else None), hold=H(0.1))
+        K.cut(i, False, sleeve=None)
+        L.note(1, "Doser", f"module {m + 1} parked, top door shut")
 
     def topup_g(i):
         """The top-up, from the weighed alloying dose: for Cu-10Ni the Cu that keeps the cup at 10 wt % Ni; for
@@ -763,44 +667,43 @@ def movie():
         f = F_FAST if fast else F_DETAIL[metal]
         H = (lambda x: x) if detail else (lambda x: 0.0)
         pr = PRUN[metal]
-        st = f"{3 if metal == 'Al' else 7}/{n}"
+        st = f"{2 if metal == 'Al' else 4}/{n}"
         first = detail and metal == "Al"
         cap = None
         if detail:
-            cap = (f"The {A.ROBOT_NAME} takes an empty {CUP_NAME[metal]} cup from the rack, level, and slides it into "
-                   f"the doser's cradle, under the {pw} funnel's stem: the stem stops 4 mm over the rim, so the funnel "
-                   f"never touches a cup." if first else
-                   f"The first Cu cup in full: it goes into the cradle under the Ni funnel.")
-            L.note(0, "Arm", f"{CUP_NAME[metal]} cup {i + 1}: rack to the doser")
-        rack_to_cradle(i, st, cap, f, H, detail)
-        park(st, f, H, cam=A.CAM_MID if detail else None, cap=cap)
+            cap = (f"The {A.ROBOT_NAME} takes an empty {CUP_NAME[metal]} cup from the rack, level, and sets it on the "
+                   f"fork of our shuttle outside the doser (no gripper fits past v5's frame posts to the balance). Our "
+                   f"pusher slides the HR-202i's -y side door back and the shuttle sets the cup on our pedestal on the "
+                   f"pan, its rim 153 mm under the auger's exit." if first else
+                   f"The first Cu cup in full: onto the pedestal on the pan, as the Al cups.")
+            L.note(0, "Arm", f"{CUP_NAME[metal]} cup {i + 1}: rack to the balance")
+        rack_to_balance(i, st, cap, f, H, detail)
+        park(st, f, H, cam=cam_wide_dose() if detail else None, cap=cap)
+        shuttle_in(i, st, cap, f, H, detail)
         if detail:
-            cap = (f"The carousel brings module {MODULE[pw] + 1} ({pw}) to the station and docks it. It tilts and its "
-                   f"auger turns: {pr['alloying_g']:.2f} g of {pw} falls onto its own funnel and through the stem into "
-                   f"the cup's 1/2 in bore, up to {pr['column_mm_alloying']:.0f} mm. Cut open here: the bore fills "
-                   f"from the 118° drill point." if first else
+            cap = (f"Side door shut, our second pusher slides the top door back; the carousel brings module "
+                   f"{MODULE[pw] + 1} ({pw}) to the station, the P16s lift the carriage to dock it and it tilts 30°. "
+                   f"v5's dose-to turns the auger a quarter turn at a time and reads the balance after each, to "
+                   f"{pr['alloying_g']:.2f} g: the powder falls 153 mm into the cup's 1/2 in bore, up to "
+                   f"{pr['column_mm_alloying']:.0f} mm. Cut open here: the bore fills from the 118° drill point."
+                   if first else
                    f"Module {MODULE[pw] + 1} doses {pr['alloying_g']:.2f} g of Ni, {pr['column_mm_alloying']:.0f} mm up "
                    f"the bore.")
         read[i] = [cup_g[metal] + pr["alloying_g"] * (1 + ERR[i]), None]
         dose(i, 0, st, cap, f, H, detail, still="dose" if first else None)
         if detail:
-            cap = (f"Weighed on the HR-202i: the doser doses by auger turns, so the balance checks every cup. The door "
-                   f"opens (driven: assumed; the HR-i's doors are manual) and the cup goes onto the pan." if first else
-                   "Onto the HR-202i.")
-            L.note(0, "Arm", f"cup {i + 1}: doser to the balance")
-        cradle_to_balance(i, st, cap, f, H, detail)
-        if detail:
             r = read[i][0]
-            cap = (f"Door shut: {r:.4f} g, the cup's {cup_g[metal]:.2f} g (weighed once, when it was turned) plus "
-                   f"{r - cup_g[metal]:.4f} g of {pw} against {pr['alloying_g']:.2f} g. Inside ±{TOL * 100:.0f} % "
-                   f"(assumed), it goes on; a short cup would go back to the doser for more, as the trickler does on "
-                   f"the HR-100A." if first else
+            cap = (f"Parked and both doors shut, the reading settles: {r:.4f} g, the cup's {cup_g[metal]:.2f} g "
+                   f"(weighed once, when it was turned) plus {r - cup_g[metal]:.4f} g of {pw} against "
+                   f"{pr['alloying_g']:.2f} g. Inside ±{TOL * 100:.0f} % (assumed), it goes on; a short cup gets "
+                   f"another quarter turn where it stands." if first else
                    f"{r:.4f} g: {r - cup_g[metal]:.4f} g of Ni against {pr['alloying_g']:.2f} g. A Cu cup is "
                    f"{r:.0f} g here, well inside the HR-202i's 220 g.")
         weigh(i, read[i][0], f"{read[i][0] - cup_g[metal]:.4f} g {pw}", st, cap, f, H, detail,
               still="weigh" if first else None)
         if detail:
-            cap = "Back to the rack, to wait for its top-up."
+            cap = "The shuttle brings it out; back to the rack, to wait for its top-up."
+            L.note(0, "Arm", f"cup {i + 1}: balance to the rack")
         balance_to_rack(i, st, cap, f, H, detail)
 
     # ------------------------------------------------------------------ layer 2: the top-up, weighed, plug, press, away
@@ -812,14 +715,16 @@ def movie():
         pr = PRUN[metal]
         top_name = AP.TOPUP[metal][0]
         first = detail and metal == "Al"
-        st = f"{5 if metal == 'Al' else 9}/{n}"
+        st = f"{3 if metal == 'Al' else 5}/{n}"
         cap = None
         if detail:
-            cap = (f"Then the top-up. The cup goes back into the cradle, now under the {top_name} funnel."
-                   if first else f"The first Cu cup again, now under the Cu funnel.")
-            L.note(0, "Arm", f"cup {i + 1}: rack to the doser")
-        rack_to_cradle(i, st, cap, f, H, detail)
-        park(st, f, H, cam=A.CAM_MID if detail else None, cap=cap)
+            cap = (f"Then the top-up, the cup's own metal: the shuttle sets the cup back on the pedestal, and module "
+                   f"{MODULE[top_name] + 1} ({top_name}) comes to the station." if first else
+                   f"The first Cu cup again, for its Cu.")
+            L.note(0, "Arm", f"cup {i + 1}: rack to the balance")
+        rack_to_balance(i, st, cap, f, H, detail)
+        park(st, f, H, cam=cam_wide_dose() if detail else None, cap=cap)
+        shuttle_in(i, st, cap, f, H, detail)
         g_top = topup_g(i)
         if detail:
             cap = (f"Module {MODULE[top_name] + 1}, {top_name}: {g_top:.2f} g tops the bore up to where the plug will "
@@ -830,8 +735,7 @@ def movie():
         dose(i, 1, st, cap, f, H, detail)
         read[i][1] = read[i][0] + g_top * (1 + 0.5 * ERR[(i + 3) % len(ERR)])
         if detail:
-            cap = "Weighed again: the top-up too." if first else "Weighed again."
-        cradle_to_balance(i, st, cap, f, H, detail)
+            cap = "Weighed again where it stands: the top-up too." if first else "Weighed again."
         r1, r2 = read[i]
         if detail:
             cap = (f"{r2:.4f} g: {r1 - cup_g[metal]:.4f} g of {pw} and {r2 - r1:.4f} g of {top_name}, tapped "
@@ -1051,66 +955,45 @@ def movie():
         park(st, f, H, cap=cap)
 
     pa, pc = PRUN["Al"], PRUN["Cu"]
-    cam_fork = cam_near(K.station_funnel(), (330.0, -650.0, 230.0), (-60.0, 0.0, 10.0))
-    # ------------------------------------------------------------------ 2. the Si funnel into the fork
-    cap = ("The Si funnel goes into the doser's fork. It is only ever used for Si, and its stem points into the cup's "
-           "bore without touching it, so nothing passes from one powder or one cup to the next.")
-    with_caption(sc, cap, lambda: funnel_to_station("Si", f"2/{n}", 0.6, cam=CAM_RIGHT))
-    with_caption(sc, cap, lambda: sc.step(f"2/{n}", None, 0.8, None, hold=0.6, cam_to=cam_fork))
-    STILLS["funnels"] = sc.n - 2
-    # ------------------------------------------------------------------ 3. the four Al cups' Si, the first in full
+    # ------------------------------------------------------------------ 2. the four Al cups' Si, the first in full
     layer1(0, fast=False)
-    cap = (f"The same for the other three Al cups, shown faster: {pa['alloying_g']:.2f} g of Si each, every one "
-           f"weighed.")
-    sc.step(f"3/{n}", cap, 0.6, None, hold=1.2, cam_to=CAM_WORK)
+    cap = (f"The same for the other three Al cups, shown faster: {pa['alloying_g']:.2f} g of Si each, dosed by weight "
+           f"on the pan.")
+    sc.step(f"2/{n}", cap, 0.6, None, hold=1.2, cam_to=CAM_WORK)
     for i in (1, 2, 3):
         with_caption(sc, cap, lambda i=i: layer1(i, fast=True), cut=True)
-    # ------------------------------------------------------------------ 4. the Si funnel out, the AlSi10Mg funnel in
-    cap = ("Now the top-up, the cup's own metal: the Si funnel goes back to its place on the stand and the AlSi10Mg "
-           "funnel takes the fork. One funnel per powder: a funnel that has carried Si never carries anything else.")
-    with_caption(sc, cap, lambda: funnel_to_stand("Si", f"4/{n}", 0.4, cam=CAM_RIGHT))
-    with_caption(sc, cap, lambda: funnel_to_station("AlSi10Mg", f"4/{n}", 0.4))
-    # ------------------------------------------------------------------ 5. top-up, plug, press: the first in full
+    # ------------------------------------------------------------------ 3. top-up, plug, press: the first in full
     layer2(0, fast=False)
     cap = (f"The other three Al cups the same way, faster: {pa['top_up_g']:.2f} g of AlSi10Mg each, weighed, plugged, "
            f"pressed at {AP.SET_T:.1f} t under vacuum and onto the MiR250. Four cups make the run's "
            f"{4 * pa['charged_cup_g']:.1f} g of Al-10Si.")
-    sc.step(f"5/{n}", cap, 0.6, None, hold=1.4, cam_to=CAM_WORK)
+    sc.step(f"3/{n}", cap, 0.6, None, hold=1.4, cam_to=CAM_WORK)
     for i in (1, 2, 3):
         with_caption(sc, cap, lambda i=i: layer2(i, fast=True), cut=True)
-    # ------------------------------------------------------------------ 6. the AlSi10Mg funnel out, the Ni funnel in
-    cap = ("Then the Cu-10Ni run. The AlSi10Mg funnel goes back to the stand and the Ni funnel takes the fork, so no "
-           "Al run powder reaches a Cu cup.")
-    with_caption(sc, cap, lambda: funnel_to_stand("AlSi10Mg", f"6/{n}", 0.32, cam=CAM_RIGHT))
-    with_caption(sc, cap, lambda: funnel_to_station("Ni", f"6/{n}", 0.32))
-    # ------------------------------------------------------------------ 7. the four Cu cups' Ni
+    # ------------------------------------------------------------------ 4. the four Cu cups' Ni
     layer1(4, fast=False)
-    cap = (f"The other three Cu cups' Ni, faster: {pc['alloying_g']:.2f} g each, weighed.")
-    sc.step(f"7/{n}", cap, 0.5, None, hold=0.9, cam_to=CAM_WORK)
+    cap = (f"Then the Cu-10Ni run, the other three Cu cups' Ni, faster: {pc['alloying_g']:.2f} g each, dosed by "
+           f"weight. Nothing but the cup touches the powder, so no Al run powder reaches a Cu cup.")
+    sc.step(f"4/{n}", cap, 0.5, None, hold=0.9, cam_to=CAM_WORK)
     for i in (5, 6, 7):
         with_caption(sc, cap, lambda i=i: layer1(i, fast=True), cut=True)
-    # ------------------------------------------------------------------ 8. the Ni funnel out, the Cu funnel in
-    cap = "The Ni funnel back to the stand; the Cu funnel takes the fork for the Cu cups' top-up."
-    with_caption(sc, cap, lambda: funnel_to_stand("Ni", f"8/{n}", 0.3, cam=CAM_RIGHT))
-    with_caption(sc, cap, lambda: funnel_to_station("Cu", f"8/{n}", 0.3))
-    # ------------------------------------------------------------------ 9. the Cu cups' top-up, plug, press
+    # ------------------------------------------------------------------ 5. the Cu cups' top-up, plug, press
     layer2(4, fast=False)
     cap = (f"The other three Cu cups, faster: Cu to the plug line, weighed, plugged and pressed. A charged Cu cup is "
            f"{pc['charged_cup_g']:.0f} g. They go back on the rack for their own run.")
-    sc.step(f"9/{n}", cap, 0.5, None, hold=0.9, cam_to=CAM_WORK)
+    sc.step(f"5/{n}", cap, 0.5, None, hold=0.9, cam_to=CAM_WORK)
     for i in (5, 6, 7):
         with_caption(sc, cap, lambda i=i: layer2(i, fast=True), cut=True)
-    with_caption(sc, cap, lambda: funnel_to_stand("Cu", f"9/{n}", 0.3))
-    with_caption(sc, cap, lambda: park(f"9/{n}", 0.4, lambda x: 0.0))
-    # ------------------------------------------------------------------ 10. tray B up; ready for the atomizer
+    with_caption(sc, cap, lambda: park(f"5/{n}", 0.4, lambda x: 0.0))
+    # ------------------------------------------------------------------ 6. tray B up; ready for the atomizer
     al_g = sum(read[i][1] - cup_g["Al"] + pa["cup_plus_plug_g"] for i in range(4))
     cu_g = sum(read[i][1] - cup_g["Cu"] + pc["cup_plus_plug_g"] for i in range(4, 8))
     cap = (f"Made up: four Al-10Si cups, {al_g:.1f} g together, on the MiR250 for the rePowder, and four 90/10 Cu-Ni "
            f"cups on the rack, {cu_g:.1f} g, for their own run (designed compositions, if every gram dissolves; "
            f"out/alloy_recipe_pressed.json). Tray B goes back into storage.")
-    L.store("B", f"10/{n}", cap, cam=CAM_AMR)
+    L.store("B", f"6/{n}", cap, cam=CAM_AMR)
     L.note(0, "Arm", "parked; next: the atomizer")
-    sc.step(f"10/{n}", cap, 1.6, None, hold=2.4, still=True,
+    sc.step(f"6/{n}", cap, 1.6, None, hold=2.4, still=True,
             cam_to=cam_near((K.carrier_seat(1) + K.carrier_seat(2)) / 2, (-600.0, -640.0, 340.0), (0.0, 0.0, 25.0)),
             labels=[("four charged 5N Al cups, for the rePowder", (K.carrier_seat(1) + K.carrier_seat(2)) / 2 + (0, 0, 90),
                      (0.30, 0.25))])

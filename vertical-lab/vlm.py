@@ -107,7 +107,7 @@ Z_FRONT_HI = PITCH * -(-(Z_OPEN_TOP + 120.0) // PITCH)    # its upper part start
 SHUTTLE_GAP = 800.0             # between the two Shuttles' cladding: room for a MiR250 to turn on the spot (setup_lab)
 SHUTTLE_X = {1: 0.0, 2: UNIT_W + 2 * SKIN + SHUTTLE_GAP}  # the second Shuttle's centre: 3630 mm right of the first
 COLUMNS = {     # Shuttle: column: [(slot, span in mm)], bottom to top
-    1: {"rear": [("R1", 750), ("R2", 750), ("R3", 775), ("R4", 725)],          # trays D, A, B, E
+    1: {"rear": [("R1", 750), ("R2", 750), ("R3", 900), ("R4", 725)],          # trays D, A, B (v5 doser, 854 mm), E
         "front_low": [("F0", 475)],                                             # tray J
         "front": [("F1", 725), ("F2", 725)]},                                   # trays C, F
     2: {"rear": [("2R1", 850), ("2R2", 725), ("2R3", 750), ("2R4", 550)],      # trays K, L, M, H
