@@ -136,3 +136,60 @@ closest documented use, so the workflow shows it:
 
 What is assumed: the powder (AlSi10Mg: the alloy route's), its bulk density, the 25 mg and 200 µL (DAL gives 10–50 mg
 and no volume), the vial (the doser's own 20 mL; DAL says "a tube"), and the seat.
+
+## Round 9: where does the second cap go? (PR #318, Sterling 2026-11-05 22:56)
+
+> "The CubXL magnet can only hold one cap at a time. Where is that other cap? Does it get placed in an intermediate spot?
+> (probably the best option, but you'll need to check for interference or simply have an empty vial that's sole purpose is
+> as a temporary parking spot for a cap when two caps need to be off at the same time."
+
+Code: [`r9_cubxl.py`](../r9_cubxl.py) (a copy of `instruments_lab.cubxl_corrosion` and its timeline, registered under the same
+`REGISTRY` key, so `tour.load` and [`cubxl_rig.py`](../cubxl_rig.py) use it everywhere; `instruments_lab.py` is untouched),
+clip [`cubxl_corrosion.mp4`](../out/mp4/instruments/cubxl_corrosion.mp4).
+
+**What DAL already decided** ([PR #180](https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/180) at
+[`aeda51a`](https://github.com/vertical-cloud-lab/digital-alloy-lab/tree/aeda51a/alloy-corrosion)): nothing about vial caps
+other than the primitive. `cubxl-setup.md` §3 says "CubOS's `decap a` / `cap b` pair already moves one cap from one vial to
+another, which is the whole primitive needed", and DAL's own answer for the electrode cap is a **vial as the parking
+place**: the 4 mL park cup, "the cap parks in the reference's storage solution between nights". So a vial that holds a cap
+is already the convention; protocol.md §4 only requires that cap moves are tipless (the electrode cap's).
+
+**Where two caps are off at once.** DAL's 13 steps, as the clip ordered them in round 8, never had two vial caps off: each
+stock was opened, used and re-capped in turn, the cap riding the magnet (so the magnet was occupied, but nobody needed it).
+That is only true while every transfer is a separate open-draw-close. Any order that keeps one stock open while another
+is opened needs a second place. The clip now shows exactly that case: **ASW is kept open through the sulfide addition**
+(the same tip goes from the 7 ASW transfers to the 15 µL sulfide draw with no re-cap in between, and a top-up from ASW
+stays possible if the leak check or the volume says S1 is short). That is two caps off at once: the ASW cap is parked, the
+sulfide cap rides the magnet, then each goes home in turn (sulfide first, ASW fetched from its parking spot after). The
+electrode cap is a third cap, but it is never off at the same time as a stock cap: it is picked and set between the
+sulfide step and the acid step with every stock capped. (The ordering is this round's choice, not DAL's; DAL's strictly
+serial order needs no parking vial, and the clip's step 3 can go back to it by deleting two moves.)
+
+**Options weighed.**
+
+| Option | Cost on the deck | Capper reach | Verdict |
+|---|---|---|---|
+| A post or cup on the deck | new part, new footprint; the deck is full (holder, cups, rack, tray all drawn from DAL's coordinates) | any, but every free spot near x 318 is the holder's own | needs hardware DAL doesn't list |
+| **An empty 20 mL vial in Ben's holder, seat 6 (y 233)** | none: DAL's holder has two empty seats (6 and 7, "positions 6 and 7 stay empty"); one vial, no liquid | on the stocks' own x line, 33 mm from the sulfide stock, so no new travel at height; the cap goes on exactly as on a stock vial (same seat, same magnet height, same CubOS `cap`/`decap`) | chosen: Sterling's suggestion |
+| An intermediate spot on the cups block | the cups (x 30-90, y 245) are 4 mL vials with the electrode cap parked in one; a 16 mm vial cap doesn't sit on a 15 mm cup | far from the stocks: +230 mm | no |
+
+The vial rather than a cup: a vial cap has the same boss and the same lid geometry as the stock it came from, and a cap that
+sits on a clean, dry, empty vial doesn't pick up anything from a stock's rim. Keep it dry and dedicated: it holds only
+caps, never a liquid. A second parking vial (seat 7) costs nothing if a third cap is ever parked.
+
+**Interference** ([`interference.py`](../interference.py), MuJoCo + FCL, every frame of the 1125 of the clip):
+8 faults and the same 8 as round 8's clip, all pre-existing and unchanged (tips seating in their racks, the gantry
+guides, the O-rings: "as modelled" or "guide" by `interference.py`'s own classification), no new fault from the
+parking vial, the parked cap or the extra capper moves. The new contacts are minor (under `TOUCH_MM` of seating): the ASW cap
+on the parking vial (1.61 mm, the same seating as a cap on any of its own vial: `built in` 1.61 mm on the stocks). Round 7's
+finding stands, unchanged: Ben's capper mount brushes tip rack 1 by 1.06 mm over 13 mm3 (1.6 mm in round 7's CadQuery
+check) on the way to the stocks; the moves to the parking vial add none. The head at the parking vial puts the camera at
+x 278, y 243 over the coupon tray's far end at head height 87 mm: 61 mm above the lids.
+
+For the 8:37 clip (`animate.workflow`, the doser stream's): that clip shows the powder test (`powder_test`), whose only
+stock is the ASW for the 200 µL addition, so it needs no second cap. If it ever opens two stocks, call
+`r9_cubxl.corr_offsets` (via `cubxl_rig.CubRig.pose`, which now does) with `pcap="asw"` in the state, and `vcap=...` for the
+cap on the magnet.
+
+Not yet verified by anyone: that the magnet can seat and lift a cap from a vial of the same make held 33 mm away (no
+bench test; the lift force is DAL's open bench test 1 for the electrode cap).
