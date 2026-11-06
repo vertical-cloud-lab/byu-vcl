@@ -122,8 +122,12 @@ def holder_mesh():
     disc = cq.Workplane("XY").circle(p["d"] / 2).extrude(p["t"])
     for i in range(6):
         a = math.radians(30 + 60 * i)
-        disc = disc.cut(cq.Workplane("XY").circle(SP.MOUNT_D / 2 + 0.4).extrude(p["t"] + 2)
-                        .translate((p["r"] * math.cos(a), p["r"] * math.sin(a), -1)))
+        # stepped bore: the mount's diameter up to the mount's back (7 mm in), then a 5 mm ledge with the piston's
+        # aperture. A mount rests on that ledge when the holder is carried face up; nothing clamps it (no set screw)
+        c = (p["r"] * math.cos(a), p["r"] * math.sin(a))
+        disc = disc.cut(cq.Workplane("XY").circle(SP.MOUNT_D / 2 + 0.4).extrude(p["t"] - 5.0 + 1)
+                        .translate((c[0], c[1], -1)))
+        disc = disc.cut(cq.Workplane("XY").circle(RP.PIST_D / 2 + 2).extrude(p["t"] + 2).translate((c[0], c[1], -1)))
     for ang in (POCKET_STEEL, POCKET_HOT):
         a = math.radians(ang)
         for r0, r1 in ((p["r"] - 32.0, p["r"] - 12.0), (p["r"] + 12.0, p["r"] + 34.0)):
@@ -260,8 +264,8 @@ def movie():
     pol, press, mag, cnc = (rig_of(rigs, k) for k in ("polisher", "mount_press", "disc_magazine", "cnc"))
     # the machines' own props that we run, and the ones the arm replaces with ours
     hide_props(sc, pol, ("holder",))
-    show_props(sc, pol, ("water", "powder"))
-    pol.v.update(water=0.0, powder=0.0)
+    show_props(sc, pol, ("water", "powder", "pistons"))
+    pol.v.update(water=0.0, powder=0.0, pistons=0.0)
     pol.apply()
     hide_props(sc, press, ("specimen", "stopper"))
     show_props(sc, press, ("charge", "mount", "glow", "pour"))
@@ -476,7 +480,8 @@ def movie():
     st["lbl"] = "Holder"
     hw = sc.world("p_holder")
     st["cap"] = ("Into the holder, face up: its pocket has slots for the fingertips (ours). The holder's six pockets "
-                 "take 1.5 in mounts; clips (ours) keep them in.")
+                 "take 1.5 in mounts, which just sit in them: no set screw, nothing clamps them. A ledge at the back of each "
+                 "bore stops the mount.")
     status(sc, Arm="the steel mount into the holder")
     pick("p_steel", vise[2], GRIP_MOUNT, cam=cam_cnc)
     Mh = hw @ R((0, 0, 1), 0.0) @ mount_in_holder(POCKET_STEEL)
@@ -488,8 +493,9 @@ def movie():
     park(1.4)
     status(sc, Arm="parked", Holder="face up, the steel mount in it")
     L.store("M", st["lbl"], "Tray M goes back to its slot.", fast=0.45, hold=0.1)
-    st["cap"] = ("The arm turns the holder over on its rest, by a tab (ours): the steel mount face down now, as the "
-                 "polisher needs it.")
+    st["cap"] = ("The arm turns the holder over, by a tab (ours): the steel mount face down now, as the polisher needs "
+                 "it. Free in its hole, it is kept from dropping by a light O-ring grip in the bore (assumed: LECO "
+                 "publishes none), and the holder stays level.")
     Tg = sc.world("p_holder") @ tab_grasp()
     go(along(Tg, -110), secs=1.6, grip=g_open(44.0), cam=cam_rest())
     lin(Tg, 0.7)
@@ -676,8 +682,13 @@ def movie():
         ha, hb = plat_v[1], plat_v[1] + H_TURN
         sc.step(st["lbl"], cap_, 0.8 * f, pol.move({"head": (up_, 1.0)}), hold=0.0)
         ws = {"powder": (0.0, 1.0)} if cloth else {"water": (0.0, 1.0)}
-        sc.step(st["lbl"], cap_, secs_ * f, pol.move({"platen": (a, b), "holder": (ha, hb), **ws}), hold=0.0)
+        sc.step(st["lbl"], cap_ + " The pistons come down onto the mounts' backs.", 0.7 * f,
+                pol.move({"pistons": (0.0, 1.0)}), hold=0.0)
+        sc.step(st["lbl"], cap_, secs_ * f, pol.move({"platen": (a, b), "holder": (ha, hb), "pistons": (1.0, 1.0),
+                                                      **ws}), hold=0.0)
         we = {"powder": (1.0, 0.0)} if cloth else {"water": (1.0, 0.0)}
+        sc.step(st["lbl"], "Pistons up: the mounts just stand in their holes.", 0.5 * f,
+                pol.move({"pistons": (1.0, 0.0)}), hold=0.0)
         sc.step(st["lbl"], cap_, 0.8 * f, pol.move({"head": (1.0, up_), **we}), hold=0.1)
         if rinse and not cloth:
             sc.step(st["lbl"], "Head up: the mounts, the holder and the disc rinsed under the spigot before the next "
@@ -717,8 +728,10 @@ def movie():
     a, b = plat_v[0], plat_v[0] + 1.0
     ha, hb = plat_v[1], plat_v[1] + H_TURN
     sc.step(st["lbl"], st["cap"], 0.8, pol.move({"head": (up_, 1.0)}), hold=0.0)
+    sc.step(st["lbl"], st["cap"], 0.7, pol.move({"pistons": (0.0, 1.0)}), hold=0.0)
     sc.step(st["lbl"], st["cap"], 3.6, RB.both(pol.move({"platen": (a, b), "holder": (ha, hb),
                                                          "powder": (0.0, 1.0)}), polished), hold=0.0)
+    sc.step(st["lbl"], st["cap"], 0.5, pol.move({"pistons": (1.0, 0.0)}), hold=0.0)
     sc.step(st["lbl"], st["cap"], 0.8, pol.move({"head": (1.0, up_), "powder": (1.0, 0.0)}), hold=0.1)
     status(sc, Coupon="polished, in its hot mount", Slice="polished flush, in the steel mount")
 

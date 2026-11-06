@@ -246,6 +246,7 @@ DISC = dict(d=300.0, t=2.0, paper=0.6, cloth=1.4, ring_od=312.0, ring_id=294.0, 
 GRITS = ("320", "400", "600", "800", "1200", "cloth")
 MAG = dict(dx=-235.0, w=340.0, d=340.0, z0=22.0, pitch=100.0, rail=14.0, back=12.0)
 LIFT = 120.0                     # the head's extra lift for a disc change (ours)
+PIST_D, PIST_GAP, PIST_PRESS = 26.0, 5.0, 0.0   # the PX500 individual-force pistons (ours, sized): rod, gap over a mount's back (up), extra push
 GRIP_HANDLE = 0.70 + (28.0 - DISC["grip_w"]) / 90.0     # 2F-85 closure on a handle's 20 mm grip bar
 
 
@@ -404,8 +405,19 @@ def polisher() -> Instrument:
     flower = cyl(p["hold_d"], 12, x=hx, y=hy, z=hz_h)
     for i in range(6):
         a_ = math.radians(30 + 60 * i)
-        flower = flower.cut(cyl(MOUNT_D + 1, 14, x=hx + 52 * math.cos(a_), y=hy + 52 * math.sin(a_), z=hz_h - 1))
+        # stepped bore: the mount's diameter up to its back (7 mm in), then a ledge with the piston's aperture. Nothing
+        # clamps a mount: no set screw (round 9, #303)
+        flower = flower.cut(cyl(MOUNT_D + 1, 8, x=hx + 52 * math.cos(a_), y=hy + 52 * math.sin(a_), z=hz_h - 1)) \
+            .cut(cyl(PIST_D + 4, 14, x=hx + 52 * math.cos(a_), y=hy + 52 * math.sin(a_), z=hz_h))
     holder.add("6-position holder", flower, "stainless")
+    pist = _piece(inst, "pistons")
+    pz_up = hz_h + 7 + PIST_GAP                 # the piston feet, up: PIST_GAP over the mounts' backs
+    for i in range(6):
+        a_ = math.radians(30 + 60 * i)
+        px_, py_ = hx + 52 * math.cos(a_), hy + 52 * math.sin(a_)
+        pist.add(f"piston {i + 1} rod", cyl(PIST_D, 60, x=px_, y=py_, z=pz_up), "chrome")
+        pist.add(f"piston {i + 1} foot", cyl(PIST_D + 3, 4, x=px_, y=py_, z=pz_up - 4), "steel")
+    head.add("piston carrier", cyl(p["hold_d"], 14, x=hx, y=hy, z=pz_up + 60), "stainless")
     for i in range(6):
         a_ = math.radians(30 + 60 * i)
         holder.add(f"mount {i + 1}", cyl(MOUNT_D, SP.FACE_Z, x=hx + 52 * math.cos(a_), y=hy + 52 * math.sin(a_),
@@ -449,6 +461,7 @@ def polisher() -> Instrument:
     inst.joints = {
         "head": Joint("slide", vec=(0, 0, -drop)),
         "holder": Joint("spin", parent="head", axis=(0, 0, 1), pivot=(hx, hy, 0), deg=-150.0),
+        "pistons": Joint("slide", parent="holder", vec=(0, 0, -(PIST_GAP + PIST_PRESS))),
         "platen": Joint("spin", axis=(0, 0, 1), pivot=(bx, by, 0), deg=-720.0),
         "disc_320": Joint("path", path=disc_path(GRITS.index("320"))),
         "disc_400": Joint("path", path=disc_path(GRITS.index("400"))),
@@ -469,17 +482,17 @@ def polisher() -> Instrument:
         ("320 grit: out of the magazine and onto the magnetic platen, which holds the steel disc flat.", 3.0,
          {"disc_320": (0.0, 1.0)}),
         ("Head down, water on: the lab's SOP (PR #258), its gentle settings 35, 30, 150, 30 s.", 3.4,
-         {"head": (up_, 1.0), "platen": (0.0, 1.0), "holder": (0.0, 1.0), "water": (0.0, 1.0),
+         {"head": (up_, 1.0), "platen": (0.0, 1.0), "holder": (0.0, 1.0), "water": (0.0, 1.0), "pistons": (0.0, 1.0),
           "spin_320": (0.0, 1.0)}),
         ("Head up. The 320 disc goes back to its shelf and the 400 comes out: no paper peeled, no ring pried off.",
          3.6, {"head": (1.0, up_), "water": (1.0, 0.0), "disc_320": (1.0, 0.0), "disc_400": (0.0, 1.0)}),
         ("400 grit, then 600, 800 and 1200 the same way (30 s each), rinsed between grits.", 3.0,
-         {"head": (up_, 1.0), "platen": (1.0, 2.0), "holder": (1.0, 2.0), "water": (0.0, 1.0),
+         {"head": (up_, 1.0), "platen": (1.0, 2.0), "holder": (1.0, 2.0), "water": (0.0, 1.0), "pistons": (0.0, 1.0),
           "spin_400": (0.0, 1.0)}),
         ("The cloth disc for the final polish, 1 um alumina from a dispenser: force 3-5, 150 rpm, 3 min.", 3.6,
          {"head": (1.0, up_), "water": (1.0, 0.0), "disc_400": (1.0, 0.0), "disc_cloth": (0.0, 1.0)}),
         ("Head down, suspension on, no water (the SOP, step 5).", 3.0,
-         {"head": (up_, 1.0), "platen": (2.0, 3.0), "holder": (2.0, 3.0), "powder": (0.0, 1.0),
+         {"head": (up_, 1.0), "platen": (2.0, 3.0), "holder": (2.0, 3.0), "powder": (0.0, 1.0), "pistons": (0.0, 1.0),
           "alumina": (0.0, 1.0), "spin_cloth": (0.0, 1.0)}),
         ("Done. A person re-papers the five SiC discs between batches, off the machine: one fresh paper per grit per "
          "holder load (Buehler's note for its fully automatic VANGUARD: change SiC paper after each holder).", 2.6,
@@ -495,7 +508,7 @@ def polisher() -> Instrument:
     inst.framing = (0.95, 0.40)
     near = ((bx - 120, by - 60, dk), 1500.0)
     inst.zoom = {2: near, 4: near, 8: "out"}
-    inst.props = ("holder", "water", "powder", "alumina", "magazine", *[f"disc_{k}" for k in GRITS],
+    inst.props = ("holder", "pistons", "water", "powder", "alumina", "magazine", *[f"disc_{k}" for k in GRITS],
                   *[f"spin_{k}" for k in MOVING])
     return inst
 
