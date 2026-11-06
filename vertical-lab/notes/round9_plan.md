@@ -105,3 +105,10 @@ holds, except:
   are now due committed by **08:05**, notes by **08:10**, reports by **08:15**; the long-form is built at 08:05 from
   what is committed. A queued render runs the code on disk when its slot comes up, so an audit queued ahead of one's
   own render doesn't change it: audits go after the render, if there is time.
+- **05:45, the queue re-ordered by hand.** A free slot sat idle for 17 minutes (05:13-05:31), and again for 8 minutes
+  until 05:43, because the job at the head of the queue needed 6.5 GB and the gate counted the two running audits at
+  their declared 4-4.5 GB rather than the 2.4 GB they held. `runner_guard` serves strictly in order, so nothing smaller
+  could go past it. The orchestrator lowered those two declarations to 3 GB, stopped chapter 5's audit (68 minutes in,
+  on its second pass), and moved chapter 5's render (4 GB, the longest) and a one-minute rePowder still to the front.
+  A waiter whose ticket is gone ranks first, which is how. Worth fixing in `runner_guard` after the round: let a job
+  that fits go past one that doesn't, for a while.
