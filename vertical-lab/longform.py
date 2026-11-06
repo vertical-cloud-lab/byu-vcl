@@ -98,8 +98,9 @@ CHAPTERS = [
     dict(key="corrosion", title="Tray A: the corrosion station, OT-2 and CubXL",
          card=["The OT-2 makes up the CubXL's electrolyte and dilutes the corrosion wells' samples for ICP-MS, which "
                "goes out to the BYU Spectroscopic Facility (digital-wetlab PR #83, direction 5). The CubXL runs DAL's "
-               "copper corrosion screen spot by spot (DAL PR #180), with the volumes a real pipette moves. The "
-               "multi-doser doses atomized powder for it."],
+               "copper corrosion screen spot by spot (DAL PR #180), with the volumes a real pipette moves; its "
+               "capper's magnet holds one cap at a time, so a second cap waits on an empty parking vial. The multi-doser "
+               "(chain carousel v5, an A&D HR-202i under its dose point) doses atomized powder for it by weight."],
          parts=[("mp4", "instruments/ot2_corrosion_prep.mp4", "The OT-2: electrolyte and ICP dilutions"),
                 ("mp4", "instruments/cubxl_corrosion.mp4", "The CubXL's corrosion screen"),
                 ("mp4", "vlm_workflow.mp4", "Atomized powder dosed for the CubXL")]),
