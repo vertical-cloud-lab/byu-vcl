@@ -81,3 +81,23 @@ brief (`notes/round8_plan.md`) still describes the code layout; this file overri
 | prep | 28 | `alloy_prep.py`, `r8_prep.py`, `r8_specimens.py`, `notes/alloy_prep.md`, `out/alloy_prep*`, the `polisher` tour clip |
 | repowder-pr | 29 | its own branch `claude/issue-303-repowder-model`: `repowder/`, `notes/repowder_refine.md` |
 | orchestrator | | `vlm.py`, `longform.py`, `alloy_route.py`, `README.md`, `youtube_upload.py`, `tour.py`'s module list, this file |
+
+## Continuation 1 (run of 2026-11-06 03:14 UTC)
+
+The first round-9 run stopped at 23:31 on 2026-11-05 when the account ran out of model credits. Its last push was
+`dd65995` (23:17): the bay floor (`6e10de7`), this brief, and the lab-wide jar in `props.py` (`jar_style`,
+`jar_meshes`/`jar_parts`, `tint_sleeve`, `TINT`/`tinted`/`pulse`, `draw_legend`/`use_legend`/`piece_legend`). Nothing
+else from its sub-agents survived. No `claude/issue-303-repowder-model` branch was pushed. Everything above still
+holds, except:
+
+- **Deadlines (UTC, 2026-11-06).** The job ends at 09:14. Code and a `PREVIEW=1` still committed by **05:00**. Audit,
+  then the final render started by **05:30** at the latest; earlier is better, since the three slots are the
+  bottleneck. Renders committed by **07:35**: then the orchestrator builds the long-form from what is committed, and
+  an older clip stays where a new one is missing. Notes by **07:45**. Report back by **07:50**.
+- **Commit as you go,** at least every 30 minutes and after every piece that works. The last run lost everything its
+  sub-agents hadn't committed.
+- **Model credits.** Some streams run on a smaller model to spread the load. Keep tool output short (`| tail`,
+  `| head`) and don't re-read long files you have already read.
+- **Side branches.** repowder-pr and the EDM-orientation study each work in their own `git worktree` on their own
+  branch, stacked on this one, so their PRs show only their own work. The orchestrator pushes those branches and opens
+  the PRs.
