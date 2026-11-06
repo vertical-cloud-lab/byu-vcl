@@ -4,12 +4,14 @@ A running list of tools and supplies for the lab, started in
 [PR #323](https://github.com/vertical-cloud-lab/byu-vcl/pull/323). Each item is for general
 lab projects, fastening 3D-printed parts, or rePowder atomizer upkeep. Items are grouped into
 one ME purchase request per online vendor, with the same fields as the form. Every Amazon price
-was read off its product page on 2026-11-04 (Utah time), sold or shipped by Amazon unless noted.
-"~" prices are from earlier listings or deal posts. All of them drift, so check at checkout.
-The reasoning behind the drill and bits is in [lab-drill-and-bits.md](lab-drill-and-bits.md).
+was read off its product page, on 2026-11-04 for Order 1 and 2026-11-05 for Order 5 (Utah
+time), sold or shipped by Amazon unless noted. "~" prices are from earlier listings or deal
+posts. All of them drift, so check at checkout. The reasoning behind the drill and bits is in
+[lab-drill-and-bits.md](lab-drill-and-bits.md).
 
-**Status: wishlist. Nothing ordered yet.** When an order is placed, add it to
-[Receipts](#receipts).
+**Status:** Orders 1–4 were ordered on 2026-11-04 as ME orders 13641, 13642 and 13643 (see
+[Receipts](#receipts)). Order 5 hasn't been ordered yet. When an order is placed, add it to
+Receipts.
 
 ## Fields shared by every order
 
@@ -76,6 +78,23 @@ Purpose: large tongue-and-groove pliers for fittings on the rePowder atomizer.
 | --- | --- | --- | ---: | ---: | --- |
 | Harbor Freight | ICON 9 in tongue-and-groove pliers, 1-1/2 in jaw opening, red dipped grips (SKU 58882). The ones pictured in the request | [Harbor Freight](https://www.harborfreight.com/9-in-adjustable-tongue-and-groove-channel-pliers-1-12-in-jaw-opening-machined-teeth-and-nonslip-cushion-grip-58882.html) | $21.99 | 1 | gage-erickson |
 
+## Order 5: Amazon (not ordered yet)
+
+Purpose: zip ties and heat-shrink tubing for general lab wiring. Both were asked for after ME
+orders 13641–13643 went in.
+
+| Merchant Name | Item Description | Website link | Unit Cost | Qty | Asked for by |
+| --- | --- | --- | ---: | ---: | --- |
+| Amazon | ANOSON zip ties, 400-pack: 100 each of 4 in (18 lb), 6 in (25 lb), 8 in (40 lb) and 12 in (45 lb), black UV-resistant nylon. Sold by ANOSON-US, shipped by Amazon | [B0C2Z4L3S6](https://www.amazon.com/dp/B0C2Z4L3S6) | $6.69 | 1 | jss265 |
+| Amazon | Eventronic heat-shrink tubing kit, 600 pcs: 2:1 polyolefin, 12 sizes from 1/24 to 1/2 in, 5 colors, in a storage box. Sold by Ayhh-official, shipped by Amazon | [B072PCQ2LW](https://www.amazon.com/dp/B072PCQ2LW) | $6.99 | 1 | jss265 |
+| | | | **$13.68** | | |
+
+Optional, only if the lab has no heat gun (see the notes):
+
+| Merchant Name | Item Description | Website link | Unit Cost | Qty | Asked for by |
+| --- | --- | --- | ---: | ---: | --- |
+| Amazon | Wagner HT400 dual-temperature heat gun kit: 450 °F and 680 °F, built-in stand, curved and flare nozzles for wiring. Sold and shipped by Amazon | [B096HYFWKS](https://www.amazon.com/dp/B096HYFWKS) | $34.99 | 1 | Suggested, not asked for |
+
 ## Notes on the picks
 
 - **Fewer orders.** Orders 3 and 4 hold one item each. To drop Harbor Freight, buy any 10–12 in
@@ -117,9 +136,28 @@ Purpose: large tongue-and-groove pliers for fittings on the rePowder atomizer.
   estimate. Its page shows other sellers from $19.97 and says they undercut Amazon, and
   WebstaurantStore lists the same set at $27.49. It is sold and shipped by Amazon (4.7★,
   5,285 ratings). It comes with one #11 blade, the one that dulls first on 3D prints.
+- **Zip ties.** The ANOSON pack has 19,568 ratings (4.6★) and shows 10K+ bought in the past month. If
+  10 in ties or a bigger pack are wanted, the ALBO 800-pack (4, 6, 8, 10 and 12 in,
+  [B096MZWR8N](https://www.amazon.com/dp/B096MZWR8N)) is $15.99, but has only 620 ratings.
+- **Heat shrink.** 2:1 means each tube shrinks to half its diameter, so pick a size just bigger
+  than the splice. The kit has 23,098 ratings (4.6★). It is not adhesive-lined; for a joint that
+  must be sealed against water, buy 3:1 adhesive-lined tubing instead.
+- **Heat shrink needs a heat gun.** Nothing on Orders 1–4 is one: the Hakko is an iron only, and
+  the glue gun only melts glue sticks. A lighter or the side of the iron will shrink tubing, but
+  unevenly, and a flame scorches it. If the lab has no heat gun, add the Wagner HT400. It is
+  ETL-listed, and its stand holds it for hands-free shrinking.
+- **Shipping on Order 5.** It is $13.68 without the heat gun. Amazon's free shipping for accounts
+  without Prime starts at $35, which the order only reaches with the heat gun.
 
 ## Receipts
 
+Orders 1–4 went in as these three ME orders on 2026-11-04. jss265 confirmed that between them
+they cover every item asked for up to then. The ME order pages need a BYU login, so which
+vendor and product is on which order isn't recorded here yet, and they may differ from the
+picks above.
+
 | Date ordered | Vendor | Order # | Items | Total | Receipt | Received |
 | --- | --- | --- | --- | ---: | --- | --- |
-| | | | | | | |
+| 2026-11-04 | | ME [13641](https://meorders.byu.edu/order/13641) | | | | |
+| 2026-11-04 | | ME [13642](https://meorders.byu.edu/order/13642) | | | | |
+| 2026-11-04 | | ME [13643](https://meorders.byu.edu/order/13643) | | | | |
