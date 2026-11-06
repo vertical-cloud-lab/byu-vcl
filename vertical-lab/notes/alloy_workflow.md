@@ -1,3 +1,77 @@
+## Round 9: chapter 5 after Sterling's review of 2026-11-05 22:56 UTC
+
+Six points on PR #318 were this chapter's: the Aconity MIDI's door "swings the wrong way"; "28:08 that vacuuming seems
+pretty clearly to have interference with the machine"; "It's not clear how that depowdering box actually gets the plate
+to stay on it. Is it clamped somehow?"; tensile bars "at different orientations ... How is that going to work with the
+automated EDM process? Do this, and also open a new PR focused on that"; "The angle and transparency at 32:20 is off.
+Can't see the tensile test happening. Can't tell if there are collisions. Something weird with that heated box"; and
+round 8's open item, six joint moves ending in a pose already in collision, the chapter never audited frame by frame.
+
+RENDER_TABLE
+
+### What changed
+
+1. **The MIDI's door lifts** ([`alloy_models.door_T`](../alloy_models.py), `DOOR_OPEN`). Rounds 4-8 hinged it on its
+   left edge and turned it +100 deg about z, which swung its free edge back into the machine, through the chamber's
+   left wall. Aconity's chamber door is a flap: on Amazemet's MIDI the bar handle sits centred on the door's lower edge
+   ([Amazemet](https://www.amazemet.com/aconity-midi-lpbf-system-in-amazemets-rd-facility)), and Aconity's product photo
+   of the MIDI+ shows the chamber open with the flap raised, standing over the chamber on two struts, its handle at the
+   top ([3Dnatives](https://www.3dnatives.com/3d-materials/en/3d-printers/aconity-midi-plus/)). It now hinges along
+   its top edge at the chamber's front and swings out and up to 165 deg, leaning 15 deg forward of upright. The struts
+   and the angle are our reading of that photo; that the MIDI's own flap opens the same way as the MIDI+'s is inferred
+   from its handle. Chapter 3 (`alloy_print.py`) uses the same `Aconity.door`, so it opens the same way there.
+2. **The lance stays clear of the machine.** The tube is 400 mm, not 300, so the gripper stays outside the chamber
+   (its grasp point 12-100 mm in front of the door's plane) and only the tube passes the opening, at 1,171-1,213 mm,
+   inside the 1,005-1,285 mm opening. The nozzle's centre keeps within 60 mm of the bore's axis, so its 22 mm flare stays
+   inside the 170 mm cylinder (round 8's path reached 72 mm out, the flare 94 mm, over the cylinder's rim), 36 mm right
+   of the lug's rows and 28 mm off the vertical bars. The hose is now collision-checked too: `DBox.hose_hits` tests the
+   drawn hose against every mesh but the arm's, the lance's and its post's with collide.py's FCL as it moves. The shot
+   is new (`CAM_LANCE`): through the lifted door from the front-left, the gripper visibly outside. What Sterling saw at
+   28:08 was the old view: from the left, the chamber see-through and the control cabinet's side opaque behind it, the
+   lance and hose drawn over the cabinet as if they ran through it, and the door swung the wrong way.
+3. **The depowdering box clamps the plate, twice over** ([`alloy_models.CLAMPS`](../alloy_models.py), `clamp_pose`).
+   The plate's stud is pulled into the zero-point chuck (rounds 4-8 said so only in a caption), and three swing clamps on
+   the rotor, 120 deg apart round the plate at 60, -60 and 140 deg (clear of the lug, the flat bars' ends and the
+   vertical bars), rise 34 mm, turn their arms 90 deg over the rim and pull down on the plate's top face before the
+   shaft turns; after, they rise, turn away and drop under the chuck's top, out of the plate's way as it comes and goes.
+   Solukon's [SFM-AT200 page](https://www.solukon.de/en/products/sfm-at200/) gives the part envelope (300 x 300 x 230
+   mm; 60 kg with the plate in one place on the page, 100 kg in another), a horizontal axis that swivels about 350 deg,
+   a rotary table set by hand, a vibrator and inert gas, but not how the plate is clamped; its data sheet is sent on
+   request. The swing clamps (a catalogue part, e.g. ROEMHELD's) are our design.
+4. **Two build orientations on the chapter's plate** ([`alloy_models.ZBARS`](../alloy_models.py), `zbar_troughs`). The
+   plate carries two bars printed vertical (Z) at its right, beside the four flat ones (XY), so the build is 100 mm tall.
+   The lance sweeps round them, the box turns them (their tips stay inside the hopper's funnel at 180 deg), and the EDM
+   cuts them in the same set-up: on edge they stand out of the plate's face, level, and the wire, which meets them
+   first, cuts across their 10 x 6 mm feet (60 mm^2 each, against about 800 mm^2 along a flat bar). Each settles 0.5 mm
+   into a U trough that hangs off a post on the comb's left arm, clear of the wire's plane; the upper trough stops 60 mm
+   out, so the lower bar's free end is open once the upper bar is gone. The arm takes each by its free end, level,
+   lifts it 2 mm, draws it straight out, turns it to hang from the gripper, rinses it and stands it in the rack's end
+   slot (the rack has six slots now, 26 mm apart: [`r8_test.TRAY`](../r8_test.py)). The two tests stay on flat bars.
+   Why the lab wants all three orientations, the 45 deg case, the EDM's limits and cut times are in the separate PR's
+   `notes/edm_orientations.md` (branch `claude/issue-303-edm-orientations`).
+5. **The tensile test as a cutaway, from the front-right** (Sterling's 32:20). Round 8's `CAM_GRIP` sat 760 mm in
+   front of the frame at x 480, behind the MiR's arm, and looked at the specimen through the closed door's see-through
+   window. Now the door shuts, and the chamber is drawn cut in half through the load string: its back half only
+   ([`r8_test`](../r8_test.py) piece `chamber_cut`, with refractory-coloured cut faces), no front half, no door, nothing
+   see-through, so the specimen, both wedge grips, the pull rods and the AVE 2 in front show while the crosshead closes,
+   the chamber heats and the bar is pulled; the whole chamber comes back before the door opens. The camera is 1.6 m
+   off the frame at its front-right, over the MiR's end.
+6. **What was odd about the heated box** (r8_test.instron_floor). Its shell's front wall was solid: the door was drawn
+   on top of a 30 mm wall with no opening behind it, so with the door open the arm reached through the wall. The shell
+   now has the door's 400 x 560 mm opening (Instron's inside size for the 3119-608). And its controller stood in the
+   12.5 mm between the chamber and the right column, 24 mm into the column; it now sits on the chamber's roof, left of
+   the upper pull rod. Its place on the frame (between the columns, 550 mm wide in the 575 mm gap), the door hinged on
+   the left, the window and the pull rods through the ports were right and are unchanged.
+7. **The six colliding poses.** Every park now goes to the first of a few variants of PARK (turned about the base by
+   0, +-45, +-90 or 180 deg, or less folded) that touches nothing where the arm is (`clear_park`), so it no longer
+   puts wrist 2 against the tongs or the chamber's open door. Moves that carry a bar to the rack, and the vertical bars'
+   moves, go to the collision-free IK branch of their target nearest the arm's joints (`clear_q`, `go_clear`) instead of
+   whichever branch the solver finds first, which is what folded the arm on itself at the rack in round 8.
+8. **The IPA jar** is the lab-wide jar now (`props.jar_style`): clear glass, light grey-blue at 0.35 opacity, with a
+   matte black cap (its knob too). The IPA inside stays blue.
+
+AUDIT_PARA
+
 ## Round 8: chapter 5, depowder, cut, heat treat, tensile at room and elevated temperature
 
 Sterling's review of 2026-11-05 (PR #318) asked for a catch shelf that catches, a capped IPA jar, real tensile
