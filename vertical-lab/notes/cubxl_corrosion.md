@@ -193,3 +193,8 @@ cap on the magnet.
 
 Not yet verified by anyone: that the magnet can seat and lift a cap from a vial of the same make held 33 mm away (no
 bench test; the lift force is DAL's open bench test 1 for the electrode cap).
+
+**Open (camera).** In the committed clip the close-up camera for steps 2 and 3 (`_C_HOLD` in `r9_cubxl.py`, eye (140, 40, 340),
+CubOS mm) is too tight: the parked ASW cap on the parking vial is hard to see behind the head. A pulled-back eye of about
+(15, -60, 545) looking at (318, 170, 50) was queued as a second render but was stopped for slot time and never viewed; it is
+unverified. The GIF in `out/instruments/` is the committed 598-frame GIF thinned to every second frame at 0.8 scale (3.8 MB).
