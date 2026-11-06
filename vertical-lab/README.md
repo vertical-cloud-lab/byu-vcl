@@ -9,6 +9,28 @@ the way the lab's other animations are (rePowder training, sieving, atomizer cha
 models tessellated into PyVista, rendered off-screen, text drawn with PIL, written as an MP4 and a GIF. The scene
 framework, [`scene.py`](scene.py), is `atomizer-training/viz3d/scene.py` from #124's branch.
 
+## The org page's GIF, remade in this lab
+
+![The org page's GIF](out/org_vertical_lab.gif)
+
+[`out/org_vertical_lab.gif`](out/org_vertical_lab.gif) is made to replace that GIF on the org README, under the same
+title. It is one loop of the 9:09 clip's corrosion test (DAL's powder reactivity test) in the two-Shuttle lab:
+
+1. Tray A is at Shuttle 1's opening. The MiR250 + UR10e stands a vial of atomized powder in the CubXL.
+2. The tray goes back to its slot, where its dock keeps it powered, and the CubXL runs the test there.
+3. The tray comes back, and the arm takes the vial out.
+
+- **It loops without a cut.** The last frame is the first one again.
+- **The file:** 1280 × 806, 408 frames at 20 fps: 20.4 s at 2× the modelled speed, 4.7 MB.
+  - It isn't lossy-compressed. With gifsicle's `--lossy`, the last frame drifted from the first where things had moved,
+    so the loop would flicker.
+- **The arm audit: 0 of 364 checked frames in collision**
+  ([`out/collisions/org_vertical_lab.json`](out/collisions/org_vertical_lab.json)).
+- **Changed for this shot only** ([`org_gif.py`](org_gif.py) says why):
+  - the camera stands where the south row is, so that row's floor machines and overhead utilities are left out;
+  - the bay's back shutter is drawn more see-through, so tray A's slot shows through the empty bay.
+- **The test is a time-lapse,** and its label says so.
+
 ## Round 8: the route in seven chapters, sample prep, the powder checked, scaling up, the lab at speed
 
 Asked for on [PR #318](https://github.com/vertical-cloud-lab/byu-vcl/pull/318) (2026-11-05 00:37 UTC, after watching
@@ -1827,6 +1849,14 @@ ARM_NO_PLAN=1 VIZ3D_FPS=6 xvfb-run -a python3 setup_lab.py   # the set-up, every
 VLAB_ONLY_TRAYS=DEKL ARM_AUDIT=1 xvfb-run -a python3 alloy_characterize.py   # an audit with only the trays the arm works at
 xvfb-run -a python3 tour.py mount_press cnc polisher sem vhx nanoindenter pip hardness furnace xrd xrf
 python3 longform.py warm; python3 longform.py; python3 longform.py upload
+```
+
+The org page's GIF (one scene job, about 18 min and 5.6 GB):
+
+```bash
+ARM_AUDIT=1 xvfb-run -a python3 org_gif.py            # every frame's arm checked -> out/collisions/org_vertical_lab.json
+VIZ3D_FPS=10 xvfb-run -a python3 org_gif.py           # the clip, real time -> out/mp4/org_vertical_lab.mp4
+python3 org_gif.py gif                                # 2x, under its header band -> out/org_vertical_lab.gif
 ```
 
 Putting them on YouTube (needs `YOUTUBE_UPLOAD_TOKEN_PICKLE_B64`; see [`youtube/README.md`](../youtube/README.md)):

@@ -18,11 +18,18 @@ extractor at the opening), so the GIF loops without a cut. What differs is too s
 the CubXL's waste, and the vial holds 200 uL, 0.4 mm deep. The GIF plays everything at SPEED x the modelled times and
 says so; the CubXL's test, minutes long, is compressed further, and its label says that.
 
+The shot (CAM): Shuttle 1 from the front and a little to the right, from 3 m up, so the empty bay shows tray A's slot
+behind it. Three things are changed for this shot only, all drawing choices: the camera stands where the south row is,
+so that row's floor machines (FLOOR_PLAN row "S": the two Instrons, the ducted fume hood, the DED, the wire EDM) and
+its overhead utilities (Y_CUT) are left out; and the bay's back shutter is drawn more see-through (SHUTTER_GHOST).
+Tried and dropped (views): from further right or higher, the console and the bay's header hide the slot; from lower
+and further back, the south row's fume hood, cable drops and argon line stand in front of Shuttle 1.
+
     VIZ3D_FPS=10 xvfb-run -a python3 org_gif.py views    # the candidate views, as stills -> /tmp/org_gif_views.png
     PREVIEW=1 xvfb-run -a python3 org_gif.py             # the last frame of each step -> /tmp/preview_<NAME>.png
     ARM_AUDIT=1 xvfb-run -a python3 org_gif.py           # no render: every frame's arm checked -> out/collisions/
-    VIZ3D_FPS=10 xvfb-run -a python3 org_gif.py          # -> out/mp4/<NAME>.mp4, out/<NAME>.json, out/<NAME>_still.png
-    python3 org_gif.py gif                               # -> out/<NAME>.gif: SPEED x, for the org README
+    VIZ3D_FPS=10 xvfb-run -a python3 org_gif.py          # -> out/mp4/<NAME>.mp4, out/<NAME>.json
+    python3 org_gif.py gif                               # -> out/<NAME>.gif (SPEED x), its still, mp4/<NAME>_readme.mp4
 """
 from __future__ import annotations
 
@@ -41,28 +48,27 @@ SPEED = 2.0          # the GIF plays the clip at this many times its modelled sp
 GIF_W = 1280         # px; the org README shows it about 830 px wide, so this stays sharp on a 2x display
 TEXT = 1.45          # the overlay's text, against the scenes' 720p sizes: the README shows the GIF at about 0.65x
 
-# the views: camera position, focal point, up (mm; Shuttle 1's centre at the origin, its opening facing -y), view angle
+# the views: camera position, focal point, up (mm; Shuttle 1's centre at the origin, its opening facing -y), view angle.
+# f2 is the GIF's; the others are what was tried on the way (views), with what was wrong with each.
 CAMS = {
-    "lab_vlm": [(7600, -9000, 5200), (1600, -900, 1700), (0, 0, 1)],       # animate.CAM_LAB_VLM
-    "lab_open": [(3500, -5900, 2700), (0, -1000, 1300), (0, 0, 1)],        # animate.CAM_LAB_OPEN
-    "front34_low": [(3900, -7600, 2300), (600, -800, 1700), (0, 0, 1)],
-    "v1": [(3900, -7600, 2300), (600, -800, 1850), (0, 0, 1), 33.0],
-    "w1": [(3900, -7600, 2300), (450, -800, 1900), (0, 0, 1), 34.0],
-    "w2": [(3700, -7900, 2350), (450, -800, 1900), (0, 0, 1), 33.0],
-    "w3": [(4100, -7400, 2300), (500, -800, 1900), (0, 0, 1), 34.0],
-    "shuttle1": [(5600, -7400, 3800), (500, -600, 1750), (0, 0, 1)],
-    "s1a": [(5600, -7400, 3800), (500, -600, 1850), (0, 0, 1), 31.0],
-    "s1b": [(5400, -7600, 3500), (450, -650, 1850), (0, 0, 1), 31.0],
-    "s1c": [(6000, -7800, 3900), (700, -600, 1900), (0, 0, 1), 30.0],
+    "f2": [(2200, -8000, 3000), (100, -700, 1700), (0, 0, 1), 33.0],
+    "lab_vlm": [(7600, -9000, 5200), (1600, -900, 1700), (0, 0, 1)],       # animate.CAM_LAB_VLM: both Shuttles, small
+    "s1a": [(5600, -7400, 3800), (500, -600, 1850), (0, 0, 1), 31.0],      # the bay's header hides tray A's slot
+    "t2": [(4800, -7200, 2700), (400, -500, 1700), (0, 0, 1), 34.0],       # the opening's console hides the slot
+    "w1": [(3900, -7600, 2300), (450, -800, 1900), (0, 0, 1), 34.0],       # the south row's hood and drops in front
 }
-CAM = "s1a"
+CAM = "f2"
 # leader-label boxes, as fractions of the frame (the overlay draws a line from each to its point in the lab)
-LBL = {"arm": (0.03, 0.86), "cub": (0.02, 0.47), "run": (0.02, 0.47), "vlm": (0.02, 0.10)}
-# This view looks down from behind the south row, and the south row's overhead utilities (its cable tray at 3.2 m with
-# its network cable, hangers, drops and junction boxes, the DED's argon run, the fume hood's duct; setup_lab.utilities)
-# cross the frame's lower left between the camera and Shuttle 1. For this shot they are left out: every utility cell
-# south of Y_CUT. The north row's, over the Shuttles, stay.
+LBL = {"arm": (0.03, 0.86), "cub": (0.02, 0.47), "run": (0.02, 0.60), "vlm": (0.02, 0.10)}
+# The camera stands behind the south row (its fronts at y = -6238), so the row's overhead utilities (its cable tray at
+# 3.2 m with its network cable, hangers, drops and junction boxes, the DED's argon run, the fume hood's duct;
+# setup_lab.utilities) and its floor machines (SOUTH_OUT) would stand between it and Shuttle 1. For this shot they are
+# left out: every utility cell south of Y_CUT, and every FLOOR_PLAN station in row "S". The north row's stay.
 Y_CUT = -4000.0
+# The bay's back shutter is drawn see-through like the cladding (animate.GHOST: 0.35 opaque); for this shot, 0.12, so
+# tray A's slot behind it (R2, right behind the opening) shows through the empty bay while the test runs there.
+SHUTTER_GHOST = 0.12
+SOUTH_OUT = bool(int(os.environ.get("ORG_SOUTH_OUT", "1")))
 
 
 def build(data):
@@ -107,14 +113,26 @@ def build(data):
     L.where["A"] = "open"
     L.lift_z = V.SLOTS["open"][1]
     L.shutter = 0.0
+    for nm, g in list(L.ghost.items()):
+        if sc.group_of.get(nm, "").endswith("shutter"):
+            L.ghost[nm] = SHUTTER_GHOST
+    L.skin(1.0)(1.0)
     L.apply_state()
-    clear_view(sc)
+    clear_view(sc, L)
     return sc, L, cub, test
 
 
-def clear_view(sc):
-    """Leave the south row's overhead utilities out of the shot (Y_CUT)."""
+def clear_view(sc, L=None):
+    """Leave the south row's overhead utilities out of the shot (Y_CUT), and its floor machines (SOUTH_OUT)."""
     import pyvista as pv
+
+    import setup_lab as SL
+    F = getattr(L, "floor", None)
+    if SOUTH_OUT and F is not None:
+        for key, (_, row, *_r) in SL.FLOOR_PLAN.items():
+            if row == "S":
+                for nm in F.groups.get(key, []):
+                    sc.alpha[nm] = 0.0
     for nm in [n for n in sc.actors if n.startswith("util/")]:
         mesh = pv.wrap(sc.actors[nm].GetMapper().GetInput())
         if mesh.n_cells == 0:
@@ -186,8 +204,10 @@ def movie():
     p_slot = cub.deck_world(*q["seat"], 0.0) + (0, 0, grasp_z)
     arm_at = sc.world(rb.root)[:3, 3]
     lbl_arm = ("the operator: a MiR250 + UR10e", tuple(arm_at + (0.0, -200.0, -150.0)), LBL["arm"])
-    lbl_cub = ("tray A at the opening:\nthe CubXL, a corrosion test", tuple(cub.deck_world(200.0, 150.0, 260.0)),
-               LBL["cub"])
+    # the CubXL's label points at its gantry's right-hand upright, 455 mm over the tray (picked off the first frame):
+    # the parked arm's wrist hides the middle of the CubXL, and the box at its front right is the EZstat Pro
+    cub_mark = tuple((sc.world("tray_A") @ np.r_[31.0, -49.0, 455.0, 1.0])[:3])
+    lbl_cub = ("tray A at the opening:\nthe CubXL, a corrosion test", cub_mark, LBL["cub"])
     at_opening = [lbl_arm, lbl_cub]
     phases = []
 
@@ -223,7 +243,7 @@ def movie():
     sc.sticky_labels = at_opening
     A.pick(L, rb, "", "", A.down(p_slot, spin=0.0), A.down(p_slot + (0, 0, 130), spin=0.0), "vial")
     A.place(L, rb, "", "", A.down(p_buf), A.down(p_buf + (0, 0, 120)), amr)
-    sc.step("", "", 1.4, rb.joint_to(A.PARK_RAD), hold=0.4, still=True)
+    sc.step("", "", 1.4, rb.joint_to(A.PARK_RAD), hold=0.4)
     out = sc.save()
     print(f"highest forearm/wrist point {rb.max_z_world:.0f} mm", flush=True)
     meta_path = OUT / f"{NAME}.json"
@@ -260,10 +280,13 @@ def header(img, caption: str):
     return out
 
 
-def gif(width=GIF_W, lossy=40, colors=192):
+def gif(width=GIF_W, lossy=0, colors=192):
     """out/mp4/<NAME>.mp4 -> out/<NAME>.gif, every frame at SPEED x the MP4's rate, each under the header band; and the
     same frames as out/mp4/<NAME>_readme.mp4 (SPEED x, h264), for anyone who would rather embed a video. One palette
-    for the whole clip (the camera holds still), no dithering, then gifsicle -O3 --lossy."""
+    for the whole clip (the camera holds still), no dithering, gifsicle -O3 and no --lossy: lossy re-encoding drifts
+    where things moved, and the loop then flickers where the last frame meets the first. On a first cut of this clip,
+    --lossy=40 gave 3.3 MB with 38,771 px of the last frame off the first; lossless, 4.3 MB and 5,819 px, nearly all
+    by a shade (the MP4's own noise)."""
     from PIL import Image
 
     from scene import OUT
@@ -297,7 +320,7 @@ def gif(width=GIF_W, lossy=40, colors=192):
         vid = OUT / "mp4" / f"{NAME}_readme.mp4"
         subprocess.run(["ffmpeg", "-loglevel", "error", "-y", *seq, "-c:v", "libx264", "-crf", "20", "-preset", "slow",
                         "-pix_fmt", "yuv420p", "-movflags", "+faststart", str(vid)], check=True)
-        Image.open(f"{tmp}/00000.png").save(OUT / f"{NAME}_first.png", optimize=True)
+        Image.open(f"{tmp}/00000.png").save(OUT / f"{NAME}_still.png", optimize=True)   # its first frame
     msg = (f"{out.name}: {out.stat().st_size / 1e6:.2f} MB, {w} x {h + int(round(BAND * w / 1280))}, {n} frames at "
            f"{fps:g} fps ({n / fps:.1f} s); {vid.name}: {vid.stat().st_size / 1e6:.2f} MB")
     print(msg, flush=True)
