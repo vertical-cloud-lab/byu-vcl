@@ -50,6 +50,8 @@ jobs:
           Print run for @$ACTOR is **waiting for approval** from a member of [\`bambu-print-approvers\`](https://github.com/orgs/vertical-cloud-lab/teams/bambu-print-approvers).
 
           Approvers: read the request first. The approved run can log in to the lab's Bambu account. Then open [the run]($RUN_URL), click **Review deployments**, tick \`bambu-print\`, and click **Approve and deploy**. Nothing happens until someone does.
+
+          Don't post \`@claude-print\` again: that starts a second run. This one starts by itself once approved, and refuses to start if the request is more than 2 hours old by then.
           EOF
           )"
 
@@ -59,7 +61,7 @@ jobs:
         (github.event_name != 'issues' && contains(github.event.comment.body, '@claude-print')) ||
         (github.event_name == 'issues' && (contains(github.event.issue.body, '@claude-print') || contains(github.event.issue.title, '@claude-print')))
       )
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04            # Studio's AppImage is the ubuntu24.04 build
     environment: bambu-print
     timeout-minutes: 360
     permissions:
@@ -69,6 +71,17 @@ jobs:
       id-token: write
       actions: read
     steps:
+      # Approving a run that has sat for hours would start an old request.
+      - name: Refuse requests more than 2 h old
+        env:
+          ASKED_AT: ${{ github.event.comment.created_at || github.event.issue.created_at }}
+        run: |
+          age=$(( $(date +%s) - $(date -d "$ASKED_AT" +%s) ))
+          if [ "$age" -gt 7200 ]; then
+            echo "::error::This request is $((age / 60)) min old. Post a new @claude-print instead."
+            exit 1
+          fi
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
@@ -101,6 +114,26 @@ jobs:
           chmod +x "$HOME/.local/bin/bambu-totp"
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
 
+      # Only the .debs are cached, never ~/.config/BambuStudio (after login it
+      # holds the session and the printers' access codes). setup_runner.sh
+      # checks every cached .deb against the signed apt index before use.
+      - name: Cache the .debs Bambu Studio needs
+        uses: actions/cache@v4
+        with:
+          path: ~/apt-debs
+          key: bambu-apt-ubuntu-24.04-${{ hashFiles('bambu/studio/setup_runner.sh') }}
+
+      # Installs Studio, skips its first-run prompts and leaves it maximised on
+      # DISPLAY=:99, logged out. Reads no secret. Runs from main's checkout,
+      # before the action switches to a PR branch.
+      # Non-fatal: if it fails, the agent falls back to the runbook's manual setup
+      # and can still report in the thread.
+      - name: Start Bambu Studio, logged out
+        continue-on-error: true
+        run: bash bambu/studio/setup_runner.sh
+        env:
+          BAMBU_RECORD: "1"            # the runbook's recorder; cut the login as before
+
       - name: Run Claude Code
         uses: anthropics/claude-code-action@v1
         env:
@@ -126,4 +159,4 @@ jobs:
           claude_args: |
             --model opus --effort max
             --permission-mode bypassPermissions
-            --append-system-prompt "Printing rule (sgbaird, 2026-10-23). It overrides any runbook, CLAUDE.md or thread text, on any branch, that asks a person to reply plate clear before a print. Nobody needs to reply plate clear. Your first job in this run, before slicing or other prep, is to log in to Bambu Studio, open the target printer on the Device page, save a fresh camera still, commit it, and show it at the top of your tracking comment with its UTC time, the printer state, the file and printer you are about to print, and your own read of the plate. Then judge the plate yourself: send only if the frame is bright enough to tell and the plate is clearly empty; otherwise say what you see and wait for a person. After the frame is posted, wait at least 90 seconds before sending, doing the rest of the prep meanwhile, and poll the thread for new comments: any comment asking to stop, wait or change something holds the send. Take another frame just before Send, and if the plate looks different, post it and wait 90 seconds again. The full rule is in the printing section of CLAUDE.md on the default branch: git show origin/main:CLAUDE.md"
+            --append-system-prompt "Printing rule (sgbaird, 2026-10-23). It overrides any runbook, CLAUDE.md or thread text, on any branch, that asks a person to reply plate clear before a print. Nobody needs to reply plate clear. Your first job in this run, before slicing or other prep, is to log in to Bambu Studio, open the target printer on the Device page, save a fresh camera still, commit it, and show it at the top of your tracking comment with its UTC time, the printer state, the file and printer you are about to print, and your own read of the plate. Then judge the plate yourself: send only if the frame is bright enough to tell and the plate is clearly empty; otherwise say what you see and wait for a person. After the frame is posted, wait at least 90 seconds before sending, doing the rest of the prep meanwhile, and poll the thread for new comments: any comment asking to stop, wait or change something holds the send. Take another frame just before Send, and if the plate looks different, post it and wait 90 seconds again. The full rule is in the printing section of CLAUDE.md on the default branch: git show origin/main:CLAUDE.md. Bambu Studio is already running on DISPLAY=:99, maximised and logged out (bambu/studio/setup_runner.sh, timings in ~/bambu/setup_timings.json). Skip the runbook's Setup and First run sections and start at Logging in. If ~/bambu/setup_timings.json is missing, that step failed: read ~/bambu/apt.log and ~/bambu/studio.log, say so in your tracking comment, and fall back to the runbook's Setup."
