@@ -74,7 +74,7 @@ RACK_TOP_Z = 5.39 + 59.3            # 64.69: the tips' top rims
 TIP_LENGTH = 59.3 - 8.2             # 51.1 below the nozzle once on (8.2 mm overlap)
 PLATE_TOP_Z = 3.55 + 10.67          # 14.22
 PLATE_FLOOR_Z = 3.55
-PITCH = 9.0
+PITCH = deck.WELL_PITCH
 
 # Travel heights. The enclosure is lying on the deck in front of the base in
 # slot 10 (back of slot 7) and the base's tower stands ~100 mm tall, so every
@@ -90,11 +90,7 @@ FLOW = 46.43                        # uL/s, the P300 GEN2's default at apiLevel 
 
 def well_xy(slot, name):
     """Nominal deck (x, y) of well <name> in a standard 96 layout in <slot>."""
-    row = "ABCDEFGH".index(name[0].upper())
-    col = int(name[1:]) - 1
-    if not (0 <= row < 8 and 0 <= col < 12):
-        raise ValueError(f"no well {name}")
-    return deck.in_slot(slot, 14.38 + PITCH * col, 74.24 - PITCH * row)
+    return deck.well_xy(slot, name)
 
 
 class TipCal:

@@ -21,7 +21,7 @@ seated baseline read
 Every reading goes to `digital-wetlab.sensor-data` in MongoDB and to a local
 JSON file.
 
-## Standing settings for the colour read (as of 2026-10-14)
+## Standing settings for the colour read (as of 2026-10-20)
 
 Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202) to remember
 the read height. Use these unless a later entry below changes them:
@@ -37,6 +37,7 @@ the read height. Use these unless a later entry below changes them:
 | enclosure | right-hand socket A2, (92.8, 316.5), label to the front; carried via z 190, 3 mm/s aboard | |
 | sensor | gain **128x**, 2 × 281 ms per reading (ATIME 100, ASTEP 999), LED off, read off the chip itself; the same for every reading on record. **Since 10-10 a reading can ask for its own gain, integration time and LED current:** `link.read(settings={"gain": 4, "atime": 50, "led_ma": 10})`, or `read 8 tag gain=4 led_ma=10` in `enclosure_height_cal.py`; anything left out reads as before. Bracket with integration time at a fixed gain, not with gain. LED: 0 (off) or 4–20 mA. (10-01 said 256x and 2 × 559 ms: wrong, see [`../pico/`](../pico/).) Firmware changes go in over USB only, no OTA (@sgbaird, 10-10). **Keep the LED off:** on the plate (10-14, rail lights off) black ÷ white was 0.99 at z 92 and 0.97 resting, against 0.59 and 0.69 with the rail lights | 10-09, 10-10, 10-14 |
 | light | rail lights on; the OT-2 blacked out: sides since 09-30 midday, cardboard and wood over the rest since 10-01. No measurable room light on 10-01; re-read the white and black after any change to the cover | [`results-blackout-2026-10-02.md`](results-blackout-2026-10-02.md) |
+| **background** | **every well is read empty before paint goes in, at the read height and settings its painted reading will use, and the reading is kept even when the analysis doesn't use it** (@sgbaird, 10-18). The white and black wells too: read their spots empty before filling them. `background 4` in `enclosure_height_cal.py`; `paint_transfer.py --backgrounds <trip>/readings.jsonl` refuses to dispense into a well without one. The colours are still corrected with the black well: on the clear plate, mixing in any share of the own empty reading scored worse | [`results-background-first-2026-10-20.md`](results-background-first-2026-10-20.md) |
 
 ```
 enclosure_height_cal.py --socket-x 92.8 --socket-y 316.5 --press-z 89.0 --carry-z 125 \
@@ -280,7 +281,8 @@ put everything away, so waiting costs nothing but time.
 |---|---|
 | `run_xscan_test.py` | the test |
 | `sensor_read.py` | one MQTT connection held open for the run; `read()` returns the 8 channels |
-| `deck.py` | OT-2 slot origins and slot/offset maths, with no `opentrons` dependency |
+| `deck.py` | OT-2 slot origins and slot/offset maths, with no `opentrons` dependency; `well_xy`/`well_at` for a 96-well plate |
+| `test_background_first.py` | the empty-reading-first rule: both drivers in `--simulate` against a stand-in sensor, 25 checks |
 | `check_reachability.py` | pushes every planned coordinate through the Opentrons simulator |
 | `stream_index.py` | every reading → its UTC instant → a timestamped livestream link |
 | `frames_from_stream.py` | pulls one frame per measurement and OCR-verifies it against the clock burned into the stream |
@@ -537,6 +539,23 @@ blue vial reflects in a band that barely exists, and blue's spectral signature
 is a −0.954 match for the sensor's own two-cycle readout artefact. A blank is
 necessary for this measurement to mean anything; it is not sufficient on its
 own, and a controlled light source still is the larger fix.
+
+### Since 2026-10-20: every well, every experiment
+
+@sgbaird on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202), 10-18: "we should be
+taking a background spectrum for the same well prior to dispensing … regardless of whether or not we use
+it. We should have that as a backup for all experiments, always." So an experiment now runs in this order:
+
+1. **Enclosure trip over the empty wells:** at each one, `xy <x> <y>`, `z 92`, `background 4` (with the
+   settings the painted read will use), `z 125`. Include the spots the white and black will go in.
+2. **Transfers:** `paint_transfer.py --plate-slot 7 --rack-slot 6 --backgrounds ../<trip 1>/readings.jsonl`.
+   A loaded tip is refused at `well` and `dispense` for any well with no empty reading over that well
+   in the last 12 h. `--skip-background-check` (refills only) is logged at every dispense.
+3. **Enclosure trip over the painted wells,** same height, plus the white and black wells.
+
+The empty readings are kept whether or not the analysis uses them. On the clear plate it doesn't:
+subtracting them overcorrects (10-14), and no mix of the two corrections beats the black well alone
+([`results-background-first-2026-10-20.md`](results-background-first-2026-10-20.md)).
 
 ## What has been verified, and what has not
 
@@ -1658,6 +1677,30 @@ paper, 15:26–17:23 MDT, with the paint pipetted in between. Write-up:
   photos) and [`background-subtraction-2026-10-14.gif`](background-subtraction-2026-10-14.gif) (all 212).
 
 ![the two methods against the published ranges](background-subtraction-2026-10-14.png)
+
+## 2026-10-20 — every well read empty before paint goes in; mixing in the empty reading doesn't help (no motion)
+
+Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202) by @sgbaird (10-18, pinged
+10-20): take a background of each well before dispensing, always, as a backup, and "leverage both".
+Write-up: [`results-background-first-2026-10-20.md`](results-background-first-2026-10-20.md).
+
+- **The rule is now in the tools.** `enclosure_height_cal.py` has `background [n]`, refused unless centred
+  over a well, and every `readings.jsonl` row records its plate slot and well from the nozzle's position.
+  `paint_transfer.py` won't dispense into a well that has no empty reading (`--backgrounds`), or start
+  without either `--backgrounds` or `--skip-background-check`. 25/25 checks in
+  [`test_background_first.py`](test_background_first.py), no hardware.
+- **"Leverage both":** on the 10-14 readings, replacing a share `a` of the black well with the well's own
+  empty reading scores 17.8 points off at `a = 0` (as now), 22.0 at 0.5, 28.1 at 1. Every share makes it
+  worse, for each paint. The lowest, 17.0 at `a = −0.3`, is outside the physical range and within run-to-run
+  noise ([`analyse_background_blend.py`](analyse_background_blend.py)).
+- **Where the empty reading should start to pay:** an opaque plate, where no light comes up through the
+  plastic for the paint to block. The first black-plate run gives both corrections from the same readings.
+- **Black plates, re-priced 10-20** (Corning 3915, unchanged since 10-17): single plates $8.45 at Antibodies
+  Inc., but its only shipping is FedEx Priority Overnight, quoted at $75.00 for 4 plates to 84602; cases of
+  100 at $435.23 (Weber, on order), $445.12 (Capitol), $469.15 (Corning, ships ~2027-02-02), $476.00
+  (Government Scientific Source, 11 in stock), shipping extra and not quoted.
+
+![points off against the share of the own empty reading](background-blend-2026-10-20.png)
 
 ## Calibrating with the Opentrons UI instead of hand-tuned offsets
 

@@ -103,7 +103,18 @@ Commands -- write one line to ``cmd`` in the working directory, atomically
                     appended in full (8 channels) to ``readings.jsonl``.
                     key=value pairs are the board's per-reading settings
                     (pico/ firmware of 2026-10-10): gain=4 atime=50 astep=999
-                    led_ma=10 (the breakout's white LED: 0 or 4-20 mA)
+                    led_ma=10 (the breakout's white LED: 0 or 4-20 mA). Each
+                    row also records the plate well it was taken over (``well``,
+                    from the position, ``None`` between wells) and the plate slot
+    background [n] [key=value ...]
+                    the empty-well reading every well gets before paint goes in
+                    (PR #202, 2026-10-18: "a background spectrum for the same
+                    well prior to dispensing ... as a backup for all
+                    experiments, always"). The same as ``read`` (default n 4),
+                    but only centred over a plate well, tagged ``empty-<well>``
+                    and marked ``role: background``. ``paint_transfer.py``
+                    will not dispense into a well without one. Read it at the
+                    height and settings the painted well will be read at
     lights on|off   switch the rail lights without moving. Readings with them
                     off are the only ones the board LED lights alone. Any
                     command that moves switches them back on first, so the
@@ -343,7 +354,13 @@ class Cal:
         self.save_state()
         return out
 
-    def read(self, n, label, settings=None):
+    def over_well(self):
+        """The plate well the nozzle is centred over (within 0.5 mm), or None."""
+        if self.pos is None:
+            return None
+        return deck.well_at(self.args.plate_slot, self.pos[0], self.pos[1])
+
+    def read(self, n, label, settings=None, role=None):
         totals = []
         if self.args.no_sensor:
             return totals
@@ -359,7 +376,10 @@ class Cal:
                 row = {k: r[k] for k in ("experiment_id", "channels", "total",
                                          "t_request_utc", "t_response_utc")}
                 row.update(label=label, pos=self.pos, seq=self.seq,
+                           plate_slot=self.args.plate_slot, well=self.over_well(),
                            lights="off" if self.lights_off else self.args.lights)
+                if role:
+                    row["role"] = role
                 if settings:
                     row.update(settings=settings, sensor_settings=r.get("sensor_settings"),
                                sensor_extra=r.get("sensor_extra"))
@@ -374,6 +394,25 @@ class Cal:
                 pass
             self.link = None
         return totals
+
+    def background(self, words):
+        """``background [n] [key=value ...]``: the empty reading of the well below."""
+        n = int(words[0]) if words and "=" not in words[0] else 4
+        settings = read_settings([w for w in words if "=" in w])
+        well = self.over_well()
+        if well is None:
+            raise ValueError("background only centred over a plate well (within 0.5 mm): "
+                             "xy to its centre first")
+        if self.args.no_sensor:
+            raise ValueError("background needs the sensor (--no-sensor is set)")
+        if not 1 <= n <= 16:
+            raise ValueError("background n must be 1-16")
+        reads = self.read(n, f"empty-{well}", settings, role="background")
+        self.history.append({"label": f"background-{well}", "pos": self.pos,
+                             "settings": settings, "reads": reads})
+        if len(reads) < n:
+            self.log(f"background {well}: only {len(reads)} of {n} readings came back")
+        self.log(f"background {well} at z {self.pos[2]:g}: {reads}")
 
     # -- waiting for a decision --------------------------------------------------
     def wait(self, what):
@@ -778,7 +817,7 @@ class Cal:
             return ("jiggle <axis> <mm> <n> <mm/s> | up <z> | release-here | carry | "
                     "return | home" if self.aboard else "home")
         if self.phase in ("carry", "ladder"):
-            return "z <mm> | xy <x> <y> | floor <mm> | read [n] | photo | return"
+            return "z <mm> | xy <x> <y> | floor <mm> | read [n] | background [n] | photo | return"
         if self.phase == "release":
             return "retry-release [mm] | park"
         if self.phase == "release?":
@@ -820,7 +859,7 @@ class Cal:
         while self.phase not in ("done", "parked"):
             cmd = self.wait(self.prompt())
             op = cmd[0]
-            if self.lights_off and op not in ("read", "photo", "lights", "floor"):
+            if self.lights_off and op not in ("read", "background", "photo", "lights", "floor"):
                 if not self.args.simulate:
                     robot_lights(ROBOT_IP, on=True)
                 self.lights_off = False
@@ -870,6 +909,8 @@ class Cal:
                     self.history.append({"label": f"read-{tag}", "pos": self.pos,
                                          "settings": settings,
                                          "reads": self.read(n, tag, settings)})
+                elif op == "background" and self.phase in ("carry", "ladder"):
+                    self.background(cmd[1:])
                 elif op == "lights":
                     if len(cmd) != 2 or cmd[1] not in ("on", "off"):
                         raise ValueError("lights on|off")
