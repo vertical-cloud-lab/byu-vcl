@@ -1,6 +1,6 @@
 {
  "clip": "alloy_powder",
- "frames_checked": 1025,
+ "frames_checked": 1028,
  "frames_with_collisions": 19,
  "runs": [
   {
@@ -13,12 +13,6 @@
      "arm": "unit0ur",
      "kind": "gripper",
      "part": "right_finger",
-     "other": "p_zbh"
-    },
-    {
-     "arm": "unit0ur",
-     "kind": "gripper",
-     "part": "right_finger_tip",
      "other": "p_zbh"
     }
    ]
@@ -33,12 +27,6 @@
      "arm": "unit0ur",
      "kind": "gripper",
      "part": "right_finger",
-     "other": "p_zbh"
-    },
-    {
-     "arm": "unit0ur",
-     "kind": "gripper",
-     "part": "right_finger_tip",
      "other": "p_zbh"
     }
    ]

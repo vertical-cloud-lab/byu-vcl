@@ -156,12 +156,15 @@ VIZ3D_FPS=6 python3 runner_guard.py bg --mem 6500 --log /tmp/r.log -- xvfb-run -
 
 - Rendered: `out/mp4/alloy_powder.mp4`, 1309 frames, 218.2 s at 6 fps, 1280x720 (commit `50a8e08`); GIF shrunk with
   `gifsicle --lossy=150 --colors 80 --scale 0.75` to 4.7 MB (the native-size GIF was 7.9 MB).
-- **The frame-by-frame collision audit of this final render was NOT run.** The render queue was full; the orchestrator
-  stopped the queued audit twice. The only numbers are from the audit before the last two fixes: 19 of 1025 frames
-  (14 runs) in the first audit after the via pose and the 36 mm sift gap, down from 23 of 1002: the two holder-finger
-  frames (133, 158) and the held holder at the door (350) remained, and 16 frames of the arm sweeping the SEM and
-  MiniFlex housings after the XRD load (366-384). The final render has a different via pose (up over the MiR, via
-  `sh(T_v, (0, 0, 220))`) and a 48 mm sift gap that no audit has checked. `out/collisions/alloy_powder.json` is the
-  19-frame audit, not the final one.
+- **The final render's audit** (run by the orchestrator at 07:20-07:50 in a free slot, `VLAB_ONLY_TRAYS=DEM
+  ARM_AUDIT=1`): **19 of 1028 frames in collision, 14 runs**, the same places as the audit before the last two fixes,
+  so the via pose over the MiR and the 48 mm sift gap did not clear them:
+  - the right finger brushing the zero-background holder while the vial sifts (2 frames);
+  - the held holder touching the MiniFlex's door going in (1 frame);
+  - the upper arm and forearm sweeping the SEM's and the MiniFlex's housings and tray D's camera post on the move
+    away from the MiniFlex after the XRD load (16 frames, in 11 runs).
+
+  `out/collisions/alloy_powder.json` is this audit. The fix is still a waypoint straight out of the MiniFlex's doorway
+  before the arm turns for the MiR.
 - Not done: re-rendering the `xrd`, `mastersizer` and `xrf` tour clips (their instrument models changed: the
   Mastersizer's `shell` piece), no slot was free. The tour cache is keyed on the sources, so they rebuild on next run.
