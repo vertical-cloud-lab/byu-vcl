@@ -26,6 +26,7 @@ carried into the MIDI in the IK branch that is clear at the supply cylinder (``a
 from __future__ import annotations
 
 import math
+import os
 import sys
 from pathlib import Path
 
@@ -486,6 +487,13 @@ def movie():
     rb = amr.rb
     PARK = np.radians(A.PARK_DEG)
     n = 5
+    if os.environ.get("PRINT_STEPS"):                        # the frame each step starts at, to find an audit's frames
+        _step = sc.step
+
+        def step_logged(label, cap, secs, *a, **kw):
+            print(f"STEP {sc.n} {label} {secs:.1f}s {cap[:48]}", flush=True)
+            return _step(label, cap, secs, *a, **kw)
+        sc.step = step_logged
     inst = sv.inst
     zl = 212.0 + 6 * IC.DEPTH - 8                       # the lid's datum (instruments_char.sieve: z_rim - 8)
     z_rim = 212.0 + 6 * IC.DEPTH
@@ -863,7 +871,7 @@ def movie():
     # ultrasonic IPA bath, a warm-air knife, back on the stand. Drawn for the No. 325, the finest cloth.
     W_ = SS.WASH
     wash_w = sc.world("wash")[:3, 3]
-    CAM_WASH = [tuple(wash_w + (-300, -1250, 820)), tuple(wash_w + (90, 20, 250)), (0, 0, 1)]
+    CAM_WASH = [tuple(wash_w + (-330, -1150, 1000)), tuple(wash_w + (60, 0, 130)), (0, 0, 1)]
     x_wb = sc.world("tipper")[0, 3] / 2 + wash_w[0] / 2 + 60.0       # the MiR between the tipper and the wash module
     seat_up = T((0, 0, 0))
     basket_at = lambda z: T((0, 0, z))                                # noqa: E731
