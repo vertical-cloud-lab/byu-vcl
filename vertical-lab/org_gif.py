@@ -71,7 +71,7 @@ import tempfile
 
 import numpy as np
 
-NAME = "org_vertical_lab"
+NAME = os.environ.get("ORG_NAME", "org_vertical_lab")   # another name renders beside a running pass, without clashing
 TITLE = "In a vertical lab, equipment is brought to the operator"
 SPEED = 1.5          # the GIF plays the clip at this many times its modelled speed, and says so (12 fps x 1.5: 18 fps,
                      # frame delays of 6 and 5 cs in turn)
@@ -590,9 +590,27 @@ def movie():
     import props as P
     import vlm as V
     import warehouse as W
+    import scene as SC
     from scene import OUT
     sc, L, cub, test, vials = build(lab.meshes())
     sc.title = ""
+    if os.environ.get("ARM_AUDIT_RENDER") and not (SC.PREVIEW or SC.AUDIT):
+        import collide                      # ARM_AUDIT=1's audit in the render's own pass: one pass for both
+        sc.auditor = collide.Auditor(sc)
+        sc.frame_hooks.append(sc.auditor)   # after the TestClock (inserted at 0 below), so it sees the CubXL posed
+    live = os.environ.get("ORG_LIVE")       # a directory: every 60th frame as a JPEG while it renders, to check it
+    if live and not (SC.PREVIEW or SC.AUDIT):
+        import time
+        os.makedirs(live, exist_ok=True)
+        snap, t_start = sc.snap, time.time()
+
+        def snap_live(n=1):
+            hi = snap(n)
+            if hi is not None and sc.n // 60 != (sc.n - n) // 60:
+                hi.convert("RGB").save(f"{live}/{sc.n:05d}.jpg", quality=85)
+                print(f"frame {sc.n}, {time.time() - t_start:.0f} s", flush=True)
+            return hi
+        sc.snap = snap_live
     rb, cab = L.robot, L.amr_group
     q = IL.POWDER_TEST
     set_cam(sc, os.environ.get("ORG_CAM", CAM))
@@ -622,12 +640,16 @@ def movie():
     b = __import__("setup_lab").SIEVE_BENCH
     lbl_cell = ("outside the VLM: the sieving cell", (b["x"] - 250.0, -1562.0, b["h"] + b["encl_h"] - 250.0),
                 LBL["cell"])
-    # the VLM's label points at its opening's header: the roof is out of these close views
-    lbl_vlm = ("Kardex Shuttle XP 500:\nevery tray docked to power", (0.0, -1590.0, V.Z_OPEN_TOP + 45.0), LBL["vlm"])
+    # the VLM's label points at its opening's header, by the logo: the roof is out of these close views. Only the cell's
+    # view shows it; the header is above the opening's view, so the drive over labels tray A instead (lbl_A, whose
+    # anchor stays in frame all the way). At the header's middle, its first anchor was under its own box
+    lbl_vlm = ("Kardex Shuttle XP 500:\nevery tray docked to power", (-900.0, -1590.0, V.Z_OPEN_TOP + 45.0),
+               LBL["vlm"])
     at_cell = [lbl_arm, lbl_cell, lbl_vlm]
 
     def lbl_at(k, text, xyz_tray, box):
         return (text, tuple((sc.world(f"tray_{k}") @ np.r_[np.asarray(xyz_tray, float), 1.0])[:3]), box)
+    lbl_A = []                            # set as the MiR leaves the cell, with tray A at the opening
 
     def on_state(s):
         vials["sample"].set(ul=s["vial"])
@@ -644,16 +666,22 @@ def movie():
         yield from pick(rb, A.down(p_cell), A.down(p_cell + (0, 0, 120)), "vial_s", A.GRIP_VIAL)
         yield from place(rb, A.down(on_cab(L.buffer_seat)), A.down(on_cab(L.buffer_seat) + (0, 0, 120)), cab)
         yield from park(rb)
-        yield from call(lambda: (phase("It drives over. The VLM has already brought the tray it needs to the "
-                                       "opening."), labels(lbl_arm, lbl_vlm)))
+        yield from call(leave_cell)
         yield from drive(L, 0.0, arm_at, cams)
+
+    def leave_cell():
+        if L.where["A"] != "open":
+            print("warning: tray A wasn't at the opening yet when its label was placed", file=sys.stderr)
+        lbl_A.append(lbl_at("A", "tray A at the opening:\nthe CubXL, a corrosion test", (31.0, -49.0, 455.0),
+                            LBL["A"]))
+        phase("It drives over. The VLM has already brought the tray it needs to the opening.")
+        labels(lbl_arm, lbl_A[0])
     run(sc, cell_pick(), fetch(L, "A"))
     # ------------------------------------------------------------------ 2. tray A: the vials swapped
-    lbl_A = lbl_at("A", "tray A at the opening:\nthe CubXL, a corrosion test", (31.0, -49.0, 455.0), LBL["A"])
 
     def at_A():
         yield from call(lambda: (phase("Tray A: the new sample goes in, and the one whose test is done comes out."),
-                                 labels(lbl_arm, lbl_A)))
+                                 labels(lbl_arm, lbl_A[0])))
         yield from pick(rb, A.down(cub_seat(), spin=0.0), A.down(cub_seat() + (0, 0, 130), spin=0.0), "vial_t",
                         A.GRIP_VIAL)
         yield from place(rb, A.down(on_cab(L.m2_seat), spin=0.0), A.down(on_cab(L.m2_seat) + (0, 0, 120), spin=0.0),
@@ -703,6 +731,8 @@ def movie():
         yield 0.4, None
     run(sc, back(), store(L, "B"))
     out = sc.save()
+    if sc.auditor is not None and not SC.AUDIT:      # ARM_AUDIT_RENDER=1
+        sc.auditor.save()
     print(f"highest forearm/wrist point {rb.max_z_world:.0f} mm; {sc.n} frames; the test ran frames {clock.n0}-"
           f"{clock.n1}", flush=True)
     if clock.n1 is None:
