@@ -147,17 +147,15 @@ What fixed what:
 
 ### Known in the committed render
 
-The render (`b5ab9d8`) was made from `72bb1bf`, before the last two fixes, and the long-form was built from it:
-- **13 frames (about 2 s) with the arm in collision at the iMicro's unload, frames 574-598**: the wrist passes through
-  tray E's camera head, the opening's frame and the iMicro's raised hood on the way out. `5518d3e` takes the mount back
-  from the joints that set it down, and audits at 1 frame in 1269; not rendered.
-- **1 frame (1246)**: the wrist grazes the VHX's stand as the bar is set down on the carrier. Not fixed.
-- **The HM-220's close-up looks into Shuttle 2's frame** instead of at the tester (frames about 890-1150): its camera
-  was set from the left. `2d0fc50` moves it to the front right, through the opening; not rendered.
-- To re-render with both fixes: `VLAB_ONLY_TRAYS=DEKL VIZ3D_FPS=6 xvfb-run -a python3 alloy_characterize.py` (about
-  36 min on the runner, under `runner_guard.py`), or only those stretches, spliced in:
-  `CH7_NAME=alloy_characterize_window CH7_WINDOW=560:610,890:1155` renders them to their own MP4, with the frame
-  numbers in `/tmp/alloy_characterize_window_frames.txt`.
+Round 9 (2026-11-06, `1d2a6d0`) re-rendered the chapter on the code with round 8's last two fixes, and with the bay's
+access table (`6e10de7`): 1526 frames, 254 s at 6 fps, `VLAB_ONLY_TRAYS=DEKL`, 45 min under `runner_guard.py` beside
+two other jobs.
+- **The iMicro's unload is clear:** the mount is taken back from the joints that set it down (`5518d3e`). Round 8's render
+  (`b5ab9d8`) had 13 frames (574-598) of the wrist through tray E's camera head, the opening's frame and the raised hood.
+- **The HM-220's close-up is from the front right, through Shuttle 2's opening** (`2d0fc50`), so the tester is in view.
+- **1 frame (1246) is left:** the wrist grazes the VHX's stand as the bar is set down on the carrier. Not fixed. The
+  audit of this code is 1 frame in 1269 checked.
+- `CH7_NAME=alloy_characterize_window CH7_WINDOW=a:b,...` still renders chosen stretches to their own MP4, for splicing.
 
 ### Not done
 
