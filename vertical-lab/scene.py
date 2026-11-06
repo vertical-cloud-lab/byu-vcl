@@ -211,6 +211,7 @@ class Scene:
                 self.mp4 = encoder(self.mp4_path, size, crf=16 if CLEAN else 21)
         self.gif = gif
         self.text_scale = 1.0     # the overlay's text against its 720p sizes (org_gif.py: the README shows it small)
+        self.sticky_labels: list = []   # (text, xyz, (fx, fy)) that every step shows besides its own labels
         self.intro = 1.0          # seconds of establishing view before the first sub-step's motion
         self.robots: list = []    # robot.Robot instances in the scene (they register themselves)
         self.frame_hooks: list = []   # f(scene) after every frame's update, before it is drawn
@@ -421,9 +422,11 @@ class Scene:
         start = self.n
         self.label = label
         self.caption = " ".join(caption.split())
+        labels = list(labels) + [l for l in self.sticky_labels if l not in labels]
         if self.n == 0 and not PREVIEW:
-            # a clean establishing view first (no leader labels): it shows during the tutorial's crossfade
-            self.labels = []
+            # a clean establishing view first (no leader labels): it shows during the tutorial's crossfade. Sticky
+            # labels are up from the first frame, so a clip that loops (org_gif.py) shows the same labels at both ends
+            self.labels = [(t, xyz, at, 1.0) for t, xyz, at in self.sticky_labels]
             self.snap(int(round(self.intro * FPS)))
         frames = max(1, int(round(seconds * FPS)))
         cam_from = [np.array(v, float) for v in self.cam]
