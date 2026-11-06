@@ -1,11 +1,19 @@
-# Two spacers on the A1 mini: not sent yet (requested 2026-11-05, prepared 2026-11-06)
+# Two spacers on the A1 mini (requested 2026-11-05, printed 2026-11-06)
 
 @benwhitney5463
 [asked](https://github.com/vertical-cloud-lab/byu-vcl/pull/269#issuecomment-6671877169) on
 PR #269, with `@claude-print`, for two of his Onshape *Stir module spacer* printed at once.
 This is the spacer that goes under the vial on the stirrer
-([README](../../README.md#tested-2026-11-05-a-spacer-and-washers-under-the-vial)). **Nothing has
-been sent to a printer.**
+([README](../../README.md#tested-2026-11-05-a-spacer-and-washers-under-the-vial)).
+
+**Outcome: printed, with no pause, dialog or HMS alert.** Two Ø15 × 4.6 mm spacers
+([`spacer_d15_h4.6_onshape.stl`](../../stl/spacer/spacer_d15_h4.6_onshape.stl), the file Ben
+named in his [2026-11-06 request](https://github.com/vertical-cloud-lab/byu-vcl/pull/269#issuecomment-6694380432))
+were sent at 20:37:06 UTC in white PETG Basic. **The camera gave no picture at any point**, so
+the plate was never seen from here: the run sent on Ben's reply that the plate was clear,
+given after the run said it couldn't see it ([below](#2026-11-06-printed-on-bens-reply-with-no-camera-frame)).
+The printer reached layer 23/23 at 20:50:33 and showed 100 % *Finished* by 20:51:29, 14 min 23 s
+after Send against Studio's 11 min 59 s. The parts were left on the plate.
 
 ## 2026-11-05: the print run held, then ended
 
@@ -95,10 +103,90 @@ The same as the stirrer's other PETG parts:
 | Height | 4.6 mm is 23 layers of 0.20 mm, first layer included, so it should slice to exactly 4.6 mm. The G-code's last layer should be at z = 4.6 |
 | Expect | about 15–20 min from Send, more than half of it the printer's preparation, and 1–2 g |
 
+## 2026-11-06: printed on Ben's reply, with no camera frame
+
+Ben [asked again](https://github.com/vertical-cloud-lab/byu-vcl/pull/269#issuecomment-6694380432)
+at 20:10:18 UTC, naming the file: *"print two of
+hardware/vial-stirrer-cubxl/stl/spacer/spacer_d15_h4.6_onshape.stl from branch
+claude/issue-169-20261009-2151 on the A1 mini, side by side, white PETG Basic from A4, with
+BUILD.md's settings. The plate is clear."* The print run was approved and started at 20:10:47.
+Bambu Studio 02.08.02.61 ran on the runner. It logged in with the password and an
+authenticator code from `bambu-totp`, and Bambu asked for nothing else.
+
+### The plate check: no frame, so a person's reply
+
+Under the 2026-10-23 rule the run reads the plate itself from a fresh frame. If it can't tell,
+it says what it sees and waits for a person; that is the one case that needs a reply.
+
+- **The Device page, 20:27:29.** The printer was idle after *Base* (100 %, *Finished*). Nozzle
+  21 °C and bed 21 °C, heaters off, no HMS alerts ([HMS tab](20261106T203005Z_hms_empty.png),
+  20:30:05). The nozzle was 0.4 mm stainless, standard flow
+  ([Printer Parts](20261106T202950Z_printer_parts.png), 20:29:50). AMS Lite: A1 PLA dark
+  blue, A2 empty, A3 PLA black, A4 PETG white.
+- **No frame.** The live view failed at 20:28 and at 20:29 with *"Loading failed. Please check
+  the network and try again. [2:2]"* ([Device page](20261106T202811Z_device_page.jpg),
+  [second try](20261106T202950Z_live_view_failed_again.png)). That is the same failure as on
+  11-05, and the LAN check at 18:14 got no frame either.
+- **20:30:51, posted** at the top of the tracking comment: the Device page, the state, the file
+  and printer, and the read of the plate, *"I can't see it"*. It asked someone at the printer
+  either to switch it off and on, or to reply that the plate was clear right then. Ben's
+  request had said the plate was clear, but that was before the run started.
+- **20:35:26, Ben's reply:** *"the plate is clear right now"*
+  ([comment](https://github.com/vertical-cloud-lab/byu-vcl/pull/269#issuecomment-6694912778)).
+  The thread was polled every 20 s from 20:31:10, and nothing else was posted.
+- **20:35:58, one more try at the camera before Send:** *"Video Stopped"*, no picture
+  ([Device page](20261106T203636Z_device_page_before_send.jpg)).
+- **20:37:06, Send,** 6 min 15 s after the post and 1 min 40 s after Ben's reply.
+
+### The slice
+
+| | |
+|---|---|
+| Parts | The STL imported twice (*Clone*, then *Arrange*), side by side near the middle of the plate. Centres at (118.05, 87.04) and (133.95, 92.96) mm, 2 mm apart |
+| Printer | Bambu Lab A1 mini 0.4 nozzle (set by *Sync info*; the empty project had started as an A1), Textured PEI Plate |
+| Filament | Bambu PETG Basic @BBL A1M 0.4 nozzle, white: project filament 1 set to the AMS's A4 entry. 245 °C nozzle, 70 °C bed |
+| Process | `0.20mm Standard @BBL A1M` with `BUILD.md`'s changes: wall loops 2 → 4, sparse infill 15 → 30 %, elephant-foot compensation 0 → 0.15 mm. Supports off and auto brim left as they were; no brim was generated |
+| Checked in the slice's `CONFIG_BLOCK` | `wall_loops = 4`, `sparse_infill_density = 30%`, `elefant_foot_compensation = 0.15`, `enable_support = 0`, `curr_bed_type = Textured PEI Plate`, `filament_settings_id = Bambu PETG Basic @BBL A1M 0.4 nozzle`, `printer_settings_id = Bambu Lab A1 mini 0.4 nozzle` |
+| Studio's estimate | 23 layers to 4.60 mm, 0.49 m, 1.48 g, 11 min 59 s, of which 5 min 37 s is the model |
+| The discs in the G-code | [`check_slice.py`](check_slice.py) ([output](check_slice_output.txt)): each disc's outer wall runs on a 14.58 mm centreline from layer 2 to layer 23, so Ø15.00 mm outside with 0.42 mm lines. Layer 1 is 14.20 mm with 0.5 mm lines, Ø14.70 mm: the 0.15 mm compensation |
+| Send | Job `spacers_d15_x2` (Studio offered `spacer_d15_h4.6_onshape`). Thumbelina, the A1 Mini, PEI, PETG → A4, timelapse off, bed levelling and flow dynamics calibration on ([dialog](20261106T203700Z_send_dialog.png)) |
+| Sent file | [`spacers_d15_x2.gcode.3mf`](spacers_d15_x2.gcode.3mf), the 3MF Studio wrote at Send, with the account's `DesignerUserId` blanked. Its plate G-code (MD5 `015fe05f86b497214c4e7aea52b7733e`) is byte-identical to Studio's slice |
+
+### Watching it
+
+The camera was out, so the print was watched by reading Studio's Device page every 10 s:
+the job panel's layer and percentage, the nozzle and bed temperatures, and any new window, such
+as a warning. [`watch_a1mini_nocam.py`](watch_a1mini_nocam.py) is `bambu/studio/watch_studio.py`
+from PR #234's branch without the blank-camera stop, with the job panel where it sits when the
+live view isn't playing, and with PETG's limits. [`watch_monitor.jsonl`](watch_monitor.jsonl)
+is its log.
+
+| UTC | |
+|---|---|
+| 20:37:06 | *Send* |
+| 20:38:42 | `spacers_d15_x2` on the printer, layer 0/23: nozzle 246 °C heading to 250, then 270 for the PETG flush |
+| 20:40:22–20:44:27 | Preparation: the nozzle cooled to about 140 °C for bed levelling, then back to 245 °C; the bed reached 70 °C; the job panel went from 7 to 46 % at layer 0 |
+| 20:45:00 | **Layer 1**, 7 min 54 s after Send. The build-plate marker check, on according to the 11-06 LAN read, didn't stop the print without a camera |
+| 20:45:00–20:50:33 | Layers 1 to 23, about 11 s each; layer 10 to 11 took 44 s |
+| 20:50:56 | Bed heater off; nozzle heater off at 20:51:07 |
+| 20:51:29 | **100 %, layer 23/23, *Finished*** ([Device page](20261106T205246Z_device_page_finished.jpg) at 20:52:46). 14 min 23 s after Send, against Studio's 11 min 59 s |
+| 20:52:55 | No HMS alerts ([HMS tab](20261106T205255Z_hms_empty_after.png)) |
+
+No dialog, pause or warning appeared at any point. The watcher stopped itself at 20:52:36 on an
+OCR misread of the cooling nozzle (641 °C, a frame after 168 °C), after the print had finished.
+It never saw its own finish condition, because OCR read the panel's "100 %" as "100" without the
+sign; the Device page was checked by eye instead. Nobody has reported on the parts yet, and the
+camera can't show them.
+
 ## Files
 
 | File | What |
 |---|---|
+| [`spacers_d15_x2.gcode.3mf`](spacers_d15_x2.gcode.3mf) | The file the printer ran, account ID blanked |
+| [`check_slice.py`](check_slice.py), [`check_slice_output.txt`](check_slice_output.txt) | Where the two discs print and how big, read from that file's G-code |
+| [`print.json`](print.json) | The 2026-11-06 print: request, plate check, slice, Send, timeline and outcome |
+| `20261106T2028*`–`20261106T2052*` | The Device page, the camera's failures, the nozzle, the HMS list before and after, the Send dialog, and the finished job |
+| [`watch_a1mini_nocam.py`](watch_a1mini_nocam.py), [`watch_monitor.jsonl`](watch_monitor.jsonl), `panels/` | The Device-page watcher, its log, and the job panel at each layer |
 | [`make_spacer.py`](make_spacer.py), [`make_spacer_output.txt`](make_spacer_output.txt) | Writes the Ø10 STL and checks both |
 | [`onshape_spacer_20261106.json`](onshape_spacer_20261106.json) | The Onshape read: document, part, volume, the export's options and MD5 |
 | [`20261106T181410Z_preflight.json`](20261106T181410Z_preflight.json) | The LAN pre-flight's summary and checks. The verdict is NO-GO because of the camera alone |
