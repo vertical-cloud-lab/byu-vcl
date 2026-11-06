@@ -1,69 +1,57 @@
 """The org page's GIF, remade in the lab as this branch has it: ``vertical-cloud-lab/.github``'s
 ``profile/vertical-lab.gif`` ("In a vertical lab, equipment is brought to the operator", PR #318).
 
-Round 2 (PR #329, Sterling, 2026-11-06: "that gif is way over-simplified. At the very least, it should show interaction
-with multiple trays and an interaction with at least one module sitting outside the VLM. Remove the warehouse stuff,
-remove the 2nd VLM."). One Shuttle, loaded as the set-up loads it (``animate.lab_scene``, Shuttle 1's trays A-F and J);
-no pallet racking, no second Shuttle and none of its trays. One loop of the lab in steady state, which ends where it
-starts:
+Round 4 (PR #329, Sterling, 2026-11-06: "you should have started backed off to see the full overview and then zoomed
+in to show what's going on in more detail. It would be better to show the arm interacting with the atomizer (using the
+latest modeling of the atomizer ...) instead of interaction with the sieving station, which doesn't really make sense
+to do contextually. Wouldn't it be more interesting to show loading up a charge cup with the desired powder doses and
+then taking it over to the atomizer to be atomized?"). One Shuttle, loaded as the set-up loads it (``animate.lab_scene``,
+Shuttle 1's trays A-F and J), no pallet racking, no second Shuttle and none of its trays (round 2). One loop, which ends
+where it starts:
 
-1. at the sieving cell, on its bench beside the Shuttle (a module outside the VLM), the MiR250 + UR10e takes the run's
-   sample, a vial of the sieved powder, out of a pocket on the bench and stands it in a pocket on its own base;
-   meanwhile the VLM brings tray A, the CubXL laid out for DAL's corrosion screen, to its opening;
-2. the MiR drives along the dock line to the opening;
-3. at tray A, the arm swaps the vials: the last sample, its test done, comes out of the CubXL's free seat into the
-   MiR's second pocket, and the new one goes in;
-4. tray A goes back to its slot (R2), where its dock keeps it powered and the CubXL runs the new test, DAL's powder
-   reactivity test (``instruments_lab.powder_test``: ten 20 uL transfers of seawater onto the powder); the VLM brings
-   tray B, powder dosing, down;
-5. at tray B, the arm takes an empty 20 mL vial out of the rack and stands the tested one in its seat;
-6. tray B goes back up while the MiR drives back to the cell, and the arm leaves the empty vial in the cell's pocket
-   for the next sample.
+1. the whole lab, wide: the Shuttle, the rePowder atomizer, the sieving cell, the MiR250 + UR10e docked at the
+   Shuttle's opening. The camera closes in on the opening while the VLM brings tray B, the powder doser, down;
+2. at tray B (chapter 1's tray, ``alloy_charge.Charge``: the charge rack, the vacuum press, the multi-doser v5 on its
+   HR-202i), the arm takes an empty 5N Al charge cup out of the rack and stands it on the fork of the doser's vessel
+   shuttle, which carries it in onto the pan. The doser doses the run's two powders into it by weight, one module at a
+   time: Si (3.92 g, 26.8 mm up the bore), then the AlSi10Mg top-up (3.91 g, to 46.1 mm). The camera goes in to the
+   pan, and the cup is drawn cut open while it fills. The shuttle brings it out and the arm stands it in a pocket of the
+   cup carrier on the MiR's cabinet (chapter 2's carrier);
+3. tray B goes back up while the MiR drives to the rePowder (PR #327's refined model: its lid hinged at the back, the
+   draw latch and the pneumatic locking bolt as joints, ``repowder/model.py``);
+4. at the rePowder, the bolt goes back, the arm pulls the latch's lever out and lifts the lid by its knob, past its
+   balance point to RP_LID_U of its swing. With chapter 2's loading tong it takes the cup off the carrier and carries
+   it down #222's path into the crucible (``alloy_atomize.tong_path``: tipped 4.1 deg past the sealing rod's adapter,
+   then upright onto the floor cone), puts the tong back, shuts the lid and the latch, and the bolt goes in;
+5. the rePowder, cut open, melts the cup and atomizes it (a time-lapse, ``Melt``: the coil, the cup glowing and
+   slumping into the pool, the sealing rod up, the stream onto the vibrating plate, droplets, the powder in the
+   container), while the MiR drives back to the opening; then the camera pulls back out to the wide view.
 
-Round 3 (PR #329, Sterling, 2026-11-06: "the GIF can be larger ... more like 50 MB, so you don't have to restrict
-yourself so much in terms of time. Also, you should probably zoom in to see what the robot's doing, while still in view
-of the CubXL in the background that's still doing things"). The same loop, closer and slower:
-- the camera stands about 3-4 m from the arm instead of 8 m, and follows the MiR: one framing at the cell ("cell"),
-  with the VLM's bay at its right, and one at the opening ("open"), panned between them as the MiR drives, at the
-  MiR's own pace (drive's `cams`). From the opening, tray A's CubXL stays in view after it goes back to R2: over and
-  between tray B's instruments, and through the empty bay once tray B has gone back up;
-- the CubXL's test runs for TEST_SECS of the clip (TestClock) instead of 5 s, from tray A's return to its slot through
-  tray B's visit and the drive back, so it is still running behind the arm; it ends before the loop does;
-- the arm's moves take the 9:09 clip's times again (ARM_S), and the GIF plays at 1.5x instead of 2.5x.
-While tray B is at the opening, its doser (854 mm tall) stands right in front of R2, so only the CubXL's head and gantry
-show over it; views from higher up and from the left were tried, and none did better. Through the empty bay, from the
-cell's view, the whole CubXL shows.
-
-The last frame is the first one again: the MiR at the cell with its arm parked, a vial in the cell's pocket, trays A and
-B in their slots, a tested vial in the CubXL, the extractor at tray B's slot. What differs is too small to see: the vial
-in the cell's pocket is empty at the end and holds the 25 mg sample at the start, and the rack's vial on tray B holds
-the tested sample at the end. The GIF plays everything at SPEED x the modelled times and says so; the CubXL's test,
-minutes long, is compressed much further, and its label says that.
+The last frame is the first one again: the MiR at the opening with its arm parked, tray B in its slot, the rePowder
+shut and cold. What differs is too small to see from there: one cup fewer in tray B's rack, and powder in the rePowder's
+container. The GIF plays everything at SPEED x the modelled times and says so; the atomizer's run, half an hour or so,
+is compressed much further, and its label says that.
 
 Drawn differently for this shot only (all drawing choices):
-- Shuttle 2 is left out: its frame, extractor and cladding (setup_lab.TwoLab's u2_* groups), its bay camera, its trays
-  G-M with their instruments, UPSs and cameras, its dock tape and its camera target. Its trays' instruments aren't
-  loaded at all (VLAB_ONLY_TRAYS, and no fab_tour.load), which also makes the scene much lighter.
-- So is the pallet racking round the room's edge (warehouse.racking), and the second MiR unit on its charger.
-- The camera stands where the south row is, so that row's floor machines and its overhead utilities are left out, as
-  in round 1 (SOUTH_OUT, Y_CUT).
-- A MiR250 can't turn on a dock line 80 mm off the fronts, and the VLM's camera target stands on that line at the
-  opening's left (setup_lab.TARGET_AT, for a unit that backs in from the right). Coming from the cell, a unit drives in
-  from the left, so the target stands at the opening's right instead (TARGET_DX), its mirror image.
-- The MiR stops at the cell on the VLM's dock line (W.DOCK_N), CELL_X, so it drives to the opening along the line,
-  straight; the set-up's own spot for the cell is 300 mm further out, for the arm's level reach to the sieves' tabs.
-- The cell's vial pocket (CELL_SEAT) and the MiR's second pocket (M2_LOCAL) are props.buffer_holder blocks, as the
-  MiR's own pocket is.
-- The bay's back shutter is drawn at 12 % opacity instead of the usual 35 %, so tray A's slot shows through the empty
-  bay while its test starts there.
+- Shuttle 2 is left out with its trays, the pallet racking and the second MiR unit (round 2); the south row's floor
+  machines and its overhead utilities too (SOUTH_OUT, Y_CUT), since the wide view looks across where they stand.
+- The VLM's camera target stands at the opening's right instead of its left (TARGET_DX, round 2): coming from the
+  rePowder, a unit drives in from the left.
+- One cup goes into the crucible, where the lab loads four a run (byu-vcl PR #318), and the melt is drawn for one
+  cup's 43 g. Its plug isn't fitted or pressed (chapter 1 does both, on the same tray); the cup goes over open.
+- The lid opens to RP_LID_U of the model's 105 deg: from where the MiR stops, the arm can't follow the knob further
+  (the lid is past its balance point well before that: its centre of mass passes over the hinge at about 66 deg).
+- The arm works the latch and the lid on its own (chapter 2 has a second unit hold the lid down while the latch lets
+  go).
 
-    VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py views    # the candidate views, as stills -> /tmp/org_gif_views.png
-    PREVIEW=1 VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py   # the last frame of each step -> /tmp/preview_<NAME>.png
+    VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py views    # the views, as stills -> /tmp/org_gif_views.png
+    ORG_STRIDE=24 VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py   # every 24th frame only -> /tmp/org_stride/
     ARM_AUDIT=1 VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py # no render: every frame's arm checked -> out/collisions/
     VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py          # -> out/mp4/<NAME>.mp4, out/<NAME>.json
-    ARM_AUDIT_RENDER=1 VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py   # both in one pass (about 5 s a frame, one core)
-    ORG_NAME=<other> ORG_LIVE=/tmp/live ...              # render under another name beside a running pass; every 60th
-                                                         # frame to /tmp/live as it renders
+    ORG_PART=a:b ORG_NAME=<NAME>_p0 ...                  # render frames a..b-1 only (the rest are counted, not drawn)
+    python3 org_gif.py join <NAME>_p0 <NAME>_p1 ...      # the parts -> out/mp4/<NAME>.mp4, out/<NAME>.json
+    ORG_AUDIT_PART=a:b ARM_AUDIT=1 ...                   # audit frames a..b-1 -> /tmp/org_audit/<a>.json
+    python3 org_gif.py audit_join                        # the audited parts -> out/collisions/<NAME>.json
     python3 org_gif.py gif                               # -> out/<NAME>.gif (SPEED x), its still, mp4/<NAME>_readme.mp4
 """
 from __future__ import annotations
@@ -86,7 +74,6 @@ TEXT = 1.45          # the overlay's text, against the scenes' 720p sizes: the R
 S1_TRAYS = "ABCDEFJ"     # Shuttle 1's trays (setup_lab.TRAYS): the only ones loaded
 
 
-
 def _cam(f, az, el, d, va):
     """A view: the camera `d` mm from focal point `f`, `az` degrees right of straight on (from -y) and `el` up."""
     a, e = math.radians(az), math.radians(el)
@@ -94,48 +81,48 @@ def _cam(f, az, el, d, va):
             tuple(f), (0, 0, 1), va]
 
 
-# the views: camera position, focal point, up (mm; Shuttle 1's centre at the origin, its opening facing -y), view angle.
-# Round 3's two: "cell", the MiR at the cell with the bay at the frame's right (tray A at the opening, or its slot R2
-# through the empty bay), about 3.6 m across at the arm; "open", the MiR at the opening, about 3 m across, tray A's
-# slot over and between tray B's instruments. Rounds 1 and 2 used "f2" and "c4", 8-9 m across.
+RP_AT = (-3775.0, -1700.0)       # animate.REPOWDER_AT: the rePowder model's origin, the furnace axis on the floor
+# the views: camera position, focal point, up (mm; Shuttle 1's centre at the origin, its opening facing -y), view angle
 CAMS = {
-    "cell": _cam((-1150.0, -1500.0, 1080.0), 0.0, 18.0, 4000.0, 27.0),
-    "open": _cam((-120.0, -1460.0, 1010.0), 11.0, 19.0, 3300.0, 27.0),
-    "c4": [(1300, -8600, 3400), (-650, -900, 1750), (0, 0, 1), 34.0],
-    "c1": [(1300, -8600, 3200), (-650, -900, 1500), (0, 0, 1), 34.0],       # the VLM's roof cut off
-    "c2": [(600, -8200, 2900), (-700, -900, 1450), (0, 0, 1), 36.0],
-    "c3": [(2000, -8400, 3500), (-500, -800, 1500), (0, 0, 1), 34.0],
-    "f2": [(2200, -8000, 3000), (100, -700, 1700), (0, 0, 1), 33.0],       # round 1's: Shuttle 1 alone
+    "wide": _cam((-1500.0, -1000.0, 1350.0), 2.0, 17.0, 11500.0, 34.0),    # the Shuttle, the rePowder, the cell
+    "trayB": _cam((-60.0, -1480.0, 960.0), 8.0, 20.0, 2900.0, 27.0),       # tray B at the opening, the arm, the MiR
+    "dose": None,                     # the doser's pan from the front right, set once tray B is at the opening
+    "rp": _cam((RP_AT[0] - 40.0, RP_AT[1] - 420.0, 1150.0), 22.0, 16.0, 3100.0, 27.0),   # the arm at the rePowder
+    "bore": _cam((RP_AT[0] + 0.0, RP_AT[1] - 30.0, 1300.0), -25.0, 48.0, 1050.0, 27.0),  # down into the crucible
+    "cut": _cam((RP_AT[0] + 60.0, RP_AT[1] + 0.0, 860.0), 10.0, 6.0, 2350.0, 27.0),      # the rePowder cut open
 }
-CAM = "cell"
-# leader-label boxes, as fractions of the frame (the overlay draws a line from each to its point in the lab)
-# (a box left of the middle has its left edge at fx, one right of it its right edge; fy is its middle)
-LBL = {"arm": (0.03, 0.93), "cell": (0.02, 0.08), "vlm": (0.985, 0.07), "A": (0.985, 0.09), "run": (0.985, 0.09),
-       "B": (0.985, 0.70)}
+CAM = "wide"
 # The camera stands behind the south row (its fronts at y = -6238), so the row's overhead utilities (its cable tray at
 # 3.2 m with its network cable, hangers, drops and junction boxes, the DED's argon run, the fume hood's duct;
 # setup_lab.utilities) and its floor machines (SOUTH_OUT) would stand between it and Shuttle 1. For this shot they are
 # left out: every utility cell south of Y_CUT, and every FLOOR_PLAN station in row "S". The north row's stay.
 Y_CUT = -4000.0
-SHUTTER_GHOST = 0.12
 SOUTH_OUT = bool(int(os.environ.get("ORG_SOUTH_OUT", "1")))
-# the cycle's places
-CELL_X = -1750.0                 # the MiR's centre at the sieving cell, on the VLM's dock line: its arm's base in
-                                 # front of the bench's free right end, so the arm reaches in through the cell's open
-                                 # front (from further right, its forearm went through the enclosure's side panel and
-                                 # the Shuttle's corner); 50 mm short of the cell's camera target's floor plate
-CELL_SEAT = (-1560.0, -1442.0)   # the cell's vial pocket: on its bench, 120 mm in from the front, 200 mm right of the
-                                 # shaker's body and 110 mm left of the enclosure's side panel; right of the parked arm,
-                                 # so the camera sees it
-M2_LOCAL = (300.0, -150.0)       # the MiR's second pocket (cabinet frame): BUFFER_LOCAL's mirror image across the arm
 TARGET_DX = 2 * 1330.0           # the VLM's camera target, from x = -1330 (setup_lab.TARGET_AT) to +1330
-GRASP_Z = 50.0                   # the gripper takes a vial 50 mm up (animate.workflow)
+# the cycle
+CUP = 3                          # tray B's rack seat of the cup the run takes: the fourth 5N Al cup (alloy_charge.SLOTS)
+CUP_AT = 0                       # its place in the crucible: alloy_atomize.CUP_ANGLES[0], 145 deg, at the back, clear
+                                 # of the sealing-rod lever (which lies along +x)
+CARRIER_K = 0                    # the carrier pocket it rides in
+GRASP_DOWN = 48.0                # a cup taken from above, the pads' centre 48 mm up it (its top 63.5 mm up)
+OPEN_CUP = 0.66                  # alloy_charge.OPEN_CUP: 31.6 mm between the pads, clear of the next cup in the rack
+GRIP_CUP = 0.80                  # on the 19.05 mm cup (ur_arm.gripper_fk: gap = 28 - 90 (c - 0.70))
+RP_STOP = (RP_AT[0] - 120.0, -2380.0)   # the MiR at the rePowder, heading 0: from here the arm follows the latch's
+                                 # lever and the lid's knob (an IK sweep of MiR stops, 2026-11-06)
+RP_LID_U = 0.86                  # the lid opens this share of the model's 105 deg (90 deg): further, the knob leaves the
+                                 # arm's reach from RP_STOP
+LATCH_U = 0.5                    # the latch's lever swings out this share of its 95 deg: the loop is well off the keeper
+LATCH_AT = (24.0, 0.85, 45.0)    # its grasp: the pads' centre 24 mm out from the furnace's face, 0.85 of the lever up
+                                 # from its pivot, the tool tipped 45 deg down from level (fingers on the two flanges)
+GRIP_LATCH, OPEN_LATCH = 0.59, 0.45   # the lever's 38 mm channel; 50 mm open
+GRIP_KNOB = 0.70                 # the lid's 28 mm ball knob
+KNOB_OUT = 4.0                   # the knob taken level from the front, the pads' centre 4 mm in front of the ball's
 ARM_S = (1.6, 0.9, 0.5, 0.8)     # a pick or a place: joint move, line in, grip, line out (s): the 9:09 clip's
-                                 # (animate.pick/place); round 2 ran them at 1.2/0.7/0.4/0.6
+                                 # (animate.pick/place)
 HOLD = 0.1
+DOSE_F = 0.6                     # the doser's moves at this share of chapter 1's times (its first cup is shown at 0.55)
 MIR_V = 1500.0                   # mm/s at most, with the MiR250's 0.3 m/s^2 ramps (props.ramp_secs)
-TEST_SECS = 34.0                 # the CubXL's test, minutes long, in this many seconds of the clip (a time-lapse): from
-                                 # tray A's return to R2 to the arm at the cell again, before its last park
+ATOM_SECS = 14.0                 # the atomizer's run, half an hour or so, in this many seconds of the clip (a time-lapse)
 
 
 def _load_s1() -> dict:
@@ -147,90 +134,157 @@ def _load_s1() -> dict:
     return idata
 
 
-class Vial:
-    """A 20 mL vial (props.vial_glass) with its powder, a heap on its floor at its angle of repose, to scale
-    (animate.workflow), and the liquid over it. Group `g`, under `parent` at `at`."""
+class Melt:
+    """The rePowder's run as a frame hook (Scene.frame_hooks), ATOM_SECS from start(): the furnace and chamber cut open,
+    the coil on, the cup glowing and slumping into the pool, the sealing rod up, the stream onto the vibrating plate,
+    droplets flying off it and the powder heap rising in the container; then all off, the cut shut. alloy_atomize's
+    effects (its port of #124's training animation), under names of their own, sized for one cup."""
 
-    REPOSE = math.radians(34.0)
-
-    def __init__(self, sc, g, parent, at, mg=0.0, ul=0.0):
+    def __init__(self, sc, cup_group):
         import pyvista as pv
 
-        import props as P
+        import alloy_atomize as AT
+        import charge as C
         from scene import T
-        self.sc, self.g = sc, g
-        sc.add(f"{g}/glass", P.vial_glass(), P.GLASS, g, opacity=0.55, specular=0.7)
-        heap = pv.Cone(center=(0, 0, 0.5), direction=(0, 0, -1), height=1.0, radius=1.0, resolution=40).triangulate()
-        sc.add(f"{g}/heap", heap, P.POWDER, f"{g}_heap")
-        sc.add(f"{g}/liquid", P.fill(1.0), P.LIQUID, f"{g}_liq", opacity=0.85)
-        sc.parent[f"{g}_heap"] = g
-        sc.parent[f"{g}_liq"] = g
-        sc.parent[g] = parent
-        sc.gmat[g] = T(at)
-        self.set(mg, ul)
+        M = AT.M
+        self.sc, self.AT, self.M, self.cg = sc, AT, M, cup_group
+        v = M.variant_meshes()
+        self.pool_levels, self.pool_meshes = v["pool_levels"], v["pool_half"]
+        self.pw_levels, self.pw_meshes = v["powder_levels"], v["powder_half"]
+        sc.add("rp pool", self.pool_meshes[0][0], AT.MELT, AT.g("crucible"), ambient=0.75, diffuse=0.45, specular=0.5)
+        sc.add("rp pool#cut", self.pool_meshes[0][1], AT.lighter(AT.MELT, 0.3), AT.g("crucible"), ambient=0.85,
+               diffuse=0.3, specular=0.0, smooth_shading=False)
+        col = C.POWDERS["Al"][0]
+        sc.add("rp powder", self.pw_meshes[0][0], col, AT.g("container"), specular=0.05, ambient=0.3)
+        sc.add("rp powder#cut", self.pw_meshes[0][1], AT.lighter(col, 0.25), AT.g("container"), smooth_shading=False,
+               ambient=0.6, specular=0.0)
+        h = AT.STREAM_TOP - M.IMPACT[2]
+        sc.add("rp stream", pv.Cylinder(center=(0, 0, M.IMPACT[2] + h / 2), direction=(0, 0, 1), radius=1.4, height=h,
+                                        resolution=16), AT.MELT, "rp_stream", ambient=0.85, diffuse=0.4, shown=False)
+        sc.parent["rp_stream"] = "rp"
+        self.spray = AT.Particles(sc, "rp spray", (0.40, 0.41, 0.46), size=5.5)
+        self.drops = AT.Particles(sc, "rp drops", AT.MELT, size=7.0, slowmo=0.35, seed=2)
+        # one cup's metal: the pool and the powder heap at the levels its 43 g makes (alloy_atomize.POOL_LEVEL and
+        # POWDER_END are for four)
+        m = AT.RUN["charge_g"] / 4
+        self.pool_top = AT.level_for(AT.pool_volume, m / AT.AL_LIQUID, -14.0, 37.0)
+        self.powder_top = AT.level_for(AT.powder_volume, m * 0.912 / AT.POWDER_BULK, 3.0, 70.0)
+        self.n0 = self.n1 = None
+        self.cup_names = [n for n, g in sc.group_of.items() if g in (cup_group, f"{cup_group}_pw", f"{cup_group}_pw2")]
+        self.cup_col = {n: sc.color.get(n) for n in self.cup_names}
+        self.T = T
+        self.pool(-30.0)
+        self.powder(-1.0)
 
-    def set(self, mg=None, ul=None):
-        import props as P
-        from scene import S, T
-        sc, g = self.sc, self.g
-        if mg is not None:
-            r = (3 * (max(mg, 1e-3) / 1.4) / (math.pi * math.tan(self.REPOSE))) ** (1 / 3)
-            sc.gmat[f"{g}_heap"] = T((0, 0, P.VIAL_FLOOR)) @ S((r, r, r * math.tan(self.REPOSE)))
-            sc.alpha[f"{g}/heap"] = 1.0 if mg > 0.05 else 0.0
-        if ul is not None:
-            h = ul / (math.pi * (P.VIAL_R - P.VIAL_WALL) ** 2)
-            sc.gmat[f"{g}_liq"] = T((0, 0, P.VIAL_FLOOR)) @ S((1, 1, max(h, 0.01)))
-            sc.alpha[f"{g}/liquid"] = 1.0 if h > 0.05 else 0.0
+    def pool(self, level, color=None):
+        sc, AT = self.sc, self.AT
+        color = color or AT.MELT
+        on = level > self.pool_levels[0] - 0.5
+        i = int(np.argmin(np.abs(self.pool_levels - level)))
+        sc.set_mesh("rp pool", self.pool_meshes[i][0])
+        sc.set_mesh("rp pool#cut", self.pool_meshes[i][1])
+        for n, c in (("rp pool", color), ("rp pool#cut", AT.lighter(color, 0.3))):
+            sc.alpha[n] = 1.0 if on else 0.0
+            sc.color[n] = c
+
+    def powder(self, level):
+        sc = self.sc
+        on = level >= self.pw_levels[0]
+        i = int(np.argmin(np.abs(self.pw_levels - level)))
+        sc.set_mesh("rp powder", self.pw_meshes[i][0])
+        sc.set_mesh("rp powder#cut", self.pw_meshes[i][1])
+        sc.alpha["rp powder"] = sc.alpha["rp powder#cut"] = 1.0 if on else 0.0
+
+    def start(self, sc):
+        self.n0 = sc.n
+        self.seat = sc.gmat[self.cg].copy()
+
+    def __call__(self, sc):
+        from scene import FPS, S, window
+        if self.n0 is None or (self.n1 is not None and sc.n > self.n1 + 1):
+            return
+        AT, M = self.AT, self.M
+        u = min(1.0, max(0.0, (sc.n - self.n0) / (ATOM_SECS * FPS)))
+        AT.set_cut(sc, window(u, 0.0, 0.08) * (1.0 - window(u, 0.92, 1.0)), AT.FUR_G + AT.CH_G)
+        heat = window(u, 0.08, 0.30)
+        glow = heat * (1.0 - window(u, 0.80, 0.90))
+        AT.coil_glow(sc, glow)
+        temp = 24.0 + (720.0 - 24.0) * heat
+        f = 1.0 - 0.95 * window(u, 0.28, 0.42)              # the cup slumps into the pool
+        sc.gmat[self.cg] = self.seat @ S((1 + 0.12 * (1 - f), 1 + 0.12 * (1 - f), f))
+        for n in self.cup_names:
+            sc.alpha[n] = (sc.alpha[n] if f > 0.07 else 0.0) if u < 0.999 else sc.alpha[n]
+            if sc.alpha.get(n, 0.0) > 0.0:
+                sc.color[n] = AT.temp_color(temp)
+                sc.ambient[n] = 0.18 + 0.55 * max(0.0, min(1.0, (temp - 450) / 400))
+        drain = window(u, 0.50, 0.80)
+        level = (-14.0 + (self.pool_top + 14.0) * window(u, 0.29, 0.42)) * (1.0 - drain) + (-12.0) * drain
+        self.pool(level if 0.29 < u < 0.82 else -30.0)
+        AT.rod_lift(sc, 12.0 * window(u, 0.44, 0.50) * (1.0 - window(u, 0.80, 0.86)))
+        flow = window(u, 0.48, 0.52) * (1.0 - window(u, 0.78, 0.82))
+        sc.alpha["rp stream"] = 1.0 if flow > 0.02 else 0.0
+        sc.gmat["rp_stream"] = S((1.0, 1.0, max(flow, 0.01)), (0, 0, AT.STREAM_TOP))
+        on = 0.50 < u < 0.82
+        sc.gmat[AT.g("connector")] = self.T(M.STACK_DIR * (1.2 if (on and (sc.n * 15 // FPS) % 2) else 0.0))
+        if 0.52 < u < 0.80:
+            self.spray.emit_spray(int(round(30 * AT.PER_FRAME)))
+            if sc.n % max(1, 3 * FPS // 15) == 0:
+                self.drops.emit_drops(2, M.IMPACT + np.array([0, 0, 3]), M.PLATE_UP * 250 + M.STACK_DIR * 500)
+        if u > 0.88:
+            self.spray.clear()
+            self.drops.clear()
+        else:
+            self.spray.step()
+            self.drops.step()
+        self.powder(-1.0 if u < 0.53 else 3.0 + (self.powder_top - 3.0) * window(u, 0.53, 0.86))
+        if u >= 1.0 and self.n1 is None:
+            self.n1 = sc.n
 
 
 def build(data):
-    """Shuttle 1 in the lab (animate.lab_scene), stripped (strip, floor_edits, clear_view), with the corrosion CubXL
-    that moves (cubxl_rig) on tray A and the cycle's start: the MiR at the cell, its arm parked, the sample in the
-    cell's pocket, a tested vial in the CubXL, an empty one in tray B's rack, trays A and B in their slots and the
-    extractor at B's. -> (scene, lab, cub, test, vials)."""
+    """Shuttle 1 in the lab (animate.lab_scene), stripped (strip, floor_edits, clear_view), with chapter 1's charge on
+    tray B (alloy_charge.Charge: the rack of cups and plugs, the vacuum press, the MiR's cup carrier), the rePowder by
+    its parts (alloy_atomize.load_rp, PR #327's model), chapter 2's loading tong on the MiR and the melt (Melt); and
+    the cycle's start: the MiR at the opening, its arm parked, trays A and B in their slots, the extractor at B's.
+    -> (scene, lab, charge, melt)."""
+    import alloy_atomize as AT
+    import alloy_charge as AC
     import animate as A
-    import cubxl_rig
-    import instruments_lab as IL
-    import props as P
     import setup_lab as SL
     import vlm as V
     import warehouse as W
-    from scene import T
     os.environ.setdefault("VLAB_ONLY_TRAYS", S1_TRAYS)
     SL.load_all = _load_s1
     sc, L = A.lab_scene(data, name=NAME, title=TITLE)
+    sc.gif = False                                     # gif() makes the GIF from the MP4
     sc.text_scale = TEXT
     L.show_gauges = False
     L.extra_gauges = []
     strip(sc, L)
     floor_edits(sc)
     clear_view(sc, L)
-    cub = cubxl_rig.CubRig(L)
-    for key, g, names, _ in L.items.get("A", []):      # as animate.workflow: CubRig draws the set-up's CubXL, moving
-        if key == "cubxl_corrosion":
-            for nm in names:
-                sc.alpha[nm] = 0.0
-                sc.base_alpha[nm] = 0.0
-    test = IL.powder_test()
-    cub.pose(cubxl_rig.state_at(test, 1.0))             # the last sample's test, done
-    q = IL.POWDER_TEST
-    # the unit at the cell, on the dock line; the MiR's second pocket
     u = L.units[0]
-    u.set((CELL_X, W.DOCK_N, 0.0))
-    holder, seat = P.buffer_holder()
-    sc.add(f"{u.name}/holder2", holder.translate((*M2_LOCAL, P.AMR_TOP - 20), inplace=False), P.RACK_C, L.amr_group)
-    L.m2_seat = (M2_LOCAL[0], M2_LOCAL[1], P.AMR_TOP - 20 + seat[2])
-    # the cell's pocket, on its bench
-    bench_h = SL.SIEVE_BENCH["h"]
-    sc.add("cell pocket", holder.translate((*CELL_SEAT, bench_h), inplace=False), P.RACK_C, "cell_pocket")
-    L.cell_seat = (CELL_SEAT[0], CELL_SEAT[1], bench_h + seat[2])
-    # the vials: the set-up's own ("vial", in tray B's rack) is the empty one; the tested one in the CubXL's free seat;
-    # the sample, 25 mg of the sieved cut (DAL's test takes 10-50 mg of each run's powder), in the cell's pocket
+    u.set(W.dock_pose("vlm"))
+    # chapter 1's charge on tray B. Its MiR group "amr" rides on this unit's cabinet; the unit's one-vial holder goes
+    sc.parent["amr"] = L.amr_group
+    sc.gmat["amr"] = np.eye(4)
+    for nm in (f"{u.name}/holder",):
+        sc.alpha[nm] = 0.0
+        sc.base_alpha[nm] = 0.0
+    K = AC.Charge(sc, L)
+    for nm in ("vial/glass", f"{L.eq_groups['B'][0]}/rack", f"{L.eq_groups['B'][0]}/vials"):
+        sc.base_alpha[nm] = 0.0
+    sc.parent["stream"] = K.rig
     L.powder_h = L.liquid_h = 0.0
     L.set_fill()
-    seat_cub = (IL._cx(q["seat"][0]), IL._cy(q["seat"][1]), IL._cz(0.0))
-    vials = {"tested": Vial(sc, "vial_t", cub.body, seat_cub, mg=q["mg"], ul=q["ul"]),
-             "sample": Vial(sc, "vial_s", "cell_pocket", L.cell_seat, mg=q["mg"], ul=0.0)}
+    # the rePowder by its parts; the merged copy goes
+    for nm in list(sc.actors):
+        if nm.startswith("repowder:"):
+            sc.alpha[nm] = 0.0
+            sc.base_alpha[nm] = 0.0
+    AT.load_rp(sc, ghost={"stack_cover": 0.35})
+    L.tong_home = AT.add_tong(sc, None)
+    fx = Melt(sc, f"cup{CUP}")
     # trays A and B in their slots, the extractor at B's (where the cycle leaves it), the shutter shut
     L.use(1)
     for k in ("A", "B"):
@@ -238,12 +292,9 @@ def build(data):
         L.where[k] = A.HOME[k]
     L.lift_z = V.SLOTS[A.HOME["B"]][1]
     L.shutter = 0.0
-    for nm in list(L.ghost):
-        if sc.group_of.get(nm, "").endswith("shutter"):
-            L.ghost[nm] = SHUTTER_GHOST
     L.skin(1.0)(1.0)
     L.apply_state()
-    return sc, L, cub, test, vials
+    return sc, L, K, fx
 
 
 def strip(sc, L):
@@ -334,34 +385,25 @@ def set_cam(sc, key):
 
 
 def views():
-    """Stills of the candidate views (ORG_VIEWS=a,b,... picks some): the cycle's start, and tray A at the opening with
-    the MiR docked there."""
+    """Stills of the views (ORG_VIEWS=a,b,... picks some), with the scene at the cycle's start."""
     from PIL import Image, ImageDraw
 
     import lab
-    import vlm as V
-    import warehouse as W
-    sc, L, cub, test, vials = build(lab.meshes())
-    keys = [k for k in CAMS if not os.environ.get("ORG_VIEWS") or k in os.environ["ORG_VIEWS"].split(",")]
+    sc, L, K, fx = build(lab.meshes())
+    keys = [k for k in CAMS if CAMS[k] and (not os.environ.get("ORG_VIEWS") or k in os.environ["ORG_VIEWS"].split(","))]
     shots = []
-    for state in ("start", "docked"):
-        if state == "docked":
-            L.tray["A"] = [*V.SLOTS["open"]]
-            L.where["A"] = "open"
-            L.lift_z = V.SLOTS["open"][1]
-            L.units[0].set(W.dock_pose("vlm"))
-            L.apply_state()
-        for key in keys:
-            set_cam(sc, key)
-            shots.append((f"{key} / {state}", Image.fromarray(sc.render_base())))
+    for key in keys:
+        set_cam(sc, key)
+        shots.append((key, Image.fromarray(sc.render_base())))
     tw, th = 640, 360
-    sheet = Image.new("RGB", (tw * len(keys), th * 2), "white")
+    cols = 3
+    sheet = Image.new("RGB", (tw * cols, th * ((len(shots) + cols - 1) // cols)), "white")
     d = ImageDraw.Draw(sheet)
     for i, (lbl, im) in enumerate(shots):
-        x, y = (i % len(keys)) * tw, (i // len(keys)) * th
+        x, y = (i % cols) * tw, (i // cols) * th
         sheet.paste(im.resize((tw, th)), (x, y))
         d.text((x + 6, y + 4), lbl, fill=(200, 0, 0))
-        im.save(f"/tmp/org_gif_{lbl.replace(' / ', '_').replace(' ', '_')}.png")
+        im.save(f"/tmp/org_gif_{lbl}.png")
     sheet.save("/tmp/org_gif_views.png")
     sc.pl.close()
     print("views -> /tmp/org_gif_views.png", flush=True)
@@ -419,22 +461,18 @@ def run(sc, main, *background):
                 up(e)
             for b in bg:
                 b.advance(t0 + P.unease(e) * dd)
-        sc.step("", "", dd, upd, hold=0.0)
+        sc.step(sc.label, "", dd, upd, hold=0.0)
         clock += dd
     for dur, fac in main:
         step(dur, fac() if fac is not None else None)
     while any(not b.done for b in bg):
         d = min(b.end() for b in bg if not b.done) - clock
-        if d < 0.5 / FPS:
+        if d < 0.5 / FPS:            # a segment ending within half a frame: finish it between frames
             for b in bg:
-                b.advance(clock)
+                if not b.done and b.end() - clock < 0.5 / FPS:
+                    b.advance(b.end() + 1e-6)
             continue
         step(d, None)
-
-
-def seq(*gens):
-    for g in gens:
-        yield from g
 
 
 def wait(seconds):
@@ -448,11 +486,18 @@ def call(f):
     yield
 
 
-def pick(rb, M_grasp, M_pre, group, grip):
-    """animate.pick as a track: joint move to M_pre opening the gripper, line to M_grasp, close, take `group`, line back."""
-    import animate as A
-    s = ARM_S
-    yield s[0], lambda: A.both(rb.joint_to(Tw=M_pre), rb.grip_to(0.0))
+def both(*fs):
+    def up(u):
+        for f in fs:
+            if f is not None:
+                f(u)
+    return up
+
+
+def pick(rb, M_grasp, M_pre, group, grip, opening=0.0, s=ARM_S):
+    """animate.pick as a track: joint move to M_pre opening the gripper to `opening`, line to M_grasp, close, take
+    `group`, line back."""
+    yield s[0], lambda: both(rb.joint_to(Tw=M_pre), rb.grip_to(opening))
     yield HOLD, None
     yield s[1], lambda: rb.line_to(M_grasp)
     yield HOLD, None
@@ -463,14 +508,13 @@ def pick(rb, M_grasp, M_pre, group, grip):
     yield HOLD, None
 
 
-def place(rb, M_place, M_pre, new_parent):
-    """animate.place as a track."""
-    s = ARM_S
+def place(rb, M_place, M_pre, new_parent, opening=0.0, s=ARM_S):
+    """animate.place as a track; the gripper opens to `opening` to let go."""
     yield s[0], lambda: rb.joint_to(Tw=M_pre)
     yield HOLD, None
     yield s[1], lambda: rb.line_to(M_place)
     yield HOLD, None
-    yield s[2], lambda: rb.grip_to(0.0)
+    yield s[2], lambda: rb.grip_to(opening)
     rb.release(new_parent)
     yield HOLD, None
     yield s[3], lambda: rb.line_to(M_pre)
@@ -526,22 +570,23 @@ def store(L, k):
     yield 0.3, None
 
 
-def drive(L, x1, follow, cams=None):
-    """The docked unit along its own x to x1, from rest to rest at the MiR250's 0.3 m/s^2 (props.ramp_frac);
-    `follow` is a label's anchor (a list), moved with it. With `cams` (k0, k1), the camera goes from view k0 to view k1
-    at the MiR's own pace: the share of the way it has driven is the share of the way between the two views."""
+def drive(L, to, follow=None, cams=None):
+    """The docked unit to `to` (x, y; heading 0) along props.s_curve, from rest to rest at the MiR250's 0.3 m/s^2
+    (props.ramp_frac); `follow` is a label's anchor (a list), moved with it. With `cams` (k0, k1), the camera goes from
+    view k0 to view k1 at the MiR's own pace: the share of the way it has driven is the share of the way between."""
     import props as P
     u, rb, sc = L.units[0], L.robot, L.sc
     x0, y0, hd = u.pose
-    at, ps, s = P.s_curve(x0, y0, x1, y0)
-    d0 = [follow[0] - x0, follow[1] - y0]
+    at, ps, s = P.s_curve(x0, y0, to[0], to[1])
+    d0 = None if follow is None else [follow[0] - x0, follow[1] - y0]
 
     def fac():
         def up(e):
             f = P.ramp_frac(P.unease(e), s[-1], MIR_V)
             x, y, h = at(float(np.interp(f * s[-1], s, ps)))
             u.set((x, y, h))
-            follow[0], follow[1] = x + d0[0], y + d0[1]
+            if d0 is not None:
+                follow[0], follow[1] = x + d0[0], y + d0[1]
             if cams is not None:
                 cam_between(sc, cams[0], cams[1], f)
             if rb.held is not None:
@@ -558,197 +603,491 @@ def cam_between(sc, k0, k1, f):
     sc.view_angle = float(a[3] + (b[3] - a[3]) * f)
 
 
-class TestClock:
-    """The CubXL's test as a frame hook (Scene.frame_hooks): from start() on it runs with the frames, TEST_SECS for the
-    whole test, whatever the tracks are doing, so it carries on behind the arm across steps; then it stays done."""
+def cam_to(sc, key, secs):
+    """A track segment: the camera from wherever it is to view `key`."""
+    def fac():
+        a = [np.array(v, float) for v in sc.cam]
+        va = sc.view_angle
+        b = CAMS[key]
 
-    def __init__(self, cub, test, on_state):
-        self.cub, self.test, self.on_state = cub, test, on_state
-        self.va, self.vb = test.v("start"), test.v("end")
-        self.n0 = None
-        self.n1 = None             # the frame it ends on, for the log
-
-    def start(self, sc):
-        self.n0 = sc.n
-
-    def __call__(self, sc):
-        import cubxl_rig
-        from scene import FPS
-        if self.n0 is None:
-            return
-        u = min(1.0, max(0.0, (sc.n - self.n0) / (TEST_SECS * FPS)))
-        if u >= 1.0 and self.n1 is not None:
-            return
-        if u >= 1.0:
-            self.n1 = sc.n
-        s = cubxl_rig.state_at(self.test, self.va + (self.vb - self.va) * u)
-        self.cub.pose(s)
-        self.on_state(s)
+        def up(e):
+            sc.cam = [tuple(p + (np.array(q, float) - p) * e) for p, q in zip(a, b[:3])]
+            sc.view_angle = float(va + (b[3] - va) * e)
+        return up
+    yield secs, fac
 
 
+# ============================================================================================ the parts of a long render
+def frame_range(env):
+    v = os.environ.get(env)
+    if not v:
+        return None
+    a, b = v.split(":")
+    return int(a), int(b)
+
+
+def part_snap(sc, a, b):
+    """Draw only frames a..b-1 (ORG_PART): the others are counted, not drawn, so parts rendered side by side join into
+    the whole clip."""
+    snap = sc.snap
+
+    def f(n=1):
+        n0 = sc.n
+        k = len(range(max(n0, a), min(n0 + n, b)))
+        if k == 0:
+            sc.want_still = False
+            sc.n = n0 + n
+            return None
+        sc.n = max(n0, a)
+        hi = snap(k)
+        sc.n = n0 + n
+        return hi
+    sc.snap = f
+
+
+def stride_snap(sc, every, out="/tmp/org_stride"):
+    """Draw only every `every`-th frame, to `out` as JPEGs (ORG_STRIDE): the whole loop checked in a few minutes."""
+    import time
+
+    from PIL import Image
+    os.makedirs(out, exist_ok=True)
+    t0 = time.time()
+
+    def f(n=1):
+        n0 = sc.n
+        hit = [k for k in range(n0, n0 + n) if k % every == 0]
+        if hit:
+            base = sc.render_base()
+            anchors = [sc.project(xyz) for _, xyz, _, _ in sc.labels]
+            hi = sc.overlay(Image.fromarray(base), sc.text_scale, anchors)
+            hi.convert("RGB").resize((960, 540)).save(f"{out}/{hit[0]:05d}.jpg", quality=82)
+            print(f"stride: frame {hit[0]} ({sc.label}), {time.time() - t0:.0f} s", flush=True)
+        sc.n = n0 + n
+        return None
+    sc.snap = f
+
+
+def cam_up(sc, key):
+    """An update(e) taking the camera from where it is now to view `key` (call it as its segment starts)."""
+    a = [np.array(v, float) for v in sc.cam]
+    va = sc.view_angle
+    b = CAMS[key]
+
+    def up(e):
+        sc.cam = [tuple(p + (np.array(q, float) - p) * e) for p, q in zip(a, b[:3])]
+        sc.view_angle = float(va + (b[3] - va) * e)
+    return up
+
+
+# ============================================================================================ the cycle
 def movie():
     """The cycle, rendered real-time. The scene draws only the leader labels: the title, the step captions and the
     speed badge go in the GIF's header band (gif()), from the phases written into out/<NAME>.json."""
+    import alloy_atomize as AT
+    import alloy_charge as AC
+    import alloy_press as AP
     import animate as A
-    import cubxl_rig
-    import instruments_lab as IL
+    import carousel as CR
+    import charge as C
     import lab
     import props as P
+    import pyvista as pv
+    import scene as SC
     import vlm as V
     import warehouse as W
-    import scene as SC
-    from scene import OUT
-    sc, L, cub, test, vials = build(lab.meshes())
+    from scene import OUT, T
+    M, RP = AT.M, AT.RP
+    sc, L, K, fx = build(lab.meshes())
     sc.title = ""
+    part, apart = frame_range("ORG_PART"), frame_range("ORG_AUDIT_PART")
+    if os.environ.get("ORG_STRIDE") and not (SC.PREVIEW or SC.AUDIT):
+        stride_snap(sc, int(os.environ["ORG_STRIDE"]))
+    elif part and not (SC.PREVIEW or SC.AUDIT):
+        part_snap(sc, *part)
+    if apart and SC.AUDIT and sc.auditor is not None:      # this pass checks frames a..b-1 only
+        aud = sc.auditor
+        sc.frame_hooks[sc.frame_hooks.index(aud)] = lambda s, aud=aud: aud(s) if apart[0] <= s.n < apart[1] else None
     if os.environ.get("ARM_AUDIT_RENDER") and not (SC.PREVIEW or SC.AUDIT):
         import collide                      # ARM_AUDIT=1's audit in the render's own pass: one pass for both
         sc.auditor = collide.Auditor(sc)
-        sc.frame_hooks.append(sc.auditor)   # after the TestClock (inserted at 0 below), so it sees the CubXL posed
-    live = os.environ.get("ORG_LIVE")       # a directory: every 60th frame as a JPEG while it renders, to check it
-    if live and not (SC.PREVIEW or SC.AUDIT):
-        import time
-        os.makedirs(live, exist_ok=True)
-        snap, t_start = sc.snap, time.time()
-
-        def snap_live(n=1):
-            hi = snap(n)
-            if hi is not None and sc.n // 60 != (sc.n - n) // 60:
-                hi.convert("RGB").save(f"{live}/{sc.n:05d}.jpg", quality=85)
-                print(f"frame {sc.n}, {time.time() - t_start:.0f} s", flush=True)
-            return hi
-        sc.snap = snap_live
-    rb, cab = L.robot, L.amr_group
-    q = IL.POWDER_TEST
-    set_cam(sc, os.environ.get("ORG_CAM", CAM))
-    cams = ("cell", "open") if os.environ.get("ORG_CAM", CAM) == "cell" else None   # a still camera if ORG_CAM is set
-    sc.intro = 0.6
-    rack = L.eq_groups["B"][0]
-    rack_xy = A.LOADS["B"][0][1:]
+        sc.frame_hooks.append(sc.auditor)
+    sc.frame_hooks.insert(0, fx)            # the melt, before the audit sees the frame
+    rb, car = L.robot, L.carousel
+    cg = f"cup{CUP}"
+    PR = AP.pressed_recipe()["runs"]["Al-10Si"]
+    h_si, h_set = float(PR["column_mm_alloying"]), float(PR["column_mm_set"])
+    set_cam(sc, CAM)
+    sc.intro = 0.8
     phases = []
 
     def phase(text):
         phases.append(dict(start_frame=sc.n, text=text))
 
-    def on_cab(seat):
-        """A pocket on the MiR's cabinet, in the world, where the MiR is now, at the grasp height."""
-        return (sc.world(cab) @ np.r_[np.asarray(seat, float) + (0, 0, GRASP_Z), 1.0])[:3]
-
-    def cub_seat():
-        return cub.deck_world(*q["seat"], 0.0) + (0, 0, GRASP_Z)
-
-    def rack_seat():
-        return A.tray_world("B", np.array(L.rack_seats[A.RACK_SEAT]) + (*rack_xy, V.T_FLOOR) + (0, 0, GRASP_Z))
-
-    p_cell = np.array(L.cell_seat) + (0, 0, GRASP_Z)
-    # the labels: the MiR's anchor moves with it (drive's `follow`: a list, read when each frame is drawn)
-    arm_at = [CELL_X, W.DOCK_N - 300.0, 650.0]
-    lbl_arm = ("the operator: a MiR250 + UR10e", arm_at, LBL["arm"])
-    b = __import__("setup_lab").SIEVE_BENCH
-    lbl_cell = ("outside the VLM: the sieving cell", (b["x"] - 250.0, -1562.0, b["h"] + b["encl_h"] - 250.0),
-                LBL["cell"])
-    # the VLM's label points at its opening's header, by the logo: the roof is out of these close views. Only the cell's
-    # view shows it; the header is above the opening's view, so the drive over labels tray A instead (lbl_A, whose
-    # anchor stays in frame all the way). At the header's middle, its first anchor was under its own box
-    lbl_vlm = ("Kardex Shuttle XP 500:\nevery tray docked to power", (-900.0, -1590.0, V.Z_OPEN_TOP + 45.0),
-               LBL["vlm"])
-    at_cell = [lbl_arm, lbl_cell, lbl_vlm]
-
-    def lbl_at(k, text, xyz_tray, box):
-        return (text, tuple((sc.world(f"tray_{k}") @ np.r_[np.asarray(xyz_tray, float), 1.0])[:3]), box)
-    lbl_A = []                            # set as the MiR leaves the cell, with tray A at the opening
-
-    def on_state(s):
-        vials["sample"].set(ul=s["vial"])
-    clock = TestClock(cub, test, on_state)
-    sc.frame_hooks.insert(0, clock)
-
     def labels(*ls):
         sc.sticky_labels = list(ls)
 
-    # ------------------------------------------------------------------ 1. the sample, at the cell; tray A comes down
-    def cell_pick():
-        yield from call(lambda: (phase("The operator, here a mobile robot arm, takes a sample from an instrument "
-                                       "outside the VLM."), labels(*at_cell)))
-        yield from pick(rb, A.down(p_cell), A.down(p_cell + (0, 0, 120)), "vial_s", A.GRIP_VIAL)
-        yield from place(rb, A.down(on_cab(L.buffer_seat)), A.down(on_cab(L.buffer_seat) + (0, 0, 120)), cab)
-        yield from park(rb)
-        yield from call(leave_cell)
-        yield from drive(L, 0.0, arm_at, cams)
+    # ------------------------------------------------------------------ the labels (box: fractions of the frame; a
+    # box left of the middle has its left edge at fx, one right of it its right edge; fy is its middle)
+    dock = W.dock_pose("vlm")
+    arm_at = [dock[0], dock[1] - 250.0, 1250.0]            # moves with the MiR (drive's `follow`)
+    lbl_arm = ("the operator: a MiR250 + UR10e", arm_at, (0.40, 0.93))
+    lbl_vlm = ("the VLM, a Kardex Shuttle XP 500:\nits trays come to the opening", (-700.0, -900.0, 2950.0),
+               (0.985, 0.08))
+    lbl_rp = ("AMAZEMET rePowder atomizer", (RP[0] + 120.0, RP[1] + 250.0, 1750.0), (0.02, 0.08))
+    lbl_cell = ("sieving cell", (-1982.5, -1250.0, 1650.0), (0.30, 0.18))
+    lbl_B = ("tray B at the opening:\nthe multi-doser v5 on its balance", tuple(K.bal_cup() + (150.0, 80.0, 560.0)),
+             (0.985, 0.10))
+    lbl_rack = ("charge cups, 5N Al", tuple(K.rack_cup(1) + (0.0, 0.0, 70.0)), (0.02, 0.62))
+    lbl_cup = ("the cup, cut open: Si,\nthen the AlSi10Mg top-up", tuple(K.bal_cup() + (0.0, 0.0, 30.0)),
+               (0.985, 0.72))
+    lbl_latch = ("draw latch", tuple(RP + (M.latch_geom()["x"], -150.0, 1300.0)), (0.985, 0.62))
+    lbl_lid = ("the lid, hinged at the back", tuple(RP + (-60.0, 0.0, 1560.0)), (0.02, 0.10))
+    lbl_tong = ("loading tong", None, (0.985, 0.30))
+    lbl_melt = ("the melt (time-lapse)", tuple(RP + (-10.0, 5.0, M.Z_CR + 10.0)), (0.02, 0.22))
+    lbl_plate = ("droplets off the vibrating plate", tuple(RP + tuple(M.IMPACT + np.array([60.0, 0.0, -30.0]))),
+                 (0.985, 0.50))
+    lbl_pw = ("powder", tuple(RP + (M.CHUTE_X, 0.0, 230.0)), (0.985, 0.82))
+    at_start = [lbl_vlm, lbl_rp, lbl_arm]
+    labels(*at_start)
 
-    def leave_cell():
-        if L.where["A"] != "open":
-            print("warning: tray A wasn't at the opening yet when its label was placed", file=sys.stderr)
-        lbl_A.append(lbl_at("A", "tray A at the opening:\nthe CubXL, a corrosion test", (31.0, -49.0, 455.0),
-                            LBL["A"]))
-        phase("It drives over. The VLM has already brought the tray it needs to the opening.")
-        labels(lbl_arm, lbl_A[0])
-    run(sc, cell_pick(), fetch(L, "A"))
-    # ------------------------------------------------------------------ 2. tray A: the vials swapped
+    # ------------------------------------------------------------------ 1. the whole lab; in to tray B as it comes down
+    def overview():
+        yield from call(lambda: phase("A vertical lab: its storage brings each instrument to the operator, a "
+                                      "mobile robot arm."))
+        yield 1.4, None
+        yield from call(lambda: phase("Here it makes a charge for the atomizer. The VLM brings tray B, the powder "
+                                      "doser, down."))
+        yield from cam_to(sc, "trayB", 4.2)
+        yield from call(lambda: labels(lbl_arm, lbl_B, lbl_rack))
+    run(sc, overview(), fetch(L, "B"))
+    CAMS["dose"] = _cam(tuple(K.bal_cup() + (0.0, 0.0, 60.0)), 38.0, 22.0, 950.0, 27.0)
 
-    def at_A():
-        yield from call(lambda: (phase("Tray A: the new sample goes in, and the one whose test is done comes out."),
-                                 labels(lbl_arm, lbl_A[0])))
-        yield from pick(rb, A.down(cub_seat(), spin=0.0), A.down(cub_seat() + (0, 0, 130), spin=0.0), "vial_t",
-                        A.GRIP_VIAL)
-        yield from place(rb, A.down(on_cab(L.m2_seat), spin=0.0), A.down(on_cab(L.m2_seat) + (0, 0, 120), spin=0.0),
-                         cab)
-        yield from pick(rb, A.down(on_cab(L.buffer_seat)), A.down(on_cab(L.buffer_seat) + (0, 0, 120)), "vial_s",
-                        A.GRIP_VIAL)
-        yield from place(rb, A.down(cub_seat(), spin=0.0), A.down(cub_seat() + (0, 0, 130), spin=0.0), cub.body)
-        yield from park(rb)
-    run(sc, at_A())
-    # ------------------------------------------------------------------ 3. tray A back, its test running; tray B down
-    phase("Tray A goes back into storage, still powered, and runs the test there. Tray B comes down.")
-    labels(lbl_arm)
-    run(sc, store(L, "A"))
-    lbl_run = ("tray A in its slot: the test\nruns there (time-lapse)", tuple(cub.deck_world(200.0, 150.0, 200.0)),
-               LBL["run"])
-    labels(lbl_arm, lbl_run)
-    vials["sample"].set(ul=0.0)
-    clock.start(sc)                       # the test runs from here, behind everything else, for TEST_SECS
-    run(sc, fetch(L, "B"))
-    # ------------------------------------------------------------------ 4. tray B: the tested vial in, an empty one out
-    lbl_B = lbl_at("B", "tray B at the opening:\npowder dosing, its vial rack",
-                   np.array(L.rack_seats[A.RACK_SEAT]) + (*rack_xy, V.T_FLOOR + 90.0), LBL["B"])
+    # ------------------------------------------------------------------ 2. the cup dosed: Si, then the top-up
+    f = DOSE_F
+    p_rack = K.rack_cup(CUP) + (0, 0, GRASP_DOWN)
+    p_hand = K.hand_cup() + (0, 0, GRASP_DOWN)
+
+    def dose_up(layer, h0, h1):
+        spin0 = car.state["spin"]
+        stt = car.to(spin=spin0 + 2 * math.pi * 2.0)         # eight quarter turns, a reading after each
+
+        def up(u):
+            stt(u)
+            on = 1.0 if 0.05 < u < 0.95 else 0.0
+            pts = AC.stream_points(L, K, CUP, u * 6.0, on)
+            sc.alpha["stream"] = 1.0 if len(pts) else 0.0
+            if len(pts):
+                sc.set_mesh("stream", pv.PolyData(pts))
+            k = min(1.0, max(0.0, (u - 0.12) / 0.83))
+            if layer == 0:
+                K._point[CUP] = k > 0.02
+                K.powder_h[CUP] = h1 * max(0.0, (k - 0.08) / 0.92)
+                K.powder_h2[CUP] = K.powder_h[CUP]
+            else:
+                K.powder_h2[CUP] = h0 + (h1 - h0) * k
+            K.apply()
+            K.cut(CUP, True, sleeve=None)
+        return up
 
     def at_B():
-        yield from call(lambda: (phase("Tray B: the tested sample goes into storage, and an empty vial comes out, "
-                                       "while tray A's test runs behind it."), labels(lbl_arm, lbl_B, lbl_run)))
-        yield from pick(rb, A.down(rack_seat()), A.down(rack_seat() + (0, 0, 110)), "vial", A.GRIP_VIAL)
-        yield from place(rb, A.down(on_cab(L.buffer_seat)), A.down(on_cab(L.buffer_seat) + (0, 0, 120)), cab)
-        yield from pick(rb, A.down(on_cab(L.m2_seat), spin=0.0), A.down(on_cab(L.m2_seat) + (0, 0, 120), spin=0.0),
-                        "vial_t", A.GRIP_VIAL)
-        yield from place(rb, A.down(rack_seat()), A.down(rack_seat() + (0, 0, 110)), rack)
+        yield from call(lambda: phase("The arm stands an empty charge cup on the doser's shuttle, which carries it "
+                                      "onto the balance."))
+        yield from pick(rb, A.down(p_rack, spin=0.0), A.down(p_rack + (0, 0, 110), spin=0.0), cg, GRIP_CUP, OPEN_CUP)
+        yield from place(rb, A.down(p_hand, spin=180.0), A.down(p_hand + (0, 0, 120), spin=180.0), car.fork_group,
+                         OPEN_CUP)
+        yield 1.2, lambda: both(rb.joint_to(A.PARK_RAD), car.to(side_door=CR.SIDE_OPEN), cam_up(sc, "dose"))
+        yield from call(lambda: labels(lbl_cup))
+        yield 1.6 * f, lambda: car.to(shuttle=0.0)
+        yield 0.4 * f, lambda: car.to(fork=A.SET_U)
+        car.reparent(cg, K.rig)
+        yield 0.3 * f, lambda: car.to(fork=1.0)
+        yield 1.3 * f, lambda: car.to(shuttle=1.0)
+        yield 0.5 * f, lambda: car.to(side_door=0.0, fork=0.0)
+        for layer, pname, h0, h1, text in (
+                (0, "Si", 0.0, h_si, f"The doser weighs in the alloy's powders, one module at a time: "
+                                     f"{PR['alloying_g']:.2f} g of Si ..."),
+                (1, "AlSi10Mg", h_si, h_set, f"... then {PR['top_up_g']:.2f} g of AlSi10Mg on top, for Al-10Si.")):
+            m = AC.MODULE[pname]
+            yield from call(lambda text=text: phase(text))
+            yield 2.2 * f, lambda m=m: car.to(shift=car.index_to(m), top_door=CR.TOP_OPEN)
+            yield 1.2 * f, lambda: both(car.to(ext=CR.DOCK_EXT, magnet_on=True), car.ghost(0.18))
+            yield 1.3 * f, lambda: car.to(tilt=CR.TILT)
+            K.cut(CUP, True, sleeve=None)
+            yield 3.4 * 0.8, lambda layer=layer, h0=h0, h1=h1: dose_up(layer, h0, h1)
+            sc.alpha["stream"] = 0.0
+            if layer == 0:
+                K.powder_h[CUP] = h1
+                K._point[CUP] = True
+            K.powder_h2[CUP] = h1
+            K.apply()
+            K.cut(CUP, True, sleeve=None)
+            yield 1.0 * f, lambda: car.to(tilt=0.0)
+            yield 0.7 * f, lambda: car.to(spin=car.state["spin"] - 2 * math.pi)
+            yield 0.9 * f, lambda: both(car.to(ext=0.0, magnet_on=False, top_door=0.0), car.ghost(1.0))
+        K.cut(CUP, False, sleeve=None)
+        yield from call(lambda: phase("The shuttle brings the charged cup out, and the arm stands it in the carrier "
+                                      "on the robot."))
+        yield 1.4, lambda: both(car.to(side_door=CR.SIDE_OPEN, fork=1.0), cam_up(sc, "trayB"))
+        yield from call(lambda: labels(lbl_arm, lbl_B))
+        yield 1.3 * f, lambda: car.to(shuttle=0.0)
+        yield 0.3 * f, lambda: car.to(fork=A.SET_U)
+        car.reparent(cg, car.fork_group)
+        yield 0.4 * f, lambda: car.to(fork=0.0)
+        yield 1.5 * f, lambda: car.to(shuttle=1.0)
+        yield 0.5 * f, lambda: car.to(side_door=0.0)
+        yield from pick(rb, A.down(p_hand, spin=180.0), A.down(p_hand + (0, 0, 120), spin=180.0), cg, GRIP_CUP,
+                        OPEN_CUP)
+        p_car = K.carrier_seat(CARRIER_K) + (0, 0, GRASP_DOWN)
+        yield from place(rb, A.down(p_car, spin=0.0), A.down(p_car + (0, 0, 120), spin=0.0), "amr", OPEN_CUP)
         yield from park(rb)
     run(sc, at_B())
-    # ------------------------------------------------------------------ 5. back to the cell; tray B back up
+
+    # ------------------------------------------------------------------ 3. tray B back up; the MiR to the rePowder
+    def go():
+        yield from call(lambda: (phase("Tray B goes back into storage, and the robot takes the cup to the atomizer."),
+                                 labels(lbl_arm)))
+        yield from drive(L, RP_STOP, arm_at, ("trayB", "rp"))
+    run(sc, go(), store(L, "B"))
+
+    # ------------------------------------------------------------------ 4. at the rePowder: latch, lid, tong, cup in
+    gl = M.latch_geom()
+
+    def lid(s):
+        sc.gmat[AT.g("hood")] = M.joint_matrix("lid", s * RP_LID_U)
+
+    def latch(s):
+        sc.gmat[AT.g("latch_lever")] = M.joint_matrix("latch", s * LATCH_U)
+
+    def bolt(s0, s1):
+        def up(e):
+            sc.gmat[AT.g("latch_bolt")] = M.joint_matrix("bolt", s0 + (s1 - s0) * e)
+        return up
+
+    def latch_grasp(s):
+        out, up_, tilt = LATCH_AT
+        a = math.radians(tilt)
+        Mx = P.tcp_frame(np.array([gl["x"], gl["yface"] - out, gl["zf"] + up_ * gl["length"]]),
+                         (0.0, math.cos(a), -math.sin(a)), 0.0)
+        return T(RP) @ M.joint_matrix("latch", s * LATCH_U) @ Mx
+
+    kc = M.knob_centre()
+
+    def knob_grasp(s):
+        Mx = P.tcp_frame(kc + np.array([0.0, -KNOB_OUT, 0.0]), (0.0, 1.0, 0.0), 0.0)
+        return T(RP) @ M.joint_matrix("lid", s * RP_LID_U) @ Mx
+
+    def arc(pose, s0, s1, n):
+        return AT.follow(rb, [pose(s0 + (s1 - s0) * x) for x in np.linspace(0.0, 1.0, n)])
+
+    def jaws(f0, f1):
+        def up(e):
+            AT.tong_jaws(sc, f0 + (f1 - f0) * e)
+        return up
+
+    def hold_cup():
+        """The tong has shut on the cup: the arm holds the cup now, the tong riding on it (alloy_atomize's
+        bookkeeping, for the audit: a held part may touch where it came from and where it goes)."""
+        tw, cw = sc.world("tong"), sc.world(cg)
+        rb.events.append((sc.n, "release", "tong", None))
+        sc.parent.pop(cg, None)
+        sc.gmat[cg] = cw
+        rb.held = (cg, AT.inv(rb.tcp_world()) @ cw)
+        rb.events.append((sc.n, "grasp", cg, "amr"))
+        sc.parent["tong"] = cg
+        sc.gmat["tong"] = AT.inv(cw) @ tw
+
+    def hold_tong():
+        tw, cw = sc.world("tong"), sc.world(cg)
+        sc.parent.pop("tong", None)
+        sc.gmat["tong"] = tw
+        if sc.parent.get(cg) is None:
+            sc.parent[cg] = "tong"
+            sc.gmat[cg] = AT.inv(tw) @ cw
+        rb.events.append((sc.n, "release", cg, None))
+        rb.held = ("tong", AT.inv(rb.tcp_world()) @ tw)
+        rb.events.append((sc.n, "grasp", "tong", None))
+
+    def cup_down():
+        """The jaws open: the cup stays, standing on the floor cone at its place."""
+        sc.parent[cg] = AT.g("crucible")
+        sc.gmat[cg] = AT.inv(sc.world(AT.g("crucible"))) @ T(RP) @ AT.cup_pose(CUP_AT, AT.CUP_R,
+                                                                                AT.cup_seat(CUP_AT)[2], 0.0)
+        rb.events.append((sc.n, "release", cg, AT.g("crucible")))
+        for chk in [rb._checker] + list(getattr(sc.auditor, "checkers", {}).values()):
+            if chk is not None:
+                chk.held_group = None
+
+    st = {}
+
+    def to_arc(key, grasp, pose, move, close, skip, back, opening):
+        def fac():
+            q = AT.arc_branch(rb, sc, grasp, pose, move, close, skip, n=17, back=back)
+            st[key] = q
+            return both(rb.joint_to(q1=rb.solve(grasp @ T((0, 0, -back)), q)), rb.grip_to(opening))
+        return fac
+
+    def at_rp():
+        yield from call(lambda: (phase("At the atomizer, the arm pulls the lid's draw latch open and lifts the lid by "
+                                       "its knob."), labels(lbl_arm, lbl_latch, lbl_lid)))
+        yield 0.8, lambda: bolt(0.0, 1.0)                       # the pneumatic locking bolt goes back
+        yield ARM_S[0], to_arc("latch", latch_grasp(0.0), latch_grasp, latch, GRIP_LATCH, ("latch",), 100.0,
+                               OPEN_LATCH)
+        yield HOLD, None
+        yield ARM_S[1], lambda: rb.line_to(latch_grasp(0.0))
+        yield ARM_S[2], lambda: rb.grip_to(GRIP_LATCH)
+        rb.events.append((sc.n, "grasp", AT.g("latch_lever"), None))
+        yield 1.4, lambda: both(arc(latch_grasp, 0.0, 1.0, 9), latch)
+        yield ARM_S[2], lambda: rb.grip_to(OPEN_LATCH)
+        rb.events.append((sc.n, "release", AT.g("latch_lever"), None))
+        yield ARM_S[3], lambda: rb.line_to(latch_grasp(1.0) @ T((0, 0, -100)))
+        yield ARM_S[0], to_arc("knob", knob_grasp(0.0), knob_grasp, lid, GRIP_KNOB, ("knob",), 110.0, 0.45)
+        yield HOLD, None
+        yield ARM_S[1], lambda: rb.line_to(knob_grasp(0.0))
+        yield ARM_S[2], lambda: rb.grip_to(GRIP_KNOB)
+        rb.events.append((sc.n, "grasp", AT.g("knob"), None))
+        yield 2.2, lambda: both(arc(knob_grasp, 0.0, 1.0, 12), lid)
+        yield ARM_S[2], lambda: rb.grip_to(0.45)
+        rb.events.append((sc.n, "release", AT.g("knob"), None))
+        yield ARM_S[3], lambda: rb.line_to(knob_grasp(1.0) @ T((0, 0, -110)))
+        # the loading tong out of its holder on the MiR's cabinet (alloy_atomize: chapter 2's moves)
+        yield from call(lambda: (phase("With a loading tong, the arm takes the cup and sets it on the crucible's "
+                                       "floor, past the sealing rod."), labels(lbl_arm, lbl_tong_at())))
+        home = AT.tong_tcp(sc.world("tong"))
+        yield 1.6, lambda: both(rb.joint_to(Tw=T((0, 0, 130)) @ home), rb.grip_to(0.0))
+        yield 0.8, lambda: rb.line_to(home)
+        yield 0.4, lambda: rb.grip_to(AT.GRIP_TONG)
+        rb.grasp("tong")
+        yield 0.9, lambda: rb.line_to(T((0, 0, 210)) @ rb.tcp_world())
+        xm = sc.world(L.amr_group)[:3, 0]
+        top = (sc.world(cg) @ np.r_[0.0, 0.0, C.SLUG_L, 1.0])[:3]
+        F = np.eye(4)
+        F[:3, 0], F[:3, 1], F[:3, 2], F[:3, 3] = xm, np.cross((0, 0, 1.0), xm), (0, 0, 1), top
+        g_pick = AT.tong_tcp(F)
+        yield 1.4, lambda: both(rb.joint_to(Tw=T((0, 0, 90)) @ g_pick), rb.grip_to(AT.GRIP_TONG_OPEN), jaws(0.0, 1.0))
+        yield 0.7, lambda: rb.line_to(g_pick)
+        yield 0.4, lambda: both(rb.grip_to(AT.GRIP_TONG), jaws(1.0, 0.0))
+        hold_cup()
+        yield 0.6, lambda: rb.line_to(T((0, 0, 150)) @ rb.tcp_world())
+        path = AT.tong_path(CUP_AT)
+        grips = [AT.tong_tcp(T(RP) @ AT.tong_frame_for(CUP_AT, Mx)) for Mx in path]
+        stage = grips[0].copy()
+        stage[0, 3], stage[1, 3] = RP[0] + 60.0, RP[1] - 200.0
+        yield 1.3, lambda: both(rb.joint_to(Tw=stage), cam_up(sc, "bore"))
+        yield 0.6, lambda: rb.line_to(grips[0])
+        # down the bore in three legs, the arm's "held" part swapping between the cup and the tong (alloy_atomize)
+        yield 1.2, lambda: AT.follow(rb, grips[:4])
+        hold_tong()
+        yield 0.8, lambda: AT.follow(rb, grips[3:5])
+        hold_cup()
+        yield 1.4, lambda: AT.follow(rb, grips[4:])
+        hold_tong()
+        yield 0.4, lambda: both(rb.grip_to(AT.GRIP_TONG_OPEN), jaws(0.0, 1.0))
+        cup_down()
+        yield 0.8, lambda: rb.line_to(T((0, 0, 170)) @ rb.tcp_world())
+        home2 = AT.tong_tcp(sc.world("amr") @ L.tong_home)
+        yield 1.6, lambda: both(rb.joint_to(Tw=T((0, 0, 220)) @ home2), rb.grip_to(AT.GRIP_TONG), jaws(1.0, 0.0),
+                                cam_up(sc, "rp"))
+        yield 0.9, lambda: rb.line_to(home2)
+        yield 0.4, lambda: rb.grip_to(0.0)
+        rb.release("amr")
+        yield 0.6, lambda: rb.line_to(T((0, 0, 120)) @ rb.tcp_world())
+        # the lid down and the latch shut, the bolt in
+        yield from call(lambda: (phase("The arm shuts the lid and the latch, and the locking bolt goes in."),
+                                 labels(lbl_arm, lbl_latch, lbl_lid)))
+        yield 1.4, to_arc("knob_open", knob_grasp(1.0), lambda s: knob_grasp(1.0 - s), lambda s: lid(1.0 - s),
+                          GRIP_KNOB, ("knob",), 110.0, 0.45)
+        yield 0.7, lambda: rb.line_to(knob_grasp(1.0))
+        yield 0.4, lambda: rb.grip_to(GRIP_KNOB)
+        rb.events.append((sc.n, "grasp", AT.g("knob"), None))
+        yield 2.0, lambda: both(arc(knob_grasp, 1.0, 0.0, 12), lambda e: lid(1.0 - e))
+        yield 0.4, lambda: rb.grip_to(0.45)
+        rb.events.append((sc.n, "release", AT.g("knob"), None))
+        yield 0.7, lambda: rb.line_to(knob_grasp(0.0) @ T((0, 0, -110)))
+        yield 1.4, to_arc("latch_open", latch_grasp(1.0), lambda s: latch_grasp(1.0 - s), lambda s: latch(1.0 - s),
+                          GRIP_LATCH, ("latch",), 100.0, OPEN_LATCH)
+        yield 0.7, lambda: rb.line_to(latch_grasp(1.0))
+        yield 0.4, lambda: rb.grip_to(GRIP_LATCH)
+        rb.events.append((sc.n, "grasp", AT.g("latch_lever"), None))
+        yield 1.4, lambda: both(arc(latch_grasp, 1.0, 0.0, 9), lambda e: latch(1.0 - e))
+        yield 0.4, lambda: rb.grip_to(OPEN_LATCH)
+        rb.events.append((sc.n, "release", AT.g("latch_lever"), None))
+        yield 0.7, lambda: rb.line_to(latch_grasp(0.0) @ T((0, 0, -100)))
+        yield 0.6, lambda: both(bolt(1.0, 0.0), rb.joint_to(A.PARK_RAD))
+        yield from park(rb, 0.8)
+
+    def lbl_tong_at():
+        return ("loading tong", tuple(sc.world("tong")[:3, 3] + (0.0, 0.0, 200.0)), (0.985, 0.30))
+    run(sc, at_rp())
+
+    # ------------------------------------------------------------------ 5. melted and atomized; back to the opening
+    def melt():
+        yield from call(lambda: (phase("The atomizer melts the cup and sprays the melt into powder (a time-lapse, "
+                                       "cut open)."), fx.start(sc), labels(lbl_melt, lbl_plate, lbl_pw)))
+        yield 1.6, lambda: cam_up(sc, "cut")
+        yield ATOM_SECS - 1.6 - 4.6, None
+        yield from call(lambda: (phase("And the robot goes back to the VLM for the next tray."), labels(*at_start)))
+        yield from cam_to(sc, "wide", 4.6)
+        yield 1.2, None
 
     def back():
-        yield from call(lambda: (phase("The arm takes the empty vial back to the instrument for its next sample."),
-                                 labels(lbl_arm, lbl_run)))
-        yield from drive(L, CELL_X, arm_at, cams[::-1] if cams else None)
-        yield from call(lambda: labels(lbl_arm, lbl_cell, lbl_run))
-        yield from pick(rb, A.down(on_cab(L.buffer_seat)), A.down(on_cab(L.buffer_seat) + (0, 0, 120)), "vial",
-                        A.GRIP_VIAL)
-        yield from place(rb, A.down(p_cell), A.down(p_cell + (0, 0, 120)), "cell_pocket")
-        yield from call(lambda: (labels(*at_cell), print(f"test: frames {clock.n0}-{clock.n1}, last park from "
-                                                         f"{sc.n}", flush=True)))
-        yield from park(rb)
-        yield 0.4, None
-    run(sc, back(), store(L, "B"))
+        yield 1.0, None
+        yield from drive(L, dock[:2], arm_at)
+    run(sc, melt(), back())
     out = sc.save()
     if sc.auditor is not None and not SC.AUDIT:      # ARM_AUDIT_RENDER=1
         sc.auditor.save()
-    print(f"highest forearm/wrist point {rb.max_z_world:.0f} mm; {sc.n} frames; the test ran frames {clock.n0}-"
-          f"{clock.n1}", flush=True)
-    if clock.n1 is None:
-        print("warning: the CubXL's test had not ended by the last frame, so the loop jumps", file=sys.stderr)
+    if apart and SC.AUDIT and sc.auditor is not None:
+        os.makedirs("/tmp/org_audit", exist_ok=True)
+        with open(f"/tmp/org_audit/{apart[0]:05d}.json", "w") as fh:
+            json.dump(dict(frames=sc.auditor.frames, parent=sc.parent,
+                           events={r.prefix: [list(e) for e in r.events] for r in sc.robots}), fh)
+    print(f"highest forearm/wrist point {rb.max_z_world:.0f} mm; {sc.n} frames; the melt ran frames {fx.n0}-{fx.n1}",
+          flush=True)
+    if fx.n1 is None:
+        print("warning: the melt had not ended by the last frame, so the loop jumps", file=sys.stderr)
     meta_path = OUT / f"{NAME}.json"
     if meta_path.exists() and not os.environ.get("ARM_AUDIT") and not os.environ.get("PREVIEW"):
         meta = json.loads(meta_path.read_text())
-        meta.update(title=TITLE, speed=SPEED, camera=os.environ.get("ORG_CAM", CAM), phases=phases)
+        meta.update(title=TITLE, speed=SPEED, camera=CAM, phases=phases)
         meta_path.write_text(json.dumps(meta, indent=1, ensure_ascii=False) + "\n")
     return out
+
+
+def join(*names):
+    """Parts rendered side by side (ORG_PART, each under its own ORG_NAME) -> out/mp4/<NAME>.mp4 and out/<NAME>.json."""
+    from scene import OUT
+    names = names or sorted(p.stem for p in (OUT / "mp4").glob(f"{NAME}_p*.mp4"))
+    with tempfile.NamedTemporaryFile("w", suffix=".txt", delete=False) as fh:
+        for nm in names:
+            fh.write(f"file '{(OUT / 'mp4' / f'{nm}.mp4').resolve()}'\n")
+        lst = fh.name
+    subprocess.run(["ffmpeg", "-y", "-v", "error", "-f", "concat", "-safe", "0", "-i", lst, "-c", "copy", "-movflags",
+                    "+faststart", str(OUT / "mp4" / f"{NAME}.mp4")], check=True)
+    meta = json.loads((OUT / f"{names[0]}.json").read_text())
+    meta["name"] = NAME
+    (OUT / f"{NAME}.json").write_text(json.dumps(meta, indent=1, ensure_ascii=False) + "\n")
+    print(f"joined {len(names)} parts -> {NAME}.mp4", flush=True)
+
+
+def audit_join():
+    """The audited parts (ORG_AUDIT_PART, /tmp/org_audit/) -> one report, out/collisions/<NAME>.json, by
+    collide.Auditor's own rules over every frame."""
+    import glob
+    from types import SimpleNamespace
+
+    import collide
+    frames, parent, events = [], {}, {}
+    for pth in sorted(glob.glob("/tmp/org_audit/*.json")):
+        d = json.load(open(pth))
+        frames += d["frames"]
+        parent, events = d["parent"], d["events"]
+    frames.sort(key=lambda fr: fr["n"])
+    aud = collide.Auditor.__new__(collide.Auditor)
+    aud.sc = SimpleNamespace(name=NAME, parent=parent,
+                             robots=[SimpleNamespace(prefix=p, events=ev) for p, ev in events.items()])
+    aud.frames, aud.checkers, aud.snap_frames = frames, {}, set()
+    rep = aud.save()
+    print(f"{rep['frames_with_collisions']} of {rep['frames_checked']} frames with collisions", flush=True)
 
 
 BAND = 86            # px at 1280 wide: the white header band over the render that holds the GIF's text
@@ -846,4 +1185,4 @@ def gif(width=GIF_W, lossy=0, colors=128, sticky=int(os.environ.get("ORG_STICKY"
 
 if __name__ == "__main__":
     arg = sys.argv[1] if len(sys.argv) > 1 else "movie"
-    {"views": views, "movie": movie, "gif": gif}[arg]()
+    {"views": views, "movie": movie, "gif": gif, "join": join, "audit_join": audit_join}[arg](*sys.argv[2:])
