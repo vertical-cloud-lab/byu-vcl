@@ -627,6 +627,9 @@ def movie():
     rb.release(head_hold)
     lin(along(T_on, -240), 0.9)
     status(sc, Holder="on the PX500's head")
+    drop_ = -pol.inst.joints["head"].vec[2]
+    hold_dn = H_on[:3, 3] - (0.0, 0.0, drop_ + RP.LIFT)       # the holder's face side, the head down on the disc
+    cam_pist = cam_at(hold_dn + (0, 0, 40), (60, -430, 70), look=(0, 0, 0))
 
     pre_back = 140.0
 
@@ -683,13 +686,13 @@ def movie():
         sc.step(st["lbl"], cap_, 0.8 * f, pol.move({"head": (up_, 1.0)}), hold=0.0)
         ws = {"powder": (0.0, 1.0)} if cloth else {"water": (0.0, 1.0)}
         sc.step(st["lbl"], cap_ + " The pistons come down onto the mounts' backs.", 0.7 * f,
-                pol.move({"pistons": (0.0, 1.0)}), hold=0.0)
+                pol.move({"pistons": (0.0, 1.0)}), hold=0.0, cam_to=cam_pist)
         sc.step(st["lbl"], cap_, secs_ * f, pol.move({"platen": (a, b), "holder": (ha, hb), "pistons": (1.0, 1.0),
                                                       **ws}), hold=0.0)
         we = {"powder": (1.0, 0.0)} if cloth else {"water": (1.0, 0.0)}
         sc.step(st["lbl"], "Pistons up: the mounts just stand in their holes.", 0.5 * f,
                 pol.move({"pistons": (1.0, 0.0)}), hold=0.0)
-        sc.step(st["lbl"], cap_, 0.8 * f, pol.move({"head": (1.0, up_), **we}), hold=0.1)
+        sc.step(st["lbl"], cap_, 0.8 * f, pol.move({"head": (1.0, up_), **we}), hold=0.1, cam_to=cam_pol)
         if rinse and not cloth:
             sc.step(st["lbl"], "Head up: the mounts, the holder and the disc rinsed under the spigot before the next "
                     "grit (the SOP, step 4).", 0.9 * f, pol.move({"water": (0.0, 1.0)}), hold=0.1)
