@@ -1165,12 +1165,15 @@ def _movie(B):
         st["cap"] = ("The chamber door opens. The MIDI has no automatic depowdering, so the arm takes a suction lance off "
                      "its post; a pipe along the floor takes the powder to the depowdering box's separator.")
         status(sc, Arm="taking the suction lance", Plate="under powder")
+        # round 9: the door lifts in view (CAM_ACO), hinged along its top edge, before the shot moves to the lance
+        flap_top = W.world(np.array(M.door_T(1.0) @ np.r_[np.array(M.door_pivot()) + (290.0, 0.0, -278.0), 1.0])[:3])
         step(1.6, RB.both(W.door(1.0), fade(W.names["door"], 0.2, 1.0), W.ghost(0.0, pieces=("shell", "cabinet"))),
+             hold=0.4, labels=[("the door lifts, hinged along its top edge", tuple(flap_top + (0, 0, 40)),
+                                (0.42, 0.14))])
+        step(1.6, D_.with_hose(RB.both(rb.joint_to(Tw=A.down(p_hold + (0, 0, 130), spin=0.0)), rb.grip_to(0.0))),
              cam=CAM_DEP,
              labels=[("depowdering box", tuple(D_.world((0, 0, M.DBOX["H"] + 60))), (0.80, 0.16)),
                      ("suction lance", tuple(p_hold + (0, -30, 60)), (0.62, 0.30))])
-        step(1.6, D_.with_hose(RB.both(rb.joint_to(Tw=A.down(p_hold + (0, 0, 130), spin=0.0)), rb.grip_to(0.0))),
-             labels=[])
         lin(A.down(p_hold, spin=0.0), 0.7)
         grip(GRIP_LUG)
         rb.grasp("lance")
