@@ -47,6 +47,15 @@ then reverts once the legend has been shown for a bit of time."
   Edison runs found no standard that gives a cleaning recipe or a "clean sieve" test either. A cleaned sieve should still
   be re-inspected (a calibrated-sample check or a microscope look at the cloth) per the lab's own schedule.
 
+**Render (round 9).** 1816 frames, 302.7 s at 6 fps, 1280 x 720 (`VLAB_ONLY_TRAYS=F`, Shuttles clad); MP4 11.6 MB; the GIF
+is every second frame at 640 x 360, `gifsicle --lossy=140 --colors 48`, 4.8 MB. **Collisions: not yet 0.** The last full audit
+(before the render, same code) found 7 of 3402 frames: 1 in chapter 3 (the gripper's right fingertip against the
+enclosure, frame 3063, not yet located: the audit's step log never got a slot) and 6 in chapter 4 (the forearm against the
+Aconity's door twice, 3 frames each, going into and out of the chamber): the door as `alloy_models.door_T` now has it lifting
+to 165 degrees above the front, where round 8's door swung inward, so the fill approach needs re-planning against it. The
+render was started before that was fixed; re-run `PRINT_STEPS=1 ARM_AUDIT=1` (prints each step's first frame) and adjust.
+The wash module's own moves were in that audit and produced no collision. Only the No. 325 is drawn through the wash cycle.
+
 *Time (estimate).* Vibrate 2 min, ultrasonic IPA 3-5 min, warm-air dry 3-5 min, three transfers by the arm about 2 min: some
 12-15 min per sieve, about 75-90 min for the six one after another with one module. Alternatives: a second module or a
 bath that takes the whole stack (one UR 1 takes only one sieve, bigger UR baths several); one disposable or dedicated set

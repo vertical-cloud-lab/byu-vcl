@@ -1,8 +1,51 @@
 {
  "clip": "alloy_print",
- "frames_checked": 1112,
- "frames_with_collisions": 0,
- "runs": [],
+ "frames_checked": 3402,
+ "frames_with_collisions": 7,
+ "runs": [
+  {
+   "label": "3/5",
+   "first_frame": 3063,
+   "last_frame": 3063,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "encl"
+    }
+   ]
+  },
+  {
+   "label": "4/5",
+   "first_frame": 3487,
+   "last_frame": 3489,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_door"
+    }
+   ]
+  },
+  {
+   "label": "4/5",
+   "first_frame": 3565,
+   "last_frame": 3567,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "aco_door"
+    }
+   ]
+  }
+ ],
  "rules": "What may touch: the gripper and whatever group it is picking up, holding or putting down, within 4 s of the\n    grasp or release; a held part and the groups it touches when it is taken and when it is let go (where it came\n    from and where it goes).",
  "method": "FCL 0.7 (python-fcl) mesh-mesh collision on the drawn meshes, arm links decimated to 8000 triangles; every frame of the clip, after its update"
 }
