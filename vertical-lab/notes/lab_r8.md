@@ -211,3 +211,82 @@ scene, and most of them are nowhere near the arm.
 - **The services clips** (`vlm_hookups`, `vlm_services`, `vlm_cabling`, `bay_camera`) follow one tray each and were
   not re-rendered with the round-8 trays.
 - **Two stills are round 7's:** `vlm_workflow_dose.png` and `vlm_workflow_vial.png`.
+
+## Round 9, the jars stream (PR #318, Sterling's points 4 and 8 of 2026-11-05)
+
+### What changed
+
+- **Every jar in the store, the storage load and the packaging station is the lab-wide jar** (`props.jar_parts`): clear
+  glass, a matte black cap, a white label, the powder showing. The lid colours by element and alloy, the amber glass of
+  the lots and the milky HDPE of the packaging jar are gone. `r8_store.py`, `instruments_r7.storage` and
+  `instruments_lab.packaging` changed; `props.py` is as round 9's first run left it.
+- **A tint says what is special, then fades back.** Each of three clips has a `jar tint` piece (`Joint("fade")`, `props.tint_sleeve`
+  sleeves, `props.piece_legend` for the legend). The clip tints for 1.6 s, holds for about 2.4 s, then fades for 1.8 s:
+  - tray N (feedstock): amber for the Al master alloys (Al-Li, Al-Sc, Al-Zr), teal for Al and Si (Al 4047's elements);
+  - tray O (lots): amber for the < 63 um LPBF cut, teal for the other cuts of run jz31op;
+  - tray J's storage: one tint per powder in its eight sealed jars (Al 4047, Cu, Al-Ce, Ni-Al bronze: placeholders, estimates).
+- The packaging station has nothing to point out, so its jars are just clear glass with a black cap. Its 61 x 131 mm size is
+  still the Nalgene 2104-0008's: only the material changed (the lab's actual jar is an estimate, see below).
+- `setup_lab` and the time-lapse build with these changes (import check; not re-rendered). Still: `out/jars_r9_still.png`.
+
+### Which containers for powder: is glass OK?
+
+**Short answer.** Glass is fine for what the lab holds now: small sealed lots of coarse (150-300 um) powder in a
+dehumidified room, handled by a gripper at modest force. It is not what the standards or the powder makers prefer for
+aluminium: NFPA 484 and the Aluminum Association want *conductive, grounded* containers, and glass cannot be grounded.
+So keep glass for the bench-scale jars, ground what touches them (conductive racks, a grounded dosing path, no dry
+pouring of fines), and put Mg, Li master alloys and anything under about 63 um in sealed metal cans or the glovebox.
+
+**Why, by criterion.**
+
+| | Glass (borosilicate or soda-lime, PTFE-lined cap) | HDPE / PP | Metal can (Al or steel, gasketed) |
+|---|---|---|---|
+| Static and dust ignition | insulating, cannot be bonded; a charged jar can discharge into fine Al or Mg | insulating, worst for charge build-up | conductive, can be bonded to ground: what NFPA 484 and TR-2 ask for |
+| Moisture and O2 | best barrier (with a PTFE or foil liner) | permeable to water vapour and O2 over weeks; DAL #146's advice: not for long-term unless over-bagged | good with a gasket; over-bag for argon |
+| Robot handling | breaks if dropped or squeezed; a UR10e with a 2F-85 can be force-limited, and rack pockets catch a slip | tough, light | tough, but opaque: the powder can't be seen, and a lid needs a tool |
+| Visibility | powder level and caking visible, which an automated lab uses | translucent | none |
+| Cleaning and contamination | inert, reusable, no extractables | scratches, plasticisers | can dent and shed coating |
+
+- **Standards.** NFPA 484 (combustible metals) and the Aluminum Association's
+  [TR-2, storage and handling of aluminum powders and paste](https://www.aluminum.org/sites/default/files/2021-11/Safe_Storage.pdf)
+  ask for electrically conductive containers, bonding and grounding when powder is moved, and no plastic for handling
+  aluminium powders ([NFPA 484 (2015) preview](https://www.avadocuments.com/preview/nfpa-484-2015.pdf); I read excerpts
+  only, and the current edition may differ). Plastic drums don't dissipate charge
+  ([Justrite's grounding guide](https://www.justrite.com/media/2019_Justrite-Guide-to-Safe-Grounding-and-Bonding-Practices.pdf)).
+- **What makers ship in.** Large lots go in metal: Carpenter Additive sells a reusable stainless hopper to replace plastic
+  containers ([Carpenter, transport and storage](https://www.carpenteradditive.com/news-events/metal-powder-transportation-and-storage)),
+  and metal-powder packaging patents describe steel drums with earthed filling
+  ([US 6,134,863](https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/6134863)). Small AM lots are sold in
+  sealed plastic or metal containers: a reseller lists Carpenter AlSi10Mg as two sealed 5 kg containers of 20-63 um
+  ([additiveplus](https://additiveplus.com/product/aluminum-alloy-powder-alsi10mg-lpbf-compatible-5-kg-11-lbs/); a
+  third party, not Carpenter's own spec). I found no public packaging detail for AP&C
+  ([overview](https://www.advancedpowders.com/sites/default/files/2022-06/AP&C_Overview_Bro_A4_EN_8_v3.pdf): argon
+  atomization, no container named), Valimet, ECKART or Kymera: ask them when we order.
+- **What the lab does now.** From
+  [digital-alloy-lab #155](https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/155): until there is a glovebox,
+  powders from [#146](https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/146) are kept in airtight supplier
+  containers; #155's Edison answer advises keeping desiccant outside the powder jar, argon purging and over-bagging,
+  and single-run aliquots (a published protocol used 50 g in borosilicate vials: [Grubbs 2022](https://doi.org/10.3390/met12040603)).
+  #146's answer says "grounded gasketed metal cans are the best container; borosilicate glass is a fine barrier but can't be
+  grounded; HDPE isn't suitable long-term unless overbagged" (an AI-written answer in the thread, not a standard). The
+  alloy lab's own SOP (#129) mentions "jars" for test mixtures without naming the material. I found no issue that states
+  which jars the lab bought.
+- **Moisture** scales with surface area, so the 150-300 um cut asked for in #146 takes up far less than the 15-45 um
+  LPBF cut that #159 aims at: fines are where glass-and-desiccant stops being enough.
+
+**Recommendation.**
+1. Keep clear glass with a black PTFE-lined cap for the working jars (30-500 mL), as the model now draws them: they let
+   the robot and the people see the powder, and the powder is coarse.
+2. Ground what touches them: conductive (ESD-safe) racks in place of the white HDPE ones, a grounded dosing path, argon over
+   the powder where it is dosed; never pour fines in the open.
+3. Fines (< 63 um Al), Mg and the Al-Li master alloy: sealed gasketed metal cans, or glovebox only.
+4. Prefer shatter-resistant (polymer-coated) glass and limit the 2F-85's grip force, since a robot drops what a person
+   would not.
+
+**Does it change what the model shows?** The jar stays clear glass with a black cap. Two optional follow-ups, not done:
+the racks (still drawn in white HDPE, `r8_rack`) could be drawn as conductive racks with a ground strap, and a metal can
+could be added for the fines and the Mg. The grip-force limit is for whoever sets up the 2F-85.
+
+### Open
+
+- The jar sizes are typical wide-mouth jars, estimates. The storage tint's powder names are placeholders.
