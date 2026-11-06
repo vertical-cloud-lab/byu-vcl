@@ -1,6 +1,6 @@
 {
  "clip": "alloy_atomize",
- "frames_checked": 866,
+ "frames_checked": 920,
  "frames_with_collisions": 0,
  "runs": [],
  "rules": "What may touch: the gripper and whatever group it is picking up, holding or putting down, within 4 s of the\n    grasp or release; a held part and the groups it touches when it is taken and when it is let go (where it came\n    from and where it goes).",

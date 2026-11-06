@@ -1,7 +1,7 @@
 {
  "name": "alloy_atomize",
  "fps": 6,
- "n_frames": 1263,
+ "n_frames": 1341,
  "size": [
   1280,
   720
@@ -9,453 +9,483 @@
  "substeps": [
   {
    "label": "1/5",
-   "caption": "From the VLM to the atomizer: the MiR250 carries the four charged 5N Al cups, 156.7 g of Al-10Si (Si powder under each plug), to the AMAZEMET rePowder. Four charges is how the lab loads the crucible; its own Al runs were 169-180 g (DAL #159).",
+   "caption": "From the VLM to the atomizer: MiR250 1 carries the four charged 5N Al cups, 156.7 g of Al-10Si (Si powder under each plug), to the AMAZEMET rePowder. Four charges is how the lab loads the crucible; its own Al runs were 169-180 g (DAL #159). MiR250 2 comes over from the aisle for the lid.",
    "start_frame": 0,
    "end_frame": 16
   },
   {
    "label": "1/5",
-   "caption": "From the VLM to the atomizer: the MiR250 carries the four charged 5N Al cups, 156.7 g of Al-10Si (Si powder under each plug), to the AMAZEMET rePowder. Four charges is how the lab loads the crucible; its own Al runs were 169-180 g (DAL #159).",
+   "caption": "From the VLM to the atomizer: MiR250 1 carries the four charged 5N Al cups, 156.7 g of Al-10Si (Si powder under each plug), to the AMAZEMET rePowder. Four charges is how the lab loads the crucible; its own Al runs were 169-180 g (DAL #159). MiR250 2 comes over from the aisle for the lid.",
    "start_frame": 17,
    "end_frame": 59
   },
   {
-   "label": "2/5",
-   "caption": "The lid is held down by one over-centre draw latch on the furnace's front right, its keeper on the lid, set just tight enough that the seal doesn't hiss (the lab's training video T4, 5:17). The machine's own locking bolt beside it is back: the furnace is at atmosphere. The arm takes the lever by a pull tab.",
+   "label": "1/5",
+   "caption": "Two MiR250 + UR10e units: opening and shutting the lid takes two hands. Each MiR250 carries a 131 kg steel plate, 40 mm thick, on its deck under the cabinet: the weight as low as a top module can carry it, so an arm can pull or press on the machine without tipping its base (sums in notes/alloy_atomize.md).",
    "start_frame": 60,
-   "end_frame": 70
+   "end_frame": 80
   },
   {
    "label": "2/5",
-   "caption": "The lid is held down by one over-centre draw latch on the furnace's front right, its keeper on the lid, set just tight enough that the seal doesn't hiss (the lab's training video T4, 5:17). The machine's own locking bolt beside it is back: the furnace is at atmosphere. The arm takes the lever by a pull tab.",
-   "start_frame": 71,
-   "end_frame": 75
-  },
-  {
-   "label": "2/5",
-   "caption": "The lid is held down by one over-centre draw latch on the furnace's front right, its keeper on the lid, set just tight enough that the seal doesn't hiss (the lab's training video T4, 5:17). The machine's own locking bolt beside it is back: the furnace is at atmosphere. The arm takes the lever by a pull tab.",
-   "start_frame": 76,
-   "end_frame": 78
-  },
-  {
-   "label": "2/5",
-   "caption": "Pulled out over centre, the lever lets the loop off the keeper. Not measured: about 100 N, 200 N for a stiff one (cover latches of this kind). Pulled that hard, the MiR250 and its arm would tip at 466 N and slide at 505 N; with a 95 kg steel plate under the cabinet, at 730 and 785 N.",
-   "start_frame": 79,
+   "caption": "Arm 2 holds the lid down by its top while arm 1 works the latch, as a person does it with two hands (the lab's training video T4, 5:23), so the lid can't jump when the latch lets go. The latch is one over-centre draw latch on the furnace's front right, its keeper on the lid; the machine's own locking bolt beside it is back: the furnace is at atmosphere.",
+   "start_frame": 81,
    "end_frame": 92
   },
   {
    "label": "2/5",
-   "caption": "Pulled out over centre, the lever lets the loop off the keeper. Not measured: about 100 N, 200 N for a stiff one (cover latches of this kind). Pulled that hard, the MiR250 and its arm would tip at 466 N and slide at 505 N; with a 95 kg steel plate under the cabinet, at 730 and 785 N.",
+   "caption": "Arm 2 holds the lid down by its top while arm 1 works the latch, as a person does it with two hands (the lab's training video T4, 5:23), so the lid can't jump when the latch lets go. The latch is one over-centre draw latch on the furnace's front right, its keeper on the lid; the machine's own locking bolt beside it is back: the furnace is at atmosphere.",
    "start_frame": 93,
-   "end_frame": 95
+   "end_frame": 97
   },
   {
    "label": "2/5",
-   "caption": "Pulled out over centre, the lever lets the loop off the keeper. Not measured: about 100 N, 200 N for a stiff one (cover latches of this kind). Pulled that hard, the MiR250 and its arm would tip at 466 N and slide at 505 N; with a 95 kg steel plate under the cabinet, at 730 and 785 N.",
-   "start_frame": 96,
-   "end_frame": 100
+   "caption": "Arm 2 holds the lid down by its top while arm 1 works the latch, as a person does it with two hands (the lab's training video T4, 5:23), so the lid can't jump when the latch lets go. The latch is one over-centre draw latch on the furnace's front right, its keeper on the lid; the machine's own locking bolt beside it is back: the furnace is at atmosphere.",
+   "start_frame": 98,
+   "end_frame": 108
   },
   {
    "label": "2/5",
-   "caption": "The sealing rod is already fitted and seated: rod first, then the metal (GU500 manual, #222). The arm takes the lid's knob and swings the lid up about its hinge, to the left.",
-   "start_frame": 101,
-   "end_frame": 111
+   "caption": "Arm 2 holds the lid down by its top while arm 1 works the latch, as a person does it with two hands (the lab's training video T4, 5:23), so the lid can't jump when the latch lets go. The latch is one over-centre draw latch on the furnace's front right, its keeper on the lid; the machine's own locking bolt beside it is back: the furnace is at atmosphere.",
+   "start_frame": 109,
+   "end_frame": 113
   },
   {
    "label": "2/5",
-   "caption": "The sealing rod is already fitted and seated: rod first, then the metal (GU500 manual, #222). The arm takes the lid's knob and swings the lid up about its hinge, to the left.",
-   "start_frame": 112,
-   "end_frame": 117
+   "caption": "Arm 2 holds the lid down by its top while arm 1 works the latch, as a person does it with two hands (the lab's training video T4, 5:23), so the lid can't jump when the latch lets go. The latch is one over-centre draw latch on the furnace's front right, its keeper on the lid; the machine's own locking bolt beside it is back: the furnace is at atmosphere.",
+   "start_frame": 114,
+   "end_frame": 116
   },
   {
    "label": "2/5",
-   "caption": "The sealing rod is already fitted and seated: rod first, then the metal (GU500 manual, #222). The arm takes the lid's knob and swings the lid up about its hinge, to the left.",
-   "start_frame": 118,
-   "end_frame": 120
+   "caption": "Pulled out over centre, the lever lets the loop off the keeper. Not measured: about 100 N, 200 N for a stiff one (cover latches of this kind). MiR250 1 with its 131 kg plate would tip at 829 N and slide at 891 N (466 and 505 N without the plate).",
+   "start_frame": 117,
+   "end_frame": 130
   },
   {
    "label": "2/5",
-   "caption": "The sealing rod is already fitted and seated: rod first, then the metal (GU500 manual, #222). The arm takes the lid's knob and swings the lid up about its hinge, to the left.",
-   "start_frame": 121,
-   "end_frame": 134
+   "caption": "Pulled out over centre, the lever lets the loop off the keeper. Not measured: about 100 N, 200 N for a stiff one (cover latches of this kind). MiR250 1 with its 131 kg plate would tip at 829 N and slide at 891 N (466 and 505 N without the plate).",
+   "start_frame": 131,
+   "end_frame": 133
   },
   {
    "label": "2/5",
-   "caption": "The sealing rod is already fitted and seated: rod first, then the metal (GU500 manual, #222). The arm takes the lid's knob and swings the lid up about its hinge, to the left.",
-   "start_frame": 135,
-   "end_frame": 137
+   "caption": "Pulled out over centre, the lever lets the loop off the keeper. Not measured: about 100 N, 200 N for a stiff one (cover latches of this kind). MiR250 1 with its 131 kg plate would tip at 829 N and slide at 891 N (466 and 505 N without the plate).",
+   "start_frame": 134,
+   "end_frame": 138
   },
   {
    "label": "2/5",
-   "caption": "The sealing rod is already fitted and seated: rod first, then the metal (GU500 manual, #222). The arm takes the lid's knob and swings the lid up about its hinge, to the left.",
-   "start_frame": 138,
-   "end_frame": 142
+   "caption": "Arm 2 lets go and stands back, since the lid opens towards it. Arm 1 takes the lid's knob and swings the lid up about its hinge, to the left. The sealing rod is already fitted and seated: rod first, then the metal (GU500 manual, #222).",
+   "start_frame": 139,
+   "end_frame": 143
   },
   {
    "label": "2/5",
-   "caption": "The arm lifts the sealing-rod lever off the rod's adapter and swings it up on its pivot, out of the opening, as the machine is loaded by hand. Down, it lies over the places of two of the cups. The rod stays seated.",
-   "start_frame": 143,
-   "end_frame": 150
+   "caption": "Arm 2 lets go and stands back, since the lid opens towards it. Arm 1 takes the lid's knob and swings the lid up about its hinge, to the left. The sealing rod is already fitted and seated: rod first, then the metal (GU500 manual, #222).",
+   "start_frame": 144,
+   "end_frame": 152
   },
   {
    "label": "2/5",
-   "caption": "The arm lifts the sealing-rod lever off the rod's adapter and swings it up on its pivot, out of the opening, as the machine is loaded by hand. Down, it lies over the places of two of the cups. The rod stays seated.",
-   "start_frame": 151,
-   "end_frame": 155
+   "caption": "Arm 2 lets go and stands back, since the lid opens towards it. Arm 1 takes the lid's knob and swings the lid up about its hinge, to the left. The sealing rod is already fitted and seated: rod first, then the metal (GU500 manual, #222).",
+   "start_frame": 153,
+   "end_frame": 163
   },
   {
    "label": "2/5",
-   "caption": "The arm lifts the sealing-rod lever off the rod's adapter and swings it up on its pivot, out of the opening, as the machine is loaded by hand. Down, it lies over the places of two of the cups. The rod stays seated.",
-   "start_frame": 156,
-   "end_frame": 158
-  },
-  {
-   "label": "2/5",
-   "caption": "The arm lifts the sealing-rod lever off the rod's adapter and swings it up on its pivot, out of the opening, as the machine is loaded by hand. Down, it lies over the places of two of the cups. The rod stays seated.",
-   "start_frame": 159,
+   "caption": "Arm 2 lets go and stands back, since the lid opens towards it. Arm 1 takes the lid's knob and swings the lid up about its hinge, to the left. The sealing rod is already fitted and seated: rod first, then the metal (GU500 manual, #222).",
+   "start_frame": 164,
    "end_frame": 169
   },
   {
    "label": "2/5",
-   "caption": "The arm lifts the sealing-rod lever off the rod's adapter and swings it up on its pivot, out of the opening, as the machine is loaded by hand. Down, it lies over the places of two of the cups. The rod stays seated.",
+   "caption": "Arm 2 lets go and stands back, since the lid opens towards it. Arm 1 takes the lid's knob and swings the lid up about its hinge, to the left. The sealing rod is already fitted and seated: rod first, then the metal (GU500 manual, #222).",
    "start_frame": 170,
    "end_frame": 172
   },
   {
    "label": "2/5",
-   "caption": "The arm lifts the sealing-rod lever off the rod's adapter and swings it up on its pivot, out of the opening, as the machine is loaded by hand. Down, it lies over the places of two of the cups. The rod stays seated.",
+   "caption": "Arm 2 lets go and stands back, since the lid opens towards it. Arm 1 takes the lid's knob and swings the lid up about its hinge, to the left. The sealing rod is already fitted and seated: rod first, then the metal (GU500 manual, #222).",
    "start_frame": 173,
-   "end_frame": 176
+   "end_frame": 186
   },
   {
    "label": "2/5",
-   "caption": "The cups go in with a loading tong, a tool the 2F-85 holds: two thin spring-steel jaws on a slim stem. The gripper clamps its handle; closing the last 3 mm shuts the jaws, opening 3 mm opens them. Its wrist camera looks down past the tong.",
-   "start_frame": 177,
-   "end_frame": 187
+   "caption": "Arm 2 lets go and stands back, since the lid opens towards it. Arm 1 takes the lid's knob and swings the lid up about its hinge, to the left. The sealing rod is already fitted and seated: rod first, then the metal (GU500 manual, #222).",
+   "start_frame": 187,
+   "end_frame": 189
   },
   {
    "label": "2/5",
-   "caption": "The cups go in with a loading tong, a tool the 2F-85 holds: two thin spring-steel jaws on a slim stem. The gripper clamps its handle; closing the last 3 mm shuts the jaws, opening 3 mm opens them. Its wrist camera looks down past the tong.",
-   "start_frame": 188,
-   "end_frame": 193
+   "caption": "Arm 2 lets go and stands back, since the lid opens towards it. Arm 1 takes the lid's knob and swings the lid up about its hinge, to the left. The sealing rod is already fitted and seated: rod first, then the metal (GU500 manual, #222).",
+   "start_frame": 190,
+   "end_frame": 194
   },
   {
    "label": "2/5",
-   "caption": "The cups go in with a loading tong, a tool the 2F-85 holds: two thin spring-steel jaws on a slim stem. The gripper clamps its handle; closing the last 3 mm shuts the jaws, opening 3 mm opens them. Its wrist camera looks down past the tong.",
-   "start_frame": 194,
-   "end_frame": 200
+   "caption": "Arm 1 lifts the sealing-rod lever off the rod's adapter and swings it up on its pivot, out of the opening, as the machine is loaded by hand. Down, it lies over the places of two of the cups. The rod stays seated.",
+   "start_frame": 195,
+   "end_frame": 202
   },
   {
    "label": "2/5",
-   "caption": "The cups go in with a loading tong, a tool the 2F-85 holds: two thin spring-steel jaws on a slim stem. The gripper clamps its handle; closing the last 3 mm shuts the jaws, opening 3 mm opens them. Its wrist camera looks down past the tong.",
-   "start_frame": 201,
-   "end_frame": 206
+   "caption": "Arm 1 lifts the sealing-rod lever off the rod's adapter and swings it up on its pivot, out of the opening, as the machine is loaded by hand. Down, it lies over the places of two of the cups. The rod stays seated.",
+   "start_frame": 203,
+   "end_frame": 207
   },
   {
    "label": "2/5",
-   "caption": "Cup 1 of 4. The jaws take the cup's top 12 mm, on the two sides square to the crucible's radius, so below the gripper nothing is wider than the cup and a 6 x 8 mm stem. The tong carries it down #222's path: tipped 4.1° past the rod's adapter, then upright, and sets it on the floor cone. The gripper stays 136 mm over the rim.",
-   "start_frame": 207,
-   "end_frame": 215
+   "caption": "Arm 1 lifts the sealing-rod lever off the rod's adapter and swings it up on its pivot, out of the opening, as the machine is loaded by hand. Down, it lies over the places of two of the cups. The rod stays seated.",
+   "start_frame": 208,
+   "end_frame": 210
   },
   {
    "label": "2/5",
-   "caption": "Cup 1 of 4. The jaws take the cup's top 12 mm, on the two sides square to the crucible's radius, so below the gripper nothing is wider than the cup and a 6 x 8 mm stem. The tong carries it down #222's path: tipped 4.1° past the rod's adapter, then upright, and sets it on the floor cone. The gripper stays 136 mm over the rim.",
-   "start_frame": 216,
-   "end_frame": 220
+   "caption": "Arm 1 lifts the sealing-rod lever off the rod's adapter and swings it up on its pivot, out of the opening, as the machine is loaded by hand. Down, it lies over the places of two of the cups. The rod stays seated.",
+   "start_frame": 211,
+   "end_frame": 221
   },
   {
    "label": "2/5",
-   "caption": "Cup 1 of 4. The jaws take the cup's top 12 mm, on the two sides square to the crucible's radius, so below the gripper nothing is wider than the cup and a 6 x 8 mm stem. The tong carries it down #222's path: tipped 4.1° past the rod's adapter, then upright, and sets it on the floor cone. The gripper stays 136 mm over the rim.",
-   "start_frame": 221,
-   "end_frame": 223
+   "caption": "Arm 1 lifts the sealing-rod lever off the rod's adapter and swings it up on its pivot, out of the opening, as the machine is loaded by hand. Down, it lies over the places of two of the cups. The rod stays seated.",
+   "start_frame": 222,
+   "end_frame": 224
   },
   {
    "label": "2/5",
-   "caption": "Cup 1 of 4. The jaws take the cup's top 12 mm, on the two sides square to the crucible's radius, so below the gripper nothing is wider than the cup and a 6 x 8 mm stem. The tong carries it down #222's path: tipped 4.1° past the rod's adapter, then upright, and sets it on the floor cone. The gripper stays 136 mm over the rim.",
-   "start_frame": 224,
+   "caption": "Arm 1 lifts the sealing-rod lever off the rod's adapter and swings it up on its pivot, out of the opening, as the machine is loaded by hand. Down, it lies over the places of two of the cups. The rod stays seated.",
+   "start_frame": 225,
    "end_frame": 228
   },
   {
    "label": "2/5",
-   "caption": "Cup 1 of 4. The jaws take the cup's top 12 mm, on the two sides square to the crucible's radius, so below the gripper nothing is wider than the cup and a 6 x 8 mm stem. The tong carries it down #222's path: tipped 4.1° past the rod's adapter, then upright, and sets it on the floor cone. The gripper stays 136 mm over the rim.",
+   "caption": "The cups go in with a loading tong, a tool the 2F-85 holds: two thin spring-steel jaws on a slim stem. The gripper clamps its handle; closing the last 3 mm shuts the jaws, opening 3 mm opens them. Its wrist camera looks down past the tong.",
    "start_frame": 229,
-   "end_frame": 236
+   "end_frame": 239
+  },
+  {
+   "label": "2/5",
+   "caption": "The cups go in with a loading tong, a tool the 2F-85 holds: two thin spring-steel jaws on a slim stem. The gripper clamps its handle; closing the last 3 mm shuts the jaws, opening 3 mm opens them. Its wrist camera looks down past the tong.",
+   "start_frame": 240,
+   "end_frame": 245
+  },
+  {
+   "label": "2/5",
+   "caption": "The cups go in with a loading tong, a tool the 2F-85 holds: two thin spring-steel jaws on a slim stem. The gripper clamps its handle; closing the last 3 mm shuts the jaws, opening 3 mm opens them. Its wrist camera looks down past the tong.",
+   "start_frame": 246,
+   "end_frame": 252
+  },
+  {
+   "label": "2/5",
+   "caption": "The cups go in with a loading tong, a tool the 2F-85 holds: two thin spring-steel jaws on a slim stem. The gripper clamps its handle; closing the last 3 mm shuts the jaws, opening 3 mm opens them. Its wrist camera looks down past the tong.",
+   "start_frame": 253,
+   "end_frame": 258
   },
   {
    "label": "2/5",
    "caption": "Cup 1 of 4. The jaws take the cup's top 12 mm, on the two sides square to the crucible's radius, so below the gripper nothing is wider than the cup and a 6 x 8 mm stem. The tong carries it down #222's path: tipped 4.1° past the rod's adapter, then upright, and sets it on the floor cone. The gripper stays 136 mm over the rim.",
-   "start_frame": 237,
-   "end_frame": 241
+   "start_frame": 259,
+   "end_frame": 267
   },
   {
    "label": "2/5",
    "caption": "Cup 1 of 4. The jaws take the cup's top 12 mm, on the two sides square to the crucible's radius, so below the gripper nothing is wider than the cup and a 6 x 8 mm stem. The tong carries it down #222's path: tipped 4.1° past the rod's adapter, then upright, and sets it on the floor cone. The gripper stays 136 mm over the rim.",
-   "start_frame": 242,
-   "end_frame": 248
+   "start_frame": 268,
+   "end_frame": 272
   },
   {
    "label": "2/5",
    "caption": "Cup 1 of 4. The jaws take the cup's top 12 mm, on the two sides square to the crucible's radius, so below the gripper nothing is wider than the cup and a 6 x 8 mm stem. The tong carries it down #222's path: tipped 4.1° past the rod's adapter, then upright, and sets it on the floor cone. The gripper stays 136 mm over the rim.",
-   "start_frame": 249,
-   "end_frame": 253
+   "start_frame": 273,
+   "end_frame": 275
   },
   {
    "label": "2/5",
    "caption": "Cup 1 of 4. The jaws take the cup's top 12 mm, on the two sides square to the crucible's radius, so below the gripper nothing is wider than the cup and a 6 x 8 mm stem. The tong carries it down #222's path: tipped 4.1° past the rod's adapter, then upright, and sets it on the floor cone. The gripper stays 136 mm over the rim.",
-   "start_frame": 254,
-   "end_frame": 262
+   "start_frame": 276,
+   "end_frame": 280
   },
   {
    "label": "2/5",
    "caption": "Cup 1 of 4. The jaws take the cup's top 12 mm, on the two sides square to the crucible's radius, so below the gripper nothing is wider than the cup and a 6 x 8 mm stem. The tong carries it down #222's path: tipped 4.1° past the rod's adapter, then upright, and sets it on the floor cone. The gripper stays 136 mm over the rim.",
-   "start_frame": 263,
-   "end_frame": 265
+   "start_frame": 281,
+   "end_frame": 288
   },
   {
    "label": "2/5",
    "caption": "Cup 1 of 4. The jaws take the cup's top 12 mm, on the two sides square to the crucible's radius, so below the gripper nothing is wider than the cup and a 6 x 8 mm stem. The tong carries it down #222's path: tipped 4.1° past the rod's adapter, then upright, and sets it on the floor cone. The gripper stays 136 mm over the rim.",
-   "start_frame": 266,
-   "end_frame": 271
+   "start_frame": 289,
+   "end_frame": 293
+  },
+  {
+   "label": "2/5",
+   "caption": "Cup 1 of 4. The jaws take the cup's top 12 mm, on the two sides square to the crucible's radius, so below the gripper nothing is wider than the cup and a 6 x 8 mm stem. The tong carries it down #222's path: tipped 4.1° past the rod's adapter, then upright, and sets it on the floor cone. The gripper stays 136 mm over the rim.",
+   "start_frame": 294,
+   "end_frame": 300
+  },
+  {
+   "label": "2/5",
+   "caption": "Cup 1 of 4. The jaws take the cup's top 12 mm, on the two sides square to the crucible's radius, so below the gripper nothing is wider than the cup and a 6 x 8 mm stem. The tong carries it down #222's path: tipped 4.1° past the rod's adapter, then upright, and sets it on the floor cone. The gripper stays 136 mm over the rim.",
+   "start_frame": 301,
+   "end_frame": 305
+  },
+  {
+   "label": "2/5",
+   "caption": "Cup 1 of 4. The jaws take the cup's top 12 mm, on the two sides square to the crucible's radius, so below the gripper nothing is wider than the cup and a 6 x 8 mm stem. The tong carries it down #222's path: tipped 4.1° past the rod's adapter, then upright, and sets it on the floor cone. The gripper stays 136 mm over the rim.",
+   "start_frame": 306,
+   "end_frame": 314
+  },
+  {
+   "label": "2/5",
+   "caption": "Cup 1 of 4. The jaws take the cup's top 12 mm, on the two sides square to the crucible's radius, so below the gripper nothing is wider than the cup and a 6 x 8 mm stem. The tong carries it down #222's path: tipped 4.1° past the rod's adapter, then upright, and sets it on the floor cone. The gripper stays 136 mm over the rim.",
+   "start_frame": 315,
+   "end_frame": 317
+  },
+  {
+   "label": "2/5",
+   "caption": "Cup 1 of 4. The jaws take the cup's top 12 mm, on the two sides square to the crucible's radius, so below the gripper nothing is wider than the cup and a 6 x 8 mm stem. The tong carries it down #222's path: tipped 4.1° past the rod's adapter, then upright, and sets it on the floor cone. The gripper stays 136 mm over the rim.",
+   "start_frame": 318,
+   "end_frame": 323
   },
   {
    "label": "2/5",
    "caption": "Cup 2 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
-   "start_frame": 272,
-   "end_frame": 278
+   "start_frame": 324,
+   "end_frame": 330
   },
   {
    "label": "2/5",
    "caption": "Cup 2 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
-   "start_frame": 279,
-   "end_frame": 282
-  },
-  {
-   "label": "2/5",
-   "caption": "Cup 2 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
-   "start_frame": 283,
-   "end_frame": 285
-  },
-  {
-   "label": "2/5",
-   "caption": "Cup 2 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
-   "start_frame": 286,
-   "end_frame": 289
-  },
-  {
-   "label": "2/5",
-   "caption": "Cup 2 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
-   "start_frame": 290,
-   "end_frame": 294
-  },
-  {
-   "label": "2/5",
-   "caption": "Cup 2 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
-   "start_frame": 295,
-   "end_frame": 298
-  },
-  {
-   "label": "2/5",
-   "caption": "Cup 2 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
-   "start_frame": 299,
-   "end_frame": 303
-  },
-  {
-   "label": "2/5",
-   "caption": "Cup 2 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
-   "start_frame": 304,
-   "end_frame": 306
-  },
-  {
-   "label": "2/5",
-   "caption": "Cup 2 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
-   "start_frame": 307,
-   "end_frame": 313
-  },
-  {
-   "label": "2/5",
-   "caption": "Cup 2 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
-   "start_frame": 314,
-   "end_frame": 316
-  },
-  {
-   "label": "2/5",
-   "caption": "Cup 2 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
-   "start_frame": 317,
-   "end_frame": 320
-  },
-  {
-   "label": "2/5",
-   "caption": "Cup 3 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
-   "start_frame": 321,
-   "end_frame": 327
-  },
-  {
-   "label": "2/5",
-   "caption": "Cup 3 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
-   "start_frame": 328,
-   "end_frame": 331
-  },
-  {
-   "label": "2/5",
-   "caption": "Cup 3 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
-   "start_frame": 332,
+   "start_frame": 331,
    "end_frame": 334
   },
   {
    "label": "2/5",
-   "caption": "Cup 3 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
+   "caption": "Cup 2 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
    "start_frame": 335,
-   "end_frame": 338
+   "end_frame": 337
   },
   {
    "label": "2/5",
-   "caption": "Cup 3 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
-   "start_frame": 339,
-   "end_frame": 343
+   "caption": "Cup 2 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
+   "start_frame": 338,
+   "end_frame": 341
   },
   {
    "label": "2/5",
-   "caption": "Cup 3 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
-   "start_frame": 344,
-   "end_frame": 347
+   "caption": "Cup 2 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
+   "start_frame": 342,
+   "end_frame": 346
   },
   {
    "label": "2/5",
-   "caption": "Cup 3 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
-   "start_frame": 348,
-   "end_frame": 352
+   "caption": "Cup 2 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
+   "start_frame": 347,
+   "end_frame": 350
   },
   {
    "label": "2/5",
-   "caption": "Cup 3 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
-   "start_frame": 353,
+   "caption": "Cup 2 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
+   "start_frame": 351,
    "end_frame": 355
   },
   {
    "label": "2/5",
-   "caption": "Cup 3 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
+   "caption": "Cup 2 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
    "start_frame": 356,
-   "end_frame": 362
+   "end_frame": 358
   },
   {
    "label": "2/5",
-   "caption": "Cup 3 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
-   "start_frame": 363,
+   "caption": "Cup 2 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
+   "start_frame": 359,
    "end_frame": 365
   },
   {
    "label": "2/5",
-   "caption": "Cup 3 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
+   "caption": "Cup 2 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
    "start_frame": 366,
-   "end_frame": 369
+   "end_frame": 368
   },
   {
    "label": "2/5",
-   "caption": "Cup 4 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
-   "start_frame": 370,
-   "end_frame": 376
+   "caption": "Cup 2 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
+   "start_frame": 369,
+   "end_frame": 372
   },
   {
    "label": "2/5",
-   "caption": "Cup 4 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
-   "start_frame": 377,
-   "end_frame": 380
+   "caption": "Cup 3 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
+   "start_frame": 373,
+   "end_frame": 379
   },
   {
    "label": "2/5",
-   "caption": "Cup 4 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
-   "start_frame": 381,
+   "caption": "Cup 3 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
+   "start_frame": 380,
    "end_frame": 383
   },
   {
    "label": "2/5",
-   "caption": "Cup 4 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
+   "caption": "Cup 3 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
    "start_frame": 384,
-   "end_frame": 387
+   "end_frame": 386
   },
   {
    "label": "2/5",
-   "caption": "Cup 4 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
-   "start_frame": 388,
-   "end_frame": 392
+   "caption": "Cup 3 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
+   "start_frame": 387,
+   "end_frame": 390
   },
   {
    "label": "2/5",
-   "caption": "Cup 4 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
-   "start_frame": 393,
-   "end_frame": 396
+   "caption": "Cup 3 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
+   "start_frame": 391,
+   "end_frame": 395
   },
   {
    "label": "2/5",
-   "caption": "Cup 4 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
-   "start_frame": 397,
-   "end_frame": 401
+   "caption": "Cup 3 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
+   "start_frame": 396,
+   "end_frame": 399
   },
   {
    "label": "2/5",
-   "caption": "Cup 4 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
-   "start_frame": 402,
+   "caption": "Cup 3 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
+   "start_frame": 400,
    "end_frame": 404
   },
   {
    "label": "2/5",
-   "caption": "Cup 4 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
+   "caption": "Cup 3 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
    "start_frame": 405,
-   "end_frame": 411
+   "end_frame": 407
   },
   {
    "label": "2/5",
-   "caption": "Cup 4 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
-   "start_frame": 412,
+   "caption": "Cup 3 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
+   "start_frame": 408,
    "end_frame": 414
   },
   {
    "label": "2/5",
-   "caption": "Cup 4 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
+   "caption": "Cup 3 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
    "start_frame": 415,
-   "end_frame": 418
+   "end_frame": 417
   },
   {
    "label": "2/5",
-   "caption": "The tong goes back in its holder on the MiR.",
-   "start_frame": 419,
-   "end_frame": 429
+   "caption": "Cup 3 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
+   "start_frame": 418,
+   "end_frame": 421
   },
   {
    "label": "2/5",
-   "caption": "The tong goes back in its holder on the MiR.",
-   "start_frame": 430,
+   "caption": "Cup 4 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
+   "start_frame": 422,
+   "end_frame": 428
+  },
+  {
+   "label": "2/5",
+   "caption": "Cup 4 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
+   "start_frame": 429,
+   "end_frame": 432
+  },
+  {
+   "label": "2/5",
+   "caption": "Cup 4 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
+   "start_frame": 433,
    "end_frame": 435
   },
   {
    "label": "2/5",
-   "caption": "The tong goes back in its holder on the MiR.",
+   "caption": "Cup 4 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
    "start_frame": 436,
-   "end_frame": 438
+   "end_frame": 439
+  },
+  {
+   "label": "2/5",
+   "caption": "Cup 4 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
+   "start_frame": 440,
+   "end_frame": 444
+  },
+  {
+   "label": "2/5",
+   "caption": "Cup 4 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
+   "start_frame": 445,
+   "end_frame": 448
+  },
+  {
+   "label": "2/5",
+   "caption": "Cup 4 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
+   "start_frame": 449,
+   "end_frame": 453
+  },
+  {
+   "label": "2/5",
+   "caption": "Cup 4 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
+   "start_frame": 454,
+   "end_frame": 456
+  },
+  {
+   "label": "2/5",
+   "caption": "Cup 4 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
+   "start_frame": 457,
+   "end_frame": 463
+  },
+  {
+   "label": "2/5",
+   "caption": "Cup 4 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
+   "start_frame": 464,
+   "end_frame": 466
+  },
+  {
+   "label": "2/5",
+   "caption": "Cup 4 of 4, the same way, at #222's next place round the rod. Nothing is dropped: the jaws open only with the cup standing. Neighbours stand 2.2 mm apart; the jaws pass them with 1.3 mm to spare.",
+   "start_frame": 467,
+   "end_frame": 470
   },
   {
    "label": "2/5",
    "caption": "The tong goes back in its holder on the MiR.",
-   "start_frame": 439,
-   "end_frame": 443
+   "start_frame": 471,
+   "end_frame": 481
+  },
+  {
+   "label": "2/5",
+   "caption": "The tong goes back in its holder on the MiR.",
+   "start_frame": 482,
+   "end_frame": 487
+  },
+  {
+   "label": "2/5",
+   "caption": "The tong goes back in its holder on the MiR.",
+   "start_frame": 488,
+   "end_frame": 490
+  },
+  {
+   "label": "2/5",
+   "caption": "The tong goes back in its holder on the MiR.",
+   "start_frame": 491,
+   "end_frame": 495
   },
   {
    "label": "2/5",
    "caption": "All four cups stand round the rod, plug and vent up, 2.2 mm apart: 156.7 g, about the size of the lab's own Al runs. The crucible could take far more metal than the cups bring.",
-   "start_frame": 444,
-   "end_frame": 452
+   "start_frame": 496,
+   "end_frame": 504
   },
   {
    "label": "2/5",
    "caption": "All four cups stand round the rod, plug and vent up, 2.2 mm apart: 156.7 g, about the size of the lab's own Al runs. The crucible could take far more metal than the cups bring.",
-   "start_frame": 453,
-   "end_frame": 471
+   "start_frame": 505,
+   "end_frame": 523
   },
   {
    "label": "2/5",
    "caption": "The lab's own four charges, Oct 27 2026: four 630 bronze rod pieces, 1,079.886 g on the balance, melted in one run (Gage Erickson, DAL #219). Bronze, not this chapter's Al-10Si.",
-   "start_frame": 472,
-   "end_frame": 492,
+   "start_frame": 524,
+   "end_frame": 544,
    "footage": {
     "file": "nab_k7m2q9_four_rod_pieces_1079.886g.jpg",
     "source": "Gage Erickson, DAL #219 comment 6457884447",
@@ -467,171 +497,195 @@
   },
   {
    "label": "2/5",
-   "caption": "The lever goes back down over the adapter. The arm swings the lid shut, then the MiR backs off along the front so the window stays clear.",
-   "start_frame": 493,
-   "end_frame": 500
+   "caption": "Arm 1 lays the lever back down over the adapter and swings the lid shut. Then arm 2 holds the lid down on its seal while arm 1 closes the latch, and both MiR250s back off so the window stays clear.",
+   "start_frame": 545,
+   "end_frame": 552
   },
   {
    "label": "2/5",
-   "caption": "The lever goes back down over the adapter. The arm swings the lid shut, then the MiR backs off along the front so the window stays clear.",
-   "start_frame": 501,
-   "end_frame": 504
-  },
-  {
-   "label": "2/5",
-   "caption": "The lever goes back down over the adapter. The arm swings the lid shut, then the MiR backs off along the front so the window stays clear.",
-   "start_frame": 505,
-   "end_frame": 507
-  },
-  {
-   "label": "2/5",
-   "caption": "The lever goes back down over the adapter. The arm swings the lid shut, then the MiR backs off along the front so the window stays clear.",
-   "start_frame": 508,
-   "end_frame": 516
-  },
-  {
-   "label": "2/5",
-   "caption": "The lever goes back down over the adapter. The arm swings the lid shut, then the MiR backs off along the front so the window stays clear.",
-   "start_frame": 517,
-   "end_frame": 519
-  },
-  {
-   "label": "2/5",
-   "caption": "The lever goes back down over the adapter. The arm swings the lid shut, then the MiR backs off along the front so the window stays clear.",
-   "start_frame": 520,
-   "end_frame": 523
-  },
-  {
-   "label": "2/5",
-   "caption": "The lever goes back down over the adapter. The arm swings the lid shut, then the MiR backs off along the front so the window stays clear.",
-   "start_frame": 524,
-   "end_frame": 532
-  },
-  {
-   "label": "2/5",
-   "caption": "The lever goes back down over the adapter. The arm swings the lid shut, then the MiR backs off along the front so the window stays clear.",
-   "start_frame": 533,
-   "end_frame": 537
-  },
-  {
-   "label": "2/5",
-   "caption": "The lever goes back down over the adapter. The arm swings the lid shut, then the MiR backs off along the front so the window stays clear.",
-   "start_frame": 538,
-   "end_frame": 540
-  },
-  {
-   "label": "2/5",
-   "caption": "The lever goes back down over the adapter. The arm swings the lid shut, then the MiR backs off along the front so the window stays clear.",
-   "start_frame": 541,
-   "end_frame": 553
-  },
-  {
-   "label": "2/5",
-   "caption": "The lever goes back down over the adapter. The arm swings the lid shut, then the MiR backs off along the front so the window stays clear.",
-   "start_frame": 554,
+   "caption": "Arm 1 lays the lever back down over the adapter and swings the lid shut. Then arm 2 holds the lid down on its seal while arm 1 closes the latch, and both MiR250s back off so the window stays clear.",
+   "start_frame": 553,
    "end_frame": 556
   },
   {
    "label": "2/5",
-   "caption": "The lever goes back down over the adapter. The arm swings the lid shut, then the MiR backs off along the front so the window stays clear.",
+   "caption": "Arm 1 lays the lever back down over the adapter and swings the lid shut. Then arm 2 holds the lid down on its seal while arm 1 closes the latch, and both MiR250s back off so the window stays clear.",
    "start_frame": 557,
-   "end_frame": 561
+   "end_frame": 559
   },
   {
    "label": "2/5",
-   "caption": "Then the latch: the arm swings the lever back up, the loop goes over the keeper's lip and the lever goes over centre, drawing the lid down onto its seal. A person can do this step, and the one that opened it, in a few seconds; it is the one place the arm pushes hard on the machine.",
-   "start_frame": 562,
-   "end_frame": 570
+   "caption": "Arm 1 lays the lever back down over the adapter and swings the lid shut. Then arm 2 holds the lid down on its seal while arm 1 closes the latch, and both MiR250s back off so the window stays clear.",
+   "start_frame": 560,
+   "end_frame": 568
   },
   {
    "label": "2/5",
-   "caption": "Then the latch: the arm swings the lever back up, the loop goes over the keeper's lip and the lever goes over centre, drawing the lid down onto its seal. A person can do this step, and the one that opened it, in a few seconds; it is the one place the arm pushes hard on the machine.",
-   "start_frame": 571,
+   "caption": "Arm 1 lays the lever back down over the adapter and swings the lid shut. Then arm 2 holds the lid down on its seal while arm 1 closes the latch, and both MiR250s back off so the window stays clear.",
+   "start_frame": 569,
+   "end_frame": 571
+  },
+  {
+   "label": "2/5",
+   "caption": "Arm 1 lays the lever back down over the adapter and swings the lid shut. Then arm 2 holds the lid down on its seal while arm 1 closes the latch, and both MiR250s back off so the window stays clear.",
+   "start_frame": 572,
    "end_frame": 575
   },
   {
    "label": "2/5",
-   "caption": "Then the latch: the arm swings the lever back up, the loop goes over the keeper's lip and the lever goes over centre, drawing the lid down onto its seal. A person can do this step, and the one that opened it, in a few seconds; it is the one place the arm pushes hard on the machine.",
+   "caption": "Arm 1 lays the lever back down over the adapter and swings the lid shut. Then arm 2 holds the lid down on its seal while arm 1 closes the latch, and both MiR250s back off so the window stays clear.",
    "start_frame": 576,
-   "end_frame": 578
+   "end_frame": 584
   },
   {
    "label": "2/5",
-   "caption": "Then the latch: the arm swings the lever back up, the loop goes over the keeper's lip and the lever goes over centre, drawing the lid down onto its seal. A person can do this step, and the one that opened it, in a few seconds; it is the one place the arm pushes hard on the machine.",
-   "start_frame": 579,
+   "caption": "Arm 1 lays the lever back down over the adapter and swings the lid shut. Then arm 2 holds the lid down on its seal while arm 1 closes the latch, and both MiR250s back off so the window stays clear.",
+   "start_frame": 585,
    "end_frame": 589
   },
   {
    "label": "2/5",
-   "caption": "Then the latch: the arm swings the lever back up, the loop goes over the keeper's lip and the lever goes over centre, drawing the lid down onto its seal. A person can do this step, and the one that opened it, in a few seconds; it is the one place the arm pushes hard on the machine.",
+   "caption": "Arm 1 lays the lever back down over the adapter and swings the lid shut. Then arm 2 holds the lid down on its seal while arm 1 closes the latch, and both MiR250s back off so the window stays clear.",
    "start_frame": 590,
    "end_frame": 592
   },
   {
    "label": "2/5",
-   "caption": "Then the latch: the arm swings the lever back up, the loop goes over the keeper's lip and the lever goes over centre, drawing the lid down onto its seal. A person can do this step, and the one that opened it, in a few seconds; it is the one place the arm pushes hard on the machine.",
+   "caption": "Arm 1 lays the lever back down over the adapter and swings the lid shut. Then arm 2 holds the lid down on its seal while arm 1 closes the latch, and both MiR250s back off so the window stays clear.",
    "start_frame": 593,
-   "end_frame": 597
-  },
-  {
-   "label": "2/5",
-   "caption": "Then the latch: the arm swings the lever back up, the loop goes over the keeper's lip and the lever goes over centre, drawing the lid down onto its seal. A person can do this step, and the one that opened it, in a few seconds; it is the one place the arm pushes hard on the machine.",
-   "start_frame": 598,
    "end_frame": 605
   },
   {
    "label": "2/5",
-   "caption": "Then the latch: the arm swings the lever back up, the loop goes over the keeper's lip and the lever goes over centre, drawing the lid down onto its seal. A person can do this step, and the one that opened it, in a few seconds; it is the one place the arm pushes hard on the machine.",
+   "caption": "Arm 1 lays the lever back down over the adapter and swings the lid shut. Then arm 2 holds the lid down on its seal while arm 1 closes the latch, and both MiR250s back off so the window stays clear.",
    "start_frame": 606,
-   "end_frame": 628
+   "end_frame": 608
+  },
+  {
+   "label": "2/5",
+   "caption": "Arm 1 lays the lever back down over the adapter and swings the lid shut. Then arm 2 holds the lid down on its seal while arm 1 closes the latch, and both MiR250s back off so the window stays clear.",
+   "start_frame": 609,
+   "end_frame": 613
+  },
+  {
+   "label": "2/5",
+   "caption": "Arm 1 lays the lever back down over the adapter and swings the lid shut. Then arm 2 holds the lid down on its seal while arm 1 closes the latch, and both MiR250s back off so the window stays clear.",
+   "start_frame": 614,
+   "end_frame": 622
+  },
+  {
+   "label": "2/5",
+   "caption": "Arm 1 lays the lever back down over the adapter and swings the lid shut. Then arm 2 holds the lid down on its seal while arm 1 closes the latch, and both MiR250s back off so the window stays clear.",
+   "start_frame": 623,
+   "end_frame": 630
+  },
+  {
+   "label": "2/5",
+   "caption": "Arm 1 lays the lever back down over the adapter and swings the lid shut. Then arm 2 holds the lid down on its seal while arm 1 closes the latch, and both MiR250s back off so the window stays clear.",
+   "start_frame": 631,
+   "end_frame": 635
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the latch, with the lid held down: arm 1 swings the lever back up, the loop goes over the keeper's lip and the lever goes over centre, drawing the lid down onto its seal. A person does this, and the opening, in a few seconds with two hands; it is the one place an arm pushes hard on the machine.",
+   "start_frame": 636,
+   "end_frame": 640
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the latch, with the lid held down: arm 1 swings the lever back up, the loop goes over the keeper's lip and the lever goes over centre, drawing the lid down onto its seal. A person does this, and the opening, in a few seconds with two hands; it is the one place an arm pushes hard on the machine.",
+   "start_frame": 641,
+   "end_frame": 643
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the latch, with the lid held down: arm 1 swings the lever back up, the loop goes over the keeper's lip and the lever goes over centre, drawing the lid down onto its seal. A person does this, and the opening, in a few seconds with two hands; it is the one place an arm pushes hard on the machine.",
+   "start_frame": 644,
+   "end_frame": 654
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the latch, with the lid held down: arm 1 swings the lever back up, the loop goes over the keeper's lip and the lever goes over centre, drawing the lid down onto its seal. A person does this, and the opening, in a few seconds with two hands; it is the one place an arm pushes hard on the machine.",
+   "start_frame": 655,
+   "end_frame": 657
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the latch, with the lid held down: arm 1 swings the lever back up, the loop goes over the keeper's lip and the lever goes over centre, drawing the lid down onto its seal. A person does this, and the opening, in a few seconds with two hands; it is the one place an arm pushes hard on the machine.",
+   "start_frame": 658,
+   "end_frame": 662
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the latch, with the lid held down: arm 1 swings the lever back up, the loop goes over the keeper's lip and the lever goes over centre, drawing the lid down onto its seal. A person does this, and the opening, in a few seconds with two hands; it is the one place an arm pushes hard on the machine.",
+   "start_frame": 663,
+   "end_frame": 666
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the latch, with the lid held down: arm 1 swings the lever back up, the loop goes over the keeper's lip and the lever goes over centre, drawing the lid down onto its seal. A person does this, and the opening, in a few seconds with two hands; it is the one place an arm pushes hard on the machine.",
+   "start_frame": 667,
+   "end_frame": 674
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the latch, with the lid held down: arm 1 swings the lever back up, the loop goes over the keeper's lip and the lever goes over centre, drawing the lid down onto its seal. A person does this, and the opening, in a few seconds with two hands; it is the one place an arm pushes hard on the machine.",
+   "start_frame": 675,
+   "end_frame": 683
+  },
+  {
+   "label": "2/5",
+   "caption": "Then the latch, with the lid held down: arm 1 swings the lever back up, the loop goes over the keeper's lip and the lever goes over centre, drawing the lid down onto its seal. A person does this, and the opening, in a few seconds with two hands; it is the one place an arm pushes hard on the machine.",
+   "start_frame": 684,
+   "end_frame": 706
   },
   {
    "label": "3/5",
    "caption": "The first pump-down starts. As the furnace leaves atmosphere, the machine's bolt comes out in front of the latch's lever: the lid can't be opened under vacuum or pressure (AMAZEMET, install call).",
-   "start_frame": 629,
-   "end_frame": 639
+   "start_frame": 707,
+   "end_frame": 717
   },
   {
    "label": "3/5",
    "caption": "Cut open at the furnace axis; the two back cups are cut through their own axes. Three cycles of pumping down to 4×10⁻¹ mbar and back-filling with 5N argon take the oxygen under 50 ppm. On each pump-down the air under the plugs leaves through their 1/16 in vents (#104).",
-   "start_frame": 640,
-   "end_frame": 649
+   "start_frame": 718,
+   "end_frame": 727
   },
   {
    "label": "3/5",
    "caption": "Still by hand: building this stack. The graphite crucible's threaded shank runs down into the chamber, where a thin graphite nut goes on from below, through the chamber's door, while someone holds the crucible still at the top: \"snug but never forced\" (the lab's SOP). A robot would need a tool at each end and fine force sensing: the UR10e's own is good to ±5.5 N and ±0.5 N·m; a wrist sensor resolves 0.1 N and 0.005 N·m (Robotiq FT 300-S) or 1/16 N and 1/752 N·m (ATI Mini45). notes/crucible_automation.md",
-   "start_frame": 650,
-   "end_frame": 691
+   "start_frame": 728,
+   "end_frame": 769
   },
   {
    "label": "3/5",
    "caption": "Still by hand: building this stack. The graphite crucible's threaded shank runs down into the chamber, where a thin graphite nut goes on from below, through the chamber's door, while someone holds the crucible still at the top: \"snug but never forced\" (the lab's SOP). A robot would need a tool at each end and fine force sensing: the UR10e's own is good to ±5.5 N and ±0.5 N·m; a wrist sensor resolves 0.1 N and 0.005 N·m (Robotiq FT 300-S) or 1/16 N and 1/752 N·m (ATI Mini45). notes/crucible_automation.md",
-   "start_frame": 692,
-   "end_frame": 698
+   "start_frame": 770,
+   "end_frame": 776
   },
   {
    "label": "3/5",
    "caption": "Still by hand: building this stack. The graphite crucible's threaded shank runs down into the chamber, where a thin graphite nut goes on from below, through the chamber's door, while someone holds the crucible still at the top: \"snug but never forced\" (the lab's SOP). A robot would need a tool at each end and fine force sensing: the UR10e's own is good to ±5.5 N and ±0.5 N·m; a wrist sensor resolves 0.1 N and 0.005 N·m (Robotiq FT 300-S) or 1/16 N and 1/752 N·m (ATI Mini45). notes/crucible_automation.md",
-   "start_frame": 699,
-   "end_frame": 736
+   "start_frame": 777,
+   "end_frame": 814
   },
   {
    "label": "3/5",
    "caption": "The 10 kW, 7 kHz coil heats the graphite and the graphite the charge. The Type N thermocouple sits in the crucible wall, so the metal lags its reading. The cups glow, then slump into a pool round the rod (Al-10Si is liquid above about 595 °C; a 750 °C hold is assumed).",
-   "start_frame": 737,
-   "end_frame": 755
+   "start_frame": 815,
+   "end_frame": 833
   },
   {
    "label": "3/5",
    "caption": "The 10 kW, 7 kHz coil heats the graphite and the graphite the charge. The Type N thermocouple sits in the crucible wall, so the metal lags its reading. The cups glow, then slump into a pool round the rod (Al-10Si is liquid above about 595 °C; a 750 °C hold is assumed).",
-   "start_frame": 756,
-   "end_frame": 783
+   "start_frame": 834,
+   "end_frame": 861
   },
   {
    "label": "3/5",
    "caption": "Real footage, Oct 27 2026, through the furnace port: the four bronze pieces stand round the sealing rod and glow (youtu.be/2brsz-90seg, DAL #219). 630 bronze at 1300 °C, not Al-10Si.",
-   "start_frame": 784,
-   "end_frame": 798,
+   "start_frame": 862,
+   "end_frame": 876,
    "footage": {
     "file": "nab_melt1.mp4",
     "source": "https://youtu.be/2brsz-90seg",
@@ -647,8 +701,8 @@
   {
    "label": "3/5",
    "caption": "A few minutes on, the pieces sink into their own melt round the rod (2brsz-90seg, about 4:36; at 3:55 Gage says \"It's melting in right now\").",
-   "start_frame": 799,
-   "end_frame": 819,
+   "start_frame": 877,
+   "end_frame": 897,
    "footage": {
     "file": "nab_melt2.mp4",
     "source": "https://youtu.be/2brsz-90seg",
@@ -664,8 +718,8 @@
   {
    "label": "3/5",
    "caption": "The charge fully molten, a bright pool round the sealing rod (2brsz-90seg, DAL #219).",
-   "start_frame": 820,
-   "end_frame": 831,
+   "start_frame": 898,
+   "end_frame": 909,
    "footage": {
     "file": "nab_melt3.mp4",
     "source": "https://youtu.be/2brsz-90seg",
@@ -681,20 +735,20 @@
   {
    "label": "4/5",
    "caption": "Vibration on, then 200 mbar of argon over-pressure on the furnace: the pour runs on the pressure, not the melt's weight (#222). Sealing rod up: the stream falls through the nozzle onto the vibrating plate.",
-   "start_frame": 832,
-   "end_frame": 851
+   "start_frame": 910,
+   "end_frame": 929
   },
   {
    "label": "4/5",
    "caption": "Droplets fly off the plate, freeze in the argon and run down the cone into the container. AMAZEMET's training fits a 0.7 mm nozzle for Al alloys (0.5 mm standard); which one our unit has is not known (#222).",
-   "start_frame": 852,
-   "end_frame": 891
+   "start_frame": 930,
+   "end_frame": 969
   },
   {
    "label": "4/5",
    "caption": "Real footage, from Sterling Baird's MS&T 2026 talk (youtu.be/YmvaeqOQAU4, 4:58): a melt stream, a line of drops, falls onto the tip of the vibrating plate and breaks up into a spray of droplets. The talk doesn't name the alloy or the run.",
-   "start_frame": 892,
-   "end_frame": 933,
+   "start_frame": 970,
+   "end_frame": 1011,
    "footage": {
     "file": "mst2026_stream.mp4",
     "source": "https://youtu.be/YmvaeqOQAU4",
@@ -710,8 +764,8 @@
   {
    "label": "4/5",
    "caption": "Real footage, Oct 27 2026, through the view port: the bronze jet lands on the tip of the W-coated carbon-fibre plate and atomizes (2brsz-90seg). 91 % of the 1,080 g became usable powder (DAL #219).",
-   "start_frame": 934,
-   "end_frame": 978,
+   "start_frame": 1012,
+   "end_frame": 1056,
    "footage": {
     "file": "nab_pour1.mp4",
     "source": "https://youtu.be/2brsz-90seg",
@@ -727,20 +781,20 @@
   {
    "label": "4/5",
    "caption": "The powder collects in the container under the chamber's valve, still under argon. At the Oct 27 bronze run's yield, 91 % usable (DAL #219), the four cups make about 143 g of powder.",
-   "start_frame": 979,
-   "end_frame": 1006
+   "start_frame": 1057,
+   "end_frame": 1084
   },
   {
    "label": "4/5",
    "caption": "The crucible runs empty; vibration and the coil off, the sealing rod down.",
-   "start_frame": 1007,
-   "end_frame": 1026
+   "start_frame": 1085,
+   "end_frame": 1104
   },
   {
    "label": "4/5",
    "caption": "Real photo: the Oct 27 bronze powder as it came out of the atomizer, not yet sieved: lot k7m2q9 (DAL #219). It is sieved in chapter 3.",
-   "start_frame": 1027,
-   "end_frame": 1044,
+   "start_frame": 1105,
+   "end_frame": 1122,
    "footage": {
     "file": "nab_k7m2q9_jar_of_powder.jpg",
     "source": "DAL #219 comment 6457884447",
@@ -753,8 +807,8 @@
   {
    "label": "4/5",
    "caption": "Real photo: the Oct 22 Al 4047 run, lot c3k0n5, 169 g in, as collected that day: a bag of splats and a jar of powder (Ronnie Guymon, DAL #159).",
-   "start_frame": 1045,
-   "end_frame": 1062,
+   "start_frame": 1123,
+   "end_frame": 1140,
    "footage": {
     "file": "al4047_oct22_c3k0n5_bag_and_jar.jpg",
     "source": "Ronnie Guymon, DAL #159 comment 6353788099",
@@ -767,104 +821,104 @@
   {
    "label": "5/5",
    "caption": "Closed again. The chamber's valve and the container's own valve are shut, so the powder comes off under argon; the flange clamp opens and the MiR comes back to the container.",
-   "start_frame": 1063,
-   "end_frame": 1073
+   "start_frame": 1141,
+   "end_frame": 1151
   },
   {
    "label": "5/5",
    "caption": "Closed again. The chamber's valve and the container's own valve are shut, so the powder comes off under argon; the flange clamp opens and the MiR comes back to the container.",
-   "start_frame": 1074,
-   "end_frame": 1098
+   "start_frame": 1152,
+   "end_frame": 1176
   },
   {
    "label": "5/5",
    "caption": "The arm takes the container by its handle, lowers it off the outlet and carries it to the cradle on the MiR's cabinet. It goes next to the sieve shaker.",
-   "start_frame": 1099,
-   "end_frame": 1109
+   "start_frame": 1177,
+   "end_frame": 1187
   },
   {
    "label": "5/5",
    "caption": "The arm takes the container by its handle, lowers it off the outlet and carries it to the cradle on the MiR's cabinet. It goes next to the sieve shaker.",
-   "start_frame": 1110,
-   "end_frame": 1115
+   "start_frame": 1188,
+   "end_frame": 1193
   },
   {
    "label": "5/5",
    "caption": "The arm takes the container by its handle, lowers it off the outlet and carries it to the cradle on the MiR's cabinet. It goes next to the sieve shaker.",
-   "start_frame": 1116,
-   "end_frame": 1118
+   "start_frame": 1194,
+   "end_frame": 1196
   },
   {
    "label": "5/5",
    "caption": "The arm takes the container by its handle, lowers it off the outlet and carries it to the cradle on the MiR's cabinet. It goes next to the sieve shaker.",
-   "start_frame": 1119,
-   "end_frame": 1123
+   "start_frame": 1197,
+   "end_frame": 1201
   },
   {
    "label": "5/5",
    "caption": "The arm takes the container by its handle, lowers it off the outlet and carries it to the cradle on the MiR's cabinet. It goes next to the sieve shaker.",
-   "start_frame": 1124,
-   "end_frame": 1130
+   "start_frame": 1202,
+   "end_frame": 1208
   },
   {
    "label": "5/5",
    "caption": "The arm takes the container by its handle, lowers it off the outlet and carries it to the cradle on the MiR's cabinet. It goes next to the sieve shaker.",
-   "start_frame": 1131,
-   "end_frame": 1137
+   "start_frame": 1209,
+   "end_frame": 1215
   },
   {
    "label": "5/5",
    "caption": "The arm takes the container by its handle, lowers it off the outlet and carries it to the cradle on the MiR's cabinet. It goes next to the sieve shaker.",
-   "start_frame": 1138,
-   "end_frame": 1149
+   "start_frame": 1216,
+   "end_frame": 1227
   },
   {
    "label": "5/5",
    "caption": "The arm takes the container by its handle, lowers it off the outlet and carries it to the cradle on the MiR's cabinet. It goes next to the sieve shaker.",
-   "start_frame": 1150,
-   "end_frame": 1155
+   "start_frame": 1228,
+   "end_frame": 1233
   },
   {
    "label": "5/5",
    "caption": "The arm takes the container by its handle, lowers it off the outlet and carries it to the cradle on the MiR's cabinet. It goes next to the sieve shaker.",
-   "start_frame": 1156,
-   "end_frame": 1158
+   "start_frame": 1234,
+   "end_frame": 1236
   },
   {
    "label": "5/5",
    "caption": "The arm takes the container by its handle, lowers it off the outlet and carries it to the cradle on the MiR's cabinet. It goes next to the sieve shaker.",
-   "start_frame": 1159,
-   "end_frame": 1163
+   "start_frame": 1237,
+   "end_frame": 1241
   },
   {
    "label": "5/5",
    "caption": "The arm parks, and the MiR250 lines up in front of the rePowder for the next leg: the AS 200 sieve shaker.",
-   "start_frame": 1164,
-   "end_frame": 1172
+   "start_frame": 1242,
+   "end_frame": 1250
   },
   {
    "label": "5/5",
    "caption": "The arm parks, and the MiR250 lines up in front of the rePowder for the next leg: the AS 200 sieve shaker.",
-   "start_frame": 1173,
-   "end_frame": 1185
+   "start_frame": 1251,
+   "end_frame": 1263
   },
   {
    "label": "5/5",
    "caption": "The arm parks, and the MiR250 lines up in front of the rePowder for the next leg: the AS 200 sieve shaker.",
-   "start_frame": 1186,
-   "end_frame": 1207
+   "start_frame": 1264,
+   "end_frame": 1285
   },
   {
    "label": "5/5",
    "caption": "How much powder: the four cups make about 26 g of the MIDI's 20-63 um cut, at the Oct 27 run's 17 % under 63 um (DAL #219). The crucible takes much more: filled as on Oct 27, about 385 g of Al (65 g of the cut), and the 400 cm³ one about 684 g (116 g). A 440 g MIDI build then takes 17, 7 or 4 runs.",
-   "start_frame": 1208,
-   "end_frame": 1248
+   "start_frame": 1286,
+   "end_frame": 1326
   },
   {
    "label": "5/5",
    "caption": "Done: the powder, not yet sieved, is on the MiR250 in front of the rePowder. Next: the sieving cell and the printer.",
-   "start_frame": 1249,
-   "end_frame": 1262
+   "start_frame": 1327,
+   "end_frame": 1340
   }
  ],
  "footage": [
