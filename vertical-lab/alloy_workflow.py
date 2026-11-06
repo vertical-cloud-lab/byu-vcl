@@ -50,7 +50,7 @@ import robot as RB                    # noqa: E402
 import tour                           # noqa: E402
 
 TITLE = "Vertical cloud lab: from the metal printer to the tensile test"
-NAME = "alloy_workflow"
+NAME = __import__("os").environ.get("CH5_NAME", "alloy_workflow")   # CH5_NAME: a partial render under its own name
 HERE = Path(__file__).resolve().parent
 SEM = Path("/tmp/dal/figures/sem/AlSi10Mg_carbon_adhesive_SEM.png")
 SEM_LOCAL = HERE / "out" / "alloy_sem_AlSi10Mg_carbon_adhesive.png"      # a copy, so the render doesn't need /tmp/dal
@@ -650,6 +650,9 @@ def held_point(sc, group, local):
 # * its plate carrier and bar holder are low pockets on the cabinet top, not posts (alloy_models.mir_pockets).
 SPEC_ORDER = (3, 2, 1, 0)        # the order the bars come off the comb: the wire frees bar 3 first
 JUMP = int(__import__("os").environ.get("CH5_FROM", "1"))   # previews: start at section 6 or 7 (not for renders)
+# Round 9: CH5_TO=2 stops after section 2. With CH5_NAME, CH5_FROM=7 or CH5_TO=2 renders only those sections, under
+# their own name, to be spliced into the whole render (frames of the other sections unchanged)
+STOP = int(__import__("os").environ.get("CH5_TO", "7"))
 HOT = 2                          # the bar pulled at temperature; TEST (3) is pulled at room temperature
 HOT_C = 200.0                    # the chamber's set point (an example; the 3119-608 goes to 600 C)
 GRIP_SPEC = GRIP_BAR             # 2F-85 on the specimen's 10 mm grip end
@@ -1341,6 +1344,8 @@ def _movie(B):
         lin(tilt(p_c - a_dir * 110), 0.8, labels=[])
         park(1.4, extra=RB.both(D_.door(0.0), W.ghost(0.0)))
         status(sc, Arm="parked")
+        if STOP <= 2:
+            return sc.save()
 
         # ---------------------------------------------------------------- 3. across the aisle to the wire EDM
         st["lbl"] = f"3/{n}"
@@ -1930,7 +1935,7 @@ def _movie(B):
 if __name__ == "__main__":
     out = movie()
     print(out, flush=True)
-    if not PREVIEW and not scene.AUDIT:
+    if not PREVIEW and not scene.AUDIT and NAME == "alloy_workflow":
         mp4 = OUT / "mp4" / f"{NAME}.mp4"
         if mp4.exists():
             # round 9: 380 px at 2 fps, gifsicle --lossy=130: 4.7 MB for the 385 s chapter (under the 4.9 MB cap);
