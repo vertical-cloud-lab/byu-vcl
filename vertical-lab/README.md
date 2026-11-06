@@ -20,6 +20,8 @@ Two pieces of the work have their own stacked PRs:
 [#328](https://github.com/vertical-cloud-lab/byu-vcl/pull/328) (tensile bars at three build orientations through the
 wire EDM).
 
+![Round 9's changes, six frames from the final renders](out/round9_sheet.png)
+
 ### The multi-doser is chain carousel v5, on an HR-202i under the dose point
 
 - **powder-doser's own CAD, verbatim:** `cad/chain-carousel-v5/` at `353dae7` and the helpers it imports, copied into
