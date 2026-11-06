@@ -101,3 +101,7 @@ holds, except:
 - **Side branches.** repowder-pr and the EDM-orientation study each work in their own `git worktree` on their own
   branch, stacked on this one, so their PRs show only their own work. The orchestrator pushes those branches and opens
   the PRs.
+- **05:15, deadlines moved.** Fourteen jobs were queued for three slots, about eight slot-hours of work, so renders
+  are now due committed by **08:05**, notes by **08:10**, reports by **08:15**; the long-form is built at 08:05 from
+  what is committed. A queued render runs the code on disk when its slot comes up, so an audit queued ahead of one's
+  own render doesn't change it: audits go after the render, if there is time.
