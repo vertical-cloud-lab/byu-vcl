@@ -27,6 +27,7 @@ OLD_LID = ("hood", "hood_window", "hood_hot_label", "hood_knob")
 def old_instrument(path):
     spec = importlib.util.spec_from_file_location("oldmodel", path)
     om = importlib.util.module_from_spec(spec)
+    sys.modules["oldmodel"] = om
     spec.loader.exec_module(om)
     inst = Instrument("repowder_old", "old", "old", (1000, 800, 1600), "main 9a5dc71")
     inst.meshes = {"body": [], "lid": []}

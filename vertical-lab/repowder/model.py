@@ -518,6 +518,14 @@ def facet_plane(p: dict, face: str, s: float) -> tuple:
     return np.array([-rr, 0.0, z]), np.array([-math.cos(t), 0, math.sin(t)])
 
 
+def knob_centre(p: dict | None = None) -> np.ndarray:
+    """Centre of the lid's black ball knob (shut): a stalk off the front facet's foot, a little left of centre (T4 5:41)."""
+    p = p or LID
+    kb, _ = facet_plane(p, "front", 0.12)
+    kd = np.array([0.62, -0.15, 0.77])
+    return kb + np.array([-35.0, 0, 0]) + kd / np.linalg.norm(kd) * 40.0
+
+
 def hinge_point(p: dict | None = None) -> np.ndarray:
     p = p or LID
     return np.array([0.0, p["r"] + p["hinge_off"], BODY_TOP + 6.0])
