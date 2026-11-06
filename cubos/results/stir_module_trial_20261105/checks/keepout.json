@@ -1,0 +1,212 @@
+{
+ "keepout_mm": 24.0,
+ "vial": "vial_1",
+ "worst": [
+  45.274785742176626,
+  4,
+  "aspirate"
+ ],
+ "pass": true,
+ "steps": [
+  {
+   "step": 1,
+   "command": "move",
+   "tip_on": false,
+   "capped": "yes",
+   "closest_mm": 135.0,
+   "closest_while_capped_mm": null,
+   "lateral_tip_z": [
+    99.0
+   ]
+  },
+  {
+   "step": 2,
+   "command": "decap",
+   "tip_on": false,
+   "capped": "yes",
+   "closest_mm": 65.668,
+   "closest_while_capped_mm": null,
+   "lateral_tip_z": [
+    122.0
+   ]
+  },
+  {
+   "step": 3,
+   "command": "pick_up_tip",
+   "tip_on": true,
+   "capped": "yes",
+   "closest_mm": 85.6579606574894,
+   "closest_while_capped_mm": 85.6579606574894,
+   "lateral_tip_z": [
+    87.0
+   ]
+  },
+  {
+   "step": 4,
+   "command": "aspirate",
+   "tip_on": true,
+   "capped": "yes",
+   "closest_mm": 45.274785742176626,
+   "closest_while_capped_mm": 45.274785742176626,
+   "lateral_tip_z": [
+    87.0
+   ]
+  },
+  {
+   "step": 5,
+   "command": "cap",
+   "tip_on": true,
+   "capped": "yes",
+   "closest_mm": 45.274785742176626,
+   "closest_while_capped_mm": 45.274785742176626,
+   "lateral_tip_z": [
+    87.0
+   ]
+  },
+  {
+   "step": 6,
+   "command": "decap",
+   "tip_on": true,
+   "capped": "yes",
+   "closest_mm": 56.089214649520635,
+   "closest_while_capped_mm": 56.089214649520635,
+   "lateral_tip_z": [
+    87.0
+   ]
+  },
+  {
+   "step": 7,
+   "command": "blowout",
+   "tip_on": true,
+   "capped": "no",
+   "closest_mm": 0.0,
+   "closest_while_capped_mm": null,
+   "lateral_tip_z": [
+    87.0
+   ]
+  },
+  {
+   "step": 8,
+   "command": "cap",
+   "tip_on": true,
+   "capped": "part",
+   "closest_mm": 0.0,
+   "closest_while_capped_mm": 56.089214649520635,
+   "lateral_tip_z": [
+    87.0
+   ]
+  },
+  {
+   "step": 9,
+   "command": "drop_tip",
+   "tip_on": true,
+   "capped": "yes",
+   "closest_mm": 56.089214649520635,
+   "closest_while_capped_mm": 56.089214649520635,
+   "lateral_tip_z": [
+    87.0
+   ]
+  }
+ ],
+ "descents": [
+  [
+   3,
+   "pick_up_tip",
+   291.332,
+   89.0,
+   80.0,
+   "tip rack (8 tips within 30 mm)",
+   "moving"
+  ],
+  [
+   3,
+   "pick_up_tip",
+   291.332,
+   89.0,
+   24.0,
+   "tip rack (8 tips within 30 mm)",
+   "moving"
+  ],
+  [
+   4,
+   "aspirate",
+   136.668,
+   89.0,
+   21.0,
+   "vial_2 0.0 mm",
+   "moving"
+  ],
+  [
+   5,
+   "cap",
+   191.668,
+   100.0,
+   64.0,
+   "nothing in the deck file",
+   "passive"
+  ],
+  [
+   5,
+   "cap",
+   191.668,
+   100.0,
+   20.0,
+   "nothing in the deck file",
+   "passive"
+  ],
+  [
+   6,
+   "decap",
+   181.0,
+   56.0,
+   64.0,
+   "nothing in the deck file",
+   "passive"
+  ],
+  [
+   6,
+   "decap",
+   181.0,
+   56.0,
+   30.0,
+   "nothing in the deck file",
+   "passive"
+  ],
+  [
+   7,
+   "blowout",
+   126.0,
+   45.0,
+   46.0,
+   "vial_1 0.0 mm",
+   "moving"
+  ],
+  [
+   8,
+   "cap",
+   181.0,
+   56.0,
+   64.0,
+   "nothing in the deck file",
+   "passive"
+  ],
+  [
+   8,
+   "cap",
+   181.0,
+   56.0,
+   30.0,
+   "nothing in the deck file",
+   "passive"
+  ],
+  [
+   9,
+   "drop_tip",
+   291.332,
+   89.0,
+   59.0,
+   "tip rack (8 tips within 30 mm)",
+   "moving"
+  ]
+ ]
+}

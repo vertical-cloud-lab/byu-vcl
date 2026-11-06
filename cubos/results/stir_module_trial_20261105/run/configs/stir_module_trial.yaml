@@ -1,0 +1,112 @@
+# stir_module_trial.yaml -- the first protocol with the stir module on the deck.
+# CubXL, deck stir_module_trial.yaml, gantry cub_xl_ben_3_instrument.yaml.
+#
+# Asked for by @benwhitney5463 on PR #269, 2026-11-05: uncap vial 2, pick up a
+# tip, aspirate from vial 2, recap vial 2, uncap vial 1, dispense into vial 1,
+# recap vial 1, then mix. "Ensure in the protocol that the pipette with a tip
+# does not pass over vial 1 while it is capped": with the stir module raising
+# vial 1, a tipped pipette does not clear its cap.
+#
+#   0 home                    6 decap vial_1   (tip on, 20 uL in it)
+#   1 move capper to park     7 blowout into vial_1, tip end 20 mm below its rim
+#   2 decap vial_2            8 cap vial_1
+#   3 pick_up_tip A1          9 drop_tip back into A1
+#   4 aspirate 20 uL, vial_2 10 home
+#   5 cap vial_2
+#
+# The mix is the stir module, after the run: CubOS has no stir step, and it
+# holds the Uno's port for the whole run. Once the run has ended, a separate
+# script opens the port (which resets the Uno) and sends 30,<rpm>,<s>.
+#
+# ---------------------------------------------------------------------------
+# Keeping the tip off capped vial 1
+# ---------------------------------------------------------------------------
+# No waypoints are needed: with this deck, CubOS's own paths never take the
+# tip near vial 1 while it is capped. The pipette sits 55 mm +X and 11 mm +Y
+# of the capper, vial 1 is the -X, -Y corner of everything the head visits,
+# and every move goes X, then Y. cubos/tools/capped_vial_keepout.py checks it
+# from the mock run (CubOS 496819c + the CubXL's four patches):
+#
+#   closest the tip's axis comes to vial 1's axis while vial 1 is capped and
+#   a tip is (or may be) on: 45.3 mm, in step 4 (vial 1 is Ø28, so 31 mm
+#   clear of its wall). Counted as on from step 3's first move to the end, so
+#   a tip that drop_tip fails to shed is covered too.
+#
+# Vial 1 is open only from the end of step 6 to step 8's capper descent. The
+# tip crosses it then, at the top of the travel, on its way into vial 1 in
+# step 7 and out again in step 8.
+#
+# Every sideways move with the tip on is at gantry Z 122, the top of the
+# travel (tool Z 87 with the 35 mm tip), and starts with a straight lift.
+#
+# Where the tip goes down beside the capper (nothing there in the deck file):
+#   step 5, cap vial_2:        tip over deck (191.668, 100), down to Z 20
+#                              (36 mm below vial 2's rim)
+#   steps 6 and 8, vial_1:     tip over deck (181, 56), down to Z 30
+#                              (36 mm below vial 1's rim)
+#
+# ---------------------------------------------------------------------------
+# Heights
+# ---------------------------------------------------------------------------
+# aspirate vial_2, height -35: as every pipette_test since 09-01, tip end at
+#   deck Z 21, 35 mm below vial 2's rim (56).
+# blowout vial_1, height -20: tip end at deck Z 46, 20 mm below the rim Ben
+#   gives (66). Shallower than -35 so the tip stays well clear of the stir bar
+#   on vial 1's floor, even if vial 1 sits higher on its spacer than 66.
+#   (blowout empties the tip: the PANDA firmware's DISPENSE also goes to the
+#   blowout position, and CubOS has no standalone YAML dispense.)
+# capper on vial_2 / vial_1: gantry Z 55 / 65 (rim + engage_depth 15).
+
+positions:
+  park_position: [206.0, 25.0, 115.0]
+
+protocol:
+  - home:
+
+  # 1. Capper out of the homed corner, as in pipette_test (bare nozzle).
+  - move:
+      instrument: vial_capper_decapper
+      position: park_position
+      travel_z: 115
+
+  # 2. Open vial 2 while the nozzle is still bare. The capper keeps its cap.
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_2
+
+  # 3. Tip on. From here on vial 1 is capped and the tip is on.
+  - pick_up_tip:
+      position: tip_rack.A1
+
+  # 4. Draw 20 uL from vial 2. The tip runs along deck Y 89, 45 mm from vial 1.
+  - aspirate:
+      position: vial_2
+      volume_ul: 20.0
+      height: -35.0
+
+  # 5. Recap vial 2. The head lifts the tip straight out of vial 2 first.
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_2
+
+  # 6. Open vial 1. The tip waits over deck (181, 56), 56 mm from vial 1.
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_1
+
+  # 7. Dispense into vial 1, now open.
+  - blowout:
+      position: vial_1
+      height: -20.0
+
+  # 8. Recap vial 1. The tip lifts straight out and moves off to +X before
+  #    the capper comes down on vial 1.
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_1
+
+  # 9. Tip back into A1, along deck Y 56 and then X 291, away from vial 1.
+  - drop_tip:
+      position: tip_rack.A1
+
+  - home:

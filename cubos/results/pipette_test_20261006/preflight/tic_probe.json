@@ -1,0 +1,216 @@
+{
+  "result": {
+    "proven": true,
+    "home_ok": true,
+    "ladder": {
+      "1000": 2.05,
+      "2500": 2.1,
+      "10000": 2.13
+    },
+    "driver_before": {
+      "comm": 0,
+      "flags": 0,
+      "flag_names": [],
+      "cs": -1
+    },
+    "search_mm": 0.95,
+    "home": {
+      "reply": "OK:{\"msg\":\"Pipette homed\"}",
+      "dt_s": 1.351
+    },
+    "driver_after": {
+      "comm": 0,
+      "flags": 0,
+      "flag_names": [],
+      "cs": -1
+    },
+    "exit": 0
+  },
+  "rows": [
+    {
+      "t": "21:18:02.013Z",
+      "code": 14,
+      "args": [],
+      "dt_s": 0.008,
+      "reply": "OK:{\"homed\":0,\"pos\":0.00,\"max_vol\":20.00}"
+    },
+    {
+      "t": "21:18:02.021Z",
+      "code": 29,
+      "args": [],
+      "dt_s": 0.156,
+      "reply": "OK:{\"msg\":\"Driver status\",\"v\":[0.00,0.00,-1.00]}"
+    },
+    {
+      "t": "21:18:02.177Z",
+      "code": 16,
+      "args": [
+        0,
+        2,
+        200
+      ],
+      "dt_s": 0.02,
+      "reply": "OK:{\"msg\":\"Moved relative\",\"v\":[0.00,2.00,200.00]}"
+    },
+    {
+      "t": "21:18:02.197Z",
+      "code": 16,
+      "args": [
+        1,
+        2,
+        200
+      ],
+      "dt_s": 0.017,
+      "reply": "OK:{\"msg\":\"Moved relative\",\"v\":[1.00,2.00,200.00]}"
+    },
+    {
+      "t": "21:18:02.214Z",
+      "code": 16,
+      "args": [
+        0,
+        398,
+        400
+      ],
+      "dt_s": 1.015,
+      "reply": "OK:{\"msg\":\"Moved relative\",\"v\":[0.00,398.00,400.00]}"
+    },
+    {
+      "t": "21:18:03.229Z",
+      "code": 16,
+      "args": [
+        0,
+        398,
+        400
+      ],
+      "dt_s": 1.0,
+      "reply": "ERR Command 16 failed: ERR:{\"error\":\"Failed to move relative\"}"
+    },
+    {
+      "t": "21:18:04.229Z",
+      "code": 16,
+      "args": [
+        1,
+        1592,
+        400
+      ],
+      "dt_s": 4.034,
+      "reply": "OK:{\"msg\":\"Moved relative\",\"v\":[1.00,1592.00,400.00]}"
+    },
+    {
+      "t": "21:18:08.264Z",
+      "code": 16,
+      "args": [
+        0,
+        3184,
+        1000
+      ],
+      "dt_s": 1.732,
+      "reply": "ERR Command 16 failed: ERR:{\"error\":\"Failed to move relative\"}"
+    },
+    {
+      "t": "21:18:09.996Z",
+      "code": 16,
+      "args": [
+        1,
+        1592,
+        400
+      ],
+      "dt_s": 4.035,
+      "reply": "OK:{\"msg\":\"Moved relative\",\"v\":[1.00,1592.00,400.00]}"
+    },
+    {
+      "t": "21:18:14.031Z",
+      "code": 16,
+      "args": [
+        0,
+        3184,
+        2500
+      ],
+      "dt_s": 0.77,
+      "reply": "ERR Command 16 failed: ERR:{\"error\":\"Failed to move relative\"}"
+    },
+    {
+      "t": "21:18:14.801Z",
+      "code": 16,
+      "args": [
+        1,
+        1592,
+        400
+      ],
+      "dt_s": 4.034,
+      "reply": "OK:{\"msg\":\"Moved relative\",\"v\":[1.00,1592.00,400.00]}"
+    },
+    {
+      "t": "21:18:18.835Z",
+      "code": 16,
+      "args": [
+        0,
+        3184,
+        10000
+      ],
+      "dt_s": 0.295,
+      "reply": "ERR Command 16 failed: ERR:{\"error\":\"Failed to move relative\"}"
+    },
+    {
+      "t": "21:18:19.130Z",
+      "code": 16,
+      "args": [
+        1,
+        1592,
+        400
+      ],
+      "dt_s": 4.034,
+      "reply": "OK:{\"msg\":\"Moved relative\",\"v\":[1.00,1592.00,400.00]}"
+    },
+    {
+      "t": "21:18:23.164Z",
+      "code": 10,
+      "args": [],
+      "dt_s": 1.351,
+      "reply": "OK:{\"msg\":\"Pipette homed\"}"
+    },
+    {
+      "t": "21:18:24.515Z",
+      "code": 14,
+      "args": [],
+      "dt_s": 0.009,
+      "reply": "OK:{\"homed\":1,\"pos\":0.00,\"max_vol\":20.00}"
+    },
+    {
+      "t": "21:18:24.524Z",
+      "code": 16,
+      "args": [
+        0,
+        2,
+        200
+      ],
+      "dt_s": 0.02,
+      "reply": "OK:{\"msg\":\"Moved relative\",\"v\":[0.00,2.00,200.00]}"
+    },
+    {
+      "t": "21:18:24.544Z",
+      "code": 16,
+      "args": [
+        1,
+        2,
+        200
+      ],
+      "dt_s": 0.017,
+      "reply": "OK:{\"msg\":\"Moved relative\",\"v\":[1.00,2.00,200.00]}"
+    },
+    {
+      "t": "21:18:24.561Z",
+      "code": 29,
+      "args": [],
+      "dt_s": 0.155,
+      "reply": "OK:{\"msg\":\"Driver status\",\"v\":[0.00,0.00,-1.00]}"
+    },
+    {
+      "t": "21:18:24.716Z",
+      "code": 6,
+      "args": [],
+      "dt_s": 0.008,
+      "reply": "OK:{\"msg\":\"Electromagnet off\"}"
+    }
+  ]
+}

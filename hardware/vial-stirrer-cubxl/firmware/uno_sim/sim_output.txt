@@ -1,0 +1,51 @@
+-- RPM 600 from rest
+t=  2.0 fan=   838  OK:{"target":600,"setpoint":300,"rpm":960.0,"duty":0.225,"stalled":0,"left_s":-1}
+t=  4.0 fan=   596  OK:{"target":600,"setpoint":500,"rpm":660.0,"duty":0.193,"stalled":0,"left_s":-1}
+t=  6.0 fan=   507  OK:{"target":600,"setpoint":600,"rpm":540.0,"duty":0.205,"stalled":0,"left_s":-1}
+t=  8.0 fan=   532  OK:{"target":600,"setpoint":600,"rpm":510.0,"duty":0.223,"stalled":0,"left_s":-1}
+t= 10.0 fan=   577  OK:{"target":600,"setpoint":600,"rpm":570.0,"duty":0.229,"stalled":0,"left_s":-1}
+t= 12.0 fan=   594  OK:{"target":600,"setpoint":600,"rpm":600.0,"duty":0.229,"stalled":0,"left_s":-1}
+t= 14.0 fan=   595  OK:{"target":600,"setpoint":600,"rpm":600.0,"duty":0.229,"stalled":0,"left_s":-1}
+t= 16.0 fan=   595  OK:{"target":600,"setpoint":600,"rpm":600.0,"duty":0.229,"stalled":0,"left_s":-1}
+t= 18.0 fan=   595  OK:{"target":600,"setpoint":600,"rpm":570.0,"duty":0.235,"stalled":0,"left_s":-1}
+t= 20.0 fan=   611  OK:{"target":600,"setpoint":600,"rpm":630.0,"duty":0.229,"stalled":0,"left_s":-1}
+t= 22.0 fan=   595  OK:{"target":600,"setpoint":600,"rpm":600.0,"duty":0.229,"stalled":0,"left_s":-1}
+t= 24.0 fan=   595  OK:{"target":600,"setpoint":600,"rpm":570.0,"duty":0.235,"stalled":0,"left_s":-1}
+t= 26.0 fan=   611  OK:{"target":600,"setpoint":600,"rpm":630.0,"duty":0.229,"stalled":0,"left_s":-1}
+t= 28.0 fan=   595  OK:{"target":600,"setpoint":600,"rpm":600.0,"duty":0.229,"stalled":0,"left_s":-1}
+t= 30.0 fan=   595  OK:{"target":600,"setpoint":600,"rpm":600.0,"duty":0.229,"stalled":0,"left_s":-1}
+-- RPM 1200
+t= 32.0 fan=   595  OK:{"target":1200,"setpoint":800,"rpm":570.0,"duty":0.275,"stalled":0,"left_s":-1}
+t= 34.0 fan=   711  OK:{"target":1200,"setpoint":1000,"rpm":690.0,"duty":0.337,"stalled":0,"left_s":-1}
+t= 36.0 fan=   872  OK:{"target":1200,"setpoint":1200,"rpm":840.0,"duty":0.409,"stalled":0,"left_s":-1}
+t= 38.0 fan=  1058  OK:{"target":1200,"setpoint":1200,"rpm":990.0,"duty":0.451,"stalled":0,"left_s":-1}
+t= 40.0 fan=  1169  OK:{"target":1200,"setpoint":1200,"rpm":1140.0,"duty":0.463,"stalled":0,"left_s":-1}
+t= 42.0 fan=  1201  OK:{"target":1200,"setpoint":1200,"rpm":1200.0,"duty":0.463,"stalled":0,"left_s":-1}
+t= 44.0 fan=  1202  OK:{"target":1200,"setpoint":1200,"rpm":1200.0,"duty":0.463,"stalled":0,"left_s":-1}
+t= 46.0 fan=  1202  OK:{"target":1200,"setpoint":1200,"rpm":1200.0,"duty":0.463,"stalled":0,"left_s":-1}
+t= 48.0 fan=  1202  OK:{"target":1200,"setpoint":1200,"rpm":1200.0,"duty":0.463,"stalled":0,"left_s":-1}
+t= 50.0 fan=  1202  OK:{"target":1200,"setpoint":1200,"rpm":1200.0,"duty":0.463,"stalled":0,"left_s":-1}
+-- RPM 300 for 10 s (timed)
+t= 52.0 fan=  1202  OK:{"target":300,"setpoint":1000,"rpm":1200.0,"duty":0.423,"stalled":0,"left_s":8}
+t= 54.0 fan=  1102  OK:{"target":300,"setpoint":800,"rpm":1140.0,"duty":0.355,"stalled":0,"left_s":6}
+t= 56.0 fan=   930  OK:{"target":300,"setpoint":600,"rpm":990.0,"duty":0.280,"stalled":0,"left_s":4}
+t= 58.0 fan=   735  OK:{"target":300,"setpoint":400,"rpm":780.0,"duty":0.205,"stalled":0,"left_s":2}
+t= 60.0 fan=   540  OK:{"target":0,"setpoint":0,"rpm":570.0,"duty":0.000,"stalled":0,"left_s":-1}
+t= 62.0 fan=    19  OK:{"target":0,"setpoint":0,"rpm":180.0,"duty":0.000,"stalled":0,"left_s":-1}
+t= 64.0 fan=     1  OK:{"target":0,"setpoint":0,"rpm":0.0,"duty":0.000,"stalled":0,"left_s":-1}
+t= 66.0 fan=     0  OK:{"target":0,"setpoint":0,"rpm":0.0,"duty":0.000,"stalled":0,"left_s":-1}
+-- RPM 600, then the fan jams at t+10 s
+t= 78.0 fan=    21  OK:{"target":600,"setpoint":600,"rpm":180.0,"duty":0.304,"stalled":0,"left_s":-1}
+t= 80.0 fan=     1  OK:{"target":600,"setpoint":600,"rpm":0.0,"duty":0.307,"stalled":0,"left_s":-1}
+t= 82.0 fan=     0  OK:{"target":600,"setpoint":600,"rpm":0.0,"duty":0.310,"stalled":0,"left_s":-1}
+t= 84.0 fan=     0  OK:{"target":600,"setpoint":600,"rpm":0.0,"duty":0.313,"stalled":0,"left_s":-1}
+t= 86.0 fan=     0  OK:{"target":600,"setpoint":600,"rpm":0.0,"duty":0.316,"stalled":0,"left_s":-1}
+t= 88.0 fan=     0  OK:{"target":600,"setpoint":600,"rpm":0.0,"duty":0.320,"stalled":0,"left_s":-1}
+t= 90.0 fan=     0  OK:{"target":0,"setpoint":0,"rpm":0.0,"duty":0.000,"stalled":1,"left_s":-1}
+t= 92.0 fan=     0  OK:{"target":0,"setpoint":0,"rpm":0.0,"duty":0.000,"stalled":1,"left_s":-1}
+t= 94.0 fan=     0  OK:{"target":0,"setpoint":0,"rpm":0.0,"duty":0.000,"stalled":1,"left_s":-1}
+t= 96.0 fan=     0  OK:{"target":0,"setpoint":0,"rpm":0.0,"duty":0.000,"stalled":1,"left_s":-1}
+-- RPM 0 / NaN / out of range
+set 0 -> 0, set nan -> 0, set 5000 -> 2000, set 20 -> 100
+OK:{"target":0,"setpoint":0,"rpm":0.0,"duty":0.000,"stalled":0,"left_s":-1}
+OCR1B after stop = 0, TCCR1A=0x22 TCCR1B=0x13 ICR1=625

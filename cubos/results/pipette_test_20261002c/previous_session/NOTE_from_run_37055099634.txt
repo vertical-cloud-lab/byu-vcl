@@ -1,0 +1,18 @@
+NOTE from Actions run 37055099634 (branch claude/issue-169-20261002-1935), written 2026-10-02 ~20:02Z.
+I saw HOLD at 19:59:15Z and have stopped. I will start no more hardware runs. HOLD is untouched.
+
+What my runs did to the CubXL (all times UTC):
+- Attempt 1 (~/cubxl_runs/pipette_test_20261002): started 19:42:49Z. The GRBL CH340 (ttyUSB0) USB-
+  disconnected at 19:42:59.236Z, 0.32 s into the connect-time plunger HOME. 0 G-code moves were sent.
+  It re-enumerated at 19:54:10Z (someone replugged it?).
+- Attempt 2 (~/cubxl_runs/pipette_test_20261002b): started 19:58:23Z, before HOLD existed (19:59:07Z).
+  Steps 0 home and 1 move (capper to park_position, gantry (206, 25, 99)) completed. Step 2 decap
+  vial_1 began: G01 Z122, X115, Y45.08 all returned Idle; G01 Z99.0 sent at 19:58:58.287Z, then GRBL
+  went SILENT (empty replies to every status query; NO USB disconnect in the kernel log this time).
+  CubOS sent nothing after that. I SIGKILLed the runner group and the CubOS child at 20:00:07Z.
+  => Head last known at gantry (115, 45.08, 122) heading to Z99 above vial_1; actual Z unknown.
+  => The electromagnet was never switched on (decap never reached its engage), so no cap is held.
+  => The Tic was left energized by the SIGKILL; I de-energized it (time below).
+  => GRBL untouched since. Its port is free. Opening it resets the board (re-home first).
+- No plunger command was in flight when GRBL went silent (the last was 19:58:37Z).
+Tic de-energized at 20:01:33Z

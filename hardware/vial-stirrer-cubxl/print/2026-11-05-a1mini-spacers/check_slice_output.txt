@@ -1,0 +1,7 @@
+layers with extrusion: 23
+layer  1: centre (118.05, 87.04) X span 14.20 Y span 14.20 | centre (133.95, 92.96) X span 14.20 Y span 14.20
+layer  2: centre (118.05, 87.04) X span 14.58 Y span 14.58 | centre (133.95, 92.96) X span 14.58 Y span 14.58
+layer 12: centre (118.05, 87.04) X span 14.58 Y span 14.58 | centre (133.95, 92.96) X span 14.58 Y span 14.58
+layer 23: centre (118.05, 87.04) X span 14.58 Y span 14.58 | centre (133.95, 92.96) X span 14.58 Y span 14.58
+layer 1 all extrusion, disc A: X 110.95-125.15, Y 79.94-94.14
+layer 1 all extrusion, disc B: X 126.85-141.05, Y 85.86-100.06

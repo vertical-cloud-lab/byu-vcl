@@ -1,0 +1,5 @@
+{
+ "task_id": "922298eb-04f9-45f2-8c65-bda6d36ba712",
+ "job": "job-futurehouse-paperqa3-high",
+ "query": "Survey the published open-source hardware magnetic stirrers for laboratory and self-driving-lab / laboratory-automation use, especially low-cost designs built from PC cooling fans, DC or brushless motors with permanent magnets on the hub, or motorless rotating-field (coil) designs, and stirrers integrated into multi-vial bioreactors or automated platforms (e.g. Pioreactor, eVOLVER, Chi.Bio, open-source turbidostats). Include papers in HardwareX, Digital Discovery, PLOS ONE, Journal of Chemical Education, Scientific Reports, Lab on a Chip, and Review of Scientific Instruments. For each design give: vial or vessel size, motor type and part, magnet type/size/spacing, magnet-to-stir-bar gap, speed range (rpm) and how speed is controlled and measured (PWM, tachometer/RPM feedback, closed loop), power supply, enclosure/fabrication (3D printed, laser cut), cost, and any reported failure modes such as stir-bar decoupling, heating of the sample, or vibration."
+}

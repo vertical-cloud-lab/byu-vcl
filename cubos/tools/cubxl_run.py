@@ -59,6 +59,10 @@ DEFAULT_DECK = REPO / "cubos/configs/deck/ben_6vials_tiprack.yaml"
 DEFAULT_PROTOCOL = REPO / "cubos/configs/protocol/vcl/pipette_test.yaml"
 TIC_SETTINGS = REPO / "cubos/docs/tic_p20.txt"
 TICCMD = Path.home() / ".local/opt/pololu-tic-1.8.1-linux-rpi/ticcmd"
+# While this file exists, only a run whose CUBXL_HOLD_KEY env var equals its first line
+# may start. Two agent sessions once drove the CubXL a few minutes apart, so the newer one
+# writes its run id here, with the reason underneath, and deletes it when it is done.
+HOLD = Path.home() / "cubxl_runs/HOLD"
 LAB_UTC_OFFSET_H = -6          # lab local time, which CubOS's logs are written in
 
 # gantry-file grbl_settings key -> GRBL setting
@@ -616,6 +620,12 @@ def main() -> int:
     ap.add_argument("--allow-no-home", action="store_true")
     ap.add_argument("--baseline", default=None, help="an earlier results folder to compare with")
     a = ap.parse_args()
+    if HOLD.exists():
+        held = HOLD.read_text()
+        if os.environ.get("CUBXL_HOLD_KEY", "") != held.split("\n", 1)[0].strip():
+            print(f"REFUSED: {HOLD} says another session has the CubXL, so nothing was "
+                  f"checked and nothing moved:\n\n{held}", flush=True)
+            return 2
     for k in ("gantry", "deck", "protocol"):
         setattr(a, k, getattr(a, k).resolve())
     outdir = (a.outdir or Path.home() / "cubxl_runs" / a.name).resolve()
