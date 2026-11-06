@@ -268,8 +268,8 @@ def mastersizer() -> I.Instrument:
     body.parts = keep
     for pt in body.parts:
         if pt.name == "cell":
-            pt.shape = pt.shape.cut(box(g["xl"], g["yf"], 0, g["xp"], cy, I.MS3000["H"]).val())
-    body.add("bench floor", box(g["xl"] + 8, g["yf"] + 30, I.MS3000["feet"], g["xp"], g["yb"] - 8,
+            pt.shape = pt.shape.cut(box(m["g"]["xl"], m["g"]["yf"], 0, m["g"]["xp"], cy, I.MS3000["H"]).val())
+    body.add("bench floor", box(m["g"]["xl"] + 8, m["g"]["yf"] + 30, I.MS3000["feet"], m["g"]["xp"], m["g"]["yb"] - 8,
                                 I.MS3000["feet"] + 10), "inst_dark")
     j = inst.joints
     j["shell"] = Joint("fade", v0=1.0)
