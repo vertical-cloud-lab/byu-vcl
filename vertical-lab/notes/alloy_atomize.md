@@ -44,7 +44,9 @@ Sterling's review of 2026-11-05 22:56 UTC, verbatim:
 | Gauges | Arm, MiR250 | Arm 1, MiR250 1, Arm 2, MiR250 2 |
 | Jars | none in the 3-D chapter | none: the powder goes into the rePowder's own steel container. The two jar photos cut in (`PLAN`, "powder") are the lab's own and stay as they are |
 
-This is how the lab's own training video does it with two hands: at T4 [5:23](https://youtu.be/1F9_4ccwhss?t=323)
+[Four frames](../out/alloy_atomize_r9_preview.png) of the render: the two units and their plates; arm 2 on the lid while
+arm 1 goes for the latch; arm 1 swinging the lid, arm 2 parked; the latch shut under arm 2's hand. This is how the lab's
+own training video does it with two hands: at T4 [5:23](https://youtu.be/1F9_4ccwhss?t=323)
 ([frame](../refs/repowder_lid/t4_0523_closing.jpg)) one hand presses the lid down while the other works the latch.
 
 **Where arm 2 presses, and why the tool leans.** On the lid's flat top at model (−25, −15), 139 mm from the hinge
