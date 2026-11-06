@@ -299,7 +299,9 @@ def holder_seat(top: float) -> np.ndarray:
 DBOX = dict(W=420.0, D=620.0, H=1540.0, base=700.0, chuck_x=30.0, axis_y=300.0, chuck_top=990.0,
             door_x=(-120.0, 196.0), door_z=(745.0, 1480.0), lift=760.0)
 DBOX["axis_z"] = DBOX["chuck_top"] - 45.0
-LANCE = dict(L=300.0, r=14.0, grip=23.0)        # suction lance: tube length and radius, handle half-length (y)
+# suction lance: tube length and radius, handle half-length (y). Round 9: 400 mm (300 until round 8), so the nozzle
+# reaches the build cylinder, 350 mm behind the chamber's front, with the gripper outside the chamber
+LANCE = dict(L=400.0, r=14.0, grip=23.0)
 # the lance hangs on a post in front of the Aconity, right of its chamber, where the arm reaches it from the MiR's spot
 # at the printer; a pipe along the floor takes the powder to the box's separator. Post frame: like the box's.
 HOLSTER = (0.0, -60.0, 1300.0)                  # the lance's grasp point when it hangs in its forks (post frame)
@@ -639,7 +641,9 @@ def ipa_jar() -> dict:
                          (j["r"] - 1, j["z1"] + j["ring_h"])], res=40)
     line_ = _cyl(4, (j["ring_r"], 0, j["z1"] + 5), (j["ring_r"] + 50, 0, j["z1"] + 5), 12).merge(
         _cyl(4, (j["ring_r"] + 50, 0, j["z1"] + 5), (j["ring_r"] + 50, 0, 12), 12))
-    return {"stand": (stand, (0.24, 0.25, 0.27), 0.2, 1.0), "jar": (jar, (0.86, 0.90, 0.94), 0.5, 0.45),
+    import props                                     # round 9: the lab-wide jar, clear glass with a matte black cap
+    js = props.jar_style()
+    return {"stand": (stand, (0.24, 0.25, 0.27), 0.2, 1.0), "jar": (jar, js["glass"], 0.5, js["glass_opacity"]),
             "liquid": (liquid, (0.55, 0.72, 0.92), 0.3, 0.55), "air knife": (ring, (0.62, 0.63, 0.66), 0.5, 1.0),
             "air line": (line_, (0.20, 0.45, 0.80), 0.3, 1.0)}
 
@@ -651,7 +655,8 @@ def rinse_lid() -> dict:
                        resolution=48).triangulate()
     knob = pv.Cylinder(center=(0, 0, l["t"] + l["knob_h"] / 2), direction=(0, 0, 1), radius=l["knob_r"],
                        height=l["knob_h"], resolution=24).triangulate()
-    return {"lid": (disc, (0.82, 0.84, 0.86)), "knob": (knob, (0.20, 0.21, 0.23))}
+    import props                                     # round 9: the lab-wide jar's matte black cap, knob and all
+    return {"lid": (disc, props.jar_style()["lid"]), "knob": (knob, props.jar_style()["lid"])}
 
 
 def lid_rest() -> pv.PolyData:
@@ -663,3 +668,132 @@ def lid_rest() -> pv.PolyData:
     cup = charge.lathe([(0, top - 10), (l["r"] + 6, top - 10), (l["r"] + 6, top + 4), (l["r"] + 2, top + 4),
                         (l["r"] + 2, top), (0, top)], res=48)
     return post.merge(cup)
+
+
+# =========================================================================================== round 9 (chapter 5)
+# ------------------------------------------------------------------------------------------- build orientations
+# Sterling (PR #318, 2026-11-05 22:56): "sometimes we're going to be doing tensile bars at different orientations. How
+# is that going to work with the automated EDM process?" The chapter's plate now carries two bars printed vertical (Z;
+# ZXY in ISO/ASTM 52921's notation) beside its four flat ones (XY; XYZ), at the plate's right, clear of the lug. Wire
+# EDM cuts in a plane that holds the wire, so a part comes off a plate that stands on edge, the wire parallel to its
+# face (Calignano & Mercurio 2024; GF's CUT AM 500 turns the plate upside down instead): that one set-up cuts both kinds,
+# the flat bars along their length (about 800 mm^2 each) and the vertical ones across their 10 x 6 mm foot (60 mm^2).
+# On edge the vertical bars stand out of the plate's face, level, towards the front; each settles 0.5 mm into a trough
+# under it as the wire frees it. notes/edm_orientations.md (its own PR) has the 45 deg bars and the limits.
+ZBARS = ((68.0, -22.0), (68.0, 22.0))   # plate (x, y) of each vertical bar's foot centre: 10 mm across x, 6 mm along y
+
+
+def zbar_mesh(half: str | None = None) -> pv.PolyData:
+    """A bar printed vertical, in its own frame: the foot's centre at the origin, its long axis along +z (0..L), its
+    10 mm grip width along x, its 6 mm thickness along y. half = 'lo' (the foot's half) or 'hi', as bar_mesh."""
+    m = bar_mesh(half).translate((0.0, 0.0, -E8_SUB["T"] / 2), inplace=False)
+    m.rotate_x(90.0, inplace=True)                 # long axis y -> z, thickness z -> y
+    m.translate((0.0, 0.0, E8_SUB["L"] / 2), inplace=True)
+    return m
+
+
+def zbar_edm(pc, k: int) -> tuple:
+    """(x, z) in the EDM's frame of vertical bar k's axis when the plate stands on edge (plate x -> EDM -x, plate
+    y -> EDM -z, plate z -> EDM -y), the plate's bar face centre at pc."""
+    zx, zy = ZBARS[k]
+    return float(pc[0]) - zx, float(pc[2]) - zy
+
+
+TROUGH = dict(gap=0.5, clear=1.0, wall=2.0, wall_h=4.0, floor_t=4.0, y0=6.0, reach=(60.0, 102.0), post=(-90.0, -78.0),
+              post_y=(-32.0, -20.0))
+
+
+def zbar_troughs(pc) -> dict:
+    """{name: (mesh, colour)}: a U trough under each vertical bar (EDM frame), its floor 0.5 mm under the bar, 1 mm
+    each side of it, from 6 mm off the plate's face (clear of the wire, 0.15 mm off it) to 2 mm past the bar's free
+    end; both hang off one post that stands on the comb's left arm, left of the bars, so the gripper reaches each
+    free end from the front. The upper trough stops 60 mm out (the bar's centre of mass is 50 mm out), so the lower
+    bar's free end is open from the front once the upper bar is gone. Our design; sizes assumed."""
+    c, t = COMB, TROUGH
+    x, yf, _ = pc
+    z_arm = comb_floor_z(pc) - c["pad_t"] - c["floor_t"]           # the comb's floor and arms start here
+    hw = 5.0 + t["clear"]
+    parts, tops = [], []
+    for k in range(len(ZBARS)):
+        bx, bz = zbar_edm(pc, k)
+        top = bz - E8_SUB["T"] / 2 - t["gap"]                      # the trough's floor, 0.5 mm under the bar
+        tops.append(top)
+        y1 = yf - t["y0"]
+        y0 = yf - t["reach"][1 if k == 1 else 0] if bz < float(pc[2]) else yf - t["reach"][0]
+        parts += [pv.Box(bounds=(bx - hw - t["wall"], bx + hw + t["wall"], y0, y1, top - t["floor_t"], top)),
+                  pv.Box(bounds=(bx - hw - t["wall"], bx - hw, y0, y1, top, top + t["wall_h"])),
+                  pv.Box(bounds=(bx + hw, bx + hw + t["wall"], y0, y1, top, top + t["wall_h"])),
+                  # its web to the post
+                  pv.Box(bounds=(x + t["post"][0], bx - hw - t["wall"] + 0.5, yf + t["post_y"][0], yf + t["post_y"][1],
+                                 top - t["floor_t"], top))]
+    parts.append(pv.Box(bounds=(x + t["post"][0], x + t["post"][1], yf + t["post_y"][0], yf + t["post_y"][1], z_arm,
+                                max(tops))))
+    # its foot, forward along the arm to it
+    parts.append(pv.Box(bounds=(x + t["post"][0], x + t["post"][1], yf + t["post_y"][0], yf - 2.0 - 10.0 + 0.5, z_arm,
+                                z_arm + 12.0)))
+    body = parts[0].triangulate()
+    for m in parts[1:]:
+        body = body.merge(m.triangulate())
+    return {"zbar troughs": (body, (0.30, 0.31, 0.33))}
+
+
+def zbar_grasp_local() -> tuple:
+    """Where the gripper takes a vertical bar (its own frame): 13 mm in from its free end, on its axis."""
+    return (0.0, 0.0, E8_SUB["L"] - 13.0)
+
+
+# ------------------------------------------------------------------------------------ the depowdering box's clamps
+# Sterling (PR #318, 2026-11-05 22:56): "It's not clear how that depowdering box actually gets the plate to stay on it.
+# Is it clamped somehow?" It is, twice over. The plate's stud is pulled into the zero-point chuck (rounds 4-8 said so
+# only in a caption), and three swing clamps on the rotor, 120 deg apart round the plate, rise, swing their arms over
+# its rim and pull down on it before the shaft turns, and let go after. Solukon's units clamp the build plate to the
+# rotary table or to an adapter plate for each machine's plates (its SFM-AT200 page lists the part envelope, 300 x 300 x
+# 230 mm, 60 kg with the plate, a horizontal axis that swivels about 350 deg and a vibrator, but not the clamping, which
+# its datasheet, sent on request, would have); swing clamps of this kind are a catalogue part (e.g. ROEMHELD's). The
+# three clamps are our design. Arms open, they sit below the chuck's top, out of the plate's way as it is set down.
+CLAMPS = dict(r=100.0, angles=(60.0, -60.0, 140.0), body_r=14.0, rod_r=5.0, arm=(29.0, 10.0, 8.0), rise=34.0)
+
+
+def clamp_body(top: float) -> pv.PolyData:
+    """The clamps' fixed parts on the rotor (DBOX frame): three cylinder bodies under the plate's rim, each on an arm
+    from the chuck; `top` = the chuck's top (the plate's underside)."""
+    p, c = DBOX, CLAMPS
+    out = None
+    for a in c["angles"]:
+        u = np.array([math.cos(math.radians(a)), math.sin(math.radians(a)), 0.0])
+        cx_, cy_ = p["chuck_x"] + c["r"] * u[0], p["axis_y"] + c["r"] * u[1]
+        body = _cyl(c["body_r"], (cx_, cy_, top - 50.0), (cx_, cy_, top - 8.0), 24)
+        arm_p0 = np.array([p["chuck_x"], p["axis_y"], top - 44.0]) + 40.0 * u
+        arm = _cyl(7.0, arm_p0, (cx_, cy_, top - 44.0), 16)
+        out = body.merge(arm) if out is None else out.merge(body).merge(arm)
+    return out
+
+
+def clamp_arm() -> pv.PolyData:
+    """One clamp's moving part in its own frame: the rod on the clamp's axis (z), its top at z 0, and the arm along
+    +x from it, its underside at z 0. Closed, the frame sits at the plate's top face over the clamp's axis, the arm
+    pointing at the plate's centre."""
+    c = CLAMPS
+    L, w, h = c["arm"]
+    rod = _cyl(c["rod_r"], (0, 0, -60.0), (0, 0, h), 16)
+    arm = pv.Box(bounds=(-8.0, L, -w / 2, w / 2, 0.0, h)).triangulate()
+    pad = _cyl(4.0, (L - 5.0, 0, -1.5), (L - 5.0, 0, 0.0), 12)
+    return rod.merge(arm).merge(pad)
+
+
+def clamp_pose(i: int, top: float, f: float) -> np.ndarray:
+    """Clamp i's arm (DBOX frame) at f closed: 0 open (down, under the chuck's top, turned 90 deg off the plate),
+    0.5 risen and still turned away, 1 swung in over the rim and pulled down onto the plate's top face."""
+    c = CLAMPS
+    a = c["angles"][i]
+    u = (math.cos(math.radians(a)), math.sin(math.radians(a)))
+    lift = min(1.0, 2.0 * f)
+    swing = max(0.0, 2.0 * f - 1.0)
+    z = top + PLATE["t"] - c["rise"] * (1.0 - lift) - 2.0 * (1.0 - swing) * (lift >= 1.0)
+    yaw = a + 180.0 + 90.0 * (1.0 - swing)            # closed: pointing at the plate's centre
+    t_, ca, sa = math.radians(yaw), 0.0, 0.0
+    ca, sa = math.cos(t_), math.sin(t_)
+    m = np.eye(4)
+    m[:2, :2] = [[ca, -sa], [sa, ca]]
+    m[:3, 3] = (DBOX["chuck_x"] + c["r"] * u[0], DBOX["axis_y"] + c["r"] * u[1], z)
+    return m

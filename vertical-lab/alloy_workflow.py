@@ -267,6 +267,16 @@ class DBox:
             if g != "dbox":
                 sc.parent[g] = "dbox"
         self.door_f, self.angle, self._g = 0.0, 0.0, 0.0
+        # round 9: three swing clamps on the rotor hold the plate down while it turns (alloy_models.CLAMPS)
+        top = M.DBOX["chuck_top"]
+        sc.add("dbox/rotor/clamp bodies", M.clamp_body(top), (0.30, 0.32, 0.36), "dbox_rotor", specular=0.3)
+        self.names["rotor"].append("dbox/rotor/clamp bodies")
+        for i in range(len(M.CLAMPS["angles"])):
+            g = f"dbox_clamp{i}"
+            sc.add(f"dbox/rotor/clamp {i}", M.clamp_arm(), (0.85, 0.42, 0.10), g, specular=0.35)
+            sc.parent[g] = "dbox_rotor"
+            sc.gmat[g] = M.clamp_pose(i, top, 0.0)
+        self.clamp_f = 0.0
         sc.gmat["lstand"] = T((stand_x, line.Y_FACE, 0))
         for name, (mesh, col, spec, op) in M.lance_stand().items():
             sc.add(f"lstand/{name}", mesh, col, "lstand", opacity=op, specular=spec)
@@ -322,6 +332,41 @@ class DBox:
 
     def update_hose(self):
         self.sc.set_mesh("lance hose", self.hose())
+        if scene.AUDIT or PREVIEW:
+            hits = self.hose_hits()
+            if hits:
+                log = self.sc.__dict__.setdefault("hose_log", [])
+                log.append((self.sc.n, sorted(hits)))
+
+    def hose_hits(self) -> set:
+        """Round 9: the lance's hose against everything visible but the arm, the lance, its post and the floor pipe it
+        runs into (collide.py's FCL on the drawn meshes). -> the names it goes through."""
+        import collide
+        sc = self.sc
+        if getattr(self, "_hw", None) is None:
+            self._hw = collide.World(sc)
+            self._skip = None
+        W = self._hw
+        W.refresh()
+        if self._skip is None:
+            self._skip = {"hose", "lance", "lstand"}
+        t = collide._tris(sc.actors["lance hose"].GetMapper().GetInput())
+        if t is None:
+            return set()
+        hb = collide.Body("hose", "hose", *t)
+        hb.place(np.eye(4))
+        lo, hi = hb.box(np.eye(4))
+        snap = W.current(self._skip | set(getattr(self, "robot_groups", set())))
+        out = set()
+        for b, blo, bhi, Mb in snap.items:
+            if b.name == "floor pipe" or (blo > hi).any() or (bhi < lo).any():
+                continue
+            if b.pending is not None:
+                b.ensure()
+                b.place(Mb)
+            if collide._hit(hb.obj, b.obj):
+                out.add(b.name)
+        return out
 
     def with_hose(self, f):
         def up(u):
@@ -336,6 +381,17 @@ class DBox:
         def up(u):
             self.door_f = f0 + (f1 - f0) * u
             self.sc.gmat["dbox_door"] = T((0, 0, M.DBOX["lift"] * self.door_f))
+        return up
+
+    def clamp(self, f1):
+        """The swing clamps from clamp_f to f1 (0 open, under the chuck's top; 1 down on the plate's rim)."""
+        f0 = self.clamp_f
+        top = M.DBOX["chuck_top"]
+
+        def up(u):
+            self.clamp_f = f0 + (f1 - f0) * u
+            for i in range(len(M.CLAMPS["angles"])):
+                self.sc.gmat[f"dbox_clamp{i}"] = M.clamp_pose(i, top, self.clamp_f)
         return up
 
     def ghost(self, f1):
@@ -374,9 +430,10 @@ def rinse_stand(sc, E):
 class Aconity:
     """The opened Aconity MIDI in the line, with its door, build piston, plate, bars and powder."""
 
-    def __init__(self, sc, place=None, tests=(TEST,)):
+    def __init__(self, sc, place=None, tests=(TEST,), zbars=False):
         """place(bbox) -> the 4x4 that stands it on the floor (default: the old line's x); `tests`: the bars drawn in
-        two halves, to break."""
+        two halves, to break; zbars: the plate also carries round 9's two bars printed vertical (alloy_models.ZBARS),
+        groups zbar0 and zbar1, which make the build 100 mm tall."""
         self.sc = sc
         ents = M.aconity_pieces()
         pts = np.vstack([e["mesh"].points for k, lst in ents.items() if k != "piston" for e in lst
@@ -395,7 +452,8 @@ class Aconity:
             if g != "aco":
                 sc.parent[g] = "aco"
         self.floor = M.ACO["floor"]
-        self.build_h = M.LUG[5]                       # the build is as tall as the lug: 40 mm
+        self.zbars = bool(zbars)
+        self.build_h = M.E8_SUB["L"] if zbars else M.LUG[5]     # as tall as the vertical bars, or the lug
         self.piston_top = self.floor - self.build_h - M.PLATE["t"]
         self.door_f = 0.0
         # the plate, its lug and the bars, on the piston
@@ -413,6 +471,11 @@ class Aconity:
                 sc.add(f"bar{k}/a", M.bar_mesh(), M.AS_BUILT, g, specular=0.2)
             sc.parent[g] = "plate"
             sc.gmat[g] = T((x, 0, 0))
+        for k, (zx, zy) in enumerate(M.ZBARS if zbars else ()):
+            g = f"zbar{k}"
+            sc.add(f"zbar{k}/a", M.zbar_mesh(), M.AS_BUILT, g, specular=0.2)
+            sc.parent[g] = "plate"
+            sc.gmat[g] = T((zx, zy, 0.0))
         # the powder cake around the parts: a cylinder of unit height, scaled
         cake = pv.Cylinder(center=(0, 0, 0.5), direction=(0, 0, 1), radius=M.ACO["bore"] / 2 - 0.3, height=1.0,
                            resolution=72).triangulate()
@@ -796,7 +859,7 @@ def build_lab():
         sc.alpha[nm] = 0.0
         sc.base_alpha[nm] = 0.0
     cx, _, turn, _ = SL.FLOOR_PLAN["aconity"]
-    W_ = Aconity(sc, place=lambda bb: WH.place(bb, cx, WH.Y_FACE_N, "N", turn), tests=(TEST, HOT))
+    W_ = Aconity(sc, place=lambda bb: WH.place(bb, cx, WH.Y_FACE_N, "N", turn), tests=(TEST, HOT), zbars=True)
     # the depowdering box and the lance's post, east of the printer as they stood beside it on the old line
     D = DBox(sc, box_x=cx + (DBOX_X - 3250.0), stand_x=cx + (LSTAND_X - 3250.0))
     sc.dbox = D
@@ -807,6 +870,8 @@ def build_lab():
     for name, (mesh, col) in M.catch_comb(E.PC, list(bar_xs.values())).items():
         sc.add(f"edm fix/{name}", mesh, col, "edm_fix", specular=0.25)
     sc.add("edm fix/ejector block", M.ejector_body(E.PC, list(bar_xs.values())), (0.42, 0.44, 0.47), "edm_fix")
+    for name, (mesh, col) in M.zbar_troughs(E.PC).items():          # round 9: under the vertical bars
+        sc.add(f"edm fix/{name}", mesh, col, "edm_fix", specular=0.25)
     for k, bx in bar_xs.items():
         sc.add(f"edm pin/{k}", M.ejector_pin(E.PC, bx), (0.80, 0.81, 0.83), f"edm_pin{k}", specular=0.5)
         sc.parent[f"edm_pin{k}"] = f"{erig.prefix}body"
@@ -898,7 +963,46 @@ def _movie(B):
         step(secs, rb.grip_to(c))
 
     def park(secs=1.4, **kw):
-        go(q=PARK, secs=secs, **kw)
+        go(q=clear_park(), secs=secs, **kw)
+
+    def clear_park():
+        """Round 9: PARK, or the first of a few variants of it (turned about the base, less folded) that touches
+        nothing where the arm is now. Round 8's PARK put wrist 2 against the tongs on their rest and against the
+        Instron chamber's open door."""
+        import collide  # noqa: F401
+        chk = rb.checker()
+        Wd = chk.snapshot()
+        for fold in (A.PARK_DEG, (-90.0, -120.0, 110.0, -80.0, -90.0, 180.0)):
+            for dq0 in (0.0, 45.0, -45.0, 90.0, -90.0, 180.0):
+                q = np.radians(fold).copy()
+                q[0] += math.radians(dq0)
+                if not chk.collisions(q, rb.close, Wd, set(), first=True):
+                    return q
+        return PARK
+
+    def clear_q(Tw):
+        """Round 9: the IK solution for the TCP pose Tw nearest the arm's joints now that touches nothing but what the
+        gripper is handling (collide.py); None if there is none. A joint move to Tw alone may end in a folded branch:
+        round 8's planner reported two such ends carrying a bar from the IPA jar to the rack."""
+        import collide
+        chk = rb.checker()
+        Wd = chk.snapshot()
+        Tb = np.linalg.inv(sc.world(rb.root)) @ Tw
+        best = None
+        for q in collide.ik_all(rb.model, Tb, rb.q):
+            if not chk.collisions(q, rb.close, Wd, chk.touching(q, rb.close, Wd), first=True):
+                d = float(np.abs(np.asarray(q) - rb.q).sum())
+                if best is None or d < best[0]:
+                    best = (d, np.asarray(q, float))
+        return None if best is None else best[1]
+
+    def go_clear(Tw, **kw):
+        """go(Tw=Tw), but to a collision-free IK branch of it when there is one."""
+        q = clear_q(Tw)
+        if q is None:
+            go(Tw=Tw, **kw)
+        else:
+            go(q=q, **kw)
 
     def drive(pts, end_heading=None, reverse_last=False, extra=None, shown=1.0, **kw):
         up, secs = amr.route(pts, end_heading, reverse_last)
@@ -959,15 +1063,20 @@ def _movie(B):
     amr.set(aco_x, MIR_YN, 0.0)
     edm_x = edm_pc[0]
     rack_w = lambda p_: (sc.world("rack") @ np.r_[np.asarray(p_, float), 1.0])[:3]      # noqa: E731
-    total = 4 * M.bar_mesh().volume / M.E8_SUB["T"]
+    total_xy = 4 * M.bar_mesh().volume / M.E8_SUB["T"]
+    total = total_xy + (len(M.ZBARS) * M.E8_SUB["C"] * M.E8_SUB["T"] if W.zbars else 0.0)
     if JUMP > 5:                       # CH5_FROM=6 or 7: start from the state the earlier sections leave
         for nm in sc.members("plate") + [n_ for n_ in sc.actors if n_.startswith("plate/")]:
             sc.alpha[nm] = 0.0
         for i, k in enumerate(SPEC_ORDER):
             g = f"bar{k}"
             sc.parent[g] = "rack"
-            sc.gmat[g] = (T((RT.SPEC_X[3 - i], 0.0, RT.TRAY["floor"] + M.E8_SUB["L"] / 2)) @ R((1, 0, 0), 90.0)
-                          @ T((0.0, 0.0, -M.E8_SUB["T"] / 2)))
+            sc.gmat[g] = (T((RT.SPEC_X[RT.XY_SLOTS[3 - i]], 0.0, RT.TRAY["floor"] + M.E8_SUB["L"] / 2))
+                          @ R((1, 0, 0), 90.0) @ T((0.0, 0.0, -M.E8_SUB["T"] / 2)))
+        for j in range(len(M.ZBARS) if W.zbars else 0):
+            g = f"zbar{j}"
+            sc.parent[g] = "rack"
+            sc.gmat[g] = T((RT.SPEC_X[RT.Z_SLOTS[j]], 0.0, RT.TRAY["floor"] + 0.5))
         amr.set(edm_x, WH.Y_FACE_S + 230.0 + P.MIR["W"] / 2, 180.0)
     if JUMP > 6:
         amr.set(0.0, Y_TF, 0.0)
@@ -975,6 +1084,8 @@ def _movie(B):
     CAM_WIDE = [(aco_bp[0] - 1500, -12500, 6200), (aco_bp[0] - 2600, -3900, 700), (0, 0, 1)]
     CAM_ACO = [tuple(aco_bp + (-1700, -2300, 1500)), tuple(aco_bp + (100, -520, -120)), (0, 0, 1)]
     CAM_ACO_IN = [tuple(aco_bp + (-1250, -900, 850)), tuple(aco_bp + (30, -120, 10)), (0, 0, 1)]
+    # round 9: the lance at work, seen through the open door from the front-left and above, the gripper outside
+    CAM_LANCE = [tuple(aco_bp + (-640, -1250, 640)), tuple(aco_bp + (10, -150, -10)), (0, 0, 1)]
     sc.cam = list(CAM_WIDE)
     status(sc, Arm="UR10e on MiR250, at the Aconity", Plate="in the Aconity MIDI", Bar="", EDM="", Instron="")
     lbl = [("Aconity MIDI metal printer", (line.LINE["aconity"], WH.Y_FACE_N + 300, 2400), (0.80, 0.16)),
@@ -991,10 +1102,12 @@ def _movie(B):
     if JUMP <= 5:
         # ---------------------------------------------------------------- 2. the print, the lance, the box (round 5)
         D_ = D
+        D_.robot_groups = rb.checker().robot_groups()      # the hose's check leaves the arm to collide.py
         box_c = D_.world((M.DBOX["chuck_x"], M.DBOX["axis_y"], M.DBOX["chuck_top"]))
         lance_c = D_.lworld(M.HOLSTER)
         CAM_DEP = [tuple(lance_c + (700, -2500, 1250)), tuple(lance_c + (-250, -150, -280)), (0, 0, 1)]
         CAM_BOX = [tuple(box_c + (950, -1750, 850)), tuple(box_c + (-60, -60, -90)), (0, 0, 1)]
+        CAM_CLAMP = [tuple(box_c + (420, -820, 520)), tuple(box_c + (0, 20, 20)), (0, 0, 1)]
         p_hold = D_.lworld(M.HOLSTER)
         box_x = box_c[0] - 78.0 - 146.0
         l_dir = np.array([0, math.cos(math.radians(LANCE_DOWN)), -math.sin(math.radians(LANCE_DOWN))])
@@ -1023,11 +1136,19 @@ def _movie(B):
         step(0.5, D_.with_hose(rb.line_to(A.down(p_hold + (0, 0, 14), spin=0.0))))
         step(0.7, D_.with_hose(rb.line_to(A.down(p_hold + (0, -120, 14), spin=0.0))))
         step(0.9, D_.with_hose(rb.line_to(A.down(p_hold + (0, -300, 260), spin=0.0))))
-        rows = (50.0, 15.0, -20.0, -55.0)
+        # Round 9 (Sterling: "that vacuuming seems pretty clearly to have interference with the machine"). The lance is
+        # 400 mm long now, so the gripper stays outside the chamber; the nozzle (22 mm flare) keeps its centre within
+        # 60 mm of the bore's axis, so it stays inside the 170 mm cylinder, 36 mm right of the lug's rows and 28 mm off
+        # the two vertical bars; the hose is checked against the machine (DBox.hose_hits) as the arm moves.
+        R_NOZ = 60.0
+        rows = (45.0, 15.0, -15.0, -45.0)
+        x_right = M.ZBARS[0][0] - 5.0 - 28.0 if W.zbars else R_NOZ
         path = []
         for i, dy in enumerate(rows):
-            x_lo = -72.0 if abs(dy) > 40 else -36.0
-            xs = (x_lo, 72.0) if i % 2 == 0 else (72.0, x_lo)
+            half = math.sqrt(R_NOZ ** 2 - dy ** 2)
+            x_lo = -half if abs(dy) > 40 else -36.0
+            x_hi = min(half, x_right)
+            xs = (x_lo, x_hi) if i % 2 == 0 else (x_hi, x_lo)
             path += [aco_bp + (xs[0], dy, 0.0), aco_bp + (xs[1], dy, 0.0)]
         path = np.array(path)
         seg = np.r_[0.0, np.cumsum(np.linalg.norm(np.diff(path, axis=0), axis=1))]
@@ -1041,7 +1162,7 @@ def _movie(B):
         st["cap"] = ("It vacuums the plate as the platform rises a step at a time, the nozzle sweeping the build cylinder at "
                      "floor level: what a person does with a brush and an ATEX vacuum. The powder goes to be sieved again.")
         status(sc, Arm="vacuuming the build", Plate="rising out of the powder")
-        step(1.8, D_.with_hose(rb.joint_to(Tw=lance_at(entry))), cam=CAM_ACO_IN)
+        step(1.8, D_.with_hose(rb.joint_to(Tw=lance_at(entry))), cam=CAM_LANCE)
         step(1.0, D_.with_hose(rb.line_to(lance_at(path[0]))))
         lift_to = W.floor + 18.0 - M.PLATE["t"]
         z_p0 = W.piston_top
@@ -1063,7 +1184,9 @@ def _movie(B):
             sc.alpha["lance suck"] = 1.0 if 0.02 < u < 0.98 else 0.0
         step(6.0, sweep, hold=0.1,
              labels=[("bars and lug, as built", tuple(W.world(M.build_point(W.floor + 18) + (0, -60, 10))),
-                      (0.18, 0.36))])
+                      (0.18, 0.36)),
+                     ("two bars printed vertical", tuple(W.world(M.build_point(W.floor + 70) + (68, 0, 0))),
+                      (0.70, 0.22))])
         sc.alpha["lance suck"] = 0.0
         sc.alpha["plate residue"] = 1.0
         st["cap"] = "The lance goes back on its post. It leaves loose grains round the bars and the lug."
@@ -1110,10 +1233,17 @@ def _movie(B):
         status(sc, Plate="in the depowdering box")
         lin(tilt(p_box - a_dir * 260), 0.9, labels=[])
         park(1.2)
+        st["cap"] = ("Clamped, twice over: the chuck pulls the plate's stud down and locks it (a zero-point clamp), "
+                     "and three swing clamps on the rotor rise, turn their arms over the plate's rim and pull it down.")
+        status(sc, Plate="clamped: stud in the chuck, three swing clamps")
+        step(1.6, D_.clamp(1.0), hold=0.3, cam=CAM_CLAMP,
+             labels=[("swing clamps (3), on the rotor", tuple(D_.world(M.clamp_pose(0, M.DBOX["chuck_top"], 1.0)[:3, 3]
+                                                                   + (0, 0, 20))), (0.74, 0.30)),
+                     ("zero-point chuck: the stud locked in it", tuple(box_c + (0, 0, -30)), (0.70, 0.66))])
         st["cap"] = ("The door shuts and the box fills with argon. The shaft turns the plate over and back while a "
                      "vibrator shakes the grains loose; they fall through the hopper into a closed bottle.")
         status(sc, Arm="waiting", Plate="turned and shaken, under argon")
-        step(1.2, RB.both(D_.door(0.0), D_.ghost(1.0)), hold=0.1,
+        step(1.2, RB.both(D_.door(0.0), D_.ghost(1.0)), hold=0.1, cam=CAM_BOX,
              labels=[("vibrator", tuple(D_.world((M.DBOX["chuck_x"] + 125, M.DBOX["axis_y"], M.DBOX["axis_z"]))),
                       (0.78, 0.30)),
                      ("hopper to a closed bottle", tuple(D_.world((M.DBOX["chuck_x"], M.DBOX["axis_y"],
@@ -1144,6 +1274,8 @@ def _movie(B):
                      "the plate drops 12 mm into a bored block (round 7 asked for pockets, not posts).")
         status(sc, Plate="depowdered", Arm="taking the plate")
         step(1.2, RB.both(D_.ghost(0.0), D_.door(1.0)), hold=0.05, labels=[])
+        status(sc, Plate="depowdered; clamps open")
+        step(1.0, D_.clamp(0.0), hold=0.1)
         go(Tw=tilt(p_box - a_dir * 260), secs=1.3, grip=0.0)
         lin(tilt(p_box - a_dir * 60), 0.7)
         lin(tilt(p_box), 0.5)
@@ -1209,16 +1341,21 @@ def _movie(B):
         # ---------------------------------------------------------------- 4. the cut, into the comb
         st["lbl"] = f"4/{n}"
         bars = [f"bar{k}" for k in range(4)]
+        zbars = [f"zbar{k}" for k in range(len(M.ZBARS))] if W.zbars else []
         bar_x = {g: E.local(held_point(sc, g, (0, 0, 3.0)))[0] for g in bars}
+        bar_x.update({g: E.local(held_point(sc, g, (0, 0, 2.0)))[0] for g in zbars})
         print("bars in the EDM (x, as placed / as the comb was built):",
               {g: (round(bar_x[g], 1), round(B["bar_xs"][int(g[3:])], 1)) for g in bars}, flush=True)
         bar_z = {g: sorted(E.local(held_point(sc, g, (0, y, 3.0)))[2] for y in (-50.0, 50.0)) for g in bars}
+        bar_z.update({g: sorted(E.local(held_point(sc, g, (0, y, 2.0)))[2] for y in (-3.0, 3.0)) for g in zbars})
+        n_all = len(bars) + len(zbars)
         x_start, x_end = E.PC[0] - 95.0, E.PC[0] + 58.0
         freed = set()
         wall = ["edm fix/comb wall"]
         st["cap"] = ("The cut, the machine see-through: the brass wire (0.25 mm) runs between its guides 0.15 mm off the "
-                     "plate and sparks its way through the base of each bar. A comb waits under the bars: each settles "
-                     "0.5 mm into its own slot as it comes free, walled in front, on both sides, and behind by the plate.")
+                     "plate and sparks its way through the base of each bar, the vertical ones first. A comb waits under "
+                     "the flat bars, each settling 0.5 mm into its own slot as it comes free; a trough under each "
+                     "vertical bar, which stands out level from the plate's face, catches it the same way.")
         status(sc, EDM="cutting")
         step(2.2, RB.both(edm.move({"~body": (0.55, 1.0), "~door": (0.6, 1.0 / 0.82)}),
                           lambda u: E.set_head(E.PC[0] - 150 + 55 * u), fade(wall, 1.0, 0.35)),
@@ -1232,15 +1369,20 @@ def _movie(B):
             E.set_head(x)
             pts = []
             done = 0.0
-            for g in bars:
+            for g in bars + zbars:
                 bx = bar_x[g]
                 if bx - 5.0 < x < bx + 5.0:
                     z0, z1 = bar_z[g]
-                    zz = np.linspace(z0, z1, 26)
-                    if abs(x - bx) > 3.0:
-                        zz = zz[(zz < z0 + 34) | (zz > z1 - 34)]
+                    if g in zbars:                 # a vertical bar: across its 10 x 6 mm foot, at the plate's face
+                        zz = np.linspace(z0, z1, 6)
+                        y_sp = E.wire_y - 1.0
+                    else:
+                        zz = np.linspace(z0, z1, 26)
+                        if abs(x - bx) > 3.0:
+                            zz = zz[(zz < z0 + 34) | (zz > z1 - 34)]
+                        y_sp = E.wire_y - M.E8_SUB["T"] - 1.0
                     jit = np.sin(np.arange(len(zz)) * 2.7 + u * 90.0) * 1.2
-                    pts += [(x + j, E.wire_y - M.E8_SUB["T"] - 1.0, z) for j, z in zip(jit, zz)]
+                    pts += [(x + j, y_sp, z) for j, z in zip(jit, zz)]
                 if x >= bx + 5.0 and g not in freed:
                     freed.add(g)
                     rb.reparent(g, f"{edm.prefix}body")
@@ -1254,7 +1396,7 @@ def _movie(B):
                 sc.alpha["edm sparks"] = 1.0
             else:
                 sc.alpha["edm sparks"] = 0.0
-            status(sc, EDM=f"cutting: {done:.1f} of 4 bars")
+            status(sc, EDM=f"cutting: {done:.1f} of {n_all} bars")
 
         def cut_part(u0, u1):
             def up(u):
@@ -1264,8 +1406,9 @@ def _movie(B):
         save_still(sc, f"{NAME}_cut.png")
         step(5.6, cut_part(0.36, 1.0), hold=0.2)
         sc.alpha["edm sparks"] = 0.0
-        st["cap"] = (f"Four cuts, {total:.0f} mm^2 in all: at the 300 mm^2/min GF quotes as the most its CUT AM 500 does, at "
-                     "least 11 minutes. The tank drains and the door drops.")
+        st["cap"] = (f"Six cuts, {total:.0f} mm^2 in all (each flat bar along its length, about {total_xy / 4:.0f} mm^2; "
+                     f"each vertical one across its 10 x 6 mm foot): at the 300 mm^2/min GF quotes as the most its CUT "
+                     f"AM 500 does, at least {total / 300.0:.0f} minutes. The tank drains and the door drops.")
         status(sc, EDM="cut; draining")
         step(1.6, edm.move({"glow": (0.55, 0.0)}), hold=0.1)
         step(1.4, RB.both(edm.move({"door": (0.0, 1.0), "~body": (1.0, 0.55), "~door": (1.0 / 0.82, 0.0)}),
@@ -1283,7 +1426,7 @@ def _movie(B):
         CAM_JAR = [tuple(jar + (-650, 900, 1500)), tuple(jar + (120, -150, 950)), (0, 0, 1)]
         st["cap"] = ("A rinse before the furnace: wire-cut parts come out wet with deionised water. The IPA jar beside "
                      "the EDM is kept capped; the arm lifts the lid off by its knob onto a rest.")
-        status(sc, Arm="uncapping the IPA jar", Bar="four bars in the comb, wet")
+        status(sc, Arm="uncapping the IPA jar", Bar="four flat bars in the comb, two vertical in troughs, wet")
         go(Tw=A.down(lid_g + (0, 0, 90), spin=0.0), secs=1.6, grip=0.0, cam=CAM_JAR,
            labels=[("IPA jar, capped; an air knife on its rim", tuple(jar + (0, 0, jz1 + 60)), (0.20, 0.30)),
                    ("lid rest", tuple(rest_top + (0, 0, 40)), (0.70, 0.30))])
@@ -1308,7 +1451,7 @@ def _movie(B):
                              "gripper takes its upper end clear of the other three and of the plate's rim.")
             elif i == 1:
                 st["cap"] = "The other three the same way (shown faster)."
-            status(sc, Arm=f"bar {i + 1} of 4", Bar=f"bar {i + 1} of 4, wet")
+            status(sc, Arm=f"flat bar {i + 1} of 4", Bar=f"flat bar {i + 1} of 4, wet")
             rb.reparent(g, f"edm_pin{k}")
             step(0.9 * fast, lambda u, k=k: sc.gmat.__setitem__(f"edm_pin{k}", T((0, 0, lift * u))),
                  cam=CAM_EDM if i == 0 else None, labels=[])
@@ -1331,23 +1474,62 @@ def _movie(B):
                              "on the jar's rim, which blows it dry.")
             go(Tw=lvl(p_dip_top, dip_dir), secs=1.4 * fast, cam=CAM_JAR if i == 0 else None)
             lin(lvl(p_dip, dip_dir), 0.8 * fast, hold=0.4 * fast)
-            status(sc, Bar=f"bar {i + 1} of 4, rinsing")
+            status(sc, Bar=f"flat bar {i + 1} of 4, rinsing")
             lin(lvl(p_dip_top, dip_dir), 1.6 * fast)
-            status(sc, Bar=f"bar {i + 1} of 4, rinsed and dry")
-            slot = rack_w((RT.SPEC_X[3 - i], 0.0, RT.TRAY["floor"]))
+            status(sc, Bar=f"flat bar {i + 1} of 4, rinsed and dry")
+            slot = rack_w((RT.SPEC_X[RT.XY_SLOTS[3 - i]], 0.0, RT.TRAY["floor"]))
             toward = (0.0, 1.0)                               # pointing at the rack's fin side: the arm's body behind it
             p_in = np.r_[slot[:2], slot[2] + 0.5 + hang]
             if i == 0:
                 st["cap"] = ("Into the rack on the MiR's cabinet, standing on end in a slot 25 mm deep: the arm carries "
                              "every specimen this way, by its upper end, from here to the Instron's grips.")
-            go(Tw=up_(lvl(p_in, toward), 70.0), secs=1.6 * fast, cam=CAM_EDM if i == 0 else None,
-               labels=[("specimen rack, in its pocket on the MiR", tuple(rack_w((0, 0, 140))), (0.40, 0.66))]
-               if i == 0 else [])
+            go_clear(up_(lvl(p_in, toward), 70.0), secs=1.6 * fast, cam=CAM_EDM if i == 0 else None,
+                     labels=[("specimen rack, in its pocket on the MiR", tuple(rack_w((0, 0, 140))), (0.40, 0.66))]
+                     if i == 0 else [])
             lin(lvl(p_in, toward), 0.7 * fast)
             grip(0.0, 0.35 * fast)
             rb.release("rack")
             lin(up_(lvl(p_in, toward), 60.0), 0.5 * fast, labels=[])
-        status(sc, Arm="recapping the IPA jar", Bar="four specimens in the rack, dry")
+        # round 9: the two vertical bars, out of their troughs (the upper one first: the lower one's free end is under
+        # it). Each is taken by its free end, level, lifted 2 mm and drawn straight out to the front; then it hangs
+        # under the gripper, pointing down, for the jar and the rack, its 10 mm width along the rack's slots.
+        rack_x = sc.world("rack")[:3, :3] @ np.array([1.0, 0.0, 0.0])
+        spin_rack = math.degrees(math.atan2(-rack_x[1], rack_x[0]))
+        CAM_ZB = [tuple(E.world(E.PC + (-520, -900, 330))), tuple(E.world(E.PC + (-70, -70, 0))), (0, 0, 1)]
+        for j, g in enumerate(zbars):
+            fast = 1.0 if j == 0 else 0.4
+            if j == 0:
+                st["cap"] = ("The two vertical bars lie level in their troughs, standing out of the plate's face. The "
+                             "gripper takes each by its free end, lifts it 2 mm and draws it straight out; turned to hang "
+                             "under the gripper, it is rinsed the same way and stands in the rack's end slots.")
+            status(sc, Arm=f"vertical bar {j + 1} of 2", Bar=f"vertical bar {j + 1} of 2, wet")
+            p_end = held_point(sc, g, M.zbar_grasp_local())
+            go(Tw=back(lvl(p_end, into), 140.0), secs=1.6 * fast, grip=0.0, cam=CAM_ZB if j == 0 else None,
+               labels=[("troughs under the vertical bars", tuple(E.world(E.PC + (-68, -60, -40))), (0.20, 0.70)),
+                       ("vertical bars, cut at the foot", tuple(E.world(E.PC + (-68, -100, 40))), (0.24, 0.26))]
+               if j == 0 else [])
+            lin(lvl(p_end, into), 0.7 * fast)
+            grip(GRIP_BAR, 0.4 * fast)
+            rb.grasp(g)
+            lin(up_(lvl(p_end, into), 2.0), 0.3 * fast)
+            lin(back(up_(lvl(p_end, into), 2.0), 118.0), 0.9 * fast)
+            lin(back(up_(lvl(p_end, into), 60.0), 220.0), 0.6 * fast, labels=[])
+            hang = M.E8_SUB["L"] - 13.0                   # the bar under the TCP, once the gripper points down
+            p_dip_top = np.r_[jar[:2], M.JAR["z1"] + M.JAR["ring_h"] + hang + 30.0]
+            p_dip = np.r_[jar[:2], M.JAR["z0"] + 55.0 + hang]
+            go_clear(A.down(p_dip_top, spin=spin_rack), secs=1.8 * fast, cam=CAM_JAR if j == 0 else None)
+            lin(A.down(p_dip, spin=spin_rack), 0.8 * fast, hold=0.4 * fast)
+            status(sc, Bar=f"vertical bar {j + 1} of 2, rinsing")
+            lin(A.down(p_dip_top, spin=spin_rack), 1.6 * fast)
+            status(sc, Bar=f"vertical bar {j + 1} of 2, rinsed and dry")
+            slot = rack_w((RT.SPEC_X[RT.Z_SLOTS[j]], 0.0, RT.TRAY["floor"]))
+            p_in = np.r_[slot[:2], slot[2] + 0.5 + hang]
+            go_clear(up_(A.down(p_in, spin=spin_rack), 70.0), secs=1.6 * fast, cam=CAM_EDM if j == 0 else None)
+            lin(A.down(p_in, spin=spin_rack), 0.7 * fast)
+            grip(0.0, 0.35 * fast)
+            rb.release("rack")
+            lin(up_(A.down(p_in, spin=spin_rack), 60.0), 0.5 * fast)
+        status(sc, Arm="recapping the IPA jar", Bar=f"{4 + len(zbars)} specimens in the rack, dry")
         st["cap"] = "The lid goes back on the jar, and the EDM's door comes up with the plate still in it, for the bin."
         go(Tw=A.down(rest_g + (0, 0, 80), spin=0.0), secs=1.4, grip=0.0, cam=CAM_JAR)
         lin(A.down(rest_g, spin=0.0), 0.5)
@@ -1381,7 +1563,7 @@ def _movie(B):
         st["cap"] = (f"To Shuttle 1, where tray F holds the furnace. The long drives are shown at {DRIVE_SHOWN:.0f}x; the "
                      "MiR turns in the gap between the two Shuttles and backs in, 350 mm further out than the dock, "
                      "to leave room for the tongs.")
-        status(sc, Arm="parked", Rack="four specimens, on the MiR", Furnace="tray F, stored")
+        status(sc, Arm="parked", Rack="six specimens, on the MiR", Furnace="tray F, stored")
         drive([(edm_x, LANE), (PIVOT_X, LANE), (PIVOT_X, Y_TF)], end_heading=0.0, shown=DRIVE_SHOWN,
               cam=[(9000, -14500, 6800), (2500, -3500, 600), (0, 0, 1)])
         drive([(0.0, Y_TF)], reverse_last=True, cam=CAM_TRAYF)
@@ -1529,14 +1711,22 @@ def _movie(B):
     ins_x = ins_axis[0]
     ins_in = rig_dir(ins, (0, 1, 0))                 # from the chamber's door towards the load string
     CAM_INS = [tuple(rig_w(ins, (1600, -2000, 1600))), tuple(rig_w(ins, (0, -250, 900))), (0, 0, 1)]
-    # through the chamber's door opening from above and to its right, clear of the arm coming in from the front
-    CAM_GRIP = [tuple(rig_w(ins, (480, -760, 1450))), tuple(rig_w(ins, (0, -30, 840))), (0, 0, 1)]
+    # Round 9 (Sterling: "The angle and transparency at 32:20 is off. Can't see the tensile test happening"). Round 8's
+    # CAM_GRIP sat 760 mm in front of the frame at x 480, behind the MiR's arm and the open door, and looked through
+    # the closed door's see-through window. Now: from the front-right, 1.6 m off, over the MiR's end, and the test is
+    # shown as a cutaway: the chamber's back half (r8_test's "chamber_cut") without its front half and door, so the
+    # specimen, the grips, the pull rods and the AVE 2 in front are all in plain view and opaque.
+    CAM_GRIP = [tuple(rig_w(ins, (900, -1300, 1300))), tuple(rig_w(ins, (0, -60, 870))), (0, 0, 1)]
+    CAM_TEST = [tuple(rig_w(ins, (820, -1250, 1180))), tuple(rig_w(ins, (-20, 0, 880))), (0, 0, 1)]
+    cut_on = {"chamber": (1.0, 0.0), "chamber_cut": (0.0, 1.0), "~chamber_door": (0.0, 1.0 / 0.82)}
+    cut_off = {"chamber": (0.0, 1.0), "chamber_cut": (1.0, 0.0), "~chamber_door": (1.0 / 0.82, 0.0)}
     st["cap"] = (f"West along the aisle to the Instron 68FM-100 (shown at {DRIVE_SHOWN:.0f}x). Its 3119-608 chamber "
                  "stays round the load string for both tests; the room-temperature one runs with it cold.")
-    status(sc, Arm="parked", Rack="four T6 specimens, on the MiR", Furnace="", Instron="")
+    status(sc, Arm="parked", Rack="six T6 specimens, on the MiR", Furnace="", Instron="")
     drive([(PIVOT_X, Y_TF), (PIVOT_X, LANE), (ins_x, LANE), (ins_x, MIR_YS)], end_heading=180.0,
           shown=DRIVE_SHOWN, cam=[(-2500, -14500, 6000), (-4300, -3800, 600), (0, 0, 1)])
     LOW_TOP = RT.LOWER_TOP
+    I_CH = RT.CHAMBER
     spec_c = rig_w(ins, (0.0, 0.0, LOW_TOP - 30.0 + M.E8_SUB["L"] / 2))
     spec_top = spec_c + (0, 0, M.E8_SUB["L"] / 2)
     v_close = (LOW_TOP - 30.0 + M.E8_SUB["L"] - 30.0 - RT.UPPER_BOTTOM0) / I.INSTRON_FM["travel"]
@@ -1578,6 +1768,16 @@ def _movie(B):
                      "end; the AVE 2 reads the strain through the door's heated window, so nothing is clipped on by "
                      "hand." if not hot else st["cap"])
         step(1.0 * fastr, ins.move(door_shut))
+        if not hot:
+            st["cap"] = ("Drawn as a cutaway from here: the chamber's front half and its door, with the heated window the "
+                         "AVE 2 reads through, are left out, so the specimen, the wedge grips and the pull rods show. The "
+                         "crosshead brings the upper grip down until it takes the specimen's upper end.")
+        step(1.0 * fastr, ins.move(cut_on), cam=CAM_TEST,
+             labels=[("3119-608 chamber, cut away", tuple(rig_w(ins, (230, 0, I_CH["z1"] - 40))), (0.78, 0.20)),
+                     ("AVE 2 video extensometer", tuple(rig_w(ins, (RT.AVE["x"], RT.AVE["y"], RT.AVE["z"] + 60))),
+                      (0.14, 0.40)),
+                     ("upper and lower wedge grips, on pull rods", tuple(rig_w(ins, (40, 0, LOW_TOP + 40))),
+                      (0.74, 0.62))])
         step(2.0 * fastr, ins.move({"crosshead": (0.0, v_close)}), hold=0.2)
         status(sc, Instron="both grips closed")
         if hot:
@@ -1597,7 +1797,7 @@ def _movie(B):
             ins.move({"crosshead": (v_close, v_close + e * M.E8_SUB["G"] * 1.6 / I.INSTRON_FM["travel"])})(1.0)
         sc.ss_u = 0.0
         sc.ss_broken = False
-        step(7.0 * fastr, pull, hold=0.2, cam=CAM_GRIP)
+        step(7.0 * fastr, pull, hold=0.2, cam=CAM_TEST)
         sc.ss_broken = True
         rb.reparent(f"{g}_b", f"{ins.prefix}crosshead" if hi_up else f"{ins.prefix}body")
         if not hi_up:
@@ -1615,7 +1815,8 @@ def _movie(B):
         lo_g, hi_g = (g, f"{g}_b") if hi_up else (f"{g}_b", g)
         up_grp = f"{g}_b" if hi_up else g
         dn_grp = g if hi_up else f"{g}_b"
-        step(1.0, ins.move(door_open))
+        step(0.8, ins.move(cut_off), labels=[])
+        step(1.0, ins.move(door_open), cam=CAM_GRIP)
         for grp, where in ((up_grp, "upper"), (dn_grp, "lower")):
             # 14 mm into the half from its broken end (the bar's centre, y = 0 in its own frame), on its axis
             p_h = held_point(sc, grp, (0.0, 14.0 if grp.endswith("_b") else -14.0, 3.0))

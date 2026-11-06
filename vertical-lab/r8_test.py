@@ -30,9 +30,14 @@ import alloy_models as M
 # they never have to be laid flat and picked up again. A fin at the front (-y) is for the gripper when the rack is cold
 # and for the tongs when it is hot (12 mm thick, like the plate's lug, so GRIP_LUG closes on it). Our design: a
 # heat-treatment rack of this size is an assumption, not a product. Frame: the rack's floor centre, z up.
+# Round 9: six slots, 26 mm apart, for the plate's four flat (XY) bars and its two vertical (Z) ones; the fingers
+# straddling a bar's 10 mm end still clear its neighbours by 6 mm. Slots 1-4 (x -39..39) take the flat bars, 0 and 5
+# (x -65, 65) the vertical ones.
 TRAY = dict(W=150.0, D=40.0, H=28.0, floor=3.0, slot_w=11.0, slot_d=7.5, fin_t=12.0, fin_l=36.0, fin_h=64.0,
-            pitch=30.0)
-SPEC_X = tuple(TRAY["pitch"] * (i - 1.5) for i in range(4))     # -45, -15, 15, 45
+            pitch=26.0, n=6)
+SPEC_X = tuple(TRAY["pitch"] * (i - (TRAY["n"] - 1) / 2) for i in range(TRAY["n"]))     # -65, -39, -13, 13, 39, 65
+XY_SLOTS = (1, 2, 3, 4)                                         # rack slots of the flat bars, in the order they come
+Z_SLOTS = (0, 5)                                                # and of the vertical ones
 
 
 def tray_fin_grasp() -> tuple:
@@ -105,6 +110,13 @@ def furnace() -> I.Instrument:
 
 
 # ===================================================================================================== Instron
+# Round 9 (Sterling, PR #318, 2026-11-05: "The angle and transparency at 32:20 is off. Can't see the tensile test
+# happening. Can't tell if there are collisions. Something weird with that heated box."). What was wrong with the box:
+# its shell's front wall was solid, so with the door open the arm reached through 30 mm of wall; and its controller
+# stood in the 12.5 mm between the chamber and the right column, 24 mm into the column. Now the shell has the door's
+# 400 x 560 mm opening, the controller sits on the chamber's roof, left of the pull rod, and the shell is also built
+# cut in half through the load string (piece "chamber_cut", the back half) so the chapter can show the test as a
+# cutaway instead of through stacked see-through walls.
 # Instron's 3119-608 environmental chamber, for floor frames: -150 to 600 C, inside 400 x 400 x 560 mm (D x W x H),
 # outside 550 W x 710 H (the outside depth isn't published: 550 assumed); a left-hinged door with a heated triple-pane
 # window and an inside light; heating, cooling and fan shut off when the door opens (Instron's 3119-600 product page).
@@ -163,12 +175,18 @@ def instron_floor() -> I.Instrument:
     w, d, z0, z1, t = c["W"], c["D"], c["z0"], c["z1"], c["wall"]
     shell = box(-w / 2, -d / 2, z0, w / 2, d / 2, z1).cut(box(-w / 2 + t, -d / 2 + 30, z0 + t, w / 2 - t, d / 2 - t,
                                                              z1 - t))
+    shell = shell.cut(box(-w / 2 + t, -d / 2 - 1, z0 + t, w / 2 - t, -d / 2 + 31, z1 - t))     # the door's opening
     for zz in (z0 - 1, z1 - t - 1):
         shell = shell.cut(cyl(2 * c["port_r"], t + 2, z=zz))
-    body.add("chamber", shell, "inst_offwhite")
-    body.add("chamber controller", box(w / 2, -d / 2 + 60, z1 - 260, w / 2 + 36, d / 2 - 80, z1 - 40), "inst_dark")
-    body.add("chamber controller screen", box(w / 2 + 36, -d / 2 + 90, z1 - 220, w / 2 + 38, d / 2 - 120, z1 - 120),
-             "screen_on")
+    whole = _piece(inst, "chamber")
+    whole.add("chamber", shell, "inst_offwhite")
+    half = _piece(inst, "chamber_cut")                 # the back half, cut through the load string's axis (y = 0)
+    half.add("chamber, cut", shell.cut(box(-w / 2 - 1, -d / 2 - 1, z0 - 1, w / 2 + 1, 0.0, z1 + 1)), "inst_offwhite")
+    half.add("chamber, cut faces", box(-w / 2, -1.0, z0, -w / 2 + t, 0.5, z1).union(
+        box(w / 2 - t, -1.0, z0, w / 2, 0.5, z1)).union(box(-w / 2, -1.0, z0, w / 2, 0.5, z0 + t)).union(
+        box(-w / 2, -1.0, z1 - t, w / 2, 0.5, z1)).cut(cyl(2 * c["port_r"], 2 * z1, z=-1)), "refractory")
+    body.add("chamber controller", box(-w / 2 + 30, 20, z1, -w / 2 + 210, d / 2 - 30, z1 + 120), "inst_dark")
+    body.add("chamber controller screen", box(-w / 2 + 50, 18, z1 + 20, -w / 2 + 190, 20.01, z1 + 100), "screen_on")
     for sx in (-1, 1):
         body.add(f"chamber rail {sx}", box(sx * (w / 2 - 60) - 15, -d / 2 + 40, z0 - 40, sx * (w / 2 - 60) + 15,
                                            d / 2 + 380, z0 - 10), "aluminium")
@@ -212,7 +230,7 @@ def instron_floor() -> I.Instrument:
              .translate((0, 0, LOWER_TOP - 30 + M.E8_SUB["L"] / 2)), "sample")
     inst.joints = {"crosshead": I.Joint("slide", vec=(0, 0, p["travel"])),
                    "chamber_door": I.Joint("hinge", axis=(0, 0, 1), pivot=(-w / 2, -d / 2, 0), deg=-c["door_deg"]),
-                   "glow": I.Joint("fade")}
+                   "glow": I.Joint("fade"), "chamber": I.Joint("fade", v0=1.0), "chamber_cut": I.Joint("fade")}
     inst.props = tuple(inst.props) + ("ave",)
     v_test = (LOWER_TOP - 30 + M.E8_SUB["L"] - 30 - UPPER_BOTTOM0) / p["travel"]
     inst.actions = [
