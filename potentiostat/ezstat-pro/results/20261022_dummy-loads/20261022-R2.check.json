@@ -1,0 +1,26 @@
+{
+  "run": "R2",
+  "csv": "results/20261022_dummy-loads/20261022-R2.csv",
+  "columns": {
+    "V": "Cell Potential[V]",
+    "I": "Cell Current[A]"
+  },
+  "units": {
+    "V": "v",
+    "I": "a"
+  },
+  "R_fit_ohm": 10107.93454435974,
+  "offset_A": -2.4294421480462875e-07,
+  "r_squared": 0.999997441335658,
+  "max_residual_A": 1.761904677282742e-07,
+  "I_range_A": [
+    -4.9562718e-05,
+    4.9387833e-05
+  ],
+  "points": 2001,
+  "R_meter_ohm": 10000.0,
+  "deviation_pct": 1.0793454435973944,
+  "pass": false,
+  "meter_accuracy_pct": 1.0,
+  "pass_within_meter_accuracy": true
+}

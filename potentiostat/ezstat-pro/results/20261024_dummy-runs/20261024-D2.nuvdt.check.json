@@ -1,0 +1,36 @@
+{
+  "file": "results/20261024_dummy-runs/20261024-D2.nuvdt",
+  "nuvdt_header": [
+    "NBLOCKS:1   NUVANT_VERSION:1   DATA_TYPE:methodDATA;",
+    "NLINES:1   COMM_PAR:1.000000 Range 2 None FALSE FALSE {} {} 0.000000 0.000000 FALSE 0.000000 0.000000 0.000000 0.000000 Range 3 Range 2 Range 2 Range 3 Range 1;",
+    "METHOD:CorrInh METHOD_DATA: TRUE 1 360 FALSE 0 3 0.01 10 FALSE 0;",
+    "TIMEOFST: 1;",
+    "DATAID:Absolute Time Current Potential;"
+  ],
+  "points": 344,
+  "sample_interval_s": 1.0520601272583008,
+  "ocp": [
+    {
+      "t_start_s": 0.0,
+      "t_end_s": 178.90123224258423,
+      "points": 172,
+      "E_mean_V": 4.928955397203787,
+      "E_sd_V": 0.5888773390197175,
+      "E_first_V": 3.819461858742708,
+      "E_last_V": 5.8480962157638645,
+      "drift_mV_per_10min": 6752.224172908471
+    },
+    {
+      "t_start_s": 311.68882751464844,
+      "t_end_s": 490.6980662345886,
+      "points": 172,
+      "E_mean_V": 3.053291458382891,
+      "E_sd_V": 0.9600060437120307,
+      "E_first_V": 0.8450392559224162,
+      "E_last_V": 4.457157171661642,
+      "drift_mV_per_10min": 10917.355041366476
+    }
+  ],
+  "lpr": [],
+  "hold": []
+}
