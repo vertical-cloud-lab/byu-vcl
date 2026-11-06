@@ -39,7 +39,9 @@ MATS.update(I.MATERIALS)
 MODULES = ["instruments", "instruments_char", "instruments_lab", "services", "instruments_r7",
            # round 8: each module's REGISTRY overrides an earlier key of the same name (later wins), so a refitted
            # model replaces its old one in every scene that calls load(); modules not written yet are skipped
-           "r8_prep", "r8_char", "r8_powder", "r8_test", "r8_store", "r8_scale"]
+           "r8_prep", "r8_char", "r8_powder", "r8_test", "r8_store", "r8_scale",
+           # round 9: one module per stream that needs one (skipped until it exists)
+           "r9_doser", "r9_cubxl", "r9_powder", "r9_test", "r9_prep"]
 
 
 def _modules() -> dict:
