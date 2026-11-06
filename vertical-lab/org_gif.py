@@ -88,9 +88,13 @@ Y_CUT = -4000.0
 SHUTTER_GHOST = 0.12
 SOUTH_OUT = bool(int(os.environ.get("ORG_SOUTH_OUT", "1")))
 # the cycle's places
-CELL_X = -1350.0                 # the MiR's centre at the sieving cell, on the VLM's dock line: the arm's base 300 mm
-                                 # right of the pocket, so the parked arm doesn't hide it from the camera
-CELL_SEAT = (-1650.0, -1442.0)   # the cell's vial pocket: on its bench, 120 mm in from the front, right of the shaker
+CELL_X = -1750.0                 # the MiR's centre at the sieving cell, on the VLM's dock line: its arm's base in
+                                 # front of the bench's free right end, so the arm reaches in through the cell's open
+                                 # front (from further right, its forearm went through the enclosure's side panel and
+                                 # the Shuttle's corner); 50 mm short of the cell's camera target's floor plate
+CELL_SEAT = (-1560.0, -1442.0)   # the cell's vial pocket: on its bench, 120 mm in from the front, 200 mm right of the
+                                 # shaker's body and 110 mm left of the enclosure's side panel; right of the parked arm,
+                                 # so the camera sees it
 M2_LOCAL = (300.0, -150.0)       # the MiR's second pocket (cabinet frame): BUFFER_LOCAL's mirror image across the arm
 TARGET_DX = 2 * 1330.0           # the VLM's camera target, from x = -1330 (setup_lab.TARGET_AT) to +1330
 GRASP_Z = 50.0                   # the gripper takes a vial 50 mm up (animate.workflow)
