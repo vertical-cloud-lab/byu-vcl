@@ -225,3 +225,38 @@ lift, the ball plunger in the steel puck.
 - `alloy_prep.py`: the chapter; `out/alloy_prep.{gif,json}`, `out/mp4/alloy_prep.mp4`, `out/alloy_prep_still.png`;
   the arm audit in `out/collisions/alloy_prep.json`.
 - Tour clips: `out/instruments/{mount_press,polisher,cnc}.{gif,png}`, `out/mp4/instruments/...` at 8 fps.
+
+## Round 9 (#303, Sterling's point 16 of 2026-11-05 22:56)
+
+**The PX500's holder holds nothing.** Round 8 drew a plain 6-hole disc with a handling tab and said "clips (ours) keep
+the mounts in". Sterling's reading (and the lab's, from its SOP videos, [refine_polisher.md](refine_polisher.md): part 2
+at 6:28 shows an individual-force holder with pistons) is that there is no set screw or clamp: with the head down, each
+mount stands on the disc, and the machine's piston comes down onto its back to press it; with the piston up the mount is
+freestanding in its hole. What changed:
+
+- **No clamping anywhere on the holder.** The "clips" caption is gone. (The set screw that remains is the *steel puck's*
+  ball plunger and screw in `r8_specimens.steel_mount`, a different part, before the holder.)
+- **The pistons are modelled.** `r8_prep.polisher()` has a `pistons` piece (six rods 26 mm across with 29 mm feet, a
+  stainless carrier plate above them, sizes ours) on a slide joint under the spinning `holder`. In every grind the head
+  comes down, the pistons come down 5 mm onto the mounts' backs, the platen and holder turn, then "Pistons up: the mounts
+  just stand in their holes", then the head lifts. A close-up camera at the holder shows it. The polisher tour clip
+  (`inst.actions`) has the same.
+- **Stepped bores.** Each hole is the mount's diameter (38.1 + 0.4 mm) for the mount's 20 mm less its 13 mm that stands
+  proud, i.e. 7 mm, then a 5 mm ledge with a 30 mm aperture the piston passes through. A mount rests against that ledge
+  when the holder is carried face up, and the piston reaches it through the aperture. Sizes are ours.
+
+**What stops the mounts falling when the holder is lifted and turned over (open, decided here).** LECO publishes nothing
+about how its holder keeps a mount in hand: its pages say only that the individual holder's wheel indexes slowly "to
+make loading and removing mounts easier" ([LECO PX series](https://www.leco.com/instrument/px-series-grinder-polishers/),
+[PX400/PX500 catalogue](https://pdf.directindustry.com/pdf/leco/px400-px500-grinder-polisher-series/114499-791543.html)),
+so a ledge alone cannot be what holds a mount once the holder is turned face down. Three options:
+
+1. a ledge: holds only while the holder is face up (the mount rests on its back), fails the moment it is turned over;
+2. the holder stays on the machine and the arm loads and unloads mounts one at a time, with the head up; that is what the
+   indexing wheel suggests, but then the mount needs a hold while the arm lets go;
+3. a light friction grip in the bore (an O-ring), which is what this chapter shows: the mount is loaded face up against
+   the ledge, the holder is turned over, and the O-ring keeps the mount from dropping while the holder is handled. **This is
+   an assumption**, not a LECO feature, and it is the first thing to check with LECO or on the lab's machine. If the real
+   holder stays on the head, the chapter's holder transfers (steps 3 and 6) become mount-by-mount transfers instead.
+
+Estimates and assumptions: piston and aperture sizes, the 5 mm piston gap and press travel, the O-ring.
