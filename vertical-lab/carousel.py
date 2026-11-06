@@ -65,6 +65,7 @@ BUDGET = {"auger": 4000, "auger_cap": 1500, "chain_outer": 240, "chain_inner": 2
 GLASSY = {"hr202i_front_glass", "hr202i_door_left", "hr202i_door_right", "hr202i_top_door", "panel_side_hatch",
           "panel_side", "panel_front_hatch", "panel_back", "panel_top", "hatch_front", "hatch_side"}
 GLASS_ALPHA = {"hr202i": 0.30, "panel": 0.10, "hatch": 0.10}
+SAME_PART = {"door_spring", "door_spring_open"}   # one instance, drawn free or compressed by the outlet door's state
 OURS = (0.10, 0.55, 0.55)        # our printed parts and fittings on the rig, in the lab's PETG teal (charge.PRINT)
 OURS_DARK = (0.25, 0.27, 0.30)
 
@@ -201,7 +202,10 @@ def shuttle_meshes() -> dict[str, pv.PolyData]:
     for sx in (-1, 1):                                     # the two tines round the slot
         a, b = sorted((x + sx * SLOT_W / 2, x + sx * FORK_W / 2))
         fork = fork.merge(box(a, b, y1 - SLOT_L, y1, zf - FORK_T, zf))
-    return {"fixed": rail.merge(bracket).merge(leg), "moving": carriage.merge(column).merge(fork)}
+    out = {"fixed": rail.merge(bracket).merge(leg), "moving": carriage.merge(column).merge(fork)}
+    for m in out.values():
+        m.clear_data()
+    return out
 
 
 def pusher_meshes() -> dict[str, pv.PolyData]:
@@ -232,6 +236,8 @@ def pusher_meshes() -> dict[str, pv.PolyData]:
         pv.Box(bounds=(xt - 12.0, xt + 12.0, yt - 10.0, yt + 10.0, 16.0, 36.0)))
     out["side_finger"] = f_side.triangulate()
     out["top_finger"] = f_top.triangulate()
+    for m in out.values():
+        m.clear_data()                   # merged boxes carry face normals of the wrong length (collide.py warns)
     return out
 
 
@@ -412,7 +418,10 @@ class Carousel:
     def set(self, **kw):
         self.state.update(kw)
         pl = self._pl()
-        assert [p.key for p in pl] == self.keys, "the rig's instance list changed with its state"
+        keys = [p.key for p in pl]
+        if keys != self.keys:            # v5 swaps the station module's outlet-door spring for its compressed self
+            bad = [(x, y) for x, y in zip(keys, self.keys) if x != y and not {x, y} <= SAME_PART]
+            assert len(keys) == len(self.keys) and not bad, f"the rig's instance list changed with its state: {bad[:3]}"
         Ms = [p.M if p.group != "elec" else self.board @ p.M for p in pl]
         last, self._last = self._last, Ms
         self.sc.gmat[f"{self.group}_sidefinger"] = _T((self.state["side_door"], 0.0, 0.0))
@@ -424,7 +433,7 @@ class Carousel:
             pts = np.empty((mesh.n_points, 3))
             for i, a, b in slices:
                 M = Ms[i]
-                local = self.parts[pl[i].key].points
+                local = self.parts[self.keys[i]].points         # (a spring keeps its first mesh: 6 mm, unseen)
                 pts[a:b] = local @ M[:3, :3].T + M[:3, 3]
             mesh.points = pts
             self.sc.set_mesh(name, mesh)
