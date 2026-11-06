@@ -1063,6 +1063,9 @@ def _rack(x0, y0, x1, y1, h, holes, d, depth):
     return blk.cut(cut)
 
 
+JAR_TINTS = [("amber", "Al 4047 (Al-Si)"), ("teal", "Cu"), ("magenta", "Al-Ce"), ("blue", "Ni-Al bronze")]   # estimates
+
+
 def storage() -> Instrument:
     import charge
     import props
@@ -1111,12 +1114,18 @@ def storage() -> Instrument:
                             (_merged(capm, seats["icp_tube"]), (0.20, 0.42, 0.80), 1.0)]
     barm = alloy_models.bar_mesh()
     inst.meshes["body"].append((_merged(barm, [(x, y, z) for x, y, z in seats["bar"]]), (0.60, 0.61, 0.62), 1.0))
-    jarm = pv.Cylinder(center=(0, 0, 50), direction=(0, 0, 1), radius=35, height=100).triangulate()
-    lidm = pv.Cylinder(center=(0, 0, 106), direction=(0, 0, 1), radius=36, height=12).triangulate()
-    inst.meshes["body"] += [(_merged(jarm, seats["jar"]), (0.93, 0.93, 0.90), 1.0)]
-    for k, (x, y, z) in enumerate(seats["jar"]):
-        col = [(0.25, 0.45, 0.85), (0.85, 0.45, 0.20), (0.36, 0.37, 0.42), (0.20, 0.62, 0.30)][k % 4]
-        inst.meshes["body"].append((lidm.translate((x, y, z), inplace=False), col, 1.0))
+    # round 9 (Sterling: "Keep them all a normal black lid with transparent glass"): the lab-wide jar of props.py, clear
+    # glass, black cap, white label, powder showing. Which powder is in which jar is shown by a tint on the jar for a
+    # few seconds with a legend (the "jar tint" piece, faded in and out), not by the lid.
+    for part, (m, rgb, op) in props.jar_parts(70.0, 100.0, 12.0).items():
+        inst.meshes["body"].append((_merged(m, seats["jar"]), rgb, op))
+    sleeve = props.tint_sleeve(70.0, 100.0)
+    jp = _piece(inst, "jar tint")
+    jp.add("tint anchor", box(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5), "r7_lab_white")      # a piece needs a solid; hidden
+    inst.meshes["jar tint"] = []
+    for c, names in enumerate(JAR_TINTS):
+        pts = [q for k, q in enumerate(seats["jar"]) if k % len(JAR_TINTS) == c]
+        inst.meshes["jar tint"].append((_merged(sleeve, pts), props.TINT[names[0]], props.TINT_OPACITY))
     # the drawers and what is in them
     for nm, z0, kind in (("drawer1", 202.0, "sem_stub"), ("drawer2", 104.0, "coupon")):
         dp = _piece(inst, nm)
@@ -1141,6 +1150,7 @@ def storage() -> Instrument:
             inst.meshes[nm] = [(_merged(mnt, seats[kind]), (0.46, 0.09, 0.11), 1.0),
                                (_merged(face, seats[kind]), (0.82, 0.83, 0.85), 1.0)]
         inst.joints[nm] = Joint("slide", vec=(0, -SG["drawer"], 0))
+    inst.joints["jar tint"] = Joint("fade")
     inst.actions = [
         ("A storage tray: what the arm picks from. 1760 x 760 mm and 300 mm tall; the tray's right end stays free "
          "for its UPS and dock.", 2.6, {}),
@@ -1149,13 +1159,16 @@ def storage() -> Instrument:
         ("Their plugs, Al and Cu apart; 54 capped 20 mL vials; 112 15 mL ICP-MS tubes.", 3.0, {}),
         ("The top drawer: 96 SEM pin stubs, 12.7 mm, carbon tabs on.", 2.8, {"drawer1": (0.0, 1.0)}),
         ("The lower drawer: 32 polished 1.25 in mounts.", 2.8, {"drawer1": (1.0, 0.0), "drawer2": (0.0, 1.0)}),
-        ("Tensile bars (E8 sub-size), sealed 250 mL powder jars with lids by powder, labelled bins.", 3.0,
-         {"drawer2": (1.0, 0.0)}),
+        ("Tensile bars (E8 sub-size), sealed 250 mL powder jars, labelled bins. Every jar is clear glass with a black "
+         "cap.", 3.0, {"drawer2": (1.0, 0.0)}),
+        ("Tinted for now: which powder is in which jar (legend, top right).", 1.6, {"jar tint": (0.0, 1.0)}),
+        ("The tint is only a highlight, held for a few seconds...", 2.4, {"jar tint": (1.0, 1.0)}),
+        ("...then it fades back to plain glass and black caps.", 1.8, {"jar tint": (1.0, 0.0)}),
         ("Every pocket is a seat: storage_seats() lists them for the arm's planner.", 2.2, {}),
     ]
     inst.zoom = {1: ((-540.0, -280.0, 60.0), 850.0), 2: ((300.0, -280.0, 60.0), 1150.0),
                  3: ((-680.0, -330.0, 230.0), 950.0), 4: ((-680.0, -330.0, 130.0), 950.0),
-                 5: ((-150.0, 60.0, 80.0), 1100.0), 6: "out"}
+                 5: ((-150.0, 60.0, 80.0), 1100.0), 8: "out"}
     inst.labels = [("5N Al cups", (-712, -280, 82), (0.10, 0.80)), ("C10100 Cu cups", (-368, -280, 82), (0.30, 0.86)),
                    ("20 mL vials", (316, -280, 75), (0.56, 0.86)), ("ICP-MS tubes", (684, -280, 132), (0.84, 0.80)),
                    ("drawers: stubs, mounts", (-680, -157, 280), (0.10, 0.18)),
@@ -1163,6 +1176,9 @@ def storage() -> Instrument:
     inst.cam = (0.55, -1.5, 1.35)
     return inst
 
+
+PLOTS["instruments/storage"] = __import__("props").piece_legend(
+    "storage", {"jar tint": ("Tinted for now: the powder", [(__import__("props").TINT[c], t) for c, t in JAR_TINTS])})
 
 REGISTRY = {"glovebox_tray": glovebox_tray, "tensile_h": tensile_h, "hardness": hardness, "cnc": cnc,
             "fumehood": fumehood, "fumehood_tray": fumehood_tray, "storage": storage}

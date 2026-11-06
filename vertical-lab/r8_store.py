@@ -44,7 +44,8 @@ import numpy as np
 import pyvista as pv
 
 import instruments_r7 as R7
-from instruments import Instrument, _piece
+import props
+from instruments import Instrument, Joint, _piece
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE / "lab_models"))
@@ -154,6 +155,22 @@ def _merged(mesh, pts):
     return out[0].merge(out[1:]) if len(out) > 1 else out[0]
 
 
+# what a clip tints, with its legend (props.TINT names): feedstock, the master alloys and the two elements of Al 4047
+# (Al-12Si); lots, the < 63 um LPBF cut and the other cuts of run jz31op
+TINT_LEGEND = {"powder_store_feed": [("amber", "Al master alloys (Al-Li, Al-Sc, Al-Zr)"), ("teal", "Al and Si: Al 4047's elements")],
+               "powder_store_lots": [("amber", "< 63 um: the LPBF cut"), ("teal", "run jz31op, its other cuts")]}
+
+
+def _tint_of(key: str, s: dict) -> str | None:
+    if key == "powder_store_feed":
+        if s["label"].startswith("Al-"):
+            return "amber"
+        return "teal" if s["label"] in ("Al", "Si") else None
+    if s["label"].endswith(FRACTIONS[0]):
+        return "amber"
+    return "teal" if s["label"].startswith("jz31op") else None
+
+
 def store(key: str) -> Instrument:
     seats = jar_seats(key)
     feed = key == "powder_store_feed"
@@ -184,40 +201,43 @@ def store(key: str) -> Instrument:
                                                   RACK["h"] + 30).cut(box(hx - 20, (y0 + y1) / 2 - 9, RACK["h"],
                                                                           hx + 20, (y0 + y1) / 2 + 9,
                                                                           RACK["h"] + 20)), "r7_frame")
-    # the jars: bodies (HDPE for feedstock, amber glass for lots), a white label round each, lids by content,
-    # and a dark ID strip printed on each label (the P-touch label of DAL #157)
-    body_c = (0.90, 0.90, 0.87) if feed else (0.55, 0.33, 0.12)
+    # round 9 (Sterling: "Keep them all a normal black lid with transparent glass"): every jar is props.py's lab-wide
+    # jar, clear glass with a black cap, a white label and the powder showing. What a clip points out is a tint on just
+    # those jars (a see-through sleeve in the "jar tint" piece), shown with a legend for a few seconds, then faded back.
     by_size: dict[str, list] = {}
     for s in seats:
         by_size.setdefault(s["size"], []).append(s)
     inst.meshes["body"] = []
-    lids: dict[tuple, list] = {}
+    tints: dict[tuple, list] = {}
     for size, ss in by_size.items():
         d, h, lid, _ = JARS[size]
-        r = d / 2
-        pts = [(s["x"], s["y"], s["z"]) for s in ss]
-        inst.meshes["body"].append((_merged(_cyl_mesh(r, h, 0.0), pts), body_c, 1.0))
-        lab_h = h * 0.55
-        inst.meshes["body"].append((_merged(_cyl_mesh(r + 0.6, lab_h, h * 0.18), pts), (0.97, 0.97, 0.95), 1.0))
-        strip = pv.Box(bounds=(-r * 0.55, r * 0.55, -r - 1.2, -r - 0.7, h * 0.30, h * 0.30 + lab_h * 0.35)).triangulate()
-        inst.meshes["body"].append((_merged(strip, pts), (0.08, 0.08, 0.09), 1.0))
+        for part, (m, rgb, op) in props.jar_parts(d, h, lid).items():
+            inst.meshes["body"].append((_merged(m, [(s["x"], s["y"], s["z"]) for s in ss]), rgb, op))
         for s in ss:
-            lids.setdefault((size, tuple(s["lid"])), []).append((s["x"], s["y"], s["z"]))
-    for (size, col), pts in lids.items():
-        d, h, lid, _ = JARS[size]
-        inst.meshes["body"].append((_merged(_cyl_mesh(d / 2 + 1.0, lid, h), pts), col, 1.0))
+            t = _tint_of(key, s)
+            if t:
+                tints.setdefault((size, t), []).append((s["x"], s["y"], s["z"]))
+    _piece(inst, "jar tint").add("tint anchor", box(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5), "r8_rack")   # hidden, 1 mm
+    inst.meshes["jar tint"] = [(_merged(props.tint_sleeve(*JARS[size][:2]), pts), props.TINT[t], props.TINT_OPACITY)
+                               for (size, t), pts in tints.items()]
+    inst.joints["jar tint"] = Joint("fade")
     n = len(seats)
     sizes = ", ".join(f"{len(v)} x {k}" for k, v in by_size.items())
     if feed:
         inst.actions = [
             (f"Tray N, the feedstock: {n} labelled jars ({sizes}) in racks of white HDPE, one rack per size.", 3.0, {}),
             ("DAL's elements and master alloys (DAL #146: Al, Si, Mg, Cu, Mn, Cr, Zr, Ti, Fe, Ni, Ce, Sc, Er, Zn, Sn, "
-             "Li as Al-Li), lids coloured by element; 100 g goes into each atomizer run.", 3.4, {}),
+             "Li as Al-Li), each in clear glass with a black cap; 100 g goes into each atomizer run.", 3.4, {}),
+            ("Tinted for now (legend, top right): the master alloys and the two elements of Al 4047.", 1.8,
+             {"jar tint": (0.0, 1.0)}),
+            ("The tint is only a highlight, held for a few seconds...", 2.2, {"jar tint": (1.0, 1.0)}),
+            ("...then it fades back: every jar is the same clear glass with a black cap.", 1.8,
+             {"jar tint": (1.0, 0.0)}),
             ("Rows stand 20 mm apart front to back, room for the gripper's fingers; the arm takes a jar from above.",
              3.0, {}),
             ("Each rack lifts out whole by its handles. The tray's right end keeps its UPS, dock and cameras.", 2.6, {}),
         ]
-        inst.zoom = {1: ((-500.0, -250.0, 60.0), 900.0), 2: ((300.0, -150.0, 60.0), 700.0), 3: "out"}
+        inst.zoom = {1: ((-500.0, -250.0, 60.0), 900.0), 5: ((300.0, -150.0, 60.0), 700.0), 6: "out"}
         inst.labels = [("60 mL", (-700, -330, 70), (0.10, 0.82)), ("125 mL", (-300, -190, 95), (0.30, 0.86)),
                        ("250 mL", (100, -20, 110), (0.55, 0.86)), ("500 mL", (500, 170, 175), (0.82, 0.80))]
     else:
@@ -226,11 +246,15 @@ def store(key: str) -> Instrument:
              "jz31op, 8rthq2, c3k0n5, ...).", 3.4, {}),
             ("Each run's sieve fractions go in jars of their own: < 63 um for LPBF, 63-106, 106-150, 150-250 and "
              "> 250 um.", 3.2, {}),
-            ("Amber glass, a white label with the run and fraction, lids coloured by alloy.", 2.8, {}),
+            ("Clear glass, a black cap, a white label with the run and fraction.", 2.4, {}),
+            ("Tinted for now (legend, top right): the < 63 um LPBF cut, and the other cuts of run jz31op.", 1.8,
+             {"jar tint": (0.0, 1.0)}),
+            ("Only a highlight, held for a few seconds...", 2.0, {"jar tint": (1.0, 1.0)}),
+            ("...then back to plain glass and black caps.", 1.8, {"jar tint": (1.0, 0.0)}),
             ("The arm picks by seat: out/powder_store.json lists every jar, what is in it and whether the arm reaches "
              "it.", 3.0, {}),
         ]
-        inst.zoom = {1: ((-600.0, -300.0, 50.0), 800.0), 2: ((200.0, -120.0, 60.0), 650.0), 3: "out"}
+        inst.zoom = {1: ((-600.0, -300.0, 50.0), 800.0), 2: ((200.0, -120.0, 60.0), 650.0), 6: "out"}
         inst.labels = [("30 mL: c3k0n5 < 63 um", (seats[6]["x"], seats[6]["y"] - 20, 60), (0.10, 0.80)),
                        ("60 mL", (0, -60, 75), (0.45, 0.86)), ("125 mL", (400, 230, 95), (0.80, 0.80))]
     inst.cam = (0.25, -1.5, 0.80)          # low enough to see the labels on the jars' sides
@@ -279,6 +303,10 @@ def fumehood_tray() -> Instrument:
                         "vapours; the etch goes to the ducted hood, and nothing in the lab uses HF.", last[1], last[2])
     return inst
 
+
+for _k, _items in TINT_LEGEND.items():
+    R7.PLOTS[f"instruments/{_k}"] = props.piece_legend(
+        _k, {"jar tint": ("Tinted for now", [(props.TINT[c], t) for c, t in _items])})
 
 REGISTRY = {"powder_store_feed": powder_store_feed, "powder_store_lots": powder_store_lots,
             "fumehood": fumehood, "fumehood_tray": fumehood_tray}

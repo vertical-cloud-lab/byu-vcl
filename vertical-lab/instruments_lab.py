@@ -44,7 +44,9 @@ MATERIALS = {
     "lab_ptfe": (0.55, 0.38, 0.22, 1.0, 0.3),           # PTFE tape over a sealer's element
     "lab_kraft": (0.74, 0.58, 0.40, 1.0, 0.1),          # corrugated board
     "lab_foam": (0.22, 0.23, 0.24, 1.0, 0.05),          # charcoal polyurethane foam
-    "lab_hdpe": (0.93, 0.93, 0.90, 0.80, 0.3),          # a milky HDPE jar
+    "lab_hdpe": (0.93, 0.93, 0.90, 0.80, 0.3),          # a milky HDPE jar (round 8; the packaging station's jar is now glass)
+    "lab_jarglass": (0.76, 0.83, 0.90, 0.35, 0.1),      # round 9: the lab-wide powder jar, clear glass (props.JAR_GLASS)
+    "lab_jarcap": (0.07, 0.07, 0.08, 1.0, 0.5),         # and its matte black cap (props.JAR_LID)
     "lab_label": (0.98, 0.98, 0.97, 1.0, 0.2),
     "lab_bag": (0.86, 0.89, 0.92, 0.38, 0.7),           # a clear polyethylene liner bag
     "lab_over": (0.92, 0.16, 0.12, 0.42, 0.2),          # what doesn't fit, highlighted
@@ -1210,7 +1212,7 @@ def packaging() -> Instrument:
         (2000.0, 508.0, 226.0),
         "Primera AP380 (340 x 508 x 226 mm) and LX500c (264 x 389 x 180 mm) pages; Zebra ZD621 spec sheet (ZD621t "
         "202 x 267 x 192 mm); Uline H-190 (452 x 84 x 188 mm), S-23611 foam shipper, S-6802 4 x 6 in labels; "
-        "Nalgene 2104-0008 250 mL jar (61 x 131 mm). Looks from the makers' photos; fixtures drawn here",
+        "250 mL wide-mouth jar, clear glass, black cap (the lab-wide jar, props.py), sized as the Nalgene 2104-0008 (61 x 131 mm). Looks from the makers' photos; fixtures drawn here",
         props=("jarpos", "jartilt", "jar", "jarlabel", "bag", "inset_jar", "inset_ship"))
     body = _piece(inst, "body")
     # ---- AP380: black side plates on splayed feet, a cradle of chrome rollers, a pressure arm, the label roll at the
@@ -1304,15 +1306,15 @@ def packaging() -> Instrument:
         cyl(64, 30, x=nx - 40, y=yf + 140, z=10)).cut(cyl(64, 30, x=nx + 40, y=yf + 140, z=10)), "pla_white")
     j = P["jar"]
     jx, jy, jz = nx + 40, yf + 140, 10.0                  # the jar is modelled standing in the nest's right seat
-    body.add("next jar", cyl(j["d"], j["h"] - j["cap_h"], x=nx - 40, y=jy, z=jz), "lab_hdpe")
-    body.add("next jar cap", cyl(j["cap_d"], j["cap_h"], x=nx - 40, y=jy, z=jz + j["h"] - j["cap_h"]), "pla_white")
+    body.add("next jar", cyl(j["d"], j["h"] - j["cap_h"], x=nx - 40, y=jy, z=jz), "lab_jarglass")
+    body.add("next jar cap", cyl(j["cap_d"], j["cap_h"], x=nx - 40, y=jy, z=jz + j["h"] - j["cap_h"]), "lab_jarcap")
     body.add("next jar powder", cyl(j["d"] - 4, 70, x=nx - 40, y=jy, z=jz + 3), "powder")
     _piece(inst, "jarpos")
     _piece(inst, "jartilt")
     jar = _piece(inst, "jar")
     jar.add("jar", cyl(j["d"], j["h"] - j["cap_h"], x=jx, y=jy, z=jz).cut(
-        cyl(j["d"] - 4, j["h"], x=jx, y=jy, z=jz + 2)), "lab_hdpe")
-    jar.add("jar cap", cyl(j["cap_d"], j["cap_h"], x=jx, y=jy, z=jz + j["h"] - j["cap_h"]), "pla_white")
+        cyl(j["d"] - 4, j["h"], x=jx, y=jy, z=jz + 2)), "lab_jarglass")
+    jar.add("jar cap", cyl(j["cap_d"], j["cap_h"], x=jx, y=jy, z=jz + j["h"] - j["cap_h"]), "lab_jarcap")
     jar.add("powder", cyl(j["d"] - 4.5, 70, x=jx, y=jy, z=jz + 2.5), "powder")
     lab = _piece(inst, "jarlabel")
     lab.add("jar label", tube(j["d"] + 1.2, j["d"] - 0.5, 60, x=jx, y=jy, z=jz + 25), "lab_label")
