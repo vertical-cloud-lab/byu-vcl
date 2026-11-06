@@ -1,16 +1,18 @@
 ## The alloy route, chapter 2: atomize (`alloy_atomize.py`)
 
-The MiR250 brings the four charged 5N Al cups from the VLM to the rePowder. The UR10e opens the lid, swings the
-sealing rod's lever up, loads the cups round the rod, lowers the lever and shuts the lid. The machine, cut open at the furnace axis, washes, melts and atomizes the
-charge. The arm then takes the powder container off onto the MiR. Clips and photos of the lab's own runs are cut in
+MiR250 1 brings the four charged 5N Al cups from the VLM to the rePowder, and MiR250 2 comes from the aisle for the
+lid (round 9). Arm 2 holds the lid down while arm 1 undoes the latch; arm 1 opens the lid, swings the sealing rod's lever
+up, loads the cups round the rod, lowers the lever and shuts the lid; arm 2 holds it down again while arm 1 closes the
+latch. The machine, cut open at the furnace axis, washes, melts and atomizes the
+charge. Arm 1 then takes the powder container off onto its MiR. Clips and photos of the lab's own runs are cut in
 where the animation reaches the same moment: the charge, the melt, the pour onto the plate and the powder as it comes out,
 not yet sieved (the sieved jars are chapter 3's since round 8).
 
 | | |
 |---|---|
 | Clip | 197.4 s at 10 fps (round 6), 35.1 s of it the lab's own footage, the melt at 2×; [GIF](../out/alloy_atomize.gif) (560 × 315, 4 fps, 5.8 MB: over the 4.9 MB budget), [MP4](../out/mp4/alloy_atomize.mp4), [still](../out/alloy_atomize_still.png), sub-steps in [`alloy_atomize.json`](../out/alloy_atomize.json), powder sums in [`alloy_atomize_powder.json`](../out/alloy_atomize_powder.json) |
-| Starts | MiR250 at the VLM's opening (`animate.AMR_XY`), the four Al cups in `charge.carrier()`'s four pockets at `animate.BUFFER_LOCAL` on the cabinet: where chapter 1 ends |
-| Ends | MiR250 at world (−3487, −2230), yaw 0: square to the container's axis, 41 mm off the view port's flange, the hand-off chapter 3 (sieve, print) starts from. The container stands in a cradle at MiR-local (280, 10), a low ring on the cabinet top, seat z = 783 mm (round 6; it was 933 on a post); the loading tong hangs in its sleeve on the cabinet's −x end; the arm is parked. While the arm works the MiR stands further out: 220 mm (y = −2450) for the lid and the cups, because at y = −2230 the lid knob falls inside the UR10e's unreachable cylinder over its base; 420 mm (y = −2650) for the container, because closer the forearm comes down through the MiR's own cabinet to the handle, 275 mm off the floor. It drives onto the hand-off spot at the end |
+| Starts | MiR250 1 at the VLM's opening (`animate.AMR_XY`), the four Al cups in `charge.carrier()`'s four pockets at `animate.BUFFER_LOCAL` on the cabinet: where chapter 1 ends. MiR250 2 waits in the aisle at (−5275, −2450) (round 9) |
+| Ends | MiR250 at world (−3487, −2230), yaw 0: square to the container's axis, 41 mm off the view port's flange, the hand-off chapter 3 (sieve, print) starts from. The container stands in a cradle at MiR-local (280, 10), a low ring on the cabinet top, seat z = 783 mm (round 6; it was 933 on a post); the loading tong hangs in its sleeve on the cabinet's −x end; the arm is parked. While the arm works the MiR stands further out: 220 mm (y = −2450) for the lid and the cups, because at y = −2230 the lid knob falls inside the UR10e's unreachable cylinder over its base; 420 mm (y = −2650) for the container, because closer the forearm comes down through the MiR's own cabinet to the handle, 275 mm off the floor. It drives onto the hand-off spot at the end. MiR250 2 is back in the aisle at (−5275, −2450), its arm parked (round 9) |
 | Scene | `line.py`'s layout as `alloy_workflow.py` builds it, the rePowder loaded part by part from `repowder/model.py` (the merged copy `animate.Lab` adds is hidden) |
 | Ported | `Pool`, `Powder`, `Particles`, `stream`, `film`, `shake`, the heat colours, the argon volumes, `load_machine`/`set_cut`: #124's rePowder training animations (`atomizer-training/viz3d/steps.py` and `scene.py`, branch `claude/issue-124-20261003-0335`) |
 | Footage | [`out/footage/`](../out/footage/): the excerpts and photos used, small, with a [manifest](../out/footage/manifest.json) of credits |
@@ -21,6 +23,115 @@ python3 alloy_atomize.py splice             # only cut the footage into the last
 python3 alloy_atomize.py keep               # copy the excerpts PLAN uses from /tmp/footage (FOOTAGE=...) to out/footage/
 python3 alloy_atomize.py powder             # print the powder sums
 ```
+
+### Round 9 (PR #318, 2026-11-06): two units for the lid, ballasted bases
+
+Sterling's review of 2026-11-05 22:56 UTC, verbatim:
+
+> You're probably going to need both mobile robots (i.e., both arms) to be able to do the chamber opening and such on
+> the atomizer, and the mobile bases will need to be heavy enough (and the center of gravity low enough) to enable
+> those kinds of workflows.
+
+> What's with the technicolor jars? Keep them all a normal black lid with transparent glass, but if you want to point
+> out something that's unique about them, use a legend and a color change that then reverts once the legend has been
+> shown for a bit of time.
+
+| What | Round 8 | Round 9 |
+| --- | --- | --- |
+| Who opens the lid | one arm: the latch, then the lid by its knob; after the cups, the lid shut, then the latch | **two MiR250 + UR10e units.** MiR250 2 drives in from the aisle (`B_HOME`, x = −5275) and stands left of MiR250 1, 100 mm between their bodies and 200 mm nearer the machine, its body 60 mm off the chamber's front (`B_AT`). **Opening:** arm 2 presses down on the lid's top while arm 1 pulls the latch's lever over centre, so the lid can't jump when the loop lets go; arm 2 then lets go and parks, and arm 1 swings the lid up by its knob and loads the cups. **Closing:** arm 1 swings the lid down; arm 2 comes back and holds it on its seal while arm 1 swings the lever back over centre. Both units then back off, MiR250 2 to the aisle, where it stays |
+| Ballast | 95 kg, 724 × 524 × 32 mm, flush with the cabinet (a dark band at its foot), on the one MiR250 | **131 kg on each MiR250**: 760 × 550 × 40 mm of steel on the MiR250's deck under the cabinet, proud of the cabinet all round, with a yellow edge, labelled as the two units arrive (`BALLAST`, `ballast_meshes`). Ours, not a product: it doubles as the top module's base plate |
+| Gauges | Arm, MiR250 | Arm 1, MiR250 1, Arm 2, MiR250 2 |
+| Jars | none in the 3-D chapter | none: the powder goes into the rePowder's own steel container. The two jar photos cut in (`PLAN`, "powder") are the lab's own and stay as they are |
+
+This is how the lab's own training video does it with two hands: at T4 [5:23](https://youtu.be/1F9_4ccwhss?t=323)
+([frame](../refs/repowder_lid/t4_0523_closing.jpg)) one hand presses the lid down while the other works the latch.
+
+**Where arm 2 presses, and why the tool leans.** On the lid's flat top at model (−25, −15), 139 mm from the hinge
+(`PRESS_AT`), the 2F-85 shut so its fingertips make one blunt pusher, the lowest of them 0.8 mm over the top
+(`press_pose`, `gripper_low`). Straight down, the approach pose 120 mm over it was out of the UR10e's reach from
+MiR250 2's spot: the flange would be 1,004 mm over the arm's base and 884 mm out (`ur_arm.ik`). A scan of the UR10e's
+reach for a press at that height: straight down, at most 950-1,010 mm out; leaning 20° away from the base, 1,090-1,140;
+35°, 1,190-1,240. So the tool leans 25° away from the arm's base (`PRESS_TILT`); the press then pushes 0.42 of its force
+sideways, which the hinge and the seat take. The press point is 190 mm from arm 1's tool axis at the tab, and arm 1's IK
+branch at the tab (`arc_branch`) is picked with arm 2 already on the lid, so the two wrists stay apart.
+
+**What the press does, and what it doesn't.** 100 N (`PRESS_F`, an estimate: under the 111 N that the UR10e's
+12.5 kg rated payload, less the 1.2 kg gripper, would weigh). It keeps the lid from jumping when the loop lets go, and
+holds it on its seal while arm 1 hooks the loop over the keeper's lip. It does not take the latch's preload: that is
+about half the seal's 1-2.8 kN (round 6, below), far past what any arm can press, which is why the latch is over-centre
+at all. So arm 1's pull is still round 6's estimate: 100 N, 200 N for a stiff latch.
+
+**Why arm 2 doesn't swing the lid.** The lid hinges on the left (the model's hinge; see "Still open"), so it opens
+towards MiR250 2. Held by arm 2 at the knob, the open lid meets arm 2's forearm from 95° up, with either elbow (FCL on
+the meshes: elbow up, the forearm is in the lid from 95° to 110°; elbow down, it starts in the chamber's top plate), and
+the first audit-lite caught it (below). Arm 2 can't stand anywhere else: right of MiR250 1, the latch is 1.28 m from
+its shoulder, at the UR10e's limit, and MiR250 1 has to stand where it is for the cups. So arm 1 swings the lid both
+ways, as in round 8, and the second pair of hands goes where the force is: on the lid while the latch is worked.
+
+**The lid's weight**, as arm 1 starts to swing it: the model's lid is 810 cm³ of 5 mm steel, 6.4 kg, with its centre of
+mass 166 mm from the hinge (`repowder/model.py` meshes, summed here). A real one is lined, so call it 10 kg (`LID_KG`,
+estimate). On the knob, 281 mm from the hinge: 58 N (`LID_KNOB_N`). One arm lifts that easily; it is the press and the
+latch that want two.
+
+#### Will either base tip or slide? (round 9's sums)
+
+`stability()` at the poses the chapter uses (method and sources as round 6's, below); the numbers are in
+[`alloy_atomize_stability.json`](../out/alloy_atomize_stability.json).
+
+| Unit, load | Load | Tips at, with the plate / without | Slides at, with / without | Margin with the plate (tip, slide) | Without |
+| --- | --- | --- | --- | --- | --- |
+| MiR250 1, arm 1 pulls the latch open | 100 N expected, 200 N stiff | 829 / 466 N | 891 / 505 N | 8.3×, 8.9× (stiff: 4.1×, 4.5×) | 4.7×, 5.1× (2.3×, 2.5×) |
+| MiR250 1, arm 1 pushes the latch shut | the same | 846 / 483 N | 891 / 505 N | 8.5×, 8.9× (4.2×, 4.5×) | 4.8×, 5.1× (2.4×, 2.5×) |
+| MiR250 2, arm 2 presses the lid down | 100 N (estimate) | 648 / 377 N | 2,087 / 1,173 N | 6.5×, 21× | 3.8×, 12× |
+| MiR250 1, arm 1 holds the lid by its knob | 58 N (estimate) | 1,100 / 525 N | (straight down) | 19× | 9.1× |
+
+With the plate MiR250 1 weighs 302.8 kg, its centre of gravity 389 mm up at the latch pose (171.5 kg and 442 mm
+without; round 6-8's 95 kg plate made it 267 kg and 397 mm); MiR250 2 weighs 299.8 kg, 389 mm up (168.5 kg, 443 mm).
+Arm 2's press tips MiR250 2 backwards, about its far edge: the tool leans, so the lid pushes the arm up and back. It is
+the weakest case, and the one only the second unit has.
+
+- **Masses.** MiR250 97 kg ([2023 spec sheet](https://www.hartfiel.com/wp-content/uploads/2024/04/MiR250-Specs.pdf)),
+  UR10e 33.3 kg and its control box 12 kg ([datasheet](https://www.universal-robots.com/manuals/latest/en/datasheets/ur10e/)),
+  the arm's links by UR's published link masses at the pose; the cabinet (25 kg), the gripper with its camera (1.2 kg)
+  and the carrier, cups, tong and cradle on MiR250 1 (3 kg) are estimates, as before. The plate: 7.85 g/cm³ × 760 ×
+  550 × 40 mm = 131 kg (ours).
+- **Payload.** MiR250 1 carries 205.8 kg on its deck (cabinet, control box, arm, gripper, carrier and cups, plate),
+  MiR250 2 202.8 kg: both under the MiR250's 250 kg (spec sheet). A 50 mm plate (164 kg) would still fit; 40 mm
+  leaves 44 kg for what a chapter puts on the cabinet.
+- **Support and floor.** The casters at ±325 × ±225 mm (estimate: MiR doesn't publish them), half the weight on the
+  drive wheels (estimate), μ = 0.6, the low end of the 0.6-0.8 MiR's user guide asks of a floor (§16).
+- **The loads.** The latch: 100 N expected, 200 N stiff ([Kipp K0080](https://www.marek.eu/data/katalogove-listy/kipp/K0080.pdf)'s
+  hand force for cover latches of 2-7 kN, round 6). Arm 2's press: 100 N (estimate, above). The lid: 58 N on the knob
+  (estimate, above).
+- **What the plate buys.** It adds 131 kg about 320 mm off the floor and brings each unit's centre of gravity down by 53 mm, so every margin goes up 1.7-2.1 times. Even without it, every load here is held 2.3 times over, a stiff latch included: the plate is margin for what the estimates may have missed (a stiffer latch, a lid that sticks to its seal, a slippery floor), not a fix for a base that would tip.
+
+#### Two arms, checked for collisions
+
+- **Each arm against the other.** `collide.Checker` leaves out only its own arm's groups (and what it holds), so the
+  other arm, its MiR250 and its plate are obstacles like the rePowder: every joint move of either arm is planned
+  against the other arm where it stands, every IK branch picked (`arc_branch`, `joint_to`'s branch choice) is checked
+  against it, and `ARM_AUDIT` checks both arms, every frame (`sc.robots`). The planner moves one arm at a time, so the
+  chapter does too wherever the two are near each other: arm 2 is on the lid or parked whenever arm 1 moves at the lid,
+  and the other way round; the two only move at once when they are metres apart (the drives).
+- **Found on the way.** Arm 2 backing off the knob at the top of the swing along its fingers (as arm 1 does) folded its
+  forearm into its own wrist 3 and gripper: the planner reported the pose in self-collision. Lifting straight up
+  instead, its forearm was in the open lid: the first audit-lite (rePowder and both units only, `ATOMIZE_LITE=1`,
+  2026-11-06 05:33) found 13 of 920 frames, all of them arm 2's forearm in the lid, at the top of the swing and on the
+  moves through it. So arm 1 swings the lid (above), and arm 2 only ever presses.
+- **The audit.** Pending: the render's own audit (`ARM_AUDIT_RENDER=1`, the whole floor) runs as this is written.
+
+#### Still open
+
+- **Does the real lid jump?** Whether the lid springs up when the latch lets go, and how hard (the seal's rebound), is
+  not known; a hand on it is the safe assumption, and the reason for arm 2's press. A spring scale on the lever, and one
+  under the lid's edge, would settle both.
+- **The floor in front of the rePowder.** The two units stand side by side over 1.7 m of the machine's front
+  (x = −4935 to −3225), MiR250 2's body 60 mm off the chamber's front. Check the room on the real floor.
+- **The container's flange clamp still opens on its own** (step 5). With two arms, arm 2 could open its wing screw while
+  arm 1 holds the container by its handle, so the container can't drop when the clamp lets go. Not done.
+- **The hinge** is still the model's (on the left; round 6 thinks the footage puts it at the back). The repowder-pr
+  stream is refining the model against the training videos on its own branch; this chapter uses `repowder/model.py` as
+  it is here.
 
 ### Round 8 (PR #318, 2026-11-05): the MS&T stream, the unsieved powder, two Shuttles
 
