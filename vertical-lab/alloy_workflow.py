@@ -1928,4 +1928,6 @@ if __name__ == "__main__":
     if not PREVIEW and not scene.AUDIT:
         mp4 = OUT / "mp4" / f"{NAME}.mp4"
         if mp4.exists():
-            print(line.mp4_to_gif(mp4, OUT / f"{NAME}.gif", fps=5, width=640, lossy=90), flush=True)
+            # round 9: 380 px at 2 fps, gifsicle --lossy=130: 4.7 MB for the 385 s chapter (under the 4.9 MB cap);
+            # 640 px at 5 fps came out at 24.7 MB and took minutes in gifsicle
+            print(line.mp4_to_gif(mp4, OUT / f"{NAME}.gif", fps=2, width=380, lossy=130), flush=True)
