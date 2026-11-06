@@ -210,6 +210,7 @@ class Scene:
             else:
                 self.mp4 = encoder(self.mp4_path, size, crf=16 if CLEAN else 21)
         self.gif = gif
+        self.text_scale = 1.0     # the overlay's text against its 720p sizes (org_gif.py: the README shows it small)
         self.intro = 1.0          # seconds of establishing view before the first sub-step's motion
         self.robots: list = []    # robot.Robot instances in the scene (they register themselves)
         self.frame_hooks: list = []   # f(scene) after every frame's update, before it is drawn
@@ -393,7 +394,7 @@ class Scene:
         base = self.render_base()
         anchors = [self.project(xyz) for _, xyz, _, _ in self.labels]
         # HD: the text keeps the share of the frame it has at 1280 x 720
-        hi = self.overlay(Image.fromarray(base), size_scale(self.size) if HD else 1.0, anchors)
+        hi = self.overlay(Image.fromarray(base), (size_scale(self.size) if HD else 1.0) * self.text_scale, anchors)
         if self.want_still:
             self.still = (self.n, np.asarray(hi).copy())
             self.want_still = False
@@ -409,7 +410,7 @@ class Scene:
             if self.gif and math.floor(math.ceil(k * GIF_FPS / FPS) * FPS / GIF_FPS) == k:
                 if lo is None:
                     small = Image.fromarray(base).resize(GIF_SIZE, Image.LANCZOS)
-                    lo = self.overlay(small, GIF_SIZE[0] / self.size[0], anchors).convert("RGB")
+                    lo = self.overlay(small, GIF_SIZE[0] / self.size[0] * self.text_scale, anchors).convert("RGB")
                 self.gif_frames.append(lo)
         self.n += n
         return hi
