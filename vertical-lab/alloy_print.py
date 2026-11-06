@@ -55,6 +55,9 @@ TITLE = "Vertical cloud lab: from the atomizer's powder to the printed plate"
 BENCH = dict(x=-1982.5, w=1065.0, d=600.0, h=700.0)     # a lab bench between the rePowder and the VLM (assumed)
 SIEVE_DX = 11.5                                         # the shaker's centre, from the bench's
 TIPPER_DX = -367.5                                      # the tipper's, left of the shaker (sieve_station.py)
+WASH_DX = -790.0                                        # round 9: the wash module's sieve axis, left of the tipper, on a
+                                                        # 450 mm extension of the bench (sieve_station.wash_parts)
+BENCH_EXT = 450.0
 STAND_DX = 359.5                                        # the Al set's stand, right of the shaker
 GRIP_TAB = 0.88                                         # a sieve's 12 mm handling tab, as the plate's 12 mm lug
 GRIP_PAN = 0.69                                         # the pan's tab, held by its sides, 28 mm across (see GR)
@@ -157,7 +160,7 @@ def jar_pocket_mesh():
 
 def bench_mesh():
     b = BENCH
-    x0, x1 = b["x"] - b["w"] / 2, b["x"] + b["w"] / 2
+    x0, x1 = b["x"] - b["w"] / 2 - BENCH_EXT, b["x"] + b["w"] / 2
     y0, y1 = line.Y_FACE, line.Y_FACE + b["d"]
     top = pv.Box(bounds=(x0, x1, y0, y1, b["h"] - 30, b["h"])).triangulate()
     legs = None
@@ -205,9 +208,28 @@ def build_cell(sc, sv):
         sc.parent[pg] = g
         sc.gmat[pg] = T((0, 0, 3.5)) @ S((1, 1, 0.01))
         sc.alpha[pn] = 0.0
+        sleeve = f"{g}/tint"                                  # round 9: a see-through sleeve, drawn only for the legend
+        sc.add(sleeve, P.tint_sleeve(2 * SS.TIP["jar_r"], SS.TIP["jar_h"]), P.TINT["amber"], g, specular=0.1)
+        sc.alpha[sleeve] = 0.0
         sc.parent[g] = "tip_table"
         x, y = SS.jar_xy(j)
         sc.gmat[g] = T((x, y, 22.0))
+    # the wash module on the bench extension, left of the tipper: the tank and its hood, the basket (a lift along the
+    # mast), the knife, the IPA
+    sc.gmat["wash"] = T((b["x"] + WASH_DX, y_c, zb))
+    wn = {}
+    for piece, parts in SS.wash_parts().items():
+        g = "wash" if piece == "body" else f"wash_{piece}"
+        for name, (mesh, col, spec, op) in parts.items():
+            sc.add(f"wash/{piece}/{name}", mesh, col, g, opacity=op, specular=spec)
+            wn.setdefault(piece, []).append(f"wash/{piece}/{name}")
+    for g in ("wash_basket", "wash_knife", "wash_air", "wash_liquid"):
+        sc.parent[g] = "wash"
+    sc.gmat["wash_basket"] = T((0, 0, SS.WASH["z_top"]))
+    sc.gmat["wash_knife"] = T((0, SS.WASH["y1"] - 12.0, SS.WASH["z_top"]))
+    sc.parent["wash_air"] = "wash_knife"
+    sc.alpha["wash/air/jets"] = 0.0
+    sc.alpha["wash/liquid/ipa"] = 0.32
     # the stand and the Al set on it, nested No. 60 at the bottom, the pan on top
     sc.gmat["stand"] = T((b["x"] + STAND_DX, y_c, zb))
     for name, (mesh, col, spec, op) in SS.stand_parts().items():
@@ -837,6 +859,84 @@ def movie():
         sc.step(lab_, cap, 1.0 * k, back, hold=0.02)
         sc.step(lab_, cap, 0.3 * k, clamp(1.0, 0.0), hold=0.02)
 
+    # ---- round 9: cleaning the sieve without a person (sieve_station.wash_parts): vibrate it over the funnel, an
+    # ultrasonic IPA bath, a warm-air knife, back on the stand. Drawn for the No. 325, the finest cloth.
+    W_ = SS.WASH
+    wash_w = sc.world("wash")[:3, 3]
+    CAM_WASH = [tuple(wash_w + (-300, -1250, 820)), tuple(wash_w + (90, 20, 250)), (0, 0, 1)]
+    x_wb = sc.world("tipper")[0, 3] / 2 + wash_w[0] / 2 + 60.0       # the MiR between the tipper and the wash module
+    seat_up = T((0, 0, 0))
+    basket_at = lambda z: T((0, 0, z))                                # noqa: E731
+
+    def clean(key, k=1.0):
+        pg = "bottle_pow"
+        cap = "Cleaning, with no person: the sieve is turned over the funnel again and a vibrator shakes the powder " \
+              "out of the cloth, the work a Solukon-style depowdering module does for a plate (here a small one)."
+        status(sc, Sieve=f"{LABEL[key]}: depowdering", Arm="waiting")
+        zc_ = SS.TIP["zc"]
+
+        def over(u):
+            sc.gmat["tip_cradle"] = R((1, 0, 0), 180.0 * u, (0.0, 0.0, zc_))
+
+        def shake(u):
+            sc.gmat["tip_cradle"] = R((1, 0, 0), 180.0, (0.0, 0.0, zc_)) @ T(
+                (0, 0, 1.4 * math.sin(2 * math.pi * 14.0 * u) * min(1.0, 4 * u, 4 * (1 - u))))
+            sc.gmat["tip_knocker"] = T((-2.0 * abs(math.sin(math.pi * u * 8.0)), 0, 0))
+        sc.step(f"3/{n}", cap, 0.35 * k, lambda u: sc.gmat.__setitem__("tip_clamps", S((1 - 4.0 / 113.0 * u,) * 2 + (1.0,))),
+                hold=0.02)
+        sc.step(f"3/{n}", cap, 1.3 * k, over, hold=0.02, live=False)
+        sc.step(f"3/{n}", cap, 3.0 * k, shake, hold=0.02)
+        sc.gmat["tip_knocker"] = np.eye(4)
+        sc.step(f"3/{n}", cap, 1.0 * k, lambda u: sc.gmat.__setitem__("tip_cradle", R((1, 0, 0), 180.0 * (1 - u),
+                                                                                       (0.0, 0.0, zc_))), hold=0.02)
+        sc.step(f"3/{n}", cap, 0.3 * k, lambda u: sc.gmat.__setitem__("tip_clamps", S((1 - 4.0 / 113.0 * (1 - u),) * 2
+                                                                                       + (1.0,))), hold=0.02)
+        # to the wash module: the sieve waits in the cradle while the arm parks and the MiR rolls along the bench
+        cap = "The arm parks and the MiR250 rolls 0.6 m left along the bench, to the wash module's side of the " \
+              "tipper. The sieve waits in the cradle."
+        status(sc, Arm="driving to the wash module", Sieve=f"{LABEL[key]}: in the tipper")
+        sc.step(f"3/{n}", cap, 1.2, rb.joint_to(PARK), hold=0.05, cam_to=CAM_WASH)
+        sc.step(f"3/{n}", cap, mo.secs(x_wb, y_sv), mo.drive(x_wb, y_sv), hold=0.05)
+        sc.gmat["wash_basket"] = basket_at(W_["z_top"])
+        cap = "The arm takes the sieve by its tab and sets it on the basket ring, in the lift's top position, over the " \
+              "ultrasonic tank."
+        status(sc, Arm="to the ultrasonic bath", Sieve=f"{LABEL[key]}: to the basket")
+        transfer(f"3/{n}", cap, key, "wash_basket", seat_up, k=k, lift0=58.0, out0=200.0, lift1=58.0, in1=200.0)
+        sc.step(f"3/{n}", cap, 1.0, rb.joint_to(PARK), hold=0.05)
+        cap = "The lift lowers the basket into the tank: isopropanol in a water-jacketed ultrasonic bath, the cloth " \
+              "covered. Three to five minutes at room temperature, at most 150 W (Retsch, Advantech via DAL #234); " \
+              "shown sped up. Nothing else touches the cloth."
+        status(sc, Sieve=f"{LABEL[key]}: ultrasonic IPA bath", Arm="parked")
+        sc.step(f"3/{n}", cap, 1.6, lambda u: sc.gmat.__setitem__(
+            "wash_basket", basket_at(W_["z_top"] + (W_["z_bot"] - W_["z_top"]) * u * u * (3 - 2 * u))), hold=0.05)
+
+        def sonic(u):
+            sc.gmat["wash_basket"] = basket_at(W_["z_bot"] + 0.5 * math.sin(2 * math.pi * 30.0 * u))
+            sc.alpha["wash/liquid/ipa"] = 0.32 + 0.08 * math.sin(2 * math.pi * 12.0 * u)
+        sc.step(f"3/{n}", cap, 4.0, sonic, hold=0.05)
+        sc.alpha["wash/liquid/ipa"] = 0.32
+        cap = "Out of the bath and into the warm-air knife: a slot nozzle above and one below travel along the cloth " \
+              "with air no warmer than 60 C (Retsch: dry below 80 C, standing, never above). No compressed-air jet " \
+              "on bare cloth by hand; the knife is a fixed slot at low pressure."
+        status(sc, Sieve=f"{LABEL[key]}: warm-air knife")
+        sc.step(f"3/{n}", cap, 1.6, lambda u: sc.gmat.__setitem__(
+            "wash_basket", basket_at(W_["z_bot"] + (W_["z_top"] - W_["z_bot"]) * u * u * (3 - 2 * u))), hold=0.05)
+
+        def knife(u):
+            y = W_["y1"] - 12.0 - (W_["y1"] - W_["y0"] - 40.0) * (0.5 - 0.5 * math.cos(2 * math.pi * 2 * u))
+            sc.gmat["wash_knife"] = T((0, y, W_["z_top"]))
+            sc.alpha["wash/air/jets"] = 1.0
+        sc.step(f"3/{n}", cap, 4.0, knife, hold=0.05)
+        sc.alpha["wash/air/jets"] = 0.0
+        sc.gmat["wash_knife"] = T((0, W_["y1"] - 12.0, W_["z_top"]))
+        cap = "The arm lifts the dry sieve off the basket and puts it back in the tipper's cradle."
+        status(sc, Arm="the sieve back to the tipper", Sieve=f"{LABEL[key]}: dry")
+        transfer(f"3/{n}", cap, key, "tip_cradle", in_cradle, k=k, lift0=58.0, out0=200.0, lift1=58.0, in1=200.0)
+        sc.step(f"3/{n}", cap, 1.0, rb.joint_to(PARK), hold=0.05)
+        cap = "The MiR rolls back to the stand."
+        status(sc, Arm="driving back to the stand")
+        sc.step(f"3/{n}", cap, mo.secs(x_sv, y_sv), mo.drive(x_sv, y_sv), hold=0.05, cam_to=CAM_STAND)
+
     for i, key in enumerate(reversed(ORDER_UP)):
         first = i == 0
         k = 1.0 if first else 0.34
@@ -860,13 +960,36 @@ def movie():
         sc.step(f"3/{n}", cap, 0.6 * k, rb.joint_to(Tw=GR(tab_at("tip_cradle", in_cradle, key) - (0, 260, -60), key)),
                 hold=0.02)
         flip(key, k=k, cap=cap)
+        if key == "s325":
+            clean(key)
         if first:
             cap = "Empty, it goes back on the stand, the first of the set again: put back top down, the set ends in " \
-                  "storage order for the next run. Between alloys it would go to an ultrasonic bath first."
+                  "storage order for the next run. Every sieve is cleaned like the No. 325 (drawn: vibrate, ultrasonic IPA, warm air) before the next alloy."
         status(sc, Sieve=f"{LABEL[key]}: back on the stand", Arm="putting the sieve back")
         transfer(f"3/{n}", cap, key, "stand", on_stand(key), k=k, lift0=58.0, out0=200.0, lift1=26.0, in1=0.0,
                  cam=CAM_STAND if first else None)
     status(sc, Sieve="the set back on its stand", Powder="five fractions in five jars")
+    # round 9: the jars stay clear glass; to say which jar holds which cut, each is tinted for a few seconds with a
+    # legend (props.use_legend), then the tint fades back
+    P.use_legend(sc)
+    tint_cols = [dict((k_, mm) for k_, _, _, _, mm in IC.STACK) for _ in (0,)][0]
+    tint_cols = [IC.MATERIALS[tint_cols[k_]][:3] for k_ in ("s60", "s100", "s140", "s230", "s325")]
+    jnames = [("bottle" if j == 4 else f"jar{j}") + "/tint" for j in range(5)]
+    items = [(tint_cols[j], SS.JARS[j][1]) for j in range(5)]
+    status(sc, Sieve="five fractions in five jars", Powder="the jars, tinted by size cut")
+    secs_t = 6.0
+
+    def jar_tint(u):
+        a = P.pulse(u * secs_t, 0.0, secs_t, ramp=0.9)
+        for j, nm in enumerate(jnames):
+            sc.color[nm] = tint_cols[j]
+            sc.alpha[nm] = P.TINT_OPACITY * a
+        sc.legend = dict(title="Tinted for now: size cut", items=items, alpha=a)
+    sc.step(f"3/{n}", "The five jars, clear glass as always. For a few seconds each is tinted by its size cut, then "
+            "they go back to plain.", secs_t, jar_tint, hold=0.1, cam_to=CAM_TIP, labels=jar_lbl)
+    for nm in jnames:
+        sc.alpha[nm] = 0.0
+    sc.legend = None
     pic = PHOTOS / SIEVED_PHOTO["file"]
     if pic.exists():                                      # the lab's real result, after the model's sieving
         sc.photo = (ImageOps.exif_transpose(Image.open(pic)).convert("RGB"), SIEVED_PHOTO["badge"])

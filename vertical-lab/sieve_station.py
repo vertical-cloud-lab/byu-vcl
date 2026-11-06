@@ -174,12 +174,20 @@ def jar_xy(j: int, table_deg: float = 0.0) -> np.ndarray:
 
 
 def jar_parts() -> dict:
-    """A 250 mL wide-mouth jar, lid off, with a white label band: {name: (mesh, colour, specular, opacity)}."""
+    """A 250 mL wide-mouth jar in the lab-wide style (round 9, props.jar_parts: clear glass, white label), lid off while
+    it is filled under the funnel: {name: (mesh, colour, specular, opacity)}. The powder is drawn separately (jar_powder),
+    so it can grow; the black lid (props.JAR_LID) is on the jar when it is not under the funnel, and not drawn here."""
+    import props as P
     r, h = TIP["jar_r"], TIP["jar_h"]
-    body = charge.lathe([(0, 0), (r - 4, 0), (r, 4), (r, h - 22), (22, h - 10), (22, h), (20, h), (20, h - 9),
-                         (r - 2, h - 21), (r - 2, 3), (0, 3)], res=48)
-    band = charge.lathe([(r + 0.3, 30), (r + 0.8, 30), (r + 0.8, 72), (r + 0.3, 72)], res=48)
-    return {"body": (body, (0.93, 0.93, 0.90), 0.3, 0.5), "label": (band, (0.99, 0.99, 0.97), 0.1, 1.0)}
+    pp = P.jar_parts(2 * r, h, 14.0, fill=0.0, label=(0.24, 0.58))
+    return {"body": (pp["glass"][0], pp["glass"][1], 0.35, pp["glass"][2]),
+            "label": (pp["label"][0], pp["label"][1], 0.1, 1.0), "print": (pp["print"][0], pp["print"][1], 0.1, 1.0)}
+
+
+def jar_lid() -> tuple:
+    """The jar's black lid (props.JAR_LID), base at z = h, for the jar on the MiR: (mesh, colour)."""
+    import props as P
+    return P.jar_meshes(2 * TIP["jar_r"], TIP["jar_h"], 14.0)["lid"], P.JAR_LID
 
 
 def jar_powder() -> pv.PolyData:
@@ -225,3 +233,62 @@ def strap(p0, p1, r=3.0) -> pv.PolyData:
     s = np.linspace(0, 1, 16)[:, None]
     pts = (1 - s) ** 2 * p0 + 2 * (1 - s) * s * mid + s ** 2 * p1
     return pv.Spline(pts, 24).tube(radius=r, n_sides=8).triangulate()
+
+
+# ------------------------------------------------------------------------------------------------- the wash module
+# Round 9 (Sterling, PR #318: "automation for cleaning the sieve stack? ... the depowdering module with ultrasonic IPA
+# rinses?"). Three stages, no person: (1) the tipper turns the empty sieve over its funnel and a vibrator shakes the
+# powder out of the cloth (a scaled-down version of what a Solukon SFM-AT200 does to a plate); (2) an ultrasonic IPA
+# bath: the sieve sits on a basket ring that a lift lowers into the tank; (3) it rises into a warm-air knife (a slot
+# nozzle above and one below, travelling along the cloth, air at no more than 60 C: Retsch's limit is 80 C). It is on
+# its own bench extension left of the tipper, under its own extracted hood. Sizes are assumed; notes/alloy_print.md.
+WASH = dict(hw=165.0, y0=-200.0, y1=150.0, wall=6.0, tank_h=150.0, liq_h=118.0, z_top=260.0, z_bot=24.0, hb=330.0,
+            hood_h=760.0, mast_y=172.0)
+LIQ_C = (0.72, 0.86, 0.96)
+
+
+def wash_parts() -> dict:
+    """{piece: {name: (mesh, colour, specular, opacity)}} in the module's frame (the sieve's axis at the origin, on the
+    bench top): 'body' (tank, transducer, hood, mast), 'basket' (ring, hangers, beam, carriage; origin at the sieve's
+    foot seat), 'knife' (the two slot nozzles at the origin, travelling along y), 'liquid', 'air' (the jets, with the
+    knife)."""
+    p = WASH
+    hw, y0, y1, w, th = p["hw"], p["y0"], p["y1"], p["wall"], p["tank_h"]
+    steel, dark = (0.80, 0.81, 0.83), (0.24, 0.25, 0.27)
+    tank = _box(-hw, hw, y0, y1, 0, 8)
+    for b in (_box(-hw, -hw + w, y0, y1, 0, th), _box(hw - w, hw, y0, y1, 0, th), _box(-hw, hw, y0, y0 + w, 0, th),
+              _box(-hw, hw, y1 - w, y1, 0, th)):
+        tank = tank.merge(b)
+    body = {"tank": (tank, steel, 0.55, 1.0),
+            "transducer": (_box(-hw + 20, hw - 20, y0 + 20, y1 - 20, -2, 0.1).merge(
+                _box(-hw, hw, y0, y1, -2, 0)), (0.12, 0.40, 0.75), 0.3, 1.0)}
+    hh = p["hood_h"]
+    posts = None
+    for (x, y) in ((-hw - 12, y0 - 10), (hw + 12, y0 - 10), (-hw - 12, p["mast_y"] + 40), (hw + 12, p["mast_y"] + 40)):
+        post = _box(x - 12, x + 12, y - 12, y + 12, 0, hh)
+        posts = post if posts is None else posts.merge(post)
+    body["posts"] = (posts, (0.62, 0.63, 0.66), 0.4, 1.0)
+    ym = p["mast_y"] + 40
+    body["panels"] = (_box(-hw - 24, hw + 24, ym, ym + 4, 0, hh).merge(_box(-hw - 28, -hw - 24, y0 - 10, ym, 0, hh)).merge(
+        _box(hw + 24, hw + 28, y0 - 10, ym, 0, hh)).merge(_box(-hw - 28, hw + 28, y0 - 10, ym + 4, hh, hh + 4)),
+        (0.78, 0.86, 0.92), 0.4, 0.16)
+    body["duct"] = (_cyl(70, (0, ym - 80, hh + 4), (0, ym - 80, hh + 420), 40), (0.80, 0.81, 0.83), 0.4, 1.0)
+    body["mast"] = (_box(-14, 14, p["mast_y"], p["mast_y"] + 24, 0, hh - 40), (0.45, 0.47, 0.52), 0.5, 1.0)
+    # the basket: a ring under the sieve's skirt, two hangers either side of it, a beam over them, an arm back to the
+    # carriage on the mast (origin: the sieve's foot seat)
+    rs = IC.RS
+    ring = charge.lathe([(70.0, -6.0), (rs + 14.0, -6.0), (rs + 14.0, 0.0), (rs + 6.0, 0.0), (rs + 6.0, 8.0),
+                         (rs + 1.0, 8.0), (rs + 1.0, 0.0), (70.0, 0.0)], res=64)
+    hb = p["hb"]
+    hang = _box(rs + 14, rs + 22, -9, 9, -6, hb).merge(_box(-rs - 22, -rs - 14, -9, 9, -6, hb))
+    beam = _box(-rs - 22, rs + 22, -9, 9, hb - 8, hb).merge(_box(-9, 9, 0, p["mast_y"] + 24, hb - 8, hb)).merge(
+        _box(-24, 24, p["mast_y"] - 4, p["mast_y"] + 28, hb - 40, hb + 30))
+    basket = {"ring": (ring, steel, 0.6, 1.0), "hangers": (hang.merge(beam), (0.55, 0.57, 0.62), 0.5, 1.0)}
+    # the knife: a slot nozzle above the rim and one below the ring, each 200 mm long, with its jet
+    bar_up = _box(-100, 100, -9, 9, 100, 118)
+    bar_dn = _box(-100, 100, -9, 9, -44, -26)
+    knife = {"nozzles": (bar_up.merge(bar_dn), (0.85, 0.42, 0.10), 0.4, 1.0)}
+    jet = _box(-100, 100, -6, 6, 52, 100).merge(_box(-100, 100, -6, 6, -26, 30))
+    air = {"jets": (jet, (0.98, 0.66, 0.32), 0.1, 1.0)}
+    liquid = {"ipa": (_box(-hw + w, hw - w, y0 + w, y1 - w, 8, p["liq_h"]), LIQ_C, 0.1, 1.0)}
+    return {"body": body, "basket": basket, "knife": knife, "air": air, "liquid": liquid}
