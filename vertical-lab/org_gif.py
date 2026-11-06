@@ -30,6 +30,9 @@ of the CubXL in the background that's still doing things"). The same loop, close
 - the CubXL's test runs for TEST_SECS of the clip (TestClock) instead of 5 s, from tray A's return to its slot through
   tray B's visit and the drive back, so it is still running behind the arm; it ends before the loop does;
 - the arm's moves take the 9:09 clip's times again (ARM_S), and the GIF plays at 1.5x instead of 2.5x.
+While tray B is at the opening, its doser (854 mm tall) stands right in front of R2, so only the CubXL's head and gantry
+show over it; views from higher up and from the left were tried, and none did better. Through the empty bay, from the
+cell's view, the whole CubXL shows.
 
 The last frame is the first one again: the MiR at the cell with its arm parked, a vial in the cell's pocket, trays A and
 B in their slots, a tested vial in the CubXL, the extractor at tray B's slot. What differs is too small to see: the vial
@@ -58,6 +61,9 @@ Drawn differently for this shot only (all drawing choices):
     PREVIEW=1 VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py   # the last frame of each step -> /tmp/preview_<NAME>.png
     ARM_AUDIT=1 VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py # no render: every frame's arm checked -> out/collisions/
     VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py          # -> out/mp4/<NAME>.mp4, out/<NAME>.json
+    ARM_AUDIT_RENDER=1 VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py   # both in one pass (about 5 s a frame, one core)
+    ORG_NAME=<other> ORG_LIVE=/tmp/live ...              # render under another name beside a running pass; every 60th
+                                                         # frame to /tmp/live as it renders
     python3 org_gif.py gif                               # -> out/<NAME>.gif (SPEED x), its still, mp4/<NAME>_readme.mp4
 """
 from __future__ import annotations
@@ -771,14 +777,19 @@ def header(img, caption: str):
     return out
 
 
-def gif(width=GIF_W, lossy=0, colors=128):
+def gif(width=GIF_W, lossy=0, colors=128, sticky=int(os.environ.get("ORG_STICKY", "6"))):
     """out/mp4/<NAME>.mp4 -> out/<NAME>.gif, every frame at SPEED x the MP4's rate, each under the header band; and the
     same frames as out/mp4/<NAME>_readme.mp4 (SPEED x, h264), for anyone who would rather embed a video. One palette
     for the whole clip (the camera holds still), no dithering, gifsicle -O3 and no --lossy: lossy re-encoding drifts
     where things moved, and the loop then flickers where the last frame meets the first. On a first cut of round 1's
     clip, --lossy=40 gave 3.3 MB with 38,771 px of the last frame off the first; lossless, 4.3 MB and 5,819 px, nearly
     all by a shade (the MP4's own noise). Round 2's loop is 702 frames: 192 colours gave 8.7 MB, 128 give 7.7 MB with
-    no banding to see at the README's size."""
+    no banding to see at the README's size.
+    Round 3's is 962 frames of closer views, and gave 47.5 MB as it was, because the MP4's noise changes nearly every
+    pixel of every frame, so no frame could reuse the one before. `sticky` keeps a pixel from the frame before wherever
+    no channel has changed by more than that many levels (of 255), so the parts that hold still are the same bytes from
+    frame to frame, and the GIF stores only what moved. Nothing that moves is held: a move changes a pixel by far more."""
+    import numpy as np
     from PIL import Image
 
     from scene import OUT
@@ -788,19 +799,33 @@ def gif(width=GIF_W, lossy=0, colors=128):
     fps = meta["fps"] * SPEED
     sw, sh = meta["size"]
     w, h = width, int(round(sh * width / sw / 2)) * 2
-    with tempfile.TemporaryDirectory() as tmp:
+    def frames():
         dec = subprocess.Popen(["ffmpeg", "-loglevel", "error", "-i", str(mp4), "-vf",
                                 f"scale={w}:{h}:flags=lanczos", "-f", "rawvideo", "-pix_fmt", "rgb24", "-"],
                                stdout=subprocess.PIPE)
-        n = 0
         while True:
             buf = dec.stdout.read(w * h * 3)
             if len(buf) < w * h * 3:
                 break
-            cap = [p["text"] for p in phases if p["start_frame"] <= n][-1]
-            header(Image.frombytes("RGB", (w, h), buf), cap).save(f"{tmp}/{n:05d}.png", compress_level=1)
-            n += 1
+            yield np.frombuffer(buf, np.uint8).reshape(h, w, 3)
         dec.wait()
+
+    def held(a, prev):
+        if prev is None or sticky <= 0:
+            return a
+        keep = (np.abs(a.astype(np.int16) - prev.astype(np.int16)).max(axis=2) <= sticky)[..., None]
+        return np.where(keep, prev, a)
+    prev = None
+    if sticky > 0:     # a first pass to where the held pixels end up, so the first frame starts from there: held
+        for a in frames():         # from a fresh first frame instead, the loop's seam differed in 8,375 px by over 16
+            prev = held(a, prev)   # levels, against 2,837 with nothing held
+    with tempfile.TemporaryDirectory() as tmp:
+        n = 0
+        for a in frames():
+            prev = held(a, prev)
+            cap = [p["text"] for p in phases if p["start_frame"] <= n][-1]
+            header(Image.fromarray(prev), cap).save(f"{tmp}/{n:05d}.png", compress_level=1)
+            n += 1
         seq_ = ["-framerate", f"{fps:g}", "-i", f"{tmp}/%05d.png"]
         pal = f"{tmp}/pal.png"
         subprocess.run(["ffmpeg", "-loglevel", "error", "-y", *seq_, "-vf",

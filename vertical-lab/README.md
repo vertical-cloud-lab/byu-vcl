@@ -28,17 +28,39 @@ state:
 4. The tested vial goes into tray B's rack, in the seat an empty vial comes out of.
 5. Tray B goes back up while the MiR drives back, and the arm leaves the empty vial at the cell for the next sample.
 
+Round 3 (Sterling: "the GIF can be larger ... more like 50 MB, so you don't have to restrict yourself so much in terms
+of time. Also, you should probably zoom in to see what the robot's doing, while still in view of the CubXL in the
+background that's still doing things") plays the same loop closer and slower:
+
+- **Two close views follow the MiR.** Each is about 3–4 m across at the arm, where round 2's was 8–9 m. At the cell,
+  the arm reaches into the sieving cell, with the VLM's bay at the right. At the opening, it works at tray A, then at
+  tray B. As the MiR drives, the camera pans between the two at the MiR's own pace.
+- **The CubXL's test runs behind the arm.** It starts as tray A goes back to its slot and runs for 34 s of the clip,
+  through tray B's visit and the drive back. It ends 4.75 s before the loop's last park. While tray B is at the
+  opening, the CubXL's head and gantry show over tray B's doser. Once tray B has gone back up, the whole CubXL shows
+  through the empty bay, running, while the arm works at the cell.
+  - **Only part of it shows during tray B's visit.** Tray B's doser, 854 mm tall, stands right in front of tray A's
+    slot (R2), so no view from the front shows the CubXL whole while tray B is at the opening. Views from higher up
+    and from the left were tried, and none did better.
+- **Slower.** The arm's moves take the 9:09 clip's times again, and the GIF plays at 1.5× instead of 2.5×.
+
 - **It loops without a cut.** The last frame shows the lab as the first one does; only the caption changes. What
   differs is too small to see: the vial at the cell is empty at the end, and the vial in tray B's rack holds the
   tested sample.
-- **The file:** 1280 × 806, 702 frames at 25 fps: 28.1 s at 2.5× the modelled speed, 7.7 MB. The same frames
-  as an MP4, [`out/mp4/org_vertical_lab_readme.mp4`](out/mp4/org_vertical_lab_readme.mp4), are 1.2 MB.
+- **The file:** 1280 × 806, 962 frames at 18 fps: 53.4 s at 1.5× the modelled speed, 40.0 MB, 128 colours. The same
+  frames as an MP4, [`out/mp4/org_vertical_lab_readme.mp4`](out/mp4/org_vertical_lab_readme.mp4), are 5.9 MB.
+  - Most of the size is the two pans, which change every pixel for about 115 frames.
   - It isn't lossy-compressed. With gifsicle's `--lossy`, the last frame drifted from the first where things had moved,
     so the loop would flicker.
-- **The arm audit: 0 of 696 checked frames in collision**
-  ([`out/collisions/org_vertical_lab.json`](out/collisions/org_vertical_lab.json)). The first cut parked the MiR right
-  of the cell's bench, and its forearm went through the enclosure's side panel and the Shuttle's corner in 64 frames.
-  Every one of them was at the cell.
+  - **Still parts are held still.** The MP4's noise changed nearly every pixel of every frame, so the GIF had to store
+    each frame whole: 47.5 MB. The GIF now keeps a pixel from the frame before wherever no channel has moved by more
+    than 6 levels of 255 (`ORG_STICKY`), which gives 40.0 MB. A first pass finds where the held pixels end up, and
+    the first frame starts from there. The loop's seam is then cleaner than with nothing held: 1,706 px differ by
+    more than 16 levels, against 2,837.
+- **The arm audit** of this render was still running when the GIF was pushed; the next commit adds it
+  ([`out/collisions/org_vertical_lab.json`](out/collisions/org_vertical_lab.json)).
+  - Round 2's first cut parked the MiR right of the cell's bench, and its forearm went through the enclosure's side
+    panel and the Shuttle's corner in 64 frames, every one of them at the cell. Round 2's own render was 0 of 696.
 - **Left out of this shot:** Shuttle 2 with its trays G–M, the pallet racking round the room, and the second MiR unit.
   The south row and its overhead utilities are left out too, because the camera stands where they are.
 - **Changed for this shot only** ([`org_gif.py`](org_gif.py) says why):
@@ -47,8 +69,11 @@ state:
   - the MiR stops at the cell on the VLM's dock line, so it drives to the opening in a straight line;
   - there is a vial pocket on the cell's bench, and a second pocket on the MiR, so the arm can swap vials at a tray;
   - the bay's back shutter is drawn more see-through.
-- **The test is a time-lapse,** and its label says so. Everything else plays at 2.5× the modelled times, and a badge
+- **The test is a time-lapse,** and its label says so. Everything else plays at 1.5× the modelled times, and a badge
   says so.
+- **Labels.** The VLM's label points at the header, by the logo. The header is out of the opening's view, so as the
+  MiR drives over, the labels name tray A instead: in round 3's first render, the VLM label's leader ran off the top of
+  the frame.
 
 ## Round 8: the route in seven chapters, sample prep, the powder checked, scaling up, the lab at speed
 
@@ -1870,12 +1895,17 @@ xvfb-run -a python3 tour.py mount_press cnc polisher sem vhx nanoindenter pip ha
 python3 longform.py warm; python3 longform.py; python3 longform.py upload
 ```
 
-The org page's GIF (one scene job, about 15 min and 4.5 GB, as Shuttle 2's trays aren't loaded):
+The org page's GIF (one scene job, about 5 GB, as Shuttle 2's trays aren't loaded). The render alone takes about 30 min
+at 1.9 s a frame; with the audit in the same pass it takes about 80 min, at 5 s a frame on one core, since the audit is
+most of the work. On a 4-core runner, a render-only pass under another name (`ORG_NAME`) can run beside the audited one
+and finish first:
 
 ```bash
-ARM_AUDIT=1 xvfb-run -a python3 org_gif.py            # every frame's arm checked -> out/collisions/org_vertical_lab.json
-VIZ3D_FPS=10 xvfb-run -a python3 org_gif.py           # the clip, real time -> out/mp4/org_vertical_lab.mp4
-python3 org_gif.py gif                                # 2.5x, under its header band -> out/org_vertical_lab.gif
+ARM_AUDIT_RENDER=1 VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py   # the clip, real time -> out/mp4/org_vertical_lab.mp4,
+                                                                  # every frame's arm checked -> out/collisions/
+ORG_NAME=org_vertical_lab_r ORG_LIVE=/tmp/org_live VIZ3D_FPS=12 xvfb-run --server-num=77 python3 org_gif.py
+                                                                  # the same clip, render only; every 60th frame to /tmp
+python3 org_gif.py gif                                            # 1.5x, under its header band -> out/org_vertical_lab.gif
 ```
 
 Putting them on YouTube (needs `YOUTUBE_UPLOAD_TOKEN_PICKLE_B64`; see [`youtube/README.md`](../youtube/README.md)):

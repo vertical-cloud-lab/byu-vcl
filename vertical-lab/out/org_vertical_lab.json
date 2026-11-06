@@ -1,7 +1,7 @@
 {
  "name": "org_vertical_lab",
- "fps": 10,
- "n_frames": 702,
+ "fps": 12,
+ "n_frames": 962,
  "size": [
   1280,
   720
@@ -11,18 +11,6 @@
    "label": "",
    "caption": "",
    "start_frame": 0,
-   "end_frame": 17
-  },
-  {
-   "label": "",
-   "caption": "",
-   "start_frame": 18,
-   "end_frame": 18
-  },
-  {
-   "label": "",
-   "caption": "",
-   "start_frame": 19,
    "end_frame": 25
   },
   {
@@ -35,18 +23,6 @@
    "label": "",
    "caption": "",
    "start_frame": 27,
-   "end_frame": 30
-  },
-  {
-   "label": "",
-   "caption": "",
-   "start_frame": 31,
-   "end_frame": 31
-  },
-  {
-   "label": "",
-   "caption": "",
-   "start_frame": 32,
    "end_frame": 37
   },
   {
@@ -59,174 +35,114 @@
    "label": "",
    "caption": "",
    "start_frame": 39,
-   "end_frame": 50
+   "end_frame": 44
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 51,
-   "end_frame": 51
+   "start_frame": 45,
+   "end_frame": 45
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 52,
-   "end_frame": 58
+   "start_frame": 46,
+   "end_frame": 55
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 59,
-   "end_frame": 59
+   "start_frame": 56,
+   "end_frame": 56
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 60,
-   "end_frame": 63
+   "start_frame": 57,
+   "end_frame": 75
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 64,
-   "end_frame": 64
+   "start_frame": 76,
+   "end_frame": 76
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 65,
-   "end_frame": 70
+   "start_frame": 77,
+   "end_frame": 87
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 71,
-   "end_frame": 71
+   "start_frame": 88,
+   "end_frame": 88
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 72,
-   "end_frame": 83
+   "start_frame": 89,
+   "end_frame": 94
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 84,
-   "end_frame": 84
+   "start_frame": 95,
+   "end_frame": 95
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 85,
-   "end_frame": 132
+   "start_frame": 96,
+   "end_frame": 105
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 133,
-   "end_frame": 133
+   "start_frame": 106,
+   "end_frame": 106
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 134,
-   "end_frame": 145
+   "start_frame": 107,
+   "end_frame": 120
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 146,
-   "end_frame": 146
+   "start_frame": 121,
+   "end_frame": 121
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 147,
-   "end_frame": 153
-  },
-  {
-   "label": "",
-   "caption": "",
-   "start_frame": 154,
-   "end_frame": 154
-  },
-  {
-   "label": "",
-   "caption": "",
-   "start_frame": 155,
-   "end_frame": 158
-  },
-  {
-   "label": "",
-   "caption": "",
-   "start_frame": 159,
-   "end_frame": 159
-  },
-  {
-   "label": "",
-   "caption": "",
-   "start_frame": 160,
-   "end_frame": 165
-  },
-  {
-   "label": "",
-   "caption": "",
-   "start_frame": 166,
-   "end_frame": 166
-  },
-  {
-   "label": "",
-   "caption": "",
-   "start_frame": 167,
-   "end_frame": 178
-  },
-  {
-   "label": "",
-   "caption": "",
-   "start_frame": 179,
+   "start_frame": 122,
    "end_frame": 179
   },
   {
    "label": "",
    "caption": "",
    "start_frame": 180,
-   "end_frame": 186
+   "end_frame": 180
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 187,
-   "end_frame": 187
-  },
-  {
-   "label": "",
-   "caption": "",
-   "start_frame": 188,
-   "end_frame": 191
-  },
-  {
-   "label": "",
-   "caption": "",
-   "start_frame": 192,
-   "end_frame": 192
-  },
-  {
-   "label": "",
-   "caption": "",
-   "start_frame": 193,
-   "end_frame": 198
-  },
-  {
-   "label": "",
-   "caption": "",
-   "start_frame": 199,
+   "start_frame": 181,
    "end_frame": 199
   },
   {
    "label": "",
    "caption": "",
    "start_frame": 200,
+   "end_frame": 200
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 201,
    "end_frame": 211
   },
   {
@@ -239,318 +155,246 @@
    "label": "",
    "caption": "",
    "start_frame": 213,
+   "end_frame": 218
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 219,
    "end_frame": 219
   },
   {
    "label": "",
    "caption": "",
    "start_frame": 220,
-   "end_frame": 220
+   "end_frame": 229
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 221,
-   "end_frame": 224
+   "start_frame": 230,
+   "end_frame": 230
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 225,
-   "end_frame": 225
+   "start_frame": 231,
+   "end_frame": 249
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 226,
-   "end_frame": 231
+   "start_frame": 250,
+   "end_frame": 250
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 232,
-   "end_frame": 232
+   "start_frame": 251,
+   "end_frame": 261
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 233,
-   "end_frame": 244
+   "start_frame": 262,
+   "end_frame": 262
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 245,
-   "end_frame": 245
+   "start_frame": 263,
+   "end_frame": 268
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 246,
-   "end_frame": 252
+   "start_frame": 269,
+   "end_frame": 269
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 253,
-   "end_frame": 253
+   "start_frame": 270,
+   "end_frame": 279
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 254,
-   "end_frame": 257
+   "start_frame": 280,
+   "end_frame": 280
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 258,
-   "end_frame": 258
+   "start_frame": 281,
+   "end_frame": 299
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 259,
-   "end_frame": 264
+   "start_frame": 300,
+   "end_frame": 300
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 265,
-   "end_frame": 265
+   "start_frame": 301,
+   "end_frame": 311
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 266,
-   "end_frame": 277
+   "start_frame": 312,
+   "end_frame": 312
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 278,
-   "end_frame": 278
+   "start_frame": 313,
+   "end_frame": 318
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 279,
-   "end_frame": 285
+   "start_frame": 319,
+   "end_frame": 319
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 286,
-   "end_frame": 307
+   "start_frame": 320,
+   "end_frame": 329
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 308,
-   "end_frame": 314
+   "start_frame": 330,
+   "end_frame": 330
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 315,
-   "end_frame": 315
+   "start_frame": 331,
+   "end_frame": 349
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 316,
-   "end_frame": 321
+   "start_frame": 350,
+   "end_frame": 350
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 322,
-   "end_frame": 322
+   "start_frame": 351,
+   "end_frame": 361
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 323,
-   "end_frame": 344
+   "start_frame": 362,
+   "end_frame": 362
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 345,
-   "end_frame": 347
+   "start_frame": 363,
+   "end_frame": 368
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 348,
-   "end_frame": 353
+   "start_frame": 369,
+   "end_frame": 369
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 354,
-   "end_frame": 354
+   "start_frame": 370,
+   "end_frame": 379
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 355,
-   "end_frame": 376
+   "start_frame": 380,
+   "end_frame": 380
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 377,
-   "end_frame": 377
+   "start_frame": 381,
+   "end_frame": 394
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 378,
-   "end_frame": 384
+   "start_frame": 395,
+   "end_frame": 395
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 385,
-   "end_frame": 385
+   "start_frame": 396,
+   "end_frame": 403
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 386,
-   "end_frame": 392
+   "start_frame": 404,
+   "end_frame": 429
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 393,
-   "end_frame": 414
-  },
-  {
-   "label": "",
-   "caption": "",
-   "start_frame": 415,
-   "end_frame": 421
-  },
-  {
-   "label": "",
-   "caption": "",
-   "start_frame": 422,
-   "end_frame": 424
-  },
-  {
-   "label": "",
-   "caption": "",
-   "start_frame": 425,
-   "end_frame": 436
-  },
-  {
-   "label": "",
-   "caption": "",
-   "start_frame": 437,
+   "start_frame": 430,
    "end_frame": 437
   },
   {
    "label": "",
    "caption": "",
    "start_frame": 438,
-   "end_frame": 444
+   "end_frame": 438
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 445,
+   "start_frame": 439,
    "end_frame": 445
   },
   {
    "label": "",
    "caption": "",
    "start_frame": 446,
-   "end_frame": 449
+   "end_frame": 446
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 450,
-   "end_frame": 450
+   "start_frame": 447,
+   "end_frame": 472
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 451,
-   "end_frame": 456
+   "start_frame": 473,
+   "end_frame": 476
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 457,
-   "end_frame": 457
-  },
-  {
-   "label": "",
-   "caption": "",
-   "start_frame": 458,
-   "end_frame": 469
-  },
-  {
-   "label": "",
-   "caption": "",
-   "start_frame": 470,
-   "end_frame": 470
-  },
-  {
-   "label": "",
-   "caption": "",
-   "start_frame": 471,
-   "end_frame": 477
-  },
-  {
-   "label": "",
-   "caption": "",
-   "start_frame": 478,
-   "end_frame": 478
-  },
-  {
-   "label": "",
-   "caption": "",
-   "start_frame": 479,
-   "end_frame": 482
-  },
-  {
-   "label": "",
-   "caption": "",
-   "start_frame": 483,
+   "start_frame": 477,
    "end_frame": 483
   },
   {
    "label": "",
    "caption": "",
    "start_frame": 484,
-   "end_frame": 489
+   "end_frame": 484
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 490,
-   "end_frame": 490
-  },
-  {
-   "label": "",
-   "caption": "",
-   "start_frame": 491,
-   "end_frame": 502
-  },
-  {
-   "label": "",
-   "caption": "",
-   "start_frame": 503,
-   "end_frame": 503
-  },
-  {
-   "label": "",
-   "caption": "",
-   "start_frame": 504,
+   "start_frame": 485,
    "end_frame": 510
   },
   {
@@ -563,239 +407,395 @@
    "label": "",
    "caption": "",
    "start_frame": 512,
-   "end_frame": 515
+   "end_frame": 520
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 516,
-   "end_frame": 516
+   "start_frame": 521,
+   "end_frame": 521
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 517,
-   "end_frame": 522
+   "start_frame": 522,
+   "end_frame": 529
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 523,
-   "end_frame": 523
-  },
-  {
-   "label": "",
-   "caption": "",
-   "start_frame": 524,
-   "end_frame": 535
-  },
-  {
-   "label": "",
-   "caption": "",
-   "start_frame": 536,
-   "end_frame": 536
-  },
-  {
-   "label": "",
-   "caption": "",
-   "start_frame": 537,
-   "end_frame": 543
-  },
-  {
-   "label": "",
-   "caption": "",
-   "start_frame": 544,
-   "end_frame": 544
-  },
-  {
-   "label": "",
-   "caption": "",
-   "start_frame": 545,
-   "end_frame": 548
-  },
-  {
-   "label": "",
-   "caption": "",
-   "start_frame": 549,
-   "end_frame": 549
-  },
-  {
-   "label": "",
-   "caption": "",
-   "start_frame": 550,
+   "start_frame": 530,
    "end_frame": 555
   },
   {
    "label": "",
    "caption": "",
    "start_frame": 556,
-   "end_frame": 556
+   "end_frame": 563
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 557,
-   "end_frame": 568
+   "start_frame": 564,
+   "end_frame": 567
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 569,
-   "end_frame": 569
+   "start_frame": 568,
+   "end_frame": 586
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 570,
+   "start_frame": 587,
+   "end_frame": 587
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 588,
+   "end_frame": 598
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 599,
+   "end_frame": 599
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 600,
+   "end_frame": 605
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 606,
+   "end_frame": 606
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 607,
+   "end_frame": 616
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 617,
    "end_frame": 617
   },
   {
    "label": "",
    "caption": "",
    "start_frame": 618,
-   "end_frame": 618
+   "end_frame": 636
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 619,
-   "end_frame": 630
+   "start_frame": 637,
+   "end_frame": 637
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 631,
-   "end_frame": 631
+   "start_frame": 638,
+   "end_frame": 648
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 632,
-   "end_frame": 638
+   "start_frame": 649,
+   "end_frame": 649
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 639,
-   "end_frame": 639
+   "start_frame": 650,
+   "end_frame": 655
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 640,
-   "end_frame": 643
+   "start_frame": 656,
+   "end_frame": 656
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 644,
-   "end_frame": 644
+   "start_frame": 657,
+   "end_frame": 666
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 645,
-   "end_frame": 650
+   "start_frame": 667,
+   "end_frame": 667
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 651,
-   "end_frame": 651
+   "start_frame": 668,
+   "end_frame": 686
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 652,
-   "end_frame": 663
+   "start_frame": 687,
+   "end_frame": 687
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 664,
-   "end_frame": 664
+   "start_frame": 688,
+   "end_frame": 698
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 665,
-   "end_frame": 671
+   "start_frame": 699,
+   "end_frame": 699
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 672,
-   "end_frame": 672
+   "start_frame": 700,
+   "end_frame": 705
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 673,
-   "end_frame": 676
+   "start_frame": 706,
+   "end_frame": 706
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 677,
-   "end_frame": 677
+   "start_frame": 707,
+   "end_frame": 716
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 678,
-   "end_frame": 683
+   "start_frame": 717,
+   "end_frame": 717
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 684,
-   "end_frame": 684
+   "start_frame": 718,
+   "end_frame": 736
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 685,
-   "end_frame": 696
+   "start_frame": 737,
+   "end_frame": 737
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 697,
-   "end_frame": 697
+   "start_frame": 738,
+   "end_frame": 748
   },
   {
    "label": "",
    "caption": "",
-   "start_frame": 698,
-   "end_frame": 701
+   "start_frame": 749,
+   "end_frame": 749
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 750,
+   "end_frame": 755
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 756,
+   "end_frame": 756
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 757,
+   "end_frame": 766
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 767,
+   "end_frame": 767
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 768,
+   "end_frame": 781
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 782,
+   "end_frame": 782
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 783,
+   "end_frame": 840
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 841,
+   "end_frame": 841
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 842,
+   "end_frame": 860
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 861,
+   "end_frame": 861
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 862,
+   "end_frame": 872
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 873,
+   "end_frame": 873
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 874,
+   "end_frame": 879
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 880,
+   "end_frame": 880
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 881,
+   "end_frame": 890
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 891,
+   "end_frame": 891
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 892,
+   "end_frame": 910
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 911,
+   "end_frame": 911
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 912,
+   "end_frame": 922
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 923,
+   "end_frame": 923
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 924,
+   "end_frame": 929
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 930,
+   "end_frame": 930
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 931,
+   "end_frame": 940
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 941,
+   "end_frame": 941
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 942,
+   "end_frame": 955
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 956,
+   "end_frame": 956
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 957,
+   "end_frame": 961
   }
  ],
  "title": "In a vertical lab, equipment is brought to the operator",
- "speed": 2.5,
- "camera": "c4",
+ "speed": 1.5,
+ "camera": "cell",
  "phases": [
   {
    "start_frame": 0,
    "text": "The operator, here a mobile robot arm, takes a sample from an instrument outside the VLM."
   },
   {
-   "start_frame": 85,
+   "start_frame": 122,
    "text": "It drives over. The VLM has already brought the tray it needs to the opening."
   },
   {
-   "start_frame": 134,
+   "start_frame": 181,
    "text": "Tray A: the new sample goes in, and the one whose test is done comes out."
   },
   {
-   "start_frame": 279,
+   "start_frame": 396,
    "text": "Tray A goes back into storage, still powered, and runs the test there. Tray B comes down."
   },
   {
-   "start_frame": 425,
-   "text": "Tray B: the tested sample goes into storage, and an empty vial comes out."
+   "start_frame": 568,
+   "text": "Tray B: the tested sample goes into storage, and an empty vial comes out, while tray A's test runs behind it."
   },
   {
-   "start_frame": 570,
+   "start_frame": 783,
    "text": "The arm takes the empty vial back to the instrument for its next sample."
   }
  ]
