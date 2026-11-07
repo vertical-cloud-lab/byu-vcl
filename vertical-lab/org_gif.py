@@ -17,12 +17,13 @@ do some workflows"), on round 4's ("you should have started backed off to see th
 2. only then does the MiR come in and dock at the opening;
 3. at tray B (chapter 1's tray, ``alloy_charge.Charge``: the charge rack, the vacuum press, the multi-doser v5 on its
    HR-202i), the arm takes an empty 5N Al charge cup out of the rack and stands it on the fork of the doser's vessel
-   shuttle. The camera pulls back to take in the doser's chain of 13 powder modules, two of them labelled with their
-   powders as they ride it (ModuleLabels). For each powder, Si (3.92 g, 26.8 mm up the bore) and then the AlSi10Mg
-   top-up (3.91 g, to 46.1 mm): the chain brings the module to the station, the electronics carriage docks and tilts
-   it, and only then does the shuttle carry the cup in over the balance and set it on a tall pedestal (HIGH_SEAT), its
-   rim 34 mm under the auger's exit; the doser doses it by weight, and the shuttle takes it back out so that the
-   carriage can park for the next index. The cup is drawn cut open while it fills. The arm stands it in a pocket of
+   shuttle. The camera pulls back to take in the doser's chain of 13 powder modules: the four that hold a powder in
+   chapter 1 drawn in their powders' colours, two of them labelled as they ride it (Modules). For each powder, Si
+   (3.92 g, 26.8 mm up the bore) and then the AlSi10Mg top-up (3.91 g, to 46.1 mm): the chain brings the module to the
+   station, the electronics carriage docks and tilts it, and only then does the shuttle carry the cup in over the
+   balance and set it on a tall pedestal (HIGH_SEAT), its rim 34 mm under the auger's exit; the camera goes in to it
+   (CUP_OFF), the doser doses it by weight, and the shuttle takes it back out so that the carriage can park for the
+   next index. The cup is drawn cut open while it fills. The arm stands it in a pocket of
    the cup carrier on the MiR's cabinet (chapter 2's carrier);
 4. tray B goes back up while the MiR drives to the rePowder (PR #327's refined model: its lid hinged at the back, the
    draw latch and the pneumatic locking bolt as joints, ``repowder/model.py``);
@@ -89,8 +90,9 @@ NAME = os.environ.get("ORG_NAME", "org_vertical_lab")   # another name renders b
 TITLE = "In a vertical lab, equipment is brought to the operator"
 SPEED = 1.5          # the GIF plays the clip at this many times its modelled speed, and says so (12 fps x 1.5: 18 fps,
                      # frame delays of 6 and 5 cs in turn)
-GIF_W = 1024         # px; the org README shows it about 830 px wide. Round 3's 1280 px gave 37 MB for the first half
-                     # of round 4's loop alone; 1024 px about two thirds of that
+GIF_W = int(os.environ.get("ORG_GIF_W", "960"))   # px; the org README shows it about 830 px wide. Round 3's 1280
+                     # px gave 37 MB for the first half of round 4's loop alone; 1024 px about two thirds of that.
+                     # Round 5's loop: 52.7 MB at 1024 px, 47.5 MB at 960
 TEXT = 1.45          # the overlay's text, against the scenes' 720p sizes: the README shows the GIF at about 0.65x
 S1_TRAYS = "ABCDEFJ"     # Shuttle 1's trays (setup_lab.TRAYS): the only ones loaded
 
@@ -1132,8 +1134,8 @@ def movie():
         yield 1.4, lambda: both(rb.joint_to(A.PARK_RAD), cam_up(sc, "dose"))
         yield from call(lambda: labels(*lbl_mods, lbl_chain))
         for layer, pname, h0, h1, text in (
-                (0, "Si", 0.0, h_si, f"The doser has a powder in each module. The chain brings the Si to the "
-                                     f"balance, and {PR['alloying_g']:.2f} g of it goes into the cup ..."),
+                (0, "Si", 0.0, h_si, f"One powder in each module: the chain brings the Si to the balance, and "
+                                     f"{PR['alloying_g']:.2f} g of it goes into the cup ..."),
                 (1, "AlSi10Mg", h_si, h_set, f"... then the AlSi10Mg module: {PR['top_up_g']:.2f} g on top, for "
                                              f"Al-10Si.")):
             m = AC.MODULE[pname]
@@ -1550,7 +1552,8 @@ def gif(width=GIF_W, lossy=0, colors=112, sticky=int(os.environ.get("ORG_STICKY"
     Round 4's is 1331 frames, wide and close, with the camera moving for about a third of them (the zoom in and out,
     the push in to the pan and back, the pan with the MiR, the bore and the cutaway). Its first half alone came to
     37.2 MB at 1280 px, 128 colours and `sticky` 6; 26.0 MB at 1024 px; 28.3 MB at 1120 px, 112 colours and 8. So
-    1024 px, 112 colours and 8."""
+    1024 px, 112 colours and 8.
+    Round 5's is 1563 frames (the trays loaded, the doser's close views): 52.7 MB at 1024 px, 47.5 MB at 960 px."""
     from PIL import Image
 
     from scene import OUT
