@@ -440,7 +440,9 @@ def hardness() -> Instrument:
 
 # ===================================================================================================== VHX
 BAR_T = 6.0                 # the E8 subsize bar as printed (alloy_models.E8_SUB)
-VHX_SLIDE = 110.0           # the loading slide's run to the front, clear of the ring light and the camera (ours)
+VHX_SLIDE = 140.0           # the loading slide's run to the front, clear of the ring light and the camera (ours).
+#                             Round 10: 140 (was 110). At 110 the arm's wrist 2 grazed the stand as it set the bar down
+#                             (1 frame of chapter 7's audit); 130 cleared it in a probe of the line down, 150 too
 VHX_CARRIER = dict(w=40.0, l=70.0, t=4.0, ped_w=8.0, ped_h=10.0)   # its carrier and the bar's pedestal (ours)
 
 
