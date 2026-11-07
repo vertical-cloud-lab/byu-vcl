@@ -19,7 +19,7 @@
   },
   {
    "label": "1/4  Hour by hour",
-   "caption": "Hour by hour, the first day. A person comes in 08:00-16:00 to change the atomizer's crucible; the arms, the MiR250s and the Shuttles do the rest, and keep going with the lights off.",
+   "caption": "Hour by hour, the first day. One person comes in 08:00-16:00: the atomizer's crucible first, then the day's upkeep where it is done (a tray held at a Shuttle's opening with the units kept away, a floor machine, a unit on its charger). The arms run their reference checks between jobs, and keep going with the lights off.",
    "start_frame": 15,
    "end_frame": 194,
    "lab_hours": [
@@ -29,7 +29,7 @@
   },
   {
    "label": "2/4  Day by day",
-   "caption": "Day by day. The atomizer runs only while someone is on site: one run a day while the lab is commissioned, then three a weekday. The rest runs round the clock and over the weekends.",
+   "caption": "Day by day. The atomizer runs only while someone is on site: one run a day while the lab is commissioned, then three a weekday. A beacon is amber while its machine is out for upkeep, red while a fault waits for the next shift or for parts; the rest runs round the clock.",
    "start_frame": 195,
    "end_frame": 290,
    "lab_hours": [
@@ -39,7 +39,7 @@
   },
   {
    "label": "3/4  Week by week",
-   "caption": "Week by week. An alloy is fully tested about half a day after it is atomized. One in ten is promoted to a full plate of E8 bars, which takes eight more atomizer runs.",
+   "caption": "Week by week. Upkeep takes 18 of the person's 40 hours a week on average, the crucible 13 more. An alloy is fully tested about half a day after it is atomized; one in ten is promoted to a full plate of E8 bars.",
    "start_frame": 291,
    "end_frame": 374,
    "lab_hours": [
@@ -49,7 +49,7 @@
   },
   {
    "label": "4/4  Month by month",
-   "caption": "Month by month, to the end of the first year. The counters are a model built from each chapter's step times and the assumptions in notes/timelapse.md, not measurements.",
+   "caption": "Month by month, to the end of the first year. Upkeep and failures cost 20 of the 324 alloys the same schedule would test with none (the faint line). A model built from each chapter's step times and the assumptions in notes/timelapse.md and notes/upkeep.md, not measurements.",
    "start_frame": 375,
    "end_frame": 470,
    "lab_hours": [

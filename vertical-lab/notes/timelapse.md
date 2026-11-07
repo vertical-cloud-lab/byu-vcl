@@ -51,12 +51,15 @@ the film shows them. [notes/upkeep.md](upkeep.md) is the model and its answer.
 
 ## The render
 
-- **[MP4](../out/mp4/timelapse.mp4):** 525 frames at 6 fps, 87.5 s, 9.5 MB.
-- **[GIF](../out/timelapse.gif):** 400 px at 3 fps, 3.8 MB.
-- **[Still](../out/timelapse_still.png):** month by month.
-- **Cost:** 28 min in one slot (19:11-19:40 UTC), 2.8 s a frame with every tray built.
+- **[MP4](../out/mp4/timelapse.mp4), [GIF](../out/timelapse.gif), [still](../out/timelapse_still.png)** (month by
+  month).
+- **Round 8's render, for the record:** 9.5 MB, its GIF 3.8 MB, 28 min in one slot (19:11-19:40 UTC), 2.8 s a frame.
 - **Not checked:** no arm audit, since the units' poses are shown, not planned (see Caveats).
-- **Round 10's render with upkeep:** not yet rendered; the numbers above are the model's.
+- **Round 10's render, with upkeep** (what the MP4, the GIF and the still now are):
+  - 525 frames at 6 fps, 87.5 s; MP4 9.2 MB; GIF 400 px at 3 fps, 3.7 MB.
+  - 26 min in one slot (23:11-23:37 UTC, then the GIF to 23:41), about 2.7 s a frame with every tray built.
+  - Its preview was built with `VLAB_ONLY_TRAYS=ABDEFJKLMNO` (4 GB) to get a slot sooner. The render builds every
+    tray, as before.
 
 ## What the clip shows
 
