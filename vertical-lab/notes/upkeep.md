@@ -263,4 +263,4 @@ A rate we have no figure for is a guess, and is labelled as one.
 - **The finale shows this schedule** (notes/timelapse.md):
   - its person and vendor are drawn where their task is;
   - its beacons go amber for upkeep and red for a fault that waits;
-  - its upkeep strip counts the person's week, the hours and tasks so far, and availability so far.
+  - its upkeep card counts the person's week, the hours and tasks so far, and availability so far.

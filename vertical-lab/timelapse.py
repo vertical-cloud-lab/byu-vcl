@@ -28,9 +28,9 @@ mind is maintenance over long-term and how that gets handled in workflows." ``si
 seeded failures into the same schedule (calendar PM, consumables by use, the arms' reference checks, repairs), and the
 film shows them: the one person on shift drawn where their task is (the atomizer's crucible, a tray held at a
 Shuttle's opening with the units kept away, a floor machine, a unit on its charger), a vendor likewise, the beacons
-amber while a station is out for upkeep and red while a fault waits for someone, and a strip of counters under the
-throughput ones: people's hours this week, upkeep hours and tasks so far, availability so far. The chart and the
-totals card set the year against the same schedule with no upkeep at all (round 8's).
+amber while a station is out for upkeep and red while a fault waits for someone, and a card of counters at the right
+edge, beside the throughput ones: people's hours this week, upkeep hours and tasks so far, availability so far. The
+chart and the totals card set the year against the same schedule with no upkeep at all (round 8's).
 """
 from __future__ import annotations
 

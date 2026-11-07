@@ -35,7 +35,8 @@ the film shows them. [notes/upkeep.md](upkeep.md) is the model and its answer.
   At the week and month scales a beacon is red or amber when that was over 2 h of its last day.
 - **"Running now"** lists the upkeep first, each row with a dot in its beacon's colour: the person's task, a vendor's
   visit, a fault waiting, the arm's checks.
-- **A strip of counters under the ribbon** (a model, like the rest):
+- **A card of counters at the right edge,** over the racking and above the chart (a model, like the rest). A first
+  version ran as a strip under the ribbon, but it hid the north row's beacons and the Shuttles' tops. The card shows:
   - the person's hours this week, of 40 (crucible and upkeep);
   - upkeep so far: people's hours and the arms' check hours;
   - tasks done, and repairs;
