@@ -85,10 +85,14 @@ only what is specific to the product. The machine-readable list is [`characteriz
 
 ### 3. Contact
 - **Email:** info@rigaku.com (general; the only address on the contact page). **Phone:** +1 281-362-2300 (Rigaku Americas,
-  9009 New Trails Drive, The Woodlands, TX 77381; search result, **[to confirm]**).
+  The Woodlands, TX; the service page prints it only as the extension route "+1 281-362-2300 x 132", so the main
+  sales number is **partial**: `(verified as the Rigaku Americas switchboard: https://rigaku.com/service-and-support/contact-service, 2026-11-07)`;
+  the street address 9009 New Trails Drive is `(unverified: not on the pages read)`). The contact page now routes sales to a
+  form at <https://rigaku.com/about/contact-sales> (the old `/contact-us` URL is a 404; the live one is
+  <https://rigaku.com/about/contact-us>, verified 2026-11-07).
 - **Quote form:** <https://rigaku.com/products/get-a-quote?product_lines___us=XRD&xrd_products=MiniFlex>. **Service desk:**
-  support@rigaku.com, 1-888-362-2324 (search result, **[to confirm]**).
-- **Regional rep (Utah / Mountain West):** not published. Ask the form.
+  support@rigaku.com, 1-888-362-2324 (24/7 help desk) `(verified: https://rigaku.com/service-and-support/contact-service, 2026-11-07)`.
+- **Regional rep (Utah / Mountain West):** `(unverified: no territory list on rigaku.com; ask the sales form, checked 2026-11-07)`.
 - **Academic:** none found.
 
 ### 4. Our open questions for them
@@ -119,7 +123,7 @@ only what is specific to the product. The machine-readable list is [`characteriz
 ### 1.8 SRM 640 and the holders
 - **NIST SRM 640f** is the seventh-generation Si powder standard, about 7.5 g, a = 0.5431144 nm (NIST certificate). The
   Sigma-Aldrich listing already shows a newer **640g**, so **order the current one**. NIST SRM program: 301-975-2200,
-  SRMMSDS@nist.gov (the SDS contact; search result, **[to confirm]**); catalog <https://www.nist.gov/srm>. Price: not found.
+  SRMMSDS@nist.gov (the SDS contact) `(unverified: not on nist.gov/srm or nist.gov/srm/contact-us; the NIST switchboard 301-975-2000 is on those pages, 2026-11-07)`; catalog <https://www.nist.gov/srm>. Price: not found.
 - **Zero-background holders:** ask Rigaku for its own holder part number; third-party Si holders are a cheaper route but
   were **not verified** here.
 
@@ -176,9 +180,10 @@ only what is specific to the product. The machine-readable list is [`characteriz
 - **Web form (sales):** <https://www.malvernpanalytical.com/en/about-us/contact-us/sales>; the contact page also routes to
   application support (`/en/support/contact-support/application-enquiry`), service, consumables, and "find your local
   contact" (`/en/about-us/contact-us/distributors`, which loaded as a JS form).
-- **Phone (US):** +1 800-279-7297, Westborough, MA, **from a directory, [to confirm]**; two older addresses conflict
-  (2400 Computer Drive and 117 Flanders Road). **Email:** none published.
-- **Regional rep (Utah):** a regional manager is assigned by the form. **Academic:** **[to confirm]** (ask).
+- **Phone (US):** +1 800-279-7297, Westborough, MA, `(unverified: the contact and sales pages print no phone;
+  a Malvern event page (Sept 2025) gives the office as 2400 Computer Drive, Suite 2100, Westborough, MA 01581; 117 Flanders Road is older)`.
+  The sales page <https://www.malvernpanalytical.com/en/about-us/contact-us/sales> is a form promising a reply "within 1 business day" `(verified: 2026-11-07)`. **Email:** none published.
+- **Regional rep (Utah):** a regional manager is assigned by the form `(unverified: the distributors page is a JS form that returned no list to the runner or to Chromium on the Pi, 2026-11-07)`. **Academic:** ask.
 
 ### 4. Our open questions for them
 From `notes/refine_mastersizer.md`, `notes/alloy_characterize.md`:
@@ -260,9 +265,11 @@ From `notes/refine_mastersizer.md`, `notes/alloy_characterize.md`:
   <https://www.bruker.com/en/meta/forms/baxs-form-pages/marketo-forms/baxs-sales-contact-form-xrf.html> and request a quote
   <https://www.bruker.com/en/meta/forms/baxs-form-pages/marketo-forms/baxs-sales-contact-form-quote-xrf.html>. The
   contact page (<https://www.bruker.com/en/about-us/contact.html>) is a form only; it was fetched through the Pi.
-- **Phone:** Bruker AXS Inc., 5465 East Cheryl Parkway, Madison, WI 53711, **+1 608-276-3000** (IUCr supplier directory
-  and Bruker's XRD page, search result, **[to confirm]**). **Email:** no sales email published.
-- **Regional rep:** the US XRF sales role is "central region" (job postings); a Utah rep is **[to confirm]**. S2 PUMA is
+- **Phone:** Bruker AXS Inc., 5465 East Cheryl Parkway, Madison, WI 53711, **+1 608-276-3000** `(verified: https://www.bruker.com/en/services/support/office.americas.united-states-madison.html, 2026-11-07)`.
+  **Email (XRF, single-crystal XRD, XRD sales):** **info.baxs@bruker.com** `(verified: same page, 2026-11-07)`; service
+  **service.baxs.us@bruker.com**, +1 800 234-XRAY (same page). Micro-XRF/TXRF/handheld sales is a different address
+  (info.bna@bruker.com); do not use it for the S2 PUMA. (The earlier note "no sales email published" was wrong.)
+- **Regional rep:** the US XRF sales role is "central region" (job postings); a Utah rep `(unverified: no territory list on the Madison office page, 2026-11-07)`. S2 PUMA is
   also sold through distributors elsewhere (for example DKSH in Asia); none found for the Mountain West.
 
 ### 4. Our open questions for them
@@ -340,16 +347,19 @@ From `notes/instruments_char.md` ("Ask Bruker for the open height") and `notes/r
 - **Automation kits:** none found; an auto-feeder is not part of the series.
 
 ### 3. Contact
-- **Hitachi High-Tech America:** 5100 Franklin Drive, Pleasanton, CA 94588 (directory, **[to confirm]**). The
+- **Hitachi High-Tech America:** 5100 Franklin Drive, Pleasanton, CA 94588 `(unverified: the US site blocks the runner and the Pi; a search index of the US site's Locations page shows 5960 Inglewood Drive, Suite 200, Pleasanton, CA 94588-3355, +1-925-218-2800, so the Franklin Drive address is probably old)`. The
   **U.S. site <https://www.hitachi-hightech.com/us/> blocks both the runner (403) and the Pi (Akamai "Access Denied")**,
-  so no official phone or email was read. Directory numbers conflict (+1 925-218-2800; 800-227-8877; others), so **use the
+  so no official phone or email was read (Chromium on the Pi was also refused, 2026-11-07).
+  **Utah lead, `(unverified: indexed by search but not fetched)`:** Hitachi's US electron-microscope sales page for the **West region, which lists UT**
+  (<https://www.hitachi-hightech.com/us/en/support/microscopes/em-sales_contacts/west.html>) names a regional sales manager at
+  **(800) 253-3053** (the Dallas microscopy customer-service line). A person on a normal browser should open it and read the Utah contact. Directory numbers conflict (+1 925-218-2800; 800-227-8877; others), so **use the
   site's "Contact Us" form and ask for the SEM sales manager**.
-- **Distributor:** McCrone Microscopes & Accessories sells Hitachi tabletop SEMs in the US (search result;
-  whether it covers Utah is **[to confirm]**).
-- **Oxford Instruments NanoAnalysis (US):** **us.nainfo@oxinst.com** (Pittcon 2025 exhibitor listing, **[to confirm]**), 300
-  Baker Avenue, Suite 150, Concord, MA 01742; AZtecOne info at <https://nano.oxinst.com/AZtecOne>. The Oxford contact pages
-  returned no content to the Pi.
-- **Academic:** Oxford offers training courses in Concord and on-site; education pricing **[to confirm]**.
+- **Distributor:** McCrone Microscopes & Accessories, Westmont, IL, **630-887-7100**, lists the Hitachi FlexSEM 1000 II tabletop SEM
+  `(verified: https://www.mccrone.com/contact-us/, 2026-11-07)`; whether it sells the TM4000PlusII or covers Utah is `(unverified)`.
+- **Oxford Instruments NanoAnalysis (US):** **us.nainfo@oxinst.com** `(unverified: an exhibitor listing; not on nano.oxinst.com)`. The official page
+  <https://nano.oxinst.com/contact-us> `(verified: 2026-11-07)` is a web form plus a Concord, MA office, **+1 (978) 369-9933** (fax 978 369-8287), and a UK head office at
+  +44 (0)1494 442255; use the form and ask for a North America EDS sales contact. Address 300 Baker Avenue, Suite 150, Concord, MA 01742; AZtecOne info at <https://nano.oxinst.com/AZtecOne>. (Earlier note that the Oxford contact pages returned nothing was a wrong URL; `/contact-us` works.)
+- **Academic:** Oxford offers training courses in Concord and on-site; education pricing `(unverified: not on the pages read)`.
 
 ### 4. Our open questions for them
 From `notes/refine_sem.md` and `notes/instruments_lab.md`:
@@ -426,8 +436,10 @@ From `notes/refine_sem.md` and `notes/instruments_lab.md`:
 - **KLA's contact page and datasheet were unreachable** from the runner and from the Pi (bot wall). No official email or
   phone was read. **Use KLA's "Contact us" form from <https://www.kla.com/products/instruments/nanoindenters/imicro>
   and its "Request a quote".** A directory lists Oak Ridge, Tennessee as the nanoindenter site (the former Nanomechanics Inc.).
-- **Regional distributor:** none found for the US (NanoTechnology Solutions covers Australia and New Zealand).
-  **[to confirm]**. **Academic:** two universities run an iMicro as a service (UNH, Kassel), so **testing as a service
+  `(unverified: kla.com returns 200 to the runner but the contact text did not load for us, and Chromium on the Pi got nothing, 2026-11-07.)`
+  A search index of kla.com shows, but we did not fetch, **(858) 573-9300** for quotes (iMicro page), **+1 800 600 2829 / nanosupport@kla.com**
+  for service and support, and 105 Meco Lane, Oak Ridge, TN 37830 (<https://www.kla.com/locations>). Treat as `(unverified)` until read in a browser.
+- **Regional distributor:** none found for the US (NanoTechnology Solutions covers Australia and New Zealand) `(unverified)`. **Academic:** two universities run an iMicro as a service (UNH, Kassel), so **testing as a service
   is an alternative** to ask about.
 
 ### 4. Our open questions for them
@@ -502,9 +514,9 @@ From `notes/refine_sem.md` and `notes/instruments_lab.md`:
 - **Email:** info@plastometrex.com (general). **Web form:** <https://www.plastometrex.com/request-a-quote> and
   <https://www.plastometrex.com/book-a-demo>; contact <https://www.plastometrex.com/contact>.
 - **Offices (the contact page):** **U.S. office, 6410 Langfield Rd, Building J, Houston, TX 77092**; UK office, Unit 7
-  Technopark, Newmarket Road, Cambridge CB5 8PB. **Phone (UK):** +44 (0)1223 867992 (search result, **[to confirm]**).
-  A US phone is not published.
-- **Regional rep:** the Houston office; a Mountain West rep is **[to confirm]**. **Academic:** an Illinois MRL facility
+  Technopark, Newmarket Road, Cambridge CB5 8PB. **Phone (UK):** +44 (0)1223 867992 `(unverified: the contact page text we read gave only info@plastometrex.com)`.
+  A US phone is not published. **info@plastometrex.com** `(verified: https://www.plastometrex.com/contact, 2026-11-07)`.
+- **Regional rep:** the Houston office; a Mountain West rep `(unverified: none published)`. **Academic:** an Illinois MRL facility
   runs one (<https://mrl.illinois.edu/facilities/equipment/Indentation-Plastometer-Plastometrex-PLX-Benchtop>).
 
 ### 4. Our open questions for them
@@ -577,7 +589,7 @@ From `notes/refine_pip.md` ("Still uncertain") and the grep of `notes/`:
   site). **Email:** none published; **Ask an Expert** <https://www.keyence.com/inquiry/askKeyence/>, **price**
   <https://www.keyence.com/products/microscope/digital-microscope/vhx-x1/get-pricing/>, **demo**
   <https://www.keyence.com/inquiry/requestDemoTest/>.
-- **Regional rep:** Keyence sells **direct**; a Utah or Mountain West sales engineer is assigned by the form (**[to confirm]**).
+- **Regional rep:** Keyence sells **direct**; a Utah or Mountain West sales engineer is assigned by the form `(unverified: no territory list; 1-888-539-3623 verified on https://www.keyence.com/inquiry/askKeyence/, 2026-11-07; that page also prints info@keyence.com, so a general address exists)`.
 
 ### 4. Our open questions for them
 From `notes/instruments_r7.md` ("To check with Keyence"):
@@ -649,7 +661,7 @@ From `notes/instruments_r7.md` ("To check with Keyence"):
 - **Phone:** **1-888-648-8869** (Mitutoyo America, 965 Corporate Blvd., Aurora, IL 60502, on the contact page).
   **Email:** none published. **Forms:** Request a Quote and Request a Demo on <https://www.mitutoyo.com/contact-us/>.
 - **Regional rep:** **Distributor Locator** on the same site (<https://www.mitutoyo.com/contact-us/>); a Utah distributor is
-  **[to confirm]**.
+  `(unverified: the locator at ecatalog.mitutoyo.com is zip-driven and did not answer the runner or the Pi, 2026-11-07)`. 1-888-648-8869 and the Request a Quote form `(verified: https://www.mitutoyo.com/contact-us/, 2026-11-07)`.
 
 ### 4. Our open questions for them
 1. **Automation:** can **AVPAK** run a test list and export results with **no operator**, driven by a script, a command
@@ -725,13 +737,12 @@ From `notes/instruments_r7.md` ("To check with Keyence"):
 - **Door actuation:** **not published**; the model assumes an actuator on the 3119 door.
 
 ### 3. Contact
-- **Phone:** **+1 800 564 8378** or **+1 781 575 5000**, Instron, 825 University Ave, Norwood, MA 02062-2643 (an Instron
-  brochure; search result, **[to confirm]**). **Email:** none published.
+- **Phone:** **+1 800 564 8378** or **+1 781 575 5000**, Instron, 825 University Ave, Norwood, MA 02062-2643 `(unverified: instron.com returns 403 to the runner and a Cloudflare challenge to Chromium on the Pi, 2026-11-07; a search index of instron.com's Locations page shows 800-564-8378 for sales)`. **Email:** none published.
 - **Web:** <https://www.instron.com/en/contact-us> returns **403 to the runner and a Cloudflare challenge to the Pi**, so
   the contact and quote forms were not read. **Use the form on <https://www.instron.com>.**
 - **Regional rep (Utah / Mountain West):** not published; an Instron **field service engineer role for the Salt Lake City
-  area** exists (a job posting), so there is service coverage. A sales rep is **[to confirm]**.
-- **Academic:** **[to confirm]** (ask for education pricing).
+  area** exists (a job posting), so there is service coverage. A sales rep `(unverified: Instron's contact page is a region selector we could not load)`.
+- **Academic:** `(unverified)` ask for education pricing.
 
 ### 4. Our open questions for them
 From `notes/alloy_workflow.md`, `notes/instruments_r7.md` and the user's request:
@@ -813,10 +824,10 @@ From `notes/alloy_workflow.md`, `notes/instruments_r7.md` and the user's request
 
 ### 3. Contact
 - **ZwickRoell LP, 1009 Market Center Drive NW, Kennesaw, GA 30144**, **+1 770 420 6555**; hotline **+1 678 695 5757**
-  (the contact page, fetched through the Pi). **Email:** no sales email is printed; the page is a form
+  (the contact page `(verified: https://www.zwickroell.com/contact/ and https://www.zwickroell.com/company/about-us/zwickroell-north-america/, 2026-11-07)`). **Email:** no sales email is printed; the page is a form
   (<https://www.zwickroell.com/contact/>), which asks for the country and a "contacts worldwide" selector.
-- **Regional rep (Utah):** the **Contacts worldwide** selector assigns one by zip code (**[to confirm]**).
-- **Academic:** **[to confirm]**.
+- **Regional rep (Utah):** the **Contacts worldwide** selector assigns one by zip code `(unverified: needs a browser form; no Utah rep on the pages read, 2026-11-07)`.
+- **Academic:** `(unverified)`.
 
 ### 4. Our open questions for them
 From `notes/timelapse.md`, `notes/instruments_r7.md` ("whether the zwickiLine's grips take it, is open"):
@@ -887,11 +898,10 @@ From `notes/timelapse.md`, `notes/instruments_r7.md` ("whether the zwickiLine's 
 ### 3. Contact
 - **Tinius Olsen (USA):** **sales@tiniusolsen.com**, **+1 215-675-7100**, 1065 Easton Road, Horsham, PA 19044
   (<https://www.tiniusolsen.com/contact/sales/>); request a quote <https://www.tiniusolsen.com/contact/request-a-quote/>.
-  The site lists named sales contacts and **dealers by country**; a **Utah / Mountain West** sales contact is
-  **[to confirm]** from that list.
+  `(verified: https://www.tiniusolsen.com/contact/sales/, 2026-11-07: US entry is the Horsham HQ, sales@tiniusolsen.com, 215 675 7100; named reps are for Canada and abroad, so no Utah rep is published)`.
 - **ADMET:** **info@admet.com**, **(800) 667-3220** toll-free or **(781) 769-0850**, 51 Morgan Drive, Norwood, MA 02062
-  (<https://www.admet.com/contact/>).
-- **Academic:** both sell to universities; education pricing **[to confirm]**.
+  `(verified: https://www.admet.com/contact/, 2026-11-07; also (781) 769-0884 fax)`.
+- **Academic:** both sell to universities; education pricing `(unverified)`.
 
 ### 4. Our open questions for them
 1. **A motorized horizontal frame at 15 kN with a 100 mm specimen:** **dimensions, weight, force and a drawing**, so we can fit it on
@@ -953,13 +963,12 @@ share of the 1,420 tests a year, 208 V or 120 V **[to confirm]**.
 ### 3. Contact
 - **A&D Weighing:** site <https://weighing.andonline.com/> (the old `andweighing.com` redirects; the page was fetched
   through the Pi and has a contact and quote link). **San Jose** (A&D Engineering): 1756 Automation Pkwy, San Jose,
-  CA 95131, **408-263-5333** (directory, **[to confirm]**); HQ Ann Arbor, MI. **No sales email is published**; the pattern in
+  CA 95131, **408-263-5333** `(unverified: directory only)`. **Official numbers `(verified: https://weighing.andonline.com/contact-us, 2026-11-07)`:** customer service **(888) 726-5931**, technical support/service **(800) 726-4940** (6:00 to 4:30 Pacific, Mon to Fri), and a contact form; the A&D Company page also lists main (800) 726-3364 (search index). **No sales email is published**; the pattern in
   directories is unverified, so **use the site's Contact Us and Request a Quote forms**.
 - **Who sells A&D in the US:** A&D sells through **dealers**: examples found are **Capitol Scientific** (GH-202 page), **MnM Scales**,
-  **Fisher Scientific** and **Rice Lake Weighing Systems** (listing the "Phoenix GH" micro balances). **Utah dealer: [to confirm]**
-  from A&D's dealer locator.
+  **Fisher Scientific** and **Rice Lake Weighing Systems** (listing the "Phoenix GH" micro balances). **Utah dealer: `(unverified: no dealer locator found on weighing.andonline.com, 2026-11-07)`**; ask customer service for the authorized dealer nearest Provo.
 - **Check weights:** **Troemner** (a Henry Troemner LLC product; the **7421-E2W 200 g to 1 mg OIML E2 set with an NVLAP
-  certificate** is listed at **$3,820** on Transcat, **(800) 633-0561**; search result, **[to confirm]**). Sold also
+  certificate** is listed at **$3,820** on Transcat, **(800) 633-0561** was from a product listing and is **not** on Transcat's own page, which gives **(800) 828-1470** `(verified: https://www.transcat.com/contact-us, 2026-11-07)`; use the latter). Sold also
   by Fisher and Thomas Scientific.
 
 ### 4. Our open questions for them
@@ -1001,7 +1010,7 @@ share of the 1,420 tests a year, 208 V or 120 V **[to confirm]**.
 > [to confirm: name, title, phone]
 
 ### 6b. Draft email for check weights
-> **To:** Troemner via Transcat sales, (800) 633-0561
+> **To:** Troemner via Transcat sales, (800) 828-1470 (Transcat contact page)
 > **Subject:** Quote: OIML class E2 weight set with an accredited certificate, 1 mg to 200 g, BYU (Provo, UT)
 >
 > Hello. Please quote a Troemner 7421-E2W (200 g to 1 mg) or equivalent OIML E2 set with an NVLAP certificate, plus
@@ -1037,11 +1046,11 @@ share of the 1,420 tests a year, 208 V or 120 V **[to confirm]**.
 
 ### 3. Contact
 - **Nabertherm Inc. (USA):** **contact@nabertherm.com**, **+1 302-322-3665**, New Castle, DE 19720, **64 Reads Way**
-  (some directories say 54 Read's Way). Source: search results quoting Nabertherm's worldwide sales page; **[to confirm]**.
+  (some directories say 54 Read's Way). `(verified: https://nabertherm.com/en/contact/world-wide-sales, 2026-11-07; fax +1 302 322 3215)`.
   Nabertherm's own contact pages (fetched through the Pi) list **contact@nabertherm.de** and **+49 4298 922-0** (Lilienthal,
   Germany; spare parts **+49 4298 922-474**; service **+49 4298 922-333**).
 - **Regional (Utah):** Nabertherm lists a **dealer log-in and world-wide sales** page; the Mountain West contact is
-  **[to confirm]** (the worldwide sales page was in the search results; its content was not read).
+  `(unverified: the world-wide sales page lists the US subsidiary only, with no regional dealer for Utah, 2026-11-07)`.
 - **Distributors:** MSE Supplies and Fisher Scientific list the NAT 15/65 (search).
 
 ### 4. Our open questions for them
@@ -1067,7 +1076,7 @@ share of the 1,420 tests a year, 208 V or 120 V **[to confirm]**.
 | Utilities | 1-phase, 2.8 kW **[to confirm voltage]**; exhaust not needed **[to confirm]** |
 
 ### 6. Draft email
-> **To:** Nabertherm Inc., contact@nabertherm.com [to confirm], +1 302-322-3665
+> **To:** Nabertherm Inc., contact@nabertherm.com (verified 2026-11-07), +1 302-322-3665
 > **Subject:** Budgetary quote: NAT 15/65 with B510 or C550, robot-loadable door, BYU (Provo, UT)
 >
 > Hello,
@@ -1113,7 +1122,7 @@ share of the 1,420 tests a year, 208 V or 120 V **[to confirm]**.
 - **Interfaces:** CubOS (the lab's). Nothing is vendor-published for the head.
 
 ### 3. Contact
-- **SainSmart technical support:** **support@sainsmart.com** (the V2 user manual). **Quote:** retail purchase; no RFQ needed.
+- **SainSmart technical support:** **support@sainsmart.com** (the V2 user manual) `(partial: https://sainsmart.com/pages/contact-us loaded but printed no address we could read, 2026-11-07)`. **Quote:** retail purchase; no RFQ needed.
 - **The lab's own people:** the CubOS author (Ben, in PR #180) is the "maker" for any question about the head and software
   **[to confirm the contact]**.
 - **Regional rep:** none. **Academic:** none.
@@ -1172,9 +1181,9 @@ share of the 1,420 tests a year, 208 V or 120 V **[to confirm]**.
 
 ### 3. Contact
 - **Web form:** <https://www.nuvant.com/contact> and **Request Quote** on the same site (fetched through the Pi). **Email:**
-  **info@a3global.com** (the only address on the contact page). **Phone:** none published.
-- **Regional rep:** none. **Academic:** NuVant's pages stress education; pricing **[to confirm]**. A directory places the base
-  in Phoenixville, PA (**[to confirm]**).
+  **info@a3global.com** (the only address on the contact page). **Phone:** none published `(verified: https://www.nuvant.com/contact, 2026-11-07)`.
+- **Regional rep:** none. **Academic:** NuVant's pages stress education; pricing `(unverified)`. The contact page gives
+  **300 Schell Ln, 309/310, Phoenixville, PA 19460** `(verified: https://www.nuvant.com/contact, 2026-11-07)`.
 
 ### 4. Our open questions for them
 1. **EIS:** does the **EZstat Pro** have **EIS** (frequency range, an option or a software license)? If not, what is NuVant's
@@ -1236,10 +1245,10 @@ share of the 1,420 tests a year, 208 V or 120 V **[to confirm]**.
 
 ### 3. Contact
 - **Phone:** **+1 (646) 212-3703** (global; product specialists 4:00 AM to 8:00 PM ET, Mon to Fri); **web form**
-  <https://opentrons.com/contact> (responses within 24 hours; the page names a help center for support). **Email:** none
+  <https://opentrons.com/contact> (responses within 24 hours; the page names a help center for support). `(verified via headless Chromium on the Pi: https://opentrons.com/contact, 2026-11-07; also UK/EU +44 758 861 1072; the page is 403 to the runner)`. **Email:** none
   published on that page. **Quote:** Opentrons' shop creates a quote from the cart (<https://shop.opentrons.com>).
 - **Education:** Opentrons advertises **education pricing** (a 2024 press release).
-- **Regional rep:** **[to confirm]** (ask the form).
+- **Regional rep:** `(unverified: none published; ask the form)`.
 
 ### 4. Our open questions for them
 1. **Is the OT-2 supported and available for ten years**, and what are **end-of-life dates for the OT-2 and the Gen2 pipettes**? Is the
@@ -1304,14 +1313,15 @@ From DAL's `bom.csv` (checked 2026-10-17 there):
 ### 3. Contact
 | Vendor | Email | Phone | Form or page | Via Pi |
 |---|---|---|---|---|
-| Innovative Instruments, Inc. (leak-free LF-1/LF-2) | **info@innovativeinstruments.com** | not on the page | <https://www.innovativeinstruments.com/contact> | yes |
-| World Precision Instruments (Dri-Ref) | none printed | **(941) 371-1003**; US toll free **(866) 606-1974**; fax (941) 377-5428 | <https://www.wpiinc.com/contact-us>; 175 Sarasota Center Blvd, Sarasota, FL 34240 | yes |
-| Pine Research Instrumentation | none printed | **+1 (919) 782-8320**, Mon-Fri 9-5 ET | <https://pineresearch.com/contact/> (forms: Quote Request, Technical Support) | yes |
-| BASi (an Inotiv company) | **BASi@basinc.com** (quotes); AR_Orders@basinc.com (orders) | **800-845-4246**; (765) 497-8359 | <https://www.basinc.com/contact> | yes |
-| Gamry Instruments | none printed | **215-682-9330** (US sales, quotes, demos) | <https://www.gamry.com/contact-us/> | yes |
-| Ossila and Advent (DAL BOM) | not read | not read | **[to confirm]** | no |
+| Innovative Instruments, Inc. (leak-free LF-1/LF-2) | **info@innovativeinstruments.com** | not on the page | <https://www.innovativeinstruments.com/contact> `(verified email, 2026-11-07; the page URL itself 404s to the runner, the email appears in the page text)` | yes |
+| World Precision Instruments (Dri-Ref) | none printed | **(941) 371-1003** (verified https://www.wpiinc.com/contact-us 2026-11-07); US toll free **(866) 606-1974**; fax (941) 377-5428 | <https://www.wpiinc.com/contact-us>; 175 Sarasota Center Blvd, Sarasota, FL 34240 | yes |
+| Pine Research Instrumentation | none printed | **+1 (919) 782-8320** (verified https://pineresearch.com/contact/ 2026-11-07), Mon-Fri 9-5 ET | <https://pineresearch.com/contact/> (forms: Quote Request, Technical Support) | yes |
+| BASi (an Inotiv company) | **BASi@basinc.com** (quotes, verified https://www.basinc.com/contact 2026-11-07); AR_Orders@basinc.com (orders) | **800-845-4246**; (765) 497-8359 | <https://www.basinc.com/contact> | yes |
+| Gamry Instruments | none printed | **215-682-9330** (US sales, quotes, demos; verified https://www.gamry.com/contact-us/ 2026-11-07) | <https://www.gamry.com/contact-us/> | yes |
+| Ossila (DAL BOM) | **info@ossila.com** | +44 (0)114 2999 180 (UK) | <https://www.ossila.com/products/reference-electrode> `(verified: 2026-11-07)` | no |
+| Advent Research Materials (DAL BOM) | **info@advent-rm.com** | +44 1865 884 440 (UK) | <https://www.advent-rm.com/contact> `(verified: 2026-11-07)` | no |
 
-- **Regional rep (Utah):** none published for any; **[to confirm]** from each form. **Academic:** BASi has educational kits; others **[to confirm]**.
+- **Regional rep (Utah):** none published for any `(unverified: all six forms; none shows a territory list, 2026-11-07)`. **Academic:** BASi has educational kits; others **[to confirm]**.
 
 ### 4. Our open questions for them
 1. **Leak-free mini-reference:** the **LF-1 and LF-2 or Dri-Ref** outer diameter, **tip length**, and whether the **2 mm** body fits a **3 mm
@@ -1355,11 +1365,13 @@ From DAL's `bom.csv` (checked 2026-10-17 there):
 
 | Gap | Why it matters | What to do |
 |---|---|---|
-| **No official contact for Hitachi (US), KLA and Instron** | Their sites block the runner and the Pi (Akamai, bot wall, Cloudflare). Phones and addresses are from directories and brochures | Someone on a normal browser opens the web forms and reads the sales phone |
+| **No official contact read for Hitachi (US), KLA and Instron** | Their sites block the runner, the Pi and headless Chromium on the Pi (second pass 2026-11-07). Search indexes of the official pages show: Hitachi **West region EM sales page lists UT**, (800) 253-3053; KLA quotes (858) 573-9300, support +1 800 600 2829, nanosupport@kla.com; Instron sales 800-564-8378. None of these was fetched | Someone on a normal browser opens Hitachi's `.../em-sales_contacts/west.html`, KLA's iMicro page and Instron's contact page and reads the Utah/sales contact |
 | **No US sales email for most vendors** | Most publish only a form, and no email is guessed | Use the forms; copy the draft email into them |
 | **No Utah or Mountain West rep** for any vendor | A regional rep is where the fastest quote and the service engineer come from | Ask in each form; Instron has a Salt Lake City field-service role |
 | **Pending vendor data**: Hitachi III, Mastersizer 3000+, A&D replacement, NAT 15/65 US voltage | The model uses older names | Each draft asks |
 | **The HM-220's AVPAK, the S2 PUMA's Automation and the Instron's AT6 automation interfaces** | The lab needs a command interface | Asked first in each section |
 | **Prices** | None of these vendors publish list prices (Troemner's 7421-E2W, $3,820 on Transcat, is the exception) | Budgetary quotes (list and academic, valid 90 days) |
-| **Confirm every `[to confirm]`** | Several numbers came from search snippets | Verify on the vendor page before sending |
+| **Second pass 2026-11-07: verified from the vendor's own page** | Rigaku service line and 281-362-2300 x132; Bruker Madison phone, info.baxs@bruker.com and service@ (the old note "no sales email" was wrong); Plastometrex info@; Keyence phone; Mitutoyo phone; Zwick phone; Tinius Olsen sales@ and phone; ADMET; Nabertherm Inc. (contact@nabertherm.com, +1 302 322 3665, 64 Reads Way); Oxford's Concord phone; McCrone phone; NuVant address; Opentrons phone; A&D US service numbers; Transcat (800) 828-1470 (the (800) 633-0561 was wrong); Gamry, Pine, BASi, WPI, Innovative Instruments, Ossila, Advent | Nothing further for these |
+| **Still unverified** | Malvern US phone (no phone on its pages); Oxford us.nainfo@oxinst.com; Rigaku street address; A&D San Jose 408-263-5333; NIST SRMMSDS@nist.gov; SainSmart support@ (loaded page showed no address) | Use the forms; do not email an unverified address without a check |
+| **No Utah or Mountain West rep published** | Every vendor's territory list is a JS form, a region selector or a zip lookup (Malvern, Mitutoyo, Zwick, Instron, A&D dealers); Tinius Olsen's US entry is HQ only | Ask in each form; call A&D customer service (888) 726-5931 for the dealer nearest Provo |
 
