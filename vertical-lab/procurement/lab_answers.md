@@ -99,6 +99,14 @@ Ranked from must to nice. Each vendor section asks which apply.
 | Academic or education pricing | Yes, please quote it |
 | Shipping | Delivered to Provo, UT 84602. Rigging and installation itemised **[to confirm the receiving address]** |
 | Trade-ins or used units | Welcome for VLMs and large machines |
+| Tax-exempt status | BYU is a private university; sales-tax exemption and the exemption certificate to give a vendor **[to confirm with BYU Purchasing]**. Do not assume Utah's exemption applies |
+| Who places the order | A BYU purchase order through BYU Purchasing; vendors invoice BYU, not a person **[to confirm with BYU Purchasing]** |
+| W-9, vendor registration, payment terms | BYU Purchasing's vendor-setup forms and payment terms **[to confirm with BYU Purchasing]**. Ask the vendor for its W-9 and remit-to details |
+| Incoterms and imports | For EU and Asian makers, ask for a delivered-duty-paid price to Provo, UT; customs broker and import duty on the vendor **[to confirm with BYU Purchasing]** |
+| Export and end-use | Academic research use only, no re-export, no military end use. EU powder and laser equipment may ask for an end-user statement, which BYU's export-control office would sign **[to confirm]** |
+| Dock, lift gate, crane | Whether the receiving dock takes a truck with a lift gate, pallet jack and forklift access, and the route to the lab room **[to confirm with BYU facilities]** |
+| Hazardous materials | Reactive aluminium fines (NFPA 484-type), argon, IPA and fine metal powders are on site; vendor service staff get an EHS briefing first **[to confirm]** |
+| Insurance, references | A certificate of insurance for installers and two university references per large item are welcome |
 
 ## Service, training, upkeep
 
