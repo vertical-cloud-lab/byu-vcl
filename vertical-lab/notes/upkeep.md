@@ -35,6 +35,11 @@ Over a modelled year:
 Everything here is a model. 72 of the 121 tasks and all 28 failure modes have assumed intervals or rates; the 49 with
 a maker's figure or a standard behind them cite it ([what is sourced](#sourced-and-assumed)).
 
+The clip [`out/mp4/upkeep_clip.mp4`](../out/mp4/upkeep_clip.mp4) shows three of these happening: the week's
+schedule, the arm's daily balance check with its control chart, and a person changing the iMicro's tip with tray E
+on the extraction table ([notes](upkeep_clip.md)). The finale [`out/mp4/timelapse.mp4`](../out/mp4/timelapse.mp4)
+shows the whole year of it ([notes](timelapse.md)).
+
 ```bash
 python3 upkeep.py            # the model -> out/upkeep_model.json, out/upkeep_year.png, out/upkeep_week.png
 python3 timelapse.py model   # the finale's model, which books the same upkeep -> out/timelapse_model.json
@@ -50,8 +55,10 @@ hand at work. Grey is process steps; colour is upkeep, by who does it.
 - **The top row is the one person.** Their crucible hours (dark) come first. Their upkeep fills the gaps on the
   weekday shift and stops at 16:00.
 - **The arm's checks (blue) run at night,** between jobs, on the station they check.
-- **Hatched red is a fault waiting for a person:** the CubXL's on Thursday night, the units' early on Friday. A fault
-  that needs a hand waits for the next shift, since nobody is on call.
+- **Pink on Friday morning is a vendor** verifying the zwickiLine's force and the HM-220. Both are on tray L, so the
+  tray is held at Shuttle 2's opening for the visit (row "Shuttle 2").
+- **Hatched red is a fault waiting for a person.** The units' faults wait early on Friday. The CubXL's comes on Friday
+  evening and waits all weekend. A fault that needs a hand waits for the next shift, since nobody is on call.
 
 ## The four kinds
 
