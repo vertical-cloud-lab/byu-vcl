@@ -45,7 +45,8 @@ the film shows them. [notes/upkeep.md](upkeep.md) is the model and its answer.
 
 **What it costs** (`out/timelapse_model.json` `upkeep`, the same numbers as `out/upkeep_model.json`):
 - **304 alloys fully tested in the year, not 324;** 354 atomized, not 378. Planned upkeep alone costs nothing
-  measurable; the failures cost the 20.
+  measurable; the failures cost the 20. The failures are seed 303's, the unluckiest of eight seeds tried: seeds 1-7
+  give 312-321 (notes/upkeep.md, Caveats).
 - **The person:** 31 of 40 h a week, 13 of them at the crucible.
 - **Availability:** the stations 99.0 % on average; the atomizer 95.2 %; the units 95.3-95.4 %.
 
