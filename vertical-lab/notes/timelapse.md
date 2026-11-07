@@ -5,11 +5,48 @@ high-speed, starting by the hour, then day-by-day, then by weeks and months show
 number of unique alloys fully tested and printed."
 
 ```bash
-python3 timelapse.py model                                   # the throughput model -> out/timelapse_model.json
+python3 timelapse.py model                                   # the model, upkeep booked -> out/timelapse_model.json
 PREVIEW=1 VIZ3D_FPS=6 xvfb-run -a python3 timelapse.py       # nine frames -> /tmp/preview_timelapse.png
 VIZ3D_FPS=6 xvfb-run -a python3 timelapse.py                 # -> out/mp4/timelapse.mp4, out/timelapse.gif, still
 python3 timelapse.py gif                                     # the GIF again from the MP4, under 4.9 MB
 ```
+
+## Round 10: upkeep in the schedule and on screen
+
+Sterling, on PR #318 (2026-11-07): "Something that's been on my mind is maintenance over long-term and how that gets
+handled in workflows." The finale used to run the lab with no maintenance beyond Friday afternoons and two failure
+rates. Now `timelapse.sims()` books `upkeep.py`'s 121 tasks and 28 failure modes into the same greedy schedule, and
+the film shows them. [notes/upkeep.md](upkeep.md) is the model and its answer.
+
+**On screen:**
+- **The person on shift** (lab coat) is drawn where their task is, at the hour and day scales:
+  - at the atomizer for each run's crucible hour;
+  - at a Shuttle's opening with the tray held there;
+  - at a floor machine;
+  - beside a unit on its charger.
+  At a desk they aren't drawn. The figure is `upkeep_clip.Person`. A vendor (navy jacket) is drawn the same way
+  during their visit.
+- **An opening held by a person or a vendor shows its tray there,** and the units keep off that Shuttle's dock, as
+  the MiR drives off in the upkeep clip. A unit under upkeep, or stopped by a fault, waits on its charger.
+- **The beacons:**
+  - amber while a machine or a Shuttle is out for upkeep, a person at it or not;
+  - red while a fault waits for the next shift or for parts (a dripped run stays red too);
+  - blue while the arm runs a check on it, as when it loads one.
+  At the week and month scales a beacon is red or amber when that was over 2 h of its last day.
+- **"Running now"** lists the upkeep first, each row with a dot in its beacon's colour: the person's task, a vendor's
+  visit, a fault waiting, the arm's checks.
+- **A strip of counters under the ribbon** (a model, like the rest):
+  - the person's hours this week, of 40 (crucible and upkeep);
+  - upkeep so far: people's hours and the arms' check hours;
+  - tasks done, and repairs;
+  - availability so far: the route's stations on average, the atomizer, the two units.
+- **The chart and the totals card** add the year with no upkeep at all, as round 8 had it: a faint line, and a row.
+
+**What it costs** (`out/timelapse_model.json` `upkeep`, the same numbers as `out/upkeep_model.json`):
+- **304 alloys fully tested in the year, not 324;** 354 atomized, not 378. Planned upkeep alone costs nothing
+  measurable; the failures cost the 20.
+- **The person:** 31 of 40 h a week, 13 of them at the crucible.
+- **Availability:** the stations 99.0 % on average; the atomizer 95.2 %; the units 95.3-95.4 %.
 
 ## The render
 
@@ -18,6 +55,7 @@ python3 timelapse.py gif                                     # the GIF again fro
 - **[Still](../out/timelapse_still.png):** month by month.
 - **Cost:** 28 min in one slot (19:11-19:40 UTC), 2.8 s a frame with every tray built.
 - **Not checked:** no arm audit, since the units' poses are shown, not planned (see Caveats).
+- **Round 10's render with upkeep:** not yet rendered; the numbers above are the model's.
 
 ## What the clip shows
 
@@ -126,6 +164,19 @@ at 1 Mbit/s, 24 h a day (assumed).
 
 ## What it gives
 
+With upkeep and failures booked (round 10, what the finale now shows):
+
+| By | Atomized | Printed | Fully tested | Promoted | Runs | Powder | Tensile tests | Instrument data | Video |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 day | 1 | 1 | 1 | 0 | 1 | 0.3 kg | 4 | 5 GB | 0.3 TB |
+| 1 week | 5 | 5 | 5 | 0 | 5 | 1.4 kg | 20 | 23 GB | 2.4 TB |
+| 4 weeks | 19 | 16 | 16 | 1 | 30 | 7.4 kg | 68 | 96 GB | 9.7 TB |
+| 13 weeks | 83 | 72 | 72 | 6 | 146 | 36 kg | 312 | 0.45 TB | 31 TB |
+| 26 weeks | 170 | 146 | 146 | 13 | 312 | 77 kg | 636 | 0.94 TB | 63 TB |
+| 52 weeks | 354 | 304 | 304 | 29 | 658 | 162 kg | 1,332 | 2.0 TB | 126 TB |
+
+With no maintenance (round 8, kept in `out/timelapse_model.json` as `totals_without_upkeep`):
+
 | By | Atomized | Printed | Fully tested | Promoted | Runs | Powder | Tensile tests | Instrument data | Video |
 |---|---|---|---|---|---|---|---|---|---|
 | 1 day | 1 | 1 | 1 | 0 | 1 | 0.3 kg | 4 | 4.6 GB | 0.35 TB |
@@ -134,6 +185,14 @@ at 1 Mbit/s, 24 h a day (assumed).
 | 13 weeks | 86 | 74 | 74 | 6 | 156 | 38 kg | 320 | 0.47 TB | 31 TB |
 | 26 weeks | 184 | 158 | 158 | 15 | 338 | 83 kg | 692 | 1.0 TB | 63 TB |
 | 52 weeks | 378 | 324 | 324 | 31 | 702 | 173 kg | 1,420 | 2.1 TB | 126 TB |
+
+- **With upkeep, the first alloy is fully tested 23 h after the lab starts,** not 16 h. Day 1 has the MIDI's weekly
+  clean and a recoater crash on it.
+- **From atomized to fully tested is a median of 12.8 h,** but up to 124 h when an alloy waits on a repair or a part.
+- **The atomizer uses 658 of its 702 staffed run slots.** The rest are lost to its faults, a part from AMAZEMET and
+  the days its person is busy with a repair.
+
+The bullets below are round 8's, with no maintenance:
 
 - **The atomizer is the bottleneck.** It uses every staffed run slot of the year (702 of 702). Its busy share is only
   21 %, because the slots, not the machine, set the pace.
@@ -149,9 +208,10 @@ at 1 Mbit/s, 24 h a day (assumed).
 
 - **This is a model of the lab running as designed, not a measurement or a forecast.** The rates of the steps the lab
   hasn't run yet (the screening build, the automated sample prep and characterization) are guesses, marked as such.
-- **The schedule is greedy, not optimised.** It has no breakdowns beyond the two failure rates and Friday afternoons,
-  no holidays, and no waiting for the optimiser. A new composition is always ready. People's time beyond the crucible
-  isn't counted: restocking, replacing worn discs, sieve cleaning, the crucible stock.
+- **The schedule is greedy, not optimised.** It has no holidays and no waiting for the optimiser, and a new
+  composition is always ready. Since round 10 it books upkeep.py's maintenance, restocking and seeded failures, and
+  counts the person's time on them (notes/upkeep.md). Before that it had no breakdowns beyond the two failure rates
+  and Friday afternoons.
 - **Transfers are booked only at a step's start,** for 6 min, so the units' load is understated.
 - **The screening build's miniature tensile specimens are an assumption.** Chapter 5's E8 subsize bars are 100 mm
   long and need the full 170 mm plate, so a 55 mm kit build can only hold miniature specimens. Which geometry, and
