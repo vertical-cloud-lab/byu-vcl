@@ -55,10 +55,11 @@ Envelope about 1000 x 800 x 1600 mm (`REPOWDER`, from the O&MM p. 42 and facilit
 
 ### 3. Contact
 
-- **Email:** sales@amazemet.com; office@amazemet.com
-- **Phone:** +48 573 481 303
+- **Email:** sales@amazemet.com; office@amazemet.com (verified: https://amazemet.com/contact/, 2026-11-07)
+- **Phone:** +48 573 481 303 (verified: https://amazemet.com/contact/, 2026-11-07)
 - **Web / form:** https://amazemet.com/contact/ (form goes to the sales and application team)
-- **Regional rep / distributor:** None published for the US. The contact page links an 'Agents & Distributors' page that we could not fetch (404 at the URL we guessed); AXT is the Australian partner. **[to confirm]** whether a US agent exists
+- **Regional rep / distributor:** None published for the US. The contact page links https://www.amazemet.com/agents-and-distributors/ (fetched 2026-11-07); it names no agent or distributor, says to use the contact form to join the network, and gives registered partners a login portal. AXT (Australia) is not on that page. Ask sales@amazemet.com whether a US agent exists (unverified: none published)
+- **Contact status (2026-11-07):** verified: email, phone, form, agents page (no US agent published).
 - **Office / hours:** Mon-Fri 08:00-16:00 Warsaw time; registered office al. Jana Pawla II 27, 00-867 Warszawa; R&D centre Trasa Lubelska 46, 05-462 Majdan
 - **Academic / owner note:** Since the machine is owned, send under the existing order/installation reference **[to confirm: order no., serial]**.
 - **Status:** owned by the lab; the contact is for spares, consumables and service.
@@ -124,10 +125,11 @@ Specac: 2-15 t in 0.2 t steps, up to 10 programme steps ('pump up to', 'maintain
 
 ### 3. Contact
 
-- **Email:** sales@specac.com (US); uscs@specac.com (US customer service); sales@specac.co.uk (UK)
-- **Phone:** +1 914-747-7202 (US, Mt Kisco NY); +44 1689 873 134 (UK sales)
-- **Web / form:** https://specac.com/contact-us/ ; book a 15-minute applications call: https://specac.com/book-application-appointment/
-- **Regional rep / distributor:** Specac lists no Utah or Mountain West distributor. US distributors: REFLEX Analytical (NJ), Premier Lab Supply (FL), Unitech USA (FL), Firebird Optics (NY); Specac sells direct if none is local. Carver (Wabash IN): carverpress@acscorporate.com, +1 260-563-7577, regional sales manager Donovan Sparks +1 260-233-6881, technical service +1 260-233-6900, WabashService@acscorporate.com
+- **Email:** uscs@specac.com (US customer service) and sales@specac.co.uk (UK sales) (verified: https://specac.com/contact-us/, 2026-11-07). The first pass listed sales@specac.com; it is NOT on Specac's contact or distributors pages (unverified: removed, do not use); customer.services@specac.co.uk is the global address
+- **Phone:** +1 914-747-7202 (USA); +44 (0) 1689 873 134 (UK) (verified: https://specac.com/contact-us/, 2026-11-07); UK sales line on the distributors page +44 (0) 1689 892902
+- **Web / form:** https://specac.com/contact-us/ (Get a Quote); 15-minute applications call https://specac.com/book-application-appointment/ (booking link not re-fetched, unverified); distributors https://specac.com/our-distributors/
+- **Regional rep / distributor:** Specac lists no Utah or Mountain West distributor (verified: https://specac.com/our-distributors/, 2026-11-07). US distributors listed there (no email or phone on the page): REFLEX Analytical (NJ, https://www.reflexusa.com/), Premier Lab Supply (FL, https://www.premierlabsupply.com/contact/), Unitech USA (FL, https://www.unitechusa.com/), Firebird Optics (NY, https://www.firebirdoptics.com/); Specac says to order direct if none is local. Carver (Wabash IN, https://www.carverpress.com/contact, 2026-11-07): main +1 260-563-7577 (1 parts, 2 equipment presses), carverpress@acscorporate.com, regional sales manager Donovan Sparks +1 260-233-6881 dsparks@acscorporate.com, sales support Kendra Shepler +1 260-233-6914 kshepler@acscorporate.com, technical service +1 260-233-6900 (Tom Huston +1 260-233-6890 thuston@acscorporate.com), wabashservice@acscorporate.com (all verified)
+- **Contact status (2026-11-07):** partial: uscs@, phone, distributors and Carver verified; sales@specac.com removed as unverified.
 - **Office / hours:** Specac US office: 333 N Bedford Rd, Suite 129, Mt Kisco NY 10549
 - **Academic / owner note:** Applications consultation is free; ask for an academic quote.
 
@@ -150,7 +152,7 @@ Materials: 5N Al and OFE Cu (C10100) cup stock, plus Si and Ni powders pressed i
 Standard answers shared by every vendor are in the [common answers](#common-answers); site facts are in [`lab_answers.md`](lab_answers.md).
 
 ### 6. Draft email
-**To:** sales@specac.com  
+**To:** uscs@specac.com (US customer service; sales@specac.com is unverified), cc sales@specac.co.uk  
 **Cc:** uscs@specac.com
 **Subject:** Budgetary quote: Atlas Autotouch 15T (GS2581X) with evacuable dies, and robot-start question
 
@@ -193,10 +195,11 @@ AS 200 control: 417 W x 384 D x 212 H mm (`instruments_char.sieve()`); sieves 10
 
 ### 3. Contact
 
-- **Email:** info-us@verder-scientific.com (from a search result; **[to confirm]**)
-- **Phone:** +1 866-473-8724 (Verder Scientific Inc., Newtown PA)
-- **Web / form:** https://www.retsch.com/contact-services/ (form); US office list: https://www.verder-scientific.com/contact-services
-- **Regional rep / distributor:** US distributors list the AS 200 control: Fisher Scientific (15582515), Thomas Scientific (8324A62), Avantor/VWR; no Utah rep found. Sieves: Fisher 8 in No. 60 stainless $369 (DAL #146 comment); Gilson (globalgilson.com)
+- **Email:** info-us@verder-scientific.com (verified: https://www.verder-scientific.com/us, 2026-11-07)
+- **Phone:** +1 866-473-8724 (Verder Scientific Inc., Newtown PA) (verified: https://www.verder-scientific.com/us, 2026-11-07)
+- **Web / form:** https://www.retsch.com/contact-services/ (form; US offices via https://www.verder-scientific.com/contact-services); US request page https://www.verder-scientific.com/us (Consultation, Service Inquiry)
+- **Regional rep / distributor:** Verder Scientific Inc. is the US entity; its page names Kyle James, Team Leader Retsch USA (verified: https://www.verder-scientific.com/us, 2026-11-07). US distributors list the AS 200 control: Fisher Scientific (15582515), Thomas Scientific (8324A62), Avantor/VWR (unverified: catalogue numbers from the first pass); no Utah rep found. Sieves: Fisher 8 in No. 60 stainless $369 (DAL #146 comment); Gilson (globalgilson.com)
+- **Contact status (2026-11-07):** verified: info-us@ and phone now confirmed on the Verder US page (no longer from a search result).
 - **Office / hours:** Verder Scientific Inc., 11 Penns Trail, Newtown PA 18940
 - **Academic / owner note:** Retsch and QATM are Verder Scientific brands, so one US office handles both; ask for the application lab for Al powder sieving.
 - **Status:** owned by the lab; the contact is for spares, consumables and service.
@@ -257,10 +260,11 @@ Elma: GmbH in Singen, Germany, tanks of 1-1000 L, 37/80 kHz, heating and sweep o
 
 ### 3. Contact
 
-- **Email:** sales@elma-ultrasonic.com (Elma, from its contact page)
-- **Phone:** Branson (Danbury CT): +1 203-796-0400 (main; **[to confirm]**)
-- **Web / form:** https://www.elma-ultrasonic.com/en/contact ; Branson: https://www.emerson.com/en-us/automation/branson
-- **Regional rep / distributor:** Branson CPX is sold through distributors, e.g. Fiber Optic Center sales@focenter.com +1 800-473-4237; Elma has distributors per country **[to confirm US/Utah]**
+- **Email:** sales@elma-ultrasonic.com (listed for Chemistry & Process Consulting, Elmaclean) (verified: https://www.elma-ultrasonic.com/en/contact, 2026-11-07); Branson: info@bransonultrasonics.com appears in a manual only (unverified)
+- **Phone:** Elma: none published on its contact page (verified: https://www.elma-ultrasonic.com/en/contact, 2026-11-07). Branson: +1 203-796-0400 is a directory number, not on Branson's own site, and a 2026 report says Branson moved its HQ from Brookfield CT to Farmington Hills MI (unverified: use https://www.branson.emerson.com/en , whose Contact Us link and Emerson's +1 888 889 9170 on https://www.emerson.com/en-us/contact-us are the only own-site routes)
+- **Web / form:** https://www.elma-ultrasonic.com/en/contact ; retailer list https://www.elma-ultrasonic.com/en/haendler ; Branson: https://www.branson.emerson.com/en/laboratory-equipment-tabletop-cleaners (the old emerson.com/en-us/automation/branson URL redirects here; verified 2026-11-07)
+- **Regional rep / distributor:** Elma lists no US distributor on its contact page; its retailer page https://www.elma-ultrasonic.com/en/haendler loads a country picker we could not read (unverified). Branson CPX through distributors, e.g. Fiber Optic Center sales@focenter.com +1 800-473-4237 (unverified: focenter.com returned 403 to the runner and the Pi)
+- **Contact status (2026-11-07):** partial: Elma email verified; Branson phone, Fiber Optic Center and US/Utah distributor unverified.
 - **Academic / owner note:** Ask for lab pricing.
 
 ### 4. Our open questions for them
@@ -319,10 +323,11 @@ Air knife: compressed air at about 80 psig, 1/4-1/2 in NPT, amplification about 
 
 ### 3. Contact
 
-- **Email:** techelp@exair.com
-- **Phone:** +1 800-903-9247; +1 513-671-3322
-- **Web / form:** https://exair.com (contact via a Product Specialist)
-- **Regional rep / distributor:** EXAIR sells direct and through distributors; no Utah rep identified **[to confirm]**
+- **Email:** techelp@exair.com (technical help); orders@exair.com (US and Canada orders) (verified: https://www.exair.com/contact-us/, 2026-11-07); application engineers (named on the page): Jason Kirby jasonkirby@exair.com, Jordan Shouse jordanshouse@exair.com, Brian Farno brianfarno@exair.com, Russ Bowman russbowman@exair.com
+- **Phone:** +1 800-903-9247 (US and Canada); +1 513-671-3322 (verified: https://www.exair.com/contact-us/, 2026-11-07); the page warns of phone-system trouble and asks for email or chat
+- **Web / form:** https://www.exair.com/contact-us/ (no 'Product Specialist' is named on the page: use Consult an Engineer / the application engineers)
+- **Regional rep / distributor:** EXAIR sells direct; no distributor or Utah rep is listed on its contact page, and https://www.exair.com/storelocator is international (verified 2026-11-07); no Utah rep (unverified)
+- **Contact status (2026-11-07):** verified: email, phone, application engineers; no Utah rep published. Blower alternative (no vendor yet): Gast Manufacturing (Benton Harbor MI) +1 269-926-6171, tel link on https://www.gastmfg.com/contact-us (partial: phone only; its regenerative-blower line not confirmed).
 - **Office / hours:** 11510 Goldcoast Drive, Cincinnati OH 45249
 
 ### 4. Our open questions for them
@@ -377,10 +382,11 @@ Parts up to 300 x 300 x 230 mm and 60 kg (TCT Magazine); no outer size published
 
 ### 3. Contact
 
-- **Email:** kontakt@solukon.de
-- **Phone:** +49 821 44098-0
-- **Web / form:** https://www.solukon.de/en/products/sfm-at200/
-- **Regional rep / distributor:** Utah is in **NB Additive LLC**'s territory (CO, ID, IL, IA, KS, LA, MN, MO, MT, NE, NM, ND, OK, SD, TX, UT, WY): Info@nbadditive.com, +1 314-202-0521, 7336 Hidden Oaks Drive, North Richland Hills TX 76182 (from its website)
+- **Email:** kontakt@solukon.de (verified: https://www.solukon.de/en/contact/, 2026-11-07)
+- **Phone:** +49 821 44098-0 (verified: https://www.solukon.de/en/contact/, 2026-11-07)
+- **Web / form:** https://www.solukon.de/en/contact/ (inquiry, quote and service forms); product https://www.solukon.de/en/products/sfm-at200/
+- **Regional rep / distributor:** Utah is in NB Additive LLC's territory (verified: https://www.solukon.de/en/distribution-partners/, 2026-11-07) (listed there: Colorado, Idaho, Illinois, Iowa, Kansas, Louisiana, Montana, Missouri, Minnesota, Nebraska, New Mexico, North Dakota, Oklahoma, South Dakota, Texas, Utah, Wyoming). NB Additive: Info@nbadditive.com, +1 314-202-0521, 7336 Hidden Oaks Drive, North Richland Hills TX 76182 (verified: https://www.nbadditive.com/, 2026-11-07) (its page lists no states and does not mention Solukon). Other US partners on the Solukon page: DMARK Corporation (AZ, CA, NV, OR, WA), Phillips Corp (eastern states)
+- **Contact status (2026-11-07):** verified: Solukon email/phone, NB Additive for Utah, NB email/phone.
 - **Office / hours:** Solukon Maschinenbau GmbH, Aulzhausener Str. 14, 86165 Augsburg
 
 ### 4. Our open questions for them
@@ -401,7 +407,7 @@ Materials: Al-Si, Cu-Ni, NAB bars printed on 170 mm plates (or 55 mm kit); react
 Standard answers shared by every vendor are in the [common answers](#common-answers); site facts are in [`lab_answers.md`](lab_answers.md).
 
 ### 6. Draft email
-**To:** Info@nbadditive.com  
+**To:** Info@nbadditive.com (Solukon's Utah partner), cc kontakt@solukon.de  
 **Cc:** kontakt@solukon.de
 **Subject:** Quote: Solukon SFM-AT200 for Al-Si and Cu alloy plates, robot loading
 
@@ -443,10 +449,11 @@ Footprint about 2450 x 1500 x 2320 mm (model), older design 2170 x 1590 x 2340; 
 
 ### 3. Contact
 
-- **Email:** info@aconity3d.com; support: https://support.aconity3d.com
-- **Phone:** +49 2406 92749-0
+- **Email:** info@aconity3d.com (verified: https://www.aconity3d.com/, 2026-11-07); support: https://support.aconity3d.com (not re-fetched, unverified)
+- **Phone:** +49 2406 92749-0 (fax -99) (verified: https://aconity3d.com/, 2026-11-07)
 - **Web / form:** https://aconity3d.com/products/aconity-midi
-- **Regional rep / distributor:** AconityUS, Inc. (US arm, announced 2018 at UTEP in El Paso; **no current contact found**, **[to confirm]** by asking info@aconity3d.com for the North America sales rep). Utah and Amazemet already run MIDIs
+- **Regional rep / distributor:** AconityUS, Inc. (US arm, announced 2018 at UTEP in El Paso): no US contact on Aconity's own site (https://aconity3d.com/ lists only info@ and the German phone; /contact is 404) (unverified: no US contact). Ask info@aconity3d.com for the North America sales rep. Utah and Amazemet already run MIDIs
+- **Contact status (2026-11-07):** partial: info@ and phone verified; US rep unverified (none published).
 - **Office / hours:** Aconity3D GmbH, An den Glaswerken 2, 52134 Herzogenrath, Germany
 - **Academic / owner note:** Utah's MIDI is a collaborator's (DAL PR #169); confirm whether to use it instead of buying.
 
@@ -508,10 +515,11 @@ Build 400 x 400 x 400 mm incl. plate; 4 x 400 W Yb fibre; up to 7.0 m/s; focus a
 
 ### 3. Contact
 
-- **Email:** No sales email published; use the form
-- **Phone:** [to confirm: EOS North America, Pflugerville TX]
-- **Web / form:** https://www.eos.info/en-us (Contact Us form)
-- **Regional rep / distributor:** EOS North America (Pflugerville TX); Mountain West rep **[to confirm]**
+- **Email:** No sales email for the US; use the form https://www.eos.info/help-contact/contact-us (verified: https://www.eos.info/about-us/locations-worldwide, 2026-11-07); global info@eos.info is listed on the worldwide locations page
+- **Phone:** +1 877 388 7916 (EOS North America: Pflugerville TX, Novi MI) (verified: https://www.eos.info/about-us/locations-worldwide, 2026-11-07)
+- **Web / form:** https://www.eos.info/help-contact/contact-us (the earlier https://www.eos.info/en-us/contact is 404)
+- **Regional rep / distributor:** EOS North America Pflugerville Technical Center, 3813 Helios Way #298, Pflugerville TX 78660; Novi Technical Center, 28970 Cabot Drive #700, Novi MI 48377; Advanced Laser Materials (ALM) Temple TX +1 254 773 3080; US sales partners listed: AdvancedTek (St. Paul MN, +1 651-489-6990), Phillips Corporation (Hanover MD, +1 864-395-7243), Phillips Federal (+1 301-997-6097) (verified: https://www.eos.info/about-us/locations-worldwide, 2026-11-07). No Mountain West rep listed (unverified: none published)
+- **Contact status (2026-11-07):** verified: phone, offices, partners; no Utah rep or sales email published.
 
 ### 4. Our open questions for them
 
@@ -530,7 +538,7 @@ Materials: Al-Si, Cu-Ni, NAB; reactive Al. Batch: a full 400 mm bed for scale-up
 Standard answers shared by every vendor are in the [common answers](#common-answers); site facts are in [`lab_answers.md`](lab_answers.md).
 
 ### 6. Draft email
-**To:** (EOS North America web form, https://www.eos.info/en-us)
+**To:** (EOS web form, https://www.eos.info/help-contact/contact-us; EOS North America +1 877 388 7916)
 **Subject:** Budgetary quote: EOS M 400-4 for Al-Si and Cu alloys scale-up
 
 > Hello,
@@ -568,10 +576,11 @@ Max workpiece weight 60 kg (page); automatic wire threading 10 s; unattended wir
 
 ### 3. Contact
 
-- **Email:** Contact form: https://www.fanucamerica.com/contact
-- **Phone:** 888-FANUC-US (888-326-8723); Methods Machine Tools +1 877-668-4262
-- **Web / form:** https://www.fanucamerica.com/products/robocut-wire-edm
-- **Regional rep / distributor:** Methods Machine Tools (Sudbury MA), Phoenix showroom and tech centre 615 West 24th St, Tempe AZ 85282, +1 602-437-2220; Methods is the exclusive North American ROBOCUT importer/service; **[to confirm]** the territory covering Utah
+- **Email:** Contact form: https://www.fanucamerica.com/contact (no email on the page) (verified: https://www.fanucamerica.com/contact, 2026-11-07)
+- **Phone:** 888-FANUC-US = 888-326-8287 ("Need immediate help?"; the first pass had 888-326-8723, wrong) (verified: https://www.fanucamerica.com/contact, 2026-11-07); Methods Machine Tools +1 877-668-4262 (verified: https://www.methodsmachine.com/contact/, 2026-11-07)
+- **Web / form:** https://www.fanucamerica.com/products/robocut (the page links this; the first pass URL /products/robocut-wire-edm is unverified); form options include ROBOMACHINE Quote and Service & Parts
+- **Regional rep / distributor:** Methods Machine Tools (Sudbury MA, 65 Union Ave, +1 978-443-5388): its contact page lists a Rocky Mountains line +1 602-848-1221 (also Southwest) (verified: https://www.methodsmachine.com/contact/, 2026-11-07); Phoenix office 615 West 24th St, Tempe AZ 85282, +1 602-437-2220 (verified: https://www.methodsmachine.com/locations/, 2026-11-07); the locations page lists no Utah office. Exclusive North American ROBOCUT importer: unverified (first-pass claim). Ask the Rocky Mountains line whether it covers Utah
+- **Contact status (2026-11-07):** partial: FANUC phone corrected; Methods lines verified; Utah coverage and ROBOCUT exclusivity unverified.
 - **Office / hours:** FANUC America HQ, 3900 West Hamlin Road, Rochester Hills MI 48309
 
 ### 4. Our open questions for them
@@ -631,10 +640,11 @@ PX500 about 533 W x 711 D x 635 H mm (a reseller's figure for the PX400/PX500; L
 
 ### 3. Contact
 
-- **Email:** info@leco.com
-- **Phone:** +1 800-292-6141; +1 269-985-5496; metallography line +1 269-985-5497
+- **Email:** info@leco.com (unverified: LECO's US contact page obscures the address; use the Contact Us form at https://www.leco.com/contacts/usa)
+- **Phone:** +1 800-292-6141; +1 269-985-5496; Metallography or Elemental Analysis Instruments +1 269-985-5497 (verified: https://www.leco.com/contacts/usa, 2026-11-07)
 - **Web / form:** https://www.leco.com/contacts/usa
-- **Regional rep / distributor:** LECO instrument service (Western United States): +1 702-263-8547 / 8548 (Las Vegas area); local sales rep for Utah **[to confirm]**
+- **Regional rep / distributor:** LECO instrument service, Western United States: +1 702-263-8547 / 8548 (verified: https://www.leco.com/contacts/usa, 2026-11-07); the page names no sales rep or distributor for Utah or the West (unverified: none published)
+- **Contact status (2026-11-07):** partial: phones verified; email unverified (obfuscated); Utah rep none published.
 - **Office / hours:** LECO Corporation, 3000 Lakeview Avenue, St. Joseph MI 49085
 
 ### 4. Our open questions for them
@@ -655,7 +665,7 @@ Materials: Al-Si, Cu-Ni, NAB coupons (conductive hot mounts for SEM/EDS and micr
 Standard answers shared by every vendor are in the [common answers](#common-answers); site facts are in [`lab_answers.md`](lab_answers.md).
 
 ### 6. Draft email
-**To:** info@leco.com
+**To:** LECO Contact Us form, https://www.leco.com/contacts/usa (info@leco.com is unverified)
 **Subject:** Budgetary quote: PX500 polisher and MX400 mounting press, robot loading question
 
 > Hello,
@@ -695,10 +705,11 @@ Standard answers shared by every vendor are in the [common answers](#common-answ
 
 ### 3. Contact
 
-- **Email:** Form: https://www.qatm.com/contact/contact-form/ ; US: info-us@verder-scientific.com (**[to confirm]**)
-- **Phone:** +1 866-473-8724 (Verder Scientific Inc., Newtown PA)
+- **Email:** Form: https://www.qatm.com/contact/contact-form/ (loads; has a US state field) (verified: https://www.qatm.com/contact-services/, 2026-11-07); US: info-us@verder-scientific.com (verified: https://www.verder-scientific.com/us, 2026-11-07)
+- **Phone:** +1 866-473-8724 (Verder Scientific Inc., Newtown PA) (verified: https://www.verder-scientific.com/us, 2026-11-07)
 - **Web / form:** https://www.qatm.com/contact-services/
-- **Regional rep / distributor:** QATM sells through Verder Scientific Inc. in the US; Utah rep **[to confirm]**
+- **Regional rep / distributor:** QATM sells through Verder Scientific Inc. in the US; Jason Starr, Team Leader QATM USA (verified: https://www.verder-scientific.com/us, 2026-11-07); no separate Utah rep (the QATM form has a US state list including Utah, and routes the request)
+- **Contact status (2026-11-07):** verified: email, phone, QATM USA team leader; no Utah rep published.
 - **Office / hours:** 11 Penns Trail, Newtown PA 18940
 
 ### 4. Our open questions for them
@@ -755,10 +766,11 @@ Horizontal-oscillating vibratory bowl; bowl size, weight and 115/230 V figures n
 
 ### 3. Contact
 
-- **Email:** info@buehler.com; support@buehler.com
-- **Phone:** +1 800-283-4537; +1 847-295-6500
-- **Web / form:** https://www.buehler.com/
-- **Regional rep / distributor:** Buehler's site has a state-by-state rep list that includes Utah **[to confirm the rep]**; service locations https://www.buehler.com/service/service-locations/
+- **Email:** info@buehler.com; support@buehler.com (verified: https://www.buehler.com/contact, 2026-11-07)
+- **Phone:** +1 800-283-4537; +1 847-295-6500 (verified: https://www.buehler.com/contact, 2026-11-07)
+- **Web / form:** https://www.buehler.com/contact (US state selector)
+- **Regional rep / distributor:** https://www.buehler.com/contact has a US state selector (Utah included) that shows the contact only after a selection (unverified: the Utah rep could not be read); service locations https://www.buehler.com/service/service-locations/ (verified 2026-11-07, no Utah entry read)
+- **Contact status (2026-11-07):** partial: email and phone verified; Utah rep unverified.
 - **Office / hours:** Buehler, 41 Waukegan Road, Lake Bluff IL 60044
 
 ### 4. Our open questions for them
@@ -815,10 +827,11 @@ Standard answers shared by every vendor are in the [common answers](#common-answ
 
 ### 3. Contact
 
-- **Email:** support@makera.com; orders@makera.com; info@makera.com; cam@makera.com
-- **Phone:** +1 888-456-5472
+- **Email:** support@makera.com; orders@makera.com; info@makera.com; cam@makera.com (verified: https://www.makera.com/, 2026-11-07)
+- **Phone:** +1 (888) 456-5472 (verified: https://www.makera.com/, 2026-11-07)
 - **Web / form:** https://www.makera.com/
-- **Regional rep / distributor:** Direct web store; reseller list **[to confirm]**
+- **Regional rep / distributor:** Direct web store; no reseller list read (unverified: the contact-us page returned 404 or HTTP 429)
+- **Contact status (2026-11-07):** verified: emails and phone on the Makera homepage; resellers unverified.
 
 ### 4. Our open questions for them
 
@@ -875,9 +888,10 @@ M450 1400 mm tall; the substrate plate enters via a front door; argon shield gas
 ### 3. Contact
 
 - **Email:** web form: https://meltio3d.com/contact/
-- **Phone:** +1 915-282-3437 (USA & LATAM, Gabriel Ortiz on the contact page)
+- **Phone:** +1 915-282-3437 (USA & LATAM, Gabriel Ortiz) (verified: https://meltio3d.com/contact/, 2026-11-07)
 - **Web / form:** https://meltio3d.com/contact/
-- **Regional rep / distributor:** US sales partner Automation Engineering Company (AEC), 9 Shelter Drive, Greer SC 29650 (announced 2026-02-23; teamaec.com); mountain-west reseller ExBuild (2023 announcement **[to confirm still active]**)
+- **Regional rep / distributor:** The contact page's "Select a Partner" dropdown lists AECAM Solutions and ExBuild among others, without country or role (verified: https://meltio3d.com/contact/, 2026-11-07); so ExBuild is still listed. US sales partner Automation Engineering Company (AEC), 9 Shelter Drive, Greer SC 29650 (announced 2026-02-23; teamaec.com) (unverified: not on the contact page)
+- **Contact status (2026-11-07):** partial: phone and web form verified; AEC and ExBuild territory unverified; no email published.
 
 ### 4. Our open questions for them
 
@@ -932,10 +946,11 @@ Standard answers shared by every vendor are in the [common answers](#common-answ
 
 ### 3. Contact
 
-- **Email:** sales@insstek.com
-- **Phone:** +82-42-935-9646 (Daejeon, Korea)
+- **Email:** sales@insstek.com (verified: https://www.insstek.com/, 2026-11-07)
+- **Phone:** +82-42-935-9646 (fax -9649) (verified: https://www.insstek.com/, 2026-11-07)
 - **Web / form:** http://www.insstek.com/
-- **Regional rep / distributor:** US: Phillips Corporation (Hanover MD) +1 410-564-2929 / +1 800-878-4242; Whole Metals (Chicago) runs a US showroom
+- **Regional rep / distributor:** US: Phillips Corporation (Hanover MD): +1 410-564-2929 or 800-878-4242, sales pcsales@phillipscorp.com, and it lists InssTek and EOS under Solutions by Brand (verified: https://www.phillipscorp.com/contact-us/, 2026-11-07); Phillips names no Western rep. Whole Metals (Chicago) showroom (unverified)
+- **Contact status (2026-11-07):** verified: InssTek email and phone; Phillips verified; Whole Metals unverified.
 - **Office / hours:** 154 Sinseong-ro, Yuseong-gu, Daejeon
 
 ### 4. Our open questions for them
@@ -991,10 +1006,11 @@ Standard answers shared by every vendor are in the [common answers](#common-answ
 
 ### 3. Contact
 
-- **Email:** contact@snowx.com
-- **Phone:** +86 512 6672 8020
+- **Email:** contact@snowx.com (verified: https://snowx.com/, 2026-11-07)
+- **Phone:** +86 512 6672 8020 (verified: https://snowx.com/, 2026-11-07)
 - **Web / form:** https://snowx.com/
 - **Regional rep / distributor:** None (Suzhou)
+- **Contact status (2026-11-07):** verified: email and phone on the SnowX homepage.
 - **Office / hours:** SnowX Technology Co., Ltd.
 
 ### 4. Our open questions for them
@@ -1048,9 +1064,10 @@ Form 4 cover open 407 x 478 x 844 mm, 18.3 kg; Form Wash 315 x 293 x 405 mm; For
 ### 3. Contact
 
 - **Email:** Form: https://formlabs.com/company/contact/sales/
-- **Phone:** +1 833-489-0545 (US/Canada, 9-6 ET)
+- **Phone:** +1 833-489-0545 (US/Canada; shown as +1 833 489 0545) (verified: https://formlabs.com/company/contact/sales/, 2026-11-07); the 9-6 ET hours were not re-checked (unverified)
 - **Web / form:** https://formlabs.com/company/contact/sales/
-- **Regional rep / distributor:** Reseller list https://formlabs.com/company/partners/ **[to confirm Utah]**
+- **Regional rep / distributor:** Reseller in Utah: GoEngineer, 739 Fort Union Blvd, Midvale UT 84047, +1 800 688 3234 (verified: https://formlabs.com/company/partners/, 2026-11-07); no email on the page
+- **Contact status (2026-11-07):** verified: sales form, phone, Utah reseller GoEngineer.
 - **Academic / owner note:** Education discounts via sales.
 
 ### 4. Our open questions for them
@@ -1103,9 +1120,10 @@ Open hardware (opulo-inc/lumenpnp); mains; USB control; 600 x 120 mm build plate
 ### 3. Contact
 
 - **Email:** Form: https://www.opulo.io/pages/contact-sales (no email published; privacy@opulo.io is for data requests)
-- **Phone:** not published
+- **Phone:** not published (verified: https://www.opulo.io/pages/contact-sales shows a form, no phone or email, 2026-11-07)
 - **Web / form:** https://www.opulo.io/pages/contact-sales
 - **Regional rep / distributor:** Direct
+- **Contact status (2026-11-07):** partial: form URL verified; no email or phone published.
 
 ### 4. Our open questions for them
 
@@ -1156,10 +1174,11 @@ Standard answers shared by every vendor are in the [common answers](#common-answ
 
 ### 3. Contact
 
-- **Email:** sales@ddmnovastar.com; service@ddmnovastar.com
-- **Phone:** +1 215-485-5663 x208 (sales); x230 (service)
+- **Email:** sales@ddmnovastar.com; service@ddmnovastar.com (verified: https://www.ddmnovastar.com/contact-us, 2026-11-07)
+- **Phone:** +1 215-485-5663 x208 (sales); x230 (service/support) (verified: https://www.ddmnovastar.com/contact-us, 2026-11-07)
 - **Web / form:** https://www.ddmnovastar.com/contact-us
-- **Regional rep / distributor:** 'Find a DDM representative' page on the same site **[to confirm Utah]**
+- **Regional rep / distributor:** The contact page has a "Find a DDM Representative" selector by world area, country or state, and a map; the Utah result was not readable from the static page (unverified)
+- **Contact status (2026-11-07):** verified: emails, phone, extensions; Utah rep unverified.
 - **Office / hours:** 212 Railroad Drive, Ivyland PA 18974
 
 ### 4. Our open questions for them
@@ -1208,10 +1227,11 @@ H2D envelope 492 x 514 x 626 mm, bed 350 x 320 mm, 1,050 W average, 1,320 W max 
 
 ### 3. Contact
 
-- **Email:** contact@bambulab.com (feedback); bd@bambulab.com (business); support via https://bambulab.com/en-us/contact-us
+- **Email:** contact@bambulab.com (feedback); bd@bambulab.com (business); support via https://bambulab.com/en-us/contact-us (all unverified: bambulab.com returned 403 / a Cloudflare challenge to the runner, the Pi and headless Chromium, 2026-11-07)
 - **Phone:** not published
 - **Web / form:** https://bambulab.com/en-us/contact-us
-- **Regional rep / distributor:** Dealer list https://bambulab.com/en-us/dealer **[to confirm Utah]**
+- **Regional rep / distributor:** Dealer list https://bambulab.com/en-us/dealer (unverified: blocked)
+- **Contact status (2026-11-07):** unverified: site blocked on 2026-11-07; contacts carried over from the first pass.
 - **Status:** owned by the lab; the contact is for spares, consumables and service.
 
 ### 4. Our open questions for them
@@ -1229,7 +1249,7 @@ Materials: PLA/PETG fixtures. Batch: small. Utilities: mains.
 Standard answers shared by every vendor are in the [common answers](#common-answers); site facts are in [`lab_answers.md`](lab_answers.md).
 
 ### 6. Draft email
-**To:** contact@bambulab.com
+**To:** contact@bambulab.com (unverified: bambulab.com blocked the checks)
 **Subject:** Education/business purchase: H2D spares and print-start accounts
 
 > Hello,
@@ -1263,10 +1283,11 @@ Al 5N: Goodfellow 20 mm x 50/100/300/1000 mm at $860/$1,070/$1,750/$3,540 (DAL #
 
 ### 3. Contact
 
-- **Email:** Goodfellow: inq@goodfellow.com; Heeger: sales@heegermaterials.com; McMaster: chi.sales@mcmaster.com
-- **Phone:** Goodfellow +1 800-821-2870; Heeger +1 833-222-8587; McMaster +1 630-833-0300; American Elements +1 310-208-0551
+- **Email:** Goodfellow: inq@goodfellow.com (verified: https://www.goodfellow.com/usa/contact-us, 2026-11-07); Heeger: sales@heegermaterials.com (verified: https://www.heegermaterials.com/, 2026-11-07); ESPI Metals: sales@espimetals.com (verified: https://www.espimetals.com/index.php/contact-us, 2026-11-07); MSE Supplies: sales@msesupplies.com (verified: https://www.msesupplies.com/, 2026-11-07); Valimet: sales@valimet.com (verified: https://www.valimet.com/contact, 2026-11-07); McMaster: chi.sales@mcmaster.com (unverified: the contact page shows only the phone and an Email Us link)
+- **Phone:** Goodfellow +1 800-821-2870 (verified: https://www.goodfellow.com/usa/contact-us, 2026-11-07); Heeger +1 833-222-8587 (verified: https://www.heegermaterials.com/, 2026-11-07); McMaster +1 630-833-0300 (verified: https://www.mcmaster.com/help/contact-us/, 2026-11-07); ESPI +1 541-488-8311 / 800-638-2581 (verified: https://www.espimetals.com/index.php/contact-us, 2026-11-07); MSE Supplies +1 520-789-6673 (verified: https://www.msesupplies.com/, 2026-11-07); Valimet +1 209-444-1600 (verified: https://www.valimet.com/contact, 2026-11-07); American Elements +1 310-208-0551 (unverified: americanelements.com returns 403)
 - **Web / form:** https://www.goodfellow.com/usa/aluminium-rod-group
-- **Regional rep / distributor:** ESPI Metals (Ashland OR) quotes same day, no public prices; MSE Supplies (support.msesupplies.com) and Online Metals blocked the Pi (403) **[to confirm contacts]**; Valimet (Stockton CA, 431 Sperry Rd; phone from a third party, **[to confirm]**)
+- **Regional rep / distributor:** ESPI Metals (Ashland OR, 1050 Benson Way) quotes same day, no public prices (verified: its contact page); MSE Supplies (Tucson AZ) reachable from its homepage; Online Metals unverified (403 to the runner and the Pi); Valimet, 431 Sperry Road, Stockton CA 95206, phone now verified on its own page
+- **Contact status (2026-11-07):** partial: Goodfellow, Heeger, ESPI, MSE, Valimet, McMaster phone verified; McMaster email, American Elements, Online Metals unverified.
 - **Office / hours:** Goodfellow, 301 Grant Street, Suite 270, Pittsburgh PA 15219
 
 ### 4. Our open questions for them
@@ -1315,7 +1336,11 @@ Standard answers shared by every vendor are in the [common answers](#common-answ
 
 ## Gaps
 
-- No verified sales email: EOS, Opulo, Meltio, FANUC (web forms only); Aconity US (AconityUS has no current contact); Bambu Lab has no phone.
-- Pages that blocked the runner and the Pi (HTTP 403): MSE Supplies, Online Metals; American Elements contact page 404, only the homepage phone was read.
-- US regional reps for Utah are unconfirmed for LECO, Buehler, QATM/Retsch, FANUC (Methods), EOS and Aconity. The Retsch email `info-us@verder-scientific.com` comes from a search result, not the page.
+Second pass (2026-11-07): each contact was re-read on the vendor's own page, from the runner first and from the stream-cam Pi where the runner was blocked; the "Contact status" line under each Section 3 and the `contact_status` columns of `production.csv` record the result.
+
+- Corrections: FANUC America phone is 888-326-8287 (the first pass had 888-326-8723). Specac's sales@specac.com is not on its pages (use uscs@specac.com or sales@specac.co.uk). The Retsch/QATM email info-us@verder-scientific.com is now confirmed on the Verder US page. Valimet's phone and email are now confirmed on its own page.
+- No verified sales email: EOS, Opulo, Meltio, FANUC (web forms only); Aconity US (AconityUS has no contact on Aconity's own site); Bambu Lab has no phone.
+- Still unverified (site blocked or content not readable): Bambu Lab (403 / Cloudflare challenge on the runner, the Pi and headless Chromium), Online Metals and American Elements (403), Fiber Optic Center (403), the Branson phone and HQ move, McMaster chi.sales@, LECO info@ (obscured).
+- US regional reps for Utah remain unconfirmed because the vendor pages publish none or load them only after a selection: LECO, Buehler (state selector), DDM (representative finder), QATM/Retsch (Verder routes by form), EOS, Aconity, FANUC (ask Methods' Rocky Mountains line +1 602-848-1221 whether it covers Utah). Confirmed Utah-relevant: NB Additive (Solukon), GoEngineer Midvale UT (Formlabs).
+- Blower vendor for the sieve air-knife alternative still not chosen (Gast Manufacturing, +1 269-926-6171, is a lead only).
 - Specs not found: PX500 power, Aconity MIDI power, VibroMet 2 size, OFE copper price, Bambu A2L.
