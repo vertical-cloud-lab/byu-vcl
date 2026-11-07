@@ -154,6 +154,38 @@
     "viewport centre": 57.2
    }
   },
+  "t2_3060_front_chamber": {
+   "source": "https://youtu.be/FDRTt68Vfvo?t=3060",
+   "size": [
+    1280,
+    720
+   ],
+   "holdout": true,
+   "camera": [
+    1.7833081743356267,
+    0.013869613751637491,
+    0.029520343376081892,
+    -26.563603844043556,
+    915.8110912805654,
+    1160.3737414952202,
+    6.984364133875356,
+    0.0
+   ],
+   "focal_px": 1079.6,
+   "k1": 0.0,
+   "rms_px_camera_only": 11.37,
+   "rms_px": 11.37,
+   "residual_px": {
+    "viewport centre": 13.4,
+    "viewport hood top": 8.3,
+    "viewport hood bottom": 2.5,
+    "viewport hood left": 7.4,
+    "viewport hood right": 3.8,
+    "clamp1 pin": 24.8,
+    "clamp1 knob": 9.4,
+    "clamp0 knob": 2.9
+   }
+  },
   "t4_0113_open_wide": {
    "source": "https://youtu.be/1F9_4ccwhss?t=113",
    "size": [
