@@ -161,6 +161,9 @@ What fixed what:
   of the chapter is the code round 9 audited at 1 frame in 1269 (that one at the VHX); a whole-chapter pass of this
   code was not run, so [`../out/collisions/alloy_characterize.json`](../out/collisions/alloy_characterize.json) is still
   round 8's (13 frames).
+- **The committed render predates the fix.** `out/mp4/alloy_characterize.mp4` (round 9, `1d2a6d0`) still has the
+  110 mm slide and the frame of the wrist grazing the stand. Chapter 7 was not re-rendered this round (no slot could
+  start it in time); the code renders the fixed version (`VLAB_ONLY_TRAYS=DEKL VIZ3D_FPS=6`, about 45 min).
 
 ### Known in the committed render
 
