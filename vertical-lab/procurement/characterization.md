@@ -74,6 +74,7 @@ only what is specific to the product. The machine-readable list is [`characteriz
 - **Role and place:** phase identification of atomized powders and printed material. The arm sifts powder onto a
   zero-background holder, strikes it flush, and sets it in the MiniFlex through its door. **Tray D**, with the SEM
   (README round 8, `notes/refine_xrd.md`). About 378 scans a year.
+- **Model check (2026-11-07):** **current** (MiniFlex), **superseded by SRM 640g** (the Si standard), holders **unconfirmed**. Rigaku's page still sells the "Gen 6" MiniFlex with the D/teX Ultra2 as standard, the XSPA-200 ER and ASC-8 as options, and names no successor; NIST's SRM 640g certificate is dated 2024-02-27, so 640f is the old lot (same 7.5 g Si powder, same use), and no holder part number was found to check. (<https://rigaku.com/products/x-ray-diffraction-and-scattering/xrd/miniflex>; <https://www.nist.gov/publications/certification-standard-reference-materialr-640g-line-position-and-line-shape-standard>)
 
 ### 2. The published specs that matter for integration
 - **Size and mass:** 620 W x 722 H x 460 D mm, 80 kg (Rigaku's page; the model uses 456 D).
@@ -107,6 +108,7 @@ only what is specific to the product. The machine-readable list is [`characteriz
 7. Annual **radiation survey** and the registration a Utah lab needs for an X-ray tube (Utah DWMRC, **[to confirm]**).
 8. PM schedule, calibration and alignment verification (the SRM 640 routine), spares and tube life with prices, service
    contract price, nearest engineer to Provo.
+9. **SRM 640g, not 640f** (model check, 2026-11-07): 640g is the current lot (certificate 2024-02-27). Order 640g from NIST, and ask Rigaku whether SmartLab Studio II needs its 640g lattice value entered for the alignment check.
 
 ### 5. Their intake questions, answered
 | They will ask | Answer |
@@ -153,6 +155,8 @@ only what is specific to the product. The machine-readable list is [`characteriz
 | Search: Rigaku Americas address, phone, service desk | no |
 | NIST SRM 640f certificate and SDS (search results) | no |
 | `notes/refine_xrd.md`, README round 8 | n/a |
+| <https://rigaku.com/products/x-ray-diffraction-and-scattering/xrd/miniflex> (model check: Gen 6 current) (2026-11-07, runner) | no |
+| <https://www.nist.gov/publications/certification-standard-reference-materialr-640g-line-position-and-line-shape-standard> and <https://tsapps.nist.gov/srmext/certificates/640g.pdf> (SRM 640g) (2026-11-07, search snippet) | no |
 
 ---
 
@@ -165,6 +169,7 @@ only what is specific to the product. The machine-readable list is [`characteriz
 - **Role and place:** laser diffraction particle size (Dv10, Dv50, Dv90) of the sifted powder, as a quality gate on each
   atomized batch. About 5 g is poured into the Aero S; the optical bench is drawn in cutaway. **Tray E**, with the KLA
   iMicro. About 378 measurements a year.
+- **Model check (2026-11-07):** **superseded by the Mastersizer 3000+**. Malvern launched it on 2024-03-14 as the "worthy successor" to the 3000, and its Mastersizer page now lists only the 3000+ Lab (0.1-1000 um, manual dispersion units only), Pro (0.1-2500 um) and Ultra (0.01-3500 um), so the Aero S probably needs the Pro or Ultra **[to confirm]**; its main unit is the same 690 x 300 x 450 mm, about 30 kg, as the model's bench, and it adds Smart Manager remote monitoring. (<https://www.malvernpanalytical.com/en/about-us/press-releases/news/pr240314-matersizer-3000-plus-launch>; <https://www.malvernpanalytical.com/en/products/product-range/mastersizer-range/mastersizer-3000>)
 
 ### 2. The published specs that matter for integration
 - **Size:** the bench is **690 W x 300 D x 450 H mm**; the Aero S **260 x 180 x 380 mm** (Malvern's datasheet figures
@@ -198,6 +203,7 @@ From `notes/refine_mastersizer.md`, `notes/alloy_characterize.md`:
 6. **Particle size standards** for verification (a glass bead standard) and how often.
 7. PM schedule, lens and optics cleaning, consumables (the Aero S wear parts, filters) with prices, service contract
    price, response time in Utah.
+8. **Mastersizer 3000+** (model check, 2026-11-07): the 3000 has been followed by the 3000+. Which version takes the **Aero S** (the Lab lists manual dispersion units only), and what changed in size, weight, utilities and remote control?
 
 ### 5. Their intake questions, answered
 | They will ask | Answer |
@@ -227,6 +233,8 @@ From `notes/refine_mastersizer.md`, `notes/alloy_characterize.md`:
 > 5. Preventive maintenance, verification standards, consumables with prices, a service contract price, and the
 >    response time to Provo, UT.
 >
+> If the Mastersizer 3000 is no longer sold, please quote the Mastersizer 3000+ version (Lab, Pro or Ultra) that takes the Aero S, and say what changed in size, weight, utilities and remote control.
+>
 > [to confirm: name, title, phone]
 
 ### 7. Sources (checked 2026-11-07 UTC)
@@ -236,6 +244,10 @@ From `notes/refine_mastersizer.md`, `notes/alloy_characterize.md`:
 | <https://www.malvernpanalytical.com/en/about-us/contact-us/sales> (form only) | yes |
 | Search: US phone and address (directories: Photonics, LabCompare) | no |
 | `notes/refine_mastersizer.md` (sizes) | n/a |
+| <https://www.malvernpanalytical.com/en/about-us/press-releases/news/pr240314-matersizer-3000-plus-launch> (3000+ launch, successor) (2026-11-07, runner) | no |
+| <https://www.malvernpanalytical.com/en/products/product-range/mastersizer-range/mastersizer-3000> (lists only 3000+ Lab, Pro, Ultra) (2026-11-07, runner) | no |
+| <https://www.atascientific.com.au/lp/mastersizer-3000-pro/> (distributor: Aero M for the Lab and Pro; Pro automated dry) (2026-11-07, search snippet) | no |
+| <https://www.malvernpanalytical.com/en/products/product-range/mastersizer-range/mastersizer-3000-plus-lab> (3000+ main unit 690 x 300 x 450 mm, about 30 kg) (2026-11-07, search snippet) | no |
 
 ---
 
@@ -249,6 +261,7 @@ From `notes/refine_mastersizer.md`, `notes/alloy_characterize.md`:
 - **Role and place:** bulk composition of atomized powder (and, as a second use, printed coupons) to verify the
   alloy made. The arm fills an XRF cup (40 mm across, 38 mm tall at most) and loads the tray. **Tray M** (README round 8
   and `notes/tray_plan.md`). About 378 analyses a year.
+- **Model check (2026-11-07):** **current**. Bruker's S2 PUMA Series 2 page still offers the Single, XY Autochanger, Carousel, Automation and Mapping-Stage versions, calls the HighSense XP detector "the latest addition", and names no successor. (<https://www.bruker.com/en/products-and-solutions/elemental-analyzers/xrf-spectrometers/s2-puma-series2.html>)
 
 ### 2. The published specs that matter for integration
 (Bruker's product page, via WebFetch)
@@ -321,6 +334,7 @@ From `notes/instruments_char.md` ("Ask Bruker for the open height") and `notes/r
 | <https://www.bruker.com/en/about-us/contact.html> (form only) | yes |
 | Search: Madison address and phone | no |
 | `notes/instruments_char.md`, `notes/refine_xrf.md` | n/a |
+| <https://www.bruker.com/en/products-and-solutions/elemental-analyzers/xrf-spectrometers/s2-puma-series2.html> (model check: current) (2026-11-07, runner) | no |
 
 ---
 
@@ -335,6 +349,7 @@ From `notes/instruments_char.md` ("Ask Bruker for the open height") and `notes/r
 - **Role and place:** secondary and backscatter imaging of powder (a sphericity and satellite count), and EDS spot
   chemistry of polished mounts. The mount sits in a cup in the stage socket; the drawer slides out. **Tray D**. About 20
   images per alloy, 6,804 images a year.
+- **Model check (2026-11-07):** **superseded by the TM4000PlusIII** (and the X-Max SDD by Oxford's Xplore). Hitachi's US tabletop page lists only the TM4000PlusIII/TM4000III (launched 2024-08-22), which add Recipe Control (stage moves, magnification and image capture run automatically), workflow automation (sequential execution, repetition, conditional branching), a high-current Mode 5 with Oxford's AZtecLiveLite particle analysis, a filament-life monitor, 20 kV and a low-vacuum SE detector (UVD); no dimensions are on the page, so the footprint is to ask, and the EDS offered is Quantax75, the Element series or the AZtec series, while Oxford's AZtecOne page now names only the Xplore detector (XploreCompact 30 or 65 for tabletop SEMs). (<https://www.hitachi-hightech.com/us/en/products/microscopes/sem-tem-stem/tabletop-microscopes/tm4000iii.html>; <https://nano.oxinst.com/products/aztec/aztecone>)
 
 ### 2. The published specs that matter for integration
 - **Size and mass:** **330 x 614 x 547 mm** main unit, **54 kg**; the diaphragm pump 144 x 270 x 216 mm (Hitachi, via
@@ -373,6 +388,7 @@ From `notes/refine_sem.md` and `notes/instruments_lab.md`:
 6. **Vibration and floor:** it will sit on a **VLM tray** that moves; what **isolation** does it need and can it be shut down for transit?
 7. **EBSD:** none listed; what does Hitachi or Oxford advise for a tabletop with EBSD (we model Bruker e-Flash XS)?
 8. PM schedule, **source and filament** lifetime, consumables with prices, service contract price, response time in Utah.
+9. **TM4000PlusIII and Xplore** (model check, 2026-11-07): the PlusIII (2024-08-22) adds recipes, Mode 5 and filament monitoring. Its size, weight and power, whether recipes can be started remotely, and which EDS (AZtecOneXplore or AZtecLiveOne) Hitachi now packages.
 
 ### 5. Their intake questions, answered
 | They will ask | Answer |
@@ -400,6 +416,8 @@ From `notes/refine_sem.md` and `notes/instruments_lab.md`:
 > 4. Floor-vibration limits for a lift tray, and whether it may stand in a moving tray.
 > 5. Preventive maintenance, source life, consumables with prices, a service contract price and the response time to Provo, UT.
 >
+> We understand the TM4000PlusIII has followed the PlusII and the Xplore detector the X-Max: please quote the current models and say what changed in size, weight, utilities and remote control (the PlusIII's recipes in particular).
+>
 > [to confirm: name, title, phone]
 
 ### 7. Sources (checked 2026-11-07 UTC)
@@ -409,6 +427,13 @@ From `notes/refine_sem.md` and `notes/instruments_lab.md`:
 | Search: TM4000PlusIII announcement (2024-08-22); McCrone partnership | no |
 | Search: Oxford `us.nainfo@oxinst.com`, Concord address | no |
 | `notes/refine_sem.md`, `notes/instruments_lab.md` | n/a |
+| <https://www.hitachi.com/en/press/articles/2024/08/0822/> (PlusIII launch) (2026-11-07, search snippet) | no |
+| <https://www.hitachi-hightech.com/us/en/products/microscopes/sem-tem-stem/tabletop-microscopes/> (lists only TM4000PlusIII/TM4000III) (2026-11-07, maker's page, headed Chromium on the stream-cam Pi) | yes |
+| <https://www.hitachi-hightech.com/us/en/products/microscopes/sem-tem-stem/tabletop-microscopes/tm4000iii.html> (PlusIII features, EDS options; no dimensions) (2026-11-07, maker's page, headed Chromium on the stream-cam Pi) | yes |
+| <https://www.mccrone.com/product/hitachi-tm4000plusiii-and-tm4000iii-tabletop-sems/> (PlusIII features) (2026-11-07, runner) | no |
+| <https://nano.oxinst.com/products/aztec/aztecone> (AZtecOne with Xplore) (2026-11-07, runner) | no |
+| <https://nano.oxinst.com/assets/uploads/products/nanoanalysis/documents/Flyers/AZtecLiveOne%20with%20XploreCompact%2030%20and%2065%20for%20TTM.pdf> (XploreCompact 30, 65 for tabletop SEMs) (2026-11-07, search snippet) | no |
+| <https://www.hitachi-hightech.com/us/en/products/microscopes/sem-tem-stem/tabletop-microscopes/aztec.html> (AZtecOneXplore standard) (2026-11-07, search snippet) | no |
 
 ---
 
@@ -421,6 +446,7 @@ From `notes/refine_sem.md` and `notes/instruments_lab.md`:
 - **Role and place:** a grid of nanoindents (a 5 x 5 on each mount, about 3 per alloy, **972 a year**) for hardness and
   modulus of the polished mount. The stage carries the mount from the microscope to the indenter. **Tray E**, with the
   Mastersizer; the hood lifts for the arm.
+- **Model check (2026-11-07):** **current**. KLA's iMicro page is live with a Request a Quote button, and KLA's pages list the iMicro beside the G200X, iNano, NanoFlip and InSEM HT with the InForce 1000; no successor or new iMicro version was found. (<https://www.kla.com/products/instruments/nanoindenters/imicro>)
 
 ### 2. The published specs that matter for integration
 (AZoNano's iMicro listing and UNH's facility page, via WebFetch)
@@ -489,6 +515,7 @@ From `notes/refine_sem.md` and `notes/instruments_lab.md`:
 | <https://www.azonano.com/equipment-details.aspx?EquipID=1357> (specs; WebFetch) | no |
 | <https://www.unh.edu/research/university-instrumentation-center/nanoindenter-kla-instruments-imicro-nanoindenter> | no |
 | Search: KLA acquires Nanomechanics Inc. (Oak Ridge) | no |
+| <https://www.kla.com/products/instruments/nanoindenters/imicro> (model check: live, Request a Quote) (2026-11-07, maker's page, headed Chromium on the stream-cam Pi) | yes |
 
 ---
 
@@ -500,6 +527,7 @@ From `notes/refine_sem.md` and `notes/instruments_lab.md`:
   **PLX-HotStage** (800 C) is **not** wanted at first.
 - **Role and place:** a bulk-like stress-strain curve from a single indent (yield, UTS and work-hardening) of a printed
   or sectioned sample, as a fast screen next to the tensile test. About 972 a year with the nanoindents. **Tray E**.
+- **Model check (2026-11-07):** **current**. Plastometrex's site lists the PLX-Benchtop (with the PLX-HotStage add-on and CORSICA+) and no newer benchtop; the **PLX-AutoStage is new**, and trade press says it launches commercially in Q4 2026 with pre-orders taken, so its delivery date matters. (<https://www.plastometrex.com/>; <https://www.tctmagazine.com/plastometrex-to-roll-out-plx-autostage-for-automated-pip-testing-later-this-year/>)
 
 ### 2. The published specs that matter for integration
 (Plastometrex product page, via WebFetch)
@@ -563,6 +591,8 @@ From `notes/refine_pip.md` ("Still uncertain") and the grep of `notes/`:
 | <https://www.plastometrex.com/contact> (email, offices) | yes |
 | <https://www.plastometrex.com/products/plx-benchtop> (specs; WebFetch) | no |
 | `notes/refine_pip.md` | n/a |
+| <https://www.plastometrex.com/> (model check: PLX-Benchtop current) (2026-11-07, runner) | no |
+| <https://www.tctmagazine.com/plastometrex-to-roll-out-plx-autostage-for-automated-pip-testing-later-this-year/> (AutoStage Q4 2026) (2026-11-07, search snippet) | no |
 
 ---
 
@@ -574,6 +604,7 @@ From `notes/refine_pip.md` ("Still uncertain") and the grep of `notes/`:
 - **Role and place:** wide-field optical imaging and 3D reconstruction of the broken tensile bar, and a laser-induced
   breakdown spectrum (LIBS) spot chemistry. **Tray K**, the controller turned sideways, with a **PiKVM V4 Mini** on top
   (`notes/instruments_r7.md`). DAL's proposal already lists a VHX-7000 at BYU.
+- **Model check (2026-11-07):** **discontinued** (the VHX-7000); the VHX-X1 and EA-300 we plan are **current**. Keyence's VHX-7000 page says "This model has been discontinued" and names the VHX-X1 as the replacement, and its elemental-analyzer page lists only the EA-300 series, for VHX microscopes, and the VHX-S700 stand ("EA-compatible") and VH-ZST lens are listed as VHX-X1 series models; the VHX-7000 in DAL's proposal is the old model, so the X1's size, weight and remote control are to confirm. (<https://www.keyence.com/products/microscope/digital-microscope/vhx-7000/models/vhx-7000/>; <https://www.keyence.com/products/microscope/elemental-analyzer/>)
 
 ### 2. The published specs that matter for integration
 - **EA-300:** 280 x 210 x 375 mm, 7.2 kg; **355 nm Nd:YAG, Class 1, 10 um spot**; H to U; powered by the controller's
@@ -604,6 +635,7 @@ From `notes/instruments_r7.md` ("To check with Keyence"):
 6. **The head's tilt range** (Keyence gives none; Georgia Tech says -60 to +90 degrees).
 7. PM schedule, **calibration** of the scale (a stage micrometer), spares and consumables with prices, service contract price,
    response time in Utah.
+8. **VHX-X1 versus VHX-7000** (model check, 2026-11-07): the VHX-7000 is discontinued. What changed in size, weight, utilities and remote control, and does the EA-300 fit the VHX-X1 unchanged?
 
 ### 5. Their intake questions, answered
 | They will ask | Answer |
@@ -628,6 +660,8 @@ From `notes/instruments_r7.md` ("To check with Keyence"):
 > 3. LIBS standards for Al, Cu-Ni and bronze, and its consumables.
 > 4. Preventive maintenance, calibration, spares with prices, a service contract price, and the response time to Provo, UT.
 >
+> The VHX-7000 is discontinued: please quote the VHX-X1 configuration that replaces it and say what changed from the VHX-7000 in size, weight, utilities and remote control.
+>
 > [to confirm: name, title, phone]
 
 ### 7. Sources (checked 2026-11-07 UTC)
@@ -636,6 +670,9 @@ From `notes/instruments_r7.md` ("To check with Keyence"):
 | <https://www.keyence.com/contact/> (phone, address) | yes |
 | <https://www.keyence.com/products/microscope/digital-microscope/vhx-x1/> (links; WebFetch) | no |
 | `notes/instruments_char.md`, `notes/instruments_r7.md` | n/a |
+| <https://www.keyence.com/products/microscope/digital-microscope/vhx-7000/models/vhx-7000/> (discontinued, VHX-X1 replacement) (2026-11-07, runner) | no |
+| <https://www.keyence.com/products/microscope/elemental-analyzer/> (EA-300 series) (2026-11-07, runner) | no |
+| <https://www.keyence.com/products/microscope/digital-microscope/vhx-x1/models/vhx-s700/> and <https://www.keyence.com/products/microscope/digital-microscope/vhx-x1/models/vh-zst/> (S700, VH-ZST in the X1 series) (2026-11-07, search snippet) | no |
 
 ---
 
@@ -647,6 +684,7 @@ From `notes/instruments_r7.md` ("To check with Keyence"):
   Vickers indenter, and **reference test blocks**.
 - **Role and place:** a row of HV0.1 micro-Vickers indents on a polished mount, read automatically. On the **hot mount**
   by its own loading slide. **Tray L**. About 324 mounts a year.
+- **Model check (2026-11-07):** **current**. Mitutoyo America's product page for the HM-210/220 Type D is live with order numbers 64AAB380P to 64AAB383P, an Inquire button and no discontinued or successor note; a search snippet describes a 2025 Mitutoyo America promotion on the Type D as a "clearance" offer "while supplies last" (the PDF itself could not be read), so ask whether a successor is coming. (<https://pim.mitutoyo.com/products/test-equipment/micro-hardness-testers/hm-210-220-vickers-hardness-testing-machine-type-d/>)
 
 ### 2. The published specs that matter for integration
 (Mitutoyo catalog section K via `notes/instruments_r7.md`; dealer pages)
@@ -673,6 +711,7 @@ From `notes/instruments_r7.md` ("To check with Keyence"):
 5. **The PC:** which one Mitutoyo specifies, and whether a **headless** or networked one is allowed.
 6. Is there a **successor** to the HM-220 (the HM-200 series is old)?
 7. PM schedule, **indenter and objective life**, consumables with prices, a service contract price, response time in Utah.
+8. **Is the HM-220 Type D still in production** (model check, 2026-11-07)? A 2025 promotion was described as a clearance; if a successor is coming, its size, weight, utilities and remote control.
 
 ### 5. Their intake questions, answered
 | They will ask | Answer |
@@ -705,6 +744,9 @@ From `notes/instruments_r7.md` ("To check with Keyence"):
 | <https://www.mitutoyo.com/contact-us/> (phone, address, forms) | yes |
 | Mitutoyo catalog section K (`https://www.mitutoyo.com/webfoo/wp-content/uploads/K_section.pdf`) via `notes/instruments_r7.md` | n/a |
 | Search: HM-220 Type D dealers (stage numbers, AVPAK-20) | no |
+| <https://pim.mitutoyo.com/products/test-equipment/micro-hardness-testers/hm-210-220-vickers-hardness-testing-machine-type-d/> (Type D live, 64AAB380P to 383P) (2026-11-07, runner) | no |
+| <https://www.mitutoyo.com.sg/sg-en/product/detail/hm-200-series> (HM-200 series listed) (2026-11-07, search snippet) | no |
+| <https://cdn.mediavalet.com/usil/mitutoyo/1IFeZDSZZkyaPpaef11DoA/0Ysxo04xMUuJ4T4nijmsCA/Original/HM%20Hardness_Promo.pdf> (2025 promotion; text not readable) (2026-11-07, search snippet) | no |
 
 ---
 
@@ -722,6 +764,7 @@ From `notes/instruments_r7.md` ("To check with Keyence"):
 - **Role and place:** tensile tests of printed **E8 subsize bars** (100 mm long, a 32 mm reduced section 6 mm wide and
   6 mm thick, **14.8 kN** at AddUp's 412 MPa AlSi10Mg) at room temperature and **up to 200 C**. About **1,420 a year**. The
   68FM-100 is on the **floor, beside the VLM** (2287 x 1140 x 786 mm, 799 kg per Instron).
+- **Model check (2026-11-07):** **current**, with a **new, smaller 100 kN option**. Instron's 6800 Series page still offers the 68FM floor models (the 68FM-100 included) and the 68SC single-column frames (to 5 kN), and the AT6 is current (to 600 kN, up to 500 specimens unattended, optional chambers and parallel frames); new is the **68TM-100 table model**, "40% smaller" than the floor model: 1640 x 760 x 715 mm (0.54 m2) against 2287 x 1140 x 786 mm, 100-240 V single phase against 208-240 V, but 420 mm between columns against 575 mm, 508 against 1016 mm/min and 180 against 300 kN/mm. The 3119-608 (-150 to 600 C, 165 kg, in Instron's 3119-600 literature) and the AVE 2 (now "AVE2", for the 3119-600 chambers) were checked by search snippet only. (<https://www.instron.com/en/products/testing-systems/universal-testing-systems/6800-series/>; <https://www.instron.com/wp-content/uploads/2025/09/100kn-universal-testing-systems-tm-fm.pdf>; <https://www.instron.com/en/products/testing-systems/automated-testing-systems/at6-6-axis-robotic-automated-testing-system/>)
 
 ### 2. The published specs that matter for integration
 - **68FM-100:** force 100 kN; crosshead travel 1407 mm (standard height), **vertical test space 1494 mm**, 575 mm between
@@ -761,6 +804,7 @@ From `notes/alloy_workflow.md`, `notes/instruments_r7.md` and the user's request
 7. **Floor and install:** weight 799 kg, **anchoring**, ceiling clearance for the 2287 mm height.
 8. PM schedule and downtime, **consumables** (grip faces, chamber elements, fan), spares with prices, a service contract
    price, and the response time in Utah.
+9. **The new 68TM-100 table model** (model check, 2026-11-07): 1640 x 760 x 715 mm, 100-240 V. Would it take the 3119-608 chamber and the AVE 2 in its 420 mm between columns, and do its 180 kN/mm and 508 mm/min suit E8 subsize bars? It could leave the floor for a tray or bench.
 
 ### 5. Their intake questions, answered
 | They will ask | Answer |
@@ -801,6 +845,11 @@ From `notes/alloy_workflow.md`, `notes/instruments_r7.md` and the user's request
 | Search: Instron brochure (825 University Ave; +1 800 564 8378), 68FM-100 and 3119-608 catalogs, AVE 2, AT6 page | no |
 | Search: SLC field service job posting | no |
 | `notes/alloy_workflow.md`, `notes/instruments_r7.md`, README | n/a |
+| <https://www.instron.com/en/products/testing-systems/universal-testing-systems/6800-series/> (68FM, 68SC, new 68TM-100) (2026-11-07, maker's page, headed Chromium on the stream-cam Pi) | yes |
+| <https://www.instron.com/wp-content/uploads/2025/09/100kn-universal-testing-systems-tm-fm.pdf> (68TM-100 versus 68FM-100, Sep 2025) (2026-11-07, maker's page, headed Chromium on the stream-cam Pi) | yes |
+| <https://www.instron.com/en/products/testing-systems/automated-testing-systems/at6-6-axis-robotic-automated-testing-system/> (AT6 current) (2026-11-07, maker's page, headed Chromium on the stream-cam Pi) | yes |
+| <https://www.instron.com/en/products/testing-accessories/extensometers/ave-2-advanced-video-extensometer/> (AVE2, 3119-600 chambers) (2026-11-07, search snippet) | no |
+| <https://instron.com/-/media/literature-library/manuals/thermal-safety-sheet-for-3119-600-series-temperature-controlled-chambers.pdf?la=en> (3119-608, 165 kg) (2026-11-07, search snippet) | no |
 
 ---
 
@@ -811,6 +860,7 @@ From `notes/alloy_workflow.md`, `notes/instruments_r7.md` and the user's request
   a tray; **grips for miniature specimens**, a **video or clip-on extensometer**, **testXpert** software.
 - **Role and place:** tensile tests of **miniature specimens** or **faced** bars (6 x 1.5 mm, 3.7 kN, 74 percent of the
   frame), as a second tensile machine. **Tray L**, on its side, 638 mm deep, in front of the UPS.
+- **Model check (2026-11-07):** **current**. ZwickRoell's product information for the zwickiLine Z0.5 to Z5.0 lists the Z5.0 TN (item 059006) beside the TS and TH and says the frame runs vertical or horizontal; no successor was found (search snippet; the sheet itself not opened). (<https://www.zwickroell.com/fileadmin/content/Files/SharePoint/user_upload/PI_EN/02_396_zwickiLine_Z0_5_up_to_Z5_0_Materials_Testing_Machine_PI_EN.pdf>)
 
 ### 2. The published specs that matter for integration
 (ZwickRoell product information PI 396 and `notes/instruments_r7.md`)
@@ -877,6 +927,7 @@ From `notes/timelapse.md`, `notes/instruments_r7.md` ("whether the zwickiLine's 
 | <https://www.zwickroell.com/contact/> (address, phone) | yes |
 | ZwickRoell PI 396 (`02_396_zwickiLine_Z0_5_up_to_Z5_0_Materials_Testing_Machine_PI_EN.pdf`; text not extractable, figures from `notes/instruments_r7.md`) | no |
 | `notes/timelapse.md`, `notes/edison_r8.md` | n/a |
+| <https://www.zwickroell.com/fileadmin/content/Files/SharePoint/user_upload/PI_EN/02_396_zwickiLine_Z0_5_up_to_Z5_0_Materials_Testing_Machine_PI_EN.pdf> (Z5.0 TN, item 059006) (2026-11-07, search snippet) | no |
 
 ---
 
@@ -888,6 +939,7 @@ From `notes/timelapse.md`, `notes/instruments_r7.md` ("whether the zwickiLine's 
   frame set up horizontal, "quote only"). **Quantity 0 or 1**, only if the zwickiLine is too small.
 - **Role and place:** the route's full 6 x 6 mm bar on a tray. The notes found **no motorized horizontal machine with a
   published size that reaches 14.8 kN** (`notes/instruments_r7.md`).
+- **Model check (2026-11-07):** **current** (no model chosen). Tinius Olsen's horizontal testers page lists the MHT 1000 (5 kN), MHT 5000 (25 kN), MHT 30000 (150 kN) and MHT 60000 (300 kN), none at 15 kN, so the **MHT 5000 is the smallest that reaches 14.8 kN**; ADMET still describes the eXpert 5000 series as modular frames set up vertical or horizontal. (<https://tiniusolsen.com/product-category/universal-testing-machines/horizontal-testers>; <https://www.admet.com/product-category/testing-machines/universal-testing-machines/>)
 
 ### 2. The published specs that matter for integration
 - **Tinius Olsen:** horizontal machines from 5 to 300 kN; **no size published**.
@@ -938,6 +990,8 @@ share of the 1,420 tests a year, 208 V or 120 V **[to confirm]**.
 | <https://www.tiniusolsen.com/contact/sales/> (US address, `sales@tiniusolsen.com`, +1 215-675-7100) | yes |
 | <https://www.admet.com/contact/> (address, phones, `info@admet.com`) | yes |
 | `notes/instruments_r7.md` (horizontal frames) | n/a |
+| <https://tiniusolsen.com/product-category/universal-testing-machines/horizontal-testers> (MHT 1000 to 60000) (2026-11-07, runner) | no |
+| <https://www.admet.com/product-category/testing-machines/universal-testing-machines/> (eXpert 5000 series, vertical or horizontal) (2026-11-07, search snippet) | no |
 
 ---
 
@@ -950,6 +1004,7 @@ share of the 1,420 tests a year, 208 V or 120 V **[to confirm]**.
   OIML class E2 check weights** with an accredited certificate.
 - **Role and place:** the multi-doser doses by weight on the pan: a Cu charge cup with its plug and Ni weighs 129.7 to
   135.7 g, over the HR-100A's 102 g, so the 220 g balance is needed. **Tray B**, under the dose point (`notes/multidoser.md`).
+- **Model check (2026-11-07):** **discontinued** (HR-202i, GH-202 and HR-100A); the Troemner 7421-E2W set is **current** (Transcat lists it). A&D's own analytical-balance list now shows only the BA-T/BA, BH-T/BH, BM, BM-S ("NEW"), GR, Apollo and Fortis series and its HR-i and GH pages return 404 (US dealers such as Rice Lake still listed GH stock in 2025-2026, and dealers name the FX-104, 102 g x 0.1 mg, for the HR-100A). The like-for-like 0.01 mg replacement is the **BH-225D** (51 g x 0.01 mg / 220 g x 0.1 mg, smart range, RS-232C and USB; the BH-225DTE adds LAN and Bluetooth); for 0.01 mg over the whole 130-136 g cup, the **BM-252** (250 g x 0.01 mg, RS-232C, USB, Ethernet option). (<https://aandd.jp/products/weighing/wproduct.html>; <https://aandd.jp/products/weighing/balance/analytical/bh.html>; <https://aandd.jp/products/weighing/balance/analytical/bm.html>)
 
 ### 2. The published specs that matter for integration
 - **Ranges:** 220 g x 0.1 mg; 51 g x 0.01 mg (dual range). **Interface:** **RS-232C built in** (the GH manual), read by the
@@ -982,6 +1037,7 @@ share of the 1,420 tests a year, 208 V or 120 V **[to confirm]**.
    interval** for a **semi-micro** balance, **ASTM E898 / USP <41>** checks, who calibrates in Utah.
 6. **Anti-static and vibration:** a **static eliminator** for powder and a **vibration table** (the doser's motor is nearby).
 7. PM schedule, consumables, spares with prices, a service contract price, and the response time in Utah.
+8. **HR-202i and GH-202 discontinued** (model check, 2026-11-07): A&D's list now has the BH-T/BH, BM and BM-S series. Quote the **BH-225D or BH-225DTE** (51 g x 0.01 mg / 220 g x 0.1 mg) or the **BM-252** (250 g x 0.01 mg); their size, weight, draft-shield door and command set over RS-232C, USB or LAN. Is the HR-100A replaced by the FX-104?
 
 ### 5. Their intake questions, answered
 | They will ask | Answer |
@@ -1007,6 +1063,8 @@ share of the 1,420 tests a year, 208 V or 120 V **[to confirm]**.
 > 4. Calibration and verification (weights and interval), preventive maintenance, spares, a service-contract price, and the
 >    response time to Provo, UT.
 >
+> The HR-202i and GH-202 appear to be discontinued: please quote the current model with the same ranges (we understand the BH-225D, 51 g x 0.01 mg / 220 g x 0.1 mg, or the BM-252 for 0.01 mg to 250 g) and say what changed in size, weight, utilities and remote control (RS-232C, USB, LAN).
+>
 > [to confirm: name, title, phone]
 
 ### 6b. Draft email for check weights
@@ -1024,6 +1082,13 @@ share of the 1,420 tests a year, 208 V or 120 V **[to confirm]**.
 | Search: GH-202 and HR-202i pages (Capitol Scientific, MnM Scales, Fisher), A&D GH/HR-i brochure ("DISCONTINUED") | no |
 | Search: Troemner 7421-E2W on Transcat | no |
 | `notes/multidoser.md`, `notes/alloy_charge.md` | n/a |
+| <https://aandd.jp/products/weighing/wproduct.html> (analytical balance list; no HR-i, GH or HR-A) (2026-11-07, runner) | no |
+| <https://aandd.jp/products/weighing/balance/analytical/bh.html> (BH-225D, BH-225DTE) (2026-11-07, runner) | no |
+| <https://aandd.jp/products/weighing/balance/analytical/bm.html> and <https://aandd.jp/products/weighing/balance/analytical/bm-s.html> (BM-252, BM-255DS) (2026-11-07, runner) | no |
+| <https://aandd.jp/products/weighing/balance/analytical/hri.html> and <https://aandd.jp/products/weighing/balance/analytical/gh.html> (both 404) (2026-11-07, runner) | no |
+| <https://www.ricelake.com/products/phoenix-gh-series-a-d-weighing-analytical-balance/?print=true> (GH still listed by a US dealer, 2026-07-24) (2026-11-07, search snippet) | no |
+| <https://sandiegoscale.com/products/a-d-hr-100a-hr-a-series-compact-analytical-balance> (HR-100A "Replaced by FX-104") (2026-11-07, search snippet) | no |
+| <https://www.transcat.com/troemner-7421-e2w-200g-1mg-oiml-class-e2-weight-set-nvlap> (7421-E2W listed) (2026-11-07, search snippet) | no |
 
 ---
 
@@ -1034,6 +1099,7 @@ share of the 1,420 tests a year, 208 V or 120 V **[to confirm]**.
   **NTLog Basic** (USB logging). Optional: a **motorized or robot-friendly door** (to ask).
 - **Role and place:** solution treatment and ageing of printed coupons and bars (Al T5 and T6; Cu-Ni ageing), with a
   stainless rack; a quench tank beside it. **Tray F** (the tray's modelled load is 3,654 W). About 324 loads a year.
+- **Model check (2026-11-07):** **current**. Nabertherm's tabletop forced-convection page lists the NAT 15/65 (15 L, 650 C, single phase, uniformity up to +/-5 C), and its news names NAT as the newer family that followed the NA 15/65; the B510 and C550 are in its current Series 500 controllers, with NTLog. (<https://nabertherm.com/en/products/labor/ovens-and-forced-convection/forced-convection-chamber-furnaces-tabletop-design>; <https://nabertherm.com/en/company/news/new-furnace-family-nat>)
 
 ### 2. The published specs that matter for integration
 (Nabertherm datasheet table via distributor listings; **not read from Nabertherm's own site**, whose product URL returned 404)
@@ -1098,6 +1164,9 @@ share of the 1,420 tests a year, 208 V or 120 V **[to confirm]**.
 | <https://www.nabertherm.com/en/contact> (and `/subsidiaries`), `contact@nabertherm.de` | yes |
 | Search: Nabertherm Inc. phone, email, address; NAT 15/65 datasheet table via MSE Supplies, Fisher, imlab; NTLog pages | no |
 | `notes/refine_furnace.md`, README (470 x 790 x 460 mm, 60 kg) | n/a |
+| <https://nabertherm.com/en/products/labor/ovens-and-forced-convection/forced-convection-chamber-furnaces-tabletop-design> (NAT 15/65 listed) (2026-11-07, search snippet) | no |
+| <https://nabertherm.com/en/company/news/new-furnace-family-nat> (NAT family) (2026-11-07, search snippet) | no |
+| <https://nabertherm.com/en/series-500> (B510, C550, NTLog) (2026-11-07, search snippet) | no |
 
 ---
 
@@ -1115,6 +1184,7 @@ share of the 1,420 tests a year, 208 V or 120 V **[to confirm]**.
   leak-free reference; sections 16 and 17).
 - **Role and place:** the corrosion screen: 4 coupon stations with a lid and O-ring well (3 mm, 0.071 cm2, about 150 uL), a
   magnetic electrode cap carried by the capper, OCP, LPR and cyclic polarization. **Tray A**, 100 W. About **648 spots a year**.
+- **Model check (2026-11-07):** **current**. SainSmart's shop still sells the Genmitsu PROVerXL 4030 V2 (400 x 300 x 110 mm, closed-loop NEMA 23, ball screws), with an open-box listing too, and no V3 was found; the DAL `bom.csv` parts are generic and were not checked. (<https://sainsmart.com/products/proverxl-4030-v2>)
 
 ### 2. The published specs that matter for integration
 - **SainSmart Genmitsu PROVerXL 4030 V2:** working area **400 x 300 x 110 mm**, about **31 kg**, a **GRBL**-based control, NEMA 23
@@ -1158,6 +1228,7 @@ share of the 1,420 tests a year, 208 V or 120 V **[to confirm]**.
 | README (CubXL row), `notes/cubxl_corrosion.md`, `notes/instruments_lab.md` | n/a |
 | [DAL `cubxl-setup.md`](https://github.com/vertical-cloud-lab/digital-alloy-lab/blob/aeda51a/alloy-corrosion/cubxl-setup.md) and `bom.csv` (via `gh api`) | no |
 | Search: SainSmart support email and PROVerXL 4030 V2 specs (manuals.plus) | no |
+| <https://sainsmart.com/products/proverxl-4030-v2> (model check: current) (2026-11-07, search snippet) | no |
 
 ---
 
@@ -1170,6 +1241,7 @@ share of the 1,420 tests a year, 208 V or 120 V **[to confirm]**.
   `bom.csv` lists the **PalmSens EmStat Pico (ESPICO-ALL, $580 on 2026-09-28; ESPICO-DK about $1,800)** as option B. **Ask
   NuVant whether the EZstat Pro has EIS**: a vendor listing says it does (0.01 to 10 kHz).
 - **Role and place:** OCP, LPR and cyclic polarization of 4 coupons on the CubXL. Beside the CubXL frame, on **tray A**.
+- **Model check (2026-11-07):** **current**. NuVant's products page still lists the "best-selling EZstat Pro potentiostat/galvanostat" under Electrochemistry Research Equipment, beside the Powerstat and Arraystat, and names no successor; NuVant is still "an A3 Global company", and its online store (store.nuvant.com) now sells hybrid-car batteries, not potentiostats. (<https://www.nuvant.com/products>)
 
 ### 2. The published specs that matter for integration
 (An etesters vendor listing, **not NuVant's page**)
@@ -1222,6 +1294,8 @@ share of the 1,420 tests a year, 208 V or 120 V **[to confirm]**.
 | <https://www.nuvant.com/contact> (`info@a3global.com`) | yes |
 | Search: EZstat Pro listing (etesters) | no |
 | DAL `bom.csv` (EmStat Pico option) via `gh api`; `notes/cubxl_corrosion.md` | no |
+| <https://www.nuvant.com/products> (EZstat Pro listed) (2026-11-07, runner) | no |
+| <https://store.nuvant.com> (hybrid batteries only) (2026-11-07, runner) | no |
 
 ---
 
@@ -1234,6 +1308,7 @@ share of the 1,420 tests a year, 208 V or 120 V **[to confirm]**.
   **second robot** is bought for the tray is **[to confirm]**. The model notes a **P1000** would suit a 20 mL batch.
 - **Role and place:** makes the CubXL's NaCl and sulfide stocks and the ICP dilutions (`notes/ot2_corrosion.md`). **Tray A**, in
   front of the UPS, **662 mm tall**, 100-180 W active.
+- **Model check (2026-11-07):** **current**. Opentrons **still sells the OT-2 new** (its product page has a price, an Add to Cart button and "Ships in 6 weeks", and no end-of-sale notice; the Flex is the newer robot), and **still sells the GEN2 single-channel pipette** in P20, P300 and P1000 ("OT-2 Single-Channel Pipette", item 999-00002, ships in 7 business days). (<https://opentrons.com/products/ot-2-robot>; <https://opentrons.com/products/single-channel-electronic-pipette-p20/>)
 
 ### 2. The published specs that matter for integration
 - **Interfaces:** the OT-2 has an **HTTP API on port 31950** (send `Opentrons-Version: 3`; `GET /health` is read-only) and a
@@ -1290,6 +1365,9 @@ share of the 1,420 tests a year, 208 V or 120 V **[to confirm]**.
 | <https://opentrons.com/contact> (phone, hours) | yes |
 | Search: Opentrons store, education pricing (Business Wire 2024) | no |
 | `notes/ot2_corrosion.md`, `notes/services.md`, `CLAUDE.md` (Opentrons API call pattern) | n/a |
+| <https://opentrons.com/products/ot-2-robot> (OT-2 sold new) (2026-11-07, runner) | no |
+| <https://opentrons.com/products/single-channel-electronic-pipette-p20/> (GEN2 single-channel P20, P300, P1000) (2026-11-07, runner) | no |
+| <https://opentrons.com/robots/ot-2> (Buy now; pipettes listed) (2026-11-07, runner) | no |
 
 ---
 
@@ -1303,6 +1381,7 @@ From DAL's `bom.csv` (checked 2026-10-17 there):
 - **Pt wire 0.25 mm** (Advent PT5434, 0.1 m, $184) for the **five-turn counter coil**, or Ossila's finished Pt counter ($247).
 - **Alternatives for a fritted reference and a Pt coil/mesh from Pine Research, BASi and Gamry**, if a standard cell is wanted.
 - **Role and place:** the electrode cap on the CubXL, 20 mm across, 16 mm tall, carried by the capper. **Tray A**.
+- **Model check (2026-11-07):** **current** (WPI DRIREF-2, Ossila C2015B1, Advent PT5434); **unconfirmed** (Innovative Instruments LF-1 and LF-2). No LF-1 or LF-2 maker page was found, and innovativeinstruments.com is now an Italian process-instrument company in Milan with no electrodes, so the leak-free maker's current site and status are unknown; Pine, BASi and Gamry name no model. (<https://www.wpiinc.com/driref-2-dri-ref-reference-electrode-2-mm>; <https://ossila.com/products/ag-agcl-reference-electrode>; <https://advent-rm.com/en-GB/Products/Pure-Metals/Platinum/Form/Wire/Line/PT5434>; <https://www.innovativeinstruments.com/contatti/>)
 
 ### 2. The published specs that matter for integration
 - **Cap:** a **2 mm leak-free Ag/AgCl** down the middle inside **five turns of 0.25 mm Pt**; a steel disc on top for the capper's
@@ -1333,6 +1412,7 @@ From DAL's `bom.csv` (checked 2026-10-17 there):
 4. **Pt wire** purity (99.95 %), spool length and price; **Pt mesh or coil** as a finished part.
 5. **Calibration and verification:** the master reference against a **saturated calomel or a certified standard**, and its replacement interval.
 6. **Which of Pine, BASi and Gamry** supply a **leak-free** or **micro** reference; **price**; academic discount.
+7. **Who makes the LF-1 and LF-2 now** (model check, 2026-11-07)? innovativeinstruments.com is an Italian process-instrument company with no electrodes; find the leak-free maker's current site before writing to it.
 
 ### 5. Their intake questions, answered
 | They will ask | Answer |
@@ -1358,6 +1438,30 @@ From DAL's `bom.csv` (checked 2026-10-17 there):
 | The five vendor contact pages above | yes |
 | DAL `bom.csv` (parts, prices) via `gh api` | no |
 | Search: Innovative Instruments, WPI (no direct LF-1 page found) | no |
+| <https://www.wpiinc.com/driref-2-dri-ref-reference-electrode-2-mm> (DRIREF-2 listed) (2026-11-07, search snippet) | no |
+| <https://ossila.com/products/ag-agcl-reference-electrode> (C2015B1 listed) (2026-11-07, search snippet) | no |
+| <https://advent-rm.com/en-GB/Products/Pure-Metals/Platinum/Form/Wire/Line/PT5434> (PT5434 listed) (2026-11-07, search snippet) | no |
+| <https://www.innovativeinstruments.com/> and <https://www.innovativeinstruments.com/contatti/> (Milan, no electrodes; /contact now 404) (2026-11-07, runner) | no |
+
+---
+
+## Superseded or discontinued (model check, 2026-11-07)
+
+From the makers' own pages where the runner could read them, else search snippets or distributors. Items found current are in each
+section's "Model check" line and in `characterization.csv` (`model_status`).
+
+| Item | Modelled | Status | Successor | Source |
+|---|---|---|---|---|
+| XRD standard (section 1) | NIST SRM 640f | superseded | SRM 640g (certificate 2024-02-27) | <https://www.nist.gov/publications/certification-standard-reference-materialr-640g-line-position-and-line-shape-standard> (search snippet) |
+| Particle size (section 2) | Mastersizer 3000 + Aero S | superseded | Mastersizer 3000+ (Lab, Pro, Ultra; launched 2024-03-14), same 690 x 300 x 450 mm bench; which version takes the Aero S to confirm | <https://www.malvernpanalytical.com/en/about-us/press-releases/news/pr240314-matersizer-3000-plus-launch> (runner) |
+| SEM (section 4) | Hitachi TM4000PlusII | superseded | TM4000PlusIII (2024-08-22); Hitachi's US page lists only the III; footprint not published | <https://www.hitachi-hightech.com/us/en/products/microscopes/sem-tem-stem/tabletop-microscopes/tm4000iii.html> (maker's page, headed Chromium on the stream-cam Pi) |
+| EDS detector (section 4) | Oxford AZtecOne with X-Max SDD | superseded | Xplore detector; XploreCompact 30 or 65 for tabletop SEMs (Hitachi: AZtecOneXplore) | <https://nano.oxinst.com/products/aztec/aztecone> (runner) |
+| Microscope (section 7) | Keyence VHX-7000 | discontinued | VHX-X1 (already planned) | <https://www.keyence.com/products/microscope/digital-microscope/vhx-7000/models/vhx-7000/> (runner) |
+| Tensile frame (section 9) | Instron 68FM-100 | current; new smaller option | 68TM-100 table model (1640 x 760 x 715 mm, 100-240 V; 420 mm between columns) | <https://www.instron.com/wp-content/uploads/2025/09/100kn-universal-testing-systems-tm-fm.pdf> (maker's page, headed Chromium on the stream-cam Pi) |
+| Balance (section 12) | A&D HR-202i | discontinued | BH-225D / BH-225DTE (51 g x 0.01 mg, 220 g x 0.1 mg); BM-252 (250 g x 0.01 mg) | <https://aandd.jp/products/weighing/wproduct.html> (runner) |
+| Balance (section 12) | A&D GH-202 | discontinued | as above; US dealers still list GH stock | <https://aandd.jp/products/weighing/wproduct.html> (runner) |
+| Balance (section 12) | A&D HR-100A (the lab's own) | discontinued | FX-104 (102 g x 0.1 mg), per dealers | <https://sandiegoscale.com/products/a-d-hr-100a-hr-a-series-compact-analytical-balance> (search snippet) |
+| Reference electrode (section 17) | Innovative Instruments LF-1 / LF-2 | unconfirmed | maker's site not found; the domain is now an Italian firm | <https://www.innovativeinstruments.com/contatti/> (runner) |
 
 ---
 
