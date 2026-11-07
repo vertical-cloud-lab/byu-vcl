@@ -169,6 +169,8 @@ DOSE_LOOK = (40.0, -60.0, 210.0)     # (world), looking at this point from it: t
 DOSE_VA = 37.0                       # it, and the cup, through the 117 mm between the frame's front post and the
 #                                      station's post
 CUP_OFF, CUP_LOOK, CUP_VA = (35.0, -380.0, 75.0), (0.0, 0.0, 62.0), 30.0   # the cup under the auger's exit, close
+FORK_OFF, FORK_LOOK, FORK_VA = (450.0, -750.0, 600.0), (0.0, -250.0, 60.0), 35.0   # round 6: the fork's way in, from
+#                                    the front right and above: the arm, the fork, the balance's glass and the chain
 CHAIN_AT = (130.0, -140.0, 300.0)    # the chain's label's anchor, from the cup's foot: on its front run
 
 
@@ -1167,6 +1169,7 @@ def movie():
     bal = K.bal_cup()                 # the cup's foot on the tall pedestal
     CAMS["dose"] = [tuple(bal + DOSE_OFF), tuple(bal + DOSE_LOOK), (0, 0, 1), DOSE_VA]
     CAMS["cup"] = [tuple(bal + CUP_OFF), tuple(bal + CUP_LOOK), (0, 0, 1), CUP_VA]
+    CAMS["fork"] = [tuple(bal + FORK_OFF), tuple(bal + FORK_LOOK), (0, 0, 1), FORK_VA]
     mods = L.modules
     lbl_mods = [(f"the {pname} module", mods.point(pname), box) for pname, box in MOD_LBL]
     lbl_chain = ("13 powder modules on a chain,\none powder in each", tuple(bal + CHAIN_AT), (0.985, 0.46))
@@ -1199,8 +1202,6 @@ def movie():
         return up
 
     turned = []
-    lbl_fork = ("the cup fork, a tool for the gripper\n(it can't reach in)", tuple(K._w(K.rig, (float(CR.PAN_XY[0]),
-                REST_Y, 380.0))), (0.02, 0.80))
     # the fork's seat (its frame's origin, on the blade's top), rig frame: carried level, at z_hover; let down until
     # the cup's foot is FORK_GAP over the pedestal; 4 mm clear under its foot; FORK_GAP under it, to take it
     px, py = float(CR.PAN_XY[0]), float(CR.PAN_XY[1])
@@ -1238,16 +1239,44 @@ def movie():
             G_fork.append(best[1] if best else fork_grasp_local())
         return sc.world("cupfork") @ G_fork[0]
 
+    fork_at = [0.0, 0.0, 0.0]          # the fork's label rides its handle (a frame hook)
+
+    def fork_hook(s_):
+        fork_at[:] = (sc.world("cupfork") @ np.r_[0.0, -(FORK_L - 15.0) + FORK_HANDLE[1] / 2,
+                                                  FORK_HANDLE_H + 10.0, 1.0])[:3]
+    sc.frame_hooks.insert(0, fork_hook)
+    fork_hook(sc)
+    lbl_fork = ("the cup fork: the gripper\ncan't reach in itself", fork_at, (0.02, 0.80))
+
+    def take_fork():
+        """The fork by its handle, off its rest (from wherever the arm is: parked, or over the cup's rack)."""
+        yield ARM_S[0], lambda: both(rb.joint_to(Tw=T((0, 0, 100)) @ fork_grasp()), rb.grip_to(OPEN_FORK),
+                                     cam_up(sc, "fork"))
+        yield HOLD, None
+        yield ARM_S[1], lambda: rb.line_to(fork_grasp())
+        yield ARM_S[2], lambda: rb.grip_to(GRIP_FORK)
+        rb.grasp("cupfork")
+        yield 0.4, lambda: fork_to(CR.Y_HAND, z_hover)
+
+    def leave_fork(*also):
+        """The fork back down on its rest and let go; the hand up off it. `also`: updates run alongside (the doser's
+        own moves)."""
+        yield 0.4, lambda: both(fork_to(CR.Y_HAND, z_rest), *[a() for a in also[:1]])
+        yield ARM_S[2], lambda: both(rb.grip_to(OPEN_FORK), *[a() for a in also[1:2]])
+        rb.release(K.rig)
+        yield HOLD, None
+        yield ARM_S[3], lambda: both(rb.line_to(T((0, 0, 100)) @ rb.tcp_world()), *[a() for a in also[2:3]])
+
     def cup_in():
         """The arm carries the cup in on the fork over the balance and lets it down onto the pedestal; the fork drops
-        clear under its foot, backs out from under it, rises and comes back out past the -y panel. The camera goes in
-        to the cup."""
-        yield 1.6, lambda: both(fork_to(py, z_hover), cam_up(sc, "cup"))
+        clear under its foot, backs out from under it, rises and comes back out past the -y panel. Then a cut to the
+        cup, close (the camera's way in would pass through the arm)."""
+        yield 1.6, lambda: fork_to(py, z_hover)
         yield 0.5, lambda: fork_to(py, z_let)
         Mw = sc.world(cg)
         p = Mw[:3, 3] - np.array([0.0, 0.0, FORK_GAP])          # onto the pedestal
         if not turned:
-            # set down with its cut face (charge.cup(cut=True) keeps the +y half) to the dose view: a whole cup looks
+            # set down with its cut face (charge.cup(cut=True) keeps the +y half) to the close view: a whole cup looks
             # the same whichever way it is turned about its axis
             Mw = T(p) @ R((0, 0, 1), cut_face())
             turned.append(True)
@@ -1262,11 +1291,13 @@ def movie():
         yield 0.4, lambda: fork_to(py - FORK_BACK, z_under)
         yield 0.3, lambda: fork_to(py - FORK_BACK, z_hover)
         yield 1.3, lambda: fork_to(CR.Y_HAND, z_hover)
+        yield from call(lambda: set_cam(sc, "cup"))
 
-    def cup_out(cam="dose", whole=False):
-        """The fork back in, short of the cup; down, and in under its foot round the pedestal's neck; up to take it
-        off the pedestal, and out past the -y panel. The camera back out to `cam` (whole: the cup drawn whole again,
-        its last dose in)."""
+    def cup_out(whole=False):
+        """A cut back out to the fork's view; the fork back in, short of the cup; down, and in under its foot round
+        the pedestal's neck; up to take it off the pedestal, and out past the -y panel (whole: the cup drawn whole
+        again, its last dose in)."""
+        yield from call(lambda: set_cam(sc, "fork"))
         yield 1.3, lambda: fork_to(py - FORK_BACK, z_hover)
         yield 0.3, lambda: fork_to(py - FORK_BACK, z_under)
         yield 0.4, lambda: fork_to(py, z_under)
@@ -1279,7 +1310,7 @@ def movie():
             K.cut(CUP, False, sleeve=None)
         yield 0.5, lambda: fork_to(py, z_hover)
         sc.gmat[cg][:3, 3] = on_seat[0]                         # on the seat (it was taken FORK_GAP under its foot)
-        yield max(1.4, 1.5 * f), lambda: both(fork_to(CR.Y_HAND, z_hover), cam_up(sc, cam))
+        yield 1.4, lambda: fork_to(CR.Y_HAND, z_hover)
 
     def at_B():
         yield from call(lambda: (phase("The arm stands an empty charge cup on its cup fork: its gripper can't reach "
@@ -1288,14 +1319,9 @@ def movie():
         yield from place(rb, A.down(p_hand, spin=180.0), A.down(p_hand + (0, 0, 120), spin=180.0), "cupfork",
                          OPEN_CUP)
         on_seat.append(sc.gmat[cg][:3, 3].copy())          # the cup standing on the fork's seat, in the fork's frame
-        # the fork by its handle, off its rest; the camera back to take in the doser's chain
-        yield ARM_S[0], lambda: both(rb.joint_to(Tw=T((0, 0, 100)) @ fork_grasp()), rb.grip_to(OPEN_FORK),
-                                     cam_up(sc, "dose"))
-        yield HOLD, None
-        yield ARM_S[1], lambda: rb.line_to(fork_grasp())
-        yield ARM_S[2], lambda: rb.grip_to(GRIP_FORK)
-        rb.grasp("cupfork")
-        yield 0.4, lambda: fork_to(CR.Y_HAND, z_hover)
+        fork_grasp()                                       # (picked now, with the arm over the fork)
+        # the arm out of the way while the chain indexes; the camera back to take in the doser's chain
+        yield 1.4, lambda: both(rb.joint_to(A.PARK_RAD), cam_up(sc, "dose"))
         yield from call(lambda: labels(*lbl_mods, lbl_chain))
         for layer, pname, h0, h1, text in (
                 (0, "Si", 0.0, h_si, f"One powder in each module: the chain brings the Si to the balance, and "
@@ -1307,8 +1333,11 @@ def movie():
             yield 2.6 * f, lambda m=m: car.to(shift=car.index_to(m))
             yield 1.2 * f, lambda: car.to(ext=CR.DOCK_EXT, magnet_on=True)
             yield 1.3 * f, lambda: car.to(tilt=CR.TILT)
-            yield from call(lambda layer=layer: labels(lbl_mods[layer], lbl_cup))
+            # the arm takes the fork, with the cup on it, and carries it in
+            yield from call(lambda layer=layer: labels(lbl_mods[layer], lbl_fork))
+            yield from take_fork()
             yield from cup_in()
+            yield from call(lambda: labels(lbl_cup))
             yield 3.4 * 0.8, lambda layer=layer, h0=h0, h1=h1: dose_up(layer, h0, h1)
             sc.alpha["stream"] = 0.0
             if layer == 0:
@@ -1318,20 +1347,21 @@ def movie():
             K.apply()
             K.cut(CUP, True, sleeve=None)
             yield 0.3, None
-            yield from cup_out("dose" if layer == 0 else "trayB", whole=layer == 1)
-            yield from call(lambda: labels(*lbl_mods, lbl_chain) if layer == 0 else labels(lbl_arm, lbl_B, lbl_fork))
-            yield 1.0 * f, lambda: car.to(tilt=0.0)
-            yield 0.7 * f, lambda: car.to(spin=car.state["spin"] - 2 * math.pi)
-            yield 0.9 * f, lambda: car.to(ext=0.0, magnet_on=False)
+            yield from call(lambda: labels(lbl_mods[layer], lbl_fork))
+            yield from cup_out(whole=layer == 1)
+            # the fork, the cup on it, back on its rest while the module tilts back and undocks
+            undock = (lambda: car.to(tilt=0.0), lambda: car.to(spin=car.state["spin"] - 2 * math.pi),
+                      lambda: car.to(ext=0.0, magnet_on=False))
+            if layer == 0:
+                yield from leave_fork(*undock)
+                yield 1.2, lambda: both(rb.joint_to(A.PARK_RAD), cam_up(sc, "dose"))
+                yield from call(lambda: labels(*lbl_mods, lbl_chain))
+            else:
+                yield from call(lambda: (phase("The arm puts the fork back, and stands the charged cup in the carrier "
+                                               "on the robot."), labels(lbl_arm, lbl_B, lbl_fork)))
+                yield from leave_fork(*undock)
+                yield 1.0, lambda: cam_up(sc, "trayB")
         K.cut(CUP, False, sleeve=None)
-        # the fork back on its rest, and the cup off it into the carrier on the MiR
-        yield from call(lambda: (phase("The arm puts the fork back, and stands the charged cup in the carrier on the "
-                                       "robot."), labels(lbl_arm, lbl_B, lbl_fork)))
-        yield 0.4, lambda: fork_to(CR.Y_HAND, z_rest)
-        yield ARM_S[2], lambda: rb.grip_to(OPEN_FORK)
-        rb.release(K.rig)
-        yield HOLD, None
-        yield ARM_S[3], lambda: rb.line_to(T((0, 0, 100)) @ rb.tcp_world())
         yield from pick(rb, A.down(p_hand, spin=180.0), A.down(p_hand + (0, 0, 120), spin=180.0), cg, GRIP_CUP,
                         OPEN_CUP)
         p_car = K.carrier_seat(CARRIER_K) + (0, 0, GRASP_DOWN)

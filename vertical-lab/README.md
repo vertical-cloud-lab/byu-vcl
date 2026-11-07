@@ -14,11 +14,38 @@ framework, [`scene.py`](scene.py), is `atomizer-training/viz3d/scene.py` from #1
 ![The org page's GIF](out/org_vertical_lab.gif)
 
 [`out/org_vertical_lab.gif`](out/org_vertical_lab.gif) is made to replace that GIF on the org README, under the same
-title. Round 5 ([PR #329](https://github.com/vertical-cloud-lab/byu-vcl/pull/329), Sterling: "it wasn't zoomed out
-enough for the multi-doser to see it was using multiple powders. Also, that's a really high distance between the cup
-and the nozzle. Put the cup on some kind of pedestal so that it's much closer. Also, show the trays being loaded with
-some equipment before bringing the arm in to do some workflows") keeps round 4's story, one charge cup from tray B to
-the atomizer, and changes three things:
+title. It follows one charge cup from tray B to the atomizer.
+
+**Round 6** ([PR #329](https://github.com/vertical-cloud-lab/byu-vcl/pull/329), Sterling: "the atomizer melting
+furnace area seems to be misproportioned (maybe just rotated 90 degrees?). The opening lid ends up intersecting with
+the furnace behind it ... Instead of having a separate motion thing going on for getting the crucibles to the right
+spot, instead the arm should use some kind of gripper attachment to get it in then, unless the gripper could actually
+reach in with enough clearance, which would be ideal") changes two things:
+
+- **The rePowder's cabinet, redrawn from the footage.** PR #327 moved the furnace lid's hinge to the back, as the
+  training video shows, but kept the old model's cabinet: one blue box across the furnace's whole width, its front
+  face 11 mm behind the hinge. Open to 90°, the lid stood about 175 mm inside it. In the footage the room shows behind
+  the open lid (T4 1:53 and 5:08), the cabinet is tall only to the furnace's right and comes forward there (the
+  locking bolt, the red lamp and the GU 500 AMA panel are on a face right beside the furnace: T1 30:13, T4 5:41), and
+  further back its left face is full height (T4 6:05). [`repowder/model.py`](repowder/model.py) now draws it that
+  way (`CAB_STEP_X`, `CAB_FWD_Y`, `LID_BAY`): tall and forward right of the furnace, with a bay behind the furnace that
+  the lid opens into. Drawn over PR #327's seven registered frames (`register.py draw repowder`), the panel lands
+  where the real one is; the step's place and the bay's depth are fitted by eye. An FCL check of the lid's swing
+  gives 8 mm to the cabinet at 90° and 5.5 mm fully open, where it had been inside it from 31° on. It also brings in
+  PR #327's second pass (the door hinged at the back, the front clamps, the viewport, the panel's keys).
+- **The arm puts the cup on the pedestal itself, with a cup fork.** The 2F-85 can't reach in on its own: its knuckles
+  span 127-138 mm, and the way in passes between the doser's frame post and its station post, 117 mm apart
+  ([`carousel.py`](carousel.py)). So the vessel shuttle is gone, and the arm uses an attachment: the shuttle's fork
+  made into a hand tool, a 285 mm blade with the 13 mm slot that passes round the pedestal's neck and a low lip round
+  the cup's foot, on a handle post that the pads clamp (19 mm across, like the loading tong's). It waits on a rest
+  outside the −y panel, its seat where the shuttle used to take the cup. The arm stands the cup on it and parks while
+  the chain indexes. Then it takes the fork, carries the cup in over the balance, lets it down onto the pedestal and
+  brings the fork back out while the doser doses. After the dose it takes the cup off the same way, and puts the fork
+  back on its rest while the next module comes round (`FORK_L` ..., `fork_meshes`, `add_fork` in
+  [`org_gif.py`](org_gif.py)). The close-ups of the cup are cuts, not camera moves, since the way in would pass
+  through the arm.
+
+Round 5's changes stand:
 
 1. **The trays are loaded first.** The loop opens wide on the north row, with trays A and B empty and the MiR250 + UR10e
    waiting beside the opening, in front of the sieving cell. The camera closes in on the opening, and the two trays
@@ -36,12 +63,13 @@ the atomizer, and changes three things:
 3. **The cup on a tall pedestal, 34 mm under the auger** (153 mm in round 4, as in v5). See below.
 
 The rest is round 4's: the cup goes into the carrier on the MiR, tray B goes back up, and the MiR drives to the
-rePowder (PR #327's model: the lid hinged at the back, the draw latch and the locking bolt as joints). The arm opens
+rePowder (PR #327's model, with round 6's cabinet: the lid hinged at the back, the draw latch and the locking bolt as
+joints). The arm opens
 the latch and the lid, sets the cup on the crucible's floor with chapter 2's loading tong, and shuts the lid. Then
 the rePowder, cut open, melts the cup and atomizes it (a time-lapse), while the MiR drives back to where it waited.
 
-**Why the cup can't simply stand higher in v5, and what this shot draws instead.** The pedestal and the vessel
-shuttle are ours, not powder-doser's ([`carousel.py`](carousel.py)). In v5 the cup comes in through the balance's
+**Why the cup can't simply stand higher in v5, and what this shot draws instead.** The pedestal, the vessel
+shuttle and now the cup fork are ours, not powder-doser's ([`carousel.py`](carousel.py)). In v5 the cup comes in through the balance's
 −y side door, whose opening ends 291 mm over the bench, so its rim stands at 282.5 mm, 153 mm under the auger's exit
 at 435.9 mm. It can't stand any higher there, because the electronics carriage parks over the pan and comes down to
 344.8 mm within 25 mm of its axis. Once the carriage has docked and tilted the module, though, it has swung clear:
@@ -51,13 +79,15 @@ the balance at that height, with the cup on it, meets only the −y acrylic pane
 
 - the pedestal stands up through the balance's top door, which stays open, and the cup's foot is at 338 mm. Its rim
   is 34 mm under the exit, and the pedestal's top clears the parked carriage by 7 mm;
-- the port in the −y panel goes up to 420 mm, for the fork, the cup on it and the fork's column;
-- the shuttle carries the cup in over the balance, not through its side door, and only once the module is docked
-  and tilted. It takes the cup back out between the two powders, so the carriage can park for the chain to index.
+- the port in the −y panel goes up to 420 mm, for the fork and the cup on it;
+- the cup goes in over the balance, not through its side door, and only once the module is docked and tilted. It
+  comes back out between the two powders, so the carriage can park for the chain to index. In round 5 the shuttle
+  carried it; in round 6 the arm does, on its cup fork, along the same path, 2 mm higher.
 
-The fork's path with the cup on it, the fork's column, the cup at the hand-over and the tall pedestal were each
-checked against the rig's parts and its door pushers, with the module docked and tilted and with it parked. It is a
-proposal for the doser, drawn only here. Chapter 1 and the doser's own files are unchanged.
+The fork's path with the cup on it, the cup at the hand-over and the tall pedestal were each checked against the rig's
+parts and its door pushers, with the module docked and tilted and with it parked (round 5), and the arm's moves with
+the fork are in the collision audit below. It is a proposal for the doser, drawn only here. Chapter 1 and the doser's
+own files are unchanged.
 
 - **It still loops.** The camera pulls back out to the wide view, with the MiR back where it waited. In the last
   1.2 s, trays A and B's equipment fades out of their slots, so the last frame shows the lab as the first one does.
