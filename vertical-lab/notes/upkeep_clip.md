@@ -15,7 +15,27 @@ clad, so the empty trays aren't seen.
 
 ## The render
 
-Not yet rendered.
+- **[MP4](../out/mp4/upkeep_clip.mp4):** 701 frames at 6 fps, 1280 × 720, 116.8 s, 6.0 MB.
+  - Part 1, the week: frames 0-78.
+  - Part 2, the check: frames 79-399.
+  - Part 3, the tip change: frames 401-700.
+- **[GIF](../out/upkeep_clip.gif):** 512 px at 3 fps, 2.5 MB. **[Still](../out/upkeep_clip_still.png).**
+- **The control chart, both versions:** [today's check](../out/upkeep_clip_chart.png) and
+  [the what-if](../out/upkeep_clip_chart_whatif.png).
+- **[Arm audit](../out/collisions/upkeep_clip.json):** 534 frames checked, **0 in collision**.
+  - FCL mesh-mesh on the drawn meshes, every frame after its update.
+  - The world was what the arm can reach from Shuttle 1's dock (493 of 1,268 actors).
+  - The forearm and wrist rose to 1,585 mm at most.
+- **Cost:** 13.5 min in one slot (22:57-23:11 UTC), `VLAB_ONLY_TRAYS=BE`. The audit took 2.5 min, the preview 2.5 min
+  once the cache was built.
+- **Fixed after the preview (round 10's continuation):**
+  - **The reading's camera.** It had the weight behind the doser's vertical extrusion. It now looks along the
+    close-up's clear line of sight, nearer, with the weight a third of the way across, clear of the chart.
+  - **The tip change's camera.** It sat behind the person's shoulder. It now looks along the extraction view's line,
+    closer, with the person to the left of the iMicro.
+  - **The captions.** They no longer say the HR-202i calibrates itself, and they say the check weighs ten times.
+  - **The fused-silica check** is the arm's next job on tray E. The clip had claimed it ran while the tray went back
+    up.
 
 ## What it shows
 
