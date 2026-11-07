@@ -50,6 +50,8 @@ Typical intake questions, answered once (vendor sections add specifics):
 ### 1. What we would buy
 **Maker / model:** AMAZEMET (Warsaw, Poland) rePowder ultrasonic-atomization induction module, which the lab already owns (built on an Indutherm induction furnace, per the lab's O&MM and facility guide; `lab_models/equipment.py` `REPOWDER`). **To buy:** (1) the 400 cm3 crucible upgrade (225 cm3 today; DAL #219 says the proposal counts on three runs per 2 kg lot in the 225 cm3 crucible, two in the 400 cm3); (2) spare crucible sets (graphite, BN-coated, with holder nut and lower seal), nozzle plates (0.3, 0.5, 1 mm and blank plates), sealing rods (BN) and adapters, thermocouples, seals; (3) a service contract; (4) the PLC/remote-control option for the SEALING ROD button and the lid latch if it exists (DAL #151). **Qty:** 1 machine owned; 2-3 spare crucible sets, 2 sealing rods and adapters, 2 nozzle plates of each size; 1 crucible 400 cm3 (or 2). **Role and place:** chapter 2 of the alloy route, a floor machine beside the Kardex VLM, loaded by two MiR250 + UR10e units (`notes/alloy_atomize.md`, `notes/crucible_automation.md`).
 
+- **Model check (2026-11-07):** **current**. AMAZEMET still sells the rePowder, and in November 2025 added an AI model that runs the atomizer from a melt-pool camera feed, which bears on the remote-control question (DAL #151). AMAZEMET's TUM case study shows interchangeable 225 and 400 ml crucibles. No notice ends spares or service for owned machines, but no page lists parts or service terms and the rePowder page did not load on the runner, so ask directly. (https://www.metal-am.com/amazemet-adds-ai-automation-to-repowder-atomisation/)
+
 ### 2. Published specs that matter for integration
 Envelope about 1000 x 800 x 1600 mm (`REPOWDER`, from the O&MM p. 42 and facility guide p. 7). Power: 400 V 3-phase and 230 V on 32 A plugs, the optimizer up to about 60 A (the install call; `notes/services.md`). Argon at about 0.1-0.2 bar melt/graining pressures with a turbo stage (DAL #219: 0.1 bar melt, 0.19 bar graining, 1.5 bar turbo); a chiller on its own 230 V plug. Interfaces: the SEALING ROD button lifts the rod (PLC signal only if AMAZEMET allows), a lid latch and a lid with a knob, a thermocouple port, thread-and-nut crucible holder (`notes/crucible_automation.md`). No published remote-start/API on the pages we saw; ask.
 
@@ -114,11 +116,16 @@ Standard answers shared by every vendor are in the [common answers](#common-answ
 - https://amazemet.com/contact/ (WebFetch/WebSearch from the runner)
 - https://github.com/vertical-cloud-lab/byu-vcl/tree/claude/issue-303-vendors-rfq/vertical-lab/notes (WebFetch/WebSearch from the runner)
 - https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/219 (WebFetch/WebSearch from the runner)
+- https://www.metal-am.com/amazemet-adds-ai-automation-to-repowder-atomisation/ (2026-11-07, search snippet)
+- https://www.amazemet.com/repowder/ (2026-11-07, search snippet)
+- https://www.amazemet.com/technical-university-of-munich-amazemet-case-study/ (2026-11-07, search snippet)
 
 ## 2. Charge press: Specac Atlas Autotouch 15T + evacuable dies (Carver AutoPellet as fallback)
 
 ### 1. What we would buy
 **Maker / model:** Specac Atlas Autotouch 15T, part GS2581X (230 V; 110 V versions exist), with a two-stage rotary-vane pump, isolation valve V1, vent valve V2 with needle valve, Pirani gauge; Atlas evacuable dies (13 mm GS03000; 32/40 mm with evacuation port, GS26101/GS26102) **[confirm which die suits the 1-1/4 in F1 cup]**. Lab-made: F1 die, catch ring, punch, ejector pin, shuttle (`notes/vacuum_press.md`). **Qty:** 1 press, 1 pump set, 2 evacuable dies. **Fallback:** Carver AutoPellet RP (25/40 t, touchscreen recipes incl. ejection force, vacuum port on the die), qty 1. **Role and place:** chapter 1 of the alloy route, tray B beside the OT-2/doser, pressing 4 charge cups to about 3.2 t (DAL #140, #156).
+
+- **Model check (2026-11-07):** **current**. Specac's product page still lists the Atlas Autotouch 15T as GS2581X (a 110 V 60 Hz US version; 425 x 405 x 640 mm, 95 kg; up to 6 stored programs, no remote interface listed) and the evacuable dies GS03000, GS26101 and GS26102. Carver's site promotes the redesigned AutoPellet RP series (3887.RP.L 25 t and 4387.RP.L 40 t, 5 in platen, a vacuum connection to the die); its product page did not load on the runner. (https://specac.com/product/autotouch-press-high-throughput-xrf-press/)
 
 ### 2. Published specs that matter for integration
 Specac: 2-15 t in 0.2 t steps, up to 10 programme steps ('pump up to', 'maintain', 'release'), one Start press runs a programme; sample space up to 220 mm diameter x 155 mm; ram stroke 24 mm; about 95 kg (Avantor listing for SPCCGS25810, 230 V); full outline not found. Mains 230 V (or 110 V version); a dry-argon line goes to V2 (ours). Interfaces: front-panel Start; remote-start input not published. Carver AutoPellet: 25/40 t, about 375 lb (a Spectra datasheet), touchscreen recipe (clamp force, dwell, decompression rate, ejection force), vacuum-line provision, no dimension sheet found.
@@ -184,11 +191,16 @@ Standard answers shared by every vendor are in the [common answers](#common-answ
 - https://specac.com/locations/ (fetched via the stream-cam Pi)
 - https://www.carverpress.com/contact (fetched via the stream-cam Pi)
 - https://specac.com/product/autotouch-press-high-throughput-xrf-press/ (WebFetch/WebSearch from the runner)
+- https://specac.com/product/autotouch-press-high-throughput-xrf-press/ (2026-11-07, runner)
+- https://carverpress.com/presses-accessories/bench-top-auto-presses/pellet/ (2026-11-07, search snippet)
+- https://www.labcompare.com/5207-Laboratory-Press/25497138-AutoPellet-RP-Bench-Top-Lab-Presses/ (2026-11-07, search snippet)
 
 ## 3. Sieving: Retsch AS 200 control + 8 in sieves (OWNED shaker/sieves: spares, extra sieves, service)
 
 ### 1. What we would buy
 **Maker / model:** Retsch AS 200 control vibratory sieve shaker (electromagnetic drive), with the clamping lid for 8 in sieves; 8 in stainless sieves No. 60 (250 um), No. 100, 140, 230 (63 um), 325 (45 um) and pan (No. 60, No. 230 and pan bought; No. 100, 140, 325 on order, DAL PR #175 `docs/sieve-order.md`). **To buy:** a second shaker or spares (clamping device, timer/amplitude board, springs), spare sieve set so a stack can wash while another runs, IQ/OQ documentation. **Qty:** 1 shaker owned; 1 spare stack; 1 spare clamping lid. **Role and place:** chapter 3, the sieve bench, stack 567 mm tall on the shaker's 212 mm base, under Kardex's 727.5 mm limit (`notes/instruments_char.md`).
+
+- **Model check (2026-11-07):** **current**. Retsch still sells the AS 200 control (100-240 V; 417 x 212 x 384 mm, about 35 kg; USB and EasySieve) and offers technical support and IQ/OQ documents for it, so service is still offered for the owned shaker. Its 2026 data sheet still lists clamping lids, clamping devices and wear parts (clamping nuts 32.142.0001, quick-clamping elements, their O-ring, the sieve-plate rubber disc), so spares are still offered too. (https://www.retsch.com/products/sieving/sieve-shakers/as-200-control/)
 
 ### 2. Published specs that matter for integration
 AS 200 control: 417 W x 384 D x 212 H mm (`instruments_char.sieve()`); sieves 100 mm to 8 in (203 mm); measuring range 20 um to 25 mm; 3 kg load; amplitude 0-3 mm digital; interval and timer; amplitude held constant by a controller; dry and wet sieving; IQ/OQ available. Mains 100-240 V **[to confirm model voltage]**. Interfaces: front panel; Retsch's EasySieve software option needs a PC link **[to confirm]**; no remote-start for a robot published. Clamping lid has two knobs (the arm turns them, `notes/instruments_char.md`).
@@ -249,11 +261,15 @@ Standard answers shared by every vendor are in the [common answers](#common-answ
 - https://www.verder-scientific.com/contact-services (fetched via the stream-cam Pi)
 - https://www.retsch.com/contact-services/ (fetched via the stream-cam Pi)
 - https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/146 (WebFetch/WebSearch from the runner)
+- https://www.retsch.com/products/sieving/sieve-shakers/as-200-control/ (2026-11-07, runner)
+- https://www.retsch.com/files/452772/product-data-sheet-as-200-control.pdf (2026-11-07, search snippet)
 
 ## 4. Sieve cleaning: ultrasonic bath for IPA (Elma, Branson and others)
 
 ### 1. What we would buy
 **Maker / model:** an ultrasonic bath with a water jacket, sonicating a closed vessel of IPA indirectly (so IPA is not heated or ignited in the tank). Candidates: Elma (Elmasonic P/S series, Elma Schmidbauer GmbH) and Branson (Emerson Bransonic CPX series, e.g. CPX2800/CPX1800H); also Crest, Cole-Parmer. **[to confirm size]**: a tank that takes a 8 in x 2 in (203 x 50 mm) sieve in a closed jar. **Qty:** 1 (+1 spare vessel). **Role and place:** the sieve wash module on a 450 mm bench extension left of the tipper (`notes/instruments_char.md`); an Advantech manual asks at most 150 W, room temperature, short runs, sieve suspended off the tank floor.
+
+- **Model check (2026-11-07):** **current**. Elma's page lists the Elmasonic P in seven sizes; the P 120H (inside 275 x 215 x 195 mm), P 180H and P 300H are wide enough for a 203 mm sieve, at 220-240 V on that page, so ask for 115 V. Branson's lab page still lists the Bransonic CPX and CPXH baths and the 120 V CPX2800H is still sold, but distributors mark the 230 V "-E" versions and some CPX/CPXH 5800 and 8800 part numbers discontinued, with replacement links. (https://www.elma-ultrasonic.com/en/elmasonic-p)
 
 ### 2. Published specs that matter for integration
 Elma: GmbH in Singen, Germany, tanks of 1-1000 L, 37/80 kHz, heating and sweep options. Branson CPX: 1.5-40 L tanks, 40 kHz, digital timer and heater, 120/230 V. Utilities: mains, drain, DI water for the jacket; explosion hazard from IPA vapour, so closed vessel only. Interface: front panel; relay or external start varies by model **[to confirm]**.
@@ -312,11 +328,17 @@ Standard answers shared by every vendor are in the [common answers](#common-answ
 - https://www.elma-ultrasonic.com/en/contact (fetched via the stream-cam Pi)
 - https://www.emerson.com/en-us/automation/branson (fetched via the stream-cam Pi)
 - https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/234 (WebFetch/WebSearch from the runner)
+- https://www.elma-ultrasonic.com/en/elmasonic-p (2026-11-07, runner)
+- https://www.branson.emerson.com/en/laboratory-equipment-tabletop-cleaners (2026-11-07, search snippet)
+- https://www.itm.com/product/branson-cpx-952-238r-cpxh-2800-ultrasonic-bath-digital-timer-with-heat-0-7-gal-2-8-l (2026-11-07, search snippet)
+- https://www.globaltestsupply.com/product/branson-cpx-952-837r-ultrasonic-bath-m8800h-e (2026-11-07, search snippet)
 
 ## 5. Sieve cleaning: air knife and blower (EXAIR air knife; blower to be chosen)
 
 ### 1. What we would buy
 **Maker / model:** EXAIR Super Air Knife (aluminium, 6-12 in) on the lab's compressed air, for blowing powder off the cloth after the bath; a blower alternative (regenerative or centrifugal, **[to confirm maker]**) if house air is unavailable. **Qty:** 1 knife, 1 regulator/shut-off valve. **Role and place:** sieve wash module, inside the downdraft hood (`notes/instruments_char.md`).
+
+- **Model check (2026-11-07):** **current**. EXAIR still lists the aluminium Super Air Knife in 6 in and 12 in lengths (models 110006 and 110012; kit 110212). The blower maker is not chosen, so there is no model to check for it. (https://www.exair.com/110006.html)
 
 ### 2. Published specs that matter for integration
 Air knife: compressed air at about 80 psig, 1/4-1/2 in NPT, amplification about 40:1, a 6 in knife uses roughly 15 SCFM at 80 psi **[to confirm from the data sheet]**. Needs oil-free filtered air; a solenoid valve for PLC control.
@@ -371,11 +393,15 @@ Standard answers shared by every vendor are in the [common answers](#common-answ
 
 ### 7. Sources (checked 2026-11-07 UTC)
 - https://exair.com/about-us.html (WebFetch/WebSearch from the runner)
+- https://www.exair.com/110006.html (2026-11-07, search snippet)
+- https://exair.com/catalog/category/view/id/471 (2026-11-07, search snippet)
 
 ## 6. Depowdering: Solukon SFM-AT200
 
 ### 1. What we would buy
 **Maker / model:** Solukon Maschinenbau GmbH SFM-AT200 (automatic unpacking and depowdering station, programmable rotation about one axis, variable-frequency vibration, inert gas). **Qty:** 1, with the inert-gas option (argon) and the ultrasonic option if offered **[to confirm]**. **Role and place:** the depowdering box between the printer and the 68FM-100 on the floor line; the arm sets a build plate in it (`notes/alloy_workflow.md`).
+
+- **Model check (2026-11-07):** **current**. Solukon's page still offers the SFM-AT200 (parts up to 300 x 300 x 230 mm; machine 1,160 x 985 x 1,139 mm, 150 kg; 400 V, 16 A, 0.4 kW; inert-gas infusion option); the new SFM-AT850 shown at Formnext 2026 is a large-part machine, not a replacement. The page gives both 60 kg and 100 kg as the part-weight limit; ask which holds. (https://www.solukon.de/en/sfm-at200)
 
 ### 2. Published specs that matter for integration
 Parts up to 300 x 300 x 230 mm and 60 kg (TCT Magazine); no outer size published (the real unit may need about a metre more); inert gas nitrogen or argon; mains and compressed air **[to confirm from data sheet]**; programmable amplitudes. Interfaces: touchscreen; door sliding up; remote start and clamp form unknown; ask.
@@ -438,11 +464,14 @@ Standard answers shared by every vendor are in the [common answers](#common-answ
 - https://www.solukon.de/en/distribution-partners/ (WebFetch/WebSearch from the runner)
 - https://www.nbadditive.com/ (fetched via the stream-cam Pi)
 - https://www.solukon.de/en/products/sfm-at200/ (WebFetch/WebSearch from the runner)
+- https://www.solukon.de/en/sfm-at200 (2026-11-07, runner)
 
 ## 7. LPBF: Aconity3D AconityMIDI / MIDI+ and the 55 mm build kit
 
 ### 1. What we would buy
 **Maker / model:** Aconity3D GmbH AconityMIDI (or MIDI+), 170 mm diameter x 200 mm build space, with the optional diameter-55 mm build-reduction kit (about 20 cm3, about 30 g powder; AMAZEMET prints its atomized powders on one), inert glovebox for powder handling. **Qty:** 1 machine, 1 kit. **Role and place:** chapter 4 print, a floor machine at x = 3250 beside the VLM; the arm passes a jar through a 280 mm high door to the supply cylinder (`notes/alloy_print.md`).
+
+- **Model check (2026-11-07):** **current**. Aconity3D's site still lists both the AconityMIDI and the AconityMIDI+; the MIDI+ is the newer, larger sibling (up to four lasers in the QUATTRO setup and a larger build plate), not a replacement. The product pages' specs did not come through on the runner, so whether the 55 mm kit fits both is still to confirm. (https://aconity3d.com/products/aconity-midi-plus/)
 
 ### 2. Published specs that matter for integration
 Footprint about 2450 x 1500 x 2320 mm (model), older design 2170 x 1590 x 2340; 1450 kg; build 170 x 200 mm; the MIDI's door lifts to about 165 degrees; the chamber opening is about 280 mm tall and the supply cylinder 540 mm behind it. Argon; power not published (`notes/services.md`: 'Aconity MIDI, Inert glovebox: not found'). Interfaces: AconityStudio software; door, plate and cylinder actuation for a robot unknown; ask.
@@ -504,11 +533,15 @@ Standard answers shared by every vendor are in the [common answers](#common-answ
 - https://aconity3d.com/ (WebFetch/WebSearch from the runner)
 - https://aconity3d.com/products/aconity-midi (fetched via the stream-cam Pi)
 - https://www.amazemet.com/aconity-midi-lpbf-system-in-amazemets-rd-facility (WebFetch/WebSearch from the runner)
+- https://aconity3d.com/products/aconity-midi-plus/ (2026-11-07, runner)
+- https://www.3dnatives.com/3d-materials/en/3d-printers/aconity-midi-plus/ (2026-11-07, search snippet)
 
 ## 8. LPBF scale-up: EOS M 400-4
 
 ### 1. What we would buy
 **Maker / model:** EOS GmbH EOS M 400-4 (four 400 W lasers, 400 x 400 x 400 mm), with its powder-handling stations. **Qty:** 1, scale-up (not part of the screening line). **Role and place:** chapter 8 scale-up on the floor (`notes/scaleup.md`).
+
+- **Model check (2026-11-07):** **current**. EOS still calls the M 400-4 its flagship four-laser machine; the US address now redirects to the global page, which gives 5,140 x 2,490 x 2,625 mm, about 4,900 kg and at least 7,500 x 6,000 x 3,300 mm of installation space, so plan on those larger figures. Power (3 x 50 A, 45 kW max, 22 kW typical) and air (7 bar, 20 m3/h) are unchanged. (https://www.eos.info/Equipment/Metal-Platforms/EOS-M-400-4)
 
 ### 2. Published specs that matter for integration
 Build 400 x 400 x 400 mm incl. plate; 4 x 400 W Yb fibre; up to 7.0 m/s; focus about 90 um; 3 x 50 A, 45 kW max, 22 kW typical; compressed air 7 bar, 20 m3/h. Size 4181 x 1613 x 2355 mm and about 4835 kg, install at least 6500 x 6000 x 3300 mm (EOS global page), while the EOS US page says 5140 x 2490 x 2625 mm, about 4900 kg, 7500 x 6000 x 3300 mm; ask which. Argon or nitrogen supply **[to confirm]**.
@@ -565,11 +598,14 @@ Standard answers shared by every vendor are in the [common answers](#common-answ
 ### 7. Sources (checked 2026-11-07 UTC)
 - https://eos.info/en-us/metal-solutions/metal-printers/data-sheets/sds-eos-m-400-4 (WebFetch/WebSearch from the runner)
 - https://www.eos.info/en-us (fetched via the stream-cam Pi)
+- https://www.eos.info/Equipment/Metal-Platforms/EOS-M-400-4 (2026-11-07, runner)
 
 ## 9. Cutting: FANUC ROBOCUT wire EDM (alpha-C400iC)
 
 ### 1. What we would buy
 **Maker / model:** FANUC ROBOCUT alpha-C400iC (smallest of the alpha-C400iC / C600iC / C800iC set), with the automatic front door and a CCR rotary table **[to confirm]**; sold, integrated and serviced in North America by Methods Machine Tools. **Qty:** 1. **Role and place:** a floor machine beside the VLM; coupons 14 x 10 x 6 mm and 10 x 10 x 6 mm slices (`notes/alloy_workflow.md`, `notes/services.md`).
+
+- **Model check (2026-11-07):** **current**. FANUC America still offers the ROBOCUT alpha-C400iC with a quote button (XY 400 x 300 mm, Z 255 mm, work up to 500 kg, machine about 2,200 kg). No "iD" generation was found: FANUC's own ROBOCUT pages still list the alpha-CiC series as the C400iC, C600iC and C800iC (added in 2024), with a June 2026 catalogue and 2026 software additions only. (https://www.fanucamerica.com/products/robocut/robocut-a-c400ic)
 
 ### 2. Published specs that matter for integration
 Max workpiece weight 60 kg (page); automatic wire threading 10 s; unattended wire 60 h, 30 kg spool option up to 140 h; automatic front door, work-pan partial drain, automatic fill; up to 7 axes; thin wire 0.05 mm. 200 V 3-phase, 13 kVA (snippet), 36 A per phase at 208 V; the biggest single load on the line. DI water for the tank and chiller **[to confirm]**. Interfaces: FANUC CNC (door, programme start via I/O or FOCAS **[to confirm]**).
@@ -629,11 +665,17 @@ Standard answers shared by every vendor are in the [common answers](#common-answ
 ### 7. Sources (checked 2026-11-07 UTC)
 - https://www.fanucamerica.com/products/robocut-wire-edm (WebFetch/WebSearch from the runner)
 - https://www.methodsmachine.com/ (fetched via the stream-cam Pi)
+- https://www.fanucamerica.com/products/robocut/robocut-a-c400ic (2026-11-07, runner)
+- https://fanuc.eu/uk/en/who-we-are/news/eu-rc-a-c800ic-release-03-2024 (2026-11-07, search snippet)
+- https://www.fanuc.co.jp/en/product/robocut/ (2026-11-07, search snippet)
+- https://www.fanuc.co.jp/en/product/new_product/2024/202406_robocut_alphac800ic.html (2026-11-07, search snippet)
 
 ## 10. Sample prep: LECO PX500 polisher + MX400 mounting press
 
 ### 1. What we would buy
 **Maker / model:** LECO Corporation PX500 grinder/polisher (touch screen, 6-position holder, fluid dispensing) and MX400 mounting press (1.5 in / 38.1 mm hot mounts in carbon-filled phenolic, 20 mm tall). **Qty:** 1 + 1; consumables: SiC papers 320-1200, alumina, diamond suspensions, mounting resin, polishing cloths. **Role and place:** chapter 6, the mount press and polisher at a tray or floor spot **[to confirm which]**; the arm loads mounts into the holder (`notes/refine_polisher.md`).
+
+- **Model check (2026-11-07):** **current**. LECO's mounting-press page lists the MX400 with the MX500 (205 x 535 x 610 mm; an optional closed-loop MX Water Recirculator removes the need for facility water and a drain). LECO's PX-series page still lists the PX500 (10 and 12 in or 250 and 300 mm wheels, up to five fluid dispensers, 7 in touchscreen), though it did not load on the runner. (https://www.leco.com/instrument/mounting-presses/)
 
 ### 2. Published specs that matter for integration
 PX500 about 533 W x 711 D x 635 H mm (a reseller's figure for the PX400/PX500; LECO publishes no dimensions); power rating not published (the model uses the EcoMet 30's 740 W as an estimate); water, drain and compressed air **[to confirm]**. MX400: depth 460 mm, height 480 mm to the deck (`eu.leco.com/product/mx400-500`). Interfaces: touch screen programmes; no remote start published.
@@ -694,11 +736,16 @@ Standard answers shared by every vendor are in the [common answers](#common-answ
 - https://www.leco.com/contacts/usa (fetched via the stream-cam Pi)
 - https://www.leco.com/instrument/px-series-grinder-polishers/ (fetched via the stream-cam Pi)
 - https://eu.leco.com/product/mx400-500 (WebFetch/WebSearch from the runner)
+- https://www.leco.com/instrument/mounting-presses/ (2026-11-07, runner)
+- https://www.leco.com/instrument/px-series-grinder-polishers/ (2026-11-07, search snippet)
+- https://eu.leco.com/product/px400-px500-grinder-polisher-series (2026-11-07, search snippet)
 
 ## 11. Sample prep (comparison): QATM QPOL 250 Bot automated polishing cell
 
 ### 1. What we would buy
 **Maker / model:** QATM (a Verder Scientific brand, ATM Qness GmbH) QPOL 250 BOT, a robot grinding/polishing cell with a magazine of 16 pre-loaded 250 mm discs, six fluid reservoirs, a dosing unit, ultrasonic clean; used as a comparison to the PX500 route. **Qty:** quote only (1). **Role and place:** comparison for a robotic polishing cell (BAM's RASI cell uses one; `notes/refine_polisher.md`).
+
+- **Model check (2026-11-07):** **current**. QATM's page still offers the Qpol 250 BOT (1,320 x 1,500 x 800 mm; up to 16 discs; six-fold dosing; fresh water R1/2 at up to 6 bar, DN50 drain, 6 bar air; touchscreen, no network port listed). (https://www.qatm.com/products/grinding-polishing-etching/fully-automatic-grinder-polisher/qpol-250-bot/)
 
 ### 2. Published specs that matter for integration
 250 mm wheels, 160 mm sample holder, 1.1 kW drive, about 310 kg (DKSH Australia spec snippet; **[confirm]**); room for 16 grinding/polishing media; integrated ultrasonic cleaning; compressed air and water **[to confirm]**. Robot-ready by design.
@@ -755,11 +802,14 @@ Standard answers shared by every vendor are in the [common answers](#common-answ
 - https://www.qatm.com/ (fetched via the stream-cam Pi)
 - https://www.atm-m.com/products/grinding-polishing-etching/fully-automatic-grinder-polisher/qpol-250-bot/ (WebFetch/WebSearch from the runner)
 - https://www.verder-scientific.com/contact-services (fetched via the stream-cam Pi)
+- https://www.qatm.com/products/grinding-polishing-etching/fully-automatic-grinder-polisher/qpol-250-bot/ (2026-11-07, runner)
 
 ## 12. Sample prep: Buehler VibroMet 2
 
 ### 1. What we would buy
 **Maker / model:** Buehler (ITW) VibroMet 2 vibratory polisher (model 67-1635-250 in listings **[to confirm]**) with holders and weights, 0.1 um diamond/colloidal silica. **Qty:** 1. **Role and place:** the SOP's final step, 0.1 um diamond for 1-2 h, checked every 30 min; not modelled, a caption (`notes/refine_polisher.md`).
+
+- **Model check (2026-11-07):** **superseded by VibroMet 3**. Buehler's VibroMet 2 page says "The VibroMet 2 has been discontinued and replaced by our updated VibroMet 3." The VibroMet 3 is one part number, 67-2105, for 100-240 V single phase (no separate 115 V and 230 V units), keeps the 12 in (305 mm) cloth with a 285 mm usable area, takes holders for 25, 30, 40 and 50 mm mounts, stores up to 6 methods and has ON, OFF or PULSE end-of-cycle options; its page gives no size, weight or remote interface. (https://www.buehler.com/products/grinding-and-polishing/vibratory-polishers/vibromet-2-vibratory-polisher/)
 
 ### 2. Published specs that matter for integration
 Horizontal-oscillating vibratory bowl; bowl size, weight and 115/230 V figures not read **[to confirm from the brochure]**; mains only; no remote interface.
@@ -778,6 +828,7 @@ Horizontal-oscillating vibratory bowl; bowl size, weight and 115/230 V figures n
 - Can a mount holder be loaded and removed by a robot; holder sizes for 38.1 mm mounts and weights.
 - Power, footprint and an on/off contact for a robot cell.
 - Consumables (cloth, suspension) and PM schedule; service contract.
+- The VibroMet 2 is discontinued: the VibroMet 3 (67-2105) price, size, weight, and whether it has a start/stop or status contact for a robot cell.
 - (standard) Preventive-maintenance schedule (intervals, hours, who does it) and what a visit costs.
 - (standard) Consumables and spares we should hold, with part numbers and prices.
 - (standard) Price of a service contract (annual), what it covers, and the response time to Utah **[to confirm site]**.
@@ -807,6 +858,8 @@ Standard answers shared by every vendor are in the [common answers](#common-answ
 > 2. Power, footprint and an on/off contact for a robot cell.
 > 3. Consumables (cloth, suspension) and PM schedule; service contract.
 >
+> Your site says the VibroMet 2 has been replaced by the VibroMet 3: please quote the current model and say what changed in size, weight, utilities and remote control.
+>
 > Please also send: the preventive-maintenance schedule; consumables and spares with part numbers and prices; the annual service-contract price and response time; lead time, installation and training, warranty and academic pricing.
 >
 > The BYU Vertical Cloud Lab (institution, ship-to address, utilities and timeline: see the lab's answers sheet) **[sender name, title, phone to confirm]**.
@@ -816,11 +869,17 @@ Standard answers shared by every vendor are in the [common answers](#common-answ
 ### 7. Sources (checked 2026-11-07 UTC)
 - https://www.buehler.com/ (fetched via the stream-cam Pi)
 - https://www.buehler.com/contact/ (fetched via the stream-cam Pi)
+- https://www.buehler.com/products/grinding-and-polishing/vibratory-polishers/vibromet-2-vibratory-polisher/ (2026-11-07, runner)
+- https://www.buehler.com/products/grinding-and-polishing/vibratory-polishers/vibromet-3-vibratory-polisher/ (2026-11-07, runner)
+- https://www.jhtechnologies.com/products/buehler/buehler-vibromet™-2 (2026-11-07, search snippet)
+- https://manuals.online/buehler/laboratory-equipment/vibromet-2/user-manual/1p3yd (2026-11-07, search snippet)
 
 ## 13. Machining: Makera Carvera CNC
 
 ### 1. What we would buy
 **Maker / model:** Makera Carvera (desktop 4-axis CNC, 200 W spindle with ER11 collet, automatic tool changer; the Carvera Air is the smaller sibling) **[to confirm which]**. **Qty:** 1 + collets/end mills. **Role and place:** faces 1.5 in 416-stainless pucks flush (0.4 mm off) for nanoindentation and PIP, tray M at Shuttle 2 (`notes/instruments_r7.md`).
+
+- **Model check (2026-11-07):** **current**. Makera showed the Carvera, the Carvera Air and the new entry-level Z1 at CES 2026, its own Carvera page still sells the Carvera, and no Carvera 2 was found. Makera has teased a new desktop CNC for Formnext (17-20 November 2026), so check again after that; makera.com returned 429 to the runner. (https://themachinemaker.com/news/makera-to-present-next-generation-desktop-cnc-solutions-at-ces-2026/)
 
 ### 2. Published specs that matter for integration
 200 W spindle, ER11, auto tool change, enclosed; mains 110/220 V **[to confirm]**; USB/Wi-Fi control, G-code; door automation not supported **[to confirm]**.
@@ -876,11 +935,16 @@ Standard answers shared by every vendor are in the [common answers](#common-answ
 ### 7. Sources (checked 2026-11-07 UTC)
 - https://www.makera.com/pages/contact-us (fetched via the stream-cam Pi)
 - https://www.makera.com/ (fetched via the stream-cam Pi)
+- https://themachinemaker.com/news/makera-to-present-next-generation-desktop-cnc-solutions-at-ces-2026/ (2026-11-07, search snippet)
+- https://overclock3d.net/?p=316261 (2026-11-07, search snippet)
+- https://www.makera.com/products/carvera (2026-11-07, search snippet)
 
 ## 14. DED and repair: Meltio M450 and its robot cell
 
 ### 1. What we would buy
 **Maker / model:** Meltio M450 (wire-laser DED) and the Meltio Robot Cell with the Blue Laser Engine **[to confirm]**. **Qty:** 1 (cell for scale-up). **Role and place:** M450 is 1400 mm tall, floor-standing (`notes/scaleup.md`, `fab_metal.py`); the cell repairs a part with a programme (`r8_scale.py`).
+
+- **Model check (2026-11-07):** **superseded by Meltio M600**. The M450 address on Meltio's site now shows the M600, Meltio's products page lists only the M600, the Robot Cell and the Engine Robot and Engine CNC kits, a reseller shows the M450 as unavailable, and Meltio's CEO calls the M600 the M450's second generation; no formal end-of-life notice was found. The M600 is much bigger than the 1400 mm tall M450: 300 x 400 x 600 mm build, 1,050 x 1,050 x 1,950 mm, 800-1,000 kg, 3-phase 400 V (4-6 kW average, 10.6 kW peak), water chiller included, blue laser. (https://meltio3d.com/products/meltio-m450/)
 
 ### 2. Published specs that matter for integration
 M450 1400 mm tall; the substrate plate enters via a front door; argon shield gas; wire spools; mains **[to confirm]**. Robot cell: a six-axis robot and a Meltio head; software on request.
@@ -898,6 +962,7 @@ M450 1400 mm tall; the substrate plate enters via a front door; argon shield gas
 - Which Meltio parts and wires for Al-Si, Cu-Ni and NAB; is the 630 bronze wire available?
 - Door, plate loading and a start signal for a UR10e; the cell's price and software.
 - Argon use, power, PM schedule, consumables, service plan.
+- The M450 address on your site now shows the M600: is the M450 still sold? If not, the M600's price, size (1,050 x 1,050 x 1,950 mm), weight (800-1,000 kg), 400 V 3-phase supply, chiller, and start/status interface for a robot.
 - (standard) Preventive-maintenance schedule (intervals, hours, who does it) and what a visit costs.
 - (standard) Consumables and spares we should hold, with part numbers and prices.
 - (standard) Price of a service contract (annual), what it covers, and the response time to Utah **[to confirm site]**.
@@ -926,6 +991,8 @@ Standard answers shared by every vendor are in the [common answers](#common-answ
 > 2. Door, plate loading and a start signal for a UR10e; the cell's price and software.
 > 3. Argon use, power, PM schedule, consumables, service plan.
 >
+> Your site now shows the M600 where the M450 was: if the M450 is no longer sold, please quote the current model and say what changed in size, weight, utilities and remote control.
+>
 > Please also send: the preventive-maintenance schedule; consumables and spares with part numbers and prices; the annual service-contract price and response time; lead time, installation and training, warranty and academic pricing.
 >
 > The BYU Vertical Cloud Lab (institution, ship-to address, utilities and timeline: see the lab's answers sheet) **[sender name, title, phone to confirm]**.
@@ -935,11 +1002,17 @@ Standard answers shared by every vendor are in the [common answers](#common-answ
 ### 7. Sources (checked 2026-11-07 UTC)
 - https://meltio3d.com/contact/ (fetched via the stream-cam Pi)
 - https://www.metal-am.com/?p=114955 (WebFetch/WebSearch from the runner)
+- https://meltio3d.com/products/meltio-m450/ (2026-11-07, runner)
+- https://meltio3d.com/products/ (2026-11-07, runner)
+- https://3dprint.com/307901/on-ground-in-spain-for-meltio-m600-2 (2026-11-07, search snippet)
+- https://matterhackers.com/store/l/meltio-m450-wire-laser-metal-3d-printer (2026-11-07, search snippet)
 
 ## 15. DED: InssTek MX-Lab
 
 ### 1. What we would buy
 **Maker / model:** InssTek MX-Lab (3-axis laser-powder DED, argon with a 50 ppm O2 option). **Qty:** 1 or use the University of Utah's (the DAL #219 notes name 'Utah (InssTek MX-Lab)'). **Role and place:** floor machine (`notes/scaleup.md`).
+
+- **Model check (2026-11-07):** **current**. InssTek's site still lists the MX-Lab beside the MX-Fab, MX-Med and MX-Custom, and one was installed at Chalmers in April 2025. One Russian reseller marks it discontinued, which the maker's page contradicts. (https://www.insstek.com/)
 
 ### 2. Published specs that matter for integration
 680 x 684 x 835 mm without accessories (the base cabinet is not published); 250 kg (the model's figure); argon (50 ppm O2 option), powder carrier gas, 220 V 15(20) A, exhaust.
@@ -995,11 +1068,15 @@ Standard answers shared by every vendor are in the [common answers](#common-answ
 ### 7. Sources (checked 2026-11-07 UTC)
 - http://www.insstek.com/ (fetched via the stream-cam Pi)
 - https://www.phillipscorp.com/insstek/ (fetched via the stream-cam Pi)
+- https://www.insstek.com/ (2026-11-07, runner)
+- https://www.metal-am.com/insstek-installs-mx-lab-ded-additive-manufacturing-machine-at-chalmers-university/ (2026-11-07, search snippet)
 
 ## 16. Fabrication: SnowX SnowPod (pre-release desktop LPBF)
 
 ### 1. What we would buy
 **Maker / model:** SnowX SnowPod (desktop LPBF, 316L at launch, with the NitroPod nitrogen separator). **Qty:** 2 (tray I, two units). **Role and place:** the only powder-bed machine that passes the 727.5 mm opening (`fab_metal.py`).
+
+- **Model check (2026-11-07):** **unconfirmed** (not yet released). Early-bird reservations are open on Kickstarter, the launch is expected in Q4 2026 and no ship date is given. Known so far: 80 x 80 x 100 mm build, 316L in sealed cartridges, a SnowPod and NitroPod kit; size, weight, power and network control are not published. (https://www.3dnatives.com/en/desktop-metal-3d-printer-snowpod-22102026/)
 
 ### 2. Published specs that matter for integration
 360 x 360 x 660 mm, 40 kg, 80 x 80 x 100 mm build, 200 W fibre, 40 um spot; N2 from NitroPod about 99.9 % at 3 L/min; a Kickstarter kit, launch planned Q4 2026, not shipping yet. Planned price $5,299 (kit); $5,899 with the NitroPod (a news report).
@@ -1052,11 +1129,15 @@ Standard answers shared by every vendor are in the [common answers](#common-answ
 ### 7. Sources (checked 2026-11-07 UTC)
 - https://snowx.com/ (fetched via the stream-cam Pi)
 - https://www.3dnatives.com/en/desktop-metal-3d-printer-snowpod-22102026/ (WebFetch/WebSearch from the runner)
+- https://www.3dnatives.com/en/desktop-metal-3d-printer-snowpod-22102026/ (2026-11-07, runner)
+- https://3dprintingindustry.com/news/snowx-opens-kickstarter-pre-launch-page-for-snowpod-compact-metal-3d-printer-255152/ (2026-11-07, search snippet)
 
 ## 17. Fabrication: Formlabs Form 4, Form Wash, Form Cure
 
 ### 1. What we would buy
 **Maker / model:** Formlabs Form 4 (resin SLA), Form Wash and Form Cure (2nd gen). **Qty:** 1 + 1 + 1 **[to confirm what the lab owns]**. **Role and place:** tray G (`fab_resin.py`, `notes/refine_form4.md`).
+
+- **Model check (2026-11-07):** **current**. Formlabs still sells the Form 4 and the second-generation Form Wash V2 and Form Cure V2, which its pages list as compatible with the Form 4; the Form 4L is a larger sibling, not a replacement, and no Form 5 was found. The new Form Studio 1 (ships from 16 November 2026) is a separate low-cost line. (https://formlabs.com/3d-printers/form-4/)
 
 ### 2. Published specs that matter for integration
 Form 4 cover open 407 x 478 x 844 mm, 18.3 kg; Form Wash 315 x 293 x 405 mm; Form Cure 337 x 356 x 404 mm, 12.1 kg; 405 nm turntable; power and resin/IPA EHS questions open.
@@ -1108,11 +1189,17 @@ Standard answers shared by every vendor are in the [common answers](#common-answ
 
 ### 7. Sources (checked 2026-11-07 UTC)
 - https://formlabs.com/company/contact/sales/ (fetched via the stream-cam Pi)
+- https://formlabs.com/3d-printers/form-4/ (2026-11-07, runner)
+- https://3dprinting.com/news/formlabs-launches-form-studio-1/ (2026-11-07, search snippet)
+- https://formlabs.com/products/form-wash/ (2026-11-07, search snippet)
+- https://formlabs.com/products/form-cure/ (2026-11-07, search snippet)
 
 ## 18. Fabrication: Opulo LumenPnP
 
 ### 1. What we would buy
 **Maker / model:** Opulo LumenPnP pick-and-place. **Qty:** 1. **Role and place:** tray H for PCB assembly (`fab_pcb.py`).
+
+- **Model check (2026-11-07):** **current**. Opulo's product page lists LumenPnP v4.1.0 as what ships (the v4 line launched in September 2024), and no newer hardware revision was found; quote and configure for v4.1, which has its own OpenPnP config files. opulo.io returned 429 to the runner. (https://www.opulo.io/products/lumenpnp)
 
 ### 2. Published specs that matter for integration
 Open hardware (opulo-inc/lumenpnp); mains; USB control; 600 x 120 mm build plate in the model; needs air/vacuum **[to confirm]**.
@@ -1163,11 +1250,15 @@ Standard answers shared by every vendor are in the [common answers](#common-answ
 ### 7. Sources (checked 2026-11-07 UTC)
 - https://www.opulo.io/ (fetched via the stream-cam Pi)
 - https://www.opulo.io/pages/contact-us (fetched via the stream-cam Pi)
+- https://www.opulo.io/products/lumenpnp (2026-11-07, search snippet)
+- https://docs.opulo.io/openpnp (2026-11-07, search snippet)
 
 ## 19. Fabrication: DDM Novastar SPR-45VA stencil printer
 
 ### 1. What we would buy
 **Maker / model:** DDM Novastar SPR-45VA semi-automatic stencil printer. **Qty:** 1. **Role and place:** tray H (`fab_pcb.py`).
+
+- **Model check (2026-11-07):** **current**. DDM Novastar's stencil-printer page still lists the SPR-45VA (semi-automatic, SMTrue Vision Assist) beside the SPR-45, SPR-25 and SPR-20. A machinetools.com directory marks the Novastar brand "no longer made", which the maker's own page contradicts. (https://www.ddmnovastar.com/stencil-printers)
 
 ### 2. Published specs that matter for integration
 762 x 889 x 406 mm, about 73 kg; frames up to 584 x 584 mm; dual squeegees; power frame lift; vacuum nest; compressed air **[to confirm]**.
@@ -1216,11 +1307,15 @@ Standard answers shared by every vendor are in the [common answers](#common-answ
 
 ### 7. Sources (checked 2026-11-07 UTC)
 - https://www.ddmnovastar.com/contact-us (fetched via the stream-cam Pi)
+- https://www.ddmnovastar.com/stencil-printers (2026-11-07, runner)
+- https://www.machinetools.com/en/brands/novastar (2026-11-07, search snippet)
 
 ## 20. Fabrication: Bambu Lab H2D, A1 mini and A2L - OWNED (H2D, A1 mini): spares and consumables
 
 ### 1. What we would buy
 **Maker / model:** Bambu Lab H2D and A1 mini (owned), A2L **[model and ownership to confirm; no specs in the notes]**. **To buy:** nozzles (0.2 or 0.4 mm only, lab rule), hotends, build plates, AMS, belts, filament. **Role and place:** H2D tray C; A1 mini (`lab_models/equipment.py`).
+
+- **Model check (2026-11-07):** **current** (H2D, A1 mini, A2L). Bambu's US store lists the H2D and the A1 mini for sale beside the H3C (launching), X2D, P2S, H2C, P1S, A1 and H2S, and promotes the A2L as all-new, grouping it with the H2 series as the printers with 300 mm+ build volumes; Bambu's spec page gives the A2L (launched 1 June 2026) as open-frame, 330 x 320 x 325 mm build, 544 x 529 x 505 mm, about 12.8 kg, 80 C bed, 0.2 to 0.8 mm nozzles, 2.4 GHz Wi-Fi only (no Ethernet) and 1000 W in a 100-120 V version. For the owned printers, the store still sells H2D spare parts, and when Bambu ended the X1 and P1P in 2026 it kept an end-of-life service period; an "A1 Mini 2" and an H2S replacing the H2D appeared on one aggregator only and are rejected, since the store sells both the H2D and the H2S. (https://us.store.bambulab.com/collections/3d-printer)
 
 ### 2. Published specs that matter for integration
 H2D envelope 492 x 514 x 626 mm, bed 350 x 320 mm, 1,050 W average, 1,320 W max at 110 V (snippet); A1 mini 347 x 315 x 365 mm. LAN mode needs a Pi; starts need the Bambu cloud login (CLAUDE.md).
@@ -1272,11 +1367,22 @@ Standard answers shared by every vendor are in the [common answers](#common-answ
 ### 7. Sources (checked 2026-11-07 UTC)
 - https://bambulab.com/en-us/contact-us (fetched via the stream-cam Pi)
 - https://bambulab.com/en-us/dealer (fetched via the stream-cam Pi)
+- https://us.store.bambulab.com/collections/3d-printer (2026-11-07, maker's page, headed Chromium on the stream-cam Pi)
+- https://bambulab.com/en/a2l/specs (2026-11-07, search snippet)
+- https://blog.bambulab.com/bambu-lab-a2l-creative-playground-extra-large (2026-11-07, search snippet)
+- https://us.store.bambulab.com/products/a1-mini (2026-11-07, search snippet)
+- https://bambulab.com/en/support/buying-guide?id=904389439320043520&page=2 (2026-11-07, search snippet)
+- https://3dprintingindustry.com/news/new-bambu-lab-a2l-3d-printer-technical-specifications-and-pricing-252057/ (2026-11-07, search snippet)
+- https://uk.store.bambulab.com/en/collections/spare-parts-for-h2d (2026-11-07, search snippet)
+- https://all3dp.com/4/bambu-lab-ceases-production-of-the-p1p-outlines-5-year-end-of-life-service/ (2026-11-07, search snippet)
+- https://3dprintingindustry.com/news/bambu-lab-discontinues-the-x1-series-after-four-years-on-the-market-250791/ (2026-11-07, search snippet)
 
 ## 21. Feedstock: 5N Al and OFE Cu (C10100) bar, Si and Ni powders, AlSi10Mg powder
 
 ### 1. What we would buy
 **What:** 5N Al rod 20 mm x 100 mm + 12 mm x 100 mm (DAL #152: 20 mm OD cup stock, press-fit plug; the pair costs $1,920 at 100 mm, $1,590 at 50 mm); OFE Cu C10100 rods of the same sizes (DAL #162, #222); Si powder (coarse 45-106 um), Ni powder; AlSi10Mg powder as a benchmark. **Qty:** 48 cups and 48 plugs of each metal (`notes/alloy_charge.md`); **[to confirm]** powder kg. Suppliers found: Goodfellow, ESPI Metals, American Elements, Heeger Materials, MSE Supplies, McMaster, Valimet.
+
+- **Model check (2026-11-07):** **current**. These are standard grades, not models (5N is a purity, C10100 the UNS number for OFE copper, AlSi10Mg is covered by ASTM F3318), so nothing is superseded; check stock and certificates when quoting. (https://en.wikipedia.org/wiki/AlSi10Mg)
 
 ### 2. Published specs that matter for integration
 Al 5N: Goodfellow 20 mm x 50/100/300/1000 mm at $860/$1,070/$1,750/$3,540 (DAL #152). Cu: McMaster has 630 NAB (8203K41). McMaster ground 6061 20 mm 6940T22 (+/-0.013 mm) is the stand-in. OFE C10100 price not found. Si powder: Heeger spherical 45-106 um.
@@ -1333,6 +1439,18 @@ Standard answers shared by every vendor are in the [common answers](#common-answ
 - https://www.goodfellow.com/usa/contact-us (fetched via the stream-cam Pi)
 - https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/152 (WebFetch/WebSearch from the runner)
 - https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/162 (WebFetch/WebSearch from the runner)
+- https://en.wikipedia.org/wiki/AlSi10Mg (2026-11-07, search snippet)
+
+## Superseded or discontinued (model check, 2026-11-07)
+
+| Item | Modelled | Status | Successor | Source |
+| --- | --- | --- | --- | --- |
+| 4. Sieve cleaning | Branson CPX baths: 230 V "-E" versions and some CPX/CPXH 5800 and 8800 part numbers | discontinued per distributors (Branson still lists the CPX line) | 120 V CPX2800H still sold; other replacements are linked by distributors, not named | https://www.itm.com/product/branson-cpx-952-238r-cpxh-2800-ultrasonic-bath-digital-timer-with-heat-0-7-gal-2-8-l |
+| 12. Sample prep | Buehler VibroMet 2 (67-1635-160 / -250) | discontinued (Buehler's own page) | Buehler VibroMet 3, 67-2105, 100-240 V; size and weight not published | https://www.buehler.com/products/grinding-and-polishing/vibratory-polishers/vibromet-2-vibratory-polisher/ |
+| 14. DED and repair | Meltio M450 | superseded (no formal end-of-life notice found) | Meltio M600: 300 x 400 x 600 mm build, 1,050 x 1,050 x 1,950 mm, 800-1,000 kg, 3-phase 400 V, chiller | https://meltio3d.com/products/meltio-m450/ |
+| 16. SnowX | SnowPod | unconfirmed: not yet released (Kickstarter early-bird, launch Q4 2026, no ship date) | none | https://www.3dnatives.com/en/desktop-metal-3d-printer-snowpod-22102026/ |
+
+Everything else in this file is current as of 2026-11-07; see each section's Model check bullet.
 
 ## Gaps
 
