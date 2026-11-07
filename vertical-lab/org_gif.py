@@ -1,37 +1,45 @@
 """The org page's GIF, remade in the lab as this branch has it: ``vertical-cloud-lab/.github``'s
 ``profile/vertical-lab.gif`` ("In a vertical lab, equipment is brought to the operator", PR #318).
 
-Round 4 (PR #329, Sterling, 2026-11-06: "you should have started backed off to see the full overview and then zoomed
-in to show what's going on in more detail. It would be better to show the arm interacting with the atomizer (using the
-latest modeling of the atomizer ...) instead of interaction with the sieving station, which doesn't really make sense
-to do contextually. Wouldn't it be more interesting to show loading up a charge cup with the desired powder doses and
-then taking it over to the atomizer to be atomized?"). One Shuttle, loaded as the set-up loads it (``animate.lab_scene``,
-Shuttle 1's trays A-F and J), no pallet racking, no second Shuttle and none of its trays (round 2). One loop, which ends
-where it starts:
+Round 5 (PR #329, Sterling, 2026-11-07: "it wasn't zoomed out enough for the multi-doser to see it was using
+multiple powders. Also, that's a really high distance between the cup and the nozzle. Put the cup on some kind of
+pedestal so that it's much closer. Also, show the trays being loaded with some equipment before bringing the arm in to
+do some workflows"), on round 4's ("you should have started backed off to see the full overview and then zoomed in
+...", the arm at the atomizer, a charge cup dosed and taken there). One Shuttle, loaded as the set-up loads it
+(``animate.lab_scene``, Shuttle 1's trays A-F and J), no pallet racking, no second Shuttle and none of its trays
+(round 2). One loop, which ends where it starts:
 
-1. the whole lab, wide: the Shuttle, the rePowder atomizer, the sieving cell, the MiR250 + UR10e docked at the
-   Shuttle's opening. The camera closes in on the opening while the VLM brings tray B, the powder doser, down;
-2. at tray B (chapter 1's tray, ``alloy_charge.Charge``: the charge rack, the vacuum press, the multi-doser v5 on its
+1. the whole lab, wide: the Shuttle, the rePowder atomizer, the sieving cell, the MiR250 + UR10e waiting beside the
+   opening (WAIT_AT). Trays A and B are empty (LOADED). The camera closes in on the opening, and the two trays are
+   loaded there as the set-up movie loads them (``setup_lab.rig_in``, a time-lapse): each comes down, its
+   instruments, its UPS and its camera posts come in through the opening onto it (Load), and tray A goes back up.
+   Tray B stays;
+2. only then does the MiR come in and dock at the opening;
+3. at tray B (chapter 1's tray, ``alloy_charge.Charge``: the charge rack, the vacuum press, the multi-doser v5 on its
    HR-202i), the arm takes an empty 5N Al charge cup out of the rack and stands it on the fork of the doser's vessel
-   shuttle, which carries it in onto the pan. The doser doses the run's two powders into it by weight, one module at a
-   time: Si (3.92 g, 26.8 mm up the bore), then the AlSi10Mg top-up (3.91 g, to 46.1 mm). The camera goes in to the
-   pan, and the cup is drawn cut open while it fills. The shuttle brings it out and the arm stands it in a pocket of the
-   cup carrier on the MiR's cabinet (chapter 2's carrier);
-3. tray B goes back up while the MiR drives to the rePowder (PR #327's refined model: its lid hinged at the back, the
+   shuttle. The camera pulls back to take in the doser's chain of 13 powder modules, two of them labelled with their
+   powders as they ride it (ModuleLabels). For each powder, Si (3.92 g, 26.8 mm up the bore) and then the AlSi10Mg
+   top-up (3.91 g, to 46.1 mm): the chain brings the module to the station, the electronics carriage docks and tilts
+   it, and only then does the shuttle carry the cup in over the balance and set it on a tall pedestal (HIGH_SEAT), its
+   rim 34 mm under the auger's exit; the doser doses it by weight, and the shuttle takes it back out so that the
+   carriage can park for the next index. The cup is drawn cut open while it fills. The arm stands it in a pocket of
+   the cup carrier on the MiR's cabinet (chapter 2's carrier);
+4. tray B goes back up while the MiR drives to the rePowder (PR #327's refined model: its lid hinged at the back, the
    draw latch and the pneumatic locking bolt as joints, ``repowder/model.py``);
-4. at the rePowder, the bolt goes back, the arm pulls the latch's lever out (LATCH_U of its swing) and lifts the lid
+5. at the rePowder, the bolt goes back, the arm pulls the latch's lever out (LATCH_U of its swing) and lifts the lid
    by its knob past its balance point (LID_LET) and lets go: the lid settles onto its stop (RP_LID_U). With chapter
    2's loading tong it takes the cup off the carrier and carries it down #222's path into the crucible
    (``alloy_atomize.tong_path``: tipped 4.1 deg past the sealing rod's adapter, then upright onto the floor cone), puts
    the tong back, takes the knob where the lid rests, lowers the lid, shuts the latch, and the bolt goes in;
-5. the rePowder, cut open, melts the cup and atomizes it (a time-lapse, ``Melt``: the coil, the cup glowing and
+6. the rePowder, cut open, melts the cup and atomizes it (a time-lapse, ``Melt``: the coil, the cup glowing and
    slumping into the pool, the sealing rod up, the stream onto the vibrating plate, droplets, the powder in the
-   container), while the MiR drives back to the opening; then the camera pulls back out to the wide view.
+   container), while the MiR drives off to where it waited; the camera pulls back out to the wide view, and trays A
+   and B's equipment fades out of their slots.
 
-The last frame is the first one again: the MiR at the opening with its arm parked, tray B in its slot, the rePowder
-shut and cold. What differs is too small to see from there: one cup fewer in tray B's rack, and powder in the rePowder's
-container. The GIF plays everything at SPEED x the modelled times and says so; the atomizer's run, half an hour or so,
-is compressed much further, and its label says that.
+The last frame is the first one again: the MiR beside the opening with its arm parked, trays A and B empty in their
+slots, the rePowder shut and cold (powder in its container, too small to see from there). The GIF plays everything at
+SPEED x the modelled times and says so; the loading and the atomizer's run, half an hour or so, are compressed much
+further, and their captions say so.
 
 Drawn differently for this shot only (all drawing choices):
 - Shuttle 2 is left out with its trays, the pallet racking and the second MiR unit (round 2); the south row's floor
@@ -39,6 +47,13 @@ Drawn differently for this shot only (all drawing choices):
 - The VLM's camera target stands at the opening's right instead of its left (TARGET_DX, round 2): coming from the
   rePowder, a unit drives in from the left. The targets the MiR's drive to the rePowder would run over (the sieving
   cell's and the rePowder's) are left out, and so are the south row's, in the wide view's foreground (floor_edits).
+- The doser's pedestal, its vessel shuttle and the port in its -y panel are ours (``carousel.py``), and for this shot
+  they are drawn as a proposal, not as chapter 1 has them (HIGH_SEAT, high_pedestal). In v5 the cup's rim stands
+  153 mm under the auger's exit: the electronics carriage parks 35 mm over the balance's top, so a cup carried in
+  through the side door can stand no higher. Once the carriage has docked and tilted the module, it has swung clear:
+  a sweep of the fork's path over the balance then meets only the -y acrylic panel, so the port there goes up to
+  420 mm, the pedestal stands up through the balance's top door (open throughout), and the cup comes in over the
+  balance instead of through its side door. The cup leaves between powders, so the carriage can park to index.
 - One cup goes into the crucible, where the lab loads four a run (byu-vcl PR #318), and the melt is drawn for one
   cup's 43 g. Its plug isn't fitted or pressed (chapter 1 does both, on the same tray); the cup goes over open.
 - The lid rests open at RP_LID_U of the model's 105 deg, 90 deg ("about upright", PR #327's notes): from where the
@@ -54,6 +69,8 @@ Drawn differently for this shot only (all drawing choices):
     ORG_PART=a:b ORG_NAME=<NAME>_p0 ...                  # render frames a..b-1 only (the rest are counted, not drawn)
     python3 org_gif.py join <NAME>_p0 <NAME>_p1 ...      # the parts -> out/mp4/<NAME>.mp4, out/<NAME>.json
     ORG_AUDIT_PART=a:b ARM_AUDIT=1 ...                   # audit frames a..b-1 -> /tmp/org_audit/<a>.json
+    ARM_AUDIT_RENDER=1 ORG_PART=a:b ORG_NAME=<NAME>_p0 ...   # render frames a..b-1 and audit them in the same pass
+    ORG_AT_OPEN=1 ORG_VIEWS=dose,cup ... org_gif.py views    # tray B at the opening, the doser docked, the cup dosing
     python3 org_gif.py audit_join                        # the audited parts -> out/collisions/<NAME>.json
     python3 org_gif.py gif                               # -> out/<NAME>.gif (SPEED x), its still, mp4/<NAME>_readme.mp4
 """
@@ -90,6 +107,7 @@ RP_AT = (-3775.0, -1700.0)       # animate.REPOWDER_AT: the rePowder model's ori
 CAMS = {
     "wide": _cam((-1500.0, -1000.0, 1350.0), 2.0, 17.0, 11500.0, 34.0),    # the Shuttle, the rePowder, the cell
     "trayB": _cam((-60.0, -1400.0, 950.0), -22.0, 32.0, 2500.0, 30.0),     # tray B at the opening, from the left
+    "load": _cam((150.0, -2050.0, 950.0), 24.0, 20.0, 5600.0, 34.0),       # the opening and the floor in front of it
     "dose": None,                     # the doser's pan from the front right, set once tray B is at the opening
     "rp": _cam((RP_AT[0] - 40.0, RP_AT[1] - 420.0, 1200.0), 38.0, 18.0, 3100.0, 27.0),   # the arm at the rePowder
     "bore": _cam((RP_AT[0] + 0.0, RP_AT[1] - 20.0, 1300.0), 35.0, 55.0, 950.0, 27.0),    # down into the crucible
@@ -113,6 +131,9 @@ OPEN_CUP = 0.66                  # alloy_charge.OPEN_CUP: 31.6 mm between the pa
 GRIP_CUP = 0.80                  # on the 19.05 mm cup (ur_arm.gripper_fk: gap = 28 - 90 (c - 0.70))
 RP_STOP = (RP_AT[0] - 120.0, -2380.0)   # the MiR at the rePowder, heading 0: from here the arm follows the latch's
                                  # lever and the lid's knob (an IK sweep of MiR stops, 2026-11-06)
+WAIT_AT = (-1700.0, -2380.0)     # where the MiR waits at the loop's start and end, heading 0: in front of the sieving
+                                 # cell, left of the trays' load coming in through the opening (x > -700), on the line
+                                 # it leaves the rePowder by, and out of the cutaway's view of the melt
 RP_LID_U = 0.86                  # the lid rests open at this share of the model's 105 deg (90 deg): further, the knob
                                  # leaves the arm's reach from RP_STOP, and the arm couldn't take it to shut the lid
 LID_LET = 0.70                   # the arm lifts the lid this far (73.5 deg) and lets go: past its balance point (its
@@ -123,12 +144,35 @@ LATCH_AT = (24.0, 0.85, 45.0)    # its grasp: the pads' centre 24 mm out from th
 GRIP_LATCH, OPEN_LATCH = 0.59, 0.45   # the lever's 38 mm channel; 50 mm open
 GRIP_KNOB = 0.70                 # the lid's 28 mm ball knob
 KNOB_OUT = 4.0                   # the knob taken level from the front, the pads' centre 4 mm in front of the ball's
+MOD_LBL = (("Si", (0.02, 0.18)), ("AlSi10Mg", (0.985, 0.18)))   # the two modules labelled, and their boxes
+DOSE_OFF = (150.0, -1100.0, 320.0)   # the doser's view: the camera this far from the cup's foot on the pedestal
+DOSE_LOOK = (40.0, -60.0, 210.0)     # (world), looking at this point from it: the chain's front run, the station under
+DOSE_VA = 37.0                       # it, and the cup, through the 117 mm between the frame's front post and the
+#                                      station's post
+CUP_OFF, CUP_LOOK, CUP_VA = (35.0, -380.0, 75.0), (0.0, 0.0, 62.0), 30.0   # the cup under the auger's exit, close
+CHAIN_AT = (130.0, -140.0, 300.0)    # the chain's label's anchor, from the cup's foot: on its front run
+
+
+def cut_face() -> float:
+    """The turn (deg, about z) that faces a cup's cut (charge.cup(cut=True) keeps its +y half) to the close view."""
+    return math.degrees(math.atan2(CUP_OFF[0], -CUP_OFF[1]))
 ARM_S = (1.6, 0.9, 0.5, 0.8)     # a pick or a place: joint move, line in, grip, line out (s): the 9:09 clip's
                                  # (animate.pick/place)
 HOLD = 0.1
 DOSE_F = 0.6                     # the doser's moves at this share of chapter 1's times (its first cup is shown at 0.55)
 MIR_V = 1500.0                   # mm/s at most, with the MiR250's 0.3 m/s^2 ramps (props.ramp_secs)
 ATOM_SECS = 14.0                 # the atomizer's run, half an hour or so, in this many seconds of the clip (a time-lapse)
+# round 5
+LOADED = "AB"                    # the trays loaded at the opening at the loop's start (empty in their slots before)
+LOAD_F = 0.4                     # their tray moves at this share of the modelled times (a time-lapse, as the set-up's)
+LOAD_SECS = 3.2                  # each tray's equipment coming in through the opening, one piece after another
+LOAD_OVER = 0.5                  # each piece over this share of LOAD_SECS (setup_lab.stagger's overlap)
+LOAD_TRAVEL = 1700.0             # mm in front of the opening it comes from (setup_lab.rig_in)
+HIGH_SEAT = 338.0                # the cup's foot on the tall pedestal, rig frame (v5's 219): its rim at 401.5 mm, 34 mm
+                                 # under the auger's exit at 435.9 (153 mm in v5). The parked electronics carriage
+                                 # comes down to 344.8 mm within 25 mm of the pan's axis: the pedestal's top clears it
+HIGH_PORT = (0.0, 67.0, 100.0, 420.0)   # the -y panel's port (x0, x1, z0, z1; v5's ours: z up to 300), for the fork,
+                                 # the cup on it (up to 409.5 mm, carried) and the fork's column
 
 
 def _load_s1() -> dict:
@@ -138,6 +182,125 @@ def _load_s1() -> dict:
     idata.update(SL.load_r7())
     idata.update(SL.r7_stand_ins(idata))
     return idata
+
+
+def high_pedestal():
+    """The doser's pedestal, vessel shuttle and panel port as this shot draws them (HIGH_SEAT, HIGH_PORT): carousel.py
+    reads SEAT_Z and PORT when it draws them and places the vessel, so setting them before the scene is built moves the
+    pedestal's neck, the fork's top, the hand-over and the pan's seat together. The panel comes from carousel.py's
+    cache with v5's port already cut, and gets the taller one cut over it."""
+    import carousel as CR
+    if getattr(CR, "_org_high", False):
+        return
+    CR._org_high = True
+    CR.SEAT_Z = HIGH_SEAT
+    CR.PORT = HIGH_PORT
+    meshes = CR.part_meshes
+
+    def part_meshes():
+        out = dict(meshes())
+        out["panel_side"] = CR._cut_port(out["panel_side"])
+        return out
+    CR.part_meshes = part_meshes
+
+
+class Load:
+    """Tray k's equipment: every group riding on it (its instruments, its UPS and dock plate, its camera posts), as
+    the set-up movie loads a tray (setup_lab.rig_in, stagger). Unloaded (hidden) when made; slide(u) brings it in
+    through the opening onto the tray, one piece after another from the left; fade_out() is an update that fades
+    whatever rides on the tray then (the cup the run took is in the crucible by then) out of it."""
+
+    def __init__(self, sc, k):
+        self.sc, self.k = sc, k
+        tg = f"tray_{k}"
+        kids = [g for g, p in sc.parent.items() if p == tg]
+        self.names = {g: self._names(g) for g in kids}
+        self.kids = [g for g in kids if self.names[g]]
+        self.kids.sort(key=lambda g: (g.startswith(("ups", "plate", "cam")) or "ups" in g or "cam" in g,
+                                      float(sc.gmat[g][0, 3])))
+        self.base = {g: sc.gmat[g].copy() for g in self.kids}
+        self.a0 = {n: sc.alpha[n] for g in self.kids for n in self.names[g]}
+        for n in self.a0:
+            sc.alpha[n] = 0.0
+
+    def _names(self, g):
+        sc = self.sc
+        desc, grew = {g}, True
+        while grew:
+            grew = False
+            for h, p in sc.parent.items():
+                if p in desc and h not in desc:
+                    desc.add(h)
+                    grew = True
+        return [n for n, gg in sc.group_of.items() if gg in desc]
+
+    def slide(self, u):
+        from scene import T, window
+        sc, n = self.sc, len(self.kids)
+        for i, g in enumerate(self.kids):
+            t0 = 0.0 if n == 1 else i * (1.0 - LOAD_OVER) / (n - 1)
+            v = 1.0 - window(u, t0, t0 + (LOAD_OVER if n > 1 else 1.0))
+            sc.gmat[g] = T((0, -LOAD_TRAVEL * v, min(1.0, v * 6) * 20.0)) @ self.base[g]
+            a = 1.0 if v < 0.7 else max(0.0, 1 - (v - 0.7) / 0.3)
+            for nm in self.names[g]:
+                sc.alpha[nm] = self.a0[nm] * a
+
+    def fade_out(self):
+        sc = self.sc
+        tg = f"tray_{self.k}"
+        now = {n: sc.alpha[n] for g in [h for h, p in sc.parent.items() if p == tg] for n in self._names(g)}
+
+        def up(u):
+            for n, a in now.items():
+                sc.alpha[n] = a * (1.0 - u)
+        return up
+
+
+class Modules:
+    """The doser's modules that hold a powder in chapter 1 (alloy_charge.MODULE: Si, Ni and the two top-ups), each
+    auger drawn in its powder's colour (charge.POWDERS, alloy_press.TOPUP_COL, a shade darker against the white
+    augers), so that the chain shows several
+    powders; and the anchors of the labelled ones (MOD_LBL) at the middle of their augers. A frame hook: both follow
+    their modules round the chain (Carousel._last, the rig frame; the sleeves ride in the rig's group, so they come in
+    with tray B's load)."""
+
+    def __init__(self, sc, car):
+        import pyvista as pv
+
+        import alloy_charge as AC
+        import alloy_press as AP
+        import charge as C
+        self.sc, self.car = sc, car
+        pl = car._pl()
+        col = {k: tuple(0.86 * c for c in v) for k, v in {**{k: v[0] for k, v in C.POWDERS.items()},
+                                                             **AP.TOPUP_COL}.items()}
+        a = car.parts["auger"]
+        r = (a.bounds[1] - a.bounds[0]) / 2 + 0.6
+        z0, z1 = a.bounds[4], a.bounds[5]
+        sleeve = pv.Cylinder(center=(0, 0, z0 + 0.55 * (z1 - z0)), direction=(0, 0, 1), radius=r,
+                             height=0.62 * (z1 - z0), resolution=40).triangulate()
+        self.idx, self.at = {}, {}
+        for pname, m in AC.MODULE.items():
+            i = next(j for j, p in enumerate(pl) if p.module == m and p.key == "auger")
+            g = f"mdpw_{m}"
+            sc.add(f"md powder {pname}", sleeve, col[pname], g, specular=0.15, ambient=0.3)
+            sc.parent[g] = car.group
+            self.idx[g] = i
+        for pname, _ in MOD_LBL:
+            i = next(j for j, p in enumerate(pl) if p.module == AC.MODULE[pname] and p.key == "auger")
+            self.at[pname] = (i, np.r_[a.center, 1.0], [0.0, 0.0, 0.0])
+        self(sc)
+
+    def point(self, pname):
+        return self.at[pname][2]
+
+    def __call__(self, sc):
+        last = self.car._last
+        for g, i in self.idx.items():
+            sc.gmat[g] = last[i]
+        Mg = sc.world(self.car.group)
+        for i, c, anchor in self.at.values():
+            anchor[:] = (Mg @ last[i] @ c)[:3]
 
 
 class Melt:
@@ -251,16 +414,18 @@ def build(data):
     """Shuttle 1 in the lab (animate.lab_scene), stripped (strip, floor_edits, clear_view), with chapter 1's charge on
     tray B (alloy_charge.Charge: the rack of cups and plugs, the vacuum press, the MiR's cup carrier), the rePowder by
     its parts (alloy_atomize.load_rp, PR #327's model), chapter 2's loading tong on the MiR and the melt (Melt); and
-    the cycle's start: the MiR at the opening, its arm parked, trays A and B in their slots, the extractor at B's.
+    the cycle's start: the MiR beside the opening (WAIT_AT), its arm parked, trays A and B empty in their slots
+    (L.loads), the extractor at B's, the doser's tall pedestal (high_pedestal) and its powder modules (L.modules).
     -> (scene, lab, charge, melt)."""
     import alloy_atomize as AT
     import alloy_charge as AC
     import animate as A
+    import carousel as CR
     import setup_lab as SL
     import vlm as V
-    import warehouse as W
     os.environ.setdefault("VLAB_ONLY_TRAYS", S1_TRAYS)
     SL.load_all = _load_s1
+    high_pedestal()
     sc, L = A.lab_scene(data, name=NAME, title=TITLE)
     sc.gif = False                                     # gif() makes the GIF from the MP4
     sc.text_scale = TEXT
@@ -270,7 +435,7 @@ def build(data):
     floor_edits(sc)
     clear_view(sc, L)
     u = L.units[0]
-    u.set(W.dock_pose("vlm"))
+    u.set((*WAIT_AT, 0.0))                             # waiting beside the opening while the trays are loaded
     # chapter 1's charge on tray B. Its MiR group "amr" rides on this unit's cabinet; the unit's one-vial holder goes
     sc.parent["amr"] = L.amr_group
     sc.gmat["amr"] = np.eye(4)
@@ -299,7 +464,12 @@ def build(data):
     L.lift_z = V.SLOTS[A.HOME["B"]][1]
     L.shutter = 0.0
     L.skin(1.0)(1.0)
+    # the doser's top door stays open: the tall pedestal stands up through it (high_pedestal)
+    L.carousel.set(top_door=CR.TOP_OPEN)
+    L.modules = Modules(sc, L.carousel)
+    sc.frame_hooks.insert(0, L.modules)
     L.apply_state()
+    L.loads = {k: Load(sc, k) for k in LOADED}       # trays A and B empty until they are loaded at the opening
     return sc, L, K, fx
 
 
@@ -394,16 +564,70 @@ def set_cam(sc, key):
 
 
 def views():
-    """Stills of the views (ORG_VIEWS=a,b,... picks some), with the scene at the cycle's start."""
+    """Stills of the views (ORG_VIEWS=a,b,... picks some), with the scene at the cycle's start; ORG_AT_OPEN=1 has tray
+    B at the opening and loaded, the doser's Si module docked and tilted, and the cup on the pedestal, part dosed and
+    cut open (the dose view's set-up). ORG_CAMS='key=dx,dy,dz,lx,ly,lz,va;...' adds views relative to the cup's foot."""
     from PIL import Image, ImageDraw
 
+    import alloy_charge as AC
+    import carousel as CR
     import lab
+    import vlm as V
+    import pyvista as pv
+    import warehouse as W
+    from scene import T, R
     sc, L, K, fx = build(lab.meshes())
+    if os.environ.get("ORG_AT_OPEN"):
+        car, cg = L.carousel, f"cup{CUP}"
+        for k in LOADED:
+            L.loads[k].slide(1.0)
+        L.tray["B"] = [*V.SLOTS["open"]]
+        L.where["B"] = "open"
+        L.apply_state()
+        car.set(shift=car.index_to(AC.MODULE["Si"]), ext=CR.DOCK_EXT, tilt=CR.TILT, shuttle=0.0, fork=1.0,
+                magnet_on=True)
+        sc.parent[cg] = K.rig
+        sc.gmat[cg] = T(CR.vessel_at("cup", 0.0, 1.0)) @ R((0, 0, 1), cut_face())
+        L.units[0].set(W.dock_pose("vlm"))
+        K.powder_h[CUP] = K.powder_h2[CUP] = 15.0
+        K._point[CUP] = True
+        K.apply()
+        K.cut(CUP, True, sleeve=None)
+        pts = AC.stream_points(L, K, CUP, 0.3, 1.0)
+        sc.set_mesh("stream", pv.PolyData(pts))
+        sc.alpha["stream"] = 1.0
+        bal = K.bal_cup()
+        CAMS["dose"] = [tuple(bal + DOSE_OFF), tuple(bal + DOSE_LOOK), (0, 0, 1), DOSE_VA]
+        for item in filter(None, os.environ.get("ORG_CAMS", "").split(";")):
+            key, v = item.split("=")
+            v = [float(x) for x in v.split(",")]
+            CAMS[key] = [tuple(bal + v[0:3]), tuple(bal + v[3:6]), (0, 0, 1), v[6]]
+        mods = L.modules
+        mods(sc)
+        b = np.array([sc.world(car.group) @ np.r_[p, 1.0] for p in
+                      np.array(pv.merge([pv.wrap(sc.actors[n].GetMapper().GetInput()) for n in sc.actors
+                                         if sc.group_of[n] == car.group]).points)[::50]])[:, :3]
+        print(f"cup foot {np.round(bal, 1)}; exit {np.round(sc.world(car.group) @ np.r_[car.exit_point(), 1.0], 1)}; "
+              f"doser x {b[:, 0].min():.0f}..{b[:, 0].max():.0f} y {b[:, 1].min():.0f}..{b[:, 1].max():.0f} "
+              f"z {b[:, 2].min():.0f}..{b[:, 2].max():.0f}; modules "
+              f"{ {p: np.round(mods.point(p), 0).tolist() for p, _ in MOD_LBL} }", flush=True)
+        sc.sticky_labels = [(f"the {p} module", mods.point(p), box) for p, box in MOD_LBL] + [
+            ("13 powder modules on a chain,\none powder in each", tuple(bal + CHAIN_AT), (0.985, 0.46))]
     keys = [k for k in CAMS if CAMS[k] and (not os.environ.get("ORG_VIEWS") or k in os.environ["ORG_VIEWS"].split(","))]
     shots = []
     for key in keys:
         set_cam(sc, key)
-        shots.append((key, Image.fromarray(sc.render_base())))
+        base = sc.render_base()
+        if os.environ.get("ORG_AT_OPEN"):
+            sc.labels = [(t, xyz, box, 1.0) for t, xyz, box in sc.sticky_labels]
+            try:
+                im = sc.overlay(Image.fromarray(base), sc.text_scale, [sc.project(xyz) for _, xyz, _, _ in sc.labels])
+            except Exception as e:              # the overlay's own label format: fall back to the bare render
+                print("overlay:", e, flush=True)
+                im = Image.fromarray(base)
+        else:
+            im = Image.fromarray(base)
+        shots.append((key, im.convert("RGB")))
     tw, th = 640, 360
     cols = 3
     sheet = Image.new("RGB", (tw * cols, th * ((len(shots) + cols - 1) // cols)), "white")
@@ -536,47 +760,47 @@ def park(rb, secs=1.2):
     yield HOLD, None
 
 
-def fetch(L, k):
-    """setup_lab.TwoLab.fetch as a track: the same moves and times."""
+def fetch(L, k, f=1.0):
+    """setup_lab.TwoLab.fetch as a track: the same moves and times (f x them: the loading's time-lapse)."""
     import vlm as V
     L.use(L.unit.get(k, 1))
     ys, zs = V.SLOTS[L.where[k]]
     yt, zt = V.SLOTS["open"]
     if abs(L.lift_z - zs) > 1:
-        yield max(0.6, abs(L.lift_z - zs) / 1333), lambda: L.lift_to(zs)
-        yield 0.1, None
+        yield f * max(0.6, abs(L.lift_z - zs) / 1333), lambda: L.lift_to(zs)
+        yield f * 0.1, None
     L.where[k] = None
     L.apply_state()
-    yield 2.2, lambda: L.slide(k, 0.0)
-    yield 0.1, None
-    yield max(0.6, abs(zs - zt) / 1333), lambda: L.lift_to(zt, carry=k)
-    yield 0.1, None
-    yield 0.7, lambda: L.shut(1.0)
-    yield 2.2, lambda: L.slide(k, yt)
-    yield 0.7, lambda: L.shut(0.0)
+    yield f * 2.2, lambda: L.slide(k, 0.0)
+    yield f * 0.1, None
+    yield f * max(0.6, abs(zs - zt) / 1333), lambda: L.lift_to(zt, carry=k)
+    yield f * 0.1, None
+    yield f * 0.7, lambda: L.shut(1.0)
+    yield f * 2.2, lambda: L.slide(k, yt)
+    yield f * 0.7, lambda: L.shut(0.0)
     L.where[k] = "open"
     L.apply_state()
-    yield 0.3, None
+    yield f * 0.3, None
 
 
-def store(L, k):
-    """setup_lab.TwoLab.store as a track."""
+def store(L, k, f=1.0):
+    """setup_lab.TwoLab.store as a track (f x its times)."""
     import animate as A
     import vlm as V
     L.use(L.unit.get(k, 1))
     L.where[k] = None
     L.apply_state()
     ys, zs = V.SLOTS[A.HOME[k]]
-    yield 0.7, lambda: L.shut(1.0)
-    yield 2.2, lambda: L.slide(k, 0.0)
-    yield 0.7, lambda: L.shut(0.0)
-    yield 0.1, None
-    yield max(0.6, abs(L.lift_z - zs) / 1333), lambda: L.lift_to(zs, carry=k)
-    yield 0.1, None
-    yield 2.2, lambda: L.slide(k, ys)
+    yield f * 0.7, lambda: L.shut(1.0)
+    yield f * 2.2, lambda: L.slide(k, 0.0)
+    yield f * 0.7, lambda: L.shut(0.0)
+    yield f * 0.1, None
+    yield f * max(0.6, abs(L.lift_z - zs) / 1333), lambda: L.lift_to(zs, carry=k)
+    yield f * 0.1, None
+    yield f * 2.2, lambda: L.slide(k, ys)
     L.where[k] = A.HOME[k]
     L.apply_state()
-    yield 0.3, None
+    yield f * 0.3, None
 
 
 def drive(L, to, follow=None, cams=None):
@@ -627,6 +851,26 @@ def cam_to(sc, key, secs):
 
 
 # ============================================================================================ the parts of a long render
+STILL_EVERY = int(os.environ.get("ORG_STILL_EVERY", "12"))
+
+
+def still_skip(hook, every=STILL_EVERY):
+    """The audit's frame hook, run on every frame where an arm has moved since the last one it checked (its joints, its
+    MiR's pose, what it holds), and on every `every`-th frame while none has (ORG_STILL_EVERY; 1 checks every frame).
+    In this loop an arm stands still only parked: at the rePowder while the trays are loaded and while the cup melts,
+    and at the opening while the doser doses, its shuttle 300 mm and more from the folded arm."""
+    last = [None]
+
+    def h(sc):
+        key = tuple((tuple(np.round(rb.q, 6)), tuple(np.round(sc.world(rb.root)[:3, :].ravel(), 3)),
+                     rb.held[0] if rb.held else None) for rb in getattr(sc, "robots", []))
+        if every > 1 and key == last[0] and sc.n % every:
+            return
+        last[0] = key
+        hook(sc)
+    return h
+
+
 def frame_range(env):
     v = os.environ.get(env)
     if not v:
@@ -716,11 +960,13 @@ def movie():
         part_snap(sc, *part)
     if apart and SC.AUDIT and sc.auditor is not None:      # this pass checks frames a..b-1 only
         aud = sc.auditor
-        sc.frame_hooks[sc.frame_hooks.index(aud)] = lambda s, aud=aud: aud(s) if apart[0] <= s.n < apart[1] else None
+        sc.frame_hooks[sc.frame_hooks.index(aud)] = still_skip(lambda s, aud=aud: aud(s) if apart[0] <= s.n < apart[1]
+                                                               else None)
     if os.environ.get("ARM_AUDIT_RENDER") and not (SC.PREVIEW or SC.AUDIT):
-        import collide                      # ARM_AUDIT=1's audit in the render's own pass: one pass for both
-        sc.auditor = collide.Auditor(sc)
-        sc.frame_hooks.append(sc.auditor)
+        import collide                      # ARM_AUDIT=1's audit in the render's own pass: one pass for both (with
+        sc.auditor = aud = collide.Auditor(sc)      # ORG_PART, of the part's own frames, for audit_join)
+        lo, hi = part or (0, 10 ** 9)
+        sc.frame_hooks.append(still_skip(lambda s, aud=aud: aud(s) if lo <= s.n < hi else None))
     sc.frame_hooks.insert(0, fx)            # the melt, before the audit sees the frame
     rb, car = L.robot, L.carousel
     cg = f"cup{CUP}"
@@ -739,7 +985,7 @@ def movie():
     # ------------------------------------------------------------------ the labels (box: fractions of the frame; a
     # box left of the middle has its left edge at fx, one right of it its right edge; fy is its middle)
     dock = W.dock_pose("vlm")
-    arm_at = [dock[0], dock[1] - 250.0, 1250.0]            # moves with the MiR (drive's `follow`)
+    arm_at = [WAIT_AT[0], WAIT_AT[1] - 250.0, 1250.0]      # moves with the MiR (drive's `follow`)
     lbl_arm = ("the operator: a MiR250 + UR10e", arm_at, (0.40, 0.93))
     lbl_vlm = ("the VLM, a Kardex Shuttle XP 500:\nits trays come to the opening", (-700.0, -900.0, 2950.0),
                (0.985, 0.08))
@@ -754,26 +1000,76 @@ def movie():
     lbl_pw = ("powder", tuple(RP + (M.CHUTE_X, 0.0, 230.0)), (0.985, 0.82))
     at_start = [lbl_vlm, lbl_rp, lbl_arm]
     labels(*at_start)
+    loads = L.loads
 
-    # ------------------------------------------------------------------ 1. the whole lab; in to tray B as it comes down
+    # ------------------------------------------------------------------ 1. the whole lab; trays A and B loaded at the
+    # opening (a time-lapse, as the set-up movie loads them); tray A back up, tray B left there
+    def item_at(k, key):
+        g = next(g for kk, g, _, _ in L.items.get(k, []) if kk == key)
+        return np.array(sc.world(g)[:3, 3])
+
+    def load_labels(k):
+        """Tray k's instruments, named as the set-up names them (setup_lab.item_label), over where they stand; tray
+        B's three side by side are placed by hand."""
+        if k == "B":
+            return [("the multi-doser v5, 13 powders,\non its HR-202i balance",
+                     tuple(K.bal_cup() + (150.0, 80.0, 560.0)), (0.985, 0.10)),
+                    ("the vacuum press", tuple(K._w("tray_B", (*AP.PRESS_AT, 420.0))), (0.30, 0.10)),
+                    ("charge cups, 5N Al", tuple(K.rack_cup(1) + (0.0, 0.0, 70.0)), (0.02, 0.30))]
+        lbls = [(nm, tuple(np.array(sc.world(g)[:3, 3]) + (0.0, 0.0, 420.0))) for key, g, names, nm in
+                L.items.get(k, []) if key not in ("ups", "cam") and any(loads[k].a0.get(n, 0.0) > 0 for n in names)]
+        return W.auto(sc, CAMS["load"][:3], lbls, dy=0.16)
+
     def overview():
-        yield from call(lambda: phase("A vertical lab: its storage brings each instrument to the operator, a "
+        yield from call(lambda: phase("A vertical lab: storage that brings each instrument to the operator, a "
                                       "mobile robot arm."))
         yield 1.4, None
-        yield from call(lambda: phase("Here it makes a charge for the atomizer. The VLM brings tray B, the powder "
-                                      "doser, down."))
-        yield from cam_to(sc, "trayB", 4.2)
-    run(sc, overview(), fetch(L, "B"))
-    # tray B's labels, now that it is at the opening (K's places are wherever the tray is)
+        yield from call(lambda: phase("First its trays are loaded (a time-lapse): each comes down to the opening, "
+                                      "and people put its instruments on."))
+        yield from cam_to(sc, "load", 3.6)
+
+    def seq(*gens):
+        for g in gens:
+            yield from g
+    run(sc, overview(), seq(wait(1.4), fetch(L, "A", LOAD_F)))
+
+    def load(k, text):
+        yield from call(lambda: (phase(text), labels(*load_labels(k))))
+        yield LOAD_SECS, lambda: loads[k].slide
+        yield 0.6, None
+    names_A = [nm for key, g, names, nm in L.items.get("A", []) if key not in ("ups", "cam")]
+    run(sc, load("A", f"Tray A: {', '.join(names_A)}, with its UPS and its camera posts."))
+
+    def swap():
+        yield from call(lambda: (phase("Tray A goes back up to its slot, where it has power, and tray B comes down."),
+                                 labels(lbl_vlm)))
+        yield from store(L, "A", LOAD_F)
+        yield from fetch(L, "B", LOAD_F)
+    run(sc, swap())
+    run(sc, load("B", "Tray B: the multi-doser v5 on its balance, the charge cups in their rack, and the vacuum "
+                      "press."))
+
+    # ------------------------------------------------------------------ 2. the MiR in, to the opening
     lbl_B = ("tray B at the opening:\nthe multi-doser v5 on its balance", tuple(K.bal_cup() + (150.0, 80.0, 560.0)),
              (0.985, 0.10))
     lbl_rack = ("charge cups, 5N Al", tuple(K.rack_cup(1) + (0.0, 0.0, 70.0)), (0.02, 0.62))
-    lbl_cup = ("the cup, cut open: Si,\nthen the AlSi10Mg top-up", tuple(K.bal_cup() + (0.0, 0.0, 40.0)),
-               (0.985, 0.72))
-    bal = K.bal_cup()                 # the cup on the pan, from the front through the balance's glass (closer than
-    CAMS["dose"] = [tuple(bal + (-60.0, -420.0, 160.0)), tuple(bal + (0.0, 0.0, 75.0)), (0, 0, 1), 31.0]   # chapter 1's
 
-    # ------------------------------------------------------------------ 2. the cup dosed: Si, then the top-up
+    def come_in():
+        yield from call(lambda: (phase("Only then does the robot come in: it docks at the opening, to work at tray B."),
+                                 labels(lbl_arm, lbl_B)))
+        yield from drive(L, dock[:2], arm_at, ("load", "trayB"))
+    run(sc, come_in())
+
+    # ------------------------------------------------------------------ 3. the cup dosed: Si, then the top-up, each
+    # with the module docked and tilted before the shuttle brings the cup in over the balance (high_pedestal)
+    bal = K.bal_cup()                 # the cup's foot on the tall pedestal
+    CAMS["dose"] = [tuple(bal + DOSE_OFF), tuple(bal + DOSE_LOOK), (0, 0, 1), DOSE_VA]
+    CAMS["cup"] = [tuple(bal + CUP_OFF), tuple(bal + CUP_LOOK), (0, 0, 1), CUP_VA]
+    mods = L.modules
+    lbl_mods = [(f"the {pname} module", mods.point(pname), box) for pname, box in MOD_LBL]
+    lbl_chain = ("13 powder modules on a chain,\none powder in each", tuple(bal + CHAIN_AT), (0.985, 0.46))
+    lbl_cup = ("the cup, cut open, 34 mm under\nthe auger, on a tall pedestal", tuple(bal + (0.0, 0.0, 40.0)),
+               (0.985, 0.74))
     f = DOSE_F
     p_rack = K.rack_cup(CUP) + (0, 0, GRASP_DOWN)
     p_hand = K.hand_cup() + (0, 0, GRASP_DOWN)
@@ -800,34 +1096,53 @@ def movie():
             K.cut(CUP, True, sleeve=None)
         return up
 
+    turned = []
+
+    def cup_in():
+        """The shuttle carries the cup in over the balance and sets it on the pedestal, the fork 4 mm under it; the
+        camera in to the cup."""
+        yield 1.6 * f, lambda: both(car.to(shuttle=0.0), cam_up(sc, "cup"))
+        yield 0.4 * f, lambda: car.to(fork=A.SET_U)
+        car.reparent(cg, K.rig)
+        if not turned:
+            # set down with its cut face (charge.cup(cut=True) keeps the +y half) to the dose view: a whole cup looks
+            # the same whichever way it is turned about its axis
+            Mw = sc.world(cg)
+            sc.gmat[cg] = AT.inv(sc.world(K.rig)) @ T(Mw[:3, 3]) @ R((0, 0, 1), cut_face())
+            turned.append(True)
+        K.cut(CUP, True, sleeve=None)
+        yield 0.3 * f, lambda: car.to(fork=1.0)
+
+    def cup_out(cam="dose", whole=False):
+        """The fork lifts the cup off the pedestal and the shuttle takes it back out, past the -y panel; the camera
+        back out to `cam` (whole: the cup drawn whole again, its last dose in)."""
+        yield 0.3 * f, lambda: car.to(fork=A.SET_U)
+        car.reparent(cg, car.fork_group)
+        if whole:
+            K.cut(CUP, False, sleeve=None)
+        yield 0.4 * f, lambda: car.to(fork=0.0)
+        yield max(1.4, 1.5 * f), lambda: both(car.to(shuttle=1.0), cam_up(sc, cam))
+
     def at_B():
-        yield from call(lambda: (phase("The arm stands an empty charge cup on the doser's shuttle, which carries it "
-                                       "onto the balance."), labels(lbl_arm, lbl_B, lbl_rack)))
+        yield from call(lambda: (phase("The arm stands an empty charge cup on the doser's shuttle."),
+                                 labels(lbl_arm, lbl_B, lbl_rack)))
         yield from pick(rb, A.down(p_rack, spin=0.0), A.down(p_rack + (0, 0, 110), spin=0.0), cg, GRIP_CUP, OPEN_CUP)
         yield from place(rb, A.down(p_hand, spin=180.0), A.down(p_hand + (0, 0, 120), spin=180.0), car.fork_group,
                          OPEN_CUP)
-        yield 1.2, lambda: both(rb.joint_to(A.PARK_RAD), car.to(side_door=CR.SIDE_OPEN), cam_up(sc, "dose"))
-        yield from call(lambda: labels(lbl_cup))
-        yield 1.6 * f, lambda: car.to(shuttle=0.0)
-        yield 0.4 * f, lambda: car.to(fork=A.SET_U)
-        car.reparent(cg, K.rig)
-        # the arm took the cup at spin 0 and set it down at spin 180, so the half that the cutaway keeps faces the
-        # camera; turned back about its own axis on the pedestal (a whole cup looks the same either way), the cut
-        # face shows
-        sc.gmat[cg] = sc.gmat[cg] @ R((0, 0, 1), 180.0)
-        yield 0.3 * f, lambda: car.to(fork=1.0)
-        yield 1.3 * f, lambda: car.to(shuttle=1.0)
-        yield 0.5 * f, lambda: car.to(side_door=0.0, fork=0.0)
+        yield 1.4, lambda: both(rb.joint_to(A.PARK_RAD), cam_up(sc, "dose"))
+        yield from call(lambda: labels(*lbl_mods, lbl_chain))
         for layer, pname, h0, h1, text in (
-                (0, "Si", 0.0, h_si, f"The doser weighs in the alloy's powders, one module at a time: "
-                                     f"{PR['alloying_g']:.2f} g of Si ..."),
-                (1, "AlSi10Mg", h_si, h_set, f"... then {PR['top_up_g']:.2f} g of AlSi10Mg on top, for Al-10Si.")):
+                (0, "Si", 0.0, h_si, f"The doser has a powder in each module. The chain brings the Si to the "
+                                     f"balance, and {PR['alloying_g']:.2f} g of it goes into the cup ..."),
+                (1, "AlSi10Mg", h_si, h_set, f"... then the AlSi10Mg module: {PR['top_up_g']:.2f} g on top, for "
+                                             f"Al-10Si.")):
             m = AC.MODULE[pname]
             yield from call(lambda text=text: phase(text))
-            yield 2.2 * f, lambda m=m: car.to(shift=car.index_to(m), top_door=CR.TOP_OPEN)
-            yield 1.2 * f, lambda: both(car.to(ext=CR.DOCK_EXT, magnet_on=True), car.ghost(0.18))
+            yield 2.6 * f, lambda m=m: car.to(shift=car.index_to(m))
+            yield 1.2 * f, lambda: car.to(ext=CR.DOCK_EXT, magnet_on=True)
             yield 1.3 * f, lambda: car.to(tilt=CR.TILT)
-            K.cut(CUP, True, sleeve=None)
+            yield from call(lambda layer=layer: labels(lbl_mods[layer], lbl_cup))
+            yield from cup_in()
             yield 3.4 * 0.8, lambda layer=layer, h0=h0, h1=h1: dose_up(layer, h0, h1)
             sc.alpha["stream"] = 0.0
             if layer == 0:
@@ -836,20 +1151,15 @@ def movie():
             K.powder_h2[CUP] = h1
             K.apply()
             K.cut(CUP, True, sleeve=None)
+            yield 0.3, None
+            yield from cup_out("dose" if layer == 0 else "trayB", whole=layer == 1)
+            yield from call(lambda: labels(*lbl_mods, lbl_chain) if layer == 0 else labels(lbl_arm, lbl_B))
             yield 1.0 * f, lambda: car.to(tilt=0.0)
             yield 0.7 * f, lambda: car.to(spin=car.state["spin"] - 2 * math.pi)
-            yield 0.9 * f, lambda: both(car.to(ext=0.0, magnet_on=False, top_door=0.0), car.ghost(1.0))
+            yield 0.9 * f, lambda: car.to(ext=0.0, magnet_on=False)
         K.cut(CUP, False, sleeve=None)
-        yield from call(lambda: phase("The shuttle brings the charged cup out, and the arm stands it in the carrier "
-                                      "on the robot."))
-        yield 1.4, lambda: both(car.to(side_door=CR.SIDE_OPEN, fork=1.0), cam_up(sc, "trayB"))
-        yield from call(lambda: labels(lbl_arm, lbl_B))
-        yield 1.3 * f, lambda: car.to(shuttle=0.0)
-        yield 0.3 * f, lambda: car.to(fork=A.SET_U)
-        car.reparent(cg, car.fork_group)
-        yield 0.4 * f, lambda: car.to(fork=0.0)
-        yield 1.5 * f, lambda: car.to(shuttle=1.0)
-        yield 0.5 * f, lambda: car.to(side_door=0.0)
+        yield from call(lambda: (phase("The arm stands the charged cup in the carrier on the robot."),
+                                 labels(lbl_arm, lbl_B)))
         yield from pick(rb, A.down(p_hand, spin=180.0), A.down(p_hand + (0, 0, 120), spin=180.0), cg, GRIP_CUP,
                         OPEN_CUP)
         p_car = K.carrier_seat(CARRIER_K) + (0, 0, GRASP_DOWN)
@@ -857,14 +1167,14 @@ def movie():
         yield from park(rb)
     run(sc, at_B())
 
-    # ------------------------------------------------------------------ 3. tray B back up; the MiR to the rePowder
+    # ------------------------------------------------------------------ 4. tray B back up; the MiR to the rePowder
     def go():
         yield from call(lambda: (phase("Tray B goes back into storage, and the robot takes the cup to the atomizer."),
                                  labels(lbl_arm)))
         yield from drive(L, RP_STOP, arm_at, ("trayB", "rp"))
     run(sc, go(), store(L, "B"))
 
-    # ------------------------------------------------------------------ 4. at the rePowder: latch, lid, tong, cup in
+    # ------------------------------------------------------------------ 5. at the rePowder: latch, lid, tong, cup in
     gl = M.latch_geom()
 
     def lid(s):
@@ -1122,26 +1432,28 @@ def movie():
         return ("loading tong", tuple(sc.world("tong")[:3, 3] + (0.0, 0.0, 200.0)), (0.985, 0.30))
     run(sc, at_rp())
 
-    # ------------------------------------------------------------------ 5. melted and atomized; back to the opening
+    # ------------------------------------------------------------------ 6. melted and atomized; out to the wide view,
+    # and trays A and B emptied again: the last frame is the first
     def melt():
         yield from call(lambda: (phase("The atomizer melts the cup and sprays the melt into powder (a time-lapse, "
                                        "cut open)."), fx.start(sc), labels(lbl_melt, lbl_plate, lbl_pw)))
         yield 1.6, lambda: cam_up(sc, "cut")
         yield ATOM_SECS - 1.6 - 4.6, None
-        yield from call(lambda: (phase("And the robot goes back to the VLM for the next tray."), labels(*at_start)))
+        yield from call(lambda: (phase("The robot has moved off, to wait for its next job."), labels(*at_start)))
         yield from cam_to(sc, "wide", 4.6)
-        yield 0.7, None
+        yield 0.5, None
+        yield 1.2, lambda: both(*[loads[k].fade_out() for k in LOADED])
+        yield 0.3, None
 
-    def back():
-        yield 1.0, None
-        yield from drive(L, dock[:2], arm_at)
-    run(sc, melt(), back())
+    def away():                       # off the rePowder as the cut opens, out of the cutaway's view
+        yield from drive(L, WAIT_AT, arm_at)
+    run(sc, melt(), away())
     out = sc.save()
-    if sc.auditor is not None and not SC.AUDIT:      # ARM_AUDIT_RENDER=1
+    if sc.auditor is not None and not SC.AUDIT and not part:      # ARM_AUDIT_RENDER=1, the whole loop
         sc.auditor.save()
-    if apart and SC.AUDIT and sc.auditor is not None:
+    if sc.auditor is not None and (apart and SC.AUDIT or part and not SC.AUDIT):
         os.makedirs("/tmp/org_audit", exist_ok=True)
-        with open(f"/tmp/org_audit/{apart[0]:05d}.json", "w") as fh:
+        with open(f"/tmp/org_audit/{(apart or part)[0]:05d}.json", "w") as fh:
             json.dump(dict(frames=sc.auditor.frames, parent=sc.parent,
                            events={r.prefix: [list(e) for e in r.events] for r in sc.robots}), fh)
     print(f"highest forearm/wrist point {rb.max_z_world:.0f} mm; {sc.n} frames; the melt ran frames {fx.n0}-{fx.n1}",
