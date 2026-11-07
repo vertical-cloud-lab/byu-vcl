@@ -64,9 +64,9 @@ hand at work. Grey is process steps; colour is upkeep, by who does it.
 
 | Kind | How it becomes due | Tasks | Examples (`out/upkeep_model.json` has all 121, each with its source) |
 |---|---|---|---|
-| Calendar PM | every so many days, at night (the arm, the machine), on a weekday shift (a person) or on a vendor's visit (Tuesday-Thursday, 08:00) | 100 | Kardex service twice a year; the MIDI's chamber and laser window weekly; MiR250 wheels and charging pads monthly; the fume hood's face velocity yearly |
-| Consumables, by use | so many hours of a machine's work (8), so many of its steps (12), so many mating cycles (1) | 21 | the EDM's wire and resin by cutting hours; the PX500's discs by polishes; the Berkovich tip every 600 indentation runs; the MIDI's circulation filter by build hours |
-| Reference checks by the arm | daily or weekly, booked like a step: a unit brings the reference, the tray comes to the opening, the result goes on a control chart | 17 | the HR-202i with a 100 g E2 weight daily (the clip); the HM-220's reference block daily; the iMicro on fused silica weekly; the Mastersizer's QAS3002 reference; the XRF's drift monitor |
+| Calendar PM | every so many days: at night for the machine itself, on a weekday shift for a person, from a Tuesday-Thursday 08:00 for a vendor | 85 | Kardex service twice a year; the MIDI's chamber and laser window weekly; MiR250 wheels and charging pads monthly; the fume hood's face velocity yearly; IT patches and backups |
+| Consumables, by use | so many hours of a machine's work (7), so many of its steps (11), so many mating cycles (1) | 19 | the EDM's wire and resin by cutting hours; the PX500's foils and cloths by polishes; the atomizer's crucible stock and thermocouple by runs; the Berkovich tip every 600 indentation runs; the MIDI's circulation filter by build hours |
+| Reference checks by the arm | daily or weekly (15), or by use (2), booked like a step: a unit brings the reference, the tray comes to the opening, the result goes on a control chart | 17 | the HR-202i with a 100 g E2 weight daily (the clip); the HM-220's reference block daily; the iMicro on fused silica weekly; the Mastersizer's QAS3002 reference; the XRF's drift monitor; the sieves' cloths imaged every 20 sievings |
 | Failures | random, seeded: per operating hour for a machine (22 modes), per calendar hour for the Shuttles, the units, the trays' Pis and the chiller (6) | 28 modes, 85 in the year | a recoater crash; a melt fault on the atomizer; a lost localization on a MiR; a light-curtain trip at an opening; a camera's SD card |
 
 **A check's control chart decides what happens next** (`upkeep_clip.py` part 2 shows one).
@@ -127,7 +127,8 @@ The person's hours by kind, weekly mean after the ramp (weeks 9-52):
   run's time is lost).
 - **A repair goes ahead of planned work, but never at night.** A fault that needs a person waits for the next shift.
   A vendor's repair also waits for parts: 48-120 h, assumed.
-- **Vendors come Tuesday to Thursday at 08:00.** The person hosts each visit for an hour.
+- **A vendor's visit falls due on a Tuesday to Thursday at 08:00.** It slides to the next weekday on which everything
+  it holds is free; week 36's slid to a Friday. The person hosts each visit for an hour.
 
 ## A year of it
 
@@ -159,7 +160,7 @@ The person's hours by kind, weekly mean after the ramp (weeks 9-52):
 | multi-doser and press (tray B) | 98.6 % | 23 | 27 | 75 | 98.8 % |
 | CubXL corrosion (tray A) | 98.8 % | 63 | 32 | 13 | 99.5 % |
 | PX500 polisher (tray F) | 99.0 % | 43 | 43 | 0 | 99.4 % |
-| the other ten stations | 99.1-99.96 % | | | | |
+| the other thirteen stations | 99.1-99.96 % | | | | |
 
 ## The biggest risks and single points of failure
 
@@ -180,12 +181,13 @@ The person's hours by kind, weekly mean after the ramp (weeks 9-52):
    Holidays, sickness and training aren't modelled. So the 9 h of slack is the lab's whole margin.
    - Anyone trained to cover the crucible covers the upkeep too.
    - Sterling's crucible notes (`notes/crucible_automation.md`) are why the crucible stays a person's job.
-4. **A Shuttle's opening is shared by every tray in it.** Shuttle 1's opening is held for 388 h a year, by tray work
-   and the Kardex visits.
+4. **A Shuttle's opening is shared by every tray in it.** Shuttle 1's opening is out 388 h a year: 192 planned (tray
+   work, the Kardex visits) and 196 for faults, most of them waiting for the next shift.
    - A vendor on a tray instrument holds it all day: the furnace's temperature survey is 8 h.
    - Kardex offers up to six access openings per unit (brochure p. 5, notes/maintenance.md), so a second opening for
      maintenance is worth asking about.
-   - The two Shuttles already back each other up for the floor's work, but not for their own trays.
+   - The other Shuttle keeps working meanwhile, but no tray moves between them. So a held opening stops every
+     instrument in its Shuttle at its next load or unload.
 5. **The trays' couplings are a slow risk,** not a first-year one.
    - Shuttle 1's bay dock mates 9,356 times a year. At Stäubli's 100,000 rated cycles that is 10.7 years.
    - The busiest tray plates (B, D, E, L, M) last 22-24 years.
