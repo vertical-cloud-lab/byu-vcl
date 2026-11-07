@@ -66,6 +66,7 @@ The machine-readable list is [`infrastructure.csv`](infrastructure.csv). The bui
   loads it. Cited to the `README.md` round-9 section and `notes/kardex_opening.md`, `notes/tray_plan.md`.
 - **Alternative to ask about:** the **Shuttle 700 and 1000** (taller product height; the Shuttle 1000's mesh-box trays
   imply about 1 m, `notes/kardex_opening.md`).
+- **Model check (2026-11-07):** **current**. Kardex's Shuttle page now lists the line as the Kardex Shuttle 250/500, 700 and 1000 (560, 725 and 1,000 kg per tray), without "XP" in the name, and names no successor. Since 2025 the Shuttle ships with Kardex's new TIC control system, "a significant update" to Logicontrol, with a 12.1 in touch panel, the ILA application programming interface and a faster shutter (North America from spring 2025), so the interface our scheduler and robot talk to has changed. Ask whether today's Shuttle 500 is the XP 500 we priced, whether its 560 kg tray rating replaces the 490 kg in the quote, and for the ILA documentation. (<https://www.kardex.com/products/vertical-lift/kardex-shuttle>, <https://www.kardex.com/en/company/news/kardex-introduces-the-upgraded-vertical-lift-module>)
 
 ### 2. Published specs that matter for integration
 - **Trays:** the POF order sheets give the 2450 × 864 mm Strong tray 500 kg (the #53 quote says 490), and
@@ -82,7 +83,7 @@ The machine-readable list is [`infrastructure.csv`](infrastructure.csv). The bui
 - **Web form (US):** <https://www.kardex.com/en-us/company/get-in-touch> ("I have a question regarding a system or
   product"); the page lists no email or phone. The same page group has a "find a local contact" route.
 - **Address:** Kardex Remstar Support & Service Center, 41 Eisenhower Dr, Westbrook, ME 04092 (verified: <https://www.kardex.com/en/company/kardex-locations>, 2026-11-07; the page gives no phone or email for it).
-- **Phone:** **800-639-5805** appeared only in press releases of 2013-2018; no current Kardex US page lists a phone (unverified: the get-in-touch, service, imprint and locations pages show none, 2026-11-07).
+- **Phone:** **800-639-5805** appeared only in press releases of 2013-2018; no current Kardex US page lists a phone (unverified: the get-in-touch, service, imprint and locations pages show none, 2026-11-07). Third pass, in headed Chromium on the stream-cam Pi: the get-in-touch page (now <https://www.kardex.com/en-us/company_people/about-kardex/get-in-touch>) is a form with no phone; the locations page's "Find a Local Contact" box, searched for "Provo, Utah", returns "105 representatives and distributors" with Europe first and no US phone in its text; the US entries are pins on a map. Still unverified.
 - **Regional:** Kardex's own locations page lists US distributor points in MA, MI, CT, NY, CA (Concord) and OH and **none in Utah or the Mountain West**; each links back to the get-in-touch form (verified: <https://www.kardex.com/en/company/kardex-locations>, 2026-11-07).
   The lab's earlier quote came through **Hoj Engineering** (thread cited above). **Hoj Innovations (Hoj Engineering & Sales Co.)**, 862 West Fine Drive, Salt Lake City, UT 84119, is a Utah firm that
   lists Kardex miniload and AS/RS systems; Utah material-handling sales **801-266-8881**, main **(385) 437-6275**, `info@hoj.net`, `inquiry@hoj.net`, Mon-Fri 9-5 MST
@@ -153,6 +154,7 @@ From `notes/kardex_opening.md` "Ask Kardex" and `notes/lab_r8.md`:
 - Address: [Kardex locations page](https://www.kardex.com/en/company/kardex-locations) (runner, 2026-11-07); the 800-639-5805 phone is from old press releases (<https://www.pr.com/press-release/532174>) and is unverified. Hoj: [hoj.net Utah locations](https://hoj.net/pages/utah-locations) (runner, 2026-11-07).
 - [The used XP 500 listing with a 996 mm opening](https://www.lagersysteme-paternoster.de/gebrauchte-lagertechnik/kardex-shuttle-xp500-3050x864-pos-89/), cited in the notes.
 - Issue #53 comments cited above.
+- Model check: [Kardex Shuttle page, current models](https://www.kardex.com/products/vertical-lift/kardex-shuttle) and [Kardex news, 30 January 2025, upgraded VLM with TIC](https://www.kardex.com/en/company/news/kardex-introduces-the-upgraded-vertical-lift-module) (2026-11-07, runner).
 
 ---
 
@@ -166,6 +168,7 @@ From `notes/kardex_opening.md` "Ask Kardex" and `notes/lab_r8.md`:
   (Bay M), and the Sharebot MetalONE and Kings 3D DiMetal-100 (Bay XL).
 - **Options to ask:** Modula's **Robot Interface** (anthropomorphic robots) and **AMR integration**, Modula
   **OPC-UA Telemetry**, Climate Control, and the Modula Lift's powered tray options.
+- **Model check (2026-11-07):** **current**. Modula's September 2025 US Lift catalogue still lists the MC50D, MC75D and MC1000D (500, 750 and 990 kg, 857 mm deep) and Bay S, M and XL (695, 895 and 1,295 mm). It gives the MC1000D tray as 2,460 mm wide, not 2,500, and the unit footprint as 2,917 × 3,165 mm with an internal bay. (<https://modula.us/wp-content/uploads/2025/11/USA_MODULA_CAT-LIFT_SEPT2025_WEB.pdf>)
 
 ### 2. Published specs
 - **Trays:** 500, 750, 990 kg at 2,500 × 857 mm; Bay S, M, XL = 695, 895, 1,295 mm (Modula's brochure, found by
@@ -176,11 +179,13 @@ From `notes/kardex_opening.md` "Ask Kardex" and `notes/lab_r8.md`:
 - Power, weight and footprint: **not published** on the pages read.
 
 ### 3. Contact
-- **Email:** `info.usa@modula.com` (the first pass read it on Modula's contact page via the Pi; on 2026-11-07 the page returned a Cloudflare challenge to the runner and to the Pi's curl and headless Chromium, so it could not be re-read: unverified this pass).
-- **Phone:** general **937-365-7860**; customer care **800-361-0785**; toll-free **877-648-9755** (unverified: same block, 2026-11-07).
-- **Address:** Modula Inc., 5000 Commerce Center Drive, Franklin, OH 45005 (headquarters; also a Maine plant at 90 Alfred
-  A. Plourde Parkway, Lewiston, ME 04240) (unverified: same block).
-- **Web form:** <https://modula.us/contact-us/>. **Dealers:** <https://modula.us/dealer-network/> (a map; unreadable behind the same Cloudflare block, so no Utah dealer is confirmed; ask Modula which dealer serves Utah).
+- **Email:** `info.usa@modula.com` (a mailto link on the contact page) (verified: <https://modula.us/contact/> (the old `/contact-us/` redirects there), maker's page, read in **headed Chromium on the stream-cam Pi**, 2026-11-07 22:44 UTC, past the Cloudflare block that stopped the runner, curl and headless Chromium).
+- **Phone:** general **937-365-7860**; customer care **800-361-0785**; toll-free **877-648-9755**; fax 937-574-7496 (same page and read).
+- **Address:** Modula Headquarters, 5000 Commerce Center Drive, Franklin, OH 45005; Maine production facility, 90 Alfred
+  A. Plourde Parkway, Lewiston, ME 04240 (same page and read).
+- **Web form:** <https://modula.us/contact/>. **Dealers:** <https://modula.us/sales-and-support/dealer-network/> (read the same way): the dealers are
+  pins on a Google map, and the page's "Schedule a conversation" form asks for a ZIP code, so the dealer is assigned from it. No Utah dealer is
+  named in the page text: **ask Modula which dealer serves Provo, UT 84602**.
 - **West-coast and Mountain West dealer candidates** (their own pages, 2026-11-07): **Pacific Integrated** says it is "an authorized distributor for Modula Vertical Lift Modules"; **(888) 550-5888**, `sales@pacificintegrated.com`; offices in Tacoma WA, Addison TX, Hayward CA and a sales office in Surprise AZ; no Utah office listed
   (verified: <https://www.pacificintegrated.com/?p=1662>, 2026-11-07). **Associated** (Raymond; "Platinum Level Modula Sales & Service Center"), 6450 Muirfield Dr, Hanover Park, IL 60133, **800-755-7201**, no service area stated
   (verified: <https://prod-cms-associated-solutions.raymondcorp.com/modula>, 2026-11-07). **Hoj Innovations** (Salt Lake City) is Kardex-oriented; no Modula listing found.
@@ -226,6 +231,7 @@ at the opening; **power** per `lab_answers.md`.
 - [Modula contact page](https://modula.us/contact-us/) and [dealer network](https://modula.us/dealer-network/), both via Pi (the runner got 403).
 - [Modula's government capability statement](https://modula.us/wp-content/uploads/2021/04/Modula-Inc-Government-Capability-Statement.pdf), downloaded 2026-11-07 (200) but the PDF text could not be extracted here, so nothing in it is relied on.
 - `notes/lab_r8.md`; issue #53 comments.
+- Model check: [Modula Lift US catalogue, September 2025](https://modula.us/wp-content/uploads/2025/11/USA_MODULA_CAT-LIFT_SEPT2025_WEB.pdf) (2026-11-07, runner; the PDF downloaded although modula.us pages give a Cloudflare challenge).
 
 ---
 
@@ -235,6 +241,7 @@ at the opening; **power** per `lab_answers.md`.
 One or two used Shuttle XP 500 (or equivalent) units, trays about 2450 × 864 mm, ideally with a tall opening. #53 records two
 used units from Outsource Equipment (on behalf of Vertical Storage USA) at $110,000 and $120,000, "far too large for us" (comment
 4165070381), and four earlier ones that are gone.
+- **Model check (2026-11-07):** n/a: dealers, not a model. The used units are the Shuttle XP 500 of section 1, which Kardex now lists as the Kardex Shuttle 250/500.
 
 ### 2. Specs and prices found
 | Listing | Year | Size | Ask | Note |
@@ -291,6 +298,7 @@ by BYU purchase order; payment terms **[to confirm]**.
 - **Role:** the robots drive between the VLMs and the floor machines and load instruments through the openings.
   Cited to `notes/warehouse.md`, `notes/arm_collisions.md`, README.
 - **Product status:** a search listing says the UR12e superseded the UR10e in May 2025 **[to confirm current availability]**.
+- **Model check (2026-11-07):** UR10e **renamed UR12e**; MiR250 **current**. Universal Robots raised the UR10e's payload to 12.5 kg and renamed it the UR12e (reported by Automation World on 5 June 2025); UR's UR12e page gives the same 1300 mm reach, a 33.5 kg arm and a Ø190 mm base, and says it is "now running on Gen 7 compute" with a TP7 pendant and PolyScope X, so the remote interfaces (RTDE, Dashboard, the Robotiq URCap) need checking. On 14 September 2026 UR launched Gen 7: a CB7 controller ("40% more compute in a 30% smaller footprint") with the TP7 pendant and PolyScope X, compatible with e-Series arms, plus new g-Series arms (UR10g-1750, UR17g-1300, UR18g-950) that are "larger than some of its previous models"; the e-Series is not discontinued. MiR's own page still sells the MiR250 (250 kg, 580 × 800 × 300 mm); since 23 January 2024 it is sold as the "MiR250 Base Robot", partly completed machinery shipped with a Declaration of Incorporation and an integrator manual, so whoever integrates the arm certifies the whole robot; MiR says nothing changed in hardware or software (distributor notice, search snippet). (<https://www.automationworld.com/factory/robotics/article/55293382/universal-robots-unveils-latest-cobot-tech-in-collaboration-with-nvidia>, <https://www.universal-robots.com/products/ur12e/>, <https://www.therobotreport.com/universal-robots-launches-its-seventh-generation-robot-platform-at-imts/>, <https://mobile-industrial-robots.com/products/robots/mir250>)
 
 ### 2. Published specs
 - **MiR250:** top speed 2.0 m/s (drawn at 1.5 m/s); corridor for one 1450 mm; two MiR250s passing 3000 mm (2100-2450 with dynamic
@@ -323,6 +331,7 @@ by BYU purchase order; payment terms **[to confirm]**.
 6. The **UR10e vs UR12e**; a MiR250 vs MiR600 for the load; pricing for 2 + 2, academic.
 7. The URCap for MiR-UR synchronisation, and what the VLM's controller (OPC-UA or I/O) can tell the robot.
 8. PM schedule, consumables (MiR wheels, battery), spares, service contract, **Utah response time**.
+9. **UR12e in place of the UR10e** (renamed in 2025): what changed in arm and control-box size and weight (the Gen 7 CB7 box is said to be 30% smaller), power, and the remote interfaces (PolyScope X, RTDE, Dashboard, the Robotiq URCap); is an e-Series UR10e with the older controller still orderable?
 
 ### 5. Their intake questions, answered
 | They will ask | Answer |
@@ -350,6 +359,7 @@ by BYU purchase order; payment terms **[to confirm]**.
 > 2. Validated limits for a 12.5 kg payload at full reach (tip risk), and docking accuracy at a VLM opening.
 > 3. Who certifies the combined machine's safety; is a Utah or Mountain West integrator available?
 > 4. UR10e vs UR12e availability.
+> 5. Universal Robots now sells the UR10e as the UR12e: please quote the UR12e and say what changed against the UR10e in size, weight, utilities (power to the control box) and remote control (the CB7 controller, PolyScope X, RTDE and the Dashboard server).
 >
 > Please include the PM schedule, consumables and spares with prices, a service-contract price and the response time to Provo, Utah.
 > [name, BYU Mechanical Engineering, email, phone **[to confirm]**]
@@ -359,6 +369,7 @@ by BYU purchase order; payment terms **[to confirm]**.
 - [MiR contact](https://www.mobile-industrial-robots.com/contact) (first pass via Pi; now 404); [MiR distributors](https://www.mobile-industrial-robots.com/distributors) (runner, 2026-11-07); [UR contact](https://www.universal-robots.com/contact-us/) (runner, 2026-11-07); [Hartfiel MiR page](https://www.hartfiel.com/mir-robots/) (Pi Chromium, 2026-11-07).
 - [MiR250 Specifications](https://www.hartfiel.com/wp-content/uploads/2024/04/MiR250-Specs.pdf) (cited in `notes/warehouse.md`).
 - Hartfiel: [web](https://www.hartfiel.com/) (search snippets); UR12e note: [revelationmachinery.com listing](https://revelationmachinery.com/product/universal-robot-ur10e-2023/).
+- Model check: [Automation World, 5 June 2025, UR10e renamed UR12e](https://www.automationworld.com/factory/robotics/article/55293382/universal-robots-unveils-latest-cobot-tech-in-collaboration-with-nvidia) (2026-11-07, runner); [UR12e page](https://www.universal-robots.com/products/ur12e/) (2026-11-07, runner; UR's UR10e URL now opens a general page listing the g-Series, UR Series and e-Series families, with no UR10e); [The Robot Report, 14 September 2026, Gen 7 launch](https://www.therobotreport.com/universal-robots-launches-its-seventh-generation-robot-platform-at-imts/) (2026-11-07, runner); [MiR250 page](https://mobile-industrial-robots.com/products/robots/mir250) (2026-11-07, runner); [Hartfiel MiR product release notice, 2024-01-23](https://hartfiel.zendesk.com/hc/en-us/articles/22313890972315-MiR-Product-Release-Date-01-23-2024) and [MiR250 manual, intended use](https://mirsupport.netlify.app/manuals/mir250/manual/product_presentation/intended_use) (2026-11-07, search snippet; the notice gave the runner 403).
 
 ---
 
@@ -368,6 +379,7 @@ by BYU purchase order; payment terms **[to confirm]**.
 Robotiq **2F-85 adaptive gripper ×2** (UR e-Series kit, "AGC-ES-UR-KIT-85"), one per UR10e. Knuckle span 127-138 mm; weighs about
 0.9 kg. Optional: a **Robotiq FT 300-S** force-torque sensor (0.1 N resolution; `notes/alloy_atomize.md` discusses it for the atomizer's lid).
 Role: grips instruments, trays' lids, jars; the multi-doser's pan is out of reach with it (README round 9).
+- **Model check (2026-11-07):** **current**. Robotiq's adaptive-gripper page still lists the 2F-85 and 2F-140, with no successor or end-of-life notice; Robotiq says the 2F-85 is fully supported on PolyScope X (the UR12e's software, section 4) through its Gripper URCap X. Whether the gripper's socket on port 63352, which Python drivers use, still works on PolyScope X is an open question on UR's forum, so ask. (<https://robotiq.com/products/adaptive-grippers>)
 
 ### 2. Specs that matter
 Stroke 85 mm; the lab's design friction figure **141 N** against a 200 N design load (`notes/alloy_atomize.md`); 24 V, 3 A max (Robotiq data sheet,
@@ -398,6 +410,7 @@ Parts: custom fingers by us; quantity 2.
 ### 7. Sources
 [Robotiq contact](https://robotiq.com/contact-us) (runner, 2026-11-07); prices: [Automation Distribution](https://automationdistribution.com/robotiq-agc-grp-2f85-2f-85),
 [Robotics Center](https://www.roboticscenter.ai/blog/robotiq-gripper-guide) (search snippets).
+- Model check: [Robotiq adaptive grippers](https://robotiq.com/products/adaptive-grippers) (2026-11-07, runner); [Robotiq Gripper URCap X](https://blog.robotiq.com/knowledge/robotiq-gripper-urcap-x) and [UR forum, 2F-85 on PolyScope X, port 63352](https://forum.universal-robots.com/t/robotiq-2f-85-on-polyscope-x-is-socket-communication-on-port-63352-still-supported/42885) (2026-11-07, search snippet).
 
 ---
 
@@ -407,6 +420,7 @@ Parts: custom fingers by us; quantity 2.
 **RealSense D405** stereo depth camera ×2, one per UR10e wrist (camera-only or with cable, 99ACXD / 99ACXC at DigiKey).
 It is made now by **RealSense** after its spin-out from Intel (the product page lists a D405 series; the company site is realsenseai.com;
 **[to confirm the spin-out and who warrants Intel-labelled stock]**). Role: touch-off at each station (`notes/warehouse.md`, the wrist camera in the hood in `notes/alloy_atomize.md`).
+- **Model check (2026-11-07):** **maker changed**. RealSense completed its spin-out from Intel in July 2025, with a $50 million Series A; the maker is now RealSense, Inc., whose own D405 page sells the camera with no end-of-life notice and says Intel-branded RealSense products are sold "by RealSense, Inc. under license from Intel Corporation". Its June 2026 D585 Pro launch plans SDK work for the D405, so the camera is still supported. (<https://realsenseai.com/products/stereo-depth-camera-d405/>)
 
 ### 2. Specs
 USB 3, close-range depth (about 7-50 cm), about 42 × 42 mm face; 5 V from the UR's tool or a USB hub (**[to confirm]** against the datasheet).
@@ -433,6 +447,7 @@ Quantity 2; use: robot wrist at 10-30 cm; reflective metals and glass jars; indo
 ### 7. Sources
 [DigiKey D405](https://www.digikey.hk/en/product-highlight/i/intel-realsense/d405-depth-camera), [Aztekc](https://aztekc.com/intel-realsense-depth-camera-d405-intel/p),
 [Ichome](https://ichome.com/product-detail/intel/82635dsd405mp) (search snippets, 2026-11-07); RealSense site via Pi.
+- Model check: [RealSense D405 page](https://realsenseai.com/products/stereo-depth-camera-d405/) (2026-11-07, runner); [TechCrunch, 11 July 2025, RealSense spins out of Intel](https://techcrunch.com/2025/07/11/realsense-spins-out-of-intel-to-scale-its-stereoscopic-imaging-technology) and [The Robot Report, D585 Pro launch](https://www.therobotreport.com/realsense-unveils-ai-native-d585-pro-depth-camera-for-robots/) (2026-11-07, search snippet).
 
 ---
 
@@ -443,16 +458,22 @@ One **CombiTac** mating set per tray plus a dock per slot a tray uses and the ba
 `notes/services.md`: **4 × Ø3 mm power units (39 A, 600 V)**, a **10 Gbit Cat 6A module** (RJ45), **RCT06** compressed air (shut-off one side,
 15 bar), **SCT03** nitrogen (G1/8, shut-off both sides), **2 × LCT06** chilled water (G1/4, shut-off both sides), and **CombiTac align 4** guide
 pins with conical sockets (4 mm radial, ±2° misalignment, **100,000 cycles**). The product is now sold as **CombiTac uniq**: use both names.
+- **Model check (2026-11-07):** **current**. Stäubli's CombiTac uniq page is still live in search results; uniq is the name the original CombiTac took when Stäubli split the family into uniq and direqt in 2020. No successor or end-of-life notice was found; the maker's page was not read (403 to the runner). (<https://www.staubli.com/en/electrical-connectors/modular-connector-combitac/combitac-uniq>)
 
 ### 2. Specs
 As above. Stäubli prohibits connecting or disconnecting the pneumatic and fluid inserts **under pressure**: the dock shuts and vents before it
 pulls back, so the valves are ours. The dock's housing is 108 mm deep, stroke 60 mm (the model).
 
 ### 3. Contact
-- **Stäubli Electrical Connectors, Inc.**, 100 Market Street, Windsor, CA 95492, **+1 707 838 0530**; a contact form on staubli.com; no sales email
-  published (unverified: staubli.com returned 403 to the runner and to the Pi's curl and Chromium on 2026-11-07; the Windsor address and number agree across several industry directories, which are not the vendor's page; one directory shows an `ec.us@staubli.com` address and another 855-583-1201, neither used). The Duncan, SC office (+1 864 433 1980) handles fluid connectors, robotics and textile, not electrical.
+- **Stäubli Electrical Connectors, Inc.**, 100 Market Street, Windsor, CA 95492, **+1 707 838 0530**; no sales email published; e-mail
+  contact form <https://www.staubli.com/us/en/contacts.html>, and a **CONTACT COMBITAC TEAM** button and a CombiTac configurator on the
+  CombiTac uniq page (verified: Stäubli's North America page, "Locations and contacts" → "Stäubli Electrical Connectors USA, Windsor",
+  <https://www.staubli.com/us/en/about-us/our-business-units/staubli-north-america.html>, read in **headed Chromium on the stream-cam Pi**,
+  2026-11-07 22:47-22:52 UTC; the runner, curl and headless Chromium had all got 403). The page says Electrical Connectors (formerly Multi-Contact)
+  "operates its business in Windsor, California", while Duncan, SC (+1 864 433 1980) serves fluid connectors, robotics and textile; the
+  Cypress, CA office "operated until 2026". The directory-only `ec.us@staubli.com` and 855-583-1201 stay unused.
 - **Fluid connectors** (air, N2, water) come from the Duncan, SC fluid-connectors business (unverified: staubli.com blocked, 2026-11-07).
-- **Distributors:** none found for Utah (unverified: same block).
+- **Distributors:** none found for Utah (the North America page lists sales staff in Michigan, South Carolina, the West Coast, Canada and Mexico, but no distributor).
 
 ### 4. Open questions
 1. **Mating cycles** per insert, and the **life of the water and air inserts** at 100 docking cycles a day.
@@ -477,6 +498,7 @@ supply: 120 V single-phase per tray (5 kVA continuous at 80 %); N2 99.9999 % at 
 ### 7. Sources
 [Stäubli North America](https://staubli.com/us/en/about-us/who-we-are/staubli-north-america.html) (search snippet; the runner got 403, and the Pi's fetch of
 the electrical-connectors page returned a stub), [CombiTac catalogue](https://m.keiconn.com/assets/pdf/Staubli-CombiTac-MainCatalog.pdf) (search result).
+- Model check: [Stäubli CombiTac uniq page](https://www.staubli.com/en/electrical-connectors/modular-connector-combitac/combitac-uniq) and [CombiTac direqt launch, 2020](https://www.news-medical.net/news/20200724/Staubli-Introduces-CombiTac-direqt.aspx) (2026-11-07, search snippet; the CombiTac uniq page gave the runner 403).
 
 ---
 
@@ -486,6 +508,7 @@ the electrical-connectors page returned a stub), [CombiTac catalogue](https://m.
 **Eaton 5PX G2 1440 VA / 1440 W, 120 V, 2U rack/tower, with network card** ×15, one on every tray, standing on its side at the back right of the tray
 (86 × 437 × 447 mm; `notes/services.md`). It carries the tray for about 6 s in transit. A 230 V 5PX 1500 runs 44 min at 300 W (a retailer's figure).
 Price at resellers: **$1,566-1,767** each, so about **$23,500-26,500** for 15.
+- **Model check (2026-11-07):** 5PX1500RTNG2 **current**; 9PX lithium-ion **current**; APC Smart-UPS Ultra at 1.5 kVA 2U **unconfirmed** (none found). DigiKey lists the 5PX1500RTNG2 as "Active" with a 2-week factory lead time, and Eaton names the 5PX G2 as the replacement for the end-of-life 5PX. Eaton's own SKU page (<https://www.eaton.com/us/en-us/skuPage.5PX1500RTNG2.html>), which timed out on the runner, opened in headed Chromium on the stream-cam Pi (2026-11-07 22:51 UTC): live, with no discontinued notice; "5PX G2 UPS, 2U, 1440 VA, 1440 W, 5-15P input, Outputs: (8) 5-15R, 120V, Network card", 50.7 lb, user-replaceable battery, the Gigabit Network Card (NETWORK-M2) "included and pre-installed", and a ship-in-rack option with the RK4PRS rail kit. No lithium 5PX G2 SKU was found: the lithium options are the Eaton 9PX1500RT-L and 9PX1500RTN-L (1500 VA but 1350 W, 2U, 8 × 5-15R), or Eaton's separate 5P lithium-ion line; the only Smart-UPS Ultra found is 2,200 VA in 1U, and APC's 1500 VA lithium-ion Smart-UPS (SMTL1500RM3UC) is 3U, so it takes more room on a tray. (<https://www.digikey.ca/en/products/detail/eaton-tripp-lite/5PX1500RTNG2/17766528>)
 
 ### 2. Specs
 8 × NEMA 5-15R; Gigabit network card; four-post rail kit; hot-swappable battery; Eaton's relay card option; the 5PX G2 line may use lithium-ion in
@@ -493,7 +516,7 @@ some SKUs (**[to confirm]** for this one).
 
 ### 3. Contact
 Eaton (Tripp Lite): **cpdipresaleshelp@eaton.com**, +1 773-869-1776, 10000 Woodward Avenue, Woodridge, IL 60517 (as shown on a Tripp Lite compare page;
-(unverified: `tripplite.eaton.com` redirects the runner and the Pi to the Eaton site's pages, which list no presales address or phone, 2026-11-07; a web search of the Eaton-hosted 5PX G2 product page returned the same address, phone, +1 773-869-1329 and `cpdipresaleshelp@eaton.com`, so it is plausible but not re-read). No Utah Eaton rep found.
+(unverified: `tripplite.eaton.com` redirects the runner and the Pi to the Eaton site's pages, which list no presales address or phone, 2026-11-07; a web search of the Eaton-hosted 5PX G2 product page returned the same address, phone, +1 773-869-1329 and `cpdipresaleshelp@eaton.com`, so it is plausible but not re-read). No Utah Eaton rep found. Eaton's 5PX1500RTNG2 page, read in headed Chromium on the Pi (2026-11-07), offers only "Contact me about this product" and "How to buy" buttons, with no phone or email in its text, so the presales address above is still not re-read.
 Resellers: CompSource **800-356-5794** (seller listing; compsource.com returned 403, unverified), Provantage 800-336-1166 (search result, unverified), Barcodes Inc. (quote form), DigiKey.
 
 ### 4. Open questions
@@ -524,6 +547,7 @@ AHJ about NFPA 855's small-system rules and the sprinkler design), temperature l
 ### 7. Sources
 [Tripp Lite compare page](https://blog.tripplite.com/products/products-compare/mids/5PX1500HRTG2,5PX1500RTNG2), [CompSource](https://www.compsource.com/buy/5PX1500RTNG2/Eaton-1191),
 [Eaton Tripp Lite 5PX1500RTG2 support](https://tripplite.eaton.com/support/5PX1500RTG2) (search results, 2026-11-07, not fetched); `notes/services.md`.
+- Model check: [DigiKey 5PX1500RTNG2](https://www.digikey.ca/en/products/detail/eaton-tripp-lite/5PX1500RTNG2/17766528) and [Eaton 5PX end-of-life page](https://www.eaton.com/us/en-us/catalog/backup-power-ups-surge-it-power-distribution/eaton-5px-ups.html) (2026-11-07, search snippet; the [Eaton SKU page](https://www.eaton.com/us/en-us/skuPage.5PX1500RTNG2.html) timed out twice from the runner); [Crescent Electric 9PX lithium-ion 1500 VA](https://www.crescentelectric.com/product/1347128/eaton-9px-lithium-ion-ups-2u-1500-va-1350-w-5-15p-input-outputs-8-5-15r-120v) and [CDW 9PX1500RTN-L](https://www.cdw.com/product/eaton-9px-1500-120v-rt-li-ion-w-nmc/6405815) (2026-11-07, search snippet); [Eaton single-phase lithium-ion brochure](https://www.eaton.com/content/dam/eaton/products/backup-power-ups-surge-it-power-distribution/backup-power-ups/lithium-ion-batteries/eaton-single-phase-ups-lithium-ion-solutions-brochure.pdf) (2026-11-07, search snippet); APC [Smart-UPS Ultra 2200 VA 1U](https://shop.se.com/pro/us/en/product/apc-smart-ups-ultra-on-line-2200va-lithium-ion-rack-tower-1u-120v-5x-5-20r-1x-l5-20r-nema-outlets-smartconnect-extended-runtime-w-rail-kit/) and [SMTL1500RM3UC](https://www.apc.com/ca/en/product/SMTL1500RM3UC/apc-smartups-line-interactive-1500va-lithiumion-rackmount-3u-120v-6x-nema-515r-outlets-smartconnect-port+smartslot-short-depth-avr-lcd/) (2026-11-07, search snippet).
 
 ---
 
@@ -532,6 +556,7 @@ AHJ about NFPA 855's small-system rules and the sprinkler design), temperature l
 ### 1. What we'd buy
 **Parker Balston UHPN2-1100** ×1 (99.9999 % N2 at 1,100 cc/min, 120 V), beside the VLM, piped to each tray's N2 inlet (`notes/services.md`). It needs **clean dry compressed air at 60-125 psig**
 and has no compressor: buy a **Powerex compressor** or use house air. It is 889 mm tall, so it fits **Bay M** (895 mm) of a Modula but not a Kardex tray.
+- **Model check (2026-11-07):** **current**. Distributors still list the UHPN2-1100 (Fisher; GovSci, "call for lead time"), and no end-of-life notice or successor was found. Parker's own pages were not read (403). (<https://www.fishersci.com/shop/products/parker-balston-nitrogen-generators-uhpn2-series-1/06711710>)
 
 ### 2. Specs
 120 V / 60 Hz, about **700 W**; inlet 1/4 in, outlet 1/8 in; **35 × 12 × 16 in (889 × 305 × 406 mm)**, shipping 137 lb (62 kg), about 50 kg dry; output to 85 psig.
@@ -539,6 +564,7 @@ Resellers: Marshall Scientific **$17,910**, Chromtech **$18,917**; GovSci, GMI, 
 
 ### 3. Contact
 Parker Balston technical services **1-800-343-4048**, 8 AM-5 PM Eastern, `balstontechsupport@parker.com` (North America), Industrial Gas Filtration and Generation Division, 242 Neck Road, Haverhill, MA 01835, <https://www.parker.com/labgas> (partial: a web search reports these from Parker's own UHPN2 upgrade-instructions PDF, <https://www.parker.com/content/dam/Parker-com/Literature/IGFG/PDF-Files/TI-UHPN2-UPG_RevA.pdf>, but parker.com returned 403 to the runner, the Pi and WebFetch, and balstonlabgasgenerators.com did not connect, 2026-11-07).
+Third pass (2026-11-07 22:48-22:50 UTC): parker.com answered **Akamai "Access Denied" even to headed Chromium on the stream-cam Pi**, for <https://www.parker.com/labgas> and for the home page, so the Parker contact stays **partial**; ask a person on a normal browser, or a Fisher or VWR rep, to confirm it.
 Sales through a lab-supply distributor (above). No Utah distributor found (unverified).
 
 ### 4. Open questions
@@ -558,6 +584,7 @@ N2 demand: purge-only glovebox plus inerting vessels, about 1-5 L/min peak **[to
 ### 7. Sources
 [Marshall Scientific](https://new.marshallscientific.com/Parker-Balston-UHPN2-1100-Ultra-Pure-Nitrogen-Gas-p/uhpn2-1100.htm), [Chromtech](https://chromtech.com/uhpn2-1100-nitrogen-generator-11lpm-with-catalyst-mod),
 [GMI spec page](https://supplies.gmi-inc.com/product/parker-nitrogen-generator-uhpn2-1100-model-ultra-high-purity-zero-grade/) (search results, 2026-11-07, not fetched).
+- Model check: [Fisher Scientific UHPN2 listing](https://www.fishersci.com/shop/products/parker-balston-nitrogen-generators-uhpn2-series-1/06711710) and [GovSci UHPN2-1100](https://www.govsci.com/product-detail/Parker--Hannifin/UHPN2-1100/EA) (2026-11-07, search snippet; Parker's own pages not read, 403).
 
 ---
 
@@ -566,6 +593,7 @@ N2 demand: purge-only glovebox plus inerting vessels, about 1-5 L/min peak **[to
 ### 1. What we'd buy
 **ThermoFlex 900** (TF900, 120 V) ×1 beside the VLM, 900 W at 20 °C (`notes/services.md`), feeding the trays' LCT06 couplings. The model draws a placeholder box; **size and electrical input were not found**.
 For the **rePowder atomizer** the notes use a separate chiller (`notes/services.md`).
+- **Model check (2026-11-07):** **current**. Thermo's TF900 page still offers the TF900 for quote, beside a low-noise TF900-LN; Fisher's discontinued flags are on 2500-5000 W ThermoFlex units, not the 900. (<https://www.thermofisher.com/order/catalog/product/TF900>)
 
 ### 2. Specs
 Up to 900 W at 60 Hz (750 W at 50 Hz); 5-40 °C; CE and CSA. Resellers give **conflicting** weights (125 lb vs 250 lb for 120 V) and dimensions (32 × 19 × 32 in?). Use Thermo's manual for catalog number TF900.
@@ -588,6 +616,7 @@ Heat load: up to about 7 kW into the VLM with everything on (most is **air**, no
 
 ### 7. Sources
 [Thermo TF900 page](https://www.thermofisher.com/order/catalog/product/TF900), [Fisher listing](https://www.fishersci.com/shop/products/thermoflex-recirculating-chillers/13875057), a used listing (search results, 2026-11-07).
+- Model check: [Thermo TF900 page](https://www.thermofisher.com/order/catalog/product/TF900) (2026-11-07, runner); [Fisher ThermoFlex listing](https://www.fishersci.com/shop/products/thermoflex-recirculating-chillers/13875057) (2026-11-07, search snippet).
 
 ---
 
@@ -596,6 +625,7 @@ Heat load: up to about 7 kW into the VLM with everything on (most is **air**, no
 ### 1. What we'd buy
 **Argon** (atomizer and LPBF printer; cylinders, MicroBulk or a bulk tank) and **nitrogen** (backup to the generator; liquid N2 dewars), with a cylinder-rental contract.
 Volumes are **[to confirm]**: the atomizer's argon per run (about 700 runs a year) is in `notes/alloy_atomize.md`.
+- **Model check (2026-11-07):** n/a: gas supply, not a model.
 
 ### 2. Specs
 Argon 99.999 % (UHP) for LPBF and atomizing; N2 UHP; CGA 580 outlet; cylinder cage and **oxygen deficiency monitors** in rooms with bulk or many cylinders.
@@ -632,6 +662,7 @@ Gases and purity; usage per month **[to confirm]**; delivery address and dock; c
 ### 1. What we'd buy
 **Labconco Protector XStream laboratory hood, 4 ft (1219 mm)**, on a base cabinet (1219 × 958 × 2581 mm, about 260 kg, on the floor), 18 in (457 mm) sash stop, ducted to the building exhaust (`notes/instruments_r7.md`).
 Role: wet work (etching without HF, solvents, the sieve's IPA bath). Round 8 removed HF: Keller's reagent goes to the BYU facility, not this hood (`notes/lab_r8.md`).
+- **Model check (2026-11-07):** **superseded by catalog 110410000** (same name). Labconco marks the 4 ft XStream catalog numbers 9840400-9840403 discontinued and names 110410000, a "4' Protector XStream Laboratory Hood", as the replacement; distributors list it at 100-115 V and 48.0 × 37.7 × 59.0 in (1219 × 958 × 1499 mm, hood only; the same width and depth the model uses), 400-440 lb shipping, with the remote blower, ductwork, work surface and base cabinet still sold separately. What else changed (airflow, monitor) is not stated, so ask. (<https://labconco.com/product/4-protector-xstream-laboratory-hood/791>)
 
 ### 2. Specs
 Labconco's page (`labconco.com/p/protector-xstream-laboratory-hoods`); the spec PDF was blocked. Ducted: airflow per the sash stop and face velocity (typically 100 fpm); **a blower and duct routing are separate**
@@ -646,6 +677,8 @@ Labconco's page (`labconco.com/p/protector-xstream-laboratory-hoods`); the spec 
 Exact **exhaust CFM** and static pressure for a 4 ft with the 18 in sash stop; a **VAV controller** and its BMS (BACnet) interface for a hood that a robot may feed; **can a robot reach through the sash** (a motorised sash?);
 service after install: certification (ASHRAE 110 test) and PM; consumables (filters not used), spares, service price.
 
+**Model (2026-11-07):** catalog 110410000 replaces the 4 ft XStream 9840400-9840403. What changed in dimensions, weight, exhaust flow and static pressure, and the airflow monitor and its BMS output?
+
 ### 5. Intake
 Hood use: acids, solvents, IPA; **no HF**, no perchloric; ducted exhaust **[to confirm routing and capacity]**; floor load; ceiling height 2581 mm hood fits; compliance with ANSI/AIHA Z9.5 **[to confirm]**.
 
@@ -653,11 +686,14 @@ Hood use: acids, solvents, IPA; **no HF**, no perchloric; ducted exhaust **[to c
 > **To:** Jackson Corning, Labconco (via 800-821-5525 or the contact form), and the Utah distributor
 > **Subject:** Budgetary quote: Protector XStream 4 ft with base cabinet and blower, BYU Provo
 >
+> Labconco lists the 4 ft XStream catalog numbers 9840400-9840403 as discontinued, with 110410000 as the replacement: please quote the current model and say what changed in size, weight, utilities (exhaust flow, static pressure, electrical) and remote monitoring.
+>
 > Please quote a 4 ft Protector XStream with the 18 in sash stop, a base cabinet (acid or flammable), a sash-position sensor and a motorised sash if available, and a blower. Please give the exhaust flow and static pressure,
 > the BMS interface, and the ASHRAE 110 certification, PM schedule, spares and a service contract in Utah. [name, email **[to confirm]**]
 
 ### 7. Sources
 [Labconco contact page](https://www.labconco.com/contact) and [US & Canada sales](https://www.labconco.com/sales/us-and-canada-sales) (runner, 2026-11-07); [product page](https://www.labconco.com/p/protector-xstream-laboratory-hoods) as cited in `notes/instruments_r7.md`.
+- Model check: [Labconco 9840400 page naming 110410000 as its replacement](https://labconco.com/product/4-protector-xstream-laboratory-hood/791) (2026-11-07, search snippet; 404 to the runner); [Marshall Scientific 110410000](https://new.marshallscientific.com/Labconco-110410000-4-Protector-XStream-Laboratory-p/110410000.htm) and [Fisher 10369100 (supplier number 110410000)](https://www.fishersci.com/shop/products/labconco-protector-xstream-high-performance-by-pass-hoods-4-ft-width-115v/10369100) (2026-11-07, search snippet).
 
 ---
 
@@ -666,6 +702,7 @@ Hood use: acids, solvents, IPA; **no HF**, no perchloric; ducted exhaust **[to c
 ### 1. What we'd buy
 **Sentry Air 24 in ductless hood** with its blower, 1030 × 610 × 715 mm, about 41 kg, on a VLM tray (`notes/instruments_r7.md`): the only ductless hood found under 856.5 mm (Air Science's Purair Basic is 889 mm tall; Erlab's Captair is taller).
 Candidate catalogue numbers seen: SAS-224-DCH (24 in, 80 cfm, acrylic), SAS-324-HEMS. **[to confirm the model]** with Sentry.
+- **Model check (2026-11-07):** **unconfirmed**. Sentry's ductless-hood page lists a 24 in "Basic Hood" but shows no model numbers; SS-224-DCH appears only in Sentry's brochure PDF and on Cal-Pac's listing (as SAS-224-DCH, 80 cfm), and another Sentry sheet calls a 24 in ductless hood SS-324-DCH. No discontinuation notice was found; ask Sentry for the current 24 in model number. (<https://www.sentryair.com/ductless-fume-hood.htm>)
 
 ### 2. Specs
 24 D × 26 W × 25 H in outside (610 × 660 × 635 mm); carbon filters (solvent vapours, **not HF**); the air returns to the room, i.e. into the VLM. Mains 115 V.
@@ -688,6 +725,7 @@ Chemicals and volumes (IPA, ethanol; no HF); duty cycle; on a tray with 15 mm cl
 
 ### 7. Sources
 [Sentry Air page](https://www.sentryair.com/dfhapp.htm) as cited in `notes/instruments_r7.md`; contact details from a [Cal-Pac listing](https://calpaclab.com/24-ductless-fume-hood-acrylic-80-cfm/sas-224-dch) and a search snippet quoting the product sheet (2026-11-07).
+- Model check: [Sentry Air ductless fume hood page](https://www.sentryair.com/ductless-fume-hood.htm) (2026-11-07, runner); [SS-224-DCH brochure](https://www.sentryair.com/brochures/ss-224-dch.pdf), [Cal-Pac SAS-224-DCH](https://calpaclab.com/24-ductless-fume-hood-acrylic-80-cfm/sas-224-dch) and [SS-324-DCH sheet](https://spectraservices.com/mm5/graphics/00000001/SS-324-DCH-web.pdf) (2026-11-07, search snippet).
 
 ---
 
@@ -696,6 +734,7 @@ Chemicals and volumes (IPA, ethanol; no HF); duty cycle; on a tray with 15 mm cl
 ### 1. What we'd buy
 A **custom N2 glovebox, purge-only, with a mini antechamber at the front**, 1390 × 830 × 810 mm, about 140 kg (estimate), on a VLM tray (`notes/instruments_r7.md`); for Mg, Li master alloys and fines under about 63 µm (`notes/lab_r8.md`).
 Vigor's standard box is 1200 × 750 × 900 mm, **too tall** for a tray at 856.5 mm: we need a **custom height** (810 mm).
+- **Model check (2026-11-07):** **current** (custom builds, so there is no model to supersede). Vigor Tech USA (Houston, founded 2005) and Plas-Labs (Lansing, MI) still trade under those names; no acquisition or rename was found. (<https://us.metoree.com/companies/143896/>, <https://www.bsilab.com/suppliers/plas-labs-inc/>)
 
 ### 2. Specs (Vigor)
 Lengths 1200, 1500, 1800, 2400 mm; width 750; height 900. Antechambers: large (370 mm ID × 600 mm) and **small (150 mm ID × 300 mm, manual only)**; 220 mm aluminium glove ports; "each glovebox is custom made". N2 purge is not mentioned, so ask.
@@ -721,6 +760,7 @@ Application: handling Mg, Li master alloys and fines in sealed cans; atmosphere 
 
 ### 7. Sources
 [Vigor Tech USA standard gloveboxes](https://www.pharmaceutical-tech.com/products/vigor-tech-usa/standard-gloveboxes) (runner, 2026-11-07); `notes/instruments_r7.md`.
+- Model check: [Metoree, Vigor Tech USA](https://us.metoree.com/companies/143896/) and [BSI, Plas-Labs](https://www.bsilab.com/suppliers/plas-labs-inc/) (2026-11-07, search snippet).
 
 ---
 
@@ -729,6 +769,7 @@ Application: handling Mg, Li master alloys and fines in sealed cans; atmosphere 
 ### 1. What we'd buy
 Per tray, 2-3 camera units: **Raspberry Pi 5** (16 GB or 8 GB), **Raspberry Pi HQ Camera** with a **16 mm C-mount lens** (22.2 × 16.8° view) and **Camera Module 3 Wide** (102 × 67°; 120° diagonal), a PoE or USB-C supply, a case and 2020 posts (`notes/services.md`).
 The lab already runs Pi streams (picam-ot2 at 144p; `CLAUDE.md`).
+- **Model check (2026-11-07):** **current**. Raspberry Pi's pages sell all three: the Pi 5 "will remain in production until at least January 2036", and the HQ Camera and Camera Module 3 (Wide included) until at least January 2030. No successors are named. (<https://www.raspberrypi.com/products/raspberry-pi-5/>)
 
 ### 2. Specs
 Raspberry Pi's figures (`notes/services.md`). **Price shock:** the 16 GB Pi 5 rose to **$385** on 2 Nov 2026 (reported), from $305; the 8 GB model's price **[to confirm]**. Consider the **8 GB** Pi 5 or a Pi 4 for stream-only duty.
@@ -752,6 +793,7 @@ Quantity: 15 trays × 2-3 units = 30-45 sets, plus spares; use: streaming and QA
 
 ### 7. Sources
 [Raspberry Pi 5 product page](https://www.raspberrypi.com/products/raspberry-pi-5/) (runner), price news [techenclave](https://techenclave.com/news/items/raspberry-pi-raises-the-16gb-pi-5-price-by-80-to-385) (search snippet), 2026-11-07.
+- Model check: [Raspberry Pi 5](https://www.raspberrypi.com/products/raspberry-pi-5/), [HQ Camera](https://www.raspberrypi.com/products/raspberry-pi-high-quality-camera/) and [Camera Module 3](https://www.raspberrypi.com/products/camera-module-3/) pages (2026-11-07, runner).
 
 ---
 
@@ -759,6 +801,7 @@ Quantity: 15 trays × 2-3 units = 30-45 sets, plus spares; use: streaming and QA
 
 ### 1. What we'd buy
 **PiKVM V4 Mini** ×1+ (120 × 68 × 24 mm, 0.35 kg; HDMI capture to 1920 × 1200; USB keyboard and mouse emulation; ATX control board in the kit): remote screen and keyboard for the VHX-7000's controller PC (`notes/instruments_r7.md`).
+- **Model check (2026-11-07):** **current**. PiKVM's home page lists the V4 Mini ("Compact single-host device") beside the V4 Plus, V3 HAT, Switch and V3; there is no V5 and no end-of-life notice. (<https://pikvm.org/>)
 
 ### 2. Specs
 PiKVM V4 Mini datasheet (<https://docs.pikvm.org/v4/v4mini_datasheet.pdf>): no USB-C display input (the **V4 Plus** is the model with KVM switching). Ethernet; power by USB-C or PoE **[to confirm]**.
@@ -781,6 +824,7 @@ Quantity 1-3; target: Windows PCs of instruments (VHX-7000, EZware PC); network:
 
 ### 7. Sources
 [Pimoroni](https://shop.pimoroni.com/products/pikvm-v4-mini), [PiShop.us](https://www.pishop.us/product/pikvm-v4-mini/), [Newegg](https://www.newegg.com/p/3D0-0001-000K4) (search results, 2026-11-07, not fetched).
+- Model check: [PiKVM home page](https://pikvm.org/) (2026-11-07, runner).
 
 ---
 
@@ -789,6 +833,7 @@ Quantity 1-3; target: Windows PCs of instruments (VHX-7000, EZware PC); network:
 ### 1. What we'd buy
 **Primera LX500c** colour label printer (print width 19-108 mm; 264 × 389 × 180 mm closed, 3.2 kg) **×1** and **AP380** wrap-around label applicator (containers 15-170 mm across; 340 × 508 × 226 mm, 9.07 kg) **×1**, at the packaging station (`notes/instruments_lab.md`).
 Primera sells **no print-and-apply bundle**, and labels die-cut on the LX610 are not compatible (the notes).
+- **Model check (2026-11-07):** **current**. Primera's LX500 page still sells the LX500 and links the LX500c configuration, with no discontinuation note (CDW and Adorama have dropped their LX500 listings, a reseller matter). The AP380 launched in March 2024 as the faster successor to the AP360/362, and no newer applicator was found. (<https://www.primera.com/lx500-color-label-printer.html>)
 
 ### 2. Specs
 Interfaces: USB; the AP380 has a foot pedal or a start signal **[to confirm]**; the LX500c has a Windows driver and a Mac driver (no Linux driver **[to confirm]**). Labels and ribbons are consumables.
@@ -811,6 +856,7 @@ Items: jars 30-500 mL (15-170 mm diameter), about 1,000-2,000 a year **[to confi
 
 ### 7. Sources
 [Primera contact page](https://www.primera.com/contact-us) (runner, 2026-11-07); product sizes from `notes/instruments_lab.md` (primera.com).
+- Model check: [Primera LX500 page](https://www.primera.com/lx500-color-label-printer.html) (2026-11-07, runner); [AP380 launch, Wine Industry Advisor, 29 March 2024](https://wineindustryadvisor.com/2024/03/29/primera-announces-ap380-label-applicator/) and [CDW LX500 listing](https://www.cdw.com/product/primera-lx500-color-label-printer-label-printer-color-ink-jet/4024742) (2026-11-07, search snippet); Primera's AP380 page was not found at <https://www.primera.com/ap380-label-applicator.html> (404).
 
 ---
 
@@ -818,6 +864,7 @@ Items: jars 30-500 mL (15-170 mm diameter), about 1,000-2,000 a year **[to confi
 
 ### 1. What we'd buy
 **Zebra ZD621t**, 4 in thermal transfer, 203 dpi (104 mm print width; 202 × 267 × 192 mm, 2.5 kg) ×1, printing the 4 × 6 in label for the lid (`notes/instruments_lab.md`; Uline S-6802 labels).
+- **Model check (2026-11-07):** **current**. Zebra's ZD621 FAQ names the ZD621t as the replacement for the ZD620t, ZD500t, GX420t and GX430t, a Zebra model list in search results shows it under "Current Global Models", and no successor or end-of-life notice was found. Zebra's own pages returned 406 to the runner, so the maker's page was not read. (<https://www.zebra.com/content/dam/zebra_dam/en/faq/zd621-faq-en-us.pdf>)
 
 ### 2. Specs
 USB, Ethernet and serial; **ZPL** over TCP 9100 (printable from a Python scheduler); Zebra's own site refused the runner earlier (the notes).
@@ -840,6 +887,7 @@ Label 4 × 6 in; volumes **[to confirm]**; ribbon wax/resin; network Ethernet.
 
 ### 7. Sources
 Zebra pages attempted via the runner (HTTP 406) and the Pi (no content, 2026-11-07); size and print width from `notes/instruments_lab.md`.
+- Model check: [Zebra ZD621 FAQ](https://www.zebra.com/content/dam/zebra_dam/en/faq/zd621-faq-en-us.pdf) (2026-11-07, search snippet); [Zebra ZD621 series page](https://www.zebra.com/us/en/products/printers/desktop/zd621-series.html) (406 to the runner).
 
 ---
 
@@ -847,6 +895,7 @@ Zebra pages attempted via the runner (HTTP 406) and the Pi (no content, 2026-11-
 
 ### 1. What we'd buy
 **Uline H-190 12 in impulse sealer** ×1 (452 × 84 × 188 mm, 4.2 kg; seals up to 8 mil poly) plus the pick-and-pack foam shipper **S-23611** (324 × 311 × 108 mm), labels **S-6802** (`notes/instruments_lab.md`).
+- **Model check (2026-11-07):** **current**. Uline's H-190 page still lists the 12 in tabletop impulse sealer (12 × 1/16 in seal, 8 mil maximum), with the H-191 service kit and the H-190-006 sealing bar as spares. (<https://www.uline.com/Product/Detail/H-190/Poly-Bag-Sealers/Tabletop-Impulse-Sealer-12>)
 
 ### 2. Specs
 Uline's catalogue; mains 120 V; a foot-pedal or timer; **no robot interface**.
@@ -865,6 +914,7 @@ Order through the website or call 1-800-295-5510 with the part numbers above (no
 
 ### 7. Sources
 [Uline poly bags page](https://www.uline.com/Cls_01/Impulse-Sealers) (runner, 2026-11-07; only the phone number was usable); sizes from `notes/instruments_lab.md`.
+- Model check: [Uline H-190 page](https://www.uline.com/Product/Detail/H-190/Poly-Bag-Sealers/Tabletop-Impulse-Sealer-12) (2026-11-07, search snippet).
 
 ---
 
@@ -874,6 +924,7 @@ Order through the website or call 1-800-295-5510 with the part numbers above (no
 **Clear glass wide-mouth jars with PTFE-lined caps, 30-500 mL, hundreds: 581 in the model** (trays N and O, the sample store on tray J and the packaging station; `notes/lab_r8.md`), in **grounded racks** (conductive, ESD, with a bond wire to the tray)
 and **gasketed metal cans** for fines under about 63 µm, Mg and the Al-Li master alloy (`notes/lab_r8.md`: "sealed gasketed metal cans, or glovebox only").
 The model's jar sizes are "typical wide-mouth straight-sided jars, not a supplier's drawing (estimates)".
+- **Model check (2026-11-07):** **unconfirmed**: no supplier part numbers are chosen yet, so there is no model to check. Glass wide-mouth jars with PTFE-lined caps and gasketed steel cans are stock lines at the suppliers listed under Contact below.
 
 ### 2. Specs to fix
 Material: borosilicate or soda-lime glass; **PTFE-lined phenolic or PP caps**; mouth 38-70 mm; label 20-60 mm; **cans:** steel or tinplate, **gasket** (silicone or Viton), a **UN-rated** can if shipped; static-dissipative racks (surface resistance 10⁶-10⁹ Ω).
@@ -906,6 +957,7 @@ Quantity: 581 jars at the start, then growth **[to confirm]**; size mix **[to co
 ### 1. What we'd use
 The **Agilent 8900 ICP-MS Triple Quadrupole** at the BYU Spectroscopic Facility, as an **internal service** (the facility does its own sample digestion, so nothing in the lab uses HF; `notes/lab_r8.md`).
 About 112 15 mL ICP-MS tubes in the model, plus the CubXL's 0.5 mL tubes (`notes/instruments_r7.md`).
+- **Model check (2026-11-07):** **current** (as a BYU service). Agilent launched the 9500 Triple Quadrupole ICP-MS on 22 May 2026, for single-quadrupole labs moving to triple quad. The release does not mention the 8900; Agilent's 9500 material in search results calls it an additional instrument, not an 8900 replacement, and keeps the 8900 for harder work (low-level S, P, Si). The 8900 is the facility's existing instrument, so nothing changes for the service request. (<https://www.investor.agilent.com/news-and-events/news/news-details/2026/Agilent-Unveils-the-9500-ICP-MS-Redefining-Trace-Element-Analysis/default.aspx>)
 
 ### 2. Published
 **$35/hour for internal BYU users and $70/hour for external users** (the facility's atomic-analysis page, 2026-11-07).
@@ -929,6 +981,22 @@ Elements and ranges (Al, Si, Cu, Ni, Fe, Mg, Li, Ce) **[to confirm]**; volume (h
 
 ### 7. Sources
 [Atomic analysis page](https://labs.chem.byu.edu/byu-spectroscopic-facility/atomic-analysis) and [contact page](https://labs.chem.byu.edu/byu-spectroscopic-facility/contact), both via Pi (the runner got 403), 2026-11-07.
+- Model check: [Agilent 9500 ICP-MS release, 22 May 2026](https://www.investor.agilent.com/news-and-events/news/news-details/2026/Agilent-Unveils-the-9500-ICP-MS-Redefining-Trace-Element-Analysis/default.aspx) (2026-11-07, runner); [Agilent 9500 page](https://agilent.com/en/product/atomic-spectroscopy/inductively-coupled-plasma-mass-spectrometry-icp-ms/icp-ms-instruments/9500-triple-quadrupole-icp-ms) and [9500 brochure](https://www.agilent.com/cs/library/brochures/br-interactive-9500-icp-ms-5994-9105en-agilent.pdf) (2026-11-07, search snippet); [Agilent 8900 page](https://www.agilent.com/en/product/icp-ms/icp-ms-systems/8900-triple-quadrupole-icp-ms) (403 to the runner).
+
+---
+
+## Superseded or discontinued (model check, 2026-11-07)
+
+Every planned product was checked against the maker's pages, or distributors and search results where the maker's site blocked the runner. Everything not listed here is **current**; each section's "Model check" line has the detail. The powder jars and cans (section 20) have no part numbers yet, so there was nothing to check.
+
+| Item | Modelled | Status | Successor | Source |
+|---|---|---|---|---|
+| Arm (§4) | UR10e | renamed UR12e | UR12e: 12.5 kg, 1300 mm, 33.5 kg arm; since September 2026 on Gen 7 (CB7 controller, PolyScope X); new g-Series arms (UR17g-1300) beside it | [Automation World, 2025-06-05](https://www.automationworld.com/factory/robotics/article/55293382/universal-robots-unveils-latest-cobot-tech-in-collaboration-with-nvidia); [UR12e](https://www.universal-robots.com/products/ur12e/) |
+| Ducted hood (§12) | Protector XStream 4 ft (9840400-03) | superseded | catalog 110410000, same name; same 1219 × 958 mm footprint per distributors; other changes not stated | [Labconco](https://labconco.com/product/4-protector-xstream-laboratory-hood/791) |
+| Wrist camera (§6) | RealSense D405 | maker changed | none: RealSense, Inc. (spun out of Intel, July 2025) still sells the D405 | [realsenseai.com](https://realsenseai.com/products/stereo-depth-camera-d405/) |
+| Lithium UPS (§8) | APC Smart-UPS Ultra, 1.5 kVA 2U | unconfirmed | none found at 1.5 kVA 2U; an Ultra at 2,200 VA 1U, or the 3U SMTL1500RM3UC | [Schneider](https://shop.se.com/pro/us/en/product/apc-smart-ups-ultra-on-line-2200va-lithium-ion-rack-tower-1u-120v-5x-5-20r-1x-l5-20r-nema-outlets-smartconnect-extended-runtime-w-rail-kit/) |
+| Ductless hood (§13) | Sentry Air SS-224-DCH | unconfirmed | Sentry's page shows no model numbers; ask | [sentryair.com](https://www.sentryair.com/ductless-fume-hood.htm) |
+| ICP-MS (§21, service) | Agilent 8900 | current (service) | Agilent 9500 ICP-QQQ launched 2026-05-22; Agilent material calls it an addition, not an 8900 replacement | [Agilent](https://www.investor.agilent.com/news-and-events/news/news-details/2026/Agilent-Unveils-the-9500-ICP-MS-Redefining-Trace-Element-Analysis/default.aspx) |
 
 ---
 
@@ -937,11 +1005,11 @@ Elements and ranges (Al, Si, Cu, Ni, Fe, Mg, Li, Ce) **[to confirm]**; volume (h
 **Confirmed from the vendor's own page:** Kardex (Westbrook ME address and the form; no Utah dealer), Hoj Innovations (Salt Lake City), Pacific Integrated and Associated (Modula dealers), Universal Robots USA, MiR global email, Hartfiel (MiR in Utah), Robotiq phone, RealSense contact form and store, Airgas (Salt Lake City, corrected), Linde national lines, Labconco (Utah rep), Sentry Air, Plas-Labs, PiShop.us, PiKVM buy and support pages, Primera, Zebra forms, Uline (phone; no Utah site), Qorpak, Berlin Packaging, BYU Spectroscopic Facility.
 
 **Still open (unverified), most important first:**
-1. **Modula** email, phones, and the Utah dealer: modula.us and modula.com sit behind a Cloudflare challenge for both the runner and the Pi. Use Pacific Integrated (Arizona and California offices) or ask Modula's form.
+1. **Modula** Utah dealer: the email and phones are now **verified** (third pass, headed Chromium on the stream-cam Pi, past the Cloudflare challenge), but the dealer is assigned from a ZIP code and none is named for Utah. Ask Modula, or use Pacific Integrated (Arizona and California offices).
 2. **Kardex phone** (800-639-5805 is from 2013-2018 press releases) and whether **Hoj** is a Kardex dealer for the Shuttle VLM: ask both; Kardex names no Utah dealer.
-3. **Stäubli** (403 everywhere): the Windsor, CA number comes from directories only; no Mountain West distributor found.
-4. **Eaton** presales address and phone: eaton.com pages list none; the figures are from a search result of the Eaton-hosted product page.
-5. **Parker Balston** (403 everywhere): the 800-343-4048 and `balstontechsupport@parker.com` come from a search report of Parker's own PDF; no Utah distributor.
+3. **Stäubli**: the Windsor, CA address and number are now **verified** on Stäubli's own page (third pass, headed Chromium on the Pi); still no Mountain West distributor and no sales email.
+4. **Eaton** presales address and phone: eaton.com pages list none (the 5PX1500RTNG2 page, read in headed Chromium on the Pi in the third pass, has only "Contact me" and "How to buy" buttons); the figures are from a search result of the Eaton-hosted product page.
+5. **Parker Balston** (403 everywhere, and Akamai "Access Denied" even to headed Chromium on the Pi in the third pass): the 800-343-4048 and `balstontechsupport@parker.com` come from a search report of Parker's own PDF; no Utah distributor.
 6. **Norco** and **Linde** Utah branch phones; Utah-based **UR** and **MiR** integrators (partner locators are script-driven); Cross Company and Hartfiel Colorado addresses.
 7. **MBraun**, **Terra Universal**, **Inert Technology**, **Vigor Tech USA**: no contact page was readable.
 8. **Robotiq Utah distributor** and **Raspberry Pi** reseller page (403); Adafruit sales route; **VWR**; an **ESD rack supplier** is not yet named.

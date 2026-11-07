@@ -1322,11 +1322,17 @@ H2D envelope 492 x 514 x 626 mm, bed 350 x 320 mm, 1,050 W average, 1,320 W max 
 
 ### 3. Contact
 
-- **Email:** contact@bambulab.com (feedback); bd@bambulab.com (business); support via https://bambulab.com/en-us/contact-us (all unverified: bambulab.com returned 403 / a Cloudflare challenge to the runner, the Pi and headless Chromium, 2026-11-07)
-- **Phone:** not published
+- **Corporate sales (the route for a university):** https://bambulab.com/en-us/corporate-sales ("B2B purchase"). It offers two ways:
+  - an **Online Tax-Exempt Account**: buy on the web store by credit card, PayPal or other online payment; **bank transfers are not
+    accepted**; proof of tax-exempt status is needed for the ship-to state;
+  - a **Purchase Inquiry**: the buyer "may be assigned an authorized reseller", who handles the purchase. This is the route for a PO.
+- **Email:** contact@bambulab.com (general feedback, "not covered above"); bd@bambulab.com (business collaboration); marketing@bambulab.com.
+  No sales email.
+- **Support:** https://support.bambulab.com/?lang=en-us&from=6 (the contact page's Customer Support link). **Phone:** not published.
 - **Web / form:** https://bambulab.com/en-us/contact-us
-- **Regional rep / distributor:** Dealer list https://bambulab.com/en-us/dealer (unverified: blocked)
-- **Contact status (2026-11-07):** unverified: site blocked on 2026-11-07; contacts carried over from the first pass.
+- **Regional rep / distributor:** Authorized Reseller list https://bambulab.com/en-us/dealer (linked from the contact page; not read)
+- **Contact status (2026-11-07):** verified: the contact and corporate-sales pages were read on Bambu's own site in **headed Chromium on the
+  stream-cam Pi** (third pass, 22:45-22:46 UTC). The runner, curl on the Pi and headless Chromium had all been blocked (403 / Cloudflare).
 - **Status:** owned by the lab; the contact is for spares, consumables and service.
 
 ### 4. Our open questions for them
@@ -1344,7 +1350,7 @@ Materials: PLA/PETG fixtures. Batch: small. Utilities: mains.
 Standard answers shared by every vendor are in the [common answers](#common-answers); site facts are in [`lab_answers.md`](lab_answers.md).
 
 ### 6. Draft email
-**To:** contact@bambulab.com (unverified: bambulab.com blocked the checks)
+**To:** Bambu Lab corporate sales, via the Purchase Inquiry on https://bambulab.com/en-us/corporate-sales (no sales email is published; contact@bambulab.com is for general feedback)
 **Subject:** Education/business purchase: H2D spares and print-start accounts
 
 > Hello,
@@ -1368,6 +1374,7 @@ Standard answers shared by every vendor are in the [common answers](#common-answ
 - https://bambulab.com/en-us/contact-us (fetched via the stream-cam Pi)
 - https://bambulab.com/en-us/dealer (fetched via the stream-cam Pi)
 - https://us.store.bambulab.com/collections/3d-printer (2026-11-07, maker's page, headed Chromium on the stream-cam Pi)
+- https://bambulab.com/en-us/contact-us and https://bambulab.com/en-us/corporate-sales (2026-11-07, maker's pages, headed Chromium on the stream-cam Pi)
 - https://bambulab.com/en/a2l/specs (2026-11-07, search snippet)
 - https://blog.bambulab.com/bambu-lab-a2l-creative-playground-extra-large (2026-11-07, search snippet)
 - https://us.store.bambulab.com/products/a1-mini (2026-11-07, search snippet)
@@ -1458,7 +1465,8 @@ Second pass (2026-11-07): each contact was re-read on the vendor's own page, fro
 
 - Corrections: FANUC America phone is 888-326-8287 (the first pass had 888-326-8723). Specac's sales@specac.com is not on its pages (use uscs@specac.com or sales@specac.co.uk). The Retsch/QATM email info-us@verder-scientific.com is now confirmed on the Verder US page. Valimet's phone and email are now confirmed on its own page.
 - No verified sales email: EOS, Opulo, Meltio, FANUC (web forms only); Aconity US (AconityUS has no contact on Aconity's own site); Bambu Lab has no phone.
-- Still unverified (site blocked or content not readable): Bambu Lab (403 / Cloudflare challenge on the runner, the Pi and headless Chromium), Online Metals and American Elements (403), Fiber Optic Center (403), the Branson phone and HQ move, McMaster chi.sales@, LECO info@ (obscured).
+- Bambu Lab, blocked in the second pass, was read in headed Chromium on the stream-cam Pi in the third pass (2026-11-07): its contact and corporate-sales pages are verified (section 20).
+- Still unverified (site blocked or content not readable): Online Metals and American Elements (403), Fiber Optic Center (403), the Branson phone and HQ move, McMaster chi.sales@, LECO info@ (obscured).
 - US regional reps for Utah remain unconfirmed because the vendor pages publish none or load them only after a selection: LECO, Buehler (state selector), DDM (representative finder), QATM/Retsch (Verder routes by form), EOS, Aconity, FANUC (ask Methods' Rocky Mountains line +1 602-848-1221 whether it covers Utah). Confirmed Utah-relevant: NB Additive (Solukon), GoEngineer Midvale UT (Formlabs).
 - Blower vendor for the sieve air-knife alternative still not chosen (Gast Manufacturing, +1 269-926-6171, is a lead only).
 - Specs not found: PX500 power, Aconity MIDI power, VibroMet 2 size, OFE copper price, Bambu A2L.

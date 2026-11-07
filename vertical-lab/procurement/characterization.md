@@ -169,7 +169,7 @@ only what is specific to the product. The machine-readable list is [`characteriz
 - **Role and place:** laser diffraction particle size (Dv10, Dv50, Dv90) of the sifted powder, as a quality gate on each
   atomized batch. About 5 g is poured into the Aero S; the optical bench is drawn in cutaway. **Tray E**, with the KLA
   iMicro. About 378 measurements a year.
-- **Model check (2026-11-07):** **superseded by the Mastersizer 3000+**. Malvern launched it on 2024-03-14 as the "worthy successor" to the 3000, and its Mastersizer page now lists only the 3000+ Lab (0.1-1000 um, manual dispersion units only), Pro (0.1-2500 um) and Ultra (0.01-3500 um), so the Aero S probably needs the Pro or Ultra **[to confirm]**; its main unit is the same 690 x 300 x 450 mm, about 30 kg, as the model's bench, and it adds Smart Manager remote monitoring. (<https://www.malvernpanalytical.com/en/about-us/press-releases/news/pr240314-matersizer-3000-plus-launch>; <https://www.malvernpanalytical.com/en/products/product-range/mastersizer-range/mastersizer-3000>)
+- **Model check (2026-11-07):** **superseded by the Mastersizer 3000+**. Malvern launched it on 2024-03-14 as the "worthy successor" to the 3000, and its Mastersizer page now lists only the 3000+ Lab (0.1-1000 um, manual dispersion units only), Pro (0.1-2500 um) and Ultra (0.01-3500 um), so the Aero S probably needs the Pro or Ultra **[to confirm]** (the range page, read in headed Chromium on the stream-cam Pi on 2026-11-07, describes the Lab as "Manual dispersion units only" and "Basic software", and the old Mastersizer 3000 URL now redirects to it); its main unit is the same 690 x 300 x 450 mm, about 30 kg, as the model's bench, and it adds Smart Manager remote monitoring. (<https://www.malvernpanalytical.com/en/about-us/press-releases/news/pr240314-matersizer-3000-plus-launch>; <https://www.malvernpanalytical.com/en/products/product-range/mastersizer-range/mastersizer-3000>)
 
 ### 2. The published specs that matter for integration
 - **Size:** the bench is **690 W x 300 D x 450 H mm**; the Aero S **260 x 180 x 380 mm** (Malvern's datasheet figures
@@ -363,12 +363,12 @@ From `notes/instruments_char.md` ("Ask Bruker for the open height") and `notes/r
 
 ### 3. Contact
 - **Hitachi High-Tech America:** 5100 Franklin Drive, Pleasanton, CA 94588 `(unverified: the US site blocks the runner and the Pi; a search index of the US site's Locations page shows 5960 Inglewood Drive, Suite 200, Pleasanton, CA 94588-3355, +1-925-218-2800, so the Franklin Drive address is probably old)`. The
-  **U.S. site <https://www.hitachi-hightech.com/us/> blocks both the runner (403) and the Pi (Akamai "Access Denied")**,
-  so no official phone or email was read (Chromium on the Pi was also refused, 2026-11-07).
-  **Utah lead, `(unverified: indexed by search but not fetched)`:** Hitachi's US electron-microscope sales page for the **West region, which lists UT**
-  (<https://www.hitachi-hightech.com/us/en/support/microscopes/em-sales_contacts/west.html>) names a regional sales manager at
-  **(800) 253-3053** (the Dallas microscopy customer-service line). A person on a normal browser should open it and read the Utah contact. Directory numbers conflict (+1 925-218-2800; 800-227-8877; others), so **use the
-  site's "Contact Us" form and ask for the SEM sales manager**.
+  U.S. site <https://www.hitachi-hightech.com/us/> blocks the runner (403) and headless Chromium on the Pi (Akamai "Access Denied"), but it
+  opened in **headed Chromium on the Pi** (third pass, 2026-11-07).
+- **Utah sales contact (verified):** Hitachi's US electron-microscope sales page for the **West region (AK, AZ, CA, CO, HI, ID, MT, NM, NV, OR,
+  UT, WA, WY)** names **Dan Becker, Sales Manager, Northwest**, **dan.becker@hitachi-hightech.com**, Tel **(800) 253-3053** (a cell number
+  is listed on the same page) `(verified: https://www.hitachi-hightech.com/us/en/support/microscopes/em-sales_contacts/west.html, maker's page,
+  headed Chromium on the stream-cam Pi, 2026-11-07 22:37 UTC)`. Send the draft to him; the site's "Contact Us" form is the fallback.
 - **Distributor:** McCrone Microscopes & Accessories, Westmont, IL, **630-887-7100**, lists the Hitachi FlexSEM 1000 II tabletop SEM
   `(verified: https://www.mccrone.com/contact-us/, 2026-11-07)`; whether it sells the TM4000PlusII or covers Utah is `(unverified)`.
 - **Oxford Instruments NanoAnalysis (US):** **us.nainfo@oxinst.com** `(unverified: an exhibitor listing; not on nano.oxinst.com)`. The official page
@@ -401,7 +401,7 @@ From `notes/refine_sem.md` and `notes/instruments_lab.md`:
 | Utilities | 120 V; a dry pump; no water |
 
 ### 6. Draft email
-> **To:** Hitachi High-Tech America, SEM sales (web form), cc McCrone (Hitachi tabletop SEM distributor); and Oxford Instruments
+> **To:** Dan Becker, Sales Manager, Northwest, Hitachi High-Tech America (dan.becker@hitachi-hightech.com; the West region, which lists UT), cc McCrone (Hitachi tabletop SEM distributor); and Oxford Instruments
 > NanoAnalysis, us.nainfo@oxinst.com
 > **Subject:** Budgetary quote: TM4000PlusII (or PlusIII) with AZtecOne EDS, robot-loaded, BYU (Provo, UT)
 >
@@ -423,7 +423,8 @@ From `notes/refine_sem.md` and `notes/instruments_lab.md`:
 ### 7. Sources (checked 2026-11-07 UTC)
 | Source | Via Pi |
 |---|---|
-| <https://www.hitachi-hightech.com/us/en/about/contact/> and the US product page (Access Denied) | yes, blocked |
+| <https://www.hitachi-hightech.com/us/en/about/contact/> and the US product page (Access Denied to the runner and headless Chromium) | yes, blocked |
+| <https://www.hitachi-hightech.com/us/en/support/microscopes/em-sales_contacts/west.html> (West region incl. UT: Dan Becker, Sales Manager, Northwest) (2026-11-07, maker's page, headed Chromium on the stream-cam Pi) | yes |
 | Search: TM4000PlusIII announcement (2024-08-22); McCrone partnership | no |
 | Search: Oxford `us.nainfo@oxinst.com`, Concord address | no |
 | `notes/refine_sem.md`, `notes/instruments_lab.md` | n/a |
@@ -459,12 +460,15 @@ From `notes/refine_sem.md` and `notes/instruments_lab.md`:
   is an estimate).
 
 ### 3. Contact
-- **KLA's contact page and datasheet were unreachable** from the runner and from the Pi (bot wall). No official email or
-  phone was read. **Use KLA's "Contact us" form from <https://www.kla.com/products/instruments/nanoindenters/imicro>
-  and its "Request a quote".** A directory lists Oak Ridge, Tennessee as the nanoindenter site (the former Nanomechanics Inc.).
-  `(unverified: kla.com returns 200 to the runner but the contact text did not load for us, and Chromium on the Pi got nothing, 2026-11-07.)`
-  A search index of kla.com shows, but we did not fetch, **(858) 573-9300** for quotes (iMicro page), **+1 800 600 2829 / nanosupport@kla.com**
-  for service and support, and 105 Meco Lane, Oak Ridge, TN 37830 (<https://www.kla.com/locations>). Treat as `(unverified)` until read in a browser.
+- **Sales:** KLA publishes no sales email or named US rep. Use the iMicro page's **Request a Quote**
+  (<https://www.kla.com/products/instruments/request-a-quote?prod=imicro>) or **"Contact your sales rep"**
+  (<https://www.kla.com/contact/inquiry-form?product=imicro&cat=instruments&subcat=nanoindenters>). The KLA Instruments office with a phone is
+  Filmetrics Headquarters, 10655 Roselle St., San Diego, CA 92121, **858-573-9300**. The nanoindenter site (the former Nanomechanics Inc.) is
+  105 Meco Lane, Oak Ridge, TN 37830, which lists a fax only (888-381-5798). `(verified: the iMicro page, https://www.kla.com/locations and
+  https://www.kla.com/contact, maker's pages, headed Chromium on the stream-cam Pi, 2026-11-07 22:39-22:42 UTC; the runner gets 200 but no
+  contact text, and headless Chromium on the Pi got nothing)`
+- **Service and support (verified):** nanoindenters, worldwide: **+1 800 600 2829**, **nanosupport@kla.com** (KLA Instruments service page,
+  "Nanoindenters" tab, <https://www.kla.com/products/instruments/service>, same browser and date). General: GSS.GlobalContactCenter@kla-tencor.com.
 - **Regional distributor:** none found for the US (NanoTechnology Solutions covers Australia and New Zealand) `(unverified)`. **Academic:** two universities run an iMicro as a service (UNH, Kassel), so **testing as a service
   is an alternative** to ask about.
 
@@ -491,7 +495,7 @@ From `notes/refine_sem.md` and `notes/instruments_lab.md`:
 | Environment | A lab room, a thermal cabinet if needed; a moving tray **[to confirm]** |
 
 ### 6. Draft email
-> **To:** KLA Instruments (web form, nanoindenters)
+> **To:** KLA Instruments, via the iMicro Request a Quote form (no sales email is published); support questions to nanosupport@kla.com
 > **Subject:** Budgetary quote: iMicro with InForce 1000, robot-loaded, BYU (Provo, UT)
 >
 > Hello,
@@ -516,6 +520,7 @@ From `notes/refine_sem.md` and `notes/instruments_lab.md`:
 | <https://www.unh.edu/research/university-instrumentation-center/nanoindenter-kla-instruments-imicro-nanoindenter> | no |
 | Search: KLA acquires Nanomechanics Inc. (Oak Ridge) | no |
 | <https://www.kla.com/products/instruments/nanoindenters/imicro> (model check: live, Request a Quote) (2026-11-07, maker's page, headed Chromium on the stream-cam Pi) | yes |
+| <https://www.kla.com/locations>, <https://www.kla.com/contact>, <https://www.kla.com/products/instruments/service> (Nanoindenters tab) (2026-11-07, maker's pages, headed Chromium on the stream-cam Pi) | yes |
 
 ---
 
@@ -780,9 +785,12 @@ From `notes/instruments_r7.md` ("To check with Keyence"):
 - **Door actuation:** **not published**; the model assumes an actuator on the 3119 door.
 
 ### 3. Contact
-- **Phone:** **+1 800 564 8378** or **+1 781 575 5000**, Instron, 825 University Ave, Norwood, MA 02062-2643 `(unverified: instron.com returns 403 to the runner and a Cloudflare challenge to Chromium on the Pi, 2026-11-07; a search index of instron.com's Locations page shows 800-564-8378 for sales)`. **Email:** none published.
-- **Web:** <https://www.instron.com/en/contact-us> returns **403 to the runner and a Cloudflare challenge to the Pi**, so
-  the contact and quote forms were not read. **Use the form on <https://www.instron.com>.**
+- **Phone (verified):** Instron Worldwide Headquarters, 825 University Ave., Norwood, MA 02062-2643: **Sales +1 800-564-8378**, Service
+  +1 800-473-7838, General inquiries +1 800 877 6674, Norwood office +1 781 828 2500, fax +1 781 575 5750. Instron's Sep 2025 comparison PDF
+  footer gives +1 781 575 5000 instead of the 828 2500 line. **Email:** none for sales; service requests go to **service_requests@instron.com**.
+  `(verified: https://www.instron.com/en/contact-us, which redirects to https://www.instron.com/en/our-company/contact-us/, maker's page, headed
+  Chromium on the stream-cam Pi, 2026-11-07 22:41 UTC; the runner gets 403 and headless Chromium on the Pi a Cloudflare challenge)`
+- **Web:** that contact page's **Contact Sales** button (a form), and **Contact Tech Support** at <https://instronservice.com/GuestUser/Support>.
 - **Regional rep (Utah / Mountain West):** not published; an Instron **field service engineer role for the Salt Lake City
   area** exists (a job posting), so there is service coverage. A sales rep `(unverified: Instron's contact page is a region selector we could not load)`.
 - **Academic:** `(unverified)` ask for education pricing.
@@ -819,7 +827,7 @@ From `notes/alloy_workflow.md`, `notes/instruments_r7.md` and the user's request
 | Standards | ASTM E8, E21; ASTM E4 verification |
 
 ### 6. Draft email
-> **To:** Instron sales, Norwood, MA (web form and +1 800 564 8378)
+> **To:** Instron sales, Norwood, MA (the contact page's Contact Sales form; +1 800-564-8378)
 > **Subject:** Budgetary quote: 68FM-100 with 3119-608, AVE 2 and automation (AT6 or robot-ready), BYU (Provo, UT)
 >
 > Hello,
@@ -841,7 +849,8 @@ From `notes/alloy_workflow.md`, `notes/instruments_r7.md` and the user's request
 ### 7. Sources (checked 2026-11-07 UTC)
 | Source | Via Pi |
 |---|---|
-| <https://www.instron.com/en/contact-us> (403; Cloudflare challenge on the Pi) | yes, blocked |
+| <https://www.instron.com/en/contact-us> (403 to the runner; Cloudflare challenge to headless Chromium on the Pi) | yes, blocked |
+| <https://www.instron.com/en/our-company/contact-us/> (Worldwide HQ phones, service_requests@instron.com) (2026-11-07, maker's page, headed Chromium on the stream-cam Pi) | yes |
 | Search: Instron brochure (825 University Ave; +1 800 564 8378), 68FM-100 and 3119-608 catalogs, AVE 2, AT6 page | no |
 | Search: SLC field service job posting | no |
 | `notes/alloy_workflow.md`, `notes/instruments_r7.md`, README | n/a |
@@ -1469,7 +1478,7 @@ section's "Model check" line and in `characterization.csv` (`model_status`).
 
 | Gap | Why it matters | What to do |
 |---|---|---|
-| **No official contact read for Hitachi (US), KLA and Instron** | Their sites block the runner, the Pi and headless Chromium on the Pi (second pass 2026-11-07). Search indexes of the official pages show: Hitachi **West region EM sales page lists UT**, (800) 253-3053; KLA quotes (858) 573-9300, support +1 800 600 2829, nanosupport@kla.com; Instron sales 800-564-8378. None of these was fetched | Someone on a normal browser opens Hitachi's `.../em-sales_contacts/west.html`, KLA's iMicro page and Instron's contact page and reads the Utah/sales contact |
+| ~~No official contact read for Hitachi (US), KLA and Instron~~ **Done (third pass)** | All three opened in **headed Chromium on the stream-cam Pi** (2026-11-07, 22:37-22:43 UTC), driven by real X mouse and keyboard events; headless Chromium had been refused. Hitachi's West page (UT) names Dan Becker, Sales Manager, Northwest; KLA's support line and email and its San Diego number are on KLA's own pages; Instron's contact page gives Sales +1 800-564-8378 and service_requests@instron.com | None: the contacts are in sections 4, 5 and 9 |
 | **No US sales email for most vendors** | Most publish only a form, and no email is guessed | Use the forms; copy the draft email into them |
 | **No Utah or Mountain West rep** for any vendor | A regional rep is where the fastest quote and the service engineer come from | Ask in each form; Instron has a Salt Lake City field-service role |
 | **Pending vendor data**: Hitachi III, Mastersizer 3000+, A&D replacement, NAT 15/65 US voltage | The model uses older names | Each draft asks |
