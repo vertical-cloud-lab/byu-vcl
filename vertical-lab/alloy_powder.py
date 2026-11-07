@@ -255,6 +255,61 @@ def build():
 CADDY_AT = (60.0, -185.0)             # the XRF cup's block on the cabinet top (MiR frame), behind the arm
 
 
+def fast_collisions(sc, L, u, trays=("D", "E", "M"), reach=2800.0):
+    """As alloy_characterize.fast_collisions (round 10): the arm's collision world (collide.World) is what it can
+    reach, the trays this chapter presents and whatever stands within `reach` of the arm's base anywhere on its way
+    (from START_X to both docks), our parts included. The trays left in their slots inside the Shuttles are left out.
+    The planner and the audit see the same world, so the paths are the same; World.refresh otherwise asks VTK about
+    every actor in the lab every frame (round 9's audit of this chapter took 30 min). Only this chapter's arm is
+    audited: the second unit stays on its charger."""
+    import collide as CL
+    keep, drop = set(), set()
+    for k in L.tray:
+        (keep if k in trays else drop).update(CL._subtree(sc, f"tray_{k}"))
+    x0, x1 = min(DOCK1[0], DOCK2[0], START_X), max(DOCK1[0], DOCK2[0], START_X)
+    xs = np.linspace(x0, x1, 1 + int(math.ceil((x1 - x0) / 250.0))) + A.ARM_LOCAL[0]
+    bases = np.c_[xs, np.full_like(xs, DOCK1[1] + A.ARM_LOCAL[1])]
+    only, known = {}, set(sc.actors)
+
+    def near(name, actor):
+        g = sc.group_of.get(name)
+        if g in drop:
+            return False
+        if g in keep:
+            return True
+        inp = actor.GetMapper().GetInput()
+        if inp is None or inp.GetNumberOfPoints() == 0:
+            return False
+        b = np.array(inp.GetBounds()).reshape(3, 2)
+        c = np.array([[b[0, i], b[1, j], b[2, k]] for i in (0, 1) for j in (0, 1) for k in (0, 1)])
+        w = (sc.world(g) @ np.c_[c, np.ones(8)].T).T[:, :3]
+        lo, hi = w.min(axis=0), w.max(axis=0)
+        d = np.linalg.norm(np.maximum(np.maximum(lo[:2] - bases, bases - hi[:2]), 0.0), axis=1).min()
+        return d < reach and lo[2] < reach + P.AMR_TOP
+
+    for name, actor in sc.actors.items():
+        if near(name, actor):
+            only[name] = actor
+
+    class FastWorld(CL.World):
+        def refresh(self):
+            full = self.sc.actors
+            if len(full) != len(known):                     # actors added since: keep those near too
+                for name in set(full) - known:
+                    known.add(name)
+                    if near(name, full[name]):
+                        only[name] = full[name]
+            self.sc.actors = only
+            try:
+                CL.World.refresh(self)
+            finally:
+                self.sc.actors = full
+
+    sc._collide_world = FastWorld(sc)
+    sc.robots = [r for r in getattr(sc, "robots", []) if r is u.robot]
+    print(f"collision world: {len(only)} of {len(sc.actors)} actors", flush=True)
+
+
 def set_heap(sc, k: float):
     """The mound on the holder: k = 0 (none) to 1 (a dome 15 mm across, 4 mm high over the reference plane)."""
     z = RP.ZBH
@@ -300,6 +355,7 @@ def branch_q(rb, Tw, Tw_ref):
 def movie():
     sc, L, u, RG, ov, ms_grains = build()
     rb = u.robot
+    fast_collisions(sc, L, u)
     xrd, sem, ms, xrf, prep = RG["xrd"], RG["sem"], RG["ms"], RG["xrf"], RG["prep"]
     PARK = np.radians(A.PARK_DEG)
     n = 7
@@ -491,7 +547,7 @@ def movie():
     st["cap"] = ("Onto the holder first. Turned over and shaken, the vial sifts the powder through its mesh cap, an even "
                  "layer with no pressing (as A-Lab's UR5e does it), a little more than the 0.5 mm well holds.")
     status(Arm="sifting onto the XRD holder")
-    sift(zt, 6.0, 3.0, RB.both(drain(LEVEL0, LEVEL0 - 1.5), lambda uu: set_heap(sc, uu)), gap=48.0)
+    sift(zt, 6.0, 3.0, RB.both(drain(LEVEL0, LEVEL0 - 1.5), lambda uu: set_heap(sc, uu)), gap=60.0)
     st["cap"] = "A dusting on the SEM stub's carbon tab, from the same vial."
     status(Arm="dusting the SEM stub")
     sift(wpt("p_puck", (0, 0, RP.PREP["puck_h"] + 2.8)), 3.0, 1.2, RB.both(
@@ -566,9 +622,19 @@ def movie():
     rb.grasp("p_zbh")
     lin(sh(T_fin, (0, 0, 30)), 0.6)
     lin(sh(along(T_fin, -90), (0, 0, 30)), 0.6)
-    # it waits left of the MiniFlex, outside the door's swing (398 mm round the hinge), while the door opens
-    T_wait = sh(along(T_on, -380), (0, 0, 60))
-    go(T_wait, secs=2.2, cam=CAM_XRDL)
+    # it waits left of the MiniFlex, outside the door's swing, while the door opens. Round 10: 480 mm back along the
+    # way in (was 380, where the holder's far edge was 372 mm from the hinge, inside the door's 398 mm swing, and the
+    # opening door met it), and in the IK branch that is clear with the holder on the stage (branch_q, judged with the
+    # door open, as it will be). The nearest branch had the shoulder turned 100 deg further round, and the straight
+    # line in from there swept the upper arm and forearm through the SEM, the MiniFlex's housing and tray D's camera
+    # post (16 frames in round 9's audit, which the notes had put on the way back out)
+    T_wait = sh(along(T_on, -480), (0, 0, 60))
+    xrd.v["door"] = 0.8
+    xrd.apply()
+    q_wait = branch_q(rb, T_wait, T_on)
+    xrd.v["door"] = 0.0
+    xrd.apply()
+    go(q=q_wait, secs=2.2, cam=CAM_XRDL)
     st["cap"] = ("An actuator on the hinge opens the door (our addition; Yotsumoto et al. 2024 drove theirs the same "
                  "way), to 80 deg, which clears the tray's camera post; the arm waits outside its swing.")
     status(XRD="door opening", Arm="holding the holder")
