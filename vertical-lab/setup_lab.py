@@ -82,7 +82,64 @@ def _items() -> dict:
     # round 8 (PR #318: "It's also not really clear why we'd want both v7's and delta stages"): the OpenFlexure array
     # leaves tray D; the Keyence VHX does its imaging (notes/lab_r8.md)
     out["D"] = [it for it in out["D"] if it[0] != "openflexure_array"]
+    # round 10: the PCB line's reflow oven (README since round 4: "The right end, about 470 mm, is free for a reflow
+    # oven"), its drawer to the front, 16 mm right of the LumenPnP and 14 mm inside the rim (reflow_oven())
+    out["H"] = [it for it in out.get("H", []) if it[0] != "reflow"] + [("reflow", 984.0, None, 0.0)]
     return out
+
+
+# the reflow oven on tray H (round 10, the coordinator's ledger: the PCB line never had one). Puhui's T-962A, an
+# infrared and hot-air batch oven with a windowed drawer: Puhui's listing gives 430 x 370 x 260 mm (43 x 37 x 26 cm),
+# 15 kg, 1500 W at 110 or 220 V, a 300 x 320 mm soldering area. The LPKF ProtoFlow S4 (555 x 480 x 300 mm, 38 kg) is
+# 85-125 mm too wide for the 460 mm left at the tray's right end, either way round, with its drawer to the front.
+REFLOW = dict(W=430.0, D=370.0, H=260.0, kg=15.0, watts=1500.0, area_mm=(300.0, 320.0),
+              source="Puhui T-962A listing (taianpuhui.en.made-in-china.com): 430 x 370 x 260 mm, 15 kg, 1500 W, "
+                     "AC 110/220 V, 300 x 320 mm soldering area, infrared and hot-air; the front's layout (drawer at the "
+                     "left, LCD and keys at the right) is ours, from photos",
+              url="https://taianpuhui.en.made-in-china.com/product/GXLmWKoTvtUI/China-Desktop-Reflow-Oven-Puhui-T962A.html",
+              alt="LPKF ProtoFlow S4: 555 x 480 x 300 mm, 38 kg (lpkfusa.com): too wide for the tray's free end")
+
+
+def reflow_oven():
+    """Puhui's T-962A as an Instrument: the case on four feet, the windowed drawer on the left of the front with its
+    handle, the control panel (an LCD and five keys) on the right, vents on the top. Origin at the centre of its
+    footprint, its front to -y."""
+    import instruments as I
+    sys.path.insert(0, str(lab.HERE / "lab_models"))
+    from common import box
+    w, d, h = REFLOW["W"], REFLOW["D"], REFLOW["H"]
+    inst = I.Instrument("reflow", "Benchtop batch reflow oven", "Puhui T-962A", (w, d, h), REFLOW["source"])
+    b = I._piece(inst, "body")
+    x0, x1, y0, y1 = -w / 2, w / 2, -d / 2, d / 2
+    for fx in (x0 + 25, x1 - 25):
+        for fy in (y0 + 25, y1 - 25):
+            b.add(f"foot {fx:.0f} {fy:.0f}", box(fx - 15, fy - 15, 0, fx + 15, fy + 15, 12), "inst_black")
+    b.add("case", box(x0, y0 + 6, 12, x1, y1, h), "inst_offwhite")
+    xd = x1 - 120.0                                    # the drawer's right edge; the control panel right of it
+    b.add("drawer front", box(x0 + 10, y0, 30, xd, y0 + 6, h - 30), "inst_dark")
+    b.add("drawer window", box(x0 + 50, y0 - 1, 70, xd - 40, y0 + 1, h - 80), "window")
+    b.add("drawer handle", box(x0 + 90, y0 - 22, h - 62, xd - 80, y0 - 1, h - 48), "inst_light")
+    b.add("control panel", box(xd + 8, y0 + 2, 30, x1 - 10, y0 + 6, h - 30), "inst_black")
+    b.add("LCD", box(xd + 20, y0 + 1, h - 105, x1 - 22, y0 + 2, h - 50), "screen_on")
+    for i in range(5):
+        kx = xd + 22 + i * 17.0
+        b.add(f"key {i}", box(kx, y0 - 2, 60, kx + 11, y0 + 2, 74), "inst_grey")
+    for i in range(6):
+        vy = y0 + 90 + i * 34.0
+        b.add(f"vent {i}", box(x0 + 60, vy, h, x1 - 140, vy + 12, h + 1.5), "inst_dark")
+    inst.labels = [("windowed drawer, 300 x 320 mm", (-60, y0, h - 40), (0.25, 0.25)),
+                   ("LCD and keys", (x1 - 60, y0, h - 60), (0.75, 0.25))]
+    inst.notes = ["430 x 370 x 260 mm, 15 kg, 1500 W (Puhui's listing); the front's layout is ours",
+                  "on tray H its heaters pause in transit: 1500 W is over the tray's UPS (1500 VA, services.py)",
+                  "solder flux fumes: it wants extraction, which tray H doesn't have yet"]
+    return inst
+
+
+def reflow_entries() -> dict:
+    """{"reflow": (Instrument, entries)} for load_all."""
+    import tour as TR
+    inst = reflow_oven()
+    return {"reflow": (inst, TR.piece_entries(inst))}
 
 
 ITEMS = _items()
@@ -364,6 +421,11 @@ def load_all() -> dict:
     idata.update(fab_tour.load(fab))
     idata.update(load_r7())
     idata.update(r7_stand_ins(idata))
+    if "reflow" not in idata:
+        try:
+            idata.update(reflow_entries())
+        except Exception as e:                       # noqa: BLE001  (a nicety: the set-up still runs without it)
+            print("setup_lab: no reflow oven:", e, flush=True)
     return idata
 
 
@@ -721,6 +783,26 @@ def utilities(hood=None) -> tuple[dict, tuple]:
         z0 = hood[5]
         duct = pv.Cylinder(center=((hood[0] + hood[1]) / 2, hood[2] + 110.0, (z0 + 6200.0) / 2), direction=(0, 0, 1),
                            radius=90, height=6200.0 - z0, resolution=28).triangulate()
+    # round 10: what the trays' couplings carry besides mains and Ethernet (services.py: compressed air, N2, chilled
+    # water) comes from units at the back of the 800 mm gap between the Shuttles, where no MiR turns (they turn at the
+    # front): the N2 generator (Parker Balston UHPN2-1100, 305 x 406 x 889 mm, services.SOURCES["n2"]), an oil-free
+    # compressor for it and for the docks' air (our size), and the chiller (ThermoFlex 900, size not found: not to
+    # size). A line from them goes up and over both roofs to the risers' drops.
+    xg = X2 / 2                                  # the gap's middle: 1815
+    units_ = {"N2 generator": (305.0, 406.0, 889.0, 200.0, (0.86, 0.87, 0.88)),
+              "air compressor": (450.0, 450.0, 650.0, 660.0, (0.30, 0.45, 0.62)),
+              "chiller": (420.0, 600.0, 700.0, 1160.0, (0.80, 0.81, 0.83))}
+    for nm, (w, d, h, y0, col) in units_.items():
+        out_units = W._box(xg - w / 2, y0, 0.0, xg + w / 2, y0 + d, h)
+        parts.setdefault(nm, ([], col))[0].append(out_units)
+    svc = [pv.Cylinder(center=(xg, 900.0, (950.0 + 4150.0) / 2), direction=(0, 0, 1), radius=30, height=3200.0,
+                       resolution=14).triangulate(),
+           pv.Cylinder(center=((900.0 + X2 + 900.0) / 2, 900.0, 4150.0), direction=(1, 0, 0), radius=30,
+                       height=X2, resolution=14).triangulate()]
+    for x in (900.0, X2 + 900.0):
+        svc.append(pv.Cylinder(center=(x, 900.0, (V.UNIT_H + 4150.0) / 2), direction=(0, 0, 1), radius=30,
+                               height=4150.0 - V.UNIT_H, resolution=14).triangulate())
+    parts.setdefault("dock supply line", ([], (0.55, 0.66, 0.74)))[0].extend(svc)
     out = {"cable trays": (trays, (0.70, 0.72, 0.74)), "tray hangers": (hangers, (0.55, 0.57, 0.60)),
            "network cable": (net, (0.15, 0.40, 0.85)), "power drops": (W._merge(drops), (0.30, 0.31, 0.33)),
            "argon line": (W._merge(ar), (0.25, 0.60, 0.35)), "argon cylinders": (W._merge(cyl), (0.30, 0.55, 0.36)),
@@ -728,6 +810,64 @@ def utilities(hood=None) -> tuple[dict, tuple]:
     for k, (ms, c) in parts.items():
         out[k] = (W._merge(ms), c)
     return {k: v for k, v in out.items() if v[0] is not None}, label
+
+
+# ------------------------------------------------------------------------------------------------ loading the trays
+# Round 10 (Sterling, PR #318: "the entire lab getting set up from scratch as well, including installation of arms,
+# loading of all equipment onto the trays"): what goes on a tray mostly weighs 15-110 kg (MASS_KG), over the arm's
+# 12.5 kg and over what one person should lift (NIOSH's lifting equation: 23 kg at best). So the set-up movie puts a
+# scissor lift table in front of the opening being loaded, its deck 20 mm over the presented tray's floor, and each
+# machine slides from the deck across the access table's lip onto the tray. A 2440 x 915 mm deck (96 x 36 in, a common
+# size) rated 1000 kg is our assumption, not a quote. Kardex's alternative for the heaviest loads is its "tray
+# extraction for forklift operation" option (Shuttle XP brochure, kardex_tall.SOURCES["xp"]), not drawn.
+LIFT_TABLE = dict(w=2440.0, d=915.0, deck_t=50.0, base_h=90.0)
+LIFT_DECK_Z = V.Z_OPEN + V.T_FLOOR + 20.0      # the items slide 20 mm over the tray floor (rig_in, animate.item_in)
+LIFT_TABLE_Y = -V.UNIT_D / 2 - V.SKIN - 55.0 - LIFT_TABLE["d"] / 2     # its back edge 5 mm off the cover's 50 mm lip
+LIFT_START_Y = LIFT_TABLE_Y + 120.0             # where an item's centre starts on the deck (world y)
+# what the trays carry, kg, where a maker or the model's source gives it (published unless marked): how heavy the
+# loading is. None: not found. The UPS is Eaton's (services.SOURCES["ups"]).
+MASS_KG = {
+    "xrf": (108.0, "Bruker S2 PUMA Series 2 with the XY autochanger (out/instruments.json)"),
+    "vacuum_press": (95.0, "Specac Atlas Autotouch 15T (vacuum_press.AT)"),
+    "xrd": (80.0, "Rigaku MiniFlex 6G (out/instruments.json)"),
+    "tensile_h": (78.0, "ZwickRoell zwickiLine Z5.0 TN (out/instruments.json)"),
+    "furnace": (60.0, "Nabertherm NAT 15/65 (out/instruments.json)"),
+    "sem": (54.0, "Hitachi TM4000PlusII main unit, the pump extra (out/instruments.json)"),
+    "cnc": (50.0, "Makera Carvera (out/instruments.json)"),
+    "hardness": (43.0, "Mitutoyo HM-220 (out/instruments.json)"),
+    "mastersizer": (40.5, "Malvern Mastersizer 3000 30 kg + Aero S 10.5 kg (out/instruments.json)"),
+    "ups": (23.0, "Eaton 5PX1500RTNG2, 50.7 lb (services.SOURCES['ups'], a snippet)"),
+    "reflow": (15.0, "Puhui T-962A (REFLOW)"),
+    "vhx": (7.2, "Keyence VHX-7000's EA-300 controller alone; the stand and head not found (out/instruments.json)"),
+}
+MASS_ONE_PERSON = 23.0                         # NIOSH's load constant, kg: the most one person should lift, at best
+
+
+def lift_table_parts() -> dict:
+    """{name: (mesh, colour)} of a scissor lift table, deck top at z = LIFT_DECK_Z, centred on x = 0, y = 0 (its own
+    frame; the long side along x): the deck, two scissor packs each side, the base frame on four castors, the cylinder."""
+    w, d, t, hb = LIFT_TABLE["w"], LIFT_TABLE["d"], LIFT_TABLE["deck_t"], LIFT_TABLE["base_h"]
+    zt = LIFT_DECK_Z
+    deck = W._box(-w / 2, -d / 2, zt - t, w / 2, d / 2, zt)
+    base = W._box(-w / 2 + 70, -d / 2 + 40, 60, w / 2 - 70, d / 2 - 40, 60 + hb)
+    bars, wheels = [], []
+    for xc in (-w / 4, w / 4):                 # two scissor packs, each an X on both long sides
+        for y in (-d / 2 + 70, d / 2 - 70):
+            for s in (-1, 1):
+                p0 = np.array([xc - s * 420.0, y, 60 + hb])
+                p1 = np.array([xc + s * 420.0, y, zt - t])
+                c = (p0 + p1) / 2
+                L_ = float(np.linalg.norm(p1 - p0))
+                bars.append(pv.Cylinder(center=c, direction=p1 - p0, radius=22, height=L_,
+                                        resolution=10).triangulate())
+    cyl = pv.Cylinder(center=(0, 0, (60 + hb + zt - t) / 2 - 80), direction=(0.55, 0, 1), radius=45,
+                      height=420, resolution=16).triangulate()
+    for x in (-w / 2 + 140, w / 2 - 140):
+        for y in (-d / 2 + 100, d / 2 - 100):
+            wheels.append(pv.Cylinder(center=(x, y, 50), direction=(0, 1, 0), radius=50, height=40,
+                                      resolution=16).triangulate())
+    return {"deck": (deck, (0.46, 0.48, 0.51)), "base": (base, (0.25, 0.26, 0.28)),
+            "scissors": (W._merge(bars + [cyl]), (0.93, 0.72, 0.12)), "castors": (W._merge(wheels), (0.12, 0.12, 0.13))}
 
 
 def rig_in(sc: Scene, g, names, out=False, travel=1700.0):
@@ -923,8 +1063,22 @@ def movie(data, idata):
         [n for n, g in sc.group_of.items() if g.startswith("charger") and g.endswith("_tape")]
     chargers = [n for n, g in sc.group_of.items() if g.startswith("charger") and not g.endswith("_tape")]
     unit_names = [n for u in units for n in u.all_names()]
+    # round 10: where each item's centre is in its tray (for its start on the lift table), and the two lift tables
+    yc_of = {}
+    for k in items:
+        Mi = np.linalg.inv(sc.world(f"tray_{k}"))
+        for key, g, names, _ in items[k]:
+            bb = _bounds_of(sc, names, Mi)
+            yc_of[(k, g)] = 0.0 if bb is None else (bb[2] + bb[3]) / 2
+    tables = {}
+    for u, xu in V.SHUTTLE_X.items():
+        g = f"lift_table{u}"
+        for nm, (mesh, col) in lift_table_parts().items():
+            sc.add(f"{g}/{nm}", mesh, col, g, specular=0.3)
+        sc.gmat[g] = T((xu, LIFT_TABLE_Y, 0.0))
+        tables[u] = sc.members(g)
     A.hide(L, L.groups(*vlm_groups, *u2, *tray_groups) + eq + machines + layout + chargers + unit_names +
-           list(util.values()))
+           list(util.values()) + [n for v in tables.values() for n in v])
     L.skin(0.0)(1.0)
     L.show_gauges = False
     L.apply_state()
@@ -954,13 +1108,15 @@ def movie(data, idata):
             sc.alpha[nm] = window(u, i / (len(names_u) + 1), (i + 2) / (len(names_u) + 1))
     ulbls = [("cable tray: power and network", (5200, W.Y_FACE_N + 700, 4400)),
              ("argon cylinders", (-9500, W.Y_FACE_N + 1400, 1500)),
-             ("VLM supply, 208 V 3-phase", (900, W.Y_FACE_N + 640, 4300))]
+             ("VLM supply, 208 V 3-phase", (900, W.Y_FACE_N + 640, 4300)),
+             ("N2 generator, compressor, chiller", (X2 / 2, 900.0, 950.0))]
     if ulabel is not None:
         ulbls.append(("power and network drop", ulabel))
     sc.step(f"3/{n}", "Utilities: cable trays over both rows. A drop comes down to every station and ends in a grey "
             "junction box with sockets and a network port. 208 V three-phase goes to each VLM (#53), argon from a "
             "cylinder manifold to the glovebox, the rePowder, the Aconity and the DED, and a duct up from the fume "
-            "hood. Layout choices, not a design.", 3.6, util_on, hold=1.8, cam_to=CAM_UTIL,
+            "hood. Between the Shuttles, at the back: an N2 generator, a compressor and a chiller for the trays' "
+            "couplings. Layout choices, not a design.", 4.2, util_on, hold=2.0, cam_to=CAM_UTIL,
             labels=W.auto(sc, CAM_UTIL, ulbls))
     # ------------------------------------------------------------------ 4. the VLMs
     s = A.slide_in
@@ -996,9 +1152,10 @@ def movie(data, idata):
     late = [k for k in R8_MERGED["floor"] if k in order]      # round 8's scale-up machines, past the south row's ends
     main = [k for k in order if k not in late]
     fs_main = [f for k, f in zip(order, fs) if k not in late]
-    sc.step(f"5/{n}", "The floor machines come in on their footprints, fronts to the aisle: the glovebox (its "
-            "antechamber to the aisle), the rePowder, the sieving cell, the Aconity MIDI, the packaging station; "
-            "across the aisle the two Instrons, the ducted fume hood, the DED and the wire EDM.", 5.4,
+    sc.step(f"5/{n}", "The floor machines are rigged in on pallet jacks and machine skates (the Aconity MIDI is "
+            "1450 kg, the 100 kN Instron 799 kg), fronts to the aisle: the glovebox (its antechamber to the aisle), "
+            "the rePowder, the sieving cell, the Aconity MIDI, the packaging station; across the aisle the two "
+            "Instrons, the ducted fume hood, the DED and the wire EDM.", 5.8,
             stagger(fs_main, overlap=0.36), hold=1.2, cam_to=CAM_FLOOR,
             labels=W.auto(sc, CAM_FLOOR, W.floor_labels(F, main, have)))
     if late:
@@ -1055,8 +1212,9 @@ def movie(data, idata):
         sc.gmat[rb.root] = T((0, 0, 900 * (1 - u))) @ root0
         for nm in arm_names:
             sc.alpha[nm] = min(1.0, u * 3)
-    sc.step(f"6/{n}", "The UR10e is lowered onto the cabinet's top plate and bolted down: four M8 bolts at 20 Nm, two "
-            "8 mm pins so it goes back in the same place (UR's manual).", 2.2, arm_on, hold=0.4,
+    sc.step(f"6/{n}", "The UR10e (33.3 kg: two people, or a small hoist) is set on the cabinet's top plate and bolted "
+            "down: four M8 bolts at 20 Nm, two 8 mm pins so it goes back in the same place (UR's manual).", 2.4,
+            arm_on, hold=0.4,
             labels=[("UR10e, 33.3 kg", (x, y, 1300), (0.20, 0.30))])
     g_names = u0.part_names("gripper")
 
@@ -1077,10 +1235,17 @@ def movie(data, idata):
     sc.step(f"6/{n}", "It wakes up and stretches. The second unit is built the same way at the other charger.", 1.4,
             rb.joint_to(A.PARK_RAD), hold=0.4)
     # ------------------------------------------------------------------ 7. the trays
-    sc.step(f"7/{n}", "Loading, drawn see-through: each tray comes to its Shuttle's opening, people put its instruments, "
-            "its UPS and its camera posts on through it (most weigh more than the arm's 12.5 kg), and it goes back to "
-            "its slot and its power. After the first tray of each Shuttle, a time-lapse.", 2.2, L.skin(1.0), hold=0.3,
-            cam_to=CAM_OPEN)
+    def tables_on(u):
+        for nm in (n for v in tables.values() for n in v):
+            sc.alpha[nm] = u
+    heavy = sorted(((m, key) for key, (m, _) in MASS_KG.items() if m and m > MASS_ONE_PERSON), reverse=True)
+    sc.step(f"7/{n}", "Loading, drawn see-through. Most of what goes on a tray weighs 20-110 kg (the S2 PUMA "
+            f"{heavy[0][0]:.0f} kg, each UPS 23), more than the arm's 12.5 kg or one person should lift (NIOSH: 23 kg), "
+            "so a scissor lift table stands at the opening, its deck level with the tray, and people slide each "
+            "machine across. After the first tray of each Shuttle, a time-lapse.", 2.6,
+            A.both(L.skin(1.0), tables_on), hold=0.4, cam_to=CAM_OPEN,
+            labels=W.auto(sc, CAM_OPEN, [("scissor lift table, deck at the tray's floor",
+                                          (700.0, LIFT_TABLE_Y, LIFT_DECK_Z))]))
     L.show_gauges = True
     cam_now = CAM_OPEN
     first = set()
@@ -1107,7 +1272,9 @@ def movie(data, idata):
         if lst:
             fs, lbls = [], []
             for key, g, names, nm in lst:
-                fs.append(rig_in(sc, g, names) if key != "rack" and not g.startswith("eq_") else A.item_in(L, g))
+                tr = V.Y_OPEN + yc_of.get((k, g), 0.0) - LIFT_START_Y     # from the lift table's deck
+                fs.append(rig_in(sc, g, names, travel=tr) if key != "rack" and not g.startswith("eq_") else
+                          A.item_in(L, g, travel=tr))
                 if key not in ("ups", "cam"):
                     lbls.append((nm, tuple(np.array(sc.world(g)[:3, 3]) + (0, 0, 420))))
             ncam = sum(1 for it in lst if it[0] == "cam")
@@ -1134,6 +1301,7 @@ def movie(data, idata):
     def cams_on(u):
         for nm in cam_names:
             sc.alpha[nm] = u
+        tables_on(1.0 - min(1.0, 2 * u))
     sc.step(f"8/{n}", "The bay cameras go on, one over each opening, looking down at the presented tray (services.py). "
             "Every tray already carries its own stream cameras.", 1.8, cams_on, hold=1.4, cam_to=CAM_VLM,
             labels=W.auto(sc, CAM_VLM, [("overhead camera at the bay", services.bay_cam_point()),
@@ -1425,10 +1593,38 @@ def draw_floor(frep: dict, path):
     plt.close(fig)
 
 
+TRAY_KINDS_KG = {"light": 228.0, "medium": 360.0, "strong": 490.0}     # #53's quote: 502, 794, 1080 lb (vlm.TRAYS)
+
+
+def tray_loads(items: dict) -> dict:
+    """Round 10: what each tray carries, kg, from MASS_KG where a figure is published, the rest listed as not found;
+    and the lightest of #53's three tray kinds that carries the known part (a lower bound: the unknowns add to it).
+    Each item heavier than one person should lift (MASS_ONE_PERSON) goes on with the lift table."""
+    out = {}
+    for k in ORDER:
+        known, unknown, heavy = 0.0, [], []
+        for key, g, names, nm in items.get(k, []):
+            if key == "cam":
+                continue                               # a post, a Pi and two cameras: a few kg, by hand
+            m = MASS_KG.get(key)
+            if m is None:
+                unknown.append(nm)
+                continue
+            known += m[0]
+            if m[0] > MASS_ONE_PERSON:
+                heavy.append(f"{nm} ({m[0]:.0f} kg)")
+        kind = next((kd for kd, cap in TRAY_KINDS_KG.items() if known <= cap), "over a strong tray")
+        out[k] = dict(known_kg=round(known, 1), not_found=unknown, over_one_person=heavy,
+                      lightest_tray_for_the_known_part=kind)
+    return out
+
+
 def fit(data, idata) -> dict:
     sc, L, F, items, rigs, units, util, ulabel, vp = build(data, idata, mp4=False)
     L.apply_state()
     rep = check_trays(sc, items)
+    for k, ld in tray_loads(items).items():
+        rep[k]["load"] = ld
     frep = check_floor(sc, F)
     out = dict(trays=rep, floor=frep, slots={k: dict(y=v[0], z=v[1], span=V.SPAN.get(k), shuttle=V.SLOT_SHUTTLE[k])
                                              for k, v in V.SLOTS.items()},

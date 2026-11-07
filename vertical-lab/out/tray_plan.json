@@ -335,9 +335,9 @@
    "slot": "R3",
    "shuttle": 1,
    "slot_z_mm": 1800.0,
-   "span_mm": 775.0,
-   "tallest_mm": 731.0,
-   "span_needed_mm": 775.0,
+   "span_mm": 900.0,
+   "tallest_mm": 854.0,
+   "span_needed_mm": 900.0,
    "span_ok": true,
    "items": [
     {
@@ -357,17 +357,17 @@
      "overlaps": []
     },
     {
-     "item": "multi-doser: chain carousel v2, 13 powders",
+     "item": "multi-doser: chain carousel v5 on an HR-202i, 13 powders",
      "kind": "item",
      "box_mm": [
-      123,
-      807,
-      -372,
-      62,
+      -380,
+      540,
+      -420,
+      270,
       3,
-      734
+      857
      ],
-     "height_mm": 731.0,
+     "height_mm": 854.0,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -424,14 +424,14 @@
      "item": "cam_B0 head",
      "kind": "cam",
      "box_mm": [
-      824,
-      991,
-      -213,
-      -60,
+      756,
+      927,
+      -282,
+      -126,
       511,
-      681
+      688
      ],
-     "height_mm": 677.6,
+     "height_mm": 685.1,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -459,7 +459,7 @@
    "role": "mechanical testing, particle size",
    "slot": "R4",
    "shuttle": 1,
-   "slot_z_mm": 2575.0,
+   "slot_z_mm": 2700.0,
    "span_mm": 725.0,
    "tallest_mm": 689.0,
    "span_needed_mm": 725.0,
@@ -662,10 +662,10 @@
       560,
       -380,
       380,
-      3,
-      303
+      4,
+      304
      ],
-     "height_mm": 300.0,
+     "height_mm": 300.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -1549,6 +1549,22 @@
      "overlaps": []
     },
     {
+     "item": "Puhui T-962A",
+     "kind": "item",
+     "box_mm": [
+      769,
+      1199,
+      -390,
+      2,
+      3,
+      265
+     ],
+     "height_mm": 261.5,
+     "under_goods_height": true,
+     "inside_rim": true,
+     "overlaps": []
+    },
+    {
      "item": "UPS",
      "kind": "ups",
      "box_mm": [
@@ -1979,10 +1995,10 @@
       560,
       -330,
       330,
-      3,
-      185
+      4,
+      186
      ],
-     "height_mm": 182.0,
+     "height_mm": 182.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -2104,10 +2120,10 @@
       560,
       -357,
       357,
-      3,
-      107
+      4,
+      108
      ],
-     "height_mm": 104.0,
+     "height_mm": 104.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -2573,12 +2589,12 @@
   "R3": {
    "y": 1030.0,
    "z": 1800.0,
-   "span": 775.0,
+   "span": 900.0,
    "shuttle": 1
   },
   "R4": {
    "y": 1030.0,
-   "z": 2575.0,
+   "z": 2700.0,
    "span": 725.0,
    "shuttle": 1
   },

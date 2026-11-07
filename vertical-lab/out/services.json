@@ -94,10 +94,10 @@
      "tilt_down_deg": 3.8
     },
     "B0": {
-     "top_over_floor_mm": 672.9,
-     "post_yaw_deg": 180,
-     "pan_deg": 48.0,
-     "tilt_down_deg": 11.3
+     "top_over_floor_mm": 678.0,
+     "post_yaw_deg": -90,
+     "pan_deg": -41.2,
+     "tilt_down_deg": 20.3
     },
     "C0": {
      "top_over_floor_mm": 671.5,
@@ -180,7 +180,7 @@
      "inside_rim": true
     },
     "B0": {
-     "gap_mm": 291,
+     "gap_mm": 224,
      "nearest": "carousel",
      "inside_rim": true
     },
@@ -210,7 +210,7 @@
      "inside_rim": true
     },
     "E0": {
-     "gap_mm": 18,
+     "gap_mm": 0,
      "nearest": "pip",
      "inside_rim": true
     },
@@ -351,12 +351,12 @@
      ]
     },
     "B0": {
-     "wide_sees_room": 0.0,
+     "wide_sees_room": 0.019,
      "hq_sees_room": 0.0,
-     "hq_to_aim_mm": 154,
-     "post_yaw_deg": 180,
-     "pan_deg": 48.0,
-     "tilt_down_deg": 11.3,
+     "hq_to_aim_mm": 633,
+     "post_yaw_deg": -90,
+     "pan_deg": -41.2,
+     "tilt_down_deg": 20.3,
      "round5": {
       "post_xy": [
        480.0,
@@ -370,9 +370,9 @@
       -220.0
      ],
      "aim": [
-      750.0,
-      0.0,
-      600.0
+      350.0,
+      220.0,
+      400.0
      ]
     },
     "C0": {
@@ -629,7 +629,7 @@
   }
  },
  "docks_and_lift": {
-  "method": "every part as its bounding box (a lower bound on each gap); the extractor at every height from 0 to 2970 mm in 10 mm steps; each slide in 121 steps",
+  "method": "every part as its bounding box (a lower bound on each gap); the extractor at every height from 0 to 3000 mm in 10 mm steps; each slide in 121 steps",
   "lift": {
    "empty": {
     "open engaged": {
@@ -708,13 +708,13 @@
      "gap_mm": 643.0,
      "moving": "extractor: extractor carriages #2",
      "dock": "hose power",
-     "lift_z": 2670.0
+     "lift_z": 2790.0
     },
     "R4 pulled back": {
      "gap_mm": 643.0,
      "moving": "extractor: extractor carriages #2",
      "dock": "hose power",
-     "lift_z": 2670.0
+     "lift_z": 2790.0
     }
    },
    "A": {
@@ -794,13 +794,13 @@
      "gap_mm": 643.0,
      "moving": "extractor: extractor carriages #2",
      "dock": "hose power",
-     "lift_z": 2670.0
+     "lift_z": 2790.0
     },
     "R4 pulled back": {
      "gap_mm": 643.0,
      "moving": "extractor: extractor carriages #2",
      "dock": "hose power",
-     "lift_z": 2670.0
+     "lift_z": 2790.0
     }
    },
    "B": {
@@ -880,13 +880,13 @@
      "gap_mm": 643.0,
      "moving": "extractor: extractor carriages #2",
      "dock": "hose power",
-     "lift_z": 2670.0
+     "lift_z": 2790.0
     },
     "R4 pulled back": {
      "gap_mm": 643.0,
      "moving": "extractor: extractor carriages #2",
      "dock": "hose power",
-     "lift_z": 2670.0
+     "lift_z": 2790.0
     }
    },
    "C": {
@@ -966,13 +966,13 @@
      "gap_mm": 643.0,
      "moving": "extractor: extractor carriages #2",
      "dock": "hose power",
-     "lift_z": 2670.0
+     "lift_z": 2790.0
     },
     "R4 pulled back": {
      "gap_mm": 643.0,
      "moving": "extractor: extractor carriages #2",
      "dock": "hose power",
-     "lift_z": 2670.0
+     "lift_z": 2790.0
     }
    },
    "D": {
@@ -1052,13 +1052,13 @@
      "gap_mm": 643.0,
      "moving": "extractor: extractor carriages #2",
      "dock": "hose power",
-     "lift_z": 2670.0
+     "lift_z": 2790.0
     },
     "R4 pulled back": {
      "gap_mm": 643.0,
      "moving": "extractor: extractor carriages #2",
      "dock": "hose power",
-     "lift_z": 2670.0
+     "lift_z": 2790.0
     }
    },
    "E": {
@@ -1138,13 +1138,13 @@
      "gap_mm": 643.0,
      "moving": "extractor: extractor carriages #2",
      "dock": "hose power",
-     "lift_z": 2670.0
+     "lift_z": 2790.0
     },
     "R4 pulled back": {
      "gap_mm": 643.0,
      "moving": "extractor: extractor carriages #2",
      "dock": "hose power",
-     "lift_z": 2670.0
+     "lift_z": 2790.0
     }
    },
    "F": {
@@ -1224,13 +1224,13 @@
      "gap_mm": 643.0,
      "moving": "extractor: extractor carriages #2",
      "dock": "hose power",
-     "lift_z": 2670.0
+     "lift_z": 2790.0
     },
     "R4 pulled back": {
      "gap_mm": 643.0,
      "moving": "extractor: extractor carriages #2",
      "dock": "hose power",
-     "lift_z": 2670.0
+     "lift_z": 2790.0
     }
    }
   },
@@ -1403,25 +1403,20 @@
       "kind": "published",
       "source": "Rigaku MiniFlex (6th generation; the 600 before it had the same tube): '600 W X-ray tube', '1-phase, 100-240 V' (rigaku.com); the total draw was not found, so this counts the tube alone"
      },
-     "openflexure_array": {
-      "w": 60.0,
-      "kind": "estimate",
-      "source": "six OpenFlexures (4 x v7, 2 x Delta), a Pi and three small steppers each: ours, 10 W each"
-     },
      "cameras": {
       "w": 12.0,
       "kind": "published",
       "source": "Raspberry Pi 5: typical bare-board active current 800 mA at 5 V; the supply is rated 27 W (raspberrypi.com). Cameras add well under 1 W; 3 units"
      },
      "ups loss": {
-      "w": 35.2,
+      "w": 33.4,
       "kind": "estimate",
       "source": "the UPS's own loss: Eaton publishes none; APC's SMT1500RM2UC is 98.9 % efficient at 50 % load (ENERGY STAR), so 3 % covers charging as well"
      }
     },
-    "total_w": 1207,
+    "total_w": 1145,
     "ups_ok": true,
-    "estimated_share": 0.08
+    "estimated_share": 0.03
    },
    "E": {
     "slot": "R4",
@@ -1494,10 +1489,10 @@
    "surface_m2": 55.9,
    "scenarios": {
     "everything on at its rating": {
-     "w": 7077,
-     "rise_k_unventilated": 23.0,
-     "airflow_m3h_for_5k": 4225,
-     "airflow_m3h_for_10k": 2113
+     "w": 7015,
+     "rise_k_unventilated": 22.8,
+     "airflow_m3h_for_5k": 4188,
+     "airflow_m3h_for_10k": 2094
     },
     "printing in storage (tray C) and the furnace holding (tray F at a third of 2.8 kW)": {
      "w": 2277,

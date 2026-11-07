@@ -2,8 +2,9 @@
 
 For each arm, with its base where the animation puts it:
 
-* the seats the workflow uses: the vial rack and the multi-doser's cup on tray B, the holder on the arm's own base, the
-  free seat in the CubXL's rack on tray A (each with the gripper pointing the way the animation grips there);
+* the seats the workflow uses: the vial rack and the multi-doser's vessel shuttle (v5, round 9) on tray B, the holder
+  on the arm's own base, the free seat in the CubXL's vial holder on tray A (each with the gripper pointing the way the
+  animation grips there);
 * coverage: the share of the presented tray (50 mm grid) the gripper reaches pointing straight down, 100 mm and 250 mm
   over the tray floor;
 * overhead clearance: for every reachable grid point, the lowest gap between the arm (elbow, forearm, wrists) and the
@@ -66,20 +67,37 @@ def seats() -> dict[str, np.ndarray]:
     rack_xy = A.LOADS["B"][0][1:]
     s = np.array(rs[A.RACK_SEAT]) + (*rack_xy, V.T_FLOOR)
     out["vial rack (tray B)"] = A.down(A.tray_world("B", s + (0, 0, 50.0)))
-    car_xy = A.LOADS["B"][1][1:]
-    vs = C.vial_seat()
-    cup = np.array([car_xy[0] - vs[1], car_xy[1] + vs[0], V.T_FLOOR + vs[2]])
-    out["multi-doser cup (tray B)"] = A.level(A.tray_world("B", cup + (0, 0, 32.0)))
+    # round 10: the multi-doser is v5 (round 9, carousel.py), unturned at animate.LOADS's place. No gripper reaches its
+    # balance's pan, so the arm stands the vial upright on the fork of our vessel shuttle, 71 mm outside the port in
+    # its -y panel, gripping it 50 mm up from above (animate.workflow, step 2). Round 8's seat was the v2 doser's cup,
+    # gripped level, on a rig turned 90 degrees
+    car_xy = next((x, y) for k, x, y in A.LOADS["B"] if k == "carousel")
+    hand = C.vessel_at("vial", 1.0, 0.0) + (*car_xy, V.T_FLOOR)
+    out["multi-doser shuttle fork (tray B)"] = A.down(A.tray_world("B", hand + (0, 0, 50.0)), spin=180.0)
     _, seat = P.buffer_holder()
     b = A.AMR_XY[0] + A.BUFFER_LOCAL[0], A.AMR_XY[1] + A.BUFFER_LOCAL[1], P.AMR_TOP - 20 + seat[2] + 50.0
     out["holder on the arm's base"] = A.down(np.array(b))
-    # the CubXL's free rack seat on tray A, through the same centring animate.py uses
-    import lab
-    _, bb = lab.meshes()["equipment"]["cubxl_frame"]
-    cx, cy = (bb[0] + bb[1]) / 2, (bb[2] + bb[3]) / 2
-    x, y = A.LOADS["A"][0][1:]
-    p = np.array(A.CUB_SLOT) + (x - cx, y - cy, V.T_FLOOR - bb[4])
-    out["CubXL rack seat (tray A)"] = A.down(A.tray_world("A", p + (0, 0, 50.0 - 8.0)))
+    # the CubXL's free seat on tray A. Round 10: the corrosion set-up (cubxl_rig.CubRig at CUB_AT, x -300), the seat the
+    # 9:09 clip stands the vial in (instruments_lab.POWDER_TEST["seat"], gripped 50 mm up, spin 0). Round 8 used round
+    # 2's CubXL rack at x -112, which the corrosion set-up replaced
+    try:
+        import cubxl_rig as CR
+        import instruments_lab as IL
+        import tour
+        inst, _ = tour.load(["cubxl_corrosion"])["cubxl_corrosion"]
+        x0, x1, y0, y1, z0, _ = inst.bbox()
+        at = T((CR.CUB_AT[0] - (x0 + x1) / 2, CR.CUB_AT[1] - (y0 + y1) / 2, V.T_FLOOR - z0))
+        sx, sy = IL.POWDER_TEST["seat"]
+        p = (at @ np.array([IL._cx(sx), IL._cy(sy), IL._cz(0.0), 1.0]))[:3]
+        out["CubXL holder seat (tray A)"] = A.down(A.tray_world("A", p + (0, 0, 50.0)), spin=0.0)
+    except Exception as e:                       # noqa: BLE001  (the corrosion model isn't cached: round 2's rack)
+        print(f"reach: CubXL seat from round 2's rack ({type(e).__name__}: {e})", flush=True)
+        import lab
+        _, bb = lab.meshes()["equipment"]["cubxl_frame"]
+        cx, cy = (bb[0] + bb[1]) / 2, (bb[2] + bb[3]) / 2
+        x, y = A.LOADS["A"][0][1:]
+        p = np.array(A.CUB_SLOT) + (x - cx, y - cy, V.T_FLOOR - bb[4])
+        out["CubXL rack seat (tray A, round 2's)"] = A.down(A.tray_world("A", p + (0, 0, 50.0 - 8.0)))
     return out
 
 

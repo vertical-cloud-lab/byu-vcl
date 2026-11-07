@@ -145,9 +145,10 @@ POWER = {
                                         "efficient at 50 % load (ENERGY STAR), so 3 % covers charging as well"),
 }
 
-TRAY_ITEMS = {      # what's on each tray (animate.LOADS, line.TRAY_LOADS)
+TRAY_ITEMS = {      # what's on each tray (animate.LOADS, line.TRAY_LOADS) that draws power; round 10: tray D's
+                    # OpenFlexure array left in round 8, and the powder-prep station that replaced it draws none
     "A": ["cubxl", "ot2"], "B": ["carousel"], "C": ["h2d", "a1mini"],
-    "D": ["sem", "xrd", "openflexure_array"], "E": ["pip", "nanoindenter", "mastersizer"],
+    "D": ["sem", "xrd"], "E": ["pip", "nanoindenter", "mastersizer"],
     "F": ["polisher", "furnace"],
 }
 HOME = {"A": "R2", "B": "R3", "C": "F1", "D": "R1", "E": "R4", "F": "F2"}
@@ -891,7 +892,12 @@ TRAY_CAMS = {   # per tray: (mast x, mast y, aim x, aim y, aim z, post yaw) in t
     # is at the front edge and the OT-2 has no room in front, so B0, A1 and D2 still see some of the
     # room (cameras.views in services.json).
     "A": [(-1060.0, -10.0, -850.0, 100.0, 400.0, 90.0), (210.0, 275.0, 916.0, 102.0, 600.0, 90.0)],
-    "B": [(920.0, -220.0, 750.0, 0.0, 600.0, 180.0)],     # one: a unit over the rack stood in the middle of the tray
+    # one: a unit over the rack stood in the middle of the tray. Round 10: same post, turned to -x and re-aimed at the
+    # multi-doser v5 (carousel.py, round 9: x 64-540 on the tray, 854 mm tall); round 8's aim, (750, 0, 600), was the
+    # middle of the v2 doser and is empty air now. The Wide keeps the station and the balance in its picture and 2 % of
+    # it is the room (unit_view); aimed at the station itself it would be 24 %. The post is where it was, so the arm's
+    # paths in the chapters that present tray B are unchanged
+    "B": [(920.0, -220.0, 350.0, 220.0, 400.0, -90.0)],
     "C": [(-960.0, -340.0, -560.0, 0.0, 600.0, 90.0), (125.0, -235.0, 360.0, 0.0, 486.0, 90.0)],
     "D": [(-225.0, -305.0, -552.0, 0.0, 550.0, 270.0), (300.0, -340.0, 60.0, 0.0, 600.0, 270.0),
           (860.0, 185.0, 1066.0, -43.0, 109.0, 90.0)],
@@ -1254,6 +1260,27 @@ def make_lab(sc, data, robot=False):
     return SLab(sc, data, robot=robot)
 
 
+def tray_loads(lab7=True) -> dict:
+    """{tray: [(key, x, y, turn)]} for trays D-F. lab7 (round 10): what the set-up movie puts on them
+    (setup_lab.ITEMS after merge_r8: tray D without the OpenFlexure array and with the powder-prep station, tray F with
+    the MX400, the disc magazine and the quench tank); else line.TRAY_LOADS, round 7's. A key appears once per tray
+    (each makes the Rig prefix '<tray>_<key>:')."""
+    import line
+    if not lab7:
+        return {k: [(key, x, y, 0.0) for key, x, y in v] for k, v in line.TRAY_LOADS.items()}
+    import setup_lab
+    setup_lab.merge_r8()
+    out = {}
+    for k in line.TRAY_LOADS:
+        seen, lst = set(), []
+        for key, x, y, turn in setup_lab.ITEMS.get(k, []):
+            if key not in seen:
+                seen.add(key)
+                lst.append((key, x, y, turn))
+        out[k] = lst
+    return out
+
+
 def build_vlm(name, data, idata, title, docks=True, cams=True, mp4=True, robot=False, scene_cls=None, lab7=True):
     """The VLM with trays A-F and their equipment (as line.py has them, without the floor line), the docks, plates,
     UPSs and cameras; robot=True adds the MiR250 and UR10e at the opening. Returns (scene, lab, {tray: [line actor
@@ -1275,15 +1302,23 @@ def build_vlm(name, data, idata, title, docks=True, cams=True, mp4=True, robot=F
         vp = AP.VacPress(sc, "tray_B", AP.PRESS_AT, V.T_FLOOR)
         vp.st["guard"] = 0.0
         vp.apply()
-    for k, loads in line.TRAY_LOADS.items():
+    for k, loads in tray_loads(lab7).items():
         line.add_tray(sc, L, k)
-        for key, x, y in loads:
+        for key, x, y, turn in loads:
             if key not in idata:
                 continue
             inst, ents = idata[key]
-            x0, x1, y0, y1, z0, _ = inst.bbox()
-            at = T((x - (x0 + x1) / 2, y - (y0 + y1) / 2, V.T_FLOOR - z0))
-            tour.Rig(sc, inst, ents, f"{k}_{key}:", at=at, parent=f"tray_{k}")
+            if lab7:                                 # setup_lab's placement, its props hidden, as in the set-up movie
+                import setup_lab
+                rig = tour.Rig(sc, inst, ents, f"{k}_{key}:", at=setup_lab.placed(inst, x, y, turn),
+                               parent=f"tray_{k}")
+                for piece in [pc for pc in rig.names if pc in inst.props]:
+                    for nm in rig.names.pop(piece):
+                        sc.alpha[nm] = 0.0
+            else:
+                x0, x1, y0, y1, z0, _ = inst.bbox()
+                at = T((x - (x0 + x1) / 2, y - (y0 + y1) / 2, V.T_FLOOR - z0))
+                tour.Rig(sc, inst, ents, f"{k}_{key}:", at=at, parent=f"tray_{k}")
             L.eq_groups[k].append(f"{k}_{key}:body")
     live = {}
     if docks:
@@ -1722,18 +1757,22 @@ def movie_bay_camera(data, idata):
         fr[key] = P
     hide(sc, ("frusta",), 0.0)
     rig = ("baycamrig", "baycamrigsl", "baycamrigpan", "baycamrighead")
-    # the arm's work: from parked, over the vial rack, down to the vial, up, over to the doser's cup and in
+    # the arm's work (round 10, the multi-doser v5): from parked, over the vial rack, down to the vial, take it, up,
+    # over the vessel shuttle's fork outside the doser's -y panel, down, set the vial on it upright, up and away (as
+    # animate.workflow's step 2). Round 8 took it level into the v2 doser's cup, which v5 doesn't have
     seeds = [np.radians(q) for q in ((-90, -100, 120, -110, -90, 0), (-90, -60, 90, -120, -90, 0),
                                      (-60, -80, 100, -110, -90, 0), (-120, -80, 100, -110, -90, 0))]
     seats = reach.seats()
-    rack, cup = seats["vial rack (tray B)"], seats["multi-doser cup (tray B)"]
-    poses = [T((0, 0, 140)) @ rack, rack, T((0, 0, 140)) @ rack, T((0, -140, 60)) @ cup, cup, T((0, -140, 60)) @ cup,
+    rack, cup = seats["vial rack (tray B)"], seats["multi-doser shuttle fork (tray B)"]
+    poses = [T((0, 0, 140)) @ rack, rack, T((0, 0, 140)) @ rack, T((0, 0, 130)) @ cup, cup, T((0, 0, 130)) @ cup,
              T((0, 0, 140)) @ rack]
     qs = [rb.q.copy()]
     for Tw in poses:
         sol = reach.solve("ur10e", Tw, [qs[-1]] + seeds)
-        if sol is not None:
-            qs.append(np.asarray(sol[0], float))
+        if sol is None:
+            raise RuntimeError(f"baycam: no IK for a pose at {np.round(Tw[:3, 3])}")
+        qs.append(np.asarray(sol[0], float))
+    fork = L.carousel.fork_group
 
     def arm(i0, i1):
         """The arm along the joint waypoints qs[i0..i1], over the step."""
@@ -1781,13 +1820,17 @@ def movie_bay_camera(data, idata):
     L.gauges()
     capw = ("What the Wide sees: the whole presented tray and the arm working on it. Rendered from the camera's own "
             "position and aim, 102 degrees across (Raspberry Pi's figures: 102 x 67, 120 diagonal).")
-    sc.step(f"3/{n}", capw, 3.4, arm(1, 3), hold=0.2)
-    L.svc_lines[2] = ("Arm", "to the doser's cup")
+    sc.step(f"3/{n}", capw, 1.8, arm(1, 2), hold=0.1)
+    sc.step(f"3/{n}", capw, 0.5, rb.grip_to(A.GRIP_VIAL), hold=0.1)
+    rb.grasp("vial")
+    L.svc_lines[2] = ("Arm", "vial: rack to the doser's shuttle")
     L.gauges()
-    sc.step(f"3/{n}", capw, 3.4, arm(3, 5), hold=0.6, still=True)
-    # the head turns on its pan and tilt joints to put the HQ on the doser's cup, where the gripper is
+    sc.step(f"3/{n}", capw, 1.0, arm(2, 3), hold=0.0)
+    sc.step(f"3/{n}", capw, 2.4, arm(3, 4), hold=0.6, still=True)
+    # the head turns on its pan and tilt joints to put the HQ on the shuttle's fork, where the gripper sets the vial
     at = bay_at()
-    _, pan_c, tilt_c = rig_pose(float(at[0, 3]), float(at[1, 3]), tuple(cup[:3, 3]), h=0.0, z0=float(at[2, 3]), post=0.0)
+    _, pan_c, tilt_c = rig_pose(float(at[0, 3]), float(at[1, 3]), tuple(cup[:3, 3] + (0, 0, -40.0)), h=0.0,
+                                z0=float(at[2, 3]), post=0.0)
     c, f, r, u = camera_optics(at, 0.0, 0.0, pan_c, tilt_c)["hq"]
     hq = fov["hq_16mm"]
     cam_hq = [tuple(c), tuple(c + f * 1000.0), tuple(u)]
@@ -1801,15 +1844,20 @@ def movie_bay_camera(data, idata):
         sc.gmat["baycamrigpan"] = I._R((0, 0, 1), pan_c * s, PAN_AXIS)
         sc.gmat["baycamrighead"] = I._R((1, 0, 0), b["tilt"] + (tilt_c - b["tilt"]) * s, TILT_AXIS)
     L.svc_lines = [("Camera", "HQ Camera, 16 mm lens"), ("Picture", f"{hq['across']:.1f} x {hq['up_down']:.1f} deg, "
-                                                                     "4:3"), ("Arm", "at the doser's cup")]
+                                                                     "4:3"), ("Arm", "at the doser's shuttle")]
     L.gauges()
     caph = (f"What the HQ Camera sees through the 16 mm lens, {hq['across']:.1f} x {hq['up_down']:.1f} degrees (its "
             f"sensor is {hq['sensor_mm'][0]} x {hq['sensor_mm'][1]} mm: 2 atan(6.29 / 32) across), with the head "
-            f"turned {abs(pan_c):.0f} degrees and tilted {tilt_c:.0f} down onto the doser's cup: a 4:3 close-up of "
-            "the gripper at work.")
+            f"turned {abs(pan_c):.0f} degrees and tilted {tilt_c:.0f} down onto the multi-doser's vessel shuttle: a 4:3 "
+            "close-up of the gripper standing the vial on the fork, outside the port in the doser's panel.")
     sc.step(f"4/{n}", caph, 1.4, to_hq, hold=0.2, cam_to=cam_hq, view_angle_to=va_hq)
-    sc.step(f"4/{n}", caph, 3.2, arm(5, 6), hold=0.4)
-    sc.step(f"4/{n}", caph, 3.0, arm(6, 7), hold=1.6)
+    sc.step(f"4/{n}", caph, 1.8, arm(4, 5), hold=0.1)
+    sc.step(f"4/{n}", caph, 0.5, rb.grip_to(0.0), hold=0.1)
+    rb.release(fork)
+    L.svc_lines[2] = ("Arm", "vial on the shuttle's fork")
+    L.gauges()
+    sc.step(f"4/{n}", caph, 1.2, arm(5, 6), hold=0.3)
+    sc.step(f"4/{n}", caph, 2.6, arm(6, 7), hold=1.6)
     return sc.save()
 
 
@@ -2282,10 +2330,60 @@ def bay_arm_clearance(radius=75.0) -> dict:
                 note="reach.py's poses; the arm as capsules round its joint origins, the 2F-85 to the TCP")
 
 
+DOSER_BOXES_R9 = {   # tray B, tray frame: the multi-doser v5 as round 10 measured it from carousel.py's meshes
+    "carousel": (64.0, 540.0, -420.0, 270.0, 3.0, 857.0),          # frame, HR-202i, shuttle and its rail to the front
+    "carousel board": (-380.0, 44.0, -310.0, 154.0, 3.0, 81.0),     # the electronics board lying left of the frame
+}
+_DOSER_BOXES: dict = {}
+VACUUM_PRESS_BOX = (-1180.0, -408.0, -400.0, 173.0, 3.0, 643.0)    # tray B frame, setup_lab.py fit (out/tray_plan.json)
+
+
+def doser_boxes() -> dict:
+    """{name: (x0, x1, y0, y1, z0, z1)} of the multi-doser on tray B, tray frame: carousel.Carousel built on a stand-in
+    scene that only keeps its meshes, at animate.LOADS's place, as it stands between doses (shuttle out, doors shut).
+    Split at the frame's left side into the rig and its electronics board, which lies flat on the tray. Falls back to
+    DOSER_BOXES_R9 (round 10's measurement) if the rig won't build. Round 8's box was the v2 doser's, 560 mm tall."""
+    if _DOSER_BOXES:
+        return dict(_DOSER_BOXES)
+    try:
+        import animate as A
+        import carousel as C
+
+        class _Stub:                           # what Carousel needs of a Scene
+            def __init__(self):
+                self.meshes, self.group_of, self.parent, self.gmat, self.base_alpha = {}, {}, {}, {}, {}
+
+            def add(self, name, mesh, col, group, **kw):
+                self.meshes[name], self.group_of[name] = mesh, group
+
+            def set_mesh(self, name, mesh):
+                self.meshes[name] = mesh
+        sc = _Stub()
+        car = C.Carousel(sc, "doser", prefix="doser")
+        pts = []
+        for n, m in sc.meshes.items():
+            if m.n_points:
+                p = np.array(m.points, float)
+                if sc.group_of[n] == car.fork_group:
+                    p[:, 1] -= C.TRAVEL * car.state["shuttle"]
+                pts.append(p)
+        P = np.vstack(pts)
+        x, y = next((xx, yy) for kk, xx, yy in A.LOADS["B"] if kk == "carousel")
+        split = -100.0                         # rig frame: the frame's left posts stand at x > -86
+        for name, Q in (("carousel", P[P[:, 0] >= split]), ("carousel board", P[P[:, 0] < split])):
+            if len(Q):
+                _DOSER_BOXES[name] = (x + Q[:, 0].min(), x + Q[:, 0].max(), y + Q[:, 1].min(), y + Q[:, 1].max(),
+                                      V.T_FLOOR + Q[:, 2].min(), V.T_FLOOR + Q[:, 2].max())
+    except Exception as e:                     # noqa: BLE001  (another stream mid-edit in carousel.py)
+        print(f"services: the doser's boxes from round 10's measurement ({type(e).__name__}: {e})", flush=True)
+        _DOSER_BOXES.update(DOSER_BOXES_R9)
+    return dict(_DOSER_BOXES)
+
+
 def tray_instrument_boxes() -> dict:
     """{tray: [(name, (x0, x1, y0, y1, z0, z1))]}: each instrument's box as modelled, tray frame, where line.py
     (trays D-F, sizes from out/instruments.json) and animate.py (trays A-C, lab.meshes()) put it. The multi-doser on
-    tray B is a 600 x 470 x 560 mm box round its model."""
+    tray B is two boxes round the v5 rig as drawn (doser_boxes)."""
     import animate as A
     import lab
     import line
@@ -2304,7 +2402,11 @@ def tray_instrument_boxes() -> dict:
                 w, d, h = b[1] - b[0], b[3] - b[2], b[5] - b[4]
                 out.setdefault(k, []).append((key, (x - w / 2, x + w / 2, y - d / 2, y + d / 2, V.T_FLOOR,
                                                     V.T_FLOOR + h)))
-    out.setdefault("B", []).append(("carousel", (-50.0, 550.0, -551.0, -81.0, V.T_FLOOR, V.T_FLOOR + 560.0)))
+    for name, bb in doser_boxes().items():
+        out.setdefault("B", []).append((name, bb))
+    # round 7's vacuum press on tray B (alloy_press.PRESS_AT), stored with its guard down: its box as setup_lab.py fit
+    # measures it from the meshes (pump at the left, the press, its control tower)
+    out["B"].append(("vacuum_press", VACUUM_PRESS_BOX))
     if "rack" in dict((key, 0) for key, *_ in A.LOADS.get("B", [])) and not any(n == "rack" for n, _ in out["B"]):
         import props
         _, rx, ry = next(item for item in A.LOADS["B"] if item[0] == "rack")
