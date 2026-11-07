@@ -19,10 +19,11 @@ where it starts:
    cup carrier on the MiR's cabinet (chapter 2's carrier);
 3. tray B goes back up while the MiR drives to the rePowder (PR #327's refined model: its lid hinged at the back, the
    draw latch and the pneumatic locking bolt as joints, ``repowder/model.py``);
-4. at the rePowder, the bolt goes back, the arm pulls the latch's lever out and lifts the lid by its knob, past its
-   balance point to RP_LID_U of its swing. With chapter 2's loading tong it takes the cup off the carrier and carries
-   it down #222's path into the crucible (``alloy_atomize.tong_path``: tipped 4.1 deg past the sealing rod's adapter,
-   then upright onto the floor cone), puts the tong back, shuts the lid and the latch, and the bolt goes in;
+4. at the rePowder, the bolt goes back, the arm pulls the latch's lever out (LATCH_U of its swing) and lifts the lid
+   by its knob past its balance point (LID_LET) and lets go: the lid settles onto its stop (RP_LID_U). With chapter
+   2's loading tong it takes the cup off the carrier and carries it down #222's path into the crucible
+   (``alloy_atomize.tong_path``: tipped 4.1 deg past the sealing rod's adapter, then upright onto the floor cone), puts
+   the tong back, takes the knob where the lid rests, lowers the lid, shuts the latch, and the bolt goes in;
 5. the rePowder, cut open, melts the cup and atomizes it (a time-lapse, ``Melt``: the coil, the cup glowing and
    slumping into the pool, the sealing rod up, the stream onto the vibrating plate, droplets, the powder in the
    container), while the MiR drives back to the opening; then the camera pulls back out to the wide view.
@@ -36,16 +37,18 @@ Drawn differently for this shot only (all drawing choices):
 - Shuttle 2 is left out with its trays, the pallet racking and the second MiR unit (round 2); the south row's floor
   machines and its overhead utilities too (SOUTH_OUT, Y_CUT), since the wide view looks across where they stand.
 - The VLM's camera target stands at the opening's right instead of its left (TARGET_DX, round 2): coming from the
-  rePowder, a unit drives in from the left.
+  rePowder, a unit drives in from the left. The targets the MiR's drive to the rePowder would run over (the sieving
+  cell's and the rePowder's) are left out, and so are the south row's, in the wide view's foreground (floor_edits).
 - One cup goes into the crucible, where the lab loads four a run (byu-vcl PR #318), and the melt is drawn for one
   cup's 43 g. Its plug isn't fitted or pressed (chapter 1 does both, on the same tray); the cup goes over open.
-- The lid opens to RP_LID_U of the model's 105 deg: from where the MiR stops, the arm can't follow the knob further
-  (the lid is past its balance point well before that: its centre of mass passes over the hinge at about 66 deg).
+- The lid rests open at RP_LID_U of the model's 105 deg, 90 deg ("about upright", PR #327's notes): from where the
+  MiR stops, the arm can't reach the knob of a lid open further, to shut it. It lets go at 73.5 deg, past the lid's
+  balance point (its centre of mass passes over the hinge at about 67 deg, from the shell's outline).
 - The arm works the latch and the lid on its own (chapter 2 has a second unit hold the lid down while the latch lets
   go).
 
     VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py views    # the views, as stills -> /tmp/org_gif_views.png
-    ORG_STRIDE=24 VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py   # every 24th frame only -> /tmp/org_stride/
+    ORG_STRIDE=24 VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py   # every 24th frame only -> /tmp/org_stride/ (5 min)
     ARM_AUDIT=1 VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py # no render: every frame's arm checked -> out/collisions/
     VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py          # -> out/mp4/<NAME>.mp4, out/<NAME>.json
     ORG_PART=a:b ORG_NAME=<NAME>_p0 ...                  # render frames a..b-1 only (the rest are counted, not drawn)
@@ -85,11 +88,11 @@ RP_AT = (-3775.0, -1700.0)       # animate.REPOWDER_AT: the rePowder model's ori
 # the views: camera position, focal point, up (mm; Shuttle 1's centre at the origin, its opening facing -y), view angle
 CAMS = {
     "wide": _cam((-1500.0, -1000.0, 1350.0), 2.0, 17.0, 11500.0, 34.0),    # the Shuttle, the rePowder, the cell
-    "trayB": _cam((-60.0, -1480.0, 960.0), 8.0, 20.0, 2900.0, 27.0),       # tray B at the opening, the arm, the MiR
+    "trayB": _cam((-60.0, -1400.0, 950.0), -22.0, 32.0, 2500.0, 30.0),     # tray B at the opening, from the left
     "dose": None,                     # the doser's pan from the front right, set once tray B is at the opening
-    "rp": _cam((RP_AT[0] - 40.0, RP_AT[1] - 420.0, 1150.0), 22.0, 16.0, 3100.0, 27.0),   # the arm at the rePowder
-    "bore": _cam((RP_AT[0] + 0.0, RP_AT[1] - 30.0, 1300.0), -25.0, 48.0, 1050.0, 27.0),  # down into the crucible
-    "cut": _cam((RP_AT[0] + 60.0, RP_AT[1] + 0.0, 860.0), 10.0, 6.0, 2350.0, 27.0),      # the rePowder cut open
+    "rp": _cam((RP_AT[0] - 40.0, RP_AT[1] - 420.0, 1200.0), 38.0, 18.0, 3100.0, 27.0),   # the arm at the rePowder
+    "bore": _cam((RP_AT[0] + 0.0, RP_AT[1] - 20.0, 1300.0), 35.0, 55.0, 950.0, 27.0),    # down into the crucible
+    "cut": _cam((RP_AT[0] + 60.0, RP_AT[1] + 0.0, 980.0), 18.0, 8.0, 2000.0, 27.0),      # the rePowder cut open
 }
 CAM = "wide"
 # The camera stands behind the south row (its fronts at y = -6238), so the row's overhead utilities (its cable tray at
@@ -109,8 +112,10 @@ OPEN_CUP = 0.66                  # alloy_charge.OPEN_CUP: 31.6 mm between the pa
 GRIP_CUP = 0.80                  # on the 19.05 mm cup (ur_arm.gripper_fk: gap = 28 - 90 (c - 0.70))
 RP_STOP = (RP_AT[0] - 120.0, -2380.0)   # the MiR at the rePowder, heading 0: from here the arm follows the latch's
                                  # lever and the lid's knob (an IK sweep of MiR stops, 2026-11-06)
-RP_LID_U = 0.86                  # the lid opens this share of the model's 105 deg (90 deg): further, the knob leaves the
-                                 # arm's reach from RP_STOP
+RP_LID_U = 0.86                  # the lid rests open at this share of the model's 105 deg (90 deg): further, the knob
+                                 # leaves the arm's reach from RP_STOP, and the arm couldn't take it to shut the lid
+LID_LET = 0.70                   # the arm lifts the lid this far (73.5 deg) and lets go: past its balance point (its
+                                 # centre of mass passes over the hinge at about 67 deg), it settles onto its stop
 LATCH_U = 0.5                    # the latch's lever swings out this share of its 95 deg: the loop is well off the keeper
 LATCH_AT = (24.0, 0.85, 45.0)    # its grasp: the pads' centre 24 mm out from the furnace's face, 0.85 of the lever up
                                  # from its pivot, the tool tipped 45 deg down from level (fingers on the two flanges)
@@ -337,8 +342,11 @@ def floor_edits(sc):
         c = mesh.cell_centers().points
         if nm == "footprints":            # the tape round Shuttle 2's footprint (setup_lab.footprints)
             keep = np.flatnonzero(~((np.abs(c[:, 0] - x2) < xo) & (np.abs(c[:, 1]) < yo)))
-        else:                             # its dock and its camera target
-            keep = np.flatnonzero(~((np.abs(c[:, 0] - x2) < 1900) & (c[:, 1] > -2700) & (c[:, 1] < -1400)))
+        else:                             # its dock and its camera target; the targets the MiR's drive to the
+            #                               rePowder runs over (the cell's and the rePowder's); the south row's
+            keep = np.flatnonzero(~(((np.abs(c[:, 0] - x2) < 1900) & (c[:, 1] > -2700) & (c[:, 1] < -1400)) |
+                                    (nm != "dock tape") & (((c[:, 0] > -4300) & (c[:, 0] < -400) & (c[:, 1] > -2750) &
+                                                            (c[:, 1] < -1800)) | (c[:, 1] < -3500))))
         if len(keep) < mesh.n_cells:
             mesh = mesh.extract_cells(keep).extract_surface(algorithm="dataset_surface")
         p = np.array(mesh.points)
@@ -655,7 +663,8 @@ def stride_snap(sc, every, out="/tmp/org_stride"):
 
     def f(n=1):
         n0 = sc.n
-        hit = [k for k in range(n0, n0 + n) if k % every == 0]
+        lo, hi = frame_range("ORG_STRIDE_RANGE") or (0, 10 ** 9)
+        hit = [k for k in range(n0, n0 + n) if k % every == 0 and lo <= k < hi]
         if hit:
             base = sc.render_base()
             anchors = [sc.project(xyz) for _, xyz, _, _ in sc.labels]
@@ -735,11 +744,6 @@ def movie():
                (0.985, 0.08))
     lbl_rp = ("AMAZEMET rePowder atomizer", (RP[0] + 120.0, RP[1] + 250.0, 1750.0), (0.02, 0.08))
     lbl_cell = ("sieving cell", (-1982.5, -1250.0, 1650.0), (0.30, 0.18))
-    lbl_B = ("tray B at the opening:\nthe multi-doser v5 on its balance", tuple(K.bal_cup() + (150.0, 80.0, 560.0)),
-             (0.985, 0.10))
-    lbl_rack = ("charge cups, 5N Al", tuple(K.rack_cup(1) + (0.0, 0.0, 70.0)), (0.02, 0.62))
-    lbl_cup = ("the cup, cut open: Si,\nthen the AlSi10Mg top-up", tuple(K.bal_cup() + (0.0, 0.0, 30.0)),
-               (0.985, 0.72))
     lbl_latch = ("draw latch", tuple(RP + (M.latch_geom()["x"], -150.0, 1300.0)), (0.985, 0.62))
     lbl_lid = ("the lid, hinged at the back", tuple(RP + (-60.0, 0.0, 1560.0)), (0.02, 0.10))
     lbl_tong = ("loading tong", None, (0.985, 0.30))
@@ -758,9 +762,15 @@ def movie():
         yield from call(lambda: phase("Here it makes a charge for the atomizer. The VLM brings tray B, the powder "
                                       "doser, down."))
         yield from cam_to(sc, "trayB", 4.2)
-        yield from call(lambda: labels(lbl_arm, lbl_B, lbl_rack))
     run(sc, overview(), fetch(L, "B"))
-    CAMS["dose"] = _cam(tuple(K.bal_cup() + (0.0, 0.0, 60.0)), 38.0, 22.0, 950.0, 27.0)
+    # tray B's labels, now that it is at the opening (K's places are wherever the tray is)
+    lbl_B = ("tray B at the opening:\nthe multi-doser v5 on its balance", tuple(K.bal_cup() + (150.0, 80.0, 560.0)),
+             (0.985, 0.10))
+    lbl_rack = ("charge cups, 5N Al", tuple(K.rack_cup(1) + (0.0, 0.0, 70.0)), (0.02, 0.62))
+    lbl_cup = ("the cup, cut open: Si,\nthen the AlSi10Mg top-up", tuple(K.bal_cup() + (0.0, 0.0, 40.0)),
+               (0.985, 0.72))
+    bal = K.bal_cup()                 # the cup on the pan, from the front through the balance's glass (closer than
+    CAMS["dose"] = [tuple(bal + (-60.0, -420.0, 160.0)), tuple(bal + (0.0, 0.0, 75.0)), (0, 0, 1), 31.0]   # chapter 1's
 
     # ------------------------------------------------------------------ 2. the cup dosed: Si, then the top-up
     f = DOSE_F
@@ -790,8 +800,8 @@ def movie():
         return up
 
     def at_B():
-        yield from call(lambda: phase("The arm stands an empty charge cup on the doser's shuttle, which carries it "
-                                      "onto the balance."))
+        yield from call(lambda: (phase("The arm stands an empty charge cup on the doser's shuttle, which carries it "
+                                       "onto the balance."), labels(lbl_arm, lbl_B, lbl_rack)))
         yield from pick(rb, A.down(p_rack, spin=0.0), A.down(p_rack + (0, 0, 110), spin=0.0), cg, GRIP_CUP, OPEN_CUP)
         yield from place(rb, A.down(p_hand, spin=180.0), A.down(p_hand + (0, 0, 120), spin=180.0), car.fork_group,
                          OPEN_CUP)
@@ -919,19 +929,93 @@ def movie():
 
     st = {}
 
-    def to_arc(key, grasp, pose, move, close, skip, back, opening):
+    def to_arc(key, grasp, pose, move, close, skip, pres, opening, n=17):
+        """A joint move to the first reachable of the poses `pres` (world), in an IK branch from which the arm can
+        follow pose(s) as move(s) swings the part, touching nothing but `skip` (alloy_atomize.arc_branch's test), and
+        whose approach pose is clear with the gripper open to `opening`; the gripper opens to it on the way."""
         def fac():
-            q = AT.arc_branch(rb, sc, grasp, pose, move, close, skip, n=17, back=back)
-            st[key] = q
-            return both(rb.joint_to(q1=rb.solve(grasp @ T((0, 0, -back)), q)), rb.grip_to(opening))
+            import collide
+            chk = rb.checker()
+            cands = collide.ik_all(rb.model, AT.inv(sc.world(rb.root)) @ grasp, rb.q) or [rb.solve(grasp)]
+            got = None
+            for q in cands:
+                ok, qq = True, q.copy()
+                for u in np.linspace(0.0, 1.0, n):
+                    move(u)
+                    try:
+                        q_new = rb.solve(pose(u), qq)
+                    except ValueError:
+                        ok = False
+                        break
+                    if np.abs(q_new - qq).max() > math.radians(20):
+                        ok = False
+                        break
+                    qq = q_new
+                    if any(not any(k in h[2] for k in skip) for h in chk.collisions(qq, close, chk.snapshot())):
+                        ok = False
+                        break
+                move(0.0)
+                if not ok:
+                    continue
+                for pre in pres:
+                    try:
+                        q_pre = rb.solve(pre, q)
+                    except ValueError:
+                        continue
+                    if np.abs(q_pre - q).max() < math.radians(60) and not chk.collisions(q_pre, opening,
+                                                                                         chk.snapshot()):
+                        got = q_pre
+                        break
+                if got is not None:
+                    break
+            if got is None:
+                print(f"warning: {key}: no IK branch clear along the swing and at the approach", file=sys.stderr,
+                      flush=True)
+                got = rb.solve(pres[-1], cands[0])
+            st[key] = got
+            if os.environ.get("ORG_DEBUG"):
+                w = chk.snapshot()
+                print(f"debug {key} frame {sc.n}: start hits {chk.collisions(rb.q, rb.close, w)[:3]}; "
+                      f"end hits at {opening} {chk.collisions(got, opening, w)[:3]}; "
+                      f"at close {rb.close:.2f} {chk.collisions(got, rb.close, w)[:3]}", flush=True)
+            return both(rb.joint_to(q1=got), rb.grip_to(opening))
         return fac
+
+    def clear_line(cands, close):
+        """The first of the poses `cands` (world) that the grasp point can reach in a straight line from where it is,
+        clear of everything all the way (the same samples as robot.line_to), with the gripper at `close`."""
+        import collide
+        from scipy.spatial.transform import Rotation, Slerp
+        chk = rb.checker()
+        w = chk.snapshot()
+        T0 = rb.tcp_world()
+        for T1 in cands:
+            sl = Slerp([0.0, 1.0], Rotation.from_matrix(np.stack([T0[:3, :3], T1[:3, :3]])))
+            q, ok = rb.q.copy(), True
+            for s_ in np.linspace(0.0, 1.0, 21)[1:]:
+                Mx = np.eye(4)
+                Mx[:3, :3] = sl([s_]).as_matrix()[0]
+                Mx[:3, 3] = T0[:3, 3] + (T1[:3, 3] - T0[:3, 3]) * s_
+                try:
+                    qn = rb.solve(Mx, q)
+                except ValueError:
+                    ok = False
+                    break
+                if np.abs(qn - q).max() > math.radians(25) or chk.collisions(qn, close, w):
+                    ok = False
+                    break
+                q = qn
+            if ok:
+                return T1
+        print(f"warning: frame {sc.n}: no clear line among {len(cands)} back-offs", file=sys.stderr, flush=True)
+        return cands[-1]
 
     def at_rp():
         yield from call(lambda: (phase("At the atomizer, the arm pulls the lid's draw latch open and lifts the lid by "
                                        "its knob."), labels(lbl_arm, lbl_latch, lbl_lid)))
         yield 0.8, lambda: bolt(0.0, 1.0)                       # the pneumatic locking bolt goes back
-        yield ARM_S[0], to_arc("latch", latch_grasp(0.0), latch_grasp, latch, GRIP_LATCH, ("latch",), 100.0,
-                               OPEN_LATCH)
+        yield ARM_S[0], to_arc("latch", latch_grasp(0.0), latch_grasp, latch, GRIP_LATCH, ("latch",),
+                               [latch_grasp(0.0) @ T((0, 0, -100))], OPEN_LATCH)
         yield HOLD, None
         yield ARM_S[1], lambda: rb.line_to(latch_grasp(0.0))
         yield ARM_S[2], lambda: rb.grip_to(GRIP_LATCH)
@@ -939,16 +1023,23 @@ def movie():
         yield 1.4, lambda: both(arc(latch_grasp, 0.0, 1.0, 9), latch)
         yield ARM_S[2], lambda: rb.grip_to(OPEN_LATCH)
         rb.events.append((sc.n, "release", AT.g("latch_lever"), None))
-        yield ARM_S[3], lambda: rb.line_to(latch_grasp(1.0) @ T((0, 0, -100)))
-        yield ARM_S[0], to_arc("knob", knob_grasp(0.0), knob_grasp, lid, GRIP_KNOB, ("knob",), 110.0, 0.45)
+        # off the lever: straight back along the tool, as far as is clear (100 mm back, the upper arm met the furnace)
+        yield ARM_S[3], lambda: rb.line_to(clear_line([latch_grasp(1.0) @ T((0, 0, -d)) for d in (60.0, 45.0, 30.0)] +
+                                                      [T((0, 0, -d)) @ latch_grasp(1.0) for d in (40.0, 25.0)],
+                                                      OPEN_LATCH))
+        # the knob from above: backed off level, the flange would come within the UR10e's reach of its own base axis.
+        # Lifted past its balance point and let go, the lid settles onto its stop; the hand is left in the clear
+        yield ARM_S[0], to_arc("knob", knob_grasp(0.0), lambda s: knob_grasp(LID_LET * s),
+                               lambda s: lid(LID_LET * s), GRIP_KNOB, ("knob",), [T((0, 0, 100)) @ knob_grasp(0.0)],
+                               0.45)
         yield HOLD, None
         yield ARM_S[1], lambda: rb.line_to(knob_grasp(0.0))
         yield ARM_S[2], lambda: rb.grip_to(GRIP_KNOB)
         rb.events.append((sc.n, "grasp", AT.g("knob"), None))
-        yield 2.2, lambda: both(arc(knob_grasp, 0.0, 1.0, 12), lid)
-        yield ARM_S[2], lambda: rb.grip_to(0.45)
+        yield 1.9, lambda: both(arc(knob_grasp, 0.0, LID_LET, 10), lambda e: lid(LID_LET * e))
+        yield 0.3, lambda: rb.grip_to(0.45)
         rb.events.append((sc.n, "release", AT.g("knob"), None))
-        yield ARM_S[3], lambda: rb.line_to(knob_grasp(1.0) @ T((0, 0, -110)))
+        yield 0.5, lambda: (lambda e: lid(LID_LET + (1.0 - LID_LET) * e * e))   # falls back onto its stop
         # the loading tong out of its holder on the MiR's cabinet (alloy_atomize: chapter 2's moves)
         yield from call(lambda: (phase("With a loading tong, the arm takes the cup and sets it on the crucible's "
                                        "floor, past the sealing rod."), labels(lbl_arm, lbl_tong_at())))
@@ -994,24 +1085,27 @@ def movie():
         # the lid down and the latch shut, the bolt in
         yield from call(lambda: (phase("The arm shuts the lid and the latch, and the locking bolt goes in."),
                                  labels(lbl_arm, lbl_latch, lbl_lid)))
-        yield 1.4, to_arc("knob_open", knob_grasp(1.0), lambda s: knob_grasp(1.0 - s), lambda s: lid(1.0 - s),
-                          GRIP_KNOB, ("knob",), 110.0, 0.45)
-        yield 0.7, lambda: rb.line_to(knob_grasp(1.0))
+        # the knob where the lid rests: a planned joint move straight to it, the hand wide open (backed off from it
+        # either way, the arm runs out of reach), then the lid pulled back over its balance point and lowered
+        yield 1.6, to_arc("knob_open", knob_grasp(1.0), lambda s: knob_grasp(1.0 - s), lambda s: lid(1.0 - s),
+                          GRIP_KNOB, ("knob",), [T((0, 0, z)) @ knob_grasp(1.0) for z in (40.0, 25.0, 12.0)], 0.45)
+        yield 0.5, lambda: rb.line_to(knob_grasp(1.0))
         yield 0.4, lambda: rb.grip_to(GRIP_KNOB)
         rb.events.append((sc.n, "grasp", AT.g("knob"), None))
         yield 2.0, lambda: both(arc(knob_grasp, 1.0, 0.0, 12), lambda e: lid(1.0 - e))
         yield 0.4, lambda: rb.grip_to(0.45)
         rb.events.append((sc.n, "release", AT.g("knob"), None))
-        yield 0.7, lambda: rb.line_to(knob_grasp(0.0) @ T((0, 0, -110)))
+        yield 0.7, lambda: rb.line_to(clear_line([T((0, 0, d)) @ knob_grasp(0.0) for d in (100.0, 60.0, 40.0)], 0.45))
         yield 1.4, to_arc("latch_open", latch_grasp(1.0), lambda s: latch_grasp(1.0 - s), lambda s: latch(1.0 - s),
-                          GRIP_LATCH, ("latch",), 100.0, OPEN_LATCH)
+                          GRIP_LATCH, ("latch",), [latch_grasp(1.0) @ T((0, 0, -100))], OPEN_LATCH)
         yield 0.7, lambda: rb.line_to(latch_grasp(1.0))
         yield 0.4, lambda: rb.grip_to(GRIP_LATCH)
         rb.events.append((sc.n, "grasp", AT.g("latch_lever"), None))
         yield 1.4, lambda: both(arc(latch_grasp, 1.0, 0.0, 9), lambda e: latch(1.0 - e))
         yield 0.4, lambda: rb.grip_to(OPEN_LATCH)
         rb.events.append((sc.n, "release", AT.g("latch_lever"), None))
-        yield 0.7, lambda: rb.line_to(latch_grasp(0.0) @ T((0, 0, -100)))
+        yield 0.7, lambda: rb.line_to(clear_line([latch_grasp(0.0) @ T((0, 0, -d)) for d in (100.0, 60.0, 40.0)],
+                                                 OPEN_LATCH))
         yield 0.6, lambda: both(bolt(1.0, 0.0), rb.joint_to(A.PARK_RAD))
         yield from park(rb, 0.8)
 
@@ -1043,6 +1137,9 @@ def movie():
                            events={r.prefix: [list(e) for e in r.events] for r in sc.robots}), fh)
     print(f"highest forearm/wrist point {rb.max_z_world:.0f} mm; {sc.n} frames; the melt ran frames {fx.n0}-{fx.n1}",
           flush=True)
+    for p in rb.plans:
+        if p.get("reason"):
+            print(f"unplanned joint move at frame {p.get('frame')}: {p.get('reason')}", flush=True)
     if fx.n1 is None:
         print("warning: the melt had not ended by the last frame, so the loop jumps", file=sys.stderr)
     meta_path = OUT / f"{NAME}.json"
