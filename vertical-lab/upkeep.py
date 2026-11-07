@@ -963,6 +963,21 @@ class Upkeep:
         return self.log
 
 
+class OnCall(Upkeep):
+    """The what-if for PARAMS after_hours: a repair that needs a person starts when the fault happens, at any hour
+    (someone on call, or a remote reset for the faults that allow one). An upper bound: it ignores the call-out time."""
+
+    def person_slot(self, ready, need, keys, urgent=False, reserve=False):
+        if urgent:
+            t = ready
+            for _ in range(200):
+                push = max([t] + [self.line(k).earliest(t, need) for k in keys])
+                if push <= t + 1e-9:
+                    return t, t + need, [(t, t + need)]
+                t = push
+        return super().person_slot(ready, need, keys, urgent, reserve)
+
+
 # ================================================================================================ the year
 def run(seed: int = SEED, fails: bool = True) -> tuple[dict, dict]:
     """(the schedule with upkeep, the schedule as round 8 had it)."""
@@ -1209,8 +1224,10 @@ def model(write=True) -> dict:
     sim = TL.simulate(upkeep=up)
     base = TL.simulate()
     planned = TL.simulate(upkeep=Upkeep(fails=False))
+    on_call = TL.simulate(upkeep=OnCall())
     ncam = TL.cameras()
     av = availability(sim)
+    av_call = availability(on_call)
     ppl = weekly_people(sim)
     wk_after = [sum(ppl[k][i] for k in KINDS) for i in range(52)]
     steady = list(range(8, 52))
@@ -1230,8 +1247,11 @@ def model(write=True) -> dict:
         failures=[dict(asset=a, what=wh, mtbf_h=m, basis=bs, who=who, mttr_h=r, wait_h=wt,
                        source="assumed") for a, wh, m, bs, who, r, wt in FAILS],
         totals=dict(round8=totals(base, ncam), planned_upkeep_only=totals(planned, ncam),
-                    with_upkeep_and_failures=totals(sim, ncam)),
+                    with_upkeep_and_failures=totals(sim, ncam), with_someone_on_call=totals(on_call, ncam)),
         availability=av,
+        on_call=dict(what="the same year, but a fault that needs a person is seen to when it happens, at any hour "
+                          "(upkeep.OnCall: an upper bound, no call-out time), not on the next shift",
+                     availability={k: v["availability"] for k, v in av_call.items()}),
         people_hours_per_week=dict(
             mean_after_ramp=round(float(np.mean([wk_after[i] for i in steady])), 1),
             max=round(max(wk_after), 1),
@@ -1349,19 +1369,21 @@ def plot_year(m: dict, path=None):
             ("runs", "atomizer runs")]
     series = [("round8", "round 8: no maintenance", "#9b9a94"),
               ("planned_upkeep_only", "with planned upkeep", SLOTS[0]),
-              ("with_upkeep_and_failures", "with upkeep and failures", SLOTS[1])]
+              ("with_upkeep_and_failures", "with upkeep and failures (faults wait for the next shift)", SLOTS[1]),
+              ("with_someone_on_call", "the same, someone on call (upper bound)", SLOTS[2])]
+    series = [x for x in series if x[0] in tot]
     xx = np.arange(len(keys))
-    wbar = 0.26
+    wbar = 0.8 / len(series)
     for j, (sk, lab, col) in enumerate(series):
         vals = [tot[sk][k] for k, _ in keys]
-        bars = ax.bar(xx + (j - 1) * wbar, vals, width=wbar - 0.02, color=col, label=lab)
+        bars = ax.bar(xx + (j - (len(series) - 1) / 2) * wbar, vals, width=wbar - 0.02, color=col, label=lab)
         for b_, v in zip(bars, vals):
-            ax.text(b_.get_x() + b_.get_width() / 2, v + 8, f"{v:,}", ha="center", va="bottom", fontsize=8.5,
-                    color=INK)
+            ax.text(b_.get_x() + b_.get_width() / 2, v + 8, f"{v:,}", ha="center", va="bottom", fontsize=7.5,
+                    color=INK, rotation=90 if len(series) > 3 else 0)
     ax.set_xticks(xx)
     ax.set_xticklabels([n for _, n in keys], fontsize=10, color=INK)
     ax.set_ylabel("count in the year", color=INK2, fontsize=10)
-    ax.set_ylim(0, max(tot["round8"]["runs"], 1) * 1.15)
+    ax.set_ylim(0, max(tot["round8"]["runs"], 1) * 1.25)
     ax.set_title("The year's totals against round 8's", loc="left", fontsize=12.5, fontweight="bold",
                  color=INK, pad=10)
     ax.legend(loc="upper left", fontsize=9, frameon=False)

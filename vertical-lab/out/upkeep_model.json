@@ -2468,6 +2468,23 @@
    "psd": 354,
    "indents": 912,
    "corrosion": 608
+  },
+  "with_someone_on_call": {
+   "atomized": 362,
+   "printed": 311,
+   "tested": 311,
+   "promoted": 30,
+   "runs": 671,
+   "powder_kg": 164.6,
+   "data_gb": 2016.1,
+   "video_tb": 125.7,
+   "tensile": 1364,
+   "sem_images": 6526,
+   "xrd": 362,
+   "xrf": 362,
+   "psd": 362,
+   "indents": 933,
+   "corrosion": 622
   }
  },
  "availability": {
@@ -2614,6 +2631,35 @@
    "unplanned_h": 373.3,
    "planned_h": 35.8,
    "check_h": 1.3
+  }
+ },
+ "on_call": {
+  "what": "the same year, but a fault that needs a person is seen to when it happens, at any hour (upkeep.OnCall: an upper bound, no call-out time), not on the next shift",
+  "availability": {
+   "carousel": 0.988,
+   "repowder": 0.9661,
+   "sieve_cell": 0.9946,
+   "mastersizer": 0.9966,
+   "xrd": 0.9956,
+   "xrf": 0.9927,
+   "sem": 0.9964,
+   "aconity": 0.9886,
+   "wire_edm": 0.9927,
+   "furnace": 0.9948,
+   "tensile_h": 0.9968,
+   "instron_floor": 0.9957,
+   "cnc": 0.9996,
+   "mount_press": 0.9948,
+   "polisher": 0.9944,
+   "vhx": 0.999,
+   "hardness": 0.99,
+   "nanoindenter": 0.9871,
+   "pip": 0.9982,
+   "cubxl_corrosion": 0.9947,
+   "open1": 0.9664,
+   "open2": 0.9849,
+   "unit0": 0.9846,
+   "unit1": 0.9945
   }
  },
  "people_hours_per_week": {
