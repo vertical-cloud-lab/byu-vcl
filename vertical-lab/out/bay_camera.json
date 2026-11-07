@@ -1,7 +1,7 @@
 {
  "name": "bay_camera",
- "fps": 10,
- "n_frames": 328,
+ "fps": 6,
+ "n_frames": 193,
  "size": [
   1280,
   720
@@ -11,49 +11,73 @@
    "label": "1/4",
    "caption": "From where an operator stands, 0.9 m in front of the opening, eyes at 1.6 m: the bay's overhead camera, up under the header at the back of the bay, looking down over the presented tray (here tray B, the doser's).",
    "start_frame": 0,
-   "end_frame": 75
+   "end_frame": 45
   },
   {
    "label": "2/4",
    "caption": "What it covers: the Camera Module 3 Wide (blue) sees 102 x 67 degrees, the whole tray; the HQ Camera with the 16 mm lens (orange) 22.2 x 16.8 degrees, a patch about a tenth of it, for detail.",
-   "start_frame": 76,
-   "end_frame": 131
+   "start_frame": 46,
+   "end_frame": 79
   },
   {
    "label": "3/4",
    "caption": "Into the camera.",
-   "start_frame": 132,
+   "start_frame": 80,
+   "end_frame": 92
+  },
+  {
+   "label": "3/4",
+   "caption": "What the Wide sees: the whole presented tray and the arm working on it. Rendered from the camera's own position and aim, 102 degrees across (Raspberry Pi's figures: 102 x 67, 120 diagonal).",
+   "start_frame": 93,
+   "end_frame": 104
+  },
+  {
+   "label": "3/4",
+   "caption": "What the Wide sees: the whole presented tray and the arm working on it. Rendered from the camera's own position and aim, 102 degrees across (Raspberry Pi's figures: 102 x 67, 120 diagonal).",
+   "start_frame": 105,
+   "end_frame": 108
+  },
+  {
+   "label": "3/4",
+   "caption": "What the Wide sees: the whole presented tray and the arm working on it. Rendered from the camera's own position and aim, 102 degrees across (Raspberry Pi's figures: 102 x 67, 120 diagonal).",
+   "start_frame": 109,
+   "end_frame": 114
+  },
+  {
+   "label": "3/4",
+   "caption": "What the Wide sees: the whole presented tray and the arm working on it. Rendered from the camera's own position and aim, 102 degrees across (Raspberry Pi's figures: 102 x 67, 120 diagonal).",
+   "start_frame": 115,
+   "end_frame": 132
+  },
+  {
+   "label": "4/4",
+   "caption": "What the HQ Camera sees through the 16 mm lens, 22.2 x 16.8 degrees (its sensor is 6.29 x 4.71 mm: 2 atan(6.29 / 32) across), with the head turned 17 degrees and tilted 50 down onto the multi-doser's vessel shuttle: a 4:3 close-up of the gripper standing the vial on the fork, outside the port in the doser's panel.",
+   "start_frame": 133,
+   "end_frame": 141
+  },
+  {
+   "label": "4/4",
+   "caption": "What the HQ Camera sees through the 16 mm lens, 22.2 x 16.8 degrees (its sensor is 6.29 x 4.71 mm: 2 atan(6.29 / 32) across), with the head turned 17 degrees and tilted 50 down onto the multi-doser's vessel shuttle: a 4:3 close-up of the gripper standing the vial on the fork, outside the port in the doser's panel.",
+   "start_frame": 142,
    "end_frame": 153
   },
   {
-   "label": "3/4",
-   "caption": "What the Wide sees: the whole presented tray and the arm working on it. Rendered from the camera's own position and aim, 102 degrees across (Raspberry Pi's figures: 102 x 67, 120 diagonal).",
+   "label": "4/4",
+   "caption": "What the HQ Camera sees through the 16 mm lens, 22.2 x 16.8 degrees (its sensor is 6.29 x 4.71 mm: 2 atan(6.29 / 32) across), with the head turned 17 degrees and tilted 50 down onto the multi-doser's vessel shuttle: a 4:3 close-up of the gripper standing the vial on the fork, outside the port in the doser's panel.",
    "start_frame": 154,
-   "end_frame": 189
-  },
-  {
-   "label": "3/4",
-   "caption": "What the Wide sees: the whole presented tray and the arm working on it. Rendered from the camera's own position and aim, 102 degrees across (Raspberry Pi's figures: 102 x 67, 120 diagonal).",
-   "start_frame": 190,
-   "end_frame": 229
+   "end_frame": 157
   },
   {
    "label": "4/4",
-   "caption": "What the HQ Camera sees through the 16 mm lens, 22.2 x 16.8 degrees (its sensor is 6.29 x 4.71 mm: 2 atan(6.29 / 32) across), with the head turned 19 degrees and tilted 44 down onto the doser's cup: a 4:3 close-up of the gripper at work.",
-   "start_frame": 230,
-   "end_frame": 245
+   "caption": "What the HQ Camera sees through the 16 mm lens, 22.2 x 16.8 degrees (its sensor is 6.29 x 4.71 mm: 2 atan(6.29 / 32) across), with the head turned 17 degrees and tilted 50 down onto the multi-doser's vessel shuttle: a 4:3 close-up of the gripper standing the vial on the fork, outside the port in the doser's panel.",
+   "start_frame": 158,
+   "end_frame": 166
   },
   {
    "label": "4/4",
-   "caption": "What the HQ Camera sees through the 16 mm lens, 22.2 x 16.8 degrees (its sensor is 6.29 x 4.71 mm: 2 atan(6.29 / 32) across), with the head turned 19 degrees and tilted 44 down onto the doser's cup: a 4:3 close-up of the gripper at work.",
-   "start_frame": 246,
-   "end_frame": 281
-  },
-  {
-   "label": "4/4",
-   "caption": "What the HQ Camera sees through the 16 mm lens, 22.2 x 16.8 degrees (its sensor is 6.29 x 4.71 mm: 2 atan(6.29 / 32) across), with the head turned 19 degrees and tilted 44 down onto the doser's cup: a 4:3 close-up of the gripper at work.",
-   "start_frame": 282,
-   "end_frame": 327
+   "caption": "What the HQ Camera sees through the 16 mm lens, 22.2 x 16.8 degrees (its sensor is 6.29 x 4.71 mm: 2 atan(6.29 / 32) across), with the head turned 17 degrees and tilted 50 down onto the multi-doser's vessel shuttle: a 4:3 close-up of the gripper standing the vial on the fork, outside the port in the doser's panel.",
+   "start_frame": 167,
+   "end_frame": 192
   }
  ]
 }

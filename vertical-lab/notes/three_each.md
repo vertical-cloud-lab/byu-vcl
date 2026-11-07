@@ -17,7 +17,7 @@ figure (check them before ordering anything).
 | Bambu Lab A1 mini | 1 | 2 | 360 x 296 x 482 as drawn (with spool holder; Bambu's bare printer is smaller) | about 5.5 (spec, unverified) | 150 max | `lab_models/equipment.py`; `services.POWER` (Bambu TDS, snippet) |
 | Bambu Lab A2L | 0 | 3 | 544 x 529 x 505 | 12.8 | **400 (est, not published; the A1's class)** | `a2l.py` on the side branch: Bambu's published envelope and build volume as quoted by 3D Printing Industry, 2026-06-02 |
 
-Five more things need a decision that the arithmetic can't make: the A2L's draw, the H2D's and A1 mini's masses, and
+Three things need a check that the arithmetic can't make: the A2L's draw, the printers' and OT-2's masses, and
 whether each has Ethernet (see Services).
 
 ## The room on a tray
