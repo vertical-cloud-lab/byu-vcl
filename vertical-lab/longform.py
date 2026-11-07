@@ -59,7 +59,7 @@ R2 = "5a39245"
 FIXES = "a34367a"
 # Round 9's two stacked PRs, figures only: #328 (claude/issue-303-edm-orientations), #327 (claude/issue-303-repowder-model)
 EDM = "193778b"
-REPOWDER = "4885eb7"
+REPOWDER = "f9db700"          # #327's second pass (round 10): door, clamps, viewport, a second held-out frame
 
 # ===================================================================================================== the chapters
 # Each chapter: a key, its title (also the YouTube chapter line), the card's lines, and its parts in order. A part is
@@ -195,14 +195,26 @@ CHAPTERS = [
                "checked with FCL against itself, the MiR and everything visible, and planned round obstacles."],
          parts=[("still", "register/before_after.jpg", 16.0, "Each row: a frame of the real machine, the model "
                  "before, the model after refitting", "Fitted to footage of the real machines"),
-                ("gitstill", REPOWDER, "vertical-lab/out/repowder_refine/before_after.jpg", 12.0, "The rePowder "
-                 "refitted to the lab's training video T4: the lid hinges at the back, the latch and bolt are joints "
-                 "(PR #327; chapter 2 still has the old lid)", "The rePowder, refitted to the lab's video (PR #327)"),
+                ("gitstill", REPOWDER, "vertical-lab/out/repowder_refine/before_after.jpg", 18.0, "The rePowder "
+                 "refitted to the lab's training videos: the lid and the chamber door hinge at the back; the latch, "
+                 "bolt and swing-bolt clamps are joints (PR #327; chapter 2 still has the old lid)",
+                 "The rePowder, refitted to the lab's videos (PR #327)"),
                 ("still", "interference_sheet.png", 11.0, "MuJoCo interference check: what was left over after "
                  "the fixes", "MuJoCo interference check"),
                 ("still", "collisions/vlm_workflow_before_after.png", 9.0, "The arm before and after the collision "
                  "check: straight joint moves through the MiR and the holder, then planned round them",
                  "Arm collisions, checked and planned round")]),
+    # Round 10: Sterling (2026-11-07), "maintenance over long-term and how that gets handled in workflows".
+    dict(key="upkeep", title="Maintenance over the long term, inside the workflow",
+         card=["Maintenance is booked into the same schedule as the work: calendar service, consumables by use, "
+               "reference checks the arm runs between jobs with control charts, and failures repaired by a person "
+               "or a vendor. A person's task holds a Shuttle's opening, so the arm moves to the other Shuttle.",
+               "The arm's daily balance check with a reference weight, then a nanoindenter tip changed by a person "
+               "with the tray pulled out on Kardex's extraction table, and a year of it booked."],
+         parts=[("mp4", "upkeep_clip.mp4", None),
+                ("still", "upkeep_year.png", 14.0, "A year of maintenance booked into the lab's schedule: hours by "
+                 "who does it, and each station's availability (a model; notes/upkeep.md says what is assumed)",
+                 "A year of maintenance, booked")]),
     dict(key="finale", title="The whole lab at speed: an hour, a day, a week, a month",
          card=["Everything at once, sped up: the trays cycling, the arm and the atomizer working, the printer "
                "building, then day by day, week by week and month by month, with what the lab has made and "
