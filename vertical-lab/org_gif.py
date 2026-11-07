@@ -1,6 +1,21 @@
 """The org page's GIF, remade in the lab as this branch has it: ``vertical-cloud-lab/.github``'s
 ``profile/vertical-lab.gif`` ("In a vertical lab, equipment is brought to the operator", PR #318).
 
+Round 6 (PR #329, Sterling, 2026-11-07: "the atomizer melting furnace area seems to be misproportioned (maybe just
+rotated 90 degrees?). The opening lid ends up intersecting with the furnace behind it ... Instead of having a separate
+motion thing going on for getting the crucibles to the right spot, instead the arm should use some kind of gripper
+attachment to get it in then, unless the gripper could actually reach in with enough clearance, which would be ideal"):
+- the rePowder's cabinet (``repowder/model.py``: CAB_STEP_X, CAB_FWD_Y, LID_BAY) is tall only to the furnace's right
+  and comes forward there, beside it, with a bay behind the furnace that the lid, hinged at the back, opens into. The
+  model's one box had stood across the furnace's whole width, 11 mm behind the lid's hinge, so the open lid stood
+  about 175 mm inside it; T1 30:13 and T4 1:53, 5:08, 5:41 and 6:05 show the cabinet as now drawn. With it, PR #327's
+  second pass (the door hinged at the back, the front clamps, the viewport, the panel's keys);
+- the doser's vessel shuttle is left out: the arm carries the cup in on a cup fork (FORK_L ..., fork_meshes), since the
+  2F-85 itself can't reach the pedestal (its knuckles span 127-138 mm; the way in, between the doser's frame post and
+  its station post, is 117 mm). The fork waits on a rest outside the -y panel, its seat where the shuttle took the cup;
+  the arm stands the cup on it, takes the fork by its handle, carries the cup in over the balance and lets it down onto
+  the pedestal, takes the fork back out while the doser doses, and back in to take the cup off again.
+
 Round 5 (PR #329, Sterling, 2026-11-07: "it wasn't zoomed out enough for the multi-doser to see it was using
 multiple powders. Also, that's a really high distance between the cup and the nozzle. Put the cup on some kind of
 pedestal so that it's much closer. Also, show the trays being loaded with some equipment before bringing the arm in to
@@ -20,11 +35,12 @@ do some workflows"), on round 4's ("you should have started backed off to see th
    shuttle. The camera pulls back to take in the doser's chain of 13 powder modules: the four that hold a powder in
    chapter 1 drawn in their powders' colours, two of them labelled as they ride it (Modules). For each powder, Si
    (3.92 g, 26.8 mm up the bore) and then the AlSi10Mg top-up (3.91 g, to 46.1 mm): the chain brings the module to the
-   station, the electronics carriage docks and tilts it, and only then does the shuttle carry the cup in over the
-   balance and set it on a tall pedestal (HIGH_SEAT), its rim 34 mm under the auger's exit; the camera goes in to it
-   (CUP_OFF), the doser doses it by weight, and the shuttle takes it back out so that the carriage can park for the
-   next index. The cup is drawn cut open while it fills. The arm stands it in a pocket of
-   the cup carrier on the MiR's cabinet (chapter 2's carrier);
+   station, the electronics carriage docks and tilts it, and only then does the arm carry the cup in over the balance
+   on its cup fork (round 6; round 5 had the doser's shuttle do it) and let it down onto a tall pedestal (HIGH_SEAT),
+   its rim 34 mm under the auger's exit; the camera goes in to it (CUP_OFF), the doser doses it by weight, and the fork
+   takes it back out so that the carriage can park for the next index. The cup is drawn cut open while it fills. The
+   arm puts the fork back on its rest and stands the cup in a pocket of the cup carrier on the MiR's cabinet
+   (chapter 2's carrier);
 4. tray B goes back up while the MiR drives to the rePowder (PR #327's refined model: its lid hinged at the back, the
    draw latch and the pneumatic locking bolt as joints, ``repowder/model.py``);
 5. at the rePowder, the bolt goes back, the arm pulls the latch's lever out (LATCH_U of its swing) and lifts the lid
@@ -49,7 +65,8 @@ Drawn differently for this shot only (all drawing choices):
   rePowder, a unit drives in from the left. The targets the MiR's drive to the rePowder would run over (the sieving
   cell's and the rePowder's) are left out, and so are the south row's, in the wide view's foreground (floor_edits).
 - The doser's pedestal, its vessel shuttle and the port in its -y panel are ours (``carousel.py``), and for this shot
-  they are drawn as a proposal, not as chapter 1 has them (HIGH_SEAT, high_pedestal). In v5 the cup's rim stands
+  they are drawn as a proposal, not as chapter 1 has them (HIGH_SEAT, high_pedestal; round 6: no shuttle, the arm's
+  cup fork and its rest instead, add_fork). In v5 the cup's rim stands
   153 mm under the auger's exit: the electronics carriage parks 35 mm over the balance's top, so a cup carried in
   through the side door can stand no higher. Once the carriage has docked and tilted the module, it has swung clear:
   a sweep of the fork's path over the balance then meets only the -y acrylic panel, so the port there goes up to
@@ -175,6 +192,24 @@ HIGH_SEAT = 338.0                # the cup's foot on the tall pedestal, rig fram
                                  # comes down to 344.8 mm within 25 mm of the pan's axis: the pedestal's top clears it
 HIGH_PORT = (0.0, 67.0, 100.0, 420.0)   # the -y panel's port (x0, x1, z0, z1; v5's ours: z up to 300), for the fork,
                                  # the cup on it (up to 409.5 mm, carried) and the fork's column
+# round 6 (Sterling, PR #329, 2026-11-07: "Instead of having a separate motion thing going on for getting the crucibles
+# to the right spot, instead the arm should use some kind of gripper attachment to get it in then, unless the gripper
+# could actually reach in with enough clearance, which would be ideal"). The gripper can't: the 2F-85's knuckles span
+# 127-138 mm, and the way in passes between the doser's frame post and its station post, 117 mm apart (carousel.py).
+# So the vessel shuttle is left out, and the arm carries the cup in on a cup fork (ours, assumed design): the shuttle's
+# fork made a hand tool, its blade long enough that the gripper stays outside the -y panel, on a handle post that the
+# pads clamp (19 mm across, as the loading tong's handle). It waits on a rest outside the panel, its seat where the
+# shuttle took the cup from the arm (carousel.Y_HAND), so the arm's place and pick of the cup there are round 5's.
+FORK_L = 285.0          # the blade, back end to tip: with the cup on the pedestal, the handle stands 41 mm off the panel
+FORK_HANDLE_H = 120.0   # the handle post, over the blade's top
+FORK_HANDLE = (19.0, 24.0)   # the post's section (x, across which the pads clamp; y)
+FORK_GRASP = 18.0       # the pads' centre, under the post's top
+FORK_LIFT = 2.0         # the fork comes up this far off its rest
+FORK_BACK = 30.0        # it backs out this far under the cup before it rises or drops clear of the cup's foot
+FORK_GAP = 0.2          # the cup is let onto the pedestal, and taken back, this far over it (no contact while held)
+FORK_LIP = (10.0, 12.5, 2.5)   # the lip round the cup's foot on each tine: inner and outer radius, height
+REST_Y = -400.0         # the fork's rest, rig frame: a post under the blade's middle, outside the -y panel
+GRIP_FORK, OPEN_FORK = 0.80, 0.62
 
 
 def _load_s1() -> dict:
@@ -204,6 +239,67 @@ def high_pedestal():
         out["panel_side"] = CR._cut_port(out["panel_side"])
         return out
     CR.part_meshes = part_meshes
+
+
+def fork_meshes() -> dict:
+    """The cup fork and its rest (FORK_L ...): {name: (mesh, colour, group)}. The fork in its own frame (origin the
+    seat's centre on the blade's top, y along the blade to its tip, z up), group "cupfork"; the rest in the rig's frame,
+    group None (the caller puts it in the rig's group)."""
+    import pyvista as pv
+
+    import carousel as CR
+    box = lambda *b: pv.Box(bounds=b).triangulate()        # noqa: E731
+    w, t, sw, sl = CR.FORK_W / 2, CR.FORK_T, CR.SLOT_W / 2, CR.SLOT_L / 2
+    yb = -(FORK_L - sl)                                    # the blade's back end
+    hx, hy = FORK_HANDLE[0] / 2, FORK_HANDLE[1]
+    blade = pv.merge([box(-w, w, yb, -sl, -t, 0.0), box(-w, -sw, -sl, sl, -t, 0.0), box(sw, w, -sl, sl, -t, 0.0)])
+    r0, r1, h = FORK_LIP
+    lip = []
+    for side in (-1, 1):                                   # an arc on each tine, clear of the slot
+        a0 = math.acos(min(1.0, (sw + 0.5) / r0))
+        for a in np.linspace(-a0, a0, 8)[:-1]:
+            b = a + 2 * a0 / 7
+            c, s_ = math.cos((a + b) / 2), math.sin((a + b) / 2)
+            m = box(r0, r1, -r0 * (b - a) / 2 - 0.4, r0 * (b - a) / 2 + 0.4, 0.0, h)
+            m.rotate_z(math.degrees((a + b) / 2) + (180.0 if side < 0 else 0.0), inplace=True)
+            lip.append(m)
+    post = pv.merge([box(-hx, hx, yb, yb + hy, -t, FORK_HANDLE_H),
+                     box(-4.0, 4.0, yb + hy, yb + hy + 45.0, 0.0, 30.0)])     # and a web to the blade
+    cap = box(-12.0, 12.0, yb - 2.0, yb + hy + 2.0, FORK_HANDLE_H, FORK_HANDLE_H + 8.0)
+    steel, dark = (0.66, 0.68, 0.71), (0.20, 0.21, 0.24)
+    x = float(CR.PAN_XY[0])
+    z0 = CR.SEAT_Z + CR.SEAT_LIFT - t                     # the blade's underside, resting
+    rest = pv.merge([box(x - 10, x + 10, REST_Y - 10, REST_Y + 10, 0.0, z0 - 6.0),
+                     box(x - w - 6, x + w + 6, REST_Y - 40, REST_Y + 40, z0 - 6.0, z0),
+                     box(x - w - 6, x - w - 1.5, REST_Y - 40, REST_Y + 40, z0, z0 + 8.0),
+                     box(x + w + 1.5, x + w + 6, REST_Y - 40, REST_Y + 40, z0, z0 + 8.0),
+                     box(x - 40, x + 40, REST_Y - 40, REST_Y + 40, 0.0, 6.0)])
+    return {"cupfork/blade": (pv.merge([blade, *lip, post]), steel, "cupfork"),
+            "cupfork/handle": (cap, dark, "cupfork"),
+            "cupfork/rest": (rest, (0.30, 0.32, 0.36), None)}
+
+
+def fork_grasp_local() -> np.ndarray:
+    """The 2F-85's grasp of the fork's handle, in the fork's frame: pointing down the post, the pads across its x."""
+    G = np.eye(4)
+    G[:3, 0], G[:3, 1], G[:3, 2] = (1.0, 0.0, 0.0), (0.0, -1.0, 0.0), (0.0, 0.0, -1.0)
+    G[:3, 3] = (0.0, -(FORK_L - 15.0) + FORK_HANDLE[1] / 2, FORK_HANDLE_H - FORK_GRASP)
+    return G
+
+
+def add_fork(sc, K):
+    """The cup fork on its rest, riding the doser's rig (so tray B's load brings it in with the doser); the vessel
+    shuttle (its rail, carriage, column and fork) left out: hidden, it is out of the audit's world too."""
+    import carousel as CR
+    from scene import T
+    for nm, (mesh, col, grp) in fork_meshes().items():
+        sc.add(nm, mesh, col, grp or K.rig, specular=0.5)
+    sc.parent["cupfork"] = K.rig
+    sc.gmat["cupfork"] = T((float(CR.PAN_XY[0]), CR.Y_HAND, CR.SEAT_Z + CR.SEAT_LIFT))
+    for nm in list(sc.actors):
+        if "ours_shuttle" in nm:
+            sc.alpha[nm] = 0.0
+            sc.base_alpha[nm] = 0.0
 
 
 class Load:
@@ -448,6 +544,7 @@ def build(data):
     for nm in ("vial/glass", f"{L.eq_groups['B'][0]}/rack", f"{L.eq_groups['B'][0]}/vials"):
         sc.base_alpha[nm] = 0.0
     sc.parent["stream"] = K.rig
+    add_fork(sc, K)                                    # the cup fork on its rest; the vessel shuttle left out (round 6)
     L.powder_h = L.liquid_h = 0.0
     L.set_fill()
     # the rePowder by its parts; the merged copy goes
@@ -1102,39 +1199,103 @@ def movie():
         return up
 
     turned = []
+    lbl_fork = ("the cup fork, a tool for the gripper\n(it can't reach in)", tuple(K._w(K.rig, (float(CR.PAN_XY[0]),
+                REST_Y, 380.0))), (0.02, 0.80))
+    # the fork's seat (its frame's origin, on the blade's top), rig frame: carried level, at z_hover; let down until
+    # the cup's foot is FORK_GAP over the pedestal; 4 mm clear under its foot; FORK_GAP under it, to take it
+    px, py = float(CR.PAN_XY[0]), float(CR.PAN_XY[1])
+    z_rest = CR.SEAT_Z + CR.SEAT_LIFT
+    z_hover = z_rest + FORK_LIFT
+    z_let, z_take = CR.SEAT_Z + FORK_GAP, CR.SEAT_Z - FORK_GAP
+    z_under = CR.SEAT_Z - (CR.FORK_DROP - CR.SEAT_LIFT)
+
+    def fork_to(y, z):
+        """A straight move of the held fork, level, to its seat at (px, y, z) in the rig's frame."""
+        return rb.line_to(sc.world(K.rig) @ T((px, y, z)) @ G_fork[0])
+
+    def reset_held():
+        """The cup has gone onto or off the held fork: the checkers re-read what the arm is holding."""
+        for chk in [rb._checker] + list(getattr(sc.auditor, "checkers", {}).values()):
+            if chk is not None:
+                chk.held_group = None
+
+    G_fork, on_seat = [], []
+
+    def fork_grasp():
+        """The handle's grasp (world), the pads across the post's x or, if the arm can't reach that, its other way
+        round; picked once, nearest the arm's joints now."""
+        if not G_fork:
+            best = None
+            for flip in (False, True):
+                G = fork_grasp_local() @ (R((0, 0, 1), 180.0) if flip else np.eye(4))
+                try:
+                    q = rb.solve(sc.world("cupfork") @ G, rb.q)
+                except ValueError:
+                    continue
+                d = float(np.abs(q - rb.q).max())
+                if best is None or d < best[0]:
+                    best = (d, G)
+            G_fork.append(best[1] if best else fork_grasp_local())
+        return sc.world("cupfork") @ G_fork[0]
 
     def cup_in():
-        """The shuttle carries the cup in over the balance and sets it on the pedestal, the fork 4 mm under it; the
-        camera in to the cup."""
-        yield 1.6 * f, lambda: both(car.to(shuttle=0.0), cam_up(sc, "cup"))
-        yield 0.4 * f, lambda: car.to(fork=A.SET_U)
-        car.reparent(cg, K.rig)
+        """The arm carries the cup in on the fork over the balance and lets it down onto the pedestal; the fork drops
+        clear under its foot, backs out from under it, rises and comes back out past the -y panel. The camera goes in
+        to the cup."""
+        yield 1.6, lambda: both(fork_to(py, z_hover), cam_up(sc, "cup"))
+        yield 0.5, lambda: fork_to(py, z_let)
+        Mw = sc.world(cg)
+        p = Mw[:3, 3] - np.array([0.0, 0.0, FORK_GAP])          # onto the pedestal
         if not turned:
             # set down with its cut face (charge.cup(cut=True) keeps the +y half) to the dose view: a whole cup looks
             # the same whichever way it is turned about its axis
-            Mw = sc.world(cg)
-            sc.gmat[cg] = AT.inv(sc.world(K.rig)) @ T(Mw[:3, 3]) @ R((0, 0, 1), cut_face())
+            Mw = T(p) @ R((0, 0, 1), cut_face())
             turned.append(True)
+        else:
+            Mw = Mw.copy()
+            Mw[:3, 3] = p
+        sc.parent[cg] = K.rig
+        sc.gmat[cg] = AT.inv(sc.world(K.rig)) @ Mw
+        reset_held()
         K.cut(CUP, True, sleeve=None)
-        yield 0.3 * f, lambda: car.to(fork=1.0)
+        yield 0.3, lambda: fork_to(py, z_under)
+        yield 0.4, lambda: fork_to(py - FORK_BACK, z_under)
+        yield 0.3, lambda: fork_to(py - FORK_BACK, z_hover)
+        yield 1.3, lambda: fork_to(CR.Y_HAND, z_hover)
 
     def cup_out(cam="dose", whole=False):
-        """The fork lifts the cup off the pedestal and the shuttle takes it back out, past the -y panel; the camera
-        back out to `cam` (whole: the cup drawn whole again, its last dose in)."""
-        yield 0.3 * f, lambda: car.to(fork=A.SET_U)
-        car.reparent(cg, car.fork_group)
+        """The fork back in, short of the cup; down, and in under its foot round the pedestal's neck; up to take it
+        off the pedestal, and out past the -y panel. The camera back out to `cam` (whole: the cup drawn whole again,
+        its last dose in)."""
+        yield 1.3, lambda: fork_to(py - FORK_BACK, z_hover)
+        yield 0.3, lambda: fork_to(py - FORK_BACK, z_under)
+        yield 0.4, lambda: fork_to(py, z_under)
+        yield 0.3, lambda: fork_to(py, z_take)
+        Mw = sc.world(cg)
+        sc.parent[cg] = "cupfork"
+        sc.gmat[cg] = AT.inv(sc.world("cupfork")) @ Mw
+        reset_held()
         if whole:
             K.cut(CUP, False, sleeve=None)
-        yield 0.4 * f, lambda: car.to(fork=0.0)
-        yield max(1.4, 1.5 * f), lambda: both(car.to(shuttle=1.0), cam_up(sc, cam))
+        yield 0.5, lambda: fork_to(py, z_hover)
+        sc.gmat[cg][:3, 3] = on_seat[0]                         # on the seat (it was taken FORK_GAP under its foot)
+        yield max(1.4, 1.5 * f), lambda: both(fork_to(CR.Y_HAND, z_hover), cam_up(sc, cam))
 
     def at_B():
-        yield from call(lambda: (phase("The arm stands an empty charge cup on the doser's shuttle."),
-                                 labels(lbl_arm, lbl_B, lbl_rack)))
+        yield from call(lambda: (phase("The arm stands an empty charge cup on its cup fork: its gripper can't reach "
+                                       "into the doser."), labels(lbl_arm, lbl_B, lbl_rack, lbl_fork)))
         yield from pick(rb, A.down(p_rack, spin=0.0), A.down(p_rack + (0, 0, 110), spin=0.0), cg, GRIP_CUP, OPEN_CUP)
-        yield from place(rb, A.down(p_hand, spin=180.0), A.down(p_hand + (0, 0, 120), spin=180.0), car.fork_group,
+        yield from place(rb, A.down(p_hand, spin=180.0), A.down(p_hand + (0, 0, 120), spin=180.0), "cupfork",
                          OPEN_CUP)
-        yield 1.4, lambda: both(rb.joint_to(A.PARK_RAD), cam_up(sc, "dose"))
+        on_seat.append(sc.gmat[cg][:3, 3].copy())          # the cup standing on the fork's seat, in the fork's frame
+        # the fork by its handle, off its rest; the camera back to take in the doser's chain
+        yield ARM_S[0], lambda: both(rb.joint_to(Tw=T((0, 0, 100)) @ fork_grasp()), rb.grip_to(OPEN_FORK),
+                                     cam_up(sc, "dose"))
+        yield HOLD, None
+        yield ARM_S[1], lambda: rb.line_to(fork_grasp())
+        yield ARM_S[2], lambda: rb.grip_to(GRIP_FORK)
+        rb.grasp("cupfork")
+        yield 0.4, lambda: fork_to(CR.Y_HAND, z_hover)
         yield from call(lambda: labels(*lbl_mods, lbl_chain))
         for layer, pname, h0, h1, text in (
                 (0, "Si", 0.0, h_si, f"One powder in each module: the chain brings the Si to the balance, and "
@@ -1158,13 +1319,19 @@ def movie():
             K.cut(CUP, True, sleeve=None)
             yield 0.3, None
             yield from cup_out("dose" if layer == 0 else "trayB", whole=layer == 1)
-            yield from call(lambda: labels(*lbl_mods, lbl_chain) if layer == 0 else labels(lbl_arm, lbl_B))
+            yield from call(lambda: labels(*lbl_mods, lbl_chain) if layer == 0 else labels(lbl_arm, lbl_B, lbl_fork))
             yield 1.0 * f, lambda: car.to(tilt=0.0)
             yield 0.7 * f, lambda: car.to(spin=car.state["spin"] - 2 * math.pi)
             yield 0.9 * f, lambda: car.to(ext=0.0, magnet_on=False)
         K.cut(CUP, False, sleeve=None)
-        yield from call(lambda: (phase("The arm stands the charged cup in the carrier on the robot."),
-                                 labels(lbl_arm, lbl_B)))
+        # the fork back on its rest, and the cup off it into the carrier on the MiR
+        yield from call(lambda: (phase("The arm puts the fork back, and stands the charged cup in the carrier on the "
+                                       "robot."), labels(lbl_arm, lbl_B, lbl_fork)))
+        yield 0.4, lambda: fork_to(CR.Y_HAND, z_rest)
+        yield ARM_S[2], lambda: rb.grip_to(OPEN_FORK)
+        rb.release(K.rig)
+        yield HOLD, None
+        yield ARM_S[3], lambda: rb.line_to(T((0, 0, 100)) @ rb.tcp_world())
         yield from pick(rb, A.down(p_hand, spin=180.0), A.down(p_hand + (0, 0, 120), spin=180.0), cg, GRIP_CUP,
                         OPEN_CUP)
         p_car = K.carrier_seat(CARRIER_K) + (0, 0, GRASP_DOWN)
