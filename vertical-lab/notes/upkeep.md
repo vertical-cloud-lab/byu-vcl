@@ -29,7 +29,8 @@ Over a modelled year:
 - **Alloys.** The lab fully tests **304 alloys a year with upkeep and failures, against 324 with none** (354 atomized
   against 378).
 - **What causes the gap.** Planned upkeep alone costs nothing measurable, because it fits round the atomizer's staffed
-  run slots, which set the pace. The failures cost the 20.
+  run slots, which set the pace. The failures cost the 20. That is the unlucky seed: seven others give 312-321
+  ([caveats](#caveats)).
 - **On call.** Someone on call for faults at night would win back 7 of them.
 
 Everything here is a model. 72 of the 121 tasks and all 28 failure modes have assumed intervals or rates; the 49 with
@@ -253,8 +254,13 @@ A rate we have no figure for is a guess, and is labelled as one.
 
 ## Caveats
 
-- **One seed, one year.** The failures are random draws (seed 303). Another seed moves the totals by a few alloys,
-  not the conclusions.
+- **One seed, one year, and seed 303 is the unlucky one.** The failures are random draws. Over seeds 1-7 the same
+  model fully tests 312-321 alloys, not 304: the failures cost 3-12 alloys, not 20. Seed 303's year has the rare part
+  from AMAZEMET in it, a 3,000 h MTBF.
+  - Steady across seeds: the person's mean week (31.0-31.8 h).
+  - Not steady: the busiest week, 36-41 h, which in one seed is over the 40 h shift; the units' availability,
+    92.4-96.3 %; the atomizer's, 95.1-98.5 %.
+  - The figures here are seed 303's, the ones the finale shows.
 - **No holidays, no sickness, no learning curve.** The ramp is only the atomizer's commissioning weeks.
 - **A repair's time is the person's hands-on time.** Diagnosis by phone, a vendor's travel and parts shipping are in
   the waits.
