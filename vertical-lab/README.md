@@ -98,12 +98,14 @@ own files are unchanged.
     at 900 px 51.0 MB.
   - No lossy compression, so the loop doesn't flicker at the seam; still parts are held still (`ORG_STICKY`, 8 levels
     of 255).
-- **The arm audit: 0 of 884 checked frames in collision**
+- **The arm audit: 0 of 1206 checked frames in collision**
   ([`out/collisions/org_vertical_lab.json`](out/collisions/org_vertical_lab.json)). It checked every frame where the
-  arm had moved (its joints, its MiR's pose or what it holds), and every 12th while it stood still (`still_skip`,
-  `ORG_STILL_EVERY`). It stands still only parked: beside the opening while the trays are loaded and the cup melts,
-  and at the opening while the doser doses, 300 mm and more from the doser's shuttle. It ran as three passes over
-  frame ranges side by side (`ORG_AUDIT_PART`), joined by the auditor's own rules (`python3 org_gif.py audit_join`).
+  arm had moved (its joints, its MiR's pose or what it holds, the cup fork and the cup on it included), and every 12th
+  while it stood still (`still_skip`, `ORG_STILL_EVERY`). It stands still only parked: beside the opening while the
+  trays are loaded and the cup melts, at the opening while the chain indexes, and holding the fork outside the −y
+  panel while the doser doses. It ran as three passes over frame ranges side by side (`ORG_AUDIT_PART`), joined by
+  the auditor's own rules (`python3 org_gif.py audit_join`). The cup is let onto the pedestal and taken back 0.2 mm
+  over it (`FORK_GAP`), so that while it rides the held fork it touches nothing but the fork.
 - **Choices worth checking** (round 4's still stand: one cup, no plug, the lid open at 90°, one arm on the latch and
   the lid, the latch's lever at half its travel):
   - **The rePowder's cabinet round the furnace is fitted by eye** to the footage: where it steps up (x = 198 mm, the
