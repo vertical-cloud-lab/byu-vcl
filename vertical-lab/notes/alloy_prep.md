@@ -270,3 +270,36 @@ MiR's cabinet (57), plus a held 320/400 disc against the polisher body (25). The
 onto the head (the planner logs "line move would flip the arm... end pose in collision") and in the disc changes. Not fixed:
 the queue left no time to re-plan and re-render. The close-up camera on the pistons (`cam_pist`) was added after the
 only preview and was not previewed; the render is its first sight. The polisher tour clip was not re-rendered.
+
+## Round 10 (#303, 2026-11-07): the arm's moves made physically possible
+
+Round 9's audit (`ARM_AUDIT=1`) had **456 of 3,539 frames in collision**. Every one was traced, with a pose
+server (`PREP_SERVE=mount,polish`, below) that holds the built scene and tests IK branches and straight tool lines
+against it in seconds instead of a rebuild:
+
+| Where | What hit what (round 9) | Why | Fix |
+|---|---|---|---|
+| MX400, the coupon onto the ram, the stopper in and out, the mount off the ram (51 frames) | the wrist camera against the press's body | the D405 rides on one side of the coupling; with the gripper at spin 0 over the mold it ran into the press in **all 4** IK branches | the gripper turned 180 deg over the mold (`SPIN_MOLD`): 4 of 4 branches clear (45-270 deg all are) |
+| PX500, every disc lifted off or onto the platen (the held disc against the body) | the held disc against `F0_polisher:body` | **the head's column stood inside the bowl**, 95 mm behind its centre (the model's `cy = hy + head_back - 40`), from the deck up to the head. A 300 mm disc lifted above the deck ran into it; below the deck the bowl's lip stops a level slide. As modelled, no disc could come or go under the head at any height. | the column moved behind the bowl's lip (268 mm behind the bowl's centre, still inside the PX500's footprint); the head reaches it by an arm and slides on it (a slide drawn with the head, so the column stays below the head when it lifts). **Assumed**: a grinder-polisher's power head is carried from behind the wheel; the column is hidden behind the head in the SOP frames the model was fitted to. |
+| PX500, the holder onto and off the head | the held holder against the pistons | the pistons, "up", hung 4 mm into the holder's apertures, so the holder could not slide onto the coupling under them | the pistons' up gap 5 -> 12 mm (`r8_prep.PIST_GAP`): their feet clear the holder's back by 3 mm; pressed is where it was |
+| PX500, the disc changes (most of Polish's 405 frames) | the forearm into the gripper (270), the upper arm through the bay's frame (114) and into the MiR's cabinet (57), wrist 3 | each move followed the IK branch the last one left the arm in, and the transfer was one 2-metre straight line of the gripper from the magazine (tray F's right end) to the platen (its left), through the furnace's corner and the bay's frame | every approach is now a joint move into an IK branch from which the straight lines that follow are all clear and don't flip: in, the lift, out with the disc held, and the retreat after letting go (`clear_branch`, after `alloy_charge.py`'s `pre()`). The transfer between magazine and platen is a planned joint move with the disc held, not a straight line. The holder's moves onto and off the head use the same. |
+| the magazine (1+2 frames) | a held disc against the disc above or below | lifted 8 mm off its rails, a disc's handle (92 mm tall) met the ring of the disc 100 mm above | lifted 4 mm (`LIFT_MAG`); off the platen 70 mm (`LIFT_POL`, was 62): over the bowl's lip (51 mm) and under the lifted holder's mounts (128 mm) |
+
+What the probe found at the MiR's stop for the PX500 (Shuttle 1's dock, x = 0), the arm's base 1.09 m from the
+magazine's handles and 0.63 m from the platen's handle (horizontally): the magazine's shelves have 2 to 5 clear IK
+branches of 8 for the whole in-lift-out sequence (the bottom shelf 2); the platen's level approach from the front (470
+mm out, 70 mm up) had **none** while the column stood in the bowl and has 2 without it. The preview (`PREVIEW=1`) then
+ran with no "no IK branch" note and no joint move left unplanned. The magazine, the MiR's stops and the chapter's
+content and captions are as in round 9.
+
+**The audit is now part of the render.** A full render of the chapter also runs `collide.Auditor` on its own frames
+(`PREP_AUDIT_RENDER=0` to skip) and writes `out/collisions/alloy_prep.json`, so the numbers are for the very frames of
+the MP4 and need no second pass through the chapter (round 10 had three render slots for six streams).
+
+**The pose server, for the next session.** `PREP_SERVE=mount,polish ARM_AUDIT=1 VIZ3D_FPS=1 VLAB_ONLY_TRAYS=FM
+xvfb-run -a python3 alloy_prep.py` runs the movie quickly to the start of the MX400 or the PX500 and then executes each
+new `/tmp/prep_srv/*.py` in the movie's namespace (output to `*.out`) until `/tmp/prep_srv/next` exists. It is how the
+column was found: the held disc hit `F0_polisher:body/inst_grey1` (the bowl and the column, one mesh) at every lift.
+
+Not re-rendered: the polisher's tour clip (`out/instruments/polisher.*`) still shows the column in the bowl and the
+pistons' old gap.
