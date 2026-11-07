@@ -448,6 +448,53 @@ def build():
     return sc, L, rigs, W, E, amr, sv, mo
 
 
+def fast_collisions(sc, rb, xs, ys, reach=2800.0):
+    """As alloy_characterize.fast_collisions (round 10): the arm's collision world (collide.World) is what it can
+    reach, everything within `reach` of the MiR's path (the x span of `xs` along each of the lines `ys`), our parts
+    included. The planner and the audit see the same world, so the paths are the same; World.refresh otherwise asks VTK
+    about every actor of the two-Shuttle floor every frame, about 2 s a frame in the audit. Only this chapter's arm is
+    audited."""
+    import collide as CL
+    x0, x1 = min(xs), max(xs)
+    px = np.linspace(x0, x1, 1 + int(math.ceil((x1 - x0) / 250.0)))
+    bases = np.array([(x, y) for y in ys for x in px])
+    only, known = {}, set(sc.actors)
+
+    def near(name, actor):
+        g = sc.group_of.get(name)
+        inp = actor.GetMapper().GetInput()
+        if inp is None or inp.GetNumberOfPoints() == 0:
+            return False
+        b = np.array(inp.GetBounds()).reshape(3, 2)
+        c = np.array([[b[0, i], b[1, j], b[2, k]] for i in (0, 1) for j in (0, 1) for k in (0, 1)])
+        w = (sc.world(g) @ np.c_[c, np.ones(8)].T).T[:, :3]
+        lo, hi = w.min(axis=0), w.max(axis=0)
+        d = np.linalg.norm(np.maximum(np.maximum(lo[:2] - bases, bases - hi[:2]), 0.0), axis=1).min()
+        return d < reach and lo[2] < reach + 1000.0
+
+    for name, actor in sc.actors.items():
+        if near(name, actor):
+            only[name] = actor
+
+    class FastWorld(CL.World):
+        def refresh(self):
+            full = self.sc.actors
+            if len(full) != len(known):                     # actors added since: keep those near too
+                for name in set(full) - known:
+                    known.add(name)
+                    if near(name, full[name]):
+                        only[name] = full[name]
+            self.sc.actors = only
+            try:
+                CL.World.refresh(self)
+            finally:
+                self.sc.actors = full
+
+    sc._collide_world = FastWorld(sc)
+    sc.robots = [r for r in getattr(sc, "robots", []) if r is rb]
+    print(f"collision world: {len(only)} of {len(sc.actors)} actors", flush=True)
+
+
 # ------------------------------------------------------------------------------------------------- moves
 def level_y(p, spin):
     """Gripper level, pointing along +y (towards the machines), turned `spin` degrees about its own axis."""
@@ -506,6 +553,7 @@ def movie():
     x_sv = sv_c[0] + 60.0                                                     # MiR at the bench
     y_sv = AW.MIR_Y + CELL_DY
     y_aco = AW.MIR_Y + ACO_DY
+    fast_collisions(sc, rb, (START[0], x_sv, x_sv + 900.0, aco_x, MIR_END), (START[1], AW.MIR_Y, y_sv, y_aco))
 
     CAM_RP = [(START[0] + 2300, -6400, 2600), (START[0] + 900, -1500, 900), (0, 0, 1)]
     CAM_SV = [tuple(sv_c + (-1250, -1650, 1250)), tuple(sv_c + (0, -120, 420)), (0, 0, 1)]
@@ -1062,10 +1110,12 @@ def movie():
     rb.grasp("bottle")
     sc.step(f"4/{n}", cap, 0.8, rb.line_to(level_y(seat_now + (0, 0, 150), 0.0)), hold=0.05)
     door_front = W.world(np.array(M.door_pivot()))[1]
-    # the jar's foot 32 mm over the chamber floor (the grasp is 58 mm up the jar), 60 mm short of the supply's axis:
-    # tipped, the mouth is over the cylinder
-    p_in0 = np.array([sup[0] - 60.0, door_front - 150.0, sup[2] + 90.0])
-    p_pour = np.array([sup[0] - 60.0, sup[1] - 60.0, sup[2] + 90.0])
+    # the jar's foot 17 mm over the chamber floor (the grasp is 58 mm up the jar), 60 mm short of the supply's axis:
+    # tipped, the mouth is over the cylinder. Round 10: 15 mm lower than round 8's 32 mm. With the door lifted to 165
+    # deg over the opening (round 9), the forearm's top met its lower edge going in and coming out (6 frames); a probe
+    # of every IK branch found the line in clear 10 and 20 mm lower, and no branch clear at the old height
+    p_in0 = np.array([sup[0] - 60.0, door_front - 150.0, sup[2] + 75.0])
+    p_pour = np.array([sup[0] - 60.0, sup[1] - 60.0, sup[2] + 75.0])
     # round 8: to the door in the IK branch that is clear at the cylinder (alloy_workflow.branch_q), then straight in.
     # Round 7 went in by a planned joint move from the branch it had at the door, which the planner couldn't route
     # through the 280 mm opening, so its fallback put the forearm in the base cabinet (97 frames)
