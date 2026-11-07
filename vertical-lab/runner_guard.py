@@ -24,6 +24,8 @@ in continuation 2; it left a slot and three cores idle behind a single-threaded 
 Light work (matplotlib panels, JSON, notes) needs no slot.
 
 * Slots are flock()ed files under /tmp/vlab_slots, so a slot frees itself when its process dies, however it dies.
+* Round 10: a waiter further back may go past waiters that are held up only by memory (backfill), unless one of
+  them has waited 15 minutes (see may_start). `status` lists the waiters.
 * Waiters queue in arrival order, except that `--quick` jobs (a PREVIEW=1 still, a tour still: a few minutes) go
   ahead of normal ones, and a normal job that has waited 20 minutes counts as quick. (Until 17:30 on 2026-11-05 it
   was a plain first-come turnstile, and a two-minute preview waited a quarter of an hour behind three renders.)
@@ -77,10 +79,13 @@ def log(path: Path, msg: str):
 
 QUEUE = SLOT_DIR / "queue"
 PROMOTE_S = 20 * 60          # a normal job waiting longer than this goes ahead of quick ones that came later
+BACKFILL_S = 15 * 60         # a job ahead that has waited this long without fitting stops others going past it
 
 
-def queue_rank(ticket: Path) -> int:
-    """This waiter's place among the live waiters: quick jobs first, then by arrival; a long wait counts as quick."""
+def waiters() -> list[tuple[str, int, float]]:
+    """The live waiters in queue order (quick jobs first, then by arrival; a long wait counts as quick), each as
+    (ticket name, MB it needs, when it arrived). A ticket's text is JSON with its need since round 10; an older
+    plain-text ticket counts as needing the default."""
     live = []
     for t in QUEUE.iterdir():
         try:
@@ -91,11 +96,41 @@ def queue_rank(ticket: Path) -> int:
             ts, prio = float(ts), int(prio)
         except (ValueError, OSError):
             continue
+        try:
+            need = int(json.loads(t.read_text()).get("need", MEM_PER_WEIGHT))
+        except (OSError, ValueError, AttributeError):
+            need = MEM_PER_WEIGHT
         eff = 0 if time.time() - ts > PROMOTE_S else prio
-        live.append((eff, ts, t.name))
+        live.append((eff, ts, t.name, need))
     live.sort()
-    names = [n for _, _, n in live]
+    return [(n, need, ts) for _, ts, n, need in live]
+
+
+def queue_rank(ticket: Path) -> int:
+    """This waiter's place among the live waiters (see waiters())."""
+    names = [n for n, _, _ in waiters()]
     return names.index(ticket.name) if ticket.name in names else 0
+
+
+def may_start(ticket: Path, need: int, free: int, avail: int) -> tuple[bool, int]:
+    """Whether this waiter may take a slot now, and its place in the queue.
+
+    In order, as before: it goes when fewer waiters are ahead of it than there are free slots and the memory covers
+    its need. Round 10 adds backfill: a waiter further back may also go when the waiters ahead of it that would fit
+    in the memory now are fewer than the free slots, i.e. the ones ahead are only held up by memory. That stops a
+    whole-lab job needing 6.5 GB from keeping a free slot idle behind it (25 slot-minutes in round 9). So that a big
+    job isn't passed for ever, backfill stops once a waiter ahead has waited BACKFILL_S without fitting."""
+    q = waiters()
+    names = [n for n, _, _ in q]
+    rank = names.index(ticket.name) if ticket.name in names else 0
+    if free <= 0 or avail < need:
+        return False, rank
+    if rank < free:
+        return True, rank
+    ahead = q[:rank]
+    fit_ahead = sum(1 for _, nd, _ in ahead if nd <= avail)
+    starving = any(nd > avail and time.time() - ts > BACKFILL_S for _, nd, ts in ahead)
+    return (fit_ahead < free and not starving), rank
 
 
 def held_infos() -> list[dict]:
@@ -195,13 +230,13 @@ def slot(argv: list[str]) -> int:
     held = []
     QUEUE.mkdir(parents=True, exist_ok=True)
     ticket = QUEUE / f"{time.time():.3f}_{os.getpid()}_{prio}"
-    ticket.write_text(label + "\n")
+    ticket.write_text(json.dumps(dict(label=label, need=need)) + "\n")
     last_note = 0.0
     try:
         while True:
-            rank = queue_rank(ticket)
             free = N_SLOTS - sum(int(d.get("weight", 1)) for d in held_infos())
-            if rank < free and meminfo().get("MemAvailable", 0) - reserved() >= need:
+            ok, rank = may_start(ticket, need, free, meminfo().get("MemAvailable", 0) - reserved())
+            if ok:
                 for i in range(N_SLOTS):
                     f = open(SLOT_DIR / f"slot{i}.lock", "a+")
                     try:
@@ -379,6 +414,13 @@ def status():
     print(f"{now()} MemAvailable {m.get('MemAvailable')} MB, SwapFree {m.get('SwapFree')} MB, "
           f"load {os.getloadavg()}")
     print("slots:", "; ".join(holders()) or "none held")
+    if QUEUE.exists():
+        for n, need, ts in waiters():
+            try:
+                lab = json.loads((QUEUE / n).read_text()).get("label", "?")
+            except (OSError, ValueError, AttributeError):
+                lab = "?"
+            print(f"waiting: {lab} ({need} MB, {(time.time() - ts) / 60:.0f} min)")
     for p in (SLOT_LOG, MEM_LOG):
         if p.exists():
             print(f"--- {p}")
