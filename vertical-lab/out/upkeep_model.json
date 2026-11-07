@@ -1,0 +1,6130 @@
+{
+ "what": "Upkeep (upkeep.py, round 10): the finale's greedy schedule (timelapse.simulate) with maintenance booked into it: calendar PM, usage-driven consumables, robot-run reference checks and random failures (seeded). A model, not a measurement; every task's interval, who does it, downtime, spares and source are in 'tasks', and 'assumed' marks ours.",
+ "params": {
+  "seed": {
+   "value": 303,
+   "source": "the failures' random draws; any seed gives a year like this one"
+  },
+  "staff": {
+   "value": 1,
+   "unit": "people on the weekday day shift (08:00-16:00)",
+   "source": "round 8's one person for the crucible (timelapse PARAMS shift); maintenance fills their time between the crucible hours"
+  },
+  "crucible_first": {
+   "value": true,
+   "source": "assumed policy: the atomizer is the bottleneck, so a person's maintenance never takes a crucible hour (a run slot's first hour)"
+  },
+  "after_hours": {
+   "value": "a fault that needs a person waits for the next shift (no one on call)",
+   "source": "assumed policy: the lab runs lights out; notes/upkeep.md shows what an on-call person or a remote reset would buy"
+  },
+  "vendor_start_h": {
+   "value": 8.0,
+   "unit": "h of day",
+   "source": "assumed: a vendor arrives at 08:00 on a weekday"
+  },
+  "vendor_host_h": {
+   "value": 1.0,
+   "unit": "h a visit",
+   "source": "assumed: a person lets the vendor in, shows the machine, signs off"
+  },
+  "presentations_per_step": {
+   "value": 2,
+   "source": "timelapse: a tray step presents its tray to load it and again to unload it"
+  },
+  "mates_per_presentation": {
+   "value": 2,
+   "source": "the tray's plate leaves its slot's dock, mates the bay's, leaves it and mates its slot's again (services.py hookups)"
+  },
+  "transit_s": {
+   "value": 6.0,
+   "unit": "s on the UPS per transit",
+   "source": "notes/services.md: about 6 s from R2 to the opening"
+  },
+  "grips_per_step": {
+   "value": 4,
+   "source": "assumed: a step's load and unload, each a pick and a place, as in chapters 1-7"
+  }
+ },
+ "who": {
+  "arm": "the arm, inside the workflow",
+  "opening": "a person at the opening",
+  "extracted": "a person, the tray pulled out",
+  "floor": "a person at a floor machine or unit",
+  "vendor": "a vendor's visit",
+  "auto": "the machine itself",
+  "desk": "a person at a desk or PC (software, data, paperwork)"
+ },
+ "kinds": {
+  "crucible": "the atomizer's crucible, every run",
+  "pm": "preventive maintenance",
+  "consumables": "consumables and restocking",
+  "repair": "repairs",
+  "vendor": "hosting vendor visits",
+  "review": "control charts and planning",
+  "it": "software, IT and data",
+  "compliance": "safety and compliance"
+ },
+ "tasks": [
+  {
+   "key": "vlm_service",
+   "asset": "vlm*",
+   "what": "Kardex service visit: drives, belts, extractor, light curtain, safety checks",
+   "every": [
+    "days",
+    182
+   ],
+   "who": "vendor",
+   "down": 8.0,
+   "person": 1.0,
+   "kind": "vendor",
+   "spares": "as the technician finds",
+   "source": "Kardex Remstar knowledge base, 'How often should preventive maintenance be performed': 'every 6 months, or twice a year for standard machines'; quarterly if heavily used; the 8 h visit is assumed",
+   "at": "vendor",
+   "route": true
+  },
+  {
+   "key": "vlm_clean",
+   "asset": "vlm*",
+   "what": "the opening's light curtain and sensors cleaned; shutter and tray stops checked",
+   "every": [
+    "days",
+    28
+   ],
+   "who": "opening",
+   "down": 0.5,
+   "person": 0.5,
+   "kind": "pm",
+   "spares": "",
+   "source": "assumed",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "bay_dock",
+   "asset": "vlm*",
+   "what": "the bay's CombiTac dock: contacts wiped, pins, O-rings and coupling faces checked (it mates with every tray the Shuttle presents)",
+   "every": [
+    "days",
+    91
+   ],
+   "who": "opening",
+   "down": 0.5,
+   "person": 0.5,
+   "kind": "pm",
+   "spares": "O-rings, contact cleaner",
+   "source": "assumed: quarterly; St\u00e4ubli CombiTac overview CT-Overview-11014010: power, data and fluid inserts 'Mating cycles 100,000'; CT-align docking frame 100,000 (search snippet)",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "dock_inspect",
+   "asset": "tray:*",
+   "what": "CombiTac plate and bay dock: contacts wiped, pins, O-rings and coupling faces checked",
+   "every": [
+    "mates",
+    10000
+   ],
+   "who": "opening",
+   "down": 0.5,
+   "person": 0.5,
+   "kind": "pm",
+   "spares": "O-rings, contact cleaner",
+   "source": "assumed: every 10,000 mating cycles, a tenth of the rating (St\u00e4ubli CombiTac overview CT-Overview-11014010: power, data and fluid inserts 'Mating cycles 100,000'; CT-align docking frame 100,000 (search snippet))",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "ups_test",
+   "asset": "tray:*",
+   "what": "UPS battery self-test (the load stays on)",
+   "every": [
+    "days",
+    7
+   ],
+   "who": "auto",
+   "down": 0.0,
+   "person": 0.0,
+   "kind": "pm",
+   "spares": "",
+   "source": "Eaton 5PX manual 614-07977-00: automatic battery test 'Every week' by default; 3-5 years float life at 25 \u00b0C (Eaton, search snippet); 9PX Li-ion (LFP) 8-10 years (eps-dc)",
+   "at": "night",
+   "route": true
+  },
+  {
+   "key": "cams_wipe",
+   "asset": "tray:*",
+   "what": "stream cameras' lenses wiped, focus and aim checked",
+   "every": [
+    "days",
+    91
+   ],
+   "who": "opening",
+   "down": 0.25,
+   "person": 0.25,
+   "kind": "pm",
+   "spares": "",
+   "source": "assumed; the cameras restart themselves (ac-training-lab picam docs: systemd Restart=always, RestartSec=10; cron reboot at 05, 13 and 21 h)",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "mir_weekly",
+   "asset": "unit",
+   "what": "MiR250 scanners and lights cleaned and checked; 2F-85 wiped",
+   "every": [
+    "days",
+    7
+   ],
+   "who": "floor",
+   "down": 0.25,
+   "person": 0.25,
+   "kind": "pm",
+   "spares": "",
+   "source": "MiR250 user guide, periodic tasks (mirsupport): weekly scanners and lights, monthly wheels and charging pads, quarterly stop tests, half-yearly battery connector and braking test, yearly casters and drive wheels replaced; Robotiq 2F-85 manual pp. 88-91: cleaning weekly, inspection monthly, fingertips '1 Million cycles or when wear is visible', overhaul at 2 million cycles",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "mir_monthly",
+   "asset": "unit",
+   "what": "MiR250 casters and drive wheels cleaned, bolts checked, charging pads cleaned; 2F-85 inspected",
+   "every": [
+    "days",
+    28
+   ],
+   "who": "floor",
+   "down": 0.5,
+   "person": 0.5,
+   "kind": "pm",
+   "spares": "",
+   "source": "MiR250 user guide, periodic tasks (mirsupport): weekly scanners and lights, monthly wheels and charging pads, quarterly stop tests, half-yearly battery connector and braking test, yearly casters and drive wheels replaced; Robotiq 2F-85 manual pp. 88-91: cleaning weekly, inspection monthly, fingertips '1 Million cycles or when wear is visible', overhaul at 2 million cycles",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "ur_monthly",
+   "asset": "unit",
+   "what": "UR10e safety functions tested (stops, freedrive, brake release); MiR stops quarterly",
+   "every": [
+    "days",
+    28
+   ],
+   "who": "floor",
+   "down": 0.25,
+   "person": 0.25,
+   "kind": "pm",
+   "spares": "",
+   "source": "Universal Robots inspection and maintenance plan: safety functions 'tested monthly'; control box air filters; service check 'at least bi-annually'; MiR250 user guide, periodic tasks (mirsupport): weekly scanners and lights, monthly wheels and charging pads, quarterly stop tests, half-yearly battery connector and braking test, yearly casters and drive wheels replaced",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "unit_halfyear",
+   "asset": "unit",
+   "what": "MiR battery connector, braking distance, wheel diameters; UR10e bolts, cables, flat rings, control box filter",
+   "every": [
+    "days",
+    182
+   ],
+   "who": "floor",
+   "down": 1.5,
+   "person": 1.5,
+   "kind": "pm",
+   "spares": "controller filter kit",
+   "source": "MiR250 user guide, periodic tasks (mirsupport): weekly scanners and lights, monthly wheels and charging pads, quarterly stop tests, half-yearly battery connector and braking test, yearly casters and drive wheels replaced; Universal Robots inspection and maintenance plan: safety functions 'tested monthly'; control box air filters; service check 'at least bi-annually'",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "mir_wheels",
+   "asset": "unit",
+   "what": "MiR250 casters and drive wheels replaced, IMU calibrated",
+   "every": [
+    "days",
+    365
+   ],
+   "who": "floor",
+   "down": 2.0,
+   "person": 2.0,
+   "kind": "consumables",
+   "spares": "4 casters, 2 drive wheels",
+   "source": "MiR250 user guide, periodic tasks (mirsupport): weekly scanners and lights, monthly wheels and charging pads, quarterly stop tests, half-yearly battery connector and braking test, yearly casters and drive wheels replaced",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "unit_service",
+   "asset": "unit",
+   "what": "UR and MiR service visit",
+   "every": [
+    "days",
+    365
+   ],
+   "who": "vendor",
+   "down": 8.0,
+   "person": 1.0,
+   "kind": "vendor",
+   "spares": "",
+   "source": "Universal Robots inspection and maintenance plan: safety functions 'tested monthly'; control box air filters; service check 'at least bi-annually'; the visit's length is assumed",
+   "at": "vendor",
+   "route": true
+  },
+  {
+   "key": "gripper_tips",
+   "asset": "unit",
+   "what": "2F-85 fingertips replaced",
+   "every": [
+    "n",
+    1000000
+   ],
+   "who": "floor",
+   "down": 0.5,
+   "person": 0.5,
+   "kind": "consumables",
+   "spares": "2F-85 fingertips",
+   "source": "Robotiq 2F-85 manual pp. 88-91: cleaning weekly, inspection monthly, fingertips '1 Million cycles or when wear is visible', overhaul at 2 million cycles",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "d405_cal",
+   "asset": "unit",
+   "what": "D405 on-chip health check on a flat target, recalibrated if over 0.25",
+   "every": [
+    "days",
+    28
+   ],
+   "who": "arm",
+   "down": 0.1,
+   "person": 0.0,
+   "kind": "pm",
+   "spares": "",
+   "source": "RealSense on-chip calibration white paper: 'may indeed never be required'; recalibrate when |health| > 0.25; monthly is assumed",
+   "at": "night",
+   "route": true
+  },
+  {
+   "key": "n2_filters",
+   "asset": "n2",
+   "what": "N2 generator: 12-month filter kit",
+   "every": [
+    "days",
+    365
+   ],
+   "who": "floor",
+   "down": 0.5,
+   "person": 0.5,
+   "kind": "consumables",
+   "spares": "MKUHPN2-FK filter kit",
+   "source": "Parker UHPN2 '12 Month's Service - Filter Kit' MKUHPN2-FK; catalyst module about 3 years (search snippets; parker.com refused the runner)",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "chiller_filter",
+   "asset": "chiller",
+   "what": "chiller: condenser filter and fluid bag (changed while it runs)",
+   "every": [
+    "days",
+    125
+   ],
+   "who": "floor",
+   "down": 0.25,
+   "person": 0.25,
+   "kind": "consumables",
+   "spares": "fluid filter bag, condenser filter",
+   "source": "ThermoFlex manual: PM timer 3,000 h for a laboratory (condenser filter, fluid bag; changed while running); 'changing the fluid every six months'; 3,000 h of a 24 h day is 125 days",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "chiller_fluid",
+   "asset": "chiller",
+   "what": "chiller: fluid changed (the XRD's tube stops)",
+   "every": [
+    "days",
+    182
+   ],
+   "who": "floor",
+   "down": 1.0,
+   "person": 1.0,
+   "kind": "consumables",
+   "spares": "distilled water or glycol mix",
+   "source": "ThermoFlex manual: PM timer 3,000 h for a laboratory (condenser filter, fluid bag; changed while running); 'changing the fluid every six months'",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "hood_cert",
+   "asset": "fumehood",
+   "what": "fume hood: face-velocity certification",
+   "every": [
+    "days",
+    365
+   ],
+   "who": "vendor",
+   "down": 2.0,
+   "person": 1.0,
+   "kind": "vendor",
+   "spares": "",
+   "source": "OSHA 1910.1450 App. A: hoods 'routinely tested'; annual face-velocity checks are general practice",
+   "at": "vendor",
+   "route": true
+  },
+  {
+   "key": "gb_regen",
+   "asset": "glovebox",
+   "what": "glovebox purifier regenerated (forming gas, up to 12 h)",
+   "every": [
+    "days",
+    120
+   ],
+   "who": "auto",
+   "down": 12.0,
+   "person": 0.5,
+   "kind": "pm",
+   "spares": "5 % H2 forming gas: one 50 L cylinder for 5-6 regenerations",
+   "source": "Inert PureLab manual (NIST copy): gloves and O-rings by inspection, box filters yearly, catalyst every 3 years; EPFL glovebox guidelines: regeneration every 3-6 months, sensors every 1-2 years; Cornell: pump oil twice a year, a regeneration up to 12 h",
+   "at": "night",
+   "route": true
+  },
+  {
+   "key": "gb_weekly",
+   "asset": "glovebox",
+   "what": "gloveboxes (floor and tray K): gloves and antechamber O-rings inspected",
+   "every": [
+    "days",
+    7
+   ],
+   "who": "floor",
+   "down": 0.25,
+   "person": 0.25,
+   "kind": "pm",
+   "spares": "",
+   "source": "Inert PureLab manual (NIST copy): gloves and O-rings by inspection, box filters yearly, catalyst every 3 years; EPFL glovebox guidelines: regeneration every 3-6 months, sensors every 1-2 years; Cornell: pump oil twice a year, a regeneration up to 12 h",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "gb_halfyear",
+   "asset": "glovebox",
+   "what": "gloves replaced; vacuum pump oil changed; box filters",
+   "every": [
+    "days",
+    182
+   ],
+   "who": "floor",
+   "down": 1.5,
+   "person": 1.5,
+   "kind": "consumables",
+   "spares": "butyl gloves, O-rings, pump oil, 0.3 um filters",
+   "source": "Inert PureLab manual (NIST copy): gloves and O-rings by inspection, box filters yearly, catalyst every 3 years; EPFL glovebox guidelines: regeneration every 3-6 months, sensors every 1-2 years; Cornell: pump oil twice a year, a regeneration up to 12 h",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "rp_clean",
+   "asset": "repowder",
+   "what": "rePowder: chamber, cyclone and powder catch cleaned; seals checked",
+   "every": [
+    "days",
+    7
+   ],
+   "who": "floor",
+   "down": 1.5,
+   "person": 1.5,
+   "kind": "pm",
+   "spares": "",
+   "source": "assumed (Friday afternoon, when no run starts)",
+   "at": "fri",
+   "route": true
+  },
+  {
+   "key": "rp_crucible_stock",
+   "asset": "repowder",
+   "what": "new graphite crucible and nozzle holder into the rotation",
+   "every": [
+    "n",
+    15,
+    "atomize"
+   ],
+   "who": "floor",
+   "down": 0.5,
+   "person": 0.5,
+   "kind": "consumables",
+   "spares": "graphite crucible, nozzle holder",
+   "source": "assumed: 15 runs a crucible",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "rp_thermocouple",
+   "asset": "repowder",
+   "what": "Type N thermocouple and its sheath replaced",
+   "every": [
+    "n",
+    40,
+    "atomize"
+   ],
+   "who": "floor",
+   "down": 0.5,
+   "person": 0.5,
+   "kind": "consumables",
+   "spares": "Type N thermocouple, ceramic sheath",
+   "source": "assumed; its sheath 'cracks normally' (notes/crucible_automation.md)",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "rp_insulation",
+   "asset": "repowder",
+   "what": "insulation set (bottom, side tube, top cone) replaced",
+   "every": [
+    "n",
+    60,
+    "atomize"
+   ],
+   "who": "floor",
+   "down": 1.0,
+   "person": 1.0,
+   "kind": "consumables",
+   "spares": "alumina-silica insulation set",
+   "source": "assumed",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "rp_pump_oil",
+   "asset": "repowder",
+   "what": "vacuum pump oil changed",
+   "every": [
+    "days",
+    91
+   ],
+   "who": "floor",
+   "down": 0.5,
+   "person": 0.5,
+   "kind": "consumables",
+   "spares": "pump oil",
+   "source": "assumed",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "rp_service",
+   "asset": "repowder",
+   "what": "AMAZEMET service visit",
+   "every": [
+    "days",
+    365
+   ],
+   "who": "vendor",
+   "down": 8.0,
+   "person": 1.0,
+   "kind": "vendor",
+   "spares": "",
+   "source": "assumed",
+   "at": "vendor",
+   "route": true
+  },
+  {
+   "key": "sv_ipa",
+   "asset": "sieve_cell",
+   "what": "sieving cell: the ultrasonic bath's IPA changed, the wash module's filter",
+   "every": [
+    "days",
+    7
+   ],
+   "who": "floor",
+   "down": 0.5,
+   "person": 0.5,
+   "kind": "consumables",
+   "spares": "IPA",
+   "source": "assumed",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "sv_check",
+   "asset": "sieve_cell",
+   "what": "the arm images each sieve's cloth against a backlight; open area trended",
+   "every": [
+    "n",
+    20,
+    "sieve"
+   ],
+   "who": "arm",
+   "down": 0.25,
+   "person": 0.0,
+   "kind": "pm",
+   "spares": "",
+   "source": "assumed (Retsch sieve info sheet: below 500 um only an ultrasonic bath, no brushing, dry at 80 \u00b0C max; Gilson on ASTM E2427: check each sieve periodically with a reference material)",
+   "at": "night",
+   "route": true
+  },
+  {
+   "key": "sv_verify",
+   "asset": "sieve_cell",
+   "what": "reference material sieved (ASTM E2427); each sieve's result trended",
+   "every": [
+    "days",
+    28
+   ],
+   "who": "arm",
+   "down": 0.75,
+   "person": 0.0,
+   "kind": "pm",
+   "spares": "certified glass beads",
+   "source": "Retsch sieve info sheet: below 500 um only an ultrasonic bath, no brushing, dry at 80 \u00b0C max; Gilson on ASTM E2427: check each sieve periodically with a reference material; monthly is assumed",
+   "at": "night",
+   "route": true
+  },
+  {
+   "key": "sv_replace",
+   "asset": "sieve_cell",
+   "what": "the finest sieves (45 and 63 um) replaced when the check drifts",
+   "every": [
+    "n",
+    300,
+    "sieve"
+   ],
+   "who": "floor",
+   "down": 0.5,
+   "person": 0.5,
+   "kind": "consumables",
+   "spares": "200 mm test sieves, 45 and 63 um",
+   "source": "assumed: every 300 runs",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "sv_shaker",
+   "asset": "sieve_cell",
+   "what": "the shaker's amplitude calibrated",
+   "every": [
+    "days",
+    365
+   ],
+   "who": "vendor",
+   "down": 1.0,
+   "person": 1.0,
+   "kind": "vendor",
+   "spares": "",
+   "source": "Retsch: the AS 200 control is calibratable; yearly from one customer's review",
+   "at": "vendor",
+   "route": true
+  },
+  {
+   "key": "ac_filter",
+   "asset": "aconity",
+   "what": "MIDI: circulation filter changed; the old one wetted (passivated) first",
+   "every": [
+    "h",
+    1000
+   ],
+   "who": "floor",
+   "down": 3.0,
+   "person": 3.0,
+   "kind": "consumables",
+   "spares": "filter cartridge, water for passivation",
+   "source": "assumed: 1,000 build hours, against EOS's 2,500 for an M290, since Al condensate is heavier (Yasin et al. 2024 (NSF PAR 10600321): an EOS M290 circulation filter's life is 2,500 build hours; GE US12172115B2: wet the condensate with water before the housing is opened (Al and Ti give off gas when wetted))",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "ac_weekly",
+   "asset": "aconity",
+   "what": "MIDI: chamber cleaned, laser window wiped, recoater blade checked",
+   "every": [
+    "days",
+    7
+   ],
+   "who": "floor",
+   "down": 1.0,
+   "person": 1.0,
+   "kind": "pm",
+   "spares": "",
+   "source": "assumed",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "ac_blade",
+   "asset": "aconity",
+   "what": "recoater blade replaced",
+   "every": [
+    "n",
+    40,
+    "print"
+   ],
+   "who": "floor",
+   "down": 0.5,
+   "person": 0.5,
+   "kind": "consumables",
+   "spares": "recoater blades",
+   "source": "assumed",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "ac_laser",
+   "asset": "aconity",
+   "what": "laser power and focus measured",
+   "every": [
+    "days",
+    91
+   ],
+   "who": "floor",
+   "down": 1.5,
+   "person": 1.5,
+   "kind": "pm",
+   "spares": "",
+   "source": "assumed",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "ac_service",
+   "asset": "aconity",
+   "what": "Aconity service visit",
+   "every": [
+    "days",
+    365
+   ],
+   "who": "vendor",
+   "down": 8.0,
+   "person": 1.0,
+   "kind": "vendor",
+   "spares": "",
+   "source": "assumed; an EOS M290 tender quotes 8 h of labour a visit (snippet)",
+   "at": "vendor",
+   "route": true
+  },
+  {
+   "key": "dp_filter",
+   "asset": "depowder",
+   "what": "depowdering box: filter changed",
+   "every": [
+    "days",
+    28
+   ],
+   "who": "floor",
+   "down": 0.5,
+   "person": 0.5,
+   "kind": "consumables",
+   "spares": "filter",
+   "source": "assumed",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "edm_wire",
+   "asset": "wire_edm",
+   "what": "wire spool changed; the scrap wire bin emptied",
+   "every": [
+    "h",
+    120
+   ],
+   "who": "floor",
+   "down": 0.25,
+   "person": 0.25,
+   "kind": "consumables",
+   "spares": "0.25 mm brass wire, 15.9 kg spools",
+   "source": "generic wire-EDM practice: FANUC America 'weekly cleaning taking less than an hour'; MMS 'power contacts indexed every 50 to 100 hours of cutting'; Langenhorst (MoldMaking) 300 h conductivity sensor and auto-threader, 500 h lower arm, 1,000 h tank; FANUC EU PM 'every 2,000 operating hours or 1x per year'; a 15.9 kg spool is '60 hours of wire'",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "edm_contacts",
+   "asset": "wire_edm",
+   "what": "power-feed contacts indexed and cleaned",
+   "every": [
+    "h",
+    150
+   ],
+   "who": "floor",
+   "down": 0.25,
+   "person": 0.25,
+   "kind": "consumables",
+   "spares": "power feeders",
+   "source": "generic wire-EDM practice: FANUC America 'weekly cleaning taking less than an hour'; MMS 'power contacts indexed every 50 to 100 hours of cutting'; Langenhorst (MoldMaking) 300 h conductivity sensor and auto-threader, 500 h lower arm, 1,000 h tank; FANUC EU PM 'every 2,000 operating hours or 1x per year'; a 15.9 kg spool is '60 hours of wire'",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "edm_300",
+   "asset": "wire_edm",
+   "what": "conductivity sensor and auto-threader cleaned; filters changed",
+   "every": [
+    "h",
+    600
+   ],
+   "who": "floor",
+   "down": 1.0,
+   "person": 1.0,
+   "kind": "consumables",
+   "spares": "2 paper filter cartridges",
+   "source": "generic wire-EDM practice: FANUC America 'weekly cleaning taking less than an hour'; MMS 'power contacts indexed every 50 to 100 hours of cutting'; Langenhorst (MoldMaking) 300 h conductivity sensor and auto-threader, 500 h lower arm, 1,000 h tank; FANUC EU PM 'every 2,000 operating hours or 1x per year'; a 15.9 kg spool is '60 hours of wire'",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "edm_resin",
+   "asset": "wire_edm",
+   "what": "deionizing resin changed",
+   "every": [
+    "h",
+    200
+   ],
+   "who": "floor",
+   "down": 0.5,
+   "person": 0.5,
+   "kind": "consumables",
+   "spares": "DI resin",
+   "source": "MMS: 'cutting aluminum raises the conductivity of the dielectric fluid quickly', so the resin goes sooner; every 200 h is assumed",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "edm_weekly",
+   "asset": "wire_edm",
+   "what": "EDM weekly cleaning: guides, heads, tank",
+   "every": [
+    "days",
+    7
+   ],
+   "who": "floor",
+   "down": 0.75,
+   "person": 0.75,
+   "kind": "pm",
+   "spares": "",
+   "source": "generic wire-EDM practice: FANUC America 'weekly cleaning taking less than an hour'; MMS 'power contacts indexed every 50 to 100 hours of cutting'; Langenhorst (MoldMaking) 300 h conductivity sensor and auto-threader, 500 h lower arm, 1,000 h tank; FANUC EU PM 'every 2,000 operating hours or 1x per year'; a 15.9 kg spool is '60 hours of wire'",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "edm_test",
+   "asset": "wire_edm",
+   "what": "test cut of a reference gauge, measured on the VHX",
+   "every": [
+    "days",
+    7
+   ],
+   "who": "arm",
+   "down": 0.3,
+   "person": 0.0,
+   "kind": "pm",
+   "spares": "",
+   "source": "assumed",
+   "at": "night",
+   "route": true
+  },
+  {
+   "key": "edm_service",
+   "asset": "wire_edm",
+   "what": "FANUC preventive maintenance",
+   "every": [
+    "days",
+    365
+   ],
+   "who": "vendor",
+   "down": 8.0,
+   "person": 1.0,
+   "kind": "vendor",
+   "spares": "",
+   "source": "generic wire-EDM practice: FANUC America 'weekly cleaning taking less than an hour'; MMS 'power contacts indexed every 50 to 100 hours of cutting'; Langenhorst (MoldMaking) 300 h conductivity sensor and auto-threader, 500 h lower arm, 1,000 h tank; FANUC EU PM 'every 2,000 operating hours or 1x per year'; a 15.9 kg spool is '60 hours of wire'",
+   "at": "vendor",
+   "route": true
+  },
+  {
+   "key": "t_verify_floor",
+   "asset": "instron_floor",
+   "what": "68FM-100: force verification, extensometer, annual service check",
+   "every": [
+    "days",
+    365
+   ],
+   "who": "vendor",
+   "down": 6.0,
+   "person": 1.0,
+   "kind": "vendor",
+   "spares": "",
+   "source": "ZwickRoell on ISO 7500-1 / ASTM E4: 'an interval of no more than 12 months'; ISO 9513 extensometers about 12 months, at most 18 (snippet); Instron 6800 manual p. 101: 'an annual service check'",
+   "at": "vendor",
+   "route": true
+  },
+  {
+   "key": "t_verify_tray",
+   "asset": "tensile_h",
+   "what": "zwickiLine: force verification, extensometer",
+   "every": [
+    "days",
+    365
+   ],
+   "who": "vendor",
+   "down": 4.0,
+   "person": 1.0,
+   "kind": "vendor",
+   "spares": "",
+   "source": "ZwickRoell on ISO 7500-1 / ASTM E4: 'an interval of no more than 12 months'; ISO 9513 extensometers about 12 months, at most 18 (snippet); Instron 6800 manual p. 101: 'an annual service check'",
+   "at": "vendor",
+   "route": true
+  },
+  {
+   "key": "t_ref_floor",
+   "asset": "instron_floor",
+   "what": "reference bar pulled (6061-T6), yield and modulus trended",
+   "every": [
+    "days",
+    7
+   ],
+   "who": "arm",
+   "down": 0.5,
+   "person": 0.0,
+   "kind": "pm",
+   "spares": "",
+   "source": "assumed",
+   "at": "night",
+   "route": true
+  },
+  {
+   "key": "t_ref_tray",
+   "asset": "tensile_h",
+   "what": "reference specimen pulled, trended",
+   "every": [
+    "days",
+    7
+   ],
+   "who": "arm",
+   "down": 0.3,
+   "person": 0.0,
+   "kind": "pm",
+   "spares": "",
+   "source": "assumed",
+   "at": "night",
+   "route": true
+  },
+  {
+   "key": "t_faces",
+   "asset": "tensile_h",
+   "what": "grip faces replaced",
+   "every": [
+    "n",
+    300,
+    "tensile_rt"
+   ],
+   "who": "opening",
+   "down": 0.5,
+   "person": 0.5,
+   "kind": "consumables",
+   "spares": "grip faces",
+   "source": "assumed",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "f_sat",
+   "asset": "furnace",
+   "what": "furnace: system accuracy test against a test thermocouple",
+   "every": [
+    "days",
+    91
+   ],
+   "who": "opening",
+   "down": 1.0,
+   "person": 1.0,
+   "kind": "pm",
+   "spares": "type K test thermocouple (5 uses or 3 months)",
+   "source": "AMS2750 (Heat Treat Today, Thermal Processing): SAT quarterly, TUS quarterly for a Class 5 furnace; test thermocouples type K 5 uses or 3 months",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "f_tus",
+   "asset": "furnace",
+   "what": "furnace: temperature uniformity survey",
+   "every": [
+    "days",
+    365
+   ],
+   "who": "vendor",
+   "down": 8.0,
+   "person": 1.0,
+   "kind": "vendor",
+   "spares": "",
+   "source": "AMS2750 (Heat Treat Today, Thermal Processing): SAT quarterly, TUS quarterly for a Class 5 furnace; test thermocouples type K 5 uses or 3 months; once a year for a research furnace is assumed",
+   "at": "vendor",
+   "route": true
+  },
+  {
+   "key": "px_restock",
+   "asset": "polisher",
+   "what": "SiC foils and cloths restocked in the magazine, suspensions refilled",
+   "every": [
+    "n",
+    40,
+    "polish"
+   ],
+   "who": "opening",
+   "down": 0.5,
+   "person": 0.5,
+   "kind": "consumables",
+   "spares": "SiC 500# foils, cloths, OP-U suspension",
+   "source": "LECO PX series: automatic bowl wash, gear drive with no belt; MX series: 6-7 min for a 1.5 in mount; about 20 g of phenolic a mount (UMich SOP, snippet); every 40 polishes is assumed",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "px_waste",
+   "asset": "polisher",
+   "what": "waste tank emptied, water tank filled (the coupling has no drain or process water)",
+   "every": [
+    "days",
+    7
+   ],
+   "who": "opening",
+   "down": 0.5,
+   "person": 0.5,
+   "kind": "consumables",
+   "spares": "",
+   "source": "assumed",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "mx_restock",
+   "asset": "mount_press",
+   "what": "phenolic hopper refilled, ram and mould brushed",
+   "every": [
+    "n",
+    60,
+    "mount"
+   ],
+   "who": "opening",
+   "down": 0.25,
+   "person": 0.25,
+   "kind": "consumables",
+   "spares": "phenolic, about 20 g a mount",
+   "source": "LECO PX series: automatic bowl wash, gear drive with no belt; MX series: 6-7 min for a 1.5 in mount; about 20 g of phenolic a mount (UMich SOP, snippet)",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "xrf_drift",
+   "asset": "xrf",
+   "what": "XRF drift correction on the monitor sample",
+   "every": [
+    "days",
+    1
+   ],
+   "who": "arm",
+   "down": 0.15,
+   "person": 0.0,
+   "kind": "pm",
+   "spares": "",
+   "source": "assumed",
+   "at": "night",
+   "route": true
+  },
+  {
+   "key": "xrf_he",
+   "asset": "xrf",
+   "what": "He cylinder swapped (the coupling carries no He)",
+   "every": [
+    "h",
+    120
+   ],
+   "who": "opening",
+   "down": 0.25,
+   "person": 0.25,
+   "kind": "consumables",
+   "spares": "He cylinder",
+   "source": "assumed",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "cnc_tools",
+   "asset": "cnc",
+   "what": "Carvera: end mills replaced, chips cleared",
+   "every": [
+    "n",
+    80,
+    "face"
+   ],
+   "who": "opening",
+   "down": 0.5,
+   "person": 0.5,
+   "kind": "consumables",
+   "spares": "end mills",
+   "source": "assumed",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "xrd_si",
+   "asset": "xrd",
+   "what": "MiniFlex: NIST SRM 640 silicon scanned; peak positions and intensity trended",
+   "every": [
+    "days",
+    7
+   ],
+   "who": "arm",
+   "down": 0.25,
+   "person": 0.0,
+   "kind": "pm",
+   "spares": "",
+   "source": "Rigaku MiniFlex Office Hour 4: check 'monthly or bi-weekly using a standard like NIST SP 640'; FBI IOSS-773-03 daily; chiller water every 3-6 months; weekly, between the two",
+   "at": "night",
+   "route": true
+  },
+  {
+   "key": "xrd_service",
+   "asset": "xrd",
+   "what": "Rigaku service visit",
+   "every": [
+    "days",
+    365
+   ],
+   "who": "vendor",
+   "down": 4.0,
+   "person": 1.0,
+   "kind": "vendor",
+   "spares": "",
+   "source": "assumed",
+   "at": "vendor",
+   "route": true
+  },
+  {
+   "key": "sem_eds",
+   "asset": "sem",
+   "what": "SEM: magnification standard and EDS energy check (Cu)",
+   "every": [
+    "days",
+    7
+   ],
+   "who": "arm",
+   "down": 0.25,
+   "person": 0.0,
+   "kind": "pm",
+   "spares": "",
+   "source": "assumed",
+   "at": "night",
+   "route": true
+  },
+  {
+   "key": "sem_filament",
+   "asset": "sem",
+   "what": "SEM filament exchanged (30 min to cool, then pump-down); anode every 5th",
+   "every": [
+    "h",
+    100
+   ],
+   "who": "opening",
+   "down": 1.5,
+   "person": 0.75,
+   "kind": "consumables",
+   "spares": "pre-centred cartridge filament",
+   "source": "Hitachi TM3000/TM3030 manuals (the TM4000's own not found): 30 min cool-down for a filament change, anode cleaned every 5-6 filaments, TMP 3-5 years; a tungsten filament about 100 h (Thermo Fisher)",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "sem_service",
+   "asset": "sem",
+   "what": "Hitachi service visit: apertures, pumps",
+   "every": [
+    "days",
+    365
+   ],
+   "who": "vendor",
+   "down": 4.0,
+   "person": 1.0,
+   "kind": "vendor",
+   "spares": "",
+   "source": "Hitachi TM3000/TM3030 manuals (the TM4000's own not found): 30 min cool-down for a filament change, anode cleaned every 5-6 filaments, TMP 3-5 years; a tungsten filament about 100 h (Thermo Fisher)",
+   "at": "vendor",
+   "route": true
+  },
+  {
+   "key": "ld_ref",
+   "asset": "mastersizer",
+   "what": "Mastersizer: QAS3002 reference measured (Dv50 within 2.5 %)",
+   "every": [
+    "days",
+    7
+   ],
+   "who": "arm",
+   "down": 0.3,
+   "person": 0.0,
+   "kind": "pm",
+   "spares": "",
+   "source": "Malvern QAS3002 sheet: Dv50 within 2.5 %; a clean cycle and background check after every measurement (UWM SOP); weekly is assumed",
+   "at": "night",
+   "route": true
+  },
+  {
+   "key": "ld_clean",
+   "asset": "mastersizer",
+   "what": "cell windows cleaned, Aero S hopper and venturi checked",
+   "every": [
+    "days",
+    28
+   ],
+   "who": "opening",
+   "down": 0.5,
+   "person": 0.5,
+   "kind": "pm",
+   "spares": "",
+   "source": "Malvern QAS3002 sheet: Dv50 within 2.5 %; a clean cycle and background check after every measurement (UWM SOP); monthly is assumed",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "nano_fs",
+   "asset": "nanoindenter",
+   "what": "iMicro: indents in fused silica; area function and frame stiffness checked",
+   "every": [
+    "days",
+    7
+   ],
+   "who": "arm",
+   "down": 0.5,
+   "person": 0.0,
+   "kind": "pm",
+   "spares": "",
+   "source": "Keysight G200 note 5991-1453EN: area function and frame stiffness on fused silica in about 15 min; weekly is assumed",
+   "at": "night",
+   "route": true
+  },
+  {
+   "key": "nano_tip",
+   "asset": "nanoindenter",
+   "what": "Berkovich tip replaced and calibrated",
+   "every": [
+    "n",
+    600,
+    "nano"
+   ],
+   "who": "extracted",
+   "down": 2.0,
+   "person": 2.0,
+   "kind": "consumables",
+   "spares": "Berkovich tip",
+   "source": "assumed",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "pip_cal",
+   "asset": "pip",
+   "what": "PIP: profilometer calibrated on its sample",
+   "every": [
+    "h",
+    3
+   ],
+   "who": "arm",
+   "down": 0.1,
+   "person": 0.0,
+   "kind": "pm",
+   "spares": "",
+   "source": "PLX-Benchtop procedure (MaintainX): profilometer calibration at start-up and every 3 h",
+   "at": "night",
+   "route": true
+  },
+  {
+   "key": "vhx_scale",
+   "asset": "vhx",
+   "what": "VHX: stage micrometer imaged, calibration checked",
+   "every": [
+    "days",
+    28
+   ],
+   "who": "arm",
+   "down": 0.2,
+   "person": 0.0,
+   "kind": "pm",
+   "spares": "",
+   "source": "assumed",
+   "at": "night",
+   "route": true
+  },
+  {
+   "key": "hv_block",
+   "asset": "hardness",
+   "what": "HM-220: reference block indented, diagonals trended",
+   "every": [
+    "days",
+    1
+   ],
+   "who": "arm",
+   "down": 0.2,
+   "person": 0.0,
+   "kind": "pm",
+   "spares": "",
+   "source": "Mitutoyo 63ETB591: the reference-block check 'immediately before the daily start of the test schedule'; indirect verification 12 months, at most 18 (ASTM E92, via Metkon)",
+   "at": "night",
+   "route": true
+  },
+  {
+   "key": "hv_verify",
+   "asset": "hardness",
+   "what": "HM-220: indirect verification",
+   "every": [
+    "days",
+    365
+   ],
+   "who": "vendor",
+   "down": 3.0,
+   "person": 1.0,
+   "kind": "vendor",
+   "spares": "",
+   "source": "Mitutoyo 63ETB591: the reference-block check 'immediately before the daily start of the test schedule'; indirect verification 12 months, at most 18 (ASTM E92, via Metkon)",
+   "at": "vendor",
+   "route": true
+  },
+  {
+   "key": "bal_weights",
+   "asset": "carousel",
+   "what": "HR-202i: check weight weighed 10 times (repeatability), then a calibration test",
+   "every": [
+    "days",
+    1
+   ],
+   "who": "arm",
+   "down": 0.2,
+   "person": 0.0,
+   "kind": "pm",
+   "spares": "",
+   "source": "A&D HR-i manual: no internal mass, 'Calibration using a weight that you have'; USP <41>: 10 weighings, 2s/m at most 0.10 %",
+   "at": "night",
+   "route": true
+  },
+  {
+   "key": "bal_cal",
+   "asset": "carousel",
+   "what": "HR-202i calibrated with an external weight",
+   "every": [
+    "days",
+    28
+   ],
+   "who": "arm",
+   "down": 0.2,
+   "person": 0.0,
+   "kind": "pm",
+   "spares": "",
+   "source": "A&D HR-i manual: no internal mass, 'Calibration using a weight that you have'; USP <41>: 10 weighings, 2s/m at most 0.10 %; monthly is assumed",
+   "at": "night",
+   "route": true
+  },
+  {
+   "key": "dose_clean",
+   "asset": "carousel",
+   "what": "doser's funnels and cup nests cleaned, press die cleaned",
+   "every": [
+    "days",
+    7
+   ],
+   "who": "opening",
+   "down": 0.5,
+   "person": 0.5,
+   "kind": "pm",
+   "spares": "",
+   "source": "assumed",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "cx_ref",
+   "asset": "cubxl_corrosion",
+   "what": "reference electrode against a master in KCl (within 5 mV)",
+   "every": [
+    "days",
+    7
+   ],
+   "who": "arm",
+   "down": 0.25,
+   "person": 0.0,
+   "kind": "pm",
+   "spares": "",
+   "source": "Gamry: a reference electrode within 5 mV of a master; calibrate the potentiostat 'at least once per year'; weekly is assumed",
+   "at": "night",
+   "route": true
+  },
+  {
+   "key": "cx_cal",
+   "asset": "cubxl_corrosion",
+   "what": "potentiostat calibrated on its dummy cell; OT-2 pipettes checked by weight",
+   "every": [
+    "days",
+    182
+   ],
+   "who": "opening",
+   "down": 1.0,
+   "person": 1.0,
+   "kind": "pm",
+   "spares": "",
+   "source": "Gamry: a reference electrode within 5 mV of a master; calibrate the potentiostat 'at least once per year'; Sartorius on ISO 8655: a gravimetric check at least yearly, every 3-6 months by risk",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "cx_fluids",
+   "asset": "cubxl_corrosion",
+   "what": "electrolyte refilled, waste emptied, tips restocked",
+   "every": [
+    "days",
+    7
+   ],
+   "who": "opening",
+   "down": 0.5,
+   "person": 0.5,
+   "kind": "consumables",
+   "spares": "NaCl electrolyte, tips",
+   "source": "assumed",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "store_j",
+   "asset": "tray:J",
+   "what": "tray J: cups, plugs, vials, stubs and coupons restocked",
+   "every": [
+    "days",
+    7
+   ],
+   "who": "opening",
+   "down": 0.5,
+   "person": 0.5,
+   "kind": "consumables",
+   "spares": "",
+   "source": "assumed",
+   "at": "day",
+   "route": false
+  },
+  {
+   "key": "store_n",
+   "asset": "tray:N",
+   "what": "tray N: new feedstock jars in",
+   "every": [
+    "days",
+    7
+   ],
+   "who": "opening",
+   "down": 0.5,
+   "person": 0.5,
+   "kind": "consumables",
+   "spares": "",
+   "source": "assumed",
+   "at": "day",
+   "route": false
+  },
+  {
+   "key": "store_o",
+   "asset": "tray:O",
+   "what": "tray O: finished lots out to the archive, empty jars in",
+   "every": [
+    "days",
+    7
+   ],
+   "who": "opening",
+   "down": 0.5,
+   "person": 0.5,
+   "kind": "consumables",
+   "spares": "",
+   "source": "assumed",
+   "at": "day",
+   "route": false
+  },
+  {
+   "key": "spares_restock",
+   "asset": "tray:S",
+   "what": "the spares tray restocked from deliveries; used spares logged",
+   "every": [
+    "days",
+    28
+   ],
+   "who": "opening",
+   "down": 0.5,
+   "person": 0.5,
+   "kind": "consumables",
+   "spares": "",
+   "source": "assumed",
+   "at": "day",
+   "route": false
+  },
+  {
+   "key": "pm_c",
+   "asset": "tray:C",
+   "what": "tray C: H2D and A1 mini nozzles, rods lubricated (off the route)",
+   "every": [
+    "days",
+    28
+   ],
+   "who": "opening",
+   "down": 1.0,
+   "person": 1.0,
+   "kind": "pm",
+   "spares": "",
+   "source": "assumed; a Bambu forum post quotes the wiki: lubricate every 3 months",
+   "at": "day",
+   "route": false
+  },
+  {
+   "key": "pm_g",
+   "asset": "tray:G",
+   "what": "tray G: Form 4 tanks, Form Wash IPA (off the route)",
+   "every": [
+    "days",
+    28
+   ],
+   "who": "opening",
+   "down": 1.0,
+   "person": 1.0,
+   "kind": "pm",
+   "spares": "",
+   "source": "assumed",
+   "at": "day",
+   "route": false
+  },
+  {
+   "key": "pm_i",
+   "asset": "tray:I",
+   "what": "tray I: SnowPods' filters and chambers (off the route)",
+   "every": [
+    "days",
+    28
+   ],
+   "who": "opening",
+   "down": 1.0,
+   "person": 1.0,
+   "kind": "pm",
+   "spares": "",
+   "source": "assumed",
+   "at": "day",
+   "route": false
+  },
+  {
+   "key": "pm_h",
+   "asset": "tray:H",
+   "what": "tray H: stencil printer and LumenPnP nozzles (off the route)",
+   "every": [
+    "days",
+    28
+   ],
+   "who": "opening",
+   "down": 0.5,
+   "person": 0.5,
+   "kind": "pm",
+   "spares": "",
+   "source": "assumed",
+   "at": "day",
+   "route": false
+  },
+  {
+   "key": "pm_ded",
+   "asset": "ded",
+   "what": "DED: nozzle, protective window, powder feeders (off the route)",
+   "every": [
+    "days",
+    28
+   ],
+   "who": "floor",
+   "down": 1.0,
+   "person": 1.0,
+   "kind": "pm",
+   "spares": "",
+   "source": "assumed",
+   "at": "day",
+   "route": false
+  },
+  {
+   "key": "pm_pack",
+   "asset": "packaging",
+   "what": "packaging station: printheads cleaned, labels, ribbon, bags restocked (off the route)",
+   "every": [
+    "days",
+    28
+   ],
+   "who": "floor",
+   "down": 0.5,
+   "person": 0.5,
+   "kind": "pm",
+   "spares": "",
+   "source": "assumed; Uline H-190 is sold with spare elements and covers",
+   "at": "day",
+   "route": false
+  },
+  {
+   "key": "it_patch_sem",
+   "asset": "sem",
+   "what": "instrument PC: OS updates and a reboot (vendor software pinned)",
+   "every": [
+    "days",
+    28
+   ],
+   "who": "desk",
+   "down": 0.25,
+   "person": 0.25,
+   "kind": "it",
+   "spares": "",
+   "source": "assumed: monthly, after Microsoft's monthly security release",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "it_patch_xrd",
+   "asset": "xrd",
+   "what": "instrument PC: OS updates and a reboot (vendor software pinned)",
+   "every": [
+    "days",
+    28
+   ],
+   "who": "desk",
+   "down": 0.25,
+   "person": 0.25,
+   "kind": "it",
+   "spares": "",
+   "source": "assumed: monthly, after Microsoft's monthly security release",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "it_patch_xrf",
+   "asset": "xrf",
+   "what": "instrument PC: OS updates and a reboot (vendor software pinned)",
+   "every": [
+    "days",
+    28
+   ],
+   "who": "desk",
+   "down": 0.25,
+   "person": 0.25,
+   "kind": "it",
+   "spares": "",
+   "source": "assumed: monthly, after Microsoft's monthly security release",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "it_patch_mastersizer",
+   "asset": "mastersizer",
+   "what": "instrument PC: OS updates and a reboot (vendor software pinned)",
+   "every": [
+    "days",
+    28
+   ],
+   "who": "desk",
+   "down": 0.25,
+   "person": 0.25,
+   "kind": "it",
+   "spares": "",
+   "source": "assumed: monthly, after Microsoft's monthly security release",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "it_patch_nanoindenter",
+   "asset": "nanoindenter",
+   "what": "instrument PC: OS updates and a reboot (vendor software pinned)",
+   "every": [
+    "days",
+    28
+   ],
+   "who": "desk",
+   "down": 0.25,
+   "person": 0.25,
+   "kind": "it",
+   "spares": "",
+   "source": "assumed: monthly, after Microsoft's monthly security release",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "it_patch_pip",
+   "asset": "pip",
+   "what": "instrument PC: OS updates and a reboot (vendor software pinned)",
+   "every": [
+    "days",
+    28
+   ],
+   "who": "desk",
+   "down": 0.25,
+   "person": 0.25,
+   "kind": "it",
+   "spares": "",
+   "source": "assumed: monthly, after Microsoft's monthly security release",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "it_patch_vhx",
+   "asset": "vhx",
+   "what": "instrument PC: OS updates and a reboot (vendor software pinned)",
+   "every": [
+    "days",
+    28
+   ],
+   "who": "desk",
+   "down": 0.25,
+   "person": 0.25,
+   "kind": "it",
+   "spares": "",
+   "source": "assumed: monthly, after Microsoft's monthly security release",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "it_patch_hardness",
+   "asset": "hardness",
+   "what": "instrument PC: OS updates and a reboot (vendor software pinned)",
+   "every": [
+    "days",
+    28
+   ],
+   "who": "desk",
+   "down": 0.25,
+   "person": 0.25,
+   "kind": "it",
+   "spares": "",
+   "source": "assumed: monthly, after Microsoft's monthly security release",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "it_patch_tensile_h",
+   "asset": "tensile_h",
+   "what": "instrument PC: OS updates and a reboot (vendor software pinned)",
+   "every": [
+    "days",
+    28
+   ],
+   "who": "desk",
+   "down": 0.25,
+   "person": 0.25,
+   "kind": "it",
+   "spares": "",
+   "source": "assumed: monthly, after Microsoft's monthly security release",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "it_patch_instron_floor",
+   "asset": "instron_floor",
+   "what": "instrument PC: OS updates and a reboot (vendor software pinned)",
+   "every": [
+    "days",
+    28
+   ],
+   "who": "desk",
+   "down": 0.25,
+   "person": 0.25,
+   "kind": "it",
+   "spares": "",
+   "source": "assumed: monthly, after Microsoft's monthly security release",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "it_patch_cubxl_corrosion",
+   "asset": "cubxl_corrosion",
+   "what": "instrument PC: OS updates and a reboot (vendor software pinned)",
+   "every": [
+    "days",
+    28
+   ],
+   "who": "desk",
+   "down": 0.25,
+   "person": 0.25,
+   "kind": "it",
+   "spares": "",
+   "source": "assumed: monthly, after Microsoft's monthly security release",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "it_patch_aconity",
+   "asset": "aconity",
+   "what": "instrument PC: OS updates and a reboot (vendor software pinned)",
+   "every": [
+    "days",
+    28
+   ],
+   "who": "desk",
+   "down": 0.25,
+   "person": 0.25,
+   "kind": "it",
+   "spares": "",
+   "source": "assumed: monthly, after Microsoft's monthly security release",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "it_revalidate_sem",
+   "asset": "sem",
+   "what": "vendor software update: installed, then the reference check re-run and signed off",
+   "every": [
+    "days",
+    182
+   ],
+   "who": "desk",
+   "down": 1.0,
+   "person": 1.0,
+   "kind": "it",
+   "spares": "",
+   "source": "assumed: two vendor updates a year",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "it_revalidate_xrd",
+   "asset": "xrd",
+   "what": "vendor software update: installed, then the reference check re-run and signed off",
+   "every": [
+    "days",
+    182
+   ],
+   "who": "desk",
+   "down": 1.0,
+   "person": 1.0,
+   "kind": "it",
+   "spares": "",
+   "source": "assumed: two vendor updates a year",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "it_revalidate_xrf",
+   "asset": "xrf",
+   "what": "vendor software update: installed, then the reference check re-run and signed off",
+   "every": [
+    "days",
+    182
+   ],
+   "who": "desk",
+   "down": 1.0,
+   "person": 1.0,
+   "kind": "it",
+   "spares": "",
+   "source": "assumed: two vendor updates a year",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "it_revalidate_mastersizer",
+   "asset": "mastersizer",
+   "what": "vendor software update: installed, then the reference check re-run and signed off",
+   "every": [
+    "days",
+    182
+   ],
+   "who": "desk",
+   "down": 1.0,
+   "person": 1.0,
+   "kind": "it",
+   "spares": "",
+   "source": "assumed: two vendor updates a year",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "it_revalidate_nanoindenter",
+   "asset": "nanoindenter",
+   "what": "vendor software update: installed, then the reference check re-run and signed off",
+   "every": [
+    "days",
+    182
+   ],
+   "who": "desk",
+   "down": 1.0,
+   "person": 1.0,
+   "kind": "it",
+   "spares": "",
+   "source": "assumed: two vendor updates a year",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "it_revalidate_vhx",
+   "asset": "vhx",
+   "what": "vendor software update: installed, then the reference check re-run and signed off",
+   "every": [
+    "days",
+    182
+   ],
+   "who": "desk",
+   "down": 1.0,
+   "person": 1.0,
+   "kind": "it",
+   "spares": "",
+   "source": "assumed: two vendor updates a year",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "it_revalidate_hardness",
+   "asset": "hardness",
+   "what": "vendor software update: installed, then the reference check re-run and signed off",
+   "every": [
+    "days",
+    182
+   ],
+   "who": "desk",
+   "down": 1.0,
+   "person": 1.0,
+   "kind": "it",
+   "spares": "",
+   "source": "assumed: two vendor updates a year",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "it_revalidate_instron_floor",
+   "asset": "instron_floor",
+   "what": "vendor software update: installed, then the reference check re-run and signed off",
+   "every": [
+    "days",
+    182
+   ],
+   "who": "desk",
+   "down": 1.0,
+   "person": 1.0,
+   "kind": "it",
+   "spares": "",
+   "source": "assumed: two vendor updates a year",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "it_revalidate_aconity",
+   "asset": "aconity",
+   "what": "vendor software update: installed, then the reference check re-run and signed off",
+   "every": [
+    "days",
+    182
+   ],
+   "who": "desk",
+   "down": 1.0,
+   "person": 1.0,
+   "kind": "it",
+   "spares": "",
+   "source": "assumed: two vendor updates a year",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "it_scheduler",
+   "asset": "it",
+   "what": "the scheduler's own release: its instrument drivers run against every station's simulator, then one live check each",
+   "every": [
+    "days",
+    28
+   ],
+   "who": "desk",
+   "down": 2.0,
+   "person": 2.0,
+   "kind": "it",
+   "spares": "",
+   "source": "assumed",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "it_backup",
+   "asset": "it",
+   "what": "backups verified; storage and the retention job checked",
+   "every": [
+    "days",
+    7
+   ],
+   "who": "desk",
+   "down": 0.5,
+   "person": 0.5,
+   "kind": "it",
+   "spares": "",
+   "source": "assumed",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "it_restore",
+   "asset": "it",
+   "what": "a restore test from backup",
+   "every": [
+    "days",
+    91
+   ],
+   "who": "desk",
+   "down": 2.0,
+   "person": 2.0,
+   "kind": "it",
+   "spares": "",
+   "source": "assumed",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "it_network",
+   "asset": "it",
+   "what": "network: switch and PoE firmware, the Pis' OS image, certificates",
+   "every": [
+    "days",
+    91
+   ],
+   "who": "desk",
+   "down": 1.0,
+   "person": 1.0,
+   "kind": "it",
+   "spares": "",
+   "source": "assumed; the cameras restart themselves (ac-training-lab picam docs: systemd Restart=always, RestartSec=10; cron reboot at 05, 13 and 21 h)",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "it_licences",
+   "asset": "it",
+   "what": "licence renewals and vendor support contracts",
+   "every": [
+    "days",
+    365
+   ],
+   "who": "desk",
+   "down": 3.0,
+   "person": 3.0,
+   "kind": "it",
+   "spares": "",
+   "source": "assumed",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "c_xray",
+   "asset": "xrd",
+   "what": "X-ray: radiation survey of the MiniFlex and the S2 PUMA, registration renewed (Utah DWMRC, [to confirm])",
+   "every": [
+    "days",
+    365
+   ],
+   "who": "vendor",
+   "down": 2.0,
+   "person": 1.0,
+   "kind": "compliance",
+   "spares": "",
+   "source": "Utah Division of Waste Management and Radiation Control registers X-ray machines [to confirm]; the survey's interval assumed yearly",
+   "at": "vendor",
+   "route": true
+  },
+  {
+   "key": "c_laser",
+   "asset": "aconity",
+   "what": "laser safety: interlocks and labels of the MIDI and the VHX's EA-300 LIBS audited by the laser safety officer",
+   "every": [
+    "days",
+    365
+   ],
+   "who": "floor",
+   "down": 2.0,
+   "person": 2.0,
+   "kind": "compliance",
+   "spares": "",
+   "source": "ANSI Z136.1 (a laser safety programme and officer); yearly assumed",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "c_eyewash",
+   "asset": "site",
+   "what": "eyewash and safety shower activated",
+   "every": [
+    "days",
+    7
+   ],
+   "who": "floor",
+   "down": 0.1,
+   "person": 0.1,
+   "kind": "compliance",
+   "spares": "",
+   "source": "ANSI/ISEA Z358.1: plumbed eyewash activated weekly",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "c_extinguisher",
+   "asset": "site",
+   "what": "extinguishers inspected (monthly visual); first-aid kit",
+   "every": [
+    "days",
+    28
+   ],
+   "who": "floor",
+   "down": 0.25,
+   "person": 0.25,
+   "kind": "compliance",
+   "spares": "",
+   "source": "NFPA 10: monthly inspection, yearly maintenance by a contractor",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "c_kardex",
+   "asset": "vlm*",
+   "what": "Kardex: yearly safety inspection (with a service visit)",
+   "every": [
+    "days",
+    365
+   ],
+   "who": "vendor",
+   "down": 2.0,
+   "person": 1.0,
+   "kind": "compliance",
+   "spares": "",
+   "source": "assumed; Kardex Remstar knowledge base, 'How often should preventive maintenance be performed': 'every 6 months, or twice a year for standard machines'; quarterly if heavily used",
+   "at": "vendor",
+   "route": true
+  },
+  {
+   "key": "c_risk",
+   "asset": "site",
+   "what": "MiR/UR risk assessment reviewed after a layout change (one a year assumed)",
+   "every": [
+    "days",
+    365
+   ],
+   "who": "desk",
+   "down": 4.0,
+   "person": 4.0,
+   "kind": "compliance",
+   "spares": "",
+   "source": "ANSI/RIA R15.08 (industrial mobile robots) and ISO 10218-2 call for a risk assessment of the application; one change a year assumed",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "c_ehs",
+   "asset": "site",
+   "what": "EHS audit; people's training and SOP refreshers",
+   "every": [
+    "days",
+    365
+   ],
+   "who": "desk",
+   "down": 8.0,
+   "person": 8.0,
+   "kind": "compliance",
+   "spares": "",
+   "source": "assumed",
+   "at": "day",
+   "route": true
+  },
+  {
+   "key": "review",
+   "asset": "staff",
+   "what": "control charts reviewed, next week's maintenance planned, spares reordered",
+   "every": [
+    "days",
+    7
+   ],
+   "who": "floor",
+   "down": 1.0,
+   "person": 1.0,
+   "kind": "review",
+   "spares": "",
+   "source": "assumed",
+   "at": "fri",
+   "route": false
+  }
+ ],
+ "failures": [
+  {
+   "asset": "repowder",
+   "what": "induction, vacuum or nozzle fault",
+   "mtbf_h": 400.0,
+   "basis": "op",
+   "who": "floor",
+   "mttr_h": 3.0,
+   "wait_h": 0.0,
+   "source": "assumed"
+  },
+  {
+   "asset": "repowder",
+   "what": "a part from AMAZEMET (coil, generator, seal)",
+   "mtbf_h": 3000.0,
+   "basis": "op",
+   "who": "vendor",
+   "mttr_h": 8.0,
+   "wait_h": 120.0,
+   "source": "assumed"
+  },
+  {
+   "asset": "sieve_cell",
+   "what": "the tipper or the shaker stops; a cloth tears",
+   "mtbf_h": 600.0,
+   "basis": "op",
+   "who": "floor",
+   "mttr_h": 1.0,
+   "wait_h": 0.0,
+   "source": "assumed"
+  },
+  {
+   "asset": "aconity",
+   "what": "recoater crash or short feed",
+   "mtbf_h": 300.0,
+   "basis": "op",
+   "who": "floor",
+   "mttr_h": 2.0,
+   "wait_h": 0.0,
+   "source": "assumed"
+  },
+  {
+   "asset": "aconity",
+   "what": "laser, scanner or gas-loop fault",
+   "mtbf_h": 4000.0,
+   "basis": "op",
+   "who": "vendor",
+   "mttr_h": 16.0,
+   "wait_h": 120.0,
+   "source": "assumed"
+  },
+  {
+   "asset": "wire_edm",
+   "what": "the wire won't thread; a guide",
+   "mtbf_h": 200.0,
+   "basis": "op",
+   "who": "floor",
+   "mttr_h": 0.5,
+   "wait_h": 0.0,
+   "source": "assumed"
+  },
+  {
+   "asset": "instron_floor",
+   "what": "a grip or the chamber",
+   "mtbf_h": 1000.0,
+   "basis": "op",
+   "who": "floor",
+   "mttr_h": 1.0,
+   "wait_h": 0.0,
+   "source": "assumed"
+  },
+  {
+   "asset": "tensile_h",
+   "what": "a grip or the extensometer",
+   "mtbf_h": 800.0,
+   "basis": "op",
+   "who": "opening",
+   "mttr_h": 1.0,
+   "wait_h": 0.0,
+   "source": "assumed"
+  },
+  {
+   "asset": "furnace",
+   "what": "a thermocouple or a heater",
+   "mtbf_h": 8000.0,
+   "basis": "op",
+   "who": "extracted",
+   "mttr_h": 2.0,
+   "wait_h": 72.0,
+   "source": "assumed"
+  },
+  {
+   "asset": "polisher",
+   "what": "a disc that won't seat; a dispenser",
+   "mtbf_h": 300.0,
+   "basis": "op",
+   "who": "opening",
+   "mttr_h": 0.5,
+   "wait_h": 0.0,
+   "source": "assumed"
+  },
+  {
+   "asset": "mount_press",
+   "what": "a stuck mould; a seal",
+   "mtbf_h": 1000.0,
+   "basis": "op",
+   "who": "opening",
+   "mttr_h": 1.0,
+   "wait_h": 0.0,
+   "source": "assumed"
+  },
+  {
+   "asset": "cnc",
+   "what": "a broken end mill; the probe",
+   "mtbf_h": 500.0,
+   "basis": "op",
+   "who": "opening",
+   "mttr_h": 0.5,
+   "wait_h": 0.0,
+   "source": "assumed"
+  },
+  {
+   "asset": "sem",
+   "what": "vacuum or filament",
+   "mtbf_h": 1500.0,
+   "basis": "op",
+   "who": "opening",
+   "mttr_h": 1.0,
+   "wait_h": 0.0,
+   "source": "assumed"
+  },
+  {
+   "asset": "xrd",
+   "what": "goniometer or tube",
+   "mtbf_h": 5000.0,
+   "basis": "op",
+   "who": "vendor",
+   "mttr_h": 8.0,
+   "wait_h": 120.0,
+   "source": "assumed"
+  },
+  {
+   "asset": "xrf",
+   "what": "sample changer or He",
+   "mtbf_h": 1500.0,
+   "basis": "op",
+   "who": "opening",
+   "mttr_h": 0.5,
+   "wait_h": 0.0,
+   "source": "assumed"
+  },
+  {
+   "asset": "mastersizer",
+   "what": "the Aero S blocks; a dirty window",
+   "mtbf_h": 300.0,
+   "basis": "op",
+   "who": "opening",
+   "mttr_h": 0.5,
+   "wait_h": 0.0,
+   "source": "assumed"
+  },
+  {
+   "asset": "nanoindenter",
+   "what": "a broken tip; drift",
+   "mtbf_h": 1500.0,
+   "basis": "op",
+   "who": "extracted",
+   "mttr_h": 2.0,
+   "wait_h": 72.0,
+   "source": "assumed"
+  },
+  {
+   "asset": "pip",
+   "what": "the profilometer",
+   "mtbf_h": 1500.0,
+   "basis": "op",
+   "who": "opening",
+   "mttr_h": 1.0,
+   "wait_h": 0.0,
+   "source": "assumed"
+  },
+  {
+   "asset": "hardness",
+   "what": "focus or stage",
+   "mtbf_h": 2000.0,
+   "basis": "op",
+   "who": "opening",
+   "mttr_h": 0.5,
+   "wait_h": 0.0,
+   "source": "assumed"
+  },
+  {
+   "asset": "vhx",
+   "what": "stage or lens",
+   "mtbf_h": 3000.0,
+   "basis": "op",
+   "who": "opening",
+   "mttr_h": 0.5,
+   "wait_h": 0.0,
+   "source": "assumed"
+  },
+  {
+   "asset": "cubxl_corrosion",
+   "what": "a clogged or leaking cell; the reference electrode",
+   "mtbf_h": 300.0,
+   "basis": "op",
+   "who": "opening",
+   "mttr_h": 1.0,
+   "wait_h": 0.0,
+   "source": "assumed"
+  },
+  {
+   "asset": "carousel",
+   "what": "a jammed cup or a stuck feeder",
+   "mtbf_h": 200.0,
+   "basis": "op",
+   "who": "opening",
+   "mttr_h": 0.5,
+   "wait_h": 0.0,
+   "source": "assumed"
+  },
+  {
+   "asset": "vlm*",
+   "what": "a tray position error, a light-curtain trip, the shutter",
+   "mtbf_h": 1500.0,
+   "basis": "cal",
+   "who": "opening",
+   "mttr_h": 0.5,
+   "wait_h": 0.0,
+   "source": "assumed"
+  },
+  {
+   "asset": "vlm*",
+   "what": "a drive or extractor fault",
+   "mtbf_h": 17520.0,
+   "basis": "cal",
+   "who": "vendor",
+   "mttr_h": 8.0,
+   "wait_h": 48.0,
+   "source": "assumed"
+  },
+  {
+   "asset": "unit",
+   "what": "lost localization or a protective stop it can't clear",
+   "mtbf_h": 400.0,
+   "basis": "cal",
+   "who": "floor",
+   "mttr_h": 0.5,
+   "wait_h": 0.0,
+   "source": "assumed"
+  },
+  {
+   "asset": "unit",
+   "what": "a drive, joint or gripper fault",
+   "mtbf_h": 8760.0,
+   "basis": "cal",
+   "who": "vendor",
+   "mttr_h": 8.0,
+   "wait_h": 72.0,
+   "source": "assumed"
+  },
+  {
+   "asset": "tray:*",
+   "what": "a camera's Pi or SD card; a dock's link",
+   "mtbf_h": 20000.0,
+   "basis": "cal",
+   "who": "opening",
+   "mttr_h": 0.5,
+   "wait_h": 0.0,
+   "source": "assumed"
+  },
+  {
+   "asset": "chiller",
+   "what": "chiller fault (the XRD stops)",
+   "mtbf_h": 8760.0,
+   "basis": "cal",
+   "who": "vendor",
+   "mttr_h": 4.0,
+   "wait_h": 48.0,
+   "source": "assumed"
+  }
+ ],
+ "totals": {
+  "round8": {
+   "atomized": 378,
+   "printed": 324,
+   "tested": 324,
+   "promoted": 31,
+   "runs": 702,
+   "powder_kg": 172.5,
+   "data_gb": 2104.8,
+   "video_tb": 125.7,
+   "tensile": 1420,
+   "sem_images": 6804,
+   "xrd": 378,
+   "xrf": 378,
+   "psd": 378,
+   "indents": 972,
+   "corrosion": 648
+  },
+  "planned_upkeep_only": {
+   "atomized": 377,
+   "printed": 324,
+   "tested": 324,
+   "promoted": 31,
+   "runs": 699,
+   "powder_kg": 172.0,
+   "data_gb": 2100.0,
+   "video_tb": 125.7,
+   "tensile": 1420,
+   "sem_images": 6798,
+   "xrd": 377,
+   "xrf": 377,
+   "psd": 377,
+   "indents": 972,
+   "corrosion": 648
+  },
+  "with_upkeep_and_failures": {
+   "atomized": 354,
+   "printed": 304,
+   "tested": 304,
+   "promoted": 29,
+   "runs": 659,
+   "powder_kg": 161.9,
+   "data_gb": 1975.1,
+   "video_tb": 125.7,
+   "tensile": 1332,
+   "sem_images": 6380,
+   "xrd": 354,
+   "xrf": 354,
+   "psd": 354,
+   "indents": 912,
+   "corrosion": 608
+  }
+ },
+ "availability": {
+  "carousel": {
+   "availability": 0.9855,
+   "unplanned_h": 24.5,
+   "planned_h": 26.5,
+   "check_h": 75.2
+  },
+  "repowder": {
+   "availability": 0.9524,
+   "unplanned_h": 293.9,
+   "planned_h": 121.5,
+   "check_h": 0.0
+  },
+  "sieve_cell": {
+   "availability": 0.9946,
+   "unplanned_h": 2.7,
+   "planned_h": 27.5,
+   "check_h": 17.0
+  },
+  "mastersizer": {
+   "availability": 0.9966,
+   "unplanned_h": 2.5,
+   "planned_h": 11.8,
+   "check_h": 15.6
+  },
+  "xrd": {
+   "availability": 0.9961,
+   "unplanned_h": 4.5,
+   "planned_h": 16.5,
+   "check_h": 13.0
+  },
+  "xrf": {
+   "availability": 0.9928,
+   "unplanned_h": 0.5,
+   "planned_h": 8.0,
+   "check_h": 54.6
+  },
+  "sem": {
+   "availability": 0.9971,
+   "unplanned_h": 0.5,
+   "planned_h": 11.8,
+   "check_h": 13.0
+  },
+  "aconity": {
+   "availability": 0.9754,
+   "unplanned_h": 131.5,
+   "planned_h": 83.5,
+   "check_h": 0.0
+  },
+  "wire_edm": {
+   "availability": 0.9912,
+   "unplanned_h": 13.3,
+   "planned_h": 48.0,
+   "check_h": 15.6
+  },
+  "furnace": {
+   "availability": 0.9948,
+   "unplanned_h": 1.5,
+   "planned_h": 43.8,
+   "check_h": 0.0
+  },
+  "tensile_h": {
+   "availability": 0.9971,
+   "unplanned_h": 1.0,
+   "planned_h": 8.8,
+   "check_h": 15.6
+  },
+  "instron_floor": {
+   "availability": 0.9957,
+   "unplanned_h": 0.0,
+   "planned_h": 11.2,
+   "check_h": 26.0
+  },
+  "cnc": {
+   "availability": 0.9996,
+   "unplanned_h": 0.5,
+   "planned_h": 2.8,
+   "check_h": 0.0
+  },
+  "mount_press": {
+   "availability": 0.9957,
+   "unplanned_h": 1.5,
+   "planned_h": 35.8,
+   "check_h": 0.0
+  },
+  "polisher": {
+   "availability": 0.9872,
+   "unplanned_h": 76.0,
+   "planned_h": 35.8,
+   "check_h": 0.0
+  },
+  "vhx": {
+   "availability": 0.999,
+   "unplanned_h": 0.0,
+   "planned_h": 6.2,
+   "check_h": 2.6
+  },
+  "hardness": {
+   "availability": 0.9904,
+   "unplanned_h": 1.0,
+   "planned_h": 9.8,
+   "check_h": 72.8
+  },
+  "nanoindenter": {
+   "availability": 0.9826,
+   "unplanned_h": 113.4,
+   "planned_h": 12.8,
+   "check_h": 25.5
+  },
+  "pip": {
+   "availability": 0.9982,
+   "unplanned_h": 2.5,
+   "planned_h": 10.8,
+   "check_h": 2.5
+  },
+  "cubxl_corrosion": {
+   "availability": 0.9935,
+   "unplanned_h": 12.3,
+   "planned_h": 31.5,
+   "check_h": 13.0
+  },
+  "open1": {
+   "availability": 0.9576,
+   "unplanned_h": 196.1,
+   "planned_h": 173.8,
+   "check_h": 0.0
+  },
+  "open2": {
+   "availability": 0.9782,
+   "unplanned_h": 69.0,
+   "planned_h": 121.2,
+   "check_h": 0.0
+  },
+  "unit0": {
+   "availability": 0.9537,
+   "unplanned_h": 367.4,
+   "planned_h": 35.2,
+   "check_h": 1.2
+  },
+  "unit1": {
+   "availability": 0.953,
+   "unplanned_h": 373.3,
+   "planned_h": 35.8,
+   "check_h": 1.3
+  }
+ },
+ "people_hours_per_week": {
+  "mean_after_ramp": 31.0,
+  "max": 37.4,
+  "by_kind_mean_after_ramp": {
+   "crucible": 13.41,
+   "pm": 7.24,
+   "consumables": 4.83,
+   "repair": 1.32,
+   "vendor": 0.34,
+   "review": 1.0,
+   "it": 2.34,
+   "compliance": 0.48
+  },
+  "weekly": {
+   "crucible": [
+    5.0,
+    5.0,
+    10.0,
+    10.0,
+    11.0,
+    14.0,
+    13.0,
+    11.0,
+    14.0,
+    14.0,
+    14.0,
+    14.0,
+    13.0,
+    14.0,
+    13.0,
+    14.0,
+    14.0,
+    14.0,
+    13.0,
+    14.0,
+    12.0,
+    14.0,
+    14.0,
+    10.0,
+    8.0,
+    14.0,
+    14.0,
+    14.0,
+    14.0,
+    14.0,
+    14.0,
+    14.0,
+    14.0,
+    13.0,
+    14.0,
+    14.0,
+    14.0,
+    12.0,
+    13.0,
+    14.0,
+    14.0,
+    12.0,
+    12.0,
+    14.0,
+    12.0,
+    14.0,
+    14.0,
+    14.0,
+    14.0,
+    11.0,
+    14.0,
+    16.0
+   ],
+   "pm": [
+    4.25,
+    6.5,
+    6.25,
+    9.5,
+    7.75,
+    6.75,
+    6.5,
+    8.75,
+    5.75,
+    5.0,
+    8.5,
+    8.5,
+    7.0,
+    5.75,
+    6.75,
+    8.75,
+    6.25,
+    6.25,
+    7.0,
+    10.5,
+    9.5,
+    5.75,
+    5.25,
+    11.0,
+    5.75,
+    6.0,
+    6.0,
+    9.25,
+    6.0,
+    6.25,
+    8.0,
+    9.5,
+    6.25,
+    6.0,
+    6.0,
+    9.25,
+    6.75,
+    4.75,
+    8.75,
+    6.5,
+    7.0,
+    7.5,
+    6.5,
+    9.0,
+    9.75,
+    6.25,
+    7.75,
+    8.5,
+    6.5,
+    6.75,
+    6.0,
+    8.75
+   ],
+   "consumables": [
+    3.0,
+    3.0,
+    3.5,
+    4.0,
+    3.5,
+    4.0,
+    4.5,
+    4.5,
+    5.0,
+    5.0,
+    3.5,
+    6.25,
+    4.0,
+    3.5,
+    6.5,
+    5.25,
+    4.0,
+    4.25,
+    4.0,
+    4.25,
+    4.5,
+    4.25,
+    7.75,
+    4.0,
+    4.0,
+    3.5,
+    8.5,
+    4.0,
+    5.0,
+    5.0,
+    3.5,
+    5.25,
+    4.5,
+    4.0,
+    5.0,
+    6.0,
+    4.5,
+    5.0,
+    3.75,
+    4.0,
+    6.75,
+    5.75,
+    3.0,
+    5.0,
+    4.5,
+    3.5,
+    4.5,
+    6.0,
+    8.0,
+    3.25,
+    4.75,
+    6.0
+   ],
+   "repair": [
+    2.5,
+    0.5,
+    0.0,
+    1.5,
+    5.5,
+    0.5,
+    3.5,
+    3.5,
+    0.0,
+    0.5,
+    0.5,
+    1.0,
+    0.5,
+    0.5,
+    1.5,
+    0.0,
+    0.5,
+    0.0,
+    0.0,
+    0.0,
+    3.5,
+    1.5,
+    2.0,
+    0.5,
+    1.0,
+    2.0,
+    1.5,
+    0.0,
+    0.5,
+    0.0,
+    0.0,
+    0.5,
+    1.5,
+    1.5,
+    0.0,
+    2.5,
+    2.5,
+    5.0,
+    1.5,
+    3.0,
+    4.0,
+    3.5,
+    2.0,
+    0.0,
+    1.0,
+    3.5,
+    1.0,
+    2.0,
+    1.0,
+    1.0,
+    1.5,
+    2.0
+   ],
+   "vendor": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    2.0,
+    0.0,
+    0.0,
+    0.0,
+    2.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    1.0,
+    0.0,
+    1.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    1.0,
+    1.0,
+    0.0
+   ],
+   "review": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    0.0,
+    1.0,
+    2.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    0.0,
+    2.0,
+    0.0,
+    2.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "it": [
+    1.25,
+    5.5,
+    1.25,
+    0.75,
+    5.5,
+    3.5,
+    1.25,
+    0.75,
+    2.5,
+    4.5,
+    1.25,
+    0.75,
+    1.5,
+    3.5,
+    2.25,
+    0.75,
+    1.5,
+    1.5,
+    6.25,
+    0.75,
+    1.5,
+    4.5,
+    1.25,
+    0.75,
+    2.5,
+    3.5,
+    2.25,
+    2.75,
+    1.5,
+    3.5,
+    5.25,
+    0.75,
+    1.5,
+    3.5,
+    2.25,
+    1.75,
+    1.5,
+    3.5,
+    1.25,
+    0.75,
+    2.5,
+    1.5,
+    3.25,
+    2.75,
+    2.5,
+    6.5,
+    1.25,
+    1.75,
+    1.5,
+    3.5,
+    2.25,
+    0.75
+   ],
+   "compliance": [
+    2.1,
+    0.35,
+    0.1,
+    1.1,
+    0.1,
+    0.35,
+    0.1,
+    0.1,
+    0.1,
+    0.35,
+    1.1,
+    0.1,
+    0.1,
+    0.35,
+    0.1,
+    0.1,
+    0.1,
+    4.35,
+    0.1,
+    0.1,
+    0.1,
+    0.35,
+    0.1,
+    0.1,
+    0.1,
+    0.35,
+    0.1,
+    0.1,
+    0.1,
+    0.35,
+    0.1,
+    0.1,
+    0.1,
+    0.35,
+    0.1,
+    0.1,
+    0.1,
+    0.35,
+    0.1,
+    8.1,
+    0.1,
+    0.35,
+    0.1,
+    0.1,
+    0.1,
+    0.35,
+    1.1,
+    0.1,
+    0.1,
+    0.35,
+    0.1,
+    0.1
+   ]
+  },
+  "note": "one person's weekday shift is 40 h; their crucible hours are the atomizer's run slots"
+ },
+ "counts": {
+  "checks_run": 1627,
+  "pm_done": 1455,
+  "auto": 783,
+  "repairs": 85,
+  "by_who": {
+   "auto": {
+    "planned": 783,
+    "repairs": 0
+   },
+   "arm": {
+    "planned": 1627,
+    "repairs": 0
+   },
+   "floor": {
+    "planned": 681,
+    "repairs": 53
+   },
+   "desk": {
+    "planned": 248,
+    "repairs": 0
+   },
+   "opening": {
+    "planned": 507,
+    "repairs": 27
+   },
+   "vendor": {
+    "planned": 19,
+    "repairs": 4
+   },
+   "extracted": {
+    "planned": 0,
+    "repairs": 1
+   }
+  }
+ },
+ "realism": {
+  "tray_couplings": {
+   "A": {
+    "presentations": 774,
+    "plate_mates": 1548,
+    "plate_years_to_100k": 64.6,
+    "ups_transfers": 1548,
+    "ups_dod_per_transfer_pct": 0.22,
+    "ups_equiv_full_cycles": 3.5
+   },
+   "B": {
+    "presentations": 2146,
+    "plate_mates": 4292,
+    "plate_years_to_100k": 23.3,
+    "ups_transfers": 4292,
+    "ups_dod_per_transfer_pct": 0.03,
+    "ups_equiv_full_cycles": 1.5
+   },
+   "C": {
+    "presentations": 17,
+    "plate_mates": 34,
+    "plate_years_to_100k": 2941.2,
+    "ups_transfers": 34,
+    "ups_dod_per_transfer_pct": 0.94,
+    "ups_equiv_full_cycles": 0.3
+   },
+   "D": {
+    "presentations": 2239,
+    "plate_mates": 4478,
+    "plate_years_to_100k": 22.3,
+    "ups_transfers": 4478,
+    "ups_dod_per_transfer_pct": 0.91,
+    "ups_equiv_full_cycles": 40.9
+   },
+   "E": {
+    "presentations": 2205,
+    "plate_mates": 4410,
+    "plate_years_to_100k": 22.7,
+    "ups_transfers": 4410,
+    "ups_dod_per_transfer_pct": 0.48,
+    "ups_equiv_full_cycles": 21.0
+   },
+   "F": {
+    "presentations": 1905,
+    "plate_mates": 3810,
+    "plate_years_to_100k": 26.2,
+    "ups_transfers": 3810,
+    "ups_dod_per_transfer_pct": 0.68,
+    "ups_equiv_full_cycles": 26.0
+   },
+   "G": {
+    "presentations": 17,
+    "plate_mates": 34,
+    "plate_years_to_100k": 2941.2,
+    "ups_transfers": 34,
+    "ups_dod_per_transfer_pct": 0.05,
+    "ups_equiv_full_cycles": 0.0
+   },
+   "H": {
+    "presentations": 18,
+    "plate_mates": 36,
+    "plate_years_to_100k": 2777.8,
+    "ups_transfers": 36,
+    "ups_dod_per_transfer_pct": 0.05,
+    "ups_equiv_full_cycles": 0.0
+   },
+   "I": {
+    "presentations": 17,
+    "plate_mates": 34,
+    "plate_years_to_100k": 2941.2,
+    "ups_transfers": 34,
+    "ups_dod_per_transfer_pct": 0.05,
+    "ups_equiv_full_cycles": 0.0
+   },
+   "J": {
+    "presentations": 57,
+    "plate_mates": 114,
+    "plate_years_to_100k": 877.2,
+    "ups_transfers": 114,
+    "ups_dod_per_transfer_pct": 0.05,
+    "ups_equiv_full_cycles": 0.1
+   },
+   "K": {
+    "presentations": 638,
+    "plate_mates": 1276,
+    "plate_years_to_100k": 78.4,
+    "ups_transfers": 1276,
+    "ups_dod_per_transfer_pct": 0.05,
+    "ups_equiv_full_cycles": 0.6
+   },
+   "L": {
+    "presentations": 2057,
+    "plate_mates": 4114,
+    "plate_years_to_100k": 24.3,
+    "ups_transfers": 4114,
+    "ups_dod_per_transfer_pct": 0.05,
+    "ups_equiv_full_cycles": 1.9
+   },
+   "M": {
+    "presentations": 2055,
+    "plate_mates": 4110,
+    "plate_years_to_100k": 24.3,
+    "ups_transfers": 4110,
+    "ups_dod_per_transfer_pct": 0.05,
+    "ups_equiv_full_cycles": 1.9
+   },
+   "N": {
+    "presentations": 56,
+    "plate_mates": 112,
+    "plate_years_to_100k": 892.9,
+    "ups_transfers": 112,
+    "ups_dod_per_transfer_pct": 0.05,
+    "ups_equiv_full_cycles": 0.1
+   },
+   "O": {
+    "presentations": 56,
+    "plate_mates": 112,
+    "plate_years_to_100k": 892.9,
+    "ups_transfers": 112,
+    "ups_dod_per_transfer_pct": 0.05,
+    "ups_equiv_full_cycles": 0.1
+   },
+   "S": {
+    "presentations": 13,
+    "plate_mates": 26,
+    "plate_years_to_100k": 3846.2,
+    "ups_transfers": 26,
+    "ups_dod_per_transfer_pct": 0.05,
+    "ups_equiv_full_cycles": 0.0
+   }
+  },
+  "bay_docks": {
+   "bay dock, Shuttle 1": {
+    "mates": 9356,
+    "years_to_100k": 10.7
+   },
+   "bay dock, Shuttle 2": {
+    "mates": 4914,
+    "years_to_100k": 20.4
+   }
+  },
+  "couplings_note": "St\u00e4ubli rates the CombiTac's power, data and fluid inserts and the align frame at 100,000 mating cycles (CombiTac overview, CT-Overview-11014010). A tray's plate mates twice per presentation, its Shuttle's bay dock once per presentation of any of its trays.",
+  "ups_note": "each transfer is about 6 s on the battery; estimate from a 230 V 5PX 1500's 44 min at 300 W (a retailer's figure, notes/services.md). VRLA is rated 200 cycles at 100 % depth of discharge, 1,200 at 30 % (Yuasa NP12-12): these transfers add only a few equivalent full cycles a year, so float life and heat set the battery's life (3-5 years at 25 \u00b0C, Eaton), not the transfers.",
+  "units": {
+   "unit0": {
+    "transfers": 7058,
+    "hours_off_charger": 4932,
+    "kwh": 1973,
+    "battery_equiv_cycles": 1209,
+    "battery_years_to_3000": 2.5,
+    "grips": 28232,
+    "fingertips_years_to_1M": 35.4
+   },
+   "unit1": {
+    "transfers": 3000,
+    "hours_off_charger": 2493,
+    "kwh": 997,
+    "battery_equiv_cycles": 611,
+    "battery_years_to_3000": 4.9,
+    "grips": 12000,
+    "fingertips_years_to_1M": 83.3
+   }
+  },
+  "units_note": "assumed: the UR10e's 350 W typical (UR) and the MiR250's drive and computers; MiR250 battery, Li-NMC 47.7 V 34.2 Ah, at least 3,000 cycles (a reseller's spec sheet, robotsoflondon); Robotiq: fingertips at 1 million cycles, overhaul at 2 million (2F-85 manual)",
+  "station_hours": {
+   "aconity": 2199.6,
+   "repowder": 1660.9,
+   "furnace": 1002.0,
+   "cubxl_corrosion": 669.0,
+   "carousel": 663.0,
+   "instron_floor": 549.0,
+   "sieve_cell": 446.8,
+   "wire_edm": 379.8,
+   "sem": 275.9,
+   "polisher": 244.8,
+   "nanoindenter": 228.7,
+   "xrd": 212.4,
+   "mount_press": 182.4,
+   "tensile_h": 182.4,
+   "xrf": 124.0,
+   "vhx": 121.6,
+   "hardness": 91.3,
+   "cnc": 91.2,
+   "mastersizer": 88.7,
+   "pip": 76.0
+  },
+  "step_counts": {
+   "charge": 666,
+   "atomize": 669,
+   "sieve": 596,
+   "ld": 355,
+   "xrd": 354,
+   "psem": 354,
+   "print": 359,
+   "xrf": 355,
+   "depowder": 305,
+   "edm": 304,
+   "heat": 304,
+   "section": 305,
+   "face": 304,
+   "mount": 304,
+   "polish": 307,
+   "sem": 304,
+   "vhx": 304,
+   "hv": 305,
+   "nano": 305,
+   "pip": 304,
+   "tensile_rt": 304,
+   "tensile_hot": 304,
+   "corrosion": 305,
+   "print_full": 31,
+   "depowder_full": 30,
+   "edm_full": 30,
+   "heat_full": 30,
+   "e8_rt": 30,
+   "e8_hot": 30
+  },
+  "atomizer_runs": 669,
+  "task_counts": {
+   "ups_test": 780,
+   "hv_block": 364,
+   "ld_ref": 52,
+   "nano_fs": 52,
+   "t_ref_tray": 52,
+   "vhx_scale": 13,
+   "xrf_drift": 364,
+   "bal_weights": 364,
+   "ac_weekly": 52,
+   "gb_weekly": 52,
+   "it_backup": 52,
+   "mir_monthly": 26,
+   "store_n": 52,
+   "store_o": 52,
+   "sv_ipa": 52,
+   "fail": 85,
+   "cx_ref": 52,
+   "it_patch_xrf": 13,
+   "ur_monthly": 26,
+   "vlm_clean": 26,
+   "sem_eds": 52,
+   "xrd_si": 52,
+   "f_tus": 1,
+   "c_eyewash": 52,
+   "it_patch_xrd": 13,
+   "spares_restock": 13,
+   "c_laser": 1,
+   "mir_weekly": 103,
+   "px_waste": 52,
+   "store_j": 52,
+   "edm_test": 52,
+   "t_ref_floor": 52,
+   "it_patch_sem": 13,
+   "review": 52,
+   "rp_clean": 52,
+   "cams_wipe": 60,
+   "cx_fluids": 51,
+   "dose_clean": 51,
+   "edm_weekly": 51,
+   "it_patch_hardness": 13,
+   "pm_pack": 13,
+   "c_extinguisher": 13,
+   "it_patch_aconity": 13,
+   "it_scheduler": 13,
+   "it_patch_pip": 13,
+   "it_patch_vhx": 13,
+   "it_revalidate_aconity": 2,
+   "it_revalidate_xrd": 2,
+   "it_patch_instron_floor": 13,
+   "pm_c": 13,
+   "sv_check": 29,
+   "pip_cal": 25,
+   "it_patch_nanoindenter": 13,
+   "rp_crucible_stock": 44,
+   "it_patch_tensile_h": 13,
+   "d405_cal": 26,
+   "bal_cal": 13,
+   "gb_regen": 3,
+   "c_kardex": 2,
+   "pm_ded": 13,
+   "pm_g": 13,
+   "ld_clean": 13,
+   "pm_i": 13,
+   "dp_filter": 13,
+   "it_patch_mastersizer": 13,
+   "pm_h": 13,
+   "sv_verify": 13,
+   "ac_laser": 4,
+   "it_patch_cubxl_corrosion": 12,
+   "it_revalidate_xrf": 2,
+   "it_revalidate_sem": 2,
+   "it_restore": 4,
+   "f_sat": 4,
+   "rp_thermocouple": 16,
+   "rp_insulation": 11,
+   "ac_blade": 8,
+   "px_restock": 7,
+   "it_network": 4,
+   "n2_filters": 1,
+   "it_revalidate_hardness": 2,
+   "bay_dock": 8,
+   "chiller_fluid": 2,
+   "rp_pump_oil": 4,
+   "c_xray": 1,
+   "edm_service": 1,
+   "mx_restock": 5,
+   "cx_cal": 2,
+   "gb_halfyear": 2,
+   "it_revalidate_instron_floor": 2,
+   "cnc_tools": 3,
+   "chiller_filter": 3,
+   "edm_wire": 3,
+   "c_risk": 1,
+   "vlm_service": 4,
+   "unit_halfyear": 4,
+   "it_revalidate_vhx": 2,
+   "sem_filament": 2,
+   "edm_contacts": 2,
+   "mir_wheels": 2,
+   "it_revalidate_nanoindenter": 2,
+   "xrd_service": 1,
+   "it_revalidate_mastersizer": 1,
+   "ac_filter": 2,
+   "sv_replace": 1,
+   "edm_resin": 1,
+   "t_verify_floor": 1,
+   "sem_service": 1,
+   "unit_service": 2,
+   "sv_shaker": 1,
+   "hv_verify": 1,
+   "c_ehs": 1,
+   "ac_service": 1,
+   "t_verify_tray": 1,
+   "it_licences": 1,
+   "rp_service": 1,
+   "xrf_he": 1,
+   "t_faces": 1
+  }
+ },
+ "storage": {
+  "cameras": 32,
+  "video_keep_all_tb": 125.7,
+  "instrument_data_tb": 1.98,
+  "retention": {
+   "rolling_days": 30,
+   "rolling_buffer_tb": 10.4,
+   "anomalies": 232,
+   "anomaly_clip_h": 0.5,
+   "cameras_per_anomaly": 3,
+   "anomaly_clips_tb": 0.16,
+   "timelapse_tb": 2.1,
+   "kept_a_year_tb": 2.25
+  },
+  "note": "Kept whole, a year of stream video needs about this much disk, mirrored, every year, against a few TB of instrument data. The retention policy (assumed) keeps a rolling buffer, a clip around every failure, interrupted step, dripped run and cracked build, and a time-lapse."
+ },
+ "beyond_the_first_year": [
+  {
+   "what": "UPS batteries (15, VRLA)",
+   "interval": "3-5 years at 25 \u00b0C, about half that per 10 \u00b0C warmer",
+   "who": "a person, the tray pulled out; Eaton's battery kit is hot-swappable",
+   "source": "Eaton 5PX manual 614-07977-00: automatic battery test 'Every week' by default; 3-5 years float life at 25 \u00b0C (Eaton, search snippet); 9PX Li-ion (LFP) 8-10 years (eps-dc)"
+  },
+  {
+   "what": "UPS batteries, if lithium (9PX Li-ion, LFP)",
+   "interval": "8-10 years",
+   "who": "as above",
+   "source": "Eaton 5PX manual 614-07977-00: automatic battery test 'Every week' by default; 3-5 years float life at 25 \u00b0C (Eaton, search snippet); 9PX Li-ion (LFP) 8-10 years (eps-dc)"
+  },
+  {
+   "what": "MiR250 batteries",
+   "interval": "at least 3,000 cycles",
+   "who": "a person",
+   "source": "MiR250 Li-NMC 47.7 V 34.2 Ah (reseller sheet)"
+  },
+  {
+   "what": "2F-85 overhaul",
+   "interval": "2 million cycles",
+   "who": "Robotiq's factory, 5 business days plus shipping (a loan unit)",
+   "source": "Robotiq 2F-85 manual pp. 88-91: cleaning weekly, inspection monthly, fingertips '1 Million cycles or when wear is visible', overhaul at 2 million cycles"
+  },
+  {
+   "what": "MiR safety parts (stops, safety PLC, contactors, brakes)",
+   "interval": "20 years",
+   "who": "vendor",
+   "source": "MiR250 user guide, periodic tasks (mirsupport): weekly scanners and lights, monthly wheels and charging pads, quarterly stop tests, half-yearly battery connector and braking test, yearly casters and drive wheels replaced"
+  },
+  {
+   "what": "N2 generator catalyst module",
+   "interval": "about 3 years",
+   "who": "a person (2 h to cool first)",
+   "source": "Parker UHPN2 '12 Month's Service - Filter Kit' MKUHPN2-FK; catalyst module about 3 years (search snippets; parker.com refused the runner)"
+  },
+  {
+   "what": "Glovebox purifier catalyst and sieve",
+   "interval": "3 years (PureLab), 5-8 (EPFL)",
+   "who": "vendor",
+   "source": "Inert PureLab manual (NIST copy): gloves and O-rings by inspection, box filters yearly, catalyst every 3 years; EPFL glovebox guidelines: regeneration every 3-6 months, sensors every 1-2 years; Cornell: pump oil twice a year, a regeneration up to 12 h"
+  },
+  {
+   "what": "Glovebox O2 and H2O sensors",
+   "interval": "1-2 years",
+   "who": "vendor",
+   "source": "Inert PureLab manual (NIST copy): gloves and O-rings by inspection, box filters yearly, catalyst every 3 years; EPFL glovebox guidelines: regeneration every 3-6 months, sensors every 1-2 years; Cornell: pump oil twice a year, a regeneration up to 12 h"
+  },
+  {
+   "what": "SEM turbo pump, diaphragm pump",
+   "interval": "3-5 years",
+   "who": "vendor",
+   "source": "Hitachi TM3000/TM3030 manuals (the TM4000's own not found): 30 min cool-down for a filament change, anode cleaned every 5-6 filaments, TMP 3-5 years; a tungsten filament about 100 h (Thermo Fisher)"
+  },
+  {
+   "what": "XRD tube",
+   "interval": "about 10,000 h of beam (generic)",
+   "who": "vendor",
+   "source": "MicroXRay, generic sealed tube"
+  },
+  {
+   "what": "EDM power-feed cables",
+   "interval": "3 years",
+   "who": "vendor",
+   "source": "generic wire-EDM practice: FANUC America 'weekly cleaning taking less than an hour'; MMS 'power contacts indexed every 50 to 100 hours of cutting'; Langenhorst (MoldMaking) 300 h conductivity sensor and auto-threader, 500 h lower arm, 1,000 h tank; FANUC EU PM 'every 2,000 operating hours or 1x per year'; a 15.9 kg spool is '60 hours of wire'"
+  },
+  {
+   "what": "UR10e CMOS battery",
+   "interval": "up to 10 years",
+   "who": "a person",
+   "source": "Universal Robots inspection and maintenance plan: safety functions 'tested monthly'; control box air filters; service check 'at least bi-annually'"
+  }
+ ],
+ "spares_tray": "a spares tray (proposed: Shuttle 1's free 390 mm at the top of the rear column takes a 350 mm tray without a UPS or cameras; notes/tray_plan.md)",
+ "week": {
+  "week": 36,
+  "starts_lab_h": 5880.0,
+  "hours_from": "Monday 06:00 of the week",
+  "shifts": [
+   [
+    2.0,
+    10.0
+   ],
+   [
+    26.0,
+    34.0
+   ],
+   [
+    50.0,
+    58.0
+   ],
+   [
+    74.0,
+    82.0
+   ],
+   [
+    98.0,
+    106.0
+   ]
+  ],
+  "rows": {
+   "carousel": [
+    {
+     "t0": 6.0,
+     "t1": 6.5,
+     "what": "doser's funnels and cup nests cleaned, press die cleaned",
+     "kind": "maint",
+     "who": "opening",
+     "task": "dose_clean"
+    },
+    {
+     "t0": 6.6,
+     "t1": 7.6,
+     "what": "charge",
+     "alloy": 232,
+     "kind": "process"
+    },
+    {
+     "t0": 7.6,
+     "t1": 8.6,
+     "what": "charge",
+     "alloy": 238,
+     "kind": "process"
+    },
+    {
+     "t0": 8.6,
+     "t1": 9.6,
+     "what": "charge",
+     "alloy": 239,
+     "kind": "process"
+    },
+    {
+     "t0": 20.5,
+     "t1": 20.7,
+     "what": "HR-202i calibrated with an external weight",
+     "kind": "check",
+     "who": "arm",
+     "task": "bal_cal"
+    },
+    {
+     "t0": 23.0,
+     "t1": 23.2,
+     "what": "HR-202i: check weight weighed 10 times (repeatability), then a calibration test",
+     "kind": "check",
+     "who": "arm",
+     "task": "bal_weights"
+    },
+    {
+     "t0": 29.25,
+     "t1": 30.25,
+     "what": "charge",
+     "alloy": 232,
+     "kind": "process"
+    },
+    {
+     "t0": 30.25,
+     "t1": 31.25,
+     "what": "charge",
+     "alloy": 240,
+     "kind": "process"
+    },
+    {
+     "t0": 47.0,
+     "t1": 47.2,
+     "what": "HR-202i: check weight weighed 10 times (repeatability), then a calibration test",
+     "kind": "check",
+     "who": "arm",
+     "task": "bal_weights"
+    },
+    {
+     "t0": 50.0,
+     "t1": 51.0,
+     "what": "charge",
+     "alloy": 241,
+     "kind": "process"
+    },
+    {
+     "t0": 53.0,
+     "t1": 54.0,
+     "what": "charge",
+     "alloy": 242,
+     "kind": "process"
+    },
+    {
+     "t0": 55.0,
+     "t1": 56.0,
+     "what": "charge",
+     "alloy": 243,
+     "kind": "process"
+    },
+    {
+     "t0": 71.0,
+     "t1": 71.2,
+     "what": "HR-202i: check weight weighed 10 times (repeatability), then a calibration test",
+     "kind": "check",
+     "who": "arm",
+     "task": "bal_weights"
+    },
+    {
+     "t0": 77.5,
+     "t1": 78.5,
+     "what": "charge",
+     "alloy": 242,
+     "kind": "process"
+    },
+    {
+     "t0": 79.1,
+     "t1": 80.1,
+     "what": "charge",
+     "alloy": 244,
+     "kind": "process"
+    },
+    {
+     "t0": 80.1,
+     "t1": 81.1,
+     "what": "charge",
+     "alloy": 245,
+     "kind": "process"
+    },
+    {
+     "t0": 95.0,
+     "t1": 95.2,
+     "what": "HR-202i: check weight weighed 10 times (repeatability), then a calibration test",
+     "kind": "check",
+     "who": "arm",
+     "task": "bal_weights"
+    },
+    {
+     "t0": 100.1,
+     "t1": 101.1,
+     "what": "charge",
+     "alloy": 246,
+     "kind": "process"
+    },
+    {
+     "t0": 101.5,
+     "t1": 102.5,
+     "what": "charge",
+     "alloy": 247,
+     "kind": "process"
+    },
+    {
+     "t0": 107.0,
+     "t1": 108.0,
+     "what": "charge",
+     "alloy": 243,
+     "kind": "process"
+    },
+    {
+     "t0": 119.0,
+     "t1": 119.2,
+     "what": "HR-202i: check weight weighed 10 times (repeatability), then a calibration test",
+     "kind": "check",
+     "who": "arm",
+     "task": "bal_weights"
+    },
+    {
+     "t0": 143.0,
+     "t1": 143.2,
+     "what": "HR-202i: check weight weighed 10 times (repeatability), then a calibration test",
+     "kind": "check",
+     "who": "arm",
+     "task": "bal_weights"
+    },
+    {
+     "t0": 167.0,
+     "t1": 167.2,
+     "what": "HR-202i: check weight weighed 10 times (repeatability), then a calibration test",
+     "kind": "check",
+     "who": "arm",
+     "task": "bal_weights"
+    }
+   ],
+   "repowder": [
+    {
+     "t0": 2.0,
+     "t1": 4.5,
+     "what": "atomize",
+     "alloy": 232,
+     "kind": "process"
+    },
+    {
+     "t0": 4.5,
+     "t1": 7.0,
+     "what": "atomize",
+     "alloy": 236,
+     "kind": "process"
+    },
+    {
+     "t0": 7.0,
+     "t1": 9.5,
+     "what": "atomize",
+     "alloy": 237,
+     "kind": "process"
+    },
+    {
+     "t0": 26.0,
+     "t1": 28.5,
+     "what": "atomize",
+     "alloy": 232,
+     "kind": "process"
+    },
+    {
+     "t0": 28.5,
+     "t1": 31.0,
+     "what": "atomize",
+     "alloy": 238,
+     "kind": "process"
+    },
+    {
+     "t0": 31.0,
+     "t1": 33.5,
+     "what": "atomize",
+     "alloy": 232,
+     "kind": "process"
+    },
+    {
+     "t0": 33.5,
+     "t1": 34.0,
+     "what": "new graphite crucible and nozzle holder into the rotation",
+     "kind": "maint",
+     "who": "floor",
+     "task": "rp_crucible_stock"
+    },
+    {
+     "t0": 50.0,
+     "t1": 52.5,
+     "what": "atomize",
+     "alloy": 239,
+     "kind": "process"
+    },
+    {
+     "t0": 52.5,
+     "t1": 55.0,
+     "what": "atomize",
+     "alloy": 240,
+     "kind": "process"
+    },
+    {
+     "t0": 55.0,
+     "t1": 57.5,
+     "what": "atomize",
+     "alloy": 241,
+     "kind": "process"
+    },
+    {
+     "t0": 74.0,
+     "t1": 76.5,
+     "what": "atomize",
+     "alloy": 242,
+     "kind": "process"
+    },
+    {
+     "t0": 76.5,
+     "t1": 79.0,
+     "what": "atomize",
+     "alloy": 243,
+     "kind": "process"
+    },
+    {
+     "t0": 79.0,
+     "t1": 81.5,
+     "what": "atomize",
+     "alloy": 242,
+     "kind": "process"
+    },
+    {
+     "t0": 98.0,
+     "t1": 100.5,
+     "what": "atomize",
+     "alloy": 244,
+     "kind": "process"
+    },
+    {
+     "t0": 100.5,
+     "t1": 103.0,
+     "what": "atomize",
+     "alloy": 245,
+     "kind": "process"
+    },
+    {
+     "t0": 103.0,
+     "t1": 103.5,
+     "what": "vacuum pump oil changed",
+     "kind": "maint",
+     "who": "floor",
+     "task": "rp_pump_oil"
+    },
+    {
+     "t0": 104.5,
+     "t1": 106.0,
+     "what": "rePowder: chamber, cyclone and powder catch cleaned; seals checked",
+     "kind": "maint",
+     "who": "floor",
+     "task": "rp_clean"
+    }
+   ],
+   "sieve_cell": [
+    {
+     "t0": 4.5,
+     "t1": 5.25,
+     "what": "sieve",
+     "alloy": 232,
+     "kind": "process"
+    },
+    {
+     "t0": 7.0,
+     "t1": 7.75,
+     "what": "sieve",
+     "alloy": 236,
+     "kind": "process"
+    },
+    {
+     "t0": 9.5,
+     "t1": 10.25,
+     "what": "sieve",
+     "alloy": 237,
+     "kind": "process"
+    },
+    {
+     "t0": 28.5,
+     "t1": 29.25,
+     "what": "sieve",
+     "alloy": 232,
+     "kind": "process"
+    },
+    {
+     "t0": 31.0,
+     "t1": 31.75,
+     "what": "sieve",
+     "alloy": 238,
+     "kind": "process"
+    },
+    {
+     "t0": 33.5,
+     "t1": 34.25,
+     "what": "sieve",
+     "alloy": 232,
+     "kind": "process"
+    },
+    {
+     "t0": 52.0,
+     "t1": 52.5,
+     "what": "sieving cell: the ultrasonic bath's IPA changed, the wash module's filter",
+     "kind": "maint",
+     "who": "floor",
+     "task": "sv_ipa"
+    },
+    {
+     "t0": 52.5,
+     "t1": 53.25,
+     "what": "sieve",
+     "alloy": 239,
+     "kind": "process"
+    },
+    {
+     "t0": 53.25,
+     "t1": 53.5,
+     "what": "the arm images each sieve's cloth against a backlight; open area trended",
+     "kind": "check",
+     "who": "arm",
+     "task": "sv_check"
+    },
+    {
+     "t0": 55.0,
+     "t1": 55.75,
+     "what": "sieve",
+     "alloy": 240,
+     "kind": "process"
+    },
+    {
+     "t0": 57.5,
+     "t1": 58.25,
+     "what": "sieve",
+     "alloy": 241,
+     "kind": "process"
+    },
+    {
+     "t0": 79.0,
+     "t1": 79.75,
+     "what": "sieve",
+     "alloy": 243,
+     "kind": "process"
+    },
+    {
+     "t0": 81.5,
+     "t1": 82.25,
+     "what": "sieve",
+     "alloy": 242,
+     "kind": "process"
+    },
+    {
+     "t0": 100.5,
+     "t1": 101.25,
+     "what": "sieve",
+     "alloy": 244,
+     "kind": "process"
+    },
+    {
+     "t0": 103.0,
+     "t1": 103.75,
+     "what": "sieve",
+     "alloy": 245,
+     "kind": "process"
+    },
+    {
+     "t0": 143.0,
+     "t1": 143.75,
+     "what": "reference material sieved (ASTM E2427); each sieve's result trended",
+     "kind": "check",
+     "who": "arm",
+     "task": "sv_verify"
+    }
+   ],
+   "mastersizer": [
+    {
+     "t0": 7.75,
+     "t1": 8.0,
+     "what": "ld",
+     "alloy": 236,
+     "kind": "process"
+    },
+    {
+     "t0": 10.25,
+     "t1": 10.5,
+     "what": "ld",
+     "alloy": 237,
+     "kind": "process"
+    },
+    {
+     "t0": 31.75,
+     "t1": 32.0,
+     "what": "ld",
+     "alloy": 238,
+     "kind": "process"
+    },
+    {
+     "t0": 53.5,
+     "t1": 54.0,
+     "what": "cell windows cleaned, Aero S hopper and venturi checked",
+     "kind": "maint",
+     "who": "opening",
+     "task": "ld_clean"
+    },
+    {
+     "t0": 54.1,
+     "t1": 54.35,
+     "what": "ld",
+     "alloy": 239,
+     "kind": "process"
+    },
+    {
+     "t0": 55.75,
+     "t1": 56.0,
+     "what": "ld",
+     "alloy": 240,
+     "kind": "process"
+    },
+    {
+     "t0": 58.25,
+     "t1": 58.5,
+     "what": "ld",
+     "alloy": 241,
+     "kind": "process"
+    },
+    {
+     "t0": 79.75,
+     "t1": 80.0,
+     "what": "ld",
+     "alloy": 243,
+     "kind": "process"
+    },
+    {
+     "t0": 82.25,
+     "t1": 82.5,
+     "what": "ld",
+     "alloy": 242,
+     "kind": "process"
+    },
+    {
+     "t0": 102.0,
+     "t1": 102.25,
+     "what": "instrument PC: OS updates and a reboot (vendor software pinned)",
+     "kind": "maint",
+     "who": "desk",
+     "task": "it_patch_mastersizer"
+    },
+    {
+     "t0": 102.6,
+     "t1": 102.85,
+     "what": "ld",
+     "alloy": 244,
+     "kind": "process"
+    },
+    {
+     "t0": 103.75,
+     "t1": 104.0,
+     "what": "ld",
+     "alloy": 245,
+     "kind": "process"
+    },
+    {
+     "t0": 164.0,
+     "t1": 164.3,
+     "what": "Mastersizer: QAS3002 reference measured (Dv50 within 2.5 %)",
+     "kind": "check",
+     "who": "arm",
+     "task": "ld_ref"
+    }
+   ],
+   "xrd": [
+    {
+     "t0": 4.0,
+     "t1": 4.25,
+     "what": "stream cameras' lenses wiped, focus and aim checked",
+     "kind": "maint",
+     "who": "opening",
+     "task": "cams_wipe"
+    },
+    {
+     "t0": 7.75,
+     "t1": 8.35,
+     "what": "xrd",
+     "alloy": 236,
+     "kind": "process"
+    },
+    {
+     "t0": 10.25,
+     "t1": 10.85,
+     "what": "xrd",
+     "alloy": 237,
+     "kind": "process"
+    },
+    {
+     "t0": 31.75,
+     "t1": 32.35,
+     "what": "xrd",
+     "alloy": 238,
+     "kind": "process"
+    },
+    {
+     "t0": 45.0,
+     "t1": 45.25,
+     "what": "MiniFlex: NIST SRM 640 silicon scanned; peak positions and intensity trended",
+     "kind": "check",
+     "who": "arm",
+     "task": "xrd_si"
+    },
+    {
+     "t0": 53.4,
+     "t1": 54.0,
+     "what": "xrd",
+     "alloy": 239,
+     "kind": "process"
+    },
+    {
+     "t0": 55.75,
+     "t1": 56.35,
+     "what": "xrd",
+     "alloy": 240,
+     "kind": "process"
+    },
+    {
+     "t0": 58.25,
+     "t1": 58.85,
+     "what": "xrd",
+     "alloy": 241,
+     "kind": "process"
+    },
+    {
+     "t0": 79.75,
+     "t1": 80.35,
+     "what": "xrd",
+     "alloy": 243,
+     "kind": "process"
+    },
+    {
+     "t0": 82.25,
+     "t1": 82.85,
+     "what": "xrd",
+     "alloy": 242,
+     "kind": "process"
+    },
+    {
+     "t0": 99.5,
+     "t1": 100.5,
+     "what": "chiller: fluid changed (the XRD's tube stops)",
+     "kind": "maint",
+     "who": "floor",
+     "task": "chiller_fluid"
+    },
+    {
+     "t0": 102.7,
+     "t1": 103.3,
+     "what": "xrd",
+     "alloy": 244,
+     "kind": "process"
+    },
+    {
+     "t0": 103.75,
+     "t1": 104.35,
+     "what": "xrd",
+     "alloy": 245,
+     "kind": "process"
+    }
+   ],
+   "xrf": [
+    {
+     "t0": 7.85,
+     "t1": 8.2,
+     "what": "xrf",
+     "alloy": 236,
+     "kind": "process"
+    },
+    {
+     "t0": 10.35,
+     "t1": 10.7,
+     "what": "xrf",
+     "alloy": 237,
+     "kind": "process"
+    },
+    {
+     "t0": 20.6,
+     "t1": 20.75,
+     "what": "XRF drift correction on the monitor sample",
+     "kind": "check",
+     "who": "arm",
+     "task": "xrf_drift"
+    },
+    {
+     "t0": 31.85,
+     "t1": 32.2,
+     "what": "xrf",
+     "alloy": 238,
+     "kind": "process"
+    },
+    {
+     "t0": 44.5,
+     "t1": 44.65,
+     "what": "XRF drift correction on the monitor sample",
+     "kind": "check",
+     "who": "arm",
+     "task": "xrf_drift"
+    },
+    {
+     "t0": 53.25,
+     "t1": 53.6,
+     "what": "xrf",
+     "alloy": 239,
+     "kind": "process"
+    },
+    {
+     "t0": 55.85,
+     "t1": 56.2,
+     "what": "xrf",
+     "alloy": 240,
+     "kind": "process"
+    },
+    {
+     "t0": 58.35,
+     "t1": 58.7,
+     "what": "xrf",
+     "alloy": 241,
+     "kind": "process"
+    },
+    {
+     "t0": 68.5,
+     "t1": 68.65,
+     "what": "XRF drift correction on the monitor sample",
+     "kind": "check",
+     "who": "arm",
+     "task": "xrf_drift"
+    },
+    {
+     "t0": 79.85,
+     "t1": 80.2,
+     "what": "xrf",
+     "alloy": 243,
+     "kind": "process"
+    },
+    {
+     "t0": 82.35,
+     "t1": 82.7,
+     "what": "xrf",
+     "alloy": 242,
+     "kind": "process"
+    },
+    {
+     "t0": 92.5,
+     "t1": 92.65,
+     "what": "XRF drift correction on the monitor sample",
+     "kind": "check",
+     "who": "arm",
+     "task": "xrf_drift"
+    },
+    {
+     "t0": 101.25,
+     "t1": 101.6,
+     "what": "xrf",
+     "alloy": 244,
+     "kind": "process"
+    },
+    {
+     "t0": 103.85,
+     "t1": 104.2,
+     "what": "xrf",
+     "alloy": 245,
+     "kind": "process"
+    },
+    {
+     "t0": 116.5,
+     "t1": 116.65,
+     "what": "XRF drift correction on the monitor sample",
+     "kind": "check",
+     "who": "arm",
+     "task": "xrf_drift"
+    },
+    {
+     "t0": 140.5,
+     "t1": 140.65,
+     "what": "XRF drift correction on the monitor sample",
+     "kind": "check",
+     "who": "arm",
+     "task": "xrf_drift"
+    },
+    {
+     "t0": 164.5,
+     "t1": 164.65,
+     "what": "XRF drift correction on the monitor sample",
+     "kind": "check",
+     "who": "arm",
+     "task": "xrf_drift"
+    }
+   ],
+   "sem": [
+    {
+     "t0": 4.0,
+     "t1": 4.25,
+     "what": "stream cameras' lenses wiped, focus and aim checked",
+     "kind": "maint",
+     "who": "opening",
+     "task": "cams_wipe"
+    },
+    {
+     "t0": 7.85,
+     "t1": 8.2,
+     "what": "psem",
+     "alloy": 236,
+     "kind": "process"
+    },
+    {
+     "t0": 10.35,
+     "t1": 10.7,
+     "what": "psem",
+     "alloy": 237,
+     "kind": "process"
+    },
+    {
+     "t0": 16.3,
+     "t1": 16.8,
+     "what": "sem",
+     "alloy": 236,
+     "kind": "process"
+    },
+    {
+     "t0": 31.85,
+     "t1": 32.2,
+     "what": "psem",
+     "alloy": 238,
+     "kind": "process"
+    },
+    {
+     "t0": 45.0,
+     "t1": 45.25,
+     "what": "SEM: magnification standard and EDS energy check (Cu)",
+     "kind": "check",
+     "who": "arm",
+     "task": "sem_eds"
+    },
+    {
+     "t0": 51.35,
+     "t1": 51.85,
+     "what": "sem",
+     "alloy": 238,
+     "kind": "process"
+    },
+    {
+     "t0": 54.1,
+     "t1": 54.45,
+     "what": "psem",
+     "alloy": 239,
+     "kind": "process"
+    },
+    {
+     "t0": 55.85,
+     "t1": 56.2,
+     "what": "psem",
+     "alloy": 240,
+     "kind": "process"
+    },
+    {
+     "t0": 58.45,
+     "t1": 58.8,
+     "what": "psem",
+     "alloy": 241,
+     "kind": "process"
+    },
+    {
+     "t0": 61.7,
+     "t1": 62.2,
+     "what": "sem",
+     "alloy": 239,
+     "kind": "process"
+    },
+    {
+     "t0": 67.2,
+     "t1": 67.7,
+     "what": "sem",
+     "alloy": 240,
+     "kind": "process"
+    },
+    {
+     "t0": 72.7,
+     "t1": 73.2,
+     "what": "sem",
+     "alloy": 241,
+     "kind": "process"
+    },
+    {
+     "t0": 79.85,
+     "t1": 80.2,
+     "what": "psem",
+     "alloy": 243,
+     "kind": "process"
+    },
+    {
+     "t0": 82.35,
+     "t1": 82.7,
+     "what": "psem",
+     "alloy": 242,
+     "kind": "process"
+    },
+    {
+     "t0": 90.8,
+     "t1": 91.3,
+     "what": "sem",
+     "alloy": 242,
+     "kind": "process"
+    },
+    {
+     "t0": 97.3,
+     "t1": 97.8,
+     "what": "sem",
+     "alloy": 243,
+     "kind": "process"
+    },
+    {
+     "t0": 102.7,
+     "t1": 103.05,
+     "what": "psem",
+     "alloy": 244,
+     "kind": "process"
+    },
+    {
+     "t0": 103.85,
+     "t1": 104.2,
+     "what": "psem",
+     "alloy": 245,
+     "kind": "process"
+    },
+    {
+     "t0": 114.6,
+     "t1": 115.1,
+     "what": "sem",
+     "alloy": 245,
+     "kind": "process"
+    }
+   ],
+   "aconity": [
+    {
+     "t0": 3.0,
+     "t1": 4.0,
+     "what": "MIDI: chamber cleaned, laser window wiped, recoater blade checked",
+     "kind": "maint",
+     "who": "floor",
+     "task": "ac_weekly"
+    },
+    {
+     "t0": 7.95,
+     "t1": 12.95,
+     "what": "print",
+     "alloy": 236,
+     "kind": "process"
+    },
+    {
+     "t0": 12.95,
+     "t1": 13.45,
+     "what": "depowder",
+     "alloy": 236,
+     "kind": "process"
+    },
+    {
+     "t0": 13.45,
+     "t1": 18.45,
+     "what": "print",
+     "alloy": 237,
+     "kind": "process"
+    },
+    {
+     "t0": 34.25,
+     "t1": 42.25,
+     "what": "print_full",
+     "alloy": 232,
+     "kind": "process"
+    },
+    {
+     "t0": 42.25,
+     "t1": 43.0,
+     "what": "depowder_full",
+     "alloy": 232,
+     "kind": "process"
+    },
+    {
+     "t0": 43.0,
+     "t1": 48.0,
+     "what": "print",
+     "alloy": 238,
+     "kind": "process"
+    },
+    {
+     "t0": 48.0,
+     "t1": 48.5,
+     "what": "depowder",
+     "alloy": 238,
+     "kind": "process"
+    },
+    {
+     "t0": 53.35,
+     "t1": 58.35,
+     "what": "print",
+     "alloy": 239,
+     "kind": "process"
+    },
+    {
+     "t0": 58.35,
+     "t1": 58.85,
+     "what": "depowder",
+     "alloy": 239,
+     "kind": "process"
+    },
+    {
+     "t0": 58.85,
+     "t1": 63.85,
+     "what": "print",
+     "alloy": 240,
+     "kind": "process"
+    },
+    {
+     "t0": 63.85,
+     "t1": 64.35,
+     "what": "depowder",
+     "alloy": 240,
+     "kind": "process"
+    },
+    {
+     "t0": 64.35,
+     "t1": 69.35,
+     "what": "print",
+     "alloy": 241,
+     "kind": "process"
+    },
+    {
+     "t0": 69.35,
+     "t1": 69.85,
+     "what": "depowder",
+     "alloy": 241,
+     "kind": "process"
+    },
+    {
+     "t0": 78.5,
+     "t1": 79.0,
+     "what": "recoater blade replaced",
+     "kind": "maint",
+     "who": "floor",
+     "task": "ac_blade"
+    },
+    {
+     "t0": 82.45,
+     "t1": 87.45,
+     "what": "print",
+     "alloy": 242,
+     "kind": "process"
+    },
+    {
+     "t0": 87.45,
+     "t1": 87.95,
+     "what": "depowder",
+     "alloy": 242,
+     "kind": "process"
+    },
+    {
+     "t0": 87.95,
+     "t1": 92.95,
+     "what": "print",
+     "alloy": 243,
+     "kind": "process"
+    },
+    {
+     "t0": 92.95,
+     "t1": 93.45,
+     "what": "depowder",
+     "alloy": 243,
+     "kind": "process"
+    },
+    {
+     "t0": 101.25,
+     "t1": 106.25,
+     "what": "print",
+     "alloy": 244,
+     "kind": "process"
+    },
+    {
+     "t0": 106.25,
+     "t1": 111.25,
+     "what": "print",
+     "alloy": 245,
+     "kind": "process"
+    },
+    {
+     "t0": 111.25,
+     "t1": 111.75,
+     "what": "depowder",
+     "alloy": 245,
+     "kind": "process"
+    }
+   ],
+   "wire_edm": [
+    {
+     "t0": 13.45,
+     "t1": 14.2,
+     "what": "edm",
+     "alloy": 236,
+     "kind": "process"
+    },
+    {
+     "t0": 14.2,
+     "t1": 14.6,
+     "what": "section",
+     "alloy": 236,
+     "kind": "process"
+    },
+    {
+     "t0": 27.0,
+     "t1": 27.75,
+     "what": "EDM weekly cleaning: guides, heads, tank",
+     "kind": "maint",
+     "who": "floor",
+     "task": "edm_weekly"
+    },
+    {
+     "t0": 43.0,
+     "t1": 44.0,
+     "what": "edm_full",
+     "alloy": 232,
+     "kind": "process"
+    },
+    {
+     "t0": 48.5,
+     "t1": 49.25,
+     "what": "edm",
+     "alloy": 238,
+     "kind": "process"
+    },
+    {
+     "t0": 49.25,
+     "t1": 49.65,
+     "what": "section",
+     "alloy": 238,
+     "kind": "process"
+    },
+    {
+     "t0": 58.85,
+     "t1": 59.6,
+     "what": "edm",
+     "alloy": 239,
+     "kind": "process"
+    },
+    {
+     "t0": 59.6,
+     "t1": 60.0,
+     "what": "section",
+     "alloy": 239,
+     "kind": "process"
+    },
+    {
+     "t0": 64.35,
+     "t1": 65.1,
+     "what": "edm",
+     "alloy": 240,
+     "kind": "process"
+    },
+    {
+     "t0": 65.1,
+     "t1": 65.5,
+     "what": "section",
+     "alloy": 240,
+     "kind": "process"
+    },
+    {
+     "t0": 69.85,
+     "t1": 70.6,
+     "what": "edm",
+     "alloy": 241,
+     "kind": "process"
+    },
+    {
+     "t0": 70.6,
+     "t1": 71.0,
+     "what": "section",
+     "alloy": 241,
+     "kind": "process"
+    },
+    {
+     "t0": 87.95,
+     "t1": 88.7,
+     "what": "edm",
+     "alloy": 242,
+     "kind": "process"
+    },
+    {
+     "t0": 88.7,
+     "t1": 89.1,
+     "what": "section",
+     "alloy": 242,
+     "kind": "process"
+    },
+    {
+     "t0": 94.0,
+     "t1": 94.3,
+     "what": "test cut of a reference gauge, measured on the VHX",
+     "kind": "check",
+     "who": "arm",
+     "task": "edm_test"
+    },
+    {
+     "t0": 94.3,
+     "t1": 95.05,
+     "what": "edm",
+     "alloy": 243,
+     "kind": "process"
+    },
+    {
+     "t0": 95.2,
+     "t1": 95.6,
+     "what": "section",
+     "alloy": 243,
+     "kind": "process"
+    },
+    {
+     "t0": 111.75,
+     "t1": 112.5,
+     "what": "edm",
+     "alloy": 245,
+     "kind": "process"
+    },
+    {
+     "t0": 112.5,
+     "t1": 112.9,
+     "what": "section",
+     "alloy": 245,
+     "kind": "process"
+    }
+   ],
+   "furnace": [
+    {
+     "t0": 14.2,
+     "t1": 17.2,
+     "what": "heat",
+     "alloy": 236,
+     "kind": "process"
+    },
+    {
+     "t0": 44.0,
+     "t1": 47.0,
+     "what": "heat_full",
+     "alloy": 232,
+     "kind": "process"
+    },
+    {
+     "t0": 49.25,
+     "t1": 52.25,
+     "what": "heat",
+     "alloy": 238,
+     "kind": "process"
+    },
+    {
+     "t0": 59.6,
+     "t1": 62.6,
+     "what": "heat",
+     "alloy": 239,
+     "kind": "process"
+    },
+    {
+     "t0": 65.1,
+     "t1": 68.1,
+     "what": "heat",
+     "alloy": 240,
+     "kind": "process"
+    },
+    {
+     "t0": 70.6,
+     "t1": 73.6,
+     "what": "heat",
+     "alloy": 241,
+     "kind": "process"
+    },
+    {
+     "t0": 77.5,
+     "t1": 78.0,
+     "what": "waste tank emptied, water tank filled (the coupling has no drain or process water)",
+     "kind": "maint",
+     "who": "opening",
+     "task": "px_waste"
+    },
+    {
+     "t0": 88.7,
+     "t1": 91.7,
+     "what": "heat",
+     "alloy": 242,
+     "kind": "process"
+    },
+    {
+     "t0": 95.1,
+     "t1": 98.1,
+     "what": "heat",
+     "alloy": 243,
+     "kind": "process"
+    },
+    {
+     "t0": 112.5,
+     "t1": 115.5,
+     "what": "heat",
+     "alloy": 245,
+     "kind": "process"
+    }
+   ],
+   "tensile_h": [
+    {
+     "t0": 17.2,
+     "t1": 17.8,
+     "what": "tensile_rt",
+     "alloy": 236,
+     "kind": "process"
+    },
+    {
+     "t0": 52.25,
+     "t1": 52.85,
+     "what": "tensile_rt",
+     "alloy": 238,
+     "kind": "process"
+    },
+    {
+     "t0": 62.6,
+     "t1": 63.2,
+     "what": "tensile_rt",
+     "alloy": 239,
+     "kind": "process"
+    },
+    {
+     "t0": 68.1,
+     "t1": 68.7,
+     "what": "tensile_rt",
+     "alloy": 240,
+     "kind": "process"
+    },
+    {
+     "t0": 73.6,
+     "t1": 74.2,
+     "what": "tensile_rt",
+     "alloy": 241,
+     "kind": "process"
+    },
+    {
+     "t0": 91.7,
+     "t1": 92.3,
+     "what": "tensile_rt",
+     "alloy": 242,
+     "kind": "process"
+    },
+    {
+     "t0": 99.6,
+     "t1": 100.2,
+     "what": "tensile_rt",
+     "alloy": 243,
+     "kind": "process"
+    },
+    {
+     "t0": 115.5,
+     "t1": 116.1,
+     "what": "tensile_rt",
+     "alloy": 245,
+     "kind": "process"
+    },
+    {
+     "t0": 164.1,
+     "t1": 164.4,
+     "what": "reference specimen pulled, trended",
+     "kind": "check",
+     "who": "arm",
+     "task": "t_ref_tray"
+    }
+   ],
+   "instron_floor": [
+    {
+     "t0": 17.2,
+     "t1": 18.7,
+     "what": "tensile_hot",
+     "alloy": 236,
+     "kind": "process"
+    },
+    {
+     "t0": 47.0,
+     "t1": 47.6,
+     "what": "e8_rt",
+     "alloy": 232,
+     "kind": "process"
+    },
+    {
+     "t0": 47.6,
+     "t1": 50.1,
+     "what": "e8_hot",
+     "alloy": 232,
+     "kind": "process"
+    },
+    {
+     "t0": 52.25,
+     "t1": 53.75,
+     "what": "tensile_hot",
+     "alloy": 238,
+     "kind": "process"
+    },
+    {
+     "t0": 62.6,
+     "t1": 64.1,
+     "what": "tensile_hot",
+     "alloy": 239,
+     "kind": "process"
+    },
+    {
+     "t0": 68.1,
+     "t1": 69.6,
+     "what": "tensile_hot",
+     "alloy": 240,
+     "kind": "process"
+    },
+    {
+     "t0": 73.6,
+     "t1": 75.1,
+     "what": "tensile_hot",
+     "alloy": 241,
+     "kind": "process"
+    },
+    {
+     "t0": 91.7,
+     "t1": 93.2,
+     "what": "tensile_hot",
+     "alloy": 242,
+     "kind": "process"
+    },
+    {
+     "t0": 94.0,
+     "t1": 94.5,
+     "what": "reference bar pulled (6061-T6), yield and modulus trended",
+     "kind": "check",
+     "who": "arm",
+     "task": "t_ref_floor"
+    },
+    {
+     "t0": 99.7,
+     "t1": 101.2,
+     "what": "tensile_hot",
+     "alloy": 243,
+     "kind": "process"
+    },
+    {
+     "t0": 115.5,
+     "t1": 117.0,
+     "what": "tensile_hot",
+     "alloy": 245,
+     "kind": "process"
+    }
+   ],
+   "cnc": [
+    {
+     "t0": 14.6,
+     "t1": 14.9,
+     "what": "face",
+     "alloy": 236,
+     "kind": "process"
+    },
+    {
+     "t0": 49.65,
+     "t1": 49.95,
+     "what": "face",
+     "alloy": 238,
+     "kind": "process"
+    },
+    {
+     "t0": 60.0,
+     "t1": 60.3,
+     "what": "face",
+     "alloy": 239,
+     "kind": "process"
+    },
+    {
+     "t0": 65.5,
+     "t1": 65.8,
+     "what": "face",
+     "alloy": 240,
+     "kind": "process"
+    },
+    {
+     "t0": 71.0,
+     "t1": 71.3,
+     "what": "face",
+     "alloy": 241,
+     "kind": "process"
+    },
+    {
+     "t0": 89.1,
+     "t1": 89.4,
+     "what": "face",
+     "alloy": 242,
+     "kind": "process"
+    },
+    {
+     "t0": 95.6,
+     "t1": 95.9,
+     "what": "face",
+     "alloy": 243,
+     "kind": "process"
+    },
+    {
+     "t0": 112.9,
+     "t1": 113.2,
+     "what": "face",
+     "alloy": 245,
+     "kind": "process"
+    }
+   ],
+   "mount_press": [
+    {
+     "t0": 14.9,
+     "t1": 15.5,
+     "what": "mount",
+     "alloy": 236,
+     "kind": "process"
+    },
+    {
+     "t0": 49.95,
+     "t1": 50.55,
+     "what": "mount",
+     "alloy": 238,
+     "kind": "process"
+    },
+    {
+     "t0": 60.3,
+     "t1": 60.9,
+     "what": "mount",
+     "alloy": 239,
+     "kind": "process"
+    },
+    {
+     "t0": 65.8,
+     "t1": 66.4,
+     "what": "mount",
+     "alloy": 240,
+     "kind": "process"
+    },
+    {
+     "t0": 71.3,
+     "t1": 71.9,
+     "what": "mount",
+     "alloy": 241,
+     "kind": "process"
+    },
+    {
+     "t0": 77.5,
+     "t1": 78.0,
+     "what": "waste tank emptied, water tank filled (the coupling has no drain or process water)",
+     "kind": "maint",
+     "who": "opening",
+     "task": "px_waste"
+    },
+    {
+     "t0": 89.4,
+     "t1": 90.0,
+     "what": "mount",
+     "alloy": 242,
+     "kind": "process"
+    },
+    {
+     "t0": 95.9,
+     "t1": 96.5,
+     "what": "mount",
+     "alloy": 243,
+     "kind": "process"
+    },
+    {
+     "t0": 113.2,
+     "t1": 113.8,
+     "what": "mount",
+     "alloy": 245,
+     "kind": "process"
+    }
+   ],
+   "polisher": [
+    {
+     "t0": 15.5,
+     "t1": 16.3,
+     "what": "polish",
+     "alloy": 236,
+     "kind": "process"
+    },
+    {
+     "t0": 50.55,
+     "t1": 51.35,
+     "what": "polish",
+     "alloy": 238,
+     "kind": "process"
+    },
+    {
+     "t0": 60.9,
+     "t1": 61.7,
+     "what": "polish",
+     "alloy": 239,
+     "kind": "process"
+    },
+    {
+     "t0": 66.4,
+     "t1": 67.2,
+     "what": "polish",
+     "alloy": 240,
+     "kind": "process"
+    },
+    {
+     "t0": 71.9,
+     "t1": 72.7,
+     "what": "polish",
+     "alloy": 241,
+     "kind": "process"
+    },
+    {
+     "t0": 77.5,
+     "t1": 78.0,
+     "what": "waste tank emptied, water tank filled (the coupling has no drain or process water)",
+     "kind": "maint",
+     "who": "opening",
+     "task": "px_waste"
+    },
+    {
+     "t0": 90.0,
+     "t1": 90.8,
+     "what": "polish",
+     "alloy": 242,
+     "kind": "process"
+    },
+    {
+     "t0": 96.5,
+     "t1": 97.3,
+     "what": "polish",
+     "alloy": 243,
+     "kind": "process"
+    },
+    {
+     "t0": 113.8,
+     "t1": 114.6,
+     "what": "polish",
+     "alloy": 245,
+     "kind": "process"
+    }
+   ],
+   "vhx": [
+    {
+     "t0": 16.3,
+     "t1": 16.7,
+     "what": "vhx",
+     "alloy": 236,
+     "kind": "process"
+    },
+    {
+     "t0": 52.1,
+     "t1": 52.5,
+     "what": "vhx",
+     "alloy": 238,
+     "kind": "process"
+    },
+    {
+     "t0": 61.7,
+     "t1": 62.1,
+     "what": "vhx",
+     "alloy": 239,
+     "kind": "process"
+    },
+    {
+     "t0": 67.2,
+     "t1": 67.6,
+     "what": "vhx",
+     "alloy": 240,
+     "kind": "process"
+    },
+    {
+     "t0": 72.7,
+     "t1": 73.1,
+     "what": "vhx",
+     "alloy": 241,
+     "kind": "process"
+    },
+    {
+     "t0": 90.8,
+     "t1": 91.2,
+     "what": "vhx",
+     "alloy": 242,
+     "kind": "process"
+    },
+    {
+     "t0": 99.8,
+     "t1": 100.2,
+     "what": "vhx",
+     "alloy": 243,
+     "kind": "process"
+    },
+    {
+     "t0": 114.6,
+     "t1": 115.0,
+     "what": "vhx",
+     "alloy": 245,
+     "kind": "process"
+    },
+    {
+     "t0": 164.2,
+     "t1": 164.4,
+     "what": "VHX: stage micrometer imaged, calibration checked",
+     "kind": "check",
+     "who": "arm",
+     "task": "vhx_scale"
+    }
+   ],
+   "hardness": [
+    {
+     "t0": 16.4,
+     "t1": 16.7,
+     "what": "hv",
+     "alloy": 236,
+     "kind": "process"
+    },
+    {
+     "t0": 20.0,
+     "t1": 20.2,
+     "what": "HM-220: reference block indented, diagonals trended",
+     "kind": "check",
+     "who": "arm",
+     "task": "hv_block"
+    },
+    {
+     "t0": 44.0,
+     "t1": 44.2,
+     "what": "HM-220: reference block indented, diagonals trended",
+     "kind": "check",
+     "who": "arm",
+     "task": "hv_block"
+    },
+    {
+     "t0": 52.1,
+     "t1": 52.4,
+     "what": "hv",
+     "alloy": 238,
+     "kind": "process"
+    },
+    {
+     "t0": 61.8,
+     "t1": 62.1,
+     "what": "hv",
+     "alloy": 239,
+     "kind": "process"
+    },
+    {
+     "t0": 67.3,
+     "t1": 67.6,
+     "what": "hv",
+     "alloy": 240,
+     "kind": "process"
+    },
+    {
+     "t0": 68.0,
+     "t1": 68.2,
+     "what": "HM-220: reference block indented, diagonals trended",
+     "kind": "check",
+     "who": "arm",
+     "task": "hv_block"
+    },
+    {
+     "t0": 72.8,
+     "t1": 73.1,
+     "what": "hv",
+     "alloy": 241,
+     "kind": "process"
+    },
+    {
+     "t0": 75.25,
+     "t1": 76.25,
+     "what": "vendor software update: installed, then the reference check re-run and signed off",
+     "kind": "maint",
+     "who": "desk",
+     "task": "it_revalidate_hardness"
+    },
+    {
+     "t0": 90.9,
+     "t1": 91.2,
+     "what": "hv",
+     "alloy": 242,
+     "kind": "process"
+    },
+    {
+     "t0": 92.0,
+     "t1": 92.2,
+     "what": "HM-220: reference block indented, diagonals trended",
+     "kind": "check",
+     "who": "arm",
+     "task": "hv_block"
+    },
+    {
+     "t0": 98.0,
+     "t1": 101.0,
+     "what": "HM-220: indirect verification",
+     "kind": "maint",
+     "who": "vendor",
+     "task": "hv_verify"
+    },
+    {
+     "t0": 101.0,
+     "t1": 101.3,
+     "what": "hv",
+     "alloy": 243,
+     "kind": "process"
+    },
+    {
+     "t0": 114.7,
+     "t1": 115.0,
+     "what": "hv",
+     "alloy": 245,
+     "kind": "process"
+    },
+    {
+     "t0": 116.0,
+     "t1": 116.2,
+     "what": "HM-220: reference block indented, diagonals trended",
+     "kind": "check",
+     "who": "arm",
+     "task": "hv_block"
+    },
+    {
+     "t0": 140.0,
+     "t1": 140.2,
+     "what": "HM-220: reference block indented, diagonals trended",
+     "kind": "check",
+     "who": "arm",
+     "task": "hv_block"
+    },
+    {
+     "t0": 164.0,
+     "t1": 164.2,
+     "what": "HM-220: reference block indented, diagonals trended",
+     "kind": "check",
+     "who": "arm",
+     "task": "hv_block"
+    }
+   ],
+   "nanoindenter": [
+    {
+     "t0": 16.4,
+     "t1": 17.15,
+     "what": "nano",
+     "alloy": 236,
+     "kind": "process"
+    },
+    {
+     "t0": 51.35,
+     "t1": 52.1,
+     "what": "nano",
+     "alloy": 238,
+     "kind": "process"
+    },
+    {
+     "t0": 53.5,
+     "t1": 54.0,
+     "what": "cell windows cleaned, Aero S hopper and venturi checked",
+     "kind": "maint",
+     "who": "opening",
+     "task": "ld_clean"
+    },
+    {
+     "t0": 61.8,
+     "t1": 62.55,
+     "what": "nano",
+     "alloy": 239,
+     "kind": "process"
+    },
+    {
+     "t0": 67.3,
+     "t1": 68.05,
+     "what": "nano",
+     "alloy": 240,
+     "kind": "process"
+    },
+    {
+     "t0": 72.8,
+     "t1": 73.55,
+     "what": "nano",
+     "alloy": 241,
+     "kind": "process"
+    },
+    {
+     "t0": 90.9,
+     "t1": 91.65,
+     "what": "nano",
+     "alloy": 242,
+     "kind": "process"
+    },
+    {
+     "t0": 99.9,
+     "t1": 100.65,
+     "what": "nano",
+     "alloy": 243,
+     "kind": "process"
+    },
+    {
+     "t0": 114.7,
+     "t1": 115.45,
+     "what": "nano",
+     "alloy": 245,
+     "kind": "process"
+    },
+    {
+     "t0": 164.1,
+     "t1": 164.6,
+     "what": "iMicro: indents in fused silica; area function and frame stiffness checked",
+     "kind": "check",
+     "who": "arm",
+     "task": "nano_fs"
+    }
+   ],
+   "pip": [
+    {
+     "t0": 16.5,
+     "t1": 16.75,
+     "what": "pip",
+     "alloy": 236,
+     "kind": "process"
+    },
+    {
+     "t0": 16.75,
+     "t1": 16.85,
+     "what": "PIP: profilometer calibrated on its sample",
+     "kind": "check",
+     "who": "arm",
+     "task": "pip_cal"
+    },
+    {
+     "t0": 51.45,
+     "t1": 51.7,
+     "what": "pip",
+     "alloy": 238,
+     "kind": "process"
+    },
+    {
+     "t0": 53.5,
+     "t1": 54.0,
+     "what": "cell windows cleaned, Aero S hopper and venturi checked",
+     "kind": "maint",
+     "who": "opening",
+     "task": "ld_clean"
+    },
+    {
+     "t0": 61.9,
+     "t1": 62.15,
+     "what": "pip",
+     "alloy": 239,
+     "kind": "process"
+    },
+    {
+     "t0": 67.4,
+     "t1": 67.65,
+     "what": "pip",
+     "alloy": 240,
+     "kind": "process"
+    },
+    {
+     "t0": 72.9,
+     "t1": 73.15,
+     "what": "pip",
+     "alloy": 241,
+     "kind": "process"
+    },
+    {
+     "t0": 91.0,
+     "t1": 91.25,
+     "what": "pip",
+     "alloy": 242,
+     "kind": "process"
+    },
+    {
+     "t0": 100.0,
+     "t1": 100.25,
+     "what": "pip",
+     "alloy": 243,
+     "kind": "process"
+    },
+    {
+     "t0": 114.8,
+     "t1": 115.05,
+     "what": "pip",
+     "alloy": 245,
+     "kind": "process"
+    }
+   ],
+   "cubxl_corrosion": [
+    {
+     "t0": 5.5,
+     "t1": 6.0,
+     "what": "electrolyte refilled, waste emptied, tips restocked",
+     "kind": "maint",
+     "who": "opening",
+     "task": "cx_fluids"
+    },
+    {
+     "t0": 16.5,
+     "t1": 18.7,
+     "what": "corrosion",
+     "alloy": 236,
+     "kind": "process"
+    },
+    {
+     "t0": 20.5,
+     "t1": 20.75,
+     "what": "reference electrode against a master in KCl (within 5 mV)",
+     "kind": "check",
+     "who": "arm",
+     "task": "cx_ref"
+    },
+    {
+     "t0": 51.8,
+     "t1": 54.0,
+     "what": "corrosion",
+     "alloy": 238,
+     "kind": "process"
+    },
+    {
+     "t0": 61.9,
+     "t1": 64.1,
+     "what": "corrosion",
+     "alloy": 239,
+     "kind": "process"
+    },
+    {
+     "t0": 67.4,
+     "t1": 69.6,
+     "what": "corrosion",
+     "alloy": 240,
+     "kind": "process"
+    },
+    {
+     "t0": 72.9,
+     "t1": 75.1,
+     "what": "corrosion",
+     "alloy": 241,
+     "kind": "process"
+    },
+    {
+     "t0": 91.0,
+     "t1": 91.164,
+     "what": "corrosion",
+     "alloy": 242,
+     "kind": "interrupted"
+    },
+    {
+     "t0": 91.164,
+     "t1": 101.5,
+     "what": "a clogged or leaking cell; the reference electrode",
+     "kind": "waiting",
+     "who": "opening"
+    },
+    {
+     "t0": 101.5,
+     "t1": 102.5,
+     "what": "a clogged or leaking cell; the reference electrode",
+     "kind": "repair",
+     "who": "opening",
+     "task": "fail"
+    },
+    {
+     "t0": 102.6,
+     "t1": 104.8,
+     "what": "corrosion",
+     "alloy": 242,
+     "kind": "process"
+    },
+    {
+     "t0": 104.8,
+     "t1": 107.0,
+     "what": "corrosion",
+     "alloy": 243,
+     "kind": "process"
+    },
+    {
+     "t0": 114.8,
+     "t1": 117.0,
+     "what": "corrosion",
+     "alloy": 245,
+     "kind": "process"
+    }
+   ],
+   "open1": [
+    {
+     "t0": 4.0,
+     "t1": 4.25,
+     "what": "stream cameras' lenses wiped, focus and aim checked",
+     "kind": "maint",
+     "who": "opening",
+     "task": "cams_wipe"
+    },
+    {
+     "t0": 5.5,
+     "t1": 6.0,
+     "what": "electrolyte refilled, waste emptied, tips restocked",
+     "kind": "maint",
+     "who": "opening",
+     "task": "cx_fluids"
+    },
+    {
+     "t0": 6.0,
+     "t1": 6.5,
+     "what": "doser's funnels and cup nests cleaned, press die cleaned",
+     "kind": "maint",
+     "who": "opening",
+     "task": "dose_clean"
+    },
+    {
+     "t0": 53.5,
+     "t1": 54.0,
+     "what": "cell windows cleaned, Aero S hopper and venturi checked",
+     "kind": "maint",
+     "who": "opening",
+     "task": "ld_clean"
+    },
+    {
+     "t0": 77.5,
+     "t1": 78.0,
+     "what": "waste tank emptied, water tank filled (the coupling has no drain or process water)",
+     "kind": "maint",
+     "who": "opening",
+     "task": "px_waste"
+    },
+    {
+     "t0": 78.0,
+     "t1": 78.5,
+     "what": "tray J: cups, plugs, vials, stubs and coupons restocked",
+     "kind": "maint",
+     "who": "opening",
+     "task": "store_j"
+    },
+    {
+     "t0": 101.5,
+     "t1": 102.5,
+     "what": "a clogged or leaking cell; the reference electrode",
+     "kind": "repair",
+     "who": "opening",
+     "task": "fail"
+    }
+   ],
+   "open2": [
+    {
+     "t0": 28.0,
+     "t1": 28.5,
+     "what": "tray N: new feedstock jars in",
+     "kind": "maint",
+     "who": "opening",
+     "task": "store_n"
+    },
+    {
+     "t0": 30.5,
+     "t1": 31.0,
+     "what": "tray O: finished lots out to the archive, empty jars in",
+     "kind": "maint",
+     "who": "opening",
+     "task": "store_o"
+    },
+    {
+     "t0": 51.0,
+     "t1": 52.0,
+     "what": "tray G: Form 4 tanks, Form Wash IPA (off the route)",
+     "kind": "maint",
+     "who": "opening",
+     "task": "pm_g"
+    },
+    {
+     "t0": 54.0,
+     "t1": 55.0,
+     "what": "tray I: SnowPods' filters and chambers (off the route)",
+     "kind": "maint",
+     "who": "opening",
+     "task": "pm_i"
+    },
+    {
+     "t0": 99.0,
+     "t1": 99.5,
+     "what": "the bay's CombiTac dock: contacts wiped, pins, O-rings and coupling faces checked (it mates with every tray the Shuttle presents)",
+     "kind": "maint",
+     "who": "opening",
+     "task": "bay_dock"
+    },
+    {
+     "t0": 102.25,
+     "t1": 102.75,
+     "what": "tray H: stencil printer and LumenPnP nozzles (off the route)",
+     "kind": "maint",
+     "who": "opening",
+     "task": "pm_h"
+    }
+   ],
+   "unit0": [
+    {
+     "t0": -2.122,
+     "t1": 3.0,
+     "what": "lost localization or a protective stop it can't clear",
+     "kind": "waiting",
+     "who": "floor"
+    },
+    {
+     "t0": 3.0,
+     "t1": 3.5,
+     "what": "lost localization or a protective stop it can't clear",
+     "kind": "repair",
+     "who": "floor",
+     "task": "fail"
+    },
+    {
+     "t0": 20.5,
+     "t1": 20.6,
+     "what": "D405 on-chip health check on a flat target, recalibrated if over 0.25",
+     "kind": "check",
+     "who": "arm",
+     "task": "d405_cal"
+    },
+    {
+     "t0": 27.75,
+     "t1": 28.0,
+     "what": "MiR250 scanners and lights cleaned and checked; 2F-85 wiped",
+     "kind": "maint",
+     "who": "floor",
+     "task": "mir_weekly"
+    },
+    {
+     "t0": 97.329,
+     "t1": 99.5,
+     "what": "lost localization or a protective stop it can't clear",
+     "kind": "waiting",
+     "who": "floor"
+    },
+    {
+     "t0": 99.5,
+     "t1": 100.0,
+     "what": "lost localization or a protective stop it can't clear",
+     "kind": "repair",
+     "who": "floor",
+     "task": "fail"
+    }
+   ],
+   "unit1": [
+    {
+     "t0": 76.25,
+     "t1": 76.5,
+     "what": "MiR250 scanners and lights cleaned and checked; 2F-85 wiped",
+     "kind": "maint",
+     "who": "floor",
+     "task": "mir_weekly"
+    },
+    {
+     "t0": 93.897,
+     "t1": 99.0,
+     "what": "lost localization or a protective stop it can't clear",
+     "kind": "waiting",
+     "who": "floor"
+    },
+    {
+     "t0": 99.0,
+     "t1": 99.5,
+     "what": "lost localization or a protective stop it can't clear",
+     "kind": "repair",
+     "who": "floor",
+     "task": "fail"
+    }
+   ],
+   "staff": [
+    {
+     "t0": 2.0,
+     "t1": 3.0,
+     "what": "crucible",
+     "kind": "crucible"
+    },
+    {
+     "t0": 3.0,
+     "t1": 4.0,
+     "what": "MIDI: chamber cleaned, laser window wiped, recoater blade checked",
+     "kind": "maint",
+     "who": "floor",
+     "task": "ac_weekly"
+    },
+    {
+     "t0": 3.0,
+     "t1": 3.5,
+     "what": "lost localization or a protective stop it can't clear",
+     "kind": "repair",
+     "who": "floor",
+     "task": "fail"
+    },
+    {
+     "t0": 4.0,
+     "t1": 4.25,
+     "what": "stream cameras' lenses wiped, focus and aim checked",
+     "kind": "maint",
+     "who": "opening",
+     "task": "cams_wipe"
+    },
+    {
+     "t0": 4.25,
+     "t1": 4.5,
+     "what": "gloveboxes (floor and tray K): gloves and antechamber O-rings inspected",
+     "kind": "maint",
+     "who": "floor",
+     "task": "gb_weekly"
+    },
+    {
+     "t0": 4.5,
+     "t1": 5.5,
+     "what": "crucible",
+     "kind": "crucible"
+    },
+    {
+     "t0": 5.5,
+     "t1": 6.0,
+     "what": "electrolyte refilled, waste emptied, tips restocked",
+     "kind": "maint",
+     "who": "opening",
+     "task": "cx_fluids"
+    },
+    {
+     "t0": 6.0,
+     "t1": 6.5,
+     "what": "doser's funnels and cup nests cleaned, press die cleaned",
+     "kind": "maint",
+     "who": "opening",
+     "task": "dose_clean"
+    },
+    {
+     "t0": 6.5,
+     "t1": 7.0,
+     "what": "backups verified; storage and the retention job checked",
+     "kind": "maint",
+     "who": "desk",
+     "task": "it_backup"
+    },
+    {
+     "t0": 7.0,
+     "t1": 8.0,
+     "what": "crucible",
+     "kind": "crucible"
+    },
+    {
+     "t0": 26.0,
+     "t1": 27.0,
+     "what": "crucible",
+     "kind": "crucible"
+    },
+    {
+     "t0": 27.0,
+     "t1": 27.75,
+     "what": "EDM weekly cleaning: guides, heads, tank",
+     "kind": "maint",
+     "who": "floor",
+     "task": "edm_weekly"
+    },
+    {
+     "t0": 27.75,
+     "t1": 28.0,
+     "what": "MiR250 scanners and lights cleaned and checked; 2F-85 wiped",
+     "kind": "maint",
+     "who": "floor",
+     "task": "mir_weekly"
+    },
+    {
+     "t0": 28.0,
+     "t1": 28.5,
+     "what": "tray N: new feedstock jars in",
+     "kind": "maint",
+     "who": "opening",
+     "task": "store_n"
+    },
+    {
+     "t0": 28.5,
+     "t1": 29.5,
+     "what": "crucible",
+     "kind": "crucible"
+    },
+    {
+     "t0": 29.5,
+     "t1": 30.5,
+     "what": "DED: nozzle, protective window, powder feeders (off the route)",
+     "kind": "maint",
+     "who": "floor",
+     "task": "pm_ded"
+    },
+    {
+     "t0": 30.5,
+     "t1": 31.0,
+     "what": "tray O: finished lots out to the archive, empty jars in",
+     "kind": "maint",
+     "who": "opening",
+     "task": "store_o"
+    },
+    {
+     "t0": 31.0,
+     "t1": 32.0,
+     "what": "crucible",
+     "kind": "crucible"
+    },
+    {
+     "t0": 33.5,
+     "t1": 34.0,
+     "what": "new graphite crucible and nozzle holder into the rotation",
+     "kind": "maint",
+     "who": "floor",
+     "task": "rp_crucible_stock"
+    },
+    {
+     "t0": 50.0,
+     "t1": 51.0,
+     "what": "crucible",
+     "kind": "crucible"
+    },
+    {
+     "t0": 51.0,
+     "t1": 52.0,
+     "what": "tray G: Form 4 tanks, Form Wash IPA (off the route)",
+     "kind": "maint",
+     "who": "opening",
+     "task": "pm_g"
+    },
+    {
+     "t0": 52.0,
+     "t1": 52.5,
+     "what": "sieving cell: the ultrasonic bath's IPA changed, the wash module's filter",
+     "kind": "maint",
+     "who": "floor",
+     "task": "sv_ipa"
+    },
+    {
+     "t0": 52.5,
+     "t1": 53.5,
+     "what": "crucible",
+     "kind": "crucible"
+    },
+    {
+     "t0": 53.5,
+     "t1": 54.0,
+     "what": "cell windows cleaned, Aero S hopper and venturi checked",
+     "kind": "maint",
+     "who": "opening",
+     "task": "ld_clean"
+    },
+    {
+     "t0": 54.0,
+     "t1": 55.0,
+     "what": "tray I: SnowPods' filters and chambers (off the route)",
+     "kind": "maint",
+     "who": "opening",
+     "task": "pm_i"
+    },
+    {
+     "t0": 55.0,
+     "t1": 56.0,
+     "what": "crucible",
+     "kind": "crucible"
+    },
+    {
+     "t0": 74.0,
+     "t1": 75.0,
+     "what": "crucible",
+     "kind": "crucible"
+    },
+    {
+     "t0": 75.0,
+     "t1": 75.1,
+     "what": "eyewash and safety shower activated",
+     "kind": "maint",
+     "who": "floor",
+     "task": "c_eyewash"
+    },
+    {
+     "t0": 75.25,
+     "t1": 76.25,
+     "what": "vendor software update: installed, then the reference check re-run and signed off",
+     "kind": "maint",
+     "who": "desk",
+     "task": "it_revalidate_hardness"
+    },
+    {
+     "t0": 76.25,
+     "t1": 76.5,
+     "what": "MiR250 scanners and lights cleaned and checked; 2F-85 wiped",
+     "kind": "maint",
+     "who": "floor",
+     "task": "mir_weekly"
+    },
+    {
+     "t0": 76.5,
+     "t1": 77.5,
+     "what": "crucible",
+     "kind": "crucible"
+    },
+    {
+     "t0": 77.5,
+     "t1": 78.0,
+     "what": "waste tank emptied, water tank filled (the coupling has no drain or process water)",
+     "kind": "maint",
+     "who": "opening",
+     "task": "px_waste"
+    },
+    {
+     "t0": 78.0,
+     "t1": 78.5,
+     "what": "tray J: cups, plugs, vials, stubs and coupons restocked",
+     "kind": "maint",
+     "who": "opening",
+     "task": "store_j"
+    },
+    {
+     "t0": 78.5,
+     "t1": 79.0,
+     "what": "recoater blade replaced",
+     "kind": "maint",
+     "who": "floor",
+     "task": "ac_blade"
+    },
+    {
+     "t0": 79.0,
+     "t1": 80.0,
+     "what": "crucible",
+     "kind": "crucible"
+    },
+    {
+     "t0": 98.0,
+     "t1": 99.0,
+     "what": "crucible",
+     "kind": "crucible"
+    },
+    {
+     "t0": 99.0,
+     "t1": 99.5,
+     "what": "the bay's CombiTac dock: contacts wiped, pins, O-rings and coupling faces checked (it mates with every tray the Shuttle presents)",
+     "kind": "maint",
+     "who": "opening",
+     "task": "bay_dock"
+    },
+    {
+     "t0": 99.0,
+     "t1": 99.5,
+     "what": "lost localization or a protective stop it can't clear",
+     "kind": "repair",
+     "who": "floor",
+     "task": "fail"
+    },
+    {
+     "t0": 99.5,
+     "t1": 100.5,
+     "what": "chiller: fluid changed (the XRD's tube stops)",
+     "kind": "maint",
+     "who": "floor",
+     "task": "chiller_fluid"
+    },
+    {
+     "t0": 99.5,
+     "t1": 100.0,
+     "what": "lost localization or a protective stop it can't clear",
+     "kind": "repair",
+     "who": "floor",
+     "task": "fail"
+    },
+    {
+     "t0": 100.5,
+     "t1": 101.5,
+     "what": "crucible",
+     "kind": "crucible"
+    },
+    {
+     "t0": 101.5,
+     "t1": 102.0,
+     "what": "depowdering box: filter changed",
+     "kind": "maint",
+     "who": "floor",
+     "task": "dp_filter"
+    },
+    {
+     "t0": 101.5,
+     "t1": 102.5,
+     "what": "a clogged or leaking cell; the reference electrode",
+     "kind": "repair",
+     "who": "opening",
+     "task": "fail"
+    },
+    {
+     "t0": 102.0,
+     "t1": 102.25,
+     "what": "instrument PC: OS updates and a reboot (vendor software pinned)",
+     "kind": "maint",
+     "who": "desk",
+     "task": "it_patch_mastersizer"
+    },
+    {
+     "t0": 102.25,
+     "t1": 102.75,
+     "what": "tray H: stencil printer and LumenPnP nozzles (off the route)",
+     "kind": "maint",
+     "who": "opening",
+     "task": "pm_h"
+    },
+    {
+     "t0": 103.0,
+     "t1": 103.5,
+     "what": "vacuum pump oil changed",
+     "kind": "maint",
+     "who": "floor",
+     "task": "rp_pump_oil"
+    },
+    {
+     "t0": 103.5,
+     "t1": 104.5,
+     "what": "control charts reviewed, next week's maintenance planned, spares reordered",
+     "kind": "maint",
+     "who": "floor",
+     "task": "review"
+    },
+    {
+     "t0": 103.5,
+     "t1": 104.5,
+     "what": "control charts reviewed, next week's maintenance planned, spares reordered",
+     "kind": "maint",
+     "who": "floor",
+     "task": "review"
+    },
+    {
+     "t0": 104.5,
+     "t1": 106.0,
+     "what": "rePowder: chamber, cyclone and powder catch cleaned; seals checked",
+     "kind": "maint",
+     "who": "floor",
+     "task": "rp_clean"
+    }
+   ]
+  }
+ }
+}

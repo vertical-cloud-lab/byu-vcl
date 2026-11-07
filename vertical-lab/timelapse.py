@@ -198,6 +198,11 @@ def next_run_slot(t: float) -> float:
         day += 1
 
 
+# Round 10: the atomizer's charge may be carried over up to this long before its run slot and wait there, so a run
+# isn't lost because both units are busy in the 6 min before the slot (round 8's schedule never hit that case).
+ATOM_WAIT_H = 2.0
+
+
 class Line:
     """A station's (or a unit's) bookings: non-overlapping intervals, sorted, so a later booking can use an earlier
     gap (the schedule books alloy by alloy, not in time order)."""
@@ -221,10 +226,16 @@ class Line:
         self.e.insert(i, b)
 
 
-def simulate(hours=YEAR_H) -> dict:
+def simulate(hours=YEAR_H, upkeep=None) -> dict:
     """The greedy schedule: events [{t0, t1, station, alloy, step, tray, shuttle, unit}] through `hours`. Each step
     starts once its inputs are done, its station has a free spell as long as the step, and a unit has the transfer
-    time free just before it; an atomizer run also waits for a run slot on a staffed shift (next_run_slot)."""
+    time free just before it; an atomizer run also waits for a run slot on a staffed shift (next_run_slot).
+
+    upkeep (round 10, an upkeep.Upkeep): maintenance booked into the same schedule. Its calendar tasks and robot-run
+    checks are booked first (a check like a step: a unit, the tray at the opening); each alloy step may fail part-way
+    and is run again after its repair; each finished step counts towards the usage-driven tasks; a step on a tray
+    waits while a person has that Shuttle's opening. The record is in the result's "maint". With upkeep=None the
+    schedule is round 8's, unchanged."""
     shuttles = _shuttles()
     lines: dict[str, Line] = {}
     ulines = [Line() for _ in range(PARAMS["units"]["value"])]
@@ -237,7 +248,9 @@ def simulate(hours=YEAR_H) -> dict:
     count = dict(runs=0, builds=0, tested=0)
     t_atom: list[float] = []                               # each alloy's atomizer start: a WIP limit on the charges
 
-    def book(station, ready, dur, step, alloy, tray=None, atom=False):
+    last = [None]                                          # the last alloy step booked (maintenance books too)
+
+    def book(station, ready, dur, step, alloy, tray=None, atom=False, maint=None):
         line = lines.setdefault(station, Line())
         t, bu = max(ready, 0.0), 0
         for _ in range(400):
@@ -247,22 +260,52 @@ def simulate(hours=YEAR_H) -> dict:
             if t1 > t + 1e-9:
                 t = t1
                 continue
+            if upkeep is not None:
+                t2 = upkeep.presentable(tray, t, dur)
+                if t2 > t + 1e-9:
+                    t = t2
+                    continue
             best = None
             for u, ul in enumerate(ulines):
                 tu = ul.earliest(t - tr, tr) + tr
+                tx = tu - tr
+                if atom and tu > t + 1e-9:                 # the charge may go over earlier and wait at the atomizer
+                    x = ul.earliest(max(ready, t - ATOM_WAIT_H), tr)
+                    if x + tr <= t + 1e-9:
+                        tu, tx = t, x
                 if best is None or tu < best[1]:
-                    best = (u, tu)
-            bu = best[0]
+                    best = (u, tu, tx)
+            bu, tx = best[0], best[2]
             if best[1] > t + 1e-9:
                 t = best[1]
                 continue
             break
+        if upkeep is not None and maint is None:
+            t_f = upkeep.breaks(station, t, dur)
+            if t_f is not None:                             # it fails part-way: repaired, then run again
+                line.add(t, t_f)
+                ulines[bu].add(tx, tx + tr)
+                unit_log.append((tx, tx + tr, bu, station))
+                ev.append(dict(t0=t, t1=t_f, station=station, alloy=alloy, step=step, tray=tray,
+                               shuttle=shuttles.get(tray) if tray else None, unit=bu, interrupted=True))
+                t_r = upkeep.repair(station, t_f)
+                return book(station, t_r, dur, step, alloy, tray, atom)
         line.add(t, t + dur)
-        ulines[bu].add(t - tr, t)
-        unit_log.append((t - tr, t, bu, station))
-        ev.append(dict(t0=t, t1=t + dur, station=station, alloy=alloy, step=step, tray=tray,
-                       shuttle=shuttles.get(tray) if tray else None, unit=bu))
+        ulines[bu].add(tx, tx + tr)
+        unit_log.append((tx, tx + tr, bu, station))
+        e = dict(t0=t, t1=t + dur, station=station, alloy=alloy, step=step, tray=tray,
+                 shuttle=shuttles.get(tray) if tray else None, unit=bu)
+        if maint is not None:
+            e["maint"] = maint
+        ev.append(e)
+        if maint is None:
+            last[0] = e
+            if upkeep is not None:
+                upkeep.used(e)
         return t + dur
+
+    if upkeep is not None:
+        upkeep.start(lines, ulines, book, ev, hours, shuttles)
 
     def run(alloy, ready, repeat=False):
         """Charge and atomize, again if the run drips. -> the good run's end."""
@@ -270,14 +313,14 @@ def simulate(hours=YEAR_H) -> dict:
             e_c = book("carousel", ready, STEPS[0][2], "charge", alloy, "B")
             count["runs"] += 1
             e_a = book("repowder", e_c, STEPS[1][2], "atomize", alloy, atom=True)
-            ev[-1]["run"] = count["runs"]
+            last[0]["run"] = count["runs"]
             if repeat:
-                ev[-1]["repeat"] = True
+                last[0]["repeat"] = True
             if count["runs"] % fail_run == fail_run - 3:        # this run dripped
-                ev[-1]["failed"] = True
+                last[0]["failed"] = True
                 ready = e_a
                 continue
-            return e_a, ev[-1]["t0"]
+            return e_a, last[0]["t0"]
 
     a = 0
     while a < 5000:
@@ -294,7 +337,7 @@ def simulate(hours=YEAR_H) -> dict:
         count["builds"] += 1
         printable = count["builds"] % fail_build != 0
         done["print"] = book("aconity", done["sieve"], STEPS[7][2], "print", a)
-        ev[-1]["failed"] = not printable
+        last[0]["failed"] = not printable
         if printable:
             rec["printed"] = done["print"]
             for step, station, h, needs, tray, _, _ in STEPS[8:]:
@@ -316,7 +359,10 @@ def simulate(hours=YEAR_H) -> dict:
         a += 1
     ev.sort(key=lambda e: e["t0"])
     unit_log.sort()
-    return dict(events=ev, alloys=alloys, unit_log=unit_log, runs=count["runs"])
+    out = dict(events=ev, alloys=alloys, unit_log=unit_log, runs=count["runs"])
+    if upkeep is not None:
+        out["maint"] = upkeep.finish()
+    return out
 
 
 # per step, what it adds to each counter
@@ -337,7 +383,7 @@ def counters(sim: dict, t: float, ncam: int) -> dict:
         out[k] = 0
     g_run = PARAMS["charge_per_run"]["value"] * PARAMS["usable_frac"]["value"] / 1000.0
     for e in ev:
-        if e["t1"] > t:
+        if e["t1"] > t or e.get("interrupted"):
             continue
         s = e["step"]
         if s == "atomize":
