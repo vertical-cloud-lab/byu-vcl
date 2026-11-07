@@ -14,68 +14,66 @@ framework, [`scene.py`](scene.py), is `atomizer-training/viz3d/scene.py` from #1
 ![The org page's GIF](out/org_vertical_lab.gif)
 
 [`out/org_vertical_lab.gif`](out/org_vertical_lab.gif) is made to replace that GIF on the org README, under the same
-title. Round 2 ([PR #329](https://github.com/vertical-cloud-lab/byu-vcl/pull/329), Sterling: "way over-simplified. At
-the very least, it should show interaction with multiple trays and an interaction with at least one module sitting
-outside the VLM. Remove the warehouse stuff, remove the 2nd VLM") shows one Shuttle and one loop of the lab in steady
-state:
+title. Round 4 ([PR #329](https://github.com/vertical-cloud-lab/byu-vcl/pull/329), Sterling: "you should have started
+backed off to see the full overview and then zoomed in to show what's going on in more detail. It would be better to
+show the arm interacting with the atomizer ... instead of interaction with the sieving station, which doesn't really
+make sense to do contextually. Wouldn't it be more interesting to show loading up a charge cup with the desired powder
+doses and then taking it over to the atomizer to be atomized?") follows one charge from tray B to the atomizer:
 
-1. At the sieving cell, on its bench beside the Shuttle, the MiR250 + UR10e takes the run's sample, a vial of the
-   sieved powder. Meanwhile the VLM brings tray A, the CubXL, to its opening.
-2. The MiR drives along the dock line to the opening. The arm swaps the vials in the CubXL: the last sample, its test
-   done, comes out, and the new one goes in.
-3. Tray A goes back to its slot, where its dock keeps it powered and the CubXL runs the test (DAL's powder reactivity
-   test). Tray B, powder dosing, comes down.
-4. The tested vial goes into tray B's rack, in the seat an empty vial comes out of.
-5. Tray B goes back up while the MiR drives back, and the arm leaves the empty vial at the cell for the next sample.
-
-Round 3 (Sterling: "the GIF can be larger ... more like 50 MB, so you don't have to restrict yourself so much in terms
-of time. Also, you should probably zoom in to see what the robot's doing, while still in view of the CubXL in the
-background that's still doing things") plays the same loop closer and slower:
-
-- **Two close views follow the MiR.** Each is about 3–4 m across at the arm, where round 2's was 8–9 m. At the cell,
-  the arm reaches into the sieving cell, with the VLM's bay at the right. At the opening, it works at tray A, then at
-  tray B. As the MiR drives, the camera pans between the two at the MiR's own pace.
-- **The CubXL's test runs behind the arm.** It starts as tray A goes back to its slot and runs for 34 s of the clip,
-  through tray B's visit and the drive back. It ends 4.75 s before the loop's last park. While tray B is at the
-  opening, the CubXL's head and gantry show over tray B's doser. Once tray B has gone back up, the whole CubXL shows
-  through the empty bay, running, while the arm works at the cell.
-  - **Only part of it shows during tray B's visit.** Tray B's doser, 854 mm tall, stands right in front of tray A's
-    slot (R2), so no view from the front shows the CubXL whole while tray B is at the opening. Views from higher up
-    and from the left were tried, and none did better.
-- **Slower.** The arm's moves take the 9:09 clip's times again, and the GIF plays at 1.5× instead of 2.5×.
+1. **The whole lab first.** The camera opens wide on the north row: the glovebox, the rePowder, the sieving cell,
+   Shuttle 1, and the MiR250 + UR10e docked at its opening. It closes in on the opening while the VLM brings tray B,
+   the powder doser, down.
+2. **A charge cup, dosed by weight.** Tray B is chapter 1's ([`alloy_charge.py`](alloy_charge.py)): the charge rack,
+   the vacuum press, and the multi-doser v5 over its HR-202i. The arm stands an empty 5N Al cup on the doser's shuttle,
+   which carries it onto the pan. The doser weighs in 3.92 g of Si, then 3.91 g of AlSi10Mg on top, one module at a
+   time: chapter 1's recipe for Al-10Si. The camera goes in to the pan, and the cup is drawn cut open while it fills.
+   The shuttle brings it out, and the arm stands it in the carrier on the MiR.
+3. **To the atomizer.** Tray B goes back into storage while the MiR drives to the rePowder.
+4. **The arm at the atomizer.** The rePowder is PR #327's refined model ([`repowder/model.py`](repowder/model.py)): its
+   lid hinged at the back, with the draw latch and the pneumatic locking bolt as joints. The bolt goes back. The arm
+   pulls the latch's lever out, lifts the lid by its knob past its balance point and lets go, and the lid settles onto
+   its stop. With chapter 2's loading tong ([`alloy_atomize.py`](alloy_atomize.py)), the arm takes the cup off the
+   carrier and sets it on the crucible's floor, down #222's path past the sealing rod. Then it puts the tong back,
+   lowers the lid and shuts the latch, and the bolt goes in.
+5. **Atomized.** The rePowder, cut open, melts the cup and sprays the melt into powder. This part is a time-lapse: the
+   coil comes on, the cup glows and slumps into the pool, the stream falls onto the vibrating plate, and the powder
+   collects in the container. Meanwhile the MiR drives back, and the camera pulls back out to the wide view.
 
 - **It loops without a cut.** The last frame shows the lab as the first one does; only the caption changes. What
-  differs is too small to see: the vial at the cell is empty at the end, and the vial in tray B's rack holds the
-  tested sample.
-- **The file:** 1280 × 806, 962 frames at 18 fps: 53.4 s at 1.5× the modelled speed, 40.0 MB, 128 colours. The same
-  frames as an MP4, [`out/mp4/org_vertical_lab_readme.mp4`](out/mp4/org_vertical_lab_readme.mp4), are 5.9 MB.
-  - Most of the size is the two pans, which change every pixel for about 115 frames.
-  - It isn't lossy-compressed. With gifsicle's `--lossy`, the last frame drifted from the first where things had moved,
-    so the loop would flicker.
-  - **Still parts are held still.** The MP4's noise flickers pixels in the parts that hold still, so each GIF frame
-    stored more than what moved: 47.5 MB. The GIF now keeps a pixel from the frame before wherever no channel has moved
-    by more than 6 levels of 255 (`ORG_STICKY`), which gives 40.0 MB. A first pass finds where the held pixels end up, and
-    the first frame starts from there. The loop's seam is then cleaner than with nothing held: 1,706 px differ by
-    more than 16 levels, against 2,837.
-- **The arm audit: 0 of 955 checked frames in collision**
-  ([`out/collisions/org_vertical_lab.json`](out/collisions/org_vertical_lab.json)). It ran in its own pass, beside the
-  render-only one. Both passes made the same moves: 962 frames, the test on frames 477–885, the forearm's highest point
-  1593 mm.
-  - Round 2's first cut parked the MiR right of the cell's bench, and its forearm went through the enclosure's side
-    panel and the Shuttle's corner in 64 frames, every one of them at the cell. Round 2's own render was 0 of 696.
-- **Left out of this shot:** Shuttle 2 with its trays G–M, the pallet racking round the room, and the second MiR unit.
-  The south row and its overhead utilities are left out too, because the camera stands where they are.
-- **Changed for this shot only** ([`org_gif.py`](org_gif.py) says why):
-  - the VLM's camera target stands at the opening's right instead of its left, since the MiR comes in from the cell's
-    side;
-  - the MiR stops at the cell on the VLM's dock line, so it drives to the opening in a straight line;
-  - there is a vial pocket on the cell's bench, and a second pocket on the MiR, so the arm can swap vials at a tray;
-  - the bay's back shutter is drawn more see-through.
-- **The test is a time-lapse,** and its label says so. Everything else plays at 1.5× the modelled times, and a badge
-  says so.
-- **Labels.** The VLM's label points at the header, by the logo. The header is out of the opening's view, so as the
-  MiR drives over, the labels name tray A instead: in round 3's first render, the VLM label's leader ran off the top of
-  the frame.
+  differs is too small to see from there: one cup fewer in tray B's rack, and powder in the rePowder's container.
+- **The file:** 1024 × 644, 1331 frames at 18 fps: 73.9 s at 1.5× the modelled speed, 40.7 MB, 112 colours. The same
+  frames as an MP4, [`out/mp4/org_vertical_lab_readme.mp4`](out/mp4/org_vertical_lab_readme.mp4), are 8.2 MB.
+  - **1024 px wide,** where round 3's was 1280. The org page shows it about 830 px wide. At 1280 px, 128 colours, the
+    loop's first half alone came to 37.2 MB, so the whole would have been about 75 MB; at 1024 px it was 26.0 MB.
+  - Still parts are held still, as in round 3 (`ORG_STICKY`, now 8 levels of 255).
+- **The arm audit: 0 of 1321 checked frames in collision** ([`out/collisions/org_vertical_lab.json`](out/collisions/org_vertical_lab.json)). It ran
+  as four passes over frame ranges, side by side (`ORG_AUDIT_PART`), joined into one report by the auditor's own rules
+  (`python3 org_gif.py audit_join`).
+  - The first audit of frames 666–999 flagged three frames, and the moves changed for them. In two, the lid's shell
+    brushed the open fingertips as it fell, just after the arm let go; the hand now opens wider and backs off as the
+    lid falls. In the third, the cup grazed the sealing rod's adapter as it swung in over the crucible; it now comes
+    down from straight above.
+  - Before that, the planner caught the upper arm going into the furnace's top as the hand backed 100 mm off the
+    opened latch lever. The arm now backs off only as far as its whole line is clear (`clear_line`).
+- **Choices worth checking:**
+  - **One cup goes in,** where the lab loads four a run (PR #318), and the melt is drawn for one cup's 43 g. The cup
+    goes over without its plug. Chapter 1 fits and presses the plug on the same tray; showing it would add about 15 s.
+  - **The lid rests open at 90°,** "about upright" in PR #327's notes, not at the model's 105°. From where the MiR
+    stops, the arm couldn't reach the knob of a lid open further, to shut it again. It lets go at 73.5°, past the
+    lid's balance point (about 67°, from the shell's outline).
+  - **One arm works the latch and the lid.** Chapter 2 has a second unit hold the lid down while the latch lets go.
+  - **The latch's lever swings out half its travel** (47.5°), which takes the loop well off the keeper.
+  - **The doser runs at 0.6× chapter 1's times** (its first cup is shown at 0.55×), and the auger's dose at 0.8×.
+- **Left out of this shot:** Shuttle 2 with its trays G–M, the pallet racking, the second MiR unit, and the south row
+  with its overhead utilities (rounds 2 and 3). So are the camera targets that the MiR's drive to the rePowder would
+  run over (the sieving cell's and the rePowder's), and the south row's.
+- **Changed for this shot only:** the VLM's camera target stands at the opening's right instead of its left, since the
+  MiR comes in from the left.
+
+Rounds 2 and 3, on the same PR: round 2 made it one Shuttle, two trays and a module outside the VLM (the sieving cell).
+Round 3 brought the camera in to 3–4 m and slowed it to 1.5×, with the CubXL's test running behind the arm. Round 4
+replaces both; their GIFs are in the PR's history (round 3's at
+[`6cdf210`](https://github.com/vertical-cloud-lab/byu-vcl/blob/6cdf210/vertical-lab/out/org_vertical_lab.gif)).
 
 ## Round 8: the route in seven chapters, sample prep, the powder checked, scaling up, the lab at speed
 
@@ -1897,16 +1895,17 @@ xvfb-run -a python3 tour.py mount_press cnc polisher sem vhx nanoindenter pip ha
 python3 longform.py warm; python3 longform.py; python3 longform.py upload
 ```
 
-The org page's GIF (one scene job, about 5 GB, as Shuttle 2's trays aren't loaded). The render alone takes about 30 min
-at 1.9 s a frame; with the audit in the same pass it takes about 80 min, at 5 s a frame on one core, since the audit is
-most of the work. On a 4-core runner, a render-only pass under another name (`ORG_NAME`) can run beside the audited one
-and finish first:
+The org page's GIF (round 4: 1331 frames at 12 fps). Each scene job takes about 4 GB, so at most three run at once on
+the 16 GB runner. The render takes about 1.9 s a frame and the audit about 5 s, so both are split into frame ranges and
+run side by side: every pass simulates the whole loop (about 4 min) and draws or checks only its own frames.
 
 ```bash
-ARM_AUDIT_RENDER=1 VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py   # the clip, real time -> out/mp4/org_vertical_lab.mp4,
-                                                                  # every frame's arm checked -> out/collisions/
-ORG_NAME=org_vertical_lab_r ORG_LIVE=/tmp/org_live VIZ3D_FPS=12 xvfb-run --server-num=77 python3 org_gif.py
-                                                                  # the same clip, render only; every 60th frame to /tmp
+ORG_STRIDE=24 VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py         # every 24th frame only -> /tmp/org_stride/ (5 min)
+ORG_NAME=org_vertical_lab_p0 ORG_PART=0:666 VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py      # render frames 0-665
+ORG_NAME=org_vertical_lab_p1 ORG_PART=666:1331 VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py   # and 666-1330, beside it
+python3 org_gif.py join org_vertical_lab_p0 org_vertical_lab_p1   # -> out/mp4/org_vertical_lab.mp4, its JSON
+ORG_AUDIT_PART=0:444 ARM_AUDIT=1 VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py   # audit frames 0-443 -> /tmp/org_audit/
+python3 org_gif.py audit_join                                     # every part -> out/collisions/org_vertical_lab.json
 python3 org_gif.py gif                                            # 1.5x, under its header band -> out/org_vertical_lab.gif
 ```
 
