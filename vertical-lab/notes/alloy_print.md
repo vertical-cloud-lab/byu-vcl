@@ -21,10 +21,11 @@ round, below; 10 fps to fit the session; re-render at 15 fps when the runner is 
   frames** ([`../out/collisions/alloy_print_fill.json`](../out/collisions/alloy_print_fill.json)). Round 10 audited
   sub-steps only, to leave the render slots to the renders.
 - **The seventh frame (3063 in round 9's 15 fps audit, the right fingertip against the enclosure, in 3/5)** does not
-  occur at 6 fps, the render's rate: the audit of 3/5 from frame 1100 (its last 75 s, the sieves into the wash module
-  and the jar from under the funnel) found only the contacts the rules allow (fingers on a sieve's tab, a sieve onto the
-  tipper's cradle, the jar into its pocket on the MiR), and all 94 straight-line moves of 3/5, re-solved at 201 points
-  each, are clear of the enclosure. The joint moves are planned with checks every 1.5 deg, and a graze between two of
+  occur at 6 fps, the render's rate: checking 3/5 from frame 1100 (its last minute, up to the jar from under the
+  funnel) found no arm contact and nothing against the enclosure, only the gripper and held-part contacts of a grasp or a
+  set-down (fingers on a sieve's tab, a sieve and the pan onto the tipper's cradle, the jar into and out of its pocket
+  on the MiR; raw contacts, not put through the audit's rules), and all 94 straight-line moves of 3/5, re-solved at 201
+  points each, are clear of the enclosure. The joint moves are planned with checks every 1.5 deg, and a graze between two of
   those checks, caught once at 15 fps, is the likeliest source. Not chased further.
 - **Collision world:** as chapter 7's `fast_collisions`, kept to whatever stands within 2.8 m of the MiR's path (371 of
   the 541 actors with `VLAB_ONLY_TRAYS=F`). The planner and the audit see the same world.
