@@ -91,10 +91,11 @@ own files are unchanged.
 
 - **It still loops.** The camera pulls back out to the wide view, with the MiR back where it waited. In the last
   1.2 s, trays A and B's equipment fades out of their slots, so the last frame shows the lab as the first one does.
-- **The file:** 960 × 604, 1563 frames at 18 fps: 86.8 s at 1.5× the modelled speed, 47.5 MB, 112 colours. The same
-  frames as an MP4, [`out/mp4/org_vertical_lab_readme.mp4`](out/mp4/org_vertical_lab_readme.mp4), are 9.9 MB.
-  - **960 px wide,** where round 4's was 1024. The org page shows it about 830 px wide. At 1024 px this loop came to
-    52.7 MB.
+- **The file:** 880 × 556, 1815 frames at 18 fps: 100.8 s at 1.5× the modelled speed, 49.1 MB, 112 colours. The same
+  frames as an MP4, [`out/mp4/org_vertical_lab_readme.mp4`](out/mp4/org_vertical_lab_readme.mp4), are 10.5 MB.
+  - **880 px wide,** where round 5's was 960 and round 4's 1024. The org page shows it about 830 px wide. Round 6's
+    loop is 252 frames longer than round 5's, nearly all of them the arm working the fork: at 960 px it came to 55.8 MB,
+    at 900 px 51.0 MB.
   - No lossy compression, so the loop doesn't flicker at the seam; still parts are held still (`ORG_STICKY`, 8 levels
     of 255).
 - **The arm audit: 0 of 884 checked frames in collision**
@@ -105,6 +106,14 @@ own files are unchanged.
   frame ranges side by side (`ORG_AUDIT_PART`), joined by the auditor's own rules (`python3 org_gif.py audit_join`).
 - **Choices worth checking** (round 4's still stand: one cup, no plug, the lid open at 90°, one arm on the latch and
   the lid, the latch's lever at half its travel):
+  - **The rePowder's cabinet round the furnace is fitted by eye** to the footage: where it steps up (x = 198 mm, the
+    locking bolt's housing), its face beside the furnace (75 mm in front of the furnace's axis), and the bay behind
+    the furnace (back to y = 380 mm, its floor at 1320 mm). A tape measure on the machine would settle them. PR #327
+    should take the same change, and chapter 2 ([`alloy_atomize.py`](alloy_atomize.py)) still opens the lid about the
+    old left hinge, as PR #327's notes say.
+  - **The cup fork and its rest are ours,** an assumed design, not built: a hand tool for the 2F-85 in place of the
+    doser's vessel shuttle. The cup stands on it inside a 2.5 mm lip; a real one might want a positive hold on the
+    cup while the arm moves.
   - **The tall pedestal and the cup's path over the balance,** above: a change to the doser, drawn for this shot.
   - **The doser's top door stays open** throughout, since the pedestal stands up through it. In v5 it opens only
     for each dose.
@@ -120,11 +129,13 @@ own files are unchanged.
 - **Changed for this shot only:** the VLM's camera target stands at the opening's right instead of its left, since the
   MiR comes in from the left.
 
-Rounds 2–4, on the same PR: round 2 made it one Shuttle, two trays and a module outside the VLM (the sieving cell).
+Rounds 2–5, on the same PR: round 2 made it one Shuttle, two trays and a module outside the VLM (the sieving cell).
 Round 3 brought the camera in to 3–4 m and slowed it to 1.5×, with the CubXL's test running behind the arm. Round 4
 opened wide, then zoomed in, and followed a charge cup from tray B into the atomizer
 ([`d2470ee`](https://github.com/vertical-cloud-lab/byu-vcl/blob/d2470ee/vertical-lab/out/org_vertical_lab.gif)).
-Round 5 replaces it; round 3's GIF is at
+Round 5 loaded the trays first, zoomed out on the doser and put the cup on the tall pedestal
+([`ca13767`](https://github.com/vertical-cloud-lab/byu-vcl/blob/ca13767/vertical-lab/out/org_vertical_lab.gif)).
+Round 6 replaces it; round 3's GIF is at
 [`6cdf210`](https://github.com/vertical-cloud-lab/byu-vcl/blob/6cdf210/vertical-lab/out/org_vertical_lab.gif).
 
 ## Round 8: the route in seven chapters, sample prep, the powder checked, scaling up, the lab at speed
@@ -1947,7 +1958,7 @@ xvfb-run -a python3 tour.py mount_press cnc polisher sem vhx nanoindenter pip ha
 python3 longform.py warm; python3 longform.py; python3 longform.py upload
 ```
 
-The org page's GIF (round 5: 1563 frames at 12 fps). Each scene job takes about 4.3 GB, so at most three run at once
+The org page's GIF (round 6: 1815 frames at 12 fps). Each scene job takes about 4.3 GB, so at most three run at once
 on the 16 GB runner. Each frame takes about 1.9 s to render and about 5 s to audit, so both are split into frame ranges
 and run side by side: every pass simulates the whole loop (about 5 min) and draws or checks only its own frames. The
 audit checks every frame where an arm has moved, and every 12th while none has (`ORG_STILL_EVERY`).
@@ -1955,13 +1966,13 @@ audit checks every frame where an arm has moved, and every 12th while none has (
 ```bash
 ORG_AT_OPEN=1 ORG_VIEWS=dose VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py views   # the doser's view as a still (1 min)
 ORG_STRIDE=24 VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py         # every 24th frame only -> /tmp/org_stride/ (6 min)
-ORG_NAME=org_vertical_lab_p0 ORG_PART=0:530 VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py      # render frames 0-529
-ORG_NAME=org_vertical_lab_p1 ORG_PART=530:1060 VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py   # 530-1059, beside it
-ORG_NAME=org_vertical_lab_p2 ORG_PART=1060:100000 VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py   # and the rest
+ORG_NAME=org_vertical_lab_p0 ORG_PART=0:620 VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py      # render frames 0-619
+ORG_NAME=org_vertical_lab_p1 ORG_PART=620:1230 VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py   # 620-1229, beside it
+ORG_NAME=org_vertical_lab_p2 ORG_PART=1230:100000 VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py   # and the rest
 python3 org_gif.py join org_vertical_lab_p0 org_vertical_lab_p1 org_vertical_lab_p2   # -> out/mp4/org_vertical_lab.mp4
-ORG_AUDIT_PART=0:700 ARM_AUDIT=1 VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py   # audit frames 0-699 -> /tmp/org_audit/
+ORG_AUDIT_PART=0:620 ARM_AUDIT=1 VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py   # audit frames 0-619 -> /tmp/org_audit/
 python3 org_gif.py audit_join                                     # every part -> out/collisions/org_vertical_lab.json
-python3 org_gif.py gif                                            # 1.5x, under its header band -> out/org_vertical_lab.gif
+python3 org_gif.py gif                                            # 1.5x, 880 px, under its header band -> out/org_vertical_lab.gif
 ```
 
 Putting them on YouTube (needs `YOUTUBE_UPLOAD_TOKEN_PICKLE_B64`; see [`youtube/README.md`](../youtube/README.md)):

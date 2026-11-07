@@ -107,9 +107,10 @@ NAME = os.environ.get("ORG_NAME", "org_vertical_lab")   # another name renders b
 TITLE = "In a vertical lab, equipment is brought to the operator"
 SPEED = 1.5          # the GIF plays the clip at this many times its modelled speed, and says so (12 fps x 1.5: 18 fps,
                      # frame delays of 6 and 5 cs in turn)
-GIF_W = int(os.environ.get("ORG_GIF_W", "960"))   # px; the org README shows it about 830 px wide. Round 3's 1280
+GIF_W = int(os.environ.get("ORG_GIF_W", "880"))   # px; the org README shows it about 830 px wide. Round 3's 1280
                      # px gave 37 MB for the first half of round 4's loop alone; 1024 px about two thirds of that.
-                     # Round 5's loop: 52.7 MB at 1024 px, 47.5 MB at 960
+                     # Round 5's loop: 52.7 MB at 1024 px, 47.5 MB at 960. Round 6's (1815 frames): 55.8 MB at 960,
+                     # 51.0 at 900, 49.1 at 880
 TEXT = 1.45          # the overlay's text, against the scenes' 720p sizes: the README shows the GIF at about 0.65x
 S1_TRAYS = "ABCDEFJ"     # Shuttle 1's trays (setup_lab.TRAYS): the only ones loaded
 
@@ -1762,7 +1763,8 @@ def gif(width=GIF_W, lossy=0, colors=112, sticky=int(os.environ.get("ORG_STICKY"
     the push in to the pan and back, the pan with the MiR, the bore and the cutaway). Its first half alone came to
     37.2 MB at 1280 px, 128 colours and `sticky` 6; 26.0 MB at 1024 px; 28.3 MB at 1120 px, 112 colours and 8. So
     1024 px, 112 colours and 8.
-    Round 5's is 1563 frames (the trays loaded, the doser's close views): 52.7 MB at 1024 px, 47.5 MB at 960 px."""
+    Round 5's is 1563 frames (the trays loaded, the doser's close views): 52.7 MB at 1024 px, 47.5 MB at 960 px.
+    Round 6's is 1815 frames (the arm carries the cup in on its fork): 55.8 MB at 960 px, 51.0 at 900, 49.1 at 880."""
     from PIL import Image
 
     from scene import OUT
