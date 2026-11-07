@@ -456,7 +456,7 @@ pulls back, so the valves are ours. The dock's housing is 108 mm deep, stroke 60
 5. Quote per set, and a **mock-up kit** to test a dock and a plate on a bench; PM, spares, service.
 
 ### 5. Intake
-Quantity: 15 plates and 16 docks (15 slots plus the bay) **[to confirm]**; cycles: about 100 per day at the opening; media as listed; ambient 15-40 °C;
+Quantity: 15 plates and 16 docks (15 slots plus the bay) **[to confirm]**; cycles: an assumed 100 a day at the openings **[to confirm]**; media as listed; ambient 15-40 °C;
 supply: 120 V single-phase per tray (5 kVA continuous at 80 %); N2 99.9999 % at low flow; chilled water at 20 °C.
 
 ### 6. Draft email
@@ -464,7 +464,7 @@ supply: 120 V single-phase per tray (5 kVA continuous at 80 %); N2 99.9999 % at 
 > **Subject:** Budgetary quote: CombiTac uniq docking set (4 power, Cat 6A, air, N2, 2 × water), 16 docks and 15 plates
 >
 > We are building a docking coupling for instrument trays in a vertical lift module: four Ø3 mm power units, one 10 Gbit RJ45 module, an RCT06 air, an SCT03
-> nitrogen and two LCT06 water inserts on a CombiTac align 4 plate, mated about 100 times a day. Please quote 15 plates and 16 docks (budgetary, academic),
+> nitrogen and two LCT06 water inserts on a CombiTac align 4 plate, mated an assumed 100 times a day. Please quote 15 plates and 16 docks (budgetary, academic),
 > and tell us the rated cycles per insert, the allowed misalignment, whether you offer a bench kit, and who supplies the fluid inserts in Utah.
 > Please include maintenance intervals, spares and prices. [name, email **[to confirm]**]
 
@@ -490,7 +490,7 @@ Eaton (Tripp Lite): **cpdipresaleshelp@eaton.com**, +1 773-869-1776, 10000 Woodw
 **[to confirm]** on eaton.com). Resellers: CompSource **800-356-5794**, Barcodes Inc. (quote form), DigiKey.
 
 ### 4. Open questions
-Runtime at 300-1,000 W; **battery chemistry**, the cycle life when it is recharged every dock cycle (about 100 transits a day); mounting on its side and **orientation limits**;
+Runtime at 300-1,000 W; **battery chemistry**, the cycle life when it is recharged every dock cycle (an assumed 100 transits a day, **[to confirm against `out/upkeep_model.json`]**); mounting on its side and **orientation limits**;
 **vibration** on an extractor; operating **temperature** inside the enclosure (up to 40 °C?); a contact or relay to tell a tray's controller it is on battery; **Li-ion**
 variant; PM (battery replacement interval), spares, service price.
 
@@ -510,7 +510,7 @@ AHJ about NFPA 855's small-system rules and the sprinkler design), temperature l
 > **To:** `cpdipresaleshelp@eaton.com` (confirm on eaton.com) and a reseller (CompSource)
 > **Subject:** Quote: 15 × 5PX1500RTNG2, and lithium-ion options, university lab
 >
-> We plan 15 UPSs, each carrying a laboratory tray for 6-10 s during transfers in a vertical lift module, recharged about 100 times a day. Please quote 15 × 5PX1500RTNG2 (with network card)
+> We plan 15 UPSs, each carrying a laboratory tray for 6-10 s during transfers in a vertical lift module, recharged an assumed 100 times a day. Please quote 15 × 5PX1500RTNG2 (with network card)
 > and the lithium-ion options (9PX Lithium-ion, 5PX G2 lithium), with battery chemistry, rated cycles, side mounting, temperature limit and a relay for "on battery". Please include the PM
 > schedule, battery replacement interval and price, and a service contract. [name, email **[to confirm]**]
 
@@ -617,3 +617,301 @@ Gases and purity; usage per month **[to confirm]**; delivery address and dock; c
 
 ---
 
+
+## 12. Labconco Protector XStream, 4 ft ducted hood
+
+### 1. What we'd buy
+**Labconco Protector XStream laboratory hood, 4 ft (1219 mm)**, on a base cabinet (1219 × 958 × 2581 mm, about 260 kg, on the floor), 18 in (457 mm) sash stop, ducted to the building exhaust (`notes/instruments_r7.md`).
+Role: wet work (etching without HF, solvents, the sieve's IPA bath). Round 8 removed HF: Keller's reagent goes to the BYU facility, not this hood (`notes/lab_r8.md`).
+
+### 2. Specs
+Labconco's page (`labconco.com/p/protector-xstream-laboratory-hoods`); the spec PDF was blocked. Ducted: airflow per the sash stop and face velocity (typically 100 fpm); **a blower and duct routing are separate**
+(Labconco sells blowers and the Protector hood's Optional Basecabinet). Electrical 115 V, **[to confirm]**.
+
+### 3. Contact
+- **Labconco:** sales **(816) 333-8811**, toll-free **(800) 821-5525**, fax (816) 363-0130, 8811 Prospect Ave, Kansas City, MO 64132-2696; form <https://www.labconco.com/contact> ("Request a Quote").
+- **Utah representative:** **Jackson Corning**, Sales Representative (Northern California, Nevada, Utah), <https://www.labconco.com/sales/us-and-canada-sales/jackson-corning>; no email or direct phone listed (use the main line). Distributors: <https://www.labconco.com/distributors>.
+- **Academic:** state contract / GSA pricing via distributors **[to confirm]**.
+
+### 4. Open questions
+Exact **exhaust CFM** and static pressure for a 4 ft with the 18 in sash stop; a **VAV controller** and its BMS (BACnet) interface for a hood that a robot may feed; **can a robot reach through the sash** (a motorised sash?);
+service after install: certification (ASHRAE 110 test) and PM; consumables (filters not used), spares, service price.
+
+### 5. Intake
+Hood use: acids, solvents, IPA; **no HF**, no perchloric; ducted exhaust **[to confirm routing and capacity]**; floor load; ceiling height 2581 mm hood fits; compliance with ANSI/AIHA Z9.5 **[to confirm]**.
+
+### 6. Draft email
+> **To:** Jackson Corning, Labconco (via 800-821-5525 or the contact form), and the Utah distributor
+> **Subject:** Budgetary quote: Protector XStream 4 ft with base cabinet and blower, BYU Provo
+>
+> Please quote a 4 ft Protector XStream with the 18 in sash stop, a base cabinet (acid or flammable), a sash-position sensor and a motorised sash if available, and a blower. Please give the exhaust flow and static pressure,
+> the BMS interface, and the ASHRAE 110 certification, PM schedule, spares and a service contract in Utah. [name, email **[to confirm]**]
+
+### 7. Sources
+[Labconco contact page](https://www.labconco.com/contact) and [US & Canada sales](https://www.labconco.com/sales/us-and-canada-sales) (runner, 2026-11-07); [product page](https://www.labconco.com/p/protector-xstream-laboratory-hoods) as cited in `notes/instruments_r7.md`.
+
+---
+
+## 13. Sentry Air Systems ductless hood, 24 in (on a tray)
+
+### 1. What we'd buy
+**Sentry Air 24 in ductless hood** with its blower, 1030 × 610 × 715 mm, about 41 kg, on a VLM tray (`notes/instruments_r7.md`): the only ductless hood found under 856.5 mm (Air Science's Purair Basic is 889 mm tall; Erlab's Captair is taller).
+Candidate catalogue numbers seen: SAS-224-DCH (24 in, 80 cfm, acrylic), SAS-324-HEMS. **[to confirm the model]** with Sentry.
+
+### 2. Specs
+24 D × 26 W × 25 H in outside (610 × 660 × 635 mm); carbon filters (solvent vapours, **not HF**); the air returns to the room, i.e. into the VLM. Mains 115 V.
+
+### 3. Contact
+**sales@sentryair.com**, **1.800.799.4609**, Sentry Air Systems, 21221 FM 529 Rd, Cypress, TX 77433 (product-sheet footer; sentryair.com/contact.htm returned 404). Dealers: Cal-Pac Lab (calpaclab.com), SPER Direct.
+
+### 4. Open questions
+Filter **life and the vapour list** (IPA, ethanol, etchants); **air return into the VLM** (is it acceptable, and the flow); a **robot-actuated sash** or access door; blower noise and heat; **PM** (filter swap hours, price), spares, service.
+
+### 5. Intake
+Chemicals and volumes (IPA, ethanol; no HF); duty cycle; on a tray with 15 mm clearance from instruments; location in the VLM enclosure; 115 V.
+
+### 6. Draft email
+> **To:** `sales@sentryair.com`
+> **Subject:** Quote: 24 in ductless hood (low profile) for a laboratory tray, BYU
+>
+> We want a 24 in ductless hood that fits under 856 mm total height (your standard is 635 mm outside). Please quote it with the blower and carbon filter set, state the filter life for IPA and ethanol, whether a motorised sash is possible,
+> the PM schedule, filter and spare prices and a service contract. [name, email **[to confirm]**]
+
+### 7. Sources
+[Sentry Air page](https://www.sentryair.com/dfhapp.htm) as cited in `notes/instruments_r7.md`; contact details from a [Cal-Pac listing](https://calpaclab.com/24-ductless-fume-hood-acrylic-80-cfm/sas-224-dch) and a search snippet quoting the product sheet (2026-11-07).
+
+---
+
+## 14. Tray glovebox: Vigor and others
+
+### 1. What we'd buy
+A **custom N2 glovebox, purge-only, with a mini antechamber at the front**, 1390 × 830 × 810 mm, about 140 kg (estimate), on a VLM tray (`notes/instruments_r7.md`); for Mg, Li master alloys and fines under about 63 µm (`notes/lab_r8.md`).
+Vigor's standard box is 1200 × 750 × 900 mm, **too tall** for a tray at 856.5 mm: we need a **custom height** (810 mm).
+
+### 2. Specs (Vigor)
+Lengths 1200, 1500, 1800, 2400 mm; width 750; height 900. Antechambers: large (370 mm ID × 600 mm) and **small (150 mm ID × 300 mm, manual only)**; 220 mm aluminium glove ports; "each glovebox is custom made". N2 purge is not mentioned, so ask.
+
+### 3. Contact
+- **Vigor Tech USA:** 5718 Westheimer Rd, Suite 1000, Houston, TX 77057; **no email or phone published**, product enquiry form on <https://www.pharmaceutical-tech.com/products/vigor-tech-usa/standard-gloveboxes> (the distributor's page).
+- **Others to ask (custom, low-profile):** MBraun, Inert Technology (PureLab), Plas-Labs, Terra Universal. Contacts **[to confirm]**; none were fetched.
+
+### 4. Open questions
+**Custom height of 810 mm** and the 1390 mm length; **robot loading** through an antechamber door or a glove-free port; **O2/H2O sensor** (purge-only: target ppm); N2 consumption (L/min) against the 1.1 L/min generator; **door actuators**
+for the antechamber; a **catalyst/regeneration** option; PM, spares, a leak-test schedule, service.
+
+### 5. Intake
+Application: handling Mg, Li master alloys and fines in sealed cans; atmosphere N2 with O2 under **[to confirm]** ppm; interior size; weight limit on a tray (about 140 kg); glove ports; robot access; gas supply (the N2 coupling); power 120 V.
+
+### 6. Draft email
+> **To:** Vigor Tech USA (website form), MBraun and Plas-Labs
+> **Subject:** Custom purge-only glovebox, 810 mm tall, for a laboratory tray: budgetary quote
+>
+> We need a glovebox no taller than 810 mm, 1390 mm long, 830 mm deep, with a mini antechamber at the front that a robot (not a person) loads, and N2 purge only. Please quote it with an O2 sensor and a door actuator,
+> state the N2 consumption, glove-port options, and the PM and leak-test schedule, spares and service price. [name, email **[to confirm]**]
+
+### 7. Sources
+[Vigor Tech USA standard gloveboxes](https://www.pharmaceutical-tech.com/products/vigor-tech-usa/standard-gloveboxes) (runner, 2026-11-07); `notes/instruments_r7.md`.
+
+---
+
+## 15. Stream cameras: Raspberry Pi 5, HQ Camera, Camera Module 3 Wide
+
+### 1. What we'd buy
+Per tray, 2-3 camera units: **Raspberry Pi 5** (16 GB or 8 GB), **Raspberry Pi HQ Camera** with a **16 mm C-mount lens** (22.2 × 16.8° view) and **Camera Module 3 Wide** (102 × 67°; 120° diagonal), a PoE or USB-C supply, a case and 2020 posts (`notes/services.md`).
+The lab already runs Pi streams (picam-ot2 at 144p; `CLAUDE.md`).
+
+### 2. Specs
+Raspberry Pi's figures (`notes/services.md`). **Price shock:** the 16 GB Pi 5 rose to **$385** on 2 Nov 2026 (reported), from $305; the 8 GB model's price **[to confirm]**. Consider the **8 GB** Pi 5 or a Pi 4 for stream-only duty.
+
+### 3. Contact
+No sales email: buy from **Raspberry Pi Approved Resellers** (<https://www.raspberrypi.com/resellers/>). US: **PiShop.us**, **Adafruit**, **SparkFun**, **CanaKit**, **Digi-Key**. `compliance@raspberrypi.com` is for compliance questions only.
+Education: Raspberry Pi has an education programme; **[to confirm]**.
+
+### 4. Open questions
+Stock and lead time for **30-45 Pis**, the price if bought in bulk (Raspberry Pi's "industrial" sales team for 100+), the **HQ Camera**'s availability, lens options, the **Pi 5's power draw** inside the enclosure's heat (60 W per tray idle), and an industrial Pi (Compute Module 5) alternative.
+
+### 5. Intake
+Quantity: 15 trays × 2-3 units = 30-45 sets, plus spares; use: streaming and QA to YouTube and a scheduler over Ethernet; environment up to 40 °C inside a VLM.
+
+### 6. Draft email
+> **To:** PiShop.us and Adafruit sales (their quote forms)
+> **Subject:** Quote: 40 × Raspberry Pi 5, 20 × HQ Camera with 16 mm lens, 25 × Camera Module 3 Wide, PoE HATs
+>
+> Please quote these with academic pricing and tell us the stock, the lead time and whether a volume discount applies. [name, email **[to confirm]**]
+
+### 7. Sources
+[Raspberry Pi 5 product page](https://www.raspberrypi.com/products/raspberry-pi-5/) (runner), price news [techenclave](https://techenclave.com/news/items/raspberry-pi-raises-the-16gb-pi-5-price-by-80-to-385) (search snippet), 2026-11-07.
+
+---
+
+## 16. PiKVM V4 Mini
+
+### 1. What we'd buy
+**PiKVM V4 Mini** ×1+ (120 × 68 × 24 mm, 0.35 kg; HDMI capture to 1920 × 1200; USB keyboard and mouse emulation; ATX control board in the kit): remote screen and keyboard for the VHX-7000's controller PC (`notes/instruments_r7.md`).
+
+### 2. Specs
+PiKVM V4 Mini datasheet (<https://docs.pikvm.org/v4/v4mini_datasheet.pdf>): no USB-C display input (the **V4 Plus** is the model with KVM switching). Ethernet; power by USB-C or PoE **[to confirm]**.
+
+### 3. Contact
+No support email found. Buy at **Pimoroni (US store)**, **PiShop.us** or **Newegg ($589.88)**; PiKVM's own site is pikvm.org (a support Discord and a sales contact **[to confirm]**).
+
+### 4. Open questions
+Does the VHX-7000's PC accept a USB HID emulation and a capture of its HDMI at its resolution; **Remote Desktop** as an alternative; stock and a 2-3 unit price.
+
+### 5. Intake
+Quantity 1-3; target: Windows PCs of instruments (VHX-7000, EZware PC); network: tray Ethernet.
+
+### 6. Draft email
+> **To:** PiShop.us (quote form)
+> **Subject:** Quote: PiKVM V4 Mini, 3 units, academic
+>
+> Please give the price, stock and lead time, and whether the V4 Mini is supported for Windows 7 and Windows 10 targets over HDMI. [name, email **[to confirm]**]
+
+### 7. Sources
+[Pimoroni](https://shop.pimoroni.com/products/pikvm-v4-mini), [PiShop.us](https://www.pishop.us/product/pikvm-v4-mini/), [Newegg](https://www.newegg.com/p/3D0-0001-000K4) (search results, 2026-11-07, not fetched).
+
+---
+
+## 17. Primera LX500c + AP380 (packaging station)
+
+### 1. What we'd buy
+**Primera LX500c** colour label printer (print width 19-108 mm; 264 × 389 × 180 mm closed, 3.2 kg) **×1** and **AP380** wrap-around label applicator (containers 15-170 mm across; 340 × 508 × 226 mm, 9.07 kg) **×1**, at the packaging station (`notes/instruments_lab.md`).
+Primera sells **no print-and-apply bundle**, and labels die-cut on the LX610 are not compatible (the notes).
+
+### 2. Specs
+Interfaces: USB; the AP380 has a foot pedal or a start signal **[to confirm]**; the LX500c has a Windows driver and a Mac driver (no Linux driver **[to confirm]**). Labels and ribbons are consumables.
+
+### 3. Contact
+**sales@primera.com**, **+1-763-475-6676**, toll-free **800-797-2772**, fax +1-763-475-6677, Primera Technology, Two Carlson Parkway North, Plymouth, MN 55447; live chat (Mon-Fri 7:00-22:00 CDT, Sat 11:00-20:00). No sales form. No Utah distributor found.
+
+### 4. Open questions
+A **robot start signal** (a dry contact) for the AP380; a **Linux or API** way to print from the scheduler (SDK, CUPS); **label stock** for glass jars and the AP380's wrap on 30-500 mL jars; ink cost per label; PM, **printheads and ink as consumables with prices**, service.
+
+### 5. Intake
+Items: jars 30-500 mL (15-170 mm diameter), about 1,000-2,000 a year **[to confirm]**; label size; environment: indoor; workflow: robot places the jar in a nest.
+
+### 6. Draft email
+> **To:** `sales@primera.com`
+> **Subject:** LX500c + AP380 for robot-loaded jar labelling: budgetary quote and integration questions
+>
+> We want one LX500c and one AP380 at a robot cell. Please quote them, and tell us how a controller starts the applicator (a contact closure), whether there is a Linux/API interface for the LX500c, which label stock suits glass jars of 30-500 mL, and the consumable cost per label,
+> the PM schedule and spares. Academic price, please. [name, email **[to confirm]**]
+
+### 7. Sources
+[Primera contact page](https://www.primera.com/contact-us) (runner, 2026-11-07); product sizes from `notes/instruments_lab.md` (primera.com).
+
+---
+
+## 18. Zebra ZD621t
+
+### 1. What we'd buy
+**Zebra ZD621t**, 4 in thermal transfer, 203 dpi (104 mm print width; 202 × 267 × 192 mm, 2.5 kg) ×1, printing the 4 × 6 in label for the lid (`notes/instruments_lab.md`; Uline S-6802 labels).
+
+### 2. Specs
+USB, Ethernet and serial; **ZPL** over TCP 9100 (printable from a Python scheduler); Zebra's own site refused the runner earlier (the notes).
+
+### 3. Contact
+Zebra's own pages (JS-only: the runner and the Pi both returned empty HTML; no contact extracted). Buy from a **Zebra Authorized Partner** (Zebra's partner locator, <https://www.zebra.com/us/en/partners/find-a-partner.html>). Zebra US sales phone **[to confirm]**.
+
+### 4. Open questions
+Ribbon type for glass-jar lids; **auto-peel** and a presenter for robot pick-up; ZPL printing from Python; PM (printhead life), consumable and service prices.
+
+### 5. Intake
+Label 4 × 6 in; volumes **[to confirm]**; ribbon wax/resin; network Ethernet.
+
+### 6. Draft email
+> **To:** a Zebra Authorized Partner (via the locator)
+> **Subject:** Quote: ZD621t with peeler and ribbon, university lab
+>
+> One ZD621t (203 dpi, Ethernet) with a label peeler/presenter, 12 rolls of 4 × 6 in thermal-transfer labels and ribbons, academic price; please give printhead life and the PM schedule and service price. [name, email **[to confirm]**]
+
+### 7. Sources
+Zebra pages attempted via the runner (HTTP 406) and the Pi (no content, 2026-11-07); size and print width from `notes/instruments_lab.md`.
+
+---
+
+## 19. Uline H-190 impulse sealer
+
+### 1. What we'd buy
+**Uline H-190 12 in impulse sealer** ×1 (452 × 84 × 188 mm, 4.2 kg; seals up to 8 mil poly) plus the pick-and-pack foam shipper **S-23611** (324 × 311 × 108 mm), labels **S-6802** (`notes/instruments_lab.md`).
+
+### 2. Specs
+Uline's catalogue; mains 120 V; a foot-pedal or timer; **no robot interface**.
+
+### 3. Contact
+Uline sales **1-800-295-5510**; <https://www.uline.com/>. Uline has a Utah branch **[to confirm]**; Uline ships from Chicago, Dallas, Los Angeles or Salt Lake City, **[to confirm]**.
+
+### 4. Open questions
+Whether the sealer can run from a **relay** (timer) for a robot; sealing thickness; **spares**: replacement heating element and Teflon tape, with prices; warranty.
+
+### 5. Intake
+Bag 8 mil max; volumes **[to confirm]**; BYU purchase account.
+
+### 6. Draft email
+Order through the website or call 1-800-295-5510 with the part numbers above (no quote needed); ask for the element and Teflon-tape spares.
+
+### 7. Sources
+[Uline poly bags page](https://www.uline.com/Cls_01/Impulse-Sealers) (runner, 2026-11-07; only the phone number was usable); sizes from `notes/instruments_lab.md`.
+
+---
+
+## 20. Powder jars, grounded racks, gasketed metal cans
+
+### 1. What we'd buy
+**Clear glass wide-mouth jars with PTFE-lined caps, 30-500 mL, hundreds: 581 in the model** (trays N and O, the sample store on tray J and the packaging station; `notes/lab_r8.md`), in **grounded racks** (conductive, ESD, with a bond wire to the tray)
+and **gasketed metal cans** for fines under about 63 µm, Mg and the Al-Li master alloy (`notes/lab_r8.md`: "sealed gasketed metal cans, or glovebox only").
+The model's jar sizes are "typical wide-mouth straight-sided jars, not a supplier's drawing (estimates)".
+
+### 2. Specs to fix
+Material: borosilicate or soda-lime glass; **PTFE-lined phenolic or PP caps**; mouth 38-70 mm; label 20-60 mm; **cans:** steel or tinplate, **gasket** (silicone or Viton), a **UN-rated** can if shipped; static-dissipative racks (surface resistance 10⁶-10⁹ Ω).
+
+### 3. Contact (candidate suppliers, none fetched)
+- **Uline**, **1-800-295-5510**, glass jars and steel cans (<https://www.uline.com/>).
+- **Qorpak** (clear glass jars with PTFE-lined caps) and **Berlin Packaging**, **Fisher Scientific / VWR**: contacts **[to confirm]**.
+- Racks: a **custom ESD rack** (laser-cut or 3D-printed in conductive material) by us; an ESD supplier **[to confirm]**.
+
+### 4. Open questions
+Lot-controlled **glass with certificates**; cap liners that do not shed PTFE; **jars for ICP** (acid-washed); static buildup in glass versus HDPE (combustible metal dust): **grounding practice for NFPA 484**; can-style gaskets; pricing at 500-1,000 quantity; **breakage** by a robot gripper (use of 85 mm 2F-85 pads).
+
+### 5. Intake
+Quantity: 581 jars at the start, then growth **[to confirm]**; size mix **[to confirm]**; contents: Al, Cu alloys, Mg and Li master alloys; labels by our Primera printer.
+
+### 6. Draft email
+> **To:** Uline (1-800-295-5510) and Qorpak/Berlin Packaging **[to confirm]**
+> **Subject:** Quote: 600 glass jars, PTFE-lined caps (30, 60, 125, 250, 500 mL), 100 steel gasketed cans
+>
+> We store metal powders in sealed glass jars (clear, wide-mouth, PTFE-lined caps) and in gasketed metal cans for fines. Please quote 600 jars in these sizes and 100 cans with silicone or Viton gaskets, and tell us whether you have static-dissipative options, lot certificates and the lead time. [name, email **[to confirm]**]
+
+### 7. Sources
+`notes/lab_r8.md` (jars, 2026-11-05 and 2026-11-07); Uline phone number from the runner fetch, 2026-11-07.
+
+---
+
+## 21. BYU Spectroscopic Facility: Agilent 8900 ICP-MS/MS (a service, not a purchase)
+
+### 1. What we'd use
+The **Agilent 8900 ICP-MS Triple Quadrupole** at the BYU Spectroscopic Facility, as an **internal service** (the facility does its own sample digestion, so nothing in the lab uses HF; `notes/lab_r8.md`).
+About 112 15 mL ICP-MS tubes in the model, plus the CubXL's 0.5 mL tubes (`notes/instruments_r7.md`).
+
+### 2. Published
+**$35/hour for internal BYU users and $70/hour for external users** (the facility's atomic-analysis page, 2026-11-07).
+
+### 3. Contact
+**Faculty advisor: Jason J. Sorensen**, `jason.sorensen@byu.edu`, C203 BNSN, **(801) 422-7083** (the facility's own contact page). Facility page: <https://labs.chem.byu.edu/byu-spectroscopic-facility/atomic-analysis>.
+
+### 4. Open questions
+Sample **turnaround**; **acceptable matrices** and digestion for Al, Cu, Ni alloys (no HF: Si, Al-Li master alloy, Ti?); **batch size** (hundreds of tubes), **the hourly rate per sample**; whether the facility can **accept robot-delivered racks** or needs people; data format and an
+**API/LIMS**; the **Training** pathway; the publication policy.
+
+### 5. Intake
+Elements and ranges (Al, Si, Cu, Ni, Fe, Mg, Li, Ce) **[to confirm]**; volume (hundreds a year); digest method; the lab's own sample prep (1.5 in mounts to a rinse; 150 µL rinses).
+
+### 6. Draft email
+> **To:** `jason.sorensen@byu.edu`
+> **Subject:** ICP-MS service for the BYU Vertical Cloud Lab: sample preparation, turnaround and batch rates
+>
+> Hello Dr. Sorensen, the Vertical Cloud Lab (Mechanical Engineering) would like to send alloy digests (Al, Cu, Ni, Mg, Li) to the Agilent 8900 as an internal user ($35/h). Could you tell us which digestion you run (we avoid HF), the number of samples per hour,
+> the turnaround, the minimum batch, the data format and who loads samples? [name, email **[to confirm]**]
+
+### 7. Sources
+[Atomic analysis page](https://labs.chem.byu.edu/byu-spectroscopic-facility/atomic-analysis) and [contact page](https://labs.chem.byu.edu/byu-spectroscopic-facility/contact), both via Pi (the runner got 403), 2026-11-07.
