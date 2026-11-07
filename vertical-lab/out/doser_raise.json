@@ -1,0 +1,182 @@
+{
+ "source": "powder-doser chain-carousel-v5 at 353dae7 (PR #185 head on 2026-11-07), copied in multidoser/; our pedestal, shuttle and funnel option in carousel.py",
+ "exit_z": 435.9,
+ "exit_xy": [
+  33.3,
+  4.8
+ ],
+ "pan_xy": [
+  33.4,
+  4.8
+ ],
+ "pan_top_z": 50.0,
+ "balance": {
+  "model": "A&D HR-202i (220 g x 0.1 mg)",
+  "body_h": 310.0,
+  "overall_h": 316.0,
+  "top_door_grip_z": 312.0,
+  "chamber_inside_wdh": [
+   183.0,
+   164.5,
+   250.0
+  ],
+  "chamber_ceiling_z": 300.0,
+  "side_door_opening_z": [
+   40.0,
+   291.0
+  ],
+  "side_door_opening_x": [
+   -53.1,
+   95.4
+  ],
+  "top_door_opening_xy": [
+   164.0,
+   148.5
+  ],
+  "capacity_g": 220.0
+ },
+ "over_the_balance": {
+  "parked": {
+   "z": 324.6,
+   "part": "sam_electronics_carriage"
+  },
+  "dose_30deg": {
+   "z": 332.5,
+   "part": "nema34"
+  },
+  "column_over_pan": {
+   "parked_r14": {
+    "z": 347.8,
+    "part": "sam_electronics_carriage"
+   },
+   "parked_r20": {
+    "z": 344.8,
+    "part": "sam_electronics_carriage"
+   },
+   "dose_r14": {
+    "z": 412.1,
+    "part": "sam_electronics_carriage"
+   },
+   "dose_r20": {
+    "z": 409.1,
+    "part": "sam_electronics_carriage"
+   }
+  }
+ },
+ "block": {
+  "room_under_parked_ec_mm": 12.6,
+  "v5_keeps_mm": 10.0,
+  "max_block_mm": 2.6,
+  "cup_needs_mm": 148.4,
+  "balance_top_then_z": 460.4,
+  "parts_in_the_way_at_the_dose": [
+   "auger",
+   "auger_cap",
+   "carriage",
+   "chain_a1",
+   "clevis_pin",
+   "door_housing",
+   "door_shutter",
+   "door_spring",
+   "door_spring_open",
+   "eclip",
+   "ext_latch_beam",
+   "flat_pad_v4",
+   "hold_down",
+   "insert_m5",
+   "kc_ball",
+   "kc_magnet",
+   "latch_bolt",
+   "latch_follower",
+   "latch_rail",
+   "latch_spring",
+   "m2x8_shcs",
+   "m3x12_bhcs",
+   "m5x16_shcs",
+   "magnet",
+   "nema11",
+   "nema34",
+   "nut_m3",
+   "pinion",
+   "sam_electronics_carriage",
+   "sam_mounting_plate",
+   "side_plate_front",
+   "solenoid"
+  ],
+  "tray_b": {
+   "rig_h": 854.0,
+   "shuttle_goods_h": 856.5,
+   "room_to_raise_rig_mm": 2.5
+  }
+ },
+ "as_built": {
+  "vial": {
+   "rim_z": 280.0,
+   "fall_mm": 155.9,
+   "carried_rim_z": 286.0,
+   "under_door_top_mm": 5.0,
+   "stream_margin_each_side_mm": 8.8,
+   "block_for_rim_within_5mm": 150.9
+  },
+  "cup": {
+   "rim_z": 282.5,
+   "fall_mm": 153.4,
+   "carried_rim_z": 288.5,
+   "under_door_top_mm": 2.5,
+   "stream_margin_each_side_mm": 2.35,
+   "block_for_rim_within_5mm": 148.4
+  }
+ },
+ "funnel_option": {
+  "vial": {
+   "seat_z": 174.5,
+   "rim_z": 235.5,
+   "funnel_tip_over_rim_mm": 6.5,
+   "funnel_rim_z": 278.0,
+   "fall_onto_cone_mm": 157.9,
+   "carried_funnel_rim_z": 288.0,
+   "cone_margin_each_side_mm": 16.0
+  },
+  "cup": {
+   "seat_z": 174.5,
+   "rim_z": 238.0,
+   "funnel_tip_over_rim_mm": 4.0,
+   "funnel_rim_z": 278.0,
+   "fall_onto_cone_mm": 157.9,
+   "carried_funnel_rim_z": 288.0,
+   "cone_margin_each_side_mm": 16.0
+  }
+ },
+ "pan_load_g": {
+  "cu_cup_topped_up": 135.7,
+  "al_cup_topped_up": 39.91,
+  "pedestal_as_built_est": 27.0,
+  "pedestal_funnel_option_est": 20.0,
+  "note": "cups: out/alloy_recipe.json and alloy_recipe_pressed.json (cup + both layers, no plug); pedestals estimated from v5's riser (about 30 g at 194 mm, parts5.beaker_riser) by height"
+ },
+ "stream": {
+  "column_d": 8.0,
+  "exit_to_pan_axis_mm": 0.05,
+  "note": "v5's check_stream: an 8 mm column from the exit to the rim is clear at 45 deg, a 0.4 mm3 graze of the module's own outlet face at 30 deg; strays over a ~150 mm fall are powder-doser's T8b"
+ },
+ "sweep": {
+  "travel_cup": [
+   "fork:shuttle_rail"
+  ],
+  "travel_vial": [
+   "fork:shuttle_rail"
+  ],
+  "dose_cup_fork_to_vessel_mm": 4.0,
+  "dose_cup_tine_to_vessel_mm": 12.0,
+  "dose_cup_funnel_to_vessel_mm": 4.58,
+  "dose_cup": [
+   "fork:shuttle_rail"
+  ],
+  "dose_vial_fork_to_vessel_mm": 4.0,
+  "dose_vial_tine_to_vessel_mm": 14.5,
+  "dose_vial_funnel_to_vessel_mm": 6.5,
+  "dose_vial": [
+   "fork:shuttle_rail"
+  ]
+ }
+}

@@ -156,25 +156,51 @@ RAIL_Z = (110.0, 130.0)
 CARR_Z = (130.0, 150.0)
 PORT = (0.0, 67.0, 100.0, 300.0)                   # the port cut in the -y acrylic panel (x0, x1, z0, z1)
 
+# ------------------------------------------------------------------- round 10: the raise, measured, and the funnel option
+# Sterling (PR #318, 2026-11-07): "raising the cup on a platform of sorts so that the nozzle is closer, but we might end
+# up needing to use a funnel anyway"; on powder-doser #185 (2026-11-05): "raise the scale up on some kind of block (e.g.,
+# granite block)". Measured on v5's own meshes (r10_doser_raise.py, out/doser_raise.json): the parked EC's underside is
+# 12.6 mm over the HR-202i's top-door grip, so no block fits under the balance (v5 keeps 10 mm there), and on tray B the
+# rig can't rise to make room (854 mm of the Shuttle's 856.5); the vessel's rim is already 8.5-11 mm under the side
+# door's opening, the highest it can be and still pass. So in v5 the free fall stays about 150 mm whatever stands under
+# the vessel. The option drawn here (``Carousel(funnel=...)``, off by default): each powder's own funnel (round 8's,
+# charge.FUNNEL: a 40 mm cone, 9 mm stem) rides on an upper tine of our shuttle, its stem FUNNEL_GAP over the vessel's
+# mouth; the vessel stands lower, on a shorter pedestal (SEAT_Z_FUNNEL), so vessel and funnel pass the door together.
+# The stream then falls about 158 mm onto the cone instead of 153 mm into the 12.7 mm bore. Ours, not powder-doser's.
+FUNNEL_H, FUNNEL_FLANGE_Z, FUNNEL_BAND_D = 36.0, 12.0, 42.0   # charge.FUNNEL: stem tip to rim; flange's underside over the tip
+FUNNEL_GAP = 4.0             # the funnel's stem tip over the cup's rim while it doses (the vial's: 6.5, it is 2.5 mm shorter)
+FUNNEL_CARRY_GAP = FUNNEL_GAP + FORK_DROP - SEAT_LIFT   # 8: carrying, the vessel rides 6 mm up and the tine 10
+DOOR_MARGIN = 3.0            # the funnel's rim under the side door opening's top, carried
+SEAT_Z_FUNNEL = DOOR_TOP_Z - DOOR_MARGIN - FUNNEL_H - FUNNEL_CARRY_GAP - CUP_L - SEAT_LIFT   # 174.5
+TINE_SLOT_W = 11.0           # the upper tine's slot round the funnel's 9 mm stem (its 28 mm flange rests on the tine)
+
 
 def seat_base_z(kind: str = "vial") -> float:
     """The vessel's foot on our pedestal, rig frame (one pedestal height for the vial and the cups)."""
     return SEAT_Z
 
 
-def vessel_at(kind: str = "vial", shuttle: float = 0.0, fork: float = 0.0) -> np.ndarray:
+def vessel_at(kind: str = "vial", shuttle: float = 0.0, fork: float = 0.0, seat_z: float | None = None) -> np.ndarray:
     """Base centre of a vessel riding the fork, rig frame: shuttle 0 over the pan, 1 at the hand-over outside the -y
-    panel; fork 0 carrying (SEAT_LIFT over the pedestal), 1 dropped (the vessel on the pedestal, if over the pan)."""
-    z = SEAT_Z + SEAT_LIFT - FORK_DROP * fork
+    panel; fork 0 carrying (SEAT_LIFT over the pedestal), 1 dropped (the vessel on the pedestal, if over the pan).
+    `seat_z`: the pedestal's top (SEAT_Z; SEAT_Z_FUNNEL with the funnel option)."""
+    sz = SEAT_Z if seat_z is None else seat_z
+    z = sz + SEAT_LIFT - FORK_DROP * fork
     if shuttle < 1e-6:
-        z = max(z, SEAT_Z)
+        z = max(z, sz)
     return np.array([PAN_XY[0], PAN_XY[1] - TRAVEL * shuttle, z])
 
 
-def seat_mesh(kind: str = "vial") -> pv.PolyData:
+def funnel_tip_at(shuttle: float = 0.0, fork: float = 0.0) -> np.ndarray:
+    """The funnel's stem tip on the shuttle's upper tine (the funnel option), rig frame."""
+    return vessel_at("cup", shuttle, 0.0, SEAT_Z_FUNNEL) + (0.0, 0.0, CUP_L + FUNNEL_CARRY_GAP - FORK_DROP * fork)
+
+
+def seat_mesh(kind: str = "vial", seat_z: float | None = None) -> pv.PolyData:
     """Ours: the pedestal riser on the pan, v5's riser (80 mm foot, 44 mm tube) with an 11 mm neck PED_H tall on top,
-    chamfered, that the vessel stands on and the fork's 13 mm slot passes round. Rig frame."""
-    z1 = SEAT_Z
+    chamfered, that the vessel stands on and the fork's 13 mm slot passes round. Rig frame. `seat_z`: its top
+    (SEAT_Z; the funnel option's is SEAT_Z_FUNNEL, 44.5 mm shorter)."""
+    z1 = SEAT_Z if seat_z is None else seat_z
     z0 = z1 - PED_H
     prof = np.array([[0.0, PAN_TOP], [SEAT_FOOT_D / 2, PAN_TOP], [SEAT_FOOT_D / 2, PAN_TOP + 3.0],
                      [SEAT_TUBE_D / 2, PAN_TOP + 3.0], [SEAT_TUBE_D / 2, z0 - 3.0], [SEAT_TUBE_D / 2 - 3.0, z0],
@@ -185,12 +211,13 @@ def seat_mesh(kind: str = "vial") -> pv.PolyData:
     return m.translate((*PAN_XY, 0.0), inplace=False)
 
 
-def shuttle_meshes() -> dict[str, pv.PolyData]:
+def shuttle_meshes(seat_z: float | None = None, tine: bool = False) -> dict[str, pv.PolyData]:
     """Ours: the shuttle's fixed parts (its rail, a bracket on the -y base rail, a leg outside the frame) and its
-    moving parts (carriage, column and fork) drawn with the shuttle in (over the pan) and the fork carrying."""
+    moving parts (carriage, column and fork) drawn with the shuttle in (over the pan) and the fork carrying. `tine`:
+    the funnel option's upper tine on the same column, the funnel's flange resting on it ("tine")."""
     x = float(PAN_XY[0])
     yc = float(PAN_XY[1]) + SLOT_L / 2 - FORK_L           # the carriage's centre with the slot over the pan
-    zf = SEAT_Z + SEAT_LIFT                                # the fork's top, carrying
+    zf = (SEAT_Z if seat_z is None else seat_z) + SEAT_LIFT   # the fork's top, carrying
     box = lambda *b: pv.Box(bounds=b).triangulate()       # noqa: E731
     rail = box(x - 10, x + 10, RAIL_Y[1], RAIL_Y[0], *RAIL_Z)
     bracket = box(x - 10, x + 10, -186.0, -174.0, 35.0, RAIL_Z[0])          # on the -y base rail (z 15-35)
@@ -203,6 +230,14 @@ def shuttle_meshes() -> dict[str, pv.PolyData]:
         a, b = sorted((x + sx * SLOT_W / 2, x + sx * FORK_W / 2))
         fork = fork.merge(box(a, b, y1 - SLOT_L, y1, zf - FORK_T, zf))
     out = {"fixed": rail.merge(bracket).merge(leg), "moving": carriage.merge(column).merge(fork)}
+    if tine:
+        zt = funnel_tip_at()[2] + FUNNEL_FLANGE_Z           # the upper tine's top: the funnel's flange rests on it
+        up = box(x - 5, x + 5, yc - 5, yc + 5, zf, zt - FORK_T)
+        t = box(x - FORK_W / 2, x + FORK_W / 2, y0, y1 - SLOT_L, zt - FORK_T, zt)
+        for sx in (-1, 1):
+            a, b = sorted((x + sx * TINE_SLOT_W / 2, x + sx * FORK_W / 2))
+            t = t.merge(box(a, b, y1 - SLOT_L, y1, zt - FORK_T, zt))
+        out["tine"] = up.merge(t)
     for m in out.values():
         m.clear_data()
     return out
@@ -242,9 +277,15 @@ def pusher_meshes() -> dict[str, pv.PolyData]:
 
 
 def _sources_hash() -> str:
+    """The tessellation cache's key: v5's and the vendor helpers' sources and what in this file shapes the meshes (not
+    the whole file, so the lab's own parts, drawn fresh every run, can change without re-tessellating the rig)."""
+    import inspect
     h = hashlib.sha256()
-    for f in sorted(V5.glob("*.py")) + sorted(VENDOR.glob("*.py")) + [Path(__file__)]:
+    for f in sorted(V5.glob("*.py")) + sorted(VENDOR.glob("*.py")):
         h.update(f.read_bytes())
+    h.update(repr((sorted(SKIP), FINE, COARSE, sorted(BUDGET.items()))).encode())
+    for fn in (_tess, _keys, part_meshes):
+        h.update(inspect.getsource(fn).encode())
     return h.hexdigest()[:12]
 
 
@@ -265,7 +306,9 @@ def part_meshes() -> dict[str, pv.PolyData]:
     """Every unique part, tessellated once in its own frame and cached."""
     cache = HERE / ".cache" / f"carousel5_{_sources_hash()}.pkl"
     if cache.exists():
-        return pickle.loads(cache.read_bytes())
+        out = pickle.loads(cache.read_bytes())
+        out["panel_side"] = _cut_port(out["panel_side"])   # ours: the port, cut fresh (it isn't in the cache's key)
+        return out
     cache.parent.mkdir(exist_ok=True)
     out = {}
     keys = set(_keys(CL.placements(CL.State(ext=0.0)))) | set(_keys(CL.placements(CL.State(tilt=TILT))))
@@ -275,10 +318,9 @@ def part_meshes() -> dict[str, pv.PolyData]:
         n = BUDGET.get(key)
         if n and m.n_cells > n:              # threads and chain links: far more triangles than show at this scale
             m = m.triangulate().decimate_pro(1 - n / m.n_cells, preserve_topology=False).clean()
-        if key == "panel_side":           # ours: the port the arm reaches the -y side door through
-            m = _cut_port(m)
         out[key] = m
     cache.write_bytes(pickle.dumps(out))
+    out["panel_side"] = _cut_port(out["panel_side"])       # ours: the port the shuttle passes the -y panel through
     return out
 
 
@@ -338,9 +380,12 @@ class Carousel:
     shift (links), ext (mm, 0 parked .. DOCK_EXT docked), tilt (deg), spin (rad), tap, magnet_on, top_door and
     side_door (mm slid back), hatch_front / hatch_side (deg)."""
 
-    def __init__(self, sc, group: str, prefix: str = "md", highlight: int | None = None, **state):
-        """`highlight`: a module (0-based) whose plate and cap are drawn green, as powder-doser's own movie marks one."""
+    def __init__(self, sc, group: str, prefix: str = "md", highlight: int | None = None, funnel=None, **state):
+        """`highlight`: a module (0-based) whose plate and cap are drawn green, as powder-doser's own movie marks one.
+        `funnel`: None (as built: no funnel), or the colour of the powder's funnel on the shuttle's upper tine (the
+        funnel option, round 10), which also puts the vessel on the shorter pedestal (SEAT_Z_FUNNEL)."""
         self.sc, self.group = sc, group
+        self.seat_z = SEAT_Z if funnel is None else SEAT_Z_FUNNEL
         self.parts = part_meshes()
         self.state = dict(shift=0.0, ext=0.0, tilt=0.0, spin=0.0, tap=0.0, magnet_on=False, top_door=0.0,
                           side_door=0.0, shuttle=1.0, fork=0.0)
@@ -385,12 +430,21 @@ class Carousel:
             g = f"{group}_{k}finger"
             sc.add(f"{prefix}/ours_{k}_finger", pm[f"{k}_finger"], OURS, g, specular=0.3)
             sc.parent[g] = group
-        sc.add(f"{prefix}/ours_seat", seat_mesh(), OURS, group, specular=0.3)
-        sm = shuttle_meshes()
+        sc.add(f"{prefix}/ours_seat", seat_mesh(seat_z=self.seat_z), OURS, group, specular=0.3)
+        sm = shuttle_meshes(self.seat_z, tine=funnel is not None)
         sc.add(f"{prefix}/ours_shuttle_rail", sm["fixed"], OURS_DARK, group, specular=0.4)
         self.fork_group = f"{group}_fork"
         sc.add(f"{prefix}/ours_shuttle_fork", sm["moving"], OURS, self.fork_group, specular=0.3)
         sc.parent[self.fork_group] = group
+        if funnel is not None:                # the funnel option: the powder's funnel on the upper tine
+            import charge
+            sc.add(f"{prefix}/ours_shuttle_tine", sm["tine"], OURS, self.fork_group, specular=0.3)
+            tip = funnel_tip_at()
+            fm = charge.funnel()
+            sc.add(f"{prefix}/funnel", fm["body"].translate(tip, inplace=False), (0.93, 0.93, 0.91), self.fork_group,
+                   specular=0.3)
+            sc.add(f"{prefix}/funnel_label", fm["label"].translate(tip, inplace=False), tuple(funnel), self.fork_group,
+                   specular=0.2)
         self.prefix = prefix
         self._last: list | None = None
         self.set()
@@ -407,7 +461,7 @@ class Carousel:
         """World position of a vessel's base on the fork (now, or at the given shuttle and fork states)."""
         s = self.state["shuttle"] if shuttle is None else shuttle
         f = self.state["fork"] if fork is None else fork
-        return (self.sc.world(self.group) @ np.r_[vessel_at("vial", s, f), 1.0])[:3]
+        return (self.sc.world(self.group) @ np.r_[vessel_at("vial", s, f, self.seat_z), 1.0])[:3]
 
     def _pl(self):
         s = self.state
