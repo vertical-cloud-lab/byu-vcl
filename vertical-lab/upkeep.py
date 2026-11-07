@@ -597,7 +597,9 @@ class Upkeep:
                                                                    "depowder", "ded", "packaging", "staff", "it",
                                                                    "site"):
             keys.append(asset)
-        if tray and who in ("opening", "extracted"):
+        if tray and who in ("opening", "extracted", "vendor"):
+            # a vendor's visit to a tray's instrument (round 10, continuation) holds the tray at the opening too: the
+            # technician works on it there or with it pulled out, so the Shuttle presents no other tray meanwhile
             keys += [s for s in self.tray_stations(tray) if s not in keys]
             keys.append(f"open{self.shuttle(tray)}")
         if asset == "chiller":
@@ -839,6 +841,7 @@ class Upkeep:
               mttr, kind="repair", source="assumed MTBF and MTTR (upkeep.FAILS)")
         tray, keys = self.where(station, who)
         ready = t_f + wait
+        segs = None
         if who == "vendor":
             s = self.vendor_slot(ready, mttr, [k for k in keys if k != station])
             t0, t1 = s if s else (ready, ready + mttr)
@@ -855,8 +858,11 @@ class Upkeep:
         for k in keys:
             if k != station:
                 fill(self.line(k), t0, t1)
+        extra = dict(t_fail=round(t_f, 3), mode=what)
+        if segs:
+            extra["segments"] = [[round(a, 3), round(b, 3)] for a, b in segs]
         self.record(dict(t, key=f"fail:{station}", asset=station), t0, t1, (t_f, t1), keys, planned=False,
-                    extra=dict(t_fail=round(t_f, 3), mode=what), own=station)
+                    extra=extra, own=station)
         return t1
 
     def _calendar_failures(self, hours):
@@ -886,6 +892,7 @@ class Upkeep:
         tray, keys = self.where(asset, who)
         own = {"vlm1": "open1", "vlm2": "open2"}.get(asset, asset)
         ready = t_f + wait
+        segs = None
         if who == "vendor":
             s = self.vendor_slot(ready, mttr, [k for k in keys if k != own])
             t0, t1 = s if s else (ready, ready + mttr)
@@ -905,8 +912,10 @@ class Upkeep:
         if asset == "chiller":
             for k in CHILLED:
                 fill(self.line(k), t_f, t1)
-        self.record(task, t0, t1, (t_f, t1), keys, planned=False, extra=dict(t_fail=round(t_f, 3), mode=what),
-                    own=own)
+        extra = dict(t_fail=round(t_f, 3), mode=what)
+        if segs:
+            extra["segments"] = [[round(a, 3), round(b, 3)] for a, b in segs]
+        self.record(task, t0, t1, (t_f, t1), keys, planned=False, extra=extra, own=own)
         return t1
 
     def used(self, e):

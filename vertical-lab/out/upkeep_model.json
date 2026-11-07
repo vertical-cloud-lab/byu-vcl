@@ -2457,9 +2457,9 @@
    "printed": 304,
    "tested": 304,
    "promoted": 29,
-   "runs": 659,
-   "powder_kg": 161.9,
-   "data_gb": 1975.1,
+   "runs": 658,
+   "powder_kg": 161.6,
+   "data_gb": 1973.6,
    "video_tb": 125.7,
    "tensile": 1332,
    "sem_images": 6380,
@@ -2472,15 +2472,15 @@
  },
  "availability": {
   "carousel": {
-   "availability": 0.9855,
-   "unplanned_h": 24.5,
+   "availability": 0.9857,
+   "unplanned_h": 23.2,
    "planned_h": 26.5,
    "check_h": 75.2
   },
   "repowder": {
-   "availability": 0.9524,
+   "availability": 0.9522,
    "unplanned_h": 293.9,
-   "planned_h": 121.5,
+   "planned_h": 123.5,
    "check_h": 0.0
   },
   "sieve_cell": {
@@ -2496,9 +2496,9 @@
    "check_h": 15.6
   },
   "xrd": {
-   "availability": 0.9961,
+   "availability": 0.9956,
    "unplanned_h": 4.5,
-   "planned_h": 16.5,
+   "planned_h": 20.5,
    "check_h": 13.0
   },
   "xrf": {
@@ -2508,20 +2508,20 @@
    "check_h": 54.6
   },
   "sem": {
-   "availability": 0.9971,
+   "availability": 0.9964,
    "unplanned_h": 0.5,
-   "planned_h": 11.8,
+   "planned_h": 17.8,
    "check_h": 13.0
   },
   "aconity": {
-   "availability": 0.9754,
-   "unplanned_h": 131.5,
+   "availability": 0.9735,
+   "unplanned_h": 148.0,
    "planned_h": 83.5,
    "check_h": 0.0
   },
   "wire_edm": {
-   "availability": 0.9912,
-   "unplanned_h": 13.3,
+   "availability": 0.9914,
+   "unplanned_h": 11.1,
    "planned_h": 48.0,
    "check_h": 15.6
   },
@@ -2532,9 +2532,9 @@
    "check_h": 0.0
   },
   "tensile_h": {
-   "availability": 0.9971,
+   "availability": 0.9968,
    "unplanned_h": 1.0,
-   "planned_h": 8.8,
+   "planned_h": 11.8,
    "check_h": 15.6
   },
   "instron_floor": {
@@ -2550,15 +2550,15 @@
    "check_h": 0.0
   },
   "mount_press": {
-   "availability": 0.9957,
+   "availability": 0.9948,
    "unplanned_h": 1.5,
-   "planned_h": 35.8,
+   "planned_h": 43.8,
    "check_h": 0.0
   },
   "polisher": {
-   "availability": 0.9872,
-   "unplanned_h": 76.0,
-   "planned_h": 35.8,
+   "availability": 0.9902,
+   "unplanned_h": 42.5,
+   "planned_h": 43.2,
    "check_h": 0.0
   },
   "vhx": {
@@ -2568,10 +2568,10 @@
    "check_h": 2.6
   },
   "hardness": {
-   "availability": 0.9904,
-   "unplanned_h": 1.0,
-   "planned_h": 9.8,
-   "check_h": 72.8
+   "availability": 0.984,
+   "unplanned_h": 53.5,
+   "planned_h": 13.8,
+   "check_h": 72.4
   },
   "nanoindenter": {
    "availability": 0.9826,
@@ -2586,21 +2586,21 @@
    "check_h": 2.5
   },
   "cubxl_corrosion": {
-   "availability": 0.9935,
-   "unplanned_h": 12.3,
+   "availability": 0.9877,
+   "unplanned_h": 62.9,
    "planned_h": 31.5,
    "check_h": 13.0
   },
   "open1": {
-   "availability": 0.9576,
+   "availability": 0.9556,
    "unplanned_h": 196.1,
-   "planned_h": 173.8,
+   "planned_h": 191.8,
    "check_h": 0.0
   },
   "open2": {
-   "availability": 0.9782,
+   "availability": 0.9774,
    "unplanned_h": 69.0,
-   "planned_h": 121.2,
+   "planned_h": 128.2,
    "check_h": 0.0
   },
   "unit0": {
@@ -2618,7 +2618,7 @@
  },
  "people_hours_per_week": {
   "mean_after_ramp": 31.0,
-  "max": 37.4,
+  "max": 36.4,
   "by_kind_mean_after_ramp": {
    "crucible": 13.41,
    "pm": 7.24,
@@ -2657,18 +2657,18 @@
     10.0,
     8.0,
     14.0,
-    14.0,
-    14.0,
-    14.0,
+    13.0,
     14.0,
     14.0,
     14.0,
     14.0,
     13.0,
     14.0,
+    13.0,
     14.0,
     14.0,
-    12.0,
+    14.0,
+    13.0,
     13.0,
     14.0,
     14.0,
@@ -2682,7 +2682,7 @@
     14.0,
     11.0,
     14.0,
-    16.0
+    17.0
    ],
    "pm": [
     4.25,
@@ -2779,8 +2779,8 @@
     5.0,
     3.75,
     4.0,
-    6.75,
-    5.75,
+    6.5,
+    6.0,
     3.0,
     5.0,
     4.5,
@@ -2789,8 +2789,8 @@
     6.0,
     8.0,
     3.25,
-    4.75,
-    6.0
+    4.25,
+    6.5
    ],
    "repair": [
     2.5,
@@ -2826,15 +2826,15 @@
     0.0,
     0.5,
     1.5,
+    1.0,
+    0.5,
     1.5,
-    0.0,
-    2.5,
-    2.5,
+    3.5,
     5.0,
     1.5,
     3.0,
-    4.0,
-    3.5,
+    1.0,
+    6.5,
     2.0,
     0.0,
     1.0,
@@ -2877,8 +2877,8 @@
     0.0,
     0.0,
     0.0,
-    2.0,
-    0.0,
+    1.0,
+    1.0,
     0.0,
     0.0,
     2.0,
@@ -3246,22 +3246,22 @@
   "ups_note": "each transfer is about 6 s on the battery; estimate from a 230 V 5PX 1500's 44 min at 300 W (a retailer's figure, notes/services.md). VRLA is rated 200 cycles at 100 % depth of discharge, 1,200 at 30 % (Yuasa NP12-12): these transfers add only a few equivalent full cycles a year, so float life and heat set the battery's life (3-5 years at 25 \u00b0C, Eaton), not the transfers.",
   "units": {
    "unit0": {
-    "transfers": 7058,
-    "hours_off_charger": 4932,
-    "kwh": 1973,
-    "battery_equiv_cycles": 1209,
+    "transfers": 7050,
+    "hours_off_charger": 4925,
+    "kwh": 1970,
+    "battery_equiv_cycles": 1208,
     "battery_years_to_3000": 2.5,
-    "grips": 28232,
-    "fingertips_years_to_1M": 35.4
+    "grips": 28200,
+    "fingertips_years_to_1M": 35.5
    },
    "unit1": {
-    "transfers": 3000,
-    "hours_off_charger": 2493,
-    "kwh": 997,
-    "battery_equiv_cycles": 611,
+    "transfers": 3008,
+    "hours_off_charger": 2495,
+    "kwh": 998,
+    "battery_equiv_cycles": 612,
     "battery_years_to_3000": 4.9,
-    "grips": 12000,
-    "fingertips_years_to_1M": 83.3
+    "grips": 12032,
+    "fingertips_years_to_1M": 83.1
    }
   },
   "units_note": "assumed: the UR10e's 350 W typical (UR) and the MiR250's drive and computers; MiR250 battery, Li-NMC 47.7 V 34.2 Ah, at least 3,000 cycles (a reseller's spec sheet, robotsoflondon); Robotiq: fingertips at 1 million cycles, overhaul at 2 million (2F-85 manual)",
@@ -3442,7 +3442,7 @@
  "storage": {
   "cameras": 32,
   "video_keep_all_tb": 125.7,
-  "instrument_data_tb": 1.98,
+  "instrument_data_tb": 1.97,
   "retention": {
    "rolling_days": 30,
    "rolling_buffer_tb": 10.4,
@@ -3618,6 +3618,13 @@
      "kind": "process"
     },
     {
+     "t0": 34.25,
+     "t1": 35.25,
+     "what": "charge",
+     "alloy": 232,
+     "kind": "process"
+    },
+    {
      "t0": 47.0,
      "t1": 47.2,
      "what": "HR-202i: check weight weighed 10 times (repeatability), then a calibration test",
@@ -3626,24 +3633,17 @@
      "task": "bal_weights"
     },
     {
-     "t0": 50.0,
-     "t1": 51.0,
+     "t0": 53.25,
+     "t1": 54.25,
+     "what": "charge",
+     "alloy": 232,
+     "kind": "process"
+    },
+    {
+     "t0": 54.25,
+     "t1": 55.25,
      "what": "charge",
      "alloy": 241,
-     "kind": "process"
-    },
-    {
-     "t0": 53.0,
-     "t1": 54.0,
-     "what": "charge",
-     "alloy": 242,
-     "kind": "process"
-    },
-    {
-     "t0": 55.0,
-     "t1": 56.0,
-     "what": "charge",
-     "alloy": 243,
      "kind": "process"
     },
     {
@@ -3655,24 +3655,24 @@
      "task": "bal_weights"
     },
     {
-     "t0": 77.5,
-     "t1": 78.5,
+     "t0": 74.0,
+     "t1": 75.0,
      "what": "charge",
      "alloy": 242,
      "kind": "process"
     },
     {
-     "t0": 79.1,
-     "t1": 80.1,
+     "t0": 77.5,
+     "t1": 78.5,
      "what": "charge",
-     "alloy": 244,
+     "alloy": 243,
      "kind": "process"
     },
     {
-     "t0": 80.1,
-     "t1": 81.1,
+     "t0": 81.5,
+     "t1": 82.5,
      "what": "charge",
-     "alloy": 245,
+     "alloy": 242,
      "kind": "process"
     },
     {
@@ -3684,24 +3684,17 @@
      "task": "bal_weights"
     },
     {
-     "t0": 100.1,
-     "t1": 101.1,
+     "t0": 99.6,
+     "t1": 100.6,
      "what": "charge",
-     "alloy": 246,
+     "alloy": 244,
      "kind": "process"
     },
     {
-     "t0": 101.5,
-     "t1": 102.5,
+     "t0": 100.6,
+     "t1": 101.6,
      "what": "charge",
-     "alloy": 247,
-     "kind": "process"
-    },
-    {
-     "t0": 107.0,
-     "t1": 108.0,
-     "what": "charge",
-     "alloy": 243,
+     "alloy": 245,
      "kind": "process"
     },
     {
@@ -3773,46 +3766,46 @@
      "kind": "process"
     },
     {
-     "t0": 33.5,
-     "t1": 34.0,
-     "what": "new graphite crucible and nozzle holder into the rotation",
-     "kind": "maint",
-     "who": "floor",
-     "task": "rp_crucible_stock"
-    },
-    {
      "t0": 50.0,
      "t1": 52.5,
      "what": "atomize",
-     "alloy": 239,
+     "alloy": 232,
      "kind": "process"
     },
     {
      "t0": 52.5,
      "t1": 55.0,
      "what": "atomize",
-     "alloy": 240,
+     "alloy": 239,
      "kind": "process"
     },
     {
      "t0": 55.0,
      "t1": 57.5,
      "what": "atomize",
-     "alloy": 241,
+     "alloy": 232,
      "kind": "process"
+    },
+    {
+     "t0": 57.5,
+     "t1": 58.0,
+     "what": "new graphite crucible and nozzle holder into the rotation",
+     "kind": "maint",
+     "who": "floor",
+     "task": "rp_crucible_stock"
     },
     {
      "t0": 74.0,
      "t1": 76.5,
      "what": "atomize",
-     "alloy": 242,
+     "alloy": 240,
      "kind": "process"
     },
     {
      "t0": 76.5,
      "t1": 79.0,
      "what": "atomize",
-     "alloy": 243,
+     "alloy": 241,
      "kind": "process"
     },
     {
@@ -3826,14 +3819,14 @@
      "t0": 98.0,
      "t1": 100.5,
      "what": "atomize",
-     "alloy": 244,
+     "alloy": 242,
      "kind": "process"
     },
     {
      "t0": 100.5,
      "t1": 103.0,
      "what": "atomize",
-     "alloy": 245,
+     "alloy": 243,
      "kind": "process"
     },
     {
@@ -3908,57 +3901,57 @@
      "t0": 52.5,
      "t1": 53.25,
      "what": "sieve",
+     "alloy": 232,
+     "kind": "process"
+    },
+    {
+     "t0": 55.0,
+     "t1": 55.75,
+     "what": "sieve",
      "alloy": 239,
      "kind": "process"
     },
     {
-     "t0": 53.25,
-     "t1": 53.5,
+     "t0": 55.75,
+     "t1": 56.0,
      "what": "the arm images each sieve's cloth against a backlight; open area trended",
      "kind": "check",
      "who": "arm",
      "task": "sv_check"
     },
     {
-     "t0": 55.0,
-     "t1": 55.75,
-     "what": "sieve",
-     "alloy": 240,
-     "kind": "process"
-    },
-    {
      "t0": 57.5,
      "t1": 58.25,
      "what": "sieve",
-     "alloy": 241,
+     "alloy": 232,
+     "kind": "process"
+    },
+    {
+     "t0": 76.55,
+     "t1": 77.3,
+     "what": "sieve",
+     "alloy": 240,
      "kind": "process"
     },
     {
      "t0": 79.0,
      "t1": 79.75,
      "what": "sieve",
-     "alloy": 243,
-     "kind": "process"
-    },
-    {
-     "t0": 81.5,
-     "t1": 82.25,
-     "what": "sieve",
-     "alloy": 242,
+     "alloy": 241,
      "kind": "process"
     },
     {
      "t0": 100.5,
      "t1": 101.25,
      "what": "sieve",
-     "alloy": 244,
+     "alloy": 242,
      "kind": "process"
     },
     {
      "t0": 103.0,
      "t1": 103.75,
      "what": "sieve",
-     "alloy": 245,
+     "alloy": 243,
      "kind": "process"
     },
     {
@@ -4001,36 +3994,29 @@
      "task": "ld_clean"
     },
     {
-     "t0": 54.1,
-     "t1": 54.35,
+     "t0": 55.75,
+     "t1": 56.0,
      "what": "ld",
      "alloy": 239,
      "kind": "process"
     },
     {
-     "t0": 55.75,
-     "t1": 56.0,
+     "t0": 78.6,
+     "t1": 78.85,
      "what": "ld",
      "alloy": 240,
-     "kind": "process"
-    },
-    {
-     "t0": 58.25,
-     "t1": 58.5,
-     "what": "ld",
-     "alloy": 241,
      "kind": "process"
     },
     {
      "t0": 79.75,
      "t1": 80.0,
      "what": "ld",
-     "alloy": 243,
+     "alloy": 241,
      "kind": "process"
     },
     {
-     "t0": 82.25,
-     "t1": 82.5,
+     "t0": 101.25,
+     "t1": 101.5,
      "what": "ld",
      "alloy": 242,
      "kind": "process"
@@ -4044,17 +4030,10 @@
      "task": "it_patch_mastersizer"
     },
     {
-     "t0": 102.6,
-     "t1": 102.85,
-     "what": "ld",
-     "alloy": 244,
-     "kind": "process"
-    },
-    {
      "t0": 103.75,
      "t1": 104.0,
      "what": "ld",
-     "alloy": 245,
+     "alloy": 243,
      "kind": "process"
     },
     {
@@ -4105,60 +4084,46 @@
      "task": "xrd_si"
     },
     {
-     "t0": 53.4,
-     "t1": 54.0,
+     "t0": 55.85,
+     "t1": 56.45,
      "what": "xrd",
      "alloy": 239,
      "kind": "process"
     },
     {
-     "t0": 55.75,
-     "t1": 56.35,
+     "t0": 78.6,
+     "t1": 79.2,
      "what": "xrd",
      "alloy": 240,
-     "kind": "process"
-    },
-    {
-     "t0": 58.25,
-     "t1": 58.85,
-     "what": "xrd",
-     "alloy": 241,
      "kind": "process"
     },
     {
      "t0": 79.75,
      "t1": 80.35,
      "what": "xrd",
-     "alloy": 243,
+     "alloy": 241,
      "kind": "process"
     },
     {
-     "t0": 82.25,
-     "t1": 82.85,
-     "what": "xrd",
-     "alloy": 242,
-     "kind": "process"
-    },
-    {
-     "t0": 99.5,
-     "t1": 100.5,
+     "t0": 99.0,
+     "t1": 100.0,
      "what": "chiller: fluid changed (the XRD's tube stops)",
      "kind": "maint",
      "who": "floor",
      "task": "chiller_fluid"
     },
     {
-     "t0": 102.7,
-     "t1": 103.3,
+     "t0": 101.25,
+     "t1": 101.85,
      "what": "xrd",
-     "alloy": 244,
+     "alloy": 242,
      "kind": "process"
     },
     {
      "t0": 103.75,
      "t1": 104.35,
      "what": "xrd",
-     "alloy": 245,
+     "alloy": 243,
      "kind": "process"
     }
    ],
@@ -4201,24 +4166,10 @@
      "task": "xrf_drift"
     },
     {
-     "t0": 53.25,
-     "t1": 53.6,
-     "what": "xrf",
-     "alloy": 239,
-     "kind": "process"
-    },
-    {
      "t0": 55.85,
      "t1": 56.2,
      "what": "xrf",
-     "alloy": 240,
-     "kind": "process"
-    },
-    {
-     "t0": 58.35,
-     "t1": 58.7,
-     "what": "xrf",
-     "alloy": 241,
+     "alloy": 239,
      "kind": "process"
     },
     {
@@ -4230,17 +4181,17 @@
      "task": "xrf_drift"
     },
     {
-     "t0": 79.85,
-     "t1": 80.2,
+     "t0": 77.3,
+     "t1": 77.65,
      "what": "xrf",
-     "alloy": 243,
+     "alloy": 240,
      "kind": "process"
     },
     {
-     "t0": 82.35,
-     "t1": 82.7,
+     "t0": 79.85,
+     "t1": 80.2,
      "what": "xrf",
-     "alloy": 242,
+     "alloy": 241,
      "kind": "process"
     },
     {
@@ -4252,17 +4203,17 @@
      "task": "xrf_drift"
     },
     {
-     "t0": 101.25,
-     "t1": 101.6,
+     "t0": 102.85,
+     "t1": 103.2,
      "what": "xrf",
-     "alloy": 244,
+     "alloy": 242,
      "kind": "process"
     },
     {
      "t0": 103.85,
      "t1": 104.2,
      "what": "xrf",
-     "alloy": 245,
+     "alloy": 243,
      "kind": "process"
     },
     {
@@ -4328,6 +4279,13 @@
      "kind": "process"
     },
     {
+     "t0": 40.3,
+     "t1": 40.8,
+     "what": "sem",
+     "alloy": 238,
+     "kind": "process"
+    },
+    {
      "t0": 45.0,
      "t1": 45.25,
      "what": "SEM: magnification standard and EDS energy check (Cu)",
@@ -4336,101 +4294,73 @@
      "task": "sem_eds"
     },
     {
-     "t0": 51.35,
-     "t1": 51.85,
-     "what": "sem",
-     "alloy": 238,
-     "kind": "process"
-    },
-    {
-     "t0": 54.1,
-     "t1": 54.45,
+     "t0": 55.95,
+     "t1": 56.3,
      "what": "psem",
      "alloy": 239,
      "kind": "process"
     },
     {
-     "t0": 55.85,
-     "t1": 56.2,
-     "what": "psem",
-     "alloy": 240,
-     "kind": "process"
-    },
-    {
-     "t0": 58.45,
-     "t1": 58.8,
-     "what": "psem",
-     "alloy": 241,
-     "kind": "process"
-    },
-    {
-     "t0": 61.7,
-     "t1": 62.2,
+     "t0": 75.35,
+     "t1": 75.85,
      "what": "sem",
      "alloy": 239,
      "kind": "process"
     },
     {
-     "t0": 67.2,
-     "t1": 67.7,
-     "what": "sem",
+     "t0": 78.7,
+     "t1": 79.05,
+     "what": "psem",
      "alloy": 240,
-     "kind": "process"
-    },
-    {
-     "t0": 72.7,
-     "t1": 73.2,
-     "what": "sem",
-     "alloy": 241,
      "kind": "process"
     },
     {
      "t0": 79.85,
      "t1": 80.2,
      "what": "psem",
-     "alloy": 243,
+     "alloy": 241,
      "kind": "process"
     },
     {
-     "t0": 82.35,
-     "t1": 82.7,
+     "t0": 87.35,
+     "t1": 87.85,
+     "what": "sem",
+     "alloy": 240,
+     "kind": "process"
+    },
+    {
+     "t0": 92.85,
+     "t1": 93.35,
+     "what": "sem",
+     "alloy": 241,
+     "kind": "process"
+    },
+    {
+     "t0": 101.35,
+     "t1": 101.7,
      "what": "psem",
      "alloy": 242,
-     "kind": "process"
-    },
-    {
-     "t0": 90.8,
-     "t1": 91.3,
-     "what": "sem",
-     "alloy": 242,
-     "kind": "process"
-    },
-    {
-     "t0": 97.3,
-     "t1": 97.8,
-     "what": "sem",
-     "alloy": 243,
-     "kind": "process"
-    },
-    {
-     "t0": 102.7,
-     "t1": 103.05,
-     "what": "psem",
-     "alloy": 244,
      "kind": "process"
     },
     {
      "t0": 103.85,
      "t1": 104.2,
      "what": "psem",
-     "alloy": 245,
+     "alloy": 243,
      "kind": "process"
     },
     {
-     "t0": 114.6,
-     "t1": 115.1,
+     "t0": 109.7,
+     "t1": 110.2,
      "what": "sem",
-     "alloy": 245,
+     "alloy": 242,
+     "kind": "process"
+    },
+    {
+     "t0": 115.2,
+     "t1": 115.7,
+     "what": "sem",
+     "alloy": 243,
      "kind": "process"
     }
    ],
@@ -4465,73 +4395,45 @@
      "kind": "process"
     },
     {
-     "t0": 34.25,
-     "t1": 42.25,
+     "t0": 31.95,
+     "t1": 36.95,
+     "what": "print",
+     "alloy": 238,
+     "kind": "process"
+    },
+    {
+     "t0": 36.95,
+     "t1": 37.45,
+     "what": "depowder",
+     "alloy": 238,
+     "kind": "process"
+    },
+    {
+     "t0": 58.25,
+     "t1": 66.25,
      "what": "print_full",
      "alloy": 232,
      "kind": "process"
     },
     {
-     "t0": 42.25,
-     "t1": 43.0,
+     "t0": 66.25,
+     "t1": 67.0,
      "what": "depowder_full",
      "alloy": 232,
      "kind": "process"
     },
     {
-     "t0": 43.0,
-     "t1": 48.0,
-     "what": "print",
-     "alloy": 238,
-     "kind": "process"
-    },
-    {
-     "t0": 48.0,
-     "t1": 48.5,
-     "what": "depowder",
-     "alloy": 238,
-     "kind": "process"
-    },
-    {
-     "t0": 53.35,
-     "t1": 58.35,
+     "t0": 67.0,
+     "t1": 72.0,
      "what": "print",
      "alloy": 239,
      "kind": "process"
     },
     {
-     "t0": 58.35,
-     "t1": 58.85,
+     "t0": 72.0,
+     "t1": 72.5,
      "what": "depowder",
      "alloy": 239,
-     "kind": "process"
-    },
-    {
-     "t0": 58.85,
-     "t1": 63.85,
-     "what": "print",
-     "alloy": 240,
-     "kind": "process"
-    },
-    {
-     "t0": 63.85,
-     "t1": 64.35,
-     "what": "depowder",
-     "alloy": 240,
-     "kind": "process"
-    },
-    {
-     "t0": 64.35,
-     "t1": 69.35,
-     "what": "print",
-     "alloy": 241,
-     "kind": "process"
-    },
-    {
-     "t0": 69.35,
-     "t1": 69.85,
-     "what": "depowder",
-     "alloy": 241,
      "kind": "process"
     },
     {
@@ -4543,52 +4445,59 @@
      "task": "ac_blade"
     },
     {
-     "t0": 82.45,
-     "t1": 87.45,
+     "t0": 79.0,
+     "t1": 84.0,
+     "what": "print",
+     "alloy": 240,
+     "kind": "process"
+    },
+    {
+     "t0": 84.0,
+     "t1": 84.5,
+     "what": "depowder",
+     "alloy": 240,
+     "kind": "process"
+    },
+    {
+     "t0": 84.5,
+     "t1": 89.5,
+     "what": "print",
+     "alloy": 241,
+     "kind": "process"
+    },
+    {
+     "t0": 89.5,
+     "t1": 90.0,
+     "what": "depowder",
+     "alloy": 241,
+     "kind": "process"
+    },
+    {
+     "t0": 101.35,
+     "t1": 106.35,
      "what": "print",
      "alloy": 242,
      "kind": "process"
     },
     {
-     "t0": 87.45,
-     "t1": 87.95,
+     "t0": 106.35,
+     "t1": 106.85,
      "what": "depowder",
      "alloy": 242,
      "kind": "process"
     },
     {
-     "t0": 87.95,
-     "t1": 92.95,
+     "t0": 106.85,
+     "t1": 111.85,
      "what": "print",
      "alloy": 243,
      "kind": "process"
     },
     {
-     "t0": 92.95,
-     "t1": 93.45,
+     "t0": 111.85,
+     "t1": 112.35,
      "what": "depowder",
      "alloy": 243,
-     "kind": "process"
-    },
-    {
-     "t0": 101.25,
-     "t1": 106.25,
-     "what": "print",
-     "alloy": 244,
-     "kind": "process"
-    },
-    {
-     "t0": 106.25,
-     "t1": 111.25,
-     "what": "print",
-     "alloy": 245,
-     "kind": "process"
-    },
-    {
-     "t0": 111.25,
-     "t1": 111.75,
-     "what": "depowder",
-     "alloy": 245,
      "kind": "process"
     }
    ],
@@ -4616,80 +4525,66 @@
      "task": "edm_weekly"
     },
     {
-     "t0": 43.0,
-     "t1": 44.0,
+     "t0": 37.45,
+     "t1": 38.2,
+     "what": "edm",
+     "alloy": 238,
+     "kind": "process"
+    },
+    {
+     "t0": 38.2,
+     "t1": 38.6,
+     "what": "section",
+     "alloy": 238,
+     "kind": "process"
+    },
+    {
+     "t0": 67.0,
+     "t1": 68.0,
      "what": "edm_full",
      "alloy": 232,
      "kind": "process"
     },
     {
-     "t0": 48.5,
-     "t1": 49.25,
-     "what": "edm",
-     "alloy": 238,
-     "kind": "process"
-    },
-    {
-     "t0": 49.25,
-     "t1": 49.65,
-     "what": "section",
-     "alloy": 238,
-     "kind": "process"
-    },
-    {
-     "t0": 58.85,
-     "t1": 59.6,
+     "t0": 72.5,
+     "t1": 73.25,
      "what": "edm",
      "alloy": 239,
      "kind": "process"
     },
     {
-     "t0": 59.6,
-     "t1": 60.0,
+     "t0": 73.25,
+     "t1": 73.65,
      "what": "section",
      "alloy": 239,
      "kind": "process"
     },
     {
-     "t0": 64.35,
-     "t1": 65.1,
+     "t0": 84.5,
+     "t1": 85.25,
      "what": "edm",
      "alloy": 240,
      "kind": "process"
     },
     {
-     "t0": 65.1,
-     "t1": 65.5,
+     "t0": 85.25,
+     "t1": 85.65,
      "what": "section",
      "alloy": 240,
      "kind": "process"
     },
     {
-     "t0": 69.85,
-     "t1": 70.6,
+     "t0": 90.0,
+     "t1": 90.75,
      "what": "edm",
      "alloy": 241,
      "kind": "process"
     },
     {
-     "t0": 70.6,
-     "t1": 71.0,
+     "t0": 90.75,
+     "t1": 91.15,
      "what": "section",
      "alloy": 241,
-     "kind": "process"
-    },
-    {
-     "t0": 87.95,
-     "t1": 88.7,
-     "what": "edm",
-     "alloy": 242,
-     "kind": "process"
-    },
-    {
-     "t0": 88.7,
-     "t1": 89.1,
-     "what": "section",
-     "alloy": 242,
      "kind": "process"
     },
     {
@@ -4701,31 +4596,31 @@
      "task": "edm_test"
     },
     {
-     "t0": 94.3,
-     "t1": 95.05,
+     "t0": 106.85,
+     "t1": 107.6,
+     "what": "edm",
+     "alloy": 242,
+     "kind": "process"
+    },
+    {
+     "t0": 107.6,
+     "t1": 108.0,
+     "what": "section",
+     "alloy": 242,
+     "kind": "process"
+    },
+    {
+     "t0": 112.35,
+     "t1": 113.1,
      "what": "edm",
      "alloy": 243,
      "kind": "process"
     },
     {
-     "t0": 95.2,
-     "t1": 95.6,
+     "t0": 113.1,
+     "t1": 113.5,
      "what": "section",
      "alloy": 243,
-     "kind": "process"
-    },
-    {
-     "t0": 111.75,
-     "t1": 112.5,
-     "what": "edm",
-     "alloy": 245,
-     "kind": "process"
-    },
-    {
-     "t0": 112.5,
-     "t1": 112.9,
-     "what": "section",
-     "alloy": 245,
      "kind": "process"
     }
    ],
@@ -4738,38 +4633,24 @@
      "kind": "process"
     },
     {
-     "t0": 44.0,
-     "t1": 47.0,
-     "what": "heat_full",
-     "alloy": 232,
-     "kind": "process"
-    },
-    {
-     "t0": 49.25,
-     "t1": 52.25,
+     "t0": 38.2,
+     "t1": 41.2,
      "what": "heat",
      "alloy": 238,
      "kind": "process"
     },
     {
-     "t0": 59.6,
-     "t1": 62.6,
+     "t0": 68.0,
+     "t1": 71.0,
+     "what": "heat_full",
+     "alloy": 232,
+     "kind": "process"
+    },
+    {
+     "t0": 73.25,
+     "t1": 76.25,
      "what": "heat",
      "alloy": 239,
-     "kind": "process"
-    },
-    {
-     "t0": 65.1,
-     "t1": 68.1,
-     "what": "heat",
-     "alloy": 240,
-     "kind": "process"
-    },
-    {
-     "t0": 70.6,
-     "t1": 73.6,
-     "what": "heat",
-     "alloy": 241,
      "kind": "process"
     },
     {
@@ -4781,24 +4662,31 @@
      "task": "px_waste"
     },
     {
-     "t0": 88.7,
-     "t1": 91.7,
+     "t0": 85.25,
+     "t1": 88.25,
+     "what": "heat",
+     "alloy": 240,
+     "kind": "process"
+    },
+    {
+     "t0": 90.75,
+     "t1": 93.75,
+     "what": "heat",
+     "alloy": 241,
+     "kind": "process"
+    },
+    {
+     "t0": 107.6,
+     "t1": 110.6,
      "what": "heat",
      "alloy": 242,
      "kind": "process"
     },
     {
-     "t0": 95.1,
-     "t1": 98.1,
+     "t0": 113.1,
+     "t1": 116.1,
      "what": "heat",
      "alloy": 243,
-     "kind": "process"
-    },
-    {
-     "t0": 112.5,
-     "t1": 115.5,
-     "what": "heat",
-     "alloy": 245,
      "kind": "process"
     }
    ],
@@ -4811,52 +4699,53 @@
      "kind": "process"
     },
     {
-     "t0": 52.25,
-     "t1": 52.85,
+     "t0": 41.2,
+     "t1": 41.8,
      "what": "tensile_rt",
      "alloy": 238,
      "kind": "process"
     },
     {
-     "t0": 62.6,
-     "t1": 63.2,
+     "t0": 76.25,
+     "t1": 76.85,
      "what": "tensile_rt",
      "alloy": 239,
      "kind": "process"
     },
     {
-     "t0": 68.1,
-     "t1": 68.7,
+     "t0": 88.25,
+     "t1": 88.85,
      "what": "tensile_rt",
      "alloy": 240,
      "kind": "process"
     },
     {
-     "t0": 73.6,
-     "t1": 74.2,
+     "t0": 93.75,
+     "t1": 94.35,
      "what": "tensile_rt",
      "alloy": 241,
      "kind": "process"
     },
     {
-     "t0": 91.7,
-     "t1": 92.3,
+     "t0": 98.0,
+     "t1": 101.0,
+     "what": "HM-220: indirect verification",
+     "kind": "maint",
+     "who": "vendor",
+     "task": "hv_verify"
+    },
+    {
+     "t0": 110.6,
+     "t1": 111.2,
      "what": "tensile_rt",
      "alloy": 242,
      "kind": "process"
     },
     {
-     "t0": 99.6,
-     "t1": 100.2,
+     "t0": 116.1,
+     "t1": 116.7,
      "what": "tensile_rt",
      "alloy": 243,
-     "kind": "process"
-    },
-    {
-     "t0": 115.5,
-     "t1": 116.1,
-     "what": "tensile_rt",
-     "alloy": 245,
      "kind": "process"
     },
     {
@@ -4877,52 +4766,38 @@
      "kind": "process"
     },
     {
-     "t0": 47.0,
-     "t1": 47.6,
-     "what": "e8_rt",
-     "alloy": 232,
-     "kind": "process"
-    },
-    {
-     "t0": 47.6,
-     "t1": 50.1,
-     "what": "e8_hot",
-     "alloy": 232,
-     "kind": "process"
-    },
-    {
-     "t0": 52.25,
-     "t1": 53.75,
+     "t0": 41.2,
+     "t1": 42.7,
      "what": "tensile_hot",
      "alloy": 238,
      "kind": "process"
     },
     {
-     "t0": 62.6,
-     "t1": 64.1,
+     "t0": 71.0,
+     "t1": 71.6,
+     "what": "e8_rt",
+     "alloy": 232,
+     "kind": "process"
+    },
+    {
+     "t0": 71.6,
+     "t1": 74.1,
+     "what": "e8_hot",
+     "alloy": 232,
+     "kind": "process"
+    },
+    {
+     "t0": 76.25,
+     "t1": 77.75,
      "what": "tensile_hot",
      "alloy": 239,
      "kind": "process"
     },
     {
-     "t0": 68.1,
-     "t1": 69.6,
+     "t0": 88.25,
+     "t1": 89.75,
      "what": "tensile_hot",
      "alloy": 240,
-     "kind": "process"
-    },
-    {
-     "t0": 73.6,
-     "t1": 75.1,
-     "what": "tensile_hot",
-     "alloy": 241,
-     "kind": "process"
-    },
-    {
-     "t0": 91.7,
-     "t1": 93.2,
-     "what": "tensile_hot",
-     "alloy": 242,
      "kind": "process"
     },
     {
@@ -4934,17 +4809,24 @@
      "task": "t_ref_floor"
     },
     {
-     "t0": 99.7,
-     "t1": 101.2,
+     "t0": 94.5,
+     "t1": 96.0,
      "what": "tensile_hot",
-     "alloy": 243,
+     "alloy": 241,
      "kind": "process"
     },
     {
-     "t0": 115.5,
-     "t1": 117.0,
+     "t0": 110.6,
+     "t1": 112.1,
      "what": "tensile_hot",
-     "alloy": 245,
+     "alloy": 242,
+     "kind": "process"
+    },
+    {
+     "t0": 116.1,
+     "t1": 117.6,
+     "what": "tensile_hot",
+     "alloy": 243,
      "kind": "process"
     }
    ],
@@ -4957,52 +4839,45 @@
      "kind": "process"
     },
     {
-     "t0": 49.65,
-     "t1": 49.95,
+     "t0": 38.6,
+     "t1": 38.9,
      "what": "face",
      "alloy": 238,
      "kind": "process"
     },
     {
-     "t0": 60.0,
-     "t1": 60.3,
+     "t0": 73.65,
+     "t1": 73.95,
      "what": "face",
      "alloy": 239,
      "kind": "process"
     },
     {
-     "t0": 65.5,
-     "t1": 65.8,
+     "t0": 85.65,
+     "t1": 85.95,
      "what": "face",
      "alloy": 240,
      "kind": "process"
     },
     {
-     "t0": 71.0,
-     "t1": 71.3,
+     "t0": 91.15,
+     "t1": 91.45,
      "what": "face",
      "alloy": 241,
      "kind": "process"
     },
     {
-     "t0": 89.1,
-     "t1": 89.4,
+     "t0": 108.0,
+     "t1": 108.3,
      "what": "face",
      "alloy": 242,
      "kind": "process"
     },
     {
-     "t0": 95.6,
-     "t1": 95.9,
+     "t0": 113.5,
+     "t1": 113.8,
      "what": "face",
      "alloy": 243,
-     "kind": "process"
-    },
-    {
-     "t0": 112.9,
-     "t1": 113.2,
-     "what": "face",
-     "alloy": 245,
      "kind": "process"
     }
    ],
@@ -5015,31 +4890,17 @@
      "kind": "process"
     },
     {
-     "t0": 49.95,
-     "t1": 50.55,
+     "t0": 38.9,
+     "t1": 39.5,
      "what": "mount",
      "alloy": 238,
      "kind": "process"
     },
     {
-     "t0": 60.3,
-     "t1": 60.9,
+     "t0": 73.95,
+     "t1": 74.55,
      "what": "mount",
      "alloy": 239,
-     "kind": "process"
-    },
-    {
-     "t0": 65.8,
-     "t1": 66.4,
-     "what": "mount",
-     "alloy": 240,
-     "kind": "process"
-    },
-    {
-     "t0": 71.3,
-     "t1": 71.9,
-     "what": "mount",
-     "alloy": 241,
      "kind": "process"
     },
     {
@@ -5051,24 +4912,31 @@
      "task": "px_waste"
     },
     {
-     "t0": 89.4,
-     "t1": 90.0,
+     "t0": 85.95,
+     "t1": 86.55,
+     "what": "mount",
+     "alloy": 240,
+     "kind": "process"
+    },
+    {
+     "t0": 91.45,
+     "t1": 92.05,
+     "what": "mount",
+     "alloy": 241,
+     "kind": "process"
+    },
+    {
+     "t0": 108.3,
+     "t1": 108.9,
      "what": "mount",
      "alloy": 242,
      "kind": "process"
     },
     {
-     "t0": 95.9,
-     "t1": 96.5,
+     "t0": 113.8,
+     "t1": 114.4,
      "what": "mount",
      "alloy": 243,
-     "kind": "process"
-    },
-    {
-     "t0": 113.2,
-     "t1": 113.8,
-     "what": "mount",
-     "alloy": 245,
      "kind": "process"
     }
    ],
@@ -5081,31 +4949,17 @@
      "kind": "process"
     },
     {
-     "t0": 50.55,
-     "t1": 51.35,
+     "t0": 39.5,
+     "t1": 40.3,
      "what": "polish",
      "alloy": 238,
      "kind": "process"
     },
     {
-     "t0": 60.9,
-     "t1": 61.7,
+     "t0": 74.55,
+     "t1": 75.35,
      "what": "polish",
      "alloy": 239,
-     "kind": "process"
-    },
-    {
-     "t0": 66.4,
-     "t1": 67.2,
-     "what": "polish",
-     "alloy": 240,
-     "kind": "process"
-    },
-    {
-     "t0": 71.9,
-     "t1": 72.7,
-     "what": "polish",
-     "alloy": 241,
      "kind": "process"
     },
     {
@@ -5117,24 +4971,31 @@
      "task": "px_waste"
     },
     {
-     "t0": 90.0,
-     "t1": 90.8,
+     "t0": 86.55,
+     "t1": 87.35,
+     "what": "polish",
+     "alloy": 240,
+     "kind": "process"
+    },
+    {
+     "t0": 92.05,
+     "t1": 92.85,
+     "what": "polish",
+     "alloy": 241,
+     "kind": "process"
+    },
+    {
+     "t0": 108.9,
+     "t1": 109.7,
      "what": "polish",
      "alloy": 242,
      "kind": "process"
     },
     {
-     "t0": 96.5,
-     "t1": 97.3,
+     "t0": 114.4,
+     "t1": 115.2,
      "what": "polish",
      "alloy": 243,
-     "kind": "process"
-    },
-    {
-     "t0": 113.8,
-     "t1": 114.6,
-     "what": "polish",
-     "alloy": 245,
      "kind": "process"
     }
    ],
@@ -5147,52 +5008,45 @@
      "kind": "process"
     },
     {
-     "t0": 52.1,
-     "t1": 52.5,
+     "t0": 40.3,
+     "t1": 40.7,
      "what": "vhx",
      "alloy": 238,
      "kind": "process"
     },
     {
-     "t0": 61.7,
-     "t1": 62.1,
+     "t0": 75.35,
+     "t1": 75.75,
      "what": "vhx",
      "alloy": 239,
      "kind": "process"
     },
     {
-     "t0": 67.2,
-     "t1": 67.6,
+     "t0": 87.35,
+     "t1": 87.75,
      "what": "vhx",
      "alloy": 240,
      "kind": "process"
     },
     {
-     "t0": 72.7,
-     "t1": 73.1,
+     "t0": 92.85,
+     "t1": 93.25,
      "what": "vhx",
      "alloy": 241,
      "kind": "process"
     },
     {
-     "t0": 90.8,
-     "t1": 91.2,
+     "t0": 109.7,
+     "t1": 110.1,
      "what": "vhx",
      "alloy": 242,
      "kind": "process"
     },
     {
-     "t0": 99.8,
-     "t1": 100.2,
+     "t0": 115.2,
+     "t1": 115.6,
      "what": "vhx",
      "alloy": 243,
-     "kind": "process"
-    },
-    {
-     "t0": 114.6,
-     "t1": 115.0,
-     "what": "vhx",
-     "alloy": 245,
      "kind": "process"
     },
     {
@@ -5221,33 +5075,19 @@
      "task": "hv_block"
     },
     {
+     "t0": 40.4,
+     "t1": 40.7,
+     "what": "hv",
+     "alloy": 238,
+     "kind": "process"
+    },
+    {
      "t0": 44.0,
      "t1": 44.2,
      "what": "HM-220: reference block indented, diagonals trended",
      "kind": "check",
      "who": "arm",
      "task": "hv_block"
-    },
-    {
-     "t0": 52.1,
-     "t1": 52.4,
-     "what": "hv",
-     "alloy": 238,
-     "kind": "process"
-    },
-    {
-     "t0": 61.8,
-     "t1": 62.1,
-     "what": "hv",
-     "alloy": 239,
-     "kind": "process"
-    },
-    {
-     "t0": 67.3,
-     "t1": 67.6,
-     "what": "hv",
-     "alloy": 240,
-     "kind": "process"
     },
     {
      "t0": 68.0,
@@ -5258,13 +5098,6 @@
      "task": "hv_block"
     },
     {
-     "t0": 72.8,
-     "t1": 73.1,
-     "what": "hv",
-     "alloy": 241,
-     "kind": "process"
-    },
-    {
      "t0": 75.25,
      "t1": 76.25,
      "what": "vendor software update: installed, then the reference check re-run and signed off",
@@ -5273,10 +5106,17 @@
      "task": "it_revalidate_hardness"
     },
     {
-     "t0": 90.9,
-     "t1": 91.2,
+     "t0": 76.35,
+     "t1": 76.65,
      "what": "hv",
-     "alloy": 242,
+     "alloy": 239,
+     "kind": "process"
+    },
+    {
+     "t0": 87.45,
+     "t1": 87.75,
+     "what": "hv",
+     "alloy": 240,
      "kind": "process"
     },
     {
@@ -5288,6 +5128,13 @@
      "task": "hv_block"
     },
     {
+     "t0": 92.95,
+     "t1": 93.25,
+     "what": "hv",
+     "alloy": 241,
+     "kind": "process"
+    },
+    {
      "t0": 98.0,
      "t1": 101.0,
      "what": "HM-220: indirect verification",
@@ -5296,17 +5143,17 @@
      "task": "hv_verify"
     },
     {
-     "t0": 101.0,
-     "t1": 101.3,
+     "t0": 109.8,
+     "t1": 110.1,
      "what": "hv",
-     "alloy": 243,
+     "alloy": 242,
      "kind": "process"
     },
     {
-     "t0": 114.7,
-     "t1": 115.0,
+     "t0": 115.3,
+     "t1": 115.6,
      "what": "hv",
-     "alloy": 245,
+     "alloy": 243,
      "kind": "process"
     },
     {
@@ -5343,8 +5190,8 @@
      "kind": "process"
     },
     {
-     "t0": 51.35,
-     "t1": 52.1,
+     "t0": 40.4,
+     "t1": 41.15,
      "what": "nano",
      "alloy": 238,
      "kind": "process"
@@ -5358,45 +5205,38 @@
      "task": "ld_clean"
     },
     {
-     "t0": 61.8,
-     "t1": 62.55,
+     "t0": 75.45,
+     "t1": 76.2,
      "what": "nano",
      "alloy": 239,
      "kind": "process"
     },
     {
-     "t0": 67.3,
-     "t1": 68.05,
+     "t0": 87.45,
+     "t1": 88.2,
      "what": "nano",
      "alloy": 240,
      "kind": "process"
     },
     {
-     "t0": 72.8,
-     "t1": 73.55,
+     "t0": 92.95,
+     "t1": 93.7,
      "what": "nano",
      "alloy": 241,
      "kind": "process"
     },
     {
-     "t0": 90.9,
-     "t1": 91.65,
+     "t0": 109.8,
+     "t1": 110.55,
      "what": "nano",
      "alloy": 242,
      "kind": "process"
     },
     {
-     "t0": 99.9,
-     "t1": 100.65,
+     "t0": 115.3,
+     "t1": 116.05,
      "what": "nano",
      "alloy": 243,
-     "kind": "process"
-    },
-    {
-     "t0": 114.7,
-     "t1": 115.45,
-     "what": "nano",
-     "alloy": 245,
      "kind": "process"
     },
     {
@@ -5425,8 +5265,8 @@
      "task": "pip_cal"
     },
     {
-     "t0": 51.45,
-     "t1": 51.7,
+     "t0": 40.5,
+     "t1": 40.75,
      "what": "pip",
      "alloy": 238,
      "kind": "process"
@@ -5440,45 +5280,38 @@
      "task": "ld_clean"
     },
     {
-     "t0": 61.9,
-     "t1": 62.15,
+     "t0": 75.45,
+     "t1": 75.7,
      "what": "pip",
      "alloy": 239,
      "kind": "process"
     },
     {
-     "t0": 67.4,
-     "t1": 67.65,
+     "t0": 87.55,
+     "t1": 87.8,
      "what": "pip",
      "alloy": 240,
      "kind": "process"
     },
     {
-     "t0": 72.9,
-     "t1": 73.15,
+     "t0": 93.05,
+     "t1": 93.3,
      "what": "pip",
      "alloy": 241,
      "kind": "process"
     },
     {
-     "t0": 91.0,
-     "t1": 91.25,
+     "t0": 109.9,
+     "t1": 110.15,
      "what": "pip",
      "alloy": 242,
      "kind": "process"
     },
     {
-     "t0": 100.0,
-     "t1": 100.25,
+     "t0": 115.4,
+     "t1": 115.65,
      "what": "pip",
      "alloy": 243,
-     "kind": "process"
-    },
-    {
-     "t0": 114.8,
-     "t1": 115.05,
-     "what": "pip",
-     "alloy": 245,
      "kind": "process"
     }
    ],
@@ -5507,75 +5340,54 @@
      "task": "cx_ref"
     },
     {
-     "t0": 51.8,
-     "t1": 54.0,
+     "t0": 40.5,
+     "t1": 42.7,
      "what": "corrosion",
      "alloy": 238,
      "kind": "process"
     },
     {
-     "t0": 61.9,
-     "t1": 64.1,
+     "t0": 76.45,
+     "t1": 78.65,
      "what": "corrosion",
      "alloy": 239,
      "kind": "process"
     },
     {
-     "t0": 67.4,
-     "t1": 69.6,
+     "t0": 87.55,
+     "t1": 89.75,
      "what": "corrosion",
      "alloy": 240,
      "kind": "process"
     },
     {
-     "t0": 72.9,
-     "t1": 75.1,
+     "t0": 93.05,
+     "t1": 95.25,
      "what": "corrosion",
      "alloy": 241,
      "kind": "process"
     },
     {
-     "t0": 91.0,
-     "t1": 91.164,
+     "t0": 109.9,
+     "t1": 110.064,
      "what": "corrosion",
      "alloy": 242,
      "kind": "interrupted"
     },
     {
-     "t0": 91.164,
-     "t1": 101.5,
+     "t0": 110.064,
+     "t1": 171.0,
      "what": "a clogged or leaking cell; the reference electrode",
      "kind": "waiting",
      "who": "opening"
     },
     {
-     "t0": 101.5,
-     "t1": 102.5,
+     "t0": 171.0,
+     "t1": 172.0,
      "what": "a clogged or leaking cell; the reference electrode",
      "kind": "repair",
      "who": "opening",
      "task": "fail"
-    },
-    {
-     "t0": 102.6,
-     "t1": 104.8,
-     "what": "corrosion",
-     "alloy": 242,
-     "kind": "process"
-    },
-    {
-     "t0": 104.8,
-     "t1": 107.0,
-     "what": "corrosion",
-     "alloy": 243,
-     "kind": "process"
-    },
-    {
-     "t0": 114.8,
-     "t1": 117.0,
-     "what": "corrosion",
-     "alloy": 245,
-     "kind": "process"
     }
    ],
    "open1": [
@@ -5628,8 +5440,8 @@
      "task": "store_j"
     },
     {
-     "t0": 101.5,
-     "t1": 102.5,
+     "t0": 171.0,
+     "t1": 172.0,
      "what": "a clogged or leaking cell; the reference electrode",
      "kind": "repair",
      "who": "opening",
@@ -5670,8 +5482,16 @@
      "task": "pm_i"
     },
     {
-     "t0": 99.0,
-     "t1": 99.5,
+     "t0": 98.0,
+     "t1": 101.0,
+     "what": "HM-220: indirect verification",
+     "kind": "maint",
+     "who": "vendor",
+     "task": "hv_verify"
+    },
+    {
+     "t0": 101.5,
+     "t1": 102.0,
      "what": "the bay's CombiTac dock: contacts wiped, pins, O-rings and coupling faces checked (it mates with every tray the Shuttle presents)",
      "kind": "maint",
      "who": "opening",
@@ -5893,14 +5713,6 @@
      "kind": "crucible"
     },
     {
-     "t0": 33.5,
-     "t1": 34.0,
-     "what": "new graphite crucible and nozzle holder into the rotation",
-     "kind": "maint",
-     "who": "floor",
-     "task": "rp_crucible_stock"
-    },
-    {
      "t0": 50.0,
      "t1": 51.0,
      "what": "crucible",
@@ -5949,6 +5761,14 @@
      "t1": 56.0,
      "what": "crucible",
      "kind": "crucible"
+    },
+    {
+     "t0": 57.5,
+     "t1": 58.0,
+     "what": "new graphite crucible and nozzle holder into the rotation",
+     "kind": "maint",
+     "who": "floor",
+     "task": "rp_crucible_stock"
     },
     {
      "t0": 74.0,
@@ -6024,11 +5844,11 @@
     },
     {
      "t0": 99.0,
-     "t1": 99.5,
-     "what": "the bay's CombiTac dock: contacts wiped, pins, O-rings and coupling faces checked (it mates with every tray the Shuttle presents)",
+     "t1": 100.0,
+     "what": "chiller: fluid changed (the XRD's tube stops)",
      "kind": "maint",
-     "who": "opening",
-     "task": "bay_dock"
+     "who": "floor",
+     "task": "chiller_fluid"
     },
     {
      "t0": 99.0,
@@ -6040,19 +5860,19 @@
     },
     {
      "t0": 99.5,
-     "t1": 100.5,
-     "what": "chiller: fluid changed (the XRD's tube stops)",
-     "kind": "maint",
-     "who": "floor",
-     "task": "chiller_fluid"
-    },
-    {
-     "t0": 99.5,
      "t1": 100.0,
      "what": "lost localization or a protective stop it can't clear",
      "kind": "repair",
      "who": "floor",
      "task": "fail"
+    },
+    {
+     "t0": 100.0,
+     "t1": 100.5,
+     "what": "depowdering box: filter changed",
+     "kind": "maint",
+     "who": "floor",
+     "task": "dp_filter"
     },
     {
      "t0": 100.5,
@@ -6063,18 +5883,10 @@
     {
      "t0": 101.5,
      "t1": 102.0,
-     "what": "depowdering box: filter changed",
+     "what": "the bay's CombiTac dock: contacts wiped, pins, O-rings and coupling faces checked (it mates with every tray the Shuttle presents)",
      "kind": "maint",
-     "who": "floor",
-     "task": "dp_filter"
-    },
-    {
-     "t0": 101.5,
-     "t1": 102.5,
-     "what": "a clogged or leaking cell; the reference electrode",
-     "kind": "repair",
      "who": "opening",
-     "task": "fail"
+     "task": "bay_dock"
     },
     {
      "t0": 102.0,
@@ -6123,6 +5935,14 @@
      "kind": "maint",
      "who": "floor",
      "task": "rp_clean"
+    },
+    {
+     "t0": 171.0,
+     "t1": 172.0,
+     "what": "a clogged or leaking cell; the reference electrode",
+     "kind": "repair",
+     "who": "opening",
+     "task": "fail"
     }
    ]
   }

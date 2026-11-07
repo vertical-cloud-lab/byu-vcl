@@ -42,11 +42,7 @@ import pyvista as pv
 from PIL import Image, ImageDraw
 
 import scene
-scene.GIF_FPS = 3                     # a 1.5-minute GIF well under 4.9 MB (the MP4 keeps every frame)
-scene.GIF_SIZE = (512, 288)
 from scene import CLEAN, OUT, PREVIEW, Scene, T, R, font  # noqa: E402
-
-os.environ.setdefault("VLAB_ONLY_TRAYS", "BE")
 
 import animate as A                   # noqa: E402
 import lab                            # noqa: E402
@@ -152,6 +148,10 @@ class UpScene(Scene):
 
 
 def build():
+    # set here, not at import: timelapse.py imports this module for its Person and must keep every tray and its GIF
+    os.environ.setdefault("VLAB_ONLY_TRAYS", "BE")
+    scene.GIF_FPS = 3                 # a 1.5-minute GIF well under 4.9 MB (the MP4 keeps every frame)
+    scene.GIF_SIZE = (512, 288)
     import setup_lab as SL
     import warehouse as W
     data = lab.meshes()
@@ -708,7 +708,7 @@ def movie():
 
     # ================================================================== 2. the arm's check: the HR-202i
     say("2/3 A check between jobs", "Between two dosing runs at night, the HR-202i's daily check. The arm brought the 100 g "
-                                   "class E2 weight up from tray J's store with the morning's first job; it rides "
+                                   "class E2 weight up from tray J's store with the night's first job; it rides "
                                    "on the MiR's deck, in a low seat of its own (ours). Tray B, the doser, comes down.")
     status(L, Arm="UR10e, parked", Doser="idle between runs")
     w_top = (sc.world("w_weight") @ np.r_[0, 0, WEIGHT_H, 1.0])[:3]
@@ -735,9 +735,10 @@ def movie():
     step(0.4, rb.grip_to(0.0))
     rb.release(car.fork_group)
     lin(A.down(p_hand + (0, 0, 120), spin=180.0), 0.7)
-    say("2/3 A check between jobs", "The arm parks. The side door opens, the shuttle carries the weight in and sets "
-                                   "it on the pedestal on the pan, and backs out; the door shuts. The HR-202i first "
-                                   "calibrates itself with its built-in mass (the 'i'); the outside weight checks that.")
+    say("2/3 A check between jobs", "The arm parks. The side door opens, the shuttle carries the weight in, sets it "
+                                   "on the pedestal on the pan and backs out; the door shuts. The HR-202i has no "
+                                   "internal mass (A&D's HR-i manual: calibrate 'using a weight that you have'), so "
+                                   "this weight is its check, and once a month its calibration.")
     status(L, Arm="parked", Doser="shuttle in", **{"HR-202i": "0.0000 g  tared"})
     step(1.2, RB.both(rb.joint_to(PARK), car.to(side_door=C.SIDE_OPEN)), cam=cam_close)
     step(1.8, car.to(shuttle=0.0),
@@ -754,7 +755,8 @@ def movie():
         r = WEIGHT["g"] * min(1.0, v * 1.15) + (TODAY_MG / 1000.0 if v > 0.85 else 0.0)
         sc.clock = ("HR-202i, 220 g x 0.1 mg", f"{r:9.4f} g" + ("  stable" if v > 0.85 else ""))
     say("2/3 A check between jobs", "Doors shut, the reading settles: 100.0001 g against the weight's certificate. "
-                                   "The control chart keeps every day's check against the lab's limits.")
+                                   "The shuttle lifts it off and back ten times (USP <41>'s repeatability; one is "
+                                   "shown), and the mean goes on the control chart against the lab's limits.")
     status(L, Doser="the check weight on the pan", **{"HR-202i": "settling"})
     cam_read = [tuple(rig_w(pan + (-430.0, -520.0, 190.0))), tuple(rig_w(pan + (110.0, -90.0, 50.0))), (0, 0, 1)]
     step(1.6, settle, hold=0.2, cam=cam_read)
@@ -781,7 +783,8 @@ def movie():
     sc.clock = None
     say("2/3 A check between jobs", "Today it passed. The shuttle brings the weight back out, the arm returns it to "
                                    "its seat on the deck (it goes back to tray J with the next run's samples), and "
-                                   "tray B goes back up. About nine minutes, booked between two night-time jobs.")
+                                   "tray B goes back up. About twelve minutes (upkeep.py books 0.2 h), between two "
+                                   "night-time jobs.")
     status(L, Doser="shuttle out", **{"HR-202i": ""})
     step(0.7, car.to(side_door=C.SIDE_OPEN, fork=1.0), cam=cam_close)
     step(1.4, car.to(shuttle=0.0), hold=0.0)
