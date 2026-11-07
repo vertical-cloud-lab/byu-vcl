@@ -168,3 +168,34 @@ VIZ3D_FPS=6 python3 runner_guard.py bg --mem 6500 --log /tmp/r.log -- xvfb-run -
   before the arm turns for the MiR.
 - Not done: re-rendering the `xrd`, `mastersizer` and `xrf` tour clips (their instrument models changed: the
   Mastersizer's `shell` piece), no slot was free. The tour cache is keyed on the sources, so they rebuild on next run.
+
+## Round 10 (2026-11-07): the arm's collisions to 0
+
+- **Audit: 0 of 1028 frames in collision** (`VLAB_ONLY_TRAYS=DEM ARM_AUDIT=1 VIZ3D_FPS=6`, 13 min;
+  [`../out/collisions/alloy_powder.json`](../out/collisions/alloy_powder.json), code `b0ec92c`). Round 9 left 19 of
+  1028 in 14 runs.
+- **The 16-frame sweep was on the way in, not on the way back out.** Round 9's notes put it on the move to park after
+  the holder was set on the stage, and added a via pose over the MiR there; that move was clear all along. Built once
+  and stopped at each move (a scratch workbench: the scene under `ARM_AUDIT=1`, the movie run to a chosen move, then
+  candidate moves tried and checked frame by frame), the hits came on the three straight lines from the wait pose
+  into the MiniFlex. The wait pose was a joint move to the IK solution nearest the prep station, with the shoulder pan
+  at -169 deg where the branch that is clear on the stage has -71 deg, and the straight line in from that branch swung the upper arm and
+  forearm through the SEM, the MiniFlex's housing, tray D's camera post and its slide, and the tray. **Fix:** the
+  wait pose is taken in the branch that is clear with the holder on the stage (`branch_q`, judged with the door open,
+  as it will be), so the line in stays in one branch.
+- **The opening door met the holder (1 frame).** The arm waits for the door with the holder 380 mm back along the way
+  in, which put the holder's far edge about 372 mm from the door's right-hand hinge, inside its 398 mm swing; the door
+  brushed it as it opened. It now waits 480 mm back (about 430 mm from the hinge).
+- **The finger at the holder (2 frames).** The vial turns over on its way down to the holder and back upright on its
+  way up; at the half-turn the right finger, pointing down, swept the holder's carrier. The mesh now stops 60 mm over
+  the holder (it was 48 mm). Tried in the workbench: 60 mm, 0 frames; 30 deg to the left of square at 48 mm, also 0;
+  a 150 deg turn instead of 165, 3 frames; 30 deg to the right, 3 frames. *Assumed:* sifting from 12 mm higher doesn't
+  change the layer the holder gets (not measured).
+- **The collision world** is now kept to what the arm can reach (`fast_collisions`, as chapter 7's): the trays the
+  chapter presents (D, E, M) and whatever stands within 2.8 m of the arm's base anywhere on its way, 667 of the 1420
+  actors with `VLAB_ONLY_TRAYS=DEM`. The planner and the audit see the same world, and the audit took 13 min (30 in
+  round 9).
+- **The committed render predates these fixes.** `out/mp4/alloy_powder.mp4` (round 9, `50a8e08`) still shows the
+  sweep into the MiniFlex, the door brushing the holder and the finger at the holder. It wasn't re-rendered this round:
+  the render slots went to the maintenance clip, the finale and chapters 1 and 6. The code renders the fixed version
+  (`VIZ3D_FPS=6`, `VLAB_ONLY_TRAYS=DEMKLH`, about 40 min).
