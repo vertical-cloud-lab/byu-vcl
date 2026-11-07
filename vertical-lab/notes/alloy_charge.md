@@ -12,6 +12,28 @@ time, and this chapter is the two merged:
   `out/alloy_charge_vacuum.*`, [on YouTube](https://www.youtube.com/watch?v=UjGb47I3fy0)): the bore filled to where
   the plug is set, then the plug driven to flush on a set load in a Specac Atlas Autotouch 15T, under vacuum.
 
+## Round 10: the cup can't go closer to the outlet; a funnel per powder is designed, not yet in this chapter
+
+Sterling (PR #318, 2026-11-07): "Note the comment about raising the cup on a platform of sorts so that the nozzle is
+closer, but we might end up needing to use a funnel anyway". The details and the measurements are in
+[`multidoser.md`](multidoser.md#round-10-raising-the-vessel-toward-the-outlet-measured-the-funnel-pr-318-2026-11-07).
+For this chapter:
+
+- **The cup's rim stays 153.4 mm under the auger's exit.** It already rides as high as the balance's side door lets it
+  pass (2.5 mm under the opening's top, carried on the fork). A granite block under the HR-202i would lift its top into
+  v5's parked electronics carriage, which is 12.6 mm above it.
+- **A 12.7 mm bore under an 8 mm stream leaves 2.35 mm a side.** Grains that miss land on the rim or our pedestal, which
+  are on the pan, so they are weighed as dose without being in the bore. So the cups should be dosed through **a funnel
+  per powder** (Sterling's earlier "funnels allowed, but one per material").
+- `carousel.Carousel(funnel=...)` draws one: the powder's own funnel on an upper tine of our shuttle, its stem 4 mm over
+  the bore, the cup on a shorter pedestal (top 174.5 mm). The stream falls 157.9 mm onto a 40 mm cone, and FCL finds no
+  contact along the travel or at the dose.
+- **Not in the chapter yet.** That needs:
+  - the arm swapping funnels at the hand-over when the powder changes (Si, AlSi10Mg, Ni, Cu: three swaps);
+  - the shuttle staying in while the cup doses;
+  - the level hand-over under the funnel.
+  This round didn't write them, so the chapter was not re-rendered. The clip in `out/` is round 9's (no funnel).
+
 ## Round 9: the multi-doser is v5, with the balance underneath (PR #318, 2026-11-05 22:56)
 
 Sterling: "we have an updated version of the multi-doser ... (both vial dosing and charge cup dosing) ... you'll be

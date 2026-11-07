@@ -178,5 +178,9 @@
   "dose_vial": [
    "fork:shuttle_rail"
   ]
- }
+ },
+ "stills": [
+  "out/doser_raise_cup.png",
+  "out/doser_raise_vial.png"
+ ]
 }

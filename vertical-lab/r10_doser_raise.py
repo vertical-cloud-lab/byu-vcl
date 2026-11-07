@@ -336,26 +336,29 @@ def stills() -> list[str]:
         ex = car.exit_point()
         pts = []
         rng = np.random.default_rng(3)
-        for z in np.linspace(land, ex[2] - 1.5, 60):
-            pts.append((ex[0] + rng.normal(0, 1.2), ex[1] + rng.normal(0, 1.2), z))
-        for z in np.linspace(top, tip[2], 14):
-            pts.append((tip[0] + rng.normal(0, 0.6), tip[1] + rng.normal(0, 0.6), z))
+        for z in np.linspace(land, ex[2] - 1.5, 140):
+            pts.append((ex[0] + rng.normal(0, 1.4), ex[1] + rng.normal(0, 1.4), z))
+        for z in np.linspace(top, tip[2], 20):
+            pts.append((tip[0] + rng.normal(0, 0.7), tip[1] + rng.normal(0, 0.7), z))
         cloud = pv.PolyData(np.array(pts))
-        sc.add("v/stream", cloud, (0.55, 0.55, 0.58), "rig", render_points_as_spheres=True, point_size=4.0)
+        sc.add("v/stream", cloud, (0.30, 0.31, 0.33), "rig", render_points_as_spheres=True, point_size=6.0)
         for n in car.glass:
-            sc.base_alpha[n] = min(sc.base_alpha[n], 0.18)
-        c = np.array([PX, PY, 300.0])
-        sc.cam = [tuple(c + (-330.0, -520.0, 140.0)), tuple(c + (0, 0, -20)), (0, 0, 1)]
+            sc.base_alpha[n] = min(sc.base_alpha[n], 0.14)
+        # from the front, through v5's front hatch and the balance's front glass (the posts stand at the corners)
+        c = np.array([PX, PY, 305.0])
+        sc.cam = [tuple(c + (-480.0, -160.0, 110.0)), tuple(c), (0, 0, 1)]
         sc.view_angle = 30.0
         img = Image.fromarray(sc.render_base())
         d = ImageDraw.Draw(img)
         f = scene.font(17)
-        txt = (f"The funnel option, {kind}: the Ni module's own funnel on our shuttle's upper tine, its stem "
-               f"{C.FUNNEL_GAP if kind == 'cup' else C.FUNNEL_GAP + C.CUP_L - C.VIAL_H:.1f} mm over the "
-               f"{'12.7 mm bore' if kind == 'cup' else 'vial'}; the stream falls "
-               f"{EXIT_Z - tip[2] - C.FUNNEL_H:.0f} mm onto its 40 mm cone")
-        d.rectangle((0, img.size[1] - 34, img.size[0], img.size[1]), fill=(255, 255, 255))
-        d.text((12, img.size[1] - 28), txt, fill=(20, 20, 20), font=f)
+        gap = C.FUNNEL_GAP if kind == "cup" else C.FUNNEL_GAP + C.CUP_L - C.VIAL_H
+        lines = [f"The funnel option ({kind}): the Ni module's own funnel on our shuttle's upper tine, its stem {gap:.1f} mm "
+                 f"over the {'12.7 mm bore' if kind == 'cup' else 'vial'};",
+                 f"the stream falls {EXIT_Z - tip[2] - C.FUNNEL_H:.0f} mm onto its 40 mm cone. The "
+                 f"{'cup' if kind == 'cup' else 'vial'} stands on a shorter pedestal; the shuttle stays in while it doses."]
+        d.rectangle((0, img.size[1] - 56, img.size[0], img.size[1]), fill=(255, 255, 255))
+        for j, t in enumerate(lines):
+            d.text((12, img.size[1] - 50 + 24 * j), t, fill=(20, 20, 20), font=f)
         path = OUT / f"doser_raise_{kind}.png"
         img.save(path)
         made.append(str(path.relative_to(HERE)))

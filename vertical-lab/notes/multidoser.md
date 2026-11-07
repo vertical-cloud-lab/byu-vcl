@@ -124,8 +124,125 @@ because of the scene; re-queued on another display, it ran.
 The CubXL half of the 8:37 clip opens one cap only (the seawater stock), so it needs no parking spot for a second cap
 (the cubxl stream's note in [`cubxl_corrosion.md`](cubxl_corrosion.md), round 9).
 
+## Round 10: raising the vessel toward the outlet, measured; the funnel (PR #318, 2026-11-07)
+
+Sterling: "did you get latest multi-doser with the scale? Note the comment about raising the cup on a platform of sorts
+so that the nozzle is closer, but we might end up needing to use a funnel anyway." The comment is his on powder-doser
+#185 ([2026-11-05 17:52](https://github.com/vertical-cloud-lab/powder-doser/pull/185)): "if we have a shorter scale or
+want to get it closer to the dispense point, we just raise the scale up on some kind of block (e.g., granite block)".
+
+**The latest: yes.** PR #185's head was still `353dae7` on 2026-11-07 at 22:15 UTC, the commit round 9 copied. The block
+comment is the PR's last.
+
+### Measured on v5's own geometry
+
+[`r10_doser_raise.py`](../r10_doser_raise.py) reads the copied `layout.py`/`params.py` and the tessellated parts, and
+writes [`out/doser_raise.json`](../out/doser_raise.json). The numbers are heights over the bench in the rig's frame, in mm.
+
+| What | mm |
+|---|---|
+| The auger's exit (on the hinge axis, the same at every tilt) | **435.9**, 0.05 off the pan's axis |
+| HR-202i: pan top, chamber ceiling inside, body top, top door's grip | 50, 300, 310, **312** |
+| Side door opening (the vessel's way in): sill to top, width | 40 to **291**, 148.5 |
+| Top door opening | 164 × 148.5 |
+| EC parked: the lowest part over the balance | **324.6** (the EC), **12.6 mm** over the top door's grip |
+| EC docked and tilted 30°: the lowest part within 14 / 20 mm of the stream's axis | 412.1 / 409.1 (the EC) |
+| 20 mL vial: 61 tall, Ø28, mouth Ø25.6 (our model) | rim 280.0, **fall 155.9** |
+| Charge cup: 63.5 tall, Ø19.05, bore 12.7 | rim 282.5, **fall 153.4** |
+| Carried 6 mm up on the fork, the rim under the side door opening's top | vial 5.0, cup 2.5 |
+| Tray B: the rig against the Shuttle's product height | 854 of 856.5 |
+
+![Section through the pan at the 30° dose: as built, and the funnel option](../out/doser_raise_section.png)
+
+### Why a block can't do it in v5
+
+- **A block under the balance gives everything on the pan the same lift, at no cost in capacity.** It also lifts the
+  balance's top, though. v5 parks its EC 12.6 mm above that top and keeps 10 mm clear (`HR2_TOP_GAP`), so the block
+  can be at most 2.6 mm.
+- **Closing the gap would take a much taller block.** Bringing the cup's rim within 5 mm of the exit needs 148 mm (the
+  vial 151). The balance's top would then be at 460 mm, through the docked EC, its NEMA 11, the module's plate, the
+  outlet door and the frame's front side plate: 32 kinds of part inside its outline box (listed in the JSON). The chamber would have to
+  take in the whole station.
+- **Raising the carousel with the balance gains nothing.** The exit goes up by the same amount. On tray B the rig has
+  2.5 mm to spare anyway.
+- **The vessel is already as high as the door allows.** It rides 6 mm up on the fork through the side door, so the cup's
+  rim passes 2.5 mm under the opening's top. Raising the vessel on the pan is what v5's riser and our pedestal already
+  do.
+- **So the free fall stays about 150 mm in v5, whatever the vessel stands on.**
+  - A block is the move for a **shorter** balance, as Sterling says. Put one that fits well under v5's 316 mm on a
+    granite block ([powder-doser #146](https://github.com/vertical-cloud-lab/powder-doser/issues/146), the vibration
+    paver: [#147](https://github.com/vertical-cloud-lab/powder-doser/pull/147) prices a 12 × 18 × 3 in surface
+    plate) until its top is 10 mm under the parked EC, and its pan rises with it.
+  - The lab's HR-100A is no shorter: 198 × 294 × 315 mm, from its manual
+    ([#147](https://github.com/vertical-cloud-lab/powder-doser/pull/147)).
+  - On v5 the granite does what #146 bought it for: it goes under the balance for vibration, not height. Even that
+    leaves 2.6 mm here, so on tray B it would go under the whole rig, which the 2.5 mm doesn't allow either. That one
+    is open below.
+- **What would shorten the fall is powder-doser's to change**: bring the outlet down into the chamber at the dose
+  (e.g. a short spout on each module, lowered through the open top door as the EC docks), or park the EC off the
+  balance's top.
+
+### Does the stream land in the mouth?
+
+v5's `check_stream` finds that an 8 mm column from the exit clears the module at 45°, and at 30° grazes the module's own
+outlet face (0.4 mm³). Centred on the pan's axis, that column leaves 8.8 mm on each side in the vial's 25.6 mm mouth and
+**2.35 mm** in the cup's 12.7 mm bore. That margin has to cover:
+- whatever the stream drifts over a 153 mm fall, which is powder-doser's untested T8b (strays of fine powders);
+- the stream's push out of a tilted auger;
+- how precisely the fork sets the cup down.
+
+Grains that miss the bore land on the cup's rim or our pedestal. Both are on the pan, so they are weighed as dosed but
+are not in the cup.
+
+### The funnel: for the cups, one per powder (designed and checked, not yet in the clips)
+
+- **Cups: a funnel.** 2.35 mm a side is less than a 153 mm fall can be counted on to hold (our judgement; T8b would
+  settle it), and a miss reads as a good dose. **The vial: no funnel** (8.8 mm a side).
+- **`carousel.Carousel(funnel=<label colour>)`**, off by default, draws it:
+  - the powder's own funnel is round 8's (`charge.FUNNEL`): a 40 mm cone, a 9 mm stem with a 6 mm bore, 36 mm tall.
+    Its flange rests on an **upper tine** on our shuttle's column, above the fork, in an 11 mm slot;
+  - the cup stands lower, on a shorter pedestal (top 174.5 mm, not 219), so cup and funnel go through the side door
+    together. Carried, the funnel's rim passes 3 mm under the opening's top (288 against 291).
+- **While it doses, the shuttle stays in.** Its fork is dropped 4 mm under the cup's foot and touches nothing. The
+  funnel's stem tip is 4 mm over the bore (the vial's rim: 6.5 mm). The stream falls **157.9 mm onto the 40 mm cone:
+  16 mm a side instead of 2.35.**
+- **Then it backs out**, once the EC has parked and the top door has shut. The stem passes 4 mm over the rim, the side
+  door shuts and the reading settles.
+  - `dose-to` takes its in-dose readings with the side door open as well as the top one. The final reading is taken
+    with both shut.
+  - On the pan: the shorter pedestal (about 20 g, estimated) and a topped-up Cu cup (135.7 g), about 156 g of 220.
+- **Checked with FCL** (trimesh with python-fcl; `python3 r10_doser_raise.py sweep`, the JSON's `sweep`):
+  - The shuttle with the cup or the vial runs through the port and the side door, at 41 positions along its travel
+    with the EC parked. Fork, column, tine and funnel touch nothing but the carriage's own rail.
+  - At the dose (EC docked and tilted 30°, both doors open) nothing touches. The fork is 4.0 mm from the vessel, the
+    funnel 4.6 mm from the cup and 6.5 mm from the vial.
+- **Swapping funnels.** Each funnel only ever carries its own powder. The arm swaps it at the hand-over, outside the -y
+  panel, when the powder changes. The funnel lifts 16 mm off the tine, taking its stem out of the slot, and goes to
+  round 8's stand (`charge.funnel_stand`) on tray B, held level by its band.
+  - Chapter 1 has four powders, so four funnels and three swaps. All thirteen modules would need thirteen funnels.
+  - The swaps are not animated yet.
+
+| The Ni funnel over a Cu cup on the shorter pedestal | The same over the vial |
+|---|---|
+| ![](../out/doser_raise_cup.png) | ![](../out/doser_raise_vial.png) |
+
+**Assumed (ours)**: the tine, the shorter pedestal, using the funnels at the shuttle, the stand's place, and the 6 mm
+bore's flow (fine for free-flowing gas-atomised powder; a cohesive one might bridge and want a wider stem). The
+pedestal masses are scaled by height from v5's riser (about 30 g at 194 mm). The 8 mm column is v5's. The 3 mm under
+the door is our margin. One more simplification, as in round 9: the model drops the whole shuttle carriage 10 mm
+(into its rail) when the fork drops, where a real one would carry a small lift for the column.
+
+**Not in the clips this round.** Chapter 1 and the 8:37 clip still dose without a funnel, as v5 does. Putting the
+funnel in chapter 1 needs:
+- the arm's funnel swaps at the hand-over;
+- the shuttle's cycle reordered, since it stays in while the cup doses;
+- the cup handed over level under the funnel.
+Not one of these is written yet, so neither clip was re-rendered (their code is as round 9 rendered it).
+
 ## Open
 
+- **Vibration isolation has no room on tray B.** #146's granite paver fits under neither the HR-202i (2.6 mm to v5's parked EC) nor the whole rig (2.5 mm under the Shuttle's product height). powder-doser's T8a (does the balance read true with the carousel running over it?) decides whether one is needed. If it is, the room has to come from the rig's top panel or the carousel's height.
+- **The funnel option isn't in the clips.** It still needs the arm's funnel swaps at the hand-over, the shuttle's cycle reordered (it stays in while the cup doses) and the level hand-over under the funnel, with an arm audit after each.
 - **Which balance the lab has.** v5 found no record that the lab owns an HR-202i; the documented 0.1 mg balance is
   the HR-100A (102 g), which fits the station with the hatch door's edge raised. A Cu charge cup reads 135.7 g, over
   the HR-100A's 102 g.
