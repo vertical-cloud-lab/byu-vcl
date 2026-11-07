@@ -113,6 +113,10 @@ CHAPTERS = [
                 ("still", "dal_workflow_table.png", 12.0, "DAL's alloy workflow, step by step (notes/dal_workflow.md): "
                  "the station each step uses here, and what is still missing", "DAL's 17 steps, and where each runs"),
                 ("mp4", "alloy_charge.mp4", "The charge cups"),
+                ("still", "doser_raise_section.png", 14.0, "Raise the balance on a block to shorten the fall? In v5 the "
+                 "parked carriage is 12.6 mm over the HR-202i, so no block fits; the cup stays 153 mm under the exit, "
+                 "and the option is each powder's own funnel on our shuttle (round 10)",
+                 "Can the cup come closer to the exit?"),
                 ("mp4", "vacuum_press.mp4", "The vacuum press with its catch ring")]),
     dict(key="alloy2", title="Alloy route 2/7: melt and atomize in the rePowder",
          card=["Both MiR250 + UR10e units go to the AMAZEMET rePowder, each with a 131 kg ballast plate low in its base: "
