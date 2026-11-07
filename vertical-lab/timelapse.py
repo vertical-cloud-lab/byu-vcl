@@ -1146,31 +1146,41 @@ def draw_panels(img, mv: Movie, t: float, phase: int, s: float):
         d.text((x + cw - 20 * s - vw, y), val, font=f, fill=ink)
         if row < 2:
             d.line([(x, y + 21 * s), (x + cw - 20 * s, y + 21 * s)], fill=(232, 234, 238, 255), width=1)
-    # ---- upkeep, under the ribbon (round 10): the person's week, what upkeep has taken, availability so far
+    # ---- upkeep (round 10): a card at the right edge, over the racking and above the chart, so the north row's
+    # beacons and the Shuttles' tops under the ribbon stay in view
+    cap_top = H - caption_h(d, mv.sc.caption, W, s) - 8 * s
     u = mv.up.counters(t)
-    ys0, ys1 = y1 + 4 * s, y1 + 40 * s
-    d.rounded_rectangle((8 * s, ys0, W - 8 * s, ys1), 8 * s, fill=(255, 255, 255, 232), outline=(190, 196, 204, 255))
-    d.text((20 * s, ys0 + 5 * s), "upkeep", font=font(13 * s, bold=True), fill=ink)
-    d.text((20 * s, ys0 + 20 * s), "(model)", font=font(11 * s), fill=grey)
     pct = lambda v: "-" if v is None else f"{100 * v:.1f} %"                          # noqa: E731
     week_h = u["week_crucible"] + u["week_upkeep"]
     ucells = [("the person's hours this week", f"{week_h:.0f} of 40 h",
                f"crucible {u['week_crucible']:.0f}, upkeep {u['week_upkeep']:.0f}"),
-              ("upkeep so far", f"{u['people']:,.0f} h people", f"{u['arms']:,.0f} h the arms' checks"),
-              ("tasks done", f"{u['tasks'] + u['checks']:,}", f"{u['checks']:,} by the arms; {u['repairs']} repairs"),
-              ("available so far", pct(u["avail_route"]), "the route's stations, on average"),
-              ("the atomizer, the units", f"{pct(u['avail_atom'])}, {pct(u['avail_units'])}", "available so far")]
-    xa = 100 * s
-    cw2 = (W - 8 * s - xa) / len(ucells)
-    for i, (name, val, sub) in enumerate(ucells):
-        x = xa + i * cw2
-        d.line([(x, ys0 + 6 * s), (x, ys1 - 6 * s)], fill=(225, 228, 232, 255), width=1)
-        d.text((x + 10 * s, ys0 + 3 * s), name, font=font(11 * s), fill=grey)
+              ("upkeep so far", f"{u['people']:,.0f} h", "the person's"),
+              ("", f"{u['arms']:,.0f} h", "the arms' checks"),
+              ("tasks done", f"{u['tasks'] + u['checks']:,}", f"{u['checks']:,} by the arms"),
+              ("repairs", f"{u['repairs']}", ""),
+              ("available so far", pct(u["avail_route"]), "the stations, on average"),
+              ("", pct(u["avail_atom"]), "the atomizer"),
+              ("", pct(u["avail_units"]), "the two units")]
+    cw = 236 * s
+    x0c, y0c = W - 8 * s - cw, y1 + 8 * s
+    y1c = (cap_top - 196 * s - 12 * s) if phase >= 3 else (y0c + 280 * s)
+    n_lab = sum(1 for c_ in ucells if c_[0])
+    step_v = min(20 * s, (y1c - y0c - 32 * s - n_lab * 16 * s) / len(ucells))
+    hc = 26 * s + n_lab * 16 * s + len(ucells) * step_v + 6 * s
+    d.rounded_rectangle((x0c, y0c, x0c + cw, y0c + hc), 8 * s, fill=(255, 255, 255, 232),
+                        outline=(190, 196, 204, 255))
+    d.text((x0c + 12 * s, y0c + 6 * s), "Upkeep (model)", font=font(12.5 * s, bold=True), fill=grey)
+    yy = y0c + 26 * s
+    for name, val, sub in ucells:
+        if name:
+            yy += 3 * s
+            d.text((x0c + 12 * s, yy), name, font=font(10.5 * s), fill=grey)
+            yy += 13 * s
         fv = font(14 * s, bold=True)
-        d.text((x + 10 * s, ys0 + 17 * s), val, font=fv, fill=ink)
-        d.text((x + 16 * s + d.textlength(val, font=fv), ys0 + 20 * s), sub, font=font(10.5 * s), fill=grey)
+        d.text((x0c + 12 * s, yy), val, font=fv, fill=ink)
+        d.text((x0c + 18 * s + d.textlength(val, font=fv), yy + 3 * s), sub, font=font(10.5 * s), fill=grey)
+        yy += step_v
     # ---- running now, and the beacons' key (hours and days)
-    cap_top = H - caption_h(d, mv.sc.caption, W, s) - 8 * s
     if phase in (1, 2):
         rows, urows = [], []
         for kind, r in mv.urows[:3]:                     # upkeep first: the person, a vendor, a fault waiting
