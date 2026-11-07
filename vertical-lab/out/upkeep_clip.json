@@ -1,0 +1,489 @@
+{
+ "name": "upkeep_clip",
+ "fps": 6,
+ "n_frames": 701,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/3 The week",
+   "caption": "Maintenance in the workflow. A lab that runs round the clock still needs looking after: balances checked, bowls cleaned, filters changed, thermocouples verified. Each task is booked like a job, with who does it: the arm between jobs, or a person on a weekday shift.",
+   "start_frame": 0,
+   "end_frame": 26
+  },
+  {
+   "label": "1/3 The week",
+   "caption": "The week's schedule from upkeep.py: experiments, the arm's own checks between them, and people's tasks on weekday shifts, so nothing is due at once and a station is out of service only while it is worked on.",
+   "start_frame": 27,
+   "end_frame": 31
+  },
+  {
+   "label": "1/3 The week",
+   "caption": "The week's schedule from upkeep.py: experiments, the arm's own checks between them, and people's tasks on weekday shifts, so nothing is due at once and a station is out of service only while it is worked on.",
+   "start_frame": 32,
+   "end_frame": 74
+  },
+  {
+   "label": "1/3 The week",
+   "caption": "The week's schedule from upkeep.py: experiments, the arm's own checks between them, and people's tasks on weekday shifts, so nothing is due at once and a station is out of service only while it is worked on.",
+   "start_frame": 75,
+   "end_frame": 78
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "Between two dosing runs at night, the HR-202i's daily check. The arm brought the 100 g class E2 weight up from tray J's store with the night's first job; it rides on the MiR's deck, in a low seat of its own (ours). Tray B, the doser, comes down.",
+   "start_frame": 79,
+   "end_frame": 100
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "Between two dosing runs at night, the HR-202i's daily check. The arm brought the 100 g class E2 weight up from tray J's store with the night's first job; it rides on the MiR's deck, in a low seat of its own (ours). Tray B, the doser, comes down.",
+   "start_frame": 101,
+   "end_frame": 105
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "Between two dosing runs at night, the HR-202i's daily check. The arm brought the 100 g class E2 weight up from tray J's store with the night's first job; it rides on the MiR's deck, in a low seat of its own (ours). Tray B, the doser, comes down.",
+   "start_frame": 106,
+   "end_frame": 113
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "Between two dosing runs at night, the HR-202i's daily check. The arm brought the 100 g class E2 weight up from tray J's store with the night's first job; it rides on the MiR's deck, in a low seat of its own (ours). Tray B, the doser, comes down.",
+   "start_frame": 114,
+   "end_frame": 118
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "Between two dosing runs at night, the HR-202i's daily check. The arm brought the 100 g class E2 weight up from tray J's store with the night's first job; it rides on the MiR's deck, in a low seat of its own (ours). Tray B, the doser, comes down.",
+   "start_frame": 119,
+   "end_frame": 120
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "Between two dosing runs at night, the HR-202i's daily check. The arm brought the 100 g class E2 weight up from tray J's store with the night's first job; it rides on the MiR's deck, in a low seat of its own (ours). Tray B, the doser, comes down.",
+   "start_frame": 121,
+   "end_frame": 127
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "Between two dosing runs at night, the HR-202i's daily check. The arm brought the 100 g class E2 weight up from tray J's store with the night's first job; it rides on the MiR's deck, in a low seat of its own (ours). Tray B, the doser, comes down.",
+   "start_frame": 128,
+   "end_frame": 129
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "The arm takes the weight by its body, as weight tongs would (no skin, no oil), and stands it on our vessel shuttle's fork outside the doser, where it sets the vials down.",
+   "start_frame": 131,
+   "end_frame": 141
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "The arm takes the weight by its body, as weight tongs would (no skin, no oil), and stands it on our vessel shuttle's fork outside the doser, where it sets the vials down.",
+   "start_frame": 142,
+   "end_frame": 147
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "The arm takes the weight by its body, as weight tongs would (no skin, no oil), and stands it on our vessel shuttle's fork outside the doser, where it sets the vials down.",
+   "start_frame": 148,
+   "end_frame": 150
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "The arm takes the weight by its body, as weight tongs would (no skin, no oil), and stands it on our vessel shuttle's fork outside the doser, where it sets the vials down.",
+   "start_frame": 151,
+   "end_frame": 155
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "The arm takes the weight by its body, as weight tongs would (no skin, no oil), and stands it on our vessel shuttle's fork outside the doser, where it sets the vials down.",
+   "start_frame": 156,
+   "end_frame": 166
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "The arm takes the weight by its body, as weight tongs would (no skin, no oil), and stands it on our vessel shuttle's fork outside the doser, where it sets the vials down.",
+   "start_frame": 167,
+   "end_frame": 172
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "The arm takes the weight by its body, as weight tongs would (no skin, no oil), and stands it on our vessel shuttle's fork outside the doser, where it sets the vials down.",
+   "start_frame": 173,
+   "end_frame": 175
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "The arm takes the weight by its body, as weight tongs would (no skin, no oil), and stands it on our vessel shuttle's fork outside the doser, where it sets the vials down.",
+   "start_frame": 176,
+   "end_frame": 180
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "The arm parks. The side door opens, the shuttle carries the weight in, sets it on the pedestal on the pan and backs out; the door shuts. The HR-202i has no internal mass (A&D's HR-i manual: calibrate 'using a weight that you have'), so this weight is its check, and once a month its calibration.",
+   "start_frame": 181,
+   "end_frame": 188
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "The arm parks. The side door opens, the shuttle carries the weight in, sets it on the pedestal on the pan and backs out; the door shuts. The HR-202i has no internal mass (A&D's HR-i manual: calibrate 'using a weight that you have'), so this weight is its check, and once a month its calibration.",
+   "start_frame": 189,
+   "end_frame": 200
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "The arm parks. The side door opens, the shuttle carries the weight in, sets it on the pedestal on the pan and backs out; the door shuts. The HR-202i has no internal mass (A&D's HR-i manual: calibrate 'using a weight that you have'), so this weight is its check, and once a month its calibration.",
+   "start_frame": 201,
+   "end_frame": 203
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "The arm parks. The side door opens, the shuttle carries the weight in, sets it on the pedestal on the pan and backs out; the door shuts. The HR-202i has no internal mass (A&D's HR-i manual: calibrate 'using a weight that you have'), so this weight is its check, and once a month its calibration.",
+   "start_frame": 204,
+   "end_frame": 206
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "The arm parks. The side door opens, the shuttle carries the weight in, sets it on the pedestal on the pan and backs out; the door shuts. The HR-202i has no internal mass (A&D's HR-i manual: calibrate 'using a weight that you have'), so this weight is its check, and once a month its calibration.",
+   "start_frame": 207,
+   "end_frame": 215
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "The arm parks. The side door opens, the shuttle carries the weight in, sets it on the pedestal on the pan and backs out; the door shuts. The HR-202i has no internal mass (A&D's HR-i manual: calibrate 'using a weight that you have'), so this weight is its check, and once a month its calibration.",
+   "start_frame": 216,
+   "end_frame": 220
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "Doors shut, the reading settles: 100.0001 g against the weight's certificate. The shuttle lifts it off and back ten times (USP <41>'s repeatability; one is shown), and the mean goes on the control chart against the lab's limits.",
+   "start_frame": 221,
+   "end_frame": 231
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "Doors shut, the reading settles: 100.0001 g against the weight's certificate. The shuttle lifts it off and back ten times (USP <41>'s repeatability; one is shown), and the mean goes on the control chart against the lab's limits.",
+   "start_frame": 232,
+   "end_frame": 235
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "Doors shut, the reading settles: 100.0001 g against the weight's certificate. The shuttle lifts it off and back ten times (USP <41>'s repeatability; one is shown), and the mean goes on the control chart against the lab's limits.",
+   "start_frame": 236,
+   "end_frame": 261
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "Had it read outside the limits, the arm repeats it once; still out, the scheduler flags the doser, so no doses are booked on it, and books a person's task for the next shift: clean the chamber, level, calibrate with the E2 set.",
+   "start_frame": 262,
+   "end_frame": 265
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "Had it read outside the limits, the arm repeats it once; still out, the scheduler flags the doser, so no doses are booked on it, and books a person's task for the next shift: clean the chamber, level, calibrate with the E2 set.",
+   "start_frame": 266,
+   "end_frame": 293
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "Had it read outside the limits, the arm repeats it once; still out, the scheduler flags the doser, so no doses are booked on it, and books a person's task for the next shift: clean the chamber, level, calibrate with the E2 set.",
+   "start_frame": 294,
+   "end_frame": 296
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "Today it passed. The shuttle brings the weight back out, the arm returns it to its seat on the deck (it goes back to tray J with the next run's samples), and tray B goes back up. About twelve minutes (upkeep.py books 0.2 h), between two night-time jobs.",
+   "start_frame": 297,
+   "end_frame": 301
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "Today it passed. The shuttle brings the weight back out, the arm returns it to its seat on the deck (it goes back to tray J with the next run's samples), and tray B goes back up. About twelve minutes (upkeep.py books 0.2 h), between two night-time jobs.",
+   "start_frame": 302,
+   "end_frame": 309
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "Today it passed. The shuttle brings the weight back out, the arm returns it to its seat on the deck (it goes back to tray J with the next run's samples), and tray B goes back up. About twelve minutes (upkeep.py books 0.2 h), between two night-time jobs.",
+   "start_frame": 310,
+   "end_frame": 311
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "Today it passed. The shuttle brings the weight back out, the arm returns it to its seat on the deck (it goes back to tray J with the next run's samples), and tray B goes back up. About twelve minutes (upkeep.py books 0.2 h), between two night-time jobs.",
+   "start_frame": 312,
+   "end_frame": 313
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "Today it passed. The shuttle brings the weight back out, the arm returns it to its seat on the deck (it goes back to tray J with the next run's samples), and tray B goes back up. About twelve minutes (upkeep.py books 0.2 h), between two night-time jobs.",
+   "start_frame": 314,
+   "end_frame": 321
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "Today it passed. The shuttle brings the weight back out, the arm returns it to its seat on the deck (it goes back to tray J with the next run's samples), and tray B goes back up. About twelve minutes (upkeep.py books 0.2 h), between two night-time jobs.",
+   "start_frame": 322,
+   "end_frame": 325
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "Today it passed. The shuttle brings the weight back out, the arm returns it to its seat on the deck (it goes back to tray J with the next run's samples), and tray B goes back up. About twelve minutes (upkeep.py books 0.2 h), between two night-time jobs.",
+   "start_frame": 326,
+   "end_frame": 334
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "Today it passed. The shuttle brings the weight back out, the arm returns it to its seat on the deck (it goes back to tray J with the next run's samples), and tray B goes back up. About twelve minutes (upkeep.py books 0.2 h), between two night-time jobs.",
+   "start_frame": 335,
+   "end_frame": 339
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "Today it passed. The shuttle brings the weight back out, the arm returns it to its seat on the deck (it goes back to tray J with the next run's samples), and tray B goes back up. About twelve minutes (upkeep.py books 0.2 h), between two night-time jobs.",
+   "start_frame": 340,
+   "end_frame": 342
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "Today it passed. The shuttle brings the weight back out, the arm returns it to its seat on the deck (it goes back to tray J with the next run's samples), and tray B goes back up. About twelve minutes (upkeep.py books 0.2 h), between two night-time jobs.",
+   "start_frame": 343,
+   "end_frame": 347
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "Today it passed. The shuttle brings the weight back out, the arm returns it to its seat on the deck (it goes back to tray J with the next run's samples), and tray B goes back up. About twelve minutes (upkeep.py books 0.2 h), between two night-time jobs.",
+   "start_frame": 348,
+   "end_frame": 356
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "Today it passed. The shuttle brings the weight back out, the arm returns it to its seat on the deck (it goes back to tray J with the next run's samples), and tray B goes back up. About twelve minutes (upkeep.py books 0.2 h), between two night-time jobs.",
+   "start_frame": 357,
+   "end_frame": 361
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "Today it passed. The shuttle brings the weight back out, the arm returns it to its seat on the deck (it goes back to tray J with the next run's samples), and tray B goes back up. About twelve minutes (upkeep.py books 0.2 h), between two night-time jobs.",
+   "start_frame": 362,
+   "end_frame": 364
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "Today it passed. The shuttle brings the weight back out, the arm returns it to its seat on the deck (it goes back to tray J with the next run's samples), and tray B goes back up. About twelve minutes (upkeep.py books 0.2 h), between two night-time jobs.",
+   "start_frame": 365,
+   "end_frame": 369
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "Today it passed. The shuttle brings the weight back out, the arm returns it to its seat on the deck (it goes back to tray J with the next run's samples), and tray B goes back up. About twelve minutes (upkeep.py books 0.2 h), between two night-time jobs.",
+   "start_frame": 370,
+   "end_frame": 377
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "Today it passed. The shuttle brings the weight back out, the arm returns it to its seat on the deck (it goes back to tray J with the next run's samples), and tray B goes back up. About twelve minutes (upkeep.py books 0.2 h), between two night-time jobs.",
+   "start_frame": 378,
+   "end_frame": 379
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "Today it passed. The shuttle brings the weight back out, the arm returns it to its seat on the deck (it goes back to tray J with the next run's samples), and tray B goes back up. About twelve minutes (upkeep.py books 0.2 h), between two night-time jobs.",
+   "start_frame": 380,
+   "end_frame": 385
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "Today it passed. The shuttle brings the weight back out, the arm returns it to its seat on the deck (it goes back to tray J with the next run's samples), and tray B goes back up. About twelve minutes (upkeep.py books 0.2 h), between two night-time jobs.",
+   "start_frame": 386,
+   "end_frame": 388
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "Today it passed. The shuttle brings the weight back out, the arm returns it to its seat on the deck (it goes back to tray J with the next run's samples), and tray B goes back up. About twelve minutes (upkeep.py books 0.2 h), between two night-time jobs.",
+   "start_frame": 389,
+   "end_frame": 393
+  },
+  {
+   "label": "2/3 A check between jobs",
+   "caption": "Today it passed. The shuttle brings the weight back out, the arm returns it to its seat on the deck (it goes back to tray J with the next run's samples), and tray B goes back up. About twelve minutes (upkeep.py books 0.2 h), between two night-time jobs.",
+   "start_frame": 394,
+   "end_frame": 399
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "A person's task, counted rather than dated: after 600 runs the iMicro's Berkovich tip is due (upkeep.py: two hours, the tray pulled out). Tray E comes to the opening; the tip sits 0.8 m from where a person stands there.",
+   "start_frame": 401,
+   "end_frame": 405
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "A person's task, counted rather than dated: after 600 runs the iMicro's Berkovich tip is due (upkeep.py: two hours, the tray pulled out). Tray E comes to the opening; the tip sits 0.8 m from where a person stands there.",
+   "start_frame": 406,
+   "end_frame": 413
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "A person's task, counted rather than dated: after 600 runs the iMicro's Berkovich tip is due (upkeep.py: two hours, the tray pulled out). Tray E comes to the opening; the tip sits 0.8 m from where a person stands there.",
+   "start_frame": 414,
+   "end_frame": 418
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "A person's task, counted rather than dated: after 600 runs the iMicro's Berkovich tip is due (upkeep.py: two hours, the tray pulled out). Tray E comes to the opening; the tip sits 0.8 m from where a person stands there.",
+   "start_frame": 419,
+   "end_frame": 420
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "A person's task, counted rather than dated: after 600 runs the iMicro's Berkovich tip is due (upkeep.py: two hours, the tray pulled out). Tray E comes to the opening; the tip sits 0.8 m from where a person stands there.",
+   "start_frame": 421,
+   "end_frame": 427
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "A person's task, counted rather than dated: after 600 runs the iMicro's Berkovich tip is due (upkeep.py: two hours, the tray pulled out). Tray E comes to the opening; the tip sits 0.8 m from where a person stands there.",
+   "start_frame": 428,
+   "end_frame": 429
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "A person's task, counted rather than dated: after 600 runs the iMicro's Berkovich tip is due (upkeep.py: two hours, the tray pulled out). Tray E comes to the opening; the tip sits 0.8 m from where a person stands there.",
+   "start_frame": 431,
+   "end_frame": 439
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "The MiR250 + UR10e drives off to Shuttle 2, which carries on working: only Shuttle 1's opening is taken. A person rolls the extraction table (ours: Kardex publishes no size for its device or its cart) to the opening and docks it against the cover.",
+   "start_frame": 440,
+   "end_frame": 482
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "Kardex's full tray extraction: \"a tray is placed in front of the access opening\". The tray leaves its dock in the bay, so it runs on nothing while it is out (the iMicro shut down first). It rolls out onto the table's rails.",
+   "start_frame": 483,
+   "end_frame": 486
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "Kardex's full tray extraction: \"a tray is placed in front of the access opening\". The tray leaves its dock in the bay, so it runs on nothing while it is out (the iMicro shut down first). It rolls out onto the table's rails.",
+   "start_frame": 487,
+   "end_frame": 506
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "The hood lifts. Gloves and safety glasses; the person reaches in to the indenter head, unscrews the old tip, fits the new one by hand and seats it to its torque.",
+   "start_frame": 507,
+   "end_frame": 515
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "The hood lifts. Gloves and safety glasses; the person reaches in to the indenter head, unscrews the old tip, fits the new one by hand and seats it to its torque.",
+   "start_frame": 516,
+   "end_frame": 526
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "The hood lifts. Gloves and safety glasses; the person reaches in to the indenter head, unscrews the old tip, fits the new one by hand and seats it to its torque.",
+   "start_frame": 527,
+   "end_frame": 552
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "The hood lifts. Gloves and safety glasses; the person reaches in to the indenter head, unscrews the old tip, fits the new one by hand and seats it to its torque.",
+   "start_frame": 553,
+   "end_frame": 560
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "Hood down, the tray rolls back into the bay and onto its dock: power back. The person takes the table away. The new tip's area function is the arm's job, booked as its next one on tray E: indents in the fused-silica reference (upkeep.py's weekly check).",
+   "start_frame": 561,
+   "end_frame": 567
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "Hood down, the tray rolls back into the bay and onto its dock: power back. The person takes the table away. The new tip's area function is the arm's job, booked as its next one on tray E: indents in the fused-silica reference (upkeep.py's weekly check).",
+   "start_frame": 568,
+   "end_frame": 586
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "Hood down, the tray rolls back into the bay and onto its dock: power back. The person takes the table away. The new tip's area function is the arm's job, booked as its next one on tray E: indents in the fused-silica reference (upkeep.py's weekly check).",
+   "start_frame": 587,
+   "end_frame": 610
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "The MiR250 + UR10e docks at Shuttle 1 again; tray E goes back up until the arm's fused-silica check on the new tip, before any sample. The iMicro's run count starts again from zero.",
+   "start_frame": 611,
+   "end_frame": 653
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "The MiR250 + UR10e docks at Shuttle 1 again; tray E goes back up until the arm's fused-silica check on the new tip, before any sample. The iMicro's run count starts again from zero.",
+   "start_frame": 654,
+   "end_frame": 655
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "The MiR250 + UR10e docks at Shuttle 1 again; tray E goes back up until the arm's fused-silica check on the new tip, before any sample. The iMicro's run count starts again from zero.",
+   "start_frame": 656,
+   "end_frame": 662
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "The MiR250 + UR10e docks at Shuttle 1 again; tray E goes back up until the arm's fused-silica check on the new tip, before any sample. The iMicro's run count starts again from zero.",
+   "start_frame": 663,
+   "end_frame": 665
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "The MiR250 + UR10e docks at Shuttle 1 again; tray E goes back up until the arm's fused-silica check on the new tip, before any sample. The iMicro's run count starts again from zero.",
+   "start_frame": 666,
+   "end_frame": 670
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "The MiR250 + UR10e docks at Shuttle 1 again; tray E goes back up until the arm's fused-silica check on the new tip, before any sample. The iMicro's run count starts again from zero.",
+   "start_frame": 671,
+   "end_frame": 677
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "The MiR250 + UR10e docks at Shuttle 1 again; tray E goes back up until the arm's fused-silica check on the new tip, before any sample. The iMicro's run count starts again from zero.",
+   "start_frame": 679,
+   "end_frame": 700
+  }
+ ],
+ "parts": [
+  {
+   "part": "1/3 The week",
+   "start_frame": 0,
+   "end_frame": 78
+  },
+  {
+   "part": "2/3 A check between jobs",
+   "start_frame": 79,
+   "end_frame": 399
+  },
+  {
+   "part": "3/3 A person's task",
+   "start_frame": 401,
+   "end_frame": 700
+  }
+ ],
+ "assumed": {
+  "extraction_table": "2360 x 900 mm, rails at 854 mm (Kardex publishes no size for its extraction device or cart)",
+  "check_weight": "100 g OIML E2, 24 mm across, 37.5 mm tall (OIML R 111-1's knob form, sized from the mass)",
+  "limits_mg": {
+   "action": 0.3,
+   "warning": 0.2,
+   "e2_mpe": 0.16
+  },
+  "readings": "illustrative",
+  "person": "drawn here, 1.75 m; no figure existed in the codebase"
+ }
+}
