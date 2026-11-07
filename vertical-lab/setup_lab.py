@@ -946,7 +946,12 @@ def build(data, idata, mp4=True, name="setup_lab", title=TITLE, highlight=None):
                 for nm in rig.names.pop(piece):
                     sc.alpha[nm] = 0.0
             rigs[pre[:-1]] = rig
-            items[k].append((key, f"{pre}body", rig.all_names(), item_label(inst)))
+            # round 10: a fade piece that starts hidden (v0 = 0: the jar store's tint sleeves, a glow, a powder) is left
+            # out of the names the loading fades in, so it stays hidden; it still answers its rig's moves. Round 10's
+            # first set-up render showed tray N's and O's jars tinted teal and amber with no legend.
+            hid = {nm for pc, ns in rig.names.items() if pc in inst.joints and inst.joints[pc].kind == "fade"
+                   and not inst.joints[pc].v0 for nm in ns}
+            items[k].append((key, f"{pre}body", [nm for nm in rig.all_names() if nm not in hid], item_label(inst)))
         ups = add_ups(sc, k)
         items[k].append(("ups", f"ups_{k}", ups, "UPS"))
         for g in add_cams(sc, k):
