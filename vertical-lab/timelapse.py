@@ -804,6 +804,16 @@ class UpkeepView:
 
 
 VENDOR_COAT = (0.20, 0.27, 0.42)          # a vendor's navy jacket, so the two figures read apart
+UP_NAMES = dict(open1="Shuttle 1's opening", open2="Shuttle 2's opening", unit0="unit 1", unit1="unit 2",
+                vlm1="Shuttle 1", vlm2="Shuttle 2", n2="the N2 generator", chiller="the chiller",
+                glovebox="the gloveboxes", fumehood="the fume hood", depowder="the depowdering box",
+                packaging="the packaging station", ded="the DED cell", staff="the lab", it="IT", site="the site")
+
+
+def up_name(key: str) -> str:
+    if key.startswith("tray:"):
+        return f"tray {key[5:]}"
+    return UP_NAMES.get(key) or STATION_NAMES.get(key, key)
 LIP = -1612.0                             # the front of the blue cover under a Shuttle's opening (vlm.opening)
 
 
@@ -1164,7 +1174,7 @@ def draw_panels(img, mv: Movie, t: float, phase: int, s: float):
     if phase in (1, 2):
         rows, urows = [], []
         for kind, r in mv.urows[:3]:                     # upkeep first: the person, a vendor, a fault waiting
-            where = STATION_NAMES.get(r["own"], r["own"])
+            where = up_name(r["own"])
             sh, tray = mv.up.opening_of(r)
             if sh:
                 where = f"Shuttle {sh}'s opening" + (f", tray {tray}" if tray and not r["what"].startswith("tray")
@@ -1172,7 +1182,7 @@ def draw_panels(img, mv: Movie, t: float, phase: int, s: float):
             elif r["own"].startswith("unit"):
                 where = f"unit {int(r['own'][4:]) + 1} on its charger"
             if kind == "wait":
-                urows.append(("stopped: " + STATION_NAMES.get(r["own"], r["own"]) + f": {r['mode']}; waits for "
+                urows.append(("stopped: " + up_name(r["own"]) + f": {r['mode']}; waits for "
                               + ("a vendor" if r["who"] == "vendor" else "the next shift"), C_FAIL))
             elif kind == "person":
                 urows.append((f"the person, {where}: {r['what']}" if r["who"] != "desk" else
