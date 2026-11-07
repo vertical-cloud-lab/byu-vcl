@@ -1274,8 +1274,8 @@ def plot_year(m: dict, path=None):
     import matplotlib.pyplot as plt
     path = path or OUT / f"{NAME}_year.png"
     fig = plt.figure(figsize=(16, 10.6), dpi=110, facecolor=SURF)
-    gs = fig.add_gridspec(2, 2, width_ratios=[1.0, 1.2], height_ratios=[1.0, 0.8], wspace=0.30, hspace=0.62,
-                          left=0.215, right=0.925, top=0.855, bottom=0.115)
+    gs = fig.add_gridspec(2, 2, width_ratios=[1.0, 1.2], height_ratios=[1.0, 0.78], wspace=0.30, hspace=0.78,
+                          left=0.215, right=0.915, top=0.855, bottom=0.07)
     fig.suptitle("Upkeep in the lab's first year (model)", x=0.012, y=0.975, ha="left", fontsize=17,
                  fontweight="bold", color=INK)
     tot = m["totals"]
@@ -1304,7 +1304,8 @@ def plot_year(m: dict, path=None):
     ax.set_xlabel("hours out of use in the year (label: availability)", color=INK2, fontsize=10)
     ax.set_xlim(0, max(left) * 1.22)
     ax.set_title("Availability per station", loc="left", fontsize=12.5, fontweight="bold", color=INK, pad=10)
-    ax.legend(loc="upper left", bbox_to_anchor=(-0.02, -0.055), fontsize=9, frameon=False)
+    ax.legend(loc="upper left", bbox_to_anchor=(0.27, 0.60), fontsize=9, frameon=True, facecolor=SURF,
+              edgecolor=GRID, framealpha=1.0, title="hours out of use", title_fontsize=9)
     # ---- people's hours per week
     ax = fig.add_subplot(gs[0, 1])
     _style(ax)
@@ -1323,13 +1324,13 @@ def plot_year(m: dict, path=None):
     ax.text(52.9, 40, "one\nperson's\n40 h week", fontsize=8.5, color=INK2, va="center", ha="left")
     ax.set_xlim(0.3, 52.7)
     ax.set_ylim(0, max(45, bot.max() * 1.1))
-    ax.set_xlabel("week of the first year", color=INK2, fontsize=10)
+    ax.set_xlabel("week of the first year (the mean is from week 9, after the ramp)", color=INK2, fontsize=10)
     ax.set_ylabel("people's hours", color=INK2, fontsize=10)
     mean = m["people_hours_per_week"]["mean_after_ramp"]
-    ax.set_title(f"People's hours per week, by kind of task (mean {mean:.0f} h from week 9)", loc="left",
+    ax.set_title(f"People's hours a week, by task (mean {mean:.0f} h)", loc="left",
                  fontsize=12.5, fontweight="bold", color=INK, pad=10)
-    ax.legend(loc="upper left", bbox_to_anchor=(-0.01, -0.15), ncol=4, fontsize=9, frameon=False,
-              columnspacing=1.2, handlelength=1.4)
+    ax.legend(loc="upper left", bbox_to_anchor=(-0.01, -0.15), ncol=3, fontsize=9, frameon=False,
+              columnspacing=1.6, handlelength=1.4)
     # ---- the year's totals
     ax = fig.add_subplot(gs[1, 1])
     _style(ax)
