@@ -22,6 +22,15 @@ two units), driven by the schedule: the tray a step needs comes to its Shuttle's
 it, the units dock where the schedule says they are, and a status beacon on each floor machine shows its state. The
 beacons are drawn for this clip; they are not a design. Frames are rendered one by one (no Scene.step), so the counters
 and the clock change every frame while the 3-D scene only moves groups.
+
+**Round 10: upkeep is in the schedule and on screen.** Sterling, on PR #318 (2026-11-07): "Something that's been on my
+mind is maintenance over long-term and how that gets handled in workflows." ``sims()`` books upkeep.py's tasks and
+seeded failures into the same schedule (calendar PM, consumables by use, the arms' reference checks, repairs), and the
+film shows them: the one person on shift drawn where their task is (the atomizer's crucible, a tray held at a
+Shuttle's opening with the units kept away, a floor machine, a unit on its charger), a vendor likewise, the beacons
+amber while a station is out for upkeep and red while a fault waits for someone, and a strip of counters under the
+throughput ones: people's hours this week, upkeep hours and tasks so far, availability so far. The chart and the
+totals card set the year against the same schedule with no upkeep at all (round 8's).
 """
 from __future__ import annotations
 
@@ -422,12 +431,63 @@ def utilization(sim: dict, t0: float, t1: float) -> dict:
     return {k: v / (t1 - t0) for k, v in sorted(tot.items(), key=lambda kv: -kv[1])}
 
 
+_SIMS: dict = {}
+
+
+def sims() -> tuple[dict, dict]:
+    """(the year with upkeep.py's maintenance and failures booked into it, as the finale shows it since round 10; the
+    same schedule with none, as round 8 had it). Cached."""
+    if not _SIMS:
+        import upkeep as UK
+        _SIMS["up"] = simulate(upkeep=UK.Upkeep())
+        _SIMS["base"] = simulate()
+    return _SIMS["up"], _SIMS["base"]
+
+
+def upkeep_summary(sim: dict, base: dict) -> dict:
+    """What the year's upkeep costs, from upkeep.py's own measures of the same schedule (out/upkeep_model.json has
+    every task with its interval, who does it and its source)."""
+    import upkeep as UK
+    log = sim["maint"]
+    av = UK.availability(sim)
+    ppl = UK.weekly_people(sim)
+    steady = range(8, 52)
+    wk = [sum(ppl[k][i] for k in UK.KINDS) for i in range(52)]
+    mean = {k: float(np.mean([ppl[k][i] for i in steady])) for k in UK.KINDS}
+    people_h = sum(r["person_h"] for r in log if r["who"] in UK.PEOPLE or r["who"] == "vendor")   # hosting a vendor too
+    arm_h = sum(r["t1"] - r["t0"] for r in log if r["who"] == "arm")
+    tested = [sum(1 for r in x["alloys"] if r.get("tested", 1e18) <= YEAR_H) for x in (sim, base)]
+    atom = [sum(1 for r in x["alloys"] if r["atomized"] <= YEAR_H) for x in (sim, base)]
+    route = [k for k in UK.ROUTE if k in av]
+    return dict(
+        what="upkeep.py's tasks and seeded failures booked into this schedule: calendar PM, consumables by use, the "
+             "arms' reference checks (control charts), repairs by a person on the next shift or a vendor after a wait "
+             "for parts. A model; out/upkeep_model.json has every task with its source.",
+        people_hours_per_week=dict(mean_after_ramp=round(float(np.mean([wk[i] for i in steady])), 1),
+                                   max=round(max(wk), 1), crucible=round(mean["crucible"], 1),
+                                   upkeep=round(sum(v for k, v in mean.items() if k != "crucible"), 1),
+                                   of_a_shift_week=40.0),
+        tasks=dict(arm_checks=sum(1 for r in log if r["who"] == "arm"),
+                   people=sum(1 for r in log if r["who"] in UK.PEOPLE and r["planned"]),
+                   vendor_visits=sum(1 for r in log if r["who"] == "vendor" and r["planned"]),
+                   machine_itself=sum(1 for r in log if r["who"] == "auto"),
+                   repairs=sum(1 for r in log if not r["planned"])),
+        hours=dict(people=round(people_h), arms=round(arm_h)),
+        availability={k: v["availability"] for k, v in av.items()},
+        availability_route_mean=round(float(np.mean([av[k]["availability"] for k in route])), 4),
+        alloys_a_year=dict(atomized_with_upkeep=atom[0], atomized_without=atom[1], tested_with_upkeep=tested[0],
+                           tested_without=tested[1]),
+    )
+
+
 def model(write=True) -> dict:
-    sim = simulate()
+    sim, base = sims()
     ncam = cameras()
     marks = {"1 day": 24, "1 week": 168, "4 weeks": 672, "13 weeks": 2184, "26 weeks": 4368, "1 year": YEAR_H}
     at = {k: {kk: (round(v, 2) if isinstance(v, float) else v) for kk, v in counters(sim, h, ncam).items()}
           for k, h in marks.items()}
+    at_base = {k: {kk: (round(v, 2) if isinstance(v, float) else v) for kk, v in counters(base, h, ncam).items()}
+               for k, h in marks.items()}
     lat = [r["tested"] - r["atomized"] for r in sim["alloys"] if "tested" in r]
     first = min((r["tested"] for r in sim["alloys"] if "tested" in r), default=None)
     util = utilization(sim, 24 * 28, YEAR_H)
@@ -438,11 +498,12 @@ def model(write=True) -> dict:
             break
         slots += 1
         t += 0.01
-    used = sum(1 for e in sim["events"] if e["step"] == "atomize" and e["t1"] <= YEAR_H)
+    used = sum(1 for e in sim["events"] if e["step"] == "atomize" and e["t1"] <= YEAR_H and not e.get("interrupted"))
     out = dict(
         what="The lab at speed (timelapse.py): a greedy schedule of every alloy through the route of chapters 1-7, "
              "each step on its station, carried by two MiR250 + UR10e units; the atomizer's crucible changed by a "
-             "person on weekday shifts, everything else round the clock. A model, not a measurement.",
+             "person on weekday shifts, everything else round the clock; since round 10 with upkeep.py's maintenance "
+             "and seeded failures booked into it. A model, not a measurement.",
         fully_tested="atomized powder measured (laser diffraction, XRD, XRF, SEM); printed in the 55 mm kit; heat "
                      "treated; tensile tested at room temperature and at temperature; sectioned, faced, mounted and "
                      "polished; SEM/EDS, VHX, micro-Vickers, nanoindentation and PIP; a corrosion screen on the CubXL",
@@ -452,6 +513,8 @@ def model(write=True) -> dict:
         promoted_steps=[dict(step=s, station=st, hours=h, makes=mk, source=src) for s, st, h, mk, src in FULL],
         data_gb_per_step=DATA_GB, stream_cameras=ncam,
         totals=at,
+        totals_without_upkeep=at_base,
+        upkeep=upkeep_summary(sim, base),
         first_alloy_fully_tested_h=round(first, 1) if first is not None else None,
         latency_atomized_to_tested_h=dict(median=round(float(np.median(lat)), 1), max=round(float(max(lat)), 1))
         if lat else None,
@@ -473,19 +536,33 @@ PHASES = [
      "The lab as set up: two Shuttles with every tray loaded and powered, the floor machines, two MiR250 + UR10e "
      "units on charge. The clock starts on a Monday at 06:00."),
     (30.0, 0.0, 24.0, "1/4  Hour by hour",
-     "Hour by hour, the first day. A person comes in 08:00-16:00 to change the atomizer's crucible; the arms, the "
-     "MiR250s and the Shuttles do the rest, and keep going with the lights off."),
+     "Hour by hour, the first day. One person comes in 08:00-16:00: the atomizer's crucible first, then the day's "
+     "upkeep where it is done (a tray held at a Shuttle's opening with the units kept away, a floor machine, a unit "
+     "on its charger). The arms run their reference checks between jobs, and keep going with the lights off."),
     (16.0, 24.0, 14 * 24.0, "2/4  Day by day",
      "Day by day. The atomizer runs only while someone is on site: one run a day while the lab is commissioned, then "
-     "three a weekday. The rest runs round the clock and over the weekends."),
+     "three a weekday. A beacon is amber while its machine is out for upkeep, red while a fault waits for the next "
+     "shift or for parts; the rest runs round the clock."),
     (14.0, 14 * 24.0, 13 * 7 * 24.0, "3/4  Week by week",
-     "Week by week. An alloy is fully tested about half a day after it is atomized. One in ten is promoted to a full "
-     "plate of E8 bars, which takes eight more atomizer runs."),
+     "Week by week. Upkeep takes {upkeep:.0f} of the person's 40 hours a week on average, the crucible {crucible:.0f} "
+     "more. An alloy is fully tested about half a day after it is atomized; one in ten is promoted to a full plate of "
+     "E8 bars."),
     (16.0, 13 * 7 * 24.0, YEAR_H, "4/4  Month by month",
-     "Month by month, to the end of the first year. The counters are a model built from each chapter's step times "
-     "and the assumptions in notes/timelapse.md, not measurements."),
+     "Month by month, to the end of the first year. Upkeep and failures cost {lost} of the {without} alloys the same "
+     "schedule would test with none (the faint line). A model built from each chapter's step times and the "
+     "assumptions in notes/timelapse.md and notes/upkeep.md, not measurements."),
     (9.0, YEAR_H, YEAR_H, "The first year", ""),
 ]
+
+
+def caption(i: int, m: dict | None) -> str:
+    """Phase i's caption, its numbers from the model."""
+    cap = " ".join(PHASES[i][4].split())
+    if m is None or "{" not in cap:
+        return cap
+    ph, al = m["upkeep"]["people_hours_per_week"], m["upkeep"]["alloys_a_year"]
+    return cap.format(upkeep=ph["upkeep"], crucible=ph["crucible"], without=al["tested_without"],
+                      lost=al["tested_without"] - al["tested_with_upkeep"])
 
 
 def phase_frames() -> list[tuple[int, int]]:
@@ -581,6 +658,155 @@ def cam_at(f: int, n: int) -> list:
     return [tuple(float(x) + (float(y) - float(x)) * w for x, y in zip(p, q)) for p, q in zip(a, b)]
 
 
+# ================================================================================================ upkeep on screen
+class Spans:
+    """Merged intervals with a running sum: is t covered, and how many hours of [a, b] are."""
+
+    def __init__(self, iv):
+        m: list[list[float]] = []
+        for a, b in sorted(iv):
+            if b <= a:
+                continue
+            if m and a <= m[-1][1]:
+                m[-1][1] = max(m[-1][1], b)
+            else:
+                m.append([a, b])
+        self.s = np.array([x[0] for x in m], float)
+        self.e = np.array([x[1] for x in m], float)
+        self.cum = np.concatenate([[0.0], np.cumsum(self.e - self.s)])
+
+    def upto(self, t: float) -> float:
+        i = int(np.searchsorted(self.s, t, side="right"))
+        if i == 0:
+            return 0.0
+        return float(self.cum[i - 1] + min(t, self.e[i - 1]) - self.s[i - 1])
+
+    def hours(self, a: float, b: float) -> float:
+        return self.upto(b) - self.upto(a)
+
+    def at(self, t: float) -> bool:
+        i = int(np.searchsorted(self.s, t, side="right"))
+        return i > 0 and t < self.e[i - 1]
+
+
+class UpkeepView:
+    """The year's maintenance record (sim["maint"], upkeep.py) as the film draws it: who is where at lab time t,
+    which stations are out and why, and the running totals for the counters."""
+
+    def __init__(self, sim: dict):
+        import upkeep as UK
+        self.UK = UK
+        self.log = log = sim["maint"]
+        self.lo = np.array([min(r["t0"], r["down"][0]) for r in log], float)
+        self.hi = np.array([max(r["t1"], r["down"][1]) for r in log], float)
+        wait, upk = {}, {}
+        for r in log:
+            if not r["planned"] and r["t0"] > r["down"][0]:
+                wait.setdefault(r["own"], []).append((r["down"][0], r["t0"]))
+            if r["who"] != "arm" and r["t1"] > r["t0"]:
+                for k in set(r["stations"]) | {r["own"]}:
+                    upk.setdefault(k, []).append((r["t0"], r["t1"]))
+        self.wait = {k: Spans(v) for k, v in wait.items()}
+        self.upk = {k: Spans(v) for k, v in upk.items()}
+        self.none = Spans([])
+        # out of use, every kind (upkeep.down_hours' rule), for availability so far
+        down = {k: [] for k in UK.AVAIL_ROWS}
+        for r in log:
+            for st in down:
+                if st == r.get("own") or (st == r["asset"] and not r["stations"]):
+                    down[st].append(tuple(r["down"]))
+                elif st in r["stations"]:
+                    down[st].append((r["t0"], r["t1"]))
+        self.down = {k: Spans(v) for k, v in down.items()}
+        self.route = [k for k in UK.ROUTE]
+        # the person's time: the crucible's hours, their upkeep (each task's segments) and hosting a vendor
+        p_cru = PARAMS["atomize_h"]["value"]["person"]
+        self.crucible = Spans([(e["t0"], e["t0"] + p_cru) for e in sim["events"] if e["step"] == "atomize"])
+        pt = []
+        for r in log:
+            if r["who"] in UK.PEOPLE and r["person_h"] > 0:
+                pt += [tuple(x) for x in (r.get("segments") or [[r["t0"], r["t1"]]])]
+            elif r["who"] == "vendor" and r["person_h"] > 0:
+                pt.append((r["t0"], r["t0"] + r["person_h"]))
+        self.people = Spans(pt)
+        self.arms = Spans([(r["t0"], r["t1"]) for r in log if r["who"] == "arm"])
+        ends = lambda f: np.sort(np.array([r["t1"] for r in log if f(r)], float))          # noqa: E731
+        self.done = dict(checks=ends(lambda r: r["who"] == "arm"),
+                         tasks=ends(lambda r: r["planned"] and r["who"] not in ("arm", "auto")),
+                         repairs=ends(lambda r: not r["planned"]))
+
+    def state(self, key: str, t: float) -> str | None:
+        """'wait' (a fault waiting for a person or parts), 'upkeep' (out for upkeep or a repair), or None."""
+        if self.wait.get(key, self.none).at(t):
+            return "wait"
+        if self.upk.get(key, self.none).at(t):
+            return "upkeep"
+        return None
+
+    def opening_of(self, r) -> tuple:
+        """(Shuttle, tray or None) when record r holds a Shuttle's opening, else (None, None)."""
+        for k in r["stations"]:
+            if k in ("open1", "open2"):
+                a = r["asset"]
+                return int(k[-1]), (a[5:] if a.startswith("tray:") else self.UK.TRAY_OF.get(a))
+        return None, None
+
+    def now(self, t: float, on_site: bool):
+        """(the person's task now or None, the vendor's or None, {Shuttle: tray} openings held, records for the
+        'Running now' panel: (kind, record))."""
+        person = vendor = None
+        held, rows = {}, []
+        for i in np.nonzero((self.lo <= t) & (t < self.hi))[0]:
+            r = self.log[i]
+            if not r["planned"] and r["down"][0] <= t < r["t0"]:
+                rows.append(("wait", r))
+                continue
+            if not (r["t0"] <= t < r["t1"]) or r["who"] == "arm":
+                continue
+            sh, tray = self.opening_of(r)
+            if sh:
+                held[sh] = tray
+            if r["who"] in ("opening", "extracted", "floor", "desk"):
+                segs = r.get("segments") or [[r["t0"], r["t1"]]]
+                if on_site and any(a <= t < b for a, b in segs) and (person is None or not r["planned"]):
+                    person = r
+                    continue
+            elif r["who"] == "vendor" and on_site:
+                vendor = r
+                continue
+            rows.append(("out", r))
+        if person is not None:
+            rows.insert(0, ("person", person))
+        if vendor is not None:
+            rows.insert(0, ("vendor", vendor))
+        return person, vendor, held, rows
+
+    def what_of(self, key: str) -> str:
+        k = key.split(":")[0]
+        for t_ in self.UK.TASKS:
+            if t_["key"] == k:
+                return t_["what"]
+        return k
+
+    def unit_out(self, i: int, t: float) -> bool:
+        return self.state(f"unit{i}", t) is not None
+
+    def counters(self, t: float) -> dict:
+        w0 = (t // 168.0) * 168.0
+        t = max(t, 0.0)
+        av = lambda keys: 1.0 - sum(self.down[k].upto(t) for k in keys) / (len(keys) * t) if t > 1.0 else None  # noqa
+        return dict(week_crucible=self.crucible.hours(w0, t), week_upkeep=self.people.hours(w0, t),
+                    people=self.people.upto(t), arms=self.arms.upto(t),
+                    checks=int(np.searchsorted(self.done["checks"], t, side="right")),
+                    tasks=int(np.searchsorted(self.done["tasks"], t, side="right")),
+                    repairs=int(np.searchsorted(self.done["repairs"], t, side="right")),
+                    avail_route=av(self.route), avail_atom=av(["repowder"]), avail_units=av(["unit0", "unit1"]))
+
+
+VENDOR_COAT = (0.20, 0.27, 0.42)          # a vendor's navy jacket, so the two figures read apart
+LIP = -1612.0                             # the front of the blue cover under a Shuttle's opening (vlm.opening)
+
+
 class Movie:
     def __init__(self, sim: dict, ncam: int):
         import animate as A
@@ -643,6 +869,30 @@ class Movie:
         self.q_ready = np.radians((-90.0, -100.0, 110.0, -100.0, -90.0, 0.0))
         self.home = {k: [*V.SLOTS[A.HOME[k]]] for k in L.tray}
         self.work_q: dict = {}
+        # round 10: the person on shift and a vendor, drawn where their task is (upkeep_clip's figure)
+        import upkeep_clip as UC
+        self.up = UpkeepView(sim)
+        self.person = UC.Person(sc, "staff")
+        self.vendor = UC.Person(sc, "vendor")
+        for n in self.vendor.names():
+            if any(w in n for w in ("coat", "sleeve", "forearm")):
+                sc.color[n] = VENDOR_COAT
+        self.person.show(0.0)
+        self.vendor.show(0.0)
+        self.spots = {}                     # floor machine -> (x, y, heading, hands' target): at its front, its dock
+        for key, (cx, row, _, dx) in W.STATIONS.items():
+            names = self.F.groups.get(key)
+            if key in ("vlm", "vlm2") or not names:
+                continue
+            b = np.array(SL._bounds_of(sc, names), float)
+            if not np.isfinite(b).all():
+                continue
+            x = float(np.clip(dx, b[0] + 250.0, b[1] - 250.0))
+            if row == "N":
+                self.spots[key] = (x, b[2] - 330.0, 0.0, (x, b[2] + 30.0, 1050.0))
+            else:
+                self.spots[key] = (x, b[3] + 330.0, 180.0, (x, b[3] - 30.0, 1050.0))
+        self.urows, self.at_person = [], None
 
     def work(self, i: int, key: str, f: int):
         """Joint angles for unit i working at dock `key`: the gripper down over the presented tray's front (a VLM) or
@@ -672,9 +922,40 @@ class Movie:
         return self.work_q[ck]
 
     # ------------------------------------------------------------------------------------- state at lab time t
+    def spot_of(self, r):
+        """(x, y, heading, the hands' target) where the person works on record r; None at a desk or a service room."""
+        if r is None or r["who"] == "desk":
+            return None
+        sh, _ = self.up.opening_of(r)
+        if sh:                              # at a Shuttle's opening, a little right of centre, turned to the tray
+            x0 = self.V.SHUTTLE_X[sh]
+            return (x0 + 420.0, LIP - 330.0, 12.0, (x0 + 260.0, -1450.0, self.V.Z_OPEN + 130.0))
+        a = r["asset"]
+        if a.startswith("unit"):            # beside the unit on its charger
+            cx, cy, _ = self.chargers[int(a[4:])]
+            return (cx, cy + 400.0 + 330.0, 180.0, (cx, cy + 360.0, 840.0))
+        return self.spots.get(a)
+
+    def pose(self, fig, spot, f: int):
+        if spot is None:
+            fig.show(0.0)
+            return
+        x, y, hd, (hx, hy, hz) = spot
+        k = (f // 3) % 2                    # two working poses, a few frames each
+        c_, s_ = math.cos(math.radians(hd)), math.sin(math.radians(hd))
+        across = np.array([c_, s_, 0.0])
+        hl = np.array([hx, hy, hz + (0.0, 70.0)[k]]) - 150.0 * across
+        hr = np.array([hx, hy, hz + (70.0, 0.0)[k]]) + 150.0 * across
+        fig.set(x=x, y=y, hd=hd, lean=12.0, amp=0.0, phase=0.0, hands={"l": tuple(hl), "r": tuple(hr)})
+        fig.show(1.0)
+
     def set_state(self, t: float, phase: int, f: int):
         V, A, sc, L, sim = self.V, self.A, self.sc, self.L, self.sim
         now = busy(sim, t) if phase < len(PHASES) - 1 else {}
+        live = 0 < phase < len(PHASES) - 1
+        person, vendor, held, self.urows = self.up.now(t, people_on(t)) if live else (None, None, {}, [])
+        if live and person is None and self.crucible_now(t):
+            person = "crucible"
         # trays: the one a unit loads or unloads comes to its Shuttle's opening
         shown = {1: None, 2: None}
         win = 0.15 if phase <= 1 else 1.5
@@ -689,6 +970,8 @@ class Movie:
                 if d < win and d < best[e["shuttle"]]:
                     best[e["shuttle"]] = d
                     shown[e["shuttle"]] = e["tray"]
+        for sh, tray in held.items():               # a person's or a vendor's task holds the opening, its tray there
+            shown[sh] = tray if tray in L.tray else None
         if phase == 0 or phase == len(PHASES) - 1:
             shown = {1: None, 2: None}
         for k in L.tray:
@@ -717,12 +1000,20 @@ class Movie:
                 if u < 2 and t0 <= t + win and t1 >= t - linger:
                     last[u] = st
             at = last
+        keep_off = {("vlm" if sh == 1 else "vlm2") for sh in held}       # the MiR drives off while a person has it
+        for r in (person, vendor):
+            if isinstance(r, dict) and r["asset"] in self.docks:
+                keep_off.add(r["asset"])
+        if person == "crucible":
+            keep_off.add("repowder")
         poses = []
         for i in range(2):
             st = at[i]
             key = None
             if st is not None:
                 key = st if st in self.docks else ("vlm" if SHUTTLE_OF.get(self._tray_of(st), 1) == 1 else "vlm2")
+            if key in keep_off or (live and self.up.unit_out(i, t)):
+                key = None                             # kept off a station a person has, or on its charger for upkeep
             pose = self.docks.get(key) if key else None
             if pose is not None and any(abs(pose[0] - q[0]) < 1000 and abs(pose[1] - q[1]) < 1000 for q, _ in poses):
                 pose, key = None, None                     # the other unit is there: this one waits on charge
@@ -732,6 +1023,14 @@ class Movie:
             uu.set(pose)
             uu.robot.set(self.work(i, key, f) if key else self.q_park)
         self.at_keys = [k for _, k in poses]
+        # the figures: the person at their task (or the crucible), a vendor at theirs
+        if person == "crucible":
+            sp = self.spots.get("repowder")
+        else:
+            sp = self.spot_of(person)
+        self.pose(self.person, sp if live else None, f)
+        self.pose(self.vendor, self.spot_of(vendor) if live else None, f)
+        self.at_person = person
         # beacons
         util = utilization(sim, max(0.0, t - 24), max(t, 24)) if phase >= 3 else {}
         docked = {k for k in self.at_keys if k}
@@ -750,6 +1049,17 @@ class Movie:
                     c = C_PERSON
             elif key in docked:
                 c = C_UNIT
+            k2 = {"vlm1": "open1", "vlm2": "open2"}.get(key, key)        # upkeep over the schedule's state
+            if 0 < phase < 3:
+                us = self.up.state(k2, t)
+                c = C_FAIL if us == "wait" else (C_PERSON if us == "upkeep" else c)
+                if key == "repowder" and person == "crucible":
+                    c = C_PERSON
+            elif phase < len(PHASES) - 1:                  # weeks and months: over the last day, as busy above
+                if self.up.wait.get(k2, self.up.none).hours(t - 24.0, t) > 2.0:
+                    c = C_FAIL
+                elif self.up.upk.get(k2, self.up.none).hours(t - 24.0, t) > 2.0:
+                    c = C_PERSON
             sc.color[lens] = c
         # lights: out when nobody is on site, at the hour and day scales (at the week scale they would strobe)
         dark = phase in (1, 2) and not people_on(t)
@@ -759,6 +1069,9 @@ class Movie:
         sc.pl.set_background((0.80, 0.82, 0.87) if dark else (1.0, 1.0, 1.0))
         self.now = now
         self.dark = dark
+
+    def crucible_now(self, t: float) -> bool:
+        return self.up.crucible.at(t)
 
     def _tray_of(self, station):
         for s_, st, h, needs, tray, *_ in STEPS:
@@ -823,11 +1136,58 @@ def draw_panels(img, mv: Movie, t: float, phase: int, s: float):
         d.text((x + cw - 20 * s - vw, y), val, font=f, fill=ink)
         if row < 2:
             d.line([(x, y + 21 * s), (x + cw - 20 * s, y + 21 * s)], fill=(232, 234, 238, 255), width=1)
+    # ---- upkeep, under the ribbon (round 10): the person's week, what upkeep has taken, availability so far
+    u = mv.up.counters(t)
+    ys0, ys1 = y1 + 4 * s, y1 + 40 * s
+    d.rounded_rectangle((8 * s, ys0, W - 8 * s, ys1), 8 * s, fill=(255, 255, 255, 232), outline=(190, 196, 204, 255))
+    d.text((20 * s, ys0 + 5 * s), "upkeep", font=font(13 * s, bold=True), fill=ink)
+    d.text((20 * s, ys0 + 20 * s), "(model)", font=font(11 * s), fill=grey)
+    pct = lambda v: "-" if v is None else f"{100 * v:.1f} %"                          # noqa: E731
+    week_h = u["week_crucible"] + u["week_upkeep"]
+    ucells = [("the person's hours this week", f"{week_h:.0f} of 40 h",
+               f"crucible {u['week_crucible']:.0f}, upkeep {u['week_upkeep']:.0f}"),
+              ("upkeep so far", f"{u['people']:,.0f} h people", f"{u['arms']:,.0f} h the arms' checks"),
+              ("tasks done", f"{u['tasks'] + u['checks']:,}", f"{u['checks']:,} by the arms; {u['repairs']} repairs"),
+              ("available so far", pct(u["avail_route"]), "the route's stations, on average"),
+              ("the atomizer, the units", f"{pct(u['avail_atom'])}, {pct(u['avail_units'])}", "available so far")]
+    xa = 100 * s
+    cw2 = (W - 8 * s - xa) / len(ucells)
+    for i, (name, val, sub) in enumerate(ucells):
+        x = xa + i * cw2
+        d.line([(x, ys0 + 6 * s), (x, ys1 - 6 * s)], fill=(225, 228, 232, 255), width=1)
+        d.text((x + 10 * s, ys0 + 3 * s), name, font=font(11 * s), fill=grey)
+        fv = font(14 * s, bold=True)
+        d.text((x + 10 * s, ys0 + 17 * s), val, font=fv, fill=ink)
+        d.text((x + 16 * s + d.textlength(val, font=fv), ys0 + 20 * s), sub, font=font(10.5 * s), fill=grey)
     # ---- running now, and the beacons' key (hours and days)
     cap_top = H - caption_h(d, mv.sc.caption, W, s) - 8 * s
     if phase in (1, 2):
-        rows = []
+        rows, urows = [], []
+        for kind, r in mv.urows[:3]:                     # upkeep first: the person, a vendor, a fault waiting
+            where = STATION_NAMES.get(r["own"], r["own"])
+            sh, tray = mv.up.opening_of(r)
+            if sh:
+                where = f"Shuttle {sh}'s opening" + (f", tray {tray}" if tray and not r["what"].startswith("tray")
+                                                     else "")
+            elif r["own"].startswith("unit"):
+                where = f"unit {int(r['own'][4:]) + 1} on its charger"
+            if kind == "wait":
+                urows.append(("stopped: " + STATION_NAMES.get(r["own"], r["own"]) + f": {r['mode']}; waits for "
+                              + ("a vendor" if r["who"] == "vendor" else "the next shift"), C_FAIL))
+            elif kind == "person":
+                urows.append((f"the person, {where}: {r['what']}" if r["who"] != "desk" else
+                              f"the person, at a desk: {r['what']}", C_PERSON))
+            elif kind == "vendor":
+                urows.append((f"a vendor, {where}: {r['what']}", C_PERSON))
+            elif r["who"] != "auto" or r["t1"] - r["t0"] >= 0.25:
+                urows.append((f"out for upkeep, {where}: {r['what']}", C_PERSON))
+        if mv.at_person == "crucible":
+            urows.insert(0, ("the person, at the atomizer: its crucible changed and the run started", C_PERSON))
         for st, e in sorted(mv.now.items(), key=lambda kv: kv[1]["t0"]):
+            if e.get("maint"):
+                what = mv.up.what_of(e["maint"])
+                urows.append((f"the arm's check, {STATION_NAMES.get(st, st)}: {what}", C_UNIT))
+                continue
             word = STEP_WORDS.get(e["step"], e["step"])
             if e["step"] == "atomize" and e.get("failed"):
                 word = "atomizing; the melt dripped"
@@ -835,26 +1195,33 @@ def draw_panels(img, mv: Movie, t: float, phase: int, s: float):
                 word = "printing; this build cracks"
             where = STATION_NAMES.get(st, st)
             rows.append(f"alloy {e['alloy'] + 1}: {word}, {where}")
-        rows = rows[:6] or ["waiting for the next atomizer run"]
-        bw = 430 * s
+        urows = urows[:3]
+        rows = [(r, None) for r in rows[:7 - len(urows)]]
+        rows = urows + rows or [("waiting for the next atomizer run", None)]
+        bw = 470 * s
         bh = (30 + 17 * len(rows) + 24) * s
         x, y = 8 * s, cap_top - bh - 6 * s
         d.rounded_rectangle((x, y, x + bw, y + bh), 8 * s, fill=(255, 255, 255, 222), outline=(190, 196, 204, 255))
         d.text((x + 12 * s, y + 6 * s), "Running now", font=font(12.5 * s, bold=True), fill=grey)
-        for i, r in enumerate(rows):
-            while d.textlength(r, font=font(12 * s)) > bw - 24 * s and len(r) > 10:
-                r = r[:-2].rstrip(" ,") + "…"
-            d.text((x + 12 * s, y + (25 + 17 * i) * s), r, font=font(12 * s), fill=ink)
+        for i, (r, col) in enumerate(rows):
+            xr = x + 12 * s
+            if col is not None:                          # an upkeep row: a dot in the beacons' colour
+                d.ellipse((xr, y + (29 + 17 * i) * s, xr + 8 * s, y + (37 + 17 * i) * s),
+                          fill=tuple(int(255 * v) for v in col) + (255,))
+                xr += 13 * s
+            while d.textlength(r, font=font(12 * s)) > bw - 12 * s - (xr - x) and len(r) > 10:
+                r = r[:-2].rstrip(" ,;:") + "…"
+            d.text((xr, y + (25 + 17 * i) * s), r, font=font(12 * s), fill=ink)
         ly = y + bh - 22 * s
         lx = x + 12 * s
-        for name, col in (("running", C_RUN), ("a unit at it", C_UNIT), ("a person at it", C_PERSON),
-                          ("idle", C_IDLE), ("failed run", C_FAIL)):
+        for name, col in (("running", C_RUN), ("a unit at it", C_UNIT), ("a person at it, upkeep", C_PERSON),
+                          ("idle", C_IDLE), ("stopped: a fault", C_FAIL)):
             d.ellipse((lx, ly + 3 * s, lx + 11 * s, ly + 14 * s), fill=tuple(int(255 * v) for v in col) + (255,))
             d.text((lx + 15 * s, ly + 1 * s), name, font=font(11 * s), fill=ink)
             lx += 26 * s + d.textlength(name, font=font(11 * s))
     # ---- the chart (weeks and months)
     if phase >= 3:
-        w, h = 400 * s, 196 * s
+        w, h = 450 * s, 196 * s
         chart(d, mv, t, W - w - 8 * s, cap_top - h - 6 * s, w, h, s, phase)
     return img
 
@@ -890,11 +1257,14 @@ _CURVE = {}
 
 
 def curve(mv: Movie, upto_h: float, n=160):
+    """(lab hours, [atomized, printed, fully tested, fully tested with no upkeep]) at n points to upto_h."""
     key = (round(upto_h, 1), n)
     if key not in _CURVE:
         ts = np.linspace(0, upto_h, n)
         rows = [counters(mv.sim, tt, mv.ncam) for tt in ts]
-        _CURVE[key] = (ts, np.array([[r["atomized"], r["printed"], r["tested"]] for r in rows], float))
+        base = [sum(1 for r in mv.base["alloys"] if r.get("tested", 1e18) <= tt) for tt in ts]
+        _CURVE[key] = (ts, np.array([[r["atomized"], r["printed"], r["tested"], b] for r, b in zip(rows, base)],
+                                    float))
     return _CURVE[key]
 
 
@@ -906,7 +1276,7 @@ def chart(d, mv: Movie, t: float, x0, y0, w, h, s, phase):
     d.text((x0 + 12 * s, y0 + 6 * s), "Alloys, cumulative, by " + ("week" if phase == 3 else "month"),
            font=font(13 * s, bold=True), fill=(90, 94, 100))
     gx0, gx1, gy0, gy1 = x0 + 40 * s, x0 + w - 14 * s, y0 + 30 * s, y0 + h - 26 * s
-    ymax = max(10.0, float(ys[-1].max()) * 1.08)
+    ymax = max(10.0, float(ys[-1].max()) * 1.12)
     d.line([(gx0, gy1), (gx1, gy1)], fill=(150, 154, 160, 255), width=1)
     d.line([(gx0, gy0), (gx0, gy1)], fill=(150, 154, 160, 255), width=1)
     step = 10 ** math.floor(math.log10(ymax / 2))
@@ -925,22 +1295,25 @@ def chart(d, mv: Movie, t: float, x0, y0, w, h, s, phase):
         hx = span * i / nt
         xx = gx0 + (gx1 - gx0) * hx / span
         d.text((xx - 4 * s, gy1 + 4 * s), str(i), font=font(10.5 * s), fill=(110, 114, 120))
-    cols = [(120, 120, 128), (40, 110, 200), (20, 150, 70)]
+    cols = [(120, 120, 128), (40, 110, 200), (20, 150, 70), (150, 205, 165)]
     k = int(np.searchsorted(ts, min(t, span), side="right"))
-    for j, col in enumerate(cols):
+    for j in (3, 0, 1, 2):                         # the no-upkeep line first, faint and thin, under the others
+        col = cols[j]
         pts = [(gx0 + (gx1 - gx0) * ts[i] / span, gy1 - (gy1 - gy0) * ys[i, j] / ymax) for i in range(max(k, 1))]
         if len(pts) > 1:
-            d.line(pts, fill=col + (255,), width=max(2, int(2.4 * s)))
+            d.line(pts, fill=col + (255,), width=max(1, int((1.4 if j == 3 else 2.4) * s)))
     lx = gx0 + 8 * s
-    for name, col in zip(("atomized", "printed", "fully tested"), cols):
+    for name, col in zip(("atomized", "printed", "fully tested", "tested, no upkeep"), cols):
         d.line([(lx, gy0 + 6 * s), (lx + 14 * s, gy0 + 6 * s)], fill=col + (255,), width=max(2, int(2.4 * s)))
         d.text((lx + 18 * s, gy0 - 1 * s), name, font=font(11 * s), fill=(40, 40, 46))
-        lx += (34 + d.textlength(name, font=font(11 * s)) / s) * s
+        lx += (28 + d.textlength(name, font=font(11 * s)) / s) * s
 
 
 def totals_card(d, W, H, c, mv: Movie, s):
     from scene import font
     m = mv.model
+    uk = m["upkeep"]
+    ph, av, al = uk["people_hours_per_week"], uk["availability"], uk["alloys_a_year"]
     x0, y0, x1, y1 = 120 * s, 70 * s, W - 120 * s, H - 40 * s
     d.rounded_rectangle((x0, y0, x1, y1), 12 * s, fill=(255, 255, 255, 240), outline=(30, 60, 140, 255),
                         width=max(1, int(2 * s)))
@@ -962,7 +1335,13 @@ def totals_card(d, W, H, c, mv: Movie, s):
             f"Fully tested: {m['fully_tested']}.",
             f"The bottleneck is the {STATION_NAMES.get(m['bottleneck'], m['bottleneck'])}: it runs only while a "
             "person is on site to change its crucible. A model, not a measurement: every step time and assumption is "
-            "in notes/timelapse.md."]
+            "in notes/timelapse.md.",
+            f"Upkeep, booked like any job: {uk['tasks']['arm_checks']:,} reference checks by the arms, "
+            f"{uk['tasks']['people']:,} tasks by the person, {uk['tasks']['vendor_visits']} vendor visits, "
+            f"{uk['tasks']['repairs']} repairs. The person's week averaged {ph['mean_after_ramp']:.0f} of 40 h "
+            f"({ph['crucible']:.0f} at the crucible). Available: the stations {100 * uk['availability_route_mean']:.1f} "
+            f"% on average, the atomizer {100 * av['repowder']:.1f} %, the units {100 * av['unit0']:.1f} %. With no "
+            f"upkeep at all the same schedule gives {al['tested_without']} alloys fully tested, not {al['tested_with_upkeep']}."]
     from scene import font as F_
     fr = F_(15 * s)
     y = y0 + 160 * s
@@ -985,16 +1364,18 @@ def totals_card(d, W, H, c, mv: Movie, s):
 # ================================================================================================ the frames
 def movie():
     from PIL import Image
-    sim = simulate()
+    sim, base = sims()
     m = model(write=True)
     mv = Movie(sim, m["stream_cameras"])
-    mv.model = m
+    mv.model, mv.base = m, base
     sc = mv.sc
     pf = phase_frames()
     n = pf[-1][1]
     picks = None
     if PREVIEW:
-        want = [(0, 0.5), (1, 0.12), (1, 0.3), (1, 0.55), (1, 0.75), (2, 0.6), (3, 0.6), (4, 0.95), (5, 0.5)]
+        # day 1 (hour 0 is 06:00): 09:30 the MIDI's chamber cleaned, 11:30 tray N held at Shuttle 2's opening,
+        # 10:50 a unit on its charger, 14:50 a repair on the MIDI; then a day, a week, a month and the totals
+        want = [(1, 0.146), (1, 0.229), (1, 0.205), (1, 0.37), (1, 0.75), (2, 0.6), (3, 0.6), (4, 0.95), (5, 0.5)]
         picks = {pf[i][0] + int((pf[i][1] - pf[i][0] - 1) * u) for i, u in want}
     orig = sc.overlay
     still_at = pf[4][0] + int((pf[4][1] - pf[4][0]) * 0.85)
@@ -1009,7 +1390,7 @@ def movie():
         mv.set_state(t, ph, f)
         sc.cam = cam_at(f, n)
         sc.label = PHASES[ph][3]
-        sc.caption = " ".join(PHASES[ph][4].split())
+        sc.caption = caption(ph, m)
         sc.labels = []
         t_f = time.time()
         base = sc.render_base()
@@ -1029,8 +1410,8 @@ def movie():
         if f % 30 == 0:
             el = time.time() - t_start
             print(f"frame {f}/{n}  lab {t:8.1f} h  phase {ph}  {el / max(1, f + 1):.2f} s/frame", flush=True)
-    for (a, b), (sec, h0, h1, lbl, cap) in zip(pf, PHASES):
-        sc.substeps.append(dict(label=lbl, caption=" ".join(cap.split()), start_frame=a, end_frame=b - 1,
+    for i, ((a, b), (sec, h0, h1, lbl, cap)) in enumerate(zip(pf, PHASES)):
+        sc.substeps.append(dict(label=lbl, caption=caption(i, m), start_frame=a, end_frame=b - 1,
                                 lab_hours=[h0, h1]))
     if PREVIEW:
         sc.pl.close()
@@ -1061,6 +1442,7 @@ def gif():
 
 
 if __name__ == "__main__":
+    sys.modules.setdefault("timelapse", sys.modules[__name__])      # upkeep.py imports timelapse: the same module
     args = sys.argv[1:]
     if args and args[0] == "model":
         m = model()
@@ -1068,7 +1450,9 @@ if __name__ == "__main__":
                               latency=m["latency_atomized_to_tested_h"], bottleneck=m["bottleneck"],
                               utilization=dict(list(m["utilization_after_ramp"].items())[:8]),
                               atomizer_slots=m["atomizer_slots"],
-                              cameras=m["stream_cameras"]), indent=1))
+                              cameras=m["stream_cameras"],
+                              upkeep={k: v for k, v in m["upkeep"].items() if k not in ("what", "availability")}),
+                         indent=1))
     elif args and args[0] == "gif":
         gif()
     else:

@@ -758,7 +758,15 @@ def movie():
                                    "The shuttle lifts it off and back ten times (USP <41>'s repeatability; one is "
                                    "shown), and the mean goes on the control chart against the lab's limits.")
     status(L, Doser="the check weight on the pan", **{"HR-202i": "settling"})
-    cam_read = [tuple(rig_w(pan + (-430.0, -520.0, 190.0))), tuple(rig_w(pan + (110.0, -90.0, 50.0))), (0, 0, 1)]
+    # the reading's view: along cam_close's line of sight to the weight (clear of the doser's frame), 55 % closer,
+    # the weight a third of the way across, so the control chart (the right 46 %) leaves it in view
+    w_pan = (sc.world("w_weight") @ np.r_[0, 0, WEIGHT_H / 2, 1.0])[:3]
+    e0 = np.asarray(cam_close[0], float)
+    eye = e0 + 0.55 * (w_pan - e0)
+    dv = w_pan - eye
+    right = np.cross(dv, (0.0, 0.0, 1.0))
+    right /= max(np.linalg.norm(right), 1e-9)
+    cam_read = [tuple(eye), tuple(w_pan + 0.19 * np.linalg.norm(dv) * right), (0, 0, 1)]
     step(1.6, settle, hold=0.2, cam=cam_read)
     status(L, **{"HR-202i": f"{reading:.4f} g: +{TODAY_MG:.1f} mg, pass"})
     step(0.6, panel("chart", chart_ok, 0.0, 1.0), hold=0.0)
@@ -820,7 +828,7 @@ def movie():
     say("3/3 A person's task", "A person's task, counted rather than dated: after 600 runs the iMicro's Berkovich tip "
                                "is due (upkeep.py: two hours, the tray pulled out). Tray E comes to the opening; the "
                                "tip sits 0.8 m from where a person stands there.")
-    status(L, Arm="parked", iMicro="tip due: 600 runs; booked, a person")
+    status(L, Arm="parked", Deck="", iMicro="tip due: 600 runs; booked, a person")
     L.fetch("E", st["lbl"], st["cap"], fast=0.5, cam=CAM_OPEN, hold=0.2,
             )
     sc.step(st["lbl"], st["cap"], 0.8, None, hold=0.6,
@@ -875,7 +883,8 @@ def movie():
 
     # the tip change
     tip = nw((NP["head_x"], 0.0, sz + 60.0))
-    CAM_TIP = [tuple(tip + (1050, -1350, 650)), tuple(tip + (-80, -330, -60)), (0, 0, 1)]
+    f_tip = tip + (-60.0, -200.0, -80.0)            # along CAM_EXTRACT's line of sight (the person stands left of it)
+    CAM_TIP = [tuple(f_tip + 0.5 * (np.asarray(CAM_EXTRACT[0], float) - f_tip)), tuple(f_tip), (0, 0, 1)]
     say("3/3 A person's task", "The hood lifts. Gloves and safety glasses; the person reaches in to the indenter head, "
                                "unscrews the old tip, fits the new one by hand and seats it to its torque.")
     status(L, iMicro="hood up: tip change")
@@ -910,8 +919,8 @@ def movie():
     step(1.2, lean_out, hold=0.1)
     person.set(hands={"l": None, "r": None})
     say("3/3 A person's task", "Hood down, the tray rolls back into the bay and onto its dock: power back. The person "
-                               "takes the table away. The new tip's area function is the arm's job, booked straight "
-                               "after: indents in the fused-silica reference (upkeep.py's weekly check, run now).")
+                               "takes the table away. The new tip's area function is the arm's job, booked as its next "
+                               "one on tray E: indents in the fused-silica reference (upkeep.py's weekly check).")
     status(L, iMicro="new tip; fused-silica check booked, the arm", **{"Tray E": "back in the bay"})
     step(1.2, nano.move({"lid": (1.0, 0.0)}), hold=0.0)
     step(3.0, L.slide("E", y_in), hold=0.1, cam=CAM_EXTRACT)
@@ -930,15 +939,16 @@ def movie():
     step(4.0, table_off, hold=0.0)
     for n in table_names + person.names():
         sc.alpha[n] = 0.0
-    say("3/3 A person's task", "The MiR250 + UR10e docks at Shuttle 1 again and runs the fused-silica indents; the "
-                               "iMicro is back online, and its run count starts again from zero.")
+    say("3/3 A person's task", "The MiR250 + UR10e docks at Shuttle 1 again; tray E goes back up until the arm's "
+                               "fused-silica check on the new tip, before any sample. The iMicro's run count starts "
+                               "again from zero.")
     status(L, Arm="UR10e on MiR250: back to Shuttle 1")
 
     def drive_back(v):
         f = P.ramp_frac(P.unease(v), dist, MIR_SPEED)
         u.set((x2 - dist * f, y0d, hd0))
     step(t_drive, drive_back, hold=0.1, cam=CAM_OPEN)
-    status(L, Arm="UR10e on MiR250, at Shuttle 1", iMicro="online: 0 of 600 runs")
+    status(L, Arm="UR10e on MiR250, at Shuttle 1", iMicro="new tip, 0 of 600 runs: fused-silica check next")
     L.store("E", st["lbl"], st["cap"], fast=0.5, cam=A.CAM_LAB_VLM, hold=0.2)
     step(1.0, None, hold=2.6)
     return finish(sc, rb)
