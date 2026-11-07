@@ -184,8 +184,10 @@ From `notes/kardex_opening.md` "Ask Kardex" and `notes/lab_r8.md`:
 - **Address:** Modula Headquarters, 5000 Commerce Center Drive, Franklin, OH 45005; Maine production facility, 90 Alfred
   A. Plourde Parkway, Lewiston, ME 04240 (same page and read).
 - **Web form:** <https://modula.us/contact/>. **Dealers:** <https://modula.us/sales-and-support/dealer-network/> (read the same way): the dealers are
-  pins on a Google map, and the page's "Schedule a conversation" form asks for a ZIP code, so the dealer is assigned from it. No Utah dealer is
-  named in the page text: **ask Modula which dealer serves Provo, UT 84602**.
+  pins on a Google map, and the page's "Schedule a conversation" form asks for a ZIP code, so the dealer is assigned from it. The map
+  (screenshot read, 2026-11-07 22:59 UTC) has **no pin in Utah, Colorado, Idaho, Nevada or Wyoming**. The nearest is a single pin in Arizona,
+  **Storage Equipment Systems, Inc.**, whose "Contact" button leads only back to Modula's form; there are clusters in Washington (3) and
+  California (2). **Ask Modula which dealer serves Provo, UT 84602.**
 - **West-coast and Mountain West dealer candidates** (their own pages, 2026-11-07): **Pacific Integrated** says it is "an authorized distributor for Modula Vertical Lift Modules"; **(888) 550-5888**, `sales@pacificintegrated.com`; offices in Tacoma WA, Addison TX, Hayward CA and a sales office in Surprise AZ; no Utah office listed
   (verified: <https://www.pacificintegrated.com/?p=1662>, 2026-11-07). **Associated** (Raymond; "Platinum Level Modula Sales & Service Center"), 6450 Muirfield Dr, Hanover Park, IL 60133, **800-755-7201**, no service area stated
   (verified: <https://prod-cms-associated-solutions.raymondcorp.com/modula>, 2026-11-07). **Hoj Innovations** (Salt Lake City) is Kardex-oriented; no Modula listing found.
@@ -1005,7 +1007,7 @@ Every planned product was checked against the maker's pages, or distributors and
 **Confirmed from the vendor's own page:** Kardex (Westbrook ME address and the form; no Utah dealer), Hoj Innovations (Salt Lake City), Pacific Integrated and Associated (Modula dealers), Universal Robots USA, MiR global email, Hartfiel (MiR in Utah), Robotiq phone, RealSense contact form and store, Airgas (Salt Lake City, corrected), Linde national lines, Labconco (Utah rep), Sentry Air, Plas-Labs, PiShop.us, PiKVM buy and support pages, Primera, Zebra forms, Uline (phone; no Utah site), Qorpak, Berlin Packaging, BYU Spectroscopic Facility.
 
 **Still open (unverified), most important first:**
-1. **Modula** Utah dealer: the email and phones are now **verified** (third pass, headed Chromium on the stream-cam Pi, past the Cloudflare challenge), but the dealer is assigned from a ZIP code and none is named for Utah. Ask Modula, or use Pacific Integrated (Arizona and California offices).
+1. **Modula** Utah dealer: the email and phones are now **verified** (third pass, headed Chromium on the stream-cam Pi, past the Cloudflare challenge), but the dealer is assigned from a ZIP code; the dealer map has no Mountain West pin (nearest: Storage Equipment Systems, Inc., Arizona). Ask Modula, or use Pacific Integrated (Arizona and California offices).
 2. **Kardex phone** (800-639-5805 is from 2013-2018 press releases) and whether **Hoj** is a Kardex dealer for the Shuttle VLM: ask both; Kardex names no Utah dealer.
 3. **Stäubli**: the Windsor, CA address and number are now **verified** on Stäubli's own page (third pass, headed Chromium on the Pi); still no Mountain West distributor and no sales email.
 4. **Eaton** presales address and phone: eaton.com pages list none (the 5PX1500RTNG2 page, read in headed Chromium on the Pi in the third pass, has only "Contact me" and "How to buy" buttons); the figures are from a search result of the Eaton-hosted product page.

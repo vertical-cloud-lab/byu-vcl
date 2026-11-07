@@ -1013,7 +1013,7 @@ share of the 1,420 tests a year, 208 V or 120 V **[to confirm]**.
   OIML class E2 check weights** with an accredited certificate.
 - **Role and place:** the multi-doser doses by weight on the pan: a Cu charge cup with its plug and Ni weighs 129.7 to
   135.7 g, over the HR-100A's 102 g, so the 220 g balance is needed. **Tray B**, under the dose point (`notes/multidoser.md`).
-- **Model check (2026-11-07):** **discontinued** (HR-202i, GH-202 and HR-100A); the Troemner 7421-E2W set is **current** (Transcat lists it). A&D's own analytical-balance list now shows only the BA-T/BA, BH-T/BH, BM, BM-S ("NEW"), GR, Apollo and Fortis series and its HR-i and GH pages return 404 (US dealers such as Rice Lake still listed GH stock in 2025-2026, and dealers name the FX-104, 102 g x 0.1 mg, for the HR-100A). The like-for-like 0.01 mg replacement is the **BH-225D** (51 g x 0.01 mg / 220 g x 0.1 mg, smart range, RS-232C and USB; the BH-225DTE adds LAN and Bluetooth); for 0.01 mg over the whole 130-136 g cup, the **BM-252** (250 g x 0.01 mg, RS-232C, USB, Ethernet option). (<https://aandd.jp/products/weighing/wproduct.html>; <https://aandd.jp/products/weighing/balance/analytical/bh.html>; <https://aandd.jp/products/weighing/balance/analytical/bm.html>)
+- **Model check (2026-11-07):** **HR-202i discontinued; GH-202 and HR-100A still sold in the US**; the Troemner 7421-E2W set is **current** (Transcat lists it). A&D Japan's analytical-balance list shows only the BA-T/BA, BH-T/BH, BM, BM-S ("NEW"), GR, Apollo and Fortis series, and its HR-i and GH pages return 404. But A&D's US weighing site, read in headed Chromium on the stream-cam Pi on 2026-11-07 23:00-23:03 UTC, still lists the **GH-202 and GH-252** (<https://weighing.andonline.com/product/phoenix-gh-series-semi-micro-balance/>, Models tab) and the **HR-100A**, 102 g x 0.1 mg (<https://weighing.andonline.com/product/galaxy-hr-series-balances/>). It has no HR-i model. The 0.01 mg alternatives on the same US site are the **BH-T** series, whose models all have **automatic doors** and an external ionizer, which suits robot loading: the **BH-225TE**, 220 g x 0.01 mg, which covers the whole 130-136 g cup, and the **BH-225DTE**, 51 g x 0.01 mg / 220 g x 0.1 mg (<https://weighing.andonline.com/product/bht-series-semi-micro-balances/>). Japan's list adds the BH-225D (RS-232C and USB) and the **BM-252** (250 g x 0.01 mg, Ethernet option). (<https://aandd.jp/products/weighing/wproduct.html>; <https://aandd.jp/products/weighing/balance/analytical/bh.html>; <https://aandd.jp/products/weighing/balance/analytical/bm.html>)
 
 ### 2. The published specs that matter for integration
 - **Ranges:** 220 g x 0.1 mg; 51 g x 0.01 mg (dual range). **Interface:** **RS-232C built in** (the GH manual), read by the
@@ -1046,7 +1046,7 @@ share of the 1,420 tests a year, 208 V or 120 V **[to confirm]**.
    interval** for a **semi-micro** balance, **ASTM E898 / USP <41>** checks, who calibrates in Utah.
 6. **Anti-static and vibration:** a **static eliminator** for powder and a **vibration table** (the doser's motor is nearby).
 7. PM schedule, consumables, spares with prices, a service contract price, and the response time in Utah.
-8. **HR-202i and GH-202 discontinued** (model check, 2026-11-07): A&D's list now has the BH-T/BH, BM and BM-S series. Quote the **BH-225D or BH-225DTE** (51 g x 0.01 mg / 220 g x 0.1 mg) or the **BM-252** (250 g x 0.01 mg); their size, weight, draft-shield door and command set over RS-232C, USB or LAN. Is the HR-100A replaced by the FX-104?
+8. **HR-202i discontinued; GH-202 still on A&D's US site** (model check, 2026-11-07). How long will the GH-202 be sold and supported in the US? Quote it beside the **BH-225TE** (220 g x 0.01 mg) or **BH-225DTE** (51 g x 0.01 mg / 220 g x 0.1 mg), whose automatic doors suit a robot, or the **BM-252** (250 g x 0.01 mg). Give their size, weight, door actuation and command set over RS-232C, USB or LAN. Is the HR-100A (still listed in the US) staying, or moving to the FX-104?
 
 ### 5. Their intake questions, answered
 | They will ask | Answer |
@@ -1072,7 +1072,7 @@ share of the 1,420 tests a year, 208 V or 120 V **[to confirm]**.
 > 4. Calibration and verification (weights and interval), preventive maintenance, spares, a service-contract price, and the
 >    response time to Provo, UT.
 >
-> The HR-202i and GH-202 appear to be discontinued: please quote the current model with the same ranges (we understand the BH-225D, 51 g x 0.01 mg / 220 g x 0.1 mg, or the BM-252 for 0.01 mg to 250 g) and say what changed in size, weight, utilities and remote control (RS-232C, USB, LAN).
+> The HR-202i appears to be discontinued. Your US site still lists the GH-202: please quote it, and also the BH-225TE or BH-225DTE (their automatic doors would suit our robot) or the BM-252, and say what differs in size, weight, utilities and remote control (RS-232C, USB, LAN).
 >
 > [to confirm: name, title, phone]
 
@@ -1097,6 +1097,7 @@ share of the 1,420 tests a year, 208 V or 120 V **[to confirm]**.
 | <https://aandd.jp/products/weighing/balance/analytical/hri.html> and <https://aandd.jp/products/weighing/balance/analytical/gh.html> (both 404) (2026-11-07, runner) | no |
 | <https://www.ricelake.com/products/phoenix-gh-series-a-d-weighing-analytical-balance/?print=true> (GH still listed by a US dealer, 2026-07-24) (2026-11-07, search snippet) | no |
 | <https://sandiegoscale.com/products/a-d-hr-100a-hr-a-series-compact-analytical-balance> (HR-100A "Replaced by FX-104") (2026-11-07, search snippet) | no |
+| <https://weighing.andonline.com/category/laboratory/semi-micro-balances/>, the GH semi-micro, BH-T and Galaxy HR pages' Models tabs (GH-202, GH-252, BH-225TE, BH-225DTE, HR-100A listed) (2026-11-07, maker's US pages, headed Chromium on the stream-cam Pi) | yes |
 | <https://www.transcat.com/troemner-7421-e2w-200g-1mg-oiml-class-e2-weight-set-nvlap> (7421-E2W listed) (2026-11-07, search snippet) | no |
 
 ---
@@ -1468,8 +1469,8 @@ section's "Model check" line and in `characterization.csv` (`model_status`).
 | Microscope (section 7) | Keyence VHX-7000 | discontinued | VHX-X1 (already planned) | <https://www.keyence.com/products/microscope/digital-microscope/vhx-7000/models/vhx-7000/> (runner) |
 | Tensile frame (section 9) | Instron 68FM-100 | current; new smaller option | 68TM-100 table model (1640 x 760 x 715 mm, 100-240 V; 420 mm between columns) | <https://www.instron.com/wp-content/uploads/2025/09/100kn-universal-testing-systems-tm-fm.pdf> (maker's page, headed Chromium on the stream-cam Pi) |
 | Balance (section 12) | A&D HR-202i | discontinued | BH-225D / BH-225DTE (51 g x 0.01 mg, 220 g x 0.1 mg); BM-252 (250 g x 0.01 mg) | <https://aandd.jp/products/weighing/wproduct.html> (runner) |
-| Balance (section 12) | A&D GH-202 | discontinued | as above; US dealers still list GH stock | <https://aandd.jp/products/weighing/wproduct.html> (runner) |
-| Balance (section 12) | A&D HR-100A (the lab's own) | discontinued | FX-104 (102 g x 0.1 mg), per dealers | <https://sandiegoscale.com/products/a-d-hr-100a-hr-a-series-compact-analytical-balance> (search snippet) |
+| Balance (section 12) | A&D GH-202 | current in the US (gone from A&D Japan's list) | still listed with the GH-252 on A&D's US site; BH-225TE / BH-225DTE (automatic doors) as alternatives | <https://weighing.andonline.com/product/phoenix-gh-series-semi-micro-balance/> (headed Chromium on the stream-cam Pi) |
+| Balance (section 12) | A&D HR-100A (the lab's own) | current in the US | still listed on A&D's US site (Galaxy HR series); a dealer names the FX-104 as its replacement | <https://weighing.andonline.com/product/galaxy-hr-series-balances/> (headed Chromium on the stream-cam Pi) |
 | Reference electrode (section 17) | Innovative Instruments LF-1 / LF-2 | unconfirmed | maker's site not found; the domain is now an Italian firm | <https://www.innovativeinstruments.com/contatti/> (runner) |
 
 ---
