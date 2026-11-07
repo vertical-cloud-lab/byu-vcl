@@ -22,9 +22,11 @@ FREE: dict = {}
 CHECKS: dict = {}
 REGISTRY: dict = {}
 
-PIECES = {"lid": M.LID_PARTS, "latch": ("latch_lever", "latch_loop"), "bolt": ("latch_bolt",)}
+PIECES = {"lid": M.LID_PARTS, "latch": ("latch_lever", "latch_loop"), "bolt": ("latch_bolt",),
+          "door": M.DOOR_PARTS, "clamp0": ("clamp0",), "clamp1": ("clamp1",)}
 # what register.py needs to see: the furnace and everything on it, not the chamber's stack, frame and utilities
-SHOWN_GROUPS = {"furnace", "hood", "latch_lever", "latch_bolt", "machine", "rod", "arm", "arm_base", "top_ins", "tc"}
+SHOWN_GROUPS = {"furnace", "hood", "latch_lever", "latch_bolt", "machine", "rod", "arm", "arm_base", "top_ins", "tc",
+                "chamber", "door", "clamp0", "clamp1", "static", "switch"}
 LID_PARAMS = dict(M.LID)
 
 
@@ -64,6 +66,18 @@ def anchors(p: dict, pose: dict | None = None) -> dict:
         "latch lug": _transform((lx + 28.0, yf - 11.0, g["bolt_z"]), v, "latch"),
         "keeper top": lid((lx, -r - 4.0, g["keeper"][2] + 38.0)),
         "bolt cabinet": _transform((g["cabinet_x"] + 30.0, yf - 11.0, g["bolt_z"]), v, "bolt"),
+        "viewport hood centre": tuple(M.VIEWPORT - M.VIEWPORT_N * 6 + M.VIEWPORT_N * 46),
+        "viewport hood top": tuple(M.VIEWPORT + M.VIEWPORT_N * 40.0 + np.array([0.0, 0.0, 80.0])),
+        "viewport hood left": tuple(M.VIEWPORT + M.VIEWPORT_N * 40.0 - np.array([84.0, 0.0, 0.0])),
+        "viewport hood right": tuple(M.VIEWPORT + M.VIEWPORT_N * 40.0 + np.array([84.0, 0.0, 0.0])),
+        "viewport hood bottom": tuple(M.VIEWPORT + M.VIEWPORT_N * 40.0 - np.array([0.0, 0.0, 80.0])),
+        "door hinge top": _transform((M.DOOR_HINGE[0] - 7, M.DOOR_HINGE[1], M.DOOR_Z[1] - 60), v, "door"),
+        "door front top": _transform((M.CH_X[0] - M.DOOR_T, -M.DOOR_W / 2, M.DOOR_Z[1]), v, "door"),
+        "door front bottom": _transform((M.CH_X[0] - M.DOOR_T, 0.0, M.DOOR_Z[0]), v, "door"),
+        "clamp0 knob": _transform(tuple(M.CLAMP_PTS[0] + np.array([-M.CLAMP_REACH, 0.0, 0.0])), v, "clamp0"),
+        "clamp1 knob": _transform(tuple(M.CLAMP_PTS[1] + np.array([-M.CLAMP_REACH, 0.0, 0.0])), v, "clamp1"),
+        "clamp1 pin": tuple(M.CLAMP_PTS[1] + np.array([0.0, -4.0, 0.0])),
+        "panel lcd centre": ((M.FR_X[1] - 145.0), M.FR_Y[0] + 24.0, 1394.0),
         "deck front right": np.array([ext - 6.0, -M.BODY_R, M.BODY_TOP]),
         "base front left": np.array([-M.BODY_R * 0.7, -M.BODY_R * 0.7, M.Z_PLATFORM[1]]),
     }
@@ -82,18 +96,18 @@ def repowder() -> Instrument:
     where = {n: k for k, ns in PIECES.items() for n in ns}
     inst = Instrument("repowder", "Induction atomizer", "AMAZEMET rePowder", (1000.0, 800.0, 1600.0),
                       "AMAZEMET rePowder; the lid, hinge, latch and bolt from the lab's training video T4, notes/repowder_refine.md")
-    inst.meshes = {"body": [], "lid": [], "latch": [], "bolt": []}
+    inst.meshes = {"body": [], "lid": [], "latch": [], "bolt": [], "door": [], "clamp0": [], "clamp1": []}
     for name, d in full.items():
         if name in live or d["group"] not in SHOWN_GROUPS or d["whole"] is None or not d["whole"].n_points:
             continue
-        inst.meshes["body"].append((d["whole"], d["color"], 1.0))
+        inst.meshes[where.get(name, "body")].append((d["whole"], d["color"], 1.0))
     for name, part in live.items():
         inst.meshes[where.get(name, "body")].append((M.tess(part.shape, part.tol), part.color, 1.0))
-    for k in ("lid", "latch", "bolt"):
+    for k in ("lid", "latch", "bolt", "door", "clamp0", "clamp1"):
         j = M.joints()[k]
         if j["kind"] == "hinge":
-            inst.joints[k] = Joint("hinge", axis=tuple(j["axis"]), pivot=tuple(float(c) for c in M.hinge_point(p) if True)
-                                   if k == "lid" else tuple(float(c) for c in M.latch_geom(p)["pivot"]), deg=j["deg"])
+            pv = M.hinge_point(p) if k == "lid" else M.latch_geom(p)["pivot"] if k == "latch" else j["point"]
+            inst.joints[k] = Joint("hinge", axis=tuple(j["axis"]), pivot=tuple(float(c) for c in pv), deg=j["deg"])
         else:
             inst.joints[k] = Joint("slide", vec=tuple(j["vec"]))
     inst.anchors = anchors(p)
