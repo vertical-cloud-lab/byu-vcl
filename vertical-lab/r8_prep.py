@@ -246,7 +246,9 @@ DISC = dict(d=300.0, t=2.0, paper=0.6, cloth=1.4, ring_od=312.0, ring_id=294.0, 
 GRITS = ("320", "400", "600", "800", "1200", "cloth")
 MAG = dict(dx=-235.0, w=340.0, d=340.0, z0=22.0, pitch=100.0, rail=14.0, back=12.0)
 LIFT = 120.0                     # the head's extra lift for a disc change (ours)
-PIST_D, PIST_GAP, PIST_PRESS = 26.0, 5.0, 0.0   # the PX500 individual-force pistons (ours, sized): rod, gap over a mount's back (up), extra push
+# the PX500 individual-force pistons (ours, sized): rod, gap (up), extra push. Up, the feet clear the holder's back by
+# 3 mm, so the holder slides on and off the coupling under them (round 10: at 5 they hung 4 mm into its apertures)
+PIST_D, PIST_GAP, PIST_PRESS = 26.0, 12.0, 0.0
 GRIP_HANDLE = 0.70 + (28.0 - DISC["grip_w"]) / 90.0     # 2F-85 closure on a handle's 20 mm grip bar
 
 
@@ -370,8 +372,13 @@ def polisher() -> Instrument:
     body.add("e-stop", _ycyl(38, 14, x=ex, y=yf - 18, z=ez).union(_ycyl(26, 8, x=ex, y=yf - 6, z=ez)), "inst_red")
     body.add("deck mat", box(-W / 2 + 15, by + p["drum_r"] * 0.55, dk, W / 2 - 15, D / 2 - 15, dk + 3)
              .cut(cyl(2 * rim_r + 4, 10, x=bx, y=by, z=dk - 1)), "inst_dark")
-    cy = hy + p["head_back"] - 40
-    body.add("column", rbox(110, 80, p["head_up"] + 55, 12, x=hx, y=cy, z=dk + 5), "inst_grey")
+    # the head's column stands behind the bowl's lip (round 10). It stood 95 mm behind the bowl's centre, inside the
+    # bowl, where a 300 mm disc lifted off the platen ran into it: no disc could come or go under the head. A real
+    # grinder-polisher's power head reaches over the wheel from a column at the back. The head slides on it (a slide
+    # in the column, drawn with the head, carries the head's arm), so the column stays below the head when it lifts.
+    cy = by + g["rim_r"] + 50.0
+    col_top = dk + p["head_up"] - 20.0
+    body.add("column", rbox(110, 80, col_top - dk, 12, x=hx, y=cy, z=dk), "inst_grey")
     rx = -W / 2 - 38
     body.add("bottle rack", box(rx - 34, by - 150, 12, rx + 34, by + 150, 18).union(
         box(-W / 2 - 2, by - 150, 12, -W / 2, by + 150, 90)), "steel")
@@ -388,6 +395,10 @@ def polisher() -> Instrument:
     head.add("housing", housing.edges("<Z").fillet(8), "px_grey")
     head.add("housing skirt", rbox(p["head_w"] - 70, p["head_d"] - 70, 18, 0.35 * p["head_w"], x=hx, y=hcy, z=hz - 18),
              "inst_dark")
+    hh_ = p["head_h"]
+    y_back = hy + p["head_back"] - 30.0                 # inside the housing's rounded back
+    head.add("arm", box(hx - 50, y_back, hz + 0.40 * hh_, hx + 50, cy, hz + 0.85 * hh_), "px_grey")
+    head.add("column slide", rbox(84, 56, 300.0, 10, x=hx, y=cy, z=hz + 0.40 * hh_ - 300.0 + 1.0), "inst_grey")
     head.add("lit ring", cyl(118, 34, x=hx, y=hy, z=hz - 52), "led_blue")
     head.add("hub", cyl(70, 26, x=hx, y=hy, z=hz - 78), "inst_dark")
     head.add("spindle", cyl(34, 30, x=hx, y=hy, z=hz - 108), "chrome")

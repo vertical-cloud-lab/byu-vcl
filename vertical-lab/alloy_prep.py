@@ -5,6 +5,8 @@ chapter 7 (#303, PR #318, round 8).
                                                                         #    out/alloy_prep_still.png
     PREVIEW=1 xvfb-run --server-num=11 -a python3 alloy_prep.py         # the last frame of each step -> /tmp
     ARM_AUDIT=1 xvfb-run --server-num=11 -a python3 alloy_prep.py       # every frame collision-checked -> out/collisions/
+                                                                        #    (a render writes the same audit of its own
+                                                                        #    frames; PREP_AUDIT_RENDER=0 to skip)
 
 The lab is the two-Shuttle floor of ``setup_lab.py`` (every tray loaded, the floor machines, the utilities). The
 UR10e on its MiR250 does every transfer; nothing moves on its own except what a machine moves itself:
@@ -70,6 +72,11 @@ HOLDER = dict(d=150.0, t=12.0, r=52.0, tab_w=24.0, tab_l=55.0, below=13.0)
 POCKET_STEEL, POCKET_HOT = 90.0, 210.0     # the two pockets we use (deg, holder frame); the tab is at 270
 STOP = dict(d=RP.MX["bore"] - 0.6, h=RP.MX["stopper_h"])
 DOWN_TIP = 20.1                        # the grasp point this far over a part's foot: the pads' tips 1 mm over it
+# over the MX400's mold the gripper is turned 180 deg from the caddy's grasps: at 0 the wrist camera (on the coupling's
+# side, ur_arm.camera_meshes) runs into the press's body for every IK branch, at 45-270 none does (round 10)
+SPIN_MOLD = 180.0
+LIFT_MAG, LIFT_POL = 4.0, 70.0         # a disc lifted off its shelf's rails (the disc above is 8 mm over its handle), and
+#                                        off the platen: over the bowl's lip (51 mm up), under the lifted holder (128)
 
 
 def g_open(gap):
@@ -259,6 +266,13 @@ def movie():
     sc, L, F, rigs, u = build()
     rb = u.robot
     cab = f"{u.name}_cab"
+    aud = None
+    if not (scene.AUDIT or PREVIEW) and os.environ.get("PREP_AUDIT_RENDER", "1") != "0":
+        # the render checks its own frames too (collide.Auditor, as ARM_AUDIT=1 does), so the audit is of the very
+        # frames in the MP4 and costs no second pass through the chapter (round 10: three render slots for six streams)
+        import collide
+        aud = collide.Auditor(sc)
+        sc.frame_hooks.append(aud)
     DOCK_Y = W.DOCK_N
     PARK = np.radians(A.PARK_DEG)
     pol, press, mag, cnc = (rig_of(rigs, k) for k in ("polisher", "mount_press", "disc_magazine", "cnc"))
@@ -529,14 +543,16 @@ def movie():
     mold = (pw @ np.r_[gm["mx"], gm["my"], gm["top"], 1.0])[:3]
     cam_mx = cam_at(mold, (-150, -1300, 450), (40, 0, -30))     # from the front left: the arm comes from the right
     pr = press.inst.actions
+    _serve("mount", locals())
     st["cap"] = "Hot mounting, as in the lab's own MX400 video: the closure swings off the 1.5 in mold; ram up."
     sc.step(st["lbl"], st["cap"], 1.6, press.move({"closure": (0.0, 1.0)}), cam_to=cam_mx, hold=0.1)
     sc.step(st["lbl"], st["cap"], 1.2, press.move({"ram": (0.0, 1.0)}), hold=0.2)
     st["cap"] = "The coupon goes on the ram, face down: the face to be polished."
     status(sc, Arm="the coupon onto the ram")
     pick("p_coupon", CAB_TOP + seat_z, GRIP_COUPON, cam=cam_caddy()[0])
-    place("p_coupon", mold[:2], mold[2], f"{press.prefix}ram", open_to=OPEN_SMALL, cam=cam_mx, secs=2.2)
-    go(sh(A.down(tuple(mold), 0.0), (0, 0, 200)), secs=1.0)
+    place("p_coupon", mold[:2], mold[2], f"{press.prefix}ram", open_to=OPEN_SMALL, cam=cam_mx, secs=2.2,
+          spin=SPIN_MOLD)
+    go(sh(A.down(tuple(mold), SPIN_MOLD), (0, 0, 200)), secs=1.0)
     st["cap"] = "Ram down, into the mold."
     sc.step(st["lbl"], st["cap"], 1.2, press.move({"ram": (1.0, 0.0)}), hold=0.1)
     st["cap"] = ("Conductive phenolic (carbon-filled: the SEM's path to ground), the SOP's 3/4 scoop, from a doser "
@@ -547,8 +563,9 @@ def movie():
                  "onto the compound by the closed fingers (the SOP: an airtight fit).")
     status(sc, Arm="the stopper into the mold")
     pick("p_stopper", CAB_TOP + seat_z, GRIP_STOP, cam=cam_caddy()[0])
-    place("p_stopper", mold[:2], mold[2], f"{press.prefix}body", open_to=OPEN_MOUNT, cam=cam_mx, secs=2.2)
-    Tt = push("p_stopper", gm["top"] - gm["stopper_z"])
+    place("p_stopper", mold[:2], mold[2], f"{press.prefix}body", open_to=OPEN_MOUNT, cam=cam_mx, secs=2.2,
+          spin=SPIN_MOLD)
+    Tt = push("p_stopper", gm["top"] - gm["stopper_z"], spin=SPIN_MOLD)
     rb.release(f"{press.prefix}body")
     lin(sh(Tt, (0, 0, 60)), 0.5)
     park(1.4)
@@ -575,13 +592,13 @@ def movie():
     set_alpha(sc, "p_coupon", 0.0)
     st["cap"] = "The stopper back on the caddy."
     status(sc, Coupon="hot-mounted, 1.5 in conductive phenolic", Arm="the stopper off")
-    pick("p_stopper", mold[2] + SP.FACE_Z + SP.HOT["skin"], GRIP_STOP, cam=cam_mx)
+    pick("p_stopper", mold[2] + SP.FACE_Z + SP.HOT["skin"], GRIP_STOP, cam=cam_mx, spin=SPIN_MOLD)
     sp_ = (sc.world("p_caddy") @ seat("stopper"))[:3, 3]
     place("p_stopper", sp_[:2], sp_[2], "p_caddy", open_to=OPEN_MOUNT, cam=cam_mx)
     st["cap"] = ("The mount into the holder, face down, beside the steel mount. The SOP takes the compound's skin "
                  "off on a belt sander (step 3); here the 320 paper does it.")
     status(sc, Arm="the hot mount into the holder")
-    pick("p_hot", mold[2], GRIP_MOUNT, cam=cam_mx)
+    pick("p_hot", mold[2], GRIP_MOUNT, cam=cam_mx, spin=SPIN_MOLD)
     hw = sc.world("p_holder")
     Mh = hw @ mount_in_holder(POCKET_HOT)
     fz = min((Mh @ np.r_[0, 0, 0, 1.0])[2], (Mh @ np.r_[0, 0, SP.FACE_Z, 1.0])[2])
@@ -611,22 +628,32 @@ def movie():
     p5 = RP.P5
     hz = p5["deck"] + p5["head_up"]
     head_hold = f"{pol.prefix}holder"
+    _serve("polish", locals())
     Tg = sc.world("p_holder") @ tab_grasp()
-    go(along(Tg, -110), secs=1.6, grip=g_open(44.0))
-    lin(Tg, 0.7)
-    grip(GRIP_TAB)
-    rb.grasp("p_holder")
-    lin(sh(Tg, (0, 0, 40)), 0.6)
-    lin(sh(along(Tg, -90), (0, 0, 60)), 0.7)
+    off_h = np.linalg.inv(tab_grasp())                  # the holder in the tab grasp's frame
     H_on = sc.world(head_hold) @ T((G["hx"], G["hy"], hz - 120.0))
     T_on = H_on @ tab_grasp()
-    go(sh(along(T_on, -260), (0, 0, -4)), secs=2.0, cam=cam_pol)
-    lin(sh(T_on, (0, 0, -4)), 1.2)
-    lin(T_on, 0.3)
-    grip(g_open(44.0))
-    rb.release(head_hold)
-    lin(along(T_on, -240), 0.9)
-    status(sc, Holder="on the PX500's head")
+    head_g = f"{pol.prefix}head"
+
+    def holder_on():
+        go_pre(along(Tg, -110), [
+            ([along(Tg, -110), Tg], g_open(44.0), None, {"p_holder"}),
+            ([Tg, sh(Tg, (0, 0, 40)), sh(along(Tg, -90), (0, 0, 60))], GRIP_TAB, ("p_holder", off_h), {"p_rest"})],
+            secs=1.6, grip=g_open(44.0))
+        lin(Tg, 0.7)
+        grip(GRIP_TAB)
+        rb.grasp("p_holder")
+        lin(sh(Tg, (0, 0, 40)), 0.6)
+        lin(sh(along(Tg, -90), (0, 0, 60)), 0.7)
+        go_pre(sh(along(T_on, -260), (0, 0, -4)), [
+            ([sh(along(T_on, -260), (0, 0, -4)), sh(T_on, (0, 0, -4)), T_on], GRIP_TAB, ("p_holder", off_h),
+             {head_g}),
+            ([T_on, along(T_on, -240)], g_open(44.0), None, {"p_holder"})], secs=2.0, cam=cam_pol)
+        lin(sh(T_on, (0, 0, -4)), 1.2)
+        lin(T_on, 0.3)
+        grip(g_open(44.0))
+        rb.release(head_hold)
+        lin(along(T_on, -240), 0.9)
     drop_ = -pol.inst.joints["head"].vec[2]
     hold_dn = H_on[:3, 3] - (0.0, 0.0, drop_ + RP.LIFT)       # the holder's face side, the head down on the disc
     cam_pist = cam_at(hold_dn + (0, 0, 40), (60, -430, 70), look=(0, 0, 0))
@@ -636,20 +663,43 @@ def movie():
     def handle_world(group):
         return sc.world(group) @ RP.handle_tcp()
     on_platen = f"{pol.prefix}platen"
-    out_pol, out_mag, lift_pol = 470.0, 360.0, 62.0
+    mag_body = f"{mag.prefix}body"
+    out_pol, out_mag, lift_pol = 470.0, 360.0, LIFT_POL
+
+    def go_pre(T_pre, segs, secs=1.5, grip=None, cam=None):
+        """A joint move to T_pre in an IK branch from which the straight lines that follow (segs, see clear_branch)
+        are clear and don't flip; the planner's own choice if there is none. Round 9's disc changes followed the
+        branch the last move left the arm in, and folded the forearm into the gripper or put the upper arm through
+        the bay's frame."""
+        q0 = clear_branch(rb, T_pre, segs)
+        if q0 is None:
+            print(f"note: {sc.name} {st['lbl']}: no IK branch with clear lines on from "
+                  f"{np.round(T_pre[:3, 3]).tolist()}", flush=True)
+        f = rb.joint_to(q1=q0) if q0 is not None else rb.joint_to(Tw=T_pre)
+        sc.step(st["lbl"], st["cap"], secs, RB.both(f, rb.grip_to(grip) if grip is not None else None),
+                hold=0.05, cam_to=cam)
 
     def to_platen(kind, f=1.0, cap_=""):
         g_ = discs[kind]
         Hh = handle_world(g_)
+        off_ = np.linalg.inv(Hh) @ sc.world(g_)            # the disc in the grasp's frame
+        Hp = T(plat) @ RP.handle_tcp()
         st["cap"] = cap_
-        go(sh(Hh, (0, -pre_back, 0)), secs=1.6 * f, grip=0.0)
+        go_pre(sh(Hh, (0, -pre_back, 0)), [
+            ([sh(Hh, (0, -pre_back, 0)), Hh], 0.0, None, {g_}),
+            ([Hh, sh(Hh, (0, 0, LIFT_MAG)), sh(Hh, (0, -out_mag, LIFT_MAG))], RP.GRIP_HANDLE, (g_, off_),
+             {mag_body})], secs=1.6 * f, grip=0.0)
         lin(Hh, 0.7 * f)
         grip(RP.GRIP_HANDLE, 0.4 * f)
         rb.grasp(g_)
-        lin(sh(Hh, (0, 0, 8)), 0.4 * f)
-        lin(sh(Hh, (0, -out_mag, 8)), 1.0 * f)
-        Hp = T(plat) @ RP.handle_tcp()
-        lin(sh(Hp, (0, -out_pol, lift_pol)), 2.0 * f)
+        lin(sh(Hh, (0, 0, LIFT_MAG)), 0.4 * f)
+        lin(sh(Hh, (0, -out_mag, LIFT_MAG)), 1.0 * f)
+        # across to the PX500 by a joint move (planned round the furnace and the bay's frame, not a straight line of
+        # the gripper through them), then straight in under the lifted head, down onto the platen, let go, back out
+        go_pre(sh(Hp, (0, -out_pol, lift_pol)), [
+            ([sh(Hp, (0, -out_pol, lift_pol)), sh(Hp, (0, 0, lift_pol)), Hp], RP.GRIP_HANDLE, (g_, off_),
+             {on_platen}),
+            ([Hp, sh(Hp, (0, -pre_back, 0))], 0.0, None, {g_})], secs=2.0 * f)
         lin(sh(Hp, (0, 0, lift_pol)), 1.2 * f)
         lin(Hp, 0.6 * f)
         grip(0.0, 0.4 * f)
@@ -659,20 +709,27 @@ def movie():
     def to_magazine(kind, f=1.0, cap_=""):
         g_ = discs[kind]
         Hh = handle_world(g_)
+        off_ = np.linalg.inv(Hh) @ sc.world(g_)
         i = RP.GRITS.index(kind)
         Hm = mw @ T(RP.disc_home(i)[:3, 3] - m_off) @ RP.handle_tcp()
         st["cap"] = cap_
-        go(sh(Hh, (0, -pre_back, 0)), secs=1.2 * f, grip=0.0)
+        go_pre(sh(Hh, (0, -pre_back, 0)), [
+            ([sh(Hh, (0, -pre_back, 0)), Hh], 0.0, None, {g_}),
+            ([Hh, sh(Hh, (0, 0, lift_pol)), sh(Hh, (0, -out_pol, lift_pol))], RP.GRIP_HANDLE, (g_, off_),
+             {on_platen})], secs=1.2 * f, grip=0.0)
         lin(Hh, 0.6 * f)
         grip(RP.GRIP_HANDLE, 0.4 * f)
         rb.grasp(g_)
         lin(sh(Hh, (0, 0, lift_pol)), 0.6 * f)
         lin(sh(Hh, (0, -out_pol, lift_pol)), 1.2 * f)
-        lin(sh(Hm, (0, -out_mag, 8)), 2.0 * f)
-        lin(sh(Hm, (0, 0, 8)), 1.0 * f)
+        go_pre(sh(Hm, (0, -out_mag, LIFT_MAG)), [
+            ([sh(Hm, (0, -out_mag, LIFT_MAG)), sh(Hm, (0, 0, LIFT_MAG)), Hm], RP.GRIP_HANDLE, (g_, off_),
+             {mag_body}),
+            ([Hm, sh(Hm, (0, -pre_back, 0))], 0.0, None, {g_})], secs=2.0 * f)
+        lin(sh(Hm, (0, 0, LIFT_MAG)), 1.0 * f)
         lin(Hm, 0.4 * f)
         grip(0.0, 0.4 * f)
-        rb.release(f"{mag.prefix}body")
+        rb.release(mag_body)
         lin(sh(Hm, (0, -pre_back, 0)), 0.6 * f)
 
     plat_v = [0.0, 0.0]
@@ -699,6 +756,8 @@ def movie():
             sc.step(st["lbl"], st["cap"], 0.3 * f, pol.move({"water": (1.0, 0.0)}), hold=0.0)
         plat_v[0], plat_v[1] = b, hb
 
+    holder_on()
+    status(sc, Holder="on the PX500's head")
     st["cap"] = ("Why whole discs: changing a SiC paper means prying off its retaining ring, peeling the paper, laying "
                  "a new one flat and pressing the ring back on (the SOP, step 4). No robot has been shown doing that.")
     sc.step(st["lbl"], st["cap"], 1.0, None, hold=3.0)
@@ -743,14 +802,20 @@ def movie():
     st["cap"] = "The holder off the head and back on the MiR's rest, turned face up on the way."
     status(sc, Arm="the holder back to its rest")
     T_on = sc.world("p_holder") @ tab_grasp()
-    go(along(T_on, -240), secs=1.6, grip=g_open(44.0))
+    T_up = sc.world("p_rest") @ rest_matrix(True) @ tab_grasp()
+    off_h = np.linalg.inv(tab_grasp())
+    go_pre(along(T_on, -240), [
+        ([along(T_on, -240), T_on], g_open(44.0), None, {"p_holder"}),
+        ([T_on, sh(T_on, (0, 0, -4)), sh(along(T_on, -260), (0, 0, -4))], GRIP_TAB, ("p_holder", off_h), {head_g})],
+        secs=1.6, grip=g_open(44.0))
     lin(T_on, 0.9)
     grip(GRIP_TAB)
     rb.grasp("p_holder")
     lin(sh(T_on, (0, 0, -4)), 0.3)
     lin(sh(along(T_on, -260), (0, 0, -4)), 1.2)
-    T_up = sc.world("p_rest") @ rest_matrix(True) @ tab_grasp()
-    go(sh(along(T_up, -90), (0, 0, 60)), secs=2.2)
+    go_pre(sh(along(T_up, -90), (0, 0, 60)), [
+        ([sh(along(T_up, -90), (0, 0, 60)), sh(T_up, (0, 0, 40)), T_up], GRIP_TAB, ("p_holder", off_h), {"p_rest"}),
+        ([T_up, along(T_up, -110)], g_open(44.0), None, {"p_holder"})], secs=2.2)
     lin(sh(T_up, (0, 0, 40)), 0.7)
     lin(T_up, 0.5)
     grip(g_open(44.0))
@@ -773,7 +838,107 @@ def movie():
                  "cleaning and an inverted microscope, for serial sectioning; it does not cut or mount. Sectioning and "
                  "mounting are what this chapter adds. Next, chapter 7: the MiR takes the holder to the trays.")
     sc.step(st["lbl"], st["cap"], 1.0, None, cam_to=CAM_LAB, hold=4.2)
-    return sc.save()
+    info = sc.save()
+    if aud is not None:
+        aud.save()
+    return info
+
+
+# ================================================================================================= IK branch
+def _line_q(rb, inv, q0, T0, T1, n=24):
+    """Joint poses along the straight tool line T0 -> T1 from q0 (as Robot.line_to solves it), or None at a flip."""
+    import ur_arm
+    from scipy.spatial.transform import Rotation, Slerp
+    sl = Slerp([0.0, 1.0], Rotation.from_matrix(np.stack([T0[:3, :3], T1[:3, :3]])))
+    q, out = q0, []
+    for s_ in np.linspace(0.0, 1.0, n + 1)[1:]:
+        M = np.eye(4)
+        M[:3, :3] = sl([s_]).as_matrix()[0]
+        M[:3, 3] = T0[:3, 3] + (T1[:3, 3] - T0[:3, 3]) * s_
+        try:
+            qn = ur_arm.ik(rb.model, inv @ M, q)
+        except ValueError:
+            return None
+        if np.abs(qn - q).max() > np.radians(25):
+            return None
+        q = qn
+        out.append(q)
+    return out
+
+
+def clear_branch(rb, T_start, segs):
+    """The joint pose at T_start, nearest the arm's now, of an IK branch from which every straight tool line in segs
+    is clear (collide.py) and doesn't flip; None if no branch is. segs: [(poses, closure, held, allow)]: lines through
+    the poses (the first is where the last segment ended), the gripper's closure, what it holds then ((group, its
+    matrix in the grasp's frame) or None), the groups the gripper and the held part may touch (what it takes from or
+    puts on)."""
+    import collide
+    chk = rb.checker()
+    inv = np.linalg.inv(rb.sc.world(rb.root))
+    old = rb.held
+    worlds = {}
+    try:
+        for q0 in collide.ik_all(rb.model, inv @ T_start, rb.q):
+            q, ok = q0, True
+            for k, (Ts, close, held, allow) in enumerate(segs):
+                rb.held = held
+                if k not in worlds:
+                    worlds[k] = chk.snapshot()
+                W = worlds[k]
+                path = [q]
+                for a, b in zip(Ts[:-1], Ts[1:]):
+                    p = _line_q(rb, inv, path[-1], a, b)
+                    if p is None:
+                        ok = False
+                        break
+                    path += p
+                if not ok or any(chk.collisions(x, close, W, set(allow), first=True) for x in path):
+                    ok = False
+                    break
+                q = path[-1]
+            if ok:
+                return q0
+        return None
+    finally:
+        rb.held = old
+        chk._held()
+
+
+# ================================================================================================= pose server
+def _serve(stage, ns):
+    """PREP_SERVE=mount,polish (with ARM_AUDIT=1 VIZ3D_FPS=1, so the movie runs to there fast): at `stage`, exec each
+    new /tmp/prep_srv/*.py in the movie's namespace (its output to *.out) until /tmp/prep_srv/next appears. For working
+    out the arm's poses against the built scene without rebuilding it each time."""
+    if stage not in os.environ.get("PREP_SERVE", "").split(","):
+        return
+    import contextlib
+    import glob
+    import io
+    import time
+    import traceback
+    d = "/tmp/prep_srv"
+    os.makedirs(d, exist_ok=True)
+    done = set(glob.glob(f"{d}/*.py"))
+    env = {**globals(), **ns}
+    print(f"SERVE {stage} ready", flush=True)
+    while True:
+        if os.path.exists(f"{d}/next"):
+            os.remove(f"{d}/next")
+            return
+        for fn in sorted(glob.glob(f"{d}/*.py")):
+            if fn in done:
+                continue
+            done.add(fn)
+            buf = io.StringIO()
+            with contextlib.redirect_stdout(buf), contextlib.redirect_stderr(buf):
+                try:
+                    exec(compile(open(fn).read(), fn, "exec"), env)
+                except Exception:              # noqa: BLE001
+                    traceback.print_exc()
+            with open(fn[:-3] + ".tmp", "w") as fh:
+                fh.write(buf.getvalue())
+            os.replace(fn[:-3] + ".tmp", fn[:-3] + ".out")
+        time.sleep(0.3)
 
 
 # ================================================================================================= pose probe
