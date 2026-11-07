@@ -1,0 +1,108 @@
+{
+ "base_mm": [
+  0.0,
+  -1802.0,
+  800.0
+ ],
+ "header_mm": 1829.0,
+ "table_mm": 833.0,
+ "tray_presented_floor_mm": 857.0,
+ "arms": {
+  "ur3e": {
+   "reach_mm": 500,
+   "payload_kg": 3.0,
+   "seats": {
+    "vial rack (tray B)": {
+     "highest_joint_mm": 1167,
+     "header_gap_mm": 662
+    },
+    "multi-doser shuttle fork (tray B)": null,
+    "holder on the arm's base": {
+     "highest_joint_mm": 1169,
+     "header_gap_mm": null
+    },
+    "CubXL holder seat (tray A)": null
+   },
+   "tray_cover_100mm": {
+    "share": 0.026,
+    "reachable_only_over_header": 0,
+    "min_header_gap_mm": 625,
+    "deepest_mm": 100
+   },
+   "tray_cover_250mm": {
+    "share": 0.0,
+    "reachable_only_over_header": 0,
+    "min_header_gap_mm": null,
+    "deepest_mm": null
+   }
+  },
+  "ur7e": {
+   "reach_mm": 850,
+   "payload_kg": 7.5,
+   "seats": {
+    "vial rack (tray B)": {
+     "highest_joint_mm": 1354,
+     "header_gap_mm": 475
+    },
+    "multi-doser shuttle fork (tray B)": {
+     "highest_joint_mm": 1386,
+     "header_gap_mm": 443
+    },
+    "holder on the arm's base": {
+     "highest_joint_mm": 1088,
+     "header_gap_mm": null
+    },
+    "CubXL holder seat (tray A)": {
+     "highest_joint_mm": 1387,
+     "header_gap_mm": 588
+    }
+   },
+   "tray_cover_100mm": {
+    "share": 0.312,
+    "reachable_only_over_header": 0,
+    "min_header_gap_mm": 456,
+    "deepest_mm": 500
+   },
+   "tray_cover_250mm": {
+    "share": 0.25,
+    "reachable_only_over_header": 0,
+    "min_header_gap_mm": 457,
+    "deepest_mm": 450
+   }
+  },
+  "ur10e": {
+   "reach_mm": 1300,
+   "payload_kg": 12.5,
+   "seats": {
+    "vial rack (tray B)": {
+     "highest_joint_mm": 1577,
+     "header_gap_mm": 643
+    },
+    "multi-doser shuttle fork (tray B)": {
+     "highest_joint_mm": 1579,
+     "header_gap_mm": 250
+    },
+    "holder on the arm's base": {
+     "highest_joint_mm": 1105,
+     "header_gap_mm": null
+    },
+    "CubXL holder seat (tray A)": {
+     "highest_joint_mm": 1577,
+     "header_gap_mm": 571
+    }
+   },
+   "tray_cover_100mm": {
+    "share": 0.828,
+    "reachable_only_over_header": 0,
+    "min_header_gap_mm": 249,
+    "deepest_mm": 800
+   },
+   "tray_cover_250mm": {
+    "share": 0.773,
+    "reachable_only_over_header": 0,
+    "min_header_gap_mm": 247,
+    "deepest_mm": 800
+   }
+  }
+ }
+}

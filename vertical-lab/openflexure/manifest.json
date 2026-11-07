@@ -1,0 +1,2530 @@
+{
+ "units": "mm",
+ "up_axis": "+z",
+ "handedness": "right",
+ "generated_with": "OpenSCAD 2026.11.01 nightly, --backend=manifold; python trimesh 5.2.0",
+ "instruments": {
+  "v7": {
+   "name": "OpenFlexure Microscope v7, reflection (epi-) illumination, motorised, RMS optics",
+   "source": {
+    "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+    "tag": "v7.0.0-beta5",
+    "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1"
+   },
+   "parts": {
+    "stand": {
+     "file": "v7/stand.stl",
+     "triangles": 2196,
+     "bbox_mm": [
+      [
+       -85.241,
+       -47.135,
+       0.0
+      ],
+      [
+       85.357,
+       86.748,
+       78.0
+      ]
+     ],
+     "colour": "#404040",
+     "moves_with_stage": [],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "rendering/prepare_stand.scad: render_stand -> openscad/libs/lib_microscope_stand.scad",
+      "assembly": "rendering/assemble_v7_reflection.scad (this work; uses rendering/*.scad + openscad/*.scad)"
+     },
+     "notes": "microscope_stand.stl geometry (stand with electronics drawer bay)",
+     "placeholder": false
+    },
+    "main_body": {
+     "file": "v7/main_body.stl",
+     "triangles": 20612,
+     "bbox_mm": [
+      [
+       -71.458,
+       -28.163,
+       75.0
+      ],
+      [
+       71.458,
+       81.063,
+       138.0
+      ]
+     ],
+     "colour": "#F5F5F5",
+     "moves_with_stage": [],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "openscad/libs/main_body_structure.scad: main_body() via rendering/librender/rendered_main_body.scad",
+      "assembly": "rendering/assemble_v7_reflection.scad (this work; uses rendering/*.scad + openscad/*.scad)"
+     },
+     "notes": "main_body.stl MINUS the xy_stage region, the four legs and the two XY actuator columns; contains the z-axis objective mount (the mount itself moves in z with the optics).",
+     "placeholder": false
+    },
+    "xy_stage": {
+     "file": "v7/xy_stage.stl",
+     "triangles": 1502,
+     "bbox_mm": [
+      [
+       -25.474,
+       -25.474,
+       135.5
+      ],
+      [
+       25.474,
+       25.474,
+       150.0
+      ]
+     ],
+     "colour": "#F5F5F5",
+     "moves_with_stage": [
+      "x",
+      "y"
+     ],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "main_body() INTERSECT hull(xy_stage()) slab z>=upper_xy_flex_z",
+      "assembly": "rendering/assemble_v7_reflection.scad (this work; uses rendering/*.scad + openscad/*.scad)"
+     },
+     "notes": "moving XY stage platform cut out of the one-piece main body; top surface = sample plane",
+     "placeholder": false
+    },
+    "leg_x": {
+     "file": "v7/leg_x.stl",
+     "triangles": 506,
+     "bbox_mm": [
+      [
+       13.081,
+       13.081,
+       75.0
+      ],
+      [
+       48.091,
+       48.091,
+       140.0
+      ]
+     ],
+     "colour": "#F5F5F5",
+     "moves_with_stage": [
+      "x",
+      "y"
+     ],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "main_body() INTERSECT leg_region(actuated) in mirror([1,0,0]) leg_frame(45) (actuator_leg: leg + lever arm), less the stage",
+      "assembly": "rendering/assemble_v7_reflection.scad (this work; uses rendering/*.scad + openscad/*.scad)"
+     },
+     "notes": "X actuator leg: parallelogram leg + horizontal arm to the X column; pivots on its bottom flexure",
+     "placeholder": false
+    },
+    "leg_y": {
+     "file": "v7/leg_y.stl",
+     "triangles": 508,
+     "bbox_mm": [
+      [
+       -48.091,
+       13.081,
+       75.0
+      ],
+      [
+       -13.081,
+       48.091,
+       140.0
+      ]
+     ],
+     "colour": "#F5F5F5",
+     "moves_with_stage": [
+      "x",
+      "y"
+     ],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "main_body() INTERSECT leg_region(actuated) in leg_frame(45) (actuator_leg: leg + lever arm), less the stage",
+      "assembly": "rendering/assemble_v7_reflection.scad (this work; uses rendering/*.scad + openscad/*.scad)"
+     },
+     "notes": "Y actuator leg, as leg_x",
+     "placeholder": false
+    },
+    "leg_back_left": {
+     "file": "v7/leg_back_left.stl",
+     "triangles": 332,
+     "bbox_mm": [
+      [
+       -35.002,
+       -35.002,
+       75.0
+      ],
+      [
+       -13.081,
+       -13.081,
+       140.0
+      ]
+     ],
+     "colour": "#F5F5F5",
+     "moves_with_stage": [
+      "x",
+      "y"
+     ],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "main_body() INTERSECT leg_region() in leg_frame(135) (leg), less the stage",
+      "assembly": "rendering/assemble_v7_reflection.scad (this work; uses rendering/*.scad + openscad/*.scad)"
+     },
+     "notes": "passive parallelogram leg",
+     "placeholder": false
+    },
+    "leg_back_right": {
+     "file": "v7/leg_back_right.stl",
+     "triangles": 332,
+     "bbox_mm": [
+      [
+       13.081,
+       -35.002,
+       75.0
+      ],
+      [
+       35.002,
+       -13.081,
+       140.0
+      ]
+     ],
+     "colour": "#F5F5F5",
+     "moves_with_stage": [
+      "x",
+      "y"
+     ],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "main_body() INTERSECT leg_region() in mirror([1,0,0]) leg_frame(135) (leg), less the stage",
+      "assembly": "rendering/assemble_v7_reflection.scad (this work; uses rendering/*.scad + openscad/*.scad)"
+     },
+     "notes": "passive parallelogram leg",
+     "placeholder": false
+    },
+    "actuator_column_x": {
+     "file": "v7/actuator_column_x.stl",
+     "triangles": 794,
+     "bbox_mm": [
+      [
+       38.239,
+       38.239,
+       75.0
+      ],
+      [
+       52.675,
+       52.675,
+       100.0
+      ]
+     ],
+     "colour": "#F5F5F5",
+     "moves_with_stage": [
+      "x",
+      "y"
+     ],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "main_body() INTERSECT column_region() at actuating_nut_r in the X leg frame (actuator_column)",
+      "assembly": "rendering/assemble_v7_reflection.scad (this work; uses rendering/*.scad + openscad/*.scad)"
+     },
+     "notes": "X actuator column (nut trap, band hooks); moves up and down with the end of the X arm",
+     "placeholder": false
+    },
+    "actuator_column_y": {
+     "file": "v7/actuator_column_y.stl",
+     "triangles": 794,
+     "bbox_mm": [
+      [
+       -52.675,
+       38.239,
+       75.0
+      ],
+      [
+       -38.239,
+       52.675,
+       100.0
+      ]
+     ],
+     "colour": "#F5F5F5",
+     "moves_with_stage": [
+      "x",
+      "y"
+     ],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "main_body() INTERSECT column_region() at actuating_nut_r in the Y leg frame (actuator_column)",
+      "assembly": "rendering/assemble_v7_reflection.scad (this work; uses rendering/*.scad + openscad/*.scad)"
+     },
+     "notes": "Y actuator column",
+     "placeholder": false
+    },
+    "actuator_x": {
+     "file": "v7/actuator_x.stl",
+     "triangles": 43368,
+     "bbox_mm": [
+      [
+       31.014,
+       31.014,
+       60.0
+      ],
+      [
+       59.9,
+       59.9,
+       114.0
+      ]
+     ],
+     "colour": "#1E90FF",
+     "moves_with_stage": [],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "rendering/actuator_assembly.scad: x_actuator_assembly",
+      "assembly": "rendering/assemble_v7_reflection.scad (this work; uses rendering/*.scad + openscad/*.scad)"
+     },
+     "notes": "foot, viton band, M3x25 lead screw, large gear, washers, brass nut",
+     "placeholder": false
+    },
+    "actuator_y": {
+     "file": "v7/actuator_y.stl",
+     "triangles": 42786,
+     "bbox_mm": [
+      [
+       -59.9,
+       31.014,
+       60.0
+      ],
+      [
+       -31.014,
+       59.9,
+       114.0
+      ]
+     ],
+     "colour": "#1E90FF",
+     "moves_with_stage": [],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "rendering/actuator_assembly.scad: y_actuator_assembly",
+      "assembly": "rendering/assemble_v7_reflection.scad (this work; uses rendering/*.scad + openscad/*.scad)"
+     },
+     "notes": "as actuator_x",
+     "placeholder": false
+    },
+    "actuator_z": {
+     "file": "v7/actuator_z.stl",
+     "triangles": 42430,
+     "bbox_mm": [
+      [
+       -14.443,
+       46.188,
+       61.709
+      ],
+      [
+       14.443,
+       86.384,
+       114.668
+      ]
+     ],
+     "colour": "#1E90FF",
+     "moves_with_stage": [],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "rendering/actuator_assembly.scad: z_actuator_assembly",
+      "assembly": "rendering/assemble_v7_reflection.scad (this work; uses rendering/*.scad + openscad/*.scad)"
+     },
+     "notes": "as actuator_x, tilted z actuator",
+     "placeholder": false
+    },
+    "motor_x": {
+     "file": "v7/motor_x.stl",
+     "triangles": 40734,
+     "bbox_mm": [
+      [
+       25.966,
+       1.58,
+       32.0
+      ],
+      [
+       71.317,
+       71.317,
+       137.143
+      ]
+     ],
+     "colour": "#C0C0C0",
+     "moves_with_stage": [],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "rendering/mount_motors.scad: mirror y_motor_and_cap",
+      "assembly": "rendering/assemble_v7_reflection.scad (this work; uses rendering/*.scad + openscad/*.scad)"
+     },
+     "notes": "28BYJ-48 motor, small gear, screws, side cable tidy",
+     "placeholder": false
+    },
+    "motor_y": {
+     "file": "v7/motor_y.stl",
+     "triangles": 40722,
+     "bbox_mm": [
+      [
+       -71.317,
+       1.58,
+       32.0
+      ],
+      [
+       -25.966,
+       71.317,
+       137.143
+      ]
+     ],
+     "colour": "#C0C0C0",
+     "moves_with_stage": [],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "rendering/mount_motors.scad: y_motor_and_cap",
+      "assembly": "rendering/assemble_v7_reflection.scad (this work; uses rendering/*.scad + openscad/*.scad)"
+     },
+     "notes": "",
+     "placeholder": false
+    },
+    "motor_z": {
+     "file": "v7/motor_z.stl",
+     "triangles": 40850,
+     "bbox_mm": [
+      [
+       -38.846,
+       33.486,
+       33.904
+      ],
+      [
+       38.846,
+       90.782,
+       140.316
+      ]
+     ],
+     "colour": "#C0C0C0",
+     "moves_with_stage": [],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "rendering/mount_motors.scad: z_motor_and_cap(cap=true)",
+      "assembly": "rendering/assemble_v7_reflection.scad (this work; uses rendering/*.scad + openscad/*.scad)"
+     },
+     "notes": "includes front cable tidy",
+     "placeholder": false
+    },
+    "optics_module_beamsplitter": {
+     "file": "v7/optics_module_beamsplitter.stl",
+     "triangles": 8014,
+     "bbox_mm": [
+      [
+       -18.125,
+       -14.73,
+       57.555
+      ],
+      [
+       14.73,
+       18.125,
+       105.0
+      ]
+     ],
+     "colour": "#404040",
+     "moves_with_stage": [
+      "z"
+     ],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "openscad/libs/lib_optics.scad: optics_module_rms(rms_f50d13_config(beamsplitter=true)) = optics_picamera_2_rms_f50d13_beamsplitter.stl",
+      "assembly": "rendering/assemble_v7_reflection.scad (this work; uses rendering/*.scad + openscad/*.scad)"
+     },
+     "notes": "focus (z) moves the whole optics stack",
+     "placeholder": false
+    },
+    "objective": {
+     "file": "v7/objective.stl",
+     "triangles": 7040,
+     "bbox_mm": [
+      [
+       -12.265,
+       -12.265,
+       100.6
+      ],
+      [
+       12.265,
+       12.265,
+       146.65
+      ]
+     ],
+     "colour": "#B8860B",
+     "moves_with_stage": [
+      "z"
+     ],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "rendering/librender/optics.scad: rendered_objective",
+      "assembly": "rendering/assemble_v7_reflection.scad (this work; uses rendering/*.scad + openscad/*.scad)"
+     },
+     "notes": "render model of a 45 mm parfocal RMS objective",
+     "placeholder": false
+    },
+    "tube_lens": {
+     "file": "v7/tube_lens.stl",
+     "triangles": 716,
+     "bbox_mm": [
+      [
+       -6.35,
+       -6.35,
+       93.5
+      ],
+      [
+       6.35,
+       6.35,
+       97.979
+      ]
+     ],
+     "colour": "#87CEEB",
+     "moves_with_stage": [
+      "z"
+     ],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "rendering/librender/optics.scad: tube_lens",
+      "assembly": "rendering/assemble_v7_reflection.scad (this work; uses rendering/*.scad + openscad/*.scad)"
+     },
+     "notes": "render model",
+     "placeholder": false
+    },
+    "picamera2_with_cover": {
+     "file": "v7/picamera2_with_cover.stl",
+     "triangles": 12618,
+     "bbox_mm": [
+      [
+       -19.021,
+       -14.676,
+       52.8
+      ],
+      [
+       14.676,
+       19.021,
+       62.0
+      ]
+     ],
+     "colour": "#2E8B57",
+     "moves_with_stage": [
+      "z"
+     ],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "rendering/rms_optics_assembly.scad: camera_and_screws",
+      "assembly": "rendering/assemble_v7_reflection.scad (this work; uses rendering/*.scad + openscad/*.scad)"
+     },
+     "notes": "Pi camera v2 board + picamera_2_cover + 2 screws",
+     "placeholder": false
+    },
+    "camera_ribbon_cable": {
+     "file": "v7/camera_ribbon_cable.stl",
+     "triangles": 730,
+     "bbox_mm": [
+      [
+       -22.728,
+       -20.334,
+       21.7
+      ],
+      [
+       20.334,
+       22.728,
+       56.55
+      ]
+     ],
+     "colour": "#D2B48C",
+     "moves_with_stage": [
+      "z"
+     ],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "librender/electronics.scad: picamera_cable(curled_ribbon_pos())",
+      "assembly": "rendering/assemble_v7_reflection.scad (this work; uses rendering/*.scad + openscad/*.scad)"
+     },
+     "notes": "render-only curled ribbon",
+     "placeholder": false
+    },
+    "fl_cube": {
+     "file": "v7/fl_cube.stl",
+     "triangles": 1226,
+     "bbox_mm": [
+      [
+       -8.0,
+       -10.1,
+       65.601
+      ],
+      [
+       8.0,
+       8.0,
+       83.509
+      ]
+     ],
+     "colour": "#404040",
+     "moves_with_stage": [
+      "z"
+     ],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "openscad/fl_cube.scad (libs/lib_fl_cube.scad: fl_cube)",
+      "assembly": "rendering/assemble_v7_reflection.scad (this work; uses rendering/*.scad + openscad/*.scad)"
+     },
+     "notes": "transform derived: translate([0,8,fl_cube_bottom]) rotate_x(90); fl_cube_bottom=-9.4 (main-body frame)",
+     "placeholder": false
+    },
+    "reflection_illuminator_holder": {
+     "file": "v7/reflection_illuminator_holder.stl",
+     "triangles": 744,
+     "bbox_mm": [
+      [
+       -13.5,
+       -48.0,
+       65.555
+      ],
+      [
+       13.5,
+       -8.0,
+       89.855
+      ]
+     ],
+     "colour": "#404040",
+     "moves_with_stage": [
+      "z"
+     ],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "openscad/reflection_illuminator.scad: illuminator_holder()",
+      "assembly": "rendering/assemble_v7_reflection.scad (this work; uses rendering/*.scad + openscad/*.scad)"
+     },
+     "notes": "transform derived: translate([0,-8,fl_cube_bottom+24.3]) rotate_x(180) (slip plate on top)",
+     "placeholder": false
+    },
+    "reflection_led_condenser": {
+     "file": "v7/reflection_led_condenser.stl",
+     "triangles": 2108,
+     "bbox_mm": [
+      [
+       -9.5,
+       -30.5,
+       63.202
+      ],
+      [
+       9.5,
+       -17.5,
+       87.855
+      ]
+     ],
+     "colour": "#404040",
+     "moves_with_stage": [
+      "z"
+     ],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "openscad/reflection_illuminator.scad: lens_holder()",
+      "assembly": "rendering/assemble_v7_reflection.scad (this work; uses rendering/*.scad + openscad/*.scad)"
+     },
+     "notes": "transform derived: multmatrix [[-1,0,0,0],[0,0,1,-30.5],[0,1,0,fl_cube_bottom+10]]; y position is adjustable along the slip-plate slots (-45..-23)",
+     "placeholder": false
+    },
+    "led_star_placeholder": {
+     "file": "v7/led_star_placeholder.stl",
+     "triangles": 116,
+     "bbox_mm": [
+      [
+       -10.0,
+       -32.1,
+       66.895
+      ],
+      [
+       10.0,
+       -28.7,
+       84.215
+      ]
+     ],
+     "colour": "#FFD700",
+     "moves_with_stage": [
+      "z"
+     ],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "placeholder (not OpenFlexure geometry)",
+      "assembly": "rendering/assemble_v7_reflection.scad (this work; uses rendering/*.scad + openscad/*.scad)"
+     },
+     "notes": "20 mm star LED board + emitter, on the back of lens_holder",
+     "placeholder": true
+    },
+    "sample_clips": {
+     "file": "v7/sample_clips.stl",
+     "triangles": 23160,
+     "bbox_mm": [
+      [
+       -26.836,
+       -6.463,
+       142.5
+      ],
+      [
+       26.836,
+       27.356,
+       169.0
+      ]
+     ],
+     "colour": "#1E90FF",
+     "moves_with_stage": [
+      "x",
+      "y"
+     ],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "rendering/mount_sample_clips.scad: render_sample_clips",
+      "assembly": "rendering/assemble_v7_reflection.scad (this work; uses rendering/*.scad + openscad/*.scad)"
+     },
+     "notes": "two clips + M3 screws, mounted on the stage",
+     "placeholder": false
+    },
+    "sample_slide_placeholder": {
+     "file": "v7/sample_slide_placeholder.stl",
+     "triangles": 12,
+     "bbox_mm": [
+      [
+       -37.5,
+       -12.5,
+       150.0
+      ],
+      [
+       37.5,
+       12.5,
+       151.0
+      ]
+     ],
+     "colour": "#E0FFFF",
+     "moves_with_stage": [
+      "x",
+      "y"
+     ],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "placeholder (not OpenFlexure geometry)",
+      "assembly": "rendering/assemble_v7_reflection.scad (this work; uses rendering/*.scad + openscad/*.scad)"
+     },
+     "notes": "75x25x1 mm glass slide lying on the stage top, centred on the optical axis",
+     "placeholder": true
+    },
+    "electronics_drawer": {
+     "file": "v7/electronics_drawer.stl",
+     "triangles": 5088,
+     "bbox_mm": [
+      [
+       -16.814,
+       -38.43,
+       2.0
+      ],
+      [
+       82.885,
+       81.285,
+       49.0
+      ]
+     ],
+     "colour": "#404040",
+     "moves_with_stage": [],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "openscad/electronics_drawer.scad via mount_electronics.scad",
+      "assembly": "rendering/assemble_v7_reflection.scad (this work; uses rendering/*.scad + openscad/*.scad)"
+     },
+     "notes": "",
+     "placeholder": false
+    },
+    "raspberry_pi_4b": {
+     "file": "v7/raspberry_pi_4b.stl",
+     "triangles": 6162,
+     "bbox_mm": [
+      [
+       -11.869,
+       -28.84,
+       6.0
+      ],
+      [
+       79.012,
+       73.647,
+       25.5
+      ]
+     ],
+     "colour": "#228B22",
+     "moves_with_stage": [],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "rendering/prepare_pi_and_sangaboard.scad: pi_and_sd_card",
+      "assembly": "rendering/assemble_v7_reflection.scad (this work; uses rendering/*.scad + openscad/*.scad)"
+     },
+     "notes": "render model",
+     "placeholder": false
+    },
+    "sangaboard_v0_5": {
+     "file": "v7/sangaboard_v0_5.stl",
+     "triangles": 19436,
+     "bbox_mm": [
+      [
+       -11.948,
+       -28.422,
+       11.5
+      ],
+      [
+       67.556,
+       54.069,
+       24.088
+      ]
+     ],
+     "colour": "#1F3F8F",
+     "moves_with_stage": [],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "rendering/electronics/sangaboard.scad (KiCad export)",
+      "assembly": "rendering/assemble_v7_reflection.scad (this work; uses rendering/*.scad + openscad/*.scad)"
+     },
+     "notes": "render model; some source sub-meshes are not closed",
+     "placeholder": false
+    },
+    "hardware": {
+     "file": "v7/hardware.stl",
+     "triangles": 186764,
+     "bbox_mm": [
+      [
+       -69.407,
+       -39.979,
+       2.0
+      ],
+      [
+       69.407,
+       77.206,
+       145.75
+      ]
+     ],
+     "colour": "#A9A9A9",
+     "moves_with_stage": [],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "rendering/librender/hardware.scad (+hardware.zip STLs)",
+      "assembly": "rendering/assemble_v7_reflection.scad (this work; uses rendering/*.scad + openscad/*.scad)"
+     },
+     "notes": "nuts/screws: stand, stage, motor lugs, cable tidies, objective clamp, drawer, Pi/Sangaboard",
+     "placeholder": false
+    }
+   },
+   "world_frame": "OpenSCAD render frame of rendering/: stand bottom at z=0, optical axis at x=y=0; main-body frame = world + (0,0,75)",
+   "sample_plane_z": 150.0,
+   "stage_top_surface_z": 150.0,
+   "stage_notes": "Stage top = main_body sample_z (75) + stand offset (75). Nominal focus of the 45 mm parfocal objective is this plane. A slide lies on the stage top (placeholder slide occupies z 150-151). Stage travel ~ +/-6 mm in x/y; focus moves the optics module (z) not the stage.",
+   "reference_files": {
+    "reference/main_body_one_piece.stl": "main body as printed (main_body + xy_stage + legs + actuator columns); do not render together with them"
+   },
+   "omitted": "transmission illumination (illumination_dovetail, condenser) - not part of the reflection configuration; motor wires; band/assembly tools",
+   "overall_bbox_mm": [
+    [
+     -85.24,
+     -48.0,
+     0.0
+    ],
+    [
+     85.36,
+     90.78,
+     169.0
+    ]
+   ]
+  },
+  "delta": {
+   "name": "OpenFlexure Delta Stage, reflection illumination, Raspberry Pi + Sangaboard base",
+   "source": {
+    "repo": "https://gitlab.com/openflexure/openflexure-delta-stage",
+    "tag": "v1.2.3",
+    "commit": "d882d18b2c125441961c428bdd135490fab83792"
+   },
+   "microscope_submodule": {
+    "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+    "tag": "(delta-stage submodule pin, v6.1.5 era)",
+    "commit": "f57655b65f28bac6d160f7bfbd41fe63dd7e396b"
+   },
+   "parts": {
+    "base_raspi_sangaboard": {
+     "file": "delta/base_raspi_sangaboard.stl",
+     "triangles": 11412,
+     "bbox_mm": [
+      [
+       -83.173,
+       -54.043,
+       0.0
+      ],
+      [
+       83.173,
+       92.998,
+       81.0
+      ]
+     ],
+     "colour": "#404040",
+     "moves_with_stage": [],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-delta-stage",
+      "tag": "v1.2.3",
+      "commit": "d882d18b2c125441961c428bdd135490fab83792",
+      "file": "openscad/base_raspi_sangaboard.scad"
+     },
+     "transform_applied": [
+      [
+       [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+       ],
+       [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ]
+      ]
+     ],
+     "notes": "base at z=0",
+     "placeholder": false
+    },
+    "casing": {
+     "file": "delta/casing.stl",
+     "triangles": 138556,
+     "bbox_mm": [
+      [
+       -79.341,
+       -63.033,
+       79.0
+      ],
+      [
+       79.341,
+       90.992,
+       149.0
+      ]
+     ],
+     "colour": "#F5F5F5",
+     "moves_with_stage": [],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-delta-stage",
+      "tag": "v1.2.3",
+      "commit": "d882d18b2c125441961c428bdd135490fab83792",
+      "file": "openscad/delta_stage.scad (-D transmission_illumination=true -D reflection_illumination=true -D stage_connectors=true, = delta_stage_microscope.stl): casing() + condenser_mount()"
+     },
+     "transform_applied": [
+      [
+       [
+        -0.5,
+        -0.866025,
+        0.0,
+        0.0
+       ],
+       [
+        0.866025,
+        -0.5,
+        0.0,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0,
+        79.0
+       ],
+       [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ]
+      ]
+     ],
+     "notes": "static part of the main body incl. objective mount; mesh not closed",
+     "placeholder": false
+    },
+    "leg0": {
+     "file": "delta/leg0.stl",
+     "triangles": 276,
+     "bbox_mm": [
+      [
+       -62.211,
+       -48.485,
+       79.0
+      ],
+      [
+       -11.7,
+       6.236,
+       153.0
+      ]
+     ],
+     "colour": "#F5F5F5",
+     "moves_with_stage": [
+      "x",
+      "y",
+      "z"
+     ],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-delta-stage",
+      "tag": "v1.2.3",
+      "commit": "d882d18b2c125441961c428bdd135490fab83792",
+      "file": "openscad/delta_stage.scad (-D transmission_illumination=true -D reflection_illumination=true -D stage_connectors=true, = delta_stage_microscope.stl): legs() -> rotate(0) translate([0,stage_r,0]) leg()"
+     },
+     "transform_applied": [
+      [
+       [
+        -0.5,
+        -0.866025,
+        0.0,
+        0.0
+       ],
+       [
+        0.866025,
+        -0.5,
+        0.0,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0,
+        79.0
+       ],
+       [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ]
+      ]
+     ],
+     "notes": "parallelogram leg: its foot hinges on the lever, its top on the stage",
+     "placeholder": false
+    },
+    "leg1": {
+     "file": "delta/leg1.stl",
+     "triangles": 276,
+     "bbox_mm": [
+      [
+       11.7,
+       -48.485,
+       79.0
+      ],
+      [
+       62.211,
+       6.236,
+       153.0
+      ]
+     ],
+     "colour": "#F5F5F5",
+     "moves_with_stage": [
+      "x",
+      "y",
+      "z"
+     ],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-delta-stage",
+      "tag": "v1.2.3",
+      "commit": "d882d18b2c125441961c428bdd135490fab83792",
+      "file": "openscad/delta_stage.scad (-D transmission_illumination=true -D reflection_illumination=true -D stage_connectors=true, = delta_stage_microscope.stl): legs() -> rotate(120) translate([0,stage_r,0]) leg()"
+     },
+     "transform_applied": [
+      [
+       [
+        -0.5,
+        -0.866025,
+        0.0,
+        0.0
+       ],
+       [
+        0.866025,
+        -0.5,
+        0.0,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0,
+        79.0
+       ],
+       [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ]
+      ]
+     ],
+     "notes": "parallelogram leg: its foot hinges on the lever, its top on the stage",
+     "placeholder": false
+    },
+    "leg2": {
+     "file": "delta/leg2.stl",
+     "triangles": 276,
+     "bbox_mm": [
+      [
+       -22.5,
+       26.5,
+       79.0
+      ],
+      [
+       22.5,
+       60.0,
+       153.0
+      ]
+     ],
+     "colour": "#F5F5F5",
+     "moves_with_stage": [
+      "x",
+      "y",
+      "z"
+     ],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-delta-stage",
+      "tag": "v1.2.3",
+      "commit": "d882d18b2c125441961c428bdd135490fab83792",
+      "file": "openscad/delta_stage.scad (-D transmission_illumination=true -D reflection_illumination=true -D stage_connectors=true, = delta_stage_microscope.stl): legs() -> rotate(240) translate([0,stage_r,0]) leg()"
+     },
+     "transform_applied": [
+      [
+       [
+        -0.5,
+        -0.866025,
+        0.0,
+        0.0
+       ],
+       [
+        0.866025,
+        -0.5,
+        0.0,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0,
+        79.0
+       ],
+       [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ]
+      ]
+     ],
+     "notes": "parallelogram leg: its foot hinges on the lever, its top on the stage",
+     "placeholder": false
+    },
+    "lever0": {
+     "file": "delta/lever0.stl",
+     "triangles": 220,
+     "bbox_mm": [
+      [
+       -64.909,
+       -45.139,
+       79.0
+      ],
+      [
+       -13.174,
+       2.131,
+       91.025
+      ]
+     ],
+     "colour": "#F5F5F5",
+     "moves_with_stage": [
+      "x",
+      "y",
+      "z"
+     ],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-delta-stage",
+      "tag": "v1.2.3",
+      "commit": "d882d18b2c125441961c428bdd135490fab83792",
+      "file": "openscad/delta_stage.scad (-D transmission_illumination=true -D reflection_illumination=true -D stage_connectors=true, = delta_stage_microscope.stl): legs() -> rotate(0) translate([0,stage_r,0]) {lever(); lever_flexures();}"
+     },
+     "transform_applied": [
+      [
+       [
+        -0.5,
+        -0.866025,
+        0.0,
+        0.0
+       ],
+       [
+        0.866025,
+        -0.5,
+        0.0,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0,
+        79.0
+       ],
+       [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ]
+      ]
+     ],
+     "notes": "lever: pivots on lever_flexures at the casing; the actuator column lifts its far end",
+     "placeholder": false
+    },
+    "lever1": {
+     "file": "delta/lever1.stl",
+     "triangles": 220,
+     "bbox_mm": [
+      [
+       13.174,
+       -45.139,
+       79.0
+      ],
+      [
+       64.909,
+       2.131,
+       91.025
+      ]
+     ],
+     "colour": "#F5F5F5",
+     "moves_with_stage": [
+      "x",
+      "y",
+      "z"
+     ],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-delta-stage",
+      "tag": "v1.2.3",
+      "commit": "d882d18b2c125441961c428bdd135490fab83792",
+      "file": "openscad/delta_stage.scad (-D transmission_illumination=true -D reflection_illumination=true -D stage_connectors=true, = delta_stage_microscope.stl): legs() -> rotate(120) translate([0,stage_r,0]) {lever(); lever_flexures();}"
+     },
+     "transform_applied": [
+      [
+       [
+        -0.5,
+        -0.866025,
+        0.0,
+        0.0
+       ],
+       [
+        0.866025,
+        -0.5,
+        0.0,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0,
+        79.0
+       ],
+       [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ]
+      ]
+     ],
+     "notes": "lever: pivots on lever_flexures at the casing; the actuator column lifts its far end",
+     "placeholder": false
+    },
+    "lever2": {
+     "file": "delta/lever2.stl",
+     "triangles": 220,
+     "bbox_mm": [
+      [
+       -16.866,
+       24.95,
+       79.0
+      ],
+      [
+       16.866,
+       72.8,
+       91.025
+      ]
+     ],
+     "colour": "#F5F5F5",
+     "moves_with_stage": [
+      "x",
+      "y",
+      "z"
+     ],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-delta-stage",
+      "tag": "v1.2.3",
+      "commit": "d882d18b2c125441961c428bdd135490fab83792",
+      "file": "openscad/delta_stage.scad (-D transmission_illumination=true -D reflection_illumination=true -D stage_connectors=true, = delta_stage_microscope.stl): legs() -> rotate(240) translate([0,stage_r,0]) {lever(); lever_flexures();}"
+     },
+     "transform_applied": [
+      [
+       [
+        -0.5,
+        -0.866025,
+        0.0,
+        0.0
+       ],
+       [
+        0.866025,
+        -0.5,
+        0.0,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0,
+        79.0
+       ],
+       [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ]
+      ]
+     ],
+     "notes": "lever: pivots on lever_flexures at the casing; the actuator column lifts its far end",
+     "placeholder": false
+    },
+    "column0": {
+     "file": "delta/column0.stl",
+     "triangles": 852,
+     "bbox_mm": [
+      [
+       -69.437,
+       -47.769,
+       79.0
+      ],
+      [
+       -55.27,
+       -24.231,
+       109.0
+      ]
+     ],
+     "colour": "#F5F5F5",
+     "moves_with_stage": [
+      "x",
+      "y",
+      "z"
+     ],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-delta-stage",
+      "tag": "v1.2.3",
+      "commit": "d882d18b2c125441961c428bdd135490fab83792",
+      "file": "openscad/delta_stage.scad (-D transmission_illumination=true -D reflection_illumination=true -D stage_connectors=true, = delta_stage_microscope.stl): legs() -> rotate(0) translate([0,stage_r+nut_y,0]) actuator_column(actuator_h)"
+     },
+     "transform_applied": [
+      [
+       [
+        -0.5,
+        -0.866025,
+        0.0,
+        0.0
+       ],
+       [
+        0.866025,
+        -0.5,
+        0.0,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0,
+        79.0
+       ],
+       [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ]
+      ]
+     ],
+     "notes": "actuator column: the nut on the lead screw moves it up and down",
+     "placeholder": false
+    },
+    "column1": {
+     "file": "delta/column1.stl",
+     "triangles": 852,
+     "bbox_mm": [
+      [
+       55.27,
+       -47.769,
+       79.0
+      ],
+      [
+       69.437,
+       -24.231,
+       109.0
+      ]
+     ],
+     "colour": "#F5F5F5",
+     "moves_with_stage": [
+      "x",
+      "y",
+      "z"
+     ],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-delta-stage",
+      "tag": "v1.2.3",
+      "commit": "d882d18b2c125441961c428bdd135490fab83792",
+      "file": "openscad/delta_stage.scad (-D transmission_illumination=true -D reflection_illumination=true -D stage_connectors=true, = delta_stage_microscope.stl): legs() -> rotate(120) translate([0,stage_r+nut_y,0]) actuator_column(actuator_h)"
+     },
+     "transform_applied": [
+      [
+       [
+        -0.5,
+        -0.866025,
+        0.0,
+        0.0
+       ],
+       [
+        0.866025,
+        -0.5,
+        0.0,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0,
+        79.0
+       ],
+       [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ]
+      ]
+     ],
+     "notes": "actuator column: the nut on the lead screw moves it up and down",
+     "placeholder": false
+    },
+    "column2": {
+     "file": "delta/column2.stl",
+     "triangles": 852,
+     "bbox_mm": [
+      [
+       -13.301,
+       67.035,
+       79.0
+      ],
+      [
+       13.301,
+       76.965,
+       109.0
+      ]
+     ],
+     "colour": "#F5F5F5",
+     "moves_with_stage": [
+      "x",
+      "y",
+      "z"
+     ],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-delta-stage",
+      "tag": "v1.2.3",
+      "commit": "d882d18b2c125441961c428bdd135490fab83792",
+      "file": "openscad/delta_stage.scad (-D transmission_illumination=true -D reflection_illumination=true -D stage_connectors=true, = delta_stage_microscope.stl): legs() -> rotate(240) translate([0,stage_r+nut_y,0]) actuator_column(actuator_h)"
+     },
+     "transform_applied": [
+      [
+       [
+        -0.5,
+        -0.866025,
+        0.0,
+        0.0
+       ],
+       [
+        0.866025,
+        -0.5,
+        0.0,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0,
+        79.0
+       ],
+       [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ]
+      ]
+     ],
+     "notes": "actuator column: the nut on the lead screw moves it up and down",
+     "placeholder": false
+    },
+    "moving_stage": {
+     "file": "delta/moving_stage.stl",
+     "triangles": 512,
+     "bbox_mm": [
+      [
+       -30.993,
+       -27.131,
+       149.5
+      ],
+      [
+       30.993,
+       26.55,
+       154.0
+      ]
+     ],
+     "colour": "#F5F5F5",
+     "moves_with_stage": [
+      "x",
+      "y",
+      "z"
+     ],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-delta-stage",
+      "tag": "v1.2.3",
+      "commit": "d882d18b2c125441961c428bdd135490fab83792",
+      "file": "openscad/delta_stage.scad (-D transmission_illumination=true -D reflection_illumination=true -D stage_connectors=true, = delta_stage_microscope.stl): moving_stage()"
+     },
+     "transform_applied": [
+      [
+       [
+        -0.5,
+        -0.866025,
+        0.0,
+        0.0
+       ],
+       [
+        0.866025,
+        -0.5,
+        0.0,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0,
+        79.0
+       ],
+       [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ]
+      ]
+     ],
+     "notes": "top surface = sample plane",
+     "placeholder": false
+    },
+    "feet": {
+     "file": "delta/feet.stl",
+     "triangles": 2148,
+     "bbox_mm": [
+      [
+       -73.411,
+       -49.286,
+       66.0
+      ],
+      [
+       73.411,
+       80.065,
+       80.5
+      ]
+     ],
+     "colour": "#F5F5F5",
+     "moves_with_stage": [],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-delta-stage",
+      "tag": "v1.2.3",
+      "commit": "d882d18b2c125441961c428bdd135490fab83792",
+      "file": "openscad/feet.scad: foot(hover=2, lie_flat=false) at each actuator column"
+     },
+     "transform_applied": [
+      [
+       [
+        -0.5,
+        -0.866025,
+        0.0,
+        0.0
+       ],
+       [
+        0.866025,
+        -0.5,
+        0.0,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0,
+        79.0
+       ],
+       [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ]
+      ]
+     ],
+     "notes": "",
+     "placeholder": false
+    },
+    "optics_module_beamsplitter": {
+     "file": "delta/optics_module_beamsplitter.stl",
+     "triangles": 16912,
+     "bbox_mm": [
+      [
+       -12.778,
+       -17.8,
+       61.5
+      ],
+      [
+       13.511,
+       15.402,
+       109.0
+      ]
+     ],
+     "colour": "#404040",
+     "moves_with_stage": [],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "(delta-stage submodule pin, v6.1.5 era)",
+      "commit": "f57655b65f28bac6d160f7bfbd41fe63dd7e396b",
+      "file": "openscad/optics.scad -D optics=\"rms_f50d13\" -D camera=\"picamera_2\" -D delta_stage=true -D beamsplitter=true (= optics_picamera2_rms_f50d13_beamsplitter_delta.stl)"
+     },
+     "transform_applied": [
+      [
+       [
+        -1.0,
+        -0.0,
+        0.0,
+        0.0
+       ],
+       [
+        0.0,
+        -1.0,
+        0.0,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0,
+        79.0
+       ],
+       [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ]
+      ]
+     ],
+     "notes": "native frame = delta main-body frame rotated -60 deg (objective mount is rotate(60))",
+     "placeholder": false
+    },
+    "fl_cube": {
+     "file": "delta/fl_cube.stl",
+     "triangles": 1126,
+     "bbox_mm": [
+      [
+       -10.763,
+       -10.653,
+       69.546
+      ],
+      [
+       12.497,
+       11.545,
+       87.454
+      ]
+     ],
+     "colour": "#404040",
+     "moves_with_stage": [],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "(delta-stage submodule pin, v6.1.5 era)",
+      "commit": "f57655b65f28bac6d160f7bfbd41fe63dd7e396b",
+      "file": "openscad/fl_cube.scad"
+     },
+     "transform_applied": [
+      [
+       [
+        -0.5,
+        0.0,
+        0.866025,
+        -6.928203
+       ],
+       [
+        0.866025,
+        0.0,
+        0.5,
+        -4.0
+       ],
+       [
+        0.0,
+        1.0,
+        0.0,
+        69.5
+       ],
+       [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ]
+      ]
+     ],
+     "notes": "transform derived from optics.scad optical_path_fl; exits towards the casing fl_cube_cutout (-y of main body)",
+     "placeholder": false
+    },
+    "reflection_illuminator_holder": {
+     "file": "delta/reflection_illuminator_holder.stl",
+     "triangles": 750,
+     "bbox_mm": [
+      [
+       0.178,
+       -7.691,
+       69.5
+      ],
+      [
+       45.593,
+       31.111,
+       93.8
+      ]
+     ],
+     "colour": "#404040",
+     "moves_with_stage": [],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "(delta-stage submodule pin, v6.1.5 era)",
+      "commit": "f57655b65f28bac6d160f7bfbd41fe63dd7e396b",
+      "file": "openscad/reflection_illuminator_LED_star.scad: illuminator_holder()"
+     },
+     "transform_applied": [
+      [
+       [
+        -0.5,
+        0.866025,
+        0.0,
+        0.0
+       ],
+       [
+        0.866025,
+        0.5,
+        0.0,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        -1.0,
+        91.8
+       ],
+       [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ]
+      ]
+     ],
+     "notes": "flipped, slip plate on top",
+     "placeholder": false
+    },
+    "reflection_led_condenser": {
+     "file": "delta/reflection_led_condenser.stl",
+     "triangles": 2172,
+     "bbox_mm": [
+      [
+       11.205,
+       1.908,
+       67.147
+      ],
+      [
+       31.164,
+       23.477,
+       91.8
+      ]
+     ],
+     "colour": "#404040",
+     "moves_with_stage": [],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "(delta-stage submodule pin, v6.1.5 era)",
+      "commit": "f57655b65f28bac6d160f7bfbd41fe63dd7e396b",
+      "file": "openscad/reflection_illuminator_LED_star.scad: lens_holder()"
+     },
+     "transform_applied": [
+      [
+       [
+        0.5,
+        0.0,
+        -0.866025,
+        26.413775
+       ],
+       [
+        -0.866025,
+        0.0,
+        -0.5,
+        15.25
+       ],
+       [
+        0.0,
+        1.0,
+        0.0,
+        79.5
+       ],
+       [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ]
+      ]
+     ],
+     "notes": "adjustable along slip-plate slots",
+     "placeholder": false
+    },
+    "led_star_placeholder": {
+     "file": "delta/led_star_placeholder.stl",
+     "triangles": 116,
+     "bbox_mm": [
+      [
+       21.414,
+       6.59,
+       70.84
+      ],
+      [
+       32.799,
+       24.71,
+       88.16
+      ]
+     ],
+     "colour": "#FFD700",
+     "moves_with_stage": [],
+     "source": {
+      "file": "placeholder"
+     },
+     "transform_applied": [
+      [
+       [
+        0.5,
+        0.0,
+        -0.866025,
+        26.413775
+       ],
+       [
+        -0.866025,
+        0.0,
+        -0.5,
+        15.25
+       ],
+       [
+        0.0,
+        1.0,
+        0.0,
+        79.5
+       ],
+       [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ]
+      ]
+     ],
+     "notes": "20 mm star LED",
+     "placeholder": true
+    },
+    "objective": {
+     "file": "delta/objective.stl",
+     "triangles": 7040,
+     "bbox_mm": [
+      [
+       -12.265,
+       -12.265,
+       104.6
+      ],
+      [
+       12.265,
+       12.265,
+       150.65
+      ]
+     ],
+     "colour": "#B8860B",
+     "moves_with_stage": [],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "byu-vcl work file v7 rendering/delta_helpers.scad (v7 render models, see report): rendered_objective at shoulder z=30.1"
+     },
+     "transform_applied": [
+      [
+       [
+        -1.0,
+        -0.0,
+        0.0,
+        0.0
+       ],
+       [
+        0.0,
+        -1.0,
+        0.0,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0,
+        79.0
+       ],
+       [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ]
+      ]
+     ],
+     "notes": "v7 render model",
+     "placeholder": false
+    },
+    "tube_lens": {
+     "file": "delta/tube_lens.stl",
+     "triangles": 716,
+     "bbox_mm": [
+      [
+       -6.35,
+       -6.35,
+       97.44
+      ],
+      [
+       6.35,
+       6.35,
+       101.919
+      ]
+     ],
+     "colour": "#87CEEB",
+     "moves_with_stage": [],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "byu-vcl work file v7 rendering/delta_helpers.scad (v7 render models, see report): tube_lens at z=18.44 (optics.scad thin-lens calc)"
+     },
+     "transform_applied": [
+      [
+       [
+        -1.0,
+        -0.0,
+        0.0,
+        0.0
+       ],
+       [
+        0.0,
+        -1.0,
+        0.0,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0,
+        79.0
+       ],
+       [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ]
+      ]
+     ],
+     "notes": "v7 render model",
+     "placeholder": false
+    },
+    "picamera2_with_cover": {
+     "file": "delta/picamera2_with_cover.stl",
+     "triangles": 12618,
+     "bbox_mm": [
+      [
+       -14.2,
+       -14.4,
+       56.8
+      ],
+      [
+       14.2,
+       9.462,
+       66.0
+      ]
+     ],
+     "colour": "#2E8B57",
+     "moves_with_stage": [],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "byu-vcl work file v7 rendering/delta_helpers.scad (v7 render models, see report): camera_and_screws, PCB at z=-17.5, rot 90"
+     },
+     "transform_applied": [
+      [
+       [
+        -1.0,
+        -0.0,
+        0.0,
+        0.0
+       ],
+       [
+        0.0,
+        -1.0,
+        0.0,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0,
+        79.0
+       ],
+       [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ]
+      ]
+     ],
+     "notes": "v7 render model; rotation inferred",
+     "placeholder": false
+    },
+    "motors_and_small_gears": {
+     "file": "delta/motors_and_small_gears.stl",
+     "triangles": 50844,
+     "bbox_mm": [
+      [
+       -70.309,
+       -48.648,
+       114.925
+      ],
+      [
+       70.309,
+       79.476,
+       145.625
+      ]
+     ],
+     "colour": "#C0C0C0",
+     "moves_with_stage": [],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "byu-vcl work file v7 rendering/delta_helpers.scad (v7 render models, see report): motor_with_gear in v7 lug geometry, raised 4.48 mm"
+     },
+     "transform_applied": [
+      [
+       [
+        0.5,
+        0.866025,
+        0.0,
+        -62.353829
+       ],
+       [
+        -0.866025,
+        0.5,
+        0.0,
+        -36.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0,
+        79.0
+       ],
+       [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ]
+      ],
+      [
+       [
+        0.5,
+        -0.866025,
+        0.0,
+        62.353829
+       ],
+       [
+        0.866025,
+        0.5,
+        0.0,
+        -36.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0,
+        79.0
+       ],
+       [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ]
+      ],
+      [
+       [
+        -1.0,
+        -0.0,
+        0.0,
+        0.0
+       ],
+       [
+        0.0,
+        -1.0,
+        0.0,
+        72.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0,
+        79.0
+       ],
+       [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ]
+      ]
+     ],
+     "notes": "approximate placement; wires clipped",
+     "placeholder": false
+    },
+    "lead_screws_and_large_gears": {
+     "file": "delta/lead_screws_and_large_gears.stl",
+     "triangles": 86658,
+     "bbox_mm": [
+      [
+       -76.797,
+       -50.443,
+       92.982
+      ],
+      [
+       76.797,
+       86.443,
+       122.482
+      ]
+     ],
+     "colour": "#1E90FF",
+     "moves_with_stage": [],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "byu-vcl work file v7 rendering/delta_helpers.scad (v7 render models, see report): lead_screw_assembly on column axis, raised 4.48 mm"
+     },
+     "transform_applied": [
+      [
+       [
+        0.5,
+        0.866025,
+        0.0,
+        -62.353829
+       ],
+       [
+        -0.866025,
+        0.5,
+        0.0,
+        -36.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0,
+        79.0
+       ],
+       [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ]
+      ],
+      [
+       [
+        0.5,
+        -0.866025,
+        0.0,
+        62.353829
+       ],
+       [
+        0.866025,
+        0.5,
+        0.0,
+        -36.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0,
+        79.0
+       ],
+       [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ]
+      ],
+      [
+       [
+        -1.0,
+        -0.0,
+        0.0,
+        0.0
+       ],
+       [
+        0.0,
+        -1.0,
+        0.0,
+        72.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0,
+        79.0
+       ],
+       [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ]
+      ]
+     ],
+     "notes": "approximate placement",
+     "placeholder": false
+    },
+    "raspberry_pi_4b": {
+     "file": "delta/raspberry_pi_4b.stl",
+     "triangles": 6162,
+     "bbox_mm": [
+      [
+       -30.5,
+       -35.55,
+       5.5
+      ],
+      [
+       27.95,
+       55.0,
+       25.0
+      ]
+     ],
+     "colour": "#228B22",
+     "moves_with_stage": [],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "byu-vcl work file v7 rendering/delta_helpers.scad (v7 render models, see report): pi_and_sd_card at base raspi_center"
+     },
+     "transform_applied": [
+      [
+       [
+        0.0,
+        1.0,
+        0.0,
+        -28.0
+       ],
+       [
+        -1.0,
+        0.0,
+        0.0,
+        52.5
+       ],
+       [
+        0.0,
+        0.0,
+        1.0,
+        7.0
+       ],
+       [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ]
+      ]
+     ],
+     "notes": "approximate placement",
+     "placeholder": false
+    },
+    "sangaboard_v0_5": {
+     "file": "delta/sangaboard_v0_5.stl",
+     "triangles": 19436,
+     "bbox_mm": [
+      [
+       -28.037,
+       -12.586,
+       11.0
+      ],
+      [
+       28.463,
+       52.414,
+       23.588
+      ]
+     ],
+     "colour": "#1F3F8F",
+     "moves_with_stage": [],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "v7.0.0-beta5",
+      "commit": "4828ffa5c4a115caa1970b71efdc32e3a05c09e1",
+      "file": "byu-vcl work file v7 rendering/delta_helpers.scad (v7 render models, see report): sangaboard_v0_5 stacked 15 mm above the Pi"
+     },
+     "transform_applied": [
+      [
+       [
+        0.0,
+        1.0,
+        0.0,
+        -28.0
+       ],
+       [
+        -1.0,
+        0.0,
+        0.0,
+        52.5
+       ],
+       [
+        0.0,
+        0.0,
+        1.0,
+        22.0
+       ],
+       [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ]
+      ]
+     ],
+     "notes": "approximate placement",
+     "placeholder": false
+    },
+    "sample_clips": {
+     "file": "delta/sample_clips.stl",
+     "triangles": 764,
+     "bbox_mm": [
+      [
+       -36.498,
+       -0.64,
+       153.0
+      ],
+      [
+       36.498,
+       6.36,
+       173.0
+      ]
+     ],
+     "colour": "#1E90FF",
+     "moves_with_stage": [
+      "x",
+      "y",
+      "z"
+     ],
+     "source": {
+      "repo": "https://gitlab.com/openflexure/openflexure-microscope",
+      "tag": "(delta-stage submodule pin, v6.1.5 era)",
+      "commit": "f57655b65f28bac6d160f7bfbd41fe63dd7e396b",
+      "file": "openscad/sample_clips.scad: sample_clip([0,20,-1], w=7, roc=7) (= sample_clips.stl)"
+     },
+     "transform_applied": [
+      [
+       [
+        0.0,
+        -1.0,
+        0.0,
+        27.05
+       ],
+       [
+        1.0,
+        0.0,
+        0.0,
+        2.86
+       ],
+       [
+        0.0,
+        0.0,
+        1.0,
+        154.0
+       ],
+       [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ]
+      ],
+      [
+       [
+        0.0,
+        1.0,
+        0.0,
+        -27.05
+       ],
+       [
+        -1.0,
+        0.0,
+        0.0,
+        2.86
+       ],
+       [
+        0.0,
+        0.0,
+        1.0,
+        154.0
+       ],
+       [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ]
+      ]
+     ],
+     "notes": "placement chosen here: the two stage screw holes on the x axis (+/-27.05, 2.86), clips pointing at the optical axis; the relaxed (unloaded) clip tip dips 1 mm below the stage top, i.e. it overlaps a slide until deflected",
+     "placeholder": false
+    },
+    "sample_slide_placeholder": {
+     "file": "delta/sample_slide_placeholder.stl",
+     "triangles": 12,
+     "bbox_mm": [
+      [
+       -37.5,
+       -12.5,
+       154.0
+      ],
+      [
+       37.5,
+       12.5,
+       155.0
+      ]
+     ],
+     "colour": "#E0FFFF",
+     "moves_with_stage": [
+      "x",
+      "y",
+      "z"
+     ],
+     "source": {
+      "file": "placeholder"
+     },
+     "notes": "75x25x1 mm slide on the stage top",
+     "placeholder": true
+    }
+   },
+   "world_frame": "base bottom at z=0, optical axis at x=y=0; world = translate(0,0,79) * rotate_z(120) * delta main-body frame (stage_connection recess 2 mm below base top; 120 deg so the illuminator exits through the base window)",
+   "sample_plane_z": 154.0,
+   "stage_top_surface_z": 154.0,
+   "stage_notes": "moving_stage top at main-body z=75 (flex_z2 + 5). The v6-era optics put the objective shoulder at z=30, so a 45 mm parfocal objective focuses on the stage top. The delta moves the stage (and sample) in x, y and z; optics, illuminator and camera are fixed.",
+   "reference_files": {
+    "reference/main_body_one_piece.stl": "delta_stage_microscope main body as printed (= casing + legs + levers + columns + moving_stage); do not render together with them"
+   },
+   "omitted": "clip screws, petri-dish holders/risers, transmission condenser, motor wires, star-LED wiring",
+   "overall_bbox_mm": [
+    [
+     -83.17,
+     -63.03,
+     0.0
+    ],
+    [
+     83.17,
+     93.0,
+     173.0
+    ]
+   ]
+  }
+ }
+}

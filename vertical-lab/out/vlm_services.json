@@ -1,0 +1,77 @@
+{
+ "name": "vlm_services",
+ "fps": 6,
+ "n_frames": 206,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/6",
+   "caption": "Every service a tray needs goes through one automatic coupling. The plate is on the tray's back right corner; each slot a tray uses, and the bay, has a matching dock in its right-hand side wall, fed by a riser in the side of the machine.",
+   "start_frame": 0,
+   "end_frame": 37
+  },
+  {
+   "label": "2/6",
+   "caption": "Tray A in its slot (R2). The dock holds the plate home: mains, Ethernet, compressed air, nitrogen and chilled water are live. CombiTac's docking frame lets the pins take up 4 mm of misalignment.",
+   "start_frame": 38,
+   "end_frame": 71
+  },
+  {
+   "label": "3/6",
+   "caption": "To let it go: the air, N2 and water supplies close and vent (the couplings must not part under pressure), the tray's UPS takes the load, and the dock pulls back 60 mm, clear of the tray.",
+   "start_frame": 72,
+   "end_frame": 95
+  },
+  {
+   "label": "4/6",
+   "caption": "In transit: the extractor takes tray A from R2 to the opening, about 6 s at Kardex's 0.7 m/s in and out and 2 m/s up and down. The UPS carries the instruments, the cameras and the tray's switch.",
+   "start_frame": 96,
+   "end_frame": 100
+  },
+  {
+   "label": "4/6",
+   "caption": "In transit: the extractor takes tray A from R2 to the opening, about 6 s at Kardex's 0.7 m/s in and out and 2 m/s up and down. The UPS carries the instruments, the cameras and the tray's switch.",
+   "start_frame": 101,
+   "end_frame": 113
+  },
+  {
+   "label": "4/6",
+   "caption": "In transit: the extractor takes tray A from R2 to the opening, about 6 s at Kardex's 0.7 m/s in and out and 2 m/s up and down. The UPS carries the instruments, the cameras and the tray's switch.",
+   "start_frame": 114,
+   "end_frame": 118
+  },
+  {
+   "label": "4/6",
+   "caption": "In transit: the extractor takes tray A from R2 to the opening, about 6 s at Kardex's 0.7 m/s in and out and 2 m/s up and down. The UPS carries the instruments, the cameras and the tray's switch.",
+   "start_frame": 119,
+   "end_frame": 122
+  },
+  {
+   "label": "4/6",
+   "caption": "In transit: the extractor takes tray A from R2 to the opening, about 6 s at Kardex's 0.7 m/s in and out and 2 m/s up and down. The UPS carries the instruments, the cameras and the tray's switch.",
+   "start_frame": 123,
+   "end_frame": 134
+  },
+  {
+   "label": "4/6",
+   "caption": "In transit: the extractor takes tray A from R2 to the opening, about 6 s at Kardex's 0.7 m/s in and out and 2 m/s up and down. The UPS carries the instruments, the cameras and the tray's switch.",
+   "start_frame": 135,
+   "end_frame": 139
+  },
+  {
+   "label": "5/6",
+   "caption": "At the opening the bay's dock pushes in: the guide pins enter the plate's bushings first, then the contacts and couplings mate and the supplies open. The instruments are back on mains and the UPS recharges.",
+   "start_frame": 140,
+   "end_frame": 170
+  },
+  {
+   "label": "6/6",
+   "caption": "The cameras: two Pi 5 units on tray A, standing in front of or beside their instruments and looking back, so they keep the room out of the picture, and an overhead one at the back of the bay, above Kardex's product envelope, looking down on the presented tray.",
+   "start_frame": 171,
+   "end_frame": 205
+  }
+ ]
+}

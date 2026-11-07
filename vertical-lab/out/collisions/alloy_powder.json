@@ -1,0 +1,349 @@
+{
+ "clip": "alloy_powder",
+ "frames_checked": 1028,
+ "frames_with_collisions": 19,
+ "runs": [
+  {
+   "label": "2/7",
+   "first_frame": 133,
+   "last_frame": 133,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "p_zbh"
+    }
+   ]
+  },
+  {
+   "label": "2/7",
+   "first_frame": 158,
+   "last_frame": 158,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "p_zbh"
+    }
+   ]
+  },
+  {
+   "label": "3/7",
+   "first_frame": 350,
+   "last_frame": 350,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "held",
+     "part": "held:p_zbh",
+     "other": "D1_xrd:door"
+    }
+   ]
+  },
+  {
+   "label": "3/7",
+   "first_frame": 366,
+   "last_frame": 366,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "D0_sem:body"
+    }
+   ]
+  },
+  {
+   "label": "3/7",
+   "first_frame": 367,
+   "last_frame": 367,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "D0_sem:body"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "cam_D0"
+    }
+   ]
+  },
+  {
+   "label": "3/7",
+   "first_frame": 368,
+   "last_frame": 368,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "D0_sem:body"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "D0_sem:body"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "D1_xrd:body"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "cam_D0"
+    }
+   ]
+  },
+  {
+   "label": "3/7",
+   "first_frame": 369,
+   "last_frame": 369,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "cam_D0"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "D1_xrd:body"
+    }
+   ]
+  },
+  {
+   "label": "3/7",
+   "first_frame": 370,
+   "last_frame": 370,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "cam_D0"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "cam_D0sl"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "D1_xrd:body"
+    }
+   ]
+  },
+  {
+   "label": "3/7",
+   "first_frame": 371,
+   "last_frame": 373,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "D1_xrd:body"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "cam_D0"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "cam_D0sl"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "D1_xrd:body"
+    }
+   ]
+  },
+  {
+   "label": "3/7",
+   "first_frame": 374,
+   "last_frame": 374,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "D1_xrd:body"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "cam_D0"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "cam_D0sl"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "D1_xrd:body"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "tray_D"
+    }
+   ]
+  },
+  {
+   "label": "3/7",
+   "first_frame": 375,
+   "last_frame": 379,
+   "frames": 4,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "D1_xrd:body"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "cam_D0"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "cam_D0sl"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "tray_D"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "D1_xrd:body"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "tray_D"
+    }
+   ]
+  },
+  {
+   "label": "3/7",
+   "first_frame": 381,
+   "last_frame": 381,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "cam_D0"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "tray_D"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "D1_xrd:body"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "tray_D"
+    }
+   ]
+  },
+  {
+   "label": "3/7",
+   "first_frame": 382,
+   "last_frame": 382,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "D0_sem:body"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "D1_xrd:body"
+    }
+   ]
+  },
+  {
+   "label": "3/7",
+   "first_frame": 383,
+   "last_frame": 384,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "D0_sem:body"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "arm",
+     "part": "upper_arm",
+     "other": "cam_D0"
+    }
+   ]
+  }
+ ],
+ "rules": "What may touch: the gripper and whatever group it is picking up, holding or putting down, within 4 s of the\n    grasp or release; a held part and the groups it touches when it is taken and when it is let go (where it came\n    from and where it goes).",
+ "method": "FCL 0.7 (python-fcl) mesh-mesh collision on the drawn meshes, arm links decimated to 8000 triangles; every frame of the clip, after its update"
+}

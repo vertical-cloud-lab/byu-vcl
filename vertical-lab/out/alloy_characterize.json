@@ -1,0 +1,1097 @@
+{
+ "name": "alloy_characterize",
+ "fps": 6,
+ "n_frames": 1526,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "7/7",
+   "caption": "Chapter 7: characterizing the build. The MiR250 brings what chapters 5 and 6 made from the sample store on tray J, in a caddy on its cabinet: the coupon hot-mounted in conductive phenolic, the slice in a steel mount, and half of a broken tensile bar.",
+   "start_frame": 0,
+   "end_frame": 34
+  },
+  {
+   "label": "Specimens",
+   "caption": "Two specimens, two mounts. The conductive hot mount (carbon-filled phenolic): the SEM's path to ground, and micro-Vickers. The steel mount: the slice on steel, nothing soft under it, for nanoindentation and PIP.",
+   "start_frame": 35,
+   "end_frame": 62
+  },
+  {
+   "label": "SEM",
+   "caption": "Tray D comes down to Shuttle 1's opening: the Hitachi TM4000PlusII SEM, with the AZtecOne EDS analyser beside it, and the MiniFlex.",
+   "start_frame": 63,
+   "end_frame": 67
+  },
+  {
+   "label": "SEM",
+   "caption": "Tray D comes down to Shuttle 1's opening: the Hitachi TM4000PlusII SEM, with the AZtecOne EDS analyser beside it, and the MiniFlex.",
+   "start_frame": 68,
+   "end_frame": 75
+  },
+  {
+   "label": "SEM",
+   "caption": "Tray D comes down to Shuttle 1's opening: the Hitachi TM4000PlusII SEM, with the AZtecOne EDS analyser beside it, and the MiniFlex.",
+   "start_frame": 76,
+   "end_frame": 80
+  },
+  {
+   "label": "SEM",
+   "caption": "Tray D comes down to Shuttle 1's opening: the Hitachi TM4000PlusII SEM, with the AZtecOne EDS analyser beside it, and the MiniFlex.",
+   "start_frame": 81,
+   "end_frame": 82
+  },
+  {
+   "label": "SEM",
+   "caption": "Tray D comes down to Shuttle 1's opening: the Hitachi TM4000PlusII SEM, with the AZtecOne EDS analyser beside it, and the MiniFlex.",
+   "start_frame": 83,
+   "end_frame": 89
+  },
+  {
+   "label": "SEM",
+   "caption": "Tray D comes down to Shuttle 1's opening: the Hitachi TM4000PlusII SEM, with the AZtecOne EDS analyser beside it, and the MiniFlex.",
+   "start_frame": 90,
+   "end_frame": 91
+  },
+  {
+   "label": "SEM",
+   "caption": "EVAC/AIR vents the chamber and the door comes out with the stage on it. In the stage's socket: a holder cup for 1.5 in mounts with a spring plunger through its side (ours).",
+   "start_frame": 93,
+   "end_frame": 103
+  },
+  {
+   "label": "SEM",
+   "caption": "The arm sets the hot mount in the cup. The plunger presses it against the wall: coupon -> carbon-filled phenolic -> cup -> stage, the path to ground (Sterling's point: a bare puck has none).",
+   "start_frame": 104,
+   "end_frame": 115
+  },
+  {
+   "label": "SEM",
+   "caption": "The arm sets the hot mount in the cup. The plunger presses it against the wall: coupon -> carbon-filled phenolic -> cup -> stage, the path to ground (Sterling's point: a bare puck has none).",
+   "start_frame": 116,
+   "end_frame": 120
+  },
+  {
+   "label": "SEM",
+   "caption": "The arm sets the hot mount in the cup. The plunger presses it against the wall: coupon -> carbon-filled phenolic -> cup -> stage, the path to ground (Sterling's point: a bare puck has none).",
+   "start_frame": 121,
+   "end_frame": 123
+  },
+  {
+   "label": "SEM",
+   "caption": "The arm sets the hot mount in the cup. The plunger presses it against the wall: coupon -> carbon-filled phenolic -> cup -> stage, the path to ground (Sterling's point: a bare puck has none).",
+   "start_frame": 124,
+   "end_frame": 128
+  },
+  {
+   "label": "SEM",
+   "caption": "The arm sets the hot mount in the cup. The plunger presses it against the wall: coupon -> carbon-filled phenolic -> cup -> stage, the path to ground (Sterling's point: a bare puck has none).",
+   "start_frame": 129,
+   "end_frame": 141
+  },
+  {
+   "label": "SEM",
+   "caption": "The arm sets the hot mount in the cup. The plunger presses it against the wall: coupon -> carbon-filled phenolic -> cup -> stage, the path to ground (Sterling's point: a bare puck has none).",
+   "start_frame": 142,
+   "end_frame": 147
+  },
+  {
+   "label": "SEM",
+   "caption": "The arm sets the hot mount in the cup. The plunger presses it against the wall: coupon -> carbon-filled phenolic -> cup -> stage, the path to ground (Sterling's point: a bare puck has none).",
+   "start_frame": 148,
+   "end_frame": 150
+  },
+  {
+   "label": "SEM",
+   "caption": "The arm sets the hot mount in the cup. The plunger presses it against the wall: coupon -> carbon-filled phenolic -> cup -> stage, the path to ground (Sterling's point: a bare puck has none).",
+   "start_frame": 151,
+   "end_frame": 155
+  },
+  {
+   "label": "SEM",
+   "caption": "The arm sets the hot mount in the cup. The plunger presses it against the wall: coupon -> carbon-filled phenolic -> cup -> stage, the path to ground (Sterling's point: a bare puck has none).",
+   "start_frame": 156,
+   "end_frame": 164
+  },
+  {
+   "label": "SEM",
+   "caption": "Door in, EVAC: about three minutes to vacuum. Then backscattered-electron images of the polished section: the melt pools, any porosity.",
+   "start_frame": 165,
+   "end_frame": 173
+  },
+  {
+   "label": "SEM",
+   "caption": "Door in, EVAC: about three minutes to vacuum. Then backscattered-electron images of the polished section: the melt pools, any porosity.",
+   "start_frame": 174,
+   "end_frame": 182
+  },
+  {
+   "label": "SEM",
+   "caption": "Door in, EVAC: about three minutes to vacuum. Then backscattered-electron images of the polished section: the melt pools, any porosity.",
+   "start_frame": 183,
+   "end_frame": 190
+  },
+  {
+   "label": "SEM",
+   "caption": "Door in, EVAC: about three minutes to vacuum. Then backscattered-electron images of the polished section: the melt pools, any porosity.",
+   "start_frame": 191,
+   "end_frame": 194
+  },
+  {
+   "label": "SEM",
+   "caption": "Door in, EVAC: about three minutes to vacuum. Then backscattered-electron images of the polished section: the melt pools, any porosity.",
+   "start_frame": 195,
+   "end_frame": 226
+  },
+  {
+   "label": "SEM",
+   "caption": "Door in, EVAC: about three minutes to vacuum. Then backscattered-electron images of the polished section: the melt pools, any porosity.",
+   "start_frame": 227,
+   "end_frame": 229
+  },
+  {
+   "label": "SEM",
+   "caption": "EDS: the built-in detector and its AZtecOne analyser map Al, Si and Mg across the section.",
+   "start_frame": 230,
+   "end_frame": 236
+  },
+  {
+   "label": "SEM",
+   "caption": "EDS: the built-in detector and its AZtecOne analyser map Al, Si and Mg across the section.",
+   "start_frame": 237,
+   "end_frame": 240
+  },
+  {
+   "label": "SEM",
+   "caption": "EDS: the built-in detector and its AZtecOne analyser map Al, Si and Mg across the section.",
+   "start_frame": 241,
+   "end_frame": 271
+  },
+  {
+   "label": "SEM",
+   "caption": "EDS: the built-in detector and its AZtecOne analyser map Al, Si and Mg across the section.",
+   "start_frame": 272,
+   "end_frame": 274
+  },
+  {
+   "label": "SEM",
+   "caption": "Vented, door out; the mount goes back to the caddy. Tray D goes back up.",
+   "start_frame": 275,
+   "end_frame": 283
+  },
+  {
+   "label": "SEM",
+   "caption": "Vented, door out; the mount goes back to the caddy. Tray D goes back up.",
+   "start_frame": 284,
+   "end_frame": 295
+  },
+  {
+   "label": "SEM",
+   "caption": "Vented, door out; the mount goes back to the caddy. Tray D goes back up.",
+   "start_frame": 296,
+   "end_frame": 300
+  },
+  {
+   "label": "SEM",
+   "caption": "Vented, door out; the mount goes back to the caddy. Tray D goes back up.",
+   "start_frame": 301,
+   "end_frame": 303
+  },
+  {
+   "label": "SEM",
+   "caption": "Vented, door out; the mount goes back to the caddy. Tray D goes back up.",
+   "start_frame": 304,
+   "end_frame": 308
+  },
+  {
+   "label": "SEM",
+   "caption": "Vented, door out; the mount goes back to the caddy. Tray D goes back up.",
+   "start_frame": 309,
+   "end_frame": 321
+  },
+  {
+   "label": "SEM",
+   "caption": "Vented, door out; the mount goes back to the caddy. Tray D goes back up.",
+   "start_frame": 322,
+   "end_frame": 327
+  },
+  {
+   "label": "SEM",
+   "caption": "Vented, door out; the mount goes back to the caddy. Tray D goes back up.",
+   "start_frame": 328,
+   "end_frame": 330
+  },
+  {
+   "label": "SEM",
+   "caption": "Vented, door out; the mount goes back to the caddy. Tray D goes back up.",
+   "start_frame": 331,
+   "end_frame": 335
+  },
+  {
+   "label": "SEM",
+   "caption": "Vented, door out; the mount goes back to the caddy. Tray D goes back up.",
+   "start_frame": 336,
+   "end_frame": 344
+  },
+  {
+   "label": "SEM",
+   "caption": "Vented, door out; the mount goes back to the caddy. Tray D goes back up.",
+   "start_frame": 345,
+   "end_frame": 346
+  },
+  {
+   "label": "SEM",
+   "caption": "Vented, door out; the mount goes back to the caddy. Tray D goes back up.",
+   "start_frame": 347,
+   "end_frame": 353
+  },
+  {
+   "label": "SEM",
+   "caption": "Vented, door out; the mount goes back to the caddy. Tray D goes back up.",
+   "start_frame": 354,
+   "end_frame": 356
+  },
+  {
+   "label": "SEM",
+   "caption": "Vented, door out; the mount goes back to the caddy. Tray D goes back up.",
+   "start_frame": 357,
+   "end_frame": 361
+  },
+  {
+   "label": "SEM",
+   "caption": "Vented, door out; the mount goes back to the caddy. Tray D goes back up.",
+   "start_frame": 362,
+   "end_frame": 368
+  },
+  {
+   "label": "iMicro",
+   "caption": "Tray E comes down: the Plastometrex PIP, the KLA iMicro nanoindenter and the Mastersizer.",
+   "start_frame": 370,
+   "end_frame": 375
+  },
+  {
+   "label": "iMicro",
+   "caption": "Tray E comes down: the Plastometrex PIP, the KLA iMicro nanoindenter and the Mastersizer.",
+   "start_frame": 376,
+   "end_frame": 383
+  },
+  {
+   "label": "iMicro",
+   "caption": "Tray E comes down: the Plastometrex PIP, the KLA iMicro nanoindenter and the Mastersizer.",
+   "start_frame": 384,
+   "end_frame": 388
+  },
+  {
+   "label": "iMicro",
+   "caption": "Tray E comes down: the Plastometrex PIP, the KLA iMicro nanoindenter and the Mastersizer.",
+   "start_frame": 389,
+   "end_frame": 390
+  },
+  {
+   "label": "iMicro",
+   "caption": "Tray E comes down: the Plastometrex PIP, the KLA iMicro nanoindenter and the Mastersizer.",
+   "start_frame": 391,
+   "end_frame": 397
+  },
+  {
+   "label": "iMicro",
+   "caption": "Tray E comes down: the Plastometrex PIP, the KLA iMicro nanoindenter and the Mastersizer.",
+   "start_frame": 398,
+   "end_frame": 399
+  },
+  {
+   "label": "iMicro",
+   "caption": "The iMicro's hood lifts and its XY stage runs out to the load position, clear of the objective.",
+   "start_frame": 401,
+   "end_frame": 411
+  },
+  {
+   "label": "iMicro",
+   "caption": "The steel mount into the stage's steel cup, clamped by a spring plunger: steel on steel.",
+   "start_frame": 412,
+   "end_frame": 423
+  },
+  {
+   "label": "iMicro",
+   "caption": "The steel mount into the stage's steel cup, clamped by a spring plunger: steel on steel.",
+   "start_frame": 424,
+   "end_frame": 428
+  },
+  {
+   "label": "iMicro",
+   "caption": "The steel mount into the stage's steel cup, clamped by a spring plunger: steel on steel.",
+   "start_frame": 429,
+   "end_frame": 431
+  },
+  {
+   "label": "iMicro",
+   "caption": "The steel mount into the stage's steel cup, clamped by a spring plunger: steel on steel.",
+   "start_frame": 432,
+   "end_frame": 436
+  },
+  {
+   "label": "iMicro",
+   "caption": "The steel mount into the stage's steel cup, clamped by a spring plunger: steel on steel.",
+   "start_frame": 437,
+   "end_frame": 449
+  },
+  {
+   "label": "iMicro",
+   "caption": "The steel mount into the stage's steel cup, clamped by a spring plunger: steel on steel.",
+   "start_frame": 450,
+   "end_frame": 455
+  },
+  {
+   "label": "iMicro",
+   "caption": "The steel mount into the stage's steel cup, clamped by a spring plunger: steel on steel.",
+   "start_frame": 456,
+   "end_frame": 458
+  },
+  {
+   "label": "iMicro",
+   "caption": "The steel mount into the stage's steel cup, clamped by a spring plunger: steel on steel.",
+   "start_frame": 459,
+   "end_frame": 463
+  },
+  {
+   "label": "iMicro",
+   "caption": "The steel mount into the stage's steel cup, clamped by a spring plunger: steel on steel.",
+   "start_frame": 464,
+   "end_frame": 472
+  },
+  {
+   "label": "iMicro",
+   "caption": "Hood down (drawn see-through). The stage carries the slice under the microscope objective, which finds the polished face, then 100 mm across under the indenter head.",
+   "start_frame": 473,
+   "end_frame": 483
+  },
+  {
+   "label": "iMicro",
+   "caption": "Hood down (drawn see-through). The stage carries the slice under the microscope objective, which finds the polished face, then 100 mm across under the indenter head.",
+   "start_frame": 484,
+   "end_frame": 492
+  },
+  {
+   "label": "iMicro",
+   "caption": "The Berkovich tip comes down onto the surface and is driven in to 500 nm: 25 indents in a 5 x 5 grid, 20 um apart, hardness and modulus from each unloading curve (Oliver-Pharr).",
+   "start_frame": 493,
+   "end_frame": 501
+  },
+  {
+   "label": "iMicro",
+   "caption": "The Berkovich tip comes down onto the surface and is driven in to 500 nm: 25 indents in a 5 x 5 grid, 20 um apart, hardness and modulus from each unloading curve (Oliver-Pharr).",
+   "start_frame": 502,
+   "end_frame": 512
+  },
+  {
+   "label": "iMicro",
+   "caption": "The Berkovich tip comes down onto the surface and is driven in to 500 nm: 25 indents in a 5 x 5 grid, 20 um apart, hardness and modulus from each unloading curve (Oliver-Pharr).",
+   "start_frame": 513,
+   "end_frame": 520
+  },
+  {
+   "label": "iMicro",
+   "caption": "The Berkovich tip comes down onto the surface and is driven in to 500 nm: 25 indents in a 5 x 5 grid, 20 um apart, hardness and modulus from each unloading curve (Oliver-Pharr).",
+   "start_frame": 521,
+   "end_frame": 524
+  },
+  {
+   "label": "iMicro",
+   "caption": "The Berkovich tip comes down onto the surface and is driven in to 500 nm: 25 indents in a 5 x 5 grid, 20 um apart, hardness and modulus from each unloading curve (Oliver-Pharr).",
+   "start_frame": 525,
+   "end_frame": 557
+  },
+  {
+   "label": "iMicro",
+   "caption": "The Berkovich tip comes down onto the surface and is driven in to 500 nm: 25 indents in a 5 x 5 grid, 20 um apart, hardness and modulus from each unloading curve (Oliver-Pharr).",
+   "start_frame": 558,
+   "end_frame": 560
+  },
+  {
+   "label": "iMicro",
+   "caption": "Hood up, stage out; the arm takes the steel mount on to the PIP.",
+   "start_frame": 561,
+   "end_frame": 569
+  },
+  {
+   "label": "iMicro",
+   "caption": "Hood up, stage out; the arm takes the steel mount on to the PIP.",
+   "start_frame": 570,
+   "end_frame": 581
+  },
+  {
+   "label": "iMicro",
+   "caption": "Hood up, stage out; the arm takes the steel mount on to the PIP.",
+   "start_frame": 582,
+   "end_frame": 586
+  },
+  {
+   "label": "iMicro",
+   "caption": "Hood up, stage out; the arm takes the steel mount on to the PIP.",
+   "start_frame": 587,
+   "end_frame": 589
+  },
+  {
+   "label": "iMicro",
+   "caption": "Hood up, stage out; the arm takes the steel mount on to the PIP.",
+   "start_frame": 590,
+   "end_frame": 594
+  },
+  {
+   "label": "PIP",
+   "caption": "The PIP's working bay is about 130 mm tall, with the indenter 7 mm over the sample: too tight for a gripper. Its loading slide (ours) runs a steel plate out to the front.",
+   "start_frame": 595,
+   "end_frame": 603
+  },
+  {
+   "label": "PIP",
+   "caption": "The PIP's working bay is about 130 mm tall, with the indenter 7 mm over the sample: too tight for a gripper. Its loading slide (ours) runs a steel plate out to the front.",
+   "start_frame": 604,
+   "end_frame": 616
+  },
+  {
+   "label": "PIP",
+   "caption": "The PIP's working bay is about 130 mm tall, with the indenter 7 mm over the sample: too tight for a gripper. Its loading slide (ours) runs a steel plate out to the front.",
+   "start_frame": 617,
+   "end_frame": 622
+  },
+  {
+   "label": "PIP",
+   "caption": "The PIP's working bay is about 130 mm tall, with the indenter 7 mm over the sample: too tight for a gripper. Its loading slide (ours) runs a steel plate out to the front.",
+   "start_frame": 623,
+   "end_frame": 625
+  },
+  {
+   "label": "PIP",
+   "caption": "The PIP's working bay is about 130 mm tall, with the indenter 7 mm over the sample: too tight for a gripper. Its loading slide (ours) runs a steel plate out to the front.",
+   "start_frame": 626,
+   "end_frame": 630
+  },
+  {
+   "label": "PIP",
+   "caption": "The PIP's working bay is about 130 mm tall, with the indenter 7 mm over the sample: too tight for a gripper. Its loading slide (ours) runs a steel plate out to the front.",
+   "start_frame": 631,
+   "end_frame": 639
+  },
+  {
+   "label": "PIP",
+   "caption": "Slide in: the plate sits on the platen, metal from the slice down to the load cell. The 1 mm ball is pressed in; the profilometer maps the indent's shape.",
+   "start_frame": 640,
+   "end_frame": 650
+  },
+  {
+   "label": "PIP",
+   "caption": "Slide in: the plate sits on the platen, metal from the slice down to the load cell. The 1 mm ball is pressed in; the profilometer maps the indent's shape.",
+   "start_frame": 651,
+   "end_frame": 659
+  },
+  {
+   "label": "PIP",
+   "caption": "Slide in: the plate sits on the platen, metal from the slice down to the load cell. The 1 mm ball is pressed in; the profilometer maps the indent's shape.",
+   "start_frame": 660,
+   "end_frame": 668
+  },
+  {
+   "label": "PIP",
+   "caption": "Slide in: the plate sits on the platen, metal from the slice down to the load cell. The 1 mm ball is pressed in; the profilometer maps the indent's shape.",
+   "start_frame": 669,
+   "end_frame": 680
+  },
+  {
+   "label": "PIP",
+   "caption": "Slide in: the plate sits on the platen, metal from the slice down to the load cell. The 1 mm ball is pressed in; the profilometer maps the indent's shape.",
+   "start_frame": 681,
+   "end_frame": 688
+  },
+  {
+   "label": "PIP",
+   "caption": "CORSICA fits a stress-strain curve to the indent's profile by finite elements, in minutes.",
+   "start_frame": 689,
+   "end_frame": 694
+  },
+  {
+   "label": "PIP",
+   "caption": "CORSICA fits a stress-strain curve to the indent's profile by finite elements, in minutes.",
+   "start_frame": 695,
+   "end_frame": 698
+  },
+  {
+   "label": "PIP",
+   "caption": "CORSICA fits a stress-strain curve to the indent's profile by finite elements, in minutes.",
+   "start_frame": 699,
+   "end_frame": 731
+  },
+  {
+   "label": "PIP",
+   "caption": "CORSICA fits a stress-strain curve to the indent's profile by finite elements, in minutes.",
+   "start_frame": 732,
+   "end_frame": 734
+  },
+  {
+   "label": "PIP",
+   "caption": "Slide out; the steel mount goes back to the caddy. Tray E goes back up.",
+   "start_frame": 735,
+   "end_frame": 743
+  },
+  {
+   "label": "PIP",
+   "caption": "Slide out; the steel mount goes back to the caddy. Tray E goes back up.",
+   "start_frame": 744,
+   "end_frame": 755
+  },
+  {
+   "label": "PIP",
+   "caption": "Slide out; the steel mount goes back to the caddy. Tray E goes back up.",
+   "start_frame": 756,
+   "end_frame": 760
+  },
+  {
+   "label": "PIP",
+   "caption": "Slide out; the steel mount goes back to the caddy. Tray E goes back up.",
+   "start_frame": 761,
+   "end_frame": 763
+  },
+  {
+   "label": "PIP",
+   "caption": "Slide out; the steel mount goes back to the caddy. Tray E goes back up.",
+   "start_frame": 764,
+   "end_frame": 768
+  },
+  {
+   "label": "PIP",
+   "caption": "Slide out; the steel mount goes back to the caddy. Tray E goes back up.",
+   "start_frame": 769,
+   "end_frame": 781
+  },
+  {
+   "label": "PIP",
+   "caption": "Slide out; the steel mount goes back to the caddy. Tray E goes back up.",
+   "start_frame": 782,
+   "end_frame": 787
+  },
+  {
+   "label": "PIP",
+   "caption": "Slide out; the steel mount goes back to the caddy. Tray E goes back up.",
+   "start_frame": 788,
+   "end_frame": 790
+  },
+  {
+   "label": "PIP",
+   "caption": "Slide out; the steel mount goes back to the caddy. Tray E goes back up.",
+   "start_frame": 791,
+   "end_frame": 795
+  },
+  {
+   "label": "PIP",
+   "caption": "Slide out; the steel mount goes back to the caddy. Tray E goes back up.",
+   "start_frame": 796,
+   "end_frame": 804
+  },
+  {
+   "label": "PIP",
+   "caption": "Slide out; the steel mount goes back to the caddy. Tray E goes back up.",
+   "start_frame": 805,
+   "end_frame": 806
+  },
+  {
+   "label": "PIP",
+   "caption": "Slide out; the steel mount goes back to the caddy. Tray E goes back up.",
+   "start_frame": 807,
+   "end_frame": 813
+  },
+  {
+   "label": "PIP",
+   "caption": "Slide out; the steel mount goes back to the caddy. Tray E goes back up.",
+   "start_frame": 814,
+   "end_frame": 816
+  },
+  {
+   "label": "PIP",
+   "caption": "Slide out; the steel mount goes back to the caddy. Tray E goes back up.",
+   "start_frame": 817,
+   "end_frame": 821
+  },
+  {
+   "label": "PIP",
+   "caption": "Slide out; the steel mount goes back to the caddy. Tray E goes back up.",
+   "start_frame": 822,
+   "end_frame": 828
+  },
+  {
+   "label": "Shuttle 2",
+   "caption": "The MiR250 drives along to Shuttle 2's opening, at its 0.3 m/s^2, and stops 300 mm short of its usual dock, nearer the HM-220 at the tray's left end.",
+   "start_frame": 830,
+   "end_frame": 870
+  },
+  {
+   "label": "Vickers",
+   "caption": "Tray L comes down at Shuttle 2: the Mitutoyo HM-220 micro-Vickers tester, and the zwickiLine.",
+   "start_frame": 871,
+   "end_frame": 875
+  },
+  {
+   "label": "Vickers",
+   "caption": "Tray L comes down at Shuttle 2: the Mitutoyo HM-220 micro-Vickers tester, and the zwickiLine.",
+   "start_frame": 876,
+   "end_frame": 883
+  },
+  {
+   "label": "Vickers",
+   "caption": "Tray L comes down at Shuttle 2: the Mitutoyo HM-220 micro-Vickers tester, and the zwickiLine.",
+   "start_frame": 884,
+   "end_frame": 888
+  },
+  {
+   "label": "Vickers",
+   "caption": "Tray L comes down at Shuttle 2: the Mitutoyo HM-220 micro-Vickers tester, and the zwickiLine.",
+   "start_frame": 889,
+   "end_frame": 890
+  },
+  {
+   "label": "Vickers",
+   "caption": "Tray L comes down at Shuttle 2: the Mitutoyo HM-220 micro-Vickers tester, and the zwickiLine.",
+   "start_frame": 891,
+   "end_frame": 897
+  },
+  {
+   "label": "Vickers",
+   "caption": "Tray L comes down at Shuttle 2: the Mitutoyo HM-220 micro-Vickers tester, and the zwickiLine.",
+   "start_frame": 898,
+   "end_frame": 899
+  },
+  {
+   "label": "Vickers",
+   "caption": "Its loading slide (ours) runs the mount holder out from under the turret; the arm sets the hot mount on it, against the V-block.",
+   "start_frame": 901,
+   "end_frame": 909
+  },
+  {
+   "label": "Vickers",
+   "caption": "Its loading slide (ours) runs the mount holder out from under the turret; the arm sets the hot mount on it, against the V-block.",
+   "start_frame": 910,
+   "end_frame": 921
+  },
+  {
+   "label": "Vickers",
+   "caption": "Its loading slide (ours) runs the mount holder out from under the turret; the arm sets the hot mount on it, against the V-block.",
+   "start_frame": 922,
+   "end_frame": 926
+  },
+  {
+   "label": "Vickers",
+   "caption": "Its loading slide (ours) runs the mount holder out from under the turret; the arm sets the hot mount on it, against the V-block.",
+   "start_frame": 927,
+   "end_frame": 929
+  },
+  {
+   "label": "Vickers",
+   "caption": "Its loading slide (ours) runs the mount holder out from under the turret; the arm sets the hot mount on it, against the V-block.",
+   "start_frame": 930,
+   "end_frame": 934
+  },
+  {
+   "label": "Vickers",
+   "caption": "Its loading slide (ours) runs the mount holder out from under the turret; the arm sets the hot mount on it, against the V-block.",
+   "start_frame": 935,
+   "end_frame": 947
+  },
+  {
+   "label": "Vickers",
+   "caption": "Its loading slide (ours) runs the mount holder out from under the turret; the arm sets the hot mount on it, against the V-block.",
+   "start_frame": 948,
+   "end_frame": 953
+  },
+  {
+   "label": "Vickers",
+   "caption": "Its loading slide (ours) runs the mount holder out from under the turret; the arm sets the hot mount on it, against the V-block.",
+   "start_frame": 954,
+   "end_frame": 956
+  },
+  {
+   "label": "Vickers",
+   "caption": "Its loading slide (ours) runs the mount holder out from under the turret; the arm sets the hot mount on it, against the V-block.",
+   "start_frame": 957,
+   "end_frame": 961
+  },
+  {
+   "label": "Vickers",
+   "caption": "Its loading slide (ours) runs the mount holder out from under the turret; the arm sets the hot mount on it, against the V-block.",
+   "start_frame": 962,
+   "end_frame": 970
+  },
+  {
+   "label": "Vickers",
+   "caption": "Slide in. The turret swings the Vickers indenter over the coupon and presses, HV0.1; the 50x objective comes back and the camera measures both diagonals. A row across the coupon, unattended.",
+   "start_frame": 971,
+   "end_frame": 979
+  },
+  {
+   "label": "Vickers",
+   "caption": "Slide in. The turret swings the Vickers indenter over the coupon and presses, HV0.1; the 50x objective comes back and the camera measures both diagonals. A row across the coupon, unattended.",
+   "start_frame": 980,
+   "end_frame": 1016
+  },
+  {
+   "label": "Vickers",
+   "caption": "Slide in. The turret swings the Vickers indenter over the coupon and presses, HV0.1; the 50x objective comes back and the camera measures both diagonals. A row across the coupon, unattended.",
+   "start_frame": 1017,
+   "end_frame": 1020
+  },
+  {
+   "label": "Vickers",
+   "caption": "Slide in. The turret swings the Vickers indenter over the coupon and presses, HV0.1; the 50x objective comes back and the camera measures both diagonals. A row across the coupon, unattended.",
+   "start_frame": 1021,
+   "end_frame": 1053
+  },
+  {
+   "label": "Vickers",
+   "caption": "Slide in. The turret swings the Vickers indenter over the coupon and presses, HV0.1; the 50x objective comes back and the camera measures both diagonals. A row across the coupon, unattended.",
+   "start_frame": 1054,
+   "end_frame": 1056
+  },
+  {
+   "label": "Vickers",
+   "caption": "Slide out; the mount goes back to the caddy. Tray L goes back up.",
+   "start_frame": 1057,
+   "end_frame": 1065
+  },
+  {
+   "label": "Vickers",
+   "caption": "Slide out; the mount goes back to the caddy. Tray L goes back up.",
+   "start_frame": 1066,
+   "end_frame": 1077
+  },
+  {
+   "label": "Vickers",
+   "caption": "Slide out; the mount goes back to the caddy. Tray L goes back up.",
+   "start_frame": 1078,
+   "end_frame": 1082
+  },
+  {
+   "label": "Vickers",
+   "caption": "Slide out; the mount goes back to the caddy. Tray L goes back up.",
+   "start_frame": 1083,
+   "end_frame": 1085
+  },
+  {
+   "label": "Vickers",
+   "caption": "Slide out; the mount goes back to the caddy. Tray L goes back up.",
+   "start_frame": 1086,
+   "end_frame": 1090
+  },
+  {
+   "label": "Vickers",
+   "caption": "Slide out; the mount goes back to the caddy. Tray L goes back up.",
+   "start_frame": 1091,
+   "end_frame": 1103
+  },
+  {
+   "label": "Vickers",
+   "caption": "Slide out; the mount goes back to the caddy. Tray L goes back up.",
+   "start_frame": 1104,
+   "end_frame": 1109
+  },
+  {
+   "label": "Vickers",
+   "caption": "Slide out; the mount goes back to the caddy. Tray L goes back up.",
+   "start_frame": 1110,
+   "end_frame": 1112
+  },
+  {
+   "label": "Vickers",
+   "caption": "Slide out; the mount goes back to the caddy. Tray L goes back up.",
+   "start_frame": 1113,
+   "end_frame": 1117
+  },
+  {
+   "label": "Vickers",
+   "caption": "Slide out; the mount goes back to the caddy. Tray L goes back up.",
+   "start_frame": 1118,
+   "end_frame": 1126
+  },
+  {
+   "label": "Vickers",
+   "caption": "Slide out; the mount goes back to the caddy. Tray L goes back up.",
+   "start_frame": 1127,
+   "end_frame": 1128
+  },
+  {
+   "label": "Vickers",
+   "caption": "Slide out; the mount goes back to the caddy. Tray L goes back up.",
+   "start_frame": 1129,
+   "end_frame": 1135
+  },
+  {
+   "label": "Vickers",
+   "caption": "Slide out; the mount goes back to the caddy. Tray L goes back up.",
+   "start_frame": 1136,
+   "end_frame": 1138
+  },
+  {
+   "label": "Vickers",
+   "caption": "Slide out; the mount goes back to the caddy. Tray L goes back up.",
+   "start_frame": 1139,
+   "end_frame": 1143
+  },
+  {
+   "label": "Vickers",
+   "caption": "Slide out; the mount goes back to the caddy. Tray L goes back up.",
+   "start_frame": 1144,
+   "end_frame": 1150
+  },
+  {
+   "label": "VHX",
+   "caption": "Tray K comes down: the glovebox and the Keyence VHX-7000, remoted in through a PiKVM. The MiR250 moves along, nearer the VHX at the tray's right end.",
+   "start_frame": 1152,
+   "end_frame": 1167
+  },
+  {
+   "label": "VHX",
+   "caption": "Tray K comes down: the glovebox and the Keyence VHX-7000, remoted in through a PiKVM. The MiR250 moves along, nearer the VHX at the tray's right end.",
+   "start_frame": 1168,
+   "end_frame": 1172
+  },
+  {
+   "label": "VHX",
+   "caption": "Tray K comes down: the glovebox and the Keyence VHX-7000, remoted in through a PiKVM. The MiR250 moves along, nearer the VHX at the tray's right end.",
+   "start_frame": 1173,
+   "end_frame": 1180
+  },
+  {
+   "label": "VHX",
+   "caption": "Tray K comes down: the glovebox and the Keyence VHX-7000, remoted in through a PiKVM. The MiR250 moves along, nearer the VHX at the tray's right end.",
+   "start_frame": 1181,
+   "end_frame": 1185
+  },
+  {
+   "label": "VHX",
+   "caption": "Tray K comes down: the glovebox and the Keyence VHX-7000, remoted in through a PiKVM. The MiR250 moves along, nearer the VHX at the tray's right end.",
+   "start_frame": 1186,
+   "end_frame": 1187
+  },
+  {
+   "label": "VHX",
+   "caption": "Tray K comes down: the glovebox and the Keyence VHX-7000, remoted in through a PiKVM. The MiR250 moves along, nearer the VHX at the tray's right end.",
+   "start_frame": 1188,
+   "end_frame": 1194
+  },
+  {
+   "label": "VHX",
+   "caption": "Tray K comes down: the glovebox and the Keyence VHX-7000, remoted in through a PiKVM. The MiR250 moves along, nearer the VHX at the tray's right end.",
+   "start_frame": 1195,
+   "end_frame": 1196
+  },
+  {
+   "label": "VHX",
+   "caption": "The ring light is 25 mm over the focal point, too close for a gripper: the stage's loading slide (ours) runs its carrier out to the front, and the arm sets the bar on its narrow pedestal.",
+   "start_frame": 1198,
+   "end_frame": 1206
+  },
+  {
+   "label": "VHX",
+   "caption": "The ring light is 25 mm over the focal point, too close for a gripper: the stage's loading slide (ours) runs its carrier out to the front, and the arm sets the bar on its narrow pedestal.",
+   "start_frame": 1207,
+   "end_frame": 1218
+  },
+  {
+   "label": "VHX",
+   "caption": "The ring light is 25 mm over the focal point, too close for a gripper: the stage's loading slide (ours) runs its carrier out to the front, and the arm sets the bar on its narrow pedestal.",
+   "start_frame": 1219,
+   "end_frame": 1223
+  },
+  {
+   "label": "VHX",
+   "caption": "The ring light is 25 mm over the focal point, too close for a gripper: the stage's loading slide (ours) runs its carrier out to the front, and the arm sets the bar on its narrow pedestal.",
+   "start_frame": 1224,
+   "end_frame": 1226
+  },
+  {
+   "label": "VHX",
+   "caption": "The ring light is 25 mm over the focal point, too close for a gripper: the stage's loading slide (ours) runs its carrier out to the front, and the arm sets the bar on its narrow pedestal.",
+   "start_frame": 1227,
+   "end_frame": 1231
+  },
+  {
+   "label": "VHX",
+   "caption": "The ring light is 25 mm over the focal point, too close for a gripper: the stage's loading slide (ours) runs its carrier out to the front, and the arm sets the bar on its narrow pedestal.",
+   "start_frame": 1232,
+   "end_frame": 1244
+  },
+  {
+   "label": "VHX",
+   "caption": "The ring light is 25 mm over the focal point, too close for a gripper: the stage's loading slide (ours) runs its carrier out to the front, and the arm sets the bar on its narrow pedestal.",
+   "start_frame": 1245,
+   "end_frame": 1250
+  },
+  {
+   "label": "VHX",
+   "caption": "The ring light is 25 mm over the focal point, too close for a gripper: the stage's loading slide (ours) runs its carrier out to the front, and the arm sets the bar on its narrow pedestal.",
+   "start_frame": 1251,
+   "end_frame": 1253
+  },
+  {
+   "label": "VHX",
+   "caption": "The ring light is 25 mm over the focal point, too close for a gripper: the stage's loading slide (ours) runs its carrier out to the front, and the arm sets the bar on its narrow pedestal.",
+   "start_frame": 1254,
+   "end_frame": 1258
+  },
+  {
+   "label": "VHX",
+   "caption": "The ring light is 25 mm over the focal point, too close for a gripper: the stage's loading slide (ours) runs its carrier out to the front, and the arm sets the bar on its narrow pedestal.",
+   "start_frame": 1259,
+   "end_frame": 1267
+  },
+  {
+   "label": "VHX",
+   "caption": "Carrier in. The free-angle head tilts about the focal point (eucentric: the view stays on the bar) while the stage turns; depth composition at every view.",
+   "start_frame": 1268,
+   "end_frame": 1276
+  },
+  {
+   "label": "VHX",
+   "caption": "Carrier in. The free-angle head tilts about the focal point (eucentric: the view stays on the bar) while the stage turns; depth composition at every view.",
+   "start_frame": 1277,
+   "end_frame": 1297
+  },
+  {
+   "label": "VHX",
+   "caption": "Carrier in. The free-angle head tilts about the focal point (eucentric: the view stays on the bar) while the stage turns; depth composition at every view.",
+   "start_frame": 1298,
+   "end_frame": 1316
+  },
+  {
+   "label": "VHX",
+   "caption": "Carrier in. The free-angle head tilts about the focal point (eucentric: the view stays on the bar) while the stage turns; depth composition at every view.",
+   "start_frame": 1317,
+   "end_frame": 1327
+  },
+  {
+   "label": "VHX",
+   "caption": "Turned over once and the series repeated, it covers the underside too: every face of the bar and its fracture surface as one 3-D model. (The turn-over, a regrasp at the carrier, isn't shown: the arm's path for it still meets the stand.)",
+   "start_frame": 1328,
+   "end_frame": 1343
+  },
+  {
+   "label": "VHX",
+   "caption": "Turned over once and the series repeated, it covers the underside too: every face of the bar and its fracture surface as one 3-D model. (The turn-over, a regrasp at the carrier, isn't shown: the arm's path for it still meets the stand.)",
+   "start_frame": 1344,
+   "end_frame": 1347
+  },
+  {
+   "label": "VHX",
+   "caption": "Turned over once and the series repeated, it covers the underside too: every face of the bar and its fracture surface as one 3-D model. (The turn-over, a regrasp at the carrier, isn't shown: the arm's path for it still meets the stand.)",
+   "start_frame": 1348,
+   "end_frame": 1380
+  },
+  {
+   "label": "VHX",
+   "caption": "Turned over once and the series repeated, it covers the underside too: every face of the bar and its fracture surface as one 3-D model. (The turn-over, a regrasp at the carrier, isn't shown: the arm's path for it still meets the stand.)",
+   "start_frame": 1381,
+   "end_frame": 1383
+  },
+  {
+   "label": "VHX",
+   "caption": "Carrier out; the bar goes back to the caddy. Tray K goes back up.",
+   "start_frame": 1384,
+   "end_frame": 1392
+  },
+  {
+   "label": "VHX",
+   "caption": "Carrier out; the bar goes back to the caddy. Tray K goes back up.",
+   "start_frame": 1393,
+   "end_frame": 1404
+  },
+  {
+   "label": "VHX",
+   "caption": "Carrier out; the bar goes back to the caddy. Tray K goes back up.",
+   "start_frame": 1405,
+   "end_frame": 1409
+  },
+  {
+   "label": "VHX",
+   "caption": "Carrier out; the bar goes back to the caddy. Tray K goes back up.",
+   "start_frame": 1410,
+   "end_frame": 1412
+  },
+  {
+   "label": "VHX",
+   "caption": "Carrier out; the bar goes back to the caddy. Tray K goes back up.",
+   "start_frame": 1413,
+   "end_frame": 1417
+  },
+  {
+   "label": "VHX",
+   "caption": "Carrier out; the bar goes back to the caddy. Tray K goes back up.",
+   "start_frame": 1418,
+   "end_frame": 1430
+  },
+  {
+   "label": "VHX",
+   "caption": "Carrier out; the bar goes back to the caddy. Tray K goes back up.",
+   "start_frame": 1431,
+   "end_frame": 1436
+  },
+  {
+   "label": "VHX",
+   "caption": "Carrier out; the bar goes back to the caddy. Tray K goes back up.",
+   "start_frame": 1437,
+   "end_frame": 1439
+  },
+  {
+   "label": "VHX",
+   "caption": "Carrier out; the bar goes back to the caddy. Tray K goes back up.",
+   "start_frame": 1440,
+   "end_frame": 1444
+  },
+  {
+   "label": "VHX",
+   "caption": "Carrier out; the bar goes back to the caddy. Tray K goes back up.",
+   "start_frame": 1445,
+   "end_frame": 1453
+  },
+  {
+   "label": "VHX",
+   "caption": "Carrier out; the bar goes back to the caddy. Tray K goes back up.",
+   "start_frame": 1454,
+   "end_frame": 1455
+  },
+  {
+   "label": "VHX",
+   "caption": "Carrier out; the bar goes back to the caddy. Tray K goes back up.",
+   "start_frame": 1456,
+   "end_frame": 1462
+  },
+  {
+   "label": "VHX",
+   "caption": "Carrier out; the bar goes back to the caddy. Tray K goes back up.",
+   "start_frame": 1463,
+   "end_frame": 1465
+  },
+  {
+   "label": "VHX",
+   "caption": "Carrier out; the bar goes back to the caddy. Tray K goes back up.",
+   "start_frame": 1466,
+   "end_frame": 1470
+  },
+  {
+   "label": "VHX",
+   "caption": "Carrier out; the bar goes back to the caddy. Tray K goes back up.",
+   "start_frame": 1471,
+   "end_frame": 1477
+  },
+  {
+   "label": "Data",
+   "caption": "What the chapter measured, and what is real: the SEM inset is the lab's own atomized powder; the section, the EDS, the hardness and the VHX map are illustrative, the nanoindentation computed. No section of the lab's prints has been imaged yet.",
+   "start_frame": 1479,
+   "end_frame": 1483
+  },
+  {
+   "label": "Data",
+   "caption": "What the chapter measured, and what is real: the SEM inset is the lab's own atomized powder; the section, the EDS, the hardness and the VHX map are illustrative, the nanoindentation computed. No section of the lab's prints has been imaged yet.",
+   "start_frame": 1484,
+   "end_frame": 1525
+  }
+ ]
+}

@@ -1,0 +1,71 @@
+{
+ "name": "fabrication/snowpod",
+ "fps": 15,
+ "n_frames": 332,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/8",
+   "caption": "The chamber door swings open on its left-hand hinge.",
+   "start_frame": 0,
+   "end_frame": 34
+  },
+  {
+   "label": "2/8",
+   "caption": "An 80 mm build plate goes onto the platform.",
+   "start_frame": 35,
+   "end_frame": 66
+  },
+  {
+   "label": "3/8",
+   "caption": "Door shut; nitrogen from the NitroPod, made from air, fills the chamber. Drawn see-through from here.",
+   "start_frame": 67,
+   "end_frame": 98
+  },
+  {
+   "label": "4/8",
+   "caption": "The recoater spreads 316L powder from the sealed supply cartridge over the plate.",
+   "start_frame": 99,
+   "end_frame": 126
+  },
+  {
+   "label": "5/8",
+   "caption": "The fibre laser, a 40 um spot, melts the layer's cross-section.",
+   "start_frame": 127,
+   "end_frame": 161
+  },
+  {
+   "label": "6/8",
+   "caption": "The platform drops a layer; the recoater spreads fresh powder over it.",
+   "start_frame": 162,
+   "end_frame": 189
+  },
+  {
+   "label": "7/8",
+   "caption": "",
+   "start_frame": 190,
+   "end_frame": 224
+  },
+  {
+   "label": "8/8",
+   "caption": "The platform drops a layer; the recoater spreads fresh powder over it.",
+   "start_frame": 225,
+   "end_frame": 252
+  },
+  {
+   "label": "8/8",
+   "caption": "",
+   "start_frame": 253,
+   "end_frame": 287
+  },
+  {
+   "label": "8/8",
+   "caption": "660 mm tall, so it goes through the opening with 67.5 mm to spare. A Kickstarter kit: not shipping yet.",
+   "start_frame": 288,
+   "end_frame": 331
+  }
+ ]
+}

@@ -1,0 +1,71 @@
+{
+ "name": "fabrication/metalone",
+ "fps": 15,
+ "n_frames": 335,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/8",
+   "caption": "The chamber door swings open on its left-hand hinge.",
+   "start_frame": 0,
+   "end_frame": 37
+  },
+  {
+   "label": "2/8",
+   "caption": "A 100 mm build plate goes onto the platform in the build well.",
+   "start_frame": 38,
+   "end_frame": 72
+  },
+  {
+   "label": "3/8",
+   "caption": "Door shut; the chamber is purged with argon. Drawn see-through from here.",
+   "start_frame": 73,
+   "end_frame": 104
+  },
+  {
+   "label": "4/8",
+   "caption": "The recoater spreads a layer of powder from the dosing hopper over the plate.",
+   "start_frame": 105,
+   "end_frame": 132
+  },
+  {
+   "label": "5/8",
+   "caption": "The fibre laser (200 W at launch) melts the layer's cross-section, spot by spot.",
+   "start_frame": 133,
+   "end_frame": 167
+  },
+  {
+   "label": "6/8",
+   "caption": "The platform drops a layer; the recoater spreads fresh powder over it.",
+   "start_frame": 168,
+   "end_frame": 195
+  },
+  {
+   "label": "7/8",
+   "caption": "",
+   "start_frame": 196,
+   "end_frame": 230
+  },
+  {
+   "label": "8/8",
+   "caption": "The platform drops a layer; the recoater spreads fresh powder over it.",
+   "start_frame": 231,
+   "end_frame": 258
+  },
+  {
+   "label": "8/8",
+   "caption": "",
+   "start_frame": 259,
+   "end_frame": 293
+  },
+  {
+   "label": "8/8",
+   "caption": "Three layers drawn, 3 mm each; real ones are 20-60 um. 1000 mm tall, so it stands beside the VLM.",
+   "start_frame": 294,
+   "end_frame": 334
+  }
+ ]
+}

@@ -1,0 +1,71 @@
+{
+ "name": "instruments/xrf",
+ "fps": 8,
+ "n_frames": 197,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/10",
+   "caption": "Bruker S2 PUMA Series 2 with the XY Autochanger, its hood drawn see-through: cups of powder in the removable 20-position tray, and the grabber that takes them to the measuring chamber under the deck.",
+   "start_frame": 0,
+   "end_frame": 24
+  },
+  {
+   "label": "2/10",
+   "caption": "The grabber runs over the first cup and grips it (drawn as an XY gantry with a lift: Bruker doesn't publish the mechanism).",
+   "start_frame": 25,
+   "end_frame": 44
+  },
+  {
+   "label": "3/10",
+   "caption": "The grabber runs over the first cup and grips it (drawn as an XY gantry with a lift: Bruker doesn't publish the mechanism).",
+   "start_frame": 45,
+   "end_frame": 54
+  },
+  {
+   "label": "4/10",
+   "caption": "It lifts the cup clear of the tray.",
+   "start_frame": 55,
+   "end_frame": 65
+  },
+  {
+   "label": "5/10",
+   "caption": "And carries it to the chamber's port, which opens.",
+   "start_frame": 66,
+   "end_frame": 82
+  },
+  {
+   "label": "6/10",
+   "caption": "The cup goes down onto the chamber's ring, and the grabber lets go.",
+   "start_frame": 83,
+   "end_frame": 94
+  },
+  {
+   "label": "7/10",
+   "caption": "The ring lowers it into the chamber, film side down over the tube and the detector; the port shuts and the chamber fills with helium at reduced pressure, which keeps loose powder in place.",
+   "start_frame": 95,
+   "end_frame": 117
+  },
+  {
+   "label": "8/10",
+   "caption": "The ring lowers it into the chamber, film side down over the tube and the detector; the port shuts and the chamber fills with helium at reduced pressure, which keeps loose powder in place.",
+   "start_frame": 118,
+   "end_frame": 127
+  },
+  {
+   "label": "9/10",
+   "caption": "The beam, drawn see-through: up to 50 kV and 50 W from the tube; each element in the powder answers with its own X-ray lines, which the silicon drift detector counts. The tray stays free to load.",
+   "start_frame": 128,
+   "end_frame": 155
+  },
+  {
+   "label": "10/10",
+   "caption": "The spectrum: peaks at each element's lines give the composition, Na to Am, in minutes.",
+   "start_frame": 156,
+   "end_frame": 196
+  }
+ ]
+}

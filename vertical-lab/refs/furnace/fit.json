@@ -1,0 +1,99 @@
+{
+ "key": "furnace",
+ "free": [
+  "lower_h",
+  "mouth_w",
+  "mouth_h",
+  "mouth_z0",
+  "mouth_x",
+  "scr_w",
+  "scr_h",
+  "scr_z"
+ ],
+ "params": {
+  "lower_h": 148.4,
+  "mouth_w": 329.3,
+  "mouth_h": 169.6,
+  "mouth_z0": 226.5,
+  "mouth_x": -1.6,
+  "scr_w": 228.4,
+  "scr_h": 75.3,
+  "scr_z": 74.2
+ },
+ "start": {
+  "lower_h": 149.0,
+  "mouth_w": 329.0,
+  "mouth_h": 170.0,
+  "mouth_z0": 226.0,
+  "mouth_x": -1.0,
+  "scr_w": 228.0,
+  "scr_h": 75.0,
+  "scr_z": 74.0
+ },
+ "views": {
+  "nat_0016_front": {
+   "source": "https://youtu.be/WE6O8EccLyc?t=16 (Nabertherm, Discover the NAT Series, 0:16: the NAT 15/65 being opened)",
+   "size": [
+    1280,
+    720
+   ],
+   "holdout": false,
+   "camera": [
+    1.5978482730880652,
+    -0.031324626777226444,
+    0.05117568903266514,
+    -489.7126901129102,
+    274.18439742042466,
+    2497.119851781082,
+    6.925959756614533,
+    1.9762766316098588e-05
+   ],
+   "focal_px": 1018.4,
+   "k1": 0.0,
+   "rms_px_camera_only": 1.1,
+   "rms_px": 1.16,
+   "residual_px": {
+    "top front left": 1.1,
+    "split left": 2.2,
+    "foot left front": 0.1,
+    "screen tl": 1.3,
+    "screen tr": 0.6,
+    "screen bl": 0.9,
+    "screen br": 0.9
+   }
+  },
+  "nat_0020_front_open": {
+   "source": "https://youtu.be/WE6O8EccLyc?t=20 (Nabertherm, Discover the NAT Series, 0:20: the NAT 15/65, door open)",
+   "size": [
+    1280,
+    720
+   ],
+   "holdout": false,
+   "camera": [
+    1.6294468212946815,
+    0.10907500980603713,
+    -0.12406016465860867,
+    4.298517936759612,
+    276.45316490137645,
+    1551.3889460041698,
+    7.495164075245123,
+    0.00022693396550462118
+   ],
+   "focal_px": 1799.3,
+   "k1": 0.0002,
+   "rms_px_camera_only": 6.48,
+   "rms_px": 6.25,
+   "residual_px": {
+    "mouth tl": 4.2,
+    "mouth tr": 5.0,
+    "mouth bl": 7.6,
+    "mouth br": 4.1,
+    "top front left": 6.7,
+    "split left": 6.6,
+    "fan": 2.5,
+    "screen tl": 10.0,
+    "screen tr": 6.4
+   }
+  }
+ }
+}

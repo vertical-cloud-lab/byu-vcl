@@ -1,0 +1,101 @@
+{
+ "source": "https://youtu.be/sMc4ezYyhDg?t=8 (Formlabs Support, Step-by-Step Guide For Unboxing Formlabs Form 4, 0:08: product shot, front)",
+ "video": "sMc4ezYyhDg",
+ "t": 8.0,
+ "pose": {
+  "cover": 0.0
+ },
+ "points": {
+  "lip fl": [
+   559,
+   459
+  ],
+  "lip fl under": [
+   560,
+   481
+  ],
+  "base fl bottom": [
+   561,
+   633
+  ],
+  "bezel tl": [
+   773,
+   476
+  ],
+  "bezel bl": [
+   775,
+   636
+  ],
+  "screen tl": [
+   797,
+   508
+  ],
+  "screen tr": [
+   961,
+   508
+  ],
+  "screen bl": [
+   797,
+   613
+  ],
+  "screen br": [
+   961,
+   613
+  ]
+ },
+ "curves": {
+  "cover left edge": [
+   [
+    557,
+    200
+   ],
+   [
+    557,
+    300
+   ],
+   [
+    557,
+    400
+   ]
+  ],
+  "cover top front": [
+   [
+    650,
+    64
+   ],
+   [
+    800,
+    63
+   ],
+   [
+    920,
+    64
+   ]
+  ],
+  "lip underside": [
+   [
+    620,
+    481
+   ],
+   [
+    700,
+    481
+   ]
+  ],
+  "cover back right edge": [
+   [
+    1008,
+    150
+   ],
+   [
+    1009,
+    300
+   ],
+   [
+    1009,
+    420
+   ]
+  ]
+ },
+ "camera": "sMc4ezYyhDg 0:08 shot"
+}

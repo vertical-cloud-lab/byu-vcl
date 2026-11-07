@@ -1,0 +1,1071 @@
+{
+ "clip": "alloy_workflow",
+ "frames_checked": 2101,
+ "frames_with_collisions": 60,
+ "runs": [
+  {
+   "label": "3/6",
+   "first_frame": 685,
+   "last_frame": 685,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:bar3_b",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:plate",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 686,
+   "last_frame": 686,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:bar0",
+     "other": "hose"
+    },
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:plate",
+     "other": "hose"
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 1098,
+   "last_frame": 1098,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "dbox_door"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1663,
+   "last_frame": 1663,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "wire_edm:body"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1664,
+   "last_frame": 1664,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "wire_edm:body"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1665,
+   "last_frame": 1666,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "wire_edm:body"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1667,
+   "last_frame": 1667,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "wire_edm:body"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1668,
+   "last_frame": 1669,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "wire_edm:body"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1670,
+   "last_frame": 1673,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "wire_edm:body"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1674,
+   "last_frame": 1674,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "wire_edm:body"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1675,
+   "last_frame": 1675,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "adapter",
+     "other": "wire_edm:body"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1676,
+   "last_frame": 1680,
+   "frames": 5,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "wire_edm:body"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1681,
+   "last_frame": 1682,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "wire_edm:body"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1683,
+   "last_frame": 1687,
+   "frames": 4,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "plate"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1688,
+   "last_frame": 1688,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "plate"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1689,
+   "last_frame": 1689,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "plate"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "plate"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1690,
+   "last_frame": 1690,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "plate"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "plate"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "plate"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1691,
+   "last_frame": 1692,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "plate"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "plate"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "plate"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "plate"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1693,
+   "last_frame": 1693,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "plate"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "bar2"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "plate"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "plate"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "plate"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1694,
+   "last_frame": 1699,
+   "frames": 5,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "plate"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "plate"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "bar2"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "plate"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "plate"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "plate"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1700,
+   "last_frame": 1704,
+   "frames": 4,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "base",
+     "other": "plate"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "plate"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "bar2"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "plate"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "plate"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger",
+     "other": "plate"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "plate"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1705,
+   "last_frame": 1707,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "plate"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "plate"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "plate"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "plate"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_inner_knuckle",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1708,
+   "last_frame": 1709,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger",
+     "other": "plate"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "plate"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_inner_knuckle",
+     "other": "plate"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1710,
+   "last_frame": 1711,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "plate"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1712,
+   "last_frame": 1713,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "plate"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1714,
+   "last_frame": 1717,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "plate"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1718,
+   "last_frame": 1718,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "wire_edm:body"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1719,
+   "last_frame": 1720,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "forearm",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "wire_edm:body"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1721,
+   "last_frame": 1721,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist1",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "wire_edm:body"
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1722,
+   "last_frame": 1724,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist2",
+     "other": "wire_edm:body"
+    },
+    {
+     "arm": "ur",
+     "kind": "arm",
+     "part": "wrist3",
+     "other": "wire_edm:body"
+    }
+   ]
+  }
+ ],
+ "rules": "What may touch: the gripper and whatever group it is picking up, holding or putting down, within 4 s of the\n    grasp or release; a held part and the groups it touches when it is taken and when it is let go (where it came\n    from and where it goes).",
+ "method": "FCL 0.7 (python-fcl) mesh-mesh collision on the drawn meshes, arm links decimated to 8000 triangles; every frame of the clip, after its update"
+}

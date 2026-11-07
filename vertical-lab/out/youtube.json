@@ -1,0 +1,1105 @@
+{
+ "channel": "UCKC7WzMu6QEh7O55zZlT2lw",
+ "note": "Every upload of a file under out/mp4, oldest first. sha256 is of the file uploaded; the newest entry whose sha256 matches the file as it is now is its current video.",
+ "videos": {
+  "alloy_atomize.mp4": [
+   {
+    "id": "znw55hE_dGs",
+    "sha256": "c2f088f3907236683240a5f74cb91f75452514a1d206787edf63c392bd957d21",
+    "bytes": 11651198,
+    "commit": "2464301",
+    "uploaded": "2026-11-04T06:43:45Z",
+    "title": "Vertical cloud lab, alloy route 2/4: melt and atomize in the rePowder (3-D animation)",
+    "privacy": "unlisted",
+    "superseded_by": "MF72IHuFzm4"
+   },
+   {
+    "id": "MF72IHuFzm4",
+    "sha256": "61cc4102d12c6540f3ff3af77f33e63122bbc8f0c919f9eb9ac185164824c5ae",
+    "bytes": 11202123,
+    "commit": "b4f18a1",
+    "uploaded": "2026-11-04T09:18:03Z",
+    "title": "Vertical cloud lab, alloy route 2/4: melt and atomize in the rePowder (3-D animation)",
+    "privacy": "unlisted",
+    "superseded_by": "1yb9NnB0yMo"
+   },
+   {
+    "id": "1yb9NnB0yMo",
+    "sha256": "4940b0430b14860a607858b860cfa6873942c62c3fcf58e8c9bd58de4169dcac",
+    "bytes": 12409124,
+    "commit": "10c3cf2",
+    "uploaded": "2026-11-04T20:46:51Z",
+    "title": "Vertical cloud lab, alloy route 2/5: melt and atomize in the rePowder (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "alloy_characterize.mp4": [
+   {
+    "id": "dmuv60qyJic",
+    "sha256": "6e1b245087eac209f546b2183bb0970bb911b9dbe33a5cd6197f1b5d77e6b7ca",
+    "bytes": 8081090,
+    "commit": "e38474b",
+    "uploaded": "2026-11-04T20:46:53Z",
+    "title": "Vertical cloud lab, alloy route 5/5: the trays at work, characterizing the build (3-D)",
+    "privacy": "unlisted"
+   }
+  ],
+  "alloy_charge.mp4": [
+   {
+    "id": "1Hnt4v2J_mI",
+    "sha256": "fc8c48f8386cf6fd180e3aba5793d3867e8bcb967f04cd6aa9d7b79af95a2748",
+    "bytes": 11188264,
+    "commit": "eec03ee",
+    "uploaded": "2026-11-04T07:07:50Z",
+    "title": "Vertical cloud lab, alloy route 1/4: eight charge cups dosed, a funnel per powder, and plugged",
+    "privacy": "unlisted",
+    "superseded_by": "fqSIWLsmMHk"
+   },
+   {
+    "id": "fqSIWLsmMHk",
+    "sha256": "096909fc1648310900e4fd00fa99b64b0381b6b502e4a834a17890b5a9f959ea",
+    "bytes": 20625296,
+    "commit": "9075221",
+    "uploaded": "2026-11-04T09:18:05Z",
+    "title": "Vertical cloud lab, alloy route 1/4: charge cups dosed, weighed, and pressed under vacuum",
+    "privacy": "unlisted"
+   }
+  ],
+  "alloy_charge_vacuum.mp4": [
+   {
+    "id": "UjGb47I3fy0",
+    "sha256": "f8851acee68fbf84cf63caf2889f556a7ef197bc80c6169b9e14949cfaf76a7d",
+    "bytes": 12888058,
+    "commit": "0e9805a",
+    "uploaded": "2026-11-04T06:54:07Z",
+    "title": "Vertical cloud lab, alloy route 1/4: charge cups pressed home in a vacuum press (3-D)",
+    "privacy": "unlisted"
+   }
+  ],
+  "alloy_print.mp4": [
+   {
+    "id": "rm_XR5-2F5g",
+    "sha256": "cd359501b5b78bc8ad61fb063d58e6a6c69b0c7316f37e49426dc75d65472ebb",
+    "bytes": 9690222,
+    "commit": "9fe7903",
+    "uploaded": "2026-11-04T07:07:53Z",
+    "title": "Vertical cloud lab, alloy route 3/4: the arm runs a sieving cell, then the print (3-D animation)",
+    "privacy": "unlisted",
+    "superseded_by": "LXwrkyH__Ng"
+   },
+   {
+    "id": "LXwrkyH__Ng",
+    "sha256": "e2e9691bc1f1d398131dedabfd62a3aef83e278755d58d03065b684b9954073b",
+    "bytes": 9645660,
+    "commit": "2ad8001",
+    "uploaded": "2026-11-04T09:18:06Z",
+    "title": "Vertical cloud lab, alloy route 3/4: the arm runs a sieving cell, then the print (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "alloy_route.mp4": [
+   {
+    "id": "9qnGCtPwCTM",
+    "sha256": "9ac88d4bdd26e05baa91580b66d6f35a21e596f073d148a42a59a96a7291fd0d",
+    "bytes": 22989712,
+    "commit": "2a010a7",
+    "uploaded": "2026-11-03T22:31:22Z",
+    "title": "Vertical cloud lab: the alloy route, start to finish (charge cups to tensile bar)",
+    "privacy": "unlisted",
+    "superseded_by": "GE33p9N0x7c"
+   },
+   {
+    "id": "GE33p9N0x7c",
+    "sha256": "cc433ec6ee6136c5b9366973d1d3551065a0670397f5e0d9b8196087dc95c968",
+    "bytes": 31345363,
+    "commit": "b5e0594",
+    "uploaded": "2026-11-04T06:43:43Z",
+    "title": "Vertical cloud lab: the alloy route, start to finish (charge cups to tensile bar)",
+    "privacy": "unlisted",
+    "superseded_by": "BqvjTnnDs9U"
+   },
+   {
+    "id": "BqvjTnnDs9U",
+    "sha256": "f32c2d84350ae23a1e1171c7bd33b2063a584e1094f98b141e16db83c72afb89",
+    "bytes": 38114559,
+    "commit": "a1e4b2d",
+    "uploaded": "2026-11-04T09:17:56Z",
+    "title": "Vertical cloud lab: the alloy route, start to finish (charge cups to tensile bar)",
+    "privacy": "unlisted"
+   }
+  ],
+  "alloy_workflow.mp4": [
+   {
+    "id": "YVdpGTLvxhI",
+    "sha256": "cf74c49c32039eacd55773bd22a5feac5cc096fe3aad17391bf334bc1297391d",
+    "bytes": 7783614,
+    "commit": "f9f9144",
+    "uploaded": "2026-11-03T21:22:36Z",
+    "title": "Vertical cloud lab: from the metal printer to the tensile test (3-D animation)",
+    "privacy": "unlisted",
+    "superseded_by": "T16hQ4M-IkU"
+   },
+   {
+    "id": "T16hQ4M-IkU",
+    "sha256": "f8a645ee2714b05e81966204741fdb3bc43156e95a0caafdf6c944454ed387d4",
+    "bytes": 8948078,
+    "commit": "218f9dc",
+    "uploaded": "2026-11-04T07:07:55Z",
+    "title": "Vertical cloud lab, alloy route 4/4: depowder, wire EDM, rinse, tensile test (3-D animation)",
+    "privacy": "unlisted",
+    "superseded_by": "vl7qz8VY3ig"
+   },
+   {
+    "id": "vl7qz8VY3ig",
+    "sha256": "56264b844664c956cc7e8254937dd20455e364b11b8d0092fc28e004b04231e1",
+    "bytes": 9005161,
+    "commit": "850ed61",
+    "uploaded": "2026-11-04T09:18:07Z",
+    "title": "Vertical cloud lab, alloy route 4/4: depowder, wire EDM, rinse, tensile test (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "bay_camera.mp4": [
+   {
+    "id": "QOtSLMDGElA",
+    "sha256": "b90c7f2e8275a54a39ec6b6f6389c95a5e0848af2292742e40a2c8aa42dc1faf",
+    "bytes": 2268895,
+    "commit": "b0e235e",
+    "uploaded": "2026-11-04T20:46:54Z",
+    "title": "Vertical cloud lab: the overhead camera at the bay, and what it sees (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "fabrication/form4.mp4": [
+   {
+    "id": "OhYFK00uplo",
+    "sha256": "4071ffca57824aea9883d4903293ae3f1d175137185436e70137cd3a0dd85995",
+    "bytes": 293301,
+    "commit": "40230d0",
+    "uploaded": "2026-11-04T07:02:57Z",
+    "title": "Vertical cloud lab: Formlabs Form 4, resin 3D printer (MSLA) (3-D animation)",
+    "privacy": "unlisted",
+    "superseded_by": "CUbPUI80hUw"
+   },
+   {
+    "id": "CUbPUI80hUw",
+    "sha256": "feba3550de02ac795082176e2e7b1cae418322669bc49b5b7fcd5bbbf8ef62d8",
+    "bytes": 286158,
+    "commit": "29175d4",
+    "uploaded": "2026-11-04T09:18:24Z",
+    "title": "Vertical cloud lab: Formlabs Form 4, resin 3D printer (MSLA) (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "fabrication/form_cure.mp4": [
+   {
+    "id": "2onKGbvpitg",
+    "sha256": "dbb4226481903f98f5308b40068463b2ce1c8aab73c0d2c7488b874d6c941816",
+    "bytes": 381813,
+    "commit": "5c5053d",
+    "uploaded": "2026-11-04T07:02:58Z",
+    "title": "Vertical cloud lab: Formlabs Form Cure (2nd Gen), post-cure chamber, 405 nm and heat (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "fabrication/form_wash.mp4": [
+   {
+    "id": "YxCa5PSPo70",
+    "sha256": "036eebf00f583dac27feb682abfb376845832769075e2fd6df62bca3708e318c",
+    "bytes": 252650,
+    "commit": "5c5053d",
+    "uploaded": "2026-11-04T07:03:00Z",
+    "title": "Vertical cloud lab: Formlabs Form Wash (2nd Gen), wash station for resin parts (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "fabrication/lumenpnp.mp4": [
+   {
+    "id": "Pf_Uc7hMPjY",
+    "sha256": "4186a769696c0185b4e26d26e547320119aeb3e13c6d7eecfa37539babc128e6",
+    "bytes": 1244501,
+    "commit": "fca656c",
+    "uploaded": "2026-11-04T07:03:02Z",
+    "title": "Vertical cloud lab: Opulo LumenPnP v4, open-source pick-and-place (3-D animation)",
+    "privacy": "unlisted",
+    "superseded_by": "C18_6trh74o"
+   },
+   {
+    "id": "C18_6trh74o",
+    "sha256": "c72a6636131fd34fb5d381e0e1cada52b64c28e57d1d31196e8ef7938a5be40e",
+    "bytes": 1240229,
+    "commit": "83c9a92",
+    "uploaded": "2026-11-04T09:18:26Z",
+    "title": "Vertical cloud lab: Opulo LumenPnP v4, open-source pick-and-place (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "fabrication/meltio_m450.mp4": [
+   {
+    "id": "xcBxyj5-52U",
+    "sha256": "be6e2d4e7884cf7f22f59bdd56bb082504fe5bff820023ee01229690c1dccefd",
+    "bytes": 322292,
+    "commit": "ccf8f5e",
+    "uploaded": "2026-11-04T07:03:04Z",
+    "title": "Vertical cloud lab: Meltio M450, compact wire-laser DED (3-D animation)",
+    "privacy": "unlisted",
+    "superseded_by": "0Vyq16t4N4I"
+   },
+   {
+    "id": "0Vyq16t4N4I",
+    "sha256": "2a57631067ba91349b4c1b3e4823f9a55dd8edd896307321dd614294ecf80388",
+    "bytes": 306464,
+    "commit": "52a137a",
+    "uploaded": "2026-11-04T09:18:27Z",
+    "title": "Vertical cloud lab: Meltio M450, compact wire-laser DED (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "fabrication/metalone.mp4": [
+   {
+    "id": "Axw_rl1BmaM",
+    "sha256": "1543e9e9c5905234a81f0f69ca279497b22a4e5dae3c1383c48fdbea311859bc",
+    "bytes": 373389,
+    "commit": "ccf8f5e",
+    "uploaded": "2026-11-04T07:03:05Z",
+    "title": "Vertical cloud lab: Sharebot MetalONE, desktop metal printer (LPBF) (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "fabrication/mprint.mp4": [
+   {
+    "id": "A8v0xCkkITQ",
+    "sha256": "b63bbbc39eaf2ce7357676de67673392539b585a1a6867510b928dba2b987a71",
+    "bytes": 435909,
+    "commit": "ccf8f5e",
+    "uploaded": "2026-11-04T07:03:07Z",
+    "title": "Vertical cloud lab: One Click Metal MPRINT, compact metal printer (LPBF) (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "fabrication/snowpod.mp4": [
+   {
+    "id": "aj-lJrPx8AU",
+    "sha256": "f6b732d7957f3e8bcc00ce99ad41dc0ef9d667ff82990ee7606d04a4f2e46d72",
+    "bytes": 359286,
+    "commit": "ccf8f5e",
+    "uploaded": "2026-11-04T07:03:09Z",
+    "title": "Vertical cloud lab: SnowX SnowPod, desktop metal printer (LPBF), pre-release (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "fabrication/stencil.mp4": [
+   {
+    "id": "f3IpbzgKxV8",
+    "sha256": "71c9681477a1df6b4fe3fc013c5f8b94e2958d384285298cbeec67b71c4c3f33",
+    "bytes": 238378,
+    "commit": "e264bae",
+    "uploaded": "2026-11-04T07:03:10Z",
+    "title": "Vertical cloud lab: DDM Novastar SPR-45VA, solder paste stencil printer, semi-automatic",
+    "privacy": "unlisted"
+   }
+  ],
+  "fabrication_tour.mp4": [
+   {
+    "id": "HYN9dYyRkrQ",
+    "sha256": "c1c110e2638d774c87ade22fe61b40d24c69751b2e0adfac4ed9d31d8467b770",
+    "bytes": 3553747,
+    "commit": "c41eb55",
+    "uploaded": "2026-11-03T20:33:08Z",
+    "title": "Vertical cloud lab: compact metal printers, resin printing and PCB assembly (3-D animation)",
+    "privacy": "unlisted",
+    "superseded_by": "45-L9BnfBMw"
+   },
+   {
+    "id": "45-L9BnfBMw",
+    "sha256": "82323f73d9f9212c02c1524f0795611e7ba85c239178b17c22357131b4d2c549",
+    "bytes": 3895280,
+    "commit": "fca656c",
+    "uploaded": "2026-11-04T06:46:41Z",
+    "title": "Vertical cloud lab: compact metal printers, resin printing and PCB assembly (3-D animation)",
+    "privacy": "unlisted",
+    "superseded_by": "8ecMvddUhmw"
+   },
+   {
+    "id": "8ecMvddUhmw",
+    "sha256": "31fb90c7b1e4c0c7651414f4f7bb8fe3f3a3255f995ab78f8852b761fbaeca7a",
+    "bytes": 3868045,
+    "commit": "1a65b8b",
+    "uploaded": "2026-11-04T09:17:57Z",
+    "title": "Vertical cloud lab: compact metal printers, resin printing and PCB assembly (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "instruments/cubxl_corrosion.mp4": [
+   {
+    "id": "nUf68Kl3kdk",
+    "sha256": "4bdd377019cd4d86c2a9bf5e8dab2ed3d6f4e61bf5939fb37fdf2a18ab30ad82",
+    "bytes": 2075447,
+    "commit": "676d614",
+    "uploaded": "2026-11-04T07:02:14Z",
+    "title": "Vertical cloud lab: the CubXL set up for corrosion testing, with an EZstat Pro potentiostat",
+    "privacy": "unlisted",
+    "superseded_by": "5EjJjsct7BI"
+   },
+   {
+    "id": "5EjJjsct7BI",
+    "sha256": "b81cef45357e884740c0d70590051774542bf473ee31061e518172a6ba54bf48",
+    "bytes": 2108107,
+    "commit": "dbadb02",
+    "uploaded": "2026-11-04T09:18:17Z",
+    "title": "Vertical cloud lab: the CubXL set up for corrosion testing, with an EZstat Pro potentiostat",
+    "privacy": "unlisted"
+   }
+  ],
+  "instruments/ded.mp4": [
+   {
+    "id": "QUKYkG9aHN4",
+    "sha256": "d6dcefa04f21ef030e9e35eca5ee5cecebbd569bd2eec77da1b9c0a0ba737d1f",
+    "bytes": 1029679,
+    "commit": "4ca0312",
+    "uploaded": "2026-11-04T07:02:16Z",
+    "title": "Vertical cloud lab: InssTek MX-Lab, directed energy deposition, powder-fed laser (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "instruments/furnace.mp4": [
+   {
+    "id": "V06Uw69U_bU",
+    "sha256": "2a254606210d1006a026708d5a9fa2554f47cf99aabc3eb2cf54a10dad604fd0",
+    "bytes": 215472,
+    "commit": "9f558d9",
+    "uploaded": "2026-11-04T07:02:17Z",
+    "title": "Vertical cloud lab: Nabertherm NAT 15/65, heat treatment and ageing furnace (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "instruments/glovebox.mp4": [
+   {
+    "id": "zAk4NXNJ45U",
+    "sha256": "5a64cb6da74080c21df81dee2b872d69de2b75cc1eacb362861ae741fc9e5f91",
+    "bytes": 228383,
+    "commit": "adc16c1",
+    "uploaded": "2026-11-04T07:02:22Z",
+    "title": "Vertical cloud lab: Inert PureLab HE 2GB, inert glovebox with automatic antechamber (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "instruments/hip.mp4": [
+   {
+    "id": "KAL58L6OMJU",
+    "sha256": "3bcc675ec2d356be8604763b20523259c1e62e0126c1a3c8445fb917749096a9",
+    "bytes": 551701,
+    "commit": "4ca0312",
+    "uploaded": "2026-11-04T07:02:23Z",
+    "title": "Vertical cloud lab: Kobelco O2-Dr.HIP, hot isostatic press against a VLM tray (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "instruments/instron_floor.mp4": [
+   {
+    "id": "OX8_b1Hpqs0",
+    "sha256": "da966d9d60085fe9e5766f6228ae0a4a52e07f434cc97abcb23bbb9fa0094b0f",
+    "bytes": 66306,
+    "commit": "adc16c1",
+    "uploaded": "2026-11-04T07:02:25Z",
+    "title": "Vertical cloud lab: Instron 68FM-100, universal testing machine, floor model (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "instruments/instron_small.mp4": [
+   {
+    "id": "Xzmos2I1T3A",
+    "sha256": "b27636918dc8b1a67cb10ccc10029c2ca1ad270dce4979440d234ba71cdab792",
+    "bytes": 49904,
+    "commit": "adc16c1",
+    "uploaded": "2026-11-04T07:02:27Z",
+    "title": "Vertical cloud lab: Instron 68SC-2, universal testing machine, tabletop (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "instruments/mastersizer.mp4": [
+   {
+    "id": "kIPYx_EcmO0",
+    "sha256": "ee942eff9d49ebb762522a50e955fdcf5f13e5d18ff6f878d3a46b327a498c7c",
+    "bytes": 610019,
+    "commit": "822c81e",
+    "uploaded": "2026-11-04T07:02:29Z",
+    "title": "Vertical cloud lab: Malvern Mastersizer 3000 + Aero S, laser diffraction particle sizer",
+    "privacy": "unlisted",
+    "superseded_by": "5TEHXEY8K4A"
+   },
+   {
+    "id": "5TEHXEY8K4A",
+    "sha256": "4325ecc625c08d2866cf7df0b8e348dfad4c92943091a7ccb3b21d98565c8e6f",
+    "bytes": 563446,
+    "commit": "9a1ce85",
+    "uploaded": "2026-11-04T09:18:18Z",
+    "title": "Vertical cloud lab: Malvern Mastersizer 3000 + Aero S, laser diffraction particle sizer",
+    "privacy": "unlisted"
+   }
+  ],
+  "instruments/nanoindenter.mp4": [
+   {
+    "id": "fvlgIThKRlk",
+    "sha256": "861f756d107c3b3f49a8f21f7f4dd187d529ea4926cbd91fb46ac2dfcf099a1a",
+    "bytes": 305909,
+    "commit": "5c5053d",
+    "uploaded": "2026-11-04T07:02:30Z",
+    "title": "Vertical cloud lab: KLA iMicro, nanoindenter (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "instruments/openflexure_array.mp4": [
+   {
+    "id": "Pt-6KB7EFCE",
+    "sha256": "71b72dcbcb60d9084dc532485ba75626f4d0fa19023057ef42dd28a09243b89b",
+    "bytes": 1188579,
+    "commit": "a6e7af3",
+    "uploaded": "2026-11-04T07:02:32Z",
+    "title": "Vertical cloud lab: six OpenFlexure microscopes (4 x v7, 2 x Delta Stage) on one sub-tray",
+    "privacy": "unlisted"
+   }
+  ],
+  "instruments/openflexure_delta.mp4": [
+   {
+    "id": "m1Jw59_Kc5Y",
+    "sha256": "1bd029db056377e7a8ae18521fb2cc907797b903b0f01fb21a83dcba7498c5df",
+    "bytes": 464882,
+    "commit": "e264bae",
+    "uploaded": "2026-11-04T07:02:34Z",
+    "title": "Vertical cloud lab: OpenFlexure Delta Stage microscope, in reflection (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "instruments/openflexure_v7.mp4": [
+   {
+    "id": "csGh3PBIAiU",
+    "sha256": "e1128eb14f0d40a0dca6ddfdbc20b055cfae539c6a8a066ed9cb8f0635bbc740",
+    "bytes": 507912,
+    "commit": "e264bae",
+    "uploaded": "2026-11-04T07:02:36Z",
+    "title": "Vertical cloud lab: OpenFlexure Microscope v7, in reflection (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "instruments/packaging.mp4": [
+   {
+    "id": "0QerPu43hAI",
+    "sha256": "a5da75ff78c2b4378bd935e66ffa779f3e7739637c6e15163d2e5c823e607d53",
+    "bytes": 1380501,
+    "commit": "ca9bc41",
+    "uploaded": "2026-11-04T07:02:38Z",
+    "title": "Vertical cloud lab: automated packaging station for powders, with label printers and a sealer",
+    "privacy": "unlisted",
+    "superseded_by": "mgmnR3Lg8Ss"
+   },
+   {
+    "id": "mgmnR3Lg8Ss",
+    "sha256": "c0a23908e99629c24081fd77ffc1412ce5d28f6ebfc2266b4da3049087040797",
+    "bytes": 1377101,
+    "commit": "9c910ef",
+    "uploaded": "2026-11-04T09:18:19Z",
+    "title": "Vertical cloud lab: automated packaging station for powders, with label printers and a sealer",
+    "privacy": "unlisted"
+   }
+  ],
+  "instruments/pip.mp4": [
+   {
+    "id": "Mm4QjFgcFQY",
+    "sha256": "9dccf6845a7888955f71b8d3656bbc3aba31f137cf4682ae7f5a10a409fe77d8",
+    "bytes": 377667,
+    "commit": "9934815",
+    "uploaded": "2026-11-04T07:02:39Z",
+    "title": "Vertical cloud lab: Plastometrex PLX-Benchtop, indentation plastometer (PIP) (3-D animation)",
+    "privacy": "unlisted",
+    "superseded_by": "R0ONgKv-ee0"
+   },
+   {
+    "id": "R0ONgKv-ee0",
+    "sha256": "472335e63939237e0a7650459a83d0c931fd49f2b47828dda7a7a68f77d7a89b",
+    "bytes": 376406,
+    "commit": "e36afad",
+    "uploaded": "2026-11-04T09:18:21Z",
+    "title": "Vertical cloud lab: Plastometrex PLX-Benchtop, indentation plastometer (PIP) (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "instruments/polisher.mp4": [
+   {
+    "id": "IRkeCtzN1Yk",
+    "sha256": "576e46ec564939d1f75c938876315279a5156a527120de3eaaf97ba7634c7038",
+    "bytes": 715848,
+    "commit": "28e1350",
+    "uploaded": "2026-11-04T07:02:41Z",
+    "title": "Vertical cloud lab: LECO PX500 semi-automatic, metallographic grinder-polisher (3-D animation)",
+    "privacy": "unlisted",
+    "superseded_by": "-yMm6gaQ9k4"
+   },
+   {
+    "id": "-yMm6gaQ9k4",
+    "sha256": "b8f46f9eef765507602779ba6047b8a71de1a7a189e66edde0103d0b0bbb0a29",
+    "bytes": 717500,
+    "commit": "eb8a896",
+    "uploaded": "2026-11-04T09:18:22Z",
+    "title": "Vertical cloud lab: LECO PX500 semi-automatic, metallographic grinder-polisher (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "instruments/rail.mp4": [
+   {
+    "id": "AJXGE7Fa0bw",
+    "sha256": "d5bc9698298fedbd0373188b93e68387fa390620a82d9d673b9fb70058276674",
+    "bytes": 159019,
+    "commit": "8f65179",
+    "uploaded": "2026-11-04T07:02:43Z",
+    "title": "Vertical cloud lab: Vention robot 7th axis, a floor rail for the arm (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "instruments/sem.mp4": [
+   {
+    "id": "fKlpBZ5XICk",
+    "sha256": "f34fc951262194d60a293d916dcf3649578bad19578ea6456286e4afdf451d2b",
+    "bytes": 471930,
+    "commit": "93d5f3b",
+    "uploaded": "2026-11-04T07:02:44Z",
+    "title": "Vertical cloud lab: Hitachi TM4000PlusII, tabletop SEM with EDS and EBSD (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "instruments/sieve.mp4": [
+   {
+    "id": "AfnccM12zWs",
+    "sha256": "c00724c9140b77fae66df6fd9e40c22f1f6b59122b1eeabf11c556aa5ab2283a",
+    "bytes": 393556,
+    "commit": "4ca0312",
+    "uploaded": "2026-11-04T07:02:46Z",
+    "title": "Vertical cloud lab: Retsch AS 200 control, sieve shaker for atomized powder (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "instruments/stream_cam.mp4": [
+   {
+    "id": "Kt4l8KxMPhI",
+    "sha256": "4629a301f98621a314707f07091f05664cfc426454df1d46ba7ad4a09dd9504a",
+    "bytes": 501963,
+    "commit": "038debc",
+    "uploaded": "2026-11-04T07:02:47Z",
+    "title": "Vertical cloud lab: Pi 5 stream camera for a tray, HQ Camera + Camera Module 3 Wide (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "instruments/tray_dock.mp4": [
+   {
+    "id": "_rC8RNW7xss",
+    "sha256": "fe84b0e122a104515998d863dfcbde0447df5e8d99cb91fef7bbdb4371361505",
+    "bytes": 354118,
+    "commit": "4ca0312",
+    "uploaded": "2026-11-04T07:02:49Z",
+    "title": "Vertical cloud lab: the tray service dock, a CombiTac-style coupling (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "instruments/vhx.mp4": [
+   {
+    "id": "cEf4RCDRvUM",
+    "sha256": "59e518456b3c646051a649f5dca108d9a94f866787d88974662636e763c990b8",
+    "bytes": 410816,
+    "commit": "39351d0",
+    "uploaded": "2026-11-04T07:02:51Z",
+    "title": "Vertical cloud lab: Keyence VHX-7000 + EA-300, digital microscope with laser elemental analysis",
+    "privacy": "unlisted",
+    "superseded_by": "sVQOIrLOodg"
+   },
+   {
+    "id": "sVQOIrLOodg",
+    "sha256": "6e32786b1a88f58e1c078222548ea8dc4450dd209b02690f8dd044857ec8159e",
+    "bytes": 393894,
+    "commit": "03cd16f",
+    "uploaded": "2026-11-04T09:18:23Z",
+    "title": "Vertical cloud lab: Keyence VHX-7000 + EA-300, digital microscope with laser elemental analysis",
+    "privacy": "unlisted"
+   }
+  ],
+  "instruments/wire_edm.mp4": [
+   {
+    "id": "FVLE1hZL6DU",
+    "sha256": "b7bcad31acafe14fbf4d00baabc6d85688fbfc89121a726bb10b72f0ce8f9751",
+    "bytes": 143968,
+    "commit": "676d614",
+    "uploaded": "2026-11-04T07:02:52Z",
+    "title": "Vertical cloud lab: FANUC ROBOCUT alpha-C400iC, wire EDM (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "instruments/xrd.mp4": [
+   {
+    "id": "4vReE-cGh0w",
+    "sha256": "0a1d22fa7913fcdfda773a948bc1e10b7775a24af3da2147a142c312ebb442d1",
+    "bytes": 431831,
+    "commit": "b7a8161",
+    "uploaded": "2026-11-04T07:02:54Z",
+    "title": "Vertical cloud lab: Rigaku MiniFlex (6th generation), benchtop X-ray diffractometer (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "instruments/xrf.mp4": [
+   {
+    "id": "Wp9kqcCOQXA",
+    "sha256": "1903370e976323e461d3d5c19760b7823dd06f08ee346302741c965d771ca523",
+    "bytes": 461926,
+    "commit": "676d614",
+    "uploaded": "2026-11-04T07:02:55Z",
+    "title": "Vertical cloud lab: Bruker S2 PUMA Series 2, benchtop EDXRF for powders and coupons (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "instruments_round4_tour.mp4": [
+   {
+    "id": "IEbhMjcAUOQ",
+    "sha256": "e73ee3fe5a44203181996af9403252c81983c460e3f22ce19f952a8815353153",
+    "bytes": 8719186,
+    "commit": "4dd3bdc",
+    "uploaded": "2026-11-03T21:22:40Z",
+    "title": "Vertical cloud lab: VHX + LIBS, XRF, sieving, OpenFlexure array, corrosion, DED, packaging, HIP",
+    "privacy": "unlisted",
+    "superseded_by": "WG_DAtSHg50"
+   },
+   {
+    "id": "WG_DAtSHg50",
+    "sha256": "4246e2e3491a18c18a18c2b29a803f90a6b6bcb70b32a80a69165394fff42ef8",
+    "bytes": 8341419,
+    "commit": "fca656c",
+    "uploaded": "2026-11-04T06:46:42Z",
+    "title": "Vertical cloud lab: VHX + LIBS, XRF, sieving, OpenFlexure array, corrosion, DED, packaging, HIP",
+    "privacy": "unlisted",
+    "superseded_by": "A_d197-I1Rk"
+   },
+   {
+    "id": "A_d197-I1Rk",
+    "sha256": "fb37c59df119997b354c8a54178e85eb4039faf58f69bd0c2bc7e74edeb6777a",
+    "bytes": 8353749,
+    "commit": "b1ff7d2",
+    "uploaded": "2026-11-04T09:17:58Z",
+    "title": "Vertical cloud lab: VHX + LIBS, XRF, sieving, OpenFlexure array, corrosion, DED, packaging, HIP",
+    "privacy": "unlisted"
+   }
+  ],
+  "instruments_tour.mp4": [
+   {
+    "id": "ISyVIHtmvZc",
+    "sha256": "0bc973b60ee12b5957ffc936923b23527fb27c73f96d169ef6c73eb4318f2444",
+    "bytes": 2839471,
+    "commit": "6366a63",
+    "uploaded": "2026-11-03T20:01:50Z",
+    "title": "Vertical cloud lab: 14 characterization and test instruments at work (3-D animation)",
+    "privacy": "unlisted",
+    "superseded_by": "J7EJQsmyAtk"
+   },
+   {
+    "id": "J7EJQsmyAtk",
+    "sha256": "5e689009f162c405bcbd0ded8483f312d8fb19aebbb8ccf5ce98ff3d3a9f351b",
+    "bytes": 13079179,
+    "commit": "fca656c",
+    "uploaded": "2026-11-04T06:46:44Z",
+    "title": "Vertical cloud lab: every instrument at work, one after another (3-D animation)",
+    "privacy": "unlisted",
+    "superseded_by": "TP-hVVOWCQQ"
+   },
+   {
+    "id": "TP-hVVOWCQQ",
+    "sha256": "8f2f599eee3f818c49e5c059c661c5031012a5a3775be4c8c9dafe8964571ff3",
+    "bytes": 13045335,
+    "commit": "b1ff7d2",
+    "uploaded": "2026-11-04T09:18:00Z",
+    "title": "Vertical cloud lab: every instrument at work, one after another (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "setup_lab.mp4": [
+   {
+    "id": "bITROBu1NNE",
+    "sha256": "0b300d48d32d25c2021220b9632e673fc20261fdfa8fc1ac032daa37bd5e3ff5",
+    "bytes": 12815707,
+    "commit": "44e8548",
+    "uploaded": "2026-11-03T21:36:49Z",
+    "title": "Vertical cloud lab, set up from scratch: VLM, floor machines, arms, every tray loaded",
+    "privacy": "unlisted",
+    "superseded_by": "oMvGIGQOKA4"
+   },
+   {
+    "id": "oMvGIGQOKA4",
+    "sha256": "5e3a8a25df08ad72447adeef83fc92fa8a085f3d5340523d3eb6bf1b26330f9b",
+    "bytes": 12457109,
+    "commit": "379df6b",
+    "uploaded": "2026-11-04T07:01:55Z",
+    "title": "Vertical cloud lab, set up from scratch: VLM, floor machines, arms, every tray loaded",
+    "privacy": "unlisted",
+    "superseded_by": "Bxx_CqfX8UY"
+   },
+   {
+    "id": "Bxx_CqfX8UY",
+    "sha256": "e352698d14132ee32b8be09d511eafabee2b20c9886ca44a712f5b9dd8d29140",
+    "bytes": 12476666,
+    "commit": "e3708ea",
+    "uploaded": "2026-11-04T09:18:09Z",
+    "title": "Vertical cloud lab, set up from scratch: VLM, floor machines, arms, every tray loaded",
+    "privacy": "unlisted",
+    "superseded_by": "t7svXAHr5Lo"
+   },
+   {
+    "id": "t7svXAHr5Lo",
+    "sha256": "4176d4cf877cdb4ecc49d6204fceea2073e4f8f992738f7d711ff4202d27d5e5",
+    "bytes": 10880593,
+    "commit": "7b7f410",
+    "uploaded": "2026-11-04T20:46:57Z",
+    "title": "Vertical cloud lab, set up from scratch: VLM, floor machines, arms, every tray loaded",
+    "privacy": "unlisted"
+   }
+  ],
+  "vacuum_press.mp4": [
+   {
+    "id": "UGTGpEfyUeQ",
+    "sha256": "c95dd9cc113e57549bcaff2d4ddc15d7e476819c318838ba3fd9e92e1430b01b",
+    "bytes": 1616326,
+    "commit": "33da700",
+    "uploaded": "2026-11-04T06:32:20Z",
+    "title": "Vertical cloud lab: vacuum press (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "vertical_lab_full.mp4": [
+   {
+    "id": "ro-pUo0ie_M",
+    "sha256": "adc34f24b8a1c8ff2fc75e1858638296707d30d8bdfc69768e2af3eae67c4d38",
+    "bytes": 11453514,
+    "commit": "516f796",
+    "uploaded": "2026-10-27T20:09:29Z",
+    "title": "Vertical cloud lab: Kardex Shuttle XP 500 VLM with a UR10e, multi-doser and CubXL (3-D animation)",
+    "privacy": "unlisted",
+    "branch": "claude/issue-303-20261027-1834",
+    "superseded_by": "xI1d0kkX8VA"
+   },
+   {
+    "id": "9A9XuBT0BYk",
+    "sha256": "966ed2d0594962e285c8ea2560de9e03446ffcff4cc920f7a0fe77578219c41f",
+    "bytes": 20511832,
+    "commit": "03801d8",
+    "uploaded": "2026-11-03T18:34:54Z",
+    "title": "Vertical cloud lab: Kardex Shuttle XP 500 with 16 instruments, a UR10e workflow and a 50 ft scale-up",
+    "privacy": "unlisted",
+    "branch": "claude/issue-303-20261103-1726",
+    "note": "That branch's own join, with its 50 ft scale-up chapter; not an older render of this file."
+   },
+   {
+    "id": "xI1d0kkX8VA",
+    "sha256": "b4873acdc294f8e28aac3ea48a55211347b056644c7093046c6b07eba5a3e428",
+    "bytes": 9551032,
+    "commit": "74794c2",
+    "uploaded": "2026-11-04T04:58:28Z",
+    "title": "Vertical cloud lab: the VLM assembled, loaded and at work (round 1, ends loaded)",
+    "privacy": "unlisted",
+    "superseded_by": "FHjg3R7of4g"
+   },
+   {
+    "id": "FHjg3R7of4g",
+    "sha256": "0d9239f2506f649ac1bfb9a2760094f9a46fb93874756fa5818724fafaa09e2f",
+    "bytes": 9596236,
+    "commit": "27b4998",
+    "uploaded": "2026-11-04T06:32:19Z",
+    "title": "Vertical cloud lab: the VLM assembled, loaded and at work (round 1, ends loaded)",
+    "privacy": "unlisted"
+   }
+  ],
+  "vertical_lab_longform.mp4": [
+   {
+    "id": "c-xBEmRLq5k",
+    "sha256": "fb1404b11af15e37b0100fc9a9f45c7b2252c52e225c5581982187f3bae54549",
+    "bytes": 123187710,
+    "commit": "a1e4b2d",
+    "uploaded": "2026-11-04T09:16:37Z",
+    "title": "The vertical cloud lab, start to finish: a Kardex VLM, its instruments and the alloy route (3-D)",
+    "privacy": "unlisted"
+   },
+   {
+    "id": "myUrMHN7VBA",
+    "sha256": "39fb982271afab9aeeaac009d974d178201f51464f0503986162b52a83c679d6",
+    "bytes": 140381532,
+    "commit": "c004ab5",
+    "uploaded": "2026-11-04T20:48:09Z",
+    "title": "The vertical cloud lab, start to finish: a Kardex VLM, its instruments and the alloy route (3-D)",
+    "privacy": "unlisted"
+   },
+   {
+    "id": "gBCTmjrows8",
+    "sha256": "b03c8ea01332a2dc1323be2f95f34fc138e5b4a50c5e2fd43bf2cc54f6d072d1",
+    "bytes": 169737400,
+    "commit": "babbcbc",
+    "uploaded": "2026-11-05T21:01:43Z",
+    "title": "The vertical cloud lab, start to finish: a Kardex VLM, its instruments and the alloy route (3-D)",
+    "privacy": "unlisted"
+   },
+   {
+    "id": "Y1cB7xoOZ_4",
+    "sha256": "0ba5764571f1ec112ddc67bd98a8a9d1b793907b61844978f20ab16b2d861e17",
+    "bytes": 174396815,
+    "commit": "cc4a5c4",
+    "uploaded": "2026-11-06T07:53:46Z",
+    "title": "The vertical cloud lab, start to finish: a Kardex VLM, its instruments and the alloy route (3-D)",
+    "privacy": "unlisted"
+   }
+  ],
+  "vlm_assembly.mp4": [
+   {
+    "id": "ql5TQjkd0Jw",
+    "sha256": "e9b69e542517c9fcbff9e1e64524e34f16aef27642576c4b60e2890f640c3eef",
+    "bytes": 1101087,
+    "commit": "4ca0312",
+    "uploaded": "2026-11-04T07:01:56Z",
+    "title": "Vertical cloud lab: the Kardex Shuttle XP 500 VLM going together (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "vlm_cabling.mp4": [
+   {
+    "id": "FQB8eedNoX0",
+    "sha256": "a1490d1213bbdf5668e4e7523aadc8573a50872aad98250fade8216d5d9390aa",
+    "bytes": 4864363,
+    "commit": "c1774ad",
+    "uploaded": "2026-11-04T07:01:59Z",
+    "title": "Vertical cloud lab: the cabling, an overhead ladder tray with drops (3-D animation)",
+    "privacy": "unlisted",
+    "superseded_by": "_wtloR5FxIo"
+   },
+   {
+    "id": "_wtloR5FxIo",
+    "sha256": "a5c7afbad9ce9b47a12a3ba1c182e21ccbce9b0a8d4f49e0343266d9bd85a94b",
+    "bytes": 4905461,
+    "commit": "58358ba",
+    "uploaded": "2026-11-04T09:18:10Z",
+    "title": "Vertical cloud lab: the cabling, an overhead ladder tray with drops (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "vlm_disassembly.mp4": [
+   {
+    "id": "sa1yPwE16CA",
+    "sha256": "722b709e614ee02c9817db4a90f95c8b9414e521d9d988eb5d496301640169b5",
+    "bytes": 2003011,
+    "commit": "e264bae",
+    "uploaded": "2026-11-04T07:02:00Z",
+    "title": "Vertical cloud lab: the VLM unloaded and taken apart (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "vlm_fab_trays.mp4": [
+   {
+    "id": "5q5Pv2Mhbn8",
+    "sha256": "7f9e545efce33f8fac18085dd19aa54116547493efdb546ec783284875b558c0",
+    "bytes": 2997463,
+    "commit": "8eeb8b8",
+    "uploaded": "2026-11-03T20:33:16Z",
+    "title": "Vertical cloud lab: trays G (resin), H (PCB) and I (two SnowPods) on the Kardex Shuttle",
+    "privacy": "unlisted",
+    "superseded_by": "7ISk_ULnVbQ"
+   },
+   {
+    "id": "7ISk_ULnVbQ",
+    "sha256": "c270f7cb1be6262a3de29b04e993c064920efa96be3903cfb5bcb0ed87944d23",
+    "bytes": 2801973,
+    "commit": "4ffc90b",
+    "uploaded": "2026-11-04T07:02:02Z",
+    "title": "Vertical cloud lab: trays G (resin), H (PCB) and I (two SnowPods) on the Kardex Shuttle",
+    "privacy": "unlisted",
+    "superseded_by": "v4NcgzxEFAQ"
+   },
+   {
+    "id": "v4NcgzxEFAQ",
+    "sha256": "234adb29ca706bac47a2d08a2376d1de6444958108a15fef52cda455bcbe7590",
+    "bytes": 2754848,
+    "commit": "61dcedb",
+    "uploaded": "2026-11-04T09:18:11Z",
+    "title": "Vertical cloud lab: trays G (resin), H (PCB) and I (two SnowPods) on the Kardex Shuttle",
+    "privacy": "unlisted"
+   }
+  ],
+  "vlm_line.mp4": [
+   {
+    "id": "oWM3fCZiwRs",
+    "sha256": "33bcebed28961814393696e897cee7937d2d8dbadb5d59dda37aa1fd717d82c6",
+    "bytes": 5771336,
+    "commit": "6366a63",
+    "uploaded": "2026-11-03T20:01:52Z",
+    "title": "Vertical cloud lab: trays D-F and the alloy line along a backup rail (3-D animation)",
+    "privacy": "unlisted",
+    "superseded_by": "4M2j2etqiB0"
+   },
+   {
+    "id": "4M2j2etqiB0",
+    "sha256": "14b130ed5700da4f5236810107f40a8536cccba62834a6575e191ac3d34448b5",
+    "bytes": 5689434,
+    "commit": "c1774ad",
+    "uploaded": "2026-11-04T07:02:04Z",
+    "title": "Vertical cloud lab: trays D-F and the alloy line along a backup rail (3-D animation)",
+    "privacy": "unlisted",
+    "superseded_by": "UfN4ZaDxjAg"
+   },
+   {
+    "id": "UfN4ZaDxjAg",
+    "sha256": "9790eb40143be9d50c6b95a6589d89d3dcce421a30ca382ab905d49f3e2c0297",
+    "bytes": 5795916,
+    "commit": "95d1dba",
+    "uploaded": "2026-11-04T09:18:12Z",
+    "title": "Vertical cloud lab: trays D-F and the alloy line along a backup rail (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "vlm_loading.mp4": [
+   {
+    "id": "JBUyn9Tn4qk",
+    "sha256": "b4d61e7a88951959a1dd283acfda4c69cdc30149f7d67b6c72ed525e8c87d452",
+    "bytes": 2988664,
+    "commit": "4ca0312",
+    "uploaded": "2026-11-04T07:02:06Z",
+    "title": "Vertical cloud lab: the equipment going onto the VLM's trays (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "vlm_services.mp4": [
+   {
+    "id": "f04ALHKoGl4",
+    "sha256": "d457769cd1522b9e925a46ad581d66741dd6a7b19f5c0309c27c0070469299c0",
+    "bytes": 4478090,
+    "commit": "c1774ad",
+    "uploaded": "2026-11-04T07:02:08Z",
+    "title": "Vertical cloud lab: one docking coupling per tray, in its slot and at the opening",
+    "privacy": "unlisted",
+    "superseded_by": "nn0HSinPe3E"
+   },
+   {
+    "id": "nn0HSinPe3E",
+    "sha256": "a70a15e6f2420b58ad9c58f31a741038409b4da0f5b9b247b150ea062aaedcdc",
+    "bytes": 4583821,
+    "commit": "58358ba",
+    "uploaded": "2026-11-04T09:18:13Z",
+    "title": "Vertical cloud lab: one docking coupling per tray, in its slot and at the opening",
+    "privacy": "unlisted"
+   }
+  ],
+  "vlm_services_all.mp4": [
+   {
+    "id": "ed2M0u5Rjw0",
+    "sha256": "9f4737aa8726beadb19932fe0bb5d8586c9ea4ae99fc97b498d853815b981d06",
+    "bytes": 12041179,
+    "commit": "4dd3bdc",
+    "uploaded": "2026-11-03T21:22:38Z",
+    "title": "Vertical cloud lab: tray docking couplings, a tethered tray, and the cabling (3-D animation)",
+    "privacy": "unlisted",
+    "superseded_by": "TryzW_phOcw"
+   },
+   {
+    "id": "TryzW_phOcw",
+    "sha256": "40d22012824b5cce85e77e0fe883af8a76fd520c6bac5d6a0ea02cf04780a56a",
+    "bytes": 11707106,
+    "commit": "4ffc90b",
+    "uploaded": "2026-11-04T07:01:52Z",
+    "title": "Vertical cloud lab: tray docking couplings, a tethered tray, and the cabling (3-D animation)",
+    "privacy": "unlisted",
+    "superseded_by": "FSieFq3N3Ew"
+   },
+   {
+    "id": "FSieFq3N3Ew",
+    "sha256": "dc505bd028a843306add09880e0078e966e939b0147fcc319a2842b19b811629",
+    "bytes": 11908908,
+    "commit": "58358ba",
+    "uploaded": "2026-11-04T09:18:01Z",
+    "title": "Vertical cloud lab: tray docking couplings, a tethered tray, and the cabling (3-D animation)",
+    "privacy": "unlisted",
+    "superseded_by": "IbxYy68N3Zw"
+   },
+   {
+    "id": "IbxYy68N3Zw",
+    "sha256": "4ec831900a6a6b85d0074993934f9e8fcbdaccf4eb765fdd46919079c2a6c041",
+    "bytes": 15603094,
+    "commit": "2775666",
+    "uploaded": "2026-11-04T20:46:50Z",
+    "title": "Vertical cloud lab: tray docking couplings, each tray's UPS, the bay camera, the cabling (3-D)",
+    "privacy": "unlisted"
+   }
+  ],
+  "vlm_tall_opening.mp4": [
+   {
+    "id": "NDFdZDjTXlo",
+    "sha256": "820da40526a3f8d32103c72971862a46b9af4182b298c396ccc24df1aa65806c",
+    "bytes": 2148525,
+    "commit": "180ad6e",
+    "uploaded": "2026-11-04T06:43:45Z",
+    "title": "Vertical cloud lab: vlm tall opening (3-D animation)",
+    "privacy": "unlisted",
+    "superseded_by": "E5ctpqEooG0"
+   },
+   {
+    "id": "E5ctpqEooG0",
+    "sha256": "4b30bf6152f8cde60e4df6ac8f61ea2e45e0548cde934bba465c4ded65081ade",
+    "bytes": 2184069,
+    "commit": "8d8a4af",
+    "uploaded": "2026-11-04T09:18:15Z",
+    "title": "Vertical cloud lab: what a taller Kardex opening, about 1000 mm, would put on a tray",
+    "privacy": "unlisted"
+   }
+  ],
+  "vlm_tether.mp4": [
+   {
+    "id": "KkXAW81c3uw",
+    "sha256": "c24113ef6430e4e6f43768d21db5e0ece666fb11379f2f107df59fbd2243b5ca",
+    "bytes": 2366074,
+    "commit": "4ffc90b",
+    "uploaded": "2026-11-04T07:02:13Z",
+    "title": "Vertical cloud lab: a tray on a retractable tether instead of a coupling (3-D animation)",
+    "privacy": "unlisted",
+    "superseded_by": "Y19QFEXzcnU"
+   },
+   {
+    "id": "Y19QFEXzcnU",
+    "sha256": "54531654407e12b39d19b8981ebecee0610e99f20b837f0b4e50f30b0e593044",
+    "bytes": 2421047,
+    "commit": "58358ba",
+    "uploaded": "2026-11-04T09:18:16Z",
+    "title": "Vertical cloud lab: a tray on a retractable tether instead of a coupling (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "vlm_workflow.mp4": [
+   {
+    "id": "255o9IVEOEs",
+    "sha256": "9a6a502ce7f6fa0b047c19ece9c6ca92ebb3efaa687495512f40b85d686dc81b",
+    "bytes": 5507672,
+    "commit": "27b4998",
+    "uploaded": "2026-11-04T06:32:21Z",
+    "title": "Vertical cloud lab: dose a powder, then add liquid in the CubXL (3-D animation)",
+    "privacy": "unlisted"
+   }
+  ],
+  "warehouse.mp4": [
+   {
+    "id": "KbrkulS07EM",
+    "sha256": "4d7b162b100f97ff9e0b0da0e81de3aff324bc0de6cdc7155d49ca8d73d5d6d0",
+    "bytes": 7324434,
+    "commit": "4bf5904",
+    "uploaded": "2026-11-03T21:32:07Z",
+    "title": "Vertical cloud lab, warehouse version: two MiR250 + UR10e units on an open floor",
+    "privacy": "unlisted",
+    "superseded_by": "3IrSB9-meN8"
+   },
+   {
+    "id": "3IrSB9-meN8",
+    "sha256": "294ed114621d0253a207625a7795fae298a838e7c010d1596fbccef50ff82d5a",
+    "bytes": 6988146,
+    "commit": "6a8fa94",
+    "uploaded": "2026-11-04T06:32:22Z",
+    "title": "Vertical cloud lab, warehouse version: two MiR250 + UR10e units on an open floor",
+    "privacy": "unlisted"
+   }
+  ]
+ }
+}

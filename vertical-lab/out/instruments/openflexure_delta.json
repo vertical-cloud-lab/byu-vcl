@@ -1,0 +1,29 @@
+{
+ "name": "instruments/openflexure_delta",
+ "fps": 15,
+ "n_frames": 138,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/3",
+   "caption": "The delta stage: three flexure legs move the stage in x, y and z. A polished coupon goes on.",
+   "start_frame": 0,
+   "end_frame": 49
+  },
+  {
+   "label": "2/3",
+   "caption": "Same reflection optics underneath, fixed; the stage does the moving, focus included. Each actuator tips a lever, and the leg standing on it pushes the stage.",
+   "start_frame": 50,
+   "end_frame": 108
+  },
+  {
+   "label": "3/3",
+   "caption": "Back to centre.",
+   "start_frame": 109,
+   "end_frame": 137
+  }
+ ]
+}

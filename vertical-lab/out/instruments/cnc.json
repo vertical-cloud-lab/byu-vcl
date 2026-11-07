@@ -1,0 +1,41 @@
+{
+ "name": "instruments/cnc",
+ "fps": 8,
+ "n_frames": 149,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/5",
+   "caption": "Chapter 6's job for the Carvera: the steel mount, the wire-EDM slice of the printed AlSi10Mg build seated in its pocket, 0.4 mm proud. The lid opens.",
+   "start_frame": 0,
+   "end_frame": 26
+  },
+  {
+   "label": "2/5",
+   "caption": "The arm sets the mount on the parallels in a small vise (ours).",
+   "start_frame": 27,
+   "end_frame": 48
+  },
+  {
+   "label": "3/5",
+   "caption": "The vise clamps it; the lid closes. A 6 mm end mill from the tool changer.",
+   "start_frame": 49,
+   "end_frame": 76
+  },
+  {
+   "label": "4/5",
+   "caption": "The slice faced flush with the puck: the EDM's recast layer off, the face parallel to the puck's base.",
+   "start_frame": 77,
+   "end_frame": 120
+  },
+  {
+   "label": "5/5",
+   "caption": "The end mill back in the rack; the lid opens and the vise lets go. Next: grinding and polishing.",
+   "start_frame": 121,
+   "end_frame": 148
+  }
+ ]
+}

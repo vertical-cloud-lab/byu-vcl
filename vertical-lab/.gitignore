@@ -1,0 +1,10 @@
+# tessellated meshes and vendor CAD, rebuilt or re-fetched at run time
+.cache/
+lab_models/.cache/
+multidoser/reference/
+out/clean/
+__pycache__/
+.frames/
+# the long-form join (python3 longform.py): 30 min of the committed clips plus cards, too big for git; on YouTube,
+# its sha256 in out/youtube.json
+out/mp4/vertical_lab_longform.mp4

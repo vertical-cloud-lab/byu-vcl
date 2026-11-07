@@ -1,0 +1,39 @@
+{
+ "source": "https://youtu.be/WE6O8EccLyc?t=16 (Nabertherm, Discover the NAT Series, 0:16: the NAT 15/65 being opened)",
+ "video": "WE6O8EccLyc",
+ "t": 16.5,
+ "camera": "nabertherm wide shot",
+ "pose": {
+  "door": 0.35
+ },
+ "points": {
+  "top front left": [
+   302,
+   275
+  ],
+  "split left": [
+   302,
+   422
+  ],
+  "foot left front": [
+   298,
+   497
+  ],
+  "screen tl": [
+   357,
+   444
+  ],
+  "screen tr": [
+   470,
+   444
+  ],
+  "screen bl": [
+   357,
+   480
+  ],
+  "screen br": [
+   470,
+   480
+  ]
+ }
+}

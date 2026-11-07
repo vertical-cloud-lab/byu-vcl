@@ -1,0 +1,5 @@
+{
+ "task_id": "7161448a-80fb-4dc2-8a40-807e1fbaf6b8",
+ "job": "LITERATURE",
+ "query": "For nanoindentation and profilometry-based indentation plastometry (PIP, e.g. Plastometrex PLX-Benchtop) on metal samples, what are the sample requirements regarding mounting? Can samples be tested while still in polymer (Bakelite or epoxy) metallographic mounts, or does the compliance of the mount distort results? What do standards (ISO 14577) and literature recommend: minimum thickness, parallelism of faces, rigid metal mounts, removing samples from mounts, or polishing the reverse face? What alternatives (e.g. mounting in metal holders, low-melting alloys, conductive mounts) are used in automated workflows?"
+}

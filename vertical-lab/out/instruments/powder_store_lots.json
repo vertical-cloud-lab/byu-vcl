@@ -1,0 +1,53 @@
+{
+ "name": "instruments/powder_store_lots",
+ "fps": 8,
+ "n_frames": 173,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/7",
+   "caption": "Tray O, the atomized lots: 377 labelled jars (195 x 30 mL, 128 x 60 mL, 54 x 125 mL). Every run gets a six-character ID (DAL #157: jz31op, 8rthq2, c3k0n5, ...).",
+   "start_frame": 0,
+   "end_frame": 35
+  },
+  {
+   "label": "2/7",
+   "caption": "Each run's sieve fractions go in jars of their own: < 63 um for LPBF, 63-106, 106-150, 150-250 and > 250 um.",
+   "start_frame": 36,
+   "end_frame": 65
+  },
+  {
+   "label": "3/7",
+   "caption": "Clear glass, a black cap, a white label with the run and fraction.",
+   "start_frame": 66,
+   "end_frame": 88
+  },
+  {
+   "label": "4/7",
+   "caption": "Tinted for now (legend, top right): the < 63 um LPBF cut, and the other cuts of run jz31op.",
+   "start_frame": 89,
+   "end_frame": 106
+  },
+  {
+   "label": "5/7",
+   "caption": "Only a highlight, held for a few seconds...",
+   "start_frame": 107,
+   "end_frame": 126
+  },
+  {
+   "label": "6/7",
+   "caption": "...then back to plain glass and black caps.",
+   "start_frame": 127,
+   "end_frame": 144
+  },
+  {
+   "label": "7/7",
+   "caption": "The arm picks by seat: out/powder_store.json lists every jar, what is in it and whether the arm reaches it.",
+   "start_frame": 145,
+   "end_frame": 172
+  }
+ ]
+}

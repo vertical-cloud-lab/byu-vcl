@@ -1,0 +1,23 @@
+{
+ "name": "instruments/quench_tank",
+ "fps": 8,
+ "n_frames": 40,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/1",
+   "caption": "A tank of water beside the furnace for the T6's quench, with a lift basket: the rack is set on its plate at the rim and dropped into the water.",
+   "start_frame": 0,
+   "end_frame": 24
+  },
+  {
+   "label": "1/1",
+   "caption": "",
+   "start_frame": 25,
+   "end_frame": 39
+  }
+ ]
+}

@@ -1,0 +1,70 @@
+{
+ "source": "https://youtu.be/eLrJxxBAcnE?t=0 (Alumina polish part 3, 0:00: polishing, head down)",
+ "video": "eLrJxxBAcnE",
+ "t": 0,
+ "pose": {
+  "head": 1.0
+ },
+ "points": {
+  "screen tl": [
+   806,
+   426
+  ],
+  "screen tr": [
+   987,
+   390
+  ],
+  "screen bl": [
+   816,
+   546
+  ],
+  "screen br": [
+   990,
+   511
+  ],
+  "estop": [
+   939,
+   586
+  ]
+ },
+ "curves": {
+  "platen edge": [
+   [
+    279,
+    335
+   ],
+   [
+    330,
+    405
+   ],
+   [
+    480,
+    455
+   ],
+   [
+    600,
+    445
+   ],
+   [
+    690,
+    415
+   ],
+   [
+    735,
+    345
+   ]
+  ],
+  "head left": [
+   [
+    222,
+    30
+   ],
+   [
+    224,
+    110
+   ]
+  ]
+ },
+ "holdout": true,
+ "note": "head right not picked: the spigot's hose runs down over the housing's right edge in this frame"
+}
