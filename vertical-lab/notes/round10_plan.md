@@ -81,3 +81,39 @@ Lower number = more important. When slots are short, the lowest-priority render 
   differently from the model, fix the model or write it down.
 - **Report back** in under 350 words: what changed, files and commits, renders (duration, frames in collision),
   sources, what is still open.
+
+## Continuation, 2026-11-07 22:07 UTC
+
+The first run stopped at 04:23 UTC when the account ran out of model credits. What it pushed (up to `1a124e5`):
+
+- lab: `e860058` (services' doser boxes from the v5 rig, camera B0, the bay-camera clip's vial on the v5 shuttle's
+  fork, a reflow oven on tray H, the set-up movie's lift table and dock utilities; `setup_lab.py fit` clear) and
+  `7ed8088` (vlm_hookups re-rendered). The set-up, bay-camera and services renders never ran.
+- upkeep-model: `37ba586`, `1a124e5` (`upkeep.py`, `out/upkeep_*`, the hooks in `timelapse.simulate`). No notes, and
+  the finale wasn't re-rendered.
+- upkeep-clip: `5d84a75` (`upkeep_clip.py`). Never rendered, no notes.
+- repowder: #327 at `f9db700`. vendors: #331 at `897cb07`; its second pass (confirming contacts) was lost.
+- doser, prep, checks: nothing landed.
+
+**This job ends at 01:07 UTC** (180 min, covering a fallback attempt too). Deadlines (UTC):
+
+- **22:50** renders that need no new code queued: the set-up, the bay camera, services, the upkeep clip (after its
+  preview).
+- **23:20** code and a `PREVIEW=1` still committed for doser, prep and checks; **23:35** their final renders queued.
+- **00:00** a render that hasn't started yet is dropped; say so in your report.
+- **00:25** renders committed. The orchestrator then builds the long-form from what is committed; an older clip stays
+  where a new one is missing.
+- **00:30** notes committed. **00:35** report back (under 350 words).
+
+| Stream | Display | Owns (as in the table above unless said) | Renders, in queue order |
+|---|---|---|---|
+| lab | 44 | lab's files; new `notes/three_each.md` | set-up (first, `--mem 6500`), `services.py baycam`, `services.py services` |
+| upkeep | 45 | upkeep-model's and upkeep-clip's files; new `notes/upkeep.md`, `notes/upkeep_clip.md` | the upkeep clip, then the finale (`--mem 6500`) |
+| prep | 42 | as before | chapter 6 |
+| doser | 41 | as before | chapter 1, then the 8:37 clip (`animate.py workflow`, `--mem 6500`) |
+| checks | 43 | as before | chapter 4; chapters 3 and 7 only if a slot is free at 23:45 |
+| vendors | none | `/tmp/wt-vendors` (branch `claude/issue-303-vendors-rfq`, PR #331), `vertical-lab/procurement/` | none |
+
+Everything else in the rules above stands: one working tree, your own files only, additive changes to shared
+modules, commit (never push) after every piece that works, at most three scene jobs through `runner_guard.py`
+(its watchdog is running), never kill another stream's job, nothing printed that is a secret or a hostname.
