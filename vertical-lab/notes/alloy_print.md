@@ -7,6 +7,31 @@ plate that chapter 4 ([`alloy_workflow.py`](../alloy_workflow.py)) takes out.
 [tipper](../out/alloy_print_tipper.png). 198 s at 1280 × 720 and 10 fps (round 6, with the arm's collisions planned
 round, below; 10 fps to fit the session; re-render at 15 fps when the runner is free); the GIF is 640 × 360 at 5 fps.
 
+### Round 10 (2026-11-07): the audit's 7 frames
+
+- **The Aconity's lifted door (6 of the 7 frames).** Round 9 turned the MIDI's door into a flap hinged along its top
+  edge that lifts to 165 deg (`alloy_models.door_T`), so its lower edge now stands just over the opening, and the top of
+  the forearm met it on the straight line in with the jar and on the way back out (at 6 fps, 1 frame each way). A probe
+  (the scene built once and stopped at that move; the line in and the tip re-solved at 91 points, every IK branch whose
+  pour pose is clear): at the old height the chapter's branch met the door at 8 of 91 points, and the only other clear
+  branch met the door and the chamber's housing. 10 and 20 mm lower, the chapter's branch is clear. Parking the MiR
+  further off isn't possible: the pour pose is then beyond the UR10e's reach. **Fix: the jar is carried 15 mm lower,
+  its foot 17 mm over the chamber floor** (was 32; the grasp 75 mm over the floor, 58 mm up the jar).
+- **Audit of that sub-step** (4/5, to the MIDI and into its supply; frames before it run but not checked): **0 of 183
+  frames** ([`../out/collisions/alloy_print_fill.json`](../out/collisions/alloy_print_fill.json)). Round 10 audited
+  sub-steps only, to leave the render slots to the renders.
+- **The seventh frame (3063 in round 9's 15 fps audit, the right fingertip against the enclosure, in 3/5)** does not
+  occur at 6 fps, the render's rate: the audit of 3/5 from frame 1100 (its last 75 s, the sieves into the wash module
+  and the jar from under the funnel) found only the contacts the rules allow (fingers on a sieve's tab, a sieve onto the
+  tipper's cradle, the jar into its pocket on the MiR), and all 94 straight-line moves of 3/5, re-solved at 201 points
+  each, are clear of the enclosure. The joint moves are planned with checks every 1.5 deg, and a graze between two of
+  those checks, caught once at 15 fps, is the likeliest source. Not chased further.
+- **Collision world:** as chapter 7's `fast_collisions`, kept to whatever stands within 2.8 m of the MiR's path (371 of
+  the 541 actors with `VLAB_ONLY_TRAYS=F`). The planner and the audit see the same world.
+- **The committed render predates the fix.** `out/mp4/alloy_print.mp4` (round 9, 302.7 s) still shows the forearm
+  brushing the lifted door. Chapter 3 was not re-rendered this round (about 300 s at 6 fps, over an hour of a slot);
+  the code renders the fixed version.
+
 ### Round 9 (PR #318, 2026-11-06): cleaning the sieves without a person, clear-glass jars with a legend
 
 Sterling's review of 2026-11-05 22:56 UTC, verbatim: "Do we have some automation in place for cleaning the sieve stack? I
