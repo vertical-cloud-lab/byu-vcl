@@ -145,6 +145,23 @@ What fixed what:
   and audits only its own arm; and with `VLAB_ONLY_TRAYS=DEKL` setup_lab populates only the trays it presents. The
   cladding is opaque, so the empty trays inside the Shuttles aren't seen.
 
+### Round 10 (2026-11-07): the last frame, at the VHX
+
+- **What it was.** Frame 1246 (6 fps): the arm's wrist 2 grazing the VHX's stand on the straight line down to the
+  carrier, about a third of the way down. A probe (the scene built once and stopped at that move, the line re-solved at
+  41 points and checked against the stand) found 3 points in collision in the IK branch the chapter uses, and 1 in the
+  only other branch whose approach pose is clear. Moving the MiR 50-150 mm either way along the dock line left 1-4
+  points in every branch, and turning the grasp 180 deg about the tool's axis changed nothing.
+- **Fix: the loading slide (ours) runs its carrier 140 mm out of the stage, not 110** (`r8_char.VHX_SLIDE`; the rail
+  is 30 mm longer). In the probe, 130 mm cleared the line in both branches, and 150 mm in three. A real slide would be
+  sized the same way: the carrier's run is set by what the arm's wrist must clear, not only by the ring light.
+- **Audit:** the VHX sub-step only (from tray K's arrival to the data panels), **0 of 279 frames**
+  ([`../out/collisions/alloy_characterize_vhx.json`](../out/collisions/alloy_characterize_vhx.json), which says what
+  was checked). The coordinator asked for sub-step audits this round, to leave the render slots to the renders. The rest
+  of the chapter is the code round 9 audited at 1 frame in 1269 (that one at the VHX); a whole-chapter pass of this
+  code was not run, so [`../out/collisions/alloy_characterize.json`](../out/collisions/alloy_characterize.json) is still
+  round 8's (13 frames).
+
 ### Known in the committed render
 
 Round 9 (2026-11-06, `1d2a6d0`) re-rendered the chapter on the code with round 8's last two fixes, and with the bay's
