@@ -579,6 +579,9 @@ def views():
     import warehouse as W
     from scene import T, R
     sc, L, K, fx = build(lab.meshes())
+    if os.environ.get("ORG_LID"):            # the rePowder's lid open this share of its 105 deg (RP_LID_U: as the arm
+        import alloy_atomize as AT           # leaves it)
+        sc.gmat[AT.g("hood")] = AT.M.joint_matrix("lid", float(os.environ["ORG_LID"]))
     if os.environ.get("ORG_AT_OPEN"):
         car, cg = L.carousel, f"cup{CUP}"
         for k in LOADED:
