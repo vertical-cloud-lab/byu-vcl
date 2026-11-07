@@ -13,6 +13,7 @@ The machine-readable list is [`infrastructure.csv`](infrastructure.csv). The bui
   stream-cam Pi because the runner was blocked (403, 404 or a JS-only page), one fetch at a time, nothing left on its disk.
 - **[to confirm]** marks a site fact only the lab can supply, or a contact detail that a search snippet gave and no
   official page confirmed. **Check every number before sending an email.**
+- **Second pass (2026-11-07, about 22:15-23:00 UTC):** every contact below is marked `(verified: <url>, 2026-11-07)`, `(partial: ...)` or `(unverified: <reason>)`; the CSV has `contact_status` and `contact_status_note` columns. Contact status is about the vendor's own page only; nothing was sent or submitted.
 - **Business contacts only.** For the lab's existing quotes (Kardex via Hoj Engineering; Modula via Outsource
   Equipment) the thread is cited, not the addresses: [issue #53](https://github.com/vertical-cloud-lab/byu-vcl/issues/53),
   comments [4165070381](https://github.com/vertical-cloud-lab/byu-vcl/issues/53#issuecomment-4165070381),
@@ -80,10 +81,13 @@ The machine-readable list is [`infrastructure.csv`](infrastructure.csv). The bui
 ### 3. Contact
 - **Web form (US):** <https://www.kardex.com/en-us/company/get-in-touch> ("I have a question regarding a system or
   product"); the page lists no email or phone. The same page group has a "find a local contact" route.
-- **Phone:** Kardex Remstar, 41 Eisenhower Drive, Westbrook, ME 04092, **800-639-5805** (press releases 2013-2018, not on
-  the current site; **[to confirm]**).
-- **Regional:** the lab's existing quote came through **Hoj Engineering** (thread cited above). Whether Hoj covers Utah
-  or the Mountain West is **[to confirm]**.
+- **Address:** Kardex Remstar Support & Service Center, 41 Eisenhower Dr, Westbrook, ME 04092 (verified: <https://www.kardex.com/en/company/kardex-locations>, 2026-11-07; the page gives no phone or email for it).
+- **Phone:** **800-639-5805** appeared only in press releases of 2013-2018; no current Kardex US page lists a phone (unverified: the get-in-touch, service, imprint and locations pages show none, 2026-11-07).
+- **Regional:** Kardex's own locations page lists US distributor points in MA, MI, CT, NY, CA (Concord) and OH and **none in Utah or the Mountain West**; each links back to the get-in-touch form (verified: <https://www.kardex.com/en/company/kardex-locations>, 2026-11-07).
+  The lab's earlier quote came through **Hoj Engineering** (thread cited above). **Hoj Innovations (Hoj Engineering & Sales Co.)**, 862 West Fine Drive, Salt Lake City, UT 84119, is a Utah firm that
+  lists Kardex miniload and AS/RS systems; Utah material-handling sales **801-266-8881**, main **(385) 437-6275**, `info@hoj.net`, `inquiry@hoj.net`, Mon-Fri 9-5 MST
+  (verified: <https://hoj.net/pages/utah-locations>, <https://hoj.net/pages/contact-us>, <https://hoj.net/pages/automated-storage-retrieval-systems>, 2026-11-07).
+  Whether Hoj is an authorized Kardex dealer for the Shuttle VLM, and for Utah, is **unverified**: its pages show the miniload and AS/RS lines but no Shuttle VLM page, and Kardex names no Utah dealer. Ask both.
 - **Education programs:** none found.
 
 ### 4. Our open questions for them
@@ -146,7 +150,7 @@ From `notes/kardex_opening.md` "Ask Kardex" and `notes/lab_r8.md`:
 ### 7. Sources (checked 2026-11-07 UTC)
 - [Kardex US get-in-touch page](https://www.kardex.com/en-us/company/get-in-touch), via Pi (the runner's fetch of `/en-us/contact` was a 404).
 - [Kardex Shuttle product page](https://www.kardex.com/en-us/products/vertical-lift-module/kardex-shuttle), cited in `notes/kardex_opening.md`.
-- Phone and address: search snippets of Kardex press releases (<https://www.pr.com/press-release/532174>), not fetched.
+- Address: [Kardex locations page](https://www.kardex.com/en/company/kardex-locations) (runner, 2026-11-07); the 800-639-5805 phone is from old press releases (<https://www.pr.com/press-release/532174>) and is unverified. Hoj: [hoj.net Utah locations](https://hoj.net/pages/utah-locations) (runner, 2026-11-07).
 - [The used XP 500 listing with a 996 mm opening](https://www.lagersysteme-paternoster.de/gebrauchte-lagertechnik/kardex-shuttle-xp500-3050x864-pos-89/), cited in the notes.
 - Issue #53 comments cited above.
 
@@ -172,12 +176,14 @@ From `notes/kardex_opening.md` "Ask Kardex" and `notes/lab_r8.md`:
 - Power, weight and footprint: **not published** on the pages read.
 
 ### 3. Contact
-- **Email:** `info.usa@modula.com` (from Modula's contact page, via Pi; the address is obfuscated in the HTML).
-- **Phone:** general **937-365-7860**; customer care **800-361-0785**; toll-free **877-648-9755**.
+- **Email:** `info.usa@modula.com` (the first pass read it on Modula's contact page via the Pi; on 2026-11-07 the page returned a Cloudflare challenge to the runner and to the Pi's curl and headless Chromium, so it could not be re-read: unverified this pass).
+- **Phone:** general **937-365-7860**; customer care **800-361-0785**; toll-free **877-648-9755** (unverified: same block, 2026-11-07).
 - **Address:** Modula Inc., 5000 Commerce Center Drive, Franklin, OH 45005 (headquarters; also a Maine plant at 90 Alfred
-  A. Plourde Parkway, Lewiston, ME 04240).
-- **Web form:** <https://modula.us/contact-us/>. **Dealers:** <https://modula.us/dealer-network/> (a map; Utah not listed in the
-  text, ask which dealer serves Utah).
+  A. Plourde Parkway, Lewiston, ME 04240) (unverified: same block).
+- **Web form:** <https://modula.us/contact-us/>. **Dealers:** <https://modula.us/dealer-network/> (a map; unreadable behind the same Cloudflare block, so no Utah dealer is confirmed; ask Modula which dealer serves Utah).
+- **West-coast and Mountain West dealer candidates** (their own pages, 2026-11-07): **Pacific Integrated** says it is "an authorized distributor for Modula Vertical Lift Modules"; **(888) 550-5888**, `sales@pacificintegrated.com`; offices in Tacoma WA, Addison TX, Hayward CA and a sales office in Surprise AZ; no Utah office listed
+  (verified: <https://www.pacificintegrated.com/?p=1662>, 2026-11-07). **Associated** (Raymond; "Platinum Level Modula Sales & Service Center"), 6450 Muirfield Dr, Hanover Park, IL 60133, **800-755-7201**, no service area stated
+  (verified: <https://prod-cms-associated-solutions.raymondcorp.com/modula>, 2026-11-07). **Hoj Innovations** (Salt Lake City) is Kardex-oriented; no Modula listing found.
 - **Lab's existing channel:** Outsource Equipment (thread cited above).
 
 ### 4. Our open questions
@@ -218,7 +224,7 @@ at the opening; **power** per `lab_answers.md`.
 
 ### 7. Sources (2026-11-07 UTC)
 - [Modula contact page](https://modula.us/contact-us/) and [dealer network](https://modula.us/dealer-network/), both via Pi (the runner got 403).
-- [Modula's government capability statement](https://modula.us/wp-content/uploads/2021/04/Modula-Inc-Government-Capability-Statement.pdf), a search result, not fetched.
+- [Modula's government capability statement](https://modula.us/wp-content/uploads/2021/04/Modula-Inc-Government-Capability-Statement.pdf), downloaded 2026-11-07 (200) but the PDF text could not be extracted here, so nothing in it is relied on.
 - `notes/lab_r8.md`; issue #53 comments.
 
 ---
@@ -243,11 +249,11 @@ Transport from Europe, rigging, reassembly, a CE-to-US electrical conversion (40
 in these asks (`build_our_own_vlm.md` prices them as estimates).
 
 ### 3. Contact
-- **Marketplaces (published business sites):** machineseeker (<https://www.machineseeker.com/>), werktuigen
+- **Marketplaces (published business sites; enquiry forms not re-fetched this pass: unverified):** machineseeker (<https://www.machineseeker.com/>), werktuigen
   (<https://www.werktuigen.com/>), resale.info, used-machines.com: each listing has an enquiry form.
 - **Dealer in Germany with the 996 mm unit:** [lagersysteme-paternoster.de](https://www.lagersysteme-paternoster.de/) (enquiry form).
 - **US:** Vertical Storage USA / Outsource Equipment (existing contact, thread cited). No US used-VLM specialist found; Raymond West
-  (California) sells new VLMs.
+  (California) sells new VLMs (unverified: not fetched). For a used Kardex unit in Utah, **Hoj Innovations** (Salt Lake City, 801-266-8881, `inquiry@hoj.net`; verified: <https://hoj.net/pages/contact-us>, 2026-11-07) services Kardex systems and may know of units; ask.
 
 ### 4. Open questions
 Year, tray count and **tray load**, the **opening height** (996 mm?), controller and software version and whether it is supported,
@@ -297,15 +303,15 @@ by BYU purchase order; payment terms **[to confirm]**.
 
 ### 3. Contact
 - **Universal Robots USA:** `sales@universal-robots.com`, **+1 844-462-6268** (844-GO-COBOT), 27175 Haggerty Road, Suite 160, Novi, MI
-  48377; get-started form <https://www.universal-robots.com/contact-us/get-started/>; partner portal <https://partners.universal-robots.com/>.
-- **MiR:** global `mail@mir-robots.com`, +45 20 37 75 77 (Denmark); distributor and partner pages
-  <https://www.mobile-industrial-robots.com/distributors>. A North America MiR sales contact is **[to confirm]** (Teradyne Robotics
-  sells through distributors, certified system integrators and OEMs).
-- **Distributors found (not Utah-specific):** **Hartfiel Automation** (distributes SICK, Universal Robots and MiR; **1-800-331-7301**;
-  its 2019 purchase of Fiero adds a Wheat Ridge, Colorado office, **[to confirm]**); **Cross Company** (UR Certified System Integrator,
-  location **[to confirm]**); **Automation Distribution** (lists the UR10e with prices).
-- **Utah-based UR or MiR integrator:** none confirmed. Use each maker's partner locator filtered to Utah.
-- **Academic:** UR Academy and UR's university discounts exist; **[to confirm]** through the distributor.
+  48377; get-started form <https://www.universal-robots.com/contact-us/get-started/>; partner portal <https://partners.universal-robots.com/>
+  (verified: <https://www.universal-robots.com/contact-us/>, 2026-11-07; the partner portal itself was not opened).
+- **MiR:** global `mail@mir-robots.com` (verified: <https://www.mobile-industrial-robots.com/distributors>, 2026-11-07); the +45 20 37 75 77 Denmark number is not on that page (unverified: first pass read it on the contact page, which now returns 404).
+  The distributors page is a locator; no North America MiR sales email or phone is published there (unverified: none found; go through a distributor).
+- **Distributors found:** **Hartfiel Automation** (distributes SICK, Universal Robots and MiR) **1-800-331-7301**; its MiR page lists **Utah, Colorado, Wyoming and Nevada** among the states where the MiR line is available
+  (verified: <https://www.hartfiel.com/mir-robots/>, via the Pi's headless Chromium, 2026-11-07; the list sits under the MiR page, not specifically the MiR250). Hartfiel's Wheat Ridge, Colorado office is unverified (the runner got 403 and the pages carry no address). **Cross Company** (UR Certified System Integrator): location unverified, site blocks both runner and Pi (403).
+  **Automation Distribution** (lists the UR10e with prices; not re-fetched, unverified).
+- **Utah-based UR or MiR integrator:** none found (unverified: the UR partner locator is a script-driven page; two web searches named none). **Hoj Innovations** (Salt Lake City; <https://hoj.net/pages/autonomous-mobile-robots>) sells autonomous mobile robots but names no brand on the page, so ask whether it carries MiR.
+- **Academic:** UR Academy and UR's university discounts exist (unverified: ask the distributor).
 
 ### 4. Open questions
 1. **How to power a UR10e (615 W) from a MiR250 top module (480 W)**: a battery, a second battery, a DC-DC converter, or the 24 V
@@ -350,7 +356,7 @@ by BYU purchase order; payment terms **[to confirm]**.
 
 ### 7. Sources (2026-11-07 UTC)
 - [UR contact page](https://www.universal-robots.com/contact-us/) (runner); [UR distributors page](https://www.universal-robots.com/distributors/) (runner; no Utah list).
-- [MiR contact](https://www.mobile-industrial-robots.com/contact) (via Pi: email and phone from the HTML); [MiR distributors](https://www.mobile-industrial-robots.com/distributors) (search result).
+- [MiR contact](https://www.mobile-industrial-robots.com/contact) (first pass via Pi; now 404); [MiR distributors](https://www.mobile-industrial-robots.com/distributors) (runner, 2026-11-07); [UR contact](https://www.universal-robots.com/contact-us/) (runner, 2026-11-07); [Hartfiel MiR page](https://www.hartfiel.com/mir-robots/) (Pi Chromium, 2026-11-07).
 - [MiR250 Specifications](https://www.hartfiel.com/wp-content/uploads/2024/04/MiR250-Specs.pdf) (cited in `notes/warehouse.md`).
 - Hartfiel: [web](https://www.hartfiel.com/) (search snippets); UR12e note: [revelationmachinery.com listing](https://revelationmachinery.com/product/universal-robot-ur10e-2023/).
 
@@ -368,10 +374,10 @@ Stroke 85 mm; the lab's design friction figure **141 N** against a 200 N design 
 **[to confirm]**); Modbus RTU/URCap over the UR wrist; no door actuation of its own.
 
 ### 3. Contact
-- **Phone:** **1-888-762-6847** (head office, Lévis, QC; Robotiq's contact page, 2026-11-07); outside US/Canada +1 418 380 2788.
-- **Quote page:** <https://robotiq.com/quote>; partners <https://robotiq.com/robotiq-partners> (a Utah distributor is **[to confirm]**).
+- **Phone:** **1-888-762-6847** (head office, Lévis, QC); outside US/Canada +1 418 380 2788 (verified: <https://robotiq.com/contact-us>, 2026-11-07).
+- **Quote page:** <https://robotiq.com/quote>; partners <https://robotiq.com/robotiq-partners> (the partners page lists no Utah distributor; a web search found none either; unverified: ask Robotiq, whose support page offers "Contact Your Local Distributor").
 - **Email:** none published on the contact page. **Price:** Robotiq publishes none; distributors list the 2F-85 from about **$4,999-$9,271**
-  (Automation Distribution $9,271 list, UR Kit $5,885; the Robotics Center $5,825): wide spread, **[to confirm]**.
+  (Automation Distribution $9,271 list, UR Kit $5,885; the Robotics Center $5,825): wide spread (unverified: reseller listings, not re-fetched).
 
 ### 4. Open questions
 Fingers for the jars and vial racks (custom pads, ESD?); **friction pads vs force** for a 12.5 kg payload; life in cycles; the **FT 300-S**
@@ -407,9 +413,9 @@ USB 3, close-range depth (about 7-50 cm), about 42 × 42 mm face; 5 V from the U
 Open SDK (librealsense) and ROS wrapper; calibration is on the camera.
 
 ### 3. Contact
-Site <https://www.realsenseai.com/> (via Pi; no contact details in the HTML; JS page). Buy through **DigiKey** (list $1,761-2,374, zero stock on
+Site <https://www.realsenseai.com/>; sales through the form at <https://www.realsenseai.com/contact/> ("Talk with Sales", with a phone field but no published email or number) and the maker's own store <https://store.realsenseai.com/> (which lists the D405) (verified: both, runner, 2026-11-07). Buy through **DigiKey** (list $1,761-2,374, zero stock on
 2026-11-07), or resellers at **$260-300** (Aztekc $273, Ichome $279). One reseller shows the D405 discontinued in Japan: ask RealSense.
-**No sales email or phone found; use RealSense's "Book a Demo" or Support form.**
+**No sales email or phone is published; use the Contact page's "Talk with Sales" form.** The D405 series page is <https://www.realsenseai.com/products/d405-series/> (verified, 2026-11-07). Reseller prices are unverified (search snippets).
 
 ### 4. Open questions
 Is the D405 **still sold and supported**; the successor; the **firmware** for UR tool-flange cables; the accuracy at 10-30 cm; mounting to the 2F-85.
@@ -444,9 +450,9 @@ pulls back, so the valves are ours. The dock's housing is 108 mm deep, stroke 60
 
 ### 3. Contact
 - **Stäubli Electrical Connectors, Inc.**, 100 Market Street, Windsor, CA 95492, **+1 707 838 0530**; a contact form on staubli.com; no sales email
-  published. The Duncan, SC office (+1 864 433 1980) handles fluid connectors, robotics and textile, not electrical.
-- **Fluid connectors** (air, N2, water) come from the Duncan, SC fluid-connectors business **[to confirm]**.
-- **Distributors:** none found for Utah.
+  published (unverified: staubli.com returned 403 to the runner and to the Pi's curl and Chromium on 2026-11-07; the Windsor address and number agree across several industry directories, which are not the vendor's page; one directory shows an `ec.us@staubli.com` address and another 855-583-1201, neither used). The Duncan, SC office (+1 864 433 1980) handles fluid connectors, robotics and textile, not electrical.
+- **Fluid connectors** (air, N2, water) come from the Duncan, SC fluid-connectors business (unverified: staubli.com blocked, 2026-11-07).
+- **Distributors:** none found for Utah (unverified: same block).
 
 ### 4. Open questions
 1. **Mating cycles** per insert, and the **life of the water and air inserts** at 100 docking cycles a day.
@@ -487,7 +493,8 @@ some SKUs (**[to confirm]** for this one).
 
 ### 3. Contact
 Eaton (Tripp Lite): **cpdipresaleshelp@eaton.com**, +1 773-869-1776, 10000 Woodward Avenue, Woodridge, IL 60517 (as shown on a Tripp Lite compare page;
-**[to confirm]** on eaton.com). Resellers: CompSource **800-356-5794**, Barcodes Inc. (quote form), DigiKey.
+(unverified: `tripplite.eaton.com` redirects the runner and the Pi to the Eaton site's pages, which list no presales address or phone, 2026-11-07; a web search of the Eaton-hosted 5PX G2 product page returned the same address, phone, +1 773-869-1329 and `cpdipresaleshelp@eaton.com`, so it is plausible but not re-read). No Utah Eaton rep found.
+Resellers: CompSource **800-356-5794** (seller listing; compsource.com returned 403, unverified), Provantage 800-336-1166 (search result, unverified), Barcodes Inc. (quote form), DigiKey.
 
 ### 4. Open questions
 Runtime at 300-1,000 W; **battery chemistry**, the cycle life when it is recharged every dock cycle (an assumed 100 transits a day, **[to confirm against `out/upkeep_model.json`]**); mounting on its side and **orientation limits**;
@@ -531,7 +538,8 @@ and has no compressor: buy a **Powerex compressor** or use house air. It is 889 
 Resellers: Marshall Scientific **$17,910**, Chromtech **$18,917**; GovSci, GMI, GenTech, Fisher.
 
 ### 3. Contact
-Parker Balston support **1-800-343-4048** (quick-start manual); <https://www.balstonlabgasgenerators.com/>. Sales through a lab-supply distributor (above). No Utah distributor found.
+Parker Balston technical services **1-800-343-4048**, 8 AM-5 PM Eastern, `balstontechsupport@parker.com` (North America), Industrial Gas Filtration and Generation Division, 242 Neck Road, Haverhill, MA 01835, <https://www.parker.com/labgas> (partial: a web search reports these from Parker's own UHPN2 upgrade-instructions PDF, <https://www.parker.com/content/dam/Parker-com/Literature/IGFG/PDF-Files/TI-UHPN2-UPG_RevA.pdf>, but parker.com returned 403 to the runner, the Pi and WebFetch, and balstonlabgasgenerators.com did not connect, 2026-11-07).
+Sales through a lab-supply distributor (above). No Utah distributor found (unverified).
 
 ### 4. Open questions
 Is **1.1 L/min** enough for the trays' purge (how many trays at once)? A larger model; **air quality** (dew point, oil) needed; the **compressor** pairing; **catalyst module**; PM (filter
@@ -563,7 +571,7 @@ For the **rePowder atomizer** the notes use a separate chiller (`notes/services.
 Up to 900 W at 60 Hz (750 W at 50 Hz); 5-40 °C; CE and CSA. Resellers give **conflicting** weights (125 lb vs 250 lb for 120 V) and dimensions (32 × 19 × 32 in?). Use Thermo's manual for catalog number TF900.
 
 ### 3. Contact
-Thermo Fisher Scientific US: the order page <https://www.thermofisher.com/order/catalog/product/TF900>; Fisher Scientific US sales **[to confirm the number]**; Thermo's temperature-control group. No Utah rep found.
+Thermo Fisher Scientific US: the order page <https://www.thermofisher.com/order/catalog/product/TF900>; Fisher Scientific customer service **1-800-766-7000** (partial: shown as the number to call in Fisher's own page text, <https://www.fishersci.com/us/en/contact-us.html>, via the Pi's Chromium, 2026-11-07; the page lists no sales-specific line). thermofisher.com's contact page lists no number in its page text (the TF900 order page loaded but gave no phone). No Utah rep found (unverified).
 
 ### 4. Open questions
 Dimensions, weight, **electrical input (120 V circuit, A)**, **heat rejected into the room**, pump pressure/flow at the trays' 2 × LCT06 inserts (8.48 L/min at 5 m/s is the insert's rating), coolant (water + inhibitor), whether 900 W is enough for 15 trays, PM, spares and service.
@@ -593,11 +601,12 @@ Volumes are **[to confirm]**: the atomizer's argon per run (about 700 runs a yea
 Argon 99.999 % (UHP) for LPBF and atomizing; N2 UHP; CGA 580 outlet; cylinder cage and **oxygen deficiency monitors** in rooms with bulk or many cylinders.
 
 ### 3. Contact
-- **Airgas:** customer service **866-935-3370**; Salt Lake City branches at **1211 South Pioneer Road (84104)** and **3415 South 700 West (84119)** (directory phone (801) 288-5010; **[to confirm]**);
-  MicroBulk argon is offered company-wide; bulk at these branches **[to confirm]**. Locator <https://locations.airgas.com/ut/saltlakecity/>.
-- **Linde:** Linde Gas & Equipment, 6880 S 2300 E, Salt Lake City 84121; welding center 1884 S 300 W, 84115; a plant at 12385 W Alternate Hwy 50, Magna 84044 (directory listings). Phone **[to confirm]**; <https://www.lindeus.com/>.
-- **Norco:** 2006 W 1500 S, Salt Lake City 84104 and 3750 W 2100 S, 84120, plus West Jordan (directory listings); Norco serves ID, OR, WA, MT, NV, UT, WY and runs its own ASUs. Phone **[to confirm]**; <https://www.norco-inc.com/>.
-- **Academic:** university cylinder contracts through BYU Purchasing **[to confirm]**.
+- **Airgas:** customer service **866-935-3370**; Salt Lake City: the **Airgas Store at 3415 South 700 West (84119), (801) 288-5010**, and an **Airgas Dry Ice site at 1211 South Pioneer Road (84104), (801) 977-9215** (the first pass wrongly listed the Pioneer Road site as a gas branch)
+  (verified: <https://locations.airgas.com/ut/saltlakecity/>, 2026-11-07; 866-935-3370 is on that page too). Airgas's general contact form is <https://www.airgas.com/contact-us> (verified). MicroBulk argon is offered company-wide; bulk at these branches is unverified (ask).
+- **Linde:** Linde Gas & Equipment cylinders and welding supplies: product orders **1-800-225-8247**, customer service and technical support **1-877-772-9247**; general **1-844-44LINDE (1-844-445-4633)**, `contactus@linde.com`
+  (verified: <https://www.lindeus.com/contact-us>, 2026-11-07). Salt Lake City sites 6880 S 2300 E (84121), welding center 1884 S 300 W (84115) and a Magna plant at 12385 W Alternate Hwy 50 (84044) come from directory listings; Linde's page names no Utah branch phone (unverified: use the national lines to be routed).
+- **Norco:** 2006 W 1500 S, Salt Lake City 84104 and 3750 W 2100 S, 84120, plus West Jordan (directory listings); Norco serves ID, OR, WA, MT, NV, UT, WY and runs its own ASUs (unverified: <https://www.norco-inc.com/> loads but its branch finder is script-driven and gave no branch address or phone to the runner or the Pi's Chromium on 2026-11-07; a phone-less "Contact Us" and "Branch Finder" are the only routes found).
+- **Academic:** university cylinder contracts through BYU Purchasing (unverified). BYU Financial Services' tax pages say a vendor needs the University's Utah charitable exemption certificate (purchases of $1,000 or more) or a TC-73 seller contract (under $1,000); see <https://finserve.byu.edu/sales-tax-faqs> (search result, 2026-11-07); BYU tax-exempt status is for BYU Purchasing to confirm.
 
 ### 4. Open questions
 Bulk vs cylinders at our consumption; delivery schedule, tank siting and the **vaporizer and regulators**; gas purity certificates; cylinder rental rates; **LN2 for the XRF or SEM**; the delivery truck's access to the room.
@@ -613,7 +622,7 @@ Gases and purity; usage per month **[to confirm]**; delivery address and dock; c
 > justifies it, delivery schedule and regulators/manifold options, and the BYU academic price. [name, email **[to confirm]**]
 
 ### 7. Sources
-[Airgas Utah locator](https://locations.airgas.com/ut/), [SLC branch](https://locations.airgas.com/ut/saltlakecity/airgas-store-c250.html), Norco and Linde directory listings and job postings (search snippets, 2026-11-07).
+[Airgas Utah locator](https://locations.airgas.com/ut/), [SLC branch](https://locations.airgas.com/ut/saltlakecity/airgas-store-c250.html), [Airgas locator](https://locations.airgas.com/ut/saltlakecity/) and [Linde contact page](https://www.lindeus.com/contact-us) (runner, 2026-11-07); Norco and Linde Utah addresses from directory listings and job postings (search snippets).
 
 ---
 
@@ -629,9 +638,9 @@ Labconco's page (`labconco.com/p/protector-xstream-laboratory-hoods`); the spec 
 (Labconco sells blowers and the Protector hood's Optional Basecabinet). Electrical 115 V, **[to confirm]**.
 
 ### 3. Contact
-- **Labconco:** sales **(816) 333-8811**, toll-free **(800) 821-5525**, fax (816) 363-0130, 8811 Prospect Ave, Kansas City, MO 64132-2696; form <https://www.labconco.com/contact> ("Request a Quote").
-- **Utah representative:** **Jackson Corning**, Sales Representative (Northern California, Nevada, Utah), <https://www.labconco.com/sales/us-and-canada-sales/jackson-corning>; no email or direct phone listed (use the main line). Distributors: <https://www.labconco.com/distributors>.
-- **Academic:** state contract / GSA pricing via distributors **[to confirm]**.
+- **Labconco:** sales **(816) 333-8811**, toll-free **(800) 821-5525**, fax (816) 363-0130, 8811 Prospect Ave, Kansas City, MO 64132-2696; form <https://www.labconco.com/contact> ("Request a Quote") (verified: <https://www.labconco.com/contact>, 2026-11-07).
+- **Utah representative:** **Jackson Corning**, Sales Representative (Northern California, Nevada, Utah), <https://www.labconco.com/sales/us-and-canada-sales/jackson-corning>; no email or direct phone listed (use the main line) (verified: <https://www.labconco.com/sales/us-and-canada-sales>, 2026-11-07). Distributors: <https://www.labconco.com/distributors>.
+- **Academic:** state contract / GSA pricing via distributors (unverified: ask).
 
 ### 4. Open questions
 Exact **exhaust CFM** and static pressure for a 4 ft with the 18 in sash stop; a **VAV controller** and its BMS (BACnet) interface for a hood that a robot may feed; **can a robot reach through the sash** (a motorised sash?);
@@ -662,7 +671,7 @@ Candidate catalogue numbers seen: SAS-224-DCH (24 in, 80 cfm, acrylic), SAS-324-
 24 D × 26 W × 25 H in outside (610 × 660 × 635 mm); carbon filters (solvent vapours, **not HF**); the air returns to the room, i.e. into the VLM. Mains 115 V.
 
 ### 3. Contact
-**sales@sentryair.com**, **1.800.799.4609**, Sentry Air Systems, 21221 FM 529 Rd, Cypress, TX 77433 (product-sheet footer; sentryair.com/contact.htm returned 404). Dealers: Cal-Pac Lab (calpaclab.com), SPER Direct.
+**sales@sentryair.com**, **1.800.799.4609**, Sentry Air Systems, 21221 FM 529 Rd, Cypress, TX 77433 (verified: <https://www.sentryair.com/>, 800-799-4609 and `sales@sentryair.com` shown on the page, also 877-780-7452 and 713-690-2153 international; via the Pi's Chromium, 2026-11-07, since the runner got 406; the Cypress, TX address is from the product sheet, unverified). Dealers: Cal-Pac Lab (calpaclab.com), SPER Direct (not re-fetched, unverified).
 
 ### 4. Open questions
 Filter **life and the vapour list** (IPA, ethanol, etchants); **air return into the VLM** (is it acceptable, and the flow); a **robot-actuated sash** or access door; blower noise and heat; **PM** (filter swap hours, price), spares, service.
@@ -692,8 +701,9 @@ Vigor's standard box is 1200 × 750 × 900 mm, **too tall** for a tray at 856.5 
 Lengths 1200, 1500, 1800, 2400 mm; width 750; height 900. Antechambers: large (370 mm ID × 600 mm) and **small (150 mm ID × 300 mm, manual only)**; 220 mm aluminium glove ports; "each glovebox is custom made". N2 purge is not mentioned, so ask.
 
 ### 3. Contact
-- **Vigor Tech USA:** 5718 Westheimer Rd, Suite 1000, Houston, TX 77057; **no email or phone published**, product enquiry form on <https://www.pharmaceutical-tech.com/products/vigor-tech-usa/standard-gloveboxes> (the distributor's page).
-- **Others to ask (custom, low-profile):** MBraun, Inert Technology (PureLab), Plas-Labs, Terra Universal. Contacts **[to confirm]**; none were fetched.
+- **Vigor Tech USA:** 5718 Westheimer Rd, Suite 1000, Houston, TX 77057; **no email or phone published**, product enquiry form on <https://www.pharmaceutical-tech.com/products/vigor-tech-usa/standard-gloveboxes> (the distributor's page) (unverified: vigortechusa.com gave no readable contact to the runner or the Pi's Chromium, 2026-11-07; the address is from the first pass).
+- **Plas-Labs** (Lansing, MI): US sales **(800) 866-7527**, also (517) 372-7177 and (517) 372-2857 (verified: <https://www.plas-labs.com/contact>, 2026-11-07); it lists "Custom Glove Boxes" as a product line.
+- **Others to ask:** MBraun (<https://www.mbraunusa.com/>; unverified: its contact page was not readable, 2026-11-07), Terra Universal (unverified: Cloudflare challenge, 2026-11-07), Inert Technology (PureLab) (unverified: contact page 404).
 
 ### 4. Open questions
 **Custom height of 810 mm** and the 1390 mm length; **robot loading** through an antechamber door or a glove-free port; **O2/H2O sensor** (purge-only: target ppm); N2 consumption (L/min) against the 1.1 L/min generator; **door actuators**
@@ -724,8 +734,9 @@ The lab already runs Pi streams (picam-ot2 at 144p; `CLAUDE.md`).
 Raspberry Pi's figures (`notes/services.md`). **Price shock:** the 16 GB Pi 5 rose to **$385** on 2 Nov 2026 (reported), from $305; the 8 GB model's price **[to confirm]**. Consider the **8 GB** Pi 5 or a Pi 4 for stream-only duty.
 
 ### 3. Contact
-No sales email: buy from **Raspberry Pi Approved Resellers** (<https://www.raspberrypi.com/resellers/>). US: **PiShop.us**, **Adafruit**, **SparkFun**, **CanaKit**, **Digi-Key**. `compliance@raspberrypi.com` is for compliance questions only.
-Education: Raspberry Pi has an education programme; **[to confirm]**.
+No sales email: buy from **Raspberry Pi Approved Resellers** (<https://www.raspberrypi.com/resellers/>; unverified: raspberrypi.com returned 403 to the runner and a bot page to the Pi, 2026-11-07). US: **PiShop.us**, **Adafruit**, **SparkFun**, **CanaKit**, **Digi-Key**.
+**PiShop.us:** contact form at <https://www.pishop.us/contact-us/>, `support@pishop.us`, **844-774-4338** (it is an online-only store) (verified: <https://www.pishop.us/contact-us/>, 2026-11-07). **Adafruit:** <https://www.adafruit.com/contact> loads (verified) but lists a support forum and no sales email or number that we could extract; ask for a quote through its site (unverified).
+`compliance@raspberrypi.com` is for compliance questions only (first pass; unverified now). Education: Raspberry Pi has an education programme (unverified).
 
 ### 4. Open questions
 Stock and lead time for **30-45 Pis**, the price if bought in bulk (Raspberry Pi's "industrial" sales team for 100+), the **HQ Camera**'s availability, lens options, the **Pi 5's power draw** inside the enclosure's heat (60 W per tray idle), and an industrial Pi (Compute Module 5) alternative.
@@ -753,7 +764,8 @@ Quantity: 15 trays × 2-3 units = 30-45 sets, plus spares; use: streaming and QA
 PiKVM V4 Mini datasheet (<https://docs.pikvm.org/v4/v4mini_datasheet.pdf>): no USB-C display input (the **V4 Plus** is the model with KVM switching). Ethernet; power by USB-C or PoE **[to confirm]**.
 
 ### 3. Contact
-No support email found. Buy at **Pimoroni (US store)**, **PiShop.us** or **Newegg ($589.88)**; PiKVM's own site is pikvm.org (a support Discord and a sales contact **[to confirm]**).
+No support or sales email is published. PiKVM's own buy page lists its resellers: **HiPi** (shop.hipi.io), **CloudFree** (cloudfree.shop), **Pimoroni** and others, and its support page points to a Discord (<https://discord.gg/bpmXfz5>), Reddit (r/pikvm) and GitHub
+(verified: <https://pikvm.org/buy/> and <https://pikvm.org/support/>, 2026-11-07). PiShop.us and Newegg ($589.88) stock it too (reseller listings, unverified as authorised). Contact CloudFree or HiPi for a quote; neither store's contact page was read.
 
 ### 4. Open questions
 Does the VHX-7000's PC accept a USB HID emulation and a capture of its HDMI at its resolution; **Remote Desktop** as an alternative; stock and a 2-3 unit price.
@@ -782,7 +794,7 @@ Primera sells **no print-and-apply bundle**, and labels die-cut on the LX610 are
 Interfaces: USB; the AP380 has a foot pedal or a start signal **[to confirm]**; the LX500c has a Windows driver and a Mac driver (no Linux driver **[to confirm]**). Labels and ribbons are consumables.
 
 ### 3. Contact
-**sales@primera.com**, **+1-763-475-6676**, toll-free **800-797-2772**, fax +1-763-475-6677, Primera Technology, Two Carlson Parkway North, Plymouth, MN 55447; live chat (Mon-Fri 7:00-22:00 CDT, Sat 11:00-20:00). No sales form. No Utah distributor found.
+**sales@primera.com**, **+1-763-475-6676**, toll-free **800-797-2772**, fax +1-763-475-6677, Primera Technology, Two Carlson Parkway North, Plymouth, MN 55447; live chat (Mon-Fri 7:00-22:00 CDT, Sat 11:00-20:00). No sales form (verified: <https://www.primera.com/contact-us>, `sales@primera.com`, +1 763 475-6676 and +1 800 797-2772 on the page, 2026-11-07). No Utah distributor found.
 
 ### 4. Open questions
 A **robot start signal** (a dry contact) for the AP380; a **Linux or API** way to print from the scheduler (SDK, CUPS); **label stock** for glass jars and the AP380's wrap on 30-500 mL jars; ink cost per label; PM, **printheads and ink as consumables with prices**, service.
@@ -811,7 +823,8 @@ Items: jars 30-500 mL (15-170 mm diameter), about 1,000-2,000 a year **[to confi
 USB, Ethernet and serial; **ZPL** over TCP 9100 (printable from a Python scheduler); Zebra's own site refused the runner earlier (the notes).
 
 ### 3. Contact
-Zebra's own pages (JS-only: the runner and the Pi both returned empty HTML; no contact extracted). Buy from a **Zebra Authorized Partner** (Zebra's partner locator, <https://www.zebra.com/us/en/partners/find-a-partner.html>). Zebra US sales phone **[to confirm]**.
+Zebra's own contact page (<https://www.zebra.com/us/en/about-zebra/contact-zebra.html>) offers a "Contact Sales" pre-sales form and lists no phone or email; its partner page offers "Buying From an Authorized Zebra Reseller" and "Find a Partner" (<https://www.zebra.com/us/en/partners/find-a-partner.html>)
+(verified: both, via the Pi, 2026-11-07, since the runner got 406). Buy from a **Zebra Authorized Partner**. Zebra's US sales phone is not published on that page (unverified).
 
 ### 4. Open questions
 Ribbon type for glass-jar lids; **auto-peel** and a presenter for robot pick-up; ZPL printing from Python; PM (printhead life), consumable and service prices.
@@ -839,7 +852,7 @@ Zebra pages attempted via the runner (HTTP 406) and the Pi (no content, 2026-11-
 Uline's catalogue; mains 120 V; a foot-pedal or timer; **no robot interface**.
 
 ### 3. Contact
-Uline sales **1-800-295-5510**; <https://www.uline.com/>. Uline has a Utah branch **[to confirm]**; Uline ships from Chicago, Dallas, Los Angeles or Salt Lake City, **[to confirm]**.
+Uline sales **1-800-295-5510**, `customer.service@uline.com`; <https://www.uline.com/> (verified: <https://www.uline.com/>, 2026-11-07). Uline's locations page (<https://www.uline.com/Corporate/About_Locations>) lists no Utah or Salt Lake City site; the nearest listed are Ontario, CA (Los Angeles) at 4810 South Hellman Avenue and Dallas, TX (verified, 2026-11-07), so expect shipping from there, not a Utah pickup.
 
 ### 4. Open questions
 Whether the sealer can run from a **relay** (timer) for a robot; sealing thickness; **spares**: replacement heating element and Teflon tape, with prices; warranty.
@@ -867,8 +880,9 @@ Material: borosilicate or soda-lime glass; **PTFE-lined phenolic or PP caps**; m
 
 ### 3. Contact (candidate suppliers, none fetched)
 - **Uline**, **1-800-295-5510**, glass jars and steel cans (<https://www.uline.com/>).
-- **Qorpak** (clear glass jars with PTFE-lined caps) and **Berlin Packaging**, **Fisher Scientific / VWR**: contacts **[to confirm]**.
-- Racks: a **custom ESD rack** (laser-cut or 3D-printed in conductive material) by us; an ESD supplier **[to confirm]**.
+- **Qorpak** (clear glass jars with PTFE-lined caps; part of Berlin Packaging): `Qorpak@BerlinPackaging.com`, **800-922-7558** (verified: <https://www.qorpak.com/contact>, 2026-11-07). **Berlin Packaging**: **800-363-9822**, contact form (verified: <https://www.berlinpackaging.com/contact>, 2026-11-07).
+  **Fisher Scientific**: customer service **1-800-766-7000** (partial: in Fisher's own page text, <https://www.fishersci.com/us/en/contact-us.html>, 2026-11-07); VWR not checked (unverified).
+- Racks: a **custom ESD rack** (laser-cut or 3D-printed in conductive material) by us; an ESD supplier is not yet named (open gap).
 
 ### 4. Open questions
 Lot-controlled **glass with certificates**; cap liners that do not shed PTFE; **jars for ICP** (acid-washed); static buildup in glass versus HDPE (combustible metal dust): **grounding practice for NFPA 484**; can-style gaskets; pricing at 500-1,000 quantity; **breakage** by a robot gripper (use of 85 mm 2F-85 pads).
@@ -877,7 +891,7 @@ Lot-controlled **glass with certificates**; cap liners that do not shed PTFE; **
 Quantity: 581 jars at the start, then growth **[to confirm]**; size mix **[to confirm]**; contents: Al, Cu alloys, Mg and Li master alloys; labels by our Primera printer.
 
 ### 6. Draft email
-> **To:** Uline (1-800-295-5510) and Qorpak/Berlin Packaging **[to confirm]**
+> **To:** Uline (1-800-295-5510), Qorpak (`Qorpak@BerlinPackaging.com`, 800-922-7558) and Berlin Packaging
 > **Subject:** Quote: 600 glass jars, PTFE-lined caps (30, 60, 125, 250, 500 mL), 100 steel gasketed cans
 >
 > We store metal powders in sealed glass jars (clear, wide-mouth, PTFE-lined caps) and in gasketed metal cans for fines. Please quote 600 jars in these sizes and 100 cans with silicone or Viton gaskets, and tell us whether you have static-dissipative options, lot certificates and the lead time. [name, email **[to confirm]**]
@@ -897,7 +911,7 @@ About 112 15 mL ICP-MS tubes in the model, plus the CubXL's 0.5 mL tubes (`notes
 **$35/hour for internal BYU users and $70/hour for external users** (the facility's atomic-analysis page, 2026-11-07).
 
 ### 3. Contact
-**Faculty advisor: Jason J. Sorensen**, `jason.sorensen@byu.edu`, C203 BNSN, **(801) 422-7083** (the facility's own contact page). Facility page: <https://labs.chem.byu.edu/byu-spectroscopic-facility/atomic-analysis>.
+**Faculty advisor: Jason J. Sorensen**, `jason.sorensen@byu.edu`, C203 BNSN, **(801) 422-7083** (verified: the facility's own contact page, <https://labs.chem.byu.edu/byu-spectroscopic-facility/contact>, via the Pi, 2026-11-07). Facility page: <https://labs.chem.byu.edu/byu-spectroscopic-facility/atomic-analysis>.
 
 ### 4. Open questions
 Sample **turnaround**; **acceptable matrices** and digestion for Al, Cu, Ni alloys (no HF: Si, Al-Li master alloy, Ti?); **batch size** (hundreds of tubes), **the hourly rate per sample**; whether the facility can **accept robot-delivered racks** or needs people; data format and an
@@ -915,3 +929,22 @@ Elements and ranges (Al, Si, Cu, Ni, Fe, Mg, Li, Ce) **[to confirm]**; volume (h
 
 ### 7. Sources
 [Atomic analysis page](https://labs.chem.byu.edu/byu-spectroscopic-facility/atomic-analysis) and [contact page](https://labs.chem.byu.edu/byu-spectroscopic-facility/contact), both via Pi (the runner got 403), 2026-11-07.
+
+---
+
+## Gaps (contacts, second pass, 2026-11-07)
+
+**Confirmed from the vendor's own page:** Kardex (Westbrook ME address and the form; no Utah dealer), Hoj Innovations (Salt Lake City), Pacific Integrated and Associated (Modula dealers), Universal Robots USA, MiR global email, Hartfiel (MiR in Utah), Robotiq phone, RealSense contact form and store, Airgas (Salt Lake City, corrected), Linde national lines, Labconco (Utah rep), Sentry Air, Plas-Labs, PiShop.us, PiKVM buy and support pages, Primera, Zebra forms, Uline (phone; no Utah site), Qorpak, Berlin Packaging, BYU Spectroscopic Facility.
+
+**Still open (unverified), most important first:**
+1. **Modula** email, phones, and the Utah dealer: modula.us and modula.com sit behind a Cloudflare challenge for both the runner and the Pi. Use Pacific Integrated (Arizona and California offices) or ask Modula's form.
+2. **Kardex phone** (800-639-5805 is from 2013-2018 press releases) and whether **Hoj** is a Kardex dealer for the Shuttle VLM: ask both; Kardex names no Utah dealer.
+3. **Stäubli** (403 everywhere): the Windsor, CA number comes from directories only; no Mountain West distributor found.
+4. **Eaton** presales address and phone: eaton.com pages list none; the figures are from a search result of the Eaton-hosted product page.
+5. **Parker Balston** (403 everywhere): the 800-343-4048 and `balstontechsupport@parker.com` come from a search report of Parker's own PDF; no Utah distributor.
+6. **Norco** and **Linde** Utah branch phones; Utah-based **UR** and **MiR** integrators (partner locators are script-driven); Cross Company and Hartfiel Colorado addresses.
+7. **MBraun**, **Terra Universal**, **Inert Technology**, **Vigor Tech USA**: no contact page was readable.
+8. **Robotiq Utah distributor** and **Raspberry Pi** reseller page (403); Adafruit sales route; **VWR**; an **ESD rack supplier** is not yet named.
+9. BYU's tax-exempt status for these purchases: BYU Financial Services describes a Utah charitable exemption certificate and a TC-73 seller contract (<https://finserve.byu.edu/sales-tax-faqs>); BYU Purchasing is to confirm.
+
+**Added this pass:** Hoj Innovations (Utah Kardex-line integrator), Pacific Integrated and Associated (Modula), Plas-Labs and Qorpak/Berlin (named contacts), PiKVM's official resellers, Airgas dry-ice site correction, Uline's nearest warehouses.
