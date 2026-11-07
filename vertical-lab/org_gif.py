@@ -72,7 +72,8 @@ NAME = os.environ.get("ORG_NAME", "org_vertical_lab")   # another name renders b
 TITLE = "In a vertical lab, equipment is brought to the operator"
 SPEED = 1.5          # the GIF plays the clip at this many times its modelled speed, and says so (12 fps x 1.5: 18 fps,
                      # frame delays of 6 and 5 cs in turn)
-GIF_W = 1280         # px; the org README shows it about 830 px wide, so this stays sharp on a 2x display
+GIF_W = 1024         # px; the org README shows it about 830 px wide. Round 3's 1280 px gave 37 MB for the first half
+                     # of round 4's loop alone; 1024 px about two thirds of that
 TEXT = 1.45          # the overlay's text, against the scenes' 720p sizes: the README shows the GIF at about 0.65x
 S1_TRAYS = "ABCDEFJ"     # Shuttle 1's trays (setup_lab.TRAYS): the only ones loaded
 
@@ -704,7 +705,7 @@ def movie():
     import scene as SC
     import vlm as V
     import warehouse as W
-    from scene import OUT, T
+    from scene import OUT, R, T
     M, RP = AT.M, AT.RP
     sc, L, K, fx = build(lab.meshes())
     sc.title = ""
@@ -810,6 +811,10 @@ def movie():
         yield 1.6 * f, lambda: car.to(shuttle=0.0)
         yield 0.4 * f, lambda: car.to(fork=A.SET_U)
         car.reparent(cg, K.rig)
+        # the arm took the cup at spin 0 and set it down at spin 180, so the half that the cutaway keeps faces the
+        # camera; turned back about its own axis on the pedestal (a whole cup looks the same either way), the cut
+        # face shows
+        sc.gmat[cg] = sc.gmat[cg] @ R((0, 0, 1), 180.0)
         yield 0.3 * f, lambda: car.to(fork=1.0)
         yield 1.3 * f, lambda: car.to(shuttle=1.0)
         yield 0.5 * f, lambda: car.to(side_door=0.0, fork=0.0)
@@ -1037,9 +1042,12 @@ def movie():
         yield ARM_S[2], lambda: rb.grip_to(GRIP_KNOB)
         rb.events.append((sc.n, "grasp", AT.g("knob"), None))
         yield 1.9, lambda: both(arc(knob_grasp, 0.0, LID_LET, 10), lambda e: lid(LID_LET * e))
-        yield 0.3, lambda: rb.grip_to(0.45)
+        yield 0.3, lambda: rb.grip_to(0.2)
         rb.events.append((sc.n, "release", AT.g("knob"), None))
-        yield 0.5, lambda: (lambda e: lid(LID_LET + (1.0 - LID_LET) * e * e))   # falls back onto its stop
+        # it falls back onto its stop as the hand backs off (left where it let go, the fingertips met the shell)
+        yield 0.5, lambda: both(lambda e: lid(LID_LET + (1.0 - LID_LET) * e * e),
+                                rb.line_to(clear_line([knob_grasp(LID_LET) @ T((0, 0, -d)) for d in (50.0, 35.0, 20.0)],
+                                                      0.2)))
         # the loading tong out of its holder on the MiR's cabinet (alloy_atomize: chapter 2's moves)
         yield from call(lambda: (phase("With a loading tong, the arm takes the cup and sets it on the crucible's "
                                        "floor, past the sealing rod."), labels(lbl_arm, lbl_tong_at())))
@@ -1061,8 +1069,9 @@ def movie():
         yield 0.6, lambda: rb.line_to(T((0, 0, 150)) @ rb.tcp_world())
         path = AT.tong_path(CUP_AT)
         grips = [AT.tong_tcp(T(RP) @ AT.tong_frame_for(CUP_AT, Mx)) for Mx in path]
-        stage = grips[0].copy()
-        stage[0, 3], stage[1, 3] = RP[0] + 60.0, RP[1] - 200.0
+        # over the crucible from straight above its first pose (chapter 2 swung it in from 200 mm in front, its lever
+        # up: with the lever down, that line took the cup across the rod's adapter)
+        stage = T((0, 0, 80)) @ grips[0]
         yield 1.3, lambda: both(rb.joint_to(Tw=stage), cam_up(sc, "bore"))
         yield 0.6, lambda: rb.line_to(grips[0])
         # down the bore in three legs, the arm's "held" part swapping between the cup and the tong (alloy_atomize)
@@ -1121,7 +1130,7 @@ def movie():
         yield ATOM_SECS - 1.6 - 4.6, None
         yield from call(lambda: (phase("And the robot goes back to the VLM for the next tray."), labels(*at_start)))
         yield from cam_to(sc, "wide", 4.6)
-        yield 1.2, None
+        yield 0.7, None
 
     def back():
         yield 1.0, None
@@ -1197,7 +1206,7 @@ def header(img, caption: str):
     import scene as SC
     w = img.width
     k = w / 1280
-    H = int(round(BAND * k))
+    H = int(round(BAND * k / 2)) * 2      # even, for the h264 copy
     out = Image.new("RGB", (w, img.height + H), "white")
     out.paste(img, (0, H))
     d = ImageDraw.Draw(out)
@@ -1213,7 +1222,7 @@ def header(img, caption: str):
     return out
 
 
-def gif(width=GIF_W, lossy=0, colors=128, sticky=int(os.environ.get("ORG_STICKY", "6"))):
+def gif(width=GIF_W, lossy=0, colors=112, sticky=int(os.environ.get("ORG_STICKY", "8"))):
     """out/mp4/<NAME>.mp4 -> out/<NAME>.gif, every frame at SPEED x the MP4's rate, each under the header band; and the
     same frames as out/mp4/<NAME>_readme.mp4 (SPEED x, h264), for anyone who would rather embed a video. One palette
     for the whole clip (the camera holds still), no dithering, gifsicle -O3 and no --lossy: lossy re-encoding drifts
@@ -1225,7 +1234,11 @@ def gif(width=GIF_W, lossy=0, colors=128, sticky=int(os.environ.get("ORG_STICKY"
     still, so each frame stored more than what moved. `sticky` keeps a pixel from the frame before wherever no channel
     has changed by more than that many levels (of 255), so those parts are the same bytes from frame to frame: 40.0 MB
     at 6. Most of what is left is the two pans, which change every pixel for about 115 frames. Motion isn't held back:
-    something moving across a pixel changes it by far more than 6 levels."""
+    something moving across a pixel changes it by far more than 6 levels.
+    Round 4's is 1331 frames, wide and close, with the camera moving for about a third of them (the zoom in and out,
+    the push in to the pan and back, the pan with the MiR, the bore and the cutaway). Its first half alone came to
+    37.2 MB at 1280 px, 128 colours and `sticky` 6; 26.0 MB at 1024 px; 28.3 MB at 1120 px, 112 colours and 8. So
+    1024 px, 112 colours and 8."""
     from PIL import Image
 
     from scene import OUT
@@ -1274,7 +1287,7 @@ def gif(width=GIF_W, lossy=0, colors=128, sticky=int(os.environ.get("ORG_STICKY"
         subprocess.run(["ffmpeg", "-loglevel", "error", "-y", *seq_, "-c:v", "libx264", "-crf", "20", "-preset", "slow",
                         "-pix_fmt", "yuv420p", "-movflags", "+faststart", str(vid)], check=True)
         Image.open(f"{tmp}/00000.png").save(OUT / f"{NAME}_still.png", optimize=True)   # its first frame
-    msg = (f"{out.name}: {out.stat().st_size / 1e6:.2f} MB, {w} x {h + int(round(BAND * w / 1280))}, {n} frames at "
+    msg = (f"{out.name}: {out.stat().st_size / 1e6:.2f} MB, {w} x {h + int(round(BAND * w / 1280 / 2)) * 2}, {n} frames at "
            f"{fps:g} fps ({n / fps:.1f} s); {vid.name}: {vid.stat().st_size / 1e6:.2f} MB")
     print(msg, flush=True)
     return msg
