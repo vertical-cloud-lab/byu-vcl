@@ -1,0 +1,37 @@
+{
+ "source": "https://youtu.be/wRc8p2_FnJo?t=1813",
+ "video": "wRc8p2_FnJo",
+ "t": 1813,
+ "pose": {},
+ "holdout": false,
+ "points": {
+  "knob ball": [
+   530,
+   280
+  ],
+  "keeper top": [
+   613,
+   305
+  ],
+  "latch lever top": [
+   622,
+   340
+  ],
+  "latch lug": [
+   655,
+   428
+  ],
+  "bolt cabinet": [
+   738,
+   406
+  ],
+  "latch foot": [
+   605,
+   552
+  ],
+  "panel lcd centre": [
+   1115,
+   215
+  ]
+ }
+}
