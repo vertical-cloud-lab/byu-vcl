@@ -1507,6 +1507,15 @@ def audit_join():
                              robots=[SimpleNamespace(prefix=p, events=ev) for p, ev in events.items()])
     aud.frames, aud.checkers, aud.snap_frames = frames, {}, set()
     rep = aud.save()
+    if STILL_EVERY > 1:          # the report says what was checked: still_skip passed over frames where nothing moved
+        from scene import OUT
+        pth = OUT / "collisions" / f"{NAME}.json"
+        r = json.loads(pth.read_text())
+        r["method"] = r["method"].replace(
+            "every frame of the clip, after its update",
+            f"every frame of the clip where an arm has moved (its joints, its MiR's pose, what it holds), and every "
+            f"{STILL_EVERY}th while none has (org_gif.still_skip), after its update")
+        pth.write_text(json.dumps(r, indent=1) + "\n")
     print(f"{rep['frames_with_collisions']} of {rep['frames_checked']} frames with collisions", flush=True)
 
 
