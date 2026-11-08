@@ -187,7 +187,18 @@
      "overlaps": []
     }
    ],
-   "ok": true
+   "ok": true,
+   "load": {
+    "known_kg": 157.0,
+    "not_found": [
+     "Powder prep station: XRD holder, SEM stub, XRF cup (our design)"
+    ],
+    "over_one_person": [
+     "Hitachi TM4000PlusII (54 kg)",
+     "Rigaku MiniFlex (6th generation) (80 kg)"
+    ],
+    "lightest_tray_for_the_known_part": "light"
+   }
   },
   "A": {
    "role": "liquid handling, corrosion",
@@ -328,7 +339,16 @@
      "overlaps": []
     }
    ],
-   "ok": true
+   "ok": true,
+   "load": {
+    "known_kg": 23.0,
+    "not_found": [
+     "Opentrons OT-2",
+     "CubXL + NuVant EZstat Pro"
+    ],
+    "over_one_person": [],
+    "lightest_tray_for_the_known_part": "light"
+   }
   },
   "B": {
    "role": "powder dosing, vacuum press",
@@ -453,7 +473,18 @@
      "overlaps": []
     }
    ],
-   "ok": true
+   "ok": true,
+   "load": {
+    "known_kg": 118.0,
+    "not_found": [
+     "vial rack",
+     "multi-doser: chain carousel v5 on an HR-202i, 13 powders"
+    ],
+    "over_one_person": [
+     "Specac Atlas Autotouch 15T, vacuum press (95 kg)"
+    ],
+    "lightest_tray_for_the_known_part": "light"
+   }
   },
   "E": {
    "role": "mechanical testing, particle size",
@@ -642,7 +673,18 @@
      "overlaps": []
     }
    ],
-   "ok": true
+   "ok": true,
+   "load": {
+    "known_kg": 63.5,
+    "not_found": [
+     "Plastometrex PLX-Benchtop",
+     "KLA iMicro"
+    ],
+    "over_one_person": [
+     "Malvern Mastersizer 3000 + Aero S (40 kg)"
+    ],
+    "lightest_tray_for_the_known_part": "light"
+   }
   },
   "J": {
    "role": "sample storage",
@@ -767,7 +809,15 @@
      "overlaps": []
     }
    ],
-   "ok": true
+   "ok": true,
+   "load": {
+    "known_kg": 23.0,
+    "not_found": [
+     "Storage load (our design)"
+    ],
+    "over_one_person": [],
+    "lightest_tray_for_the_known_part": "light"
+   }
   },
   "C": {
    "role": "3D printing",
@@ -908,7 +958,16 @@
      "overlaps": []
     }
    ],
-   "ok": true
+   "ok": true,
+   "load": {
+    "known_kg": 23.0,
+    "not_found": [
+     "Bambu Lab H2D",
+     "Bambu Lab A1 mini"
+    ],
+    "over_one_person": [],
+    "lightest_tray_for_the_known_part": "light"
+   }
   },
   "F": {
    "role": "polishing and heat treatment",
@@ -1097,7 +1156,20 @@
      "overlaps": []
     }
    ],
-   "ok": true
+   "ok": true,
+   "load": {
+    "known_kg": 83.0,
+    "not_found": [
+     "LECO PX500 + disc magazine",
+     "LECO MX400",
+     "six-shelf disc magazine (ours)",
+     "water tank with a lift basket, our design"
+    ],
+    "over_one_person": [
+     "Nabertherm NAT 15/65 (60 kg)"
+    ],
+    "lightest_tray_for_the_known_part": "light"
+   }
   },
   "K": {
    "role": "inert glovebox, digital microscope",
@@ -1206,7 +1278,15 @@
      "overlaps": []
     }
    ],
-   "ok": true
+   "ok": true,
+   "load": {
+    "known_kg": 30.2,
+    "not_found": [
+     "Custom N2 glovebox (purge-only)"
+    ],
+    "over_one_person": [],
+    "lightest_tray_for_the_known_part": "light"
+   }
   },
   "L": {
    "role": "tensile and hardness",
@@ -1347,7 +1427,16 @@
      "overlaps": []
     }
    ],
-   "ok": true
+   "ok": true,
+   "load": {
+    "known_kg": 144.0,
+    "not_found": [],
+    "over_one_person": [
+     "ZwickRoell zwickiLine Z5.0 TN (78 kg)",
+     "Mitutoyo HM-220 Type D (AVPAK) (43 kg)"
+    ],
+    "lightest_tray_for_the_known_part": "light"
+   }
   },
   "M": {
    "role": "machining and XRF, under a hood",
@@ -1504,7 +1593,18 @@
      "overlaps": []
     }
    ],
-   "ok": true
+   "ok": true,
+   "load": {
+    "known_kg": 181.0,
+    "not_found": [
+     "Sentry Air Systems ductless hood, 24 in"
+    ],
+    "over_one_person": [
+     "Bruker S2 PUMA Series 2, XY Autochanger (108 kg)",
+     "Makera Carvera (50 kg)"
+    ],
+    "lightest_tray_for_the_known_part": "light"
+   }
   },
   "H": {
    "role": "PCB assembly",
@@ -1661,7 +1761,16 @@
      "overlaps": []
     }
    ],
-   "ok": true
+   "ok": true,
+   "load": {
+    "known_kg": 38.0,
+    "not_found": [
+     "DDM Novastar SPR-45VA",
+     "Opulo LumenPnP v4.2"
+    ],
+    "over_one_person": [],
+    "lightest_tray_for_the_known_part": "light"
+   }
   },
   "G": {
    "role": "resin printing",
@@ -1834,7 +1943,18 @@
      "overlaps": []
     }
    ],
-   "ok": true
+   "ok": true,
+   "load": {
+    "known_kg": 23.0,
+    "not_found": [
+     "Formlabs Form 4",
+     "Formlabs Form 4",
+     "Formlabs Form Wash (2nd Gen)",
+     "Formlabs Form Cure (2nd Gen)"
+    ],
+    "over_one_person": [],
+    "lightest_tray_for_the_known_part": "light"
+   }
   },
   "I": {
    "role": "desktop LPBF",
@@ -1975,7 +2095,16 @@
      "overlaps": []
     }
    ],
-   "ok": true
+   "ok": true,
+   "load": {
+    "known_kg": 23.0,
+    "not_found": [
+     "SnowX SnowPod",
+     "SnowX SnowPod"
+    ],
+    "over_one_person": [],
+    "lightest_tray_for_the_known_part": "light"
+   }
   },
   "N": {
    "role": "powder store: feedstock",
@@ -2100,7 +2229,15 @@
      "overlaps": []
     }
    ],
-   "ok": true
+   "ok": true,
+   "load": {
+    "known_kg": 23.0,
+    "not_found": [
+     "Jar racks on a tray (our design)"
+    ],
+    "over_one_person": [],
+    "lightest_tray_for_the_known_part": "light"
+   }
   },
   "O": {
    "role": "powder store: atomized lots",
@@ -2225,7 +2362,15 @@
      "overlaps": []
     }
    ],
-   "ok": true
+   "ok": true,
+   "load": {
+    "known_kg": 23.0,
+    "not_found": [
+     "Jar racks on a tray (our design)"
+    ],
+    "over_one_person": [],
+    "lightest_tray_for_the_known_part": "light"
+   }
   }
  },
  "floor": {
