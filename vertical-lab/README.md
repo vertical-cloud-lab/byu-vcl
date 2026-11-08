@@ -9,6 +9,233 @@ the way the lab's other animations are (rePowder training, sieving, atomizer cha
 models tessellated into PyVista, rendered off-screen, text drawn with PIL, written as an MP4 and a GIF. The scene
 framework, [`scene.py`](scene.py), is `atomizer-training/viz3d/scene.py` from #124's branch.
 
+## Round 10: long-term maintenance, the doser's fall, vendor contacts, collisions to zero, the lab on round 9's models
+
+Sterling's comment of 2026-11-07 03:36 UTC on PR #318. The first run (03:37-04:23 UTC) stopped when the account ran out
+of model credits. The rest was done in the run of 22:07 UTC (`notes/round10_plan.md`, "Continuation").
+
+![Six frames of round 10](out/round10_sheet.png)
+
+### Every point checked: the ledger
+
+[`notes/feedback_ledger.md`](notes/feedback_ledger.md) goes through every comment Sterling wrote on #303 and on this
+PR. It checks each point against the branch and marks its status. Three early asks had never reached this branch:
+- three each of the OT-2, CubXL, H2D, A2L and A1 mini;
+- the 50 ft array;
+- whether to build our own VLM.
+
+### Long-term maintenance, inside the workflow
+
+[`upkeep.py`](upkeep.py) holds 121 maintenance tasks and 28 failure modes as data. Each has its interval, who does
+it, the downtime and the spares, with a source or "assumed". The same schedule that runs the alloys
+(`timelapse.simulate`) books all of them.
+
+It comes in four kinds:
+- calendar maintenance;
+- consumables changed by use;
+- reference checks the arm runs between jobs, onto control charts;
+- random failures, repaired by a person on the next shift, or by a vendor after a wait for parts.
+
+A person's task holds a Shuttle's opening, so the MiR drives off and works at the other Shuttle.
+[`notes/upkeep.md`](notes/upkeep.md) is the written answer. Over the model's year:
+- **The one person:** 31 h of their 40-hour week on average, at most 36. 13 h are at the atomizer's crucible and 18
+  on upkeep.
+- **Availability:** the route's stations average 99.0 %. The lowest are the atomizer (95.2 %), the two MiR250 + UR10e
+  units (95.3-95.4 %) and Shuttle 1's opening (95.6 %).
+- **Alloys:** 304 fully tested a year, against 324 with no upkeep and no failures. The failures cost the 20; planned
+  upkeep fits round the crucible's staffed hours, which set the pace. Someone on call at night would win back 7.
+- **Assumed:** 72 of the 121 intervals and all 28 failure rates. The other 49 cite a maker or a standard.
+
+[`upkeep_clip.py`](upkeep_clip.py) shows three of the tasks happening (116.8 s, 0 of 534 checked frames in collision;
+[notes](notes/upkeep_clip.md)):
+1. the week's schedule;
+2. the arm's daily check of the HR-202i with a 100 g E2 weight, onto a control chart;
+3. a person changing the iMicro's tip with tray E pulled out onto Kardex's extraction table. The arm then runs the
+   fused-silica check on the new tip as its next job.
+
+**The finale now shows the maintenance** ([notes](notes/timelapse.md)):
+- the person and visiting vendors are drawn where their task is;
+- an opening a person holds shows its tray there, and the arm keeps off that Shuttle;
+- each machine has a beacon: amber while it's out for upkeep, red while a fault waits;
+- a card of upkeep counters sits beside the throughput ones.
+
+The finale is 87.5 s (525 frames). The failure seed it shows, 303, is the unluckiest of eight tried: seeds 1-7 give
+312-321 alloys fully tested, and in one of them the busiest week reaches 41 h, over the 40-hour shift. The finale
+shows no tray pulled out, since that happens once in the year, as a repair, at the month scale.
+
+### The multi-doser: why a block can't shorten the fall, and the funnel
+
+**Yes, it's the latest:** powder-doser #185's head is still `353dae7`, chain carousel v5 with the HR-202i under the dose
+point, and Sterling's block comment is its last. Measured on v5's own geometry
+([`r10_doser_raise.py`](r10_doser_raise.py), [`out/doser_raise.json`](out/doser_raise.json)):
+
+![](out/doser_raise_section.png)
+
+- **The fall:** the auger exit is at 435.9 mm above the bench, and the balance's top at 312 mm.
+- **The carriage:** when parked, v5's electronics carriage sits 12.6 mm above the balance, and v5 keeps 10 mm clear
+  there. So a block under the balance can be at most 2.6 mm.
+- **The block needed:** bringing a cup's rim within 5 mm of the exit would take 148 mm, through the carriage and the
+  frame.
+- **Tray B has no room either:** the rig is 854 mm tall against the Shuttle's 856.5 mm.
+- **The vessel is already as high as it can go:** on the fork, the cup's rim passes 2.5 mm under the balance's side
+  door.
+- **The vial needs no funnel.** The 8 mm stream has 8.8 mm each side in its 25.6 mm mouth.
+- **The cups should have one, one per powder.** In the 12.7 mm bore the stream has only 2.35 mm each side, and a miss
+  lands on the rim or the pedestal: it is on the pan, so it is weighed as dosed without being in the cup. The funnel
+  rides on the shuttle's upper tine, off the pan, with its stem 4 mm above the bore.
+  - It's collision-checked along the shuttle's travel.
+  - The pan carries about 156 g of its 220 g.
+  - It isn't in chapter 1 yet.
+- **A shorter fall needs a change in powder-doser:** a spout per module, or parking the carriage away from the
+  balance's top.
+
+### Vendor contacts and quotes: #331
+
+#331's second pass checked every contact on the vendor's own page, fetching through the Pi where the runner was
+blocked:
+- **The contacts:** of 88, 45 are verified, 27 partly verified and 16 unverified, each tagged with its URL and date or
+  the reason.
+- **Added:** 11 contacts, among them Utah partners for Solukon, Formlabs, Kardex and MiR.
+- **Corrected:** five entries.
+- **Purchasing:** `lab_answers.md` now answers the purchasing questions too: tax-exempt status, PO and W-9, shipping
+  terms, the loading dock and hazmat.
+- **No email was sent.**
+- **Still blocked even from the Pi:** Hitachi's, KLA's and Instron's pages; they need a person with a normal browser.
+  Modula sits behind Cloudflare.
+- **The first pass** answers whether to build our own VLM: buy the lift; build what sits on and around the trays.
+
+### Collisions: chapters 4, 3, 7 and 6
+
+Sterling's question from round 8, "are there other things like that, that you didn't address yet?", applied to the
+arm. Round 9 had left collisions in four chapters.
+
+- **Chapter 4: 19 → 0 of 1,028 frames, and re-rendered** (1,309 frames, 218 s; [notes](notes/alloy_powder.md)).
+  - **The 16-frame sweep was on the way in to the MiniFlex, not on the way out.** The arm waited for the door in a
+    different IK branch from the one that is clear at the stage. Its straight line in then swung the upper arm
+    through the SEM, the MiniFlex's housing and a camera post. It now waits in the branch that is clear on the stage.
+  - **The opening door brushed the holder,** because the arm waited inside the door's swing. It now waits 480 mm back
+    (was 380).
+  - **A finger swept the holder as the vial turned over to sift.** The vial now sifts from 60 mm above the holder
+    (was 48). That this doesn't change the powder layer is assumed, not measured.
+- **Chapter 3: 7 → 0 in the changed sub-step, fixed in code** ([notes](notes/alloy_print.md)).
+  - **The forearm met the Aconity's lifted door,** going in and out with the jar. No other arm configuration cleared
+    it, and with the MiR parked further off the pour is out of reach. So the jar is carried 15 mm lower, its foot
+    17 mm above the chamber floor.
+  - **The seventh frame,** a fingertip on the sieving enclosure, showed up only in a 15 fps audit, not at the render's
+    6 fps.
+- **Chapter 7: 1 → 0 in the changed sub-step, fixed in code** ([notes](notes/alloy_characterize.md)). The wrist grazed
+  the VHX's stand while setting the bar down. Our loading slide now runs its carrier 140 mm out of the stage, not 110.
+  A real slide's travel would be set the same way, by what the wrist has to clear.
+- **Chapters 3 and 7's committed renders predate their fixes;** there wasn't render time for them this round.
+- **Chapter 6:** **456 of 3,539 → 0, and re-rendered** (1,816 frames, 302.7 s; [notes](notes/alloy_prep.md)). The render
+  audits its own 1,423 moving frames. Every hit in round 9's audit was traced:
+  - **In our model, the PX500's head column stood inside the bowl,** 95 mm behind its centre. So a 300 mm disc lifted
+    off the platen ran into it, and as modelled no disc could pass under the head at any height. The column now
+    stands behind the bowl's lip, still inside the machine's footprint. That is assumed: the column is hidden behind
+    the head in the SOP frames the model was fitted to.
+  - **Over the MX400's mold, the wrist camera hit the press** in all four IK branches. The gripper now turns 180°
+    there.
+  - **The pistons hung 4 mm into the holder's apertures when up,** so the holder couldn't slide on under them. Their
+    up gap is now 12 mm instead of 5.
+  - **The disc changes** were most of the frames: the forearm into the gripper, the upper arm through the bay's frame
+    and into the MiR's cabinet. Each move had simply kept the IK branch the last one left. Each approach is now a
+    joint move into a branch from which every straight line that follows is clear. The transfer between the
+    magazine and the platen is a planned move, not one 2 m straight line through the furnace's corner.
+  - **A disc lifted 8 mm in the magazine met the disc above.** It now lifts 4 mm.
+
+
+### The lab brought up to round 9
+
+- **The set-up movie** loads each tray from a scissor lift table at the opening; most items weigh 20-110 kg, more than
+  the arm's 12.5 kg or one person should lift.
+- **Added:** the dock utilities, and a reflow oven (Puhui T-962A) on tray H for the PCB line.
+- **The services, hookups and bay-camera clips** carry the vial to the v5 doser's shuttle, with the access table
+  under the bay.
+- **`setup_lab.py fit`:** all 15 trays (tray B's slot is 900 mm) and all 13 MiR docks check clear.
+- **One fix:** the first set-up render showed trays N and O's jars tinted teal and amber with no legend. A fade
+  piece that starts hidden now stays out of what the loading fades in (`54c3bdb`).
+- **Re-rendered on round 9's lab:** the set-up movie (118 s), and the hookups (40 s), services (34 s) and
+  bay-camera (32 s) clips.
+
+### Three each of the OT-2, CubXL, H2D, A2L and A1 mini
+
+Sterling asked for these on #303 (Nov 3). [`notes/three_each.md`](notes/three_each.md) is a plan to decide on, not a
+render:
+- **What's added:** 2 OT-2s, 2 CubXLs, 2 H2Ds, 2 A1 minis and 3 A2Ls.
+- **The safe layout** takes five new trays and 3,500 mm of column.
+- **A denser layout** takes four, but each printer tray then draws about 1,650 W against the UPS's 1,350 W.
+- **A third Shuttle is needed either way.** The free gaps in the two Shuttles are 390, 290, 15 and 290 mm, and the
+  shortest new tray needs 475 mm.
+- **It would stand where the Aconity MIDI is,** so the Aconity and the packaging station would have to move.
+- **For Sterling to decide:** whether the Aconity moves, and whether stored trays stay powered (a question for
+  Kardex).
+
+### The rePowder model: #327's second pass
+
+From the first run of round 10:
+- the chamber door hinges at the back;
+- two front swing-bolt clamps and the viewport are placed from DAL #189;
+- the control panel's keys are added;
+- a second held-out frame (T2 51:00) fits to 11.4 px RMS.
+
+The long-form shows the new before/after sheet. Chapter 2 still opens the lid about the old hinge until #327 is merged.
+
+### The long-form, round 10
+
+**[The vertical cloud lab, round 10](https://www.youtube.com/watch?v=aW5YoxPi0pM)** is on YouTube: unlisted, 1:00:03,
+42 YouTube chapters, built from what is committed here. New since round 9's
+[Y1cB7xoOZ_4](https://www.youtube.com/watch?v=Y1cB7xoOZ_4):
+- the maintenance chapter, before the finale, and the finale with upkeep on screen;
+- the doser figure in chapter 1;
+- chapters 4 and 6 re-rendered at 0 frames in collision;
+- the set-up, services and bay-camera clips on round 9's lab;
+- #327's second-pass sheet.
+
+| # | Starts | Chapter | Parts |
+|---|---|---|---|
+| 1 | 0:00 | A real VLM, then the plan | [`vlm_real_ck8QJhVqPiY.mp4`](out/footage/vlm_real_ck8QJhVqPiY.mp4) |
+| 2 | 0:23 | The lab set up from scratch | [`setup_lab.mp4`](out/mp4/setup_lab.mp4), [`tray_plan.png`](out/tray_plan.png) |
+| 3 | 2:40 | Services: UPS, automatic hookups, cabling and cameras | [`vlm_hookups.mp4`](out/mp4/vlm_hookups.mp4), [`vlm_services.mp4`](out/mp4/vlm_services.mp4), [`dock_lift_clearance.png`](out/dock_lift_clearance.png), [`vlm_cabling.mp4`](out/mp4/vlm_cabling.mp4), [`stream_cam.mp4`](out/mp4/instruments/stream_cam.mp4), [`bay_camera.mp4`](out/mp4/bay_camera.mp4) |
+| 4 | 5:33 | Tray A: the corrosion station, OT-2 and CubXL | [`ot2_corrosion_prep.mp4`](out/mp4/instruments/ot2_corrosion_prep.mp4), [`cubxl_corrosion.mp4`](out/mp4/instruments/cubxl_corrosion.mp4), [`vlm_workflow.mp4`](out/mp4/vlm_workflow.mp4) |
+| 5 | 9:52 | Alloy route 1/7: the charge cups, dosed, weighed and pressed under vacuum | [`route_dag_ch1.mp4`](out/mp4/dag/route_dag_ch1.mp4), [`dal_workflow_table.png`](out/dal_workflow_table.png), [`alloy_charge.mp4`](out/mp4/alloy_charge.mp4), [`doser_raise_section.png`](out/doser_raise_section.png), [`vacuum_press.mp4`](out/mp4/vacuum_press.mp4) |
+| 6 | 15:41 | Alloy route 2/7: melt and atomize in the rePowder | [`route_dag_ch2.mp4`](out/mp4/dag/route_dag_ch2.mp4), [`alloy_atomize.mp4`](out/mp4/alloy_atomize.mp4) |
+| 7 | 19:37 | Alloy route 3/7: sieve and print | [`route_dag_ch3.mp4`](out/mp4/dag/route_dag_ch3.mp4), [`alloy_print.mp4`](out/mp4/alloy_print.mp4) |
+| 8 | 24:52 | Alloy route 4/7: the powder, checked | [`route_dag_ch4.mp4`](out/mp4/dag/route_dag_ch4.mp4), [`alloy_powder.mp4`](out/mp4/alloy_powder.mp4) |
+| 9 | 28:43 | Alloy route 5/7: depowder, cut, heat treat, tensile at room and elevated temperature | [`route_dag_ch5.mp4`](out/mp4/dag/route_dag_ch5.mp4), [`alloy_workflow.mp4`](out/mp4/alloy_workflow.mp4), [`edm_orientations.png`](https://github.com/vertical-cloud-lab/byu-vcl/blob/193778b/vertical-lab/out/edm_orientations.png) (193778b) |
+| 10 | 35:34 | Alloy route 6/7: sample prep: section, mount, grind and polish | [`route_dag_ch6.mp4`](out/mp4/dag/route_dag_ch6.mp4), [`alloy_prep.mp4`](out/mp4/alloy_prep.mp4) |
+| 11 | 40:49 | Alloy route 7/7: characterizing the build | [`route_dag_ch7.mp4`](out/mp4/dag/route_dag_ch7.mp4), [`alloy_characterize.mp4`](out/mp4/alloy_characterize.mp4) |
+| 12 | 45:15 | The other stations: a tensile tester on its side, gloveboxes, fume hoods, stores, shipping | [`instruments_gallery.png`](out/instruments_gallery.png), [`tensile_h.mp4`](out/mp4/instruments/tensile_h.mp4), [`glovebox_tray.mp4`](out/mp4/instruments/glovebox_tray.mp4), [`glovebox.mp4`](out/mp4/instruments/glovebox.mp4), [`fumehood.mp4`](out/mp4/instruments/fumehood.mp4), [`fumehood_tray.mp4`](out/mp4/instruments/fumehood_tray.mp4), [`storage.mp4`](out/mp4/instruments/storage.mp4), [`powder_store_feed.mp4`](out/mp4/instruments/powder_store_feed.mp4), [`powder_store_lots.mp4`](out/mp4/instruments/powder_store_lots.mp4), [`packaging.mp4`](out/mp4/instruments/packaging.mp4) |
+| 13 | 48:43 | Fabrication: metal printers, DED, resin and PCB assembly | [`fabrication_tour.mp4`](out/mp4/fabrication_tour.mp4), [`ded.mp4`](out/mp4/instruments/ded.mp4) |
+| 14 | 52:18 | Scaling up: large-format printing and ship-part repair | [`scaleup.mp4`](out/mp4/scaleup.mp4) |
+| 15 | 54:19 | What doesn't fit, and getting a tray out | [`hip.mp4`](out/mp4/instruments/hip.mp4), [`tall_opening_bays.png`](out/tall_opening_bays.png), [`maintenance_access.png`](out/maintenance_access.png) |
+| 16 | 55:06 | How the models were checked | [`before_after.jpg`](out/register/before_after.jpg), [`before_after.jpg`](https://github.com/vertical-cloud-lab/byu-vcl/blob/f9db700/vertical-lab/out/repowder_refine/before_after.jpg) (f9db700), [`interference_sheet.png`](out/interference_sheet.png), [`vlm_workflow_before_after.png`](out/collisions/vlm_workflow_before_after.png) |
+| 17 | 56:06 | Maintenance over the long term, inside the workflow | [`upkeep_clip.mp4`](out/mp4/upkeep_clip.mp4), [`upkeep_year.png`](out/upkeep_year.png) |
+| 18 | 58:22 | The whole lab at speed: an hour, a day, a week, a month | [`timelapse.mp4`](out/mp4/timelapse.mp4) |
+
+```bash
+python3 longform.py warm alloy_prep    # pre-encode every finished clip (here, all but alloy_prep) while a render runs
+python3 longform.py; python3 longform.py upload
+LONGFORM_SRC=alloy_prep.mp4=/tmp/old.mp4 python3 longform.py   # build from another copy of a clip
+```
+
+### Still open after round 10
+
+- **The doser's funnel isn't in chapter 1.** It is designed and collision-checked on our shuttle, but the arm's
+  funnel swaps aren't animated. Whether it's needed at all rests on powder-doser's test of how far the stream strays
+  over a 150 mm fall.
+- **Chapters 3 and 7 are fixed in code, not re-rendered.** Their audits covered only the changed sub-steps, and the
+  MiR bodies still aren't in any audit.
+- **The PX500's column and the polisher's tour clip:** the column's position behind the bowl is assumed and needs
+  checking on the lab's machine, and the polisher's tour clip still shows the old column.
+- **The maintenance model is mostly assumed:** all 28 failure rates and 72 of the 121 task intervals. The size of
+  Kardex's extraction table isn't published.
+- **Three each and the 50 ft array:** three each is a plan for Sterling to decide; the array isn't started.
+- **#331:** Hitachi's, KLA's and Instron's contacts need a person with a normal browser. The lab's own facts in
+  `lab_answers.md` (the contact person, the room, the budget, the dates) need filling in before anything is sent.
+- **Still not merged:** #327's lid isn't in chapter 2, and #328's 45° bars aren't animated.
+- **No measured data from a build is on screen.** Every panel is badged real, computed or illustrative.
+- **YouTube:** rounds 7-9's long-forms are superseded and still up; a `@claude-youtube` run can remove them.
+
 ## Round 9: the new multi-doser, a parked cap, plain jars, the bay floor, two arms on the atomizer, bars at three orientations
 
 Asked for on [PR #318](https://github.com/vertical-cloud-lab/byu-vcl/pull/318) (2026-11-05 22:56 UTC, after watching
