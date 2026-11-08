@@ -23,7 +23,8 @@ from the footage. Round 6's own question, "maybe just rotated 90 degrees?", was 
 ![The footage, with round 6's and round 7's rePowder drawn over it](out/org_vertical_lab_r7.jpg)
 
 - **The lid is hinged on its left side, not at the back.** In T4 6:05 the hinge, two leaves of three screws on a
-  barrel, is on the furnace's left. In every wide shot the open lid stands up at the furnace's left, outside the
+  barrel, is on the furnace's left ([`out/repowder_hinge_r7.jpg`](out/repowder_hinge_r7.jpg), beside both models
+  from about there). In every wide shot the open lid stands up at the furnace's left, outside the
   cabinet (T1 0:03 and 44:00, 2wMgeI-E7zw 10:00). DAL #189's measuring guide had it there too (DWH1CEygsTI 25:40, "the
   hinge on the lid's left"). PR #327 had turned the lid's whole assembly 90°, so that it opened backwards into the
   cabinet, and its camera fits turned the cameras by the same 90°, which is why they fitted. Round 6 then cut a bay
@@ -41,13 +42,15 @@ from the footage. Round 6's own question, "maybe just rotated 90 degrees?", was 
   main switch sits a little lower; the knob's stalk leans forward; the coil leads come out behind the hinge; and the
   chamber's top plate reaches back under the furnace's square back.
 - **Checked against the footage** (above): a camera fitted to each frame from points on the panel, the cabinet, the
-  switch, the lamp and the viewport puts the new model's outline on the machine in T1 44:00 and 2wMgeI-E7zw 10:00,
+  switch, the lamp, the furnace and the viewport puts the new model's outline on the machine in T1 44:00 and 2wMgeI-E7zw 10:00,
   the open lid and its window plate included. Round 6's model, drawn with the same cameras, has its lid inside the
   cabinet and its panel and switch well off the real ones.
 - **The arm's moves at the rePowder follow** ([`org_gif.py`](org_gif.py)): the arm reaches over the furnace to the
   latch on its right and pulls the lever out, then lifts the lid by its knob up and over to the left and lets it
   settle open at 90°. The lid now turns about the hand's own axis (the hinge runs front to back), so to shut it the
   hand comes to the open lid's knob along that axis, from the front.
+
+![The GIF at the rePowder, round 6 against round 7](out/org_vertical_lab_r7_gif.jpg)
 
 **Round 6** ([PR #329](https://github.com/vertical-cloud-lab/byu-vcl/pull/329), Sterling: "the atomizer melting
 furnace area seems to be misproportioned (maybe just rotated 90 degrees?). The opening lid ends up intersecting with
@@ -117,8 +120,9 @@ own files are unchanged.
 
 - **It still loops.** The camera pulls back out to the wide view, with the MiR back where it waited. In the last
   1.2 s, trays A and B's equipment fades out of their slots, so the last frame shows the lab as the first one does.
-- **The file:** 880 × 556, 1815 frames at 18 fps: 100.8 s at 1.5× the modelled speed, 49.1 MB, 112 colours. The same
-  frames as an MP4, [`out/mp4/org_vertical_lab_readme.mp4`](out/mp4/org_vertical_lab_readme.mp4), are 10.5 MB.
+- **The file:** 880 × 556, 1815 frames at 18 fps: 100.8 s at 1.5× the modelled speed, 48.3 MB, 112 colours (round 6's
+  was 49.1 MB). The same frames as an MP4, [`out/mp4/org_vertical_lab_readme.mp4`](out/mp4/org_vertical_lab_readme.mp4),
+  are 10.4 MB.
   - **880 px wide,** where round 5's was 960 and round 4's 1024. The org page shows it about 830 px wide. Round 6's
     loop is 252 frames longer than round 5's, nearly all of them the arm working the fork: at 960 px it came to 55.8 MB,
     at 900 px 51.0 MB.
@@ -129,8 +133,9 @@ own files are unchanged.
   arm had moved (its joints, its MiR's pose or what it holds, the cup fork and the cup on it included), and every 12th
   while it stood still (`still_skip`, `ORG_STILL_EVERY`). It stands still only parked: beside the opening while the
   trays are loaded and the cup melts, at the opening while the chain indexes, and holding the fork outside the −y
-  panel while the doser doses. It ran as three passes over frame ranges side by side (`ORG_AUDIT_PART`), joined by
-  the auditor's own rules (`python3 org_gif.py audit_join`). The cup is let onto the pedestal and taken back 0.2 mm
+  panel while the doser doses. In round 7 it ran inside the render's own three passes over frame ranges side by side
+  (`ARM_AUDIT_RENDER`, `ORG_PART`; round 6 ran it as three passes of its own, `ORG_AUDIT_PART`), joined by the
+  auditor's own rules (`python3 org_gif.py audit_join`). Round 7's re-planned moves at the rePowder are in it. The cup is let onto the pedestal and taken back 0.2 mm
   over it (`FORK_GAP`), so that while it rides the held fork it touches nothing but the fork.
 - **Choices worth checking** (round 4's still stand: one cup, no plug, the lid open at 90°, one arm on the latch and
   the lid, the latch's lever at half its travel):
@@ -139,6 +144,11 @@ own files are unchanged.
     on the machine would settle them. PR #327 should take the same turn. Chapter 2
     ([`alloy_atomize.py`](alloy_atomize.py)) swings the lid about `M.HINGE` on a y axis, which is the left hinge again,
     but it keeps its own copy of the latch on the hood's front right.
+  - **Left as they were in round 7:** the lid's shell keeps PR #327's shape, its sides sloping all round (on the
+    machine its square back looks closer to upright, T4 6:05), so that the knob and the latch the arm works stay where
+    the previews checked them. The utilities stand where DAL's model put them: the argon cylinder at the back left
+    (the footage also shows a cylinder chained to the wall at the cabinet's right) and the heat exchanger at the
+    right.
   - **The cup fork and its rest are ours,** an assumed design, not built: a hand tool for the 2F-85 in place of the
     doser's vessel shuttle. The cup stands on it inside a 2.5 mm lip; a real one might want a positive hold on the
     cup while the arm moves.
