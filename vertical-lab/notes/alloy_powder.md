@@ -179,8 +179,9 @@ VIZ3D_FPS=6 python3 runner_guard.py bg --mem 6500 --log /tmp/r.log -- xvfb-run -
   and stopped at each move (a scratch workbench: the scene under `ARM_AUDIT=1`, the movie run to a chosen move, then
   candidate moves tried and checked frame by frame), the hits came on the three straight lines from the wait pose
   into the MiniFlex. The wait pose was a joint move to the IK solution nearest the prep station, with the shoulder pan
-  at -169 deg where the branch that is clear on the stage has -71 deg, and the straight line in from that branch swung the upper arm and
-  forearm through the SEM, the MiniFlex's housing, tray D's camera post and its slide, and the tray. **Fix:** the
+  at -169 deg where the branch that is clear on the stage has -71 deg, and the straight line in from that branch swung
+  the upper arm and forearm through the SEM, the MiniFlex's housing, tray D's camera post and its slide, and the tray.
+  **Fix:** the
   wait pose is taken in the branch that is clear with the holder on the stage (`branch_q`, judged with the door open,
   as it will be), so the line in stays in one branch.
 - **The opening door met the holder (1 frame).** The arm waits for the door with the holder 380 mm back along the way
@@ -195,7 +196,12 @@ VIZ3D_FPS=6 python3 runner_guard.py bg --mem 6500 --log /tmp/r.log -- xvfb-run -
   chapter presents (D, E, M) and whatever stands within 2.8 m of the arm's base anywhere on its way, 667 of the 1420
   actors with `VLAB_ONLY_TRAYS=DEM`. The planner and the audit see the same world, and the audit took 13 min (30 in
   round 9).
-- **The committed render predates these fixes.** `out/mp4/alloy_powder.mp4` (round 9, `50a8e08`) still shows the
-  sweep into the MiniFlex, the door brushing the holder and the finger at the holder. It wasn't re-rendered this round:
-  the render slots went to the maintenance clip, the finale and chapters 1 and 6. The code renders the fixed version
-  (`VIZ3D_FPS=6`, `VLAB_ONLY_TRAYS=DEMKLH`, about 40 min).
+- **Re-rendered with the fixes** (2026-11-07 23:24-23:59 UTC, `409e723`): `out/mp4/alloy_powder.mp4`, 1309 frames,
+  218.2 s at 6 fps, 1280 x 720, `VLAB_ONLY_TRAYS=DEMKLH` (Shuttles clad, as round 9), MP4 11.1 MB;
+  `out/alloy_powder.gif` remade with `gifsicle -O3 --lossy=150 --colors 80 --scale 0.75` to 4.7 MB (the script's was
+  7.9 MB). `out/alloy_powder.json` (the sub-steps) and `out/alloy_powder_still.png` came out identical to round 9's.
+  [`../out/alloy_powder_r10_xrd_load.png`](../out/alloy_powder_r10_xrd_load.png): frames 352 and 370, the arm waiting
+  outside the door's swing as it opens, then in through the doorway in the new branch.
+- **The render is the audited version.** The audit ran with `VLAB_ONLY_TRAYS=DEM`, the render with `DEMKLH`; both
+  collision worlds held the same 667 actors (trays K, L and H stay in their slots and are left out), and the planner
+  reported the same twelve joint moves, via poses and IK branches in both, so the render's moves are the audit's.
