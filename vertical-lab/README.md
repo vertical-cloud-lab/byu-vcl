@@ -9,6 +9,34 @@ the way the lab's other animations are (rePowder training, sieving, atomizer cha
 models tessellated into PyVista, rendered off-screen, text drawn with PIL, written as an MP4 and a GIF. The scene
 framework, [`scene.py`](scene.py), is `atomizer-training/viz3d/scene.py` from #124's branch.
 
+## Bottlenecks: from about one fully tested alloy a day to ten
+
+Sterling, on PR #318 (2026-11-08): "Approx. one full alloy tested per day was the estimation. How can we get that up
+to 10/day? What would be required?" [`bottleneck.py`](bottleneck.py) answers on the finale's own schedule
+(`timelapse.py`), generalised. With the finale's settings it reproduces that schedule exactly: 378 alloys atomized and
+324 fully tested in a year. The answer is in [`notes/bottleneck.md`](notes/bottleneck.md).
+
+![The ladder](out/bottleneck_ladder.png)
+
+- **"One a day" is set by the crucible's staffing, not by a machine.** Three run slots a weekday give 0.91 a day,
+  with the rePowder busy 21 % of the time.
+- **Each fully tested alloy costs 2.2 runs.** Runs drip, builds fail, and the promoted alloys' 440 g takes 8 more runs
+  each: 40 % of all runs.
+- **Ten a day by the powder route (R11, 10.3 a day)** needs:
+  - the crucible round the clock: a person on every shift, or a crucible robot;
+  - 3 rePowders and 4 MIDIs;
+  - promoted alloys from the 400 cm³ crucible;
+  - five floor cells with fixed arms, the VLM keeping only the measuring instruments;
+  - 3 MiR250 + UR10e units;
+  - 2 furnaces, 2 CubXLs, 2 sieve-wash modules and 2 hot frames;
+  - about 5 FTE, or about 2.5 with crucible robots.
+- **A DED front end reaches 11.9 a day (D3)** with one MX-Lab and the current rePowder and MIDI on a day shift for the
+  best 1 in 10. But DED's blocks solidify at about 10²-10⁴ K/s against LPBF's ~10⁶ K/s, so they can rank Al alloys
+  designed for LPBF wrongly.
+- **Per machine:** one rePowder at Sterling's 2-4 h makes 4.9-9.7 runs a day (85 % booked, 95 % up), or 2.2-7.5 fully
+  tested alloys depending on the promotion policy. One MIDI at 5 h a screening build carries 2.8 a day. One MX-Lab
+  carries about 18 a day.
+
 ## Round 10: long-term maintenance, the doser's fall, vendor contacts, collisions to zero, the lab on round 9's models
 
 Sterling's comment of 2026-11-07 03:36 UTC on PR #318. The first run (03:37-04:23 UTC) stopped when the account ran out
@@ -2285,6 +2313,7 @@ VIZ3D_FPS=6 xvfb-run -a python3 alloy_prep.py          # chapter 6, sample prep
 VIZ3D_FPS=6 xvfb-run -a python3 alloy_characterize.py  # chapter 7
 VIZ3D_FPS=6 xvfb-run -a python3 scaleup.py             # the EOS M 400-4 and the Meltio cell
 python3 timelapse.py model; VIZ3D_FPS=6 xvfb-run -a python3 timelapse.py   # the finale and its throughput model
+python3 bottleneck.py                                  # from one alloy a day to ten: the ladder, capacity per machine
 VIZ3D_FPS=6 xvfb-run -a python3 animate.py workflow    # the 9:09 clip, in the whole lab
 ARM_NO_PLAN=1 VIZ3D_FPS=6 xvfb-run -a python3 setup_lab.py   # the set-up, every round-8 model (3.5 GB without the planner)
 VLAB_ONLY_TRAYS=DEKL ARM_AUDIT=1 xvfb-run -a python3 alloy_characterize.py   # an audit with only the trays the arm works at
