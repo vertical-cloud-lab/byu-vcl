@@ -152,9 +152,10 @@ own files are unchanged.
 
 - **It still loops.** The camera pulls back out to the wide view, with the MiR back where it waited. In the last
   1.2 s, trays A and B's equipment fades out of their slots, so the last frame shows the lab as the first one does.
-- **The file:** 880 × 556, 1815 frames at 18 fps: 100.8 s at 1.5× the modelled speed, 48.3 MB, 112 colours (round 6's
-  was 49.1 MB). The same frames as an MP4, [`out/mp4/org_vertical_lab_readme.mp4`](out/mp4/org_vertical_lab_readme.mp4),
-  are 10.4 MB.
+- **The file:** 880 × 556, 1815 frames at 18 fps: 100.8 s at 1.5× the modelled speed, 48.4 MB, 112 colours (round 7's
+  was 48.3 MB, round 6's 49.1 MB). The same frames as an MP4,
+  [`out/mp4/org_vertical_lab_readme.mp4`](out/mp4/org_vertical_lab_readme.mp4), are 10.3 MB. Round 8 kept every move's
+  time, so the loop is still 1815 frames.
   - **880 px wide,** where round 5's was 960 and round 4's 1024. The org page shows it about 830 px wide. Round 6's
     loop is 252 frames longer than round 5's, nearly all of them the arm working the fork: at 960 px it came to 55.8 MB,
     at 900 px 51.0 MB.
@@ -162,13 +163,15 @@ own files are unchanged.
     of 255).
 - **The arm audit: 0 of 1206 checked frames in collision**
   ([`out/collisions/org_vertical_lab.json`](out/collisions/org_vertical_lab.json)). It checked every frame where the
-  arm had moved (its joints, its MiR's pose or what it holds, the cup fork and the cup on it included), and every 12th
+  arm had moved (its joints, its MiR's pose or what it holds, the cup fork and the cup in it included), and every 12th
   while it stood still (`still_skip`, `ORG_STILL_EVERY`). It stands still only parked: beside the opening while the
   trays are loaded and the cup melts, at the opening while the chain indexes, and holding the fork outside the −y
   panel while the doser doses. In round 7 it ran inside the render's own three passes over frame ranges side by side
   (`ARM_AUDIT_RENDER`, `ORG_PART`; round 6 ran it as three passes of its own, `ORG_AUDIT_PART`), joined by the
-  auditor's own rules (`python3 org_gif.py audit_join`). Round 7's re-planned moves at the rePowder are in it. The cup is let onto the pedestal and taken back 0.2 mm
-  over it (`FORK_GAP`), so that while it rides the held fork it touches nothing but the fork.
+  auditor's own rules (`python3 org_gif.py audit_join`). Round 7's re-planned moves at the rePowder are in it, and
+  round 8's sleeve, rest and deeper drop at the pedestal (round 8 ran it the same way). The cup is let onto the
+  pedestal and taken back 0.2 mm over it (`FORK_GAP`), so that while it rides the held fork it touches nothing but the
+  fork; the sleeve's bore has 0.475 mm of play round it.
 - **Choices worth checking** (round 4's still stand: one cup, no plug, the lid open at 90°, one arm on the latch and
   the lid, the latch's lever at half its travel):
   - **The rePowder's sizes are still the earlier fits.** The lid's are PR #327's, fitted in a turned frame; the
