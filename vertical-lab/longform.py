@@ -222,7 +222,9 @@ CHAPTERS = [
     dict(key="finale", title="The whole lab at speed: an hour, a day, a week, a month",
          card=["Everything at once, sped up: the trays cycling, the arm and the atomizer working, the printer "
                "building, then day by day, week by week and month by month, with what the lab has made and "
-               "measured so far."],
+               "measured so far.",
+               "Maintenance runs in the same schedule: the person and visiting vendors where their task is, a beacon "
+               "on each machine (amber for upkeep, red while a fault waits), and the upkeep counters beside the rest."],
          parts=[("mp4", "timelapse.mp4", None)]),
 ]
 OUTRO = ["Code, notes and every source: github.com/vertical-cloud-lab/byu-vcl, PR #318 (folder vertical-lab/).",
@@ -494,7 +496,10 @@ def plan() -> list[dict]:
         for part in ch["parts"]:
             kind = part[0]
             if kind == "mp4":
-                src = MP4 / part[1]
+                # LONGFORM_SRC="a.mp4=/path/x.mp4,...": build from another copy of a clip (e.g. the committed one while
+                # its re-render is still writing out/mp4/a.mp4)
+                ovr = dict(kv.split("=", 1) for kv in os.environ.get("LONGFORM_SRC", "").split(",") if "=" in kv)
+                src = Path(ovr[part[1]]) if part[1] in ovr else MP4 / part[1]
                 rows.append(dict(chapter=ch["key"], kind=kind, src=src, seconds=duration(src) if src.exists() else 0,
                                  label=part[2], missing=not src.exists()))
             elif kind == "still":
@@ -657,7 +662,8 @@ TITLE = "The vertical cloud lab, start to finish: a Kardex VLM, its instruments 
 def description(meta: dict, commit: str) -> str:
     head = ("Everything on PR #318 of the BYU Vertical Cloud Lab, in one video: a Kardex Shuttle XP 500 vertical lift "
             "module holding the lab's equipment on electrified trays, a UR10e on a MiR250 at its opening, the alloy "
-            "route from charge cups to a tensile bar, every instrument doing its job, and the alternatives. 3-D "
+            "route from charge cups to a tensile bar, every instrument doing its job, maintenance booked into the "
+            "workflow, and the alternatives. 3-D "
             "animation built from makers' published figures and photos; real footage is badged as such.\n\n"
             f"Code, notes and sources: https://github.com/{REPO}/tree/{commit}/vertical-lab\n"
             f"PR: {PR}\n\n")
