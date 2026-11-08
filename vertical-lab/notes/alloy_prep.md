@@ -301,5 +301,18 @@ xvfb-run -a python3 alloy_prep.py` runs the movie quickly to the start of the MX
 new `/tmp/prep_srv/*.py` in the movie's namespace (output to `*.out`) until `/tmp/prep_srv/next` exists. It is how the
 column was found: the held disc hit `F0_polisher:body/inst_grey1` (the bowl and the column, one mesh) at every lift.
 
+**Round 10 outputs.** Whole chapter re-rendered on the code above (commit `32d05e4`; `VLAB_ONLY_TRAYS=FM VIZ3D_FPS=6`,
+1280 x 720), 23:09-00:18 UTC: 1816 frames, 302.7 s (5:03), mp4 14.0 MB, GIF 4.62 MB (606 frames), still
+`out/alloy_prep_still.png`, preview still of the changed steps `out/alloy_prep_preview.png`. **Its audit, of its own
+frames: 0 of 1,423 checked frames in collision, 0 runs** (`out/collisions/alloy_prep.json`; the auditor runs on every
+frame that moves, and the 393 others are holds, copies of the frame before). Round 9's 456 of 3,539 were counted on a
+separate `ARM_AUDIT=1` pass at a higher frame rate, so the frame totals differ; the rules for what may touch are the
+same. The chapter's length, steps and captions are as in round 9.
+
+Still assumed or simplified: the column behind the bowl and the head's arm to it (above); the pre-loaded discs, the
+magazine and the magnetic platen (round 8); pressing the slice and the stopper home as the closed fingers moving at a
+steady speed, which a real cell would do under force control. A clear audit means the drawn meshes never interpenetrate;
+it doesn't check clearances a real cell would want (a few mm here and there, such as the pistons' 3 mm over the holder).
+
 Not re-rendered: the polisher's tour clip (`out/instruments/polisher.*`) still shows the column in the bowl and the
 pistons' old gap.
