@@ -1096,8 +1096,10 @@ def movie():
                (0.985, 0.08))
     lbl_rp = ("AMAZEMET rePowder atomizer", (RP[0] + 120.0, RP[1] + 250.0, 1750.0), (0.02, 0.08))
     lbl_cell = ("sieving cell", (-1982.5, -1250.0, 1650.0), (0.30, 0.18))
-    lbl_latch = ("draw latch", tuple(RP + (M.latch_geom()["x"], -150.0, 1300.0)), (0.985, 0.62))
-    lbl_lid = ("the lid, hinged at the back", tuple(RP + (-60.0, 0.0, 1560.0)), (0.02, 0.10))
+    _gl = M.latch_geom()
+    lbl_latch = ("draw latch", tuple(RP + M.lid_to_model((_gl["x"], _gl["yface"] - 16.0, _gl["zf"] + 0.6 * _gl["length"]))),
+                 (0.985, 0.62))
+    lbl_lid = ("the lid, hinged on its left", tuple(RP + (-60.0, 0.0, 1560.0)), (0.02, 0.10))
     lbl_tong = ("loading tong", None, (0.985, 0.30))
     lbl_melt = ("the melt (time-lapse)", tuple(RP + (-10.0, 5.0, M.Z_CR + 10.0)), (0.02, 0.22))
     lbl_plate = ("droplets off the vibrating plate", tuple(RP + tuple(M.IMPACT + np.array([60.0, 0.0, -30.0]))),
@@ -1396,7 +1398,7 @@ def movie():
         a = math.radians(tilt)
         Mx = P.tcp_frame(np.array([gl["x"], gl["yface"] - out, gl["zf"] + up_ * gl["length"]]),
                          (0.0, math.cos(a), -math.sin(a)), 0.0)
-        return T(RP) @ M.joint_matrix("latch", s * LATCH_U) @ Mx
+        return T(RP) @ M.joint_matrix("latch", s * LATCH_U) @ M.LID_FRAME @ Mx     # latch_geom: the lid's frame
 
     kc = M.knob_centre()
 
@@ -1559,8 +1561,9 @@ def movie():
         rb.events.append((sc.n, "release", AT.g("knob"), None))
         # it falls back onto its stop as the hand backs off (left where it let go, the fingertips met the shell)
         yield 0.5, lambda: both(lambda e: lid(LID_LET + (1.0 - LID_LET) * e * e),
-                                rb.line_to(clear_line([knob_grasp(LID_LET) @ T((0, 0, -d)) for d in (50.0, 35.0, 20.0)],
-                                                      0.2)))
+                                rb.line_to(clear_line([knob_grasp(LID_LET) @ T((0, 0, -d)) for d in (50.0, 35.0, 20.0)] +
+                                                      [T((0.0, -d, dz)) @ knob_grasp(LID_LET)
+                                                       for d, dz in ((60.0, 40.0), (40.0, 60.0), (0.0, 60.0))], 0.2)))
         # the loading tong out of its holder on the MiR's cabinet (alloy_atomize: chapter 2's moves)
         yield from call(lambda: (phase("With a loading tong, the arm takes the cup and sets it on the crucible's "
                                        "floor, past the sealing rod."), labels(lbl_arm, lbl_tong_at())))

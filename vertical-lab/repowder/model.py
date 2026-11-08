@@ -85,13 +85,46 @@ Z_CR = 1219.2                        # crucible datum: where the straight bore m
 RIM = Z_CR + BORE_STRAIGHT
 CRUCIBLE_BASE = Z_CR - FLOOR_CONE_H - CRUCIBLE_BOTTOM
 HOOD_Z0, HOOD_H1, HOOD_H2 = BODY_TOP, 55.0, 126.0
-# the lid: a cast shell, round at the front left, square over the housing's flat on the right, hinged at the BACK
-# (T4 1:53, 2:28, 5:08: open, it stands up behind the furnace). Fitted with register.py.
+# the lid: a cast shell, round at the front, square over the housing's flat at the back (against the cabinet), hinged on
+# its LEFT side. Its dimensions were fitted with register.py (PR #327) in the lid's own frame, where the hinge is at the
+# back; LID_AZ below turns that frame into place.
 LID = dict(r=140.0, r1=45.0, ext=190.0, h1=55.0, h2=126.0, wall=5.0, hinge_off=14.0, latch_x=72.0, latch_len=156.0, cabinet_x=192.0)
 HOOD_R0, HOOD_R1 = LID["r"], LID["r1"]
 LID_OPEN_DEG, LATCH_OPEN_DEG, BOLT_TRAVEL = 105.0, 95.0, 70.0
 LID_PARTS = ("hood", "hood_window", "hood_hot_label", "hood_knob", "hood_hinge_leaf", "latch_keeper")
-HINGE = np.array([0.0, HOOD_R0 + 14.0, BODY_TOP + 6.0])   # a point on the lid's hinge axis (along x), behind the lid
+# The lid's assembly (the lid with its knob, window slot, hot label and hinge leaf; the hinge; the housing's square back;
+# the draw latch, its keeper, the locking bolt and its housing) is built in its own frame, the one PR #327 fitted it in:
+# hinge at the back (+y), latch on the front, window slot on the left facet, the square flat on the right. PR #327 had
+# placed it in that frame unturned, which put the hinge at the back and the lid opening into the cabinet. On the machine
+# the whole assembly stands 90 deg round from that (round 7 of PR #329): the hinge, two leaves of three screws on a
+# barrel, is on the furnace's LEFT side (T4 6:05; DWH1CEygsTI 25:40 in DAL #189's guide), and the lid swings up to the
+# left, standing outside the cabinet's left edge when open (T1 0:03, 44:00; 2wMgeI-E7zw 10:00). Turned by LID_AZ the
+# rest lands where the footage has it too: the latch on the right side with its bolt running back into the cabinet's
+# front face (T4 5:16-5:31), the lid's square part at the back against the cabinet (T4 6:05), the window slot at the
+# front (T4 6:05, 2wMgeI-E7zw 3:30), the knob at the front right (T4 5:41). facet_plane() and latch_geom() give the
+# lid's frame; hinge_point(), knob_centre(), joints() and joint_matrix() give the model's.
+LID_AZ = 90.0
+WIN_AZ = 135.0                       # the window plate's facet, in the lid's frame: the model's front left
+KNOB_DIR = (-0.62, -0.15, 0.77)      # the knob's stalk, in the lid's frame: up and forward in the model's (T4 5:41, DAL #189
+#                                      DWH1CEygsTI 25:40: the ball stands forward of its foot); PR #327 had it leaning back
+
+
+def _rz(deg: float) -> np.ndarray:
+    a = math.radians(deg)
+    m = np.eye(4)
+    m[:2, :2] = [[math.cos(a), -math.sin(a)], [math.sin(a), math.cos(a)]]
+    return m
+
+
+LID_FRAME = _rz(LID_AZ)               # the lid's frame -> the model's (a turn about the furnace's axis, x = y = 0)
+
+
+def lid_to_model(v) -> np.ndarray:
+    """A point (or a direction) in the lid's frame, in the model's."""
+    return LID_FRAME[:3, :3] @ np.asarray(v, float)
+
+
+HINGE = lid_to_model((0.0, HOOD_R0 + 14.0, BODY_TOP + 6.0))   # a point on the lid's hinge axis (along y), left of the lid
 ARM_ANGLE = 0.0                      # sealing-rod lever post: on the right of the deck (T4 1:50, 4:28)
 ARM_DIR = np.array([math.cos(math.radians(ARM_ANGLE)), math.sin(math.radians(ARM_ANGLE)), 0.0])
 POST_R = 112.0                       # the lever pivots on top of the post, about a horizontal axis, and swings up
@@ -279,23 +312,13 @@ CLAMP_PTS = [np.array([DCLAMP_X, CH_Y[0] - 8.0, z]) for z in DCLAMP_Z]
 CLAMP_AXES = [np.array([0.0, 1.0, 0.0])] * 2
 KF_S = 36.0                                     # the door housing's KF clamp: this far back from the tube's outer end
 
-# blue frame: the machine's own cabinet, behind the chamber and to the furnace's right (below), with the induction
-# generator, PLC and pneumatics inside
-FR_X, FR_Y, FR_Z = (CH_X[0], CH_X[0] + 745.0), (CH_Y[1] + 45.0, CH_Y[1] + 545.0), (175.0, 1600.0)
-# The cabinet round the furnace (PR #329, round 6 of the org GIF; T1 30:13, T4 1:53, 5:08 and 5:41). Drawn as one box,
-# it stood across the furnace's whole width with its front face 11 mm behind the lid's hinge, so the lid, hinged at the
-# back since PR #327, opened about 175 mm into it. The footage shows the room behind the open lid (T4 1:53 and 5:08:
-# the wall, the vacuum pump, a shelf), the cabinet's edge at the lid's right, and, beside the furnace, the blue face
-# that the locking bolt comes out of, with the red lamp and the GU 500 AMA panel on it. So the cabinet is tall only to
-# the right of the furnace (CAB_STEP_X), where it comes forward (CAB_FWD_Y); behind the furnace a bay is cut out of it
-# under the lid's hinge (LID_BAY), and the open lid stands in it, in the clear; further back, the cabinet's left face is
-# full height again (T4 6:05, its hazard label at the top). Drawn over the seven registered frames (register.py draw
-# repowder), the panel now sits where the real one does in T1 30:13 and T4 5:41; the step's place and the bay's depth
-# are fitted by eye, not measured.
-CAB_STEP_X = 198.0          # the tall part's left face: the bolt housing's right face (the lid's own right face is at 190)
-CAB_FWD_Y = -75.0           # its front face beside the furnace, above the chamber's top plate and right of the chamber
-LID_BAY = (380.0, 1320.0)   # the bay behind the furnace (x < CAB_STEP_X): back to y 380, its floor at z 1320. The lid
-#                             open to its 105 deg reaches back to y 351 and down to 1331 mm (its hinge leaf, at y 206)
+# blue frame: the machine's own cabinet, one tall box behind the chamber and the furnace, with the induction generator,
+# PLC and pneumatics inside. Round 7 of PR #329: in every wide shot (T1 0:03, 18:06, 44:00; 2wMgeI-E7zw 10:00) its front
+# face is one flat plane carrying the GU 500 AMA panel, the red lamp and the main switch, as in Blue Power's AUS 500
+# brochure; the furnace's square back stands just in front of it and the locking bolt runs back into it (T4 5:16). Round
+# 6's block beside the furnace and its bay for the lid were built round a lid opening the wrong way (see LID_AZ). Its
+# front face: the bolt housing's back face (the lid's square back is 8 mm in front of it).
+FR_X, FR_Y, FR_Z = (CH_X[0], CH_X[0] + 745.0), (LID["cabinet_x"] + 6.0, LID["cabinet_x"] + 506.0), (175.0, 1600.0)
 FEET_X, FEET_Y = (CH_X[0] + 15.0, CH_X[0] + 15.0 + 714.0), (-90.0, 530.0)
 
 
@@ -505,7 +528,7 @@ def furnace_parts() -> list[Part]:
     plugs = [along(cyl(8, 16), cp + np.array([0, 0, dz]) + 4 * np.array([math.cos(b), math.sin(b), 0]),
                    (math.cos(b), math.sin(b), 0)) for dz in (-14, 0, 14)]
     P.append(Part("connector_plate", fuse(plate, *plugs), STEEL_DK, "furnace", tol=0.2, cut=False))
-    for k, dy in enumerate((-35.0, -5.0)):
+    for k, dy in enumerate((75.0, 105.0)):          # behind the lid's hinge on the left side (T4 6:05)
         a0 = np.array([-BODY_R - 2, dy, 1195.0 + 12 * k])
         P.append(Part(f"coil_lead{k}", fuse(along(cyl(9, 60), a0, (-1, 0, 0)),
                                             along(cyl(9, 300), a0 + np.array([-60, 0, 0]), (0, 1, -0.15))),
@@ -537,8 +560,8 @@ def lid_params() -> dict:
 
 
 def facet_plane(p: dict, face: str, s: float) -> tuple:
-    """(origin, normal) of the lid's sloping facet at fraction s (0 = its foot, 1 = the flat top): face is 'front'
-    (-y) or 'left' (-x)."""
+    """(origin, normal) of the lid's sloping facet at fraction s (0 = its foot, 1 = the flat top), in the lid's frame:
+    face is 'front' (-y there, the model's +x: the knob's side) or 'left' (-x there, the model's -y: the window's)."""
     r, r1, h1, h2 = p["r"], p["r1"], p["h1"], p["h2"]
     t = math.atan2(r - r1, h2)
     rr = r - (r - r1) * s
@@ -549,19 +572,26 @@ def facet_plane(p: dict, face: str, s: float) -> tuple:
 
 
 def knob_centre(p: dict | None = None) -> np.ndarray:
-    """Centre of the lid's black ball knob (shut): a stalk off the front facet's foot, a little left of centre (T4 5:41)."""
+    """Centre of the lid's black ball knob (shut), in the model's frame: a stalk off the foot of the lid's right facet,
+    a little in front of its middle (T4 5:41)."""
     p = p or LID
     kb, _ = facet_plane(p, "front", 0.12)
-    kd = np.array([0.62, -0.15, 0.77])
-    return kb + np.array([-35.0, 0, 0]) + kd / np.linalg.norm(kd) * 40.0
+    kd = np.array(KNOB_DIR)
+    return lid_to_model(kb + np.array([-35.0, 0, 0]) + kd / np.linalg.norm(kd) * 40.0)
 
 
-def hinge_point(p: dict | None = None) -> np.ndarray:
-    p = p or LID
+def _hinge_local(p: dict) -> np.ndarray:
     return np.array([0.0, p["r"] + p["hinge_off"], BODY_TOP + 6.0])
 
 
+def hinge_point(p: dict | None = None) -> np.ndarray:
+    """A point on the lid's hinge axis, in the model's frame (the axis runs along y, on the furnace's left)."""
+    return lid_to_model(_hinge_local(p or LID))
+
+
 def latch_geom(p: dict | None = None) -> dict:
+    """The draw latch, in the lid's frame (LID_FRAME maps it to the model's): its lever stands on the face y = yface
+    there, which is the furnace's right side, and the bolt runs along +x there, back into the cabinet."""
     p = p or LID
     yface = -BODY_R
     zf = Z_PLATFORM[1] + 38.0
@@ -572,15 +602,16 @@ def latch_geom(p: dict | None = None) -> dict:
 
 def joints() -> dict:
     """Every joint chapter 2 can drive. value 0 = as built (lid shut, lever hooked, bolt in), 1 = `deg` or `vec` on.
-    'point' is on the axis. Lid: swing about the back hinge, on the -x axis so that positive opens (T4 1:53, 2:28: it
-    stands up behind the furnace). Latch: the lever, with its loop, swings out about a horizontal axis at its foot.
-    Bolt: slides along +x, back into the blue cabinet. lever_post: the sealing-rod lever (as before)."""
+    'point' is on the axis; all in the model's frame. Lid: swing about the hinge on the furnace's left, on the -y axis
+    so that positive lifts the lid's right side up and over to the left. Latch: the lever, with its loop, swings out
+    to the right about a horizontal axis at its foot. Bolt: slides back (+y) into the blue cabinet."""
     g = latch_geom()
     return {
-        "lid": dict(kind="hinge", point=hinge_point(), axis=(-1.0, 0.0, 0.0), deg=LID_OPEN_DEG, parts=LID_PARTS),
-        "latch": dict(kind="hinge", point=g["pivot"], axis=(1.0, 0.0, 0.0), deg=LATCH_OPEN_DEG,
-                      parts=("latch_lever", "latch_loop")),
-        "bolt": dict(kind="slide", vec=(BOLT_TRAVEL, 0.0, 0.0), parts=("latch_bolt",)),
+        "lid": dict(kind="hinge", point=hinge_point(), axis=tuple(lid_to_model((-1.0, 0.0, 0.0))), deg=LID_OPEN_DEG,
+                    parts=LID_PARTS),
+        "latch": dict(kind="hinge", point=lid_to_model(g["pivot"]), axis=tuple(lid_to_model((1.0, 0.0, 0.0))),
+                      deg=LATCH_OPEN_DEG, parts=("latch_lever", "latch_loop")),
+        "bolt": dict(kind="slide", vec=tuple(lid_to_model((BOLT_TRAVEL, 0.0, 0.0))), parts=("latch_bolt",)),
         # chamber door: vertical hinge at the back edge; the free (front) edge swings out to -x, hence the -z axis
         "door": dict(kind="hinge", point=(DOOR_HINGE[0], DOOR_HINGE[1], 0.0), axis=(0.0, 0.0, -1.0), deg=DOOR_OPEN_DEG,
                      parts=DOOR_PARTS),
@@ -608,8 +639,14 @@ def joint_matrix(name: str, value: float) -> np.ndarray:
 
 
 def hood_parts(p: dict | None = None) -> list[Part]:
-    """The lid (a cast, faceted shell hinged at the back), its knob, window slot, hinge, the housing's flat, and the
-    draw latch with its pneumatic bolt. From T4 (1F9_4ccwhss) 1:53, 3:08, 5:08, 5:41, 6:05: notes/repowder_refine.md."""
+    """The lid (a cast, faceted shell hinged on its left), its knob, window slot, hinge, the housing's square back, and
+    the draw latch with its pneumatic bolt, built in the lid's frame and turned into place (LID_AZ). From T4
+    (1F9_4ccwhss) 1:53, 3:08, 5:08, 5:16-5:41, 6:05: notes/repowder_refine.md; the turn from round 7 of PR #329."""
+    from dataclasses import replace
+    return [replace(q, shape=q.shape.rotate(V(0, 0, 0), V(0, 0, 1), LID_AZ)) for q in _hood_parts_local(p)]
+
+
+def _hood_parts_local(p: dict | None = None) -> list[Part]:
     p = p or LID
     P = []
     r, r1, h1, h2, ext, w = p["r"], p["r1"], p["h1"], p["h2"], p["ext"], p["wall"]
@@ -622,21 +659,33 @@ def hood_parts(p: dict | None = None) -> list[Part]:
     outer = _prism(r, ext, BODY_TOP, h1).fuse(_prism(r, ext, BODY_TOP + h1, h2, taper=taper))
     inner = _prism(r - w, ext - w, BODY_TOP - 1, h1 + 1).fuse(_prism(r - w, ext - w, BODY_TOP + h1, h2 - w, taper=taper))
     hood = outer.cut(inner).clean()
-    o_w, n_w = facet_plane(p, "left", 0.55)
-    win_plane = cq.Plane(origin=V(*(o_w - n_w * 2.0)), xDir=V(0, 1, 0), normal=V(*n_w))
-    hood = hood.cut(cq.Workplane(win_plane).rect(26, 84).extrude(6).val())
+    # the viewing window: a square plate held by eight screws, its glass in a rectangular opening, on the facet that
+    # faces the front left (T1 44:00 and 2wMgeI-E7zw 3:30 see it face on; DAL #189's guide, DWH1CEygsTI 25:40: "window
+    # plate, 8 screws"). Its size is read off those frames against the lid (about 105 x 100 mm, the glass 66 x 56)
+    a = math.radians(WIN_AZ)
+    t = math.atan2(p["r"] - p["r1"], p["h2"])
+    rr = p["r"] - (p["r"] - p["r1"]) * 0.52
+    o_w = np.array([rr * math.cos(a), rr * math.sin(a), BODY_TOP + p["h1"] + p["h2"] * 0.52])
+    n_w = np.array([math.cos(t) * math.cos(a), math.cos(t) * math.sin(a), math.sin(t)])
+    win_plane = cq.Plane(origin=V(*o_w), xDir=V(-math.sin(a), math.cos(a), 0.0), normal=V(*n_w))
+    opening = cq.Workplane(win_plane).workplane(offset=-25).rect(66, 56).extrude(40).val()
+    plate = cq.Workplane(win_plane).workplane(offset=-16).rect(106, 100).extrude(19).val().cut(opening)
+    screws = [cq.Workplane(win_plane).workplane(offset=3).center(sx, sy).circle(4.0).extrude(2).val()
+              for sx in (-43, 0, 43) for sy in (-40, 40)] + \
+             [cq.Workplane(win_plane).workplane(offset=3).center(sx, 0).circle(4.0).extrude(2).val() for sx in (-43, 43)]
+    hood = hood.cut(opening).fuse(plate, *screws).clean()
     o_f, n_f = facet_plane(p, "front", 0.5)
     P.append(Part("hood", hood, STEEL, "hood", tol=0.4))
-    P.append(Part("hood_window", cq.Workplane(win_plane).rect(26, 84).extrude(2.5).val(), (0.12, 0.13, 0.15), "hood",
-                  tol=0.2))
+    P.append(Part("hood_window", cq.Workplane(win_plane).workplane(offset=-8).rect(66, 56).extrude(3).val(),
+                  (0.12, 0.13, 0.15), "hood", tol=0.2))
     lab = cq.Plane(origin=V(*(o_f + np.array([30.0, 0, 0]) - n_f * 0.5)), xDir=V(1, 0, 0), normal=V(*n_f))
     P.append(Part("hood_hot_label", cq.Workplane(lab).polygon(3, 22).extrude(2).val(), YELLOW, "hood", tol=0.1))
     kb, _ = facet_plane(p, "front", 0.12)
     kb = kb + np.array([-35.0, 0, 0])
-    kd = np.array([0.62, -0.15, 0.77])
+    kd = np.array(KNOB_DIR)
     kd /= np.linalg.norm(kd)
     P.append(Part("hood_knob", fuse(along(cyl(5, 30), kb, kd), sphere(14, kb + kd * 40)), BLACK, "hood", tol=0.2))
-    hp = hinge_point(p)
+    hp = _hinge_local(p)
     barrel = cyl(8, 150, (-75, hp[1], hp[2]), (1, 0, 0))
     bracket = box(-75, 75, BODY_R - 8, hp[1] + 8, BODY_TOP - 55, BODY_TOP - 8)
     P.append(Part("hood_hinge", fuse(barrel, bracket), STEEL_DK, "furnace", tol=0.2))
@@ -854,8 +903,9 @@ def stack_parts(setup: StackSetup = SETUP) -> list[Part]:
 
 
 # label anchors on the frame (used by the animations and the hero stills)
-PANEL_C = np.array([FR_X[1] - 145.0, CAB_FWD_Y + 20.0, 1350.0])
-SWITCH_C = np.array([FR_X[1] - 110.0, CAB_FWD_Y - 14.0, 1000.0])   # on the forward face, under the panel
+PANEL_C = np.array([FR_X[1] - 145.0, FR_Y[0] + 20.0, 1350.0])
+SWITCH_C = np.array([FR_X[1] - 110.0, FR_Y[0] - 14.0, 1065.0])   # by the chamber's top, right of it
+LAMP_C = np.array([FR_X[1] - 300.0, FR_Y[0], 1210.0])   # the red lamp, left of and below the panel (T1 18:06, 2wMgeI-E7zw 10:00)
 HMI_C = np.array([FR_X[1] + 170.0, 40.0, 1450.0])
 
 
@@ -872,21 +922,13 @@ def frame_parts() -> list[Part]:
     feet = [fuse(cyl(10, 112, (x, y, 0)), cyl(25, 12, (x, y, 0))) for x in FEET_X for y in FEET_Y]
     P.append(Part("feet", compound(*feet), FRAME, "static", tol=0.5, cut=False))
     body = rbox(fx0, fx1, fy0, fy1, FR_Z[0], FR_Z[1], 12)
-    # tall only right of the furnace, and forward there (above the chamber's top plate, and to the floor right of the
-    # chamber); low behind the furnace, under the lid's hinge (CAB_STEP_X, CAB_FWD_Y, LID_BAY)
-    gb = latch_geom()
-    body = fuse(body, rbox(CAB_STEP_X, fx1, CAB_FWD_Y, fy0 + 20, Z_PLATFORM[1], FR_Z[1], 12),
-                rbox(CH_RIGHT + 20, fx1, CAB_FWD_Y, fy0 + 20, FR_Z[0], FR_Z[1], 12),
-                box(CAB_STEP_X - 1, CAB_STEP_X + 60, gb["yface"] - 20, CAB_FWD_Y + 1, gb["bolt_z"] - 50,
-                    gb["bolt_z"] + 50))      # the boss the locking bolt comes out of, beside the latch
-    body = body.cut(box(fx0 - 1, CAB_STEP_X, fy0 - 1, LID_BAY[0], LID_BAY[1], FR_Z[1] + 1))
-    fyp = CAB_FWD_Y                                                                  # the panel's face
+    fyp = fy0                                                                        # the panel's face
     nx0, nx1, nz0, nz1 = fx1 - 250, fx1 - 40, FR_Z[1] - 130 - 355, FR_Z[1] - 130     # recess for the GU 500 panel
     body = body.cut(box(nx0, nx1, fyp - 5, fyp + 40, nz0, nz1))
     P.append(Part("cabinet", body, BLUE, "static", tol=0.8, cut=False))
     # side doors (left: air, argon, pneumatics; right: PLC, relays, generator control), shown by a seam and a handle
     for side, x in (("l", fx0 - 1.5), ("r", fx1 + 1.5)):
-        ztop = LID_BAY[1] if side == "l" and LID_BAY[0] >= fy1 else FR_Z[1]      # the left face is low (LID_BAY)
+        ztop = FR_Z[1]
         seam = box(min(x, x + (1 if side == "r" else -1)) - 0.5, max(x, x + (1 if side == "r" else -1)) + 0.5,
                    fy0 + 40, fy1 - 40, FR_Z[0] + 60, ztop - 60).cut(
             box(x - 3, x + 3, fy0 + 46, fy1 - 46, FR_Z[0] + 66, ztop - 66))
@@ -904,6 +946,8 @@ def frame_parts() -> list[Part]:
     keys += [fuse(cyl(7, 4, (px0 + 22 + 23 * i, py - 12, pz0 + 22 + 26 * j), (0, -1, 0))) for i in range(5)
              for j in range(2)]
     P.append(Part("panel_keys", compound(*keys), (0.35, 0.36, 0.40), "static", tol=0.2, cut=False))
+    P.append(Part("lamp", fuse(cyl(16, 4, (LAMP_C[0], fyp - 4, LAMP_C[2]), (0, 1, 0)),
+                               sphere(10, (LAMP_C[0], fyp - 5, LAMP_C[2]))), RED, "static", tol=0.2, cut=False))
     # main switch under the panel, right of the chamber: yellow plate, red rotary handle
     sx, sz = SWITCH_C[0], SWITCH_C[2]
     P.append(Part("main_switch", box(sx - 40, sx + 40, fyp - 10, fyp, sz - 45, sz + 45), YELLOW, "static", tol=0.2,
@@ -933,7 +977,9 @@ def frame_parts() -> list[Part]:
     top = (cq.Workplane("XY").workplane(offset=Z_PLATFORM[0]).moveTo(xl, CH_Y[0]).lineTo(CH_X[1], CH_Y[0])
            .threePointArc((CH_RIGHT, 0.0), (CH_X[1], CH_Y[1])).lineTo(xl, CH_Y[1]).close()
            .extrude(Z_PLATFORM[1] - Z_PLATFORM[0])).val().cut(cyl(20, 40, (0, 0, Z_PLATFORM[0] - 10)))
-    P.append(Part("platform", top, STEEL, "furnace", tol=0.5))
+    # and back under the furnace housing's square back, which stands 70 mm past the chamber's back wall (LID_AZ)
+    top = top.fuse(box(-BODY_R, BODY_R, CH_Y[1] - 20.0, LID["ext"] - 4.0, Z_PLATFORM[0], Z_PLATFORM[1]))
+    P.append(Part("platform", top.clean(), STEEL, "furnace", tol=0.5))
     return P
 
 
