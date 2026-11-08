@@ -6637,5 +6637,133 @@
   },
   "limit": "aconity",
   "limit_per_day": 11.02
+ },
+ "staffing": {
+  "R0": {
+   "hours_per_week": {
+    "crucible": 14.0,
+    "pm": 7.2,
+    "consumables": 4.8,
+    "repair": 1.3,
+    "it": 2.3,
+    "review": 1.0,
+    "vendor": 0.3,
+    "compliance": 0.5
+   },
+   "total": 31.4,
+   "fte_40h": 0.8,
+   "crucible_cover_h_per_week": 0.0,
+   "fte_for_cover": 0.0,
+   "scale": {
+    "alloys": 1.0,
+    "equipment": 1.0,
+    "equipment_count": 22,
+    "equipment_count_base": 22
+   }
+  },
+  "R11": {
+   "hours_per_week": {
+    "crucible": 117.4,
+    "pm": 13.5,
+    "consumables": 54.6,
+    "repair": 14.9,
+    "it": 4.4,
+    "review": 1.9,
+    "vendor": 0.6,
+    "compliance": 0.9
+   },
+   "total": 208.2,
+   "fte_40h": 5.2,
+   "crucible_cover_h_per_week": 168.0,
+   "fte_for_cover": 4.2,
+   "scale": {
+    "alloys": 11.31,
+    "equipment": 1.86,
+    "equipment_count": 41,
+    "equipment_count_base": 22
+   }
+  },
+  "R11_crucible_robots": {
+   "hours_per_week": {
+    "crucible": 0.0,
+    "pm": 13.5,
+    "consumables": 54.6,
+    "repair": 14.9,
+    "it": 4.4,
+    "review": 1.9,
+    "vendor": 0.6,
+    "compliance": 0.9
+   },
+   "total": 90.8,
+   "fte_40h": 2.3,
+   "crucible_cover_h_per_week": 0.0,
+   "fte_for_cover": 0.0,
+   "scale": {
+    "alloys": 11.31,
+    "equipment": 1.86,
+    "equipment_count": 41,
+    "equipment_count_base": 22
+   }
+  },
+  "D3": {
+   "hours_per_week": {
+    "crucible": 10.0,
+    "pm": 10.5,
+    "consumables": 62.9,
+    "repair": 17.2,
+    "it": 3.4,
+    "review": 1.5,
+    "vendor": 0.5,
+    "compliance": 0.7
+   },
+   "total": 106.7,
+   "fte_40h": 2.7,
+   "crucible_cover_h_per_week": 0.0,
+   "fte_for_cover": 0.0,
+   "scale": {
+    "alloys": 13.03,
+    "equipment": 1.45,
+    "equipment_count": 32,
+    "equipment_count_base": 22
+   }
+  }
+ },
+ "consumables": {
+  "R0": {
+   "runs": 2.0,
+   "charge_cups": 8.0,
+   "sieved_jars": 9.0,
+   "store_full_in_days": 64.6,
+   "screening_plates": 1.1,
+   "full_plates": 0.09,
+   "mounts": 1.8,
+   "tensile_specimens": 3.6,
+   "instrument_data_gb": 5.9,
+   "note": "4 cups a run (chapter 1), 5 sieved cuts a good run (chapter 3), the 581-jar store (trays N, O), 2 mounts and 4 specimens an alloy (STEPS), about 6.5 GB an alloy (the finale's year: 1,974 GB for 304 alloys)"
+  },
+  "R11": {
+   "runs": 16.8,
+   "charge_cups": 67.1,
+   "sieved_jars": 75.5,
+   "store_full_in_days": 7.7,
+   "screening_plates": 12.0,
+   "full_plates": 1.03,
+   "mounts": 20.6,
+   "tensile_specimens": 41.2,
+   "instrument_data_gb": 66.9,
+   "note": "4 cups a run (chapter 1), 5 sieved cuts a good run (chapter 3), the 581-jar store (trays N, O), 2 mounts and 4 specimens an alloy (STEPS), about 6.5 GB an alloy (the finale's year: 1,974 GB for 304 alloys)"
+  },
+  "D3": {
+   "runs": 1.4,
+   "charge_cups": 5.7,
+   "sieved_jars": 6.4,
+   "store_full_in_days": 90.3,
+   "screening_plates": 1.3,
+   "full_plates": 0.0,
+   "mounts": 23.7,
+   "tensile_specimens": 47.4,
+   "instrument_data_gb": 77.1,
+   "note": "4 cups a run (chapter 1), 5 sieved cuts a good run (chapter 3), the 581-jar store (trays N, O), 2 mounts and 4 specimens an alloy (STEPS), about 6.5 GB an alloy (the finale's year: 1,974 GB for 304 alloys)"
+  }
  }
 }

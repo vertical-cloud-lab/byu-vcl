@@ -2,7 +2,7 @@
 
     python3 bottleneck.py              # the analysis -> out/bottleneck.json, out/bottleneck_ladder.png,
                                        #   out/bottleneck_capacity.png, out/bottleneck_utilization.png
-    python3 bottleneck.py ladder       # print the ladder only (about 1 min)
+    python3 bottleneck.py ladder       # print the ladder only (a few seconds)
 
 Sterling, on PR #318 (2026-11-08): "Approx. one full alloy tested per day was the estimation. How can we get that up
 to 10/day? What would be required? For example, each atomizer run could probably be completed within 2-4 hours, which
@@ -17,7 +17,8 @@ The "one a day" is the finale's schedule (timelapse.py): 324 alloys fully tested
    each machine's ceiling in alloys a day, one unit running round the clock, and the units ten a day needs.
 2. ``simulate()``, the whole lab. timelapse.simulate's greedy schedule, generalised: several units of a station, the
    crucible's person on shifts (or a robot), the arms' whole handling time (in, attended, out) rather than 6 min at a
-   step's start, the Shuttles' openings held while a tray is presented, a wash for the sieves, and a DED front end.
+   step's start, the Shuttles' openings held while a tray is presented, floor cells with fixed arms of their own, a
+   wash for the sieves, a cap on the alloys in process (CONWIP), and a DED front end.
    ``LADDER`` runs it rung by rung: each rung removes the bottleneck the one before it found.
 
 With the finale's settings and handling, ``simulate()`` reproduces timelapse.simulate's alloys exactly (``check()``),
@@ -767,6 +768,59 @@ def run_ladder(rungs: list[dict]) -> list[dict]:
     return out
 
 
+def machines(S: dict) -> int:
+    """Pieces of equipment that get planned maintenance: every station's units, the mobile units and fixed arms."""
+    S = scenario(**S) if "atomizers" not in S else S
+    n = sum(1 for st in {r[1] for r in step_table(S)} if st not in ("ded", "sieve_wash"))
+    n += S["atomizers"] - 1 + sum(v - 1 for k, v in S["pools"].items() if not k.startswith("arm:"))
+    n += S["units"] + (sum(S["pools"].get("arm:" + c, 1) for c in CELLS) if S["handling"] == "cells" else 0)
+    n += sum(S["pools"].get(k, 1) for k in ("sieve_wash",) if S["sieve_wash"])
+    n += S["ded"]["units"] if S["front"] == "ded" else 0
+    return n
+
+
+def staffing(rung: dict, base_rung: dict) -> dict:
+    """People's hours a week at a rung, scaled from upkeep.py's year at about one alloy a day (out/upkeep_model.json):
+    the crucible by runs, consumables and repairs by alloys, planned maintenance, IT, charts, vendors and safety by
+    pieces of equipment. A rough scaling, not upkeep.py re-run at ten a day."""
+    up = json.loads((OUT / "upkeep_model.json").read_text())["people_hours_per_week"]["by_kind_mean_after_ramp"]
+    S, B0 = scenario(**rung["scenario"]), scenario(**base_rung["scenario"])
+    m, m0 = rung["simulated"], base_rung["simulated"]
+    use = m["tested_per_day"] / m0["tested_per_day"]
+    kit = machines(S) / machines(B0)
+    crucible = 0.0 if S["crucible"] == "robot" else m["runs_per_day"] * 7 * S["atom"]["person"]
+    h = dict(crucible=round(crucible, 1), pm=round(up["pm"] * kit, 1), consumables=round(up["consumables"] * use, 1),
+             repair=round(up["repair"] * use, 1), it=round(up["it"] * kit, 1), review=round(up["review"] * kit, 1),
+             vendor=round(up["vendor"] * kit, 1), compliance=round(up["compliance"] * kit, 1))
+    total = sum(h.values())
+    cover = 0.0
+    if S["crucible"] == "shifts":
+        days, h0, h1 = SHIFTS[S["shifts"]]
+        cover = days * (h1 - h0) * S["people"]
+    return dict(hours_per_week=h, total=round(total, 1), fte_40h=round(total / 40, 1),
+                crucible_cover_h_per_week=cover, fte_for_cover=round(cover / 40, 1),
+                scale=dict(alloys=round(use, 2), equipment=round(kit, 2), equipment_count=machines(S),
+                           equipment_count_base=machines(B0)))
+
+
+def consumables(rung: dict) -> dict:
+    """What ten a day goes through, per day (from the rung's simulated rates)."""
+    m = rung["simulated"]
+    S = scenario(**rung["scenario"])
+    good = m["runs_per_day"] * (1 - 1 / S["run_fail_every"])
+    fb = 1 - 1 / S["build_fail_every"]
+    builds = (m["tested_per_day"] if S["front"] == "powder" else m["promoted_per_day"]) / fb
+    return dict(runs=round(m["runs_per_day"], 1), charge_cups=round(4 * m["runs_per_day"], 1),
+                sieved_jars=round(5 * good, 1), store_full_in_days=round(581 / max(5 * good, 1e-9), 1),
+                screening_plates=round(builds, 1),
+                full_plates=round(m["promoted_per_day"], 2) if S["front"] == "powder" else 0.0,
+                mounts=round(2 * m["tested_per_day"], 1), tensile_specimens=round(4 * m["tested_per_day"], 1),
+                instrument_data_gb=round(6.5 * m["tested_per_day"], 1),
+                note="4 cups a run (chapter 1), 5 sieved cuts a good run (chapter 3), the 581-jar store (trays N, O), "
+                     "2 mounts and 4 specimens an alloy (STEPS), about 6.5 GB an alloy (the finale's year: 1,974 GB "
+                     "for 304 alloys)")
+
+
 # ------------------------------------------------------------------------------------------------ figures
 INK, INK2, MUTED, GRID, SURF = "#0b0b0b", "#52514e", "#8a8984", "#e4e3df", "#fcfcfb"
 BLUE, ORANGE = "#2a78d6", "#eb6834"
@@ -969,6 +1023,11 @@ def main(argv):
         capacity_R5=cap, capacity_ded=ded_cap,
         capacity_R1_full_handling=capacity(scenario(**LADDER[1]["scenario"])),
         capacity_R11=capacity(scenario(**LADDER[-1]["scenario"])),
+        staffing=dict(R0=staffing(lad[0], lad[0]), R11=staffing(lad[-1], lad[0]),
+                      R11_crucible_robots=staffing(dict(lad[-1], scenario=dict(lad[-1]["scenario"], crucible="robot")),
+                                                   lad[0]),
+                      D3=staffing(ded[-1], lad[0])),
+        consumables=dict(R0=consumables(lad[0]), R11=consumables(lad[-1]), D3=consumables(ded[-1])),
     )
     OUT.mkdir(exist_ok=True)
     (OUT / f"{NAME}.json").write_text(json.dumps(out, indent=1, default=float) + "\n")
