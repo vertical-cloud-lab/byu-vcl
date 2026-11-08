@@ -147,8 +147,8 @@ CHAPTERS = [
          card=["Sections cut from the build, hot-mounted in conductive compound for the SEM, or set in a steel mount "
                "for indentation, then ground and polished with every disc change shown, the mounts standing free in the "
                "PX500's holder while its pistons press them down. Automated "
-               "polishing is the hard part, and the chapter says where. Not yet fixed: in the disc changes the arm still "
-               "folds into itself and the bay's frame (notes/alloy_prep.md)."],
+               "polishing is the hard part, and the chapter says where. Every move re-planned in round 10: the "
+               "PX500's column behind the bowl, the gripper turned over the mold, 0 frames in collision."],
          parts=[("mp4", "dag/route_dag_ch6.mp4", None), ("mp4", "alloy_prep.mp4", None)]),
     dict(key="alloy7", title="Alloy route 7/7: characterizing the build",
          card=["The trays come to the opening in turn: the SEM with the mount clamped in its holder, the VHX, "
