@@ -16,23 +16,49 @@ framework, [`scene.py`](scene.py), is `atomizer-training/viz3d/scene.py` from #1
 [`out/org_vertical_lab.gif`](out/org_vertical_lab.gif) is made to replace that GIF on the org README, under the same
 title. It follows one charge cup from tray B to the atomizer.
 
+**Round 7** ([PR #329](https://github.com/vertical-cloud-lab/byu-vcl/pull/329), Sterling: "the repowder is getting
+even more ridiculous. You need to do a thorough look back at the training videos, specs, etc.") redraws the rePowder
+from the footage. Round 6's own question, "maybe just rotated 90 degrees?", was the answer:
+
+![The footage, with round 6's and round 7's rePowder drawn over it](out/org_vertical_lab_r7.jpg)
+
+- **The lid is hinged on its left side, not at the back.** In T4 6:05 the hinge, two leaves of three screws on a
+  barrel, is on the furnace's left. In every wide shot the open lid stands up at the furnace's left, outside the
+  cabinet (T1 0:03 and 44:00, 2wMgeI-E7zw 10:00). DAL #189's measuring guide had it there too (DWH1CEygsTI 25:40, "the
+  hinge on the lid's left"). PR #327 had turned the lid's whole assembly 90°, so that it opened backwards into the
+  cabinet, and its camera fits turned the cameras by the same 90°, which is why they fitted. Round 6 then cut a bay
+  into the cabinet to make room for it.
+- **Turned back, the rest of PR #327's lid lands where the footage has it.** [`repowder/model.py`](repowder/model.py)
+  builds the assembly in PR #327's frame, where its fitted dimensions belong, and turns it into place (`LID_AZ`). The
+  draw latch is then on the furnace's right side, and its pneumatic bolt runs back into the cabinet's front face (T4
+  5:16-5:31). The lid's square part is at the back, against the cabinet, and the knob is at the front right.
+- **The cabinet is one plain box behind the chamber and the furnace.** The GU 500 AMA panel, the red lamp and the main
+  switch are all on its flat front face (T1 0:03 and 18:06, 2wMgeI-E7zw 10:00), as in Blue Power's brochure photo of
+  the AUS 500 (the rePowder is Blue Power's AUS 500, "powered by Amazemet"). Its front face is now just behind the
+  lid's square back, at y = 198 mm (it was 165). Round 6's block beside the furnace and its bay are gone.
+- **Details the frames show:** the window is a square plate with eight screws and a 66 × 56 mm glass on the facet
+  facing the front left (T1 44:00, 2wMgeI-E7zw 3:30), not a narrow slot. The red lamp is drawn, left of the panel; the
+  main switch sits a little lower; the knob's stalk leans forward; the coil leads come out behind the hinge; and the
+  chamber's top plate reaches back under the furnace's square back.
+- **Checked against the footage** (above): a camera fitted to each frame from points on the panel, the cabinet, the
+  switch, the lamp and the viewport puts the new model's outline on the machine in T1 44:00 and 2wMgeI-E7zw 10:00,
+  the open lid and its window plate included. Round 6's model, drawn with the same cameras, has its lid inside the
+  cabinet and its panel and switch well off the real ones.
+- **The arm's moves at the rePowder follow** ([`org_gif.py`](org_gif.py)): the arm reaches over the furnace to the
+  latch on its right and pulls the lever out, then lifts the lid by its knob up and over to the left and lets it
+  settle open at 90°. The lid now turns about the hand's own axis (the hinge runs front to back), so to shut it the
+  hand comes to the open lid's knob along that axis, from the front.
+
 **Round 6** ([PR #329](https://github.com/vertical-cloud-lab/byu-vcl/pull/329), Sterling: "the atomizer melting
 furnace area seems to be misproportioned (maybe just rotated 90 degrees?). The opening lid ends up intersecting with
 the furnace behind it ... Instead of having a separate motion thing going on for getting the crucibles to the right
 spot, instead the arm should use some kind of gripper attachment to get it in then, unless the gripper could actually
-reach in with enough clearance, which would be ideal") changes two things:
+reach in with enough clearance, which would be ideal") changed two things:
 
-- **The rePowder's cabinet, redrawn from the footage.** PR #327 moved the furnace lid's hinge to the back, as the
-  training video shows, but kept the old model's cabinet: one blue box across the furnace's whole width, its front
-  face 11 mm behind the hinge. Open to 90°, the lid stood about 175 mm inside it. In the footage the room shows behind
-  the open lid (T4 1:53 and 5:08), the cabinet is tall only to the furnace's right and comes forward there (the
-  locking bolt, the red lamp and the GU 500 AMA panel are on a face right beside the furnace: T1 30:13, T4 5:41), and
-  further back its left face is full height (T4 6:05). [`repowder/model.py`](repowder/model.py) now draws it that
-  way (`CAB_STEP_X`, `CAB_FWD_Y`, `LID_BAY`): tall and forward right of the furnace, with a bay behind the furnace that
-  the lid opens into. Drawn over PR #327's seven registered frames (`register.py draw repowder`), the panel lands
-  where the real one is; the step's place and the bay's depth are fitted by eye. An FCL check of the lid's swing
-  gives 8 mm to the cabinet at 90° and 5.5 mm fully open, where it had been inside it from 31° on. It also brings in
-  PR #327's second pass (the door hinged at the back, the front clamps, the viewport, the panel's keys).
+- **(Replaced in round 7.)** The rePowder's cabinet was cut down behind the furnace into a bay, with a block beside
+  the furnace for the panel, to make room for PR #327's lid hinged at the back. Round 7 turns the lid back to its left
+  hinge and makes the cabinet one box again. Round 6 also brought in PR #327's second pass (the door hinged at the
+  back, the front clamps, the viewport, the panel's keys), which stays.
 - **The arm puts the cup on the pedestal itself, with a cup fork.** The 2F-85 can't reach in on its own: its knuckles
   span 127-138 mm, and the way in passes between the doser's frame post and its station post, 117 mm apart
   ([`carousel.py`](carousel.py)). So the vessel shuttle is gone, and the arm uses an attachment: the shuttle's fork
@@ -63,7 +89,7 @@ Round 5's changes stand:
 3. **The cup on a tall pedestal, 34 mm under the auger** (153 mm in round 4, as in v5). See below.
 
 The rest is round 4's: the cup goes into the carrier on the MiR, tray B goes back up, and the MiR drives to the
-rePowder (PR #327's model, with round 6's cabinet: the lid hinged at the back, the draw latch and the locking bolt as
+rePowder (PR #327's model, its lid turned back to its left hinge in round 7, the draw latch and the locking bolt as
 joints). The arm opens
 the latch and the lid, sets the cup on the crucible's floor with chapter 2's loading tong, and shuts the lid. Then
 the rePowder, cut open, melts the cup and atomizes it (a time-lapse), while the MiR drives back to where it waited.
@@ -108,11 +134,11 @@ own files are unchanged.
   over it (`FORK_GAP`), so that while it rides the held fork it touches nothing but the fork.
 - **Choices worth checking** (round 4's still stand: one cup, no plug, the lid open at 90°, one arm on the latch and
   the lid, the latch's lever at half its travel):
-  - **The rePowder's cabinet round the furnace is fitted by eye** to the footage: where it steps up (x = 198 mm, the
-    locking bolt's housing), its face beside the furnace (75 mm in front of the furnace's axis), and the bay behind
-    the furnace (back to y = 380 mm, its floor at 1320 mm). A tape measure on the machine would settle them. PR #327
-    should take the same change, and chapter 2 ([`alloy_atomize.py`](alloy_atomize.py)) still opens the lid about the
-    old left hinge, as PR #327's notes say.
+  - **The rePowder's sizes are still the earlier fits.** The lid's are PR #327's, fitted in a turned frame; the
+    cabinet's depth and width, the panel's place and the lamp's are from the old model and these frames. A tape measure
+    on the machine would settle them. PR #327 should take the same turn. Chapter 2
+    ([`alloy_atomize.py`](alloy_atomize.py)) swings the lid about `M.HINGE` on a y axis, which is the left hinge again,
+    but it keeps its own copy of the latch on the hood's front right.
   - **The cup fork and its rest are ours,** an assumed design, not built: a hand tool for the 2F-85 in place of the
     doser's vessel shuttle. The cup stands on it inside a 2.5 mm lip; a real one might want a positive hold on the
     cup while the arm moves.
@@ -1975,6 +2001,10 @@ python3 org_gif.py join org_vertical_lab_p0 org_vertical_lab_p1 org_vertical_lab
 ORG_AUDIT_PART=0:620 ARM_AUDIT=1 VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py   # audit frames 0-619 -> /tmp/org_audit/
 python3 org_gif.py audit_join                                     # every part -> out/collisions/org_vertical_lab.json
 python3 org_gif.py gif                                            # 1.5x, 880 px, under its header band -> out/org_vertical_lab.gif
+# round 7 drew and audited each frame range in one pass instead (the audit's own pass simulates the loop again):
+ARM_AUDIT_RENDER=1 ORG_NAME=org_vertical_lab_p0 ORG_PART=0:620 VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py  # and p1, p2
+# the rePowder over the lab's footage, a camera fitted to each frame (round 7; repowder/overlay.py's docstring)
+xvfb-run -a python3 repowder/overlay.py fit refs/repowder_r7/t1_2640_lid_open.json /tmp/t1.jpg repowder 1 0 0
 ```
 
 Putting them on YouTube (needs `YOUTUBE_UPLOAD_TOKEN_PICKLE_B64`; see [`youtube/README.md`](../youtube/README.md)):

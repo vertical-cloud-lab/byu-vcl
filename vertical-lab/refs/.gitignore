@@ -1,3 +1,4 @@
 # frames from makers' and others' videos are fetched again by register.py (see its docstring); the lab's own are kept
 */*.jpg
 !polisher/*.jpg
+!repowder_r7/*.jpg

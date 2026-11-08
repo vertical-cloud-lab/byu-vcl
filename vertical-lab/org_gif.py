@@ -1,15 +1,26 @@
 """The org page's GIF, remade in the lab as this branch has it: ``vertical-cloud-lab/.github``'s
 ``profile/vertical-lab.gif`` ("In a vertical lab, equipment is brought to the operator", PR #318).
 
+Round 7 (PR #329, Sterling, 2026-11-08: "the repowder is getting even more ridiculous. You need to do a thorough look
+back at the training videos, specs, etc."): the rePowder redrawn from the footage (``repowder/model.py``, LID_AZ).
+Round 6's own question ("maybe just rotated 90 degrees?") was the answer: PR #327 had turned the lid's whole assembly
+90 deg. The hinge is on the furnace's left side (T4 6:05) and the lid swings up to the left, standing outside the
+cabinet when open (T1 0:03, 44:00; 2wMgeI-E7zw 10:00); turned back, the latch is on the furnace's right with its
+bolt running back into the cabinet (T4 5:16), and the lid's square part is at the back. The cabinet is one plain box
+behind the chamber and the furnace again, the panel, the red lamp and the main switch on its flat front face, as in
+Blue Power's AUS 500 brochure (round 6's block beside the furnace and its bay for the lid are gone). The window is a
+square plate with eight screws on the front-left facet. The arm's moves at the rePowder follow the new latch and lid:
+the arm reaches over the furnace to the latch on its right, and lifts the lid by its knob up and over to the left; the
+lid now turns about the hand's own axis (the hinge runs front to back), so the hand comes to the open lid's knob along
+that axis, from the front.
+
 Round 6 (PR #329, Sterling, 2026-11-07: "the atomizer melting furnace area seems to be misproportioned (maybe just
 rotated 90 degrees?). The opening lid ends up intersecting with the furnace behind it ... Instead of having a separate
 motion thing going on for getting the crucibles to the right spot, instead the arm should use some kind of gripper
 attachment to get it in then, unless the gripper could actually reach in with enough clearance, which would be ideal"):
-- the rePowder's cabinet (``repowder/model.py``: CAB_STEP_X, CAB_FWD_Y, LID_BAY) is tall only to the furnace's right
-  and comes forward there, beside it, with a bay behind the furnace that the lid, hinged at the back, opens into. The
-  model's one box had stood across the furnace's whole width, 11 mm behind the lid's hinge, so the open lid stood
-  about 175 mm inside it; T1 30:13 and T4 1:53, 5:08, 5:41 and 6:05 show the cabinet as now drawn. With it, PR #327's
-  second pass (the door hinged at the back, the front clamps, the viewport, the panel's keys);
+- (replaced in round 7) the rePowder's cabinet had been cut down behind the furnace into a bay for a lid hinged at the
+  back, with a block beside the furnace for the panel. With it came PR #327's second pass (the door hinged at the
+  back, the front clamps, the viewport, the panel's keys), which stays;
 - the doser's vessel shuttle is left out: the arm carries the cup in on a cup fork (FORK_L ..., fork_meshes), since the
   2F-85 itself can't reach the pedestal (its knuckles span 127-138 mm; the way in, between the doser's frame post and
   its station post, is 117 mm). The fork waits on a rest outside the -y panel, its seat where the shuttle took the cup;
@@ -41,8 +52,8 @@ do some workflows"), on round 4's ("you should have started backed off to see th
    takes it back out so that the carriage can park for the next index. The cup is drawn cut open while it fills. The
    arm puts the fork back on its rest and stands the cup in a pocket of the cup carrier on the MiR's cabinet
    (chapter 2's carrier);
-4. tray B goes back up while the MiR drives to the rePowder (PR #327's refined model: its lid hinged at the back, the
-   draw latch and the pneumatic locking bolt as joints, ``repowder/model.py``);
+4. tray B goes back up while the MiR drives to the rePowder (PR #327's refined model, its lid turned back to its left
+   hinge in round 7: the draw latch and the pneumatic locking bolt as joints, ``repowder/model.py``);
 5. at the rePowder, the bolt goes back, the arm pulls the latch's lever out (LATCH_U of its swing) and lifts the lid
    by its knob past its balance point (LID_LET) and lets go: the lid settles onto its stop (RP_LID_U). With chapter
    2's loading tong it takes the cup off the carrier and carries it down #222's path into the crucible
@@ -74,9 +85,10 @@ Drawn differently for this shot only (all drawing choices):
   balance instead of through its side door. The cup leaves between powders, so the carriage can park to index.
 - One cup goes into the crucible, where the lab loads four a run (byu-vcl PR #318), and the melt is drawn for one
   cup's 43 g. Its plug isn't fitted or pressed (chapter 1 does both, on the same tray); the cup goes over open.
-- The lid rests open at RP_LID_U of the model's 105 deg, 90 deg ("about upright", PR #327's notes): from where the
-  MiR stops, the arm can't reach the knob of a lid open further, to shut it. It lets go at 73.5 deg, past the lid's
-  balance point (its centre of mass passes over the hinge at about 67 deg, from the shell's outline).
+- The lid rests open at RP_LID_U of the model's 105 deg, 90 deg, standing up at the furnace's left (round 4 chose it
+  so the arm could reach the knob to shut the lid). The arm lets go at 73.5 deg, past the lid's balance point (its
+  centre of mass passes over the hinge at about 67 deg, from the shell's outline; the turn of round 7 moves the lid
+  and its hinge together, so that is unchanged).
 - The arm works the latch and the lid on its own (chapter 2 has a second unit hold the lid down while the latch lets
   go).
 
@@ -1612,8 +1624,10 @@ def movie():
                                  labels(lbl_arm, lbl_latch, lbl_lid)))
         # the knob where the lid rests: a planned joint move straight to it, the hand wide open (backed off from it
         # either way, the arm runs out of reach), then the lid pulled back over its balance point and lowered
+        # (round 7: the lid turns about the hand's own axis now, so the hand comes in along it, from the front)
         yield 1.6, to_arc("knob_open", knob_grasp(1.0), lambda s: knob_grasp(1.0 - s), lambda s: lid(1.0 - s),
-                          GRIP_KNOB, ("knob",), [T((0, 0, z)) @ knob_grasp(1.0) for z in (40.0, 25.0, 12.0)], 0.45)
+                          GRIP_KNOB, ("knob",), [knob_grasp(1.0) @ T((0, 0, -d)) for d in (60.0, 40.0, 25.0)] +
+                          [T((0, 0, z)) @ knob_grasp(1.0) for z in (40.0, 25.0)], 0.45)
         yield 0.5, lambda: rb.line_to(knob_grasp(1.0))
         yield 0.4, lambda: rb.grip_to(GRIP_KNOB)
         rb.events.append((sc.n, "grasp", AT.g("knob"), None))
@@ -1621,8 +1635,12 @@ def movie():
         yield 0.4, lambda: rb.grip_to(0.45)
         rb.events.append((sc.n, "release", AT.g("knob"), None))
         yield 0.7, lambda: rb.line_to(clear_line([T((0, 0, d)) @ knob_grasp(0.0) for d in (100.0, 60.0, 40.0)], 0.45))
+        # (round 7: the lever is on the furnace's right now, its open grasp out towards the panel and the HMI, so the
+        # hand may come to it from above or from the front as well as back along the tool)
         yield 1.4, to_arc("latch_open", latch_grasp(1.0), lambda s: latch_grasp(1.0 - s), lambda s: latch(1.0 - s),
-                          GRIP_LATCH, ("latch",), [latch_grasp(1.0) @ T((0, 0, -100))], OPEN_LATCH)
+                          GRIP_LATCH, ("latch",), [latch_grasp(1.0) @ T((0, 0, -d)) for d in (100.0, 70.0, 50.0)] +
+                          [T((0, 0, d)) @ latch_grasp(1.0) for d in (80.0, 50.0)] +
+                          [T((0, -d, 0)) @ latch_grasp(1.0) for d in (80.0, 50.0)], OPEN_LATCH)
         yield 0.7, lambda: rb.line_to(latch_grasp(1.0))
         yield 0.4, lambda: rb.grip_to(GRIP_LATCH)
         rb.events.append((sc.n, "grasp", AT.g("latch_lever"), None))
