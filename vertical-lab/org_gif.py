@@ -6,8 +6,8 @@ stable when on the fork? Seems like you could have a more clever design for this
 more robust for sure"):
 - the cup stands in a slotted sleeve on the fork (SLEEVE_*), not inside a 2.5 mm lip. The sleeve's 13 mm slot, which
   lets the pedestal's neck through, is narrower than the 19.05 mm cup, so the sleeve holds the cup on every side;
-  to tip, the cup would first have to lift 16 mm. To back out from under the cup at the pedestal, the fork drops
-  until the sleeve is under the cup's foot (FORK_UNDER), round a longer neck (PED_H_HIGH);
+  it can lean only about 4 deg, and to tip it would first have to lift out. To back out from under it at the pedestal,
+  the fork drops until the sleeve is under the cup's foot (FORK_UNDER), round a longer neck (PED_H_HIGH);
 - the fork's rest stands on the tray at two points, a saddle under the sleeve and a channel under the blade by the
   handle, on two 40 x 40 uprights, a beam and a plate bolted to the tray (fork_meshes). Round 6's was one post under
   the fork's middle;
@@ -241,8 +241,8 @@ GRIP_FORK, OPEN_FORK = 0.80, 0.62
 # more robust for sure"). Round 6's cup stood inside a 2.5 mm lip with 0.5 mm of play, and the fork lay across one
 # 20 mm post, 334 mm tall, at its middle, its handle overhanging tray B's front lip by 72 mm. Now:
 # - the cup stands in a slotted sleeve. The slot that lets the pedestal's neck through (carousel.SLOT_W, 13 mm) is
-#   narrower than the 19.05 mm cup, so the sleeve holds the cup on every side; to tip, the cup would first have to
-#   lift SLEEVE_H. At the pedestal the fork drops until the sleeve is under the cup's foot (FORK_UNDER), round a
+#   narrower than the 19.05 mm cup, so the sleeve holds the cup on every side; it can lean only about 4 deg (0.95 mm
+#   of play over the bore's 14.5 mm under its chamfer), and to tip it would first have to lift out. At the pedestal the fork drops until the sleeve is under the cup's foot (FORK_UNDER), round a
 #   longer neck (PED_H_HIGH), and backs out along the slot as round 6's did. The blade joins the sleeve part way up
 #   (BLADE_Z), so that, dropped, it still clears the balance's top;
 # - the rest stands on the tray at two points, a saddle under the sleeve and a channel under the blade by the handle,

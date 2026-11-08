@@ -16,6 +16,37 @@ framework, [`scene.py`](scene.py), is `atomizer-training/viz3d/scene.py` from #1
 [`out/org_vertical_lab.gif`](out/org_vertical_lab.gif) is made to replace that GIF on the org README, under the same
 title. It follows one charge cup from tray B to the atomizer.
 
+**Round 8** ([PR #329](https://github.com/vertical-cloud-lab/byu-vcl/pull/329), Sterling: "The fork stand looks
+unstable, just free hanging. Also, is the charge cup stable when on the fork? Seems like you could have a more clever
+design for this, not necessarily more complex, but more robust for sure") redraws the cup fork's seat and its rest:
+
+![Round 7's cup fork and rest, and round 8's](out/org_vertical_lab_r8.jpg)
+
+- **The cup stands in a slotted sleeve, not inside a lip.** Round 6's fork kept the cup's foot inside a 2.5 mm lip,
+  with 0.5 mm of play, so a sideways jolt of well under 1 g would tip it over the lip. The fork now holds the cup in
+  a sleeve 16 mm tall round its foot, a quarter of its height, with a lead-in chamfer at the mouth. The 13 mm slot
+  through the sleeve's floor and front, which lets the pedestal's neck through, is narrower than the 19.05 mm cup, so
+  the sleeve holds the cup on every side. The cup can lean only about 4° in it, and to tip it would first have to
+  lift out of the sleeve (`SLEEVE_*` in [`org_gif.py`](org_gif.py)).
+- **At the pedestal the fork drops past the cup's foot.** The fork lets the cup down onto the pedestal as before,
+  then drops until the sleeve is 4 mm under the cup's foot (`FORK_UNDER`) and backs out, the neck running out along
+  the slot. For this the neck is 34 mm tall (`PED_H_HIGH`; it was 20 mm), and the blade joins the sleeve partway up
+  (`BLADE_Z`), so with the sleeve dropped the blade still clears the balance's top by 9 mm. Taking the cup back is the
+  same in reverse: the sleeve comes up round the cup's foot.
+- **The rest stands on the tray at two points.** Round 6's rest was one 20 mm post, 334 mm tall, under the fork's
+  middle, with the heavy handle end hanging off one side. Now a saddle takes the sleeve and a channel takes the blade
+  by the handle. Both are open toward the doser, so the fork slides straight out of them, and both stand on 40 × 40
+  uprights, joined by a beam and braced at their feet, on a plate bolted to the tray (`fork_meshes`).
+- **The doser stands 85 mm further back on tray B,** for this shot only (`DOSER_BACK`, `doser_back()`). The fork and
+  its rest are then inside the tray's front lip, with 13 mm to spare; round 6's fork overhung the lip by 72 mm, so it
+  would have stuck out of the tray in storage. The doser's back stays 28 mm in front of the tray's power strip. The
+  fork's seat on the rest is still the hand-over, 71 mm outside the −y panel, so the arm's place and pick of the cup
+  there are round 5's.
+- **Why not a grabber stick like the loading tong** (asked on the PR). The tong is a compliant mechanism as modelled:
+  spring-steel jaws, and handle halves joined by a flexure block. A tong can't reach the cup from above here, since
+  its rim is 34 mm under the auger's exit. A sideways one, compliant tweezers squeezed at the handle 270 mm from the
+  jaws, would work, but the sleeve holds the cup with no moving parts.
+
 **Round 7** ([PR #329](https://github.com/vertical-cloud-lab/byu-vcl/pull/329), Sterling: "the repowder is getting
 even more ridiculous. You need to do a thorough look back at the training videos, specs, etc.") redraws the rePowder
 from the footage. Round 6's own question, "maybe just rotated 90 degrees?", was the answer:
@@ -72,7 +103,7 @@ reach in with enough clearance, which would be ideal") changed two things:
   brings the fork back out while the doser doses. After the dose it takes the cup off the same way, and puts the fork
   back on its rest while the next module comes round (`FORK_L` ..., `fork_meshes`, `add_fork` in
   [`org_gif.py`](org_gif.py)). The close-ups of the cup are cuts, not camera moves, since the way in would pass
-  through the arm.
+  through the arm. Round 8 replaces the lip with a slotted sleeve and the rest with one that stands at two points.
 
 Round 5's changes stand:
 
@@ -107,7 +138,8 @@ the balance at that height, with the cup on it, meets only the −y acrylic pane
 `HIGH_PORT` and `high_pedestal()` in [`org_gif.py`](org_gif.py)):
 
 - the pedestal stands up through the balance's top door, which stays open, and the cup's foot is at 338 mm. Its rim
-  is 34 mm under the exit, and the pedestal's top clears the parked carriage by 7 mm;
+  is 34 mm under the exit, and the pedestal's top clears the parked carriage by 7 mm. Its neck is 34 mm tall (round
+  8), so that the cup fork's sleeve can drop clear under the cup's foot;
 - the port in the −y panel goes up to 420 mm, for the fork and the cup on it;
 - the cup goes in over the balance, not through its side door, and only once the module is docked and tilted. It
   comes back out between the two powders, so the carriage can park for the chain to index. In round 5 the shuttle
@@ -150,8 +182,8 @@ own files are unchanged.
     (the footage also shows a cylinder chained to the wall at the cabinet's right) and the heat exchanger at the
     right.
   - **The cup fork and its rest are ours,** an assumed design, not built: a hand tool for the 2F-85 in place of the
-    doser's vessel shuttle. The cup stands on it inside a 2.5 mm lip; a real one might want a positive hold on the
-    cup while the arm moves.
+    doser's vessel shuttle. The cup stands in its 16 mm slotted sleeve (round 8), held on every side but not clamped:
+    its weight keeps it down.
   - **The tall pedestal and the cup's path over the balance,** above: a change to the doser, drawn for this shot.
   - **The doser's top door stays open** throughout, since the pedestal stands up through it. In v5 it opens only
     for each dose.
@@ -165,7 +197,8 @@ own files are unchanged.
   with its overhead utilities (rounds 2–4). So are the camera targets that the MiR's drive to the rePowder would run
   over (the sieving cell's and the rePowder's), and the south row's.
 - **Changed for this shot only:** the VLM's camera target stands at the opening's right instead of its left, since the
-  MiR comes in from the left.
+  MiR comes in from the left. The doser stands 85 mm further back on tray B than the tray plan has it
+  ([`animate.py`](animate.py)'s `LOADS`), so that the cup fork's rest fits on the tray in front of it (round 8).
 
 Rounds 2–5, on the same PR: round 2 made it one Shuttle, two trays and a module outside the VLM (the sieving cell).
 Round 3 brought the camera in to 3–4 m and slowed it to 1.5×, with the CubXL's test running behind the arm. Round 4
