@@ -1,6 +1,19 @@
 """The org page's GIF, remade in the lab as this branch has it: ``vertical-cloud-lab/.github``'s
 ``profile/vertical-lab.gif`` ("In a vertical lab, equipment is brought to the operator", PR #318).
 
+Round 8 (PR #329, Sterling, 2026-11-08: "The fork stand looks unstable, just free hanging. Also, is the charge cup
+stable when on the fork? Seems like you could have a more clever design for this, not necessarily more complex, but
+more robust for sure"):
+- the cup stands in a slotted sleeve on the fork (SLEEVE_*), not inside a 2.5 mm lip. The sleeve's 13 mm slot, which
+  lets the pedestal's neck through, is narrower than the 19.05 mm cup, so the sleeve holds the cup on every side;
+  to tip, the cup would first have to lift 16 mm. To back out from under the cup at the pedestal, the fork drops
+  until the sleeve is under the cup's foot (FORK_UNDER), round a longer neck (PED_H_HIGH);
+- the fork's rest stands on the tray at two points, a saddle under the sleeve and a channel under the blade by the
+  handle, on two 40 x 40 uprights, a beam and a plate bolted to the tray (fork_meshes). Round 6's was one post under
+  the fork's middle;
+- the doser stands DOSER_BACK further back on tray B (doser_back), so that the fork and its rest are inside the
+  tray's lip; round 6's fork overhung it by 72 mm.
+
 Round 7 (PR #329, Sterling, 2026-11-08: "the repowder is getting even more ridiculous. You need to do a thorough look
 back at the training videos, specs, etc."): the rePowder redrawn from the footage (``repowder/model.py``, LID_AZ).
 Round 6's own question ("maybe just rotated 90 degrees?") was the answer: PR #327 had turned the lid's whole assembly
@@ -215,16 +228,43 @@ HIGH_PORT = (0.0, 67.0, 100.0, 420.0)   # the -y panel's port (x0, x1, z0, z1; v
 # fork made a hand tool, its blade long enough that the gripper stays outside the -y panel, on a handle post that the
 # pads clamp (19 mm across, as the loading tong's handle). It waits on a rest outside the panel, its seat where the
 # shuttle took the cup from the arm (carousel.Y_HAND), so the arm's place and pick of the cup there are round 5's.
-FORK_L = 285.0          # the blade, back end to tip: with the cup on the pedestal, the handle stands 41 mm off the panel
-FORK_HANDLE_H = 120.0   # the handle post, over the blade's top
+FORK_L = 285.0          # the fork, back end to tip: with the cup on the pedestal, the handle stands 41 mm off the panel
+FORK_HANDLE_H = 120.0   # the handle post's top, over the seat
 FORK_HANDLE = (19.0, 24.0)   # the post's section (x, across which the pads clamp; y)
 FORK_GRASP = 18.0       # the pads' centre, under the post's top
 FORK_LIFT = 2.0         # the fork comes up this far off its rest
 FORK_BACK = 30.0        # it backs out this far under the cup before it rises or drops clear of the cup's foot
 FORK_GAP = 0.2          # the cup is let onto the pedestal, and taken back, this far over it (no contact while held)
-FORK_LIP = (10.0, 12.5, 2.5)   # the lip round the cup's foot on each tine: inner and outer radius, height
-REST_Y = -400.0         # the fork's rest, rig frame: a post under the blade's middle, outside the -y panel
 GRIP_FORK, OPEN_FORK = 0.80, 0.62
+# round 8 (Sterling, PR #329, 2026-11-08: "The fork stand looks unstable, just free hanging. Also, is the charge cup
+# stable when on the fork? Seems like you could have a more clever design for this, not necessarily more complex, but
+# more robust for sure"). Round 6's cup stood inside a 2.5 mm lip with 0.5 mm of play, and the fork lay across one
+# 20 mm post, 334 mm tall, at its middle, its handle overhanging tray B's front lip by 72 mm. Now:
+# - the cup stands in a slotted sleeve. The slot that lets the pedestal's neck through (carousel.SLOT_W, 13 mm) is
+#   narrower than the 19.05 mm cup, so the sleeve holds the cup on every side; to tip, the cup would first have to
+#   lift SLEEVE_H. At the pedestal the fork drops until the sleeve is under the cup's foot (FORK_UNDER), round a
+#   longer neck (PED_H_HIGH), and backs out along the slot as round 6's did. The blade joins the sleeve part way up
+#   (BLADE_Z), so that, dropped, it still clears the balance's top;
+# - the rest stands on the tray at two points, a saddle under the sleeve and a channel under the blade by the handle,
+#   both open toward the doser so the fork slides out of them, on two 40 x 40 uprights, a beam and a plate bolted to
+#   the tray (REST_*);
+# - the doser stands DOSER_BACK further back on tray B than the lab's plan has it (animate.LOADS), so that the fork
+#   and its rest are inside the tray's lip. The lip's inner face was 470 mm in front of the doser's origin and the
+#   resting fork's back end 542 mm; now the fork ends 13 mm inside it. Its seat stays at the hand-over (CR.Y_HAND,
+#   71 mm outside the -y panel), so the arm's place and pick of the cup there are round 5's.
+SLEEVE_H = 16.0         # the sleeve round the cup's foot, over the seat: a quarter of the cup's 63.5 mm. The pads
+#                         (the cup held 48 mm up, GRASP_DOWN) end 29 mm up it, 13 mm over the sleeve
+SLEEVE_R = (10.0, 13.5)  # its bore (the cup's 19.05 mm, with 0.95 mm of play) and its outside
+SLEEVE_CH = 1.5         # the lead-in chamfer round the bore's mouth
+SLEEVE_FLOOR = 4.0      # the floor under the cup's foot; the slot runs through it and the sleeve from the seat's centre
+BLADE_Z = (7.0, 13.0)   # the blade, over the seat: with the sleeve dropped under the cup's foot it is 9 mm over the
+#                         balance's top (316 mm)
+BLADE_W = 24.0
+FORK_UNDER = SLEEVE_H + 4.0   # the seat this far under the cup's foot, for the fork to back out from under it
+PED_H_HIGH = 34.0       # the pedestal's neck (carousel.PED_H: 20 mm): the sleeve's floor drops to 10 mm over the riser
+DOSER_BACK = 85.0       # the doser this much further back on tray B (animate.LOADS: y 50); its back stays 28 mm in
+#                         front of the tray's power strip
+REST_BACK = -496.0      # the rest's channel and rear upright, rig frame (y; the saddle and front upright at CR.Y_HAND)
 
 
 def _load_s1() -> dict:
@@ -247,6 +287,7 @@ def high_pedestal():
     CR._org_high = True
     CR.SEAT_Z = HIGH_SEAT
     CR.PORT = HIGH_PORT
+    CR.PED_H = PED_H_HIGH                                  # round 8: for the cup fork's sleeve to drop clear round it
     meshes = CR.part_meshes
 
     def part_meshes():
@@ -256,42 +297,94 @@ def high_pedestal():
     CR.part_meshes = part_meshes
 
 
+def doser_back():
+    """Round 8: the doser stands DOSER_BACK further back on tray B (animate.LOADS), so that its cup fork and the fork's
+    rest are inside the tray's lip. Set before the scene is built; once."""
+    import animate as A
+    if getattr(A, "_org_back", False):
+        return
+    A._org_back = True
+    A.LOADS["B"] = [(k, x, y + DOSER_BACK) if k == "carousel" else (k, x, y) for k, x, y in A.LOADS["B"]]
+
+
 def fork_meshes() -> dict:
-    """The cup fork and its rest (FORK_L ...): {name: (mesh, colour, group)}. The fork in its own frame (origin the
-    seat's centre on the blade's top, y along the blade to its tip, z up), group "cupfork"; the rest in the rig's frame,
-    group None (the caller puts it in the rig's group)."""
-    import pyvista as pv
+    """The cup fork and its rest: {name: (mesh, colour, group)}. The fork in its own frame (origin the seat's centre,
+    where the cup's foot stands; y along the blade to its tip; z up), group "cupfork": the slotted sleeve round the
+    cup's foot (SLEEVE_*), the blade joining it part way up (BLADE_Z), the handle post and its cap. The rest in the
+    rig's frame, group None (the caller puts it in the rig's group): a saddle under the sleeve, open toward the doser,
+    and a channel under the blade by the handle, open at both ends, on two 40 x 40 uprights joined by a beam, on a
+    plate bolted to the tray (round 8)."""
+    import cadquery as cq
 
     import carousel as CR
-    box = lambda *b: pv.Box(bounds=b).triangulate()        # noqa: E731
-    w, t, sw, sl = CR.FORK_W / 2, CR.FORK_T, CR.SLOT_W / 2, CR.SLOT_L / 2
-    yb = -(FORK_L - sl)                                    # the blade's back end
+    import lab
+
+    def mesh(wp):
+        m = lab.to_mesh(wp.val(), 0.05, 0.2).clean()
+        m.clear_data()                   # merged parts carry face normals of the wrong length (collide.py warns)
+        return m
+
+    def blk(x0, x1, y0, y1, z0, z1):
+        return cq.Workplane("XY").box(x1 - x0, y1 - y0, z1 - z0, centered=False).translate((x0, y0, z0))
+
+    r0, r1 = SLEEVE_R
+    sw = CR.SLOT_W / 2
+    yb = -(FORK_L - 15.0)                                  # the fork's back end
     hx, hy = FORK_HANDLE[0] / 2, FORK_HANDLE[1]
-    blade = pv.merge([box(-w, w, yb, -sl, -t, 0.0), box(-w, -sw, -sl, sl, -t, 0.0), box(sw, w, -sl, sl, -t, 0.0)])
-    r0, r1, h = FORK_LIP
-    lip = []
-    for side in (-1, 1):                                   # an arc on each tine, clear of the slot
-        a0 = math.acos(min(1.0, (sw + 0.5) / r0))
-        for a in np.linspace(-a0, a0, 8)[:-1]:
-            b = a + 2 * a0 / 7
-            c, s_ = math.cos((a + b) / 2), math.sin((a + b) / 2)
-            m = box(r0, r1, -r0 * (b - a) / 2 - 0.4, r0 * (b - a) / 2 + 0.4, 0.0, h)
-            m.rotate_z(math.degrees((a + b) / 2) + (180.0 if side < 0 else 0.0), inplace=True)
-            lip.append(m)
-    post = pv.merge([box(-hx, hx, yb, yb + hy, -t, FORK_HANDLE_H),
-                     box(-4.0, 4.0, yb + hy, yb + hy + 45.0, 0.0, 30.0)])     # and a web to the blade
-    cap = box(-12.0, 12.0, yb - 2.0, yb + hy + 2.0, FORK_HANDLE_H, FORK_HANDLE_H + 8.0)
-    steel, dark = (0.66, 0.68, 0.71), (0.20, 0.21, 0.24)
-    x = float(CR.PAN_XY[0])
-    z0 = CR.SEAT_Z + CR.SEAT_LIFT - t                     # the blade's underside, resting
-    rest = pv.merge([box(x - 10, x + 10, REST_Y - 10, REST_Y + 10, 0.0, z0 - 6.0),
-                     box(x - w - 6, x + w + 6, REST_Y - 40, REST_Y + 40, z0 - 6.0, z0),
-                     box(x - w - 6, x - w - 1.5, REST_Y - 40, REST_Y + 40, z0, z0 + 8.0),
-                     box(x + w + 1.5, x + w + 6, REST_Y - 40, REST_Y + 40, z0, z0 + 8.0),
-                     box(x - 40, x + 40, REST_Y - 40, REST_Y + 40, 0.0, 6.0)])
-    return {"cupfork/blade": (pv.merge([blade, *lip, post]), steel, "cupfork"),
-            "cupfork/handle": (cap, dark, "cupfork"),
-            "cupfork/rest": (rest, (0.30, 0.32, 0.36), None)}
+    # the sleeve and its floor; the bore's mouth chamfered; the slot through both, from round the seat's centre (where
+    # the pedestal's neck stands) out through the front
+    sleeve = (cq.Workplane("XY").workplane(offset=-SLEEVE_FLOOR).circle(r1).extrude(SLEEVE_FLOOR + SLEEVE_H)
+              .faces(">Z").workplane().hole(2 * r0, SLEEVE_H))
+    sleeve = sleeve.faces(">Z").edges(cq.selectors.RadiusNthSelector(0)).chamfer(SLEEVE_CH)
+    zc0, zc1 = -SLEEVE_FLOOR - 1.0, SLEEVE_H + 1.0
+    slot = blk(-sw, sw, 0.0, r1 + 2.0, zc0, zc1).union(
+        cq.Workplane("XY").workplane(offset=zc0).circle(sw).extrude(zc1 - zc0))
+    sleeve = sleeve.cut(slot)
+    blade = blk(-BLADE_W / 2, BLADE_W / 2, yb, -r1 + 2.0, *BLADE_Z)
+    post = blk(-hx, hx, yb, yb + hy, BLADE_Z[0], FORK_HANDLE_H)
+    web = blk(-4.0, 4.0, yb + hy - 1.0, yb + hy + 45.0, BLADE_Z[1] - 1.0, BLADE_Z[1] + 26.0)
+    fork = sleeve.union(blade).union(post).union(web)
+    cap = blk(-12.0, 12.0, yb - 2.0, yb + hy + 2.0, FORK_HANDLE_H, FORK_HANDLE_H + 8.0)
+    # the rest, rig frame
+    x, yh = float(CR.PAN_XY[0]), float(CR.Y_HAND)
+    zr = CR.SEAT_Z + CR.SEAT_LIFT                          # the seat, resting
+    zs, zb = zr - SLEEVE_FLOOR, zr + BLADE_Z[0]           # the saddle's floor (the sleeve's underside), the channel's
+    yr = REST_BACK
+    rs = r1 + 0.5                                          # the saddle's pocket round the sleeve
+    saddle = blk(x - 22.0, x + 22.0, yh - 22.0, yh + 18.0, zs - 12.0, zs + 6.0).cut(
+        cq.Workplane("XY").workplane(offset=zs).center(x, yh).circle(rs).extrude(10.0)).cut(
+        blk(x - rs, x + rs, yh, yh + 30.0, zs, zs + 10.0))
+    channel = blk(x - 22.0, x + 22.0, yr - 14.0, yr + 14.0, zb - 12.0, zb + 6.0).cut(
+        blk(x - BLADE_W / 2 - 1.0, x + BLADE_W / 2 + 1.0, yr - 20.0, yr + 20.0, zb, zb + 10.0))
+
+    def upright(yc, ztop):
+        """A 40 x 40 extrusion, a groove down each face, from the plate up to ztop."""
+        prof = cq.Workplane("XY").workplane(offset=10.0).center(x, yc).rect(40.0, 40.0).extrude(ztop - 10.0)
+        for dx, dy, gx, gy in ((20, 0, 4, 8), (-20, 0, 4, 8), (0, 20, 8, 4), (0, -20, 8, 4)):
+            prof = prof.cut(blk(x + dx - gx / 2, x + dx + gx / 2, yc + dy - gy / 2, yc + dy + gy / 2, 10.0, ztop))
+        return prof
+
+    zt = zs - 12.0                                         # the front upright's top (the rear's: zb - 12)
+    frame = upright(yh, zt).union(upright(yr, zb - 12.0)).union(
+        blk(x - 10.0, x + 10.0, yr + 20.0, yh - 20.0, zt - 60.0, zt - 20.0))      # the beam between them
+    yp0, yp1 = yr - 36.0, yh + 30.0
+    frame = frame.union(blk(x - 50.0, x + 50.0, yp0, yp1, 0.0, 10.0))          # the plate on the tray
+    for yc in (yh, yr):                                    # gussets at each upright's foot, across the plate
+        for sx in (-1, 1):
+            g = (cq.Workplane("XZ").polyline([(x + sx * 20.0, 10.0), (x + sx * 46.0, 10.0), (x + sx * 20.0, 70.0)])
+                 .close().extrude(3.0).translate((0.0, yc + 1.5, 0.0)))
+            frame = frame.union(g)
+    bolts = None
+    for bx in (-38.0, 38.0):                               # bolted to the tray's floor
+        for by in (yp0 + 12.0, (yp0 + yp1) / 2, yp1 - 12.0):
+            b = cq.Workplane("XY").workplane(offset=10.0).center(x + bx, by).polygon(6, 13.0).extrude(5.0)
+            bolts = b if bolts is None else bolts.union(b)
+    steel, dark, alu = (0.66, 0.68, 0.71), (0.20, 0.21, 0.24), (0.74, 0.76, 0.79)
+    return {"cupfork/blade": (mesh(fork), steel, "cupfork"),
+            "cupfork/handle": (mesh(cap), dark, "cupfork"),
+            "cupfork/rest": (mesh(frame), alu, None),
+            "cupfork/rest_pads": (mesh(saddle.union(channel)), dark, None),
+            "cupfork/rest_bolts": (mesh(bolts), dark, None)}
 
 
 def fork_grasp_local() -> np.ndarray:
@@ -539,6 +632,7 @@ def build(data):
     os.environ.setdefault("VLAB_ONLY_TRAYS", S1_TRAYS)
     SL.load_all = _load_s1
     high_pedestal()
+    doser_back()                                       # round 8: the doser further back on tray B, for the fork
     sc, L = A.lab_scene(data, name=NAME, title=TITLE)
     sc.gif = False                                     # gif() makes the GIF from the MP4
     sc.text_scale = TEXT
@@ -1217,13 +1311,14 @@ def movie():
         return up
 
     turned = []
-    # the fork's seat (its frame's origin, on the blade's top), rig frame: carried level, at z_hover; let down until
-    # the cup's foot is FORK_GAP over the pedestal; 4 mm clear under its foot; FORK_GAP under it, to take it
+    # the fork's seat (its frame's origin, where the cup's foot stands), rig frame: carried level, at z_hover; let down
+    # until the cup's foot is FORK_GAP over the pedestal; dropped until the sleeve is 4 mm clear under its foot
+    # (FORK_UNDER), to back out round the pedestal's neck; FORK_GAP under it, to take it
     px, py = float(CR.PAN_XY[0]), float(CR.PAN_XY[1])
     z_rest = CR.SEAT_Z + CR.SEAT_LIFT
     z_hover = z_rest + FORK_LIFT
     z_let, z_take = CR.SEAT_Z + FORK_GAP, CR.SEAT_Z - FORK_GAP
-    z_under = CR.SEAT_Z - (CR.FORK_DROP - CR.SEAT_LIFT)
+    z_under = CR.SEAT_Z - FORK_UNDER
 
     def fork_to(y, z):
         """A straight move of the held fork, level, to its seat at (px, y, z) in the rig's frame."""
@@ -1284,8 +1379,9 @@ def movie():
 
     def cup_in():
         """The arm carries the cup in on the fork over the balance and lets it down onto the pedestal; the fork drops
-        clear under its foot, backs out from under it, rises and comes back out past the -y panel. Then a cut to the
-        cup, close (the camera's way in would pass through the arm)."""
+        until its sleeve is clear under the cup's foot, backs out from under it (the pedestal's neck out along the
+        slot), rises and comes back out past the -y panel. Then a cut to the cup, close (the camera's way in would pass
+        through the arm)."""
         yield 1.6, lambda: fork_to(py, z_hover)
         yield 0.5, lambda: fork_to(py, z_let)
         Mw = sc.world(cg)
@@ -1310,8 +1406,8 @@ def movie():
 
     def cup_out(whole=False):
         """A cut back out to the fork's view; the fork back in, short of the cup; down, and in under its foot round
-        the pedestal's neck; up to take it off the pedestal, and out past the -y panel (whole: the cup drawn whole
-        again, its last dose in)."""
+        the pedestal's neck (along the slot); up, the sleeve round the cup's foot, to take it off the pedestal, and out
+        past the -y panel (whole: the cup drawn whole again, its last dose in)."""
         yield from call(lambda: set_cam(sc, "fork"))
         yield 1.3, lambda: fork_to(py - FORK_BACK, z_hover)
         yield 0.3, lambda: fork_to(py - FORK_BACK, z_under)
