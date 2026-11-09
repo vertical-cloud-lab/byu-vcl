@@ -156,6 +156,20 @@ own files are unchanged.
   was 48.3 MB, round 6's 49.1 MB). The same frames as an MP4,
   [`out/mp4/org_vertical_lab_readme.mp4`](out/mp4/org_vertical_lab_readme.mp4), are 10.3 MB. Round 8 kept every move's
   time, so the loop is still 1815 frames.
+  - **As a video:** [`out/mp4/org_vertical_lab_readme_1280.mp4`](out/mp4/org_vertical_lab_readme_1280.mp4) has the
+    same frames at 1280 × 806, the render's own width, in 9.6 MB (`python3 org_gif.py video 1280`, crf 25). That
+    is under the 10 MB GitHub allows for a video dragged into a README or a comment when the repository's owner is on a
+    free plan. The render itself is [`out/mp4/org_vertical_lab.mp4`](out/mp4/org_vertical_lab.mp4): 12 fps at the
+    modelled speed, with no header band.
+  - **Round 8's commit left that render empty** (262 bytes). The stills for round 8's before-and-after image were
+    drawn after the render with `org_gif.py views`, which built its scene under the clip's own name. The scene's
+    encoder then started `out/mp4/org_vertical_lab.mp4` afresh, and nothing was written into it. `views` and stride
+    previews now open no encoder (`build(mp4=False)`). The file was re-rendered from round 8's code and checked
+    frame by frame against round 8's 880 px MP4: the same poses, moves and labels.
+  - **The cut faces are drawn with smooth shading** (`CUT_SMOOTH` in [`alloy_atomize.py`](alloy_atomize.py)). On the
+    runner of 2026-11-09 (Mesa 26.0.8 llvmpipe, VTK 9.6.2), VTK's flat shading drew a face toward the camera with its
+    ambient light only. The furnace's cut faces then came out grey in the melt's cutaway, where round 8's render had
+    them cream. The cut faces are planar, so smooth shading draws them as flat shading should, on any driver.
   - **880 px wide,** where round 5's was 960 and round 4's 1024. The org page shows it about 830 px wide. Round 6's
     loop is 252 frames longer than round 5's, nearly all of them the arm working the fork: at 960 px it came to 55.8 MB,
     at 900 px 51.0 MB.
@@ -2036,6 +2050,10 @@ The org page's GIF (round 6: 1815 frames at 12 fps). Each scene job takes about 
 on the 16 GB runner. Each frame takes about 1.9 s to render and about 5 s to audit, so both are split into frame ranges
 and run side by side: every pass simulates the whole loop (about 5 min) and draws or checks only its own frames. The
 audit checks every frame where an arm has moved, and every 12th while none has (`ORG_STILL_EVERY`).
+On a fresh runner, let one pass build the mesh caches (`.cache/`) before starting the others. The caches are written
+without a lock, and on 2026-11-09 a pass died on another's half-written gripper mesh. A pass that logs `bad X server
+connection` has no display. Start one yourself (`Xvfb :130 -screen 0 1920x1080x24 -nolisten tcp &`) and run the pass
+with `DISPLAY=:130` in place of `xvfb-run`.
 
 ```bash
 ORG_AT_OPEN=1 ORG_VIEWS=dose VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py views   # the doser's view as a still (1 min)
@@ -2047,6 +2065,7 @@ python3 org_gif.py join org_vertical_lab_p0 org_vertical_lab_p1 org_vertical_lab
 ORG_AUDIT_PART=0:620 ARM_AUDIT=1 VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py   # audit frames 0-619 -> /tmp/org_audit/
 python3 org_gif.py audit_join                                     # every part -> out/collisions/org_vertical_lab.json
 python3 org_gif.py gif                                            # 1.5x, 880 px, under its header band -> out/org_vertical_lab.gif
+python3 org_gif.py video 1280                                     # the same frames at 1280 px, MP4 only -> out/mp4/org_vertical_lab_readme_1280.mp4
 # round 7 drew and audited each frame range in one pass instead (the audit's own pass simulates the loop again):
 ARM_AUDIT_RENDER=1 ORG_NAME=org_vertical_lab_p0 ORG_PART=0:620 VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py  # and p1, p2
 # the rePowder over the lab's footage, a camera fitted to each frame (round 7; repowder/overlay.py's docstring)

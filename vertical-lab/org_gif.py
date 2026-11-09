@@ -529,11 +529,11 @@ class Melt:
         self.pw_levels, self.pw_meshes = v["powder_levels"], v["powder_half"]
         sc.add("rp pool", self.pool_meshes[0][0], AT.MELT, AT.g("crucible"), ambient=0.75, diffuse=0.45, specular=0.5)
         sc.add("rp pool#cut", self.pool_meshes[0][1], AT.lighter(AT.MELT, 0.3), AT.g("crucible"), ambient=0.85,
-               diffuse=0.3, specular=0.0, smooth_shading=False)
+               diffuse=0.3, specular=0.0, smooth_shading=AT.CUT_SMOOTH)
         col = C.POWDERS["Al"][0]
         sc.add("rp powder", self.pw_meshes[0][0], col, AT.g("container"), specular=0.05, ambient=0.3)
-        sc.add("rp powder#cut", self.pw_meshes[0][1], AT.lighter(col, 0.25), AT.g("container"), smooth_shading=False,
-               ambient=0.6, specular=0.0)
+        sc.add("rp powder#cut", self.pw_meshes[0][1], AT.lighter(col, 0.25), AT.g("container"),
+               smooth_shading=AT.CUT_SMOOTH, ambient=0.6, specular=0.0)
         h = AT.STREAM_TOP - M.IMPACT[2]
         sc.add("rp stream", pv.Cylinder(center=(0, 0, M.IMPACT[2] + h / 2), direction=(0, 0, 1), radius=1.4, height=h,
                                         resolution=16), AT.MELT, "rp_stream", ambient=0.85, diffuse=0.4, shown=False)

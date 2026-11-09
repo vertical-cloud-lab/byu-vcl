@@ -246,6 +246,13 @@ def lighter(c, k=0.45):
     return tuple(x + (1 - x) * k for x in c)
 
 
+# The cutaway's cut faces (<part>#cut, pool#cut, powder#cut) all lie in the plane y = 0, so smooth shading over their
+# normals draws them exactly as flat shading would. Flat shading itself (VTK's normals from screen derivatives) lost
+# its diffuse term on the runner of 2026-11-09 (Mesa 26.0.8 llvmpipe, VTK 9.6.2): a face toward the camera got its
+# ambient share alone, 106 of 192 grey, and the cut faces came out grey where round 8's render had them cream.
+CUT_SMOOTH = True
+
+
 def temp_color(t: float, cold=C.AL_5N) -> tuple:
     """#124 scene.temp_color: grey below ~450 C, then dull red, orange, yellow-orange."""
     stops = [(20, cold), (450, cold), (560, (0.45, 0.16, 0.12)), (680, (0.78, 0.18, 0.06)),
@@ -280,8 +287,8 @@ def load_rp(sc: Scene, ghost: dict | None = None) -> dict:
         op = ghost.get(name, m["opacity"])
         if wants and m["half"] is not None:
             sc.add(name, m["half"], m["color"], grp, opacity=op)
-            if m["half_cut"] is not None:
-                sc.add(name + "#cut", m["half_cut"], lighter(m["color"]), grp, opacity=op, smooth_shading=False,
+            if m["half_cut"] is not None:      # cut faces are planar: smooth shading draws them flat (CUT_SMOOTH)
+                sc.add(name + "#cut", m["half_cut"], lighter(m["color"]), grp, opacity=op, smooth_shading=CUT_SMOOTH,
                        ambient=0.55, diffuse=0.5, specular=0.0)
             sc.add("w:" + name, m["whole"], m["color"], grp, opacity=m["opacity"])
             sc.cutrole.update({name: "half", name + "#cut": "half", "w:" + name: "whole"})
@@ -335,7 +342,7 @@ class Pool:
         body, cut = self.meshes[0]
         sc.add("pool", body, MELT, g("crucible"), ambient=0.75, diffuse=0.45, specular=0.5)
         sc.add("pool#cut", cut, lighter(MELT, 0.3), g("crucible"), ambient=0.85, diffuse=0.3, specular=0.0,
-               smooth_shading=False)
+               smooth_shading=CUT_SMOOTH)
         self.set(level)
 
     def set(self, level, color=MELT):
@@ -359,8 +366,8 @@ class Powder:
         self.meshes = v["powder_half"]
         col = C.POWDERS["Al"][0]
         sc.add("powder", self.meshes[0][0], col, g("container"), specular=0.05, ambient=0.3)
-        sc.add("powder#cut", self.meshes[0][1], lighter(col, 0.25), g("container"), smooth_shading=False, ambient=0.6,
-               specular=0.0)
+        sc.add("powder#cut", self.meshes[0][1], lighter(col, 0.25), g("container"), smooth_shading=CUT_SMOOTH,
+               ambient=0.6, specular=0.0)
         self.set(level)
 
     def set(self, level):
