@@ -140,7 +140,7 @@ member of `bambu-print-approvers`.
 | [`hole_paths.py`](hole_paths.py), [`hole_toolpaths.json`](hole_toolpaths.json) | The wall-loop fit around every hole, and its results |
 | [`plate_figure.py`](plate_figure.py), [`plate_and_holes.png`](plate_and_holes.png) | The figure above, drawn from the plate G-code |
 | [`onshape/`](onshape/) | Feature lists: the *Bottom 3.3* tab and the *Bottom 3.4* tab at `ae7ab9b`, and the Bottom at `ef36349` |
-| [`preflight/`](preflight/) | The redacted pre-flight and the two failed camera tries (the IP, access code, serial and Pi hostname are not in them) |
+| [`preflight/`](preflight/) | The redacted pre-flight (21:54) and the two later camera tries (21:55 through the CubXL Pi, 22:01 through the RPI stream-cam Pi). The IP, access code, serial and Pi hostnames are not in them |
 
 ### Re-running
 
