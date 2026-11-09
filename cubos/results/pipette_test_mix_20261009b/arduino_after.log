@@ -1,0 +1,5 @@
+             connect          dt=  3.766s  ok
+21:42:58.787 EMAG_OFF         dt=  0.008s  OK:{"msg":"Electromagnet off"}
+21:42:58.795 cap sensor       dt=  0.004s  OK:{"value1":0}
+21:42:58.799 STATUS           dt=  0.008s  OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+21:42:58.807 HOME             dt= 12.669s  OK:{"msg":"Pipette homed"}

@@ -1,0 +1,5 @@
+0:00 Bambu Studio's first run: certificate, setup wizard, network plug-in
+0:32 Device page: the A1 mini idle; the live view fails twice ([2:2]); nozzle 0.4 mm; no HMS alerts
+1:56 Slicing: Sync info, two spacers, PETG Basic from A4, 4 walls, 30 % infill, 0.15 mm elephant foot
+3:38 After Ben's reply: one more try at the camera (no picture), then Send
+4:33 Printing, watched from the Device page: layer 1 at 20:45, finished at 20:51

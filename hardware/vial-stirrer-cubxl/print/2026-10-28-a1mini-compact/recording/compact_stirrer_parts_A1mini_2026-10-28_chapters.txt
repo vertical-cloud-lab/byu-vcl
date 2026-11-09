@@ -1,0 +1,8 @@
+0:00 Bambu Studio's first start on the runner (the login after it is cut)
+0:31 Device page: the A1 mini idle, the plate empty, the nozzle (0.4 mm) and the HMS list
+1:33 Modelling the compact base and holder (in the terminal, off screen); the hold for the print behind the bed, and Ben's go
+2:03 Slicing: Sync info, PETG from A4, five STLs, BUILD.md's settings; the floating-cantilever warning, the base reloaded, sliced again
+4:05 A fresh frame and the HMS tab, then Send
+5:23 The printer prepares: PETG loaded, bed levelling, flow calibration
+6:24 Printing, layer 1 to 110
+7:24 Finished: 100 %, heaters off, no HMS alert

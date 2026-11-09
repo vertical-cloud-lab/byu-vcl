@@ -1,0 +1,31 @@
+Stirrer firmware flash -- 2026-11-03T22:34:47Z
+
+port -> /dev/ttyACM0
+
+nothing holding the port:
+  (none)
+
+sha256:
+e8ddfe3dfc66f98add2e2f92b0cc5a9fe7d972db42fb1e1b6aac11420f3422c4  /home/vcl/byu-vcl-pipette/cubos/firmware/panda_vcl_p20gen2_tic796_fastmove_spread_20261007.hex
+bfa850391290cfdf5e73b20504f1977196c2dd4e0e27f25073c95826d20e537f  /home/vcl/byu-vcl-pipette/cubos/firmware/panda_vcl_p20gen2_tic796_fastmove_spread_stir_20261019.hex
+
+=== backup of the flash as it is (avrdude -U flash:r) ===
+d99a76996a798d4373c93cdf608ec69dc27046ad908d9da973f80d3fb5e6ba70  flash_before_stirrer_20261103.hex
+
+=== which image is on the board BEFORE ===
+  spread_20261007 : MATCH
+  stir_20261019 : no     verification mismatch
+
+=== FLASH 2026-11-03T22:35:00Z ===
+Reading 20340 bytes for flash from input file panda_vcl_p20gen2_tic796_fastmove_spread_stir_20261019.hex
+Writing 20340 bytes to flash
+Writing | ################################################## | 100% 3.43s
+Reading | ################################################## | 100% 2.72s
+20340 bytes of flash verified
+Avrdude done.  Thank you.
+
+=== which image is on the board AFTER 2026-11-03T22:35:07Z ===
+  stir_20261019 : MATCH
+  spread_20261007 : no     verification mismatch
+
+done 2026-11-03T22:35:15Z

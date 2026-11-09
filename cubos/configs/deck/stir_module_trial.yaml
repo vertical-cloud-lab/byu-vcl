@@ -1,0 +1,104 @@
+# stir_module_trial.yaml -- @benwhitney5463's deck for the first stir-module
+# protocol, CubXL. Attached to PR #269 on 2026-11-05
+# (github.com/user-attachments/files/34451452/stir_module_trial.yaml,
+# sha256 6d23234a02fe...). THE BODY BELOW IS BEN'S, VERBATIM (parsed YAML identical
+# to the attachment; only CRLF -> LF and this header added).
+#
+# Changes vs. ben_2vials_tiprack.yaml (the 10-02 deck every pipette_test ran on):
+#   vial_1 location x / z      136.668 / 56  ->  126 / 66   (on the compact
+#                              stir module, raised on Ben's spacer + 3 washers)
+#   vial_2 location y          78  ->  89                   (z 56 unchanged)
+#   tip rack, vial heights and diameters, tip_length 35: unchanged
+#
+# What the gantry is sent (gantry = deck - instrument offset; capper (0, 0),
+# pipette (55.0, 11.0) in cub_xl_ben_3_instrument.yaml):
+#   capper  -> vial_1 / vial_2          gantry (126.0, 45) / (136.668, 89)
+#   pipette -> vial_1 / vial_2          gantry ( 71.0, 34) / ( 81.668, 78)
+#   pipette -> tip_rack.A1 pick-up      gantry (236.332, 78, 59)
+# With the capper on vial_1 the pipette (tip end) is over deck (181, 56); with
+# the capper on vial_2, over deck (191.668, 100).
+
+labware:
+  vial_1:
+    type: vial
+    name: vial_1
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 126
+      y: 45
+      z: 66
+    capacity_ul: 1500
+    working_volume_ul: 1200
+    dead_volume_ul: 0
+  vial_2:
+    type: vial
+    name: vial_2
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 136.668
+      y: 89
+      z: 56
+    capacity_ul: 1500
+    working_volume_ul: 1200
+    dead_volume_ul: 0
+  tip_rack:
+    type: tip_rack
+    name: tip_rack
+    model_name: panda_2x15_tip_rack
+    rows: 15
+    columns: 2
+    length: 138
+    width: 20
+    height: 66
+    tip_length: 35
+    drop_z:
+    x_offset: 8.5
+    y_offset: 8.5
+    calibration:
+      a1:
+        x: 291.332
+        y: 89
+      a2:
+        x: 282.832
+        y: 89
+    pickup_z: 59
+    location:
+      x: 291.332
+      y: 89
+      z: 59
+    slots: {}
+    tip_present:
+      A1: true
+      A2: true
+      B1: true
+      B2: true
+      C1: true
+      C2: true
+      D1: true
+      D2: true
+      E1: true
+      E2: true
+      F1: true
+      F2: true
+      G1: true
+      G2: true
+      H1: true
+      H2: true
+      I1: true
+      I2: true
+      J1: true
+      J2: true
+      K1: true
+      K2: true
+      L1: true
+      L2: true
+      M1: true
+      M2: true
+      N1: true
+      N2: true
+      O1: true
+      O2: true

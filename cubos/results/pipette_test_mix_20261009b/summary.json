@@ -1,0 +1,297 @@
+{
+  "name": "pipette_test_mix_20261009b",
+  "argv": [
+    "--name",
+    "pipette_test_mix_20261009b",
+    "--gantry",
+    "cubos/configs/gantry/cub_xl_ben_3_instrument.yaml",
+    "--deck",
+    "cubos/configs/deck/ben_2vials_tiprack.yaml",
+    "--protocol",
+    "cubos/configs/protocol/vcl/pipette_test_mix.yaml",
+    "--home-check",
+    "--frames-at",
+    "2,3,4,8,9,10",
+    "--no-tic",
+    "--baseline",
+    "/home/vcl/cubxl_runs/pipette_test_20261007"
+  ],
+  "outdir": "/home/vcl/cubxl_runs/pipette_test_mix_20261009b",
+  "byu_vcl": {
+    "commit": "ef63f31",
+    "configs_dirty": false
+  },
+  "cubos": {
+    "commit": "496819c",
+    "patches_applied": [
+      "grbl-prompt-status-polling.patch",
+      "p20-gen2-plunger-constants.patch",
+      "pipette-connect-tolerate-failed-home-main.patch",
+      "tipped-hover-clamp-main.patch"
+    ]
+  },
+  "configs": {
+    "cub_xl_ben_3_instrument.yaml": "996da208d8d7",
+    "ben_2vials_tiprack.yaml": "6c0502f1f18a",
+    "pipette_test_mix.yaml": "9263ab7131b7"
+  },
+  "pi": {
+    "throttled": "throttled=0x0",
+    "uptime": "up 23 hours, 48 minutes"
+  },
+  "ports": {
+    "gantry": {
+      "port": "/dev/ttyUSB0",
+      "device": "/dev/ttyUSB0",
+      "by_id": "/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0"
+    },
+    "vial_capper_decapper": {
+      "port": "/dev/ttyACM0",
+      "device": "/dev/ttyACM0",
+      "by_id": "/dev/serial/by-id/usb-Arduino__www.arduino.cc__0043_03535343335351018130-if00"
+    },
+    "pipette": {
+      "port": "/dev/ttyACM0",
+      "device": "/dev/ttyACM0",
+      "by_id": "/dev/serial/by-id/usb-Arduino__www.arduino.cc__0043_03535343335351018130-if00"
+    }
+  },
+  "protocol": {
+    "steps": 12,
+    "first": "home",
+    "commands": [
+      "home",
+      "move",
+      "decap",
+      "pick_up_tip",
+      "mix",
+      "move",
+      "cap",
+      "decap",
+      "mix",
+      "drop_tip",
+      "cap",
+      "home"
+    ]
+  },
+  "grbl": {
+    "status": "<Alarm|WPos:364.000,281.000,125.000|FS:0,0|WCO:-364.000,-281.000,-125.000>",
+    "g54": [
+      -364.0,
+      -281.0,
+      -125.0
+    ],
+    "max_travel": [
+      364.0,
+      281.0,
+      125.0
+    ],
+    "feed_mm_min": 3000.0,
+    "max_rate": [
+      5000.0,
+      5000.0,
+      5000.0
+    ],
+    "accel": [
+      300.0,
+      300.0,
+      300.0
+    ],
+    "soft_limits": 1.0,
+    "hard_limits": 1.0,
+    "mismatches": []
+  },
+  "arduino_before": [
+    {
+      "cmd": "connect",
+      "dt_s": 3.767,
+      "reply": "ok"
+    },
+    {
+      "cmd": "STATUS",
+      "code": 14,
+      "t": "2026-10-09T21:39:02.495+00:00",
+      "dt_s": 0.009,
+      "reply": "OK:{\"homed\":0,\"pos\":0.00,\"max_vol\":20.00}"
+    },
+    {
+      "cmd": "cap sensor",
+      "code": 7,
+      "t": "2026-10-09T21:39:02.504+00:00",
+      "dt_s": 0.004,
+      "reply": "OK:{\"value1\":0}"
+    },
+    {
+      "cmd": "EMAG_OFF",
+      "code": 6,
+      "t": "2026-10-09T21:39:02.508+00:00",
+      "dt_s": 0.004,
+      "reply": "OK:{\"msg\":\"Electromagnet off\"}"
+    }
+  ],
+  "gates": {
+    "validate": {
+      "pass": true,
+      "rc": 0,
+      "s": 0.4
+    },
+    "mock": {
+      "pass": true,
+      "rc": 0,
+      "s": 4.5
+    },
+    "shadow": {
+      "pass": true,
+      "rc": 0,
+      "s": 4.6
+    },
+    "shadow_tipstuck": {
+      "pass": true,
+      "rc": 0,
+      "s": 4.6
+    }
+  },
+  "arduino_after": [
+    {
+      "cmd": "connect",
+      "dt_s": 3.766,
+      "reply": "ok"
+    },
+    {
+      "cmd": "EMAG_OFF",
+      "code": 6,
+      "t": "2026-10-09T21:42:58.787+00:00",
+      "dt_s": 0.008,
+      "reply": "OK:{\"msg\":\"Electromagnet off\"}"
+    },
+    {
+      "cmd": "cap sensor",
+      "code": 7,
+      "t": "2026-10-09T21:42:58.795+00:00",
+      "dt_s": 0.004,
+      "reply": "OK:{\"value1\":0}"
+    },
+    {
+      "cmd": "STATUS",
+      "code": 14,
+      "t": "2026-10-09T21:42:58.799+00:00",
+      "dt_s": 0.008,
+      "reply": "OK:{\"homed\":0,\"pos\":0.00,\"max_vol\":20.00}"
+    },
+    {
+      "cmd": "HOME",
+      "code": 10,
+      "t": "2026-10-09T21:42:58.807+00:00",
+      "dt_s": 12.669,
+      "reply": "OK:{\"msg\":\"Pipette homed\"}"
+    }
+  ],
+  "home_check": {
+    "firmware_end_mm": 28.0,
+    "home_dt_s": 12.669,
+    "implied_mm": 27.97,
+    "lost_mm": -0.03
+  },
+  "gcode": {
+    "g01_count": 57,
+    "g01_total_s": 63.4,
+    "g01_median_s": 0.812,
+    "g01_min_s": 0.206,
+    "home_s": [
+      22.8,
+      22.3
+    ],
+    "feeds": [
+      "3000"
+    ]
+  },
+  "status": "completed",
+  "wall_s": 218.5,
+  "steps_s": 195.1,
+  "steps": [
+    {
+      "index": 0,
+      "command": "home",
+      "t": "2026-10-09T21:39:30.091+00:00",
+      "dt_s": 22.781,
+      "ok": true
+    },
+    {
+      "index": 1,
+      "command": "move",
+      "t": "2026-10-09T21:39:52.872+00:00",
+      "dt_s": 9.502,
+      "ok": true
+    },
+    {
+      "index": 2,
+      "command": "decap",
+      "t": "2026-10-09T21:40:02.374+00:00",
+      "dt_s": 7.342,
+      "ok": true
+    },
+    {
+      "index": 3,
+      "command": "pick_up_tip",
+      "t": "2026-10-09T21:40:10.969+00:00",
+      "dt_s": 8.439,
+      "ok": true
+    },
+    {
+      "index": 4,
+      "command": "mix",
+      "t": "2026-10-09T21:40:20.649+00:00",
+      "dt_s": 46.176,
+      "ok": true
+    },
+    {
+      "index": 5,
+      "command": "move",
+      "t": "2026-10-09T21:41:08.057+00:00",
+      "dt_s": 4.957,
+      "ok": true
+    },
+    {
+      "index": 6,
+      "command": "cap",
+      "t": "2026-10-09T21:41:13.015+00:00",
+      "dt_s": 7.044,
+      "ok": true
+    },
+    {
+      "index": 7,
+      "command": "decap",
+      "t": "2026-10-09T21:41:20.059+00:00",
+      "dt_s": 5.927,
+      "ok": true
+    },
+    {
+      "index": 8,
+      "command": "mix",
+      "t": "2026-10-09T21:41:25.986+00:00",
+      "dt_s": 40.504,
+      "ok": true
+    },
+    {
+      "index": 9,
+      "command": "drop_tip",
+      "t": "2026-10-09T21:42:07.794+00:00",
+      "dt_s": 12.806,
+      "ok": true
+    },
+    {
+      "index": 10,
+      "command": "cap",
+      "t": "2026-10-09T21:42:21.909+00:00",
+      "dt_s": 7.391,
+      "ok": true
+    },
+    {
+      "index": 11,
+      "command": "home",
+      "t": "2026-10-09T21:42:30.634+00:00",
+      "dt_s": 22.26,
+      "ok": true
+    }
+  ]
+}
