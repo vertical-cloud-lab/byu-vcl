@@ -1,0 +1,87 @@
+{
+  "bambu_studio": "02.08.02.61",
+  "presets": {
+    "machine": "Bambu Lab A1 mini 0.4 nozzle",
+    "process": "0.20mm Standard @BBL A1M",
+    "filament": "Bambu PLA Basic @BBL A1M"
+  },
+  "set_on_top_of_presets": {
+    "filament_colour": "#000000",
+    "curr_bed_type": "Textured PEI Plate",
+    "enable_circle_compensation": "1"
+  },
+  "return_code": 0,
+  "error_string": "Success.",
+  "printer_model_id": "N1",
+  "objects": [
+    {
+      "name": "stub_holder_bottom_3.3_1",
+      "bbox_on_bed_mm": {
+        "x": 55.0,
+        "y": 50.0,
+        "width": 70.0,
+        "depth": 35.0,
+        "height": 18.0
+      }
+    },
+    {
+      "name": "stub_holder_bottom_3.4_1",
+      "bbox_on_bed_mm": {
+        "x": 55.0,
+        "y": 95.0,
+        "width": 70.0,
+        "depth": 35.0,
+        "height": 18.0
+      }
+    }
+  ],
+  "estimate": {
+    "model_printing_time": "55m 45s",
+    "total_estimated_time": "1h 1m 44s",
+    "prediction_s": 3704
+  },
+  "layers": 90,
+  "max_z_mm": 18.0,
+  "filament": {
+    "type": "PLA",
+    "colour": "#000000",
+    "tray_info_idx": "GFA00",
+    "used_g": 34.17,
+    "used_m": 11.28
+  },
+  "bed_type": "Textured PEI Plate",
+  "bed_temp_c": [
+    65,
+    65,
+    0
+  ],
+  "nozzle_temp_c": "220",
+  "toolpath_outside_bed": false,
+  "support_used": false,
+  "slicer_warnings": [],
+  "gcode_warnings": [
+    "not_support_traditional_timelapse",
+    "not_support_traditional_timelapse"
+  ],
+  "thumbnails": [
+    "Metadata/pick_1.png",
+    "Metadata/plate_1.png",
+    "Metadata/plate_1_small.png",
+    "Metadata/plate_no_light_1.png",
+    "Metadata/top_1.png"
+  ],
+  "feature_time_s": {
+    "Bottom surface": 154,
+    "Bridge": 241,
+    "Custom": 349,
+    "Flush": 28,
+    "Gap infill": 7,
+    "Inner wall": 345,
+    "Internal solid infill": 421,
+    "Outer wall": 485,
+    "Sparse infill": 1044,
+    "Top surface": 122,
+    "Travel": 526,
+    "Undefined": 508
+  }
+}
