@@ -503,7 +503,8 @@ gets that login:
   verification off and on again to get a new seed (everyone who logs in to the account
   re-scans it), change the password, then update the three secrets in the `bambu-print`
   environment of every repo that has one: byu-vcl, robot-arms, powder-doser,
-  tensegrity-optimization, caliber, digital-wetlab and digital-alloy-lab.
+  tensegrity-optimization, caliber, digital-wetlab, digital-alloy-lab and
+  borysgroup/aurora-cloud-infra.
 
 ## Hugging Face Spaces
 
