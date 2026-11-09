@@ -116,6 +116,7 @@ Drawn differently for this shot only (all drawing choices):
     ORG_AT_OPEN=1 ORG_VIEWS=dose,cup ... org_gif.py views    # tray B at the opening, the doser docked, the cup dosing
     python3 org_gif.py audit_join                        # the audited parts -> out/collisions/<NAME>.json
     python3 org_gif.py gif                               # -> out/<NAME>.gif (SPEED x), its still, mp4/<NAME>_readme.mp4
+    python3 org_gif.py video 1280                        # the same frames at 1280 px, MP4 only -> mp4/<NAME>_readme_1280.mp4
 """
 from __future__ import annotations
 
@@ -616,24 +617,33 @@ class Melt:
             self.n1 = sc.n
 
 
-def build(data):
+def build(data, mp4=True):
     """Shuttle 1 in the lab (animate.lab_scene), stripped (strip, floor_edits, clear_view), with chapter 1's charge on
     tray B (alloy_charge.Charge: the rack of cups and plugs, the vacuum press, the MiR's cup carrier), the rePowder by
     its parts (alloy_atomize.load_rp, PR #327's model), chapter 2's loading tong on the MiR and the melt (Melt); and
     the cycle's start: the MiR beside the opening (WAIT_AT), its arm parked, trays A and B empty in their slots
     (L.loads), the extractor at B's, the doser's tall pedestal (high_pedestal) and its powder modules (L.modules).
-    -> (scene, lab, charge, melt)."""
+    mp4=False for a pass that draws nothing into the clip (views, ORG_STRIDE): its scene opens no encoder, which would
+    start out/mp4/<NAME>.mp4 afresh and leave it empty. Round 8's commit had a 262-byte one, from stills drawn after
+    the render. -> (scene, lab, charge, melt)."""
     import alloy_atomize as AT
     import alloy_charge as AC
     import animate as A
     import carousel as CR
+    import scene as SC
     import setup_lab as SL
     import vlm as V
     os.environ.setdefault("VLAB_ONLY_TRAYS", S1_TRAYS)
     SL.load_all = _load_s1
     high_pedestal()
     doser_back()                                       # round 8: the doser further back on tray B, for the fork
-    sc, L = A.lab_scene(data, name=NAME, title=TITLE)
+    enc = SC.encoder
+    if not mp4:
+        SC.encoder = lambda *a, **k: None
+    try:
+        sc, L = A.lab_scene(data, name=NAME, title=TITLE)
+    finally:
+        SC.encoder = enc
     sc.gif = False                                     # gif() makes the GIF from the MP4
     sc.text_scale = TEXT
     L.show_gauges = False
@@ -784,7 +794,7 @@ def views():
     import pyvista as pv
     import warehouse as W
     from scene import T, R
-    sc, L, K, fx = build(lab.meshes())
+    sc, L, K, fx = build(lab.meshes(), mp4=False)
     if os.environ.get("ORG_LID"):            # the rePowder's lid open this share of its 105 deg (RP_LID_U: as the arm
         import alloy_atomize as AT           # leaves it)
         sc.gmat[AT.g("hood")] = AT.M.joint_matrix("lid", float(os.environ["ORG_LID"]))
@@ -1162,7 +1172,7 @@ def movie():
     import warehouse as W
     from scene import OUT, R, T
     M, RP = AT.M, AT.RP
-    sc, L, K, fx = build(lab.meshes())
+    sc, L, K, fx = build(lab.meshes(), mp4=not os.environ.get("ORG_STRIDE"))
     sc.title = ""
     part, apart = frame_range("ORG_PART"), frame_range("ORG_AUDIT_PART")
     if os.environ.get("ORG_STRIDE") and not (SC.PREVIEW or SC.AUDIT):
@@ -1885,12 +1895,44 @@ def gif(width=GIF_W, lossy=0, colors=112, sticky=int(os.environ.get("ORG_STICKY"
     from PIL import Image
 
     from scene import OUT
-    mp4, out = OUT / "mp4" / f"{NAME}.mp4", OUT / f"{NAME}.gif"
+    out = OUT / f"{NAME}.gif"
+    fps, frames = headed(width, sticky)
+    with tempfile.TemporaryDirectory() as tmp:
+        n = 0
+        for im in frames:
+            im.save(f"{tmp}/{n:05d}.png", compress_level=1)
+            n += 1
+        w, hh = im.size
+        seq_ = ["-framerate", f"{fps:g}", "-i", f"{tmp}/%05d.png"]
+        pal = f"{tmp}/pal.png"
+        subprocess.run(["ffmpeg", "-loglevel", "error", "-y", *seq_, "-vf",
+                        f"palettegen=max_colors={colors}:stats_mode=full", pal], check=True)
+        raw = f"{tmp}/raw.gif"
+        subprocess.run(["ffmpeg", "-loglevel", "error", "-y", *seq_, "-i", pal, "-lavfi",
+                        "[0:v][1:v]paletteuse=dither=none:diff_mode=rectangle", "-loop", "0", raw], check=True)
+        subprocess.run(["gifsicle", "-O3", f"--lossy={lossy}", "-o", str(out), raw], check=True)
+        vid = OUT / "mp4" / f"{NAME}_readme.mp4"
+        subprocess.run(["ffmpeg", "-loglevel", "error", "-y", *seq_, "-c:v", "libx264", "-crf", "20", "-preset", "slow",
+                        "-pix_fmt", "yuv420p", "-movflags", "+faststart", str(vid)], check=True)
+        Image.open(f"{tmp}/00000.png").save(OUT / f"{NAME}_still.png", optimize=True)   # its first frame
+    msg = (f"{out.name}: {out.stat().st_size / 1e6:.2f} MB, {w} x {hh}, {n} frames at "
+           f"{fps:g} fps ({n / fps:.1f} s); {vid.name}: {vid.stat().st_size / 1e6:.2f} MB")
+    print(msg, flush=True)
+    return msg
+
+
+def headed(width, sticky):
+    """out/mp4/<NAME>.mp4's frames as gif() and video() show them: scaled to `width` px, still parts held (`sticky`,
+    see gif()), each under the header band with its step's caption -> (fps at SPEED x, a generator of PIL images)."""
+    from PIL import Image
+
+    from scene import OUT
+    mp4 = OUT / "mp4" / f"{NAME}.mp4"
     meta = json.loads((OUT / f"{NAME}.json").read_text())
     phases = meta["phases"]
-    fps = meta["fps"] * SPEED
     sw, sh = meta["size"]
     w, h = width, int(round(sh * width / sw / 2)) * 2
+
     def frames():
         dec = subprocess.Popen(["ffmpeg", "-loglevel", "error", "-i", str(mp4), "-vf",
                                 f"scale={w}:{h}:flags=lanczos", "-f", "rawvideo", "-pix_fmt", "rgb24", "-"],
@@ -1907,35 +1949,47 @@ def gif(width=GIF_W, lossy=0, colors=112, sticky=int(os.environ.get("ORG_STICKY"
             return a
         keep = (np.abs(a.astype(np.int16) - prev.astype(np.int16)).max(axis=2) <= sticky)[..., None]
         return np.where(keep, prev, a)
-    prev = None
-    if sticky > 0:     # a first pass to where the held pixels end up, so the first frame starts from there: held
-        for a in frames():         # from a fresh first frame instead, the loop's seam differed in 8,375 px by over 16
-            prev = held(a, prev)   # levels, against 2,837 with nothing held
-    with tempfile.TemporaryDirectory() as tmp:
-        n = 0
-        for a in frames():
+
+    def gen():
+        prev = None
+        if sticky > 0:     # a first pass to where the held pixels end up, so the first frame starts from there: held
+            for a in frames():         # from a fresh first frame instead, the loop's seam differed in 8,375 px by over
+                prev = held(a, prev)   # 16 levels, against 2,837 with nothing held
+        for n, a in enumerate(frames()):
             prev = held(a, prev)
             cap = [p["text"] for p in phases if p["start_frame"] <= n][-1]
-            header(Image.fromarray(prev), cap).save(f"{tmp}/{n:05d}.png", compress_level=1)
-            n += 1
-        seq_ = ["-framerate", f"{fps:g}", "-i", f"{tmp}/%05d.png"]
-        pal = f"{tmp}/pal.png"
-        subprocess.run(["ffmpeg", "-loglevel", "error", "-y", *seq_, "-vf",
-                        f"palettegen=max_colors={colors}:stats_mode=full", pal], check=True)
-        raw = f"{tmp}/raw.gif"
-        subprocess.run(["ffmpeg", "-loglevel", "error", "-y", *seq_, "-i", pal, "-lavfi",
-                        "[0:v][1:v]paletteuse=dither=none:diff_mode=rectangle", "-loop", "0", raw], check=True)
-        subprocess.run(["gifsicle", "-O3", f"--lossy={lossy}", "-o", str(out), raw], check=True)
-        vid = OUT / "mp4" / f"{NAME}_readme.mp4"
-        subprocess.run(["ffmpeg", "-loglevel", "error", "-y", *seq_, "-c:v", "libx264", "-crf", "20", "-preset", "slow",
-                        "-pix_fmt", "yuv420p", "-movflags", "+faststart", str(vid)], check=True)
-        Image.open(f"{tmp}/00000.png").save(OUT / f"{NAME}_still.png", optimize=True)   # its first frame
-    msg = (f"{out.name}: {out.stat().st_size / 1e6:.2f} MB, {w} x {h + int(round(BAND * w / 1280 / 2)) * 2}, {n} frames at "
-           f"{fps:g} fps ({n / fps:.1f} s); {vid.name}: {vid.stat().st_size / 1e6:.2f} MB")
+            yield header(Image.fromarray(prev), cap)
+    return meta["fps"] * SPEED, gen()
+
+
+def video(width=1280, crf=25, sticky=int(os.environ.get("ORG_STICKY", "8"))):
+    """gif()'s frames as an MP4 only, at `width` px (1280: the render's own) -> out/mp4/<NAME>_readme_<width>.mp4. A
+    video doesn't have the GIF's 50 MB budget, so it can be sharper than the 880 px <NAME>_readme.mp4 that gif() writes
+    beside the GIF. crf 25 keeps round 8's 1280 x 806 under 10 MB, GitHub's cap on a video dragged into a README or a
+    comment when the repository's owner is on a free plan (round 7's frames: 12.2 MB at crf 23, 9.7 MB at 25)."""
+    from scene import OUT
+    width, crf, sticky = int(width), int(crf), int(sticky)
+    fps, frames = headed(width, sticky)
+    vid = OUT / "mp4" / f"{NAME}_readme_{width}.mp4"
+    enc, n = None, 0
+    for im in frames:
+        if enc is None:
+            enc = subprocess.Popen(["ffmpeg", "-loglevel", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s",
+                                    f"{im.width}x{im.height}", "-r", f"{fps:g}", "-i", "-", "-an", "-c:v", "libx264",
+                                    "-crf", str(crf), "-preset", "slow", "-pix_fmt", "yuv420p", "-movflags",
+                                    "+faststart", str(vid)], stdin=subprocess.PIPE)
+        enc.stdin.write(im.tobytes())
+        n += 1
+    enc.stdin.close()
+    if enc.wait():
+        raise RuntimeError(f"ffmpeg failed writing {vid}")
+    msg = (f"{vid.name}: {vid.stat().st_size / 1e6:.2f} MB, {im.width} x {im.height}, {n} frames at {fps:g} fps "
+           f"({n / fps:.1f} s)")
     print(msg, flush=True)
     return msg
 
 
 if __name__ == "__main__":
     arg = sys.argv[1] if len(sys.argv) > 1 else "movie"
-    {"views": views, "movie": movie, "gif": gif, "join": join, "audit_join": audit_join}[arg](*sys.argv[2:])
+    {"views": views, "movie": movie, "gif": gif, "video": video, "join": join,
+     "audit_join": audit_join}[arg](*sys.argv[2:])
