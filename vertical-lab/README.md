@@ -165,8 +165,9 @@ the balance at that height, with the cup on it, meets only the −y acrylic pane
 `HIGH_PORT` and `high_pedestal()` in [`org_gif.py`](org_gif.py)):
 
 - the pedestal stands up through the balance's top door, which stays open, and the cup's foot is at 338 mm. Its rim
-  is 34 mm under the exit, and the pedestal's top clears the parked carriage by 7 mm. Its neck is 34 mm tall (round
-  8), so that the cup fork's sleeve can drop clear under the cup's foot;
+  is 34 mm under the exit. Since round 9 the pedestal ends in a seat with a pocket that the cup's holder stands in
+  (above), on a 22 mm neck; the seat's top, at 337 mm, clears the parked carriage by 7.8 mm (round 8's 11 mm neck,
+  34 mm tall so that the fork's sleeve could drop clear under the cup's foot, had its top at 338 mm);
 - the port in the −y panel goes up to 420 mm, for the fork and the cup on it;
 - the cup goes in over the balance, not through its side door, and only once the module is docked and tilted. It
   comes back out between the two powders, so the carriage can park for the chain to index. In round 5 the shuttle
@@ -210,9 +211,10 @@ own files are unchanged.
   panel while the doser doses. In round 7 it ran inside the render's own three passes over frame ranges side by side
   (`ARM_AUDIT_RENDER`, `ORG_PART`; round 6 ran it as three passes of its own, `ORG_AUDIT_PART`), joined by the
   auditor's own rules (`python3 org_gif.py audit_join`). Round 7's re-planned moves at the rePowder are in it, and
-  round 8's sleeve, rest and deeper drop at the pedestal (round 8 ran it the same way). The cup is let onto the
-  pedestal and taken back 0.2 mm over it (`FORK_GAP`), so that while it rides the held fork it touches nothing but the
-  fork; the sleeve's bore has 0.475 mm of play round it.
+  round 8's rest, and round 9's holder, horseshoe and seat (rounds 8 and 9 ran it the same way). The holder is let
+  into the seat's pocket and taken back 0.2 mm over it (`FORK_GAP`), so that while it rides the held fork it touches
+  nothing but the fork; its bore has 0.475 mm of play round the cup, and its body 1 mm round it in the horseshoe's
+  slot.
 - **Choices worth checking** (round 4's still stand: one cup, no plug, the lid open at 90°, one arm on the latch and
   the lid, the latch's lever at half its travel):
   - **The rePowder's sizes are still the earlier fits.** The lid's are PR #327's, fitted in a turned frame; the
@@ -225,9 +227,10 @@ own files are unchanged.
     the previews checked them. The utilities stand where DAL's model put them: the argon cylinder at the back left
     (the footage also shows a cylinder chained to the wall at the cabinet's right) and the heat exchanger at the
     right.
-  - **The cup fork and its rest are ours,** an assumed design, not built: a hand tool for the 2F-85 in place of the
-    doser's vessel shuttle. The cup stands in its 16 mm slotted sleeve (round 8), held on every side but not clamped:
-    its weight keeps it down.
+  - **The cup fork, the cup's holder and the fork's rest are ours,** an assumed design, not built: a hand tool for
+    the 2F-85 in place of the doser's vessel shuttle. The cup stands 16 mm deep in the holder, which goes onto the
+    pedestal with it (round 9), held on every side but not clamped: its weight keeps it down. The holder is weighed
+    with the cup.
   - **The tall pedestal and the cup's path over the balance,** above: a change to the doser, drawn for this shot.
   - **The doser's top door stays open** throughout, since the pedestal stands up through it. In v5 it opens only
     for each dose.

@@ -245,7 +245,8 @@ FORK_HANDLE = (19.0, 24.0)   # the post's section (x, across which the pads clam
 FORK_GRASP = 18.0       # the pads' centre, under the post's top
 FORK_LIFT = 2.0         # the fork comes up this far off its rest
 FORK_BACK = 40.0        # it backs out this far under the cup before it rises or drops clear of the cup's foot (round 9:
-#                         the horseshoe's tips then pass 4 mm clear of the holder's collar; 30 mm before)
+#                         the horseshoe's tips then rise 9.6 mm clear of the holder's collar; round 8's 30 mm would
+#                         leave 1.8 mm)
 FORK_GAP = 0.2          # the cup is let onto the pedestal, and taken back, this far over it (no contact while held)
 GRIP_FORK, OPEN_FORK = 0.80, 0.62
 # round 8 (Sterling, PR #329, 2026-11-08: "The fork stand looks unstable, just free hanging. Also, is the charge cup
