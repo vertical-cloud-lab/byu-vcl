@@ -6,11 +6,23 @@ both all-printed designs from
 (`design/stud-camera-mount/printed/`, commit `bc71e1a`) on the H2D, or one of them on the
 A1 mini if the H2D wasn't available. The details are in [`print.json`](print.json).
 
-**Result: paused at layer 4 of 556.** One plate held one complete Pi Zero mount and one
-complete HQ mount, 15 parts in all, and was sent at 00:34:37 UTC. Layer 1 looked clean.
-From layer 2 (about 01:19), loose curled strands piled up over the parts at the back centre
-and right, so the run paused the job at 01:30:02. It did not stop it, and left the decision to
-a person at the printer.
+**Result: failed at layer 4 of 556, then stopped.**
+- One plate held one complete Pi Zero mount and one complete HQ mount, 15 parts in all. It
+  was sent at 00:34:37 UTC, and layer 1 looked clean.
+- From layer 2 (about 01:19), loose curled strands piled up at the back centre and right.
+  The run paused the job at 01:30:02 and asked in the thread for someone to look.
+- Nobody replied by the cutoff it had stated, so it pressed Stop at 03:30:26.
+- After the stop, the bed was lowered and the camera got its clearest view
+  ([zoom](frames/20261110T033049Z_stopped_zoom.jpg)). The first layers of these parts were
+  flat and clean: the Pi Zero case and back cover, the HQ carrier and retainer, both thumb
+  nuts and all four tilt screws. The parts on the right side of the plate (the two yokes,
+  the tub, the Pi 5 retainer and the Wide nose) are harder to see, and some of them have
+  strands on them.
+- The failure is confined to a tangle right of the knurled nuts and screws, as the camera
+  sees it, and to strands lying over the part to its right. Which part it started from can't
+  be told from the camera.
+- **What's left on the plate:** the first 4 layers of the parts and the loose strands, for
+  someone to clear before the next print.
 
 ## What happened
 
@@ -52,7 +64,25 @@ a person at the printer.
    - The [stack](frames/20261110T010546Z-012741Z_back_of_plate_stack.jpg) shows the back of
      the plate from 01:05 to 01:27, and the
      [full-screen frame](frames/20261110T012900Z_L3_strands_fullscreen.jpg) the strands at 01:29.
-   - Paused at 01:30:02 ([Device page](20261110T013010Z_h2d_paused_device_page.jpg)).
+   - Paused at 01:30:02 ([Device page](20261110T013010Z_h2d_paused_device_page.jpg)). The
+     clearer view with the bed lowered: [01:58](frames/20261110T015825Z_paused.jpg),
+     [zoom](frames/20261110T015825Z_paused_zoom.jpg).
+8. **Stopped at 03:30:26**, the cutoff stated in the thread at 01:30, with no reply
+   ([notice](20261110T033046Z_h2d_task_canceled.png),
+   [frame](frames/20261110T033046Z_stopped.jpg)).
+
+## For the next attempt
+
+These are guesses from the camera, not a diagnosis:
+- **Clean the plate first.** It showed a whitish haze and smudges in every frame tonight.
+  Wash it with dish soap and water.
+- **Find which part failed** by looking at the plate. The sent file's
+  `Metadata/plate_1.json` gives every part's footprint on the 350 × 320 mm plate (X right,
+  Y back). For example, the HQ parts are at the right: the tub at y 38–90, the Zero yoke at
+  92–138, the Pi 5 retainer at 140–195, the Wide nose at 197–233, the HQ yoke at 235–281. A
+  brim on the part that failed, or standing it on a larger face, would help.
+- **Consider printing the two mounts as separate plates**, like PR 29's own plate files. A
+  failure then costs less, and each plate is 5–6 h, not 10.
 
 ## Files
 
