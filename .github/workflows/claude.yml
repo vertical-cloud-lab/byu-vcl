@@ -46,7 +46,8 @@ jobs:
          (github.event_name == 'issues' && (contains(github.event.issue.body, '@claude') || contains(github.event.issue.title, '@claude')))
        ) &&
        !contains(github.event.comment.body || github.event.review.body || format('{0} {1}', github.event.issue.title, github.event.issue.body), '@claude-youtube') &&
-       !contains(github.event.comment.body || github.event.review.body || format('{0} {1}', github.event.issue.title, github.event.issue.body), '@claude-print'))
+       !contains(github.event.comment.body || github.event.review.body || format('{0} {1}', github.event.issue.title, github.event.issue.body), '@claude-print') &&
+       !contains(github.event.comment.body || github.event.review.body || format('{0} {1}', github.event.issue.title, github.event.issue.body), '@claude-onshape-admin'))
     runs-on: ubuntu-latest
     # Allow long waits (e.g., Edison polling) without hitting a job-level limit.
     # This budget now covers both attempts, so a fallback after a long first
@@ -129,7 +130,8 @@ jobs:
       # Onshape REST API key pair (dev-portal.onshape.com), same pair as tensegrity-optimization
       ONSHAPE_ACCESS_KEY: ${{ secrets.ONSHAPE_ACCESS_KEY }}
       ONSHAPE_SECRET_KEY: ${{ secrets.ONSHAPE_SECRET_KEY }}
-      # Onshape account login, for browser sign-in (screen automation on a Pi, see CLAUDE.md)
+      # The lab's shared Onshape account (member privileges), for browser sign-in. The admin
+      # account is reachable only through @claude-onshape-admin. See CLAUDE.md.
       ONSHAPE_USERNAME: ${{ secrets.ONSHAPE_USERNAME }}
       ONSHAPE_PASSWORD: ${{ secrets.ONSHAPE_PASSWORD }}
       # OT-2 robot serial, read from the robot's own /health endpoint. Namespaces the
