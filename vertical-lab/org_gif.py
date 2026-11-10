@@ -8,7 +8,8 @@ the fork's slot. Now the sleeve comes off the fork and goes onto the pedestal wi
 collar, the collar sitting in a counterbore in its top (SHOE_*). At the pedestal the fork lets the holder down into a
 pocket in a wider seat on a thicker neck (seat_mesh_r9, SEAT_R, NECK_R), drops FORK_UNDER between the collar and the
 seat, and backs out round the holder's body. The holder is weighed with the cup; the arm stands the cup in it on the
-rest and takes it out there, as before.
+rest and takes it out there, as before. The fork also rests 13.5 mm lower (REST_Z): in round 8 its handle post, with
+the fork in at the pedestal and dropped, passed through the rest's saddle, which the audit allowed (see REST_Z).
 
 Round 8 (PR #329, Sterling, 2026-11-08: "The fork stand looks unstable, just free hanging. Also, is the charge cup
 stable when on the fork? Seems like you could have a more clever design for this, not necessarily more complex, but
@@ -243,7 +244,7 @@ FORK_L = 285.0          # the fork, back end to tip: with the cup on the pedesta
 FORK_HANDLE_H = 120.0   # the handle post's top, over the seat
 FORK_HANDLE = (19.0, 24.0)   # the post's section (x, across which the pads clamp; y)
 FORK_GRASP = 18.0       # the pads' centre, under the post's top
-FORK_LIFT = 2.0         # the fork comes up this far off its rest
+FORK_LIFT = 2.0         # the fork is carried this far over the hand-over (round 9: 15.5 mm over its rest, REST_Z)
 FORK_BACK = 40.0        # it backs out this far under the cup before it rises or drops clear of the cup's foot (round 9:
 #                         the horseshoe's tips then rise 9.6 mm clear of the holder's collar; round 8's 30 mm would
 #                         leave 1.8 mm)
@@ -300,6 +301,16 @@ SEAT_R = (14.0, 18.0)       # the pedestal's seat: its pocket round the holder's
 SEAT_POCKET = 3.0           # the pocket's depth: the seat's top face is HOLDER_FLOOR - SEAT_POCKET under the cup's foot
 SEAT_DISK = 11.0            # the seat's thickness under its top face
 NECK_R = 11.0               # the neck under it, on the riser tube (round 8's: 5.5, to pass the fork's slot)
+# - the fork rests lower (REST_Z): with the fork in at the pedestal, its handle end stands right over the rest's saddle
+#   (the fork, seat to back end, is about as long as the way from the hand-over to the pedestal), and in round 8 the
+#   dropped fork's handle post passed right through the saddle as it backed out. The audit didn't flag it: the fork
+#   touches the rest when it is taken, and collide.Auditor then allows what a held part touched at its first frame
+#   held for the whole hold. Now the saddle's top is 3.2 mm under the post's foot at the pedestal, and the rest holds
+#   the fork FORK_GAP under its underside, so the held fork touches nothing when it is taken or put back, and the
+#   audit checks it against the rest for the whole hold
+REST_Z = HIGH_SEAT - FORK_UNDER - 3.0   # the fork's seat on its rest, rig frame: 330.5 mm, the saddle's top 3.2 mm under
+#                             the post's foot at the pedestal (round 8's: the hand-over, carousel's SEAT_Z + SEAT_LIFT,
+#                             344 mm). The arm stands the cup in the holder there
 HOLDER_COL = (0.34, 0.37, 0.44)    # the holder: aluminium, anodised dark (the cup in it is bare 5N Al)
 
 
@@ -393,8 +404,8 @@ def fork_meshes() -> dict:
     holder = holder.faces("<Z").edges().chamfer(0.8)
     # the rest, rig frame
     x, yh = float(CR.PAN_XY[0]), float(CR.Y_HAND)
-    zr = CR.SEAT_Z + CR.SEAT_LIFT                          # the fork's seat, resting
-    zs, zb = zr + SHOE_Z[0], zr + BLADE_Z[0]               # the horseshoe's underside, the blade's
+    zr = REST_Z                                            # the fork's seat, resting (round 9: lower, REST_Z)
+    zs, zb = zr + SHOE_Z[0] - FORK_GAP, zr + BLADE_Z[0] - FORK_GAP   # under the horseshoe's underside, the blade's
     yr = REST_BACK
     rs = r1 + 1.5                                          # the saddle's channel round the holder's body
     zc = zr - HOLDER_FLOOR - 3.0                           # its floor, 3 mm under the holder's foot
@@ -472,7 +483,7 @@ def add_fork(sc, K):
     for nm, (mesh, col, grp) in fork_meshes().items():
         sc.add(nm, mesh, col, grp or K.rig, specular=0.5)
     sc.parent["cupfork"] = K.rig
-    sc.gmat["cupfork"] = T((float(CR.PAN_XY[0]), CR.Y_HAND, CR.SEAT_Z + CR.SEAT_LIFT))
+    sc.gmat["cupfork"] = T((float(CR.PAN_XY[0]), CR.Y_HAND, REST_Z))
     sc.parent["cupholder"] = "cupfork"                    # round 9: the holder in the horseshoe's counterbore
     sc.gmat["cupholder"] = np.eye(4)
     for nm in list(sc.actors):
@@ -1368,7 +1379,7 @@ def movie():
                tuple(bal + (0.0, 0.0, 40.0)), (0.985, 0.74))
     f = DOSE_F
     p_rack = K.rack_cup(CUP) + (0, 0, GRASP_DOWN)
-    p_hand = K.hand_cup() + (0, 0, GRASP_DOWN)
+    p_hand = K._w(K.rig, (float(CR.PAN_XY[0]), CR.Y_HAND, REST_Z)) + (0, 0, GRASP_DOWN)   # in the holder, on the rest
 
     def dose_up(layer, h0, h1):
         spin0 = car.state["spin"]
@@ -1397,8 +1408,8 @@ def movie():
     # until the holder's foot is FORK_GAP over the seat's pocket; dropped FORK_UNDER, the horseshoe between the
     # holder's collar and the seat, to back out round the holder; FORK_GAP under the collar, to take it (round 9)
     px, py = float(CR.PAN_XY[0]), float(CR.PAN_XY[1])
-    z_rest = CR.SEAT_Z + CR.SEAT_LIFT
-    z_hover = z_rest + FORK_LIFT
+    z_rest = REST_Z                                       # round 9: on its rest, lower than it is carried
+    z_hover = CR.SEAT_Z + CR.SEAT_LIFT + FORK_LIFT
     z_let, z_take = CR.SEAT_Z + FORK_GAP, CR.SEAT_Z - FORK_GAP
     z_under = CR.SEAT_Z - FORK_UNDER
 

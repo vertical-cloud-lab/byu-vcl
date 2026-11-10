@@ -40,8 +40,17 @@ would fall straight off when being dosed into") gives the cup a holder that goes
   8), so the horseshoe is 3 mm under the collar and 3.5 mm over the seat, and backs out 40 mm (`FORK_BACK`), the
   holder's body running out along the slot. Taking it back is the same in reverse: the horseshoe slides in under the
   collar and lifts the holder out of the pocket. The blade now clears the balance's top by 24.5 mm (9 mm in round 8).
-- **Nothing else changes.** The arm stands the cup in the holder on the rest and takes it out there, every move takes
-  the time it did, and the cup goes to the rePowder without the holder.
+- **The fork rests 13.5 mm lower** (`REST_Z`). With the fork in at the pedestal, its handle end stands right over
+  the rest's saddle: the fork, seat to back end, is about as long as the way from the hand-over to the pedestal. In
+  round 8, as the dropped fork backed out, its handle post passed right through the saddle. The audit didn't flag it,
+  because the fork touches the rest when it's taken off it, and the auditor then allows what a held part touched at
+  its first frame for as long as it's held. Now the saddle's top is 3.2 mm under the post's foot at the pedestal, and
+  the rest holds the fork 0.2 mm clear (`FORK_GAP`), so the fork touches nothing when it's taken or put back and the
+  audit checks it against the rest the whole time. Along the fork's whole path at the doser, distances computed with
+  FCL put the fork at least 3.2 mm from the rest and 3.5 mm from the seat, and 1 mm from the holder's body as it
+  backs out round it.
+- **Nothing else changes.** The arm stands the cup in the holder on the rest (13.5 mm lower than before) and takes it
+  out there, every move takes the time it did, and the cup goes to the rePowder without the holder.
 
 **Round 8** ([PR #329](https://github.com/vertical-cloud-lab/byu-vcl/pull/329), Sterling: "The fork stand looks
 unstable, just free hanging. Also, is the charge cup stable when on the fork? Seems like you could have a more clever
@@ -180,10 +189,10 @@ own files are unchanged.
 
 - **It still loops.** The camera pulls back out to the wide view, with the MiR back where it waited. In the last
   1.2 s, trays A and B's equipment fades out of their slots, so the last frame shows the lab as the first one does.
-- **The file:** 880 × 556, 1815 frames at 18 fps: 100.8 s at 1.5× the modelled speed, 48.4 MB, 112 colours (round 7's
-  was 48.3 MB, round 6's 49.1 MB). The same frames as an MP4,
-  [`out/mp4/org_vertical_lab_readme.mp4`](out/mp4/org_vertical_lab_readme.mp4), are 10.3 MB. Round 8 kept every move's
-  time, so the loop is still 1815 frames.
+- **The file:** 880 × 556, 1815 frames at 18 fps: 100.8 s at 1.5× the modelled speed, 48.6 MB, 112 colours (round 8's
+  was 48.4 MB, round 7's 48.3 MB, round 6's 49.1 MB). The same frames as an MP4,
+  [`out/mp4/org_vertical_lab_readme.mp4`](out/mp4/org_vertical_lab_readme.mp4), are 10.3 MB. Rounds 8 and 9 kept every
+  move's time, so the loop is still 1815 frames.
   - **As a video:** [`out/mp4/org_vertical_lab_readme_1280.mp4`](out/mp4/org_vertical_lab_readme_1280.mp4) has the
     same frames at 1280 × 806, the render's own width, in 9.6 MB (`python3 org_gif.py video 1280`, crf 25). That
     is under the 10 MB GitHub allows for a video dragged into a README or a comment when the repository's owner is on a
@@ -211,7 +220,11 @@ own files are unchanged.
   panel while the doser doses. In round 7 it ran inside the render's own three passes over frame ranges side by side
   (`ARM_AUDIT_RENDER`, `ORG_PART`; round 6 ran it as three passes of its own, `ORG_AUDIT_PART`), joined by the
   auditor's own rules (`python3 org_gif.py audit_join`). Round 7's re-planned moves at the rePowder are in it, and
-  round 8's rest, and round 9's holder, horseshoe and seat (rounds 8 and 9 ran it the same way). The holder is let
+  round 8's rest, and round 9's holder, horseshoe, seat and lower rest (rounds 8 and 9 ran it the same way). Round 9
+  rendered twice: the second pass, with the fork resting lower, audited frames 0–1229, and frames 1230 on (the
+  rePowder) are the first pass's audit; the two passes' frames there match pixel for pixel, so the arm made the same
+  moves (the planner seeds each plan by its number). Since round 9 the rest holds the fork 0.2 mm clear, so the held
+  fork is checked against the rest too (see above: round 8's fork passed through its rest). The holder is let
   into the seat's pocket and taken back 0.2 mm over it (`FORK_GAP`), so that while it rides the held fork it touches
   nothing but the fork; its bore has 0.475 mm of play round the cup, and its body 1 mm round it in the horseshoe's
   slot.
