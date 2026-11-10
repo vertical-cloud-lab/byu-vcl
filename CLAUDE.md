@@ -224,7 +224,7 @@ These two secrets are read by `post-queued-comments.yml` directly, not the `clau
 | `YOUTUBE_TOKEN_PICKLE_B64` | Full-control token for the same channel. **Not** in `claude.yml`: an environment secret of `youtube-admin`, used only by `claude-youtube.yml` (`@claude-youtube`, sgbaird only, each run approved by sgbaird). See `youtube/README.md`. |
 | `ONSHAPE_ACCESS_KEY` / `ONSHAPE_SECRET_KEY` | Onshape REST API key pair (dev-portal.onshape.com), the same pair `tensegrity-optimization` uses. Prefer these for anything the API can do. |
 | `ONSHAPE_USERNAME` / `ONSHAPE_PASSWORD` | The lab's shared Onshape account (member privileges, no 2FA), for the browser. See [Onshape](#onshape-signing-in-through-the-browser-onshape_username--onshape_password). |
-| `ONSHAPE_ADMIN_USERNAME` / `ONSHAPE_ADMIN_PASSWORD` | The lab's Onshape **admin** account. **Not** in `claude.yml`: environment secrets of `onshape-admin`, used only by `claude-onshape-admin.yml` (`@claude-onshape-admin`, sgbaird only, each run approved by the `onshape-admin-approvers` team, which is Sterling alone). |
+| `ONSHAPE_ADMIN_USERNAME` / `ONSHAPE_ADMIN_PASSWORD` | Sterling's own Onshape account (owner of the lab documents, admin of the Vertical Cloud Lab company). **Not** in `claude.yml`: environment secrets of `onshape-admin`, used only by `claude-onshape-admin.yml` (`@claude-onshape-admin`, sgbaird only, each run approved by the `onshape-admin-approvers` team, which is Sterling alone). |
 | `OT2_SERIAL` | `OT2CEP20210722R13`. Namespaces the `command/ot2/<serial>/pipette` and `status/ot2/<serial>/complete` topics. Read from the robot's own `/health` endpoint, where `robot_serial` and `name` agree. |
 | `PICO_ID` | `e6647c15673a2438`, the Pico W's `machine.unique_id()`. Namespaces the `command/picow/<id>/as7341/read` and `color-mixing/picow/<id>/as7341` topics. Must match the `PICO_ID` in that board's `my_secrets.py`, or the Space and the sensor talk past each other in silence. |
 | `H2D_IP` / `H2D_ACCESS_CODE` / `H2D_SERIAL` | Bambu Lab H2D printer, LAN mode: address, access code and serial. The IP is on the lab LAN, not the tailnet, so connect from a Pi. |
@@ -653,8 +653,9 @@ Signing in ([`sign_in()` in `onshape_ui.py`](https://github.com/vertical-cloud-l
 
 ### `@claude-onshape-admin`: the Onshape admin account
 
-`ONSHAPE_ADMIN_USERNAME` and `ONSHAPE_ADMIN_PASSWORD` are the login of the lab's Onshape admin
-account, also e-mail and password with no two-factor step. Only this repo has them, and **not**
+`ONSHAPE_ADMIN_USERNAME` and `ONSHAPE_ADMIN_PASSWORD` are the login of Sterling's own Onshape
+account, which owns the lab's documents and is an admin of the *Vertical Cloud Lab* company. It
+signs in with e-mail and password, with no two-factor step (checked 2026-11-10). Only this repo has them, and **not**
 in `claude.yml`: they are environment secrets of `onshape-admin`, used only by
 `.github/workflows/claude-onshape-admin.yml`. Three gates, any one of which stops a run:
 
@@ -671,3 +672,13 @@ and permissions, making a document public or transferring it, restoring from the
 similar settings. Make only the change Sterling asked for. Never delete documents or folders,
 remove members, or touch the plan or billing unless he asked for that exact change. Sign in the
 same way as above, with the `ONSHAPE_ADMIN_*` values, and sign out at the end.
+
+- **The sign-in has one extra step.** The account also belongs to BYU's enterprise Onshape, so
+  after the e-mail step Onshape asks where to sign in. Click *My Account → Continue to
+  cad.onshape.com* (`.my-account-outer-container .link.ent-url`), then fill the password. The
+  other choice, *BYU Design*, signs in to `byudesign.onshape.com`, where the account is not an
+  admin and can't open the lab's folders.
+- **Stay inside the Vertical Cloud Lab company** (company ID ending `33fb`). The account also
+  administers other companies, such as a course company. Never change anything there.
+- On 2026-11-10 the company-wide share of the `vcl-shared` folder was set to edit without
+  Delete, so only the owner can delete lab documents. Don't put Delete back unless Sterling asks.
