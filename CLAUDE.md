@@ -242,8 +242,19 @@ names: `blinded_connection_string`, `MONGODB_PASSWORD`, `MQTT_BROKER`, `MQTT_POR
 `MQTT_USERNAME`, `MQTT_PASSWORD`, and `YT_API_KEY`. Set them with `add_space_secret` using
 `HF_TOKEN` so the two sides cannot drift.
 
-**Reaching the OT-2.** The robot is not on the tailnet. It is wired directly to the OT-2
-stream-cam Pi (`OT2_STREAM_CAM_HOSTNAME`) and answers only on the link-local address
+**The OT-2 lid camera Pi left on 2026-11-10.** The Pi 5 + HQ Camera behind
+`RPI_STREAM_CAM_HOSTNAME` (also the OT-2's network link, the CubOS Pi and the `~/ytframes`
+host) now belongs to the Borys lab at the University of Utah and is on their tailnet. It
+streams to their channel, not ours. Its VCL files were archived to Sterling's OneDrive
+(*VCL Pi archives*) and removed from the Pi. `RPI_STREAM_CAM_HOSTNAME`, `_USERNAME` and
+`_PASSWORD` therefore point at nothing until a replacement Pi is set up and they are
+updated. Until then **the OT-2 has no network link and no overhead camera.** The rebuild
+(parts, steps, and the Pi-only scripts salvaged from it) is tracked in
+[vertical-cloud-lab/digital-wetlab](https://github.com/vertical-cloud-lab/digital-wetlab).
+
+**Reaching the OT-2.** The robot is not on the tailnet. It was wired directly to the Pi
+behind `RPI_STREAM_CAM_HOSTNAME` (not `OT2_STREAM_CAM_HOSTNAME`, which is the atomizer-room
+Zero 2 W) and answered only on the link-local address
 `http://169.254.51.252:31950`, so every OT-2 HTTP API call has to be made *from that Pi* —
 you cannot reach the robot from a runner or a laptop. `~/ot2ctl.py` on that Pi is a thin
 wrapper over the maintenance-run API and is the quickest way to see the call pattern. Send
@@ -341,7 +352,8 @@ tailnet grant to this Pi is `tcp:22` only — a control service bound to `0.0.0.
 unreachable from CI until its port is added to the `tag:rpi-5-des4` grant, and the safer
 default is to bind it to `127.0.0.1` and reach it over SSH.
 
-**Reaching the Pico W.** The sensor board plugs into the OT-2 stream-cam Pi over USB and is
+**Reaching the Pico W.** The sensor board plugged into the OT-2 lid camera Pi (gone since 2026-11-10; see
+"Reaching the OT-2") over USB and is
 driven with `mpremote`, installed there as a venv at `~/.venvs/mpremote/bin/mpremote`
 (1.29.0 + pyserial). It went in as a venv rather than apt so it needs no sudo and touches
 nothing system-wide; that Pi also runs CubOS gantry work, so keep changes to it contained.
@@ -551,8 +563,9 @@ frame rate needs the same patch, and it is worth upstreaming to `ac-training-lab
 - **YouTube will not do player extraction from a GitHub Actions runner.** `yt-dlp` on a
   runner returns *"Sign in to confirm you're not a bot"* for `--dump-json`, `-g` and any
   download, with or without a JS runtime. The channel/playlist *listing* works fine from
-  anywhere — only the player is blocked. Run the fetching half from the stream-cam Pi's
-  residential IP: `~/.venvs/ytframes/bin/yt-dlp --js-runtimes node` (node is present; deno
+  anywhere — only the player is blocked. Run the fetching half from a stream-cam Pi's
+  residential IP (it was the OT-2 lid camera Pi, gone since 2026-11-10; `grab.py` is
+  preserved in digital-wetlab, so set it up again on whichever Pi replaces it): `~/.venvs/ytframes/bin/yt-dlp --js-runtimes node` (node is present; deno
   is not), with a static ffmpeg in `~/ytframes/bin`. That ffmpeg **cannot resolve DNS** —
   statically linked glibc has no NSS — so fetch HLS segments with urllib/curl and only ever
   hand ffmpeg a local file. `~/ytframes/grab.py` does exactly that and is the thing to
