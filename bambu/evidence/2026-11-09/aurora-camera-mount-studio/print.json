@@ -147,8 +147,9 @@
   "layer_3": "2026-11-10T01:21Z",
   "paused": "2026-11-10T01:30:02Z at layer 4",
   "pause_posted": "2026-11-10T01:30:52Z",
-  "stop": "2026-11-10T03:30:15Z clicked, 03:30:26Z confirmed"
+  "stop": "2026-11-10T03:30:15Z clicked, 03:30:26Z confirmed",
+  "signed_out": "2026-11-10T03:34:50Z, then Studio closed without saving and ~/.config/BambuStudio deleted; recorder stopped at 03:35"
  },
- "recording": "recording/aurora_camera_mounts_H2D_2026-11-09.mp4: 10.8 min, 23.6 MB, chapters in recording/*_chapters.txt. Cut from the recorder's 5 min segments (started 23:18:30 UTC) by a copy of bambu/studio/cut_recording.py (PR 234) that takes next-day times ('+HH:MM:SS') and per-stretch blur boxes; plan in recording/cut_plan.json. Starts at 23:20:35, after the login and the home page; the 00:06-00:16 idle wait and the 01:29 full-screen camera view are left out. The H2D camera pane's back window and right side, where the room shows, are blurred. Not on YouTube: claude-print.yml has no YouTube token, so a plain @claude run can upload it",
+ "recording": "recording/aurora_camera_mounts_H2D_2026-11-09.mp4: 11.9 min, 25.6 MB, chapters in recording/*_chapters.txt. Cut from the recorder's 5 min segments (23:18:30 to 03:35 UTC) by recording/cut_recording_h2d.py, a copy of bambu/studio/cut_recording.py (PR 234) that takes next-day times ('+HH:MM:SS') and per-stretch blur boxes; plan in recording/cut_plan.json. It starts at 23:20:35, after the login and the home page, and ends at 03:31:05, before the sign-out; the 00:06-00:16 idle wait, the 01:29 full-screen camera view and the 01:31-03:30 pause are left out. The H2D camera pane's back window and right side, where the room shows, are blurred. The raw segments were deleted from the runner afterwards. Not on YouTube: claude-print.yml has no YouTube token, so a plain @claude run can upload it",
  "part_footprints_mm": "Metadata/plate_1.json in the sent 3MF (bbox_objects: x and y on the 350 x 320 plate)"
 }

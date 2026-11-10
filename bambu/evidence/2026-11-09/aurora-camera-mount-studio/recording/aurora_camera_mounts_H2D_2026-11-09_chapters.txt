@@ -7,3 +7,4 @@
 7:35 Start-up: bed scan, heating, filament load, calibration, levelling
 8:16 Layers 1 to 3: strands appear from layer 2
 9:35 Paused at layer 4
+10:45 No reply by the stated cutoff: stopped at 03:30

@@ -100,4 +100,4 @@ These are guesses from the camera, not a diagnosis:
 | [`sliced/aurora_pizero_head_A1mini.gcode.3mf`](sliced/aurora_pizero_head_A1mini.gcode.3mf) | The A1 mini fallback, sliced, not sent |
 | [`frames/`](frames/) | Start-up and layer frames, the back-of-plate stack, the full-screen view of the strands |
 | [`print.json`](print.json) | Source and hashes, settings, Send options, the go and replies, timeline, what was watched |
-| [`recording/`](recording/) | The cut screen recording (10.8 min) with chapters and its cut plan. It starts after the login, leaves out the idle wait, and blurs the room in the H2D camera pane. Not on YouTube yet: a print run has no YouTube token |
+| [`recording/`](recording/) | The cut screen recording (11.9 min), with its chapters, cut plan and the cut script. It starts after the login, ends before the sign-out, leaves out the idle waits, and blurs the room in the H2D camera pane. Not on YouTube yet: a print run has no YouTube token |
