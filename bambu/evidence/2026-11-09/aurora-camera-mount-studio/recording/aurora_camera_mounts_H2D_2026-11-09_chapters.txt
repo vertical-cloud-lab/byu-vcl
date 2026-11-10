@@ -1,0 +1,9 @@
+0:00 H2D on the Device page: camera still, HMS, Printer Parts (0.4 + 0.6 mm nozzles)
+0:56 A1 mini: its camera never loads
+1:38 Pi Zero mount sliced for the A1 mini (not sent)
+2:57 H2D, left 0.4 mm nozzle: both mounts on one plate, PR 29 settings, sliced
+4:57 Fresh frame, then the wait (no reply)
+5:35 Last frame and Send
+7:35 Start-up: bed scan, heating, filament load, calibration, levelling
+8:16 Layers 1 to 3: strands appear from layer 2
+9:35 Paused at layer 4

@@ -1,0 +1,157 @@
+{
+ "day": "2026-11-09",
+ "parts": [
+  {
+   "from": "23:20:35",
+   "to": "23:24:20",
+   "speed": 4,
+   "label": "H2D on the Device page: camera still, HMS, Printer Parts (0.4 + 0.6 mm nozzles)"
+  },
+  {
+   "from": "23:24:20",
+   "to": "23:30:00",
+   "speed": 8,
+   "label": "A1 mini: its camera never loads"
+  },
+  {
+   "from": "23:30:00",
+   "to": "23:40:30",
+   "speed": 8,
+   "label": "Pi Zero mount sliced for the A1 mini (not sent)"
+  },
+  {
+   "from": "+00:16:30",
+   "to": "+00:28:30",
+   "speed": 6,
+   "label": "H2D, left 0.4 mm nozzle: both mounts on one plate, PR 29 settings, sliced"
+  },
+  {
+   "from": "+00:28:30",
+   "to": "+00:33:30",
+   "speed": 8,
+   "label": "Fresh frame, then the wait (no reply)"
+  },
+  {
+   "from": "+00:33:30",
+   "to": "+00:35:30",
+   "speed": 1,
+   "label": "Last frame and Send"
+  },
+  {
+   "from": "+00:35:30",
+   "to": "+00:46:30",
+   "speed": 16,
+   "label": "Start-up: bed scan, heating, filament load, calibration, levelling"
+  },
+  {
+   "from": "+00:46:30",
+   "to": "+01:28:55",
+   "speed": 32,
+   "label": "Layers 1 to 3: strands appear from layer 2"
+  },
+  {
+   "from": "+01:29:50",
+   "to": "+01:31:00",
+   "speed": 1,
+   "label": "Paused at layer 4"
+  }
+ ],
+ "blur": [
+  [
+   "23:20:50",
+   "23:24:20",
+   [
+    [
+     744,
+     196,
+     554,
+     280
+    ],
+    [
+     1174,
+     136,
+     124,
+     658
+    ]
+   ]
+  ],
+  [
+   "+00:16:30",
+   "+00:17:15",
+   [
+    [
+     744,
+     196,
+     554,
+     280
+    ],
+    [
+     1174,
+     136,
+     124,
+     658
+    ]
+   ]
+  ],
+  [
+   "+00:29:30",
+   "+00:34:02",
+   [
+    [
+     744,
+     196,
+     554,
+     280
+    ],
+    [
+     1174,
+     136,
+     124,
+     658
+    ]
+   ]
+  ],
+  [
+   "+00:35:00",
+   "+00:46:00",
+   [
+    [
+     744,
+     196,
+     554,
+     280
+    ],
+    [
+     714,
+     156,
+     584,
+     145
+    ],
+    [
+     1174,
+     136,
+     124,
+     658
+    ]
+   ]
+  ],
+  [
+   "+00:46:00",
+   "+01:31:30",
+   [
+    [
+     714,
+     156,
+     584,
+     145
+    ],
+    [
+     1174,
+     136,
+     124,
+     658
+    ]
+   ]
+  ]
+ ]
+}

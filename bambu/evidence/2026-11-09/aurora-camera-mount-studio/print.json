@@ -93,8 +93,19 @@
   "wait": "polled from 00:18:21 (the last human comment) to 00:33:31 UTC: no reply",
   "last_frame": "20261110T003340Z_h2d_liveview_presend.jpg: plate unchanged (mean absolute difference of the plate region 5/255 against 00:29:49)",
   "replies": [
-   {"by": "sgbaird", "utc": "2026-11-10T00:14:53Z", "text": "Assume the one on the left is the 0.4 and run it on the h2d", "url": "https://github.com/vertical-cloud-lab/byu-vcl/issues/336#issuecomment-6755077717"},
-   {"by": "sgbaird", "utc": "2026-11-10T00:18:20Z", "text": "@claude:medium what do you mean by head? Meaning not the whole thing?", "url": "https://github.com/vertical-cloud-lab/byu-vcl/issues/336#issuecomment-6755137950", "answered_by": "a separate @claude run at 00:19 (https://github.com/vertical-cloud-lab/byu-vcl/issues/336#issuecomment-6755144205): the whole mount"}
+   {
+    "by": "sgbaird",
+    "utc": "2026-11-10T00:14:53Z",
+    "text": "Assume the one on the left is the 0.4 and run it on the h2d",
+    "url": "https://github.com/vertical-cloud-lab/byu-vcl/issues/336#issuecomment-6755077717"
+   },
+   {
+    "by": "sgbaird",
+    "utc": "2026-11-10T00:18:20Z",
+    "text": "@claude:medium what do you mean by head? Meaning not the whole thing?",
+    "url": "https://github.com/vertical-cloud-lab/byu-vcl/issues/336#issuecomment-6755137950",
+    "answered_by": "a separate @claude run at 00:19 (https://github.com/vertical-cloud-lab/byu-vcl/issues/336#issuecomment-6755144205): the whole mount"
+   }
   ],
   "handoff": "named in the thread before Send: this run watches until about 05:15 UTC, then sgbaird"
  },
@@ -134,5 +145,5 @@
   "paused": "2026-11-10T01:30:02Z at layer 4",
   "pause_posted": "2026-11-10T01:30:52Z"
  },
- "recording": "the screen recorder ran from 23:18:30 UTC (5 min segments on the runner); see README.md for what was kept"
+ "recording": "recording/aurora_camera_mounts_H2D_2026-11-09.mp4: 10.8 min, 23.6 MB, chapters in recording/*_chapters.txt. Cut from the recorder's 5 min segments (started 23:18:30 UTC) by a copy of bambu/studio/cut_recording.py (PR 234) that takes next-day times ('+HH:MM:SS') and per-stretch blur boxes; plan in recording/cut_plan.json. Starts at 23:20:35, after the login and the home page; the 00:06-00:16 idle wait and the 01:29 full-screen camera view are left out. The H2D camera pane's back window and right side, where the room shows, are blurred. Not on YouTube: claude-print.yml has no YouTube token, so a plain @claude run can upload it"
 }
