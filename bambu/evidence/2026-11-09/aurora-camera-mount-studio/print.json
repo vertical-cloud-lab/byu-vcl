@@ -1,0 +1,138 @@
+{
+ "what": "Both all-printed stud camera mounts from borysgroup/aurora-cloud-infra PR 29 (design/stud-camera-mount/printed/) on one H2D plate: one complete Pi Zero mount and one complete HQ mount, 15 printed parts",
+ "result": "PAUSED at layer 4/556 (7 %) at 2026-11-10T01:30:02Z by this run: from layer 2 (about 01:19) loose, curled strands of filament piled up over the parts at the back centre and right of the plate, some several mm tall at 0.5 mm of print height, growing in every frame. Layer 1 had looked clean. Not stopped; left for a person to inspect (see status in the thread)",
+ "request": {
+  "by": "sgbaird",
+  "issue": "https://github.com/vertical-cloud-lab/byu-vcl/issues/336",
+  "text": "@claude-print, print the two all-3D-printed designs from https://github.com/borysgroup/aurora-cloud-infra/pull/29 (see https://github.com/borysgroup/aurora-cloud-infra/issues/23#issuecomment-6752923901) on the H2D. If the H2D isn't available, then print on the A1 mini - just one of the designs, as long as you can fit at least one of the designs on a single plate"
+ },
+ "printer": {
+  "model": "Bambu Lab H2D",
+  "name_in_studio": "BYU VCL H2D - Théoden",
+  "nozzles": "left 0.4 mm hardened steel, standard flow; right 0.6 mm hardened steel, TPU high flow. Printer Parts lists both without saying which side; Studio's Sync info read left 0.4 / right 0.6 (20261110T001900Z_h2d_switch_diameter.png)",
+  "nozzle_rule": "CLAUDE.md requires every installed nozzle to be 0.2 or 0.4 mm. The 0.6 mm right nozzle broke that, so the run first fell back to the A1 mini. sgbaird then wrote 'Assume the one on the left is the 0.4 and run it on the h2d' (https://github.com/vertical-cloud-lab/byu-vcl/issues/336#issuecomment-6755077717), an explicit exception; only the left nozzle printed",
+  "ams": "AMS 2 Pro on the left nozzle: A1 empty, A2 black PLA (used), A3 white PLA, A4 light-blue PLA; AMS HT on the right empty; external spool unknown",
+  "state_before": "idle, no job, heaters off (left 28-29 C, right 26-27 C, bed 26 C, chamber 27 C); HMS: one maintenance reminder to clean and lubricate the X rail, YZ rods and extruder lift rail, no error",
+  "mode": "Bambu cloud; no LAN route in a print run (no Tailscale step, no *_IP or *_ACCESS_CODE secrets)"
+ },
+ "a1_mini": {
+  "nozzle": "0.4 mm stainless steel, standard flow",
+  "state": "last job 'Bottom (1)' (2 parts, 33.98 g) at 90/90 layers, Finished; bed 33 C and cooling at 23:24, so its parts were probably still on the plate",
+  "camera": "Studio's live view failed on every attempt from 23:24 to 00:06 UTC (11 tries): 'Loading failed. Please check the network and try again. [2:2]'. The H2D's view played from the same runner, so it is that printer's camera. With no frame the plate could not be judged, so nothing was sent to it",
+  "prepared": "the Pi Zero mount alone (yoke, case, back cover, thumb nut, two tilt screws) sliced for it: sliced/aurora_pizero_head_A1mini.gcode.3mf, 368 layers, 83.34 g, 3h47m; not sent"
+ },
+ "route": "route 3 in bambu/README.md: Bambu Studio 02.08.02.61 GUI on the runner's Xvfb display (bambu/studio/setup_runner.sh), logged in to the lab's Bambu account (password plus a bambu-totp authenticator code; the first code worked), sent through Bambu's cloud",
+ "source": {
+  "repo": "borysgroup/aurora-cloud-infra",
+  "pr": 29,
+  "commit": "bc71e1a82aacdbc5aeb371833cdc6eb92706d78e",
+  "dir": "design/stud-camera-mount/printed/stl/",
+  "stl_sha256_prefix": {
+   "yoke_zero.stl": "b81d72f40ba41291",
+   "head_zero_case.stl": "751f50478b060bb9",
+   "head_zero_back_cover.stl": "603c52bcc0e8aa15",
+   "yoke_hq.stl": "ba115189f89fe048",
+   "head_hq_tub.stl": "77a82c1202d953bb",
+   "head_hq_retainer.stl": "8dd506720cb8990f",
+   "head_hq_carrier.stl": "39b45846519d0861",
+   "head_hq_pi5_retainer.stl": "d51aa96edfe994b0",
+   "head_hq_wide_nose.stl": "47311c264bb939c6",
+   "stud_thumb_nut.stl": "95d509fd954476a9",
+   "tilt_screw.stl": "5aaee90f155d93c2"
+  },
+  "copies": "1 of each, except stud_thumb_nut x2 and tilt_screw x4 (one nut and two screws per mount)",
+  "not_included": "PR 29's second Pi Zero mount (its mounts_zero_x2 plate) and the thread fit coupons (fit_test plate)"
+ },
+ "presets": {
+  "machine": "Bambu Lab H2D 0.4 nozzle (Sync info, then 'Left nozzle: 0.4mm' in Studio's Switch diameter dialog)",
+  "process": "0.20mm Standard @BBL H2D, modified as below",
+  "filament": "Bambu PLA Basic @BBL H2D (GFA00), black, AMS A2 by Synchronize AMS Filament Information ('Add unused AMS filaments' unticked)",
+  "plate": "Textured PEI Plate, 55 C",
+  "filament_grouping": "Auto, Convenience mode (filament_map_mode = Auto For Match, filament_map = 1: the left nozzle)"
+ },
+ "gui_changes_from_stock": {
+  "global": "layer_height 0.20 -> 0.16, wall_loops 2 -> 6, top_shell_layers 5 -> 6, bottom_shell_layers 3 -> 5, sparse_infill_density 15 % -> 40 %, sparse_infill_pattern grid -> gyroid (PR 29's settings, from its sliced/*.summary.json)",
+  "per_object": "stud_thumb_nut and tilt_screw: sparse_infill_density 100 %; Studio switched their pattern to rectilinear itself ('Gyroid infill pattern doesn't support 100% density'). PR 29 used zig-zag for 100 %; rectilinear and zig-zag at 100 % are both solid line fills. Clones kept the override",
+  "studio_on_its_own": "enable_arc_fitting set to 0 ('Curve planning enhancement support detected on your printer'); first layer 0.2 mm",
+  "left_at_preset_values": "no supports, seam aligned, first layer 0.2 mm, bed 55 C, nozzle 220 C"
+ },
+ "slice_checks": {
+  "plate_gcode_md5": "bb01c4d381bf8b769f76f838753f493b",
+  "layers": 556,
+  "max_z_mm": 89.0,
+  "filament_g": 256.69,
+  "filament_m": 84.7,
+  "model_time": "9h57m27s",
+  "total_time": "10h2m45s",
+  "first_layer_time_s": 1415,
+  "slicer_warnings": "none",
+  "config_block": "layer_height 0.16, wall_loops 6, top/bottom 6/5, sparse 40 % gyroid, enable_support 0, curr_bed_type Textured PEI Plate, nozzle_diameter 0.4,0.4, filament_map 1, timelapse_type 0, printable_area 350x320",
+  "per_object_extrusion": "from the G-code's object labels: the 2 nuts and 4 screws have no gyroid; the 40 % parts have sparse infill at 3-22 % of their extrusion"
+ },
+ "send_options": {
+  "job_name": "aurora_camera_mounts_zero_hq_H2D",
+  "printer": "BYU VCL H2D - Théoden, shown as 0.4/0.6mm",
+  "plate_type": "PEI (textured)",
+  "ams_mapping": "filament 1 (PLA) -> A2 on the left nozzle",
+  "timelapse": false,
+  "auto_bed_leveling": "On",
+  "flow_dynamics_calibration": "On",
+  "nozzle_offset_calibration": "Off (the default; a single-nozzle job)",
+  "upload": "'Sending print job with LAN acceleration'; the dialog closed within 36 s and the job showed on the Device page at 00:35:07"
+ },
+ "sent_file": {
+  "path": "sent/aurora_camera_mounts_zero_hq_H2D.3mf",
+  "provenance": "Studio's own upload copy, /tmp/bamboo_model/<session>/Metadata/.<pid>.1.3mf written at Send; DesignerUserId (the lab's Bambu account ID) blanked in 3D/3dmodel.model, nothing else changed",
+  "plate_1_gcode_md5": "bb01c4d381bf8b769f76f838753f493b",
+  "same_gcode_as": "Studio's slice in /tmp/bamboo_model (MD5 checked before Send)"
+ },
+ "go": {
+  "rule": "sgbaird 2026-10-23 (CLAUDE.md): frame first, read the plate, wait at least 90 s while polling the thread, fresh frame before Send",
+  "first_frame": "20261109T232254Z_h2d_camera_studio.jpg, posted at 23:25:51 UTC; plate read as empty, with wear outlines and a new object behind the bed noted",
+  "frame_for_the_send": "20261110T002949Z_h2d_liveview.jpg, posted at 00:30:24 UTC with the plan, the parts, the 10 h estimate and the hand-off",
+  "wait": "polled from 00:18:21 (the last human comment) to 00:33:31 UTC: no reply",
+  "last_frame": "20261110T003340Z_h2d_liveview_presend.jpg: plate unchanged (mean absolute difference of the plate region 5/255 against 00:29:49)",
+  "replies": [
+   {"by": "sgbaird", "utc": "2026-11-10T00:14:53Z", "text": "Assume the one on the left is the 0.4 and run it on the h2d", "url": "https://github.com/vertical-cloud-lab/byu-vcl/issues/336#issuecomment-6755077717"},
+   {"by": "sgbaird", "utc": "2026-11-10T00:18:20Z", "text": "@claude:medium what do you mean by head? Meaning not the whole thing?", "url": "https://github.com/vertical-cloud-lab/byu-vcl/issues/336#issuecomment-6755137950", "answered_by": "a separate @claude run at 00:19 (https://github.com/vertical-cloud-lab/byu-vcl/issues/336#issuecomment-6755144205): the whole mount"}
+  ],
+  "handoff": "named in the thread before Send: this run watches until about 05:15 UTC, then sgbaird"
+ },
+ "watching": {
+  "how": "bambu/studio/watch_studio.py on the Device page (OCR of temperatures and layer every 10 s, camera frames), plus full-screen camera checks",
+  "startup": "foreign-object scan, heating, filament load, flow calibration, nozzle cleaning, bed levelling; layer 1 at about 00:46, 11.6 min after Send",
+  "temperatures": "left nozzle 219-221 C, bed 55 C throughout; no dialog or HMS alert",
+  "speck": "a small yellow-green blob at the front edge of the plate, front left, from 00:41 (after the bed rose); probably purge from the filament load; it never moved",
+  "strands": "first seen in the 01:19 frame (layer 2), growing at 01:21, 01:25 and 01:27 (layer 3); the full-screen view at 01:29 showed tangles over and between the part outlines at the back centre and right. From the camera's low angle it could not be told whether a part had come loose or whether it was stringing being dragged around",
+  "pause": "Pause in Studio's job panel at 01:30:02 UTC; the toolhead parked at the back left, the left nozzle target dropped to 40 C, the bed held 55 C, the remaining time froze at 9h16min",
+  "possible_causes_not_verified": "the plate showed a whitish haze and smudges in every frame (grease lets small PLA parts lift); stringing from the black PLA; a part's edge curling and being caught. Not diagnosed: needs a person at the printer"
+ },
+ "timeline_utc": {
+  "request": "2026-11-09T23:16:42Z (the announce comment)",
+  "run_started": "2026-11-09T23:17:11Z (tracking comment created)",
+  "recording_started": "2026-11-09T23:18:30Z",
+  "login": "2026-11-09T23:19:55Z Log In pressed, 23:20:11Z authenticator code confirmed",
+  "device_page": "2026-11-09T23:20:34Z",
+  "h2d_first_frame": "2026-11-09T23:20:55Z and 23:22:54Z",
+  "h2d_nozzles_and_hms_read": "2026-11-09T23:23Z",
+  "frame_posted": "2026-11-09T23:25:51Z",
+  "a1mini_checked": "2026-11-09T23:24:19Z to 2026-11-10T00:06Z (camera never loaded)",
+  "a1mini_sliced": "2026-11-09T23:36:32Z, exported 23:40:10Z",
+  "github_token_reminted": "2026-11-10T00:06Z and 00:50Z (scripts/refresh_github_app_token.py)",
+  "h2d_go_from_sgbaird": "2026-11-10T00:14:53Z",
+  "plan_posted": "2026-11-10T00:16:23Z",
+  "h2d_sliced": "2026-11-10T00:28:11Z",
+  "fresh_frame": "2026-11-10T00:29:49Z, posted 00:30:24Z",
+  "wait_ended": "2026-11-10T00:33:31Z",
+  "last_frame": "2026-11-10T00:33:40Z",
+  "send": "2026-11-10T00:34:37Z",
+  "job_on_device_page": "2026-11-10T00:35:07Z",
+  "layer_1": "2026-11-10T00:46Z",
+  "layer_2": "2026-11-10T01:12Z",
+  "strands_first_seen": "2026-11-10T01:19Z",
+  "layer_3": "2026-11-10T01:21Z",
+  "paused": "2026-11-10T01:30:02Z at layer 4",
+  "pause_posted": "2026-11-10T01:30:52Z"
+ },
+ "recording": "the screen recorder ran from 23:18:30 UTC (5 min segments on the runner); see README.md for what was kept"
+}
