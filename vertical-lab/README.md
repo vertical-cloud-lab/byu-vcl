@@ -16,6 +16,33 @@ framework, [`scene.py`](scene.py), is `atomizer-training/viz3d/scene.py` from #1
 [`out/org_vertical_lab.gif`](out/org_vertical_lab.gif) is made to replace that GIF on the org README, under the same
 title. It follows one charge cup from tray B to the atomizer.
 
+**Round 9** ([PR #329](https://github.com/vertical-cloud-lab/byu-vcl/pull/329), Sterling: "looks like that charge cup
+would fall straight off when being dosed into") gives the cup a holder that goes onto the pedestal with it:
+
+![Round 8's cup on the pedestal, and round 9's](out/org_vertical_lab_r9.jpg)
+
+- **Round 8's cup stood loose on the pedestal while it was dosed.** Its 19.05 mm foot stood on top of an 11 mm neck,
+  which had to be that thin to pass through the fork's 13 mm slot. Nothing held its sides: with its centre of mass
+  28 mm up, a sideways jolt of under 0.2 g would have tipped it off.
+- **The sleeve comes off the fork and goes onto the pedestal with the cup.** It is a holder now (`HOLDER_*` in
+  [`org_gif.py`](org_gif.py)): the cup stands in it 16 mm deep, as it did in round 8's sleeve, and a collar runs round
+  its top (`COLLAR`). The holder is aluminium, about 23 g, and is weighed with the cup (tared before the first dose).
+  Its walls end just above the cup's solid bottom (15.9 mm), so the bore and the powder in it still show above the
+  rim.
+- **The fork's tip is a horseshoe that lifts the holder by its collar** (`SHOE_*`). Its 29 mm slot passes the
+  holder's 27 mm body but not its 36 mm collar, and the collar sits in a 1.5 mm counterbore in the horseshoe's top,
+  so the holder can't slide out of it while it's carried.
+- **The pedestal ends in a seat with a pocket** (`seat_mesh_r9`, `SEAT_R`, `NECK_R`): 36 mm across, on a 22 mm neck
+  where round 8's was 11 mm. The holder's foot sits 3 mm deep in the pocket, with 0.5 mm of play. To tip, the holder
+  would first have to lift out of the pocket, and the cup out of the holder. Even on a flat seat, tipping the holder
+  with the cup in it would take a sideways jolt of about half a g.
+- **At the pedestal the fork lets the holder down into the pocket,** then drops 4.5 mm (`FORK_UNDER`; 20 mm in round
+  8), so the horseshoe is 3 mm under the collar and 3.5 mm over the seat, and backs out 40 mm (`FORK_BACK`), the
+  holder's body running out along the slot. Taking it back is the same in reverse: the horseshoe slides in under the
+  collar and lifts the holder out of the pocket. The blade now clears the balance's top by 24.5 mm (9 mm in round 8).
+- **Nothing else changes.** The arm stands the cup in the holder on the rest and takes it out there, every move takes
+  the time it did, and the cup goes to the rePowder without the holder.
+
 **Round 8** ([PR #329](https://github.com/vertical-cloud-lab/byu-vcl/pull/329), Sterling: "The fork stand looks
 unstable, just free hanging. Also, is the charge cup stable when on the fork? Seems like you could have a more clever
 design for this, not necessarily more complex, but more robust for sure") redraws the cup fork's seat and its rest:
