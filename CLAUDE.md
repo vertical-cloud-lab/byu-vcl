@@ -223,7 +223,8 @@ These two secrets are read by `post-queued-comments.yml` directly, not the `clau
 | `YOUTUBE_UPLOAD_TOKEN_PICKLE_B64` | Base64 `token.pickle` for the **BYU Vertical Cloud Lab** channel (`UCKC7WzMu6QEh7O55zZlT2lw`), scopes `youtube.upload` + `youtube.readonly` only — can upload, cannot delete or edit. Use via `youtube/yt_service.py`. |
 | `YOUTUBE_TOKEN_PICKLE_B64` | Full-control token for the same channel. **Not** in `claude.yml`: an environment secret of `youtube-admin`, used only by `claude-youtube.yml` (`@claude-youtube`, sgbaird only, each run approved by sgbaird). See `youtube/README.md`. |
 | `ONSHAPE_ACCESS_KEY` / `ONSHAPE_SECRET_KEY` | Onshape REST API key pair (dev-portal.onshape.com), the same pair `tensegrity-optimization` uses. Prefer these for anything the API can do. |
-| `ONSHAPE_USERNAME` / `ONSHAPE_PASSWORD` | Onshape account login, for the browser path (sketching by mouse clicks and drags) only. |
+| `ONSHAPE_USERNAME` / `ONSHAPE_PASSWORD` | The lab's shared Onshape account (member privileges, no 2FA), for the browser. See [Onshape](#onshape-signing-in-through-the-browser-onshape_username--onshape_password). |
+| `ONSHAPE_ADMIN_USERNAME` / `ONSHAPE_ADMIN_PASSWORD` | The lab's Onshape **admin** account. **Not** in `claude.yml`: environment secrets of `onshape-admin`, used only by `claude-onshape-admin.yml` (`@claude-onshape-admin`, sgbaird only, each run approved by the `onshape-admin-approvers` team, which is Sterling alone). |
 | `OT2_SERIAL` | `OT2CEP20210722R13`. Namespaces the `command/ot2/<serial>/pipette` and `status/ot2/<serial>/complete` topics. Read from the robot's own `/health` endpoint, where `robot_serial` and `name` agree. |
 | `PICO_ID` | `e6647c15673a2438`, the Pico W's `machine.unique_id()`. Namespaces the `command/picow/<id>/as7341/read` and `color-mixing/picow/<id>/as7341` topics. Must match the `PICO_ID` in that board's `my_secrets.py`, or the Space and the sensor talk past each other in silence. |
 | `H2D_IP` / `H2D_ACCESS_CODE` / `H2D_SERIAL` | Bambu Lab H2D printer, LAN mode: address, access code and serial. The IP is on the lab LAN, not the tailnet, so connect from a Pi. |
@@ -232,17 +233,8 @@ These two secrets are read by `post-queued-comments.yml` directly, not the `clau
 | `CUBXL_PI_PASSWORD` | Sudo password for the Pi 5 that fronts the CubXL, separate from the stream-cam Pis. `CUBXL_PI_USERNAME` and `CUBXL_PI_HOSTNAME` are repo **variables**, not secrets. The username has to be, since its value is three characters and appears as a substring of `byu-vcl` — exactly the masking trap noted above. The hostname is one by choice: a tailnet name confers no access on its own, and it already appears in that Pi's tag name in `claude.yml`, so keeping it secret bought nothing but inconsistency. |
 | `POTENTIOSTAT_PC_USERNAME` / `POTENTIOSTAT_PC_PASSWORD` | Windows account on the Windows 7 PC that runs EZware for the CubXL's EZstat Pro ([#231](https://github.com/vertical-cloud-lab/byu-vcl/issues/231)), for Remote Desktop (tcp:3389) to `192.168.231.10`. The PC runs no Tailscale and has no gateway; it sits on a point-to-point Ethernet link to the CubXL Pi, which advertises that one address as a subnet route. Only people are granted that route — devices are not, and CI runners carry `tag:rpi-5-des4`, so they deliberately cannot. From a CI session, reach the PC from the CubXL Pi itself, which is on the link directly: SSH in and run the RDP client there, passing the credentials over stdin or env, never as arguments. The Pi has FreeRDP 3 and Xvfb (`apt install --no-install-recommends freerdp3-x11 xvfb`, 2026-10-21). Feed every argument through `xfreerdp3 /args-from:stdin`, one per line, since it cannot be combined with other arguments. Include `/tls:seclevel:0`: without it OpenSSL 3 refuses Windows 7's TLS and the handshake fails with `ERRCONNECT_TLS_CONNECT_FAILED`, before any password is sent. FreeRDP prints a parse error for that line but applies it. `/cert:tofu` pins the PC's self-signed certificate in `~/.config/freerdp/server/`. To check the login without disturbing the PC, add `/sec:nla /auth-only`: it authenticates and stops before creating a session. A full session takes over the PC's only desktop on Windows 7 and locks out whoever is at the console, mid-experiment perhaps. |
 
-**Onshape browser work will probably need to be screen automation on a Pi, over SSH.**
-Headless Chrome on the runner reaches the sign-in page, but a datacenter IP and a headless
-browser are exactly what login bot-checks look for, and Onshape's CAD canvas is WebGL, so
-DOM-level Playwright selectors do not reach sketch geometry anyway — it takes real pointer
-clicks and drags at screen coordinates. Plan on a real (or virtual, e.g. Xvfb) display on a
-Pi, driven over Tailscale SSH with something like `xdotool` or Playwright's `mouse` API in
-headed mode, taking screenshots to locate things between moves. That uses the Pi's
-residential IP as well. Pick a Pi with headroom: the stream-cam Pis are carrying live
-streams, and the OT-2 one also runs CubOS gantry work. Pass the credentials to the Pi over
-stdin or an env var in the SSH command, never as a command-line argument or a file left on
-disk.
+**Onshape browser work:** see [Onshape: signing in through the browser](#onshape-signing-in-through-the-browser-onshape_username--onshape_password)
+below, which also covers the approval-gated admin account (`@claude-onshape-admin`).
 
 **Hugging Face Space secrets are a separate place to keep in sync.** A duplicated
 light-mixing / OT-2-LCM Space reads its own settings, not GitHub's, and expects these exact
@@ -589,3 +581,89 @@ current stream), `ONEDRIVE_EDIT_LINK_URL` (the password is stored without the li
 unlocks), and a Box share link for image backup. Note that sandbox is a wholly separate instance with its own
 account, its own token, *and its own base URL* (`sandbox.zenodo.org/api`) — code that only
 swaps the token will still write to production.
+
+## Onshape: signing in through the browser (`ONSHAPE_USERNAME` / `ONSHAPE_PASSWORD`)
+
+`ONSHAPE_USERNAME` and `ONSHAPE_PASSWORD` (job env in `.github/workflows/claude.yml`) are the
+login of the lab's shared Onshape account. It has member privileges in the lab's Onshape
+company, signs in with e-mail and password, and has no two-factor step (checked 2026-11-09).
+Use it to open, export (STL, STEP, Parasolid) or search lab documents that aren't public, such
+as a link someone posts in an issue. The same values are in every core VCL repo; set or rotate
+them in all of them together.
+
+The REST API key pair (`ONSHAPE_ACCESS_KEY` / `ONSHAPE_SECRET_KEY`) is still the first
+choice when it works. Since 2026-10-29 it has returned HTTP 402 "API limit exceeded", because
+the company has used up its yearly allowance
+([powder-doser PR 200](https://github.com/vertical-cloud-lab/powder-doser/pull/200#issuecomment-6596401552)).
+Until that resets, the browser is the only way to export a private document.
+
+**The route that works** is the one byu-vcl used on 2026-09-26
+([PR 234](https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-5842335279)):
+headed Chrome on a virtual display on the runner, with its traffic sent out through a lab Pi
+over an SSH SOCKS tunnel, so that Onshape sees the BYU network instead of a datacenter. Its
+rig script is on that PR's branch; fetch it pinned, into `/tmp`, never into this checkout:
+
+```bash
+B=https://raw.githubusercontent.com/vertical-cloud-lab/byu-vcl/49677cfff31a67765d9182c01765bfa994a7545d/ot2-overhead-camera/lid-mount/onshape
+mkdir -p /tmp/onshape-rig/record /tmp/onshape-rig/pi
+curl -fsSL "$B/record/rig.sh" -o /tmp/onshape-rig/record/rig.sh && chmod +x /tmp/onshape-rig/record/rig.sh
+curl -fsSL "$B/pi/xshot.py" -o /tmp/onshape-rig/pi/xshot.py
+/tmp/onshape-rig/record/rig.sh start
+/tmp/onshape-rig/record/rig.sh check    # the tunnel's exit network (ASN and org only), and a screenshot of the display
+```
+
+`rig.sh start` brings up Xvfb on `:99`, the tunnel on `127.0.0.1:1080` and Chrome with DevTools
+on `127.0.0.1:9222`. Attach with Playwright's `chromium.connect_over_cdp("http://127.0.0.1:9222")`.
+
+The tunnel goes through the CubXL Pi (`CUBXL_PI_USERNAME` / `CUBXL_PI_HOSTNAME`), as on
+2026-09-26. The Pi only relays traffic: nothing is installed or written on it. If it is off
+the tailnet, any other Pi this run can reach will do (set `PI_USER` and `PI_HOST`).
+
+Signing in ([`sign_in()` in `onshape_ui.py`](https://github.com/vertical-cloud-lab/byu-vcl/blob/49677cf/ot2-overhead-camera/lid-mount/onshape/onshape_ui.py#L255-L276), selectors checked live):
+
+1. Go to `https://cad.onshape.com/signin`. Click `input[name='username']`, type the e-mail and
+   click `button.continue-button`.
+2. Click `input[name='password']`, type the password and click `button.os-signin-button`.
+3. Wait up to 60 s for the URL to contain `/documents`.
+
+- **Read the values from the environment inside the script.** Never print them, pass them as
+  command-line arguments, or take a screenshot while the form is filled in. Only take
+  screenshots after you reach `/documents`.
+- **Stop at the first failure: don't retry in a loop.** That covers a reCAPTCHA, a code
+  prompt (`input[name='totpCode']`) and an error message. Take one screenshot, then report
+  what you saw. Repeated failed sign-ins can lock the account, and every repo uses it.
+- **To export,** use Onshape's own Export dialog (right-click the part or tab, then *Export*).
+  The browser saves the file, so set a download directory under `/tmp`. Driving that dialog
+  in headless Chrome worked on
+  [digital-alloy-lab PR 174](https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/174#issuecomment-6532349145).
+- **Sketching and modelling are WebGL on a canvas.** DOM selectors don't reach the geometry,
+  so use pointer moves and drags at screen coordinates, with a screenshot between moves.
+  byu-vcl's `onshape_ui.py` has the techniques that worked.
+- **Keep sessions short.** Do only what the request needs. Onshape's terms forbid automated
+  access (§4(a)(ix)), so use the REST API whenever it can do the job.
+- **Only open Onshape in the tunnelled browser.** The tunnel relays everything the browser
+  loads, so any other site would reach the Pi's network too.
+- **Clean up every time:** sign out from Onshape's user menu (*Sign out*); after that,
+  `/documents` redirects to `/signin`. Then run `rig.sh stop`, which deletes the browser
+  profile. Never save cookies or storage state outside `/tmp`, and never commit them.
+
+### `@claude-onshape-admin`: the Onshape admin account
+
+`ONSHAPE_ADMIN_USERNAME` and `ONSHAPE_ADMIN_PASSWORD` are the login of the lab's Onshape admin
+account, also e-mail and password with no two-factor step. Only this repo has them, and **not**
+in `claude.yml`: they are environment secrets of `onshape-admin`, used only by
+`.github/workflows/claude-onshape-admin.yml`. Three gates, any one of which stops a run:
+
+1. Only a comment or issue **from sgbaird** containing `@claude-onshape-admin` starts it. Plain
+   `@claude` skips any text that contains that string, so keep it out of ordinary prompts.
+2. Every run waits for approval from the `vertical-cloud-lab/onshape-admin-approvers` team, whose
+   only member is Sterling (Actions tab → the waiting run → *Review deployments*). Org admins
+   can't bypass it.
+3. The environment deploys from `main` only, so a workflow pushed on any other branch can't read
+   the secrets.
+
+Use the admin account only for what the member account can't do: company membership, sharing
+and permissions, making a document public or transferring it, restoring from the trash, and
+similar settings. Make only the change Sterling asked for. Never delete documents or folders,
+remove members, or touch the plan or billing unless he asked for that exact change. Sign in the
+same way as above, with the `ONSHAPE_ADMIN_*` values, and sign out at the end.
