@@ -643,9 +643,13 @@ Signing in ([`sign_in()` in `onshape_ui.py`](https://github.com/vertical-cloud-l
   access (§4(a)(ix)), so use the REST API whenever it can do the job.
 - **Only open Onshape in the tunnelled browser.** The tunnel relays everything the browser
   loads, so any other site would reach the Pi's network too.
-- **Clean up every time:** sign out from Onshape's user menu (*Sign out*); after that,
-  `/documents` redirects to `/signin`. Then run `rig.sh stop`, which deletes the browser
-  profile. Never save cookies or storage state outside `/tmp`, and never commit them.
+- **Clean up every time:** sign out from Onshape's user menu (*Sign out*). The redirect
+  lags by a few seconds: wait about 5 s before checking that `/documents` sends you to
+  `/signin`, or check that `/api/v6/users/sessioninfo` returns 204. Then run `rig.sh stop`,
+  which deletes the browser profile, **in a Bash call of its own**. Its `pkill -f` patterns
+  also match any shell whose command line contains the same text, so a `pgrep` naming the
+  profile path in the same call gets that shell killed (digital-alloy-lab PR 180, 2026-11-10).
+  Never save cookies or storage state outside `/tmp`, and never commit them.
 
 ### `@claude-onshape-admin`: the Onshape admin account
 
