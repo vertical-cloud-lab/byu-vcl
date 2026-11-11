@@ -1,0 +1,196 @@
+{
+ "what": "Lid camera stills, one per whole turn of the knurled back-focus ring, 2026-10-23",
+ "request": "https://github.com/vertical-cloud-lab/byu-vcl/pull/234 (timothy-commins, 20:14 UTC)",
+ "how": "ssh to the lid camera Pi, curl -s localhost:8081/still while the stream ran; focus thumbscrew near NEAR throughout (Tim, 20:28 UTC); rail lights on",
+ "measured_on": "the committed 1600 x 1200 copies, resized to 1014 x 760",
+ "well_pitch_note": "from the two red wells' peaks; given only for the start and the references, since the blurred triangles bias the peaks and the wells later run together",
+ "turns": [
+  {
+   "turn": 0.0,
+   "still": "back_focus_sweep/turn00_2016Z.jpg",
+   "taken_utc": "20:16:44",
+   "tim_posted_utc": "20:14:02 (the request)",
+   "sharpness": 78.6,
+   "plate_brightness": 97.3,
+   "well_core_skews": [
+    -0.161,
+    -0.202,
+    -0.149,
+    -0.178
+   ],
+   "skew_median": -0.169,
+   "well_pitch_px_full_res": 357.1,
+   "camera": null
+  },
+  {
+   "turn": 1.0,
+   "still": "back_focus_sweep/turn01_2019Z.jpg",
+   "taken_utc": "20:19:47",
+   "tim_posted_utc": "20:18:53",
+   "sharpness": 57.1,
+   "plate_brightness": 99.3,
+   "well_core_skews": [
+    -0.181,
+    -0.133,
+    -0.115,
+    -0.123
+   ],
+   "skew_median": -0.128,
+   "well_pitch_px_full_res": null,
+   "camera": {
+    "exposure_us": 49963,
+    "analogue_gain": 3.39,
+    "lux": 46.9
+   }
+  },
+  {
+   "turn": 2.0,
+   "still": "back_focus_sweep/turn02_2021Z.jpg",
+   "taken_utc": "20:21:50",
+   "tim_posted_utc": "20:20:36",
+   "sharpness": 44.4,
+   "plate_brightness": 93.0,
+   "well_core_skews": [
+    0.018,
+    -0.056,
+    -0.073,
+    -0.15
+   ],
+   "skew_median": -0.065,
+   "well_pitch_px_full_res": null,
+   "camera": {
+    "exposure_us": 49963,
+    "analogue_gain": 2.92,
+    "lux": 56.0
+   }
+  },
+  {
+   "turn": 3.0,
+   "still": "back_focus_sweep/turn03_2022Z.jpg",
+   "taken_utc": "20:22:33",
+   "tim_posted_utc": "20:22:33",
+   "sharpness": 38.3,
+   "plate_brightness": 87.3,
+   "well_core_skews": [
+    0.014,
+    0.078,
+    0.083
+   ],
+   "skew_median": 0.078,
+   "well_pitch_px_full_res": null,
+   "camera": {
+    "exposure_us": 49963,
+    "analogue_gain": 2.53,
+    "lux": 64.0
+   }
+  },
+  {
+   "turn": 4.0,
+   "still": "back_focus_sweep/turn04_2023Z.jpg",
+   "taken_utc": "20:23:44",
+   "tim_posted_utc": "20:23:43",
+   "sharpness": 37.7,
+   "plate_brightness": 85.3,
+   "well_core_skews": [
+    0.036,
+    0.008,
+    -0.023
+   ],
+   "skew_median": 0.008,
+   "well_pitch_px_full_res": null,
+   "camera": {
+    "exposure_us": 49963,
+    "analogue_gain": 2.29,
+    "lux": 71.6
+   }
+  },
+  {
+   "turn": 5.0,
+   "still": "back_focus_sweep/turn05_2026Z.jpg",
+   "taken_utc": "20:26:07",
+   "tim_posted_utc": "20:26:06",
+   "sharpness": 36.7,
+   "plate_brightness": 79.7,
+   "well_core_skews": [
+    0.026,
+    0.014
+   ],
+   "skew_median": 0.02,
+   "well_pitch_px_full_res": null,
+   "camera": {
+    "exposure_us": 48940,
+    "analogue_gain": 2.0,
+    "lux": 83.0
+   }
+  },
+  {
+   "turn": 5.5,
+   "still": "back_focus_sweep/turn05.5_top_2028Z.jpg",
+   "taken_utc": "20:28:00",
+   "tim_posted_utc": "20:27:59 ('all the way up is 5.5')",
+   "sharpness": 33.4,
+   "plate_brightness": 86.3,
+   "well_core_skews": [
+    -0.051,
+    0.011,
+    0.005
+   ],
+   "skew_median": 0.005,
+   "well_pitch_px_full_res": null,
+   "camera": {
+    "exposure_us": 49963,
+    "analogue_gain": 2.09,
+    "lux": 78.3
+   }
+  }
+ ],
+ "reference": {
+  "18:08": {
+   "sharpness": 100.3,
+   "plate_brightness": 96.0,
+   "well_core_skews": [
+    -0.213,
+    -0.235,
+    -0.208,
+    -0.22
+   ],
+   "skew_median": -0.216,
+   "well_pitch_px_full_res": 289.0,
+   "still": "still_1808Z_focus_at_near.jpg",
+   "state": "ring all the way in, focus thumbscrew at NEAR"
+  },
+  "19:04": {
+   "sharpness": 196.1,
+   "plate_brightness": 86.0,
+   "well_core_skews": [
+    -0.009,
+    0.008,
+    0.029,
+    0.006
+   ],
+   "skew_median": 0.007,
+   "well_pitch_px_full_res": 354.1,
+   "still": "still_1904Z_ring_all_the_way_out.jpg",
+   "state": "ring all the way out, focus thumbscrew at NEAR"
+  }
+ },
+ "summary": {
+  "trend": "sharpest at the start (ring all the way out); every turn up blurrier; the top blurriest",
+  "picture_side": "behind the sensor at every ring position: blurrier as the lens moves towards the sensor (the picture also shrinks each turn), and the spot points apex up in turns 0-1 as at 18:08",
+  "extra_room_needed": {
+   "turns_beyond_all_the_way_out": 6.1,
+   "mm_if_5.5_turns_is_the_whole_9.9_mm_travel": 10.9,
+   "how": "1/sqrt(sharpness), roughly proportional to the spot's diameter while it is bigger than a well, fitted over turns 0-2 and extrapolated to zero; rough, several mm either way"
+  },
+  "exposure_vs_1854": {
+   "exposure_times_gain_1854": 1034470.08,
+   "exposure_times_gain_now": 169374.57,
+   "ratio": 6.1,
+   "reading": "rail lights on both times, so the iris is wider now; a wider iris makes the same focus error a bigger blur, so compare the sweep's stills with each other, not with 18:08 or 19:04"
+  },
+  "colour_gains": [
+   3.083,
+   1.486
+  ]
+ }
+}

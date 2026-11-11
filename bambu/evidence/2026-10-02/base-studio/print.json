@@ -1,0 +1,176 @@
+{
+ "what": "OT-2 lid camera mount, plate 1 of the lid-mount project: the base, with its four 96 mm posts (\"the pillars\")",
+ "result": "printed; watch exit 0 (print finished), no print_error, no HMS alert",
+ "printer": {
+  "model": "Bambu Lab A1 mini",
+  "name_in_studio": "Thumbelina, the A1 Mini",
+  "nozzle": "0.4 mm stainless steel",
+  "firmware": "01.08.00.00",
+  "ams_lite": "00.00.08.15",
+  "mode": "Bambu cloud (not LAN-only)"
+ },
+ "route": "route 3 in bambu/README.md: Bambu Studio 02.08.02.61 GUI on the GitHub Actions runner's Xvfb display, logged in to the lab's Bambu account, sent through Bambu's cloud",
+ "source_project": {
+  "path": "ot2-overhead-camera/lid-mount/slice/lid_mount_A1mini_PLA.3mf on claude/ot2-lid-camera-mount-20260925 (PR #234)",
+  "branch_commit": "b5bb799",
+  "md5": "1479e2f8b5fca1d08635952dc37eba2a",
+  "last_commit_touching_it": "5e2d0db",
+  "committed_plate_1_gcode_md5": "3dcf445535274215b1ca9a4325a3c2e0"
+ },
+ "gui_changes_before_slicing": {
+  "why": "opening the CLI-sliced project in the GUI reset these to Bambu's stock process preset, as on 2026-09-27, 2026-09-29 and 2026-10-01",
+  "restored": {
+   "wall_loops": "2 -> 3",
+   "sparse_infill_density": "15% -> 25%",
+   "enable_circle_compensation": "0 -> 1"
+  },
+  "left_at_stock": {
+   "machine_max_acceleration_x/y": "20000 (project: 6000)",
+   "machine_max_acceleration_travel": "9000 (project: 6000)"
+  },
+  "derived_keys_that_followed": {
+   "skeleton_infill_density": "25% (project: 15%)",
+   "skin_infill_density": "25% (project: 15%)"
+  },
+  "check": "the GUI plate 1 G-code has the committed plate 1's 511 layers to Z 102.20, 81.12 g, bed M190 S65, nozzle 220, Bambu's start G-code (M620 S, M412 S1, G29.1 Z-0.02) and the same per-layer extrusion: no layer differs by more than 0.05 mm of filament (total 26742.8 mm in both). Only the config keys above differ"
+ },
+ "presets": {
+  "machine": "Bambu Lab A1 mini 0.4 nozzle",
+  "process": "0.20mm Standard @BBL A1M (modified as above)",
+  "filament": "Bambu PLA Basic @BBL A1M"
+ },
+ "send_options": {
+  "job_name": "lid_mount_base_plate1 (renamed from the default lid_mount_A1mini_PLA_Base)",
+  "plate_type": "Textured PEI",
+  "ams_mapping": "A3 = 0-based slot 2, Bambu PLA Basic GFA00, black 000000",
+  "timelapse": false,
+  "auto_bed_leveling": true,
+  "flow_dynamics_calibration": true
+ },
+ "sent_file": {
+  "path": "sent/lid_mount_base_plate1.3mf",
+  "provenance": "exported from Studio during the print with File -> Export -> Export plate sliced file (the runbook's rule 8 route); DesignerUserId (the lab's Bambu account ID) blanked in 3D/3dmodel.model, nothing else changed",
+  "plate_1_gcode_md5": "d67427660746751fc181933881fecbc1",
+  "same_gcode_as": [
+   "Studio's own slice in /tmp/bamboo_model (the G-code Send used)",
+   "the export's stored Metadata/plate_1.gcode.md5"
+  ]
+ },
+ "estimates": {
+  "model_time": "2h23m43s",
+  "total_time": "2h29m41s",
+  "filament_g": 81.12,
+  "filament_m": 26.77,
+  "layers": 511,
+  "max_z_mm": 102.2,
+  "committed_slice_total_time": "2h32m12s (CLI, 6000 mm/s2 acceleration limits)"
+ },
+ "timeline_utc": {
+  "request": "2026-10-02T18:44:24Z",
+  "session_start": "2026-10-02T18:44:44Z",
+  "preflight_1": "2026-10-02T18:46:57Z (HUMAN-DECISION: every automatic check passes; idle, black PLA Basic in slot 2, mean luma 113.8/255)",
+  "frame_posted_and_go_requested": "2026-10-02T18:47:47Z",
+  "recording_started": "2026-10-02T18:48:07Z",
+  "studio_started": "2026-10-02T18:48:10Z (launched right after the recording started)",
+  "login_pressed": "2026-10-02T18:51:37Z",
+  "go": "2026-10-02T18:52:03Z",
+  "login_code_posted": "2026-10-02T18:52:25Z",
+  "login_code_typed": "2026-10-02T18:52:31Z",
+  "project_opened": "2026-10-02T18:53:23Z",
+  "gui_slice_plate_1": "2026-10-02T18:54:55Z",
+  "preflight_2": "2026-10-02T18:55:47Z (HUMAN-DECISION: every automatic check passes; frame unchanged)",
+  "sent": "2026-10-02T18:56:41Z",
+  "running_by": "2026-10-02T18:57:26Z",
+  "sent_file_exported": "2026-10-02T19:02:28Z",
+  "layer_starts": {
+   "0": "2026-10-02T18:57:46Z",
+   "1": "2026-10-02T19:03:48Z",
+   "2": "2026-10-02T19:10:54Z",
+   "3": "2026-10-02T19:13:55Z",
+   "5": "2026-10-02T19:17:56Z",
+   "10": "2026-10-02T19:26:38Z",
+   "20": "2026-10-02T19:37:35Z",
+   "26": "2026-10-02T19:43:06Z",
+   "27": "2026-10-02T19:50:47Z",
+   "30": "2026-10-02T19:58:52Z",
+   "31": "2026-10-02T20:03:03Z",
+   "40": "2026-10-02T20:05:08Z",
+   "50": "2026-10-02T20:07:26Z",
+   "75": "2026-10-02T20:13:04Z",
+   "100": "2026-10-02T20:18:41Z",
+   "150": "2026-10-02T20:26:16Z",
+   "200": "2026-10-02T20:33:15Z",
+   "250": "2026-10-02T20:40:15Z",
+   "300": "2026-10-02T20:47:15Z",
+   "350": "2026-10-02T20:54:14Z",
+   "400": "2026-10-02T21:01:16Z",
+   "450": "2026-10-02T21:09:17Z",
+   "480": "2026-10-02T21:15:20Z",
+   "485": "2026-10-02T21:16:16Z",
+   "486": "2026-10-02T21:16:27Z",
+   "487": "2026-10-02T21:16:39Z",
+   "488": "2026-10-02T21:16:52Z",
+   "489": "2026-10-02T21:17:02Z",
+   "490": "2026-10-02T21:17:36Z",
+   "500": "2026-10-02T21:19:27Z",
+   "505": "2026-10-02T21:20:29Z",
+   "511": "2026-10-02T21:21:40Z"
+  },
+  "finished": "2026-10-02T21:22:39Z",
+  "sent_to_finish_min": 146.0
+ },
+ "go": {
+  "by": "timothy-commins",
+  "comment": "https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-5959207095",
+  "text": "plate clear",
+  "asked_for": "plate empty, Textured PEI, room for the bed to travel, someone able to reach the printer while it runs; and who takes over if the print outlasts the session (https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-5959050288)",
+  "also": "the request itself (\"please print out the pillars for the new print\") came from the same person; the pillars were read as plate 1, the base with its four posts, and that reading was posted before the go"
+ },
+ "login_code_relayed_by": {
+  "by": "timothy-commins",
+  "comment_id": 5959214655
+ },
+ "request_comment": "https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-5959041505",
+ "watch": {
+  "frame_every_s": "30 for the start and first layers, then 60",
+  "log": "watch.jsonl.gz",
+  "samples": 4077,
+  "frames": 183,
+  "nozzle_c_min_max_while_printing": [
+   218.21875,
+   221.53125
+  ],
+  "bed_c_min_max_while_printing": [
+   64.5,
+   65.46875
+  ],
+  "hms": [],
+  "print_errors": [],
+  "alarms": [],
+  "last_sample": {
+   "t": "2026-10-02T21:22:39Z",
+   "gcode_state": "FINISH",
+   "layer_num": 511,
+   "mc_percent": 100,
+   "mc_remaining_time": 0
+  },
+  "longest_layer": "layer 26, 7.7 min (19:43:06-19:50:47)",
+  "temperature_note": "ranges over RUNNING samples from layer 1 with the heaters' targets set; the heaters were switched off at the end of layer 511, before FINISH"
+ },
+ "recording": {
+  "youtube": "https://www.youtube.com/watch?v=inpbxJkVpe8",
+  "privacy": "unlisted",
+  "length": "5:12",
+  "covers": "Studio's setup (18:48-18:51 UTC, 2x); project opened, settings restored, plate 1 sliced and sent (18:53-18:57, 2x); export of the sent file (19:02, 2x); printer-camera timelapse from 18:57 (LAN frames every 30-60 s, 6 fps); Studio's Device page for the last 40 s of the recording",
+  "not_recorded_or_cut": "the Bambu login, 18:51-18:53 UTC (e-mail address on screen)",
+  "blurred": "the room behind the printer: above the plate edge in the low camera view, and the runbook's boxes once the gantry is high (layer 200 on); also in Studio's camera pane",
+  "chapters": [
+   "0:00 Bambu Studio's first-run setup on the CI runner (2x)",
+   "1:26 Project opened; 3 walls, 25 % infill and circle compensation restored; plate 1 sliced and checked (2x)",
+   "3:04 Send: A1 mini, Textured PEI, black PLA in A3, timelapse off; then the Device page (2x)",
+   "3:33 Exporting the exact file that was sent (2x)",
+   "4:01 Printer camera timelapse from 18:57 UTC, one frame per 30-60 s",
+   "4:32 Studio's Device page at the end (real time)"
+  ]
+ }
+}

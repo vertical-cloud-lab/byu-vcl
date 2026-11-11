@@ -1,0 +1,10 @@
+0:00 Bambu Studio's first start on the runner (the login after it is cut)
+0:37 Device page: the A1 mini is idle, but the previous job's print is still on its plate
+1:32 Modelling rings C-H and checking the 23 Oct G-code (in the terminal, off screen)
+1:51 Slicing: Sync info, the six-ring STL, 0.08 mm High Quality, 6 walls, black PLA from A3
+3:58 A fresh frame and the HMS tab: no alerts, the plate still occupied
+5:43 Waiting for someone to clear the plate (a frame every 3-4 min)
+6:02 Exporting the sliced plate, ready to send later
+6:35 Still waiting
+6:49 The H2D: busy on another job, with an AMS warning; nothing clicked
+7:24 Waiting until the 18:55 UTC cutoff; the plate never changed

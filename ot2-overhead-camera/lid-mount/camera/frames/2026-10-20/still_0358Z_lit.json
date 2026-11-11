@@ -1,0 +1,57 @@
+{
+ "still": "still_0358Z_lit.jpg",
+ "taken_utc": "2026-10-20T03:58:35Z",
+ "how": "curl -s localhost:8081/still on the lid camera Pi, while the stream ran (picam_source.py)",
+ "ot2_rail_lights": "on 03:58:25-03:58:35 UTC, no run active; still taken once auto exposure settled (digital gain 1.00 on 4 polls in a row)",
+ "size": [
+  4056,
+  3040
+ ],
+ "metadata": {
+  "SensorTimestamp": 3492615040000,
+  "ExposureTime": 47752,
+  "AnalogueGain": 2.0,
+  "DigitalGain": 1.000004768371582,
+  "ColourGains": [
+   2.974234104156494,
+   1.5656943321228027
+  ],
+  "ColourTemperature": 4433,
+  "Lux": 87.87725830078125,
+  "FrameDuration": 333327,
+  "ScalerCrop": [
+   0,
+   0,
+   4056,
+   3040
+  ],
+  "SensorTemperature": 23.0
+ },
+ "stream_status_at_still": {
+  "frames": 881,
+  "dropped": 0,
+  "fps": 2.99,
+  "stills": 5,
+  "focus": {
+   "centre": 34.3,
+   "best_2min": 34.3,
+   "grid": [
+    [
+     11.4,
+     26.5,
+     89.6
+    ],
+    [
+     59.5,
+     34.3,
+     22.4
+    ],
+    [
+     25.9,
+     23.5,
+     27.7
+    ]
+   ]
+  }
+ }
+}

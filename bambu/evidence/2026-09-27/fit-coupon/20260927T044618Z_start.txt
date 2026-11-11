@@ -1,0 +1,13 @@
+2026-09-27T04:46:18Z sent project_file for lid_mount_A1mini_PLA.3mf plate 4, AMS slot 0, confirmed by sgbaird
+{
+ "ack": null,
+ "gcode_state": "FINISH",
+ "print_error": null,
+ "hms": [
+  {
+   "code": "0500_0500_0001_0007",
+   "severity": "fatal"
+  }
+ ],
+ "started": false
+}

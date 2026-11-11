@@ -1,0 +1,119 @@
+{
+ "what": "OT-2 lid camera mount, drill template (plate 3 of the lid-mount project)",
+ "result": "printed; watch exit 0 (print finished), no print_error, no HMS alert",
+ "printer": {
+  "model": "Bambu Lab A1 mini",
+  "name_in_studio": "Thumbelina, the A1 Mini",
+  "nozzle": "0.4 mm stainless steel",
+  "firmware": "01.08.00.00",
+  "ams_lite": "00.00.08.15",
+  "mode": "Bambu cloud (not LAN-only)"
+ },
+ "route": "route 3 in bambu/README.md: Bambu Studio 02.08.02.61 GUI on the GitHub Actions runner's Xvfb display, logged in to the lab's Bambu account, sent through Bambu's cloud",
+ "source_project": {
+  "path": "ot2-overhead-camera/lid-mount/slice/lid_mount_A1mini_PLA.3mf",
+  "md5": "1479e2f8b5fca1d08635952dc37eba2a",
+  "last_commit": "5e2d0db",
+  "committed_plate_3_gcode_md5": "5cebb1b8d32782fee42a842baa0e77f2"
+ },
+ "gui_changes_before_slicing": {
+  "why": "opening the CLI-sliced project in the GUI reset these to Bambu's stock process preset (bambu/studio/README.md)",
+  "restored": {
+   "wall_loops": "2 -> 3",
+   "sparse_infill_density": "15% -> 25%",
+   "enable_circle_compensation": "0 -> 1"
+  },
+  "left_at_stock": {
+   "machine_max_acceleration_x/y": "20000 (project: 6000)",
+   "machine_max_acceleration_travel": "9000 (project: 6000)"
+  },
+  "check": "the GUI plate 3 G-code extrudes the same filament length on each of the 10 layers as the committed plate 3 (to 0.01 mm), with the same bed (M190 S65), nozzle (220), start G-code (M620 S0A, M412 S1) and G29.1 Z-0.02"
+ },
+ "presets": {
+  "machine": "Bambu Lab A1 mini 0.4 nozzle",
+  "process": "0.20mm Standard @BBL A1M (modified as above)",
+  "filament": "Bambu PLA Basic @BBL A1M"
+ },
+ "send_options": {
+  "job_name": "lid_mount_drill_template",
+  "plate_type": "Textured PEI",
+  "ams_mapping": "A1 = 0-based slot 0, Bambu PLA Basic GFA00, dark blue 0A2989",
+  "timelapse": false,
+  "auto_bed_leveling": true,
+  "flow_dynamics_calibration": true
+ },
+ "sent_file": {
+  "path": "sent/lid_mount_drill_template.3mf",
+  "provenance": "read back over FTPS from the printer's SD card (/cache/lid_mount_drill_template.3mf, 328683 bytes) after the print; DesignerUserId (the lab's Bambu account ID) blanked in 3D/3dmodel.model, nothing else changed",
+  "plate_3_gcode_md5": "482f8022f139f7271717e1b5259b2a42",
+  "same_gcode_as": [
+   "Studio's own slice in /tmp/bamboo_model",
+   "File > Export > Export plate sliced file after the print"
+  ]
+ },
+ "estimates": {
+  "model_time": "45m27s",
+  "total_time": "51m26s",
+  "filament_g": 31.84,
+  "filament_m": 10.51,
+  "layers": 10,
+  "max_z_mm": 2.0
+ },
+ "timeline_utc": {
+  "session_start": "2026-09-29T18:26:58Z",
+  "preflight_1": "2026-09-29T18:28:14Z (HUMAN-DECISION; frame unfamiliar because the gantry was parked high)",
+  "login_code_requested": "2026-09-29T18:32:42Z",
+  "login_code_posted": "2026-09-29T18:39:27Z",
+  "login_code_typed": "2026-09-29T18:39:33Z",
+  "go": "2026-09-29T18:39:54Z",
+  "gui_slice": "2026-09-29T18:41:12Z",
+  "preflight_2": "2026-09-29T18:43:45Z (HUMAN-DECISION: same scene, same checks passing)",
+  "sent": "2026-09-29T18:44:46Z",
+  "running_by": "2026-09-29T18:45:12Z",
+  "layer_starts": {
+   "0": "2026-09-29T18:45:40Z",
+   "1": "2026-09-29T18:51:56Z",
+   "2": "2026-09-29T18:59:13Z",
+   "3": "2026-09-29T19:02:25Z",
+   "4": "2026-09-29T19:05:36Z",
+   "5": "2026-09-29T19:07:08Z",
+   "6": "2026-09-29T19:08:48Z",
+   "7": "2026-09-29T19:19:37Z",
+   "8": "2026-09-29T19:23:28Z",
+   "9": "2026-09-29T19:27:13Z",
+   "10": "2026-09-29T19:31:04Z"
+  },
+  "finished": "2026-09-29T19:37:42Z",
+  "sent_to_finish_min": 52.9
+ },
+ "go": {
+  "by": "sgbaird",
+  "comment": "https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-5896385436",
+  "text": "Also, it's fine. The gantry is just at a different position. The plate is clear"
+ },
+ "request": "https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-5896146609",
+ "watch": {
+  "samples": 1425,
+  "frames": 101,
+  "frame_every_s": 30,
+  "nozzle_c_min_max_while_printing": [
+   217.96875,
+   221.6875
+  ],
+  "bed_c_min_max_while_printing": [
+   64.4375,
+   65.40625
+  ],
+  "hms": [],
+  "print_errors": [],
+  "exit": 0,
+  "log": "watch.jsonl.gz"
+ },
+ "recording": {
+  "youtube": "https://www.youtube.com/watch?v=M6w4-SVw9tg",
+  "privacy": "unlisted",
+  "covers": "printer-camera timelapse 18:45-19:38 UTC, then Studio's screen 19:22-19:40 UTC in real time",
+  "not_recorded": "login, slicing and Send (18:29-18:45 UTC)",
+  "blurred": "people passing the printer"
+ }
+}

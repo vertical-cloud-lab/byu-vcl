@@ -1,0 +1,79 @@
+{
+ "what": "Lid camera still after @mcwilliams03 reported the focus thumbscrew at the end of its travel with the picture still blurred, 2026-10-22",
+ "request": "https://github.com/vertical-cloud-lab/byu-vcl/pull/234 (trigger comment, 2026-10-22)",
+ "still": "still_2147Z_plate_fills_frame.jpg (saved at half resolution); figure blur_triangle_2147Z.jpg",
+ "taken_utc": "2026-10-22T21:47:29Z",
+ "how": "curl -s localhost:8081/still and /status on the lid camera Pi while the stream ran (picam_source.py); stream untouched",
+ "ot2": "rail lights on (GET /robot/lights), no protocol run and no maintenance run",
+ "metadata": {
+  "ExposureTime": 66654,
+  "AnalogueGain": 15.753846168518066,
+  "DigitalGain": 1.0042850971221924,
+  "Lux": 5.881198406219482,
+  "ColourTemperature": 4675,
+  "ScalerCrop": [
+   0,
+   0,
+   4056,
+   3040
+  ]
+ },
+ "focus_score_at_still": {
+  "centre": 10.9,
+  "best_2min": 11.3,
+  "grid": [
+   [
+    8.4,
+    10.6,
+    10.3
+   ],
+   [
+    8.8,
+    10.9,
+    11.0
+   ],
+   [
+    7.6,
+    12.9,
+    6.7
+   ]
+  ]
+ },
+ "focus_score_note": "at analogue gain 15.8 the score is mostly sensor noise, so it can't guide focusing in this state",
+ "zoom": {
+  "plate_footprint_px": "about 3600 x 2450 (127.76 x 85.48 mm), so about 28-29 px/mm",
+  "estimate_mm": "about 27 (26.6 px/mm at 25 mm); the plate-in-box target is 27.7 mm"
+ },
+ "blur": {
+  "well": "a yellow well, 6.86 mm = 196 px, spreads to a rounded triangle about 330 px across; the triangle is the iris's shape",
+  "plate_edge_10_90_px_median": {
+   "top": 239,
+   "bottom": 262,
+   "left": 127,
+   "right": 202
+  },
+  "blur_spot_estimate": "roughly 150-250 px, 0.2-0.4 mm on the 1.55 um pixels",
+  "per_channel": "green 1-4 % narrower than red and blue on all four plate edges; too small and too lens-dependent to say which side of focus the sensor is on"
+ },
+ "iris": "Lux 5.9 at exposure 66.7 ms and gain 15.8 (both at the auto-exposure limits), against 87.9 at 47.8 ms and gain 2.0 for the sharp still of 2026-10-20 03:58 UTC, also with the rail lights on. Allowing 2-3x for a dark plate filling the frame instead of the light deck, the iris is about 2-3 stops more closed than on 20 Oct",
+ "defocus_estimate_mm": "blur spot x f-number: 0.2-0.4 mm x about f/5.6-11 = roughly 1-4 mm between where the image forms and the sensor",
+ "focus_ring_model": {
+  "basis": "thin lens; plate about 0.6 m from the lens; Waveshare's minimum object distance 0.20 m; image shift from infinity = f^2/(u - f)",
+  "at_27_mm": {
+   "infinity_to_plate_mm": 1.27,
+   "infinity_to_MOD_mm": "3.1-4.2",
+   "plate_on_the_ring": "about a third of the way from FAR to NEAR"
+  },
+  "at_8_to_12_mm": {
+   "largest_defocus_any_focus_setting_gives_mm": "0.2-0.5"
+  }
+ },
+ "reading": "With the lens seated at the standard C-mount spacing, the plate is in the focus ring's range at every zoom, about a third of the way from FAR at 27 mm. A blur spot this size at the end of the ring, and at 21:10 a 1.3 mm blur circle at a wide zoom, where no focus setting can be more than 0.2-0.5 mm off (that needs 1.8 mm or more even at f/1.4), say the lens-to-sensor spacing has changed since the sharp stills of 20 Oct: the lens or the C-CS adapter backed out of its thread (0.79 mm a turn), the camera's back-focus ring screwed out, or a second (or no) C-CS adapter. Which end the focus thumbscrew stopped at gives the direction: FAR = lens too far from the sensor, NEAR = too close.",
+ "stack_heights_cad_mm": {
+  "deck_underside": 99.66,
+  "lens_flange_with_one_adapter": 75.3,
+  "deck_underside_to_lens_joint": 24.4,
+  "with_no_adapter": 19.4,
+  "with_two_adapters": 29.4
+ }
+}

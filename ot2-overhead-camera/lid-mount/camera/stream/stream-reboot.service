@@ -1,0 +1,9 @@
+[Unit]
+Description=Scheduled reboot for a fresh YouTube broadcast, held off while the OT-2 or the camera is in use
+# Was stream-rotate.service until 2026-10-19, which restarted only device.service.
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/stream-reboot.sh
+# It may wait up to 3 h for the OT-2 before giving up on this slot.
+TimeoutStartSec=4h
