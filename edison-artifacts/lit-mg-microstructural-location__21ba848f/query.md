@@ -1,0 +1,7 @@
+In laser-powder-bed-fusion (LPBF/SLM) AlSi10Mg, where does Mg actually reside in the as-built microstructure? Please cover:
+1. Bulk vs grain-boundary vs intercellular vs melt-pool-boundary Mg distribution, as imaged by APT (atom probe), STEM-EDX, TEM-EELS, and high-resolution SEM-EDX.
+2. Mg-containing phases reported: Mg2Si precipitates, MgAl2O4 spinel inclusions, MgO surface films, Mg-rich nanoscale oxides at melt-pool boundaries, Mg segregation in the cellular eutectic Si network.
+3. Does Mg segregate enough at the surface of polished LPBF AlSi10Mg cross-sections (after standard metallographic polishing with SiC, diamond, colloidal silica) to bias SEM-EDS by factors of 3-7x relative to ICP-OES bulk values?
+4. How much Mg loss occurs during LPBF processing due to evaporation (Mg has a high vapor pressure), and could the "bulk" composition after printing differ significantly from the powder feedstock?
+5. What is the typical morphology of "small spheres" or nodules sometimes observed coating the surface of polished LPBF AlSi10Mg samples — are these spatter inclusions, intermetallics, or polishing artifacts?
+Cite peer-reviewed papers on LPBF AlSi10Mg microstructure, especially recent work (2018-2025) using high-resolution chemical mapping.

@@ -1,0 +1,24 @@
+{
+ "day": "2026-11-02",
+ "blur": [],
+ "parts": [
+  {"from": "23:15:16", "to": "23:17:20", "speed": 4, "label": "Studio's first start: certificate prompt, setup wizard, network plug-in (4x)"},
+  {"from": "23:17:20", "to": "23:19:25", "speed": 8, "label": "Studio stops repainting after the plug-in install; killed and restarted (8x)"},
+  {"from": "23:19:25", "to": "23:20:36", "speed": 4, "label": "Restarted: Beta prompts dismissed, profile update cancelled (4x)"},
+  {"from": "23:21:32", "to": "23:30:15", "speed": 4, "label": "Device page: A1 mini idle; live view fails [2:2]; Storage, HMS and nozzle checks (4x)"},
+  {"from": "23:30:40", "to": "23:31:10", "speed": 4, "label": "Live view still failing (4x)"},
+  {"from": "23:31:50", "to": "23:36:00", "speed": 4, "label": "After another Studio restart: live view still fails (4x)"},
+  {"from": "23:36:00", "to": "23:39:50", "speed": 2, "label": "File opened; Studio's re-slice; circle compensation back on; re-sliced (2x)"},
+  {"from": "23:39:50", "to": "23:46:40", "speed": 8, "label": "Retrying the camera while waiting for a person (8x)"},
+  {"from": "23:46:40", "to": "23:48:30", "speed": 4, "label": "Go from the requester; last camera attempt before Send (4x)"},
+  {"from": "23:48:30", "to": "23:50:40", "speed": 1, "label": "Send dialog checked, job renamed, Send (real time)"},
+  {"from": "23:50:40", "to": "2026-11-03T00:42:45", "speed": 24, "label": "Printing, followed on the Device page with the camera down (24x)"},
+  {"from": "2026-11-03T00:42:45", "to": "2026-11-03T00:45:25", "speed": 2, "label": "Finished; last camera attempt; HMS tab empty (2x)"}
+ ],
+ "cut": {
+  "23:20:36-23:21:32": "login: e-mail address and authenticator code on screen, then the account name on the home page",
+  "23:30:15-23:30:40": "Update tab: printer and AMS serial numbers",
+  "23:31:10-23:31:50": "Studio restart: account name on the home page",
+  "00:45:25-00:46:24": "sign-out: account name"
+ }
+}
