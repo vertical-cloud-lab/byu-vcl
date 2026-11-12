@@ -42,7 +42,7 @@ Meta AI app. And Meta says they "must not be used as safety glasses". Details ar
 | Getting files | our app writes them on the phone, then uploads them or `adb pull` | `adb pull` from the device's storage | export in the app, then USB; or the optional Pupil Cloud API |
 | Live video | SDK "direct streaming to your own … server", then RTMP to YouTube | any Android RTMP app or library (untested) | RTSP on the local network, then `ffmpeg` to YouTube RTMP |
 | Weight | 95 g | 179 g | not checked |
-| The catch | the camera is only reachable through an SDK under NDA, so **we write an Android app** | it isn't glasses, and it's the heaviest of the three | price; full-quality files need a manual export; live audio is 8 kHz |
+| The catch | the camera is only reachable through an SDK under NDA, so **we write an Android app** | it isn't glasses: a 179 g headset, nearly twice the Iristick's weight | price; full-quality files need a manual export; live audio is 8 kHz |
 
 Which one fits:
 
@@ -55,8 +55,8 @@ Which one fits:
   so any recorder or uploader app can be installed on it, and ADB comes switched on. It's the safe
   pick if the requirement is "we can see everything it does".
 - **Pupil Labs Neon** is the provenance-grade option. It has a documented local API with start
-  and stop, event markers, and clock sync to the phone at the millisecond level, and it records
-  where the wearer was looking. It costs the most.
+  and stop and event markers, it measures its clock offset to our own computer to the
+  millisecond, and it records where the wearer was looking. It costs the most.
 
 ## What "backdoor access" has to mean
 
@@ -72,8 +72,9 @@ For each candidate, five checks:
 
 Three kinds of device turned up:
 
-- **Standalone Android** (RealWear, Vuzix, RayNeo X3 Pro): passes all five out of the box. ADB
-  gives logs, files and app install.
+- **Standalone Android** (RealWear, Vuzix, RayNeo X3 Pro): passes all five once developer
+  options are on (RealWear ships with ADB on; Vuzix needs it switched on). ADB gives logs, files
+  and app install.
 - **Tethered to a phone** (Iristick, Pupil Labs Neon): the phone is an ordinary Android phone with
   ADB. How much we can reach on the glasses depends on the vendor's SDK or API.
 - **Consumer glasses with a phone companion app** (Meta, Mentra Live, Android XR): our code runs on
@@ -186,8 +187,8 @@ days. Its OS, MentraOS, is open source under
 
 The examples run video at 1280×720 and 30 fps. Mentra's docs also describe installing software
 with ADB. The catches: about **1 h of recording per charge**, no safety rating, no prescription
-option, and a small startup vendor. It's the cheapest way to prove the whole pipeline. Worn under
-over-the-glasses goggles, it covers splash work too (see #290's doc).
+option, and a small startup vendor. It's the cheapest way to prove the whole pipeline. For splash work it
+would have to go under over-the-glasses goggles, which is untested (see #290's doc).
 
 ### Idea 1: Meta glasses
 
@@ -253,7 +254,8 @@ provenance record.
 | Snap Specs | $2,195, preorder | none | Lens Studio camera API, not built for recording | |
 | Brilliant Labs Halo | $299–399 | none | open source | camera is a low-power AI sensor, not for video |
 | Lucyd Armor | $149 | ANSI Z87.1 | — | no camera |
-| HoloLens 2, Magic Leap 2, ThinkReality A3, Epson Moverio | — | — | — | discontinued |
+| HoloLens 2, Magic Leap 2, ThinkReality A3 | — | — | — | discontinued |
+| Epson Moverio BT-45C/CS | — | — | — | discontinued in some regions; US status unclear |
 
 ## Wiring it into what we already have
 
