@@ -26,7 +26,7 @@ not quoted by anyone.
     and rents to them ([§3](#3-argon-and-nitrogen-a-tank-on-our-own-pad)).
   - So "argon ready to hook up" in practice means a building where an earlier tenant left a gas pad, a vaporizer and
     piping. That saves the pad and the piping, not the supply contract, which we would sign wherever we went.
-- **No district chilled water or steam** is offered to private buildings in Utah County or the south valley either
+- **No district chilled water or steam** was found for private buildings in Utah County or the south valley either
   ([§2](#2-who-supplies-the-outside-utilities-by-city)).
 - **So what to pay for in a building** is what is slow or costly to add:
   - **power already in**, 2,000-4,000 A at 480 V: a generator, a transformer or switchgear can take 30-65 weeks
@@ -60,13 +60,13 @@ line, with 3 rePowder atomizers, 4 Aconity MIDIs, the EOS M 400-4 and the Meltio
 | **Dust collection** | Sieving, powder handling, depowdering the printers | | **Build**: a listed wet-type collector indoors, or a collector outside the building (IFC chapter 22, [README](README.md#codes-that-decide-the-building)) |
 | **Humidity control, HEPA** | The powder room, as in CB 154 (DAL [#131](https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/131), [#127](https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/127)) | | **Build** |
 | **Gas and oxygen monitoring** | Wherever argon or nitrogen can collect: the powder room, gloveboxes, any pit under the array | | **Build**. CB 154 needed an O₂ detector ([#31](https://github.com/vertical-cloud-lab/byu-vcl/issues/31)) |
-| **Fire protection** | The building, the array, the powder | | **Hook up** to the building's sprinklers and alarm. **Build** the changes for lab rooms, Class D extinguishers, and the array's own nitrogen system: ceiling ESFR heads don't cover a 50 ft array ([README](README.md#codes-that-decide-the-building)) |
+| **Fire protection** | The building, the array, the powder | | **Hook up** to the building's sprinklers and alarm. **Build** the changes for lab rooms, Class D extinguishers, and the array's own nitrogen system, since NFPA 13 limits ceiling-only ESFR heads to 45 ft ceilings ([README](README.md#codes-that-decide-the-building)) |
 
 ## 2. Who supplies the outside utilities, by city
 
 **The same everywhere:**
-- **Natural gas:** Enbridge Gas Utah. Enbridge bought Dominion Energy's Utah gas business (formerly Questar Gas) on
-  1 June 2024 ([KUTV](https://kutv.com/news/eye-on-your-money/dominion-energy-is-now-enbridge-gas-in-utah), snippet).
+- **Natural gas:** Enbridge Gas Utah. Enbridge bought Dominion Energy's Utah gas business (formerly Questar Gas) in
+  2024 ([KUTV](https://kutv.com/news/eye-on-your-money/dominion-energy-is-now-enbridge-gas-in-utah), snippet).
   Not checked city by city.
 - **Culinary water:** the city, in each city below (not checked address by address). Draper has two providers, Draper
   City and WaterPro ([Draper](https://www.draperutah.gov/living-in-draper-city/utilities/water-and-storm-water/), snippet).
@@ -118,8 +118,8 @@ line, with 3 rePowder atomizers, 4 Aconity MIDIs, the EOS M 400-4 and the Meltio
   ([NSMG](https://us.nipponsanso.com/?p=869)). On-site plants are for steel mills and fabs, on contracts of 7-15 years
   ([UIG](https://uigi.com/services-overview/), snippet).
 - **No Utah lab or R&D building advertises house gases, bulk nitrogen or argon.** The lab listings found give size and
-  lab suitability only. 860 W LeVoy Dr in Taylorsville, zoned R&D, offers venting shafts and emergency power, but not
-  gases ([CityFeet](https://www.cityfeet.com/cont/listing/860-w-levoy-dr-taylorsville-ut-84123/cs30624186), snippet).
+  lab suitability only. 860 W LeVoy Dr in Taylorsville, zoned R&D, offers venting shafts and emergency power, and mentions
+  no gases ([CityFeet](https://www.cityfeet.com/cont/listing/860-w-levoy-dr-taylorsville-ut-84123/cs30624186), snippet).
 - **Texas Instruments' LFAB in Lehi:** nothing public on its gas supply, nor on any supply to neighbours.
 - **Where the liquid comes from** is not settled. In 1997 Air Liquide ran an air separation plant at Geneva Works in
   Vineyard that made liquid argon ([Law Insider](https://lawinsider.com/contracts/6svf50nOCrD)); whether it still
@@ -138,7 +138,7 @@ line, with 3 rePowder atomizers, 4 Aconity MIDIs, the EOS M 400-4 and the Meltio
 - **Sizes and when to switch** (all snippet): Airgas microbulk is 230-1,500 L, for more than 20 cylinders a month
   ([Airgas](https://www.airgas.com/solutions/gas-supply-modes/microbulk)). Air Products suggests microbulk above 10
   cylinders a month ([Air Products](https://microsites.airproducts.com/ae/expert/Ask_the_experts/Supply_options.htm)).
-  Bulk tanks run 6,000-60,000 L ([Air Liquide](https://vn.airliquide.com/bulk-supply)). Rocky Mountain Air suggests bulk
+  Bulk tanks run 6,000-60,000 L ([Air Liquide's Vietnam page](https://vn.airliquide.com/bulk-supply)). Rocky Mountain Air suggests bulk
   above about one liquid cylinder a week ([README](README.md#3-renovate-or-build)). At four or five cylinders a day for
   the atomizers alone, ten a day is past all of these.
 - **What we'd provide:** the concrete pad (7 × 7 ft and 12 in thick for a 1,500 L microbulk tank, 10 × 10 ft for
@@ -176,13 +176,13 @@ extra unless stated.
 | Gas piping in the building | not found; needs a contractor's quote | | |
 | PSA nitrogen generator | not found reliably | | |
 | Process chiller | $550-1,700 per ton of cooling, equipment | 16-30 weeks for packaged air-cooled units under 300 tons | [Terrapin, Nov 2026](https://terrapincg.com/news/data-center-chiller-cost-lead-times-2026) |
-| Compressed air: a 50 hp rotary screw with dryer | about $26,000-32,000, equipment | 18-21 weeks (one listing) | [Portland Compressor](https://portlandcompressor.com/store/chicago-pneumatic-50hp-gear-drive-rotary-screw-air-compressor-with-integrated-air-dryer-215cfm-125psi-230-460v-cpcm-50-d) (snippet) |
+| Compressed air: a 50 hp rotary screw with dryer | about $26,000-32,000, equipment | 18-21 weeks (one listing) | [Portland Compressor](https://portlandcompressor.com/store/chicago-pneumatic-50hp-gear-drive-rotary-screw-air-compressor-with-integrated-air-dryer-215cfm-125psi-230-460v-cpcm-50-d), [Ferguson](https://www.fergusonhome.com/quincy-compressor-4152016908/s2095847) (both snippets) |
 | Standby generator, 500 kW | about $180,000-220,000 new; $260,000-435,000 with transfer switch and installation (snippets, weak sources) | 32-48 weeks for 500-1,000 kW; 12-30 weeks for 500 kW from one distributor | [Terrapin](https://terrapincg.com/news/switchgear-transformer-generator-lead-times-2026), [Global Power, May 2026](https://globalpwr.com/blog/generator-lead-times-in-2026) |
 | Dust collector for combustible metal, with explosion protection | $25,000-75,000 at 3,000-8,000 CFM; $75,000-200,000 at 10,000-25,000 CFM; one 8,000-10,000 CFM project cost $376,000 installed | 10-14 weeks | [Industrial Clean Air Products, 2026](https://industrialcleanairproducts.com/combustible-dust-collectors/) (a vendor) |
 | Fume hood, 6 ft | $8,000-57,000 each, plus ducts and make-up air | | [OnePointe, 2020](https://www.onepointesolutions.com/blog/how-much-does-a-fume-hood-cost/) |
 | Oxygen-depletion monitoring | about $1,500 a sensor point in a 3-point system | | [Process Insights](https://www.process-insights.com/products-3/products-industrial/oxygen-analyzers/series-1000-oxygen-deficiency-monitor/) |
 | Pad-mount transformer, 2,500 kVA | from about $80,000 (snippet); often the utility's to supply, so ask it first | 12-26 weeks from stock, 40+ custom; 40-65 weeks for pad-mount units up to 5 MVA | [Giga Energy, 2025](https://www.gigaenergy.com/blog/transformer-lead-times), [Terrapin](https://terrapincg.com/news/switchgear-transformer-generator-lead-times-2026) |
-| 480 V switchboard, 2,000-4,000 A | not found | about 44 weeks on average for switchgear (snippet) | [README](README.md#3-renovate-or-build) |
+| 480 V switchboard, 2,000-4,000 A | not found | switchgear averaged 44 weeks in 2025 | [README](README.md#3-renovate-or-build) |
 
 **The slow items are electrical:** the generator, the transformer and the switchboard (30-65 weeks), then the chiller
 and the compressor (16-30 weeks). A gas tank takes weeks. That is the same conclusion as the README's: a building
