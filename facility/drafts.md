@@ -121,8 +121,9 @@ the following?
 
 ## 5. To the power utility, once there is a candidate address
 
-Lehi and Provo run their own municipal utilities, Lehi City Power and Provo City Power. Most other cities are on
-Rocky Mountain Power. Lehi publishes its impact fees: $232,369 for a 2,000 A service and $464,099 for 4,000 A at
+Lehi, Provo, Springville and Spanish Fork run their own municipal utilities (Lehi City Power, Provo Power, and the
+Springville and Spanish Fork city utilities). The other candidate cities are on Rocky Mountain Power
+([`utilities.md`](utilities.md#2-who-supplies-the-outside-utilities-by-city)). Lehi publishes its impact fees: $232,369 for a 2,000 A service and $464,099 for 4,000 A at
 277/480 V ([FY2026](https://www.lehi-ut.gov/media/lpqhekt5/connection-impact-fees-fy-updated-632026doc.pdf)).
 
 **Subject:** Available capacity and timeline for a larger service at [address]
@@ -165,4 +166,57 @@ You mentioned a contract the Church has used for vertical lift modules in its di
 like to talk to someone who runs those VLMs: how tall the units are, what the buildings needed (clear height, floor,
 fire protection), and whether a visit could be arranged. Could you put us in touch?
 
+[signature]
+
+---
+
+## 8. To the sewer district, about a lab's wastewater, once there is a candidate address
+
+Which district depends on the city: TSSD (Lehi, American Fork, Saratoga Springs), Orem (Orem and Lindon), Provo,
+Springville, Spanish Fork, or JBID (Bluffdale, Herriman, Draper). Their pretreatment pages are listed in
+[`utilities.md`](utilities.md#6-who-to-ask). TSSD asks for new buildings and remodels to meet its pretreatment program
+"on paper, before the buildings are built or remodeled", so this comes before the fit-out design is final.
+
+**Subject:** Pretreatment requirements for a research lab at [address]
+
+Hello,
+
+We're at an early planning stage, asking whether [address] could house a materials research lab. Nothing is committed
+yet. The lab's wastewater would be:
+
+- hand-washing and lab sinks;
+- rinse water from metallographic polishing, carrying abrasive and fine metal particles, which we would settle or
+  filter first;
+- occasional floor and equipment cleaning water.
+
+Metal powders and solvents (isopropyl alcohol) would be collected and shipped as hazardous waste, not drained.
+
+Could you tell us whether this needs a wastewater survey or a discharge permit, at what stage (before the
+tenant-improvement permit?), what pretreatment you would expect (a sampling port, a settling tank), and whether an
+earlier tenant at the address held a permit?
+
+[signature]
+
+---
+
+## 9. To a broker or EDCUtah: buildings with process utilities already in
+
+**Subject:** Industrial or flex buildings with process utilities already installed
+
+Hello [name],
+
+[Following up on our earlier note,] we're looking for buildings of roughly 20,000-40,000 ft² in Utah County or the
+south Salt Lake valley where an earlier tenant left process utilities in place. Any of these would help:
+
+- a bulk gas pad or tank (nitrogen, argon, oxygen or CO₂) and gas piping;
+- compressed-air lines, process chilled water or a cooling tower;
+- lab exhaust fans and make-up air units, or a roof rated to carry them;
+- a standby generator;
+- 2,000-4,000 A of 480 V service.
+
+Likely earlier tenants would be metal fabrication or laser-cutting shops, food or beverage plants, medical-device
+makers, electronics plants and labs. This is a planning inquiry for a lab like the one in [warehouse video link], not a
+request for a tour yet.
+
+Thank you,
 [signature]

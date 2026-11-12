@@ -49,7 +49,10 @@ code; the support rooms are one illustrative way to use the rest of the floor.
   - **Lease and fit out:** about $124-440/ft² of fit-out on top of $10-14/ft²/yr rent, ready in 6-20 months.
   - **Build new:** about $370-854/ft², 2-3 years.
   - **Electrical gear drives the schedule** (40-80 weeks for switchgear and transformers). So power already in the
-    building is worth a lot, and Lehi and Provo run their own power utilities.
+    building is worth a lot, and Lehi, Provo, Springville and Spanish Fork run their own power utilities.
+- **Utilities ([`utilities.md`](utilities.md)):** only power, natural gas, water, sewer and telecom come from outside.
+  We'd build argon, nitrogen, chilled water, compressed air, exhaust and standby power ourselves. No R&D zone here has
+  argon on tap: it comes as liquid by truck, into a tank the supplier rents us on our own pad.
 - **Radical AI's new lab is 45,000 ft², not 40,000:** Building 20 at the Brooklyn Navy Yard, moved into around
   September 2026, per its CEO. Most peers are 17,000-40,000 ft² (Periodic Labs 37,808, Freeform 35,000, Chemify 21,500 and
   40,000+, CMU 17,500, Mattiq 17,377). A few are over 100,000 ft² (Emerald Cloud Lab, Recursion).
@@ -106,7 +109,8 @@ Height, not floor area, is what rules buildings out.
 
 Height and floor area are above. Specific rows of [PR #331's site and utilities table](https://github.com/vertical-cloud-lab/byu-vcl/blob/685216e/vertical-lab/procurement/lab_answers.md#site-and-utilities)
 are cited as "#331", and the CB 154 fit-out ([#31](https://github.com/vertical-cloud-lab/byu-vcl/issues/31)) as "CB 154".
-Everything else is from the sources linked.
+Everything else is from the sources linked. Which of these we could hook into, and which we'd build, is in
+[`utilities.md`](utilities.md).
 
 | Need | What a facility like this needs | Why, and where the number comes from |
 |---|---|---|
@@ -372,7 +376,8 @@ estimates for a mix of lab and high-bay space that isn't defined yet, so the ran
   construction costs rose 7.9 % in the year to Q2 2026, against 5.6 % nationally
   ([Mortenson](https://www.mortenson.com/cost-index/salt-lake-city)).
 - **Power and lead times.**
-  - **Utilities:** Lehi and Provo run their own municipal power utilities. Lehi's impact fees are in its
+  - **Utilities:** Lehi, Provo, Springville and Spanish Fork run their own municipal power utilities
+    ([`utilities.md`](utilities.md#2-who-supplies-the-outside-utilities-by-city)). Lehi's impact fees are in its
     [FY2026 fee table](https://www.lehi-ut.gov/media/lpqhekt5/connection-impact-fees-fy-updated-632026doc.pdf).
     Elsewhere, Rocky Mountain Power's [Rule 12](https://www.rockymountainpower.net/content/dam/pcorp/documents/en/rockymountainpower/rates-regulation/utah/rules/12_Line_Extensions.pdf)
     has the customer pay up front for line extensions beyond 16 months of estimated bills.
@@ -463,8 +468,9 @@ checked against a flyer; Crexi hides the rest behind a sign-in, which wasn't use
 | Outsource Equipment (the Modula dealer in #53) | the Church's VLM contract and its distribution warehouses | the #53 thread; Sterling asked for a contact on 2026-03-31 | 7 |
 | **Lehi City**: Planning & Zoning, Building & Safety, the fire marshal | which zone and use a metals lab is; Group H rooms; pre-submittal meeting | [lehi-ut.gov](https://www.lehi-ut.gov/departments/planning-zoning/) | 3 |
 | EDCUtah | site lists for a 20,000-40,000 ft² lab | [edcutah.org](https://edcutah.org/) | 4 |
-| Lehi City Power, Provo City Power, Rocky Mountain Power | service capacity and timeline at a given address | their websites; Lehi's fees are in the [FY2026 table](https://www.lehi-ut.gov/media/lpqhekt5/connection-impact-fees-fy-updated-632026doc.pdf) | 5 |
+| Lehi City Power, Provo City Power, Springville and Spanish Fork city power, Rocky Mountain Power | service capacity and timeline at a given address | their websites; Lehi's fees are in the [FY2026 table](https://www.lehi-ut.gov/media/lpqhekt5/connection-impact-fees-fy-updated-632026doc.pdf) | 5 |
 | Gas suppliers: Humphries, Rocky Mountain Air, DJB Gas Services, Linde, Air Liquide, Airgas | microbulk or bulk argon and nitrogen | their websites | 6 |
+| Sewer districts (TSSD, Orem, Provo, Springville, Spanish Fork, JBID) | whether a lab's wastewater needs a survey or permit | linked in [`utilities.md`](utilities.md#6-who-to-ask) | 8 |
 | Texas Instruments LFAB, Lehi | a tour of a site that already runs process gases and hazardous materials | in progress: Gage asked BYU's recruiting office ([#319](https://github.com/vertical-cloud-lab/byu-vcl/issues/319)) | none |
 
 ## Open questions and next steps
