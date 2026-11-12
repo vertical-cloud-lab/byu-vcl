@@ -111,7 +111,7 @@ the following?
 
 - 20,000-40,000 ft², industrial or R&D zoning that allows hazardous materials;
 - 32-40 ft clear, or room to add a high bay of about 55 ft;
-- a heavy slab, three-phase power with room to grow (we expect 1,000 A or more at 480 V), dock doors;
+- a heavy slab, three-phase power with room to grow (we expect 2,000-3,000 A at 480 V), dock doors;
 - outdoor space for bulk argon and nitrogen tanks;
 - ideally, an existing building that already ran process gases or hazardous materials.
 
@@ -131,7 +131,7 @@ Hello,
 
 We're evaluating [address] for a research lab. Before we go further, could you tell us what service the site has
 now, how much capacity the local feeder has, and the usual timeline and process for upgrading to roughly
-[1,000-3,000] A at 480Y/277 V? Transformer lead times would help us plan.
+[2,000-3,000] A at 480Y/277 V? Transformer lead times would help us plan.
 
 [signature]
 
@@ -143,7 +143,8 @@ now, how much capacity the local feeder has, and the usual timeline and process 
 
 Hello,
 
-We're planning a lab that would run up to three gas atomizers and four laser powder-bed printers, with gloveboxes and
+We're planning a lab that would run up to three ultrasonic atomizers (AMAZEMET rePowder, about 10 L/min of argon
+each while running) and four laser powder-bed printers, with gloveboxes and
 furnaces. Could you help us estimate when microbulk or a bulk tank makes sense for argon (and for nitrogen, against an
 on-site generator), what pad, setbacks and access a tank needs, the lead time to install, and typical rental terms?
 

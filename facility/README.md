@@ -28,7 +28,8 @@ code; the support rooms are one illustrative way to use the rest of the floor.
 *If we were to build a facility like this:*
 
 - **Height is the hard part, not area.**
-  - **The 50 ft array** needs about **51 ft clear**, but nothing available near BYU is over **36 ft**.
+  - **The 50 ft array** needs about **51-53 ft clear** (depending on the sprinklers), but nothing available near BYU
+    is over **36 ft**.
   - **Three ways round it:** an 11 ft (3.4 m) pit in a 40 ft clear building, a high bay in a purpose-built building, or
     more, shorter units (13 units at 10.5 m under 36 ft, or 15 at 9.2 m under 32 ft) for the same 352 trays.
   - **Area is easy:** the #318 floor fits in about 3,500 ft² and the array in under 1,000 ft². 20,000 ft² is enough
@@ -61,8 +62,9 @@ Height, not floor area, is what rules buildings out.
 
 - **The 50 ft array** in [`scale.py`](https://github.com/vertical-cloud-lab/byu-vcl/blob/03801d8/vertical-lab/scale.py)
   is eight Kardex Shuttle XP 500s at 15.15 m (49.7 ft), the tallest height under 50 ft in Kardex's 100 mm steps. With
-  NFPA 13's 18 in between sprinkler deflectors and the top of storage, that is **51.2 ft of clear height**, before
-  whatever Kardex itself asks for over a unit. That figure is a question for Kardex (draft 2).
+  NFPA 13's 18 in between sprinkler deflectors and the top of storage, that is **51.2 ft of clear height**. ESFR
+  sprinklers need 36 in, making it 52.7 ft. Whatever Kardex itself asks for over a unit comes on top; that is a
+  question for Kardex (draft 2).
 - **The lab floor's two Shuttles** are 3.95 m (under 13 ft), and PR #331's site table asks for at least 4.0 m. Any
   warehouse clears that.
 - **Three ways to fit the array in a 40 ft building** (the section in the figure):
@@ -108,30 +110,109 @@ Everything else is from the sources linked.
 
 | Need | What a facility like this needs | Why, and where the number comes from |
 |---|---|---|
-| **Slab and floor loading** | A heavy, flat slab; new tilt-ups here list 6-7 in, reinforced (310 N Geneva Rd, Axia, Center Street). A thickened slab or a pit under the array, sized by a structural engineer | The heaviest items are a loaded Shuttle and the wire EDM (#331). The FANUC ROBOCUT α-C400iC is about 2,200 kg. The EOS M 400-4 is about 4,835-4,900 kg on 4.2 × 1.6 m (about 720 kg/m² averaged, more under its feet). The Meltio cell is about 4,000 kg. A 15 m Shuttle with 44 instrument trays is far heavier than the 3.95 m unit; ask Kardex for the figure (draft 2) |
-| **Electrical service** | **About 1,200-2,000 A at 480Y/277 V** for ten a day (our estimate: roughly 0.8-1.5 MW connected), plus step-down transformers to 400 V for the European machines and 208Y/120 V panels | The VLMs are 208 V three-phase (#53; a used XP 500 lists 8.6 kVA). The rePowder takes 400 V three-phase and 230 V on 32 A plugs, and its optimizer draws up to about 60 A ([install call](../rePowder-BYU-Installation-Details.txt)). The wire EDM is 13 kVA. The EOS M 400-4 is 3 × 50 A, 45 kW peak and 22 kW typical. The Meltio cell is 400 V, 20 kW peak. Trays are up to 3.5 kW each (PR #318 `out/cabling.json`). Ten a day means 3 rePowders and 4 MIDIs (PR #332). **A building that already has 2,000-4,000 A at 480 V avoids 40-80 weeks of switchgear and transformer lead time.** In Lehi the city's impact fee is $232k for 2,000 A and $464k for 4,000 A ([§3](#3-renovate-or-build)) |
-| **Argon** | Microbulk or a bulk liquid tank outside, with a vaporizer and piping. 5N (99.999 %) at up to 8 bar for the atomizers | The rePowder needs 5N argon at up to 8 bar (install call). Three atomizers, four MIDIs, the EOS and the Meltio cell's three 50 L bottles are past cylinders; PR #332 flags bulk argon as not modelled. Bulk is worth it above about one liquid cylinder a week (Rocky Mountain Air). Local suppliers are in the sites section |
+| **Slab and floor loading** | A heavy, flat slab; new tilt-ups here list 6-7 in, reinforced (310 N Geneva Rd, Axia, Center Street). A thickened slab or a pit under the array, sized by a structural engineer | The heaviest items are a loaded Shuttle and the wire EDM (#331). Kardex gives a maximum load of 67 t per Shuttle 500, and our estimate is about 86-94 kN/m² under each loaded 15 m unit. The FANUC ROBOCUT α-C400iC is about 2,200-2,400 kg and wants at least 400 mm of concrete. The EOS M 400-4 is about 4,835-4,900 kg on 4.2 × 1.6 m (about 720 kg/m² averaged, more under its feet). The Meltio cell is about 4,000 kg. A 15 m Shuttle with 44 instrument trays is far heavier than the 3.95 m unit; ask Kardex for the figure (draft 2) |
+| **Electrical service** | **About 2,000-3,000 A at 480Y/277 V** for ten a day (an estimate: roughly 0.8-1.5 MW of process load, plus lab HVAC and exhaust, likely the largest load), plus step-down transformers to 400 V for the European machines and 208Y/120 V panels | The VLMs are 208 V three-phase (#53; a used XP 500 lists 8.6 kVA). The rePowder takes 400 V three-phase and 230 V on 32 A plugs, and its optimizer draws up to about 60 A ([install call](../rePowder-BYU-Installation-Details.txt)). The wire EDM is 13 kVA. The EOS M 400-4 is 3 × 50 A, 45 kW peak and 22 kW typical. The Meltio cell is 400 V, 20 kW peak. Trays are up to 3.5 kW each (PR #318 `out/cabling.json`). Ten a day means 3 rePowders and 4 MIDIs (PR #332). **A building that already has 2,000-4,000 A at 480 V avoids 40-80 weeks of switchgear and transformer lead time.** In Lehi the city's impact fee is $232k for 2,000 A and $464k for 4,000 A ([§3](#3-renovate-or-build)) |
+| **Argon** | Microbulk or a bulk liquid tank outside, with a vaporizer and piping. 5N (99.999 %) at up to 8 bar for the atomizers | The rePowder, an ultrasonic atomizer using about 10 L/min of noble gas ([AMAZEMET](https://amazemet.com/repowder/)), needs 5N argon at up to 8 bar (install call). Three atomizers, four MIDIs, the EOS and the Meltio cell's three 50 L bottles are past cylinders; PR #332 flags bulk argon as not modelled. Bulk is worth it above about one liquid cylinder a week (Rocky Mountain Air). Local suppliers are in the sites section |
 | **Nitrogen** | An N₂ generator fed by house air (#331), or bulk | Piped to every tray's coupling (PR #318 `notes/services.md`) |
-| **Oxygen-depletion monitoring** | O₂ monitors wherever argon or nitrogen can collect: the powder room, near the gloveboxes, any pit | CB 154 needed an O₂ detector (#31). A pit under the array would be a confined low point for argon |
+| **Oxygen-depletion monitoring** | O₂ monitors wherever argon or nitrogen can collect: the powder room, near the gloveboxes, any pit | IFC §5307.2.1 accepts an oxygen-depletion alarm in place of ventilation. CB 154 needed an O₂ detector (#31). A pit under the array would be a low point for argon, and nitrogen fire protection in the units adds to the hazard |
 | **Chilled water** | A central loop, or one chiller per cluster | The rePowder's heat exchanger and the EOS need it; the trays need it through their couplings. #331 sizes a Thermo ThermoFlex 900-class chiller beside each VLM |
 | **Compressed air** | Dry house air at 7 bar or more | The EOS takes 7 bar, 20 m³/h. The rePowder's optimizer takes 6 mm push-fit. The N₂ generator needs 60-125 psig (`out/cabling.json`) |
 | **Exhaust and ventilation** | Ducted exhaust for fume hoods and a downdraft sieving enclosure, local exhaust at the atomizers and printers, matching make-up air, dehumidification and HEPA | About 700-4,200 m³/h of ventilation per VLM, for about 7 kW of heat with everything on (#331). On campus, exhaust was the bottleneck: one building had run out ([#29](https://github.com/vertical-cloud-lab/byu-vcl/issues/29)). CB 154 also took a dehumidifier and HEPA filtration (DAL [#131](https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/131), [#127](https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/127)). Warehouse roofs often can't carry heavy rooftop units ([BD+C](https://bdcnetwork.com/3-key-considerations-when-converting-warehouse-laboratory?page=12)) |
 | **Combustible metal powders** | A powder room built to NFPA 484 (now part of NFPA 660), separated from the rest of the floor, with Class D extinguishers, housekeeping and a dust hazard analysis. If quantities exceed the code's limits, it becomes a hazardous (Group H) occupancy | Reactive aluminium fines, IPA and fine metal powders are on site (#331). PR #331's `build_our_own_vlm.md` lists NFPA 484 alongside ANSI MH24.2, EN 15095, NFPA 79 and NFPA 13. Class D extinguishers: DAL [#126](https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/126). Details: [Codes](#codes-that-decide-the-building) |
 | **Code edition** | The 2024 IBC and IFC with Utah amendments, effective 2026-07-01 | [Utah Code §15A-5-103](https://le.utah.gov/xcode/Title15A/Chapter5/C15A-5-S103_2026050620260701.html) (fire); §15A-2-103 (building) |
-| **Seismic** | Wasatch Front: anchoring and bracing for tall units, racks and gas tanks | #331 lists it [to confirm]; see [Codes](#codes-that-decide-the-building) |
+| **Seismic** | Seismic Design Category D (Lehi SDS 0.95, SD1 0.70): anchoring and bracing for the tall units, racks and gas tanks | USGS ASCE 7-22 service; see [Codes](#codes-that-decide-the-building) |
 | **Delivery access** | Dock-high doors for freight; a **grade-level door of at least 14 × 16 ft** for the big machines; a forklift of 5 t or more, or riggers | The EOS is about 4.8-4.9 t and 2.36-2.63 m tall; the Meltio cell is 4,050 × 2,350 × 3,000 mm. Holbrook Bldg 5 and Mountain Point Bldg 3 list 14 × 16 ft grade-level doors; Millplace's are 14 × 14 ft |
 | **Network** | Fibre, wired Ethernet to every tray, remote access | `out/cabling.json`: PoE+ to the cameras, Ethernet through each coupling |
 | **Zoning and height** | A zone that permits R&D or labs and allows manufacturing at least as a conditional use, with a height limit that fits a high bay | See [Zoning](#zoning-what-lehi-allows). Lehi's LI zone permits R&D and caps height at 60 ft |
 
 ### Codes that decide the building
 
-**Pending research.** What is settled so far:
+In force in Utah from 2026-07-01: the **2024 IBC and IFC with state amendments, and the 2023 NEC**
+([§15A-2-103](https://le.utah.gov/xcode/Title15A/Chapter2/C15A-2-S103_2026050620260701.html),
+[§15A-5-103](https://le.utah.gov/xcode/Title15A/Chapter5/C15A-5-S103_2026050620260701.html)). Quantities and code
+sections below are as read on 2026-11-12. A fire-protection engineer and the local fire marshal would settle them for
+a real building.
 
-- **Utah enforces the 2024 IBC and IFC** with state amendments, from 2026-07-01
-  ([§15A-5-103](https://le.utah.gov/xcode/Title15A/Chapter5/C15A-5-S103_2026050620260701.html)).
-- **The standards a tall VLM installation answers to** are listed in PR #331's
-  [`build_our_own_vlm.md`](https://github.com/vertical-cloud-lab/byu-vcl/blob/685216e/vertical-lab/procurement/build_our_own_vlm.md):
-  ANSI MH24.2, EN 15095, ISO 13849, NFPA 79 / UL 508A, NFPA 13 and 484, IBC / ASCE 7 seismic, and ASHRAE for the room.
+- **Sprinklers set the array's height.**
+  - **Clearance under sprinklers:** NFPA 13 (2019) wants 18 in between sprinkler deflectors and the top of storage,
+    and 36 in for ESFR sprinklers (§9.5.6.1, §14.2.12). So the 15.15 m array needs **51.2-52.7 ft to the
+    deflectors**, about 52-54 ft to the roof structure, or a **3.4-3.9 m pit** under 40 ft clear (3.4 m is the
+    figure's 18 in case).
+  - **Ceiling-only ESFR** sprinklers are limited to 45 ft ceilings in NFPA 13. UL listings go to 48 ft, and FM
+    Global's Data Sheet 8-9 to 55 ft with K28 heads ([RiskLogic](https://risklogic.com/ceiling-only-sprinkler-designs-for-warehouses-with-ceiling-heights-over-45-ft)).
+- **So the array would probably carry its own fire protection.**
+  - **Kardex** lists fire protection (water or gas) and explosion protection as Shuttle options
+    ([brochure](https://www.supplycore.com/wp-content/uploads/2022/01/Shuttle-XP-Vertical-Lift-Module-1108-1.pdf)).
+  - **Its ENGEL installation**, a 14.95 m Shuttle 700, uses nitrogen nozzles with air-sampling detection and no
+    sprinklers ([case study](https://blog.kardex-remstar.com/case-studies/engel)). Fike sells IG-100 nitrogen systems
+    for VLMs with Kardex ([Fike](https://www.fike.com/knowledge-center/the-future-of-fire-protection-for-vertical-lift-modules/)).
+  - **Nitrogen suits trays of aluminium powder better than water does,** and it adds an oxygen-depletion hazard at
+    the array.
+  - **Automated storage rules:** IFC §3209 asks for a manual emergency shutdown, and automatic shutdown on sprinkler
+    flow or fire detection ([UpCodes](https://up.codes/viewer/utah/ifc-2024/chapter/32/high-piled-combustible-storage)).
+- **What Kardex publishes, and what it doesn't** ([Kardex](https://kardex.com/en/products/shuttle-vertical-lift-modules)):
+  - Shuttle 250/500 units go up to 30,050 mm tall.
+  - An optional "seismic absorption structure" lets units stand side by side.
+  - The 2014 brochure gives a "Maximum load 67/120 t" per unit.
+  - A Shuttle 500 draws at most 8.6 kVA (14.2 A at 480 V) ([Kardex](https://info.kardex-remstar.com/knowledge/vlm-and-vcm-power-requirements)).
+  - **Not published:** self-weight, floor load, slab, levelness and the clearance over a unit. Draft 2 asks for them.
+  - **Our estimate:** a loaded 15 m unit puts about 86-94 kN/m² (1,800-2,000 psf) on its footprint, against
+    250 psf for heavy-storage floors. That calls for a mat or a thickened slab under the array.
+- **Metal powders: NFPA 484 is now NFPA 660, but Utah enforces 484.**
+  - **NFPA 660 (2025 edition, effective 2024-12-06)** replaced NFPA 61, 484, 652, 654, 655 and 664. Its Chapter 22
+    covers combustible metals, and §22.15 covers additive manufacturing
+    ([Processing](https://www.processingmagazine.com/maintenance-safety/standards-regulations/article/55264719/nfpa-660-what-processors-need-to-know-about-nfpas-new-consolidated-combustible-dust-standard)).
+  - **Utah's 2024 IFC Table 2205.1 still names NFPA 484,** so that is what's enforced.
+  - **IFC Chapter 22 requires**
+    ([UpCodes](https://up.codes/viewer/utah/ifc-2024/chapter/22/combustible-dust-producing-operations)):
+    - a permit;
+    - housekeeping to at most 1/32 in of dust, and no compressed-air cleaning;
+    - dust collectors outside the building, unless listed wet-type;
+    - NFPA 70 area classification, bonding and grounding;
+    - a dust hazard analysis for a new facility.
+  - **Class D extinguishers** per NFPA 10 (IFC §906.3.4).
+- **Group H, or not.**
+  - **Combustible dust is Group H-2 only where a technical report under IBC §414.1.3 shows a hazard.** It has no
+    quantity limit; otherwise the space is F-1 or S-1
+    ([ICC](https://www.iccsafe.org/building-safety-journal/bsj-technical/code-corner-2024-international-building-code-table-307-1-1-combustible-dusts/)).
+  - **Maximum allowable quantities per control area**
+    ([IFC Table 5003.1.1(1)](https://up.codes/viewer/utah/ifc-2024/chapter/50/hazardous-materials-general-provisions)):
+    - flammable solids: 125 lb stored or in closed use, 25 lb in open use;
+    - water-reactive Class 2: 50 lb; Class 3: 5 lb;
+    - IPA: 120 gal.
+  - **Each limit doubles** in a sprinklered building, and doubles again in approved cabinets. A ground floor can
+    have four control areas behind 1-hour fire barriers.
+  - **Which class our aluminium powders fall in** depends on their SDS and testing.
+  - **Above the limits, the room becomes H-2 or H-3**
+    ([IBC 2024 summary](https://bsd.dli.mt.gov/_docs/Training/2024-IBC-Hazardous-Materials-for-Building-Officials-BC-edits.pdf)):
+    - at least 25 % of its perimeter on an exterior wall;
+    - H-2 rooms over 1,000 ft² at least 30 ft from lot lines;
+    - rated separation;
+    - explosion control;
+    - standby power for the ventilation;
+    - waterproof rooms for water-reactive materials;
+    - in an unlimited-area building, no more than 10 % of the floor, on the perimeter.
+  - **This is why the figure puts the powder room on an outside wall.**
+- **Argon and nitrogen have no quantity limit.** Indoors they need ventilation, or gas detection, or, where approved,
+  an oxygen-depletion alarm (IFC §5307.2-5307.2.1,
+  [UpCodes](https://up.codes/viewer/utah/ifc-2024/chapter/53/compressed-gases)). Cylinders must be secured against
+  earthquakes (§5303.5.3).
+  - **Outdoor cryogenic tanks** need 1 ft from buildings, 5 ft from lot lines, 10 ft from air intakes and exits, and
+    15 ft from combustibles (IFC Table 5504.3.1.1; NFPA 55; CGA P-18).
+  - **A microbulk tank** replaces 25-50 high-pressure cylinders ([Airgas](https://www.airgas.com/microbulk)).
+- **Seismic: Design Category D.** USGS's ASCE 7-22 service, queried 2026-11-12 for Site Class D, gives
+  ([query](https://earthquake.usgs.gov/ws/building-codes/asce7-22/calculate?latitude=40.3916&longitude=-111.8508&riskCategory=II&siteClass=D&title=screen)):
+  - **Lehi:** SDS 0.95, SD1 0.70.
+  - **Provo:** SDS 1.00, SD1 0.78.
+  - **Wasatch Front:** USGS gives a 43 % chance of an M6.75+ earthquake in the region in 50 years
+    ([Fact Sheet 2016-3019](https://pubs.usgs.gov/fs/2016/3019/fs20163019.pdf)).
+  - **For the tall units:** they need anchorage and overturning design for the site. Decide whether they stand free
+    of the building or are braced to it. A pit or a roof penetration must allow for the movement between them.
+- **Machine foundations.**
+  - **FANUC α-C400iC wire EDM:** about 2.4 t without dielectric. FANUC recommends at least 400 mm of concrete and
+    floor vibration of 2 µm or less at 10-20 Hz
+    ([catalogue](https://www.fanuc.co.jp/en/product/catalog/pdf/robocut/RCUT-CiC(E)-07.pdf)).
+  - **EOS M 400-4:** about 4.9 t ([EOS](https://www.eos.info/metal-solutions/metal-printers/eos-m-400-4)).
 
 ## 2. Candidate sites
 

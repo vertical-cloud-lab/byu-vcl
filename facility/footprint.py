@@ -184,7 +184,7 @@ def plan(ax, tab: dict) -> None:
             fontsize=7.0, color=INK2, linespacing=1.25)
     # support rooms (west half)
     sup = [("mechanical,\nelectrical:\nswitchgear,\nchiller, air,\nN$_2$ gen., UPS", 0, 106, 34, 54),
-           ("powder room\nNFPA 484; a candidate\nH-2/H-3 control area,\nrated walls", 72, 53, 41, 43),
+           ("powder room:\nNFPA 484, maybe\nan H-2/H-3 room;\noutside wall", 0, 53, 41, 43),
            ("offices, control room,\nvisitor gallery", 0, 0, 45, 44),
            ("workshop", 45, 0, 30, 44),
            ("receiving and\nstaging", 75, 0, 50, 44)]
@@ -217,7 +217,7 @@ def plan(ax, tab: dict) -> None:
             color=INK, zorder=8, linespacing=1.15)
     # the array (scale.py), plan
     aw, ad = f(N_UNITS / 2 * PITCH_X), f(ARRAY_D)
-    axx, ayy = 20.0, 62.0
+    axx, ayy = 74.0, 62.0
     box(ax, axx - 4, ayy - 4, aw + 8, ad + 8, "none", ORANGE, 0.7, (0, (4, 2)), z=2)
     for row in (0, 1):
         for i in range(4):
