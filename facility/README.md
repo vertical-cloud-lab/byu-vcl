@@ -6,7 +6,7 @@
 This is a first pass for [#343](https://github.com/vertical-cloud-lab/byu-vcl/issues/343), from Sterling and Gage's
 conversation on 2026-11-12 ([transcript excerpt](../docs/meetings/2026-11-12-facility-locations/transcript.md),
 [what the repos already said](../docs/meetings/2026-11-12-facility-locations/context.md)). Gage will add sites,
-contacts and numbers on the issue as he finds them.
+contacts and numbers on the issue.
 
 **Nobody has been contacted.** The [contacts](#contacts) are public listings, and the emails in
 [`drafts.md`](drafts.md) are drafts for Sterling and Gage. Everything below was read on 2026-11-12 from public pages.
@@ -29,15 +29,16 @@ code; the support rooms are one illustrative way to use the rest of the floor.
 
 - **Height is the hard part, not area.**
   - **The 50 ft array** needs about **51 ft clear**, but nothing available near BYU is over **36 ft**.
-  - **Three ways round it:** an 11 ft (3.4 m) pit under a 40 ft roof, a high bay in a purpose-built building, or
+  - **Three ways round it:** an 11 ft (3.4 m) pit in a 40 ft clear building, a high bay in a purpose-built building, or
     more, shorter units (13 units at 10.5 m under 36 ft, or 15 at 9.2 m under 32 ft) for the same 352 trays.
   - **Area is easy:** the #318 floor fits in about 3,500 ft² and the array in under 1,000 ft². 20,000 ft² is enough
     to start, and 40,000 ft² leaves room for ten alloys a day.
 - **Candidate sites, Lehi first:**
   - **Holbrook Industrial Park Bldg 5, Lehi:** 32 ft clear, 4,000 A at 480 V, divisible to about 46,000 ft²,
     zoned PC-FLEX, where labs and R&D are permitted.
-  - **Leases with 32-36 ft clear and 2,000-4,000 A** in American Fork, Lindon, Springville, Spanish Fork, Bluffdale
-    and Herriman.
+  - **Leases with 32-36 ft clear** in American Fork, Lindon, Springville, Spanish Fork, Bluffdale and Herriman.
+    Four have 2,000-4,000 A at 480 V already: Center Street Industrial, Global Logistics HQ, Mountain Point Bldg 3
+    and Axia.
   - **To own:** a 47,733 ft² **flex/lab building for sale in American Fork** ($8.78M), and 1657 N State St in Lehi
     ($7.1M).
   - **For a purpose-built high bay later:** Eagle Mountain industrial land next to a 200 MW substation.
@@ -49,8 +50,8 @@ code; the support rooms are one illustrative way to use the rest of the floor.
   - **Electrical gear drives the schedule** (40-80 weeks for switchgear and transformers). So power already in the
     building is worth a lot, and Lehi and Provo run their own power utilities.
 - **Radical AI's new lab is 45,000 ft², not 40,000:** Building 20 at the Brooklyn Navy Yard, moved into around
-  September 2026, per its CEO. Peers range from 17,000 to 38,000 ft² (Periodic Labs, Freeform, Chemify, CMU, Mattiq)
-  up to 100,000+ ft² (Emerald Cloud Lab, Recursion).
+  September 2026, per its CEO. Most peers are 17,000-40,000 ft² (Periodic Labs 37,808, Freeform 35,000, Chemify 21,500 and
+  40,000+, CMU 17,500, Mattiq 17,377). A few are over 100,000 ft² (Emerald Cloud Lab, Recursion).
 
 ## 1. What the facility needs
 
@@ -82,8 +83,8 @@ Height, not floor area, is what rules buildings out.
     | 51.2 ft (the array as drawn) | 15.15 m | 44 | 8 | 11.9 × 7.5 m, 956 ft² |
 
     Floor area is cheap next to height, so **in a 36-40 ft building, 11-13 shorter units match the tall array's
-    capacity** at the cost of more units, more extractors and a longer rail. Each unit is another machine to buy and
-    maintain, which the price per unit (#53) would decide.
+    capacity**. The cost is 3-5 more units, each with its own extractor to maintain, and a longer rail. Whether that
+    beats a pit or a high bay depends on the price per unit (#53 quoted $97k-118k for one 3.95 m unit) and on upkeep.
 
 ### Floor area
 
@@ -115,7 +116,7 @@ Everything else is from the sources linked.
 | **Chilled water** | A central loop, or one chiller per cluster | The rePowder's heat exchanger and the EOS need it; the trays need it through their couplings. #331 sizes a Thermo ThermoFlex 900-class chiller beside each VLM |
 | **Compressed air** | Dry house air at 7 bar or more | The EOS takes 7 bar, 20 m³/h. The rePowder's optimizer takes 6 mm push-fit. The N₂ generator needs 60-125 psig (`out/cabling.json`) |
 | **Exhaust and ventilation** | Ducted exhaust for fume hoods and a downdraft sieving enclosure, local exhaust at the atomizers and printers, matching make-up air, dehumidification and HEPA | About 700-4,200 m³/h of ventilation per VLM, for about 7 kW of heat with everything on (#331). On campus, exhaust was the bottleneck: one building had run out ([#29](https://github.com/vertical-cloud-lab/byu-vcl/issues/29)). CB 154 also took a dehumidifier and HEPA filtration (DAL [#131](https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/131), [#127](https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/127)). Warehouse roofs often can't carry heavy rooftop units ([BD+C](https://bdcnetwork.com/3-key-considerations-when-converting-warehouse-laboratory?page=12)) |
-| **Combustible metal powders** | A powder room built to NFPA 484 (now part of NFPA 660), separated from the rest of the floor, with Class D extinguishers, housekeeping and a dust hazard analysis. If quantities exceed the code's limits, it becomes a hazardous (Group H) occupancy | Reactive aluminium fines, IPA and fine metal powders are on site (#331). PR #318's `build_our_own_vlm.md` lists NFPA 484 alongside ANSI MH24.2, EN 15095, NFPA 79 and NFPA 13. Class D extinguishers: DAL [#126](https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/126). Details: [Codes](#codes-that-decide-the-building) |
+| **Combustible metal powders** | A powder room built to NFPA 484 (now part of NFPA 660), separated from the rest of the floor, with Class D extinguishers, housekeeping and a dust hazard analysis. If quantities exceed the code's limits, it becomes a hazardous (Group H) occupancy | Reactive aluminium fines, IPA and fine metal powders are on site (#331). PR #331's `build_our_own_vlm.md` lists NFPA 484 alongside ANSI MH24.2, EN 15095, NFPA 79 and NFPA 13. Class D extinguishers: DAL [#126](https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/126). Details: [Codes](#codes-that-decide-the-building) |
 | **Code edition** | The 2024 IBC and IFC with Utah amendments, effective 2026-07-01 | [Utah Code §15A-5-103](https://le.utah.gov/xcode/Title15A/Chapter5/C15A-5-S103_2026050620260701.html) (fire); §15A-2-103 (building) |
 | **Seismic** | Wasatch Front: anchoring and bracing for tall units, racks and gas tanks | #331 lists it [to confirm]; see [Codes](#codes-that-decide-the-building) |
 | **Delivery access** | Dock-high doors for freight; a **grade-level door of at least 14 × 16 ft** for the big machines; a forklift of 5 t or more, or riggers | The EOS is about 4.8-4.9 t and 2.36-2.63 m tall; the Meltio cell is 4,050 × 2,350 × 3,000 mm. Most listings above have 14 × 16 ft grade-level doors |
@@ -128,7 +129,7 @@ Everything else is from the sources linked.
 
 - **Utah enforces the 2024 IBC and IFC** with state amendments, from 2026-07-01
   ([§15A-5-103](https://le.utah.gov/xcode/Title15A/Chapter5/C15A-5-S103_2026050620260701.html)).
-- **The standards a tall VLM installation answers to** are listed in PR #318's
+- **The standards a tall VLM installation answers to** are listed in PR #331's
   [`build_our_own_vlm.md`](https://github.com/vertical-cloud-lab/byu-vcl/blob/685216e/vertical-lab/procurement/build_our_own_vlm.md):
   ANSI MH24.2, EN 15095, ISO 13849, NFPA 79 / UL 508A, NFPA 13 and 484, IBC / ASCE 7 seismic, and ASHRAE for the room.
 
@@ -150,7 +151,7 @@ bay, or the shorter units in the [table above](#height). The last column applies
 |---|---|---|---|---|---|---|---|---|---|
 | **Holbrook Industrial Park Bldg 5**, 4866 S Hudson Way (Boyer) | **Lehi** | 247,078 / 247,078, **divisible to ±46,368** | 32' | **4,000 A, 277/480 V, 3-ph** | 40 DH (9×10), 8 GL (14×16) | PC-FLEX | complete, ready for occupancy; rate on request; ESFR; columns 56' × 43'3" | [Crexi](https://www.crexi.com/lease/properties/942551/utah-holbrook-industrial-park-building-5) (Colliers SLC: Tom Freeman, Travis Healey, Jeremy Jensen, Jeremy Terry) | 15 × 9.2 m units, or a pit |
 | Holbrook Bldg 2, 5025 W Hudson Way | Lehi | 109,572 / 29,724 sublease | 32' | 277/480 V, 3-ph | 6 DH, 3 GL | PC-FLEX | rate on request; ESFR; the C&W flyer is gone (HTTP 410), so status unverified | [IndustrialSpaces](https://industrialspaces.net/lehi-ut/warehouse-for-rent/5025-west-hudson-way/33149) (C&W: Tyson Fowler) | 15 × 9.2 m |
-| 4425 N Thanksgiving Way (a sublease) | Lehi | 75,300-80,098 | 26-33' | 2,400 A, 480 V, 3-ph | 3 DH, 2 GL | not stated | NNN sublease; racking included (snippet only) | CityFeet/LoopNet, blocked | 13-18 units |
+| 4425 N Thanksgiving Way (a sublease) | Lehi | 75,300-80,098 | 26-33' | 2,400 A, 480 V, 3-ph | 3 DH, 2 GL | not stated | NNN sublease; racking included (snippet only) | CityFeet/LoopNet, blocked | 14-19 units |
 | Millplace Park, 305 S 850 E | Lehi | 98,000 / 10,753 | 24' | 3-ph | 2 GL (14×14) | not stated | $1.05/ft²/mo; HVAC in the warehouse; first two months free | [Crexi](https://www.crexi.com/lease/properties/836927/utah-millplace-park) (Colliers: Jarrod Hunt, Lana Howell) | too small alone |
 | Lewis Landing Bldg A, 4170 W 2100 N (Gardner) | Lehi | 86,916 | 32' | not stated | 18 DH, 4 drive-in | "general industrial" (snippet) | no longer advertised on LoopNet | [Zwick](https://www.zwickconstruction.com/lewis-landing) | 15 × 9.2 m |
 | American Fork Industrial Bldg 1, 860 E 930 S | American Fork | 33,020 / 33,020 | 32' | 1,200 A, 277/480 V, 3-ph | 5 DH, 1 GL | not stated | available now; ESFR; 52' × 45' columns | [CommercialCafe](https://www.commercialcafe.com/commercial-property/us/ut/american-fork/american-fork-industrial-building-1/) (Newmark Mountain West: Jeffrey Heaton, Lucas Burbank, Ben Richardson) | 15 × 9.2 m |
@@ -159,10 +160,10 @@ bay, or the shorter units in the [table above](#height). The last column applies
 | 310 N Geneva Rd, Bldg 1 | Lindon | 140,986, minimum 31,808 | 32' | 480 V, 3-ph | 28 DH, 4 GL | Light Industrial (a steel plant operates in the zone) | new 2026; ESFR; **6" slab**; 56' × 59' columns | [flyer](https://www.commercialsearch.com/pdfs/8D0138B9-3A81-4551-91CA-0A75594B9D17), [city packet](https://www.utah.gov/pmn/files/1294931.pdf) (Colliers: Jarrod Hunt, Andy Blunt) | 15 × 9.2 m |
 | Pioneer Crossing Industrial, Lazaret Ave | Saratoga Springs | 48,160 (six 8,000 units) | 28' | 480 V, 3-ph, 4-wire | 6 docks, 6 drive-in | HC (Heavy Commercial) | deliverable summer 2026; 90' deep | [Crexi](https://www.crexi.com/lease/properties/989481/utah-pioneer-crossing-industrial-development) (Legend Commercial: Skyler Peterson, Tre Bourdeaux, Parker Taggart, Connor DeBry) | 18 × 8.0 m |
 | Northshore Commerce Center, 593-659 N Saratoga Rd | Saratoga Springs | 339,009 / 66,520, from 12,504 | 28-32' | not stated | not stated | not stated | completed 2024; available now | [CommercialCafe](https://www.commercialcafe.com/commercial-property/us/ut/saratoga-springs/northshore-commerce-center/) (Colliers) | 15-18 units |
-| Spring Heights Bldg B (flex/R&D), 2559 N Redwood Rd | Saratoga Springs | 53,640, from 2,760 | 18' | not stated | dock and drive-in | not stated | vacant | [Crexi](https://www.crexi.com/lease/properties/837924/utah-redwood-road-at-hardman), [brochure](https://sjpi.com/wp-content/uploads/2023/05/Spring-Heights_Brochure.pdf) (St. John Properties: Scott Gifford, Daniel Thomas) | lab Shuttles only |
+| Spring Heights Bldg B (flex/R&D), 2559 N Redwood Rd | Saratoga Springs | 53,640, from 2,760 | 18' | not stated | dock and drive-in | not stated | vacant | [Crexi](https://www.crexi.com/lease/properties/837924/utah-redwood-road-at-hardman), [brochure](https://sjpi.com/wp-content/uploads/2023/05/Spring-Heights_Brochure.pdf) (St. John Properties: Scott Gifford, Daniel Thomas) | 5.0 m units at most (32 of them) |
 | **BlendTec Building**, 1206 S 1680 W | Orem | 264,816 / 211,665 | 23' | "heavy power service" | 8 DH, 1 GL | CM | available now; **clean rooms, compressed-air lines, generator**, climate-controlled; turnkey | [CommercialCafe](https://www.commercialcafe.com/commercial-property/us/ut/orem/blendtec-building/) (Colliers: Jarrod Hunt, Lana Howell) | larger than needed |
-| **Provo Manufacturing Facility with Yard**, 225 E 900 S | **Provo**, closest to BYU | 155,140 / 107,225, divisible to 25,000 | 15-25' | 1,750 A, 480/277 V, 3-ph | 13 DH, 3 GL | not stated | Class C manufacturing building with a yard | [Crexi](https://www.crexi.com/lease/properties/816137/utah-provo-manufacturing-facility-with-yard) (Newmark Mountain West: Eli Priest, Ben Richardson, Kolby Long) | 21 × 6.8 m, or a pit |
-| Vista Heights Industrial, 3500 S Mountain Vista Pkwy | Provo | 219,870, from 43,974 | 30' | 3,000 A, 3-ph | 8 DH, 10 GL | not stated | available now | [CommercialCafe](https://www.commercialcafe.com/commercial-property/us/ut/provo/vista-heights-industrial-1/) (Colliers) | 18 × 8.0 m |
+| **Provo Manufacturing Facility with Yard**, 225 E 900 S | **Provo**, closest to BYU | 155,140 / 107,225, divisible to 25,000 | 15-25' | 1,750 A, 480/277 V, 3-ph | 13 DH, 3 GL | not stated | Class C manufacturing building with a yard | [Crexi](https://www.crexi.com/lease/properties/816137/utah-provo-manufacturing-facility-with-yard) (Newmark Mountain West: Eli Priest, Ben Richardson, Kolby Long) | 20 × 7.1 m under the 25' part, or a pit |
+| Vista Heights Industrial, 3500 S Mountain Vista Pkwy | Provo | 219,870, from 43,974 | 30' | 3,000 A, 3-ph | 8 DH, 10 GL | not stated | available now | [CommercialCafe](https://www.commercialcafe.com/commercial-property/us/ut/provo/vista-heights-industrial-1/) (Colliers) | 16 × 8.6 m |
 | Hamilton Commerce Center, 2303 W 500 N | Springville | 192,360, bays of ±21,840 | 32' | not stated | 43 DH, 8 GL | not stated | delivery May 2027; ESFR | [flyer](https://www.hamiltonpartners.com/wp-content/uploads/2026/06/Hamilton-Commerce-Center-Springville.pdf) (Colliers) | 15 × 9.2 m |
 | **Center Street Industrial**, 168 N 1750 W | Springville | 327,184 build-to-suit, from 81,796 | **36'** | 2,000 A, 277/480 V, 3-ph | 90 DH, 4 GL | not stated | vacant; **7" reinforced slab** | [CommercialCafe](https://www.commercialcafe.com/commercial-property/us/ut/springville/colmeana-springville/) (Newmark) | 13 × 10.5 m |
 | **Global Logistics HQ**, 2100 N 700 W | Spanish Fork | 1.9M in 8-13 buildings; Bldg 2 from 26,060 | 32-36' | 4,000 A, 480 V, 3-ph | 83 DH | not stated | pre-leasing; $7.50-8.00/ft²/yr NNN (snippet) | [Crexi](https://www.crexi.com/lease/properties/771339/utah-global-logistics-headquarters-bldgs-1---8), [CommercialCafe](https://www.commercialcafe.com/commercial-property/us/ut/spanish-fork/global-logistics-headquarters-9/) (Colliers) | 13-15 units |
