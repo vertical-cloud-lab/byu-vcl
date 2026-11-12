@@ -201,6 +201,8 @@ Each of these already in place is something we don't have to build.
 5. **The sprinklers and the water main:** ESFR or not, the fire flow at the site, any fire pump.
 6. **The sewer:** which district, and whether an earlier tenant held a wastewater permit there.
 7. **Telecom:** which carriers already serve the building.
+8. **The building itself:** the slab, the roof structure, the sprinkler placard, whether the space is an end unit,
+   and who the neighbours are ([`zoning-and-safety.md`](zoning-and-safety.md#4-what-else-to-look-for-in-a-building)).
 
 ## 6. Who to ask
 

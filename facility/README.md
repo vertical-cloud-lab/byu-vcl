@@ -53,6 +53,13 @@ code; the support rooms are one illustrative way to use the rest of the floor.
 - **Utilities ([`utilities.md`](utilities.md)):** only power, natural gas, water, sewer and telecom come from outside.
   We'd build argon, nitrogen, chilled water, compressed air, exhaust and standby power ourselves. No R&D zone here has
   argon on tap: it comes as liquid by truck, into a tank the supplier rents us on our own pad.
+- **Zoning, safety rules and what else to look for ([`zoning-and-safety.md`](zoning-and-safety.md)):**
+  - **Zoning:** a lab like this is research and development, permitted outright in light-industrial and R&D zones in
+    most nearby cities. Ask for a written use determination, since atomizing could be read as manufacturing.
+  - **Rules:** the city's fire code does most of the work. UOSH, Utah DEQ (Tier II reporting above about 3,240 L of
+    liquid argon) and the pressure-vessel inspectors add the rest.
+  - **Buildings:** in a 20,000 ft², 36 ft building, look for an end unit, a slab we may cut, a steel roof and power
+    already in.
 - **Radical AI's new lab is 45,000 ft², not 40,000:** Building 20 at the Brooklyn Navy Yard, moved into around
   September 2026, per its CEO. Most peers are 17,000-40,000 ft² (Periodic Labs 37,808, Freeform 35,000, Chemify 21,500 and
   40,000+, CMU 17,500, Mattiq 17,377). A few are over 100,000 ft² (Emerald Cloud Lab, Recursion).
@@ -127,7 +134,7 @@ Everything else is from the sources linked. Which of these we could hook into, a
 | **Seismic** | Seismic Design Category D (Lehi SDS 0.95, SD1 0.70): anchoring and bracing for the tall units, racks and gas tanks | USGS ASCE 7-22 service; see [Codes](#codes-that-decide-the-building) |
 | **Delivery access** | Dock-high doors for freight; a **grade-level door of at least 14 × 16 ft** for the big machines; a forklift of 5 t or more, or riggers | The EOS is about 4.8-4.9 t and 2.36-2.63 m tall; the Meltio cell is 4,050 × 2,350 × 3,000 mm. Holbrook Bldg 5 and Mountain Point Bldg 3 list 14 × 16 ft grade-level doors; Millplace's are 14 × 14 ft |
 | **Network** | Fibre, wired Ethernet to every tray, remote access | `out/cabling.json`: PoE+ to the cameras, Ethernet through each coupling |
-| **Zoning and height** | A zone that permits R&D or labs and allows manufacturing at least as a conditional use, with a height limit that fits a high bay | See [Zoning](#zoning-what-lehi-allows). Lehi's LI zone permits R&D and caps height at 60 ft |
+| **Zoning and height** | A zone that permits R&D or labs and allows manufacturing at least as a conditional use, with a height limit that fits a high bay | See [Zoning](#zoning-what-lehi-allows), and other cities in [`zoning-and-safety.md`](zoning-and-safety.md#1-zoning-what-a-powder-lab-is-and-where-its-allowed). Lehi's LI zone permits R&D and caps height at 60 ft |
 
 ### Codes that decide the building
 
@@ -328,8 +335,10 @@ Read from Lehi's code on 2026-11-12:
 - **Lindon:** 310 N Geneva Rd is in the Light Industrial zone.
 - **Herriman:** Axia is zoned M1.
 - **Orem:** BlendTec is zoned CM.
-- **Not checked:** the codes for American Fork, Vineyard, Spanish Fork, Saratoga Springs, Draper and Springville
-  returned HTTP 403.
+- **Not checked here:** the codes for American Fork, Vineyard, Spanish Fork, Saratoga Springs, Draper and Springville
+  returned HTTP 403. [`zoning-and-safety.md`](zoning-and-safety.md#1-zoning-what-a-powder-lab-is-and-where-its-allowed)
+  adds Provo, Lindon, Spanish Fork, Saratoga Springs, Eagle Mountain and others, and how Utah law treats a conditional
+  use.
 
 ## 3. Renovate or build
 
@@ -471,6 +480,8 @@ checked against a flyer; Crexi hides the rest behind a sign-in, which wasn't use
 | Lehi City Power, Provo City Power, Springville and Spanish Fork city power, Rocky Mountain Power | service capacity and timeline at a given address | their websites; Lehi's fees are in the [FY2026 table](https://www.lehi-ut.gov/media/lpqhekt5/connection-impact-fees-fy-updated-632026doc.pdf) | 5 |
 | Gas suppliers: Humphries, Rocky Mountain Air, DJB Gas Services, Linde, Air Liquide, Airgas | microbulk or bulk argon and nitrogen | their websites | 6 |
 | Sewer districts (TSSD, Orem, Provo, Springville, Spanish Fork, JBID) | whether a lab's wastewater needs a survey or permit | linked in [`utilities.md`](utilities.md#6-who-to-ask) | 8 |
+| A fire-protection engineer or code consultant (Resolut, Jensen Hughes, Trinity Consultants) | a code review of one building, and the dust hazard analysis | in [`zoning-and-safety.md`](zoning-and-safety.md#5-who-to-ask-and-whats-not-done) | 10 |
+| Gage's contact at Newmark Mountain West | buildings that fit the [checklist](zoning-and-safety.md#4-what-else-to-look-for-in-a-building) | through Gage | 11 |
 | Texas Instruments LFAB, Lehi | a tour of a site that already runs process gases and hazardous materials | in progress: Gage asked BYU's recruiting office ([#319](https://github.com/vertical-cloud-lab/byu-vcl/issues/319)) | none |
 
 ## Open questions and next steps
@@ -486,7 +497,9 @@ checked against a flyer; Crexi hides the rest behind a sign-in, which wasn't use
    a connected-load list from `out/cabling.json` plus the new machines.
 5. **Look at build-to-suit** offers (Price American Fork, Center Street Industrial) and the Eagle Mountain land for
    the later, purpose-built building, which is where a high bay fits naturally.
-6. **Fill the gaps:** costs of H rooms and high-bay premiums, Provo's tariff, the codes for American Fork and other
+6. **Before signing for a building,** get a written use determination from the city (draft 3) and a code review from
+   a fire-protection engineer (draft 10). [`zoning-and-safety.md`](zoning-and-safety.md) lists what else to check.
+7. **Fill the gaps:** costs of H rooms and high-bay premiums, Provo's tariff, the codes for American Fork and other
    cities (HTTP 403 here), and the LoopNet listings that refuse both the runner and the Pi.
 
 Add sites, contacts and numbers on [#343](https://github.com/vertical-cloud-lab/byu-vcl/issues/343).

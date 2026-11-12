@@ -220,3 +220,61 @@ request for a tour yet.
 
 Thank you,
 [signature]
+
+---
+
+## 10. To a fire-protection engineer or code consultant: a code review of one building, before signing
+
+**Subject:** Code review and dust hazard analysis scope for a metal-powder research lab in an existing warehouse
+
+Hello [name],
+
+We're looking at leasing about 20,000 ft² of a [32-36] ft clear industrial building at [address] for an automated
+research lab, and would like a proposal for a code review before we commit. The lab would:
+
+- atomize and 3D print small batches of aluminium alloy powders (flammable solids that release hydrogen with water,
+  per their SDSs), stored in closed jars in automated storage units about [10.5] m tall;
+- use argon and nitrogen from a bulk tank outside, gloveboxes, furnaces, a wire EDM and IPA for cleaning;
+- run largely unattended, with robots moving samples between instruments.
+
+We'd like to know, for this building:
+
+1. whether it can stay F-1/S-1 with control areas, or needs a Group H-2 or H-3 room, and where that room could go;
+2. what changes the existing [ESFR] sprinklers would need around lab rooms, ducts and the storage units, and whether
+   the units need their own gas suppression;
+3. the scope, cost and timing of a dust hazard analysis, under NFPA 484 as Utah's fire code adopts it or NFPA 660;
+4. anything about this building (construction type, exterior walls, slab, roof) that would rule it out.
+
+Our planning numbers are in [link to facility/README.md], and the lab is shown in [warehouse video link]. This is a
+request for a proposal, not a commitment.
+
+[signature]
+
+---
+
+## 11. To Gage's broker contact (Newmark Mountain West): what we'd want in a 20,000 ft², 36 ft space
+
+**Subject:** What we'd look for in a 20,000 ft² space
+
+Hi [name],
+
+Thanks for the note that 36 ft clear is about the most these buildings offer. That works: we'd use shorter storage
+units. For about 20,000 ft², these are the things that matter most to us, roughly in order:
+
+1. **Zoning** that permits research and development or laboratories, and allows light manufacturing at least as a
+   conditional use.
+2. **An end unit or a freestanding building,** with a long exterior wall for a powder room and room outside for a gas
+   tank, a dust collector and a generator.
+3. **Power:** 2,000-4,000 A at 480 V already in the building, or the utility able to supply it soon.
+4. **A conventionally reinforced slab,** at least 6-7 in and not post-tensioned, that the landlord will let us cut for
+   trenches and footings.
+5. **A steel roof deck,** not a wood panelized roof, strong enough for exhaust fans (or ground space for them).
+6. **Landlord terms:** hazardous-materials use under a plan, rooftop and outdoor equipment, round-the-clock operation,
+   a 7-10 year term with renewal options, and a right of first offer on the next 20,000 ft².
+7. **Docks:** two dock-high doors and one grade-level door of at least 14 × 16 ft.
+8. **Location:** within about 30 minutes of BYU, outside mapped liquefaction and fault zones.
+
+Is there anything in Utah County or the south valley that fits most of this, on or off market?
+
+Thanks,
+Gage
