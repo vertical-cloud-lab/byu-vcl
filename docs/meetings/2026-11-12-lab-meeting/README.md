@@ -244,3 +244,25 @@ sampling for AlSi10Mg ([digital-alloy-lab#235](https://github.com/vertical-cloud
 | --- | --- |
 | <img src="https://github.com/vertical-cloud-lab/digital-alloy-lab/blob/74c2aec/lpbf-runs/m2-viz/out/m2_4_cut.gif?raw=true" width="380"><br>Cutting a section from an insert | <img src="https://github.com/vertical-cloud-lab/digital-alloy-lab/blob/74c2aec/lpbf-runs/m2-viz/out/m2_5_sem.gif?raw=true" width="380"><br>Cross-sections in the SEM |
 | <img src="https://github.com/vertical-cloud-lab/digital-alloy-lab/blob/74c2aec/lpbf-runs/m2-viz/out/m2-pilot-design.png?raw=true" width="380"><br>Pilot design | <img src="https://github.com/vertical-cloud-lab/digital-alloy-lab/blob/74c2aec/lpbf-runs/m2-viz/out/m2-schedule.png?raw=true" width="380"><br>Provisional schedule |
+
+## Analytical methods for EDS standards (trneslen)
+
+[Comment](https://github.com/vertical-cloud-lab/byu-vcl/issues/322#issuecomment-6832195091)
+
+> Analytical Method Exploration for EDS Standards
+> ICP-MS and ICP-OES are less than ideal because of HF
+> BYU, UofU, and USU don't have a Spark OES machine
+> The other best process requires a two-part digestion process
+
+No images or clips on this yet. Earlier threads on the same question, all in
+[caliber#12](https://github.com/vertical-cloud-lab/caliber/issues/12) (September):
+
+- **Why HF comes into it:** HNO3/HCl dissolves the aluminum matrix of AlSi10Mg but not the silicon-rich phase, which
+  needs HF ([explanation](https://github.com/vertical-cloud-lab/caliber/issues/12#issuecomment-5689724636)).
+- **The first ICP-MS attempt:** Ronnie's [notes from dissolving the powder in HCl](https://github.com/vertical-cloud-lab/caliber/issues/12#issuecomment-5766646451):
+  sludgy, so the Si probably stayed behind, and HF is advised against for Mg.
+- **The two-part digestion:** [split the sample into two aliquots](https://github.com/vertical-cloud-lab/caliber/issues/12#issuecomment-5766657787), one
+  HF-free for Mg and one with HF for Si, or finish the HF digest with boric acid.
+- **ICP-MS and the SEM:** ICP-MS gives the composition and the SEM gives the spectrum, so
+  [there is no detector conflict](https://github.com/vertical-cloud-lab/caliber/issues/12#issuecomment-5764962170).
+- **Instruments at BYU:** [byu-vcl#130](https://github.com/vertical-cloud-lab/byu-vcl/issues/130), XRF and ICP-OES in Geology, still open.
