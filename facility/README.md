@@ -55,7 +55,8 @@ code; the support rooms are one illustrative way to use the rest of the floor.
   argon on tap: it comes as liquid by truck, into a tank the supplier rents us on our own pad.
 - **Zoning, safety rules and what else to look for ([`zoning-and-safety.md`](zoning-and-safety.md)):**
   - **Zoning:** a lab like this is research and development, permitted outright in light-industrial and R&D zones in
-    most nearby cities. Ask for a written use determination, since atomizing could be read as manufacturing.
+    Lehi, Provo and Lindon, and listed in several other nearby cities. Ask for a written use determination, since
+    atomizing could be read as manufacturing.
   - **Rules:** the city's fire code does most of the work. UOSH, Utah DEQ (Tier II reporting above about 3,240 L of
     liquid argon) and the pressure-vessel inspectors add the rest.
   - **Buildings:** in a 20,000 ft², 36 ft building, look for an end unit, a slab we may cut, a steel roof and power
