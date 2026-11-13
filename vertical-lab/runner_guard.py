@@ -82,11 +82,35 @@ PROMOTE_S = 20 * 60          # a normal job waiting longer than this goes ahead 
 BACKFILL_S = 15 * 60         # a job ahead that has waited this long without fitting stops others going past it
 
 
+CAPS_FILE = SLOT_DIR / "caps.json"   # round 11: {"auditb": 1, ...}, at most that many slots per stream
+
+
+def stream_of(label: str) -> str:
+    """A job's stream: its label up to the first "-" (labels are <stream>-<job>)."""
+    return (label or "").split("-", 1)[0]
+
+
+def capped(label: str, held: list[dict] | None = None) -> bool:
+    """Round 11: whether this job's stream already holds as many slots as caps.json allows it. A capped waiter neither
+    starts nor holds up the waiters behind it (one stream took all three slots at 23:57 on 2026-11-13, while three
+    others waited for previews)."""
+    try:
+        caps = json.loads(CAPS_FILE.read_text())
+    except (OSError, ValueError):
+        return False
+    s = stream_of(label)
+    if s not in caps:
+        return False
+    held = held_infos() if held is None else held
+    return sum(1 for d in held if stream_of(d.get("label", "")) == s) >= int(caps[s])
+
+
 def waiters() -> list[tuple[str, int, float]]:
     """The live waiters in queue order (quick jobs first, then by arrival; a long wait counts as quick), each as
     (ticket name, MB it needs, when it arrived). A ticket's text is JSON with its need since round 10; an older
-    plain-text ticket counts as needing the default."""
+    plain-text ticket counts as needing the default. Waiters whose stream is at its cap (caps.json) are left out."""
     live = []
+    held = held_infos()
     for t in QUEUE.iterdir():
         try:
             ts, pid, prio = t.name.split("_")
@@ -97,7 +121,10 @@ def waiters() -> list[tuple[str, int, float]]:
         except (ValueError, OSError):
             continue
         try:
-            need = int(json.loads(t.read_text()).get("need", MEM_PER_WEIGHT))
+            tk = json.loads(t.read_text())
+            need = int(tk.get("need", MEM_PER_WEIGHT))
+            if capped(tk.get("label", ""), held):
+                continue
         except (OSError, ValueError, AttributeError):
             need = MEM_PER_WEIGHT
         eff = 0 if time.time() - ts > PROMOTE_S else prio
@@ -236,6 +263,8 @@ def slot(argv: list[str]) -> int:
         while True:
             free = N_SLOTS - sum(int(d.get("weight", 1)) for d in held_infos())
             ok, rank = may_start(ticket, need, free, meminfo().get("MemAvailable", 0) - reserved())
+            if ok and capped(label):
+                ok = False
             if ok:
                 for i in range(N_SLOTS):
                     f = open(SLOT_DIR / f"slot{i}.lock", "a+")
