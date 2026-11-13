@@ -35,12 +35,40 @@ CROWN = dict(width=0.022, thickness=0.003, lean_deg=6.0)
 FRONT_POD = dict(
     base=(0.013, 0.074, 0.036),   # radial depth, width, height: holds the Pi Zero 2 W
     head=(0.016, 0.034, 0.030),   # hinged camera head
-    tilt_deg=25.0,                # camera looks 25 degrees below horizontal
+    tilt_deg=25.0,                # camera looks this far below horizontal
+    lift=0.0,                     # enclosure raised along the band (v2: off the facepiece)
+    brim=0.0,                     # printed arm carrying the camera hinge forward (v2)
 )
 TEMPLE_POD_THETA_DEG = 70.0          # 0 = forehead, 90 = directly above the ear
 TEMPLE_POD = dict(size=(0.009, 0.032, 0.016))      # out, along band, up
 TEMPLE_POD_RIGHT = dict(size=(0.011, 0.040, 0.018))  # carries the button and haptic motor
 REAR_POD = dict(width=0.072, height=0.040, depth=0.018, r_in=0.062, z=0.056, gap=0.004)
+
+# --- Layouts -------------------------------------------------------------------
+# v1 (part 2): the band crosses the forehead like a headlamp. That is exactly
+#   where a full-face respirator's facepiece seals, so v1 can't be worn with one.
+# v2 (part 3): the same parts, with the band worn like a cap: front at the
+#   hairline, above a full-face facepiece's top edge, and back under the occiput.
+#   The camera head already stands about 4.5 cm off the forehead, which clears the
+#   facepiece and its view (respirator_check.md), so v2 needs no brim. The battery
+#   pod stands off far enough to ride over a respirator's harness pad.
+LAYOUTS = {
+    "v1": dict(band=dict(front_z=0.050, back_z=0.012), lift=0.0, brim=0.0, tilt_deg=25.0,
+               rear=dict(z=0.056, gap=0.004)),
+    "v2": dict(band=dict(front_z=0.110, back_z=0.016), lift=0.006, brim=0.0, tilt_deg=30.0,
+               rear=dict(z=0.062, gap=0.010)),
+}
+LAYOUT = ["v2"]
+
+
+def use(name):
+    """Switch every module-level dimension to layout `name` ("v1" or "v2")."""
+    spec = LAYOUTS[name]
+    BAND.update(spec["band"])
+    FRONT_POD.update(lift=spec["lift"], brim=spec["brim"], tilt_deg=spec["tilt_deg"])
+    REAR_POD.update(spec["rear"])
+    LAYOUT[0] = name
+
 
 # --- Battery options ------------------------------------------------------------
 # Masses of the cells are estimates: PiSugar publishes no weights.
@@ -177,13 +205,34 @@ def rear_pod_frame():
 
 
 # --- Component list for the mass budget -------------------------------------------
-def front_pod_centres():
-    """Centres of the Pi enclosure (base) and the camera head."""
+def front_pod_frames():
+    """Pi enclosure centre, hinge, camera-head centre and the camera axes.
+
+    ax looks out of the lens (tilted down by tilt_deg), ay points left, az is the
+    camera's "up". The brim moves the hinge straight forward from where v1 has it.
+    """
     t = BAND["thickness"]
-    bx = FRONT_POD["base"][0]
-    base = band_point(0.0, 0.0, t + bx / 2)
-    head = band_point(0.0, -0.004, t + bx + 0.5 * FRONT_POD["head"][0])
-    return base, head
+    _, _, _, w = band_frame()
+    d0 = band_dir(0.0)
+    tg = band_tangent(0.0)
+    bx, by, bz = FRONT_POD["base"]
+    base = band_point(0.0, FRONT_POD["lift"], t + bx / 2)
+    tilt = math.radians(FRONT_POD["tilt_deg"])
+    ax = (math.cos(tilt), 0.0, -math.sin(tilt))
+    ay = (0.0, 1.0, 0.0)
+    az = cross(ax, ay)
+    hx, hy, hz = FRONT_POD["head"]
+    root = add(add(base, mul(d0, bx / 2 + 0.003)), mul(w, -(bz / 2 - 0.007)))
+    hinge = add(root, (FRONT_POD["brim"], 0.0, 0.0))
+    head = add(add(hinge, mul(ax, hx / 2 + 0.001)), mul(az, hz / 2 - 0.007))
+    lens = add(add(head, mul(ax, hx / 2 + 0.005)), mul(az, 0.002))
+    return dict(base=base, d0=d0, tg=tg, w=w, root=root, hinge=hinge, head=head, lens=lens,
+                ax=ax, ay=ay, az=az)
+
+
+def front_pod_centres():
+    f = front_pod_frames()
+    return f["base"], f["head"]
 
 
 def components(battery="pisugar3", with_headgear=True):
@@ -209,6 +258,8 @@ def components(battery="pisugar3", with_headgear=True):
         ("front pod", "Printed Pi enclosure, hinge, M2.5 screws", 14.0, base),
         ("front pod", "Camera Module 3 Wide (4 g) + 50 mm cable", 5.0, cam),
         ("front pod", "Printed camera head, red LED", 6.0, cam),
+        ("front pod", "Printed brim arm and second hinge (v2)", 4.0 if FRONT_POD["brim"] else 0.0,
+         mul(add(front_pod_frames()["root"], front_pod_frames()["hinge"]), 0.5)),
         ("temple pods", "Left: SPH0645 I2S mic (0.4 g) + printed pod", 4.5, left),
         ("temple pods", "Right: SPH0645 mic, 12 mm button, coin vibration motor, printed pod", 8.0, right),
         ("rear pod", "PiSugar 3 board (charger, RTC, programmable button)", batt["board_g"], rear),
@@ -234,3 +285,6 @@ def centre_of_mass(items):
     m = sum(i[2] for i in items)
     c = [sum(i[2] * i[3][k] for i in items) / m for k in range(3)]
     return m, tuple(c)
+
+
+use(LAYOUT[0])

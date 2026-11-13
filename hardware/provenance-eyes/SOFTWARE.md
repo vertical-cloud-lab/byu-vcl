@@ -78,6 +78,17 @@ the button and the PiSugar.
    - Lip sync, from a clap at the start. `--av-sync` adjusts it.
    - Current at the battery, which sets run time.
    - The temperature of the front enclosure where it touches the band.
+5. **Speech through a full-face respirator** ([`PPE.md`](PPE.md#audio-through-a-facepiece)).
+   The ears are outside the facepiece, so the mics still hear what the wearer hears, but the
+   wearer's own voice reaches them through the speaking diaphragm. Have one person read the same
+   short passage (a paragraph of a lab protocol) three times: no respirator, the lab's
+   full-face respirator, and the respirator while working at a fume hood. Transcribe all three
+   with phase 3's faster-whisper settings and compare the word error rate. Listen for the
+   exhalation valve, which is loud and close to the mouth. Only if the respirator takes are
+   unusable, try a third microphone in front of the speaking diaphragm (see `PPE.md`); never
+   attach anything to the respirator itself.
+6. **Gloved presses.** Check that the record button works through nitrile gloves, and that
+   donning and doffing a lab coat with the headset on never presses it by accident.
 
 ## Phase 1: the recorder service
 
@@ -105,6 +116,12 @@ the button and the PiSugar.
 - **Naming.** Use `<device>-<UTC start, YYYYmmddTHHMMSSZ>`, so names sort and never collide.
 - **A spoken tag.** Ask wearers to say the experiment or issue at the start, for example "this is
   for issue 231". Phase 4 picks it up from the transcript.
+- **PPE in the sidecar.** Record the PPE worn per session (`"ppe": {"respirator": "<model>" or
+  null}`), set with the wearer. A respirator changes how the transcript should be read, and
+  "respirator on" or "coat off" said aloud is also a natural bookmark.
+- **Keep recording through PPE changes.** Taking a lab coat off or putting a respirator on is
+  part of the record, so the recorder never stops on its own. It stops only on a press, a hold,
+  or a low battery.
 
 ## Phase 2: upload when the clip ends
 
@@ -170,6 +187,9 @@ jobs:
   8-thread desktop CPU. A 4-vCPU runner is likely 2–4 times slower, so allow 3–7 minutes per
   13 minutes of audio; time it on the first run. Move up to `medium.en` if the lab vocabulary
   (reagent names, instrument names) needs it.
+- **Flag what it is unsure of.** faster-whisper returns `avg_logprob` and `no_speech_prob` for
+  every segment. Mark low-confidence lines in `transcript.md` rather than dropping them; speech
+  through a respirator facepiece will produce more of them.
 
 ## Phase 4: analysis and conclusions with Claude
 
@@ -181,6 +201,8 @@ Two ways to run the same step:
   - read `bundle/transcript.md`, the sidecar and the keyframes, which it can view as images
   - write `analysis.md`: a timeline with YouTube timestamp links, the materials and instruments
     seen, the steps as performed, deviations, safety observations, and open questions
+  - note the PPE visible in the frames (sleeves, gloves) and the sidecar's respirator field, and
+    treat low-confidence transcript lines as uncertain instead of guessing at them
   - write `conclusions.md`
   - find any issue number the wearer said, and comment there with a short summary and links
 
@@ -221,6 +243,9 @@ secrets.
   with a QR code shown to the camera or a CLI over SSH.
 - **Tests.** Simulate the button presses and the upload queue with a fake `rpicam-vid`, and run
   them in CI on the data repo.
+- **Cleaning.** The record button is pressed with gloved hands. Wipe the headset down at the
+  end of each session (see [`PPE.md`](PPE.md#lab-coats)), and keep the charger outside any area
+  where a respirator is needed.
 - **Privacy.** Wearers tell people they are recording, and the LED is visible to others.
   Uploads are unlisted or private, and transcripts stay private. Get IRB guidance before
   recordings are used as research data about people.

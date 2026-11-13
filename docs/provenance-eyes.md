@@ -21,6 +21,29 @@ re-checked on the maker's own page.
 > are all over $500. If it meant *under* $500, see [Under $500](#under-500-mentra-live-and-the-meta-glasses).
 > Nothing under $500 is safety eyewear.
 
+## Update, 2026-11-13: full-face respirators and lab coats
+
+People sometimes wear **full-face respirators** and take **lab coats** on and off. Against those
+two conditions:
+
+- **No glasses-type device works with a full-face respirator.** Glasses arms would have to pass
+  under the facepiece's seal, which OSHA forbids, and there is nothing outside the facepiece for
+  them to hang on. On respirator days that rules out Iristick.G3, Pupil Labs Neon, Mentra Live,
+  the Meta glasses and the Vuzix glasses below.
+- **Cables to a phone fight with lab coats.** Iristick.G3 has no battery and runs from a phone
+  over USB-C, and Neon runs from its Android phone the same way. Each time a coat goes on or off,
+  that cable has to be rethreaded.
+- **What still works** sits on the head, above the facepiece and over its straps, the way a hard
+  hat does, with nothing cabled to the body. That means the Raspberry Pi headset
+  ([v2](../hardware/provenance-eyes/PPE.md), worn like a cap), or a camera on a helmet worn
+  over the respirator: a GoPro HERO13 ($429.99, scriptable through the Open GoPro API), or a
+  RealWear Navigator 520 on its hard-hat clips, which RealWear doesn't list as
+  respirator-compatible. The Arc 3 is worn like a headband, which would meet the top of the
+  facepiece.
+
+The details, with the full table, are in
+[`hardware/provenance-eyes/PPE.md`](../hardware/provenance-eyes/PPE.md#the-commercial-options-under-the-same-two-conditions).
+
 ## Short version
 
 **Meta's glasses fail the "logs" requirement.** Meta documents no ADB, shell or log access to its

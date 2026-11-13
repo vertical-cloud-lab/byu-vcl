@@ -3,6 +3,9 @@
 Prices were checked on 2026-11-12, in USD. *Est.* marks a figure we estimated rather than read off
 a listing. Masses are in [`cad/layout.py`](cad/layout.py).
 
+The parts are the same for v1 and v2: v2 only wears the same headgear higher, like a cap, so it
+fits over a full-face respirator ([`PPE.md`](PPE.md)).
+
 ## Default build: about $177
 
 | # | Part | Qty | Unit | Line | Source and notes |
@@ -28,7 +31,7 @@ a listing. Masses are in [`cad/layout.py`](cad/layout.py).
 | Option | Adds | Notes |
 | --- | ---: | --- |
 | Larger 1S LiPo, about 3000 mAh | ~$12–15 *(est.)* | About 3 times the run time. Adds about 30 g at the back, which moves the centre of mass 2 cm behind the ear line. Check that the PiSugar 3 charges a larger cell, and that its connector matches, before buying. |
-| Pocket power bank and a 1.5 m USB-C cable | ~$30 *(est.)* | All-day running with no battery on the head. The front becomes heavy unless the Pi moves to the back of the band. |
+| ~~Pocket power bank and a 1.5 m USB-C cable~~ | ~$30 *(est.)* | **Not recommended (v2).** The cable would run from the head to a pocket under the lab coat, and would have to be unplugged or rethreaded every time the coat goes on or off ([`PPE.md`](PPE.md#lab-coats)). For long days, charge a second battery pod or keep a second headset instead. |
 | Spare headgear, for fitting trials | $18.49 | Lets two people try sizes and pod positions at once. |
 | Pi 5 instead of the Zero 2 W | +$62.50 or more | Only if transcription has to run on the headset. 2 GB is now [$77.50](https://www.raspberrypi.com/news/price-increases-for-2gb-raspberry-pi-4-and-raspberry-pi-5/). It has **no hardware H.264 encoder**, uses 2.4–9 W ([measured](https://www.jeffgeerling.com/blog/2024/new-2gb-pi-5-has-33-smaller-die-30-idle-power-savings/)), and needs a fan and a bigger battery. Not recommended on the head. |
 

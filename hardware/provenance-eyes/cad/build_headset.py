@@ -1,10 +1,15 @@
 """Build and render the Provenance Eyes headset in Blender.
 
-    blender -b --factory-startup -P build_headset.py -- [--quick] [--views a,b] [--no-stl]
+    blender -b --factory-startup -P build_headset.py -- [--layout v2|v1] [--quick] [--views a,b] [--no-stl]
 
 Geometry, positions and masses come from layout.py, which mass_budget.py also
 reads, so the renders and the balance numbers always describe the same layout.
 Writes PNGs to ../img/ and the device (no head) as ../stl/headset-assembly.stl.
+
+The scene also has context that is not part of the device: a generic full-face
+respirator (facepiece, two filters, exhalation valve, four-strap harness and pad),
+a lab coat collar and shoulders, and a bench for the camera's-eye view. The script
+checks the device against them and writes the numbers to respirator_check.md.
 """
 
 import math
@@ -14,6 +19,7 @@ import sys
 import bpy
 import bmesh
 from mathutils import Matrix, Vector
+from mathutils.bvhtree import BVHTree
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
@@ -25,6 +31,8 @@ EXPORT_STL = "--no-stl" not in ARGS
 VIEWS = None
 if "--views" in ARGS:
     VIEWS = ARGS[ARGS.index("--views") + 1].split(",")
+LAYOUT = ARGS[ARGS.index("--layout") + 1] if "--layout" in ARGS else "v2"
+L.use(LAYOUT)
 IMG = os.path.normpath(os.path.join(HERE, "..", "img"))
 STL = os.path.normpath(os.path.join(HERE, "..", "stl"))
 os.makedirs(IMG, exist_ok=True)
@@ -36,6 +44,9 @@ scene = bpy.context.scene
 DEVICE = []      # objects exported to STL
 SHELLS = []      # pod shells that go see-through in the x-ray views
 MARKERS = []     # centre-of-mass markers, side view only
+RESP = []        # full-face respirator (context)
+COAT = []        # lab coat shoulders and collar (context)
+BENCH = []       # bench, arms and glassware for the camera's-eye view (context)
 
 
 # ----------------------------------------------------------------------------- materials
@@ -78,7 +89,33 @@ MAT = dict(
     marker_com=material("marker-com", (0.85, 0.05, 0.55), rough=0.3, emit=(0.85, 0.05, 0.55), strength=2.0),
     marker_ear=material("marker-ear", (0.25, 0.25, 0.28), rough=0.5),
     marker_tot=material("marker-total", (0.35, 0.10, 0.75), rough=0.3, emit=(0.35, 0.10, 0.75), strength=1.5),
+    rubber=material("respirator-rubber", (0.045, 0.047, 0.05), rough=0.6),
+    strap=material("harness-strap", (0.03, 0.03, 0.032), rough=0.7),
+    filt=material("P100-filter", (0.78, 0.10, 0.45), rough=0.5),
+    coat=material("lab-coat", (0.90, 0.91, 0.92), rough=0.85),
+    bench=material("benchtop", (0.09, 0.09, 0.10), rough=0.35),
+    glove=material("nitrile", (0.18, 0.36, 0.85), rough=0.55),
+    paper=material("paper", (0.93, 0.92, 0.88), rough=0.9),
+    liquid_a=material("liquid-a", (0.85, 0.35, 0.05), rough=0.1),
+    liquid_b=material("liquid-b", (0.05, 0.45, 0.70), rough=0.1),
 )
+
+
+def clear_material(name, color, alpha=1.0):
+    m = material(name, color, rough=0.03, coat=0.5)
+    bsdf = next(n for n in m.node_tree.nodes if n.type == "BSDF_PRINCIPLED")
+    for key in ("Transmission Weight", "Transmission"):
+        if key in bsdf.inputs:
+            bsdf.inputs[key].default_value = 1.0
+            break
+    bsdf.inputs["IOR"].default_value = 1.50
+    if alpha < 1.0:
+        bsdf.inputs["Alpha"].default_value = alpha
+    return m
+
+
+MAT["visor"] = clear_material("visor-polycarbonate", (0.92, 0.95, 0.97), alpha=0.35)
+MAT["beaker"] = clear_material("beaker-glass", (0.95, 0.97, 0.98), alpha=0.5)
 
 
 # ----------------------------------------------------------------------------- mesh helpers
@@ -298,27 +335,31 @@ def build_headband():
 
 # ----------------------------------------------------------------------------- pods
 def build_front_pod():
-    t = L.BAND["thickness"]
-    _, u, _, w = L.band_frame()
-    w = Vector(w)
-    d0 = Vector(L.band_dir(0.0))
-    tg = Vector(L.band_tangent(0.0))
+    f = L.front_pod_frames()
+    w = Vector(f["w"])
+    d0 = Vector(f["d0"])
+    tg = Vector(f["tg"])
     bx, by, bz = L.FRONT_POD["base"]
-    base_c = Vector(L.band_point(0.0, 0.0, t + bx / 2))
+    base_c = Vector(f["base"])
     SHELLS.append(box("pi-enclosure", base_c, (bx, by, bz), (d0, tg, w), MAT["pod"], round_=0.004))
     for k in range(6):  # vents on top, over the heatsink
         box(f"front-vent-{k}", base_c + w * (bz / 2 + 0.0001) + tg * (-0.015 + 0.006 * k) + d0 * 0.001,
             (0.007, 0.0028, 0.0012), (d0, tg, w), MAT["lens"], round_=0.0005)
-    # Camera head, hinged on the enclosure and tilted down.
-    tilt = math.radians(L.FRONT_POD["tilt_deg"])
-    ax = Vector((math.cos(tilt), 0.0, -math.sin(tilt)))
-    ay = Vector((0.0, 1.0, 0.0))
-    az = ax.cross(ay)
+    # Camera head, hinged and tilted down. In v2 a printed brim carries the hinge forward.
+    ax, ay, az = Vector(f["ax"]), Vector(f["ay"]), Vector(f["az"])
     hx, hy, hz = L.FRONT_POD["head"]
-    hinge = base_c + d0 * (bx / 2 + 0.003) - w * (bz / 2 - 0.007)
-    head_c = hinge + ax * (hx / 2 + 0.001) + az * (hz / 2 - 0.007)
+    root, hinge, head_c = Vector(f["root"]), Vector(f["hinge"]), Vector(f["head"])
+    brim = L.FRONT_POD["brim"]
+    if brim:
+        fwd = Vector((1.0, 0.0, 0.0))
+        side = Vector((0.0, 1.0, 0.0))
+        for s in (-1, 1):
+            arm = root + fwd * (brim / 2) + side * s * (hy / 2 + 0.003)
+            box(f"brim-arm-{s}", arm, (brim + 0.010, 0.005, 0.009), (fwd, side, fwd.cross(side)),
+                MAT["pod"], round_=0.0015)
+        cylinder("brim-root-pin", root, 0.0035, hy + 0.012, ay, MAT["pod"], round_=0.0008)
     SHELLS.append(box("camera-head", head_c, (hx, hy, hz), (ax, ay, az), MAT["pod"], round_=0.0045))
-    for side in (-1, 1):  # hinge knuckles on the enclosure, pin through the head
+    for side in (-1, 1):  # hinge knuckles, pin through the head
         cylinder(f"knuckle-{side}", hinge + ay * side * (hy / 2 + 0.003), 0.0045, 0.005, ay, MAT["pod"], round_=0.001)
         cylinder(f"hinge-screw-{side}", hinge + ay * side * (hy / 2 + 0.0058), 0.0028, 0.0012, ay, MAT["chip"])
     front = head_c + ax * (hx / 2)
@@ -463,6 +504,280 @@ def build_markers(battery="pisugar3"):
     return dev, tot
 
 
+# ----------------------------------------------------------------------------- context: respirator, coat, bench
+# A generic elastomeric full-face respirator, sized like a medium facepiece: the seal
+# runs across the mid-forehead, down the temples in front of the ears and under the
+# chin; a polycarbonate visor stands about 3 cm off the eyes; two P100 filters sit on
+# the cheeks; four straps run to a pad high on the back of the head. Not any one model.
+FACE = dict(axis_x=0.020, z_top=0.075, z_bot=-0.128, phi_max=math.radians(62.0), p=4.0,
+            rim=0.004, shell=0.003, dome_c=(0.030, 0.0, -0.030), dome_r=(0.105, 0.088, 0.128),
+            pad_elev_deg=30.0)
+FACE_ZC = 0.5 * (FACE["z_top"] + FACE["z_bot"])
+FACE_HZ = 0.5 * (FACE["z_top"] - FACE["z_bot"])
+
+
+def world_tree(objs):
+    """One BVH of the world-space triangles of objs (evaluated, modifiers applied)."""
+    dg = bpy.context.evaluated_depsgraph_get()
+    verts, polys = [], []
+    for ob in objs:
+        ev = ob.evaluated_get(dg)
+        me = ev.to_mesh()
+        M = ob.matrix_world
+        base = len(verts)
+        verts += [M @ v.co for v in me.vertices]
+        polys += [[base + i for i in p.vertices] for p in me.polygons]
+        ev.to_mesh_clear()
+    return BVHTree.FromPolygons(verts, polys), verts
+
+
+def smax(a, b, k=0.008):
+    h = max(k - abs(a - b), 0.0) / k
+    return max(a, b) + h * h * k * 0.25
+
+
+def smoothstep(e0, e1, x):
+    t = min(max((x - e0) / (e1 - e0), 0.0), 1.0)
+    return t * t * (3 - 2 * t)
+
+
+def face_norm(phi, z):
+    p = FACE["p"]
+    return (abs(phi / FACE["phi_max"]) ** p + abs((z - FACE_ZC) / FACE_HZ) ** p) ** (1.0 / p)
+
+
+def face_outer(tree, phi, z, r=None):
+    """Outer surface of the facepiece along a horizontal ray from the axis at height z."""
+    o = Vector((FACE["axis_x"], 0.0, z))
+    d = Vector((math.cos(phi), math.sin(phi), 0.0))
+    hit = tree.ray_cast(o, d, 0.5)
+    t_head = hit[3] if hit[0] is not None else 0.08
+    t_dome = L.ray_ellipsoid(tuple(o), tuple(d), FACE["dome_c"], FACE["dome_r"])
+    r = face_norm(phi, z) if r is None else r
+    seal = t_head + FACE["rim"]
+    s = smoothstep(0.78, 1.0, r)
+    t = smax(seal, t_dome) * (1 - s) + seal * s
+    return o + d * t, d
+
+
+def build_respirator(head):
+    tree, _ = world_tree([head])
+    p, NR, NA = FACE["p"], 44, 192
+    verts, rr, ss = [], [], []
+    c, _ = face_outer(tree, 0.0, FACE_ZC, 0.0)
+    verts.append(c); rr.append(0.0); ss.append(1.0)
+    for k in range(1, NR + 1):
+        r = 1.0 - (1.0 - k / NR) ** 1.35
+        for j in range(NA):
+            a = 2 * math.pi * j / NA
+            R = (abs(math.cos(a)) ** p + abs(math.sin(a)) ** p) ** (-1.0 / p)
+            phi = FACE["phi_max"] * R * r * math.cos(a)
+            z = FACE_ZC + FACE_HZ * R * r * math.sin(a)
+            P, _ = face_outer(tree, phi, z, r)
+            verts.append(P); rr.append(r); ss.append(math.sin(a))
+    faces = [(0, 1 + j, 1 + (j + 1) % NA) for j in range(NA)]
+    for k in range(NR - 1):
+        a0, b0 = 1 + k * NA, 1 + (k + 1) * NA
+        for j in range(NA):
+            j2 = (j + 1) % NA
+            faces.append((a0 + j, b0 + j, b0 + j2, a0 + j2))
+    ob = make_mesh("facepiece", verts, faces, MAT["rubber"], device=False)
+    ob.data.materials.append(MAT["visor"])
+    # Visor: everything inside r = 0.8 above two lines running out and down from the nose,
+    # so its edges follow the mesh instead of cutting across it in steps.
+    for poly in ob.data.polygons:
+        if max(rr[i] for i in poly.vertices) <= 0.80 + 1e-6 and min(ss[i] for i in poly.vertices) > -0.27:
+            poly.material_index = 1
+    sol = ob.modifiers.new("shell", "SOLIDIFY")
+    sol.thickness = FACE["shell"]
+    sol.offset = 0.0
+    smooth(ob)
+    RESP.append(ob)
+    # Filters on the cheeks, exhalation valve cover at the front.
+    for s in (1, -1):
+        P, d = face_outer(tree, s * math.radians(42), -0.070)
+        axis = Vector((math.cos(math.radians(60)), s * math.sin(math.radians(60)), -0.25)).normalized()
+        RESP.append(cylinder(f"filter-mount-{s}", P + axis * 0.004, 0.020, 0.014, axis, MAT["rubber"], device=False))
+        RESP.append(cylinder(f"filter-{s}", P + axis * 0.019, 0.033, 0.020, axis, MAT["filt"], round_=0.004, device=False))
+    P, d = face_outer(tree, 0.0, -0.092)
+    vd = Vector((math.cos(math.radians(18)), 0.0, -math.sin(math.radians(18))))
+    RESP.append(box("exhalation-valve", P + vd * 0.010, (0.020, 0.044, 0.036),
+                    (vd, Vector((0, 1, 0)), vd.cross(Vector((0, 1, 0)))), MAT["rubber"], round_=0.006, device=False))
+    # Harness: pad high on the back of the head, two upper and two lower straps.
+    C = Vector(L.HEAD_CENTER)
+
+    def surf(direction, off):
+        dd = Vector(direction).normalized()
+        hit = tree.ray_cast(C, dd, 0.5)
+        return hit[0] + hit[1] * off, hit[1]
+
+    e = math.radians(FACE["pad_elev_deg"])
+    pad_c, pad_n = surf((-math.cos(e), 0.0, math.sin(e)), 0.004)
+    yv = Vector((0.0, 1.0, 0.0))
+    up = pad_n.cross(yv).normalized()
+    if up.z < 0:
+        up = -up
+    rot = Matrix((tuple(pad_n), tuple(yv), tuple(up))).transposed()
+    pad = ellipsoid("harness-pad", pad_c, (0.004, 0.045, 0.036), MAT["strap"], rot=rot)
+    RESP.append(pad)
+
+    def edge_point(s, z):
+        lo, hi = 0.0, FACE["phi_max"] * 1.2
+        for _ in range(40):
+            mid = 0.5 * (lo + hi)
+            lo, hi = (mid, hi) if face_norm(mid, z) < 0.985 else (lo, mid)
+        P, _ = face_outer(tree, s * lo, z)
+        return P
+
+    def strap(name, pts, n_each=24):
+        path = []
+        for a, b in zip(pts[:-1], pts[1:]):
+            da, db = (a - C).normalized(), (b - C).normalized()
+            ang = da.angle(db)
+            for i in range(n_each):
+                t = i / n_each
+                dd = (da * math.sin((1 - t) * ang) + db * math.sin(t * ang)) / max(math.sin(ang), 1e-6)
+                path.append(surf(dd, 0.0035))
+        path.append(surf((pts[-1] - C), 0.0035))
+        frames = []
+        for i, (q, n) in enumerate(path):
+            q2 = path[min(i + 1, len(path) - 1)][0]
+            q1 = path[max(i - 1, 0)][0]
+            tan = (q2 - q1).normalized()
+            u = n.cross(tan).normalized()
+            frames.append((q, n, u))
+        RESP.append(sweep(name, frames, 0.0022, 0.016, False, MAT["strap"], device=False))
+
+    for s in (1, -1):
+        a = edge_point(s, 0.040)
+        strap(f"strap-upper-{s}", [a, C + Vector((-0.010, s * 0.08, 0.050)), pad_c + yv * s * 0.030 + up * 0.016])
+        b = edge_point(s, -0.088)
+        strap(f"strap-lower-{s}", [b, C + Vector((-0.020, s * 0.065, -0.075)),
+                                   C + Vector((-0.080, s * 0.035, -0.055)), pad_c + yv * s * 0.026 - up * 0.022])
+    return tree
+
+
+def build_coat():
+    COAT.append(ellipsoid("coat-shoulders", (-0.015, 0.0, -0.40), (0.125, 0.215, 0.225), MAT["coat"]))
+    frames = []
+    for k in range(97):
+        beta = 0.42 + (2 * math.pi - 0.84) * k / 96
+        q = Vector((-0.012 + 0.068 * math.cos(beta), 0.065 * math.sin(beta), -0.168 - 0.022 * math.cos(beta)))
+        d = Vector((math.cos(beta), math.sin(beta), 0.0)).normalized()
+        u = (Vector((0.0, 0.0, 1.0)) + d * 0.30).normalized()
+        frames.append((q, d, u))
+    COAT.append(sweep("coat-collar", frames, 0.005, 0.050, False, MAT["coat"], round_=0.0015, device=False))
+
+
+def build_bench():
+    z0 = -0.72  # bench top, 72 cm below the ear line: standing at a 90 cm bench
+    BENCH.append(box("bench", (0.50, 0.0, z0 - 0.015), (0.9, 1.6, 0.03), ((1, 0, 0), (0, 1, 0), (0, 0, 1)),
+                     MAT["bench"], round_=0.002, device=False))
+    for i, (x, y, liq) in enumerate(((0.50, 0.15, "liquid_a"), (0.58, 0.07, "liquid_b"))):
+        BENCH.append(cylinder(f"beaker-{i}", (x, y, z0 + 0.045), 0.032, 0.09, (0, 0, 1), MAT["beaker"], device=False))
+        BENCH.append(cylinder(f"liquid-{i}", (x, y, z0 + 0.026), 0.029, 0.050, (0, 0, 1), MAT[liq], device=False))
+    BENCH.append(box("tube-rack", (0.47, -0.06, z0 + 0.022), (0.05, 0.17, 0.044), ((1, 0, 0), (0, 1, 0), (0, 0, 1)),
+                     MAT["pod"], round_=0.002, device=False))
+    for k in range(6):
+        BENCH.append(cylinder(f"tube-{k}", (0.47, -0.135 + 0.03 * k, z0 + 0.05), 0.0075, 0.10, (0, 0, 1),
+                              MAT["beaker"], device=False))
+    nb = Matrix.Rotation(math.radians(12), 3, "Z")
+    BENCH.append(box("notebook", (0.36, -0.26, z0 + 0.004), (0.21, 0.15, 0.008),
+                     (nb @ Vector((1, 0, 0)), nb @ Vector((0, 1, 0)), Vector((0, 0, 1))), MAT["paper"], round_=0.001, device=False))
+    # Arms in lab-coat sleeves and nitrile gloves; the right hand holds a pipette over the rack.
+    for s, wrist, hand in ((1, (0.36, 0.10, -0.64), (0.42, 0.085, -0.665)), (-1, (0.38, -0.02, -0.56), (0.43, -0.04, -0.585))):
+        BENCH.append(tube(f"sleeve-{s}", [(-0.02, s * 0.17, -0.25), (0.05, s * 0.21, -0.50), wrist], 0.040, MAT["coat"], device=False))
+        BENCH.append(ellipsoid(f"glove-{s}", hand, (0.050, 0.030, 0.017), MAT["glove"],
+                               rot=Matrix.Rotation(math.radians(-25 * s), 3, "Z")))
+    BENCH.append(cylinder("pipette", (0.46, -0.055, -0.60), 0.011, 0.15, (0.30, 0.10, -1.0), MAT["pod"], device=False))
+    BENCH.append(cylinder("pipette-tip", (0.483, -0.047, -0.678), 0.0035, 0.05, (0.30, 0.10, -1.0), MAT["beaker"], device=False))
+
+
+# ----------------------------------------------------------------------------- checks
+def camera_dirs(f, nu=96, nv=54, hfov=102.0):
+    tx = math.tan(math.radians(hfov / 2))
+    ty = tx * 9 / 16
+    ax, ay, az = Vector(f["ax"]), Vector(f["ay"]), Vector(f["az"])
+    for i in range(nu):
+        for j in range(nv):
+            u = -1 + (2 * i + 1) / nu
+            v = -1 + (2 * j + 1) / nv
+            yield (ax - ay * (u * tx) + az * (v * ty)).normalized()
+
+
+def blocked_share(tree, f):
+    o = Vector(f["lens"]) + Vector(f["ax"]) * 0.003
+    dirs = list(camera_dirs(f))
+    hits = sum(1 for d in dirs if tree.ray_cast(o, d, 1.0)[0] is not None)
+    return hits / len(dirs)
+
+
+TILTS = (20, 30, 40, 50, 60, 70)
+
+
+def respirator_checks():
+    """Clearances and view checks, written to respirator_check.md."""
+    out = [f"# Respirator and lab-coat checks, layout {LAYOUT}", "",
+           "Generated by `build_headset.py`; distances in mm. Context geometry is a generic medium",
+           "full-face respirator and lab coat, not any one product.", ""]
+    face_tree, _ = world_tree([o for o in RESP if o.type == "MESH" and o.name == "facepiece"])
+    resp_tree, _ = world_tree([o for o in RESP if o.type == "MESH"])
+    dg = bpy.context.evaluated_depsgraph_get()
+    rows = []
+    for ob in DEVICE:
+        if ob.type != "MESH":
+            continue
+        ev = ob.evaluated_get(dg)
+        me = ev.to_mesh()
+        dmin = min((face_tree.find_nearest(ob.matrix_world @ v.co)[3] for v in me.vertices), default=9.0)
+        ev.to_mesh_clear()
+        rows.append((dmin, ob.name))
+    rows.sort()
+    out += ["## Closest device parts to the facepiece", "", "| Part | Gap to facepiece (mm) |", "| --- | ---: |"]
+    out += [f"| {n} | {1000 * d:.1f} |" for d, n in rows[:6]]
+    # Lab coat: lowest device point behind the ear line vs. the top of the collar at the back.
+    _, cverts = world_tree([o for o in COAT if o.name == "coat-collar"])
+    collar_top = max(v.z for v in cverts if v.x < -0.03)
+    low = 9.0
+    for ob in DEVICE:
+        if ob.type != "MESH":
+            continue
+        ev = ob.evaluated_get(dg)
+        me = ev.to_mesh()
+        zs = [(ob.matrix_world @ v.co) for v in me.vertices]
+        low = min([low] + [p.z for p in zs if p.x < 0.0])
+        ev.to_mesh_clear()
+    out += ["", f"- Lowest device point behind the ear line: z = {1000 * low:.0f} mm; top of the coat collar at the "
+            f"back: z = {1000 * collar_top:.0f} mm; gap **{1000 * (low - collar_top):.0f} mm**.", ""]
+    # How much of the camera's frame the respirator blocks, for brim length and tilt.
+    keep = dict(L.FRONT_POD)
+    out += ["## Share of the camera frame (102° × 70°, 16:9) blocked by the respirator", "",
+            "| Brim (mm) | " + " | ".join(f"tilt {t}°" for t in TILTS) + " |",
+            "| ---: | " + " | ".join("---:" for _ in TILTS) + " |"]
+    for brim in (0.0, 0.030):
+        cells = []
+        for tilt in TILTS:
+            L.FRONT_POD.update(brim=brim, tilt_deg=float(tilt))
+            cells.append(f"{100 * blocked_share(resp_tree, L.front_pod_frames()):.1f}%")
+        out.append(f"| {1000 * brim:.0f} | " + " | ".join(cells) + " |")
+    L.FRONT_POD.update(keep)
+    f = L.front_pod_frames()
+    out += ["", f"This build: brim {1000 * L.FRONT_POD['brim']:.0f} mm, tilt {L.FRONT_POD['tilt_deg']:.0f}°, "
+            f"blocked {100 * blocked_share(resp_tree, f):.1f}%. Lens at x = {1000 * f['lens'][0]:.0f} mm "
+            f"(forward of the ear line), z = {1000 * f['lens'][2]:.0f} mm (above it).", ""]
+    # Sanity check that the ray test can see the respirator at all: aim at the visor and a filter.
+    o = Vector(f["lens"]) + Vector(f["ax"]) * 0.003
+    visor = Vector((0.12, 0.0, 0.02))
+    filt = next(ob for ob in RESP if ob.name == "filter-1").matrix_world.translation
+    seen = [resp_tree.ray_cast(o, (t - o).normalized(), 1.0)[0] is not None for t in (visor, filt)]
+    out += [f"Sanity check: rays from the lens aimed at the visor and at a filter hit the respirator: "
+            f"{'yes' if all(seen) else 'NO - check the ray test'} ({seen}). The respirator is simply below "
+            f"and behind the camera's view.", ""]
+    path = os.path.join(HERE, f"respirator_check{'' if LAYOUT == 'v2' else '_' + LAYOUT}.md")
+    open(path, "w").write("\n".join(out))
+    print("\n".join(out))
+
+
 # ----------------------------------------------------------------------------- scene
 def setup_world():
     world = bpy.data.worlds.new("world")
@@ -491,7 +806,7 @@ def setup_world():
     r = scene.render
     r.engine = "CYCLES"
     scene.cycles.device = "CPU"
-    scene.cycles.samples = 24 if QUICK else 96
+    scene.cycles.samples = 16 if QUICK else 64
     try:
         scene.cycles.use_denoising = True
     except Exception:
@@ -543,8 +858,13 @@ build_temple_pods()
 build_rear_pod()
 build_cables()
 dev, tot = build_markers()
+print("layout:", LAYOUT)
 print("device centre of mass (m):", tuple(round(c, 4) for c in dev))
 print("device + headgear centre of mass (m):", tuple(round(c, 4) for c in tot))
+build_respirator(head)
+build_coat()
+build_bench()
+respirator_checks()
 
 XRAY = bpy.data.materials.new("pod-xray")
 try:
@@ -557,25 +877,81 @@ _bsdf.inputs["Base Color"].default_value = (0.25, 0.55, 0.95, 1.0)
 _bsdf.inputs["Roughness"].default_value = 0.2
 _bsdf.inputs["Alpha"].default_value = 0.22
 
+# Everything on the head pitches together for the camera's-eye view.
+rig = link(bpy.data.objects.new("head-rig", None))
+_context = set(MARKERS) | set(COAT) | set(BENCH)
+for ob in list(scene.objects):
+    if ob is rig or ob.type in ("LIGHT", "CAMERA") or ob in _context:
+        continue
+    ob.parent = rig
+
 cam = setup_world()
-views = {
-    "headset-front-left": dict(direction=(0.80, 0.62, 0.30), dist=1.05),
-    "headset-side-balance": dict(direction=(0.0, 1.0, 0.02), dist=1.10, lens=70, markers=True),
-    "headset-rear-right": dict(direction=(-0.78, -0.60, 0.40), dist=1.05),
-    "headset-xray-rear": dict(direction=(-0.70, 0.55, 0.45), dist=0.62, target=(-0.07, 0.0, 0.03), xray=True),
-    "headset-xray-front": dict(direction=(0.80, -0.50, 0.25), dist=0.55, target=(0.07, 0.0, 0.03), xray=True),
-}
+F = L.front_pod_frames()
+PITCH = 25.0  # head bowed 25 degrees, a usual working posture at a bench
+if LAYOUT == "v2":
+    views = {
+        "headset-front-left": dict(direction=(0.80, 0.62, 0.30), dist=1.05),
+        "headset-side-balance": dict(direction=(0.0, 1.0, 0.02), dist=1.10, lens=70, markers=True),
+        "headset-rear-right": dict(direction=(-0.78, -0.60, 0.40), dist=1.05),
+        "headset-xray-rear": dict(direction=(-0.70, 0.55, 0.45), dist=0.62, target=(-0.07, 0.0, 0.05), xray=True),
+        "headset-xray-front": dict(direction=(0.80, -0.50, 0.25), dist=0.55, target=(0.08, 0.0, 0.06), xray=True),
+        "respirator-front-left": dict(direction=(0.80, 0.62, 0.22), dist=1.25, target=(0.0, 0.0, -0.06), resp=True, coat=True),
+        "respirator-side": dict(direction=(0.0, 1.0, 0.0), dist=1.45, target=(0.0, 0.0, -0.08), resp=True, coat=True),
+        "respirator-rear-left": dict(direction=(-0.75, 0.62, 0.35), dist=1.20, target=(0.0, 0.0, -0.05), resp=True, coat=True),
+        "camera-view": dict(camview=True, resp=True, coat=True, bench=True),
+    }
+else:
+    views = {
+        "v1-respirator-conflict": dict(direction=(0.0, 1.0, 0.0), dist=1.45, target=(0.0, 0.0, -0.08), resp=True, coat=True),
+    }
+
+
+def place_camview(cam_obj):
+    R = Matrix.Rotation(math.radians(PITCH), 4, "Y")
+    R3 = R.to_3x3()
+    ax, az = R3 @ Vector(F["ax"]), R3 @ Vector(F["az"])
+    pos = R @ (Vector(F["lens"]) + Vector(F["ax"]) * 0.004)
+    zc = -ax
+    yc = az
+    xc = yc.cross(zc)
+    M = Matrix((tuple(xc), tuple(yc), tuple(zc))).transposed().to_4x4()
+    M.translation = pos
+    cam_obj.matrix_world = M
+    cam_obj.data.sensor_fit = "HORIZONTAL"
+    cam_obj.data.angle = math.radians(102.0)
+    cam_obj.data.clip_start = 0.003
+
+
 for name, v in views.items():
     if VIEWS and name not in VIEWS:
         continue
     for m in MARKERS:
         m.hide_render = not v.get("markers", False)
+    for ob in RESP:
+        ob.hide_render = not v.get("resp", False)
+    for ob in COAT:
+        ob.hide_render = not v.get("coat", False)
+    for ob in BENCH:
+        ob.hide_render = not v.get("bench", False)
     set_xray(v.get("xray", False))
-    look(cam, v["direction"], v["dist"], v.get("target", (0.0, 0.0, -0.005)), v.get("lens", 70))
+    rx, ry = scene.render.resolution_x, scene.render.resolution_y
+    if v.get("camview"):
+        rig.rotation_euler = (0.0, math.radians(PITCH), 0.0)
+        bpy.context.view_layer.update()
+        place_camview(cam)
+        scene.render.resolution_x, scene.render.resolution_y = (640, 360) if QUICK else (1280, 720)
+    else:
+        rig.rotation_euler = (0.0, 0.0, 0.0)
+        cam.data.sensor_fit = "AUTO"
+        cam.data.clip_start = 0.1
+        look(cam, v["direction"], v["dist"], v.get("target", (0.0, 0.0, -0.005)), v.get("lens", 70))
     render(name)
+    scene.render.resolution_x, scene.render.resolution_y = rx, ry
+rig.rotation_euler = (0.0, 0.0, 0.0)
+bpy.context.view_layer.update()
 set_xray(False)
 
-if EXPORT_STL:
+if EXPORT_STL and LAYOUT == "v2":
     for m in MARKERS:
         m.hide_set(True)
     bpy.ops.object.select_all(action="DESELECT")
