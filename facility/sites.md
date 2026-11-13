@@ -62,8 +62,9 @@ Lehi:
 
 ![The five Lehi sites and TI's fabs on a Google Maps capture](out/sites/lehi_map.png)
 
-Coordinates are in [`out/sites/sites.tsv`](out/sites/sites.tsv). Site 12's pin is approximate: Google's geocode for
-its address landed outside Springville, so the pin uses the street's position instead.
+Coordinates are in [`out/sites/sites.tsv`](out/sites/sites.tsv). Site 12's pin is approximate. Google's geocode for
+its address landed south-east of Springville, so the pin was placed from the address grid (1750 W, about 168 N),
+probably within half a kilometre.
 
 ## The Lehi sites
 
@@ -153,7 +154,7 @@ behind it). Google Maps shows no interior photos of it.
 ![Aerial view around 1657 N State St in central Lehi](out/sites/aerial_4.jpg)
 
 Inside: the gym in Gyvr Hub, which is at 1657 N State St (a contributor's 360° photo, April 2024). Painted steel
-beams and a lower roof, as you'd expect at 17-18 ft clear.
+beams and joists under the roof deck; the listing gives 17-18 ft clear.
 
 ![Inside the gym at Gyvr Hub, 1657 N State St: steel beams over a training floor](out/sites/int_4.jpg)
 
@@ -174,10 +175,10 @@ trucks; this end of the park is small-bay light industrial.
 ![Millplace Park from Millpond Dr: a light-industrial building with grade-level doors and box trucks](out/sites/street_5.jpg)
 
 Inside a building on the same street: Momentum Indoor Climbing at 401 S 850 E, a block south of the listing's
-address. Whether it is part of Millplace Park wasn't checked. The photo is from February 2015, before fit-out, and
-shows the long-span steel trusses of these buildings.
+address. Whether it is part of Millplace Park wasn't checked. The photo was taken in February 2015, while the gym was
+being fitted out, and shows long-span steel trusses over a bare slab.
 
-![Inside Momentum Indoor Climbing at 401 S 850 E before fit-out: long steel trusses over a bare slab](out/sites/int_5.jpg)
+![Inside Momentum Indoor Climbing at 401 S 850 E during fit-out: long steel trusses over a bare slab](out/sites/int_5.jpg)
 
 - **The space:** 10,753 ft² available in a 98,000 ft² park, 24 ft clear, three-phase power, two 14 × 14 ft
   grade-level doors, HVAC in the warehouse. $1.05/ft²/month, with the first two months free. Other units at
@@ -204,7 +205,7 @@ Details for each are in the [site table](README.md#2-candidate-sites).
   - Axia Business Park, Herriman (15).
 - **Global Logistics HQ, Spanish Fork (13):** 32-36 ft clear, 4,000 A.
 - **For sale in American Fork (7):** a 47,733 ft² flex and lab building, $8.78M. American Fork Industrial Bldg 1 is
-  next door.
+  about 150 m along the same street.
 - **BlendTec, Orem (10):** 23 ft clear, but it already has clean rooms, compressed air and a generator.
 
 ## How these were made, and what's missing
