@@ -109,8 +109,8 @@ Maps, March 2025). It shows the bare tilt-up shell: open joists and deck, a rack
   - Lehi runs its own power utility.
   - A new tilt-up with room to take 20,000 ft² now and the next bay later.
 - **Height:** 15 units of 9.2 m.
-- **Watch:** it sits where two segments of the Wasatch fault meet at Point of the Mountain. Check the UGS hazard
-  maps (zoning-and-safety.md, item 7).
+- **Watch:** Point of the Mountain, where two segments of the Wasatch fault meet, is about 6 km north. Check the UGS
+  hazard maps for fault and liquefaction zones before signing (zoning-and-safety.md, item 7).
 
 ### 2. Lewis Landing Bldg A, 4170 W 2100 N
 
@@ -137,6 +137,11 @@ June 2026). The courts fill a clear-span bay under open joists.
 
 ![Aerial view of the Thanksgiving Way buildings beside I-15](out/sites/aerial_3.jpg)
 
+4425 is the green-roofed building, now Younique's warehouse (Google Maps photo, December 2023; Traverse Mountain is
+behind it). Google Maps shows no interior photos of it.
+
+![The green-roofed Younique warehouse at 4425 N Thanksgiving Way, from above, with Traverse Mountain behind](out/sites/ext_3.jpg)
+
 - **The space:** 75,300-80,098 ft², 26-33 ft clear, 2,400 A at 480 V, 3 dock-high and 2 grade-level doors, racking
   included. Seen only in snippets, because CityFeet and LoopNet block the runner.
 - **Why it's interesting:** a sublease is usually faster and cheaper than a direct lease, and it is close to
@@ -162,6 +167,11 @@ beams and a lower roof, as you'd expect at 17-18 ft clear.
 ### 5. Millplace Park, 305 S 850 E (east Lehi, by the I-15 Lehi Main St exit)
 
 ![Aerial view of Millplace Park's warehouse buildings by I-15](out/sites/aerial_5.jpg)
+
+From the street: 299 Millpond Dr, which is 850 E (Google Street View, November 2023). Grade-level doors and box
+trucks; this end of the park is small-bay light industrial.
+
+![Millplace Park from Millpond Dr: a light-industrial building with grade-level doors and box trucks](out/sites/street_5.jpg)
 
 Inside a building on the same street: Momentum Indoor Climbing at 401 S 850 E, a block south of the listing's
 address. Whether it is part of Millplace Park wasn't checked. The photo is from February 2015, before fit-out, and
@@ -216,7 +226,5 @@ Details for each are in the [site table](README.md#2-candidate-sites).
 - **Attribution:** "Map data ©2026 Google" is printed on both maps, and each photo carries its source, contributor
   and date.
 - **Not done:**
-  - Street-level views of sites 3 and 5. At site 3, Google returned a 2016 contributor photo of a car park. At
-    site 5 it returned a contributor photo that may not show the park.
-  - Interiors for site 3.
+  - An interior for site 3, since Google Maps has none.
   - Any listing's own gallery. Crexi opens only through the Pi's tunnel, and LoopNet not at all.
