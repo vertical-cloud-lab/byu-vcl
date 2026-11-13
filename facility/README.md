@@ -48,6 +48,12 @@ code; the support rooms are one illustrative way to use the rest of the floor.
   - **For a purpose-built high bay later:** Eagle Mountain industrial land next to a 200 MW substation.
   - **Already handling gas or hazardous materials:** the BlendTec building in Orem (clean rooms, compressed air,
     generator) and TI's Lehi fabs.
+- **Travel times ([`travel-times.md`](travel-times.md)):**
+  - **From Lehi at midday:** 22-45 min to the BYU Engineering Building, 35-60 to the U of U's Warnock building, 18-35
+    to Provo Airport and 26-45 to SLC International.
+  - **Rush hour** pushes the top of Google's range to 45-100 min, worst for Lehi to the U of U at 7:30 AM and back
+    at 5:00 PM.
+  - **Transit** takes 1¼-2 hours from most of Lehi, and five sites, Holbrook among them, have no route at all.
 - **Renovate first, as Sterling suggested.**
   - **Lease and fit out:** about $124-440/ft² of fit-out on top of $10-14/ft²/yr rent, ready in 6-20 months.
   - **Build new:** about $370-854/ft², 2-3 years.

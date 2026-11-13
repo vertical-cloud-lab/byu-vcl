@@ -7,6 +7,10 @@ visualizations*, these are the specific buildings to look at first, with Lehi in
 [`zoning-and-safety.md`](zoning-and-safety.md). **Nobody was contacted.** Listings were read on 2026-11-12 and
 2026-11-13 and change weekly.
 
+Rush-hour and off-peak drive and transit times from every site below to the BYU Engineering Building, the U of U
+Warnock Engineering Building, Provo Airport and SLC International are in [`travel-times.md`](travel-times.md), with
+the same site numbers as the maps.
+
 ## What #343 holds so far
 
 - **The ask (Sterling, 2026-11-12).** If we built a facility like the #303 visualizations

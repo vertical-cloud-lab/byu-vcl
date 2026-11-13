@@ -1,0 +1,194 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1316" height="592" viewBox="0 0 1316 592" font-family="Helvetica, Arial, sans-serif">
+<rect width="1316" height="592" fill="#fcfcfb"/>
+<text x="16" y="30" font-size="19" font-weight="700" fill="#0b0b0b">Drive time from each candidate site, minutes (Google's typical range, Tue 17 Nov 2026)</text>
+<rect x="16" y="48" width="34" height="7" rx="3.5" fill="#2a78d6"/><text x="58" y="56" font-size="14" fill="#0b0b0b">Midday, 1:00 PM, site to destination</text>
+<rect x="350" y="48" width="34" height="7" rx="3.5" fill="#eb6834"/><text x="392" y="56" font-size="14" fill="#0b0b0b">Rush hours, 7:30 AM and 5:00 PM, both directions: lowest to highest</text>
+<text x="300.0" y="94" font-size="14" font-weight="700" fill="#0b0b0b">BYU Engineering Bldg</text>
+<line x1="300.0" y1="104" x2="300.0" y2="548" stroke="#b9b8b3" stroke-width="1"/>
+<text x="300.0" y="564" font-size="12" fill="#52514e" text-anchor="middle">0</text>
+<line x1="353.8" y1="104" x2="353.8" y2="548" stroke="#e6e5e1" stroke-width="1"/>
+<text x="353.8" y="564" font-size="12" fill="#52514e" text-anchor="middle">30</text>
+<line x1="407.5" y1="104" x2="407.5" y2="548" stroke="#e6e5e1" stroke-width="1"/>
+<text x="407.5" y="564" font-size="12" fill="#52514e" text-anchor="middle">60</text>
+<line x1="461.2" y1="104" x2="461.2" y2="548" stroke="#e6e5e1" stroke-width="1"/>
+<text x="461.2" y="564" font-size="12" fill="#52514e" text-anchor="middle">90</text>
+<line x1="515.0" y1="104" x2="515.0" y2="548" stroke="#e6e5e1" stroke-width="1"/>
+<text x="515.0" y="564" font-size="12" fill="#52514e" text-anchor="middle">120</text>
+<text x="551.0" y="94" font-size="14" font-weight="700" fill="#0b0b0b">U of U Warnock Bldg</text>
+<line x1="551.0" y1="104" x2="551.0" y2="548" stroke="#b9b8b3" stroke-width="1"/>
+<text x="551.0" y="564" font-size="12" fill="#52514e" text-anchor="middle">0</text>
+<line x1="604.8" y1="104" x2="604.8" y2="548" stroke="#e6e5e1" stroke-width="1"/>
+<text x="604.8" y="564" font-size="12" fill="#52514e" text-anchor="middle">30</text>
+<line x1="658.5" y1="104" x2="658.5" y2="548" stroke="#e6e5e1" stroke-width="1"/>
+<text x="658.5" y="564" font-size="12" fill="#52514e" text-anchor="middle">60</text>
+<line x1="712.2" y1="104" x2="712.2" y2="548" stroke="#e6e5e1" stroke-width="1"/>
+<text x="712.2" y="564" font-size="12" fill="#52514e" text-anchor="middle">90</text>
+<line x1="766.0" y1="104" x2="766.0" y2="548" stroke="#e6e5e1" stroke-width="1"/>
+<text x="766.0" y="564" font-size="12" fill="#52514e" text-anchor="middle">120</text>
+<text x="802.0" y="94" font-size="14" font-weight="700" fill="#0b0b0b">Provo Airport</text>
+<line x1="802.0" y1="104" x2="802.0" y2="548" stroke="#b9b8b3" stroke-width="1"/>
+<text x="802.0" y="564" font-size="12" fill="#52514e" text-anchor="middle">0</text>
+<line x1="855.8" y1="104" x2="855.8" y2="548" stroke="#e6e5e1" stroke-width="1"/>
+<text x="855.8" y="564" font-size="12" fill="#52514e" text-anchor="middle">30</text>
+<line x1="909.5" y1="104" x2="909.5" y2="548" stroke="#e6e5e1" stroke-width="1"/>
+<text x="909.5" y="564" font-size="12" fill="#52514e" text-anchor="middle">60</text>
+<line x1="963.2" y1="104" x2="963.2" y2="548" stroke="#e6e5e1" stroke-width="1"/>
+<text x="963.2" y="564" font-size="12" fill="#52514e" text-anchor="middle">90</text>
+<line x1="1017.0" y1="104" x2="1017.0" y2="548" stroke="#e6e5e1" stroke-width="1"/>
+<text x="1017.0" y="564" font-size="12" fill="#52514e" text-anchor="middle">120</text>
+<text x="1053.0" y="94" font-size="14" font-weight="700" fill="#0b0b0b">SLC Airport</text>
+<line x1="1053.0" y1="104" x2="1053.0" y2="548" stroke="#b9b8b3" stroke-width="1"/>
+<text x="1053.0" y="564" font-size="12" fill="#52514e" text-anchor="middle">0</text>
+<line x1="1106.8" y1="104" x2="1106.8" y2="548" stroke="#e6e5e1" stroke-width="1"/>
+<text x="1106.8" y="564" font-size="12" fill="#52514e" text-anchor="middle">30</text>
+<line x1="1160.5" y1="104" x2="1160.5" y2="548" stroke="#e6e5e1" stroke-width="1"/>
+<text x="1160.5" y="564" font-size="12" fill="#52514e" text-anchor="middle">60</text>
+<line x1="1214.2" y1="104" x2="1214.2" y2="548" stroke="#e6e5e1" stroke-width="1"/>
+<text x="1214.2" y="564" font-size="12" fill="#52514e" text-anchor="middle">90</text>
+<line x1="1268.0" y1="104" x2="1268.0" y2="548" stroke="#e6e5e1" stroke-width="1"/>
+<text x="1268.0" y="564" font-size="12" fill="#52514e" text-anchor="middle">120</text>
+<text x="16" y="110" font-size="11" font-weight="700" fill="#52514e" letter-spacing="0.5">LEHI</text>
+<text x="16" y="268" font-size="11" font-weight="700" fill="#52514e" letter-spacing="0.5">UTAH COUNTY, SOUTH OF LEHI</text>
+<text x="16" y="482" font-size="11" font-weight="700" fill="#52514e" letter-spacing="0.5">SALT LAKE COUNTY</text>
+<text x="16" y="128" font-size="13" fill="#0b0b0b">1  Holbrook Bldg 5 (and 2)</text>
+<text x="288" y="128" font-size="12" fill="#52514e" text-anchor="end">Lehi</text>
+<rect x="350.2" y="116" width="30.5" height="7" rx="3.5" fill="#2a78d6"><title>Holbrook Industrial Park Bldg 5 to BYU Engineering Bldg, 1 PM: 28-45 min</title></rect>
+<rect x="350.2" y="125" width="84.2" height="7" rx="3.5" fill="#eb6834"><title>Holbrook Industrial Park Bldg 5 and BYU Engineering Bldg, rush hours: 28-75 min</title></rect>
+<rect x="613.7" y="116" width="44.8" height="7" rx="3.5" fill="#2a78d6"><title>Holbrook Industrial Park Bldg 5 to U of U Warnock Bldg, 1 PM: 35-60 min</title></rect>
+<rect x="613.7" y="125" width="116.5" height="7" rx="3.5" fill="#eb6834"><title>Holbrook Industrial Park Bldg 5 and U of U Warnock Bldg, rush hours: 35-100 min</title></rect>
+<rect x="845.0" y="116" width="19.7" height="7" rx="3.5" fill="#2a78d6"><title>Holbrook Industrial Park Bldg 5 to Provo Airport, 1 PM: 24-35 min</title></rect>
+<rect x="848.6" y="125" width="69.9" height="7" rx="3.5" fill="#eb6834"><title>Holbrook Industrial Park Bldg 5 and Provo Airport, rush hours: 26-65 min</title></rect>
+<rect x="1106.8" y="116" width="26.9" height="7" rx="3.5" fill="#2a78d6"><title>Holbrook Industrial Park Bldg 5 to SLC Airport, 1 PM: 30-45 min</title></rect>
+<rect x="1106.8" y="125" width="89.6" height="7" rx="3.5" fill="#eb6834"><title>Holbrook Industrial Park Bldg 5 and SLC Airport, rush hours: 30-80 min</title></rect>
+<text x="16" y="156" font-size="13" fill="#0b0b0b">2  Lewis Landing Bldg A</text>
+<text x="288" y="156" font-size="12" fill="#52514e" text-anchor="end">Lehi</text>
+<rect x="350.2" y="144" width="30.5" height="7" rx="3.5" fill="#2a78d6"><title>Lewis Landing Bldg A to BYU Engineering Bldg, 1 PM: 28-45 min</title></rect>
+<rect x="350.2" y="153" width="75.2" height="7" rx="3.5" fill="#eb6834"><title>Lewis Landing Bldg A and BYU Engineering Bldg, rush hours: 28-70 min</title></rect>
+<rect x="613.7" y="144" width="35.8" height="7" rx="3.5" fill="#2a78d6"><title>Lewis Landing Bldg A to U of U Warnock Bldg, 1 PM: 35-55 min</title></rect>
+<rect x="613.7" y="153" width="116.5" height="7" rx="3.5" fill="#eb6834"><title>Lewis Landing Bldg A and U of U Warnock Bldg, rush hours: 35-100 min</title></rect>
+<rect x="845.0" y="144" width="19.7" height="7" rx="3.5" fill="#2a78d6"><title>Lewis Landing Bldg A to Provo Airport, 1 PM: 24-35 min</title></rect>
+<rect x="848.6" y="153" width="69.9" height="7" rx="3.5" fill="#eb6834"><title>Lewis Landing Bldg A and Provo Airport, rush hours: 26-65 min</title></rect>
+<rect x="1106.8" y="144" width="26.9" height="7" rx="3.5" fill="#2a78d6"><title>Lewis Landing Bldg A to SLC Airport, 1 PM: 30-45 min</title></rect>
+<rect x="1106.8" y="153" width="98.5" height="7" rx="3.5" fill="#eb6834"><title>Lewis Landing Bldg A and SLC Airport, rush hours: 30-85 min</title></rect>
+<text x="16" y="184" font-size="13" fill="#0b0b0b">3  4425 N Thanksgiving Way</text>
+<text x="288" y="184" font-size="12" fill="#52514e" text-anchor="end">Lehi</text>
+<rect x="346.6" y="172" width="25.1" height="7" rx="3.5" fill="#2a78d6"><title>4425 N Thanksgiving Way to BYU Engineering Bldg, 1 PM: 26-40 min</title></rect>
+<rect x="346.6" y="181" width="69.9" height="7" rx="3.5" fill="#eb6834"><title>4425 N Thanksgiving Way and BYU Engineering Bldg, rush hours: 26-65 min</title></rect>
+<rect x="613.7" y="172" width="26.9" height="7" rx="3.5" fill="#2a78d6"><title>4425 N Thanksgiving Way to U of U Warnock Bldg, 1 PM: 35-50 min</title></rect>
+<rect x="604.8" y="181" width="98.5" height="7" rx="3.5" fill="#eb6834"><title>4425 N Thanksgiving Way and U of U Warnock Bldg, rush hours: 30-85 min</title></rect>
+<rect x="841.4" y="172" width="14.3" height="7" rx="3.5" fill="#2a78d6"><title>4425 N Thanksgiving Way to Provo Airport, 1 PM: 22-30 min</title></rect>
+<rect x="841.4" y="181" width="59.1" height="7" rx="3.5" fill="#eb6834"><title>4425 N Thanksgiving Way and Provo Airport, rush hours: 22-55 min</title></rect>
+<rect x="1099.6" y="172" width="16.1" height="7" rx="3.5" fill="#2a78d6"><title>4425 N Thanksgiving Way to SLC Airport, 1 PM: 26-35 min</title></rect>
+<rect x="1106.8" y="181" width="71.7" height="7" rx="3.5" fill="#eb6834"><title>4425 N Thanksgiving Way and SLC Airport, rush hours: 30-70 min</title></rect>
+<text x="16" y="212" font-size="13" fill="#0b0b0b">4  1657 N State St</text>
+<text x="288" y="212" font-size="12" fill="#52514e" text-anchor="end">Lehi</text>
+<rect x="343.0" y="200" width="19.7" height="7" rx="3.5" fill="#2a78d6"><title>1657 N State St to BYU Engineering Bldg, 1 PM: 24-35 min</title></rect>
+<rect x="343.0" y="209" width="64.5" height="7" rx="3.5" fill="#eb6834"><title>1657 N State St and BYU Engineering Bldg, rush hours: 24-60 min</title></rect>
+<rect x="613.7" y="200" width="26.9" height="7" rx="3.5" fill="#2a78d6"><title>1657 N State St to U of U Warnock Bldg, 1 PM: 35-50 min</title></rect>
+<rect x="613.7" y="209" width="89.6" height="7" rx="3.5" fill="#eb6834"><title>1657 N State St and U of U Warnock Bldg, rush hours: 35-85 min</title></rect>
+<rect x="837.8" y="200" width="14.3" height="7" rx="3.5" fill="#2a78d6"><title>1657 N State St to Provo Airport, 1 PM: 20-28 min</title></rect>
+<rect x="837.8" y="209" width="53.8" height="7" rx="3.5" fill="#eb6834"><title>1657 N State St and Provo Airport, rush hours: 20-50 min</title></rect>
+<rect x="1099.6" y="200" width="16.1" height="7" rx="3.5" fill="#2a78d6"><title>1657 N State St to SLC Airport, 1 PM: 26-35 min</title></rect>
+<rect x="1106.8" y="209" width="80.6" height="7" rx="3.5" fill="#eb6834"><title>1657 N State St and SLC Airport, rush hours: 30-75 min</title></rect>
+<text x="16" y="240" font-size="13" fill="#0b0b0b">5  Millplace Park</text>
+<text x="288" y="240" font-size="12" fill="#52514e" text-anchor="end">Lehi</text>
+<rect x="339.4" y="228" width="23.3" height="7" rx="3.5" fill="#2a78d6"><title>Millplace Park to BYU Engineering Bldg, 1 PM: 22-35 min</title></rect>
+<rect x="335.8" y="237" width="62.7" height="7" rx="3.5" fill="#eb6834"><title>Millplace Park and BYU Engineering Bldg, rush hours: 20-55 min</title></rect>
+<rect x="613.7" y="228" width="26.9" height="7" rx="3.5" fill="#2a78d6"><title>Millplace Park to U of U Warnock Bldg, 1 PM: 35-50 min</title></rect>
+<rect x="613.7" y="237" width="89.6" height="7" rx="3.5" fill="#eb6834"><title>Millplace Park and U of U Warnock Bldg, rush hours: 35-85 min</title></rect>
+<rect x="834.2" y="228" width="10.8" height="7" rx="3.5" fill="#2a78d6"><title>Millplace Park to Provo Airport, 1 PM: 18-24 min</title></rect>
+<rect x="834.2" y="237" width="48.4" height="7" rx="3.5" fill="#eb6834"><title>Millplace Park and Provo Airport, rush hours: 18-45 min</title></rect>
+<rect x="1103.2" y="228" width="21.5" height="7" rx="3.5" fill="#2a78d6"><title>Millplace Park to SLC Airport, 1 PM: 28-40 min</title></rect>
+<rect x="1106.8" y="237" width="80.6" height="7" rx="3.5" fill="#eb6834"><title>Millplace Park and SLC Airport, rush hours: 30-75 min</title></rect>
+<text x="16" y="286" font-size="13" fill="#0b0b0b">7  Fluke and AF Industrial 1</text>
+<text x="288" y="286" font-size="12" fill="#52514e" text-anchor="end">American Fork</text>
+<rect x="335.8" y="274" width="17.9" height="7" rx="3.5" fill="#2a78d6"><title>Fluke Industrial and AF Industrial Bldg 1 to BYU Engineering Bldg, 1 PM: 20-30 min</title></rect>
+<rect x="335.8" y="283" width="53.8" height="7" rx="3.5" fill="#eb6834"><title>Fluke Industrial and AF Industrial Bldg 1 and BYU Engineering Bldg, rush hours: 20-50 min</title></rect>
+<rect x="622.7" y="274" width="26.9" height="7" rx="3.5" fill="#2a78d6"><title>Fluke Industrial and AF Industrial Bldg 1 to U of U Warnock Bldg, 1 PM: 40-55 min</title></rect>
+<rect x="622.7" y="283" width="107.5" height="7" rx="3.5" fill="#eb6834"><title>Fluke Industrial and AF Industrial Bldg 1 and U of U Warnock Bldg, rush hours: 40-100 min</title></rect>
+<rect x="834.2" y="274" width="10.8" height="7" rx="3.5" fill="#2a78d6"><title>Fluke Industrial and AF Industrial Bldg 1 to Provo Airport, 1 PM: 18-24 min</title></rect>
+<rect x="834.2" y="283" width="30.5" height="7" rx="3.5" fill="#eb6834"><title>Fluke Industrial and AF Industrial Bldg 1 and Provo Airport, rush hours: 18-35 min</title></rect>
+<rect x="1115.7" y="274" width="9.0" height="7" rx="3.5" fill="#2a78d6"><title>Fluke Industrial and AF Industrial Bldg 1 to SLC Airport, 1 PM: 35-40 min</title></rect>
+<rect x="1115.7" y="283" width="89.6" height="7" rx="3.5" fill="#eb6834"><title>Fluke Industrial and AF Industrial Bldg 1 and SLC Airport, rush hours: 35-85 min</title></rect>
+<text x="16" y="314" font-size="13" fill="#0b0b0b">8  Catalyst Business Park</text>
+<text x="288" y="314" font-size="12" fill="#52514e" text-anchor="end">American Fork</text>
+<rect x="335.8" y="302" width="17.9" height="7" rx="3.5" fill="#2a78d6"><title>Catalyst Business Park to BYU Engineering Bldg, 1 PM: 20-30 min</title></rect>
+<rect x="335.8" y="311" width="53.8" height="7" rx="3.5" fill="#eb6834"><title>Catalyst Business Park and BYU Engineering Bldg, rush hours: 20-50 min</title></rect>
+<rect x="622.7" y="302" width="35.8" height="7" rx="3.5" fill="#2a78d6"><title>Catalyst Business Park to U of U Warnock Bldg, 1 PM: 40-60 min</title></rect>
+<rect x="622.7" y="311" width="107.5" height="7" rx="3.5" fill="#eb6834"><title>Catalyst Business Park and U of U Warnock Bldg, rush hours: 40-100 min</title></rect>
+<rect x="834.2" y="302" width="10.8" height="7" rx="3.5" fill="#2a78d6"><title>Catalyst Business Park to Provo Airport, 1 PM: 18-24 min</title></rect>
+<rect x="834.2" y="311" width="30.5" height="7" rx="3.5" fill="#eb6834"><title>Catalyst Business Park and Provo Airport, rush hours: 18-35 min</title></rect>
+<rect x="1115.7" y="302" width="17.9" height="7" rx="3.5" fill="#2a78d6"><title>Catalyst Business Park to SLC Airport, 1 PM: 35-45 min</title></rect>
+<rect x="1115.7" y="311" width="98.5" height="7" rx="3.5" fill="#eb6834"><title>Catalyst Business Park and SLC Airport, rush hours: 35-90 min</title></rect>
+<text x="16" y="342" font-size="13" fill="#0b0b0b">9  310 N Geneva Rd</text>
+<text x="288" y="342" font-size="12" fill="#52514e" text-anchor="end">Lindon</text>
+<rect x="332.2" y="330" width="17.9" height="7" rx="3.5" fill="#2a78d6"><title>310 N Geneva Rd to BYU Engineering Bldg, 1 PM: 18-28 min</title></rect>
+<rect x="328.7" y="339" width="52.0" height="7" rx="3.5" fill="#eb6834"><title>310 N Geneva Rd and BYU Engineering Bldg, rush hours: 16-45 min</title></rect>
+<rect x="622.7" y="330" width="35.8" height="7" rx="3.5" fill="#2a78d6"><title>310 N Geneva Rd to U of U Warnock Bldg, 1 PM: 40-60 min</title></rect>
+<rect x="622.7" y="339" width="125.4" height="7" rx="3.5" fill="#eb6834"><title>310 N Geneva Rd and U of U Warnock Bldg, rush hours: 40-110 min</title></rect>
+<rect x="827.1" y="330" width="14.3" height="7" rx="3.5" fill="#2a78d6"><title>310 N Geneva Rd to Provo Airport, 1 PM: 14-22 min</title></rect>
+<rect x="827.1" y="339" width="28.7" height="7" rx="3.5" fill="#eb6834"><title>310 N Geneva Rd and Provo Airport, rush hours: 14-30 min</title></rect>
+<rect x="1115.7" y="330" width="26.9" height="7" rx="3.5" fill="#2a78d6"><title>310 N Geneva Rd to SLC Airport, 1 PM: 35-50 min</title></rect>
+<rect x="1124.7" y="339" width="107.5" height="7" rx="3.5" fill="#eb6834"><title>310 N Geneva Rd and SLC Airport, rush hours: 40-100 min</title></rect>
+<text x="16" y="370" font-size="13" fill="#0b0b0b">10  BlendTec Building</text>
+<text x="288" y="370" font-size="12" fill="#52514e" text-anchor="end">Orem</text>
+<rect x="325.1" y="358" width="14.3" height="7" rx="3.5" fill="#2a78d6"><title>BlendTec Building to BYU Engineering Bldg, 1 PM: 14-22 min</title></rect>
+<rect x="325.1" y="367" width="17.9" height="7" rx="3.5" fill="#eb6834"><title>BlendTec Building and BYU Engineering Bldg, rush hours: 14-24 min</title></rect>
+<rect x="631.6" y="358" width="35.8" height="7" rx="3.5" fill="#2a78d6"><title>BlendTec Building to U of U Warnock Bldg, 1 PM: 45-65 min</title></rect>
+<rect x="631.6" y="367" width="116.5" height="7" rx="3.5" fill="#eb6834"><title>BlendTec Building and U of U Warnock Bldg, rush hours: 45-110 min</title></rect>
+<rect x="823.5" y="358" width="7.0" height="7" rx="3.5" fill="#2a78d6"><title>BlendTec Building to Provo Airport, 1 PM: 12-12 min</title></rect>
+<rect x="819.9" y="367" width="14.3" height="7" rx="3.5" fill="#eb6834"><title>BlendTec Building and Provo Airport, rush hours: 10-18 min</title></rect>
+<rect x="1124.7" y="358" width="17.9" height="7" rx="3.5" fill="#2a78d6"><title>BlendTec Building to SLC Airport, 1 PM: 40-50 min</title></rect>
+<rect x="1124.7" y="367" width="107.5" height="7" rx="3.5" fill="#eb6834"><title>BlendTec Building and SLC Airport, rush hours: 40-100 min</title></rect>
+<text x="16" y="398" font-size="13" fill="#0b0b0b">11  Provo Manufacturing Facility</text>
+<text x="288" y="398" font-size="12" fill="#52514e" text-anchor="end">Provo</text>
+<rect x="312.5" y="386" width="9.0" height="7" rx="3.5" fill="#2a78d6"><title>Provo Manufacturing Facility to BYU Engineering Bldg, 1 PM: 7-12 min</title></rect>
+<rect x="312.5" y="395" width="16.1" height="7" rx="3.5" fill="#eb6834"><title>Provo Manufacturing Facility and BYU Engineering Bldg, rush hours: 7-16 min</title></rect>
+<rect x="640.6" y="386" width="35.8" height="7" rx="3.5" fill="#2a78d6"><title>Provo Manufacturing Facility to U of U Warnock Bldg, 1 PM: 50-70 min</title></rect>
+<rect x="640.6" y="395" width="107.5" height="7" rx="3.5" fill="#eb6834"><title>Provo Manufacturing Facility and U of U Warnock Bldg, rush hours: 50-110 min</title></rect>
+<rect x="816.3" y="386" width="10.8" height="7" rx="3.5" fill="#2a78d6"><title>Provo Manufacturing Facility to Provo Airport, 1 PM: 8-14 min</title></rect>
+<rect x="816.3" y="395" width="10.8" height="7" rx="3.5" fill="#eb6834"><title>Provo Manufacturing Facility and Provo Airport, rush hours: 8-14 min</title></rect>
+<rect x="1124.7" y="386" width="26.9" height="7" rx="3.5" fill="#2a78d6"><title>Provo Manufacturing Facility to SLC Airport, 1 PM: 40-55 min</title></rect>
+<rect x="1142.6" y="395" width="107.5" height="7" rx="3.5" fill="#eb6834"><title>Provo Manufacturing Facility and SLC Airport, rush hours: 50-110 min</title></rect>
+<text x="16" y="426" font-size="13" fill="#0b0b0b">12  Center Street Industrial</text>
+<text x="288" y="426" font-size="12" fill="#52514e" text-anchor="end">Springville</text>
+<rect x="325.1" y="414" width="10.8" height="7" rx="3.5" fill="#2a78d6"><title>Center Street Industrial to BYU Engineering Bldg, 1 PM: 14-20 min</title></rect>
+<rect x="325.1" y="423" width="14.3" height="7" rx="3.5" fill="#eb6834"><title>Center Street Industrial and BYU Engineering Bldg, rush hours: 14-22 min</title></rect>
+<rect x="640.6" y="414" width="35.8" height="7" rx="3.5" fill="#2a78d6"><title>Center Street Industrial to U of U Warnock Bldg, 1 PM: 50-70 min</title></rect>
+<rect x="640.6" y="423" width="125.4" height="7" rx="3.5" fill="#eb6834"><title>Center Street Industrial and U of U Warnock Bldg, rush hours: 50-120 min</title></rect>
+<rect x="819.9" y="414" width="7.2" height="7" rx="3.5" fill="#2a78d6"><title>Center Street Industrial to Provo Airport, 1 PM: 10-14 min</title></rect>
+<rect x="819.9" y="423" width="14.3" height="7" rx="3.5" fill="#eb6834"><title>Center Street Industrial and Provo Airport, rush hours: 10-18 min</title></rect>
+<rect x="1133.6" y="414" width="17.9" height="7" rx="3.5" fill="#2a78d6"><title>Center Street Industrial to SLC Airport, 1 PM: 45-55 min</title></rect>
+<rect x="1142.6" y="423" width="107.5" height="7" rx="3.5" fill="#eb6834"><title>Center Street Industrial and SLC Airport, rush hours: 50-110 min</title></rect>
+<text x="16" y="454" font-size="13" fill="#0b0b0b">13  Global Logistics HQ</text>
+<text x="288" y="454" font-size="12" fill="#52514e" text-anchor="end">Spanish Fork</text>
+<rect x="332.2" y="442" width="14.3" height="7" rx="3.5" fill="#2a78d6"><title>Global Logistics HQ to BYU Engineering Bldg, 1 PM: 18-26 min</title></rect>
+<rect x="332.2" y="451" width="39.4" height="7" rx="3.5" fill="#eb6834"><title>Global Logistics HQ and BYU Engineering Bldg, rush hours: 18-40 min</title></rect>
+<rect x="649.5" y="442" width="35.8" height="7" rx="3.5" fill="#2a78d6"><title>Global Logistics HQ to U of U Warnock Bldg, 1 PM: 55-75 min</title></rect>
+<rect x="649.5" y="451" width="116.5" height="7" rx="3.5" fill="#eb6834"><title>Global Logistics HQ and U of U Warnock Bldg, rush hours: 55-120 min</title></rect>
+<rect x="830.7" y="442" width="7.2" height="7" rx="3.5" fill="#2a78d6"><title>Global Logistics HQ to Provo Airport, 1 PM: 16-20 min</title></rect>
+<rect x="830.7" y="451" width="14.3" height="7" rx="3.5" fill="#eb6834"><title>Global Logistics HQ and Provo Airport, rush hours: 16-24 min</title></rect>
+<rect x="1142.6" y="442" width="17.9" height="7" rx="3.5" fill="#2a78d6"><title>Global Logistics HQ to SLC Airport, 1 PM: 50-60 min</title></rect>
+<rect x="1151.5" y="451" width="98.5" height="7" rx="3.5" fill="#eb6834"><title>Global Logistics HQ and SLC Airport, rush hours: 55-110 min</title></rect>
+<text x="16" y="500" font-size="13" fill="#0b0b0b">14  Mountain Point Bldg 3</text>
+<text x="288" y="500" font-size="12" fill="#52514e" text-anchor="end">Bluffdale</text>
+<rect x="350.2" y="488" width="21.5" height="7" rx="3.5" fill="#2a78d6"><title>Mountain Point Bldg 3 to BYU Engineering Bldg, 1 PM: 28-40 min</title></rect>
+<rect x="353.8" y="497" width="71.7" height="7" rx="3.5" fill="#eb6834"><title>Mountain Point Bldg 3 and BYU Engineering Bldg, rush hours: 30-70 min</title></rect>
+<rect x="604.8" y="488" width="26.9" height="7" rx="3.5" fill="#2a78d6"><title>Mountain Point Bldg 3 to U of U Warnock Bldg, 1 PM: 30-45 min</title></rect>
+<rect x="601.2" y="497" width="93.2" height="7" rx="3.5" fill="#eb6834"><title>Mountain Point Bldg 3 and U of U Warnock Bldg, rush hours: 28-80 min</title></rect>
+<rect x="848.6" y="488" width="16.1" height="7" rx="3.5" fill="#2a78d6"><title>Mountain Point Bldg 3 to Provo Airport, 1 PM: 26-35 min</title></rect>
+<rect x="848.6" y="497" width="60.9" height="7" rx="3.5" fill="#eb6834"><title>Mountain Point Bldg 3 and Provo Airport, rush hours: 26-60 min</title></rect>
+<rect x="1092.4" y="488" width="14.3" height="7" rx="3.5" fill="#2a78d6"><title>Mountain Point Bldg 3 to SLC Airport, 1 PM: 22-30 min</title></rect>
+<rect x="1099.6" y="497" width="69.9" height="7" rx="3.5" fill="#eb6834"><title>Mountain Point Bldg 3 and SLC Airport, rush hours: 26-65 min</title></rect>
+<text x="16" y="528" font-size="13" fill="#0b0b0b">15  Axia Business Park</text>
+<text x="288" y="528" font-size="12" fill="#52514e" text-anchor="end">Herriman</text>
+<rect x="353.8" y="516" width="35.8" height="7" rx="3.5" fill="#2a78d6"><title>Axia Business Park to BYU Engineering Bldg, 1 PM: 30-50 min</title></rect>
+<rect x="353.8" y="525" width="89.6" height="7" rx="3.5" fill="#eb6834"><title>Axia Business Park and BYU Engineering Bldg, rush hours: 30-80 min</title></rect>
+<rect x="613.7" y="516" width="35.8" height="7" rx="3.5" fill="#2a78d6"><title>Axia Business Park to U of U Warnock Bldg, 1 PM: 35-55 min</title></rect>
+<rect x="613.7" y="525" width="98.5" height="7" rx="3.5" fill="#eb6834"><title>Axia Business Park and U of U Warnock Bldg, rush hours: 35-90 min</title></rect>
+<rect x="852.2" y="516" width="21.5" height="7" rx="3.5" fill="#2a78d6"><title>Axia Business Park to Provo Airport, 1 PM: 28-40 min</title></rect>
+<rect x="855.8" y="525" width="71.7" height="7" rx="3.5" fill="#eb6834"><title>Axia Business Park and Provo Airport, rush hours: 30-70 min</title></rect>
+<rect x="1103.2" y="516" width="21.5" height="7" rx="3.5" fill="#2a78d6"><title>Axia Business Park to SLC Airport, 1 PM: 28-40 min</title></rect>
+<rect x="1103.2" y="525" width="93.2" height="7" rx="3.5" fill="#eb6834"><title>Axia Business Park and SLC Airport, rush hours: 28-80 min</title></rect>
+<text x="16" y="584" font-size="11" fill="#52514e">Source: Google Maps directions with Depart at set, read 2026-11-13. Each bar spans Google's "typically X to Y min" for the first route listed. Numbers are the map's site numbers.</text>
+</svg>
