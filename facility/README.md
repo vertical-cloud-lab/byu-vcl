@@ -12,6 +12,9 @@ contacts and numbers on the issue.
 [`drafts.md`](drafts.md) are drafts for Sterling and Gage. Everything below was read on 2026-11-12 from public pages.
 Listings change quickly, so check a site's status before relying on it.
 
+**Specific sites, Lehi first, with maps from Salt Lake City to Provo and aerial views:** [`sites.md`](sites.md). It
+also summarizes the #343 thread so far, and treats height as a variable rather than a cut-off.
+
 Point people at the visualizations:
 [the warehouse version](https://www.youtube.com/watch?v=3IrSB9-meN8) (MiR250 + UR10e units on an open warehouse
 floor), [the lab set up from scratch in an empty bay](https://www.youtube.com/watch?v=oMvGIGQOKA4), and
