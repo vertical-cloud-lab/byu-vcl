@@ -163,7 +163,8 @@ cell is **7:30 AM · 1:00 PM · 5:00 PM** in hours and minutes:
 - **1:00 PM and 5:00 PM** run from the site to the destination.
 - Each is the trip time of the first option Google lists after that departure time, walking included. It doesn't
   count waiting for that option to leave.
-- "none" means Google found no transit route at all.
+- "none" means Google's planner found no transit route at all. A bike or a short ride to a FrontRunner station
+  might still make one.
 
 What it shows:
 
