@@ -45,7 +45,7 @@ import numpy as np
 HERE = Path(__file__).resolve().parent
 REFS = HERE / "refs"
 OUT = HERE / "out" / "register"
-MODULES = ["instruments", "instruments_char", "instruments_lab", "services", "fab_metal", "fab_resin", "fab_pcb"]
+MODULES = ["instruments_repowder", "instruments", "instruments_char", "instruments_lab", "services", "fab_metal", "fab_resin", "fab_pcb"]
 
 
 # ============================================================================================ anchors and cameras
