@@ -67,13 +67,30 @@ its address landed outside Springville, so the pin uses the street's position in
 
 ## The Lehi sites
 
-The aerial views are Google Maps satellite captures. **The imagery predates some of these buildings**: Holbrook
-Bldg 5 shows as a construction pad, and Lewis Landing's lot is still empty. Interior photos are in the listings
-linked under each site. They were not copied into this public repo, and this run didn't capture them (see the end).
+Every picture below was captured from Google Maps in headed Chrome, and each one has its source and date printed on
+it.
+- **Aerial views** are Google's satellite imagery. **The imagery predates some of these buildings**: Holbrook Bldg 5
+  shows as a construction pad, and Lewis Landing's lot is still empty.
+- **Street-level views** are Google Street View, or a contributor's 360° photo where Google had none.
+- **Interiors:**
+  - **No listing gallery was used,** because Crexi and LoopNet block the runner.
+  - **The interiors come from Google Maps photos posted by the businesses that rent in these buildings.** They show
+    what the shell is like inside: height, joists, columns and lighting.
+  - **They are other people's photos, credited on each image.** Say if you'd rather link to them than host them in
+    this public repo.
 
 ### 1. Holbrook Industrial Park, Bldgs 2 and 5 (Hudson Way, west Lehi)
 
 ![Aerial view of Holbrook Industrial Park, with Bldgs 1 and 2 built and Bldg 5's pad under construction](out/sites/aerial_1.jpg)
+
+From Redwood Rd, looking west at the park behind Boyer's sign (a contributor's 360° photo, August 2023):
+
+![Holbrook Industrial Park from Redwood Rd, behind a retaining wall with the Boyer sign](out/sites/street_1.jpg)
+
+Inside: Paramount Pickleball Club at 5125 W Hudson Way Ste 100, a tenant in the park's western buildings (Google
+Maps, March 2025). It shows the bare tilt-up shell: open joists and deck, a racking row along one wall, and big fans.
+
+![Inside Paramount Pickleball Club in Holbrook Industrial Park: a tall open warehouse hall with courts](out/sites/int_1.jpg)
 
 - **Bldg 5, 4866 S Hudson Way:** 247,078 ft², divisible to about 31,000-46,000 ft². 32 ft clear, **4,000 A at
   277/480 V**, ESFR, 40 dock-high doors and 8 grade-level doors (14 × 16 ft), 56 × 43 ft columns. Completed and ready
@@ -99,6 +116,16 @@ linked under each site. They were not copied into this public repo, and this run
 
 ![Aerial view at 4170 W 2100 N, where the imagery still shows an empty lot](out/sites/aerial_2.jpg)
 
+The building as it stands, from W 2100 N (Google Street View, June 2026). The aerial imagery is older than the
+building.
+
+![The new two-storey-front industrial building at 4170 W 2100 N, seen from the road](out/sites/street_2.jpg)
+
+Inside: Conquer Padel Lehi, a tenant about 150 m east of the address pin in the same development (Google Maps,
+June 2026). The courts fill a clear-span bay under open joists.
+
+![Inside Conquer Padel Lehi: rows of blue padel courts in a tall industrial bay](out/sites/int_2.jpg)
+
 - **The building:** 86,916 ft² of flex and warehouse, 32 ft clear, 1,613 ft² of office, 18 dock-high doors and 4
   drive-in doors. Zoned "general industrial" according to a snippet.
 - **Status:** no longer advertised on LoopNet (2026-11-12), so ask whether any of it is still open.
@@ -120,6 +147,11 @@ linked under each site. They were not copied into this public repo, and this run
 
 ![Aerial view around 1657 N State St in central Lehi](out/sites/aerial_4.jpg)
 
+Inside: the gym in Gyvr Hub, which is at 1657 N State St (a contributor's 360° photo, April 2024). Painted steel
+beams and a lower roof, as you'd expect at 17-18 ft clear.
+
+![Inside the gym at Gyvr Hub, 1657 N State St: steel beams over a training floor](out/sites/int_4.jpg)
+
 - **The building:** 40,426 ft² (about 35,426 of warehouse plus 5,000 of office) on 2.0 acres, built in 1995 with a
   new roof in 2022. Sprinklered and radiant-heated, 17-18 ft clear, about 1,800 A three-phase, 3 dock-high doors.
 - **Status:** leased to a tenant, so sold as an investment or to an owner-user.
@@ -130,6 +162,12 @@ linked under each site. They were not copied into this public repo, and this run
 ### 5. Millplace Park, 305 S 850 E (east Lehi, by the I-15 Lehi Main St exit)
 
 ![Aerial view of Millplace Park's warehouse buildings by I-15](out/sites/aerial_5.jpg)
+
+Inside a building on the same street: Momentum Indoor Climbing at 401 S 850 E, a block south of the listing's
+address. Whether it is part of Millplace Park wasn't checked. The photo is from February 2015, before fit-out, and
+shows the long-span steel trusses of these buildings.
+
+![Inside Momentum Indoor Climbing at 401 S 850 E before fit-out: long steel trusses over a bare slab](out/sites/int_5.jpg)
 
 - **The space:** 10,753 ft² available in a 98,000 ft² park, 24 ft clear, three-phase power, two 14 × 14 ft
   grade-level doors, HVAC in the warehouse. $1.05/ft²/month, with the first two months free. Other units at
@@ -171,11 +209,14 @@ Details for each are in the [site table](README.md#2-candidate-sites).
     OpenStreetMap Nominatim's.
 - **The aerial views** are Google Maps satellite captures at zoom 17, taken the same way. As noted above, the imagery
   is older than some of the buildings.
-- **Attribution:** "Map data ©2026 Google" is printed on both maps.
-- **Not done in this run:**
-  - **Street-level exteriors and interior photos.** This session's tool policy blocked every interpreter (Python,
-    Node, shell), and the GitHub token couldn't be renewed without Python. That left about an hour, and the maps
-    took it.
-  - **Where the interior photos are:** the Crexi listing galleries (which open through the Pi's tunnel) and the
-    brokers' flyers. Embed them by linking, not by copying them into this public repo.
-  - **Street View:** works from the runner, the same way as the maps.
+- **Street View** was opened at a viewpoint in front of each building. Where Google had no car imagery, it returned
+  the nearest contributor 360° photo, which is how the Holbrook and Gyvr Hub views were found.
+- **The interiors** were found through tenants that Google Maps shows in each building: the place page was opened,
+  then a photo without identifiable people was picked from its gallery.
+- **Attribution:** "Map data ©2026 Google" is printed on both maps, and each photo carries its source, contributor
+  and date.
+- **Not done:**
+  - Street-level views of sites 3 and 5. At site 3, Google returned a 2016 contributor photo of a car park. At
+    site 5 it returned a contributor photo that may not show the park.
+  - Interiors for site 3.
+  - Any listing's own gallery. Crexi opens only through the Pi's tunnel, and LoopNet not at all.
