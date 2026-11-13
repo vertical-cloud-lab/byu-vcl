@@ -71,11 +71,19 @@ the ratchet sits below the pad.*
   test subject is wearing any applicable safety equipment that may be worn during actual
   respirator use which could interfere with respirator fit"
   ([Appendix A, Part I.A.13](https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.134AppA)).
-  A headset worn over the straps is exactly that, so it goes into each wearer's fit test.
-- **Nothing may be added to the respirator.** NIOSH approves the respirator as a complete
-  assembly. It warns that parts or accessories not approved for that respirator can compromise
+  A headset worn over the straps is exactly that, so it goes into each wearer's fit test. OSHA's
+  inspectors are told to cite equipment "(glasses, goggles, helmets, etc.) that affects the
+  face-to-facepiece seal, but was not worn during fit testing"
+  ([CPL 02-00-158](https://www.osha.gov/sites/default/files/enforcement/directives/CPL_02-00-158.pdf), p. 27).
+- **Nothing may be added to the respirator.** NIOSH's standard limitation is "Never substitute,
+  modify, add, or omit parts" ([NIOSH CEL](https://wwwn.cdc.gov/NIOSH-CEL/Limitations/C23)). On
+  cameras and voice amplifiers fixed to a facepiece, OSHA says "any configuration of an accessory
+  with a respirator facepiece must be tested and certified by NIOSH before it can be used", and
+  that "the placement and the weight of the accessory could affect the facepiece fit"
+  ([2017 interpretation](https://www.osha.gov/laws-regs/standardinterpretations/2017-01-17)).
+  NIOSH warns that parts or accessories not approved for that respirator can compromise
   the wearer ([NIOSH 2016-107](https://www.cdc.gov/niosh/docs/2016-107/default.html)), and that
-  approved respirators should not be modified at all, down to knotting a strap to improve fit
+  approved respirators should not be modified at all, down to knotting a headband to improve fit
   ([AIHA summary of the 2022 notice](https://www.aiha.org/news/220908-niosh-approved-respirators-cannot-be-altered-to-improve-fit)).
   So no clip, mount or microphone goes on the facepiece, the filters or the straps.
 - **The user seal check stays as it is.** It is done "each time they put on the respirator"
@@ -92,10 +100,10 @@ the ratchet sits below the pad.*
 
 Respirator harnesses are made to be worn under head protection, and respirator makers say so:
 
-- Honeywell's North full-facepiece guide: "first complete the respirator donning process –
+- Honeywell's guide for its North RU6500 full facepiece: "first complete the respirator donning process –
   including seal checks with cartridges. Then, you may put on a hard hat"
   ([Duke OESO copy](https://www.safety.duke.edu/sites/default/files/north-full-facepiece-respirators-donning-and-doffing.pdf)).
-- Honeywell's RU6500 harness "can be used under hard hat"
+- Honeywell sells the RU6500 with a mesh headnet that "can be used under hard hat"
   ([Honeywell](https://automation.honeywell.com/gb/en/products/personal-protective-equipment/respiratory/air-purifying-respirator-apr/ru6500-full-facepiece)),
   and GVS designs its Elipse full face "to be compatible with most safety helmets"
   ([GVS](https://www.gvs.com/en/catalog/elipse-full-face-p100-respirator)).
@@ -107,6 +115,17 @@ Helmet makers, on the other hand, say nothing about respirators either way.
 A ratchet headgear is a hard hat's suspension without the shell, so v2 keeps the part 2 headgear
 (3M H8A) and simply wears it higher: front at the hairline with the crown strap shortened, back
 under the bulge at the back of the head.
+
+**How much forehead is left is the weak point.** OSHA describes a full facepiece as covering "the
+entire face from below the chin to the hairline"
+([OSHA Technical Manual](https://www.osha.gov/otm/section-8-ppe/chapter-2)), and an Army study
+found that "some users did not have adequate bare forehead space between their fitted mask and
+hairline" ([ARL, 2014](https://apps.dtic.mil/sti/pdfs/ADA600090.pdf)). The model's 10 mm gap is
+for one generic head and mask. On some wearers the band will have to sit above the hairline, and
+if it won't stay there, the helmet below is the answer. 3M also asks that "other safety equipment
+does not interfere with buckles or fit"
+([FF-400 instructions](https://images.toolsid.com/3m/items/pdf/3m-ultimate-fx-full-facepiece-respirator-ff-400-user-instructions.pdf)),
+so the band must not sit on a strap buckle.
 
 If the band won't stay at the hairline on a real head, two fallbacks keep the same rule (over
 the harness, off the facepiece):
@@ -151,10 +170,9 @@ little more from above. At a bench this hardly matters: the hands are 40–60 cm
 still sets the tilt, and 30° suits a head bowed about 25°, as in the camera-view render.
 
 **Balance with a respirator on.** A full-face facepiece with two filters puts its own weight in
-front of the face. Listings for the common 3M 6800 disagree on how much, from 1.2 lb (about
-540 g) to 2 lb, even on
-[one page](https://www.homelectrical.com/6800-medium-full-facepiece-respirator.mco-6800.1.html),
-and we found no figure from 3M. The headset's centre of mass is 2.0 cm *behind* the ear line with
+front of the face: about 410 g for a 3M 6000-series facepiece
+([3M data sheet](https://res.cloudinary.com/tacoma-screw-products/image/upload/Documents/558-313_tds.pdf))
+and about 500 g for a Dräger X-plore 6300, before filters. The headset's centre of mass is 2.0 cm *behind* the ear line with
 its headgear, so it offsets a little of that pull rather than adding to it.
 
 ### How to wear it
@@ -175,9 +193,10 @@ its headgear, so it offsets a little of that pull rather than adding to it.
   uncovered, and the mics are outside it, beside the ears.
 - **The wearer's own voice is the open question.** It reaches the mics through the facepiece and
   its speaking diaphragm, muffled and quieter, with breathing and the exhalation valve close by.
-  Every kind of respirator makes the wearer harder to understand, which is why full facepieces
-  have a speaking diaphragm. We found no figure for what a facepiece costs a speech-to-text
-  model, so phase 0 measures it.
+  A study of 12 NIOSH-certified full-face respirators rated how well listeners understood the
+  wearer against no respirator at all: for example 90% for the MSA Millennium and 78% for the
+  3M FR-7800B ([PubMed 24689436](https://pubmed.ncbi.nlm.nih.gov/24689436/)). We found no
+  figure for speech-to-text, so phase 0 measures it.
 - **Test before building anything for it.** Phase 0 of [`SOFTWARE.md`](SOFTWARE.md) now records
   the same passage with and without the respirator and compares the transcripts. Phase 3 flags
   low-confidence transcript lines instead of dropping them.
@@ -187,11 +206,19 @@ its headgear, so it offsets a little of that pull rather than adding to it.
      Zero's I2S input takes two mics, so on respirator days this one takes over one channel
      through a small plug in the temple pod, and the stereo pair becomes "room" and "voice".
      The arm and mic cost about $10 (estimate).
-  2. A throat microphone. It picks up speech through the neck, so breathing noise and the
-     facepiece matter less, but its strap and cable sit where a lab coat collar goes.
-  3. A voice amplifier made for the lab's respirator model, if its maker sells one. It mounts on
-     the facepiece, so it is only acceptable if it is approved for that respirator; check
-     whether it has an audio output the Pi can record before buying one.
+  2. An in-ear bone-conduction microphone, wired to the temple pod. In an Army test with the
+     M50 mask it scored best of the options tried (77.5% on the Modified Rhyme Test at 66 dBA,
+     against 70.8% for the mask's own voice unit), and it "does not require attachment to the
+     respirator" ([ARL, 2014](https://apps.dtic.mil/sti/pdfs/ADA600090.pdf)). It does block one
+     ear, so check that alarms can still be heard.
+  3. A throat microphone. It picks up speech through the neck, so breathing noise and the
+     facepiece matter less ([small study](https://distantreader.org/stacks/journals/pjohns/pjohns-1811.pdf)),
+     but its strap and cable sit where a lab coat collar goes.
+  4. A voice amplifier approved for the lab's respirator. These exist only for particular masks:
+     MSA's ESP for the Advantage 1000 (an amplifier with no audio output), Scott's EPIC 3
+     ($959.99, with a Bluetooth radio version), and Avon's VPU for the C50 ($775, with a radio
+     lead). We found none for 3M's FF-400, and none is a recorder; a wired radio lead is the
+     likeliest way into the Pi.
 
 ## Lab coats
 
@@ -253,8 +280,9 @@ inside the facepiece, but only for the AV-3000 HT firefighting (SCBA) mask
 ## Still to check
 
 - **The lab's own respirators.** Which models, sizes and harnesses people actually wear. The
-  model has a four-strap harness with a pad high on the back of the head; a five-strap harness
-  adds a strap over the crown, under the headset's crown strap.
+  model has a four-strap harness like the 3M 6000 series. The 3M FF-400 and MSA Advantage 1000
+  have six straps, and the Dräger X-plore 6300 and North 7600 have five, with a front strap over
+  the top of the head that would lie under the headset's band and crown strap.
 - **On a real head:** the band staying at the hairline through a shift, pressure on the harness
   straps under the band, and whether the facepiece shifts when the head turns.
 - **Speech** through the facepiece: see [`SOFTWARE.md`](SOFTWARE.md#phase-0-bench-prototype-a-day-or-two), item 5.
