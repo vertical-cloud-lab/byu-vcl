@@ -60,8 +60,9 @@ the ratchet sits below the pad.*
   personal protective equipment" must be "worn in a manner that does not interfere with the seal
   of the facepiece to the face of the user"
   ([29 CFR 1910.134(g)(1)(i)(B) and (g)(1)(ii)](https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.134)).
-  OSHA's earlier wording named "temple pieces on glasses"
-  ([1995 interpretation](https://www.osha.gov/laws-regs/standardinterpretations/1995-09-20)).
+  OSHA's earlier wording spelled out "a skull cap that projects under the face piece or temple
+  pieces on glasses" ([1995 interpretation](https://www.osha.gov/laws-regs/standardinterpretations/1995-09-20)),
+  which covers both a glasses-type camera and a band worn under the facepiece's edge.
   Dräger says "normal spectacles will interfere with the facepiece seal and are not permitted in
   the sealing area" ([FPS 7000 instructions](https://www.draeger.com/Content/Documents/Products/fps-ifu-9031013-en-us-me.pdf)),
   and Honeywell says "you must use a spectacle insert"
@@ -163,8 +164,9 @@ its headgear, so it offsets a little of that pull rather than adding to it.
 2. Put the headset on over the harness. Set the band at the hairline, with the ratchet below the
    harness pad, and tighten it only until it stays put. Check that nothing touches the
    facepiece, then do the seal check again.
-3. Take the headset off first, in one movement, then the respirator. The headset has no buckle
-   to undo, so it never delays taking the respirator off.
+3. Take the headset off first, then the respirator. It has no buckle: it should lift off
+   backwards in one movement, so it doesn't slow down taking the respirator off. Check that on
+   the first fitting, with the ratchet as tight as it will be worn.
 4. Fit testing: the wearer's annual fit test is done with the headset on (see the rules above).
 
 ### Audio through a facepiece
@@ -205,11 +207,11 @@ coat; clipped to a shirt, the coat covers it. The headset avoids both:
 - **The recording carries on.** Putting a coat on or taking it off is part of the record, so the
   recorder never stops by itself ([`SOFTWARE.md`](SOFTWARE.md#phase-1-the-recorder-service)).
 - **Contamination.** The record button is pressed with gloved hands, so treat the headset like
-  goggles or a face shield. CDC's order for taking PPE off is gloves, then goggles or face shield,
-  then the gown, then the respirator last
-  ([CDC](https://www.cdc.gov/infection-control/media/pdfs/Toolkits-PPE-Sequence-P.pdf)), and it
-  notes that procedures vary by institution. So: gloves off, lift the headset off by the band at
-  the back, then the coat, then the respirator. Then treat it like shared eyewear: wipe it down
+  goggles or a face shield. CDC's example order for taking PPE off is gloves, then goggles or face
+  shield, removed "from the back by lifting head band", then the gown, then the respirator last
+  ([CDC](https://www.cdc.gov/infection-control/media/pdfs/Toolkits-PPE-Sequence-P.pdf); it calls
+  this one of "a variety of ways", so follow the lab's own procedure where it differs). So:
+  gloves off, lift the headset off by the band at the back, then the coat, then the respirator. Then treat it like shared eyewear: wipe it down
   at the end of each session, and before it leaves a room where it may have been splashed. The enclosures are PETG and the headgear is plastic,
   but nothing is sealed, so wipe rather than spray or soak, and keep liquid away from the
   vents, the mic holes and the USB-C port. RealWear gives the same advice for its headsets:
@@ -235,12 +237,13 @@ From the [survey](../../docs/provenance-eyes.md), re-checked against the two con
 | Provenance Eyes v2 (this build) | cap-like band | **yes**, over the harness; 10 mm clear of the facepiece in the model | fine |
 
 So on respirator days the commercial choice narrows to a Navigator 520 on a hard hat, which nobody
-has tried with a respirator yet, or a GoPro on a helmet. The GoPro is the cheap, scriptable one:
-the [Open GoPro API](https://gopro.github.io/OpenGoPro/docs) starts and stops recording over
-Bluetooth, Wi-Fi or USB, downloads files, and live-streams over RTMP to YouTube at up to 1080p,
-though "most command-and-control functionality is disabled while the camera is recording"
-([FAQ](https://gopro.github.io/OpenGoPro/docs/faq)). Its Python package isn't tested on a Raspberry
-Pi, and it means a helmet. Glasses are fine on other days, but a lab that sometimes needs
+has tried with a respirator yet, or a GoPro on a helmet. The GoPro is the cheap, scriptable one.
+The [Open GoPro API](https://gopro.github.io/OpenGoPro/docs) supports the HERO13 Black and
+"Users can interact with the camera over BLE, WiFi, or wired USB": it starts and stops capture,
+copies files over Wi-Fi or USB, and live-streams over RTMP. The
+[FAQ](https://gopro.github.io/OpenGoPro/docs/faq) gives the stream as 480p to 1080p, up to 85
+minutes at 720p on a full Enduro battery, and lists HERO13-specific known issues. Its Python
+package isn't listed as tested on a Raspberry Pi, and it means wearing a helmet. Glasses are fine on other days, but a lab that sometimes needs
 respirators would then run two systems.
 
 **One exception to "nothing in the mask":** 3M's Scott Sight puts a thermal camera and display

@@ -6,7 +6,8 @@ analysis of the video and its conclusions then land on GitHub. Asked for by @gag
 [#342](https://github.com/vertical-cloud-lab/byu-vcl/issues/342), as a replacement for the chest
 camera. The first part of that issue, a survey of commercial smart glasses, is
 [`docs/provenance-eyes.md`](../../docs/provenance-eyes.md). Its closest off-the-shelf match to
-this build is Mentra Live ($449).
+this build is Mentra Live ($449), though, like all glasses, it can't be worn with a full-face
+respirator ([`PPE.md`](PPE.md)).
 
 **Status: designed, not built.** The model below is a concept: parts are placed at their real
 sizes and weights, but the printed enclosures are envelopes, not print-ready parts. Nothing has
