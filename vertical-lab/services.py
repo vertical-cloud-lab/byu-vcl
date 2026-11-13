@@ -903,7 +903,18 @@ TRAY_CAMS = {   # per tray: (mast x, mast y, aim x, aim y, aim z, post yaw) in t
           (860.0, 185.0, 1066.0, -43.0, 109.0, 90.0)],
     "E": [(-470.0, -340.0, -880.0, 0.0, 420.0, 270.0), (-50.0, -340.0, -250.0, 0.0, 524.0, 180.0),
           (965.0, -375.0, 860.0, 0.0, 509.0, 180.0)],
-    "F": [(-960.0, -305.0, -578.0, 0.0, 600.0, 90.0), (685.0, -235.0, 408.0, 0.0, 513.0, 270.0)],
+    # Round 11 (Sterling, PR #318: "at 32:57 the arm passing through the camera / collision"): F1 stood at (685, -235),
+    # in front of the quench tank (setup_lab.R8_MOVES put the tank behind it), right where chapter 5's tongs carry the
+    # rack from the furnace's front onto the tank's lift basket: the rack's 150 mm sweeps x 605-755 from the tray's
+    # front edge to y -35, the tongs' shaft and the 2F-85 follow it. Nothing fits in front of the tank beside that
+    # path (the furnace ends at x 535, the disc magazine starts at 844), so F1 now stands behind the tank, in the floor
+    # left free between the tank (back at y 69) and the UPS (front at y 276; the tray's lines run on the back rim, at y
+    # 388 and over): post at y 85-175, 16 mm behind the tank, its head over the tank's back edge, looking straight down
+    # into the tank at the 65 deg tilt limit. The HQ's axis meets the rim at y -95 (the basket and the rack going in and
+    # out); the Wide also takes in the furnace's right side and top and the front of the tray where the rack crosses.
+    # With the tray presented, 22 % of the Wide's picture is the room through the opening's lower part (0 % for the
+    # HQ; the old place saw none, but stood in the arm's path): see notes/alloy_workflow.md
+    "F": [(-960.0, -305.0, -578.0, 0.0, 600.0, 90.0), (680.0, 130.0, 680.0, -60.0, 230.0, 0.0)],
 }
 TRAY_CAMS_ROUND5 = {   # where they stood before: at the back, looking forward over their instruments and out of the bay
     "A": [(-760.0, 320.0, -150.0, -150.0, 150.0), (380.0, 350.0, 760.0, -60.0, 330.0, 90.0)],
