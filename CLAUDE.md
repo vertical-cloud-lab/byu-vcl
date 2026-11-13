@@ -466,13 +466,22 @@ gets that login:
 - **Check the installed nozzle diameters before printing.** Read them off the printer, not
   the slice or an earlier comment: Studio's Device page, or the status report over LAN from
   a Pi. Check while preparing, before you slice, and again in the `@claude-print` run before
-  Send, and put the diameters in the tracking comment next to the fresh frame.
-  For this repo every installed nozzle must be **0.2 or 0.4 mm** (on the H2D, check both
-  left and right), and the slice must be for the diameter of the nozzle that will print it.
-  tensegrity-optimization prints with 0.6 mm nozzles, so a printer may well still have
-  those in.
-  If a diameter is wrong or you can't read it, don't send (and don't re-slice for the wrong
-  nozzle): say what is installed and wait for a person to swap it.
+  Send, and put the diameters (both of them, on the H2D) in the tracking comment next to the
+  fresh frame.
+  For this repo, **every nozzle the print uses must be 0.2 or 0.4 mm**, and the slice must be
+  for the diameter of that nozzle. A nozzle the print doesn't use can be any size
+  (sgbaird, 2026-11-13; this replaces the older rule that both H2D nozzles had to be 0.2 or
+  0.4 mm). On the H2D:
+  - **A single-filament print goes on one nozzle.** Assign it to the left nozzle by default,
+    or to the right one if only the right is 0.2 or 0.4 mm. Check that the sliced file uses
+    only that nozzle (no filament, prime tower or wipe assigned to the other) and that the
+    part fits that nozzle's print area.
+  - **A print that needs both nozzles** needs both to be 0.2 or 0.4 mm.
+  tensegrity-optimization prints with 0.6 mm nozzles, so a printer may well still have one of
+  those in. That's fine as long as the print doesn't use it.
+  If no nozzle the print could use is 0.2 or 0.4 mm, or you can't read a diameter, don't send
+  (and don't re-slice for the wrong nozzle): say what is installed and wait for a person to
+  swap it.
 - **Nobody replies `plate clear` any more (sgbaird, 2026-10-23).** The print run reads the
   plate itself and gives people a window to stop it. This replaces the person's go in rule 1
   and §4.1 of byu-vcl's `bambu/README.md`, which an older branch may still show.
