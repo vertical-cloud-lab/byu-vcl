@@ -1,0 +1,85 @@
+{
+ "tall_unit_mm": 15150.0,
+ "trays_per_tall_unit": 44,
+ "trays_total": 352,
+ "clear_needed_ft": 51.2,
+ "pit_under_40ft_m": 3.42,
+ "array_m": [
+  11.92,
+  7.45
+ ],
+ "array_ft2": 956,
+ "shorter_units": [
+  {
+   "clear_ft": 24,
+   "unit_mm": 6800.0,
+   "unit_ft": 22.3,
+   "trays_per_unit": 17,
+   "units_for_same_trays": 21,
+   "array_m": [
+    32.8,
+    7.4
+   ],
+   "array_ft2": 2628
+  },
+  {
+   "clear_ft": 28,
+   "unit_mm": 8000.0,
+   "unit_ft": 26.2,
+   "trays_per_unit": 20,
+   "units_for_same_trays": 18,
+   "array_m": [
+    26.8,
+    7.4
+   ],
+   "array_ft2": 2150
+  },
+  {
+   "clear_ft": 32,
+   "unit_mm": 9200.0,
+   "unit_ft": 30.2,
+   "trays_per_unit": 24,
+   "units_for_same_trays": 15,
+   "array_m": [
+    23.8,
+    7.4
+   ],
+   "array_ft2": 1911
+  },
+  {
+   "clear_ft": 36,
+   "unit_mm": 10500.0,
+   "unit_ft": 34.4,
+   "trays_per_unit": 29,
+   "units_for_same_trays": 13,
+   "array_m": [
+    20.9,
+    7.4
+   ],
+   "array_ft2": 1672
+  },
+  {
+   "clear_ft": 40,
+   "unit_mm": 11700.0,
+   "unit_ft": 38.4,
+   "trays_per_unit": 32,
+   "units_for_same_trays": 11,
+   "array_m": [
+    17.9,
+    7.4
+   ],
+   "array_ft2": 1433
+  }
+ ],
+ "floor_318": {
+  "x_m": [
+   -11.54,
+   11.78
+  ],
+  "y_m": [
+   -12.41,
+   1.56
+  ],
+  "bbox_ft2": 3508
+ }
+}
