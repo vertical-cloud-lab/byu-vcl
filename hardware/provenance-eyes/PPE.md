@@ -24,7 +24,9 @@ own respirator.
 - **v2 fixes that with the same parts and cost (about $177).** The band is worn like a cap,
   with its front at the hairline rather than across the forehead, so the headset goes on
   *over* the respirator's straps and nothing touches the facepiece.
-  - Nearest gap to the facepiece in the model: **10 mm**, at the band.
+  - Nearest gap to the facepiece in the model: **10 mm**, at the band. That is one generic head
+    and mask: a full facepiece can reach the hairline on some people, so check it on each wearer
+    ([below](#what-that-leaves-for-a-head-camera)).
   - The camera's view: **none** of the frame is blocked by the facepiece or filters, at any
     hinge tilt up to 40°. v2 is set to 30°.
 - **Lab coats.** The headset has nothing below the back of the head and no cable to the body, so
