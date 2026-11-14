@@ -316,3 +316,46 @@ it doesn't check clearances a real cell would want (a few mm here and there, suc
 
 Not re-rendered: the polisher's tour clip (`out/instruments/polisher.*`) still shows the column in the bowl and the
 pistons' old gap.
+
+## Round 11 (2026-11-14): the stricter audit
+
+Sterling, on the round-10 long-form: "There are probably other collisions and interferences that I didn't catch from
+this." Round 11's `collide.py` (audit-a) lets the gripper and a held part touch what they handle only up to 1.5 mm deep
+and checks everything else that moves (trays, doors, the MiR, the press, the PX500's head and platen, the Carvera's lid
+and vise) against everything else. Camera F1 on tray F moved behind the quench tank (chapter 5's stream, `6c690a0`),
+away from the front of the tray where the arm works; the comment in `r8_prep.TRAY_PLACEMENT` now says so.
+
+| Audit (`VLAB_ONLY_TRAYS=FM`, 6 fps) | Code | Arm | Movers | All |
+|---|---|---|---|---|
+| [`alloy_prep_r11a.json`](../out/collisions/alloy_prep_r11a.json), round 10's rules, F1 at its old place | round 10's | 0 of 1423 | | **0** |
+| [`alloy_prep.json`](../out/collisions/alloy_prep.json), stricter rules, F1 at its new place | round 10's | 1 of 1423 | 55 | **56** |
+
+Not re-rendered this round (the coordinator: chapters 4 and 6 audit only, all four render slots taken); the committed
+MP4 is round 10's.
+
+Seen in the other chapters and true here too, but not changed: the MiR's caddy (`CADDY`, x -130 to 95) stands on the
+cabinet's 780 mm inside the arm's 20 mm mounting plate (`props.mir250` draws the plate, |x| < 170 mm, as part of the
+cabinet), so only its top 10 mm shows; its seats are at 810 mm, over the plate's top, so the parts on it don't touch
+the plate. The holder's rest reaches 20 mm over the plate's edge in the same way.
+
+What the stricter audit found (none of it fixed this round; the arm itself is clear but for one frame):
+- **Camera F1's new place is clear of the arm**: 213 mm at the closest (a held disc, in the disc changes). F0, 12.2 mm
+  (the wrist camera at the press), and the bay unit, 247 mm. Nothing touches.
+- **The arm: 1 frame**, the hot mount set into the holder's pocket deeper than 1.5 mm (`Mount`).
+- **The movers check, 55 frames, mostly the machines' own processes drawn as solids:**
+  - the Carvera's end mill passes 25 mm into the steel puck while it faces the slice (15 frames). The cut should
+    take 0.4 mm off the slice's face only, so the tool's path in `r8_prep.cnc` needs to stop at the puck's face;
+  - the PX500's pistons press 14 frames into the holder (they press the mounts, by design; the holder's apertures or
+    the pistons' stroke need the 1.5 mm to be met, or the pistons drawn as pressing the mounts, not the holder);
+  - the MX400's compound (granules), the finished mount and the doser against the coupon, the stopper and the closure
+    (22 frames): the compound fills round the coupon by design, so it is a non-solid until it cures; not registered in
+    time;
+  - **the Carvera's lid, at our actuator's 65 deg, rises 999 mm "into" tray H (the tray stored over Shuttle 2's
+    opening) and 50 mm into the bay's overhead camera** (4 frames). At Makera's 40 deg no arm pose reached the vise
+    (round 8's probe), so the lid needs another way to open (a sliding cover) or the slot over the opening needs the
+    room; a real interference, open for the lab stream (the slots) and this chapter.
+- **The PX500's tour clip** (`out/instruments/polisher.*`, not this chapter's audit): audit-a's `interference.py` finds
+  the disc handles passing 12-13 mm through each other and through the head's housing while discs are swapped
+  (frames 199-202, 314-317, 335 of the tour). Open.
+
+
