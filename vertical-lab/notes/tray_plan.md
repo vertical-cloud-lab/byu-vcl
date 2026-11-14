@@ -48,7 +48,7 @@ two units (see the floor plan below).
 | 1 | R1 | 300 | 750 | D | Hitachi TM4000PlusII SEM, Rigaku MiniFlex XRD, powder prep station (round 8; the OpenFlexure array is gone) | 722 (XRD) |
 | 1 | R2 | 1050 | 750 | A | CubXL corrosion set-up, Opentrons OT-2 | 702 (camera head) |
 | 1 | R3 | 1800 | 900 | B | vial rack, multi-doser v5 (chain carousel on an HR-202i, 13 powders), Specac Autotouch vacuum press | 854 (multi-doser) |
-| 1 | R4 | 2700 | 725 | E | Plastometrex PLX-Benchtop, KLA iMicro, Malvern Mastersizer 3000 + Aero S | 689 |
+| 1 | R4 | 2700 | 725 | E | Plastometrex PLX-Benchtop, KLA iMicro, Malvern Mastersizer 3000 + Aero S | 700 (camera E1's head, behind the Mastersizer since round 11) |
 | 1 | F0 | 300 | 325 | J | sample storage, passive: cups and plugs (Al, Cu), vials, tubes, stubs, coupons, bars, jars | 300 (drawer cabinet) |
 | 1 | F1 | 1950 | 725 | C | Bambu Lab H2D, Bambu Lab A1 mini | 692 (camera head) |
 | 1 | F2 | 2675 | 750 | F | LECO PX500 polisher, Nabertherm NAT 15/65 furnace, LECO MX400 mounting press, disc magazine, quench tank | 703 (camera F1's head) |
@@ -61,7 +61,7 @@ two units (see the floor plan below).
 | 2 | 2F1 | 1950 | 725 | G | two Formlabs Form 4s, Form Wash, Form Cure | 696 (camera head) |
 | 2 | 2F2 | 2675 | 725 | I | two SnowX SnowPods | 686 (camera head) |
 
-The table is from round 11's run of `setup_lab.py fit` (00:20 UTC, 2026-11-14); `out/tray_plan.json` has the run
+The table is from round 11's runs of `setup_lab.py fit` (00:20 and 01:48 UTC, 2026-11-14); `out/tray_plan.json` has the run
 that matches the code. Every camera-carrying tray needs 725-750 mm, because a camera head on a standard post reaches
 690-706 mm. Tray H has short posts (block at 270 mm) so its slot stays low.
 
