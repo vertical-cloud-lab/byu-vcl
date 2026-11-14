@@ -24,8 +24,14 @@ the film shows them. [notes/upkeep.md](upkeep.md) is the model and its answer.
   - at a Shuttle's opening with the tray held there;
   - at a floor machine;
   - beside a unit on its charger.
-  At a desk they aren't drawn. The figure is `upkeep_clip.Person`. A vendor (navy jacket) is drawn the same way
-  during their visit.
+  At a desk they aren't drawn. A vendor (navy jacket) is drawn the same way during their visit.
+  - **Round 11: the figures are `people.Person`,** MakeHuman's CC0 base mesh skinned to its skeleton and dressed for
+    the lab (notes/upkeep_clip.md), not round 10's capsule figure (Sterling: "kind of a cringy looking human"). The
+    vendor has a navy jacket, darker skin and hair, so the two read apart. Each is posed at its spot every frame: two
+    working poses a few frames apart, the hands on the work and the head turned to it.
+  - At a Shuttle's opening the person now stands 260 mm off the cover's lip, not 330, and stoops 18 deg. That way the
+    new figure's hands reach the tray's front edge (within 6 mm, checked on its skeleton) and its coat stays 35 mm
+    clear of the lip.
 - **An opening held by a person or a vendor shows its tray there,** and the units keep off that Shuttle's dock, as
   the MiR drives off in the upkeep clip. A unit under upkeep, or stopped by a fault, waits on its charger.
 - **The beacons:**
@@ -44,11 +50,13 @@ the film shows them. [notes/upkeep.md](upkeep.md) is the model and its answer.
 - **The chart and the totals card** add the year with no upkeep at all, as round 8 had it: a faint line, and a row.
 
 **What it costs** (`out/timelapse_model.json` `upkeep`, the same numbers as `out/upkeep_model.json`):
-- **304 alloys fully tested in the year, not 324;** 354 atomized, not 378. Planned upkeep alone costs nothing
-  measurable; the failures cost the 20. The failures are seed 303's, the unluckiest of eight seeds tried: seeds 1-7
-  give 312-321 (notes/upkeep.md, Caveats).
-- **The person:** 31 of 40 h a week, 13 of them at the crucible.
-- **Availability:** the stations 99.0 % on average; the atomizer 95.2 %; the units 95.3-95.4 %.
+- **309 alloys fully tested in the year, not 324;** 360 atomized, not 378 (round 11, with the stores J, N and O
+  passive: the per-tray tasks and failures on the twelve powered trays). Planned upkeep alone costs nothing
+  measurable; the failures cost the 15. The failures are seed 303's, the unluckiest of eight seeds tried: seeds 1-7
+  give 312-318 (notes/upkeep.md, Caveats).
+- **The person:** 31 of 40 h a week, 13 of them at the crucible; 38.6 h in the busiest week.
+- **Availability:** the stations 98.9 % on average; the Aconity MIDI 95.0 %; the units 95.3-95.4 %; the atomizer
+  96.4 %.
 
 ## The render
 
@@ -164,36 +172,36 @@ and two room-temperature and two hot E8 tests on the 68FM-100 (all assumed).
 | Screening build: logs and powder-bed images | 0.35 |
 | Tensile with the extensometer's record | 0.1-0.3 |
 
-The powder data are small. Stream video: the 32 cameras the set-up puts in (30 on trays, 2 over the bays), each kept
-at 1 Mbit/s, 24 h a day (assumed).
+The powder data are small. Stream video: the 26 cameras the set-up puts in (24 on the twelve powered trays, 2 over the
+bays; round 10 counted 32, before the stores J, N and O lost theirs), each kept at 1 Mbit/s, 24 h a day (assumed).
 
 ## What it gives
 
-With upkeep and failures booked (round 10, what the finale now shows):
+With upkeep and failures booked (round 11's re-run, what the finale now shows):
 
 | By | Atomized | Printed | Fully tested | Promoted | Runs | Powder | Tensile tests | Instrument data | Video |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 day | 1 | 1 | 1 | 0 | 1 | 0.3 kg | 4 | 5 GB | 0.3 TB |
-| 1 week | 5 | 5 | 5 | 0 | 5 | 1.4 kg | 20 | 23 GB | 2.4 TB |
-| 4 weeks | 19 | 16 | 16 | 1 | 30 | 7.4 kg | 68 | 96 GB | 9.7 TB |
-| 13 weeks | 83 | 72 | 72 | 6 | 146 | 36 kg | 312 | 0.45 TB | 31 TB |
-| 26 weeks | 170 | 146 | 146 | 13 | 312 | 77 kg | 636 | 0.94 TB | 63 TB |
-| 52 weeks | 354 | 304 | 304 | 29 | 658 | 162 kg | 1,332 | 2.0 TB | 126 TB |
+| 1 day | 1 | 1 | 1 | 0 | 1 | 0.3 kg | 4 | 4.6 GB | 0.28 TB |
+| 1 week | 5 | 5 | 5 | 0 | 5 | 1.4 kg | 20 | 23 GB | 2.0 TB |
+| 4 weeks | 19 | 16 | 16 | 0 | 30 | 7.4 kg | 64 | 95 GB | 7.9 TB |
+| 13 weeks | 77 | 66 | 66 | 6 | 139 | 34 kg | 288 | 0.42 TB | 26 TB |
+| 26 weeks | 173 | 149 | 149 | 14 | 318 | 78 kg | 652 | 0.96 TB | 51 TB |
+| 52 weeks | 360 | 309 | 309 | 30 | 667 | 164 kg | 1,356 | 2.0 TB | 102 TB |
 
 With no maintenance (round 8, kept in `out/timelapse_model.json` as `totals_without_upkeep`):
 
 | By | Atomized | Printed | Fully tested | Promoted | Runs | Powder | Tensile tests | Instrument data | Video |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 day | 1 | 1 | 1 | 0 | 1 | 0.3 kg | 4 | 4.6 GB | 0.35 TB |
-| 1 week | 5 | 5 | 5 | 0 | 5 | 1.4 kg | 20 | 23 GB | 2.4 TB |
-| 4 weeks | 19 | 17 | 17 | 1 | 30 | 7.4 kg | 72 | 99 GB | 9.7 TB |
-| 13 weeks | 86 | 74 | 74 | 6 | 156 | 38 kg | 320 | 0.47 TB | 31 TB |
-| 26 weeks | 184 | 158 | 158 | 15 | 338 | 83 kg | 692 | 1.0 TB | 63 TB |
-| 52 weeks | 378 | 324 | 324 | 31 | 702 | 173 kg | 1,420 | 2.1 TB | 126 TB |
+| 1 day | 1 | 1 | 1 | 0 | 1 | 0.3 kg | 4 | 4.6 GB | 0.28 TB |
+| 1 week | 5 | 5 | 5 | 0 | 5 | 1.4 kg | 20 | 23 GB | 2.0 TB |
+| 4 weeks | 19 | 17 | 17 | 1 | 30 | 7.4 kg | 72 | 99 GB | 7.9 TB |
+| 13 weeks | 86 | 74 | 74 | 6 | 156 | 38 kg | 320 | 0.47 TB | 26 TB |
+| 26 weeks | 184 | 158 | 158 | 15 | 338 | 83 kg | 692 | 1.0 TB | 51 TB |
+| 52 weeks | 378 | 324 | 324 | 31 | 702 | 173 kg | 1,420 | 2.1 TB | 102 TB |
 
-- **With upkeep, the first alloy is fully tested 23 h after the lab starts,** not 16 h. Day 1 has the MIDI's weekly
-  clean and a recoater crash on it.
-- **From atomized to fully tested is a median of 12.8 h,** but up to 124 h when an alloy waits on a repair or a part.
+- **With upkeep, the first alloy is fully tested 16 h after the lab starts,** the same as with none (round 10's draw
+  put the MIDI's weekly clean and a recoater crash on day 1, and said 23 h).
+- **From atomized to fully tested is a median of 14.6 h,** but up to 191 h when an alloy waits on a repair or a part.
 - **The atomizer uses 658 of its 702 staffed run slots.** The rest are lost to its faults, a part from AMAZEMET and
   the days its person is busy with a repair.
 
