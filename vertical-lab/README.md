@@ -2424,7 +2424,8 @@ electric one, open to the air.
 ## Running it
 
 ```bash
-pip install cadquery pyvista trimesh pycollada pillow numpy scipy python-fcl   # plus ffmpeg and gifsicle
+pip install cadquery pyvista trimesh pycollada pillow numpy scipy python-fcl mujoco coacd psutil   # plus ffmpeg, gifsicle, xvfb
+pip install google-api-python-client google-auth google-auth-oauthlib google-auth-httplib2   # for youtube_upload.py, longform.py upload
 xvfb-run -a python3 animate.py assembly loading workflow disassembly full   # full joins the first three MP4s
 PREVIEW=1 xvfb-run -a python3 animate.py workflow        # the last frame of each sub-step, to /tmp
 python3 reach.py                                          # the arm study -> out/reach.json
