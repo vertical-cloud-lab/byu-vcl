@@ -47,7 +47,7 @@ FILES = {
     "default_weights.mhw": ("rigs/default_weights.mhw",
                             "0f3641d651ae3d00ad6b4ccee43142edb109d3bd909d27d9e4139ef1beed8625"),
 }
-MODEL_V = 9                         # bump when the derived model changes (the cached pickle's name)
+MODEL_V = 11                         # bump when the derived model changes (the cached pickle's name)
 
 HEIGHT = 1735.0                     # the body, sole to crown, mm; the shoes add ~10 mm and the hair ~5: 1.75 m
 SOLE = 10.0                         # the shoes' sole under the foot
@@ -293,6 +293,42 @@ def _bridge(P: np.ndarray, mask: np.ndarray, sign: float, dz: float = 14.0) -> n
     return out
 
 
+def _vbridge(P: np.ndarray, mask: np.ndarray, axis, nbins: int = 48) -> np.ndarray:
+    """Cloth hangs over hollows top to bottom too: at the front and the back, each angular sector's profile r(z) about
+    the body's vertical axis is raised to its convex hull, so the coat runs straight from the shoulder blades to the
+    seat (and from the chest down) instead of following the small of the back."""
+    idx = np.where(mask)[0]
+    if len(idx) < 3:
+        return P
+    d = P[idx, :2] - axis
+    r = np.hypot(d[:, 0], d[:, 1])
+    phi = np.arctan2(d[:, 1], d[:, 0])
+    b = ((phi + np.pi) / (2 * np.pi) * nbins).astype(int) % nbins
+    z = P[idx, 2]
+    newr = r.copy()
+    for k in range(nbins):
+        s = np.where((b == k) | (b == (k - 1) % nbins) | (b == (k + 1) % nbins))[0]
+        mine = np.where(b == k)[0]
+        if len(s) < 3 or not len(mine):
+            continue
+        o = s[np.argsort(z[s])]
+        hull = []
+        for q in zip(z[o], r[o]):
+            while len(hull) >= 2 and ((hull[-1][0] - hull[-2][0]) * (q[1] - hull[-2][1]) -
+                                      (hull[-1][1] - hull[-2][1]) * (q[0] - hull[-2][0])) >= 0:
+                hull.pop()
+            hull.append(q)
+        hz, hr = np.array(hull).T
+        if len(hz) < 2:
+            continue
+        newr[mine] = np.maximum(r[mine], np.interp(z[mine], hz, hr))
+    w = np.clip((np.abs(np.sin(phi)) - 0.40) / 0.35, 0.0, 1.0)
+    newr = r + w * (newr - r)
+    out = P.copy()
+    out[idx, :2] = axis + d * (newr / np.maximum(r, 1e-9))[:, None]
+    return out
+
+
 def _leg_drape(P: np.ndarray, mask: np.ndarray, knee: np.ndarray, ankle: np.ndarray, nbins: int = 40) -> np.ndarray:
     """A trouser leg hangs straight from the knee: about the shin's axis, its radius never comes back in going
     down."""
@@ -346,8 +382,11 @@ def _dress(m: dict) -> dict:
     n0 = H("neck01")
     # 1. the head and neck above the collar line (lower at the front, rising over the shoulders)
     zc = n0[2] - 34.0 + 0.50 * (n0[1] - y) + 1.7 * np.maximum(np.abs(x) - 50.0, 0.0)
-    headneck = np.isin(db, ["head", "neck01", "neck02", "neck03", "spine01", "clavicle.L", "clavicle.R"])
-    upper, lower = _split(body, np.where(headneck, z - zc, -200.0))
+    # the shirt (a scrub top) has its own V-neck: the skin shows in a narrow V under the neck, down to z_vs
+    z_vs = n0[2] - 105.0
+    f_vs = np.minimum(0.62 * (z - z_vs) - np.abs(x), y - (n0[1] + 15.0))
+    headneck = np.isin(db, ["head", "neck01", "neck02", "neck03", "spine01", "spine02", "clavicle.L", "clavicle.R"])
+    upper, lower = _split(body, np.where(headneck, np.maximum(z - zc, f_vs), -200.0))
     # hair: the scalp above a line from the forehead's hairline down to the nape, not over the ears
     eye = (m["eyes"]["l"] + m["eyes"]["r"]) / 2
     Pu = np.asarray(upper.points)
@@ -355,6 +394,13 @@ def _dress(m: dict) -> dict:
     f_hair = zr - (48.0 - 0.55 * np.clip(-yr - 25.0, -40.0, 220.0) + 0.20 * np.maximum(yr, 0.0))
     f_ear = np.maximum.reduce([58.0 - ax_, zr - 40.0, -100.0 - yr, (-yr - 150.0)])
     hair, skin = _split(upper, np.minimum(f_hair, np.maximum(f_ear, (zr - 40.0) * 3.0)))
+    # the hair: thicker over the crown, thinning to nothing at its line (not a cap's hard edge)
+    hair = _offset(hair, 0.0, smooth=12)
+    Ph = np.asarray(hair.points, float)
+    zr_h, yr_h = Ph[:, 2] - eye[2], Ph[:, 1] - eye[1]
+    fh = zr_h - (48.0 - 0.55 * np.clip(-yr_h - 25.0, -40.0, 220.0) + 0.20 * np.maximum(yr_h, 0.0))
+    Nh = _normals(Ph, _faces(hair), len(Ph))
+    hair.points = Ph + (1.5 + 9.0 * np.clip(fh / 45.0, 0.0, 1.0))[:, None] * Nh
     # the brows: two short arcs over the eyes
     Ps = np.asarray(skin.points)
     f_brow = np.full(len(Ps), -50.0)
@@ -396,7 +442,23 @@ def _dress(m: dict) -> dict:
     cut = knee + 0.45 * (hip - knee)
     skirt, _ = _split(skirt, np.asarray(skirt.points)[:, 2] - cut)
     # drape the coat's trunk and the skirt together, then smooth and push out
-    coat = _offset(coat, 0.0, smooth=30)
+    # the skirt hangs more from the pelvis than it follows each thigh
+    Ws = np.asarray(skirt.point_data["W"], float)
+    Ws = 0.55 * Ws
+    Ws[:, order.index("root")] += 0.45
+    skirt.point_data["W"] = Ws.astype(np.float32)
+    # the coat's torso ends 10 mm under the skirt's top edge, so the skirt is the outside surface below it (round 11's
+    # first try had the torso's lower edge show through the skirt at the small of the back)
+    Pk0 = np.asarray(skirt.points, float)
+    ek = np.sort(np.r_[_faces(skirt)[:, [0, 1]], _faces(skirt)[:, [1, 2]], _faces(skirt)[:, [2, 0]]], axis=1)
+    uk, ck = np.unique(ek, axis=0, return_counts=True)
+    bk = np.unique(uk[ck == 1])
+    top_edge = Pk0[bk][Pk0[bk][:, 2] > cut + 50.0]
+    skirt_top = float(top_edge[:, 2].min()) if len(top_edge) else float(Pk0[:, 2].max())
+    dcoat = dom(coat.point_data["W"])
+    is_trunk = np.array([b.startswith(TRUNK_BONES) for b in dcoat])
+    coat, _ = _split(coat, np.where(is_trunk, np.asarray(coat.points)[:, 2] - (skirt_top - 10.0), 1.0))
+    coat = _offset(coat, 0.0, smooth=40)
     Pc, Pk = np.asarray(coat.points, float), np.asarray(skirt.points, float)
     trunk = np.array([b.startswith(TRUNK_BONES) for b in dom(coat.point_data["W"])])
     waist = np.abs(Pc[:, 2] - H("spine03")[2]) < 40.0
@@ -405,8 +467,10 @@ def _dress(m: dict) -> dict:
     Pc = _bridge(Pc, chest & (Pc[:, 1] > axis[1] + 15.0), 1.0)
     Pc = _bridge(Pc, chest & (Pc[:, 1] < axis[1] - 15.0), -1.0)
     both = np.r_[Pc, Pk]
+    hang = np.r_[trunk, np.ones(len(Pk), bool)]
+    both = _vbridge(both, hang & (both[:, 2] < H("neck01")[2] - 45.0), axis)
     zt = H("spine01")[2] - 10.0
-    dr = _drape(both, np.r_[trunk, np.ones(len(Pk), bool)], axis, zt)
+    dr = _drape(both, hang, axis, zt)
     coat.points, skirt.points = dr[:len(Pc)], dr[len(Pc):]
     Pt = np.asarray(trousers.points, float)
     dt = dom(trousers.point_data["W"])
@@ -415,10 +479,10 @@ def _dress(m: dict) -> dict:
                         H(f"lowerleg01.{sd}") + (0, 0, 40.0), H(f"foot.{sd}"))
     trousers.points = Pt
     parts = dict(
-        skin=skin, hair=_offset(hair, OFFSET["hair"], smooth=12), brow=_offset(brow, OFFSET["brow"]),
+        skin=skin, hair=hair, brow=_offset(brow, OFFSET["brow"]),
         shirt=_offset(shirt, OFFSET["shirt"]), glove=_offset(glove, OFFSET["glove"]),
         shoes=_offset(shoes, OFFSET["shoes"], smooth=25), trousers=_offset(trousers, OFFSET["trousers"], smooth=24),
-        coat=_offset(coat, OFFSET["coat"], smooth=12), skirt=_offset(skirt, OFFSET["skirt"], smooth=8))
+        coat=_offset(coat, OFFSET["coat"], smooth=30), skirt=_offset(skirt, OFFSET["skirt"], smooth=20))
     # eyes: the iris where the eyeball faces forward
     for sd in ("l", "r"):
         te = m["tris"][f"helper-{sd}-eye"]
@@ -873,7 +937,7 @@ def _preview():
     poses = {
         "stand": dict(lean=0.0, amp=0.0, phase=0.0, hands={"l": None, "r": None}, look=None),
         "walk": dict(lean=0.0, amp=1.0, phase=0.6 * math.pi, hands={"l": None, "r": None}, look=None),
-        "push": dict(lean=8.0, amp=0.8, phase=1.1, hands={"l": (-215.0, 420.0, 849.0), "r": (215.0, 420.0, 849.0)},
+        "push": dict(lean=20.0, amp=0.8, phase=1.1, hands={"l": (-215.0, 236.0, 849.0), "r": (215.0, 236.0, 849.0)},
                      look=None),
         "reach": dict(lean=30.0, amp=0.0, phase=0.0, hands={"l": (-120.0, 560.0, 1090.0), "r": (40.0, 620.0, 1010.0)},
                       look=(40.0, 700.0, 1000.0)),
