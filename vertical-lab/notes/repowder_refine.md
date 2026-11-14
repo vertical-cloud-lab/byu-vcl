@@ -230,7 +230,10 @@ the opening.
    (z about 1280 in the model, close to the model's `bolt_z` 1274, so the height was right). Closed, the lever's channel
    covers it; the rod reaches the lever's right edge (5:41). It is in the same place in every frame at atmosphere, with the
    lid open and shut. How it locks the lever under pressure ("a bolt coming and locking the furnace", Kalicki) is not
-   visible in any frame.
+   visible in any frame. During the run ([T5 55:20](https://youtu.be/58wJ_Khwgyk?t=3320), the melt at ~1000 C, seen from
+   the front left) the rod looks as it does at atmosphere ([T1 34:54](https://youtu.be/wRc8p2_FnJo?t=2094)), and a small
+   round end shows on the lever's *left* flange at about the rod's height. That would be the rod through both of the
+   lever's flanges, but neither the angle nor the resolution settles it.
 6. **The lid's hinge was right in the model, but not in chapter 2.** T4 5:14.5-5:16.5 shows one rotation about the back
    hinge, from standing up behind the furnace (inside towards the camera) down onto the seal, with no lift or slide. The
    operator pulls it down by its top edge, then presses the top with a flat palm (5:17-5:24) while working the latch with
