@@ -1504,7 +1504,8 @@ def still_cameras(data, idata, k="E"):
     top = max(v["top_over_floor_mm"] for kk, v in cl["tray_units"].items() if kk.startswith(k))
     sc.step("", f"Tray {k} at the opening: {len(TRAY_CAMS[k])} Pi 5 units, each on a 2020 post with a sliding block and "
             f"a pan-tilt head, aimed at an instrument's working face; the highest stands {top:.0f} mm over the tray "
-            f"floor. They stand in front of or beside their instruments and look back, away from the opening. The overhead "
+            f"floor. Most stand in front of or beside their instruments and look back, away from the opening; E1 stands "
+            f"behind the Mastersizer, out of the iMicro lid's swing (round 11). The overhead "
             f"unit sits on a bar at the back of the bay, {cl['bay_margin_mm']:.0f} mm over Kardex's product envelope and "
             f"{cl['bay_margin_to_F1_mm']:.0f} mm under the tray stored above the opening.", 0.1, None, hold=0.0, labels=lbl,
             still=True)
