@@ -246,3 +246,26 @@ and both galleries.
 - **FCL** works on the exact meshes, with no decomposition, and gives distances. It is better for a plain yes or no,
   and for gaps. It has no dynamics.
 - **Here** MuJoCo finds the candidates, then FCL and manifold3d confirm and measure them.
+
+### Round 11's full run (finished 04:49 UTC, 2026-11-14; `out/interference.json`)
+
+46 models checked, every frame of each tour clip; the three OpenFlexure models were skipped (their meshes weren't built
+on this runner). The run flagged 202 moving faults in 17 models. 70 of them are drawings rather than solids: the
+fume hoods' airflow arrows, the XRD's beams, liquids. Sorted by the orchestrator at the end of the round, not fixed:
+
+| Model | Moving faults (not drawings) | Deepest |
+|---|---|---|
+| polisher (round 8's PX500 with pre-loaded discs) | 70 | the 400-grit and cloth discs' handles pass 12.9 mm through each other |
+| rail (not used since round 7) | 22 | the cable chain's links, 4.3 mm |
+| mount_press (MX400) | 11 | the closure bar into its stopper, 17.1 mm |
+| eos_m400 | 7 | the process station into the platform's piston, 60 mm |
+| xrf | 4 | the XY tray against the lift's finger, 3 mm |
+| cnc | 4 | the tool in the steel puck: the cut itself |
+| cubxl_corrosion | 3 | a tip in rack 1 against the P20's shaft, 3.3 mm |
+| quench_tank | 3 | the basket arm in the water: a liquid |
+| press (the old plug press, unused) | 2 | the ejector, 7.6 mm |
+| pip, nanoindenter, instron_floor, stream_cam, form_wash, fumehood | 1 each | the iMicro's puck against its front window 5.2 mm, the 68FM-100's crosshead against the chamber's controller 10 mm, the camera's Ethernet lead on its post 3.6 mm; the fume hood's is the mount in the etch (a liquid) |
+
+The chapters show several of these machines with their own audited moves; these are the tour clips' motions. Worth a
+pass in round 12: the polisher's disc handles, the MX400's closure bar, the EOS's process station and the Instron's
+chamber controller.
