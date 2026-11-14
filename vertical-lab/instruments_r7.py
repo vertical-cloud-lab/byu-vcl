@@ -65,8 +65,8 @@ FOOTPRINTS = {
                       "https://www.sentryair.com/dfhapp.htm", "tray"),
     "storage": (1760.0, 760.0, 300.0, 95.0,
                 "Sample storage load (our design): Al and Cu charge cups and plugs, 20 mL vials, ICP-MS tubes, SEM "
-                "stubs, mounted coupons, tensile bars, powder jars, labelled bins, a two-drawer cabinet. Leaves the "
-                "tray's right 660 mm free for the UPS and dock. Mass is an estimate", "", "tray"),
+                "stubs, mounted coupons, tensile bars, powder jars, labelled bins, a two-drawer cabinet. Round 11: "
+                "tray J is passive, no UPS or dock, and the load stands in its middle. Mass is an estimate", "", "tray"),
     # instruments_char's VHX, changed here: no stand-up monitor or console. Not centred on its origin: its box is
     # x -250..380, y -272..352 (the stage's axis at x 0, y -40)
     "vhx": (630.0, 625.0, 716.0, 43.4,
@@ -1152,8 +1152,8 @@ def storage() -> Instrument:
         inst.joints[nm] = Joint("slide", vec=(0, -SG["drawer"], 0))
     inst.joints["jar tint"] = Joint("fade")
     inst.actions = [
-        ("A storage tray: what the arm picks from. 1760 x 760 mm and 300 mm tall; the tray's right end stays free "
-         "for its UPS and dock.", 2.6, {}),
+        ("A storage tray: what the arm picks from. 1760 x 760 mm and 300 mm tall. Nothing here draws power: no UPS, "
+         "no dock, no cameras; the bay's overhead camera sees it whenever it is presented.", 2.6, {}),
         ("Charge cups turned from 5N Al (blue rack) and C10100 Cu (orange rack), 48 of each, in the front rows "
          "where a level gripper takes them.", 3.0, {}),
         ("Their plugs, Al and Cu apart; 54 capped 20 mL vials; 112 15 mL ICP-MS tubes.", 3.0, {}),
