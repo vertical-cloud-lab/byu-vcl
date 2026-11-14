@@ -1904,6 +1904,9 @@ def _movie(B):
     cut_off = {"chamber": (0.0, 1.0), "chamber_cut": (1.0, 0.0), "~chamber_door": (1.0 / 0.82, 0.0)}
     st["cap"] = (f"West along the aisle to the Instron 68FM-100 (shown at {DRIVE_SHOWN:.0f}x). Its 3119-608 chamber "
                  "stays round the load string for both tests; the room-temperature one runs with it cold.")
+    if JUMP > 6:                       # round 11: CH5_FROM=7 (a section-7 re-render spliced into the whole one): the
+        status(sc, Plate="clamped in the EDM, on edge",          # status panel as sections 2-6 leave it
+               Bar=f"{4 + len(M.ZBARS)} specimens in the rack, dry")
     status(sc, Arm="parked", Rack="six T6 specimens, on the MiR", Furnace="", Instron="")
     # Round 11: the 3119-608's left-hinged door is 550 mm wide and swings out 95 deg, its free edge 432 mm in front of
     # the frame (its hinge is 118 mm behind the frame's front). The MiR used to stop 230 mm off the row's face, so the
