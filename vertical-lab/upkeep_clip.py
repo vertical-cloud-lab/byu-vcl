@@ -1019,17 +1019,28 @@ def movie():
         person.set(y=y_work - 90.0, lean=0.0, hands={"l": None, "r": None})
         step(1.0, to_panel, hold=0.1)
         allow(("glove", panel_g))
-        lift = nano.move({"panel": (0.0, PANEL_UP)})
         rise = float(nano.inst.joints["panel"].vec[2]) if hasattr(nano.inst.joints["panel"], "vec") else 420.0
-        u_let = 120.0 / (rise * PANEL_UP)            # the hands follow it up 120 mm, then it slides on by itself
+        v_let = 120.0 / rise                          # the hands lift it 120 mm; then they come back out of its
+        lift = nano.move({"panel": (0.0, v_let)})     # plane and it slides on up by itself (the movers check caught
+        #                                               the rising panel catching the fingers over its edge)
+        lift_on = nano.move({"panel": (v_let, PANEL_UP)})
 
         def lift_off(v):
             lift(v)
-            dz = rise * PANEL_UP * min(v, u_let) + 4.0 * min(1.0, v / max(u_let, 1e-6))   # just ahead of it
-            hands = {sd: tuple(grip_pts[sd] + (0.0, 0.0, dz)) for sd in ("l", "r")}
-            w = max(0.0, (v - u_let) / (1.0 - u_let))
-            person.set(hands=to_rest(hands, w) if v > u_let else hands, lean=10.0 * (1.0 - w))
-        step(2.2, lift_off, hold=0.2)
+            person.set(hands={sd: tuple(grip_pts[sd] + (0.0, 0.0, 120.0 * v + 3.0)) for sd in ("l", "r")})
+        step(1.0, lift_off, hold=0.0)
+        top_pts = {sd: grip_pts[sd] + (0.0, 0.0, 123.0) for sd in ("l", "r")}
+
+        def hands_back(v):
+            person.set(hands={sd: tuple(top_pts[sd] + (0.0, -180.0 * v, 25.0 * math.sin(math.pi * v)))
+                              for sd in ("l", "r")})
+        step(0.5, hands_back, hold=0.0)
+        back_pts = {sd: top_pts[sd] + (0.0, -180.0, 0.0) for sd in ("l", "r")}
+
+        def rises_on(v):
+            lift_on(v)
+            person.set(hands=to_rest({k: tuple(g) for k, g in back_pts.items()}, v), lean=10.0 * (1.0 - v))
+        step(1.2, rises_on, hold=0.2)
         allow()
         person.set(hands={"l": None, "r": None}, grip={"l": 0.3, "r": 0.3})
         # people.py's skeleton, solved off-line: the body's centre 51 mm to the left of the tip, 411 mm in front of
@@ -1105,7 +1116,8 @@ def movie():
         person.set(y=y_panel, lean=10.0, grip={"l": 0.05, "r": 0.05})
         low_pts = settle_on_panel(low_pts, z_low, below=True)
         person.set(y=y_work - 90.0, lean=0.0, hands={"l": None, "r": None})
-        down = nano.move({"panel": (PANEL_UP, 0.0)})
+        down = nano.move({"panel": (PANEL_UP, PANEL_UP - v_let)})      # the hands with it for 120 mm
+        down_on = nano.move({"panel": (PANEL_UP - v_let, 0.0)})          # then on down by itself
 
         def to_low(v):
             person.set(y=y_work - 90.0 + (y_panel - (y_work - 90.0)) * v, lean=10.0 * v,
@@ -1116,10 +1128,21 @@ def movie():
 
         def panel_down(v):
             down(v)
-            dz = -rise * PANEL_UP * min(v, u_let)
-            hands = {sd: tuple(low_pts[sd] + (0.0, 0.0, dz)) for sd in ("l", "r")}
-            person.set(hands=to_rest(hands, max(0.0, (v - u_let) / (1.0 - u_let))) if v > u_let else hands)
-        step(2.0, panel_down, hold=0.1)
+            person.set(hands={sd: tuple(low_pts[sd] + (0.0, 0.0, -120.0 * v - 3.0 * min(1.0, 4.0 * v)))
+                              for sd in ("l", "r")})
+        step(1.0, panel_down, hold=0.0)
+        bot_pts = {sd: low_pts[sd] + (0.0, 0.0, -123.0) for sd in ("l", "r")}
+
+        def hands_out(v):
+            person.set(hands={sd: tuple(bot_pts[sd] + (0.0, -180.0 * v, -25.0 * math.sin(math.pi * v)))
+                              for sd in ("l", "r")})
+        step(0.5, hands_out, hold=0.0)
+        out_pts = {sd: bot_pts[sd] + (0.0, -180.0, 0.0) for sd in ("l", "r")}
+
+        def falls_on(v):
+            down_on(v)
+            person.set(hands=to_rest({k: tuple(g) for k, g in out_pts.items()}, v))
+        step(1.2, falls_on, hold=0.1)
         allow()
 
         def step_back(v):
