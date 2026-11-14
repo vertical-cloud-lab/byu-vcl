@@ -64,7 +64,13 @@ the film shows them. [notes/upkeep.md](upkeep.md) is the model and its answer.
   month).
 - **Round 8's render, for the record:** 9.5 MB, its GIF 3.8 MB, 28 min in one slot (19:11-19:40 UTC), 2.8 s a frame.
 - **Not checked:** no arm audit, since the units' poses are shown, not planned (see Caveats).
-- **Round 10's render, with upkeep** (what the MP4, the GIF and the still now are):
+- **Round 11's render** (`0578068`, what the MP4, the GIF and the still now are):
+  - 525 frames at 6 fps, 87.5 s; MP4 9.2 MB; GIF 4.1 MB.
+  - It has round 11's people (`people.Person`), the re-run year (309 alloys fully tested, 26 cameras) and the lab
+    stream's round-11 lab: the jar stores passive, tray E's camera E1 behind the iMicro.
+  - 28 min in one slot (03:32-04:00 UTC, then the GIF to 04:03), 2.9 s a frame with every tray built.
+  - Not previewed: the people are the maintenance clip's figure, checked there.
+- **Round 10's render, with upkeep:**
   - 525 frames at 6 fps, 87.5 s; MP4 9.2 MB; GIF 400 px at 3 fps, 3.7 MB.
   - 26 min in one slot (23:11-23:37 UTC, then the GIF to 23:41), about 2.7 s a frame with every tray built.
   - Its preview was built with `VLAB_ONLY_TRAYS=ABDEFJKLMNO` (4 GB) to get a slot sooner. The render builds every
