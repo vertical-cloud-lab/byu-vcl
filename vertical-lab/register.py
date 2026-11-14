@@ -11,6 +11,7 @@ A view is ``refs/<key>/<name>.json`` next to its frame ``refs/<key>/<name>.jpg``
      "pose": {"head": 0.0},                               # joint values of the model in that frame (Instrument.joints)
      "points": {"screen tl": [771, 548], ...},            # a point of the model at pixel (u, v)
      "curves": {"platen edge": [[402, 455], ...], ...},   # pixels anywhere along a circle or a line of the model
+     "lines": {"z": [[[715, 25], [721, 425]], ...]},      # optional: straight edges along a model axis, the room's too
      "holdout": false}                                    # true: a check, left out of the fit of the model's dimensions
 
 Frames from the lab's own videos are committed; frames from makers' and others' videos are not (refs/.gitignore),
@@ -27,6 +28,19 @@ range of focal lengths, then least squares over the pose, focal length, distorti
 model lists free parameters (``FREE[key]``), fits those and every camera together, with a soft pull back to the
 starting values so a dimension no view sees stays where it was. Writes ``refs/<key>/fit.json``: the cameras, the
 fitted parameters and the residual of every pick.
+
+The lens (focal length and radial term) is an intrinsic of the camera, so it is shared: views from one video (or one
+``"camera"`` label) fit one lens between them, and a held-out view of such a video fits only its pose to that lens (a
+lens of its own would soak up the model's error, and the check would test less). Picks on the machine alone pin the
+focal length down poorly: a machine half a metre across seen from a metre or two shows little perspective, so the focal
+length trades against the distance and the tilt, and the fit can land on a lens that matches the machine and nothing
+else in the frame. ``"lines"`` fix that from the scene. Each is a straight edge picked at its two ends, labelled with
+the model axis it runs along. ``"z"`` takes any vertical in the frame (door frames, cabinet edges, pipes, wall joints),
+and ``"x"``/``"y"`` take edges known to run along the model's axes. Each end's distance from the line through the
+edge's middle and the axis's vanishing point is a residual, in pixels like the picks. Verticals spread across the frame
+give the vanishing point of z, which is f / tan(tilt) below the principal point, so with the machine's picks fixing the
+tilt they fix the focal length. ``fit.json`` lists each view's lens and where it came from, and the fitted lenses
+(``"lenses"``).
 
 ``draw`` renders the model with each fitted camera at the frame's size and draws it over the undistorted frame: the
 silhouette in yellow, the creases in cyan, the picks as green dots and where the fitted model puts them as red
@@ -107,6 +121,41 @@ def project(cam, X, size) -> np.ndarray:
     return np.stack([size[0] / 2 + f * x * d, size[1] / 2 + f * y * d], axis=1)
 
 
+AXES = {"x": (1.0, 0.0, 0.0), "y": (0.0, 1.0, 0.0), "z": (0.0, 0.0, 1.0)}
+
+
+def _ideal(uv, cam, size) -> np.ndarray:
+    """A picked pixel moved to where a pinhole without the lens term would put it (inverts project's k1)."""
+    f, k1 = math.exp(cam[6]), (cam[7] if len(cam) > 7 else 0.0)
+    c = np.array([size[0] / 2, size[1] / 2])
+    xd = (np.asarray(uv, float) - c) / f
+    xu = xd.copy()
+    for _ in range(5):
+        xu = xd / (1 + k1 * float(xu @ xu))
+    return c + f * xu
+
+
+def vanishing_point(cam, axis, size) -> np.ndarray:
+    """Homogeneous pixel (u, v, w) of the pinhole image where lines along a model axis meet; w = 0 if they don't."""
+    d = rodrigues(cam[:3]) @ np.asarray(AXES[axis], float)
+    f = math.exp(cam[6])
+    return np.array([f * d[0] + size[0] / 2 * d[2], f * d[1] + size[1] / 2 * d[2], d[2]])
+
+
+def line_residuals(cam, view, size) -> np.ndarray:
+    """The view's "lines" against the camera: each end's distance in pixels from the line through the edge's middle and
+    the vanishing point of its axis. Empty if the view has none."""
+    out = []
+    for axis, segs in view.get("lines", {}).items():
+        vp = vanishing_point(cam, axis, size)
+        for p0, p1 in segs:
+            a, b = _ideal(p0, cam, size), _ideal(p1, cam, size)
+            ln = np.cross(np.r_[(a + b) / 2, 1.0], vp)
+            n = math.hypot(ln[0], ln[1])
+            out += [0.0, 0.0] if n < 1e-12 else [float(ln @ np.r_[a, 1.0]) / n, float(ln @ np.r_[b, 1.0]) / n]
+    return np.asarray(out, float)
+
+
 def residuals(cam, anchors, view, size) -> np.ndarray:
     out = []
     for name, uv in view.get("points", {}).items():
@@ -137,6 +186,8 @@ def init_camera(anchors, view, size):
                 continue
             cam = np.r_[rv.ravel(), tv.ravel(), math.log(f), 0.0]
             e = float(np.mean(residuals(cam, anchors, view, size) ** 2)) + float(np.sum(priors(cam, size) ** 2))
+            lr = line_residuals(cam, view, size)
+            e += float(np.mean(lr ** 2)) if len(lr) else 0.0
             if best is None or e < best[0]:
                 best = (e, cam)
     if best is None:
@@ -159,11 +210,39 @@ def fit_camera(anchors, view, size, k1=True):
 
     def f(c):
         c = np.r_[c, 0.0] if len(c) == 7 else c
-        return np.r_[residuals(c, anchors, view, size), priors(c, size)]
+        return np.r_[residuals(c, anchors, view, size), line_residuals(c, view, size), priors(c, size)]
     x0 = cam if (k1 and npick >= 10) else cam[:7]
     sol = least_squares(f, x0, x_scale="jac", loss="soft_l1", f_scale=6.0, max_nfev=4000)
     c = sol.x if len(sol.x) == 8 else np.r_[sol.x, 0.0]
     return c
+
+
+def fit_pose(anchors, view, size, lens):
+    """The camera's pose alone, to a lens given as (log f, k1): a held-out view of a video whose lens the fitted views
+    found."""
+    import cv2
+    from scipy.optimize import least_squares
+    lens = np.asarray(lens, float)
+    f0 = math.exp(lens[0])
+    names = [n for n in view.get("points", {}) if n in anchors]
+    X = np.array([sample(anchors[n])[0] for n in names], np.float64)
+    U = np.array([_ideal(view["points"][n], np.r_[np.zeros(6), lens], size) for n in names], np.float64)
+    K = np.array([[f0, 0, size[0] / 2], [0, f0, size[1] / 2], [0, 0, 1]])
+    starts = []
+    for flag in (cv2.SOLVEPNP_SQPNP, cv2.SOLVEPNP_ITERATIVE):
+        try:
+            ok, rv, tv = cv2.solvePnP(X, U, K, None, flags=flag)
+        except cv2.error:
+            continue
+        if ok and tv[2, 0] > 0:
+            starts.append(np.r_[rv.ravel(), tv.ravel()])
+    starts.append(init_camera(anchors, view, size)[:6])
+
+    def f(p):
+        c = np.r_[p, lens]
+        return np.r_[residuals(c, anchors, view, size), line_residuals(c, view, size)]
+    sols = [least_squares(f, s, x_scale="jac", loss="soft_l1", f_scale=6.0, max_nfev=4000) for s in starts]
+    return np.r_[min(sols, key=lambda s: s.cost).x, lens]
 
 
 def solve(key: str) -> dict:
@@ -205,6 +284,7 @@ def solve(key: str) -> dict:
         def f(x):
             q, cs = unpack(x)
             r = [residuals(cs[n], fn(q, views[n].get("pose", {})), views[n], views[n]["size"]) for n in order]
+            r += [line_residuals(cs[n], views[n], views[n]["size"]) for n in order]
             r += [priors(cs[n], views[n]["size"]) for n in order]
             r.append(5.0 * (x[:len(free)] - x0) / scale * 10.0)       # 10 % off its start costs about 5 px
             if checks is not None:                                     # the model must stay buildable
@@ -217,21 +297,43 @@ def solve(key: str) -> dict:
         sol = least_squares(f, np.clip(x, lo + 1e-9, hi - 1e-9), bounds=(lo, hi), x_scale="jac", loss="soft_l1",
                             f_scale=6.0, max_nfev=20000)
         fitted, cams = unpack(sol.x)
-    for n, v in held.items():                       # the checks: only their own camera is fitted, to the result
-        cams[n] = fit_camera(fn(fitted, v.get("pose", {})), v, v["size"])
+    lenses = {}                                     # the lens each video's fitted views found, and which views
+    for n, v in views.items():
+        lenses.setdefault(group(v), (np.asarray(cams[n][6:8], float), []))[1].append(n)
+    for n, v in held.items():                       # the checks: only the pose, if the fitted views found the lens
+        a, g = fn(fitted, v.get("pose", {})), group(v)
+        cams[n] = fit_pose(a, v, v["size"], lenses[g][0]) if g in lenses else fit_camera(a, v, v["size"])
     views.update(held)
     out = {"key": key, "free": free, "params": {k: round(float(fitted[k]), 1) for k in free},
-           "start": {k: params[k] for k in free}, "views": {}}
+           "start": {k: params[k] for k in free}, "lenses": {}, "views": {}}
+    for g, (lens, members) in lenses.items():
+        w = views[members[0]]["size"][0]
+        out["lenses"][g] = {"focal_px": round(math.exp(lens[0]), 1), "k1": round(float(lens[1]), 4),
+                            "hfov_deg": round(math.degrees(2 * math.atan(w / 2 / math.exp(lens[0]))), 1),
+                            "width_px": w, "fitted_from": members}
     for name, v in views.items():
-        c = cams[name]
+        c, g = cams[name], group(v)
         r = residuals(c, fn(fitted, v.get("pose", {})), v, v["size"]).reshape(-1, 2)
         names = list(v.get("points", {})) + [f"{n} ({i + 1})" for n, uvs in v.get("curves", {}).items()
                                              for i in range(len(uvs))]
+        if g not in lenses:
+            lens_from = "its own (no fitted view of this video)"
+        elif name in lenses[g][1]:
+            lens_from = f"fitted, shared by {len(lenses[g][1])} view(s) of {g}"
+        else:
+            lens_from = f"held fixed at the lens of {', '.join(lenses[g][1])}"
         out["views"][name] = {"source": v.get("source", ""), "size": list(v["size"]), "holdout": bool(v.get("holdout")),
                               "camera": [float(t) for t in c], "focal_px": round(math.exp(c[6]), 1),
-                              "k1": round(float(c[7]), 4), "rms_px_camera_only": round(before[name], 2),
+                              "k1": round(float(c[7]), 4),
+                              "hfov_deg": round(math.degrees(2 * math.atan(v["size"][0] / 2 / math.exp(c[6]))), 1),
+                              "lens": lens_from, "rms_px_camera_only": round(before[name], 2),
                               "rms_px": round(rms(r), 2),
                               "residual_px": {n: round(float(np.hypot(*e)), 1) for n, e in zip(names, r)}}
+        lr = line_residuals(c, v, v["size"]).reshape(-1, 2)
+        if len(lr):
+            segs = [f"{axis} ({i + 1})" for axis, ss in v["lines"].items() for i in range(len(ss))]
+            out["views"][name]["rms_px_lines"] = round(float(np.sqrt(np.mean(lr ** 2))), 2)
+            out["views"][name]["line_residual_px"] = {s: round(float(np.abs(e).max()), 1) for s, e in zip(segs, lr)}
     (REFS / key / "fit.json").write_text(json.dumps(out, indent=1))
     return out
 
@@ -391,6 +493,16 @@ def draw(key: str, names=None, rebuild=False) -> list[Path]:
                 for uv in uvs:
                     q = _undistort_pt(uv, cam, size)
                     cv2.circle(img, tuple(int(round(t)) for t in q), 2 * lw, (40, 220, 60), -1)
+            for axis, segs in view.get("lines", {}).items():   # magenta: the edge picked; white: where the camera has it
+                vp = vanishing_point(pin, axis, size)
+                for p0, p1 in segs:
+                    a = np.asarray(_undistort_pt(p0, cam, size), float)
+                    b = np.asarray(_undistort_pt(p1, cam, size), float)
+                    m, half = (a + b) / 2, float(np.hypot(*(b - a))) / 2
+                    d = vp[:2] - m * vp[2]
+                    d = d / max(float(np.hypot(*d)), 1e-9) * half * (1.0 if float(d @ (b - a)) >= 0 else -1.0)
+                    cv2.line(img, _px(a), _px(b), (255, 60, 255), lw)
+                    cv2.line(img, _px(m - d), _px(m + d), (255, 255, 255), max(1, lw // 2))
         sheet = np.concatenate([over, base], axis=1)
         h = 540
         im = Image.fromarray(sheet).resize((int(sheet.shape[1] * h / sheet.shape[0]), h), Image.LANCZOS)
@@ -401,6 +513,10 @@ def draw(key: str, names=None, rebuild=False) -> list[Path]:
         paths.append(path)
         print(path)
     return paths
+
+
+def _px(p) -> tuple:
+    return tuple(int(round(float(t))) for t in p)
 
 
 def _undistort_pt(uv, cam, size):
@@ -495,10 +611,12 @@ if __name__ == "__main__":
     cmd, key = sys.argv[1], sys.argv[2]
     if cmd == "solve":
         res = solve(key)
-        print(json.dumps({k: res[k] for k in ("free", "start", "params")}, indent=1))
+        print(json.dumps({k: res[k] for k in ("free", "start", "params", "lenses")}, indent=1))
         for n, v in res["views"].items():
             tag = " (held out of the fit)" if v.get("holdout") else ""
-            print(f"{n}{tag}: rms {v['rms_px_camera_only']} -> {v['rms_px']} px, f {v['focal_px']}, k1 {v['k1']}")
+            lines = f", lines rms {v['rms_px_lines']} px" if "rms_px_lines" in v else ""
+            print(f"{n}{tag}: rms {v['rms_px_camera_only']} -> {v['rms_px']} px{lines}, f {v['focal_px']} "
+                  f"(HFOV {v['hfov_deg']} deg, lens {v['lens']}), k1 {v['k1']}")
             worst = sorted(v["residual_px"].items(), key=lambda kv: -kv[1])[:6]
             print("   worst:", ", ".join(f"{a} {b}" for a, b in worst))
     elif cmd == "sheet":                   # register.py sheet <rev> key [key ...]: footage, before, after

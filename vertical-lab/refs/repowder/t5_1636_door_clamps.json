@@ -6,6 +6,7 @@
   "door": 1.0,
   "clamp1": 1.0
  },
+ "lines": {"z": [[[241, 15], [283, 440]], [[392, 15], [398, 105]]]},
  "holdout": true,
  "points": {
   "viewport centre": [

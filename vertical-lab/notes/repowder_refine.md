@@ -281,3 +281,99 @@ This run was on a PR opened by the bot, which claude-code-action now treats as u
 (`restrict_untrusted_prs`, on by default). So CadQuery, `register.py` and the renders could not run, and changing
 `model.py` blind would risk breaking every consumer of the model with nothing to check it against. A run started from an
 issue (e.g. `@claude` on #303) is not restricted, and can make and verify the changes above.
+
+
+---
+
+# Fourth pass (2026-11-14): the camera intrinsics
+
+Sterling on PR #327: "make sure you're also updating and refining with the camera intrinsics considered."
+
+## How the fit treated the lens until now
+
+`register.py` models every view as a pinhole camera: square pixels, the principal point at the frame's centre, one radial term
+`k1`. The fitted views of one video share a focal length and `k1`. A held-out view fitted a lens of its own, 8 degrees of freedom
+from 5 to 8 picks. `k1` is held near 0 by its prior: every view fitted 0.0001-0.0002, which is no distortion at all.
+
+| View | Role | Focal length (px, 1280 wide) | HFOV | Tilt below horizontal | Lens |
+| --- | --- | --- | --- | --- | --- |
+| T4 5:08, 5:41, 6:05 | fitted | 650 | 89 deg | 21, 12, 6 deg | shared by the three |
+| T4 1:53 | held out | **435** | 111 deg | 24 deg | its own, though it is the same video as the three above |
+| T1 30:13 | fitted | 1146 | 58 deg | -3 deg | its own (only view of T1) |
+| T7 51:00 (`t2_3060`) | held out | 1080 | 61 deg | 12 deg | its own (only view of T7) |
+| T5 27:16 | held out | **1619** | 43 deg | 35 deg | its own (only view of T5) |
+
+Picks on the rePowder alone pin a focal length down poorly. A machine half a metre across, seen from a metre or two, shows little
+perspective, so the focal length trades against the distance and the tilt. The fit can then land on a lens that matches the machine
+and nothing else in the frame. A lens that floats like that also soaks up the model's own errors, such as the upside-down latch the
+third pass found. That bends the fitted dimensions, and it weakens the held-out checks: T4 1:53's 9.2 px came with a lens a third
+shorter than the one its own video's fitted views share.
+
+## The check: vertical edges in the frames
+
+A camera's focal length and rotation fix where vertical lines converge: the vanishing point of z lies f / tan(tilt) below the
+principal point, in the direction the roll sets. Long straight verticals in the frames, picked on 2-3x gridded zooms (headless
+Chrome, `python3` being blocked in this run), were compared with the vertical each fitted camera predicts at the same place.
+Lean is the edge's angle from the frame's vertical, positive when it runs down to the right:
+
+| View | Edge | Length | Measured lean | The fitted camera's | Off by | At the ends |
+| --- | --- | --- | --- | --- | --- | --- |
+| T4 1:53 | vacuum cylinder, right side | 119 px | -0.5 deg | +12.1 deg | -12.6 deg | 12.9 px |
+| T4 1:53 | blue cabinet, left edge | 180 px | -0.6 deg | -9.1 deg | +8.4 deg | 13.2 px |
+| T1 30:13 | blue cabinet, left edge | 145 px | +1.6 deg | +10.3 deg | -8.7 deg | 11.0 px |
+| T5 27:16 | wall pipe, left | 427 px | +5.6 deg | +14.2 deg | -8.5 deg | 31.7 px |
+| T5 27:16 | wall pipe, right | 90 px | +3.8 deg | +10.5 deg | -6.7 deg | 5.2 px |
+| T7 51:00 | blue cabinet, left edge | 217 px | +7.4 deg | +3.7 deg | +3.7 deg | 7.1 px |
+| T4 5:08 | housing, left silhouette | 250 px | -0.2 deg | +3.1 deg | -3.3 deg | 7.2 px |
+| T4 6:05 | steel door edge | 400 px | +0.9 deg | +4.0 deg | -3.1 deg | 10.9 px |
+| T4 5:41 | blue cabinet, left edge | 110 px | -0.5 deg | +0.9 deg | -1.4 deg | 1.3 px |
+
+Sheet: [`out/repowder_refine/intrinsics_verticals.jpg`](../out/repowder_refine/intrinsics_verticals.jpg). What it says:
+
+- **T4 1:53's own lens is wrong.** The two verticals, either side of the centre, are off in opposite directions by 8-13 deg. In the
+  footage they are nearly parallel; the camera makes them converge on a point 956 px below the centre. A 435 px lens tilted 24 deg
+  does that, and the frame isn't one.
+- **T1 30:13 is rolled about 9 deg**, and T5 27:16 is out by 7-9 deg in roll and tilt. Both views have few picks, all on the
+  machine, and their own lens.
+- **The shared T4 lens leans every T4 vertical the same way, by 1.4-3.3 deg.** That is a tilt or roll bias in the joint solve, small
+  beside the others but systematic.
+- **The frames are rectilinear.** The long straight edges (the door frame in T4 6:05, the wall pipes in T5 27:16, the cinder-block
+  courses everywhere) show no bowing, so these are phone videos with the distortion corrected in the camera, and `k1` near 0 is a
+  fair assumption, not a finding. The principal point at the centre is good to first order; electronic stabilisation shifts the
+  crop a little from frame to frame.
+
+I tried to get each video's focal length outright from two vanishing points (the verticals and the bolt rod or the cabinet's top
+edge along x). By hand it didn't converge to a number worth reporting: the x edges long enough to use are few, and the rod is
+100 px long. The solver below does it properly.
+
+## What changed in `register.py`
+
+- **`"lines"` in a view's JSON**: straight edges picked at their two ends, labelled with the model axis they run along. `"z"` takes
+  any vertical in the frame, the room's included: door frames, cabinet edges, pipes, wall joints. `"x"` and `"y"` take edges known
+  to run along the model's axes, such as the bolt rod (x). Each end's distance from the line through the edge's middle and the
+  axis's vanishing point is a residual in pixels, beside the picks, in every camera fit: the first guess over focal lengths, each
+  camera alone, the joint fit with the dimensions, and the held-out poses. The model's dimensions do not enter these residuals, so
+  they constrain the camera from the scene alone.
+- **A held-out view of a video with fitted views fits only its pose** (`fit_pose`), with the focal length and `k1` held at that
+  video's fitted lens. A view that is the only one of its video (T1, T5, T7 here) still fits its own lens, now with its lines.
+- **`fit.json` reports the lenses**: per view, `hfov_deg`, `lens` (fitted and shared, held at another view's lens, or its own),
+  `rms_px_lines` and `line_residual_px`; at the top, `"lenses"`, one entry per video with the views that fitted it.
+- **`draw` overlays the line picks**: the edge picked in magenta, the camera's vertical (or x, y) through its middle in white.
+
+The nine edges above are in the view JSONs as each view's first `"lines"`.
+
+## Not done in this run, and what the next run has to do
+
+`python3` was refused in this run, as in the third pass (claude-code-action's `restrict_untrusted_prs`, on a PR opened by the
+bot). So **none of this has been run**: `fit.json` and the overlays are still the second pass's, and the `register.py` changes have
+been read through but not executed. A run started from #303, where interpreters are allowed, should:
+
+1. Run `python3 register.py solve repowder` and `xvfb-run -a python3 register.py draw repowder`, and fix whatever the new code
+   path trips on.
+2. Add more `"z"` lines per view, on both sides of the centre (a single vertical fixes the roll better than the focal length), and
+   `"x"` lines where the edge's direction is sure (the bolt rod). Two verticals far apart in each frame give the vanishing point.
+3. Compare the lenses that come out. If T1, T4 and T7 land on one focal length, give them a shared `"camera"` label so that one lens
+   is fitted from all of them. If T4 stays near 650 px while T1 and T7 sit near 1100, the T4 videographer zoomed out or used the
+   wide lens. In either case the lab can say which phone filmed the training videos, and whether it zoomed.
+4. Expect the pick RMS to rise where the lens was soaking up model error, the T4 1:53 check above all. That is the point: what is
+   left is the model's error. Then refit the free dimensions and apply the third pass's latch changes against the new cameras.
