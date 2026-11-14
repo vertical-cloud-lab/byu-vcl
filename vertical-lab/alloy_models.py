@@ -811,7 +811,9 @@ def zbar_edm(pc, k: int) -> tuple:
     return float(pc[0]) - zx, float(pc[2]) - zy
 
 
-TROUGH = dict(gap=0.5, clear=1.0, wall=2.0, wall_h=4.0, floor_t=4.0, y0=6.0, reach=(60.0, 102.0), post=(-90.0, -78.0),
+# round 11: the lower trough stops 72 mm out, not 2 mm past the bar's end: the specimen fingers take each vertical bar
+# 13 mm from its free end with blades either side of it, where the trough's walls stood
+TROUGH = dict(gap=0.5, clear=1.0, wall=2.0, wall_h=4.0, floor_t=4.0, y0=6.0, reach=(60.0, 72.0), post=(-90.0, -78.0),
               post_y=(-32.0, -20.0))
 
 

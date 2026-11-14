@@ -670,8 +670,8 @@ GRIP_HALF = 0.94                 # on a broken half's 6 mm reduced section
 CAB_TOP = P.MIR["H"] + P.CAB_H   # 780: the MiR cabinet's top plate
 XH_REST = -0.7                   # round 11: the Instron's crosshead at rest, 112 mm under its modelled height (see
 #                                  section 7)
-COMB_DROP = 88.0                 # round 11: the catch comb's slide: its top 14 mm under the bars' feet while the plate
-#                                  goes on, its troughs 2 mm over the table (the window under it goes down to the tank)
+COMB_DROP = 113.0                # round 11: the catch comb's slide: its top 3.5 mm under the plate's rim (845 mm) while
+#                                  the plate goes on, its ejector block 2.5 mm over the tank's floor in the table's window
 DRIVE_SHOWN = 4.0                # the long drives are shown at 4x, and say so
 SS_HOT = dict(E=65000.0, ys=190.0, uts=245.0, elong=0.10,
               src="illustrative: AddUp's room-temperature values scaled to about 60 % at 200 C (assumed)")
@@ -1339,6 +1339,7 @@ def _movie(B):
         step(0.4, D_.with_hose(rb.line_to(A.down(p_hold, spin=0.0))))
         grip(0.0)
         rb.release("dbox")
+        D_.update_hose()                 # round 11: the parked route (DBox.hose), before the plate comes out
         lin(A.down(p_hold + (0, 0, 130), spin=0.0), 0.6)
         # the plate out by its lug, 30 deg down (the chamber is 280 mm tall inside), into the box
         st["cap"] = ("The platform's clamp lets go (a zero-point clamp: an assumption). The chamber is too low for the "
@@ -1366,7 +1367,7 @@ def _movie(B):
         p_mid = p_box + (0, -200, 100)
         go(q=branch_q(rb, tilt(p_mid), tilt(p_box)), secs=1.6,
            labels=[("zero-point chuck", tuple(box_c + (0, 0, -30)), (0.80, 0.40))])
-        lin(tilt(p_box + (0, 0, 14)), 1.2)
+        lin(tilt(p_box + (0, 0, 30)), 1.2)    # round 11: the stud's tip 10 mm over the chuck, then straight down
         lin(tilt(p_box), 0.5)
         grip(0.0)
         rb.release("dbox_rotor")
@@ -1568,9 +1569,11 @@ def _movie(B):
         st["lbl"] = f"5/{n}"
         jar = B["jar_at"]
         jz1 = M.JAR["z1"] + M.JAR["ring_h"]
-        lid_g = jar + (0, 0, jz1 + M.LID["t"] + M.LID["knob_h"] - 12.0)
+        # round 11: the knob taken 4 mm under its top, not 12: the fingertips reach 19 mm past the grasp point, so at
+        # 12 they were 5 mm into the lid under the knob (the strict audit)
+        lid_g = jar + (0, 0, jz1 + M.LID["t"] + M.LID["knob_h"] - 4.0)
         rest_top = B["rest_at"] + (0, 0, jz1)
-        rest_g = rest_top + (0, 0, M.LID["t"] + M.LID["knob_h"] - 12.0)
+        rest_g = rest_top + (0, 0, M.LID["t"] + M.LID["knob_h"] - 4.0)
         CAM_JAR = [tuple(jar + (-650, 900, 1500)), tuple(jar + (120, -150, 950)), (0, 0, 1)]
         st["cap"] = ("A rinse before the furnace: wire-cut parts come out wet with deionised water. The IPA jar beside "
                      "the EDM is kept capped; the arm lifts the lid off by its knob onto a rest.")
@@ -1672,8 +1675,7 @@ def _movie(B):
             grip(C_SPEC, 0.4 * fast)
             take(g)
             lin(up_(SF(lvl(p_end, into), C_SPEC), 2.0), 0.3 * fast)
-            lin(back(up_(SF(lvl(p_end, into), C_SPEC), 2.0), 118.0), 0.9 * fast)
-            lin(back(up_(SF(lvl(p_end, into), C_SPEC), 40.0), 150.0), 0.6 * fast, labels=[])
+            lin(back(up_(SF(lvl(p_end, into), C_SPEC), 2.0), 118.0), 0.9 * fast, labels=[])
             hang = M.E8_SUB["L"] - 13.0             # the bar under the fingers' grasp point, pointing down
             p_dip_top = np.r_[jar[:2], M.JAR["z1"] + M.JAR["ring_h"] + hang + 30.0]
             # the blades' tips, 10 mm past the grasp point, 2 mm over the air knife
@@ -1873,6 +1875,10 @@ def _movie(B):
         park(1.2)
         L.store("F", st["lbl"], "Tray F goes back to its slot.", fast=0.55, hold=0.1, cam=CAM_TRAYF)
         L.focus = None
+        if STOP <= 6:                  # round 11: CH5_FROM=6 CH5_TO=6, section 6 alone
+            if chk_mir is not None:
+                chk_mir.save()
+            return sc.save()
 
     # ---------------------------------------------------------------- 7. the Instron
     st["lbl"] = f"7/{n}"
