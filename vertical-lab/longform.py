@@ -197,7 +197,9 @@ CHAPTERS = [
     dict(key="checks", title="How the models were checked",
          card=["Ten models fitted to frames of the real machines, the lab's own SOP videos among them. Every "
                "instrument's motion played through MuJoCo for interferences. Every frame of the arm's moves "
-               "checked with FCL against itself, the MiR and everything visible, and planned round obstacles."],
+               "checked with FCL against itself, the MiR and everything visible, and planned round obstacles.",
+               "Since round 11 the check is stricter: a part may touch where it is taken from or set down only up to "
+               "1.5 mm deep, and everything else that moves (MiRs, trays, doors, the person, tables) is checked too."],
          parts=[("still", "register/before_after.jpg", 16.0, "Each row: a frame of the real machine, the model "
                  "before, the model after refitting", "Fitted to footage of the real machines"),
                 ("gitstill", REPOWDER, "vertical-lab/out/repowder_refine/before_after.jpg", 18.0, "The rePowder "
@@ -208,7 +210,9 @@ CHAPTERS = [
                  "the fixes", "MuJoCo interference check"),
                 ("still", "collisions/vlm_workflow_before_after.png", 9.0, "The arm before and after the collision "
                  "check: straight joint moves through the MiR and the holder, then planned round them",
-                 "Arm collisions, checked and planned round")]),
+                 "Arm collisions, checked and planned round"),
+                ("still", "collisions/round11_sheet.png", 12.0, "Round 11's stricter check, clip by clip: frames in "
+                 "collision under the old rules and the new, before and after the fixes", "The stricter check, round 11")]),
     # Round 10: Sterling (2026-11-07), "maintenance over long-term and how that gets handled in workflows".
     dict(key="upkeep", title="Maintenance over the long term, inside the workflow",
          card=["Maintenance is booked into the same schedule as the work: calendar service, consumables by use, "
