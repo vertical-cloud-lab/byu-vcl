@@ -1351,6 +1351,17 @@ def build_vlm(name, data, idata, title, docks=True, cams=True, mp4=True, robot=F
         for k in HOME:
             add_tray_cameras(sc, k)
         add_bay_camera(sc)
+    # round 11 (audit-a's strict audit of the bay-camera clip): props.vial_rack is a solid block with its vials drawn 32
+    # mm inside it, so a vial lifted out of tray B's rack read as going through the rack; it gets its bores here, as
+    # the 8:00 clip does (animate.py, e0ce3a8: props.pocket_block, 1 mm round a vial, a lead-in at the mouth)
+    import props as PR
+    rack_g = L.eq_groups["B"][0] if L.eq_groups.get("B") else None
+    if rack_g is not None and f"{rack_g}/rack" in sc.actors:
+        _, rack_seats = PR.vial_rack()
+        w_rack = 6 * 34.0 + 16
+        sc.set_mesh(f"{rack_g}/rack", PR.pocket_block(-w_rack / 2, w_rack / 2, -26.0, 26.0,
+                                                      [(x, y, PR.VIAL_R + PR.POCKET_CLEAR) for x, y, _ in rack_seats],
+                                                      h=40.0, floor=rack_seats[0][2]))
     L.apply_state()
     return sc, L, live
 
@@ -1795,6 +1806,8 @@ def movie_bay_camera(data, idata):
         sc.add(f"frustum {key} edges", edges, col, "frusta", ambient=0.6, specular=0.0)
         fr[key] = P
     hide(sc, ("frusta",), 0.0)
+    # round 11 (audit-a): the pictures' pyramids are overlays, not solids; the collision checks skip them, as liquids
+    sc.fluids = set(getattr(sc, "fluids", ())) | {nm for nm in sc.actors if sc.group_of[nm] == "frusta"}
     rig = ("baycamrig", "baycamrigsl", "baycamrigpan", "baycamrighead")
     # the arm's work (round 10, the multi-doser v5): from parked, over the vial rack, down to the vial, take it, up,
     # over the vessel shuttle's fork outside the doser's -y panel, down, set the vial on it upright, up and away (as
