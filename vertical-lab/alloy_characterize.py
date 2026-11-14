@@ -16,8 +16,8 @@ as the set-up movie leaves it. The trays come to the opening one at a time and t
   presses it against the cup's wall: coupon -> carbon-filled phenolic -> cup -> stage, the path to ground. BSE, then
   EDS (the box beside the SEM is its analyser, Oxford's AZtecOne).
 * **Tray E, Shuttle 1: the KLA iMicro, then the Plastometrex PIP**, on the steel mount (the slice on steel: nothing
-  soft under it). The iMicro's hood is drawn see-through while it works; the stage carries the slice from the
-  microscope to the indenter. The PIP's bay is too low for a gripper, so a loading slide (ours) carries the mount out.
+  soft under it). The iMicro's cabinet and lid are drawn see-through while it works; the stage carries the slice from
+  the microscope to the indenter. The PIP's bay is too low for a gripper, so a loading slide (ours) carries the mount out.
 * The MiR250 drives to Shuttle 2 at its 0.3 m/s^2 (props.ramp_frac).
 * **Tray L: the Mitutoyo HM-220 micro-Vickers**, on the hot mount, by its own loading slide (ours).
 * **Tray K: the Keyence VHX-7000** with the bar's upper half on a carrier (ours): the free-angle head tilts round it
@@ -58,21 +58,28 @@ HERE = Path(__file__).resolve().parent
 MOUNT_D, FACE = SP.MOUNT_D, SP.FACE_Z          # 38.1 mm, 20 mm
 GRIP_MOUNT = 0.588                    # 2F-85 closure on a 38.1 mm mount (pads 38.0 mm apart: ur_arm.gripper_fk)
 GRIP_BAR = 0.90                       # on the bar's 10 mm grip section
-OPEN = 0.30                           # opened to 62 mm, to reach in beside a mount or the bar
+OPEN = 0.30                           # opened to 62 mm, to reach in beside a mount
+OPEN_BAR = 0.62                       # and to 35 mm for the 10 mm bar (round 11: at 62 mm the right finger touched the
+#                                       VHX's controller as the bar was set on the carrier and taken back)
 TCP_UP = 13.0                         # the grasp point 13 mm over a mount's face: the pads (+-19 mm) hold its top 6 mm,
 #                                       clear of a holder cup's rim
 BAR_UP = 14.0                         # and 14 mm over the bar's top: the pads end level with its underside
 MIR_SPEED = 1500.0                    # mm/s at most, at 0.3 m/s^2 (props.ramp_secs), as the other chapters
+PIP_LIFT = -2.6                       # the PIP's indenter while the profilometer scans: 18 mm over ram-up (see movie)
 HM_DOCK = 300.0                       # at Shuttle 2 the MiR stops this far short of its dock for the HM-220 (IK: 8
 #                                       solutions there against 4 at the dock, 1033 mm out)
 VHX_DOCK = 250.0                      # and this far past it for the VHX (at the dock, the wrist met the VHX's stand)
 
-# the caddy (ours) on the MiR's cabinet top, where chapter 6 left the mounts (alloy_prep.HOT_AT, ST_AT): a low block
-# with two pockets 6 mm deep and a ridge for the bar, narrower than the bar so the pads reach down either side of it
-CADDY = dict(w=230.0, d=100.0, h=14.0, pocket=6.0, ridge_w=8.0, ridge_l=40.0, ridge_h=6.0)
-CADDY_AT = (250.0, -190.0)            # MiR frame
-SLOT_AT = {"hot": (-70.0, 0.0), "steel": (0.0, 0.0), "bar": (75.0, 0.0)}      # caddy frame
-CAB_TOP = P.MIR["H"] + P.CAB_H        # 780 mm: the cabinet's top
+# the caddy (ours) on the MiR's cabinet top: a low block with two pockets 6 mm deep and a ridge for the bar, narrower
+# than the bar so the pads reach down either side of it. Round 11: it stood at (250, -190), 230 mm long, which put its
+# left end and half the hot mount's pocket over the arm's 20 mm mounting plate (props.mir250: |x| < 170, z 780-800,
+# drawn as part of the cabinet) and the bar's grip end against the e-stop (r 20 at (310, -230)): the stricter audit
+# found the hot mount set down 12 mm into the plate and the bar 3 mm into the e-stop. Now it is 180 mm long, on the
+# cabinet top right of the plate (x 175-355, 5 mm clear of it) and 10 mm behind the e-stop (y -200 to -100)
+CADDY = dict(w=180.0, d=100.0, h=14.0, pocket=6.0, ridge_w=8.0, ridge_l=40.0, ridge_h=6.0)
+CADDY_AT = (265.0, -150.0)            # MiR frame
+SLOT_AT = {"hot": (-60.0, 0.0), "steel": (10.0, 0.0), "bar": (72.0, 0.0)}      # caddy frame
+CAB_TOP = P.MIR["H"] + P.CAB_H        # 780 mm: the cabinet's top outside the arm's plate (which rises to 800)
 
 CAM_LAB = [(9400, -11800, 6400), (1800, -1600, 1300), (0, 0, 1)]
 PANEL_W = 0.44                        # a data panel's width, as a share of the frame
@@ -514,8 +521,9 @@ def movie():
     say("iMicro", "Tray E comes down: the Plastometrex PIP, the KLA iMicro nanoindenter and the Mastersizer.")
     L.fetch("E", st["lbl"], st["cap"], fast=0.5, cam=CAM_LAB, hold=0.2)
     CAM_NANO = cam_at(nw((0, -150, 250)), (-850, -1500, 760))      # where the tray is now, at the opening
-    say("iMicro", "The iMicro's hood lifts and its XY stage runs out to the load position, clear of the objective.")
-    status(L, iMicro="hood up, stage out")
+    say("iMicro", "The iMicro's lid lifts (the front panel stays) and its XY stage runs out to the load position, "
+                  "clear of the objective.")
+    status(L, iMicro="lid up, stage out")
     wait(1.6, nano.move({"lid": (0.0, 1.0), "carriage": (0.0, 1.0)}), cam=CAM_NANO,
          labels=[("KLA iMicro nanoindenter", tuple(nw((0, 0, 560))), (0.22, 0.20))])
     say("iMicro", "The steel mount into the stage's steel cup, clamped by a spring plunger: steel on steel.")
@@ -524,10 +532,10 @@ def movie():
     place_mount(world_of(nano, "stage", nano_base), f"{nano.prefix}stage", spin=180.0, key="nano")
     park(1.4)
     status(L, Arm="parked", iMicro="indenting")
-    say("iMicro", "Hood down (drawn see-through). The stage carries the slice under the microscope objective, which "
+    say("iMicro", "Lid down (drawn see-through). The stage carries the slice under the microscope objective, which "
                   "finds the polished face, then 100 mm across under the indenter head.")
     wait(1.6, RB.both(nano.move({"lid": (1.0, 0.0), "carriage": (1.0, 0.0), "~cabinet": (0.0, 1.0),
-                                 "~lid": (0.0, 1.0)}), clock("iMicro", 0.0, 2.0)))
+                                 "~lid": (0.0, 1.0), "~panel": (0.0, 1.0)}), clock("iMicro", 0.0, 2.0)))
     wait(1.4, RB.both(nano.move({"stage": (0.0, 1.0)}), clock("iMicro", 2.0, 4.0)))
     say("iMicro", "The Berkovich tip comes down onto the surface and is driven in to 500 nm: 25 indents in a 5 x 5 "
                   "grid, 20 um apart, hardness and modulus from each unloading curve (Oliver-Pharr).")
@@ -536,9 +544,10 @@ def movie():
     wait(1.2, RB.both(nano.move({"stage": (1.0, 0.0)}), clock("iMicro", 42.0, 45.0)))
     show_panel("nano", 4.4)
     sc.clock = None
-    say("iMicro", "Hood up, stage out; the arm takes the steel mount on to the PIP.")
+    say("iMicro", "Lid up, stage out; the arm takes the steel mount on to the PIP.")
     status(L, iMicro="done", Arm="unloading the iMicro")
-    wait(1.4, nano.move({"lid": (0.0, 1.0), "carriage": (0.0, 1.0), "~cabinet": (1.0, 0.0), "~lid": (1.0, 0.0)}))
+    wait(1.4, nano.move({"lid": (0.0, 1.0), "carriage": (0.0, 1.0), "~cabinet": (1.0, 0.0), "~lid": (1.0, 0.0),
+                         "~panel": (1.0, 0.0)}))
     pick_mount("c_steel", spin=180.0, at="nano")
 
     # ------------------------------------------------------------------ 3. tray E: the PIP
@@ -561,9 +570,15 @@ def movie():
     wait(1.6, RB.both(pip.move({"slide": (1.0, 0.0)}), nano.move({"lid": (1.0, 0.0), "carriage": (1.0, 0.0)}),
                       clock("PIP", 0.0, 0.5)))
     wait(1.4, RB.both(pip.move({"head": (0.0, 1.0)}), clock("PIP", 0.5, 1.0)))
-    wait(1.4, RB.both(pip.move({"head": (1.0, -0.3), "stylus": (0.0, 0.33)}), clock("PIP", 1.0, 1.5)))
+    # Round 11: the indenter lifts 18 mm over its ram-up height (head -2.6; it was -0.3, 2 mm) before the profilometer
+    # runs in, and goes back down only once the stylus is out again. The pick-up's shaft passes under the indenter's
+    # axis with its top 23 mm over the sample, and the ball, 7 mm over it with the ram up, was in its way (the movers
+    # check: stylus into head, 12 mm). The PIP model's own -2.0 (14 mm) still leaves the ball in the shaft
+    wait(0.6, RB.both(pip.move({"head": (1.0, PIP_LIFT)}), clock("PIP", 1.0, 1.15)))
+    wait(0.9, RB.both(pip.move({"stylus": (0.0, 0.33)}), clock("PIP", 1.15, 1.5)))
     wait(1.8, RB.both(pip.move({"stylus": (0.33, 0.67)}), clock("PIP", 1.5, 3.0)))
-    wait(1.2, RB.both(pip.move({"stylus": (0.67, 1.0), "head": (-0.3, 0.0)}), clock("PIP", 3.0, 3.5)))
+    wait(0.8, RB.both(pip.move({"stylus": (0.67, 1.0)}), clock("PIP", 3.0, 3.3)))
+    wait(0.5, RB.both(pip.move({"head": (PIP_LIFT, 0.0)}), clock("PIP", 3.3, 3.5)))
     say("PIP", "CORSICA fits a stress-strain curve to the indent's profile by finite elements, in minutes.")
     status(L, PIP="fitting the curve")
     wait(0.8, clock("PIP", 3.5, 6.0))
@@ -652,7 +667,7 @@ def movie():
     wait(1.4, vhx.move({"carrier": (0.0, 1.0)}), cam=CAM_VHX,
          labels=[("Keyence VHX-7000, free-angle head", tuple(vw((0, -40, 700))), (0.26, 0.18))])
     Tb = A.down(top_of(sc, "c_bar", RC.BAR_T + BAR_UP), spin=180.0)
-    go_to(sh(Tb, (0, 0, 90)), Tb, secs=1.8, grip=OPEN, cam=CAM_LAB)
+    go_to(sh(Tb, (0, 0, 90)), Tb, secs=1.8, grip=OPEN_BAR, cam=CAM_LAB)
     lin(Tb, 0.7)
     grip(GRIP_BAR)
     rb.grasp("c_bar")
@@ -662,7 +677,7 @@ def movie():
     go_to(sh(Tp, (0, 0, 90)), Tp, secs=2.0, cam=CAM_VHX)
     approach_q["vhx"] = rb.q.copy()
     lin(Tp, 0.8)
-    grip(OPEN)
+    grip(OPEN_BAR)
     rb.release(f"{vhx.prefix}carrier")
     lin(sh(Tp, (0, 0, 90)), 0.7)
     park(1.4)
@@ -684,7 +699,7 @@ def movie():
     status(L, VHX="done", Arm="unloading the VHX")
     wait(1.4, vhx.move({"carrier": (0.0, 1.0)}))
     Tb = A.down(top_of(sc, "c_bar", RC.BAR_T + BAR_UP), spin=180.0)
-    go(q=approach_q["vhx"], secs=1.8, grip=OPEN)          # the joints that set it down (see pick_mount)
+    go(q=approach_q["vhx"], secs=1.8, grip=OPEN_BAR)          # the joints that set it down (see pick_mount)
     lin(Tb, 0.7)
     grip(GRIP_BAR)
     rb.grasp("c_bar")
@@ -693,7 +708,7 @@ def movie():
     Tp = A.down(bar_home[:3, 3] + (0, 0, RC.BAR_T + BAR_UP), spin=180.0)
     go_to(sh(Tp, (0, 0, 90)), Tp, secs=2.0, cam=CAM_LAB)
     lin(Tp, 0.8)
-    grip(OPEN)
+    grip(OPEN_BAR)
     rb.release("c_caddy")
     lin(sh(Tp, (0, 0, 90)), 0.7)
     park(1.4, extra=vhx.move({"carrier": (1.0, 0.0)}))
