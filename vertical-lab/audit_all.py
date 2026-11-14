@@ -223,11 +223,13 @@ def selftest_depth():
     import collide as CL
 
     def body(mesh, name):
-        b = CL.Body(name, name, *CL._tris(mesh.triangulate().clean()))
+        t = CL._tris(mesh.triangulate().clean())
+        b = CL.Body(name, name, *t)
+        b.src = t                                  # so depth() measures it shrunk by TOUCH_MM, as in the audits
         b.place(np.eye(4))
         return b
     block = {"coarse": pv.Box((-50, 50, -50, 50, -50, 0)), "fine": pv.Box((-50, 50, -50, 50, -50, 0), level=20)}
-    want = {0.3: 1.5, 1.0: 1.5, 2.0: 3.0, 3.0: 6.0, 10.0: 12.0, 25.0: 25.0}
+    want = {0.3: 1.5, 1.0: 1.5, 2.0: 3.0, 3.0: 3.0, 10.0: 12.0, 25.0: 25.0}
     ok = True
     for d, w in want.items():
         got = [CL.depth(body(pv.Box((-10, 10, -10, 10, -d, 40 - d), level=lv), "f"), body(block[bn], "b"))
@@ -242,6 +244,16 @@ def selftest_depth():
     clear = CL.depth(body(pv.Box((-10, 10, -10, 10, 0.2, 40)), "f"), body(block["fine"], "b"))
     ok &= clear == 0.0
     print(f"0.2 mm clear: {clear} (expected 0)")
+    # fits (charge.lathe parts, both windings): a 20 mm peg 20 mm into a bore of its own size reads as touching
+    # (TOUCH_MM), 0.3 mm clearance as clear, 0.3 mm interference as deep (the shortest move that frees it is out)
+    import charge as C
+    for wind in (1, -1):
+        for r_bore, w in ((10.0, CL.TOUCH_MM), (10.3, 0.0), (9.7, 25.0)):
+            peg = C.lathe([(0, -20), (10, -20), (10, 20), (0, 20)][::wind], res=64)
+            ring = C.lathe([(r_bore, -20), (20, -20), (20, 0), (r_bore, 0)][::wind], res=64)
+            got = CL.depth(body(peg, "p"), body(ring, "r"))
+            ok &= got == w
+            print(f"peg in a bore of radius {r_bore} (winding {wind:+d}): {got} (expected {w:g})")
     print("DEPTH SELFTEST", "OK" if ok else "FAILED")
     return ok
 

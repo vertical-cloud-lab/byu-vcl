@@ -136,12 +136,19 @@ answer is the first step at which some direction frees it, so "1.5" means "under
 | finger sunk 25 mm | 25 | 25 | 25 | 25 |
 
 A sphere sunk 0.5, 1, 3 and 8 mm reads 1.5, 1.5, 6 and 12; a 10 mm rod straight through the block 50; a finger
-0.2 mm clear 0 (no contact). A depth exactly on a step reads the next step up, since a face-to-face touch still counts
+0.2 mm clear 0 (no contact). (These are before the shrink below: with it, a finger sunk 3 mm reads 3.) A depth exactly on a step reads the next step up, since a face-to-face touch still counts
 as contact. It costs 0.1 ms for a shallow pair and about 1.2 ms for a deep one (26 tests per step).
 
-Its known overestimate: **a press fit reads deep.** A 10 mm peg in a hole 0.3 mm too small, 20 mm deep, reads 25,
-since the shortest move that frees it is pulling it out. In these scenes that is a part drawn bigger than its pocket,
-which a real part can't be, so it is reported.
+**Fits.** A translational depth reads a peg in a bore as deep as it is inserted, since the shortest move that frees it
+is pulling it out. Many parts here are drawn with zero clearance: a plug of the bore's own diameter, a punch's nose in
+its guide ring. So `depth()` first shrinks the moving part by `TOUCH_MM` (0.3 mm) along its vertex normals (each
+connected piece by the sign of its own enclosed volume, since `charge.lathe`'s faces wind whichever way the profile
+runs): if the shrunk part clears the other, the two only touch, and the answer is 0.3. That is what `interference.py`
+does with its 0.6 mm `TOUCH_MM`, for the tessellation's chord error. Then, for a 20 mm peg 20 mm into a ring
+(`charge.lathe` parts, both windings): a bore of its own size reads 0.3 (touching), 0.3 mm clearance reads 0, and a
+bore 0.6 mm too small reads 25. That last is an interference fit drawn where a real part would need a slip fit, so it
+is reported. (An earlier version of this test put the ring off the peg's axis, since `pv.Cylinder` points along x by
+default, and read 25 for every case.) A finger sunk 3 mm now reads 3 rather than 6: the shrink takes 0.17-0.3 mm off.
 
 ### Rule 2: the movers check
 

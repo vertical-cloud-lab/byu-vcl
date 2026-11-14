@@ -71,6 +71,9 @@ MOVERS = STRICT and os.environ.get("ARM_AUDIT_MOVERS", "1") != "0"
 DEPTH_MM = float(os.environ.get("ARM_AUDIT_DEPTH_MM", "1.5"))
 LADDER = (DEPTH_MM, 3.0, 6.0, 12.0, 25.0, 50.0)     # depth() answers with the first of these that frees the pair
 DEEP = 999.0                                        # depth() past the last step of LADDER
+TOUCH_MM = float(os.environ.get("ARM_AUDIT_TOUCH_MM", "0.3"))   # depth() shrinks the part this much first, so a
+                    # zero-clearance fit (a plug in its bore, a nose in its guide) or tessellation error reads as touching
+                    # (interference.py counts overlaps under 0.6 mm as touching for the same reason)
 FLOOR_MM = 6.0      # the movers check: a body whose top is at most this far above z = 0 is the floor (the slab, tape,
                     # painted marks), which a MiR's skirt drawn down to z = 0 and anything set on the floor may touch
 _DIRS = np.array([d for d in __import__("itertools").product((-1, 0, 1), repeat=3) if any(d)], float)
@@ -107,7 +110,7 @@ def _bvh(v: np.ndarray, f: np.ndarray) -> fcl.BVHModel:
 class Body:
     """One mesh in its own (group) frame: its FCL object and its local box corners for a quick overlap test."""
 
-    __slots__ = ("name", "group", "obj", "corners", "tf", "pending", "wkey", "wbox")
+    __slots__ = ("name", "group", "obj", "corners", "tf", "pending", "wkey", "wbox", "src", "ero")
 
     def __init__(self, name: str, group: str, v: np.ndarray, f: np.ndarray):
         self.name, self.group = name, group
@@ -116,6 +119,8 @@ class Body:
         self.tf = None
         self.pending = None            # a re-meshed VTK input whose BVH isn't built yet (built when something is near)
         self.wkey = self.wbox = None   # World.current's cache: the group matrix (bytes) its world box was made for
+        self.src = None                # (v, f) or a callable giving them: for the shrunk copy depth() uses (round 11)
+        self.ero = None                # that copy, built when first needed
 
     def ensure(self):
         """Build the BVH of a re-meshed actor now (it was only marked when its mesh changed)."""
@@ -128,6 +133,7 @@ class Body:
         self.obj = fcl.CollisionObject(_bvh(*t), fcl.Transform())
         self.tf = None
         self.wkey = None
+        self.ero = None
 
     def place(self, M: np.ndarray):
         if self.tf is not None and np.array_equal(self.tf, M):
@@ -149,6 +155,46 @@ def _hit(a: fcl.CollisionObject, b: fcl.CollisionObject) -> bool:
     return fcl.collide(a, b, fcl.CollisionRequest(), fcl.CollisionResult()) > 0
 
 
+def _eroded(v: np.ndarray, f: np.ndarray, eps: float) -> fcl.CollisionObject | None:
+    """The mesh moved eps inward along its vertex normals (welded first, the faces' own orientation): a shrunk copy,
+    so surfaces that coincide with another part's (a zero-clearance fit) come apart and real overlaps stay."""
+    import warnings
+    m = pv.PolyData(np.asarray(v, float), np.c_[np.full(len(f), 3), np.asarray(f)].astype(np.int64).ravel())
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        m = m.clean().triangulate()
+        if m.n_cells == 0:
+            return None
+        m = m.compute_normals(cell_normals=False, point_normals=True, split_vertices=False, consistent_normals=False,
+                              auto_orient_normals=False)
+    fc = np.asarray(m.faces).reshape(-1, 4)
+    if (fc[:, 0] != 3).any():
+        return None
+    tri = fc[:, 1:].astype(np.int32)
+    P = np.asarray(m.points, float)
+    # each connected piece shrinks inwards whichever way its faces wind (charge.lathe's follow the profile's order):
+    # the sign of its enclosed volume says which side is in
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        con = m.connectivity(extraction_mode="all")
+    reg = np.asarray(con.point_data["RegionId"]) if con.n_points == m.n_points else np.zeros(m.n_points, int)
+    vol = np.einsum("ij,ij->i", P[tri[:, 0]], np.cross(P[tri[:, 1]], P[tri[:, 2]]))
+    per = np.zeros(int(reg.max()) + 1 if len(reg) else 1)
+    np.add.at(per, reg[tri[:, 0]], vol)
+    sign = np.where(per < 0, -1.0, 1.0)
+    v2 = P - eps * sign[reg][:, None] * np.asarray(m.point_normals, float)
+    return fcl.CollisionObject(_bvh(v2, tri), fcl.Transform())
+
+
+def _shrunk(b: "Body"):
+    if b.ero is None and b.src is not None and TOUCH_MM > 0:
+        t = b.src() if callable(b.src) else b.src
+        b.ero = _eroded(*t, TOUCH_MM) if t is not None else None
+        if b.ero is None:
+            b.src = None                       # nothing to shrink: don't try again
+    return b.ero
+
+
 def depth(x: "Body", y: "Body", upto: float | None = None) -> float:
     """How far x is into y (mm): the first step of LADDER (1.5, 3, 6, 12, 25, 50 mm) by which moving x along one of 26
     directions (to a cube's faces, edges and corners) frees it from y; 0 if they don't touch, DEEP (999) if nothing up
@@ -163,6 +209,13 @@ def depth(x: "Body", y: "Body", upto: float | None = None) -> float:
     if not _hit(x.obj, y.obj):
         return 0.0
     M = x.tf if x.tf is not None else np.eye(4)
+    xo = x.obj
+    e = _shrunk(x)                         # round 11: x shrunk by TOUCH_MM; if that clears y, they only touch
+    if e is not None:
+        e.setTransform(fcl.Transform(M[:3, :3], M[:3, 3]))
+        if not _hit(e, y.obj):
+            return TOUCH_MM
+        xo = e
     lo_x, hi_x = x.box(M)
     lo_y, hi_y = y.box(y.tf if y.tf is not None else np.eye(4))
     c = (lo_x + hi_x - lo_y - hi_y) * 0.5
@@ -172,14 +225,14 @@ def depth(x: "Body", y: "Body", upto: float | None = None) -> float:
     try:
         for k, t in enumerate(LADDER):
             for i in order:
-                x.obj.setTranslation(p + t * _DIRS[i])
-                if not _hit(x.obj, y.obj):
+                xo.setTranslation(p + t * _DIRS[i])
+                if not _hit(xo, y.obj):
                     return float(t)
             if upto is not None and t >= upto:
                 return float(LADDER[k + 1]) if k + 1 < len(LADDER) else DEEP
         return DEEP
     finally:
-        x.obj.setTransform(fcl.Transform(Rm, p))
+        xo.setTransform(fcl.Transform(Rm, p))
 
 
 def _decimated(mesh: pv.PolyData) -> pv.PolyData:
@@ -212,6 +265,10 @@ class ArmBodies:
         links, grip = _arm_geometry(model)
         self.links = {k: Body(k, k, *links[k]) for k in ARM_LINKS}
         self.grip = {k: Body(k, "gripper", *grip[k]) for k in grip}
+        for k, b in self.links.items():
+            b.src = links[k]
+        for k, b in self.grip.items():
+            b.src = grip[k]
         self.close = None
         self._G = None
 
@@ -265,6 +322,12 @@ def self_pairs(model: str) -> list[tuple[str, str]]:
 
 
 # ---------------------------------------------------------------------------------------------- the scene
+def _actor_tris(sc, name: str):
+    """An actor's triangles as drawn now (for a body's shrunk copy)."""
+    a = sc.actors.get(name)
+    return _tris(a.GetMapper().GetInput()) if a is not None else None
+
+
 def _visible(sc, name: str) -> bool:
     """Whether an actor is drawn at all (as Scene.apply decides). Cutaway halves and wholes both count: the machine
     is whole whatever the camera is shown, so an arm can't reach through the half that is cut away for the view."""
@@ -303,12 +366,14 @@ class World:
                 b.corners = _corners(lo, hi)
                 b.pending = inp
                 b.wkey = None
+                b.ero = None
                 continue
             t = _tris(inp)
             if t is None:
                 self.bodies.pop(name, None)
                 continue
             self.bodies[name] = Body(name, self.sc.group_of[name], *t)
+            self.bodies[name].src = functools.partial(_actor_tris, self.sc, name)
 
     def current(self, exclude_groups: set[str]) -> "Snap":
         """Every visible body not in exclude_groups, placed where its group is now, with its world box."""
@@ -777,6 +842,8 @@ class Movers:
         else:
             t = _tris(inp)
             b = Body(name, self.sc.group_of[name], *t) if t is not None else None
+            if b is not None:
+                b.src = t
         self.body[name], self.bkey[name] = b, key
         return b
 
@@ -797,7 +864,9 @@ class Movers:
         t = _tris(self.sc.actors[name].GetMapper().GetInput())
         if t is None:
             return None
-        b = Body(name, self.sc.group_of[name], t[0] @ R.T + M[:3, 3], t[1])
+        vw = t[0] @ R.T + M[:3, 3]
+        b = Body(name, self.sc.group_of[name], vw, t[1])
+        b.src = (vw, t[1])
         b.place(np.eye(4))
         self.baked[name] = (key, b)
         return b
