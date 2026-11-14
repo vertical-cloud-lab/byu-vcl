@@ -5,6 +5,7 @@
  "pose": {
   "clamp1": 1.0
  },
+ "lines": {"z": [[[152, 75], [180, 290]]]},
  "holdout": true,
  "points": {
   "viewport centre": [

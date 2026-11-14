@@ -3,6 +3,7 @@
  "video": "wRc8p2_FnJo",
  "t": 1813,
  "pose": {},
+ "lines": {"z": [[[488, 25], [492, 170]]]},
  "holdout": false,
  "points": {
   "knob ball": [
