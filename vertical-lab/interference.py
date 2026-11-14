@@ -56,7 +56,10 @@ FAULT_MM = 2.0                          # at least this thick: a fault; between 
 LOOSE_MM = 10.0                         # a moving machine piece this far from the rest of the machine has come loose
 CODE = "interference-v1"                     # bump to rebuild the geometry caches
 MODULES = ["instruments", "instruments_char", "instruments_lab", "services", "fab_metal", "fab_resin", "fab_pcb",
-           "instruments_r7"]
+           "instruments_r7",
+           # round 11: the models of rounds 8 and 9, in tour.py's order, so a refit (r8_test's furnace, r8_char's SEM,
+           # r8_powder's XRD) replaces the round-3 model of the same key as it does in the tours
+           "r8_prep", "r8_char", "r8_powder", "r8_test", "r8_store", "r8_scale", "r9_cubxl"]
 
 # not solids: fluids, powders, glows, beams, overlays (by material), and the mesh pieces that are powder heaps,
 # falling powder or a readout panel's carrier (by piece name)
