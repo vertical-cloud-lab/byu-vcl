@@ -5,7 +5,7 @@ some careful thinking, considering that this is meant to help us simulate as rea
 make things more seamless in an actual implementation."
 
 This ledger is the comb-through. It covers every comment Sterling wrote on issue #303 (Oct 27 – Nov 3) and on PR #318
-(Nov 3 – Nov 7). Each point is checked against this branch: the code, the notes and the committed renders, as of
+(Nov 3 – Nov 13). Each point is checked against this branch: the code, the notes and the committed renders, as of
 round 10's start (`813e74e`). Status:
 
 - ✅ done
@@ -235,7 +235,7 @@ Round 10's outcome for each open point is in the last column.
 |---|---|
 | A GIF to replace the org page's | ✅ #329 |
 
-### Nov 7 03:36: this round
+### Nov 7 03:36: round 10's list
 
 | Point | Round 10 |
 |---|---|
@@ -243,3 +243,21 @@ Round 10's outcome for each open point is in the last column.
 | A separate PR: contacts, specs, requests and answers to quote questions for every part, via the Pi | vendors PR |
 | Maintenance over the long term, in the workflows | upkeep streams |
 | The latest multi-doser with the scale; the cup raised on a platform closer to the nozzle, or a funnel | doser stream |
+
+### Nov 8 06:44: bottlenecks
+
+| Point | Status |
+|---|---|
+| A PR on the workflow's bottlenecks: from about one alloy a day to ten | ✅ #332 (`bottleneck.py`, `notes/bottleneck.md`), stacked on this branch |
+
+### Nov 13 23:35: round 11's list
+
+| Point | Round 11 |
+|---|---|
+| 2:14: cameras by the jars and a UPS at the back waste vertical space; do the jars need cameras at all? | ✅ no: trays J, N and O are passive (no UPS, dock plate, lines or cameras); slots 325, 225 and 150 mm (were 475, 475, 500); jar racks the full width, 753 jars (were 581); the bay camera and the wrist D405 inventory them at the opening |
+| Can't see the overhead camera: change the angle, make things opaque again | ✅ the set-up's bay-camera step and the services clip's last shot, from an operator's eyes with the cladding solid |
+| Why the OT-2 and not the CubXL for the corrosion work | 💬 digital-wetlab PR #83 gives the OT-2 the stock and the ICP-MS dilutions (P300, P20); the CubXL's pipette moves at most 20 µL. Left as is ("fine for now") |
+| 32:57: the arm through a camera | ✅ camera F1 moved behind the quench tank; chapter 5 re-audited under the stricter rules (1 of 2089 frames: the tongs 3 mm into a bar) and re-rendered |
+| Inserting and removing the tensile bars and halves collides; the gripper's clearance | ✅ specimen fingers for the 2F-85 from a stand on the MiR; the bars straight down into jawed grips; the halves out straight after a back-off |
+| A cringy human | ✅ `people.py`: MakeHuman's CC0 base mesh, skinned in numpy, dressed; in the maintenance clip and the finale |
+| The maintenance step collides; probably other collisions and interferences | ✅ the maintenance clip's person, table and tray checked and fixed (a removable service panel on the iMicro, camera E1 moved); the stricter audit (depth-limited allowances, a movers check of everything that moves) on every arm clip, chapters 1, 2, 3, 5 and 7 re-rendered; see `notes/arm_collisions.md` and `out/collisions/round11_summary.json` |
