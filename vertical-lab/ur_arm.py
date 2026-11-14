@@ -537,6 +537,81 @@ def gripper_meshes() -> dict[str, list[tuple[pv.PolyData, tuple, float]]]:
     return out
 
 
+# ------------------------------------------------------------------------------- specimen fingers (round 11)
+# Chapter 5's tensile halves (PR #318, 2026-11-13: "Insertion / removal of the tensile bars (and the halves) have
+# another collision. Not sure if the gripper has enough clearance"). After the break each half of the ASTM E8 subsize
+# bar has 20 mm free between its broken end and its wedge grip, and in a level grasp the 2F-85's fingertips stand 27 mm
+# tall (y -14.3 .. 12.7 in the fingertip frame) and its inner knuckles 35: there is no level grasp that clears both
+# the grip and the other half, and tilting the gripper makes it worse (the 57 mm fingertip then reaches down or up as
+# well). Automated tensile cells use fingers made for the specimen (ZwickRoell's roboTest C: "An associated gripper
+# finger (depending on specimen thickness) must be offered for the gripper"). So, our design: a pair of aluminium
+# caps that slip over the 2F-85's own fingertips (a spring plunger in each keeps it on; a fork stand on the MiR pulls
+# them off again), each ending in a blade 4 mm thick and 8 mm tall that reaches 73.6 mm past the stock pad centre,
+# its inner face 2 mm inside the stock pad's. In the fingertip's own frame (z along the finger, the pad's face at
+# x = -25.26 on the left tip, +25.26 on the right).
+SPEC_FINGER = dict(wall=2.0, blade_t=4.0, blade_h=8.0, cap_z=(36.0, 53.5), blade_z1=115.5, pad_l=20.0, cap_y=13.0,
+                   back_x=16.9)
+SPEC_FINGER["grasp_z"] = SPEC_FINGER["blade_z1"] - SPEC_FINGER["pad_l"] / 2           # 105.5: the blades' grasp point
+SPEC_FINGER["dz"] = SPEC_FINGER["grasp_z"] - _PAD[1]                                   # 73.6 past the stock pad centre
+SPEC_FINGER_COLOUR = (0.70, 0.72, 0.76)
+
+
+def spec_finger_meshes() -> dict[str, list[tuple[pv.PolyData, tuple, float]]]:
+    """The specimen fingers, {"left_finger_tip" | "right_finger_tip": [(mesh in that fingertip's own frame, rgb,
+    specular)]}: a cap over the fingertip's distal end (a 2 mm wall over the pad, an end plate, a back wall) and the
+    blade beyond it, its inner face at the pad face's x minus the wall."""
+    s = SPEC_FINGER
+    out = {}
+    for tip, sx in (("left_finger_tip", -1.0), ("right_finger_tip", 1.0)):
+        xf = sx * _PAD[0]                                   # the stock pad's face
+        xi = xf + sx * s["wall"]                            # the cap's and the blade's inner face
+        xb = sx * s["back_x"]                               # the cap's back wall, behind the pad
+        z0, z1 = s["cap_z"]
+        y = s["cap_y"]
+
+        def bx(xa, xb_, y0, y1, za, zb):
+            return pv.Box(bounds=(min(xa, xb_), max(xa, xb_), y0, y1, za, zb)).triangulate()
+        cap = bx(xi, xf, -y, y, z0, z1)                     # over the pad's face
+        cap = cap.merge(bx(xi, xb + sx * -2.0, -y, y, z1 - 2.0, z1))      # the end plate, past the fingertip's end
+        cap = cap.merge(bx(xb, xb + sx * -2.0, -y, y, z0, z1))           # the back wall
+        h = s["blade_h"] / 2
+        blade = bx(xi, xi - sx * s["blade_t"], -h, h, z1 - 2.0, s["blade_z1"])
+        out[tip] = [(cap.merge(blade).clean(), SPEC_FINGER_COLOUR, 0.45)]
+    return out
+
+
+def spec_gap(close: float) -> float:
+    """The gap between the specimen fingers' blades at a closure: the stock pads' gap less the two walls."""
+    G = gripper_fk(close)
+    xl = (G["left_finger_tip"] @ np.array([-_PAD[0], 0, _PAD[1], 1.0]))[0]
+    xr = (G["right_finger_tip"] @ np.array([_PAD[0], 0, _PAD[1], 1.0]))[0]
+    return float(xl - xr) - 2 * SPEC_FINGER["wall"]
+
+
+def spec_close(gap: float) -> float:
+    """The closure that leaves `gap` mm between the blades (bisection on spec_gap, which falls as close rises)."""
+    lo, hi = 0.0, 1.0
+    for _ in range(40):
+        mid = (lo + hi) / 2
+        if spec_gap(mid) > gap:
+            lo = mid
+        else:
+            hi = mid
+    return (lo + hi) / 2
+
+
+def close_for(gap: float) -> float:
+    """Round 11: the closure that leaves `gap` mm between the stock 2F-85 pads. The audit's depth limit reads a
+    part squeezed even 0.05 mm as several mm deep (it is the move that frees the pair: along the pads), so the
+    chapters close to a hair over the part's size."""
+    return spec_close(gap - 2 * SPEC_FINGER["wall"])
+
+
+def spec_tcp_mm(close: float) -> float:
+    """tool0 to the blades' grasp point along the tool axis: the fingertips' pad centre (tcp_mm) plus the reach."""
+    return tcp_mm(close) + SPEC_FINGER["dz"]
+
+
 if __name__ == "__main__":
     for name, spec in MODELS.items():
         tris = sum(m.n_cells for v in arm_meshes(name).values() for m, _, _ in v)

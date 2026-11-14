@@ -134,6 +134,28 @@ CHUTE = dict(x=420.0, y=-300.0)                       # the scrap chute on the r
 #                                                       the broken halves into angled steel chutes)
 
 
+# Round 11: the wedge grips with their jaws. instruments._wedge_grip is a block with a 6 mm slot, the jaws closed for
+# good on the 6 mm specimen, so the bar could only go in touching both faces. Here the body's slot is 20 mm across and
+# two jaws stand in it, 2 mm off each face of the specimen while open, and each moves JAW_TRAVEL in to clamp it (a
+# hydraulic wedge grip's jaws ride down a wedge as they close; drawn here as a straight move across). The jaws are the
+# top 60 mm of the lower grip and the bottom 60 mm of the upper one; the specimen's 30 mm grip ends sit in them.
+JAW = dict(slot_y=10.0, t=5.0, h=60.0, w=28.0, open=2.0)
+JAW_TRAVEL = JAW["open"]
+
+
+def wedge_grip(z, up=True, w=90.0, h=110.0):
+    """-> (body, front jaw, back jaw): the grip block with its 28 x 20 mm slot, and its two jaws, open."""
+    g = rbox(w, 70, h, 6, z=z if up else z - h)
+    j = JAW
+    slot = box(-j["w"] / 2, -j["slot_y"], (z - 1) if up else (z - h - 1), j["w"] / 2, j["slot_y"],
+               (z + h + 1) if up else (z + 1))
+    zj0, zj1 = (z + h - j["h"], z + h) if up else (z - h, z - h + j["h"])
+    face = M.E8_SUB["T"] / 2 + j["open"]                  # each jaw's face, open: 2 mm off the specimen
+    front = box(-j["w"] / 2, -face - j["t"], zj0, j["w"] / 2, -face, zj1)
+    back = box(-j["w"] / 2, face, zj0, j["w"] / 2, face + j["t"], zj1)
+    return g.cut(slot), front, back
+
+
 def instron_floor() -> I.Instrument:
     p = dict(I.INSTRON_FM)
     p["xh_z"] = I.INSTRON_FM["xh_z"] + ROD
@@ -157,7 +179,10 @@ def instron_floor() -> I.Instrument:
     body.add("top plate", rbox(p["col_dx"] + 2 * p["col_w"] + 40, p["col_d"] + 40, p["top_h"], 16, z=H - p["top_h"]),
              "inst_dark")
     zl = p["base_h"] + 90 + LOWER_UP
-    body.add("lower grip", I._wedge_grip(zl, up=True), "steel")
+    lg, ljf, ljb = wedge_grip(zl, up=True)
+    body.add("lower grip", lg, "steel")
+    _piece(inst, "lower_jaw_f").add("lower jaw, front", ljf, "inst_dark")
+    _piece(inst, "lower_jaw_b").add("lower jaw, back", ljb, "inst_dark")
     body.add("lower pull rod", cyl(56, zl - p["base_h"], z=p["base_h"]), "steel")
     xr = cx + p["col_w"] / 2
     body.add("handset", rbox(90, 50, 150, 8, x=xr + 30, y=-p["col_d"] / 2 + 40, z=1100), "inst_dark")
@@ -192,11 +217,15 @@ def instron_floor() -> I.Instrument:
                                            d / 2 + 380, z0 - 10), "aluminium")
         body.add(f"chamber rail leg {sx}", box(sx * (w / 2 - 60) - 15, d / 2 + 340, 0, sx * (w / 2 - 60) + 15,
                                                d / 2 + 380, z0 - 40), "aluminium")
+    # round 11: the door shuts against the chamber's front face (y -d/2 - 30 .. -d/2), not inside its frame: drawn in
+    # the frame's 30 mm, every time it shut the movers check found it 50 mm into the shell. Hinged on its back left
+    # edge, it swings out to the left clear of the shell, the AVE 2 and its bracket.
     door = _piece(inst, "chamber_door")
-    door.add("chamber door", box(-w / 2, -d / 2, z0 + 20, w / 2, -d / 2 + 30, z1 - 20)
-             .cut(box(-w / 2 + 110, -d / 2 - 1, z0 + 170, w / 2 - 110, -d / 2 + 31, z1 - 170)), "inst_offwhite")
-    door.add("chamber window", box(-w / 2 + 110, -d / 2 + 10, z0 + 170, w / 2 - 110, -d / 2 + 20, z1 - 170), "window")
-    door.add("chamber handle", box(w / 2 - 60, -d / 2 - 34, z0 + 260, w / 2 - 44, -d / 2, z1 - 260), "chrome")
+    yd = -d / 2 - 30.0
+    door.add("chamber door", box(-w / 2, yd, z0 + 20, w / 2, yd + 30, z1 - 20)
+             .cut(box(-w / 2 + 110, yd - 1, z0 + 170, w / 2 - 110, yd + 31, z1 - 170)), "inst_offwhite")
+    door.add("chamber window", box(-w / 2 + 110, yd + 10, z0 + 170, w / 2 - 110, yd + 20, z1 - 170), "window")
+    door.add("chamber handle", box(w / 2 - 60, yd - 34, z0 + 260, w / 2 - 44, yd, z1 - 260), "chrome")
     hot = _piece(inst, "glow")
     hot.add("chamber hot", box(-w / 2 + t + 2, d / 2 - t - 4, z0 + t + 4, w / 2 - t - 2, d / 2 - t - 2, z1 - t - 4),
             "glow")
@@ -224,13 +253,21 @@ def instron_floor() -> I.Instrument:
     xh.add("load cell", cyl(110, 70, z=z - 70), "chrome")
     xh.add("load cell band", cyl(112, 14, z=z - 42), "inst_red")
     xh.add("upper pull rod", cyl(56, ROD, z=z - 70 - ROD), "steel")
-    xh.add("upper grip", I._wedge_grip(z - 70 - ROD, up=False), "steel")
+    ug, ujf, ujb = wedge_grip(z - 70 - ROD, up=False)
+    xh.add("upper grip", ug, "steel")
+    _piece(inst, "upper_jaw_f").add("upper jaw, front", ujf, "inst_dark")
+    _piece(inst, "upper_jaw_b").add("upper jaw, back", ujb, "inst_dark")
     spec = _piece(inst, "specimen")
     spec.add("specimen", dogbone(0.0, 0.0, -M.E8_SUB["T"] / 2).rotate((0, 0, 0), (1, 0, 0), 90)
              .translate((0, 0, LOWER_TOP - 30 + M.E8_SUB["L"] / 2)), "sample")
     inst.joints = {"crosshead": I.Joint("slide", vec=(0, 0, p["travel"])),
                    "chamber_door": I.Joint("hinge", axis=(0, 0, 1), pivot=(-w / 2, -d / 2, 0), deg=-c["door_deg"]),
-                   "glow": I.Joint("fade"), "chamber": I.Joint("fade", v0=1.0), "chamber_cut": I.Joint("fade")}
+                   "glow": I.Joint("fade"), "chamber": I.Joint("fade", v0=1.0), "chamber_cut": I.Joint("fade"),
+                   # round 11: the jaws, 0 open, 1 closed on the specimen; the upper ones ride on the crosshead
+                   "lower_jaw_f": I.Joint("slide", vec=(0, JAW_TRAVEL, 0)),
+                   "lower_jaw_b": I.Joint("slide", vec=(0, -JAW_TRAVEL, 0)),
+                   "upper_jaw_f": I.Joint("slide", vec=(0, JAW_TRAVEL, 0), parent="crosshead"),
+                   "upper_jaw_b": I.Joint("slide", vec=(0, -JAW_TRAVEL, 0), parent="crosshead")}
     inst.props = tuple(inst.props) + ("ave",)
     v_test = (LOWER_TOP - 30 + M.E8_SUB["L"] - 30 - UPPER_BOTTOM0) / p["travel"]
     inst.actions = [

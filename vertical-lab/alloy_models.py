@@ -90,7 +90,10 @@ def plate_parts() -> dict:
 
 
 # ------------------------------------------------------------------------------------------------ Aconity
-ACO = dict(bx=935.0, by=600.0, sy=790.0, bore=170.0, floor=1005.0, wall=15.0, cyl_bot=760.0)
+# round 11: the build cylinder 171 mm across, not 170: the 170 mm plate rose through a 170 mm hole in the chamber's
+# floor, which the strict audit's movers check read as the plate 12 mm into the shell (a build cylinder runs a
+# fraction of a mm round its platform, with a seal)
+ACO = dict(bx=935.0, by=600.0, sy=790.0, bore=171.0, floor=1005.0, wall=15.0, cyl_bot=760.0)
 
 
 def _aco_frame():
@@ -134,7 +137,13 @@ def _aconity_build() -> dict:
         if prt.name in drop:
             continue
         key = "cabinet" if prt.name.startswith("base ") else "body"
-        out_parts[key].append((prt.shape, prt.material))
+        shape = prt.shape
+        if key == "cabinet":            # round 11: the build cylinder and the piston's rod run down through it
+            try:
+                shape = shape.cut(C(ACO["bore"] + 24.0, ACO["bx"], ACO["by"], 300.0, 1310.0).val())
+            except Exception:           # noqa: BLE001  (a part the cut can't take stays whole)
+                pass
+        out_parts[key].append((shape, prt.material))
     w, fl = ACO["wall"], ACO["floor"]
     x0, x1, y0, y1, z0, z1 = 634.0, 1243.0, 250.0, 950.0, 990.0, 1300.0
     outer = B(x0, x1, y0, y1, z0, z1).edges("|Y").fillet(10)
@@ -157,7 +166,10 @@ def _aconity_build() -> dict:
     out_parts["supply"].append((C(ACO["bore"] - 0.5, ACO["bx"], ACO["sy"], fl - 25, fl - 0.5), "powder"))
     # the build piston, top at z = 0 in its own frame (moved by the animation): the platform and its rod
     from common import cyl
-    out_parts["piston"] += [(cyl(ACO["bore"] - 1, 25, z=-25), "steel"), (cyl(60, 280, z=-305), "steel")]
+    # round 11: a bore in the platform for the plate's zero-point stud (20 mm under the plate, 0.5 mm round it);
+    # round 10's solid platform had the stud 20 mm inside it, which the strict audit read as the plate through it
+    sb = cyl(2 * (PLATE["stud_r"] + 0.5), PLATE["stud_h"] + 2.5, z=-(PLATE["stud_h"] + 2.0))
+    out_parts["piston"] += [(cyl(ACO["bore"] - 1, 25, z=-25).cut(sb), "steel"), (cyl(60, 280, z=-305), "steel")]
     # the recoater: a blade on a carriage across the cylinders, parked at the back
     out_parts["recoater"] += [(B(760, 1110, 893, 917, fl + 2, fl + 40), "aluminium"),
                               (B(780, 1090, 893, 899, fl, fl + 8), "steel")]
@@ -229,8 +241,10 @@ def edm_fixture(pc: np.ndarray) -> dict:
     yb = yf + p["t"]                                  # the plate's back face
     tz = I.EDM["table_z"]
     out = {}
-    out["receiver"] = (pv.Cylinder(center=(x, yb + 15, z), direction=(0, 1, 0), radius=48, height=30,
-                                   resolution=48).triangulate(), (0.30, 0.32, 0.36))
+    import charge                     # round 11: the receiver bored for the plate's stud (0.5 mm round it)
+    rs, hs = p["stud_r"] + 0.5, p["stud_h"] + 2.0
+    rec = charge.lathe([(rs, 0.0), (48.0, 0.0), (48.0, 30.0), (0.0, 30.0), (0.0, hs), (rs, hs)], res=48)
+    out["receiver"] = (rec.rotate_x(-90.0, inplace=False).translate((x, yb, z), inplace=False), (0.30, 0.32, 0.36))
     ang = pv.Box(bounds=(x - 140, x + 140, yb + 30, yb + 60, tz + 20, z + 120)).triangulate()
     foot = pv.Box(bounds=(-740.0, -120.0, yb + 30, yb + 90, tz, tz + 20)).triangulate()
     out["angle plate"] = (ang.merge(foot), (0.42, 0.44, 0.47))
@@ -247,7 +261,7 @@ def wire_head(z_lo: float, z_hi: float) -> dict:
     up = pv.Cylinder(center=(0, 0, z_hi + 20), direction=(0, 0, 1), radius=20, height=40, resolution=32).triangulate()
     upb = pv.Box(bounds=(-55, 55, -55, 55, z_hi + 40, z_hi + 260)).triangulate()
     lo = pv.Cylinder(center=(0, 0, z_lo - 20), direction=(0, 0, 1), radius=20, height=40, resolution=32).triangulate()
-    lob = pv.Box(bounds=(-35, 35, -35, 35, z_lo - 140, z_lo - 40)).triangulate()
+    lob = pv.Box(bounds=(-35, 35, -35, 35, z_lo - 105, z_lo - 40)).triangulate()     # round 11: over the tank floor
     wire = pv.Cylinder(center=(0, 0, (z_lo + z_hi) / 2), direction=(0, 0, 1), radius=0.8, height=z_hi - z_lo,
                        resolution=12).triangulate()
     return {"upper guide": (up.merge(upb), (0.86, 0.87, 0.86)), "lower guide": (lo.merge(lob), (0.72, 0.73, 0.75)),
@@ -356,8 +370,11 @@ def depowder_box() -> dict:
     door = {"door": (_box(x0, x1, -14, -6, z0, z1), (0.30, 0.31, 0.33), 0.3, 1.0),
             "door window": (_box(x0 + 30, x1 - 30, -16, -14.9, z0 + 70, z1 - 70), (0.62, 0.74, 0.82), 0.6, 0.55),
             "door handle": (_box(x0 + 110, x1 - 110, -40, -16, z0 + 30, z0 + 44), dark, 0.3, 1.0)}
-    chuck = _cyl(52, (cx, ay, az - 20), (cx, ay, ct), 48).merge(_box(cx - 40, cx + 40, ay - 22, ay + 22, az - 22,
-                                                                       az + 10))
+    import charge                     # round 11: the chuck bored for the plate's stud (0.5 mm round it)
+    rs, hs = PLATE["stud_r"] + 0.5, PLATE["stud_h"] + 2.0
+    chuck = charge.lathe([(0.0, az - 20), (52.0, az - 20), (52.0, ct), (rs, ct), (rs, ct - hs), (0.0, ct - hs)],
+                         res=48).translate((cx, ay, 0.0), inplace=False)
+    chuck = chuck.merge(_box(cx - 40, cx + 40, ay - 22, ay + 22, az - 22, az + 10))
     rotor = {"shaft": (_cyl(16, (-hw + 36, ay, az), (hw - 36, ay, az), 32), steel, 0.6, 1.0),
              "chuck": (chuck, (0.30, 0.32, 0.36), 0.4, 1.0),
              "vibrator": (_cyl(22, (cx + 95, ay, az), (cx + 150, ay, az), 32), (0.85, 0.42, 0.10), 0.3, 1.0)}
@@ -456,6 +473,34 @@ def comb_floor_z(pc) -> float:
     return float(pc[2]) - E8_SUB["L"] / 2 - COMB["gap"]
 
 
+def _box_holes(x0, x1, y0, y1, z0, z1, holes) -> pv.PolyData:
+    """Round 11: a box with square holes through it along z, holes = [(hx0, hx1, hy0, hy1)], as boxes."""
+    xs = sorted({x0, x1, *[min(max(h[i], x0), x1) for h in holes for i in (0, 1)]})
+    out = None
+    for a, b in zip(xs[:-1], xs[1:]):
+        if b - a < 1e-6:
+            continue
+        cuts = sorted((h[2], h[3]) for h in holes if h[0] < b - 1e-6 and h[1] > a + 1e-6)
+        ys, y = [], y0
+        for c0, c1 in cuts:
+            if c0 > y:
+                ys.append((y, min(c0, y1)))
+            y = max(y, c1)
+        if y < y1:
+            ys.append((y, y1))
+        for ya, yb in ys:
+            if yb - ya > 1e-6:
+                m = pv.Box(bounds=(a, b, ya, yb, z0, z1)).triangulate()
+                out = m if out is None else out.merge(m)
+    return out
+
+
+def pin_holes(pc, bar_xs, r=3.5) -> list:
+    """Round 11: the square holes the ejector pins (r 2.5) rise through, 1 mm round them."""
+    y = pc[1] + COMB["pin_y"]
+    return [(float(b) - r, float(b) + r, y - r, y + r) for b in bar_xs]
+
+
 def catch_comb(pc, bar_xs) -> dict:
     """{name: (mesh, colour)}: the comb for bars at EDM x = bar_xs, the plate's bar face centre at pc. Its teeth and
     floor stop COMB['back_gap'] in front of the plate's face, clear of the wire, which runs 0.15 mm off it."""
@@ -469,7 +514,8 @@ def catch_comb(pc, bar_xs) -> dict:
     y_front = min(y_front, yf - c["slot_d"])
     xs = sorted(float(b) for b in bar_xs)
     xa, xb = xs[0] - c["slot_w"] / 2 - 12.0, xs[-1] + c["slot_w"] / 2 + 12.0
-    parts = [pv.Box(bounds=(xa, xb, y_front - c["wall_t"], y_back, z0, z_pad - c["pad_t"]))]            # the floor
+    holes = pin_holes(pc, xs)                           # round 11: the pins rise through these, not through solid floor
+    parts = [_box_holes(xa, xb, y_front - c["wall_t"], y_back, z0, z_pad - c["pad_t"], holes)]            # the floor
     wall = pv.Box(bounds=(xa, xb, y_front - c["wall_t"], y_front, z_pad - c["pad_t"], z_pad + c["wall_h"])).triangulate()
     edges = [xa] + [xs[0] - c["slot_w"] / 2]
     for i in range(len(xs) - 1):
@@ -487,8 +533,8 @@ def catch_comb(pc, bar_xs) -> dict:
         body = body.merge(m.triangulate())
     pads = None
     for b in xs:
-        pad = pv.Box(bounds=(b - c["slot_w"] / 2 + 0.5, b + c["slot_w"] / 2 - 0.5, y_front + 0.3, y_back - 0.3,
-                             z_pad - c["pad_t"], z_pad)).triangulate()
+        pad = _box_holes(b - c["slot_w"] / 2 + 0.5, b + c["slot_w"] / 2 - 0.5, y_front + 0.3, y_back - 0.3,
+                         z_pad - c["pad_t"], z_pad, holes)
         pads = pad if pads is None else pads.merge(pad)
     return {"catch comb": (body.triangulate(), (0.30, 0.31, 0.33)), "comb wall": (wall, (0.30, 0.31, 0.33)),
             "comb pads": (pads, (0.86, 0.55, 0.18))}
@@ -510,7 +556,7 @@ def ejector_body(pc, bar_xs) -> pv.PolyData:
     z0 = comb_floor_z(pc) - c["pad_t"] - c["floor_t"]
     xs = sorted(float(b) for b in bar_xs)
     y = pc[1] + c["pin_y"]
-    return pv.Box(bounds=(xs[0] - 8, xs[-1] + 8, y - 7, pc[1] - 2.0, z0 - 34, z0)).triangulate()
+    return _box_holes(xs[0] - 8, xs[-1] + 8, y - 7, pc[1] - 2.0, z0 - 34, z0, pin_holes(pc, xs))    # bored for the pins
 
 
 # ------------------------------------------------------------------------------------------------ MiR250, low
@@ -518,7 +564,7 @@ def ejector_body(pc, bar_xs) -> pv.PolyData:
 # Also, it's positioned rather high". Round 4's plate carrier and bar holder stood on posts 120 and 230 mm tall; these
 # are low pockets on the cabinet's top plate instead, each with a 3 mm lead-in: the plate in a 30 mm block bored to
 # take it and its stud, the specimen rack in a frame, and a rest for the tongs. MiR frame (z from the cabinet's top).
-POCKETS = dict(plate=(255.0, -110.0), rack=(-255.0, -120.0), tongs=(-45.0, 255.0), block_h=40.0, rack_h=20.0,
+POCKETS = dict(plate=(255.0, -110.0), rack=(-255.0, -120.0), tongs=(-135.0, 255.0), block_h=40.0, rack_h=20.0,
                pocket=12.0, cradle=(250.0, 150.0), cradle_h=30.0, channel=(12.0, 5.0), channel_dx=15.0)
 
 
@@ -557,15 +603,77 @@ def mir_pockets(top: float) -> dict:
     cx_, cy_ = POCKETS["cradle"]
     ch_w, ch_d = POCKETS["channel"]
     hc = POCKETS["cradle_h"]
-    cradle = pv.Box(bounds=(cx_ - 30, cx_ + 30, cy_ - 60, cy_ + 60, top, top + hc - ch_d)).triangulate()
-    for xx in (cx_ - 30, cx_ - ch_w / 2, cx_ + ch_w / 2):
-        pass
-    xs_ = [cx_ - 30, cx_ - POCKETS["channel_dx"] - ch_w / 2, cx_ - POCKETS["channel_dx"] + ch_w / 2,
-           cx_ + POCKETS["channel_dx"] - ch_w / 2, cx_ + POCKETS["channel_dx"] + ch_w / 2, cx_ + 30]
-    for a_, b_ in zip(xs_[0::2], xs_[1::2]):
-        cradle = cradle.merge(pv.Box(bounds=(a_, b_, cy_ - 60, cy_ + 60, top + hc - ch_d, top + hc)).triangulate())
+    # round 11: the specimen fingers (ur_arm.SPEC_FINGER) lay each half in its channel pointing down, their blades
+    # either side of it 10 mm past the grasp point: a relief across each channel takes them (RELIEF, under the grasp)
+    rx_, ry_, rz_ = RELIEF
+    dx_ = POCKETS["channel_dx"]
+    z_floor = top + hc - ch_d
+    boxes = [(cx_ - 30, cx_ + 30, cy_ - 60, cy_ + 60, top, z_floor - rz_)]                    # the slab under it all
+    for y0, y1 in ((cy_ - 60, cy_ - ry_), (cy_ + ry_, cy_ + 60)):                            # the floor, either side
+        boxes.append((cx_ - 30, cx_ + 30, y0, y1, z_floor - rz_, z_floor))
+    xs_r = [cx_ - 30, cx_ - dx_ - rx_, cx_ - dx_ + rx_, cx_ + dx_ - rx_, cx_ + dx_ + rx_, cx_ + 30]
+    for a_, b_ in zip(xs_r[0::2], xs_r[1::2]):                                               # ... and between the reliefs
+        boxes.append((a_, b_, cy_ - ry_, cy_ + ry_, z_floor - rz_, z_floor))
+    xs_ = [cx_ - 30, cx_ - dx_ - ch_w / 2, cx_ - dx_ + ch_w / 2, cx_ + dx_ - ch_w / 2, cx_ + dx_ + ch_w / 2, cx_ + 30]
+    for a_, b_ in zip(xs_[0::2], xs_[1::2]):                                                 # the channels' walls
+        for y0, y1 in ((cy_ - 60, cy_ - ry_), (cy_ + ry_, cy_ + 60)):
+            boxes.append((a_, b_, y0, y1, z_floor, top + hc))
+        for c0, c1 in ((a_, b_),):
+            segs = [(c0, c1)]
+            for rc in (cx_ - dx_, cx_ + dx_):
+                segs = [s for a2, b2 in segs for s in ((a2, min(b2, rc - rx_)), (max(a2, rc + rx_), b2)) if s[1] - s[0] > 0.1]
+            for a2, b2 in segs:
+                boxes.append((a2, b2, cy_ - ry_, cy_ + ry_, z_floor, top + hc))
+    cradle = None
+    for b_ in boxes:
+        m_ = pv.Box(bounds=b_).triangulate()
+        cradle = m_ if cradle is None else cradle.merge(m_)
     return {"plate block": (blk, (0.30, 0.32, 0.36)), "rack pocket": (rack, (0.94, 0.94, 0.92)),
-            "tongs rest": (rest, (0.30, 0.32, 0.36)), "halves cradle": (cradle, (0.20, 0.36, 0.62))}
+            "tongs rest": (rest, (0.30, 0.32, 0.36)), "halves cradle": (cradle, (0.20, 0.36, 0.62)),
+            "finger stand": (finger_stand(top), (0.30, 0.32, 0.36))}
+
+
+# Round 11: the reliefs across the halves cradle's channels, half-sizes (x, y) and depth under the channel's floor: the
+# specimen fingers' blades are 4 mm thick either side of a 6 mm section (outer faces 7 mm off its axis, 8.5 once
+# opened to let go) and 8 mm along it, and reach 10 mm past the grasp point, which sits 3.5 mm over the floor (their
+# tips 6.5 mm under it)
+RELIEF = (11.0, 6.5, 10.0)
+# The specimen fingers' stand (ur_arm.SPEC_FINGER), MiR frame: on the cabinet top behind the rack, the pair standing
+# blades down in two slots, the caps' end plates on its top, at the spacing of the 2F-85 opened to a 30 mm gap between
+# the blades and closing along the MiR's x. A spring clip in each slot holds its blade while the fingertip draws out
+# of the cap against the cap's plunger (our design).
+FINGER_STAND = dict(at=(-300.0, 40.0), w=80.0, d=44.0, h=72.0, gap=30.0, slot=(6.0, 12.0), depth=66.0)
+
+
+def finger_stand(top: float) -> pv.PolyData:
+    import ur_arm
+    s = FINGER_STAND
+    x0, y0 = s["at"]
+    sw, sd = s["slot"]
+    z1 = top + s["h"]
+    xc = s["gap"] / 2 + ur_arm.SPEC_FINGER["blade_t"] / 2          # each blade's centre, either side
+    zs = z1 - s["depth"]
+    boxes = [(x0 - s["w"] / 2, x0 + s["w"] / 2, y0 - s["d"] / 2, y0 + s["d"] / 2, top, zs)]
+    xs = [x0 - s["w"] / 2, x0 - xc - sw / 2, x0 - xc + sw / 2, x0 + xc - sw / 2, x0 + xc + sw / 2, x0 + s["w"] / 2]
+    for a_, b_ in zip(xs[0::2], xs[1::2]):
+        boxes.append((a_, b_, y0 - s["d"] / 2, y0 + s["d"] / 2, zs, z1))
+    for a_, b_ in zip(xs[1::2], xs[2::2]):
+        for ya, yb in ((y0 - s["d"] / 2, y0 - sd / 2), (y0 + sd / 2, y0 + s["d"] / 2)):
+            boxes.append((a_, b_, ya, yb, zs, z1))
+    out = None
+    for b_ in boxes:
+        m_ = pv.Box(bounds=b_).triangulate()
+        out = m_ if out is None else out.merge(m_)
+    return out
+
+
+def finger_stand_grasp(top: float) -> np.ndarray:
+    """Where the blades' grasp point is with the pair in its stand, MiR frame: 52 mm under the caps' end plates, which
+    rest on the stand's top (ur_arm.SPEC_FINGER: the end plate at z 53.5 of the fingertip frame, the grasp at 105.5)."""
+    import ur_arm
+    s = FINGER_STAND
+    sf = ur_arm.SPEC_FINGER
+    return np.array([s["at"][0], s["at"][1], top + s["h"] - (sf["grasp_z"] - sf["cap_z"][1])])
 
 
 def cradle_seat(top: float, i: int) -> np.ndarray:
@@ -591,9 +699,13 @@ def rack_seat(top: float) -> np.ndarray:
 # fin: 300 mm of stainless shaft between the 2F-85 and the jaws, so the gripper stays out of the furnace's mouth. The
 # gripper squeezes the handle's two plates, which closes the jaws on the fin through the shaft (a linkage of our design,
 # assumed); the jaws are drawn fixed. Frame: the handle's grasp point at the origin, the shaft along +y.
-TONGS = dict(L=300.0, shaft_r=7.0, handle=(12.0, 50.0, 40.0), jaw=(30.0, 40.0, 50.0), jaw_gap=12.4)
-TONGS_HANDLE = (-210.0, 255.0)    # on the MiR: the handle 233 mm off the arm's axis (closer is out of the UR10e's
-#                                   reach), the shaft along +x past the arm's base, all on the cabinet top
+# Round 11: the jaws 42 mm tall, not 50: at 50 they reached 3 mm into the rack's top beside the fin every time the
+# tongs took it or let it go (the audit's depth limit). And the handle 90 mm further out on the cabinet (x -300, its
+# rest with it): at x -210, 233 mm off the arm's axis, the arm folded so far to reach it pointing down that its
+# shoulder met its forearm.
+TONGS = dict(L=300.0, shaft_r=7.0, handle=(12.0, 50.0, 40.0), jaw=(30.0, 40.0, 42.0), jaw_gap=12.4)
+TONGS_HANDLE = (-300.0, 255.0)    # on the MiR: the handle 325 mm off the arm's axis, the shaft along +x past the
+#                                   arm's base, all on the cabinet top
 
 
 def tongs() -> dict:
@@ -789,7 +901,9 @@ def clamp_pose(i: int, top: float, f: float) -> np.ndarray:
     u = (math.cos(math.radians(a)), math.sin(math.radians(a)))
     lift = min(1.0, 2.0 * f)
     swing = max(0.0, 2.0 * f - 1.0)
-    z = top + PLATE["t"] - c["rise"] * (1.0 - lift) - 2.0 * (1.0 - swing) * (lift >= 1.0)
+    # round 11: the pad (1.5 mm under the arm) closes 0.1 mm over the plate's top face, and swings in 3 mm higher;
+    # round 10 closed it 1.5 mm into the plate and swung it in 2 mm lower still (the movers check: 3 mm deep)
+    z = top + PLATE["t"] + 1.6 - c["rise"] * (1.0 - lift) + 3.0 * (1.0 - swing) * (lift >= 1.0)
     yaw = a + 180.0 + 90.0 * (1.0 - swing)            # closed: pointing at the plate's centre
     t_, ca, sa = math.radians(yaw), 0.0, 0.0
     ca, sa = math.cos(t_), math.sin(t_)

@@ -64,8 +64,10 @@ SEM_CREDIT = ["The lab's stock AlSi10Mg powder: SEM, 500x, 5 kV,",
 SS = dict(E=72000.0, ys=275.0, uts=412.0, elong=0.05, src="AddUp AlSi10Mg data sheet, as built, XY, ASTM E8")
 AREA = M.E8_SUB["W"] * M.E8_SUB["T"]          # 6 x 6 mm reduced section
 TEST = 3                                      # the bar the workflow tests: the first one the wire cuts
-GRIP_LUG = 0.88                               # 2F-85 closure for the 12 mm lug (ur_arm.gripper_fk: 0.9 -> 10 mm)
-GRIP_BAR = 0.90                               # for the bar's 10 mm grip end
+# round 11: each closure leaves 0.3 mm over the part (ur_arm.close_for): round 10's 0.88 squeezed the 12 mm lug and the
+# tongs' handle by 0.17 mm and 0.79 the lid's 20 mm knob by 0.02, which the strict audit reads as 3-6 mm deep
+GRIP_LUG = __import__("ur_arm").close_for(12.3)     # 2F-85 closure for the 12 mm lug
+GRIP_BAR = __import__("ur_arm").close_for(10.3)     # for the bar's 10 mm grip end
 GRIP_NEAR = 0.78                              # opened only 21 mm, to reach between the cut bars
 TILT = 30.0                                   # the grasp in the Aconity's chamber points 30 deg down (see grasp_aco)
 MIR_Y = line.Y_FACE - 230.0 - P.MIR["W"] / 2  # the MiR250 parks 230 mm off the fronts, broadside, arm towards them
@@ -255,6 +257,7 @@ class DBox:
         self.sc = sc
         box_x = DBOX_X if box_x is None else box_x
         stand_x = LSTAND_X if stand_x is None else stand_x
+        self.box_x, self.stand_x = box_x, stand_x
         sc.gmat["dbox"] = T((box_x, line.Y_FACE, 0))
         self.names = {}
         for piece, parts in M.depowder_box().items():
@@ -327,6 +330,11 @@ class DBox:
         a = p0 - Lw[:3, 2] * 45.0
         p1 = self.lworld(M.STAND_PORT) + (0, 0, 20.0)
         x = np.array([0.5 * (a[0] + p1[0]), min(a[1], line.Y_FACE - 60.0), max(min(a[2] - 60.0, 1080.0), 700.0)])
+        if self.sc.parent.get("lance") in ("lstand", "dbox"):
+            # round 11: with the lance in its holster the hose hangs on the box's side of the post: its loop in front
+            # of the post took the plate and the fingers 25-50 mm deep as the plate came out of the chamber
+            side = 1.0 if self.box_x >= self.stand_x else -1.0
+            x[0] = p1[0] + side * 170.0
         pts = np.array([p0, a, x, p1 + (0, 0, 260.0), p1])
         return pv.Spline(pts, 80).tube(radius=13.0, n_sides=14).triangulate()
 
@@ -528,7 +536,7 @@ class Aconity:
 class Edm:
     """The FANUC's fixture, our wire head and the cut."""
     PC = np.array([-430.0, -880.0, 930.0])        # the plate's bar face, centre, in the EDM's frame (on edge)
-    Z_LO, Z_HI = 840.0, 1020.0
+    Z_LO, Z_HI = 828.0, 1020.0     # round 11: the lower guide's top under the comb's ejector block (836), not 4 mm in it
 
     def __init__(self, sc, rig, comb=False):
         """comb=True: round 8's catch comb with its ejector pins instead of round 4's shelf (catch_comb())."""
@@ -656,10 +664,14 @@ STOP = int(__import__("os").environ.get("CH5_TO", "7"))
 HOT = 2                          # the bar pulled at temperature; TEST (3) is pulled at room temperature
 HOT_C = 200.0                    # the chamber's set point (an example; the 3119-608 goes to 600 C)
 GRIP_SPEC = GRIP_BAR             # 2F-85 on the specimen's 10 mm grip end
-GRIP_HANDLE = 0.88               # on the tongs' 12 mm handle (as GRIP_LUG)
-GRIP_KNOB = 0.79                 # on the IPA lid's 20 mm knob (gap = 28 - 90 (c - 0.70), ur_arm.gripper_fk)
+GRIP_HANDLE = GRIP_LUG           # on the tongs' 12 mm handle (as GRIP_LUG)
+GRIP_KNOB = __import__("ur_arm").close_for(20.3)   # on the IPA lid's 20 mm knob
 GRIP_HALF = 0.94                 # on a broken half's 6 mm reduced section
 CAB_TOP = P.MIR["H"] + P.CAB_H   # 780: the MiR cabinet's top plate
+XH_REST = -0.7                   # round 11: the Instron's crosshead at rest, 112 mm under its modelled height (see
+#                                  section 7)
+COMB_DROP = 88.0                 # round 11: the catch comb's slide: its top 14 mm under the bars' feet while the plate
+#                                  goes on, its troughs 2 mm over the table (the window under it goes down to the tank)
 DRIVE_SHOWN = 4.0                # the long drives are shown at 4x, and say so
 SS_HOT = dict(E=65000.0, ys=190.0, uts=245.0, elong=0.10,
               src="illustrative: AddUp's room-temperature values scaled to about 60 % at 200 C (assumed)")
@@ -853,7 +865,7 @@ def build_lab():
     L.show_gauges = False
     L.extra_gauges = []
     L.skin(0.0)(1.0)                                  # the cladding as built: the trays in their slots stay inside
-    sc.fluids = set(getattr(sc, "fluids", set()))
+    sc.fluids = set(getattr(sc, "fluids", set())) | {"aco powder cake"}   # round 11: the bars are buried in it
     sc._lab = L
     # the Aconity MIDI opened up, in place of the set-up's closed one
     for nm in F.groups.get("aconity", []):
@@ -868,14 +880,20 @@ def build_lab():
     erig, ins = F.rigs["wire_edm"], F.rigs["instron_floor"]
     E = Edm(sc, erig, comb=True)
     bar_xs = {k: E.PC[0] - M.BAR_X[k] for k in range(4)}     # on edge, the lug to +x: plate x -> EDM -x
+    # round 11: the comb, its ejector pins and the troughs ride on a slide (group edm_comb): the plate goes onto the
+    # receiver along its stud's axis, so its bars came in from the front through the comb's front wall and teeth
+    # (the strict audit: 6-25 mm). The comb now waits COMB_DROP down in the table's window and rises under the bars
+    # once the plate is clamped (a pneumatic slide, our design)
     for name, (mesh, col) in M.catch_comb(E.PC, list(bar_xs.values())).items():
-        sc.add(f"edm fix/{name}", mesh, col, "edm_fix", specular=0.25)
-    sc.add("edm fix/ejector block", M.ejector_body(E.PC, list(bar_xs.values())), (0.42, 0.44, 0.47), "edm_fix")
+        sc.add(f"edm fix/{name}", mesh, col, "edm_comb", specular=0.25)
+    sc.add("edm fix/ejector block", M.ejector_body(E.PC, list(bar_xs.values())), (0.42, 0.44, 0.47), "edm_comb")
     for name, (mesh, col) in M.zbar_troughs(E.PC).items():          # round 9: under the vertical bars
-        sc.add(f"edm fix/{name}", mesh, col, "edm_fix", specular=0.25)
+        sc.add(f"edm fix/{name}", mesh, col, "edm_comb", specular=0.25)
+    sc.parent["edm_comb"] = "edm_fix"
+    sc.gmat["edm_comb"] = T((0.0, 0.0, -COMB_DROP))
     for k, bx in bar_xs.items():
         sc.add(f"edm pin/{k}", M.ejector_pin(E.PC, bx), (0.80, 0.81, 0.83), f"edm_pin{k}", specular=0.5)
-        sc.parent[f"edm_pin{k}"] = f"{erig.prefix}body"
+        sc.parent[f"edm_pin{k}"] = "edm_comb"
         sc.gmat[f"edm_pin{k}"] = np.eye(4)
     ymin = erig.inst.bbox()[2]
     jar_at = E.world((E.PC[0] + 470.0, ymin - 95.0, 0.0))
@@ -906,6 +924,25 @@ def build_lab():
     tx, ty = M.POCKETS["tongs"]
     sc.parent["tongs"] = u0.cab
     sc.gmat["tongs"] = T((M.TONGS_HANDLE[0], ty, CAB_TOP + 36.0 + M.TONGS["shaft_r"])) @ R((0, 0, 1), -90.0)
+    # round 11: the specimen fingers (ur_arm.spec_finger_meshes), standing in their stand on the MiR (alloy_models.
+    # FINGER_STAND) until the Instron: two groups, one per fingertip, under the container "sfing", placed where the
+    # 2F-85's fingertips are when it stands over the stand pointing down, opened to the stand's 30 mm gap
+    import ur_arm as UA
+    sf_at = M.finger_stand_grasp(CAB_TOP)
+    sf_close = UA.spec_close(M.FINGER_STAND["gap"])
+    sf_tcp = P.tcp_frame(sf_at, (0.0, 0.0, -1.0), 0.0) @ T((0.0, 0.0, -(UA.spec_tcp_mm(sf_close) - UA.TCP_MM)))
+    sf_tool0 = sf_tcp @ T((0.0, 0.0, -UA.TCP_MM))
+    G_st = UA.gripper_fk(sf_close)
+    sc.parent["sfing"] = u0.cab
+    sc.gmat["sfing"] = T(tuple(sf_at))
+    sf_parts = {}
+    for tip, lst in UA.spec_finger_meshes().items():
+        g_ = f"sfing_{tip}"
+        for i, (mesh, col, spec) in enumerate(lst):
+            sc.add(f"sfing/{tip}/{i}", mesh, col, g_, specular=spec)
+        sc.parent[g_] = "sfing"
+        sc.gmat[g_] = np.linalg.inv(T(tuple(sf_at))) @ sf_tool0 @ G_st[tip]
+        sf_parts[tip] = g_
     # tray F's furnace and quench tank (setup_lab's rigs), their hidden pieces found by name
     fur = next(r for k_, r in rigs.items() if k_.startswith("F") and k_.endswith("_furnace"))
     qt = next(r for k_, r in rigs.items() if k_.startswith("F") and k_.endswith("_quench_tank"))
@@ -917,8 +954,10 @@ def build_lab():
         sc.base_alpha[n] = 1.0
     sc.fluids |= set(glow["furnace"]) | set(glow["chamber"])
     L.apply_state()
+    ins.move({"crosshead": (XH_REST, XH_REST)})(1.0)          # round 11: under the junction box (section 7)
     return dict(sc=sc, L=L, F=F, rigs=rigs, units=units, W=W_, D=D, E=E, erig=erig, ins=ins, fur=fur, qt=qt,
-                u0=u0, bar_xs=bar_xs, glow=glow, jar_at=jar_at, rest_at=rest_at)
+                u0=u0, bar_xs=bar_xs, glow=glow, jar_at=jar_at, rest_at=rest_at, sf_tcp=sf_tcp, sf_close=sf_close,
+                sf_parts=sf_parts)
 
 
 def movie():
@@ -1093,6 +1132,59 @@ def _movie(B):
                 sc.alpha[nm] = a0 + (a1 - a0) * u
         return f
 
+    UA = __import__("ur_arm")
+    fs = RB.FingerSet(rb, "sfing", B["sf_parts"])
+    C_ST = B["sf_close"]
+    C_SPEC, C_SPEC_OPEN = UA.spec_close(10.3), UA.spec_close(22.0)     # the bar's 10 mm grip end; 6 mm a side open
+    C_HALF, C_HALF_OPEN = UA.spec_close(6.3), UA.spec_close(16.0)      # a half's 6 mm reduced section; 5 mm a side
+    C_HALF_REL = UA.spec_close(9.0)                                    # let go in the cradle's relief: 1.5 a side
+    BACK_OFF = 60.0                                                    # mm: the crosshead after the break
+    HALF_OUT = 40.0                                                    # mm: each half out of its grip (30 mm in it)
+    HALF_IN = 10.0                                                     # the fingers' grasp, mm from the broken end
+
+    def jaws(where, a, b):
+        """The grip's two jaws (r8_test.JAW), 0 open, 1 closed on the specimen."""
+        return {f"{where}_jaw_f": (a, b), f"{where}_jaw_b": (a, b)}
+
+    def SF(Tw, c):
+        """The TCP pose that puts the specimen fingers' grasp point (midway between the blades) at Tw."""
+        return back(Tw, UA.spec_tcp_mm(c) - UA.TCP_MM)
+
+    def fingers(on, cam=None, cap=None):
+        """Fit the specimen fingers from their stand on the MiR (on), or put them back in it."""
+        Ts = sc.world(amr.cab) @ B["sf_tcp"]
+        st["cap"] = ("First the arm fits fingers made for the specimen, as automated tensile cells do (ZwickRoell's "
+                     "roboTest C has a finger for each specimen thickness): two caps slip over the 2F-85's fingertips, "
+                     "each ending in a blade 8 mm tall, 74 mm further out (our design)." if on else
+                     "The specimen fingers go back in their stand on the MiR.") if cap is None else cap
+        status(sc, Arm="fitting the specimen fingers" if on else "putting the specimen fingers back")
+        go(Tw=up_(Ts, 90.0), secs=1.6, grip=C_ST, cam=cam,
+           labels=[("specimen fingers, in their stand", tuple(Ts[:3, 3] + (0, 0, -60)), (0.30, 0.66))] if on else None)
+        lin(Ts, 0.8)
+        if on:
+            rb.grasp("sfing")
+            fs.on = True
+        else:
+            fs.on = False
+            rb.release(amr.cab)
+        lin(up_(Ts, 90.0), 0.7, labels=[])
+
+    def cam_mir(at_local, back_=(700.0, -1000.0, 900.0)):
+        """A camera on a point of the MiR's cabinet top (MiR frame), from its outer (-y) side and above."""
+        a = np.asarray(at_local, float)
+        return [tuple(amr.world(a + np.asarray(back_))), tuple(amr.world(a)), (0, 0, 1)]
+
+    def take(g):
+        """The fingers have closed on group g: the arm holds g from here, and the fingers ride on it (FingerSet)."""
+        rb.release(None)
+        rb.grasp(g)
+        rb.reparent("sfing", g)
+
+    def give(g, parent):
+        """g goes to `parent`; the arm holds the fingers again."""
+        rb.release(parent)
+        rb.grasp("sfing")
+
     # key points
     aco_bp = W.world(W.bp())
     aco_x = aco_bp[0] - 146.0
@@ -1109,6 +1201,7 @@ def _movie(B):
     total_xy = 4 * M.bar_mesh().volume / M.E8_SUB["T"]
     total = total_xy + (len(M.ZBARS) * M.E8_SUB["C"] * M.E8_SUB["T"] if W.zbars else 0.0)
     if JUMP > 5:                       # CH5_FROM=6 or 7: start from the state the earlier sections leave
+        sc.gmat["edm_comb"] = np.eye(4)
         for nm in sc.members("plate") + [n_ for n_ in sc.actors if n_.startswith("plate/")]:
             sc.alpha[nm] = 0.0
         for i, k in enumerate(SPEC_ORDER):
@@ -1356,7 +1449,9 @@ def _movie(B):
                      "then drives, speeding up and slowing down at its published 0.3 m/s^2, and turns again to dock "
                      "broadside, its arm towards the machine.")
         status(sc, Arm="parked", Plate="on the MiR", EDM="", Instron="")
-        drive([(edm_x, MIR_YS)], end_heading=180.0, cam=CAM_DRIVE)
+        # round 11: 350 mm along the row first, then the turn: turning on the spot at the box, the MiR's corners (494 mm
+        # from its centre) swept over the floor pipe, 60 mm in front of the row, 25-50 mm deep (the movers check)
+        drive([(amr.pose[0] + 350.0, MIR_YN), (edm_x, MIR_YS)], end_heading=180.0, cam=CAM_DRIVE)
         st["cap"] = ("The tank is drained and its yellow door drops. The arm takes the plate by the lug, from above, turns "
                      "it on edge and pushes it onto a zero-point receiver on an angle plate, bars to the front.")
         status(sc, Arm="loading the plate", EDM="tank drained, door down")
@@ -1382,6 +1477,10 @@ def _movie(B):
         rb.release("edm_fix")
         lin(lvl(t_out, into), 1.2)
         park(1.4, labels=[])
+        st["cap"] = ("The catch comb rises on its slide under the bars, its pads 0.5 mm under their feet: it waited "
+                     f"{COMB_DROP:.0f} mm down in the table's window while the plate went on (our design).")
+        step(1.2, lambda u: sc.gmat.__setitem__("edm_comb", T((0.0, 0.0, -COMB_DROP * (1.0 - u)))), hold=0.2,
+             cam=CAM_CUT)
         st["cap"] = "Door up; the tank fills with deionised water, the dielectric. The plate is cut under water."
         status(sc, Arm="parked", EDM="tank filling")
         step(1.4, edm.move({"door": (1.0, 0.0), "~door": (0.0, 0.6)}))
@@ -1488,6 +1587,12 @@ def _movie(B):
         grip(0.0)
         rb.release(None)
         lin(A.down(rest_g + (0, 0, 70), spin=0.0), 0.5, labels=[])
+        # round 11: the bars are handled with the specimen fingers from here (see section 7): with the 2F-85's own
+        # fingertips, 27 mm tall and 31 mm thick at their root, the strict audit found them 3-12 mm in the next bar in
+        # the comb and in the rack, 12 mm in the jar's air knife at every dip and 12-50 mm in the wire head
+        fingers(True, cam_mir((-300.0, 40.0, 850.0)), "Before the bars, the arm fits fingers made for the specimen, as automated tensile cells "
+                "do (ZwickRoell's roboTest C has a finger for each specimen thickness): two caps slip over the 2F-85's "
+                "fingertips, each ending in a blade 8 mm tall, 74 mm further out (our design).")
         out_dir = -into                                # from the EDM towards the aisle
         lift = M.COMB["lift"]
         for i, k in enumerate(SPEC_ORDER):
@@ -1505,28 +1610,30 @@ def _movie(B):
             step(0.9 * fast, lambda u, k=k: sc.gmat.__setitem__(f"edm_pin{k}", T((0, 0, lift * u))),
                  cam=CAM_EDM if i == 0 else None, labels=[])
             p_top = held_point(sc, g, grasp_local)
-            go(Tw=back(lvl(p_top, into), 130.0), secs=1.6 * fast, grip=0.0)
-            lin(lvl(p_top, into), 0.7 * fast)
-            grip(GRIP_SPEC, 0.4 * fast)
-            rb.grasp(g)
-            lin(up_(lvl(p_top, into), 75.0), 0.6 * fast)
-            lin(back(up_(lvl(p_top, into), 75.0), 160.0), 0.7 * fast,
+            go(Tw=back(SF(lvl(p_top, into), C_SPEC_OPEN), 130.0), secs=1.6 * fast, grip=C_SPEC_OPEN)
+            lin(SF(lvl(p_top, into), C_SPEC), 0.7 * fast)
+            grip(C_SPEC, 0.4 * fast)
+            take(g)
+            lin(up_(SF(lvl(p_top, into), C_SPEC), 75.0), 0.6 * fast)
+            lin(back(up_(SF(lvl(p_top, into), C_SPEC), 75.0), 160.0), 0.7 * fast,
                 extra=lambda u, k=k: sc.gmat.__setitem__(f"edm_pin{k}", T((0, 0, lift * (1 - u)))))
             bottom = held_point(sc, g, (0.0, -end_up, 3.0))
-            tcp = rb.tcp_world()[:3, 3]
-            hang = tcp[2] - bottom[2]                       # the bar hangs this far under the TCP
+            hang = held_point(sc, g, grasp_local)[2] - bottom[2]     # the fingers' grasp point over the bar's foot
             dip_dir = (jar[:2] - amr.world((0, 0, 0))[:2])
             p_dip_top = np.r_[jar[:2], M.JAR["z1"] + M.JAR["ring_h"] + hang + 30.0]
-            p_dip = np.r_[jar[:2], M.JAR["z0"] + 45.0 + hang]
+            # as deep as the blades allow: their lower edges 2 mm over the air knife (65 mm of the bar in the IPA)
+            p_dip = np.r_[jar[:2], max(M.JAR["z0"] + 45.0 + hang,
+                                       M.JAR["z1"] + M.JAR["ring_h"] + UA.SPEC_FINGER["blade_h"] / 2 + 2.0)]
             if i == 0:
                 st["cap"] = ("It dips the bar in the IPA up to its upper end and draws it out slowly through the air knife "
                              "on the jar's rim, which blows it dry.")
-            dip_dir = go_pick(lambda d: lvl(p_dip_top, d), [turned(dip_dir, a) for a in (0, 45, -45, 90, -90, 135,
-                                                                                         -135, 180)],
-                              secs=1.4 * fast, cam=CAM_JAR if i == 0 else None)
-            lin(lvl(p_dip, dip_dir), 0.8 * fast, hold=0.4 * fast)
+            # the heading chosen at the dip itself, not over it: the caps behind the blades must miss the air line
+            dip_dir, _ = pick_clear(lambda d: SF(lvl(p_dip, d), C_SPEC),
+                                    [turned(dip_dir, a) for a in (0, 45, -45, 90, -90, 135, -135, 180)])
+            go_clear(SF(lvl(p_dip_top, dip_dir), C_SPEC), secs=1.4 * fast, cam=CAM_JAR if i == 0 else None)
+            lin(SF(lvl(p_dip, dip_dir), C_SPEC), 0.8 * fast, hold=0.4 * fast)
             status(sc, Bar=f"flat bar {i + 1} of 4, rinsing")
-            lin(lvl(p_dip_top, dip_dir), 1.6 * fast)
+            lin(SF(lvl(p_dip_top, dip_dir), C_SPEC), 1.6 * fast)
             status(sc, Bar=f"flat bar {i + 1} of 4, rinsed and dry")
             slot = rack_w((RT.SPEC_X[RT.XY_SLOTS[3 - i]], 0.0, RT.TRAY["floor"]))
             toward = (0.0, 1.0)                               # pointing at the rack's fin side: the arm's body behind it
@@ -1534,14 +1641,14 @@ def _movie(B):
             if i == 0:
                 st["cap"] = ("Into the rack on the MiR's cabinet, standing on end in a slot 25 mm deep: the arm carries "
                              "every specimen this way, by its upper end, from here to the Instron's grips.")
-            toward = go_pick(lambda d: up_(lvl(p_in, d), 70.0), rack_dirs(), secs=1.6 * fast,
+            toward = go_pick(lambda d: up_(SF(lvl(p_in, d), C_SPEC), 70.0), rack_dirs(), secs=1.6 * fast,
                              cam=CAM_EDM if i == 0 else None,
                              labels=[("specimen rack, in its pocket on the MiR", tuple(rack_w((0, 0, 140))),
                                       (0.40, 0.66))] if i == 0 else [])
-            lin(lvl(p_in, toward), 0.7 * fast)
-            grip(0.0, 0.35 * fast)
-            rb.release("rack")
-            lin(up_(lvl(p_in, toward), 60.0), 0.5 * fast, labels=[])
+            lin(SF(lvl(p_in, toward), C_SPEC), 0.7 * fast)
+            give(g, "rack")
+            grip(C_SPEC_OPEN, 0.35 * fast)
+            lin(up_(SF(lvl(p_in, toward), C_SPEC_OPEN), 60.0), 0.5 * fast, labels=[])
         # round 9: the two vertical bars, out of their troughs (the upper one first: the lower one's free end is under
         # it). Each is taken by its free end, level, lifted 2 mm and drawn straight out to the front; then it hangs
         # under the gripper, pointing down, for the jar and the rack, its 10 mm width along the rack's slots.
@@ -1556,33 +1663,37 @@ def _movie(B):
                              "under the gripper, it is rinsed the same way and stands in the rack's end slots.")
             status(sc, Arm=f"vertical bar {j + 1} of 2", Bar=f"vertical bar {j + 1} of 2, wet")
             p_end = held_point(sc, g, M.zbar_grasp_local())
-            go(Tw=back(lvl(p_end, into), 140.0), secs=1.6 * fast, grip=0.0, cam=CAM_ZB if j == 0 else None,
+            go(Tw=back(SF(lvl(p_end, into), C_SPEC_OPEN), 140.0), secs=1.6 * fast, grip=C_SPEC_OPEN,
+               cam=CAM_ZB if j == 0 else None,
                labels=[("troughs under the vertical bars", tuple(E.world(E.PC + (-68, -60, -40))), (0.20, 0.70)),
                        ("vertical bars, cut at the foot", tuple(E.world(E.PC + (-68, -100, 40))), (0.24, 0.26))]
                if j == 0 else [])
-            lin(lvl(p_end, into), 0.7 * fast)
-            grip(GRIP_BAR, 0.4 * fast)
-            rb.grasp(g)
-            lin(up_(lvl(p_end, into), 2.0), 0.3 * fast)
-            lin(back(up_(lvl(p_end, into), 2.0), 118.0), 0.9 * fast)
-            lin(back(up_(lvl(p_end, into), 40.0), 150.0), 0.6 * fast, labels=[])
-            hang = M.E8_SUB["L"] - 13.0                   # the bar under the TCP, once the gripper points down
+            lin(SF(lvl(p_end, into), C_SPEC), 0.7 * fast)
+            grip(C_SPEC, 0.4 * fast)
+            take(g)
+            lin(up_(SF(lvl(p_end, into), C_SPEC), 2.0), 0.3 * fast)
+            lin(back(up_(SF(lvl(p_end, into), C_SPEC), 2.0), 118.0), 0.9 * fast)
+            lin(back(up_(SF(lvl(p_end, into), C_SPEC), 40.0), 150.0), 0.6 * fast, labels=[])
+            hang = M.E8_SUB["L"] - 13.0             # the bar under the fingers' grasp point, pointing down
             p_dip_top = np.r_[jar[:2], M.JAR["z1"] + M.JAR["ring_h"] + hang + 30.0]
-            p_dip = np.r_[jar[:2], M.JAR["z0"] + 55.0 + hang]
-            sp = go_pick(lambda a: A.down(p_dip_top, spin=a), [spin_rack + a for a in (0, 180, 90, -90)],
-                         secs=1.8 * fast, cam=CAM_JAR if j == 0 else None)
-            lin(A.down(p_dip, spin=sp), 0.8 * fast, hold=0.4 * fast)
+            # the blades' tips, 10 mm past the grasp point, 2 mm over the air knife
+            p_dip = np.r_[jar[:2], max(M.JAR["z0"] + 55.0 + hang, M.JAR["z1"] + M.JAR["ring_h"] +
+                                       UA.SPEC_FINGER["pad_l"] / 2 + 2.0)]
+            sp, _ = pick_clear(lambda a: SF(A.down(p_dip, spin=a), C_SPEC), [spin_rack + a for a in (0, 180, 90, -90)])
+            go_clear(SF(A.down(p_dip_top, spin=sp), C_SPEC), secs=1.8 * fast, cam=CAM_JAR if j == 0 else None)
+            lin(SF(A.down(p_dip, spin=sp), C_SPEC), 0.8 * fast, hold=0.4 * fast)
             status(sc, Bar=f"vertical bar {j + 1} of 2, rinsing")
-            lin(A.down(p_dip_top, spin=sp), 1.6 * fast)
+            lin(SF(A.down(p_dip_top, spin=sp), C_SPEC), 1.6 * fast)
             status(sc, Bar=f"vertical bar {j + 1} of 2, rinsed and dry")
             slot = rack_w((RT.SPEC_X[RT.Z_SLOTS[j]], 0.0, RT.TRAY["floor"]))
             p_in = np.r_[slot[:2], slot[2] + 0.5 + hang]
-            sp = go_pick(lambda a: up_(A.down(p_in, spin=a), 70.0), [spin_rack, spin_rack + 180.0], secs=1.6 * fast,
-                         cam=CAM_EDM if j == 0 else None)
-            lin(A.down(p_in, spin=sp), 0.7 * fast)
-            grip(0.0, 0.35 * fast)
-            rb.release("rack")
-            lin(up_(A.down(p_in, spin=sp), 60.0), 0.5 * fast)
+            sp = go_pick(lambda a: up_(SF(A.down(p_in, spin=a), C_SPEC), 70.0), [spin_rack, spin_rack + 180.0],
+                         secs=1.6 * fast, cam=CAM_EDM if j == 0 else None)
+            lin(SF(A.down(p_in, spin=sp), C_SPEC), 0.7 * fast)
+            give(g, "rack")
+            grip(C_SPEC_OPEN, 0.35 * fast)
+            lin(up_(SF(A.down(p_in, spin=sp), C_SPEC_OPEN), 60.0), 0.5 * fast)
+        fingers(False, None, "The specimen fingers go back in their stand on the MiR until the Instron: the tongs and the jar's lid want the 2F-85's own fingertips.")
         status(sc, Arm="recapping the IPA jar", Bar=f"{4 + len(zbars)} specimens in the rack, dry")
         st["cap"] = "The lid goes back on the jar, and the EDM's door comes up with the plate still in it, for the bin."
         go(Tw=A.down(rest_g + (0, 0, 80), spin=0.0), secs=1.4, grip=0.0, cam=CAM_JAR)
@@ -1597,6 +1708,10 @@ def _movie(B):
         lin(A.down(lid_g + (0, 0, 80), spin=0.0), 0.5)
         park(1.4, extra=edm.move({"door": (1.0, 0.0), "~body": (0.55, 0.0)}))
         status(sc, Arm="parked", EDM="")
+        if STOP <= 5:                  # round 11: CH5_TO=5, sections 1-5 alone (an audit in two halves, in parallel)
+            if chk_mir is not None:
+                chk_mir.save()
+            return sc.save()
 
     if JUMP <= 6:
         # ---------------------------------------------------------------- 6. heat treatment on tray F
@@ -1779,16 +1894,42 @@ def _movie(B):
     st["cap"] = (f"West along the aisle to the Instron 68FM-100 (shown at {DRIVE_SHOWN:.0f}x). Its 3119-608 chamber "
                  "stays round the load string for both tests; the room-temperature one runs with it cold.")
     status(sc, Arm="parked", Rack="six T6 specimens, on the MiR", Furnace="", Instron="")
-    drive([(PIVOT_X, Y_TF), (PIVOT_X, LANE), (ins_x, LANE), (ins_x, MIR_YS)], end_heading=180.0,
+    # Round 11: the 3119-608's left-hinged door is 550 mm wide and swings out 95 deg, its free edge 432 mm in front of
+    # the frame (its hinge is 118 mm behind the frame's front). The MiR used to stop 230 mm off the row's face, so the
+    # door went through its cabinet, the tongs and the arm's base every time it opened (the movers check, round 11).
+    # It stops 500 mm off now, 68 mm clear of the door's sweep; the arm still reaches the load string (its base 1053 mm
+    # from it). The dock mark the set-up draws at the Instron is at the old stop: a real cell would move it out, or
+    # dock there and make a 270 mm relative move back.
+    MIR_YI = WH.Y_FACE_S + 500.0 + P.MIR["W"] / 2
+    drive([(PIVOT_X, Y_TF), (PIVOT_X, LANE), (ins_x, LANE), (ins_x, MIR_YI)], end_heading=180.0,
           shown=DRIVE_SHOWN, cam=[(-2500, -14500, 6000), (-4300, -3800, 600), (0, 0, 1)])
     LOW_TOP = RT.LOWER_TOP
     I_CH = RT.CHAMBER
     spec_c = rig_w(ins, (0.0, 0.0, LOW_TOP - 30.0 + M.E8_SUB["L"] / 2))
     spec_top = spec_c + (0, 0, M.E8_SUB["L"] / 2)
     v_close = (LOW_TOP - 30.0 + M.E8_SUB["L"] - 30.0 - RT.UPPER_BOTTOM0) / I.INSTRON_FM["travel"]
+    # round 11: the crosshead rests 112 mm under its modelled height: there, at 1610-1810 mm, it stood 90 mm into the
+    # junction box the set-up hangs on the south row's drop at the Instron (1720-1900 mm; setup_lab.utilities). The
+    # upper grip still hangs 28 mm over a specimen carried in 60 mm over its seat
     door_open = {"chamber_door": (0.0, 1.0)}
     door_shut = {"chamber_door": (1.0, 0.0)}
     glow_c = B["glow"]["chamber"]
+
+    # Round 11 (Sterling, PR #318, 2026-11-13: "Insertion / removal of the tensile bars (and the halves) have another
+    # collision. Not sure if the gripper has enough clearance. Maybe OK if angled, otherwise needs it's own tool/end
+    # effector"). What collided: the bar's foot went into the lower grip on a slant (40 mm down while 20 mm forward), so
+    # it cut through the grip's front before it reached the slot; the second bar went in under the upper grip, which the
+    # first test had left 210 mm down; and each half has 20 mm free between its broken end and its grip, against the
+    # 2F-85's 27 mm fingertips and 35 mm inner knuckles in a level grasp, so the fingers took each half partly inside its
+    # grip. An angled grasp doesn't help: the 57 mm fingertip then reaches down or up instead (ur_arm.SPEC_FINGER). Now
+    # the arm fits specimen fingers from a stand on the MiR and keeps them on for both tests: the bar goes straight down
+    # into the jaws, the crosshead backs off 60 mm after the break so that each half comes out of its grip straight (the
+    # lower up, the upper down) without meeting the other, and the crosshead goes back up before the next bar.
+    def half_low(grp):
+        """The lowest point of a half: its box in the bar's frame (10 mm wide, 6 thick, its 50 mm of the length)."""
+        ys = (0.0, M.E8_SUB["L"] / 2) if grp.endswith("_b") else (-M.E8_SUB["L"] / 2, 0.0)
+        return min(held_point(sc, grp, (x_, y_, z_))[2] for x_ in (-5.0, 5.0) for y_ in ys
+                   for z_ in (0.0, M.E8_SUB["T"]))
 
     def test_one(k, hot):
         g = f"bar{k}"
@@ -1796,29 +1937,33 @@ def _movie(B):
         end_up = -50.0 if held_point(sc, g, (0, -50.0, 3.0))[2] > held_point(sc, g, (0, 50.0, 3.0))[2] else 50.0
         grasp_local = (0.0, end_up - math.copysign(13.0, end_up), 3.0)
         p_top = held_point(sc, g, grasp_local)
-        st["cap"] = ("As in Instron's AT6 cells: the arm takes a specimen from the rack by its upper end. The chamber's "
-                     "door opens (an actuator, assumed) and the arm sets the specimen's foot in the lower wedge grip, "
-                     "which closes on it." if not hot else
+        foot0 = held_point(sc, g, (0.0, -end_up, 3.0))[2]
+        st["cap"] = ("As in Instron's AT6 cells: the arm takes a specimen from the rack by its upper end, now with the "
+                     "specimen fingers. The chamber's door opens (an actuator, assumed)." if not hot else
                      f"The second specimen goes in the same way, cold, and the door shuts. The chamber heats the grips "
                      f"and the specimen to {HOT_C:.0f} C and holds it there so the temperature evens out.")
         status(sc, Arm=f"taking specimen {'2' if hot else '1'}", Instron="chamber door opening")
-        d_r = go_pick(lambda d: back(lvl(p_top, d), 120.0), rack_dirs(), secs=1.6 * fastr, grip=0.0, cam=CAM_INS,
-                      extra=ins.move(door_open))
-        lin(lvl(p_top, d_r), 0.6 * fastr)
-        grip(GRIP_SPEC, 0.4)
-        rb.grasp(g)
-        lin(up_(lvl(p_top, d_r), 120.0), 0.7 * fastr)
-        hang = rb.tcp_world()[2, 3] - held_point(sc, g, (0.0, -end_up, 3.0))[2]
+        d_r = go_pick(lambda d: SF(back(lvl(p_top, d), 120.0), C_SPEC_OPEN), rack_dirs(), secs=1.6 * fastr,
+                      grip=C_SPEC_OPEN, cam=CAM_INS, extra=ins.move(door_open))
+        lin(SF(lvl(p_top, d_r), C_SPEC), 0.6 * fastr)
+        grip(C_SPEC, 0.4)
+        take(g)
+        lin(up_(SF(lvl(p_top, d_r), C_SPEC), 120.0), 0.7 * fastr)
+        hang = p_top[2] - foot0                     # the fingers' grasp point over the specimen's foot
         p_ins = np.r_[spec_c[:2], spec_c[2] - M.E8_SUB["L"] / 2 + hang]
-        go(Tw=back(up_(lvl(p_ins, ins_in), 40.0), 260.0), secs=1.8 * fastr, cam=CAM_GRIP,
+        if not hot:
+            st["cap"] = ("Straight down between the lower wedge grip's open jaws, which close on its foot: the blades "
+                         "hold it 53 mm over the grip, and the 2F-85 itself stays in front of the grips.")
+        go(Tw=back(up_(SF(lvl(p_ins, ins_in), C_SPEC), 60.0), 260.0), secs=1.8 * fastr, cam=CAM_GRIP,
            labels=[("AVE 2 video extensometer", tuple(rig_w(ins, (RT.AVE["x"], RT.AVE["y"], RT.AVE["z"] + 60))),
                     (0.14, 0.40)), ("lower wedge grip", tuple(rig_w(ins, (0, -40, LOW_TOP - 40))), (0.70, 0.70))])
-        lin(back(up_(lvl(p_ins, ins_in), 40.0), 20.0), 1.0 * fastr)
-        lin(lvl(p_ins, ins_in), 0.6 * fastr)
+        lin(up_(SF(lvl(p_ins, ins_in), C_SPEC), 60.0), 1.0 * fastr)
+        lin(SF(lvl(p_ins, ins_in), C_SPEC), 0.8 * fastr)
         status(sc, Instron="lower grip closed")
-        grip(0.0, 0.4)
-        rb.release(f"{ins.prefix}body")
-        lin(back(lvl(p_ins, ins_in), 260.0), 1.0 * fastr, labels=[])
+        step(0.4 * fastr, ins.move(jaws("lower", 0.0, 1.0)), hold=0.05)
+        give(g, f"{ins.prefix}body")
+        grip(C_SPEC_OPEN, 0.4)
+        lin(back(SF(lvl(p_ins, ins_in), C_SPEC_OPEN), 260.0), 1.0 * fastr, labels=[])
         park(1.4 * fastr)
         st["cap"] = ("The door shuts and the crosshead brings the upper grip down until it takes the specimen's upper "
                      "end; the AVE 2 reads the strain through the door's heated window, so nothing is clipped on by "
@@ -1834,7 +1979,8 @@ def _movie(B):
                       (0.14, 0.40)),
                      ("upper and lower wedge grips, on pull rods", tuple(rig_w(ins, (40, 0, LOW_TOP + 40))),
                       (0.74, 0.62))])
-        step(2.0 * fastr, ins.move({"crosshead": (0.0, v_close)}), hold=0.2)
+        step(2.0 * fastr, ins.move({"crosshead": (XH_REST, v_close)}), hold=0.1)
+        step(0.4 * fastr, ins.move(jaws("upper", 0.0, 1.0)), hold=0.1)
         status(sc, Instron="both grips closed")
         if hot:
             status(sc, Instron=f"heating to {HOT_C:.0f} C")
@@ -1860,58 +2006,75 @@ def _movie(B):
             rb.reparent(g, f"{ins.prefix}crosshead")
         v1 = ins.v["crosshead"]
         status(sc, Instron="broken", Bar="two halves")
-        st["cap"] = ("Broken. The crosshead backs off 20 mm." if not hot else
+        st["cap"] = (f"Broken. The crosshead backs off {BACK_OFF:.0f} mm, so that each half can come out of its grip "
+                     "without meeting the other." if not hot else
                      "Broken. The chamber cools before the door opens: the gripper isn't made for hot work.")
-        step(1.4, RB.both(ins.move({"crosshead": (v1, v1 + 20.0 / I.INSTRON_FM["travel"])}),
+        step(1.4, RB.both(ins.move({"crosshead": (v1, v1 + BACK_OFF / I.INSTRON_FM["travel"])}),
                           fade(glow_c, 0.8 if hot else 0.0, 0.0),
                           clock("Chamber", lambda t: f"{t:.0f} C", HOT_C, 40) if hot else None), hold=1.0, still=True)
         sc.clock = None
         sc.ss_u = None
-        # the halves out: upper (in the upper grip) then lower, each by its broken end
-        lo_g, hi_g = (g, f"{g}_b") if hi_up else (f"{g}_b", g)
+        # the halves out: the lower one (in the lower grip) first, lifted out of its jaws, then the upper one, lowered
         up_grp = f"{g}_b" if hi_up else g
         dn_grp = g if hi_up else f"{g}_b"
         step(0.8, ins.move(cut_off), labels=[])
         step(1.0, ins.move(door_open), cam=CAM_GRIP)
-        for grp, where in ((up_grp, "upper"), (dn_grp, "lower")):
-            # 14 mm into the half from its broken end (the bar's centre, y = 0 in its own frame), on its axis
-            p_h = held_point(sc, grp, (0.0, 14.0 if grp.endswith("_b") else -14.0, 3.0))
-            st["cap"] = (("The arm takes each half by its broken end as its grip lets go: the room-temperature halves "
-                          "lie flat in a cradle on the MiR, their fracture surfaces touching nothing, for fractography "
-                          "in chapter 7.") if not hot else
+        for grp, where in ((dn_grp, "lower"), (up_grp, "upper")):
+            # HALF_IN mm into the half from its broken end (the bar's centre, y = 0 in its own frame), on its axis: the
+            # blades' 8 mm then clear the grip and the broken end by 6 mm each
+            p_h = held_point(sc, grp, (0.0, HALF_IN if grp.endswith("_b") else -HALF_IN, 3.0))
+            st["cap"] = (("Each half as its grip lets go: the lower one lifted out of its jaws, the upper one lowered "
+                          "out of its own. The blades take each 10 mm from its broken end, 6 mm clear of the grip; the "
+                          "room-temperature halves lie in a cradle on the MiR, their fracture surfaces touching "
+                          "nothing, for fractography in chapter 7.") if not hot else
                          "The hot test's halves go down the scrap chute right of the grips, as the AT6 drops them.")
-            go(Tw=back(lvl(p_h, ins_in), 240.0), secs=1.4, grip=0.0)
-            lin(lvl(p_h, ins_in), 0.7)
-            grip(GRIP_HALF, 0.4)
-            rb.grasp(grp)
-            lin(up_(lvl(p_h, ins_in), 6.0), 0.3)
-            lin(back(up_(lvl(p_h, ins_in), 6.0), 240.0), 0.9)
+            status(sc, Arm=f"taking the {where} half")
+            go(Tw=back(SF(lvl(p_h, ins_in), C_HALF_OPEN), 240.0), secs=1.4, grip=C_HALF_OPEN, cam=CAM_GRIP)
+            lin(SF(lvl(p_h, ins_in), C_HALF), 0.7)
+            grip(C_HALF, 0.4)
+            take(grp)
+            status(sc, Instron=f"{where} grip open")
+            step(0.3, ins.move(jaws(where, 1.0, 0.0)), hold=0.05)
+            dz = HALF_OUT if where == "lower" else -HALF_OUT
+            lin(up_(SF(lvl(p_h, ins_in), C_HALF), dz), 0.6)
+            lin(back(up_(SF(lvl(p_h, ins_in), C_HALF), dz), 240.0), 0.9)
             if hot:
                 chute = rig_w(ins, (RT.CHUTE["x"], RT.CHUTE["y"], I.INSTRON_FM["base_h"] + 260.0))
-                go(Tw=lvl(chute, ins_in), secs=1.4)
-                grip(0.0, 0.3)
-                rb.release(None)
+                go(Tw=SF(lvl(chute, ins_in), C_HALF), secs=1.4)
+                give(grp, None)
+                grip(C_HALF_OPEN, 0.3)
+                # it drops onto the chute's floor (its top 626 mm up at the chute's middle: 120 + 6 mm over the base,
+                # tilted 18 deg about it, so 1.6 mm higher 5 mm to one side) and slides away into the bin
+                floor_z = rig_w(ins, (RT.CHUTE["x"], RT.CHUTE["y"], I.INSTRON_FM["base_h"] + 126.0))[2] + 3.0
+                drop = max(0.0, half_low(grp) - floor_z)
                 fall0 = sc.gmat[grp].copy()
-                step(0.6, lambda u, grp=grp, fall0=fall0: sc.gmat.__setitem__(
-                    grp, T((0, 0, -120.0 * u * u)) @ fall0), hold=0.1)
+                step(0.6, lambda u, grp=grp, fall0=fall0, drop=drop: sc.gmat.__setitem__(
+                    grp, T((0, 0, -drop * u * u)) @ fall0), hold=0.1)
                 for nm in sc.members(grp):
                     sc.alpha[nm] = 0.0
             else:
-                # into the halves cradle on the MiR, lying flat: turned level -> pointing down about the fingers'
-                # axis, so the half comes down horizontal, along the channel
+                # into the halves cradle on the MiR, lying flat: turned level -> pointing down about the fingers' axis,
+                # so the half comes down horizontal, along the channel; the blades go into the relief across it
                 ch = amr.world(M.cradle_seat(CAB_TOP, 0 if where == "upper" else 1)) + (0, 0, M.E8_SUB["T"] / 2 + 0.5)
-                sp = go_pick(lambda a: up_(A.down(ch, spin=a), 70.0), [0.0, 180.0], secs=1.8)
-                lin(A.down(ch, spin=sp), 0.6)
-                grip(0.0, 0.3)
-                rb.release(amr.cab)
-                lin(up_(A.down(ch, spin=sp), 70.0), 0.5)
-        park(1.2, extra=ins.move(door_shut))
+                sp = go_pick(lambda a: up_(SF(A.down(ch, spin=a), C_HALF), 70.0), [0.0, 180.0], secs=1.8,
+                             cam=cam_mir((250.0, 150.0, 820.0)) if where == "lower" else None)
+                lin(SF(A.down(ch, spin=sp), C_HALF), 0.6)
+                give(grp, amr.cab)
+                grip(C_HALF_REL, 0.3)
+                lin(up_(SF(A.down(ch, spin=sp), C_HALF_REL), 70.0), 0.5)
+        park(1.2)                               # round 11: then the door: shutting as the arm left, it met the arm
+        st["cap"] = "The door shuts and the crosshead goes back up, so the next specimen goes in under an open grip."
+        step(1.0, ins.move(door_shut))
+        step(1.2, ins.move({"crosshead": (None, XH_REST)}), hold=0.1)
 
+    fingers(True, cam_mir((-300.0, 40.0, 850.0)), "The specimen fingers go back on for the two tensile tests: each half has 20 mm free "
+            "between its broken end and its grip, where the 2F-85's own 27 mm fingertips don't fit.")
     test_one(TEST, hot=False)
     test_one(HOT, hot=True)
+    fingers(False)
     st["cap"] = ("Done: printed flat and vertical, depowdered, cut, rinsed, heat treated and pulled at two temperatures, "
-                 "every arm move collision-checked. The comb, the troughs, the clamps, the jar's lid, the rack, the tongs "
-                 "and the quench basket are our designs.")
+                 "every arm move collision-checked. The comb, the troughs, the clamps, the jar's lid, the rack, the tongs, "
+                 "the quench basket and the specimen fingers are our designs.")
     status(sc, Arm="parked")
     step(3.0, None, hold=3.0, cam=CAM_WIDE, labels=lbl[:3])
     print(f"highest forearm/wrist point {rb.max_z_world:.0f} mm", flush=True)

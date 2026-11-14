@@ -213,3 +213,30 @@ def both(*fs):
             if f is not None:
                 f(u)
     return up
+
+
+class FingerSet:
+    """Round 11: a pair of parts that ride on the 2F-85's fingertips (ur_arm.spec_finger_meshes: chapter 5's specimen
+    fingers), as scene groups `parts` = {"left_finger_tip": group, "right_finger_tip": group} under one container
+    group. While `on`, every Robot.set places each part on its fingertip as the gripper opens and closes, whatever
+    the container hangs from: the arm holds the container (rb.grasp) or a part the fingers hold, so collide.py checks
+    the fingers as held geometry against everything. Off, they stay where they were put (their stand). Wraps the
+    one Robot instance's set(); the class and every other arm are untouched."""
+
+    def __init__(self, rb: Robot, container: str, parts: dict):
+        self.rb, self.container, self.parts, self.on = rb, container, dict(parts), False
+        orig = rb.set
+
+        def set_(q=None, close=None, _orig=orig):
+            _orig(q, close)
+            if self.on:
+                self.follow()
+        rb.set = set_
+
+    def follow(self):
+        sc, rb = self.rb.sc, self.rb
+        Wt = sc.world(rb.root) @ ur_arm.fk(rb.model, rb.q)["tool0"]
+        G = ur_arm.gripper_fk(rb.close)
+        Wc_inv = _inv(sc.world(self.container))
+        for tip, g in self.parts.items():
+            sc.gmat[g] = Wc_inv @ Wt @ G[tip]
