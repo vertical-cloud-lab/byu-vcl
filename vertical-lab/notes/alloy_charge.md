@@ -30,7 +30,7 @@ had **40 of 1145 frames** in collision, where round 10's rules found 0
 | A plug in its cup's mouth, the punch's nose in the ring (several) | Zero-clearance fits, drawn line to line | Not changed: `collide.depth` now reads such fits as touching |
 
 Assumed: a printed rack's pocket clearances (0.6 and 0.5 mm) and a 3 mm counterbore for the plugs; that a cup let go
-over its seat settles onto it. Re-rendered at `VIZ3D_FPS=6`, the render checking itself (`ARM_AUDIT_RENDER=1`).
+over its seat settles onto it. Re-rendered 2026-11-14 02:03-02:36 UTC at `VIZ3D_FPS=6`, the render checking itself (`ARM_AUDIT_RENDER=1`: 0 of 1145): 254.3 s, 1526 frames, 13.1 MB; the GIF from the MP4 at 2 fps and 480 px (4.6 MB).
 
 ## Round 10: the cup can't go closer to the outlet; a funnel per powder is designed, not yet in this chapter
 

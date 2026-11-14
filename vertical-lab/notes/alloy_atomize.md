@@ -29,7 +29,7 @@ python3 alloy_atomize.py powder             # print the powder sums
 
 Under round 11's audit ([`arm_collisions.md`](arm_collisions.md#round-11-the-stricter-audit-the-default-for-arm_audit1):
 what an arm handles may touch its source and destination only up to 1.5 mm deep, and everything that moves is checked)
-this chapter had **11 of 920 frames** in collision (5 the arm's, 6 movers'), where round 10's rules found 0; after the fixes, **0 of 920**
+this chapter had **11 of 920 frames** in collision (5 the arm's, 6 movers'), where round 10's rules found 0; after the fixes, **0 of 920**. Re-rendered 2026-11-14 03:00-03:32 UTC (`VIZ3D_FPS=6 ARM_AUDIT_RENDER=1`, the render checking itself: 0 of 920): 223.5 s, 1341 frames, 32.0 s of it the lab's footage; the GIF from the MP4 at 2 fps and 480 px (4.5 MB)
 ([before](../out/collisions/alloy_atomize_r11.json), [after](../out/collisions/alloy_atomize_r11fix.json)):
 
 | What the audit found | Why | Fixed |
