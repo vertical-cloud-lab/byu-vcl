@@ -1088,10 +1088,16 @@ def latch_meshes() -> dict:
         rod = pv.Line(a, b).tube(radius=2.2, n_sides=12).triangulate()
         loop = rod if loop is None else loop.merge(rod)
     loop = loop.merge(_cy((-4.0, 0, 102.5), (0, 1, 0), 2.2, 22, res=12))
-    keeper = _bx(-17.4, -7.4, -17, 17, 76, 100).merge(_bx(-7.4, -1.5, -17, 17, 95, 100))
+    # round 11: the lip stands 1.8 mm proud (it stood 5.9, and the loop's two rods ran up through its front edge,
+    # 6 mm deep with the latch shut); the loop's bar still sits over its front edge
+    keeper = _bx(-17.4, -7.4, -17, 17, 76, 100).merge(_bx(-7.4, -5.6, -17, 17, 95, 100))
     for y in (-10, 10):
         keeper = keeper.merge(_cy((-7.0, y, 86), (1, 0, 0), 3.0, 1.5, res=16))
-    body = _cy((10, 65, 48), (0, 1, 0), 10, 50).merge(_bx(-33, 2, 53, 77, 42, 54))
+    # round 11: the lock cylinder is bored for its bolt (0.3 mm round it, 51 mm deep, 3 mm longer than it was drawn so
+    # the bolt, back, stops 1 mm short of its end); drawn solid, the bolt slid back into solid metal, which the
+    # stricter audit read 12-25 mm deep
+    body = C.lathe([(4.3, 0.0), (10.0, 0.0), (10.0, 53.0), (0.0, 53.0), (0.0, 51.0), (4.3, 51.0)], res=24) \
+        .rotate_x(-90.0, inplace=False).translate((10.0, 40.0, 48.0), inplace=False).merge(_bx(-33, 2, 53, 77, 42, 54))
     bolt = _cy((10, 8.5, 48), (0, 1, 0), 4, 53, res=16)       # out: from the cylinder to past the lever's far edge
     return {"latch base": (base, dk2, "latch_base"), "latch lever": (lever_, st, "latch_lever"),
             "latch loop": (loop, st, "latch_loop"), "latch keeper": (keeper, dk2, "keeper"),
@@ -1188,8 +1194,10 @@ def add_tong(sc, mir):
     top = P.MIR["H"] + P.CAB_H
     z0 = top - 140.0                      # the sleeve hangs on the cabinet's end, its rim level with the cabinet top
     x, y = TONG_AT
+    # round 11: the tab that hangs the sleeve on the cabinet's end runs from the sleeve's outside wall (it ran from
+    # the sleeve's axis, filling half the bore where the tong's stem stands: the stricter audit read it 6-25 mm deep)
     sleeve = C.lathe([(0.0, 0), (18.0, 0), (18.0, 140.0), (14.0, 140.0), (14.0, 6.0), (0.0, 6.0)], res=40).translate(
-        (x, y, z0), inplace=False).merge(_bx(x, -P.MIR["L"] / 2 + 40, y - 22, y + 22, z0 + 60, z0 + 76))
+        (x, y, z0), inplace=False).merge(_bx(x + 17.0, -P.MIR["L"] / 2 + 40, y - 22, y + 22, z0 + 60, z0 + 76))
     sc.add("amr/tong holder", sleeve, (0.30, 0.32, 0.36), "amr")
     sc.parent["tong"] = "amr"
     sc.gmat["tong"] = T((x, y, z0 + 6.0 + TONG_JAW_L + 1.0)) @ R((0, 0, 1), 90.0)
