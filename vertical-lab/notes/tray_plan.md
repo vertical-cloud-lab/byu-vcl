@@ -99,9 +99,10 @@ presentation is the inventory, and the UPS that kept the cameras alive in transi
 **What changed** (`setup_lab.PASSIVE`, `r8_store.PASSIVE_TRAYS`):
 
 - J, N and O carry no UPS, no dock plate or tray lines, no socket, power strip or power lamp, and no stream cameras.
-  Their slots mate with nothing, so they get no dock either. services.py's clips draw docks only for trays A-F, and
-  the set-up movie never drew slot docks, so nothing had to be removed there. The service risers run the whole column
-  and stay.
+  Their slots mate with nothing, so they get no dock either: a real build leaves out three CombiTac docks. Nothing had
+  to be removed from the scenes for that: services.py's clips draw docks only at trays A-F's slots and the bay, and the
+  set-up movie never drew slot docks. The service risers stay. Each runs its column's whole height and feeds the
+  powered trays' docks in it: C's and F's over J in Shuttle 1's front column, G's and I's over N and O in Shuttle 2's.
 - `setup_lab.CAMS` loses tray J's two short posts; a new tray from a module gets them (`SHORT_CAMS`) only if it isn't
   passive.
 - N's and O's racks run the tray's full width, 2410 mm of the 2426 inside the rim (they were 1760, left of the UPS),
