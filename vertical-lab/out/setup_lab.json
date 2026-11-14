@@ -33,7 +33,7 @@
   },
   {
    "label": "4/9",
-   "caption": "The extractors and their drives, then 15 empty electrified trays, A to O, each with its dock plate at the back right.",
+   "caption": "The extractors and their drives, then 15 empty trays, A to O: 12 electrified, each with its dock plate at the back right, and 3 plain ones for storage (J, N and O).",
    "start_frame": 107,
    "end_frame": 124
   },
@@ -201,140 +201,152 @@
   },
   {
    "label": "7/9",
-   "caption": "Tray J: Storage load (our design), its UPS and 2 camera posts.",
+   "caption": "Tray J: Storage load (our design). Nothing on it draws power: no UPS, no dock plate, no cameras, and a slot 325 mm tall.",
    "start_frame": 427,
-   "end_frame": 438
+   "end_frame": 434
   },
   {
    "label": "7/9",
    "caption": "Tray C: Bambu Lab H2D, Bambu Lab A1 mini, its UPS and 2 camera posts.",
-   "start_frame": 439,
-   "end_frame": 451
+   "start_frame": 435,
+   "end_frame": 447
   },
   {
    "label": "7/9",
    "caption": "Tray F: LECO PX500 + disc magazine, Nabertherm NAT 15/65, LECO MX400, six-shelf disc magazine (ours), water tank with a lift basket, our design, its UPS and 2 camera posts.",
-   "start_frame": 452,
-   "end_frame": 467
+   "start_frame": 448,
+   "end_frame": 463
   },
   {
    "label": "7/9",
    "caption": "Tray K (inert glovebox, digital microscope) comes to the opening of Shuttle 2.",
-   "start_frame": 468,
-   "end_frame": 472
+   "start_frame": 464,
+   "end_frame": 468
   },
   {
    "label": "7/9",
    "caption": "Tray K (inert glovebox, digital microscope) comes to the opening of Shuttle 2.",
-   "start_frame": 473,
-   "end_frame": 477
+   "start_frame": 469,
+   "end_frame": 473
   },
   {
    "label": "7/9",
    "caption": "Tray K (inert glovebox, digital microscope) comes to the opening of Shuttle 2.",
-   "start_frame": 478,
-   "end_frame": 482
+   "start_frame": 474,
+   "end_frame": 478
   },
   {
    "label": "7/9",
    "caption": "Tray K (inert glovebox, digital microscope) comes to the opening of Shuttle 2.",
-   "start_frame": 483,
+   "start_frame": 479,
+   "end_frame": 479
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray K (inert glovebox, digital microscope) comes to the opening of Shuttle 2.",
+   "start_frame": 480,
    "end_frame": 483
   },
   {
    "label": "7/9",
    "caption": "Tray K (inert glovebox, digital microscope) comes to the opening of Shuttle 2.",
    "start_frame": 484,
-   "end_frame": 487
-  },
-  {
-   "label": "7/9",
-   "caption": "Tray K (inert glovebox, digital microscope) comes to the opening of Shuttle 2.",
-   "start_frame": 488,
-   "end_frame": 488
+   "end_frame": 484
   },
   {
    "label": "7/9",
    "caption": "Tray K: Custom N2 glovebox (purge-only), Keyence VHX-7000 (VHX-S750E free-angle stand), its UPS and 1 camera post.",
-   "start_frame": 490,
-   "end_frame": 507
+   "start_frame": 486,
+   "end_frame": 503
   },
   {
    "label": "7/9",
    "caption": "Tray K goes back to its slot (2R1), 850 mm tall, where it has power.",
-   "start_frame": 508,
+   "start_frame": 504,
+   "end_frame": 504
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray K goes back to its slot (2R1), 850 mm tall, where it has power.",
+   "start_frame": 505,
    "end_frame": 508
   },
   {
    "label": "7/9",
    "caption": "Tray K goes back to its slot (2R1), 850 mm tall, where it has power.",
    "start_frame": 509,
-   "end_frame": 512
+   "end_frame": 510
   },
   {
    "label": "7/9",
    "caption": "Tray K goes back to its slot (2R1), 850 mm tall, where it has power.",
-   "start_frame": 513,
-   "end_frame": 514
+   "start_frame": 511,
+   "end_frame": 515
   },
   {
    "label": "7/9",
    "caption": "Tray K goes back to its slot (2R1), 850 mm tall, where it has power.",
-   "start_frame": 515,
+   "start_frame": 516,
    "end_frame": 519
   },
   {
    "label": "7/9",
-   "caption": "Tray K goes back to its slot (2R1), 850 mm tall, where it has power.",
-   "start_frame": 520,
-   "end_frame": 523
-  },
-  {
-   "label": "7/9",
    "caption": "Tray L: ZwickRoell zwickiLine Z5.0 TN, Mitutoyo HM-220 Type D (AVPAK), its UPS and 2 camera posts.",
-   "start_frame": 525,
-   "end_frame": 537
+   "start_frame": 521,
+   "end_frame": 533
   },
   {
    "label": "7/9",
    "caption": "Tray M: Bruker S2 PUMA Series 2, XY Autochanger, Sentry Air Systems ductless hood, 24 in, Makera Carvera, its UPS and 2 camera posts.",
-   "start_frame": 538,
-   "end_frame": 551
+   "start_frame": 534,
+   "end_frame": 547
   },
   {
    "label": "7/9",
    "caption": "Tray H: DDM Novastar SPR-45VA, Opulo LumenPnP v4.2, Puhui T-962A, its UPS and 2 camera posts.",
-   "start_frame": 552,
-   "end_frame": 565
+   "start_frame": 548,
+   "end_frame": 561
   },
   {
    "label": "7/9",
    "caption": "Tray G: Formlabs Form 4, Formlabs Form 4, Formlabs Form Wash (2nd Gen), Formlabs Form Cure (2nd Gen), its UPS and 2 camera posts.",
-   "start_frame": 566,
-   "end_frame": 580
+   "start_frame": 562,
+   "end_frame": 576
   },
   {
    "label": "7/9",
    "caption": "Tray I: SnowX SnowPod, SnowX SnowPod, its UPS and 2 camera posts.",
-   "start_frame": 581,
-   "end_frame": 593
+   "start_frame": 577,
+   "end_frame": 589
   },
   {
    "label": "7/9",
-   "caption": "Tray N: Jar racks on a tray (our design), its UPS and 2 camera posts.",
-   "start_frame": 594,
+   "caption": "Tray N: 264 powder jars in racks (our design). Nothing on it draws power: no UPS, no dock plate, no cameras, and a slot 225 mm tall.",
+   "start_frame": 590,
+   "end_frame": 597
+  },
+  {
+   "label": "7/9",
+   "caption": "Tray O: 489 powder jars in racks (our design). Nothing on it draws power: no UPS, no dock plate, no cameras, and a slot 150 mm tall.",
+   "start_frame": 598,
    "end_frame": 605
   },
   {
-   "label": "7/9",
-   "caption": "Tray O: Jar racks on a tray (our design), its UPS and 2 camera posts.",
+   "label": "8/9",
+   "caption": "The bay cameras go on, one over each opening: Shuttle 2's first, seen from where an operator stands, eyes at 1.6 m (the cladding drawn solid for it). It sits up under the header at the back of the bay and looks down over the presented tray.",
    "start_frame": 606,
    "end_frame": 617
   },
   {
    "label": "8/9",
-   "caption": "The bay cameras go on, one over each opening, looking down at the presented tray (services.py). Every tray already carries its own stream cameras.",
+   "caption": "Then Shuttle 1's: the same unit on the same bar. Together with the D405 on the arm's wrist, it sees what is on every tray the Shuttle presents.",
    "start_frame": 618,
+   "end_frame": 629
+  },
+  {
+   "label": "8/9",
+   "caption": "Every tray with instruments carries its own stream cameras; the storage trays (J, N and O) carry none: the bay camera takes their stock whenever one is presented, the only time a jar or a sample can come or go.",
+   "start_frame": 630,
    "end_frame": 636
   },
   {
