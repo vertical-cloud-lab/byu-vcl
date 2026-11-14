@@ -166,21 +166,32 @@ RACK_COLS = 8               # four cups a run, two runs (Al and Cu) made up toge
 RACK_PITCH = 40.0
 RACK_H = 30.0
 CUP_POCKET = 22.0           # the cup stands 22 mm deep in the rack
-PLUG_POCKET = 5.0
+PLUG_POCKET = 3.0          # round 11: was 5; a 3 mm counterbore still locates a plug, and the 2F-85's pads, which
+                           # reach to 2 mm over a plug's base, then stop 1 mm over the rack (they went 3 mm in)
 RACK_Y = {"cup": -20.0, "plug": 16.0}   # cups in the front row, where a level gripper reaches them from the front
+
+
+CUP_POCKET_CLEAR = 0.6      # radial clearance of the rack's cup pockets (the rims' inner edge), and the plugs'
+PLUG_POCKET_CLEAR = 0.5
 
 
 def rack(cols: int = RACK_COLS):
     """A printed charge rack (#222's holder_charge, as two rows of eight): cups in the front row, so a level gripper
     takes them from the front; their plugs behind, in shallow pockets, taken from above. Returns the block, its pocket
-    rims and the seats: {"cup": [(x, y, z)], "plug": [...]}, base centres in the rack's frame."""
+    rims and the seats: {"cup": [(x, y, z)], "plug": [...]}, base centres in the rack's frame.
+
+    Round 11: the pockets are cut into the block (0.6 mm clearance round a cup, 0.5 mm round a plug, as printed
+    holders are made). Until now the block was solid with the rims drawn on top, so a cup in the rack stood 22 mm
+    inside solid plastic: the stricter audit (collide.depth) read it as 25 mm deep, where round 10's let it through."""
     RACK_COLS = cols        # noqa: N806
     w = RACK_COLS * RACK_PITCH + 16
     d = 80.0
-    body = _box(-w / 2, w / 2, -d / 2, d / 2, 0, RACK_H)
     xs = [-w / 2 + 8 + RACK_PITCH * (i + 0.5) for i in range(RACK_COLS)]
     seats = {"cup": [(x, RACK_Y["cup"], RACK_H - CUP_POCKET) for x in xs],
              "plug": [(x, RACK_Y["plug"], RACK_H - PLUG_POCKET) for x in xs]}
+    body = _pocketed((-w / 2, w / 2, -d / 2, d / 2, 0, RACK_H),
+                     [(x, RACK_Y["cup"], STOCK_D / 2 + CUP_POCKET_CLEAR, CUP_POCKET) for x in xs] +
+                     [(x, RACK_Y["plug"], CUP_BORE_D / 2 + PLUG_POCKET_CLEAR, PLUG_POCKET) for x in xs])
     rims = None
     for x in xs:       # pocket rims, so the pockets read from a distance
         for (y, ro, ri) in ((RACK_Y["cup"], STOCK_D / 2 + 3.0, STOCK_D / 2 + 0.6),
@@ -188,6 +199,20 @@ def rack(cols: int = RACK_COLS):
             r = _ring(ro, ri, RACK_H - 0.4, RACK_H + 0.6, x, y)
             rims = r if rims is None else rims.merge(r)
     return body, rims, seats
+
+
+def _pocketed(bounds, pockets, res: int = 72) -> pv.PolyData:
+    """A block (x0, x1, y0, y1, z0, z1) with blind round pockets [(x, y, r, depth)] cut down from its top face
+    (manifold3d's boolean, as interference.py uses it)."""
+    import manifold3d as m3d
+    x0, x1, y0, y1, z0, z1 = bounds
+    body = m3d.Manifold.cube([x1 - x0, y1 - y0, z1 - z0]).translate([x0, y0, z0])
+    for x, y, r, dep in pockets:
+        body = body - m3d.Manifold.cylinder(dep + 1.0, r, r, res).translate([x, y, z1 - dep])
+    mg = body.to_mesh()
+    v = np.asarray(mg.vert_properties, float)[:, :3]
+    f = np.asarray(mg.tri_verts, np.int64)
+    return pv.PolyData(v, np.c_[np.full(len(f), 3), f].ravel()).clean()
 
 
 def doser_adapter():

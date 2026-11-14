@@ -96,8 +96,15 @@ def run(jobs: list[str], tag: str):
               flush=True)
 
 
+ROUND10 = "d6eeeb7"          # the branch as round 11 started: round 10's JSONs, under round 10's rules
+
+
 def _load(name: str, tag: str):
     p = COLL / f"{name}{'_' + tag if tag else ''}.json"
+    if not tag:                # round 10's, from git (a re-render's own audit overwrites the file in the tree)
+        r = subprocess.run(["git", "show", f"{ROUND10}:vertical-lab/{p.relative_to(HERE)}"], cwd=HERE,
+                           capture_output=True, text=True)
+        return (json.loads(r.stdout), p) if r.returncode == 0 else (None, p)
     return (json.loads(p.read_text()), p) if p.exists() else (None, p)
 
 
@@ -143,7 +150,7 @@ def summary(tag: str, fixtag: str = "r11fix") -> dict:
             fix, p_fix = _load(name, fixtag)
             clips[name] = dict(
                 what=what, job=job,
-                round10_rules=dict(_counts(old) or {}, json=str(p_old.relative_to(HERE))) if old else None,
+                round10_rules=dict(_counts(old) or {}, json=f"{ROUND10}:{p_old.relative_to(HERE)}") if old else None,
                 round11_rules=dict(_counts(new) or {}, json=str(p_new.relative_to(HERE))) if new else None,
                 after_fixes=dict(_counts(fix) or {}, json=str(p_fix.relative_to(HERE))) if fix else None,
                 worst=_worst_runs(fix or new) if (fix or new) else [])

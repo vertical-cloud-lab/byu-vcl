@@ -379,7 +379,8 @@ class World:
         """Every visible body not in exclude_groups, placed where its group is now, with its world box."""
         sc = self.sc
         cache, out = {}, []
-        fluids = set(getattr(sc, "fluids", ()))     # actors that are liquids: a part may be dipped in them
+        fluids = set(getattr(sc, "fluids", ())) | set(getattr(sc, "soft", ()))   # liquids (a part may be dipped
+        # in them) and soft parts (round 11, sc.soft: an O-ring drawn uncompressed overlaps its bore by its squeeze)
         for name, b in self.bodies.items():
             if b.group in exclude_groups or not _visible(sc, name) or name in fluids:
                 continue
@@ -456,7 +457,8 @@ class Checker:
         g = h[0]
         if g != self.held_group:
             sub = _subtree(self.sc, g)
-            self.held_bodies = [b for b in self.world.bodies.values() if b.group in sub]
+            soft = set(getattr(self.sc, "soft", ()))
+            self.held_bodies = [b for b in self.world.bodies.values() if b.group in sub and b.name not in soft]
             self.held_group = g
         return h
 
@@ -896,7 +898,7 @@ class Movers:
         self.seconds += time.time() - t0
 
     def _check(self, sc, W, moved, excl, now_moving):
-        fluids = set(getattr(sc, "fluids", ()))
+        fluids = set(getattr(sc, "fluids", ())) | set(getattr(sc, "soft", ()))
         mov_a = np.nonzero(moved[self.gidx])[0]
         mov_a = [i for i in mov_a if self.names[i] not in fluids and _visible(sc, self.names[i])]
         if not mov_a:

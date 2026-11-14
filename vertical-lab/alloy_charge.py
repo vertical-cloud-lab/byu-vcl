@@ -75,7 +75,8 @@ SLOTS = [("Al", "Si")] * 4 + [("Cu", "Ni")] * 4     # rack seat -> (cup metal, a
 MODULE = {"Si": 5, "Ni": 2, "AlSi10Mg": AP.TOPUP_MODULE["Al"], "Cu": AP.TOPUP_MODULE["Cu"]}   # carousel modules
 #                                        (0-based): the two alloying powders and the two top-ups
 CUP_GRASP = 45.0                       # grasp point above a cup's base (its top 18.5 mm higher)
-PLUG_GRASP = 21.5                      # above a plug's base: the pads' lower ends 2 mm over the cup's rim
+PLUG_GRASP = 23.5                      # above a plug's base: the pads' lower ends 4 mm over it, 1 mm over the rack
+                                       # (round 11: 21.5 put them 3 mm into the rack round the plug's pocket)
 GRIP_CUP = 0.80                        # 2F-85 closure on the 19.05 mm cup: gap = 28 - 90 (c - 0.70) (ur_arm.gripper_fk)
 GRIP_PLUG = 0.87                       # on the 12.7 mm plug
 OPEN_CUP = 0.66                        # 31.6 mm between the pads: clear of a neighbouring cup in a pocket row
@@ -151,6 +152,18 @@ class Charge:
         sc.gmat["crack"] = T((*RACK_AT, V.T_FLOOR))
         # the vacuum press, its die and the punch's rest
         self.vp = AP.VacPress(sc, "tray_B", AP.PRESS_AT, V.T_FLOOR)
+        # round 11: the rest's pocket cut into its post (0.5 mm round the punch's 19.2 mm nose). alloy_press draws the
+        # post solid with a rim on top, so the punch on its rest stood with its nose 22 mm inside the plastic, which
+        # the stricter audit (collide.depth) reads as 25 mm; the other scenes that draw the press never handle it
+        rx, ry = AP.REST_LOCAL
+        ri, z1, z0 = VPm.NOSE_R + 0.5, AP.REST_TOP, AP.REST_TOP - AP.REST_POCKET
+        post = C.lathe([(0, 0), (20.0, 0), (20.0, z1), (ri, z1), (ri, z0), (0, z0)], res=48)
+        sc.set_mesh("vpress/rest", post.translate((rx, ry, 0), inplace=False).merge(
+            C._box(rx - 45, rx + 45, ry - 45, ry + 45, 0, 10)))
+        # round 11: the punch's O-ring is an elastomer seal, drawn uncompressed: a 2.4 mm section reaching 20.4 mm
+        # across, in the catch ring's 19.30 mm bore, which squeezes it 0.55 mm a side (23 %), as a seal is meant to be
+        # squeezed. The collision checks leave such soft parts out (collide: sc.soft), as they do liquids
+        sc.soft = set(getattr(sc, "soft", ())) | {"vpress/oring", "vpress/oring_cut"}
         # the MiR's carrier
         mesh, self.carrier_seats = C.carrier()
         sc.add("amr/carrier", mesh.translate((*CARRIER_LOCAL, P.AMR_TOP - 20), inplace=False), P.RACK_C, "amr")
@@ -576,7 +589,7 @@ def movie():
         sc.step(st, cap, 1.3 * f, pre(lvl(c_r - d1 * bk + (0, 0, 30), d1), lvl(c_r + (0, 0, 30), d1)), hold=H(0.05),
                 cam_to=CAM_RACK if detail else None)
         sc.step(st, cap, 0.7 * f, rb.line_to(lvl(c_r + (0, 0, 30), d1)), hold=H(0.05))
-        sc.step(st, cap, 0.5 * f, rb.line_to(lvl(c_r + (0, 0, 1), d1)), hold=H(0.05))
+        sc.step(st, cap, 0.5 * f, rb.line_to(lvl(c_r, d1)), hold=H(0.05))       # round 11: on its seat, not 1 mm over
         sc.step(st, cap, 0.4 * f, rb.grip_to(OPEN_RACK), hold=H(0.05))
         rb.release("crack")
         sc.step(st, cap, 0.7 * f, rb.line_to(lvl(c_r - d1 * bk, d1)), hold=H(0.05))
@@ -794,7 +807,7 @@ def movie():
                     (f"catch ring: holds the cup's bottom {VPm.CATCH:.0f} mm", vp.die_top() + (-12, -6, 0), (0.62, 0.70)),
                     ("vacuum pump, valves, gauge", vp.world("vpress", (-420, -20, 240)), (0.12, 0.34))])
         sc.step(st, cap, 0.8 * f, rb.line_to(lvl(q_up + (0, 0, 50), dq)), hold=H(0.05))
-        sc.step(st, cap, 0.7 * f, rb.line_to(lvl(q_up + (0, 0, 1), dq)), hold=H(0.05))
+        sc.step(st, cap, 0.7 * f, rb.line_to(lvl(q_up, dq)), hold=H(0.05))     # round 11: on the pin, not 1 mm over
         sc.step(st, cap, 0.4 * f, rb.grip_to(OPEN_CUP), hold=H(0.05))
         rb.release("vp_pin")
         sc.step(st, cap, 0.7 * f, rb.line_to(lvl(q_up - dq * 170, dq)), hold=H(0.05), labels=[])
@@ -940,7 +953,7 @@ def movie():
             sc.step(st, cap, 1.6 * f, pre(lvl(c - d * 170 + (0, 0, 40), d), lvl(c + (0, 0, 40), d)), hold=H(0.05),
                     cam_to=CAM_AMR if detail else None)
             sc.step(st, cap, 0.7 * f, rb.line_to(lvl(c + (0, 0, 40), d)), hold=H(0.05))
-            sc.step(st, cap, 0.6 * f, rb.line_to(lvl(c + (0, 0, 1), d)), hold=H(0.05))
+            sc.step(st, cap, 0.6 * f, rb.line_to(lvl(c, d)), hold=H(0.05))
             sc.step(st, cap, 0.4 * f, rb.grip_to(OPEN_CUP), hold=H(0.05))
             rb.release("amr")
             sc.step(st, cap, 0.7 * f, rb.line_to(lvl(c - d * 170, d)), hold=H(0.05))
@@ -948,7 +961,7 @@ def movie():
             sc.step(st, cap, 1.4 * f, pre(lvl(c_r - d1 * bk + (0, 0, 30), d1), lvl(c_r + (0, 0, 30), d1)),
                     hold=H(0.05), cam_to=CAM_RACK if detail else None)
             sc.step(st, cap, 0.7 * f, rb.line_to(lvl(c_r + (0, 0, 30), d1)), hold=H(0.05))
-            sc.step(st, cap, 0.5 * f, rb.line_to(lvl(c_r + (0, 0, 1), d1)), hold=H(0.05))
+            sc.step(st, cap, 0.5 * f, rb.line_to(lvl(c_r, d1)), hold=H(0.05))
             sc.step(st, cap, 0.4 * f, rb.grip_to(OPEN_RACK), hold=H(0.05))
             rb.release("crack")
             sc.step(st, cap, 0.7 * f, rb.line_to(lvl(c_r - d1 * bk, d1)), hold=H(0.05))
