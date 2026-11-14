@@ -1779,7 +1779,11 @@ def _movie(B):
         fin_now = (sc.world("rack") @ np.r_[fin_off, 1.0])[:3]
         st["cap"] = ("The jaws take the rack's fin on the MiR. The furnace door opens (an actuator, assumed: the NAT "
                      "15/65's door is opened by hand) while the rack waits to its left, out of the door's swing.")
-        go(Tw=TL(fin_now + (0, -60.0, 30.0)), secs=1.8)
+        # round 11 (after the render): over the specimens first, then down in front of the fin. Swinging straight from
+        # the rest to 30 mm over the fin's grasp, the tongs' shaft grazed a specimen's top in the rack (the final audit:
+        # 3 mm, one frame, between the planner's 1.5 deg samples); the jaws now pass 66 mm over the specimens
+        go(Tw=TL(fin_now + (0, -60.0, 140.0)), secs=1.8)
+        lin(TL(fin_now + (0, -60.0, 30.0)), 0.5)
         lin(TL(fin_now), 0.6)
         rb.reparent("rack", "tongs")
         lin(TL(fin_now + (0, 0, 60.0)), 0.6)
@@ -1864,6 +1868,7 @@ def _movie(B):
         lin(TL(seat_r), 0.6)
         rb.reparent("rack", amr.cab)
         lin(TL(seat_r + (0, -60.0, 30.0)), 0.6)
+        lin(TL(seat_r + (0, -60.0, 140.0)), 0.5)     # round 11: over the specimens before the swing to the rest
         go(Tw=A.down(tong_g + (0, 0, 120), spin=90.0), secs=1.6)
         lin(A.down(tong_g, spin=90.0), 0.6)
         grip(0.0)

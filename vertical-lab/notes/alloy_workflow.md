@@ -1,3 +1,159 @@
+## Round 11: chapter 5 after Sterling's review of 2026-11-13
+
+Two of Sterling's points on the round-10 long-form were this chapter's: "at 32:57 the arm passing through the camera /
+collision" (his screenshot: the gripper and the tongs through the post of a stream camera beside the furnace on tray
+F), and "Insertion / removal of the tensile bars (and the halves) have another collision. Not sure if the gripper has
+enough clearance. Maybe OK if angled, otherwise needs it's own tool/end effector." The chapter's final render had never
+been audited frame by frame (round 9 stopped that audit, round 10 didn't rerun it), and this round's audit is stricter
+(`collide.py`, audit-a): what the gripper or a held part may touch near a grasp or release counts only up to 1.5 mm
+deep, and everything else that moves is checked too (the movers check).
+
+| | |
+|---|---|
+| MP4, 1280 x 720, 6 fps, 412.3 s, 2,474 frames (rendered 02:00-02:54 UTC from 86ff959, only tray F populated, Shuttles clad) | [`out/mp4/alloy_workflow.mp4`](../out/mp4/alloy_workflow.mp4) (20.3 MB) |
+| GIF, 276 px, 2 fps (under the 4.9 MB budget; not used in the long-form) | [`out/alloy_workflow.gif`](../out/alloy_workflow.gif) (4.7 MB) |
+| The audit of what was rendered (`ARM_AUDIT=1`, round 11's strict rules, every frame at 6 fps): 1 of 2,089 frames | [`out/collisions/alloy_workflow.json`](../out/collisions/alloy_workflow.json), the frame: [`alloy_workflow_01347.jpg`](../out/collisions/alloy_workflow_01347.jpg) |
+| The same rules on round 10's code (F1 already moved): sections 1-5, sections 6-7 | [`alloy_workflow_s15.json`](../out/collisions/alloy_workflow_s15.json), [`alloy_workflow_s67.json`](../out/collisions/alloy_workflow_s67.json) |
+| `PREVIEW=1` stills: the specimen fingers in their stand, a bar going into the lower grip, the halves | [`out/alloy_workflow_preview.png`](../out/alloy_workflow_preview.png) |
+
+### What changed
+
+1. **Camera F1 stands behind the quench tank** (`services.TRAY_CAMS["F"]`, commit 6c690a0). At 32:57 (242 s into the
+   chapter) the tongs carry the rack from the furnace's front to the tank's lift basket. The tank had been moved
+   behind F1's post when two streams' placements collided (`setup_lab.R8_MOVES`), so the post stood at (685, -235) on
+   the tray, in the middle of the tank's front: the rack's 150 mm sweeps x 605-755 from the tray's front edge to y -35,
+   and the tongs' shaft and the 2F-85 follow it. Nothing fits in front of the tank beside that path (the furnace ends
+   at x 535, the disc magazine starts at 844), so the post now stands behind the tank at (680, 130), 16 mm behind it
+   and 100 mm in front of the UPS (the tray's lines run along the back rim, at y 388 and over). Its head is over the
+   tank's back edge and looks down into the tank at the 65 deg tilt limit: the HQ's axis meets the rim at y -95, where
+   the rack goes in and comes out, and the Wide takes in the furnace's right side and top as well. Behind the tank it is
+   clear of every path in chapters 5 and 6 (chapter 6 works the PX500, the press and the magazine's front). The cost:
+   with the tray presented, 22 % of the Wide's picture is the room through the opening's lower part (0 % for the HQ);
+   the old place saw none of the room. F0 (front left, by the press) is in no path of chapter 5; chapter 6's audit
+   (audit-b) covers it. Two comments elsewhere still describe the old place (`setup_lab.R8_MOVES`, the lab's;
+   `r8_prep.TRAY_PLACEMENT`, audit-b's).
+2. **Specimen fingers for the 2F-85** (`ur_arm.SPEC_FINGER`, `spec_finger_meshes`; `robot.FingerSet`; the stand
+   `alloy_models.FINGER_STAND`). Why a tool: after the break each half of the E8 subsize bar has 20 mm free between its
+   broken end and its grip (40 mm between the jaws, broken in the middle). In a level grasp the 2F-85's fingertips are
+   27 mm tall and its inner knuckles 35, so no level grasp clears both the grip and the other half; tilting the gripper
+   makes it worse, because the 57 mm fingertip then reaches up or down as well. The stock fingertips also caught the
+   next bar in the comb and the rack (3-12 mm) and the jar's air knife on every dip (12 mm). What automated cells do:
+   ZwickRoell's roboTest C lists a pincer gripper with a 26 mm stroke whose "gripper finger (depending on specimen
+   thickness) must be offered for the gripper" (articles 640332 and 010245), i.e. fingers made for the specimen; the
+   Volvo/ABB cobot cell in Bosio's thesis holds the specimen in padded jaws, sets it in the lower grip first and finds
+   each broken half with a distance laser to take them out separately ([`out/edison/auto_tensile/answer.md`](../out/edison/auto_tensile/answer.md)).
+   Our design, after those: two aluminium caps that slip over the 2F-85's own fingertips (a spring plunger in each holds
+   it on), each ending in a blade 4 mm thick and 8 mm tall that reaches 73.6 mm past the stock pad centre, its inner
+   face 2 mm inside the pad's. The arm fits them from a two-slot stand on the MiR's cabinet top, behind the rack (a
+   spring clip in each slot holds the blade while the fingertip draws out of the cap), and takes them off again before
+   the tongs and the jar's lid, which want the stock fingertips. It wears them for the bars at the EDM (comb, jar, rack)
+   and for both tensile tests. The audit checks them as real geometry: they are held parts (`FingerSet` places each on
+   its fingertip every frame as the gripper opens and closes), so collide.py tests them against everything.
+3. **The Instron, loaded and unloaded with real clearances** (`alloy_workflow` section 7, `r8_test.wedge_grip`).
+   What collided in round 10: the bar's foot went into the lower grip on a slant, 40 mm down while 20 mm forward, so it
+   cut through the grip's front before it reached the slot; the second bar went in under the upper grip, which the first
+   test had left 210 mm down; and the stock fingers took each half partly inside its grip and pulled it through the
+   grip's block. Now:
+   - the grips have jaws: a 28 x 20 mm slot in each block with two jaws, 2 mm off each face of the specimen while open,
+     that close on it (instruments.py's grip had a 6 mm slot, closed for good on the 6 mm bar);
+   - the bar goes in straight down between the open jaws from 60 mm over its seat, the jaws close, the fingers open
+     and draw straight back; the blades hold it 53 mm over the grip and the 2F-85 itself stays in front of the grips;
+   - after the break the crosshead backs off 60 mm (20 before), so the lower half lifts 40 mm out of its jaws and the
+     upper half drops 40 mm out of its own without meeting the other; the blades take each 10 mm from its broken end,
+     6 mm clear of the grip and of the broken end;
+   - the room-temperature halves lie in the MiR's cradle as before, which now has a relief across each channel for the
+     blades; the hot test's halves drop onto the scrap chute's floor (they used to fall through it) and slide away;
+   - the crosshead goes back up after each test (round 10 left it 210 mm down, so the second bar went in under it).
+     Its rest height met the junction box the set-up hung on the south row's drop at the Instron (z 1720-1900, 90 mm
+     into the crosshead); the lab moved the box over the frame (47219fc);
+   - the chamber's door shuts against the chamber's front face; drawn inside the shell's frame, it went 50 mm into the
+     shell every time it shut.
+4. **The MiR stops 500 mm off the Instron, not 230.** The 3119-608's left-hinged door is 550 mm wide and opens 95 deg,
+   its free edge 432 mm in front of the frame. At 230 mm it went through the MiR's cabinet, the tongs and the arm's
+   base every time it opened (the movers check). At 500 mm it clears the MiR by 68 mm and the arm still reaches the load
+   string. The lab moved the set-up's dock mark at the Instron to this stop (47219fc).
+5. **The rest of the strict audit's findings**, section by section:
+   - the plate's zero-point stud stood inside three solid parts: the printer's platform, the depowdering box's chuck and
+     the EDM's receiver are bored for it now (0.5 mm round it);
+   - the build cylinder is 171 mm across (the 170 mm plate rose through a 170 mm hole in the chamber's floor), the
+     printer's base cabinet is cut for the cylinder and the piston's rod, and the powder cake counts as a fluid (the
+     bars are buried in it);
+   - the plate rides to the box 150 mm further from the row (MiR y 150, not 300): driving past the lance's post, the
+     plate and the bars standing on it went through the hose where it leaves the lance's barb;
+   - the box's swing clamps swing in 3 mm over the plate and close 0.1 mm over it (round 10: 1.5 mm into it);
+   - leaving the box, the MiR drives 350 mm along the row before it turns: turning on the spot there, its corners swept
+     over the floor pipe in front of the row;
+   - the EDM's catch comb rides on a slide: the plate goes onto its receiver along the stud's axis, so its bars came in
+     through the comb's front wall and teeth; the comb now waits 88 mm down in the table's window and rises under the
+     bars once the plate is clamped (our design). Its ejector pins rise through holes in its floor and pads, and the
+     wire head's lower guide runs 8 mm under the comb's ejector block, not 4 mm in it. Its arms reach round the
+     plate 165 mm out, not 112, so the wire, which starts 150 mm left of centre, no longer crosses the left one, and
+     the angle plate is 350 mm wide to take them; after the cut the head parks 125 mm right of centre, clear of the
+     last bar's finger caps;
+   - the closures leave 0.3 mm over each part (`ur_arm.close_for`): round 10 squeezed the lug and the tongs' handle by
+     0.17 mm and the lid's knob by 0.02, which the depth limit reads as 3-6 mm (the move that frees a squeezed part is
+     along the pads);
+   - the tongs' jaws are 42 mm tall (at 50 they reached 3 mm into the rack's top beside its fin) and the tongs lie 90 mm
+     further out on the cabinet, 325 mm off the arm's axis: at 233 mm the arm folded so far to reach the handle pointing
+     down that its shoulder met its forearm. Their rest's V-blocks stand 95 mm either side of its middle: the sleeve at
+     the handle, 4 mm fatter than the shaft, sat 4 mm into the left one;
+   - the lid's knob is taken 4 mm under its top, not 12 (the fingertips reach 19 mm past the grasp point and were 5 mm
+     into the lid), the plate's stud goes into the box's chuck straight down for its last 30 mm, the bars' last moves
+     out of their troughs are planned joint moves, the box's clamps and the comb's pins as above.
+
+### Collisions: the audit
+
+The chapter as rendered (86ff959), every frame at 6 fps under round 11's strict rules (`ARM_AUDIT=1 ARM_AUDIT_SNAP=auto`,
+02:00-02:58 UTC, in parallel with the render): **1 of 2,089 frames** in collision, and no mover's new contact deeper than
+1.5 mm. The same rules on round 10's code (with F1 already moved) found 40 of 962 frames in sections 1-5 and 70 of 1,003
+in sections 6-7, plus the movers listed under 3-5 above; round 10's own rules on round 6's code had 60 of 2,101.
+
+- **The one frame** (1347, section 6): as a planned joint move swung the tongs from their rest over the rack on the MiR
+  to the rack's fin, the shaft grazed the top of a specimen standing in the rack, 3 mm, between the planner's 1.5 deg
+  samples ([`alloy_workflow_01347.jpg`](../out/collisions/alloy_workflow_01347.jpg)). Fixed in code after the render
+  (the tongs go to 140 mm over the fin's grasp first, the jaws 66 mm over the specimens, then down in front of the fin;
+  and up 140 mm again before the swing back to their rest) and not re-rendered, as the coordinator asked.
+- **The MiR check** (`alloy_workflow_mir.json`, the MiRs against everything): 210 frames, all in sections 1-2, the MiR's
+  skirt on the foot plate of the Aconity's target post. The post stands 650 mm behind the Aconity's dock at (6650,
+  -1932) (it is backed into), at (6000, -1712), on a 300 x 300 x 12 mm foot; chapter 5's MiR stops 130 mm left of that
+  dock and 150 mm further out, at (6520, -2082), because the plate has to clear the chamber's front. The skirt (z 0-30,
+  20 mm inside the body) overlaps the plate by 10 x 50 mm at its rear corner: 10 mm to free, 12 on collide.depth's
+  ladder. It is hidden under the body's overhang in every shot, but a real MiR's corner caster would ride onto the
+  plate. The fix is the lab's: dock the Aconity where chapter 5 stops (the post then stands about 120 mm clear), as
+  they did at the Instron; asked at 03:15.
+- The MiR body on the floor tape, the trays against the VLM's column supports and the shutter against the bay's walls,
+  which the first passes showed, are not this chapter's: audit-a's movers check ignores the floor and its tape since
+  d9184d6, and the coordinator's 063b014 fixed the VLM's.
+
+### Sources (round 11)
+
+- ZwickRoell, roboTest C product information ([PDF](https://www.zwickroell.com/-/media/files/sharepoint/vertriebsdoku_pi/01_722_robotestc_pi_en.pdf)):
+  "Feed unit with pincer gripper; Gripper stroke: 26 mm; Max. specimen thickness: 30 mm", and "An associated gripper
+  finger (depending on specimen thickness) must be offered for the gripper" (articles 640332, 1.5-25 mm, and 010245,
+  6-30 mm).
+- Instron AT6: a Mitsubishi six-axis robot; the 100 kN configuration uses hydraulic wedge action grips
+  ([Plant Automation Technology's copy of the product page](https://www.plantautomation-technology.com/products/instron/at6-6-axis-robotic-testing-system)).
+  Instron's own page refused the fetch (HTTP 403); neither says how the AT6 holds or removes a specimen.
+- The Volvo/ABB cobot tensile cell (Bosio 2025) and Sandia's rack-fed tester (Heckman et al. 2020), as summarised in
+  [`out/edison/auto_tensile/answer.md`](../out/edison/auto_tensile/answer.md): padded robot jaws, the lower grip first,
+  a distance laser to find each broken half; gas ejecting the upper half.
+- The 2F-85's fingertip and knuckle sizes are measured from Robotiq's own description (`ur_arm.gripper_meshes`).
+
+### Assumed, and left open
+
+- The specimen fingers, their stand and the plunger that holds each cap are our design; ZwickRoell's sheet says only
+  that a finger per specimen thickness comes with the gripper. Robotiq makes no automatic fingertip change for the
+  2F-85: a tool changer with a second gripper would do the same job.
+- The break is in the middle of the gauge here, every time. A real bar breaks anywhere along its 32 mm reduced section,
+  which can leave a half only 4 mm to grip; Bosio's cell finds each half with a distance laser, and the D405 on the
+  wrist would do the same here.
+- The jaws close by a straight move across; a hydraulic wedge grip's jaws ride down a wedge.
+- F1 behind the tank sees 22 % room in its Wide with the tray presented (see 1).
+- The tongs' path fix (above) and the Aconity dock are in code or asked for, not in the render.
+- While the specimen fingers are on, the 2F-85 takes nothing else: they go on at the EDM for the bars, come off
+  before the jar's lid and the tongs, and go on again at the Instron; each fitting or removal takes about 3 s.
+
+
 ## Round 9: chapter 5 after Sterling's review of 2026-11-05 22:56 UTC
 
 Six points on PR #318 were this chapter's: the Aconity MIDI's door "swings the wrong way"; "28:08 that vacuuming seems

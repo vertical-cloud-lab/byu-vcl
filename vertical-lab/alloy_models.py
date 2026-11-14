@@ -823,8 +823,8 @@ TROUGH = dict(gap=0.5, clear=1.0, wall=2.0, wall_h=4.0, floor_t=4.0, y0=6.0, rea
 
 def zbar_troughs(pc) -> dict:
     """{name: (mesh, colour)}: a U trough under each vertical bar (EDM frame), its floor 0.5 mm under the bar, 1 mm
-    each side of it, from 6 mm off the plate's face (clear of the wire, 0.15 mm off it) to 2 mm past the bar's free
-    end; both hang off one post that stands on the comb's left arm, left of the bars, so the gripper reaches each
+    each side of it, from 6 mm off the plate's face (clear of the wire, 0.15 mm off it) to 72 mm out (round 11: short
+    of the specimen fingers' blades at the free end); both hang off one post that stands on the comb's left arm, left of the bars, so the gripper reaches each
     free end from the front. The upper trough stops 60 mm out (the bar's centre of mass is 50 mm out), so the lower
     bar's free end is open from the front once the upper bar is gone. Our design; sizes assumed."""
     c, t = COMB, TROUGH

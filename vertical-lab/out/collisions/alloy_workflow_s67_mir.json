@@ -1,0 +1,576 @@
+{
+ "clip": "alloy_workflow_s67",
+ "frames_checked": 1003,
+ "frames_with_collisions": 258,
+ "runs": [
+  {
+   "label": "7/7",
+   "first_frame": 648,
+   "last_frame": 648,
+   "frames": 1,
+   "pairs": [
+    {
+     "unit": "unit0",
+     "part": "amr cabinet",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "jaws",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "shaft",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "tongs rest",
+     "other": "wh_instron_floor:chamber_door"
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 649,
+   "last_frame": 649,
+   "frames": 1,
+   "pairs": [
+    {
+     "unit": "unit0",
+     "part": "amr cabinet",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "shaft",
+     "other": "wh_instron_floor:chamber_door"
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 650,
+   "last_frame": 650,
+   "frames": 1,
+   "pairs": [
+    {
+     "unit": "unit0",
+     "part": "amr cabinet",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "control box",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "shaft",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "tongs rest",
+     "other": "wh_instron_floor:chamber_door"
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 651,
+   "last_frame": 651,
+   "frames": 1,
+   "pairs": [
+    {
+     "unit": "unit0",
+     "part": "amr cabinet",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "control box",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "handle",
+     "other": "wh_instron_floor:chamber_door"
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 652,
+   "last_frame": 709,
+   "frames": 49,
+   "pairs": [
+    {
+     "unit": "unit0",
+     "part": "amr cabinet",
+     "other": "wh_instron_floor:chamber_door"
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 711,
+   "last_frame": 711,
+   "frames": 1,
+   "pairs": [
+    {
+     "unit": "unit0",
+     "part": "amr cabinet",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "control box",
+     "other": "wh_instron_floor:chamber_door"
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 712,
+   "last_frame": 712,
+   "frames": 1,
+   "pairs": [
+    {
+     "unit": "unit0",
+     "part": "amr cabinet",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "control box",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "shaft",
+     "other": "wh_instron_floor:chamber_door"
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 713,
+   "last_frame": 713,
+   "frames": 1,
+   "pairs": [
+    {
+     "unit": "unit0",
+     "part": "amr cabinet",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "jaws",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "shaft",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "tongs rest",
+     "other": "wh_instron_floor:chamber_door"
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 803,
+   "last_frame": 803,
+   "frames": 1,
+   "pairs": [
+    {
+     "unit": "unit0",
+     "part": "amr cabinet",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "jaws",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "shaft",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "tongs rest",
+     "other": "wh_instron_floor:chamber_door"
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 804,
+   "last_frame": 804,
+   "frames": 1,
+   "pairs": [
+    {
+     "unit": "unit0",
+     "part": "amr cabinet",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "control box",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "shaft",
+     "other": "wh_instron_floor:chamber_door"
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 805,
+   "last_frame": 805,
+   "frames": 1,
+   "pairs": [
+    {
+     "unit": "unit0",
+     "part": "amr cabinet",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "control box",
+     "other": "wh_instron_floor:chamber_door"
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 806,
+   "last_frame": 908,
+   "frames": 84,
+   "pairs": [
+    {
+     "unit": "unit0",
+     "part": "amr cabinet",
+     "other": "wh_instron_floor:chamber_door"
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 909,
+   "last_frame": 909,
+   "frames": 1,
+   "pairs": [
+    {
+     "unit": "unit0",
+     "part": "amr cabinet",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "control box",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "shaft",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "tongs rest",
+     "other": "wh_instron_floor:chamber_door"
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 910,
+   "last_frame": 910,
+   "frames": 1,
+   "pairs": [
+    {
+     "unit": "unit0",
+     "part": "amr cabinet",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "shaft",
+     "other": "wh_instron_floor:chamber_door"
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 918,
+   "last_frame": 918,
+   "frames": 1,
+   "pairs": [
+    {
+     "unit": "unit0",
+     "part": "amr cabinet",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "jaws",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "shaft",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "tongs rest",
+     "other": "wh_instron_floor:chamber_door"
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 919,
+   "last_frame": 919,
+   "frames": 1,
+   "pairs": [
+    {
+     "unit": "unit0",
+     "part": "amr cabinet",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "control box",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "shaft",
+     "other": "wh_instron_floor:chamber_door"
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 920,
+   "last_frame": 920,
+   "frames": 1,
+   "pairs": [
+    {
+     "unit": "unit0",
+     "part": "amr cabinet",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "control box",
+     "other": "wh_instron_floor:chamber_door"
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 921,
+   "last_frame": 960,
+   "frames": 31,
+   "pairs": [
+    {
+     "unit": "unit0",
+     "part": "amr cabinet",
+     "other": "wh_instron_floor:chamber_door"
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 962,
+   "last_frame": 962,
+   "frames": 1,
+   "pairs": [
+    {
+     "unit": "unit0",
+     "part": "amr cabinet",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "control box",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "handle",
+     "other": "wh_instron_floor:chamber_door"
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 963,
+   "last_frame": 963,
+   "frames": 1,
+   "pairs": [
+    {
+     "unit": "unit0",
+     "part": "amr cabinet",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "jaws",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "shaft",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "tongs rest",
+     "other": "wh_instron_floor:chamber_door"
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 1058,
+   "last_frame": 1058,
+   "frames": 1,
+   "pairs": [
+    {
+     "unit": "unit0",
+     "part": "amr cabinet",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "jaws",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "shaft",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "tongs rest",
+     "other": "wh_instron_floor:chamber_door"
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 1059,
+   "last_frame": 1059,
+   "frames": 1,
+   "pairs": [
+    {
+     "unit": "unit0",
+     "part": "amr cabinet",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "control box",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "shaft",
+     "other": "wh_instron_floor:chamber_door"
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 1060,
+   "last_frame": 1060,
+   "frames": 1,
+   "pairs": [
+    {
+     "unit": "unit0",
+     "part": "amr cabinet",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "control box",
+     "other": "wh_instron_floor:chamber_door"
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 1061,
+   "last_frame": 1149,
+   "frames": 72,
+   "pairs": [
+    {
+     "unit": "unit0",
+     "part": "amr cabinet",
+     "other": "wh_instron_floor:chamber_door"
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 1150,
+   "last_frame": 1150,
+   "frames": 1,
+   "pairs": [
+    {
+     "unit": "unit0",
+     "part": "amr cabinet",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "control box",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "shaft",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "tongs rest",
+     "other": "wh_instron_floor:chamber_door"
+    }
+   ]
+  },
+  {
+   "label": "7/7",
+   "first_frame": 1151,
+   "last_frame": 1151,
+   "frames": 1,
+   "pairs": [
+    {
+     "unit": "unit0",
+     "part": "amr cabinet",
+     "other": "wh_instron_floor:chamber_door"
+    },
+    {
+     "unit": "unit0",
+     "part": "shaft",
+     "other": "wh_instron_floor:chamber_door"
+    }
+   ]
+  }
+ ],
+ "method": "ARM_AUDIT=1: the MiR250s themselves against everything visible, every frame, with FCL on the drawn meshes as collide.py checks the arms (which it does without the bases they ride on). That means the body, the cabinet, the holder and whatever stands in it, against the posts, the machines, the VLM and the other unit. Writes out/collisions/warehouse_mir.json. Floor decals are left out: the tape, the route ribbons and the chargers' plates and contacts, whose tops are under 35 mm. The posts' 12 mm feet are part of the posts' mesh, so they are checked."
+}
