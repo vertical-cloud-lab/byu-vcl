@@ -1,7 +1,7 @@
 {
  "name": "vlm_services",
  "fps": 6,
- "n_frames": 206,
+ "n_frames": 223,
  "size": [
   1280,
   720
@@ -69,9 +69,21 @@
   },
   {
    "label": "6/6",
-   "caption": "The cameras: two Pi 5 units on tray A, standing in front of or beside their instruments and looking back, so they keep the room out of the picture, and an overhead one at the back of the bay, above Kardex's product envelope, looking down on the presented tray.",
+   "caption": "The cameras: two Pi 5 units on tray A, standing in front of or beside their instruments and looking back, so they keep the room out of the picture.",
    "start_frame": 171,
-   "end_frame": 205
+   "end_frame": 194
+  },
+  {
+   "label": "6/6",
+   "caption": "And an overhead one at the back of the bay, seen from where an operator stands (the cladding drawn solid for it): above Kardex's product envelope, under the tray stored over the opening, looking down on the presented tray.",
+   "start_frame": 195,
+   "end_frame": 215
+  },
+  {
+   "label": "6/6",
+   "caption": "And an overhead one at the back of the bay, seen from where an operator stands (the cladding drawn solid for it): above Kardex's product envelope, under the tray stored over the opening, looking down on the presented tray.",
+   "start_frame": 216,
+   "end_frame": 222
   }
  ]
 }

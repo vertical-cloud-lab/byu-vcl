@@ -9,7 +9,7 @@
  "substeps": [
   {
    "label": "1/10",
-   "caption": "A storage tray: what the arm picks from. 1760 x 760 mm and 300 mm tall; the tray's right end stays free for its UPS and dock.",
+   "caption": "A storage tray: what the arm picks from. 1760 x 760 mm and 300 mm tall. Nothing here draws power: no UPS, no dock, no cameras; the bay's overhead camera sees it whenever it is presented.",
    "start_frame": 0,
    "end_frame": 29
   },

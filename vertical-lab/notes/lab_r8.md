@@ -191,6 +191,22 @@ What is new against round 7's render:
   re-planned move), and round 6's audit of the set-up found 0 of 1376 frames in collision. Without the planner, the
   render needs no collision world (see Memory below).
 
+### Round 11's set-up render
+
+`ARM_NO_PLAN=1 VIZ3D_FPS=6 setup_lab.py` (as round 8 rendered it), through `runner_guard.py --mem 6500`, 00:34-00:53
+UTC on 2026-11-14: 708 frames, 118.0 s, 12.0 MB; the GIF from the MP4 at 448 px, 4 fps, `--lossy=120`: 6.8 MB.
+
+- **Trays J, N and O come in bare** (7/9): their loads only, no UPS, no camera posts, and their captions say so with
+  their slot heights (325, 225 and 150 mm). N's 264 and O's 489 jars fill the tray from side to side. In O's shot, N
+  shows in its slot under the access table.
+- **The bay cameras** (8/9, 102-107 s; Sterling: "Can't see the overhead camera from the angle. Should change the view
+  angle and temporarily make things opaque again"): Shuttle 2's unit, then Shuttle 1's, each from an operator's eyes
+  at the opening (1.6 m up, 0.9 m out, 420 mm to one side, a 34° view), the cladding, bay walls and shutter solid while
+  it is shown, each unit labelled; then the wide view, see-through again. 5.2 s, against 3.2 s for round 10's one wide
+  shot.
+- It started before the orchestrator's 063b014 (tray supports drawn only where a tray rests), so a second render
+  follows with it.
+
 ## Memory: the whole lab is about 5-6 GB a process
 
 Sterling: "renders of the entire setup might be a bit resource intensive". They are. Peak resident memory of the one

@@ -9,7 +9,7 @@
  "substeps": [
   {
    "label": "1/7",
-   "caption": "Tray N, the feedstock: 204 labelled jars (64 x 60 mL, 54 x 125 mL, 44 x 250 mL, 42 x 500 mL) in racks of white HDPE, one rack per size.",
+   "caption": "Tray N, the feedstock: 264 labelled jars (82 x 60 mL, 70 x 125 mL, 58 x 250 mL, 54 x 500 mL) in racks of white HDPE, one rack per size.",
    "start_frame": 0,
    "end_frame": 32
   },
@@ -39,13 +39,13 @@
   },
   {
    "label": "6/7",
-   "caption": "Rows stand 20 mm apart front to back, room for the gripper's fingers; the arm takes a jar from above.",
+   "caption": "Rows stand 21-41 mm apart front to back, room for the gripper's open fingers; the arm takes a jar from above.",
    "start_frame": 122,
    "end_frame": 149
   },
   {
    "label": "7/7",
-   "caption": "Each rack lifts out whole by its handles. The tray's right end keeps its UPS, dock and cameras.",
+   "caption": "Each rack runs the tray's full width and lifts out whole by its handles. Nothing here draws power: no UPS, no cameras. The bay's overhead camera counts the jars whenever the tray is presented.",
    "start_frame": 150,
    "end_frame": 174
   }
