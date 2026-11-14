@@ -72,6 +72,11 @@ Found and fixed:
 | The castors in the floor's tape | rolling | the wheels 2 mm over the floor |
 | The iMicro's hood through its own cabinet and through tray E's cameras E0 and E1 | the hood lifting | audit-b (180c0f4): only the lid lifts; the front panel is the cabinet's |
 | The person's coat and gloves through camera post E0 and into the iMicro | the tip change | below |
+| The carriage, run past its load travel, into the panel | the lid lifting | the carriage stays home; only the x stage moves aside |
+| The head in the raised panel | bending in | the panel goes up 650 mm, not 420 |
+| The gloves in the panel's face, then the rising panel catching the fingers | lifting the panel | the hands come up in front of it, rest on its edge (settled), lift it 120 mm, come back out of its plane; then it rises on |
+| The glove in the head, the carriage and the stage base | reaching to the tip | the hand comes in level as a fist in the 120 mm under the head; the tip turns in place |
+| The gloves in the bar on taking it again | pulling the table away | the grip settled for its final pose first, the hands over the bar on the way |
 
 ### The tip change, and why it needed a removable panel
 
@@ -131,6 +136,18 @@ else checked.
   - **The captions.** They no longer say the HR-202i calibrates itself, and they say the check weighs ten times.
   - **The fused-silica check** is the arm's next job on tray E. The clip had claimed it ran while the tray went back
     up.
+
+## Collisions, before and after
+
+| Run | Arm (strict) | Movers check (audit-a) | Person, table, tray (`PeopleCheck`) |
+|---|---|---|---|
+| Round 10's render, its audit (arm only, round 10's rules) | 0 of 534 | not checked | not checked |
+| Round 11, first strict run, part 3 only, round 10's choreography (00:29 UTC, log) | 0 of 670 | 244 of 670, 45 runs | 314 of 670 |
+| Round 11, first full-clip strict run, partly fixed (01:19, log) | 0 of 1,460 | 120 of 1,460 | 203 of 1,460 |
+| **Round 11, final** (`443a7a4`, the render's code) | **0 of 1,491** | **0 of 1,491** | **0 of 1,491** |
+
+Before the fixes, parts 1 and 2 were already clean. Every contact was in part 3: the walk-in, the push, the docked
+table, the lid, the panel and the tip change.
 
 ## What it shows
 
