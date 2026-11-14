@@ -136,10 +136,10 @@
      "tilt_down_deg": 25.4
     },
     "E1": {
-     "top_over_floor_mm": 677.9,
-     "post_yaw_deg": 180,
-     "pan_deg": 36.2,
-     "tilt_down_deg": 20.1
+     "top_over_floor_mm": 687.1,
+     "post_yaw_deg": 0,
+     "pan_deg": -71.0,
+     "tilt_down_deg": 47.1
     },
     "E2": {
      "top_over_floor_mm": 679.4,
@@ -154,10 +154,10 @@
      "tilt_down_deg": 5.8
     },
     "F1": {
-     "top_over_floor_mm": 679.5,
-     "post_yaw_deg": 270,
-     "pan_deg": -48.2,
-     "tilt_down_deg": 23.3
+     "top_over_floor_mm": 687.6,
+     "post_yaw_deg": 0,
+     "pan_deg": 0.0,
+     "tilt_down_deg": 65.0
     }
    },
    "limit_mm": 856.5,
@@ -215,8 +215,8 @@
      "inside_rim": true
     },
     "E1": {
-     "gap_mm": 34,
-     "nearest": "nanoindenter",
+     "gap_mm": 66,
+     "nearest": "mastersizer",
      "inside_rim": true
     },
     "E2": {
@@ -230,7 +230,7 @@
      "inside_rim": true
     },
     "F1": {
-     "gap_mm": 76,
+     "gap_mm": 100,
      "nearest": "furnace",
      "inside_rim": true
     }
@@ -526,12 +526,12 @@
      ]
     },
     "E1": {
-     "wide_sees_room": 0.0,
+     "wide_sees_room": 0.204,
      "hq_sees_room": 0.0,
-     "hq_to_aim_mm": 280,
-     "post_yaw_deg": 180,
-     "pan_deg": 36.2,
-     "tilt_down_deg": 20.1,
+     "hq_to_aim_mm": 334,
+     "post_yaw_deg": 0,
+     "pan_deg": -71.0,
+     "tilt_down_deg": 47.1,
      "round5": {
       "post_xy": [
        -570.0,
@@ -541,13 +541,13 @@
       "hq_sees_room": 0.049
      },
      "post_xy": [
-      -50.0,
-      -340.0
+      170.0,
+      360.0
      ],
      "aim": [
-      -250.0,
-      0.0,
-      524.0
+      -100.0,
+      200.0,
+      350.0
      ]
     },
     "E2": {
@@ -601,12 +601,12 @@
      ]
     },
     "F1": {
-     "wide_sees_room": 0.0,
+     "wide_sees_room": 0.219,
      "hq_sees_room": 0.0,
-     "hq_to_aim_mm": 263,
-     "post_yaw_deg": 270,
-     "pan_deg": -48.2,
-     "tilt_down_deg": 23.3,
+     "hq_to_aim_mm": 362,
+     "post_yaw_deg": 0,
+     "pan_deg": 0.0,
+     "tilt_down_deg": 65.0,
      "round5": {
       "post_xy": [
        -170.0,
@@ -616,13 +616,13 @@
       "hq_sees_room": 0.782
      },
      "post_xy": [
-      685.0,
-      -235.0
+      680.0,
+      130.0
      ],
      "aim": [
-      408.0,
-      0.0,
-      513.0
+      680.0,
+      -60.0,
+      230.0
      ]
     }
    }
