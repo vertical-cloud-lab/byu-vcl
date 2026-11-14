@@ -33,19 +33,19 @@ DISPLAY = os.environ.get("AUDIT_DISPLAY", "43")
 
 # name: (what, script and args, extra env, --mem MB, the scene names whose JSONs it writes)
 JOBS = {
-    "ch1": ("chapter 1, charging the crucible (alloy_charge.py, one arm)", ["alloy_charge.py"], {}, 4000,
+    "ch1": ("chapter 1, charging the crucible (alloy_charge.py, one arm)", ["alloy_charge.py"], {}, 3000,
             ["alloy_charge"]),
-    "ch2": ("chapter 2, atomizing (alloy_atomize.py, two arms, the two-Shuttle floor)", ["alloy_atomize.py"], {}, 6500,
+    "ch2": ("chapter 2, atomizing (alloy_atomize.py, two arms, the two-Shuttle floor)", ["alloy_atomize.py"], {}, 4500,
             ["alloy_atomize"]),
     # VLAB_ONLY_TRAYS=ABC: the trays it fetches (the others stay in their slots, which no arm or tray in this clip
     # reaches; setup_lab.build's comment); not for its render, whose Shuttles are open frames
     "workflow": ("the 8:00 clip (animate.py workflow, the whole lab)", ["animate.py", "workflow"],
-                 {"VLAB_ONLY_TRAYS": "ABC"}, 5000, ["vlm_workflow"]),
+                 {"VLAB_ONLY_TRAYS": "ABC"}, 4500, ["vlm_workflow"]),
     "baycam": ("the bay camera (services.py baycam; the lab stream's file: hits reported, not fixed)",
-               ["services.py", "baycam"], {}, 4000, ["bay_camera"]),
+               ["services.py", "baycam"], {}, 3000, ["bay_camera"]),
     "scaleup": ("scaling up (scaleup.py: the EOS M 400-4 and the Meltio robot cell; no UR arm, movers only)",
-                ["scaleup.py"], {}, 4000, ["scaleup"]),
-    "interference": ("interference.py over every model (MuJoCo sweep, exact meshes)", ["interference.py"], {}, 4000,
+                ["scaleup.py"], {}, 3000, ["scaleup"]),
+    "interference": ("interference.py over every model (MuJoCo sweep, exact meshes)", ["interference.py"], {}, 3000,
                      []),
 }
 
