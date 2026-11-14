@@ -1,6 +1,6 @@
 {
  "round": 11,
- "written": "2026-11-14 04:15 UTC",
+ "written": "2026-11-14 04:21 UTC",
  "every_clip": [
   {
    "clip": "Chapter 1: the charge",
@@ -86,7 +86,13 @@
      "out/collisions/alloy_powder_r11s0.json"
     ]
    },
-   "round11_after_fixes": "after: re-audit pending (light now non-solid)"
+   "round11_after_fixes": {
+    "frames": 30,
+    "of": 1028,
+    "source": [
+     "out/collisions/alloy_powder.json"
+    ]
+   }
   },
   {
    "clip": "Chapter 5: cut, heat-treat, test",

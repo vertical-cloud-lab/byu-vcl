@@ -221,8 +221,8 @@ SHEET_CLIPS = [
     # audit-b: before = alloy_powder_r11s0 (e54631f, 92 of 1028: 64 of the movers' frames were light drawn as meshes);
     # the committed code registers light as non-solid and its re-audit was queued at 04:11; alloy_powder.json in the
     # tree at 04:15 was an intermediate run, so it isn't shown
-    ("Chapter 4: powder checks", "alloy_powder", ["alloy_powder_r11s0"], [], "audit-b",
-     "after: re-audit pending (light now non-solid)"),
+    ("Chapter 4: powder checks", "alloy_powder", ["alloy_powder_r11s0"], [["alloy_powder"]], "audit-b",
+     "not re-rendered: the fixes are in code"),
     # ch5: before = its sections 1-5 and 6-7 on round 10's code (F1 already moved), 00:04-00:29, 209 + 214 of 962 +
     # 1003 frames; 148 of those were only the MiR's skirt in the floor tape, left out since (FLOOR_MM), so 275 here.
     # After = ch5-audit-final, the whole chapter as rendered (86ff959). The other alloy_workflow_s* are intermediate
