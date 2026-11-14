@@ -4,8 +4,65 @@ The atomized powder goes through a sieving cell, into the Aconity MIDI's powder 
 plate that chapter 4 ([`alloy_workflow.py`](../alloy_workflow.py)) takes out.
 [GIF](../out/alloy_print.gif), [MP4](../out/mp4/alloy_print.mp4), [still](../out/alloy_print_still.png),
 [steps](../out/alloy_print.json), stills of the [cell](../out/alloy_print_cell.png) and the
-[tipper](../out/alloy_print_tipper.png). 198 s at 1280 × 720 and 10 fps (round 6, with the arm's collisions planned
-round, below; 10 fps to fit the session; re-render at 15 fps when the runner is free); the GIF is 640 × 360 at 5 fps.
+[tipper](../out/alloy_print_tipper.png). 303.5 s at 1280 × 720 and 6 fps (round 11, below); the GIF is 512 × 288 at
+1.5 fps.
+
+### Round 11 (2026-11-14): the stricter audit
+
+Sterling, on the round-10 long-form: "There are probably other collisions and interferences that I didn't catch from
+this." Round 11's `collide.py` (audit-a) lets the gripper and a held part touch what they handle only up to 1.5 mm deep
+(`collide.depth`, the moving part shrunk 0.3 mm first), and checks everything else that moves (the MiR, the tipper, the
+wash module's lift and knife, the Aconity's door and pistons) against everything else. Round 10's fixes were never
+rendered; the committed MP4 was round 9's.
+
+| Audit (`VLAB_ONLY_TRAYS=F`, 6 fps) | Code | Arm | Movers | All |
+|---|---|---|---|---|
+| `alloy_print_r11a.json`, round 10's rules | round 10's | 0 of 1371 | | **0** |
+| stricter rules ([`alloy_print_r11s0.json`](../out/collisions/alloy_print_r11s0.json)) | round 10's (the jar's pocket off the plate) | 59 of 1371 | 79 | **138** |
+| after the first fixes | | 29 | 42 | 71 |
+| the knife parked low | | 11 of 1374 | 37 (the wash module in the cabinet) | 48 |
+| the wash module in front of the cabinet, the jar's bore 2 mm ([`alloy_print_r11_prerender.json`](../out/collisions/alloy_print_r11_prerender.json)) | `8095c46` | 2 of 1374 | 0 | **2** |
+| the render's own audit ([`alloy_print.json`](../out/collisions/alloy_print.json)) | `8095c46` | 2 of 1374 | 0 | **2** |
+
+What it found, and the fixes:
+- **The tipper's shaft ran through every sieve.** `sieve_station.tipper_parts` drew one 26 mm shaft from post to post
+  at the cradle's axis height, through the middle of the sieve clamped in it (the sieve 25-50 mm "in the cradle", every
+  sieve, 2-4 frames each). A tipper turns on two stub trunnions in the cradle's lugs; now drawn so.
+- **The lid was taken too low.** The grasp point was at the crossbar's mid-height, and the fingertips, which reach
+  17.7 mm past it, went 10 mm into the lid's plate (12 mm in the audit). It is now 11 mm higher (`LID_GRASP_Z`): the
+  tips end 1.3 mm over the plate, and the pads still hold the bar's top 15 mm.
+- **The knobs have lobes.** `instruments_char.sieve`'s knob is a 54 mm core with five 12 mm lobes at r 27, so 33 mm
+  over the lobes; the pads closed to r 28.8, 4 mm into them (3-6 mm, 4 x 6 frames). They now close to r 33.2
+  (`GRIP_KNOB` 0.25), on the lobes' tips.
+- **The LPBF jar's pocket stood on the arm's mounting plate.** `props.mir250` draws the arm's 20 mm plate
+  (|x| < 170 mm) as part of the cabinet, and the pocket block at x = -190 put a seated jar 16 mm into it. The pocket is
+  at x = -225, 10 mm clear of the plate (as in chapters 4 and 7's notes). Then the jar still read 25 mm into the block:
+  its legend's tint sleeve (r 36.2 mm, see-through and drawn only for the legend, but part of the jar) stood 0.2 mm
+  into the 36 mm bore all round. The bore is now 2 mm round the jar (was 1).
+- **The sieve wash module stood inside the rePowder's utility cabinet.** Round 9 put it on a 450 mm extension of the
+  bench, left of the tipper, where the rePowder's utility cabinet (`repowder:c34`, 480 x 560 x 900 mm, x -3095 to -2615)
+  already stood: the basket and the sieve went through it every wash (37 frames of the movers check). There's no room
+  beside the bench (100 mm between the cabinet and the bench, 60 mm between the bench and Shuttle 1), and moving the
+  cabinet or the rePowder would change chapter 2 and the set-up (lab and audit-a, cancelled at 02:37). So the module
+  stands on its own stand in front of the cabinet, between it and the MiR's lane, its back 4 mm from the cabinet's
+  front, its front 36 mm clear of the MiR's corners on the drive in from the rePowder (computed along the S-curve). It
+  is 60 mm shallower to fit: the tank 290 mm deep (was 350), the hood's posts flush with the tank's front. *Open:* it
+  covers the utility cabinet's front, so that cabinet's service access would be from its side; the lab stream's
+  alternative, the cabinet at the rePowder's west end, would put the module back on the bench extension.
+- **The wash module's knife met the basket and the gripper.** Parked at the back at the cloth's height, the basket's
+  arm to the mast passed through its upper nozzle as the basket went down; parked at the front, it was in the gripper's
+  way as the sieve went on and off. It now waits low at the back (210 mm, between the tank's rim and the basket's arm)
+  and rises to the cloth only for its sweep.
+- **The supply's piston stops 14 mm short of its top** as it fills: at the top, the supply's powder as the Aconity model
+  draws it stood 12 mm into the deck round it (5 frames).
+- **Not solids:** the IPA, the knife's air jets, the laser's beam, spot and tracks, the powder cake and the shaker's
+  loose powder are registered as such (`sc.fluids`), so the movers check doesn't count them.
+
+Still open: **the pan's tab**, 1 frame each at frames 128 and 923, the left fingertip up to 3 mm into the pan as it is
+set down on the shaker and taken off it; holding the tab 5 mm further out (`sieve_station.grasp_local`) didn't change
+it. Not traced in time.
+
+**Rendered** 2026-11-14 02:59-03:36 UTC on `8095c46` (`VLAB_ONLY_TRAYS=F VIZ3D_FPS=6`, 1280 x 720, beside three other jobs): `out/mp4/alloy_print.mp4`, 1821 frames, 303.5 s, 12.0 MB. The script's GIF was 12.9 MB; `out/alloy_print.gif` is remade from the MP4 at 1.5 fps, 512 x 288, 40 colours, `gifsicle -O3 --lossy=180`, 4.9 MB. The render audits its own frames (`collide.Auditor` as a frame hook, the stricter rules): **2 of 1374 checked frames, both the pan's tab (above); movers 0**. It replaces round 9's render (302.7 s), which had the forearm against the Aconity's lifted door (fixed in round 10, not rendered then), the wash module inside the rePowder's cabinet and the tipper's shaft through the sieves.
 
 ### Round 10 (2026-11-07): the audit's 7 frames
 
