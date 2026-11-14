@@ -64,7 +64,8 @@ MODULES = ["instruments", "instruments_char", "instruments_lab", "services", "fa
 # not solids: fluids, powders, glows, beams, overlays (by material), and the mesh pieces that are powder heaps,
 # falling powder or a readout panel's carrier (by piece name)
 VISUAL = {"glow", "laser", "plasma", "plasma_halo", "xray", "uv_glow", "water", "lab_nacl", "ipa", "fl_resin", "melt",
-          "powder", "powder_coarse", "powder_fine", "powder_mid", "paste", "lab_over", "staging"}
+          "powder", "powder_coarse", "powder_fine", "powder_mid", "paste", "lab_over", "staging",
+          "r8_xray", "r8_xray_d"}          # round 11: the round-8 XRD's incident and diffracted beams (r8_powder)
 VISUAL_PIECES = ("frac_", "fall_", "stream", "readout",
                  "env",                   # the HIP clip's ghost of the opening
                  "scan")                  # the LPBF laser's 2 mm carrier speck

@@ -21,6 +21,38 @@ them at every frame instead. Two of that review's finds, put back into the furna
 | Runtime | About 7 min the first time on the shared 4-core runner, almost all of it CoACD. After that, 2.5 min, with every part's convex pieces cached (`.cache/interference/hulls.pkl`), most of it the DED's 72 fused beads. MuJoCo's kinematics and collision take 0.1-0.5 ms a frame |
 | Needs | `pip install mujoco coacd python-fcl manifold3d rtree` (MuJoCo 3.17 here) |
 
+## Round 11 (2026-11-14): every model, the round-8 and -9 ones included
+
+Sterling, after the round-10 long-form: "There are probably other collisions and interferences that I didn't catch".
+Until now `interference.py` knew 41 models (`MODULES` stopped at `instruments_r7`), so none of the round-8 and -9
+refits and new machines had been through it: the SEM, nanoindenter, PIP, VHX and hardness tester (`r8_char`), the XRD,
+Mastersizer, XRF and pellet prep (`r8_powder`), the mount press, polisher, CNC and disc magazine (`r8_prep`), the
+furnace, the 68FM-100 and the quench tank (`r8_test`), the powder stores and the fume hood (`r8_store`), the EOS M 400-4
+and the Meltio cell (`r8_scale`) and the corrosion CubXL (`r9_cubxl`). `MODULES` now lists them in `tour.py`'s order,
+so a refit replaces the round-3 model of the same key as it does in the tours: **49 models**. The run uses MuJoCo
+4.0.1 here; its `MjSpec` calls were checked to work (siblings, parent and child with `FILTERPARENT` off, and world
+geometry against a moving body all collide as in 3.17).
+
+The run started at 03:52 UTC (`audit_all.py run interference`, a runner_guard slot), cold, so every part's CoACD
+pieces were built anew; it was still going at 04:20, when these notes were due, about a minute a model. The first 15
+models, every frame of their tours:
+
+| Model | Frames | Faults (2 mm and over) | Minor (0.6-2 mm) | What stands out |
+| --- | --- | --- | --- | --- |
+| xrd (`r8_powder`) | 271 | 5 | 1 | All five are its own X-ray beams (material `r8_xray`) "colliding" with the stage, the Si plate and each other: beams aren't solids. `VISUAL` now includes `r8_xray` and `r8_xray_d` (from the next run) |
+| sem, pip, nanoindenter (`r8_char`) | 166-319 | 4 each | 0-3 | Static fits as modelled, as in round 5's check of the round-3 models |
+| polisher (`r8_prep`) | 391 | **80** | 49 | **Moving faults**: the disc handles pass 12-13 mm through each other and through the head's housing as discs are swapped (frames 199-202, 314-317, 335). audit-b's file |
+| furnace (`r8_test`) | 109 | 5 | 2 | As modelled |
+| mastersizer | 283 | 6 | 0 | As modelled |
+| instron_small, instron_floor, wire_edm, glovebox | 73-196 | 0-3 | 0 | |
+| rail | 73 | 32 | 25 | As in round 5 (the rail being reworked separately) |
+| vhx | 418 | 3 | 0 | |
+| xrf (`r8_powder`) | 288 | 10 | 1 | The guide ring in the lift ring, 4.8 mm, from frame 0 (as modelled); the sample puck 5.2 mm into the front window at frames 61-64 and the crosshead panel 2.6 mm into it at 27-29 (moving) |
+| sieve | 286 | 0 | 4 | The drive collar 0.9 mm into the sieve plate while it shakes: minor |
+
+The rest (the EOS, the Meltio cell, the CubXL, the stores, the fabrication machines) land in
+[`out/interference.json`](../out/interference.json) when the run ends (about 04:40); the orchestrator commits it.
+
 ## How it works
 
 1. **Geometry.** Every CadQuery part is tessellated at 0.4 mm chord and 0.2 rad, a little finer than the tours.
