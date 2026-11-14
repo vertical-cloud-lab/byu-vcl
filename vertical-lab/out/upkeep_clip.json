@@ -1,7 +1,7 @@
 {
  "name": "upkeep_clip",
  "fps": 6,
- "n_frames": 701,
+ "n_frames": 772,
  "size": [
   1280,
   720
@@ -365,97 +365,175 @@
    "label": "3/3 A person's task",
    "caption": "Kardex's full tray extraction: \"a tray is placed in front of the access opening\". The tray leaves its dock in the bay, so it runs on nothing while it is out (the iMicro shut down first). It rolls out onto the table's rails.",
    "start_frame": 483,
-   "end_frame": 486
+   "end_frame": 487
   },
   {
    "label": "3/3 A person's task",
    "caption": "Kardex's full tray extraction: \"a tray is placed in front of the access opening\". The tray leaves its dock in the bay, so it runs on nothing while it is out (the iMicro shut down first). It rolls out onto the table's rails.",
-   "start_frame": 487,
-   "end_frame": 506
+   "start_frame": 488,
+   "end_frame": 507
   },
   {
    "label": "3/3 A person's task",
-   "caption": "The hood lifts. Gloves and safety glasses; the person reaches in to the indenter head, unscrews the old tip, fits the new one by hand and seats it to its torque.",
-   "start_frame": 507,
-   "end_frame": 515
+   "caption": "The lid lifts and the stage runs out from under the indenter head.",
+   "start_frame": 508,
+   "end_frame": 516
   },
   {
    "label": "3/3 A person's task",
-   "caption": "The hood lifts. Gloves and safety glasses; the person reaches in to the indenter head, unscrews the old tip, fits the new one by hand and seats it to its torque.",
-   "start_frame": 516,
-   "end_frame": 526
+   "caption": "The front panel comes off: a removable service panel (assumed: KLA publishes no service drawing), lifted straight up its guides, clear of the head, from between the camera masts.",
+   "start_frame": 517,
+   "end_frame": 521
   },
   {
    "label": "3/3 A person's task",
-   "caption": "The hood lifts. Gloves and safety glasses; the person reaches in to the indenter head, unscrews the old tip, fits the new one by hand and seats it to its torque.",
-   "start_frame": 527,
-   "end_frame": 552
+   "caption": "The front panel comes off: a removable service panel (assumed: KLA publishes no service drawing), lifted straight up its guides, clear of the head, from between the camera masts.",
+   "start_frame": 522,
+   "end_frame": 528
   },
   {
    "label": "3/3 A person's task",
-   "caption": "The hood lifts. Gloves and safety glasses; the person reaches in to the indenter head, unscrews the old tip, fits the new one by hand and seats it to its torque.",
-   "start_frame": 553,
-   "end_frame": 560
+   "caption": "The front panel comes off: a removable service panel (assumed: KLA publishes no service drawing), lifted straight up its guides, clear of the head, from between the camera masts.",
+   "start_frame": 529,
+   "end_frame": 534
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "The front panel comes off: a removable service panel (assumed: KLA publishes no service drawing), lifted straight up its guides, clear of the head, from between the camera masts.",
+   "start_frame": 535,
+   "end_frame": 537
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "The front panel comes off: a removable service panel (assumed: KLA publishes no service drawing), lifted straight up its guides, clear of the head, from between the camera masts.",
+   "start_frame": 538,
+   "end_frame": 545
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "The front panel comes off: a removable service panel (assumed: KLA publishes no service drawing), lifted straight up its guides, clear of the head, from between the camera masts.",
+   "start_frame": 546,
+   "end_frame": 550
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "Gloves and safety glasses. The person reaches in past the camera mast to the indenter head, unscrews the old Berkovich tip, and screws in the new one by hand to its torque (the stage moved aside; the hand fits in the 120 mm under the head).",
+   "start_frame": 551,
+   "end_frame": 561
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "Gloves and safety glasses. The person reaches in past the camera mast to the indenter head, unscrews the old Berkovich tip, and screws in the new one by hand to its torque (the stage moved aside; the hand fits in the 120 mm under the head).",
+   "start_frame": 562,
+   "end_frame": 587
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "Gloves and safety glasses. The person reaches in past the camera mast to the indenter head, unscrews the old Berkovich tip, and screws in the new one by hand to its torque (the stage moved aside; the hand fits in the 120 mm under the head).",
+   "start_frame": 588,
+   "end_frame": 595
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "The panel goes back on, the lid comes down and the stage runs back.",
+   "start_frame": 596,
+   "end_frame": 600
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "The panel goes back on, the lid comes down and the stage runs back.",
+   "start_frame": 601,
+   "end_frame": 605
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "The panel goes back on, the lid comes down and the stage runs back.",
+   "start_frame": 606,
+   "end_frame": 611
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "The panel goes back on, the lid comes down and the stage runs back.",
+   "start_frame": 612,
+   "end_frame": 614
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "The panel goes back on, the lid comes down and the stage runs back.",
+   "start_frame": 615,
+   "end_frame": 622
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "The panel goes back on, the lid comes down and the stage runs back.",
+   "start_frame": 623,
+   "end_frame": 626
   },
   {
    "label": "3/3 A person's task",
    "caption": "Hood down, the tray rolls back into the bay and onto its dock: power back. The person takes the table away. The new tip's area function is the arm's job, booked as its next one on tray E: indents in the fused-silica reference (upkeep.py's weekly check).",
-   "start_frame": 561,
-   "end_frame": 567
+   "start_frame": 627,
+   "end_frame": 633
   },
   {
    "label": "3/3 A person's task",
    "caption": "Hood down, the tray rolls back into the bay and onto its dock: power back. The person takes the table away. The new tip's area function is the arm's job, booked as its next one on tray E: indents in the fused-silica reference (upkeep.py's weekly check).",
-   "start_frame": 568,
-   "end_frame": 586
+   "start_frame": 634,
+   "end_frame": 652
   },
   {
    "label": "3/3 A person's task",
    "caption": "Hood down, the tray rolls back into the bay and onto its dock: power back. The person takes the table away. The new tip's area function is the arm's job, booked as its next one on tray E: indents in the fused-silica reference (upkeep.py's weekly check).",
-   "start_frame": 587,
-   "end_frame": 610
+   "start_frame": 653,
+   "end_frame": 657
+  },
+  {
+   "label": "3/3 A person's task",
+   "caption": "Hood down, the tray rolls back into the bay and onto its dock: power back. The person takes the table away. The new tip's area function is the arm's job, booked as its next one on tray E: indents in the fused-silica reference (upkeep.py's weekly check).",
+   "start_frame": 658,
+   "end_frame": 681
   },
   {
    "label": "3/3 A person's task",
    "caption": "The MiR250 + UR10e docks at Shuttle 1 again; tray E goes back up until the arm's fused-silica check on the new tip, before any sample. The iMicro's run count starts again from zero.",
-   "start_frame": 611,
-   "end_frame": 653
+   "start_frame": 682,
+   "end_frame": 724
   },
   {
    "label": "3/3 A person's task",
    "caption": "The MiR250 + UR10e docks at Shuttle 1 again; tray E goes back up until the arm's fused-silica check on the new tip, before any sample. The iMicro's run count starts again from zero.",
-   "start_frame": 654,
-   "end_frame": 655
+   "start_frame": 725,
+   "end_frame": 726
   },
   {
    "label": "3/3 A person's task",
    "caption": "The MiR250 + UR10e docks at Shuttle 1 again; tray E goes back up until the arm's fused-silica check on the new tip, before any sample. The iMicro's run count starts again from zero.",
-   "start_frame": 656,
-   "end_frame": 662
+   "start_frame": 727,
+   "end_frame": 733
   },
   {
    "label": "3/3 A person's task",
    "caption": "The MiR250 + UR10e docks at Shuttle 1 again; tray E goes back up until the arm's fused-silica check on the new tip, before any sample. The iMicro's run count starts again from zero.",
-   "start_frame": 663,
-   "end_frame": 665
+   "start_frame": 734,
+   "end_frame": 736
   },
   {
    "label": "3/3 A person's task",
    "caption": "The MiR250 + UR10e docks at Shuttle 1 again; tray E goes back up until the arm's fused-silica check on the new tip, before any sample. The iMicro's run count starts again from zero.",
-   "start_frame": 666,
-   "end_frame": 670
+   "start_frame": 737,
+   "end_frame": 741
   },
   {
    "label": "3/3 A person's task",
    "caption": "The MiR250 + UR10e docks at Shuttle 1 again; tray E goes back up until the arm's fused-silica check on the new tip, before any sample. The iMicro's run count starts again from zero.",
-   "start_frame": 671,
-   "end_frame": 677
+   "start_frame": 742,
+   "end_frame": 748
   },
   {
    "label": "3/3 A person's task",
    "caption": "The MiR250 + UR10e docks at Shuttle 1 again; tray E goes back up until the arm's fused-silica check on the new tip, before any sample. The iMicro's run count starts again from zero.",
-   "start_frame": 679,
-   "end_frame": 700
+   "start_frame": 750,
+   "end_frame": 771
   }
  ],
  "parts": [
@@ -472,7 +550,7 @@
   {
    "part": "3/3 A person's task",
    "start_frame": 401,
-   "end_frame": 700
+   "end_frame": 771
   }
  ],
  "assumed": {
