@@ -1,7 +1,8 @@
 """The whole lab set up from scratch (#303), on the warehouse floor of ``warehouse.py``: an empty bay; the layout taped
 on the floor, with a MiR250 dock and an AprilTag target at every station; the utilities; two Kardex Shuttles
-assembled; the floor machines moved in; the UR10e arms installed on their MiR250s; every tray loaded, A to M, each
-with its UPS and its stream cameras; the bay cameras; a closing orbit. Mobile bases only: no rail anywhere.
+assembled; the floor machines moved in; the UR10e arms installed on their MiR250s; every tray loaded, A to O, each
+powered one with its UPS and its stream cameras (the storage trays J, N and O are passive: ``PASSIVE``); the bay
+cameras, each seen from an operator's eyes; a closing orbit. Mobile bases only: no rail anywhere.
 
     xvfb-run --server-num=60 python3 setup_lab.py            # -> out/setup_lab.gif, out/mp4/setup_lab.mp4, still
     PREVIEW=1 xvfb-run --server-num=60 python3 setup_lab.py  # the last frame of each sub-step -> /tmp/preview_setup_lab.png
@@ -481,6 +482,13 @@ class TwoLab(A.Lab):
         self.active = 1
         self.focus = None
         super().__init__(sc, data, robot=False, highlight=highlight)
+        # round 11 (orchestrator): Shuttle 2's tray supports follow its own slot plan (vlm.support_parts), drawn only
+        # where its trays rest inside a slot; data["vlm"]'s are Shuttle 1's
+        sup2 = {}
+        for name, (shape, mat, grp) in V.support_parts(2).items():
+            if hasattr(shape, "vals"):
+                shape = shape.val() if len(shape.vals()) == 1 else line.I.cq.Compound.makeCompound(shape.vals())
+            sup2[name] = lab._entry(lab.to_mesh(shape, 2.0), mat, grp)["mesh"]
         for name, e in data["vlm"].items():
             kw = {}
             if e["material"] in ("vlm_skin", "vlm_bay"):
@@ -488,7 +496,7 @@ class TwoLab(A.Lab):
             if e["material"] == "vlm_led":
                 kw = dict(ambient=0.9, diffuse=0.2)
             g = f"u2_{e['group']}"
-            sc.add(f"u2/{name}", e["mesh"], e["color"], g, opacity=e["opacity"], **kw)
+            sc.add(f"u2/{name}", sup2.get(name, e["mesh"]), e["color"], g, opacity=e["opacity"], **kw)
             sc.gmat[g] = T((X2, 0, 0))
             if e["material"] in A.GHOST:
                 self.ghost[f"u2/{name}"] = A.GHOST[e["material"]]

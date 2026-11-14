@@ -226,29 +226,70 @@ def housing() -> dict:
     return p
 
 
-def columns() -> dict:
-    """Front and rear storage columns: side walls with tray supports under both tray edges."""
-    p = {}
+def _support_ribs(cols: dict) -> dict:
+    """{column key: the tray supports' solid} for one Shuttle's slot plan (``COLUMNS[unit]``).
+
+    The supports reach 20 mm in under both tray edges and are drawn every 100 mm (Kardex's run every 25 mm), except
+    inside a slot: there only the one its tray rests on is drawn (round 11). A tray's rim, its coupling plate and its
+    lines stand over that 20 mm, so on a real Shuttle the profiles above the rest profile would be in their way as the
+    tray slides in (``collide``'s movers check found it on PR #318, 2026-11-14). Our slots are fixed, one tray each, so
+    those profiles can come out; whether Kardex fits a column that way, without its dynamic height optimisation, is a
+    question for Kardex (notes/tray_plan.md)."""
     wall_x = TRAY_W / 2 + 45                  # inner face of each side wall
     rib_x = TRAY_W / 2 - 20                   # supports reach 20 mm under the tray's edge
+    zones = {"front": [(160, Z_SILL - 40), (Z_OPEN_TOP + 120, Z_TOP_IN)], "rear": [(160, Z_TOP_IN)]}
+    out = {}
+    for key, yc in (("front", Y_FRONT), ("rear", Y_REAR)):
+        spans = []                            # (bottom, top) of every slot in this column
+        for col, lst in cols.items():
+            if (col == "rear") != (key == "rear"):
+                continue
+            z = Z_FRONT_HI if col == "front" else Z_LOW
+            for _k, span in lst:
+                spans.append((float(z), float(z + span)))
+                z += span
+        levels = set()
+        for z0, z1 in zones[key]:
+            for z in range(int(z0 // 100 + 1) * 100, int(z1) - 20, 100):
+                if not any(a < z < b for a, b in spans):
+                    levels.add(float(z))
+        levels |= {a for a, _ in spans}        # the profile each tray rests on
+        ribs = None
+        for sx in (-1, 1):
+            x0, x1 = sorted((sx * wall_x, sx * rib_x))
+            for z in sorted(levels):
+                r = box(x0, yc - TRAY_D / 2, z - 6, x1, yc + TRAY_D / 2, z)
+                ribs = r if ribs is None else ribs.union(r)
+            if key == "front":                # the presented tray rests on the opening's own supports
+                x0, x1 = sorted((sx * (wall_x + 12), sx * rib_x))
+                ribs = ribs.union(box(x0, yc - TRAY_D / 2, Z_OPEN - 30, x1, yc + TRAY_D / 2, Z_OPEN))
+        out[key] = ribs
+    return out
+
+
+def support_parts(unit: int = 1) -> dict:
+    """The column supports of Shuttle `unit` for its slot plan as it is now (``setup_lab.add_slots`` adds Shuttle 2's
+    short slots at run time): {name: (solid, material, group)}, the names ``columns()`` gives Shuttle 1's."""
+    ribs = _support_ribs(COLUMNS[unit])
+    return {f"{k} column supports": (r, "vlm_rib", f"col_{k}") for k, r in ribs.items()}
+
+
+def columns() -> dict:
+    """Front and rear storage columns: side walls with tray supports under both tray edges (Shuttle 1's slot plan;
+    Shuttle 2's copy takes ``support_parts(2)``)."""
+    p = {}
+    wall_x = TRAY_W / 2 + 45                  # inner face of each side wall
     front = [(160, Z_SILL - 40), (Z_OPEN_TOP + 120, Z_TOP_IN)]
+    ribs = _support_ribs(COLUMNS[1])
     for key, yc, zones in (("front", Y_FRONT, front), ("rear", Y_REAR, [(160, Z_TOP_IN)])):
-        walls = ribs = None
+        walls = None
         y0, y1 = yc - TRAY_D / 2 - 30, yc + TRAY_D / 2 + 30
         for sx in (-1, 1):
             for z0, z1 in zones:
                 w = box(min(sx * wall_x, sx * (wall_x + 12)), y0, z0, max(sx * wall_x, sx * (wall_x + 12)), y1, z1)
                 walls = w if walls is None else walls.union(w)
-                # supports drawn every 100 mm (the real ones are every 25 mm); a tray rests on the one at its height
-                for z in range(int(z0 // 100 + 1) * 100, int(z1) - 20, 100):
-                    x0, x1 = sorted((sx * wall_x, sx * rib_x))
-                    r = box(x0, yc - TRAY_D / 2, z - 6, x1, yc + TRAY_D / 2, z)
-                    ribs = r if ribs is None else ribs.union(r)
-            if key == "front":                # the presented tray rests on the opening's own supports
-                x0, x1 = sorted((sx * (wall_x + 12), sx * rib_x))
-                ribs = ribs.union(box(x0, yc - TRAY_D / 2, Z_OPEN - 30, x1, yc + TRAY_D / 2, Z_OPEN))
         p[f"{key} column walls"] = (walls, "vlm_wall", f"col_{key}")
-        p[f"{key} column supports"] = (ribs, "vlm_rib", f"col_{key}")
+        p[f"{key} column supports"] = (ribs[key], "vlm_rib", f"col_{key}")
     return p
 
 
@@ -339,8 +380,9 @@ def opening() -> dict:
     # passes 10 mm over it.
     p["access table"] = (box(-ow, yo + 30, Z_SILL - 20, ow, Y_SHUTTER + 6, Z_SILL).union(
         box(-ow, Y_SHUTTER - 6, Z_SILL - 1, ow, Y_SHUTTER + 6, Z_OPEN - 10)), "vlm_counter", "bay")
-    # slatted side walls of the bay (the shelf rails' L-profiles), front panel to shutter
-    yb0, yb1 = -UNIT_D / 2, Y_SHUTTER
+    # slatted side walls of the bay (the shelf rails' L-profiles), front panel to shutter; they stop 1 mm in front of
+    # the shutter's 12 mm panel, which slides up between them (round 11: the walls ran 6 mm into its path)
+    yb0, yb1 = -UNIT_D / 2, Y_SHUTTER - 7.0
     walls = None
     for sx in (-1, 1):
         x0, x1 = sorted((sx * ow, sx * (ow + 12)))
