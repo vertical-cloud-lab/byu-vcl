@@ -300,6 +300,12 @@ rendered view of what the camera would see"):
 4. The HQ's, 22.2 × 16.8°, pillarboxed to its 4:3 sensor, with the head turned on its joints onto the doser's cup
    (pan 20°, tilt 44° down): a close-up of the gripper.
 
+**Round 11's strict audit of this clip** (audit-a, `out/collisions/bay_camera_r11.json`): 21 of 134 frames, none
+of them real. 20 were the arm passing through the two picture pyramids, which are overlays, not solids; the checks now
+skip them (`sc.fluids`). One was the vial lifted out of tray B's rack, a solid block with the vials drawn inside it;
+`build_vlm` now cuts its bores, as the 8:00 clip does. Both are in the code (2dc8ced); the clip wasn't re-rendered for
+them, as neither changes what it shows but the rack's bores.
+
 **The fields of view, with sources:**
 
 | Camera | Across | Up and down | Diagonal | From |
