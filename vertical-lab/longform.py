@@ -69,8 +69,8 @@ REPOWDER = "f9db700"          # #327's second pass (round 10): door, clamps, vie
 # A label starts a YouTube chapter of its own inside the chapter (merged into the next if it would be under 10 s).
 CHAPTERS = [
     dict(key="intro", title="A real VLM, then the plan",
-         card=["A Kardex vertical lift module (VLM) holds the lab's equipment on electrified trays, each with its own "
-               "UPS. A UR10e arm on a MiR250 mobile base works at its opening and at the machines too big for a tray.",
+         card=["A Kardex vertical lift module (VLM) holds the lab's equipment on electrified trays, each powered tray "
+               "with its own UPS. A UR10e arm on a MiR250 mobile base works at its opening and at the machines too big for a tray.",
                "Everything after the first clip is a 3-D animation, built from the makers' published figures and "
                "photos and checked for collisions. Real footage, photos and data are badged as such."],
          parts=[("footage", "footage/vlm_real_ck8QJhVqPiY.mp4",
@@ -79,12 +79,13 @@ CHAPTERS = [
     dict(key="setup", title="The lab set up from scratch",
          card=["An empty bay: the layout taped out, utilities overhead, two Kardex Shuttle XP 500s going up with a "
                "996 mm opening, the floor machines, the arm assembled onto its MiR250, then every tray loaded by "
-               "people with its UPS, the powder-jar store among them, and the stream cameras fitted."],
+               "people: a UPS and stream cameras on each powered one, neither on the sample and powder-jar stores, "
+               "whose short trays the camera over each bay inventories."],
          parts=[("mp4", "setup_lab.mp4", None),
-                ("still", "tray_plan.png", 14.0, "Every tray from above, with its UPS, dock plate and cameras, and the "
-                 "slot each one takes", "What goes on which tray")]),
+                ("still", "tray_plan.png", 14.0, "Every tray from above, with its UPS, dock plate and cameras where it "
+                 "needs them, and the slot each one takes", "What goes on which tray")]),
     dict(key="services", title="Services: UPS, automatic hookups, cabling and cameras",
-         card=["Each tray carries a UPS. In its slot and again in the picking bay, a dock in the side wall mates "
+         card=["Each powered tray carries a UPS. In its slot and again in the picking bay, a dock in the side wall mates "
                "with the tray's coupling plate: mains, Ethernet, air, N2 and chilled water. In transit the dock "
                "shuts and vents the lines, and the tray runs on its UPS.",
                "Then the cabling, the stream camera unit, and what the camera over the bay sees."],

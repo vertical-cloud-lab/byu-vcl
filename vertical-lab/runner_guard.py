@@ -53,6 +53,16 @@ from pathlib import Path
 
 SLOT_DIR = Path("/tmp/vlab_slots")
 N_SLOTS = int(os.environ.get("VLAB_SLOTS", "3"))
+N_SLOTS_MAX = 6                 # lock files checked; /tmp/vlab_slots/nslots (round 11) changes the count live
+
+
+def n_slots() -> int:
+    """The slot count now: /tmp/vlab_slots/nslots if it holds a number (read on every pass, so the orchestrator can
+    open a fourth slot while jobs wait), else VLAB_SLOTS (3)."""
+    try:
+        return max(1, min(N_SLOTS_MAX, int((Path("/tmp/vlab_slots") / "nslots").read_text().strip())))
+    except (OSError, ValueError):
+        return N_SLOTS
 MEM_PER_WEIGHT = int(os.environ.get("VLAB_MEM_MB_PER_WEIGHT", "3000"))
 MEM_FLOOR = int(os.environ.get("VLAB_MEM_FLOOR_MB", "900"))
 SLOT_LOG = SLOT_DIR / "log.txt"
@@ -163,7 +173,7 @@ def may_start(ticket: Path, need: int, free: int, avail: int) -> tuple[bool, int
 def held_infos() -> list[dict]:
     """The info of every slot that is held right now (one entry per holder)."""
     out, seen = [], set()
-    for i in range(N_SLOTS):
+    for i in range(N_SLOTS_MAX):
         lock, info = SLOT_DIR / f"slot{i}.lock", SLOT_DIR / f"slot{i}.info"
         if not lock.exists():
             continue
@@ -212,7 +222,7 @@ def reserved() -> int:
 
 def holders() -> list[str]:
     out = []
-    for i in range(N_SLOTS):
+    for i in range(N_SLOTS_MAX):
         info = SLOT_DIR / f"slot{i}.info"
         lock = SLOT_DIR / f"slot{i}.lock"
         if not lock.exists():
@@ -249,7 +259,7 @@ def slot(argv: list[str]) -> int:
     if not argv or argv[0] != "--" or len(argv) < 2:
         sys.exit("usage: runner_guard.py slot [--weight N] [--label TEXT] -- CMD ...")
     cmd = argv[1:]
-    weight = max(1, min(weight, N_SLOTS))
+    weight = max(1, min(weight, n_slots()))
     label = label or " ".join(Path(c).name for c in cmd[:4])[:80]
     SLOT_DIR.mkdir(parents=True, exist_ok=True)
     need = mem if mem is not None else MEM_PER_WEIGHT * weight
@@ -261,12 +271,12 @@ def slot(argv: list[str]) -> int:
     last_note = 0.0
     try:
         while True:
-            free = N_SLOTS - sum(int(d.get("weight", 1)) for d in held_infos())
+            free = n_slots() - sum(int(d.get("weight", 1)) for d in held_infos())
             ok, rank = may_start(ticket, need, free, meminfo().get("MemAvailable", 0) - reserved())
             if ok and capped(label):
                 ok = False
             if ok:
-                for i in range(N_SLOTS):
+                for i in range(n_slots()):
                     f = open(SLOT_DIR / f"slot{i}.lock", "a+")
                     try:
                         fcntl.flock(f, fcntl.LOCK_EX | fcntl.LOCK_NB)
