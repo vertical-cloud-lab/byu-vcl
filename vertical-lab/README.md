@@ -47,6 +47,25 @@ square part over a flat on the furnace's right (`cabinet_x`), which #327 calls t
 the bolt along x to a housing there. Yet its cabinet stands behind the furnace. With the hinge turned to the left,
 the square part and the bolt both face the cabinet.
 
+**PR #327's fourth pass, merged here (2026-11-14).** On #327, Sterling asked for the camera intrinsics to be taken
+into account. That run checked each of #327's fitted cameras against straight vertical edges in its own frame, and
+every one draws them 1.4–12.6° off ("Fourth pass" in [`notes/repowder_refine.md`](notes/repowder_refine.md),
+[`intrinsics_verticals.jpg`](out/repowder_refine/intrinsics_verticals.jpg)). Fitted from picks on the machine
+alone, a lens floats: its focal length trades against the camera's distance and tilt, and it soaks up the model's
+own errors. [`register.py`](register.py) now takes `"lines"`, straight edges along a model axis (any vertical in the
+room will do), in every camera fit, and a held-out view fits only its pose, to its video's lens. That run couldn't
+execute Python either, so none of this has been run. `model.py` is unchanged, and so is the GIF.
+
+It bears on the hinge. Round 7's check, [`repowder/overlay.py`](repowder/overlay.py), fitted each frame's camera in
+the same loose way: a focal length of its own, anywhere from 400 to 2200 px, from 8 or 10 picks on the machine, with
+no lines. So round 7's overlays show that some camera puts its model on the footage, not that it's the right camera,
+and the same goes for #327's fits of its own model. What's left on round 7's side was read by eye: the hinge's
+leaves in T4 6:05, seen with the cabinet at the frame's left ([`repowder_hinge_r7.jpg`](out/repowder_hinge_r7.jpg)),
+and the open lid standing at the furnace's left in the wide shots. A run with Python could settle the side with the
+new `register.py`. It would fit each wide shot's camera from picks on parts neither model moves (the cabinet, its
+panel, the chamber), from `"z"` lines for the tilt, the roll and the focal length, and from an `"x"` line, such as
+the cabinet's top front edge, for the turn about the vertical. Then it would check which lid lands on the footage.
+
 **Round 9** ([PR #329](https://github.com/vertical-cloud-lab/byu-vcl/pull/329), Sterling: "looks like that charge cup
 would fall straight off when being dosed into") gives the cup a holder that goes onto the pedestal with it:
 
