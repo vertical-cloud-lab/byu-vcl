@@ -691,17 +691,17 @@
    "slot": "F0",
    "shuttle": 1,
    "slot_z_mm": 300.0,
-   "span_mm": 475.0,
-   "tallest_mm": 437.0,
-   "span_needed_mm": 475.0,
+   "span_mm": 325.0,
+   "tallest_mm": 300.5,
+   "span_needed_mm": 325.0,
    "span_ok": true,
    "items": [
     {
      "item": "Storage load (our design)",
      "kind": "item",
      "box_mm": [
-      -1200,
-      560,
+      -880,
+      880,
       -380,
       380,
       4,
@@ -711,107 +711,11 @@
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
-    },
-    {
-     "item": "UPS",
-     "kind": "ups",
-     "box_mm": [
-      609,
-      1060,
-      276,
-      362,
-      3,
-      440
-     ],
-     "height_mm": 437.0,
-     "under_goods_height": true,
-     "inside_rim": true,
-     "overlaps": []
-    },
-    {
-     "item": "cam_J0 post",
-     "kind": "cam",
-     "box_mm": [
-      635,
-      725,
-      -405,
-      -315,
-      3,
-      323
-     ],
-     "height_mm": 320.0,
-     "under_goods_height": true,
-     "inside_rim": true,
-     "overlaps": []
-    },
-    {
-     "item": "cam_J0 head",
-     "kind": "cam",
-     "box_mm": [
-      519,
-      676,
-      -423,
-      -289,
-      238,
-      409
-     ],
-     "height_mm": 406.1,
-     "under_goods_height": true,
-     "inside_rim": true,
-     "overlaps": []
-    },
-    {
-     "item": "cam_J1 post",
-     "kind": "cam",
-     "box_mm": [
-      1115,
-      1205,
-      55,
-      145,
-      3,
-      323
-     ],
-     "height_mm": 320.0,
-     "under_goods_height": true,
-     "inside_rim": true,
-     "overlaps": []
-    },
-    {
-     "item": "cam_J1 head",
-     "kind": "cam",
-     "box_mm": [
-      1006,
-      1152,
-      34,
-      164,
-      238,
-      404
-     ],
-     "height_mm": 400.7,
-     "under_goods_height": true,
-     "inside_rim": true,
-     "overlaps": []
-    },
-    {
-     "item": "dock plate and tray lines",
-     "kind": "plate",
-     "box_mm": [
-      550,
-      1220,
-      180,
-      420,
-      3,
-      166
-     ],
-     "height_mm": 163.5,
-     "under_goods_height": true,
-     "inside_rim": true,
-     "overlaps": []
     }
    ],
    "ok": true,
    "load": {
-    "known_kg": 23.0,
+    "known_kg": 0.0,
     "not_found": [
      "Storage load (our design)"
     ],
@@ -974,9 +878,9 @@
    "slot": "F2",
    "shuttle": 1,
    "slot_z_mm": 2675.0,
-   "span_mm": 725.0,
-   "tallest_mm": 687.3,
-   "span_needed_mm": 725.0,
+   "span_mm": 750.0,
+   "tallest_mm": 703.1,
+   "span_needed_mm": 750.0,
    "span_ok": true,
    "items": [
     {
@@ -1111,10 +1015,10 @@
      "item": "cam_F1 post",
      "kind": "cam",
      "box_mm": [
-      640,
-      730,
-      -280,
-      -190,
+      635,
+      725,
+      85,
+      175,
       3,
       593
      ],
@@ -1127,14 +1031,14 @@
      "item": "cam_F1 head",
      "kind": "cam",
      "box_mm": [
-      524,
-      692,
-      -300,
-      -138,
+      616,
+      744,
+      -5,
+      122,
       511,
-      690
+      706
      ],
-     "height_mm": 687.3,
+     "height_mm": 703.1,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -2111,19 +2015,19 @@
    "slot": "2F0",
    "shuttle": 2,
    "slot_z_mm": 300.0,
-   "span_mm": 475.0,
-   "tallest_mm": 437.0,
-   "span_needed_mm": 475.0,
+   "span_mm": 225.0,
+   "tallest_mm": 182.5,
+   "span_needed_mm": 225.0,
    "span_ok": true,
    "items": [
     {
      "item": "Jar racks on a tray (our design)",
      "kind": "item",
      "box_mm": [
-      -1200,
-      560,
-      -330,
-      330,
+      -1205,
+      1205,
+      -379,
+      379,
       4,
       186
      ],
@@ -2131,107 +2035,11 @@
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
-    },
-    {
-     "item": "UPS",
-     "kind": "ups",
-     "box_mm": [
-      609,
-      1060,
-      276,
-      362,
-      3,
-      440
-     ],
-     "height_mm": 437.0,
-     "under_goods_height": true,
-     "inside_rim": true,
-     "overlaps": []
-    },
-    {
-     "item": "cam_N0 post",
-     "kind": "cam",
-     "box_mm": [
-      635,
-      725,
-      -405,
-      -315,
-      3,
-      323
-     ],
-     "height_mm": 320.0,
-     "under_goods_height": true,
-     "inside_rim": true,
-     "overlaps": []
-    },
-    {
-     "item": "cam_N0 head",
-     "kind": "cam",
-     "box_mm": [
-      519,
-      676,
-      -423,
-      -289,
-      238,
-      409
-     ],
-     "height_mm": 406.1,
-     "under_goods_height": true,
-     "inside_rim": true,
-     "overlaps": []
-    },
-    {
-     "item": "cam_N1 post",
-     "kind": "cam",
-     "box_mm": [
-      1115,
-      1205,
-      55,
-      145,
-      3,
-      323
-     ],
-     "height_mm": 320.0,
-     "under_goods_height": true,
-     "inside_rim": true,
-     "overlaps": []
-    },
-    {
-     "item": "cam_N1 head",
-     "kind": "cam",
-     "box_mm": [
-      1006,
-      1152,
-      34,
-      164,
-      238,
-      404
-     ],
-     "height_mm": 400.7,
-     "under_goods_height": true,
-     "inside_rim": true,
-     "overlaps": []
-    },
-    {
-     "item": "dock plate and tray lines",
-     "kind": "plate",
-     "box_mm": [
-      550,
-      1220,
-      180,
-      420,
-      3,
-      166
-     ],
-     "height_mm": 163.5,
-     "under_goods_height": true,
-     "inside_rim": true,
-     "overlaps": []
     }
    ],
    "ok": true,
    "load": {
-    "known_kg": 23.0,
+    "known_kg": 0.0,
     "not_found": [
      "Jar racks on a tray (our design)"
     ],
@@ -2241,22 +2049,22 @@
   },
   "O": {
    "role": "powder store: atomized lots",
-   "slot": "2R5",
+   "slot": "2F0b",
    "shuttle": 2,
-   "slot_z_mm": 3175.0,
-   "span_mm": 500.0,
-   "tallest_mm": 437.0,
-   "span_needed_mm": 475.0,
+   "slot_z_mm": 525.0,
+   "span_mm": 150.0,
+   "tallest_mm": 104.5,
+   "span_needed_mm": 150.0,
    "span_ok": true,
    "items": [
     {
      "item": "Jar racks on a tray (our design)",
      "kind": "item",
      "box_mm": [
-      -1200,
-      560,
-      -357,
-      357,
+      -1205,
+      1205,
+      -393,
+      393,
       4,
       108
      ],
@@ -2264,107 +2072,11 @@
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
-    },
-    {
-     "item": "UPS",
-     "kind": "ups",
-     "box_mm": [
-      609,
-      1060,
-      276,
-      362,
-      3,
-      440
-     ],
-     "height_mm": 437.0,
-     "under_goods_height": true,
-     "inside_rim": true,
-     "overlaps": []
-    },
-    {
-     "item": "cam_O0 post",
-     "kind": "cam",
-     "box_mm": [
-      635,
-      725,
-      -405,
-      -315,
-      3,
-      323
-     ],
-     "height_mm": 320.0,
-     "under_goods_height": true,
-     "inside_rim": true,
-     "overlaps": []
-    },
-    {
-     "item": "cam_O0 head",
-     "kind": "cam",
-     "box_mm": [
-      519,
-      676,
-      -423,
-      -289,
-      238,
-      409
-     ],
-     "height_mm": 406.1,
-     "under_goods_height": true,
-     "inside_rim": true,
-     "overlaps": []
-    },
-    {
-     "item": "cam_O1 post",
-     "kind": "cam",
-     "box_mm": [
-      1115,
-      1205,
-      55,
-      145,
-      3,
-      323
-     ],
-     "height_mm": 320.0,
-     "under_goods_height": true,
-     "inside_rim": true,
-     "overlaps": []
-    },
-    {
-     "item": "cam_O1 head",
-     "kind": "cam",
-     "box_mm": [
-      1006,
-      1152,
-      34,
-      164,
-      238,
-      404
-     ],
-     "height_mm": 400.7,
-     "under_goods_height": true,
-     "inside_rim": true,
-     "overlaps": []
-    },
-    {
-     "item": "dock plate and tray lines",
-     "kind": "plate",
-     "box_mm": [
-      550,
-      1220,
-      180,
-      420,
-      3,
-      166
-     ],
-     "height_mm": 163.5,
-     "under_goods_height": true,
-     "inside_rim": true,
-     "overlaps": []
     }
    ],
    "ok": true,
    "load": {
-    "known_kg": 23.0,
+    "known_kg": 0.0,
     "not_found": [
      "Jar racks on a tray (our design)"
     ],
@@ -2746,7 +2458,7 @@
   "F0": {
    "y": -1030.0,
    "z": 300.0,
-   "span": 475.0,
+   "span": 325.0,
    "shuttle": 1
   },
   "F1": {
@@ -2758,7 +2470,7 @@
   "F2": {
    "y": -1030.0,
    "z": 2675.0,
-   "span": 725.0,
+   "span": 750.0,
    "shuttle": 1
   },
   "2R1": {
@@ -2785,6 +2497,18 @@
    "span": 550.0,
    "shuttle": 2
   },
+  "2F0": {
+   "y": -1030.0,
+   "z": 300.0,
+   "span": 225.0,
+   "shuttle": 2
+  },
+  "2F0b": {
+   "y": -1030.0,
+   "z": 525.0,
+   "span": 150.0,
+   "shuttle": 2
+  },
   "2F1": {
    "y": -1030.0,
    "z": 1950.0,
@@ -2795,18 +2519,6 @@
    "y": -1030.0,
    "z": 2675.0,
    "span": 725.0,
-   "shuttle": 2
-  },
-  "2F0": {
-   "y": -1030.0,
-   "z": 300.0,
-   "span": 475.0,
-   "shuttle": 2
-  },
-  "2R5": {
-   "y": 1030.0,
-   "z": 3175.0,
-   "span": 500.0,
    "shuttle": 2
   }
  },
@@ -2848,14 +2560,14 @@
    },
    "powder_store_feed": {
     "tray": "N",
-    "x": -320.0,
+    "x": 0.0,
     "y": 0.0,
     "turn": 0.0,
     "module": "r8_store"
    },
    "powder_store_lots": {
     "tray": "O",
-    "x": -320.0,
+    "x": 0.0,
     "y": 0.0,
     "turn": 0.0,
     "module": "r8_store"
@@ -2883,12 +2595,14 @@
    "N": {
     "slot": "2F0",
     "role": "powder store: feedstock",
-    "module": "r8_store"
+    "module": "r8_store",
+    "passive": true
    },
    "O": {
-    "slot": "2R5",
+    "slot": "2F0b",
     "role": "powder store: atomized lots",
-    "module": "r8_store"
+    "module": "r8_store",
+    "passive": true
    }
   },
   "skipped": [],
@@ -2910,6 +2624,11 @@
   "no_dock": [
    "eos_m400",
    "meltio_cell"
+  ],
+  "passive_trays": [
+   "J",
+   "N",
+   "O"
   ]
  },
  "method": "setup_lab.py fit: each item, UPS, dock plate (with its tray lines) and camera rig measured from its meshes as drawn, an axis-aligned box in the tray's frame; overlaps are 3-D box overlaps of more than 1 mm; a slot needs the tallest top + 20 mm, on the 25 mm pitch"
