@@ -49,7 +49,7 @@
   },
   {
    "label": "4/4  Month by month",
-   "caption": "Month by month, to the end of the first year. Upkeep and failures cost 20 of the 324 alloys the same schedule would test with none (the faint line). A model built from each chapter's step times and the assumptions in notes/timelapse.md and notes/upkeep.md, not measurements.",
+   "caption": "Month by month, to the end of the first year. Upkeep and failures cost 15 of the 324 alloys the same schedule would test with none (the faint line). A model built from each chapter's step times and the assumptions in notes/timelapse.md and notes/upkeep.md, not measurements.",
    "start_frame": 375,
    "end_frame": 470,
    "lab_hours": [
