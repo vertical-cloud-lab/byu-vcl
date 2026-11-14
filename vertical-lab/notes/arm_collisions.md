@@ -218,3 +218,16 @@ and the depth limit no longer does.
   bay's side walls as it moved. The supports are now drawn only where a tray rests inside a slot, per Shuttle, and the
   walls stop 1 mm short of the shutter's path. And the MiR's body 3 mm into the floor tape on every drive, which is
   why the floor and its markings are left out (rule 2, point 3).
+
+### Each clip, before and after (audit-a's clips)
+
+Frames in collision, at the 6 fps the clips are rendered at. "Round 10's rules" is the committed JSON as round 11
+started (d6eeeb7); "round 11" is the same code under the new rules; "after" is after this round's fixes. Arm / movers /
+either. `python3 audit_all.py summary` gathers them into
+[`out/collisions/round11_summary.json`](../out/collisions/round11_summary.json).
+
+| Clip | Round 10's rules | Round 11, before | After | What it was |
+| --- | --- | --- | --- | --- |
+| Chapter 1, `alloy_charge.py` | 0 of 1145 | 29 / 11 / **40** | **0 / 0 / 0** | Fixtures drawn as solid blocks with their pockets only drawn as rims (the charge rack, the punch's rest), the pads 3 mm into the rack round a plug, cups let go 1 mm over their seats (so they rode 2 mm high into the press), the punch's O-ring squeezed in its bore. [Notes](alloy_charge.md#round-11-the-stricter-collision-audit-0-of-1145-frames-from-40) |
+| Chapter 2, `alloy_atomize.py` | 0 of 920 | 5 / 6 / **11** | **0 / 0 / 0** | The tong holder's tab filling half its bore, the latch loop's rods through the keeper's lip, the locking bolt sliding into a solid cylinder. [Notes](alloy_atomize.md#round-11-pr-318-2026-11-14-the-stricter-collision-audit) |
+| The 8:00 clip, `animate.py workflow` | 0 of 574 | 6 / 5 / **11** | see below | The vial in tray B's solid rack; the vial in Ben's 9-vial TightFit holder in the CubXL (a grip by design: its lips are 25.9 mm across for a 27.5 mm vial, and the clip's vial is 28 mm); the CubXL's tip on its P20 cone and the liquid in the tip |
