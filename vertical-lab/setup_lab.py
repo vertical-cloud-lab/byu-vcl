@@ -212,7 +212,7 @@ CAM_OPEN2 = [(X2 + 3500, -5900, 2700), (X2, -1000, 1300), (0, 0, 1)]
 # round 11: the bay cameras from an operator's eyes, 1.6 m up and 0.9 m in front of the Shuttle's face, 420 mm right of
 # its centre (services.movie_bay_camera's view), looking up under the header at the unit
 BAY_EYE = (420.0, -2450.0, 1600.0)
-BAY_VIEW_ANGLE = 40.0
+BAY_VIEW_ANGLE = 34.0
 ORBIT = [[(-9000, -16500, 9000), (700, -2300, 600), (0, 0, 1)],
          [(-15500, -2000, 9500), (700, -2300, 600), (0, 0, 1)],
          [(3500, -15500, 5600), (700, -2300, 900), (0, 0, 1)],
@@ -1362,25 +1362,27 @@ def movie(data, idata):
     for i, unit in enumerate((2, 1)):
         x = V.SHUTTLE_X[unit]
         tgt = np.array([x, *services.bay_cam_point()[1:]])
-        view = [(x + BAY_EYE[0], BAY_EYE[1], BAY_EYE[2]), tuple(tgt + (0, 0, -60)), (0, 0, 1)]
-        lbl = [(f"Shuttle {unit}'s overhead camera: a Pi 5 with the HQ Camera (16 mm lens) and the Camera "
-                "Module 3 Wide, on a pan-tilt head", tuple(tgt), (0.56, 0.12)),
-               ("on a 2020 bar across the back of the bay, under the tray stored over the opening",
-                (x - 700.0, services.BAY_CAM["y"], services.BAY_CAM["bar_z"]), (0.18, 0.27))]
+        side = 1.0 if i == 0 else -1.0          # the operator right of the middle at the first, left at the second
+        view = [(x + side * BAY_EYE[0], BAY_EYE[1], BAY_EYE[2]), tuple(tgt + (0, 0, -60)), (0, 0, 1)]
+        lbl = [(f"Shuttle {unit}'s overhead camera: a Pi 5 with the HQ Camera (16 mm lens)\nand the Camera "
+                "Module 3 Wide, on a pan-tilt head", tuple(tgt), (0.96, 0.15)),
+               ("on a 2020 bar across the back of the bay,\nunder the tray stored over the opening",
+                (x - side * 700.0, services.BAY_CAM["y"], services.BAY_CAM["bar_z"]),
+                (0.03, 0.62) if side > 0 else (0.97, 0.62))]
         if i == 0:
             cap = (f"The bay cameras go on, one over each opening: Shuttle {unit}'s first, seen from where an operator "
                    "stands, eyes at 1.6 m (the cladding drawn solid for it). It sits up under the header at the back "
                    "of the bay and looks down over the presented tray.")
-            sc.step(f"8/{n}", cap, 1.4, A.both(L.skin(0.0), cams_on(unit, tables=True)), hold=1.0, cam_to=view,
+            sc.step(f"8/{n}", cap, 1.2, A.both(L.skin(0.0), cams_on(unit, tables=True)), hold=0.9, cam_to=view,
                     labels=lbl, view_angle_to=BAY_VIEW_ANGLE)
         else:
             cap = (f"Then Shuttle {unit}'s: the same unit on the same bar. Together with the D405 on the arm's wrist, "
                    "it sees what is on every tray the Shuttle presents.")
-            sc.step(f"8/{n}", cap, 1.3, cams_on(unit), hold=1.0, cam_to=view, labels=lbl)
+            sc.step(f"8/{n}", cap, 1.1, cams_on(unit), hold=0.9, cam_to=view, labels=lbl)
     pas = ", ".join(sorted(PASSIVE)[:-1]) + f" and {sorted(PASSIVE)[-1]}" if len(PASSIVE) > 1 else "".join(PASSIVE)
     sc.step(f"8/{n}", f"Every tray with instruments carries its own stream cameras; the storage trays ({pas}) carry "
             "none: the bay camera takes their stock whenever one is presented, the only time a jar or a sample can "
-            "come or go.", 1.0, L.skin(1.0), hold=0.6, cam_to=CAM_VLM, view_angle_to=va0,
+            "come or go.", 0.9, L.skin(1.0), hold=0.4, cam_to=CAM_VLM, view_angle_to=va0,
             labels=W.auto(sc, CAM_VLM, [("overhead camera at the bay", services.bay_cam_point()),
                                         ("overhead camera at the bay", (X2, *services.bay_cam_point()[1:]))]))
     # ------------------------------------------------------------------ 9. orbit

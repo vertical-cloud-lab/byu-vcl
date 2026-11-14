@@ -1357,6 +1357,7 @@ CAM_S_R2 = [(1930, 930, 1480), (1240, 1320, 1150), (0, 0, 1)]
 CAM_S_MID = [(5200, -2900, 2500), (700, -200, 1100), (0, 0, 1)]
 CAM_S_BAY = [(1930, -1130, 1240), (1240, -740, 910), (0, 0, 1)]
 CAM_S_CAMS = [(1500, -3900, 1560), (-150, -1000, 1180), (0, 0, 1)]     # under the header, as the camera still
+CAM_S_EYE = (420.0, -2450.0, 1600.0)     # round 11: an operator's eyes, 0.9 m in front of the face (movie_bay_camera)
 
 
 def movie_services(data, idata):
@@ -1447,9 +1448,25 @@ def movie_services(data, idata):
     cam_lbl = [(f"stream camera on tray {k}", A.tray_world(k, head_point(*c, dz=40.0)),
                 (0.14 if c[0] < 0 else 0.86, 0.30)) for c in TRAY_CAMS[k]]
     sc.step(f"6/{n}", "The cameras: two Pi 5 units on tray A, standing in front of or beside their instruments and "
-            "looking back, so they keep the room out of the picture, and an overhead one at the back of the bay, above "
-            "Kardex's product envelope, looking down on the presented tray.", 3.2, None, hold=2.6, cam_to=CAM_S_CAMS,
-            still=True, labels=cam_lbl + [("overhead camera at the bay", bay_cam_point(), (0.60, 0.13))])
+            "looking back, so they keep the room out of the picture.", 2.6, None, hold=1.4, cam_to=CAM_S_CAMS,
+            labels=cam_lbl)
+    # round 11 (Sterling, PR #318, 2026-11-13: "Can't see the overhead camera from the angle. Should change the view
+    # angle and temporarily make things opaque again"): round 10 labelled the bay unit at the top edge of this view,
+    # through the see-through cladding, where it was all but invisible. Now it gets its own shot from an operator's eyes
+    # (movie_bay_camera's opening view), the cladding solid while it is shown, then see-through again.
+    va0 = sc.view_angle
+    tgt = np.array(bay_cam_point())
+    cam_op = [tuple(CAM_S_EYE), tuple(tgt + (0, 0, -60)), (0, 0, 1)]
+    lbl_op = [("overhead camera: a Pi 5 with the HQ Camera (16 mm lens)\nand the Camera Module 3 Wide, on a pan-tilt "
+               "head", tuple(tgt), (0.96, 0.15)),
+              ("on a 2020 bar across\nthe back of the bay", (-700.0, BAY_CAM["y"], BAY_CAM["bar_z"]), (0.03, 0.50))]
+    sc.step(f"6/{n}", "And an overhead one at the back of the bay, seen from where an operator stands (the cladding "
+            "drawn solid for it): above Kardex's product envelope, under the tray stored over the opening, looking "
+            "down on the presented tray.", 1.6, L.skin(0.0), hold=1.8, cam_to=cam_op, view_angle_to=40.0,
+            labels=lbl_op, still=True)
+    sc.step(f"6/{n}", "And an overhead one at the back of the bay, seen from where an operator stands (the cladding "
+            "drawn solid for it): above Kardex's product envelope, under the tray stored over the opening, looking "
+            "down on the presented tray.", 0.8, L.skin(1.0), hold=0.4, view_angle_to=va0)
     return sc.save()
 
 

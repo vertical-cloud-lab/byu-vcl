@@ -223,7 +223,7 @@ def store(key: str) -> Instrument:
     W, D = RACK["W"], RACK["D"]
     hmax = max(JARS[s["size"]][1] + JARS[s["size"]][2] for s in seats) + RACK["h"] - RACK["pocket"]
     title = "Powder-jar store: feedstock" if feed else "Powder-jar store: atomized lots"
-    inst = Instrument(key, title, "Jar racks on a tray (our design)", (W, D, round(hmax)),
+    inst = Instrument(key, title, f"{len(seats)} powder jars in racks (our design)", (W, D, round(hmax)),
                       "Our design: DAL #146's feedstock and DAL #157's run IDs; wide-mouth jars at typical sizes "
                       "(estimates)")
     body = _piece(inst, "body")
