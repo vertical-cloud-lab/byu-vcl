@@ -155,7 +155,30 @@ def summary(tag: str, fixtag: str = "r11fix") -> dict:
                 round11_rules=dict(_counts(new) or {}, json=str(p_new.relative_to(HERE))) if new else None,
                 after_fixes=dict(_counts(fix) or {}, json=str(p_fix.relative_to(HERE))) if fix else None,
                 worst=_worst_runs(fix or new) if (fix or new) else [])
+    sheet_rows = []
+    for label, r10, before, after, who in SHEET_CLIPS:
+        old_ = _load(r10, "")[0]
+
+        def src(x):
+            if isinstance(x, tuple):
+                return x[2]
+            if x and isinstance(x[0], (list, tuple)):
+                for alt in x:
+                    if isinstance(alt, tuple):
+                        return alt[2]
+                    if alt and all(_strict(n) for n in alt):
+                        return [f"out/collisions/{n}.json" for n in alt]
+                return None
+            return [f"out/collisions/{n}.json" for n in x] if x else None
+        b, a = _frames(before), _frames(after)
+        sheet_rows.append(dict(
+            clip=label, fixes_by=who,
+            round10_rules=dict(frames=old_.get("frames_with_collisions"), of=old_.get("frames_checked"),
+                               json=f"{ROUND10}:vertical-lab/out/collisions/{r10}.json") if old_ else None,
+            round11_before_fixes=dict(frames=b[0], of=b[1], source=src(before)) if b else None,
+            round11_after_fixes=dict(frames=a[0], of=a[1], source=src(after)) if a else "not re-audited"))
     out = dict(round=11, written=time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime()),
+               every_clip=sheet_rows,
                found_by_the_movers_check_fixed_elsewhere=FOUND_ELSEWHERE, validation=VALIDATION,
                rules=("collide.py, round 11: what may touch only up to 1.5 mm deep (collide.depth, a 26-direction "
                       "translational depth), and the movers check (everything that moves and isn't an arm, new "
@@ -195,8 +218,11 @@ SHEET_CLIPS = [
     ("Chapter 3: sieve and print", "alloy_print", [["alloy_print_r11s0"], (138, 1371, "audit-b's report")],
      [["alloy_print_r11_prerender"]], "audit-b"),
     ("Chapter 4: powder checks", "alloy_powder", [], [["alloy_powder"]], "audit-b"),
-    ("Chapter 5: cut, heat-treat, test", "alloy_workflow", ["alloy_workflow_s15", "alloy_workflow_s67"],
-     [["alloy_workflow"], ["alloy_workflow_s15c", "alloy_workflow_s67b"]], "ch5"),
+    # ch5: before = its sections 1-5 and 6-7 on round 10's code (F1 already moved), 00:04-00:29, 209 + 214 of 962 +
+    # 1003 frames; 148 of those were only the MiR's skirt in the floor tape, left out since (FLOOR_MM), so 275 here.
+    # After = ch5-audit-final, the whole chapter as rendered (86ff959). The other alloy_workflow_s* are intermediate
+    ("Chapter 5: cut, heat-treat, test", "alloy_workflow",
+     (275, 1965, "ch5's alloy_workflow_s15 + _s67, less 148 frames of floor tape"), [["alloy_workflow"]], "ch5"),
     ("Chapter 6: sample prep", "alloy_prep", [], [["alloy_prep"]], "audit-b"),
     ("Chapter 7: characterize", "alloy_characterize", ["alloy_characterize_r11s0"], [["alloy_characterize"]],
      "audit-b"),
@@ -292,7 +318,7 @@ def sheet(n: int = 2, tag: str = "r11", out_name: str = "round11_sheet.png"):
     top, rh = 240, 70
     for k in range(int(vmax / 5) + 1):                          # recessive grid, every 5 %
         gx = x0 + (x1 - x0) * (5.0 * k / vmax)
-        d.line((gx, top - 10, gx, top + rh * len(rows) - 3), fill=GRID, width=1)
+        d.line((gx, top - 2, gx, top + rh * len(rows) - 3), fill=GRID, width=1)
         d.text((gx - 14, top + rh * len(rows) + 2), f"{5 * k} %", fill=MUTED, font=font(18))
     d.text((x0, top - 22), "share of the frames checked that have a collision", fill=MUTED, font=font(17))
     for r, (label, o, b, a, who) in enumerate(rows):

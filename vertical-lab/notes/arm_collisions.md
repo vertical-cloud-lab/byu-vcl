@@ -236,4 +236,27 @@ either. `python3 audit_all.py summary` gathers them into
 | --- | --- | --- | --- | --- |
 | Chapter 1, `alloy_charge.py` | 0 of 1145 | 29 / 11 / **40** | **0 / 0 / 0** | Fixtures drawn as solid blocks with their pockets only drawn as rims (the charge rack, the punch's rest), the pads 3 mm into the rack round a plug, cups let go 1 mm over their seats (so they rode 2 mm high into the press), the punch's O-ring squeezed in its bore. [Notes](alloy_charge.md#round-11-the-stricter-collision-audit-0-of-1145-frames-from-40) |
 | Chapter 2, `alloy_atomize.py` | 0 of 920 | 5 / 6 / **11** | **0 / 0 / 0** | The tong holder's tab filling half its bore, the latch loop's rods through the keeper's lip, the locking bolt sliding into a solid cylinder. [Notes](alloy_atomize.md#round-11-pr-318-2026-11-14-the-stricter-collision-audit) |
-| The 8:00 clip, `animate.py workflow` | 0 of 574 | 6 / 5 / **11** | see below | The vial in tray B's solid rack; the vial in Ben's 9-vial TightFit holder in the CubXL (a grip by design: its lips are 25.9 mm across for a 27.5 mm vial, and the clip's vial is 28 mm); the CubXL's tip on its P20 cone and the liquid in the tip |
+| The 8:00 clip, `animate.py workflow` | 0 of 574 | 6 / 5 / **11** | 5 / 0 / **5** (not re-rendered: the fixes don't show) | The vial in tray B's solid rack; the vial in Ben's 9-vial TightFit holder in the CubXL (a grip by design: its lips are 25.9 mm across for a 27.5 mm vial, and the clip's vial is 28 mm); the CubXL's tip on its P20 cone and the liquid in the tip |
+
+### What round 11's audit still can't see
+
+- **Surfaces, not volumes.** FCL tests triangles against triangles. A part wholly inside another (a pin sunk out of
+  sight in a block) crosses no surface and isn't a contact. Moving parts cross a surface on the way in, so the movers
+  check and the arm checks see them arrive. Something drawn inside something else from the start, and never moved,
+  isn't seen.
+- **A baseline contact that deepens.** A mover's contacts at its last pose before it moved are left out until that pair
+  comes apart. A pair that touches at the start and then goes deeper without parting (a tray sliding along a rail into
+  a cross-member of the same mesh) isn't reported.
+- **Soft parts and liquids are taken on trust.** `sc.soft` and `sc.fluids` leave whole actors out. Only seals, tips
+  and liquids are marked; anything marked can't be checked.
+- **Designed grips are reported, not hidden.** The 8:00 clip's vial in Ben's 9-vial "TightFit" holder in the CubXL is
+  an interference by design: the holder's lips are 25.92 mm across, against the CubXL's own 27.5 mm stock vials and
+  the clip's 28 mm vial. The rigid meshes overlap 0.6-1.0 mm a side, which reads as the vial's insertion depth. The
+  holder is merged with other dark-PETG parts of the CubXL's body, so marking it soft would hide those too. It is left
+  reported.
+- **The depth is sampled.** 26 directions and the steps 1.5, 3, 6, 12, 25 and 50 mm: a contact reads "under 1.5" or
+  "3 to 6", never 2.2. The shrink takes 0.17-0.3 mm off (vertex normals at a box's corners point diagonally).
+- **ARM_AUDIT_SNAP=auto's aim** points the clip's own view direction at the contact from 0.8-3.5 m. Behind a machine
+  housing the frame comes out dark (chapter 2's latch, frame 632). The JSON is unaffected.
+- **FCL drops scale.** The movers check bakes scaled groups into the world; the arm checks still pass their matrices to
+  FCL, and nothing an arm handles is drawn scaled except liquids.

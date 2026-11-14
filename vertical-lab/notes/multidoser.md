@@ -251,3 +251,21 @@ Not one of these is written yet, so neither clip was re-rendered (their code is 
   fork's drop disturbs a reading are untested.
 - **The 2F-85's knuckles** are the binding number: a narrower gripper (or a v5 station post moved) would let the arm
   reach the pan itself.
+
+## Round 11: the 8:00 clip under the stricter collision audit
+
+`animate.py workflow`, audited under round 11's rules ([`arm_collisions.md`](arm_collisions.md)): **11 of 574 frames**
+(round 10's rules: 0), then **5** after this round's fixes, which don't show, so the clip isn't re-rendered
+([before](../out/collisions/vlm_workflow_r11.json), [after](../out/collisions/vlm_workflow_r11fix.json)).
+
+- **Fixed: the vial lifted out of tray B's rack** (frame 109, 25 mm). `props.vial_rack()` is a solid block with the
+  vials drawn 32 mm inside it. In this clip the rack gets its bores (`props.pocket_block`, 1 mm round a vial, a lead-in
+  at the mouth). The other scenes that draw the rack are unchanged.
+- **Fixed: inside the CubXL**, the P20's shaft 6 mm into a tip and the liquid in the tip against its well
+  (frames 540-573). A PP tip is pressed onto the P20's cone, an interference by design, so the tips are soft
+  (`sc.soft`), and what is in the tip, wells and tubes is liquid (`sc.fluids`).
+- **Left, and why: the vial into Ben's 9-vial holder** (frames 511-516). The holder is the capper repository's own
+  `9VialHolder20mL_TightFit.step`, whose seats narrow to lips 25.92 mm across for the 20 mL vials (27.5 mm in the
+  CubXL model, 28 mm in `props`): a grip by design, the lips flexing as the vial goes in. Rigid meshes overlap
+  0.6-1.0 mm a side, which reads as the vial's insertion depth. It is reported rather than hidden, since the holder
+  is merged with other parts of the CubXL's body.
