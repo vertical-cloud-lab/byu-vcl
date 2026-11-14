@@ -16,6 +16,37 @@ framework, [`scene.py`](scene.py), is `atomizer-training/viz3d/scene.py` from #1
 [`out/org_vertical_lab.gif`](out/org_vertical_lab.gif) is made to replace that GIF on the org README, under the same
 title. It follows one charge cup from tray B to the atomizer.
 
+**PR #327's third pass, merged here (2026-11-14).** On #327, Sterling asked for the latch and the lid to be read from
+a succession of frames. That run's notes ("Third pass" in [`notes/repowder_refine.md`](notes/repowder_refine.md)) and
+its four evidence sheets ([`out/repowder_refine/`](out/repowder_refine/), e.g.
+[`latch_sequence_t4.jpg`](out/repowder_refine/latch_sequence_t4.jpg)) are now on this branch. It changed no code:
+like the run that merged it, it couldn't execute Python. So the GIF is unchanged, but what the pass found applies to
+it:
+
+- **The GIF's latch is upside down, as the model's is.** On the machine the lever pivots at its top, on a base just
+  under the lid's seam, and hangs down from it when shut (T4 5:35.5). The GIF grasps the lever near its top
+  (`LATCH_AT`) and swings it out 47.5° about a foot at its bottom (`LATCH_U` of the model's 95°), with the loop
+  fixed to the lever.
+- **Opening takes four moves, not two.** Pull the lever's lower end out and up about its top pivot until the loop
+  goes slack (about 150°, not measured), lift the loop off the keeper, fold the lever back down, then lift the lid.
+  Closing is the reverse, with the lid's top pressed down before the lever goes over centre (T4 5:29.5–5:41). The
+  GIF pulls the lever once and lifts the lid, and closes the same way.
+- **The bolt runs through the latch's base,** not through a lug on the lever. Its height in the model was right.
+
+Redrawing the latch (a `latch_base`, the lever's pivot at its top, its own `loop` joint, the bolt through the base)
+and re-planning the arm's moves at the rePowder needs Python: the IK, the collision audit, and a re-render from about
+frame 1230 on. claude-code-action now runs sessions on PRs the bot opened without Python (`restrict_untrusted_prs`),
+so it is left for a run started from an issue, or for after that setting is changed in `claude.yml`.
+
+**The hinge: the third pass and round 7 agree on how the lid moves, not on which side the hinge is.** The third
+pass finds one plain turn about a hinge on the side opposite the latch, with no lift or slide (T4 5:14.5–5:16.5).
+The GIF's lid already moves like that. The pass calls that side the back, in #327's frame. Round 7 (below) turned
+the lid's whole assembly 90°, which puts the hinge on the furnace's left. Close-ups alone can't settle which side it
+is, since that depends on where the camera stood. #327's own model can't have it both ways, though. It puts the lid's
+square part over a flat on the furnace's right (`cabinet_x`), which #327 calls the housing's cabinet side, and runs
+the bolt along x to a housing there. Yet its cabinet stands behind the furnace. With the hinge turned to the left,
+the square part and the bolt both face the cabinet.
+
 **Round 9** ([PR #329](https://github.com/vertical-cloud-lab/byu-vcl/pull/329), Sterling: "looks like that charge cup
 would fall straight off when being dosed into") gives the cup a holder that goes onto the pedestal with it:
 
