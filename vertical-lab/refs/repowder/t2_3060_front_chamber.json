@@ -1,0 +1,43 @@
+{
+ "source": "https://youtu.be/FDRTt68Vfvo?t=3060",
+ "video": "FDRTt68Vfvo",
+ "t": 3060,
+ "pose": {
+  "clamp1": 1.0
+ },
+ "holdout": true,
+ "points": {
+  "viewport centre": [
+   625,
+   247
+  ],
+  "viewport hood top": [
+   620,
+   150
+  ],
+  "viewport hood bottom": [
+   612,
+   362
+  ],
+  "viewport hood left": [
+   493,
+   255
+  ],
+  "viewport hood right": [
+   735,
+   255
+  ],
+  "clamp1 pin": [
+   520,
+   488
+  ],
+  "clamp1 knob": [
+   603,
+   522
+  ],
+  "clamp0 knob": [
+   443,
+   267
+  ]
+ }
+}

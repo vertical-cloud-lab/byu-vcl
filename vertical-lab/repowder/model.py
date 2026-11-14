@@ -84,9 +84,14 @@ BODY_R, BODY_TOP = 135.0, 1345.0    # "BLUE POWER" furnace body
 Z_CR = 1219.2                        # crucible datum: where the straight bore meets the floor cone
 RIM = Z_CR + BORE_STRAIGHT
 CRUCIBLE_BASE = Z_CR - FLOOR_CONE_H - CRUCIBLE_BOTTOM
-HOOD_Z0, HOOD_H1, HOOD_H2 = BODY_TOP, 75.0, 90.0
-HOOD_R0, HOOD_R1 = 152.0, 92.0   # the lid reaches over the deck round the lever post (T4 5:16)
-HINGE = np.array([-HOOD_R0 - 12.0, 0.0, BODY_TOP - 2.0])   # lid hinge axis (along y): the pin, outside the hood's corner
+HOOD_Z0, HOOD_H1, HOOD_H2 = BODY_TOP, 55.0, 126.0
+# the lid: a cast shell, round at the front left, square over the housing's flat on the right, hinged at the BACK
+# (T4 1:53, 2:28, 5:08: open, it stands up behind the furnace). Fitted with register.py.
+LID = dict(r=140.0, r1=45.0, ext=190.0, h1=55.0, h2=126.0, wall=5.0, hinge_off=14.0, latch_x=72.0, latch_len=156.0, cabinet_x=192.0)
+HOOD_R0, HOOD_R1 = LID["r"], LID["r1"]
+LID_OPEN_DEG, LATCH_OPEN_DEG, BOLT_TRAVEL = 105.0, 95.0, 70.0
+LID_PARTS = ("hood", "hood_window", "hood_hot_label", "hood_knob", "hood_hinge_leaf", "latch_keeper")
+HINGE = np.array([0.0, HOOD_R0 + 14.0, BODY_TOP + 6.0])   # a point on the lid's hinge axis (along x), behind the lid
 ARM_ANGLE = 0.0                      # sealing-rod lever post: on the right of the deck (T4 1:50, 4:28)
 ARM_DIR = np.array([math.cos(math.radians(ARM_ANGLE)), math.sin(math.radians(ARM_ANGLE)), 0.0])
 POST_R = 112.0                       # the lever pivots on top of the post, about a horizontal axis, and swings up
@@ -114,7 +119,7 @@ CLAMP_Z = (288.0, 300.0)
 CVALVE_Z = (262.0, 288.0)
 CONT_Z = (60.0, 262.0)
 CONT_R = 65.0
-VIEWPORT = np.array([5.0, CH_Y[0] - 8.0, 1030.0])                     # front face, top left, under the furnace
+VIEWPORT = np.array([-15.0, CH_Y[0] - 8.0, 1035.0])   # front face, top left; x, z from DAL #189 (centre 100 mm in from the left edge, z 1035 +-40)
 VIEWPORT_N = np.array([-0.15, -1.0, 0.40]) / np.linalg.norm([-0.15, -1.0, 0.40])   # looks in and down at the plate
 
 # ------------------------------------------------------------------- ultrasonic stack: sizes and set-up, in one place
@@ -251,13 +256,28 @@ DOOR_Z = (775.0, 1115.0)                        # U-shaped door: flat top, round
 DOOR_W = 236.0
 DOOR_T = 16.0
 DOOR_OPEN_W = DOOR_W - 24.0                     # the opening it closes
-# vertical hinge axis outside the door's front edge: the door opens towards the operator, and the stack's outer end with it
-DOOR_HINGE = np.array([CH_X[0] - DOOR_T - 4.0, -(DOOR_W / 2 + 10.0)])
-# swing bolts with star knobs: two at the door's back edge, one under it; each swings clear before the door opens
-CLAMP_PTS = [np.array([CH_X[0] + 8.0, DOOR_W / 2 + 6.0, z]) for z in (1060.0, 945.0, 830.0)]   # pivots, behind
-CLAMP_AXES = [np.array([0.0, 0.0, 1.0])] * 3
-CLAMP_SWING = (-90.0, -90.0, -90.0)               # degrees about CLAMP_AXES: each bolt swings back, behind the chamber
-CLAMP_REACH = 24.0                                # pivot to the star knob, which sits on the door's outer face
+# Door hinge: BACK edge (+y). T5 24:46 (1486 s) and 27:16 (1636 s): the open leaf stands out from the opening's back edge,
+# its two hinge straps (welded L brackets) on that side; DAL #189 measurements.md lists the same frames. The first
+# model had it at the front edge (a guess from #261). Positive door value swings the free (front) edge out to -x.
+DOOR_HINGE = np.array([CH_X[0] - DOOR_T - 4.0, DOOR_W / 2 + 10.0])
+DOOR_OPEN_DEG = 100.0                           # assumed: "stands out" in T5 24:46, not a stop
+DOOR_PARTS = ("door", "door_glass", "door_kf_clamp")
+# Door clamps: swing bolts with black star (T) knobs, on brackets on the FRONT face near its left edge (T5 24:46 and
+# 27:16 seen from the front: the top knob lies on the face to the left of the viewport hood, the lower one swung out
+# to its right; DAL #189 measurements.md: "~50 mm left of the hood's left edge, on a swing bolt from a bracket on the
+# front face's left edge", the second ~110 mm under the hood). Pin axis along y (the face normal; its round head
+# faces the camera); closed = the rod points left (-x), through an ear on the door's front edge, its knob outside the
+# ear; open = 180 deg, over the top, pointing right along the face. An earlier version of this file had the pin on the
+# left face and the rod along y: the T5 27:16 fit put that knob 167 px off, this one 8. A third knob is at the door's
+# bottom (T5 24:46) and is not placed: its bracket is not visible.
+DCLAMP_Z = (1035.0, 840.0)                      # DAL: top one about mid-hood (z 1035), lower one ~110 mm under the hood
+DCLAMP_X = -90.0                                # pin: 10 mm inside the hood's left edge (x = -99), frame-fitted
+CLAMP_REACH = 62.0                              # pin to the knob's centre: the knob sits at x = -152, outside the door's ear
+CLAMP_OPEN_DEG = 180.0
+CLAMP_NAMES = ("clamp0", "clamp1")
+CLAMP_PTS = [np.array([DCLAMP_X, CH_Y[0] - 8.0, z]) for z in DCLAMP_Z]
+CLAMP_AXES = [np.array([0.0, 1.0, 0.0])] * 2
+KF_S = 36.0                                     # the door housing's KF clamp: this far back from the tube's outer end
 
 # blue frame: the machine's own cabinet, behind the chamber, with the induction generator, PLC and pneumatics inside
 FR_X, FR_Y, FR_Z = (CH_X[0], CH_X[0] + 745.0), (CH_Y[1] + 45.0, CH_Y[1] + 545.0), (175.0, 1600.0)
@@ -483,31 +503,156 @@ def furnace_parts() -> list[Part]:
     return P
 
 
-def hood_parts() -> list[Part]:
+def _plan(r, ext, n_arc=14):
+    """Outline in plan (x, y): a half circle of radius r on the -x side, straight sides out to x = ext on the +x side
+    (the rectangular extension over the blue cabinet's side, T4 3:08 and 5:41)."""
+    pts = [(ext, -r), (ext, r)]
+    pts += [(r * math.cos(math.pi / 2 + math.pi * k / n_arc), r * math.sin(math.pi / 2 + math.pi * k / n_arc))
+            for k in range(n_arc + 1)]
+    return pts
+
+
+def _prism(r, ext, z0, h, taper=0.0):
+    wp = cq.Workplane("XY").workplane(offset=z0).polyline(_plan(r, ext)).close()
+    return wp.extrude(h, taper=taper).val()
+
+
+def lid_params() -> dict:
+    return dict(LID)
+
+
+def facet_plane(p: dict, face: str, s: float) -> tuple:
+    """(origin, normal) of the lid's sloping facet at fraction s (0 = its foot, 1 = the flat top): face is 'front'
+    (-y) or 'left' (-x)."""
+    r, r1, h1, h2 = p["r"], p["r1"], p["h1"], p["h2"]
+    t = math.atan2(r - r1, h2)
+    rr = r - (r - r1) * s
+    z = BODY_TOP + h1 + h2 * s
+    if face == "front":
+        return np.array([0.0, -rr, z]), np.array([0, -math.cos(t), math.sin(t)])
+    return np.array([-rr, 0.0, z]), np.array([-math.cos(t), 0, math.sin(t)])
+
+
+def knob_centre(p: dict | None = None) -> np.ndarray:
+    """Centre of the lid's black ball knob (shut): a stalk off the front facet's foot, a little left of centre (T4 5:41)."""
+    p = p or LID
+    kb, _ = facet_plane(p, "front", 0.12)
+    kd = np.array([0.62, -0.15, 0.77])
+    return kb + np.array([-35.0, 0, 0]) + kd / np.linalg.norm(kd) * 40.0
+
+
+def hinge_point(p: dict | None = None) -> np.ndarray:
+    p = p or LID
+    return np.array([0.0, p["r"] + p["hinge_off"], BODY_TOP + 6.0])
+
+
+def latch_geom(p: dict | None = None) -> dict:
+    p = p or LID
+    yface = -BODY_R
+    zf = Z_PLATFORM[1] + 38.0
+    return dict(pivot=np.array([p["latch_x"], yface - 9.0, zf]), x=p["latch_x"], yface=yface, zf=zf,
+                length=p["latch_len"], keeper=np.array([p["latch_x"], -p["r"], BODY_TOP + 26.0]),
+                bolt_z=zf + 0.55 * p["latch_len"], cabinet_x=p["cabinet_x"])
+
+
+def joints() -> dict:
+    """Every joint chapter 2 can drive. value 0 = as built (lid shut, lever hooked, bolt in), 1 = `deg` or `vec` on.
+    'point' is on the axis. Lid: swing about the back hinge, on the -x axis so that positive opens (T4 1:53, 2:28: it
+    stands up behind the furnace). Latch: the lever, with its loop, swings out about a horizontal axis at its foot.
+    Bolt: slides along +x, back into the blue cabinet. lever_post: the sealing-rod lever (as before)."""
+    g = latch_geom()
+    return {
+        "lid": dict(kind="hinge", point=hinge_point(), axis=(-1.0, 0.0, 0.0), deg=LID_OPEN_DEG, parts=LID_PARTS),
+        "latch": dict(kind="hinge", point=g["pivot"], axis=(1.0, 0.0, 0.0), deg=LATCH_OPEN_DEG,
+                      parts=("latch_lever", "latch_loop")),
+        "bolt": dict(kind="slide", vec=(BOLT_TRAVEL, 0.0, 0.0), parts=("latch_bolt",)),
+        # chamber door: vertical hinge at the back edge; the free (front) edge swings out to -x, hence the -z axis
+        "door": dict(kind="hinge", point=(DOOR_HINGE[0], DOOR_HINGE[1], 0.0), axis=(0.0, 0.0, -1.0), deg=DOOR_OPEN_DEG,
+                     parts=DOOR_PARTS),
+        # door clamps: swing in the front face's plane about the pin along +y, rod from pointing left to pointing right
+        **{f"clamp{k}": dict(kind="hinge", point=tuple(float(c) for c in CLAMP_PTS[k]), axis=(0.0, 1.0, 0.0),
+                             deg=CLAMP_OPEN_DEG, parts=(f"clamp{k}",)) for k in range(2)},
+    }
+
+
+def joint_matrix(name: str, value: float) -> np.ndarray:
+    """4x4 world transform of a joint's parts at value (0..1) of its travel."""
+    j = joints()[name]
+    m = np.eye(4)
+    if j["kind"] == "slide":
+        m[:3, 3] = np.asarray(j["vec"], float) * value
+        return m
+    a = np.asarray(j["axis"], float)
+    a = a / np.linalg.norm(a)
+    t = math.radians(j["deg"] * value)
+    K = np.array([[0, -a[2], a[1]], [a[2], 0, -a[0]], [-a[1], a[0], 0]])
+    R = np.eye(3) + math.sin(t) * K + (1 - math.cos(t)) * K @ K
+    m[:3, :3] = R
+    m[:3, 3] = np.asarray(j["point"], float) - R @ np.asarray(j["point"], float)
+    return m
+
+
+def hood_parts(p: dict | None = None) -> list[Part]:
+    """The lid (a cast, faceted shell hinged at the back), its knob, window slot, hinge, the housing's flat, and the
+    draw latch with its pneumatic bolt. From T4 (1F9_4ccwhss) 1:53, 3:08, 5:08, 5:41, 6:05: notes/repowder_refine.md."""
+    p = p or LID
     P = []
-    outer = hexframe(HOOD_R0, HOOD_R1, HOOD_Z0, HOOD_H1, HOOD_H2)
-    inner = hexframe(HOOD_R0 - 5, HOOD_R1 - 5, HOOD_Z0 - 1, HOOD_H1 + 1, HOOD_H2 - 6)
-    a0, a1 = HOOD_R0 * math.cos(math.pi / 6), HOOD_R1 * math.cos(math.pi / 6)
-    zc = HOOD_Z0 + HOOD_H1 + HOOD_H2 / 2
-    tilt = math.atan2(a0 - a1, HOOD_H2)
-    n = np.array([0, -math.cos(tilt), math.sin(tilt)])
-    centre = np.array([0, -(a0 + a1) / 2, zc])
-    plane = cq.Plane(origin=V(*(centre - n * 1.0)), xDir=V(1, 0, 0), normal=V(*n))
-    hood = outer.cut(inner).cut(cq.Workplane(plane).rect(66, 50).extrude(8).val())
-    P.append(Part("hood", hood.clean(), STEEL, "hood", tol=0.4))
-    window = cq.Workplane(plane).rect(70, 54).extrude(3).val()
-    P.append(Part("hood_window", window, (0.12, 0.13, 0.15), "hood", tol=0.2))
-    plane2 = cq.Plane(origin=V(*(centre - n * 0.5 + np.array([0, 0, -40]) * 1.0
-                                 + np.array([0, -1, 0]) * 40 * math.tan(tilt))), xDir=V(1, 0, 0), normal=V(*n))
-    hot = cq.Workplane(plane2).polygon(3, 22).extrude(2).val()
-    P.append(Part("hood_hot_label", hot, YELLOW, "hood", tol=0.1))
-    knob_base = np.array([HOOD_R0 * 0.62, -20, HOOD_Z0 + HOOD_H1 + 30])
-    P.append(Part("hood_knob", fuse(cyl(5, 30, knob_base, (0.6, 0, 0.8)),
-                                    sphere(14, knob_base + np.array([0.6, 0, 0.8]) * 38)), BLACK, "hood", tol=0.2))
-    # hinge pin on the lid's axis, on a bracket off the body; the lid turns round it, clear of the pin and bracket
-    P.append(Part("hood_hinge", fuse(cyl(9, 90, (HINGE[0], -45, HINGE[2]), (0, 1, 0)),
-                                     box(HINGE[0] - 4, -BODY_R + 6, -40, 40, HINGE[2] - 40, HINGE[2] - 6)),
-                  STEEL_DK, "furnace", tol=0.2))
+    r, r1, h1, h2, ext, w = p["r"], p["r1"], p["h1"], p["h2"], p["ext"], p["wall"]
+    taper = math.degrees(math.atan2(r - r1, h2))
+    eb = ext - 6.0
+    shell = box(0, eb, -BODY_R, BODY_R, Z_PLATFORM[1], BODY_TOP).cut(
+        box(-1, eb - 3, -BODY_R + 3, BODY_R - 3, Z_PLATFORM[1] + 5, BODY_TOP - 5)).cut(
+        cyl(100, 40, (0, 0, BODY_TOP - 8)))
+    P.append(Part("furnace_ext", shell, STEEL, "furnace", tol=0.4))
+    outer = _prism(r, ext, BODY_TOP, h1).fuse(_prism(r, ext, BODY_TOP + h1, h2, taper=taper))
+    inner = _prism(r - w, ext - w, BODY_TOP - 1, h1 + 1).fuse(_prism(r - w, ext - w, BODY_TOP + h1, h2 - w, taper=taper))
+    hood = outer.cut(inner).clean()
+    o_w, n_w = facet_plane(p, "left", 0.55)
+    win_plane = cq.Plane(origin=V(*(o_w - n_w * 2.0)), xDir=V(0, 1, 0), normal=V(*n_w))
+    hood = hood.cut(cq.Workplane(win_plane).rect(26, 84).extrude(6).val())
+    o_f, n_f = facet_plane(p, "front", 0.5)
+    P.append(Part("hood", hood, STEEL, "hood", tol=0.4))
+    P.append(Part("hood_window", cq.Workplane(win_plane).rect(26, 84).extrude(2.5).val(), (0.12, 0.13, 0.15), "hood",
+                  tol=0.2))
+    lab = cq.Plane(origin=V(*(o_f + np.array([30.0, 0, 0]) - n_f * 0.5)), xDir=V(1, 0, 0), normal=V(*n_f))
+    P.append(Part("hood_hot_label", cq.Workplane(lab).polygon(3, 22).extrude(2).val(), YELLOW, "hood", tol=0.1))
+    kb, _ = facet_plane(p, "front", 0.12)
+    kb = kb + np.array([-35.0, 0, 0])
+    kd = np.array([0.62, -0.15, 0.77])
+    kd /= np.linalg.norm(kd)
+    P.append(Part("hood_knob", fuse(along(cyl(5, 30), kb, kd), sphere(14, kb + kd * 40)), BLACK, "hood", tol=0.2))
+    hp = hinge_point(p)
+    barrel = cyl(8, 150, (-75, hp[1], hp[2]), (1, 0, 0))
+    bracket = box(-75, 75, BODY_R - 8, hp[1] + 8, BODY_TOP - 55, BODY_TOP - 8)
+    P.append(Part("hood_hinge", fuse(barrel, bracket), STEEL_DK, "furnace", tol=0.2))
+    leaf = box(-75, 75, r - 3, hp[1] + 6, BODY_TOP + 2, BODY_TOP + 62)
+    scr = [along(cyl(4, 3), (sx, hp[1] + 6, BODY_TOP + 40), (0, 1, 0)) for sx in (-55, 0, 55)]
+    P.append(Part("hood_hinge_leaf", fuse(leaf, *scr), STEEL_DK, "hood", tol=0.2))
+    g = latch_geom(p)
+    lx, yf, zf, L = g["x"], g["yface"], g["zf"], g["length"]
+    foot = fuse(box(lx - 28, lx + 28, yf - 12, yf, zf - 22, zf + 14), box(lx - 22, lx + 22, yf - 12, yf - 2, zf - 40, zf - 22),
+                along(cyl(8, 10), (lx, yf - 14, zf - 36), (0, 1, 0)))
+    P.append(Part("latch_foot", foot, STEEL, "furnace", tol=0.2))
+    lever = fuse(box(lx - 19, lx + 19, yf - 11, yf - 9, zf - 6, zf + L),
+                 box(lx - 19, lx - 17, yf - 14, yf - 9, zf - 6, zf + L), box(lx + 17, lx + 19, yf - 14, yf - 9, zf - 6, zf + L),
+                 along(cyl(5, 38), (lx - 19, yf - 9, zf), (1, 0, 0)))
+    lug = box(lx + 19, lx + 36, yf - 13, yf - 9, g["bolt_z"] - 9, g["bolt_z"] + 9).cut(
+        along(cyl(4.2, 20), (lx + 18, yf - 11, g["bolt_z"]), (1, 0, 0)))
+    P.append(Part("latch_lever", fuse(lever, lug), STEEL, "latch_lever", tol=0.2))
+    zp = zf + L * 0.80
+    k = g["keeper"]
+    zk = k[2] - 4.0
+    loop = fuse(box(lx - 15, lx + 15, yf - 15, yf - 11, zp - 3, zp + 3),
+                box(lx - 15, lx - 12, yf - 15, yf - 11, zp - 3, zk), box(lx + 12, lx + 15, yf - 15, yf - 11, zp - 3, zk),
+                box(lx - 15, lx + 15, yf - 15, k[1] - 3, zk - 4, zk))
+    P.append(Part("latch_loop", loop, STEEL_DK, "latch_lever", tol=0.15))
+    kp = fuse(box(lx - 26, lx + 26, k[1] - 3, k[1], k[2] - 8, k[2] + 38), box(lx - 18, lx + 18, k[1] - 9, k[1] - 3, k[2] - 10, k[2] - 6),
+              *[along(cyl(3.5, 2), (lx + sx, k[1] - 3, k[2] + 32), (0, -1, 0)) for sx in (-19, 19)])
+    P.append(Part("latch_keeper", kp, STEEL, "hood", tol=0.2))
+    bolt = cyl(3.0, g["cabinet_x"] + 30 - (lx + 24), (lx + 24, yf - 11, g["bolt_z"]), (1, 0, 0))
+    P.append(Part("latch_bolt", bolt, STEEL_DK, "latch_bolt", tol=0.1))
+    P.append(Part("bolt_housing", box(g["cabinet_x"] - 6, g["cabinet_x"] + 6, yf - 20, yf - 3, g["bolt_z"] - 14, g["bolt_z"] + 14),
+                  BLACK, "furnace", tol=0.2))
     return P
 
 
@@ -551,14 +696,16 @@ def chamber_parts() -> list[Part]:
             slots.append(box(x - 4, x + 4, y0 - 1.5, y0 + 0.5, zb, zt))
     P.append(Part("chamber_slots", compound(*slots), STEEL_DK, "chamber", tol=0.3))
     # view port: dark-grey 12-sided cover with the light-blue glass, tilted down at the plate
-    vp = cq.Workplane("XY").polygon(12, 180).extrude(46).val().cut(cyl(44, 60, (0, 0, -5)))
+    vp = cq.Workplane("XY").polygon(12, 168).extrude(46).val().cut(cyl(37.5, 60, (0, 0, -5)))   # DAL #189: 168 across corners, 75 opening
     P.append(Part("viewport_flange", along(vp, VIEWPORT - VIEWPORT_N * 6, VIEWPORT_N), FLANGE, "chamber", tol=0.3))
-    P.append(Part("viewport_glass", along(cyl(45, 6), VIEWPORT + VIEWPORT_N * 4, VIEWPORT_N), GLASS, "chamber",
+    P.append(Part("viewport_glass", along(cyl(31.5, 6), VIEWPORT + VIEWPORT_N * 4, VIEWPORT_N), GLASS, "chamber",
                   opacity=0.8, tol=0.2))
     # door on the left face, hinged at its front edge; the stack goes through its lower half at STACK_ANGLE, in a
     # housing whose bore passes the sonotrode's KF50 flange, the booster and the transducer
     door = u_shape(DOOR_W, DOOR_Z[0], DOOR_Z[1], x0 - DOOR_T, DOOR_T)
     door = door.fuse(u_shape(DOOR_W - 50, DOOR_Z[0] + 25, DOOR_Z[1] - 25, x0 - DOOR_T - 10, 10))
+    for z in DCLAMP_Z:       # the ears the bolts lie through, on the door's front edge (assumed 8 x 22 mm)
+        door = door.fuse(box(x0 - DOOR_T, x0 - DOOR_T + 8, CH_Y[0] - 20, -DOOR_W / 2 + 2, z - 11, z + 11))
     door = door.cut(along(cyl(40, 200), PORT - STACK_DIR * 100, STACK_DIR))      # the stack crosses the door plane at PORT
     door = door.fuse(along(tube(49, 40, 60), PORT - STACK_DIR * 60, STACK_DIR))
     sight = np.array([x0 - DOOR_T - 10, -45.0, 1060.0])
@@ -567,28 +714,34 @@ def chamber_parts() -> list[Part]:
     knuckle_z = [(DOOR_Z[0] + 70, DOOR_Z[0] + 110), (DOOR_Z[1] - 120, DOOR_Z[1] - 80)]       # on the door
     fixed_z = [(DOOR_Z[0] + 112, DOOR_Z[0] + 150), (DOOR_Z[1] - 78, DOOR_Z[1] - 40)]       # on the chamber
     for z0, z1 in knuckle_z:
-        door = door.fuse(cyl(7, z1 - z0, (hx, hy, z0))).fuse(box(hx - 2, x0 - 4, hy, -DOOR_W / 2 + 6, z0, z1))
+        door = door.fuse(cyl(7, z1 - z0, (hx, hy, z0))).fuse(box(hx - 2, x0 - 4, DOOR_W / 2 - 6, hy, z0, z1))
     P.append(Part("door", door.clean(), STEEL, "door", tol=0.4))
+    # the housing's KF clamp: a ring round the tube with a black wing knob on a screw (T5 24:46, 27:56 and 28:45: a
+    # polished clamp with a black wing nut). Sizes and the wing's position on the ring are assumed.
+    kf0 = PORT - STACK_DIR * (60.0 - 10.0)
+    kf = along(tube(60, 49, 14), kf0, STACK_DIR)
+    up = np.array([-STACK_DIR[2], 0.0, STACK_DIR[0]])
+    wing_c = kf0 + STACK_DIR * 7 + up * 76
+    wing = fuse(along(cyl(3.5, 30), kf0 + STACK_DIR * 7 + up * 56, up),
+                *[along(cyl(5, 12), wing_c + np.array([0, 15 * s_, 0]), (0, 1, 0)) for s_ in (-1, 1)])
+    P.append(Part("door_kf_clamp", fuse(kf, wing), BLACK, "door", tol=0.3, cut=False))
     P.append(Part("door_glass", along(cyl(22, 4), sight + np.array([-4, 0, 0]), (-1, 0, 0)), GLASS, "door",
                   opacity=0.8, tol=0.2))
-    P.append(Part("door_hinge", compound(*[fuse(cyl(7, z1 - z0, (hx, hy, z0)), box(hx - 2, x0 + 8, hy - 6, y0, z0, z1))
+    P.append(Part("door_hinge", compound(*[fuse(cyl(7, z1 - z0, (hx, hy, z0)), box(hx - 2, x0 + 8, CH_Y[1], hy + 6, z0, z1))
                                            for z0, z1 in fixed_z]), STEEL_DK, "chamber", tol=0.2, cut=False))
-    # swing bolts with black star knobs, at the door's back edge: a bracket on the chamber's back face, and a bolt that
-    # lies across the door's edge with its knob on the door; each swings back about its vertical pivot to open
-    for k, (pt, ax) in enumerate(zip(CLAMP_PTS, CLAMP_AXES)):
-        # bracket: a block on the back face and two ears, above and below the bolt's knuckle, with the pin through them
-        ears = [box(pt[0] - 6, pt[0] + 6, CH_Y[1] - 1.5, pt[1] + 6, pt[2] + lo, pt[2] + hi)
-                for lo, hi in ((-11, -7.5), (7.5, 11))]
-        P.append(Part(f"clamp_body{k}", fuse(box(pt[0] + 6, pt[0] + 18, CH_Y[1] - 0.5, pt[1] + 6, pt[2] - 11, pt[2] + 11),
-                                             *ears, cyl(1.8, 22, pt + np.array([0, 0, -11]))), STEEL_DK, "chamber",
-                      tol=0.2, cut=False))
-        knob_c = pt + np.array([-CLAMP_REACH, 0, 0])
-        lobes = [along(cyl(5.5, 10), knob_c + 11 * np.array([0, math.cos(t), math.sin(t)]), (-1, 0, 0))
+    # swing bolts with black star (T) knobs on the front face near its left edge (see CLAMP_PTS): a bracket block on
+    # the face with a pin along y, and a rod that lies left through an ear on the door's front edge, knob outside it.
+    # Values at 0 = closed; 1 = swung 180 deg about the pin, over the top, to point along the face towards the hood.
+    for k, pt in enumerate(CLAMP_PTS):
+        bracket = fuse(box(pt[0] - 16, pt[0] + 16, CH_Y[0] - 6, CH_Y[0], pt[2] - 16, pt[2] + 16),
+                       cyl(8, 8, (pt[0], CH_Y[0] - 6, pt[2]), (0, -1, 0)))
+        P.append(Part(f"clamp_body{k}", bracket, STEEL_DK, "chamber", tol=0.2, cut=False))
+        kc = pt + np.array([-CLAMP_REACH, 0.0, 0.0])
+        lobes = [along(cyl(5, 10), kc + 13 * np.array([0, math.cos(t), math.sin(t)]) + np.array([-8, 0, 0]), (-1, 0, 0))
                  for t in np.linspace(0, 2 * math.pi, 5, endpoint=False)]
-        knuckle = cyl(5.5, 14, pt + np.array([0, 0, -7])).cut(cyl(2.2, 20, pt + np.array([0, 0, -10])))
-        bolt = fuse(knuckle, along(cyl(4, CLAMP_REACH - 4.5), pt + np.array([-5.0, 0, 0]), (-1, 0, 0)),
-                    along(cyl(10, 10), knob_c, (-1, 0, 0)), *lobes,
-                    along(cyl(4, 3), knob_c + np.array([-10, 0, 0]), (-1, 0, 0)))
+        bolt = fuse(along(cyl(6, 6), pt + np.array([0, -4.0, 0]), (0, -1, 0)),         # the pin's round head
+                    along(cyl(3.5, CLAMP_REACH), pt, (-1, 0, 0)),
+                    along(cyl(10, 14), kc + np.array([-8, 0, 0]), (-1, 0, 0)), *lobes)
         P.append(Part(f"clamp{k}", bolt, BLACK, f"clamp{k}", tol=0.2, cut=False))
     # catch bowl round the outlet, on the chamber floor
     P.append(Part("catch_bowl", lathe([(46, 0), (52, 0), (56, 22), (53, 22), (49, 4), (46, 4)], CH_BOTTOM + CH_WALL,
@@ -720,8 +873,11 @@ def frame_parts() -> list[Part]:
     P.append(Part("control_panel", rbox(px0, px1, py - 12, py, pz0, pz1, 6), PANEL, "static", tol=0.3, cut=False))
     P.append(Part("panel_lcd", box(px0 + 14, px1 - 14, py - 15, py - 12, pz1 - 80, pz1 - 22), LCD, "static", tol=0.2,
                   cut=False))
-    keys = [box(px0 + 14 + 23 * i, px0 + 32 + 23 * i, py - 16, py - 12, pz0 + 20 + 24 * j, pz0 + 36 + 24 * j)
-            for i in range(5) for j in range(3)]
+    # T4 5:41 and wRc8p2 (T1) 30:13: a row of five soft keys under the LCD, then a pad of two rows of five round keys
+    # (the right-hand column with lit LEDs); the old three rows of squares were a guess
+    keys = [box(px0 + 14 + 23 * i, px0 + 32 + 23 * i, py - 16, py - 12, pz0 + 74, pz0 + 84) for i in range(5)]
+    keys += [fuse(cyl(7, 4, (px0 + 22 + 23 * i, py - 12, pz0 + 22 + 26 * j), (0, -1, 0))) for i in range(5)
+             for j in range(2)]
     P.append(Part("panel_keys", compound(*keys), (0.35, 0.36, 0.40), "static", tol=0.2, cut=False))
     # main switch under the panel, right of the chamber: yellow plate, red rotary handle
     sx, sz = SWITCH_C[0], SWITCH_C[2]

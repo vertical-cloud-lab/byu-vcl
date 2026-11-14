@@ -1,0 +1,44 @@
+{
+ "source": "https://youtu.be/58wJ_Khwgyk?t=1636",
+ "video": "58wJ_Khwgyk",
+ "t": 1636,
+ "pose": {
+  "door": 1.0,
+  "clamp1": 1.0
+ },
+ "holdout": true,
+ "points": {
+  "viewport centre": [
+   1005,
+   312
+  ],
+  "viewport hood top": [
+   1010,
+   133
+  ],
+  "viewport hood bottom": [
+   1010,
+   495
+  ],
+  "clamp0 knob": [
+   690,
+   283
+  ],
+  "clamp1 knob": [
+   975,
+   640
+  ],
+  "clamp1 pin": [
+   830,
+   572
+  ],
+  "viewport hood left": [
+   808,
+   335
+  ],
+  "viewport hood right": [
+   1213,
+   335
+  ]
+ }
+}
