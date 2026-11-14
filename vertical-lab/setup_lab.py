@@ -174,6 +174,9 @@ CAMS = {
 # of the first: a MiR250 turns on the spot between them (its corners sweep 0.49 m), then backs into the first one's
 # dock or drives forwards into the second's. The wire EDM and the DED went to the south row and the packaging station
 # to the north, so every dock has a pivot spot at its open end (``fit`` checks it).
+# the 68FM-100's load axis on the floor (round 11): r8_test's model, 1575 mm wide with its dashboard, centred on the
+# station's x = -6400 and turned to face north, puts its axis at x -6187.5, where chapter 5 parks the MiR (ins_x)
+INSTRON_AXIS_X = -6187.5
 FLOOR_PLAN = {
     "glovebox": (-7300.0, "N", -90.0, -7300.0),
     "repowder": (None, "N", 0.0, A.REPOWDER_AT[0] + 288.0),
@@ -182,7 +185,7 @@ FLOOR_PLAN = {
     "vlm2": (X2, "N", 0.0, X2),
     "aconity": (6950.0, "N", 0.0, 6650.0),
     "packaging": (10050.0, "N", 0.0, 10050.0),
-    "instron_floor": (-6400.0, "S", 0.0, -6600.0),
+    "instron_floor": (-6400.0, "S", 0.0, INSTRON_AXIS_X),         # round 11: dock on the load axis (was x -6600)
     "instron_small": (-4300.0, "S", 0.0, -4300.0),
     "fumehood": (1500.0, "S", 0.0, 1500.0),
     "ded": (3900.0, "S", 0.0, 3900.0),
@@ -191,10 +194,16 @@ FLOOR_PLAN = {
 BACK_IN = {"instron_small", "vlm", "aconity", "sieve_cell"}   # backed into from the open end beyond the MiR's back
 # the rePowder sticks out 337 mm past the row's fronts, so a MiR docks there 298 mm further out, as the alloy route's
 # chapters 2-3 park it (alloy_atomize.END_POSE); so does the sieving cell's (alloy_print: 300 mm off its bench)
-DOCK_Y = {"repowder": -2230.0, "sieve_cell": W.DOCK_N - 300.0}
+DOCK_Y = {"repowder": -2230.0, "sieve_cell": W.DOCK_N - 300.0,
+          # round 11: chapter 5's MiR stops 500 mm off the row at the Instron, 68 mm clear of the 3119-608 chamber's
+          # 550 mm door, which swings 432 mm out in front of the frame (alloy_workflow, MIR_YI); the tape follows it
+          "instron_floor": W.Y_FACE_S + 500.0 + P.MIR["W"] / 2}
 # targets that can't stand where warehouse.target_xy puts them: the VLMs' stand outside the opening's width, so a tray
 # pulled out to the front for maintenance passes them; the rePowder's in front of its own front
 TARGET_AT = {"vlm": (-1330.0, -1742.0), "vlm2": (X2 + 1330.0, -1742.0),
+             # round 11: 150 mm off the Instron's face as before, 650 mm beyond the docked MiR's front end, west of the
+             # chamber door's sweep, though the dock moved 420 mm out from the row
+             "instron_floor": (INSTRON_AXIS_X - 650.0, W.Y_FACE_S + 150.0),
              "repowder": (A.REPOWDER_AT[0] + 288.0 + 650.0, -1899.0 - 180.0)}
 SIEVE_BENCH = dict(x=-1982.5, w=1065.0, d=600.0, h=700.0, encl_h=1150.0)    # alloy_print.BENCH, ENCL_H
 INSTALL_AT = 0                                 # the first unit is put together at charger 0
@@ -228,9 +237,11 @@ R8_MERGED: dict = {"trays": {}, "floor": {}, "new_trays": {}, "skipped": [], "mo
 NO_DOCK = {"eos_m400", "meltio_cell"}
 # Where two streams' placements collide, the tray plan's call (fit found it; notes/lab_r8.md): tray F's quench tank
 # (r8_test, x 860, y -150) stood inside the disc magazine (r8_prep, x 1022, y -190). The magazine keeps its place in
-# front of the UPS; the tank moves left and back, between the furnace's right side and the magazine, behind camera
-# F1's post: 25 mm from the furnace, 44 mm from the magazine, 40 mm behind the post, clear of the furnace door's swing
-# (it opens to the front on its right-hand hinges). Its rig is where every scene built on setup_lab.build finds it.
+# front of the UPS; the tank moves left and back, between the furnace's right side and the magazine: 25 mm from the
+# furnace, 44 mm from the magazine, clear of the furnace door's swing (it opens to the front on its right-hand hinges).
+# Its rig is where every scene built on setup_lab.build finds it. Until round 10 camera F1's post stood in front of
+# the tank, 40 mm from it; since round 11 (services.TRAY_CAMS["F"], chapter 5's stream) F1 stands behind the tank, post
+# at y 85-175, 16 mm off its back, looking down into it, out of the path the tongs carry the rack along.
 R8_MOVES = {"quench_tank": dict(tray="F", x=680.0, y=-50.0, turn=0.0)}
 
 
@@ -791,10 +802,15 @@ def utilities(hood=None) -> tuple[dict, tuple]:
             add(junction_box(x, yn - 60, z_end, -1))
         else:
             add({"junction boxes": (W._box(x - 120, yn - 120, z_end - 5, x + 120, yn, z_end + 150), (0.62, 0.64, 0.66))})
+    # round 11: the box at the 68FM-100 hung at 1720-1900 mm, inside the frame's crosshead (1610-1810 at rest in
+    # r8_test's model, up to the top plate at 2137 over its travel; chapter 5 found it): it goes over the frame's top
+    # (2287 mm), 63 mm clear, at 2350-2530 mm, the machine's cable up its back
+    z_box = {"instron_floor": 2530.0}
     for key, x in south.items():
-        drops.append(pv.Cylinder(center=(x, ys + 60, (zs + 1900) / 2), direction=(0, 0, 1), radius=22,
-                                 height=zs - 1900, resolution=16).triangulate())
-        add(junction_box(x, ys + 60, 1900.0, +1))
+        ze = z_box.get(key, 1900.0)
+        drops.append(pv.Cylinder(center=(x, ys + 60, (zs + ze) / 2), direction=(0, 0, 1), radius=22,
+                                 height=zs - ze, resolution=16).triangulate())
+        add(junction_box(x, ys + 60, ze, +1))
         if key == "instron_small":
             label = (x, ys + 60, 1800.0)
     gas_users = [-7300.0, -3640.0, 7300.0]

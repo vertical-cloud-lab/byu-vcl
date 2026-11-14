@@ -327,6 +327,27 @@ plate to charge it: six units, three UPSs and three plates for nothing that move
 (`setup_lab.PASSIVE`), which made the three slots 750 mm shorter (notes/tray_plan.md). The lab now has 24 tray units
 and two bay units, 26 in all, against 32 (`timelapse.cameras()` counts them from the same tables).
 
+**Round 11: camera E1 moves behind the Mastersizer.** With r8_char's iMicro now lifting only its top lid (75° about
+its back edge, 180c0f4), audit-b's chapter-7 audit had the lid going 25-50 mm through E1's pan and head at every open
+and close: E1 stood in front of the iMicro at (-50, -340) and its head reached over the iMicro's front top edge. Where
+it can go instead, checked with the rig's own meshes against every box on tray E (out/tray_plan.json):
+
+- **Beside the iMicro:** no room. 29 mm to the Mastersizer on its right, 95 mm to the PIP on its left, and a post's
+  foot is 90 mm.
+- **In front:** a head clear of the lid's reach (in front of the iMicro's front face, y < -262, which is where the
+  lid's 522 mm stops) either needs more than the head's 75° of pan, or stands where the person bends in to the
+  indenter in the maintenance clip (upkeep: masts in front between x -380 and -120), or meets E0's head.
+- **Behind** the Mastersizer's back left corner, right of the lid: post at (170, 360), head at x 95-209, y 225-358,
+  75 mm outside the lid's region (tray x -520..20, within 522 mm of the hinge line, above it), 65 mm off the
+  Mastersizer, 470 mm behind the Aero S's hopper where chapter 4 pours from the front. It looks left and down at the
+  iMicro's back right quarter (pan -71°, tilt 47°). The Wide takes in the whole iMicro and its lid, and into the cabinet
+  over its right wall when the lid is up.
+
+The price is the room: from behind, 20 % of the Wide's picture looks out through the opening (`unit_view`; the HQ's
+0 %), where the old place saw none. That is round 5's problem back for one unit, though less than round 5's 34 % for
+E1, and A1 (26 %) and F1 (22 %, chapter 5's move this round) already live with it. Aiming at the indenter itself
+from there would make it 35 %.
+
 **Round 11: the overhead unit, seen.** Sterling, on the set-up movie's bay-camera step (`setup_lab.mp4` 106-112 s):
 "Can't see the overhead camera from the angle. Should change the view angle and temporarily make things opaque again".
 Round 10 showed both units from far off (`CAM_VLM`) through the see-through cladding, where the unit is a few pixels.

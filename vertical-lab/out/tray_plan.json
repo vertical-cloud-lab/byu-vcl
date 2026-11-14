@@ -206,7 +206,7 @@
    "shuttle": 1,
    "slot_z_mm": 1050.0,
    "span_mm": 750.0,
-   "tallest_mm": 702.2,
+   "tallest_mm": 702.3,
    "span_needed_mm": 750.0,
    "span_ok": true,
    "items": [
@@ -285,7 +285,7 @@
       511,
       705
      ],
-     "height_mm": 702.2,
+     "height_mm": 702.3,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -446,7 +446,7 @@
      "box_mm": [
       756,
       927,
-      -282,
+      -283,
       -126,
       511,
       688
@@ -492,7 +492,7 @@
    "shuttle": 1,
    "slot_z_mm": 2700.0,
    "span_mm": 725.0,
-   "tallest_mm": 689.0,
+   "tallest_mm": 700.1,
    "span_needed_mm": 725.0,
    "span_ok": true,
    "items": [
@@ -596,10 +596,10 @@
      "item": "cam_E1 post",
      "kind": "cam",
      "box_mm": [
-      -95,
-      -5,
-      -385,
-      -295,
+      125,
+      215,
+      315,
+      405,
       3,
       593
      ],
@@ -612,14 +612,14 @@
      "item": "cam_E1 head",
      "kind": "cam",
      "box_mm": [
-      -141,
-      22,
-      -338,
-      -175,
+      78,
+      234,
+      220,
+      358,
       511,
-      688
+      703
      ],
-     "height_mm": 684.9,
+     "height_mm": 700.1,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -2021,7 +2021,7 @@
    "span_ok": true,
    "items": [
     {
-     "item": "Jar racks on a tray (our design)",
+     "item": "264 powder jars in racks (our design)",
      "kind": "item",
      "box_mm": [
       -1205,
@@ -2041,7 +2041,7 @@
    "load": {
     "known_kg": 0.0,
     "not_found": [
-     "Jar racks on a tray (our design)"
+     "264 powder jars in racks (our design)"
     ],
     "over_one_person": [],
     "lightest_tray_for_the_known_part": "light"
@@ -2058,7 +2058,7 @@
    "span_ok": true,
    "items": [
     {
-     "item": "Jar racks on a tray (our design)",
+     "item": "489 powder jars in racks (our design)",
      "kind": "item",
      "box_mm": [
       -1205,
@@ -2078,7 +2078,7 @@
    "load": {
     "known_kg": 0.0,
     "not_found": [
-     "Jar racks on a tray (our design)"
+     "489 powder jars in racks (our design)"
     ],
     "over_one_person": [],
     "lightest_tray_for_the_known_part": "light"
@@ -2222,18 +2222,18 @@
    },
    "instron_floor": {
     "dock": [
-     -6600,
-     -5868,
+     -6188,
+     -5448,
      180
     ],
     "backs_in": false,
     "pivot": [
-     -5225,
-     -5868
+     -5738,
+     -5448
     ],
-    "approach_mm": 1375,
+    "approach_mm": 450,
     "target_post": [
-     -7250,
+     -6838,
      -6088
     ],
     "hits": [],

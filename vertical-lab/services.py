@@ -901,7 +901,17 @@ TRAY_CAMS = {   # per tray: (mast x, mast y, aim x, aim y, aim z, post yaw) in t
     "C": [(-960.0, -340.0, -560.0, 0.0, 600.0, 90.0), (125.0, -235.0, 360.0, 0.0, 486.0, 90.0)],
     "D": [(-225.0, -305.0, -552.0, 0.0, 550.0, 270.0), (300.0, -340.0, 60.0, 0.0, 600.0, 270.0),
           (860.0, 185.0, 1066.0, -43.0, 109.0, 90.0)],
-    "E": [(-470.0, -340.0, -880.0, 0.0, 420.0, 270.0), (-50.0, -340.0, -250.0, 0.0, 524.0, 180.0),
+    # Round 11: E1 moves from in front of the iMicro (-50, -340), where its head stood over the iMicro's front top edge
+    # and the lid, lifting 75 deg about its back edge (r8_char, 180c0f4), went 25-50 mm through its pan and head at
+    # every open and close (audit-b's chapter-7 audit). Nothing fits beside the iMicro (29 mm to the Mastersizer, 95 mm
+    # to the PIP), and in front a head clear of the lid's reach either needs more pan than the head's 75 deg or stands
+    # where the person bends in to the indenter (upkeep). So it stands behind the Mastersizer's back left corner, right
+    # of the lid: post at x 125-215, y 315-405, its head 75 mm clear of the lid's region (tray x -520..20, within 522 mm
+    # of the hinge line y 260, z 480), 65 mm off the Mastersizer, 470 mm behind the Aero S's hopper where chapter 4
+    # pours. It looks left and down at the iMicro's back right quarter (pan -71, tilt 47 deg): the Wide takes in the
+    # whole iMicro and its lid, and into the cabinet over its right wall when the lid is up. 20 % of the Wide's picture
+    # is the room through the opening (0 % for the HQ), as A1 (26 %) and F1 (22 %) accept; at the old place 0 %.
+    "E": [(-470.0, -340.0, -880.0, 0.0, 420.0, 270.0), (170.0, 360.0, -100.0, 200.0, 350.0, 0.0),
           (965.0, -375.0, 860.0, 0.0, 509.0, 180.0)],
     # Round 11 (Sterling, PR #318: "at 32:57 the arm passing through the camera / collision"): F1 stood at (685, -235),
     # in front of the quench tank (setup_lab.R8_MOVES put the tank behind it), right where chapter 5's tongs carry the

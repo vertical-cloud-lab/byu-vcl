@@ -216,6 +216,12 @@ As placed, every dock is clear and no machine stands in the aisle.
   chapters already park there (`alloy_atomize.END_POSE`). Its target post stands 180 mm in front of it. It is entered
   from the west, along y = -2230, which clears the rePowder's front by 41 mm. A MiR docked there reaches 120 mm into
   the aisle's 3.0 m.
+- **The 100 kN Instron's dock moved out (round 11).** Chapter 5's MiR stops 500 mm off the row at the 68FM-100, on
+  its load axis (x -6187.5), 68 mm clear of the 3119-608 chamber's 550 mm door, which swings 432 mm out in front of
+  the frame. The tape was 80 mm off the row and 412 mm west, so `DOCK_Y` and the station's dock x now match the stop
+  (y -5448). Its target post stays 150 mm off the face, 650 mm beyond the MiR's front end (`TARGET_AT`). A MiR docked
+  there reaches 242 mm into the aisle's 3.0 m. The junction box on the south row's drop there hung at 1720-1900 mm,
+  inside the frame's crosshead (1610-1810 at rest), so it now hangs over the frame's top, at 2350-2530 mm.
 - **The VLMs' targets stand outside the opening's width** (x = -1330, and 3630 + 1330), so a tray pulled out to the
   front passes them. The first unit backs into its dock from the gap between the Shuttles; the second drives forwards
   into its dock from the same gap.
