@@ -207,8 +207,18 @@ UTC on 2026-11-14: 708 frames, 118.0 s, 12.0 MB; the GIF from the MP4 at 448 px,
 - It started before the orchestrator's 063b014 (tray supports drawn only where a tray rests), so a second render
   followed: 01:17-01:36 UTC at 80c752c, 708 frames, 118.0 s, 11.8 MB, the GIF at 400 px and 3 fps (4.6 MB, under the
   4.9 MB asked for). It has 063b014's supports, the iMicro's lid-only hood (180c0f4) and chapter 5's specimen-finger
-  stand on the MiR (dd81998). Not yet in it: camera E1 behind the Mastersizer, the Instron's dock on its load axis and
-  its junction box over the frame (47219fc, 01:49).
+  stand on the MiR (dd81998). This is the set-up movie of round 11: **d919092**.
+- **What d919092 does not show** (all from 47219fc, 01:49, after it started):
+  - camera E1's new place. It still stands in front of the iMicro at (-50, -340), its head over the iMicro's front
+    top edge, where the lid would hit it;
+  - the 68FM-100's junction box over the frame. It still hangs at 1720-1900 mm, inside the crosshead;
+  - the Instron's dock tape on the load axis 500 mm off the row. It is still 80 mm off at x -6600, where chapter 5's
+    MiR no longer stops.
+
+  It does show the column supports drawn only where a tray rests: 063b014 is in its commit, 80c752c. A third render
+  for these was queued at 02:30 and started at 02:54. At 03:00 it was stopped on the coordinator's call: it held
+  6.5 GB that the maintenance clip, the finale and chapters 2 and 3 were waiting for. The MP4 it had begun to
+  overwrite was put back to d919092's.
 
 ## Memory: the whole lab is about 5-6 GB a process
 

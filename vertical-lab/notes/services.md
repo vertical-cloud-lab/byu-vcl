@@ -346,7 +346,7 @@ it can go instead, checked with the rig's own meshes against every box on tray E
 The price is the room: from behind, 20 % of the Wide's picture looks out through the opening (`unit_view`; the HQ's
 0 %), where the old place saw none. That is round 5's problem back for one unit, though less than round 5's 34 % for
 E1, and A1 (26 %) and F1 (22 %, chapter 5's move this round) already live with it. Aiming at the indenter itself
-from there would make it 35 %.
+from there would make it 35 %. The set-up movie's render of round 11 (d919092) was made before the move and still shows E1 in front of the iMicro; the vlm_cameras still and every chapter rendered after 01:49 show it behind.
 
 **Round 11: the overhead unit, seen.** Sterling, on the set-up movie's bay-camera step (`setup_lab.mp4` 106-112 s):
 "Can't see the overhead camera from the angle. Should change the view angle and temporarily make things opaque again".

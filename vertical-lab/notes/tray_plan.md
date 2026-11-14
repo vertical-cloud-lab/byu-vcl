@@ -221,7 +221,8 @@ As placed, every dock is clear and no machine stands in the aisle.
   the frame. The tape was 80 mm off the row and 412 mm west, so `DOCK_Y` and the station's dock x now match the stop
   (y -5448). Its target post stays 150 mm off the face, 650 mm beyond the MiR's front end (`TARGET_AT`). A MiR docked
   there reaches 242 mm into the aisle's 3.0 m. The junction box on the south row's drop there hung at 1720-1900 mm,
-  inside the frame's crosshead (1610-1810 at rest), so it now hangs over the frame's top, at 2350-2530 mm.
+  inside the frame's crosshead (1610-1810 at rest), so it now hangs over the frame's top, at 2350-2530 mm. The set-up movie's
+  round-11 render (d919092) predates both and still shows the old tape and box.
 - **The VLMs' targets stand outside the opening's width** (x = -1330, and 3630 + 1330), so a tray pulled out to the
   front passes them. The first unit backs into its dock from the gap between the Shuttles; the second drives forwards
   into its dock from the same gap.
