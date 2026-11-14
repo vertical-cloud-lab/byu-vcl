@@ -77,6 +77,11 @@ jobs:
           BASH_MAX_TIMEOUT_MS: "3600000"
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          # claude-code-action v1.0.273+ denies python, pip, node and other code-running
+          # commands on PRs whose author lacks write access, and treats every bot as such.
+          # Lift that only for PRs the Claude app opened (in-repo branches that only
+          # writers can push to); everyone else's PRs keep the guard.
+          restrict_untrusted_prs: ${{ (github.event.issue.user.login || github.event.pull_request.user.login) == 'claude[bot]' && 'false' || 'true' }}
           trigger_phrase: "@claude-youtube"
           additional_permissions: |
             actions: read
