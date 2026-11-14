@@ -213,11 +213,22 @@ def rss_by_holder() -> dict[int, int]:
     return out
 
 
+def reserve_factor() -> float:
+    """Round 11: the share of the running jobs' declared growth to hold back, from /tmp/vlab_slots/reserve_factor
+    (default 1). At 01:35 on 2026-11-14 the audits declared 4000 MB and held about 2500 for the whole job, so with the
+    full growth reserved a fourth slot sat idle beside 7.5 GB of free memory; the watchdog stays the backstop."""
+    try:
+        return max(0.0, min(1.0, float((SLOT_DIR / "reserve_factor").read_text().strip())))
+    except (OSError, ValueError):
+        return 1.0
+
+
 def reserved() -> int:
-    """MB the running jobs may still grow into: each one's declared peak less what it holds already, plus a margin."""
+    """MB the running jobs may still grow into: each one's declared peak less what it holds already (times
+    reserve_factor()), plus a margin."""
     rss = rss_by_holder()
-    return sum(max(0, int(d.get("mem", MEM_PER_WEIGHT)) - rss.get(int(d.get("pid", -1)), 0))
-               for d in held_infos()) + 500
+    grow = sum(max(0, int(d.get("mem", MEM_PER_WEIGHT)) - rss.get(int(d.get("pid", -1)), 0)) for d in held_infos())
+    return int(reserve_factor() * grow) + 500
 
 
 def holders() -> list[str]:
