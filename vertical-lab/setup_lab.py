@@ -57,10 +57,20 @@ TRAYS = {
     "H": ("2R4", "PCB assembly"), "G": ("2F1", "resin printing"), "I": ("2F2", "desktop LPBF"),
 }
 ORDER = ["D", "A", "B", "E", "J", "C", "F", "K", "L", "M", "H", "G", "I"]      # loading order: Shuttle 1, then 2
+# Round 11 (Sterling, PR #318, 2026-11-13: "Do we actually need cameras on the jars at all times? In terms of inventory,
+# we're going to get that with the overhead camera in the bay anyway"): the storage trays are passive. Nothing on them
+# draws power or gas, so they carry no UPS, no dock plate or tray lines, no socket, power strip or power lamp and no
+# stream cameras; the bay's overhead camera (and the wrist D405) sees what is on one whenever it is presented, the only
+# time anything on it can change. Their slots mate with nothing, so they have no dock either (notes/tray_plan.md). A
+# module adds its own with PASSIVE_TRAYS = {...} (r8_store: the jar stores N and O).
+PASSIVE = {"J"}
 # tray: [(key, x, y, turn)] in the tray's frame (centre of its floor, y to the back); y None puts the item's front 30 mm
 # behind the tray's front lip, as fab_trays does. A-C's round-2 items are animate.LOADS's (built by animate.Lab), D-F
 # line.TRAY_LOADS's, G-I fab_trays.LOADS's. Each tray also carries its UPS and dock plate at the back right
 # (services.UPS_AT, services.PLATE_*) and its camera posts (services.TRAY_CAMS or CAMS below); `fit` checks them all.
+
+
+STORAGE_X = 0.0         # tray J's storage load, centred (round 7: x -320, its right 630 mm left for the UPS and dock)
 
 
 def _items() -> dict:
@@ -73,7 +83,7 @@ def _items() -> dict:
         out[k] = [(key, x, y, 0.0) for key, x, y in v]
     for k, v in FT.LOADS.items():
         out[k] = [tuple(it) for it in v]
-    out["J"] = [("storage", -320.0, 0.0, 0.0)]                  # its right 630 mm left for the UPS and the dock
+    out["J"] = [("storage", STORAGE_X, 0.0, 0.0)]               # centred on the tray (round 11: no UPS, no dock)
     # the Keyence VHX is 624 mm deep as modelled: tray C has no room for it between its camera posts and the UPS, so it
     # went to K, beside the glovebox, in front of the UPS
     out["K"] = [("glovebox_tray", -460.0, 7.0, 0.0), ("vhx", 570.0, -50.0, 0.0)]
@@ -144,13 +154,15 @@ def reflow_entries() -> dict:
 
 ITEMS = _items()
 # the stream cameras of the trays services.TRAY_CAMS has no entry for: tray: ([(mast x, mast y, aim x, aim y, aim z
-# [, post yaw])], block height on the post, post height). The short trays (H, J) have short posts, so their slots stay
-# low: the head's top is about block + 148 mm over the tray's underside (services.TILT_AXIS, head_reach).
+# [, post yaw])], block height on the post, post height). The short tray H has short posts, so its slot stays low: the
+# head's top is about block + 148 mm over the tray's underside (services.TILT_AXIS, head_reach). Round 11: tray J's two
+# short posts are gone (PASSIVE); SHORT_CAMS is what they were, the default for a new tray from a module that isn't
+# passive.
+SHORT_CAMS = ([(680.0, -360.0, -320.0, -100.0, 150.0), (1160.0, 100.0, -700.0, -100.0, 150.0)], 270.0, 320.0)
 CAMS = {
     "G": ([(-1150.0, 361.0, -920.0, -150.0, 300.0, 90.0), (160.0, 361.0, 200.0, -150.0, 250.0, 90.0)], None, None),
     "H": ([(-1150.0, 361.0, -640.0, -100.0, 250.0, 90.0), (-130.0, 361.0, 400.0, -100.0, 200.0, 90.0)], 270.0, 320.0),
     "I": ([(-1150.0, 361.0, -500.0, -150.0, 400.0, 90.0), (-100.0, 361.0, 300.0, -150.0, 400.0, 90.0)], None, None),
-    "J": ([(680.0, -360.0, -320.0, -100.0, 150.0), (1160.0, 100.0, -700.0, -100.0, 150.0)], 270.0, 320.0),
     "K": ([(470.0, 361.0, -460.0, -300.0, 450.0, 90.0)], None, None),
     "L": ([(-620.0, 361.0, -944.0, -150.0, 400.0, 90.0), (180.0, 361.0, -23.0, -150.0, 300.0, 90.0)], None, None),
     "M": ([(-480.0, 361.0, -873.0, -150.0, 400.0, 90.0), (470.0, 361.0, 722.0, -150.0, 400.0, 90.0)], None, None),
@@ -197,6 +209,10 @@ CAM_SCALE = [(6200, -31000, 24000), (0, -6500, 0), (0, 0, 1)]
 CAM_UNIT = [(1900, -2900, 2300), (-1300, -5600, 800), (0, 0, 1)]
 CAM_OPEN = [(3500, -5900, 2700), (0, -1000, 1300), (0, 0, 1)]      # north of the south row's cable tray and argon
 CAM_OPEN2 = [(X2 + 3500, -5900, 2700), (X2, -1000, 1300), (0, 0, 1)]
+# round 11: the bay cameras from an operator's eyes, 1.6 m up and 0.9 m in front of the Shuttle's face, 420 mm right of
+# its centre (services.movie_bay_camera's view), looking up under the header at the unit
+BAY_EYE = (420.0, -2450.0, 1600.0)
+BAY_VIEW_ANGLE = 40.0
 ORBIT = [[(-9000, -16500, 9000), (700, -2300, 600), (0, 0, 1)],
          [(-15500, -2000, 9500), (700, -2300, 600), (0, 0, 1)],
          [(3500, -15500, 5600), (700, -2300, 900), (0, 0, 1)],
@@ -219,9 +235,15 @@ R8_MOVES = {"quench_tank": dict(tray="F", x=680.0, y=-50.0, turn=0.0)}
 
 def add_slots(slots: dict):
     """New storage slots {slot: (column, span)} on Shuttle 2, added for this process (vlm.py's own COLUMNS stay as
-    they are, so no cache that hashes vlm.py changes): each starts where its column's last slot ends."""
+    they are, so no cache that hashes vlm.py changes): each starts where its column's last slot ends. A slot vlm.COLUMNS
+    has already (round 11: r8_store's 2F0 and 2F0b) is left as it is; a span that disagrees with it is reported."""
     for slot, (col, span) in slots.items():
         if slot in V.SLOTS:
+            if abs(V.SPAN.get(slot, span) - float(span)) > 1e-6 or V.SLOT_SHUTTLE.get(slot) != 2:
+                msg = f"slot {slot}: {span} mm asked for, vlm.COLUMNS has {V.SPAN.get(slot)} (Shuttle " \
+                      f"{V.SLOT_SHUTTLE.get(slot)}): vlm.COLUMNS kept"
+                R8_MERGED["skipped"].append(msg)
+                print("setup_lab:", msg, flush=True)
             continue
         lst = V.COLUMNS[2][col]
         if col == "front":
@@ -252,12 +274,14 @@ def merge_r8() -> dict:
             print(f"setup_lab: {name} not merged: {e}", flush=True)
             continue
         add_slots(getattr(mod, "NEW_SLOTS", {}))
+        PASSIVE.update(getattr(mod, "PASSIVE_TRAYS", ()))
         for k, (slot, role) in getattr(mod, "NEW_TRAYS", {}).items():
             if k not in TRAYS and slot in V.SLOTS:
                 TRAYS[k] = (slot, role)
                 ORDER.append(k)
-                CAMS.setdefault(k, CAMS["J"])          # short posts, as tray J's: a short slot
-                R8_MERGED["new_trays"][k] = dict(slot=slot, role=role, module=name)
+                if k not in PASSIVE:
+                    CAMS.setdefault(k, SHORT_CAMS)     # short posts, as tray J's were: a short slot
+                R8_MERGED["new_trays"][k] = dict(slot=slot, role=role, module=name, passive=k in PASSIVE)
         for key, p in getattr(mod, "TRAY_PLACEMENT", {}).items():
             k = p["tray"]
             if k not in TRAYS:
@@ -286,6 +310,7 @@ def merge_r8() -> dict:
                                  float(p.get("turn", 0.0))))
         R8_MERGED["moved"][key] = dict(p, was=R8_MERGED["trays"].get(key))
     R8_MERGED["no_dock"] = sorted(NO_DOCK)
+    R8_MERGED["passive_trays"] = sorted(PASSIVE)
     R8_MERGED["done"] = True
     return R8_MERGED
 
@@ -505,8 +530,9 @@ class TwoLab(A.Lab):
         if self.focus is not None:
             k = self.focus
             w = self.where[k]
-            state = "moving, unpowered" if w is None else ("at the opening, powered" if w == "open" else
-                                                          f"stored ({w}), powered")
+            pw = "passive, no power" if k in PASSIVE else "powered"
+            state = ("moving" if k in PASSIVE else "moving, unpowered") if w is None else (
+                f"at the opening, {pw}" if w == "open" else f"stored ({w}), {pw}")
             g = [(f"Tray {k}", state), ("Shuttle", str(self.unit.get(k, 1)))]
         self.sc.gauges = g + extra
 
@@ -551,14 +577,18 @@ class TwoLab(A.Lab):
 
 
 def add_tray(sc: Scene, L: TwoLab, k: str):
-    """Tray k in its slot (TRAYS), with its dock plate and its tray lines (services.py) riding on it."""
+    """Tray k in its slot (TRAYS), with its dock plate and its tray lines (services.py) riding on it. A passive tray
+    (PASSIVE) is the bare pan: no socket, power strip or lamp, no plate, no lines."""
     import services
     slot, role = TRAYS[k]
+    passive = k in PASSIVE
     V.TRAYS.setdefault(k, dict(kind="extra", role=role))
     A.HOME[k], A.ROLE[k] = slot, role
     L.unit[k] = V.SLOT_SHUTTLE[slot]
     if f"tray_{k}" not in {g for g in sc.group_of.values()}:
         for name, (shape, mat, group) in {**V.tray(k), **V.lamp(k)}.items():
+            if passive and name != f"tray {k}":
+                continue
             if hasattr(shape, "vals"):
                 shape = shape.val() if len(shape.vals()) == 1 else line.I.cq.Compound.makeCompound(shape.vals())
             e = lab._entry(lab.to_mesh(shape, 2.0), mat, group)
@@ -566,7 +596,8 @@ def add_tray(sc: Scene, L: TwoLab, k: str):
     L.tray[k] = [*V.SLOTS[slot]]
     L.where[k] = slot
     L.eq_groups.setdefault(k, [])
-    services.add_tray_services(sc, k, ups=False)
+    if not passive:
+        services.add_tray_services(sc, k, ups=False)
 
 
 def add_ups(sc: Scene, k: str) -> list:
@@ -952,6 +983,8 @@ def build(data, idata, mp4=True, name="setup_lab", title=TITLE, highlight=None):
             hid = {nm for pc, ns in rig.names.items() if pc in inst.joints and inst.joints[pc].kind == "fade"
                    and not inst.joints[pc].v0 for nm in ns}
             items[k].append((key, f"{pre}body", [nm for nm in rig.all_names() if nm not in hid], item_label(inst)))
+        if k in PASSIVE:                                 # round 11: nothing on it draws power, so no UPS, no cameras
+            continue
         ups = add_ups(sc, k)
         items[k].append(("ups", f"ups_{k}", ups, "UPS"))
         for g in add_cams(sc, k):
@@ -1130,8 +1163,11 @@ def movie(data, idata):
             A.both(s(L, ["base", "u2_base"], (0, 0, 900)), s(L, ["posts", "u2_posts"], (0, 0, 1800)),
                    s(L, ["col_front", "col_rear", "u2_col_front", "u2_col_rear"], (2600, 0, 0))),
             hold=0.3, cam_to=CAM_VLM)
-    sc.step(f"4/{n}", f"The extractors and their drives, then {len(trays)} empty electrified trays, A to "
-            f"{max(trays)}, each with its dock plate at the back right.", 2.6,
+    passive = [k for k in trays if k in PASSIVE]
+    pas = ", ".join(passive[:-1]) + f" and {passive[-1]}" if len(passive) > 1 else "".join(passive)
+    sc.step(f"4/{n}", f"The extractors and their drives, then {len(trays)} empty trays, A to {max(trays)}: "
+            f"{len(trays) - len(passive)} electrified, each with its dock plate at the back right, and "
+            f"{len(passive)} plain ones for storage ({pas}).", 2.6,
             A.both(s(L, ["lift_rails", "u2_lift_rails"], (0, 0, 2500)), s(L, ["drive", "u2_drive"], (0, 0, 1400)),
                    s(L, ["lift", "belts", "u2_lift", "u2_belts"], (0, 0, 2400)), s(L, tray_groups, (3200, 0, 0))),
             hold=0.3)
@@ -1284,31 +1320,67 @@ def movie(data, idata):
                     lbls.append((nm, tuple(np.array(sc.world(g)[:3, 3]) + (0, 0, 420))))
             ncam = sum(1 for it in lst if it[0] == "cam")
             extra = ", its UPS" + (f" and {ncam} camera post{'s' if ncam > 1 else ''}" if ncam else "")
+            if k in PASSIVE:                     # round 11: no UPS, no dock plate, no cameras
+                extra = (f". Nothing on it draws power: no UPS, no dock plate, no cameras, and a slot "
+                         f"{V.SPAN[A.HOME[k]]:.0f} mm tall")
             cap = f"Tray {k}: " + ", ".join(lb[0] for lb in lbls) + extra + "."
             sc.step(f"7/{n}", cap, (1.0 + 0.32 * len(lst)) if full else (0.7 + 0.18 * len(lst)),
                     stagger(fs, overlap=0.5), hold=0.6 if full else 0.5, labels=W.auto(sc, cam_now, lbls, dy=0.16),
                     cam_to=None if full else cam)
         if full:
-            L.store(k, f"7/{n}", f"Tray {k} goes back to its slot ({A.HOME[k]}), {V.SPAN[A.HOME[k]]:.0f} mm tall, "
-                    "where it has power.", fast=fast, hold=0.05, mint=mint)
+            L.store(k, f"7/{n}", f"Tray {k} goes back to its slot ({A.HOME[k]}), {V.SPAN[A.HOME[k]]:.0f} mm tall" +
+                    (", which has no dock: nothing on the tray needs one." if k in PASSIVE else ", where it has power."),
+                    fast=fast, hold=0.05, mint=mint)
         else:
             L.where[k] = A.HOME[k]
             L.tray[k] = [*V.SLOTS[A.HOME[k]]]
             L.apply_state()
     L.focus = None
     # ------------------------------------------------------------------ 8. the bay cameras
+    # Round 11 (Sterling, PR #318, 2026-11-13: "Can't see the overhead camera from the angle. Should change the view
+    # angle and temporarily make things opaque again"): round 10 showed both units from CAM_VLM, far off and through
+    # the see-through cladding. Now each is seen from where an operator stands at its opening, eyes at 1.6 m, looking
+    # up under the header (services.py's bay_camera clip opens on the same view), with the cladding and the other
+    # ghosted parts solid while it is shown: Shuttle 2's first (the loading ends there), then Shuttle 1's; then back
+    # to the wide view, the cladding see-through again.
     cam_names = add_bay_cams(sc)
     L.show_gauges = False
     L.apply_state()
     for nm in cam_names:
         sc.alpha[nm] = 0.0
+    u2_cam = [nm for nm in cam_names if sc.group_of[nm].startswith(("baycam2", "baycamrig2"))]
+    by_unit = {2: u2_cam, 1: [nm for nm in cam_names if nm not in set(u2_cam)]}
+    va0 = sc.view_angle
 
-    def cams_on(u):
-        for nm in cam_names:
-            sc.alpha[nm] = u
-        tables_on(1.0 - min(1.0, 2 * u))
-    sc.step(f"8/{n}", "The bay cameras go on, one over each opening, looking down at the presented tray (services.py). "
-            "Every tray already carries its own stream cameras.", 1.8, cams_on, hold=1.4, cam_to=CAM_VLM,
+    def cams_on(unit, tables=False):
+        def up(u):
+            for nm in by_unit[unit]:
+                sc.alpha[nm] = u
+            if tables:
+                tables_on(1.0 - min(1.0, 2 * u))
+        return up
+    for i, unit in enumerate((2, 1)):
+        x = V.SHUTTLE_X[unit]
+        tgt = np.array([x, *services.bay_cam_point()[1:]])
+        view = [(x + BAY_EYE[0], BAY_EYE[1], BAY_EYE[2]), tuple(tgt + (0, 0, -60)), (0, 0, 1)]
+        lbl = [(f"Shuttle {unit}'s overhead camera: a Pi 5 with the HQ Camera (16 mm lens) and the Camera "
+                "Module 3 Wide, on a pan-tilt head", tuple(tgt), (0.56, 0.12)),
+               ("on a 2020 bar across the back of the bay, under the tray stored over the opening",
+                (x - 700.0, services.BAY_CAM["y"], services.BAY_CAM["bar_z"]), (0.18, 0.27))]
+        if i == 0:
+            cap = (f"The bay cameras go on, one over each opening: Shuttle {unit}'s first, seen from where an operator "
+                   "stands, eyes at 1.6 m (the cladding drawn solid for it). It sits up under the header at the back "
+                   "of the bay and looks down over the presented tray.")
+            sc.step(f"8/{n}", cap, 1.4, A.both(L.skin(0.0), cams_on(unit, tables=True)), hold=1.0, cam_to=view,
+                    labels=lbl, view_angle_to=BAY_VIEW_ANGLE)
+        else:
+            cap = (f"Then Shuttle {unit}'s: the same unit on the same bar. Together with the D405 on the arm's wrist, "
+                   "it sees what is on every tray the Shuttle presents.")
+            sc.step(f"8/{n}", cap, 1.3, cams_on(unit), hold=1.0, cam_to=view, labels=lbl)
+    pas = ", ".join(sorted(PASSIVE)[:-1]) + f" and {sorted(PASSIVE)[-1]}" if len(PASSIVE) > 1 else "".join(PASSIVE)
+    sc.step(f"8/{n}", f"Every tray with instruments carries its own stream cameras; the storage trays ({pas}) carry "
+            "none: the bay camera takes their stock whenever one is presented, the only time a jar or a sample can "
+            "come or go.", 1.0, L.skin(1.0), hold=0.6, cam_to=CAM_VLM, view_angle_to=va0,
             labels=W.auto(sc, CAM_VLM, [("overhead camera at the bay", services.bay_cam_point()),
                                         ("overhead camera at the bay", (X2, *services.bay_cam_point()[1:]))]))
     # ------------------------------------------------------------------ 9. orbit
@@ -1515,7 +1587,8 @@ def draw_plan(rep: dict, path):
         ax.set_xticks([])
         ax.set_yticks([])
         ok = "fits" if r["ok"] else "CHECK"
-        ax.set_title(f"Tray {k}: {r['role']}\nShuttle {r['shuttle']}, slot {r['slot']}: {r['span_mm']:.0f} mm "
+        pas = " (passive: no UPS, dock plate or cameras)" if k in PASSIVE else ""
+        ax.set_title(f"Tray {k}: {r['role']}{pas}\nShuttle {r['shuttle']}, slot {r['slot']}: {r['span_mm']:.0f} mm "
                      f"(needs {r['span_needed_mm']:.0f}; tallest {r['tallest_mm']:.0f}): {ok}", fontsize=8,
                      loc="left")
         ax.text(0, -V.TRAY_D / 2 - 22, "front: the opening, where the arm works", ha="center", va="top", fontsize=5.5,
@@ -1538,6 +1611,17 @@ def draw_plan(rep: dict, path):
             else:
                 ax.text(xc + 0.475, z + span / 2, f"{slot}: free\n{span:.0f}", ha="center", va="center", fontsize=6.4,
                         color="#777")
+        for col, lst in V.COLUMNS[u].items():       # round 11: what each column has left at its top
+            if not lst and col != "front_low":
+                continue
+            z_end = (V.Z_FRONT_HI if col == "front" else V.Z_LOW) + sum(sp for _, sp in lst)
+            top = V.Z_FRONT_LOW_TOP if col == "front_low" else V.Z_TOP_IN
+            free = top - z_end
+            if free >= V.PITCH:
+                xc = (0.0 if col == "rear" else -1.05) + (u - 1) * 2.4
+                ax.add_patch(Rectangle((xc, z_end), 0.95, free, fc="none", ec="#9a9", lw=0.7, ls="--"))
+                ax.text(xc + 0.475, z_end + free / 2, f"free {free:.0f}", ha="center", va="center", fontsize=6.0,
+                        color="#585")
         x0 = (u - 1) * 2.4 - 1.05
         ax.add_patch(Rectangle((x0, V.Z_SILL), 0.95, V.OPEN_H, fc="#fff7e0", ec="#c90", lw=0.8))
         ax.text(x0 + 0.475, V.Z_SILL + V.OPEN_H / 2, f"opening\n{V.OPEN_H:.0f} mm\ngoods\n{V.MAX_GOODS_H:.1f}",
@@ -1555,7 +1639,8 @@ def draw_plan(rep: dict, path):
     ax.tick_params(labelsize=6.5)
     fig.suptitle("The tray plan: every tray from above, front (the opening) at the bottom. Items blue, UPS amber, "
                  "dock plate and tray lines red, camera posts and heads green; a red outline is a clash.\nRight: the "
-                 "two Shuttles' columns, each slot as tall as its tray needs (setup_lab.py fit)", fontsize=10.5,
+                 "two Shuttles' columns, each slot as tall as its tray needs, and what each column has left (dashed) "
+                 "(setup_lab.py fit)", fontsize=10.5,
                  x=0.12, y=0.995, ha="left")
     fig.savefig(path, bbox_inches="tight")
     plt.close(fig)

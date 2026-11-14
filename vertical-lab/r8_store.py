@@ -14,10 +14,18 @@ different sizes." Two short trays of labelled jars, each jar standing in a pocke
 The jar sizes are typical wide-mouth straight-sided jars, not a supplier's drawing: estimates. The 2F-85 opens 85 mm,
 so no jar is wider than 76 mm, and rows are spaced front to back by the jar's diameter plus 20 mm, room for the
 fingers to go down beside a jar (6 mm clear of it, 12 mm of finger, 2 mm spare); side by side the jars stand 6 mm
-apart. Each rack is 1760 x 760 mm on its tray, as tray J's storage load is, so the tray's right end stays free for its
-UPS, dock plate and cameras. ``python3 r8_store.py json`` writes ``out/powder_store.json``: every seat, its size, what
-is in it, and whether the UR10e reaches it pointing straight down from the MiR250 parked square to the opening, at the
-middle and 600 mm either side.
+apart.
+
+Round 11 (Sterling, PR #318, 2026-11-13: the jar trays' cameras and UPS are "very inefficient from a vertical space
+usage, since the jars are so short. Do we actually need cameras on the jars at all times?"): no. Both trays are passive
+(``PASSIVE_TRAYS``): nothing on them draws power or gas, so no UPS, dock plate, tray lines or stream cameras, and the
+bay's overhead camera takes the inventory whenever a tray is presented, the only time a jar can come or go. Each rack
+now runs the tray's full width, 2410 mm of the 2426 inside the rim (until round 10, 1760 mm, the right end kept for the
+UPS, dock and cameras), with 76 mm at each end for its handles, and each slot is as tall as its jars: N 225 mm (was
+475), O 150 mm (was 500), both under Shuttle 2's access table. ``python3 r8_store.py json`` writes
+``out/powder_store.json``: every seat, its size, what is in it, whether the UR10e reaches it pointing straight down
+from the MiR250 parked square to the opening, at the middle and 600 mm either side, and whether the 2F-85, open
+around an end seat's lid, clears the rack, its handles, the neighbouring jars and the tray's rim (``gripper_check``).
 
 **The fume hoods, without HF.** Sterling (PR #318): "I don't want to deal with HF in these workflows, especially not with
 robotics." Round 7's ducted hood etched a polished Al coupon in Keller's reagent (HF, HCl, HNO3). ``fumehood()`` here is
@@ -66,8 +74,19 @@ JARS = {
     "250 mL": (70.0, 92.0, 18.0, 250),
     "500 mL": (76.0, 150.0, 20.0, 500),
 }
-RACK = dict(W=1760.0, D=760.0, h=24.0, pocket=12.0, edge=12.0)   # each rack: the tray's left 1760 mm, 760 deep
-DX_GAP, DY_GAP = 6.0, 20.0           # side by side; front to back (the fingers' room)
+# each rack: the tray's full width (2426 mm inside the rim, 8 mm spare each side) and 800 deep (840 inside the rim: a
+# passive tray has no power strip along its back); its handles (60 mm wide, 10-70 mm in from each end) and 6 mm to the
+# first jar take 76 mm at each end. Round 10: 1760 x 760 mm, left of the UPS
+RACK = dict(W=2410.0, D=800.0, h=24.0, pocket=12.0, edge=12.0, handle_zone=76.0)
+DX_GAP, DY_GAP = 6.0, 20.0           # side by side; front to back until round 10 (the fingers' room, as was thought)
+# Round 11: rows front to back, centre to centre (mm), by the sizes either side. Opened around a cap with 6 mm clear,
+# the 2F-85's fingers flare 11 mm (30 mL) to 18 mm (500 mL) past their pads at the cap's height, and higher up its
+# linkage is wider still, so a row beside a taller jar needs more room than one beside its own size. From ur_arm's
+# meshes with 3 mm spare (round 11's measurement, notes/lab_r8.md); gripper_check re-checks the seats. Until round 10
+# every row was the jar's diameter + 20 mm apart, which the fingers cleared for the 30 mL jars only.
+ROW_PITCH = {("30 mL", "30 mL"): 61.5, ("60 mL", "60 mL"): 73.5, ("125 mL", "125 mL"): 85.5,
+             ("250 mL", "250 mL"): 99.0, ("500 mL", "500 mL"): 103.0, ("30 mL", "60 mL"): 72.5,
+             ("60 mL", "125 mL"): 92.0, ("125 mL", "250 mL"): 105.0, ("250 mL", "500 mL"): 116.5}
 # each store: [(size, rows)], front to back
 LAYOUT = {
     "powder_store_feed": [("60 mL", 2), ("125 mL", 2), ("250 mL", 2), ("500 mL", 2)],
@@ -86,10 +105,14 @@ ALLOYS = ["Al 4047", "AlSi10Mg", "Al-10Si", "Al-Mn-Zr", "Al-Ce", "Al-Sc-Zr", "Cu
 LOT_C = [(0.16, 0.40, 0.75), (0.85, 0.50, 0.15), (0.20, 0.55, 0.30), (0.55, 0.25, 0.60), (0.75, 0.20, 0.25),
          (0.15, 0.55, 0.60), (0.80, 0.70, 0.15), (0.40, 0.42, 0.46)]
 DAL_IDS = ["jz31op", "8rthq2", "u23y78", "4yghtr", "9fxeqt", "abc57t", "c3k0n5", "09pol5", "by02uy", "lo7ty1"]
-TRAY_PLACEMENT = {"powder_store_feed": dict(tray="N", x=-320.0, y=0.0, turn=0.0),
-                  "powder_store_lots": dict(tray="O", x=-320.0, y=0.0, turn=0.0)}
-NEW_TRAYS = {"N": ("2F0", "powder store: feedstock"), "O": ("2R5", "powder store: atomized lots")}
-NEW_SLOTS = {"2F0": ("front_low", 475.0), "2R5": ("rear", 500.0)}     # Shuttle 2's free short slots (tray_plan.md)
+TRAY_PLACEMENT = {"powder_store_feed": dict(tray="N", x=0.0, y=0.0, turn=0.0),
+                  "powder_store_lots": dict(tray="O", x=0.0, y=0.0, turn=0.0)}
+NEW_TRAYS = {"N": ("2F0", "powder store: feedstock"), "O": ("2F0b", "powder store: atomized lots")}
+# round 11: both under Shuttle 2's access table, as vlm.COLUMNS has them (setup_lab.add_slots checks the two agree):
+# 3 + 182 + 20 mm for N's 500 mL jars and 3 + 104 + 20 for O's 125 mL ones, up to the 25 mm pitch. Round 10: 2F0 at
+# 475 mm and 2R5 at 500, sized for the UPS (437 mm) and the camera posts
+NEW_SLOTS = {"2F0": ("front_low", 225.0), "2F0b": ("front_low", 150.0)}
+PASSIVE_TRAYS = {"N", "O"}           # no UPS, no dock plate, no cameras (setup_lab.PASSIVE)
 
 
 def _quiet(c, k=0.35, grey=0.6) -> tuple:
@@ -112,22 +135,46 @@ def _ids(n: int, seed: int = 157) -> list[str]:
     return out[:n]
 
 
+def band_rows(key: str) -> list[dict]:
+    """Each size band of a store, front to back: dict(size, ys (its rows' centres), y0, y1 (its rack plate)), in the
+    store's frame. Rows ROW_PITCH apart; a plate ends halfway to the next band's first row."""
+    D = RACK["D"]
+    out, y = [], None
+    for size, rows in LAYOUT[key]:
+        r = JARS[size][0] / 2 + 1.0                       # the cap's radius
+        if y is None:
+            y = -D / 2 + RACK["edge"] + r + 4.0
+        else:
+            y += ROW_PITCH[(out[-1]["size"], size)]
+        ys = [y + ROW_PITCH[(size, size)] * i for i in range(rows)]
+        y = ys[-1]
+        out.append(dict(size=size, ys=ys, r=r))
+    for i, b in enumerate(out):
+        b["y0"] = -D / 2 if i == 0 else (out[i - 1]["ys"][-1] + b["ys"][0]) / 2
+        b["y1"] = b["ys"][-1] + b["r"] + 8.0 if i == len(out) - 1 else (b["ys"][-1] + out[i + 1]["ys"][0]) / 2
+    assert out[-1]["y1"] - out[0]["y0"] <= D + 1e-6, (key, out[0]["y0"], out[-1]["y1"])
+    dy = -(out[0]["y0"] + out[-1]["y1"]) / 2       # centred front to back: the frame's origin is the store's middle,
+    for b in out:                                  # where setup_lab.placed() puts it on the tray
+        b["ys"] = [y + dy for y in b["ys"]]
+        b["y0"], b["y1"] = b["y0"] + dy, b["y1"] + dy
+    return out
+
+
 def jar_seats(key: str) -> list[dict]:
     """Every seat of a store, in its own frame (the rack's centre, y to the back): dict(size, x, y, z (the jar's base),
     row, col, content, label, lid colour)."""
-    W, D = RACK["W"], RACK["D"]
-    y = -D / 2 + RACK["edge"]
+    W = RACK["W"]
     seats = []
     lots = _ids(80)
     li = 0
     fi = 0
-    for band, (size, rows) in enumerate(LAYOUT[key]):
+    for band, (bd, (size, rows)) in enumerate(zip(band_rows(key), LAYOUT[key])):
         d, h, lid, ml = JARS[size]
-        px, py = d + DX_GAP, d + DY_GAP
-        ncol = int((W - 2 * RACK["edge"]) // px)
+        px = d + DX_GAP
+        ncol = int((W - 2 * RACK["handle_zone"] + DX_GAP) // px)      # n jars take n * px - DX_GAP
         x0 = -(ncol - 1) * px / 2
         for r in range(rows):
-            yc = y + py / 2
+            yc = bd["ys"][r]
             for c in range(ncol):
                 if key == "powder_store_feed":
                     el, col = FEED[fi % len(FEED)]
@@ -142,7 +189,6 @@ def jar_seats(key: str) -> list[dict]:
                     content, label = f"{a}, {frac}", f"{run} {frac}"
                 seats.append(dict(size=size, ml=ml, x=round(x0 + c * px, 1), y=round(yc, 1),
                                   z=RACK["h"] - RACK["pocket"], row=r, band=band, col=c, content=content, label=label, lid=col))
-            y += py
     return seats
 
 
@@ -185,17 +231,16 @@ def store(key: str) -> Instrument:
     bands = {}
     for s in seats:
         bands.setdefault(s["band"], []).append(s)
+    brows = band_rows(key)
     for b, ss in bands.items():
         d = JARS[ss[0]["size"]][0]
-        ys = sorted({s["y"] for s in ss})
-        py = d + DY_GAP
-        y0, y1 = ys[0] - py / 2, ys[-1] + py / 2
+        y0, y1 = brows[b]["y0"], brows[b]["y1"]
         plate = box(-W / 2, y0 + 2, 0, W / 2, y1 - 2, RACK["h"])
         cut = cq.Workplane("XY").pushPoints([(s["x"], s["y"]) for s in ss]).circle(d / 2 + 1.5) \
             .extrude(RACK["pocket"] + 1).translate((0, 0, RACK["h"] - RACK["pocket"]))
         body.add(f"rack {ss[0]['size']} {b}", plate.cut(cut), "r8_rack")
         body.add(f"rack edge {b}", box(-W / 2, y0 + 2, RACK["h"] - 6, W / 2, y0 + 8, RACK["h"]), "r8_rack_edge")
-        for sx in (-1, 1):                 # handles at each end: the arm (or a person) lifts a rack out whole
+        for sx in (-1, 1):                 # handles at each end, 6 mm past the end jars: a person lifts a rack out whole
             hx = sx * (W / 2 - 40)
             body.add(f"rack handle {b} {sx}", box(hx - 30, (y0 + y1) / 2 - 8, RACK["h"], hx + 30, (y0 + y1) / 2 + 8,
                                                   RACK["h"] + 30).cut(box(hx - 20, (y0 + y1) / 2 - 9, RACK["h"],
@@ -233,9 +278,10 @@ def store(key: str) -> Instrument:
             ("The tint is only a highlight, held for a few seconds...", 2.2, {"jar tint": (1.0, 1.0)}),
             ("...then it fades back: every jar is the same clear glass with a black cap.", 1.8,
              {"jar tint": (1.0, 0.0)}),
-            ("Rows stand 20 mm apart front to back, room for the gripper's fingers; the arm takes a jar from above.",
-             3.0, {}),
-            ("Each rack lifts out whole by its handles. The tray's right end keeps its UPS, dock and cameras.", 2.6, {}),
+            ("Rows stand 21-41 mm apart front to back, room for the gripper's open fingers; the arm takes a jar from "
+             "above.", 3.0, {}),
+            ("Each rack runs the tray's full width and lifts out whole by its handles. Nothing here draws power: no "
+             "UPS, no cameras. The bay's overhead camera counts the jars whenever the tray is presented.", 2.6, {}),
         ]
         inst.zoom = {1: ((-500.0, -250.0, 60.0), 900.0), 5: ((300.0, -150.0, 60.0), 700.0), 6: "out"}
         inst.labels = [("60 mL", (-700, -330, 70), (0.10, 0.82)), ("125 mL", (-300, -190, 95), (0.30, 0.86)),
@@ -339,6 +385,123 @@ def reach(seats, tray_lift=0.0, offsets=(-600.0, 0.0, 600.0)) -> list:
     return out
 
 
+def _pad_gap(close: float) -> float:
+    """The 2F-85's pad faces' distance apart (mm) at a closure (ur_arm.gripper_fk, ur_arm._PAD)."""
+    import ur_arm
+    G = ur_arm.gripper_fk(close)
+    a = G["left_finger_tip"] @ np.array([-ur_arm._PAD[0], 0.0, ur_arm._PAD[1], 1.0])
+    b = G["right_finger_tip"] @ np.array([ur_arm._PAD[0], 0.0, ur_arm._PAD[1], 1.0])
+    return float(np.linalg.norm((a - b)[:3]))
+
+
+def _close_for(gap: float) -> float:
+    lo, hi = 0.0, 1.0                    # the gap shrinks as it closes
+    if gap >= _pad_gap(0.0):
+        return 0.0
+    for _ in range(40):
+        mid = (lo + hi) / 2
+        lo, hi = (mid, hi) if _pad_gap(mid) > gap else (lo, mid)
+    return (lo + hi) / 2
+
+
+def gripper_check(key: str, clear: float = 6.0) -> dict:
+    """Round 11: can the 2F-85 take the seats at a rack's ends, beside its handles and the tray's side rims? The
+    gripper is opened around the seat's cap (its pads `clear` mm off it, or as wide as it opens), its grasp point at the
+    cap's middle and its fingers closing front to back (along y), turned either way about the vertical (the wrist D405
+    on one side or the other). Its meshes (ur_arm.gripper_meshes: adapter, base, knuckles, fingers, the D405 on its
+    bracket) against the rack plates and their handles as solid boxes, every jar near it (glass and cap as cylinders)
+    and the tray's rim (vlm.tray's 12 mm walls, 53 mm tall at the back and sides, 15 mm at the front): FCL, in the
+    tray's frame. Checked: each row's two end seats and its middle one. Straight down from above, so the pose at the
+    bottom is the tightest one on the way in. -> {"seats": [...], "all_clear": bool}"""
+    import fcl
+    import pyvista as pv
+    import props as P
+    import ur_arm
+    import vlm as V
+    seats = jar_seats(key)
+    pl = TRAY_PLACEMENT[key]
+    W = RACK["W"]
+    z0 = V.T_FLOOR
+    fixed = []
+
+    def box_obj(name, x0, x1, y0, y1, za, zb):
+        tf = fcl.Transform(np.array([(x0 + x1) / 2, (y0 + y1) / 2, (za + zb) / 2]))
+        fixed.append((name, fcl.CollisionObject(fcl.Box(x1 - x0, y1 - y0, zb - za), tf), (x0, x1, y0, y1)))
+    for bd in band_rows(key):
+        y0, y1 = bd["y0"] + pl["y"], bd["y1"] + pl["y"]
+        box_obj(f"rack {bd['size']}", pl["x"] - W / 2, pl["x"] + W / 2, y0 + 2, y1 - 2, z0, z0 + RACK["h"])
+        for sx in (-1, 1):
+            hx = pl["x"] + sx * (W / 2 - 40)
+            box_obj(f"handle {bd['size']} {'right' if sx > 0 else 'left'}", hx - 30, hx + 30, (y0 + y1) / 2 - 8,
+                    (y0 + y1) / 2 + 8, z0 + RACK["h"], z0 + RACK["h"] + 30)
+    xo, yo, xi, yi = V.TRAY_W / 2, V.TRAY_D / 2, V.TRAY_W / 2 - 12, V.TRAY_D / 2 - 12
+    hz = V.T_FLOOR + V.T_RIM
+    box_obj("tray rim, left", -xo, -xi, -yo, yo, 0.0, hz)
+    box_obj("tray rim, right", xi, xo, -yo, yo, 0.0, hz)
+    box_obj("tray rim, back", -xo, xo, yi, yo, 0.0, hz)
+    box_obj("tray rim, front lip", -xo, xo, -yo, -yi, 0.0, V.T_FLOOR + 12)
+    jars = []
+    for i, st in enumerate(seats):
+        d, h, lid, _ = JARS[st["size"]]
+        x, y, zb = st["x"] + pl["x"], st["y"] + pl["y"], z0 + st["z"]
+        jars.append((i, x, y, fcl.CollisionObject(fcl.Cylinder(d / 2, h), fcl.Transform(np.array([x, y, zb + h / 2]))),
+                     fcl.CollisionObject(fcl.Cylinder(d / 2 + 1.0, lid),
+                                         fcl.Transform(np.array([x, y, zb + h + lid / 2])))))
+    gm = ur_arm.gripper_meshes()
+    cache = {}
+
+    def gripper(close):
+        if close not in cache:
+            G = ur_arm.gripper_fk(close)
+            ms = [m.transform(G[part], inplace=False) for part, lst in gm.items() for m, _, _ in lst]
+            mesh = pv.merge(ms).triangulate()
+            tris = mesh.faces.reshape(-1, 4)[:, 1:]
+            bvh = fcl.BVHModel()
+            bvh.beginModel(mesh.n_points, len(tris))
+            bvh.addSubModel(np.asarray(mesh.points, float), np.asarray(tris, np.int32))
+            bvh.endModel()
+            cache[close] = bvh
+        return cache[close]
+    out, rows = [], {}
+    for i, st in enumerate(seats):
+        rows.setdefault((st["band"], st["row"]), []).append(i)
+    for (band, row), idx in sorted(rows.items()):
+        idx = sorted(idx, key=lambda j: seats[j]["x"])
+        for which, j in (("left end", idx[0]), ("middle", idx[len(idx) // 2]), ("right end", idx[-1])):
+            st = seats[j]
+            d, h, lid, _ = JARS[st["size"]]
+            gap = min(d + 2.0 + 2 * clear, _pad_gap(0.0))
+            close = round(_close_for(gap), 4)
+            x, y = st["x"] + pl["x"], st["y"] + pl["y"]
+            p = np.array([x, y, z0 + st["z"] + h + lid / 2])
+            res = {}
+            for spin in (90.0, -90.0):
+                Tw = P.tcp_frame(p, (0, 0, -1), spin)          # spin +-90: the fingers close along y
+                M = Tw @ np.diag([1.0, 1.0, 1.0, 1.0])
+                M[:3, 3] = (Tw @ np.array([0.0, 0.0, -ur_arm.tcp_mm(close), 1.0]))[:3]
+                g = fcl.CollisionObject(gripper(close), fcl.Transform(M[:3, :3], M[:3, 3]))
+                near = [(nm, o) for nm, o, (bx0, bx1, by0, by1) in fixed
+                        if bx0 - 200 < x < bx1 + 200 and by0 - 200 < y < by1 + 200]
+                near += [(f"jar {jj} ({seats[jj]['size']}{', the one it takes' if jj == j else ''})", o)
+                         for jj, jx, jy, ob, oc in jars if abs(jx - x) < 160 and abs(jy - y) < 160 for o in (ob, oc)]
+                hits, dmin = [], {}
+                for nm, o in near:
+                    r = fcl.DistanceResult()
+                    dist = fcl.distance(g, o, fcl.DistanceRequest(), r)
+                    kind = "taken jar" if "the one it takes" in nm else nm.split(" ")[0]
+                    dmin[kind] = round(min(dmin.get(kind, 1e9), float(dist)), 1)
+                    if dist <= 0.0:
+                        hits.append(nm)
+                res[f"spin {spin:+.0f}"] = dict(hits=sorted(set(hits)), min_clearance_mm=dmin)
+            ok = any(not v["hits"] for v in res.values())
+            out.append(dict(size=st["size"], band=band, row=row, which=which, x=round(x, 1), y=round(y, 1),
+                            pad_gap_mm=round(gap, 1), close=close, clear=ok, poses=res))
+    return dict(seats=out, all_clear=all(o["clear"] for o in out),
+                method="the 2F-85 (ur_arm meshes, the D405 included) open around the cap, its grasp point at the cap's "
+                       "middle, fingers closing along y; FCL distance to the rack plates and handles (boxes), the jars "
+                       "near it (cylinders) and the tray's rim, in the tray's frame; clear if either spin (+-90) is")
+
+
 def write_json(path=None) -> dict:
     path = Path(path or HERE / "out" / "powder_store.json")
     res = dict(sources={
@@ -365,7 +528,14 @@ def write_json(path=None) -> dict:
                 b["reach_any"] += 1
                 b["reach_centre"] += 0.0 in r
         total += len(seats)
-        res["stores"][key] = dict(tray=pl["tray"], slot=NEW_TRAYS[pl["tray"]][0], jars=len(seats), by_size=by,
+        try:
+            grip = gripper_check(key)
+        except Exception as e:                        # noqa: BLE001  (the count stands without it)
+            print("gripper not checked:", e, flush=True)
+            grip = None
+        res["stores"][key] = dict(tray=pl["tray"], slot=NEW_TRAYS[pl["tray"]][0],
+                                  slot_span_mm=NEW_SLOTS[NEW_TRAYS[pl["tray"]][0]][1], rack_mm=[RACK["W"], RACK["D"]],
+                                  jars=len(seats), by_size=by, gripper_end_seats=grip,
                                   reach_from_centre=sum(b["reach_centre"] for b in by.values()),
                                   reach_from_any_of_three=sum(b["reach_any"] for b in by.values()),
                                   seats=[dict(size=s["size"], x=s["x"], y=s["y"], content=s["content"],
@@ -383,5 +553,11 @@ if __name__ == "__main__":
         r = write_json()
         print("total jars", r["total_jars"])
         for k, v in r["stores"].items():
-            print(k, v["tray"], v["jars"], {s: b["n"] for s, b in v["by_size"].items()},
+            print(k, v["tray"], v["slot"], v["jars"], {s: b["n"] for s, b in v["by_size"].items()},
                   "reach centre", v["reach_from_centre"], "any", v["reach_from_any_of_three"])
+            g = v["gripper_end_seats"]
+            if g:
+                print("  gripper at the end seats:", "all clear" if g["all_clear"] else "CHECK")
+                for o in g["seats"]:
+                    print("   ", o["size"], "row", o["row"], o["which"].ljust(9), "clear" if o["clear"] else "HIT",
+                          {sp: (v2["hits"], v2["min_clearance_mm"]) for sp, v2 in o["poses"].items()})

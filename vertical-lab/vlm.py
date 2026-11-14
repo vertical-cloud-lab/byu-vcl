@@ -106,12 +106,17 @@ Z_FRONT_LOW_TOP = Z_SILL - 40.0                     # the front column's lower p
 Z_FRONT_HI = PITCH * -(-(Z_OPEN_TOP + 120.0) // PITCH)    # its upper part starts over the header: 1950
 SHUTTLE_GAP = 800.0             # between the two Shuttles' cladding: room for a MiR250 to turn on the spot (setup_lab)
 SHUTTLE_X = {1: 0.0, 2: UNIT_W + 2 * SKIN + SHUTTLE_GAP}  # the second Shuttle's centre: 3630 mm right of the first
+# Round 11 (Sterling, PR #318, 2026-11-13: the jar trays' cameras and UPS are "very inefficient from a vertical space
+# usage, since the jars are so short"): the three passive storage trays (J, N, O) carry no UPS, dock plate or cameras,
+# so each slot is its own load's height: J 475 -> 325 (the drawer cabinet, 300 mm), N 475 -> 225 (500 mL jars, 182 mm
+# over the floor with their rack), O 500 -> 150 (125 mL jars, 104 mm). N and O both go under Shuttle 2's access table
+# (300-793 mm), which frees 2R5 at the top of its rear column (notes/tray_plan.md).
 COLUMNS = {     # Shuttle: column: [(slot, span in mm)], bottom to top
     1: {"rear": [("R1", 750), ("R2", 750), ("R3", 900), ("R4", 725)],          # trays D, A, B (v5 doser, 854 mm), E
-        "front_low": [("F0", 475)],                                             # tray J
-        "front": [("F1", 725), ("F2", 725)]},                                   # trays C, F
-    2: {"rear": [("2R1", 850), ("2R2", 725), ("2R3", 750), ("2R4", 550)],      # trays K, L, M, H
-        "front_low": [],
+        "front_low": [("F0", 325)],                                             # tray J (passive storage)
+        "front": [("F1", 725), ("F2", 750)]},       # trays C, F (round 11: F's camera F1 behind the quench tank, 703 mm)
+    2: {"rear": [("2R1", 850), ("2R2", 725), ("2R3", 750), ("2R4", 550)],      # trays K, L, M, H; 515 mm free
+        "front_low": [("2F0", 225), ("2F0b", 150)],                             # trays N, O (passive jar stores)
         "front": [("2F1", 725), ("2F2", 725)]},                                 # trays G, I
 }
 SLOTS = {"open": (Y_OPEN, Z_OPEN)}  # slot -> (y, tray-bottom z) of each storage position used, on the 25 mm pitch
