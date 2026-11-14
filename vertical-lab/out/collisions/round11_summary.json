@@ -1,0 +1,453 @@
+{
+ "round": 11,
+ "written": "2026-11-14 04:05 UTC",
+ "every_clip": [
+  {
+   "clip": "Chapter 1: the charge",
+   "fixes_by": "audit-a",
+   "round10_rules": {
+    "frames": 0,
+    "of": 1145,
+    "json": "d6eeeb7:vertical-lab/out/collisions/alloy_charge.json"
+   },
+   "round11_before_fixes": {
+    "frames": 40,
+    "of": 1145,
+    "source": [
+     "out/collisions/alloy_charge_r11.json"
+    ]
+   },
+   "round11_after_fixes": {
+    "frames": 0,
+    "of": 1145,
+    "source": [
+     "out/collisions/alloy_charge.json"
+    ]
+   }
+  },
+  {
+   "clip": "Chapter 2: atomizing",
+   "fixes_by": "audit-a",
+   "round10_rules": {
+    "frames": 0,
+    "of": 920,
+    "json": "d6eeeb7:vertical-lab/out/collisions/alloy_atomize.json"
+   },
+   "round11_before_fixes": {
+    "frames": 11,
+    "of": 920,
+    "source": [
+     "out/collisions/alloy_atomize_r11.json"
+    ]
+   },
+   "round11_after_fixes": {
+    "frames": 0,
+    "of": 920,
+    "source": [
+     "out/collisions/alloy_atomize.json"
+    ]
+   }
+  },
+  {
+   "clip": "Chapter 3: sieve and print",
+   "fixes_by": "audit-b",
+   "round10_rules": {
+    "frames": 7,
+    "of": 3402,
+    "json": "d6eeeb7:vertical-lab/out/collisions/alloy_print.json"
+   },
+   "round11_before_fixes": {
+    "frames": 138,
+    "of": 1371,
+    "source": [
+     "out/collisions/alloy_print_r11s0.json"
+    ]
+   },
+   "round11_after_fixes": {
+    "frames": 2,
+    "of": 1374,
+    "source": [
+     "out/collisions/alloy_print.json"
+    ]
+   }
+  },
+  {
+   "clip": "Chapter 4: powder checks",
+   "fixes_by": "audit-b",
+   "round10_rules": {
+    "frames": 0,
+    "of": 1028,
+    "json": "d6eeeb7:vertical-lab/out/collisions/alloy_powder.json"
+   },
+   "round11_before_fixes": null,
+   "round11_after_fixes": {
+    "frames": 92,
+    "of": 1028,
+    "source": [
+     "out/collisions/alloy_powder.json"
+    ]
+   }
+  },
+  {
+   "clip": "Chapter 5: cut, heat-treat, test",
+   "fixes_by": "ch5",
+   "round10_rules": {
+    "frames": 60,
+    "of": 2101,
+    "json": "d6eeeb7:vertical-lab/out/collisions/alloy_workflow.json"
+   },
+   "round11_before_fixes": {
+    "frames": 275,
+    "of": 1965,
+    "source": "ch5's alloy_workflow_s15 + _s67, less 148 frames of floor tape"
+   },
+   "round11_after_fixes": {
+    "frames": 1,
+    "of": 2089,
+    "source": [
+     "out/collisions/alloy_workflow.json"
+    ]
+   }
+  },
+  {
+   "clip": "Chapter 6: sample prep",
+   "fixes_by": "audit-b",
+   "round10_rules": {
+    "frames": 0,
+    "of": 1423,
+    "json": "d6eeeb7:vertical-lab/out/collisions/alloy_prep.json"
+   },
+   "round11_before_fixes": null,
+   "round11_after_fixes": "not re-audited"
+  },
+  {
+   "clip": "Chapter 7: characterize",
+   "fixes_by": "audit-b",
+   "round10_rules": {
+    "frames": 13,
+    "of": 1269,
+    "json": "d6eeeb7:vertical-lab/out/collisions/alloy_characterize.json"
+   },
+   "round11_before_fixes": {
+    "frames": 113,
+    "of": 1269,
+    "source": [
+     "out/collisions/alloy_characterize_r11s0.json"
+    ]
+   },
+   "round11_after_fixes": {
+    "frames": 0,
+    "of": 1279,
+    "source": [
+     "out/collisions/alloy_characterize.json"
+    ]
+   }
+  },
+  {
+   "clip": "The 8:00 clip: a vial dosed for the CubXL",
+   "fixes_by": "audit-a",
+   "round10_rules": {
+    "frames": 0,
+    "of": 574,
+    "json": "d6eeeb7:vertical-lab/out/collisions/vlm_workflow.json"
+   },
+   "round11_before_fixes": {
+    "frames": 11,
+    "of": 574,
+    "source": [
+     "out/collisions/vlm_workflow_r11.json"
+    ]
+   },
+   "round11_after_fixes": {
+    "frames": 5,
+    "of": 574,
+    "source": [
+     "out/collisions/vlm_workflow_r11fix.json"
+    ]
+   }
+  },
+  {
+   "clip": "Maintenance",
+   "fixes_by": "upkeep",
+   "round10_rules": {
+    "frames": 0,
+    "of": 534,
+    "json": "d6eeeb7:vertical-lab/out/collisions/upkeep_clip.json"
+   },
+   "round11_before_fixes": {
+    "frames": 120,
+    "of": 1460,
+    "source": "upkeep's log, 01:19"
+   },
+   "round11_after_fixes": {
+    "frames": 0,
+    "of": 1491,
+    "source": [
+     "out/collisions/upkeep_clip.json"
+    ]
+   }
+  },
+  {
+   "clip": "The bay camera",
+   "fixes_by": "lab",
+   "round10_rules": null,
+   "round11_before_fixes": {
+    "frames": 21,
+    "of": 134,
+    "source": [
+     "out/collisions/bay_camera_r11.json"
+    ]
+   },
+   "round11_after_fixes": "not re-audited"
+  },
+  {
+   "clip": "Scaling up: the EOS and the Meltio cell",
+   "fixes_by": "audit-a",
+   "round10_rules": null,
+   "round11_before_fixes": null,
+   "round11_after_fixes": "not re-audited"
+  }
+ ],
+ "found_by_the_movers_check_fixed_elsewhere": [
+  {
+   "what": "stored trays, with their plates and service lines, into the drawn column supports as they are stored (tray F 50 mm in chapter 5's validation; audit-b's chapters)",
+   "check": "movers",
+   "fixed": "vlm.py, 063b014 (orchestrator): supports drawn only where a tray rests inside a slot, per Shuttle"
+  },
+  {
+   "what": "the safety shutter 12 mm into the bay's side walls as it moves",
+   "check": "movers",
+   "fixed": "vlm.py, 063b014 (orchestrator): the walls stop 1 mm short of the shutter's path"
+  },
+  {
+   "what": "the MiR's body 3 mm into the floor tape on every drive (props.mir250's skirt is drawn down to z = 0)",
+   "check": "movers",
+   "fixed": "collide.py (audit-a): the floor and its markings, anything within 6 mm of z = 0, are not solid to the movers check"
+  }
+ ],
+ "validation": {
+  "known_case": "round 10's alloy_workflow.py, section 6 (CH5_FROM=6, VLAB_ONLY_TRAYS=F), camera F1 where round 10 had it: the tongs through F1's post, 25 mm, frames 333-370 (28 frames), caught; the tongs 6 mm into the MiR's cabinet (548-551), allowed by round 10's rules, caught",
+  "files": [
+   "out/collisions/round11_validation/ch5_section6_round10_camera_F1.json",
+   "out/collisions/round11_validation/ch5_section6_round10_camera_F1_frame333.jpg",
+   "out/collisions/round11_validation/ch5_section6_camera_F1_moved.json"
+  ],
+  "selftest": "python3 audit_all.py selftest: depth() on known cases; a movers scene (cart into a wall 25 mm, door through a post 50 mm, scaled belt into a ceiling 25 mm caught; floor, 0.8 mm plate, own subtree not); an arm pushing a held cube 10 mm into its fixture (4 frames at 12 mm; 0 under round 10's rules)"
+ },
+ "rules": "collide.py, round 11: what may touch only up to 1.5 mm deep (collide.depth, a 26-direction translational depth), and the movers check (everything that moves and isn't an arm, new contacts deeper than 1.5 mm); round 10's numbers are the same clips' JSONs under round 10's rules (no depth limit, arms only), as committed",
+ "clips": {
+  "alloy_charge": {
+   "what": "chapter 1, charging the crucible (alloy_charge.py, one arm)",
+   "job": "ch1",
+   "round10_rules": {
+    "frames_checked": 1145,
+    "arm_frames": 0,
+    "arm_runs": 0,
+    "mover_frames": null,
+    "mover_runs": null,
+    "all_frames": 0,
+    "allowed_before_but_too_deep": null,
+    "rules": "round 10 (old)",
+    "json": "d6eeeb7:out/collisions/alloy_charge.json"
+   },
+   "round11_rules": {
+    "frames_checked": 1145,
+    "arm_frames": 29,
+    "arm_runs": 16,
+    "mover_frames": 11,
+    "mover_runs": 8,
+    "all_frames": 40,
+    "allowed_before_but_too_deep": 62,
+    "rules": "round 11 (strict)",
+    "json": "out/collisions/alloy_charge_r11.json"
+   },
+   "after_fixes": {
+    "frames_checked": 1145,
+    "arm_frames": 0,
+    "arm_runs": 0,
+    "mover_frames": 0,
+    "mover_runs": 0,
+    "all_frames": 0,
+    "allowed_before_but_too_deep": 0,
+    "rules": "round 11 (strict)",
+    "json": "out/collisions/alloy_charge_r11fix.json"
+   },
+   "worst": []
+  },
+  "alloy_atomize": {
+   "what": "chapter 2, atomizing (alloy_atomize.py, two arms, the two-Shuttle floor)",
+   "job": "ch2",
+   "round10_rules": {
+    "frames_checked": 920,
+    "arm_frames": 0,
+    "arm_runs": 0,
+    "mover_frames": null,
+    "mover_runs": null,
+    "all_frames": 0,
+    "allowed_before_but_too_deep": null,
+    "rules": "round 10 (old)",
+    "json": "d6eeeb7:out/collisions/alloy_atomize.json"
+   },
+   "round11_rules": {
+    "frames_checked": 920,
+    "arm_frames": 5,
+    "arm_runs": 2,
+    "mover_frames": 6,
+    "mover_runs": 2,
+    "all_frames": 11,
+    "allowed_before_but_too_deep": 5,
+    "rules": "round 11 (strict)",
+    "json": "out/collisions/alloy_atomize_r11.json"
+   },
+   "after_fixes": {
+    "frames_checked": 920,
+    "arm_frames": 0,
+    "arm_runs": 0,
+    "mover_frames": 0,
+    "mover_runs": 0,
+    "all_frames": 0,
+    "allowed_before_but_too_deep": 0,
+    "rules": "round 11 (strict)",
+    "json": "out/collisions/alloy_atomize_r11fix.json"
+   },
+   "worst": []
+  },
+  "vlm_workflow": {
+   "what": "the 8:00 clip (animate.py workflow, the whole lab)",
+   "job": "workflow",
+   "round10_rules": {
+    "frames_checked": 574,
+    "arm_frames": 0,
+    "arm_runs": 0,
+    "mover_frames": null,
+    "mover_runs": null,
+    "all_frames": 0,
+    "allowed_before_but_too_deep": null,
+    "rules": "round 10 (old)",
+    "json": "d6eeeb7:out/collisions/vlm_workflow.json"
+   },
+   "round11_rules": {
+    "frames_checked": 574,
+    "arm_frames": 6,
+    "arm_runs": 2,
+    "mover_frames": 5,
+    "mover_runs": 3,
+    "all_frames": 11,
+    "allowed_before_but_too_deep": 6,
+    "rules": "round 11 (strict)",
+    "json": "out/collisions/vlm_workflow_r11.json"
+   },
+   "after_fixes": {
+    "frames_checked": 574,
+    "arm_frames": 5,
+    "arm_runs": 1,
+    "mover_frames": 0,
+    "mover_runs": 0,
+    "all_frames": 5,
+    "allowed_before_but_too_deep": 5,
+    "rules": "round 11 (strict)",
+    "json": "out/collisions/vlm_workflow_r11fix.json"
+   },
+   "worst": [
+    {
+     "kind": "arm",
+     "label": "5/6",
+     "frames": "511-516",
+     "n": 5,
+     "depth_mm": 50.0,
+     "what": "held:vial in cub:body"
+    }
+   ]
+  },
+  "bay_camera": {
+   "what": "the bay camera (services.py baycam; the lab stream's file: hits reported, not fixed)",
+   "job": "baycam",
+   "round10_rules": null,
+   "round11_rules": {
+    "frames_checked": 134,
+    "arm_frames": 21,
+    "arm_runs": 13,
+    "mover_frames": 0,
+    "mover_runs": 0,
+    "all_frames": 21,
+    "allowed_before_but_too_deep": 1,
+    "rules": "round 11 (strict)",
+    "json": "out/collisions/bay_camera_r11.json"
+   },
+   "after_fixes": null,
+   "worst": [
+    {
+     "kind": "arm",
+     "label": "3/4",
+     "frames": "80-84",
+     "n": 5,
+     "depth_mm": null,
+     "what": "forearm in frusta; upper_arm in frusta; wrist1 in frusta"
+    },
+    {
+     "kind": "arm",
+     "label": "2/4",
+     "frames": "59-61",
+     "n": 3,
+     "depth_mm": null,
+     "what": "upper_arm in frusta; wrist1 in frusta; wrist2 in frusta"
+    },
+    {
+     "kind": "arm",
+     "label": "2/4",
+     "frames": "62-63",
+     "n": 2,
+     "depth_mm": null,
+     "what": "forearm in frusta; upper_arm in frusta; wrist1 in frusta"
+    },
+    {
+     "kind": "arm",
+     "label": "2/4",
+     "frames": "49-49",
+     "n": 1,
+     "depth_mm": 50.0,
+     "what": "upper_arm in frusta; base in frusta; left_finger in frusta"
+    },
+    {
+     "kind": "arm",
+     "label": "2/4",
+     "frames": "50-50",
+     "n": 1,
+     "depth_mm": 50.0,
+     "what": "upper_arm in frusta; base in frusta; left_finger in frusta"
+    }
+   ]
+  },
+  "scaleup": {
+   "what": "scaling up (scaleup.py: the EOS M 400-4 and the Meltio robot cell; no UR arm, movers only)",
+   "job": "scaleup",
+   "round10_rules": null,
+   "round11_rules": null,
+   "after_fixes": null,
+   "worst": []
+  },
+  "interference": {
+   "what": "interference.py over every model (MuJoCo sweep, exact meshes)",
+   "summary": {
+    "models_checked": 31,
+    "models_skipped": [
+     "openflexure_array",
+     "openflexure_delta",
+     "openflexure_v7"
+    ],
+    "frames": 6033,
+    "mujoco_geoms": 3600,
+    "candidates": 76615,
+    "confirmed": 21976,
+    "rejected_by_exact": 3134,
+    "faults": 59,
+    "minor": 30,
+    "moving_faults": 2,
+    "intended": 332,
+    "loose": 17,
+    "seconds": 447.2
+   },
+   "json": "out/interference.json"
+  }
+ }
+}

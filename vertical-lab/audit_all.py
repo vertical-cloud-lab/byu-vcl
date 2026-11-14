@@ -216,7 +216,7 @@ SHEET_CLIPS = [
     # audit-b: before is round 10's code under the strict rules, recovered from its printed report (138 of 1371); the
     # final is the render's own audit, the pre-render audit (8095c46) until then
     ("Chapter 3: sieve and print", "alloy_print", [["alloy_print_r11s0"], (138, 1371, "audit-b's report")],
-     [["alloy_print_r11_prerender"]], "audit-b"),
+     [["alloy_print"], ["alloy_print_r11_prerender"]], "audit-b"),                  # final: the render's own (a72df46)
     ("Chapter 4: powder checks", "alloy_powder", [], [["alloy_powder"]], "audit-b"),
     # ch5: before = its sections 1-5 and 6-7 on round 10's code (F1 already moved), 00:04-00:29, 209 + 214 of 962 +
     # 1003 frames; 148 of those were only the MiR's skirt in the floor tape, left out since (FLOOR_MM), so 275 here.
@@ -230,7 +230,7 @@ SHEET_CLIPS = [
      "audit-a"),
     # upkeep's first full-clip strict run (01:19 UTC; its JSON since overwritten; numbers from upkeep's log): the arm
     # 0 of 1460, the movers check 120 of 1460
-    ("Maintenance", "upkeep_clip", (120, 1460, "upkeep's log, 01:19"), [], "upkeep"),   # after: upkeep's final
+    ("Maintenance", "upkeep_clip", (120, 1460, "upkeep's log, 01:19"), [["upkeep_clip"]], "upkeep"),  # final: 443a7a4
     ("The bay camera", "bay_camera", ["bay_camera_r11"], [], "lab"),
     ("Scaling up: the EOS and the Meltio cell", "scaleup", ["scaleup_r11"], [["scaleup_r11fix"], ["scaleup_r11"]],
      "audit-a"),
