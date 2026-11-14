@@ -89,13 +89,21 @@ no service drawing), lifted straight up its guides** (r8_char's `panel` piece, a
   scene.
 - **How high the panel goes.** The panel goes up 650 mm, 1.55 times its guides' 420 mm. At 420 mm its lower edge hung
   at the height the person's head reaches when they bend in, and the check caught the head in it.
+- **Lifting and lowering.** The hands rest on its top edge and lift it 120 mm, settled so they touch without sinking
+  in. They come back out of its plane, and it slides on up by itself (assumed: gas-sprung, ours). Lowering is the
+  reverse, the hands under its lower edge. The movers check caught the rising panel catching the fingers when it all
+  happened at once.
 - **The reach.** People.py's skeleton was solved off-line for the reach. The body's centre is 51 mm to the left of the
   tip and 411 mm in front of the masts, bent 42 deg. The head goes past the masts' line and the chest stays 20 mm short
   of it.
-- **The stage.** Before the reach the stage runs out from under the head: the carriage goes 1.25 times its load
-  travel, the x stage 100 mm aside.
-- **The tip.** It comes straight down 58 mm out of the head's bore (its shaft is 60 mm up it) and goes back the same
-  way, never sideways inside the head. The hand holding it stays 5 mm over the stage base.
+- **The stage and the hand.** Before the reach only the x stage moves aside, 100 mm. The carriage stays home, since
+  run out to its load position it stands in the hand's way in. Under the head that leaves 120 mm between the
+  carriage's rails (1025 mm) and the head (1132 mm). The hand comes in level at that height, a fist round the shaft,
+  its top 2 mm under the head and its bottom 5 mm over the rails.
+- **The tip.** It is turned out and the new one turned in, in place. Drawn out, its 60 mm shaft would take the hand
+  into the rails, so the clip doesn't show that; the caption says the tip is unscrewed and the new one screwed in. A
+  real change would want the head raised or the stage lowered: the iMicro's own service procedure isn't modelled
+  (assumed).
 
 ## The render
 
