@@ -245,7 +245,7 @@ def edm_fixture(pc: np.ndarray) -> dict:
     rs, hs = p["stud_r"] + 0.5, p["stud_h"] + 2.0
     rec = charge.lathe([(rs, 0.0), (48.0, 0.0), (48.0, 30.0), (0.0, 30.0), (0.0, hs), (rs, hs)], res=48)
     out["receiver"] = (rec.rotate_x(-90.0, inplace=False).translate((x, yb, z), inplace=False), (0.30, 0.32, 0.36))
-    ang = pv.Box(bounds=(x - 140, x + 140, yb + 30, yb + 60, tz + 20, z + 120)).triangulate()
+    ang = pv.Box(bounds=(x - 175, x + 175, yb + 30, yb + 60, tz + 20, z + 120)).triangulate()   # round 11: 350 wide
     foot = pv.Box(bounds=(-740.0, -120.0, yb + 30, yb + 90, tz, tz + 20)).triangulate()
     out["angle plate"] = (ang.merge(foot), (0.42, 0.44, 0.47))
     zs = z - E8_SUB["L"] / 2 - 14.0                   # the shelf the cut bars drop onto
@@ -464,8 +464,10 @@ def rinse_cup() -> dict:
 # by the plate's own face. An ejector pin in each slot's floor lifts its bar 65 mm, so the gripper can take it by its
 # upper end clear of the other three and of the plate's rim (round 6's suggestion), its lower 10 mm still in the slot. Our design, sizes
 # assumed. Frame: the EDM's, like edm_fixture().
+# round 11: the arms 165 mm out, not 112: the wire starts 150 mm left of the plate's centre and crossed the left arm
+# (the movers check: 12 mm); the angle plate is 350 mm wide to take them, and the head parks 125 mm right of centre
 COMB = dict(gap=0.5, wall_h=75.0, wall_t=5.0, slot_w=13.0, slot_d=7.0, floor_t=8.0, pad_t=2.0, lift=65.0, pin_r=2.5,
-            arm_dx=112.0, back_gap=1.4, pin_y=-4.0)
+            arm_dx=165.0, back_gap=1.4, pin_y=-4.0)
 
 
 def comb_floor_z(pc) -> float:
@@ -564,7 +566,7 @@ def ejector_body(pc, bar_xs) -> pv.PolyData:
 # Also, it's positioned rather high". Round 4's plate carrier and bar holder stood on posts 120 and 230 mm tall; these
 # are low pockets on the cabinet's top plate instead, each with a 3 mm lead-in: the plate in a 30 mm block bored to
 # take it and its stud, the specimen rack in a frame, and a rest for the tongs. MiR frame (z from the cabinet's top).
-POCKETS = dict(plate=(255.0, -110.0), rack=(-255.0, -120.0), tongs=(-135.0, 255.0), block_h=40.0, rack_h=20.0,
+POCKETS = dict(plate=(255.0, -110.0), rack=(-255.0, -120.0), tongs=(-90.0, 255.0), block_h=40.0, rack_h=20.0,
                pocket=12.0, cradle=(250.0, 150.0), cradle_h=30.0, channel=(12.0, 5.0), channel_dx=15.0)
 
 
@@ -595,7 +597,9 @@ def mir_pockets(top: float) -> dict:
         rack = rack.merge(w_.triangulate())
     tx, ty = POCKETS["tongs"]
     rest = None
-    for dx in (-110.0, 110.0):                    # two V-blocks under the shaft
+    # two V-blocks under the shaft (round 11: 95 mm either side, the left one 6 mm clear of the sleeve at the handle,
+    # which is 4 mm fatter than the shaft and sat 4 mm into it)
+    for dx in (-95.0, 95.0):
         v = pv.Box(bounds=(tx + dx - 14, tx + dx + 14, ty - 20, ty + 20, top, top + 36)).triangulate()
         rest = v if rest is None else rest.merge(v)
     # a cradle for the room-temperature halves, kept for fractography: two channels along y, each half lying flat in

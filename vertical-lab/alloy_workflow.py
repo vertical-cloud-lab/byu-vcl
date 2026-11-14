@@ -330,11 +330,6 @@ class DBox:
         a = p0 - Lw[:3, 2] * 45.0
         p1 = self.lworld(M.STAND_PORT) + (0, 0, 20.0)
         x = np.array([0.5 * (a[0] + p1[0]), min(a[1], line.Y_FACE - 60.0), max(min(a[2] - 60.0, 1080.0), 700.0)])
-        if self.sc.parent.get("lance") in ("lstand", "dbox"):
-            # round 11: with the lance in its holster the hose hangs on the box's side of the post: its loop in front
-            # of the post took the plate and the fingers 25-50 mm deep as the plate came out of the chamber
-            side = 1.0 if self.box_x >= self.stand_x else -1.0
-            x[0] = p1[0] + side * 170.0
         pts = np.array([p0, a, x, p1 + (0, 0, 260.0), p1])
         return pv.Spline(pts, 80).tube(radius=13.0, n_sides=14).triangulate()
 
@@ -668,8 +663,8 @@ GRIP_HANDLE = GRIP_LUG           # on the tongs' 12 mm handle (as GRIP_LUG)
 GRIP_KNOB = __import__("ur_arm").close_for(20.3)   # on the IPA lid's 20 mm knob
 GRIP_HALF = 0.94                 # on a broken half's 6 mm reduced section
 CAB_TOP = P.MIR["H"] + P.CAB_H   # 780: the MiR cabinet's top plate
-XH_REST = -0.7                   # round 11: the Instron's crosshead at rest, 112 mm under its modelled height (see
-#                                  section 7)
+XH_REST = 0.0                    # round 11: the Instron's crosshead at rest (the lab moved the junction box that stood
+#                                  in its way to z 2350-2530 in 47219fc; until then it rested at -0.7)
 COMB_DROP = 113.0                # round 11: the catch comb's slide: its top 3.5 mm under the plate's rim (845 mm) while
 #                                  the plate goes on, its ejector block 2.5 mm over the tank's floor in the table's window
 DRIVE_SHOWN = 4.0                # the long drives are shown at 4x, and say so
@@ -1339,7 +1334,6 @@ def _movie(B):
         step(0.4, D_.with_hose(rb.line_to(A.down(p_hold, spin=0.0))))
         grip(0.0)
         rb.release("dbox")
-        D_.update_hose()                 # round 11: the parked route (DBox.hose), before the plate comes out
         lin(A.down(p_hold + (0, 0, 130), spin=0.0), 0.6)
         # the plate out by its lug, 30 deg down (the chamber is 280 mm tall inside), into the box
         st["cap"] = ("The platform's clamp lets go (a zero-point clamp: an assumption). The chamber is too low for the "
@@ -1357,7 +1351,10 @@ def _movie(B):
         rb.grasp("plate")
         lin(tilt(p_g + (0, 0, 32)), 0.8)
         lin(tilt(p_out), 1.8, labels=[])
-        p_carry = amr.world((-330.0, 300.0, 0.0)) + (0, 0, 1250.0)
+        # round 11: carried 150 mm further from the row than round 10's 300: driving past the lance's post to the box,
+        # the plate and the bars standing on it went through the hose where it leaves the lance's barb (the strict
+        # audit: 6-50 mm, three frames)
+        p_carry = amr.world((-330.0, 150.0, 0.0)) + (0, 0, 1250.0)
         go(Tw=tilt(p_carry), secs=1.4)
         p_box = D_.seat_tcp()
         st["cap"] = ("Into the depowdering box beside the printer: the door slides up and the arm sets the plate's stud in "
@@ -1561,7 +1558,7 @@ def _movie(B):
         status(sc, EDM="cut; draining")
         step(1.6, edm.move({"glow": (0.55, 0.0)}), hold=0.1)
         step(1.4, RB.both(edm.move({"door": (0.0, 1.0), "~body": (1.0, 0.55), "~door": (1.0 / 0.82, 0.0)}),
-                          lambda u: E.set_head(x_end + (E.PC[0] + 95 - x_end) * u), fade(wall, 0.35, 1.0)),
+                          lambda u: E.set_head(x_end + (E.PC[0] + 125 - x_end) * u), fade(wall, 0.35, 1.0)),
              hold=0.1, cam=CAM_EDM)
         status(sc, EDM="door down")
 
@@ -1904,8 +1901,7 @@ def _movie(B):
     # the frame (its hinge is 118 mm behind the frame's front). The MiR used to stop 230 mm off the row's face, so the
     # door went through its cabinet, the tongs and the arm's base every time it opened (the movers check, round 11).
     # It stops 500 mm off now, 68 mm clear of the door's sweep; the arm still reaches the load string (its base 1053 mm
-    # from it). The dock mark the set-up draws at the Instron is at the old stop: a real cell would move it out, or
-    # dock there and make a 270 mm relative move back.
+    # from it). The set-up's dock mark at the Instron moved there too (setup_lab, 47219fc).
     MIR_YI = WH.Y_FACE_S + 500.0 + P.MIR["W"] / 2
     drive([(PIVOT_X, Y_TF), (PIVOT_X, LANE), (ins_x, LANE), (ins_x, MIR_YI)], end_heading=180.0,
           shown=DRIVE_SHOWN, cam=[(-2500, -14500, 6000), (-4300, -3800, 600), (0, 0, 1)])
@@ -1914,9 +1910,6 @@ def _movie(B):
     spec_c = rig_w(ins, (0.0, 0.0, LOW_TOP - 30.0 + M.E8_SUB["L"] / 2))
     spec_top = spec_c + (0, 0, M.E8_SUB["L"] / 2)
     v_close = (LOW_TOP - 30.0 + M.E8_SUB["L"] - 30.0 - RT.UPPER_BOTTOM0) / I.INSTRON_FM["travel"]
-    # round 11: the crosshead rests 112 mm under its modelled height: there, at 1610-1810 mm, it stood 90 mm into the
-    # junction box the set-up hangs on the south row's drop at the Instron (1720-1900 mm; setup_lab.utilities). The
-    # upper grip still hangs 28 mm over a specimen carried in 60 mm over its seat
     door_open = {"chamber_door": (0.0, 1.0)}
     door_shut = {"chamber_door": (1.0, 0.0)}
     glow_c = B["glow"]["chamber"]
