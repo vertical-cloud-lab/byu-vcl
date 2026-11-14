@@ -2184,19 +2184,19 @@
    },
    "aconity": {
     "dock": [
-     6650,
-     -1932,
+     6520,
+     -2082,
      0
     ],
     "backs_in": true,
     "pivot": [
-     8575,
-     -1932
+     8270,
+     -2082
     ],
-    "approach_mm": 1925,
+    "approach_mm": 1750,
     "target_post": [
-     6000,
-     -1712
+     5870,
+     -1862
     ],
     "hits": [],
     "ok": true
@@ -2422,7 +2422,8 @@
   ],
   "machines_in_aisle": [],
   "ok": true,
-  "method": "Every dock: the docked MiR250, its approach along the dock line from the pivot spot at its open end, and the pivot itself (a circle of the MiR's half-diagonal), against every machine's plan rectangle and every target post's foot; and the aisle against the machines. Margin 30 mm."
+  "method": "Every dock: the docked MiR250, its approach along the dock line from the pivot spot at its open end, and the pivot itself (a circle of the MiR's half-diagonal), against every machine's plan rectangle and every target post's foot; and the aisle against the machines. Margin 30 mm.",
+  "note": "docks re-checked at 03:25 UTC on 2026-11-14 with check_floor's logic on the 01:48 fit's machine rectangles, after the Aconity's dock moved to chapter 5's stop (1c36cef); the machines did not move"
  },
  "slots": {
   "open": {
