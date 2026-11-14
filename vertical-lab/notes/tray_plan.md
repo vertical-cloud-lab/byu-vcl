@@ -30,6 +30,13 @@ Where the slots can be:
 
 The whole unit stays at 3950 mm, under #53's 13 ft (3962 mm).
 
+**The supports between slots: a question for Kardex.** Kardex's columns carry tray-support profiles every 25 mm, so any
+slot height can be set. Our slots are fixed, and a tray's rim, its dock plate and its tray lines stand over the 20 mm
+the profiles reach in, so on a real Shuttle the profiles above a tray's own rest profile would be in its way. Since
+round 11 (063b014, `vlm.support_parts`) the model draws a support only where a tray rests, per Shuttle, and leaves the
+others out. Whether Kardex can supply columns with the profiles fitted only at our slot heights, or profiles that clear
+a plate and lines on the tray's right, is to be asked.
+
 ## The plan
 
 Fourteen trays don't fit one Shuttle (fifteen since round 8). A second one, the same size, stands beside the first: x = 3630 mm, 800 mm of
