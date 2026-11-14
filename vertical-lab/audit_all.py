@@ -184,17 +184,30 @@ def summary(tag: str, fixtag: str = "r11fix") -> dict:
 # round 11's before the fixes and after them, and two of the frames found. (label, scene name of round 10's JSON at
 # ROUND10, [JSONs before the fixes], [JSONs after], whose fixes). Several JSONs are summed (a chapter audited in parts).
 SHEET_CLIPS = [
+    # (label, round 10's JSON at ROUND10, before, after, whose). before/after: [names] summed, a list of such lists
+    # (the first whose files all exist under round 11's rules is used: a final audit, then the partial ones), or
+    # (frames, checked, source) for a run whose JSON was overwritten (the source is given in the streams' messages)
     ("Chapter 1: the charge", "alloy_charge", ["alloy_charge_r11"], ["alloy_charge"], "audit-a"),
-    ("Chapter 2: atomizing", "alloy_atomize", ["alloy_atomize_r11"], ["alloy_atomize_r11fix"], "audit-a"),
-    ("Chapter 3: sieve and print", "alloy_print", [], ["alloy_print"], "audit-b"),
-    ("Chapter 5: cut, heat-treat, test", "alloy_workflow", ["alloy_workflow_s15", "alloy_workflow_s67"],
-     ["alloy_workflow_s15c", "alloy_workflow_s67b"], "ch5"),
-    ("Chapter 7: characterize", "alloy_characterize", ["alloy_characterize_r11s0"], ["alloy_characterize"], "audit-b"),
-    ("The 8:00 clip: a vial dosed for the CubXL", "vlm_workflow", ["vlm_workflow_r11"], ["vlm_workflow_r11fix"],
+    ("Chapter 2: atomizing", "alloy_atomize", ["alloy_atomize_r11"], [["alloy_atomize"], ["alloy_atomize_r11fix"]],
      "audit-a"),
-    ("Maintenance", "upkeep_clip", [], ["upkeep_clip"], "upkeep"),
+    # audit-b: before is round 10's code under the strict rules, recovered from its printed report (138 of 1371); the
+    # final is the render's own audit, the pre-render audit (8095c46) until then
+    ("Chapter 3: sieve and print", "alloy_print", [["alloy_print_r11s0"], (138, 1371, "audit-b's report")],
+     [["alloy_print_r11_prerender"]], "audit-b"),
+    ("Chapter 4: powder checks", "alloy_powder", [], [["alloy_powder"]], "audit-b"),
+    ("Chapter 5: cut, heat-treat, test", "alloy_workflow", ["alloy_workflow_s15", "alloy_workflow_s67"],
+     [["alloy_workflow"], ["alloy_workflow_s15c", "alloy_workflow_s67b"]], "ch5"),
+    ("Chapter 6: sample prep", "alloy_prep", [], [["alloy_prep"]], "audit-b"),
+    ("Chapter 7: characterize", "alloy_characterize", ["alloy_characterize_r11s0"], [["alloy_characterize"]],
+     "audit-b"),
+    ("The 8:00 clip: a vial dosed for the CubXL", "vlm_workflow", ["vlm_workflow_r11"], [["vlm_workflow_r11fix"]],
+     "audit-a"),
+    # upkeep's first full-clip strict run (01:19 UTC; its JSON since overwritten; numbers from upkeep's log): the arm
+    # 0 of 1460, the movers check 120 of 1460
+    ("Maintenance", "upkeep_clip", (120, 1460, "upkeep's log, 01:19"), [], "upkeep"),   # after: upkeep's final
     ("The bay camera", "bay_camera", ["bay_camera_r11"], [], "lab"),
-    ("Scaling up: the EOS and the Meltio cell", "scaleup", ["scaleup_r11"], ["scaleup_r11fix"], "audit-a"),
+    ("Scaling up: the EOS and the Meltio cell", "scaleup", ["scaleup_r11"], [["scaleup_r11fix"], ["scaleup_r11"]],
+     "audit-a"),
 ]
 SHEET_PICS = [
     ("out/collisions/round11_validation/ch5_section6_round10_camera_F1_frame333.jpg",
@@ -206,8 +219,24 @@ SHEET_PICS = [
 ]
 
 
-def _frames(names: list[str]):
-    """(frames in collision, frames checked) summed over JSONs (arms and movers), or None if any is missing."""
+def _strict(n: str) -> bool:
+    p = COLL / f"{n}.json"
+    return p.exists() and str(json.loads(p.read_text()).get("rules_version", "")).startswith("round 11")
+
+
+def _frames(names):
+    """(frames in collision, frames checked) summed over JSONs (arms and movers), or None if any is missing. `names`
+    may be (frames, checked, "source") for a run whose JSON was overwritten, or a list of alternatives (the first
+    that is there, under round 11's rules, wins)."""
+    if isinstance(names, tuple):
+        return names[:2]
+    if names and isinstance(names[0], (list, tuple)):
+        for alt in names:
+            if isinstance(alt, tuple):
+                return alt[:2]
+            if alt and all(_strict(n) for n in alt):
+                return _frames(alt)
+        return None
     bad = chk = 0
     for n in names:
         rep = _load(n, "x")[0] if False else (json.loads((COLL / f"{n}.json").read_text())
@@ -244,7 +273,7 @@ def sheet(n: int = 2, tag: str = "r11", out_name: str = "round11_sheet.png"):
             line = t
     d.text((60, ly), line, fill=INK2, font=font(24))
     # legend
-    y = 182
+    y = 174
     d.rounded_rectangle((60, y + 4, 92, y + 24), 4, fill=DARK)
     d.text((102, y), "Round 11's rules, before the fixes", fill=INK, font=font(22))
     d.rounded_rectangle((520, y + 4, 552, y + 24), 4, fill=LIGHT)
@@ -260,30 +289,32 @@ def sheet(n: int = 2, tag: str = "r11", out_name: str = "round11_sheet.png"):
                [100.0 * a[0] / a[1] for _, _, _, a, _ in rows if a and a[1]] + [5.0])
     vmax = 5.0 * math.ceil(vmax / 5.0)
     x0, x1 = 660, 1060                                          # the bars' baseline and full scale
-    top, rh = 250, 84
+    top, rh = 240, 70
     for k in range(int(vmax / 5) + 1):                          # recessive grid, every 5 %
         gx = x0 + (x1 - x0) * (5.0 * k / vmax)
-        d.line((gx, top - 10, gx, top + rh * len(rows) - 14), fill=GRID, width=1)
-        d.text((gx - 14, top + rh * len(rows) - 8), f"{5 * k} %", fill=MUTED, font=font(18))
-    d.text((x0, top - 40), "share of the frames checked that have a collision", fill=MUTED, font=font(18))
+        d.line((gx, top - 10, gx, top + rh * len(rows) - 3), fill=GRID, width=1)
+        d.text((gx - 14, top + rh * len(rows) + 2), f"{5 * k} %", fill=MUTED, font=font(18))
+    d.text((x0, top - 22), "share of the frames checked that have a collision", fill=MUTED, font=font(17))
     for r, (label, o, b, a, who) in enumerate(rows):
         y = top + r * rh
-        d.text((60, y + 4), label, fill=INK, font=font(24, bold=True))
+        d.text((60, y + 2), label, fill=INK, font=font(24, bold=True))
         old_txt = f"round 10: {o[0]} of {o[1]}" if o else "round 10: not audited"
-        d.text((60, y + 38), old_txt, fill=MUTED, font=font(20))
+        d.text((60, y + 34), old_txt, fill=MUTED, font=font(20))
         for k, (val, col) in enumerate(((b, DARK), (a, LIGHT))):
-            by = y + 6 + k * 34
+            by = y + 4 + k * 32
             if val is None:
                 d.text((x0, by - 2), "before the fixes: not on record" if k == 0 else
-                       f"after: in progress ({who})", fill=MUTED, font=font(19))
+                       "after: not re-audited", fill=MUTED, font=font(19))
                 continue
             frac = val[0] / val[1] if val[1] else 0.0
             bw = (x1 - x0) * (100.0 * frac / vmax)
             if val[0] > 0:
                 d.rounded_rectangle((x0, by, x0 + max(bw, 6), by + 24), 4, fill=col)
-            d.text((x0 + max(bw, 0) + 12, by - 1), f"{val[0]} of {val[1]} frames" + (f" ({100 * frac:.1f} %)"
-                   if val[0] else ""), fill=INK if k == 0 else INK2, font=font(21, bold=(k == 1 and val[0] == 0)))
-        d.line((60, y + rh - 14, x1 + 200, y + rh - 14), fill=GRID, width=1)
+            pct = 100 * frac
+            pct_txt = (f" ({pct:.1f} %)" if pct >= 0.05 else " (under 0.1 %)") if val[0] else ""
+            d.text((x0 + max(bw, 0) + 12, by - 1), f"{val[0]} of {val[1]} frames" + pct_txt,
+                   fill=INK if k == 0 else INK2, font=font(21, bold=(k == 1 and val[0] == 0)))
+        d.line((60, y + rh - 3, x1 + 200, y + rh - 3), fill=GRID, width=1)
     # two frames found
     px, pw = 1400, 470
     ph = int(pw * 9 / 16)
@@ -306,7 +337,7 @@ def sheet(n: int = 2, tag: str = "r11", out_name: str = "round11_sheet.png"):
                 line = t
         d.text((px, ly), line, fill=INK2, font=font(19))
         py = ly + 44
-    d.text((60, H - 40), "red in a picture: the parts in collision.  Data: out/collisions/round11_summary.json;  "
+    d.text((60, H - 30), "red in a picture: the parts in collision.  Data: out/collisions/round11_summary.json;  "
            "checker: collide.py;  notes: notes/arm_collisions.md", fill=MUTED, font=font(18))
     out = COLL / out_name
     img.save(out, optimize=True)
