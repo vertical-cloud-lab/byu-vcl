@@ -119,8 +119,7 @@ in sections 6-7, plus the movers listed under 3-5 above; round 10's own rules on
   dock and 150 mm further out, at (6520, -2082), because the plate has to clear the chamber's front. The skirt (z 0-30,
   20 mm inside the body) overlaps the plate by 10 x 50 mm at its rear corner: 10 mm to free, 12 on collide.depth's
   ladder. It is hidden under the body's overhang in every shot, but a real MiR's corner caster would ride onto the
-  plate. The fix is the lab's: dock the Aconity where chapter 5 stops (the post then stands about 120 mm clear), as
-  they did at the Instron; asked at 03:15.
+  plate. The lab moved the Aconity's dock to chapter 5's stop, its post 120 mm clear (1c36cef), after the render.
 - The MiR body on the floor tape, the trays against the VLM's column supports and the shutter against the bay's walls,
   which the first passes showed, are not this chapter's: audit-a's movers check ignores the floor and its tape since
   d9184d6, and the coordinator's 063b014 fixed the VLM's.
@@ -149,7 +148,12 @@ in sections 6-7, plus the movers listed under 3-5 above; round 10's own rules on
   wrist would do the same here.
 - The jaws close by a straight move across; a hydraulic wedge grip's jaws ride down a wedge.
 - F1 behind the tank sees 22 % room in its Wide with the tray presented (see 1).
-- The tongs' path fix (above) and the Aconity dock are in code or asked for, not in the render.
+- The tongs' path fix and the Aconity's dock (above) are in code, not in the render.
+- **The tensile tests are hidden in the render.** The set-up moved the Instron dock's AprilTag target post to 150 mm
+  off the face west of the door (47219fc, an hour before the render), 80 mm off the line of sight of the test's camera
+  (`CAM_TEST`), so its cube covers the specimen and both grips through both pulls (frames 1919-2011 and the hot
+  test's). `CAM_TEST` now looks from 1600 mm, not 1150, its axis 161 mm over the cube's top; section 7 needs
+  re-rendering for it to show.
 - While the specimen fingers are on, the 2F-85 takes nothing else: they go on at the EDM for the bars, come off
   before the jar's lid and the tongs, and go on again at the Instron; each fitting or removal takes about 3 s.
 
