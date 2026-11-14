@@ -229,8 +229,9 @@ find).
 
 Frames in collision, at the 6 fps the clips are rendered at. "Round 10's rules" is the committed JSON as round 11
 started (d6eeeb7); "round 11" is the same code under the new rules; "after" is after this round's fixes. Arm / movers /
-either. `python3 audit_all.py summary` gathers them into
-[`out/collisions/round11_summary.json`](../out/collisions/round11_summary.json).
+either. `python3 audit_all.py summary` gathers them, with every other stream's before and after, into
+[`out/collisions/round11_summary.json`](../out/collisions/round11_summary.json); `audit_all.py sheet` draws
+[`round11_sheet.png`](../out/collisions/round11_sheet.png), the long-form's "How the models were checked" still.
 
 | Clip | Round 10's rules | Round 11, before | After | What it was |
 | --- | --- | --- | --- | --- |
@@ -238,6 +239,8 @@ either. `python3 audit_all.py summary` gathers them into
 | Chapter 2, `alloy_atomize.py` (re-rendered, 7d93845) | 0 of 920 | 5 / 6 / **11** | **0 / 0 / 0** | The tong holder's tab filling half its bore, the latch loop's rods through the keeper's lip, the locking bolt sliding into a solid cylinder. [Notes](alloy_atomize.md#round-11-pr-318-2026-11-14-the-stricter-collision-audit) |
 | Chapter 5's section 6 as round 10 had it (the validation, camera F1 put back) | never audited | 31 / 0 / **31** | (ch5's: F1 moved, 6c690a0) | The tongs through F1's post, 25 mm, 28 frames, and the tongs 6 mm into the MiR's cabinet: Sterling's catch, caught. [JSON](../out/collisions/round11_validation/ch5_section6_round10_camera_F1.json) |
 | The 8:00 clip, `animate.py workflow` | 0 of 574 | 6 / 5 / **11** | 5 / 0 / **5** (not re-rendered: the fixes don't show) | The vial in tray B's solid rack; the vial in Ben's 9-vial TightFit holder in the CubXL (a grip by design: its lips are 25.9 mm across for a 27.5 mm vial, and the clip's vial is 28 mm); the CubXL's tip on its P20 cone and the liquid in the tip |
+| The bay camera, `services.py baycam` (lab's) | never audited | 21 / 0 / **21** | not re-audited (lab fixed both causes in 2dc8ced, no re-render: nothing shows) | 20 frames: the arm through the cameras' view cones, translucent overlays now in `sc.fluids`; 1: the solid vial rack, now bored in every `build_vlm` scene |
+| Scaling up, `scaleup.py` | never audited (no UR arm) | 0 / 73 / **73** | not fixed or re-rendered (off the queue at 04:11) | The cart through the EOS's still-shut door (frame 110, real); the band saw grazing the brackets (3-6 mm); the DED beads fused into the propeller (by design) and the cell's glow (a visual). [Notes](scaleup.md) |
 
 ### What round 11's audit still can't see
 

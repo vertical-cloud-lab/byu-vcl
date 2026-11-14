@@ -218,3 +218,17 @@ module places anything on the floor.
 - The set-up movie needs `merge_r8` to apply the setbacks (above); not checked with `setup_lab.py fit`.
 - The tour clips (`tour.py eos_m400`, `tour.py meltio_cell`) were not rendered. The tour and the chapter use the same
   models, so a fix in `r8_scale.py` rebuilds both (`tour.load` caches on the file's hash).
+
+## Round 11: the stricter audit's movers check (2026-11-14)
+
+No UR arm moves here, so round 10's audit had nothing to check. Round 11's movers check (`collide.Movers`, everything
+that moves) does: **73 of 603 frames** with a new contact deeper than 1.5 mm, 59 runs
+([`out/collisions/scaleup_r11.json`](../out/collisions/scaleup_r11.json)). Not fixed or re-rendered this round (it
+came off the queue at 04:11):
+
+- **Real: the cart's top through the EOS's door** (step 3/9, frame 110, past 50 mm): the cart drives the build plate in
+  while the door is still shut for that frame. The door has to be open before the cart moves.
+- **Close to real: the band saw's blade grazes the brackets** (step 6/9, frames 349-376, 3-6 mm): it should run
+  through the supports under them, a few mm lower.
+- **By design: the beads fused into the propeller** (step 8/9, 3-6 mm, one frame as each appears): a DED bead melts
+  into the surface it is laid on. And the cell's glow, a visual, counted as a solid: it belongs in `sc.fluids`.

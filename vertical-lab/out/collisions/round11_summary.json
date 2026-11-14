@@ -1,6 +1,6 @@
 {
  "round": 11,
- "written": "2026-11-14 04:05 UTC",
+ "written": "2026-11-14 04:12 UTC",
  "every_clip": [
   {
    "clip": "Chapter 1: the charge",
@@ -81,7 +81,7 @@
    },
    "round11_before_fixes": null,
    "round11_after_fixes": {
-    "frames": 92,
+    "frames": 51,
     "of": 1028,
     "source": [
      "out/collisions/alloy_powder.json"
@@ -204,7 +204,13 @@
    "clip": "Scaling up: the EOS and the Meltio cell",
    "fixes_by": "audit-a",
    "round10_rules": null,
-   "round11_before_fixes": null,
+   "round11_before_fixes": {
+    "frames": 73,
+    "of": 603,
+    "source": [
+     "out/collisions/scaleup_r11.json"
+    ]
+   },
    "round11_after_fixes": "not re-audited"
   }
  ],
@@ -422,9 +428,60 @@
    "what": "scaling up (scaleup.py: the EOS M 400-4 and the Meltio robot cell; no UR arm, movers only)",
    "job": "scaleup",
    "round10_rules": null,
-   "round11_rules": null,
+   "round11_rules": {
+    "frames_checked": 603,
+    "arm_frames": 0,
+    "arm_runs": 0,
+    "mover_frames": 73,
+    "mover_runs": 59,
+    "all_frames": 73,
+    "allowed_before_but_too_deep": 0,
+    "rules": "round 11 (strict)",
+    "json": "out/collisions/scaleup_r11.json"
+   },
    "after_fixes": null,
-   "worst": []
+   "worst": [
+    {
+     "kind": "mover",
+     "label": "3/9",
+     "frames": "110-110",
+     "n": 1,
+     "depth_mm": 999.0,
+     "what": "cart/top into eos:door/r8s_eos_grey0; cart/top into eos:door/r8s_window1; cart/scissor into eos:door/r8s_eos_grey0"
+    },
+    {
+     "kind": "mover",
+     "label": "6/9",
+     "frames": "371-376",
+     "n": 6,
+     "depth_mm": 6.0,
+     "what": "build/brackets into saw/band"
+    },
+    {
+     "kind": "mover",
+     "label": "8/9",
+     "frames": "569-571",
+     "n": 3,
+     "depth_mm": 6.0,
+     "what": "cell:glow/r8s_glow1 into cell:bead5_3/mesh0"
+    },
+    {
+     "kind": "mover",
+     "label": "8/9",
+     "frames": "505-505",
+     "n": 1,
+     "depth_mm": 12.0,
+     "what": "cell:glow/r8s_glow1 into cell:bead0_5/mesh0; cell:glow/r8s_blue0 into cell:bead0_5/mesh0; cell:bead0_5/mesh0 into cell:prop/mesh0"
+    },
+    {
+     "kind": "mover",
+     "label": "8/9",
+     "frames": "509-510",
+     "n": 2,
+     "depth_mm": 6.0,
+     "what": "cell:glow/r8s_glow1 into cell:bead0_5/mesh0"
+    }
+   ]
   },
   "interference": {
    "what": "interference.py over every model (MuJoCo sweep, exact meshes)",

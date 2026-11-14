@@ -232,8 +232,7 @@ SHEET_CLIPS = [
     # 0 of 1460, the movers check 120 of 1460
     ("Maintenance", "upkeep_clip", (120, 1460, "upkeep's log, 01:19"), [["upkeep_clip"]], "upkeep"),  # final: 443a7a4
     ("The bay camera", "bay_camera", ["bay_camera_r11"], [], "lab"),
-    ("Scaling up: the EOS and the Meltio cell", "scaleup", ["scaleup_r11"], [["scaleup_r11fix"], ["scaleup_r11"]],
-     "audit-a"),
+    ("Scaling up: the EOS and the Meltio cell", "scaleup", ["scaleup_r11"], [["scaleup_r11fix"]], "audit-a"),
 ]
 SHEET_PICS = [
     ("out/collisions/round11_validation/ch5_section6_round10_camera_F1_frame333.jpg",
