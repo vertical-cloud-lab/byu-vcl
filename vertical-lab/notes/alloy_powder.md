@@ -205,3 +205,49 @@ VIZ3D_FPS=6 python3 runner_guard.py bg --mem 6500 --log /tmp/r.log -- xvfb-run -
 - **The render is the audited version.** The audit ran with `VLAB_ONLY_TRAYS=DEM`, the render with `DEMKLH`; both
   collision worlds held the same 667 actors (trays K, L and H stay in their slots and are left out), and the planner
   reported the same twelve joint moves, via poses and IK branches in both, so the render's moves are the audit's.
+
+## Round 11 (2026-11-14): the stricter audit
+
+Sterling, on the round-10 long-form: "There are probably other collisions and interferences that I didn't catch from
+this." Round 11's `collide.py` (audit-a) lets the gripper and a held part touch what they handle only up to 1.5 mm deep
+and checks everything else that moves (trays, doors, the MiR, the instruments' own parts) against everything else.
+
+| Audit (`VLAB_ONLY_TRAYS=DEM`, 6 fps) | Code | Arm | Movers | All |
+|---|---|---|---|---|
+| [`alloy_powder_r11a.json`](../out/collisions/alloy_powder_r11a.json), round 10's rules | round 10's | 0 of 1028 | | **0** |
+| [`alloy_powder_r11s0.json`](../out/collisions/alloy_powder_r11s0.json), stricter rules | round 10's, the XRF block on the plate | 14 of 1028 | 78 | **92** |
+| [`alloy_powder_r11s1.json`](../out/collisions/alloy_powder_r11s1.json), light as non-solid, the cover 55 % open, the door to 70 deg | | 39 of 1028 | 12 | **51** |
+| the committed code: light as non-solid, the cover and the door as in round 10 | this commit | about 14 (as `r11s0`) | about 14 | **about 28** (re-audit queued at 04:11; `alloy_powder.json` when it lands) |
+
+Changed this round, from what the stricter audit found in the other chapters (not re-rendered: the committed MP4 is
+round 10's, rendered before these):
+- **The XRF cup's block stands on the arm's mounting plate.** `props.mir250` draws the arm's 20 mm plate (|x| < 170 mm,
+  top at 800 mm) as part of the cabinet, and the block at MiR (60, -185) was placed at the cabinet's 780 mm, 20 mm down
+  in the plate: its pocket's floor was 2 mm under the plate's top, so the cup was set down into the plate. It now
+  stands on the plate.
+- **The SEM's cup** (`r8_char.sem`, shared with chapter 7): its spring plunger's ball stood 1.6 mm into a seated 1.5 in
+  mount or stub carrier; set back to 0.45 mm (chapter 7's notes).
+- **Tray E's camera E1** moved behind the Mastersizer (lab, `47219fc`); **the iMicro's lid** lifts without its front
+  panel (chapter 7's notes). This chapter only passes them.
+
+What the stricter audit found in this chapter (`alloy_powder_r11s0.json`), and what was done (in code only: the
+coordinator kept chapter 4 to an audit this round, so the committed MP4 is round 10's):
+- **Light counted as solid (64 frames of the movers check).** The MiniFlex's incident and diffracted beams, the
+  Mastersizer's laser, its scattered light and the grains crossing it are drawn as meshes; they are now registered as
+  non-solids (`sc.fluids`), as the IPA and the laser are in chapter 3.
+- **The Mastersizer's cover swings into the iMicro beside it** (6 frames, 50 mm): `instruments.mastersizer`'s full swing
+  reaches past tray E's iMicro. Opened only 55 %, the cover was in the arm's way (25 frames, `r11s1`), so it opens fully
+  again (`MS_LID`). **Open:** the cover's hinge or the two instruments' places on tray E (`line.TRAY_LOADS`, not mine).
+- **The MiniFlex's door meets camera D1** (7 frames; its head and pan at 80 deg). At 70 deg it still did (`r11s1`), so the
+  door opens to 80 deg as before (`XRD_DOOR`). **Open:** camera D1 (lab's `services.TRAY_CAMS["D"]`) needs to stand out
+  of the door's swing; requested in `/tmp/r11_post_requests.txt`.
+- **Still open, not traced in time:** the zero-background holder set on the MiniFlex's stage 3 mm deep (4 frames); the
+  stub carrier reading 12 mm into the SEM's drawer as it is set in the cup (4 frames: the cup's depth, so the carrier is
+  touching the cup or its plunger all round; chapter 7's hot mount, the same 38.1 mm, now seats clean in the same cup);
+  the forearm against the gripper and the wrist against Shuttle 2's bay at the S2 PUMA (6 frames, new since round 10's
+  audit: the bay's model changed this round, `063b014`, and the XRF cup's block is 20 mm higher); the goniometer's
+  detector against the holder (1 frame).
+- **The camera posts against the arm's paths** (FCL distance): closest to D1 11.3 mm (wrist 2, going into the
+  MiniFlex), D0 35.5 mm, E0 41.7 mm, M0 506 mm; E1's new place is out of reach.
+
+

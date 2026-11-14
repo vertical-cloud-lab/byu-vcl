@@ -254,6 +254,10 @@ def build():
     return sc, L, u, R_, ov, ms_grains
 
 
+MS_LID = 1.0                          # how far the Aero S cover opens. Round 11: its full swing reaches the iMicro beside
+#                                       it (50 mm, 6 frames), but opened 55 % it was in the arm's way (25 frames): open
+XRD_DOOR = 0.8                        # the MiniFlex's door, 80 deg. Round 11: it meets camera D1's head (7 frames), and
+#                                       still does at 70 deg: open
 CADDY_AT = (60.0, -185.0)             # the XRF cup's block on the cabinet top (MiR frame), behind the arm
 
 
@@ -359,6 +363,11 @@ def movie():
     rb = u.robot
     fast_collisions(sc, L, u)
     xrd, sem, ms, xrf, prep = RG["xrd"], RG["sem"], RG["ms"], RG["xrf"], RG["prep"]
+    # round 11: what isn't solid, for the stricter audit's movers check (collide.py skips sc.fluids): the MiniFlex's and
+    # the S2 PUMA's X-ray beams, the Mastersizer's laser, its scattered light and the grains it scatters off, the glow
+    light = {f"{xrd.prefix}{k}" for k in ("ibeam", "dbeam", "glow")} | {f"{xrf.prefix}beam"} | {
+        f"{ms.prefix}{k}" for k in ("beam", "arcs_lit", "scat_large", "scat_small", "grains", "powder")}
+    sc.fluids = set(getattr(sc, "fluids", set())) | {n for n, g in sc.group_of.items() if g in light}
     PARK = np.radians(A.PARK_DEG)
     n = 7
     st = {"lbl": f"1/{n}", "cap": ""}
@@ -640,7 +649,7 @@ def movie():
     st["cap"] = ("An actuator on the hinge opens the door (our addition; Yotsumoto et al. 2024 drove theirs the same "
                  "way), to 80 deg, which clears the tray's camera post; the arm waits outside its swing.")
     status(XRD="door opening", Arm="holding the holder")
-    step(1.6, xrd.move({"door": (0.0, 0.8)}), hold=0.2,
+    step(1.6, xrd.move({"door": (0.0, XRD_DOOR)}), hold=0.2,
          labels=[("goniometer, at rest", tuple(axis + (0, 0, 60)), (0.62, 0.20))])
     st["cap"] = ("In through the door and onto the stage, turned a little (the spinner takes it any way round). Nothing "
                  "has touched the powder's face since it was struck off.")
@@ -658,7 +667,7 @@ def movie():
     st["cap"] = ("Door shut and locked; only then does the interlock let the tube switch on, and the X-ray lamp on top "
                  "lights. The goniometer drives to its start, theta 5 deg and 2theta 10 deg.")
     status(XRD="door locked, X-rays on")
-    step(1.4, xrd.move({"door": (0.8, 0.0)}), hold=0.1)
+    step(1.4, xrd.move({"door": (XRD_DOOR, 0.0)}), hold=0.1)
     step(1.0, xrd.move({"glow": (0.0, 1.0)}), hold=0.1)
     step(1.4, xrd.move({"stage": (0.0, RP.V_START), "ibeam": (0.0, 1.0), "~hood": (0.0, 1.0), "~door": (0.0, 0.6)}),
          hold=0.1, labels=[("X-ray tube (fixed)", tuple(xw((-I.XRD["gonio_r"] - 50, g["gy"], g["gz"] + 50))),
@@ -781,7 +790,7 @@ def movie():
     status(Arm="taking the vial", Malvern="cover off")
     v_base = wpt("p_vial")
     T_v = A.level(v_base + (0, 0, VIAL_TCP), toward=(1.0, 0.0, 0.0), spin=0.0)
-    go_to(along(T_v, -110), T_v, secs=1.8, grip=0.55, extra=ms.move({"lid": (0.0, 1.0)}))
+    go_to(along(T_v, -110), T_v, secs=1.8, grip=0.55, extra=ms.move({"lid": (0.0, MS_LID)}))
     lin(T_v, 0.7)
     grip(GRIP_VIAL)
     rb.grasp("p_vial")
@@ -808,7 +817,7 @@ def movie():
     grip(0.55)
     rb.release(L.amr_group)
     lin(along(T_v, -110), 0.6)
-    park(1.4, extra=ms.move({"lid": (1.0, 0.0), "powder": (0.0, 1.0)}), cam=CAM_MS)
+    park(1.4, extra=ms.move({"lid": (MS_LID, 0.0), "powder": (0.0, 1.0)}), cam=CAM_MS)
     status(Arm="parked", Malvern="measuring")
     # the optical bench, in cutaway
     m = RP.ms_geometry()
