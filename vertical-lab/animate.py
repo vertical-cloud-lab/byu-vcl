@@ -640,6 +640,21 @@ def workflow(data, lab=True):
                 for nm in names:
                     sc.alpha[nm] = 0.0
                     sc.base_alpha[nm] = 0.0
+    # Round 11 (the stricter collision audit, notes/arm_collisions.md): props.vial_rack is a solid block with its vials
+    # drawn 32 mm inside it, so in this clip the rack on tray B gets its bores (props.pocket_block: 1 mm round a vial,
+    # a lead-in at the mouth). The CubXL's tips are soft (a PP tip is pressed onto the P20's cone, an interference by
+    # design) and what is in its tip, wells and tubes is liquid
+    rack_g = L.eq_groups["B"][0] if L.eq_groups.get("B") else None
+    if rack_g is not None and f"{rack_g}/rack" in sc.actors:
+        _, rack_seats = P.vial_rack()
+        w_rack = 6 * 34.0 + 16
+        sc.set_mesh(f"{rack_g}/rack", P.pocket_block(-w_rack / 2, w_rack / 2, -26.0, 26.0,
+                                                     [(x, y, P.VIAL_R + P.POCKET_CLEAR) for x, y, _ in rack_seats],
+                                                     h=40.0, floor=rack_seats[0][2]))
+    sc.fluids = set(getattr(sc, "fluids", ())) | {nm for nm in sc.actors
+                                                   if nm.startswith(("cub:tipliq/", "cub:wellliq/", "cub:tubeliq/"))}
+    sc.soft = set(getattr(sc, "soft", ())) | {nm for nm in sc.actors if nm.startswith(("cub:tip/", "cub:tip2/",
+                                                                                         "cub:tip3/"))}
     test = IL.powder_test()
     cub.pose(cubxl_rig.state_at(test, 0.0))
     q = IL.POWDER_TEST

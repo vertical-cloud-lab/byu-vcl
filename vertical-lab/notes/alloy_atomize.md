@@ -25,6 +25,23 @@ python3 alloy_atomize.py keep               # copy the excerpts PLAN uses from /
 python3 alloy_atomize.py powder             # print the powder sums
 ```
 
+### Round 11 (PR #318, 2026-11-14): the stricter collision audit
+
+Under round 11's audit ([`arm_collisions.md`](arm_collisions.md#round-11-the-stricter-audit-the-default-for-arm_audit1):
+what an arm handles may touch its source and destination only up to 1.5 mm deep, and everything that moves is checked)
+this chapter had **11 of 920 frames** in collision (5 the arm's, 6 movers'), where round 10's rules found 0
+([before](../out/collisions/alloy_atomize_r11.json), [after](../out/collisions/alloy_atomize_r11fix.json)):
+
+| What the audit found | Why | Fixed |
+| --- | --- | --- |
+| The loading tong 25 mm into its holder, taken out and put back (frames 253, 485-489) | The tab that hangs the sleeve on the cabinet's end ran from the sleeve's axis, filling half the bore where the tong's stem stands (6 mm at rest). Round 10's rules let a held part touch where it came from "however deep" | The tab runs from the sleeve's outside wall to the cabinet: 4 mm of it, 44 x 16 mm |
+| The latch's loop 6 mm into its keeper, the latch shut (frame 632) | The loop's two rods ran straight from the lever's pin to its bar, up through the keeper's 5.9 mm lip | The lip stands 1.8 mm proud; the bar still sits over its front edge, and the rods clear it over the whole swing (checked every 2.5 deg) |
+| The locking bolt 12-25 mm into the lock cylinder, retracting (frames 954-958) | The cylinder was drawn solid, so the bolt slid back into solid metal | The cylinder is bored for the bolt, 0.3 mm round it and 51 mm deep (3 mm longer than it was drawn, so the bolt stops 1 mm short of its end) |
+
+Assumed: the tab's size; a 1.8 mm lip on the keeper (the real latch's keeper isn't measured: the photos show a
+plate with a lip); the bolt's bore. The cups' designed 0.3 mm squeeze past the rod's adapter (#222's -0.09 mm) is
+under the 1.5 mm limit, so it isn't reported.
+
 ### Round 9 (PR #318, 2026-11-06): two units for the lid, ballasted bases
 
 Sterling's review of 2026-11-05 22:56 UTC, verbatim:

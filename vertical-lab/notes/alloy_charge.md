@@ -12,6 +12,26 @@ time, and this chapter is the two merged:
   `out/alloy_charge_vacuum.*`, [on YouTube](https://www.youtube.com/watch?v=UjGb47I3fy0)): the bore filled to where
   the plug is set, then the plug driven to flush on a set load in a Specac Atlas Autotouch 15T, under vacuum.
 
+## Round 11: the stricter collision audit (0 of 1145 frames, from 40)
+
+Sterling, after the round-10 long-form: "There are probably other collisions and interferences that I didn't catch".
+Under round 11's audit ([`arm_collisions.md`](arm_collisions.md#round-11-the-stricter-audit-the-default-for-arm_audit1):
+what the gripper or a held part may touch only up to 1.5 mm deep, and everything that moves checked) this chapter
+had **40 of 1145 frames** in collision, where round 10's rules found 0
+([before](../out/collisions/alloy_charge_r11.json), [after](../out/collisions/alloy_charge_r11fix.json)):
+
+| What the audit found | Why | Fixed |
+| --- | --- | --- |
+| Each cup 12-25 mm into the charge rack, picked or put back (8 runs) | `charge.rack()` was a solid block with the pockets drawn only as rims on top: a cup in the rack stood 22 mm inside plastic. Round 10's rules let a held part touch its fixtures "however deep" | The pockets are cut (`charge._pocketed`, manifold3d), 0.6 mm round a cup and 0.5 mm round a plug, as printed holders are made |
+| The fingertips 3 mm into the rack, taking a plug from above (2 runs) | The pads reach to 2 mm over a plug's base, and the plug stood 5 mm deep in its pocket | The plug pocket is a 3 mm counterbore and the plug is taken 2 mm higher (`PLUG_GRASP` 23.5): the pads stop 1 mm over the rack and hold 5.5 mm of the plug |
+| The punch 25 mm into its rest (2 runs) | The rest's post was solid too, the punch's nose drawn 22 mm inside it | The post is bored for the nose, 0.5 mm round it (this chapter only: `alloy_press.py`, which other scenes draw, is unchanged) |
+| Each cup 3 mm into the press's punch at the end of the press (8 single frames) | The arm let each cup go 1 mm over its seat, in the rack and on the pin; a cup let go 1 mm high in the rack was then gripped 1 mm low, so it went into the die 2 mm high and the punch's face, at flush, ended 2 mm in its rim. The same offset set the plug 1 mm deeper than intended | Every cup is set on its seat (as it would settle when let go) |
+| The punch 3 mm into the die, set into the catch ring (2 runs) | Its O-ring: a 2.4 mm section reaching 20.4 mm across, in the ring's 19.30 mm bore, squeezed 0.55 mm a side (23 %), which is how a seal is meant to sit, drawn uncompressed | The O-ring is marked soft (`sc.soft`), which the checks leave out as they do liquids |
+| A plug in its cup's mouth, the punch's nose in the ring (several) | Zero-clearance fits, drawn line to line | Not changed: `collide.depth` now reads such fits as touching |
+
+Assumed: a printed rack's pocket clearances (0.6 and 0.5 mm) and a 3 mm counterbore for the plugs; that a cup let go
+over its seat settles onto it. Re-rendered at `VIZ3D_FPS=6`, the render checking itself (`ARM_AUDIT_RENDER=1`).
+
 ## Round 10: the cup can't go closer to the outlet; a funnel per powder is designed, not yet in this chapter
 
 Sterling (PR #318, 2026-11-07): "Note the comment about raising the cup on a platform of sorts so that the nozzle is
