@@ -27,8 +27,18 @@ upkeep-model stream's) books it:
    upkeep.py books the PX500's and the furnace's jobs at the opening (both stand at the tray's front); the tray comes
    out for what is out of reach there.
 
-Kardex publishes no size for its extraction device or its cart: the table here is assumed (``TABLE``). The person is
-drawn here (``Person``): no figure existed in the codebase. What is assumed is in ``notes/upkeep_clip.md``.
+Kardex publishes no size for its extraction device or its cart: the table here is assumed (``TABLE``). What is
+assumed is in ``notes/upkeep_clip.md``.
+
+Round 11 (Sterling: "That's kind of a cringy looking human ... Also, maintenance step shows a collision. There are
+probably other collisions and interferences that I didn't catch from this"):
+
+* **The person** is ``people.Person``: MakeHuman's CC0 base mesh skinned to its default skeleton, posed each frame
+  (walk, lean, both arms solved to their targets, head turned, fingers curled) and dressed by region. Round 10's
+  capsule figure was drawn here.
+* **What the arm audit can't see** is checked too (``PeopleCheck``, with ``ARM_AUDIT=1``): every part of the person
+  as posed, the extraction table, and tray E with everything on it while it is off its dock, against everything
+  visible near them; -> ``out/collisions/upkeep_clip_movers.json``. ``UPKEEP_FROM=3`` starts at part 3.
 """
 from __future__ import annotations
 
@@ -54,6 +64,7 @@ NAME = "upkeep_clip"
 TITLE = "Vertical cloud lab: maintenance in the workflow"
 HERE = Path(__file__).resolve().parent
 STOP = os.environ.get("UPKEEP_STOP", "")      # "1" or "2": end after that part (for a quick look while writing it)
+FROM = os.environ.get("UPKEEP_FROM", "")      # "3": start at part 3 (the person's task), for a quick look
 
 # ------------------------------------------------------------------------------------------------ the check weight
 # OIML R 111-1's cylindrical form with a knob, sized from the mass at 8.0 g/cm3 (stainless steel): estimates, not a
@@ -79,8 +90,9 @@ EXTRACT = V.TRAY_D + ((V.Y_FRONT - V.TRAY_D / 2) - FACE)       # 964 mm: the tra
 # lip, its two roller rails at the tray's running height, as long as the tray is deep and a little narrower than it
 # (its left legs stay clear of the AprilTag post's foot plate, setup_lab.TARGET_AT)
 TABLE = dict(d=900.0, half_w=1180.0, rail_x=1150.0, rail_w=60.0, leg_x=1110.0, z_top=V.Z_OPEN, castor=110.0)
-TABLE_Y = LIP - TABLE["d"] / 2               # its centre, docked
-TABLE_FRONT = LIP - TABLE["d"]               # -2512
+TABLE_GAP = 4.0                               # docked 4 mm off the cover: the LED-Navigator strip stands 2 mm proud of it
+TABLE_Y = LIP - TABLE_GAP - TABLE["d"] / 2    # its centre, docked
+TABLE_FRONT = LIP - TABLE_GAP - TABLE["d"]    # -2516
 MIR_SPEED = 1500.0                            # mm/s at most, at 0.3 m/s^2 (props.ramp_secs), as the other chapters
 WALK = 900.0                                  # the person's pace, mm/s (a slow walk, pushing a table)
 
@@ -221,6 +233,173 @@ def fast_collisions(sc, L, u, trays=("B", "E"), reach=2800.0):
     print(f"collision world: {len(only)} of {len(sc.actors)} actors", flush=True)
 
 
+class PeopleCheck:
+    """Round 11 (Sterling: "maintenance step shows a collision. There are probably other collisions and interferences
+    that I didn't catch"): what collide.Auditor can't see, checked every audited frame (ARM_AUDIT=1).
+
+    * the person, as posed (every part of the skinned body), against everything visible near them;
+    * the extraction table, whenever it is shown;
+    * tray E and everything on it while it is off its dock (sliding out, on the table, sliding back).
+
+    The movers check (collide.Movers) sees a group's world matrix change; a body that bends in place (a lean, a reach)
+    doesn't change it, so the person needs this one. FCL on the drawn meshes; a contact counts if collide.depth puts
+    it deeper than 1.5 mm. Allowed, by rule: the shoes on the floor (to 12 mm: the skinned soles roll), the table's
+    castors on the floor, the tray on the table's rollers and in the carrier it left (to 3 mm), and what `allow` names
+    for the moment (the gloves on the bar they push, on the tip they hold). Writes out/collisions/upkeep_clip_movers.json."""
+
+    DEPTH = 1.5
+
+    def __init__(self, sc, person, table_group="xtable", tray="E", L=None,
+                 region=((-2900.0, 2900.0), (-6400.0, -700.0), (-60.0, 2800.0))):
+        import collide as CL
+        self.CL, self.sc, self.p, self.L, self.tray = CL, sc, person, L, tray
+        self.table = table_group
+        self.tray_groups = CL._subtree(sc, f"tray_{tray}")
+        self.allow: set[tuple[str, str]] = set()          # (person part or "*", other group) allowed now
+        self.frames: list[dict] = []
+        self.y_dock = None
+        (x0, x1), (y0, y1), (z0, z1) = region
+        mine = set(person.groups) | {table_group} | self.tray_groups
+        only, known = {}, set()
+
+        def near(name, actor):
+            g = sc.group_of.get(name)
+            if g in mine:
+                return True
+            if g in person.groups:
+                return False
+            inp = actor.GetMapper().GetInput()
+            if inp is None or inp.GetNumberOfPoints() == 0:
+                return False
+            b = np.array(inp.GetBounds()).reshape(3, 2)
+            c = np.array([[b[0, i], b[1, j], b[2, k]] for i in (0, 1) for j in (0, 1) for k in (0, 1)])
+            w = (sc.world(g) @ np.c_[c, np.ones(8)].T).T[:, :3]
+            lo, hi = w.min(axis=0), w.max(axis=0)
+            return hi[0] > x0 and lo[0] < x1 and hi[1] > y0 and lo[1] < y1 and hi[2] > z0 and lo[2] < z1
+
+        person_names = set(person.names())
+
+        class W(CL.World):
+            def refresh(self):
+                full = self.sc.actors
+                for name in set(full) - known:
+                    known.add(name)
+                    if name not in person_names and near(name, full[name]):
+                        only[name] = full[name]
+                self.sc.actors = only
+                try:
+                    CL.World.refresh(self)
+                finally:
+                    self.sc.actors = full
+        self.world = W(sc)
+        self.depth = getattr(CL, "depth", None)
+        print(f"people check: {len(only)} actors", flush=True)
+
+    def _d(self, a, b) -> float:
+        if self.depth is not None:
+            return self.depth(a, b, upto=12.0)
+        return 99.0 if self.CL._hit(a.obj, b.obj) else 0.0
+
+    @staticmethod
+    def _is_floor(name: str) -> bool:
+        n = name.lower()
+        return "floor" in n or "ground" in n
+
+    def __call__(self, sc):
+        CL, p = self.CL, self.p
+        hits = []
+        self.world.refresh()
+        held = {g for g, _ in p.held.values()}
+        snap = self.world.current(set(p.groups) | held)
+        if not snap.items:
+            self.frames.append(dict(n=sc.n, label=sc.label, hits=hits))
+            return
+        groups = [b.group for b in snap.bodies]
+        shown = any(sc.alpha.get(n, 0.0) > 0.02 for n in p.names())
+        # 1. the person
+        if shown:
+            for part, (P, F) in p.posed().items():
+                lo, hi = P.min(0) - 1.0, P.max(0) + 1.0
+                cand = np.nonzero(~((snap.lo > hi) | (snap.hi < lo)).any(1))[0]
+                if not len(cand):
+                    continue
+                body = CL.Body(f"{p.n}/{part}", p.group, P, np.asarray(F, np.int32))
+                body.place(np.eye(4))
+                for i in cand:
+                    b, g = snap.bodies[i], groups[i]
+                    if (part, g) in self.allow or ("*", g) in self.allow or g in held:
+                        continue
+                    b.ensure()
+                    b.place(snap.M[i])
+                    if not CL._hit(body.obj, b.obj):
+                        continue
+                    d = self._d(body, b)
+                    tol = 12.0 if (part == "shoes" and self._is_floor(b.name)) else self.DEPTH
+                    if d > tol:
+                        hits.append(dict(a=f"{p.n}/{part}", b=b.name, group=g, depth=d))
+        # 2. the table and 3. tray E off its dock: rigid, against what isn't them
+        movers = []
+        if any(sc.alpha.get(n, 0.0) > 0.02 for n in sc.members(self.table)):
+            movers.append(("table", {self.table}))
+        if self.L is not None:
+            y = self.L.tray[self.tray][0]
+            if self.y_dock is None:
+                self.y_dock = y
+            if self.L.where.get(self.tray) is None:
+                movers.append(("tray", self.tray_groups))
+        for kind, gs in movers:
+            mine = [(b, M) for b, M in zip(snap.bodies, snap.M) if b.group in gs]
+            for a, Ma in mine:
+                a.ensure()
+                a.place(Ma)
+                lo, hi = a.box(Ma)
+                cand = np.nonzero(~((snap.lo > hi + 1.0) | (snap.hi < lo - 1.0)).any(1))[0]
+                for i in cand:
+                    b, g = snap.bodies[i], groups[i]
+                    if g in gs or (kind == "tray" and g == self.table) or (kind == "table" and g in self.tray_groups):
+                        if not (kind == "tray" and g == self.table):
+                            continue
+                    if ("*", g) in self.allow or (kind, g) in self.allow:
+                        continue
+                    b.ensure()
+                    b.place(snap.M[i])
+                    if not CL._hit(a.obj, b.obj):
+                        continue
+                    d = self._d(a, b)
+                    floor = self._is_floor(b.name)
+                    tol = 12.0 if (kind == "table" and floor) else (3.0 if (kind == "tray" and g == self.table) else
+                                                                    self.DEPTH)
+                    if d > tol:
+                        hits.append(dict(a=a.name, b=b.name, group=g, depth=d))
+        self.frames.append(dict(n=sc.n, label=sc.label, hits=hits))
+
+    def report(self) -> dict:
+        bad = [f for f in self.frames if f["hits"]]
+        pairs = {}
+        for f in bad:
+            for h in f["hits"]:
+                k = (h["a"], h["b"])
+                r = pairs.setdefault(k, dict(a=h["a"], b=h["b"], frames=0, first=f["n"], last=f["n"], depth=0.0,
+                                             label=f["label"]))
+                r["frames"] += 1
+                r["last"] = f["n"]
+                r["depth"] = max(r["depth"], h["depth"])
+        return dict(frames_checked=len(self.frames), frames_in_collision=len(bad),
+                    pairs=sorted(pairs.values(), key=lambda r: r["first"]))
+
+    def save(self, name):
+        out = HERE / "out" / "collisions" / f"{name}_movers.json"
+        out.parent.mkdir(parents=True, exist_ok=True)
+        rep = self.report()
+        out.write_text(json.dumps(rep, indent=1) + "\n")
+        print(f"people/table/tray check: {rep['frames_in_collision']} of {rep['frames_checked']} frames in "
+              f"collision -> {out}", flush=True)
+        for r in rep["pairs"][:40]:
+            print(f"  {r['a']} x {r['b']}: frames {r['first']}-{r['last']} ({r['frames']}), depth {r['depth']}, "
+                  f"{r['label']}", flush=True)
+        return rep
+
+
 def rig_of(rigs, key):
     for k, r in rigs.items():
         if k.split("_", 1)[1] == key:
@@ -242,19 +421,6 @@ def revolve(profile, res=40) -> pv.PolyData:
     line = pv.PolyData(pts, lines=np.r_[len(pts), np.arange(len(pts))])
     m = line.extrude_rotate(resolution=res, capping=False).triangulate().clean()
     return m.compute_normals(auto_orient_normals=True, split_vertices=False)
-
-
-def capsule(r0, r1, L, n=8, res=28) -> pv.PolyData:
-    """A tapered capsule hanging from the origin along -z: radius r0 round the origin, r1 round (0, 0, -L)."""
-    prof = [(r0 * math.cos(math.pi / 2 * (1 - i / n)), r0 * math.sin(math.pi / 2 * (1 - i / n))) for i in range(n + 1)]
-    prof += [(r1 * math.cos(-math.pi / 2 * i / n), -L + r1 * math.sin(-math.pi / 2 * i / n)) for i in range(n + 1)]
-    prof[0], prof[-1] = (0.0, prof[0][1]), (0.0, prof[-1][1])
-    return revolve(prof, res)
-
-
-def ellipsoid(rx, ry, rz, c=(0, 0, 0)) -> pv.PolyData:
-    m = pv.Sphere(radius=1.0, theta_resolution=32, phi_resolution=24).scale((rx, ry, rz), inplace=False)
-    return m.translate(c, inplace=False)
 
 
 def weight_mesh() -> pv.PolyData:
@@ -308,13 +474,14 @@ def table_parts() -> dict:
     for sx in (-1, 1):
         for y in (-d2 + 35, d2 - 35):
             fk = box(sx * lx - 22, sx * lx + 22, y - 30, y + 30, 70, t["castor"])
-            wh = pv.Cylinder(center=(sx * lx, y, 48), direction=(1, 0, 0), radius=48, height=32,
-                             resolution=24).triangulate()
+            wh = pv.Cylinder(center=(sx * lx, y, 50), direction=(1, 0, 0), radius=48, height=32,      # 2 mm over the
+                             resolution=24).triangulate()                       # floor: its tape is 1.5 mm thick
             c = fk.merge(wh)
             castors = c if castors is None else castors.merge(c)
-    latch = None                                                     # two hooks over the cover's lip
-    for sx in (-1, 1):
-        lt = box(sx * 900 - 40, sx * 900 + 40, d2 - 5, d2 + 40, zt - 40, zt - 22)
+    latch = None                                                     # two hooks resting on the cover's lip
+    for sx in (-1, 1):                                               # (round 10's sat inside it: under its top)
+        lt = box(sx * 900 - 40, sx * 900 + 40, d2 - 5, d2 + 35, V.Z_SILL + 0.5, V.Z_SILL + 12.0)
+        lt = lt.merge(box(sx * 900 - 40, sx * 900 + 40, d2 - 22, d2 - 5, zt - 40, V.Z_SILL + 12.0))
         latch = lt if latch is None else latch.merge(lt)
     out = {"frame": (frame.merge(stops), V.RAL7035, 0.2), "legs": (legs, (0.55, 0.57, 0.60), 0.3),
            "rollers": (rollers, (0.72, 0.73, 0.75), 0.6), "castors": (castors, (0.12, 0.12, 0.13), 0.2),
@@ -325,188 +492,9 @@ def table_parts() -> dict:
 
 
 # ================================================================================================= the person
-SKIN = (0.78, 0.63, 0.53)
-COAT = (0.91, 0.93, 0.95)
-TROUSERS = (0.24, 0.27, 0.34)
-SHOES = (0.13, 0.13, 0.14)
-GLOVE = (0.30, 0.50, 0.84)            # nitrile
-HAIR = (0.23, 0.18, 0.15)
-DARK = (0.10, 0.10, 0.11)
+from people import Person              # noqa: E402  (round 11: MakeHuman's CC0 body, skinned; was drawn here)
 
-
-def _rot_to(d) -> np.ndarray:
-    """4x4 rotation taking -z onto the unit vector d (the shortest turn)."""
-    a = np.array([0.0, 0.0, -1.0])
-    b = np.asarray(d, float)
-    b = b / np.linalg.norm(b)
-    v, c = np.cross(a, b), float(a @ b)
-    M = np.eye(4)
-    if c < -0.999999:
-        M[:3, :3] = np.diag([1.0, -1.0, -1.0])
-        return M
-    vx = np.array([[0, -v[2], v[1]], [v[2], 0, -v[0]], [-v[1], v[0], 0]])
-    M[:3, :3] = np.eye(3) + vx + vx @ vx / (1.0 + c)
-    return M
-
-
-class Person:
-    """A simple figure, 1.75 m: smooth capsules for the limbs, a lab coat, dark trousers, blue nitrile gloves, safety
-    glasses, no face. Posed every frame from where it stands, which way it faces, how far it leans over, a walking
-    phase, and where its hands are (a two-link arm solved to each hand target); the joints are hidden in the round ends
-    of the capsules, so nothing kinks."""
-    HIP_Z, WAIST_Z = 925.0, 1000.0
-    THIGH, SHIN, ANKLE = 440.0, 400.0, 85.0
-    UPPER, FORE, PALM = 300.0, 255.0, 330.0        # shoulder-elbow, elbow-wrist, elbow-palm centre
-    SHOULDER = (192.0, 0.0, 438.0)                 # over the waist pivot (torso frame)
-    HIP_X = 86.0
-
-    def __init__(self, sc, name="person"):
-        self.sc, self.n = sc, name
-        g = lambda k: f"{name}_{k}"                                 # noqa: E731
-        torso = revolve([(0, 472), (55, 470), (115, 458), (160, 434), (178, 392), (182, 300), (172, 180), (157, 70),
-                         (150, 0), (150, -80), (0, -85)]).scale((1.05, 0.62, 1.0), inplace=False)
-        sc.add(f"{name}/coat", torso, COAT, g("upper"), specular=0.08)
-        sc.add(f"{name}/collar", capsule(52, 50, 48, res=24).translate((0, 4, 520), inplace=False), SKIN, g("upper"),
-               specular=0.05)
-        head = ellipsoid(78, 92, 106, (0, 8, 640))
-        sc.add(f"{name}/head", head, SKIN, g("upper"), specular=0.05)
-        hair = ellipsoid(83, 97, 110, (0, 0, 652)).clip(normal=(0.0, -0.55, 1.0), origin=(0, 30, 640), invert=False)
-        sc.add(f"{name}/hair", hair, HAIR, g("upper"), specular=0.05)
-        glasses = ellipsoid(82, 97, 110, (0, 8, 640)).clip(normal=(0, 0, 1), origin=(0, 0, 664), invert=True) \
-            .clip(normal=(0, 0, -1), origin=(0, 0, 643), invert=True).clip(normal=(0, -1, 0), origin=(0, 30, 0),
-                                                                            invert=True)      # wrap-around, a band
-        sc.add(f"{name}/glasses", glasses, DARK, g("upper"), specular=0.4)
-        skirt = revolve([(0, 50), (140, 50), (146, 0), (156, -80), (168, -150), (180, -205), (184, -214),
-                         (0, -216)]).scale((1.12, 0.72, 1.0), inplace=False)
-        sc.add(f"{name}/coat skirt", skirt, COAT, g("hips"), specular=0.08)
-        for s in ("l", "r"):
-            sc.add(f"{name}/{s} sleeve", capsule(50, 43, self.UPPER, res=24), COAT, g(f"ua_{s}"), specular=0.08)
-            sc.add(f"{name}/{s} forearm", capsule(42, 33, self.FORE, res=24), COAT, g(f"fa_{s}"), specular=0.08)
-            hand = ellipsoid(37, 21, 62, (0, 0, -40)).merge(ellipsoid(13, 13, 30, (-28, 6, -12)))
-            sc.add(f"{name}/{s} glove", hand, GLOVE, g(f"hand_{s}"), specular=0.25)
-            sc.add(f"{name}/{s} thigh", capsule(64, 54, self.THIGH, res=24), TROUSERS, g(f"th_{s}"), specular=0.05)
-            sc.add(f"{name}/{s} shin", capsule(53, 41, self.SHIN, res=24), TROUSERS, g(f"sh_{s}"), specular=0.05)
-            shoe = ellipsoid(50, 128, 44, (0, 52, 44)).clip(normal=(0, 0, -1), origin=(0, 0, 1.0), invert=True)
-            sc.add(f"{name}/{s} shoe", shoe, SHOES, g(f"ft_{s}"), specular=0.2)
-        self.groups = [g(k) for k in ("upper", "hips", "ua_l", "fa_l", "hand_l", "ua_r", "fa_r", "hand_r", "th_l",
-                                      "sh_l", "ft_l", "th_r", "sh_r", "ft_r")]
-        self.held = {}                                              # side -> (group, offset from the hand's frame)
-        self.st = dict(x=0.0, y=0.0, hd=0.0, lean=0.0, phase=0.0, amp=0.0, hands={"l": None, "r": None})
-        self.set()
-
-    def names(self):
-        return [n for n, g in self.sc.group_of.items() if g in self.groups]
-
-    def show(self, a):
-        for n in self.names():
-            self.sc.alpha[n] = a
-
-    # ---------------------------------------------------------------------------------- posing
-    def frame(self) -> np.ndarray:
-        s = self.st
-        return T((s["x"], s["y"], 0.0)) @ R((0, 0, 1), s["hd"])
-
-    def shoulder(self, side) -> np.ndarray:
-        sx = -1.0 if side == "l" else 1.0
-        return (self.upper_M() @ np.r_[sx * self.SHOULDER[0], self.SHOULDER[1], self.SHOULDER[2], 1.0])[:3]
-
-    def upper_M(self) -> np.ndarray:
-        s = self.st
-        return self.frame() @ T((0, 0, self.WAIST_Z)) @ R((1, 0, 0), -s["lean"])
-
-    def rest_hand(self, side) -> np.ndarray:
-        """Where a hand hangs (world): at the side, a little forward, swinging against the legs when walking."""
-        s = self.st
-        sx = -1.0 if side == "l" else 1.0
-        swing = -sx * 130.0 * s["amp"] * math.sin(s["phase"])
-        local = np.r_[sx * 228.0, 60.0 + swing, self.WAIST_Z - 175.0 + 0.25 * abs(swing), 1.0]
-        return (self.frame() @ local)[:3]
-
-    def _arm(self, side, target):
-        sc = self.sc
-        S = self.shoulder(side)
-        H = np.asarray(target, float)
-        d = H - S
-        L = float(np.linalg.norm(d))
-        Lu, Lf = self.UPPER, self.PALM
-        L = min(max(L, abs(Lu - Lf) + 1.0), Lu + Lf - 0.5)
-        u = d / max(np.linalg.norm(d), 1e-9)
-        H = S + u * L
-        a = (Lu * Lu - Lf * Lf + L * L) / (2 * L)
-        h = math.sqrt(max(Lu * Lu - a * a, 0.0))
-        sx = -1.0 if side == "l" else 1.0
-        F = self.frame()
-        pole = F[:3, :3] @ np.array([sx * 0.55, -0.35, -1.0])         # elbows out, down and back
-        v = pole - (pole @ u) * u
-        v = v / max(np.linalg.norm(v), 1e-9)
-        E = S + a * u + h * v
-        uf = (H - E) / max(np.linalg.norm(H - E), 1e-9)
-        sc.gmat[f"{self.n}_ua_{side}"] = T(S) @ _rot_to(E - S)
-        sc.gmat[f"{self.n}_fa_{side}"] = T(E) @ _rot_to(uf)
-        # the hand: along the forearm, its back to the outside, turned to the body's heading
-        Mh = T(E + uf * (self.FORE + 18.0)) @ _rot_to(uf)
-        sc.gmat[f"{self.n}_hand_{side}"] = Mh
-        if side in self.held:
-            grp, off = self.held[side]
-            sc.gmat[grp] = Mh @ off
-            sc.parent.pop(grp, None)
-
-    def _leg(self, side, theta, knee):
-        sc = self.sc
-        sx = -1.0 if side == "l" else 1.0
-        F = self.frame()
-        hipz = self.HIP_Z - 18.0 * self.st["amp"] * abs(math.sin(self.st["phase"]))
-        Hp = (F @ np.r_[sx * self.HIP_X, 0.0, hipz, 1.0])[:3]
-        dth = F[:3, :3] @ np.array([0.0, math.sin(theta), -math.cos(theta)])
-        dsh = F[:3, :3] @ np.array([0.0, math.sin(theta - knee), -math.cos(theta - knee)])
-        K = Hp + dth * self.THIGH
-        An = K + dsh * self.SHIN
-        sc.gmat[f"{self.n}_th_{side}"] = T(Hp) @ _rot_to(dth)
-        sc.gmat[f"{self.n}_sh_{side}"] = T(K) @ _rot_to(dsh)
-        foot_pitch = 0.5 * (theta - knee) if self.st["amp"] > 0 else 0.0
-        sc.gmat[f"{self.n}_ft_{side}"] = T(An) @ T((0, 0, -self.ANKLE)) @ R((0, 0, 1), self.st["hd"]) @ \
-            R((1, 0, 0), math.degrees(foot_pitch), pivot=(0, 0, self.ANKLE))
-
-    def set(self, **kw):
-        s = self.st
-        for k, v in kw.items():
-            if k == "hands":
-                s["hands"] = dict(s["hands"], **v)
-            else:
-                s[k] = v
-        sc = self.sc
-        sc.gmat[f"{self.n}_upper"] = self.upper_M()
-        sc.gmat[f"{self.n}_hips"] = self.frame() @ T((0, 0, self.WAIST_Z))
-        ph, amp = s["phase"], s["amp"]
-        for side, off in (("l", 0.0), ("r", math.pi)):
-            p = ph + off
-            theta = amp * 0.30 * math.sin(p)
-            knee = amp * 0.62 * max(0.0, math.cos(p)) ** 1.4 + 0.04
-            self._leg(side, theta, knee)
-        for side in ("l", "r"):
-            tgt = s["hands"][side]
-            self._arm(side, self.rest_hand(side) if tgt is None else tgt)
-
-    def hold(self, side, group):
-        """Carry Scene group `group` in a hand from now on (as it is now, relative to the hand)."""
-        sc = self.sc
-        Mw = sc.world(group)
-        Mh = sc.gmat[f"{self.n}_hand_{side}"]
-        self.held[side] = (group, np.linalg.inv(Mh) @ Mw)
-
-    def let_go(self, side, parent=None):
-        sc = self.sc
-        grp, _ = self.held.pop(side)
-        Mw = sc.world(grp)
-        if parent is None:
-            sc.parent.pop(grp, None)
-            sc.gmat[grp] = Mw
-        else:
-            sc.parent[grp] = parent
-            sc.gmat[grp] = np.linalg.inv(sc.world(parent)) @ Mw
-
-
-STRIDE = 1016.0                       # mm per gait cycle (two steps of ~0.5 m at the legs' 17 deg swing)
+STRIDE = Person.STRIDE                 # mm per gait cycle
 
 
 # ================================================================================================= the panels
@@ -636,11 +624,17 @@ def movie():
     # the extraction table and the person, out of sight until part 3
     for nm, (mesh, col, spec) in table_parts().items():
         sc.add(f"xtable/{nm}", mesh, col, "xtable", specular=spec)
-    T_FAR = -4600.0                    # the table's start, in the aisle, out of CAM_EXTRACT's view
+    T_FAR = -4400.0                    # the table's start, in the aisle, out of CAM_EXTRACT's view (round 11: 200 mm nearer,
+    #                                    so the person behind it starts clear of unit 2 on its charger, front at y -5418)
     sc.gmat["xtable"] = T((0.0, T_FAR, 0.0))
     table_names = [n for n, g in sc.group_of.items() if g == "xtable"]
     person = Person(sc)
     fast_collisions(sc, L, u)
+    pcheck = None
+    if scene.AUDIT:
+        pcheck = PeopleCheck(sc, person, L=L)
+        sc.frame_hooks.append(pcheck)
+    sc._pcheck = pcheck
     for n in table_names + person.names():
         sc.alpha[n] = 0.0
 
@@ -687,137 +681,138 @@ def movie():
         return (lo + hi) / 2
     GRIP_W = gripper_for(WEIGHT["d"] - 0.6)
 
-    # ================================================================== 1. the week
-    sc.cam = list(A.CAM_LAB_VLM)
-    status(L, Arm="UR10e on MiR250, at Shuttle 1", Deck="100 g E2 weight, from tray J's store")
-    say("1/3 The week", "Maintenance in the workflow. A lab that runs round the clock still needs looking after: "
-                        "balances checked, bowls cleaned, filters changed, thermocouples verified. Each task is booked "
-                        "like a job, with who does it: the arm between jobs, or a person on a weekday shift.")
-    step(2.6, None, hold=0.8)
-    cap_week = ("The week's schedule from upkeep.py: experiments, the arm's own checks between them, and people's tasks "
-                "on weekday shifts, so nothing is due at once and a station is out of service only while it is worked "
-                "on.") if week_real else ("The week's schedule, maintenance booked like any job (placeholder: upkeep.py's "
-                                           "week replaces it).")
-    say("1/3 The week", cap_week)
-    step(0.8, panel("week", week, 0.0, 1.0, "full"), hold=0.0)
-    step(1.0, None, hold=6.2)
-    step(0.6, panel("week", week, 1.0, 0.0, "full"), hold=0.0)
-    sc.panels.pop("week", None)
-    if STOP == "0":
-        return finish(sc, rb)
+    if FROM != "3":
+        # ================================================================== 1. the week
+        sc.cam = list(A.CAM_LAB_VLM)
+        status(L, Arm="UR10e on MiR250, at Shuttle 1", Deck="100 g E2 weight, from tray J's store")
+        say("1/3 The week", "Maintenance in the workflow. A lab that runs round the clock still needs looking after: "
+                            "balances checked, bowls cleaned, filters changed, thermocouples verified. Each task is booked "
+                            "like a job, with who does it: the arm between jobs, or a person on a weekday shift.")
+        step(2.6, None, hold=0.8)
+        cap_week = ("The week's schedule from upkeep.py: experiments, the arm's own checks between them, and people's tasks "
+                    "on weekday shifts, so nothing is due at once and a station is out of service only while it is worked "
+                    "on.") if week_real else ("The week's schedule, maintenance booked like any job (placeholder: upkeep.py's "
+                                               "week replaces it).")
+        say("1/3 The week", cap_week)
+        step(0.8, panel("week", week, 0.0, 1.0, "full"), hold=0.0)
+        step(1.0, None, hold=6.2)
+        step(0.6, panel("week", week, 1.0, 0.0, "full"), hold=0.0)
+        sc.panels.pop("week", None)
+        if STOP == "0":
+            return finish(sc, rb)
 
-    # ================================================================== 2. the arm's check: the HR-202i
-    say("2/3 A check between jobs", "Between two dosing runs at night, the HR-202i's daily check. The arm brought the 100 g "
-                                   "class E2 weight up from tray J's store with the night's first job; it rides "
-                                   "on the MiR's deck, in a low seat of its own (ours). Tray B, the doser, comes down.")
-    status(L, Arm="UR10e, parked", Doser="idle between runs")
-    w_top = (sc.world("w_weight") @ np.r_[0, 0, WEIGHT_H, 1.0])[:3]
-    CAM_DECK = [tuple(w_top + (620, -780, 520)), tuple(w_top + (-60, 120, -60)), (0, 0, 1)]
-    step(2.0, None, hold=1.6, cam=CAM_DECK,
-         labels=[("100 g OIML E2 weight", tuple(w_top + (0, 0, 10)), (0.30, 0.30)),
-                 ("its seat on the MiR's deck (ours)", tuple(w_top + (0, -20, -40)), (0.62, 0.62))])
-    L.fetch("B", st["lbl"], st["cap"], fast=0.5, cam=A.CAM_WORK, hold=0.1)
-    p_hand = rig_w(C.vessel_at("vial", 1.0, 0.0) + (0, 0, GRIP_UP))
-    cam_close = [tuple(rig_w(pan + (-430.0, -520.0, 190.0))), tuple(rig_w(pan + (0.0, 0.0, 60.0))), (0, 0, 1)]
-    say("2/3 A check between jobs", "The arm takes the weight by its body, as weight tongs would (no skin, no oil), "
-                                   "and stands it on our vessel shuttle's fork outside the doser, where it sets the "
-                                   "vials down.")
-    status(L, Arm="the weight: deck to the shuttle")
-    Tg = A.down(w_top + (0, 0, GRIP_UP - WEIGHT_H), spin=180.0)
-    go(Tw=A.down(w_top + (0, 0, GRIP_UP - WEIGHT_H + 110), spin=180.0), secs=1.6, grip=0.0, cam=A.CAM_WORK)
-    lin(Tg, 0.8)
-    step(0.4, rb.grip_to(GRIP_W))
-    rb.grasp("w_weight")
-    lin(A.down(w_top + (0, 0, GRIP_UP - WEIGHT_H + 110), spin=180.0), 0.7)
-    go(Tw=A.down(p_hand + (0, 0, 120), spin=180.0), secs=1.6,
-       labels=[("our vessel shuttle", tuple(p_hand + (0, 0, 60)), (0.60, 0.30))])
-    lin(A.down(p_hand, spin=180.0), 0.8)
-    step(0.4, rb.grip_to(0.0))
-    rb.release(car.fork_group)
-    lin(A.down(p_hand + (0, 0, 120), spin=180.0), 0.7)
-    say("2/3 A check between jobs", "The arm parks. The side door opens, the shuttle carries the weight in, sets it "
-                                   "on the pedestal on the pan and backs out; the door shuts. The HR-202i has no "
-                                   "internal mass (A&D's HR-i manual: calibrate 'using a weight that you have'), so "
-                                   "this weight is its check, and once a month its calibration.")
-    status(L, Arm="parked", Doser="shuttle in", **{"HR-202i": "0.0000 g  tared"})
-    step(1.2, RB.both(rb.joint_to(PARK), car.to(side_door=C.SIDE_OPEN)), cam=cam_close)
-    step(1.8, car.to(shuttle=0.0),
-         labels=[("A&D HR-202i, side door open", tuple(rig_w(pan + (-80, -120, 120))), (0.24, 0.24)),
-                 ("the pedestal on the pan", tuple(rig_w(pan + (0, 0, -60))), (0.70, 0.66))])
-    step(0.5, car.to(fork=A.SET_U), hold=0.0)
-    car.reparent("w_weight", rig)
-    step(0.3, car.to(fork=1.0))
-    step(1.4, car.to(shuttle=1.0))
-    step(0.7, car.to(side_door=0.0, fork=0.0))
-    reading = WEIGHT["g"] + TODAY_MG / 1000.0
+        # ================================================================== 2. the arm's check: the HR-202i
+        say("2/3 A check between jobs", "Between two dosing runs at night, the HR-202i's daily check. The arm brought the 100 g "
+                                       "class E2 weight up from tray J's store with the night's first job; it rides "
+                                       "on the MiR's deck, in a low seat of its own (ours). Tray B, the doser, comes down.")
+        status(L, Arm="UR10e, parked", Doser="idle between runs")
+        w_top = (sc.world("w_weight") @ np.r_[0, 0, WEIGHT_H, 1.0])[:3]
+        CAM_DECK = [tuple(w_top + (620, -780, 520)), tuple(w_top + (-60, 120, -60)), (0, 0, 1)]
+        step(2.0, None, hold=1.6, cam=CAM_DECK,
+             labels=[("100 g OIML E2 weight", tuple(w_top + (0, 0, 10)), (0.30, 0.30)),
+                     ("its seat on the MiR's deck (ours)", tuple(w_top + (0, -20, -40)), (0.62, 0.62))])
+        L.fetch("B", st["lbl"], st["cap"], fast=0.5, cam=A.CAM_WORK, hold=0.1)
+        p_hand = rig_w(C.vessel_at("vial", 1.0, 0.0) + (0, 0, GRIP_UP))
+        cam_close = [tuple(rig_w(pan + (-430.0, -520.0, 190.0))), tuple(rig_w(pan + (0.0, 0.0, 60.0))), (0, 0, 1)]
+        say("2/3 A check between jobs", "The arm takes the weight by its body, as weight tongs would (no skin, no oil), "
+                                       "and stands it on our vessel shuttle's fork outside the doser, where it sets the "
+                                       "vials down.")
+        status(L, Arm="the weight: deck to the shuttle")
+        Tg = A.down(w_top + (0, 0, GRIP_UP - WEIGHT_H), spin=180.0)
+        go(Tw=A.down(w_top + (0, 0, GRIP_UP - WEIGHT_H + 110), spin=180.0), secs=1.6, grip=0.0, cam=A.CAM_WORK)
+        lin(Tg, 0.8)
+        step(0.4, rb.grip_to(GRIP_W))
+        rb.grasp("w_weight")
+        lin(A.down(w_top + (0, 0, GRIP_UP - WEIGHT_H + 110), spin=180.0), 0.7)
+        go(Tw=A.down(p_hand + (0, 0, 120), spin=180.0), secs=1.6,
+           labels=[("our vessel shuttle", tuple(p_hand + (0, 0, 60)), (0.60, 0.30))])
+        lin(A.down(p_hand, spin=180.0), 0.8)
+        step(0.4, rb.grip_to(0.0))
+        rb.release(car.fork_group)
+        lin(A.down(p_hand + (0, 0, 120), spin=180.0), 0.7)
+        say("2/3 A check between jobs", "The arm parks. The side door opens, the shuttle carries the weight in, sets it "
+                                       "on the pedestal on the pan and backs out; the door shuts. The HR-202i has no "
+                                       "internal mass (A&D's HR-i manual: calibrate 'using a weight that you have'), so "
+                                       "this weight is its check, and once a month its calibration.")
+        status(L, Arm="parked", Doser="shuttle in", **{"HR-202i": "0.0000 g  tared"})
+        step(1.2, RB.both(rb.joint_to(PARK), car.to(side_door=C.SIDE_OPEN)), cam=cam_close)
+        step(1.8, car.to(shuttle=0.0),
+             labels=[("A&D HR-202i, side door open", tuple(rig_w(pan + (-80, -120, 120))), (0.24, 0.24)),
+                     ("the pedestal on the pan", tuple(rig_w(pan + (0, 0, -60))), (0.70, 0.66))])
+        step(0.5, car.to(fork=A.SET_U), hold=0.0)
+        car.reparent("w_weight", rig)
+        step(0.3, car.to(fork=1.0))
+        step(1.4, car.to(shuttle=1.0))
+        step(0.7, car.to(side_door=0.0, fork=0.0))
+        reading = WEIGHT["g"] + TODAY_MG / 1000.0
 
-    def settle(v):
-        r = WEIGHT["g"] * min(1.0, v * 1.15) + (TODAY_MG / 1000.0 if v > 0.85 else 0.0)
-        sc.clock = ("HR-202i, 220 g x 0.1 mg", f"{r:9.4f} g" + ("  stable" if v > 0.85 else ""))
-    say("2/3 A check between jobs", "Doors shut, the reading settles: 100.0001 g against the weight's certificate. "
-                                   "The shuttle lifts it off and back ten times (USP <41>'s repeatability; one is "
-                                   "shown), and the mean goes on the control chart against the lab's limits.")
-    status(L, Doser="the check weight on the pan", **{"HR-202i": "settling"})
-    # the reading's view: along cam_close's line of sight to the weight (clear of the doser's frame), 55 % closer,
-    # the weight a third of the way across, so the control chart (the right 46 %) leaves it in view
-    w_pan = (sc.world("w_weight") @ np.r_[0, 0, WEIGHT_H / 2, 1.0])[:3]
-    e0 = np.asarray(cam_close[0], float)
-    eye = e0 + 0.55 * (w_pan - e0)
-    dv = w_pan - eye
-    right = np.cross(dv, (0.0, 0.0, 1.0))
-    right /= max(np.linalg.norm(right), 1e-9)
-    cam_read = [tuple(eye), tuple(w_pan + 0.19 * np.linalg.norm(dv) * right), (0, 0, 1)]
-    step(1.6, settle, hold=0.2, cam=cam_read)
-    status(L, **{"HR-202i": f"{reading:.4f} g: +{TODAY_MG:.1f} mg, pass"})
-    step(0.6, panel("chart", chart_ok, 0.0, 1.0), hold=0.0)
-    step(1.0, None, hold=3.4)
-    say("2/3 A check between jobs", "Had it read outside the limits, the arm repeats it once; still out, the scheduler "
-                                   "flags the doser, so no doses are booked on it, and books a person's task for "
-                                   "the next shift: clean the chamber, level, calibrate with the E2 set.")
-    sc.panels["chart_out"] = [chart_out, 0.0, "right"]
+        def settle(v):
+            r = WEIGHT["g"] * min(1.0, v * 1.15) + (TODAY_MG / 1000.0 if v > 0.85 else 0.0)
+            sc.clock = ("HR-202i, 220 g x 0.1 mg", f"{r:9.4f} g" + ("  stable" if v > 0.85 else ""))
+        say("2/3 A check between jobs", "Doors shut, the reading settles: 100.0001 g against the weight's certificate. "
+                                       "The shuttle lifts it off and back ten times (USP <41>'s repeatability; one is "
+                                       "shown), and the mean goes on the control chart against the lab's limits.")
+        status(L, Doser="the check weight on the pan", **{"HR-202i": "settling"})
+        # the reading's view: along cam_close's line of sight to the weight (clear of the doser's frame), 55 % closer,
+        # the weight a third of the way across, so the control chart (the right 46 %) leaves it in view
+        w_pan = (sc.world("w_weight") @ np.r_[0, 0, WEIGHT_H / 2, 1.0])[:3]
+        e0 = np.asarray(cam_close[0], float)
+        eye = e0 + 0.55 * (w_pan - e0)
+        dv = w_pan - eye
+        right = np.cross(dv, (0.0, 0.0, 1.0))
+        right /= max(np.linalg.norm(right), 1e-9)
+        cam_read = [tuple(eye), tuple(w_pan + 0.19 * np.linalg.norm(dv) * right), (0, 0, 1)]
+        step(1.6, settle, hold=0.2, cam=cam_read)
+        status(L, **{"HR-202i": f"{reading:.4f} g: +{TODAY_MG:.1f} mg, pass"})
+        step(0.6, panel("chart", chart_ok, 0.0, 1.0), hold=0.0)
+        step(1.0, None, hold=3.4)
+        say("2/3 A check between jobs", "Had it read outside the limits, the arm repeats it once; still out, the scheduler "
+                                       "flags the doser, so no doses are booked on it, and books a person's task for "
+                                       "the next shift: clean the chamber, level, calibrate with the E2 set.")
+        sc.panels["chart_out"] = [chart_out, 0.0, "right"]
 
-    def whatif(v):
-        sc.panels["chart"][1] = 1.0 - v
-        sc.panels["chart_out"][1] = v
-    step(0.6, whatif, hold=0.0)
-    status(L, Doser="FLAGGED (what if): jobs held", Booked="person, next shift: HR-202i service")
-    step(1.0, None, hold=3.6)
-    status(L, Doser="online (today's check passed)", Booked="")
+        def whatif(v):
+            sc.panels["chart"][1] = 1.0 - v
+            sc.panels["chart_out"][1] = v
+        step(0.6, whatif, hold=0.0)
+        status(L, Doser="FLAGGED (what if): jobs held", Booked="person, next shift: HR-202i service")
+        step(1.0, None, hold=3.6)
+        status(L, Doser="online (today's check passed)", Booked="")
 
-    def chart_off(v):
-        sc.panels["chart_out"][1] = 1.0 - v
-    step(0.5, chart_off, hold=0.0)
-    sc.panels.clear()
-    sc.clock = None
-    say("2/3 A check between jobs", "Today it passed. The shuttle brings the weight back out, the arm returns it to "
-                                   "its seat on the deck (it goes back to tray J with the next run's samples), and "
-                                   "tray B goes back up. About twelve minutes (upkeep.py books 0.2 h), between two "
-                                   "night-time jobs.")
-    status(L, Doser="shuttle out", **{"HR-202i": ""})
-    step(0.7, car.to(side_door=C.SIDE_OPEN, fork=1.0), cam=cam_close)
-    step(1.4, car.to(shuttle=0.0), hold=0.0)
-    step(0.3, car.to(fork=A.SET_U), hold=0.0)
-    car.reparent("w_weight", car.fork_group)
-    step(0.4, car.to(fork=0.0), hold=0.0)
-    step(1.4, car.to(shuttle=1.0), hold=0.0)
-    step(0.5, car.to(side_door=0.0))
-    status(L, Arm="the weight: shuttle to the deck", Doser="")
-    go(Tw=A.down(p_hand + (0, 0, 120), spin=180.0), secs=1.4, grip=0.0, cam=A.CAM_WORK)
-    lin(A.down(p_hand, spin=180.0), 0.7)
-    step(0.4, rb.grip_to(GRIP_W))
-    rb.grasp("w_weight")
-    lin(A.down(p_hand + (0, 0, 120), spin=180.0), 0.6)
-    seat_w = (sc.world("w_stand") @ np.r_[0, 0, STAND["h"] - STAND["pocket"], 1.0])[:3]
-    go(Tw=A.down(seat_w + (0, 0, GRIP_UP + 110), spin=180.0), secs=1.4)
-    lin(A.down(seat_w + (0, 0, GRIP_UP), spin=180.0), 0.7)
-    step(0.4, rb.grip_to(0.0))
-    rb.release("w_stand")
-    lin(A.down(seat_w + (0, 0, GRIP_UP + 110), spin=180.0), 0.6)
-    status(L, Arm="parked")
-    step(1.2, rb.joint_to(PARK))
-    L.store("B", st["lbl"], st["cap"], fast=0.45, cam=CAM_OPEN, hold=0.1)
-    if STOP == "2":
-        return finish(sc, rb)
+        def chart_off(v):
+            sc.panels["chart_out"][1] = 1.0 - v
+        step(0.5, chart_off, hold=0.0)
+        sc.panels.clear()
+        sc.clock = None
+        say("2/3 A check between jobs", "Today it passed. The shuttle brings the weight back out, the arm returns it to "
+                                       "its seat on the deck (it goes back to tray J with the next run's samples), and "
+                                       "tray B goes back up. About twelve minutes (upkeep.py books 0.2 h), between two "
+                                       "night-time jobs.")
+        status(L, Doser="shuttle out", **{"HR-202i": ""})
+        step(0.7, car.to(side_door=C.SIDE_OPEN, fork=1.0), cam=cam_close)
+        step(1.4, car.to(shuttle=0.0), hold=0.0)
+        step(0.3, car.to(fork=A.SET_U), hold=0.0)
+        car.reparent("w_weight", car.fork_group)
+        step(0.4, car.to(fork=0.0), hold=0.0)
+        step(1.4, car.to(shuttle=1.0), hold=0.0)
+        step(0.5, car.to(side_door=0.0))
+        status(L, Arm="the weight: shuttle to the deck", Doser="")
+        go(Tw=A.down(p_hand + (0, 0, 120), spin=180.0), secs=1.4, grip=0.0, cam=A.CAM_WORK)
+        lin(A.down(p_hand, spin=180.0), 0.7)
+        step(0.4, rb.grip_to(GRIP_W))
+        rb.grasp("w_weight")
+        lin(A.down(p_hand + (0, 0, 120), spin=180.0), 0.6)
+        seat_w = (sc.world("w_stand") @ np.r_[0, 0, STAND["h"] - STAND["pocket"], 1.0])[:3]
+        go(Tw=A.down(seat_w + (0, 0, GRIP_UP + 110), spin=180.0), secs=1.4)
+        lin(A.down(seat_w + (0, 0, GRIP_UP), spin=180.0), 0.7)
+        step(0.4, rb.grip_to(0.0))
+        rb.release("w_stand")
+        lin(A.down(seat_w + (0, 0, GRIP_UP + 110), spin=180.0), 0.6)
+        status(L, Arm="parked")
+        step(1.2, rb.joint_to(PARK))
+        L.store("B", st["lbl"], st["cap"], fast=0.45, cam=CAM_OPEN, hold=0.1)
+        if STOP == "2":
+            return finish(sc, rb)
 
     # ================================================================== 3. a person's task: tray E out
     x2 = SL.X2
@@ -835,15 +830,58 @@ def movie():
             labels=[("KLA iMicro nanoindenter", tuple(nw((0, 0, NP["H"] + 40))), (0.36, 0.20))])
     # the MiR drives off to Shuttle 2, where it carries on; the person rolls the table in behind it
     tip0 = nw((NP["head_x"], 0.0, sz + 60.0))
-    xp = float(tip0[0]) - 70.0                       # the person stands square to the head, a little to its left
-    y_work = TABLE_FRONT - 175.0                     # the body's centre with the hands on the table's front edge
-    y_start = T_FAR - TABLE["d"] / 2 - 175.0
-    hands_on_table = lambda: {"l": (xp - 215.0, sc.gmat["xtable"][1, 3] - TABLE["d"] / 2 + 6.0, V.Z_OPEN - 5.0),  # noqa: E731
-                              "r": (xp + 215.0, sc.gmat["xtable"][1, 3] - TABLE["d"] / 2 + 6.0, V.Z_OPEN - 5.0)}
+    # round 11: where the person stands, from people.Person's reach (people.py) and the check (PeopleCheck)
+    xp = float(tip0[0]) - 150.0                      # the right shoulder in line with the indenter head
+    y_push, lean_push = 215.0, 24.0                  # pushing: 215 mm behind the table's front edge, a 24 deg stoop
+    y_work, lean_work = TABLE_FRONT - 195.0, 33.0    # the tip change: up to the table, leaning in over the tray
+    y_start = T_FAR - TABLE["d"] / 2 - y_push
+    BAR_TOP = V.Z_OPEN - 30.0                        # the push bar's top (table_parts)
+    hand_z = {"l": 900.0, "r": 900.0}                # the palms' targets, settled each frame onto the bar
+
+    def hands_on_table():
+        yb = sc.gmat["xtable"][1, 3] - TABLE["d"] / 2
+        return {"l": (xp - 215.0, yb + 15.0, hand_z["l"]), "r": (xp + 215.0, yb + 15.0, hand_z["r"])}
+
+    def settle_hands(n=2):
+        """The fingers resting on the push bar: each palm's target is raised or lowered until the glove's lowest point
+        over the bar is 0.5 mm above its top (the movers check counts a contact deeper than 1.5 mm)."""
+        yb = sc.gmat["xtable"][1, 3] - TABLE["d"] / 2
+        for _ in range(n):
+            G = person.posed()["glove"][0]
+            for sd in ("l", "r"):
+                hp = person.hand_point(sd)
+                near = G[(np.linalg.norm(G - hp, axis=1) < 160.0) & (G[:, 1] >= yb - 2.0) & (G[:, 1] <= yb + 32.0)]
+                if len(near):
+                    hand_z[sd] += BAR_TOP + 0.5 - float(near[:, 2].min())
+            person.set(hands=hands_on_table())
+
+    def keep(tag):
+        """PREVIEW: the step's last frame at full size, for a close look at the person."""
+        if PREVIEW and sc.preview:
+            sc.preview[-1].convert("RGB").save(f"/tmp/upkeep_{tag}.png")
+
+    def reach_err(tag):
+        if PREVIEW or scene.AUDIT:
+            for sd in ("l", "r"):
+                t = person.st["hands"][sd]
+                if t is not None:
+                    e = float(np.linalg.norm(person.hand_point(sd) - np.asarray(t, float)))
+                    if e > 15.0:
+                        print(f"reach {tag} {sd}: palm {e:.0f} mm from its target", flush=True)
+
+    def allow(*pairs):
+        if pcheck is not None:
+            pcheck.allow = set(pairs)
+    if os.environ.get("UPKEEP_NOCAMS"):              # a diagnostic: tray E's camera units out of the check and the view
+        for n, g in sc.group_of.items():
+            if g.startswith(("cam_E0", "cam_E1")):
+                sc.alpha[n] = 0.0
     for n in table_names + person.names():
         sc.alpha[n] = 1.0
-    person.set(x=xp, y=y_start, hd=0.0, lean=8.0, amp=0.0, phase=0.0)
+    person.set(x=xp, y=y_start, hd=0.0, lean=lean_push, amp=0.0, phase=0.0, look=None, grip={"l": 0.35, "r": 0.35})
+    print(f"tip {np.round(tip0)}, xp {xp:.0f}, table front {TABLE_FRONT:.0f}, tray E y {L.tray['E'][0]:.0f}", flush=True)
     person.set(hands=hands_on_table())
+    settle_hands(3)
     say("3/3 A person's task", "The MiR250 + UR10e drives off to Shuttle 2, which carries on working: only Shuttle 1's "
                                "opening is taken. A person rolls the extraction table (ours: Kardex publishes no size "
                                "for its device or its cart) to the opening and docks it against the cover.")
@@ -862,8 +900,12 @@ def movie():
         s = walk_d * ws
         person.set(y=y_start + s, amp=min(1.0, 4.0 * min(w, 1.0 - w)), phase=2 * math.pi * s / STRIDE,
                    hands=hands_on_table())
+        settle_hands()
+        if v >= 1.0:
+            reach_err("push")
     step(t_drive, drive_and_roll, hold=0.1, cam=CAM_EXTRACT,
          labels=[("extraction table (assumed size)", (900.0, TABLE_Y - 300, V.Z_OPEN + 40), (0.74, 0.32))])
+    keep("push")
     person.set(amp=0.0, phase=0.0)
     status(L, Arm="UR10e on MiR250, at Shuttle 2 (working)")
     say("3/3 A person's task", "Kardex's full tray extraction: \"a tray is placed in front of the access opening\". The "
@@ -873,56 +915,162 @@ def movie():
     L.where["E"] = None
     status(L, **{"Tray E": "out on the table, off its dock"}, iMicro="shut down for the tip change")
     y_in = L.tray["E"][0]
-    person.set(hands={"l": None, "r": None}, lean=0.0)
+    allow()
+    bar = hands_on_table()
+
+    def to_rest(hands, v):
+        """Hands from `hands` towards where they hang now, v from 0 to 1."""
+        return {sd: tuple(np.asarray(hands[sd], float) * (1.0 - v) + np.asarray(person.rest_hand(sd)) * v)
+                for sd in ("l", "r")}
 
     def back_off(v):
-        person.set(y=y_work - 90.0 * v)
-    step(0.6, back_off, hold=0.0)
+        person.set(y=TABLE_FRONT - y_push + (y_work - 90.0 - (TABLE_FRONT - y_push)) * v, lean=lean_push * (1.0 - v))
+        person.set(hands=to_rest(bar, v), grip={"l": 0.35 - 0.05 * v, "r": 0.35 - 0.05 * v})
+    step(0.8, back_off, hold=0.0)
+    person.set(hands={"l": None, "r": None})
     step(3.2, L.slide("E", y_in - EXTRACT), hold=0.2,
          labels=[("tray E, on the table's rails", (-1000.0, y_in - EXTRACT - 330, V.Z_OPEN + 80), (0.18, 0.34))])
 
-    # the tip change
+    # the tip change (round 11). The iMicro's front panel is the cabinet's and only its lid lifts (r8_char, 180c0f4),
+    # and the tip sits 235 mm under the panel's top edge and 260 mm behind it: no one reaches it over the panel. So the
+    # panel is a removable service panel (assumed: KLA publishes no service drawing; r8_char's "panel" piece) that
+    # lifts straight up and off. Tray E's cameras E0 and E1 stand 80 mm in front of the iMicro (services.TRAY_CAMS["E"]):
+    # the person works from between their masts and keeps their body in front of them; only the arms go through.
     tip = nw((NP["head_x"], 0.0, sz + 60.0))
+    front_y = nw((0.0, -NP["D"] / 2, 0.0))[1]        # the cabinet's front face
+    panel_top = nw((0.0, 0.0, NP["H"] - NP["lid_t"]))[2]
+    masts = [A.tray_world("E", (mx, my, 0.0)) for mx, my, *_ in __import__("services").TRAY_CAMS.get("E", [])[:2]]
+    x_gap = float(np.mean([m[0] for m in masts])) if masts else xp
+    y_mast = float(min(m[1] for m in masts)) if masts else front_y - 80.0
+    have_panel = "panel" in nano.inst.joints
+    panel_g = f"{nano.prefix}panel"
     f_tip = tip + (-60.0, -200.0, -80.0)            # along CAM_EXTRACT's line of sight (the person stands left of it)
     CAM_TIP = [tuple(f_tip + 0.5 * (np.asarray(CAM_EXTRACT[0], float) - f_tip)), tuple(f_tip), (0, 0, 1)]
-    say("3/3 A person's task", "The hood lifts. Gloves and safety glasses; the person reaches in to the indenter head, "
-                               "unscrews the old tip, fits the new one by hand and seats it to its torque.")
-    status(L, iMicro="hood up: tip change")
-    step(1.4, nano.move({"lid": (0.0, 1.0)}), hold=0.1, cam=CAM_TIP,
+    say("3/3 A person's task", "The lid lifts and the stage runs out from under the indenter head.")
+    status(L, iMicro="lid up: tip change")
+    lid_moves = {"lid": (0.0, 1.0)}
+    if "carriage" in nano.inst.joints:
+        lid_moves["carriage"] = (0.0, 1.0)
+    if "stage" in nano.inst.joints:
+        lid_moves["stage"] = (0.0, -1.0)             # the x stage 100 mm the other way: nothing under the tip
+    step(1.4, nano.move(lid_moves), hold=0.1, cam=CAM_TIP,
          labels=[("indenter head, Berkovich tip", tuple(tip + (0, 0, 60)), (0.66, 0.22))])
-    r_at = tip + (0.0, -20.0, -30.0)
-    l_at = nw((NP["head_x"] - 75.0, -30.0, sz + 160.0))
+    print(f"masts {[tuple(np.round(m[:2])) for m in masts]}, gap x {x_gap:.0f}, front {front_y:.0f}, panel top "
+          f"{panel_top:.0f}, panel joint {have_panel}", flush=True)
+
+    def side_to(x1, secs, **kw):
+        x0 = person.st["x"]
+
+        def up(v):
+            s_ = (x1 - x0) * v
+            person.set(x=x0 + s_, amp=min(0.35, 2.0 * min(v, 1.0 - v)), phase=2 * math.pi * abs(s_) / STRIDE, **kw)
+        step(secs, up, hold=0.0)
+        person.set(amp=0.0, phase=0.0)
+    if have_panel:
+        say("3/3 A person's task", "The front panel comes off: a removable service panel (assumed: KLA publishes no "
+                                   "service drawing), lifted straight up out of its guides, between the two camera masts.")
+        status(L, iMicro="front panel off")
+        side_to(x_gap, 0.8)
+        grip_pts = {"l": np.array([x_gap - 70.0, front_y + 6.0, panel_top + 18.0]),
+                    "r": np.array([x_gap + 70.0, front_y + 6.0, panel_top + 18.0])}
+        y_panel = y_mast - 25.0 - 175.0                # the body's front stays 25 mm short of the masts
+
+        def to_panel(v):
+            person.set(y=y_work - 90.0 + (y_panel - (y_work - 90.0)) * v, lean=18.0 * v, look=tuple(grip_pts["r"]),
+                       grip={"l": 0.5 * v, "r": 0.5 * v})
+            person.set(hands=to_rest({k: tuple(g) for k, g in grip_pts.items()}, 1.0 - v))
+        step(1.0, to_panel, hold=0.1)
+        allow(("glove", panel_g))
+        lift = nano.move({"panel": (0.0, 1.0)})
+        rise = float(nano.inst.joints["panel"].vec[2]) if hasattr(nano.inst.joints["panel"], "vec") else 420.0
+
+        def lift_off(v):
+            lift(v)
+            k = min(1.0, v / 0.35)                       # the hands follow it for the first 150 mm, then let go
+            dz = rise * min(v, 0.35)
+            hands = {sd: tuple(grip_pts[sd] + (0.0, 0.0, dz)) for sd in ("l", "r")}
+            person.set(hands=to_rest(hands, max(0.0, (v - 0.35) / 0.65)) if v > 0.35 else hands,
+                       lean=18.0 * (1.0 - 0.5 * max(0.0, (v - 0.35) / 0.65)))
+            _ = k
+        step(1.8, lift_off, hold=0.2)
+        allow()
+        person.set(hands={"l": None, "r": None}, grip={"l": 0.3, "r": 0.3})
+        x_tip = float(tip[0]) - 174.0                  # the right shoulder in line with the head
+        side_to(x_tip, 0.8)
+        y_reach = y_mast - 25.0 - 160.0
+    else:
+        say("3/3 A person's task", "The tip sits 26 cm inside the cabinet, behind its fixed front panel: not shown here, "
+                                   "the person takes the panel off, reaches in and changes the tip by hand.")
+        x_tip, y_reach = person.st["x"], y_work - 90.0
+    r_at = tip + (-45.0, -8.0, 4.0)                  # the right hand beside the tip's shaft, fingers round it
+    l_at = np.array([x_tip - 30.0, y_mast - 140.0, tip[2] + 60.0])   # the left hand holds the new tip, ready
 
     def lean_in(v):
-        person.set(y=y_work - 90.0 * (1.0 - v), lean=30.0 * v,
+        person.set(y=person_y0 + (y_reach - person_y0) * v, lean=lean_work * v, look=tuple(tip),
+                   grip={"l": 0.55 * v, "r": 0.5 * v},
                    hands={"l": tuple(np.asarray(person.rest_hand("l")) * (1 - v) + l_at * v),
                           "r": tuple(np.asarray(person.rest_hand("r")) * (1 - v) + r_at * v)})
-    step(1.6, lean_in, hold=0.1)
-    tip_g = f"{nano.prefix}tip"
-    tip_parent, tip_M = sc.parent.get(tip_g), sc.gmat[tip_g].copy()
-    person.hold("r", tip_g)
+    person_y0 = person.st["y"]
+    if have_panel:
+        step(1.6, lean_in, hold=0.1)
+        keep("lean_in")
+        reach_err("lean in")
+        tip_g = f"{nano.prefix}tip"
+        tip_parent, tip_M = sc.parent.get(tip_g), sc.gmat[tip_g].copy()
+        person.hold("r", tip_g)
 
-    def unscrew(v):
-        out = math.sin(math.pi * v)                     # down and out to the front, then back up in: the new one
-        wob = 6.0 * math.sin(2 * math.pi * 4 * v) * (1 - out)
-        person.set(hands={"r": tuple(r_at + (wob, -110.0 * out, -45.0 * out))})
-    step(4.2, unscrew, hold=0.2, still=True)
-    person.held.pop("r", None)
-    if tip_parent is not None:
-        sc.parent[tip_g] = tip_parent
-    sc.gmat[tip_g] = tip_M
+        def unscrew(v):
+            # turned loose, drawn straight down out of the head's bore (its shaft is 60 mm up it), held up to the light;
+            # then the new one the same way up and turned in. It never moves sideways while it is in the head.
+            u = v if v < 0.5 else 1.0 - v
+            down = float(np.clip((u - 0.25) / 0.18, 0.0, 1.0))
+            wob = 5.0 * math.sin(2 * math.pi * 6 * v) * (1.0 - down)
+            person.set(hands={"r": tuple(r_at + (0.0, wob, -62.0 * down))})
+        step(4.2, unscrew, hold=0.2, still=True)
+        keep("unscrew")
+        person.held.pop("r", None)
+        if tip_parent is not None:
+            sc.parent[tip_g] = tip_parent
+        sc.gmat[tip_g] = tip_M
 
     def lean_out(v):
-        person.set(y=y_work - 90.0 * v, lean=30.0 * (1.0 - v),
+        person.set(y=y_reach + (y_work - 90.0 - y_reach) * v, lean=lean_work * (1.0 - v), grip={"l": 0.3, "r": 0.3},
                    hands={"l": tuple(l_at * (1 - v) + np.asarray(person.rest_hand("l")) * v),
                           "r": tuple(r_at * (1 - v) + np.asarray(person.rest_hand("r")) * v)})
-    step(1.2, lean_out, hold=0.1)
-    person.set(hands={"l": None, "r": None})
+    if have_panel:
+        step(1.2, lean_out, hold=0.1)
+        person.set(hands={"l": None, "r": None}, look=None)
+        say("3/3 A person's task", "The panel goes back on, the lid comes down and the stage runs back.")
+        side_to(x_gap, 0.8)
+        low_pts = {"l": np.array([x_gap - 70.0, front_y - 10.0, panel_top - 385.0 + rise + 10.0]),
+                   "r": np.array([x_gap + 70.0, front_y - 10.0, panel_top - 385.0 + rise + 10.0])}
+        down = nano.move({"panel": (1.0, 0.0)})
+
+        def to_low(v):
+            person.set(y=y_work - 90.0 + (y_panel - (y_work - 90.0)) * v, lean=14.0 * v,
+                       look=tuple(low_pts["r"]), grip={"l": 0.5 * v, "r": 0.5 * v})
+            person.set(hands=to_rest({k: tuple(g) for k, g in low_pts.items()}, 1.0 - v))
+        step(0.9, to_low, hold=0.0)
+        allow(("glove", panel_g))
+
+        def panel_down(v):
+            down(v)
+            dz = -rise * min(v, 0.35)
+            hands = {sd: tuple(low_pts[sd] + (0.0, 0.0, dz)) for sd in ("l", "r")}
+            person.set(hands=to_rest(hands, max(0.0, (v - 0.35) / 0.65)) if v > 0.35 else hands)
+        step(1.6, panel_down, hold=0.1)
+        allow()
+
+        def step_back(v):
+            person.set(y=y_panel + (y_work - 90.0 - y_panel) * v, lean=14.0 * (1.0 - v), grip={"l": 0.3, "r": 0.3})
+        step(0.6, step_back, hold=0.0)
+    person.set(hands={"l": None, "r": None}, look=None)
     say("3/3 A person's task", "Hood down, the tray rolls back into the bay and onto its dock: power back. The person "
                                "takes the table away. The new tip's area function is the arm's job, booked as its next "
                                "one on tray E: indents in the fused-silica reference (upkeep.py's weekly check).")
     status(L, iMicro="new tip; fused-silica check booked, the arm", **{"Tray E": "back in the bay"})
-    step(1.2, nano.move({"lid": (1.0, 0.0)}), hold=0.0)
+    back_moves = {k: (None, 0.0) for k in lid_moves}
+    step(1.2, nano.move(back_moves), hold=0.0)
     step(3.0, L.slide("E", y_in), hold=0.1, cam=CAM_EXTRACT)
     L.where["E"] = "open"
     L.focus = "E"
@@ -933,9 +1081,17 @@ def movie():
     def table_off(v):
         s = (y_away - TABLE_Y) * v
         sc.gmat["xtable"] = T((0.0, TABLE_Y + s, 0.0))
-        person.set(y=y_work - 90.0 + s, hd=0.0, lean=8.0, amp=min(1.0, 4.0 * min(v, 1.0 - v)),
+        person.set(y=TABLE_FRONT - y_push + s, hd=0.0, lean=lean_push, amp=min(1.0, 4.0 * min(v, 1.0 - v)),
                    phase=2 * math.pi * s / STRIDE, hands=hands_on_table())
-    person.set(y=y_work - 90.0)
+        settle_hands()
+
+    def grip_again(v):
+        person.set(y=y_work - 90.0 + (TABLE_FRONT - y_push - (y_work - 90.0)) * v, lean=lean_push * v,
+                   grip={"l": 0.3 + 0.05 * v, "r": 0.3 + 0.05 * v})
+        person.set(hands=to_rest(hands_on_table(), 1.0 - v))
+    step(0.8, grip_again, hold=0.0)
+    person.set(hands=hands_on_table())
+    settle_hands(3)
     step(4.0, table_off, hold=0.0)
     for n in table_names + person.names():
         sc.alpha[n] = 0.0
@@ -956,6 +1112,8 @@ def movie():
 
 def finish(sc, rb):
     sc.panels.clear()
+    if getattr(sc, "_pcheck", None) is not None:
+        sc._pcheck.save(NAME)
     print(f"highest forearm/wrist point {rb.max_z_world:.0f} mm", flush=True)
     out = sc.save()
     if not (PREVIEW or scene.AUDIT):
