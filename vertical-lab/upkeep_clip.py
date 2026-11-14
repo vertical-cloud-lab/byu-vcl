@@ -918,14 +918,14 @@ def movie():
     allow()
     bar = hands_on_table()
 
-    def to_rest(hands, v):
-        """Hands from `hands` towards where they hang now, v from 0 to 1."""
-        return {sd: tuple(np.asarray(hands[sd], float) * (1.0 - v) + np.asarray(person.rest_hand(sd)) * v)
-                for sd in ("l", "r")}
+    def to_rest(hands, v, over=0.0):
+        """Hands from `hands` towards where they hang now, v from 0 to 1; `over` mm higher on the way (over a bar)."""
+        return {sd: tuple(np.asarray(hands[sd], float) * (1.0 - v) + np.asarray(person.rest_hand(sd)) * v +
+                          (0.0, 0.0, over * math.sin(math.pi * v))) for sd in ("l", "r")}
 
     def back_off(v):
         person.set(y=TABLE_FRONT - y_push + (y_work - 90.0 - (TABLE_FRONT - y_push)) * v, lean=lean_push * (1.0 - v))
-        person.set(hands=to_rest(bar, v), grip={"l": 0.35 - 0.05 * v, "r": 0.35 - 0.05 * v})
+        person.set(hands=to_rest(bar, v, over=90.0), grip={"l": 0.35 - 0.05 * v, "r": 0.35 - 0.05 * v})
     step(0.8, back_off, hold=0.0)
     person.set(hands={"l": None, "r": None})
     step(3.2, L.slide("E", y_in - EXTRACT), hold=0.2,
@@ -939,9 +939,16 @@ def movie():
     tip = nw((NP["head_x"], 0.0, sz + 60.0))
     front_y = nw((0.0, -NP["D"] / 2, 0.0))[1]        # the cabinet's front face
     panel_top = nw((0.0, 0.0, NP["H"] - NP["lid_t"]))[2]
-    masts = [A.tray_world("E", (mx, my, 0.0)) for mx, my, *_ in __import__("services").TRAY_CAMS.get("E", [])[:2]]
-    x_gap = float(np.mean([m[0] for m in masts])) if masts else xp
+    # tray E's camera masts where they are now (the tray out on the table): those standing in front of the iMicro,
+    # within its width, are what the person works round (services.TRAY_CAMS["E"]; the scene's own groups, so a mast
+    # moved by the lab stream is picked up)
+    ix0, ix1 = nw((-NP["W"] / 2, 0.0, 0.0))[0], nw((NP["W"] / 2, 0.0, 0.0))[0]
+    masts = [sc.world(g)[:3, 3] for g in sorted(sc.gmat) if g.startswith("cam_E") and g[5:].isdigit()]
+    masts = [m for m in masts if m[1] < front_y and ix0 - 120.0 < m[0] < ix1 + 120.0]
+    x_gap = float(nw((0.0, 0.0, 0.0))[0])            # the panel's middle
     y_mast = float(min(m[1] for m in masts)) if masts else front_y - 80.0
+    for n in nano.names.get("sample", []):          # the tour's prop (a mount in the cup) stays hidden
+        sc.alpha[n] = 0.0
     have_panel = "panel" in nano.inst.joints
     panel_g = f"{nano.prefix}panel"
     f_tip = tip + (-60.0, -200.0, -80.0)            # along CAM_EXTRACT's line of sight (the person stands left of it)
@@ -950,7 +957,7 @@ def movie():
     status(L, iMicro="lid up: tip change")
     lid_moves = {"lid": (0.0, 1.0)}
     if "carriage" in nano.inst.joints:
-        lid_moves["carriage"] = (0.0, 1.0)
+        lid_moves["carriage"] = (0.0, 1.25)          # past its load position: clear behind the hand under the head
     if "stage" in nano.inst.joints:
         lid_moves["stage"] = (0.0, -1.0)             # the x stage 100 mm the other way: nothing under the tip
     step(1.4, nano.move(lid_moves), hold=0.1, cam=CAM_TIP,
@@ -968,33 +975,34 @@ def movie():
         person.set(amp=0.0, phase=0.0)
     if have_panel:
         say("3/3 A person's task", "The front panel comes off: a removable service panel (assumed: KLA publishes no "
-                                   "service drawing), lifted straight up out of its guides, between the two camera masts.")
+                                   "service drawing), lifted straight up its guides, clear of the head, from between "
+                                   "the camera masts.")
         status(L, iMicro="front panel off")
         side_to(x_gap, 0.8)
         # the hands on the panel's top edge from the front, the arms between the masts: the body 455 mm in front of
         # them (people.py's skeleton, solved off-line: every part 20 mm short of the masts)
-        grip_pts = {"l": np.array([x_gap - 70.0, front_y - 16.0, panel_top - 6.0]),
-                    "r": np.array([x_gap + 70.0, front_y - 16.0, panel_top - 6.0])}
+        grip_pts = {"l": np.array([x_gap - 70.0, front_y - 30.0, panel_top - 6.0]),
+                    "r": np.array([x_gap + 70.0, front_y - 30.0, panel_top - 6.0])}
+        PANEL_UP = 1.55                               # of its 420 mm guides' travel: 650 mm, its lower edge over the head
         y_panel = y_mast - 455.0
 
         def to_panel(v):
             person.set(y=y_work - 90.0 + (y_panel - (y_work - 90.0)) * v, lean=10.0 * v, look=tuple(grip_pts["r"]),
-                       grip={"l": 0.5 * v, "r": 0.5 * v})
+                       grip={"l": 0.1, "r": 0.1})
             person.set(hands=to_rest({k: tuple(g) for k, g in grip_pts.items()}, 1.0 - v))
         step(1.0, to_panel, hold=0.1)
         allow(("glove", panel_g))
-        lift = nano.move({"panel": (0.0, 1.0)})
+        lift = nano.move({"panel": (0.0, PANEL_UP)})
         rise = float(nano.inst.joints["panel"].vec[2]) if hasattr(nano.inst.joints["panel"], "vec") else 420.0
+        u_let = 310.0 / (rise * PANEL_UP)            # the hands follow it up 310 mm, then it slides on by itself
 
         def lift_off(v):
             lift(v)
-            k = min(1.0, v / 0.35)                       # the hands follow it for the first 150 mm, then let go
-            dz = rise * min(v, 0.35)
+            dz = rise * PANEL_UP * min(v, u_let)
             hands = {sd: tuple(grip_pts[sd] + (0.0, 0.0, dz)) for sd in ("l", "r")}
-            person.set(hands=to_rest(hands, max(0.0, (v - 0.35) / 0.65)) if v > 0.35 else hands,
-                       lean=10.0 * (1.0 - max(0.0, (v - 0.35) / 0.65)))
-            _ = k
-        step(1.8, lift_off, hold=0.2)
+            w = max(0.0, (v - u_let) / (1.0 - u_let))
+            person.set(hands=to_rest(hands, w) if v > u_let else hands, lean=10.0 * (1.0 - w))
+        step(2.2, lift_off, hold=0.2)
         allow()
         person.set(hands={"l": None, "r": None}, grip={"l": 0.3, "r": 0.3})
         # people.py's skeleton, solved off-line: the body's centre 51 mm to the left of the tip, 411 mm in front of
@@ -1007,7 +1015,7 @@ def movie():
         say("3/3 A person's task", "The tip sits 26 cm inside the cabinet, behind its fixed front panel: not shown here, "
                                    "the person takes the panel off, reaches in and changes the tip by hand.")
         x_tip, y_reach = person.st["x"], y_work - 90.0
-    r_at = tip + (-45.0, -8.0, 4.0)                  # the right hand beside the tip's shaft, fingers round it
+    r_at = tip + (-45.0, 10.0, -12.0)                # the right hand beside the tip's shaft, under the head, fingers round it
     l_at = np.array([x_tip - 60.0, y_mast - 120.0, tip[2] + 60.0])   # the left hand holds the new tip, ready
 
     def lean_in(v):
@@ -1030,7 +1038,7 @@ def movie():
             u = v if v < 0.5 else 1.0 - v
             down = float(np.clip((u - 0.25) / 0.18, 0.0, 1.0))
             wob = 5.0 * math.sin(2 * math.pi * 6 * v) * (1.0 - down)
-            person.set(hands={"r": tuple(r_at + (0.0, wob, -62.0 * down))})
+            person.set(hands={"r": tuple(r_at + (0.0, wob, -58.0 * down))})
         step(4.2, unscrew, hold=0.2, still=True)
         keep("unscrew")
         person.held.pop("r", None)
@@ -1047,23 +1055,23 @@ def movie():
         person.set(hands={"l": None, "r": None}, look=None)
         say("3/3 A person's task", "The panel goes back on, the lid comes down and the stage runs back.")
         side_to(x_gap, 0.8)
-        low_pts = {"l": np.array([x_gap - 70.0, front_y - 16.0, panel_top - 385.0 + rise + 6.0]),
-                   "r": np.array([x_gap + 70.0, front_y - 16.0, panel_top - 385.0 + rise + 6.0])}
-        down = nano.move({"panel": (1.0, 0.0)})
+        low_pts = {"l": np.array([x_gap - 70.0, front_y - 30.0, panel_top - 385.0 + rise * PANEL_UP + 6.0]),
+                   "r": np.array([x_gap + 70.0, front_y - 30.0, panel_top - 385.0 + rise * PANEL_UP + 6.0])}
+        down = nano.move({"panel": (PANEL_UP, 0.0)})
 
         def to_low(v):
             person.set(y=y_work - 90.0 + (y_panel - (y_work - 90.0)) * v, lean=10.0 * v,
-                       look=tuple(low_pts["r"]), grip={"l": 0.5 * v, "r": 0.5 * v})
+                       look=tuple(low_pts["r"]), grip={"l": 0.1, "r": 0.1})
             person.set(hands=to_rest({k: tuple(g) for k, g in low_pts.items()}, 1.0 - v))
         step(0.9, to_low, hold=0.0)
         allow(("glove", panel_g))
 
         def panel_down(v):
             down(v)
-            dz = -rise * min(v, 0.35)
+            dz = -rise * PANEL_UP * min(v, u_let)
             hands = {sd: tuple(low_pts[sd] + (0.0, 0.0, dz)) for sd in ("l", "r")}
-            person.set(hands=to_rest(hands, max(0.0, (v - 0.35) / 0.65)) if v > 0.35 else hands)
-        step(1.6, panel_down, hold=0.1)
+            person.set(hands=to_rest(hands, max(0.0, (v - u_let) / (1.0 - u_let))) if v > u_let else hands)
+        step(2.0, panel_down, hold=0.1)
         allow()
 
         def step_back(v):
@@ -1093,7 +1101,7 @@ def movie():
     def grip_again(v):
         person.set(y=y_work - 90.0 + (TABLE_FRONT - y_push - (y_work - 90.0)) * v, lean=lean_push * v,
                    grip={"l": 0.3 + 0.05 * v, "r": 0.3 + 0.05 * v})
-        person.set(hands=to_rest(hands_on_table(), 1.0 - v))
+        person.set(hands=to_rest(hands_on_table(), 1.0 - v, over=90.0))
     step(0.8, grip_again, hold=0.0)
     person.set(hands=hands_on_table())
     settle_hands(3)

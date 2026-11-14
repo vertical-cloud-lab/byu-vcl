@@ -13,6 +13,90 @@ VIZ3D_FPS=6 xvfb-run -a python3 upkeep_clip.py     # -> out/mp4/upkeep_clip.mp4,
 `VLAB_ONLY_TRAYS=BE` is the default: only trays B and E, the two the clip presents, are populated. The Shuttles are
 clad, so the empty trays aren't seen.
 
+## Round 11: a real person, and everything that moves checked
+
+Sterling on round 10's clip (PR #318, 2026-11-13):
+- "Yikes.. That's kind of a cringy looking human, although I don't totally dislike the idea of showing an actual person
+  with movement."
+- "Also, maintenance step shows a collision. There are probably other collisions and interferences that I didn't catch
+  from this."
+
+### The person (`people.py`)
+
+Round 10's figure was drawn here: capsule limbs on a box of a coat with gaps at the shoulders, an egg of a head with a
+cap and a black band for glasses, mittens, tubes and blobs. It is replaced by **MakeHuman's base mesh** (hm08: one
+smooth body of 13,380 vertices with a face, ears and five fingers a hand) on **MakeHuman's default skeleton and skin
+weights**, posed every frame by linear-blend skinning in numpy.
+
+- **Sources.** All three files are CC0 1.0 (section C of MakeHuman's LICENSE.md, "The license for the bundled assets").
+  They are fetched at run time into `.cache/makehuman/` and never committed, pinned to commit `a8bc2d5` of
+  [makehumancommunity/makehuman](https://github.com/makehumancommunity/makehuman) with their sha256 checked:
+  `makehuman/data/3dobjs/base.obj`, `makehuman/data/rigs/default.mhskel` and `default_weights.mhw`. The helper and
+  `joint-*` groups are dropped, except the skirt helper (the coat's skirt) and the eyes.
+- **Posing.** A walk cycle (hips, knees and ankles, the arms swinging against the legs), the shoes grounded every frame,
+  a lean taken 60 % at the hips and 40 % along the lower spine, both arms solved to their hand targets (two-bone IK,
+  elbows out and down, the forearm turned to the hand's work), the head turned to what the person looks at, and the
+  fingers together and curled. 74 of the skeleton's 163 bones are posed; the face's are folded into the head.
+- **Dress.** Cut by region along smooth lines, with the skin weights carried onto each cut:
+  - a lab coat over the torso and arms to the wrists, pushed out 12 mm, smoothed, and hung. Each front and back
+    profile is bridged over its hollows top to bottom and side to side, so it runs straight from the chest and the
+    shoulder blades and doesn't follow the waist or the seat;
+  - its skirt to mid-thigh (MakeHuman's skirt helper), tied more to the pelvis than to each thigh, and a collar with
+    lapels;
+  - a scrub top with its own V-neck; trousers that hang straight from the knee; shoes;
+  - blue nitrile gloves 55 mm up the forearm;
+  - skin on the face and neck; short hair thinning to its line; brows; eyes; wrap-around safety glasses.
+- **Size.** 1.75 m in shoes.
+- **The figure's sheet:** [out/upkeep_clip_person.png](../out/upkeep_clip_person.png) (standing, side, back, face,
+  walking, pushing, reaching).
+
+### What the arm audit couldn't see, now checked
+
+`collide.Auditor` checks the arms. audit-a's movers check (`collide.Movers`, the default since round 11) checks every
+group whose world matrix changes. A body that bends in place, a lean or a reach, doesn't change it. So this clip adds
+`PeopleCheck` (`ARM_AUDIT=1`): the person as posed, every part, against everything visible near them; the extraction
+table; and tray E with all on it while it is off its dock. It writes `out/collisions/upkeep_clip_movers.json`. A contact
+counts if `collide.depth` puts it over 1.5 mm. The shoes on the floor and the castors are allowed 12 mm, and the tray
+on the table's rollers 3 mm.
+
+Found and fixed:
+
+| What | Where (round 10's clip) | Fix |
+|---|---|---|
+| The person walked into unit 2 on its charger | the walk-in, 25 mm | the table starts 200 mm nearer the Shuttles (y -4400): the person behind it starts clear of the MiR's front at -5418 |
+| The shoes 25 mm into the floor | every walking frame | the shoes grounded every frame: their lowest point 2 mm over the floor (its tape is 1.5 mm) |
+| The gloves in the table's push bar | pushing it in and out | each palm's target settled every frame so the fingers rest on the bar's top, 0.5 mm over it; the person 215 mm back, a 24 deg stoop (the bar is under the hips) |
+| The coat in the push bar | pushing | the new coat hangs 190 mm in front of the body's centre; the person stands 215 mm back from the edge |
+| The table's frame in the LED-Navigator strip | docked, 266 frames | docked 4 mm off the cover (the strip stands 2 mm proud of it) |
+| The table's latch hooks inside the cover's lip | docked | they rest on the lip's top |
+| The castors in the floor's tape | rolling | the wheels 2 mm over the floor |
+| The iMicro's hood through its own cabinet and through tray E's cameras E0 and E1 | the hood lifting | audit-b (180c0f4): only the lid lifts; the front panel is the cabinet's |
+| The person's coat and gloves through camera post E0 and into the iMicro | the tip change | below |
+
+### The tip change, and why it needed a removable panel
+
+The tip sits 260 mm inside the cabinet, 235 mm under the top edge of the iMicro's front panel, which is now fixed. To
+reach over that edge and down to the tip, the shoulder would have to be about 1.55 m high and within 0.35 m of the
+panel. The 1.75 m figure's shoulder is at 1.40 m upright. The camera masts of E0 and E1 also stand 80 mm in front of the
+iMicro, and the table and the tray's margin put the tip 523 mm from where the person stands. So no pose reaches it, and
+none would without a step and a closer table.
+
+The clip therefore takes the front panel off as a step of its own: **a removable service panel (assumed: KLA publishes
+no service drawing), lifted straight up its guides** (r8_char's `panel` piece, audit-b's 80c752c).
+- **The masts.** The person lifts the panel from between the masts, 455 mm in front of them, and keeps their body in
+  front of them; only the arms go through. Camera E1 has since moved behind the iMicro (the lab stream's 47219fc,
+  because the lid alone swept through it), so only E0's mast stands in front now. The clip reads the masts from the
+  scene.
+- **How high the panel goes.** The panel goes up 650 mm, 1.55 times its guides' 420 mm. At 420 mm its lower edge hung
+  at the height the person's head reaches when they bend in, and the check caught the head in it.
+- **The reach.** People.py's skeleton was solved off-line for the reach. The body's centre is 51 mm to the left of the
+  tip and 411 mm in front of the masts, bent 42 deg. The head goes past the masts' line and the chest stays 20 mm short
+  of it.
+- **The stage.** Before the reach the stage runs out from under the head: the carriage goes 1.25 times its load
+  travel, the x stage 100 mm aside.
+- **The tip.** It comes straight down 58 mm out of the head's bore (its shaft is 60 mm up it) and goes back the same
+  way, never sideways inside the head. The hand holding it stays 5 mm over the stage base.
+
 ## The render
 
 - **[MP4](../out/mp4/upkeep_clip.mp4):** 701 frames at 6 fps, 1280 × 720, 116.8 s, 6.0 MB.
