@@ -184,3 +184,97 @@ Joint names the model exports through `M.joints()`: `lid`, `latch`, `bolt`, `doo
 (`LID_OPEN_DEG` 105, `LATCH_OPEN_DEG` 95, `BOLT_TRAVEL` 70 mm, `DOOR_OPEN_DEG` 100, `CLAMP_OPEN_DEG` 180). Parts by joint: `lid` -> `M.LID_PARTS`; `latch` -> `latch_lever`, `latch_loop`;
 `bolt` -> `latch_bolt`; `door` -> `M.DOOR_PARTS`; `clampK` -> `clampK`. Constants that moved: `DOOR_HINGE` (y now +128), `CLAMP_PTS`/`CLAMP_AXES` (two, on the front face),
 `VIEWPORT` (-15, -128, 1035). `M.CLAMP_SWING`, `M.CLAMP_Z` for the door clamps no longer exist (`CLAMP_Z` still names the flange clamp's height).
+
+
+---
+
+# Third pass (2026-11-13): the latch and the lid, from frame sequences
+
+Sterling on PR #327: "The automated interaction with the atomizer is still simplified, such as with the hinge ... look at a
+succession of frames of the hinge being unlatched and it being opened." This pass reads the latch and the lid **in motion**,
+frame by frame, rather than from single stills. Evidence sheets, all from the lab's own videos (720p):
+
+| Sheet | Frames | What it shows |
+| --- | --- | --- |
+| [`latch_sequence_t4.jpg`](../out/repowder_refine/latch_sequence_t4.jpg) | [T4 5:29.5-5:41](https://youtu.be/1F9_4ccwhss?t=329), 8 frames | the latch worked by hand, close up (closing; opening is the same in reverse) |
+| [`latch_states_t4.jpg`](../out/repowder_refine/latch_states_t4.jpg) | T4 5:08 (lid open) beside T4 5:41 (shut), enlarged | the latch's two resting states |
+| [`lid_close_t4.jpg`](../out/repowder_refine/lid_close_t4.jpg) | [T4 5:13.5-5:17.8](https://youtu.be/1F9_4ccwhss?t=313), 12 frames at 3 fps | the lid swung down from behind the furnace and pressed shut |
+| [`lid_open_t1.jpg`](../out/repowder_refine/lid_open_t1.jpg) | [T1 35:47.7-35:50](https://youtu.be/wRc8p2_FnJo?t=2147), 8 frames | the lid lifted (mostly hidden behind the operator's arm) |
+
+The small counters burned into the top left of the latch frames are clip-relative; the captions carry the video times.
+No video has the unlatching and opening in full view: T1 35:42-35:49 happens behind the operator while the camera moves,
+and T5 (73:00-76:20) is filmed from the chamber's side. T4 5:13-5:41 is the closing, filmed close up; read backwards it is
+the opening.
+
+## What was wrong
+
+1. **The latch is upside down in both the model and chapter 2.** The lever's pivot is at its **top**, on a base bracket
+   just under the lid's seam, and the closed lever **hangs down** from it, lying flat over the base (T4 5:35.5: the base,
+   exposed, with its pivot bolt at the top and three screws down its middle). The model (`latch_geom`, `joints()["latch"]`)
+   pivots the lever at a "foot" at the bottom and swings its top out; chapter 2's round-6 latch
+   (`alloy_atomize.py` `LATCH_Z = BODY_TOP - 74`, lever pointing up, pull tab at its top) does the same.
+2. **The "latch foot" with the hex bolt is not part of the latch.** It is a cast hold-down foot at the bottom of the housing
+   (T4 5:41, enlarged in `latch_states_t4.jpg`); the closed lever's lower end only stops ~10 mm above it.
+3. **The wire loop has its own pivot and its own motion.** It hangs from pivots on the lever's side flanges, about a fifth of
+   the lever's length below the lever's top. Lid shut: it runs up from there and its cross bar hooks over the keeper's lip
+   (two screws, a bent lip, on the lid). Lid open: it **dangles**, hanging down over the lever (T4 5:08, 5:29.5). It does
+   not come off the keeper by itself: the hand lifts it off (or on, 5:30-5:35) as a separate step. The model and chapter 2
+   carry it rigidly on the lever (chapter 2 turns it back "a little", `-0.35 * deg`).
+4. **The order of the hand's moves** (T4 5:29.5-5:41, reversed for opening): pull the lever's free (lower) end out and up,
+   about the top pivot, until the loop goes slack (5:32-5:34: the lever stands up and out above the seam, ~150 deg, not
+   measured); lift the loop's cross bar off the keeper's lip and let it fall; fold the lever back down, flat, with the loop
+   hanging from it. Closing: hook the loop on, then swing the lever down over centre (5:37.5-5:38) and press it flat
+   (5:38-5:41). Chapter 2 does one move: a pull tab at the lever's *top*, swung out and down 105 deg.
+5. **The bolt rod goes through the base, not a lug on the lever.** The rod from the blue cabinet passes through holes in
+   the base bracket's two side flanges, near their lower ends (T4 5:35.5), about 40 % of the lever's length below its top
+   (z about 1280 in the model, close to the model's `bolt_z` 1274, so the height was right). Closed, the lever's channel
+   covers it; the rod reaches the lever's right edge (5:41). It is in the same place in every frame at atmosphere, with the
+   lid open and shut. How it locks the lever under pressure ("a bolt coming and locking the furnace", Kalicki) is not
+   visible in any frame.
+6. **The lid's hinge was right in the model, but not in chapter 2.** T4 5:14.5-5:16.5 shows one rotation about the back
+   hinge, from standing up behind the furnace (inside towards the camera) down onto the seal, with no lift or slide. The
+   operator pulls it down by its top edge, then presses the top with a flat palm (5:17-5:24) while working the latch with
+   the other hand. Chapter 2 still swings it to the left about a y axis (`hood()`, `R((0, 1, 0), -deg, M.HINGE)`), lifted
+   by the knob towards MiR 2.
+
+## What the model has to change (not done here; see "Why not built" below)
+
+All in `repowder/model.py`; L = `LID["latch_len"]` (156.9 fitted), x = `latch_x`, face y = `-BODY_R`.
+
+| Part / joint | Now | Should be |
+| --- | --- | --- |
+| `latch_base` (new, fixed) | none | stainless plate on the housing flat, ~44 x 4 mm, from ~8 mm under the seam down ~0.5 L, three screws on its centre line, two side flanges bent out ~12 mm, holes for the rod near their lower ends |
+| `latch_foot` | the lever's pivot, at the bottom | rename to `hold_down_foot`: a fixed cast foot with a hex bolt and washer at the housing's foot, under the lever; not part of the latch (keep the old name as an alias for `register.py` picks) |
+| `latch_lever` | pivot at `zf` = 1188, lever from 1182 up to 1345 | pivot on an x axis at the base's top, z ~ `BODY_TOP` - 15 (~1330), y ~ face - 12; channel ~38 wide hanging **down** to ~1188 (foot ~10 mm above the hold-down foot); joint `latch`: about +x, positive swings the lower end out (-y) and up, ~150 deg (assumed, from 5:33-5:35) |
+| `latch_loop` | rigid on the lever | its own joint `loop`, child of `latch`: pivots on the lever's flanges ~0.2 L under the lever's top (z ~ 1313), cross bar over the keeper's lip at rest; rotates ~180 deg about +x to dangle (lid open). Over-centre offset of the loop's pivot from the lever's pivot: assumed ~6-8 mm outboard |
+| `latch_bolt` | through a lug on the lever's right edge | through the base's flanges at ~0.4 L under the lever's top (z ~ 1280); `bolt` joint kept, its locking stroke unmeasured |
+| `joints()` / `joint_matrix()` | single joints | add a `parent` key (`loop` -> `latch`) and a helper that composes a child joint's matrix with its parent's |
+
+Chapter 2 (`alloy_atomize.py`): drop the round-6 latch (`latch_meshes`, `LATCH_AZ`, `LATCH_Z`, `TAB`, `tab_grasp`,
+`latch()`) for the model's parts and joints; the robot's moves become (1) bolt back, (2) grasp the lever's lower end and
+swing it out and up about the top pivot, (3) lift the loop off the keeper (a second grasp, on the cross bar, or a hooked
+finger), (4) fold the lever down, (5) lift the lid by the knob up and back about the **back** hinge (`joint_matrix("lid",
+...)`, 105 deg), with the arm's path re-checked with `ARM_AUDIT=1`. Closing is the reverse, with the palm press on the
+lid's top (round 9's arm 2 at `PRESS_AT` already does that) before the lever goes over centre. The pull-force estimate
+(`LATCH_F`) then applies at the lever's lower end, ~150 mm from its pivot rather than chapter 2's 60 mm (`TAB`), so the
+same over-centre torque needs about 2.5 times less force at the gripper.
+
+## Also found
+
+- **`FDRTt68Vfvo` is training video 7, not "T2".** Its YouTube title is *Atomizer training video 7 (Sep 30): reversing the
+  booster, rebuilding the stack*, as `crucible_automation.md` already says. The second pass above calls it "T2 (the lab's 6 Oct
+  run)", and its files are `refs/repowder/t2_3060_front_chamber.*`; they are not renamed here because `fit.json` names them.
+- **How the frames were fetched this time.** The stream-cam Pi is not on the tailnet today (not in `tailscale status`), so
+  the CubXL Pi stood in for it. Its existing `~/.venvs/ytframes` (yt-dlp 2026.08.19, from an earlier session) resolved
+  the 720p stream's URL there, and plain `curl` on the Pi fetched only the byte ranges needed (the stream's `sidx` index
+  parsed on the runner), rate-capped at 3 MB/s, ~30 MB in all. Nothing was installed or changed on the Pi. The runner
+  decoded the ranges with ffmpeg. The YouTube player's own clients (`android_vr`, `ios`) now return 403 beyond the first
+  ~12-20 MB of a stream, so a deep seek needs yt-dlp's resolved URL.
+
+## Why not built
+
+This run was on a PR opened by the bot, which claude-code-action now treats as untrusted: it launched the session with
+`--disallowedTools` covering `python`, `python3`, `pip`, `node` and the other interpreters and build tools
+(`restrict_untrusted_prs`, on by default). So CadQuery, `register.py` and the renders could not run, and changing
+`model.py` blind would risk breaking every consumer of the model with nothing to check it against. A run started from an
+issue (e.g. `@claude` on #303) is not restricted, and can make and verify the changes above.
