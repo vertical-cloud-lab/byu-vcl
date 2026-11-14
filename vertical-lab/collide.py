@@ -857,15 +857,20 @@ class Movers:
         out: dict[str, set] = {}
         if not act:
             return out
-        A = np.asarray(act)
-        ulo, uhi = lo[A].min(0), hi[A].max(0)
-        cand = np.nonzero(~((ulo > hi) | (uhi < lo)).any(1))[0]          # every box that meets the movers' union box
-        if not len(cand):
-            return out
-        ov = ~((lo[A][:, None, :] > hi[cand][None]) | (hi[A][:, None, :] < lo[cand][None])).any(-1)
+        by_cl: dict[int, list] = {}                       # one union box per rigid cluster (a MiR and a tray far apart)
+        for i in act:
+            by_cl.setdefault(cl[1][self.gidx[i]] if cl is not None else 0, []).append(i)
+        pairs = []
+        for members in by_cl.values():
+            A = np.asarray(members)
+            ulo, uhi = lo[A].min(0), hi[A].max(0)
+            cand = np.nonzero(~((ulo > hi) | (uhi < lo)).any(1))[0]      # every box that meets the cluster's box
+            if not len(cand):
+                continue
+            ov = ~((lo[A][:, None, :] > hi[cand][None]) | (hi[A][:, None, :] < lo[cand][None])).any(-1)
+            pairs += [(A[r], cand[c]) for r, c in zip(*np.nonzero(ov))]
         vis = {}
-        for r, c in zip(*np.nonzero(ov)):
-            i, j = A[r], cand[c]
+        for i, j in pairs:
             if i == j:
                 continue
             gi, gj = self.gidx[i], self.gidx[j]
@@ -946,10 +951,73 @@ class Auditor:
         self.sc = sc
         self.frames: list[dict] = []
         self.checkers: dict[str, Checker] = {}
-        # ARM_AUDIT_SNAP="540,930": also draw those frames, the parts in collision in red -> out/collisions/*.png
-        self.snap_frames = {int(x) for x in os.environ.get("ARM_AUDIT_SNAP", "").split(",") if x.strip()}
+        # ARM_AUDIT_SNAP="540,930": also draw those frames, the parts in collision in red -> out/collisions/*.png.
+        # Round 11: ARM_AUDIT_SNAP=auto (or auto:N) draws the first frame of each new run of collisions (up to N, 24),
+        # the camera aimed at the contact, -> ARM_AUDIT_SNAP_DIR (/tmp/r11_snaps)/<clip>_<frame>.jpg and an index
+        # <clip>_snaps.json, for audit_all.py's sheet
+        snap = os.environ.get("ARM_AUDIT_SNAP", "").strip()
+        self.auto_snap = snap.startswith("auto")
+        self.auto_max = int(snap.split(":", 1)[1]) if self.auto_snap and ":" in snap else 24
+        self.snap_frames = set() if self.auto_snap else {int(x) for x in snap.split(",") if x.strip()}
+        self.snap_dir = Path(os.environ.get("ARM_AUDIT_SNAP_DIR", "/tmp/r11_snaps"))
+        self.snaps: list[dict] = []
+        self._last_bad = None
         self.movers = Movers(sc) if MOVERS else None
         self.seconds = 0.0
+
+    def _bad_now(self) -> frozenset:
+        """This frame's hits as far as they can be judged now (a shallow touch of the gripper or a held part is
+        taken as allowed: the event windows are only known at the end), for ARM_AUDIT_SNAP=auto."""
+        out = set()
+        for h in (self.frames[-1]["hits"] if self.frames else []):
+            p, kind, a, b, g, d = h
+            if kind in ("self", "arm") or (STRICT and d is not None and d > DEPTH_MM):
+                out.add((p, kind, a, g or b))
+        if self.movers is not None and self.movers.frames:
+            out |= {("mover", g, a, gb) for g, a, _, gb, _ in self.movers.frames[-1]["hits"]}
+        return frozenset(out)
+
+    def _aim(self, sc) -> bool:
+        """Point the camera at this frame's first contact (ARM_AUDIT_SNAP=auto); False if there is none to aim at."""
+        def bounds(names):
+            bs = [np.array(sc.actors[n].GetBounds()).reshape(3, 2) for n in names if n in sc.actors]
+            bs = [b for b in bs if np.isfinite(b).all() and (b[:, 1] >= b[:, 0]).all()]
+            if not bs:
+                return None
+            return np.min([b[:, 0] for b in bs], 0), np.max([b[:, 1] for b in bs], 0)
+        pairs = []
+        if self.movers is not None and self.movers.frames:
+            pairs += [([a], [b]) for _, a, b, _, _ in self.movers.frames[-1]["hits"]]
+        for h in (self.frames[-1]["hits"] if self.frames else []):
+            p, kind, a, b, g, d = h
+            if not (kind in ("self", "arm") or (STRICT and d is not None and d > DEPTH_MM)):
+                continue
+            if a.startswith("held:"):
+                mine = [n for n, gg in sc.group_of.items() if gg == a[5:]]
+            elif a in ARM_LINKS:
+                mine = [n for n in sc.actors if n.startswith(f"{p}/{a}/")]
+            else:
+                mine = [n for n in sc.actors if n.startswith(f"{p}/gr/")]
+            other = [n for n in sc.actors if n.startswith(f"{p}/{b}/")] if kind == "self" else [b]
+            pairs.insert(0, (mine, other))
+        sc.apply()
+        for mine, other in pairs:
+            A, B = bounds(mine), bounds(other)
+            if A is None or B is None:
+                continue
+            lo, hi = np.maximum(A[0], B[0]), np.minimum(A[1], B[1])
+            if (hi < lo).any():
+                lo, hi = (A[0] + A[1]) / 2, (B[0] + B[1]) / 2
+                lo, hi = np.minimum(lo, hi), np.maximum(lo, hi)
+            f = (lo + hi) / 2
+            pos, foc = np.array(sc.cam[0], float), np.array(sc.cam[1], float)
+            v = pos - foc
+            v = v / (np.linalg.norm(v) or 1.0)
+            dist = float(np.clip(2.6 * max(float((hi - lo).max()), 260.0), 800.0, 3500.0))
+            sc.cam = [tuple(f + v * dist), tuple(f), (0, 0, 1)]
+            sc.view_angle = 30.0
+            return True
+        return False
 
     def picture(self, sc):
         """Draw the current frame with every arm part that touches something it shouldn't in red (and, round 11,
@@ -988,7 +1056,10 @@ class Auditor:
         for n in red:
             sc.color[n] = (0.92, 0.10, 0.10)
         from PIL import Image
+        cam0, va0 = list(sc.cam), sc.view_angle
+        aimed = self.auto_snap and self._aim(sc)
         img = Image.fromarray(sc.render_base())
+        sc.cam, sc.view_angle = cam0, va0
         for n, (c, drawn) in red.items():
             if c is None:
                 sc.color.pop(n, None)
@@ -1003,6 +1074,13 @@ class Auditor:
                + ("; ".join(what) if what else "no collisions"))
         d.rectangle((0, 0, img.width, 34), fill=(255, 255, 255))
         d.text((14, 8), txt[:150], fill=(180, 20, 20) if what else (20, 110, 40), font=font(17, bold=True))
+        if self.auto_snap:
+            self.snap_dir.mkdir(parents=True, exist_ok=True)
+            path = self.snap_dir / f"{sc.name}_{sc.n:05d}.jpg"
+            img.convert("RGB").save(path, quality=86)
+            self.snaps.append(dict(frame=sc.n, label=sc.label, file=str(path), aimed=bool(aimed), hits=what))
+            (self.snap_dir / f"{sc.name}_snaps.json").write_text(json.dumps(self.snaps, indent=1) + "\n")
+            return
         OUT.mkdir(parents=True, exist_ok=True)
         img.convert("RGB").save(OUT / f"{sc.name}_{tag}_{sc.n:05d}.png", optimize=True)
 
@@ -1021,6 +1099,11 @@ class Auditor:
         self.seconds += time.time() - t0
         if self.movers is not None:
             self.movers(sc)
+        if self.auto_snap:
+            bad = self._bad_now()
+            if bad and bad != self._last_bad and len(self.snaps) + len(self.snap_frames - {x["frame"] for x in self.snaps}) < self.auto_max:
+                self.snap_frames.add(sc.n)
+            self._last_bad = bad or None
 
     def report(self) -> dict:
         sc = self.sc
