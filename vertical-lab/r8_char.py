@@ -168,6 +168,7 @@ def sem() -> Instrument:
 
 # ===================================================================================================== nanoindenter
 NANO_HOLD = dict(d=50.0, floor=4.0, depth=10.0)    # the steel cup on the stage (estimate)
+NANO_PANEL_LIFT = 420.0     # the front service panel's lift, straight up (ours; round 11, for upkeep_clip.py)
 NANO_LOAD = -130.0          # the carriage's run to the load position, mm (estimate; clear of the objective for a gripper)
 NANO_TIP = 33.9             # the tip's approach from its parked height to the surface (drawn; the actuator's own
                             # range is tens of um, the coarse approach is the head's Z motor)
@@ -227,17 +228,22 @@ def nanoindenter() -> Instrument:
     lid = _piece(inst, "lid")
     lid.add("lid", box(-W / 2, yf, hz, W / 2, yb, H).edges("|Y").fillet(14), "inst_white")
     lid.add("lid window", box(-W / 2 + 120, yf + 80, H, W / 2 - 80, yb - 120, H + 1), "inst_black")
-    # Round 11: the front panel and its window are the cabinet's, fixed; only the lid lifts. Lifted with the lid,
-    # hinged at the back, the panel's lower edge (647 mm from the hinge) swung up to 127 mm out in front of the
-    # cabinet, through tray E's camera posts E0 and E1 (collide.Movers); the lid alone never comes forward of the
-    # cabinet's front. The arm reaches the stage over the panel (assumed: a top-opening lid, ours; KLA's own
-    # enclosure is not modelled)
-    cab.add("front panel", box(-W / 2 + 40, yf, p["feet"] + 70, W / 2 - 30, yf + 12, hz).cut(
+    # Round 11: the front panel and its window no longer lift with the lid. Lifted with it, hinged at the back, the
+    # panel's lower edge (647 mm from the hinge) swung up to 127 mm out in front of the cabinet, through tray E's camera
+    # posts E0 and E1 (collide.Movers), and sat 25 mm in the cabinet; the lid alone never comes forward of the
+    # cabinet's front. In normal use the panel stays down and the arm reaches the stage over it (assumed: a
+    # top-opening lid, ours; KLA's own enclosure is not modelled). It is its own piece, "panel": a removable service
+    # panel that slides straight up 420 mm on its own guides (joint "panel", ours), for a person servicing the tip
+    # (upkeep_clip.py); it rises in its own plane, 80 mm behind the cameras, and is lifted only with the lid open.
+    # Drawn 0.5 mm inside the cabinet's opening on every side, so it touches nothing at rest
+    pan = _piece(inst, "panel")
+    pan.add("front panel", box(-W / 2 + 40.5, yf, p["feet"] + 70.5, W / 2 - 30.5, yf + 12, hz - 0.5).cut(
         box(-W / 2 + 90, yf - 1, p["feet"] + 120, W / 2 - 80, yf + 13, hz - 50)), "inst_white")
-    cab.add("front window", box(-W / 2 + 90, yf + 4, p["feet"] + 120, W / 2 - 80, yf + 8, hz - 50), "window")
+    pan.add("front window", box(-W / 2 + 90, yf + 4, p["feet"] + 120, W / 2 - 80, yf + 8, hz - 50), "window")
     inst.meshes["readout"] = _dummy((0, 0, 300))
     inst.joints = {
         "lid": Joint("hinge", axis=(1, 0, 0), pivot=(0, yb, hz), deg=-p["lid_deg"]),
+        "panel": Joint("slide", vec=(0, 0, NANO_PANEL_LIFT)),
         "carriage": Joint("slide", vec=(0, NANO_LOAD, 0)),
         "stage": Joint("slide", vec=(hx - ox, 0, 0), parent="carriage"),
         "sample": Joint("path", parent="stage", path=((ox, -260, zb + 260), (ox, -60, zb + 120), (ox, 0, zb + 30),
@@ -246,7 +252,7 @@ def nanoindenter() -> Instrument:
         "readout": Joint("fade"),
     }
     inst.props = ("sample", "readout")
-    see = {"~cabinet": (0.0, 1.0), "~lid": (0.0, 1.0)}
+    see = {"~cabinet": (0.0, 1.0), "~lid": (0.0, 1.0), "~panel": (0.0, 1.0)}
     inst.actions = [
         ("The lid lifts on its gas struts, hinged at the back (the front panel stays), and the XY stage's carriage "
          "runs forward to its load position.", 2.0,
