@@ -715,8 +715,9 @@ def cnc() -> Instrument:
 REGISTRY = {"mount_press": mount_press, "polisher": polisher, "cnc": cnc, "disc_magazine": disc_magazine}
 
 # tray F (polishing and heat treatment), set by its camera posts (services.TRAY_CAMS["F"]): the press at the back
-# left, behind camera F0's post; the disc magazine at the front right, right of camera F1's post, in front of the UPS
-# and the dock plate; the PX500 and the furnace where they were (line.TRAY_LOADS)
+# left, behind camera F0's post; the disc magazine at the front right, right of the quench tank (camera F1 stood in
+# front of the tank until round 11, commit 6c690a0; it now stands behind it), in front of the UPS and the dock plate;
+# the PX500 and the furnace where they were (line.TRAY_LOADS)
 TRAY_PLACEMENT = {
     "mount_press": dict(tray="F", x=-1095.0, y=125.0, turn=0.0),
     "disc_magazine": dict(tray="F", x=1022.0, y=-190.0, turn=0.0),

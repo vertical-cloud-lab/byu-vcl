@@ -65,6 +65,7 @@ TCP_UP = 13.0                         # the grasp point 13 mm over a mount's fac
 #                                       clear of a holder cup's rim
 BAR_UP = 14.0                         # and 14 mm over the bar's top: the pads end level with its underside
 MIR_SPEED = 1500.0                    # mm/s at most, at 0.3 m/s^2 (props.ramp_secs), as the other chapters
+VHX_HIGH = 200.0                      # the bar's via height over the VHX's carrier (see movie)
 PIP_LIFT = -2.6                       # the PIP's indenter while the profilometer scans: 18 mm over ram-up (see movie)
 HM_DOCK = 300.0                       # at Shuttle 2 the MiR stops this far short of its dock for the HM-220 (IK: 8
 #                                       solutions there against 4 at the dock, 1033 mm out)
@@ -349,6 +350,14 @@ def movie():
     rb = u.robot
     add_specimens(sc, u)
     fast_collisions(sc, L, u)
+    aud = None
+    if not (scene.AUDIT or PREVIEW or WINDOWS) and os.environ.get("CH7_AUDIT_RENDER", "1") != "0":
+        # round 11: the render checks its own frames too (collide.Auditor, as ARM_AUDIT=1 does, with the stricter
+        # rules), as chapter 6's does, so out/collisions/alloy_characterize.json is the audit of the frames in the MP4
+        import collide
+        aud = collide.Auditor(sc)
+        sc.frame_hooks.append(aud)
+    sc.render_auditor = aud
     sem, nano, pip = rig_of(rigs, "sem"), rig_of(rigs, "nanoindenter"), rig_of(rigs, "pip")
     hv, vhx = rig_of(rigs, "hardness"), rig_of(rigs, "vhx")
     PARK = np.radians(A.PARK_DEG)
@@ -671,10 +680,14 @@ def movie():
     lin(Tb, 0.7)
     grip(GRIP_BAR)
     rb.grasp("c_bar")
-    lin(sh(Tb, (0, 0, 90)), 0.7)
+    lin(sh(Tb, (0, 0, VHX_HIGH)), 0.8)
     target = world_of(vhx, "carrier", bar_base)
     Tp = A.down(target + (0, 0, RC.BAR_T + BAR_UP), spin=180.0)
-    go_to(sh(Tp, (0, 0, 90)), Tp, secs=2.0, cam=CAM_VHX)
+    # round 11: the joint moves to and from the carrier end 200 mm over it, then a straight line down to 90 mm: ended
+    # at 90 mm, the right finger link brushed the VHX's controller on the way (the stricter audit, 1 frame each way)
+    go_to(sh(Tp, (0, 0, VHX_HIGH)), Tp, secs=2.0, cam=CAM_VHX)
+    approach_q["vhx_hi"] = rb.q.copy()
+    lin(sh(Tp, (0, 0, 90)), 0.5)
     approach_q["vhx"] = rb.q.copy()
     lin(Tp, 0.8)
     grip(OPEN_BAR)
@@ -699,11 +712,12 @@ def movie():
     status(L, VHX="done", Arm="unloading the VHX")
     wait(1.4, vhx.move({"carrier": (0.0, 1.0)}))
     Tb = A.down(top_of(sc, "c_bar", RC.BAR_T + BAR_UP), spin=180.0)
-    go(q=approach_q["vhx"], secs=1.8, grip=OPEN_BAR)          # the joints that set it down (see pick_mount)
+    go(q=approach_q["vhx_hi"], secs=1.8, grip=OPEN_BAR)       # the joints that set it down (see pick_mount)
+    lin(sh(Tb, (0, 0, 90)), 0.5)
     lin(Tb, 0.7)
     grip(GRIP_BAR)
     rb.grasp("c_bar")
-    lin(sh(Tb, (0, 0, 90)), 0.7)
+    lin(sh(Tb, (0, 0, VHX_HIGH)), 0.9)
     bar_home = sc.world("c_caddy") @ home_matrix("bar")
     Tp = A.down(bar_home[:3, 3] + (0, 0, RC.BAR_T + BAR_UP), spin=180.0)
     go_to(sh(Tp, (0, 0, 90)), Tp, secs=2.0, cam=CAM_LAB)
@@ -737,6 +751,8 @@ def caddy_hot_now(sc) -> np.ndarray:
 def finish(sc, rb):
     sc.panel = None
     print(f"highest forearm/wrist point {rb.max_z_world:.0f} mm", flush=True)
+    if getattr(sc, "render_auditor", None) is not None:
+        sc.render_auditor.save()
     return sc.save()
 
 

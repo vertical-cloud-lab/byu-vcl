@@ -54,7 +54,9 @@ def tab_z(key: str) -> float:
 
 def grasp_local(key: str) -> np.ndarray:
     """Where the gripper's TCP holds the tab, in the sieve's frame: the tab's middle, at the front (-y)."""
-    return np.array([0.0, -(RW + LIP) - TAB_OUT / 2, tab_z(key)])
+    # round 11: the pan's tab, held by its sides, 5 mm further out than a sieve's (the left fingertip's end reached
+    # 2-3 mm into the pan's frame at the tab's root)
+    return np.array([0.0, -(RW + LIP) - TAB_OUT / 2 - (5.0 if key == "pan" else 0.0), tab_z(key)])
 
 
 def sieve_parts(key: str) -> dict:
@@ -150,7 +152,9 @@ def tipper_parts() -> dict:
         quad = pv.PolyData(pts, faces=[4, 0, 1, 2, 3]).extrude((0, 0, 22), capping=True).triangulate()
         segs = quad if segs is None else segs.merge(quad)
     ring = segs.translate((0, 0, p["seat"] + 26.0), inplace=False)
-    shaft = _cyl(13, (-hw, 0, zc), (hw, 0, zc), 32)
+    # round 11: two stub trunnions from the posts into the cradle's lugs; one shaft from post to post ran through the
+    # middle of every sieve set in the cradle (the stricter audit: the sieve 25-50 mm into the cradle)
+    shaft = _cyl(13, (-hw, 0, zc), (-r0 + 2, 0, zc), 32).merge(_cyl(13, (r0 - 2, 0, zc), (hw, 0, zc), 32))
     lugs = _box(-r1 - 6, -r0 + 2, -9, 9, zc - 22, p["seat"] + 48).merge(_box(r0 - 2, r1 + 6, -9, 9, zc - 22,
                                                                              p["seat"] + 48))
     cradle = {"ring": (ring.merge(lugs), (0.30, 0.32, 0.36), 0.4, 1.0), "shaft": (shaft, alu, 0.6, 1.0),
@@ -241,9 +245,20 @@ def strap(p0, p1, r=3.0) -> pv.PolyData:
 # powder out of the cloth (a scaled-down version of what a Solukon SFM-AT200 does to a plate); (2) an ultrasonic IPA
 # bath: the sieve sits on a basket ring that a lift lowers into the tank; (3) it rises into a warm-air knife (a slot
 # nozzle above and one below, travelling along the cloth, air at no more than 60 C: Retsch's limit is 80 C). It is on
-# its own bench extension left of the tipper, under its own extracted hood. Sizes are assumed; notes/alloy_print.md.
-WASH = dict(hw=165.0, y0=-200.0, y1=150.0, wall=6.0, tank_h=150.0, liq_h=118.0, z_top=260.0, z_bot=24.0, hb=330.0,
-            hood_h=760.0, mast_y=172.0)
+# its own stand, under its own extracted hood. Sizes are assumed; notes/alloy_print.md.
+# Round 11: round 9 stood it on a 450 mm extension of the bench, left of the tipper, which was inside the rePowder's
+# utility cabinet (repowder:c34, 900 mm tall, x -3095..-2615); the stricter audit's movers check found the basket and
+# the sieve going through it. It now stands on its own stand in front of that cabinet (alloy_print.WASH_Y), between it
+# and the MiR's lane, and is 60 mm shallower to fit there: the tank 290 mm deep (was 350; the basket's ring, r 113, and
+# the sieve's tab, 143 mm forward of the axis, still clear its walls), the hood's posts flush with the tank's front and
+# 32 mm behind the mast (were 10 mm in front and 40 mm behind): 350 mm front to back, was 438
+WASH = dict(hw=165.0, y0=-150.0, y1=140.0, wall=6.0, tank_h=150.0, liq_h=118.0, z_top=260.0, z_bot=24.0, hb=330.0,
+            hood_h=760.0, mast_y=162.0, knife_low=210.0)
+# knife_low (round 11): the knife waits at the back (y1 - 12) at this height while the basket goes down and up, between
+# the tank's rim (150) and the basket's arm to the mast (346 at its lowest), and rises to z_top only for its sweep. At
+# z_top the arm passed through its upper nozzle as the basket went down; parked at the front it was in the gripper's way
+WASH_POST_FRONT = 12.0                            # the front posts' centres, behind the tank's front face (y0)
+WASH_BACK = 32.0                                  # the back panel, behind the mast's front face (mast_y): 4 mm behind the basket's carriage
 LIQ_C = (0.72, 0.86, 0.96)
 
 
@@ -264,13 +279,13 @@ def wash_parts() -> dict:
                 _box(-hw, hw, y0, y1, -2, 0)), (0.12, 0.40, 0.75), 0.3, 1.0)}
     hh = p["hood_h"]
     posts = None
-    for (x, y) in ((-hw - 12, y0 - 10), (hw + 12, y0 - 10), (-hw - 12, p["mast_y"] + 40), (hw + 12, p["mast_y"] + 40)):
+    yp, ym = y0 + WASH_POST_FRONT, p["mast_y"] + WASH_BACK
+    for (x, y) in ((-hw - 12, yp), (hw + 12, yp), (-hw - 12, ym), (hw + 12, ym)):
         post = _box(x - 12, x + 12, y - 12, y + 12, 0, hh)
         posts = post if posts is None else posts.merge(post)
     body["posts"] = (posts, (0.62, 0.63, 0.66), 0.4, 1.0)
-    ym = p["mast_y"] + 40
-    body["panels"] = (_box(-hw - 24, hw + 24, ym, ym + 4, 0, hh).merge(_box(-hw - 28, -hw - 24, y0 - 10, ym, 0, hh)).merge(
-        _box(hw + 24, hw + 28, y0 - 10, ym, 0, hh)).merge(_box(-hw - 28, hw + 28, y0 - 10, ym + 4, hh, hh + 4)),
+    body["panels"] = (_box(-hw - 24, hw + 24, ym, ym + 4, 0, hh).merge(_box(-hw - 28, -hw - 24, y0, ym, 0, hh)).merge(
+        _box(hw + 24, hw + 28, y0, ym, 0, hh)).merge(_box(-hw - 28, hw + 28, y0, ym + 4, hh, hh + 4)),
         (0.78, 0.86, 0.92), 0.4, 0.16)
     body["duct"] = (_cyl(70, (0, ym - 80, hh + 4), (0, ym - 80, hh + 420), 40), (0.80, 0.81, 0.83), 0.4, 1.0)
     body["mast"] = (_box(-14, 14, p["mast_y"], p["mast_y"] + 24, 0, hh - 40), (0.45, 0.47, 0.52), 0.5, 1.0)

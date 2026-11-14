@@ -243,7 +243,9 @@ def build():
     blk = P.pocket_block(-34.0, 34.0, -34.0, 34.0, [(0.0, 0.0, pp["cup_d"] / 2 + 2.0)], floor=18.0)
     sc.add("p_caddy/block", blk, P.RACK_C, "p_caddy", specular=0.25)
     sc.parent["p_caddy"] = cab
-    sc.gmat["p_caddy"] = T((CADDY_AT[0], CADDY_AT[1], P.AMR_TOP - 20.0))
+    # round 11: on the arm's 20 mm mounting plate (props.mir250: |x| < 170, its top at P.AMR_TOP), not 20 mm down in it
+    # at the cabinet's top: the pocket's floor was 2 mm under the plate's top, so the cup was set down into the plate
+    sc.gmat["p_caddy"] = T((CADDY_AT[0], CADDY_AT[1], P.AMR_TOP))
     # the falling powder (points)
     sc.add("p_stream", pv.PolyData(np.zeros((1, 3))), P.POWDER, "p_stream", style="points", point_size=3.0,
            render_points_as_spheres=True)

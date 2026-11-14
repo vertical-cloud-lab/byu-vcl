@@ -56,9 +56,14 @@ TITLE = "Vertical cloud lab: from the atomizer's powder to the printed plate"
 BENCH = dict(x=-1982.5, w=1065.0, d=600.0, h=700.0)     # a lab bench between the rePowder and the VLM (assumed)
 SIEVE_DX = 11.5                                         # the shaker's centre, from the bench's
 TIPPER_DX = -367.5                                      # the tipper's, left of the shaker (sieve_station.py)
-WASH_DX = -790.0                                        # round 9: the wash module's sieve axis, left of the tipper, on a
-                                                        # 450 mm extension of the bench (sieve_station.wash_parts)
-BENCH_EXT = 450.0
+WASH_DX = -790.0                                        # round 9: the wash module's sieve axis, left of the tipper
+# Round 11: round 9 put it on a 450 mm extension of the bench, inside the rePowder's utility cabinet (repowder:c34,
+# x -3095..-2615, y -1560..-1000, 900 mm tall). It now stands on its own stand in front of that cabinet: its back panel
+# 4 mm in front of the cabinet's face (the VLM's face line), its front 46 mm clear of the MiR's corners on the drive in
+# from the rePowder (y -1950 at most there), its top at the bench's height. The bench has no extension
+WASH_Y = line.Y_FACE - (SS.WASH["mast_y"] + SS.WASH_BACK + 4.0) - 4.0
+WASH_STAND = 28.0                                       # the stand's margin round the module's hood (x), mm
+BENCH_EXT = 0.0
 STAND_DX = 359.5                                        # the Al set's stand, right of the shaker
 GRIP_TAB = 0.88                                         # a sieve's 12 mm handling tab, as the plate's 12 mm lug
 GRIP_PAN = 0.69                                         # the pan's tab, held by its sides, 28 mm across (see GR)
@@ -66,7 +71,10 @@ OPEN_TAB = 0.5                                          # open only so far for a
                                                         # its knuckle reach down into the bench or the shaker
 CELL_DY = -300.0                                        # the MiR parks 300 mm further off the bench than off the line:
                                                         # nearer, the arm folds into itself to reach the tabs level
-HOLDER2_LOCAL = (-190.0, -160.0)                        # the jar's pocket on the MiR's cabinet (MiR frame)
+HOLDER2_LOCAL = (-225.0, -160.0)                        # the jar's pocket on the MiR's cabinet (MiR frame). Round
+# 11: it was at x = -190, which put the pocket block's right 25 mm, and 15 mm of the seated jar's foot, over the arm's
+# 20 mm mounting plate (props.mir250: |x| < 170, z 780-800, part of the cabinet's mesh): a jar set down 16 mm into
+# it. At -225 the block (x -270 to -180) is 10 mm clear of the plate and 40 mm clear of the cup carrier
 ACO_DY = -250.0                                         # and 250 mm further off the Aconity: from its usual spot the
                                                         # arm reaching into the chamber folded its forearm into the
                                                         # base cabinet; from here it reaches in nearly straight
@@ -88,8 +96,11 @@ CRADLE_SEAT = np.array([CRADLE_AT[0], CRADLE_AT[1], CAB_TOP + 3.0])
 HOLDER_LOCAL = CRADLE_AT[:2]                            # the container's seat on the MiR (MiR frame)
 POCKET_SEAT = np.array([HOLDER2_LOCAL[0], HOLDER2_LOCAL[1], CAB_TOP + P.DECK_FLOOR])   # the jar's base in its pocket
 GRIP_HANDLE = 0.876                                     # 12 mm handle bar (alloy_workflow: 0.88 for the 12 mm lug)
+LID_GRASP_Z = 28.0                                      # the lid's grasp point over its datum zl (see lid_grasp)
 GRIP_BAR36 = 0.59                                       # the lid's 36 mm crossbar
-GRIP_KNOB = 0.36                                        # the 54 mm knob
+GRIP_KNOB = 0.25                                        # the knob's five lobes reach r 33 mm (instruments_char.sieve:
+#                                                         a 54 mm core and 12 mm lobes at r 27): the pads at r 33.2 close
+#                                                         on their tips. Round 11: 0.36 put the pads 4 mm into the lobes
 GRIP_BOTTLE = 0.18                                      # the 70 mm bottle
 LAYER_UM = 50.0                                         # assumed: AddUp's AlSi10Mg sheet (chapter 4) prints 50 um
 
@@ -215,9 +226,16 @@ def build_cell(sc, sv):
         sc.parent[g] = "tip_table"
         x, y = SS.jar_xy(j)
         sc.gmat[g] = T((x, y, 22.0))
-    # the wash module on the bench extension, left of the tipper: the tank and its hood, the basket (a lift along the
-    # mast), the knife, the IPA
-    sc.gmat["wash"] = T((b["x"] + WASH_DX, y_c, zb))
+    # the wash module on its own stand in front of the rePowder's utility cabinet: the tank and its hood, the basket (a
+    # lift along the mast), the knife, the IPA
+    sc.gmat["wash"] = T((b["x"] + WASH_DX, WASH_Y, zb))
+    W9 = SS.WASH
+    sx0, sx1 = -W9["hw"] - WASH_STAND, W9["hw"] + WASH_STAND
+    sy0, sy1 = W9["y0"], W9["mast_y"] + SS.WASH_BACK + 4.0
+    stand = pv.Box(bounds=(sx0, sx1, sy0, sy1, -30.0, 0.0)).triangulate()
+    for (x_, y_) in ((sx0 + 25, sy0 + 25), (sx1 - 25, sy0 + 25), (sx0 + 25, sy1 - 25), (sx1 - 25, sy1 - 25)):
+        stand = stand.merge(pv.Box(bounds=(x_ - 18, x_ + 18, y_ - 18, y_ + 18, -zb, -30.0)).triangulate())
+    sc.add("wash/stand", stand, (0.66, 0.67, 0.70), "wash", specular=0.4)
     wn = {}
     for piece, parts in SS.wash_parts().items():
         g = "wash" if piece == "body" else f"wash_{piece}"
@@ -227,7 +245,8 @@ def build_cell(sc, sv):
     for g in ("wash_basket", "wash_knife", "wash_air", "wash_liquid"):
         sc.parent[g] = "wash"
     sc.gmat["wash_basket"] = T((0, 0, SS.WASH["z_top"]))
-    sc.gmat["wash_knife"] = T((0, SS.WASH["y1"] - 12.0, SS.WASH["z_top"]))
+    sc.gmat["wash_knife"] = T((0, SS.WASH["y1"] - 12.0, SS.WASH["knife_low"]))   # round 11: parked low at the back
+    # (sieve_station.WASH): at z_top the basket's arm to the mast passed through its upper nozzle
     sc.parent["wash_air"] = "wash_knife"
     sc.alpha["wash/air/jets"] = 0.0
     sc.alpha["wash/liquid/ipa"] = 0.32
@@ -566,6 +585,11 @@ def movie():
     CAM_LINE = [(MIR_END + 1700, -10400, 4400), (MIR_END + 1700, -1300, 900), (0, 0, 1)]    # the MiR between the
                                                                                             # two Shuttles
 
+    # round 11: what isn't a solid, for the movers check (collide.py skips sc.fluids): the IPA, the warm-air jets, the
+    # laser's beam, spot and tracks, the powder cake, and the shaker's loose powder (its falling and settled clusters)
+    sc.fluids = set(getattr(sc, "fluids", set())) | {"wash/liquid/ipa", "wash/air/jets", "laser beam", "melt spot",
+                                                     "scan tracks", "aco powder cake"} | {
+        n for n, g in sc.group_of.items() if g.startswith(("sieve:frac_", "sieve:fall_"))}
     sc.lid_park = sc.gmat["sieve:lid"].copy()
     sc.lid_parked = True
     frac_col = dict(sc.frac_col)                         # the jars' and the sieves' discs (build_cell)
@@ -733,11 +757,14 @@ def movie():
     jl = inst.joints["lid"]
 
     def lid_grasp(v):
-        return (sc.world("sieve:stack") @ jl.matrix(v) @ np.r_[0.0, 0.0, zl + 17.0, 1.0])[:3]
+        # round 11: 11 mm higher (zl + 28, was 17): the fingertips reach 17.7 mm past the grasp point, and from the
+        # crossbar's mid-height they went 10 mm into the lid's plate under it; now they end 1.3 mm over it and the
+        # pads still hold the bar's top 15 mm
+        return (sc.world("sieve:stack") @ jl.matrix(v) @ np.r_[0.0, 0.0, zl + LID_GRASP_Z, 1.0])[:3]
     # the lid straight over its seat, its holes over the rods' tops: the corner of the rig's own path, which runs by arc
     # length (lid_grasp(2/3) is still on the way across, so a line from there cut the corner through a rod)
     lid_over = lid_grasp(1.0) + (0.0, 0.0, 212.0 + 6 * IC.DEPTH + 50.0 - zl + 25.0)
-    p_lpark = (sc.world("tipper") @ np.r_[0.0, 0.0, SS.TIP["top"] + 29.0, 1.0])[:3]
+    p_lpark = (sc.world("tipper") @ np.r_[0.0, 0.0, SS.TIP["top"] + 12.0 + LID_GRASP_Z, 1.0])[:3]
     cap = "The lid comes off the tipper's roof, over the two rods and down onto the stack, and the arm turns its two " \
           "knobs to clamp it. No shaker found is sold for robot loading, so it does what a person does; Fritsch's " \
           "motor-tensioned ANALYSETTE 3 PRO would take this step out."
@@ -978,13 +1005,19 @@ def movie():
         sc.step(f"3/{n}", cap, 1.6, lambda u: sc.gmat.__setitem__(
             "wash_basket", basket_at(W_["z_bot"] + (W_["z_top"] - W_["z_bot"]) * u * u * (3 - 2 * u))), hold=0.05)
 
+        def knife_z(z0, z1):
+            def up(u):
+                sc.gmat["wash_knife"] = T((0, W_["y1"] - 12.0, z0 + (z1 - z0) * u))
+            return up
+
         def knife(u):
             y = W_["y1"] - 12.0 - (W_["y1"] - W_["y0"] - 40.0) * (0.5 - 0.5 * math.cos(2 * math.pi * 2 * u))
             sc.gmat["wash_knife"] = T((0, y, W_["z_top"]))
             sc.alpha["wash/air/jets"] = 1.0
-        sc.step(f"3/{n}", cap, 4.0, knife, hold=0.05)
+        sc.step(f"3/{n}", cap, 0.5, knife_z(W_["knife_low"], W_["z_top"]), hold=0.02)
+        sc.step(f"3/{n}", cap, 3.5, knife, hold=0.05)
         sc.alpha["wash/air/jets"] = 0.0
-        sc.gmat["wash_knife"] = T((0, W_["y1"] - 12.0, W_["z_top"]))
+        sc.step(f"3/{n}", cap, 0.5, knife_z(W_["z_top"], W_["knife_low"]), hold=0.02)
         cap = "The arm lifts the dry sieve off the basket and puts it back in the tipper's cradle."
         status(sc, Arm="the sieve back to the tipper", Sieve=f"{LABEL[key]}: dry")
         transfer(f"3/{n}", cap, key, "tip_cradle", in_cradle, k=k, lift0=58.0, out0=200.0, lift1=58.0, in1=200.0)
@@ -1090,6 +1123,8 @@ def movie():
           "the 170 mm powder supply cylinder is behind it (DAL PR #169). Its piston drops to take the powder."
     status(sc, Aconity="door open, supply down")
     sup_drop = 70.0
+    SUP_SHORT = 14.0                    # round 11: the piston stops 14 mm short of its top as it fills: at the top the
+    #                                     supply's powder, as the model draws it, stood 12 mm into the deck round it
 
     def supply_down(u):
         sc.gmat["aco_supply"] = T((0, 0, -sup_drop * u))
@@ -1127,9 +1162,9 @@ def movie():
     def fill(u):
         sc.gmat["bottle_pow"] = T((0, 0, 3.5)) @ S((1, 1, max(0.01, 58.0 * (1 - u))))
         sc.alpha["bottle/powder"] = 1.0 if u < 0.97 else 0.0
-        sc.gmat["aco_supply"] = T((0, 0, -sup_drop * (1 - u)))
+        sc.gmat["aco_supply"] = T((0, 0, -sup_drop * (1 - u) - SUP_SHORT * u))
         mouth = held_point(sc, "bottle", (0, 0, BOT_H + NECK_H))
-        pts = stream_pts(mouth, (mouth[0] + 8, mouth[1], sup[2] - sup_drop * (1 - u) - 1), u * 5.0,
+        pts = stream_pts(mouth, (mouth[0] + 8, mouth[1], sup[2] - sup_drop * (1 - u) - SUP_SHORT * u - 1), u * 5.0,
                          on=1.0 if 0.03 < u < 0.93 else 0.0)
         sc.alpha["pstream"] = 1.0 if len(pts) else 0.0
         if len(pts):
