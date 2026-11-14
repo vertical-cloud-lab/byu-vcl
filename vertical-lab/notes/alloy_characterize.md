@@ -21,7 +21,7 @@ are seen full (Sterling, on the old 9:09 clip: "suddenly the VLM only has a few 
 
 | | |
 |---|---|
-| MP4, 1280 x 720, 6 fps, 254 s (1526 frames) | [`out/mp4/alloy_characterize.mp4`](../out/mp4/alloy_characterize.mp4) (11.3 MB) |
+| MP4, 1280 x 720, 6 fps, 256.7 s (1540 frames; round 11) | [`out/mp4/alloy_characterize.mp4`](../out/mp4/alloy_characterize.mp4) (11.3 MB) |
 | GIF, 512 x 288, 3 fps | [`out/alloy_characterize.gif`](../out/alloy_characterize.gif) (under 4.9 MB) |
 | Eight moments, from the MP4 | [`out/alloy_characterize_sheet.png`](../out/alloy_characterize_sheet.png) |
 | The still: all six data panels | [`out/alloy_characterize_still.png`](../out/alloy_characterize_still.png) |
@@ -164,6 +164,59 @@ What fixed what:
 - **The committed render predates the fix.** `out/mp4/alloy_characterize.mp4` (round 9, `1d2a6d0`) still has the
   110 mm slide and the frame of the wrist grazing the stand. Chapter 7 was not re-rendered this round (no slot could
   start it in time); the code renders the fixed version (`VLAB_ONLY_TRAYS=DEKL VIZ3D_FPS=6`, about 45 min).
+
+### Round 11 (2026-11-14): the stricter audit
+
+Sterling, on the round-10 long-form: "There are probably other collisions and interferences that I didn't catch from
+this." Round 11's `collide.py` (audit-a, `6379689` and on) allows the gripper and a held part to touch what they handle
+only up to 1.5 mm deep (`collide.depth`, a 26-direction translational depth, the moving part shrunk 0.3 mm first), and
+adds a movers check: everything that moves and isn't an arm (trays, doors, the MiR, an instrument's own parts) against
+everything else. A frame counts if either finds something (`frames_with_collisions_all`).
+
+| Audit (`VLAB_ONLY_TRAYS=DEKL`, 6 fps) | Code | Rules | Arm | Movers | All |
+|---|---|---|---|---|---|
+| `alloy_characterize_r11a.json` | round 10's | round 10's | 0 of 1269 | | **0** |
+| `alloy_characterize_r11s0.json` | round 10's | stricter (`6379689`) | 19 of 1269 | 94 | **113** |
+| after the fixes below, E1 still in the lid's way | `3697bfb` | stricter | 2 of 1271 | 7 | 9 |
+| E1 moved (lab, `47219fc`) | `3697bfb` | stricter | 2 of 1271 | 0 | 2 |
+| the render's own audit ([`alloy_characterize.json`](../out/collisions/alloy_characterize.json)) | `83454ff` | stricter | 0 of 1279 | 0 | **0** |
+
+What the stricter audit found, and the fixes:
+- **The caddy was sunk in the MiR's mounting plate.** `props.mir250` draws the arm's 20 mm plate (|x| < 170 mm,
+  z 780-800) as part of the cabinet's mesh, and the chapter stood its caddy at the cabinet's 780 mm with its left end and
+  half the hot mount's pocket over the plate: the hot mount was set down 12 mm into it (twice), and the bar's grip end
+  touched the e-stop (3 mm). The caddy is now 180 mm long (was 230), at MiR (265, -150) (was (250, -190)): 5 mm clear of
+  the plate and 10 mm behind the e-stop. Chapters 3 and 4 had the same plate in their way (their notes).
+- **The plungers pressed 1.6 mm into the mounts.** The SEM's and the iMicro's cups' spring plungers had the ball's
+  centre 0.3 mm outside a 1.5 in mount, so the 1.92 mm ball stood 1.6 mm into it (3 mm in the audit, twice). The set
+  screws are turned back: the ball 0.75 mm proud of the bore, 0.45 mm into the mount, which is the spring's push-back
+  (`r8_char.PLUNGER_OUT`).
+- **The iMicro's hood swung through tray E's cameras and sat in its own cabinet.** Its front panel was part of the lid,
+  hinged at the back: closed, it was 25 mm into the cabinet's frame, and lifted, its lower edge (647 mm from the hinge)
+  came up to 127 mm out in front of the cabinet, through cameras E0 and E1 (25-50 mm, 70 frames of the movers check).
+  Now only the lid lifts and the front panel stays (`r8_char.nanoindenter`): the arm reaches the stage over it. The panel
+  is a piece of its own, a service panel that slides straight up 420 mm, for the person in `upkeep_clip.py`. The lid
+  alone still met E1's head, which hung over the cabinet's front edge 640 mm up, at 10-20 deg of opening; the lab stream
+  moved E1 behind the Mastersizer (`47219fc`). *Assumed:* a top-opening lid and a lift-off front panel; KLA's own
+  enclosure isn't modelled.
+- **The PIP's profilometer ran into its indenter.** The chapter lifted the indenter 2 mm (head -0.3) while the stylus
+  came in under it, and its shaft (23 mm over the sample at the top) met the ball (7 mm over it with the ram up): 12 mm,
+  5 frames. The indenter now lifts 18 mm (head -2.6) before the stylus runs in, and comes down only after it is out
+  again. The PIP model's own tour lifts it 14 mm, which still leaves the ball in the shaft (`instruments.py`, not
+  changed here).
+- **The bar's right finger brushed the VHX's controller**, one frame each way, on the joint moves between the caddy and
+  the carrier. The bar is now lifted 200 mm over the caddy and the carrier and comes down the last 110 mm straight, and
+  the fingers open only to 35 mm for the 10 mm bar (they opened to 62).
+- **Shared, fixed by their owners:** the Shuttles' safety shutter into the bay's walls and the trays' service plates
+  into the rear column supports (orchestrator, `063b014`), the MiR's skirt on the floor's dock tape (audit-a: floor
+  markings aren't obstacles).
+
+**The camera posts against the arm's paths** (FCL distance, every audited frame, `E1` at its new place): closest to
+D0 11.5 mm (the upper arm, on the way to the SEM; 2.2 mm before the caddy moved), E0 21.7 mm, D1 36.4 mm, E1 505 mm,
+L0 and K0 over 250 mm. None touches; D0's 11.5 mm is less than a real cell would want (cable dress, calibration), and is
+open.
+
+**Rendered** 2026-11-14 02:37-03:31 UTC on `83454ff` (`VLAB_ONLY_TRAYS=DEKL VIZ3D_FPS=6`, 1280 x 720, beside three other jobs): `out/mp4/alloy_characterize.mp4`, 1540 frames, 256.7 s, 11.3 MB. The script's GIF was 5.8 MB; remade with `gifsicle -O3 --lossy=150 --scale 0.8` to 4.6 MB. The render audits its own frames (`collide.Auditor` as a frame hook, the stricter rules): **0 of 1279 checked frames in collision, arm and movers**; the other 261 frames are holds, copies of the frame before. The round-9 render it replaces had the frame of the wrist on the VHX's stand, the caddy sunk in the plate and the iMicro's hood through tray E's cameras.
 
 ### Known in the committed render
 
