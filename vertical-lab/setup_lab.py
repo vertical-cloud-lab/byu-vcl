@@ -183,7 +183,7 @@ FLOOR_PLAN = {
     "sieve_cell": (-1982.5, "N", 0.0, -1700.0),
     "vlm": (0.0, "N", 0.0, 0.0),
     "vlm2": (X2, "N", 0.0, X2),
-    "aconity": (6950.0, "N", 0.0, 6650.0),
+    "aconity": (6950.0, "N", 0.0, 6520.0),           # round 11: chapter 5's stop, 146 mm short of the build cylinder
     "packaging": (10050.0, "N", 0.0, 10050.0),
     "instron_floor": (-6400.0, "S", 0.0, INSTRON_AXIS_X),         # round 11: dock on the load axis (was x -6600)
     "instron_small": (-4300.0, "S", 0.0, -4300.0),
@@ -197,7 +197,10 @@ BACK_IN = {"instron_small", "vlm", "aconity", "sieve_cell"}   # backed into from
 DOCK_Y = {"repowder": -2230.0, "sieve_cell": W.DOCK_N - 300.0,
           # round 11: chapter 5's MiR stops 500 mm off the row at the Instron, 68 mm clear of the 3119-608 chamber's
           # 550 mm door, which swings 432 mm out in front of the frame (alloy_workflow, MIR_YI); the tape follows it
-          "instron_floor": W.Y_FACE_S + 500.0 + P.MIR["W"] / 2}
+          "instron_floor": W.Y_FACE_S + 500.0 + P.MIR["W"] / 2,
+          # round 11: chapter 5's MiR stops 230 mm off the row at the Aconity MIDI, so the tray on its deck clears the
+          # chamber's front; at the old tape (80 mm off, x 6650) it stood with its skirt on the target post's foot plate
+          "aconity": W.Y_FACE_N - 230.0 - P.MIR["W"] / 2}
 # targets that can't stand where warehouse.target_xy puts them: the VLMs' stand outside the opening's width, so a tray
 # pulled out to the front for maintenance passes them; the rePowder's in front of its own front
 TARGET_AT = {"vlm": (-1330.0, -1742.0), "vlm2": (X2 + 1330.0, -1742.0),

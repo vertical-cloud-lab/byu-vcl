@@ -223,6 +223,12 @@ As placed, every dock is clear and no machine stands in the aisle.
   there reaches 242 mm into the aisle's 3.0 m. The junction box on the south row's drop there hung at 1720-1900 mm,
   inside the frame's crosshead (1610-1810 at rest), so it now hangs over the frame's top, at 2350-2530 mm. The set-up movie's
   round-11 render (d919092) predates both and still shows the old tape and box.
+- **The Aconity MIDI's dock moved out too (round 11, chapter 5's request).** Chapter 5's MiR stops 230 mm off the
+  row at (6520, -2082), so the tray on its deck clears the chamber's front. At the old tape (80 mm off, x 6650) its skirt
+  stood 10 x 50 mm on the target post's 12 mm foot plate, where a real MiR's corner caster would roll onto it. The dock
+  is now at the stop (`DOCK_Y`, the station's dock x). Its target post follows to (5870, -1862), 120 mm clear of the
+  skirt. The MiR backs in from a pivot spot at x 8270, a 1.75 m way in (checked with `check_floor`'s logic on the fit's
+  machine rectangles; the set-up movie d919092 still shows the old tape).
 - **The VLMs' targets stand outside the opening's width** (x = -1330, and 3630 + 1330), so a tray pulled out to the
   front passes them. The first unit backs into its dock from the gap between the Shuttles; the second drives forwards
   into its dock from the same gap.
