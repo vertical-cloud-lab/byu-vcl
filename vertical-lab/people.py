@@ -2,25 +2,37 @@
 
 Sterling on round 10's figure (capsule limbs on a box of a coat, an egg of a head): "Yikes.. That's kind of a cringy
 looking human, although I don't totally dislike the idea of showing an actual person with movement." This one is
-MakeHuman's base mesh (hm08, one smooth body of 13,380 vertices with a face, ears and fingers) on MakeHuman's default
-skeleton and its skin weights, posed every frame by linear-blend skinning in numpy: a walk cycle, a lean from the hips,
-both arms solved to hand targets (two-bone IK, elbows out and down), the head turned to what the person looks at, the
-fingers curled. It is dressed by region: a lab coat over the torso and arms to the wrists (the body's own surface
-pushed out 12 mm), with its skirt to mid-thigh (MakeHuman's skirt helper) and a collar; dark trousers; shoes; blue
-nitrile gloves; skin on the face and neck; short hair; wrap-around safety glasses. 1.75 m with shoes.
+MakeHuman's base mesh (hm08: one smooth body of 13,380 vertices with a face, ears and five fingers a hand) on MakeHuman's
+default skeleton and its skin weights, posed every frame by linear-blend skinning in numpy:
+
+* a walk cycle (hips, knees, ankles; the arms swing against the legs), the shoes grounded every frame (their lowest
+  point GROUND over the floor, so the hips bob as the legs spread);
+* a lean, 60 % at the hips and 40 % along the lower spine;
+* both arms solved to hand targets (two-bone IK from the posed shoulder, elbows out and down), the forearm turned to
+  the hand's work or to a given palm direction, the fingers together and curled (more when holding);
+* the head turned to what the person looks at.
+
+It is dressed by region, the regions cut along smooth lines with the skin weights carried onto the cuts: a lab coat
+over the torso and arms to the wrists (pushed out 12 mm, smoothed, and hung: its front and back bridged over hollows
+top to bottom and side to side, so it doesn't follow the waist, the seat or the spine), its skirt to mid-thigh
+(MakeHuman's skirt helper, tied more to the pelvis than to each thigh), a collar with lapels, a scrub top with its own
+V-neck, trousers that hang straight from the knee, shoes, blue nitrile gloves 55 mm up the forearm, skin on the face and
+neck, short hair thinning to its line, brows, eyes, and wrap-around safety glasses. 1.75 m in shoes.
 
 Sources, fetched at run time into ``.cache/makehuman/`` and never committed, pinned to one commit of
 https://github.com/makehumancommunity/makehuman (CC0 1.0: section C of its LICENSE.md, "The license for the bundled
-assets", which covers the base mesh and the rigs):
+assets", which covers the base mesh and the rigs), each file's sha256 checked:
 
 * ``makehuman/data/3dobjs/base.obj``: the base mesh. Its ``body``, ``helper-skirt`` and the two eye groups are used;
   the other helpers (tights, hair, teeth, tongue, eyelashes, genitals) and the ``joint-*`` marker groups are dropped.
 * ``makehuman/data/rigs/default.mhskel``: the default skeleton (163 bones; each joint is the mean of a joint group's
-  vertices). The face's 60-odd bones are folded into ``head`` and the toes into ``foot``: 74 bones are posed.
+  vertices). The face's bones are folded into ``head``, the toes into ``foot``, the breasts into the chest: 74 bones
+  are posed.
 * ``makehuman/data/rigs/default_weights.mhw``: its skin weights.
 
-API as round 10's ``upkeep_clip.Person``: ``set(x, y, hd, lean, phase, amp, hands, look=None, grip=None)``,
-``hold``, ``let_go``, ``held``, ``rest_hand``, ``names``, ``show``.
+API as round 10's ``upkeep_clip.Person``: ``set(x, y, hd, lean, phase, amp, hands, look=None, grip=None, palm=None)``,
+``hold``, ``let_go``, ``held``, ``rest_hand``, ``names``, ``show``; and ``hand_point`` (a palm's centre, world) and
+``posed`` (each part's world points and faces, for collision checks).
 
     xvfb-run -a python3 people.py        # close-up stills of the poses -> /tmp/people_*.png
 """
