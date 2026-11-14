@@ -20,6 +20,7 @@ instruments' own moving parts), which writes ``out/interference.json`` instead.
 from __future__ import annotations
 
 import json
+import math
 import os
 import subprocess
 import sys
@@ -179,47 +180,138 @@ def summary(tag: str, fixtag: str = "r11fix") -> dict:
     return out
 
 
-def sheet(n: int = 12, tag: str = "r11"):
-    """The worst frames of every clip, from the ARM_AUDIT_SNAP=auto close-ups, ranked by run length x depth."""
+# The long-form's "How the models were checked" still: each clip's frames in collision under round 10's rules, under
+# round 11's before the fixes and after them, and two of the frames found. (label, scene name of round 10's JSON at
+# ROUND10, [JSONs before the fixes], [JSONs after], whose fixes). Several JSONs are summed (a chapter audited in parts).
+SHEET_CLIPS = [
+    ("Chapter 1: the charge", "alloy_charge", ["alloy_charge_r11"], ["alloy_charge"], "audit-a"),
+    ("Chapter 2: atomizing", "alloy_atomize", ["alloy_atomize_r11"], ["alloy_atomize_r11fix"], "audit-a"),
+    ("Chapter 3: sieve and print", "alloy_print", [], ["alloy_print"], "audit-b"),
+    ("Chapter 5: cut, heat-treat, test", "alloy_workflow", ["alloy_workflow_s15", "alloy_workflow_s67"],
+     ["alloy_workflow_s15c", "alloy_workflow_s67b"], "ch5"),
+    ("Chapter 7: characterize", "alloy_characterize", ["alloy_characterize_r11s0"], ["alloy_characterize"], "audit-b"),
+    ("The 8:00 clip: a vial dosed for the CubXL", "vlm_workflow", ["vlm_workflow_r11"], ["vlm_workflow_r11fix"],
+     "audit-a"),
+    ("Maintenance", "upkeep_clip", [], ["upkeep_clip"], "upkeep"),
+    ("The bay camera", "bay_camera", ["bay_camera_r11"], [], "lab"),
+    ("Scaling up: the EOS and the Meltio cell", "scaleup", ["scaleup_r11"], ["scaleup_r11fix"], "audit-a"),
+]
+SHEET_PICS = [
+    ("out/collisions/round11_validation/ch5_section6_round10_camera_F1_frame333.jpg",
+     "Chapter 5 as round 10 rendered it: the tongs through camera F1's post (25 mm, 28 frames). "
+     "Sterling's own catch; the new audit finds it, and F1 has moved."),
+    ("out/collisions/round11_validation/vlm_workflow_frame109_vial_in_solid_rack.jpg",
+     "A fixture drawn solid: the vial lifted out of a rack whose pockets were only drawn as rims (25 mm). "
+     "Round 10's rules let a held part touch its fixtures however deep; now only 1.5 mm."),
+]
+
+
+def _frames(names: list[str]):
+    """(frames in collision, frames checked) summed over JSONs (arms and movers), or None if any is missing."""
+    bad = chk = 0
+    for n in names:
+        rep = _load(n, "x")[0] if False else (json.loads((COLL / f"{n}.json").read_text())
+                                                if (COLL / f"{n}.json").exists() else None)
+        if rep is None:
+            return None
+        bad += rep.get("frames_with_collisions_all", rep.get("frames_with_collisions", 0)) or 0
+        chk += rep.get("frames_checked", 0) or 0
+    return (bad, chk) if names else None
+
+
+def sheet(n: int = 2, tag: str = "r11", out_name: str = "round11_sheet.png"):
+    """out/collisions/round11_sheet.png, 1920 x 1080: SHEET_CLIPS' frames in collision (share of frames checked) under
+    round 10's rules, round 11's before the fixes and after, and SHEET_PICS. Colours: one blue, two steps (the dataviz
+    skill's ramp, validated as an ordinal pair: 2.44:1 for the light end on the surface)."""
     from PIL import Image, ImageDraw
     from scene import font
-    picks = []
-    for job, (what, args, env, mem, names) in JOBS.items():
-        for name in names:
-            idx = SNAPS / f"{name}_snaps.json"
-            if not idx.exists():
-                continue
-            rep = _load(name, tag)[0] or {}
-            runs = [(r["first_frame"], r["frames"], max([q.get("depth_mm") or 50.0 for q in r["pairs"]]))
-                    for r in rep.get("runs", [])]
-            runs += [(r["first_frame"], r["frames"], r["depth_mm"]) for r in (rep.get("movers") or {}).get("runs", [])]
-            for s in json.loads(idx.read_text()):
-                score = max([nf * d for f0, nf, d in runs if abs(f0 - s["frame"]) <= 1] + [0.0])
-                if score > 0:
-                    picks.append((score, name, s))
-    picks.sort(key=lambda x: -x[0])
-    picks = picks[:n]
-    if not picks:
-        print("no snaps to draw")
-        return
-    tw, th, cap = 480, 270, 46
-    cols = 4
-    rows = (len(picks) + cols - 1) // cols
-    img = Image.new("RGB", (tw * cols, (th + cap) * rows + 40), "white")
+    W, H = 1920, 1080
+    SURF, INK, INK2, MUTED, GRID = (252, 252, 251), (11, 11, 11), (82, 81, 78), (137, 135, 129), (226, 225, 221)
+    DARK, LIGHT = (28, 92, 171), (109, 167, 236)              # blue 550 (before the fixes), blue 300 (after)
+    img = Image.new("RGB", (W, H), SURF)
     d = ImageDraw.Draw(img)
-    d.text((12, 10), "Round 11's stricter audit: the worst frames (collide.py; red = the parts in collision; "
-                     "close-ups aimed at the contact)", fill=(20, 20, 24), font=font(18, bold=True))
-    for k, (score, name, s) in enumerate(picks):
-        x, y = (k % cols) * tw, 40 + (k // cols) * (th + cap)
-        im = Image.open(s["file"]).convert("RGB")
-        im = im.crop((0, 34, im.width, im.height)).resize((tw, th), Image.LANCZOS)
-        img.paste(im, (x, y))
-        txt = f"{name} frame {s['frame']} ({s['label']})"
-        d.text((x + 6, y + th + 3), txt[:62], fill=(20, 20, 24), font=font(13, bold=True))
-        d.text((x + 6, y + th + 22), ("; ".join(s["hits"]))[:70], fill=(170, 20, 20), font=font(12))
-    out = COLL / "round11_sheet.png"
-    img.quantize(colors=200).save(out, optimize=True)
-    print(f"{out.relative_to(HERE)}: {len(picks)} frames")
+    d.text((60, 34), "How the models were checked: round 11's stricter collision audit", fill=INK,
+           font=font(44, bold=True))
+    sub = ("Every frame, on the meshes as drawn (FCL). New in round 11: what an arm picks up or sets down may touch its "
+           "fixtures only 1.5 mm deep, and everything else that moves (MiRs, trays, doors, people) is checked too.")
+    words, line, ly = sub.split(), "", 98
+    for w_ in words:                                             # wrap at word boundaries
+        t = (line + " " + w_).strip()
+        if d.textlength(t, font=font(24)) > W - 120 and line:
+            d.text((60, ly), line, fill=INK2, font=font(24))
+            ly, line = ly + 32, w_
+        else:
+            line = t
+    d.text((60, ly), line, fill=INK2, font=font(24))
+    # legend
+    y = 182
+    d.rounded_rectangle((60, y + 4, 92, y + 24), 4, fill=DARK)
+    d.text((102, y), "Round 11's rules, before the fixes", fill=INK, font=font(22))
+    d.rounded_rectangle((520, y + 4, 552, y + 24), 4, fill=LIGHT)
+    d.text((562, y), "After the fixes", fill=INK, font=font(22))
+    d.text((800, y), "Round 10's rules: the figure in grey", fill=MUTED, font=font(22))
+    # rows
+    rows = []
+    for label, r10, before, after, who in SHEET_CLIPS:
+        old = _load(r10, "")[0]
+        o = (old.get("frames_with_collisions", 0), old.get("frames_checked", 0)) if old else None
+        rows.append((label, o, _frames(before), _frames(after), who))
+    vmax = max([100.0 * b[0] / b[1] for _, _, b, _, _ in rows if b and b[1]] +
+               [100.0 * a[0] / a[1] for _, _, _, a, _ in rows if a and a[1]] + [5.0])
+    vmax = 5.0 * math.ceil(vmax / 5.0)
+    x0, x1 = 660, 1060                                          # the bars' baseline and full scale
+    top, rh = 250, 84
+    for k in range(int(vmax / 5) + 1):                          # recessive grid, every 5 %
+        gx = x0 + (x1 - x0) * (5.0 * k / vmax)
+        d.line((gx, top - 10, gx, top + rh * len(rows) - 14), fill=GRID, width=1)
+        d.text((gx - 14, top + rh * len(rows) - 8), f"{5 * k} %", fill=MUTED, font=font(18))
+    d.text((x0, top - 40), "share of the frames checked that have a collision", fill=MUTED, font=font(18))
+    for r, (label, o, b, a, who) in enumerate(rows):
+        y = top + r * rh
+        d.text((60, y + 4), label, fill=INK, font=font(24, bold=True))
+        old_txt = f"round 10: {o[0]} of {o[1]}" if o else "round 10: not audited"
+        d.text((60, y + 38), old_txt, fill=MUTED, font=font(20))
+        for k, (val, col) in enumerate(((b, DARK), (a, LIGHT))):
+            by = y + 6 + k * 34
+            if val is None:
+                d.text((x0, by - 2), "before the fixes: not on record" if k == 0 else
+                       f"after: in progress ({who})", fill=MUTED, font=font(19))
+                continue
+            frac = val[0] / val[1] if val[1] else 0.0
+            bw = (x1 - x0) * (100.0 * frac / vmax)
+            if val[0] > 0:
+                d.rounded_rectangle((x0, by, x0 + max(bw, 6), by + 24), 4, fill=col)
+            d.text((x0 + max(bw, 0) + 12, by - 1), f"{val[0]} of {val[1]} frames" + (f" ({100 * frac:.1f} %)"
+                   if val[0] else ""), fill=INK if k == 0 else INK2, font=font(21, bold=(k == 1 and val[0] == 0)))
+        d.line((60, y + rh - 14, x1 + 200, y + rh - 14), fill=GRID, width=1)
+    # two frames found
+    px, pw = 1400, 470
+    ph = int(pw * 9 / 16)
+    py = 240
+    for path, cap in SHEET_PICS[:n]:
+        p_ = HERE / path
+        if not p_.exists():
+            continue
+        im = Image.open(p_).convert("RGB")
+        im = im.crop((0, 34, im.width, im.height)) if im.height == 720 else im
+        img.paste(im.resize((pw, ph), Image.LANCZOS), (px, py))
+        d.rectangle((px, py, px + pw - 1, py + ph - 1), outline=GRID, width=1)
+        words, line, ly = cap.split(), "", py + ph + 8
+        for w_ in words:                                         # wrap the caption to the picture's width
+            t = (line + " " + w_).strip()
+            if d.textlength(t, font=font(19)) > pw and line:
+                d.text((px, ly), line, fill=INK2, font=font(19))
+                ly, line = ly + 24, w_
+            else:
+                line = t
+        d.text((px, ly), line, fill=INK2, font=font(19))
+        py = ly + 44
+    d.text((60, H - 40), "red in a picture: the parts in collision.  Data: out/collisions/round11_summary.json;  "
+           "checker: collide.py;  notes: notes/arm_collisions.md", fill=MUTED, font=font(18))
+    out = COLL / out_name
+    img.save(out, optimize=True)
+    print(f"{out.relative_to(HERE)}: {len(rows)} clips, {min(n, len(SHEET_PICS))} frames")
+    return out
 
 
 # ------------------------------------------------------------------------------------------- self-tests
