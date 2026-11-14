@@ -336,8 +336,9 @@ ghosted parts (bay walls, shutter, seams) solid while the unit fades in, and lab
 loading ends, then Shuttle 1's. Then it pulls back to the wide view with the cladding see-through again, about 5.4 s
 against 3.2 s before. `vlm_services` (`services.py services`) had the same problem in its last step: it labelled the
 unit at the top edge of a see-through view of tray A's cameras. It now shows tray A's two units first, then cuts to
-the same operator's view, cladding solid, with the unit labelled, then back to see-through. `vlm_hookups` never
-labels the bay unit, so it is unchanged.
+the same operator's view, cladding solid, with the unit labelled, then back to see-through (re-rendered 01:00 UTC on
+2026-11-14: 223 frames, 37.2 s at 6 fps, against 206 frames, 34.3 s; the unit shows from 31.7 s, and the still is that
+shot). `vlm_hookups` never labels the bay unit, so it is unchanged.
 
 ### Cabling
 
