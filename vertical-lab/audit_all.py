@@ -9,6 +9,8 @@ limit on what may touch, and the movers check) under ``runner_guard.py``, one sl
     python3 audit_all.py run ch1 ch2 ... [--tag T]  # each job in turn through runner_guard (one slot at a time)
     python3 audit_all.py summary [--tag T]          # -> out/collisions/round11_summary.json, and a table on stdout
     xvfb-run -a python3 audit_all.py sheet          # -> out/collisions/round11_sheet.png: the worst frames, drawn
+    python3 audit_all.py selftest                   # collide.depth() on known cases, then two scenes with known
+                                                    # answers under ARM_AUDIT=1 (needs xvfb-run and a runner_guard slot)
 
 ``--tag`` (default ``r11``) is the audit's ARM_AUDIT_TAG: ``out/collisions/<clip>_<tag>.json``, so the round-10 JSONs
 (``<clip>.json``, round 10's rules) stay as they were for before/after numbers. ``r11fix`` is used for the re-audit
@@ -35,8 +37,10 @@ JOBS = {
             ["alloy_charge"]),
     "ch2": ("chapter 2, atomizing (alloy_atomize.py, two arms, the two-Shuttle floor)", ["alloy_atomize.py"], {}, 6500,
             ["alloy_atomize"]),
-    "workflow": ("the 8:00 clip (animate.py workflow, the whole lab)", ["animate.py", "workflow"], {}, 6500,
-                 ["vlm_workflow"]),
+    # VLAB_ONLY_TRAYS=ABC: the trays it fetches (the others stay in their slots, which no arm or tray in this clip
+    # reaches; setup_lab.build's comment); not for its render, whose Shuttles are open frames
+    "workflow": ("the 8:00 clip (animate.py workflow, the whole lab)", ["animate.py", "workflow"],
+                 {"VLAB_ONLY_TRAYS": "ABC"}, 5000, ["vlm_workflow"]),
     "baycam": ("the bay camera (services.py baycam; the lab stream's file: hits reported, not fixed)",
                ["services.py", "baycam"], {}, 4000, ["bay_camera"]),
     "scaleup": ("scaling up (scaleup.py: the EOS M 400-4 and the Meltio robot cell; no UR arm, movers only)",
@@ -44,6 +48,29 @@ JOBS = {
     "interference": ("interference.py over every model (MuJoCo sweep, exact meshes)", ["interference.py"], {}, 4000,
                      []),
 }
+
+
+# what the stricter rules found outside audit-a's clips, and who fixed it (notes/arm_collisions.md)
+FOUND_ELSEWHERE = [
+    dict(what="stored trays, with their plates and service lines, into the drawn column supports as they are stored "
+              "(tray F 50 mm in chapter 5's validation; audit-b's chapters)", check="movers",
+         fixed="vlm.py, 063b014 (orchestrator): supports drawn only where a tray rests inside a slot, per Shuttle"),
+    dict(what="the safety shutter 12 mm into the bay's side walls as it moves", check="movers",
+         fixed="vlm.py, 063b014 (orchestrator): the walls stop 1 mm short of the shutter's path"),
+    dict(what="the MiR's body 3 mm into the floor tape on every drive (props.mir250's skirt is drawn down to z = 0)",
+         check="movers", fixed="collide.py (audit-a): the floor and its markings, anything within 6 mm of z = 0, "
+                               "are not solid to the movers check"),
+]
+VALIDATION = dict(
+    known_case="round 10's alloy_workflow.py, section 6 (CH5_FROM=6, VLAB_ONLY_TRAYS=F), camera F1 where round 10 had "
+               "it: the tongs through F1's post, 25 mm, frames 333-370 (28 frames), caught; the tongs 6 mm into the "
+               "MiR's cabinet (548-551), allowed by round 10's rules, caught",
+    files=["out/collisions/round11_validation/ch5_section6_round10_camera_F1.json",
+           "out/collisions/round11_validation/ch5_section6_round10_camera_F1_frame333.jpg",
+           "out/collisions/round11_validation/ch5_section6_camera_F1_moved.json"],
+    selftest="python3 audit_all.py selftest: depth() on known cases; a movers scene (cart into a wall 25 mm, door "
+             "through a post 50 mm, scaled belt into a ceiling 25 mm caught; floor, 0.8 mm plate, own subtree not); "
+             "an arm pushing a held cube 10 mm into its fixture (4 frames at 12 mm; 0 under round 10's rules)")
 
 
 def command(job: str, tag: str) -> list[str]:
@@ -121,6 +148,7 @@ def summary(tag: str, fixtag: str = "r11fix") -> dict:
                 after_fixes=dict(_counts(fix) or {}, json=str(p_fix.relative_to(HERE))) if fix else None,
                 worst=_worst_runs(fix or new) if (fix or new) else [])
     out = dict(round=11, written=time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime()),
+               found_by_the_movers_check_fixed_elsewhere=FOUND_ELSEWHERE, validation=VALIDATION,
                rules=("collide.py, round 11: what may touch only up to 1.5 mm deep (collide.depth, a 26-direction "
                       "translational depth), and the movers check (everything that moves and isn't an arm, new "
                       "contacts deeper than 1.5 mm); round 10's numbers are the same clips' JSONs under round 10's "
@@ -187,6 +215,120 @@ def sheet(n: int = 12, tag: str = "r11"):
     print(f"{out.relative_to(HERE)}: {len(picks)} frames")
 
 
+# ------------------------------------------------------------------------------------------- self-tests
+def selftest_depth():
+    """collide.depth() against known penetrations, coarse and fine meshes (notes/arm_collisions.md's table)."""
+    import numpy as np
+    import pyvista as pv
+    import collide as CL
+
+    def body(mesh, name):
+        b = CL.Body(name, name, *CL._tris(mesh.triangulate().clean()))
+        b.place(np.eye(4))
+        return b
+    block = {"coarse": pv.Box((-50, 50, -50, 50, -50, 0)), "fine": pv.Box((-50, 50, -50, 50, -50, 0), level=20)}
+    want = {0.3: 1.5, 1.0: 1.5, 2.0: 3.0, 3.0: 6.0, 10.0: 12.0, 25.0: 25.0}
+    ok = True
+    for d, w in want.items():
+        got = [CL.depth(body(pv.Box((-10, 10, -10, 10, -d, 40 - d), level=lv), "f"), body(block[bn], "b"))
+               for bn in block for lv in (0, 8)]
+        ok &= all(g == w for g in got)
+        print(f"finger sunk {d:4.1f} mm: {got} (expected {w:g})")
+    for d, w in {0.5: 1.5, 8.0: 12.0}.items():
+        s_ = pv.Sphere(radius=15, center=(0, 0, 15 - d), theta_resolution=40, phi_resolution=40)
+        got = [CL.depth(body(s_, "s"), body(block[bn], "b")) for bn in block]
+        ok &= all(g == w for g in got)
+        print(f"sphere sunk {d} mm: {got} (expected {w:g})")
+    clear = CL.depth(body(pv.Box((-10, 10, -10, 10, 0.2, 40)), "f"), body(block["fine"], "b"))
+    ok &= clear == 0.0
+    print(f"0.2 mm clear: {clear} (expected 0)")
+    print("DEPTH SELFTEST", "OK" if ok else "FAILED")
+    return ok
+
+
+def _selftest_movers():
+    """A scene whose movers are known: run under ARM_AUDIT=1."""
+    import numpy as np
+    import pyvista as pv
+    import scene as SC
+    from scene import T, R
+    sc = SC.Scene("r11_movers_selftest", "movers self-test")
+    sc.add("floor", pv.Box((-2000, 2000, -2000, 2000, -20, 0)), "grey", "static")
+    sc.add("pad", pv.Box((300, 500, -400, 400, 0, 0.8)), "orange", "pad")          # a 0.8 mm floor plate: shallow
+    sc.add("wall", pv.Box((1220, 1400, -600, 600, 0, 800)), "white", "wall")       # the cart ends 20 mm into it
+    sc.add("cart/body", pv.Box((-200, 200, -300, 300, -0.5, 400), level=4), "blue", "cart")   # 0.5 mm into the floor
+    sc.add("cart/lift", pv.Box((-150, 150, -250, 250, 380, 420)), "green", "cart_lift")       # its own subtree
+    sc.parent["cart_lift"] = "cart"
+    sc.add("machine", pv.Box((-1500, -1000, 500, 1000, 0, 900)), "white", "machine")
+    sc.add("door", pv.Box((-1000, -995, 500, 1000, 0, 900)), "red", "door")       # hinged at (-1000, 500)
+    sc.parent["door"] = "machine"
+    sc.add("post", pv.Cylinder(center=(-753, 747, 450), direction=(0, 0, 1), radius=40, height=900), "black", "post")
+    sc.add("pulley", pv.Box((1700, 1800, -50, 50, -100, 0)), "grey", "pulley")     # the belt stands on it
+    sc.add("belt", pv.Box((1730, 1770, -20, 20, 0, 1)), "black", "belt")          # 1 mm tall, drawn scaled
+    sc.gmat["belt"] = np.diag([1.0, 1.0, 50.0, 1.0])
+    sc.add("ceiling", pv.Box((1600, 1900, -100, 100, 380, 420)), "grey", "ceiling")
+
+    def drive(u):
+        sc.gmat["cart"] = T((1040.0 * u, 0, 0))              # front 200 + 1040 = 1240: 20 mm into the wall
+    def lift(u):
+        sc.gmat["cart_lift"] = T((0, 0, -30.0 * u))          # down into its own cart
+    def swing(u):
+        sc.gmat["door"] = R((0, 0, 1), -75.0 * u, pivot=(-1000, 500, 0))   # through the post
+    def stretch(u):
+        sc.gmat["belt"] = np.diag([1.0, 1.0, 50.0 + 350.0 * u, 1.0])         # 400 mm tall: 20 mm into the ceiling
+    sc.step("drive", "cart over the plate into the wall", 4.0, drive, hold=0.2)
+    sc.step("lift", "the lift sinks into its own cart", 1.0, lift, hold=0.2)
+    sc.step("door", "the door swings into the post", 2.0, swing, hold=0.2)
+    sc.step("belt", "a scaled belt grows into the ceiling", 1.0, stretch, hold=0.2)
+    rep = sc.save()
+    got = {(q["body"], q["other"]) for r in rep["movers"]["runs"] for q in r["pairs"]}
+    ok = {("cart/body", "wall"), ("door", "post"), ("belt", "ceiling")} <= got and \
+        not any(o in ("floor", "pad") or b == "cart/lift" for b, o in got)
+    print("MOVERS SELFTEST", "OK" if ok else f"FAILED: {sorted(got)}")
+    sys.exit(0 if ok else 1)
+
+
+def _selftest_arm():
+    """An arm holding a 30 mm cube pushes it 10 mm into the fixture it puts it down on: run under ARM_AUDIT=1."""
+    import pyvista as pv
+    import robot
+    import scene as SC
+    from scene import T
+    sc = SC.Scene(os.environ.get("TEST_NAME", "r11_arm_selftest"), "arm depth self-test")
+    sc.add("floor", pv.Box((-2000, 2000, -2000, 2000, -20, 0)), "grey", "static")
+    rb = robot.Robot(sc, "ur10e", "static", T((0, 0, 0)), q0=[0, -90, 90, -90, -90, 0])
+    Tt = rb.tcp_world()
+    p = Tt[:3, 3]
+    sc.add("part", pv.Box((-15, 15, -15, 15, -15, 15)), "orange", "part")
+    sc.gmat["part"] = T(p)
+    sc.add("fixture", pv.Box((p[0] - 60, p[0] + 60, p[1] - 60, p[1] + 60, 0, p[2] - 45.0)), "white", "fixture")
+    rb.grasp("part")
+    down = Tt.copy()
+    down[2, 3] -= 40.0                                       # the cube's bottom ends 10 mm into the fixture
+    sc.step("down", "into the fixture", 2.0, rb.line_to(down), hold=0.2)
+    rb.release("fixture")
+    sc.step("away", "up", 1.0, rb.line_to(Tt), hold=0.2)
+    rep = sc.save()
+    strict = rep["rules_version"].startswith("round 11")
+    ok = (rep["frames_with_collisions"] > 0 and rep["runs"][0]["pairs"][0].get("depth_mm") == 12.0) if strict else \
+        rep["frames_with_collisions"] == 0
+    print("ARM SELFTEST", rep["rules_version"], "OK" if ok else "FAILED")
+    sys.exit(0 if ok else 1)
+
+
+def selftest() -> bool:
+    ok = selftest_depth()
+    base = ["xvfb-run", f"--server-num={DISPLAY}", "-a", sys.executable, str(Path(__file__).resolve())]
+    for env, arg in (({}, "_selftest_movers"), ({}, "_selftest_arm"),
+                     ({"ARM_AUDIT_RULES": "old", "TEST_NAME": "r11_arm_selftest_old"}, "_selftest_arm")):
+        e = dict(os.environ, ARM_AUDIT="1", VIZ3D_FPS="6", **env)
+        ok &= subprocess.call(base + [arg], cwd=HERE, env=e) == 0
+    for n in ("r11_movers_selftest", "r11_arm_selftest", "r11_arm_selftest_old"):
+        (COLL / f"{n}.json").unlink(missing_ok=True)
+    print("SELFTEST", "OK" if ok else "FAILED")
+    return ok
+
+
 if __name__ == "__main__":
     a = sys.argv[1:]
     tag = "r11"
@@ -203,5 +345,9 @@ if __name__ == "__main__":
         summary(tag)
     elif a[0] == "sheet":
         sheet(tag=tag)
+    elif a[0] == "selftest":
+        sys.exit(0 if selftest() else 1)
+    elif a[0] in ("_selftest_movers", "_selftest_arm"):
+        globals()[a[0]]()
     else:
         sys.exit(__doc__)

@@ -71,6 +71,8 @@ MOVERS = STRICT and os.environ.get("ARM_AUDIT_MOVERS", "1") != "0"
 DEPTH_MM = float(os.environ.get("ARM_AUDIT_DEPTH_MM", "1.5"))
 LADDER = (DEPTH_MM, 3.0, 6.0, 12.0, 25.0, 50.0)     # depth() answers with the first of these that frees the pair
 DEEP = 999.0                                        # depth() past the last step of LADDER
+FLOOR_MM = 6.0      # the movers check: a body whose top is at most this far above z = 0 is the floor (the slab, tape,
+                    # painted marks), which a MiR's skirt drawn down to z = 0 and anything set on the floor may touch
 _DIRS = np.array([d for d in __import__("itertools").product((-1, 0, 1), repeat=3) if any(d)], float)
 _DIRS /= np.linalg.norm(_DIRS, axis=1)[:, None]     # the 26 directions to a cube's faces, edges and corners
 
@@ -84,7 +86,10 @@ def _tris(poly: pv.PolyData) -> tuple[np.ndarray, np.ndarray] | None:
         return None
     if not isinstance(poly, pv.PolyData) or poly.n_cells == 0:
         return None
-    m = poly.triangulate()
+    import warnings
+    with warnings.catch_warnings():             # actors whose cell normals outlived a re-mesh: only the points count here
+        warnings.simplefilter("ignore")
+        m = poly.triangulate()
     f = np.asarray(m.faces).reshape(-1, 4)
     if not len(f) or (f[:, 0] != 3).any():
         return None
@@ -102,7 +107,7 @@ def _bvh(v: np.ndarray, f: np.ndarray) -> fcl.BVHModel:
 class Body:
     """One mesh in its own (group) frame: its FCL object and its local box corners for a quick overlap test."""
 
-    __slots__ = ("name", "group", "obj", "corners", "tf", "pending")
+    __slots__ = ("name", "group", "obj", "corners", "tf", "pending", "wkey", "wbox")
 
     def __init__(self, name: str, group: str, v: np.ndarray, f: np.ndarray):
         self.name, self.group = name, group
@@ -110,6 +115,7 @@ class Body:
         self.corners = _corners(v.min(0), v.max(0))
         self.tf = None
         self.pending = None            # a re-meshed VTK input whose BVH isn't built yet (built when something is near)
+        self.wkey = self.wbox = None   # World.current's cache: the group matrix (bytes) its world box was made for
 
     def ensure(self):
         """Build the BVH of a re-meshed actor now (it was only marked when its mesh changed)."""
@@ -121,11 +127,13 @@ class Body:
             return
         self.obj = fcl.CollisionObject(_bvh(*t), fcl.Transform())
         self.tf = None
+        self.wkey = None
 
     def place(self, M: np.ndarray):
         if self.tf is not None and np.array_equal(self.tf, M):
             return
         self.tf = M.copy()
+        self.wkey = None
         self.obj.setTransform(fcl.Transform(M[:3, :3], M[:3, 3]))
 
     def box(self, M: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
@@ -294,6 +302,7 @@ class World:
                 hi = np.array(inp.GetBounds()[1::2])
                 b.corners = _corners(lo, hi)
                 b.pending = inp
+                b.wkey = None
                 continue
             t = _tris(inp)
             if t is None:
@@ -305,15 +314,21 @@ class World:
         """Every visible body not in exclude_groups, placed where its group is now, with its world box."""
         sc = self.sc
         cache, out = {}, []
-        fluids = getattr(sc, "fluids", ())          # actors that are liquids: a part may be dipped in them
+        fluids = set(getattr(sc, "fluids", ()))     # actors that are liquids: a part may be dipped in them
         for name, b in self.bodies.items():
             if b.group in exclude_groups or not _visible(sc, name) or name in fluids:
                 continue
-            if b.group not in cache:
-                cache[b.group] = sc.world(b.group)
-            M = cache[b.group]
-            b.place(M)
-            lo, hi = b.box(M)
+            got = cache.get(b.group)
+            if got is None:
+                M = sc.world(b.group)
+                got = cache[b.group] = (M, M.tobytes())
+            M, key = got
+            if b.wkey is not None and b.wkey == key and b.tf is not None:      # round 11: nothing moved, as placed
+                lo, hi = b.wbox
+            else:
+                b.place(M)
+                lo, hi = b.box(M)
+                b.wkey, b.wbox = key, (lo, hi)
             out.append((b, lo, hi, M))
         return Snap(out)
 
@@ -681,8 +696,10 @@ class Movers:
     that moved by the same rigid motion (a MiR with its cabinet, its holders and the parts on them) form one cluster
     and are not checked against each other: their relative poses didn't change, so no new contact can appear between
     them. Every visible body of a moving group is checked against every other visible body except its own group's
-    subtree and ancestors, the arms and what they hold (the arm checks do those), and liquids: world boxes first, all
-    at once, then FCL on the meshes of the pairs whose boxes overlap (BVHs built only for those). The contacts a group
+    subtree and ancestors, the arms and what they hold (the arm checks do those), liquids, and the floor with its
+    markings (anything whose top is within FLOOR_MM, 6 mm, of z = 0: tape is paint, and a MiR's skirt is drawn down to
+    the floor): world boxes first, all at once, then FCL on the meshes of the pairs whose boxes overlap (BVHs built
+    only for those). The contacts a group
     had at its last pose before it started moving are its baseline and are left out while it keeps moving, until
     that pair comes apart; a new contact counts if depth() puts it deeper than DEPTH_MM (1.5 mm), so a tray set down
     on a table or a MiR rolling onto a floor plate isn't reported."""
@@ -697,6 +714,7 @@ class Movers:
         self.ckey: dict[str, object] = {}      # actor -> key of the VTK input its local box came from
         self.body: dict[str, Body] = {}
         self.bkey: dict[str, object] = {}
+        self.baked: dict[str, tuple] = {}      # actor -> (matrix bytes, Body in world coordinates) for scaled groups
         self.Wprev = None
         self.moving: set[str] = set()
         self.base: dict[str, set] = {}
@@ -760,6 +778,28 @@ class Movers:
             t = _tris(inp)
             b = Body(name, self.sc.group_of[name], *t) if t is not None else None
         self.body[name], self.bkey[name] = b, key
+        return b
+
+    def _placed(self, name, M) -> Body | None:
+        """The actor's body placed at M. FCL takes only rigid transforms (a scaled matrix is read as a rotation and
+        the scale dropped: a box stretched to +-6 doesn't touch a probe at 4), so a group drawn with a scale (the VLM's
+        belts, a level) gets a body built from its vertices moved into the world, cached per matrix."""
+        R = M[:3, :3]
+        if np.abs(R.T @ R - np.eye(3)).max() < 1e-6:
+            b = self._body(name)
+            if b is not None:
+                b.place(M)
+            return b
+        key = M.tobytes()
+        got = self.baked.get(name)
+        if got is not None and got[0] == key:
+            return got[1]
+        t = _tris(self.sc.actors[name].GetMapper().GetInput())
+        if t is None:
+            return None
+        b = Body(name, self.sc.group_of[name], t[0] @ R.T + M[:3, 3], t[1])
+        b.place(np.eye(4))
+        self.baked[name] = (key, b)
         return b
 
     # ------------------------------------------------------------------------------ one frame
@@ -834,17 +874,21 @@ class Movers:
                 self.base.pop(g)
         cur = self._contacts(sc, mov_a, lo, hi, W, excl, fluids, family, cl=(moved, cl_of_g))
         hits = []
+        touching = set()                                      # every pair in contact now, both ways round (a pair of
+        for prs in cur.values():                              # two moving clusters is checked under one of them)
+            for a, b in prs:
+                touching.add((a, b))
+                touching.add((b, a))
         for g in now_moving:                                  # a baseline pair that came apart is a new one next time
             if g in self.base:
-                self.base[g] &= {pq for pq in cur.get(g, set())}
+                self.base[g] &= touching
         for g, pairs in cur.items():
             for a, b in pairs:
                 gb = sc.group_of[b]
                 if (a, b) in self.base.get(g, ()) or (b, a) in self.base.get(gb, ()):
                     continue
-                x, y = self.body[a], self.body[b]
-                x.place(W[self.gpos[g]])
-                y.place(W[self.gpos[gb]])
+                x = self._placed(a, W[self.gpos[g]])
+                y = self._placed(b, W[self.gpos[gb]])
                 d = depth(x, y)
                 if d > DEPTH_MM:
                     hits.append((g, a, b, gb, d))
@@ -875,7 +919,7 @@ class Movers:
                 continue
             gi, gj = self.gidx[i], self.gidx[j]
             ga, gb = self.groups[gi], self.groups[gj]
-            if gb in excl:
+            if gb in excl or hi[j][2] <= FLOOR_MM:          # the arms' own; the floor and its markings
                 continue
             if cl is not None:
                 moved, cl_of = cl
@@ -894,11 +938,10 @@ class Movers:
             if not vis[nb]:
                 continue
             na = self.names[i]
-            x, y = self._body(na), self._body(nb)
+            x = self._placed(na, W[gi])
+            y = self._placed(nb, W[gj])
             if x is None or y is None:
                 continue
-            x.place(W[gi])
-            y.place(W[gj])
             self.checked += 1
             if _hit(x.obj, y.obj):
                 out.setdefault(ga, set()).add((na, nb))
