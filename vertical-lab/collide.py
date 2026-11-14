@@ -24,6 +24,23 @@ touches something it should not, grouped into runs, with the sub-step it happens
 
 Units mm, the scene's world frame. FCL works on triangle meshes (BVH, OBB-RSS), so concave things (a holder on a post,
 a cabinet with a plate on it, an open machine) are checked as drawn, not as convex hulls.
+
+Round 11 (Sterling, 2026-11-13: the arm through a camera post, the tensile bars, the maintenance clip, "there are
+probably other collisions and interferences that I didn't catch") made the audit stricter, and that is the default
+for ``ARM_AUDIT=1`` (``ARM_AUDIT_RULES=old`` gives round 10's rules, for before/after numbers):
+
+* **Depth limits on what is allowed.** The gripper may touch what it picks up or puts down, and a held part its
+  source and destination, only up to ``ARM_AUDIT_DEPTH_MM`` (1.5 mm) of penetration. Until now any depth was allowed,
+  so fingers sunk into a grip's jaws counted as "allowed". The depth is ``depth()``: the translational penetration
+  depth (the shortest move that frees one body from the other), sampled over 26 directions. FCL's own contact
+  ``penetration_depth`` was tested first and is not a depth for mesh-mesh contacts: it is per triangle pair, so on
+  finely meshed parts it is capped by the triangle size (a 20 mm finger sunk 10 mm into a block meshed at 5 mm
+  reads 1.1 mm, a sphere sunk 8 mm reads 0.5 mm; see notes/arm_collisions.md).
+* **The movers check** (``Movers``). Every group whose world matrix changed since the last frame and isn't part of an
+  arm or held by one (MiRs, trays, doors, tables, people, parts riding on them) is checked against every other
+  visible body except its own subtree and ancestors, boxes first, then FCL. Contacts a group already had when it
+  started moving (at its last pose before the move: the floor under a MiR, a tray on its lift) are left out; a new
+  contact deeper than 1.5 mm is reported, in the JSON's "movers" section.
 """
 from __future__ import annotations
 
@@ -48,6 +65,14 @@ ADJACENT = {("base", "shoulder"), ("shoulder", "upper_arm"), ("upper_arm", "fore
             ("wrist1", "wrist2"), ("wrist2", "wrist3"), ("wrist3", "gripper"), ("wrist2", "gripper")}
 MAX_TRIS = 8000            # links above this are decimated for the checks (the drawn meshes are not touched)
 STEP_RAD = math.radians(1.5)
+# round 11: the stricter audit (depth limits on what may touch, and the movers check) is the default
+STRICT = os.environ.get("ARM_AUDIT_RULES", "strict").lower() != "old"
+MOVERS = STRICT and os.environ.get("ARM_AUDIT_MOVERS", "1") != "0"
+DEPTH_MM = float(os.environ.get("ARM_AUDIT_DEPTH_MM", "1.5"))
+LADDER = (DEPTH_MM, 3.0, 6.0, 12.0, 25.0, 50.0)     # depth() answers with the first of these that frees the pair
+DEEP = 999.0                                        # depth() past the last step of LADDER
+_DIRS = np.array([d for d in __import__("itertools").product((-1, 0, 1), repeat=3) if any(d)], float)
+_DIRS /= np.linalg.norm(_DIRS, axis=1)[:, None]     # the 26 directions to a cube's faces, edges and corners
 
 
 # ------------------------------------------------------------------------------------------------- meshes
@@ -114,6 +139,39 @@ def _corners(lo, hi) -> np.ndarray:
 
 def _hit(a: fcl.CollisionObject, b: fcl.CollisionObject) -> bool:
     return fcl.collide(a, b, fcl.CollisionRequest(), fcl.CollisionResult()) > 0
+
+
+def depth(x: "Body", y: "Body", upto: float | None = None) -> float:
+    """How far x is into y (mm): the first step of LADDER (1.5, 3, 6, 12, 25, 50 mm) by which moving x along one of 26
+    directions (to a cube's faces, edges and corners) frees it from y; 0 if they don't touch, DEEP (999) if nothing up
+    to 50 mm does. That is the translational penetration depth (the shortest move that separates two bodies),
+    sampled, rounded up to the ladder, so "1.5" means "1.5 mm or less" and "6" means "more than 3, at most 6".
+    Directions nearest the line between the two boxes' centres are tried first. `upto`: stop once a step >= upto has
+    failed and return the next step (enough to tell "deeper than upto").
+
+    Validated on known cases (notes/arm_collisions.md): a 20 mm finger sunk 0.3, 1.0, 1.5, 3, 10 and 25 mm into a
+    block, coarse and finely meshed, reads 1.5, 1.5, 1.5, 3, 12 and 25 or 50; a sphere sunk 8 mm reads 12; a rod
+    straight through a block reads 12. Both bodies must be placed (Body.place) where they are."""
+    if not _hit(x.obj, y.obj):
+        return 0.0
+    M = x.tf if x.tf is not None else np.eye(4)
+    lo_x, hi_x = x.box(M)
+    lo_y, hi_y = y.box(y.tf if y.tf is not None else np.eye(4))
+    c = (lo_x + hi_x - lo_y - hi_y) * 0.5
+    n = float(np.linalg.norm(c))
+    order = np.argsort(-(_DIRS @ (c / n))) if n > 1e-9 else np.arange(len(_DIRS))
+    Rm, p = M[:3, :3].copy(), M[:3, 3].copy()
+    try:
+        for k, t in enumerate(LADDER):
+            for i in order:
+                x.obj.setTranslation(p + t * _DIRS[i])
+                if not _hit(x.obj, y.obj):
+                    return float(t)
+            if upto is not None and t >= upto:
+                return float(LADDER[k + 1]) if k + 1 < len(LADDER) else DEEP
+        return DEEP
+    finally:
+        x.obj.setTransform(fcl.Transform(Rm, p))
 
 
 def _decimated(mesh: pv.PolyData) -> pv.PolyData:
@@ -335,10 +393,13 @@ class Checker:
         self._held()
         return self.world.current(self.robot_groups())
 
-    def collisions(self, q=None, close=None, world=None, allow: set | None = None, first=False) -> list[tuple]:
+    def collisions(self, q=None, close=None, world=None, allow: set | None = None, first=False,
+                   depths: bool = False) -> list[tuple]:
         """[(kind, robot body, other, other's group)] for the arm at q (default: where it is) against the world as it
         is (or the snapshot `world`). kind is "self", "arm", "gripper" or "held". `allow` is a set of world groups the
-        gripper and held part may touch (the part being handled and its fixtures)."""
+        gripper and held part may touch (the part being handled and its fixtures). depths=True (round 11, the
+        audit): each hit gets a fifth item, how far the gripper part or held part is into the other (depth(), mm),
+        None for "self" and "arm" hits, which are collisions at any depth."""
         rb, sc = self.rb, self.sc
         q = rb.q if q is None else np.asarray(q, float)
         close = rb.close if close is None else close
@@ -381,14 +442,14 @@ class Checker:
                 if found:
                     break
             if found:
-                out.append(("self", a, b, ""))
+                out.append(("self", a, b, "") + ((None,) if depths else ()))
                 if first:
                     return out
         for x in hb:
             for k in ("base", "shoulder", "upper_arm", "forearm", "wrist1"):
                 y = self.arm.links[k]
                 if near(x, y) and _hit(x.obj, y.obj):
-                    out.append(("self", f"held:{x.group}", k, ""))
+                    out.append(("self", f"held:{x.group}", k, "") + ((None,) if depths else ()))
                     if first:
                         return out
         # the world: boxes first, all pairs at once, then the meshes of the pairs whose boxes overlap
@@ -407,7 +468,10 @@ class Checker:
                     w.ensure()
                     w.place(world.M[j])
                 if _hit(b.obj, w.obj):
-                    out.append((kind, b.name if kind != "held" else f"held:{b.group}", w.name, w.group))
+                    hit = (kind, b.name if kind != "held" else f"held:{b.group}", w.name, w.group)
+                    if depths:
+                        hit += (depth(b, w) if kind in ("gripper", "held") else None,)
+                    out.append(hit)
                     if first:
                         return out
         return out
@@ -592,13 +656,291 @@ def along(path, u: float) -> np.ndarray:
     return np.asarray(path[-1], float)
 
 
+# ---------------------------------------------------------------------------------------- movers (round 11)
+_I4 = np.eye(4)
+
+
+def _ikey(inp):
+    return (inp.__this__, inp.GetMTime()) if inp is not None else None
+
+
+def _arm_excluded(sc) -> set[str]:
+    """Groups the movers check leaves to the arm checks: every arm's links and gripper, and what each arm holds."""
+    out = set()
+    for rb in getattr(sc, "robots", []):
+        out |= set(rb.groups())
+        if rb.held is not None:
+            out |= _subtree(sc, rb.held[0])
+    return out
+
+
+class Movers:
+    """Round 11: everything that moves and isn't an arm, checked every audited frame.
+
+    A group "moves" in a frame when its world matrix changed since the last audited frame (by more than 1e-6). Groups
+    that moved by the same rigid motion (a MiR with its cabinet, its holders and the parts on them) form one cluster
+    and are not checked against each other: their relative poses didn't change, so no new contact can appear between
+    them. Every visible body of a moving group is checked against every other visible body except its own group's
+    subtree and ancestors, the arms and what they hold (the arm checks do those), and liquids: world boxes first, all
+    at once, then FCL on the meshes of the pairs whose boxes overlap (BVHs built only for those). The contacts a group
+    had at its last pose before it started moving are its baseline and are left out while it keeps moving, until
+    that pair comes apart; a new contact counts if depth() puts it deeper than DEPTH_MM (1.5 mm), so a tray set down
+    on a table or a MiR rolling onto a floor plate isn't reported."""
+
+    def __init__(self, sc):
+        self.sc = sc
+        self.groups: list[str] = []            # append-only; index into the stacked matrices
+        self.gpos: dict[str, int] = {}
+        self.names: list[str] = []
+        self.gidx = np.zeros(0, int)
+        self.C = np.zeros((0, 8, 3))
+        self.ckey: dict[str, object] = {}      # actor -> key of the VTK input its local box came from
+        self.body: dict[str, Body] = {}
+        self.bkey: dict[str, object] = {}
+        self.Wprev = None
+        self.moving: set[str] = set()
+        self.base: dict[str, set] = {}
+        self.frames: list[dict] = []
+        self.checked = 0
+        self.seconds = 0.0
+        self._n_actors = -1
+
+    # ------------------------------------------------------------------------------ bookkeeping
+    def _corners(self, name):
+        inp = self.sc.actors[name].GetMapper().GetInput()
+        self.ckey[name] = _ikey(inp)
+        if inp is None or inp.GetNumberOfPoints() == 0:
+            return np.full((8, 3), np.nan)
+        b = inp.GetBounds()
+        return _corners(np.array(b[0::2]), np.array(b[1::2]))
+
+    def _index(self):
+        sc = self.sc
+        if len(sc.actors) == self._n_actors:
+            return
+        self._n_actors = len(sc.actors)
+        self.names = list(sc.actors)
+        for n in self.names:
+            g = sc.group_of[n]
+            if g not in self.gpos:
+                self.gpos[g] = len(self.groups)
+                self.groups.append(g)
+        self.gidx = np.array([self.gpos[sc.group_of[n]] for n in self.names], int)
+        self.C = np.stack([self._corners(n) for n in self.names]) if self.names else np.zeros((0, 8, 3))
+
+    def _worlds(self) -> np.ndarray:
+        sc, memo = self.sc, {}
+
+        def w(g):
+            m = memo.get(g)
+            if m is None:
+                par = sc.parent.get(g)
+                m = sc.gmat.get(g, _I4) if par is None else w(par) @ sc.gmat.get(g, _I4)
+                memo[g] = m
+            return m
+        return np.stack([w(g) for g in self.groups]) if self.groups else np.zeros((0, 4, 4))
+
+    @staticmethod
+    def _boxes(C, W, gidx):
+        Wg = W[gidx]
+        w = np.einsum("nij,nkj->nki", Wg[:, :3, :3], C) + Wg[:, None, :3, 3]
+        return w.min(1), w.max(1)
+
+    def _body(self, name) -> Body | None:
+        """The FCL body of an actor, built when first needed (or taken from the arm checks' World if it has it)."""
+        inp = self.sc.actors[name].GetMapper().GetInput()
+        key = _ikey(inp)
+        b = self.body.get(name)
+        if b is not None and self.bkey.get(name) == key:
+            return b
+        wd = getattr(self.sc, "_collide_world", None)
+        if wd is not None and name in wd.bodies and wd._seen.get(name) == key and wd.bodies[name].pending is None:
+            b = wd.bodies[name]
+        else:
+            t = _tris(inp)
+            b = Body(name, self.sc.group_of[name], *t) if t is not None else None
+        self.body[name], self.bkey[name] = b, key
+        return b
+
+    # ------------------------------------------------------------------------------ one frame
+    def __call__(self, sc):
+        import time
+        t0 = time.time()
+        self._index()
+        W = self._worlds()
+        if self.Wprev is None:
+            self.Wprev = W.copy()
+        elif len(self.Wprev) < len(W):              # groups added since: they haven't moved
+            self.Wprev = np.concatenate([self.Wprev, W[len(self.Wprev):]])
+        excl = _arm_excluded(sc)
+        moved = np.abs(W - self.Wprev).max(axis=(1, 2)) > 1e-6
+        for g in excl:
+            if g in self.gpos:
+                moved[self.gpos[g]] = False
+        hits = []
+        now_moving = {self.groups[i] for i in np.nonzero(moved)[0]}
+        if now_moving:
+            hits = self._check(sc, W, moved, excl, now_moving)
+        self.moving = now_moving
+        self.Wprev = W
+        self.frames.append(dict(n=sc.n, label=sc.label, hits=hits, moving=len(now_moving)))
+        self.seconds += time.time() - t0
+
+    def _check(self, sc, W, moved, excl, now_moving):
+        fluids = set(getattr(sc, "fluids", ()))
+        mov_a = np.nonzero(moved[self.gidx])[0]
+        mov_a = [i for i in mov_a if self.names[i] not in fluids and _visible(sc, self.names[i])]
+        if not mov_a:
+            return []
+        for i in mov_a:                                       # a moving actor may have been re-meshed too
+            n = self.names[i]
+            if self.ckey.get(n) != _ikey(sc.actors[n].GetMapper().GetInput()):
+                self.C[i] = self._corners(n)
+        lo, hi = self._boxes(self.C, W, self.gidx)
+        # rigid clusters: groups that moved by the same displacement this frame
+        mg = np.nonzero(moved)[0]
+        D = W[mg] @ np.linalg.inv(self.Wprev[mg])
+        cl_of_g = {}
+        keys = {}
+        for k, gi in enumerate(mg):
+            key = np.round(D[k, :3, :], 3).tobytes()
+            cl_of_g[gi] = keys.setdefault(key, len(keys))
+        kids: dict[str, list[str]] = {}
+        for c, par in sc.parent.items():
+            kids.setdefault(par, []).append(c)
+        fam_memo = {}
+
+        def family(g):
+            f = fam_memo.get(g)
+            if f is None:
+                out, todo = {g}, [g]
+                while todo:
+                    x = todo.pop()
+                    for c in kids.get(x, ()):
+                        if c not in out:
+                            out.add(c)
+                            todo.append(c)
+                f = fam_memo[g] = out | _ancestors(sc, g)
+            return f
+        # episode starts: the contacts at the last pose before the move are the baseline
+        starting = now_moving - self.moving
+        if starting:
+            plo, phi = self._boxes(self.C, self.Wprev, self.gidx)
+            for g in starting:
+                self.base[g] = self._contacts(sc, [i for i in mov_a if self.groups[self.gidx[i]] == g],
+                                              plo, phi, self.Wprev, excl, fluids, family, cl=None).get(g, set())
+        for g in list(self.base):
+            if g not in now_moving:
+                self.base.pop(g)
+        cur = self._contacts(sc, mov_a, lo, hi, W, excl, fluids, family, cl=(moved, cl_of_g))
+        hits = []
+        for g in now_moving:                                  # a baseline pair that came apart is a new one next time
+            if g in self.base:
+                self.base[g] &= {pq for pq in cur.get(g, set())}
+        for g, pairs in cur.items():
+            for a, b in pairs:
+                gb = sc.group_of[b]
+                if (a, b) in self.base.get(g, ()) or (b, a) in self.base.get(gb, ()):
+                    continue
+                x, y = self.body[a], self.body[b]
+                x.place(W[self.gpos[g]])
+                y.place(W[self.gpos[gb]])
+                d = depth(x, y)
+                if d > DEPTH_MM:
+                    hits.append((g, a, b, gb, d))
+        return hits
+
+    def _contacts(self, sc, act, lo, hi, W, excl, fluids, family, cl) -> dict[str, set]:
+        """{moving group: {(its actor, other actor)}} of the pairs that touch, for the actors `act` with world boxes
+        lo/hi and group matrices W. cl=(moved, cluster of group): pairs in one cluster are skipped, and a pair of two
+        moving clusters is checked once."""
+        out: dict[str, set] = {}
+        if not act:
+            return out
+        A = np.asarray(act)
+        ulo, uhi = lo[A].min(0), hi[A].max(0)
+        cand = np.nonzero(~((ulo > hi) | (uhi < lo)).any(1))[0]          # every box that meets the movers' union box
+        if not len(cand):
+            return out
+        ov = ~((lo[A][:, None, :] > hi[cand][None]) | (hi[A][:, None, :] < lo[cand][None])).any(-1)
+        vis = {}
+        for r, c in zip(*np.nonzero(ov)):
+            i, j = A[r], cand[c]
+            if i == j:
+                continue
+            gi, gj = self.gidx[i], self.gidx[j]
+            ga, gb = self.groups[gi], self.groups[gj]
+            if gb in excl:
+                continue
+            if cl is not None:
+                moved, cl_of = cl
+                if moved[gj]:
+                    if cl_of[gi] == cl_of[gj] or cl_of[gi] > cl_of[gj]:
+                        continue
+            elif gi == gj:
+                continue
+            if gb in family(ga):
+                continue
+            nb = self.names[j]
+            if nb in fluids:
+                continue
+            if nb not in vis:
+                vis[nb] = _visible(sc, nb)
+            if not vis[nb]:
+                continue
+            na = self.names[i]
+            x, y = self._body(na), self._body(nb)
+            if x is None or y is None:
+                continue
+            x.place(W[gi])
+            y.place(W[gj])
+            self.checked += 1
+            if _hit(x.obj, y.obj):
+                out.setdefault(ga, set()).add((na, nb))
+        return out
+
+    # ------------------------------------------------------------------------------ the report
+    def report(self) -> dict:
+        runs, last = [], None
+        n_bad = 0
+        for fr in self.frames:
+            if not fr["hits"]:
+                last = None
+                continue
+            n_bad += 1
+            key = tuple(sorted({(g, gb) for g, _, _, gb, _ in fr["hits"]}))
+            if last is not None and runs and runs[-1]["label"] == fr["label"] and runs[-1]["_key"] == key:
+                r = runs[-1]
+                r["last_frame"] = fr["n"]
+                r["frames"] += 1
+            else:
+                r = dict(label=fr["label"], first_frame=fr["n"], last_frame=fr["n"], frames=1, _key=key, _pairs={})
+                runs.append(r)
+            for g, a, b, gb, d in fr["hits"]:
+                pk = (g, a, b, gb)
+                r["_pairs"][pk] = max(r["_pairs"].get(pk, 0.0), d)
+            last = key
+        for r in runs:
+            r.pop("_key")
+            pairs = r.pop("_pairs")
+            r["depth_mm"] = max(pairs.values())
+            r["pairs"] = [dict(mover=g, body=a, other=b, other_group=gb, depth_mm=d)
+                          for (g, a, b, gb), d in sorted(pairs.items(), key=lambda kv: -kv[1])[:12]]
+        return dict(frames_checked=len(self.frames), frames_moving=sum(1 for f in self.frames if f["moving"]),
+                    frames_with_collisions=n_bad, runs=runs, fcl_pairs_checked=self.checked,
+                    seconds=round(self.seconds, 1), rules=" ".join(self.__doc__.split("\n\n", 1)[1].split()))
+
+
 # ------------------------------------------------------------------------------------------------ audit
 class Auditor:
     """Checks every arm in a Scene after every frame's update and writes out/collisions/<clip>.json at save.
 
-    What may touch: the gripper and whatever group it is picking up, holding or putting down, within 4 s of the
-    grasp or release; a held part and the groups it touches when it is taken and when it is let go (where it came
-    from and where it goes)."""
+    What may touch (round 11, the default): the gripper and whatever group it is picking up, holding or putting down,
+    within 4 s of the grasp or release, and a held part and the groups it touches when it is taken and when it is let
+    go (where it came from and where it goes), each only up to 1.5 mm deep (collide.depth: the shortest of 26 moves
+    that frees the pair). Anything else an arm, its gripper or what it holds touches is a collision at any depth. The
+    movers check (collide.Movers, its own "movers" section) covers everything else that moves. ARM_AUDIT_RULES=old:
+    round 10's rules (no depth limit, no movers)."""
 
     def __init__(self, sc):
         self.sc = sc
@@ -606,16 +948,25 @@ class Auditor:
         self.checkers: dict[str, Checker] = {}
         # ARM_AUDIT_SNAP="540,930": also draw those frames, the parts in collision in red -> out/collisions/*.png
         self.snap_frames = {int(x) for x in os.environ.get("ARM_AUDIT_SNAP", "").split(",") if x.strip()}
+        self.movers = Movers(sc) if MOVERS else None
+        self.seconds = 0.0
 
     def picture(self, sc):
-        """Draw the current frame with every arm part that touches something it shouldn't in red."""
+        """Draw the current frame with every arm part that touches something it shouldn't in red (and, round 11,
+        both bodies of every mover's new contact)."""
         from PIL import ImageDraw
         from scene import font
         hits = self.frames[-1]["hits"] if self.frames else []
+        mhits = self.movers.frames[-1]["hits"] if self.movers is not None and self.movers.frames else []
         red = {}
+
+        def paint(n):
+            if n in sc.actors and n not in red:
+                red[n] = (sc.color.get(n), tuple(sc.actors[n].GetProperty().GetColor()))
         for rb in getattr(sc, "robots", []):
             mine = [h for h in hits if h[0] == rb.prefix]
-            for _, kind, a, b, g in mine:
+            for h in mine:
+                _, kind, a, b, g = h[:5]
                 parts = [a] + ([b] if kind == "self" and not b.startswith("held") else [])
                 for part in parts:
                     if part.startswith("held:"):
@@ -628,8 +979,12 @@ class Auditor:
                     else:
                         names = [n for n in sc.actors if n.startswith(f"{rb.prefix}/gr/{part}/")]
                     for n in names:
-                        if n not in red:
-                            red[n] = (sc.color.get(n), tuple(sc.actors[n].GetProperty().GetColor()))
+                        paint(n)
+                if kind != "self":
+                    paint(b)
+        for g, a, b, gb, d in mhits:
+            paint(a)
+            paint(b)
         for n in red:
             sc.color[n] = (0.92, 0.10, 0.10)
         from PIL import Image
@@ -642,27 +997,37 @@ class Auditor:
                 sc.color[n] = c
         d = ImageDraw.Draw(img)
         tag = os.environ.get("ARM_AUDIT_TAG", "") or "planned"
+        what = sorted({f"{h[2]} in {h[4] or h[3]}" + (f" {h[5]:g} mm" if len(h) > 5 and h[5] else "") for h in hits})
+        what += sorted({f"{g} into {gb} {dd:g} mm" for g, _, _, gb, dd in mhits})
         txt = (f"{sc.name}, frame {sc.n} ({sc.label}), {'old straight joint moves' if tag == 'before' else 'planned'}: "
-               + ("; ".join(sorted({f'{a} in {g or b}' for _, k, a, b, g in hits})) if hits else "no collisions"))
+               + ("; ".join(what) if what else "no collisions"))
         d.rectangle((0, 0, img.width, 34), fill=(255, 255, 255))
-        d.text((14, 8), txt[:150], fill=(180, 20, 20) if hits else (20, 110, 40), font=font(17, bold=True))
+        d.text((14, 8), txt[:150], fill=(180, 20, 20) if what else (20, 110, 40), font=font(17, bold=True))
         OUT.mkdir(parents=True, exist_ok=True)
         img.convert("RGB").save(OUT / f"{sc.name}_{tag}_{sc.n:05d}.png", optimize=True)
 
     def __call__(self, sc):
+        import time
+        t0 = time.time()
         rec = []
         for rb in getattr(sc, "robots", []):
             chk = self.checkers.get(rb.prefix)
             if chk is None:
                 chk = self.checkers[rb.prefix] = Checker(rb)
-            for kind, a, b, g in chk.collisions():
-                rec.append((rb.prefix, kind, a, b, g))
+            for kind, a, b, g, d in chk.collisions(depths=True):
+                rec.append((rb.prefix, kind, a, b, g, d))
         self.frames.append(dict(n=sc.n, label=sc.label, hits=rec,
                                 held={rb.prefix: (rb.held[0] if rb.held else None) for rb in getattr(sc, "robots", [])}))
+        self.seconds += time.time() - t0
+        if self.movers is not None:
+            self.movers(sc)
 
     def report(self) -> dict:
         sc = self.sc
-        fps = 15.0
+        try:
+            from scene import FPS as fps
+        except ImportError:
+            fps = 15
         events = []           # (frame, prefix, group)
         for rb in getattr(sc, "robots", []):
             for ev in getattr(rb, "events", []):
@@ -671,7 +1036,7 @@ class Auditor:
                 for extra in ev[3:]:
                     if extra:
                         events.append((n, rb.prefix, extra, what))
-        win = int(4 * fps)
+        win = int(round(4 * fps))
         # held episodes: allowed groups = what the part touches at its first and last frame held
         ep_allow: dict[tuple, set] = {}
         episodes = []         # (prefix, group, i0, i1)
@@ -690,50 +1055,77 @@ class Auditor:
         for p, g, i0, i1 in episodes:
             ends = set()
             for i in (i0, i1):
-                for pre, kind, a, b, grp in self.frames[i]["hits"]:
-                    if pre == p and kind == "held":
-                        ends.add(grp)
+                for h in self.frames[i]["hits"]:
+                    if h[0] == p and h[1] == "held":
+                        ends.add(h[4])
             ep_allow[(p, g, i0, i1)] = ends
         runs = []
         clean_frames = 0
+        bad_ns = set()
+        too_deep = 0           # hits that round 10's rules allowed and the depth limit doesn't
         last = None
         for i, fr in enumerate(self.frames):
             bad = []
-            for p, kind, a, b, grp in fr["hits"]:
+            for h in fr["hits"]:
+                p, kind, a, b, grp = h[:5]
+                d = h[5] if len(h) > 5 else None
+                shallow = not STRICT or d is None or d <= DEPTH_MM
                 if kind == "gripper":
                     near = {e[2] for e in events if e[1] == p and abs(e[0] - fr["n"]) <= win}
                     sub = set()
                     for g in near:
                         sub |= _subtree(sc, g)
                     if grp in sub:
-                        continue
+                        if shallow:
+                            continue
+                        too_deep += 1
                 if kind == "held":
                     ok = False
                     for (pp, g, i0, i1), al in ep_allow.items():
                         if pp == p and i0 <= i <= i1 and grp in al:
                             ok = True
                     if ok:
-                        continue
-                bad.append(dict(arm=p, kind=kind, part=a, other=b, other_group=grp))
+                        if shallow:
+                            continue
+                        too_deep += 1
+                bad.append(dict(arm=p, kind=kind, part=a, other=b, other_group=grp, depth_mm=d))
             if not bad:
                 clean_frames += 1
                 last = None
                 continue
-            key = tuple(sorted({(d["arm"], d["kind"], d["part"], d["other_group"] or d["other"]) for d in bad}))
+            bad_ns.add(fr["n"])
+            key = tuple(sorted({(d_["arm"], d_["kind"], d_["part"], d_["other_group"] or d_["other"]) for d_ in bad}))
             if last is not None and runs and runs[-1]["label"] == fr["label"] and runs[-1]["_key"] == key:
                 runs[-1]["last_frame"] = fr["n"]
                 runs[-1]["frames"] += 1
             else:
                 runs.append(dict(label=fr["label"], first_frame=fr["n"], last_frame=fr["n"], frames=1, _key=key,
-                                 pairs=[dict(arm=a, kind=k, part=pt, other=o) for a, k, pt, o in key]))
+                                 _depth={}))
+            for d_ in bad:
+                pk = (d_["arm"], d_["kind"], d_["part"], d_["other_group"] or d_["other"])
+                if d_["depth_mm"] is not None:
+                    runs[-1]["_depth"][pk] = max(runs[-1]["_depth"].get(pk, 0.0), d_["depth_mm"])
             last = key
         for r in runs:
-            r.pop("_key")
+            key, dep = r.pop("_key"), r.pop("_depth")
+            r["pairs"] = [dict(arm=a, kind=k, part=pt, other=o, **({"depth_mm": dep[(a, k, pt, o)]}
+                                                                  if (a, k, pt, o) in dep else {}))
+                          for a, k, pt, o in key]
         n_bad = sum(r["frames"] for r in runs)
-        return dict(clip=sc.name, frames_checked=len(self.frames), frames_with_collisions=n_bad,
-                    runs=runs, rules=self.__doc__.split("\n\n", 1)[1].strip(),
-                    method="FCL 0.7 (python-fcl) mesh-mesh collision on the drawn meshes, arm links decimated to "
-                           f"{MAX_TRIS} triangles; every frame of the clip, after its update")
+        rep = dict(clip=sc.name, frames_checked=len(self.frames), frames_with_collisions=n_bad,
+                   runs=runs, rules=" ".join(self.__doc__.split("\n\n", 1)[1].split()),
+                   rules_version="round 11 (strict)" if STRICT else "round 10 (old)",
+                   depth_limit_mm=DEPTH_MM if STRICT else None, hits_allowed_before_but_too_deep=too_deep,
+                   fps=fps, arm_seconds=round(self.seconds, 1),
+                   method="FCL 0.7 (python-fcl) mesh-mesh collision on the drawn meshes, arm links decimated to "
+                          f"{MAX_TRIS} triangles; every frame of the clip, after its update; depths by collide.depth "
+                          "(26-direction translational depth, rounded up to 1.5/3/6/12/25/50 mm, 999 past 50)")
+        if self.movers is not None:
+            mv = self.movers.report()
+            rep["movers"] = mv
+            mv_frames = {f["n"] for f in self.movers.frames if f["hits"]}
+            rep["frames_with_collisions_all"] = len(bad_ns | mv_frames)
+        return rep
 
     def save(self):
         OUT.mkdir(parents=True, exist_ok=True)
@@ -742,5 +1134,20 @@ class Auditor:
         path = OUT / f"{self.sc.name}{'_' + tag if tag else ''}.json"
         path.write_text(json.dumps(rep, indent=1) + "\n")
         print(f"{self.sc.name}: {rep['frames_with_collisions']} of {rep['frames_checked']} frames with collisions, "
-              f"{len(rep['runs'])} runs -> {path.relative_to(HERE)}", flush=True)
+              f"{len(rep['runs'])} runs ({rep['rules_version']}) -> {path.relative_to(HERE)}", flush=True)
+        for r in rep["runs"][:15]:
+            prs = "; ".join(f"{q['part']} in {q['other']}" + (f" {q['depth_mm']:g} mm" if "depth_mm" in q else "")
+                            for q in r["pairs"][:4])
+            print(f"  arm   {r['label'][:40]:40s} frames {r['first_frame']}-{r['last_frame']} ({r['frames']}): {prs}",
+                  flush=True)
+        mv = rep.get("movers")
+        if mv is not None:
+            print(f"{self.sc.name}: movers: {mv['frames_with_collisions']} of {mv['frames_checked']} frames with a new "
+                  f"contact deeper than {DEPTH_MM:g} mm, {len(mv['runs'])} runs ({mv['frames_moving']} frames with "
+                  f"something moving, {mv['fcl_pairs_checked']} FCL pair checks, {mv['seconds']} s); all: "
+                  f"{rep['frames_with_collisions_all']} frames", flush=True)
+            for r in mv["runs"][:15]:
+                prs = "; ".join(f"{q['body']} into {q['other']} {q['depth_mm']:g} mm" for q in r["pairs"][:3])
+                print(f"  mover {r['label'][:40]:40s} frames {r['first_frame']}-{r['last_frame']} ({r['frames']}): "
+                      f"{prs}", flush=True)
         return rep
