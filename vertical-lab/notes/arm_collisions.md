@@ -182,6 +182,12 @@ per pair), and are printed after the arm's. The top-level `frames_with_collision
 `frames_with_collisions_all` is either; `hits_allowed_before_but_too_deep` counts the contacts round 10's rules allowed
 and the depth limit no longer does.
 
+**Soft parts and hidden meshes.** `sc.soft` (a set of actor names, like `sc.fluids`) marks parts that are meant to
+deform where they are drawn overlapping: an O-ring in its bore (chapter 1's punch: a 2.4 mm section squeezed 0.55 mm a
+side), a pipette tip pressed onto its cone. The checks leave them out as they do liquids. A held part's hidden meshes
+(alpha 0, such as chapter 3's legend sleeve on the LPBF jar) are left out too, as the world's always were (audit-b's
+find).
+
 ### Switches
 
 | | |

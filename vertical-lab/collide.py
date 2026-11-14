@@ -496,6 +496,8 @@ class Checker:
             Wh = W_root @ F["tool0"] @ _tcp() @ off           # the held group's world matrix at q
             Mg = {}
             for b in self.held_bodies:
+                if not _visible(sc, b.name):          # round 11 (audit-b): a hidden mesh under a held part (a legend
+                    continue                          # sleeve at alpha 0) is not there, as World.current has it
                 if b.group not in Mg:
                     Mg[b.group] = Wh @ _rel(sc, b.group, g)
                 b.place(Mg[b.group])
