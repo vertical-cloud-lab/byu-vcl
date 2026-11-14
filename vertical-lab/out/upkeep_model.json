@@ -2426,7 +2426,7 @@
    "runs": 702,
    "powder_kg": 172.5,
    "data_gb": 2104.8,
-   "video_tb": 125.7,
+   "video_tb": 102.1,
    "tensile": 1420,
    "sem_images": 6804,
    "xrd": 378,
@@ -2443,7 +2443,7 @@
    "runs": 699,
    "powder_kg": 172.0,
    "data_gb": 2100.0,
-   "video_tb": 125.7,
+   "video_tb": 102.1,
    "tensile": 1420,
    "sem_images": 6798,
    "xrd": 377,
@@ -2453,74 +2453,74 @@
    "corrosion": 648
   },
   "with_upkeep_and_failures": {
-   "atomized": 354,
-   "printed": 304,
-   "tested": 304,
-   "promoted": 29,
-   "runs": 658,
-   "powder_kg": 161.6,
-   "data_gb": 1973.6,
-   "video_tb": 125.7,
-   "tensile": 1332,
-   "sem_images": 6380,
-   "xrd": 354,
-   "xrf": 354,
-   "psd": 354,
-   "indents": 912,
-   "corrosion": 608
+   "atomized": 360,
+   "printed": 309,
+   "tested": 309,
+   "promoted": 30,
+   "runs": 667,
+   "powder_kg": 163.8,
+   "data_gb": 2003.9,
+   "video_tb": 102.1,
+   "tensile": 1356,
+   "sem_images": 6486,
+   "xrd": 360,
+   "xrf": 360,
+   "psd": 360,
+   "indents": 927,
+   "corrosion": 618
   },
   "with_someone_on_call": {
-   "atomized": 362,
-   "printed": 311,
-   "tested": 311,
+   "atomized": 364,
+   "printed": 312,
+   "tested": 312,
    "promoted": 30,
-   "runs": 671,
-   "powder_kg": 164.6,
-   "data_gb": 2016.1,
-   "video_tb": 125.7,
-   "tensile": 1364,
-   "sem_images": 6526,
-   "xrd": 362,
-   "xrf": 362,
-   "psd": 362,
-   "indents": 933,
-   "corrosion": 622
+   "runs": 675,
+   "powder_kg": 165.7,
+   "data_gb": 2025.5,
+   "video_tb": 102.1,
+   "tensile": 1368,
+   "sem_images": 6552,
+   "xrd": 364,
+   "xrf": 364,
+   "psd": 364,
+   "indents": 936,
+   "corrosion": 624
   }
  },
  "availability": {
   "carousel": {
-   "availability": 0.9857,
-   "unplanned_h": 23.2,
+   "availability": 0.9859,
+   "unplanned_h": 21.3,
    "planned_h": 26.5,
    "check_h": 75.2
   },
   "repowder": {
-   "availability": 0.9522,
-   "unplanned_h": 293.9,
-   "planned_h": 123.5,
+   "availability": 0.964,
+   "unplanned_h": 187.5,
+   "planned_h": 127.0,
    "check_h": 0.0
   },
   "sieve_cell": {
-   "availability": 0.9946,
-   "unplanned_h": 2.7,
-   "planned_h": 27.5,
-   "check_h": 17.0
+   "availability": 0.9926,
+   "unplanned_h": 19.6,
+   "planned_h": 28.0,
+   "check_h": 17.2
   },
   "mastersizer": {
-   "availability": 0.9966,
-   "unplanned_h": 2.5,
+   "availability": 0.9964,
+   "unplanned_h": 4.0,
    "planned_h": 11.8,
    "check_h": 15.6
   },
   "xrd": {
-   "availability": 0.9956,
-   "unplanned_h": 4.5,
+   "availability": 0.9961,
+   "unplanned_h": 0.5,
    "planned_h": 20.5,
    "check_h": 13.0
   },
   "xrf": {
-   "availability": 0.9928,
-   "unplanned_h": 0.5,
+   "availability": 0.9927,
+   "unplanned_h": 1.5,
    "planned_h": 8.0,
    "check_h": 54.6
   },
@@ -2531,15 +2531,15 @@
    "check_h": 13.0
   },
   "aconity": {
-   "availability": 0.9735,
-   "unplanned_h": 148.0,
-   "planned_h": 83.5,
+   "availability": 0.9495,
+   "unplanned_h": 367.4,
+   "planned_h": 73.8,
    "check_h": 0.0
   },
   "wire_edm": {
-   "availability": 0.9914,
-   "unplanned_h": 11.1,
-   "planned_h": 48.0,
+   "availability": 0.9844,
+   "unplanned_h": 73.2,
+   "planned_h": 47.5,
    "check_h": 15.6
   },
   "furnace": {
@@ -2549,75 +2549,75 @@
    "check_h": 0.0
   },
   "tensile_h": {
-   "availability": 0.9968,
-   "unplanned_h": 1.0,
+   "availability": 0.9969,
+   "unplanned_h": 0.0,
    "planned_h": 11.8,
    "check_h": 15.6
   },
   "instron_floor": {
-   "availability": 0.9957,
-   "unplanned_h": 0.0,
+   "availability": 0.9947,
+   "unplanned_h": 9.4,
    "planned_h": 11.2,
-   "check_h": 26.0
+   "check_h": 25.5
   },
   "cnc": {
-   "availability": 0.9996,
-   "unplanned_h": 0.5,
+   "availability": 0.9985,
+   "unplanned_h": 10.5,
    "planned_h": 2.8,
    "check_h": 0.0
   },
   "mount_press": {
-   "availability": 0.9948,
-   "unplanned_h": 1.5,
+   "availability": 0.994,
+   "unplanned_h": 8.6,
    "planned_h": 43.8,
    "check_h": 0.0
   },
   "polisher": {
-   "availability": 0.9902,
-   "unplanned_h": 42.5,
-   "planned_h": 43.2,
+   "availability": 0.9946,
+   "unplanned_h": 3.2,
+   "planned_h": 43.8,
    "check_h": 0.0
   },
   "vhx": {
-   "availability": 0.999,
-   "unplanned_h": 0.0,
+   "availability": 0.9989,
+   "unplanned_h": 0.5,
    "planned_h": 6.2,
    "check_h": 2.6
   },
   "hardness": {
-   "availability": 0.984,
-   "unplanned_h": 53.5,
+   "availability": 0.9901,
+   "unplanned_h": 0.0,
    "planned_h": 13.8,
-   "check_h": 72.4
+   "check_h": 72.8
   },
   "nanoindenter": {
-   "availability": 0.9826,
-   "unplanned_h": 113.4,
+   "availability": 0.9727,
+   "unplanned_h": 200.1,
    "planned_h": 12.8,
    "check_h": 25.5
   },
   "pip": {
-   "availability": 0.9982,
-   "unplanned_h": 2.5,
+   "availability": 0.998,
+   "unplanned_h": 4.0,
    "planned_h": 10.8,
    "check_h": 2.5
   },
   "cubxl_corrosion": {
-   "availability": 0.9877,
-   "unplanned_h": 62.9,
+   "availability": 0.9948,
+   "unplanned_h": 1.0,
    "planned_h": 31.5,
    "check_h": 13.0
   },
   "open1": {
-   "availability": 0.9556,
+   "availability": 0.9564,
    "unplanned_h": 196.1,
-   "planned_h": 191.8,
+   "planned_h": 184.2,
    "check_h": 0.0
   },
   "open2": {
-   "availability": 0.9774,
-   "unplanned_h": 69.0,
-   "planned_h": 128.2,
+   "availability": 0.9768,
+   "unplanned_h": 69.5,
+   "planned_h": 132.8,
    "check_h": 0.0
   },
   "unit0": {
@@ -2637,39 +2637,39 @@
   "what": "the same year, but a fault that needs a person is seen to when it happens, at any hour (upkeep.OnCall: an upper bound, no call-out time), not on the next shift",
   "availability": {
    "carousel": 0.988,
-   "repowder": 0.9661,
+   "repowder": 0.9667,
    "sieve_cell": 0.9946,
-   "mastersizer": 0.9966,
-   "xrd": 0.9956,
+   "mastersizer": 0.9964,
+   "xrd": 0.9961,
    "xrf": 0.9927,
    "sem": 0.9964,
-   "aconity": 0.9886,
-   "wire_edm": 0.9927,
+   "aconity": 0.9694,
+   "wire_edm": 0.9926,
    "furnace": 0.9948,
-   "tensile_h": 0.9968,
-   "instron_floor": 0.9957,
-   "cnc": 0.9996,
-   "mount_press": 0.9948,
-   "polisher": 0.9944,
-   "vhx": 0.999,
-   "hardness": 0.99,
-   "nanoindenter": 0.9871,
-   "pip": 0.9982,
-   "cubxl_corrosion": 0.9947,
-   "open1": 0.9664,
-   "open2": 0.9849,
+   "tensile_h": 0.9969,
+   "instron_floor": 0.9956,
+   "cnc": 0.9995,
+   "mount_press": 0.9946,
+   "polisher": 0.9947,
+   "vhx": 0.9989,
+   "hardness": 0.9901,
+   "nanoindenter": 0.9787,
+   "pip": 0.998,
+   "cubxl_corrosion": 0.9948,
+   "open1": 0.9673,
+   "open2": 0.9843,
    "unit0": 0.9846,
    "unit1": 0.9945
   }
  },
  "people_hours_per_week": {
   "mean_after_ramp": 31.0,
-  "max": 36.4,
+  "max": 38.6,
   "by_kind_mean_after_ramp": {
-   "crucible": 13.41,
-   "pm": 7.24,
-   "consumables": 4.83,
-   "repair": 1.32,
+   "crucible": 13.34,
+   "pm": 7.19,
+   "consumables": 4.82,
+   "repair": 1.48,
    "vendor": 0.34,
    "review": 1.0,
    "it": 2.34,
@@ -2681,61 +2681,61 @@
     5.0,
     10.0,
     10.0,
+    14.0,
+    14.0,
+    14.0,
+    14.0,
+    14.0,
+    10.0,
+    5.0,
+    14.0,
+    12.0,
+    14.0,
+    13.0,
+    13.0,
+    14.0,
+    14.0,
+    14.0,
+    14.0,
+    14.0,
+    14.0,
+    14.0,
+    14.0,
+    14.0,
+    14.0,
+    14.0,
+    14.0,
+    14.0,
+    14.0,
+    14.0,
+    14.0,
+    14.0,
+    13.0,
+    14.0,
+    14.0,
+    14.0,
+    14.0,
+    13.0,
+    14.0,
+    14.0,
+    12.0,
     11.0,
     14.0,
     13.0,
-    11.0,
-    14.0,
-    14.0,
-    14.0,
-    14.0,
-    13.0,
-    14.0,
-    13.0,
-    14.0,
-    14.0,
-    14.0,
-    13.0,
-    14.0,
-    12.0,
-    14.0,
-    14.0,
-    10.0,
-    8.0,
-    14.0,
-    13.0,
-    14.0,
-    14.0,
-    14.0,
-    14.0,
-    13.0,
-    14.0,
-    13.0,
-    14.0,
-    14.0,
-    14.0,
-    13.0,
-    13.0,
-    14.0,
-    14.0,
-    12.0,
-    12.0,
-    14.0,
-    12.0,
     14.0,
     14.0,
     14.0,
     14.0,
     11.0,
     14.0,
-    17.0
+    13.0
    ],
    "pm": [
     4.25,
     6.5,
-    6.25,
-    9.5,
-    7.75,
+    6.0,
+    9.25,
+    7.5,
     6.75,
     6.5,
     8.75,
@@ -2746,9 +2746,9 @@
     7.0,
     5.75,
     6.75,
-    8.75,
-    6.25,
-    6.25,
+    8.5,
+    6.0,
+    6.0,
     7.0,
     10.5,
     9.5,
@@ -2759,10 +2759,10 @@
     6.0,
     6.0,
     9.25,
+    5.75,
     6.0,
     6.25,
-    8.0,
-    9.5,
+    11.0,
     6.25,
     6.0,
     6.0,
@@ -2772,9 +2772,9 @@
     8.75,
     6.5,
     7.0,
-    7.5,
-    6.5,
-    9.0,
+    7.25,
+    6.25,
+    8.75,
     9.75,
     6.25,
     7.75,
@@ -2789,108 +2789,108 @@
     3.0,
     3.5,
     4.0,
-    3.5,
     4.0,
-    4.5,
-    4.5,
-    5.0,
-    5.0,
     3.5,
+    4.5,
+    6.0,
+    3.5,
+    5.5,
+    3.0,
+    5.75,
+    4.0,
+    3.5,
+    6.0,
     6.25,
-    4.0,
     3.5,
-    6.5,
+    4.0,
+    4.75,
+    3.5,
+    4.25,
     5.25,
-    4.0,
-    4.25,
-    4.0,
-    4.25,
+    7.25,
     4.5,
-    4.25,
-    7.75,
+    5.5,
+    6.5,
+    4.5,
+    4.5,
+    5.5,
     4.0,
+    4.0,
+    4.75,
+    5.5,
+    3.5,
+    4.5,
+    6.0,
+    4.0,
+    5.75,
     4.0,
     3.5,
     8.5,
-    4.0,
-    5.0,
-    5.0,
     3.5,
-    5.25,
-    4.5,
-    4.0,
+    3.5,
     5.0,
-    6.0,
     4.5,
-    5.0,
-    3.75,
-    4.0,
-    6.5,
-    6.0,
     3.0,
-    5.0,
-    4.5,
-    3.5,
-    4.5,
     6.0,
-    8.0,
-    3.25,
+    8.5,
     4.25,
-    6.5
+    4.25,
+    4.25,
+    6.25
    ],
    "repair": [
-    2.5,
+    0.5,
     0.5,
     0.0,
-    1.5,
-    5.5,
-    0.5,
-    3.5,
-    3.5,
-    0.0,
-    0.5,
-    0.5,
-    1.0,
-    0.5,
     0.5,
     1.5,
-    0.0,
     0.5,
-    0.0,
-    0.0,
-    0.0,
-    3.5,
     1.5,
-    2.0,
     0.5,
-    1.0,
-    2.0,
-    1.5,
-    0.0,
     0.5,
     0.0,
-    0.0,
-    0.5,
     1.5,
     1.0,
-    0.5,
-    1.5,
-    3.5,
-    5.0,
-    1.5,
     3.0,
+    0.5,
     1.0,
-    6.5,
-    2.0,
+    3.0,
+    0.5,
     0.0,
     1.0,
-    3.5,
     1.0,
+    0.5,
+    1.5,
+    0.5,
+    0.5,
     2.0,
     1.0,
     1.0,
+    0.5,
+    4.0,
+    0.0,
+    2.0,
+    0.5,
+    3.5,
+    3.0,
+    0.0,
+    2.0,
+    0.5,
+    1.0,
     1.5,
-    2.0
+    0.0,
+    3.5,
+    3.5,
+    2.0,
+    0.0,
+    2.0,
+    3.0,
+    2.5,
+    4.0,
+    0.5,
+    1.0,
+    1.5,
+    3.0
    ],
    "vendor": [
     1.0,
@@ -2923,8 +2923,8 @@
     0.0,
     0.0,
     0.0,
-    1.0,
-    1.0,
+    2.0,
+    0.0,
     0.0,
     0.0,
     2.0,
@@ -3112,21 +3112,21 @@
   "note": "one person's weekday shift is 40 h; their crucible hours are the atomizer's run slots"
  },
  "counts": {
-  "checks_run": 1627,
-  "pm_done": 1455,
-  "auto": 783,
-  "repairs": 85,
+  "checks_run": 1628,
+  "pm_done": 1445,
+  "auto": 627,
+  "repairs": 83,
   "by_who": {
    "auto": {
-    "planned": 783,
+    "planned": 627,
     "repairs": 0
    },
    "arm": {
-    "planned": 1627,
+    "planned": 1628,
     "repairs": 0
    },
    "floor": {
-    "planned": 681,
+    "planned": 683,
     "repairs": 53
    },
    "desk": {
@@ -3134,8 +3134,8 @@
     "repairs": 0
    },
    "opening": {
-    "planned": 507,
-    "repairs": 27
+    "planned": 495,
+    "repairs": 24
    },
    "vendor": {
     "planned": 19,
@@ -3143,25 +3143,25 @@
    },
    "extracted": {
     "planned": 0,
-    "repairs": 1
+    "repairs": 2
    }
   }
  },
  "realism": {
   "tray_couplings": {
    "A": {
-    "presentations": 774,
-    "plate_mates": 1548,
-    "plate_years_to_100k": 64.6,
-    "ups_transfers": 1548,
+    "presentations": 781,
+    "plate_mates": 1562,
+    "plate_years_to_100k": 64.0,
+    "ups_transfers": 1562,
     "ups_dod_per_transfer_pct": 0.22,
     "ups_equiv_full_cycles": 3.5
    },
    "B": {
-    "presentations": 2146,
-    "plate_mates": 4292,
-    "plate_years_to_100k": 23.3,
-    "ups_transfers": 4292,
+    "presentations": 2160,
+    "plate_mates": 4320,
+    "plate_years_to_100k": 23.1,
+    "ups_transfers": 4320,
     "ups_dod_per_transfer_pct": 0.03,
     "ups_equiv_full_cycles": 1.5
    },
@@ -3174,28 +3174,28 @@
     "ups_equiv_full_cycles": 0.3
    },
    "D": {
-    "presentations": 2239,
-    "plate_mates": 4478,
-    "plate_years_to_100k": 22.3,
-    "ups_transfers": 4478,
+    "presentations": 2273,
+    "plate_mates": 4546,
+    "plate_years_to_100k": 22.0,
+    "ups_transfers": 4546,
     "ups_dod_per_transfer_pct": 0.91,
-    "ups_equiv_full_cycles": 40.9
+    "ups_equiv_full_cycles": 41.6
    },
    "E": {
-    "presentations": 2205,
-    "plate_mates": 4410,
-    "plate_years_to_100k": 22.7,
-    "ups_transfers": 4410,
+    "presentations": 2237,
+    "plate_mates": 4474,
+    "plate_years_to_100k": 22.4,
+    "ups_transfers": 4474,
     "ups_dod_per_transfer_pct": 0.48,
-    "ups_equiv_full_cycles": 21.0
+    "ups_equiv_full_cycles": 21.4
    },
    "F": {
-    "presentations": 1905,
-    "plate_mates": 3810,
-    "plate_years_to_100k": 26.2,
-    "ups_transfers": 3810,
+    "presentations": 1932,
+    "plate_mates": 3864,
+    "plate_years_to_100k": 25.9,
+    "ups_transfers": 3864,
     "ups_dod_per_transfer_pct": 0.68,
-    "ups_equiv_full_cycles": 26.0
+    "ups_equiv_full_cycles": 26.3
    },
    "G": {
     "presentations": 17,
@@ -3222,141 +3222,129 @@
     "ups_equiv_full_cycles": 0.0
    },
    "J": {
-    "presentations": 57,
-    "plate_mates": 114,
-    "plate_years_to_100k": 877.2,
-    "ups_transfers": 114,
-    "ups_dod_per_transfer_pct": 0.05,
-    "ups_equiv_full_cycles": 0.1
+    "presentations": 52,
+    "plate_mates": 0,
+    "passive": true
    },
    "K": {
-    "presentations": 638,
-    "plate_mates": 1276,
-    "plate_years_to_100k": 78.4,
-    "ups_transfers": 1276,
+    "presentations": 649,
+    "plate_mates": 1298,
+    "plate_years_to_100k": 77.0,
+    "ups_transfers": 1298,
     "ups_dod_per_transfer_pct": 0.05,
     "ups_equiv_full_cycles": 0.6
    },
    "L": {
-    "presentations": 2057,
-    "plate_mates": 4114,
-    "plate_years_to_100k": 24.3,
-    "ups_transfers": 4114,
+    "presentations": 2073,
+    "plate_mates": 4146,
+    "plate_years_to_100k": 24.1,
+    "ups_transfers": 4146,
     "ups_dod_per_transfer_pct": 0.05,
     "ups_equiv_full_cycles": 1.9
    },
    "M": {
-    "presentations": 2055,
-    "plate_mates": 4110,
-    "plate_years_to_100k": 24.3,
-    "ups_transfers": 4110,
+    "presentations": 2081,
+    "plate_mates": 4162,
+    "plate_years_to_100k": 24.0,
+    "ups_transfers": 4162,
     "ups_dod_per_transfer_pct": 0.05,
     "ups_equiv_full_cycles": 1.9
    },
    "N": {
-    "presentations": 56,
-    "plate_mates": 112,
-    "plate_years_to_100k": 892.9,
-    "ups_transfers": 112,
-    "ups_dod_per_transfer_pct": 0.05,
-    "ups_equiv_full_cycles": 0.1
+    "presentations": 52,
+    "plate_mates": 0,
+    "passive": true
    },
    "O": {
-    "presentations": 56,
-    "plate_mates": 112,
-    "plate_years_to_100k": 892.9,
-    "ups_transfers": 112,
-    "ups_dod_per_transfer_pct": 0.05,
-    "ups_equiv_full_cycles": 0.1
+    "presentations": 52,
+    "plate_mates": 0,
+    "passive": true
    },
    "S": {
     "presentations": 13,
-    "plate_mates": 26,
-    "plate_years_to_100k": 3846.2,
-    "ups_transfers": 26,
-    "ups_dod_per_transfer_pct": 0.05,
-    "ups_equiv_full_cycles": 0.0
+    "plate_mates": 0,
+    "passive": true
    }
   },
   "bay_docks": {
    "bay dock, Shuttle 1": {
-    "mates": 9356,
-    "years_to_100k": 10.7
+    "mates": 9400,
+    "years_to_100k": 10.6
    },
    "bay dock, Shuttle 2": {
-    "mates": 4914,
-    "years_to_100k": 20.4
+    "mates": 4855,
+    "years_to_100k": 20.6
    }
   },
   "couplings_note": "St\u00e4ubli rates the CombiTac's power, data and fluid inserts and the align frame at 100,000 mating cycles (CombiTac overview, CT-Overview-11014010). A tray's plate mates twice per presentation, its Shuttle's bay dock once per presentation of any of its trays.",
   "ups_note": "each transfer is about 6 s on the battery; estimate from a 230 V 5PX 1500's 44 min at 300 W (a retailer's figure, notes/services.md). VRLA is rated 200 cycles at 100 % depth of discharge, 1,200 at 30 % (Yuasa NP12-12): these transfers add only a few equivalent full cycles a year, so float life and heat set the battery's life (3-5 years at 25 \u00b0C, Eaton), not the transfers.",
   "units": {
    "unit0": {
-    "transfers": 7050,
-    "hours_off_charger": 4925,
-    "kwh": 1970,
-    "battery_equiv_cycles": 1208,
+    "transfers": 7113,
+    "hours_off_charger": 4923,
+    "kwh": 1969,
+    "battery_equiv_cycles": 1207,
     "battery_years_to_3000": 2.5,
-    "grips": 28200,
-    "fingertips_years_to_1M": 35.5
+    "grips": 28452,
+    "fingertips_years_to_1M": 35.1
    },
    "unit1": {
-    "transfers": 3008,
-    "hours_off_charger": 2495,
-    "kwh": 998,
-    "battery_equiv_cycles": 612,
+    "transfers": 3070,
+    "hours_off_charger": 2500,
+    "kwh": 1000,
+    "battery_equiv_cycles": 613,
     "battery_years_to_3000": 4.9,
-    "grips": 12032,
-    "fingertips_years_to_1M": 83.1
+    "grips": 12280,
+    "fingertips_years_to_1M": 81.4
    }
   },
   "units_note": "assumed: the UR10e's 350 W typical (UR) and the MiR250's drive and computers; MiR250 battery, Li-NMC 47.7 V 34.2 Ah, at least 3,000 cycles (a reseller's spec sheet, robotsoflondon); Robotiq: fingertips at 1 million cycles, overhaul at 2 million (2F-85 manual)",
   "station_hours": {
-   "aconity": 2199.6,
-   "repowder": 1660.9,
-   "furnace": 1002.0,
-   "cubxl_corrosion": 669.0,
-   "carousel": 663.0,
-   "instron_floor": 549.0,
-   "sieve_cell": 446.8,
-   "wire_edm": 379.8,
-   "sem": 275.9,
-   "polisher": 244.8,
-   "nanoindenter": 228.7,
-   "xrd": 212.4,
-   "mount_press": 182.4,
-   "tensile_h": 182.4,
-   "xrf": 124.0,
-   "vhx": 121.6,
-   "hardness": 91.3,
-   "cnc": 91.2,
-   "mastersizer": 88.7,
-   "pip": 76.0
+   "aconity": 2241.9,
+   "repowder": 1677.9,
+   "furnace": 1017.0,
+   "cubxl_corrosion": 679.8,
+   "carousel": 670.4,
+   "instron_floor": 557.9,
+   "sieve_cell": 450.9,
+   "wire_edm": 385.7,
+   "sem": 280.5,
+   "polisher": 247.9,
+   "nanoindenter": 232.3,
+   "xrd": 216.0,
+   "mount_press": 185.6,
+   "tensile_h": 185.4,
+   "xrf": 126.3,
+   "vhx": 123.6,
+   "cnc": 93.0,
+   "hardness": 92.7,
+   "mastersizer": 90.0,
+   "pip": 77.2
   },
   "step_counts": {
-   "charge": 666,
-   "atomize": 669,
-   "sieve": 596,
-   "ld": 355,
-   "xrd": 354,
-   "psem": 354,
-   "print": 359,
-   "xrf": 355,
-   "depowder": 305,
-   "edm": 304,
-   "heat": 304,
-   "section": 305,
-   "face": 304,
-   "mount": 304,
-   "polish": 307,
-   "sem": 304,
-   "vhx": 304,
-   "hv": 305,
-   "nano": 305,
-   "pip": 304,
-   "tensile_rt": 304,
-   "tensile_hot": 304,
-   "corrosion": 305,
+   "charge": 673,
+   "atomize": 673,
+   "sieve": 602,
+   "ld": 360,
+   "xrd": 360,
+   "psem": 360,
+   "print": 367,
+   "xrf": 361,
+   "depowder": 310,
+   "edm": 311,
+   "heat": 309,
+   "section": 309,
+   "face": 310,
+   "mount": 310,
+   "polish": 310,
+   "sem": 309,
+   "vhx": 309,
+   "hv": 309,
+   "nano": 311,
+   "pip": 309,
+   "corrosion": 309,
+   "tensile_rt": 309,
+   "tensile_hot": 310,
    "print_full": 31,
    "depowder_full": 30,
    "edm_full": 30,
@@ -3364,9 +3352,9 @@
    "e8_rt": 30,
    "e8_hot": 30
   },
-  "atomizer_runs": 669,
+  "atomizer_runs": 673,
   "task_counts": {
-   "ups_test": 780,
+   "ups_test": 624,
    "hv_block": 364,
    "ld_ref": 52,
    "nano_fs": 52,
@@ -3381,7 +3369,6 @@
    "store_n": 52,
    "store_o": 52,
    "sv_ipa": 52,
-   "fail": 85,
    "cx_ref": 52,
    "it_patch_xrf": 13,
    "ur_monthly": 26,
@@ -3396,12 +3383,13 @@
    "mir_weekly": 103,
    "px_waste": 52,
    "store_j": 52,
+   "fail": 83,
    "edm_test": 52,
    "t_ref_floor": 52,
    "it_patch_sem": 13,
    "review": 52,
    "rp_clean": 52,
-   "cams_wipe": 60,
+   "cams_wipe": 48,
    "cx_fluids": 51,
    "dose_clean": 51,
    "edm_weekly": 51,
@@ -3416,7 +3404,7 @@
    "it_revalidate_xrd": 2,
    "it_patch_instron_floor": 13,
    "pm_c": 13,
-   "sv_check": 29,
+   "sv_check": 30,
    "pip_cal": 25,
    "it_patch_nanoindenter": 13,
    "rp_crucible_stock": 44,
@@ -3441,7 +3429,7 @@
    "f_sat": 4,
    "rp_thermocouple": 16,
    "rp_insulation": 11,
-   "ac_blade": 8,
+   "ac_blade": 9,
    "px_restock": 7,
    "it_network": 4,
    "n2_filters": 1,
@@ -3457,8 +3445,8 @@
    "it_revalidate_instron_floor": 2,
    "cnc_tools": 3,
    "chiller_filter": 3,
-   "edm_wire": 3,
    "c_risk": 1,
+   "edm_wire": 3,
    "vlm_service": 4,
    "unit_halfyear": 4,
    "it_revalidate_vhx": 2,
@@ -3466,10 +3454,10 @@
    "edm_contacts": 2,
    "mir_wheels": 2,
    "it_revalidate_nanoindenter": 2,
+   "ac_filter": 2,
    "xrd_service": 1,
    "it_revalidate_mastersizer": 1,
-   "ac_filter": 2,
-   "sv_replace": 1,
+   "sv_replace": 2,
    "edm_resin": 1,
    "t_verify_floor": 1,
    "sem_service": 1,
@@ -3480,30 +3468,30 @@
    "ac_service": 1,
    "t_verify_tray": 1,
    "it_licences": 1,
-   "rp_service": 1,
    "xrf_he": 1,
+   "rp_service": 1,
    "t_faces": 1
   }
  },
  "storage": {
-  "cameras": 32,
-  "video_keep_all_tb": 125.7,
-  "instrument_data_tb": 1.97,
+  "cameras": 26,
+  "video_keep_all_tb": 102.1,
+  "instrument_data_tb": 2.0,
   "retention": {
    "rolling_days": 30,
-   "rolling_buffer_tb": 10.4,
-   "anomalies": 232,
+   "rolling_buffer_tb": 8.4,
+   "anomalies": 231,
    "anomaly_clip_h": 0.5,
    "cameras_per_anomaly": 3,
    "anomaly_clips_tb": 0.16,
-   "timelapse_tb": 2.1,
-   "kept_a_year_tb": 2.25
+   "timelapse_tb": 1.7,
+   "kept_a_year_tb": 1.86
   },
   "note": "Kept whole, a year of stream video needs about this much disk, mirrored, every year, against a few TB of instrument data. The retention policy (assumed) keeps a rolling buffer, a clip around every failure, interrupted step, dripped run and cracked build, and a time-lapse."
  },
  "beyond_the_first_year": [
   {
-   "what": "UPS batteries (15, VRLA)",
+   "what": "UPS batteries (12, VRLA)",
    "interval": "3-5 years at 25 \u00b0C, about half that per 10 \u00b0C warmer",
    "who": "a person, the tray pulled out; Eaton's battery kit is hot-swappable",
    "source": "Eaton 5PX manual 614-07977-00: automatic battery test 'Every week' by default; 3-5 years float life at 25 \u00b0C (Eaton, search snippet); 9PX Li-ion (LFP) 8-10 years (eps-dc)"
@@ -3575,10 +3563,10 @@
    "source": "Universal Robots inspection and maintenance plan: safety functions 'tested monthly'; control box air filters; service check 'at least bi-annually'"
   }
  ],
- "spares_tray": "a spares tray (proposed: Shuttle 1's free 390 mm at the top of the rear column takes a 350 mm tray without a UPS or cameras; notes/tray_plan.md)",
+ "spares_tray": "a spares tray (proposed: Shuttle 2's free 515 mm at the top of the rear column takes a 350 mm tray without a UPS or cameras; Shuttle 1 has 265 mm there, 265 at the top of its front and 168 under the access table; notes/tray_plan.md)",
  "week": {
-  "week": 36,
-  "starts_lab_h": 5880.0,
+  "week": 47,
+  "starts_lab_h": 7728.0,
   "hours_from": "Monday 06:00 of the week",
   "shifts": [
    [
@@ -3616,30 +3604,22 @@
      "t0": 6.6,
      "t1": 7.6,
      "what": "charge",
-     "alloy": 232,
+     "alloy": 313,
      "kind": "process"
     },
     {
-     "t0": 7.6,
-     "t1": 8.6,
+     "t0": 10.4,
+     "t1": 11.4,
      "what": "charge",
-     "alloy": 238,
+     "alloy": 321,
      "kind": "process"
     },
     {
-     "t0": 8.6,
-     "t1": 9.6,
+     "t0": 11.4,
+     "t1": 12.4,
      "what": "charge",
-     "alloy": 239,
+     "alloy": 322,
      "kind": "process"
-    },
-    {
-     "t0": 20.5,
-     "t1": 20.7,
-     "what": "HR-202i calibrated with an external weight",
-     "kind": "check",
-     "who": "arm",
-     "task": "bal_cal"
     },
     {
      "t0": 23.0,
@@ -3650,24 +3630,24 @@
      "task": "bal_weights"
     },
     {
-     "t0": 29.25,
-     "t1": 30.25,
+     "t0": 29.5,
+     "t1": 30.5,
      "what": "charge",
-     "alloy": 232,
+     "alloy": 313,
      "kind": "process"
     },
     {
-     "t0": 30.25,
-     "t1": 31.25,
+     "t0": 31.1,
+     "t1": 32.1,
      "what": "charge",
-     "alloy": 240,
+     "alloy": 321,
      "kind": "process"
     },
     {
-     "t0": 34.25,
-     "t1": 35.25,
+     "t0": 33.5,
+     "t1": 34.5,
      "what": "charge",
-     "alloy": 232,
+     "alloy": 313,
      "kind": "process"
     },
     {
@@ -3682,14 +3662,14 @@
      "t0": 53.25,
      "t1": 54.25,
      "what": "charge",
-     "alloy": 232,
+     "alloy": 313,
      "kind": "process"
     },
     {
      "t0": 54.25,
      "t1": 55.25,
      "what": "charge",
-     "alloy": 241,
+     "alloy": 323,
      "kind": "process"
     },
     {
@@ -3704,21 +3684,21 @@
      "t0": 74.0,
      "t1": 75.0,
      "what": "charge",
-     "alloy": 242,
+     "alloy": 324,
      "kind": "process"
     },
     {
-     "t0": 77.5,
-     "t1": 78.5,
+     "t0": 76.6,
+     "t1": 77.6,
      "what": "charge",
-     "alloy": 243,
+     "alloy": 325,
      "kind": "process"
     },
     {
-     "t0": 81.5,
-     "t1": 82.5,
+     "t0": 79.1,
+     "t1": 80.1,
      "what": "charge",
-     "alloy": 242,
+     "alloy": 326,
      "kind": "process"
     },
     {
@@ -3730,17 +3710,24 @@
      "task": "bal_weights"
     },
     {
-     "t0": 99.6,
-     "t1": 100.6,
+     "t0": 98.15,
+     "t1": 99.15,
      "what": "charge",
-     "alloy": 244,
+     "alloy": 327,
      "kind": "process"
     },
     {
-     "t0": 100.6,
-     "t1": 101.6,
+     "t0": 100.5,
+     "t1": 101.5,
      "what": "charge",
-     "alloy": 245,
+     "alloy": 328,
+     "kind": "process"
+    },
+    {
+     "t0": 112.2,
+     "t1": 113.2,
+     "what": "charge",
+     "alloy": 325,
      "kind": "process"
     },
     {
@@ -3773,123 +3760,139 @@
      "t0": 2.0,
      "t1": 4.5,
      "what": "atomize",
-     "alloy": 232,
+     "alloy": 313,
      "kind": "process"
     },
     {
      "t0": 4.5,
      "t1": 7.0,
      "what": "atomize",
-     "alloy": 236,
+     "alloy": 319,
      "kind": "process"
     },
     {
      "t0": 7.0,
      "t1": 9.5,
      "what": "atomize",
-     "alloy": 237,
+     "alloy": 320,
      "kind": "process"
     },
     {
-     "t0": 26.0,
-     "t1": 28.5,
-     "what": "atomize",
-     "alloy": 232,
-     "kind": "process"
-    },
-    {
-     "t0": 28.5,
-     "t1": 31.0,
-     "what": "atomize",
-     "alloy": 238,
-     "kind": "process"
-    },
-    {
-     "t0": 31.0,
-     "t1": 33.5,
-     "what": "atomize",
-     "alloy": 232,
-     "kind": "process"
-    },
-    {
-     "t0": 50.0,
-     "t1": 52.5,
-     "what": "atomize",
-     "alloy": 232,
-     "kind": "process"
-    },
-    {
-     "t0": 52.5,
-     "t1": 55.0,
-     "what": "atomize",
-     "alloy": 239,
-     "kind": "process"
-    },
-    {
-     "t0": 55.0,
-     "t1": 57.5,
-     "what": "atomize",
-     "alloy": 232,
-     "kind": "process"
-    },
-    {
-     "t0": 57.5,
-     "t1": 58.0,
+     "t0": 9.5,
+     "t1": 10.0,
      "what": "new graphite crucible and nozzle holder into the rotation",
      "kind": "maint",
      "who": "floor",
      "task": "rp_crucible_stock"
     },
     {
+     "t0": 26.0,
+     "t1": 28.5,
+     "what": "atomize",
+     "alloy": 313,
+     "kind": "process"
+    },
+    {
+     "t0": 28.5,
+     "t1": 31.0,
+     "what": "atomize",
+     "alloy": 321,
+     "kind": "process"
+    },
+    {
+     "t0": 31.0,
+     "t1": 33.5,
+     "what": "atomize",
+     "alloy": 313,
+     "kind": "process"
+    },
+    {
+     "t0": 50.0,
+     "t1": 52.5,
+     "what": "atomize",
+     "alloy": 313,
+     "kind": "process"
+    },
+    {
+     "t0": 52.5,
+     "t1": 55.0,
+     "what": "atomize",
+     "alloy": 321,
+     "kind": "process"
+    },
+    {
+     "t0": 55.0,
+     "t1": 57.5,
+     "what": "atomize",
+     "alloy": 313,
+     "kind": "process"
+    },
+    {
      "t0": 74.0,
      "t1": 76.5,
      "what": "atomize",
-     "alloy": 240,
+     "alloy": 322,
      "kind": "process"
     },
     {
      "t0": 76.5,
      "t1": 79.0,
      "what": "atomize",
-     "alloy": 241,
+     "alloy": 323,
      "kind": "process"
     },
     {
      "t0": 79.0,
      "t1": 81.5,
      "what": "atomize",
-     "alloy": 242,
+     "alloy": 324,
      "kind": "process"
+    },
+    {
+     "t0": 81.5,
+     "t1": 82.0,
+     "what": "new graphite crucible and nozzle holder into the rotation",
+     "kind": "maint",
+     "who": "floor",
+     "task": "rp_crucible_stock"
     },
     {
      "t0": 98.0,
      "t1": 100.5,
      "what": "atomize",
-     "alloy": 242,
+     "alloy": 325,
      "kind": "process"
     },
     {
      "t0": 100.5,
      "t1": 103.0,
      "what": "atomize",
-     "alloy": 243,
+     "alloy": 326,
      "kind": "process"
     },
     {
      "t0": 103.0,
-     "t1": 103.5,
-     "what": "vacuum pump oil changed",
-     "kind": "maint",
-     "who": "floor",
-     "task": "rp_pump_oil"
-    },
-    {
-     "t0": 104.5,
-     "t1": 106.0,
+     "t1": 104.5,
      "what": "rePowder: chamber, cyclone and powder catch cleaned; seals checked",
      "kind": "maint",
      "who": "floor",
      "task": "rp_clean"
+    },
+    {
+     "t0": 104.5,
+     "t1": 105.5,
+     "what": "insulation set (bottom, side tube, top cone) replaced",
+     "kind": "maint",
+     "who": "floor",
+     "task": "rp_insulation"
+    },
+    {
+     "t0": 105.5,
+     "t1": 106.0,
+     "what": "Type N thermocouple and its sheath replaced",
+     "kind": "maint",
+     "who": "floor",
+     "task": "rp_thermocouple"
     }
    ],
    "sieve_cell": [
@@ -3897,47 +3900,33 @@
      "t0": 4.5,
      "t1": 5.25,
      "what": "sieve",
-     "alloy": 232,
+     "alloy": 313,
      "kind": "process"
     },
     {
      "t0": 7.0,
      "t1": 7.75,
      "what": "sieve",
-     "alloy": 236,
+     "alloy": 319,
      "kind": "process"
     },
     {
      "t0": 9.5,
      "t1": 10.25,
      "what": "sieve",
-     "alloy": 237,
+     "alloy": 320,
      "kind": "process"
     },
     {
      "t0": 28.5,
      "t1": 29.25,
      "what": "sieve",
-     "alloy": 232,
+     "alloy": 313,
      "kind": "process"
     },
     {
-     "t0": 31.0,
-     "t1": 31.75,
-     "what": "sieve",
-     "alloy": 238,
-     "kind": "process"
-    },
-    {
-     "t0": 33.5,
-     "t1": 34.25,
-     "what": "sieve",
-     "alloy": 232,
-     "kind": "process"
-    },
-    {
-     "t0": 52.0,
-     "t1": 52.5,
+     "t0": 51.5,
+     "t1": 52.0,
      "what": "sieving cell: the ultrasonic bath's IPA changed, the wash module's filter",
      "kind": "maint",
      "who": "floor",
@@ -3947,139 +3936,130 @@
      "t0": 52.5,
      "t1": 53.25,
      "what": "sieve",
-     "alloy": 232,
+     "alloy": 313,
      "kind": "process"
     },
     {
      "t0": 55.0,
      "t1": 55.75,
      "what": "sieve",
-     "alloy": 239,
+     "alloy": 321,
      "kind": "process"
-    },
-    {
-     "t0": 55.75,
-     "t1": 56.0,
-     "what": "the arm images each sieve's cloth against a backlight; open area trended",
-     "kind": "check",
-     "who": "arm",
-     "task": "sv_check"
     },
     {
      "t0": 57.5,
      "t1": 58.25,
      "what": "sieve",
-     "alloy": 232,
+     "alloy": 313,
      "kind": "process"
     },
     {
-     "t0": 76.55,
-     "t1": 77.3,
+     "t0": 76.5,
+     "t1": 77.25,
      "what": "sieve",
-     "alloy": 240,
+     "alloy": 322,
      "kind": "process"
     },
     {
      "t0": 79.0,
      "t1": 79.75,
      "what": "sieve",
-     "alloy": 241,
+     "alloy": 323,
+     "kind": "process"
+    },
+    {
+     "t0": 79.75,
+     "t1": 80.0,
+     "what": "the arm images each sieve's cloth against a backlight; open area trended",
+     "kind": "check",
+     "who": "arm",
+     "task": "sv_check"
+    },
+    {
+     "t0": 81.5,
+     "t1": 82.25,
+     "what": "sieve",
+     "alloy": 324,
      "kind": "process"
     },
     {
      "t0": 100.5,
      "t1": 101.25,
      "what": "sieve",
-     "alloy": 242,
+     "alloy": 325,
      "kind": "process"
     },
     {
      "t0": 103.0,
      "t1": 103.75,
      "what": "sieve",
-     "alloy": 243,
+     "alloy": 326,
      "kind": "process"
-    },
-    {
-     "t0": 143.0,
-     "t1": 143.75,
-     "what": "reference material sieved (ASTM E2427); each sieve's result trended",
-     "kind": "check",
-     "who": "arm",
-     "task": "sv_verify"
     }
    ],
    "mastersizer": [
     {
-     "t0": 7.75,
-     "t1": 8.0,
+     "t0": 8.0,
+     "t1": 10.0,
+     "what": "a broken tip; drift",
+     "kind": "repair",
+     "who": "extracted",
+     "task": "fail"
+    },
+    {
+     "t0": 10.1,
+     "t1": 10.35,
      "what": "ld",
-     "alloy": 236,
+     "alloy": 319,
      "kind": "process"
     },
     {
-     "t0": 10.25,
-     "t1": 10.5,
+     "t0": 10.35,
+     "t1": 10.6,
      "what": "ld",
-     "alloy": 237,
+     "alloy": 320,
      "kind": "process"
-    },
-    {
-     "t0": 31.75,
-     "t1": 32.0,
-     "what": "ld",
-     "alloy": 238,
-     "kind": "process"
-    },
-    {
-     "t0": 53.5,
-     "t1": 54.0,
-     "what": "cell windows cleaned, Aero S hopper and venturi checked",
-     "kind": "maint",
-     "who": "opening",
-     "task": "ld_clean"
     },
     {
      "t0": 55.75,
      "t1": 56.0,
      "what": "ld",
-     "alloy": 239,
+     "alloy": 321,
      "kind": "process"
     },
     {
-     "t0": 78.6,
-     "t1": 78.85,
+     "t0": 77.25,
+     "t1": 77.5,
      "what": "ld",
-     "alloy": 240,
+     "alloy": 322,
      "kind": "process"
     },
     {
      "t0": 79.75,
      "t1": 80.0,
      "what": "ld",
-     "alloy": 241,
+     "alloy": 323,
+     "kind": "process"
+    },
+    {
+     "t0": 82.25,
+     "t1": 82.5,
+     "what": "ld",
+     "alloy": 324,
      "kind": "process"
     },
     {
      "t0": 101.25,
      "t1": 101.5,
      "what": "ld",
-     "alloy": 242,
+     "alloy": 325,
      "kind": "process"
-    },
-    {
-     "t0": 102.0,
-     "t1": 102.25,
-     "what": "instrument PC: OS updates and a reboot (vendor software pinned)",
-     "kind": "maint",
-     "who": "desk",
-     "task": "it_patch_mastersizer"
     },
     {
      "t0": 103.75,
      "t1": 104.0,
      "what": "ld",
-     "alloy": 243,
+     "alloy": 326,
      "kind": "process"
     },
     {
@@ -4093,32 +4073,17 @@
    ],
    "xrd": [
     {
-     "t0": 4.0,
-     "t1": 4.25,
-     "what": "stream cameras' lenses wiped, focus and aim checked",
-     "kind": "maint",
-     "who": "opening",
-     "task": "cams_wipe"
-    },
-    {
-     "t0": 7.75,
-     "t1": 8.35,
+     "t0": 10.2,
+     "t1": 10.8,
      "what": "xrd",
-     "alloy": 236,
+     "alloy": 319,
      "kind": "process"
     },
     {
-     "t0": 10.25,
-     "t1": 10.85,
+     "t0": 10.8,
+     "t1": 11.4,
      "what": "xrd",
-     "alloy": 237,
-     "kind": "process"
-    },
-    {
-     "t0": 31.75,
-     "t1": 32.35,
-     "what": "xrd",
-     "alloy": 238,
+     "alloy": 320,
      "kind": "process"
     },
     {
@@ -4130,78 +4095,70 @@
      "task": "xrd_si"
     },
     {
-     "t0": 55.85,
-     "t1": 56.45,
+     "t0": 55.75,
+     "t1": 56.35,
      "what": "xrd",
-     "alloy": 239,
+     "alloy": 321,
      "kind": "process"
     },
     {
-     "t0": 78.6,
-     "t1": 79.2,
+     "t0": 77.25,
+     "t1": 77.85,
      "what": "xrd",
-     "alloy": 240,
+     "alloy": 322,
      "kind": "process"
     },
     {
-     "t0": 79.75,
-     "t1": 80.35,
+     "t0": 79.85,
+     "t1": 80.45,
      "what": "xrd",
-     "alloy": 241,
+     "alloy": 323,
      "kind": "process"
     },
     {
-     "t0": 99.0,
-     "t1": 100.0,
-     "what": "chiller: fluid changed (the XRD's tube stops)",
-     "kind": "maint",
-     "who": "floor",
-     "task": "chiller_fluid"
+     "t0": 82.25,
+     "t1": 82.85,
+     "what": "xrd",
+     "alloy": 324,
+     "kind": "process"
     },
     {
      "t0": 101.25,
      "t1": 101.85,
      "what": "xrd",
-     "alloy": 242,
+     "alloy": 325,
      "kind": "process"
     },
     {
      "t0": 103.75,
      "t1": 104.35,
      "what": "xrd",
-     "alloy": 243,
+     "alloy": 326,
      "kind": "process"
     }
    ],
    "xrf": [
     {
-     "t0": 7.85,
-     "t1": 8.2,
+     "t0": 7.75,
+     "t1": 8.1,
      "what": "xrf",
-     "alloy": 236,
+     "alloy": 319,
      "kind": "process"
     },
     {
-     "t0": 10.35,
-     "t1": 10.7,
+     "t0": 10.3,
+     "t1": 10.65,
      "what": "xrf",
-     "alloy": 237,
+     "alloy": 320,
      "kind": "process"
     },
     {
-     "t0": 20.6,
-     "t1": 20.75,
+     "t0": 20.5,
+     "t1": 20.65,
      "what": "XRF drift correction on the monitor sample",
      "kind": "check",
      "who": "arm",
      "task": "xrf_drift"
-    },
-    {
-     "t0": 31.85,
-     "t1": 32.2,
-     "what": "xrf",
-     "alloy": 238,
-     "kind": "process"
     },
     {
      "t0": 44.5,
@@ -4215,7 +4172,7 @@
      "t0": 55.85,
      "t1": 56.2,
      "what": "xrf",
-     "alloy": 239,
+     "alloy": 321,
      "kind": "process"
     },
     {
@@ -4227,17 +4184,24 @@
      "task": "xrf_drift"
     },
     {
-     "t0": 77.3,
-     "t1": 77.65,
+     "t0": 77.35,
+     "t1": 77.7,
      "what": "xrf",
-     "alloy": 240,
+     "alloy": 322,
      "kind": "process"
     },
     {
      "t0": 79.85,
      "t1": 80.2,
      "what": "xrf",
-     "alloy": 241,
+     "alloy": 323,
+     "kind": "process"
+    },
+    {
+     "t0": 82.35,
+     "t1": 82.7,
+     "what": "xrf",
+     "alloy": 324,
      "kind": "process"
     },
     {
@@ -4249,17 +4213,17 @@
      "task": "xrf_drift"
     },
     {
-     "t0": 102.85,
-     "t1": 103.2,
+     "t0": 101.35,
+     "t1": 101.7,
      "what": "xrf",
-     "alloy": 242,
+     "alloy": 325,
      "kind": "process"
     },
     {
      "t0": 103.85,
      "t1": 104.2,
      "what": "xrf",
-     "alloy": 243,
+     "alloy": 326,
      "kind": "process"
     },
     {
@@ -4289,46 +4253,31 @@
    ],
    "sem": [
     {
-     "t0": 4.0,
-     "t1": 4.25,
-     "what": "stream cameras' lenses wiped, focus and aim checked",
-     "kind": "maint",
-     "who": "opening",
-     "task": "cams_wipe"
-    },
-    {
-     "t0": 7.85,
-     "t1": 8.2,
+     "t0": 10.2,
+     "t1": 10.55,
      "what": "psem",
-     "alloy": 236,
+     "alloy": 319,
      "kind": "process"
     },
     {
-     "t0": 10.35,
-     "t1": 10.7,
+     "t0": 10.55,
+     "t1": 10.9,
      "what": "psem",
-     "alloy": 237,
+     "alloy": 320,
      "kind": "process"
     },
     {
-     "t0": 16.3,
-     "t1": 16.8,
+     "t0": 16.1,
+     "t1": 16.6,
      "what": "sem",
-     "alloy": 236,
+     "alloy": 319,
      "kind": "process"
     },
     {
-     "t0": 31.85,
-     "t1": 32.2,
-     "what": "psem",
-     "alloy": 238,
-     "kind": "process"
-    },
-    {
-     "t0": 40.3,
-     "t1": 40.8,
+     "t0": 21.6,
+     "t1": 22.1,
      "what": "sem",
-     "alloy": 238,
+     "alloy": 320,
      "kind": "process"
     },
     {
@@ -4340,73 +4289,73 @@
      "task": "sem_eds"
     },
     {
-     "t0": 55.95,
-     "t1": 56.3,
+     "t0": 55.85,
+     "t1": 56.2,
      "what": "psem",
-     "alloy": 239,
+     "alloy": 321,
      "kind": "process"
     },
     {
-     "t0": 75.35,
-     "t1": 75.85,
-     "what": "sem",
-     "alloy": 239,
-     "kind": "process"
-    },
-    {
-     "t0": 78.7,
-     "t1": 79.05,
+     "t0": 77.35,
+     "t1": 77.7,
      "what": "psem",
-     "alloy": 240,
+     "alloy": 322,
      "kind": "process"
     },
     {
-     "t0": 79.85,
-     "t1": 80.2,
+     "t0": 79.95,
+     "t1": 80.3,
      "what": "psem",
-     "alloy": 241,
+     "alloy": 323,
      "kind": "process"
     },
     {
-     "t0": 87.35,
-     "t1": 87.85,
-     "what": "sem",
-     "alloy": 240,
+     "t0": 82.35,
+     "t1": 82.7,
+     "what": "psem",
+     "alloy": 324,
      "kind": "process"
     },
     {
-     "t0": 92.85,
-     "t1": 93.35,
+     "t0": 85.8,
+     "t1": 86.3,
      "what": "sem",
-     "alloy": 241,
+     "alloy": 322,
+     "kind": "process"
+    },
+    {
+     "t0": 91.3,
+     "t1": 91.8,
+     "what": "sem",
+     "alloy": 323,
+     "kind": "process"
+    },
+    {
+     "t0": 97.2,
+     "t1": 97.7,
+     "what": "sem",
+     "alloy": 324,
      "kind": "process"
     },
     {
      "t0": 101.35,
      "t1": 101.7,
      "what": "psem",
-     "alloy": 242,
+     "alloy": 325,
      "kind": "process"
     },
     {
      "t0": 103.85,
      "t1": 104.2,
      "what": "psem",
-     "alloy": 243,
+     "alloy": 326,
      "kind": "process"
     },
     {
-     "t0": 109.7,
-     "t1": 110.2,
+     "t0": 109.8,
+     "t1": 110.3,
      "what": "sem",
-     "alloy": 242,
-     "kind": "process"
-    },
-    {
-     "t0": 115.2,
-     "t1": 115.7,
-     "what": "sem",
-     "alloy": 243,
+     "alloy": 325,
      "kind": "process"
     }
    ],
@@ -4420,146 +4369,168 @@
      "task": "ac_weekly"
     },
     {
-     "t0": 7.95,
-     "t1": 12.95,
+     "t0": 7.75,
+     "t1": 12.75,
      "what": "print",
-     "alloy": 236,
+     "alloy": 319,
      "kind": "process"
     },
     {
-     "t0": 12.95,
-     "t1": 13.45,
+     "t0": 12.75,
+     "t1": 13.25,
      "what": "depowder",
-     "alloy": 236,
+     "alloy": 319,
      "kind": "process"
     },
     {
-     "t0": 13.45,
-     "t1": 18.45,
+     "t0": 13.25,
+     "t1": 18.25,
      "what": "print",
-     "alloy": 237,
+     "alloy": 320,
      "kind": "process"
     },
     {
-     "t0": 31.95,
-     "t1": 36.95,
-     "what": "print",
-     "alloy": 238,
-     "kind": "process"
-    },
-    {
-     "t0": 36.95,
-     "t1": 37.45,
+     "t0": 18.25,
+     "t1": 18.75,
      "what": "depowder",
-     "alloy": 238,
+     "alloy": 320,
      "kind": "process"
     },
     {
-     "t0": 58.25,
-     "t1": 66.25,
-     "what": "print_full",
-     "alloy": 232,
-     "kind": "process"
-    },
-    {
-     "t0": 66.25,
-     "t1": 67.0,
-     "what": "depowder_full",
-     "alloy": 232,
-     "kind": "process"
-    },
-    {
-     "t0": 67.0,
-     "t1": 72.0,
-     "what": "print",
-     "alloy": 239,
-     "kind": "process"
-    },
-    {
-     "t0": 72.0,
-     "t1": 72.5,
-     "what": "depowder",
-     "alloy": 239,
-     "kind": "process"
-    },
-    {
-     "t0": 78.5,
-     "t1": 79.0,
+     "t0": 32.0,
+     "t1": 32.5,
      "what": "recoater blade replaced",
      "kind": "maint",
      "who": "floor",
      "task": "ac_blade"
     },
     {
-     "t0": 79.0,
-     "t1": 84.0,
+     "t0": 58.25,
+     "t1": 66.25,
+     "what": "print_full",
+     "alloy": 313,
+     "kind": "process"
+    },
+    {
+     "t0": 66.25,
+     "t1": 67.0,
+     "what": "depowder_full",
+     "alloy": 313,
+     "kind": "process"
+    },
+    {
+     "t0": 67.0,
+     "t1": 72.0,
      "what": "print",
-     "alloy": 240,
+     "alloy": 321,
      "kind": "process"
     },
     {
-     "t0": 84.0,
-     "t1": 84.5,
-     "what": "depowder",
-     "alloy": 240,
-     "kind": "process"
-    },
-    {
-     "t0": 84.5,
-     "t1": 89.5,
+     "t0": 77.45,
+     "t1": 82.45,
      "what": "print",
-     "alloy": 241,
+     "alloy": 322,
      "kind": "process"
     },
     {
-     "t0": 89.5,
-     "t1": 90.0,
+     "t0": 82.45,
+     "t1": 82.95,
      "what": "depowder",
-     "alloy": 241,
+     "alloy": 322,
      "kind": "process"
     },
     {
-     "t0": 101.35,
-     "t1": 106.35,
+     "t0": 82.95,
+     "t1": 87.95,
      "what": "print",
-     "alloy": 242,
+     "alloy": 323,
      "kind": "process"
     },
     {
-     "t0": 106.35,
-     "t1": 106.85,
+     "t0": 87.95,
+     "t1": 88.45,
      "what": "depowder",
-     "alloy": 242,
+     "alloy": 323,
      "kind": "process"
     },
     {
-     "t0": 106.85,
-     "t1": 111.85,
+     "t0": 88.45,
+     "t1": 93.45,
      "what": "print",
-     "alloy": 243,
+     "alloy": 324,
      "kind": "process"
     },
     {
-     "t0": 111.85,
-     "t1": 112.35,
+     "t0": 93.45,
+     "t1": 93.95,
      "what": "depowder",
-     "alloy": 243,
+     "alloy": 324,
      "kind": "process"
+    },
+    {
+     "t0": 101.45,
+     "t1": 106.45,
+     "what": "print",
+     "alloy": 325,
+     "kind": "process"
+    },
+    {
+     "t0": 106.45,
+     "t1": 106.95,
+     "what": "depowder",
+     "alloy": 325,
+     "kind": "process"
+    },
+    {
+     "t0": 106.95,
+     "t1": 108.131,
+     "what": "print",
+     "alloy": 326,
+     "kind": "interrupted"
+    },
+    {
+     "t0": 108.131,
+     "t1": 176.0,
+     "what": "recoater crash or short feed",
+     "kind": "waiting",
+     "who": "floor"
+    },
+    {
+     "t0": 176.0,
+     "t1": 178.0,
+     "what": "recoater crash or short feed",
+     "kind": "repair",
+     "who": "floor",
+     "task": "fail"
     }
    ],
    "wire_edm": [
     {
-     "t0": 13.45,
-     "t1": 14.2,
+     "t0": 13.25,
+     "t1": 14.0,
      "what": "edm",
-     "alloy": 236,
+     "alloy": 319,
      "kind": "process"
     },
     {
-     "t0": 14.2,
-     "t1": 14.6,
+     "t0": 14.0,
+     "t1": 14.4,
      "what": "section",
-     "alloy": 236,
+     "alloy": 319,
+     "kind": "process"
+    },
+    {
+     "t0": 18.75,
+     "t1": 19.5,
+     "what": "edm",
+     "alloy": 320,
+     "kind": "process"
+    },
+    {
+     "t0": 19.5,
+     "t1": 19.9,
+     "what": "section",
+     "alloy": 320,
      "kind": "process"
     },
     {
@@ -4571,66 +4542,38 @@
      "task": "edm_weekly"
     },
     {
-     "t0": 37.45,
-     "t1": 38.2,
-     "what": "edm",
-     "alloy": 238,
-     "kind": "process"
-    },
-    {
-     "t0": 38.2,
-     "t1": 38.6,
-     "what": "section",
-     "alloy": 238,
-     "kind": "process"
-    },
-    {
      "t0": 67.0,
      "t1": 68.0,
      "what": "edm_full",
-     "alloy": 232,
+     "alloy": 313,
      "kind": "process"
     },
     {
-     "t0": 72.5,
-     "t1": 73.25,
+     "t0": 82.95,
+     "t1": 83.7,
      "what": "edm",
-     "alloy": 239,
+     "alloy": 322,
      "kind": "process"
     },
     {
-     "t0": 73.25,
-     "t1": 73.65,
+     "t0": 83.7,
+     "t1": 84.1,
      "what": "section",
-     "alloy": 239,
+     "alloy": 322,
      "kind": "process"
     },
     {
-     "t0": 84.5,
-     "t1": 85.25,
+     "t0": 88.45,
+     "t1": 89.2,
      "what": "edm",
-     "alloy": 240,
+     "alloy": 323,
      "kind": "process"
     },
     {
-     "t0": 85.25,
-     "t1": 85.65,
+     "t0": 89.2,
+     "t1": 89.6,
      "what": "section",
-     "alloy": 240,
-     "kind": "process"
-    },
-    {
-     "t0": 90.0,
-     "t1": 90.75,
-     "what": "edm",
-     "alloy": 241,
-     "kind": "process"
-    },
-    {
-     "t0": 90.75,
-     "t1": 91.15,
-     "what": "section",
-     "alloy": 241,
+     "alloy": 323,
      "kind": "process"
     },
     {
@@ -4642,156 +4585,142 @@
      "task": "edm_test"
     },
     {
-     "t0": 106.85,
-     "t1": 107.6,
+     "t0": 94.3,
+     "t1": 95.05,
      "what": "edm",
-     "alloy": 242,
+     "alloy": 324,
      "kind": "process"
     },
     {
-     "t0": 107.6,
-     "t1": 108.0,
+     "t0": 95.1,
+     "t1": 95.5,
      "what": "section",
-     "alloy": 242,
+     "alloy": 324,
      "kind": "process"
     },
     {
-     "t0": 112.35,
-     "t1": 113.1,
+     "t0": 106.95,
+     "t1": 107.7,
      "what": "edm",
-     "alloy": 243,
+     "alloy": 325,
      "kind": "process"
     },
     {
-     "t0": 113.1,
-     "t1": 113.5,
+     "t0": 107.7,
+     "t1": 108.1,
      "what": "section",
-     "alloy": 243,
+     "alloy": 325,
      "kind": "process"
     }
    ],
    "furnace": [
     {
-     "t0": 14.2,
-     "t1": 17.2,
+     "t0": 14.0,
+     "t1": 17.0,
      "what": "heat",
-     "alloy": 236,
+     "alloy": 319,
      "kind": "process"
     },
     {
-     "t0": 38.2,
-     "t1": 41.2,
+     "t0": 19.5,
+     "t1": 22.5,
      "what": "heat",
-     "alloy": 238,
+     "alloy": 320,
      "kind": "process"
     },
     {
      "t0": 68.0,
      "t1": 71.0,
      "what": "heat_full",
-     "alloy": 232,
+     "alloy": 313,
      "kind": "process"
     },
     {
-     "t0": 73.25,
-     "t1": 76.25,
-     "what": "heat",
-     "alloy": 239,
-     "kind": "process"
-    },
-    {
-     "t0": 77.5,
-     "t1": 78.0,
+     "t0": 75.5,
+     "t1": 76.0,
      "what": "waste tank emptied, water tank filled (the coupling has no drain or process water)",
      "kind": "maint",
      "who": "opening",
      "task": "px_waste"
     },
     {
-     "t0": 85.25,
-     "t1": 88.25,
+     "t0": 83.7,
+     "t1": 86.7,
      "what": "heat",
-     "alloy": 240,
+     "alloy": 322,
      "kind": "process"
     },
     {
-     "t0": 90.75,
-     "t1": 93.75,
+     "t0": 89.2,
+     "t1": 92.2,
      "what": "heat",
-     "alloy": 241,
+     "alloy": 323,
      "kind": "process"
     },
     {
-     "t0": 107.6,
-     "t1": 110.6,
+     "t0": 95.05,
+     "t1": 98.05,
      "what": "heat",
-     "alloy": 242,
+     "alloy": 324,
      "kind": "process"
     },
     {
-     "t0": 113.1,
-     "t1": 116.1,
+     "t0": 107.7,
+     "t1": 110.7,
      "what": "heat",
-     "alloy": 243,
+     "alloy": 325,
      "kind": "process"
     }
    ],
    "tensile_h": [
     {
-     "t0": 17.2,
-     "t1": 17.8,
+     "t0": 17.0,
+     "t1": 17.6,
      "what": "tensile_rt",
-     "alloy": 236,
+     "alloy": 319,
      "kind": "process"
     },
     {
-     "t0": 41.2,
-     "t1": 41.8,
+     "t0": 22.5,
+     "t1": 23.1,
      "what": "tensile_rt",
-     "alloy": 238,
+     "alloy": 320,
      "kind": "process"
     },
     {
-     "t0": 76.25,
-     "t1": 76.85,
+     "t0": 86.7,
+     "t1": 87.3,
      "what": "tensile_rt",
-     "alloy": 239,
+     "alloy": 322,
      "kind": "process"
     },
     {
-     "t0": 88.25,
-     "t1": 88.85,
+     "t0": 92.2,
+     "t1": 92.8,
      "what": "tensile_rt",
-     "alloy": 240,
+     "alloy": 323,
      "kind": "process"
     },
     {
-     "t0": 93.75,
-     "t1": 94.35,
+     "t0": 98.05,
+     "t1": 98.65,
      "what": "tensile_rt",
-     "alloy": 241,
+     "alloy": 324,
      "kind": "process"
     },
     {
-     "t0": 98.0,
-     "t1": 101.0,
-     "what": "HM-220: indirect verification",
+     "t0": 99.0,
+     "t1": 99.25,
+     "what": "instrument PC: OS updates and a reboot (vendor software pinned)",
      "kind": "maint",
-     "who": "vendor",
-     "task": "hv_verify"
+     "who": "desk",
+     "task": "it_patch_tensile_h"
     },
     {
-     "t0": 110.6,
-     "t1": 111.2,
+     "t0": 110.7,
+     "t1": 111.3,
      "what": "tensile_rt",
-     "alloy": 242,
-     "kind": "process"
-    },
-    {
-     "t0": 116.1,
-     "t1": 116.7,
-     "what": "tensile_rt",
-     "alloy": 243,
+     "alloy": 325,
      "kind": "process"
     },
     {
@@ -4805,45 +4734,53 @@
    ],
    "instron_floor": [
     {
-     "t0": 17.2,
-     "t1": 18.7,
+     "t0": 17.0,
+     "t1": 18.5,
      "what": "tensile_hot",
-     "alloy": 236,
+     "alloy": 319,
      "kind": "process"
     },
     {
-     "t0": 41.2,
-     "t1": 42.7,
+     "t0": 22.5,
+     "t1": 24.0,
      "what": "tensile_hot",
-     "alloy": 238,
+     "alloy": 320,
      "kind": "process"
+    },
+    {
+     "t0": 27.75,
+     "t1": 28.0,
+     "what": "instrument PC: OS updates and a reboot (vendor software pinned)",
+     "kind": "maint",
+     "who": "desk",
+     "task": "it_patch_instron_floor"
     },
     {
      "t0": 71.0,
      "t1": 71.6,
      "what": "e8_rt",
-     "alloy": 232,
+     "alloy": 313,
      "kind": "process"
     },
     {
      "t0": 71.6,
      "t1": 74.1,
      "what": "e8_hot",
-     "alloy": 232,
+     "alloy": 313,
      "kind": "process"
     },
     {
-     "t0": 76.25,
-     "t1": 77.75,
+     "t0": 86.7,
+     "t1": 88.2,
      "what": "tensile_hot",
-     "alloy": 239,
+     "alloy": 322,
      "kind": "process"
     },
     {
-     "t0": 88.25,
-     "t1": 89.75,
+     "t0": 92.2,
+     "t1": 93.7,
      "what": "tensile_hot",
-     "alloy": 240,
+     "alloy": 323,
      "kind": "process"
     },
     {
@@ -4855,261 +4792,226 @@
      "task": "t_ref_floor"
     },
     {
-     "t0": 94.5,
-     "t1": 96.0,
+     "t0": 98.05,
+     "t1": 99.55,
      "what": "tensile_hot",
-     "alloy": 241,
+     "alloy": 324,
      "kind": "process"
     },
     {
-     "t0": 110.6,
-     "t1": 112.1,
+     "t0": 110.7,
+     "t1": 112.2,
      "what": "tensile_hot",
-     "alloy": 242,
-     "kind": "process"
-    },
-    {
-     "t0": 116.1,
-     "t1": 117.6,
-     "what": "tensile_hot",
-     "alloy": 243,
+     "alloy": 325,
      "kind": "process"
     }
    ],
    "cnc": [
     {
-     "t0": 14.6,
-     "t1": 14.9,
+     "t0": 14.4,
+     "t1": 14.7,
      "what": "face",
-     "alloy": 236,
+     "alloy": 319,
      "kind": "process"
     },
     {
-     "t0": 38.6,
-     "t1": 38.9,
+     "t0": 19.9,
+     "t1": 20.2,
      "what": "face",
-     "alloy": 238,
+     "alloy": 320,
      "kind": "process"
     },
     {
-     "t0": 73.65,
-     "t1": 73.95,
+     "t0": 84.1,
+     "t1": 84.4,
      "what": "face",
-     "alloy": 239,
+     "alloy": 322,
      "kind": "process"
     },
     {
-     "t0": 85.65,
-     "t1": 85.95,
+     "t0": 89.6,
+     "t1": 89.9,
      "what": "face",
-     "alloy": 240,
+     "alloy": 323,
      "kind": "process"
     },
     {
-     "t0": 91.15,
-     "t1": 91.45,
+     "t0": 95.5,
+     "t1": 95.8,
      "what": "face",
-     "alloy": 241,
+     "alloy": 324,
      "kind": "process"
     },
     {
-     "t0": 108.0,
-     "t1": 108.3,
+     "t0": 108.1,
+     "t1": 108.4,
      "what": "face",
-     "alloy": 242,
-     "kind": "process"
-    },
-    {
-     "t0": 113.5,
-     "t1": 113.8,
-     "what": "face",
-     "alloy": 243,
+     "alloy": 325,
      "kind": "process"
     }
    ],
    "mount_press": [
     {
-     "t0": 14.9,
-     "t1": 15.5,
+     "t0": 14.7,
+     "t1": 15.3,
      "what": "mount",
-     "alloy": 236,
+     "alloy": 319,
      "kind": "process"
     },
     {
-     "t0": 38.9,
-     "t1": 39.5,
+     "t0": 20.2,
+     "t1": 20.8,
      "what": "mount",
-     "alloy": 238,
+     "alloy": 320,
      "kind": "process"
     },
     {
-     "t0": 73.95,
-     "t1": 74.55,
-     "what": "mount",
-     "alloy": 239,
-     "kind": "process"
-    },
-    {
-     "t0": 77.5,
-     "t1": 78.0,
+     "t0": 75.5,
+     "t1": 76.0,
      "what": "waste tank emptied, water tank filled (the coupling has no drain or process water)",
      "kind": "maint",
      "who": "opening",
      "task": "px_waste"
     },
     {
-     "t0": 85.95,
-     "t1": 86.55,
+     "t0": 84.4,
+     "t1": 85.0,
      "what": "mount",
-     "alloy": 240,
+     "alloy": 322,
      "kind": "process"
     },
     {
-     "t0": 91.45,
-     "t1": 92.05,
+     "t0": 89.9,
+     "t1": 90.5,
      "what": "mount",
-     "alloy": 241,
+     "alloy": 323,
      "kind": "process"
     },
     {
-     "t0": 108.3,
-     "t1": 108.9,
+     "t0": 95.8,
+     "t1": 96.4,
      "what": "mount",
-     "alloy": 242,
+     "alloy": 324,
      "kind": "process"
     },
     {
-     "t0": 113.8,
-     "t1": 114.4,
+     "t0": 108.4,
+     "t1": 109.0,
      "what": "mount",
-     "alloy": 243,
+     "alloy": 325,
      "kind": "process"
     }
    ],
    "polisher": [
     {
-     "t0": 15.5,
-     "t1": 16.3,
+     "t0": 15.3,
+     "t1": 16.1,
      "what": "polish",
-     "alloy": 236,
+     "alloy": 319,
      "kind": "process"
     },
     {
-     "t0": 39.5,
-     "t1": 40.3,
+     "t0": 20.8,
+     "t1": 21.6,
      "what": "polish",
-     "alloy": 238,
+     "alloy": 320,
      "kind": "process"
     },
     {
-     "t0": 74.55,
-     "t1": 75.35,
-     "what": "polish",
-     "alloy": 239,
-     "kind": "process"
-    },
-    {
-     "t0": 77.5,
-     "t1": 78.0,
+     "t0": 75.5,
+     "t1": 76.0,
      "what": "waste tank emptied, water tank filled (the coupling has no drain or process water)",
      "kind": "maint",
      "who": "opening",
      "task": "px_waste"
     },
     {
-     "t0": 86.55,
-     "t1": 87.35,
+     "t0": 85.0,
+     "t1": 85.8,
      "what": "polish",
-     "alloy": 240,
+     "alloy": 322,
      "kind": "process"
     },
     {
-     "t0": 92.05,
-     "t1": 92.85,
+     "t0": 90.5,
+     "t1": 91.3,
      "what": "polish",
-     "alloy": 241,
+     "alloy": 323,
      "kind": "process"
     },
     {
-     "t0": 108.9,
-     "t1": 109.7,
+     "t0": 96.4,
+     "t1": 97.2,
      "what": "polish",
-     "alloy": 242,
+     "alloy": 324,
      "kind": "process"
     },
     {
-     "t0": 114.4,
-     "t1": 115.2,
+     "t0": 109.0,
+     "t1": 109.8,
      "what": "polish",
-     "alloy": 243,
+     "alloy": 325,
      "kind": "process"
     }
    ],
    "vhx": [
     {
-     "t0": 16.3,
-     "t1": 16.7,
+     "t0": 4.0,
+     "t1": 4.25,
+     "what": "stream cameras' lenses wiped, focus and aim checked",
+     "kind": "maint",
+     "who": "opening",
+     "task": "cams_wipe"
+    },
+    {
+     "t0": 16.1,
+     "t1": 16.5,
      "what": "vhx",
-     "alloy": 236,
+     "alloy": 319,
      "kind": "process"
     },
     {
-     "t0": 40.3,
-     "t1": 40.7,
+     "t0": 21.6,
+     "t1": 22.0,
      "what": "vhx",
-     "alloy": 238,
+     "alloy": 320,
      "kind": "process"
     },
     {
-     "t0": 75.35,
-     "t1": 75.75,
+     "t0": 85.8,
+     "t1": 86.2,
      "what": "vhx",
-     "alloy": 239,
+     "alloy": 322,
      "kind": "process"
     },
     {
-     "t0": 87.35,
-     "t1": 87.75,
+     "t0": 91.3,
+     "t1": 91.7,
      "what": "vhx",
-     "alloy": 240,
+     "alloy": 323,
      "kind": "process"
     },
     {
-     "t0": 92.85,
-     "t1": 93.25,
+     "t0": 97.2,
+     "t1": 97.6,
      "what": "vhx",
-     "alloy": 241,
+     "alloy": 324,
      "kind": "process"
     },
     {
-     "t0": 109.7,
-     "t1": 110.1,
+     "t0": 109.8,
+     "t1": 110.2,
      "what": "vhx",
-     "alloy": 242,
+     "alloy": 325,
      "kind": "process"
-    },
-    {
-     "t0": 115.2,
-     "t1": 115.6,
-     "what": "vhx",
-     "alloy": 243,
-     "kind": "process"
-    },
-    {
-     "t0": 164.2,
-     "t1": 164.4,
-     "what": "VHX: stage micrometer imaged, calibration checked",
-     "kind": "check",
-     "who": "arm",
-     "task": "vhx_scale"
     }
    ],
    "hardness": [
     {
-     "t0": 16.4,
-     "t1": 16.7,
+     "t0": 16.2,
+     "t1": 16.5,
      "what": "hv",
-     "alloy": 236,
+     "alloy": 319,
      "kind": "process"
     },
     {
@@ -5121,10 +5023,10 @@
      "task": "hv_block"
     },
     {
-     "t0": 40.4,
-     "t1": 40.7,
+     "t0": 21.7,
+     "t1": 22.0,
      "what": "hv",
-     "alloy": 238,
+     "alloy": 320,
      "kind": "process"
     },
     {
@@ -5144,25 +5046,17 @@
      "task": "hv_block"
     },
     {
-     "t0": 75.25,
-     "t1": 76.25,
-     "what": "vendor software update: installed, then the reference check re-run and signed off",
-     "kind": "maint",
-     "who": "desk",
-     "task": "it_revalidate_hardness"
-    },
-    {
-     "t0": 76.35,
-     "t1": 76.65,
+     "t0": 85.9,
+     "t1": 86.2,
      "what": "hv",
-     "alloy": 239,
+     "alloy": 322,
      "kind": "process"
     },
     {
-     "t0": 87.45,
-     "t1": 87.75,
+     "t0": 91.4,
+     "t1": 91.7,
      "what": "hv",
-     "alloy": 240,
+     "alloy": 323,
      "kind": "process"
     },
     {
@@ -5174,32 +5068,17 @@
      "task": "hv_block"
     },
     {
-     "t0": 92.95,
-     "t1": 93.25,
+     "t0": 97.3,
+     "t1": 97.6,
      "what": "hv",
-     "alloy": 241,
+     "alloy": 324,
      "kind": "process"
     },
     {
-     "t0": 98.0,
-     "t1": 101.0,
-     "what": "HM-220: indirect verification",
-     "kind": "maint",
-     "who": "vendor",
-     "task": "hv_verify"
-    },
-    {
-     "t0": 109.8,
-     "t1": 110.1,
+     "t0": 109.9,
+     "t1": 110.2,
      "what": "hv",
-     "alloy": 242,
-     "kind": "process"
-    },
-    {
-     "t0": 115.3,
-     "t1": 115.6,
-     "what": "hv",
-     "alloy": 243,
+     "alloy": 325,
      "kind": "process"
     },
     {
@@ -5229,60 +5108,96 @@
    ],
    "nanoindenter": [
     {
-     "t0": 16.4,
-     "t1": 17.15,
+     "t0": -105.679,
+     "t1": 8.0,
+     "what": "a broken tip; drift",
+     "kind": "waiting",
+     "who": "extracted"
+    },
+    {
+     "t0": 8.0,
+     "t1": 10.0,
+     "what": "a broken tip; drift",
+     "kind": "repair",
+     "who": "extracted",
+     "task": "fail"
+    },
+    {
+     "t0": 10.1,
+     "t1": 10.85,
      "what": "nano",
-     "alloy": 236,
+     "alloy": 315,
      "kind": "process"
     },
     {
-     "t0": 40.4,
-     "t1": 41.15,
+     "t0": 10.85,
+     "t1": 11.6,
      "what": "nano",
-     "alloy": 238,
+     "alloy": 316,
      "kind": "process"
     },
     {
-     "t0": 53.5,
-     "t1": 54.0,
-     "what": "cell windows cleaned, Aero S hopper and venturi checked",
+     "t0": 11.6,
+     "t1": 12.35,
+     "what": "nano",
+     "alloy": 317,
+     "kind": "process"
+    },
+    {
+     "t0": 12.35,
+     "t1": 13.1,
+     "what": "nano",
+     "alloy": 318,
+     "kind": "process"
+    },
+    {
+     "t0": 16.2,
+     "t1": 16.95,
+     "what": "nano",
+     "alloy": 319,
+     "kind": "process"
+    },
+    {
+     "t0": 21.7,
+     "t1": 22.45,
+     "what": "nano",
+     "alloy": 320,
+     "kind": "process"
+    },
+    {
+     "t0": 75.0,
+     "t1": 75.25,
+     "what": "instrument PC: OS updates and a reboot (vendor software pinned)",
      "kind": "maint",
-     "who": "opening",
-     "task": "ld_clean"
+     "who": "desk",
+     "task": "it_patch_nanoindenter"
     },
     {
-     "t0": 75.45,
-     "t1": 76.2,
+     "t0": 85.9,
+     "t1": 86.65,
      "what": "nano",
-     "alloy": 239,
+     "alloy": 322,
      "kind": "process"
     },
     {
-     "t0": 87.45,
-     "t1": 88.2,
+     "t0": 91.4,
+     "t1": 92.15,
      "what": "nano",
-     "alloy": 240,
+     "alloy": 323,
      "kind": "process"
     },
     {
-     "t0": 92.95,
-     "t1": 93.7,
+     "t0": 97.3,
+     "t1": 98.05,
      "what": "nano",
-     "alloy": 241,
+     "alloy": 324,
      "kind": "process"
     },
     {
-     "t0": 109.8,
-     "t1": 110.55,
+     "t0": 109.9,
+     "t1": 110.65,
      "what": "nano",
-     "alloy": 242,
-     "kind": "process"
-    },
-    {
-     "t0": 115.3,
-     "t1": 116.05,
-     "what": "nano",
-     "alloy": 243,
+     "alloy": 325,
      "kind": "process"
     },
     {
@@ -5296,68 +5211,61 @@
    ],
    "pip": [
     {
-     "t0": 16.5,
-     "t1": 16.75,
+     "t0": 8.0,
+     "t1": 10.0,
+     "what": "a broken tip; drift",
+     "kind": "repair",
+     "who": "extracted",
+     "task": "fail"
+    },
+    {
+     "t0": 16.3,
+     "t1": 16.55,
      "what": "pip",
-     "alloy": 236,
+     "alloy": 319,
      "kind": "process"
     },
     {
-     "t0": 16.75,
-     "t1": 16.85,
+     "t0": 21.8,
+     "t1": 22.05,
+     "what": "pip",
+     "alloy": 320,
+     "kind": "process"
+    },
+    {
+     "t0": 22.05,
+     "t1": 22.15,
      "what": "PIP: profilometer calibrated on its sample",
      "kind": "check",
      "who": "arm",
      "task": "pip_cal"
     },
     {
-     "t0": 40.5,
-     "t1": 40.75,
+     "t0": 86.0,
+     "t1": 86.25,
      "what": "pip",
-     "alloy": 238,
+     "alloy": 322,
      "kind": "process"
     },
     {
-     "t0": 53.5,
-     "t1": 54.0,
-     "what": "cell windows cleaned, Aero S hopper and venturi checked",
-     "kind": "maint",
-     "who": "opening",
-     "task": "ld_clean"
-    },
-    {
-     "t0": 75.45,
-     "t1": 75.7,
+     "t0": 91.5,
+     "t1": 91.75,
      "what": "pip",
-     "alloy": 239,
+     "alloy": 323,
      "kind": "process"
     },
     {
-     "t0": 87.55,
-     "t1": 87.8,
+     "t0": 97.4,
+     "t1": 97.65,
      "what": "pip",
-     "alloy": 240,
+     "alloy": 324,
      "kind": "process"
     },
     {
-     "t0": 93.05,
-     "t1": 93.3,
+     "t0": 110.0,
+     "t1": 110.25,
      "what": "pip",
-     "alloy": 241,
-     "kind": "process"
-    },
-    {
-     "t0": 109.9,
-     "t1": 110.15,
-     "what": "pip",
-     "alloy": 242,
-     "kind": "process"
-    },
-    {
-     "t0": 115.4,
-     "t1": 115.65,
-     "what": "pip",
-     "alloy": 243,
+     "alloy": 325,
      "kind": "process"
     }
    ],
@@ -5371,10 +5279,10 @@
      "task": "cx_fluids"
     },
     {
-     "t0": 16.5,
-     "t1": 18.7,
+     "t0": 16.3,
+     "t1": 18.5,
      "what": "corrosion",
-     "alloy": 236,
+     "alloy": 319,
      "kind": "process"
     },
     {
@@ -5386,65 +5294,50 @@
      "task": "cx_ref"
     },
     {
-     "t0": 40.5,
-     "t1": 42.7,
+     "t0": 21.8,
+     "t1": 24.0,
      "what": "corrosion",
-     "alloy": 238,
+     "alloy": 320,
      "kind": "process"
     },
     {
-     "t0": 76.45,
-     "t1": 78.65,
-     "what": "corrosion",
-     "alloy": 239,
-     "kind": "process"
-    },
-    {
-     "t0": 87.55,
-     "t1": 89.75,
-     "what": "corrosion",
-     "alloy": 240,
-     "kind": "process"
-    },
-    {
-     "t0": 93.05,
-     "t1": 95.25,
-     "what": "corrosion",
-     "alloy": 241,
-     "kind": "process"
-    },
-    {
-     "t0": 109.9,
-     "t1": 110.064,
-     "what": "corrosion",
-     "alloy": 242,
-     "kind": "interrupted"
-    },
-    {
-     "t0": 110.064,
-     "t1": 171.0,
-     "what": "a clogged or leaking cell; the reference electrode",
-     "kind": "waiting",
-     "who": "opening"
-    },
-    {
-     "t0": 171.0,
-     "t1": 172.0,
-     "what": "a clogged or leaking cell; the reference electrode",
+     "t0": 51.0,
+     "t1": 51.5,
+     "what": "a camera's Pi or SD card; a dock's link",
      "kind": "repair",
      "who": "opening",
      "task": "fail"
+    },
+    {
+     "t0": 86.0,
+     "t1": 88.2,
+     "what": "corrosion",
+     "alloy": 322,
+     "kind": "process"
+    },
+    {
+     "t0": 91.5,
+     "t1": 93.7,
+     "what": "corrosion",
+     "alloy": 323,
+     "kind": "process"
+    },
+    {
+     "t0": 97.4,
+     "t1": 99.6,
+     "what": "corrosion",
+     "alloy": 324,
+     "kind": "process"
+    },
+    {
+     "t0": 110.0,
+     "t1": 112.2,
+     "what": "corrosion",
+     "alloy": 325,
+     "kind": "process"
     }
    ],
    "open1": [
-    {
-     "t0": 4.0,
-     "t1": 4.25,
-     "what": "stream cameras' lenses wiped, focus and aim checked",
-     "kind": "maint",
-     "who": "opening",
-     "task": "cams_wipe"
-    },
     {
      "t0": 5.5,
      "t1": 6.0,
@@ -5462,163 +5355,156 @@
      "task": "dose_clean"
     },
     {
-     "t0": 53.5,
-     "t1": 54.0,
-     "what": "cell windows cleaned, Aero S hopper and venturi checked",
-     "kind": "maint",
-     "who": "opening",
-     "task": "ld_clean"
+     "t0": 8.0,
+     "t1": 10.0,
+     "what": "a broken tip; drift",
+     "kind": "repair",
+     "who": "extracted",
+     "task": "fail"
     },
     {
-     "t0": 77.5,
-     "t1": 78.0,
+     "t0": 29.5,
+     "t1": 30.5,
+     "what": "tray C: H2D and A1 mini nozzles, rods lubricated (off the route)",
+     "kind": "maint",
+     "who": "opening",
+     "task": "pm_c"
+    },
+    {
+     "t0": 51.0,
+     "t1": 51.5,
+     "what": "a camera's Pi or SD card; a dock's link",
+     "kind": "repair",
+     "who": "opening",
+     "task": "fail"
+    },
+    {
+     "t0": 52.0,
+     "t1": 52.5,
+     "what": "the opening's light curtain and sensors cleaned; shutter and tray stops checked",
+     "kind": "maint",
+     "who": "opening",
+     "task": "vlm_clean"
+    },
+    {
+     "t0": 75.5,
+     "t1": 76.0,
      "what": "waste tank emptied, water tank filled (the coupling has no drain or process water)",
      "kind": "maint",
      "who": "opening",
      "task": "px_waste"
     },
     {
-     "t0": 78.0,
-     "t1": 78.5,
+     "t0": 76.0,
+     "t1": 76.5,
      "what": "tray J: cups, plugs, vials, stubs and coupons restocked",
      "kind": "maint",
      "who": "opening",
      "task": "store_j"
-    },
-    {
-     "t0": 171.0,
-     "t1": 172.0,
-     "what": "a clogged or leaking cell; the reference electrode",
-     "kind": "repair",
-     "who": "opening",
-     "task": "fail"
     }
    ],
    "open2": [
     {
-     "t0": 28.0,
-     "t1": 28.5,
+     "t0": 4.0,
+     "t1": 4.25,
+     "what": "stream cameras' lenses wiped, focus and aim checked",
+     "kind": "maint",
+     "who": "opening",
+     "task": "cams_wipe"
+    },
+    {
+     "t0": 30.5,
+     "t1": 31.0,
      "what": "tray N: new feedstock jars in",
      "kind": "maint",
      "who": "opening",
      "task": "store_n"
     },
     {
-     "t0": 30.5,
-     "t1": 31.0,
+     "t0": 51.0,
+     "t1": 51.5,
      "what": "tray O: finished lots out to the archive, empty jars in",
      "kind": "maint",
      "who": "opening",
      "task": "store_o"
     },
     {
-     "t0": 51.0,
-     "t1": 52.0,
-     "what": "tray G: Form 4 tanks, Form Wash IPA (off the route)",
-     "kind": "maint",
-     "who": "opening",
-     "task": "pm_g"
-    },
-    {
-     "t0": 54.0,
-     "t1": 55.0,
-     "what": "tray I: SnowPods' filters and chambers (off the route)",
-     "kind": "maint",
-     "who": "opening",
-     "task": "pm_i"
-    },
-    {
-     "t0": 98.0,
-     "t1": 101.0,
-     "what": "HM-220: indirect verification",
+     "t0": 74.0,
+     "t1": 76.0,
+     "what": "Kardex: yearly safety inspection (with a service visit)",
      "kind": "maint",
      "who": "vendor",
-     "task": "hv_verify"
+     "task": "c_kardex"
     },
     {
-     "t0": 101.5,
-     "t1": 102.0,
-     "what": "the bay's CombiTac dock: contacts wiped, pins, O-rings and coupling faces checked (it mates with every tray the Shuttle presents)",
-     "kind": "maint",
-     "who": "opening",
-     "task": "bay_dock"
+     "t0": 116.927,
+     "t1": 171.0,
+     "what": "a tray position error, a light-curtain trip, the shutter",
+     "kind": "waiting",
+     "who": "opening"
     },
     {
-     "t0": 102.25,
-     "t1": 102.75,
-     "what": "tray H: stencil printer and LumenPnP nozzles (off the route)",
-     "kind": "maint",
+     "t0": 171.0,
+     "t1": 171.5,
+     "what": "a tray position error, a light-curtain trip, the shutter",
+     "kind": "repair",
      "who": "opening",
-     "task": "pm_h"
+     "task": "fail"
     }
    ],
    "unit0": [
     {
-     "t0": -2.122,
-     "t1": 3.0,
-     "what": "lost localization or a protective stop it can't clear",
-     "kind": "waiting",
-     "who": "floor"
-    },
-    {
-     "t0": 3.0,
-     "t1": 3.5,
-     "what": "lost localization or a protective stop it can't clear",
-     "kind": "repair",
+     "t0": 28.0,
+     "t1": 28.25,
+     "what": "MiR250 scanners and lights cleaned and checked; 2F-85 wiped",
+     "kind": "maint",
      "who": "floor",
-     "task": "fail"
+     "task": "mir_weekly"
     },
     {
-     "t0": 20.5,
-     "t1": 20.6,
+     "t0": 77.5,
+     "t1": 79.0,
+     "what": "MiR battery connector, braking distance, wheel diameters; UR10e bolts, cables, flat rings, control box filter",
+     "kind": "maint",
+     "who": "floor",
+     "task": "unit_halfyear"
+    }
+   ],
+   "unit1": [
+    {
+     "t0": 26.0,
+     "t1": 34.0,
+     "what": "UR and MiR service visit",
+     "kind": "maint",
+     "who": "vendor",
+     "task": "unit_service"
+    },
+    {
+     "t0": 75.25,
+     "t1": 75.5,
+     "what": "MiR250 scanners and lights cleaned and checked; 2F-85 wiped",
+     "kind": "maint",
+     "who": "floor",
+     "task": "mir_weekly"
+    },
+    {
+     "t0": 143.0,
+     "t1": 143.1,
      "what": "D405 on-chip health check on a flat target, recalibrated if over 0.25",
      "kind": "check",
      "who": "arm",
      "task": "d405_cal"
     },
     {
-     "t0": 27.75,
-     "t1": 28.0,
-     "what": "MiR250 scanners and lights cleaned and checked; 2F-85 wiped",
-     "kind": "maint",
-     "who": "floor",
-     "task": "mir_weekly"
-    },
-    {
-     "t0": 97.329,
-     "t1": 99.5,
+     "t0": 166.892,
+     "t1": 171.5,
      "what": "lost localization or a protective stop it can't clear",
      "kind": "waiting",
      "who": "floor"
     },
     {
-     "t0": 99.5,
-     "t1": 100.0,
-     "what": "lost localization or a protective stop it can't clear",
-     "kind": "repair",
-     "who": "floor",
-     "task": "fail"
-    }
-   ],
-   "unit1": [
-    {
-     "t0": 76.25,
-     "t1": 76.5,
-     "what": "MiR250 scanners and lights cleaned and checked; 2F-85 wiped",
-     "kind": "maint",
-     "who": "floor",
-     "task": "mir_weekly"
-    },
-    {
-     "t0": 93.897,
-     "t1": 99.0,
-     "what": "lost localization or a protective stop it can't clear",
-     "kind": "waiting",
-     "who": "floor"
-    },
-    {
-     "t0": 99.0,
-     "t1": 99.5,
+     "t0": 171.5,
+     "t1": 172.0,
      "what": "lost localization or a protective stop it can't clear",
      "kind": "repair",
      "who": "floor",
@@ -5639,14 +5525,6 @@
      "kind": "maint",
      "who": "floor",
      "task": "ac_weekly"
-    },
-    {
-     "t0": 3.0,
-     "t1": 3.5,
-     "what": "lost localization or a protective stop it can't clear",
-     "kind": "repair",
-     "who": "floor",
-     "task": "fail"
     },
     {
      "t0": 4.0,
@@ -5701,6 +5579,22 @@
      "kind": "crucible"
     },
     {
+     "t0": 8.0,
+     "t1": 10.0,
+     "what": "a broken tip; drift",
+     "kind": "repair",
+     "who": "extracted",
+     "task": "fail"
+    },
+    {
+     "t0": 9.5,
+     "t1": 10.0,
+     "what": "new graphite crucible and nozzle holder into the rotation",
+     "kind": "maint",
+     "who": "floor",
+     "task": "rp_crucible_stock"
+    },
+    {
      "t0": 26.0,
      "t1": 27.0,
      "what": "crucible",
@@ -5717,18 +5611,18 @@
     {
      "t0": 27.75,
      "t1": 28.0,
+     "what": "instrument PC: OS updates and a reboot (vendor software pinned)",
+     "kind": "maint",
+     "who": "desk",
+     "task": "it_patch_instron_floor"
+    },
+    {
+     "t0": 28.0,
+     "t1": 28.25,
      "what": "MiR250 scanners and lights cleaned and checked; 2F-85 wiped",
      "kind": "maint",
      "who": "floor",
      "task": "mir_weekly"
-    },
-    {
-     "t0": 28.0,
-     "t1": 28.5,
-     "what": "tray N: new feedstock jars in",
-     "kind": "maint",
-     "who": "opening",
-     "task": "store_n"
     },
     {
      "t0": 28.5,
@@ -5739,24 +5633,32 @@
     {
      "t0": 29.5,
      "t1": 30.5,
-     "what": "DED: nozzle, protective window, powder feeders (off the route)",
+     "what": "tray C: H2D and A1 mini nozzles, rods lubricated (off the route)",
      "kind": "maint",
-     "who": "floor",
-     "task": "pm_ded"
+     "who": "opening",
+     "task": "pm_c"
     },
     {
      "t0": 30.5,
      "t1": 31.0,
-     "what": "tray O: finished lots out to the archive, empty jars in",
+     "what": "tray N: new feedstock jars in",
      "kind": "maint",
      "who": "opening",
-     "task": "store_o"
+     "task": "store_n"
     },
     {
      "t0": 31.0,
      "t1": 32.0,
      "what": "crucible",
      "kind": "crucible"
+    },
+    {
+     "t0": 32.0,
+     "t1": 32.5,
+     "what": "recoater blade replaced",
+     "kind": "maint",
+     "who": "floor",
+     "task": "ac_blade"
     },
     {
      "t0": 50.0,
@@ -5766,19 +5668,35 @@
     },
     {
      "t0": 51.0,
-     "t1": 52.0,
-     "what": "tray G: Form 4 tanks, Form Wash IPA (off the route)",
+     "t1": 51.5,
+     "what": "tray O: finished lots out to the archive, empty jars in",
      "kind": "maint",
      "who": "opening",
-     "task": "pm_g"
+     "task": "store_o"
     },
     {
-     "t0": 52.0,
-     "t1": 52.5,
+     "t0": 51.0,
+     "t1": 51.5,
+     "what": "a camera's Pi or SD card; a dock's link",
+     "kind": "repair",
+     "who": "opening",
+     "task": "fail"
+    },
+    {
+     "t0": 51.5,
+     "t1": 52.0,
      "what": "sieving cell: the ultrasonic bath's IPA changed, the wash module's filter",
      "kind": "maint",
      "who": "floor",
      "task": "sv_ipa"
+    },
+    {
+     "t0": 52.0,
+     "t1": 52.5,
+     "what": "the opening's light curtain and sensors cleaned; shutter and tray stops checked",
+     "kind": "maint",
+     "who": "opening",
+     "task": "vlm_clean"
     },
     {
      "t0": 52.5,
@@ -5788,33 +5706,17 @@
     },
     {
      "t0": 53.5,
-     "t1": 54.0,
-     "what": "cell windows cleaned, Aero S hopper and venturi checked",
+     "t1": 53.6,
+     "what": "eyewash and safety shower activated",
      "kind": "maint",
-     "who": "opening",
-     "task": "ld_clean"
-    },
-    {
-     "t0": 54.0,
-     "t1": 55.0,
-     "what": "tray I: SnowPods' filters and chambers (off the route)",
-     "kind": "maint",
-     "who": "opening",
-     "task": "pm_i"
+     "who": "floor",
+     "task": "c_eyewash"
     },
     {
      "t0": 55.0,
      "t1": 56.0,
      "what": "crucible",
      "kind": "crucible"
-    },
-    {
-     "t0": 57.5,
-     "t1": 58.0,
-     "what": "new graphite crucible and nozzle holder into the rotation",
-     "kind": "maint",
-     "who": "floor",
-     "task": "rp_crucible_stock"
     },
     {
      "t0": 74.0,
@@ -5824,27 +5726,35 @@
     },
     {
      "t0": 75.0,
-     "t1": 75.1,
-     "what": "eyewash and safety shower activated",
+     "t1": 75.25,
+     "what": "instrument PC: OS updates and a reboot (vendor software pinned)",
      "kind": "maint",
-     "who": "floor",
-     "task": "c_eyewash"
+     "who": "desk",
+     "task": "it_patch_nanoindenter"
     },
     {
      "t0": 75.25,
-     "t1": 76.25,
-     "what": "vendor software update: installed, then the reference check re-run and signed off",
-     "kind": "maint",
-     "who": "desk",
-     "task": "it_revalidate_hardness"
-    },
-    {
-     "t0": 76.25,
-     "t1": 76.5,
+     "t1": 75.5,
      "what": "MiR250 scanners and lights cleaned and checked; 2F-85 wiped",
      "kind": "maint",
      "who": "floor",
      "task": "mir_weekly"
+    },
+    {
+     "t0": 75.5,
+     "t1": 76.0,
+     "what": "waste tank emptied, water tank filled (the coupling has no drain or process water)",
+     "kind": "maint",
+     "who": "opening",
+     "task": "px_waste"
+    },
+    {
+     "t0": 76.0,
+     "t1": 76.5,
+     "what": "tray J: cups, plugs, vials, stubs and coupons restocked",
+     "kind": "maint",
+     "who": "opening",
+     "task": "store_j"
     },
     {
      "t0": 76.5,
@@ -5854,33 +5764,25 @@
     },
     {
      "t0": 77.5,
-     "t1": 78.0,
-     "what": "waste tank emptied, water tank filled (the coupling has no drain or process water)",
-     "kind": "maint",
-     "who": "opening",
-     "task": "px_waste"
-    },
-    {
-     "t0": 78.0,
-     "t1": 78.5,
-     "what": "tray J: cups, plugs, vials, stubs and coupons restocked",
-     "kind": "maint",
-     "who": "opening",
-     "task": "store_j"
-    },
-    {
-     "t0": 78.5,
      "t1": 79.0,
-     "what": "recoater blade replaced",
+     "what": "MiR battery connector, braking distance, wheel diameters; UR10e bolts, cables, flat rings, control box filter",
      "kind": "maint",
      "who": "floor",
-     "task": "ac_blade"
+     "task": "unit_halfyear"
     },
     {
      "t0": 79.0,
      "t1": 80.0,
      "what": "crucible",
      "kind": "crucible"
+    },
+    {
+     "t0": 81.5,
+     "t1": 82.0,
+     "what": "new graphite crucible and nozzle holder into the rotation",
+     "kind": "maint",
+     "who": "floor",
+     "task": "rp_crucible_stock"
     },
     {
      "t0": 98.0,
@@ -5890,35 +5792,11 @@
     },
     {
      "t0": 99.0,
-     "t1": 100.0,
-     "what": "chiller: fluid changed (the XRD's tube stops)",
+     "t1": 99.25,
+     "what": "instrument PC: OS updates and a reboot (vendor software pinned)",
      "kind": "maint",
-     "who": "floor",
-     "task": "chiller_fluid"
-    },
-    {
-     "t0": 99.0,
-     "t1": 99.5,
-     "what": "lost localization or a protective stop it can't clear",
-     "kind": "repair",
-     "who": "floor",
-     "task": "fail"
-    },
-    {
-     "t0": 99.5,
-     "t1": 100.0,
-     "what": "lost localization or a protective stop it can't clear",
-     "kind": "repair",
-     "who": "floor",
-     "task": "fail"
-    },
-    {
-     "t0": 100.0,
-     "t1": 100.5,
-     "what": "depowdering box: filter changed",
-     "kind": "maint",
-     "who": "floor",
-     "task": "dp_filter"
+     "who": "desk",
+     "task": "it_patch_tensile_h"
     },
     {
      "t0": 100.5,
@@ -5927,67 +5805,67 @@
      "kind": "crucible"
     },
     {
-     "t0": 101.5,
-     "t1": 102.0,
-     "what": "the bay's CombiTac dock: contacts wiped, pins, O-rings and coupling faces checked (it mates with every tray the Shuttle presents)",
+     "t0": 102.0,
+     "t1": 103.0,
+     "what": "control charts reviewed, next week's maintenance planned, spares reordered",
      "kind": "maint",
-     "who": "opening",
-     "task": "bay_dock"
+     "who": "floor",
+     "task": "review"
     },
     {
      "t0": 102.0,
-     "t1": 102.25,
-     "what": "instrument PC: OS updates and a reboot (vendor software pinned)",
+     "t1": 103.0,
+     "what": "control charts reviewed, next week's maintenance planned, spares reordered",
      "kind": "maint",
-     "who": "desk",
-     "task": "it_patch_mastersizer"
-    },
-    {
-     "t0": 102.25,
-     "t1": 102.75,
-     "what": "tray H: stencil printer and LumenPnP nozzles (off the route)",
-     "kind": "maint",
-     "who": "opening",
-     "task": "pm_h"
+     "who": "floor",
+     "task": "review"
     },
     {
      "t0": 103.0,
-     "t1": 103.5,
-     "what": "vacuum pump oil changed",
-     "kind": "maint",
-     "who": "floor",
-     "task": "rp_pump_oil"
-    },
-    {
-     "t0": 103.5,
      "t1": 104.5,
-     "what": "control charts reviewed, next week's maintenance planned, spares reordered",
-     "kind": "maint",
-     "who": "floor",
-     "task": "review"
-    },
-    {
-     "t0": 103.5,
-     "t1": 104.5,
-     "what": "control charts reviewed, next week's maintenance planned, spares reordered",
-     "kind": "maint",
-     "who": "floor",
-     "task": "review"
-    },
-    {
-     "t0": 104.5,
-     "t1": 106.0,
      "what": "rePowder: chamber, cyclone and powder catch cleaned; seals checked",
      "kind": "maint",
      "who": "floor",
      "task": "rp_clean"
     },
     {
+     "t0": 104.5,
+     "t1": 105.5,
+     "what": "insulation set (bottom, side tube, top cone) replaced",
+     "kind": "maint",
+     "who": "floor",
+     "task": "rp_insulation"
+    },
+    {
+     "t0": 105.5,
+     "t1": 106.0,
+     "what": "Type N thermocouple and its sheath replaced",
+     "kind": "maint",
+     "who": "floor",
+     "task": "rp_thermocouple"
+    },
+    {
      "t0": 171.0,
-     "t1": 172.0,
-     "what": "a clogged or leaking cell; the reference electrode",
+     "t1": 171.5,
+     "what": "a tray position error, a light-curtain trip, the shutter",
      "kind": "repair",
      "who": "opening",
+     "task": "fail"
+    },
+    {
+     "t0": 171.5,
+     "t1": 172.0,
+     "what": "lost localization or a protective stop it can't clear",
+     "kind": "repair",
+     "who": "floor",
+     "task": "fail"
+    },
+    {
+     "t0": 176.0,
+     "t1": 178.0,
+     "what": "recoater crash or short feed",
+     "kind": "repair",
+     "who": "floor",
      "task": "fail"
     }
    ]

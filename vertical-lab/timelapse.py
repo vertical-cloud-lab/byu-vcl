@@ -879,14 +879,12 @@ class Movie:
         self.q_ready = np.radians((-90.0, -100.0, 110.0, -100.0, -90.0, 0.0))
         self.home = {k: [*V.SLOTS[A.HOME[k]]] for k in L.tray}
         self.work_q: dict = {}
-        # round 10: the person on shift and a vendor, drawn where their task is (upkeep_clip's figure)
-        import upkeep_clip as UC
+        # round 10: the person on shift and a vendor, drawn where their task is; round 11: people.Person, MakeHuman's
+        # CC0 body skinned and dressed (round 10's capsule figure was upkeep_clip's)
+        import people
         self.up = UpkeepView(sim)
-        self.person = UC.Person(sc, "staff")
-        self.vendor = UC.Person(sc, "vendor")
-        for n in self.vendor.names():
-            if any(w in n for w in ("coat", "sleeve", "forearm")):
-                sc.color[n] = VENDOR_COAT
+        self.person = people.Person(sc, "staff")
+        self.vendor = people.Person(sc, "vendor", coat=VENDOR_COAT, hair=(0.12, 0.10, 0.09), skin=(0.55, 0.40, 0.31))
         self.person.show(0.0)
         self.vendor.show(0.0)
         self.spots = {}                     # floor machine -> (x, y, heading, hands' target): at its front, its dock
@@ -938,8 +936,8 @@ class Movie:
             return None
         sh, _ = self.up.opening_of(r)
         if sh:                              # at a Shuttle's opening, a little right of centre, turned to the tray
-            x0 = self.V.SHUTTLE_X[sh]
-            return (x0 + 420.0, LIP - 330.0, 12.0, (x0 + 260.0, -1450.0, self.V.Z_OPEN + 130.0))
+            x0 = self.V.SHUTTLE_X[sh]       # (round 11: 260 mm off the cover's lip, the coat clear of it, and in reach)
+            return (x0 + 420.0, LIP - 260.0, 12.0, (x0 + 260.0, -1450.0, self.V.Z_OPEN + 130.0))
         a = r["asset"]
         if a.startswith("unit"):            # beside the unit on its charger
             cx, cy, _ = self.chargers[int(a[4:])]
@@ -956,7 +954,9 @@ class Movie:
         across = np.array([c_, s_, 0.0])
         hl = np.array([hx, hy, hz + (0.0, 70.0)[k]]) - 150.0 * across
         hr = np.array([hx, hy, hz + (70.0, 0.0)[k]]) + 150.0 * across
-        fig.set(x=x, y=y, hd=hd, lean=12.0, amp=0.0, phase=0.0, hands={"l": tuple(hl), "r": tuple(hr)})
+        lean = 18.0 if hz < 1000.0 else 12.0  # a stoop to a tray's front at the opening, upright at a machine
+        fig.set(x=x, y=y, hd=hd, lean=lean, amp=0.0, phase=0.0, hands={"l": tuple(hl), "r": tuple(hr)},
+                look=(hx, hy, hz))
         fig.show(1.0)
 
     def set_state(self, t: float, phase: int, f: int):

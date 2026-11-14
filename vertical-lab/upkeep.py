@@ -72,8 +72,26 @@ PEOPLE = {"opening", "extracted", "floor", "desk"}
 TRAY_OF = {st: tr for _, st, _, _, tr, _, _ in TL.STEPS if tr}
 ROUTE = list(TL.STATION_NAMES)
 TRAYS = "ABCDEFGHIJKLMNO"
-SPARES_TRAY = "a spares tray (proposed: Shuttle 1's free 390 mm at the top of the rear column takes a 350 mm tray "\
-              "without a UPS or cameras; notes/tray_plan.md)"
+
+
+def _passive() -> str:
+    """The trays with no UPS, dock plate or cameras: the stores (setup_lab.PASSIVE with r8_store.PASSIVE_TRAYS merged;
+    J, N and O since b3a4d42). Their own tasks (store_j, store_n, store_o) stay; the per-tray coupling, UPS and camera
+    tasks and failures don't apply to them."""
+    try:
+        import setup_lab as SL
+        SL.merge_r8()
+        return "".join(k for k in TRAYS if k in SL.PASSIVE)
+    except Exception:                                   # noqa: BLE001
+        return "JNO"
+
+
+PASSIVE = _passive()
+POWERED = "".join(k for k in TRAYS if k not in PASSIVE)      # the twelve with a dock plate, a UPS and cameras
+SPARES_SHUTTLE = 2
+SPARES_TRAY = "a spares tray (proposed: Shuttle 2's free 515 mm at the top of the rear column takes a 350 mm tray "\
+              "without a UPS or cameras; Shuttle 1 has 265 mm there, 265 at the top of its front and 168 under the "\
+              "access table; notes/tray_plan.md)"
 
 PARAMS = {
     "seed": dict(value=SEED, source="the failures' random draws; any seed gives a year like this one"),
@@ -117,7 +135,8 @@ def T(key, asset, what, every, who, down, *, person=None, kind="pm", spares="", 
 
 # ================================================================================================ the task table
 # asset: a route station (timelapse STEPS), "vlm1"/"vlm2" (a Shuttle: its opening), "unit" (each MiR250 + UR10e),
-# "tray:X" (a tray's own parts: coupling, UPS, cameras; "tray:*" each of the fifteen), or a service ("n2", "chiller",
+# "tray:X" (a tray's own parts: coupling, UPS, cameras; "tray:*" each of the twelve powered trays, not the passive
+# stores J, N and O), or a service ("n2", "chiller",
 # "fumehood", "glovebox", "depowder", "storage", ...). Sources: makers' manuals, datasheets and standards, as cited;
 # "assumed" otherwise. notes/upkeep.md has the same table with the links.
 # Sources, cited by key in each task's source (notes/upkeep.md has them as links):
@@ -189,7 +208,7 @@ TASKS = [
     T("bay_dock", "vlm*", "the bay's CombiTac dock: contacts wiped, pins, O-rings and coupling faces checked (it "
       "mates with every tray the Shuttle presents)", ("days", 91), "opening", 0.5, spares="O-rings, contact cleaner",
       source="assumed: quarterly; " + SRC["combitac"]),
-    # ---- each tray's coupling, UPS and cameras (each of the fifteen trays)
+    # ---- each powered tray's coupling, UPS and cameras (twelve: the stores J, N and O are passive)
     T("dock_inspect", "tray:*", "CombiTac plate and bay dock: contacts wiped, pins, O-rings and coupling faces checked",
       ("mates", 10000), "opening", 0.5, spares="O-rings, contact cleaner",
       source="assumed: every 10,000 mating cycles, a tenth of the rating (" + SRC["combitac"] + ")"),
@@ -418,7 +437,7 @@ TASKS = [
 
 # Beyond the first year: not booked by the model, counted in notes/upkeep.md's multi-year table.
 LONG = [
-    ("UPS batteries (15, VRLA)", "3-5 years at 25 °C, about half that per 10 °C warmer", "a person, the tray pulled "
+    (f"UPS batteries ({len(POWERED)}, VRLA)", "3-5 years at 25 °C, about half that per 10 °C warmer", "a person, the tray pulled "
      "out; Eaton's battery kit is hot-swappable", SRC["eaton"]),
     ("UPS batteries, if lithium (9PX Li-ion, LFP)", "8-10 years", "as above", SRC["eaton"]),
     ("MiR250 batteries", "at least 3,000 cycles", "a person", "MiR250 Li-NMC 47.7 V 34.2 Ah (reseller sheet)"),
@@ -564,14 +583,14 @@ class Upkeep:
                 for u in (0, 1):
                     out.append(dict(t, key=f"{t['key']}:{u}", asset=f"unit{u}", unit=u))
             elif a == "tray:*":
-                for k in TRAYS:
+                for k in POWERED:
                     out.append(dict(t, key=f"{t['key']}:{k}", asset=f"tray:{k}"))
             else:
                 out.append(dict(t))
         return out
 
     def shuttle(self, tray):
-        return self.shuttles.get(tray, 1) if tray else None      # "S", the proposed spares tray: Shuttle 1
+        return self.shuttles.get(tray, SPARES_SHUTTLE) if tray else None    # "S", the proposed spares tray
 
     def tray_stations(self, tray) -> list:
         return [s for s, k in TRAY_OF.items() if k == tray]
@@ -867,7 +886,7 @@ class Upkeep:
 
     def _calendar_failures(self, hours):
         """The Shuttles', the units', the trays' and the services' failures, per calendar hour, drawn up front."""
-        assets = {"vlm*": ["vlm1", "vlm2"], "unit": ["unit0", "unit1"], "tray:*": [f"tray:{k}" for k in TRAYS]}
+        assets = {"vlm*": ["vlm1", "vlm2"], "unit": ["unit0", "unit1"], "tray:*": [f"tray:{k}" for k in POWERED]}
         draws = []
         for m in FAILS:
             if m[3] != "cal":
@@ -1054,7 +1073,10 @@ def realism(sim: dict, years: float = 1.0) -> dict:
     shut = {1: 0, 2: 0}
     trays = {}
     for k, n in sorted(pres.items()):
-        sh = TL._shuttles().get(k, 1)
+        sh = TL._shuttles().get(k, SPARES_SHUTTLE if k == "S" else 1)
+        if k in PASSIVE or k == "S":        # no dock plate, no UPS (the stores; the proposed spares tray): no mates
+            trays[k] = dict(presentations=n, plate_mates=0, passive=True)
+            continue
         shut[sh] += n
         mates = n * PARAMS["mates_per_presentation"]["value"]
         w = TRAY_W.get(k, 60)

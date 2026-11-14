@@ -50,6 +50,7 @@ FILES = {
 MODEL_V = 11                         # bump when the derived model changes (the cached pickle's name)
 
 HEIGHT = 1735.0                     # the body, sole to crown, mm; the shoes add ~10 mm and the hair ~5: 1.75 m
+GROUND = 2.0                        # the lowest point of the shoes, mm over the floor (the floor's tape is 1.5 mm)
 SOLE = 10.0                         # the shoes' sole under the foot
 SKIN = (0.80, 0.64, 0.53)
 COAT = (0.93, 0.94, 0.95)
@@ -686,7 +687,7 @@ class Person:
         self.groups = [self.group, *self.hand_groups.values()]
         self.held = {}                                   # side -> (group, offset from the hand's frame)
         self.st = dict(x=0.0, y=0.0, hd=0.0, lean=0.0, phase=0.0, amp=0.0, hands={"l": None, "r": None}, look=None,
-                       grip={"l": 0.3, "r": 0.3})
+                       grip={"l": 0.3, "r": 0.3}, palm={"l": None, "r": None})
         self._rest_arm()
         self.set()
 
@@ -750,7 +751,7 @@ class Person:
     def set(self, **kw):
         s = self.st
         for k, v in kw.items():
-            if k in ("hands", "grip"):
+            if k in ("hands", "grip", "palm"):
                 s[k] = dict(s[k], **v)
             else:
                 s[k] = v
@@ -816,10 +817,7 @@ class Person:
         # the pelvis: the lean's share at the hips, about the hip joints; the walk's bob
         hips = (self.H("upperleg01.L") + self.H("upperleg01.R")) / 2
         leg = float(hips[2] - SOLE)
-        drop = 0.0
-        if amp > 0:
-            spread = max(abs(thetas["L"][0]), abs(thetas["R"][0]))
-            drop = 0.75 * leg * (1.0 - math.cos(spread)) + 8.0 * amp
+        drop = 0.0                      # the walk's bob: grounding the lowest shoe (below) lowers the hips
         Rr = _rot((1, 0, 0), -self.LEAN_HIPS * lean) @ _rot((0, 0, 1), 0.06 * amp * math.sin(ph))
         root = _M(Rr, hips - Rr @ hips + np.array([0.0, 0.0, -drop]))
         rest = (1.0 - self.LEAN_HIPS) * lean
@@ -875,9 +873,21 @@ class Person:
             P = S[self.bi[f"shoulder01.{sd}"]][:3, :3]
             Q[f"upperarm01.{sd}"] = P.T @ Rw
             Q[f"lowerarm01.{sd}"] = _rot(a["k0"], eps - a["e0"])
-            # the forearm's turn: palms down to a bar in front, towards the thighs when hanging
-            reach = 0.0 if tgt is None else float(np.clip((Hl[2] - (Sh[2] - L1 - L2 + 120.0)) / 380.0, 0.0, 1.0))
-            Q[f"lowerarm02.{sd}"] = _rot(a["fw"], -sx * math.radians(-15.0 + 70.0 * reach))
+            # the forearm's turn: palms down to a bar in front, towards the thighs when hanging; or the palm turned
+            # to face a given direction (s["palm"]: "down" or a vector in the world)
+            want = s["palm"][side]
+            if want is None or tgt is None:
+                reach = 0.0 if tgt is None else float(np.clip((Hl[2] - (Sh[2] - L1 - L2 + 120.0)) / 380.0, 0.0, 1.0))
+                Q[f"lowerarm02.{sd}"] = _rot(a["fw"], -sx * math.radians(-15.0 + 70.0 * reach))
+            else:
+                tdir = np.array([0.0, 0.0, -1.0]) if isinstance(want, str) else Finv[:3, :3] @ _unit(want)
+                Q[f"lowerarm02.{sd}"] = np.eye(3)
+                St = self._chain(Q, root)
+                n0 = St[self.bi[f"wrist.{sd}"]][:3, :3] @ a["palm_n"]
+                fax = _unit(St[self.bi[f"lowerarm01.{sd}"]][:3, :3] @ a["fw"])
+                u0, u1 = n0 - (n0 @ fax) * fax, tdir - (tdir @ fax) * fax
+                th = math.atan2(float(fax @ np.cross(u0, u1)), float(u0 @ u1))
+                Q[f"lowerarm02.{sd}"] = _rot(a["fw"], th)
             # the fingers: together, curled a little, more when holding
             g = s["grip"][side] if side not in self.held else 0.8
             for fi in range(2, 6):
@@ -891,6 +901,11 @@ class Person:
                 ax = _unit(np.cross(_unit(self.T(b) - self.H(b)), a["palm_n"]))
                 Q[b] = _rot(ax, math.radians(35.0) * g)
         S = self._chain(Q, root)
+        # on the floor: the shoes' lowest point at GROUND (the gait and the lean move the hips, not the floor)
+        d, _ = self.parts["shoes"]
+        Pk = np.einsum("kij,kj->ki", S[d["cols"], 2:3, :3], d["P"][d["rows"]])[:, 0] + S[d["cols"], 2, 3]
+        zs = np.bincount(d["rows"], weights=d["vals"] * Pk, minlength=len(d["P"]))
+        S[:, 2, 3] += GROUND - float(zs.min())
         self.S = S
         # the hands' frames (world), for what they hold
         for side in ("l", "r"):
