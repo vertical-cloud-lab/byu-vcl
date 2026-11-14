@@ -217,7 +217,7 @@ and checks everything else that moves (trays, doors, the MiR, the instruments' o
 | [`alloy_powder_r11a.json`](../out/collisions/alloy_powder_r11a.json), round 10's rules | round 10's | 0 of 1028 | | **0** |
 | [`alloy_powder_r11s0.json`](../out/collisions/alloy_powder_r11s0.json), stricter rules | round 10's, the XRF block on the plate | 14 of 1028 | 78 | **92** |
 | [`alloy_powder_r11s1.json`](../out/collisions/alloy_powder_r11s1.json), light as non-solid, the cover 55 % open, the door to 70 deg | | 39 of 1028 | 12 | **51** |
-| the committed code: light as non-solid, the cover and the door as in round 10 | this commit | about 14 (as `r11s0`) | about 14 | **about 28** (re-audit queued at 04:11; `alloy_powder.json` when it lands) |
+| [`alloy_powder.json`](../out/collisions/alloy_powder.json): the committed code, light as non-solid, the cover and the door as in round 10 | `e54631f` | 14 of 1028 | 16 | **30** |
 
 Changed this round, from what the stricter audit found in the other chapters (not re-rendered: the committed MP4 is
 round 10's, rendered before these):
