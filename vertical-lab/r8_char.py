@@ -96,6 +96,13 @@ def plunger(x, y, z, toward, L=12.0, d=6.0) -> cq.Workplane:
     return w.rotate((0, 0, 0), (0, 0, 1), ang).translate((x, y, z))
 
 
+# Round 11: where a plunger's ball sits. Its centre was 0.3 mm outside the mount's radius, so the 1.92 mm ball stood
+# 1.6 mm inside a seated mount (collide.depth: 3 mm, over the stricter audit's 1.5). The set screw is now turned back:
+# the ball's centre 1.47 mm outside the mount, its tip 0.75 mm proud of the bore and 0.45 mm into a mount drawn centred,
+# which is the push-back the mount gives the spring (the mount's 0.3 mm radial clearance takes up the rest).
+PLUNGER_OUT = 1.47
+
+
 def cup(d_out, floor, depth, bore=SP.MOUNT_D + 0.6) -> cq.Workplane:
     """A holder cup for a 1.5 in mount, its base at z = 0: a floor `floor` thick, a bore `depth` deep."""
     w = cq.Workplane("XY").circle(d_out / 2).extrude(floor + depth)
@@ -124,7 +131,7 @@ def sem() -> Instrument:
     dr.add("holder adapter", box(-12, yc - 12, st, 12, ys + 12, za).union(cyl(12, 10, y=ys, z=st - 10)), "r8c_al")
     dr.add("mount holder cup", cup(c["d"], c["floor"], c["depth"]).translate((0, yc, za)), "r8c_al")
     zc = za + c["floor"] + c["depth"] / 2
-    dr.add("spring plunger", plunger(-(SP.MOUNT_D / 2 + 0.3), yc, zc, (1, 0), L=10.0), "steel")
+    dr.add("spring plunger", plunger(-(SP.MOUNT_D / 2 + PLUNGER_OUT), yc, zc, (1, 0), L=10.0), "steel")
     body = inst.pieces["body"]
     # the AZtecOne: lettered on its front (rbox at x = W/2 + 190, y = -90, front face at y = -235)
     body.add("AZtecOne lettering", box(W / 2 + 115, -237.2, 262, W / 2 + 265, -236.0, 280), "r8c_label")
@@ -208,8 +215,8 @@ def nanoindenter() -> Instrument:
     stage.add("x stage", box(-90, -80, sz - 17, 90, 80, sz - 6), "aluminium")
     hc = NANO_HOLD
     stage.add("holder cup", cup(hc["d"], hc["floor"], hc["depth"]).translate((ox, 0, sz - 6)), "r8c_steel")
-    stage.add("spring plunger", plunger(ox, SP.MOUNT_D / 2 + 0.3, sz - 6 + hc["floor"] + hc["depth"] / 2, (0, -1),
-                                        L=10.0), "steel")
+    stage.add("spring plunger", plunger(ox, SP.MOUNT_D / 2 + PLUNGER_OUT, sz - 6 + hc["floor"] + hc["depth"] / 2,
+                                        (0, -1), L=10.0), "steel")
     tip = _piece(inst, "tip")
     tip.add("tip shaft", cyl(10, 90, x=hx, y=0, z=sz + 60), "chrome")
     tip.add("Berkovich tip", cq.Workplane().add(cq.Solid.makeCone(0.2, 5.0, 8.0, cq.Vector(hx, 0, sz + 52),
@@ -220,9 +227,14 @@ def nanoindenter() -> Instrument:
     lid = _piece(inst, "lid")
     lid.add("lid", box(-W / 2, yf, hz, W / 2, yb, H).edges("|Y").fillet(14), "inst_white")
     lid.add("lid window", box(-W / 2 + 120, yf + 80, H, W / 2 - 80, yb - 120, H + 1), "inst_black")
-    lid.add("hood front", box(-W / 2 + 40, yf, p["feet"] + 70, W / 2 - 30, yf + 12, hz).cut(
+    # Round 11: the front panel and its window are the cabinet's, fixed; only the lid lifts. Lifted with the lid,
+    # hinged at the back, the panel's lower edge (647 mm from the hinge) swung up to 127 mm out in front of the
+    # cabinet, through tray E's camera posts E0 and E1 (collide.Movers); the lid alone never comes forward of the
+    # cabinet's front. The arm reaches the stage over the panel (assumed: a top-opening lid, ours; KLA's own
+    # enclosure is not modelled)
+    cab.add("front panel", box(-W / 2 + 40, yf, p["feet"] + 70, W / 2 - 30, yf + 12, hz).cut(
         box(-W / 2 + 90, yf - 1, p["feet"] + 120, W / 2 - 80, yf + 13, hz - 50)), "inst_white")
-    lid.add("hood glass", box(-W / 2 + 90, yf + 4, p["feet"] + 120, W / 2 - 80, yf + 8, hz - 50), "window")
+    cab.add("front window", box(-W / 2 + 90, yf + 4, p["feet"] + 120, W / 2 - 80, yf + 8, hz - 50), "window")
     inst.meshes["readout"] = _dummy((0, 0, 300))
     inst.joints = {
         "lid": Joint("hinge", axis=(1, 0, 0), pivot=(0, yb, hz), deg=-p["lid_deg"]),
@@ -236,11 +248,12 @@ def nanoindenter() -> Instrument:
     inst.props = ("sample", "readout")
     see = {"~cabinet": (0.0, 1.0), "~lid": (0.0, 1.0)}
     inst.actions = [
-        ("The hood lifts on its gas struts, hinged at the back, and the XY stage's carriage runs forward to its load "
-         "position.", 2.0, {"lid": (0.0, 1.0), "carriage": (0.0, 1.0), "sample": (0.0, 0.0), "readout": (0.0, 0.0)}),
+        ("The lid lifts on its gas struts, hinged at the back (the front panel stays), and the XY stage's carriage "
+         "runs forward to its load position.", 2.0,
+         {"lid": (0.0, 1.0), "carriage": (0.0, 1.0), "sample": (0.0, 0.0), "readout": (0.0, 0.0)}),
         ("The steel mount goes into the holder cup: its steel base on the cup's steel floor, a spring plunger "
          "clamping it. Nothing soft under the slice.", 2.4, {"sample": (0.0, 1.0)}),
-        ("Hood down (drawn see-through). The stage carries the slice back under the microscope objective, which "
+        ("Lid down (drawn see-through). The stage carries the slice back under the microscope objective, which "
          "finds the polished face and picks the grid.", 2.4, {"lid": (1.0, 0.0), "carriage": (1.0, 0.0), **see}),
         ("Then 100 mm across, under the indenter head (the InForce 50 actuator).", 1.6, {"stage": (0.0, 1.0)}),
         ("The Berkovich tip comes down onto the surface and is driven in to 500 nm, recording load and depth.", 1.8,
