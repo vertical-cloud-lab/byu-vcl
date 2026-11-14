@@ -205,8 +205,12 @@ only one repair: a broken tip, with a 72 h wait for the part.
 | Readings on the chart | 30 working days | illustrative, seeded |
 | The weight's seat on the deck | 64 mm block, 3 mm pocket | ours |
 | Extraction table | 2,360 × 900 mm, rails at the opening's 854 mm | assumed: Kardex publishes no size for its extraction device or its cart (notes/maintenance.md has the questions to ask) |
-| The person | 1.75 m: lab coat, nitrile gloves, safety glasses | drawn here (`Person`): no figure existed in the codebase. The finale (`timelapse.py`) uses the same figure |
+| The person | 1.75 m in shoes: lab coat, scrub top, trousers, nitrile gloves, safety glasses | `people.py`: MakeHuman's CC0 base mesh, skeleton and weights (pinned, fetched at run time), skinned in numpy. The finale (`timelapse.py`) uses the same figure |
 | The tip change | 2 h, every 600 runs | assumed (`upkeep.py nano_tip`) |
 
-The person's arms are a two-link solve to each hand target, and their walk is a simple gait. Neither is checked for
-contact with the tray or the table, so their hands are illustrative. `ARM_AUDIT` checks only the UR10e.
+The person's arms are a two-bone solve to each hand target on MakeHuman's skeleton, and their walk is a simple gait
+with the shoes grounded every frame. Since round 11 the whole body is checked for contact every audited frame
+(`PeopleCheck`, above). Each hand on the table's bar or the iMicro's panel is settled to rest 0.5 mm off it. Assumed:
+- the iMicro's removable front panel and its 650 mm lift (r8_char's `panel`, ours);
+- the tip turned in place (its 60 mm draw is not shown);
+- the table's size and its push bar at 794-824 mm, under the hips, so the person stoops 24 deg to push it.
