@@ -10,8 +10,8 @@ deep, and everything else that moves is checked too (the movers check).
 
 | | |
 |---|---|
-| MP4, 1280 x 720, 6 fps, 412.3 s, 2,474 frames (rendered 02:00-02:54 UTC from 86ff959, only tray F populated, Shuttles clad; section 7, frames 1766-2473, re-rendered from 5f16a3c with the test's camera raised and spliced in at the section boundary) | [`out/mp4/alloy_workflow.mp4`](../out/mp4/alloy_workflow.mp4) (21.7 MB) |
-| GIF, 276 px, 2 fps, from the spliced MP4 (under the 4.9 MB budget; not used in the long-form) | [`out/alloy_workflow.gif`](../out/alloy_workflow.gif) (4.8 MB) |
+| MP4, 1280 x 720, 6 fps, 412.3 s, 2,474 frames (rendered 02:00-02:54 UTC from 86ff959, only tray F populated, Shuttles clad; section 7, frames 1766-2473, re-rendered with the test's camera raised (affd4d9) and spliced in at the section boundary) | [`out/mp4/alloy_workflow.mp4`](../out/mp4/alloy_workflow.mp4) |
+| GIF, 276 px, 2 fps, from the spliced MP4 (under the 4.9 MB budget; not used in the long-form) | [`out/alloy_workflow.gif`](../out/alloy_workflow.gif) |
 | The audit of what was rendered (`ARM_AUDIT=1`, round 11's strict rules, every frame at 6 fps): 1 of 2,089 frames | [`out/collisions/alloy_workflow.json`](../out/collisions/alloy_workflow.json), the frame: [`alloy_workflow_01347.jpg`](../out/collisions/alloy_workflow_01347.jpg) |
 | The same rules on round 10's code (F1 already moved): sections 1-5, sections 6-7 | [`alloy_workflow_s15.json`](../out/collisions/alloy_workflow_s15.json), [`alloy_workflow_s67.json`](../out/collisions/alloy_workflow_s67.json) |
 | `PREVIEW=1` stills: the specimen fingers in their stand, a bar going into the lower grip, the halves | [`out/alloy_workflow_preview.png`](../out/alloy_workflow_preview.png) |
@@ -154,9 +154,9 @@ in sections 6-7, plus the movers listed under 3-5 above; round 10's own rules on
   (`CAM_TEST`), so its cube covered the specimen and both grips through both pulls. `CAM_TEST` now looks from 1600
   mm, not 1150, its axis 161 mm over the cube's top, and section 7 was re-rendered alone (`CH5_FROM=7`, 742 frames,
   03:43-03:58) and spliced in at frame 1766 (`/tmp/ch5/splice.py`: section 7 is 708 frames in both, the total
-  2,474). The arm audit is unchanged (a camera). A run of section 7 alone starts its status panel from section 1's,
-  so the splice shows "Plate: in the Aconity MIDI" through section 7 and no Bar line; the panel is set for it now
-  and a second section-7 run was queued at 04:01 to fix that, if it lands in time.
+  2,474). The arm audit is unchanged (a camera). A run of section 7 alone started its status panel from section 1's
+  ("Plate: in the Aconity MIDI", no Bar line), so `CH5_FROM=7` now sets it as sections 2-6 leave it, and the splice
+  in the MP4 is the second section-7 run (04:04-04:18), its panel the same as the whole run's.
 - While the specimen fingers are on, the 2F-85 takes nothing else: they go on at the EDM for the bars, come off
   before the jar's lid and the tongs, and go on again at the Instron; each fitting or removal takes about 3 s.
 
