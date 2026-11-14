@@ -1,0 +1,29 @@
+{
+ "name": "instruments/openflexure_v7",
+ "fps": 15,
+ "n_frames": 144,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/3",
+   "caption": "A polished coupon on a slide goes under the clips: reflection mode, for opaque metal samples.",
+   "start_frame": 0,
+   "end_frame": 49
+  },
+  {
+   "label": "2/3",
+   "caption": "The LED beside the optics module lights the sample through the objective via the beamsplitter; the camera looks down through it. The stage scans x/y on four flexure legs that lean and shear with it; the X and Y actuators pull the front two as levers. The optics focus.",
+   "start_frame": 50,
+   "end_frame": 108
+  },
+  {
+   "label": "3/3",
+   "caption": "Back to centre. Printed in PLA, about 170 mm across; several fit on one tray.",
+   "start_frame": 109,
+   "end_frame": 143
+  }
+ ]
+}

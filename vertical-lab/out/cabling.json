@@ -1,0 +1,148 @@
+{
+ "route": {
+  "ladder_z_mm": 2800.0,
+  "ladder_y_mm": -560.0,
+  "width_mm": 300.0,
+  "path_xy_mm": [
+   [
+    -8200.0,
+    -560.0
+   ],
+   [
+    -1750.0,
+    -560.0
+   ],
+   [
+    -1750.0,
+    2000.0
+   ],
+   [
+    1750.0,
+    2000.0
+   ],
+   [
+    1750.0,
+    -560.0
+   ],
+   [
+    10200.0,
+    -560.0
+   ]
+  ],
+  "note": "placements of the ladder, panel, switch and controls are ours"
+ },
+ "circuits": [
+  {
+   "key": "vlm",
+   "what": "Kardex Shuttle XP 500 (drives, controls)",
+   "supply": "208 V 3-phase (#53)",
+   "load": "not published by Kardex; a used XP 500 2450x864 lists 400 V 17 A, used XP listings 8.6 kVA (24 A per phase at 208 V)",
+   "source": "#53; machineseeker and exapro listings (search snippets)",
+   "kind": "snippet"
+  },
+  {
+   "key": "docks",
+   "what": "tray docks: six slots and the bay, at most six live",
+   "supply": "208Y/120 V: L1, L2, N, PE per dock, 30 A breaker (CombiTac O3 mm contacts: 39 A)",
+   "load": "tray F 3.5 kW, tray C 1.2 kW, tray D 1.1 kW, the rest under 0.7 kW (services.json)",
+   "source": "the instruments' ratings in POWER; CombiTac catalogue p.26",
+   "kind": "derived"
+  },
+  {
+   "key": "repowder",
+   "what": "AMAZEMET rePowder atomizer and its chiller",
+   "supply": "400 V 3-phase and 230 V, 32 A plugs; the optimizer draws up to about 60 A",
+   "load": "as left",
+   "source": "rePowder-BYU-Installation-Details.txt (the install call)",
+   "kind": "published"
+  },
+  {
+   "key": "glovebox",
+   "what": "Inert PureLab HE 2GB glovebox",
+   "supply": "not found",
+   "load": "not found",
+   "source": "Inert's manual (NIST copy) has a pre-installation chapter, not read",
+   "kind": "not found"
+  },
+  {
+   "key": "aconity",
+   "what": "Aconity MIDI LPBF printer",
+   "supply": "not found",
+   "load": "laser 500 W (Gauss) or 1200 W (ring); the machine's supply was not found",
+   "source": "zhaw.ch's page on its MIDI (snippet)",
+   "kind": "snippet"
+  },
+  {
+   "key": "instron_floor",
+   "what": "Instron 68FM-100",
+   "supply": "208-240 V 1-phase (reduced ratings) or 208/240/400 V 3-phase (preferred)",
+   "load": "not found",
+   "source": "Instron 6800 floor-model sheet (snippet)",
+   "kind": "snippet"
+  },
+  {
+   "key": "instron_small",
+   "what": "Instron 68SC-2",
+   "supply": "100/120/220/240 V 1-phase, 47-63 Hz",
+   "load": "1400 VA max (table models)",
+   "source": "Instron 6800 table-model brochure (snippet)",
+   "kind": "snippet"
+  },
+  {
+   "key": "wire_edm",
+   "what": "FANUC ROBOCUT alpha-C400iC",
+   "supply": "200 V +-10 % 3-phase (or 220 V)",
+   "load": "13 kVA (36 A per phase at 208 V)",
+   "source": "FANUC Europe data sheet (snippet)",
+   "kind": "snippet"
+  },
+  {
+   "key": "rail",
+   "what": "Vention MachineMotion 2 (four-drive) for the rail",
+   "supply": "85-264 V 1-phase",
+   "load": "1200 W typical, 9 A rated at 120 V",
+   "source": "Vention MachineMotion 2 user manual (snippet)",
+   "kind": "snippet"
+  },
+  {
+   "key": "ur",
+   "what": "UR10e control box",
+   "supply": "100-240 V 1-phase, 47-440 Hz",
+   "load": "350 W typical, 615 W maximum average",
+   "source": "UR's specifications via a cobot guide (snippet)",
+   "kind": "snippet"
+  },
+  {
+   "key": "mir",
+   "what": "MiR Charge 48V (MiR250 layout only)",
+   "supply": "100-240 V 1-phase, a standard 15 A outlet",
+   "load": "48 V at up to 40 A out, about 1.9 kW",
+   "source": "MiR (fetched); IDEC listing; Konica Minolta (snippets)",
+   "kind": "snippet"
+  },
+  {
+   "key": "n2",
+   "what": "Parker Balston UHPN2-1100 N2 generator",
+   "supply": "120 V 1-phase",
+   "load": "not found; needs 60-125 psig air",
+   "source": "govsci, gmi-inc, marshallscientific (snippets)",
+   "kind": "snippet"
+  },
+  {
+   "key": "chiller",
+   "what": "Thermo Scientific ThermoFlex 900 chiller",
+   "supply": "not found",
+   "load": "900 W of cooling at 20 C; its input was not found",
+   "source": "thermofisher.com TF900 (snippet)",
+   "kind": "snippet"
+  },
+  {
+   "key": "network",
+   "what": "PoE+ switch: the bay camera, a link to each riser and on to the docks",
+   "supply": "120 V 1-phase",
+   "load": "PoE+ (IEEE 802.3at): up to 30 W a port at the switch; a Pi 5 takes about 4 W typical, 27 W supply rating",
+   "source": "raspberrypi.com",
+   "kind": "published"
+  }
+ ]
+}

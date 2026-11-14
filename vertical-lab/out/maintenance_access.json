@@ -1,0 +1,49 @@
+{
+ "vlm_front_face_y_mm": -1562.0,
+ "opening_width_mm": 2500.0,
+ "access_table_z_mm": 833.0,
+ "header_z_mm": 1829.0,
+ "tray_at_opening_mm": {
+  "front_edge_behind_face": 100.0,
+  "back_edge_behind_face": 964.0,
+  "floor_z": 857.0
+ },
+ "mir250_docked_mm": {
+  "x": [
+   -400.0,
+   400.0
+  ],
+  "y": [
+   -2222.0,
+   -1642.0
+  ],
+  "in_front_of_face": [
+   80.0,
+   660.0
+  ],
+  "cabinet_top_z": 780.0,
+  "arm_base_z": 800.0,
+  "note": "it drives off before a tray is pulled out (warehouse.py: a dock, not a fixture)"
+ },
+ "target_post_mm": {
+  "centre": [
+   -1330.0,
+   -1742.0
+  ],
+  "clear_of_the_tray_side_mm": 80.0,
+  "note": "the VLM's AprilTag post stands outside the opening's width, beside the left post"
+ },
+ "full_extraction": {
+  "tray_travel_out_mm": 964.0,
+  "least_floor_in_front_of_face_mm": 864.0,
+  "fixed_things_in_that_floor": [],
+  "note": "the tray alone; Kardex publishes no size for the extraction device or the cart"
+ },
+ "second_shuttle_left_side_x_mm": 2215.0,
+ "bay_dock_y_mm": -750.0,
+ "sources": {
+  "kardex_extraction": "Kardex Remstar Shuttle XP brochure, p.6: 'With the full tray extraction device, a tray is placed in front of the access opening for loading and unloading purposes. This can be loaded onto the optional transport cart'; options list: automatic and manual tray extraction, transit trolley, factory-fitted crane, up to six access openings per unit",
+  "mir250": "MiR250 Specifications (2023-06-28): 800 x 580 x 300 mm (warehouse.py)",
+  "geometry": "vlm.py, animate.py (AMR_XY), props.py (MIR, CAB_H), services.py (the dock), setup_lab.py (TARGET_AT, the second Shuttle)"
+ }
+}

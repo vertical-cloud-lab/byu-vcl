@@ -1,0 +1,343 @@
+{
+ "clip": "alloy_workflow_r10s6",
+ "frames_checked": 502,
+ "frames_with_collisions": 13,
+ "runs": [
+  {
+   "label": "6/7",
+   "first_frame": 153,
+   "last_frame": 159,
+   "frames": 5,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "self",
+     "part": "shoulder",
+     "other": "forearm"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "self",
+     "part": "upper_arm",
+     "other": "wrist1"
+    }
+   ]
+  },
+  {
+   "label": "6/7",
+   "first_frame": 179,
+   "last_frame": 179,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "held",
+     "part": "held:tongs",
+     "other": "rack",
+     "depth_mm": 3.0
+    }
+   ]
+  },
+  {
+   "label": "6/7",
+   "first_frame": 298,
+   "last_frame": 298,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "held",
+     "part": "held:tongs",
+     "other": "rack",
+     "depth_mm": 3.0
+    }
+   ]
+  },
+  {
+   "label": "6/7",
+   "first_frame": 363,
+   "last_frame": 363,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "held",
+     "part": "held:tongs",
+     "other": "rack",
+     "depth_mm": 3.0
+    }
+   ]
+  },
+  {
+   "label": "6/7",
+   "first_frame": 493,
+   "last_frame": 493,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "held",
+     "part": "held:tongs",
+     "other": "rack",
+     "depth_mm": 3.0
+    }
+   ]
+  },
+  {
+   "label": "6/7",
+   "first_frame": 547,
+   "last_frame": 547,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "self",
+     "part": "shoulder",
+     "other": "forearm"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "self",
+     "part": "upper_arm",
+     "other": "wrist1"
+    }
+   ]
+  },
+  {
+   "label": "6/7",
+   "first_frame": 548,
+   "last_frame": 551,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "unit0ur",
+     "kind": "held",
+     "part": "held:tongs",
+     "other": "unit0_cab",
+     "depth_mm": 6.0
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "self",
+     "part": "shoulder",
+     "other": "forearm"
+    },
+    {
+     "arm": "unit0ur",
+     "kind": "self",
+     "part": "upper_arm",
+     "other": "wrist1"
+    }
+   ]
+  }
+ ],
+ "rules": "What may touch (round 11, the default): the gripper and whatever group it is picking up, holding or putting down, within 4 s of the grasp or release, and a held part and the groups it touches when it is taken and when it is let go (where it came from and where it goes), each only up to 1.5 mm deep (collide.depth: the shortest of 26 moves that frees the pair). Anything else an arm, its gripper or what it holds touches is a collision at any depth. The movers check (collide.Movers, its own \"movers\" section) covers everything else that moves. ARM_AUDIT_RULES=old: round 10's rules (no depth limit, no movers).",
+ "rules_version": "round 11 (strict)",
+ "depth_limit_mm": 1.5,
+ "hits_allowed_before_but_too_deep": 6,
+ "fps": 6,
+ "arm_seconds": 407.7,
+ "method": "FCL 0.7 (python-fcl) mesh-mesh collision on the drawn meshes, arm links decimated to 8000 triangles; every frame of the clip, after its update; depths by collide.depth (26-direction translational depth, rounded up to 1.5/3/6/12/25/50 mm, 999 past 50)",
+ "movers": {
+  "frames_checked": 502,
+  "frames_moving": 202,
+  "frames_with_collisions": 75,
+  "runs": [
+   {
+    "label": "6/7",
+    "first_frame": 34,
+    "last_frame": 40,
+    "frames": 7,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "unit0",
+      "body": "unit0/amr body",
+      "other": "aisle tape",
+      "other_group": "tape",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "unit0",
+      "body": "unit0/amr body",
+      "other": "footprints",
+      "other_group": "tape",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "6/7",
+    "first_frame": 42,
+    "last_frame": 51,
+    "frames": 10,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "unit0",
+      "body": "unit0/amr body",
+      "other": "aisle dashes",
+      "other_group": "tape",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "6/7",
+    "first_frame": 53,
+    "last_frame": 63,
+    "frames": 11,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "unit0",
+      "body": "unit0/amr body",
+      "other": "aisle dashes",
+      "other_group": "tape",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "6/7",
+    "first_frame": 69,
+    "last_frame": 91,
+    "frames": 22,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "unit0",
+      "body": "unit0/amr body",
+      "other": "aisle tape",
+      "other_group": "tape",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "6/7",
+    "first_frame": 92,
+    "last_frame": 106,
+    "frames": 15,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "unit0",
+      "body": "unit0/amr body",
+      "other": "dock tape",
+      "other_group": "docks",
+      "depth_mm": 3.0
+     },
+     {
+      "mover": "unit0",
+      "body": "unit0/amr body",
+      "other": "aisle tape",
+      "other_group": "tape",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "6/7",
+    "first_frame": 137,
+    "last_frame": 138,
+    "frames": 2,
+    "depth_mm": 12.0,
+    "pairs": [
+     {
+      "mover": "shutter",
+      "body": "safety shutter",
+      "other": "bay side walls",
+      "other_group": "bay",
+      "depth_mm": 12.0
+     }
+    ]
+   },
+   {
+    "label": "6/7",
+    "first_frame": 574,
+    "last_frame": 575,
+    "frames": 2,
+    "depth_mm": 12.0,
+    "pairs": [
+     {
+      "mover": "shutter",
+      "body": "safety shutter",
+      "other": "bay side walls",
+      "other_group": "bay",
+      "depth_mm": 12.0
+     }
+    ]
+   },
+   {
+    "label": "6/7",
+    "first_frame": 584,
+    "last_frame": 589,
+    "frames": 6,
+    "depth_mm": 50.0,
+    "pairs": [
+     {
+      "mover": "tray_F",
+      "body": "tray F",
+      "other": "front column supports",
+      "other_group": "col_front",
+      "depth_mm": 50.0
+     },
+     {
+      "mover": "tray_F",
+      "body": "plate_F/svc_plate",
+      "other": "front column supports",
+      "other_group": "col_front",
+      "depth_mm": 25.0
+     },
+     {
+      "mover": "tray_F",
+      "body": "lines_F/svc_power",
+      "other": "front column supports",
+      "other_group": "col_front",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "tray_F",
+      "body": "lines_F/svc_cws",
+      "other": "front column supports",
+      "other_group": "col_front",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "tray_F",
+      "body": "lines_F/svc_n2",
+      "other": "front column supports",
+      "other_group": "col_front",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "tray_F",
+      "body": "lines_F/svc_cwr",
+      "other": "front column supports",
+      "other_group": "col_front",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "tray_F",
+      "body": "lines_F/svc_air",
+      "other": "front column supports",
+      "other_group": "col_front",
+      "depth_mm": 12.0
+     },
+     {
+      "mover": "tray_F",
+      "body": "lines_F/svc_data",
+      "other": "front column supports",
+      "other_group": "col_front",
+      "depth_mm": 12.0
+     }
+    ]
+   }
+  ],
+  "fcl_pairs_checked": 52477,
+  "seconds": 35.6,
+  "rules": "A group \"moves\" in a frame when its world matrix changed since the last audited frame (by more than 1e-6). Groups that moved by the same rigid motion (a MiR with its cabinet, its holders and the parts on them) form one cluster and are not checked against each other: their relative poses didn't change, so no new contact can appear between them. Every visible body of a moving group is checked against every other visible body except its own group's subtree and ancestors, the arms and what they hold (the arm checks do those), and liquids: world boxes first, all at once, then FCL on the meshes of the pairs whose boxes overlap (BVHs built only for those). The contacts a group had at its last pose before it started moving are its baseline and are left out while it keeps moving, until that pair comes apart; a new contact counts if depth() puts it deeper than DEPTH_MM (1.5 mm), so a tray set down on a table or a MiR rolling onto a floor plate isn't reported."
+ },
+ "frames_with_collisions_all": 88
+}

@@ -1,0 +1,384 @@
+{
+ "as_drawn_with_ballast": {
+  "latch_pull": {
+   "mass_kg": 302.8,
+   "cog_mm": [
+    -3,
+    22,
+    389
+   ],
+   "force_point_mm": [
+    1,
+    663,
+    1331
+   ],
+   "force_dir": [
+    -0.866,
+    0.5,
+    0.0
+   ],
+   "edges": {
+    "+x": {
+     "restoring_Nm": 974.8,
+     "lever_mm": -1152.7,
+     "tips_at_N": null
+    },
+    "-x": {
+     "restoring_Nm": 955.7,
+     "lever_mm": 1152.7,
+     "tips_at_N": 829.0
+    },
+    "+y": {
+     "restoring_Nm": 602.3,
+     "lever_mm": 665.5,
+     "tips_at_N": 905.0
+    },
+    "-y": {
+     "restoring_Nm": 734.2,
+     "lever_mm": -665.5,
+     "tips_at_N": null
+    }
+   },
+   "tips_at_N": 829.0,
+   "tips_about": "-x",
+   "slides_at_N": 891.0
+  },
+  "latch_push": {
+   "mass_kg": 302.8,
+   "cog_mm": [
+    -3,
+    22,
+    389
+   ],
+   "force_point_mm": [
+    1,
+    663,
+    1331
+   ],
+   "force_dir": [
+    0.866,
+    -0.5,
+    0.0
+   ],
+   "edges": {
+    "+x": {
+     "restoring_Nm": 974.8,
+     "lever_mm": 1152.7,
+     "tips_at_N": 846.0
+    },
+    "-x": {
+     "restoring_Nm": 955.7,
+     "lever_mm": -1152.7,
+     "tips_at_N": null
+    },
+    "+y": {
+     "restoring_Nm": 602.3,
+     "lever_mm": -665.5,
+     "tips_at_N": null
+    },
+    "-y": {
+     "restoring_Nm": 734.2,
+     "lever_mm": 665.5,
+     "tips_at_N": 1103.0
+    }
+   },
+   "tips_at_N": 846.0,
+   "tips_about": "+x",
+   "slides_at_N": 891.0
+  },
+  "arm2_press": {
+   "mass_kg": 299.8,
+   "cog_mm": [
+    16,
+    23,
+    389
+   ],
+   "force_point_mm": [
+    735,
+    475,
+    1532
+   ],
+   "force_dir": [
+    -0.383,
+    -0.18,
+    0.906
+   ],
+   "edges": {
+    "+x": {
+     "restoring_Nm": 909.5,
+     "lever_mm": -957.6,
+     "tips_at_N": null
+    },
+    "-x": {
+     "restoring_Nm": 1001.9,
+     "lever_mm": 1546.7,
+     "tips_at_N": 648.0
+    },
+    "+y": {
+     "restoring_Nm": 595.0,
+     "lever_mm": -501.6,
+     "tips_at_N": null
+    },
+    "-y": {
+     "restoring_Nm": 728.3,
+     "lever_mm": 909.5,
+     "tips_at_N": 801.0
+    }
+   },
+   "tips_at_N": 648.0,
+   "tips_about": "-x",
+   "slides_at_N": 2087.0
+  },
+  "arm1_lid": {
+   "mass_kg": 302.8,
+   "cog_mm": [
+    -8,
+    38,
+    391
+   ],
+   "force_point_mm": [
+    -31,
+    729,
+    1482
+   ],
+   "force_dir": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "edges": {
+    "+x": {
+     "restoring_Nm": 988.7,
+     "lever_mm": -355.7,
+     "tips_at_N": null
+    },
+    "-x": {
+     "restoring_Nm": 941.8,
+     "lever_mm": -294.3,
+     "tips_at_N": null
+    },
+    "+y": {
+     "restoring_Nm": 554.0,
+     "lever_mm": 503.7,
+     "tips_at_N": 1100.0
+    },
+    "-y": {
+     "restoring_Nm": 782.5,
+     "lever_mm": -953.7,
+     "tips_at_N": null
+    }
+   },
+   "tips_at_N": 1100.0,
+   "tips_about": "+y",
+   "slides_at_N": null
+  }
+ },
+ "without_ballast": {
+  "latch_pull": {
+   "mass_kg": 171.5,
+   "cog_mm": [
+    -6,
+    39,
+    442
+   ],
+   "force_point_mm": [
+    1,
+    663,
+    1331
+   ],
+   "force_dir": [
+    -0.866,
+    0.5,
+    0.0
+   ],
+   "edges": {
+    "+x": {
+     "restoring_Nm": 556.4,
+     "lever_mm": -1152.7,
+     "tips_at_N": null
+    },
+    "-x": {
+     "restoring_Nm": 537.2,
+     "lever_mm": 1152.7,
+     "tips_at_N": 466.0
+    },
+    "+y": {
+     "restoring_Nm": 312.6,
+     "lever_mm": 665.5,
+     "tips_at_N": 470.0
+    },
+    "-y": {
+     "restoring_Nm": 444.5,
+     "lever_mm": -665.5,
+     "tips_at_N": null
+    }
+   },
+   "tips_at_N": 466.0,
+   "tips_about": "-x",
+   "slides_at_N": 505.0
+  },
+  "latch_push": {
+   "mass_kg": 171.5,
+   "cog_mm": [
+    -6,
+    39,
+    442
+   ],
+   "force_point_mm": [
+    1,
+    663,
+    1331
+   ],
+   "force_dir": [
+    0.866,
+    -0.5,
+    0.0
+   ],
+   "edges": {
+    "+x": {
+     "restoring_Nm": 556.4,
+     "lever_mm": 1152.7,
+     "tips_at_N": 483.0
+    },
+    "-x": {
+     "restoring_Nm": 537.2,
+     "lever_mm": -1152.7,
+     "tips_at_N": null
+    },
+    "+y": {
+     "restoring_Nm": 312.6,
+     "lever_mm": -665.5,
+     "tips_at_N": null
+    },
+    "-y": {
+     "restoring_Nm": 444.5,
+     "lever_mm": 665.5,
+     "tips_at_N": 668.0
+    }
+   },
+   "tips_at_N": 483.0,
+   "tips_about": "+x",
+   "slides_at_N": 505.0
+  },
+  "arm2_press": {
+   "mass_kg": 168.5,
+   "cog_mm": [
+    28,
+    40,
+    443
+   ],
+   "force_point_mm": [
+    735,
+    475,
+    1532
+   ],
+   "force_dir": [
+    -0.383,
+    -0.18,
+    0.906
+   ],
+   "edges": {
+    "+x": {
+     "restoring_Nm": 491.0,
+     "lever_mm": -957.6,
+     "tips_at_N": null
+    },
+    "-x": {
+     "restoring_Nm": 583.4,
+     "lever_mm": 1546.7,
+     "tips_at_N": 377.0
+    },
+    "+y": {
+     "restoring_Nm": 305.3,
+     "lever_mm": -501.6,
+     "tips_at_N": null
+    },
+    "-y": {
+     "restoring_Nm": 438.6,
+     "lever_mm": 909.5,
+     "tips_at_N": 482.0
+    }
+   },
+   "tips_at_N": 377.0,
+   "tips_about": "-x",
+   "slides_at_N": 1173.0
+  },
+  "arm1_lid": {
+   "mass_kg": 171.5,
+   "cog_mm": [
+    -14,
+    68,
+    445
+   ],
+   "force_point_mm": [
+    -31,
+    729,
+    1482
+   ],
+   "force_dir": [
+    0.0,
+    0.0,
+    -1.0
+   ],
+   "edges": {
+    "+x": {
+     "restoring_Nm": 570.2,
+     "lever_mm": -355.7,
+     "tips_at_N": null
+    },
+    "-x": {
+     "restoring_Nm": 523.4,
+     "lever_mm": -294.3,
+     "tips_at_N": null
+    },
+    "+y": {
+     "restoring_Nm": 264.3,
+     "lever_mm": 503.7,
+     "tips_at_N": 525.0
+    },
+    "-y": {
+     "restoring_Nm": 492.8,
+     "lever_mm": -953.7,
+     "tips_at_N": null
+    }
+   },
+   "tips_at_N": 525.0,
+   "tips_about": "+y",
+   "slides_at_N": null
+  }
+ },
+ "loads": {
+  "latch_N": {
+   "expected": 100.0,
+   "design": 200.0
+  },
+  "arm2_press_N": 100.0,
+  "arm1_lid_N": 58
+ },
+ "masses_kg": {
+  "mir250": 97.0,
+  "ur10e": 33.3,
+  "control_box": 12.0,
+  "cabinet": 25.0,
+  "gripper": 1.2,
+  "on_top": 3.0,
+  "ballast": 131.3,
+  "ballast_plate_mm": {
+   "L": 760.0,
+   "W": 550.0,
+   "T": 40.0
+  }
+ },
+ "payload_kg": {
+  "mir250_1": 205.8,
+  "mir250_2": 202.8
+ },
+ "payload_limit_kg": 250.0,
+ "wheels_mm": [
+  325.0,
+  225.0
+ ],
+ "drive_share": 0.5,
+ "mu": 0.6,
+ "note": "tips_at_N: the force at the tool, in that direction, that would lift that MiR250 off its weakest edge (the support rectangle WHEELS); slides_at_N: the horizontal force the drive wheels hold by friction (MU x DRIVE_SHARE x weight). latch_pull / latch_push: MiR250 1, arm 1 at the latch's pull tab (the IK branch the chapter uses), the lever pulling the arm toward the furnace / closing it, the other way. arm2_press: MiR250 2, arm 2 pressing down on the lid's top, the tool leaning PRESS_TILT (the lid pushes back up its axis). arm1_lid: MiR250 1, arm 1 at the lid's knob as it starts the swing (the lid's weight pulls the arm down). Round 9: two units, a 131 kg plate on each (round 6-8: one unit, 95 kg)."
+}

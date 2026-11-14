@@ -1,0 +1,35 @@
+{
+ "name": "instruments/wire_edm",
+ "fps": 15,
+ "n_frames": 188,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/4",
+   "caption": "The yellow tank door drops. A build plate with printed bars is clamped on its edge, parts facing out.",
+   "start_frame": 0,
+   "end_frame": 55
+  },
+  {
+   "label": "2/4",
+   "caption": "Door up; the tank fills with deionized water, the dielectric.",
+   "start_frame": 56,
+   "end_frame": 90
+  },
+  {
+   "label": "3/4",
+   "caption": "The brass wire, held between the upper and lower guides, runs along the plate's face and cuts the parts off at their base.",
+   "start_frame": 91,
+   "end_frame": 146
+  },
+  {
+   "label": "4/4",
+   "caption": "Drained and opened. At 1970 mm and 2.2 t it stands beside the VLM; no benchtop wire EDM is sold.",
+   "start_frame": 147,
+   "end_frame": 187
+  }
+ ]
+}

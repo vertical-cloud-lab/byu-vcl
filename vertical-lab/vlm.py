@@ -1,0 +1,446 @@
+"""Kardex Shuttle XP 500 vertical lift module, as quoted in #53, in CadQuery.
+
+Kardex publishes no CAD for the Shuttle XP (no STEP, BIM or Revit file turned up, and the
+dealer listings carry none), so this one is built from the published figures. Every number
+that has a source is in SOURCES below; the rest are marked as layout choices.
+
+Frame: x to the right and y away from you when you face the access opening, z up from the
+floor, origin at the centre of the footprint. Millimetres.
+
+Layout (front to back): the access opening's bay, the front storage column, the extractor
+(the lift) and the rear storage column. Trays are stored on supports in the columns at a
+25 mm pitch; the extractor pulls a tray off its supports onto its own platform, rides up or
+down between the columns, and pushes the tray into another slot or out into the opening.
+"""
+from __future__ import annotations
+
+import sys
+from pathlib import Path
+
+import cadquery as cq
+
+sys.path.insert(0, str(Path(__file__).resolve().parent / "lab_models"))
+from common import box, cyl, rbox  # noqa: E402  (lab-models' helpers, copied from #199's branch)
+
+# --- sourced figures ------------------------------------------------------------------------
+IN = 25.4
+TRAY_W, TRAY_D = 2450.0, 864.0       # #53: 96.46 x 34.00 in; the Shuttle XP's 864 mm tray depth
+UNIT_W, UNIT_D = 2780.0, 3074.0      # Relevator Group listing for an XP 500 2450 x 864 (module W x D)
+UNIT_H = 3950.0                      # #53: "less than 13'" (3962 mm); Shuttle XP heights step 100 mm from 2550
+PITCH = 25.0                         # Kardex: tray supports on a 25 mm pitch (Optiflex)
+TRAYS = {                            # #53: one light, one medium and one strong tray
+    "A": dict(capacity_lb=1080, capacity_kg=490, kind="strong"),
+    "B": dict(capacity_lb=794, capacity_kg=360, kind="medium"),
+    "C": dict(capacity_lb=502, capacity_kg=228, kind="light"),
+}
+
+SOURCES = {
+    "tray_w_d_mm": [TRAY_W, TRAY_D, "#53: tray size 96.46 in W x 34.00 in D (2450 x 864 mm), "
+                                      "the 2450 x 864 configuration Kardex sells as XP 500-2450x864"],
+    "unit_w_d_mm": [UNIT_W, UNIT_D, "Relevator Group, 'Vertical Lift Modules Kardex Shuttle XP 500 - 3 units 2450x864': "
+                                      "module width 2 780 mm / tray 2 450 mm, module depth 3 074 mm / tray 864 mm"],
+    "unit_h_mm": [UNIT_H, "#53: height of machine less than 13 ft; Kardex data sheet: system heights from 2 550 mm "
+                          "in 100 mm steps, so 3 950 mm is the tallest under 13 ft"],
+    "tray_pitch_mm": [PITCH, "Kardex Shuttle XP literature: 25 mm incremental tray storage (Optiflex)"],
+    "tray_capacity": [TRAYS, "#53: light 502 lb, medium 794 lb, strong 1 080 lb per tray"],
+    "electrified_trays": "#53: power reaches a tray in storage and again at the access opening, not in transit",
+    "shutter": "#53: powered safety shutter doors",
+    "power": "#53: 208 V three-phase",
+}
+
+# --- the access opening ----------------------------------------------------------------------------------------------
+# "Kardex Shuttle POF Version 16", SHUTTLE-01-500-2450x864 (StoreMoreStore's VLM option 1 specification sheet):
+# front access table (TH1) 833 mm above the floor, the presented tray's underside at TH1 + 21 mm, tray floor top at
+# TH1 + 22.5-23.5 mm, maximum product height 727.5 mm with 20 mm clearance required above it, a single front opening.
+# The look (header with the logo and an LED light under it, anthracite side posts, the blue shutter at the back of the
+# bay, slatted side walls, a blue cover under the tray, the 12 in OPTIC panel on the right post) is from Kardex's
+# Shuttle 500 product renders and fact sheet. Kardex lists no separate "large" opening for the 250/500: the largest
+# is this full-width one (the only bigger option is full tray extraction onto a table in front, for cranes).
+#
+# The opening drawn here is a taller one (Sterling, PR #318, 2026-11-04: "assume that 996 mm ... bay height ... so
+# you'll fit taller items"). One used Shuttle XP 500 (2005/2006, 3050 x 864 mm) is listed with "Bedienoeffnung
+# frontseitig auf 833 mm, Hoehe 996 mm" (lagersysteme-paternoster.de, Pos. 89): a 996 mm opening over the same 833 mm
+# table. Its product height is not published. MAX_GOODS_H keeps the header as far above the goods as on the standard
+# unit (POF_OPEN_H, from the renders), which gives about 856.5 mm: an estimate (notes/kardex_opening.md, kardex_tall.py).
+Z_SILL = 833.0          # TH1, the access table (POF)
+Z_OPEN = 854.0          # TH1 + 21: tray underside when presented (in the opening, not a storage slot) (POF)
+POF_GOODS_H = 727.5     # Kardex's published maximum product height through the standard opening, over the tray floor
+POF_OPEN_H = 867.0      # the standard opening's header over the table: estimated from renders (the mouth reads ~850-870)
+GOODS_CLEAR = 20.0      # clearance Kardex requires above the goods (POF)
+OPEN_H = 996.0          # the opening drawn: the used XP 500's 996 mm over the 833 mm table (lagersysteme-paternoster.de)
+Z_OPEN_TOP = Z_SILL + OPEN_H                      # 1829: underside of the header, where the LED light is
+MAX_GOODS_H = POF_GOODS_H + (OPEN_H - POF_OPEN_H)     # 856.5 mm over the tray floor: an estimate, see above
+SOURCES.update(
+    access_table_mm=[Z_SILL, "Kardex Shuttle POF (order sheet), SHUTTLE-01-500-2450x864: access table TH1 833 mm, tray "
+                             "underside at TH1 + 21 mm, maximum product height 727.5 mm with 20 mm clear above it"],
+    opening_h_mm=[OPEN_H, "a used Kardex Shuttle XP 500 (3050 x 864, 2005/2006): 'Bedienoeffnung frontseitig auf 833 mm, "
+                          "Hoehe 996 mm', https://www.lagersysteme-paternoster.de/gebrauchte-lagertechnik/"
+                          "kardex-shuttle-xp500-3050x864-pos-89/"],
+    max_goods_h_mm=[MAX_GOODS_H, "estimate: the POF's 727.5 mm plus (996 - 867) mm, the header kept as far above the goods "
+                                 "as on the standard unit; the 867 mm is read off Kardex's renders, not published"])
+OPEN_W = 2500.0         # clear width between the side posts: about tray + 50 mm (renders, a real 2450 x 864 unit)
+HEADER_H = 95.0         # white header band with the logo
+POST_W = 115.0          # anthracite side posts of the opening
+CONSOLE_X = OPEN_W / 2 + POST_W / 2       # the OPTIC panel, on the right post at header height
+CONSOLE_Z = Z_OPEN_TOP - 40.0
+
+# --- layout choices (not published; set so the lab's equipment fits) ------------------------
+T_FLOOR = 3.0           # tray floor (TH1 + 22.5-23.5 - 21: a 1.5-2.5 mm sheet; 3 mm here)
+T_RIM = 50.0            # tray rim on the back and both sides (overall tray height 50-53 mm)
+SKIN = 25.0             # cladding panel thickness
+POST = 70.0             # corner posts
+Y_FRONT, Y_LIFT, Y_REAR = -1030.0, 0.0, 1030.0      # tray centres: front column, extractor, rear column
+Y_OPEN = Y_FRONT        # the opening is a gap in the front column: the tray is presented 75 mm behind the front
+Y_SHUTTER = Y_FRONT + TRAY_D / 2 + 35.0             # the shutter: behind the presented tray, between it and the shaft
+Z_TOP_IN = UNIT_H - 260.0                           # underside of the drive bay
+
+# --- the tray plan (#303, PR #318 round 7; notes/tray_plan.md) --------------------------------------------------------
+# Each slot is as tall as its own tray needs: the tray floor, the tallest thing on it (an instrument, the UPS or a
+# camera head) and Kardex's 20 mm clear above that, rounded up to the 25 mm pitch. ``setup_lab.py fit`` measures every
+# tray as it is drawn and checks it against its slot's span. Each column is filled from the bottom: the rear one from
+# the lowest position the extractor reaches, the front one under the access table (short trays only) and over the
+# opening's header. Fourteen trays don't fit one Shuttle, so a second one of the same size stands beside the first;
+# its slots are named "2R1" and so on.
+Z_LOW = 300.0                   # the lowest tray position: the extractor's carriages reach 160 mm under the tray
+Z_FRONT_LOW_TOP = Z_SILL - 40.0                     # the front column's lower part ends under the access table: 793
+Z_FRONT_HI = PITCH * -(-(Z_OPEN_TOP + 120.0) // PITCH)    # its upper part starts over the header: 1950
+SHUTTLE_GAP = 800.0             # between the two Shuttles' cladding: room for a MiR250 to turn on the spot (setup_lab)
+SHUTTLE_X = {1: 0.0, 2: UNIT_W + 2 * SKIN + SHUTTLE_GAP}  # the second Shuttle's centre: 3630 mm right of the first
+# Round 11 (Sterling, PR #318, 2026-11-13: the jar trays' cameras and UPS are "very inefficient from a vertical space
+# usage, since the jars are so short"): the three passive storage trays (J, N, O) carry no UPS, dock plate or cameras,
+# so each slot is its own load's height: J 475 -> 325 (the drawer cabinet, 300 mm), N 475 -> 225 (500 mL jars, 182 mm
+# over the floor with their rack), O 500 -> 150 (125 mL jars, 104 mm). N and O both go under Shuttle 2's access table
+# (300-793 mm), which frees 2R5 at the top of its rear column (notes/tray_plan.md).
+COLUMNS = {     # Shuttle: column: [(slot, span in mm)], bottom to top
+    1: {"rear": [("R1", 750), ("R2", 750), ("R3", 900), ("R4", 725)],          # trays D, A, B (v5 doser, 854 mm), E
+        "front_low": [("F0", 325)],                                             # tray J (passive storage)
+        "front": [("F1", 725), ("F2", 750)]},       # trays C, F (round 11: F's camera F1 behind the quench tank, 703 mm)
+    2: {"rear": [("2R1", 850), ("2R2", 725), ("2R3", 750), ("2R4", 550)],      # trays K, L, M, H; 515 mm free
+        "front_low": [("2F0", 225), ("2F0b", 150)],                             # trays N, O (passive jar stores)
+        "front": [("2F1", 725), ("2F2", 725)]},                                 # trays G, I
+}
+SLOTS = {"open": (Y_OPEN, Z_OPEN)}  # slot -> (y, tray-bottom z) of each storage position used, on the 25 mm pitch
+SPAN: dict[str, float] = {}         # slot -> its height, tray bottom to the next tray's bottom (or the column's end)
+SLOT_SHUTTLE: dict[str, int] = {"open": 1}
+for _u, _cols in COLUMNS.items():
+    for _col, _lst in _cols.items():
+        _z = Z_FRONT_HI if _col == "front" else Z_LOW
+        _top = Z_FRONT_LOW_TOP if _col == "front_low" else Z_TOP_IN
+        for _k, _span in _lst:
+            SLOTS[_k] = (Y_REAR if _col == "rear" else Y_FRONT, _z)
+            SPAN[_k], SLOT_SHUTTLE[_k] = float(_span), _u
+            _z += _span
+        assert _z <= _top + 1e-6, (_u, _col, _z, _top)
+for _k, (_y, _z) in SLOTS.items():
+    assert _k == "open" or abs(_z / PITCH - round(_z / PITCH)) < 1e-9, _k
+    assert _k == "open" or abs(SPAN[_k] / PITCH - round(SPAN[_k] / PITCH)) < 1e-9, _k
+
+
+def slot_x(slot: str) -> float:
+    """x of the Shuttle a slot is in."""
+    return SHUTTLE_X[SLOT_SHUTTLE.get(slot, 1)]
+
+# materials: name -> (r, g, b, opacity, specular)
+RAL7035 = (203 / 255, 208 / 255, 204 / 255)        # light grey panels (Kardex's order sheet: RAL 7035)
+FIR_BLUE = (112 / 255, 150 / 255, 164 / 255)       # shutter and the cover under the tray: RAL 230 60 15 "Silver Fir Blue"
+MATERIALS = {
+    "vlm_skin": (*RAL7035, 0.16, 0.2),            # cladding; the animation turns it from opaque to ghosted
+    "vlm_skin_solid": (*RAL7035, 1.0, 0.2),
+    "vlm_seam": (0.62, 0.65, 0.64, 0.16, 0.1),    # the joints between the 490 mm panels
+    "vlm_frame": (0.23, 0.24, 0.26, 1.0, 0.3),       # anthracite posts and rails
+    "vlm_post": (56 / 255, 62 / 255, 66 / 255, 1.0, 0.3),   # the opening's side posts
+    "vlm_header": (0.90, 0.91, 0.91, 1.0, 0.2),      # white header band over the opening
+    "vlm_logo": (0.20, 0.36, 0.56, 1.0, 0.2),
+    "vlm_wall": (0.78, 0.80, 0.83, 0.22, 0.1),       # column side walls (perforated sheet)
+    "vlm_bay": (*RAL7035, 1.0, 0.2),                 # slatted side walls of the bay
+    "vlm_rib": (0.66, 0.68, 0.71, 1.0, 0.3),         # tray supports
+    "vlm_tray": (0.42, 0.45, 0.50, 1.0, 0.3),        # tray pans
+    "vlm_lift": (0.80, 0.18, 0.16, 1.0, 0.3),        # the extractor, picked out in red
+    "vlm_rail": (0.62, 0.63, 0.66, 1.0, 0.6),
+    "vlm_drive": (0.20, 0.36, 0.62, 1.0, 0.4),
+    "vlm_belt": (0.10, 0.10, 0.11, 1.0, 0.2),
+    "vlm_shutter": (*FIR_BLUE, 0.85, 0.3),
+    "vlm_cover": (*FIR_BLUE, 1.0, 0.3),
+    "vlm_led": (0.98, 0.97, 0.88, 1.0, 0.1),
+    "vlm_screen": (0.06, 0.08, 0.12, 1.0, 0.8),
+    "vlm_counter": (0.18, 0.18, 0.19, 1.0, 0.3),
+    "vlm_curtain": (0.85, 0.20, 0.15, 1.0, 0.3),
+    "vlm_power": (0.95, 0.75, 0.15, 1.0, 0.3),       # power connectors (electrified trays)
+}
+
+
+def _x(a, b):
+    return box(*a, *b)
+
+
+def housing() -> dict:
+    """Base frame, posts, rails and cladding. Returns {name: (shape, material, group)}."""
+    W, D, H = UNIT_W, UNIT_D, UNIT_H
+    p = {}
+    xo, yo = W / 2, D / 2
+    # base frame: a steel plinth with levelling feet
+    base = box(-xo, -yo, 60, xo, yo, 140).cut(box(-xo + 120, -yo + 120, 59, xo - 120, yo - 120, 141))
+    p["base frame"] = (base, "vlm_frame", "base")
+    feet = None
+    for sx in (-1, 1):
+        for sy in (-1, -0.33, 0.33, 1):
+            f = cyl(90, 60, x=sx * (xo - 80), y=sy * (yo - 80))
+            feet = f if feet is None else feet.union(f)
+    p["levelling feet"] = (feet, "vlm_rail", "base")
+    # posts at the outer corners and at both column/extractor boundaries
+    posts = None
+    for sx in (-1, 1):
+        for y in (-yo + POST / 2, -515.0, 515.0, yo - POST / 2):
+            q = box(sx * (xo - POST / 2) - POST / 2, y - POST / 2, 140, sx * (xo - POST / 2) + POST / 2, y + POST / 2, H)
+            posts = q if posts is None else posts.union(q)
+    p["posts"] = (posts, "vlm_frame", "posts")
+    # top rails all round and across the boundaries
+    rails = None
+    for y in (-yo + POST / 2, -515.0, 515.0, yo - POST / 2):
+        r = box(-xo, y - POST / 2, H - POST, xo, y + POST / 2, H)
+        rails = r if rails is None else rails.union(r)
+    for sx in (-1, 1):
+        r = box(sx * (xo - POST / 2) - POST / 2, -yo, H - POST, sx * (xo - POST / 2) + POST / 2, yo, H)
+        rails = rails.union(r)
+    p["top rails"] = (rails, "vlm_frame", "posts")
+    # cladding: sides, back, top and the front around the opening's bay
+    p["side panel L"] = (box(-xo - SKIN, -yo, 140, -xo, yo, H), "vlm_skin", "skin_L")
+    p["side panel R"] = (box(xo, -yo, 140, xo + SKIN, yo, H), "vlm_skin", "skin_R")
+    p["back panel"] = (box(-xo, yo, 140, xo, yo + SKIN, H), "vlm_skin", "skin_back")
+    p["roof"] = (box(-xo - SKIN, -yo - SKIN, H, xo + SKIN, yo + SKIN, H + SKIN), "vlm_skin", "skin_top")
+    ow = OPEN_W / 2 + POST_W                 # the opening with its posts
+    front = box(-xo, -yo - SKIN, 140, xo, -yo, H).cut(
+        box(-ow, -yo - SKIN - 1, Z_SILL - 120, ow, -yo + 1, Z_OPEN_TOP + HEADER_H))
+    p["front panel"] = (front, "vlm_skin", "skin_front")
+    # panel joints, as on Kardex's renders: horizontal panels about 490 mm tall above the opening and below it
+    seams = {"skin_front": None, "skin_L": None, "skin_R": None}
+    for z in [Z_OPEN_TOP + HEADER_H + 490.0 * i for i in range(1, 8)] + [480.0]:
+        if z > H - 100:
+            continue
+        for grp, b in (("skin_front", box(-xo, -yo - SKIN - 2, z - 3, xo, -yo - SKIN, z + 3)),
+                       ("skin_L", box(-xo - SKIN - 2, -yo, z - 3, -xo - SKIN, yo, z + 3)),
+                       ("skin_R", box(xo + SKIN, -yo, z - 3, xo + SKIN + 2, yo, z + 3))):
+            seams[grp] = b if seams[grp] is None else seams[grp].union(b)
+    for grp, b in seams.items():
+        p[f"{grp} seams"] = (b, "vlm_seam", grp)
+    return p
+
+
+def _support_ribs(cols: dict) -> dict:
+    """{column key: the tray supports' solid} for one Shuttle's slot plan (``COLUMNS[unit]``).
+
+    The supports reach 20 mm in under both tray edges and are drawn every 100 mm (Kardex's run every 25 mm), except
+    inside a slot: there only the one its tray rests on is drawn (round 11). A tray's rim, its coupling plate and its
+    lines stand over that 20 mm, so on a real Shuttle the profiles above the rest profile would be in their way as the
+    tray slides in (``collide``'s movers check found it on PR #318, 2026-11-14). Our slots are fixed, one tray each, so
+    those profiles can come out; whether Kardex fits a column that way, without its dynamic height optimisation, is a
+    question for Kardex (notes/tray_plan.md)."""
+    wall_x = TRAY_W / 2 + 45                  # inner face of each side wall
+    rib_x = TRAY_W / 2 - 20                   # supports reach 20 mm under the tray's edge
+    zones = {"front": [(160, Z_SILL - 40), (Z_OPEN_TOP + 120, Z_TOP_IN)], "rear": [(160, Z_TOP_IN)]}
+    out = {}
+    for key, yc in (("front", Y_FRONT), ("rear", Y_REAR)):
+        spans = []                            # (bottom, top) of every slot in this column
+        for col, lst in cols.items():
+            if (col == "rear") != (key == "rear"):
+                continue
+            z = Z_FRONT_HI if col == "front" else Z_LOW
+            for _k, span in lst:
+                spans.append((float(z), float(z + span)))
+                z += span
+        levels = set()
+        for z0, z1 in zones[key]:
+            for z in range(int(z0 // 100 + 1) * 100, int(z1) - 20, 100):
+                if not any(a < z < b for a, b in spans):
+                    levels.add(float(z))
+        levels |= {a for a, _ in spans}        # the profile each tray rests on
+        ribs = None
+        for sx in (-1, 1):
+            x0, x1 = sorted((sx * wall_x, sx * rib_x))
+            for z in sorted(levels):
+                r = box(x0, yc - TRAY_D / 2, z - 6, x1, yc + TRAY_D / 2, z)
+                ribs = r if ribs is None else ribs.union(r)
+            if key == "front":                # the presented tray rests on the opening's own supports
+                x0, x1 = sorted((sx * (wall_x + 12), sx * rib_x))
+                ribs = ribs.union(box(x0, yc - TRAY_D / 2, Z_OPEN - 30, x1, yc + TRAY_D / 2, Z_OPEN))
+        out[key] = ribs
+    return out
+
+
+def support_parts(unit: int = 1) -> dict:
+    """The column supports of Shuttle `unit` for its slot plan as it is now (``setup_lab.add_slots`` adds Shuttle 2's
+    short slots at run time): {name: (solid, material, group)}, the names ``columns()`` gives Shuttle 1's."""
+    ribs = _support_ribs(COLUMNS[unit])
+    return {f"{k} column supports": (r, "vlm_rib", f"col_{k}") for k, r in ribs.items()}
+
+
+def columns() -> dict:
+    """Front and rear storage columns: side walls with tray supports under both tray edges (Shuttle 1's slot plan;
+    Shuttle 2's copy takes ``support_parts(2)``)."""
+    p = {}
+    wall_x = TRAY_W / 2 + 45                  # inner face of each side wall
+    front = [(160, Z_SILL - 40), (Z_OPEN_TOP + 120, Z_TOP_IN)]
+    ribs = _support_ribs(COLUMNS[1])
+    for key, yc, zones in (("front", Y_FRONT, front), ("rear", Y_REAR, [(160, Z_TOP_IN)])):
+        walls = None
+        y0, y1 = yc - TRAY_D / 2 - 30, yc + TRAY_D / 2 + 30
+        for sx in (-1, 1):
+            for z0, z1 in zones:
+                w = box(min(sx * wall_x, sx * (wall_x + 12)), y0, z0, max(sx * wall_x, sx * (wall_x + 12)), y1, z1)
+                walls = w if walls is None else walls.union(w)
+        p[f"{key} column walls"] = (walls, "vlm_wall", f"col_{key}")
+        p[f"{key} column supports"] = (ribs[key], "vlm_rib", f"col_{key}")
+    return p
+
+
+def lift_rails() -> dict:
+    """Four vertical guide rails, one at each corner of the extractor's shaft."""
+    rails = None
+    for sx in (-1, 1):
+        for sy in (-1, 1):
+            x = sx * (UNIT_W / 2 - 115)
+            y = sy * (TRAY_D / 2 + 38)
+            r = box(x - 20, y - 15, 140, x + 20, y + 15, Z_TOP_IN + 120)
+            rails = r if rails is None else rails.union(r)
+    return {"extractor guide rails": (rails, "vlm_rail", "lift_rails")}
+
+
+def drive() -> dict:
+    """The extractor's drive on the roof frame: motor and gearbox, cross shaft and two belt pulleys."""
+    z = Z_TOP_IN + 140
+    xo = UNIT_W / 2 - 115
+    p = {}
+    shaft = cq.Workplane("YZ").circle(30).extrude(2 * xo).translate((-xo, 0, z))
+    p["drive shaft"] = (shaft, "vlm_rail", "drive")
+    pul = None
+    for sx in (-1, 1):
+        q = cq.Workplane("YZ").circle(95).extrude(70).translate((sx * xo - 35, 0, z))
+        pul = q if pul is None else pul.union(q)
+    p["belt pulleys"] = (pul, "vlm_frame", "drive")
+    motor = box(UNIT_W / 2 - 560, -170, z - 110, UNIT_W / 2 - 230, 170, z + 110)
+    can = cq.Workplane("YZ").circle(95).extrude(330).translate((UNIT_W / 2 - 890, 0, z))
+    p["drive motor"] = (motor.union(can), "vlm_drive", "drive")
+    p["drive frame"] = (box(-UNIT_W / 2 + 60, -260, Z_TOP_IN, UNIT_W / 2 - 60, 260, Z_TOP_IN + 25), "vlm_frame", "drive")
+    return p
+
+
+def extractor() -> dict:
+    """The lift platform, its own frame, at z = 0 (tray bottom) and y = 0: moved by the animation."""
+    p = {}
+    w = TRAY_W + 110
+    plat = box(-w / 2, -TRAY_D / 2 - 20, -90, w / 2, TRAY_D / 2 + 20, -10)
+    plat = plat.cut(box(-w / 2 + 80, -TRAY_D / 2 + 60, -91, w / 2 - 80, TRAY_D / 2 - 60, -9))
+    p["extractor platform"] = (plat, "vlm_lift", "lift")
+    # side carriages that ride the guide rails, and the tray-pull unit along the middle
+    car = None
+    for sx in (-1, 1):
+        x = sx * (UNIT_W / 2 - 115)
+        c = box(x - 45 if sx > 0 else x - 45, -TRAY_D / 2 - 60, -160, x + 45, TRAY_D / 2 + 60, 40)
+        bar = box(min(sx * w / 2, x), -40, -90, max(sx * w / 2, x), 40, -20)
+        c = c.union(bar)
+        car = c if car is None else car.union(c)
+    p["extractor carriages"] = (car, "vlm_lift", "lift")
+    p["tray-pull unit"] = (box(-140, -TRAY_D / 2 + 10, -60, 140, TRAY_D / 2 - 10, -12), "vlm_frame", "lift")
+    return p
+
+
+def belts() -> dict:
+    """Belt runs from the pulleys down to the carriages, unit height 1: the animation stretches them."""
+    p = {}
+    b = None
+    for sx in (-1, 1):
+        x = sx * (UNIT_W / 2 - 115)
+        q = box(x - 30, 88, 0, x + 30, 98, 1.0).union(box(x - 30, -98, 0, x + 30, -88, 1.0))
+        b = q if b is None else b.union(q)
+    p["drive belts"] = (b, "vlm_belt", "belts")
+    return p
+
+
+def opening() -> dict:
+    """The access opening as Kardex builds it (renders and fact sheet): anthracite side posts, a white header with the
+    logo and the LED light under it, slatted side walls in the bay, a blue cover under the presented tray with the
+    LED-Navigator strip, the OPTIC panel on the right post, and the safety shutter at the back of the bay, between the
+    presented tray and the shaft (it closes while the extractor moves; the animation lifts it)."""
+    p = {}
+    yo = -UNIT_D / 2 - SKIN                   # outer face of the front panel
+    ow = OPEN_W / 2
+    posts = box(-ow - POST_W, yo - 30, Z_SILL - 120, -ow, yo + 40, Z_OPEN_TOP + HEADER_H).union(
+        box(ow, yo - 30, Z_SILL - 120, ow + POST_W, yo + 40, Z_OPEN_TOP + HEADER_H))
+    p["opening posts"] = (posts, "vlm_post", "bay")
+    p["opening header"] = (box(-ow, yo - 20, Z_OPEN_TOP, ow, yo + 40, Z_OPEN_TOP + HEADER_H), "vlm_header", "bay")
+    p["LED light"] = (box(-ow + 20, yo - 10, Z_OPEN_TOP - 12, ow - 20, yo + 160, Z_OPEN_TOP), "vlm_led", "bay")
+    # the blue cover under the tray, with the LED-Navigator strip along its top; a 50 mm lip, not a counter
+    p["tray cover"] = (box(-ow, yo - 50, Z_SILL - 120, ow, yo + 30, Z_SILL), "vlm_cover", "bay")
+    p["LED-Navigator"] = (box(-ow + 40, yo - 52, Z_SILL - 26, ow - 40, yo - 48, Z_SILL - 14), "vlm_led", "bay")
+    # the access table itself (the POF's TH1, 833 mm): a closed floor under the presented tray, from the cover back to
+    # the shutter, 21 mm under the tray's underside. Until round 9 only the cover's lip was drawn, so with no tray in
+    # the opening the bay showed empty air down to the floor (Sterling, PR #318, 2026-11-05: "In real systems, this
+    # has a real bottom beneath a tray when it's in the bay").
+    # A sill under the shutter closes the 11 mm between the table and the shutter's lower edge; the tray's underside
+    # passes 10 mm over it.
+    p["access table"] = (box(-ow, yo + 30, Z_SILL - 20, ow, Y_SHUTTER + 6, Z_SILL).union(
+        box(-ow, Y_SHUTTER - 6, Z_SILL - 1, ow, Y_SHUTTER + 6, Z_OPEN - 10)), "vlm_counter", "bay")
+    # slatted side walls of the bay (the shelf rails' L-profiles), front panel to shutter; they stop 1 mm in front of
+    # the shutter's 12 mm panel, which slides up between them (round 11: the walls ran 6 mm into its path)
+    yb0, yb1 = -UNIT_D / 2, Y_SHUTTER - 7.0
+    walls = None
+    for sx in (-1, 1):
+        x0, x1 = sorted((sx * ow, sx * (ow + 12)))
+        w = box(x0, yb0, Z_SILL, x1, yb1, Z_OPEN_TOP)
+        for z in range(int(Z_OPEN + 60), int(Z_OPEN_TOP) - 20, 50):
+            x2, x3 = sorted((sx * ow, sx * (ow - 8)))
+            w = w.union(box(x2, yb0, z, x3, yb1, z + 4))
+        walls = w if walls is None else walls.union(w)
+    p["bay side walls"] = (walls, "vlm_bay", "bay")
+    # the 12 in OPTIC touch panel on the right post, at header height, tilted towards the operator
+    pan = rbox(300, 40, 200, 8).rotate((0, 0, 0), (1, 0, 0), -10).translate((CONSOLE_X, yo - 60, CONSOLE_Z - 100))
+    p["console"] = (pan, "vlm_frame", "console")
+    scr = box(-130, -2, 0, 130, 0, 165).rotate((0, 0, 0), (1, 0, 0), -10).translate((CONSOLE_X, yo - 81, CONSOLE_Z - 82))
+    p["console screen"] = (scr, "vlm_screen", "console")
+    p["console arm"] = (box(CONSOLE_X - 20, yo - 40, CONSOLE_Z - 20, CONSOLE_X + 20, yo - 30, CONSOLE_Z + 20),
+                        "vlm_frame", "console")
+    # the red switch box under the opening on the right, as on the renders
+    p["switch box"] = (box(ow - 260, yo - 30, 560, ow - 180, yo, 660), "vlm_curtain", "bay")
+    # shutter: at the back of the bay, closed here; it slides up into the front column to open
+    p["safety shutter"] = (box(-ow, Y_SHUTTER - 6, Z_OPEN - 10, ow, Y_SHUTTER + 6, Z_OPEN_TOP + 40), "vlm_shutter",
+                           "shutter")
+    return p
+
+
+def logo() -> dict:
+    """'kardex' on the header's left and 'Shuttle 500' on its right, as on the renders (PyVista text, built in lab.py)."""
+    yo = -UNIT_D / 2 - SKIN - 21
+    return {"kardex": (-OPEN_W / 2 + 60, yo, Z_OPEN_TOP + 22, 52.0),
+            "Shuttle 500": (OPEN_W / 2 - 520, yo, Z_OPEN_TOP + 28, 40.0)}
+
+
+def tray(key: str) -> dict:
+    """One tray, its own frame: centre of its floor's underside at the origin."""
+    p = {}
+    w, d = TRAY_W, TRAY_D
+    pan = box(-w / 2, -d / 2, 0, w / 2, d / 2, T_FLOOR + T_RIM)
+    pan = pan.cut(box(-w / 2 + 12, -d / 2 + 12, T_FLOOR, w / 2 - 12, d / 2 - 12, T_FLOOR + T_RIM + 1))
+    pan = pan.cut(box(-w / 2 + 12, -d / 2 - 1, T_FLOOR + 12, w / 2 - 12, -d / 2 + 13, T_FLOOR + T_RIM + 1))  # low front lip
+    p[f"tray {key}"] = (pan, "vlm_tray", f"tray_{key}")
+    # the tray's own socket at the back right, where the slot's connector meets it, and a power strip
+    p[f"tray {key} socket"] = (box(w / 2 - 250, d / 2 - 50, T_FLOOR, w / 2 - 150, d / 2 - 12, T_FLOOR + 70), "vlm_power",
+                               f"tray_{key}")
+    p[f"tray {key} power strip"] = (box(-w / 2 + 40, d / 2 - 70, T_FLOOR, w / 2 - 280, d / 2 - 30, T_FLOOR + 40),
+                                    "printer_white", f"tray_{key}")
+    return p
+
+
+def lamp(key: str) -> dict:
+    """The tray's power lamp, a separate part so the animation can light it."""
+    return {f"tray {key} lamp": (cyl(34, 14, x=TRAY_W / 2 - 200, y=TRAY_D / 2 - 31, z=T_FLOOR + 70), "led_off",
+                                 f"tray_{key}")}
+
+
+def all_parts() -> dict:
+    parts = {}
+    for f in (housing, columns, lift_rails, drive, extractor, belts, opening):
+        parts.update(f())
+    for k in TRAYS:
+        parts.update(tray(k))
+        parts.update(lamp(k))
+    return parts

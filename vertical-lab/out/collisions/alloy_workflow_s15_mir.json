@@ -1,0 +1,83 @@
+{
+ "clip": "alloy_workflow_s15",
+ "frames_checked": 962,
+ "frames_with_collisions": 220,
+ "runs": [
+  {
+   "label": "1/7",
+   "first_frame": 5,
+   "last_frame": 22,
+   "frames": 18,
+   "pairs": [
+    {
+     "unit": "unit0",
+     "part": "amr body",
+     "other": "docks"
+    }
+   ]
+  },
+  {
+   "label": "2/7",
+   "first_frame": 34,
+   "last_frame": 257,
+   "frames": 192,
+   "pairs": [
+    {
+     "unit": "unit0",
+     "part": "amr body",
+     "other": "docks"
+    }
+   ]
+  },
+  {
+   "label": "3/7",
+   "first_frame": 476,
+   "last_frame": 478,
+   "frames": 3,
+   "pairs": [
+    {
+     "unit": "unit0",
+     "part": "amr body",
+     "other": "static"
+    }
+   ]
+  },
+  {
+   "label": "3/7",
+   "first_frame": 479,
+   "last_frame": 479,
+   "frames": 1,
+   "pairs": [
+    {
+     "unit": "unit0",
+     "part": "amr body",
+     "other": "static"
+    },
+    {
+     "unit": "unit0",
+     "part": "amr cover",
+     "other": "static"
+    },
+    {
+     "unit": "unit0",
+     "part": "amr light band",
+     "other": "static"
+    }
+   ]
+  },
+  {
+   "label": "3/7",
+   "first_frame": 484,
+   "last_frame": 489,
+   "frames": 6,
+   "pairs": [
+    {
+     "unit": "unit0",
+     "part": "amr body",
+     "other": "static"
+    }
+   ]
+  }
+ ],
+ "method": "ARM_AUDIT=1: the MiR250s themselves against everything visible, every frame, with FCL on the drawn meshes as collide.py checks the arms (which it does without the bases they ride on). That means the body, the cabinet, the holder and whatever stands in it, against the posts, the machines, the VLM and the other unit. Writes out/collisions/warehouse_mir.json. Floor decals are left out: the tape, the route ribbons and the chargers' plates and contacts, whose tops are under 35 mm. The posts' 12 mm feet are part of the posts' mesh, so they are checked."
+}

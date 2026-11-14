@@ -1,0 +1,65 @@
+{
+ "name": "instruments/polisher",
+ "fps": 8,
+ "n_frames": 249,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/9",
+   "caption": "The lab's LECO PX500, refitted for the arm: a magnetic platen, and six steel discs in a magazine, each pre-loaded with its paper or cloth under its own retaining ring.",
+   "start_frame": 0,
+   "end_frame": 27
+  },
+  {
+   "label": "2/9",
+   "caption": "The head lifts clear (our extra lift). The arm changes disc, paper and ring as one piece, by the handle on the ring.",
+   "start_frame": 28,
+   "end_frame": 42
+  },
+  {
+   "label": "3/9",
+   "caption": "320 grit: out of the magazine and onto the magnetic platen, which holds the steel disc flat.",
+   "start_frame": 43,
+   "end_frame": 70
+  },
+  {
+   "label": "4/9",
+   "caption": "Head down, water on: the lab's SOP (PR #258), its gentle settings 35, 30, 150, 30 s.",
+   "start_frame": 71,
+   "end_frame": 101
+  },
+  {
+   "label": "5/9",
+   "caption": "Head up. The 320 disc goes back to its shelf and the 400 comes out: no paper peeled, no ring pried off.",
+   "start_frame": 102,
+   "end_frame": 134
+  },
+  {
+   "label": "6/9",
+   "caption": "400 grit, then 600, 800 and 1200 the same way (30 s each), rinsed between grits.",
+   "start_frame": 135,
+   "end_frame": 162
+  },
+  {
+   "label": "7/9",
+   "caption": "The cloth disc for the final polish, 1 um alumina from a dispenser: force 3-5, 150 rpm, 3 min.",
+   "start_frame": 163,
+   "end_frame": 195
+  },
+  {
+   "label": "8/9",
+   "caption": "Head down, suspension on, no water (the SOP, step 5).",
+   "start_frame": 196,
+   "end_frame": 223
+  },
+  {
+   "label": "9/9",
+   "caption": "Done. A person re-papers the five SiC discs between batches, off the machine: one fresh paper per grit per holder load (Buehler's note for its fully automatic VANGUARD: change SiC paper after each holder).",
+   "start_frame": 224,
+   "end_frame": 248
+  }
+ ]
+}

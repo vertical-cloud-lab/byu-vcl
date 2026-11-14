@@ -1,0 +1,941 @@
+{
+ "name": "alloy_powder",
+ "fps": 6,
+ "n_frames": 1309,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/7",
+   "caption": "While the plate prints, a retained sample of the sieved 20-63 µm cut, about 15 g split off at the sieving cell (chapter 3), goes round the trays. The MiR250 brings it to Shuttle 1 in a vial with a mesh cap.",
+   "start_frame": 0,
+   "end_frame": 37
+  },
+  {
+   "label": "1/7",
+   "caption": "While the plate prints, a retained sample of the sieved 20-63 µm cut, about 15 g split off at the sieving cell (chapter 3), goes round the trays. The MiR250 brings it to Shuttle 1 in a vial with a mesh cap.",
+   "start_frame": 38,
+   "end_frame": 48
+  },
+  {
+   "label": "2/7",
+   "caption": "Tray D, microscopy and diffraction, comes to the opening: the TM4000PlusII SEM, the Rigaku MiniFlex and the powder prep station beside it (our design): a zero-background holder, an SEM stub carrier and an XRF cup in their nests, and a blade.",
+   "start_frame": 49,
+   "end_frame": 53
+  },
+  {
+   "label": "2/7",
+   "caption": "Tray D, microscopy and diffraction, comes to the opening: the TM4000PlusII SEM, the Rigaku MiniFlex and the powder prep station beside it (our design): a zero-background holder, an SEM stub carrier and an XRF cup in their nests, and a blade.",
+   "start_frame": 54,
+   "end_frame": 61
+  },
+  {
+   "label": "2/7",
+   "caption": "Tray D, microscopy and diffraction, comes to the opening: the TM4000PlusII SEM, the Rigaku MiniFlex and the powder prep station beside it (our design): a zero-background holder, an SEM stub carrier and an XRF cup in their nests, and a blade.",
+   "start_frame": 62,
+   "end_frame": 66
+  },
+  {
+   "label": "2/7",
+   "caption": "Tray D, microscopy and diffraction, comes to the opening: the TM4000PlusII SEM, the Rigaku MiniFlex and the powder prep station beside it (our design): a zero-background holder, an SEM stub carrier and an XRF cup in their nests, and a blade.",
+   "start_frame": 67,
+   "end_frame": 68
+  },
+  {
+   "label": "2/7",
+   "caption": "Tray D, microscopy and diffraction, comes to the opening: the TM4000PlusII SEM, the Rigaku MiniFlex and the powder prep station beside it (our design): a zero-background holder, an SEM stub carrier and an XRF cup in their nests, and a blade.",
+   "start_frame": 69,
+   "end_frame": 75
+  },
+  {
+   "label": "2/7",
+   "caption": "Tray D, microscopy and diffraction, comes to the opening: the TM4000PlusII SEM, the Rigaku MiniFlex and the powder prep station beside it (our design): a zero-background holder, an SEM stub carrier and an XRF cup in their nests, and a blade.",
+   "start_frame": 76,
+   "end_frame": 77
+  },
+  {
+   "label": "2/7",
+   "caption": "Tray D, microscopy and diffraction, comes to the opening: the TM4000PlusII SEM, the Rigaku MiniFlex and the powder prep station beside it (our design): a zero-background holder, an SEM stub carrier and an XRF cup in their nests, and a blade.",
+   "start_frame": 79,
+   "end_frame": 92
+  },
+  {
+   "label": "2/7",
+   "caption": "The arm takes the vial by its side. The powder goes on as it came off the sieves: never ground. Milling ductile atomized powder cold-welds the spheres into flakes, which lie flat and skew the pattern (literature summarized in notes/edison_r8.md).",
+   "start_frame": 93,
+   "end_frame": 104
+  },
+  {
+   "label": "2/7",
+   "caption": "The arm takes the vial by its side. The powder goes on as it came off the sieves: never ground. Milling ductile atomized powder cold-welds the spheres into flakes, which lie flat and skew the pattern (literature summarized in notes/edison_r8.md).",
+   "start_frame": 105,
+   "end_frame": 109
+  },
+  {
+   "label": "2/7",
+   "caption": "The arm takes the vial by its side. The powder goes on as it came off the sieves: never ground. Milling ductile atomized powder cold-welds the spheres into flakes, which lie flat and skew the pattern (literature summarized in notes/edison_r8.md).",
+   "start_frame": 110,
+   "end_frame": 112
+  },
+  {
+   "label": "2/7",
+   "caption": "The arm takes the vial by its side. The powder goes on as it came off the sieves: never ground. Milling ductile atomized powder cold-welds the spheres into flakes, which lie flat and skew the pattern (literature summarized in notes/edison_r8.md).",
+   "start_frame": 113,
+   "end_frame": 117
+  },
+  {
+   "label": "2/7",
+   "caption": "Onto the holder first. Turned over and shaken, the vial sifts the powder through its mesh cap, an even layer with no pressing (as A-Lab's UR5e does it), a little more than the 0.5 mm well holds.",
+   "start_frame": 118,
+   "end_frame": 129
+  },
+  {
+   "label": "2/7",
+   "caption": "Onto the holder first. Turned over and shaken, the vial sifts the powder through its mesh cap, an even layer with no pressing (as A-Lab's UR5e does it), a little more than the 0.5 mm well holds.",
+   "start_frame": 130,
+   "end_frame": 137
+  },
+  {
+   "label": "2/7",
+   "caption": "Onto the holder first. Turned over and shaken, the vial sifts the powder through its mesh cap, an even layer with no pressing (as A-Lab's UR5e does it), a little more than the 0.5 mm well holds.",
+   "start_frame": 138,
+   "end_frame": 140
+  },
+  {
+   "label": "2/7",
+   "caption": "Onto the holder first. Turned over and shaken, the vial sifts the powder through its mesh cap, an even layer with no pressing (as A-Lab's UR5e does it), a little more than the 0.5 mm well holds.",
+   "start_frame": 141,
+   "end_frame": 143
+  },
+  {
+   "label": "2/7",
+   "caption": "Onto the holder first. Turned over and shaken, the vial sifts the powder through its mesh cap, an even layer with no pressing (as A-Lab's UR5e does it), a little more than the 0.5 mm well holds.",
+   "start_frame": 144,
+   "end_frame": 146
+  },
+  {
+   "label": "2/7",
+   "caption": "Onto the holder first. Turned over and shaken, the vial sifts the powder through its mesh cap, an even layer with no pressing (as A-Lab's UR5e does it), a little more than the 0.5 mm well holds.",
+   "start_frame": 147,
+   "end_frame": 149
+  },
+  {
+   "label": "2/7",
+   "caption": "Onto the holder first. Turned over and shaken, the vial sifts the powder through its mesh cap, an even layer with no pressing (as A-Lab's UR5e does it), a little more than the 0.5 mm well holds.",
+   "start_frame": 150,
+   "end_frame": 152
+  },
+  {
+   "label": "2/7",
+   "caption": "Onto the holder first. Turned over and shaken, the vial sifts the powder through its mesh cap, an even layer with no pressing (as A-Lab's UR5e does it), a little more than the 0.5 mm well holds.",
+   "start_frame": 153,
+   "end_frame": 155
+  },
+  {
+   "label": "2/7",
+   "caption": "Onto the holder first. Turned over and shaken, the vial sifts the powder through its mesh cap, an even layer with no pressing (as A-Lab's UR5e does it), a little more than the 0.5 mm well holds.",
+   "start_frame": 156,
+   "end_frame": 162
+  },
+  {
+   "label": "2/7",
+   "caption": "A dusting on the SEM stub's carbon tab, from the same vial.",
+   "start_frame": 163,
+   "end_frame": 174
+  },
+  {
+   "label": "2/7",
+   "caption": "A dusting on the SEM stub's carbon tab, from the same vial.",
+   "start_frame": 175,
+   "end_frame": 182
+  },
+  {
+   "label": "2/7",
+   "caption": "A dusting on the SEM stub's carbon tab, from the same vial.",
+   "start_frame": 183,
+   "end_frame": 183
+  },
+  {
+   "label": "2/7",
+   "caption": "A dusting on the SEM stub's carbon tab, from the same vial.",
+   "start_frame": 184,
+   "end_frame": 184
+  },
+  {
+   "label": "2/7",
+   "caption": "A dusting on the SEM stub's carbon tab, from the same vial.",
+   "start_frame": 185,
+   "end_frame": 185
+  },
+  {
+   "label": "2/7",
+   "caption": "A dusting on the SEM stub's carbon tab, from the same vial.",
+   "start_frame": 186,
+   "end_frame": 186
+  },
+  {
+   "label": "2/7",
+   "caption": "A dusting on the SEM stub's carbon tab, from the same vial.",
+   "start_frame": 187,
+   "end_frame": 187
+  },
+  {
+   "label": "2/7",
+   "caption": "A dusting on the SEM stub's carbon tab, from the same vial.",
+   "start_frame": 188,
+   "end_frame": 188
+  },
+  {
+   "label": "2/7",
+   "caption": "A dusting on the SEM stub's carbon tab, from the same vial.",
+   "start_frame": 189,
+   "end_frame": 195
+  },
+  {
+   "label": "2/7",
+   "caption": "And about 4 g into the XRF cup, onto its film.",
+   "start_frame": 196,
+   "end_frame": 207
+  },
+  {
+   "label": "2/7",
+   "caption": "And about 4 g into the XRF cup, onto its film.",
+   "start_frame": 208,
+   "end_frame": 215
+  },
+  {
+   "label": "2/7",
+   "caption": "And about 4 g into the XRF cup, onto its film.",
+   "start_frame": 216,
+   "end_frame": 218
+  },
+  {
+   "label": "2/7",
+   "caption": "And about 4 g into the XRF cup, onto its film.",
+   "start_frame": 219,
+   "end_frame": 221
+  },
+  {
+   "label": "2/7",
+   "caption": "And about 4 g into the XRF cup, onto its film.",
+   "start_frame": 222,
+   "end_frame": 224
+  },
+  {
+   "label": "2/7",
+   "caption": "And about 4 g into the XRF cup, onto its film.",
+   "start_frame": 225,
+   "end_frame": 227
+  },
+  {
+   "label": "2/7",
+   "caption": "And about 4 g into the XRF cup, onto its film.",
+   "start_frame": 228,
+   "end_frame": 230
+  },
+  {
+   "label": "2/7",
+   "caption": "And about 4 g into the XRF cup, onto its film.",
+   "start_frame": 231,
+   "end_frame": 233
+  },
+  {
+   "label": "2/7",
+   "caption": "And about 4 g into the XRF cup, onto its film.",
+   "start_frame": 234,
+   "end_frame": 240
+  },
+  {
+   "label": "2/7",
+   "caption": "The vial goes back to its block on the MiR.",
+   "start_frame": 241,
+   "end_frame": 253
+  },
+  {
+   "label": "2/7",
+   "caption": "The vial goes back to its block on the MiR.",
+   "start_frame": 254,
+   "end_frame": 258
+  },
+  {
+   "label": "2/7",
+   "caption": "The vial goes back to its block on the MiR.",
+   "start_frame": 259,
+   "end_frame": 261
+  },
+  {
+   "label": "2/7",
+   "caption": "The vial goes back to its block on the MiR.",
+   "start_frame": 262,
+   "end_frame": 266
+  },
+  {
+   "label": "2/7",
+   "caption": "The blade strikes the mound off flush with the holder's top, its reference plane, and pushes the excess into the trough. The powder's face has to sit on the goniometer's axis: 0.1 mm too high moves the Al 111 peak by about 0.07 deg.",
+   "start_frame": 267,
+   "end_frame": 274
+  },
+  {
+   "label": "2/7",
+   "caption": "The blade strikes the mound off flush with the holder's top, its reference plane, and pushes the excess into the trough. The powder's face has to sit on the goniometer's axis: 0.1 mm too high moves the Al 111 peak by about 0.07 deg.",
+   "start_frame": 275,
+   "end_frame": 289
+  },
+  {
+   "label": "2/7",
+   "caption": "The blade strikes the mound off flush with the holder's top, its reference plane, and pushes the excess into the trough. The powder's face has to sit on the goniometer's axis: 0.1 mm too high moves the Al 111 peak by about 0.07 deg.",
+   "start_frame": 290,
+   "end_frame": 301
+  },
+  {
+   "label": "3/7",
+   "caption": "The Rigaku MiniFlex, its door drawn see-through so the goniometer shows: it stands still at its load position. The arm takes the holder by its fin first, while the door is still shut.",
+   "start_frame": 302,
+   "end_frame": 313
+  },
+  {
+   "label": "3/7",
+   "caption": "The Rigaku MiniFlex, its door drawn see-through so the goniometer shows: it stands still at its load position. The arm takes the holder by its fin first, while the door is still shut.",
+   "start_frame": 314,
+   "end_frame": 319
+  },
+  {
+   "label": "3/7",
+   "caption": "The Rigaku MiniFlex, its door drawn see-through so the goniometer shows: it stands still at its load position. The arm takes the holder by its fin first, while the door is still shut.",
+   "start_frame": 320,
+   "end_frame": 322
+  },
+  {
+   "label": "3/7",
+   "caption": "The Rigaku MiniFlex, its door drawn see-through so the goniometer shows: it stands still at its load position. The arm takes the holder by its fin first, while the door is still shut.",
+   "start_frame": 323,
+   "end_frame": 327
+  },
+  {
+   "label": "3/7",
+   "caption": "The Rigaku MiniFlex, its door drawn see-through so the goniometer shows: it stands still at its load position. The arm takes the holder by its fin first, while the door is still shut.",
+   "start_frame": 328,
+   "end_frame": 332
+  },
+  {
+   "label": "3/7",
+   "caption": "The Rigaku MiniFlex, its door drawn see-through so the goniometer shows: it stands still at its load position. The arm takes the holder by its fin first, while the door is still shut.",
+   "start_frame": 333,
+   "end_frame": 346
+  },
+  {
+   "label": "3/7",
+   "caption": "An actuator on the hinge opens the door (our addition; Yotsumoto et al. 2024 drove theirs the same way), to 80 deg, which clears the tray's camera post; the arm waits outside its swing.",
+   "start_frame": 347,
+   "end_frame": 357
+  },
+  {
+   "label": "3/7",
+   "caption": "In through the door and onto the stage, turned a little (the spinner takes it any way round). Nothing has touched the powder's face since it was struck off.",
+   "start_frame": 358,
+   "end_frame": 364
+  },
+  {
+   "label": "3/7",
+   "caption": "In through the door and onto the stage, turned a little (the spinner takes it any way round). Nothing has touched the powder's face since it was struck off.",
+   "start_frame": 365,
+   "end_frame": 372
+  },
+  {
+   "label": "3/7",
+   "caption": "In through the door and onto the stage, turned a little (the spinner takes it any way round). Nothing has touched the powder's face since it was struck off.",
+   "start_frame": 373,
+   "end_frame": 377
+  },
+  {
+   "label": "3/7",
+   "caption": "In through the door and onto the stage, turned a little (the spinner takes it any way round). Nothing has touched the powder's face since it was struck off.",
+   "start_frame": 378,
+   "end_frame": 380
+  },
+  {
+   "label": "3/7",
+   "caption": "In through the door and onto the stage, turned a little (the spinner takes it any way round). Nothing has touched the powder's face since it was struck off.",
+   "start_frame": 381,
+   "end_frame": 387
+  },
+  {
+   "label": "3/7",
+   "caption": "In through the door and onto the stage, turned a little (the spinner takes it any way round). Nothing has touched the powder's face since it was struck off.",
+   "start_frame": 388,
+   "end_frame": 401
+  },
+  {
+   "label": "3/7",
+   "caption": "In through the door and onto the stage, turned a little (the spinner takes it any way round). Nothing has touched the powder's face since it was struck off.",
+   "start_frame": 402,
+   "end_frame": 413
+  },
+  {
+   "label": "3/7",
+   "caption": "Door shut and locked; only then does the interlock let the tube switch on, and the X-ray lamp on top lights. The goniometer drives to its start, theta 5 deg and 2theta 10 deg.",
+   "start_frame": 414,
+   "end_frame": 422
+  },
+  {
+   "label": "3/7",
+   "caption": "Door shut and locked; only then does the interlock let the tube switch on, and the X-ray lamp on top lights. The goniometer drives to its start, theta 5 deg and 2theta 10 deg.",
+   "start_frame": 423,
+   "end_frame": 429
+  },
+  {
+   "label": "3/7",
+   "caption": "Door shut and locked; only then does the interlock let the tube switch on, and the X-ray lamp on top lights. The goniometer drives to its start, theta 5 deg and 2theta 10 deg.",
+   "start_frame": 430,
+   "end_frame": 438
+  },
+  {
+   "label": "3/7",
+   "caption": "The scan, the housing drawn see-through: the tube stays put, the sample tilts by theta and the detector sweeps 2theta from 10 to 90 deg. The holder spins as it goes (a spinner is assumed), so more crystallites diffract: the literature's fix for coarse grains, not grinding.",
+   "start_frame": 439,
+   "end_frame": 469
+  },
+  {
+   "label": "3/7",
+   "caption": "The pattern: aluminium's fcc peaks and silicon's diamond-cubic ones, as Al-10Si should show. COMPUTED, not measured: no pattern of this powder exists yet. Bragg's law, structure factors, Lorentz-polarization.",
+   "start_frame": 470,
+   "end_frame": 498
+  },
+  {
+   "label": "3/7",
+   "caption": "X-rays off, the lamp out, the goniometer back to its load position; the holder stays in until the next sample.",
+   "start_frame": 499,
+   "end_frame": 507
+  },
+  {
+   "label": "4/7",
+   "caption": "The SEM next to it, a Hitachi TM4000PlusII: it vents and its door comes out with the stage. The stub rides on a 1.5 in aluminium carrier (our design), so the same holder cup that takes the mounts (chapter 7) takes it, and its spring plunger is the path to ground.",
+   "start_frame": 508,
+   "end_frame": 519
+  },
+  {
+   "label": "4/7",
+   "caption": "The SEM next to it, a Hitachi TM4000PlusII: it vents and its door comes out with the stage. The stub rides on a 1.5 in aluminium carrier (our design), so the same holder cup that takes the mounts (chapter 7) takes it, and its spring plunger is the path to ground.",
+   "start_frame": 520,
+   "end_frame": 524
+  },
+  {
+   "label": "4/7",
+   "caption": "The SEM next to it, a Hitachi TM4000PlusII: it vents and its door comes out with the stage. The stub rides on a 1.5 in aluminium carrier (our design), so the same holder cup that takes the mounts (chapter 7) takes it, and its spring plunger is the path to ground.",
+   "start_frame": 525,
+   "end_frame": 527
+  },
+  {
+   "label": "4/7",
+   "caption": "The SEM next to it, a Hitachi TM4000PlusII: it vents and its door comes out with the stage. The stub rides on a 1.5 in aluminium carrier (our design), so the same holder cup that takes the mounts (chapter 7) takes it, and its spring plunger is the path to ground.",
+   "start_frame": 528,
+   "end_frame": 532
+  },
+  {
+   "label": "4/7",
+   "caption": "The SEM next to it, a Hitachi TM4000PlusII: it vents and its door comes out with the stage. The stub rides on a 1.5 in aluminium carrier (our design), so the same holder cup that takes the mounts (chapter 7) takes it, and its spring plunger is the path to ground.",
+   "start_frame": 533,
+   "end_frame": 545
+  },
+  {
+   "label": "4/7",
+   "caption": "The SEM next to it, a Hitachi TM4000PlusII: it vents and its door comes out with the stage. The stub rides on a 1.5 in aluminium carrier (our design), so the same holder cup that takes the mounts (chapter 7) takes it, and its spring plunger is the path to ground.",
+   "start_frame": 546,
+   "end_frame": 551
+  },
+  {
+   "label": "4/7",
+   "caption": "The SEM next to it, a Hitachi TM4000PlusII: it vents and its door comes out with the stage. The stub rides on a 1.5 in aluminium carrier (our design), so the same holder cup that takes the mounts (chapter 7) takes it, and its spring plunger is the path to ground.",
+   "start_frame": 552,
+   "end_frame": 554
+  },
+  {
+   "label": "4/7",
+   "caption": "The SEM next to it, a Hitachi TM4000PlusII: it vents and its door comes out with the stage. The stub rides on a 1.5 in aluminium carrier (our design), so the same holder cup that takes the mounts (chapter 7) takes it, and its spring plunger is the path to ground.",
+   "start_frame": 555,
+   "end_frame": 559
+  },
+  {
+   "label": "4/7",
+   "caption": "The SEM next to it, a Hitachi TM4000PlusII: it vents and its door comes out with the stage. The stub rides on a 1.5 in aluminium carrier (our design), so the same holder cup that takes the mounts (chapter 7) takes it, and its spring plunger is the path to ground.",
+   "start_frame": 560,
+   "end_frame": 568
+  },
+  {
+   "label": "4/7",
+   "caption": "Door in, EVAC: about three minutes to vacuum. Then the powder, imaged.",
+   "start_frame": 569,
+   "end_frame": 577
+  },
+  {
+   "label": "4/7",
+   "caption": "Door in, EVAC: about three minutes to vacuum. Then the powder, imaged.",
+   "start_frame": 578,
+   "end_frame": 584
+  },
+  {
+   "label": "4/7",
+   "caption": "REAL DATA: the lab's own atomized Al 4047, run c3k0n5 (rePowder, 22 Oct 2026), on BYU's Apreo, 26 Oct 2026 (DAL #157). Spheres, a few satellites and some irregular particles; the same powder, imaged on a floor SEM rather than this TM4000.",
+   "start_frame": 585,
+   "end_frame": 616
+  },
+  {
+   "label": "4/7",
+   "caption": "The particles counted in those images (972, inscribed circles): the size by number as imaged, by volume, and what laser diffraction of the 20-63 um cut would give, computed from the count.",
+   "start_frame": 617,
+   "end_frame": 644
+  },
+  {
+   "label": "4/7",
+   "caption": "The particles counted in those images (972, inscribed circles): the size by number as imaged, by volume, and what laser diffraction of the 20-63 um cut would give, computed from the count.",
+   "start_frame": 645,
+   "end_frame": 650
+  },
+  {
+   "label": "4/7",
+   "caption": "The XRF cup goes onto the MiR, into a shallow pocket on its cabinet: the XRF is on Shuttle 2.",
+   "start_frame": 651,
+   "end_frame": 662
+  },
+  {
+   "label": "4/7",
+   "caption": "The XRF cup goes onto the MiR, into a shallow pocket on its cabinet: the XRF is on Shuttle 2.",
+   "start_frame": 663,
+   "end_frame": 667
+  },
+  {
+   "label": "4/7",
+   "caption": "The XRF cup goes onto the MiR, into a shallow pocket on its cabinet: the XRF is on Shuttle 2.",
+   "start_frame": 668,
+   "end_frame": 670
+  },
+  {
+   "label": "4/7",
+   "caption": "The XRF cup goes onto the MiR, into a shallow pocket on its cabinet: the XRF is on Shuttle 2.",
+   "start_frame": 671,
+   "end_frame": 675
+  },
+  {
+   "label": "4/7",
+   "caption": "The XRF cup goes onto the MiR, into a shallow pocket on its cabinet: the XRF is on Shuttle 2.",
+   "start_frame": 676,
+   "end_frame": 688
+  },
+  {
+   "label": "4/7",
+   "caption": "The XRF cup goes onto the MiR, into a shallow pocket on its cabinet: the XRF is on Shuttle 2.",
+   "start_frame": 689,
+   "end_frame": 693
+  },
+  {
+   "label": "4/7",
+   "caption": "The XRF cup goes onto the MiR, into a shallow pocket on its cabinet: the XRF is on Shuttle 2.",
+   "start_frame": 694,
+   "end_frame": 696
+  },
+  {
+   "label": "4/7",
+   "caption": "The XRF cup goes onto the MiR, into a shallow pocket on its cabinet: the XRF is on Shuttle 2.",
+   "start_frame": 697,
+   "end_frame": 701
+  },
+  {
+   "label": "4/7",
+   "caption": "The XRF cup goes onto the MiR, into a shallow pocket on its cabinet: the XRF is on Shuttle 2.",
+   "start_frame": 702,
+   "end_frame": 710
+  },
+  {
+   "label": "4/7",
+   "caption": "Tray D goes back to its slot and its power, the samples in the instruments; tray E comes down.",
+   "start_frame": 711,
+   "end_frame": 712
+  },
+  {
+   "label": "4/7",
+   "caption": "Tray D goes back to its slot and its power, the samples in the instruments; tray E comes down.",
+   "start_frame": 713,
+   "end_frame": 719
+  },
+  {
+   "label": "4/7",
+   "caption": "Tray D goes back to its slot and its power, the samples in the instruments; tray E comes down.",
+   "start_frame": 720,
+   "end_frame": 722
+  },
+  {
+   "label": "4/7",
+   "caption": "Tray D goes back to its slot and its power, the samples in the instruments; tray E comes down.",
+   "start_frame": 723,
+   "end_frame": 727
+  },
+  {
+   "label": "4/7",
+   "caption": "Tray D goes back to its slot and its power, the samples in the instruments; tray E comes down.",
+   "start_frame": 728,
+   "end_frame": 734
+  },
+  {
+   "label": "5/7",
+   "caption": "Tray E, mechanical testing and particle size: the PIP, the KLA iMicro and the Malvern Mastersizer 3000 with its Aero S dry disperser.",
+   "start_frame": 736,
+   "end_frame": 742
+  },
+  {
+   "label": "5/7",
+   "caption": "Tray E, mechanical testing and particle size: the PIP, the KLA iMicro and the Malvern Mastersizer 3000 with its Aero S dry disperser.",
+   "start_frame": 743,
+   "end_frame": 750
+  },
+  {
+   "label": "5/7",
+   "caption": "Tray E, mechanical testing and particle size: the PIP, the KLA iMicro and the Malvern Mastersizer 3000 with its Aero S dry disperser.",
+   "start_frame": 751,
+   "end_frame": 756
+  },
+  {
+   "label": "5/7",
+   "caption": "Tray E, mechanical testing and particle size: the PIP, the KLA iMicro and the Malvern Mastersizer 3000 with its Aero S dry disperser.",
+   "start_frame": 757,
+   "end_frame": 758
+  },
+  {
+   "label": "5/7",
+   "caption": "Tray E, mechanical testing and particle size: the PIP, the KLA iMicro and the Malvern Mastersizer 3000 with its Aero S dry disperser.",
+   "start_frame": 759,
+   "end_frame": 765
+  },
+  {
+   "label": "5/7",
+   "caption": "Tray E, mechanical testing and particle size: the PIP, the KLA iMicro and the Malvern Mastersizer 3000 with its Aero S dry disperser.",
+   "start_frame": 766,
+   "end_frame": 767
+  },
+  {
+   "label": "5/7",
+   "caption": "The arm takes the vial again. The Aero S's clear cover lifts off (by hand in Malvern's videos; an actuator is assumed here).",
+   "start_frame": 769,
+   "end_frame": 780
+  },
+  {
+   "label": "5/7",
+   "caption": "The arm takes the vial again. The Aero S's clear cover lifts off (by hand in Malvern's videos; an actuator is assumed here).",
+   "start_frame": 781,
+   "end_frame": 785
+  },
+  {
+   "label": "5/7",
+   "caption": "The arm takes the vial again. The Aero S's clear cover lifts off (by hand in Malvern's videos; an actuator is assumed here).",
+   "start_frame": 786,
+   "end_frame": 788
+  },
+  {
+   "label": "5/7",
+   "caption": "The arm takes the vial again. The Aero S's clear cover lifts off (by hand in Malvern's videos; an actuator is assumed here).",
+   "start_frame": 789,
+   "end_frame": 793
+  },
+  {
+   "label": "5/7",
+   "caption": "About 5 g into the hopper, over the vibrating feeder tray.",
+   "start_frame": 794,
+   "end_frame": 806
+  },
+  {
+   "label": "5/7",
+   "caption": "About 5 g into the hopper, over the vibrating feeder tray.",
+   "start_frame": 807,
+   "end_frame": 814
+  },
+  {
+   "label": "5/7",
+   "caption": "About 5 g into the hopper, over the vibrating feeder tray.",
+   "start_frame": 815,
+   "end_frame": 821
+  },
+  {
+   "label": "5/7",
+   "caption": "About 5 g into the hopper, over the vibrating feeder tray.",
+   "start_frame": 822,
+   "end_frame": 828
+  },
+  {
+   "label": "5/7",
+   "caption": "About 5 g into the hopper, over the vibrating feeder tray.",
+   "start_frame": 829,
+   "end_frame": 841
+  },
+  {
+   "label": "5/7",
+   "caption": "About 5 g into the hopper, over the vibrating feeder tray.",
+   "start_frame": 842,
+   "end_frame": 846
+  },
+  {
+   "label": "5/7",
+   "caption": "About 5 g into the hopper, over the vibrating feeder tray.",
+   "start_frame": 847,
+   "end_frame": 849
+  },
+  {
+   "label": "5/7",
+   "caption": "About 5 g into the hopper, over the vibrating feeder tray.",
+   "start_frame": 850,
+   "end_frame": 854
+  },
+  {
+   "label": "5/7",
+   "caption": "About 5 g into the hopper, over the vibrating feeder tray.",
+   "start_frame": 855,
+   "end_frame": 863
+  },
+  {
+   "label": "5/7",
+   "caption": "Cover on, air on. The instrument drawn see-through: the laser's beam is expanded, then focused so it converges through the cell onto the focal-plane detector. First the background, with the cell empty.",
+   "start_frame": 864,
+   "end_frame": 877
+  },
+  {
+   "label": "5/7",
+   "caption": "The feeder tray vibrates the powder into the venturi; the air disperses it and carries it through the cell. The obscuration, the share of the beam the particles take out, rises.",
+   "start_frame": 878,
+   "end_frame": 896
+  },
+  {
+   "label": "5/7",
+   "caption": "Large particles scatter light at small angles, onto the inner arcs of the focal-plane detector; small ones scatter wide, to the large-angle and back-scatter detectors, where the blue LED's shorter wavelength resolves the finest. Each arc's light, ring by ring, is the raw data.",
+   "start_frame": 897,
+   "end_frame": 924
+  },
+  {
+   "label": "5/7",
+   "caption": "A Mie-theory fit of that pattern gives the volume-weighted size distribution. COMPUTED here: no Mastersizer result for this powder exists, so the curve is the SEM count of c3k0n5 by volume, put through the 20-63 um sieve (Dv50 about 58 um).",
+   "start_frame": 925,
+   "end_frame": 955
+  },
+  {
+   "label": "5/7",
+   "caption": "Done: the beam off, the extractor draws the powder away, the bench closed.",
+   "start_frame": 956,
+   "end_frame": 964
+  },
+  {
+   "label": "5/7",
+   "caption": "Tray E goes back up to its slot.",
+   "start_frame": 965,
+   "end_frame": 966
+  },
+  {
+   "label": "5/7",
+   "caption": "Tray E goes back up to its slot.",
+   "start_frame": 967,
+   "end_frame": 973
+  },
+  {
+   "label": "5/7",
+   "caption": "Tray E goes back up to its slot.",
+   "start_frame": 974,
+   "end_frame": 976
+  },
+  {
+   "label": "5/7",
+   "caption": "Tray E goes back up to its slot.",
+   "start_frame": 977,
+   "end_frame": 982
+  },
+  {
+   "label": "5/7",
+   "caption": "Tray E goes back up to its slot.",
+   "start_frame": 983,
+   "end_frame": 989
+  },
+  {
+   "label": "6/7",
+   "caption": "The XRF is on Shuttle 2. The MiR250 drives over, speeding up and slowing down at its published 0.3 m/s², and stops in front of the second Shuttle's opening, by the XRF's end of the tray.",
+   "start_frame": 991,
+   "end_frame": 1030
+  },
+  {
+   "label": "6/7",
+   "caption": "Tray M comes down to Shuttle 2's opening: the Bruker S2 PUMA Series 2 benchtop XRF, a ductless fume hood and the Carvera.",
+   "start_frame": 1031,
+   "end_frame": 1035
+  },
+  {
+   "label": "6/7",
+   "caption": "Tray M comes down to Shuttle 2's opening: the Bruker S2 PUMA Series 2 benchtop XRF, a ductless fume hood and the Carvera.",
+   "start_frame": 1036,
+   "end_frame": 1043
+  },
+  {
+   "label": "6/7",
+   "caption": "Tray M comes down to Shuttle 2's opening: the Bruker S2 PUMA Series 2 benchtop XRF, a ductless fume hood and the Carvera.",
+   "start_frame": 1044,
+   "end_frame": 1048
+  },
+  {
+   "label": "6/7",
+   "caption": "Tray M comes down to Shuttle 2's opening: the Bruker S2 PUMA Series 2 benchtop XRF, a ductless fume hood and the Carvera.",
+   "start_frame": 1049,
+   "end_frame": 1050
+  },
+  {
+   "label": "6/7",
+   "caption": "Tray M comes down to Shuttle 2's opening: the Bruker S2 PUMA Series 2 benchtop XRF, a ductless fume hood and the Carvera.",
+   "start_frame": 1051,
+   "end_frame": 1057
+  },
+  {
+   "label": "6/7",
+   "caption": "Tray M comes down to Shuttle 2's opening: the Bruker S2 PUMA Series 2 benchtop XRF, a ductless fume hood and the Carvera.",
+   "start_frame": 1058,
+   "end_frame": 1059
+  },
+  {
+   "label": "6/7",
+   "caption": "The S2 PUMA measures from below, so the film-bottomed cup only has to reach the chamber's port. For a robot, Bruker's Automation version takes samples \"into the sample chamber directly\": drawn here as a hatch in the hood's top (our assumption), which slides back; the port opens and the chamber's lift ring rises through it to take the cup.",
+   "start_frame": 1061,
+   "end_frame": 1073
+  },
+  {
+   "label": "6/7",
+   "caption": "The arm takes the cup off the cabinet and lowers it through the hatch onto the chamber's lift ring.",
+   "start_frame": 1074,
+   "end_frame": 1085
+  },
+  {
+   "label": "6/7",
+   "caption": "The arm takes the cup off the cabinet and lowers it through the hatch onto the chamber's lift ring.",
+   "start_frame": 1086,
+   "end_frame": 1090
+  },
+  {
+   "label": "6/7",
+   "caption": "The arm takes the cup off the cabinet and lowers it through the hatch onto the chamber's lift ring.",
+   "start_frame": 1091,
+   "end_frame": 1093
+  },
+  {
+   "label": "6/7",
+   "caption": "The arm takes the cup off the cabinet and lowers it through the hatch onto the chamber's lift ring.",
+   "start_frame": 1094,
+   "end_frame": 1098
+  },
+  {
+   "label": "6/7",
+   "caption": "The arm takes the cup off the cabinet and lowers it through the hatch onto the chamber's lift ring.",
+   "start_frame": 1099,
+   "end_frame": 1112
+  },
+  {
+   "label": "6/7",
+   "caption": "The arm takes the cup off the cabinet and lowers it through the hatch onto the chamber's lift ring.",
+   "start_frame": 1113,
+   "end_frame": 1121
+  },
+  {
+   "label": "6/7",
+   "caption": "The arm takes the cup off the cabinet and lowers it through the hatch onto the chamber's lift ring.",
+   "start_frame": 1122,
+   "end_frame": 1126
+  },
+  {
+   "label": "6/7",
+   "caption": "The arm takes the cup off the cabinet and lowers it through the hatch onto the chamber's lift ring.",
+   "start_frame": 1127,
+   "end_frame": 1129
+  },
+  {
+   "label": "6/7",
+   "caption": "The arm takes the cup off the cabinet and lowers it through the hatch onto the chamber's lift ring.",
+   "start_frame": 1130,
+   "end_frame": 1137
+  },
+  {
+   "label": "6/7",
+   "caption": "The arm takes the cup off the cabinet and lowers it through the hatch onto the chamber's lift ring.",
+   "start_frame": 1138,
+   "end_frame": 1146
+  },
+  {
+   "label": "6/7",
+   "caption": "The arm takes the cup off the cabinet and lowers it through the hatch onto the chamber's lift ring.",
+   "start_frame": 1147,
+   "end_frame": 1153
+  },
+  {
+   "label": "6/7",
+   "caption": "Hatch shut. The ring lowers the cup into the chamber, film down over the tube and the detector, and the port shuts; the chamber fills with helium, which keeps loose powder in place and lets the light elements' X-rays through.",
+   "start_frame": 1154,
+   "end_frame": 1161
+  },
+  {
+   "label": "6/7",
+   "caption": "Hatch shut. The ring lowers the cup into the chamber, film down over the tube and the detector, and the port shuts; the chamber fills with helium, which keeps loose powder in place and lets the light elements' X-rays through.",
+   "start_frame": 1162,
+   "end_frame": 1187
+  },
+  {
+   "label": "6/7",
+   "caption": "Hatch shut. The ring lowers the cup into the chamber, film down over the tube and the detector, and the port shuts; the chamber fills with helium, which keeps loose powder in place and lets the light elements' X-rays through.",
+   "start_frame": 1188,
+   "end_frame": 1197
+  },
+  {
+   "label": "6/7",
+   "caption": "The beam, drawn see-through: up to 50 kV from the tube; each element answers with its own X-ray lines, which the silicon drift detector counts.",
+   "start_frame": 1198,
+   "end_frame": 1212
+  },
+  {
+   "label": "6/7",
+   "caption": "The spectrum and a composition against Al 4047's limits. ILLUSTRATIVE: the line energies are real, the heights and the numbers are made up for the picture; no XRF of this powder exists yet.",
+   "start_frame": 1213,
+   "end_frame": 1243
+  },
+  {
+   "label": "6/7",
+   "caption": "The spectrum and a composition against Al 4047's limits. ILLUSTRATIVE: the line energies are real, the heights and the numbers are made up for the picture; no XRF of this powder exists yet.",
+   "start_frame": 1244,
+   "end_frame": 1251
+  },
+  {
+   "label": "6/7",
+   "caption": "Tray M goes back to its slot; the cup stays in the S2 PUMA until it is unloaded with the next batch.",
+   "start_frame": 1252,
+   "end_frame": 1253
+  },
+  {
+   "label": "6/7",
+   "caption": "Tray M goes back to its slot; the cup stays in the S2 PUMA until it is unloaded with the next batch.",
+   "start_frame": 1254,
+   "end_frame": 1260
+  },
+  {
+   "label": "6/7",
+   "caption": "Tray M goes back to its slot; the cup stays in the S2 PUMA until it is unloaded with the next batch.",
+   "start_frame": 1261,
+   "end_frame": 1263
+  },
+  {
+   "label": "6/7",
+   "caption": "Tray M goes back to its slot; the cup stays in the S2 PUMA until it is unloaded with the next batch.",
+   "start_frame": 1264,
+   "end_frame": 1268
+  },
+  {
+   "label": "6/7",
+   "caption": "Tray M goes back to its slot; the cup stays in the S2 PUMA until it is unloaded with the next batch.",
+   "start_frame": 1269,
+   "end_frame": 1275
+  },
+  {
+   "label": "7/7",
+   "caption": "The powder checked while its plate printed: its size distribution, its phases, its shape and its composition, each tray brought to an opening only when it was needed. Chapter 5 takes the printed plate out of the MIDI.",
+   "start_frame": 1277,
+   "end_frame": 1308
+  }
+ ]
+}

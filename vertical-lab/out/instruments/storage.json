@@ -1,0 +1,71 @@
+{
+ "name": "instruments/storage",
+ "fps": 8,
+ "n_frames": 246,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/10",
+   "caption": "A storage tray: what the arm picks from. 1760 x 760 mm and 300 mm tall. Nothing here draws power: no UPS, no dock, no cameras; the bay's overhead camera sees it whenever it is presented.",
+   "start_frame": 0,
+   "end_frame": 29
+  },
+  {
+   "label": "2/10",
+   "caption": "Charge cups turned from 5N Al (blue rack) and C10100 Cu (orange rack), 48 of each, in the front rows where a level gripper takes them.",
+   "start_frame": 30,
+   "end_frame": 57
+  },
+  {
+   "label": "3/10",
+   "caption": "Their plugs, Al and Cu apart; 54 capped 20 mL vials; 112 15 mL ICP-MS tubes.",
+   "start_frame": 58,
+   "end_frame": 85
+  },
+  {
+   "label": "4/10",
+   "caption": "The top drawer: 96 SEM pin stubs, 12.7 mm, carbon tabs on.",
+   "start_frame": 86,
+   "end_frame": 111
+  },
+  {
+   "label": "5/10",
+   "caption": "The lower drawer: 32 polished 1.25 in mounts.",
+   "start_frame": 112,
+   "end_frame": 137
+  },
+  {
+   "label": "6/10",
+   "caption": "Tensile bars (E8 sub-size), sealed 250 mL powder jars, labelled bins. Every jar is clear glass with a black cap.",
+   "start_frame": 138,
+   "end_frame": 165
+  },
+  {
+   "label": "7/10",
+   "caption": "Tinted for now: which powder is in which jar (legend, top right).",
+   "start_frame": 166,
+   "end_frame": 182
+  },
+  {
+   "label": "8/10",
+   "caption": "The tint is only a highlight, held for a few seconds...",
+   "start_frame": 183,
+   "end_frame": 205
+  },
+  {
+   "label": "9/10",
+   "caption": "...then it fades back to plain glass and black caps.",
+   "start_frame": 206,
+   "end_frame": 223
+  },
+  {
+   "label": "10/10",
+   "caption": "Every pocket is a seat: storage_seats() lists them for the arm's planner.",
+   "start_frame": 224,
+   "end_frame": 245
+  }
+ ]
+}

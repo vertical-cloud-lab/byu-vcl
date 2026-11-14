@@ -1,0 +1,407 @@
+{
+ "clip": "alloy_charge",
+ "frames_checked": 1145,
+ "frames_with_collisions": 29,
+ "runs": [
+  {
+   "label": "2/6",
+   "first_frame": 124,
+   "last_frame": 124,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:cup0",
+     "other": "crack",
+     "depth_mm": 12.0
+    }
+   ]
+  },
+  {
+   "label": "2/6",
+   "first_frame": 268,
+   "last_frame": 271,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:cup0",
+     "other": "crack",
+     "depth_mm": 25.0
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 347,
+   "last_frame": 347,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:cup0",
+     "other": "crack",
+     "depth_mm": 12.0
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 491,
+   "last_frame": 494,
+   "frames": 3,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:cup0",
+     "other": "crack",
+     "depth_mm": 25.0
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 507,
+   "last_frame": 507,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "crack",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "crack",
+     "depth_mm": 3.0
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 521,
+   "last_frame": 523,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:plug0",
+     "other": "cup0",
+     "depth_mm": 3.0
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 538,
+   "last_frame": 538,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:cup0",
+     "other": "crack",
+     "depth_mm": 6.0
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 587,
+   "last_frame": 589,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:vp_punch",
+     "other": "vp_shuttle",
+     "depth_mm": 3.0
+    }
+   ]
+  },
+  {
+   "label": "3/6",
+   "first_frame": 674,
+   "last_frame": 676,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:vp_punch",
+     "other": "vpress",
+     "depth_mm": 25.0
+    }
+   ]
+  },
+  {
+   "label": "4/6",
+   "first_frame": 968,
+   "last_frame": 970,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:cup4",
+     "other": "crack",
+     "depth_mm": 25.0
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1151,
+   "last_frame": 1153,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:cup4",
+     "other": "crack",
+     "depth_mm": 25.0
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1165,
+   "last_frame": 1165,
+   "frames": 1,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "left_finger_tip",
+     "other": "crack",
+     "depth_mm": 3.0
+    },
+    {
+     "arm": "ur",
+     "kind": "gripper",
+     "part": "right_finger_tip",
+     "other": "crack",
+     "depth_mm": 3.0
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1175,
+   "last_frame": 1177,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:plug4",
+     "other": "cup4",
+     "depth_mm": 3.0
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1229,
+   "last_frame": 1231,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:vp_punch",
+     "other": "vp_shuttle",
+     "depth_mm": 3.0
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1296,
+   "last_frame": 1298,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:vp_punch",
+     "other": "vpress",
+     "depth_mm": 25.0
+    }
+   ]
+  },
+  {
+   "label": "5/6",
+   "first_frame": 1325,
+   "last_frame": 1327,
+   "frames": 2,
+   "pairs": [
+    {
+     "arm": "ur",
+     "kind": "held",
+     "part": "held:cup4",
+     "other": "crack",
+     "depth_mm": 25.0
+    }
+   ]
+  }
+ ],
+ "rules": "What may touch (round 11, the default): the gripper and whatever group it is picking up, holding or putting down, within 4 s of the grasp or release, and a held part and the groups it touches when it is taken and when it is let go (where it came from and where it goes), each only up to 1.5 mm deep (collide.depth: the shortest of 26 moves that frees the pair). Anything else an arm, its gripper or what it holds touches is a collision at any depth. The movers check (collide.Movers, its own \"movers\" section) covers everything else that moves. ARM_AUDIT_RULES=old: round 10's rules (no depth limit, no movers).",
+ "rules_version": "round 11 (strict)",
+ "depth_limit_mm": 1.5,
+ "hits_allowed_before_but_too_deep": 62,
+ "fps": 6,
+ "arm_seconds": 38.9,
+ "method": "FCL 0.7 (python-fcl) mesh-mesh collision on the drawn meshes, arm links decimated to 8000 triangles; every frame of the clip, after its update; depths by collide.depth (26-direction translational depth, rounded up to 1.5/3/6/12/25/50 mm, 999 past 50)",
+ "movers": {
+  "frames_checked": 1145,
+  "frames_moving": 496,
+  "frames_with_collisions": 11,
+  "runs": [
+   {
+    "label": "3/6",
+    "first_frame": 626,
+    "last_frame": 628,
+    "frames": 3,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cup0",
+      "body": "cup0/cut",
+      "other": "vpress/punch_cut",
+      "other_group": "vp_punch",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "3/6",
+    "first_frame": 762,
+    "last_frame": 762,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cup1",
+      "body": "cup1/whole",
+      "other": "vpress/punch",
+      "other_group": "vp_punch",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "3/6",
+    "first_frame": 800,
+    "last_frame": 800,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cup2",
+      "body": "cup2/whole",
+      "other": "vpress/punch",
+      "other_group": "vp_punch",
+      "depth_mm": 6.0
+     }
+    ]
+   },
+   {
+    "label": "3/6",
+    "first_frame": 838,
+    "last_frame": 838,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cup3",
+      "body": "cup3/whole",
+      "other": "vpress/punch",
+      "other_group": "vp_punch",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "5/6",
+    "first_frame": 1257,
+    "last_frame": 1258,
+    "frames": 2,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cup4",
+      "body": "cup4/cut",
+      "other": "vpress/punch_cut",
+      "other_group": "vp_punch",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "5/6",
+    "first_frame": 1371,
+    "last_frame": 1371,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cup5",
+      "body": "cup5/whole",
+      "other": "vpress/punch",
+      "other_group": "vp_punch",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "5/6",
+    "first_frame": 1409,
+    "last_frame": 1409,
+    "frames": 1,
+    "depth_mm": 3.0,
+    "pairs": [
+     {
+      "mover": "cup6",
+      "body": "cup6/whole",
+      "other": "vpress/punch",
+      "other_group": "vp_punch",
+      "depth_mm": 3.0
+     }
+    ]
+   },
+   {
+    "label": "5/6",
+    "first_frame": 1447,
+    "last_frame": 1447,
+    "frames": 1,
+    "depth_mm": 6.0,
+    "pairs": [
+     {
+      "mover": "cup7",
+      "body": "cup7/whole",
+      "other": "vpress/punch",
+      "other_group": "vp_punch",
+      "depth_mm": 6.0
+     }
+    ]
+   }
+  ],
+  "fcl_pairs_checked": 28908,
+  "seconds": 7.1,
+  "rules": "A group \"moves\" in a frame when its world matrix changed since the last audited frame (by more than 1e-6). Groups that moved by the same rigid motion (a MiR with its cabinet, its holders and the parts on them) form one cluster and are not checked against each other: their relative poses didn't change, so no new contact can appear between them. Every visible body of a moving group is checked against every other visible body except its own group's subtree and ancestors, the arms and what they hold (the arm checks do those), liquids, and the floor with its markings (anything whose top is within FLOOR_MM, 6 mm, of z = 0: tape is paint, and a MiR's skirt is drawn down to the floor): world boxes first, all at once, then FCL on the meshes of the pairs whose boxes overlap (BVHs built only for those). The contacts a group had at its last pose before it started moving are its baseline and are left out while it keeps moving, until that pair comes apart; a new contact counts if depth() puts it deeper than DEPTH_MM (1.5 mm), so a tray set down on a table or a MiR rolling onto a floor plate isn't reported."
+ },
+ "frames_with_collisions_all": 40
+}

@@ -1,0 +1,17 @@
+{
+ "name": "vlm_cameras",
+ "fps": 15,
+ "n_frames": 17,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "",
+   "caption": "Tray E at the opening: 3 Pi 5 units, each on a 2020 post with a sliding block and a pan-tilt head, aimed at an instrument's working face; the highest stands 687 mm over the tray floor. Most stand in front of or beside their instruments and look back, away from the opening; E1 stands behind the Mastersizer, out of the iMicro lid's swing (round 11). The overhead unit sits on a bar at the back of the bay, 11 mm over Kardex's product envelope and 62 mm under the tray stored above the opening.",
+   "start_frame": 0,
+   "end_frame": 16
+  }
+ ]
+}

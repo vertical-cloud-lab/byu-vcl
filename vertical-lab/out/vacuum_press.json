@@ -1,0 +1,725 @@
+{
+ "press": {
+  "model": "Specac Atlas Autotouch 15T (GS2581X)",
+  "W": 425.0,
+  "D": 405.0,
+  "H": 640.0,
+  "mass_kg": 95.0,
+  "stroke": 24.0,
+  "piston_d": 82.0,
+  "nose_d": 32.0,
+  "faces": [
+   40.0,
+   155.0
+  ],
+  "work_d": 220.0,
+  "work_h": 155.0,
+  "load_t": [
+   2.0,
+   15.0
+  ],
+  "step_t": 0.2,
+  "programs": 6,
+  "steps": 10,
+  "hold_min": [
+   0.1,
+   99.9
+  ]
+ },
+ "layout": {
+  "axis": [
+   -66.0,
+   -56.0
+  ],
+  "W": 425.0,
+  "D": 405.0,
+  "H": 640.0,
+  "piston_down": 245.0,
+  "stroke": 24.0,
+  "shuttle_in_y": -56.0,
+  "shuttle_out_y": -286.0,
+  "plate_t": 15.0,
+  "cup_base_local": 30.0,
+  "f1_top_local": 93.5,
+  "body_top_local": 115.5,
+  "port_local": [
+   -58.0,
+   0.0,
+   97.5
+  ],
+  "punch_set_local": 101.53148000000002,
+  "punch_top_local": 143.53148000000002,
+  "travel": 8.031480000000002,
+  "plug_set": 62.00648,
+  "gap": 2.0,
+  "eject": 75.5,
+  "catch": 10.0,
+  "ring_d": 19.299999999999997,
+  "guard_open": 165.0,
+  "nose_z": 390.53148,
+  "faces_set": 145.53148,
+  "ram_touch": 2.0,
+  "ram_flush": 10.031480000000002,
+  "cup_base_in": [
+   -66.0,
+   -56.0,
+   275.0
+  ],
+  "cup_base_out": [
+   -66.0,
+   -286.0,
+   275.0
+  ],
+  "cup_base_eject": [
+   -66.0,
+   -286.0,
+   350.5
+  ],
+  "footprint_with_shuttle": {
+   "x": [
+    -560.0,
+    212.5
+   ],
+   "y": [
+    -361.0,
+    202.5
+   ]
+  }
+ },
+ "alsi10mg_filled_to_set_line": {
+  "powder": "AlSi10Mg",
+  "mass_g": 9.61,
+  "solid_g_cm3": 2.67,
+  "tapped_g_cm3": 1.6,
+  "fill_top_mm_before": 46.13,
+  "fill_top_mm_after": 38.1,
+  "column_note": "heights above the bore floor (the 118 deg drill point under it is full too)",
+  "volume_cm3_before": 6.005,
+  "volume_cm3_after": 4.987,
+  "rel_density_before": 0.599,
+  "rel_density_after": 0.722,
+  "plug_travel_mm": 8.031,
+  "powder_MPa_at_flush": 81.6,
+  "powder_t_at_flush": 1.05,
+  "fit_t_at_flush": {
+   "sliding": 0.48,
+   "breakaway": [
+    1.25,
+    1.61
+   ]
+  },
+  "needed_t_at_flush_breakaway": 2.66,
+  "set_point_t": 3.2,
+  "set_point_kN": 31.4,
+  "f1_MPa_at_set_point": 32.3,
+  "gas_in_pores": {
+   "air, no vacuum": {
+    "start_mbar": 1013.0,
+    "at_flush_mbar": 1754.96,
+    "at_700C_if_sealed_mbar": 5827.92,
+    "gas_umol": 100.071
+   },
+   "pumped to 1 mbar": {
+    "start_mbar": 1.0,
+    "at_flush_mbar": 1.73,
+    "at_700C_if_sealed_mbar": 5.75,
+    "gas_umol": 0.099
+   }
+  }
+ },
+ "e4_dose_9p9g": {
+  "mass_g": 9.9,
+  "rel_density_after": 0.743,
+  "powder_MPa_at_flush": 100.0,
+  "powder_t_at_flush": 1.29,
+  "set_point_t": 3.4
+ },
+ "e4_note": "9.9 g at 1.60 g/cm3 stands 1.5 mm above the set plug's bottom (#222 filled to the rim and pressed by hand), so the arm could not set the plug in the mouth on it",
+ "current_runs": {
+  "Al-10Si": {
+   "powder": "Si",
+   "dose_g": 3.92,
+   "fill_mm": 27.7,
+   "gap_under_set_plug_mm": 18.4,
+   "dose_to_fill_set_line_g": 6.61,
+   "wt_pct_if_filled": 15.8
+  },
+  "Cu-10Ni": {
+   "powder": "Ni",
+   "dose_g": 12.97,
+   "fill_mm": 20.6,
+   "gap_under_set_plug_mm": 25.5,
+   "dose_to_fill_set_line_g": 29.42,
+   "wt_pct_if_filled": 20.1
+  }
+ },
+ "stroke": [
+  {
+   "x_mm": 0.0,
+   "rel_density": 0.5993,
+   "powder_MPa": 0.0,
+   "powder_kN": 0.0,
+   "fit_slide_kN": 0.0,
+   "fit_break_kN": 0.0,
+   "total_slide_kN": 0.0,
+   "total_break_kN": 0.0
+  },
+  {
+   "x_mm": 0.201,
+   "rel_density": 0.6018,
+   "powder_MPa": 1.4,
+   "powder_kN": 0.18,
+   "fit_slide_kN": 0.0,
+   "fit_break_kN": 0.0,
+   "total_slide_kN": 0.18,
+   "total_break_kN": 0.18
+  },
+  {
+   "x_mm": 0.402,
+   "rel_density": 0.6044,
+   "powder_MPa": 2.9,
+   "powder_kN": 0.37,
+   "fit_slide_kN": 0.0,
+   "fit_break_kN": 0.0,
+   "total_slide_kN": 0.37,
+   "total_break_kN": 0.37
+  },
+  {
+   "x_mm": 0.602,
+   "rel_density": 0.607,
+   "powder_MPa": 4.4,
+   "powder_kN": 0.55,
+   "fit_slide_kN": 0.12,
+   "fit_break_kN": 0.39,
+   "total_slide_kN": 0.67,
+   "total_break_kN": 0.95
+  },
+  {
+   "x_mm": 0.803,
+   "rel_density": 0.6096,
+   "powder_MPa": 5.9,
+   "powder_kN": 0.74,
+   "fit_slide_kN": 0.24,
+   "fit_break_kN": 0.81,
+   "total_slide_kN": 0.98,
+   "total_break_kN": 1.55
+  },
+  {
+   "x_mm": 1.004,
+   "rel_density": 0.6122,
+   "powder_MPa": 7.4,
+   "powder_kN": 0.93,
+   "fit_slide_kN": 0.36,
+   "fit_break_kN": 1.22,
+   "total_slide_kN": 1.3,
+   "total_break_kN": 2.16
+  },
+  {
+   "x_mm": 1.205,
+   "rel_density": 0.6149,
+   "powder_MPa": 8.9,
+   "powder_kN": 1.13,
+   "fit_slide_kN": 0.49,
+   "fit_break_kN": 1.64,
+   "total_slide_kN": 1.62,
+   "total_break_kN": 2.77
+  },
+  {
+   "x_mm": 1.406,
+   "rel_density": 0.6176,
+   "powder_MPa": 10.5,
+   "powder_kN": 1.33,
+   "fit_slide_kN": 0.61,
+   "fit_break_kN": 2.05,
+   "total_slide_kN": 1.94,
+   "total_break_kN": 3.38
+  },
+  {
+   "x_mm": 1.606,
+   "rel_density": 0.6203,
+   "powder_MPa": 12.1,
+   "powder_kN": 1.53,
+   "fit_slide_kN": 0.73,
+   "fit_break_kN": 2.47,
+   "total_slide_kN": 2.26,
+   "total_break_kN": 4.0
+  },
+  {
+   "x_mm": 1.807,
+   "rel_density": 0.623,
+   "powder_MPa": 13.7,
+   "powder_kN": 1.74,
+   "fit_slide_kN": 0.85,
+   "fit_break_kN": 2.88,
+   "total_slide_kN": 2.59,
+   "total_break_kN": 4.62
+  },
+  {
+   "x_mm": 2.008,
+   "rel_density": 0.6258,
+   "powder_MPa": 15.3,
+   "powder_kN": 1.94,
+   "fit_slide_kN": 0.98,
+   "fit_break_kN": 3.3,
+   "total_slide_kN": 2.92,
+   "total_break_kN": 5.24
+  },
+  {
+   "x_mm": 2.209,
+   "rel_density": 0.6285,
+   "powder_MPa": 17.0,
+   "powder_kN": 2.16,
+   "fit_slide_kN": 1.1,
+   "fit_break_kN": 3.71,
+   "total_slide_kN": 3.26,
+   "total_break_kN": 5.87
+  },
+  {
+   "x_mm": 2.409,
+   "rel_density": 0.6313,
+   "powder_MPa": 18.7,
+   "powder_kN": 2.37,
+   "fit_slide_kN": 1.22,
+   "fit_break_kN": 4.13,
+   "total_slide_kN": 3.59,
+   "total_break_kN": 6.5
+  },
+  {
+   "x_mm": 2.61,
+   "rel_density": 0.6342,
+   "powder_MPa": 20.4,
+   "powder_kN": 2.59,
+   "fit_slide_kN": 1.35,
+   "fit_break_kN": 4.54,
+   "total_slide_kN": 3.94,
+   "total_break_kN": 7.13
+  },
+  {
+   "x_mm": 2.811,
+   "rel_density": 0.637,
+   "powder_MPa": 22.2,
+   "powder_kN": 2.81,
+   "fit_slide_kN": 1.47,
+   "fit_break_kN": 4.96,
+   "total_slide_kN": 4.28,
+   "total_break_kN": 7.77
+  },
+  {
+   "x_mm": 3.012,
+   "rel_density": 0.6399,
+   "powder_MPa": 24.0,
+   "powder_kN": 3.04,
+   "fit_slide_kN": 1.59,
+   "fit_break_kN": 5.37,
+   "total_slide_kN": 4.63,
+   "total_break_kN": 8.41
+  },
+  {
+   "x_mm": 3.213,
+   "rel_density": 0.6428,
+   "powder_MPa": 25.8,
+   "powder_kN": 3.27,
+   "fit_slide_kN": 1.72,
+   "fit_break_kN": 5.79,
+   "total_slide_kN": 4.98,
+   "total_break_kN": 9.06
+  },
+  {
+   "x_mm": 3.413,
+   "rel_density": 0.6457,
+   "powder_MPa": 27.7,
+   "powder_kN": 3.5,
+   "fit_slide_kN": 1.84,
+   "fit_break_kN": 6.2,
+   "total_slide_kN": 5.34,
+   "total_break_kN": 9.71
+  },
+  {
+   "x_mm": 3.614,
+   "rel_density": 0.6487,
+   "powder_MPa": 29.5,
+   "powder_kN": 3.74,
+   "fit_slide_kN": 1.96,
+   "fit_break_kN": 6.62,
+   "total_slide_kN": 5.7,
+   "total_break_kN": 10.36
+  },
+  {
+   "x_mm": 3.815,
+   "rel_density": 0.6517,
+   "powder_MPa": 31.5,
+   "powder_kN": 3.98,
+   "fit_slide_kN": 2.08,
+   "fit_break_kN": 7.03,
+   "total_slide_kN": 6.07,
+   "total_break_kN": 11.02
+  },
+  {
+   "x_mm": 4.016,
+   "rel_density": 0.6547,
+   "powder_MPa": 33.4,
+   "powder_kN": 4.23,
+   "fit_slide_kN": 2.21,
+   "fit_break_kN": 7.45,
+   "total_slide_kN": 6.44,
+   "total_break_kN": 11.68
+  },
+  {
+   "x_mm": 4.217,
+   "rel_density": 0.6578,
+   "powder_MPa": 35.4,
+   "powder_kN": 4.48,
+   "fit_slide_kN": 2.33,
+   "fit_break_kN": 7.86,
+   "total_slide_kN": 6.81,
+   "total_break_kN": 12.35
+  },
+  {
+   "x_mm": 4.417,
+   "rel_density": 0.6608,
+   "powder_MPa": 37.4,
+   "powder_kN": 4.74,
+   "fit_slide_kN": 2.45,
+   "fit_break_kN": 8.28,
+   "total_slide_kN": 7.19,
+   "total_break_kN": 13.02
+  },
+  {
+   "x_mm": 4.618,
+   "rel_density": 0.6639,
+   "powder_MPa": 39.5,
+   "powder_kN": 5.0,
+   "fit_slide_kN": 2.58,
+   "fit_break_kN": 8.69,
+   "total_slide_kN": 7.58,
+   "total_break_kN": 13.7
+  },
+  {
+   "x_mm": 4.819,
+   "rel_density": 0.6671,
+   "powder_MPa": 41.6,
+   "powder_kN": 5.27,
+   "fit_slide_kN": 2.7,
+   "fit_break_kN": 9.11,
+   "total_slide_kN": 7.97,
+   "total_break_kN": 14.38
+  },
+  {
+   "x_mm": 5.02,
+   "rel_density": 0.6702,
+   "powder_MPa": 43.7,
+   "powder_kN": 5.54,
+   "fit_slide_kN": 2.82,
+   "fit_break_kN": 9.53,
+   "total_slide_kN": 8.36,
+   "total_break_kN": 15.06
+  },
+  {
+   "x_mm": 5.22,
+   "rel_density": 0.6734,
+   "powder_MPa": 45.9,
+   "powder_kN": 5.81,
+   "fit_slide_kN": 2.95,
+   "fit_break_kN": 9.94,
+   "total_slide_kN": 8.76,
+   "total_break_kN": 15.75
+  },
+  {
+   "x_mm": 5.421,
+   "rel_density": 0.6766,
+   "powder_MPa": 48.1,
+   "powder_kN": 6.09,
+   "fit_slide_kN": 3.07,
+   "fit_break_kN": 10.36,
+   "total_slide_kN": 9.16,
+   "total_break_kN": 16.45
+  },
+  {
+   "x_mm": 5.622,
+   "rel_density": 0.6799,
+   "powder_MPa": 50.4,
+   "powder_kN": 6.38,
+   "fit_slide_kN": 3.19,
+   "fit_break_kN": 10.77,
+   "total_slide_kN": 9.57,
+   "total_break_kN": 17.15
+  },
+  {
+   "x_mm": 5.823,
+   "rel_density": 0.6832,
+   "powder_MPa": 52.7,
+   "powder_kN": 6.67,
+   "fit_slide_kN": 3.31,
+   "fit_break_kN": 11.19,
+   "total_slide_kN": 9.99,
+   "total_break_kN": 17.86
+  },
+  {
+   "x_mm": 6.024,
+   "rel_density": 0.6865,
+   "powder_MPa": 55.0,
+   "powder_kN": 6.97,
+   "fit_slide_kN": 3.44,
+   "fit_break_kN": 11.6,
+   "total_slide_kN": 10.41,
+   "total_break_kN": 18.57
+  },
+  {
+   "x_mm": 6.224,
+   "rel_density": 0.6898,
+   "powder_MPa": 57.5,
+   "powder_kN": 7.28,
+   "fit_slide_kN": 3.56,
+   "fit_break_kN": 12.02,
+   "total_slide_kN": 10.84,
+   "total_break_kN": 19.29
+  },
+  {
+   "x_mm": 6.425,
+   "rel_density": 0.6932,
+   "powder_MPa": 59.9,
+   "powder_kN": 7.59,
+   "fit_slide_kN": 3.68,
+   "fit_break_kN": 12.43,
+   "total_slide_kN": 11.27,
+   "total_break_kN": 20.02
+  },
+  {
+   "x_mm": 6.626,
+   "rel_density": 0.6966,
+   "powder_MPa": 62.4,
+   "powder_kN": 7.91,
+   "fit_slide_kN": 3.81,
+   "fit_break_kN": 12.85,
+   "total_slide_kN": 11.71,
+   "total_break_kN": 20.75
+  },
+  {
+   "x_mm": 6.827,
+   "rel_density": 0.7001,
+   "powder_MPa": 65.0,
+   "powder_kN": 8.23,
+   "fit_slide_kN": 3.93,
+   "fit_break_kN": 13.26,
+   "total_slide_kN": 12.16,
+   "total_break_kN": 21.49
+  },
+  {
+   "x_mm": 7.028,
+   "rel_density": 0.7036,
+   "powder_MPa": 67.6,
+   "powder_kN": 8.56,
+   "fit_slide_kN": 4.05,
+   "fit_break_kN": 13.68,
+   "total_slide_kN": 12.62,
+   "total_break_kN": 22.24
+  },
+  {
+   "x_mm": 7.228,
+   "rel_density": 0.7071,
+   "powder_MPa": 70.3,
+   "powder_kN": 8.9,
+   "fit_slide_kN": 4.17,
+   "fit_break_kN": 14.09,
+   "total_slide_kN": 13.08,
+   "total_break_kN": 22.99
+  },
+  {
+   "x_mm": 7.429,
+   "rel_density": 0.7106,
+   "powder_MPa": 73.0,
+   "powder_kN": 9.25,
+   "fit_slide_kN": 4.3,
+   "fit_break_kN": 14.51,
+   "total_slide_kN": 13.55,
+   "total_break_kN": 23.75
+  },
+  {
+   "x_mm": 7.63,
+   "rel_density": 0.7142,
+   "powder_MPa": 75.8,
+   "powder_kN": 9.6,
+   "fit_slide_kN": 4.42,
+   "fit_break_kN": 14.92,
+   "total_slide_kN": 14.02,
+   "total_break_kN": 24.52
+  },
+  {
+   "x_mm": 7.831,
+   "rel_density": 0.7178,
+   "powder_MPa": 78.7,
+   "powder_kN": 9.97,
+   "fit_slide_kN": 4.54,
+   "fit_break_kN": 15.34,
+   "total_slide_kN": 14.51,
+   "total_break_kN": 25.3
+  },
+  {
+   "x_mm": 8.031,
+   "rel_density": 0.7215,
+   "powder_MPa": 81.6,
+   "powder_kN": 10.34,
+   "fit_slide_kN": 4.67,
+   "fit_break_kN": 15.75,
+   "total_slide_kN": 15.0,
+   "total_break_kN": 26.09
+  }
+ ],
+ "program": [
+  [
+   "P1 step 1",
+   "pump up to 3.2 t"
+  ],
+  [
+   "P1 step 2",
+   "maintain for 1.0 min"
+  ],
+  [
+   "P1 step 3",
+   "slow release to 0.0 t"
+  ]
+ ],
+ "assumed": [
+  "Heckel line through the tapped density and #222's E4 point (an estimate, not a measurement)",
+  "plug friction in proportion to the land engaged; #222's 1.3-1.6 t breakaway when fully in",
+  "no gas leaves through the vent while the plug goes in (upper bound on the trapped gas)",
+  "pumped to 1 mbar before pressing"
+ ],
+ "clip": {
+  "name": "vacuum_press",
+  "fps": 15,
+  "n_frames": 756,
+  "size": [
+   1280,
+   720
+  ],
+  "substeps": [
+   {
+    "label": "1/9",
+    "caption": "A Specac Atlas Autotouch 15T: an automatic hydraulic press, 425 x 405 x 640 mm. Our evacuable die, built round #222's steel sleeve F1, rides on a shuttle in front of it. A pump, two valves and a gauge make the vacuum.",
+    "start_frame": 0,
+    "end_frame": 75
+   },
+   {
+    "label": "2/9",
+    "caption": "The guard slides up. The shuttle brings the die out of the press, to the arm.",
+    "start_frame": 76,
+    "end_frame": 98
+   },
+   {
+    "label": "2/9",
+    "caption": "The guard slides up. The shuttle brings the die out of the press, to the arm.",
+    "start_frame": 99,
+    "end_frame": 126
+   },
+   {
+    "label": "3/9",
+    "caption": "Cut open. The ejector raises its pin. The arm sets a dosed cup in the die's mouth, on the pin: a catch ring on F1 holds its bottom 10 mm, so it stands in a socket, not on a bare pin. 9.61 g of AlSi10Mg, tapped up to where the plug will stand. The pin lowers the cup into F1.",
+    "start_frame": 127,
+    "end_frame": 146
+   },
+   {
+    "label": "3/9",
+    "caption": "Cut open. The ejector raises its pin. The arm sets a dosed cup in the die's mouth, on the pin: a catch ring on F1 holds its bottom 10 mm, so it stands in a socket, not on a bare pin. 9.61 g of AlSi10Mg, tapped up to where the plug will stand. The pin lowers the cup into F1.",
+    "start_frame": 147,
+    "end_frame": 179
+   },
+   {
+    "label": "3/9",
+    "caption": "Cut open. The ejector raises its pin. The arm sets a dosed cup in the die's mouth, on the pin: a catch ring on F1 holds its bottom 10 mm, so it stands in a socket, not on a bare pin. 9.61 g of AlSi10Mg, tapped up to where the plug will stand. The pin lowers the cup into F1.",
+    "start_frame": 180,
+    "end_frame": 205
+   },
+   {
+    "label": "4/9",
+    "caption": "The arm sets the plug in the mouth, on its lead-in, 8.0 mm proud. Then the punch: the O-ring on its nose seals in the catch ring, and the channel across the plug's top (DAL #156) keeps the vent open under it.",
+    "start_frame": 206,
+    "end_frame": 228
+   },
+   {
+    "label": "4/9",
+    "caption": "The arm sets the plug in the mouth, on its lead-in, 8.0 mm proud. Then the punch: the O-ring on its nose seals in the catch ring, and the channel across the plug's top (DAL #156) keeps the vent open under it.",
+    "start_frame": 229,
+    "end_frame": 261
+   },
+   {
+    "label": "5/9",
+    "caption": "The shuttle slides in under the leadscrew. The guard closes: the press will not start with it open.",
+    "start_frame": 262,
+    "end_frame": 287
+   },
+   {
+    "label": "5/9",
+    "caption": "The shuttle slides in under the leadscrew. The guard closes: the press will not start with it open.",
+    "start_frame": 288,
+    "end_frame": 309
+   },
+   {
+    "label": "6/9",
+    "caption": "V1 opens to the pump, slowly at first through the needle valve, so the powder stays put. Air leaves the cup through the vent and out of the port. Hold 2 min under 1 mbar.",
+    "start_frame": 310,
+    "end_frame": 383
+   },
+   {
+    "label": "7/9",
+    "caption": "Start: program P1 pumps up to 3.2 t. The ram lifts the die 2 mm to the leadscrew, then drives the plug 8.0 mm to flush. The powder goes from 60 to 72 % dense.",
+    "start_frame": 384,
+    "end_frame": 469
+   },
+   {
+    "label": "7/9",
+    "caption": "It holds 3.2 t for a minute, topping up as the powder settles. At flush the punch's collar lands on the catch ring, so F1 under it takes the load past flush: 1.1 t is on the powder.",
+    "start_frame": 470,
+    "end_frame": 517
+   },
+   {
+    "label": "8/9",
+    "caption": "V1 closes. V2 lets in dry argon, back to 1013 mbar, so the pores fill with argon, not room air.",
+    "start_frame": 518,
+    "end_frame": 557
+   },
+   {
+    "label": "8/9",
+    "caption": "Slow release to 0 t. The ram goes down; the plug stays where it is, flush.",
+    "start_frame": 558,
+    "end_frame": 579
+   },
+   {
+    "label": "8/9",
+    "caption": "Slow release to 0 t. The ram goes down; the plug stays where it is, flush.",
+    "start_frame": 580,
+    "end_frame": 597
+   },
+   {
+    "label": "9/9",
+    "caption": "The guard opens and the shuttle comes out. The arm lifts the punch off. The ejector pushes the cup up out of F1 and stops with its bottom 10 mm still in the catch ring, where it stands until the arm takes it.",
+    "start_frame": 598,
+    "end_frame": 616
+   },
+   {
+    "label": "9/9",
+    "caption": "The guard opens and the shuttle comes out. The arm lifts the punch off. The ejector pushes the cup up out of F1 and stops with its bottom 10 mm still in the catch ring, where it stands until the arm takes it.",
+    "start_frame": 617,
+    "end_frame": 640
+   },
+   {
+    "label": "9/9",
+    "caption": "The guard opens and the shuttle comes out. The arm lifts the punch off. The ejector pushes the cup up out of F1 and stops with its bottom 10 mm still in the catch ring, where it stands until the arm takes it.",
+    "start_frame": 641,
+    "end_frame": 662
+   },
+   {
+    "label": "9/9",
+    "caption": "The guard opens and the shuttle comes out. The arm lifts the punch off. The ejector pushes the cup up out of F1 and stops with its bottom 10 mm still in the catch ring, where it stands until the arm takes it.",
+    "start_frame": 663,
+    "end_frame": 692
+   },
+   {
+    "label": "9/9",
+    "caption": "Charged: the plug flush and the powder 72 % dense, pressed under vacuum. Set point 3.2 t: 1.1 t on the powder plus #222's 2 t reserve for the plug's press fit. The cup waits in the catch ring for the arm.",
+    "start_frame": 693,
+    "end_frame": 755
+   }
+  ]
+ }
+}

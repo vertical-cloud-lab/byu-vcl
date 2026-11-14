@@ -1,0 +1,47 @@
+{
+ "name": "instruments/tensile_h",
+ "fps": 15,
+ "n_frames": 264,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/6",
+   "caption": "A zwickiLine Z5.0 lying on its side: ZwickRoell says it can run horizontal. 1289 mm long, 408 mm tall this way, 78 kg.",
+   "start_frame": 0,
+   "end_frame": 49
+  },
+  {
+   "label": "2/6",
+   "caption": "The arm lowers the bar between the open jaws from above (it holds the bar by its middle; not drawn).",
+   "start_frame": 50,
+   "end_frame": 93
+  },
+  {
+   "label": "3/6",
+   "caption": "The pneumatic jaws close on both ends.",
+   "start_frame": 94,
+   "end_frame": 119
+  },
+  {
+   "label": "4/6",
+   "caption": "The crosshead pulls at constant speed. An E8 sub-size bar faced to 6 x 1.5 mm: 3.7 kN at 412 MPa, within the 5 kN.",
+   "start_frame": 120,
+   "end_frame": 181
+  },
+  {
+   "label": "5/6",
+   "caption": "Fracture. The crosshead moves on 20 mm to show the break.",
+   "start_frame": 182,
+   "end_frame": 216
+  },
+  {
+   "label": "6/6",
+   "caption": "The jaws open for the arm. The alloy route's 6 x 6 mm bar needs 14.8 kN: no motorized horizontal machine with a published size pulls that.",
+   "start_frame": 217,
+   "end_frame": 263
+  }
+ ]
+}

@@ -1,0 +1,53 @@
+{
+ "name": "instruments/nanoindenter",
+ "fps": 8,
+ "n_frames": 159,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/7",
+   "caption": "The hood lifts on its gas struts, hinged at the back, and the XY stage's carriage runs forward to its load position.",
+   "start_frame": 0,
+   "end_frame": 24
+  },
+  {
+   "label": "2/7",
+   "caption": "The steel mount goes into the holder cup: its steel base on the cup's steel floor, a spring plunger clamping it. Nothing soft under the slice.",
+   "start_frame": 25,
+   "end_frame": 47
+  },
+  {
+   "label": "3/7",
+   "caption": "Hood down (drawn see-through). The stage carries the slice back under the microscope objective, which finds the polished face and picks the grid.",
+   "start_frame": 48,
+   "end_frame": 70
+  },
+  {
+   "label": "4/7",
+   "caption": "Then 100 mm across, under the indenter head (the InForce 50 actuator).",
+   "start_frame": 71,
+   "end_frame": 87
+  },
+  {
+   "label": "5/7",
+   "caption": "The Berkovich tip comes down onto the surface and is driven in to 500 nm, recording load and depth.",
+   "start_frame": 88,
+   "end_frame": 105
+  },
+  {
+   "label": "6/7",
+   "caption": "25 indents, a 5 x 5 grid 20 um apart: the stage steps between them. Hardness and modulus from each unloading curve (Oliver-Pharr).",
+   "start_frame": 106,
+   "end_frame": 138
+  },
+  {
+   "label": "7/7",
+   "caption": "Back under the objective to image the grid.",
+   "start_frame": 139,
+   "end_frame": 158
+  }
+ ]
+}

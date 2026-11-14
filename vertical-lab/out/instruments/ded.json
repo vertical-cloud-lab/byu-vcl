@@ -1,0 +1,53 @@
+{
+ "name": "instruments/ded",
+ "fps": 15,
+ "n_frames": 369,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/6",
+   "caption": "The MX-Lab stands on the floor beside the VLM: 680 x 684 x 835 mm and 250 kg without its base, taller than the 727.5 mm a tray takes. Up to six powder hoppers feed one nozzle.",
+   "start_frame": 0,
+   "end_frame": 55
+  },
+  {
+   "label": "2/6",
+   "caption": "The door swings open on its left hinge.",
+   "start_frame": 56,
+   "end_frame": 87
+  },
+  {
+   "label": "3/6",
+   "caption": "A steel substrate goes from the shelf onto the 175 x 175 mm worktable.",
+   "start_frame": 88,
+   "end_frame": 134
+  },
+  {
+   "label": "4/6",
+   "caption": "Door shut. Argon purges the chamber: InssTek's inert option holds O2 at or below 50 ppm.",
+   "start_frame": 135,
+   "end_frame": 184
+  },
+  {
+   "label": "5/6",
+   "caption": "The laser and the powder streams meet at the melt pool. Spoke by spoke, layer by layer: a wagon wheel, each spoke a different blend from the six hoppers (colours illustrative).",
+   "start_frame": 185,
+   "end_frame": 304
+  },
+  {
+   "label": "6/6",
+   "caption": "Laser off; the door opens on six compositions in one build.",
+   "start_frame": 305,
+   "end_frame": 342
+  },
+  {
+   "label": "6/6",
+   "caption": "",
+   "start_frame": 343,
+   "end_frame": 368
+  }
+ ]
+}

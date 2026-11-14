@@ -1,0 +1,71 @@
+{
+ "name": "instruments/pip",
+ "fps": 8,
+ "n_frames": 215,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/10",
+   "caption": "A loading slide (ours) runs its steel plate out of the working bay to the front: the bay is ~130 mm tall and the indenter waits 7 mm over the sample, too tight for a gripper.",
+   "start_frame": 0,
+   "end_frame": 24
+  },
+  {
+   "label": "2/10",
+   "caption": "The steel mount from chapter 6 (the wire-EDM slice on steel, polished flush) goes on the plate, in its locating ring.",
+   "start_frame": 25,
+   "end_frame": 46
+  },
+  {
+   "label": "3/10",
+   "caption": "The slide runs back in and the plate sits on the platen: metal on metal from the slice down to the load cell, nothing soft to compress.",
+   "start_frame": 47,
+   "end_frame": 68
+  },
+  {
+   "label": "4/10",
+   "caption": "Hands clear: the indenter comes down out of its cylinder and presses the 1 mm-radius ball in, an indent 0.25-1 mm wide. The profilometer waits at the right, clear of the platen.",
+   "start_frame": 69,
+   "end_frame": 86
+  },
+  {
+   "label": "5/10",
+   "caption": "The indenter lifts well clear; the profilometer's carriage runs in along the crosshead and its pick-up passes under the indenter to the indent.",
+   "start_frame": 87,
+   "end_frame": 108
+  },
+  {
+   "label": "6/10",
+   "caption": "The stylus traces across the indent, line by line, to map its 3D shape.",
+   "start_frame": 109,
+   "end_frame": 126
+  },
+  {
+   "label": "7/10",
+   "caption": "It lifts and runs back out to the right, and the indenter goes back to its start.",
+   "start_frame": 127,
+   "end_frame": 143
+  },
+  {
+   "label": "8/10",
+   "caption": "CORSICA fits a stress-strain curve to that profile by finite elements, in minutes.",
+   "start_frame": 144,
+   "end_frame": 179
+  },
+  {
+   "label": "9/10",
+   "caption": "The slide runs out and the sample comes off.",
+   "start_frame": 180,
+   "end_frame": 199
+  },
+  {
+   "label": "10/10",
+   "caption": "The slide runs out and the sample comes off.",
+   "start_frame": 200,
+   "end_frame": 214
+  }
+ ]
+}

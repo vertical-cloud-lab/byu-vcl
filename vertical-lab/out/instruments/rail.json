@@ -1,0 +1,23 @@
+{
+ "name": "instruments/rail",
+ "fps": 15,
+ "n_frames": 97,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/2",
+   "caption": "The backup to the mobile base: a Vention seventh axis. The carriage carries the arm along the line on a rack and pinion; its energy chain's bend travels at half the carriage's speed.",
+   "start_frame": 0,
+   "end_frame": 55
+  },
+  {
+   "label": "2/2",
+   "caption": "Up to 4 m/s. Its legs are cut so the arm's base is at 800 mm, where it sits on the MiR250.",
+   "start_frame": 56,
+   "end_frame": 96
+  }
+ ]
+}
