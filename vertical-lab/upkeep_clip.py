@@ -1077,9 +1077,9 @@ def movie():
         person.set(hands={"r": tuple(r_path(v))})
     person_y0 = person.st["y"]
     if have_panel:
-        say("3/3 A person's task", "Gloves and safety glasses. The person reaches in between the masts to the indenter "
-                                   "head, unscrews the old Berkovich tip and draws it straight down out of the head, then "
-                                   "fits the new one by hand and seats it to its torque.")
+        say("3/3 A person's task", "Gloves and safety glasses. The person reaches in past the camera mast to the "
+                                   "indenter head, unscrews the old Berkovich tip, and screws in the new one by hand to "
+                                   "its torque (the stage moved aside; the hand fits in the 120 mm under the head).")
         status(L, iMicro="tip change: the head's tip out, the new one in")
         step(1.6, lean_in, hold=0.1)
         keep("lean_in")
