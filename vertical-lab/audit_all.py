@@ -156,7 +156,7 @@ def summary(tag: str, fixtag: str = "r11fix") -> dict:
                 after_fixes=dict(_counts(fix) or {}, json=str(p_fix.relative_to(HERE))) if fix else None,
                 worst=_worst_runs(fix or new) if (fix or new) else [])
     sheet_rows = []
-    for label, r10, before, after, who in SHEET_CLIPS:
+    for label, r10, before, after, who, *note in SHEET_CLIPS:
         old_ = _load(r10, "")[0]
 
         def src(x):
@@ -176,7 +176,8 @@ def summary(tag: str, fixtag: str = "r11fix") -> dict:
             round10_rules=dict(frames=old_.get("frames_with_collisions"), of=old_.get("frames_checked"),
                                json=f"{ROUND10}:vertical-lab/out/collisions/{r10}.json") if old_ else None,
             round11_before_fixes=dict(frames=b[0], of=b[1], source=src(before)) if b else None,
-            round11_after_fixes=dict(frames=a[0], of=a[1], source=src(after)) if a else "not re-audited"))
+            round11_after_fixes=dict(frames=a[0], of=a[1], source=src(after)) if a else
+            (note[0] if note else "not re-audited")))
     out = dict(round=11, written=time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime()),
                every_clip=sheet_rows,
                found_by_the_movers_check_fixed_elsewhere=FOUND_ELSEWHERE, validation=VALIDATION,
@@ -217,13 +218,17 @@ SHEET_CLIPS = [
     # final is the render's own audit, the pre-render audit (8095c46) until then
     ("Chapter 3: sieve and print", "alloy_print", [["alloy_print_r11s0"], (138, 1371, "audit-b's report")],
      [["alloy_print"], ["alloy_print_r11_prerender"]], "audit-b"),                  # final: the render's own (a72df46)
-    ("Chapter 4: powder checks", "alloy_powder", [], [["alloy_powder"]], "audit-b"),
+    # audit-b: before = alloy_powder_r11s0 (e54631f, 92 of 1028: 64 of the movers' frames were light drawn as meshes);
+    # the committed code registers light as non-solid and its re-audit was queued at 04:11; alloy_powder.json in the
+    # tree at 04:15 was an intermediate run, so it isn't shown
+    ("Chapter 4: powder checks", "alloy_powder", ["alloy_powder_r11s0"], [], "audit-b",
+     "after: re-audit pending (light now non-solid)"),
     # ch5: before = its sections 1-5 and 6-7 on round 10's code (F1 already moved), 00:04-00:29, 209 + 214 of 962 +
     # 1003 frames; 148 of those were only the MiR's skirt in the floor tape, left out since (FLOOR_MM), so 275 here.
     # After = ch5-audit-final, the whole chapter as rendered (86ff959). The other alloy_workflow_s* are intermediate
     ("Chapter 5: cut, heat-treat, test", "alloy_workflow",
      (275, 1965, "ch5's alloy_workflow_s15 + _s67, less 148 frames of floor tape"), [["alloy_workflow"]], "ch5"),
-    ("Chapter 6: sample prep", "alloy_prep", [], [["alloy_prep"]], "audit-b"),
+    ("Chapter 6: sample prep", "alloy_prep", [], [["alloy_prep"]], "audit-b"),          # final: bf1b633
     ("Chapter 7: characterize", "alloy_characterize", ["alloy_characterize_r11s0"], [["alloy_characterize"]],
      "audit-b"),
     ("The 8:00 clip: a vial dosed for the CubXL", "vlm_workflow", ["vlm_workflow_r11"], [["vlm_workflow_r11fix"]],
@@ -306,10 +311,13 @@ def sheet(n: int = 2, tag: str = "r11", out_name: str = "round11_sheet.png"):
     d.text((800, y), "Round 10's rules: the figure in grey", fill=MUTED, font=font(22))
     # rows
     rows = []
-    for label, r10, before, after, who in SHEET_CLIPS:
+    notes = {}
+    for label, r10, before, after, who, *note in SHEET_CLIPS:
         old = _load(r10, "")[0]
         o = (old.get("frames_with_collisions", 0), old.get("frames_checked", 0)) if old else None
         rows.append((label, o, _frames(before), _frames(after), who))
+        if note:
+            notes[label] = note[0]
     vmax = max([100.0 * b[0] / b[1] for _, _, b, _, _ in rows if b and b[1]] +
                [100.0 * a[0] / a[1] for _, _, _, a, _ in rows if a and a[1]] + [5.0])
     vmax = 5.0 * math.ceil(vmax / 5.0)
@@ -329,7 +337,7 @@ def sheet(n: int = 2, tag: str = "r11", out_name: str = "round11_sheet.png"):
             by = y + 4 + k * 32
             if val is None:
                 d.text((x0, by - 2), "before the fixes: not on record" if k == 0 else
-                       "after: not re-audited", fill=MUTED, font=font(19))
+                       notes.get(label, "after: not re-audited"), fill=MUTED, font=font(19))
                 continue
             frac = val[0] / val[1] if val[1] else 0.0
             bw = (x1 - x0) * (100.0 * frac / vmax)

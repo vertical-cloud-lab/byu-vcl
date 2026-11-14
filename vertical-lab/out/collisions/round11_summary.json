@@ -1,6 +1,6 @@
 {
  "round": 11,
- "written": "2026-11-14 04:12 UTC",
+ "written": "2026-11-14 04:15 UTC",
  "every_clip": [
   {
    "clip": "Chapter 1: the charge",
@@ -79,14 +79,14 @@
     "of": 1028,
     "json": "d6eeeb7:vertical-lab/out/collisions/alloy_powder.json"
    },
-   "round11_before_fixes": null,
-   "round11_after_fixes": {
-    "frames": 51,
+   "round11_before_fixes": {
+    "frames": 92,
     "of": 1028,
     "source": [
-     "out/collisions/alloy_powder.json"
+     "out/collisions/alloy_powder_r11s0.json"
     ]
-   }
+   },
+   "round11_after_fixes": "after: re-audit pending (light now non-solid)"
   },
   {
    "clip": "Chapter 5: cut, heat-treat, test",
@@ -118,7 +118,13 @@
     "json": "d6eeeb7:vertical-lab/out/collisions/alloy_prep.json"
    },
    "round11_before_fixes": null,
-   "round11_after_fixes": "not re-audited"
+   "round11_after_fixes": {
+    "frames": 56,
+    "of": 1423,
+    "source": [
+     "out/collisions/alloy_prep.json"
+    ]
+   }
   },
   {
    "clip": "Chapter 7: characterize",
