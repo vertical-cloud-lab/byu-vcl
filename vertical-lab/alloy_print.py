@@ -165,7 +165,10 @@ def cradle_mesh():
 def jar_pocket_mesh():
     """A pocket block for the 250 mL LPBF jar, as the cup carrier's (props.pocket_block: 26 mm deep, a lead-in)."""
     hx, hy = HOLDER2_LOCAL
-    r = SS.TIP["jar_r"] + P.POCKET_CLEAR
+    # round 11: 2 mm radial clearance (was 1): the jar's legend sleeve (props.tint_sleeve, r 36.2, see-through and only
+    # drawn for the legend, but part of the jar) stood 0.2 mm into a 36 mm bore all round, so the audit read the jar as
+    # pushed 25 mm into the block
+    r = SS.TIP["jar_r"] + P.POCKET_CLEAR + 1.0
     blk = P.pocket_block(hx - r - 9.0, hx + r + 9.0, hy - r - 9.0, hy + r + 9.0, [(hx, hy, r)])
     return blk.translate((0, 0, CAB_TOP), inplace=False)
 
@@ -573,6 +576,14 @@ def movie():
     y_sv = AW.MIR_Y + CELL_DY
     y_aco = AW.MIR_Y + ACO_DY
     fast_collisions(sc, rb, (START[0], x_sv, x_sv + 900.0, aco_x, MIR_END), (START[1], AW.MIR_Y, y_sv, y_aco))
+    aud = None
+    import scene as _scene
+    if not (_scene.AUDIT or PREVIEW) and os.environ.get("CH3_AUDIT_RENDER", "1") != "0":
+        # round 11: the render checks its own frames too (collide.Auditor with the stricter rules, as ARM_AUDIT=1 and
+        # chapter 6's render do), so out/collisions/alloy_print.json is the audit of the frames in the MP4
+        import collide
+        aud = collide.Auditor(sc)
+        sc.frame_hooks.append(aud)
 
     CAM_RP = [(START[0] + 2300, -6400, 2600), (START[0] + 900, -1500, 900), (0, 0, 1)]
     CAM_SV = [tuple(sv_c + (-1250, -1650, 1250)), tuple(sv_c + (0, -120, 420)), (0, 0, 1)]
@@ -1273,6 +1284,8 @@ def movie():
             labels=[("Aconity MIDI metal printer", (line.LINE["aconity"], line.Y_FACE + 300, 2400), (0.22, 0.20)),
                      ("UR10e on a MiR250", tuple(amr.world((0, 0, 1300))), (0.10, 0.45))])
     print(f"highest forearm/wrist point {rb.max_z_world:.0f} mm", flush=True)
+    if aud is not None:
+        aud.save()
     info = sc.save()
     return info
 
