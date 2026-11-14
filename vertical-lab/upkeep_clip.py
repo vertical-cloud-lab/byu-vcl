@@ -956,8 +956,8 @@ def movie():
     say("3/3 A person's task", "The lid lifts and the stage runs out from under the indenter head.")
     status(L, iMicro="lid up: tip change")
     lid_moves = {"lid": (0.0, 1.0)}
-    if "carriage" in nano.inst.joints:
-        lid_moves["carriage"] = (0.0, 1.0)           # to its load position (past it once the panel is up)
+    # the carriage stays home under the head (its top 1025 mm; run out to its load position it would stand in the
+    # hand's way in); only the x stage moves aside, so nothing is under the tip but the carriage's rails
     if "stage" in nano.inst.joints:
         lid_moves["stage"] = (0.0, -1.0)             # the x stage 100 mm the other way: nothing under the tip
     step(1.4, nano.move(lid_moves), hold=0.1, cam=CAM_TIP,
@@ -1007,7 +1007,13 @@ def movie():
         def to_panel(v):
             person.set(y=y_work - 90.0 + (y_panel - (y_work - 90.0)) * v, lean=10.0 * v, look=tuple(grip_pts["r"]),
                        grip={"l": 0.05, "r": 0.05})
-            person.set(hands=to_rest({k: tuple(g) for k, g in grip_pts.items()}, 1.0 - v))
+            # up in front of the panel first (the fingers lead the palm by 100 mm), then forward over its top edge
+            up_pts = {k: g + (0.0, -170.0, 45.0) for k, g in grip_pts.items()}
+            if v < 0.6:
+                person.set(hands=to_rest({k: tuple(g) for k, g in up_pts.items()}, 1.0 - v / 0.6))
+            else:
+                w_ = (v - 0.6) / 0.4
+                person.set(hands={k: tuple(up_pts[k] + (grip_pts[k] - up_pts[k]) * w_) for k in ("l", "r")})
         person.set(y=y_panel, lean=10.0, grip={"l": 0.05, "r": 0.05})
         grip_pts = settle_on_panel(grip_pts, panel_top)
         person.set(y=y_work - 90.0, lean=0.0, hands={"l": None, "r": None})
@@ -1015,17 +1021,16 @@ def movie():
         allow(("glove", panel_g))
         lift = nano.move({"panel": (0.0, PANEL_UP)})
         rise = float(nano.inst.joints["panel"].vec[2]) if hasattr(nano.inst.joints["panel"], "vec") else 420.0
-        u_let = 310.0 / (rise * PANEL_UP)            # the hands follow it up 310 mm, then it slides on by itself
+        u_let = 120.0 / (rise * PANEL_UP)            # the hands follow it up 120 mm, then it slides on by itself
 
         def lift_off(v):
             lift(v)
-            dz = rise * PANEL_UP * min(v, u_let)
+            dz = rise * PANEL_UP * min(v, u_let) + 4.0 * min(1.0, v / max(u_let, 1e-6))   # just ahead of it
             hands = {sd: tuple(grip_pts[sd] + (0.0, 0.0, dz)) for sd in ("l", "r")}
             w = max(0.0, (v - u_let) / (1.0 - u_let))
             person.set(hands=to_rest(hands, w) if v > u_let else hands, lean=10.0 * (1.0 - w))
         step(2.2, lift_off, hold=0.2)
         allow()
-        step(0.5, nano.move({"carriage": (1.0, 1.25)}), hold=0.0)    # past its load travel: clear behind the hand
         person.set(hands={"l": None, "r": None}, grip={"l": 0.3, "r": 0.3})
         # people.py's skeleton, solved off-line: the body's centre 51 mm to the left of the tip, 411 mm in front of
         # the masts, bent 42 deg; the head goes into the gap between the masts, the chest stays 20 mm short of them,
@@ -1037,15 +1042,16 @@ def movie():
         say("3/3 A person's task", "The tip sits 26 cm inside the cabinet, behind its fixed front panel: not shown here, "
                                    "the person takes the panel off, reaches in and changes the tip by hand.")
         x_tip, y_reach = person.st["x"], y_work - 90.0
-    r_at = tip + (-45.0, -5.0, -12.0)                # the right hand beside the tip's shaft, under the head, a fist round it
+    r_at = tip + (-45.0, -5.0, -23.0)                # the right hand beside the tip's shaft, a fist round it: its top
+    #                                                  2 mm under the head, its bottom 5 mm over the carriage's rails
     l_at = np.array([x_tip - 60.0, y_mast - 120.0, tip[2] + 60.0])   # the left hand holds the new tip, ready
 
-    w_out = np.array([r_at[0], front_y - 70.0, r_at[2] + 70.0])     # in front of the cabinet, over the carriage
-    w_in = np.array([r_at[0], r_at[1], r_at[2] + 70.0])               # under the head's level... then down to the shaft
+    w_out = np.array([r_at[0], front_y - 90.0, r_at[2]])             # in front of the cabinet, at the shaft's height
+    w_in = np.array([r_at[0], r_at[1] - 40.0, r_at[2]])              # in level under the head, then the last 40 mm
 
     def r_path(v):
-        """The right hand from where it hangs (v=0) to the shaft (v=1): up in front of the cabinet, in over the
-        carriage, then down beside the shaft, so it never cuts through the stage."""
+        """The right hand from where it hangs (v=0) to the shaft (v=1): up in front of the cabinet to the shaft's
+        height, then in level, between the carriage's rails and the head, so it never cuts through either."""
         rest = np.asarray(person.rest_hand("r"))
         if v < 0.5:
             return rest + (w_out - rest) * (v / 0.5)
@@ -1055,7 +1061,7 @@ def movie():
 
     def lean_in(v):
         person.set(y=person_y0 + (y_reach - person_y0) * v, lean=lean_work * v, look=tuple(tip),
-                   grip={"l": 0.55 * v, "r": 0.8 * v},
+                   grip={"l": 0.55 * v, "r": 0.8 * min(1.0, 1.5 * v)},
                    hands={"l": tuple(np.asarray(person.rest_hand("l")) * (1 - v) + l_at * v)})
         person.set(hands={"r": tuple(r_path(v))})
     person_y0 = person.st["y"]
@@ -1072,12 +1078,10 @@ def movie():
         person.hold("r", tip_g)
 
         def unscrew(v):
-            # turned loose, drawn straight down out of the head's bore (its shaft is 60 mm up it), held up to the light;
-            # then the new one the same way up and turned in. It never moves sideways while it is in the head.
-            u = v if v < 0.5 else 1.0 - v
-            down = float(np.clip((u - 0.25) / 0.18, 0.0, 1.0))
-            wob = 5.0 * math.sin(2 * math.pi * 6 * v) * (1.0 - down)
-            person.set(hands={"r": tuple(r_at + (0.0, wob, -58.0 * down))})
+            # turned loose and turned in again: the hand's fist fills the 120 mm between the carriage's rails and the
+            # head, so the tip turns in place (drawn, its 60 mm shaft would take the hand into the rails; not shown)
+            wob = 2.5 * math.sin(2 * math.pi * 5 * v)
+            person.set(hands={"r": tuple(r_at + (wob, 0.0, 0.0))})
         step(4.2, unscrew, hold=0.2, still=True)
         keep("unscrew")
         person.held.pop("r", None)
@@ -1094,7 +1098,6 @@ def movie():
         step(1.2, lean_out, hold=0.1)
         person.set(hands={"l": None, "r": None}, look=None)
         say("3/3 A person's task", "The panel goes back on, the lid comes down and the stage runs back.")
-        step(0.5, nano.move({"carriage": (1.25, 1.0)}), hold=0.0)
         side_to(x_gap, 0.8)
         z_low = panel_top - 385.0 + rise * PANEL_UP     # the raised panel's lower edge
         low_pts = {"l": np.array([x_gap - 70.0, front_y + 6.0, z_low - 30.0]),
