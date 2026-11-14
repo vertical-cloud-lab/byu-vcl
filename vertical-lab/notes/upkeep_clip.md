@@ -107,19 +107,22 @@ no service drawing), lifted straight up its guides** (r8_char's `panel` piece, a
 
 ## The render
 
-- **[MP4](../out/mp4/upkeep_clip.mp4):** 701 frames at 6 fps, 1280 × 720, 116.8 s, 6.0 MB.
+Round 11's render (`86bb4d3`), with the new person and every fix above:
+
+- **[MP4](../out/mp4/upkeep_clip.mp4):** 772 frames at 6 fps, 1280 × 720, 128.7 s, 6.4 MB.
   - Part 1, the week: frames 0-78.
   - Part 2, the check: frames 79-399.
-  - Part 3, the tip change: frames 401-700.
-- **[GIF](../out/upkeep_clip.gif):** 512 px at 3 fps, 2.5 MB. **[Still](../out/upkeep_clip_still.png).**
+  - Part 3, the tip change: frames 401-771. The panel step and the tip change add 12 s.
+- **[GIF](../out/upkeep_clip.gif):** 512 px at 3 fps, 4.1 MB. **[Still](../out/upkeep_clip_still.png).**
 - **The control chart, both versions:** [today's check](../out/upkeep_clip_chart.png) and
   [the what-if](../out/upkeep_clip_chart_whatif.png).
-- **[Arm audit](../out/collisions/upkeep_clip.json):** 534 frames checked, **0 in collision**.
-  - FCL mesh-mesh on the drawn meshes, every frame after its update.
-  - The world was what the arm can reach from Shuttle 1's dock (493 of 1,268 actors).
-  - The forearm and wrist rose to 1,585 mm at most.
-- **Cost:** 13.5 min in one slot (22:57-23:11 UTC), `VLAB_ONLY_TRAYS=BE`. The audit took 2.5 min, the preview 2.5 min
-  once the cache was built.
+- **Audits** (`ARM_AUDIT=1`, the stricter rules, the default since round 11): see "Collisions, before and after" below.
+- **Cost:** 19.7 min in one slot (02:58-03:18 UTC), `VLAB_ONLY_TRAYS=BE`. The part-3 checks (`UPKEEP_FROM=3`, a preview
+  and an audit in one slot) took 12-14 min each, and there were five of them.
+
+Round 10's render, for the record: 701 frames, 116.8 s; its arm audit was 534 frames, 0 in collision, with nothing
+else checked.
+
 - **Fixed after the preview (round 10's continuation):**
   - **The reading's camera.** It had the weight behind the doser's vertical extrusion. It now looks along the
     close-up's clear line of sight, nearer, with the weight a third of the way across, clear of the chart.
