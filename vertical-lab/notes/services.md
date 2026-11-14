@@ -139,7 +139,8 @@ The close-ups draw tray A's instruments faint, as its OT-2 stands in front of th
 ### The UPS on each tray
 
 Eaton's 5PX1500RTNG2 (120 V, 1500 VA), a 2U rack/tower unit 86 x 437 x 447 mm, stands on its side at the back right
-of every tray, in front of the power strip. A 230 V 5PX 1500 runs 44 min at 300 W (a retailer's figure), against a
+of every tray with instruments, in front of the power strip (round 11: the storage trays J, N and O have none, nor a
+dock plate or cameras; see "Round 11" under the stream cameras). A 230 V 5PX 1500 runs 44 min at 300 W (a retailer's figure), against a
 transit of seconds.
 
 PR #318: "I'm seeing it now shows electrical hookups, but I didn't see anywhere that showed UPS-s." It was there, but
@@ -315,6 +316,28 @@ the 27 W USB-C supply from the tray's power strip. A Pi 5 takes about 4 W typica
 
 The docking and cabling chapters were re-rendered with the new placements and the bay unit's new mount; `setup_lab`
 picks them up the next time it is rendered, through `add_cameras`.
+
+**Round 11: no cameras on the storage trays.** Sterling (PR #318, 2026-11-13, at 2:14 of the round-10 long-form): "Do
+we actual need cameras on the jars at all times? In terms of inventory, we're going to get that with the overhead
+camera in the bay anyway." No. A storage tray (J's samples, N's feedstock jars, O's atomized lots) changes only at the
+opening, and there this overhead unit sees about 94 % of its floor, missing only the two back corners nearest it,
+while the arm's D405 sees each seat it picks from. In its slot the tray is in the dark and nothing on it can change.
+Each of the three trays had two short camera posts (`setup_lab.CAMS`), a UPS to keep them alive in transit and a dock
+plate to charge it: six units, three UPSs and three plates for nothing that moves. All of it is gone
+(`setup_lab.PASSIVE`), which made the three slots 750 mm shorter (notes/tray_plan.md). The lab now has 24 tray units
+and two bay units, 26 in all, against 32 (`timelapse.cameras()` counts them from the same tables).
+
+**Round 11: the overhead unit, seen.** Sterling, on the set-up movie's bay-camera step (`setup_lab.mp4` 106-112 s):
+"Can't see the overhead camera from the angle. Should change the view angle and temporarily make things opaque again".
+Round 10 showed both units from far off (`CAM_VLM`) through the see-through cladding, where the unit is a few pixels.
+The step now flies to an operator's eyes at each opening in turn (1.6 m up, 0.9 m in front of the face, 420 mm right
+of the middle: this clip's first view, `setup_lab.BAY_EYE`), narrows the view to 40°, turns the cladding and the other
+ghosted parts (bay walls, shutter, seams) solid while the unit fades in, and labels it: Shuttle 2's first, where the
+loading ends, then Shuttle 1's. Then it pulls back to the wide view with the cladding see-through again, about 5.4 s
+against 3.2 s before. `vlm_services` (`services.py services`) had the same problem in its last step: it labelled the
+unit at the top edge of a see-through view of tray A's cameras. It now shows tray A's two units first, then cuts to
+the same operator's view, cladding solid, with the unit labelled, then back to see-through. `vlm_hookups` never
+labels the bay unit, so it is unchanged.
 
 ### Cabling
 

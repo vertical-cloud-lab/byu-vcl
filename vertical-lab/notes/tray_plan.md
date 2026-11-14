@@ -1,4 +1,4 @@
-# The tray plan: which tray goes in which slot, and why (#303, PR #318 rounds 7 and 8)
+# The tray plan: which tray goes in which slot, and why (#303, PR #318 rounds 7, 8 and 11)
 
 `vlm.COLUMNS` holds the plan, `setup_lab.TRAYS`/`ITEMS`/`CAMS` what is on each tray, and
 `xvfb-run --server-num=60 python3 setup_lab.py fit` checks it. The check writes `out/tray_plan.json`, draws
@@ -12,7 +12,8 @@ estimate (`vlm.MAX_GOODS_H`, notes/kardex_opening.md). But a slot only needs to 
 
 - the tray floor (3 mm, `vlm.T_FLOOR`);
 - the tallest thing on the tray, measured from the meshes as drawn. That may be an instrument, the UPS (437 mm,
-  so no tray is shorter than 475 mm) or a camera head (up to about 706 mm on a standard post);
+  so no tray that has one is shorter than 475 mm) or a camera head (up to about 706 mm on a standard post). Since
+  round 11 the three storage trays (J, N, O) have no UPS and no cameras, so their own load sets their height;
 - Kardex's 20 mm of clearance above it (POF order sheet);
 - rounded up to the 25 mm pitch.
 
@@ -23,8 +24,9 @@ Where the slots can be:
 - **Rear column:** from 300 mm, the lowest position the extractor reaches (its carriages hang 160 mm under a tray,
   over a 140 mm base frame), up to the drive bay at 3690 mm.
 - **Front column, upper part:** from 1950 mm, 120 mm over the header (1829 mm) rounded up to the pitch, to 3690 mm.
-- **Front column, lower part:** from 300 mm to 793 mm, under the access table. It takes one short tray. vlm.py drew
-  column walls there all along, but nothing was stored there before.
+- **Front column, lower part:** from 300 mm to 793 mm, under the access table. It takes short trays: tray J in
+  Shuttle 1, trays N and O in Shuttle 2 (round 11). vlm.py drew column walls there all along, but nothing was stored
+  there before round 7.
 
 The whole unit stays at 3950 mm, under #53's 13 ft (3962 mm).
 
@@ -37,30 +39,29 @@ two units (see the floor plan below).
 | Shuttle | Slot | Tray bottom (mm) | Span (mm) | Tray | What is on it | Tallest (mm) |
 |---|---|---|---|---|---|---|
 | 1 | R1 | 300 | 750 | D | Hitachi TM4000PlusII SEM, Rigaku MiniFlex XRD, powder prep station (round 8; the OpenFlexure array is gone) | 722 (XRD) |
-| 1 | R2 | 1050 | 750 | A | CubXL corrosion set-up, Opentrons OT-2 | 703 (camera head) |
-| 1 | R3 | 1800 | 775 | B | vial rack, multi-doser (chain carousel v2), Specac Autotouch vacuum press | 731 (multi-doser) |
-| 1 | R4 | 2575 | 725 | E | Plastometrex PIP, KLA iMicro, Malvern Mastersizer 3000 + Aero S | 689 |
-| 1 | F0 | 300 | 475 | J | sample storage: cups and plugs (Al, Cu), vials, tubes, stubs, coupons, bars, jars | 437 (UPS) |
-| 1 | F1 | 1950 | 725 | C | Bambu Lab H2D, Bambu Lab A1 mini | 692 |
-| 1 | F2 | 2675 | 725 | F | LECO PX500 polisher, Nabertherm NAT 15/65 furnace, LECO MX400 mounting press, disc magazine, quench tank (round 8) | 687 |
+| 1 | R2 | 1050 | 750 | A | CubXL corrosion set-up, Opentrons OT-2 | 702 (camera head) |
+| 1 | R3 | 1800 | 900 | B | vial rack, multi-doser v5 (chain carousel on an HR-202i, 13 powders), Specac Autotouch vacuum press | 854 (multi-doser) |
+| 1 | R4 | 2700 | 725 | E | Plastometrex PLX-Benchtop, KLA iMicro, Malvern Mastersizer 3000 + Aero S | 689 |
+| 1 | F0 | 300 | 325 | J | sample storage, passive: cups and plugs (Al, Cu), vials, tubes, stubs, coupons, bars, jars | 300 (drawer cabinet) |
+| 1 | F1 | 1950 | 725 | C | Bambu Lab H2D, Bambu Lab A1 mini | 692 (camera head) |
+| 1 | F2 | 2675 | 750 | F | LECO PX500 polisher, Nabertherm NAT 15/65 furnace, LECO MX400 mounting press, disc magazine, quench tank | 703 (camera F1's head) |
 | 2 | 2R1 | 300 | 850 | K | tray glovebox (N2, purge-only), Keyence VHX-7000 | 810 (glovebox) |
-| 2 | 2R2 | 1150 | 725 | L | ZwickRoell zwickiLine Z5.0 lying on its side, Mitutoyo HM-220 micro-Vickers | 693 |
+| 2 | 2R2 | 1150 | 725 | L | ZwickRoell zwickiLine Z5.0 lying on its side, Mitutoyo HM-220 micro-Vickers | 693 (camera head) |
 | 2 | 2R3 | 1875 | 750 | M | Bruker S2 PUMA XRF, Sentry Air ductless hood, Makera Carvera CNC | 714 (hood) |
-| 2 | 2R4 | 2625 | 550 | H | DDM Novastar stencil printer, Opulo LumenPnP | 516 (stencil printer) |
-| 2 | 2F1 | 1950 | 725 | G | two Formlabs Form 4s, Form Wash, Form Cure | 696 |
-| 2 | 2F2 | 2675 | 725 | I | two SnowX SnowPods | 686 |
-| 2 | 2F0 | 300 | 475 | N | powder-jar store, feedstock: 204 jars (round 8) | 437 (UPS) |
-| 2 | 2R5 | 3175 | 500 | O | powder-jar store, atomized lots: 377 jars (round 8) | 437 (UPS) |
+| 2 | 2R4 | 2625 | 550 | H | DDM Novastar stencil printer, Opulo LumenPnP, Puhui T-962A reflow oven | 516 (stencil printer) |
+| 2 | 2F0 | 300 | 225 | N | powder-jar store, feedstock, passive: 264 jars (round 11) | 182 (500 mL jars) |
+| 2 | 2F0b | 525 | 150 | O | powder-jar store, atomized lots, passive: 489 jars (round 11) | 104 (125 mL jars) |
+| 2 | 2F1 | 1950 | 725 | G | two Formlabs Form 4s, Form Wash, Form Cure | 696 (camera head) |
+| 2 | 2F2 | 2675 | 725 | I | two SnowX SnowPods | 686 (camera head) |
 
-The table is from one run of `setup_lab.py fit`; `out/tray_plan.json` has the run that matches the code. Every
-camera-carrying tray needs 725-750 mm, because a camera head on a standard post reaches 690-706 mm. Trays H and J
-have short posts (block at 270 mm) so their slots stay low.
+The table is from round 11's run of `setup_lab.py fit` (00:20 UTC, 2026-11-14); `out/tray_plan.json` has the run
+that matches the code. Every camera-carrying tray needs 725-750 mm, because a camera head on a standard post reaches
+690-706 mm. Tray H has short posts (block at 270 mm) so its slot stays low.
 
-What is left: Shuttle 1 has 390 mm free at the top of its rear column (3300-3690), too little for a tray with a UPS.
-Its front column has 290 mm free. Shuttle 2 had 515 mm free in the rear column (one more short tray, up to a 500 mm
-span), 290 mm at the top of the front and its low front slot under the access table. Round 8's two jar trays took the
-rear 500 mm (2R5) and the low front slot (2F0), so Shuttle 2 now has 15 mm left in its rear column and 290 mm at the
-top of its front.
+What is left (round 11; `out/tray_plan.png` draws it dashed): Shuttle 1 has 265 mm at the top of its rear column, 265
+at the top of its front and 168 under the access table. Shuttle 2 has 515 mm at the top of its rear column (one more
+tray of up to 500 mm, with a UPS if it needs one), 290 at the top of its front and 118 under the access table. In all,
+1621 mm of column is free, against 896 mm before round 11.
 
 ## Round 8
 
@@ -80,6 +81,49 @@ the details.
 - **On the floor:** the EOS M 400-4 and the Meltio robot cell (`r8_scale`) stand south of the south row's ends, set
   back 3525 and 2747 mm (their `setback`, which the merge now applies), with no MiR dock or target (`NO_DOCK`).
 - **Round 6's camera clashes** (D0, E0 and F1 touching their instruments' boxes) are gone: every camera rig is clear.
+
+## Round 11: the storage trays are passive
+
+Sterling (PR #318, 2026-11-13, on the round-10 long-form at 2:14): "you show cameras by the jars and possibly a UPS at
+the back. That is very inefficient from a vertical space usage, since the jars are so short. Do we actual need cameras
+on the jars at all times? In terms of inventory, we're going to get that with the overhead camera in the bay anyway."
+
+**Do we need cameras on the jars? No.** Nothing on a storage tray moves, heats, runs or draws power. In its slot the
+tray sits in the dark inside the Shuttle and nothing on it can change; it changes only at the opening, where the arm
+takes or puts back a jar or a sample. There the bay's overhead unit looks down on it (its Wide sees 94% of a presented
+tray's floor, `services.json` `cameras.bay_view`; what it misses is at the back corners, nearest the unit) and the D405
+on the arm's wrist looks at every seat the arm picks from. A stream camera on the tray would film a closed slot. So
+the seat map (`out/powder_store.json`, `instruments_r7.storage_seats()`) plus a picture from the bay unit at every
+presentation is the inventory, and the UPS that kept the cameras alive in transit goes with them. This holds for J too.
+
+**What changed** (`setup_lab.PASSIVE`, `r8_store.PASSIVE_TRAYS`):
+
+- J, N and O carry no UPS, no dock plate or tray lines, no socket, power strip or power lamp, and no stream cameras.
+  Their slots mate with nothing, so they get no dock either. services.py's clips draw docks only for trays A-F, and
+  the set-up movie never drew slot docks, so nothing had to be removed there. The service risers run the whole column
+  and stay.
+- `setup_lab.CAMS` loses tray J's two short posts; a new tray from a module gets them (`SHORT_CAMS`) only if it isn't
+  passive.
+- N's and O's racks run the tray's full width, 2410 mm of the 2426 inside the rim (they were 1760, left of the UPS),
+  and 800 mm deep (was 760: a passive tray has no power strip along its back). Their rows are spaced for the gripper:
+  see notes/lab_r8.md. Tray J's storage load stays 1760 mm wide, centred: its racks are laid out by hand around its
+  drawer cabinet, and the 333 mm left at each end is room for more.
+- Each slot is its own load's height: the tray floor, the tallest thing on the tray, Kardex's 20 mm, up to the 25 mm
+  pitch.
+
+| Tray | Before: slot, span, tallest | After: slot, span, tallest | Jars |
+|---|---|---|---|
+| J, sample storage | F0, 475 mm, 437 (the UPS) | F0, 325 mm, 300 (drawer cabinet) | 8 (and its cups, vials, tubes) |
+| N, feedstock | 2F0, 475 mm, 437 (the UPS) | 2F0, 225 mm, 182 (500 mL jars on their rack) | 204 -> 264 |
+| O, atomized lots | 2R5 (top of Shuttle 2's rear column), 500 mm, 437 (the UPS) | 2F0b (under Shuttle 2's access table, over N), 150 mm, 104 (125 mL jars) | 377 -> 489 |
+
+The three slots took 1450 mm of column; they take 700 now, and 750 mm is free. Both jar trays now sit under Shuttle 2's
+access table (300-675 mm), so 2R5 is gone and Shuttle 2's rear column has 515 mm free at its top. 753 jars, against
+581, in 375 mm of column against 975.
+
+**Tray F's slot grows 725 -> 750 mm.** The ch5 stream moved camera F1 behind the quench tank, looking down into it
+(commit 6c690a0, Sterling's point 4 of 2026-11-13); its head now stands 703 mm over the tray floor, and 703 + 3 + 20
+rounds up to 750. F2 is the top slot of Shuttle 1's front column, so nothing else moves.
 
 ## What moved in round 7, and why
 
@@ -108,7 +152,10 @@ the details.
   - A Form 4 with its cover open (844 mm) now fits under the opening. It opens only there, so tray G's slot is set by
     the closed printer.
 
-## Every tray carries its UPS, dock plate and cameras
+## Every tray with instruments carries its UPS, dock plate and cameras
+
+The storage trays J, N and O don't (round 11, above).
+
 
 `fit` measures each of these from its meshes, as an axis-aligned box in the tray's frame:
 

@@ -284,8 +284,10 @@ def store(key: str) -> Instrument:
              "UPS, no cameras. The bay's overhead camera counts the jars whenever the tray is presented.", 2.6, {}),
         ]
         inst.zoom = {1: ((-500.0, -250.0, 60.0), 900.0), 5: ((300.0, -150.0, 60.0), 700.0), 6: "out"}
-        inst.labels = [("60 mL", (-700, -330, 70), (0.10, 0.82)), ("125 mL", (-300, -190, 95), (0.30, 0.86)),
-                       ("250 mL", (100, -20, 110), (0.55, 0.86)), ("500 mL", (500, 170, 175), (0.82, 0.80))]
+        br = {b["size"]: b for b in band_rows(key)}      # round 11: on each band's first row, as the rows now stand
+        inst.labels = [(sz, (x, br[sz]["ys"][0], RACK["h"] - RACK["pocket"] + JARS[sz][1] + JARS[sz][2]), at)
+                       for sz, x, at in (("60 mL", -700.0, (0.10, 0.82)), ("125 mL", -300.0, (0.30, 0.86)),
+                                         ("250 mL", 100.0, (0.55, 0.86)), ("500 mL", 500.0, (0.82, 0.80)))]
     else:
         inst.actions = [
             (f"Tray O, the atomized lots: {n} labelled jars ({sizes}). Every run gets a six-character ID (DAL #157: "
@@ -301,8 +303,11 @@ def store(key: str) -> Instrument:
              "it.", 3.0, {}),
         ]
         inst.zoom = {1: ((-600.0, -300.0, 50.0), 800.0), 2: ((200.0, -120.0, 60.0), 650.0), 6: "out"}
-        inst.labels = [("30 mL: c3k0n5 < 63 um", (seats[6]["x"], seats[6]["y"] - 20, 60), (0.10, 0.80)),
-                       ("60 mL", (0, -60, 75), (0.45, 0.86)), ("125 mL", (400, 230, 95), (0.80, 0.80))]
+        br = {b["size"]: b for b in band_rows(key)}
+        c3 = next(st for st in seats if st["label"] == "c3k0n5 < 63 um")   # round 8 pointed at seats[6], 8rthq2's
+        inst.labels = [("30 mL: c3k0n5 < 63 um", (c3["x"], c3["y"] - 20, 60), (0.10, 0.80)),
+                       ("60 mL", (0, br["60 mL"]["ys"][0], 86), (0.45, 0.86)),
+                       ("125 mL", (400, br["125 mL"]["ys"][0], 104), (0.80, 0.80))]
     inst.cam = (0.25, -1.5, 0.80)          # low enough to see the labels on the jars' sides
     inst.framing = (0.56, 0.30)
     inst.notes = [f"{n} jars: {sizes}", "jar sizes are typical wide-mouth jars: estimates"]

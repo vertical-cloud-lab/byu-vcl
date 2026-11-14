@@ -55,6 +55,51 @@ reaches it (`out/powder_store.json`).
 The jar sizes are typical wide-mouth straight-sided jars, not a supplier's drawing (estimates). No jar is wider than
 76 mm, inside the 2F-85's 85 mm stroke, and the rows leave room for its fingers.
 
+### Round 11: full-width racks, no cameras, short slots
+
+Sterling (PR #318, 2026-11-13, at 2:14 of the round-10 long-form): "you show cameras by the jars and possibly a UPS at
+the back. That is very inefficient from a vertical space usage, since the jars are so short. Do we actual need cameras
+on the jars at all times? In terms of inventory, we're going to get that with the overhead camera in the bay anyway."
+
+**No, the jars need no cameras.** In its slot a jar tray is in the dark and nothing on it can change; it changes only at
+the opening, where the bay's overhead unit looks down on it (its Wide sees 94% of a presented tray's floor) and the
+arm's D405 looks at every seat it picks from. The inventory is the seat map (`out/powder_store.json`) checked against
+the bay unit's picture each time the tray is presented. With the cameras gone, nothing on the tray draws power, so
+the UPS, the dock plate and the tray lines go too: N and O are passive trays (`r8_store.PASSIVE_TRAYS`), as is J
+(notes/tray_plan.md, "Round 11").
+
+| Tray | Slot | Rack | Jars | Reach from the MiR at the opening's middle | ... from one of -600, 0, +600 mm |
+|---|---|---|---|---|---|
+| N, feedstock | 2F0, 225 mm (was 475) | 2410 x 800 mm (was 1760 x 760) | 264 (was 204): 82 x 60, 70 x 125, 58 x 250, 54 x 500 mL | 238 | all 264 |
+| O, atomized lots | 2F0b, 150 mm (was 2R5, 500) | 2410 x 800 mm | 489 (was 377): 255 x 30, 164 x 60, 70 x 125 mL | 441 | all 489 |
+
+753 jars in 375 mm of column, where round 10 had 581 in 975 mm. Both trays sit under Shuttle 2's access table, N at
+300 mm and O over it at 525.
+
+**The rack's width.** 2410 mm of the 2426 inside the rim, 8 mm spare at each end. Each end keeps 76 mm for its handle
+(60 mm wide, 10-70 mm in from the end) and 6 mm between the handle and the last jar. Until round 10 a band with an odd
+number of rows had its handles in line with its middle row, inside the end jars of that row; that clash was inside the
+one model, so `fit` couldn't see it. The handles now stand clear of every jar.
+
+**The rows were too close for the gripper.** Round 8 spaced rows by the jar's diameter plus 20 mm ("6 mm clear of it,
+12 mm of finger, 2 mm spare") and checked only the arm's inverse kinematics. Round 11's `gripper_check()` places the
+2F-85's own meshes (ur_arm, with the D405 on its wrist) open around a cap, its pads 6 mm off it (3.5 mm on a 500 mL jar,
+where the gripper is fully open at 85 mm), fingers closing front to back, and checks them with FCL against the rack and
+its handles, the jars near it and the tray's rim. With the 20 mm rows the fingers ran into the next row for every size
+but the 30 mL jars. The reason: the 2F-85's fingertips flare as it opens. At the cap's height they reach 11 mm past the
+pads around a 30 mL cap and 18 mm around a 500 mL one, and above the cap the linkage is wider still (45-62 mm from the
+axis), which matters where the next row is a taller size. The rows are now spaced from those profiles with 3 mm to
+spare (`r8_store.ROW_PITCH`, centre to centre: 61.5 mm for 30 mL rows up to 103 mm for 500 mL ones, and 72.5-116.5 mm
+where two sizes meet), 21-41 mm between caps. The check covers both ends and the middle of every row, with the wrist
+camera on either side. All clear: the closest is 1.4 mm to a neighbouring jar, 29 mm to a handle and 35 mm to the tray's
+rim. The racks are 800 mm deep to fit the wider rows. This is the gripper alone, at the bottom of a straight-down
+approach; the arm's links stay well above the jars there. The planned moves in a clip would still need the arm audit.
+
+What is still assumed: the jar sizes (typical wide-mouth jars, not a supplier's drawing), the 6 mm pre-grasp
+clearance (it depends on how well the D405 places each seat), and 2410 x 800 mm HDPE racks one person lifts out by
+their handles. The heaviest, N's 500 mL band of 54 jars, would be about 45 kg full (up to 500 g of powder, DAL #146's
+largest lot, and about 300 g of glass a jar: estimates), so it takes two people or the lift table, not one.
+
 ## No HF
 
 > "I don't want to deal with HF in these workflows, especially not with robotics."
