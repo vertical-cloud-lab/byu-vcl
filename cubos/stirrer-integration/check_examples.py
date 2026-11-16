@@ -46,7 +46,7 @@ def run(label: str, args: list[str]) -> int:
     proc = subprocess.run(
         [sys.executable, "-m", *args], capture_output=True, text=True,
     )
-    log = OUT / f"{label}.log"
+    log = OUT / f"{label}.txt"  # .txt: the repo gitignores *.log
     log.write_text(
         f"$ python -m {' '.join(args)}\n(exit {proc.returncode})\n\n"
         + proc.stdout + proc.stderr
