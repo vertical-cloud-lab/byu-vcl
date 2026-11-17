@@ -1,0 +1,26 @@
+{
+  "teaching-ai-use": {
+    "task_id": "0666d3b8-553f-4f26-ac3f-f6ee374e4ecd",
+    "job": "job-futurehouse-paperqa3",
+    "query": "What approaches are most effective for teaching university researchers (faculty, staff and graduate students) to use generative AI and AI agents productively in their research and teaching? Summarize the empirical evidence (studies, surveys, controlled trials) on training formats such as short talks or demonstrations, hands-on workshops, one-on-one onboarding or office hours, peer mentoring and communities of practice, and worked examples. What barriers to adoption are reported, and which interventions led to sustained use rather than one-time experimentation?",
+    "submitted_utc": "2026-11-17T17:42:33+00:00"
+  },
+  "agent-best-practices": {
+    "task_id": "600ef2f4-4521-43b6-bd03-3db84a58069e",
+    "job": "job-futurehouse-paperqa3",
+    "query": "What practices make LLM-based agents (autonomous coding agents such as Claude Code, OpenAI Codex or GitHub Copilot agent mode, and multi-agent systems) effective and reliable for real software-engineering and scientific-research work? Summarize the evidence on context engineering (repository instruction files, documentation, issue descriptions), tool access, task decomposition and specification quality, running agents in parallel, human review and verification, and common failure modes such as fabricated results, reward hacking or silent errors. Include quantitative results where available.",
+    "submitted_utc": "2026-11-17T17:42:34+00:00"
+  },
+  "generative-cad": {
+    "task_id": "2c753486-8568-4ed0-9179-e8bc98b491e1",
+    "job": "job-futurehouse-paperqa3",
+    "query": "How accurate are large language models at generating parametric CAD models from natural-language descriptions (for example CadQuery, build123d or OpenSCAD code generation, and text-to-CAD), and which techniques improve correctness, such as geometric validation with a CAD kernel, visual feedback from rendered images, iterative self-refinement or multi-agent review? Summarize benchmarks, reported success rates and remaining failure modes for producing manufacturable parts, including laboratory automation hardware.",
+    "submitted_utc": "2026-11-17T17:42:34+00:00"
+  },
+  "open-provenance-collaboration": {
+    "task_id": "3b1683fd-4b99-47b3-acb5-4b5b314654ae",
+    "job": "job-futurehouse-paperqa3",
+    "query": "How do transparent, publicly visible research workflows (open notebooks, public issue trackers, and AI-assisted work with recorded prompts and outputs) affect reproducibility, accountability, trust and collaboration between research groups? Include evidence on AI-assisted or literature-based discovery of experts and collaborators, and on how such discovery leads to new collaborations.",
+    "submitted_utc": "2026-11-17T17:42:35+00:00"
+  }
+}
