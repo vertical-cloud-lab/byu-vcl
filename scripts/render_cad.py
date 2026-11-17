@@ -115,28 +115,57 @@ def explode_offsets(parts, factor: float, up=np.array([0.0, 0.0, 1.0])):
     return vecs * factor + np.outer(lift, up / np.linalg.norm(up))
 
 
-def camera_for(bounds_list, up, elev_deg: float, margin: float = 1.15):
-    lo = np.min([b[::2] for b in bounds_list], axis=0)
-    hi = np.max([b[1::2] for b in bounds_list], axis=0)
-    center = (lo + hi) / 2
-    radius = float(np.linalg.norm(hi - lo)) / 2 or 1.0
-    fov = math.radians(30.0)
-    dist = radius / math.sin(fov / 2) * margin
-    return center, dist
-
-
-def place_camera(pl: pv.Plotter, center, dist, up, azim_deg: float, elev_deg: float):
+def view_frame(up, azim_deg: float, elev_deg: float):
+    """Unit vectors (toward camera, right, screen-up) for a camera orbiting `up`."""
     up = up / np.linalg.norm(up)
-    # Build an orthonormal frame with `up` as the vertical.
     ref = np.array([1.0, 0.0, 0.0]) if abs(up[0]) < 0.9 else np.array([0.0, 1.0, 0.0])
     e1 = ref - up * np.dot(ref, up)
     e1 /= np.linalg.norm(e1)
     e2 = np.cross(up, e1)
     a, e = math.radians(azim_deg), math.radians(elev_deg)
     d = math.cos(e) * (math.cos(a) * e1 + math.sin(a) * e2) + math.sin(e) * up
+    right = np.cross(up, d)
+    right /= np.linalg.norm(right)
+    screen_up = np.cross(d, right)
+    return d, right, screen_up
+
+
+def camera_for(bounds_list, up, elev_deg: float, aspect: float = 4 / 3, margin: float = 1.06,
+               azims=range(0, 360, 10)):
+    """Centre and distance that keep every box corner in view at every azimuth of the turn.
+
+    Fitting the corners rather than a bounding sphere frames flat or long parts much more
+    tightly. The top band is kept clear for the caption.
+    """
+    corners = []
+    for b in bounds_list:
+        for x in (b[0], b[1]):
+            for y in (b[2], b[3]):
+                for z in (b[4], b[5]):
+                    corners.append((x, y, z))
+    corners = np.array(corners, dtype=float)
+    lo, hi = corners.min(axis=0), corners.max(axis=0)
+    center = (lo + hi) / 2
+    rel = corners - center
+    tv = math.tan(math.radians(30.0) / 2)
+    th = tv * aspect
+    need = 1e-9
+    for az in azims:
+        d, right, sup = view_frame(up, az, elev_deg)
+        f = rel @ d
+        r = np.abs(rel @ right)
+        u = rel @ sup
+        # Caption band: allow the top 12 % less room than the bottom.
+        need = max(need, float(np.max(f + r / th)), float(np.max(f + u / (tv * 0.88))),
+                   float(np.max(f + (-u) / tv)))
+    return center, need * margin
+
+
+def place_camera(pl: pv.Plotter, center, dist, up, azim_deg: float, elev_deg: float):
+    d, _, _ = view_frame(up, azim_deg, elev_deg)
     pl.camera.position = tuple(center + dist * d)
     pl.camera.focal_point = tuple(center)
-    pl.camera.up = tuple(up)
+    pl.camera.up = tuple(up / np.linalg.norm(up))
     pl.camera.view_angle = 30.0
     pl.reset_camera_clipping_range()
 
@@ -176,7 +205,8 @@ def render_frames(parts, up, size, n_frames, elev, explode=None, start_azim=30.0
         bounds += [np.array(m.bounds) for _, m in parts]
     else:
         bounds = [np.array(m.bounds) for _, m in parts]
-    center, dist = camera_for(bounds, up, elev)
+    center, dist = camera_for(bounds, up, elev, aspect=size[0] / size[1],
+                              azims=[start_azim + 360.0 * k / n_frames for k in range(n_frames)])
     frames = []
     for k in range(n_frames):
         t = k / n_frames
@@ -208,7 +238,7 @@ def still(parts, up, size, elev, azim=30.0, offsets=None):
         pl.add_mesh(mm, color=PALETTE[i % len(PALETTE)], smooth_shading=True,
                     specular=0.25, specular_power=20, ambient=0.18, diffuse=0.85)
         bounds.append(np.array(mm.bounds))
-    center, dist = camera_for(bounds, up, elev)
+    center, dist = camera_for(bounds, up, elev, aspect=size[0] / size[1], azims=[azim])
     place_camera(pl, center, dist, up, azim, elev)
     pl.render()
     img = Image.fromarray(pl.screenshot(return_img=True))
