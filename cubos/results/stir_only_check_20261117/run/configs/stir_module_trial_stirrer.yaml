@@ -1,0 +1,116 @@
+# stir_module_trial_stirrer.yaml -- Ben's 2026-11-05 deck (stir_module_trial.yaml,
+# vial_1 on the stir module at x 126, z 66), plus the stir module's body as a
+# `wall`, as in approach 1 of #133 (cubos/stirrer-integration/approach-1/deck.yaml).
+#
+# In approach 1 the deck says only where the stirrer's *body* is, as an
+# obstacle. It does not say that vial_1 sits on it; the `stir` step names the
+# stirrer, and the protocol author knows what is on it. The wall's Z values
+# are DERIVED, NOT MEASURED (see approach-1/deck.yaml): teach them before
+# motion planning relies on them.
+
+labware:
+  vial_1:
+    type: vial
+    name: vial_1
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 126
+      y: 45
+      z: 66
+    capacity_ul: 1500
+    working_volume_ul: 1200
+    dead_volume_ul: 0
+  vial_2:
+    type: vial
+    name: vial_2
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 136.668
+      y: 89
+      z: 56
+    capacity_ul: 1500
+    working_volume_ul: 1200
+    dead_volume_ul: 0
+  tip_rack:
+    type: tip_rack
+    name: tip_rack
+    model_name: panda_2x15_tip_rack
+    rows: 15
+    columns: 2
+    length: 138
+    width: 20
+    height: 66
+    tip_length: 35
+    drop_z:
+    x_offset: 8.5
+    y_offset: 8.5
+    calibration:
+      a1:
+        x: 291.332
+        y: 89
+      a2:
+        x: 282.832
+        y: 89
+    pickup_z: 59
+    location:
+      x: 291.332
+      y: 89
+      z: 59
+    slots: {}
+    tip_present:
+      A1: true
+      A2: true
+      B1: true
+      B2: true
+      C1: true
+      C2: true
+      D1: true
+      D2: true
+      E1: true
+      E2: true
+      F1: true
+      F2: true
+      G1: true
+      G2: true
+      H1: true
+      H2: true
+      I1: true
+      I2: true
+      J1: true
+      J2: true
+      K1: true
+      K2: true
+      L1: true
+      L2: true
+      M1: true
+      M2: true
+      N1: true
+      N2: true
+      O1: true
+      O2: true
+
+  # ── New ─────────────────────────────────────────────────────────────────
+  # The stir module's body, as an obstacle for motion planning and for
+  # anyone reading the deck. Same key as the instrument by convention only.
+  # Footprint 56 x 56 mm centred on vial_1's axis, from the design in
+  # hardware/vial-stirrer-cubxl/README.md (check it against the compact build
+  # that ran on 11-05). The Z values are DERIVED, NOT
+  # MEASURED: the top of the module (the cup's spring fingers) is ~40 mm
+  # below a vial rim (42 vs ~82 mm above the plate), so ~26 here with the rim
+  # at 66, and the deck plate ~82 mm below the rim. Teach both before
+  # motion planning relies on them.
+  stirrer_1:
+    type: wall
+    name: stirrer_1
+    corner_1:
+      x: 98.0
+      y: 17.0
+      z: -16.0
+    corner_2:
+      x: 154.0
+      y: 73.0
+      z: 26.0

@@ -16,8 +16,46 @@ work for on-deck instruments. [§4](#4-what-the-first-cubos-pr-would-contain) li
 that PR would contain, and [§5](#5-questions-for-alex) lists the decisions we need from him
 first.
 
-**There is no CubOS code here yet, and nothing was run on the CubXL.** This directory holds
-the example configs, a script that checks them offline, and its logs.
+This directory holds the example configs, a script that checks them offline, and its logs.
+
+### Update, 2026-11-17: approach 1 is implemented, as a patch
+
+At Ben's request on PR #348, approach 1 now exists as CubOS code, as
+[`../patches/stirrer-approach-1.patch`](../patches/stirrer-approach-1.patch), on top of the
+CubXL's `496819c` and its four patches (the fork still can't be pushed to from `@claude`
+runs). It follows §2 and §4: a `stirrer` type whose registry entry says `mount: deck`;
+`pawduino` (commands `30`/`31` over the shared link, optional `status_poll_s`) and `mock`
+vendors; a `stir` command with `rpm`, `seconds` and `wait`; a stop for every stirrer at run
+teardown; and deck-mounted types skipped by bounds, home pose, the setup summary,
+calibration and head moves. The loader refuses `offset_x`/`offset_y`/`depth` on a
+deck-mounted entry. The check is `mount == "deck"` exactly, so mocks in the tests still count
+as head-mounted. With it, CubOS's own tests pass on the Pi: 2581, the 4-patch base's 2550 plus
+31 new. The Operator UI changes in §4 are not in it.
+
+The patch is applied to `~/CubOS` on the CubXL Pi. A stir-only CubOS run there completed 5/5
+steps, but the stirrer read 0 rpm and stalled
+([`stir_only_check_20261117`](../results/stir_only_check_20261117/)). The 5× transfer protocol
+Ben asked for passed every check and gate, and is waiting on the stirrer and on vial 1's
+position ([`stir_transfer_5x_20261117`](../results/stir_transfer_5x_20261117/)).
+
+What changed on the Pi (none of it is in a repo there):
+
+- `~/CubOS`: `stirrer-approach-1.patch` applied (new files under `instruments/stirrer/`,
+  `protocol_engine/commands/stir.py`, `tests/instruments/stirrer/`). The working-tree diff
+  before it is saved in `~/stirrer_approach1_20261117/CubOS_before_stirrer.diff`. To undo it,
+  run `git -C ~/CubOS apply -R ~/byu-vcl-stir5x/cubos/patches/stirrer-approach-1.patch`.
+- `~/byu-vcl-stir5x`: a shallow, sparse checkout of this branch (`cubos/configs`,
+  `cubos/tools`, `cubos/patches`, `cubos/docs/tic_p20.txt`, about 1 MB).
+- `~/stirrer_approach1_20261117`: scratch space for the offline checks (an exported, patched
+  CubOS tree run with `PYTHONPATH`, test logs and gate logs).
+- `~/cubxl_runs/stir_transfer_5x_20261117_checks`, `~/cubxl_runs/stir_only_check_20261117`.
+
+The examples in [`approach-1/`](approach-1/) and the checks below predate the patch. The
+committed configs that use it are
+[`cub_xl_ben_3_instrument_stirrer.yaml`](../configs/gantry/cub_xl_ben_3_instrument_stirrer.yaml),
+[`stir_module_trial_stirrer.yaml`](../configs/deck/stir_module_trial_stirrer.yaml),
+[`stir_transfer_5x.yaml`](../configs/protocol/vcl/stir_transfer_5x.yaml) and
+[`stir_only_check.yaml`](../configs/protocol/vcl/stir_only_check.yaml).
 
 CubOS links point at upstream `main` @ [`d136340`](https://github.com/Ursa-Laboratories/CubOS/tree/d136340)
 (2026-11-16). The CubXL Pi runs `496819c` plus four local patches
