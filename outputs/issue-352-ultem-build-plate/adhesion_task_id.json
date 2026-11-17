@@ -1,0 +1,5 @@
+{
+ "task_id": "2248061f-eb12-4d4c-a379-7d9d414d599b",
+ "job": "job-futurehouse-paperqa3",
+ "query": "Which quantitative studies measure first-layer adhesion (peel, shear or pull-off force) or warping of high-temperature thermoplastics printed by fused filament fabrication, such as polyetherimide (PEI/ULTEM), polysulfone/PPSU, polycarbonate, PEEK and PEKK, on different build platform materials (polyimide film, glass, PEI sheet, glass-fibre/epoxy, metal, coated or adhesive-treated surfaces), and how does the adhesion depend on bed temperature relative to the polymer's glass transition temperature? In particular, is there evidence that printing an amorphous polymer onto a bed made of the same polymer (for example ULTEM onto a PEI sheet) near or above its Tg causes interdiffusion or welding that makes the part hard or impossible to remove, and which release layers or surface choices prevent it?"
+}
