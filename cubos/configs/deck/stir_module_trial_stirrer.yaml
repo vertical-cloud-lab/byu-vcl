@@ -1,6 +1,14 @@
-# stir_module_trial_stirrer.yaml -- Ben's 2026-11-05 deck (stir_module_trial.yaml,
-# vial_1 on the stir module at x 126, z 66), plus the stir module's body as a
-# `wall`, as in approach 1 of #133 (cubos/stirrer-integration/approach-1/deck.yaml).
+# stir_module_trial_stirrer.yaml -- Ben's 2026-11-05 deck (stir_module_trial.yaml),
+# plus the stir module's body as a `wall`, as in approach 1 of #133
+# (cubos/stirrer-integration/approach-1/deck.yaml), with the module where it is
+# on 2026-11-17:
+#
+#   vial_1 x  126 -> 151, and the wall with it (+25 mm). The deck camera showed
+#   the stir module one plate slot further +X than on 11-05, and Ben confirmed
+#   it on PR #348 (22:41 UTC: "vial one moved one slot +X"). The deck's slot
+#   columns are 25 mm apart (hardware/vial-stirrer-cubxl/README.md), and the
+#   module's keys sit in them, so it moves in whole 25 mm steps. y 45 and z 66
+#   are unchanged, as are vial_2 and the tip rack.
 #
 # In approach 1 the deck says only where the stirrer's *body* is, as an
 # obstacle. It does not say that vial_1 sits on it; the `stir` step names the
@@ -16,7 +24,7 @@ labware:
     height: 83
     diameter: 28
     location:
-      x: 126
+      x: 151        # 126 on 11-05; the module moved one slot (+25 mm) in X
       y: 45
       z: 66
     capacity_ul: 1500
@@ -96,7 +104,7 @@ labware:
   # ── New ─────────────────────────────────────────────────────────────────
   # The stir module's body, as an obstacle for motion planning and for
   # anyone reading the deck. Same key as the instrument by convention only.
-  # Footprint 56 x 56 mm centred on vial_1's axis, from the design in
+  # Footprint 56 x 56 mm centred on vial_1's axis (x 151 since 2026-11-17), from the design in
   # hardware/vial-stirrer-cubxl/README.md (check it against the compact build
   # that ran on 11-05). The Z values are DERIVED, NOT
   # MEASURED: the top of the module (the cup's spring fingers) is ~40 mm
@@ -107,10 +115,10 @@ labware:
     type: wall
     name: stirrer_1
     corner_1:
-      x: 98.0
+      x: 123.0
       y: 17.0
       z: -16.0
     corner_2:
-      x: 154.0
+      x: 179.0
       y: 73.0
       z: 26.0
