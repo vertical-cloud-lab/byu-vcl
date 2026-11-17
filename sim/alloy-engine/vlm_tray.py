@@ -216,7 +216,7 @@ def render(args) -> None:
     for i in range(n + 1):
         if i % every == 0:
             x = sim.state()["tray_steel.pos"][:, 0]
-            poses = np.stack([look_at((xi + 1.25, -1.55, 0.95), (xi, 0.05, 0.10)) for xi in x])
+            poses = np.stack([look_at((xi + 0.80, -1.10, 0.58), (xi - 0.02, 0.0, 0.08)) for xi in x])
             if cams is None:
                 cams = alloy.Camera("follow", pose=poses, width=args.width, height=args.height, fov=50, spp=args.spp,
                                     denoise=args.denoise)
@@ -245,8 +245,10 @@ def render(args) -> None:
             sim.step(1)
     OUT.mkdir(exist_ok=True)
     stem = OUT / "vlm_tray"
-    frames[0].save(f"{stem}.gif", save_all=True, append_images=frames[1:] + [frames[-1]] * 8,
-                   duration=int(1000 / args.fps * args.slow), loop=0)
+    pal = frames[len(frames) // 2].convert("P", palette=Image.ADAPTIVE, colors=128)   # one shared palette: small GIF
+    q = [f.quantize(palette=pal, dither=Image.Dither.NONE) for f in frames]
+    q[0].save(f"{stem}.gif", save_all=True, append_images=q[1:] + [q[-1]] * 8, duration=int(1000 / args.fps * args.slow),
+              loop=0, optimize=True)
     frames[len(frames) // 3].save(f"{stem}_frame.png")
     frames[-1].save(f"{stem}_final.png")
     print("health ok", sim.check()["ok"])

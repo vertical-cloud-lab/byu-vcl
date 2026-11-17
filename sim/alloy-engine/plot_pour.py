@@ -52,10 +52,12 @@ for tg in targets:
     ax.text(0.02, tg + 0.12, f"target {tg:g} g", fontsize=8, color=MUTED)
 ax.set_xlabel("time, s", color=INK, fontsize=9.5)
 ax.set_ylabel("load cell reading, g (powder in the vial)", color=INK, fontsize=9.5)
-title = "Dots: the scoop starts tipping back"
-if len(allows) > 1:
-    title += f"; dashed: {name(allows[0])}; solid: {name(allows[-1])}"
-ax.set_title(title, loc="left", fontsize=9.5, color=INK)
+ax.set_title("Load cell reading, one colour per target", loc="left", fontsize=9.5, color=INK)
+handles = [plt.Line2D([], [], color=MUTED, lw=2 if style[a] == "solid" else 1.4, ls=style[a], label=name(a))
+           for a in allows]
+handles.append(plt.Line2D([], [], color=MUTED, lw=0, marker="o", ms=7, mec="#fcfcfb", mew=2,
+                          label="the scoop starts tipping back"))
+ax.legend(handles=handles, loc="lower right", frameon=False, fontsize=8.5)
 ax.grid(color=GRID, lw=0.8)
 ax.set_axisbelow(True)
 for k, a in enumerate(allows):
@@ -72,7 +74,7 @@ bx.axhline(0, color=INK, lw=0.8)
 bx.set_xticks(range(len(targets)), [f"{tg:g} g" for tg in targets])
 bx.set_xlim(-0.6, len(targets) - 0.3)
 bx.set_ylabel("dose − target, g", color=INK, fontsize=9.5)
-sub = "Each dose's error" + (" (left of each pair: no allowance)" if len(allows) > 1 else "")
+sub = "Each dose's error" + (" (dashed: no allowance)" if len(allows) > 1 else "")
 bx.set_title(sub, loc="left", fontsize=9.5, color=INK)
 bx.grid(axis="y", color=GRID, lw=0.8)
 bx.set_axisbelow(True)

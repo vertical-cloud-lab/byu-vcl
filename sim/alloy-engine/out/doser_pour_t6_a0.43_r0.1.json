@@ -1,0 +1,3734 @@
+{
+ "target_g": 6.0,
+ "allow_g": 0.43,
+ "allow_rate_s": 0.1,
+ "final_g": 6.1528,
+ "error_g": 0.1528,
+ "stop_reading_g": 4.976,
+ "t_stop": 3.39,
+ "particles": 2592,
+ "gram_per_particle": 0.0052768125,
+ "powder_g": 13.677498,
+ "health_ok": true,
+ "wall_s": 914.2,
+ "alloy_version": "0.1.6",
+ "log": [
+  {
+   "t": 0.0,
+   "theta_deg": 0.0,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.01,
+   "theta_deg": 0.6,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.02,
+   "theta_deg": 1.2,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.03,
+   "theta_deg": 1.8,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.04,
+   "theta_deg": 2.4,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.05,
+   "theta_deg": 3.0,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.06,
+   "theta_deg": 3.6,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.07,
+   "theta_deg": 4.2,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.08,
+   "theta_deg": 4.8,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.09,
+   "theta_deg": 5.4,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.1,
+   "theta_deg": 6.0,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.11,
+   "theta_deg": 6.6,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.12,
+   "theta_deg": 7.2,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.13,
+   "theta_deg": 7.8,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.14,
+   "theta_deg": 8.4,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.15,
+   "theta_deg": 9.0,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.16,
+   "theta_deg": 9.6,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.17,
+   "theta_deg": 10.2,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.18,
+   "theta_deg": 10.8,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.19,
+   "theta_deg": 11.4,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.2,
+   "theta_deg": 12.0,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.21,
+   "theta_deg": 12.6,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.22,
+   "theta_deg": 13.2,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.23,
+   "theta_deg": 13.8,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.24,
+   "theta_deg": 14.4,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.25,
+   "theta_deg": 15.0,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.26,
+   "theta_deg": 15.6,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.27,
+   "theta_deg": 16.2,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.28,
+   "theta_deg": 16.8,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.29,
+   "theta_deg": 17.4,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.3,
+   "theta_deg": 18.0,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.31,
+   "theta_deg": 18.6,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.32,
+   "theta_deg": 19.2,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.33,
+   "theta_deg": 19.8,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.34,
+   "theta_deg": 20.4,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.35,
+   "theta_deg": 21.0,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.36,
+   "theta_deg": 21.6,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.37,
+   "theta_deg": 22.2,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.38,
+   "theta_deg": 22.8,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.39,
+   "theta_deg": 23.4,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.4,
+   "theta_deg": 24.0,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.41,
+   "theta_deg": 24.6,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.42,
+   "theta_deg": 25.2,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.43,
+   "theta_deg": 25.8,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.44,
+   "theta_deg": 26.4,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.45,
+   "theta_deg": 27.0,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.46,
+   "theta_deg": 27.6,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.47,
+   "theta_deg": 28.2,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.48,
+   "theta_deg": 28.8,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.49,
+   "theta_deg": 29.4,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.5,
+   "theta_deg": 30.0,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.51,
+   "theta_deg": 30.6,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.52,
+   "theta_deg": 31.2,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.53,
+   "theta_deg": 31.8,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.54,
+   "theta_deg": 32.4,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.55,
+   "theta_deg": 33.0,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.56,
+   "theta_deg": 33.6,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.57,
+   "theta_deg": 34.2,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.58,
+   "theta_deg": 34.8,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.59,
+   "theta_deg": 35.4,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.6,
+   "theta_deg": 36.0,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.61,
+   "theta_deg": 36.6,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.62,
+   "theta_deg": 37.2,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.63,
+   "theta_deg": 37.8,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.64,
+   "theta_deg": 38.4,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.65,
+   "theta_deg": 39.0,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.66,
+   "theta_deg": 39.6,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.67,
+   "theta_deg": 40.2,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.68,
+   "theta_deg": 40.8,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.69,
+   "theta_deg": 41.4,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.7,
+   "theta_deg": 42.0,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.71,
+   "theta_deg": 42.6,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.72,
+   "theta_deg": 43.2,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.73,
+   "theta_deg": 43.8,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.74,
+   "theta_deg": 44.4,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.75,
+   "theta_deg": 45.0,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.76,
+   "theta_deg": 45.6,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.77,
+   "theta_deg": 46.2,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.78,
+   "theta_deg": 46.8,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.79,
+   "theta_deg": 47.4,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.8,
+   "theta_deg": 48.0,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.81,
+   "theta_deg": 48.6,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.82,
+   "theta_deg": 49.2,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.83,
+   "theta_deg": 49.8,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.84,
+   "theta_deg": 50.4,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.85,
+   "theta_deg": 51.0,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.86,
+   "theta_deg": 51.6,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.87,
+   "theta_deg": 52.2,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.88,
+   "theta_deg": 52.8,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.89,
+   "theta_deg": 53.4,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.9,
+   "theta_deg": 54.0,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.91,
+   "theta_deg": 54.6,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.92,
+   "theta_deg": 55.2,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.93,
+   "theta_deg": 55.8,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.94,
+   "theta_deg": 56.4,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.95,
+   "theta_deg": 57.0,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.96,
+   "theta_deg": 57.6,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.97,
+   "theta_deg": 58.2,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.98,
+   "theta_deg": 58.8,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 0.99,
+   "theta_deg": 59.4,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.0,
+   "theta_deg": 60.0,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.01,
+   "theta_deg": 60.6,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.02,
+   "theta_deg": 61.2,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.03,
+   "theta_deg": 61.8,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.04,
+   "theta_deg": 62.4,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.05,
+   "theta_deg": 63.0,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.06,
+   "theta_deg": 63.6,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.07,
+   "theta_deg": 64.2,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.08,
+   "theta_deg": 64.8,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.09,
+   "theta_deg": 65.4,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.1,
+   "theta_deg": 66.0,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.11,
+   "theta_deg": 66.6,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.12,
+   "theta_deg": 67.2,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.13,
+   "theta_deg": 67.8,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.14,
+   "theta_deg": 68.4,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.15,
+   "theta_deg": 69.0,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.16,
+   "theta_deg": 69.6,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.17,
+   "theta_deg": 70.2,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.18,
+   "theta_deg": 70.8,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.19,
+   "theta_deg": 71.4,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.2,
+   "theta_deg": 72.0,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.21,
+   "theta_deg": 72.6,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.22,
+   "theta_deg": 73.2,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.23,
+   "theta_deg": 73.8,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.24,
+   "theta_deg": 74.4,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.25,
+   "theta_deg": 75.0,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.26,
+   "theta_deg": 75.6,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.27,
+   "theta_deg": 76.2,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.28,
+   "theta_deg": 76.8,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.29,
+   "theta_deg": 77.4,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.3,
+   "theta_deg": 78.0,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.31,
+   "theta_deg": 78.6,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.32,
+   "theta_deg": 79.2,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.33,
+   "theta_deg": 79.8,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.34,
+   "theta_deg": 80.4,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.35,
+   "theta_deg": 81.0,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.36,
+   "theta_deg": 81.6,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.37,
+   "theta_deg": 82.2,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.38,
+   "theta_deg": 82.8,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.39,
+   "theta_deg": 83.4,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.4,
+   "theta_deg": 84.0,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.41,
+   "theta_deg": 84.6,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.42,
+   "theta_deg": 85.2,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.43,
+   "theta_deg": 85.8,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.44,
+   "theta_deg": 86.4,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.45,
+   "theta_deg": 87.0,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.46,
+   "theta_deg": 87.6,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.47,
+   "theta_deg": 88.2,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.48,
+   "theta_deg": 88.8,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.49,
+   "theta_deg": 89.4,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.5,
+   "theta_deg": 90.0,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.51,
+   "theta_deg": 90.6,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.52,
+   "theta_deg": 91.2,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.53,
+   "theta_deg": 91.8,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.54,
+   "theta_deg": 92.4,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.55,
+   "theta_deg": 93.0,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.56,
+   "theta_deg": 93.6,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.57,
+   "theta_deg": 94.2,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.58,
+   "theta_deg": 94.8,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.59,
+   "theta_deg": 95.4,
+   "phase": "tip",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.6,
+   "theta_deg": 95.48,
+   "phase": "pour",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.61,
+   "theta_deg": 95.56,
+   "phase": "pour",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.62,
+   "theta_deg": 95.64,
+   "phase": "pour",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.63,
+   "theta_deg": 95.72,
+   "phase": "pour",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.64,
+   "theta_deg": 95.8,
+   "phase": "pour",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.65,
+   "theta_deg": 95.88,
+   "phase": "pour",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.66,
+   "theta_deg": 95.96,
+   "phase": "pour",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.67,
+   "theta_deg": 96.04,
+   "phase": "pour",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.68,
+   "theta_deg": 96.12,
+   "phase": "pour",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.69,
+   "theta_deg": 96.2,
+   "phase": "pour",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.7,
+   "theta_deg": 96.28,
+   "phase": "pour",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.71,
+   "theta_deg": 96.36,
+   "phase": "pour",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.72,
+   "theta_deg": 96.44,
+   "phase": "pour",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.73,
+   "theta_deg": 96.52,
+   "phase": "pour",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.74,
+   "theta_deg": 96.6,
+   "phase": "pour",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.75,
+   "theta_deg": 96.68,
+   "phase": "pour",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.76,
+   "theta_deg": 96.76,
+   "phase": "pour",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.77,
+   "theta_deg": 96.84,
+   "phase": "pour",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.78,
+   "theta_deg": 96.92,
+   "phase": "pour",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.79,
+   "theta_deg": 97.0,
+   "phase": "pour",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.8,
+   "theta_deg": 97.08,
+   "phase": "pour",
+   "grams": 0.0,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.81,
+   "theta_deg": 97.16,
+   "phase": "pour",
+   "grams": 0.0106,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.82,
+   "theta_deg": 97.24,
+   "phase": "pour",
+   "grams": 0.0158,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.83,
+   "theta_deg": 97.32,
+   "phase": "pour",
+   "grams": 0.0211,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.84,
+   "theta_deg": 97.4,
+   "phase": "pour",
+   "grams": 0.0264,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.85,
+   "theta_deg": 97.48,
+   "phase": "pour",
+   "grams": 0.0264,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.86,
+   "theta_deg": 97.56,
+   "phase": "pour",
+   "grams": 0.0317,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.87,
+   "theta_deg": 97.64,
+   "phase": "pour",
+   "grams": 0.0317,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.88,
+   "theta_deg": 97.72,
+   "phase": "pour",
+   "grams": 0.0317,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.89,
+   "theta_deg": 97.8,
+   "phase": "pour",
+   "grams": 0.0317,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.9,
+   "theta_deg": 97.88,
+   "phase": "pour",
+   "grams": 0.0317,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.91,
+   "theta_deg": 97.96,
+   "phase": "pour",
+   "grams": 0.0369,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.92,
+   "theta_deg": 98.04,
+   "phase": "pour",
+   "grams": 0.0475,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.93,
+   "theta_deg": 98.12,
+   "phase": "pour",
+   "grams": 0.0475,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.94,
+   "theta_deg": 98.2,
+   "phase": "pour",
+   "grams": 0.058,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.95,
+   "theta_deg": 98.28,
+   "phase": "pour",
+   "grams": 0.058,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.96,
+   "theta_deg": 98.36,
+   "phase": "pour",
+   "grams": 0.058,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.97,
+   "theta_deg": 98.44,
+   "phase": "pour",
+   "grams": 0.0686,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.98,
+   "theta_deg": 98.52,
+   "phase": "pour",
+   "grams": 0.0686,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 1.99,
+   "theta_deg": 98.6,
+   "phase": "pour",
+   "grams": 0.0739,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 2.0,
+   "theta_deg": 98.68,
+   "phase": "pour",
+   "grams": 0.0897,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 2.01,
+   "theta_deg": 98.76,
+   "phase": "pour",
+   "grams": 0.095,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 2.02,
+   "theta_deg": 98.84,
+   "phase": "pour",
+   "grams": 0.1055,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 2.03,
+   "theta_deg": 98.92,
+   "phase": "pour",
+   "grams": 0.1161,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 2.04,
+   "theta_deg": 99.0,
+   "phase": "pour",
+   "grams": 0.1161,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 2.05,
+   "theta_deg": 99.08,
+   "phase": "pour",
+   "grams": 0.1372,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 2.06,
+   "theta_deg": 99.16,
+   "phase": "pour",
+   "grams": 0.1372,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 2.07,
+   "theta_deg": 99.24,
+   "phase": "pour",
+   "grams": 0.1425,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 2.08,
+   "theta_deg": 99.32,
+   "phase": "pour",
+   "grams": 0.1425,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 2.09,
+   "theta_deg": 99.4,
+   "phase": "pour",
+   "grams": 0.153,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 2.1,
+   "theta_deg": 99.48,
+   "phase": "pour",
+   "grams": 0.1583,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 2.11,
+   "theta_deg": 99.56,
+   "phase": "pour",
+   "grams": 0.1794,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 2.12,
+   "theta_deg": 99.64,
+   "phase": "pour",
+   "grams": 0.1952,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 2.13,
+   "theta_deg": 99.72,
+   "phase": "pour",
+   "grams": 0.2005,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 2.14,
+   "theta_deg": 99.8,
+   "phase": "pour",
+   "grams": 0.2111,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 2.15,
+   "theta_deg": 99.88,
+   "phase": "pour",
+   "grams": 0.2216,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 2.16,
+   "theta_deg": 99.96,
+   "phase": "pour",
+   "grams": 0.2269,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 2.17,
+   "theta_deg": 100.04,
+   "phase": "pour",
+   "grams": 0.2322,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 2.18,
+   "theta_deg": 100.12,
+   "phase": "pour",
+   "grams": 0.2427,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 2.19,
+   "theta_deg": 100.2,
+   "phase": "pour",
+   "grams": 0.2427,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 2.2,
+   "theta_deg": 100.28,
+   "phase": "pour",
+   "grams": 0.2533,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 2.21,
+   "theta_deg": 100.36,
+   "phase": "pour",
+   "grams": 0.2533,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 2.22,
+   "theta_deg": 100.44,
+   "phase": "pour",
+   "grams": 0.2691,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 2.23,
+   "theta_deg": 100.52,
+   "phase": "pour",
+   "grams": 0.2744,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 2.24,
+   "theta_deg": 100.6,
+   "phase": "pour",
+   "grams": 0.2849,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 2.25,
+   "theta_deg": 100.68,
+   "phase": "pour",
+   "grams": 0.3113,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 2.26,
+   "theta_deg": 100.76,
+   "phase": "pour",
+   "grams": 0.3272,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 2.27,
+   "theta_deg": 100.84,
+   "phase": "pour",
+   "grams": 0.3535,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 2.28,
+   "theta_deg": 100.92,
+   "phase": "pour",
+   "grams": 0.3852,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 2.29,
+   "theta_deg": 101.0,
+   "phase": "pour",
+   "grams": 0.4116,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 2.3,
+   "theta_deg": 101.08,
+   "phase": "pour",
+   "grams": 0.438,
+   "spilled_g": 0.0
+  },
+  {
+   "t": 2.31,
+   "theta_deg": 101.16,
+   "phase": "pour",
+   "grams": 0.4538,
+   "spilled_g": 0.0053
+  },
+  {
+   "t": 2.32,
+   "theta_deg": 101.24,
+   "phase": "pour",
+   "grams": 0.4855,
+   "spilled_g": 0.0053
+  },
+  {
+   "t": 2.33,
+   "theta_deg": 101.32,
+   "phase": "pour",
+   "grams": 0.533,
+   "spilled_g": 0.0053
+  },
+  {
+   "t": 2.34,
+   "theta_deg": 101.4,
+   "phase": "pour",
+   "grams": 0.5699,
+   "spilled_g": 0.0053
+  },
+  {
+   "t": 2.35,
+   "theta_deg": 101.48,
+   "phase": "pour",
+   "grams": 0.5804,
+   "spilled_g": 0.0053
+  },
+  {
+   "t": 2.36,
+   "theta_deg": 101.56,
+   "phase": "pour",
+   "grams": 0.6016,
+   "spilled_g": 0.0053
+  },
+  {
+   "t": 2.37,
+   "theta_deg": 101.64,
+   "phase": "pour",
+   "grams": 0.6279,
+   "spilled_g": 0.0053
+  },
+  {
+   "t": 2.38,
+   "theta_deg": 101.72,
+   "phase": "pour",
+   "grams": 0.6438,
+   "spilled_g": 0.0053
+  },
+  {
+   "t": 2.39,
+   "theta_deg": 101.8,
+   "phase": "pour",
+   "grams": 0.6754,
+   "spilled_g": 0.0053
+  },
+  {
+   "t": 2.4,
+   "theta_deg": 101.88,
+   "phase": "pour",
+   "grams": 0.7071,
+   "spilled_g": 0.0053
+  },
+  {
+   "t": 2.41,
+   "theta_deg": 101.96,
+   "phase": "pour",
+   "grams": 0.7388,
+   "spilled_g": 0.0053
+  },
+  {
+   "t": 2.42,
+   "theta_deg": 102.04,
+   "phase": "pour",
+   "grams": 0.7704,
+   "spilled_g": 0.0053
+  },
+  {
+   "t": 2.43,
+   "theta_deg": 102.12,
+   "phase": "pour",
+   "grams": 0.8126,
+   "spilled_g": 0.0053
+  },
+  {
+   "t": 2.44,
+   "theta_deg": 102.2,
+   "phase": "pour",
+   "grams": 0.8496,
+   "spilled_g": 0.0053
+  },
+  {
+   "t": 2.45,
+   "theta_deg": 102.28,
+   "phase": "pour",
+   "grams": 0.8918,
+   "spilled_g": 0.0106
+  },
+  {
+   "t": 2.46,
+   "theta_deg": 102.36,
+   "phase": "pour",
+   "grams": 0.9129,
+   "spilled_g": 0.0106
+  },
+  {
+   "t": 2.47,
+   "theta_deg": 102.44,
+   "phase": "pour",
+   "grams": 0.9393,
+   "spilled_g": 0.0158
+  },
+  {
+   "t": 2.48,
+   "theta_deg": 102.52,
+   "phase": "pour",
+   "grams": 0.9604,
+   "spilled_g": 0.0158
+  },
+  {
+   "t": 2.49,
+   "theta_deg": 102.6,
+   "phase": "pour",
+   "grams": 0.992,
+   "spilled_g": 0.0158
+  },
+  {
+   "t": 2.5,
+   "theta_deg": 102.68,
+   "phase": "pour",
+   "grams": 1.0448,
+   "spilled_g": 0.0158
+  },
+  {
+   "t": 2.51,
+   "theta_deg": 102.76,
+   "phase": "pour",
+   "grams": 1.1081,
+   "spilled_g": 0.0211
+  },
+  {
+   "t": 2.52,
+   "theta_deg": 102.84,
+   "phase": "pour",
+   "grams": 1.1451,
+   "spilled_g": 0.0264
+  },
+  {
+   "t": 2.53,
+   "theta_deg": 102.92,
+   "phase": "pour",
+   "grams": 1.1715,
+   "spilled_g": 0.0317
+  },
+  {
+   "t": 2.54,
+   "theta_deg": 103.0,
+   "phase": "pour",
+   "grams": 1.1978,
+   "spilled_g": 0.0317
+  },
+  {
+   "t": 2.55,
+   "theta_deg": 103.08,
+   "phase": "pour",
+   "grams": 1.2189,
+   "spilled_g": 0.0317
+  },
+  {
+   "t": 2.56,
+   "theta_deg": 103.16,
+   "phase": "pour",
+   "grams": 1.2506,
+   "spilled_g": 0.0317
+  },
+  {
+   "t": 2.57,
+   "theta_deg": 103.24,
+   "phase": "pour",
+   "grams": 1.2823,
+   "spilled_g": 0.0422
+  },
+  {
+   "t": 2.58,
+   "theta_deg": 103.32,
+   "phase": "pour",
+   "grams": 1.3245,
+   "spilled_g": 0.0422
+  },
+  {
+   "t": 2.59,
+   "theta_deg": 103.4,
+   "phase": "pour",
+   "grams": 1.3509,
+   "spilled_g": 0.0475
+  },
+  {
+   "t": 2.6,
+   "theta_deg": 103.48,
+   "phase": "pour",
+   "grams": 1.3825,
+   "spilled_g": 0.0475
+  },
+  {
+   "t": 2.61,
+   "theta_deg": 103.56,
+   "phase": "pour",
+   "grams": 1.3984,
+   "spilled_g": 0.0475
+  },
+  {
+   "t": 2.62,
+   "theta_deg": 103.64,
+   "phase": "pour",
+   "grams": 1.4195,
+   "spilled_g": 0.058
+  },
+  {
+   "t": 2.63,
+   "theta_deg": 103.72,
+   "phase": "pour",
+   "grams": 1.4458,
+   "spilled_g": 0.058
+  },
+  {
+   "t": 2.64,
+   "theta_deg": 103.8,
+   "phase": "pour",
+   "grams": 1.4828,
+   "spilled_g": 0.058
+  },
+  {
+   "t": 2.65,
+   "theta_deg": 103.88,
+   "phase": "pour",
+   "grams": 1.5039,
+   "spilled_g": 0.058
+  },
+  {
+   "t": 2.66,
+   "theta_deg": 103.96,
+   "phase": "pour",
+   "grams": 1.5144,
+   "spilled_g": 0.058
+  },
+  {
+   "t": 2.67,
+   "theta_deg": 104.04,
+   "phase": "pour",
+   "grams": 1.5514,
+   "spilled_g": 0.0633
+  },
+  {
+   "t": 2.68,
+   "theta_deg": 104.12,
+   "phase": "pour",
+   "grams": 1.583,
+   "spilled_g": 0.0633
+  },
+  {
+   "t": 2.69,
+   "theta_deg": 104.2,
+   "phase": "pour",
+   "grams": 1.5936,
+   "spilled_g": 0.0633
+  },
+  {
+   "t": 2.7,
+   "theta_deg": 104.28,
+   "phase": "pour",
+   "grams": 1.5989,
+   "spilled_g": 0.0739
+  },
+  {
+   "t": 2.71,
+   "theta_deg": 104.36,
+   "phase": "pour",
+   "grams": 1.6094,
+   "spilled_g": 0.0739
+  },
+  {
+   "t": 2.72,
+   "theta_deg": 104.44,
+   "phase": "pour",
+   "grams": 1.62,
+   "spilled_g": 0.0792
+  },
+  {
+   "t": 2.73,
+   "theta_deg": 104.52,
+   "phase": "pour",
+   "grams": 1.6411,
+   "spilled_g": 0.0792
+  },
+  {
+   "t": 2.74,
+   "theta_deg": 104.6,
+   "phase": "pour",
+   "grams": 1.6569,
+   "spilled_g": 0.0897
+  },
+  {
+   "t": 2.75,
+   "theta_deg": 104.68,
+   "phase": "pour",
+   "grams": 1.6727,
+   "spilled_g": 0.0897
+  },
+  {
+   "t": 2.76,
+   "theta_deg": 104.76,
+   "phase": "pour",
+   "grams": 1.7097,
+   "spilled_g": 0.0897
+  },
+  {
+   "t": 2.77,
+   "theta_deg": 104.84,
+   "phase": "pour",
+   "grams": 1.7361,
+   "spilled_g": 0.0897
+  },
+  {
+   "t": 2.78,
+   "theta_deg": 104.92,
+   "phase": "pour",
+   "grams": 1.773,
+   "spilled_g": 0.0897
+  },
+  {
+   "t": 2.79,
+   "theta_deg": 105.0,
+   "phase": "pour",
+   "grams": 1.7994,
+   "spilled_g": 0.0897
+  },
+  {
+   "t": 2.8,
+   "theta_deg": 105.08,
+   "phase": "pour",
+   "grams": 1.8363,
+   "spilled_g": 0.0897
+  },
+  {
+   "t": 2.81,
+   "theta_deg": 105.16,
+   "phase": "pour",
+   "grams": 1.8574,
+   "spilled_g": 0.0897
+  },
+  {
+   "t": 2.82,
+   "theta_deg": 105.24,
+   "phase": "pour",
+   "grams": 1.8838,
+   "spilled_g": 0.0897
+  },
+  {
+   "t": 2.83,
+   "theta_deg": 105.32,
+   "phase": "pour",
+   "grams": 1.9102,
+   "spilled_g": 0.0897
+  },
+  {
+   "t": 2.84,
+   "theta_deg": 105.4,
+   "phase": "pour",
+   "grams": 1.9366,
+   "spilled_g": 0.0897
+  },
+  {
+   "t": 2.85,
+   "theta_deg": 105.48,
+   "phase": "pour",
+   "grams": 1.963,
+   "spilled_g": 0.0897
+  },
+  {
+   "t": 2.86,
+   "theta_deg": 105.56,
+   "phase": "pour",
+   "grams": 1.9999,
+   "spilled_g": 0.095
+  },
+  {
+   "t": 2.87,
+   "theta_deg": 105.64,
+   "phase": "pour",
+   "grams": 2.0105,
+   "spilled_g": 0.095
+  },
+  {
+   "t": 2.88,
+   "theta_deg": 105.72,
+   "phase": "pour",
+   "grams": 2.0368,
+   "spilled_g": 0.095
+  },
+  {
+   "t": 2.89,
+   "theta_deg": 105.8,
+   "phase": "pour",
+   "grams": 2.0843,
+   "spilled_g": 0.095
+  },
+  {
+   "t": 2.9,
+   "theta_deg": 105.88,
+   "phase": "pour",
+   "grams": 2.1054,
+   "spilled_g": 0.095
+  },
+  {
+   "t": 2.91,
+   "theta_deg": 105.96,
+   "phase": "pour",
+   "grams": 2.1318,
+   "spilled_g": 0.095
+  },
+  {
+   "t": 2.92,
+   "theta_deg": 106.04,
+   "phase": "pour",
+   "grams": 2.174,
+   "spilled_g": 0.095
+  },
+  {
+   "t": 2.93,
+   "theta_deg": 106.12,
+   "phase": "pour",
+   "grams": 2.211,
+   "spilled_g": 0.0897
+  },
+  {
+   "t": 2.94,
+   "theta_deg": 106.2,
+   "phase": "pour",
+   "grams": 2.2532,
+   "spilled_g": 0.1003
+  },
+  {
+   "t": 2.95,
+   "theta_deg": 106.28,
+   "phase": "pour",
+   "grams": 2.2901,
+   "spilled_g": 0.1003
+  },
+  {
+   "t": 2.96,
+   "theta_deg": 106.36,
+   "phase": "pour",
+   "grams": 2.3429,
+   "spilled_g": 0.1003
+  },
+  {
+   "t": 2.97,
+   "theta_deg": 106.44,
+   "phase": "pour",
+   "grams": 2.364,
+   "spilled_g": 0.1003
+  },
+  {
+   "t": 2.98,
+   "theta_deg": 106.52,
+   "phase": "pour",
+   "grams": 2.4062,
+   "spilled_g": 0.1003
+  },
+  {
+   "t": 2.99,
+   "theta_deg": 106.6,
+   "phase": "pour",
+   "grams": 2.4273,
+   "spilled_g": 0.1003
+  },
+  {
+   "t": 3.0,
+   "theta_deg": 106.68,
+   "phase": "pour",
+   "grams": 2.4643,
+   "spilled_g": 0.1003
+  },
+  {
+   "t": 3.01,
+   "theta_deg": 106.76,
+   "phase": "pour",
+   "grams": 2.5065,
+   "spilled_g": 0.1003
+  },
+  {
+   "t": 3.02,
+   "theta_deg": 106.84,
+   "phase": "pour",
+   "grams": 2.5645,
+   "spilled_g": 0.1055
+  },
+  {
+   "t": 3.03,
+   "theta_deg": 106.92,
+   "phase": "pour",
+   "grams": 2.6173,
+   "spilled_g": 0.1108
+  },
+  {
+   "t": 3.04,
+   "theta_deg": 107.0,
+   "phase": "pour",
+   "grams": 2.6912,
+   "spilled_g": 0.1161
+  },
+  {
+   "t": 3.05,
+   "theta_deg": 107.08,
+   "phase": "pour",
+   "grams": 2.7387,
+   "spilled_g": 0.1161
+  },
+  {
+   "t": 3.06,
+   "theta_deg": 107.16,
+   "phase": "pour",
+   "grams": 2.7914,
+   "spilled_g": 0.1161
+  },
+  {
+   "t": 3.07,
+   "theta_deg": 107.24,
+   "phase": "pour",
+   "grams": 2.8336,
+   "spilled_g": 0.1161
+  },
+  {
+   "t": 3.08,
+   "theta_deg": 107.32,
+   "phase": "pour",
+   "grams": 2.8864,
+   "spilled_g": 0.1161
+  },
+  {
+   "t": 3.09,
+   "theta_deg": 107.4,
+   "phase": "pour",
+   "grams": 2.9392,
+   "spilled_g": 0.1161
+  },
+  {
+   "t": 3.1,
+   "theta_deg": 107.48,
+   "phase": "pour",
+   "grams": 2.9814,
+   "spilled_g": 0.1161
+  },
+  {
+   "t": 3.11,
+   "theta_deg": 107.56,
+   "phase": "pour",
+   "grams": 3.0236,
+   "spilled_g": 0.1266
+  },
+  {
+   "t": 3.12,
+   "theta_deg": 107.64,
+   "phase": "pour",
+   "grams": 3.0817,
+   "spilled_g": 0.1319
+  },
+  {
+   "t": 3.13,
+   "theta_deg": 107.72,
+   "phase": "pour",
+   "grams": 3.1133,
+   "spilled_g": 0.1319
+  },
+  {
+   "t": 3.14,
+   "theta_deg": 107.8,
+   "phase": "pour",
+   "grams": 3.1608,
+   "spilled_g": 0.1372
+  },
+  {
+   "t": 3.15,
+   "theta_deg": 107.88,
+   "phase": "pour",
+   "grams": 3.2347,
+   "spilled_g": 0.1372
+  },
+  {
+   "t": 3.16,
+   "theta_deg": 107.96,
+   "phase": "pour",
+   "grams": 3.3033,
+   "spilled_g": 0.1372
+  },
+  {
+   "t": 3.17,
+   "theta_deg": 108.04,
+   "phase": "pour",
+   "grams": 3.3455,
+   "spilled_g": 0.1372
+  },
+  {
+   "t": 3.18,
+   "theta_deg": 108.12,
+   "phase": "pour",
+   "grams": 3.4194,
+   "spilled_g": 0.1372
+  },
+  {
+   "t": 3.19,
+   "theta_deg": 108.2,
+   "phase": "pour",
+   "grams": 3.4721,
+   "spilled_g": 0.1372
+  },
+  {
+   "t": 3.2,
+   "theta_deg": 108.28,
+   "phase": "pour",
+   "grams": 3.5513,
+   "spilled_g": 0.1372
+  },
+  {
+   "t": 3.21,
+   "theta_deg": 108.36,
+   "phase": "pour",
+   "grams": 3.6252,
+   "spilled_g": 0.1425
+  },
+  {
+   "t": 3.22,
+   "theta_deg": 108.44,
+   "phase": "pour",
+   "grams": 3.7043,
+   "spilled_g": 0.1425
+  },
+  {
+   "t": 3.23,
+   "theta_deg": 108.52,
+   "phase": "pour",
+   "grams": 3.7676,
+   "spilled_g": 0.1425
+  },
+  {
+   "t": 3.24,
+   "theta_deg": 108.6,
+   "phase": "pour",
+   "grams": 3.8468,
+   "spilled_g": 0.1372
+  },
+  {
+   "t": 3.25,
+   "theta_deg": 108.68,
+   "phase": "pour",
+   "grams": 3.9365,
+   "spilled_g": 0.1425
+  },
+  {
+   "t": 3.26,
+   "theta_deg": 108.76,
+   "phase": "pour",
+   "grams": 3.9893,
+   "spilled_g": 0.1478
+  },
+  {
+   "t": 3.27,
+   "theta_deg": 108.84,
+   "phase": "pour",
+   "grams": 4.0684,
+   "spilled_g": 0.1478
+  },
+  {
+   "t": 3.28,
+   "theta_deg": 108.92,
+   "phase": "pour",
+   "grams": 4.1212,
+   "spilled_g": 0.1478
+  },
+  {
+   "t": 3.29,
+   "theta_deg": 109.0,
+   "phase": "pour",
+   "grams": 4.2003,
+   "spilled_g": 0.1478
+  },
+  {
+   "t": 3.3,
+   "theta_deg": 109.08,
+   "phase": "pour",
+   "grams": 4.2795,
+   "spilled_g": 0.1478
+  },
+  {
+   "t": 3.31,
+   "theta_deg": 109.16,
+   "phase": "pour",
+   "grams": 4.3217,
+   "spilled_g": 0.153
+  },
+  {
+   "t": 3.32,
+   "theta_deg": 109.24,
+   "phase": "pour",
+   "grams": 4.422,
+   "spilled_g": 0.1583
+  },
+  {
+   "t": 3.33,
+   "theta_deg": 109.32,
+   "phase": "pour",
+   "grams": 4.4906,
+   "spilled_g": 0.1583
+  },
+  {
+   "t": 3.34,
+   "theta_deg": 109.4,
+   "phase": "pour",
+   "grams": 4.5697,
+   "spilled_g": 0.1583
+  },
+  {
+   "t": 3.35,
+   "theta_deg": 109.48,
+   "phase": "pour",
+   "grams": 4.633,
+   "spilled_g": 0.1636
+  },
+  {
+   "t": 3.36,
+   "theta_deg": 109.56,
+   "phase": "pour",
+   "grams": 4.7227,
+   "spilled_g": 0.1636
+  },
+  {
+   "t": 3.37,
+   "theta_deg": 109.64,
+   "phase": "pour",
+   "grams": 4.7808,
+   "spilled_g": 0.1741
+  },
+  {
+   "t": 3.38,
+   "theta_deg": 109.72,
+   "phase": "pour",
+   "grams": 4.8441,
+   "spilled_g": 0.1794
+  },
+  {
+   "t": 3.39,
+   "theta_deg": 109.8,
+   "phase": "pour",
+   "grams": 4.918,
+   "spilled_g": 0.1794
+  },
+  {
+   "t": 3.4,
+   "theta_deg": 108.6,
+   "phase": "back",
+   "grams": 4.976,
+   "spilled_g": 0.1794
+  },
+  {
+   "t": 3.41,
+   "theta_deg": 107.4,
+   "phase": "back",
+   "grams": 5.0446,
+   "spilled_g": 0.19
+  },
+  {
+   "t": 3.42,
+   "theta_deg": 106.2,
+   "phase": "back",
+   "grams": 5.1396,
+   "spilled_g": 0.19
+  },
+  {
+   "t": 3.43,
+   "theta_deg": 105.0,
+   "phase": "back",
+   "grams": 5.2293,
+   "spilled_g": 0.19
+  },
+  {
+   "t": 3.44,
+   "theta_deg": 103.8,
+   "phase": "back",
+   "grams": 5.3349,
+   "spilled_g": 0.19
+  },
+  {
+   "t": 3.45,
+   "theta_deg": 102.6,
+   "phase": "back",
+   "grams": 5.4351,
+   "spilled_g": 0.19
+  },
+  {
+   "t": 3.46,
+   "theta_deg": 101.4,
+   "phase": "back",
+   "grams": 5.5459,
+   "spilled_g": 0.19
+  },
+  {
+   "t": 3.47,
+   "theta_deg": 100.2,
+   "phase": "back",
+   "grams": 5.6145,
+   "spilled_g": 0.19
+  },
+  {
+   "t": 3.48,
+   "theta_deg": 99.0,
+   "phase": "back",
+   "grams": 5.7042,
+   "spilled_g": 0.19
+  },
+  {
+   "t": 3.49,
+   "theta_deg": 97.8,
+   "phase": "back",
+   "grams": 5.7676,
+   "spilled_g": 0.1952
+  },
+  {
+   "t": 3.5,
+   "theta_deg": 96.6,
+   "phase": "back",
+   "grams": 5.8362,
+   "spilled_g": 0.2005
+  },
+  {
+   "t": 3.51,
+   "theta_deg": 95.4,
+   "phase": "back",
+   "grams": 5.9048,
+   "spilled_g": 0.2005
+  },
+  {
+   "t": 3.52,
+   "theta_deg": 94.2,
+   "phase": "back",
+   "grams": 5.9364,
+   "spilled_g": 0.2058
+  },
+  {
+   "t": 3.53,
+   "theta_deg": 93.0,
+   "phase": "back",
+   "grams": 5.9734,
+   "spilled_g": 0.2111
+  },
+  {
+   "t": 3.54,
+   "theta_deg": 91.8,
+   "phase": "back",
+   "grams": 6.0103,
+   "spilled_g": 0.2269
+  },
+  {
+   "t": 3.55,
+   "theta_deg": 90.6,
+   "phase": "back",
+   "grams": 6.0314,
+   "spilled_g": 0.2375
+  },
+  {
+   "t": 3.56,
+   "theta_deg": 89.4,
+   "phase": "back",
+   "grams": 6.0894,
+   "spilled_g": 0.2375
+  },
+  {
+   "t": 3.57,
+   "theta_deg": 88.2,
+   "phase": "back",
+   "grams": 6.1053,
+   "spilled_g": 0.2375
+  },
+  {
+   "t": 3.58,
+   "theta_deg": 87.0,
+   "phase": "back",
+   "grams": 6.1211,
+   "spilled_g": 0.2375
+  },
+  {
+   "t": 3.59,
+   "theta_deg": 85.8,
+   "phase": "back",
+   "grams": 6.1317,
+   "spilled_g": 0.2375
+  },
+  {
+   "t": 3.6,
+   "theta_deg": 84.6,
+   "phase": "back",
+   "grams": 6.1422,
+   "spilled_g": 0.2427
+  },
+  {
+   "t": 3.61,
+   "theta_deg": 83.4,
+   "phase": "back",
+   "grams": 6.1422,
+   "spilled_g": 0.2586
+  },
+  {
+   "t": 3.62,
+   "theta_deg": 82.2,
+   "phase": "back",
+   "grams": 6.1475,
+   "spilled_g": 0.2586
+  },
+  {
+   "t": 3.63,
+   "theta_deg": 81.0,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2586
+  },
+  {
+   "t": 3.64,
+   "theta_deg": 79.8,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2586
+  },
+  {
+   "t": 3.65,
+   "theta_deg": 78.6,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2586
+  },
+  {
+   "t": 3.66,
+   "theta_deg": 77.4,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2586
+  },
+  {
+   "t": 3.67,
+   "theta_deg": 76.2,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2638
+  },
+  {
+   "t": 3.68,
+   "theta_deg": 75.0,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2638
+  },
+  {
+   "t": 3.69,
+   "theta_deg": 73.8,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2638
+  },
+  {
+   "t": 3.7,
+   "theta_deg": 72.6,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2638
+  },
+  {
+   "t": 3.71,
+   "theta_deg": 71.4,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2638
+  },
+  {
+   "t": 3.72,
+   "theta_deg": 70.2,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2638
+  },
+  {
+   "t": 3.73,
+   "theta_deg": 69.0,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2638
+  },
+  {
+   "t": 3.74,
+   "theta_deg": 67.8,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2638
+  },
+  {
+   "t": 3.75,
+   "theta_deg": 66.6,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2638
+  },
+  {
+   "t": 3.76,
+   "theta_deg": 65.4,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2638
+  },
+  {
+   "t": 3.77,
+   "theta_deg": 64.2,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2638
+  },
+  {
+   "t": 3.78,
+   "theta_deg": 63.0,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2638
+  },
+  {
+   "t": 3.79,
+   "theta_deg": 61.8,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2638
+  },
+  {
+   "t": 3.8,
+   "theta_deg": 60.6,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2638
+  },
+  {
+   "t": 3.81,
+   "theta_deg": 59.4,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2638
+  },
+  {
+   "t": 3.82,
+   "theta_deg": 58.2,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2691
+  },
+  {
+   "t": 3.83,
+   "theta_deg": 57.0,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2691
+  },
+  {
+   "t": 3.84,
+   "theta_deg": 55.8,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2691
+  },
+  {
+   "t": 3.85,
+   "theta_deg": 54.6,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2691
+  },
+  {
+   "t": 3.86,
+   "theta_deg": 53.4,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2691
+  },
+  {
+   "t": 3.87,
+   "theta_deg": 52.2,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2691
+  },
+  {
+   "t": 3.88,
+   "theta_deg": 51.0,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2691
+  },
+  {
+   "t": 3.89,
+   "theta_deg": 49.8,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2691
+  },
+  {
+   "t": 3.9,
+   "theta_deg": 48.6,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2691
+  },
+  {
+   "t": 3.91,
+   "theta_deg": 47.4,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2691
+  },
+  {
+   "t": 3.92,
+   "theta_deg": 46.2,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2691
+  },
+  {
+   "t": 3.93,
+   "theta_deg": 45.0,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2691
+  },
+  {
+   "t": 3.94,
+   "theta_deg": 43.8,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2691
+  },
+  {
+   "t": 3.95,
+   "theta_deg": 42.6,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2691
+  },
+  {
+   "t": 3.96,
+   "theta_deg": 41.4,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2691
+  },
+  {
+   "t": 3.97,
+   "theta_deg": 40.2,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2691
+  },
+  {
+   "t": 3.98,
+   "theta_deg": 39.0,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2691
+  },
+  {
+   "t": 3.99,
+   "theta_deg": 37.8,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2691
+  },
+  {
+   "t": 4.0,
+   "theta_deg": 36.6,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2691
+  },
+  {
+   "t": 4.01,
+   "theta_deg": 35.4,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2691
+  },
+  {
+   "t": 4.02,
+   "theta_deg": 34.2,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2691
+  },
+  {
+   "t": 4.03,
+   "theta_deg": 33.0,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2691
+  },
+  {
+   "t": 4.04,
+   "theta_deg": 31.8,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2691
+  },
+  {
+   "t": 4.05,
+   "theta_deg": 30.6,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2691
+  },
+  {
+   "t": 4.06,
+   "theta_deg": 29.4,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2691
+  },
+  {
+   "t": 4.07,
+   "theta_deg": 28.2,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2691
+  },
+  {
+   "t": 4.08,
+   "theta_deg": 27.0,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2691
+  },
+  {
+   "t": 4.09,
+   "theta_deg": 25.8,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2691
+  },
+  {
+   "t": 4.1,
+   "theta_deg": 24.6,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2691
+  },
+  {
+   "t": 4.11,
+   "theta_deg": 23.4,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2691
+  },
+  {
+   "t": 4.12,
+   "theta_deg": 22.2,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2691
+  },
+  {
+   "t": 4.13,
+   "theta_deg": 21.0,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2691
+  },
+  {
+   "t": 4.14,
+   "theta_deg": 19.8,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2691
+  },
+  {
+   "t": 4.15,
+   "theta_deg": 18.6,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2691
+  },
+  {
+   "t": 4.16,
+   "theta_deg": 17.4,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2691
+  },
+  {
+   "t": 4.17,
+   "theta_deg": 16.2,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.18,
+   "theta_deg": 15.0,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.19,
+   "theta_deg": 13.8,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.2,
+   "theta_deg": 12.6,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.21,
+   "theta_deg": 11.4,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.22,
+   "theta_deg": 10.2,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.23,
+   "theta_deg": 9.0,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.24,
+   "theta_deg": 7.8,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.25,
+   "theta_deg": 6.6,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.26,
+   "theta_deg": 5.4,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.27,
+   "theta_deg": 4.2,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.28,
+   "theta_deg": 3.0,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.29,
+   "theta_deg": 1.8,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.3,
+   "theta_deg": 0.6,
+   "phase": "back",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.31,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.32,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.33,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.34,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.35,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.36,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.37,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.38,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.39,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.4,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.41,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.42,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.43,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.44,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.45,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.46,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.47,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.48,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.49,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.5,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.51,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.52,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.53,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.54,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.55,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.56,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.57,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.58,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.59,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.6,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.61,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.62,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.63,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.64,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.65,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.66,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.67,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.68,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.69,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.7,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.71,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.72,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.73,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.74,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.75,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.76,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.77,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.78,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.79,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.8,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.81,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.82,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.158,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.83,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.84,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.85,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.86,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.87,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.88,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.89,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.9,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.91,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.92,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.93,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.94,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.95,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.96,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.97,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.98,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 4.99,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 5.0,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 5.01,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 5.02,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 5.03,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 5.04,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 5.05,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 5.06,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 5.07,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 5.08,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 5.09,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 5.1,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 5.11,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 5.12,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 5.13,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 5.14,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 5.15,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 5.16,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 5.17,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 5.18,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 5.19,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 5.2,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 5.21,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 5.22,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 5.23,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 5.24,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 5.25,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 5.26,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 5.27,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 5.28,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2744
+  },
+  {
+   "t": 5.29,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2849
+  },
+  {
+   "t": 5.3,
+   "theta_deg": 0.0,
+   "phase": "settle",
+   "grams": 6.1528,
+   "spilled_g": 0.2849
+  }
+ ]
+}

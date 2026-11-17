@@ -2,7 +2,7 @@
 
 The doser drops powder from its outlet into a funnel whose spout sits in the vial's mouth (powder-doser PR 185's chain
 carousel v2 has a D-cut funnel there). Here a 7.2 cm^3 column of powder drops into an octagonal funnel (40 mm across
-the top, a 12 mm outlet, 25 mm over a 20 mL vial's mouth), runs through it and lands in the vial. One run per wall
+the top, a 12 mm outlet, 22 mm over a 20 mL vial's rim), runs through it and lands in the vial. One run per wall
 angle beta (from horizontal). What it reports: the share of the powder in the vial over time, what is left on the
 funnel's wall when the flow stops, and the flow rate against Beverloo's law for the same outlet.
 
@@ -26,7 +26,7 @@ import numpy as np
 
 OUT = Path(__file__).resolve().parent / "out"
 R_TOP, R_OUT, T_WALL, N_FACETS = 0.020, 0.006, 0.003, 8
-Z_OUT = 0.075                          # m: the funnel's outlet, 25 mm over the vial's rim
+Z_OUT = 0.075                          # m: the funnel's outlet, 22 mm over the vial's rim (3 mm floor + 50 mm)
 VIAL_R, VIAL_DEPTH, VIAL_WALL = 0.0125, 0.050, 0.003    # a 20 mL scintillation vial's bore (about 25 mm) and depth
 COLUMN = (0.012, 0.012, 0.050)         # m: the powder dropped into the funnel (7.2 cm^3)
 MU_WALL = 0.40

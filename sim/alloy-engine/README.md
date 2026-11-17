@@ -49,8 +49,9 @@ harmonic mean of the two materials' `mu_dynamic` (AGENTS.md §4), read from the 
 
 ![What every item did in every world](out/vlm_tray_sweep.png)
 
-**Alloy agrees with the textbook to within one step of the acceleration grid.** A rigid block on an accelerating
-floor slides when a > μg and tips when a > g·D/H (D its base along the motion, H its height), whichever comes first:
+**Alloy's onsets land within 15 % of the textbook ones, and early rather than late.** A rigid block on an
+accelerating floor slides when a > μg and tips when a > g·D/H (D its base along the motion, H its height),
+whichever comes first. Slides start at −12 % to +7 % of μg, and tips at −15 % to −1 % of g·D/H:
 
 | Tray | Item | μ (Alloy's cards) | Textbook, m/s² | Alloy, m/s² (last world held – first that didn't) |
 |---|---|---|---|---|
@@ -75,10 +76,10 @@ floor slides when a > μg and tips when a > g·D/H (D its base along the motion,
   - the 4 mL vial from about 3;
   - the 250 mL bottle from about 4.5.
 
-  Tipping comes in a little under the static g·D/H. The stop reverses the push while an item is still rocking, which
-  is a dynamic effect that the static rule leaves out.
-- **Kardex publishes no acceleration for the Shuttle's extractor.** Until it is known, assume loose vials need a
-  rack. A mat alone doesn't hold them.
+  Tipping comes in 1–15 % under the static g·D/H. A likely reason, not checked here, is that the stop reverses the
+  push while an item is still rocking, a dynamic effect that the static rule leaves out.
+- **#303's VLM notes give no acceleration for the Shuttle's extractor.** Until Kardex gives one, assume loose vials
+  need a rack. A mat alone doesn't hold them.
 
 **Caveats:**
 
@@ -93,10 +94,63 @@ floor slides when a > μg and tips when a > g·D/H (D its base along the motion,
     that hits it.
   - The items are uniform solids, with the centre of mass at H/2. A half-full bottle is bottom-heavy and tips later.
   - The masses are estimates, but neither threshold depends on mass.
-- **One outlier:** at 2.61 m/s², the 50 mL tube tipped over on bare steel while sliding. The stop came while it still
-  slid backwards, so friction did not resist the tip. 2.61 is just above its g·D/H of 2.47.
+- **One outlier:** at 2.61 m/s², the 50 mL tube tipped over on bare steel while sliding. 2.61 is just above its
+  g·D/H of 2.47. The likely reason is that the stop came while the tube still slid backwards, so friction did not
+  resist the tip.
 
-## 2. Powder doser: powder through the funnel
+## 2. Powder doser: "Powder, dosed to the mark"
+
+![Three doses, rendered by Alloy's own camera](out/doser_pour.gif)
+
+[`doser_pour.py`](doser_pour.py). This is Alloy's "Water, poured to the line", made with powder and run as a
+closed loop. The setup:
+
+- **Scoop:** a kinematic open box, 30 mm inside, holding 13.7 g of powder. It tips about its front lip over a
+  20 mL vial (25 mm bore).
+- **Load cell:** a simulated one under the vial, reading the powder that has landed every 10 ms.
+
+The controller works like a gravimetric doser:
+
+1. It tips the scoop at 60°/s to 95°, then at 8°/s while powder runs. Powder starts landing at about 98°, once the
+   lip wall slopes down past the powder's friction.
+2. It tips back at 120°/s when the reading reaches the target minus an allowance for the powder that will still
+   land.
+3. It waits 1 s and reads the dose.
+
+**Alloy shows the classic dosing problem, and an allowance learned from earlier doses fixes most of it:**
+
+| Target | No allowance: stopped at, landed | Allowance 0.43 g + 0.10 s × flow: stopped at, landed |
+|---|---|---|
+| 2 g | 2.04 g, **2.72 g (+0.72)** | 1.28 g, **1.69 g (−0.31)** |
+| 4 g | 4.12 g, **5.23 g (+1.23)** | 3.11 g, **4.14 g (+0.14)** |
+| 6 g | 6.14 g, **7.19 g (+1.19)** | 4.98 g, **6.15 g (+0.15)** |
+
+- **Without an allowance, every dose overshoots by 0.7–1.2 g.** That powder lands after the controller has already
+  decided to stop. Some is in the 5 cm stream, and some is still sliding off the lip while the scoop tips back.
+- **The allowance is fitted to those three doses,** like a gravimetric doser's free-fall correction. Their overshoot
+  is close to 0.43 g + 0.10 s × the flow at the stop, which was 2.7–7.2 g/s.
+- **With the allowance, the 4 g and 6 g doses land within 0.15 g (2–4 %).**
+- **The 2 g dose undershoots by 0.31 g.** It stops early in the pour, while the flow is still building, and there the
+  straight-line fit over-predicts: it allowed 0.77 g and 0.41 g came. A real controller would refit after every
+  dose, or slow the pour near the target.
+- **Each difference between runs comes from the controller alone.** On the CPU, Alloy repeats a scene exactly
+  (AGENTS.md §6), so all six runs read the same load cell values, to the particle, until the first one tips back.
+- **Cost:** each run took 13–19 min for about 5 simulated seconds on one core, with three side by side. That includes
+  Alloy's camera every 50 ms.
+
+![Load cell reading over time, and each dose's error](out/doser_pour.png)
+
+**Caveats:**
+
+- **The powder is the same continuum stand-in as in section 3.** It is Alloy's dry silica sand on MPM, at a 3 mm
+  voxel and 5.28 mg per particle, so the load cell counts in steps of 5 mg.
+- **The scoop is not the doser's mechanism.** The doser meters with an auger, and a turning auger at its real size
+  (21 mm bore, 0.5 mm flight) is below what this grid resolves. What carries over is the control problem: powder in
+  the air at the stop, and an allowance learned from earlier doses.
+- **The load cell is ideal.** It weighs the powder inside the vial and nothing else: no impact force, no filtering
+  delay, no noise. A real one adds its own delay, which the allowance would also have to learn.
+
+## 3. Powder doser: powder through the funnel
 
 ![The four funnels, rendered by Alloy's own camera](out/doser_funnel.gif)
 
@@ -105,7 +159,7 @@ leaves the doser's outlet and drops through a funnel into the vial (powder-doser
 D-cut funnel there). The setup:
 
 - **Dose:** an 11.1 g, 7.1 cm³ column of powder, released just above the funnel.
-- **Funnel:** octagonal, 40 mm across, with a 12 mm outlet 25 mm above the mouth of a 20 mL vial (25 mm bore).
+- **Funnel:** octagonal, 40 mm across, with a 12 mm outlet 22 mm above the rim of a 20 mL vial (25 mm bore).
 - **Wall angles:** one run per angle, at 15°, 25°, 35° and 55° from horizontal.
 
 **The wall friction angle decides it.** The wall friction μw = 0.40 gives a wall friction angle of 21.8°.
@@ -120,8 +174,9 @@ D-cut funnel there). The setup:
 The other 0.4–2.6 % landed outside the vial.
 
 - **Below the wall friction angle (15°),** over a third of the dose stays on the funnel's wall for good.
-- **Just above it (25°),** all the powder comes off, but slowly. The last 20 % creeps down the wall for another
-  1.5 s, so a load cell would still be counting long after the doser stopped.
+- **Just above it (25°),** all the powder comes off, but slowly. The last fifth creeps down the wall for about
+  another second (80 % at 1.0 s, 98 % at 2.0 s), so a load cell would still be counting long after the doser
+  stopped.
 - **At 35° and steeper,** the funnel drains as fast as the powder arrives.
 - **For the doser:** keep the funnel's walls well above the powder's wall friction angle on the funnel's material.
   Measure that angle with a tilt test of the real powder on a printed coupon before picking the wall angle; a funnel
@@ -156,8 +211,9 @@ Each run took 5–7.5 min for 2 simulated seconds, one core each, with the four 
     first compile, 7,000× slower than real time.
   - **The first funnel:** 74,000 particles, about 35× the 2,112 that the 8-slab vial gives.
 
-  Keep every wall the powder meets wide. For scale, a 20 × 20 × 12 mm block of flour in a 3 mm walled open box
-  (1,352 particles) took 0.5 s per step.
+  Keep every wall the powder meets wide. Rebuilt with 3 mm walls and an eight-slab vial, the same tilting scoop has
+  2,592 particles, and alone on a core it ran at 0.85 s per step; that is section 2. A 20 × 20 × 12 mm block of
+  flour in an open box with 3 mm walls (1,352 particles, nothing moving) took 0.5 s per step.
 - **The first run of each new kind of scene compiles kernels,** about 15–60 s on this runner. The results are cached
   in `~/.cache/warp`.
 - **The glass items render opaque.** This is one of Alloy's documented camera gaps.
@@ -170,12 +226,20 @@ pip install alloy-engine==0.1.6 matplotlib pyyaml
 python vlm_tray.py sweep --worlds 48                  # 48 worlds, about 2 min on one core
 python vlm_tray.py render --accels 0.3,2.3,3.3,5.0    # the GIF, about 4 min
 python plot_vlm.py
-for b in 15 25 35 55; do python doser_funnel.py --beta $b --render & done; wait    # one core each, about 6 min
+for t in 2 4 6; do python doser_pour.py --target $t --render & done; wait     # first pass, 13-19 min each
+for t in 2 4 6; do python doser_pour.py --target $t --allow 0.43 --allow-rate 0.10 --render & done; wait
+python plot_pour.py
+for b in 15 25 35 55; do python doser_funnel.py --beta $b --render & done; wait    # one core each, 5-7.5 min
 python plot_funnel.py
 ```
 
-`out/` has the results: the sweep as JSON with every item, world and threshold, the funnel runs' time series, the
-charts and the GIFs.
+`out/` has the results:
+
+- the VLM sweep as JSON, with every item, world and threshold;
+- the dosing and funnel runs' time series, also as JSON;
+- the charts and the GIFs.
+
+The rendered frames (`*.npy`) are left out of git.
 
 ## Where this could go next
 
