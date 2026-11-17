@@ -1,0 +1,278 @@
+{
+  "source": {
+    "onedrive_link": "https://1drv.ms/u/c/5c9b7864c8b38792/IQAo-MNpzi6XS7EPPHmWn1g2AUa8gMK3xc6V-A5jtUvb6p0",
+    "original_filename": "Nov 17 at 9-55 AM.m4a",
+    "sha256": "6de26e05d41daad309a4f2babdb227433402b9ac248d57af8723732d38084fde",
+    "format": "AAC mono 48 kHz, 131 kb/s, 326.6 s"
+  },
+  "pass": 1,
+  "note": "conditioned on previous text (faster-whisper default)",
+  "audio": "Nov 17 at 9-55 AM.m4a",
+  "duration_s": 326.61,
+  "language": "en",
+  "language_probability": 1,
+  "model": "faster-whisper large-v3",
+  "compute_type": "int8",
+  "beam_size": 5,
+  "vad_filter": true,
+  "model_load_s": 5.9,
+  "wall_clock_s": 332.5,
+  "condition_on_previous_text": true,
+  "segments": [
+    {
+      "start": 2.38,
+      "end": 9.52,
+      "text": "Giving a six-minute lightning talk today on doing research with AI agents."
+    },
+    {
+      "start": 10.52,
+      "end": 15.08,
+      "text": "I think it'd still be good for me to start out talking about kind of the progression"
+    },
+    {
+      "start": 15.08,
+      "end": 25.86,
+      "text": "of from line completion to cloud agents and now kind of these multi-agent workflows, multi-tool,"
+    },
+    {
+      "start": 25.86,
+      "end": 34.04,
+      "text": "multi-agent, I think maybe showing that slide of the different ways in which AI agents can"
+    },
+    {
+      "start": 34.04,
+      "end": 41.66,
+      "text": "be used or that I have used them, like with education, like, of course, content, administrative"
+    },
+    {
+      "start": 41.66,
+      "end": 53.36,
+      "text": "work, literature, search and review, writing, coding, and even, yeah, like, experiment planning"
+    },
+    {
+      "start": 53.36,
+      "end": 55.36,
+      "text": "and, yeah."
+    },
+    {
+      "start": 55.86,
+      "end": 67.08,
+      "text": "Execution of experiments, that's kind of the full stack there, I think, kind of think"
+    },
+    {
+      "start": 67.08,
+      "end": 72.26,
+      "text": "of what would make the most sense to focus on in terms of the audience, what would be"
+    },
+    {
+      "start": 72.26,
+      "end": 81.75,
+      "text": "most actionable, a couple things that could be done."
+    },
+    {
+      "start": 81.75,
+      "end": 88.28,
+      "text": "Maybe I could show, you know, I could potentially show the use of kind of the setup I have"
+    },
+    {
+      "start": 88.28,
+      "end": 95.54,
+      "text": "with Codex and invite people to scan a QR code to set up a time with, you know, like,"
+    },
+    {
+      "start": 95.54,
+      "end": 105.16,
+      "text": "myself or a TA to show them how to do this integration on GitHub with the CES subscription."
+    },
+    {
+      "start": 105.16,
+      "end": 110.54,
+      "text": "So that would be one option."
+    },
+    {
+      "start": 110.54,
+      "end": 119.64,
+      "text": "Pretty actionable, could be a big lift, but could also mean that we get some more action"
+    },
+    {
+      "start": 119.64,
+      "end": 124.4,
+      "text": "actually being performed, like more impact of that."
+    },
+    {
+      "start": 124.4,
+      "end": 126.68,
+      "text": "I think."
+    },
+    {
+      "start": 126.68,
+      "end": 127.68,
+      "text": "Yeah."
+    },
+    {
+      "start": 127.68,
+      "end": 130.05,
+      "text": "Yeah."
+    },
+    {
+      "start": 130.05,
+      "end": 131.05,
+      "text": "What else?"
+    },
+    {
+      "start": 131.05,
+      "end": 132.05,
+      "text": "Research with AI agents."
+    },
+    {
+      "start": 132.05,
+      "end": 133.05,
+      "text": "I think showing."
+    },
+    {
+      "start": 133.05,
+      "end": 134.05,
+      "text": "Oh, yeah, that's right."
+    },
+    {
+      "start": 134.05,
+      "end": 135.05,
+      "text": "I was thinking about showing an example."
+    },
+    {
+      "start": 135.05,
+      "end": 136.05,
+      "text": "Well, it's like all generative CAD that I've done related to this."
+    },
+    {
+      "start": 136.05,
+      "end": 137.05,
+      "text": "It might be good to talk about potential pitfalls."
+    },
+    {
+      "start": 137.05,
+      "end": 164.81,
+      "text": "I think what it would be, yeah, probably I'll go to go find Taylor's LinkedIn post"
+    },
+    {
+      "start": 164.81,
+      "end": 172.57,
+      "text": "about Taylor Sparks's LinkedIn post about agents and how it's just sort of like spinning"
+    },
+    {
+      "start": 172.57,
+      "end": 196.42,
+      "text": "up one agent after another as the kind of the new mode of operandum."
+    },
+    {
+      "start": 196.42,
+      "end": 201.54,
+      "text": "I think they also just really getting across this idea of context and tools."
+    },
+    {
+      "start": 201.54,
+      "end": 208.04,
+      "text": "You know, it could be interesting to maybe show one of the pings from the atomizer workflow."
+    },
+    {
+      "start": 208.04,
+      "end": 209.04,
+      "text": "Yeah."
+    },
+    {
+      "start": 209.04,
+      "end": 210.04,
+      "text": "Yeah."
+    },
+    {
+      "start": 210.04,
+      "end": 211.04,
+      "text": "Yeah."
+    },
+    {
+      "start": 211.04,
+      "end": 212.04,
+      "text": "Yeah."
+    },
+    {
+      "start": 212.04,
+      "end": 213.04,
+      "text": "Yeah."
+    },
+    {
+      "start": 213.04,
+      "end": 214.04,
+      "text": "Yeah."
+    },
+    {
+      "start": 214.04,
+      "end": 215.04,
+      "text": "Yeah."
+    },
+    {
+      "start": 215.04,
+      "end": 216.04,
+      "text": "Yeah."
+    },
+    {
+      "start": 216.04,
+      "end": 217.04,
+      "text": "Yeah."
+    },
+    {
+      "start": 217.04,
+      "end": 218.04,
+      "text": "Yeah."
+    },
+    {
+      "start": 218.04,
+      "end": 223.0,
+      "text": "Yeah."
+    },
+    {
+      "start": 223.0,
+      "end": 224.0,
+      "text": "You know, perhaps some examples of like good and not so good prompts."
+    },
+    {
+      "start": 224.0,
+      "end": 235.76,
+      "text": "Yeah, I was planning on going over the idea of human connection, transparency, visibility"
+    },
+    {
+      "start": 235.76,
+      "end": 238.68,
+      "text": "and provenance."
+    },
+    {
+      "start": 238.68,
+      "end": 242.52,
+      "text": "And so I think it would also be good for me to point out."
+    },
+    {
+      "start": 242.52,
+      "end": 245.76,
+      "text": "You know, maybe like number of."
+    },
+    {
+      "start": 245.76,
+      "end": 255.94,
+      "text": "meetings that have you know resulted directly from kind of like this these searches and reaching out"
+    },
+    {
+      "start": 255.94,
+      "end": 293.79,
+      "text": "to people you know maybe including the the mrs mrs conference let's see what else oh i mean frankly"
+    },
+    {
+      "start": 293.79,
+      "end": 299.69,
+      "text": "that's probably enough it's maybe more about how to how to convey those those core points"
+    },
+    {
+      "start": 299.69,
+      "end": 317.6,
+      "text": "effectively and within a six minute time frame it'd be good for me to practice in advance as well"
+    }
+  ]
+}
