@@ -1,0 +1,1442 @@
+diff --git a/packages/core/src/cubos/gantry/instrument_loader.py b/packages/core/src/cubos/gantry/instrument_loader.py
+index 436d98d..a2d7747 100644
+--- a/packages/core/src/cubos/gantry/instrument_loader.py
++++ b/packages/core/src/cubos/gantry/instrument_loader.py
+@@ -11,7 +11,11 @@ from typing import Any, Dict, Mapping, TYPE_CHECKING
+ from pydantic import ValidationError
+ 
+ from cubos.instruments.base_instrument import BaseInstrument
+-from cubos.instruments.registry import get_instrument_class, validate_instrument
++from cubos.instruments.registry import (
++    get_instrument_class,
++    get_mount,
++    validate_instrument,
++)
+ 
+ from .errors import GantryLoaderError
+ from .instrument_mount import InstrumentedGantry
+@@ -83,12 +87,38 @@ def _instantiate_instruments(
+         _drop_retired_fields(name, type_key, kwargs)
+         if mock_mode:
+             kwargs["offline"] = True
++        mount = get_mount(type_key)
++        if mount == "deck":
++            _reject_head_geometry(name, type_key, kwargs)
+         cls = get_instrument_class(type_key, vendor)
+         _validate_driver_kwargs(name, type_key, vendor, cls, kwargs)
+-        instruments[name] = cls(**kwargs)
++        instrument = cls(**kwargs)
++        instrument.mount = mount
++        instruments[name] = instrument
+     return instruments
+ 
+ 
++_HEAD_GEOMETRY_FIELDS = ("offset_x", "offset_y", "depth")
++
++
++def _reject_head_geometry(name: str, type_key: str, kwargs: Mapping[str, Any]) -> None:
++    """A deck-mounted instrument has no head offsets or depth: refuse them.
++
++    The YAML schema fills these with 0.0 by default, so only a non-zero value
++    means the author set one, which would otherwise be silently ignored.
++    """
++    set_fields = [
++        field for field in _HEAD_GEOMETRY_FIELDS
++        if kwargs.get(field) not in (None, 0, 0.0)
++    ]
++    if set_fields:
++        raise ValueError(
++            f"Instrument '{name}' ({type_key}) is deck-mounted, so it has no "
++            f"head offsets or depth; remove {', '.join(set_fields)}. Its place "
++            "on the deck belongs in the deck file."
++        )
++
++
+ def _drop_retired_fields(name: str, type_key: str, kwargs: Dict[str, Any]) -> None:
+     for field, reason in _RETIRED_INSTRUMENT_FIELDS.get(type_key, {}).items():
+         if field in kwargs:
+diff --git a/packages/core/src/cubos/gantry/instrument_mount.py b/packages/core/src/cubos/gantry/instrument_mount.py
+index a7363a0..7469eef 100644
+--- a/packages/core/src/cubos/gantry/instrument_mount.py
++++ b/packages/core/src/cubos/gantry/instrument_mount.py
+@@ -4,8 +4,9 @@ import logging
+ import math
+ from typing import Any, TYPE_CHECKING
+ 
+-from cubos.instruments.base_instrument import BaseInstrument
++from cubos.instruments.base_instrument import BaseInstrument, is_deck_mounted_instrument
+ from cubos.instruments.lighting.interface import LightingInstrument
++from cubos.instruments.stirrer.interface import StirrerInstrument
+ 
+ from .errors import LocationNotFound
+ 
+@@ -257,9 +258,18 @@ class InstrumentedGantry:
+     def disconnect_instruments(self) -> None:
+         """Disconnect all instruments, logging errors without re-raising.
+ 
+-        Lighting is commanded off first, best-effort, so an aborted run
+-        never leaves lights on.
++        Stirrers are stopped and lighting is commanded off first,
++        best-effort, so an aborted run never leaves a stirrer spinning or
++        lights on.
+         """
++        for name, instrument in self.instruments.items():
++            if isinstance(instrument, StirrerInstrument):
++                try:
++                    instrument.stop()
++                except Exception:
++                    self.logger.exception(
++                        "Failed to stop stirrer instrument '%s'", name,
++                    )
+         for name, instrument in self.instruments.items():
+             if isinstance(instrument, LightingInstrument):
+                 try:
+@@ -280,16 +290,34 @@ class InstrumentedGantry:
+     def _resolve_instrument(
+         self, instrument: str | BaseInstrument,
+     ) -> BaseInstrument:
+-        """Look up an instrument by name or return it directly."""
++        """Look up a head-mounted instrument by name or return it directly.
++
++        Every caller positions the head by the instrument, so a deck-mounted
++        instrument (which has no head offsets) is refused.
++        """
++        label = instrument if isinstance(instrument, str) else instrument.name
+         if isinstance(instrument, str):
+             if instrument not in self.instruments:
+                 raise KeyError(
+                     f"Unknown instrument '{instrument}'. "
+                     f"Available: {', '.join(sorted(self.instruments.keys()))}"
+                 )
+-            return self.instruments[instrument]
++            instrument = self.instruments[instrument]
++        if is_deck_mounted_instrument(instrument):
++            raise ValueError(
++                f"Instrument '{label}' is deck-mounted, so the head cannot be "
++                "moved to it or positioned by it."
++            )
+         return instrument
+ 
++    @property
++    def head_instruments(self) -> dict[str, BaseInstrument]:
++        """The instruments that ride on the head (deck-mounted ones excluded)."""
++        return {
++            name: instrument for name, instrument in self.instruments.items()
++            if not is_deck_mounted_instrument(instrument)
++        }
++
+     @staticmethod
+     def _resolve_position(position: Position) -> tuple[float, float, float]:
+         """Convert a position tuple or labware object to (x, y, z)."""
+diff --git a/packages/core/src/cubos/instruments/base_instrument.py b/packages/core/src/cubos/instruments/base_instrument.py
+index c4cef28..22b49f6 100644
+--- a/packages/core/src/cubos/instruments/base_instrument.py
++++ b/packages/core/src/cubos/instruments/base_instrument.py
+@@ -10,6 +10,16 @@ class InstrumentError(Exception):
+     pass
+ 
+ 
++def is_deck_mounted_instrument(instrument: object) -> bool:
++    """True only when *instrument*'s ``mount`` is exactly ``"deck"``.
++
++    Compares the value rather than trusting ``bool(...)`` of an attribute, so
++    stand-ins without a real ``mount`` (test doubles, ``MagicMock``) count as
++    head-mounted, which is what every instrument was before ``mount`` existed.
++    """
++    return getattr(instrument, "mount", "head") == "deck"
++
++
+ class BaseInstrument(ABC):
+     """Abstract base class for all instruments.
+ 
+@@ -33,6 +43,10 @@ class BaseInstrument(ABC):
+     scan use the gantry-level ``safe_z`` (absolute deck-frame Z).
+     """
+ 
++    #: ``head`` (rides on the gantry head) or ``deck`` (sits on the deck).
++    #: The gantry loader sets it from the registry entry's ``mount``.
++    mount: str = "head"
++
+     def __init__(
+         self,
+         name: Optional[str] = None,
+@@ -66,6 +80,11 @@ class BaseInstrument(ABC):
+     def calibrate(self) -> None:
+         pass
+ 
++    @property
++    def is_deck_mounted(self) -> bool:
++        """True for deck-mounted instruments, which head geometry skips."""
++        return is_deck_mounted_instrument(self)
++
+     @property
+     def effective_depth(self) -> float:
+         """Currently active depth from the gantry head to the tool tip.
+diff --git a/packages/core/src/cubos/instruments/registry.py b/packages/core/src/cubos/instruments/registry.py
+index e6e313b..656e84d 100644
+--- a/packages/core/src/cubos/instruments/registry.py
++++ b/packages/core/src/cubos/instruments/registry.py
+@@ -24,6 +24,7 @@ _REGISTRY_PATH = Path(__file__).parent / "registry.yaml"
+ _ENTRY_POINT_GROUP = "cubos.instrument_registries"
+ _OVERLAY_ENV_VAR = "CUBOS_INSTRUMENT_REGISTRY_PATHS"
+ _VALID_CALIBRATION_MODES = {"contact", "non_contact", "follow_camera"}
++_VALID_MOUNTS = {"head", "deck"}
+ _BASE_CONFIG_PARAMS = {"name", "offset_x", "offset_y", "depth", "offline"}
+ _PRIMITIVE_CONFIG_TYPES = {str, int, float, bool}
+ 
+@@ -92,6 +93,22 @@ def get_calibration_mode(instrument_type: str) -> str:
+     return entry.get("calibration_mode", "contact")
+ 
+ 
++def get_mount(instrument_type: str) -> str:
++    """Return where an instrument type is mounted: ``head`` or ``deck``.
++
++    ``head`` instruments ride on the gantry head and carry offsets, a depth
++    and a calibration. ``deck`` instruments (e.g. a stirrer) sit on the deck
++    under labware, and head-geometry code skips them.
++    """
++    entry = _instrument_entry(instrument_type)
++    return entry.get("mount", "head")
++
++
++def is_deck_mounted(instrument_type: str) -> bool:
++    """True when *instrument_type* is registered with ``mount: deck``."""
++    return get_mount(instrument_type) == "deck"
++
++
+ def get_instrument_interface(instrument_type: str) -> Type[BaseInstrument]:
+     """Import and return the generic interface class for an instrument type."""
+     entry = _instrument_entry(instrument_type)
+@@ -503,6 +520,12 @@ def _validate_registry(registry: Mapping[str, Any]) -> None:
+                 f"Instrument entry '{type_key}' has invalid calibration_mode "
+                 f"{mode!r}; expected one of {sorted(_VALID_CALIBRATION_MODES)}."
+             )
++        mount = entry.get("mount", "head")
++        if mount not in _VALID_MOUNTS:
++            raise ValueError(
++                f"Instrument entry '{type_key}' has invalid mount "
++                f"{mount!r}; expected one of {sorted(_VALID_MOUNTS)}."
++            )
+         vendors = entry.get("vendors")
+         if not isinstance(vendors, Mapping) or not vendors:
+             raise ValueError(
+diff --git a/packages/core/src/cubos/instruments/registry.yaml b/packages/core/src/cubos/instruments/registry.yaml
+index c704d57..df040f8 100644
+--- a/packages/core/src/cubos/instruments/registry.yaml
++++ b/packages/core/src/cubos/instruments/registry.yaml
+@@ -1,5 +1,7 @@
+ # Supported instrument types, vendor implementations, and calibration metadata.
+ # Gantry YAML selects a generic `type` plus a concrete `vendor`.
++# `mount` is `head` (the default: the instrument rides on the gantry head) or
++# `deck` (it sits on the deck, e.g. a stirrer under a vial).
+ 
+ instruments:
+   asmi:
+@@ -92,6 +94,20 @@ instruments:
+         module: cubos.instruments.lighting.vendors.pawduino
+         class_name: PawduinoLighting
+ 
++  stirrer:
++    interface: cubos.instruments.stirrer.interface.StirrerInstrument
++    # Deck-mounted: sits under labware and never rides on the head. Head
++    # geometry (bounds, home pose, calibration, motion targets) skips it, and
++    # its gantry entry may not set offset_x / offset_y / depth.
++    mount: deck
++    vendors:
++      pawduino:
++        module: cubos.instruments.stirrer.vendors.pawduino
++        class_name: PawduinoStirrer
++      mock:
++        module: cubos.instruments.stirrer.vendors.mock
++        class_name: MockStirrer
++
+   mounted_tool:
+     interface: cubos.instruments.mounted_tool.interface.MountedToolInstrument
+     calibration_mode: contact
+diff --git a/packages/core/src/cubos/instruments/stirrer/__init__.py b/packages/core/src/cubos/instruments/stirrer/__init__.py
+new file mode 100644
+index 0000000..83b3d41
+--- /dev/null
++++ b/packages/core/src/cubos/instruments/stirrer/__init__.py
+@@ -0,0 +1,21 @@
++"""Magnetic stirrer instruments (deck-mounted)."""
++
++from cubos.instruments.stirrer.exceptions import (
++    StirrerCommandError,
++    StirrerConfigError,
++    StirrerConnectionError,
++    StirrerError,
++    StirrerTimeoutError,
++)
++from cubos.instruments.stirrer.interface import StirrerInstrument
++from cubos.instruments.stirrer.models import StirrerStatus
++
++__all__ = [
++    "StirrerCommandError",
++    "StirrerConfigError",
++    "StirrerConnectionError",
++    "StirrerError",
++    "StirrerInstrument",
++    "StirrerStatus",
++    "StirrerTimeoutError",
++]
+diff --git a/packages/core/src/cubos/instruments/stirrer/exceptions.py b/packages/core/src/cubos/instruments/stirrer/exceptions.py
+new file mode 100644
+index 0000000..f104e59
+--- /dev/null
++++ b/packages/core/src/cubos/instruments/stirrer/exceptions.py
+@@ -0,0 +1,23 @@
++"""Stirrer instrument exceptions."""
++
++from cubos.instruments.base_instrument import InstrumentError
++
++
++class StirrerError(InstrumentError):
++    """Base exception for stirrer instrument errors."""
++
++
++class StirrerConfigError(StirrerError):
++    """Invalid stirrer configuration or an out-of-range speed or duration."""
++
++
++class StirrerConnectionError(StirrerError):
++    """The stirrer's controller could not be reached, or lacks stir commands."""
++
++
++class StirrerCommandError(StirrerError):
++    """A stirrer command failed at the hardware."""
++
++
++class StirrerTimeoutError(StirrerError):
++    """A stirrer command, or a wait for a timed stir to end, timed out."""
+diff --git a/packages/core/src/cubos/instruments/stirrer/interface.py b/packages/core/src/cubos/instruments/stirrer/interface.py
+new file mode 100644
+index 0000000..88fb612
+--- /dev/null
++++ b/packages/core/src/cubos/instruments/stirrer/interface.py
+@@ -0,0 +1,95 @@
++"""Generic magnetic stirrer interface.
++
++A stirrer is **deck-mounted**: it sits under labware on the deck and never
++rides on the gantry head. Its registry entry says ``mount: deck``, so the
++head-geometry code (bounds and home-pose validation, calibration, motion
++targets) skips it, and its gantry YAML entry carries a driver and a port but
++no ``offset_x``/``offset_y``/``depth``. Where it is on the deck, as an
++obstacle, belongs in the deck file.
++
++Sequencing belongs to the ``stir`` protocol command. As a fail-safe,
++``InstrumentedGantry.disconnect_instruments`` stops every stirrer at the end
++of every run, the way it turns every light off.
++"""
++
++from __future__ import annotations
++
++from abc import abstractmethod
++from typing import Optional
++
++from cubos.instruments.base_instrument import BaseInstrument
++from cubos.instruments.stirrer.exceptions import StirrerConfigError
++from cubos.instruments.stirrer.models import StirrerStatus
++
++
++class StirrerInstrument(BaseInstrument):
++    """Base class for magnetic stirrer implementations."""
++
++    mount = "deck"
++
++    #: Slowest and fastest non-zero speeds the vendor accepts, rpm.
++    MIN_RPM: float = 0.0
++    MAX_RPM: float = float("inf")
++
++    def __init__(
++        self,
++        name: Optional[str] = None,
++        offset_x: float = 0.0,
++        offset_y: float = 0.0,
++        depth: float = 0.0,
++        offline: bool = False,
++    ):
++        super().__init__(
++            name=name,
++            offset_x=offset_x,
++            offset_y=offset_y,
++            depth=depth,
++            offline=offline,
++        )
++
++    @abstractmethod
++    def set_speed(self, rpm: float, seconds: Optional[float] = None) -> float:
++        """Stir at *rpm*; with *seconds*, the stirrer stops itself after that long.
++
++        ``rpm`` 0 stops. Returns the target speed actually set.
++        """
++
++    @abstractmethod
++    def stop(self) -> None:
++        """Stop stirring."""
++
++    @abstractmethod
++    def status(self) -> StirrerStatus:
++        """Return the current speed reading."""
++
++    @abstractmethod
++    def wait_until_stopped(self, timeout: float) -> StirrerStatus:
++        """Block until a timed stir has ended (or *timeout* s pass).
++
++        Raises :class:`StirrerTimeoutError` if it is still running then.
++        """
++
++    def validate_speed(self, rpm: float, seconds: Optional[float] = None) -> None:
++        """Shared range checks, so a bad step fails in ``--mock`` too."""
++        try:
++            rpm = float(rpm)
++        except (TypeError, ValueError) as exc:
++            raise StirrerConfigError(f"rpm must be a number, got {rpm!r}") from exc
++        if rpm != rpm or rpm < 0:                     # NaN or negative
++            raise StirrerConfigError(f"rpm must be >= 0, got {rpm!r}")
++        if rpm > 0 and not (self.MIN_RPM <= rpm <= self.MAX_RPM):
++            raise StirrerConfigError(
++                f"rpm {rpm:g} is outside {self.name}'s range "
++                f"{self.MIN_RPM:g}-{self.MAX_RPM:g} (0 stops)."
++            )
++        if seconds is not None:
++            try:
++                seconds = float(seconds)
++            except (TypeError, ValueError) as exc:
++                raise StirrerConfigError(
++                    f"seconds must be a number, got {seconds!r}"
++                ) from exc
++            if not seconds > 0:
++                raise StirrerConfigError(f"seconds must be > 0, got {seconds!r}")
++            if rpm == 0:
++                raise StirrerConfigError("seconds needs a non-zero rpm.")
+diff --git a/packages/core/src/cubos/instruments/stirrer/models.py b/packages/core/src/cubos/instruments/stirrer/models.py
+new file mode 100644
+index 0000000..0ca8fca
+--- /dev/null
++++ b/packages/core/src/cubos/instruments/stirrer/models.py
+@@ -0,0 +1,32 @@
++"""Stirrer instrument data models."""
++
++from __future__ import annotations
++
++from typing import Optional
++
++from pydantic import BaseModel, ConfigDict, Field
++
++
++class StirrerStatus(BaseModel):
++    """One status reading from a stirrer.
++
++    ``target_rpm`` is what was asked for (after the vendor's clamp; 0 when
++    stopped), ``setpoint_rpm`` the ramped value the speed loop is chasing,
++    ``rpm`` the last measured speed. ``seconds_left`` is ``None`` unless a
++    timed stir is running.
++    """
++
++    model_config = ConfigDict(extra="forbid")
++
++    target_rpm: float = Field(0.0, description="Target speed, rpm (0 = stopped).")
++    setpoint_rpm: float = Field(0.0, description="Ramped setpoint, rpm.")
++    rpm: float = Field(0.0, description="Last measured speed, rpm.")
++    duty: float = Field(0.0, description="Drive duty cycle, 0-1.")
++    stalled: bool = Field(False, description="The speed loop gave up on a stall.")
++    seconds_left: Optional[float] = Field(
++        None, description="Time left on a timed stir; None when untimed or stopped.",
++    )
++
++    @property
++    def running(self) -> bool:
++        return self.target_rpm > 0
+diff --git a/packages/core/src/cubos/instruments/stirrer/vendors/__init__.py b/packages/core/src/cubos/instruments/stirrer/vendors/__init__.py
+new file mode 100644
+index 0000000..ef2fe2c
+--- /dev/null
++++ b/packages/core/src/cubos/instruments/stirrer/vendors/__init__.py
+@@ -0,0 +1 @@
++"""Stirrer vendor implementations."""
+diff --git a/packages/core/src/cubos/instruments/stirrer/vendors/_sim.py b/packages/core/src/cubos/instruments/stirrer/vendors/_sim.py
+new file mode 100644
+index 0000000..925f348
+--- /dev/null
++++ b/packages/core/src/cubos/instruments/stirrer/vendors/_sim.py
+@@ -0,0 +1,58 @@
++"""In-memory stirrer simulation shared by the mock vendor and offline mode.
++
++Follows the PANDA stirrer firmware closely enough for ``--mock`` runs and
++tests: the setpoint starts at 100 rpm and ramps at 100 rpm/s toward the
++target, the measured speed tracks the setpoint, and a timed stir stops
++itself when its time is up.
++"""
++
++from __future__ import annotations
++
++import time
++from typing import Callable, Optional
++
++from cubos.instruments.stirrer.models import StirrerStatus
++
++RAMP_RPM_PER_S = 100.0
++START_RPM = 100.0
++
++
++class SimulatedStirrer:
++    def __init__(self, clock: Callable[[], float] = time.monotonic) -> None:
++        self._clock = clock
++        self.target = 0.0
++        self._t_start = 0.0
++        self._stop_at: Optional[float] = None
++
++    def set(self, rpm: float, seconds: Optional[float]) -> float:
++        if rpm <= 0:
++            self.stop()
++            return 0.0
++        if self.target <= 0:
++            self._t_start = self._clock()
++        self.target = float(rpm)
++        self._stop_at = self._clock() + seconds if seconds else None
++        return self.target
++
++    def stop(self) -> None:
++        self.target = 0.0
++        self._stop_at = None
++
++    def finish_timed_run(self) -> None:
++        """Jump to the end of a timed stir (offline waits need no real sleep)."""
++        if self._stop_at is not None:
++            self.stop()
++
++    def status(self) -> StirrerStatus:
++        now = self._clock()
++        if self._stop_at is not None and now >= self._stop_at:
++            self.stop()
++        if self.target <= 0:
++            return StirrerStatus()
++        setpoint = min(self.target, START_RPM + RAMP_RPM_PER_S * (now - self._t_start))
++        left = None if self._stop_at is None else max(0.0, self._stop_at - now)
++        return StirrerStatus(
++            target_rpm=self.target, setpoint_rpm=setpoint, rpm=setpoint,
++            duty=round(0.3 + 0.3 * setpoint / max(self.target, 1.0), 3),
++            stalled=False, seconds_left=left,
++        )
+diff --git a/packages/core/src/cubos/instruments/stirrer/vendors/mock.py b/packages/core/src/cubos/instruments/stirrer/vendors/mock.py
+new file mode 100644
+index 0000000..0995d06
+--- /dev/null
++++ b/packages/core/src/cubos/instruments/stirrer/vendors/mock.py
+@@ -0,0 +1,63 @@
++"""Offline mock stirrer vendor for dry runs and tests."""
++
++from __future__ import annotations
++
++from typing import List, Optional
++
++from cubos.instruments.stirrer.interface import StirrerInstrument
++from cubos.instruments.stirrer.models import StirrerStatus
++from cubos.instruments.stirrer.vendors._sim import SimulatedStirrer
++
++
++class MockStirrer(StirrerInstrument):
++    """Deterministic in-memory stirrer. ``actuation_log`` records every call."""
++
++    MIN_RPM = 100.0
++    MAX_RPM = 2000.0
++
++    def __init__(
++        self,
++        *,
++        name: Optional[str] = None,
++        offset_x: float = 0.0,
++        offset_y: float = 0.0,
++        depth: float = 0.0,
++        offline: bool = True,
++        **kwargs,
++    ):
++        super().__init__(
++            name=name, offset_x=offset_x, offset_y=offset_y,
++            depth=depth, offline=offline,
++        )
++        self._sim = SimulatedStirrer()
++        self.actuation_log: List[str] = []
++
++    def connect(self) -> None:
++        self._sim.stop()
++        self.logger.info("MockStirrer connected (offline)")
++
++    def disconnect(self) -> None:
++        self._sim.stop()
++        self.logger.info("MockStirrer disconnected (offline)")
++
++    def health_check(self) -> bool:
++        return True
++
++    def set_speed(self, rpm: float, seconds: Optional[float] = None) -> float:
++        self.validate_speed(rpm, seconds)
++        self.actuation_log.append(
++            f"set_speed {float(rpm):g}" + (f" {float(seconds):g}s" if seconds else "")
++        )
++        return self._sim.set(float(rpm), float(seconds) if seconds else None)
++
++    def stop(self) -> None:
++        self.actuation_log.append("stop")
++        self._sim.stop()
++
++    def status(self) -> StirrerStatus:
++        return self._sim.status()
++
++    def wait_until_stopped(self, timeout: float) -> StirrerStatus:
++        self.actuation_log.append("wait_until_stopped")
++        self._sim.finish_timed_run()
++        return self._sim.status()
+diff --git a/packages/core/src/cubos/instruments/stirrer/vendors/pawduino.py b/packages/core/src/cubos/instruments/stirrer/vendors/pawduino.py
+new file mode 100644
+index 0000000..d3c185c
+--- /dev/null
++++ b/packages/core/src/cubos/instruments/stirrer/vendors/pawduino.py
+@@ -0,0 +1,270 @@
++"""Pawduino magnetic stirrer: the VCL stir module on the PANDA Arduino.
++
++Firmware commands (byu-vcl ``cubos/firmware/panda-arduino-stirrer.patch``):
++
++* ``30,<rpm>[,<seconds>]`` -- stir at *rpm* (the firmware clamps 100-2000);
++  with *seconds* the firmware stops itself after that long. ``30,0`` stops.
++  Replies ``OK:{"msg":"Stirring","v":[<rpm set>,<seconds>]}`` or
++  ``OK:{"msg":"Stirrer off"}``.
++* ``31`` -- status: ``OK:{"target","setpoint","rpm","duty","stalled","left_s"}``
++  (``left_s`` is -1 when the stir is untimed).
++
++Speed control is closed-loop in the firmware (Hall sensor, setpoint ramp,
++start kick, stall recovery), so the host only sets targets and reads status.
++Uses the shared ``PawduinoLink`` (the capper and pipette share this board) and
++never opens the port itself. Pass ``offline=True`` for dry runs.
++
++With ``status_poll_s`` > 0, a background thread reads ``31`` that often while
++the stirrer runs and logs each reading, so a run log shows the speed between
++protocol steps. The link's lock keeps those reads from interleaving with the
++capper's and pipette's commands.
++"""
++
++from __future__ import annotations
++
++import json
++import threading
++import time
++from typing import List, Optional, Tuple
++
++from cubos.instruments.controllers.pawduino import (
++    PawduinoLink,
++    PawduinoLinkCommandError,
++    PawduinoLinkError,
++    PawduinoLinkTimeoutError,
++)
++from cubos.instruments.stirrer.exceptions import (
++    StirrerCommandError,
++    StirrerConnectionError,
++    StirrerTimeoutError,
++)
++from cubos.instruments.stirrer.interface import StirrerInstrument
++from cubos.instruments.stirrer.models import StirrerStatus
++from cubos.instruments.stirrer.vendors._sim import SimulatedStirrer
++
++_CMD_STIR = 30
++_CMD_STIR_STATUS = 31
++
++
++def parse_status(reply: str) -> StirrerStatus:
++    """Parse a ``31`` reply into a :class:`StirrerStatus`."""
++    try:
++        body = json.loads(reply.split(":", 1)[1])
++    except (IndexError, ValueError) as exc:
++        raise StirrerCommandError(f"Unparseable stirrer status {reply!r}") from exc
++    left = float(body.get("left_s", -1))
++    return StirrerStatus(
++        target_rpm=float(body.get("target", 0)),
++        setpoint_rpm=float(body.get("setpoint", 0)),
++        rpm=float(body.get("rpm", 0)),
++        duty=float(body.get("duty", 0)),
++        stalled=bool(int(body.get("stalled", 0))),
++        seconds_left=None if left < 0 else left,
++    )
++
++
++class PawduinoStirrer(StirrerInstrument):
++    """Single magnetic stirrer on the shared PANDA Arduino serial link."""
++
++    MIN_RPM = 100.0
++    MAX_RPM = 2000.0
++
++    def __init__(
++        self,
++        *,
++        port: str = "",
++        baud_rate: int = 115200,
++        command_timeout: float = 10.0,
++        status_poll_s: float = 0.0,
++        name: Optional[str] = None,
++        offset_x: float = 0.0,
++        offset_y: float = 0.0,
++        depth: float = 0.0,
++        offline: bool = False,
++        **kwargs,
++    ):
++        super().__init__(
++            name=name,
++            offset_x=offset_x,
++            offset_y=offset_y,
++            depth=depth,
++            offline=offline,
++        )
++        self._port = port
++        self._baud_rate = baud_rate
++        self._command_timeout = command_timeout
++        self._status_poll_s = float(status_poll_s or 0.0)
++        self._link: Optional[PawduinoLink] = None
++        self._sim = SimulatedStirrer()
++        self._poller: Optional[threading.Thread] = None
++        self._poll_stop = threading.Event()
++        #: (monotonic time, status) for every reading taken, in order.
++        self.readings: List[Tuple[float, StirrerStatus]] = []
++
++    # -- BaseInstrument interface -------------------------------------------
++
++    def connect(self) -> None:
++        if self._offline:
++            self._sim.stop()
++            self.logger.info("Stirrer connected (offline)")
++            return
++        try:
++            self._link = PawduinoLink.acquire(self._port, self._baud_rate)
++            self._link.connect(timeout=max(self._command_timeout, 30.0))
++        except PawduinoLinkError as exc:
++            self._link = None
++            raise StirrerConnectionError(str(exc)) from exc
++        # A known state, and proof that this firmware has the stir commands.
++        try:
++            self._send_command(_CMD_STIR, 0)
++            status = self.status()
++        except (StirrerCommandError, StirrerTimeoutError) as exc:
++            self._release_link()
++            raise StirrerConnectionError(
++                f"The Arduino on {self._port} did not accept stirrer commands "
++                f"30/31 ({exc}). Is the stirrer firmware flashed?"
++            ) from exc
++        self.logger.info(
++            "Connected to stirrer on %s (stopped; last rpm %.0f)",
++            self._port, status.rpm,
++        )
++
++    def disconnect(self) -> None:
++        self._stop_poller()
++        if self._offline:
++            self._sim.stop()
++            self.logger.info("Stirrer disconnected (offline)")
++            return
++        if self._link is not None and self._link.is_open:
++            try:
++                self._send_command(_CMD_STIR, 0)
++            except (StirrerCommandError, StirrerTimeoutError) as exc:
++                self.logger.warning("Stirrer stop on disconnect failed: %s", exc)
++        self._release_link()
++        self.logger.info("Disconnected from stirrer")
++
++    def health_check(self) -> bool:
++        if self._offline:
++            return True
++        return self._link is not None and self._link.is_open
++
++    # -- StirrerInstrument interface ----------------------------------------
++
++    def set_speed(self, rpm: float, seconds: Optional[float] = None) -> float:
++        self.validate_speed(rpm, seconds)
++        rpm = float(rpm)
++        seconds = float(seconds) if seconds is not None else None
++        if rpm == 0:
++            self.stop()
++            return 0.0
++        if self._offline:
++            target = self._sim.set(rpm, seconds)
++        else:
++            args = (rpm, seconds) if seconds is not None else (rpm,)
++            reply = self._send_command(_CMD_STIR, *args)
++            target = rpm
++            try:
++                target = float(json.loads(reply.split(":", 1)[1])["v"][0])
++            except (IndexError, KeyError, TypeError, ValueError):
++                pass
++        self.logger.info(
++            "Stirrer -> %.0f rpm%s", target,
++            f" for {seconds:g} s" if seconds is not None else " until stopped",
++        )
++        self._start_poller()
++        return target
++
++    def stop(self) -> None:
++        self._stop_poller()
++        if self._offline:
++            self._sim.stop()
++        else:
++            self._send_command(_CMD_STIR, 0)
++        self.logger.info("Stirrer stopped")
++        if not self._offline:
++            self._log_status(self.status())
++
++    def status(self) -> StirrerStatus:
++        if self._offline:
++            status = self._sim.status()
++        else:
++            status = parse_status(self._send_command(_CMD_STIR_STATUS))
++        self.readings.append((time.monotonic(), status))
++        return status
++
++    def wait_until_stopped(self, timeout: float) -> StirrerStatus:
++        if self._offline:
++            self._sim.finish_timed_run()
++            return self.status()
++        deadline = time.monotonic() + timeout
++        while True:
++            status = self.status()
++            if not status.running:
++                self._log_status(status)
++                return status
++            if time.monotonic() >= deadline:
++                raise StirrerTimeoutError(
++                    f"Stirrer still at target {status.target_rpm:.0f} rpm "
++                    f"after {timeout:g} s."
++                )
++            time.sleep(1.0)
++
++    # -- Status polling -------------------------------------------------------
++
++    def _log_status(self, s: StirrerStatus) -> None:
++        self.logger.info(
++            "Stirrer status: rpm %.0f, setpoint %.0f, target %.0f, duty %.3f%s%s",
++            s.rpm, s.setpoint_rpm, s.target_rpm, s.duty,
++            ", STALLED" if s.stalled else "",
++            f", {s.seconds_left:.0f} s left" if s.seconds_left is not None else "",
++        )
++
++    def _start_poller(self) -> None:
++        if self._offline or self._status_poll_s <= 0:
++            return
++        if self._poller is not None and self._poller.is_alive():
++            return
++        self._poll_stop.clear()
++        self._poller = threading.Thread(
++            target=self._poll, name=f"{self.name}-status", daemon=True,
++        )
++        self._poller.start()
++
++    def _stop_poller(self) -> None:
++        poller = self._poller
++        if poller is None:
++            return
++        self._poll_stop.set()
++        if poller is not threading.current_thread():
++            poller.join(timeout=self._command_timeout + 2.0)
++        self._poller = None
++
++    def _poll(self) -> None:
++        while not self._poll_stop.wait(self._status_poll_s):
++            try:
++                status = self.status()
++            except Exception as exc:                     # noqa: BLE001
++                self.logger.warning("Stirrer status poll failed: %s", exc)
++                continue
++            self._log_status(status)
++            if not status.running:                       # timed run ended, or a stall
++                return
++
++    # -- Private helpers -------------------------------------------------------
++
++    def _send_command(self, code: int, *args: float) -> str:
++        if self._link is None:
++            raise StirrerCommandError("Not connected to Arduino")
++        try:
++            return self._link.send_command(
++                code, *args, timeout=self._command_timeout,
++            )
++        except PawduinoLinkTimeoutError as exc:
++            raise StirrerTimeoutError(str(exc)) from exc
++        except PawduinoLinkCommandError as exc:
++            raise StirrerCommandError(str(exc)) from exc
++
++    def _release_link(self) -> None:
++        if self._link is not None:
++            self._link.disconnect()
++            self._link = None
+diff --git a/packages/core/src/cubos/protocol_engine/commands/__init__.py b/packages/core/src/cubos/protocol_engine/commands/__init__.py
+index 33e4518..75f004f 100644
+--- a/packages/core/src/cubos/protocol_engine/commands/__init__.py
++++ b/packages/core/src/cubos/protocol_engine/commands/__init__.py
+@@ -4,7 +4,7 @@ Importing this package triggers all @protocol_command decorators,
+ populating the CommandRegistry.
+ """
+ 
+-from . import camera, capper, cure, home, lights, measure, move, pause, pipette, rinse, scan  # noqa: F401 -- side-effect imports for registration
++from . import camera, capper, cure, home, lights, measure, move, pause, pipette, rinse, scan, stir  # noqa: F401 -- side-effect imports for registration
+ 
+ __all__ = [
+     "camera",
+@@ -18,4 +18,5 @@ __all__ = [
+     "pipette",
+     "rinse",
+     "scan",
++    "stir",
+ ]
+diff --git a/packages/core/src/cubos/protocol_engine/commands/_summaries.py b/packages/core/src/cubos/protocol_engine/commands/_summaries.py
+index 3e3bbed..f8d58d7 100644
+--- a/packages/core/src/cubos/protocol_engine/commands/_summaries.py
++++ b/packages/core/src/cubos/protocol_engine/commands/_summaries.py
+@@ -198,6 +198,21 @@ def set_lights(args: Dict[str, Any]) -> str:
+     )
+ 
+ 
++def stir(args: Dict[str, Any]) -> str:
++    rpm = args.get("rpm")
++    if rpm is not None and float(rpm) == 0:
++        return _join(str(args["instrument"]), "stop")
++    seconds = args.get("seconds")
++    wait = args.get("wait")
++    blocking = (seconds is not None) if wait is None else bool(wait)
++    return _join(
++        str(args["instrument"]),
++        f"{rpm} rpm",
++        f"{seconds} s" if seconds is not None else "until stopped",
++        "" if blocking else "no wait",
++    )
++
++
+ def capture(args: Dict[str, Any]) -> str:
+     label = args.get("label")
+     return _join(str(args["instrument"]), str(label) if label else "")
+@@ -239,5 +254,6 @@ __all__ = [
+     "scan",
+     "serial_transfer",
+     "set_lights",
++    "stir",
+     "transfer",
+ ]
+diff --git a/packages/core/src/cubos/protocol_engine/commands/stir.py b/packages/core/src/cubos/protocol_engine/commands/stir.py
+new file mode 100644
+index 0000000..d16ab20
+--- /dev/null
++++ b/packages/core/src/cubos/protocol_engine/commands/stir.py
+@@ -0,0 +1,96 @@
++"""Protocol command: run a magnetic stirrer.
++
++Built on the vendor-agnostic ``StirrerInstrument`` surface. The stirrer is
++deck-mounted (approach 1): the step names the stirrer, not the vial on it,
++so the protocol author decides what is being stirred. Stirrers the protocol
++leaves running, the run teardown stops
++(``InstrumentedGantry.disconnect_instruments``).
++
++    - stir:
++        instrument: stirrer_1
++        rpm: 600          # 0 stops
++        seconds: 60       # optional: the stirrer stops itself after this long
++        wait: false       # optional: default true when seconds is given
++
++With ``seconds`` and ``wait`` left at its default, the step blocks until the
++stir has ended. With ``wait: false`` the protocol carries on while it stirs;
++``seconds`` is then a limit the stirrer enforces itself, even if the host
++goes away. Without ``seconds`` it stirs until a later ``rpm: 0`` step or the
++end of the run. (``rpm: 0`` rather than ``off: true``, because YAML parses a
++bare ``off`` as a boolean.)
++"""
++
++from __future__ import annotations
++
++from typing import TYPE_CHECKING
++
++from cubos.instruments.stirrer.exceptions import StirrerError
++from cubos.instruments.stirrer.interface import StirrerInstrument
++
++from ..errors import ProtocolExecutionError
++from ..registry import protocol_command
++from . import _summaries
++
++if TYPE_CHECKING:
++    from ..runtime import ProtocolContext
++
++# Extra time a blocking stir may take beyond its own duration: the firmware
++# checks its timer between other work, so it can end a little late.
++_WAIT_MARGIN_S = 10.0
++
++
++def _get_stirrer(context: "ProtocolContext", instrument: str) -> StirrerInstrument:
++    try:
++        stirrer = context.gantry.instruments[instrument]
++    except KeyError as exc:
++        raise ProtocolExecutionError(
++            f"No instrument {instrument!r} registered on the gantry."
++        ) from exc
++    if not isinstance(stirrer, StirrerInstrument):
++        raise ProtocolExecutionError(
++            f"Instrument {instrument!r} is a {type(stirrer).__name__}, not a "
++            "StirrerInstrument. stir requires a `stirrer` type instrument."
++        )
++    return stirrer
++
++
++@protocol_command("stir", summary=_summaries.stir)
++def stir(
++    context: "ProtocolContext",
++    instrument: str,
++    rpm: float,
++    seconds: float | None = None,
++    wait: bool | None = None,
++) -> None:
++    """Start, change or stop a stirrer.
++
++    Args:
++        context:    Runtime context.
++        instrument: Name of a ``stirrer`` instrument in the gantry file.
++        rpm:        Target speed; 0 stops.
++        seconds:    Optional duration; the stirrer stops itself after it.
++        wait:       Block until a timed stir ends. Defaults to true when
++                    ``seconds`` is given; needs ``seconds``.
++    """
++    stirrer = _get_stirrer(context, instrument)
++    blocking = (seconds is not None) if wait is None else bool(wait)
++    if blocking and seconds is None:
++        raise ProtocolExecutionError(
++            "stir: `wait: true` needs `seconds` (an untimed stir never ends "
++            "on its own)."
++        )
++    try:
++        if float(rpm) == 0:
++            if seconds is not None:
++                raise ProtocolExecutionError("stir: `seconds` needs a non-zero rpm.")
++            stirrer.stop()
++            return
++        stirrer.set_speed(rpm, seconds)
++        if blocking:
++            status = stirrer.wait_until_stopped(float(seconds) + _WAIT_MARGIN_S)
++            if status.stalled:
++                context.logger.warning(
++                    "stir: %s stalled during the stir and stopped itself.", instrument,
++                )
++    except StirrerError as exc:
++        raise ProtocolExecutionError(f"stir: {exc}") from exc
+diff --git a/packages/core/src/cubos/protocol_engine/setup_validator.py b/packages/core/src/cubos/protocol_engine/setup_validator.py
+index d33fdb3..f2f46c3 100644
+--- a/packages/core/src/cubos/protocol_engine/setup_validator.py
++++ b/packages/core/src/cubos/protocol_engine/setup_validator.py
+@@ -17,6 +17,7 @@ from cubos.gantry.gantry import Gantry
+ from cubos.gantry.instrument_loader import load_instrumented_gantry_from_config
+ from cubos.gantry.loader import load_gantry_from_yaml
+ from cubos.gantry.origin import validate_working_volume_origin
++from cubos.instruments.base_instrument import is_deck_mounted_instrument
+ from cubos.protocol_engine.loader import load_protocol_from_yaml
+ from cubos.validation.bounds import (
+     collect_protocol_motion_targets,
+@@ -62,6 +63,9 @@ def _instrument_summary(instrumented_gantry) -> list[str]:
+     """Return one-line summaries for each instrument."""
+     lines = []
+     for name, instr in instrumented_gantry.instruments.items():
++        if is_deck_mounted_instrument(instr):
++            lines.append(f"    {name}: deck-mounted (no head offsets)")
++            continue
+         lines.append(
+             f"    {name}: offset=({instr.offset_x}, {instr.offset_y}), "
+             f"depth={instr.depth}"
+diff --git a/packages/core/src/cubos/tools/calibrate_gantry.py b/packages/core/src/cubos/tools/calibrate_gantry.py
+index 4eeba53..bc0d150 100644
+--- a/packages/core/src/cubos/tools/calibrate_gantry.py
++++ b/packages/core/src/cubos/tools/calibrate_gantry.py
+@@ -60,10 +60,21 @@ def _instrument_info(raw_config: dict[str, Any]) -> tuple[InstrumentInfo, ...]:
+     info: list[InstrumentInfo] = []
+     for name, config in instruments.items():
+         instrument_type = config.get("type") if isinstance(config, dict) else None
++        if instrument_type and _is_deck_mounted_type(str(instrument_type)):
++            continue                    # deck-mounted: nothing on the head to calibrate
+         info.append((str(name), str(instrument_type) if instrument_type else None))
+     return tuple(info)
+ 
+ 
++def _is_deck_mounted_type(instrument_type: str) -> bool:
++    from cubos.instruments.registry import is_deck_mounted
++
++    try:
++        return is_deck_mounted(instrument_type)
++    except ValueError:                  # unknown type: let validation report it
++        return False
++
++
+ def _validate_gantry_config(raw_config: dict[str, Any], *, output_path: Path) -> None:
+     missing = [key for key in ("serial_port", "cnc", "working_volume", "instruments") if key not in raw_config]
+     if missing:
+diff --git a/packages/core/src/cubos/tools/calibration/multi_instrument_calibration.py b/packages/core/src/cubos/tools/calibration/multi_instrument_calibration.py
+index 2d3aedf..bf14748 100644
+--- a/packages/core/src/cubos/tools/calibration/multi_instrument_calibration.py
++++ b/packages/core/src/cubos/tools/calibration/multi_instrument_calibration.py
+@@ -21,7 +21,7 @@ sys.path.insert(0, str(project_root / "src"))
+ from cubos.gantry import Gantry, load_gantry_from_yaml  # noqa: E402
+ from cubos.gantry.gantry_config import OriginPolicy  # noqa: E402
+ from cubos.gantry.origin import validate_working_volume_origin  # noqa: E402
+-from cubos.instruments.registry import get_calibration_mode  # noqa: E402
++from cubos.instruments.registry import get_calibration_mode, is_deck_mounted  # noqa: E402
+ from cubos.tools.calibration.single_instrument_calibration import (  # noqa: E402
+     _assert_near_xyz,
+     _apply_calibration_grbl_baseline,
+@@ -253,10 +253,23 @@ def _validate_instrument_names(
+ 
+ 
+ def _instrument_names(raw_config: dict[str, Any]) -> tuple[str, ...]:
++    """Head-mounted instruments only: a deck-mounted one has nothing to calibrate."""
+     instruments = raw_config.get("instruments")
+     if not isinstance(instruments, dict) or not instruments:
+         raise ValueError("Gantry YAML must define top-level instruments to calibrate.")
+-    return tuple(instruments.keys())
++    return tuple(
++        name for name in instruments
++        if not _is_deck_mounted_entry(instruments[name])
++    )
++
++
++def _is_deck_mounted_entry(entry: Any) -> bool:
++    if not isinstance(entry, dict) or entry.get("type") is None:
++        return False
++    try:
++        return is_deck_mounted(str(entry["type"]))
++    except ValueError:                  # unknown type: let validation report it
++        return False
+ 
+ 
+ def _instrument_type(raw_config: dict[str, Any], name: str) -> str | None:
+diff --git a/packages/core/src/cubos/validation/bounds.py b/packages/core/src/cubos/validation/bounds.py
+index 242b948..8d330c2 100644
+--- a/packages/core/src/cubos/validation/bounds.py
++++ b/packages/core/src/cubos/validation/bounds.py
+@@ -19,6 +19,7 @@ from cubos.deck.labware.well_plate import WellPlate
+ from cubos.deck.labware.vial import Vial
+ from cubos.gantry.gantry_config import GantryConfig, WorkingVolume
+ from cubos.gantry.instrument_mount import InstrumentedGantry
++from cubos.instruments.base_instrument import is_deck_mounted_instrument
+ from cubos.protocol_engine.protocol import Protocol
+ 
+ from .errors import BoundsViolation
+@@ -686,6 +687,8 @@ def validate_gantry_positions(
+     violations: List[BoundsViolation] = []
+     volume = gantry.working_volume
+     for instr_name, instrument in instrumented_gantry.instruments.items():
++        if is_deck_mounted_instrument(instrument):
++            continue                    # not on the head: no gantry pose of its own
+         for lw_key, pos_id, x, y, z in _get_all_positions(deck):
+             gx = x - instrument.offset_x
+             gy = y - instrument.offset_y
+diff --git a/packages/core/src/cubos/validation/protocol_semantics.py b/packages/core/src/cubos/validation/protocol_semantics.py
+index 323ec11..0c877d0 100644
+--- a/packages/core/src/cubos/validation/protocol_semantics.py
++++ b/packages/core/src/cubos/validation/protocol_semantics.py
+@@ -38,6 +38,7 @@ from cubos.protocol_engine.scan_args import (
+     normalize_scan_arguments,
+     surface_detection_enabled,
+ )
++from cubos.instruments.base_instrument import is_deck_mounted_instrument
+ from cubos.instruments.potentiostat.interface import PotentiostatInstrument
+ 
+ from .errors import ProtocolSemanticViolation
+@@ -299,6 +300,8 @@ def _validate_home_waypoints(
+     violations: list[ProtocolSemanticViolation] = []
+     instrument_tip_extensions = instrument_tip_extensions or {}
+     for instrument_name, instrument in instrumented_gantry.instruments.items():
++        if is_deck_mounted_instrument(instrument):
++            continue                    # stays on the deck when the head homes
+         pose = _home_pose_for_instrument(
+             gantry,
+             instrument,
+diff --git a/packages/core/tests/instruments/stirrer/__init__.py b/packages/core/tests/instruments/stirrer/__init__.py
+new file mode 100644
+index 0000000..e69de29
+diff --git a/packages/core/tests/instruments/stirrer/test_stirrer.py b/packages/core/tests/instruments/stirrer/test_stirrer.py
+new file mode 100644
+index 0000000..69246b0
+--- /dev/null
++++ b/packages/core/tests/instruments/stirrer/test_stirrer.py
+@@ -0,0 +1,261 @@
++"""Tests for the stirrer interface, its vendors, and deck-mounted handling."""
++
++from __future__ import annotations
++
++import json
++from unittest.mock import MagicMock
++
++import pytest
++
++from cubos.gantry.instrument_loader import _instantiate_instruments
++from cubos.gantry.instrument_mount import InstrumentedGantry
++from cubos.instruments.base_instrument import BaseInstrument
++from cubos.instruments.camera.vendors.mount_only import MountOnlyCamera
++from cubos.instruments.controllers.pawduino import PawduinoLink
++from cubos.instruments.registry import (
++    get_instrument_class,
++    get_mount,
++    is_deck_mounted,
++)
++from cubos.instruments.stirrer.exceptions import (
++    StirrerConfigError,
++    StirrerConnectionError,
++)
++from cubos.instruments.stirrer.interface import StirrerInstrument
++from cubos.instruments.stirrer.vendors.mock import MockStirrer
++from cubos.instruments.stirrer.vendors.pawduino import PawduinoStirrer, parse_status
++from cubos.protocol_engine.commands._summaries import stir as stir_summary
++from cubos.protocol_engine.commands.stir import stir
++from cubos.protocol_engine.errors import ProtocolExecutionError
++from cubos.protocol_engine.runtime import ProtocolContext
++
++STATUS_RUNNING = 'OK:{"target":600,"setpoint":300,"rpm":290.0,"duty":0.412,"stalled":0,"left_s":-1}'
++STATUS_STOPPED = 'OK:{"target":0,"setpoint":0,"rpm":0.0,"duty":0.000,"stalled":0,"left_s":-1}'
++
++
++@pytest.fixture(autouse=True)
++def _fresh_links():
++    PawduinoLink.reset_registry()
++    yield
++    PawduinoLink.reset_registry()
++
++
++def _linked_stirrer(responses, **kwargs):
++    """Pawduino stirrer on a pre-opened mocked link (bypassing connect)."""
++    stirrer = PawduinoStirrer(port="/dev/ttyACM0", **kwargs)
++    ser = MagicMock()
++    ser.is_open = True
++    ser.in_waiting = 0
++    ser.readline.side_effect = [r.encode() + b"\n" for r in responses]
++    link = PawduinoLink.acquire("/dev/ttyACM0")
++    link._serial = ser
++    link._holders = 1
++    stirrer._link = link
++    return stirrer, ser
++
++
++def _sent(ser):
++    return [c.args[0].decode().strip() for c in ser.write.call_args_list]
++
++
++class FakeGantry:
++    def __init__(self, instruments):
++        self.instruments = instruments
++        self.safe_z = 100.0
++
++
++def _context(instruments):
++    return ProtocolContext(gantry=FakeGantry(instruments), deck=None)
++
++
++class TestRegistry:
++    def test_stirrer_is_deck_mounted(self):
++        assert get_mount("stirrer") == "deck"
++        assert is_deck_mounted("stirrer")
++
++    def test_head_types_default_to_head(self):
++        assert get_mount("pipette") == "head"
++        assert not is_deck_mounted("capper")
++
++    def test_vendors_resolve(self):
++        assert get_instrument_class("stirrer", "pawduino") is PawduinoStirrer
++        assert get_instrument_class("stirrer", "mock") is MockStirrer
++        assert issubclass(PawduinoStirrer, StirrerInstrument)
++        assert issubclass(StirrerInstrument, BaseInstrument)
++
++
++class TestLoader:
++    def test_loader_marks_instance_deck_mounted(self):
++        instruments = _instantiate_instruments(
++            {
++                "stirrer_1": {"type": "stirrer", "vendor": "pawduino",
++                              "port": "/dev/ttyACM0", "offset_x": 0.0,
++                              "offset_y": 0.0, "depth": 0.0},
++                "cam": {"type": "camera", "vendor": "mount_only"},
++            },
++            mock_mode=True,
++        )
++        assert instruments["stirrer_1"].is_deck_mounted
++        assert not instruments["cam"].is_deck_mounted
++
++    @pytest.mark.parametrize("field", ["offset_x", "offset_y", "depth"])
++    def test_loader_rejects_head_geometry_on_deck_instrument(self, field):
++        with pytest.raises(ValueError, match="deck-mounted"):
++            _instantiate_instruments(
++                {"stirrer_1": {"type": "stirrer", "vendor": "mock", field: 5.0}},
++            )
++
++    def test_loader_rejects_unknown_fields(self):
++        with pytest.raises(ValueError, match="unsupported YAML"):
++            _instantiate_instruments(
++                {"stirrer_1": {"type": "stirrer", "vendor": "pawduino",
++                               "channel": 2}},
++            )
++
++
++class TestGantryHandling:
++    def test_head_cannot_move_to_deck_instrument(self):
++        gantry = InstrumentedGantry(
++            controller=None,
++            instruments={"stirrer_1": MockStirrer(), "cam": MountOnlyCamera(offline=True)},
++        )
++        with pytest.raises(ValueError, match="deck-mounted"):
++            gantry._resolve_instrument("stirrer_1")
++        assert list(gantry.head_instruments) == ["cam"]
++
++    def test_disconnect_stops_stirrers(self):
++        stirrer = MockStirrer()
++        stirrer.set_speed(600)
++        gantry = InstrumentedGantry(controller=None, instruments={"stirrer_1": stirrer})
++        gantry.disconnect_instruments()
++        assert stirrer.actuation_log[-1] == "stop"
++        assert not stirrer.status().running
++
++    def test_disconnect_proceeds_when_stop_fails(self):
++        stirrer = MockStirrer()
++        disconnected = []
++
++        def failing_stop():
++            raise RuntimeError("dead board")
++
++        stirrer.stop = failing_stop
++        original = stirrer.disconnect
++        stirrer.disconnect = lambda: disconnected.append(True) or original()
++        gantry = InstrumentedGantry(controller=None, instruments={"stirrer_1": stirrer})
++        gantry.disconnect_instruments()
++        assert disconnected == [True]
++
++
++class TestPawduinoStirrer:
++    def test_set_speed_sends_30_with_seconds(self):
++        stirrer, ser = _linked_stirrer(['OK:{"msg":"Stirring","v":[600.00,90.00]}'])
++        assert stirrer.set_speed(600, 90) == 600.0
++        assert _sent(ser) == ["30,600.0,90.0"]
++
++    def test_set_speed_untimed(self):
++        stirrer, ser = _linked_stirrer(['OK:{"msg":"Stirring","v":[400.00,0.00]}'])
++        stirrer.set_speed(400)
++        assert _sent(ser) == ["30,400.0"]
++
++    def test_stop_sends_30_0_then_reads_status(self):
++        stirrer, ser = _linked_stirrer(['OK:{"msg":"Stirrer off"}', STATUS_STOPPED])
++        stirrer.stop()
++        assert _sent(ser) == ["30,0", "31"]
++
++    def test_status_parsed(self):
++        stirrer, _ = _linked_stirrer([STATUS_RUNNING])
++        status = stirrer.status()
++        assert status.target_rpm == 600 and status.rpm == 290.0
++        assert status.duty == pytest.approx(0.412)
++        assert status.seconds_left is None and not status.stalled
++        assert status.running
++
++    def test_timed_status_has_seconds_left(self):
++        s = parse_status('OK:{"target":600,"setpoint":600,"rpm":612.0,'
++                         '"duty":0.5,"stalled":0,"left_s":42}')
++        assert s.seconds_left == 42
++
++    @pytest.mark.parametrize("rpm", [50, 2500, -1])
++    def test_out_of_range_rpm_rejected_before_sending(self, rpm):
++        stirrer, ser = _linked_stirrer([])
++        with pytest.raises(StirrerConfigError):
++            stirrer.set_speed(rpm)
++        assert _sent(ser) == []
++
++    def test_seconds_must_be_positive(self):
++        stirrer, _ = _linked_stirrer([])
++        with pytest.raises(StirrerConfigError):
++            stirrer.set_speed(600, 0)
++
++    def test_connect_refuses_firmware_without_stir_commands(self, monkeypatch):
++        stirrer = PawduinoStirrer(port="/dev/ttyACM0")
++        link = PawduinoLink.acquire("/dev/ttyACM0")
++        monkeypatch.setattr(link, "connect", lambda timeout=30.0: None)
++        monkeypatch.setattr(link, "disconnect", lambda: None)
++
++        from cubos.instruments.controllers.pawduino import PawduinoLinkCommandError
++
++        def send(code, *args, timeout=30.0, expect=None):
++            raise PawduinoLinkCommandError(f"Command {code} failed: ERR:Unknown command")
++
++        monkeypatch.setattr(link, "send_command", send)
++        with pytest.raises(StirrerConnectionError, match="stirrer firmware"):
++            stirrer.connect()
++
++    def test_offline_simulates(self):
++        stirrer = PawduinoStirrer(offline=True)
++        stirrer.connect()
++        stirrer.set_speed(600, 30)
++        assert stirrer.status().running
++        assert not stirrer.wait_until_stopped(40).running
++        stirrer.disconnect()
++
++
++class TestStirCommand:
++    def test_untimed_stir_does_not_block(self):
++        stirrer = MockStirrer()
++        stir(_context({"stirrer_1": stirrer}), instrument="stirrer_1", rpm=600)
++        assert stirrer.actuation_log == ["set_speed 600"]
++        assert stirrer.status().running
++
++    def test_timed_stir_blocks_by_default(self):
++        stirrer = MockStirrer()
++        stir(_context({"stirrer_1": stirrer}), instrument="stirrer_1", rpm=600, seconds=60)
++        assert stirrer.actuation_log == ["set_speed 600 60s", "wait_until_stopped"]
++        assert not stirrer.status().running
++
++    def test_timed_stir_without_wait(self):
++        stirrer = MockStirrer()
++        stir(_context({"stirrer_1": stirrer}), instrument="stirrer_1",
++             rpm=600, seconds=90, wait=False)
++        assert stirrer.actuation_log == ["set_speed 600 90s"]
++        assert stirrer.status().running
++
++    def test_rpm_zero_stops(self):
++        stirrer = MockStirrer()
++        stirrer.set_speed(600)
++        stir(_context({"stirrer_1": stirrer}), instrument="stirrer_1", rpm=0)
++        assert stirrer.actuation_log[-1] == "stop"
++
++    def test_wait_needs_seconds(self):
++        with pytest.raises(ProtocolExecutionError, match="needs `seconds`"):
++            stir(_context({"stirrer_1": MockStirrer()}), instrument="stirrer_1",
++                 rpm=600, wait=True)
++
++    def test_out_of_range_wrapped(self):
++        with pytest.raises(ProtocolExecutionError, match="outside"):
++            stir(_context({"stirrer_1": MockStirrer()}), instrument="stirrer_1", rpm=5000)
++
++    def test_wrong_instrument_type(self):
++        with pytest.raises(ProtocolExecutionError, match="not a StirrerInstrument"):
++            stir(_context({"cam": MountOnlyCamera(offline=True)}), instrument="cam", rpm=600)
++
++    def test_unknown_instrument(self):
++        with pytest.raises(ProtocolExecutionError, match="No instrument"):
++            stir(_context({}), instrument="stirrer_1", rpm=600)
++
++    def test_summaries(self):
++        assert "600 rpm" in stir_summary({"instrument": "s", "rpm": 600})
++        assert "stop" in stir_summary({"instrument": "s", "rpm": 0})
++        assert "no wait" in stir_summary({"instrument": "s", "rpm": 600,
++                                          "seconds": 90, "wait": False})
+diff --git a/packages/core/tests/instruments/test_registry.py b/packages/core/tests/instruments/test_registry.py
+index daec56f..bc7d39b 100644
+--- a/packages/core/tests/instruments/test_registry.py
++++ b/packages/core/tests/instruments/test_registry.py
+@@ -33,6 +33,7 @@ EXPECTED_TYPES = [
+     "mounted_tool",
+     "pipette",
+     "potentiostat",
++    "stirrer",
+     "uv_curing",
+     "uvvis_ccs",
+ ]
+@@ -187,7 +188,10 @@ class TestLoadRegistry:
+         registry = load_registry()
+         for type_key, entry in registry["instruments"].items():
+             assert "interface" in entry, f"{type_key} missing interface"
+-            assert entry.get("calibration_mode") in {"contact", "non_contact", "follow_camera"}
++            assert entry.get("mount", "head") in {"head", "deck"}
++            if entry.get("mount", "head") == "head":
++                # A deck-mounted type has nothing on the head to calibrate.
++                assert entry.get("calibration_mode") in {"contact", "non_contact", "follow_camera"}
+             assert "vendors" in entry, f"{type_key} missing vendors"
+             assert len(entry["vendors"]) > 0, f"{type_key} has empty vendors"
+             for vendor_key, vendor in entry["vendors"].items():

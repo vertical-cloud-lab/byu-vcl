@@ -297,6 +297,55 @@ def arduino(a, port: str, out: Out, cmds, label: str) -> list[dict]:
     return rows
 
 
+def stirrers(g: dict) -> list[str]:
+    """Names of the gantry file's live `stirrer` instruments (approach 1, #133)."""
+    return [n for n, i in (g.get("instruments") or {}).items()
+            if isinstance(i, dict) and i.get("type") == "stirrer" and not i.get("offline")]
+
+
+def stir_summary(trace: list, steps: list) -> list[str]:
+    """Markdown lines: each stir window (30,<rpm> to the next stop) and its 31 readings."""
+    def step_at(t: str) -> str:
+        cur = ""
+        for s in steps:
+            if s["t"] <= t:
+                cur = f"{s['index']} {s['command']}"
+        return cur
+
+    windows, cur = [], None
+    for r in trace:
+        reply = str(r.get("reply") or r.get("error") or "")
+        if r["code"] == 30:
+            rpm = float(r["args"][0].strip("'\"")) if r["args"] else 0.0
+            if rpm > 0:
+                cur = {"t0": r["t"], "step": step_at(r["t"]), "rpm": rpm, "reads": [],
+                       "set_reply": reply}
+                windows.append(cur)
+            elif cur is not None:
+                cur["t1"], cur["stop_step"], cur = r["t"], step_at(r["t"]), None
+        elif r["code"] == 31 and cur is not None and reply.startswith("OK:"):
+            try:
+                cur["reads"].append(json.loads(reply.split(":", 1)[1]))
+            except ValueError:
+                pass
+    if not windows:
+        return []
+    L = ["", "| stir | started (UTC) | at step | stopped at step | s | `31` reads | rpm max | rpm median, last 10 s | stalled |",
+         "|---:|---|---|---|---:|---:|---:|---:|---|"]
+    for n, w in enumerate(windows, 1):
+        t0 = dt.datetime.fromisoformat(w["t0"])
+        t1 = dt.datetime.fromisoformat(w["t1"]) if w.get("t1") else None
+        rpms = [float(x.get("rpm", 0)) for x in w["reads"]]
+        tail = rpms[-10:]
+        L.append(f"| {n} | {w['t0'][11:23]} | {w['step']} | {w.get('stop_step', '(teardown)')} | "
+                 f"{(t1 - t0).total_seconds():.1f} | " if t1 else
+                 f"| {n} | {w['t0'][11:23]} | {w['step']} | (teardown) | ? | ")
+        L[-1] += (f"{len(rpms)} | {max(rpms):.0f} | {statistics.median(tail):.0f} | "
+                  f"{'yes' if any(int(x.get('stalled', 0)) for x in w['reads']) else 'no'} |"
+                  if rpms else "0 | - | - | - |")
+    return L
+
+
 def tic(*args: str) -> tuple[int, str]:
     return sh([str(TICCMD), *args], timeout=20)
 
@@ -408,7 +457,8 @@ def slice_logs(before: dict, out: Out) -> dict:
 def run(a, out: Out, rec: dict) -> dict:
     env = dict(os.environ, PYTHONDONTWRITEBYTECODE="1",
                PLUNGER_TRACE_OUT=str(out.dir / "plunger_trace.json"),
-               STEP_TRACE_OUT=str(out.dir / "step_trace.json"))
+               STEP_TRACE_OUT=str(out.dir / "step_trace.json"),
+               STIR_TRACE_OUT=str(out.dir / "stir_trace.json"))
     cmd = [sys.executable, str(TOOLS / "run_with_camera_and_plunger_trace.py")]
     if a.no_camera:
         env["CUBXL_NO_CAMERA"] = "1"
@@ -585,12 +635,18 @@ def summarize(a, out: Out, rec: dict, r: dict | None, status: str, err: str = ""
             rep = (t.get("reply") or t.get("error") or "")[:60].replace("|", "/")
             L += [f"| {t['t'][11:19]} | {PLUNGER.get(t['code'], t['code'])} | "
                   f"{', '.join(x.strip(chr(39)) for x in t['args'])} | {t['dt_s']:.2f} | `{rep}` |"]
+    stir_trace = jl("stir_trace.json")
+    if stir_trace:
+        try:
+            L += stir_summary(stir_trace, steps)
+        except Exception as e:                           # noqa: BLE001  never lose the summary
+            L += ["", f"(stir summary failed: {e!r}; see stir_trace.json)"]
     if a.baseline and Path(a.baseline, "summary.json").exists():
         b = json.loads(Path(a.baseline, "summary.json").read_text())
         L += ["", f"Baseline `{Path(a.baseline).name}`: wall {b.get('wall_s')} s, "
               f"G01 total {(b.get('gcode') or {}).get('g01_total_s')} s"]
     L += ["", "Files: `runner.log` (everything), `checks.json`, `gate_*.log`, `run_hardware.log`, "
-          "`step_trace.json`, `plunger_trace.json`, `gantry_*.log`, `tic_*`, `arduino_*.log`, `frames/`."]
+          "`step_trace.json`, `plunger_trace.json`, `stir_trace.json`, `gantry_*.log`, `tic_*`, `arduino_*.log`, `frames/`."]
     text = "\n".join(L) + "\n"
     out.write("SUMMARY.md", text)
     rec["status"] = status
@@ -651,6 +707,10 @@ def main() -> int:
         ard_port = (ports.get("pipette") or ports.get("vial_capper_decapper") or {}).get("port")
         if ard_port:
             cmds = [("STATUS", 14, 10), ("cap sensor", 7, 10), ("EMAG_OFF", 6, 10)]
+            if stirrers(g):
+                # The firmware must have the stir commands (30/31) before a run
+                # that uses them starts: an ERR here refuses the run below.
+                cmds.append(("STIR_STATUS", 31, 10))
             out.say("Arduino:")
             rows = arduino(a, ard_port, out, cmds, "before")
             rec["arduino_before"] = rows
