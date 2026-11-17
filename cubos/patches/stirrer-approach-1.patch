@@ -590,10 +590,10 @@ index 0000000..0995d06
 +        return self._sim.status()
 diff --git a/packages/core/src/cubos/instruments/stirrer/vendors/pawduino.py b/packages/core/src/cubos/instruments/stirrer/vendors/pawduino.py
 new file mode 100644
-index 0000000..d3c185c
+index 0000000..a8317eb
 --- /dev/null
 +++ b/packages/core/src/cubos/instruments/stirrer/vendors/pawduino.py
-@@ -0,0 +1,270 @@
+@@ -0,0 +1,273 @@
 +"""Pawduino magnetic stirrer: the VCL stir module on the PANDA Arduino.
 +
 +Firmware commands (byu-vcl ``cubos/firmware/panda-arduino-stirrer.patch``):
@@ -792,11 +792,14 @@ index 0000000..d3c185c
 +        if self._offline:
 +            self._sim.finish_timed_run()
 +            return self.status()
++        # This loop reads and logs the status itself, so the poller would
++        # only double the reads.
++        self._stop_poller()
 +        deadline = time.monotonic() + timeout
 +        while True:
 +            status = self.status()
++            self._log_status(status)
 +            if not status.running:
-+                self._log_status(status)
 +                return status
 +            if time.monotonic() >= deadline:
 +                raise StirrerTimeoutError(

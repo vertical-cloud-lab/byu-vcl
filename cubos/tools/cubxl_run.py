@@ -322,27 +322,29 @@ def stir_summary(trace: list, steps: list) -> list[str]:
                        "set_reply": reply}
                 windows.append(cur)
             elif cur is not None:
-                cur["t1"], cur["stop_step"], cur = r["t"], step_at(r["t"]), None
+                cur["t1"], cur["stop"], cur = r["t"], f"step {step_at(r['t'])}", None
         elif r["code"] == 31 and cur is not None and reply.startswith("OK:"):
             try:
-                cur["reads"].append(json.loads(reply.split(":", 1)[1]))
+                st = json.loads(reply.split(":", 1)[1])
             except ValueError:
-                pass
+                continue
+            cur["reads"].append(st)
+            if float(st.get("target", 0)) <= 0:          # the firmware stopped it itself
+                why = "stall" if int(st.get("stalled", 0)) else "its timer"
+                cur["t1"], cur["stop"], cur = r["t"], f"firmware ({why})", None
     if not windows:
         return []
-    L = ["", "| stir | started (UTC) | at step | stopped at step | s | `31` reads | rpm max | rpm median, last 10 s | stalled |",
+    L = ["", "| stir | started (UTC) | at step | stopped by | s | `31` reads | rpm max | rpm median, last 10 reads | stalled |",
          "|---:|---|---|---|---:|---:|---:|---:|---|"]
     for n, w in enumerate(windows, 1):
         t0 = dt.datetime.fromisoformat(w["t0"])
         t1 = dt.datetime.fromisoformat(w["t1"]) if w.get("t1") else None
+        secs = f"{(t1 - t0).total_seconds():.1f}" if t1 else "?"
         rpms = [float(x.get("rpm", 0)) for x in w["reads"]]
-        tail = rpms[-10:]
-        L.append(f"| {n} | {w['t0'][11:23]} | {w['step']} | {w.get('stop_step', '(teardown)')} | "
-                 f"{(t1 - t0).total_seconds():.1f} | " if t1 else
-                 f"| {n} | {w['t0'][11:23]} | {w['step']} | (teardown) | ? | ")
-        L[-1] += (f"{len(rpms)} | {max(rpms):.0f} | {statistics.median(tail):.0f} | "
-                  f"{'yes' if any(int(x.get('stalled', 0)) for x in w['reads']) else 'no'} |"
-                  if rpms else "0 | - | - | - |")
+        stalled = "yes" if any(int(x.get("stalled", 0)) for x in w["reads"]) else "no"
+        L.append(f"| {n} | {w['t0'][11:23]} | {w['step']} | {w.get('stop', 'teardown')} | {secs} | "
+                 + (f"{len(rpms)} | {max(rpms):.0f} | {statistics.median(rpms[-10:]):.0f} | {stalled} |"
+                    if rpms else "0 | - | - | - |"))
     return L
 
 

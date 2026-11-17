@@ -56,6 +56,7 @@ if _stir is not None:
 
     def traced_stir(self, code, *args, **kwargs):
         t0 = time.time()
+        t_sent = datetime.datetime.now(datetime.timezone.utc)   # when it was sent
         exc = reply = None
         try:
             reply = _orig_stir(self, code, *args, **kwargs)
@@ -63,8 +64,7 @@ if _stir is not None:
             exc = repr(e)
             raise
         finally:
-            rec = {"t": datetime.datetime.now(datetime.timezone.utc)
-                            .isoformat(timespec="milliseconds"),
+            rec = {"t": t_sent.isoformat(timespec="milliseconds"),
                    "code": code, "args": [repr(a) for a in args],
                    "dt_s": round(time.time() - t0, 3),
                    "reply": reply, "error": exc}
