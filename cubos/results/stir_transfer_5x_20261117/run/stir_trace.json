@@ -1,0 +1,641 @@
+[
+  {
+    "t": "2026-11-17T22:50:33.868+00:00",
+    "code": 30,
+    "args": [
+      "0"
+    ],
+    "dt_s": 0.008,
+    "reply": "OK:{\"msg\":\"Stirrer off\"}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:50:33.876+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.008,
+    "reply": "OK:{\"target\":0,\"setpoint\":0,\"rpm\":0.0,\"duty\":0.000,\"stalled\":0,\"left_s\":-1}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:51:00.012+00:00",
+    "code": 30,
+    "args": [
+      "600.0",
+      "120.0"
+    ],
+    "dt_s": 0.009,
+    "reply": "OK:{\"msg\":\"Stirring\",\"v\":[600.00,120.00]}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:51:01.021+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.011,
+    "reply": "OK:{\"target\":600,\"setpoint\":100,\"rpm\":0.0,\"duty\":0.300,\"stalled\":0,\"left_s\":118}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:51:02.032+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.012,
+    "reply": "OK:{\"target\":600,\"setpoint\":300,\"rpm\":0.0,\"duty\":0.303,\"stalled\":0,\"left_s\":117}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:51:03.044+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.012,
+    "reply": "OK:{\"target\":600,\"setpoint\":300,\"rpm\":0.0,\"duty\":0.303,\"stalled\":0,\"left_s\":116}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:51:04.056+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.011,
+    "reply": "OK:{\"target\":600,\"setpoint\":500,\"rpm\":0.0,\"duty\":0.306,\"stalled\":0,\"left_s\":115}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:51:05.067+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.012,
+    "reply": "OK:{\"target\":600,\"setpoint\":500,\"rpm\":0.0,\"duty\":0.306,\"stalled\":0,\"left_s\":114}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:51:06.079+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.011,
+    "reply": "OK:{\"target\":600,\"setpoint\":600,\"rpm\":0.0,\"duty\":0.309,\"stalled\":0,\"left_s\":113}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:51:07.090+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.012,
+    "reply": "OK:{\"target\":600,\"setpoint\":600,\"rpm\":0.0,\"duty\":0.309,\"stalled\":0,\"left_s\":112}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:51:08.102+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.012,
+    "reply": "OK:{\"target\":600,\"setpoint\":600,\"rpm\":0.0,\"duty\":0.312,\"stalled\":0,\"left_s\":111}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:51:09.114+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.011,
+    "reply": "OK:{\"target\":600,\"setpoint\":600,\"rpm\":0.0,\"duty\":0.312,\"stalled\":0,\"left_s\":110}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:51:10.125+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.012,
+    "reply": "OK:{\"target\":600,\"setpoint\":600,\"rpm\":0.0,\"duty\":0.315,\"stalled\":0,\"left_s\":109}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:51:11.137+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.012,
+    "reply": "OK:{\"target\":600,\"setpoint\":600,\"rpm\":0.0,\"duty\":0.315,\"stalled\":0,\"left_s\":108}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:51:12.149+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.011,
+    "reply": "OK:{\"target\":0,\"setpoint\":0,\"rpm\":0.0,\"duty\":0.000,\"stalled\":1,\"left_s\":-1}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:51:29.228+00:00",
+    "code": 30,
+    "args": [
+      "0"
+    ],
+    "dt_s": 0.008,
+    "reply": "OK:{\"msg\":\"Stirrer off\"}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:51:29.236+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.008,
+    "reply": "OK:{\"target\":0,\"setpoint\":0,\"rpm\":0.0,\"duty\":0.000,\"stalled\":1,\"left_s\":-1}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:51:52.635+00:00",
+    "code": 30,
+    "args": [
+      "600.0",
+      "120.0"
+    ],
+    "dt_s": 0.009,
+    "reply": "OK:{\"msg\":\"Stirring\",\"v\":[600.00,120.00]}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:51:53.644+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.011,
+    "reply": "OK:{\"target\":600,\"setpoint\":100,\"rpm\":0.0,\"duty\":0.300,\"stalled\":0,\"left_s\":118}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:51:54.655+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.012,
+    "reply": "OK:{\"target\":600,\"setpoint\":300,\"rpm\":0.0,\"duty\":0.303,\"stalled\":0,\"left_s\":117}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:51:55.667+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.012,
+    "reply": "OK:{\"target\":600,\"setpoint\":300,\"rpm\":0.0,\"duty\":0.303,\"stalled\":0,\"left_s\":116}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:51:56.679+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.011,
+    "reply": "OK:{\"target\":600,\"setpoint\":500,\"rpm\":0.0,\"duty\":0.306,\"stalled\":0,\"left_s\":115}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:51:57.691+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.012,
+    "reply": "OK:{\"target\":600,\"setpoint\":500,\"rpm\":0.0,\"duty\":0.306,\"stalled\":0,\"left_s\":114}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:51:58.702+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.012,
+    "reply": "OK:{\"target\":600,\"setpoint\":600,\"rpm\":0.0,\"duty\":0.309,\"stalled\":0,\"left_s\":113}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:51:59.715+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.011,
+    "reply": "OK:{\"target\":600,\"setpoint\":600,\"rpm\":0.0,\"duty\":0.309,\"stalled\":0,\"left_s\":112}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:52:00.726+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.012,
+    "reply": "OK:{\"target\":600,\"setpoint\":600,\"rpm\":0.0,\"duty\":0.312,\"stalled\":0,\"left_s\":111}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:52:01.738+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.011,
+    "reply": "OK:{\"target\":600,\"setpoint\":600,\"rpm\":0.0,\"duty\":0.312,\"stalled\":0,\"left_s\":110}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:52:02.749+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.012,
+    "reply": "OK:{\"target\":600,\"setpoint\":600,\"rpm\":0.0,\"duty\":0.315,\"stalled\":0,\"left_s\":109}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:52:03.761+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 2.854,
+    "reply": "OK:{\"target\":0,\"setpoint\":0,\"rpm\":0.0,\"duty\":0.000,\"stalled\":1,\"left_s\":-1}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:52:14.401+00:00",
+    "code": 30,
+    "args": [
+      "0"
+    ],
+    "dt_s": 0.008,
+    "reply": "OK:{\"msg\":\"Stirrer off\"}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:52:14.409+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.008,
+    "reply": "OK:{\"target\":0,\"setpoint\":0,\"rpm\":0.0,\"duty\":0.000,\"stalled\":1,\"left_s\":-1}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:52:34.356+00:00",
+    "code": 30,
+    "args": [
+      "600.0",
+      "120.0"
+    ],
+    "dt_s": 0.008,
+    "reply": "OK:{\"msg\":\"Stirring\",\"v\":[600.00,120.00]}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:52:35.365+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.012,
+    "reply": "OK:{\"target\":600,\"setpoint\":100,\"rpm\":0.0,\"duty\":0.300,\"stalled\":0,\"left_s\":118}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:52:36.376+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.012,
+    "reply": "OK:{\"target\":600,\"setpoint\":300,\"rpm\":0.0,\"duty\":0.303,\"stalled\":0,\"left_s\":117}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:52:37.388+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.011,
+    "reply": "OK:{\"target\":600,\"setpoint\":300,\"rpm\":0.0,\"duty\":0.303,\"stalled\":0,\"left_s\":116}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:52:38.400+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.012,
+    "reply": "OK:{\"target\":600,\"setpoint\":500,\"rpm\":0.0,\"duty\":0.306,\"stalled\":0,\"left_s\":115}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:52:39.412+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.011,
+    "reply": "OK:{\"target\":600,\"setpoint\":500,\"rpm\":0.0,\"duty\":0.306,\"stalled\":0,\"left_s\":114}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:52:40.423+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.012,
+    "reply": "OK:{\"target\":600,\"setpoint\":600,\"rpm\":0.0,\"duty\":0.309,\"stalled\":0,\"left_s\":113}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:52:41.435+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.012,
+    "reply": "OK:{\"target\":600,\"setpoint\":600,\"rpm\":0.0,\"duty\":0.309,\"stalled\":0,\"left_s\":112}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:52:42.447+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.011,
+    "reply": "OK:{\"target\":600,\"setpoint\":600,\"rpm\":0.0,\"duty\":0.312,\"stalled\":0,\"left_s\":111}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:52:43.458+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.012,
+    "reply": "OK:{\"target\":600,\"setpoint\":600,\"rpm\":0.0,\"duty\":0.312,\"stalled\":0,\"left_s\":110}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:52:44.470+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.012,
+    "reply": "OK:{\"target\":600,\"setpoint\":600,\"rpm\":0.0,\"duty\":0.315,\"stalled\":0,\"left_s\":109}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:52:45.482+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 2.801,
+    "reply": "OK:{\"target\":0,\"setpoint\":0,\"rpm\":0.0,\"duty\":0.000,\"stalled\":1,\"left_s\":-1}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:52:56.077+00:00",
+    "code": 30,
+    "args": [
+      "0"
+    ],
+    "dt_s": 0.005,
+    "reply": "OK:{\"msg\":\"Stirrer off\"}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:52:56.081+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.012,
+    "reply": "OK:{\"target\":0,\"setpoint\":0,\"rpm\":0.0,\"duty\":0.000,\"stalled\":1,\"left_s\":-1}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:53:16.044+00:00",
+    "code": 30,
+    "args": [
+      "600.0",
+      "120.0"
+    ],
+    "dt_s": 0.008,
+    "reply": "OK:{\"msg\":\"Stirring\",\"v\":[600.00,120.00]}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:53:17.053+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.012,
+    "reply": "OK:{\"target\":600,\"setpoint\":100,\"rpm\":0.0,\"duty\":0.300,\"stalled\":0,\"left_s\":118}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:53:18.065+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.011,
+    "reply": "OK:{\"target\":600,\"setpoint\":300,\"rpm\":0.0,\"duty\":0.303,\"stalled\":0,\"left_s\":117}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:53:19.076+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.012,
+    "reply": "OK:{\"target\":600,\"setpoint\":300,\"rpm\":0.0,\"duty\":0.303,\"stalled\":0,\"left_s\":116}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:53:20.088+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.011,
+    "reply": "OK:{\"target\":600,\"setpoint\":500,\"rpm\":0.0,\"duty\":0.306,\"stalled\":0,\"left_s\":115}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:53:21.099+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.012,
+    "reply": "OK:{\"target\":600,\"setpoint\":500,\"rpm\":0.0,\"duty\":0.306,\"stalled\":0,\"left_s\":114}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:53:22.111+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.012,
+    "reply": "OK:{\"target\":600,\"setpoint\":600,\"rpm\":0.0,\"duty\":0.309,\"stalled\":0,\"left_s\":113}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:53:23.123+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.011,
+    "reply": "OK:{\"target\":600,\"setpoint\":600,\"rpm\":0.0,\"duty\":0.309,\"stalled\":0,\"left_s\":112}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:53:24.134+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.012,
+    "reply": "OK:{\"target\":600,\"setpoint\":600,\"rpm\":0.0,\"duty\":0.312,\"stalled\":0,\"left_s\":111}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:53:25.146+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.012,
+    "reply": "OK:{\"target\":600,\"setpoint\":600,\"rpm\":0.0,\"duty\":0.312,\"stalled\":0,\"left_s\":110}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:53:26.158+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.011,
+    "reply": "OK:{\"target\":600,\"setpoint\":600,\"rpm\":0.0,\"duty\":0.315,\"stalled\":0,\"left_s\":109}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:53:27.169+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 2.801,
+    "reply": "OK:{\"target\":0,\"setpoint\":0,\"rpm\":0.0,\"duty\":0.000,\"stalled\":1,\"left_s\":-1}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:53:37.756+00:00",
+    "code": 30,
+    "args": [
+      "0"
+    ],
+    "dt_s": 0.008,
+    "reply": "OK:{\"msg\":\"Stirrer off\"}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:53:37.764+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.008,
+    "reply": "OK:{\"target\":0,\"setpoint\":0,\"rpm\":0.0,\"duty\":0.000,\"stalled\":1,\"left_s\":-1}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:53:57.716+00:00",
+    "code": 30,
+    "args": [
+      "600.0",
+      "120.0"
+    ],
+    "dt_s": 0.008,
+    "reply": "OK:{\"msg\":\"Stirring\",\"v\":[600.00,120.00]}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:53:58.724+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.012,
+    "reply": "OK:{\"target\":600,\"setpoint\":100,\"rpm\":0.0,\"duty\":0.300,\"stalled\":0,\"left_s\":118}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:53:59.736+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.012,
+    "reply": "OK:{\"target\":600,\"setpoint\":300,\"rpm\":0.0,\"duty\":0.303,\"stalled\":0,\"left_s\":117}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:54:00.748+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.011,
+    "reply": "OK:{\"target\":600,\"setpoint\":300,\"rpm\":0.0,\"duty\":0.303,\"stalled\":0,\"left_s\":116}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:54:01.759+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.012,
+    "reply": "OK:{\"target\":600,\"setpoint\":500,\"rpm\":0.0,\"duty\":0.306,\"stalled\":0,\"left_s\":115}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:54:02.771+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.011,
+    "reply": "OK:{\"target\":600,\"setpoint\":500,\"rpm\":0.0,\"duty\":0.306,\"stalled\":0,\"left_s\":114}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:54:03.782+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.012,
+    "reply": "OK:{\"target\":600,\"setpoint\":600,\"rpm\":0.0,\"duty\":0.309,\"stalled\":0,\"left_s\":113}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:54:04.794+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.012,
+    "reply": "OK:{\"target\":600,\"setpoint\":600,\"rpm\":0.0,\"duty\":0.309,\"stalled\":0,\"left_s\":112}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:54:05.806+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.011,
+    "reply": "OK:{\"target\":600,\"setpoint\":600,\"rpm\":0.0,\"duty\":0.312,\"stalled\":0,\"left_s\":111}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:54:06.817+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.012,
+    "reply": "OK:{\"target\":600,\"setpoint\":600,\"rpm\":0.0,\"duty\":0.312,\"stalled\":0,\"left_s\":110}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:54:07.829+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.012,
+    "reply": "OK:{\"target\":600,\"setpoint\":600,\"rpm\":0.0,\"duty\":0.315,\"stalled\":0,\"left_s\":109}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:54:08.841+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 2.801,
+    "reply": "OK:{\"target\":0,\"setpoint\":0,\"rpm\":0.0,\"duty\":0.000,\"stalled\":1,\"left_s\":-1}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:54:19.428+00:00",
+    "code": 30,
+    "args": [
+      "0"
+    ],
+    "dt_s": 0.004,
+    "reply": "OK:{\"msg\":\"Stirrer off\"}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:54:19.432+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.009,
+    "reply": "OK:{\"target\":0,\"setpoint\":0,\"rpm\":0.0,\"duty\":0.000,\"stalled\":1,\"left_s\":-1}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:55:13.751+00:00",
+    "code": 30,
+    "args": [
+      "0"
+    ],
+    "dt_s": 0.004,
+    "reply": "OK:{\"msg\":\"Stirrer off\"}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:55:13.755+00:00",
+    "code": 31,
+    "args": [],
+    "dt_s": 0.009,
+    "reply": "OK:{\"target\":0,\"setpoint\":0,\"rpm\":0.0,\"duty\":0.000,\"stalled\":1,\"left_s\":-1}",
+    "error": null
+  },
+  {
+    "t": "2026-11-17T22:55:13.765+00:00",
+    "code": 30,
+    "args": [
+      "0"
+    ],
+    "dt_s": 0.007,
+    "reply": "OK:{\"msg\":\"Stirrer off\"}",
+    "error": null
+  }
+]

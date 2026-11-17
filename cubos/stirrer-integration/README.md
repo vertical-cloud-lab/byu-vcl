@@ -35,8 +35,8 @@ as head-mounted. With it, CubOS's own tests pass on the Pi: 2581, the 4-patch ba
 The patch is applied to `~/CubOS` on the CubXL Pi. A stir-only CubOS run there completed 5/5
 steps, but the stirrer read 0 rpm and stalled
 ([`stir_only_check_20261117`](../results/stir_only_check_20261117/)). The 5× transfer protocol
-Ben asked for passed every check and gate, and is waiting on the stirrer and on vial 1's
-position ([`stir_transfer_5x_20261117`](../results/stir_transfer_5x_20261117/)).
+Ben asked for then ran 45/45 with vial 1 at its new x 151, but the stirrer stalled at 0 rpm in
+all five stir windows ([`stir_transfer_5x_20261117`](../results/stir_transfer_5x_20261117/)).
 
 What changed on the Pi (none of it is in a repo there):
 
