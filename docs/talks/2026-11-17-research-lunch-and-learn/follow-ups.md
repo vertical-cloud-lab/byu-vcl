@@ -12,7 +12,7 @@ bracketed gaps in the [outline](outline.md), which now points here.
 | Point 3: "**[N]** meetings… **[including at MRS]**" | **About 7** (4 confirmed, 3 likely), from about 27 people contacted, so roughly 1 in 4. None from MRS yet | [`meetings.md`](meetings.md) |
 | Conclusion: "the **[CES]** subscription" | Both Whisper passes were right: it's the **CES ChatGPT Edu** licence, and Codex comes with it | [below](#the-ces-subscription) |
 | Option B: Taylor Sparks's post | Not found. LinkedIn posts aren't indexed | [below](#taylor-sparkss-post) |
-| (new) What the research says | Four Edison literature questions. Three are answered | [below](#what-the-literature-says-edison) |
+| (new) What the research says | Four Edison literature questions, all answered | [below](#what-the-literature-says-edison) |
 
 ![The 95 lab designs, turning](cad/grid.gif)
 
@@ -91,8 +91,30 @@ answer's own caveats matter: most of the studies are small, and many rely on sel
 
 ### LLM-generated CAD → point 1
 
-Still running when this was written. It will be in `edison/generative-cad.md` once fetched (run
-`python -I edison/fetch.py`).
+[Full answer](edison/generative-cad.md).
+
+> "Large language models can often produce *executable* CadQuery, build123d, OpenSCAD, or
+> FreeCAD code for relatively simple parts. They are substantially less reliable at satisfying
+> exact dimensions, feature relationships, assembly constraints, and manufacturing requirements."
+
+- **"Done" isn't done. This is the best single number for point 2.**
+  - In a build123d benchmark, single-shot agents claimed they had finished 98% of the time, but
+    only 64% of their parts passed the checks.
+  - Making the agent measure the part with the CAD kernel before claiming raised real success to
+    78%. It also cut silent failures (a clean-looking solid that is wrong) from 14% to 3%.
+- **Tests beat pictures.** On a 200-part CadQuery benchmark, executable kernel tests gave the
+  clearest gains. Feedback from four rendered views did not improve results.
+- **CADSmith is in the literature.** It's the same multi-agent CAD system whose CMU authors the lab
+  e-mailed in August ([`meetings.md`](meetings.md)). Kernel checks plus rendered views took it from 95% to
+  100% of parts executing and sharply reduced geometric error. Even so, a high-scoring quadcopter
+  frame passed validation with gaps that couldn't be manufactured.
+- **Manufacturability is the weak point.** On MUSE, the best model (GPT-5.5) executed 77% of
+  designs, but its manufacturability rubric score was only 49%. None of the parts were actually
+  made.
+- **No benchmark covers lab automation.** "For laboratory automation specifically, the evidence
+  is thinner": no benchmark establishes a physically verified success rate for LLM-designed
+  lab-automation parts. That is the gap the lab's 97 designs, and the parts actually printed
+  from them, speak to.
 
 ## The CES subscription
 
