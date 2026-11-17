@@ -7,7 +7,7 @@ The talk is modelled on Doumont's own six-minute talk, whose opening and closing
 annotated for teaching.
 
 The [follow-ups](follow-ups.md) fill most of the bracketed gaps below: the CAD renders, the
-meeting count, real prompt pairs and pings, and what the literature says.
+[five system animations](systems/README.md) for slide 4, the meeting count, real prompt pairs and pings, and what the literature says.
 
 Draft wording, in italics, is a starting point. Doumont says to learn only the first and last
 few sentences by heart, and otherwise to "memorize your outline but not your wording". Items in
@@ -96,11 +96,15 @@ Transition: *"So: how much of our work can agents take on?"*
   administrative work, literature search and review, writing, coding, experiment planning,
   experiment execution. That's seven boxes in a row, from desk to lab. Say the message, then
   let the picture carry the list; don't read it out.
-- **One example, shown rather than told:** your generative CAD. Agents produced **111 distinct
-  designs** for the lab since April. That's 97 parts and systems the lab built or proposed, 36 of
-  them for the powder doser, plus 14 models of equipment it already has. Show the
-  [grid of 95 turning at once](cad/grid.gif) and say *"95 designs in seven months"*. Or show one
-  exploded doser assembly ([options](cad/README.md#for-the-slide)).
+- **One example, shown rather than told:** five whole systems the agents designed and animated,
+  in a 74 s [showreel](systems/showreel.mp4) ([what's in it](systems/README.md)). They are the
+  PiPER wrist camera mount, the OT-2 overhead camera, the PiPER swapping the powder doser's auger,
+  the CubXL copper corrosion screen and the vertical lab. Lead with the one that exists: the OT-2
+  camera went from a comment on 25 Sep, through prints the agent sent itself, to a live stream on
+  18 Oct. Then let the reel run while you say *"and it didn't stop at one part"*. Be straight that
+  one is built, one is printed and three are designs or proposals.
+  - If you want a number, there are **111 distinct agent-made designs** since April
+    ([`cad/`](cad/README.md)). Say it, but don't show the grid: the systems carry the point better.
 - **Many agents at once:** spinning up one agent after another, as in Taylor's post, if you
   didn't use it in the opening.
 - Transition, creating the need for point 2: *"But for every task that worked, I've had one
@@ -188,7 +192,7 @@ Seven slides is plenty for six minutes; "Do your slides right… or don't do sli
 | 1 | *Doing research with AI agents* | Title only, or blank during the show of hands |
 | 2 | AI went from finishing our lines of code to running agent teams | Timeline: line completion → chat → cloud agents → multi-agent, multi-tool |
 | 3 | *Doing research with AI agents* (structure slide, named after the talk, not "Outline") | Three short labels: the whole stack · context and tools · in the open. Show it again at each transition with the current point highlighted. |
-| 4 | Agents now reach across the whole research stack | Seven boxes from teaching to running experiments, plus the [grid of 95 agent-made designs](cad/grid.gif) |
+| 4 | Agents now reach across the whole research stack | Seven boxes from teaching to running experiments, then the [five-system showreel](systems/showreel.mp4) (74 s; trim to the OT-2 clip if short on time) |
 | 5 | The same agent succeeds or fails on context and tools | Not-so-good and good prompt side by side |
 | 6 | Working in the open keeps agents accountable and connects people | The atomizer ping ([DAL #153](https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/153)), plus "~7 meetings" as one large number |
 | 7 | Book 30 minutes and leave with your first agent running | A large QR code; no "Thank you" or "Questions?" slide |
