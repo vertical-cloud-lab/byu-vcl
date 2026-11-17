@@ -9,6 +9,16 @@ import matplotlib.pyplot as plt
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
+
+def save_gif(frames, path, ms, scale=0.8, step=1, hold=10):
+    """Every `step`-th frame, scaled and put on one shared 128-colour palette, so the GIF stays a few MB."""
+    frames = frames[::step] + ([frames[-1]] if (len(frames) - 1) % step else [])
+    size = (int(frames[0].width * scale), int(frames[0].height * scale))
+    small = [f.resize(size, Image.LANCZOS) for f in frames]
+    pal = small[len(small) // 2].convert("P", palette=Image.ADAPTIVE, colors=128)
+    q = [f.quantize(palette=pal, dither=Image.Dither.NONE) for f in small]
+    q[0].save(path, save_all=True, append_images=q[1:] + [q[-1]] * hold, duration=ms, loop=0, optimize=True)
+
 OUT = Path(__file__).resolve().parent / "out"
 runs = sorted((json.loads(p.read_text()) for p in OUT.glob("doser_funnel_b*.json")), key=lambda r: r["beta_deg"])
 SERIES = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100"]          # categorical slots 1-4, fixed order
@@ -87,8 +97,7 @@ if stacks:
             d.text((10, 30), f"t = {i * dt:.2f} s   in vial {100 * e['in_vial']:.0f} %", fill=MUTED, font=small)
             sheet.paste(im, (j * w, 0))
         frames.append(sheet)
-    frames[0].save(OUT / "doser_funnel.gif", save_all=True, append_images=frames[1:] + [frames[-1]] * 10,
-                   duration=100, loop=0)
+    save_gif(frames, OUT / "doser_funnel.gif", ms=100, scale=0.8, step=1)
     frames[min(6, n - 1)].save(OUT / "doser_funnel_frame.png")
     frames[-1].save(OUT / "doser_funnel_final.png")
     print("wrote", OUT / "doser_funnel.gif", n, "frames")

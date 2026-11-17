@@ -11,7 +11,9 @@ different falls". This folder has one of each kind, made with lab equipment:
 
 1. **The vertical lift module (VLM) ([#303](https://github.com/vertical-cloud-lab/byu-vcl/issues/303), [#53](https://github.com/vertical-cloud-lab/byu-vcl/issues/53)).**
    48 trays, 48 accelerations: loose labware on a tray that speeds up and stops, with one acceleration per world.
-2. **The powder doser.** Powder dropped through the doser's funnel into a vial, at four wall angles.
+2. **The powder doser: "Powder, dosed to the mark".** A scoop tips powder into a vial on a simulated load cell, and a
+   controller tips it back at a target mass. This is Alloy's water pour, with powder and closed loop.
+3. **The powder doser's funnel.** Powder dropped through a funnel into a vial, at four wall angles.
 
 Everything ran on the CPU of a GitHub Actions runner (4 cores, 16 GB, no GPU), and every number below comes from
 these runs.
