@@ -275,9 +275,12 @@ with `sudo nmcli connection delete ot2-usb`. Two more things to know:
 
 - **The robot stays silent until something talks to it.** Zero packets received on `eth1`
   does not mean it is off. `GET /health` is the test.
-- **The Opentrons App can't see the robot while its cable is on the Pi.** Pipette
-  calibration and Labware Position Check happen in the App, so for those the cable goes to
-  the App's laptop instead.
+- **The Opentrons App can't see the robot while its cable is on the Pi.** Labware Position
+  Check exists only in the App, so for that the cable goes to the App's laptop. Pipette
+  calibration can also run from the Pi, through the App's own `/sessions` API, but only with
+  a person at the robot saying when the tip touches. See "Driving the App's calibration from
+  the Pi" in `wireless-color-sensor/ot2/opentrons-calibration.md`, which also covers the
+  robot's built-in camera (`POST /camera/picture`).
 
 **Reaching the CubXL Pi.** A Pi 5 on the tailnet at `CUBXL_PI_HOSTNAME`, reachable over
 Tailscale SSH as `CUBXL_PI_USERNAME` the same way the stream-cam Pis are. It is the access

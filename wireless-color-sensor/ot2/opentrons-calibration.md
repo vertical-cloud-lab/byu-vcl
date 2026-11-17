@@ -532,14 +532,88 @@ switch is the more predictable fix.
 ### Why not just do this over HTTP
 
 Protocol runs do not need the app at all — `run_xscan_test.py` already drives
-the robot over HTTP. Calibration is *also* reachable over HTTP: the app writes
-it by POSTing `calibration/moveToMaintenancePosition` and
-`calibration/calibratePipette` into `/maintenance_runs` (there is no
-`POST /calibration/...`; those routes are `get`/`delete` only). What is not
-automatable is the loop in the middle — a human jogs the pipette down and
-confirms by eye that the tip is touching the deck cross or the calibration
-block. Replacing the app means re-implementing its jog UI for a one-off, which
-is why the app is the recommended path here rather than a hard requirement.
+the robot over HTTP. **Calibration is reachable over HTTP too, through the same
+`/sessions` API the App uses** (checked on robot software 8.8.1, 2026-11-17). An
+earlier version of this note said the App writes it with
+`calibration/calibratePipette` in `/maintenance_runs`; that command is the
+Flex's, and needs the Flex's calibration probe. There is still no
+`POST /calibration/...`: those routes are `get`/`delete` only. What cannot be
+automated is the loop in the middle: a person has to look and say when the
+nozzle or tip is touching. [`remote_pipette_cal.py`](remote_pipette_cal.py) runs
+that loop with the person replying in a GitHub thread. The App is still the
+easier path whenever a laptop can take the robot's cable.
+
+### Driving the App's calibration from the Pi (tried 2026-11-17)
+
+Tried on [#349](https://github.com/vertical-cloud-lab/byu-vcl/issues/349)
+through the CubXL Pi. Step 1 (bare nozzle on the trash) worked. The person at the
+robot then stopped the run before the tip pick-up, so **nothing was saved**.
+
+`POST /sessions` with
+
+```json
+{"data": {"sessionType": "pipetteOffsetCalibration",
+          "createParams": {"mount": "left", "shouldRecalibrateTipLength": true,
+                           "hasCalibrationBlock": false, "tipRackDefinition": null}}}
+```
+
+**Creating the session homes the robot** and turns the rail lights on. A `null`
+tip rack means `opentrons_96_tiprack_300ul`, which the session always puts in
+**slot 8**. Then send each command as
+`POST /sessions/{id}/commands/execute` with
+`{"data": {"command": "...", "data": {}}}`, in this order:
+
+| command | what moves | state after |
+| --- | --- | --- |
+| `calibration.loadLabware` | nothing | `labwareLoaded` |
+| `calibration.moveToReferencePoint` | bare nozzle to 5 mm above the trash's flat top, near its front-left corner (or the block in slot 3) | `measuringNozzleOffset` |
+| `calibration.jog`, `{"vector": [dx, dy, dz]}` | relative move, mm | unchanged |
+| `calibration.saveOffset` | nothing; records the nozzle height | unchanged |
+| `calibration.moveToTipRack` | nozzle to 10 mm above A1 in slot 8 | `preparingPipette` |
+| `calibration.pickUpTip` | picks up a tip from wherever the nozzle is | `inspectingTip` |
+| `calibration.moveToReferencePoint` | tip to 5 mm above the same spot | `measuringTipOffset` |
+| `calibration.saveOffset` | retracts 20 mm; **saves the tip length** | `tipLengthComplete` |
+| `calibration.moveToDeck` | tip to 5 mm above the deck near the front of **slot 5** | `joggingToDeck` |
+| `calibration.saveOffset` | nothing; records the deck height | unchanged |
+| `calibration.moveToPointOne` | tip to the cross at the front-left corner of **slot 1**, at that height | `savingPointOne` |
+| `calibration.saveOffset` | nothing; **saves the pipette offset** | `calibrationComplete` |
+| `calibration.exitSession` | puts the tip back where it was picked up, homes | `sessionExited` |
+
+Then `DELETE /sessions/{id}`, which only turns the lights back off. Jogs are
+allowed in `measuringNozzleOffset`, `preparingPipette`, `measuringTipOffset`,
+`joggingToDeck` and `savingPointOne`.
+
+- **Slot 5 must be empty, and nothing can stand in for it.** `moveToDeck` brings
+  the tip straight down there. With plate A's vial holder in slot 5 it would go
+  into the vials. Slot 1 must be clear for the cross.
+- **The session knows only the tip rack, the trash and the block.** Its arcs
+  rise to about 92 mm (the trash's 82 mm plus 10), and it doesn't know about
+  anything else on the deck. With the tip taken from A1 in slot 8, the way back
+  from slot 1 crosses the front of slot 7, so take the plate off the
+  Heater-Shaker. With H12 (in slot 8 or slot 6), no path crosses slot 7.
+- **A rack elsewhere works.** Jog to it while in `preparingPipette`. From slot
+  8 A1 to slot 6 H12 is `[231.5, -153.5, 0]`, sent 20 mm up and lowered after.
+  `pickUpTip` records wherever the nozzle is as the tip's origin, and
+  `exitSession` puts the tip back there.
+- **The bare nozzle met the trash 2 mm below the approach point,** so 3 mm above
+  where the robot puts that surface. Until it is calibrated, expect this P300's
+  nozzle to sit about 3 mm lower than nominal.
+- **Check the thread for `stop` before every move,** not only inside the jog
+  loop. On 2026-11-17 a `stop` arrived during a manual move, and one more move
+  went out before the script read it.
+
+### The OT-2's own camera
+
+`POST /camera/picture` returns a 640×480 JPEG from a camera built into the
+robot. `GET /camera` reports `cameraEnabled: true`. It looks across the deck
+from the back-right corner, with the trash nearest. In the picture, left is the
+deck's right (+x) and down is the back (+y). It shows clearly where the pipette
+is. But in the middle of the deck a millimetre is about one pixel, and less in
+the far slots, so it cannot tell a touching tip from one 1 mm up.
+
+![The OT-2's camera, 2026-11-17: the pipette (bottom left) over the trash, the
+tip rack in slot 6, vial holders in slots 5 and 4, the Heater-Shaker with plate A
+in slot 7](ot2-camera-2026-11-17.jpg)
 
 ## Step 1 — deck calibration
 
