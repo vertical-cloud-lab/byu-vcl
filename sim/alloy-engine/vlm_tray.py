@@ -198,6 +198,8 @@ def sweep(args) -> None:
 def render(args) -> None:
     from PIL import Image, ImageDraw, ImageFont
 
+    from alloy.camera.pose import look_at
+
     accels = np.array([float(x) for x in args.accels.split(",")])
     W = len(accels)
     sim = build(accels)
@@ -214,7 +216,7 @@ def render(args) -> None:
     for i in range(n + 1):
         if i % every == 0:
             x = sim.state()["tray_steel.pos"][:, 0]
-            poses = np.stack([alloy.camera.pose.look_at((xi + 0.95, -1.15, 0.75), (xi, 0.0, 0.12)) for xi in x])
+            poses = np.stack([look_at((xi + 1.25, -1.55, 0.95), (xi, 0.05, 0.10)) for xi in x])
             if cams is None:
                 cams = alloy.Camera("follow", pose=poses, width=args.width, height=args.height, fov=50, spp=args.spp,
                                     denoise=args.denoise)
@@ -247,7 +249,6 @@ def render(args) -> None:
                    duration=int(1000 / args.fps * args.slow), loop=0)
     frames[len(frames) // 3].save(f"{stem}_frame.png")
     frames[-1].save(f"{stem}_final.png")
-    np.save(OUT / "vlm_tray_frames.npy", np.stack([np.asarray(f) for f in frames]))
     print("health ok", sim.check()["ok"])
 
 
