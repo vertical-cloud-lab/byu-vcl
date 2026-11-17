@@ -248,18 +248,36 @@ host) now belongs to the Borys lab at the University of Utah and is on their tai
 streams to their channel, not ours. Its VCL files were archived to Sterling's OneDrive
 (*VCL Pi archives*) and removed from the Pi. `RPI_STREAM_CAM_HOSTNAME`, `_USERNAME` and
 `_PASSWORD` therefore point at nothing until a replacement Pi is set up and they are
-updated. Until then **the OT-2 has no network link and no overhead camera.** The rebuild
+updated. Until then **the OT-2 has no overhead camera**, and its network link is the CubXL
+Pi when the robot's cable is plugged into it (see "Reaching the OT-2"). The rebuild
 (parts, steps, and the Pi-only scripts salvaged from it) is tracked in
 [vertical-cloud-lab/digital-wetlab](https://github.com/vertical-cloud-lab/digital-wetlab).
 
-**Reaching the OT-2.** The robot is not on the tailnet. It was wired directly to the Pi
-behind `RPI_STREAM_CAM_HOSTNAME` (not `OT2_STREAM_CAM_HOSTNAME`, which is the atomizer-room
-Zero 2 W) and answered only on the link-local address
-`http://169.254.51.252:31950`, so every OT-2 HTTP API call has to be made *from that Pi* —
-you cannot reach the robot from a runner or a laptop. `~/ot2ctl.py` on that Pi is a thin
-wrapper over the maintenance-run API and is the quickest way to see the call pattern. Send
-`Opentrons-Version: 3` on every request. `GET /health` is read-only and safe; anything under
-`/maintenance_runs` moves real hardware.
+**Reaching the OT-2.** The robot is not on the tailnet. It answers only on the link-local
+address `http://169.254.51.252:31950`, over the cable from its USB port, so every OT-2 HTTP
+API call has to be made *from the computer on the other end of that cable*. Until
+2026-11-10 that was the Pi behind `RPI_STREAM_CAM_HOSTNAME` (not `OT2_STREAM_CAM_HOSTNAME`,
+which is the atomizer-room Zero 2 W); its `~/ot2ctl.py`, a thin wrapper over the
+maintenance-run API, left with it. Send `Opentrons-Version: 3` on every request. `GET`s are
+read-only and safe. `POST /robot/home`, `POST /robot/move` and the `POST`s that run
+commands or protocols (under `/maintenance_runs` and `/runs`) move real hardware.
+`POST /identify?seconds=5` only flashes the lights.
+
+**Since 2026-11-17 the cable can go to the CubXL Pi**, which a runner reaches as described
+below ([#349](https://github.com/vertical-cloud-lab/byu-vcl/issues/349)). There the cable
+shows up as a Realtek RTL8153 USB network adapter (`0bda:8153`, MAC `00:e0:96:68:fa:ee`,
+`eth1` on the day). NetworkManager profile `ot2-usb`, bound to that MAC with
+`ipv4.method link-local`, gives the Pi a `169.254.x.x` address on it. Without that profile
+the auto-created *Wired connection 2* tries DHCP, gets no answer and leaves `eth1` with no
+IPv4 address, so the robot can't be reached.
+It touches nothing else: the potentiostat PC stays on `eth0` (`ezstat-pc-link`). Remove it
+with `sudo nmcli connection delete ot2-usb`. Two more things to know:
+
+- **The robot stays silent until something talks to it.** Zero packets received on `eth1`
+  does not mean it is off. `GET /health` is the test.
+- **The Opentrons App can't see the robot while its cable is on the Pi.** Pipette
+  calibration and Labware Position Check happen in the App, so for those the cable goes to
+  the App's laptop instead.
 
 **Reaching the CubXL Pi.** A Pi 5 on the tailnet at `CUBXL_PI_HOSTNAME`, reachable over
 Tailscale SSH as `CUBXL_PI_USERNAME` the same way the stream-cam Pis are. It is the access
