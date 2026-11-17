@@ -1,0 +1,2987 @@
+[
+ {
+  "id": "powder-doser--alt-a-tap-sieve",
+  "section": "Powder doser",
+  "title": "Tap sieve (alt A)",
+  "system": "Tapped sieve cup that sifts powder when struck; concept A of 8 alternative dosing mechanisms.",
+  "repo": "vertical-cloud-lab/powder-doser",
+  "branch": "copilot/consider-alternative-powder-dosing",
+  "commit": "ccdabf3e7b7b7d020e50a25b76e690f56a0f69a8",
+  "source_paths": [
+   "cad/alternatives/A-tap-sieve.stl"
+  ],
+  "generator": "cad/alternatives/A_tap_sieve.scad",
+  "agent_generated": true,
+  "evidence": "files added by copilot-swe-agent[bot]; last touched e454c65 by copilot-swe-agent[bot] on branch copilot/consider-alternative-powder-dosing",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-04-24",
+  "versions": 2,
+  "links": [
+   "https://github.com/vertical-cloud-lab/powder-doser/tree/ccdabf3/cad/alternatives"
+  ],
+  "notes": "OpenSCAD source + STL"
+ },
+ {
+  "id": "powder-doser--alt-b-pez-strip",
+  "section": "Powder doser",
+  "title": "PEZ strip dispenser (alt B)",
+  "system": "Strip/cassette of pre-filled pockets advanced like a PEZ dispenser; concept B.",
+  "repo": "vertical-cloud-lab/powder-doser",
+  "branch": "copilot/consider-alternative-powder-dosing",
+  "commit": "ccdabf3e7b7b7d020e50a25b76e690f56a0f69a8",
+  "source_paths": [
+   "cad/alternatives/B-pez-strip.stl"
+  ],
+  "generator": "cad/alternatives/B_pez_strip.scad",
+  "agent_generated": true,
+  "evidence": "files added by copilot-swe-agent[bot]; last touched e454c65 by copilot-swe-agent[bot] on branch copilot/consider-alternative-powder-dosing",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-04-24",
+  "versions": 2,
+  "links": [
+   "https://github.com/vertical-cloud-lab/powder-doser/tree/ccdabf3/cad/alternatives"
+  ]
+ },
+ {
+  "id": "powder-doser--alt-c-capillary-wiper",
+  "section": "Powder doser",
+  "title": "Capillary wiper (alt C)",
+  "system": "Capillary/tube with wiper metering small powder volumes; concept C.",
+  "repo": "vertical-cloud-lab/powder-doser",
+  "branch": "copilot/consider-alternative-powder-dosing",
+  "commit": "ccdabf3e7b7b7d020e50a25b76e690f56a0f69a8",
+  "source_paths": [
+   "cad/alternatives/C-capillary-wiper.stl"
+  ],
+  "generator": "cad/alternatives/C_capillary_wiper.scad",
+  "agent_generated": true,
+  "evidence": "files added by copilot-swe-agent[bot]; last touched e454c65 by copilot-swe-agent[bot] on branch copilot/consider-alternative-powder-dosing",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-04-24",
+  "versions": 2,
+  "links": [
+   "https://github.com/vertical-cloud-lab/powder-doser/tree/ccdabf3/cad/alternatives"
+  ]
+ },
+ {
+  "id": "powder-doser--alt-d-brush-comb",
+  "section": "Powder doser",
+  "title": "Brush comb (alt D)",
+  "system": "Rotating brush/comb that sweeps powder through a slot; concept D.",
+  "repo": "vertical-cloud-lab/powder-doser",
+  "branch": "copilot/consider-alternative-powder-dosing",
+  "commit": "ccdabf3e7b7b7d020e50a25b76e690f56a0f69a8",
+  "source_paths": [
+   "cad/alternatives/D-brush-comb.stl"
+  ],
+  "generator": "cad/alternatives/D_brush_comb.scad",
+  "agent_generated": true,
+  "evidence": "files added by copilot-swe-agent[bot]; last touched e454c65 by copilot-swe-agent[bot] on branch copilot/consider-alternative-powder-dosing",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-04-24",
+  "versions": 2,
+  "links": [
+   "https://github.com/vertical-cloud-lab/powder-doser/tree/ccdabf3/cad/alternatives"
+  ]
+ },
+ {
+  "id": "powder-doser--alt-e-shaker",
+  "section": "Powder doser",
+  "title": "Shaker (alt E)",
+  "system": "Salt-shaker style perforated vessel shaken to dose; concept E.",
+  "repo": "vertical-cloud-lab/powder-doser",
+  "branch": "copilot/consider-alternative-powder-dosing",
+  "commit": "ccdabf3e7b7b7d020e50a25b76e690f56a0f69a8",
+  "source_paths": [
+   "cad/alternatives/E-shaker.stl"
+  ],
+  "generator": "cad/alternatives/E_shaker.scad",
+  "agent_generated": true,
+  "evidence": "files added by copilot-swe-agent[bot]; last touched e454c65 by copilot-swe-agent[bot] on branch copilot/consider-alternative-powder-dosing",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-04-24",
+  "versions": 2,
+  "links": [
+   "https://github.com/vertical-cloud-lab/powder-doser/tree/ccdabf3/cad/alternatives"
+  ]
+ },
+ {
+  "id": "powder-doser--alt-f-passive-auger",
+  "section": "Powder doser",
+  "title": "Passive auger (alt F)",
+  "system": "Passive (tilt/gravity-driven) auger concept F.",
+  "repo": "vertical-cloud-lab/powder-doser",
+  "branch": "copilot/consider-alternative-powder-dosing",
+  "commit": "ccdabf3e7b7b7d020e50a25b76e690f56a0f69a8",
+  "source_paths": [
+   "cad/alternatives/F-passive-auger.stl"
+  ],
+  "generator": "cad/alternatives/F_passive_auger.scad",
+  "agent_generated": true,
+  "evidence": "files added by copilot-swe-agent[bot]; last touched e454c65 by copilot-swe-agent[bot] on branch copilot/consider-alternative-powder-dosing",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-04-24",
+  "versions": 2,
+  "links": [
+   "https://github.com/vertical-cloud-lab/powder-doser/tree/ccdabf3/cad/alternatives"
+  ]
+ },
+ {
+  "id": "powder-doser--alt-g-erm-sieve",
+  "section": "Powder doser",
+  "title": "ERM vibration sieve (alt G)",
+  "system": "Sieve cup driven by an eccentric-rotating-mass vibration motor; concept G.",
+  "repo": "vertical-cloud-lab/powder-doser",
+  "branch": "copilot/consider-alternative-powder-dosing",
+  "commit": "ccdabf3e7b7b7d020e50a25b76e690f56a0f69a8",
+  "source_paths": [
+   "cad/alternatives/G-erm-sieve.stl"
+  ],
+  "generator": "cad/alternatives/G_erm_sieve.scad",
+  "agent_generated": true,
+  "evidence": "files added by copilot-swe-agent[bot]; last touched e454c65 by copilot-swe-agent[bot] on branch copilot/consider-alternative-powder-dosing",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-04-24",
+  "versions": 2,
+  "links": [
+   "https://github.com/vertical-cloud-lab/powder-doser/tree/ccdabf3/cad/alternatives"
+  ]
+ },
+ {
+  "id": "powder-doser--alt-h-solenoid-sieve",
+  "section": "Powder doser",
+  "title": "Solenoid tap sieve (alt H)",
+  "system": "Sieve struck by a solenoid plunger; concept H.",
+  "repo": "vertical-cloud-lab/powder-doser",
+  "branch": "copilot/consider-alternative-powder-dosing",
+  "commit": "ccdabf3e7b7b7d020e50a25b76e690f56a0f69a8",
+  "source_paths": [
+   "cad/alternatives/H-solenoid-sieve.stl"
+  ],
+  "generator": "cad/alternatives/H_solenoid_sieve.scad",
+  "agent_generated": true,
+  "evidence": "files added by copilot-swe-agent[bot]; last touched e454c65 by copilot-swe-agent[bot] on branch copilot/consider-alternative-powder-dosing",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-04-24",
+  "versions": 2,
+  "links": [
+   "https://github.com/vertical-cloud-lab/powder-doser/tree/ccdabf3/cad/alternatives"
+  ]
+ },
+ {
+  "id": "powder-doser--archimedes-auger",
+  "section": "Powder doser",
+  "title": "Archimedes auger (monolithic)",
+  "system": "Integrated monolithic Archimedes screw auger with housing, 250x25 mm (v4), the lab doser's core part.",
+  "repo": "vertical-cloud-lab/powder-doser",
+  "branch": "main",
+  "commit": "6110210a03be6f9acfa6be62b286088cfea4be14",
+  "source_paths": [
+   "cad/auger/archimedes-auger.3mf",
+   "cad/auger/archimedes-auger.stl"
+  ],
+  "generator": "cad/auger/archimedes-auger.scad",
+  "agent_generated": true,
+  "evidence": "files added by copilot-swe-agent[bot]; last touched 3c4b80f by copilot-swe-agent[bot] on branch main",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-04-24",
+  "versions": 4,
+  "links": [
+   "https://github.com/vertical-cloud-lab/powder-doser/tree/6110210/cad/auger"
+  ],
+  "notes": "Devora Najjar wrote the initial OpenSCAD (human); Copilot agent refactored v2-v4 (two-part v3, monolithic v4) and exported STL/STEP/3MF. A Zoo ML-ephant text-to-CAD auger (cad/meta-tools/zoo-output/auger_mlephant.step) also exists."
+ },
+ {
+  "id": "powder-doser--bimodal-trough",
+  "section": "Powder doser",
+  "title": "Bimodal compliant trough",
+  "system": "3D-printable compliant-mechanism trough with two dosing modes (coarse/fine).",
+  "repo": "vertical-cloud-lab/powder-doser",
+  "branch": "copilot/design-bimodal-compliant-mechanism",
+  "commit": "d1eb3ce445a415a949c87600a5eaae1cdd2aa5cb",
+  "source_paths": [
+   "cad/bimodal-trough.stl"
+  ],
+  "generator": "cad/bimodal_trough.scad",
+  "agent_generated": true,
+  "evidence": "files added by copilot-swe-agent[bot]; last touched c668ab7 by copilot-swe-agent[bot] on branch copilot/design-bimodal-compliant-mechanism",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-04-24",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/powder-doser/tree/d1eb3ce/cad"
+  ]
+ },
+ {
+  "id": "powder-doser--sieve-cup-tap-anvil",
+  "section": "Powder doser",
+  "title": "Sieve cup + tap anvil (A/G prototype)",
+  "system": "Preliminary sieve cup (plain and ERM-motor versions) with a tap anvil, for the top-ranked sieve concepts A and G.",
+  "repo": "vertical-cloud-lab/powder-doser",
+  "branch": "copilot/consider-alternative-powder-dosing",
+  "commit": "ccdabf3e7b7b7d020e50a25b76e690f56a0f69a8",
+  "source_paths": [
+   "cad/sieve-cup-erm.stl",
+   "cad/sieve-cup.stl",
+   "cad/tap-anvil.stl"
+  ],
+  "generator": "cad/sieve_cup.scad",
+  "agent_generated": true,
+  "evidence": "files added by copilot-swe-agent[bot]; last touched 360d9c2 by copilot-swe-agent[bot] on branch copilot/consider-alternative-powder-dosing",
+  "assembly": true,
+  "parts": 3,
+  "first_seen": "2026-04-24",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/powder-doser/tree/ccdabf3/cad"
+  ],
+  "notes": "Parts: sieve-cup, sieve-cup-erm (ERM variant), tap-anvil."
+ },
+ {
+  "id": "CADSmith--powder-doser-chassis-v3-2",
+  "section": "Powder doser",
+  "title": "Powder doser chassis v3.2 (CADSmith)",
+  "system": "Integrated doser chassis with auger, bonnet, coupler and vendor-envelope parts (stepper, servo, solenoid, ERM, Pi, drivers); v1-v3.2 iterated by the Copilot agent.",
+  "repo": "vertical-cloud-lab/CADSmith",
+  "branch": "refs/pull/2/head",
+  "commit": "5097a570366395ce20362579a93175fda1d79c54",
+  "source_paths": [
+   "assets/powder_doser_parts/powder_doser_auger.step",
+   "assets/powder_doser_parts/powder_doser_bonnet.step",
+   "assets/powder_doser_parts/powder_doser_chassis.step",
+   "assets/powder_doser_parts/powder_doser_coupler.step",
+   "assets/powder_doser_parts/powder_doser_drv8825.step",
+   "assets/powder_doser_parts/powder_doser_erm.step",
+   "assets/powder_doser_parts/powder_doser_pi.step",
+   "assets/powder_doser_parts/powder_doser_servo.step",
+   "assets/powder_doser_parts/powder_doser_solenoid.step",
+   "assets/powder_doser_parts/powder_doser_stepper.step",
+   "assets/powder_doser_parts/powder_doser_tic500.step"
+  ],
+  "agent_generated": true,
+  "evidence": "Copilot agent PR #2; commit authors: copilot-swe-agent[bot]",
+  "assembly": true,
+  "parts": 11,
+  "first_seen": "2026-05-12",
+  "versions": 5,
+  "links": [
+   "https://github.com/vertical-cloud-lab/CADSmith/pull/2"
+  ],
+  "notes": "Parts include vendor-envelope placeholders (stepper, servo, solenoid, ERM, Pi, DRV8825, Tic500). Combined assembly: assets/powder_doser_assembly.step."
+ },
+ {
+  "id": "powder-doser--inward-collection-cup",
+  "section": "Powder doser",
+  "title": "Inward collection cup",
+  "system": "Collection cup with inward-sloped walls for the dispensed powder (manuscript section 2.2 visual).",
+  "repo": "vertical-cloud-lab/powder-doser",
+  "branch": "main",
+  "commit": "6110210a03be6f9acfa6be62b286088cfea4be14",
+  "source_paths": [
+   "design/cad/inward-collection-cup/inward_collection_cup.step"
+  ],
+  "generator": "design/cad/inward-collection-cup",
+  "agent_generated": true,
+  "evidence": "files added by copilot-swe-agent[bot]; last touched 459e0f5 by copilot-swe-agent[bot] on branch main",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-05-12",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/powder-doser/tree/6110210/design/cad/inward-collection-cup"
+  ]
+ },
+ {
+  "id": "powder-doser--sealing-cap-bayonet-plug",
+  "section": "Powder doser",
+  "title": "Sealing cap: bayonet plug",
+  "system": "Channel sealing cap that locks with a bayonet plug.",
+  "repo": "vertical-cloud-lab/powder-doser",
+  "branch": "copilot/design-channel-sealing-cap",
+  "commit": "16aff56c2fe1ccc73e9c263d938a79c10bda7b3d",
+  "source_paths": [
+   "design/cad/sealing-cap-bayonet-plug/sealing_cap_bayonet_plug.step",
+   "design/cad/sealing-cap-bayonet-plug/stl/plug.stl",
+   "design/cad/sealing-cap-bayonet-plug/stl/receiver.stl"
+  ],
+  "generator": "design/cad/sealing-cap-bayonet-plug",
+  "agent_generated": true,
+  "evidence": "files added by copilot-swe-agent[bot]; last touched 16aff56 by copilot-swe-agent[bot] on branch copilot/design-channel-sealing-cap",
+  "assembly": true,
+  "parts": 3,
+  "first_seen": "2026-05-12",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/powder-doser/tree/16aff56/design/cad/sealing-cap-bayonet-plug"
+  ]
+ },
+ {
+  "id": "powder-doser--sealing-cap-spring-hatch",
+  "section": "Powder doser",
+  "title": "Sealing cap: spring hatch",
+  "system": "Channel sealing cap with a spring-loaded hatch.",
+  "repo": "vertical-cloud-lab/powder-doser",
+  "branch": "copilot/design-channel-sealing-cap",
+  "commit": "16aff56c2fe1ccc73e9c263d938a79c10bda7b3d",
+  "source_paths": [
+   "design/cad/sealing-cap-spring-hatch/sealing_cap_spring_hatch.step",
+   "design/cad/sealing-cap-spring-hatch/stl/cap_base.stl",
+   "design/cad/sealing-cap-spring-hatch/stl/flap.stl",
+   "design/cad/sealing-cap-spring-hatch/stl/reference_cap_base.stl",
+   "design/cad/sealing-cap-spring-hatch/stl/reference_flap.stl",
+   "design/cad/sealing-cap-spring-hatch/stl/spring_hatch_unified.stl"
+  ],
+  "generator": "design/cad/sealing-cap-spring-hatch",
+  "agent_generated": true,
+  "evidence": "files added by copilot-swe-agent[bot]; last touched 16aff56 by copilot-swe-agent[bot] on branch copilot/design-channel-sealing-cap",
+  "assembly": true,
+  "parts": 6,
+  "first_seen": "2026-05-12",
+  "versions": 2,
+  "links": [
+   "https://github.com/vertical-cloud-lab/powder-doser/tree/16aff56/design/cad/sealing-cap-spring-hatch"
+  ]
+ },
+ {
+  "id": "powder-doser--sealing-cap-twist-shutter",
+  "section": "Powder doser",
+  "title": "Sealing cap: twist shutter",
+  "system": "Channel sealing cap that closes by twisting a shutter.",
+  "repo": "vertical-cloud-lab/powder-doser",
+  "branch": "copilot/design-channel-sealing-cap",
+  "commit": "16aff56c2fe1ccc73e9c263d938a79c10bda7b3d",
+  "source_paths": [
+   "design/cad/sealing-cap-twist-shutter/sealing_cap_twist_shutter.step",
+   "design/cad/sealing-cap-twist-shutter/stl/channel_disc.stl",
+   "design/cad/sealing-cap-twist-shutter/stl/driver_disc.stl"
+  ],
+  "generator": "design/cad/sealing-cap-twist-shutter",
+  "agent_generated": true,
+  "evidence": "files added by copilot-swe-agent[bot]; last touched 16aff56 by copilot-swe-agent[bot] on branch copilot/design-channel-sealing-cap",
+  "assembly": true,
+  "parts": 3,
+  "first_seen": "2026-05-12",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/powder-doser/tree/16aff56/design/cad/sealing-cap-twist-shutter"
+  ],
+  "notes": "One of 3 shipped of 6 brainstormed concepts."
+ },
+ {
+  "id": "powder-doser--single-channel-module",
+  "section": "Powder doser",
+  "title": "Single-channel module",
+  "system": "Single-channel dosing module (Idea B archetype): spine, bearing collar, belt drive, cartridge and cradle.",
+  "repo": "vertical-cloud-lab/powder-doser",
+  "branch": "copilot/modular-single-channel-powder-doser-design",
+  "commit": "2ddc6793bf3265bbe1bc5050f9187a40be666e30",
+  "source_paths": [
+   "design/cad/single-channel-module/single_channel_module.step",
+   "design/cad/single-channel-module/stl/ASSEMBLY_full_module.stl",
+   "design/cad/single-channel-module/stl/ASSEMBLY_full_module_with_scale_and_cup.stl",
+   "design/cad/single-channel-module/stl/bearing_collar.stl",
+   "design/cad/single-channel-module/stl/cartridge.stl",
+   "design/cad/single-channel-module/stl/cradle_base.stl",
+   "design/cad/single-channel-module/stl/cradle_cheek_L.stl",
+   "design/cad/single-channel-module/stl/cradle_cheek_R.stl",
+   "design/cad/single-channel-module/stl/motor_bracket.stl",
+   "design/cad/single-channel-module/stl/spine.stl"
+  ],
+  "generator": "design/cad/single-channel-module",
+  "agent_generated": true,
+  "evidence": "files added by copilot-swe-agent[bot]; last touched 2ddc679 by copilot-swe-agent[bot] on branch copilot/modular-single-channel-powder-doser-design",
+  "assembly": true,
+  "parts": 10,
+  "first_seen": "2026-05-12",
+  "versions": 4,
+  "links": [
+   "https://github.com/vertical-cloud-lab/powder-doser/tree/2ddc679/design/cad/single-channel-module"
+  ],
+  "notes": "v1, v2 redesign, v4 (lower pivot, gusset, larger pulley)."
+ },
+ {
+  "id": "powder-doser--auger-bracket",
+  "section": "Powder doser",
+  "title": "Auger bracket",
+  "system": "Parametric bracket holding the auger to the mounting plate.",
+  "repo": "vertical-cloud-lab/powder-doser",
+  "branch": "copilot/part-by-part-powder-doser",
+  "commit": "2e5060dd82162106f4bdfed02c9a541f4a54c24c",
+  "source_paths": [
+   "design/cad/auger-bracket/auger_bracket.step",
+   "design/cad/auger-bracket/stl/auger_bracket.stl"
+  ],
+  "generator": "design/cad/auger-bracket",
+  "agent_generated": true,
+  "evidence": "files added by copilot-swe-agent[bot]; last touched 2e5060d by copilot-swe-agent[bot] on branch copilot/part-by-part-powder-doser",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-05-14",
+  "versions": 3,
+  "links": [
+   "https://github.com/vertical-cloud-lab/powder-doser/tree/2e5060d/design/cad/auger-bracket"
+  ],
+  "notes": "CADsmith-style versions on copilot/design-bracket-for-auger and copilot/design-simple-bracket-cadsmith."
+ },
+ {
+  "id": "powder-doser--geared-auger-pinion",
+  "section": "Powder doser",
+  "title": "Geared auger + NEMA 11 pinion",
+  "system": "Archimedes auger with an integral ring gear driven by a NEMA 11 stepper pinion.",
+  "repo": "vertical-cloud-lab/powder-doser",
+  "branch": "copilot/add-new-auger-design",
+  "commit": "6961d928504fb4bf99e001e14450516aaf111963",
+  "source_paths": [
+   "cad/auger-geared/archimedes-auger-geared.stl",
+   "cad/auger-geared/stepper-pinion.stl"
+  ],
+  "generator": "cad/auger-geared/archimedes-auger-geared.scad",
+  "agent_generated": true,
+  "evidence": "files added by copilot-swe-agent[bot]; last touched 926879a by copilot-swe-agent[bot] on branch copilot/add-new-auger-design",
+  "assembly": true,
+  "parts": 2,
+  "first_seen": "2026-05-14",
+  "versions": 7,
+  "links": [
+   "https://github.com/vertical-cloud-lab/powder-doser/tree/6961d92/cad/auger-geared"
+  ],
+  "notes": "v1-v3, a short variant and 4 nozzle test pieces seen; assembly-preview.stl also exists."
+ },
+ {
+  "id": "powder-doser--full-system-direct-drive",
+  "section": "Powder doser",
+  "title": "Full system (direct drive)",
+  "system": "Direct-drive full doser: auger, housing, coupler stub and deflector (CadQuery).",
+  "repo": "vertical-cloud-lab/powder-doser",
+  "branch": "copilot/explore-meta-tools-for-cad",
+  "commit": "4ef9f6c5e540606b825991974f33b19fe6e35390",
+  "source_paths": [
+   "design/cad/full-system-direct-drive/full_system.step",
+   "design/cad/full-system-direct-drive/stl/auger.stl",
+   "design/cad/full-system-direct-drive/stl/coupler_stub.stl",
+   "design/cad/full-system-direct-drive/stl/deflector.stl",
+   "design/cad/full-system-direct-drive/stl/housing.stl"
+  ],
+  "generator": "design/cad/full-system-direct-drive",
+  "agent_generated": true,
+  "evidence": "files added by copilot-swe-agent[bot]; last touched c48a9d0 by copilot-swe-agent[bot] on branch copilot/explore-meta-tools-for-cad",
+  "assembly": true,
+  "parts": 5,
+  "first_seen": "2026-05-15",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/powder-doser/tree/4ef9f6c/design/cad/full-system-direct-drive"
+  ]
+ },
+ {
+  "id": "powder-doser--full-system-modular",
+  "section": "Powder doser",
+  "title": "Full system (modular, CadQuery + Zoo)",
+  "system": "Modular full-system powder doser assembly built in CadQuery with a ground-truth auger, as a Zoo cross-check.",
+  "repo": "vertical-cloud-lab/powder-doser",
+  "branch": "copilot/explore-meta-tools-for-cad",
+  "commit": "4ef9f6c5e540606b825991974f33b19fe6e35390",
+  "source_paths": [
+   "design/cad/full-system-modular/full_system_assembly.step",
+   "design/cad/full-system-modular/ground_truth_auger.step",
+   "design/cad/full-system-modular/ground_truth_auger.stl"
+  ],
+  "generator": "design/cad/full-system-modular",
+  "agent_generated": true,
+  "evidence": "files added by copilot-swe-agent[bot]; last touched ed1886c by copilot-swe-agent[bot] on branch copilot/explore-meta-tools-for-cad",
+  "assembly": true,
+  "parts": 3,
+  "first_seen": "2026-05-15",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/powder-doser/tree/4ef9f6c/design/cad/full-system-modular"
+  ]
+ },
+ {
+  "id": "powder-doser--tap-collar",
+  "section": "Powder doser",
+  "title": "Tap collar",
+  "system": "Mount plate plus split collar that carries a tapping motor/solenoid on the auger.",
+  "repo": "vertical-cloud-lab/powder-doser",
+  "branch": "copilot/design-tap-collar",
+  "commit": "d4433196d96481651c675b9ca4e3021bb2db4081",
+  "source_paths": [
+   "design/cad/tap-collar/mount_plate.step",
+   "design/cad/tap-collar/stl/mount_plate.stl",
+   "design/cad/tap-collar/stl/tap_collar.stl",
+   "design/cad/tap-collar/tap_collar.step"
+  ],
+  "generator": "design/cad/tap-collar",
+  "agent_generated": true,
+  "evidence": "files added by copilot-swe-agent[bot]; last touched d443319 by copilot-swe-agent[bot] on branch copilot/design-tap-collar",
+  "assembly": true,
+  "parts": 4,
+  "first_seen": "2026-05-15",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/powder-doser/tree/d443319/design/cad/tap-collar"
+  ]
+ },
+ {
+  "id": "powder-doser--zoo-multipart",
+  "section": "Powder doser",
+  "title": "Zoo text-to-CAD multi-part set",
+  "system": "Five doser parts generated by Zoo (KittyCAD ML-ephant) text-to-CAD: solid auger, embed-pocket sleeve, Pi mount bracket, servo yoke, stepper mount collar.",
+  "repo": "vertical-cloud-lab/powder-doser",
+  "branch": "copilot/explore-meta-tools-for-cad",
+  "commit": "4ef9f6c5e540606b825991974f33b19fe6e35390",
+  "source_paths": [
+   "cad/meta-tools/zoo-output/multi-part/auger_solid/auger_solid.step",
+   "cad/meta-tools/zoo-output/multi-part/embed_pocket_sleeve/embed_pocket_sleeve.step",
+   "cad/meta-tools/zoo-output/multi-part/pi_mount_bracket/pi_mount_bracket.step",
+   "cad/meta-tools/zoo-output/multi-part/servo_yoke/servo_yoke.step",
+   "cad/meta-tools/zoo-output/multi-part/stepper_mount_collar/stepper_mount_collar.step"
+  ],
+  "agent_generated": true,
+  "evidence": "files added by copilot-swe-agent[bot]; last touched 9b0b3ba by copilot-swe-agent[bot] on branch copilot/explore-meta-tools-for-cad",
+  "assembly": true,
+  "parts": 5,
+  "first_seen": "2026-05-15",
+  "versions": 2,
+  "links": [
+   "https://github.com/vertical-cloud-lab/powder-doser/tree/4ef9f6c/cad/meta-tools/zoo-output/multi-part/auger_solid"
+  ],
+  "notes": "Parts are separate prompts, not a mated assembly; a phase-2 iteration (multi-part-iter) exists."
+ },
+ {
+  "id": "CADSmith--powder-doser-mount-tilt-base",
+  "section": "Powder doser",
+  "title": "Mounting plate + tilt base (CADSmith)",
+  "system": "Mounting plate on a tilting base plate for the powder doser, generated with CADSmith.",
+  "repo": "vertical-cloud-lab/CADSmith",
+  "branch": "refs/pull/4/head",
+  "commit": "d956d5f76786560744728dd703786fadb4947826",
+  "source_paths": [
+   "assets/powder_doser/step/base_plate.step",
+   "assets/powder_doser/step/mounting_plate.step",
+   "assets/powder_doser/step/powder_doser_assembly.step",
+   "assets/powder_doser/stl/base_plate.stl",
+   "assets/powder_doser/stl/mounting_plate.stl",
+   "assets/powder_doser/stl/powder_doser_assembly.stl"
+  ],
+  "agent_generated": true,
+  "evidence": "Copilot agent PR #4; commit authors: copilot-swe-agent[bot]",
+  "assembly": true,
+  "parts": 6,
+  "first_seen": "2026-05-18",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/CADSmith/pull/4"
+  ],
+  "notes": "STL and STEP of base_plate, mounting_plate and the assembly."
+ },
+ {
+  "id": "powder-doser--hinged-mounting-plate",
+  "section": "Powder doser",
+  "title": "Hinged mounting plate + baseplate",
+  "system": "Tilting mounting plate on a baseplate with a hinge on the dispense axis and a servo pinion.",
+  "repo": "vertical-cloud-lab/powder-doser",
+  "branch": "copilot/add-servo-angle-control",
+  "commit": "97521d2d33b5da2fbe7db1caa6f551de13cc1a4a",
+  "source_paths": [
+   "cad/mounting-plate-assembly/stl/baseplate.stl",
+   "cad/mounting-plate-assembly/stl/hinge_pin.stl",
+   "cad/mounting-plate-assembly/stl/mounting_plate.stl",
+   "cad/mounting-plate-assembly/stl/servo_pinion.stl"
+  ],
+  "generator": "cad/mounting-plate-assembly",
+  "agent_generated": true,
+  "evidence": "files added by copilot-swe-agent[bot]; last touched e0946d0 by copilot-swe-agent[bot] on branch copilot/add-servo-angle-control",
+  "assembly": true,
+  "parts": 4,
+  "first_seen": "2026-05-18",
+  "versions": 4,
+  "links": [
+   "https://github.com/vertical-cloud-lab/powder-doser/tree/97521d2/cad/mounting-plate-assembly/stl"
+  ],
+  "notes": "Earlier versions: copilot/design-mounting-plate, copilot/design-mounting-plate-for-powder-doser, copilot/design-mounting-plate-cadsmith; full_assembly.step also present."
+ },
+ {
+  "id": "powder-doser--threaded-storage-auger-cap",
+  "section": "Powder doser",
+  "title": "Threaded storage auger + hand-screw cap",
+  "system": "Geared storage auger with an external top thread and a hand-screw cap to seal stored powder.",
+  "repo": "vertical-cloud-lab/powder-doser",
+  "branch": "copilot/add-new-auger-design",
+  "commit": "6961d928504fb4bf99e001e14450516aaf111963",
+  "source_paths": [
+   "cad/auger-geared/threaded-storage-cap.stl",
+   "cad/auger-geared/threaded_archimedes-auger-storage.stl"
+  ],
+  "generator": "cad/auger-geared/threaded-storage-auger-core.scad",
+  "agent_generated": true,
+  "evidence": "files added by copilot-swe-agent[bot]; last touched 361314e by copilot-swe-agent[bot] on branch copilot/add-new-auger-design",
+  "assembly": true,
+  "parts": 2,
+  "first_seen": "2026-06-16",
+  "versions": 3,
+  "links": [
+   "https://github.com/vertical-cloud-lab/powder-doser/tree/6961d92/cad/auger-geared"
+  ],
+  "notes": "Unthreaded storage auger and bench-test variants also exist; Zoo KCL regenerations in exports/storage-auger."
+ },
+ {
+  "id": "CADSmith--powder-doser-12-parts",
+  "section": "Powder doser",
+  "title": "Powder-doser parts regenerated by CADSmith (12)",
+  "system": "The 12 lab powder-doser parts (augers, cap, pinions, plates, bracket, tap collar) regenerated by the CADSmith agent loop, plus an assembly.",
+  "repo": "vertical-cloud-lab/CADSmith",
+  "branch": "refs/pull/6/head",
+  "commit": "44c12c68dd3ac1dd65bacbeb15f0a40cd43f9c47",
+  "source_paths": [
+   "cad/powder-doser/auger_bracket/part.step",
+   "cad/powder-doser/auger_cap/part.step",
+   "cad/powder-doser/auger_storage_full/part.step",
+   "cad/powder-doser/auger_storage_short/part.step",
+   "cad/powder-doser/auger_threaded/part.step",
+   "cad/powder-doser/baseplate/part.step",
+   "cad/powder-doser/mounting_plate/part.step",
+   "cad/powder-doser/powder_doser_assembly/part.step",
+   "cad/powder-doser/servo_pinion/part.step",
+   "cad/powder-doser/stepper_pinion/part.step",
+   "cad/powder-doser/tap_collar/part.step",
+   "cad/powder-doser/tap_collar_mount_plate/part.step"
+  ],
+  "agent_generated": true,
+  "evidence": "Copilot agent PR #6; commit authors: copilot-swe-agent[bot]",
+  "assembly": true,
+  "parts": 12,
+  "first_seen": "2026-06-22",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/CADSmith/pull/6"
+  ],
+  "notes": "Same system as powder-doser--cq-assembly-111 but regenerated independently by CADSmith (distinct generator); consider treating as a version of that design."
+ },
+ {
+  "id": "powder-doser--cq-assembly-111",
+  "section": "Powder doser",
+  "title": "Parametric CadQuery powder-doser assembly",
+  "system": "Full parametric CadQuery doser: storage augers, threaded auger + cap, pinions, mounting plate, baseplate, hinge pin, bracket, tap collar (issue #111).",
+  "repo": "vertical-cloud-lab/powder-doser",
+  "branch": "copilot/design-powder-dispensing-system",
+  "commit": "5b3b53cbbc405c9d8d26b67dd513c9b6ad77d111",
+  "source_paths": [
+   "cad/powder-doser-assembly/exports/step/00_assembly.step",
+   "cad/powder-doser-assembly/exports/step/01_auger_storage_full.step",
+   "cad/powder-doser-assembly/exports/step/01b_auger_storage_short.step",
+   "cad/powder-doser-assembly/exports/step/02_auger_threaded.step",
+   "cad/powder-doser-assembly/exports/step/02b_thread_cap.step",
+   "cad/powder-doser-assembly/exports/step/03_stepper_pinion.step",
+   "cad/powder-doser-assembly/exports/step/04_mounting_plate.step",
+   "cad/powder-doser-assembly/exports/step/05_baseplate.step",
+   "cad/powder-doser-assembly/exports/step/06_hinge_pin.step",
+   "cad/powder-doser-assembly/exports/step/07_servo_pinion.step",
+   "cad/powder-doser-assembly/exports/step/08_auger_bracket.step",
+   "cad/powder-doser-assembly/exports/step/09_tap_collar.step",
+   "cad/powder-doser-assembly/exports/step/10_tap_collar_mount.step"
+  ],
+  "generator": "cad/powder-doser-assembly",
+  "agent_generated": true,
+  "evidence": "files added by copilot-swe-agent[bot]; last touched 10bd4c9 by copilot-swe-agent[bot] on branch copilot/design-powder-dispensing-system",
+  "assembly": true,
+  "parts": 13,
+  "first_seen": "2026-06-22",
+  "versions": 3,
+  "links": [
+   "https://github.com/vertical-cloud-lab/powder-doser/issues/111",
+   "https://github.com/vertical-cloud-lab/powder-doser/tree/5b3b53c/cad/powder-doser-assembly/exports/step"
+  ],
+  "notes": "Zoo KCL regenerations of the same parts on copilot/design-powder-dispensing-system-again / -another-one."
+ },
+ {
+  "id": "powder-doser--pcb-holder",
+  "section": "Powder doser",
+  "title": "PCB + electronics holder",
+  "system": "PCB modeled from the V2 Gerbers with electronics on a printed holder/mount.",
+  "repo": "vertical-cloud-lab/powder-doser",
+  "branch": "claude/issue-172-20261003-1830",
+  "commit": "3702c9499c5c75f7f93475802195ac0421308bc2",
+  "source_paths": [
+   "cad/text-to-cad/STEP/electronics/pcb_holder_assembly.step",
+   "cad/text-to-cad/STL/electronics/pcb_mount.stl"
+  ],
+  "agent_generated": true,
+  "evidence": "files added by claude[bot]; last touched 3702c94 by claude[bot] on branch claude/issue-172-20261003-1830",
+  "assembly": true,
+  "parts": 2,
+  "first_seen": "2026-10-03",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/powder-doser/issues/172",
+   "https://github.com/vertical-cloud-lab/powder-doser/tree/3702c94/cad/text-to-cad/STEP/electronics"
+  ]
+ },
+ {
+  "id": "powder-doser--text-to-cad-servos-above",
+  "section": "Powder doser",
+  "title": "Servos-above doser (build123d)",
+  "system": "build123d text-to-CAD re-model of the doser plus a servos-above variant: baseplate, mounting plate, auger, cap, bracket, pinions, tap collar.",
+  "repo": "vertical-cloud-lab/powder-doser",
+  "branch": "claude/issue-172-20261003-2216",
+  "commit": "61717c74522f0a4a99656186a765d768b61087ec",
+  "source_paths": [
+   "cad/text-to-cad/STEP/assembly_servos_above.step",
+   "cad/text-to-cad/STL/parts/auger.stl",
+   "cad/text-to-cad/STL/parts/auger_cap.stl",
+   "cad/text-to-cad/STL/parts/baseplate.stl",
+   "cad/text-to-cad/STL/parts/baseplate_servos_above.stl",
+   "cad/text-to-cad/STL/parts/bracket.stl",
+   "cad/text-to-cad/STL/parts/mounting_plate.stl",
+   "cad/text-to-cad/STL/parts/mounting_plate_servos_above.stl",
+   "cad/text-to-cad/STL/parts/servo_pinion.stl",
+   "cad/text-to-cad/STL/parts/stepper_pinion.stl",
+   "cad/text-to-cad/STL/parts/tap_collar.stl",
+   "cad/text-to-cad/STL/parts/tap_collar_base.stl"
+  ],
+  "generator": "cad/text-to-cad/src",
+  "agent_generated": true,
+  "evidence": "files added by claude[bot]; last touched 509a0bf by claude[bot] on branch claude/issue-172-20261003-2216",
+  "assembly": true,
+  "parts": 12,
+  "first_seen": "2026-10-03",
+  "versions": 2,
+  "links": [
+   "https://github.com/vertical-cloud-lab/powder-doser/issues/172",
+   "https://github.com/vertical-cloud-lab/powder-doser/tree/61717c7/cad/text-to-cad/STEP"
+  ],
+  "notes": "assembly_current.step/glb is the as-built re-model."
+ },
+ {
+  "id": "powder-doser--chain-carousel-v1",
+  "section": "Powder doser",
+  "title": "Chain carousel test rig (v1)",
+  "system": "Vertical twin-chain carousel carrying many augers past a dosing station.",
+  "repo": "vertical-cloud-lab/powder-doser",
+  "branch": "claude/issue-128-20261013-2050",
+  "commit": "6513ee244df8d677641433b0fed4579f94340c4e",
+  "source_paths": [
+   "cad/chain-carousel/step/chain_carousel_rig.step",
+   "cad/chain-carousel/stl/carriage.stl",
+   "cad/chain-carousel/stl/hall_holder.stl",
+   "cad/chain-carousel/stl/hold_down.stl",
+   "cad/chain-carousel/stl/idler_slider.stl",
+   "cad/chain-carousel/stl/idler_spacer.stl",
+   "cad/chain-carousel/stl/tensioner_block.stl"
+  ],
+  "generator": "cad/chain-carousel/build.py",
+  "agent_generated": true,
+  "evidence": "files added by claude[bot]; last touched 9e715c3 by claude[bot] on branch claude/issue-128-20261013-2050",
+  "assembly": true,
+  "parts": 7,
+  "first_seen": "2026-10-10",
+  "versions": 4,
+  "links": [
+   "https://github.com/vertical-cloud-lab/powder-doser/issues/128",
+   "https://github.com/vertical-cloud-lab/powder-doser/tree/6513ee2/cad/chain-carousel/step"
+  ],
+  "notes": "v1-v4 lineage; see v8 entry for the later layout."
+ },
+ {
+  "id": "powder-doser--fsgen-baseplate",
+  "section": "Powder doser",
+  "title": "FeatureScript-generated baseplate (thinner table)",
+  "system": "Servos-above baseplate generated as a native Onshape feature tree (FeatureScript), thinner-table variant.",
+  "repo": "vertical-cloud-lab/powder-doser",
+  "branch": "claude/issue-171-20261008-1123",
+  "commit": "68f71a221ce2c16e84de06b9fed2482fde3bd900",
+  "source_paths": [
+   "cad/fsgen/v0.2.0/out/baseplate_thinner_table/baseplate_thinner_table.step",
+   "cad/fsgen/v0.2.0/out/baseplate_thinner_table/baseplate_thinner_table.stl"
+  ],
+  "generator": "cad/fsgen",
+  "agent_generated": true,
+  "evidence": "files added by claude[bot]; last touched b02a0bb by claude[bot] on branch claude/issue-171-20261008-1123",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-10-10",
+  "versions": 4,
+  "links": [
+   "https://github.com/vertical-cloud-lab/powder-doser/issues/171",
+   "https://github.com/vertical-cloud-lab/powder-doser/tree/68f71a2/cad/fsgen/v0.2.0/out/baseplate_thinner_table"
+  ],
+  "notes": "Same part family as text-to-cad baseplate; distinct generator (FeatureScript)."
+ },
+ {
+  "id": "powder-doser--paternoster",
+  "section": "Powder doser",
+  "title": "Paternoster carousel",
+  "system": "Paternoster (gondola) carousel moving vials/augers on chains with forks, yokes and a station.",
+  "repo": "vertical-cloud-lab/powder-doser",
+  "branch": "claude/issue-128-20261013-2050",
+  "commit": "6513ee244df8d677641433b0fed4579f94340c4e",
+  "source_paths": [
+   "cad/paternoster/step/paternoster_carousel.step",
+   "cad/paternoster/stl/clevis_bracket.stl",
+   "cad/paternoster/stl/fork.stl",
+   "cad/paternoster/stl/fork_arm.stl",
+   "cad/paternoster/stl/gondola.stl",
+   "cad/paternoster/stl/hold_bracket.stl",
+   "cad/paternoster/stl/magnet_bracket.stl",
+   "cad/paternoster/stl/pin_boss.stl",
+   "cad/paternoster/stl/pin_boss_m.stl",
+   "cad/paternoster/stl/uyoke_base.stl",
+   "cad/paternoster/stl/vial_cup.stl",
+   "cad/paternoster/stl/vial_funnel.stl",
+   "cad/paternoster/stl/yoke_stop.stl",
+   "cad/paternoster/stl/yoke_stop_m.stl"
+  ],
+  "generator": "cad/paternoster/build.py",
+  "agent_generated": true,
+  "evidence": "files added by claude[bot]; last touched 7990802 by claude[bot] on branch claude/issue-128-20261013-2050",
+  "assembly": true,
+  "parts": 14,
+  "first_seen": "2026-10-16",
+  "versions": 3,
+  "links": [
+   "https://github.com/vertical-cloud-lab/powder-doser/issues/128",
+   "https://github.com/vertical-cloud-lab/powder-doser/tree/6513ee2/cad/paternoster/step"
+  ]
+ },
+ {
+  "id": "powder-doser--tap-mount-concepts",
+  "section": "Powder doser",
+  "title": "Plate-mounted tapper concepts",
+  "system": "Tapper concepts that mount on the plate instead of the auger (issue #203).",
+  "repo": "vertical-cloud-lab/powder-doser",
+  "branch": "claude/issue-203-20261107-2200",
+  "commit": "8312d30e517a952d1d8e02797521461a8942472a",
+  "source_paths": [
+   "design/cad/tap-mount-concepts/step/concept1-tap-tower.step",
+   "design/cad/tap-mount-concepts/step/concept2-tap-bracket.step",
+   "design/cad/tap-mount-concepts/step/concept3-hammer-arm.step",
+   "design/cad/tap-mount-concepts/step/concept3-hammer-frame.step",
+   "design/cad/tap-mount-concepts/step/concept4-hinge-post.step",
+   "design/cad/tap-mount-concepts/step/concept4-saddle.step",
+   "design/cad/tap-mount-concepts/step/flexible-bracket-recreation.step"
+  ],
+  "generator": "design/cad/tap-mount-concepts",
+  "agent_generated": true,
+  "evidence": "files added by claude[bot]; last touched 8312d30 by claude[bot] on branch claude/issue-203-20261107-2200",
+  "assembly": true,
+  "parts": 7,
+  "first_seen": "2026-11-07",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/powder-doser/issues/203",
+   "https://github.com/vertical-cloud-lab/powder-doser/tree/8312d30/design/cad/tap-mount-concepts/step"
+  ],
+  "notes": "Several concepts in one set; may split per concept."
+ },
+ {
+  "id": "powder-doser--multi-auger-b2",
+  "section": "Powder doser",
+  "title": "Multi-auger B2 tri-star fixed base",
+  "system": "Fixed base holding three augers (tri-star) with hinge towers, tap bracket and clevis block (issue #204).",
+  "repo": "vertical-cloud-lab/powder-doser",
+  "branch": "claude/issue-204-20261117-0508",
+  "commit": "4d2177ebade7fcedbf8cda79823de3fbc8bdea5c",
+  "source_paths": [
+   "design/multi-auger-fixed-base/base/base.step",
+   "design/multi-auger-fixed-base/base/base.stl",
+   "design/multi-auger-fixed-base/clevis/clevis_block.step",
+   "design/multi-auger-fixed-base/clevis/clevis_block_print.stl",
+   "design/multi-auger-fixed-base/clevis/clevis_block_with_hardware.step",
+   "design/multi-auger-fixed-base/tap-bracket/solenoid-bracket-onshape.step",
+   "design/multi-auger-fixed-base/tap-bracket/tap-bracket-pr170.step"
+  ],
+  "generator": "design/multi-auger-fixed-base",
+  "agent_generated": true,
+  "evidence": "files added by claude[bot]; last touched 4d2177e by claude[bot] on branch claude/issue-204-20261117-0508",
+  "assembly": true,
+  "parts": 7,
+  "first_seen": "2026-11-10",
+  "versions": 8,
+  "links": [
+   "https://github.com/vertical-cloud-lab/powder-doser/issues/204",
+   "https://github.com/vertical-cloud-lab/powder-doser/tree/4d2177e/design/multi-auger-fixed-base/base"
+  ]
+ },
+ {
+  "id": "powder-doser--chain-carousel-v8",
+  "section": "Powder doser",
+  "title": "Chain carousel v8 (Sam layout)",
+  "system": "Late chain-carousel redesign on Sam's Aug 27 layout behind the balance, with door, latch, carriage and electronics carriage.",
+  "repo": "vertical-cloud-lab/powder-doser",
+  "branch": "claude/issue-128-20261013-2050",
+  "commit": "6513ee244df8d677641433b0fed4579f94340c4e",
+  "source_paths": [
+   "cad/chain-carousel-v8/step/chain_carousel_rig_v8.step",
+   "cad/chain-carousel-v8/stl/beaker_riser.stl",
+   "cad/chain-carousel-v8/stl/carriage.stl",
+   "cad/chain-carousel-v8/stl/catch.stl",
+   "cad/chain-carousel-v8/stl/clevis_bracket.stl",
+   "cad/chain-carousel-v8/stl/door_housing.stl",
+   "cad/chain-carousel-v8/stl/door_shutter.stl",
+   "cad/chain-carousel-v8/stl/electronics_carriage_v8.stl",
+   "cad/chain-carousel-v8/stl/guide7_cone.stl",
+   "cad/chain-carousel-v8/stl/guide7_vee.stl",
+   "cad/chain-carousel-v8/stl/hold_down.stl",
+   "cad/chain-carousel-v8/stl/latch_bolt.stl",
+   "cad/chain-carousel-v8/stl/latch_rail.stl",
+   "cad/chain-carousel-v8/stl/mounting_plate_v8.stl",
+   "cad/chain-carousel-v8/stl/side_tab.stl",
+   "cad/chain-carousel-v8/stl/side_tab_m.stl",
+   "cad/chain-carousel-v8/stl/tensioner_block.stl"
+  ],
+  "generator": "cad/chain-carousel-v8/build.py",
+  "agent_generated": true,
+  "evidence": "files added by claude[bot]; last touched 744a6c1 by claude[bot] on branch claude/issue-128-20261013-2050",
+  "assembly": true,
+  "parts": 17,
+  "first_seen": "2026-11-12",
+  "versions": 4,
+  "links": [
+   "https://github.com/vertical-cloud-lab/powder-doser/issues/128",
+   "https://github.com/vertical-cloud-lab/powder-doser/tree/6513ee2/cad/chain-carousel-v8/step"
+  ],
+  "notes": "v5-v8 lineage."
+ },
+ {
+  "id": "tensegrity-optimization--n-bar-prism-family",
+  "section": "Other lab hardware",
+  "title": "n-bar tensegrity prisms (T3, T4, T6)",
+  "system": "Class-1 twisted n-strut tensegrity prisms (struts as 5 mm rods, TPU cables as 2.4 mm rods), the canonical reference family. Reference model generated from code (struts and cables as cylinders).",
+  "repo": "vertical-cloud-lab/tensegrity-optimization",
+  "branch": "copilot/fetch-designs-for-tensegrity-structures",
+  "commit": "e05d443630b732c949fc60b98f89c885377cab8d",
+  "source_paths": [
+   "models/stl/4bar_prism.stl"
+  ],
+  "generator": "models/generate_stl.py",
+  "agent_generated": true,
+  "evidence": "added by copilot-swe-agent[bot] (3ffd5e6) on copilot/fetch-designs-for-tensegrity-structures (PR #22, issue #21); last regenerated by copilot-swe-agent[bot] (7cc4533)",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-05-08",
+  "versions": 6,
+  "links": [
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/pull/22",
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/21"
+  ],
+  "notes": "Binary STL, struts 5 mm and cables 2.4 mm diameter in one mesh, written by a stdlib-only generator (no CAD kernel). One parametric family: generate_stl.py builds 3bar/4bar/6bar from the same n_bar_prism(n) function, so they are one design; 4bar_prism.stl is the representative (3bar/6bar in variants/). The Knight et al. US 6,441,801 antenna model is the same 12-node, 6-strut, 18-cable topology as the 6-bar prism with different radii (purpose: deployable antenna reflector), so it is folded in here too (variants/)."
+ },
+ {
+  "id": "tensegrity-optimization--six-strut-icosahedron",
+  "section": "Other lab hardware",
+  "title": "6-strut tensegrity icosahedron",
+  "system": "Jessen's orthogonal icosahedron ('expanded octahedron', 6 struts, 24 cables), the basis of NASA SUPERball and most tensegrity balls. Reference model generated from code (struts and cables as cylinders).",
+  "repo": "vertical-cloud-lab/tensegrity-optimization",
+  "branch": "copilot/fetch-designs-for-tensegrity-structures",
+  "commit": "e05d443630b732c949fc60b98f89c885377cab8d",
+  "source_paths": [
+   "models/stl/icosahedron.stl"
+  ],
+  "generator": "models/generate_stl.py",
+  "agent_generated": true,
+  "evidence": "added by copilot-swe-agent[bot] (3ffd5e6) on copilot/fetch-designs-for-tensegrity-structures (PR #22, issue #21); last regenerated by copilot-swe-agent[bot] (7cc4533)",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-05-08",
+  "versions": 2,
+  "links": [
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/pull/22",
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/21"
+  ],
+  "notes": "Binary STL, struts 5 mm and cables 2.4 mm diameter in one mesh, written by a stdlib-only generator (no CAD kernel)."
+ },
+ {
+  "id": "tensegrity-optimization--t3-prism",
+  "section": "Other lab hardware",
+  "title": "Printable T3 tensegrity prism (PLA struts + TPU cables)",
+  "system": "3-strut, 9-cable tensegrity prism printed in one multi-material job (PLA/PETG struts, TPU cables) with accelerometer pockets, the specimen of the lab's drop-test Bayesian-optimization campaign.",
+  "repo": "vertical-cloud-lab/tensegrity-optimization",
+  "branch": "copilot/get-bambu-sliced-print-t3-prism",
+  "commit": "dbb5011859f42d7b0e47058d46c3bc2aa89faafc",
+  "source_paths": [
+   "cad/t3-prism/t3-prism-struts.stl",
+   "cad/t3-prism/t3-prism-cables.stl"
+  ],
+  "generator": "cad/t3-prism/t3-prism.scad",
+  "agent_generated": true,
+  "evidence": "added by copilot-swe-agent[bot] in PR #35 (7551146, 2026-05-08); revised by copilot-swe-agent[bot] and claude[bot] (Co-Authored-By: Claude Fable 5 / Opus 5 trailers); every revision bot-committed",
+  "assembly": true,
+  "parts": 2,
+  "first_seen": "2026-05-08",
+  "versions": 36,
+  "links": [
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/pull/35",
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/pull/48",
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/pull/102",
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/95"
+  ],
+  "notes": "Two bodies: struts.stl (PLA/PETG, includes joints and accelerometer housings) and cables.stl (TPU); explode along the strut/cable split. 36 bot commits revised the canonical STL/SCAD/STEP (accelerometer housings A0-A3, key-seats, thick-cable variant PR #48, scaffold-pillar variant). Not separate entries: the BO campaign renders this same scad at per-trial scales (bo/*.scad rounds 1/3/4/5, ~100+ per-trial struts/cables STLs in bo/per-specimen-stls and bo/replicate-study on claude/issue-98-20260821-0103), all parameter variants. A parametric B-rep route (Onshape FeatureScript t3-prism.fs + build123d t3_prism_b123d.py, with the PLA-ceiling fix) is on claude/issue-95-20260806-0306 @ 493e206; its struts/cables STEP pair is extracted to brep-route/ for reference. Human-uploaded 3MF projects (Marcus Madsen 'Add files via upload' x2) and Audrey's manual-support project are slices of this geometry, excluded. Main branch carries no CAD; all on branches."
+ },
+ {
+  "id": "tensegrity-optimization--biotensegrity-spine",
+  "section": "Other lab hardware",
+  "title": "Biotensegrity spine",
+  "system": "Levin/Flemons spinal column of 4 stacked tensegrity-icosahedron vertebrae (basis of Berkeley ULTRA-Spine). Reference model generated from code (struts and cables as cylinders).",
+  "repo": "vertical-cloud-lab/tensegrity-optimization",
+  "branch": "copilot/fetch-designs-for-tensegrity-structures",
+  "commit": "e05d443630b732c949fc60b98f89c885377cab8d",
+  "source_paths": [
+   "models/stl/biotensegrity_spine.stl"
+  ],
+  "generator": "models/generate_stl.py",
+  "agent_generated": true,
+  "evidence": "added by copilot-swe-agent[bot] (7f69ce5) on copilot/fetch-designs-for-tensegrity-structures (PR #22, issue #21)",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-05-09",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/pull/22",
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/21"
+  ],
+  "notes": "Binary STL, struts 5 mm and cables 2.4 mm diameter in one mesh, written by a stdlib-only generator (no CAD kernel)."
+ },
+ {
+  "id": "tensegrity-optimization--bistable-double-prism",
+  "section": "Other lab hardware",
+  "title": "Bistable double-prism unit cell",
+  "system": "Two T3 prisms joined at a shared compliant hinge ring (Intrigila et al. 2022), a bistable unit cell. Reference model generated from code (struts and cables as cylinders).",
+  "repo": "vertical-cloud-lab/tensegrity-optimization",
+  "branch": "copilot/fetch-designs-for-tensegrity-structures",
+  "commit": "e05d443630b732c949fc60b98f89c885377cab8d",
+  "source_paths": [
+   "models/stl/bistable_double_prism.stl"
+  ],
+  "generator": "models/generate_stl.py",
+  "agent_generated": true,
+  "evidence": "added by copilot-swe-agent[bot] (7f69ce5) on copilot/fetch-designs-for-tensegrity-structures (PR #22, issue #21)",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-05-09",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/pull/22",
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/21"
+  ],
+  "notes": "Binary STL, struts 5 mm and cables 2.4 mm diameter in one mesh, written by a stdlib-only generator (no CAD kernel)."
+ },
+ {
+  "id": "tensegrity-optimization--cuboctahedron-tessellation",
+  "section": "Other lab hardware",
+  "title": "Cuboctahedron tensegrity tessellation block (Liu 2019)",
+  "system": "Class-1 cuboctahedron tensegrity tessellation block built from Liu et al. (2019)'s published node/connectivity/prestress data, tiling a 120 mm cubic cell. Reference model generated from code (struts and cables as cylinders).",
+  "repo": "vertical-cloud-lab/tensegrity-optimization",
+  "branch": "copilot/fetch-designs-for-tensegrity-structures",
+  "commit": "e05d443630b732c949fc60b98f89c885377cab8d",
+  "source_paths": [
+   "models/stl/cuboctahedron_tessellation.stl"
+  ],
+  "generator": "models/generate_stl.py",
+  "agent_generated": true,
+  "evidence": "added by copilot-swe-agent[bot] (7f69ce5) on copilot/fetch-designs-for-tensegrity-structures (PR #22, issue #21); last regenerated by claude[bot] (a374107)",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-05-09",
+  "versions": 2,
+  "links": [
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/pull/22",
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/21"
+  ],
+  "notes": "Binary STL, struts 5 mm and cables 2.4 mm diameter in one mesh, written by a stdlib-only generator (no CAD kernel). First version (Copilot, 2026-05-09) was a broken reconstruction; replaced by claude[bot] in a374107 with the published block read from models/data/ (the generator needs models/data/liu2019_cuboctahedron_*.csv)."
+ },
+ {
+  "id": "tensegrity-optimization--geiger-cable-dome",
+  "section": "Other lab hardware",
+  "title": "Geiger radial cable dome",
+  "system": "Geiger-type radial cable dome (Seoul Olympic Hall topology): 3 concentric rings x 12 radial ribs plus an apex hub. Reference model generated from code (struts and cables as cylinders).",
+  "repo": "vertical-cloud-lab/tensegrity-optimization",
+  "branch": "copilot/fetch-designs-for-tensegrity-structures",
+  "commit": "e05d443630b732c949fc60b98f89c885377cab8d",
+  "source_paths": [
+   "models/stl/geiger_cable_dome.stl"
+  ],
+  "generator": "models/generate_stl.py",
+  "agent_generated": true,
+  "evidence": "added by copilot-swe-agent[bot] (7f69ce5) on copilot/fetch-designs-for-tensegrity-structures (PR #22, issue #21)",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-05-09",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/pull/22",
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/21"
+  ],
+  "notes": "Binary STL, struts 5 mm and cables 2.4 mm diameter in one mesh, written by a stdlib-only generator (no CAD kernel)."
+ },
+ {
+  "id": "tensegrity-optimization--joint-a-anchor-bulb",
+  "section": "Other lab hardware",
+  "title": "Joint A: anchor-bulb spherical node",
+  "system": "PETG sphere at each tensegrity vertex with through-holes; the TPU cable threads through and ends in a printed-in-place TPU bulb on the far side. Candidate joint for printing the tensegrity in one multi-material job.",
+  "repo": "vertical-cloud-lab/tensegrity-optimization",
+  "branch": "copilot/explore-joint-design-for-petg-tpu",
+  "commit": "2a644f5844d9fe9460a2bcf641ca5e99e0fe3666",
+  "source_paths": [
+   "cad/joint-design/renders/A_anchor_bulb.stl"
+  ],
+  "generator": "cad/joint-design/A_anchor_bulb.scad",
+  "agent_generated": true,
+  "evidence": "added by copilot-swe-agent[bot] in PR #39 (e188430)",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-05-09",
+  "versions": 9,
+  "links": [
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/pull/39"
+  ],
+  "notes": "Joint test coupon (strut tip + cable termination), two materials (PETG/PLA + TPU) merged in one OpenSCAD render; an exploded strut/cable view would need the scad rebuilt per material. Section-view scads (_section_X/Y/Z) also exist. Edison (FutureHouse) analyses informed the geometry; the CAD was written by Copilot. Six upset-shape variants (A0 sphere, A1 frustum, A2 torus, A3 countersunk, A4 lobed, A5 mushroom; commit 97dffa0) counted as versions, renders in variants/. A3 countersunk was carried into the tensioning array."
+ },
+ {
+  "id": "tensegrity-optimization--joint-b-dovetail",
+  "section": "Other lab hardware",
+  "title": "Joint B: co-printed dovetail / T-slot interlock",
+  "system": "PETG strut tip ends in a captive dovetail/T-slot socket and the TPU cable ends in a matching T-head co-printed inside it. Candidate joint for printing the tensegrity in one multi-material job.",
+  "repo": "vertical-cloud-lab/tensegrity-optimization",
+  "branch": "copilot/explore-joint-design-for-petg-tpu",
+  "commit": "2a644f5844d9fe9460a2bcf641ca5e99e0fe3666",
+  "source_paths": [
+   "cad/joint-design/renders/B_dovetail.stl"
+  ],
+  "generator": "cad/joint-design/B_dovetail.scad",
+  "agent_generated": true,
+  "evidence": "added by copilot-swe-agent[bot] in PR #39 (e188430)",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-05-09",
+  "versions": 3,
+  "links": [
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/pull/39"
+  ],
+  "notes": "Joint test coupon (strut tip + cable termination), two materials (PETG/PLA + TPU) merged in one OpenSCAD render; an exploded strut/cable view would need the scad rebuilt per material. Section-view scads (_section_X/Y/Z) also exist. Edison (FutureHouse) analyses informed the geometry; the CAD was written by Copilot."
+ },
+ {
+  "id": "tensegrity-optimization--joint-c-tpu-sleeve-overmold",
+  "section": "Other lab hardware",
+  "title": "Joint C: TPU sleeve overmolded on a knurled strut tip",
+  "system": "The TPU cable continues over a knurled PETG strut tip as a hoop-tensioned sleeve (~8 mm overlap). Candidate joint for printing the tensegrity in one multi-material job.",
+  "repo": "vertical-cloud-lab/tensegrity-optimization",
+  "branch": "copilot/explore-joint-design-for-petg-tpu",
+  "commit": "2a644f5844d9fe9460a2bcf641ca5e99e0fe3666",
+  "source_paths": [
+   "cad/joint-design/renders/C_tpu_sleeve_overmold.stl"
+  ],
+  "generator": "cad/joint-design/C_tpu_sleeve_overmold.scad",
+  "agent_generated": true,
+  "evidence": "added by copilot-swe-agent[bot] in PR #39 (e188430)",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-05-09",
+  "versions": 3,
+  "links": [
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/pull/39"
+  ],
+  "notes": "Joint test coupon (strut tip + cable termination), two materials (PETG/PLA + TPU) merged in one OpenSCAD render; an exploded strut/cable view would need the scad rebuilt per material. Section-view scads (_section_X/Y/Z) also exist. Edison (FutureHouse) analyses informed the geometry; the CAD was written by Copilot."
+ },
+ {
+  "id": "tensegrity-optimization--joint-d-eyelet-loop",
+  "section": "Other lab hardware",
+  "title": "Joint D: captive TPU loop through a PETG eyelet",
+  "system": "Chain-link joint: the PETG strut ends in an eyelet ring and the TPU cable is printed in place as a closed loop through it. Candidate joint for printing the tensegrity in one multi-material job.",
+  "repo": "vertical-cloud-lab/tensegrity-optimization",
+  "branch": "copilot/explore-joint-design-for-petg-tpu",
+  "commit": "2a644f5844d9fe9460a2bcf641ca5e99e0fe3666",
+  "source_paths": [
+   "cad/joint-design/renders/D_eyelet_loop.stl"
+  ],
+  "generator": "cad/joint-design/D_eyelet_loop.scad",
+  "agent_generated": true,
+  "evidence": "added by copilot-swe-agent[bot] in PR #39 (e188430)",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-05-09",
+  "versions": 2,
+  "links": [
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/pull/39"
+  ],
+  "notes": "Joint test coupon (strut tip + cable termination), two materials (PETG/PLA + TPU) merged in one OpenSCAD render; an exploded strut/cable view would need the scad rebuilt per material. Section-view scads (_section_X/Y/Z) also exist. Edison (FutureHouse) analyses informed the geometry; the CAD was written by Copilot."
+ },
+ {
+  "id": "tensegrity-optimization--joint-e-tpu-rebar",
+  "section": "Other lab hardware",
+  "title": "Joint E: barbed TPU 'rebar' embedded in the strut tip",
+  "system": "The TPU cable runs several mm into the PETG strut tip, PETG printed around it, with barbs resisting pull-out like rebar in concrete. Candidate joint for printing the tensegrity in one multi-material job.",
+  "repo": "vertical-cloud-lab/tensegrity-optimization",
+  "branch": "copilot/explore-joint-design-for-petg-tpu",
+  "commit": "2a644f5844d9fe9460a2bcf641ca5e99e0fe3666",
+  "source_paths": [
+   "cad/joint-design/renders/E_tpu_rebar.stl"
+  ],
+  "generator": "cad/joint-design/E_tpu_rebar.scad",
+  "agent_generated": true,
+  "evidence": "added by copilot-swe-agent[bot] in PR #39 (e188430)",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-05-09",
+  "versions": 3,
+  "links": [
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/pull/39"
+  ],
+  "notes": "Joint test coupon (strut tip + cable termination), two materials (PETG/PLA + TPU) merged in one OpenSCAD render; an exploded strut/cable view would need the scad rebuilt per material. Section-view scads (_section_X/Y/Z) also exist. Edison (FutureHouse) analyses informed the geometry; the CAD was written by Copilot."
+ },
+ {
+  "id": "tensegrity-optimization--stacked-prism-column",
+  "section": "Other lab hardware",
+  "title": "Stacked T3 column / deployable mast",
+  "system": "Stacked T3 bays with alternating chirality (Snelson Needle Tower / mast topology). Reference model generated from code (struts and cables as cylinders).",
+  "repo": "vertical-cloud-lab/tensegrity-optimization",
+  "branch": "copilot/fetch-designs-for-tensegrity-structures",
+  "commit": "e05d443630b732c949fc60b98f89c885377cab8d",
+  "source_paths": [
+   "models/stl/stacked_t3_column.stl"
+  ],
+  "generator": "models/generate_stl.py",
+  "agent_generated": true,
+  "evidence": "added by copilot-swe-agent[bot] (df60ac4) on copilot/fetch-designs-for-tensegrity-structures (PR #22, issue #21)",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-05-09",
+  "versions": 2,
+  "links": [
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/pull/22",
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/21"
+  ],
+  "notes": "Binary STL, struts 5 mm and cables 2.4 mm diameter in one mesh, written by a stdlib-only generator (no CAD kernel). tibert_pellegrino_mast.stl is the same stacked_prism() function with 6 bays instead of 3 (generate_stl.py's tibert_pellegrino_mast returns stacked_prism(...)), so it is a parameter variant, in variants/."
+ },
+ {
+  "id": "tensegrity-optimization--superball-with-payload",
+  "section": "Other lab hardware",
+  "title": "SUPERball with suspended payload",
+  "system": "NASA SUPERball-style 6-strut icosahedron with an inner payload icosahedron hung on 12 suspension cables. Reference model generated from code (struts and cables as cylinders).",
+  "repo": "vertical-cloud-lab/tensegrity-optimization",
+  "branch": "copilot/fetch-designs-for-tensegrity-structures",
+  "commit": "e05d443630b732c949fc60b98f89c885377cab8d",
+  "source_paths": [
+   "models/stl/superball_with_payload.stl"
+  ],
+  "generator": "models/generate_stl.py",
+  "agent_generated": true,
+  "evidence": "added by copilot-swe-agent[bot] (7f69ce5) on copilot/fetch-designs-for-tensegrity-structures (PR #22, issue #21)",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-05-09",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/pull/22",
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/21"
+  ],
+  "notes": "Binary STL, struts 5 mm and cables 2.4 mm diameter in one mesh, written by a stdlib-only generator (no CAD kernel)."
+ },
+ {
+  "id": "tensegrity-optimization--truncated-octahedron",
+  "section": "Other lab hardware",
+  "title": "Truncated-octahedron tensegrity unit cell",
+  "system": "12-strut, 36-cable truncated-octahedron tensegrity (Rimoli/Pajunen), a space-tileable energy-absorbing metamaterial cell. Reference model generated from code (struts and cables as cylinders).",
+  "repo": "vertical-cloud-lab/tensegrity-optimization",
+  "branch": "copilot/fetch-designs-for-tensegrity-structures",
+  "commit": "e05d443630b732c949fc60b98f89c885377cab8d",
+  "source_paths": [
+   "models/stl/truncated_octahedron.stl"
+  ],
+  "generator": "models/generate_stl.py",
+  "agent_generated": true,
+  "evidence": "added by copilot-swe-agent[bot] (df60ac4) on copilot/fetch-designs-for-tensegrity-structures (PR #22, issue #21)",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-05-09",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/pull/22",
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/21"
+  ],
+  "notes": "Binary STL, struts 5 mm and cables 2.4 mm diameter in one mesh, written by a stdlib-only generator (no CAD kernel). Same topology as the Pajunen spherically-jointed cell entry, without ball joints."
+ },
+ {
+  "id": "tensegrity-optimization--pentagonal-ring",
+  "section": "Other lab hardware",
+  "title": "Pentagonal tensegrity ring module",
+  "system": "Rhode-Barbarigos (2010) closed 'hollow-rope' pentagonal ring module, the basis of EPFL's deployable tensegrity footbridge (simplified). Reference model generated from code (struts and cables as cylinders).",
+  "repo": "vertical-cloud-lab/tensegrity-optimization",
+  "branch": "copilot/fetch-designs-for-tensegrity-structures",
+  "commit": "e05d443630b732c949fc60b98f89c885377cab8d",
+  "source_paths": [
+   "models/stl/pentagonal_tensegrity_ring.stl"
+  ],
+  "generator": "models/generate_stl.py",
+  "agent_generated": true,
+  "evidence": "added by copilot-swe-agent[bot] (81732cf) on copilot/fetch-designs-for-tensegrity-structures (PR #22, issue #21)",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-05-12",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/pull/22",
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/21"
+  ],
+  "notes": "Binary STL, struts 5 mm and cables 2.4 mm diameter in one mesh, written by a stdlib-only generator (no CAD kernel)."
+ },
+ {
+  "id": "tensegrity-optimization--pugh-diamond-column",
+  "section": "Other lab hardware",
+  "title": "Pugh diamond column",
+  "system": "Pugh's 'diamond' 3-bay stacked T3 column with two saddle cables per strut, giving diamond side panels. Reference model generated from code (struts and cables as cylinders).",
+  "repo": "vertical-cloud-lab/tensegrity-optimization",
+  "branch": "copilot/fetch-designs-for-tensegrity-structures",
+  "commit": "e05d443630b732c949fc60b98f89c885377cab8d",
+  "source_paths": [
+   "models/stl/pugh_diamond_column.stl"
+  ],
+  "generator": "models/generate_stl.py",
+  "agent_generated": true,
+  "evidence": "added by copilot-swe-agent[bot] (81732cf) on copilot/fetch-designs-for-tensegrity-structures (PR #22, issue #21)",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-05-12",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/pull/22",
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/21"
+  ],
+  "notes": "Binary STL, struts 5 mm and cables 2.4 mm diameter in one mesh, written by a stdlib-only generator (no CAD kernel). Cable-pattern relative of the stacked T3 column and the Pugh zig-zag column (different connectivity); merge if you want fewer prism-column entries."
+ },
+ {
+  "id": "tensegrity-optimization--pugh-zigzag-column",
+  "section": "Other lab hardware",
+  "title": "Pugh zig-zag column",
+  "system": "Pugh's 'zig-zag' 3-bay stacked T3 column with a single skip-one saddle per strut, giving Z-fold side panels. Reference model generated from code (struts and cables as cylinders).",
+  "repo": "vertical-cloud-lab/tensegrity-optimization",
+  "branch": "copilot/fetch-designs-for-tensegrity-structures",
+  "commit": "e05d443630b732c949fc60b98f89c885377cab8d",
+  "source_paths": [
+   "models/stl/pugh_zigzag_column.stl"
+  ],
+  "generator": "models/generate_stl.py",
+  "agent_generated": true,
+  "evidence": "added by copilot-swe-agent[bot] (81732cf) on copilot/fetch-designs-for-tensegrity-structures (PR #22, issue #21)",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-05-12",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/pull/22",
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/21"
+  ],
+  "notes": "Binary STL, struts 5 mm and cables 2.4 mm diameter in one mesh, written by a stdlib-only generator (no CAD kernel). Cable-pattern relative of the stacked T3 column and the Pugh diamond column (different connectivity); merge if you want fewer prism-column entries."
+ },
+ {
+  "id": "tensegrity-optimization--snelson-x-module",
+  "section": "Other lab hardware",
+  "title": "Snelson planar X-module",
+  "system": "Snelson's planar X-piece (2 struts, 4 cables), the seed of his X-column weaves. Reference model generated from code (struts and cables as cylinders).",
+  "repo": "vertical-cloud-lab/tensegrity-optimization",
+  "branch": "copilot/fetch-designs-for-tensegrity-structures",
+  "commit": "e05d443630b732c949fc60b98f89c885377cab8d",
+  "source_paths": [
+   "models/stl/snelson_x_module.stl"
+  ],
+  "generator": "models/generate_stl.py",
+  "agent_generated": true,
+  "evidence": "added by copilot-swe-agent[bot] (81732cf) on copilot/fetch-designs-for-tensegrity-structures (PR #22, issue #21)",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-05-12",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/pull/22",
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/21"
+  ],
+  "notes": "Binary STL, struts 5 mm and cables 2.4 mm diameter in one mesh, written by a stdlib-only generator (no CAD kernel). Very small model (4 nodes)."
+ },
+ {
+  "id": "tensegrity-optimization--anchor-bulb-tensioning-array",
+  "section": "Other lab hardware",
+  "title": "Anchor-bulb pre-tensioning test plate (15 specimens)",
+  "system": "A design-of-experiments print plate of 15 strut-cable specimens (air gap x joint size, A3 countersunk anchor bulb, horizontal cable) for measuring how printed TPU cables pre-tension.",
+  "repo": "vertical-cloud-lab/tensegrity-optimization",
+  "branch": "copilot/design-array-of-prints-anchor-bulb",
+  "commit": "d7be0e5ac8a61515cfeff4a12969bcf57d2308b1",
+  "source_paths": [
+   "cad/anchor-bulb-tensioning-array/renders/tensioning_array.stl"
+  ],
+  "generator": "cad/anchor-bulb-tensioning-array/tensioning_array.scad",
+  "agent_generated": true,
+  "evidence": "added by copilot-swe-agent[bot] in PR #52 (8a86c4c, d7be0e5)",
+  "assembly": false,
+  "parts": 15,
+  "first_seen": "2026-05-15",
+  "versions": 2,
+  "links": [
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/pull/52"
+  ],
+  "notes": "tensioning_array.stl (22 MB, ASCII STL) is the whole plate: 15 separate specimens H-S{0,1,2}G{0..4}, laid out side by side rather than fitting together, so assembly=false; individual specimen STLs are in renders/ on the branch. First version (8a86c4c) was a 12-specimen TA-* array, replaced in the redesign."
+ },
+ {
+  "id": "tensegrity-optimization--joint-f-captive-core",
+  "section": "Other lab hardware",
+  "title": "Joint F: captive TPU core in a PETG/PLA shell",
+  "system": "TPU core captured inside a PETG/PLA outer shell, with a teardrop strut fillet and layer-interlock teeth instead of a feed-through anchor. Candidate joint for printing the tensegrity in one multi-material job.",
+  "repo": "vertical-cloud-lab/tensegrity-optimization",
+  "branch": "copilot/explore-joint-design-for-petg-tpu",
+  "commit": "2a644f5844d9fe9460a2bcf641ca5e99e0fe3666",
+  "source_paths": [
+   "cad/joint-design/renders/F_captive_core.stl"
+  ],
+  "generator": "cad/joint-design/F_captive_core.scad",
+  "agent_generated": true,
+  "evidence": "added by copilot-swe-agent[bot] in PR #39 (9d20e5e)",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-05-15",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/pull/39"
+  ],
+  "notes": "Joint test coupon (strut tip + cable termination), two materials (PETG/PLA + TPU) merged in one OpenSCAD render; an exploded strut/cable view would need the scad rebuilt per material. Section-view scads (_section_X/Y/Z) also exist. Edison (FutureHouse) analyses informed the geometry; the CAD was written by Copilot."
+ },
+ {
+  "id": "tensegrity-optimization--t3-prism-print-supports",
+  "section": "Other lab hardware",
+  "title": "Generated breakaway supports and tendon cages for the T3 prism",
+  "system": "Script-generated tree-style breakaway support pillars and TPU-tendon cages, ray-cast from the T3 prism mesh's underside, so the multi-material tensegrity prints without slicer supports.",
+  "repo": "vertical-cloud-lab/tensegrity-optimization",
+  "branch": "copilot/add-manual-supports",
+  "commit": "15f89611dae4f695edc0fc4553b3371ff582dcf4",
+  "source_paths": [
+   "cad/print-supports/verification/t3-prism-pr35-with-pillars.stl",
+   "cad/print-supports/verification/t3-prism-pr35-pillars.stl",
+   "cad/print-supports/verification/t3-prism-pr35-cages.stl"
+  ],
+  "generator": "cad/print-supports/generate_support_pillars.py",
+  "agent_generated": true,
+  "evidence": "added by copilot-swe-agent[bot] (dc18bd1 onward) in PR #66; tendon cages by claude[bot] (83aa3f3, 2026-07-23)",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-05-22",
+  "versions": 14,
+  "links": [
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/pull/66"
+  ],
+  "notes": "Auxiliary design (print aids for the T3 prism, not a standalone system). with-pillars.stl is the T3 prism merged with its pillars (best single render); pillars.stl and cages.stl are the generated support bodies alone. The th10/tpu-enforced *supports.stl files on the branch are slicer G-code converted back to meshes (gcode_to_stl.py), not designs, and were not extracted."
+ },
+ {
+  "id": "byu-vcl--p20-fake-tip-test-array",
+  "section": "Other lab hardware",
+  "title": "P20 fake-tip test array and OT-2 deck plate",
+  "system": "Press-fit \"fake tip\" sockets for an OT-2 P20 pipette nozzle: 10-tip graded-bore test arrays (straight, slitted, small slitted) that drop into an SLAS-footprint deck plate, plus the final modular insert.",
+  "repo": "vertical-cloud-lab/byu-vcl",
+  "branch": "copilot/recreate-wireless-color-sensor-tool",
+  "commit": "9fb951a0b43b003b5f1af09735b0c520350d8bbc",
+  "source_paths": [
+   "wireless-color-sensor/cad/stl/deck_plate_base.stl",
+   "wireless-color-sensor/cad/stl/fake_tip_test_array_slit_small.stl",
+   "wireless-color-sensor/cad/stl/fake_tip_test_array_slit.stl",
+   "wireless-color-sensor/cad/stl/fake_tip_test_array.stl",
+   "wireless-color-sensor/cad/stl/fake_tip_insert.stl",
+   "wireless-color-sensor/cad/stl/fake_tip_enclosure_bore.stl"
+  ],
+  "generator": "wireless-color-sensor/cad/cad_model.py",
+  "agent_generated": true,
+  "evidence": "build123d model written by copilot-swe-agent[bot] (2026-06-11), extended by claude[bot]; PR #60",
+  "assembly": true,
+  "parts": 6,
+  "first_seen": "2026-06-11",
+  "versions": 6,
+  "links": [
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/60",
+   "https://github.com/vertical-cloud-lab/byu-vcl/issues/33"
+  ],
+  "notes": "Kit of test prints: arrays sit in the deck plate pockets (exploded view = plate + one array). Rounds 1, 1.5, 2 arrays are variants; fake_tip_enclosure_bore is the swap-in tip with the real enclosure bore. STEP equivalents in wireless-color-sensor/cad/step/. Unmerged branch."
+ },
+ {
+  "id": "byu-vcl--p20-sensor-package",
+  "section": "Other lab hardware",
+  "title": "Wireless colour-sensor package with P20 socket",
+  "system": "Recreation of the Acceleration Consortium wireless colour-sensor enclosure (84 mm tall, 40 x 60 mm) with a concentric slitted P20 pipette socket, plus a lightweight mock package and the real enclosure with its tip swapped.",
+  "repo": "vertical-cloud-lab/byu-vcl",
+  "branch": "copilot/recreate-wireless-color-sensor-tool",
+  "commit": "9fb951a0b43b003b5f1af09735b0c520350d8bbc",
+  "source_paths": [
+   "wireless-color-sensor/cad/stl/real_sensor_package_p20.stl",
+   "wireless-color-sensor/cad/stl/mock_sensor_package.stl",
+   "wireless-color-sensor/cad/stl/real_enclosure_p20_tip.stl",
+   "wireless-color-sensor/cad/step/real_sensor_package_p20.step"
+  ],
+  "generator": "wireless-color-sensor/cad/cad_model.py",
+  "agent_generated": true,
+  "evidence": "build123d model by copilot-swe-agent[bot]/claude[bot] on PR #60",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-06-11",
+  "versions": 4,
+  "links": [
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/60",
+   "https://github.com/vertical-cloud-lab/byu-vcl/issues/33"
+  ],
+  "notes": "real_sensor_package_p20 is rebuilt from scratch by the agent; real_enclosure_p20_tip grafts the agent tip onto the human AC reference enclosure (reference/ f3d/step/stl, excluded). Three variants of one part."
+ },
+ {
+  "id": "byu-vcl--dummy-pipette-p20",
+  "section": "Other lab hardware",
+  "title": "Sacrificial dummy P20 pipette for CubXL dry runs",
+  "system": "Printable stand-in for an Opentrons P20 GEN2 that bolts onto the Cubware PAW-V2 backboard, with a snap-off nozzle as a designed weak point so gantry crashes break a 10-cent part.",
+  "repo": "vertical-cloud-lab/byu-vcl",
+  "branch": "claude/issue-169-20260729-1809",
+  "commit": "a7a85b0592d5234fe3f0d757e9705aa0ad703906",
+  "source_paths": [
+   "hardware/dummy-pipette-p20/stl/dummy_pipette_p20_assembly.stl",
+   "hardware/dummy-pipette-p20/stl/dummy_pipette_p20_body.stl",
+   "hardware/dummy-pipette-p20/stl/dummy_pipette_p20_nozzle.stl",
+   "hardware/dummy-pipette-p20/stl/dummy_pipette_p20_nozzle_with_tip.stl",
+   "hardware/dummy-pipette-p20/dummy_pipette_p20.scad"
+  ],
+  "generator": "hardware/dummy-pipette-p20/dummy_pipette_p20.scad",
+  "agent_generated": true,
+  "evidence": "OpenSCAD written by claude[bot] (issue #169), rev 1 2026-07-29 and rev 2 same day",
+  "assembly": true,
+  "parts": 3,
+  "first_seen": "2026-07-29",
+  "versions": 2,
+  "links": [
+   "https://github.com/vertical-cloud-lab/byu-vcl/issues/169",
+   "https://github.com/vertical-cloud-lab/byu-vcl/tree/claude/issue-169-20260729-1809/hardware/dummy-pipette-p20"
+  ],
+  "notes": "Agent REV 2 on an unmerged branch. On merged PR #269 the folder was replaced by a mirror of Ben's human Onshape dummy pipette (excluded)."
+ },
+ {
+  "id": "byu-vcl--cubxl-tip-rack-20ul",
+  "section": "Other lab hardware",
+  "title": "CubXL 2 x 15 tip rack re-bored for 20 uL tips",
+  "system": "The Ursa/Cubware 2 x 15 Cub-XL tip rack with every bore re-cut by a script to a 20 uL tip profile (D5.0 -> D4.6 taper, D3.1 exit).",
+  "repo": "vertical-cloud-lab/byu-vcl",
+  "branch": "claude/issue-151-20260801-0017",
+  "commit": "f25e2ed2b62f7d12a91e2d83e1520fb9ca3d4811",
+  "source_paths": [
+   "hardware/cubxl/ursa_tip_rack_20ul/TipRack20uL.stl"
+  ],
+  "generator": "hardware/cubxl/ursa_tip_rack_20ul/make_tip_rack_20ul.py",
+  "agent_generated": true,
+  "evidence": "claude[bot] commits on claude/issue-151-* branches; mesh produced by its make_tip_rack_20ul.py",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-07-31",
+  "versions": 3,
+  "links": [
+   "https://github.com/vertical-cloud-lab/byu-vcl/issues/151",
+   "https://github.com/vertical-cloud-lab/byu-vcl/tree/claude/issue-151-20260801-0017/hardware/cubxl/ursa_tip_rack_20ul"
+  ],
+  "notes": "Derived design: the agent script modifies the vendored Cubware TipRack.stl (vendor, excluded); envelope unchanged, only bores new. 3 bore profiles tried on 3 branches."
+ },
+ {
+  "id": "tensegrity-optimization--pajunen-spherically-jointed-cell",
+  "section": "Other lab hardware",
+  "title": "Pajunen spherically-jointed impact cell",
+  "system": "Single-material 3D-printable truncated-octahedron tensegrity impact absorber with 8.72 mm ball joints at the published 72.45 mm cell height (Pajunen et al. 2019, Geometry #3). Reference model generated from code (struts and cables as cylinders).",
+  "repo": "vertical-cloud-lab/tensegrity-optimization",
+  "branch": "copilot/fetch-designs-for-tensegrity-structures",
+  "commit": "e05d443630b732c949fc60b98f89c885377cab8d",
+  "source_paths": [
+   "models/stl/pajunen_spherically_jointed.stl"
+  ],
+  "generator": "models/generate_stl.py",
+  "agent_generated": true,
+  "evidence": "added by claude[bot] (e05d443) on copilot/fetch-designs-for-tensegrity-structures (PR #22, issue #21)",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-08-22",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/pull/22",
+   "https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/21"
+  ],
+  "notes": "Binary STL, struts 5 mm and cables 2.4 mm diameter in one mesh, written by a stdlib-only generator (no CAD kernel). Same topology as the truncated-octahedron entry but with spherical joints and published member sizes; added by claude[bot] with a form-finding script (models/formfind_pajunen2019.py)."
+ },
+ {
+  "id": "caliber--sem-stub-petri-insert",
+  "section": "Other lab hardware",
+  "title": "Petri-dish insert for SEM stub storage",
+  "system": "3D-printable insert that drops into a standard 100 mm Petri dish and holds SEM pin stubs upright for storage.",
+  "repo": "vertical-cloud-lab/caliber",
+  "branch": "claude/stub-storage-insert-20260923",
+  "commit": "1e55acf3123722b284ac9bb23549ceeb20508cda",
+  "source_paths": [
+   "cad/stub_storage_insert.stl",
+   "cad/stub_storage_insert.step"
+  ],
+  "generator": "cad/stub_storage_insert.py",
+  "agent_generated": true,
+  "evidence": "Added by claude[bot] (1e55acf, 2026-09-23), Co-Authored-By Claude; PR #17",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-09-23",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/caliber/pull/17"
+  ],
+  "notes": "Single CadQuery part."
+ },
+ {
+  "id": "byu-vcl--repowder-charge",
+  "section": "Other lab hardware",
+  "title": "rePowder atomizer first-run charge (cups, plugs, sleeve)",
+  "system": "Machined aluminium charge for the AMAZEMET rePowder atomizer crucible: standard/thin/ring cups with press-fit plugs, a solid slug and a support sleeve, shown 4-up in the crucible.",
+  "repo": "vertical-cloud-lab/byu-vcl",
+  "branch": "claude/issue-222-20260925-0343",
+  "commit": "2a608d690fc74f1bb85d9d7aba6e014f86d26945",
+  "source_paths": [
+   "atomizer-charge/cad/stl/crucible_cutaway_4x_std_cup.stl",
+   "atomizer-charge/cad/stl/std_cup.stl",
+   "atomizer-charge/cad/stl/std_plug.stl",
+   "atomizer-charge/cad/stl/thin_cup.stl",
+   "atomizer-charge/cad/stl/thin_plug.stl",
+   "atomizer-charge/cad/stl/ring_cup.stl",
+   "atomizer-charge/cad/stl/ring_plug.stl",
+   "atomizer-charge/cad/stl/solid_slug.stl",
+   "atomizer-charge/cad/stl/support_sleeve.stl",
+   "atomizer-charge/cad/step/crucible_context_4x_std_cup.step"
+  ],
+  "generator": "atomizer-charge/cad/charge_cad.py",
+  "agent_generated": true,
+  "evidence": "CadQuery by claude[bot], PR #232 (issue #222); copied to digital-alloy-lab PR #172",
+  "assembly": true,
+  "parts": 8,
+  "first_seen": "2026-09-24",
+  "versions": 5,
+  "links": [
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/232",
+   "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/172"
+  ],
+  "notes": "Cup + plug pairs are three variants of one charge; crucible_cutaway shows them in context. Also in lab-models/cad/inputs. digital-alloy-lab copy adds a shop drawing only."
+ },
+ {
+  "id": "byu-vcl--ot2-lid-camera-mount",
+  "section": "Other lab hardware",
+  "title": "OT-2 overhead (lid) camera mount",
+  "system": "Pi HQ camera mount bolted through the OT-2 lid: base, camera deck, standoffs/shims, a drill template and a fit coupon, modelled in CadQuery and pushed to Onshape by script.",
+  "repo": "vertical-cloud-lab/byu-vcl",
+  "branch": "claude/ot2-lid-camera-mount-20260925",
+  "commit": "49677cfff31a67765d9182c01765bfa994a7545d",
+  "source_paths": [
+   "ot2-overhead-camera/lid-mount/exports/assembly.step",
+   "ot2-overhead-camera/lid-mount/exports/base.stl",
+   "ot2-overhead-camera/lid-mount/exports/deck.stl",
+   "ot2-overhead-camera/lid-mount/exports/spacers.stl",
+   "ot2-overhead-camera/lid-mount/exports/drill_template.stl",
+   "ot2-overhead-camera/lid-mount/exports/fit_coupon.stl",
+   "ot2-overhead-camera/lid-mount/exports/c_cs_spacer_H.stl"
+  ],
+  "generator": "ot2-overhead-camera/lid-mount/cad/lid_mount.py",
+  "agent_generated": true,
+  "evidence": "claude[bot] on PR #234; Onshape scripts in lid-mount/onshape/",
+  "assembly": true,
+  "parts": 6,
+  "first_seen": "2026-09-25",
+  "versions": 20,
+  "links": [
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/234"
+  ],
+  "notes": "Printed parts: base, deck, spacers (plate of standoffs/shims), drill template, fit coupon; c_cs_spacer_A..H are 1\"-32 C-CS lens spacer rings (8 MB each, sizes_C-H plate 48.8 MB, not extracted except H). McMaster fastener STEPs in hardware/mcmaster are vendor (excluded). Copied byte-for-byte into digital-wetlab ot2-overhead-camera/ (2026-11-10) for the rebuild kit."
+ },
+ {
+  "id": "byu-vcl--pi5-dual-camera-mount",
+  "section": "Other lab hardware",
+  "title": "Raspberry Pi 5 dual-camera mount with C-mount collar",
+  "system": "One printed upright that carries a Pi 5 plus an HQ Camera and a Camera Module 3 (or two Module 3s), with a C-mount collar for the HQ lens.",
+  "repo": "vertical-cloud-lab/byu-vcl",
+  "branch": "claude/issue-238-20260926-1014",
+  "commit": "c7aa2ca1aa33f2178306791f15572ccf1145a827",
+  "source_paths": [
+   "pi5-dual-camera-mount/exports/mount.stl",
+   "pi5-dual-camera-mount/exports/collar.stl",
+   "pi5-dual-camera-mount/exports/assembly_hq_cm3.step",
+   "pi5-dual-camera-mount/exports/assembly_2x_cm3.step"
+  ],
+  "generator": "pi5-dual-camera-mount/cad/mount.py",
+  "agent_generated": true,
+  "evidence": "CadQuery by claude[bot] on PR #241 (issue #238), also rebuilt in Onshape via pi5-dual-camera-mount/onshape/features.py",
+  "assembly": true,
+  "parts": 2,
+  "first_seen": "2026-09-26",
+  "versions": 4,
+  "links": [
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/241",
+   "https://github.com/vertical-cloud-lab/byu-vcl/issues/238"
+  ],
+  "notes": "Assembly STEPs include vendor Raspberry Pi / camera models fetched by fetch_models.py (vendor geometry inside)."
+ },
+ {
+  "id": "byu-vcl--piper-sandbox-printed-holders",
+  "section": "Other lab hardware",
+  "title": "PiPER sandbox printed holders (charge station, 20 mL vial rack, SEM stub tray, OT-2 slot nest)",
+  "system": "Parametric 3D-printable SBS-footprint fixtures for robot-arm pick-and-place: a charge station (3 cups, 3 plugs, press-sleeve socket), a 6 x 20 mL vial rack with finger slots, a 15-seat tapered SEM stub tray and an OT-2 slot replica nest, with lead-in chamfers and AprilTag recesses.",
+  "repo": "vertical-cloud-lab/byu-vcl",
+  "branch": "claude/issue-199-20260915-0846",
+  "commit": "afa3803d7fecb9b94b24c52d217ca1bc02b08693",
+  "source_paths": [
+   "lab-models/exports/labware/holder_charge.stl",
+   "lab-models/exports/labware/holder_charge.step",
+   "lab-models/exports/labware/holder_vial_20ml.stl",
+   "lab-models/exports/labware/holder_vial_20ml.step",
+   "lab-models/exports/labware/holder_sem_stubs.stl",
+   "lab-models/exports/labware/holder_sem_stubs.step",
+   "lab-models/exports/labware/ot2_slot_nest.stl",
+   "lab-models/exports/labware/ot2_slot_nest.step"
+  ],
+  "generator": "lab-models/cad/labware.py (holder_* functions, via build.py)",
+  "agent_generated": true,
+  "evidence": "Added by claude[bot] on branch claude/issue-199-20260915-0846 (PR #240, 'Gripper/end-effector design, generative CAD, and org survey'), commits afa3803 (2026-09-26) .. 7fc56b6 (2026-10-03); built by lab-models/cad/*.py (CadQuery) written by the agent.",
+  "assembly": false,
+  "parts": 4,
+  "first_seen": "2026-09-26",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/240",
+   "https://github.com/vertical-cloud-lab/byu-vcl/issues/199"
+  ],
+  "notes": "Lab's own designs per lab-models/README ('Our designs: the printed holders and the OT-2 slot nest'). Set of 4 separate printable parts (STL = printable body only; STEP includes the held objects: holder_charge 10 bodies, holder_vial_20ml 17, holder_sem_stubs 34, ot2_slot_nest 2). Could be split into 4 entries if you want per-fixture GIFs. Copied verbatim to vertical-cloud-lab/robot-arms by Sterling in bdb25d31ed (2026-10-09, 'Import claude/issue-199-20260915-0846 from byu-vcl'); same design, not counted again. A verbatim copy of lab-models/cad/{common,equipment,labware,vendor}.py also lives in byu-vcl vertical-lab/lab_models/ (#303)."
+ },
+ {
+  "id": "robot-arms--piper-wrist-camera-mount",
+  "section": "Other lab hardware",
+  "title": "AgileX PiPER wrist camera mount",
+  "system": "Wrist mount for the AgileX PiPER arm carrying a Pi 5, an HQ Camera (with lens cradle) and a Camera Module 3 Wide in a pod aimed at the gripper fingers.",
+  "repo": "vertical-cloud-lab/robot-arms",
+  "branch": "claude/issue-239-20260926-2347",
+  "commit": "1b7acd55da8be50c393b5cdb7a56f99e75d3ab50",
+  "source_paths": [
+   "piper-camera-mount/exports/assembly.step",
+   "piper-camera-mount/exports/bracket.stl",
+   "piper-camera-mount/exports/carrier.stl",
+   "piper-camera-mount/exports/pod.stl",
+   "piper-camera-mount/exports/spacers.stl",
+   "piper-camera-mount/exports/tag_wedge.stl"
+  ],
+  "generator": "piper-camera-mount/cad/piper_mount.py",
+  "agent_generated": true,
+  "evidence": "CadQuery by claude[bot]: byu-vcl PR #245 (2026-09-26), moved to robot-arms PR #10 and revised there (bored-out O43 lens cradle, CM3 Wide hole); Onshape document updated by script",
+  "assembly": true,
+  "parts": 5,
+  "first_seen": "2026-09-26",
+  "versions": 20,
+  "links": [
+   "https://github.com/vertical-cloud-lab/robot-arms/pull/10",
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/245"
+  ],
+  "notes": "Latest version (2026-10-29) is in robot-arms. Printed several times (A1 mini PLA, H2D PAHT-CF)."
+ },
+ {
+  "id": "byu-vcl--piper-enclosure-dome",
+  "section": "Other lab hardware",
+  "title": "PiPER spot D enclosure (PVC dome on plywood base)",
+  "system": "Walk-up enclosure for the PiPER arm at spot D: a 3/4 in PVC pipe dome with Formufit elbows and snap clamps on a 24 x 48 in plywood base, modelled from real parts with a cut list.",
+  "repo": "vertical-cloud-lab/byu-vcl",
+  "branch": "claude/issue-229-20261001-2322",
+  "commit": "ef3ef6128ba3fce54d425f0fea82c2aa52a8acf7",
+  "source_paths": [
+   "robot-arm/enclosure/dome/enclosure.glb",
+   "robot-arm/enclosure/dome/models/enclosure-frame.stl",
+   "robot-arm/enclosure/dome/models/plywood-base-24x48in.stl",
+   "robot-arm/enclosure/dome/models/pipe-1035mm.stl",
+   "robot-arm/enclosure/dome/models/pipe-1219mm.stl",
+   "robot-arm/enclosure/dome/models/pipe-1289mm.stl",
+   "robot-arm/enclosure/dome/models/elbow-formufit-f0343we.stl",
+   "robot-arm/enclosure/dome/models/snap-clamp-3-4in-pvc.stl",
+   "robot-arm/enclosure/dome/models/m5x25-socket-cap.stl"
+  ],
+  "generator": "robot-arm/enclosure/dome/build.py",
+  "agent_generated": true,
+  "evidence": "claude[bot] on byu-vcl PR #254 (issue #229); imported to robot-arms PR #9",
+  "assembly": true,
+  "parts": 8,
+  "first_seen": "2026-09-30",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/254",
+   "https://github.com/vertical-cloud-lab/robot-arms/pull/9"
+  ],
+  "notes": "enclosure.glb is the whole assembly; models/ are the parts (fittings modelled by the agent after vendor parts)."
+ },
+ {
+  "id": "byu-vcl--piper-hutch",
+  "section": "Other lab hardware",
+  "title": "PiPER raised-deck hutch",
+  "system": "Plywood hutch that raises the PiPER and its dome onto a deck at spot D, with spine, cleats and FE-checked deck.",
+  "repo": "vertical-cloud-lab/byu-vcl",
+  "branch": "claude/issue-229-20261001-2322",
+  "commit": "ef3ef6128ba3fce54d425f0fea82c2aa52a8acf7",
+  "source_paths": [
+   "robot-arm/enclosure/hutch/hutch.glb",
+   "robot-arm/enclosure/hutch/models/hutch.stl",
+   "robot-arm/enclosure/hutch/models/deck.stl",
+   "robot-arm/enclosure/hutch/models/spine-bottom.stl",
+   "robot-arm/enclosure/hutch/models/spine-pad.stl",
+   "robot-arm/enclosure/hutch/models/spine-web.stl",
+   "robot-arm/enclosure/hutch/models/side.stl",
+   "robot-arm/enclosure/hutch/models/back.stl",
+   "robot-arm/enclosure/hutch/models/cleat.stl"
+  ],
+  "generator": "robot-arm/enclosure/hutch/build.py",
+  "agent_generated": true,
+  "evidence": "claude[bot] on byu-vcl PR #254 (issue #229)",
+  "assembly": true,
+  "parts": 8,
+  "first_seen": "2026-09-30",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/254",
+   "https://github.com/vertical-cloud-lab/robot-arms/pull/9"
+  ],
+  "notes": "hutch.stl is the combined assembly; part STLs (several are simple boxes, 684 B) for an exploded view."
+ },
+ {
+  "id": "byu-vcl--piper-pickup-shelf",
+  "section": "Other lab hardware",
+  "title": "PiPER pick-up shelf with nest plate",
+  "system": "Pick-up shelf behind the PiPER inside the dome's back rail, with legs, fence and a nest plate whose pockets are checked against the arm's reach map.",
+  "repo": "vertical-cloud-lab/byu-vcl",
+  "branch": "claude/issue-229-20261001-2322",
+  "commit": "ef3ef6128ba3fce54d425f0fea82c2aa52a8acf7",
+  "source_paths": [
+   "robot-arm/enclosure/shelf/shelf.glb",
+   "robot-arm/enclosure/shelf/models/shelf.stl",
+   "robot-arm/enclosure/shelf/models/shelf-top.stl",
+   "robot-arm/enclosure/shelf/models/nest-plate.stl",
+   "robot-arm/enclosure/shelf/models/leg.stl",
+   "robot-arm/enclosure/shelf/models/fence.stl"
+  ],
+  "generator": "robot-arm/enclosure/shelf/build.py",
+  "agent_generated": true,
+  "evidence": "claude[bot] on byu-vcl PR #254 (issue #229)",
+  "assembly": true,
+  "parts": 4,
+  "first_seen": "2026-10-01",
+  "versions": 3,
+  "links": [
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/254",
+   "https://github.com/vertical-cloud-lab/robot-arms/pull/9"
+  ],
+  "notes": "shelf.stl is the combined assembly."
+ },
+ {
+  "id": "byu-vcl--repowder-viewport-cameras",
+  "section": "Other lab hardware",
+  "title": "rePowder viewport camera units (front, left, top)",
+  "system": "Three Pi 5 camera units with displays for the AMAZEMET rePowder viewing windows: a 12-sided push-on socket, a split clamp collar on the door sight glass, and a 2020-arm top pod with detent collar.",
+  "repo": "vertical-cloud-lab/byu-vcl",
+  "branch": "claude/issue-198-20261022-0410",
+  "commit": "15bb1dcd3672d3ada01e6b2f394a9d0533ad4d01",
+  "source_paths": [
+   "atomizer-viewport-cameras/exports/onshape_partstudio.step",
+   "atomizer-viewport-cameras/exports/stl/front_socket_tray.stl",
+   "atomizer-viewport-cameras/exports/stl/front_face_plate.stl",
+   "atomizer-viewport-cameras/exports/stl/left_collar_tray.stl",
+   "atomizer-viewport-cameras/exports/stl/left_face_plate.stl",
+   "atomizer-viewport-cameras/exports/stl/top_camera_pod.stl",
+   "atomizer-viewport-cameras/exports/stl/top_detent_collar.stl",
+   "atomizer-viewport-cameras/exports/stl/top_display_box.stl",
+   "atomizer-viewport-cameras/exports/stl/top_face_plate.stl",
+   "atomizer-viewport-cameras/exports/stl/top_hub.stl"
+  ],
+  "generator": "atomizer-viewport-cameras/onshape/viewport_mounts.fs",
+  "agent_generated": true,
+  "evidence": "Parametric Onshape FeatureScript written and built by claude[bot] (PR #296, issue #198); copied to digital-alloy-lab PR #189",
+  "assembly": true,
+  "parts": 9,
+  "first_seen": "2026-10-07",
+  "versions": 5,
+  "links": [
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/296",
+   "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/189",
+   "https://github.com/vertical-cloud-lab/byu-vcl/issues/198"
+  ],
+  "notes": "Three sub-assemblies in one Part Studio (the STEP has all bodies). Not printed as of the branch tip."
+ },
+ {
+  "id": "byu-vcl--cubxl-vial-stirrer",
+  "section": "Other lab hardware",
+  "title": "CubXL magnetic vial stirrer (compact 49 x 44 mm)",
+  "system": "Fan-driven magnetic stirrer module that sits in a CubXL deck slot under a vial: base with Hall sensor, vial holder, magnet carrier and press-fit deck keys; compact version tiles the 50 x 45 mm deck pitch.",
+  "repo": "vertical-cloud-lab/byu-vcl",
+  "branch": "main",
+  "commit": "4d5446c11e82716532fb4f7fc3bd8640f0639239",
+  "source_paths": [
+   "hardware/vial-stirrer-cubxl/stl/compact/base_compact.stl",
+   "hardware/vial-stirrer-cubxl/stl/compact/vial_holder_compact.stl",
+   "hardware/vial-stirrer-cubxl/stl/magnet_carrier.stl",
+   "hardware/vial-stirrer-cubxl/stl/deck_key.stl",
+   "hardware/vial-stirrer-cubxl/step/vial_stirrer_assembly.step",
+   "hardware/vial-stirrer-cubxl/stl/base.stl",
+   "hardware/vial-stirrer-cubxl/stl/vial_holder.stl"
+  ],
+  "generator": "hardware/vial-stirrer-cubxl/compact/build_compact.py",
+  "agent_generated": true,
+  "evidence": "First modelled by claude[bot] as Onshape FeatureScript (onshape/vial_stirrer.fs, 2026-10-10), compact version in CadQuery (2026-10-28); merged in PR #269",
+  "assembly": true,
+  "parts": 4,
+  "first_seen": "2026-10-10",
+  "versions": 13,
+  "links": [
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/269",
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/348"
+  ],
+  "notes": "Compact parts (base_compact, vial_holder_compact, magnet_carrier, deck_key) are the current design; base.stl, vial_holder.stl and vial_stirrer_assembly.step are the 56 x 56 mm first version. vial_holder_compact joins Ben's Onshape cup B-rep (human) to the agent flange. spacer_d15 Onshape spacer is Ben's (excluded)."
+ },
+ {
+  "id": "byu-vcl--openraman-cubxl",
+  "section": "Other lab hardware",
+  "title": "OpenRAMAN spectrometer on the CubXL deck",
+  "system": "Deck adapter and fibre-probe tip dock that place the open-source OpenRAMAN spectrometer on the CubXL (PANDA) deck, shown assembled with the official OpenRAMAN parts.",
+  "repo": "vertical-cloud-lab/byu-vcl",
+  "branch": "claude/issue-213-20261010-1538",
+  "commit": "41c02d6f19a86ad3a09f77dae4cada310fe60275",
+  "source_paths": [
+   "modules/openraman-cubxl/cad/export/openraman_on_pandadeck.step",
+   "modules/openraman-cubxl/cad/export/cubxl_deck_adapter.stl",
+   "modules/openraman-cubxl/cad/export/cubxl_tip_dock.stl"
+  ],
+  "generator": "modules/openraman-cubxl/cad/build_cad.py",
+  "agent_generated": true,
+  "evidence": "CadQuery by claude[bot] (issue #213 branch, no PR in byu-vcl; imported to digital-alloy-lab PR #195)",
+  "assembly": true,
+  "parts": 3,
+  "first_seen": "2026-10-10",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/byu-vcl/tree/claude/issue-213-20261010-1538/modules/openraman-cubxl",
+   "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/195"
+  ],
+  "notes": "Only the deck adapter and tip dock are agent designs; the OpenRAMAN optics in the assembly STEP are vendor (official OpenRAMAN CAD, CC BY-SA 4.0)."
+ },
+ {
+  "id": "byu-vcl--cubxl-vial-handling",
+  "section": "Other lab hardware",
+  "title": "PiPER vial-handling fixtures for the CubXL (mock-up v2)",
+  "system": "Finger inserts for the PiPER gripper plus a two-part vial carrier, dock block, handle post and a set of offset/yaw test plates for handing vials to the CubXL.",
+  "repo": "vertical-cloud-lab/byu-vcl",
+  "branch": "claude/issue-266-20261007-1326",
+  "commit": "ed1098a5192c14848748a64f0b61b73b426a05f7",
+  "source_paths": [
+   "robot-arm/cubxl-vial-handling/exports/finger_insert_upper.stl",
+   "robot-arm/cubxl-vial-handling/exports/finger_insert_lower.stl",
+   "robot-arm/cubxl-vial-handling/exports/carrier_half_a.stl",
+   "robot-arm/cubxl-vial-handling/exports/carrier_half_b.stl",
+   "robot-arm/cubxl-vial-handling/exports/dock_block.stl",
+   "robot-arm/cubxl-vial-handling/exports/handle_post.stl",
+   "robot-arm/cubxl-vial-handling/exports/plate_0.stl"
+  ],
+  "generator": "robot-arm/cubxl-vial-handling/parts.py",
+  "agent_generated": true,
+  "evidence": "claude[bot] on PR #272 (issue #266)",
+  "assembly": true,
+  "parts": 7,
+  "first_seen": "2026-10-11",
+  "versions": 4,
+  "links": [
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/272",
+   "https://github.com/vertical-cloud-lab/byu-vcl/issues/266"
+  ],
+  "notes": "plate_x+Nmm / plate_y+Nmm / plate_yaw+-Ndeg (12 files) are alignment-tolerance variants of plate_0, not extracted."
+ },
+ {
+  "id": "byu-vcl--miniature-powder-doser",
+  "section": "Other lab hardware",
+  "title": "Miniature powder doser module (80 x 85 x 61 mm) for the CubXL / rePowder chamber",
+  "system": "Concept that folds the lab's auger powder doser (powder-doser PR 176's parts) into an 80 x 85 x 61 mm module with a screw-on capillary outlet, a one-servo tilt variant and a CubXL gantry-towed shuttle layout.",
+  "repo": "vertical-cloud-lab/byu-vcl",
+  "branch": "main",
+  "commit": "abe3af1c0d45d1abecc397ac313bfe6cb3d50b88",
+  "source_paths": [
+   "modules/miniature-powder-doser/ods-lpbf-gifs/doser_cad.py",
+   "modules/miniature-powder-doser/ods-lpbf-gifs/nose_insets.py",
+   "modules/miniature-powder-doser/miniature-doser/module_views.py",
+   "modules/miniature-powder-doser/miniature-doser/tilt_views.py",
+   "modules/miniature-powder-doser/miniature-doser/cubxl_shuttle.py",
+   "modules/miniature-powder-doser/miniature-doser/README.md"
+  ],
+  "generator": "modules/miniature-powder-doser/ods-lpbf-gifs/doser_cad.py (compact_meshes(nose=True))",
+  "agent_generated": true,
+  "evidence": "Written by claude[bot] in 975f7d4 (2026-10-11, 'Miniature powder doser: design note, CAD scripts, renders') on claude/issue-150-20261011-0350, merged as PR #274; one-servo tilt variant b8db1c0 (2026-10-13).",
+  "assembly": true,
+  "parts": 20,
+  "first_seen": "2026-10-11",
+  "versions": 3,
+  "links": [
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/274",
+   "https://github.com/vertical-cloud-lab/byu-vcl/issues/150",
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/297"
+  ],
+  "notes": "Script-only and NOT self-contained: doser_cad.py reads powder-doser's cad/text-to-cad/STEP/assembly_servos_above.step (powder-doser branch claude/issue-172-20261003-2216, commit 509a0bf, PR 176); set POWDER_DOSER=<checkout>/cad/text-to-cad, then D.compact_meshes(nose=True) returns PyVista meshes by (group, material) - the module is a re-arrangement of powder-doser parts plus new nose/cradle geometry. cubxl_shuttle.py also wants Cubware's PandaDeck.step (PANDA_DECK env). Files kept in their ods-lpbf-gifs/ and miniature-doser/ subfolders (relative sys.path imports). OVERLAP with the powder-doser repo (another agent's scope): decide whether to count it there. Related concept sketch 'Plan B: CubXL filling Al charge cups from a stack of clip-in auger cartridges' (alloy-cubxl/alloy_cubxl.py, PR #297, 2026-10-22, README calls it 'a concept sketch, not a design') folded in here, not counted separately. Part count approximate."
+ },
+ {
+  "id": "robot-arms--piper-rest-seat",
+  "section": "Other lab hardware",
+  "title": "PiPER J1 rest seat",
+  "system": "Printed seat behind the AgileX PiPER base that cradles the parked upper arm between two walls so J1 stays on its zero mark while the motors are off.",
+  "repo": "vertical-cloud-lab/robot-arms",
+  "branch": "claude/issue-24-20261014-1635",
+  "commit": "7ec71c05dbf6f623c3c0d16956ab29c539ec6935",
+  "source_paths": [
+   "docs/issue-24/rest-seat/piper_rest_seat.stl",
+   "docs/issue-24/rest-seat/piper_rest_seat.3mf"
+  ],
+  "generator": "scripts/piper_rest_seat.py",
+  "agent_generated": true,
+  "evidence": "Added by claude[bot] (commit efd1e78, 2026-10-14) on claude/issue-24-20261014-1635, PR #25",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-10-14",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/robot-arms/pull/25",
+   "https://github.com/vertical-cloud-lab/robot-arms/issues/24"
+  ],
+  "notes": "STL is in print orientation; piper_rest_seat_arm_frame.stl (not extracted) is the same body placed in the arm's frame. Copied unchanged to PR #40's branch (b5b30a2)."
+ },
+ {
+  "id": "digital-alloy-lab--copper-corrosion-cell",
+  "section": "Other lab hardware",
+  "title": "CubXL copper corrosion cell (electrode cap, well lid, coupon tray)",
+  "system": "Electrochemical corrosion cell for 20 x 20 mm alloy coupons on the CubXL: magnet-held well lid with O-ring seal, electrode cap carrying Ag/AgCl reference and Pt coil, pogo-pin contacts and a spring-pin coupon tray station.",
+  "repo": "vertical-cloud-lab/digital-alloy-lab",
+  "branch": "claude/corrosion-build-20261116",
+  "commit": "01e8ad3827c254b4eaaee208c72bc079387d41ab",
+  "source_paths": [
+   "alloy-corrosion/copper/cad/assembly.step",
+   "alloy-corrosion/copper/cad/electrode_cap.stl",
+   "alloy-corrosion/copper/cad/electrode_carrier.stl",
+   "alloy-corrosion/copper/cad/well_lid.stl",
+   "alloy-corrosion/copper/cad/coupon_tray.stl",
+   "alloy-corrosion/copper/cad/tray_station.stl",
+   "alloy-corrosion/copper/cad/tray_spring_pins.stl",
+   "alloy-corrosion/copper/cad/lid_eyelets.stl",
+   "alloy-corrosion/copper/cad/lid_hold_magnets.stl",
+   "alloy-corrosion/copper/cad/lid_pads.stl",
+   "alloy-corrosion/copper/cad/cap_pogo_pins.stl",
+   "alloy-corrosion/copper/cad/cap_hold_steel.stl",
+   "alloy-corrosion/copper/cad/face_oring_006.stl",
+   "alloy-corrosion/copper/cad/radial_oring_016_seated.stl",
+   "alloy-corrosion/copper/cad/pt_coil.stl",
+   "alloy-corrosion/copper/cad/ag_agcl_ref_bent90.stl",
+   "alloy-corrosion/copper/cad/coupon_20x20x6.stl"
+  ],
+  "generator": "alloy-corrosion/copper/cad/cad_cu_cell.py",
+  "agent_generated": true,
+  "evidence": "CadQuery by claude[bot]: byu-vcl PR #278 (2026-10-18), imported to digital-alloy-lab PR #180 and revised there (bent reference electrode, 2026-11-11)",
+  "assembly": true,
+  "parts": 17,
+  "first_seen": "2026-10-18",
+  "versions": 4,
+  "links": [
+   "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/180",
+   "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/264",
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/278"
+  ],
+  "notes": "Printed parts plus agent models of bought parts (O-rings, Pt coil, reference electrode, magnets, coupon) for context. *_section.stl files are cutaways (not extracted)."
+ },
+ {
+  "id": "digital-alloy-lab--corrosion-bench-cell",
+  "section": "Other lab hardware",
+  "title": "Bench corrosion flat cell (250 mL)",
+  "system": "Printed 250 mL flat cell for bench corrosion tests: body with an AS568-013 window in the floor, clamp plate with coupon pocket and working-electrode spring pin, and a loose cover with counter/reference ports.",
+  "repo": "vertical-cloud-lab/digital-alloy-lab",
+  "branch": "claude/corrosion-build-20261116",
+  "commit": "01e8ad3827c254b4eaaee208c72bc079387d41ab",
+  "source_paths": [
+   "alloy-corrosion/bom/cad/bench_cell_body.stl",
+   "alloy-corrosion/bom/cad/bench_cell_clamp.stl",
+   "alloy-corrosion/bom/cad/bench_cell_cover.stl"
+  ],
+  "generator": "alloy-corrosion/bom/cad/cad_build_parts.py",
+  "agent_generated": true,
+  "evidence": "CadQuery by claude[bot]: byu-vcl PR #278 (2026-10-19), imported to digital-alloy-lab PR #180",
+  "assembly": true,
+  "parts": 3,
+  "first_seen": "2026-10-19",
+  "versions": 2,
+  "links": [
+   "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/180",
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/278"
+  ],
+  "notes": "STEP equivalents beside the STLs."
+ },
+ {
+  "id": "digital-alloy-lab--corrosion-deck-labware",
+  "section": "Other lab hardware",
+  "title": "CubXL corrosion deck labware kit with press-fit deck keys",
+  "system": "Printed deck parts for running corrosion tests on the CubXL: 3-cup rinse/park block, 2 x 8 tube rack, 2 x 15 tip rack, tip waste cup, v2 well lids, tube/tip fit-test strips, and press-fit deck keys under every part.",
+  "repo": "vertical-cloud-lab/digital-alloy-lab",
+  "branch": "claude/corrosion-build-20261116",
+  "commit": "01e8ad3827c254b4eaaee208c72bc079387d41ab",
+  "source_paths": [
+   "alloy-corrosion/bom/cad/cup_block_3.stl",
+   "alloy-corrosion/bom/cad/tube_rack_2x8.stl",
+   "alloy-corrosion/bom/cad/tip_rack_2x15.stl",
+   "alloy-corrosion/bom/cad/tip_waste_cup.stl",
+   "alloy-corrosion/bom/cad/well_lid_v2_008.stl",
+   "alloy-corrosion/bom/cad/deck_key.stl",
+   "alloy-corrosion/bom/cad/fit_strip_tube.stl",
+   "alloy-corrosion/bom/cad/fit_strip_tip.stl"
+  ],
+  "generator": "alloy-corrosion/bom/cad/cad_build_parts.py (+ deck_keys.py)",
+  "agent_generated": true,
+  "evidence": "CadQuery by claude[bot]: byu-vcl PR #278 (2026-10-19); deck keys added in digital-alloy-lab PR #180 (2026-11-10)",
+  "assembly": false,
+  "parts": 8,
+  "first_seen": "2026-10-19",
+  "versions": 3,
+  "links": [
+   "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/180",
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/278"
+  ],
+  "notes": "A kit of separate labware parts (not one assembly); render side by side. tip_rack_1_20ul in the same folder is Ben's Onshape export (human, excluded). well_lid_v2_006/010 are size variants of _008."
+ },
+ {
+  "id": "robot-arms--piper-cell-camera-post-fixtures",
+  "section": "Other lab hardware",
+  "title": "PiPER cell fixed-camera post fixtures",
+  "system": "Printed fixtures (camera case, Pi 5 plate, 2020-post feet, aiming wedges, overhead elbow and spacer, ribbon clip) that put three fixed cameras on aluminium posts at the corners of the PiPER table.",
+  "repo": "vertical-cloud-lab/robot-arms",
+  "branch": "claude/issue-24-20261021-2053",
+  "commit": "e1e21ddac11d4c88c6a1ad95488bebaa1ff44114",
+  "source_paths": [
+   "docs/issue-24/camera-fixtures/cad/cam_case.stl",
+   "docs/issue-24/camera-fixtures/cad/elbow_overhead.stl",
+   "docs/issue-24/camera-fixtures/cad/foot_back-right.stl",
+   "docs/issue-24/camera-fixtures/cad/foot_front-right.stl",
+   "docs/issue-24/camera-fixtures/cad/foot_overhead.stl",
+   "docs/issue-24/camera-fixtures/cad/pi5_plate.stl",
+   "docs/issue-24/camera-fixtures/cad/ribbon_clip.stl",
+   "docs/issue-24/camera-fixtures/cad/spacer_overhead.stl",
+   "docs/issue-24/camera-fixtures/cad/wedge_back-right.stl",
+   "docs/issue-24/camera-fixtures/cad/wedge_front-right.stl",
+   "docs/issue-24/camera-fixtures/cad/cam_case.step",
+   "docs/issue-24/camera-fixtures/cad/elbow_overhead.step",
+   "docs/issue-24/camera-fixtures/cad/foot_back-right.step",
+   "docs/issue-24/camera-fixtures/cad/foot_front-right.step",
+   "docs/issue-24/camera-fixtures/cad/foot_overhead.step",
+   "docs/issue-24/camera-fixtures/cad/pi5_plate.step",
+   "docs/issue-24/camera-fixtures/cad/ribbon_clip.step",
+   "docs/issue-24/camera-fixtures/cad/spacer_overhead.step",
+   "docs/issue-24/camera-fixtures/cad/wedge_back-right.step",
+   "docs/issue-24/camera-fixtures/cad/wedge_front-right.step"
+  ],
+  "generator": "scripts/piper_camera_fixtures.py",
+  "agent_generated": true,
+  "evidence": "Added by claude[bot] (2e8d69d, 2026-10-21, claude/issue-24-20261021-2052) and imported to PR #40 by claude[bot] (37e91f2)",
+  "assembly": true,
+  "parts": 10,
+  "first_seen": "2026-10-21",
+  "versions": 2,
+  "links": [
+   "https://github.com/vertical-cloud-lab/robot-arms/pull/40",
+   "https://github.com/vertical-cloud-lab/robot-arms/issues/24"
+  ],
+  "notes": "Ten separate printable parts (each exported alone, not positioned in an assembly); camera poses are in camera_*.json beside them. Simulated only, never printed. Superseded in part by robot-arms--piper-table-camera-clamps-cradles and the camera bar."
+ },
+ {
+  "id": "robot-arms--enclosure-overhead-camera-bar",
+  "section": "Other lab hardware",
+  "title": "Overhead camera bar for the PiPER enclosure",
+  "system": "A corner-to-corner 2020 bar across the top of the as-built PVC enclosure, located by two printed corner saddles, with a printed plate that hangs the overhead camera under its middle.",
+  "repo": "vertical-cloud-lab/robot-arms",
+  "branch": "claude/issue-229-20261001-2322",
+  "commit": "01e5a3efe20452bddfaa00f05fa5e58c15d1cb06",
+  "source_paths": [
+   "robot-arm/enclosure/camera-bar/models/corner-saddle.stl",
+   "robot-arm/enclosure/camera-bar/models/camera-plate.stl",
+   "robot-arm/enclosure/camera-bar/models/frame-as-built.stl",
+   "robot-arm/enclosure/camera-bar/camera-bar.glb"
+  ],
+  "generator": "robot-arm/enclosure/camera-bar/build.py",
+  "agent_generated": true,
+  "evidence": "Added by claude[bot] (82586c9, 2026-10-22) on PR #9's branch",
+  "assembly": true,
+  "parts": 3,
+  "first_seen": "2026-10-22",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/robot-arms/pull/9",
+   "https://github.com/vertical-cloud-lab/robot-arms/issues/38",
+   "https://github.com/vertical-cloud-lab/robot-arms/issues/24"
+  ],
+  "notes": "Printed parts: corner-saddle (print two) and camera-plate, in print orientation; frame-as-built.stl is the PVC enclosure frame (context); camera-bar.glb is the coloured whole scene incl. arm and side cameras (6.9 MB). The enclosure itself (dome/hutch/shelf) originates in byu-vcl and is not in this entry."
+ },
+ {
+  "id": "robot-arms--auger-swap-alt-a-custom-fingers",
+  "section": "Other lab hardware",
+  "title": "Auger-swap Alt A: custom PiPER fingers",
+  "system": "Replacement minimal fingers that bolt to the PiPER gripper's own MGN7 carriages with the auger-tube cradle built in, used with the same tilt-lock slider.",
+  "repo": "vertical-cloud-lab/robot-arms",
+  "branch": "claude/issue-42-20261026-0528",
+  "commit": "26789139fbe9f7a6972af7788d23f7a29dd67abd",
+  "source_paths": [
+   "end-effectors/auger-swap/cad/alt_a_custom_fingers_pin.step",
+   "end-effectors/auger-swap/cad/stl/custom_finger_x2.stl"
+  ],
+  "generator": "end-effectors/auger-swap/geometry.py (+ export_step.py)",
+  "agent_generated": true,
+  "evidence": "Added by claude[bot] in PR #44 (c7075ee, 2026-10-26)",
+  "assembly": true,
+  "parts": 7,
+  "first_seen": "2026-10-26",
+  "versions": 3,
+  "links": [
+   "https://github.com/vertical-cloud-lab/robot-arms/pull/44",
+   "https://github.com/vertical-cloud-lab/robot-arms/issues/42"
+  ],
+  "notes": "Multi-body STEP (8 products). Finger interface measured from AgileX's gripper STEP."
+ },
+ {
+  "id": "robot-arms--auger-swap-alt-a-sleeves-slider",
+  "section": "Other lab hardware",
+  "title": "Auger-swap Alt A: gripper sleeves, tilt-lock slider and finger fixture",
+  "system": "Two-shell printed sleeves that clip onto the stock PiPER fingers to wrap an auger tube, a printed T-knob tilt-lock slider and guide on the doser board, and a low tap-collar finger fixture.",
+  "repo": "vertical-cloud-lab/robot-arms",
+  "branch": "claude/issue-42-20261026-0528",
+  "commit": "26789139fbe9f7a6972af7788d23f7a29dd67abd",
+  "source_paths": [
+   "end-effectors/auger-swap/cad/alt_a_sleeves_pin.step",
+   "end-effectors/auger-swap/cad/stl/sleeve_main_shell_x2.stl",
+   "end-effectors/auger-swap/cad/stl/sleeve_fixing_shell_x2.stl",
+   "end-effectors/auger-swap/cad/stl/pin_slider.stl",
+   "end-effectors/auger-swap/cad/stl/pin_guide.stl",
+   "end-effectors/auger-swap/cad/stl/finger_fixture.stl"
+  ],
+  "generator": "end-effectors/auger-swap/geometry.py (+ export_step.py)",
+  "agent_generated": true,
+  "evidence": "Added by claude[bot] in PR #44 (c7075ee 2026-10-26 ... 2678913 2026-11-13)",
+  "assembly": true,
+  "parts": 11,
+  "first_seen": "2026-10-26",
+  "versions": 6,
+  "links": [
+   "https://github.com/vertical-cloud-lab/robot-arms/pull/44",
+   "https://github.com/vertical-cloud-lab/robot-arms/issues/42",
+   "https://github.com/vertical-cloud-lab/robot-arms/issues/53",
+   "https://github.com/vertical-cloud-lab/robot-arms/issues/55"
+  ],
+  "notes": "Rounds 2-6 in PR #44 (pin -> self-latching slider, low fixture, side webs, counterbores, short guide). Alternative B (alt_b_sleeves.step) reuses the same sleeves without the slider and is counted as a variant here. Printed on the A1 mini via print-jobs/issue-53 and issue-55. STEP is multi-body (12 products) incl. doser context. parts=11 counts the STEP's bodies incl. context; the printed parts are 5 (main shell, fixing shell, slider, guide, fixture)."
+ },
+ {
+  "id": "robot-arms--auger-swap-s1-two-servo-tool",
+  "section": "Other lab hardware",
+  "title": "Auger-swap tool S1: two-servo hook-and-lift end-effector",
+  "system": "Custom PiPER J6 tool with a lift carriage on an MGN9 rail (rack and pinion) and a servo-closed hook jaw that pulls a spent auger out of the powder doser while its legs push on the doser.",
+  "repo": "vertical-cloud-lab/robot-arms",
+  "branch": "claude/issue-42-20261026-0528",
+  "commit": "26789139fbe9f7a6972af7788d23f7a29dd67abd",
+  "source_paths": [
+   "end-effectors/auger-swap/cad/s1_two_servo_tool.step",
+   "end-effectors/auger-swap/cad/stl/finger_fixture.stl"
+  ],
+  "generator": "end-effectors/auger-swap/geometry.py (+ s1_tool.py, hifi.py, export_step.py)",
+  "agent_generated": true,
+  "evidence": "Added by claude[bot] in PR #44 (6c07d4d, 2026-10-26; rounds to 2678913, 2026-11-13)",
+  "assembly": true,
+  "parts": 32,
+  "first_seen": "2026-10-26",
+  "versions": 6,
+  "links": [
+   "https://github.com/vertical-cloud-lab/robot-arms/pull/44",
+   "https://github.com/vertical-cloud-lab/robot-arms/issues/42"
+  ],
+  "notes": "Multi-body STEP (33 named products incl. bought parts: servos, bearings, rail, Pi 5, HQ camera, buck converter). finger_fixture.stl is the shared tap-collar nest on the board. Built against AgileX's gripper STEP and powder-doser STEPs (not committed)."
+ },
+ {
+  "id": "robot-arms--auger-swap-s2-one-servo-wheel-tool",
+  "section": "Other lab hardware",
+  "title": "Auger-swap tool S2: one-servo wheel/cam end-effector",
+  "system": "Lower-fidelity alternative to S1 in which a single servo's wheel crank-pin lifts the carriage and a face cam closes the hook.",
+  "repo": "vertical-cloud-lab/robot-arms",
+  "branch": "claude/issue-42-20261026-0528",
+  "commit": "26789139fbe9f7a6972af7788d23f7a29dd67abd",
+  "source_paths": [
+   "end-effectors/auger-swap/cad/s2_one_servo_wheel_tool.step"
+  ],
+  "generator": "end-effectors/auger-swap/geometry.py (+ export_step.py)",
+  "agent_generated": true,
+  "evidence": "Added by claude[bot] in PR #44 (6c07d4d, 2026-10-26)",
+  "assembly": true,
+  "parts": 10,
+  "first_seen": "2026-10-26",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/robot-arms/pull/44",
+   "https://github.com/vertical-cloud-lab/robot-arms/issues/42"
+  ],
+  "notes": "Multi-body STEP (11 products). Unchanged since round 1 apart from carriage lowering."
+ },
+ {
+  "id": "robot-arms--piper-table-camera-clamps-cradles",
+  "section": "Other lab hardware",
+  "title": "PiPER table camera clamps and cradles",
+  "system": "Six printed fixtures (cross clamp and clamp cap for the PVC cube, ground foot, head clamp, vertical and horizontal camera-head cradles) that hold the PiPER table's three fixed cameras in two candidate layouts.",
+  "repo": "vertical-cloud-lab/robot-arms",
+  "branch": "claude/issue-229-20261001-2322",
+  "commit": "01e5a3efe20452bddfaa00f05fa5e58c15d1cb06",
+  "source_paths": [
+   "robot-arm/enclosure/cameras/models/clamp-cap.stl",
+   "robot-arm/enclosure/cameras/models/cross-clamp.stl",
+   "robot-arm/enclosure/cameras/models/ground-foot.stl",
+   "robot-arm/enclosure/cameras/models/head-clamp.stl",
+   "robot-arm/enclosure/cameras/models/head-cradle-horizontal.stl",
+   "robot-arm/enclosure/cameras/models/head-cradle-vertical.stl"
+  ],
+  "generator": "robot-arm/enclosure/cameras/build.py",
+  "agent_generated": true,
+  "evidence": "Added by claude[bot] (fe1ed8a 2026-10-26, 01e5a3e 2026-10-28) on PR #9's branch",
+  "assembly": true,
+  "parts": 6,
+  "first_seen": "2026-10-26",
+  "versions": 2,
+  "links": [
+   "https://github.com/vertical-cloud-lab/robot-arms/pull/9",
+   "https://github.com/vertical-cloud-lab/robot-arms/issues/24",
+   "https://github.com/vertical-cloud-lab/robot-arms/issues/38",
+   "https://github.com/vertical-cloud-lab/robot-arms/issues/39"
+  ],
+  "notes": "STLs in print orientation, separate files (not positioned). Round 2 split head-cradle into vertical and horizontal cradles with four standoffs. Head clamp/cradle/clamp-cap were printed via print-jobs/issue-45 and issue-52."
+ },
+ {
+  "id": "digital-alloy-lab--lpbf-brush-cup",
+  "section": "Other lab hardware",
+  "title": "LPBF brush cup",
+  "system": "Ø64 x 70 mm cup with a 4-cell divider and an 80 mm foot for brushes inside the atomizer powder enclosure, drawn for LPBF.",
+  "repo": "vertical-cloud-lab/digital-alloy-lab",
+  "branch": "claude/issue-231-20261030-1912",
+  "commit": "b974f847de2d007ceb4adfa22db9fb7fea357b55",
+  "source_paths": [
+   "atomizer-containment-parts/stl/brush_cup.stl",
+   "atomizer-containment-parts/step/brush_cup.step"
+  ],
+  "generator": "atomizer-containment-parts/make_parts.py",
+  "agent_generated": true,
+  "evidence": "Added by claude[bot] (847ab58, 2026-10-30) in PR #232",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-10-30",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/232",
+   "https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/231"
+  ],
+  "notes": "New agent design; one of five #231 accessories."
+ },
+ {
+  "id": "digital-alloy-lab--lpbf-glovebox-brackets",
+  "section": "Other lab hardware",
+  "title": "LPBF glove-box brackets (L/R)",
+  "system": "Mirror pair of brackets that cradle the two ends of a glove box inside the atomizer enclosure, drawn for LPBF.",
+  "repo": "vertical-cloud-lab/digital-alloy-lab",
+  "branch": "claude/issue-231-20261030-1912",
+  "commit": "b974f847de2d007ceb4adfa22db9fb7fea357b55",
+  "source_paths": [
+   "atomizer-containment-parts/stl/glove_bracket_left.stl",
+   "atomizer-containment-parts/stl/glove_bracket_right.stl",
+   "atomizer-containment-parts/step/glove_bracket_left.step",
+   "atomizer-containment-parts/step/glove_bracket_right.step"
+  ],
+  "generator": "atomizer-containment-parts/make_parts.py",
+  "agent_generated": true,
+  "evidence": "Added by claude[bot] (847ab58, 2026-10-30) in PR #232",
+  "assembly": false,
+  "parts": 2,
+  "first_seen": "2026-10-30",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/232",
+   "https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/231"
+  ],
+  "notes": "New agent design; mirrored pair, one of five #231 accessories."
+ },
+ {
+  "id": "digital-alloy-lab--lpbf-ipa-bottle-holder",
+  "section": "Other lab hardware",
+  "title": "LPBF IPA wash-bottle holder",
+  "system": "Wall cup for a 500 mL IPA wash bottle up to 78 mm across inside the atomizer enclosure, drawn for LPBF.",
+  "repo": "vertical-cloud-lab/digital-alloy-lab",
+  "branch": "claude/issue-231-20261030-1912",
+  "commit": "b974f847de2d007ceb4adfa22db9fb7fea357b55",
+  "source_paths": [
+   "atomizer-containment-parts/stl/ipa_bottle_holder.stl",
+   "atomizer-containment-parts/step/ipa_bottle_holder.step"
+  ],
+  "generator": "atomizer-containment-parts/make_parts.py",
+  "agent_generated": true,
+  "evidence": "Added by claude[bot] (847ab58, 2026-10-30) in PR #232",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-10-30",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/232",
+   "https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/231"
+  ],
+  "notes": "New agent design; one of five #231 accessories."
+ },
+ {
+  "id": "digital-alloy-lab--lpbf-lab-coat-hook",
+  "section": "Other lab hardware",
+  "title": "LPBF lab-coat hook",
+  "system": "Two-screw J hook (26 mm throat, 38 mm reach) for lab coats inside the atomizer powder enclosure, drawn for LPBF.",
+  "repo": "vertical-cloud-lab/digital-alloy-lab",
+  "branch": "claude/issue-231-20261030-1912",
+  "commit": "b974f847de2d007ceb4adfa22db9fb7fea357b55",
+  "source_paths": [
+   "atomizer-containment-parts/stl/coat_hook.stl",
+   "atomizer-containment-parts/step/coat_hook.step"
+  ],
+  "generator": "atomizer-containment-parts/make_parts.py",
+  "agent_generated": true,
+  "evidence": "Added by claude[bot] (847ab58, 2026-10-30) in PR #232",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-10-30",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/232",
+   "https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/231"
+  ],
+  "notes": "New agent design; one of five #231 accessories (print 2+)."
+ },
+ {
+  "id": "digital-alloy-lab--lpbf-sem-stub-holder",
+  "section": "Other lab hardware",
+  "title": "LPBF SEM stub holder (base + lid)",
+  "system": "Metal (AconityMINI LPBF) SEM pin-stub holder for eight stubs with a dust lid that seats on a ledge, for use inside the atomizer's powder enclosure.",
+  "repo": "vertical-cloud-lab/digital-alloy-lab",
+  "branch": "claude/issue-231-20261030-1912",
+  "commit": "b974f847de2d007ceb4adfa22db9fb7fea357b55",
+  "source_paths": [
+   "atomizer-containment-parts/stl/stub_holder_base.stl",
+   "atomizer-containment-parts/stl/stub_holder_lid.stl",
+   "atomizer-containment-parts/step/stub_holder_base.step",
+   "atomizer-containment-parts/step/stub_holder_lid.step"
+  ],
+  "generator": "atomizer-containment-parts/make_parts.py",
+  "agent_generated": true,
+  "evidence": "Added by claude[bot] (847ab58, 2026-10-30) in PR #232; geometry adapted from a human Onshape draft",
+  "assembly": true,
+  "parts": 2,
+  "first_seen": "2026-10-30",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/232",
+   "https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/231"
+  ],
+  "notes": "Agent re-modelled and adapted for metal (ledge instead of a self-locking 10 deg taper, etc.) from Ronnie Guymon's human-drawn Onshape draft; the original Onshape stub holder (digital-alloy-lab stub-holder/) is human-made and excluded. One of five #231 accessories."
+ },
+ {
+  "id": "digital-alloy-lab--vlm-tray-glovebox",
+  "section": "Other lab hardware",
+  "title": "Automation-first glovebox on a VLM tray",
+  "system": "Concept inert-gas glovebox sized to ride on one tray of a Kardex Shuttle XP 500 vertical lift module, with a side-exiting automatic antechamber, capped glove ports and an internal gantry.",
+  "repo": "vertical-cloud-lab/digital-alloy-lab",
+  "branch": "copilot/look-up-glovebox-options",
+  "commit": "85b7e7e26505a6bf142d07e48b870398f352647e",
+  "source_paths": [
+   "vlm-glovebox/exports/vlm_glovebox.step"
+  ],
+  "generator": "vlm-glovebox/model.py",
+  "agent_generated": true,
+  "evidence": "Added by claude[bot] (e1bb4a1, 2026-11-03) on PR #185's branch",
+  "assembly": true,
+  "parts": 65,
+  "first_seen": "2026-11-03",
+  "versions": 2,
+  "links": [
+   "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/185",
+   "https://github.com/vertical-cloud-lab/byu-vcl/issues/303"
+  ],
+  "notes": "Multi-body STEP, 66 named products (skid, chamber shell, window, glove ports, port covers/hinges, gantry rails/bridge/carriage, antechamber...). model.py imports local vertical_lab.py."
+ },
+ {
+  "id": "digital-wetlab--ot2-vial-holder-20ml-x6",
+  "section": "Other lab hardware",
+  "title": "OT-2 holder for six 20 mL vials",
+  "system": "Printed OT-2 deck-slot labware that holds six of the lab's 20 mL VOA vials (27 mm OD, calipered) for the barium sulfate precipitation runs, with a matching Opentrons labware definition.",
+  "repo": "vertical-cloud-lab/digital-wetlab",
+  "branch": "claude/issue-80-20261105-2203",
+  "commit": "b0e562ff5884c838cb4b6b907a79dd3b6cb7a21c",
+  "source_paths": [
+   "docs/baso4-sop-3d/cad/vial_holder_20ml_x6.stl",
+   "docs/baso4-sop-3d/cad/vial_holder_20ml_x6.step"
+  ],
+  "generator": "docs/baso4-sop-3d/vial_holder.py",
+  "agent_generated": true,
+  "evidence": "Added by claude[bot] (6ddcf17, 2026-11-06) in PR #84; rebuilt 3a82993 and 5d9dd9d (2026-11-11)",
+  "assembly": false,
+  "parts": 1,
+  "first_seen": "2026-11-06",
+  "versions": 3,
+  "links": [
+   "https://github.com/vertical-cloud-lab/digital-wetlab/pull/84",
+   "https://github.com/vertical-cloud-lab/digital-wetlab/issues/80"
+  ],
+  "notes": "Printed on the A1 mini (2026-11-11) and two on the H2D (2026-11-16). Sliced .gcode.3mf plates under docs/baso4-sop-3d/cad/print-*/ are not extracted. Independent of byu-vcl lab-models holder_vial_20ml (PiPER sandbox rack): different footprint use (OT-2 slot) and pocket layout."
+ },
+ {
+  "id": "digital-alloy-lab--m2-single-track-build-plate-scene",
+  "section": "Other lab hardware",
+  "title": "Concept Laser M2 single-track pilot: build plate, panels and process scene",
+  "system": "Schematic CadQuery model of BYU's Concept Laser M2 (chamber, dose/build wells, recoater) with the 10 in build plate, four removable panels carrying 18 single tracks each, and the bench tools for cutting and mounting, used for the process animation.",
+  "repo": "vertical-cloud-lab/digital-alloy-lab",
+  "branch": "claude/issue-100-20261109-2206",
+  "commit": "f971266b636847a0da7a59cbb2c5833ae64dee31",
+  "source_paths": [
+   "lpbf-runs/m2-viz/model.py",
+   "lpbf-runs/m2-viz/layout.py",
+   "lpbf-runs/m2-viz/scene.py",
+   "lpbf-runs/m2-viz/steps.py",
+   "lpbf-runs/m2-viz/screens.py",
+   "lpbf-runs/m2-viz/figures.py",
+   "lpbf-runs/m2-viz/README.md"
+  ],
+  "generator": "lpbf-runs/m2-viz/model.py",
+  "agent_generated": true,
+  "evidence": "Added by claude[bot] on PR #243's branch (dcf8956 ... 4097f9b, 2026-11-10 to 2026-11-16)",
+  "assembly": true,
+  "first_seen": "2026-11-10",
+  "versions": 6,
+  "links": [
+   "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/243",
+   "https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/100"
+  ],
+  "notes": "Script-only: no mesh is committed. model.meshes() tessellates the parts to PyVista (cached under .cache/); there is no STL/STEP exporter, so to get meshes call model.pieces()/m2_parts()/bench_parts() and export with cadquery. Schematic visualisation model (machine is a generic box), not a fabricated part; flag as marginal. Parts count unknown until built. Build: pip install cadquery pyvista pillow numpy matplotlib; cd lpbf-runs/m2-viz; xvfb-run -a python steps.py setup print unload cut sem results (animation only; for meshes import model and export pieces())."
+ },
+ {
+  "id": "byu-vcl--provenance-eyes-headset",
+  "section": "Other lab hardware",
+  "title": "Provenance Eyes DIY head camera",
+  "system": "Raspberry Pi head-mounted camera rig for recording lab work from the wearer's point of view (v2 fits over full-face respirators and lab coats).",
+  "repo": "vertical-cloud-lab/byu-vcl",
+  "branch": "claude/issue-342-20261113-0257",
+  "commit": "4cb1005f09a8064d0eb1e5a750f886d875b06e0c",
+  "source_paths": [
+   "hardware/provenance-eyes/stl/headset-assembly.stl"
+  ],
+  "generator": "hardware/provenance-eyes/cad/build_headset.py",
+  "agent_generated": true,
+  "evidence": "Blender-Python model by claude[bot] (issue #342)",
+  "assembly": true,
+  "parts": 1,
+  "first_seen": "2026-11-12",
+  "versions": 2,
+  "links": [
+   "https://github.com/vertical-cloud-lab/byu-vcl/issues/342",
+   "https://github.com/vertical-cloud-lab/byu-vcl/tree/claude/issue-342-20261113-0257/hardware/provenance-eyes"
+  ],
+  "notes": "Single merged STL of the device (no head); build_headset.py builds it in Blender (bpy), so per-part exploded views would need a rebuild. Unmerged branch, no PR."
+ },
+ {
+  "id": "byu-vcl--lab-models-bambu-a1-mini",
+  "section": "Models of equipment the lab already has",
+  "title": "Bambu Lab A1 mini printer",
+  "system": "Rough model of the lab's Bambu Lab A1 mini 3D printer from Bambu's spec and outline drawing (Bambu publishes no CAD).",
+  "repo": "vertical-cloud-lab/byu-vcl",
+  "branch": "claude/issue-199-20260915-0846",
+  "commit": "915d64064a04f4f7f860b5b4c002df188e5991d9",
+  "source_paths": [
+   "lab-models/exports/bambu_a1_mini.step"
+  ],
+  "generator": "lab-models/cad/equipment.py (via build.py)",
+  "agent_generated": true,
+  "evidence": "Added by claude[bot] on branch claude/issue-199-20260915-0846 (PR #240, 'Gripper/end-effector design, generative CAD, and org survey'), commits afa3803 (2026-09-26) .. 7fc56b6 (2026-10-03); built by lab-models/cad/*.py (CadQuery) written by the agent.",
+  "assembly": true,
+  "parts": 18,
+  "first_seen": "2026-09-26",
+  "versions": 2,
+  "links": [
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/240",
+   "https://github.com/vertical-cloud-lab/byu-vcl/issues/199"
+  ],
+  "notes": "Multi-body STEP (18 bodies). DIGITAL-TWIN: agent-modelled rough CadQuery model of existing vendor equipment (not a lab-fabricated design). Copied verbatim to vertical-cloud-lab/robot-arms by Sterling in bdb25d31ed (2026-10-09, 'Import claude/issue-199-20260915-0846 from byu-vcl'); same design, not counted again. A verbatim copy of lab-models/cad/{common,equipment,labware,vendor}.py also lives in byu-vcl vertical-lab/lab_models/ (#303)."
+ },
+ {
+  "id": "byu-vcl--lab-models-bambu-h2d",
+  "section": "Models of equipment the lab already has",
+  "title": "Bambu Lab H2D printer",
+  "system": "Rough model of the lab's Bambu Lab H2D dual-nozzle 3D printer from Bambu's spec page (Bambu publishes no CAD).",
+  "repo": "vertical-cloud-lab/byu-vcl",
+  "branch": "claude/issue-199-20260915-0846",
+  "commit": "afa3803d7fecb9b94b24c52d217ca1bc02b08693",
+  "source_paths": [
+   "lab-models/exports/bambu_h2d.step"
+  ],
+  "generator": "lab-models/cad/equipment.py (via build.py)",
+  "agent_generated": true,
+  "evidence": "Added by claude[bot] on branch claude/issue-199-20260915-0846 (PR #240, 'Gripper/end-effector design, generative CAD, and org survey'), commits afa3803 (2026-09-26) .. 7fc56b6 (2026-10-03); built by lab-models/cad/*.py (CadQuery) written by the agent.",
+  "assembly": true,
+  "parts": 14,
+  "first_seen": "2026-09-26",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/240",
+   "https://github.com/vertical-cloud-lab/byu-vcl/issues/199"
+  ],
+  "notes": "Multi-body STEP (14 bodies). DIGITAL-TWIN: agent-modelled rough CadQuery model of existing vendor equipment (not a lab-fabricated design). Copied verbatim to vertical-cloud-lab/robot-arms by Sterling in bdb25d31ed (2026-10-09, 'Import claude/issue-199-20260915-0846 from byu-vcl'); same design, not counted again. A verbatim copy of lab-models/cad/{common,equipment,labware,vendor}.py also lives in byu-vcl vertical-lab/lab_models/ (#303)."
+ },
+ {
+  "id": "byu-vcl--lab-models-cb154-room",
+  "section": "Models of equipment the lab already has",
+  "title": "CB154 lab room with equipment (rough)",
+  "system": "Rough CadQuery model of room CB154 (walls, benches, doors) with the lab's equipment models placed from photos and a cross-checked layout.",
+  "repo": "vertical-cloud-lab/byu-vcl",
+  "branch": "claude/issue-199-20260915-0846",
+  "commit": "968a35d6e5abe613bf54b93c32f45fbf7e3b4c71",
+  "source_paths": [
+   "lab-models/exports/cb154_room.step"
+  ],
+  "generator": "lab-models/cad/build.py (equipment.py, labware.py, room.py, common.py)",
+  "agent_generated": true,
+  "evidence": "Added by claude[bot] on branch claude/issue-199-20260915-0846 (PR #240, 'Gripper/end-effector design, generative CAD, and org survey'), commits afa3803 (2026-09-26) .. 7fc56b6 (2026-10-03); built by lab-models/cad/*.py (CadQuery) written by the agent.",
+  "assembly": true,
+  "parts": 93,
+  "first_seen": "2026-09-26",
+  "versions": 3,
+  "links": [
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/240",
+   "https://github.com/vertical-cloud-lab/byu-vcl/issues/199"
+  ],
+  "notes": "Room scene assembly (93 bodies in one STEP); good candidate for an exploded/fly-around view. Built by lab-models/cad/room.py. DIGITAL-TWIN: agent-modelled rough CadQuery model of an existing room and its equipment (not a lab-fabricated design). Copied verbatim to vertical-cloud-lab/robot-arms by Sterling in bdb25d31ed (2026-10-09, 'Import claude/issue-199-20260915-0846 from byu-vcl'); same design, not counted again. A verbatim copy of lab-models/cad/{common,equipment,labware,vendor}.py also lives in byu-vcl vertical-lab/lab_models/ (#303)."
+ },
+ {
+  "id": "byu-vcl--lab-models-cubxl",
+  "section": "Models of equipment the lab already has",
+  "title": "CubXL liquid-handling gantry",
+  "system": "Rough model of the lab's CubXL liquid-handling gantry (Genmitsu PROVerXL 4030 V2 frame from SainSmart's spec; carriage and tools from lab photos).",
+  "repo": "vertical-cloud-lab/byu-vcl",
+  "branch": "claude/issue-199-20260915-0846",
+  "commit": "afa3803d7fecb9b94b24c52d217ca1bc02b08693",
+  "source_paths": [
+   "lab-models/exports/cubxl.step"
+  ],
+  "generator": "lab-models/cad/equipment.py (via build.py)",
+  "agent_generated": true,
+  "evidence": "Added by claude[bot] on branch claude/issue-199-20260915-0846 (PR #240, 'Gripper/end-effector design, generative CAD, and org survey'), commits afa3803 (2026-09-26) .. 7fc56b6 (2026-10-03); built by lab-models/cad/*.py (CadQuery) written by the agent.",
+  "assembly": true,
+  "parts": 34,
+  "first_seen": "2026-09-26",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/240",
+   "https://github.com/vertical-cloud-lab/byu-vcl/issues/199"
+  ],
+  "notes": "Multi-body STEP (34 bodies). DIGITAL-TWIN: agent-modelled rough CadQuery model of existing vendor equipment (not a lab-fabricated design). Reused, split into frame/gantry/carriage/tools, in byu-vcl vertical-lab (#303). Copied verbatim to vertical-cloud-lab/robot-arms by Sterling in bdb25d31ed (2026-10-09, 'Import claude/issue-199-20260915-0846 from byu-vcl'); same design, not counted again. A verbatim copy of lab-models/cad/{common,equipment,labware,vendor}.py also lives in byu-vcl vertical-lab/lab_models/ (#303)."
+ },
+ {
+  "id": "byu-vcl--lab-models-labware-library",
+  "section": "Models of equipment the lab already has",
+  "title": "PiPER sandbox labware library (45 objects)",
+  "system": "Library of agent-modelled labware for the PiPER sandbox (vials, well plates, tip racks, SEM stubs, crucibles, DSC pans, coupons, beaker, Petri dish, etc.), dimensioned from vendor datasheets with sourced quotes.",
+  "repo": "vertical-cloud-lab/byu-vcl",
+  "branch": "claude/issue-199-20260915-0846",
+  "commit": "afa3803d7fecb9b94b24c52d217ca1bc02b08693",
+  "source_paths": [
+   "lab-models/exports/labware/al_weigh_dish_57mm.step",
+   "lab-models/exports/labware/alumina_crucible_10ml.step",
+   "lab-models/exports/labware/arbor_press_1t.step",
+   "lab-models/exports/labware/auger_module.step",
+   "lab-models/exports/labware/coin_cell_cr2032.step",
+   "lab-models/exports/labware/conical_15ml.step",
+   "lab-models/exports/labware/conical_50ml.step",
+   "lab-models/exports/labware/coupon_d638_type_v.step",
+   "lab-models/exports/labware/coupon_lpbf_dogbone.step",
+   "lab-models/exports/labware/cuvette.step",
+   "lab-models/exports/labware/dsc_pan_tzero.step",
+   "lab-models/exports/labware/furnace_sample_stack.step",
+   "lab-models/exports/labware/glass_slide.step",
+   "lab-models/exports/labware/griffin_beaker_100ml.step",
+   "lab-models/exports/labware/headspace_vial_10ml.step",
+   "lab-models/exports/labware/media_bottle_gl45.step",
+   "lab-models/exports/labware/metallographic_mount_32mm.step",
+   "lab-models/exports/labware/microtube_1_5ml.step",
+   "lab-models/exports/labware/mini_lpbf_build_plate.step",
+   "lab-models/exports/labware/petri_90mm.step",
+   "lab-models/exports/labware/plate_24_flat.step",
+   "lab-models/exports/labware/plate_6_flat.step",
+   "lab-models/exports/labware/plate_96_deep.step",
+   "lab-models/exports/labware/plate_96_flat_lid.step",
+   "lab-models/exports/labware/plate_96_nest.step",
+   "lab-models/exports/labware/plate_96_nest_sealed.step",
+   "lab-models/exports/labware/sem_stub_12_7.step",
+   "lab-models/exports/labware/sem_stub_25_4.step",
+   "lab-models/exports/labware/sem_stub_box.step",
+   "lab-models/exports/labware/si_zero_bg_plate.step",
+   "lab-models/exports/labware/spoonula.step",
+   "lab-models/exports/labware/tensegrity_t3_prism.step",
+   "lab-models/exports/labware/tiprack_20ul.step",
+   "lab-models/exports/labware/tiprack_300ul.step",
+   "lab-models/exports/labware/tube_rack_6.step",
+   "lab-models/exports/labware/vial_20ml_empty.step",
+   "lab-models/exports/labware/vial_20ml_powder.step",
+   "lab-models/exports/labware/vial_20ml_water.step",
+   "lab-models/exports/labware/vial_2ml_empty.step",
+   "lab-models/exports/labware/vial_2ml_water.step",
+   "lab-models/exports/labware/vial_4ml_empty.step",
+   "lab-models/exports/labware/vial_8ml_empty.step",
+   "lab-models/exports/labware/weigh_boat_41mm.step",
+   "lab-models/exports/labware/wireless_colour_sensor.step",
+   "lab-models/exports/labware/xrf_cup.step"
+  ],
+  "generator": "lab-models/cad/labware.py (via build.py)",
+  "agent_generated": true,
+  "evidence": "Added by claude[bot] on branch claude/issue-199-20260915-0846 (PR #240, 'Gripper/end-effector design, generative CAD, and org survey'), commits afa3803 (2026-09-26) .. 7fc56b6 (2026-10-03); built by lab-models/cad/*.py (CadQuery) written by the agent.",
+  "assembly": false,
+  "parts": 45,
+  "first_seen": "2026-09-26",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/240",
+   "https://github.com/vertical-cloud-lab/byu-vcl/issues/199"
+  ],
+  "notes": "Collection of 45 separate STEP models (most 1-4 bodies, e.g. vial + cap + contents; sem_stub_box has 30), not one assembly: render as a grid/lineup (models.json 'labware_lineup'). DIGITAL-TWIN: agent-modelled replicas of commercial labware from datasheets, not fabricated designs. Excluded from this entry: the 4 printed holders (own entry), the HR-100A balance/lids (own entry) and 6 copies of #222/#232 lab CAD (charge cup/plug/slug/press sleeve/crucible replica; those belong to the atomizer-charge design). Copied verbatim to vertical-cloud-lab/robot-arms by Sterling in bdb25d31ed (2026-10-09, 'Import claude/issue-199-20260915-0846 from byu-vcl'); same design, not counted again. A verbatim copy of lab-models/cad/{common,equipment,labware,vendor}.py also lives in byu-vcl vertical-lab/lab_models/ (#303)."
+ },
+ {
+  "id": "byu-vcl--lab-models-lansmont-m23-drop-tower",
+  "section": "Models of equipment the lab already has",
+  "title": "Lansmont M23 shock test system (drop tower)",
+  "system": "Rough model of the Lansmont M23 drop tower from Lansmont's data sheet (envelope, table) and lab photos.",
+  "repo": "vertical-cloud-lab/byu-vcl",
+  "branch": "claude/issue-199-20260915-0846",
+  "commit": "0a0981eea1fbe8e868f661a1e6f92b3747a7d877",
+  "source_paths": [
+   "lab-models/exports/lansmont_m23_drop_tower.step"
+  ],
+  "generator": "lab-models/cad/equipment.py (via build.py)",
+  "agent_generated": true,
+  "evidence": "Added by claude[bot] on branch claude/issue-199-20260915-0846 (PR #240, 'Gripper/end-effector design, generative CAD, and org survey'), commits afa3803 (2026-09-26) .. 7fc56b6 (2026-10-03); built by lab-models/cad/*.py (CadQuery) written by the agent.",
+  "assembly": true,
+  "parts": 13,
+  "first_seen": "2026-09-26",
+  "versions": 2,
+  "links": [
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/240",
+   "https://github.com/vertical-cloud-lab/byu-vcl/issues/199"
+  ],
+  "notes": "Multi-body STEP (13 bodies). DIGITAL-TWIN: agent-modelled rough CadQuery model of existing vendor equipment (not a lab-fabricated design). Copied verbatim to vertical-cloud-lab/robot-arms by Sterling in bdb25d31ed (2026-10-09, 'Import claude/issue-199-20260915-0846 from byu-vcl'); same design, not counted again. A verbatim copy of lab-models/cad/{common,equipment,labware,vendor}.py also lives in byu-vcl vertical-lab/lab_models/ (#303)."
+ },
+ {
+  "id": "byu-vcl--repowder-atomizer-model",
+  "section": "Models of equipment the lab already has",
+  "title": "AMAZEMET rePowder induction atomizer (CadQuery model)",
+  "system": "Named-part CadQuery model of BYU's AMAZEMET rePowder ultrasonic/induction atomizer and its utilities (chamber, furnace, crucible, sealing rod, coil, powder container), proportioned from the lab's training-video frames and vendor numbers, used for the training and vertical-lab animations.",
+  "repo": "vertical-cloud-lab/byu-vcl",
+  "branch": "claude/org-readme-gif-20261106",
+  "commit": "865cc284ebc576c4d2a54ec231ed8cd3ec8b4051",
+  "source_paths": [
+   "vertical-lab/repowder/model.py",
+   "lab-models/exports/amazemet_repowder.step"
+  ],
+  "generator": "vertical-lab/repowder/model.py",
+  "agent_generated": true,
+  "evidence": "Written by claude[bot]: first as atomizer-training/viz3d/model.py on claude/issue-124-20261003-0335 (PR #255, 2026-10-03), refined in vertical-lab/repowder/model.py on claude/issue-303-repowder-model (PR #327) and claude/org-readme-gif-20261106 (PR #329, latest 2026-11-08).",
+  "assembly": true,
+  "parts": 87,
+  "first_seen": "2026-09-26",
+  "versions": 15,
+  "links": [
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/327",
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/329",
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/255",
+   "https://github.com/vertical-cloud-lab/byu-vcl/issues/124",
+   "https://github.com/vertical-cloud-lab/byu-vcl/issues/303",
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/240"
+  ],
+  "notes": "Script-only. Build: `python model.py` (self-contained: cadquery + numpy) builds and caches meshes; `parts()` returns the named, coloured CadQuery solids in machine position (export them to STEP/STL yourself). Part count approximate (87 Part() constructors in model.py). Fallback: amazemet_repowder.step is the older rough lab-models export (23 bodies, 2026-09-26, commit 7fc56b6) usable without building. Three lineages = 1 design: lab-models rough STEP (09-26), atomizer-training/viz3d/model.py (10-03), vertical-lab/repowder/model.py (11-07/11-08). DIGITAL-TWIN: agent-modelled rough CadQuery model of existing vendor equipment (not a lab-fabricated design)."
+ },
+ {
+  "id": "byu-vcl--lab-models-aconity-midi",
+  "section": "Models of equipment the lab already has",
+  "title": "Aconity3D AconityMIDI metal LPBF printer (candidate)",
+  "system": "Rough model of the Aconity MIDI laser powder-bed-fusion printer, rebuilt as a physical assembly (build chamber, enclosure, doors, peripherals) from Aconity's specs and configuration.",
+  "repo": "vertical-cloud-lab/byu-vcl",
+  "branch": "claude/issue-199-20260915-0846",
+  "commit": "b9b1eb03f65ff6aa510746e21548f6efc3eec84b",
+  "source_paths": [
+   "lab-models/exports/aconity_midi.step"
+  ],
+  "generator": "lab-models/cad/equipment.py (via build.py)",
+  "agent_generated": true,
+  "evidence": "Added by claude[bot] on branch claude/issue-199-20260915-0846 (PR #240, 'Gripper/end-effector design, generative CAD, and org survey'), commits afa3803 (2026-09-26) .. 7fc56b6 (2026-10-03); built by lab-models/cad/*.py (CadQuery) written by the agent.",
+  "assembly": true,
+  "parts": 112,
+  "first_seen": "2026-09-27",
+  "versions": 2,
+  "links": [
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/240",
+   "https://github.com/vertical-cloud-lab/byu-vcl/issues/199"
+  ],
+  "notes": "Multi-body STEP (112 bodies). DIGITAL-TWIN: agent-modelled rough CadQuery model of existing vendor equipment (not a lab-fabricated design). Rebuilt as a physical assembly in b9b1eb03f6 (2026-10-03). Copied verbatim to vertical-cloud-lab/robot-arms by Sterling in bdb25d31ed (2026-10-09, 'Import claude/issue-199-20260915-0846 from byu-vcl'); same design, not counted again. A verbatim copy of lab-models/cad/{common,equipment,labware,vendor}.py also lives in byu-vcl vertical-lab/lab_models/ (#303)."
+ },
+ {
+  "id": "byu-vcl--lab-models-hr100a-balance",
+  "section": "Models of equipment the lab already has",
+  "title": "A&D HR-100A balance with FXi-10 breeze break and AutoTrickler V4 / stock lids",
+  "system": "Model of the powder doser's analytical balance with its small FXi-10 breeze break and both swappable lids (AutoTrickler V4 acrylic panel as run by the lab, and A&D's stock lid).",
+  "repo": "vertical-cloud-lab/byu-vcl",
+  "branch": "claude/issue-199-20260915-0846",
+  "commit": "b9b1eb03f65ff6aa510746e21548f6efc3eec84b",
+  "source_paths": [
+   "lab-models/exports/labware/balance_hr100a.step",
+   "lab-models/exports/labware/balance_hr100a_stock_lid.step",
+   "lab-models/exports/labware/lid_autotrickler_v4.step",
+   "lab-models/exports/labware/lid_fxi10_stock.step"
+  ],
+  "generator": "lab-models/cad/labware.py (via build.py)",
+  "agent_generated": true,
+  "evidence": "Added by claude[bot] on branch claude/issue-199-20260915-0846 (PR #240, 'Gripper/end-effector design, generative CAD, and org survey'), commits afa3803 (2026-09-26) .. 7fc56b6 (2026-10-03); built by lab-models/cad/*.py (CadQuery) written by the agent. The AutoTrickler lid was added in b9b1eb03f6 (2026-10-03).",
+  "assembly": true,
+  "parts": 29,
+  "first_seen": "2026-09-27",
+  "versions": 2,
+  "links": [
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/240",
+   "https://github.com/vertical-cloud-lab/byu-vcl/issues/199"
+  ],
+  "notes": "Assembly (balance_hr100a: 29 bodies; lids also exported alone for swapping). DIGITAL-TWIN: agent-modelled rough CadQuery model of existing vendor equipment (not a lab-fabricated design). Copied verbatim to vertical-cloud-lab/robot-arms by Sterling in bdb25d31ed (2026-10-09, 'Import claude/issue-199-20260915-0846 from byu-vcl'); same design, not counted again. A verbatim copy of lab-models/cad/{common,equipment,labware,vendor}.py also lives in byu-vcl vertical-lab/lab_models/ (#303)."
+ },
+ {
+  "id": "byu-vcl--lab-models-labconco-glovebox",
+  "section": "Models of equipment the lab already has",
+  "title": "Labconco Protector glove box (cat. 50701)",
+  "system": "Model of the stainless Labconco Protector glove box on its stand (liner, window, ports, transfer chamber from Labconco's drawing; control column and rear from photos).",
+  "repo": "vertical-cloud-lab/byu-vcl",
+  "branch": "claude/issue-199-20260915-0846",
+  "commit": "d19d36bd860dacf92b972aa07c651b35acccb2f2",
+  "source_paths": [
+   "lab-models/exports/labconco_glovebox.step"
+  ],
+  "generator": "lab-models/cad/equipment.py (via build.py)",
+  "agent_generated": true,
+  "evidence": "Added by claude[bot] on branch claude/issue-199-20260915-0846 (PR #240, 'Gripper/end-effector design, generative CAD, and org survey'), commits afa3803 (2026-09-26) .. 7fc56b6 (2026-10-03); built by lab-models/cad/*.py (CadQuery) written by the agent.",
+  "assembly": true,
+  "parts": 35,
+  "first_seen": "2026-09-27",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/240",
+   "https://github.com/vertical-cloud-lab/byu-vcl/issues/199"
+  ],
+  "notes": "Multi-body STEP (35 bodies). DIGITAL-TWIN: agent-modelled rough CadQuery model of existing vendor equipment (not a lab-fabricated design). Copied verbatim to vertical-cloud-lab/robot-arms by Sterling in bdb25d31ed (2026-10-09, 'Import claude/issue-199-20260915-0846 from byu-vcl'); same design, not counted again. A verbatim copy of lab-models/cad/{common,equipment,labware,vendor}.py also lives in byu-vcl vertical-lab/lab_models/ (#303)."
+ },
+ {
+  "id": "byu-vcl--lab-models-mse-pro-glovebox",
+  "section": "Models of equipment the lab already has",
+  "title": "MSE PRO 378 L acrylic glove box with airlock (candidate)",
+  "system": "Rough model of the MSE PRO two-port acrylic glove box with airlock considered for the lab (#30).",
+  "repo": "vertical-cloud-lab/byu-vcl",
+  "branch": "claude/issue-199-20260915-0846",
+  "commit": "b9b1eb03f65ff6aa510746e21548f6efc3eec84b",
+  "source_paths": [
+   "lab-models/exports/mse_pro_glovebox.step"
+  ],
+  "generator": "lab-models/cad/equipment.py (via build.py)",
+  "agent_generated": true,
+  "evidence": "Added by claude[bot] on branch claude/issue-199-20260915-0846 (PR #240, 'Gripper/end-effector design, generative CAD, and org survey'), commits afa3803 (2026-09-26) .. 7fc56b6 (2026-10-03); built by lab-models/cad/*.py (CadQuery) written by the agent.",
+  "assembly": true,
+  "parts": 36,
+  "first_seen": "2026-10-03",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/240",
+   "https://github.com/vertical-cloud-lab/byu-vcl/issues/199"
+  ],
+  "notes": "Multi-body STEP (36 bodies). DIGITAL-TWIN: agent-modelled rough CadQuery model of existing vendor equipment (not a lab-fabricated design). Added in b9b1eb03f6 (2026-10-03). Copied verbatim to vertical-cloud-lab/robot-arms by Sterling in bdb25d31ed (2026-10-09, 'Import claude/issue-199-20260915-0846 from byu-vcl'); same design, not counted again. A verbatim copy of lab-models/cad/{common,equipment,labware,vendor}.py also lives in byu-vcl vertical-lab/lab_models/ (#303)."
+ },
+ {
+  "id": "byu-vcl--sieving-bench",
+  "section": "Models of equipment the lab already has",
+  "title": "Powder sieving bench (Gilson sieve stack, pan, cover, jars, funnel, balance)",
+  "system": "CadQuery scene of the bench for sieving atomized powder: a nested stack of three Gilson 3 in sieves with pan and cover, the rePowder powder container, jars, funnel, dish, balance and the doser cartridge tube.",
+  "repo": "vertical-cloud-lab/byu-vcl",
+  "branch": "claude/issue-222-20261007-0254",
+  "commit": "d301844a33c1c57b1011485460aca152c154583e",
+  "source_paths": [
+   "sieving/viz3d/model.py"
+  ],
+  "generator": "sieving/viz3d/model.py",
+  "agent_generated": true,
+  "evidence": "Added by claude[bot] in b05c1f6 / d301844 (2026-10-07, 'Sieving bench CAD + animation script'), PR #262 (closed, unmerged).",
+  "assembly": true,
+  "parts": 23,
+  "first_seen": "2026-10-07",
+  "versions": 2,
+  "links": [
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/262",
+   "https://github.com/vertical-cloud-lab/byu-vcl/issues/222"
+  ],
+  "notes": "Script-only. Build: `python model.py` (self-contained: cadquery + numpy) builds/caches meshes and prints the part list; `parts()` returns the named solids. The sieve stack (frames nest via skirts) explodes naturally. Mostly vendor items modelled from catalogue dimensions (DIGITAL-TWIN of a procedure setup), not a fabricated design. Part count approximate (23 Part() constructors)."
+ },
+ {
+  "id": "byu-vcl--repowder-ultrasonic-stack",
+  "section": "Models of equipment the lab already has",
+  "title": "rePowder ultrasonic atomizer stack (measured model)",
+  "system": "CadQuery model of the rePowder ultrasonic stack as measured on 8 Oct: titanium sonotrode, upper sonotrode, carbon-fibre plate and M8 connector.",
+  "repo": "vertical-cloud-lab/byu-vcl",
+  "branch": "claude/issue-124-20261003-0335",
+  "commit": "2aa95a60dade5a79fcc592d328106cff7444b9fd",
+  "source_paths": [
+   "atomizer-training/stack-model/exports/repowder_stack_full_cf.step",
+   "atomizer-training/stack-model/exports/repowder_stack_full_cf.glb",
+   "atomizer-training/stack-model/exports/ti_sonotrode.stl",
+   "atomizer-training/stack-model/exports/upper_sonotrode.stl",
+   "atomizer-training/stack-model/exports/plate_cf.stl",
+   "atomizer-training/stack-model/exports/connector_m8.stl"
+  ],
+  "generator": "atomizer-training/stack-model/stack_model.py",
+  "agent_generated": true,
+  "evidence": "CadQuery by claude[bot] (PR #255, issue #261 measurements); copied to digital-alloy-lab PR #173",
+  "assembly": true,
+  "parts": 4,
+  "first_seen": "2026-10-21",
+  "versions": 1,
+  "links": [
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/255",
+   "https://github.com/vertical-cloud-lab/digital-alloy-lab/pull/173"
+  ],
+  "notes": "DIGITAL-TWIN: Digital twin of existing vendor hardware from measurements, not a fabricated design."
+ },
+ {
+  "id": "byu-vcl--vertical-lab-vlm",
+  "section": "Models of equipment the lab already has",
+  "title": "Kardex Shuttle XP 500 vertical lift module (vertical cloud lab)",
+  "system": "CadQuery model of the Kardex Shuttle XP 500 vertical lift module quoted for the 'vertical cloud lab' (housing, storage columns, extractor/lift, belts, access opening, electrified trays), the centrepiece of the #303 animations with a UR10e on a MiR250 serving it.",
+  "repo": "vertical-cloud-lab/byu-vcl",
+  "branch": "claude/issue-303-20261103-1736",
+  "commit": "063b0143b6ce755f0d861d49bb8437334f84cbf6",
+  "source_paths": [
+   "vertical-lab/vlm.py",
+   "vertical-lab/lab_models/common.py"
+  ],
+  "generator": "vertical-lab/vlm.py",
+  "agent_generated": true,
+  "evidence": "Added by claude[bot] in 269a9e4 (2026-10-27, 'Kardex Shuttle XP 500 VLM model ...') on claude/issue-303-* branches; PR #318 'Vertical lab animated visualizations (#303)', 11 rounds through 2026-11-14.",
+  "assembly": true,
+  "parts": 12,
+  "first_seen": "2026-10-27",
+  "versions": 11,
+  "links": [
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/318",
+   "https://github.com/vertical-cloud-lab/byu-vcl/issues/303",
+   "https://github.com/vertical-cloud-lab/byu-vcl/issues/53",
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/320",
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/321",
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/328"
+  ],
+  "notes": "Script-only, no export: `vlm.all_parts()` returns a dict of named CadQuery shapes (housing, support ribs, columns, lift rails, drive, extractor, belts, opening, logo, trays, lamps); keep lab_models/common.py beside it (vlm.py puts ./lab_models on sys.path). Parts count approximate. Kardex publishes no CAD, so this is an agent-built model from published figures. DIGITAL-TWIN: agent-modelled rough CadQuery model of existing vendor equipment (not a lab-fabricated design). The #303 scene also has ~40 more rough instrument/prop models (instruments*.py, fab_*.py, props.py, kardex_tall.py, ...) and vendor meshes fetched at run time (UR10e, Robotiq 2F-85, OT-2, MakeHuman); not inventoried separately. vertical-lab/ on that branch is ~540 MB, almost all renders in out/."
+ }
+]
