@@ -29,7 +29,8 @@ this as a planning inquiry, not a request for a tour or a proposal.
 [Address] looks like it could fit, and I have a few questions the listing doesn't answer:
 
 1. Clear height at the first column line and at the eaves, column spacing, and the sprinkler system (ESFR or not).
-2. Electrical service: amps, voltage, phases, and whether there is room on the site for a larger transformer.
+2. Electrical service: amps, voltage and phases, how many of those amps our space would get (we would need about
+   800 A at 480 V), and whether there is room on the site for a 480-400 V transformer.
 3. Slab thickness and design load, and whether the landlord would allow a pit (about 3.5 m deep over a
    12 x 7.5 m area) or a raised roof over part of the building.
 4. Zoning, and whether the owner would accept a research lab that handles metal powders, argon and nitrogen. That
@@ -111,7 +112,7 @@ the following?
 
 - 20,000-40,000 ft², industrial or R&D zoning that allows hazardous materials;
 - 32-40 ft clear, or room to add a high bay of about 55 ft;
-- a heavy slab, three-phase power with room to grow (we expect 2,000-3,000 A at 480 V), dock doors;
+- a heavy slab, three-phase power with room to grow (we expect about 600-800 A at 480 V), dock doors;
 - outdoor space for bulk argon and nitrogen tanks;
 - ideally, an existing building that already ran process gases or hazardous materials.
 
@@ -132,7 +133,7 @@ Hello,
 
 We're evaluating [address] for a research lab. Before we go further, could you tell us what service the site has
 now, how much capacity the local feeder has, and the usual timeline and process for upgrading to roughly
-[2,000-3,000] A at 480Y/277 V? Transformer lead times would help us plan.
+[800] A at 480Y/277 V? Transformer lead times would help us plan.
 
 [signature]
 
@@ -146,7 +147,7 @@ Hello,
 
 We're planning a lab that would run up to three ultrasonic atomizers (AMAZEMET rePowder, about 10 L/min of argon
 each while running) and four laser powder-bed printers, with gloveboxes and
-furnaces. Could you help us estimate when microbulk or a bulk tank makes sense for argon (and for nitrogen, against an
+furnaces. Our own rough estimate is about 5 m³ of argon a day at first and about 50 m³ a day at full scale. Could you help us estimate when microbulk or a bulk tank makes sense for argon (and for nitrogen, against an
 on-site generator), what pad, setbacks and access a tank needs, the lead time to install, and typical rental terms?
 
 [signature]
@@ -212,7 +213,7 @@ south Salt Lake valley where an earlier tenant left process utilities in place. 
 - compressed-air lines, process chilled water or a cooling tower;
 - lab exhaust fans and make-up air units, or a roof rated to carry them;
 - a standby generator;
-- 2,000-4,000 A of 480 V service.
+- at least 800 A of 480 V service for our space.
 
 Likely earlier tenants would be metal fabrication or laser-cutting shops, food or beverage plants, medical-device
 makers, electronics plants and labs. This is a planning inquiry for a lab like the one in [warehouse video link], not a
@@ -265,7 +266,7 @@ units. For about 20,000 ft², these are the things that matter most to us, rough
    conditional use.
 2. **An end unit or a freestanding building,** with a long exterior wall for a powder room and room outside for a gas
    tank, a dust collector and a generator.
-3. **Power:** 2,000-4,000 A at 480 V already in the building, or the utility able to supply it soon.
+3. **Power:** about 800 A at 480 V for our space, already in the building, or the utility able to supply it soon. In a big multi-tenant building, a 20,000 ft² share of the service can be less than that.
 4. **A conventionally reinforced slab,** at least 6-7 in and not post-tensioned, that the landlord will let us cut for
    trenches and footings.
 5. **A steel roof deck,** not a wood panelized roof, strong enough for exhaust fans (or ground space for them).

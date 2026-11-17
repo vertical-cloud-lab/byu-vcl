@@ -30,13 +30,26 @@ code; the support rooms are one illustrative way to use the rest of the floor.
 
 *If we were to build a facility like this:*
 
-- **Height is the hard part, not area.**
+- **What the #318 lab needs, added up ([`needs.md`](needs.md)):**
+  - **Power:** about 186 kVA connected with the EOS and the Meltio cell, and about 318 kVA for ten a day. With
+    cooling, fans and lights and a 25 % margin, that is about **350 A and 600 A at 480 V**, not the 2,000-3,000 A
+    estimated before.
+  - **Height:** the lab as #318 draws it needs about **16-18 ft clear**. The 50 ft array below isn't part of the latest
+    #318.
+  - **Area:** about **13,000-15,000 ft²**, support rooms included, or 20,000-25,000 ft² for ten a day.
+  - **Argon:** about 5 m³ a day (microbulk), or about 50 m³ a day for ten a day. #318 itself gives no gas consumption,
+    so these are estimates.
+  - **What decides between sites:** how many amps the landlord gives our suite, a grade-level door about 12 ft tall for
+    the EOS and the Meltio cell, a slab we may cut, an outside wall for a powder room, a gas pad and zoning. Power in
+    the building and height don't decide it.
+- **Height decides only whether the trays could go into the tall array.**
   - **The 50 ft array** needs about **51-53 ft clear** (depending on the sprinklers), but nothing available near BYU
     is over **36 ft**.
   - **Three ways round it:** an 11 ft (3.4 m) pit in a 40 ft clear building, a high bay in a purpose-built building, or
     more, shorter units (13 units at 10.5 m under 36 ft, or 15 at 9.2 m under 32 ft) for the same 352 trays.
   - **Area is easy:** the #318 floor fits in about 3,500 ft² and the array in under 1,000 ft². 20,000 ft² is enough
-    to start, and 40,000 ft² leaves room for ten alloys a day.
+    to start and about enough for ten alloys a day ([`needs.md`](needs.md#6-floor-area)), and 40,000 ft² leaves room for
+    the array or a second line.
 - **Candidate sites, Lehi first:**
   - **Holbrook Industrial Park Bldg 5, Lehi:** 32 ft clear, 4,000 A at 480 V, divisible to about 46,000 ft²,
     zoned PC-FLEX, where labs and R&D are permitted.
@@ -132,7 +145,7 @@ Everything else is from the sources linked. Which of these we could hook into, a
 | Need | What a facility like this needs | Why, and where the number comes from |
 |---|---|---|
 | **Slab and floor loading** | A heavy, flat slab; new tilt-ups here list 6-7 in, reinforced (310 N Geneva Rd, Axia, Center Street). A thickened slab or a pit under the array, sized by a structural engineer | The heaviest items are a loaded Shuttle and the wire EDM (#331). Kardex gives a maximum load of 67 t per Shuttle 500, and our estimate is about 86-94 kN/m² under each loaded 15 m unit. The FANUC ROBOCUT α-C400iC is about 2,200-2,400 kg and wants at least 400 mm of concrete. The EOS M 400-4 is about 4,835-4,900 kg on 4.2 × 1.6 m (about 720 kg/m² averaged, more under its feet). The Meltio cell is about 4,000 kg. A 15 m Shuttle with 44 instrument trays is far heavier than the 3.95 m unit; ask Kardex for the figure (draft 2) |
-| **Electrical service** | **About 2,000-3,000 A at 480Y/277 V** for ten a day (an estimate: roughly 0.8-1.5 MW of process load, plus lab HVAC and exhaust, likely the largest load), plus step-down transformers to 400 V for the European machines and 208Y/120 V panels | The VLMs are 208 V three-phase (#53; a used XP 500 lists 8.6 kVA). The rePowder takes 400 V three-phase and 230 V on 32 A plugs, and its optimizer draws up to about 60 A ([install call](../rePowder-BYU-Installation-Details.txt)). The wire EDM is 13 kVA. The EOS M 400-4 is 3 × 50 A, 45 kW peak and 22 kW typical. The Meltio cell is 400 V, 20 kW peak. Trays are up to 3.5 kW each (PR #318 `out/cabling.json`). Ten a day means 3 rePowders and 4 MIDIs (PR #332). **A building that already has 2,000-4,000 A at 480 V avoids 40-80 weeks of switchgear and transformer lead time.** In Lehi the city's impact fee is $232k for 2,000 A and $464k for 4,000 A ([§3](#3-renovate-or-build)) |
+| **Electrical service** | **About 600 A at 480Y/277 V for ten a day, and about 350 A for the #318 lab with its EOS and Meltio cell**, with 25 % margin; ask for an allocation of 800 A. Added up machine by machine in [`needs.md`](needs.md#2-electricity): about 186 kVA connected for the #318 lab with the EOS and the Meltio cell, about 318 kVA for ten a day, plus cooling, fans and lights. This replaces an earlier top-down guess of 2,000-3,000 A. Plus a 480-400 V transformer of about 110-150 kVA for the European machines, and 208Y/120 V panels | The VLMs are 208 V three-phase (#53; a used XP 500 lists 8.6 kVA). The rePowder takes 400 V three-phase and 230 V on 32 A plugs, and its optimizer draws up to about 60 A ([install call](../rePowder-BYU-Installation-Details.txt)). The wire EDM is 13 kVA. The EOS M 400-4 is 3 × 50 A, 45 kW peak and 22 kW typical. The Meltio cell is 400 V, 20 kW peak. Trays are up to 3.5 kW each (PR #318 `out/cabling.json`). Ten a day means 3 rePowders and 4 MIDIs (PR #332). **A building that already has the power avoids 40-80 weeks of switchgear and transformer lead time. Every candidate with a stated service has enough in the building; what matters is how much the landlord allocates to our suite ([`needs.md`](needs.md#power)).** In Lehi the city's impact fee is $232k for 2,000 A and $464k for 4,000 A ([§3](#3-renovate-or-build)) |
 | **Argon** | Microbulk or a bulk liquid tank outside, with a vaporizer and piping. 5N (99.999 %) at up to 8 bar for the atomizers | The rePowder, an ultrasonic atomizer using about 10 L/min of noble gas ([AMAZEMET](https://amazemet.com/repowder/)), needs 5N argon at up to 8 bar (install call). Three atomizers, four MIDIs, the EOS and the Meltio cell's three 50 L bottles are past cylinders; PR #332 flags bulk argon as not modelled. Bulk is worth it above about one liquid cylinder a week (Rocky Mountain Air). Local suppliers are in the sites section |
 | **Nitrogen** | An N₂ generator fed by house air (#331), or bulk | Piped to every tray's coupling (PR #318 `notes/services.md`) |
 | **Oxygen-depletion monitoring** | O₂ monitors wherever argon or nitrogen can collect: the powder room, near the gloveboxes, any pit | IFC §5307.2.1 accepts an oxygen-depletion alarm in place of ventilation. CB 154 needed an O₂ detector (#31). A pit under the array would be a low point for argon, and nitrogen fire protection in the units adds to the hazard |
@@ -405,7 +418,7 @@ estimates for a mix of lab and high-bay space that isn't defined yet, so the ran
     Medium-voltage switchgear runs 52-80 weeks and pad-mount transformers 40-65 weeks
     ([Terrapin, 2026](https://terrapincg.com/news/switchgear-transformer-generator-lead-times-2026), a contractor's
     figures, also cited by [Foley](https://www.foley.com/insights/publications/2026/09/the-grids-bottleneck-isnt-just-money-its-materials/)).
-  - **So a building that already has 2,000-4,000 A at 480 V is worth a lot.**
+  - **So a building that already has the power in is worth a lot.** The lab needs about 350-600 A at 480 V ([`needs.md`](needs.md#2-electricity)), so any building with 1,200 A or more has it, if the landlord allocates it to our suite.
 - **Electricity prices.** Lehi City Power's commercial demand rate is $29/month + 6.97¢/kWh + $9.00/kW
   ([2027 fee schedule](https://www.lehi-ut.gov/media/cringa52/2027-fee-schedule-approved.pdf)). Rocky Mountain Power's
   Schedule 8 (1,000 kW and over) is in [its tariff](https://www.rockymountainpower.net/content/dam/pcorp/documents/en/rockymountainpower/rates-regulation/utah/rates/008_Large_General_Service_1_000_kW_and_Over_Distribution_Voltage.pdf).
@@ -498,7 +511,7 @@ checked against a flyer; Crexi hides the rest behind a sign-in, which wasn't use
 
 1. **Ask Kardex** (draft 2) for the clearance over a unit, its floor load, and its pit and seismic options. That one
    answer decides between a pit, a high bay and shorter units, and what clear height to ask landlords for.
-2. **Tour two or three buildings** with docks, 32-36 ft clear and 2,000-4,000 A already in, ideally one in Lehi
+2. **Tour two or three buildings** with docks, a grade-level door, and at least 800 A at 480 V for our suite, ideally one in Lehi
    (Holbrook Bldg 5) and one with process utilities (BlendTec, Orem). Bring the figure and the
    [requirements](#1-what-the-facility-needs).
 3. **Ask Lehi** (draft 3) whether a metals lab counts as R&D or as manufacturing, how it handles a Group H room in an
