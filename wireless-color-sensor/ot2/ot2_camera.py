@@ -20,7 +20,7 @@ the robot's cable (see CLAUDE.md, "Reaching the OT-2"):
     ot2_camera.py done               delete the frames on the robot and the Jupyter kernel
 
 Needs ``requests``, ``websocket-client``, ``numpy`` and ``opencv-python-headless``.
-Frames are ~0.5 MB each; MAX_RATE throttles the copy so a Pi on Wi-Fi isn't swamped.
+Frames are ~150 kB each; MAX_RATE throttles the copy so a Pi on Wi-Fi is not swamped.
 """
 from __future__ import annotations
 

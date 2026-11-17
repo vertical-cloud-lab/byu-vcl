@@ -657,8 +657,10 @@ subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-f", "video4lin
 - **`-c:v copy` with `mjpeg2jpeg` keeps the camera's own JPEG**, without decoding
   and re-encoding it. Averaging four to eight frames removes most of the noise.
 - **Rate-limit the transfer** if the Pi is on Wi‑Fi. Each frame is about
-  0.5 MB. On 2026-11-17 the CubXL Pi stopped answering after about 25 sets of
-  frames in 15 minutes. That may have had another cause, but it is cheap to avoid.
+  150 kB. On 2026-11-17 the CubXL Pi stopped answering over Tailscale at 03:14
+  and stayed that way, after about 80 frames (13 MB) had gone through a Tailscale
+  SSH port-forward in 15 minutes. That is little data, so the cause is unknown.
+  It still showed as online, so it wasn't simply off.
 
 What it can and can't do, measured on 2026-11-17 at 1920×1080:
 
