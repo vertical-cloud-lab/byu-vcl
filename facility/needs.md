@@ -14,7 +14,8 @@ the sites in this folder.
 
 ## Short answer
 
-Four versions of the lab, each one building on the one before. The last column of the table is the same as the third, plus PR #332's extra machines.
+Four versions of the lab. The second and third each add to the one before; ten a day adds PR #332's machines to the
+second, not the third.
 
 - **Round 11, as rendered:**
   - two Kardex Shuttle XP 500s holding 15 trays, 12 of them powered;
@@ -34,9 +35,9 @@ Four versions of the lab, each one building on the one before. The last column o
 | **Service to ask for**, with 25 % margin (ours) | **about 230 A at 480 V** (520 A at 208 V) | **about 350 A at 480 V** | about 380 A at 480 V | **about 600 A at 480 V**; ask for 800 A |
 | **400 V for the European machines** | a transformer of about 30 kVA (the rePowder) | about 110 kVA (rePowder, EOS, Meltio) | the same | about 150 kVA |
 | **Heat to remove** (ours: the running load) | about 45 kW, 13 tons of cooling | about 76 kW, 22 tons | about 80 kW, 23 tons | about 134 kW, 38 tons |
-| **Argon** (ours; #318 gives no consumption) | about 5 m³ a day: one cylinder every two days, so microbulk | about 6-10 m³ a day, plus the EOS's flooding and the Meltio's three 50 L bottles | the same | about 50 m³ a day: bulk, or a 1,500 L microbulk tank refilled every 3-4 weeks |
+| **Argon** (ours; #318 gives no consumption) | about 5 m³ a day: one cylinder every two days, so microbulk | about 5 m³ a day, plus the EOS's flooding (up to 15-20 m³/h while it fills; use per build not published) and the Meltio cell's own three 50 L bottles | the same | about 50 m³ a day: bulk, or a 1,500 L microbulk tank refilled every 3-4 weeks |
 | **Nitrogen** | a 0.5-1.1 L/min generator for the tray docks; a dewar for a glovebox's first 2.4 m³ purge | the same | the same | the same, more docks |
-| **Other gases** | helium for the XRF (one cylinder a year); forming gas for the glovebox purifier (half a 50 L cylinder a year) | the same | the same | about double |
+| **Other gases** | helium for the XRF (one cylinder a year); forming gas for the glovebox purifier (half a 50 L cylinder a year) | the same | the same | the same, used more |
 | **Compressed air** (ours) | about 10-15 CFM at 6-7 bar | about 25-30 CFM (the EOS takes 7 bar, 20 m³/h) | the same | about 40-60 CFM |
 | **Process cooling water** (ours) | about 25-30 kW, all from packaged chillers beside the machines | about 35-40 kW | the same | about 100 kW: worth a central loop with an outdoor chiller |
 | **Water and drains** | an eyewash and safety shower; under 100 L a week of process water (polisher, quench, EDM top-up); no process drain | the same | the same | the same, more |
@@ -53,7 +54,7 @@ Four versions of the lab, each one building on the one before. The last column o
 
 **What it means for the sites ([§9](#9-what-the-totals-mean-for-the-sites)):**
 - **Power was the wrong filter.** Ten a day needs about 600 A at 480 V, so every building in the list with a stated
-  service has two to six times that. What matters is **how much of it the landlord gives our suite**: by floor area, a
+  service has more than that, most of them two to six times. What matters is **how much of it the landlord gives our suite**: by floor area, a
   20,000 ft² suite in Holbrook Bldg 5 would get about 320 A. Ask for an allocation of 800 A, plus room for a 400 V
   transformer.
 - **Height is not a filter for the lab as #318 draws it.** It needs 16-18 ft, and every candidate has that, so height
@@ -153,7 +154,7 @@ That makes about 150, 235, 250 and 400 kVA for the four versions. With 25 % marg
 rule, that is **about 230, 350, 380 and 600 A at 480 V**.
 
 **This replaces the README's "2,000-3,000 A at 480Y/277 V for ten a day".** That was a top-down guess of 0.8-1.5 MW of
-process load, about four times what the machines add up to. Even if every *ours* placeholder above were doubled, ten a
+process load, three to five times what the machines add up to. Even if every *ours* placeholder above were doubled, ten a
 day would stay under 1,000 A.
 
 **Voltages.**
@@ -168,7 +169,8 @@ day would stay under 1,000 A.
   - the EDM;
   - the Instrons;
   - the tray docks, at 208Y/120 V with a 30 A breaker and 5 kVA continuous each.
-- **#318 notes** the EDM "needs a three-phase panel of its own".
+- **#318 notes** that the wire EDM is the biggest single load, and that with the Shuttles, the rePowder and the trays
+  "the line needs a three-phase panel of its own" ([`notes/services.md`](https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/notes/services.md)).
 
 **Standby power** (*ours*):
 - **Each powered tray has its own UPS:** an Eaton 5PX1500, about 1,350 W.
@@ -495,7 +497,7 @@ So height decides only whether the trays could one day go vertical: the 50 ft ar
 - **1657 N State St** moves up:
   - **For it:** height no longer counts against it, and ownership settles the slab, the door and a powder room on an
     outside wall. Its 1,800 A covers ten a day if it is at 480 V; even at 208 V (650 kVA) it covers ten a day with
-    little to spare.
+    about 30 % to spare.
   - **Against it:** it lists only dock-high doors, and a tenant is in place.
 - **Millplace Park** is more than a pilot cell:
   - **What fits:** its 10,753 ft² holds the round-11 lab floor (2,371 ft²), the powder room and the mechanical room,
@@ -511,7 +513,7 @@ So height decides only whether the trays could one day go vertical: the 50 ft ar
 |---|---|---|
 | A Shuttle's own mass and floor load; the "6750" on the order sheet; heat allowed per tray; a 650 °C furnace inside | Kardex | draft 2 |
 | The Aconity MIDI's supply and its chiller's input; argon per build | Aconity | |
-| The rePowder's real draw (the install call's "about 60 A" sits beside "one 32 A plug is easily enough for both") and its argon per run | AMAZEMET | |
+| The rePowder's real draw (the call's transcript has "the optimizer takes up to, I think 60 number by itself. So the plug is enough easily enough for both", so the "60 A" may be mis-heard) and its argon per run | AMAZEMET | |
 | The EOS's argon per build, and whether its 20 m³/h at 7 bar is inert gas or compressed air | EOS | |
 | The glovebox's, the ThermoFlex's, the N₂ generator's and the 3119-608 chamber's electrical input | the makers | |
 | The amps allocated to a suite, the transformer's size, room for a 400 V transformer | the landlord or broker | drafts 1, 11 |
