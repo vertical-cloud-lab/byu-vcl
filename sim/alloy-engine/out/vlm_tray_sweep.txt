@@ -1,0 +1,16 @@
+{'ground': 'static', 'tray_steel': 'rigid', 'steel_vial_4ml': 'rigid', 'steel_vial_20ml': 'rigid', 'steel_tube_50ml': 'rigid', 'steel_bottle_250ml': 'rigid', 'steel_plate_96': 'rigid', 'tray_mat': 'rigid', 'mat_vial_4ml': 'rigid', 'mat_vial_20ml': 'rigid', 'mat_tube_50ml': 'rigid', 'mat_bottle_250ml': 'rigid', 'mat_plate_96': 'rigid'}
+build 4.4 s, run 98.6 s, health ok True, contact lag tau 8.1 ms
+steel vial_4ml      .........................sssssssssssssssoooooooo  mu=0.21 slide>2.0 tip>3.2
+steel vial_20ml     ..........................ssssssssssssssoooooooo  mu=0.21 slide>2.0 tip>4.5
+steel tube_50ml     .......................ssssssXsssssssssooooooooo  mu=0.18 slide>1.8 tip>2.5
+steel bottle_250ml  ..........................sssssssssssssooooooooo  mu=0.21 slide>2.0 tip>4.8
+steel plate_96      ..........................sssssssssssssooooooooo  mu=0.20 slide>2.0 tip>87.1
+mat   vial_4ml      .............................ssXXXXXXXXXXXXXXooo  mu=0.53 slide>5.2 tip>3.2
+mat   vial_20ml     ..................................ssXXXXXXXXXooo  mu=0.53 slide>5.2 tip>4.5
+mat   tube_50ml     ..........................sXXXXXXXXXXXXXXooooooo  mu=0.38 slide>3.7 tip>2.5
+mat   bottle_250ml  ...................................ssXXXXXXXXooo  mu=0.53 slide>5.2 tip>4.8
+mat   plate_96      ......................................sssssssooo  mu=0.49 slide>4.8 tip>87.1
+
+real	1m50.551s
+user	1m50.761s
+sys	0m0.337s
