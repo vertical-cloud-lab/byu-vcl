@@ -601,19 +601,88 @@ allowed in `measuringNozzleOffset`, `preparingPipette`, `measuringTipOffset`,
 - **Check the thread for `stop` before every move,** not only inside the jog
   loop. On 2026-11-17 a `stop` arrived during a manual move, and one more move
   went out before the script read it.
+- **Without a tip, the nozzle can't get lower than about 29 mm above the deck,
+  and nothing stops a jog that asks it to.** The left Z axis ends at motor
+  `Z=0`, which puts the bare P300 GEN2 nozzle at a nominal 29.45 mm. A
+  `calibration.jog` past that is only logged
+  (`Out of bounds move: Z_L=(-4.45 motor controller, ...) too low for limit 0` in
+  `/logs/api.log`) and the G-code goes out anyway. The motor then stalls at the
+  end of its travel and the robot loses track of its height. That happened on
+  2026-11-17, and was caught because the camera showed the nozzle not moving. In
+  `measuringNozzleOffset`, `calibration.invalidateLastAction` re-homes and goes
+  back to the reference point. That is why the bare nozzle is referenced on the
+  trash (82 mm) or the block, and never on the deck. With a tip on, the floor is
+  well below the deck.
+- **`saveOffset` keeps only the height for the nozzle, the tip and the deck.**
+  In the 8.8.1 source (`robot_server/robot/calibration/pipette_offset/user_flow.py`),
+  those three saves store `z` and ignore `x` and `y`. The tip length is the
+  nozzle's height at the tip save minus its height at the nozzle save. So the two
+  touches can be made on any surface both can reach, as long as it is the same
+  one, not necessarily on the trash. Only the save at the cross in slot 1 uses
+  `x` and `y`, and it saves the whole offset.
 
 ### The OT-2's own camera
 
-`POST /camera/picture` returns a 640×480 JPEG from a camera built into the
-robot. `GET /camera` reports `cameraEnabled: true`. It looks across the deck
-from the back-right corner, with the trash nearest. In the picture, left is the
-deck's right (+x) and down is the back (+y). It shows clearly where the pipette
-is. But in the middle of the deck a millimetre is about one pixel, and less in
-the far slots, so it cannot tell a touching tip from one 1 mm up.
+The robot has a USB camera on its own Raspberry Pi 3: `H264 USB Camera`, USB ID
+`32e4:9422`, at `/dev/video0`. `GET /camera` reports `cameraEnabled: true`. It
+sits above the back-right corner of the deck and looks down and forward, with
+the trash nearest. In its picture, left is the deck's right (+x) and down is the
+back (+y).
+
+**It does 1920×1080; the robot only asks for 640×480.** `POST /camera/picture`
+runs `ffmpeg -s 640x480`, which gives a scaled-down centre crop of a 16:9
+frame. The camera offers MJPEG at 1920×1080, 1280×720, 800×600, 640×480,
+640×360, 352×288 and 320×240, and raw YUYV up to 800×600. A 1920×1080 frame
+covers the same height and more width, at 2.25 times the detail.
+
+To get one, run `ffmpeg` on the robot; [`ot2_camera.py`](ot2_camera.py) does all of
+this (`shoot NAME N`, then `done` to clean up). The OT-2 has a Jupyter Notebook server
+(6.0.3) on port 48888, with no password, as Opentrons ship it. From the Pi on the
+robot's cable, or through an SSH port-forward to it, start a kernel
+(`POST :48888/api/kernels`) and run:
+
+```python
+import subprocess
+subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-f", "video4linux2",
+                "-input_format", "mjpeg", "-video_size", "1920x1080", "-i", "/dev/video0",
+                "-c:v", "copy", "-bsf:v", "mjpeg2jpeg", "-frames:v", "65", "-f", "image2",
+                "/var/lib/jupyter/notebooks/vcl-cam-tmp/f%03d.jpg"])
+```
+
+- **Keep only the last few frames.** Auto-exposure takes about 60 frames to
+  settle. With the rail lights on, frames from the first 20 are blown out white.
+- **Write under `/var/lib/jupyter/notebooks/`.** That is the server's root, so the
+  frames can be fetched with `GET :48888/files/vcl-cam-tmp/f065.jpg`. The kernel
+  starts in `/`, which is read-only. Delete the frames and the kernel afterwards.
+- **`-c:v copy` with `mjpeg2jpeg` keeps the camera's own JPEG**, without decoding
+  and re-encoding it. Averaging four to eight frames removes most of the noise.
+- **Rate-limit the transfer** if the Pi is on Wi‑Fi. Each frame is about
+  0.5 MB. On 2026-11-17 the CubXL Pi stopped answering after about 25 sets of
+  frames in 15 minutes. That may have had another cause, but it is cheap to avoid.
+
+What it can and can't do, measured on 2026-11-17 at 1920×1080:
+
+- **Over empty slot 8 the view is good.** The black nozzle is a sharp outline
+  against the white deck. With the nozzle 40 mm up there, a 1 mm move shifts it
+  about 1.7 px in Z and about 1.65 px in x.
+- **Over the trash it is poor.** The camera looks almost straight down at the
+  black bin, and the black nozzle and pipette body disappear against it.
+- **It can't see a gap under a tip.** With one viewpoint, a tip 1 mm up looks the
+  same as one 1 mm further back that is touching, so no picture shows a gap. The
+  rail lights cast no shadow of the nozzle sharp enough to use either. For a
+  touch, the camera has to watch for a physical sign: the pipette stops moving
+  when commanded down. Or a person judges it.
+- **It does show where things are.** It shows which slots hold labware, whether
+  slot 5 is empty, and whether a move went where it should. That's how the stall
+  above was caught.
 
 ![The OT-2's camera, 2026-11-17: the pipette (bottom left) over the trash, the
 tip rack in slot 6, vial holders in slots 5 and 4, the Heater-Shaker with plate A
 in slot 7](ot2-camera-2026-11-17.jpg)
+
+![The same camera at 1920×1080, with the bare nozzle 40 mm above empty slot 8
+(centre), downscaled here to 1280×720: rail lights on, tip rack in slot 6, vial holders in slots 5 and 4,
+plate A on the Heater-Shaker in slot 7](ot2-camera-1080p-2026-11-17.jpg)
 
 ## Step 1 — deck calibration
 

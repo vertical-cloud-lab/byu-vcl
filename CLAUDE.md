@@ -281,6 +281,15 @@ with `sudo nmcli connection delete ot2-usb`. Two more things to know:
   a person at the robot saying when the tip touches. See "Driving the App's calibration from
   the Pi" in `wireless-color-sensor/ot2/opentrons-calibration.md`, which also covers the
   robot's built-in camera (`POST /camera/picture`).
+- **The robot's camera does 1920×1080 through `ffmpeg`, not just 640×480,** but one camera
+  can't show whether a tip is touching (2026-11-17). The recipe uses the robot's
+  password-less Jupyter server on port 48888, and is in the same file under "The OT-2's own
+  camera".
+- **A jog without a tip can drive the Z motor into the end of its travel.** The bare P300
+  nozzle bottoms out about 29 mm above the deck. The API only logs an "Out of bounds move" and
+  sends the move anyway, so the motor stalls and the robot loses its height until it is
+  re-homed. Keep bare-nozzle jogs above that, and check `/logs/api.log` after any long
+  downward jog.
 
 **Reaching the CubXL Pi.** A Pi 5 on the tailnet at `CUBXL_PI_HOSTNAME`, reachable over
 Tailscale SSH as `CUBXL_PI_USERNAME` the same way the stream-cam Pis are. It is the access
