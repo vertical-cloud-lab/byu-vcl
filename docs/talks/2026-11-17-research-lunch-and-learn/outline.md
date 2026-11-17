@@ -6,6 +6,9 @@ template component by component; the [method notes](doumont-method.md) cite his 
 The talk is modelled on Doumont's own six-minute talk, whose opening and closing he
 annotated for teaching.
 
+The [follow-ups](follow-ups.md) fill most of the bracketed gaps below: the CAD renders, the
+meeting count, real prompt pairs and pings, and what the literature says.
+
 Draft wording, in italics, is a starting point. Doumont says to learn only the first and last
 few sentences by heart, and otherwise to "memorize your outline but not your wording". Items in
 **[brackets]** are facts only you can fill in.
@@ -54,7 +57,9 @@ directly ("You are scientists…"). Three options, the first recommended:
   else. Say, eating lunch."* It's short, about the audience, and set in the room, and it lets
   the close come back to it.
 - **B. A quotation.** Taylor Sparks's LinkedIn post about spinning up one agent after
-  another as the new way of working. **[Find the post; quote it exactly, with its date.]** A
+  another as the new way of working. **[Find the post; quote it exactly, with its date.** A web
+  search didn't find it, since LinkedIn posts aren't indexed; see the
+  [follow-ups](follow-ups.md#taylor-sparkss-post).**]** A
   professor at the U is someone this audience may well know, which is what an attention getter
   needs: a link to something familiar. If you use A, B fits in the need instead.
 - **C. A picture.** A ping from the atomizer workflow on a phone screen (see point 3). It's
@@ -91,8 +96,11 @@ Transition: *"So: how much of our work can agents take on?"*
   administrative work, literature search and review, writing, coding, experiment planning,
   experiment execution. That's seven boxes in a row, from desk to lab. Say the message, then
   let the picture carry the list; don't read it out.
-- **One example, shown rather than told:** a part from your generative-CAD work. **[Pick one
-  image.]**
+- **One example, shown rather than told:** your generative CAD. Agents produced **111 distinct
+  designs** for the lab since April. That's 97 parts and systems the lab built or proposed, 36 of
+  them for the powder doser, plus 14 models of equipment it already has. Show the
+  [grid of 95 turning at once](cad/grid.gif) and say *"95 designs in seven months"*. Or show one
+  exploded doser assembly ([options](cad/README.md#for-the-slide)).
 - **Many agents at once:** spinning up one agent after another, as in Taylor's post, if you
   didn't use it in the opening.
 - Transition, creating the need for point 2: *"But for every task that worked, I've had one
@@ -102,8 +110,12 @@ Transition: *"So: how much of our work can agents take on?"*
 
 - **A good and a not-so-good prompt, side by side.** The not-so-good one is a single line with
   no files and no definition of done. The good one gives the goal, the sources to use, the
-  constraints, what "done" looks like, and how to check it. **[Use a real pair from your own
-  issues.]** One candidate for the good side is the dictated request behind this outline
+  constraints, what "done" looks like, and how to check it. Best real pair
+  ([Pair B](prompts-and-pings.md#pair-b-tools-give-it-a-checker-atomizer-charge-cup-design-dal-152)):
+  a long request for atomizer cup CAD came back verbose and with a stress check done wrong. The
+  16-word follow-up *"double check this with Edison, and also make sure that the sizes are
+  something standard"* caught four real errors. A good prompt names a tool and a check, and it
+  doesn't have to be long. One candidate for the good side is the dictated request behind this outline
   ([#350](https://github.com/vertical-cloud-lab/byu-vcl/issues/350)). It is garbled ("jealous
   Dumont"), yet it names the source of truth ("look up the actual PDF") and a tool ("use the
   Raspberry Pi"), and that was enough.
@@ -129,10 +141,16 @@ This is your strongest point; Doumont puts the strongest arguments first and las
   what the agent did and why.
 - **Show a ping from the atomizer workflow.** After the rePowder install call, an agent turned
   the transcript into follow-ups that pinged the right people, each linking back to the
-  transcript ([the queued posts](../../meetings/2026-09-17-repowder-install/posts/)). **[Pick
-  the ping to show; screenshot it.]**
-- **Human connection.** **[N]** meetings came directly from agent-assisted searches and
-  outreach, **[including at MRS]**. Agents do the searching, and people do the meeting.
+  transcript ([the queued posts](../../meetings/2026-09-17-repowder-install/posts/)). Recommended
+  ping: [DAL #153](https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/153), where the
+  transcript became an issue asking Gage to e-mail about an arc melter, and he replied "Email
+  sent." **[Screenshot it.]** Alternatives are in [`prompts-and-pings.md`](prompts-and-pings.md#2-atomizer-pings-working-in-the-open).
+- **Human connection.** About **seven** meetings with outside people came from agent-built contact
+  lists and agent-drafted e-mails: professors in Lisbon, Berkeley and Michigan, and BYU's research
+  VP. That's 4 confirmed and 3 likely, from about 27 people contacted
+  ([evidence](meetings.md)). Most came through Copilot's coding agent running Claude, so say
+  "agents". None trace back to MRS yet, since MRS is Nov 29 to Dec 4. Agents do the searching,
+  and people do the meeting.
 
 ## Closing (about 70 s)
 
@@ -143,9 +161,13 @@ And doing it in the open keeps them accountable and brings people together."*
 **Conclusion: what it means for them, made actionable.** This mirrors Doumont's TeX
 conclusion: it's free, so right after this talk you can go back to your office and install it.
 *"And you don't have to set this up alone. Scan this code and book 30 minutes with me or one
-of our TAs. We'll connect Codex to your GitHub through the **[CES]** subscription, and you'll
+of our TAs. We'll connect Codex to your GitHub through the CES ChatGPT Edu subscription, and you'll
 leave with your first agent working on one of your own tasks."* The QR code goes up here and
-stays up.
+stays up. **[Check first whether students get CES ChatGPT Edu licences: BYU-Idaho's page says they
+don't ([details](follow-ups.md#the-ces-subscription)).]** The teaching literature backs this
+format, a short introduction followed by guided practice on the person's own task. It also
+suggests adding a recurring drop-in and a check-in after about three months
+([Edison](follow-ups.md#teaching-researchers-to-use-ai--the-conclusion-and-the-qr-code)).
 
 **Close: link back to the attention getter.** *"So next time someone asks for a show of hands,
 keep yours up. Let an agent finish a whole task for you while you're at lunch."*
@@ -166,9 +188,9 @@ Seven slides is plenty for six minutes; "Do your slides right… or don't do sli
 | 1 | *Doing research with AI agents* | Title only, or blank during the show of hands |
 | 2 | AI went from finishing our lines of code to running agent teams | Timeline: line completion → chat → cloud agents → multi-agent, multi-tool |
 | 3 | *Doing research with AI agents* (structure slide, named after the talk, not "Outline") | Three short labels: the whole stack · context and tools · in the open. Show it again at each transition with the current point highlighted. |
-| 4 | Agents now reach across the whole research stack | Seven boxes from teaching to running experiments, plus one CAD image |
+| 4 | Agents now reach across the whole research stack | Seven boxes from teaching to running experiments, plus the [grid of 95 agent-made designs](cad/grid.gif) |
 | 5 | The same agent succeeds or fails on context and tools | Not-so-good and good prompt side by side |
-| 6 | Working in the open keeps agents accountable and connects people | The atomizer ping, plus "[N] meetings" as one large number |
+| 6 | Working in the open keeps agents accountable and connects people | The atomizer ping ([DAL #153](https://github.com/vertical-cloud-lab/digital-alloy-lab/issues/153)), plus "~7 meetings" as one large number |
 | 7 | Book 30 minutes and leave with your first agent running | A large QR code; no "Thank you" or "Questions?" slide |
 
 ## Rehearsal
