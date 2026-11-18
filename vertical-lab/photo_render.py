@@ -5,8 +5,9 @@ Run with a Python that has ``bpy`` (5.3 here; ``pip install bpy`` wants Python 3
 
     python photo_render.py [REC]        # every snap not yet rendered, in order
     PHOTO_SNAPS=0,120,400 ...           # only these snaps (also a:b, a:b:step)
-    PHOTO_ORDER=coarse ...              # every 8th snap first, then every 4th, 2nd, the rest: a partial run is a
-                                        # whole loop at a lower frame rate
+    PHOTO_STRIDES=4,2,1 ...             # (the default) every 4th snap first, then every 2nd, then the rest: a
+                                        # partial run is still the whole loop, at a lower frame rate
+    PHOTO_DEADLINE=<unix time> ...      # start no render after it
     PHOTO_SAMPLES=16 PHOTO_SIZE=1280x720 PHOTO_THREADS=0
 
 The scene, in Blender's units (m; the lab's mm x 0.001):
@@ -38,6 +39,9 @@ W, H = (int(v) for v in os.environ.get("PHOTO_SIZE", "1280x720").split("x"))
 THREADS = int(os.environ.get("PHOTO_THREADS", "0"))
 FEATURE_ANGLE = 35.0
 MM = 0.001
+STRIDES = [int(v) for v in os.environ.get("PHOTO_STRIDES", "4,2,1").split(",")]   # coarse to fine: a partial run
+                                                                                 # is still the whole loop
+FROM, UPTO = (int(v) for v in os.environ.get("PHOTO_RANGE", "0:1000000").split(":"))   # a second worker's share
 GHOST = float(os.environ.get("PHOTO_GHOST", "0.6"))     # a see-through part's opacity, against the VTK clip's
 OUTDIR = Path(os.environ.get("PHOTO_OUT", str(REC / "png")))
 
@@ -315,8 +319,9 @@ def wanted(s: int, pass_i: int) -> bool:
             elif int(part) == s:
                 return True
         return False
-    stride = int(os.environ.get("PHOTO_STRIDE", "2"))     # pass 0: every `stride`-th snap; pass 1: the rest
-    return (s % stride == 0) if pass_i == 0 else (s % stride != 0)
+    if not (FROM <= s < UPTO):
+        return False
+    return s % STRIDES[pass_i] == 0          # pass i: every STRIDES[i]-th snap (those drawn already are skipped)
 
 
 class Lab:
@@ -459,7 +464,7 @@ def main():
     deadline = float(os.environ.get("PHOTO_DEADLINE", "0"))      # unix time: stop starting new renders after it
     sel = os.environ.get("PHOTO_SNAPS")
     sel_max = max(int(v) for v in sel.replace(":", ",").split(",") if v) if sel else None
-    for pass_i in range(1 if sel else 2):
+    for pass_i in range(1 if sel else len(STRIDES)):
         target: dict[int, dict] = {}
         for s in stream():
             for k, d in s["ch"].items():

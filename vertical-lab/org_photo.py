@@ -9,16 +9,19 @@ Three passes, so the slow one can run on its own and be resumed:
    the camera; the leader labels. Nothing is rendered. -> REC/meshes/*.npz, REC/actors.json, REC/snaps.jsonl, and
    out/<ORG_NAME>.json (the phases the header band reads). A frame drawn once and held (a hold) is one snap.
 2. ``render`` (a venv with ``bpy``): photo_render.py rebuilds the scene in Blender and path-traces each snap with Cycles
-   -> REC/png/<snap>.png. ``PHOTO_SNAPS=a:b`` or ``PHOTO_ORDER=coarse`` (every 8th snap first, then the gaps) pick
-   which; frames already rendered are skipped, so it resumes.
+   -> REC/png/<snap>.png, every 4th snap across the loop first, then every 2nd, then the rest (``PHOTO_STRIDES``);
+   ``PHOTO_SNAPS`` picks snaps, ``PHOTO_RANGE`` a second worker's share. Snaps already rendered are skipped, so it
+   resumes.
 3. ``compose`` (the lab's venv): each snap's PNG under its leader labels, held for its frames -> out/mp4/<NAME>.mp4;
-   then ``org_gif.py gif`` and ``video`` make the GIF and the README MP4s as for the VTK clip. A snap not rendered yet
-   takes the nearest rendered one before it (``PHOTO_ALLOW_GAPS=1``), so a partial render still makes a whole loop.
+   then ``org_gif.py gif`` makes the GIF and the README MP4 as for the VTK clip. A snap not rendered yet is an
+   in-between made by optical flow from the rendered snaps on either side, within a camera shot (Filler), so a
+   partial render, every 4th or 2nd snap, still makes the whole loop at full frame rate.
 
     ORG_NAME=org_vertical_lab_photo VIZ3D_FPS=12 xvfb-run -a python3 org_photo.py record
-    /path/to/bpy-venv/bin/python photo_render.py [REC]              # Cycles, CPU; PHOTO_SAMPLES, PHOTO_SIZE
+    /path/to/bpy-venv/bin/python photo_render.py [REC]              # Cycles, CPU; PHOTO_SAMPLES, PHOTO_SIZE, ...
     ORG_NAME=org_vertical_lab_photo python3 org_photo.py compose
-    ORG_NAME=org_vertical_lab_photo python3 org_gif.py gif
+    ORG_NAME=org_vertical_lab_photo python3 org_gif.py gif 880 0 256
+    python3 org_photo.py sheet 0 160 ...                           # round 9 beside the path-traced frames
 """
 from __future__ import annotations
 
@@ -195,12 +198,100 @@ def record():
 
 
 # ============================================================================================ 3. compose
+CUT_MM = 400.0       # the camera moving more than this (position + focal point) between two snaps is a cut
+
+
+class Filler:
+    """Each snap's picture: its own PNG, or the PNG of the run of identical snaps it belongs to (photo_render.py
+    renders such a run once), or, for a snap not rendered yet, an in-between made by optical flow (OpenCV's DIS) from
+    the nearest rendered snaps before and after it with no camera cut between (PHOTO_FILL=flow, the default), or the
+    one before held (PHOTO_FILL=hold). A partial render, every 2nd or 4th snap, then still makes the whole loop at
+    full frame rate. On round 9's frames 40-152, in-betweens from every 4th snap against the snap rendered in the
+    middle: 24-37 dB PSNR, where holding the one before gave 15-36 (a camera move: 23.9 against 14.7)."""
+
+    def __init__(self, snaps, png_dir: Path):
+        from PIL import Image
+        self.Image = Image
+        self.png_dir = png_dir
+        self.mode = os.environ.get("PHOTO_FILL", "flow")
+        self.rep, self.reps, prev_key, rep = {}, [], None, None
+        for s in snaps:
+            key = (json.dumps(s["cam"]), s["va"])
+            if s["ch"] or key != prev_key or rep is None:
+                rep = s["s"]
+                self.reps.append(s)
+            prev_key = key
+            self.rep[s["s"]] = rep
+        self.seg, seg, last = {}, 0, None       # camera segments: a cut starts a new one
+        for s in self.reps:
+            if last is not None:
+                d = (np.linalg.norm(np.subtract(s["cam"][0], last["cam"][0])) +
+                     np.linalg.norm(np.subtract(s["cam"][1], last["cam"][1])))
+                if d > CUT_MM or abs(s["va"] - last["va"]) > 2.0:
+                    seg += 1
+            self.seg[s["s"]] = seg
+            last = s
+        self.t = {s["s"]: s["n0"] for s in self.reps}
+        self.have = [s["s"] for s in self.reps if self._load(s["s"]) is not None]
+        self.cache: dict = {}
+        self.flows: dict = {}
+        self.n_flow = self.n_hold = 0
+
+    def _load(self, r):
+        p = self.png_dir / f"{r:05d}.png"
+        if not p.exists():
+            return None
+        try:
+            return np.asarray(self.Image.open(p).convert("RGB"))
+        except OSError:
+            return None
+
+    def _flow(self, a, b):
+        import cv2
+        if not hasattr(self, "dis"):
+            self.dis = cv2.DISOpticalFlow_create(cv2.DISOPTICAL_FLOW_PRESET_MEDIUM)
+        return self.dis.calc(cv2.cvtColor(a, cv2.COLOR_RGB2GRAY), cv2.cvtColor(b, cv2.COLOR_RGB2GRAY), None)
+
+    def image(self, s_no):
+        import bisect
+        r = self.rep[s_no]
+        if r in self.cache:
+            return self.cache[r]
+        im = self._load(r)
+        if im is None:
+            k = bisect.bisect_left(self.have, r)
+            A = self.have[k - 1] if k > 0 and self.seg[self.have[k - 1]] == self.seg[r] else None
+            B = self.have[k] if k < len(self.have) and self.seg[self.have[k]] == self.seg[r] else None
+            if A is not None and B is not None and self.mode == "flow":
+                import cv2
+                a, b = self.image(A), self.image(B)
+                if (A, B) not in self.flows:
+                    self.flows = {(A, B): (self._flow(a, b), self._flow(b, a))}      # one pair at a time
+                fab, fba = self.flows[(A, B)]
+                t = (self.t[r] - self.t[A]) / max(1, self.t[B] - self.t[A])
+                h, w = a.shape[:2]
+                gx, gy = np.meshgrid(np.arange(w, dtype=np.float32), np.arange(h, dtype=np.float32))
+                wa = cv2.remap(a, gx - t * fab[..., 0], gy - t * fab[..., 1], cv2.INTER_LINEAR,
+                               borderMode=cv2.BORDER_REPLICATE)
+                wb = cv2.remap(b, gx - (1 - t) * fba[..., 0], gy - (1 - t) * fba[..., 1], cv2.INTER_LINEAR,
+                               borderMode=cv2.BORDER_REPLICATE)
+                im = ((1 - t) * wa.astype(np.float32) + t * wb.astype(np.float32)).clip(0, 255).astype(np.uint8)
+                self.n_flow += 1
+            else:
+                near = A if A is not None else B
+                if near is None:
+                    near = self.have[max(0, k - 1)]
+                im = self.image(near)
+                self.n_hold += 1
+        if len(self.cache) > 64:
+            self.cache.pop(next(iter(self.cache)))
+        self.cache[r] = im
+        return im
+
+
 def compose():
-    """REC/png/<snap>.png under the leader labels, each held for its snap's frames -> out/mp4/<NAME>.mp4 at the PNGs'
-    size, and out/<NAME>.json's size set to match. A snap identical to the one before (nothing changed, the camera
-    the same) shares that one's PNG (photo_render.py renders it once). A snap with no PNG yet holds the last one drawn
-    (PHOTO_ALLOW_GAPS=1): a run stopped part way, every 2nd snap drawn, is then the whole loop at half the frame rate
-    where it stopped."""
+    """Each snap's picture (Filler) under its leader labels, held for the snap's frames -> out/mp4/<NAME>.mp4 at the
+    PNGs' size, and out/<NAME>.json's size set to match (gif() and video() read both)."""
     from types import SimpleNamespace
 
     from PIL import Image
@@ -210,47 +301,31 @@ def compose():
     snaps = [json.loads(line) for line in open(REC / "snaps.jsonl")]
     meta_path = SC.OUT / f"{OG.NAME}.json"
     meta = json.loads(meta_path.read_text())
-    gaps = bool(os.environ.get("PHOTO_ALLOW_GAPS"))
-    first = Image.open(REC / "png" / "00000.png")
-    size = first.size
+    fill = Filler(snaps, REC / "png")
+    size = Image.open(REC / "png" / f"{fill.have[0]:05d}.png").size
     k = size[0] / meta["size"][0]          # the labels: drawn at the PNG's size as they were at the scene's
     path = SC.OUT / "mp4" / f"{OG.NAME}.mp4"
     enc = SC.encoder(path, size, crf=int(os.environ.get("PHOTO_CRF", "18")))
-    last, prev_key, rep = None, None, None
-    drawn, shared, held, frames_held = 0, 0, 0, 0
     for s in snaps:
-        key = (json.dumps(s["cam"]), s["va"])
-        if s["ch"] or key != prev_key or rep is None:
-            rep = s["s"]
-        prev_key = key
-        p = REC / "png" / f"{rep:05d}.png"
-        if p.exists():
-            if rep == s["s"]:
-                drawn += 1
-            else:
-                shared += 1
-            last = Image.open(p).convert("RGB")
-        else:
-            if not gaps or last is None:
-                raise SystemExit(f"snap {s['s']} isn't rendered (PHOTO_ALLOW_GAPS=1 holds the one before)")
-            held += 1
-            frames_held += s["n"]
+        base = Image.fromarray(fill.image(s["s"]))
+        if base.size != size:
+            base = base.resize(size, Image.LANCZOS)
         ov = s["ov"]
         fake = SimpleNamespace(title=ov["title"], label=ov["label"], caption=ov["caption"],
                                gauges=[tuple(g) for g in ov["gauges"]],
                                labels=[(t, tuple(xyz), tuple(f), a) for t, xyz, f, a in ov["labels"]])
-        hi = SC.Scene.overlay(fake, last.copy(), ov["scale"] * k, [tuple(a) for a in ov["anchors"]])
+        hi = SC.Scene.overlay(fake, base, ov["scale"] * k, [tuple(a) for a in ov["anchors"]])
         buf = np.asarray(hi.convert("RGB")).tobytes()
         for _ in range(s["n"]):
             enc.stdin.write(buf)
     enc.stdin.close()
     enc.wait()
     n = sum(s["n"] for s in snaps)
-    meta.update(size=list(size), photo=dict(snaps=len(snaps), drawn=drawn, shared=shared, held=held,
-                                            frames=n, frames_held=frames_held))
+    st = dict(snaps=len(snaps), distinct=len(fill.reps), rendered=len(fill.have), in_between=fill.n_flow,
+              held=fill.n_hold, cuts=max(fill.seg.values()), frames=n)
+    meta.update(size=list(size), photo=st)
     meta_path.write_text(json.dumps(meta, indent=1, ensure_ascii=False) + "\n")
-    print(f"{path.name}: {n} frames, {len(snaps)} snaps: {drawn} path-traced, {shared} the same as the one before, "
-          f"{held} not rendered and held from the one before ({frames_held} frames)", flush=True)
+    print(f"{path.name}: {n} frames; {st}", flush=True)
 
 
 def sheet(*snaps_, out="org_vertical_lab_photo_vs_r9.jpg"):

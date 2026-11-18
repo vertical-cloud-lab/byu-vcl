@@ -1981,6 +1981,7 @@ def gif(width=GIF_W, lossy=0, colors=112, sticky=int(os.environ.get("ORG_STICKY"
     from PIL import Image
 
     from scene import OUT
+    width, lossy, colors, sticky = int(width), int(lossy), int(colors), int(sticky)    # from the command line too
     out = OUT / f"{NAME}.gif"
     fps, frames = headed(width, sticky)
     with tempfile.TemporaryDirectory() as tmp:
