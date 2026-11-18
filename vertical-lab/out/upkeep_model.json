@@ -147,7 +147,7 @@
    "person": 0.0,
    "kind": "pm",
    "spares": "",
-   "source": "Eaton 5PX manual 614-07977-00: automatic battery test 'Every week' by default; 3-5 years float life at 25 \u00b0C (Eaton, search snippet); 9PX Li-ion (LFP) 8-10 years (eps-dc)",
+   "source": "round 12's units (ups.py, notes/ups.md): Vertiv Liebert PSI5-800SRT2ULIN, GXT5LI-1500LVRT2UXL and GXT5LI-3000LVRT2UXL, LiFePO4; Vertiv: 'up to 10 years' battery life, '5-year standard warranty on UPS and batteries' (PSI5 Lithium-Ion data sheets SL-70581, SL-70889); the weekly self-test interval is Eaton's default, not checked for the Vertiv units",
    "at": "night",
    "route": true
   },
@@ -3154,55 +3154,55 @@
     "plate_mates": 1562,
     "plate_years_to_100k": 64.0,
     "ups_transfers": 1562,
-    "ups_dod_per_transfer_pct": 0.22,
-    "ups_equiv_full_cycles": 3.5
+    "ups_dod_per_transfer_pct": 0.36,
+    "ups_equiv_full_cycles": 5.7
    },
    "B": {
     "presentations": 2160,
     "plate_mates": 4320,
     "plate_years_to_100k": 23.1,
     "ups_transfers": 4320,
-    "ups_dod_per_transfer_pct": 0.03,
-    "ups_equiv_full_cycles": 1.5
+    "ups_dod_per_transfer_pct": 0.08,
+    "ups_equiv_full_cycles": 3.6
    },
    "C": {
     "presentations": 17,
     "plate_mates": 34,
     "plate_years_to_100k": 2941.2,
     "ups_transfers": 34,
-    "ups_dod_per_transfer_pct": 0.94,
-    "ups_equiv_full_cycles": 0.3
+    "ups_dod_per_transfer_pct": 0.03,
+    "ups_equiv_full_cycles": 0.0
    },
    "D": {
     "presentations": 2273,
     "plate_mates": 4546,
     "plate_years_to_100k": 22.0,
     "ups_transfers": 4546,
-    "ups_dod_per_transfer_pct": 0.91,
-    "ups_equiv_full_cycles": 41.6
+    "ups_dod_per_transfer_pct": 0.44,
+    "ups_equiv_full_cycles": 20.2
    },
    "E": {
     "presentations": 2237,
     "plate_mates": 4474,
     "plate_years_to_100k": 22.4,
     "ups_transfers": 4474,
-    "ups_dod_per_transfer_pct": 0.48,
-    "ups_equiv_full_cycles": 21.4
+    "ups_dod_per_transfer_pct": 0.53,
+    "ups_equiv_full_cycles": 23.9
    },
    "F": {
     "presentations": 1932,
     "plate_mates": 3864,
     "plate_years_to_100k": 25.9,
     "ups_transfers": 3864,
-    "ups_dod_per_transfer_pct": 0.68,
-    "ups_equiv_full_cycles": 26.3
+    "ups_dod_per_transfer_pct": 0.03,
+    "ups_equiv_full_cycles": 1.1
    },
    "G": {
     "presentations": 17,
     "plate_mates": 34,
     "plate_years_to_100k": 2941.2,
     "ups_transfers": 34,
-    "ups_dod_per_transfer_pct": 0.05,
+    "ups_dod_per_transfer_pct": 0.03,
     "ups_equiv_full_cycles": 0.0
    },
    "H": {
@@ -3210,7 +3210,7 @@
     "plate_mates": 36,
     "plate_years_to_100k": 2777.8,
     "ups_transfers": 36,
-    "ups_dod_per_transfer_pct": 0.05,
+    "ups_dod_per_transfer_pct": 0.1,
     "ups_equiv_full_cycles": 0.0
    },
    "I": {
@@ -3218,7 +3218,7 @@
     "plate_mates": 34,
     "plate_years_to_100k": 2941.2,
     "ups_transfers": 34,
-    "ups_dod_per_transfer_pct": 0.05,
+    "ups_dod_per_transfer_pct": 0.03,
     "ups_equiv_full_cycles": 0.0
    },
    "J": {
@@ -3231,24 +3231,24 @@
     "plate_mates": 1298,
     "plate_years_to_100k": 77.0,
     "ups_transfers": 1298,
-    "ups_dod_per_transfer_pct": 0.05,
-    "ups_equiv_full_cycles": 0.6
+    "ups_dod_per_transfer_pct": 0.35,
+    "ups_equiv_full_cycles": 4.6
    },
    "L": {
     "presentations": 2073,
     "plate_mates": 4146,
     "plate_years_to_100k": 24.1,
     "ups_transfers": 4146,
-    "ups_dod_per_transfer_pct": 0.05,
-    "ups_equiv_full_cycles": 1.9
+    "ups_dod_per_transfer_pct": 0.29,
+    "ups_equiv_full_cycles": 12.0
    },
    "M": {
     "presentations": 2081,
     "plate_mates": 4162,
     "plate_years_to_100k": 24.0,
     "ups_transfers": 4162,
-    "ups_dod_per_transfer_pct": 0.05,
-    "ups_equiv_full_cycles": 1.9
+    "ups_dod_per_transfer_pct": 0.28,
+    "ups_equiv_full_cycles": 11.7
    },
    "N": {
     "presentations": 52,
@@ -3277,7 +3277,7 @@
    }
   },
   "couplings_note": "St\u00e4ubli rates the CombiTac's power, data and fluid inserts and the align frame at 100,000 mating cycles (CombiTac overview, CT-Overview-11014010). A tray's plate mates twice per presentation, its Shuttle's bay dock once per presentation of any of its trays.",
-  "ups_note": "each transfer is about 6 s on the battery; estimate from a 230 V 5PX 1500's 44 min at 300 W (a retailer's figure, notes/services.md). VRLA is rated 200 cycles at 100 % depth of discharge, 1,200 at 30 % (Yuasa NP12-12): these transfers add only a few equivalent full cycles a year, so float life and heat set the battery's life (3-5 years at 25 \u00b0C, Eaton), not the transfers.",
+  "ups_note": "each transfer is about 6 s on the battery; each tray's own unit: the most energy its maker's runtime table shows it delivering (ups.delivered_wh, out/ups.json). Round 12's units are LiFePO4 (Vertiv: 'up to 10x more discharge cycles' than VRLA, which is rated 200 cycles at 100 % depth of discharge and 1,200 at 30 %, Yuasa NP12-12): these transfers add at most a couple of dozen equivalent full cycles a year, so age and heat set the battery's life (up to 10 years, Vertiv), not the transfers.",
   "units": {
    "unit0": {
     "transfers": 7113,
@@ -3491,14 +3491,14 @@
  },
  "beyond_the_first_year": [
   {
-   "what": "UPS batteries (12, VRLA)",
-   "interval": "3-5 years at 25 \u00b0C, about half that per 10 \u00b0C warmer",
-   "who": "a person, the tray pulled out; Eaton's battery kit is hot-swappable",
-   "source": "Eaton 5PX manual 614-07977-00: automatic battery test 'Every week' by default; 3-5 years float life at 25 \u00b0C (Eaton, search snippet); 9PX Li-ion (LFP) 8-10 years (eps-dc)"
+   "what": "UPS batteries (12, LiFePO4: six PSI5-800, five GXT5LI-1500, one GXT5LI-3000)",
+   "interval": "up to 10 years (Vertiv; 5-year warranty on the unit and battery)",
+   "who": "a person, the tray pulled out onto the extraction table: each unit's front, where its battery comes out, faces into its tray",
+   "source": "round 12's units (ups.py, notes/ups.md): Vertiv Liebert PSI5-800SRT2ULIN, GXT5LI-1500LVRT2UXL and GXT5LI-3000LVRT2UXL, LiFePO4; Vertiv: 'up to 10 years' battery life, '5-year standard warranty on UPS and batteries' (PSI5 Lithium-Ion data sheets SL-70581, SL-70889); the weekly self-test interval is Eaton's default, not checked for the Vertiv units"
   },
   {
-   "what": "UPS batteries, if lithium (9PX Li-ion, LFP)",
-   "interval": "8-10 years",
+   "what": "UPS batteries, if lead-acid instead",
+   "interval": "3-5 years at 25 \u00b0C, about half that per 10 \u00b0C warmer",
    "who": "as above",
    "source": "Eaton 5PX manual 614-07977-00: automatic battery test 'Every week' by default; 3-5 years float life at 25 \u00b0C (Eaton, search snippet); 9PX Li-ion (LFP) 8-10 years (eps-dc)"
   },

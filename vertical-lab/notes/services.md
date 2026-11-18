@@ -122,31 +122,31 @@ Alternatives with similar figures, if Stäubli can't supply: ODU-MAC's P4+ docki
 
 ### The UPS on each tray
 
-Eaton's 5PX1500RTNG2 (120 V, 1500 VA), a 2U rack/tower unit 86 x 437 x 447 mm, stands on its side at the back right
-of every tray with instruments, in front of the power strip (round 11: the storage trays J, N and O have none, nor a
-dock plate or cameras; see "Round 11" under the stream cameras). A 230 V 5PX 1500 runs 44 min at 300 W (a retailer's figure), against a
-transit of seconds.
+**Round 12 (PR #318, 2026-11-18): each powered tray now has a real UPS of its own size; [`ups.md`](ups.md) has the
+whole of it.** In short:
+- **Two branches per tray.** Each tray's machines are split, plug by plug, between a backed branch (through the UPS)
+  and an unbacked one (straight from the dock: heaters, presses, vacuum pumps, printers).
+- **The rule.** Each tray gets the smallest real unit that carries its backed branch at rating and runs 10 min at its
+  typical draw.
+- **Three Vertiv Liebert lithium units:**
 
-PR #318: "I'm seeing it now shows electrical hookups, but I didn't see anywhere that showed UPS-s." It was there, but
-on tray A the OT-2 stands right in front of it. Now every UPS has "UPS" in white on its top and on the side facing the
-front of the tray, and a status strip: green while it charges from the dock's mains, amber on battery. The tray's
-mains line goes into its back. The hookups clip labels every tray's UPS, then draws tray A's instruments faint in
-its close-ups. Its size and place (`UPS`, `UPS_AT` in `services.py`) are unchanged.
+| Unit | Trays | Backed branch, rated / typical |
+|---|---|---|
+| PSI5-800SRT2ULIN, 800 VA, line-interactive | B, C, F, G, H, I | 114-514 W / 16-56 W |
+| GXT5LI-1500LVRT2UXL, 1500 VA, online | A, E, K, L, M | 641-1004 W / 171-325 W |
+| GXT5LI-3000LVRT2UXL, 3000 VA, online | D | 2541 W / 540 W |
 
-**It carries five of the six trays.** Each tray's load, from the makers' ratings where they publish them:
+Each stands on its side at the tray's back right, its back where round 4's box had its back (x = 1060 mm, so the
+tray's mains line still ends there), in a bolted cradle. Its front's two status LEDs go green on mains and amber on
+battery (`set_ups`), and its side carries an asset label.
 
-| Tray | Slot | Load, W | What dominates | Share that is our estimate |
-|---|---|---|---|---|
-| A | R2 | 297 | OT-2, 100-180 W active (Opentrons) | 37 % (the CubXL's 100 W) |
-| B | R3 | 45 | the doser, 40 W (ours) | 91 % |
-| C | F1 | 1244 | H2D, 1050 W average, 1320 W max at 110 V (Bambu, snippet) | 3 % |
-| D | R1 | 1207 | SEM 500 VA (TM4000PlusIII; the II's figure wasn't found), XRD's 600 W tube | 8 % (the OpenFlexure array's 60 W) |
-| E | R4 | 630 | three instruments with no published rating, 200 W each (ours) | 66 % |
-| F | F2 | 3654 | Nabertherm NAT 15/65, 2.8 kW (Nabertherm) | 23 % (the polisher's 740 W) |
+Until round 11 every tray carried the same box: Eaton's 5PX1500RTNG2 (1500 VA, 86 x 437 x 447 mm) as a grey slab with
+"UPS" in white, and everything on the tray drew through it. Its load table counted trays A-F only and put tray F at
+3654 W through a 1440 W unit.
 
-Tray F is over the UPS. Its furnace's heaters have to pause in transit, and its thermal mass carries the few seconds.
 At 120 V the furnace alone would draw 23 A, so each dock carries L1, L2, N and PE on a 30 A breaker. That gives 208 V
-and 120 V, 5 kVA continuous at 80 %, inside the contacts' 39 A.
+and 120 V, 5 kVA continuous at 80 %, inside the contacts' 39 A. Tray F's unbacked branch comes to 5.0 kW at its
+nameplates, so its furnace and MX400 take turns.
 
 ### Utilities, and the heat
 
@@ -159,16 +159,26 @@ and 120 V, 5 kVA continuous at 80 %, inside the contacts' 39 A.
 - **Heat into the VLM.** Every watt a stored, powered tray uses ends up inside the cladding. The enclosure is
   2.83 x 3.12 x 3.95 m, with 56 m² of walls and roof.
 
+  Round 12 (the real UPSs, [`ups.md`](ups.md)): every powered tray's loads from `ups.TRAY_LOADS`, each UPS's own loss
+  from ENERGY STAR's efficiency at its tray's typical draw, and Shuttle 2 against its own enclosure.
+
   | Case | Heat, W | Rise with no ventilation (estimate) | Air for a 5 K rise | Air for a 10 K rise |
   |---|---|---|---|---|
-  | Everything on at its rating | 7077 | 23 K | 4225 m³/h | 2113 m³/h |
-  | Tray C printing in storage, the furnace holding at a third of 2.8 kW | 2277 | 7 K | 1360 m³/h | 680 m³/h |
-  | Idle: controllers, cameras and UPSs, about 60 W a tray (ours) | 360 | 1 K | 215 m³/h | 107 m³/h |
+  | Shuttle 1 (A-F), everything on at its nameplate | 13665 | 44 K | 8158 m³/h | 4079 m³/h |
+  | Shuttle 1, tray C printing in storage, the furnace holding at a third of 2.8 kW | 3720 | 12 K | 2221 m³/h | 1110 m³/h |
+  | Shuttle 1, idle: every backed branch at its typical draw, heaters off, plus the UPSs | 1317 | 4.3 K | 786 m³/h | 393 m³/h |
+  | Shuttle 2 (K, L, M, H, G, I), everything on at its nameplate | 11767 | 38 K | 7025 m³/h | 3513 m³/h |
+  | Shuttle 2, two Form 4s and the Carvera working in storage | 2161 | 7.0 K | 1290 m³/h | 645 m³/h |
+  | Shuttle 2, idle, as above | 771 | 2.5 K | 460 m³/h | 230 m³/h |
+
+  "Everything on" sums the nameplates (the MiniFlex's 1.1 kVA, every supply's rating), so it is an upper bound no
+  schedule reaches. Round 4's table had 7077, 2277 and 360 W (60 W a tray, ours) for Shuttle 1's six trays.
 
   The rise uses 5.5 W/m²K for painted sheet steel in still air, the usual figure for sizing electrical enclosures.
   It is an estimate for a machine this size. The airflow is W / (ρ c_p ΔT) for air.
-- **So a VLM holding a printer at work and a furnace needs forced ventilation,** about 700-1400 m³/h. A furnace at
-  650 °C inside a sheet-metal store also needs Kardex's say-so.
+- **So a VLM holding a printer at work and a furnace needs forced ventilation,** about 1100-2200 m³/h. Even idle, the
+  backed branches and the UPSs put about 1.3 kW into Shuttle 1. A furnace at 650 °C inside a sheet-metal store also
+  needs Kardex's say-so.
 - **What to ask Kardex:**
   - the heat a tray may give off in a slot, and in total;
   - the interior temperature the drives and controls are rated for;

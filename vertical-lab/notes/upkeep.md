@@ -201,7 +201,8 @@ The person's hours by kind, weekly mean after the ramp (weeks 9-52):
    - Shuttle 1's bay dock mates 9,400 times a year. At Stäubli's 100,000 rated cycles that is 10.6 years. The stores
      J, N and O are passive (no plate, no UPS, no cameras, since b3a4d42), so they don't count.
    - The busiest tray plates (B, D, E, L, M) last 22-24 years.
-   - The UPS batteries' float life (3-5 years) comes due before either.
+   - The UPS batteries come due before either. Round 12's units are lithium (LiFePO4, [`ups.md`](ups.md)): up to
+     10 years by Vertiv's figure, against 3-5 for the lead-acid box they replaced.
 6. **Unit 1 does 70 % of the transfers,** because the greedy schedule takes the first free unit. It would wear out its
    battery's 3,000 cycles in 2.5 years against unit 2's 4.9. Alternate the units, as a real fleet manager would.
 7. **Stream video.** Kept whole it is 102 TB a year from 26 cameras (round 11: the passive stores have none) against
@@ -216,7 +217,7 @@ Not booked in the year, but counted in `out/upkeep_model.json` (`beyond_the_firs
 
 | Item | Interval |
 |---|---|
-| UPS batteries (12, the powered trays) | 3-5 years at 25 °C, or 8-10 if lithium |
+| UPS batteries (12, the powered trays; LiFePO4 since round 12, [`ups.md`](ups.md)) | up to 10 years (Vertiv); 3-5 years at 25 °C had they been lead-acid |
 | MiR250 batteries | at least 3,000 cycles |
 | 2F-85 overhaul | 2 million cycles |
 | N₂ generator catalyst | about 3 years |

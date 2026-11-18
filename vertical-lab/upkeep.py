@@ -147,6 +147,10 @@ SRC = {
                 "CT-align docking frame 100,000 (search snippet)",
     "eaton": "Eaton 5PX manual 614-07977-00: automatic battery test 'Every week' by default; 3-5 years float life at "
              "25 °C (Eaton, search snippet); 9PX Li-ion (LFP) 8-10 years (eps-dc)",
+    "vertiv": "round 12's units (ups.py, notes/ups.md): Vertiv Liebert PSI5-800SRT2ULIN, GXT5LI-1500LVRT2UXL and "
+              "GXT5LI-3000LVRT2UXL, LiFePO4; Vertiv: 'up to 10 years' battery life, '5-year standard warranty on UPS "
+              "and batteries' (PSI5 Lithium-Ion data sheets SL-70581, SL-70889); the weekly self-test interval is "
+              "Eaton's default, not checked for the Vertiv units",
     "picam": "ac-training-lab picam docs: systemd Restart=always, RestartSec=10; cron reboot at 05, 13 and 21 h",
     "mir": "MiR250 user guide, periodic tasks (mirsupport): weekly scanners and lights, monthly wheels and charging "
            "pads, quarterly stop tests, half-yearly battery connector and braking test, yearly casters and drive "
@@ -212,7 +216,7 @@ TASKS = [
     T("dock_inspect", "tray:*", "CombiTac plate and bay dock: contacts wiped, pins, O-rings and coupling faces checked",
       ("mates", 10000), "opening", 0.5, spares="O-rings, contact cleaner",
       source="assumed: every 10,000 mating cycles, a tenth of the rating (" + SRC["combitac"] + ")"),
-    T("ups_test", "tray:*", "UPS battery self-test (the load stays on)", ("days", 7), "auto", 0.0, source=SRC["eaton"]),
+    T("ups_test", "tray:*", "UPS battery self-test (the load stays on)", ("days", 7), "auto", 0.0, source=SRC["vertiv"]),
     T("cams_wipe", "tray:*", "stream cameras' lenses wiped, focus and aim checked", ("days", 91), "opening", 0.25,
       source="assumed; the cameras restart themselves (" + SRC["picam"] + ")"),
     # ---- the units (each MiR250 + UR10e + 2F-85 + D405)
@@ -437,9 +441,11 @@ TASKS = [
 
 # Beyond the first year: not booked by the model, counted in notes/upkeep.md's multi-year table.
 LONG = [
-    (f"UPS batteries ({len(POWERED)}, VRLA)", "3-5 years at 25 °C, about half that per 10 °C warmer", "a person, the tray pulled "
-     "out; Eaton's battery kit is hot-swappable", SRC["eaton"]),
-    ("UPS batteries, if lithium (9PX Li-ion, LFP)", "8-10 years", "as above", SRC["eaton"]),
+    (f"UPS batteries ({len(POWERED)}, LiFePO4: six PSI5-800, five GXT5LI-1500, one GXT5LI-3000)", "up to 10 years "
+     "(Vertiv; 5-year warranty on the unit and battery)", "a person, the tray pulled out onto the extraction table: "
+     "each unit's front, where its battery comes out, faces into its tray", SRC["vertiv"]),
+    ("UPS batteries, if lead-acid instead", "3-5 years at 25 °C, about half that per 10 °C warmer", "as above",
+     SRC["eaton"]),
     ("MiR250 batteries", "at least 3,000 cycles", "a person", "MiR250 Li-NMC 47.7 V 34.2 Ah (reseller sheet)"),
     ("2F-85 overhaul", "2 million cycles", "Robotiq's factory, 5 business days plus shipping (a loan unit)",
      SRC["robotiq"]),
@@ -1129,9 +1135,10 @@ def realism(sim: dict, years: float = 1.0) -> dict:
                        "mating cycles (CombiTac overview, CT-Overview-11014010). A tray's plate mates twice per "
                        "presentation, its Shuttle's bay dock once per presentation of any of its trays.",
         ups_note=f"each transfer is about {PARAMS['transit_s']['value']:.0f} s on the battery; {UPS_WH['source']}. "
-                 "VRLA is rated 200 cycles at 100 % depth of discharge, 1,200 at 30 % (Yuasa NP12-12): these "
-                 "transfers add only a few equivalent full cycles a year, so float life and heat set the battery's "
-                 "life (3-5 years at 25 °C, Eaton), not the transfers.",
+                 "Round 12's units are LiFePO4 (Vertiv: 'up to 10x more discharge cycles' than VRLA, which is rated "
+                 "200 cycles at 100 % depth of discharge and 1,200 at 30 %, Yuasa NP12-12): these transfers add at "
+                 "most a couple of dozen equivalent full cycles a year, so age and heat set the battery's life (up to "
+                 "10 years, Vertiv), not the transfers.",
         units=units, units_note=f"{UNIT_W['source']}; {MIR_KWH['source']}; Robotiq: fingertips at 1 million cycles, "
                                 "overhaul at 2 million (2F-85 manual)",
         station_hours={k: round(v, 1) for k, v in sorted(hrs.items(), key=lambda kv: -kv[1])},
