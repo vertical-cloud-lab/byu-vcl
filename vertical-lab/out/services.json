@@ -1,48 +1,48 @@
 {
  "coupling": {
-  "design": "one plate per tray at its back right corner, facing out through the right-hand side; an actuated dock in the side wall of each slot a tray uses and of the bay; stroke 60 mm across the tray's travel; the plate's face 6 mm inside the tray's side",
+  "design": "one plate per tray at its back right corner, facing out through the right-hand side; an actuated dock in the side wall of each slot a tray uses and of the bay; stroke 75 mm across the tray's travel; the plate's face 6 mm inside the tray's side",
   "plate_mm": {
-   "along_tray": 200.0,
-   "height": 90.0,
+   "along_tray": 180.0,
+   "height": 106.0,
    "centre_from_back": 152.0
   },
   "media": [
    {
     "key": "power",
     "what": "mains: L1, L2, N, PE",
-    "coupling": "4 x O3 mm power units, 39 A each"
+    "coupling": "CT-E3-3 and CT-E3-2+PE, O3 mm, 39 A; PE mates first"
    },
    {
     "key": "data",
     "what": "Ethernet, Cat 6A",
-    "coupling": "10 Gbit module, RJ45"
+    "coupling": "CT-10GBIT-RJ45, 10 Gbit/s"
    },
    {
     "key": "air",
     "what": "compressed air",
-    "coupling": "RCT06, 6 mm, shut-off"
+    "coupling": "SCT03, G1/8, shut-off both sides"
    },
    {
     "key": "n2",
     "what": "nitrogen",
-    "coupling": "SCT03, shut-off both sides"
+    "coupling": "SCT03, G1/8, shut-off both sides"
    },
    {
     "key": "cws",
     "what": "chilled water in",
-    "coupling": "LCT06, shut-off both sides"
+    "coupling": "LCT06, G1/4, shut-off both sides"
    },
    {
     "key": "cwr",
     "what": "chilled water out",
-    "coupling": "LCT06, shut-off both sides"
+    "coupling": "LCT06, G1/4, shut-off both sides"
    }
   ],
   "why_not_the_back_edge": "in a front-column slot and at the opening the back edge faces the shaft; a dock there would sit in the 106-146 mm between the tray and the extractor's platform, in the path of every tray it pulls, and at the opening the shutter is 35 mm behind the tray",
   "sequence": [
    "shut and vent air, N2 and water (CombiTac: no mating or parting under pressure)",
    "UPS takes the load",
-   "dock pulls back 60 mm",
+   "dock pulls back 75 mm",
    "extractor moves the tray",
    "bay dock pushes in, pins first",
    "contacts mate, supplies open, back on mains"
@@ -205,8 +205,8 @@
      "inside_rim": true
     },
     "D2": {
-     "gap_mm": 24,
-     "nearest": "service plate",
+     "gap_mm": 21,
+     "nearest": "UPS",
      "inside_rim": true
     },
     "E0": {
@@ -230,8 +230,8 @@
      "inside_rim": true
     },
     "F1": {
-     "gap_mm": 100,
-     "nearest": "furnace",
+     "gap_mm": 84,
+     "nearest": "UPS",
      "inside_rim": true
     }
    },
@@ -633,678 +633,678 @@
   "lift": {
    "empty": {
     "open engaged": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 830.0
+     "dock": "dock frame",
+     "lift_z": 820.0
     },
     "open pulled back": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 830.0
+     "dock": "dock frame",
+     "lift_z": 820.0
     },
     "F1 engaged": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 1930.0
+     "dock": "dock frame",
+     "lift_z": 1910.0
     },
     "F1 pulled back": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 1930.0
+     "dock": "dock frame",
+     "lift_z": 1910.0
     },
     "F2 engaged": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 2650.0
+     "dock": "dock frame",
+     "lift_z": 2640.0
     },
     "F2 pulled back": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 2650.0
+     "dock": "dock frame",
+     "lift_z": 2640.0
     },
     "R1 engaged": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 390.0
+     "dock": "supply power",
+     "lift_z": 140.0
     },
     "R1 pulled back": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 390.0
+     "dock": "supply power",
+     "lift_z": 140.0
     },
     "R2 engaged": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 1140.0
+     "dock": "supply power",
+     "lift_z": 890.0
     },
     "R2 pulled back": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 1140.0
+     "dock": "supply power",
+     "lift_z": 890.0
     },
     "R3 engaged": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 1890.0
+     "dock": "supply power",
+     "lift_z": 1640.0
     },
     "R3 pulled back": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 1890.0
+     "dock": "supply power",
+     "lift_z": 1640.0
     },
     "R4 engaged": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 2790.0
+     "dock": "supply power",
+     "lift_z": 2540.0
     },
     "R4 pulled back": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 2790.0
+     "dock": "supply power",
+     "lift_z": 2540.0
     }
    },
    "A": {
     "open engaged": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 830.0
+     "dock": "dock frame",
+     "lift_z": 820.0
     },
     "open pulled back": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 830.0
+     "dock": "dock frame",
+     "lift_z": 820.0
     },
     "F1 engaged": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 1930.0
+     "dock": "dock frame",
+     "lift_z": 1910.0
     },
     "F1 pulled back": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 1930.0
+     "dock": "dock frame",
+     "lift_z": 1910.0
     },
     "F2 engaged": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 2650.0
+     "dock": "dock frame",
+     "lift_z": 2640.0
     },
     "F2 pulled back": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 2650.0
+     "dock": "dock frame",
+     "lift_z": 2640.0
     },
     "R1 engaged": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 390.0
+     "dock": "supply power",
+     "lift_z": 140.0
     },
     "R1 pulled back": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 390.0
+     "dock": "supply power",
+     "lift_z": 140.0
     },
     "R2 engaged": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 1140.0
+     "dock": "supply power",
+     "lift_z": 890.0
     },
     "R2 pulled back": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 1140.0
+     "dock": "supply power",
+     "lift_z": 890.0
     },
     "R3 engaged": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 1890.0
+     "dock": "supply power",
+     "lift_z": 1640.0
     },
     "R3 pulled back": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 1890.0
+     "dock": "supply power",
+     "lift_z": 1640.0
     },
     "R4 engaged": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 2790.0
+     "dock": "supply power",
+     "lift_z": 2540.0
     },
     "R4 pulled back": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 2790.0
+     "dock": "supply power",
+     "lift_z": 2540.0
     }
    },
    "B": {
     "open engaged": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 830.0
+     "dock": "dock frame",
+     "lift_z": 820.0
     },
     "open pulled back": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 830.0
+     "dock": "dock frame",
+     "lift_z": 820.0
     },
     "F1 engaged": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 1930.0
+     "dock": "dock frame",
+     "lift_z": 1910.0
     },
     "F1 pulled back": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 1930.0
+     "dock": "dock frame",
+     "lift_z": 1910.0
     },
     "F2 engaged": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 2650.0
+     "dock": "dock frame",
+     "lift_z": 2640.0
     },
     "F2 pulled back": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 2650.0
+     "dock": "dock frame",
+     "lift_z": 2640.0
     },
     "R1 engaged": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 390.0
+     "dock": "supply power",
+     "lift_z": 140.0
     },
     "R1 pulled back": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 390.0
+     "dock": "supply power",
+     "lift_z": 140.0
     },
     "R2 engaged": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 1140.0
+     "dock": "supply power",
+     "lift_z": 890.0
     },
     "R2 pulled back": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 1140.0
+     "dock": "supply power",
+     "lift_z": 890.0
     },
     "R3 engaged": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 1890.0
+     "dock": "supply power",
+     "lift_z": 1640.0
     },
     "R3 pulled back": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 1890.0
+     "dock": "supply power",
+     "lift_z": 1640.0
     },
     "R4 engaged": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 2790.0
+     "dock": "supply power",
+     "lift_z": 2540.0
     },
     "R4 pulled back": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 2790.0
+     "dock": "supply power",
+     "lift_z": 2540.0
     }
    },
    "C": {
     "open engaged": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 830.0
+     "dock": "dock frame",
+     "lift_z": 820.0
     },
     "open pulled back": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 830.0
+     "dock": "dock frame",
+     "lift_z": 820.0
     },
     "F1 engaged": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 1930.0
+     "dock": "dock frame",
+     "lift_z": 1910.0
     },
     "F1 pulled back": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 1930.0
+     "dock": "dock frame",
+     "lift_z": 1910.0
     },
     "F2 engaged": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 2650.0
+     "dock": "dock frame",
+     "lift_z": 2640.0
     },
     "F2 pulled back": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 2650.0
+     "dock": "dock frame",
+     "lift_z": 2640.0
     },
     "R1 engaged": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 390.0
+     "dock": "supply power",
+     "lift_z": 140.0
     },
     "R1 pulled back": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 390.0
+     "dock": "supply power",
+     "lift_z": 140.0
     },
     "R2 engaged": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 1140.0
+     "dock": "supply power",
+     "lift_z": 890.0
     },
     "R2 pulled back": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 1140.0
+     "dock": "supply power",
+     "lift_z": 890.0
     },
     "R3 engaged": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 1890.0
+     "dock": "supply power",
+     "lift_z": 1640.0
     },
     "R3 pulled back": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 1890.0
+     "dock": "supply power",
+     "lift_z": 1640.0
     },
     "R4 engaged": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 2790.0
+     "dock": "supply power",
+     "lift_z": 2540.0
     },
     "R4 pulled back": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 2790.0
+     "dock": "supply power",
+     "lift_z": 2540.0
     }
    },
    "D": {
     "open engaged": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 830.0
+     "dock": "dock frame",
+     "lift_z": 820.0
     },
     "open pulled back": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 830.0
+     "dock": "dock frame",
+     "lift_z": 820.0
     },
     "F1 engaged": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 1930.0
+     "dock": "dock frame",
+     "lift_z": 1910.0
     },
     "F1 pulled back": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 1930.0
+     "dock": "dock frame",
+     "lift_z": 1910.0
     },
     "F2 engaged": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 2650.0
+     "dock": "dock frame",
+     "lift_z": 2640.0
     },
     "F2 pulled back": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 2650.0
+     "dock": "dock frame",
+     "lift_z": 2640.0
     },
     "R1 engaged": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 390.0
+     "dock": "supply power",
+     "lift_z": 140.0
     },
     "R1 pulled back": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 390.0
+     "dock": "supply power",
+     "lift_z": 140.0
     },
     "R2 engaged": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 1140.0
+     "dock": "supply power",
+     "lift_z": 890.0
     },
     "R2 pulled back": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 1140.0
+     "dock": "supply power",
+     "lift_z": 890.0
     },
     "R3 engaged": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 1890.0
+     "dock": "supply power",
+     "lift_z": 1640.0
     },
     "R3 pulled back": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 1890.0
+     "dock": "supply power",
+     "lift_z": 1640.0
     },
     "R4 engaged": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 2790.0
+     "dock": "supply power",
+     "lift_z": 2540.0
     },
     "R4 pulled back": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 2790.0
+     "dock": "supply power",
+     "lift_z": 2540.0
     }
    },
    "E": {
     "open engaged": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 830.0
+     "dock": "dock frame",
+     "lift_z": 820.0
     },
     "open pulled back": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 830.0
+     "dock": "dock frame",
+     "lift_z": 820.0
     },
     "F1 engaged": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 1930.0
+     "dock": "dock frame",
+     "lift_z": 1910.0
     },
     "F1 pulled back": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 1930.0
+     "dock": "dock frame",
+     "lift_z": 1910.0
     },
     "F2 engaged": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 2650.0
+     "dock": "dock frame",
+     "lift_z": 2640.0
     },
     "F2 pulled back": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 2650.0
+     "dock": "dock frame",
+     "lift_z": 2640.0
     },
     "R1 engaged": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 390.0
+     "dock": "supply power",
+     "lift_z": 140.0
     },
     "R1 pulled back": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 390.0
+     "dock": "supply power",
+     "lift_z": 140.0
     },
     "R2 engaged": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 1140.0
+     "dock": "supply power",
+     "lift_z": 890.0
     },
     "R2 pulled back": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 1140.0
+     "dock": "supply power",
+     "lift_z": 890.0
     },
     "R3 engaged": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 1890.0
+     "dock": "supply power",
+     "lift_z": 1640.0
     },
     "R3 pulled back": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 1890.0
+     "dock": "supply power",
+     "lift_z": 1640.0
     },
     "R4 engaged": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 2790.0
+     "dock": "supply power",
+     "lift_z": 2540.0
     },
     "R4 pulled back": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 2790.0
+     "dock": "supply power",
+     "lift_z": 2540.0
     }
    },
    "F": {
     "open engaged": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 830.0
+     "dock": "dock frame",
+     "lift_z": 820.0
     },
     "open pulled back": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 830.0
+     "dock": "dock frame",
+     "lift_z": 820.0
     },
     "F1 engaged": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 1930.0
+     "dock": "dock frame",
+     "lift_z": 1910.0
     },
     "F1 pulled back": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 1930.0
+     "dock": "dock frame",
+     "lift_z": 1910.0
     },
     "F2 engaged": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 2650.0
+     "dock": "dock frame",
+     "lift_z": 2640.0
     },
     "F2 pulled back": {
-     "gap_mm": 158.0,
+     "gap_mm": 96.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "dock head",
-     "lift_z": 2650.0
+     "dock": "dock frame",
+     "lift_z": 2640.0
     },
     "R1 engaged": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 390.0
+     "dock": "supply power",
+     "lift_z": 140.0
     },
     "R1 pulled back": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 390.0
+     "dock": "supply power",
+     "lift_z": 140.0
     },
     "R2 engaged": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 1140.0
+     "dock": "supply power",
+     "lift_z": 890.0
     },
     "R2 pulled back": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 1140.0
+     "dock": "supply power",
+     "lift_z": 890.0
     },
     "R3 engaged": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 1890.0
+     "dock": "supply power",
+     "lift_z": 1640.0
     },
     "R3 pulled back": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 1890.0
+     "dock": "supply power",
+     "lift_z": 1640.0
     },
     "R4 engaged": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 2790.0
+     "dock": "supply power",
+     "lift_z": 2540.0
     },
     "R4 pulled back": {
-     "gap_mm": 643.0,
+     "gap_mm": 683.0,
      "moving": "extractor: extractor carriages #2",
-     "dock": "hose power",
-     "lift_z": 2790.0
+     "dock": "supply power",
+     "lift_z": 2540.0
     }
    }
   },
   "slide": {
    "tray A out of R2": {
-    "gap_mm": 22.0,
+    "gap_mm": 18.6,
     "tray_part": "tray pan",
-    "dock_part": "guide pins #1"
+    "dock_part": "F end 0 pin cap"
    },
    "tray B out of R3": {
-    "gap_mm": 22.0,
+    "gap_mm": 18.6,
     "tray_part": "tray pan",
-    "dock_part": "guide pins #1"
+    "dock_part": "F end 0 pin cap"
    },
    "tray C out of F1": {
-    "gap_mm": 22.0,
+    "gap_mm": 18.6,
     "tray_part": "tray pan",
-    "dock_part": "guide pins #1"
+    "dock_part": "F end 0 pin cap"
    },
    "tray D out of R1": {
-    "gap_mm": 22.0,
+    "gap_mm": 18.6,
     "tray_part": "tray pan",
-    "dock_part": "guide pins #1"
+    "dock_part": "F end 0 pin cap"
    },
    "tray E out of R4": {
-    "gap_mm": 22.0,
+    "gap_mm": 18.6,
     "tray_part": "tray pan",
-    "dock_part": "guide pins #1"
+    "dock_part": "F end 0 pin cap"
    },
    "tray F out of F2": {
-    "gap_mm": 22.0,
+    "gap_mm": 18.6,
     "tray_part": "tray pan",
-    "dock_part": "guide pins #1"
+    "dock_part": "F end 0 pin cap"
    },
    "tray A into the bay": {
-    "gap_mm": 22.0,
+    "gap_mm": 18.6,
     "tray_part": "tray pan",
-    "dock_part": "guide pins #2"
+    "dock_part": "F end 1 pin cap"
    },
    "tray B into the bay": {
-    "gap_mm": 22.0,
+    "gap_mm": 18.6,
     "tray_part": "tray pan",
-    "dock_part": "guide pins #2"
+    "dock_part": "F end 1 pin cap"
    },
    "tray C into the bay": {
-    "gap_mm": 22.0,
+    "gap_mm": 18.6,
     "tray_part": "tray pan",
-    "dock_part": "guide pins #2"
+    "dock_part": "F end 1 pin cap"
    },
    "tray D into the bay": {
-    "gap_mm": 22.0,
+    "gap_mm": 18.6,
     "tray_part": "tray pan",
-    "dock_part": "guide pins #2"
+    "dock_part": "F end 1 pin cap"
    },
    "tray E into the bay": {
-    "gap_mm": 22.0,
+    "gap_mm": 18.6,
     "tray_part": "tray pan",
-    "dock_part": "guide pins #2"
+    "dock_part": "F end 1 pin cap"
    },
    "tray F into the bay": {
-    "gap_mm": 22.0,
+    "gap_mm": 18.6,
     "tray_part": "tray pan",
-    "dock_part": "guide pins #2"
+    "dock_part": "F end 1 pin cap"
    }
   },
   "plate_inserts_to_carriages_mm": {
-   "now": 9.5,
-   "with_the_face_flush": 3.5
+   "now": 11.0,
+   "with_the_face_flush": 5.0
   },
-  "bay_dock_to_shutter_mm": 81.0,
+  "bay_dock_to_shutter_mm": 20.6,
   "smallest": {
-   "lift_mm": 158.0,
+   "lift_mm": 96.0,
    "lift_case": "A, F1 engaged",
-   "slide_mm": 22.0,
+   "slide_mm": 18.6,
    "slide_case": "tray A into the bay"
   },
   "walls": "each dock's head passes through a window in its side wall (a column's perforated wall, or the bay's slatted one); the window takes out the tray supports 25-100 mm over the slot on that side, which only a tray stored in that slot would use"
@@ -1313,174 +1313,805 @@
   "trays": {
    "A": {
     "slot": "R2",
+    "shuttle": 1,
     "items": {
-     "cubxl": {
-      "w": 100.0,
-      "kind": "estimate",
-      "source": "the lab's gantry (Genmitsu PROVerXL 4030 frame, #199): no rating found; 100 W is ours"
-     },
      "ot2": {
-      "w": 180.0,
+      "w": 220,
+      "typical_w": 120,
+      "backed": true,
       "kind": "published",
-      "source": "Opentrons OT-2 specs: idle 90-120 W, active 100-180 W (docs.opentrons.com)"
+      "source": "https://docs.opentrons.com/ot-2/system-description/specs/; https://docs.opentrons.com/ot-2/installation/requirements/; https://sandbox.docs.opentrons.com/docs-ot2-install-relocate/ot-2/installation/first-run"
      },
-     "cameras": {
-      "w": 8.0,
+     "cubxl": {
+      "w": 100,
+      "typical_w": 30,
+      "backed": true,
+      "kind": "estimate",
+      "source": "https://manuals.plus/genmitsu/4030-v1-proverxl-spindle-set-manual; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/CLAUDE.md?plain=1#L233"
+     },
+     "ezstat": {
+      "w": 30,
+      "typical_w": 10,
+      "backed": true,
+      "kind": "estimate",
+      "source": "https://www.environmental-expert.com/products/potentiostat-galvanostat-1085908"
+     },
+     "ezware_pc": {
+      "w": 150,
+      "typical_w": 40,
+      "backed": true,
+      "kind": "estimate",
+      "source": "https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/CLAUDE.md?plain=1#L233"
+     },
+     "cubxl_pi": {
+      "w": 27,
+      "typical_w": 5,
+      "backed": true,
       "kind": "published",
-      "source": "Raspberry Pi 5: typical bare-board active current 800 mA at 5 V; the supply is rated 27 W (raspberrypi.com). Cameras add well under 1 W; 2 units"
+      "source": "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/CLAUDE.md?plain=1#L233"
+     },
+     "pi_unit": {
+      "w": 54,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     },
+     "poe_switch": {
+      "w": 60,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe"
      },
      "ups loss": {
-      "w": 8.6,
-      "kind": "estimate",
-      "source": "the UPS's own loss: Eaton publishes none; APC's SMT1500RM2UC is 98.9 % efficient at 50 % load (ENERGY STAR), so 3 % covers charging as well"
+      "w": 37.9,
+      "typical_w": 37.9,
+      "backed": false,
+      "kind": "derived",
+      "source": "Vertiv Liebert GXT5LI-1500LVRT2UXL: efficiency 89% at 221 W (ups.CATALOGUE)"
      }
     },
-    "total_w": 297,
+    "total_w": 679,
+    "idle_w": 259,
+    "ups": "Vertiv Liebert GXT5LI-1500LVRT2UXL",
     "ups_ok": true,
-    "estimated_share": 0.37
+    "backed_rated_w": 641,
+    "backed_typical_w": 221,
+    "unbacked_rated_w": 0,
+    "estimated_share": 0.41
    },
    "B": {
     "slot": "R3",
+    "shuttle": 1,
     "items": {
      "carousel": {
-      "w": 40.0,
-      "kind": "estimate",
-      "source": "the multi-doser's steppers, actuator and board (powder-doser #185): ours, 40 W"
-     },
-     "cameras": {
-      "w": 4.0,
+      "w": 395,
+      "typical_w": 25,
+      "backed": true,
       "kind": "published",
-      "source": "Raspberry Pi 5: typical bare-board active current 800 mA at 5 V; the supply is rated 27 W (raspberrypi.com). Cameras add well under 1 W; 1 units"
+      "source": "https://www.meanwell.com/Upload/PDF/LRS-350/LRS-350-SPEC.PDF; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/multidoser/chain-carousel-v5/layout.py#L717-L725; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     },
+     "balance": {
+      "w": 11,
+      "typical_w": 11,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.aandd.jp/products/manual/balances/hr-i.pdf"
+     },
+     "vacuum_press": {
+      "w": 400,
+      "typical_w": 0,
+      "backed": false,
+      "kind": "estimate",
+      "source": "https://specac.com/product/autotouch-press-high-throughput-xrf-press/"
+     },
+     "vacuum_pump": {
+      "w": 550,
+      "typical_w": 0,
+      "backed": false,
+      "kind": "published",
+      "source": "https://www.ajvs.com/library/Edwards_RV_Series_Brochure.pdf; https://www.manualslib.com/manual/2427823/Edwards-Rv3.html?page=22; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/notes/vacuum_press.md?plain=1#L87-L88"
+     },
+     "pi_unit": {
+      "w": 27,
+      "typical_w": 4,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     },
+     "poe_switch": {
+      "w": 60,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe"
      },
      "ups loss": {
-      "w": 1.3,
-      "kind": "estimate",
-      "source": "the UPS's own loss: Eaton publishes none; APC's SMT1500RM2UC is 98.9 % efficient at 50 % load (ENERGY STAR), so 3 % covers charging as well"
+      "w": 4.3,
+      "typical_w": 4.3,
+      "backed": false,
+      "kind": "derived",
+      "source": "Vertiv Liebert PSI5-800SRT2ULIN: efficiency 97% at 48 W (ups.CATALOGUE)"
      }
     },
-    "total_w": 45,
+    "total_w": 1447,
+    "idle_w": 52,
+    "ups": "Vertiv Liebert PSI5-800SRT2ULIN",
     "ups_ok": true,
-    "estimated_share": 0.91
+    "backed_rated_w": 493,
+    "backed_typical_w": 48,
+    "unbacked_rated_w": 950,
+    "estimated_share": 0.28
    },
    "C": {
     "slot": "F1",
+    "shuttle": 1,
     "items": {
      "h2d": {
-      "w": 1050.0,
-      "kind": "snippet",
-      "source": "Bambu Lab H2D: average 1050 W; max 1320 W at 110 V for under 3 min (bambulab.com, search snippet)"
+      "w": 1320,
+      "typical_w": 0,
+      "backed": false,
+      "kind": "published",
+      "source": "https://materialpro3d.cz/user/related_files/h2d_spec.pdf; https://forum.bambulab.com/t/why-does-the-h2d-have-such-high-standby-power-consumption/172758; https://forum.bambulab.com/t/powerloss-recovery-issues/258431"
      },
      "a1mini": {
-      "w": 150.0,
-      "kind": "snippet",
-      "source": "Bambu Lab A1 mini: max power 150 W (Bambu's TDS via a retailer)"
-     },
-     "cameras": {
-      "w": 8.0,
+      "w": 150,
+      "typical_w": 0,
+      "backed": false,
       "kind": "published",
-      "source": "Raspberry Pi 5: typical bare-board active current 800 mA at 5 V; the supply is rated 27 W (raspberrypi.com). Cameras add well under 1 W; 2 units"
+      "source": "https://www.3dprintergear.com.au/assets/files/A1%20Mini%20TDS.pdf; https://wiki.bambulab.com/en/a1-mini/manual/faq"
+     },
+     "pi_unit": {
+      "w": 54,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     },
+     "poe_switch": {
+      "w": 60,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe"
      },
      "ups loss": {
-      "w": 36.2,
-      "kind": "estimate",
-      "source": "the UPS's own loss: Eaton publishes none; APC's SMT1500RM2UC is 98.9 % efficient at 50 % load (ENERGY STAR), so 3 % covers charging as well"
+      "w": 4.1,
+      "typical_w": 4.1,
+      "backed": false,
+      "kind": "derived",
+      "source": "Vertiv Liebert PSI5-800SRT2ULIN: efficiency 97% at 16 W (ups.CATALOGUE)"
      }
     },
-    "total_w": 1244,
+    "total_w": 1588,
+    "idle_w": 20,
+    "ups": "Vertiv Liebert PSI5-800SRT2ULIN",
     "ups_ok": true,
-    "estimated_share": 0.03
+    "backed_rated_w": 114,
+    "backed_typical_w": 16,
+    "unbacked_rated_w": 1470,
+    "estimated_share": 0.0
    },
    "D": {
     "slot": "R1",
+    "shuttle": 1,
     "items": {
      "sem": {
-      "w": 500.0,
-      "kind": "snippet",
-      "source": "Hitachi TM4000PlusIII: 'Single phase AC100-240 V ... 500 VA', PC separate (Series III brochure; the PlusII's figure was not found)"
+      "w": 500,
+      "typical_w": 200,
+      "backed": true,
+      "kind": "published",
+      "source": "https://hte.hitachi-hightech.com/hubfs/Product%20Page%20-%20TM4000/Hitachi_TM4000_Series_III_Brochure.pdf?hsLang=en; https://matcl.umd.edu/files/2022/06/TM400PlusII-2.pdf; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     },
+     "sem_pc": {
+      "w": 200,
+      "typical_w": 60,
+      "backed": true,
+      "kind": "estimate",
+      "source": "https://hte.hitachi-hightech.com/hubfs/Product%20Page%20-%20TM4000/Hitachi_TM4000_Series_III_Brochure.pdf?hsLang=en"
+     },
+     "eds": {
+      "w": 400,
+      "typical_w": 60,
+      "backed": true,
+      "kind": "published",
+      "source": "https://matcl.umd.edu/files/2022/06/TM400PlusII-2.pdf"
      },
      "xrd": {
-      "w": 600.0,
+      "w": 1100,
+      "typical_w": 150,
+      "backed": true,
       "kind": "published",
-      "source": "Rigaku MiniFlex (6th generation; the 600 before it had the same tube): '600 W X-ray tube', '1-phase, 100-240 V' (rigaku.com); the total draw was not found, so this counts the tube alone"
+      "source": "https://resources.rigaku.com/hubfs/2024%20Rigaku%20Global%20Site/Resource%20Hub/Knowledge%20Library/Brochures/BR_23_MiniFlex_Rev0723_226325528_SinglePgs_low-res.pdf?hsLang=en; https://www.depts.ttu.edu/coe/research/mcc/brochures/MiniFlex6G.pdf; https://answers.uillinois.edu/97837"
      },
-     "cameras": {
-      "w": 12.0,
+     "xrd_pc": {
+      "w": 200,
+      "typical_w": 50,
+      "backed": true,
       "kind": "published",
-      "source": "Raspberry Pi 5: typical bare-board active current 800 mA at 5 V; the supply is rated 27 W (raspberrypi.com). Cameras add well under 1 W; 3 units"
+      "source": "https://resources.rigaku.com/hubfs/2024%20Rigaku%20Global%20Site/Resource%20Hub/Knowledge%20Library/Brochures/BR_23_MiniFlex_Rev0723_226325528_SinglePgs_low-res.pdf?hsLang=en"
+     },
+     "pi_unit": {
+      "w": 81,
+      "typical_w": 12,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     },
+     "poe_switch": {
+      "w": 60,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe"
      },
      "ups loss": {
-      "w": 33.4,
-      "kind": "estimate",
-      "source": "the UPS's own loss: Eaton publishes none; APC's SMT1500RM2UC is 98.9 % efficient at 50 % load (ENERGY STAR), so 3 % covers charging as well"
+      "w": 59.4,
+      "typical_w": 59.4,
+      "backed": false,
+      "kind": "derived",
+      "source": "Vertiv Liebert GXT5LI-3000LVRT2UXL: efficiency 91% at 540 W (ups.CATALOGUE)"
      }
     },
-    "total_w": 1145,
+    "total_w": 2600,
+    "idle_w": 599,
+    "ups": "Vertiv Liebert GXT5LI-3000LVRT2UXL",
     "ups_ok": true,
-    "estimated_share": 0.03
+    "backed_rated_w": 2541,
+    "backed_typical_w": 540,
+    "unbacked_rated_w": 0,
+    "estimated_share": 0.08
    },
    "E": {
     "slot": "R4",
+    "shuttle": 1,
     "items": {
      "pip": {
-      "w": 200.0,
+      "w": 200,
+      "typical_w": 80,
+      "backed": true,
       "kind": "estimate",
-      "source": "Plastometrex PLX-Benchtop: no rating found; 200 W is ours"
+      "source": "https://plastometrex.com/products/plx-benchtop; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
      },
      "nanoindenter": {
-      "w": 200.0,
+      "w": 300,
+      "typical_w": 120,
+      "backed": true,
       "kind": "estimate",
-      "source": "KLA iMicro: no rating found; 200 W is ours"
+      "source": "https://www.kla.com/products/instruments/nanoindenters/imicro; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146; https://arxiv.org/pdf/1709.07714"
      },
      "mastersizer": {
-      "w": 200.0,
-      "kind": "snippet",
-      "source": "Malvern Mastersizer 3000+ Ultra: '50 W (no dispersion) up to 200 W' (DirectIndustry, snippet)"
-     },
-     "cameras": {
-      "w": 12.0,
+      "w": 200,
+      "typical_w": 65,
+      "backed": true,
       "kind": "published",
-      "source": "Raspberry Pi 5: typical bare-board active current 800 mA at 5 V; the supply is rated 27 W (raspberrypi.com). Cameras add well under 1 W; 3 units"
+      "source": "https://www.malvernpanalytical.com/br/assets/MRK1872-07-EN_MS3000_Broch_BrandUpdate_LR_web_tcm55-17232.pdf; https://ougfc.montana.edu/eal-lres/documents/Mastersizer-3000-user-manual-English-MAN0474-2-1.pdf; https://brand.malvernpanalytical.com/prototype/product"
+     },
+     "mastersizer_pc": {
+      "w": 150,
+      "typical_w": 40,
+      "backed": true,
+      "kind": "estimate",
+      "source": "https://www.malvernpanalytical.com/br/assets/MRK1872-07-EN_MS3000_Broch_BrandUpdate_LR_web_tcm55-17232.pdf"
+     },
+     "ms_extractor": {
+      "w": 1200,
+      "typical_w": 0,
+      "backed": false,
+      "kind": "estimate",
+      "source": "https://ougfc.montana.edu/eal-lres/documents/Mastersizer-3000-user-manual-English-MAN0474-2-1.pdf"
+     },
+     "pi_unit": {
+      "w": 81,
+      "typical_w": 12,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     },
+     "poe_switch": {
+      "w": 60,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe"
      },
      "ups loss": {
-      "w": 18.4,
-      "kind": "estimate",
-      "source": "the UPS's own loss: Eaton publishes none; APC's SMT1500RM2UC is 98.9 % efficient at 50 % load (ENERGY STAR), so 3 % covers charging as well"
+      "w": 42.1,
+      "typical_w": 42.1,
+      "backed": false,
+      "kind": "derived",
+      "source": "Vertiv Liebert GXT5LI-1500LVRT2UXL: efficiency 89% at 325 W (ups.CATALOGUE)"
      }
     },
-    "total_w": 630,
+    "total_w": 2233,
+    "idle_w": 367,
+    "ups": "Vertiv Liebert GXT5LI-1500LVRT2UXL",
     "ups_ok": true,
-    "estimated_share": 0.66
+    "backed_rated_w": 991,
+    "backed_typical_w": 325,
+    "unbacked_rated_w": 1200,
+    "estimated_share": 0.83
    },
    "F": {
     "slot": "F2",
+    "shuttle": 1,
     "items": {
      "polisher": {
-      "w": 740.0,
-      "kind": "estimate",
-      "source": "LECO PX500 (the lab's): LECO publishes no rating, so this is the Buehler EcoMet 30's, a machine of the same class: base motor 440 W, semi-automatic head 300 W (distributors' sheets, snippets)"
+      "w": 740,
+      "typical_w": 0,
+      "backed": false,
+      "kind": "snippet",
+      "source": "https://eu.leco.com/product/px400-px500-grinder-polisher-series; https://pdf.directindustry.com/pdf/leco/px300-grinder-polisher/114499-752979.html; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
      },
      "furnace": {
-      "w": 2800.0,
+      "w": 2800,
+      "typical_w": 0,
+      "backed": false,
       "kind": "published",
-      "source": "Nabertherm NAT 15/65: connected load 2.8 kW, 1-phase (nabertherm.com)"
+      "source": "https://nabertherm.com/en/products/industrie/thermprozesstechnik/prozesse-unter-luft/forced-convection-furnaces/forced; https://nabertherm.com/sites/default/files/noindex/2024-05/M03.0022_Englisch_2024-04.pdf; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/notes/services.md?plain=1#L139-L165"
      },
-     "cameras": {
-      "w": 8.0,
+     "mounting_press": {
+      "w": 1400,
+      "typical_w": 0,
+      "backed": false,
+      "kind": "estimate",
+      "source": "https://pdf.directindustry.com/pdf/leco/mx400/114499-936234.html; https://www.labcompare.com/5207-Laboratory-Press/14224274-MX400-Mounting-Press/"
+     },
+     "quench_tank": {
+      "w": 60,
+      "typical_w": 0,
+      "backed": false,
+      "kind": "estimate",
+      "source": ""
+     },
+     "pi_unit": {
+      "w": 54,
+      "typical_w": 8,
+      "backed": true,
       "kind": "published",
-      "source": "Raspberry Pi 5: typical bare-board active current 800 mA at 5 V; the supply is rated 27 W (raspberrypi.com). Cameras add well under 1 W; 2 units"
+      "source": "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     },
+     "poe_switch": {
+      "w": 60,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe"
      },
      "ups loss": {
-      "w": 106.4,
-      "kind": "estimate",
-      "source": "the UPS's own loss: Eaton publishes none; APC's SMT1500RM2UC is 98.9 % efficient at 50 % load (ENERGY STAR), so 3 % covers charging as well"
+      "w": 4.1,
+      "typical_w": 4.1,
+      "backed": false,
+      "kind": "derived",
+      "source": "Vertiv Liebert PSI5-800SRT2ULIN: efficiency 97% at 16 W (ups.CATALOGUE)"
      }
     },
-    "total_w": 3654,
-    "ups_ok": false,
-    "estimated_share": 0.23
+    "total_w": 5118,
+    "idle_w": 20,
+    "ups": "Vertiv Liebert PSI5-800SRT2ULIN",
+    "ups_ok": true,
+    "backed_rated_w": 114,
+    "backed_typical_w": 16,
+    "unbacked_rated_w": 5000,
+    "estimated_share": 0.29
+   },
+   "K": {
+    "slot": "2R1",
+    "shuttle": 2,
+    "items": {
+     "glovebox_tray": {
+      "w": 30,
+      "typical_w": 20,
+      "backed": true,
+      "kind": "estimate",
+      "source": "https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/notes/instruments_r7.md?plain=1#L21-L47"
+     },
+     "o2_analyzer": {
+      "w": 20,
+      "typical_w": 15,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.chromservis.eu/media/0/05_pdf/Catalogues/Teledyne_3000TAXL_UK.pdf"
+     },
+     "h2o_sensor": {
+      "w": 0.5,
+      "typical_w": 0.5,
+      "backed": true,
+      "kind": "snippet",
+      "source": "https://www.processsensing.com/docs/datasheet/Michell_Instruments_Easidew_TX_I.S._Datasheet.pdf"
+     },
+     "gb_valves": {
+      "w": 40,
+      "typical_w": 0,
+      "backed": true,
+      "kind": "estimate",
+      "source": ""
+     },
+     "gb_antechamber_pump": {
+      "w": 550,
+      "typical_w": 0,
+      "backed": false,
+      "kind": "estimate",
+      "source": "https://www.ajvs.com/library/Edwards_RV_Series_Brochure.pdf"
+     },
+     "gb_balance": {
+      "w": 11,
+      "typical_w": 11,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.aandd.jp/products/manual/balances/hr-i.pdf"
+     },
+     "gb_capper": {
+      "w": 60,
+      "typical_w": 10,
+      "backed": true,
+      "kind": "estimate",
+      "source": "https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/notes/instruments_r7.md?plain=1#L21-L47"
+     },
+     "vhx": {
+      "w": 430,
+      "typical_w": 120,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.keyence.com/products/microscope/digital-microscope/vhx-7000/models/vhx-7000/; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/notes/instruments_r7.md?plain=1#L21-L47"
+     },
+     "vhx_stand": {
+      "w": 130,
+      "typical_w": 20,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.keyence.com/products/microscope/digital-microscope/vhx-7000/models/vhx-s750e/"
+     },
+     "ea300": {
+      "w": 0,
+      "typical_w": 0,
+      "backed": true,
+      "kind": "estimate",
+      "source": "https://www.keyence.com/products/microscope/elemental-analyzer/ea-300/models/ea-300"
+     },
+     "pikvm": {
+      "w": 12,
+      "typical_w": 5,
+      "backed": true,
+      "kind": "published",
+      "source": "https://docs.pikvm.org/v4/v4mini_datasheet.pdf"
+     },
+     "pi_unit": {
+      "w": 27,
+      "typical_w": 4,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     },
+     "poe_switch": {
+      "w": 60,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe"
+     },
+     "ups loss": {
+      "w": 37.6,
+      "typical_w": 37.6,
+      "backed": false,
+      "kind": "derived",
+      "source": "Vertiv Liebert GXT5LI-1500LVRT2UXL: efficiency 89% at 214 W (ups.CATALOGUE)"
+     }
+    },
+    "total_w": 1408,
+    "idle_w": 252,
+    "ups": "Vertiv Liebert GXT5LI-1500LVRT2UXL",
+    "ups_ok": true,
+    "backed_rated_w": 820,
+    "backed_typical_w": 214,
+    "unbacked_rated_w": 550,
+    "estimated_share": 0.48
+   },
+   "L": {
+    "slot": "2R2",
+    "shuttle": 2,
+    "items": {
+     "tensile_h": {
+      "w": 500,
+      "typical_w": 40,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.zwickroell.com/fileadmin/content/Files/SharePoint/user_upload/PI_EN/02_396_zwickiLine_Z0_5_up_to_Z5_0_Materials_Testing_Machine_PI_EN.pdf"
+     },
+     "zwick_pc": {
+      "w": 150,
+      "typical_w": 40,
+      "backed": true,
+      "kind": "estimate",
+      "source": "https://www.zwickroell.com/fileadmin/content/Files/SharePoint/user_upload/PI_EN/02_396_zwickiLine_Z0_5_up_to_Z5_0_Materials_Testing_Machine_PI_EN.pdf"
+     },
+     "hardness": {
+      "w": 90,
+      "typical_w": 40,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.mitutoyo.com/webfoo/wp-content/uploads/K_section.pdf"
+     },
+     "avpak_pc": {
+      "w": 150,
+      "typical_w": 40,
+      "backed": true,
+      "kind": "estimate",
+      "source": "https://www.mitutoyo.com/webfoo/wp-content/uploads/K_section.pdf"
+     },
+     "pi_unit": {
+      "w": 54,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     },
+     "poe_switch": {
+      "w": 60,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe"
+     },
+     "ups loss": {
+      "w": 36.1,
+      "typical_w": 36.1,
+      "backed": false,
+      "kind": "derived",
+      "source": "Vertiv Liebert GXT5LI-1500LVRT2UXL: efficiency 89% at 176 W (ups.CATALOGUE)"
+     }
+    },
+    "total_w": 1040,
+    "idle_w": 212,
+    "ups": "Vertiv Liebert GXT5LI-1500LVRT2UXL",
+    "ups_ok": true,
+    "backed_rated_w": 1004,
+    "backed_typical_w": 176,
+    "unbacked_rated_w": 0,
+    "estimated_share": 0.29
+   },
+   "M": {
+    "slot": "2R3",
+    "shuttle": 2,
+    "items": {
+     "xrf": {
+      "w": 600,
+      "typical_w": 120,
+      "backed": true,
+      "kind": "published",
+      "source": "https://technology-products.dksh.com/product/bruker-s2-puma-series-2-high-end-versatile-benchtop-edxrf/; https://www.bruker.com/en/products-and-solutions/elemental-analyzers/xrf-spectrometers/s2-puma-series2/other-applications.html"
+     },
+     "xrf_vacuum_pump": {
+      "w": 300,
+      "typical_w": 0,
+      "backed": false,
+      "kind": "estimate",
+      "source": "https://www.bruker.com/en/products-and-solutions/elemental-analyzers/xrf-spectrometers/s2-puma-series2/other-applications.html"
+     },
+     "fumehood_tray": {
+      "w": 35,
+      "typical_w": 35,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.sentryair.com/dfhapp.htm"
+     },
+     "cnc": {
+      "w": 430,
+      "typical_w": 0,
+      "backed": false,
+      "kind": "published",
+      "source": "https://www.makera.com/blogs/article/carvera-carvera-air-which-desktop-cnc-is-right-for-you; https://eu.makera.com/pages/cnc-comparison; https://carvera-community.gitbook.io/docs/anatomy-of-a-carvera"
+     },
+     "pi_unit": {
+      "w": 54,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     },
+     "poe_switch": {
+      "w": 60,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe"
+     },
+     "ups loss": {
+      "w": 35.9,
+      "typical_w": 35.9,
+      "backed": false,
+      "kind": "derived",
+      "source": "Vertiv Liebert GXT5LI-1500LVRT2UXL: efficiency 89% at 171 W (ups.CATALOGUE)"
+     }
+    },
+    "total_w": 1515,
+    "idle_w": 207,
+    "ups": "Vertiv Liebert GXT5LI-1500LVRT2UXL",
+    "ups_ok": true,
+    "backed_rated_w": 749,
+    "backed_typical_w": 171,
+    "unbacked_rated_w": 730,
+    "estimated_share": 0.2
+   },
+   "H": {
+    "slot": "2R4",
+    "shuttle": 2,
+    "items": {
+     "stencil": {
+      "w": 240,
+      "typical_w": 0,
+      "backed": false,
+      "kind": "published",
+      "source": "https://pentalogix.com/pdf/SPR_45VA_Stencil_Printers.pdf"
+     },
+     "lumenpnp": {
+      "w": 300,
+      "typical_w": 15,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.opulo.io/products/lumenpnp-24v-6a-power-supply; https://cdn.shopify.com/s/files/1/0570/4256/7355/files/Opulo_Power_Supply_Datasheet-24V_6A.pdf?v=1723229996; https://www.opulo.io/products/vacuum-pump-and-valve-set"
+     },
+     "lumenpnp_pc": {
+      "w": 100,
+      "typical_w": 25,
+      "backed": true,
+      "kind": "estimate",
+      "source": ""
+     },
+     "reflow": {
+      "w": 1500,
+      "typical_w": 0,
+      "backed": false,
+      "kind": "published",
+      "source": "https://taianpuhui.en.made-in-china.com/product/GXLmWKoTvtUI/China-Desktop-Reflow-Oven-Puhui-T962A.html; https://wiki.bitraf.no/w/images/1/18/T962A_INFRARED_IC_HEATER_User_Manual.pdf"
+     },
+     "pi_unit": {
+      "w": 54,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     },
+     "poe_switch": {
+      "w": 60,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe"
+     },
+     "ups loss": {
+      "w": 4.3,
+      "typical_w": 4.3,
+      "backed": false,
+      "kind": "derived",
+      "source": "Vertiv Liebert PSI5-800SRT2ULIN: efficiency 97% at 56 W (ups.CATALOGUE)"
+     }
+    },
+    "total_w": 2258,
+    "idle_w": 60,
+    "ups": "Vertiv Liebert PSI5-800SRT2ULIN",
+    "ups_ok": true,
+    "backed_rated_w": 514,
+    "backed_typical_w": 56,
+    "unbacked_rated_w": 1740,
+    "estimated_share": 0.04
+   },
+   "G": {
+    "slot": "2F1",
+    "shuttle": 2,
+    "items": {
+     "form4": {
+      "w": 960,
+      "typical_w": 0,
+      "backed": false,
+      "kind": "published",
+      "source": "https://formlabs.com/3d-printers/resin/tech-specs/; https://formlabs.com/support/Choosing-an-Uninterruptible-Power-Supply-UPS-for-your-Formlabs-printer/"
+     },
+     "form_wash": {
+      "w": 50,
+      "typical_w": 0,
+      "backed": false,
+      "kind": "published",
+      "source": "https://formlabs.com/store/form-wash/"
+     },
+     "form_cure": {
+      "w": 1800,
+      "typical_w": 0,
+      "backed": false,
+      "kind": "estimate",
+      "source": "https://formlabs.com/store/form-cure/; https://formlabs.com/global/products/form-cure/"
+     },
+     "pi_unit": {
+      "w": 54,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     },
+     "poe_switch": {
+      "w": 60,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe"
+     },
+     "ups loss": {
+      "w": 4.1,
+      "typical_w": 4.1,
+      "backed": false,
+      "kind": "derived",
+      "source": "Vertiv Liebert PSI5-800SRT2ULIN: efficiency 97% at 16 W (ups.CATALOGUE)"
+     }
+    },
+    "total_w": 2928,
+    "idle_w": 20,
+    "ups": "Vertiv Liebert PSI5-800SRT2ULIN",
+    "ups_ok": true,
+    "backed_rated_w": 114,
+    "backed_typical_w": 16,
+    "unbacked_rated_w": 2810,
+    "estimated_share": 0.61
+   },
+   "I": {
+    "slot": "2F2",
+    "shuttle": 2,
+    "items": {
+     "snowpod": {
+      "w": 2000,
+      "typical_w": 0,
+      "backed": false,
+      "kind": "estimate",
+      "source": "https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/fab_metal.py#L438-L441; https://makers101.com/snowpod-desktop-metal-3d-printer/"
+     },
+     "nitropod": {
+      "w": 500,
+      "typical_w": 0,
+      "backed": false,
+      "kind": "estimate",
+      "source": "https://www.3dnatives.com/en/desktop-metal-3d-printer-snowpod-22102026/"
+     },
+     "pi_unit": {
+      "w": 54,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply; https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     },
+     "poe_switch": {
+      "w": 60,
+      "typical_w": 8,
+      "backed": true,
+      "kind": "published",
+      "source": "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe"
+     },
+     "ups loss": {
+      "w": 4.1,
+      "typical_w": 4.1,
+      "backed": false,
+      "kind": "derived",
+      "source": "Vertiv Liebert PSI5-800SRT2ULIN: efficiency 97% at 16 W (ups.CATALOGUE)"
+     }
+    },
+    "total_w": 2618,
+    "idle_w": 20,
+    "ups": "Vertiv Liebert PSI5-800SRT2ULIN",
+    "ups_ok": true,
+    "backed_rated_w": 114,
+    "backed_typical_w": 16,
+    "unbacked_rated_w": 2500,
+    "estimated_share": 0.95
    }
   },
   "vlm": {
+   "trays": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+   ],
    "enclosure_m": [
     2.83,
     3.12,
@@ -1489,39 +2120,131 @@
    "surface_m2": 55.9,
    "scenarios": {
     "everything on at its rating": {
-     "w": 7015,
-     "rise_k_unventilated": 22.8,
-     "airflow_m3h_for_5k": 4188,
-     "airflow_m3h_for_10k": 2094
+     "w": 13665,
+     "rise_k_unventilated": 44.5,
+     "airflow_m3h_for_5k": 8158,
+     "airflow_m3h_for_10k": 4079
     },
     "printing in storage (tray C) and the furnace holding (tray F at a third of 2.8 kW)": {
-     "w": 2277,
-     "rise_k_unventilated": 7.4,
-     "airflow_m3h_for_5k": 1359,
-     "airflow_m3h_for_10k": 680
+     "w": 3720,
+     "rise_k_unventilated": 12.1,
+     "airflow_m3h_for_5k": 2221,
+     "airflow_m3h_for_10k": 1110
     },
-    "idle: controllers, cameras and UPSs only (about 60 W a tray, an estimate)": {
-     "w": 360,
-     "rise_k_unventilated": 1.2,
-     "airflow_m3h_for_5k": 215,
-     "airflow_m3h_for_10k": 107
+    "idle: every backed branch at its typical draw, heaters off, plus the UPSs' own losses": {
+     "w": 1317,
+     "rise_k_unventilated": 4.3,
+     "airflow_m3h_for_5k": 786,
+     "airflow_m3h_for_10k": 393
+    }
+   },
+   "method": "rise with no ventilation = W / (5.5 W/m2K x surface): the usual figure for painted sheet steel in still air, an estimate for a machine this size; airflow = W / (rho cp dT), air at 1.2 kg/m3 and 1005 J/kg K"
+  },
+  "vlm2": {
+   "trays": [
+    "K",
+    "L",
+    "M",
+    "H",
+    "G",
+    "I"
+   ],
+   "enclosure_m": [
+    2.83,
+    3.12,
+    3.95
+   ],
+   "surface_m2": 55.9,
+   "scenarios": {
+    "everything on at its rating": {
+     "w": 11767,
+     "rise_k_unventilated": 38.3,
+     "airflow_m3h_for_5k": 7025,
+     "airflow_m3h_for_10k": 3513
+    },
+    "two Form 4s and the Carvera working in storage, the rest idle": {
+     "w": 2161,
+     "rise_k_unventilated": 7.0,
+     "airflow_m3h_for_5k": 1290,
+     "airflow_m3h_for_10k": 645
+    },
+    "idle: every backed branch at its typical draw, heaters off, plus the UPSs' own losses": {
+     "w": 771,
+     "rise_k_unventilated": 2.5,
+     "airflow_m3h_for_5k": 460,
+     "airflow_m3h_for_10k": 230
     }
    },
    "method": "rise with no ventilation = W / (5.5 W/m2K x surface): the usual figure for painted sheet steel in still air, an estimate for a machine this size; airflow = W / (rho cp dT), air at 1.2 kg/m3 and 1005 J/kg K"
   },
   "utilities": {
    "ups": {
-    "model": "Eaton 5PX1500RTNG2",
-    "size_mm": [
-     86.0,
-     447.0,
-     437.0
-    ],
-    "rating": "1500 VA, 120 V",
-    "runtime": "44 min at 300 W (230 V model, retailer)",
-    "where": "on every tray, back right",
+    "per_tray": {
+     "A": {
+      "model": "Vertiv Liebert GXT5LI-1500LVRT2UXL",
+      "backed_rated_w": 641,
+      "backed_typical_w": 221
+     },
+     "B": {
+      "model": "Vertiv Liebert PSI5-800SRT2ULIN",
+      "backed_rated_w": 493,
+      "backed_typical_w": 48
+     },
+     "C": {
+      "model": "Vertiv Liebert PSI5-800SRT2ULIN",
+      "backed_rated_w": 114,
+      "backed_typical_w": 16
+     },
+     "D": {
+      "model": "Vertiv Liebert GXT5LI-3000LVRT2UXL",
+      "backed_rated_w": 2541,
+      "backed_typical_w": 540
+     },
+     "E": {
+      "model": "Vertiv Liebert GXT5LI-1500LVRT2UXL",
+      "backed_rated_w": 991,
+      "backed_typical_w": 325
+     },
+     "F": {
+      "model": "Vertiv Liebert PSI5-800SRT2ULIN",
+      "backed_rated_w": 114,
+      "backed_typical_w": 16
+     },
+     "K": {
+      "model": "Vertiv Liebert GXT5LI-1500LVRT2UXL",
+      "backed_rated_w": 820,
+      "backed_typical_w": 214
+     },
+     "L": {
+      "model": "Vertiv Liebert GXT5LI-1500LVRT2UXL",
+      "backed_rated_w": 1004,
+      "backed_typical_w": 176
+     },
+     "M": {
+      "model": "Vertiv Liebert GXT5LI-1500LVRT2UXL",
+      "backed_rated_w": 749,
+      "backed_typical_w": 171
+     },
+     "H": {
+      "model": "Vertiv Liebert PSI5-800SRT2ULIN",
+      "backed_rated_w": 514,
+      "backed_typical_w": 56
+     },
+     "G": {
+      "model": "Vertiv Liebert PSI5-800SRT2ULIN",
+      "backed_rated_w": 114,
+      "backed_typical_w": 16
+     },
+     "I": {
+      "model": "Vertiv Liebert PSI5-800SRT2ULIN",
+      "backed_rated_w": 114,
+      "backed_typical_w": 16
+     }
+    },
+    "where": "on every powered tray, back right, standing on its side in a bolted cradle (ups.py)",
     "transit_s": "about 6 s from R2 to the opening: 2 x 1030 mm at 0.7 m/s (3 s), 246 mm at 2 m/s (0.1 s), plus the shutter and accelerations (not published); R4 adds about 0.8 s",
-    "source": "Eaton 5PX1500RTNG2 (120 V, 1500 VA, rack/tower 2U): 3.4 x 17.2 x 17.6 in (86 x 437 x 447 mm), weight '50.7' (lb, about 23 kg), farnell.com data sheet (search snippet); 44 min at 300 W (230 V model, retailer listing). Heat dissipation not published. APC SMT1500RM2UC for comparison: 432 x 477 x 86 mm, 26.5 kg, 1440 VA / 1000 W, 98.9 % efficient at 50 % load (ENERGY STAR)."
+    "sizing": "the smallest unit that carries the tray's backed branch at its rated draw and runs at least 10 min at its typical draw; heaters and big motors on the unbacked branch",
+    "source": "ups.CATALOGUE (makers' datasheets), out/ups.json"
    },
    "n2": {
     "model": "Parker Balston UHPN2-1100",

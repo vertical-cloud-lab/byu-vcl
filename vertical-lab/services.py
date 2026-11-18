@@ -1984,8 +1984,10 @@ CIRCUITS = [   # (key, what, supply, load, source, kind)
      "not published by Kardex; a used XP 500 2450x864 lists 400 V 17 A, used XP listings 8.6 kVA (24 A per phase at "
      "208 V)", "#53; machineseeker and exapro listings (search snippets)", "snippet"),
     ("docks", "tray docks: six slots and the bay, at most six live", "208Y/120 V: L1, L2, N, PE per dock, 30 A "
-     "breaker (CombiTac O3 mm contacts: 39 A)", "tray F 3.5 kW, tray C 1.2 kW, tray D 1.1 kW, the rest under 0.7 kW "
-     "(services.json)", "the instruments' ratings in POWER; CombiTac catalogue p.26", "derived"),
+     "breaker (CombiTac O3 mm contacts: 39 A)", "round 12, at the machines' ratings: tray F 5.1 kW (5.0 of it on the "
+     "unbacked branch: the furnace and the MX400 take turns), tray G 2.9 kW, tray D 2.5 kVA (all of it through its "
+     "GXT5LI-3000), tray I 2.6 kW, trays E and H 2.2 kW, the rest 0.6-1.6 kW (ups.json, services.json)",
+     "the instruments' ratings in ups.TRAY_LOADS; CombiTac catalogue p.26", "derived"),
     ("repowder", "AMAZEMET rePowder atomizer and its chiller", "400 V 3-phase and 230 V, 32 A plugs; the optimizer "
      "draws up to about 60 A", "as left", "rePowder-BYU-Installation-Details.txt (the install call)", "published"),
     ("glovebox", "Inert PureLab HE 2GB glovebox", "not found", "not found", "Inert's manual (NIST copy) has a "
