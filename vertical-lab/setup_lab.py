@@ -141,7 +141,7 @@ def reflow_oven():
     inst.labels = [("windowed drawer, 300 x 320 mm", (-60, y0, h - 40), (0.25, 0.25)),
                    ("LCD and keys", (x1 - 60, y0, h - 60), (0.75, 0.25))]
     inst.notes = ["430 x 370 x 260 mm, 15 kg, 1500 W (Puhui's listing); the front's layout is ours",
-                  "on tray H its heaters pause in transit: 1500 W is over the tray's UPS (1500 VA, services.py)",
+                  "on tray H it is on the unbacked branch: its heaters pause in transit (ups.TRAY_LOADS)",
                   "solder flux fumes: it wants extraction, which tray H doesn't have yet"]
     return inst
 
@@ -623,10 +623,11 @@ def add_tray(sc: Scene, L: TwoLab, k: str):
 
 
 def add_ups(sc: Scene, k: str) -> list:
-    """The tray's UPS (services.ups_parts) as its own group, so it can be carried in."""
+    """The tray's UPS as its own group, so it can be carried in: round 12, its own real unit (ups.py: sized for what
+    the tray must keep alive), with its cradle, markings and status lights (services.add_ups_meshes)."""
     import services
     g = f"ups_{k}"
-    names = services.add_meshes(sc, g, services.meshes_of("ups", services.ups_parts, 1.0), g)
+    names = services.add_ups_meshes(sc, k, g)
     sc.parent[g] = f"tray_{k}"
     return names
 
@@ -894,11 +895,18 @@ MASS_KG = {
     "cnc": (50.0, "Makera Carvera (out/instruments.json)"),
     "hardness": (43.0, "Mitutoyo HM-220 (out/instruments.json)"),
     "mastersizer": (40.5, "Malvern Mastersizer 3000 30 kg + Aero S 10.5 kg (out/instruments.json)"),
-    "ups": (23.0, "Eaton 5PX1500RTNG2, 50.7 lb (services.SOURCES['ups'], a snippet)"),
+    "ups": (None, "each tray's own unit, 11-37 kg with its batteries (ups.CATALOGUE, ups_mass())"),
     "reflow": (15.0, "Puhui T-962A (REFLOW)"),
     "vhx": (7.2, "Keyence VHX-7000's EA-300 controller alone; the stand and head not found (out/instruments.json)"),
 }
 MASS_ONE_PERSON = 23.0                         # NIOSH's load constant, kg: the most one person should lift, at best
+
+
+def _ups_kg() -> str:
+    """'11-37 kg': the lightest and heaviest of the trays' UPSs (round 12: each tray its own unit, ups.py)."""
+    import ups
+    kg = [ups.unit_of(k)["kg"] for k in ups.TRAY_LOADS]
+    return f"{min(kg):.0f}-{max(kg):.0f}" if max(kg) - min(kg) >= 1 else f"{kg[0]:.0f}"
 
 
 def lift_table_parts() -> dict:
@@ -1308,7 +1316,7 @@ def movie(data, idata):
             sc.alpha[nm] = u
     heavy = sorted(((m, key) for key, (m, _) in MASS_KG.items() if m and m > MASS_ONE_PERSON), reverse=True)
     sc.step(f"7/{n}", "Loading, drawn see-through. Most of what goes on a tray weighs 20-110 kg (the S2 PUMA "
-            f"{heavy[0][0]:.0f} kg, each UPS 23), more than the arm's 12.5 kg or one person should lift (NIOSH: 23 kg), "
+            f"{heavy[0][0]:.0f} kg, each UPS {_ups_kg()}), more than the arm's 12.5 kg or one person should lift (NIOSH: 23 kg), "
             "so a scissor lift table stands at the opening, its deck level with the tray, and people slide each "
             "machine across. After the first tray of each Shuttle, a time-lapse.", 2.6,
             A.both(L.skin(1.0), tables_on), hold=0.4, cam_to=CAM_OPEN,
@@ -1503,8 +1511,9 @@ def check_trays(sc: Scene, items: dict) -> dict:
             for j, (lbl2, kind2, b2, _) in enumerate(parts):
                 if j == i or (kind == kind2 == "cam" and lbl.split()[0] == lbl2.split()[0]):
                     continue
-                if {kind, kind2} <= {"ups", "plate", "cam"} and kind != kind2:
+                if {kind, kind2} <= {"ups", "plate", "cam"} and kind != kind2 and {kind, kind2} != {"ups", "cam"}:
                     continue                             # services.py's own parts against each other: its call
+                    # (round 12: but each tray's UPS is now its own size, so a UPS is checked against the cameras)
                 if all(b[2 * a] < b2[2 * a + 1] - 1.0 and b2[2 * a] < b[2 * a + 1] - 1.0 for a in range(3)) and \
                         hit(min(i, j), max(i, j)):
                     over.append(lbl2)

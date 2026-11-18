@@ -857,21 +857,41 @@ def tray_dock() -> Instrument:
 
 
 # ===================================================================================================== utilities
-UPS = dict(w=86.0, d=447.0, h=437.0)        # Eaton 5PX1500RTNG2 standing as a tower: 86 thick (y), 447 deep (x)
+# Round 12 (PR #318, 2026-11-18: "identify real UPS's rather than what looks like a placeholder there, and we might
+# need multiple types of UPS units"): each powered tray's unit is now a real one, sized for that tray, in ups.py
+# (ups.CATALOGUE, ups.TRAY_LOADS, ups.choose). Every unit stands with its back at the old one's back, x = 1060, on
+# the old centre line, y = 319, so the tray's mains line (line_paths) still ends at its back. UPS and UPS_AT keep
+# the round-4 box only for that: its back face (UPS_AT[0] + UPS["d"] / 2) and its centre line (UPS_AT[1]).
+UPS = dict(w=86.0, d=447.0, h=437.0)        # round 4's Eaton 5PX1500RTNG2 box: 86 thick (y), 447 deep (x)
 UPS_AT = (SIDE - 165 - UPS["d"] / 2, 276.0 + UPS["w"] / 2)      # tray frame: just ahead of the power strip
 N2GEN = dict(w=305.0, d=406.0, h=889.0)     # Parker Balston UHPN2-1100
 CHILLER = dict(w=0.0, d=0.0, h=0.0)         # ThermoFlex 900: size not found; not drawn to a size
 
 
-def ups_parts() -> dict:
-    """The tray's UPS, a 2U rack/tower unit standing on its side at the back right (tray frame)."""
-    x, y = UPS_AT
-    u = UPS
-    body = box(x - u["d"] / 2, y - u["w"] / 2, V.T_FLOOR, x + u["d"] / 2, y + u["w"] / 2, V.T_FLOOR + u["h"])
-    face = box(x - u["d"] / 2 - 3, y - u["w"] / 2 + 6, V.T_FLOOR + 10, x - u["d"] / 2, y + u["w"] / 2 - 6,
-               V.T_FLOOR + u["h"] - 10)
-    scr = box(x - u["d"] / 2 - 4, y - 18, V.T_FLOOR + u["h"] - 110, x - u["d"] / 2 - 3, y + 18, V.T_FLOOR + u["h"] - 60)
-    return {"UPS": (body, "svc_ups"), "UPS face": (face, "svc_ups_face"), "UPS screen": (scr, "svc_screen")}
+def ups_parts(k: str = "A") -> dict:
+    """Tray k's UPS (ups.py: its own model, standing on its side at the back right in a bolted cradle), tray frame."""
+    import ups
+    return ups.parts_on_tray(k)
+
+
+def ups_model(k: str) -> str:
+    """The catalogue key of tray k's UPS (ups.assignment)."""
+    import ups
+    return ups.assignment()[k]
+
+
+def ups_top(k: str) -> tuple:
+    """(x, y, z) at the middle of the top of tray k's UPS, tray frame: where a label points."""
+    import ups
+    x0, x1, y0, y1, z0, z1 = ups.box_on_tray(k)
+    return ((x0 + x1) / 2 - 15.0, (y0 + y1) / 2, z1)
+
+
+def ups_name(k: str, short=False) -> str:
+    """'APC SRT1500RMXLA' (or, short, the maker and the family's name) of tray k's UPS."""
+    import ups
+    m = ups.unit_of(k)
+    return f"{m['maker']} {m['short'] if short else m['model']}"
 
 
 # ===================================================================================================== registry
@@ -952,9 +972,11 @@ LAMP_UPS = (1.0, 0.62, 0.10)
 
 def mats() -> dict:
     import lab
+    import ups
     m = dict(lab.MATS)
     m.update(I.MATERIALS)
     m.update(MATERIALS)
+    m.update(ups.MATERIALS)            # round 12: the trays' real UPSs (ups.py)
     return m
 
 
@@ -1147,56 +1169,55 @@ def set_switches(sc, pos, on):
 
 
 UPS_LED = {"mains": (0.15, 0.80, 0.30), "battery": (1.0, 0.62, 0.10)}     # charging on mains / carrying the tray
+UPS_LED_OFF = (0.06, 0.06, 0.07)
 
 
-def ups_label_mesh():
-    """'UPS' in white on the tray UPS's top and on its side facing the front of the tray, tray frame (PR #318: "I
-    didn't see anywhere that showed UPS-s")."""
-    import pyvista as pv
-    x, y = UPS_AT
-    u = UPS
-    t = pv.Text3D("UPS", depth=0.1)
-    k = 1.0 / (t.bounds[3] - t.bounds[2])
-
-    def place(h, turn, at):
-        m = t.scale(h * k, inplace=False)
-        if turn:
-            m = m.rotate_x(90, inplace=False)
-        return m.translate(at, inplace=False)
-    top = place(56.0, False, (x - 60, y, V.T_FLOOR + u["h"] + 1.5))
-    side = place(120.0, True, (x, y - u["w"] / 2 - 1.5, V.T_FLOOR + u["h"] * 0.62))
-    return top.merge(side).triangulate()
+def ups_label_mesh(k: str):
+    """Tray k's UPS's own markings, tray frame (ups.marking_meshes): the maker's name on its front and an asset label
+    on its side facing the front of the tray. Round 7 to 11 put a big white 'UPS' on a grey box (PR #318: "I didn't
+    see anywhere that showed UPS-s"); the clips now point at each unit with a leader label instead."""
+    import ups
+    return ups.marking_mesh(k)
 
 
-def ups_led_mesh():
-    """The UPS's status strip, on its top and on its front-facing side (tray frame): green on mains, amber on battery."""
-    x, y = UPS_AT
-    u = UPS
-    a = box(x - 170, y - u["w"] / 2 - 2.5, V.T_FLOOR + u["h"] * 0.32, x + 170, y - u["w"] / 2, V.T_FLOOR + u["h"] * 0.32
-            + 26)
-    b = box(x + 60, y - 26, V.T_FLOOR + u["h"], x + 200, y + 26, V.T_FLOOR + u["h"] + 2.5)
-    return a.union(b)
+def add_ups_meshes(sc, tray: str, group: str, prefix: str | None = None) -> list:
+    """Tray k's UPS, its markings and its two status LEDs into group `group` (actors '<prefix>/<material>'; the LEDs
+    'ups led <tray> mains' and '... battery', lit by set_ups). Returns the actor names."""
+    prefix = prefix or f"ups_{tray}"
+    key = f"ups_{ups_model(tray)}_{tray}"
+    by_mat = meshes_of(key, lambda: ups_parts(tray), 0.6)
+    names = add_meshes(sc, prefix, {m: v for m, v in by_mat.items() if m not in ("ups_green", "ups_amber")}, group)
+    for state, mat in (("mains", "ups_green"), ("battery", "ups_amber")):
+        if mat in by_mat:
+            n = f"ups led {tray} {state}"
+            sc.add(n, by_mat[mat], UPS_LED[state] if state == "mains" else UPS_LED_OFF, group, ambient=0.75,
+                   specular=0.1)
+            names.append(n)
+    lk = f"upsmark_{tray}"
+    if lk not in _MESH_CACHE:
+        _MESH_CACHE[lk] = ups_label_mesh(tray)
+    for i, (mesh, rgb) in enumerate(_MESH_CACHE[lk]):
+        if mesh.n_points:
+            sc.add(f"ups label {tray} {i}", mesh, rgb, group, ambient=0.55, specular=0.1)
+            names.append(f"ups label {tray} {i}")
+    return names
 
 
 def add_tray_services(sc, tray: str, ups=True) -> list:
-    """The tray's plate, its lines (coloured when live) and its UPS with its label and status strip, riding with group
-    tray_<k>."""
+    """The tray's plate, its lines (coloured when live) and its UPS with its markings and status LEDs, riding with
+    group tray_<k>."""
     add_meshes(sc, f"plate_{tray}", meshes_of("plate", plate_parts, 0.4), f"tray_{tray}")
     names = add_meshes(sc, f"lines_{tray}", meshes_of("lines", tray_lines, 0.5), f"tray_{tray}")
     if ups:
-        add_meshes(sc, f"ups_{tray}", meshes_of("ups", ups_parts, 1.0), f"tray_{tray}")
-        if "upslabel" not in _MESH_CACHE:
-            import lab
-            _MESH_CACHE["upslabel"] = ups_label_mesh()
-            _MESH_CACHE["upsled"] = lab.to_mesh(_shape(ups_led_mesh()), 0.5)
-        sc.add(f"ups label {tray}", _MESH_CACHE["upslabel"], (0.97, 0.97, 0.95), f"tray_{tray}", ambient=0.6,
-               specular=0.1)
-        sc.add(f"ups led {tray}", _MESH_CACHE["upsled"], UPS_LED["mains"], f"tray_{tray}", ambient=0.75, specular=0.1)
+        add_ups_meshes(sc, tray, f"tray_{tray}")
     return names
 
 
 def set_ups(sc, tray: str, battery: bool):
-    sc.color[f"ups led {tray}"] = UPS_LED["battery" if battery else "mains"]
+    """Tray k's UPS's LEDs: green on mains (charging), amber on battery (carrying the tray)."""
+    if f"ups led {tray} mains" in sc.actors:
+        sc.color[f"ups led {tray} mains"] = UPS_LED_OFF if battery else UPS_LED["mains"]
+        sc.color[f"ups led {tray} battery"] = UPS_LED["battery"] if battery else UPS_LED_OFF
 
 
 class Flow:
@@ -1390,7 +1411,7 @@ def movie_services(data, idata):
     L.skin(1.0)(1.0)
     L.on_ups = {}
     hide(sc, ("skin_R",))
-    load_w = sum(POWER[i][0] for i in TRAY_ITEMS[k]) + len(TRAY_CAMS[k]) * POWER["pi_unit"][0]
+    load_w = __import__("ups").tray_load(k)["backed_typical_w"]     # round 12: the backed branch (ups.py)
     for pos in HOME.values():
         set_dock(sc, pos, 0.0)
     set_dock(sc, "open", 1.0)
@@ -1418,7 +1439,7 @@ def movie_services(data, idata):
             "nitrogen and chilled water are live. CombiTac's docking frame lets the pins take up 4 mm of misalignment.",
             3.4, lambda u: hide(sc, cut, 1.0 - u), hold=2.4, cam_to=CAM_S_R2,
             labels=media_lbl + [("guide pins", (X_FACE - 20, wy + PIN_DY, wz), (0.84, 0.30)),
-                                ("tray's UPS (Eaton 5PX 1500)", (UPS_AT[0], yc + UPS_AT[1], zs + UPS["h"]),
+                                (f"tray's UPS ({ups_name(k)})", (UPS_AT[0], yc + UPS_AT[1], zs + UPS["h"]),
                                  (0.84, 0.55))])
 
     def release(u):
@@ -1545,7 +1566,8 @@ def ups_points() -> dict:
     out = {}
     for k, pos in HOME.items():
         yc, zs = V.SLOTS[pos]
-        out[k] = (UPS_AT[0], yc + UPS_AT[1], zs + V.T_FLOOR + UPS["h"])
+        x, y, z = ups_top(k)
+        out[k] = (x, yc + y, zs + z)
     return out
 
 
@@ -1565,8 +1587,9 @@ def movie_hookups(data, idata):
     set_dock(sc, "open", 1.0)
     set_switches(sc, "open", False)
     flow.set(slot, 1.0)
-    load_w = sum(POWER[i][0] for i in TRAY_ITEMS[k]) + len(TRAY_CAMS[k]) * POWER["pi_unit"][0]
-    ups_min = 44 * 300 / load_w                        # the retailer's 44 min at 300 W, scaled: a rough figure
+    import ups as U
+    load_w = U.tray_load(k)["backed_typical_w"]        # round 12: the backed branch only (ups.TRAY_LOADS)
+    ups_min = U.runtime_min(U.unit_of(k), load_w)      # from the maker's runtime table (ups.CATALOGUE)
     yc, zs = V.SLOTS[slot]
     by, bz = V.SLOTS["open"]
     fluids = ("air", "n2", "cws", "cwr")
@@ -1587,9 +1610,10 @@ def movie_hookups(data, idata):
     n = 6
     ups_lbl = [(f"UPS, tray {t} ({HOME[t]})", p, (0.08 if i < 3 else 0.92, 0.30 + 0.08 * (i % 3)))
                for i, (t, p) in enumerate(sorted(ups_points().items(), key=lambda kv: -kv[1][2]))]
-    sc.step(f"1/{n}", "Every tray carries its own UPS, an Eaton 5PX 1500 standing at its back right (white 'UPS' on "
-            "top, a status strip: green on mains, amber on battery). In its slot, a tray is plugged into the machine "
-            "through one automatic coupling in the slot's right-hand side wall.", 3.6, None, hold=2.2,
+    sc.step(f"1/{n}", f"Every tray carries its own UPS, sized for what it must keep alive (tray {k}: "
+            f"{ups_name(k)}), standing at its back right; its front lights green on mains, amber on battery. In its "
+            "slot, a tray is plugged into the machine through one automatic coupling in the slot's right-hand side "
+            "wall.", 3.6, None, hold=2.2,
             cam_to=CAM_H_WIDE, labels=ups_lbl)
     # ---- 2: docked in storage
     cut = ("col_rear", "posts", "lift_rails", "lift", "riser_rear")
@@ -1658,7 +1682,7 @@ def movie_hookups(data, idata):
     gauges("in transit, unplugged", f"on battery, about {load_w:.0f} W (roughly {ups_min:.0f} min of it)",
            "pulled back", "pulled back, waiting")
     cap = (f"In transit, about 6 s from {slot} to the opening: no coupling, the UPS carries the instruments, the "
-           "cameras and the tray's switch. The tray's lamp and the UPS's strip are amber.")
+           "cameras and the tray's switch. The tray's lamp and the UPS's battery light are amber.")
     lbl4 = [(f"tray {k}: on its UPS", tag, (0.16, 0.22))]
     sc.step(f"4/{n}", cap, max(0.6, abs(L.lift_z - zs) / 1333), moving(first), hold=0.1, cam_to=CAM_H_MID,
             labels=lbl4)
@@ -2139,48 +2163,66 @@ def movie_cabling(data, idata):
 
 # ----------------------------------------------------------------------------------------------- the numbers
 def heat_budget() -> dict:
-    """Per tray: the load from the instruments' ratings, the cameras and the UPS's loss; for the VLM: what that puts
-    into the enclosure, the airflow to carry it away, and the rise with no ventilation."""
+    """Per tray: each machine's rated draw, the cameras and the UPS's own loss; for each Shuttle: what its trays put
+    into its enclosure, the airflow to carry it away, and the rise with no ventilation.
+
+    Round 12 (PR #318, the real UPSs): the trays and their loads are ups.TRAY_LOADS's, all twelve powered trays (round
+    4's table had A-F only), each UPS's loss is its maker's efficiency at its tray's typical backed draw (ups.loss_w),
+    and Shuttle 2's trays (K, L, M, H, G, I) are budgeted against their own enclosure."""
+    import ups as U
     trays = {}
-    for k, items in TRAY_ITEMS.items():
-        rows = {i: dict(w=POWER[i][0], kind=POWER[i][1], source=POWER[i][2]) for i in items}
-        ncam = len(TRAY_CAMS.get(k, []))
-        rows["cameras"] = dict(w=ncam * POWER["pi_unit"][0], kind="published", source=POWER["pi_unit"][2] +
-                               f"; {ncam} units")
-        load = sum(r["w"] for r in rows.values())
-        rows["ups loss"] = dict(w=round(load * POWER["ups_loss_frac"][0], 1), kind="estimate",
-                                source=POWER["ups_loss_frac"][2])
-        total = sum(r["w"] for r in rows.values())
-        trays[k] = dict(slot=HOME[k], items=rows, total_w=round(total), ups_ok=load <= 1500.0,
+    for k in U.TRAY_LOADS:
+        ld, m = U.tray_load(k), U.unit_of(k)
+        rows = {r["key"]: dict(w=r["rated_w"], typical_w=r["typical_w"], backed=r["backed"], kind=r["kind"],
+                               source="; ".join(r["sources"])) for r in U.TRAY_LOADS[k]}
+        loss = U.loss_w(m, ld["backed_typical_w"])
+        rows["ups loss"] = dict(w=round(loss, 1), typical_w=round(loss, 1), backed=False, kind="derived",
+                                source=f"{m['maker']} {m['model']}: efficiency {U.eff_at(m, ld['backed_typical_w']):.0%} "
+                                       f"at {ld['backed_typical_w']} W (ups.CATALOGUE)")
+        total = ld["connected_w"] + loss
+        trays[k] = dict(slot=U.SLOT[k], shuttle=U.SHUTTLE[k], items=rows, total_w=round(total),
+                        idle_w=round(ld["backed_typical_w"] + loss), ups=f"{m['maker']} {m['model']}",
+                        ups_ok=m["w"] >= ld["backed_rated_w"], backed_rated_w=ld["backed_rated_w"],
+                        backed_typical_w=ld["backed_typical_w"], unbacked_rated_w=ld["unbacked_rated_w"],
                         estimated_share=round(sum(r["w"] for r in rows.values() if r["kind"] == "estimate") /
                                               max(total, 1), 2))
-    all_w = sum(t["total_w"] for t in trays.values())
     rho_cp = 1.2 * 1005.0                  # air, J/(m3 K)
     W, D, H = (V.UNIT_W + 2 * V.SKIN) / 1000, (V.UNIT_D + 2 * V.SKIN) / 1000, V.UNIT_H / 1000
     area = 2 * (W * H + D * H) + W * D     # walls and roof, m2
     k_encl = 5.5                           # W/(m2 K), painted sheet steel, still air: the usual enclosure-sizing figure
-    scen = {"everything on at its rating": all_w,
-            "printing in storage (tray C) and the furnace holding (tray F at a third of 2.8 kW)":
-                trays["C"]["total_w"] + round(2800 / 3) + 100,
-            "idle: controllers, cameras and UPSs only (about 60 W a tray, an estimate)": 6 * 60}
-    out = {}
-    for name, w in scen.items():
-        out[name] = dict(w=round(w), rise_k_unventilated=round(w / (k_encl * area), 1),
-                         airflow_m3h_for_5k=round(w / (rho_cp * 5) * 3600),
-                         airflow_m3h_for_10k=round(w / (rho_cp * 10) * 3600))
+
+    def scenarios(ks, extra):
+        sc_ = {"everything on at its rating": sum(trays[k]["total_w"] for k in ks), **extra,
+               "idle: every backed branch at its typical draw, heaters off, plus the UPSs' own losses":
+                   sum(trays[k]["idle_w"] for k in ks)}
+        return {name: dict(w=round(w), rise_k_unventilated=round(w / (k_encl * area), 1),
+                           airflow_m3h_for_5k=round(w / (rho_cp * 5) * 3600),
+                           airflow_m3h_for_10k=round(w / (rho_cp * 10) * 3600)) for name, w in sc_.items()}
+    s1 = [k for k in trays if trays[k]["shuttle"] == 1]
+    s2 = [k for k in trays if trays[k]["shuttle"] == 2]
+    idle1 = sum(trays[k]["idle_w"] for k in s1)
+    out = scenarios(s1, {"printing in storage (tray C) and the furnace holding (tray F at a third of 2.8 kW)":
+                         idle1 + trays["C"]["unbacked_rated_w"] + round(2800 / 3)})
+    out2 = scenarios(s2, {"two Form 4s and the Carvera working in storage, the rest idle":
+                          sum(trays[k]["idle_w"] for k in s2) + sum(
+                              r["rated_w"] for k in ("G", "M") for r in U.TRAY_LOADS[k]
+                              if r["key"] in ("form4", "cnc") and not r["backed"])})
+    method = ("rise with no ventilation = W / (5.5 W/m2K x surface): the usual figure for painted sheet steel in "
+              "still air, an estimate for a machine this size; airflow = W / (rho cp dT), air at 1.2 kg/m3 and "
+              "1005 J/kg K")
     return dict(
         trays=trays,
-        vlm=dict(enclosure_m=[round(W, 2), round(D, 2), round(H, 2)], surface_m2=round(area, 1),
-                 scenarios=out,
-                 method="rise with no ventilation = W / (5.5 W/m2K x surface): the usual figure for painted sheet "
-                        "steel in still air, an estimate for a machine this size; airflow = W / (rho cp dT), air at "
-                        "1.2 kg/m3 and 1005 J/kg K"),
+        vlm=dict(trays=s1, enclosure_m=[round(W, 2), round(D, 2), round(H, 2)], surface_m2=round(area, 1),
+                 scenarios=out, method=method),
+        vlm2=dict(trays=s2, enclosure_m=[round(W, 2), round(D, 2), round(H, 2)], surface_m2=round(area, 1),
+                  scenarios=out2, method=method),
         utilities=dict(
-            ups=dict(model="Eaton 5PX1500RTNG2", size_mm=[UPS["w"], UPS["d"], UPS["h"]], rating="1500 VA, 120 V",
-                     runtime="44 min at 300 W (230 V model, retailer)", where="on every tray, back right",
+            ups=dict(per_tray={k: dict(model=t["ups"], backed_rated_w=t["backed_rated_w"],
+                                       backed_typical_w=t["backed_typical_w"]) for k, t in trays.items()},
+                     where="on every powered tray, back right, standing on its side in a bolted cradle (ups.py)",
                      transit_s="about 6 s from R2 to the opening: 2 x 1030 mm at 0.7 m/s (3 s), 246 mm at 2 m/s "
                                "(0.1 s), plus the shutter and accelerations (not published); R4 adds about 0.8 s",
-                     source=SOURCES["ups"]),
+                     sizing=U.RULE, source="ups.CATALOGUE (makers' datasheets), out/ups.json"),
             n2=dict(model="Parker Balston UHPN2-1100", size_mm=[N2GEN["w"], N2GEN["d"], N2GEN["h"]],
                     fits_tray=N2GEN["h"] <= V.MAX_GOODS_H, where="beside the VLM; N2 through the docks",
                     source=SOURCES["n2"]),
@@ -2464,10 +2506,9 @@ def tray_instrument_boxes() -> dict:
         _, rx, ry = next(item for item in A.LOADS["B"] if item[0] == "rack")
         b = props.vial_rack()[0].bounds                     # the printed vial rack the arm takes the vial from
         out["B"].append(("rack", (rx + b[0], rx + b[1], ry + b[2], ry + b[3], V.T_FLOOR, V.T_FLOOR + b[5])))
+    import ups as U
     for k in HOME:                       # every tray's UPS, and its service plate with the bracket and the lines
-        x, y = UPS_AT
-        out.setdefault(k, []).append(("UPS", (x - UPS["d"] / 2, x + UPS["d"] / 2, y - UPS["w"] / 2, y + UPS["w"] / 2,
-                                              V.T_FLOOR, V.T_FLOOR + UPS["h"])))
+        out.setdefault(k, []).append(("UPS", U.box_on_tray(k)))      # round 12: its own unit and cradle (ups.py)
         out[k].append(("service plate", (X_FACE - PLATE_T - 60 - 120 - 18 * 5 - 4, SIDE, PLATE_Y - PLATE_L / 2,
                                          PLATE_Y + PLATE_L / 2, V.T_FLOOR, PLATE_Z0 + PLATE_H + 30)))
     return out
@@ -2556,7 +2597,7 @@ def tray_boxes(k: str) -> dict:
     each instrument's box and each camera unit's pieces."""
     from scene import T
     out = {"tray pan": np.array([-V.TRAY_W / 2, V.TRAY_W / 2, -V.TRAY_D / 2, V.TRAY_D / 2, 0.0, V.T_FLOOR + V.T_RIM])}
-    for parts in (plate_parts(), tray_lines(), ups_parts()):
+    for parts in (plate_parts(), tray_lines(), ups_parts(k)):
         for n, (s, _) in parts.items():
             out.update(_bboxes(n, s))
     for key, bb in tray_instrument_boxes().get(k, []):

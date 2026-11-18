@@ -1049,9 +1049,21 @@ def _overlap(ab, iv):
 
 
 # ================================================================================================ the realism checks
-UPS_WH = dict(value=220.0, unit="Wh delivered",
-              source="estimate from a 230 V 5PX 1500's 44 min at 300 W (a retailer's figure, notes/services.md)")
-TRAY_W = {"A": 297, "B": 45, "C": 1244, "D": 1207, "E": 630, "F": 900}   # notes/services.md; F with its heaters paused
+# Round 12 (PR #318, the real UPSs): each powered tray's own unit and the draw on its backed branch, from ups.py (the
+# energy its maker's runtime table shows it delivering, ups.delivered_wh; the branch's typical draw, ups.tray_load).
+UPS_WH = dict(value=None, unit="Wh delivered",
+              source="each tray's own unit: the most energy its maker's runtime table shows it delivering "
+                     "(ups.delivered_wh, out/ups.json)")
+
+
+def _ups_wh(k: str) -> float:
+    import ups
+    return ups.delivered_wh(ups.unit_of(k))
+
+
+def _tray_w(k: str) -> float:
+    import ups
+    return ups.tray_load(k)["backed_typical_w"] if k in ups.TRAY_LOADS else 60.0
 UNIT_W = dict(value=400.0, unit="W off the charger",
               source="assumed: the UR10e's 350 W typical (UR) and the MiR250's drive and computers")
 MIR_KWH = dict(value=47.7 * 34.2 / 1000, unit="kWh", source="MiR250 battery, Li-NMC 47.7 V 34.2 Ah, at least "
@@ -1079,8 +1091,8 @@ def realism(sim: dict, years: float = 1.0) -> dict:
             continue
         shut[sh] += n
         mates = n * PARAMS["mates_per_presentation"]["value"]
-        w = TRAY_W.get(k, 60)
-        dod = w * PARAMS["transit_s"]["value"] / 3600.0 / UPS_WH["value"]
+        w = _tray_w(k)
+        dod = w * PARAMS["transit_s"]["value"] / 3600.0 / _ups_wh(k)
         trays[k] = dict(presentations=n, plate_mates=mates, plate_years_to_100k=round(1e5 / max(1, mates), 1),
                         ups_transfers=2 * n, ups_dod_per_transfer_pct=round(100 * dod, 2),
                         ups_equiv_full_cycles=round(2 * n * dod, 1))
