@@ -1,0 +1,45 @@
+23:40:15Z watching, fan off: OK:{"msg":"Stirrer off"}
+23:40:16Z OK:{"target":0,"setpoint":0,"rpm":0.0,"duty":0.000,"stalled":0,"left_s":-1}
+23:40:46Z OK:{"target":0,"setpoint":0,"rpm":0.0,"duty":0.000,"stalled":0,"left_s":-1}
+23:41:17Z OK:{"target":0,"setpoint":0,"rpm":0.0,"duty":0.000,"stalled":0,"left_s":-1}
+23:41:47Z OK:{"target":0,"setpoint":0,"rpm":0.0,"duty":0.000,"stalled":0,"left_s":-1}
+23:42:17Z OK:{"target":0,"setpoint":0,"rpm":0.0,"duty":0.000,"stalled":0,"left_s":-1}
+23:42:48Z OK:{"target":0,"setpoint":0,"rpm":0.0,"duty":0.000,"stalled":0,"left_s":-1}
+23:43:18Z OK:{"target":0,"setpoint":0,"rpm":0.0,"duty":0.000,"stalled":0,"left_s":-1}
+23:43:33Z OK:{"target":0,"setpoint":0,"rpm":60.0,"duty":0.000,"stalled":0,"left_s":-1}
+23:43:34Z OK:{"target":0,"setpoint":0,"rpm":60.0,"duty":0.000,"stalled":0,"left_s":-1}
+23:44:04Z OK:{"target":0,"setpoint":0,"rpm":0.0,"duty":0.000,"stalled":0,"left_s":-1}
+23:44:35Z OK:{"target":0,"setpoint":0,"rpm":0.0,"duty":0.000,"stalled":0,"left_s":-1}
+23:45:05Z OK:{"target":0,"setpoint":0,"rpm":0.0,"duty":0.000,"stalled":0,"left_s":-1}
+Traceback (most recent call last):
+  File "/home/vcl/CubOS/.venv/lib/python3.13/site-packages/serial/serialposix.py", line 621, in write
+    n = os.write(self.fd, d)
+OSError: [Errno 5] Input/output error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/vcl/CubOS/packages/core/src/cubos/instruments/controllers/pawduino.py", line 190, in _send_command_locked
+    self._serial.write(message.encode())
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/home/vcl/CubOS/.venv/lib/python3.13/site-packages/serial/serialposix.py", line 655, in write
+    raise SerialException('write failed: {}'.format(e))
+serial.serialutil.SerialException: write failed: [Errno 5] Input/output error
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vcl/cubxl_runs/hall_watch_20261118/hall_watch.py", line 15, in <module>
+    s = link.send_command(31, timeout=5)
+  File "/home/vcl/CubOS/packages/core/src/cubos/instruments/controllers/pawduino.py", line 172, in send_command
+    return self._send_command_locked(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        code, *args, timeout=timeout, expect=expect,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/vcl/CubOS/packages/core/src/cubos/instruments/controllers/pawduino.py", line 193, in _send_command_locked
+    raise PawduinoLinkCommandError(
+        f"Failed to send command {code}: {exc}"
+    ) from exc
+cubos.instruments.controllers.pawduino.PawduinoLinkCommandError: Failed to send command 31: write failed: [Errno 5] Input/output error
