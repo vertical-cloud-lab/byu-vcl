@@ -1,13 +1,14 @@
 """org_photo.py's record, path-traced with Blender's Cycles (bpy, CPU): the org GIF's scene rebuilt in Blender, each
-snap rendered to REC/png/<snap>.png (RGBA, the background left transparent for compose to put on white).
+snap rendered to REC/png/<snap>.png (RGB, on a white backdrop that only the camera sees).
 
 Run with a Python that has ``bpy`` (5.3 here; ``pip install bpy`` wants Python 3.13), not the lab's venv:
 
-    python photo_render.py [REC]        # every snap not yet rendered, in order
+    python photo_render.py [REC]        # every snap not yet rendered (it may still be being recorded)
     PHOTO_SNAPS=0,120,400 ...           # only these snaps (also a:b, a:b:step)
     PHOTO_STRIDES=4,2,1 ...             # (the default) every 4th snap first, then every 2nd, then the rest: a
                                         # partial run is still the whole loop, at a lower frame rate
     PHOTO_DEADLINE=<unix time> ...      # start no render after it
+    PHOTO_RANGE=1160:100000 ...         # only these snaps: a second worker's share (the first skips what it drew)
     PHOTO_SAMPLES=16 PHOTO_SIZE=1280x720 PHOTO_THREADS=0
 
 The scene, in Blender's units (m; the lab's mm x 0.001):
@@ -18,7 +19,10 @@ The scene, in Blender's units (m; the lab's mm x 0.001):
   glows (the melt, the hot cup). Colour, opacity and glow are per object (Object Info, an object property), so a fade
   changes no shader. The floor is polished concrete;
 - light: a large soft panel overhead, a sun low enough to throw shadows across the floor, and a pale grey sky for
-  the bounce; AgX tone mapping.
+  the bounce; AgX tone mapping. The camera sees a white backdrop instead of the sky. It is drawn, not left
+  transparent: Cycles denoises colour but not alpha, so a see-through part in front of a transparent backdrop came out
+  speckled;
+- see-through parts (the VLM's cladding, ghosted shells) are glass: no shadow, GHOST x their opacity.
 """
 from __future__ import annotations
 
@@ -42,6 +46,7 @@ MM = 0.001
 STRIDES = [int(v) for v in os.environ.get("PHOTO_STRIDES", "4,2,1").split(",")]   # coarse to fine: a partial run
                                                                                  # is still the whole loop
 FROM, UPTO = (int(v) for v in os.environ.get("PHOTO_RANGE", "0:1000000").split(":"))   # a second worker's share
+START = int(os.environ.get("PHOTO_START", "0"))     # the first pass starts here (a second worker, further on)
 GHOST = float(os.environ.get("PHOTO_GHOST", "0.6"))     # a see-through part's opacity, against the VTK clip's
 OUTDIR = Path(os.environ.get("PHOTO_OUT", str(REC / "png")))
 
@@ -214,29 +219,24 @@ def material(kind: str, shine: float, vcol: bool = False):
     return m
 
 
-_PTS_NG = None
-
-
-def points_group():
-    """Geometry nodes: a mesh's vertices -> points of radius `r` (Cycles draws them as spheres)."""
-    global _PTS_NG
-    if _PTS_NG is not None:
-        return _PTS_NG
-    ng = bpy.data.node_groups.new("to_points", "GeometryNodeTree")
+def points_group(name):
+    """Geometry nodes, one group per point actor: its mesh's vertices -> points (Cycles draws them as spheres). The
+    radius is the Mesh to Points node's own value, set per snap: Blender 5.3 refuses the modifier's input properties
+    ("this type doesn't support IDProperties")."""
+    ng = bpy.data.node_groups.new(f"to_points_{name}", "GeometryNodeTree")
     ng.interface.new_socket(name="Geometry", in_out="INPUT", socket_type="NodeSocketGeometry")
-    ng.interface.new_socket(name="Radius", in_out="INPUT", socket_type="NodeSocketFloat")
     ng.interface.new_socket(name="Geometry", in_out="OUTPUT", socket_type="NodeSocketGeometry")
     gi = ng.nodes.new("NodeGroupInput")
     go = ng.nodes.new("NodeGroupOutput")
     mp = ng.nodes.new("GeometryNodeMeshToPoints")
+    mp.name = "mtp"
     ng.links.new(gi.outputs[0], mp.inputs["Mesh"])
-    ng.links.new(gi.outputs[1], mp.inputs["Radius"])
     ng.links.new(mp.outputs["Points"], go.inputs[0])
-    _PTS_NG = ng
     return ng
 
 
 _MESHES: dict = {}
+FACELESS: dict = {}
 
 
 def load_mesh(key: str, points_only: bool):
@@ -247,6 +247,7 @@ def load_mesh(key: str, points_only: bool):
     pts = d["points"].astype(np.float32)
     tris = d["tris"].astype(np.int32)
     me = bpy.data.meshes.new(key)
+    FACELESS[key] = len(tris) == 0 and len(pts) > 0     # vertices only: VTK draws them as points (the melt's drops)
     if len(pts):
         me.vertices.add(len(pts))
         me.vertices.foreach_set("co", pts.ravel())
@@ -378,6 +379,8 @@ class Lab:
             ob = self.objs.get(k)
             if vis and ob is None:
                 me = load_mesh(st["mesh"], a["points"])
+                if FACELESS.get(st["mesh"]) and not a["points"]:
+                    a["points"] = True                      # vertices only, drawn as points by VTK too
                 ob = self.objs[k] = bpy.data.objects.new(f"a{k:05d}", me)
                 sc.collection.objects.link(ob)
                 kind = "metal" if a["shine"] >= 0.65 else "dielectric"
@@ -391,7 +394,7 @@ class Lab:
                 self.kind[k] = (kind, a["shine"], vcol)
                 if a["points"]:
                     mod = ob.modifiers.new("pts", "NODES")
-                    mod.node_group = points_group()
+                    mod.node_group = points_group(ob.name)
                 prev = self.applied[k] = {"mesh": st["mesh"]}
             if ob is None:
                 self.applied[k] = dict(st)
@@ -437,12 +440,9 @@ class Lab:
             if self.actor(k)["points"] and not ob.hide_render:
                 c = np.array(ob.matrix_world.translation) / MM
                 r = max(0.4, 0.5 * self.actor(k)["point_size"] * fh * np.linalg.norm(pos - c))      # mm
-                mod = ob.modifiers["pts"]
-                ident = [it.identifier for it in mod.node_group.interface.items_tree
-                         if getattr(it, "in_out", "") == "INPUT" and it.name == "Radius"][0]
-                if mod.get(ident) != r:
-                    mod[ident] = float(r)
-                    ob.update_tag()
+                rad = ob.modifiers["pts"].node_group.nodes["mtp"].inputs["Radius"]
+                if abs(rad.default_value - r * 1.0) > 1e-4:
+                    rad.default_value = float(r)
         # the camera
         p = np.array(s["cam"][0], float) * MM
         f = np.array(s["cam"][1], float) * MM
@@ -475,6 +475,12 @@ def main():
                 continue
             png = OUTDIR / f"{s['rep']:05d}.png"
             if png.exists():
+                continue
+            if pass_i == 0 and s["s"] < START:
+                continue
+            try:                         # claimed by another worker? (each takes the next snap no one has taken)
+                os.close(os.open(OUTDIR / f"{s['rep']:05d}.claim", os.O_CREAT | os.O_EXCL | os.O_WRONLY))
+            except FileExistsError:
                 continue
             if deadline and time.time() > deadline:
                 print(f"render: deadline reached; {n_done} snaps in {time.time() - t_start:.0f} s", flush=True)

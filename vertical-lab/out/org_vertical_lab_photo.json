@@ -1,0 +1,1121 @@
+{
+ "name": "org_vertical_lab_photo",
+ "fps": 12,
+ "n_frames": 1815,
+ "size": [
+  880,
+  496
+ ],
+ "substeps": [
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 0,
+   "end_frame": 26
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 27,
+   "end_frame": 69
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 70,
+   "end_frame": 107
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 108,
+   "end_frame": 114
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 115,
+   "end_frame": 117
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 118,
+   "end_frame": 128
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 129,
+   "end_frame": 131
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 132,
+   "end_frame": 132
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 133,
+   "end_frame": 135
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 136,
+   "end_frame": 136
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 137,
+   "end_frame": 147
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 148,
+   "end_frame": 148
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 149,
+   "end_frame": 151
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 152,
+   "end_frame": 152
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 153,
+   "end_frame": 163
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 164,
+   "end_frame": 164
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 165,
+   "end_frame": 167
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 168,
+   "end_frame": 168
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 169,
+   "end_frame": 171
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 172,
+   "end_frame": 182
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 183,
+   "end_frame": 185
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 186,
+   "end_frame": 186
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 187,
+   "end_frame": 224
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 225,
+   "end_frame": 231
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 232,
+   "end_frame": 289
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 290,
+   "end_frame": 290
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 291,
+   "end_frame": 309
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 310,
+   "end_frame": 310
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 311,
+   "end_frame": 321
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 322,
+   "end_frame": 322
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 323,
+   "end_frame": 328
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 329,
+   "end_frame": 329
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 330,
+   "end_frame": 339
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 340,
+   "end_frame": 340
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 341,
+   "end_frame": 359
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 360,
+   "end_frame": 360
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 361,
+   "end_frame": 371
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 372,
+   "end_frame": 372
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 373,
+   "end_frame": 378
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 379,
+   "end_frame": 379
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 380,
+   "end_frame": 389
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 390,
+   "end_frame": 390
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 391,
+   "end_frame": 407
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 408,
+   "end_frame": 426
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 427,
+   "end_frame": 435
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 436,
+   "end_frame": 444
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 445,
+   "end_frame": 463
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 464,
+   "end_frame": 464
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 465,
+   "end_frame": 475
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 476,
+   "end_frame": 481
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 482,
+   "end_frame": 486
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 487,
+   "end_frame": 505
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 506,
+   "end_frame": 511
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 512,
+   "end_frame": 515
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 516,
+   "end_frame": 520
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 521,
+   "end_frame": 524
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 525,
+   "end_frame": 540
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 541,
+   "end_frame": 573
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 574,
+   "end_frame": 577
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 578,
+   "end_frame": 593
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 594,
+   "end_frame": 597
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 598,
+   "end_frame": 602
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 603,
+   "end_frame": 606
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 607,
+   "end_frame": 612
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 613,
+   "end_frame": 629
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 630,
+   "end_frame": 634
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 635,
+   "end_frame": 640
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 641,
+   "end_frame": 641
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 642,
+   "end_frame": 651
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 652,
+   "end_frame": 665
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 666,
+   "end_frame": 684
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 685,
+   "end_frame": 693
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 694,
+   "end_frame": 702
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 703,
+   "end_frame": 721
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 722,
+   "end_frame": 722
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 723,
+   "end_frame": 733
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 734,
+   "end_frame": 739
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 740,
+   "end_frame": 744
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 745,
+   "end_frame": 763
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 764,
+   "end_frame": 769
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 770,
+   "end_frame": 773
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 774,
+   "end_frame": 778
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 779,
+   "end_frame": 782
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 783,
+   "end_frame": 798
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 799,
+   "end_frame": 831
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 832,
+   "end_frame": 835
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 836,
+   "end_frame": 851
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 852,
+   "end_frame": 855
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 856,
+   "end_frame": 860
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 861,
+   "end_frame": 864
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 865,
+   "end_frame": 870
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 871,
+   "end_frame": 887
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 888,
+   "end_frame": 892
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 893,
+   "end_frame": 898
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 899,
+   "end_frame": 899
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 900,
+   "end_frame": 909
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 910,
+   "end_frame": 921
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 922,
+   "end_frame": 940
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 941,
+   "end_frame": 941
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 942,
+   "end_frame": 952
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 953,
+   "end_frame": 953
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 954,
+   "end_frame": 959
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 960,
+   "end_frame": 960
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 961,
+   "end_frame": 970
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 971,
+   "end_frame": 971
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 972,
+   "end_frame": 990
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 991,
+   "end_frame": 991
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 992,
+   "end_frame": 1002
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1003,
+   "end_frame": 1003
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1004,
+   "end_frame": 1009
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1010,
+   "end_frame": 1010
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1011,
+   "end_frame": 1020
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1021,
+   "end_frame": 1021
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1022,
+   "end_frame": 1035
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1036,
+   "end_frame": 1036
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1037,
+   "end_frame": 1123
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1124,
+   "end_frame": 1124
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1125,
+   "end_frame": 1134
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1135,
+   "end_frame": 1153
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1154,
+   "end_frame": 1154
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1155,
+   "end_frame": 1165
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1166,
+   "end_frame": 1171
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1172,
+   "end_frame": 1188
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1189,
+   "end_frame": 1194
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1195,
+   "end_frame": 1204
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1205,
+   "end_frame": 1223
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1224,
+   "end_frame": 1224
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1225,
+   "end_frame": 1235
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1236,
+   "end_frame": 1241
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1242,
+   "end_frame": 1264
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1265,
+   "end_frame": 1268
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1269,
+   "end_frame": 1274
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1275,
+   "end_frame": 1293
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1294,
+   "end_frame": 1303
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1304,
+   "end_frame": 1308
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1309,
+   "end_frame": 1319
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1320,
+   "end_frame": 1336
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1337,
+   "end_frame": 1344
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1345,
+   "end_frame": 1349
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1350,
+   "end_frame": 1356
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1357,
+   "end_frame": 1372
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1373,
+   "end_frame": 1379
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1380,
+   "end_frame": 1393
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1394,
+   "end_frame": 1403
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1404,
+   "end_frame": 1420
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1421,
+   "end_frame": 1425
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1426,
+   "end_frame": 1435
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1436,
+   "end_frame": 1454
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1455,
+   "end_frame": 1465
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1466,
+   "end_frame": 1470
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1471,
+   "end_frame": 1477
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1478,
+   "end_frame": 1496
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1497,
+   "end_frame": 1502
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1503,
+   "end_frame": 1507
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1508,
+   "end_frame": 1531
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1532,
+   "end_frame": 1536
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1537,
+   "end_frame": 1544
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1545,
+   "end_frame": 1561
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1562,
+   "end_frame": 1569
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1570,
+   "end_frame": 1574
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1575,
+   "end_frame": 1591
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1592,
+   "end_frame": 1596
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1597,
+   "end_frame": 1604
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1605,
+   "end_frame": 1611
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1612,
+   "end_frame": 1621
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1622,
+   "end_frame": 1622
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1623,
+   "end_frame": 1641
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1642,
+   "end_frame": 1735
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1736,
+   "end_frame": 1790
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1791,
+   "end_frame": 1796
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1797,
+   "end_frame": 1810
+  },
+  {
+   "label": "",
+   "caption": "",
+   "start_frame": 1811,
+   "end_frame": 1814
+  }
+ ],
+ "title": "In a vertical lab, equipment is brought to the operator",
+ "speed": 1.5,
+ "camera": "wide",
+ "phases": [
+  {
+   "start_frame": 0,
+   "text": "A vertical lab: storage that brings each instrument to the operator, a mobile robot arm."
+  },
+  {
+   "start_frame": 27,
+   "text": "First its trays are loaded (a time-lapse): each comes down to the opening, and people put its instruments on."
+  },
+  {
+   "start_frame": 70,
+   "text": "Tray A: Opentrons OT-2, CubXL + NuVant EZstat Pro, with its UPS and its camera posts."
+  },
+  {
+   "start_frame": 115,
+   "text": "Tray A goes back up to its slot, where it has power, and tray B comes down."
+  },
+  {
+   "start_frame": 187,
+   "text": "Tray B: the multi-doser v5 on its balance, the charge cups in their rack, and the vacuum press."
+  },
+  {
+   "start_frame": 232,
+   "text": "Only then does the robot come in: it docks at the opening, to work at tray B."
+  },
+  {
+   "start_frame": 291,
+   "text": "The arm stands an empty charge cup in a holder on its cup fork: its gripper can't reach into the doser."
+  },
+  {
+   "start_frame": 408,
+   "text": "One powder in each module: the chain brings the Si to the balance, and 3.92 g of it goes into the cup ..."
+  },
+  {
+   "start_frame": 666,
+   "text": "... then the AlSi10Mg module: 3.91 g on top, for Al-10Si."
+  },
+  {
+   "start_frame": 888,
+   "text": "The arm puts the fork back, and stands the charged cup in the carrier on the robot."
+  },
+  {
+   "start_frame": 1037,
+   "text": "Tray B goes back into storage, and the robot takes the cup to the atomizer."
+  },
+  {
+   "start_frame": 1125,
+   "text": "At the atomizer, the arm pulls the lid's draw latch open and lifts the lid by its knob."
+  },
+  {
+   "start_frame": 1275,
+   "text": "With a loading tong, the arm takes the cup and sets it on the crucible's floor, past the sealing rod."
+  },
+  {
+   "start_frame": 1478,
+   "text": "The arm shuts the lid and the latch, and the locking bolt goes in."
+  },
+  {
+   "start_frame": 1623,
+   "text": "The atomizer melts the cup and sprays the melt into powder (a time-lapse, cut open)."
+  },
+  {
+   "start_frame": 1736,
+   "text": "The robot has moved off, to wait for its next job."
+  }
+ ],
+ "photo": {
+  "snaps": 1806,
+  "distinct": 1707,
+  "rendered": 506,
+  "in_between": 1188,
+  "held": 13,
+  "cuts": 4,
+  "frames": 1815
+ }
+}

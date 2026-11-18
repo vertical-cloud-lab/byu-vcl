@@ -16,6 +16,54 @@ framework, [`scene.py`](scene.py), is `atomizer-training/viz3d/scene.py` from #1
 [`out/org_vertical_lab.gif`](out/org_vertical_lab.gif) is made to replace that GIF on the org README, under the same
 title. It follows one charge cup from tray B to the atomizer.
 
+### A path-traced version (2026-11-18)
+
+![The org page's GIF, path-traced](out/org_vertical_lab_photo.gif)
+
+On #329, Sterling asked for a more photorealistic version, with #351 in mind (#351 tried Argon Robotics' Alloy
+engine). [`out/org_vertical_lab_photo.gif`](out/org_vertical_lab_photo.gif) is round 9's loop path-traced by
+Blender's Cycles instead of drawn by VTK. The scene, the moves, the camera, the timing and the labels are unchanged.
+
+![Round 9 beside the path-traced frames](out/org_vertical_lab_photo_vs_r9.jpg)
+
+- **How:** [`org_photo.py`](org_photo.py) `record` runs `org_gif.movie()`, but each frame's draw is replaced by a
+  record of the scene: every actor's mesh (once per version), its world matrix, visibility, opacity, colour and glow,
+  the camera and the leader labels. Nothing is drawn, so the moves are exactly round 9's.
+  [`photo_render.py`](photo_render.py) rebuilds that scene in Blender (`bpy` 5.3) and path-traces it.
+  `org_photo.py compose` puts the labels back on, and `org_gif.py gif` adds the header band as for the VTK clip.
+- **Materials** come from the scene's own colours and its 0–1 shininess. A part with shininess of 0.65 or more is
+  metal, and roughness falls from 0.75 to 0.15 as shininess rises. The floor is concrete, a little darker than VTK's
+  floor colour so the tape on it reads. Parts that VTK draws with a raised ambient glow (the melt, the MiR's light
+  strip).
+- **Light:** a large soft panel over the lab, a sun from the south-west 50° up, and a pale grey sky for the bounce.
+  The tone mapping is AgX. The backdrop is plain white, as the org page is.
+- **See-through parts are glass.** They cast no shadow and are drawn at 0.6 of VTK's opacity. Drawn as VTK draws
+  them, every layer of the VLM's cladding cast a shadow and caught light, and the trays behind read through a grey
+  haze. The white backdrop is drawn, not left transparent: Cycles denoises colour but not alpha, so a transparent
+  backdrop came out speckled behind the cladding.
+- **What it costs:** 8 samples a pixel, denoised by OpenImageDenoise, at 880 × 496, the GIF's own width. This runner
+  has 4 CPU cores and no GPU. One worker took 6–13 s a frame in the wide views and up to 50 s in the doser's close
+  views, with two sharing the cores. At this run's pace the loop's 1,707 distinct frames would take about
+  6 hours.
+- **So this run path-traced 506 of them,** coarse to fine: every 4th frame across the loop first, then every
+  2nd where there was time. The rest (1188) are in-betweens made by optical flow (OpenCV's DIS) from the rendered
+  frames on either side, never across one of the loop's 4 camera cuts. The check was made on frames 40–152: from every 4th frame,
+  the in-between against the frame rendered there came out at 24–37 dB PSNR. Holding the frame before gave 15–36
+  (23.9 against 14.7 in a camera move). In-betweens can smear thin parts that move fast, such as the arm's wrist.
+  `photo_render.py` skips frames already rendered, so a longer run fills them in. Its PNGs are in `/tmp`, though,
+  so a new runner starts over.
+- **The file:** 880 × 556, 1815 frames at 18 fps (13 of its frames hold the nearest rendered
+  one, where none was rendered within 1 s on one side), 71.7 MB with 256 colours: over the 50 MB the org page's GIF was held to. The
+  in-betweens shift nearly every pixel a little, so fewer pixels stay the same from frame to frame than in VTK's clip
+  (48.6 MB in 112 colours). Fewer colours or a narrower GIF would bring it down. The same frames as an MP4,
+  [`out/mp4/org_vertical_lab_photo_readme.mp4`](out/mp4/org_vertical_lab_photo_readme.mp4), are 12.3 MB.
+- **A flaw to fix next: white windows in the doser's close views.** Where the camera looks out through the doser's
+  acrylic panels at nothing, it sees the white backdrop, so the panels read as bright windows. VTK showed a grey-blue
+  haze there (frame 553 above). In the next run the backdrop should be white only for rays that haven't
+  passed through glass (the Light Path node's transparent depth); those frames are the slowest to render, so this run
+  left them.
+- **Not attempted:** textures (the models carry colours only), motion blur and depth of field.
+
 **PR #327's third pass, merged here (2026-11-14).** On #327, Sterling asked for the latch and the lid to be read from
 a succession of frames. That run's notes ("Third pass" in [`notes/repowder_refine.md`](notes/repowder_refine.md)) and
 its four evidence sheets ([`out/repowder_refine/`](out/repowder_refine/), e.g.
@@ -2163,6 +2211,14 @@ python3 org_gif.py video 1280                                     # the same fra
 ARM_AUDIT_RENDER=1 ORG_NAME=org_vertical_lab_p0 ORG_PART=0:620 VIZ3D_FPS=12 xvfb-run -a python3 org_gif.py  # and p1, p2
 # the rePowder over the lab's footage, a camera fitted to each frame (round 7; repowder/overlay.py's docstring)
 xvfb-run -a python3 repowder/overlay.py fit refs/repowder_r7/t1_2640_lid_open.json /tmp/t1.jpg repowder 1 0 0
+# the path-traced version (org_photo.py's docstring). bpy 5.3 wants Python 3.13, in a venv of its own:
+#   python3.13 -m venv /tmp/venv_bpy && /tmp/venv_bpy/bin/pip install bpy==5.3.0; and pip install opencv-python-headless
+ORG_NAME=org_vertical_lab_photo VIZ3D_FPS=12 xvfb-run -a python3 org_photo.py record   # each frame's scene -> /tmp/org_photo/
+/tmp/venv_bpy/bin/python photo_render.py /tmp/org_photo         # Cycles on the CPU -> /tmp/org_photo/png/ (9-20 s a frame)
+PHOTO_RANGE=1160:100000 /tmp/venv_bpy/bin/python photo_render.py /tmp/org_photo   # a second worker, beside the first
+ORG_NAME=org_vertical_lab_photo python3 org_photo.py compose   # labels, in-betweens -> out/mp4/org_vertical_lab_photo.mp4
+ORG_NAME=org_vertical_lab_photo python3 org_gif.py gif 880 0 256   # 256 colours -> out/org_vertical_lab_photo.gif
+python3 org_photo.py sheet 0 160 ...                            # round 9 beside the path-traced frames
 ```
 
 Putting them on YouTube (needs `YOUTUBE_UPLOAD_TOKEN_PICKLE_B64`; see [`youtube/README.md`](../youtube/README.md)):

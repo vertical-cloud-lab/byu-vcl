@@ -199,6 +199,7 @@ def record():
 
 # ============================================================================================ 3. compose
 CUT_MM = 400.0       # the camera moving more than this (position + focal point) between two snaps is a cut
+MAX_GAP = 12         # frames: in-betweens only across a gap this long (1 s); a longer one holds the nearer snap
 
 
 class Filler:
@@ -262,7 +263,7 @@ class Filler:
             k = bisect.bisect_left(self.have, r)
             A = self.have[k - 1] if k > 0 and self.seg[self.have[k - 1]] == self.seg[r] else None
             B = self.have[k] if k < len(self.have) and self.seg[self.have[k]] == self.seg[r] else None
-            if A is not None and B is not None and self.mode == "flow":
+            if A is not None and B is not None and self.mode == "flow" and self.t[B] - self.t[A] <= MAX_GAP:
                 import cv2
                 a, b = self.image(A), self.image(B)
                 if (A, B) not in self.flows:
@@ -277,8 +278,10 @@ class Filler:
                                borderMode=cv2.BORDER_REPLICATE)
                 im = ((1 - t) * wa.astype(np.float32) + t * wb.astype(np.float32)).clip(0, 255).astype(np.uint8)
                 self.n_flow += 1
-            else:
+            else:                       # no rendered snap on one side, or too far to morph: the nearer one held
                 near = A if A is not None else B
+                if A is not None and B is not None and self.t[B] - self.t[r] < self.t[r] - self.t[A]:
+                    near = B
                 if near is None:
                     near = self.have[max(0, k - 1)]
                 im = self.image(near)
