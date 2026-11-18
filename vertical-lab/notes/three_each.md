@@ -52,13 +52,16 @@ Tray masses: the UPS is 23 kg, the cameras and Pis a few kg; all are far inside 
 
 **Why not three printers on one tray?** The UPS is a 1500 VA Eaton 5PX1500, about 1350 W. Tray C already draws 1244 W
 (H2D 1050 + A1 mini 150), so any tray holding an H2D can't also hold a 400 W A2L at full draw. This option keeps
-every tray at or under what the lab already checks. Per-tray column room: **5 trays = 2 x 750 + 2 x 725 + 550 = 3500
+every tray at or under what the lab already checks. *Round 12 ([`ups.md`](ups.md)) changes the premise: the printers
+are on each tray's unbacked branch, straight from the dock, and a printer tray's UPS (a Liebert PSI5-800) carries only
+its cameras and switch. What limits a printer tray is now the dock's 5 kVA continuous, not the UPS.* Per-tray column room: **5 trays = 2 x 750 + 2 x 725 + 550 = 3500
 mm**.
 
 ## Option 2: dense (4 new trays)
 
 A2, A3 as above, and C2, C3 each carry H2D + A1 mini + A2L (1496 mm wide, slot 725). Column room 2 x 750 + 2 x 725 =
-2950 mm. Each printer tray draws about 1050 + 150 + 400 + 44 = 1650 W flat out, **over the UPS's 1350 W**. Ways out: a
+2950 mm. Each printer tray draws about 1050 + 150 + 400 + 44 = 1650 W flat out, **over the UPS's 1350 W** (round 12: on
+the unbacked branch, so only against the dock's 5 kVA, which it clears; the rest of this paragraph is the old premise). Ways out: a
 2200 VA UPS (its depth is unchecked; the strip the 5PX1500 stands in is 86 mm thick and 447 deep, so a longer unit may
 not fit), or a cap in the scheduler so the H2D and A2L never heat together (the H2D's 1320 W peak lasts under 3 min), or
 a 240 V feed to the tray (the 230 V model of the same UPS is still 1350 W, so that alone doesn't help). Cheaper in column

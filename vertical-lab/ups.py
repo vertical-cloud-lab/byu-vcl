@@ -245,7 +245,6 @@ def unit_parts(m: dict) -> dict:
         p[f"outlet plate {i}"] = (_box(xb, y0, z0, xb + 1.5, y1, z1), "ups_trim")
     for i, (y0, y1, z0, z1, shape, size, pitch) in enumerate(r.get("vents", [])):
         p[f"rear vent {i}"] = (_box(xb, y0, z0, xb + 0.5, y1, z1), "ups_rear")
-        mm = dict(m)
         h = _pattern(dict(tower_mm=(D, T, H)), xb + 1.2, z0, z1, y0 + T / 2, y1 + T / 2, shape, size, pitch)
         if h is not None:
             p[f"rear vent holes {i}"] = (h, "ups_vent")
@@ -624,7 +623,7 @@ def display_point(k: str) -> tuple:
     return (bx - D - 2.0, yc + (v0 + v1) / 2 - T / 2, z0 + (u0 + u1) / 2)
 
 
-def _text(s: str, h: float, R, at) -> "pv.PolyData":
+def _text(s: str, h: float, R, at):
     """3-D text `s`, letters h mm tall, turned by R (columns: where the text's x, y and depth go) and moved to `at`
     (the text's bottom left)."""
     import pyvista as pv
@@ -659,9 +658,17 @@ def markings(m: dict, tag: str | None = None) -> list:
         out.append((t.triangulate(), LOGO_RGB.get(colour, colour)))
     if tag:
         R = np.array(SIDE, float).T
-        a = _text(f"UPS {tag}   {m['maker']} {m['model']}", 12.0, R, (-D + 30.0, -T / 2 - 0.7, H - 36.0))
-        b = _text(f"{m['va']} VA / {m['w']} W, {m['chem_short']}", 9.5, R, (-D + 30.0, -T / 2 - 0.7, H - 56.0))
-        out.append((a.merge(b).triangulate(), LOGO_RGB["white"]))
+        lines = [(f"UPS {tag}   {m['maker']} {m['model']}", 12.0, 36.0),
+                 (f"{m['va']} VA / {m['w']} W, {m['chem_short']}", 9.5, 56.0)]
+        merged = None
+        for text, h, dz in lines:
+            t = _text(text, h, R, (0.0, 0.0, 0.0))
+            room = D - 50.0                                # the label stays on the side, 25 mm in from either end
+            if t.bounds[1] - t.bounds[0] > room:           # a short unit: the label's letters shrink to fit
+                t = _text(text, h * room / (t.bounds[1] - t.bounds[0]), R, (0.0, 0.0, 0.0))
+            t.points = np.asarray(t.points) + (-D + 25.0, -T / 2 - 0.7, H - dz)
+            merged = t if merged is None else merged.merge(t)
+        out.append((merged.triangulate(), LOGO_RGB["white"]))
     return out
 
 

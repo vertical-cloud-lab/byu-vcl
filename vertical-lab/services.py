@@ -102,7 +102,8 @@ SOURCES = {
                            "2020 posts in printed 90 x 90 mm feet with 50 mm sockets, wedges and Pi 5 plates on M5 "
                            "drop-in T-nuts in the slot, a Camera Module 3 case on M2 standoffs, ribbon clips; one "
                            "Pi per camera post, so a 200-300 mm ribbon is enough.",
-    "ups": "Eaton 5PX1500RTNG2 (120 V, 1500 VA, rack/tower 2U): 3.4 x 17.2 x 17.6 in (86 x 437 x 447 mm), weight "
+    "ups": "Round 4 to 11's single box, replaced in round 12 by each tray's own unit (ups.CATALOGUE): "
+           "Eaton 5PX1500RTNG2 (120 V, 1500 VA, rack/tower 2U): 3.4 x 17.2 x 17.6 in (86 x 437 x 447 mm), weight "
            "'50.7' (lb, about 23 kg), farnell.com data sheet (search snippet); 44 min at 300 W (230 V model, retailer "
            "listing). Heat dissipation not published. APC SMT1500RM2UC for comparison: 432 x 477 x 86 mm, 26.5 kg, "
            "1440 VA / 1000 W, 98.9 % efficient at 50 % load (ENERGY STAR).",

@@ -235,7 +235,8 @@ The iMicro's Berkovich tip (every 600 runs, about two years at 309 a year) is th
 **Sourced:** 49 of the 121 tasks, cited in `upkeep.SRC` and in each task's `source` in `out/upkeep_model.json`:
 - **Kardex** (service twice a year);
 - **Stäubli CombiTac** (100,000 mating cycles);
-- **Eaton 5PX** (a weekly self-test; 3-5 year batteries);
+- **Eaton 5PX** (a weekly self-test; 3-5 year batteries), and since round 12 **Vertiv** for the trays' lithium UPSs
+  (up to 10 years; [`ups.md`](ups.md));
 - **MiR250 and Universal Robots maintenance plans**;
 - **Robotiq 2F-85 manual** (fingertips at 1 million cycles, overhaul at 2 million);
 - **Parker UHPN2** (a 12-month filter kit);
