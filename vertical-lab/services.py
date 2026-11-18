@@ -35,6 +35,7 @@ from pathlib import Path
 import cadquery as cq
 import numpy as np
 
+import coupling as CP
 import instruments as I
 import vlm as V
 from instruments import Instrument, Joint, _piece
@@ -53,6 +54,7 @@ SOURCES = {
                          "option (kardex.com/products/vertical-lift/kardex-shuttle).",
     "kardex_supply": "#53: 208 V three-phase. A used XP 500 2450x864 listed '3/N/PE 400V, 17A' (machineseeker, page now "
                      "404); used XP listings show 17 A, 8.6 kVA.",
+    **{f"combitac_{k}": v for k, v in CP.SOURCES.items()},
     "combitac_align4": "Staubli CombiTac uniq catalogue (CT-Main-11014009-en) p.80-81: CombiTac align 4, misalignment "
                        "compensation radial 4 mm, angular +-2 deg; 100,000 mating cycles; the plug side's pins guide, "
                        "the socket side is conical. p.82: 'the customer must provide a stable guide system, e.g. with "
@@ -196,13 +198,14 @@ MATERIALS = {
     "svc_chain": (0.15, 0.15, 0.16, 1.0, 0.3),      # an energy chain
     "svc_cabinet": (0.86, 0.87, 0.86, 1.0, 0.3),
 }
+MATERIALS.update(CP.MATERIALS)      # the coupling's parts (coupling.py, 2026-11-18)
 MEDIA = [   # (key, label for the leader lines, material, coupling)
-    ("power", "mains: L1, L2, N, PE", "svc_power", "4 x O3 mm power units, 39 A each"),
-    ("data", "Ethernet, Cat 6A", "svc_data", "10 Gbit module, RJ45"),
-    ("air", "compressed air", "svc_air", "RCT06, 6 mm, shut-off"),
-    ("n2", "nitrogen", "svc_n2", "SCT03, shut-off both sides"),
-    ("cws", "chilled water in", "svc_cws", "LCT06, shut-off both sides"),
-    ("cwr", "chilled water out", "svc_cwr", "LCT06, shut-off both sides"),
+    ("power", "mains: L1, L2, N, PE", "svc_power", "CT-E3-3 and CT-E3-2+PE, O3 mm, 39 A; PE mates first"),
+    ("data", "Ethernet, Cat 6A", "svc_data", "CT-10GBIT-RJ45, 10 Gbit/s"),
+    ("air", "compressed air", "svc_air", "SCT03, G1/8, shut-off both sides"),
+    ("n2", "nitrogen", "svc_n2", "SCT03, G1/8, shut-off both sides"),
+    ("cws", "chilled water in", "svc_cws", "LCT06, G1/4, shut-off both sides"),
+    ("cwr", "chilled water out", "svc_cwr", "LCT06, G1/4, shut-off both sides"),
 ]
 
 # ===================================================================================================== the coupling
@@ -214,18 +217,28 @@ MEDIA = [   # (key, label for the leader lines, material, coupling)
 # The plate's face is sunk 6 mm inside the tray's side (PR #318 review, "are any of the docks going to interfere with
 # the lift itself?", dock_clearance()): the tray rides the extractor 5 mm from its carriages, and with the face flush
 # the inserts, 1.5 mm proud, passed them at 3.5 mm. Now nothing on a tray stands proud of its side.
-PLATE_Y = V.TRAY_D / 2 - 12 - 140      # centre of the plate along the tray's depth (tray frame): 280
-PLATE_L = 200.0                        # along y
-PLATE_Z0 = V.T_FLOOR + 10.0            # bottom of the plate, over the support it slides on
-PLATE_H = 90.0
-PLATE_T = 16.0
+# 2026-11-18 (PR #318: "something more real and high-fidelity for the liquid, gas, and power transfer modules"):
+# the plate and the dock are now coupling.py's, part by part: two Staubli CombiTac frames (electrical above fluid),
+# align 4 end pieces, SCT03 and LCT06 couplings, on a plate on the tray, and a floating dock on two MGN12 guides,
+# driven 75 mm by a self-locking slider-crank. These names keep their meaning for the scenes below.
+PLATE_Y = CP.YC                        # centre of the coupling along the tray's depth (tray frame): 280
+PLATE_L = CP.PANEL["y1"] - CP.PANEL["y0"]       # the tray's plate along y: 180
+PLATE_Z0 = CP.PANEL["z0"]              # its bottom, over the support the tray slides on: 12
+PLATE_H = CP.PANEL["z1"] - CP.PANEL["z0"]       # 106
+PLATE_T = CP.PANEL["t"]                # 6 mm aluminium
 SIDE = V.TRAY_W / 2                    # the tray's outer side face: 1225
-X_FACE = SIDE - 6.0                    # the mated faces meet here, 6 mm inside it: 1219
-STROKE = 60.0                          # the dock pulls back this far: its pins' tips (32 mm) 22 mm clear of the tray
-DOCK_HX0 = X_FACE + STROKE + PLATE_T + 3.0     # the dock housing's inner face, behind the head pulled back: 1298
-PIN_DY = 86.0                          # guide pins either side of the plate's centre
-INSERT_DY = (-60.0, -36.0, -12.0, 12.0, 36.0, 60.0)
-ZC = PLATE_Z0 + PLATE_H / 2
+X_FACE = CP.X_M                        # the mated faces meet here, 6 mm inside it: 1219
+STROKE = CP.STROKE                     # the dock pulls back 75 mm: the align pins' tips 18.8 mm clear of the tray
+DOCK_HX0 = CP.DOCK["x0"]               # the dock's frame starts here (it reaches into the side wall's window)
+PIN_DY = CP.end_axes("E")[1][0] - CP.YC        # the electrical frame's align pins either side of the centre: 39.5
+FACE = {}                              # {medium: (y, z)} on the face, tray frame: where each medium crosses
+for _y, _z, _what, _med, _key in CP.pole_points("E") + CP.pole_points("F"):
+    if _med and _med not in FACE and _what != "lmfb":
+        FACE[_med] = (_y, _z)
+FACE["power"] = next((y, z) for y, z, w, m, k in CP.pole_points("E") if w == "ct3" and abs(z - CP.Z_E) < 1)
+FACE["data"] = (next((a + b) / 2 for k, a, b, _ in CP.frame_span(CP.E_MODS)[1] if k.startswith("CT-10GBIT")), CP.Z_E)
+INSERT_DY = tuple(FACE[k][0] - PLATE_Y for k, *_ in MEDIA)
+ZC = CP.Z_E                            # the electrical frame's centre height (labels)
 RISER = {"x": 1335.0, "dy": -175.0}    # a service riser per column in the right-hand side cavity, ahead of the docks
 
 
@@ -243,48 +256,48 @@ def _xc(d, x0, x1, y, z):
 
 
 def plate_parts() -> dict:
-    """The tray's half, in the tray's frame: {name: (shape, material)}."""
-    p = {}
-    x0 = X_FACE - PLATE_T
-    y0, y1 = PLATE_Y - PLATE_L / 2, PLATE_Y + PLATE_L / 2
-    plate = box(x0, y0, PLATE_Z0, X_FACE, y1, PLATE_Z0 + PLATE_H)
-    for s in (-1, 1):                                      # the guide pins' conical bushings
-        plate = plate.cut(_xc(14, X_FACE - 30, X_FACE + 1, PLATE_Y + s * PIN_DY, ZC))
-    p["service plate"] = (plate, "svc_plate")
-    # the bracket behind it, bolted to the tray floor, and the box where the tray's own lines start
-    p["plate bracket"] = (box(x0 - 60, y0 + 10, V.T_FLOOR, x0, y1 - 10, PLATE_Z0 + PLATE_H + 15), "svc_housing")
-    for (key, _, mat, _), dy in zip(MEDIA, INSERT_DY):
-        y = PLATE_Y + dy
-        if key in ("power", "data"):
-            ins = box(X_FACE - 1, y - 9, ZC - 24, X_FACE + 1.5, y + 9, ZC + 24)
-        else:
-            ins = _xc(17, X_FACE - 1, X_FACE + 1.5, y, ZC)
-        p[f"plate {key}"] = (ins, mat)
-    return p
+    """The tray's half, in the tray's frame: {name: (shape, material)}: coupling.tray_half, without the couplings'
+    valve parts (they are inside the bodies; coupling.py's close-up shows them)."""
+    return CP.tray_half(internals=False)
 
 
 MANIFOLD_X = 580.0          # tray frame: the end of the tray's lines, a manifold block left of the UPS on the back rim
 
 
+def _tray_starts() -> dict:
+    """{medium: [(x, y, z)]}: where each line leaves the tray's half of the coupling (tray frame), as coupling.py draws
+    the stubs: the mains cable out of its gland, the Cat 6A cable out of the RJ45 plug, each tube out of its fitting's
+    collet."""
+    gx = CP.X_M - CP.CARRIER["depth"] - 30.0
+    gy = FACE["data"][0]
+    out = {"power": [(gx - 60.0, CP.YC - 8.0, CP.Z_E + 48.0)],
+           "data": [(CP.X_M - 34.9 - 60.0, gy, CP.Z_E + 34.0)]}
+    for y, z, what, med, key in CP.pole_points("F"):
+        c = CP.CPL[what]
+        fx = CP.X_M - c["s_front"] - c["s_body"] - 19.0
+        out[med] = [(fx, y, z), (fx - 10.0, y, z)]
+    return out
+
+
 def line_paths() -> dict:
-    """{medium: [(x, y, z)]} of the tray's lines, tray frame: up out of the plate's top edge, over its bracket, then
-    mains into the UPS's back (the UPS feeds the tray's power strip) and the rest back to the rim and along it, over
-    the power strip, to a manifold block left of the UPS."""
+    """{medium: [(x, y, z)]} of the tray's lines, tray frame: from the coupling's stubs up over the bracket, then mains
+    into the UPS's back (the UPS feeds the tray's power strip) and the rest back to the rim and along it, over the
+    power strip, to a manifold block left of the UPS."""
     out = {}
     ux = UPS_AT[0] + UPS["d"] / 2                       # the UPS's back, facing the plate: x = 1060
-    xs = X_FACE - 8.0                                   # inside the plate, at its top edge
+    st = _tray_starts()
     j = 0
-    for i, ((key, _, _, _), dy) in enumerate(zip(MEDIA, INSERT_DY)):
-        y = PLATE_Y + dy
+    for i, (key, *_) in enumerate(MEDIA):
+        pts = list(st[key])
+        x0, y0, z0 = pts[-1]
         zt = PLATE_Z0 + PLATE_H + 30.0 + 6.0 * i        # over the bracket, one layer each
         if key == "power":
-            out[key] = [(xs, y, PLATE_Z0 + PLATE_H - 4), (xs, y, zt), (ux + 40, y, zt), (ux + 40, UPS_AT[1], zt),
-                        (ux + 1, UPS_AT[1], zt)]
+            out[key] = pts + [(x0, y0, zt), (ux + 40, y0, zt), (ux + 40, UPS_AT[1], zt), (ux + 1, UPS_AT[1], zt)]
             continue
         yr = V.TRAY_D / 2 - 18.0 - 6.5 * j              # along the back rim, over the power strip
         zr = 58.0 + 6.5 * j
-        out[key] = [(xs, y, PLATE_Z0 + PLATE_H - 4), (xs, y, zt), (ux + 60 - 8 * j, y, zt), (ux + 60 - 8 * j, yr, zt),
-                    (ux + 60 - 8 * j, yr, zr), (MANIFOLD_X + 40, yr, zr)]
+        out[key] = pts + [(x0, y0, zt), (ux + 60 - 8 * j, y0, zt), (ux + 60 - 8 * j, yr, zt), (ux + 60 - 8 * j, yr, zr),
+                          (MANIFOLD_X + 40, yr, zr)]
         j += 1
     return out
 
@@ -300,89 +313,65 @@ def tray_lines(live_mat=True) -> dict:
 
 
 def dock_paths() -> dict:
-    """{medium: [(x, y, z)]} of the dock's side, slot frame: from the service riser along the hose, through its valve
-    (or the mains contactor, or the Ethernet link), down into the housing and across to its insert in the head."""
+    """{medium: [(x, y, z)]} of the dock's side, slot frame, with the dock engaged: from the service riser to its
+    switching element on the valve bank, up through the energy chain, into the head and through the coupling to the
+    face."""
     out = {}
-    y0 = PLATE_Y - PLATE_L / 2
-    ry = PLATE_Y + RISER["dy"]
-    zr = PLATE_Z0 + PLATE_H + 25 + 30
-    for i, ((key, _, _, _), dy) in enumerate(zip(MEDIA, INSERT_DY)):
-        x = DOCK_HX0 + 14 + i * 13
-        out[key] = [(x, ry, zr), (x, y0 + 30, zr), (x, y0 + 30, PLATE_Z0 + PLATE_H + 25),
-                    (X_FACE + PLATE_T + 6, PLATE_Y + dy, ZC), (X_FACE + 2, PLATE_Y + dy, ZC)]
+    vp = CP.valve_points()
+    ry = PLATE_Y + RISER["dy"] + 40.0                   # the riser's face towards the dock
+    zc = CP.CHAIN["z_up"]
+    zl = zc - 2 * CP.CHAIN["r"]
+    for key, *_ in MEDIA:
+        xv, yv, zv = vp[key]
+        y, z = FACE[key]
+        head = [(1286.0, y, -2.0), (1286.0, y, z - 8.0), (CP.X_M + 40.0, y, z)] if key not in ("power", "data") else \
+            [(CP.X_M + CP.CARRIER["depth"] + 46.0, CP.YC - 96.0, -4.0),
+             (CP.X_M + CP.CARRIER["depth"] + 46.0, CP.YC - 96.0, CP.Z_E + 20.0), (CP.X_M + 40.0, y, z)]
+        out[key] = [(RISER["x"], ry, zv - 30.0), (xv, yv - 14.0, zv - 30.0), (xv, yv, zv - 4.0),
+                    (CP.CHAIN["x_fixed"] + 10.0, CP.CHAIN["y"], zl), (CP.CHAIN["x_fixed"] + 30.0, CP.CHAIN["y"], zc - 6.0),
+                    (CP.CHAIN["x_end0"] + 6.0, CP.CHAIN["y"], zc + 6.0)] + head + [(X_FACE + 2.0, y, z)]
     return out
 
 
-VALVE_Y = PLATE_Y - PLATE_L / 2 - 20.0      # slot frame: where each hose's valve sits on its run to the riser
+VALVE_Y = CP.valve_points()["air"][1]       # slot frame: the valve bank's row of indicators
 SWITCH_C = {True: (0.15, 0.78, 0.30), False: (0.88, 0.16, 0.12)}      # open / closed
 
 
 def switch_parts() -> dict:
-    """The dock's switching, slot frame: a solenoid valve with a vent on each of the air, N2 and two water hoses, a
-    contactor on the mains and a link light on the Ethernet. {name: (shape, material)}; the indicator on each is
-    switch_lights()."""
-    p = {}
-    zr = PLATE_Z0 + PLATE_H + 25 + 30
-    for i, (key, _, mat, _) in enumerate(MEDIA):
-        x = DOCK_HX0 + 14 + i * 13
-        if key in ("air", "n2", "cws", "cwr"):
-            body = box(x - 5.5, VALVE_Y - 12, zr - 8, x + 5.5, VALVE_Y + 12, zr + 8)
-            sol = cyl(9.0, 14.0, x=x, y=VALVE_Y, z=zr + 8)
-            vent = cq.Workplane("XZ").circle(2.5).extrude(-8).translate((x, VALVE_Y + 12, zr - 3))
-            p[f"valve {key}"] = (body.union(vent), "svc_steel")
-            p[f"solenoid {key}"] = (sol, "svc_print")
-        else:
-            p[f"{'contactor' if key == 'power' else 'link'} {key}"] = (
-                box(x - 5.5, VALVE_Y - 14, zr - 9, x + 5.5, VALVE_Y + 14, zr + 20), "svc_print")
-    return p
+    """The dock's switching is coupling.valve_bank(), part of dock_parts(head=False); nothing more to add."""
+    return {}
 
 
 def switch_light_mesh(key: str):
-    """The indicator disc on top of a medium's valve, contactor or link (slot frame), a PolyData."""
+    """The indicator on top of a medium's valve, the contactor or the RJ45 coupler (slot frame), a PolyData."""
     import pyvista as pv
-    i = [m[0] for m in MEDIA].index(key)
-    zr = PLATE_Z0 + PLATE_H + 25 + 30
-    return pv.Cylinder(center=(DOCK_HX0 + 14 + i * 13, VALVE_Y, zr + 23.5), direction=(0, 0, 1), radius=4.6,
-                       height=3.0).triangulate()
+    x, y, z = CP.valve_points()[key]
+    return pv.Sphere(radius=3.2, center=(x, y, z + 1.5), theta_resolution=12, phi_resolution=10)
 
 
 def dock_parts(head=True) -> dict:
     """The slot's half, in the slot's frame (the frame of a tray standing in the slot): {name: (shape, material)}.
-    head=True gives the moving head (it slides +x by STROKE to let go), False the fixed housing and its hoses."""
-    p = {}
-    y0, y1 = PLATE_Y - PLATE_L / 2, PLATE_Y + PLATE_L / 2
+    head=True gives the moving head at s = 0 (it slides +x by STROKE to let go), False the fixed frame, guides, drive,
+    valve bank and the supply lines from the riser. The crank and its rod are dock_crank_parts()."""
     if head:
-        hp = box(X_FACE, y0, PLATE_Z0, X_FACE + PLATE_T, y1, PLATE_Z0 + PLATE_H)
-        p["dock head"] = (hp, "svc_plate")
-        pins = None
-        for s in (-1, 1):
-            pin = _xc(12, X_FACE - 24, X_FACE, PLATE_Y + s * PIN_DY, ZC)
-            tip = cq.Workplane("YZ").circle(6).workplane(offset=-8).circle(2.5).loft().translate(
-                (X_FACE - 24, PLATE_Y + s * PIN_DY, ZC))
-            pin = pin.union(tip)
-            pins = pin if pins is None else pins.union(pin)
-        p["guide pins"] = (pins, "svc_steel")
-        for (key, _, mat, _), dy in zip(MEDIA, INSERT_DY):
-            y = PLATE_Y + dy
-            if key in ("power", "data"):
-                ins = box(X_FACE + 0.5, y - 9, ZC - 24, X_FACE + 3, y + 9, ZC + 24)
-            else:
-                ins = _xc(17, X_FACE + 0.5, X_FACE + 3, y, ZC)
-            p[f"dock {key}"] = (ins, mat)
-        # the rod of the actuator, through the side wall's window
-        p["dock rod"] = (box(X_FACE + PLATE_T, PLATE_Y - 14, ZC - 14, 1300, PLATE_Y + 14, ZC + 14), "svc_steel")
-        return p
-    hx0, hx1 = DOCK_HX0, 1372.0
-    p["dock housing"] = (box(hx0, y0 + 20, PLATE_Z0 - 15, hx1, y1 - 20, PLATE_Z0 + PLATE_H + 25), "svc_housing")
-    # its hoses: six lines from the housing's front into the column's riser
-    ry = PLATE_Y + RISER["dy"]
-    for i, (key, _, mat, _) in enumerate(MEDIA):
-        x = hx0 + 14 + i * 13
-        z = PLATE_Z0 + PLATE_H + 25 + 30
-        vert = cq.Workplane("XY").circle(4).extrude(30).translate((x, y0 + 30, PLATE_Z0 + PLATE_H + 25))
-        run = cq.Workplane("XZ").circle(4).extrude(y0 + 30 - ry).translate((x, y0 + 30, z))
-        p[f"hose {key}"] = (vert.union(run), mat)
+        return CP.head_parts(internals=False)
+    p = CP.dock_fixed()
+    vp = CP.valve_points()
+    ry = PLATE_Y + RISER["dy"] + 40.0
+    for (key, _, mat, _) in MEDIA:
+        x, y, z = vp[key]
+        p[f"supply {key}"] = (hose([(x, CP.YC - 60.0, z - 30.0), (x, ry + 6.0, z - 30.0), (x, ry, z - 30.0)], 6.0), mat)
     return p
+
+
+def dock_crank_parts() -> dict:
+    """{'crank': parts, 'rod': parts} at s = 0, slot frame; their poses at s are crank_pose(s)."""
+    return {"crank": CP.crank_parts(), "rod": CP.rod_parts()}
+
+
+def crank_pose(s: float) -> dict:
+    phi = CP.drive_phi(s)
+    return {"crank": CP.crank_matrix(phi), "rod": CP.rod_matrix(phi)}
 
 
 def riser_parts(z0=180.0, z1=3800.0) -> dict:
@@ -791,29 +780,26 @@ def stream_cam(post_h: float = 600.0, h0: float = 360.0) -> Instrument:
 
 # ===================================================================================================== dock model
 def tray_dock() -> Instrument:
-    """The coupling on its own, round the plate: the corner of a tray, the slot's side wall and the dock."""
-    off = cq.Location(cq.Vector(-X_FACE, -PLATE_Y, 0))
-    inst = Instrument("tray_dock", "Tray service dock", "Staubli CombiTac-style docking plate, actuated",
-                      (STROKE + 180.0, PLATE_L + 40, PLATE_H + 60),
-                      "CombiTac uniq catalogue (inserts, align 4 docking), Kardex #53 (power in a slot and at the "
-                      "opening); the layout, plate and stroke are ours")
+    """The coupling on its own: the corner of a tray with its half, the slot's side wall and the dock (coupling.py)."""
+    o = (-X_FACE, -PLATE_Y, 0.0)
+    off = cq.Location(cq.Vector(*o))
+    inst = Instrument("tray_dock", "Tray service dock", "Staubli CombiTac frames (align 4), on a floating dock",
+                      (CP.DOCK["x1"] - (X_FACE - 150.0), CP.DOCK["y1"] - CP.DOCK["y0"] + 40.0,
+                       CP.DOCK["z1"] - CP.VALVES_Z[0]),
+                      "Staubli CombiTac uniq catalogue (CT-Main-11014009-en: carriers, contacts, SCT03, LCT06, LMFB, "
+                      "10 Gbit, align 4 end pieces, cut-outs, mating rules); Kardex #53 (power in a slot and at the "
+                      "opening); the plates, dock, drive, chain and valve bank are ours (coupling.py)")
     body = _piece(inst, "body")
-    # the side wall of the slot with a window for the dock, the support the tray rides on, the housing and hoses
-    wx = V.TRAY_W / 2 + 45
-    y0, y1 = -190.0, 150.0
-    wall = box(wx - X_FACE, y0, -30, wx + 12 - X_FACE, y1, 200)
-    wall = wall.cut(box(wx - X_FACE - 1, -PLATE_L / 2 - 12, PLATE_Z0 - 12, wx + 13 - X_FACE, PLATE_L / 2 + 12,
-                        PLATE_Z0 + PLATE_H + 12))
-    body.add("slot side wall", wall, "svc_wall")
-    body.add("tray support", box(-20, y0, -6, wx - X_FACE, y1, 0), "svc_rib")
+    for n, (s, m) in CP.context_parts().items():
+        if n in ("tray pan", "service riser"):
+            continue
+        body.add(n, _shape(s).moved(off), m)
     for n, (s, m) in dock_parts(head=False).items():
+        if n.startswith("supply "):
+            continue
         body.add(n, _shape(s).moved(off), m)
     tray = _piece(inst, "tray")
-    sx = SIDE - X_FACE                                    # the tray's side, 6 mm outside the mated faces
-    pan = box(-300, -330, 0, sx, 142, V.T_FLOOR + V.T_RIM)
-    pan = pan.cut(box(-301, -331, V.T_FLOOR, sx - 12, 130, V.T_FLOOR + V.T_RIM + 1))
-    pan = pan.cut(box(-PLATE_T - 1, -PLATE_L / 2 - 2, PLATE_Z0 - 2, sx + 1, PLATE_L / 2 + 2, V.T_FLOOR + V.T_RIM + 1))
-    tray.add("tray corner", pan, "svc_tray")
+    tray.add("tray corner", _shape(CP.context_parts()["tray pan"][0]).moved(off), "cpl_tray")
     for n, (s, m) in plate_parts().items():
         tray.add(n, _shape(s).moved(off), m)
     live = _piece(inst, "live")
@@ -822,38 +808,62 @@ def tray_dock() -> Instrument:
     head = _piece(inst, "head")
     for n, (s, m) in dock_parts(head=True).items():
         head.add(n, _shape(s).moved(off), m)
-    inst.joints = {
-        "head": Joint("slide", vec=(STROKE, 0, 0)),
-        "tray": Joint("slide", vec=(0, -700, 0)),
-        "live": Joint("fade", parent="tray", v0=1.0),
-    }
+    joints = {"head": Joint("slide", vec=(STROKE, 0, 0)), "tray": Joint("slide", vec=(0, -700, 0)),
+              "live": Joint("fade", parent="tray", v0=1.0)}
+    drive = []
+    for k, parts in dock_crank_parts().items():
+        pc = _piece(inst, k)
+        for n, (s, m) in parts.items():
+            pc.add(n, _shape(s).moved(off), m)
+        joints[k] = CP.DriveJoint("drive", part=k, off=o)
+        drive.append(k)
+    for i, sh in enumerate(CP.chain_link_shapes(0.0)):
+        k = f"chain{i}"
+        _piece(inst, k).add(f"chain link {i}", _shape(sh).moved(off), "cpl_chain")
+        joints[k] = CP.DriveJoint("drive", part=k, off=o)
+        drive.append(k)
+    inst.joints = joints
+
+    def with_drive(d, a, b):
+        d.update({k: (a, b) for k in ["head"] + drive})
+        return d
     inst.actions = [
-        ("In its slot the tray's plate is held against the dock: mains, Ethernet, compressed air, N2 and chilled water "
-         "are all live through one coupling.", 2.4, {"live": (1.0, 1.0)}),
-        ("Before the tray moves: air, N2 and water are shut and vented (CombiTac's couplings must not part under "
-         f"pressure), the tray's UPS takes the load, and the dock pulls back {STROKE:.0f} mm.", 2.6,
-         {"live": (1.0, 0.0), "head": (0.0, 1.0)}),
-        (f"The extractor pulls the tray out of the slot, across the dock, whose pins are now "
-         f"{X_FACE - 24 + STROKE - SIDE:.0f} mm clear of the tray's side.", 2.0,
+        ("In its slot the tray's half is held against the dock's: mains, Ethernet, compressed air, N2 and chilled "
+         "water are live through two CombiTac frames, the electrical one above the fluid one.", 2.6,
+         {"live": (1.0, 1.0)}),
+        ("Before the tray moves: the contactor opens (the tray's UPS takes the load), air, N2 and water shut and "
+         f"vent, then the crank turns 180 deg and the dock pulls back {STROKE:.0f} mm. The LMFB pair breaks first.",
+         3.2, with_drive({"live": (1.0, 0.0)}, 0.0, 1.0)),
+        (f"The extractor pulls the tray out, past the dock, whose align pins are now "
+         f"{CP.clear_mm()['gap_to_tray_side_pulled_back_mm']:.0f} mm clear of the tray's side.", 2.0,
          {"tray": (0.0, 1.0)}),
-        ("At the opening an identical dock waits in the bay's side wall. The tray stops against it ...", 2.0,
+        ("At the opening an identical dock waits in the bay's side wall. The tray stops in front of it ...", 2.0,
          {"tray": (1.0, 0.0)}),
-        ("... the guide pins find the plate's bushings (4 mm of misalignment, CombiTac align), the plate is pressed "
-         "home, the supplies open: back on mains.", 2.4, {"head": (1.0, 0.0), "live": (0.0, 1.0)}),
+        ("... the align 4 pins find their cones and the floating plate follows; PE makes first and the LMFB pair "
+         "last, and only then does the contactor close and the valves open.", 3.2,
+         with_drive({"live": (0.0, 1.0)}, 1.0, 0.0)),
     ]
-    z = ZC
-    inst.labels = [("guide pin", (-24, PIN_DY, z), (0.84, 0.20)),          # on the dock's head, which stays
-                   ("mains", (8, INSERT_DY[0], z + 20), (0.16, 0.18)),
-                   ("Ethernet", (8, INSERT_DY[1], z + 20), (0.16, 0.28)),
-                   ("air", (8, INSERT_DY[2], z), (0.16, 0.38)),
-                   ("N2", (8, INSERT_DY[3], z), (0.16, 0.48)),
-                   ("water in / out", (8, INSERT_DY[4], z), (0.16, 0.58)),
-                   ("dock: actuator in the side wall", (110, -60, PLATE_Z0 + PLATE_H + 25), (0.84, 0.40)),
-                   ("service plate on the tray", (-PLATE_T, -PLATE_L / 2, PLATE_Z0 + 5), (0.84, 0.66))]
-    inst.cam = (1.0, -1.5, 1.0)
-    inst.framing = (0.48, 0.45)
+    _, spanE = CP.frame_span(CP.E_MODS)
+    _, spanF = CP.frame_span(CP.F_MODS)
+
+    def mid(span, key):
+        return [(a + b) / 2 for k, a, b, _ in span if k.startswith(key)][0] - PLATE_Y
+    zE, zF = CP.Z_E, CP.Z_F
+    inst.labels = [("align 4 guide pin", (-40.0, CP.end_axes("E")[0][0] - PLATE_Y, zE), (0.84, 0.16)),
+                   ("mains L1, L2, N, PE", (1.0, mid(spanE, "CT-E3-3"), zE + 18.0), (0.16, 0.16)),
+                   ("Ethernet, 10 Gbit", (1.0, mid(spanE, "CT-10GBIT"), zE + 18.0), (0.16, 0.26)),
+                   ("air, N2: SCT03", (1.0, mid(spanF, "CT-E8"), zF + 18.0), (0.16, 0.38)),
+                   ("water in / out: LCT06", (1.0, mid(spanF, "CT-E-UCT08"), zF + 18.0), (0.16, 0.50)),
+                   ("dock: floating plate, MGN12 guides,\nslider-crank drive", (80.0, 0.0, CP.DOCK["z1"]), (0.84, 0.36)),
+                   ("valve bank", (100.0, -40.0, CP.VALVES_Z[1]), (0.84, 0.62)),
+                   ("the tray's plate", (-PANEL_BACK, PLATE_L / 2 - 20.0, PLATE_Z0 + 5.0), (0.16, 0.66))]
+    inst.cam = (1.0, -1.5, 0.8)
+    inst.framing = (0.40, 0.45)
     inst.props = ("live",)
     return inst
+
+
+PANEL_BACK = CP.PANEL["half_gap"] + CP.PANEL["t"]        # the tray's plate's back face, behind the mating plane
 
 
 # ===================================================================================================== utilities
@@ -1135,6 +1145,7 @@ def add_docks(sc, positions) -> dict:
     from scene import T
     fixed = meshes_of("dock_fixed", lambda: dock_parts(head=False), 0.5)
     head = meshes_of("dock_head", lambda: dock_parts(head=True), 0.3)
+    drive = {k: meshes_of(f"dock_{k}", lambda k=k: dock_crank_parts()[k], 0.3) for k in ("crank", "rod")}
     out = {}
     for pos in positions:
         yc, zs = V.SLOTS[pos]
@@ -1145,7 +1156,13 @@ def add_docks(sc, positions) -> dict:
         sc.parent[gh] = g
         sc.gmat[gh] = np.eye(4)
         out[pos] = gh
-        add_meshes(sc, f"sw_{pos}", meshes_of("switches", switch_parts, 0.3), g)
+        for k, by in drive.items():               # the slider-crank: its crank and rod move with the head (set_dock)
+            gk = f"dock{k}_{pos}"
+            add_meshes(sc, gk, by, gk)
+            sc.parent[gk] = g
+            sc.gmat[gk] = np.eye(4)
+        r, gg, b, _, _ = MATERIALS["cpl_chain"]
+        sc.add(f"dockchain_{pos}", CP.chain_mesh(0.0), (r, gg, b), g, specular=0.2)
         for key, *_ in MEDIA:
             sc.add(f"swlight_{pos}_{key}", switch_light_mesh(key), SWITCH_C[True], g, ambient=0.7, specular=0.2)
     riser = meshes_of("riser", riser_parts, 2.0)
@@ -1155,10 +1172,22 @@ def add_docks(sc, positions) -> dict:
     return out
 
 
+_CHAIN_MESH: dict = {}
+
+
 def set_dock(sc, pos, u):
-    """u = 0 engaged, 1 pulled back."""
+    """u = 0 engaged, 1 pulled back: the head, the crank and its rod, and the energy chain's links."""
     from scene import T
-    sc.gmat[f"dockhead_{pos}"] = T((STROKE * u, 0, 0))
+    s = STROKE * min(max(u, 0.0), 1.0)
+    sc.gmat[f"dockhead_{pos}"] = T((s, 0, 0))
+    for k, m in crank_pose(s).items():
+        if f"dock{k}_{pos}" in sc.gmat:
+            sc.gmat[f"dock{k}_{pos}"] = m
+    if f"dockchain_{pos}" in sc.actors:
+        key = round(s, 1)
+        if key not in _CHAIN_MESH:
+            _CHAIN_MESH[key] = CP.chain_mesh(s)
+        sc.set_mesh(f"dockchain_{pos}", _CHAIN_MESH[key])
 
 
 def set_switches(sc, pos, on):
@@ -1242,7 +1271,7 @@ class Flow:
         for pos in places:
             yc, zs = V.SLOTS[pos]
             for (key, _, mat, _), dy in zip(MEDIA, INSERT_DY):
-                pts = np.array(dp[key] + [(X_FACE - 8.0, PLATE_Y + dy, ZC)] + lp[key], float) + (0.0, yc, zs)
+                pts = np.array(dp[key] + lp[key], float) + (0.0, yc, zs)
                 cum = np.r_[0.0, np.cumsum(np.linalg.norm(np.diff(pts, axis=0), axis=1))]
                 self.paths[(pos, key)] = (pts, cum)
                 name = f"flow_{pos}_{key}"
@@ -1431,12 +1460,12 @@ def movie_services(data, idata):
                                ("service risers", (RISER["x"], V.Y_REAR + PLATE_Y + RISER["dy"], 3200), (0.30, 0.16))])
     yc, zs = V.SLOTS[slot]
     wy, wz = yc + PLATE_Y, zs + ZC
-    media_lbl = [(f"{lab_}: {cpl}", (X_FACE + 2, wy + dy, wz + (14 if key in ("power", "data") else 0)),
-                  (0.03, 0.25 + 0.07 * i))
-                 for i, ((key, lab_, _, cpl), dy) in enumerate(zip(MEDIA, INSERT_DY))]
+    media_lbl = [(f"{lab_}: {cpl}", (X_FACE + 2, yc + FACE[key][0], zs + FACE[key][1]), (0.03, 0.25 + 0.07 * i))
+                 for i, (key, lab_, _, cpl) in enumerate(MEDIA)]
     cut = ("col_rear", "posts", "lift_rails", "lift")
-    sc.step(f"2/{n}", f"Tray {k} in its slot ({slot}). The dock holds the plate home: mains, Ethernet, compressed air, "
-            "nitrogen and chilled water are live. CombiTac's docking frame lets the pins take up 4 mm of misalignment.",
+    sc.step(f"2/{n}", f"Tray {k} in its slot ({slot}). The dock holds the coupling home: mains, Ethernet, compressed "
+            "air, nitrogen and chilled water are live through two Staubli CombiTac frames, whose align 4 pins take up "
+            "4 mm of misalignment.",
             3.4, lambda u: hide(sc, cut, 1.0 - u), hold=2.4, cam_to=CAM_S_R2,
             labels=media_lbl + [("guide pins", (X_FACE - 20, wy + PIN_DY, wz), (0.84, 0.30)),
                                 (f"tray's UPS ({ups_name(k)})", (UPS_AT[0], yc + UPS_AT[1], zs + UPS["h"]),
@@ -1603,8 +1632,7 @@ def movie_hookups(data, idata):
         y0, z0 = V.SLOTS[pos]
         return (x, y0 + y, z0 + z)
 
-    zr = PLATE_Z0 + PLATE_H + 25 + 30
-    xv = DOCK_HX0 + 14
+    vp = CP.valve_points()
     gauges(f"in {slot}, docked: on mains", "charging from the dock's mains", "engaged, all six live", "pulled back")
     L.apply_state()
     n = 6
@@ -1623,9 +1651,9 @@ def movie_hookups(data, idata):
         hide(sc, cut, 1.0 - u)
         ghost_prefix(sc, eq, 1.0 - 0.75 * u)
     lbl2 = [("UPS: charging from the mains", (UPS_AT[0] - 80, yc + UPS_AT[1], zs + V.T_FLOOR + UPS["h"]), (0.10, 0.20)),
-            ("valves on air, N2, water in and out: open", at_slot(xv + 13 * 3, VALVE_Y, zr + 25), (0.88, 0.16)),
-            ("mains contactor: closed", at_slot(xv, VALVE_Y, zr + 25), (0.88, 0.26)),
-            ("Ethernet: linked", at_slot(xv + 13, VALVE_Y, zr + 25), (0.88, 0.34)),
+            ("valves on air, N2, water in and out: open", at_slot(*vp["n2"]), (0.88, 0.16)),
+            ("mains contactor: closed", at_slot(*vp["power"]), (0.88, 0.26)),
+            ("Ethernet: linked", at_slot(*vp["data"]), (0.88, 0.34)),
             ("dock head pressed on the plate", at_slot(X_FACE + 10, PLATE_Y + 70, PLATE_Z0 + PLATE_H), (0.88, 0.52)),
             ("lines on the tray: mains into the UPS,\nthe rest along the back rim", at_slot(1100, 400, 70), (0.10, 0.62))]
     sc.step(f"2/{n}", f"Stored in {slot}, docked: the dock in the side wall holds the plate home. Mains, Ethernet, "
@@ -1652,14 +1680,15 @@ def movie_hookups(data, idata):
         L.apply_state()
     gauges(f"in {slot}, letting go", f"takes the load: about {load_w:.0f} W", "shutting, venting, pulling back",
            "pulled back")
-    lbl3 = [("valves shut, lines vented", at_slot(xv + 13 * 3, VALVE_Y, zr + 25), (0.88, 0.16)),
-            ("contactor open: mains off", at_slot(xv, VALVE_Y, zr + 25), (0.88, 0.26)),
+    lbl3 = [("valves shut, lines vented", at_slot(*vp["n2"]), (0.88, 0.16)),
+            ("contactor open: mains off", at_slot(*vp["power"]), (0.88, 0.26)),
             ("UPS: on battery", (UPS_AT[0] - 80, yc + UPS_AT[1], zs + V.T_FLOOR + UPS["h"]), (0.10, 0.20)),
             (f"dock pulls back {STROKE:.0f} mm", at_slot(X_FACE + 40, PLATE_Y + 70, PLATE_Z0 + PLATE_H),
              (0.88, 0.52))]
     sc.step(f"3/{n}", "Before the tray may move: the air, N2 and water valves shut and their lines vent (Staubli: the "
             "couplings must not part under pressure); the contactor opens, so the UPS takes the load; then the dock "
-            f"pulls back {STROKE:.0f} mm, its pins 22 mm clear of the tray.", 4.6, release, hold=1.6, labels=lbl3,
+            f"pulls back {STROKE:.0f} mm, its pins {CP.clear_mm()['gap_to_tray_side_pulled_back_mm']:.0f} mm clear of "
+            "the tray.", 4.6, release, hold=1.6, labels=lbl3,
             live=True)
 
     # ---- 4: in transit on the UPS
@@ -1715,8 +1744,8 @@ def movie_hookups(data, idata):
         L.apply_state()
     gauges("at the opening, docking", f"on battery, about {load_w:.0f} W", "pulled back, empty slot", "pushing in")
     lbl5 = [("bay dock: pins first", at_slot(X_FACE + 10, PLATE_Y + PIN_DY, ZC, "open"), (0.88, 0.50)),
-            ("contactor closes: back on mains", at_slot(xv, VALVE_Y, zr + 25, "open"), (0.88, 0.22)),
-            ("valves open: air, N2, water", at_slot(xv + 13 * 3, VALVE_Y, zr + 25, "open"), (0.88, 0.32)),
+            ("contactor closes: back on mains", at_slot(*vp["power"], "open"), (0.88, 0.22)),
+            ("valves open: air, N2, water", at_slot(*vp["n2"], "open"), (0.88, 0.32)),
             ("UPS: recharging", (UPS_AT[0] - 80, by + UPS_AT[1], bz + V.T_FLOOR + UPS["h"]), (0.10, 0.24))]
     sc.step(f"5/{n}", "At the opening the bay's identical dock pushes in: the guide pins find the plate's bushings, "
             "the contacts and couplings mate, the contactor closes (the UPS recharges) and only then the valves open: "
@@ -2509,8 +2538,8 @@ def tray_instrument_boxes() -> dict:
     import ups as U
     for k in HOME:                       # every tray's UPS, and its service plate with the bracket and the lines
         out.setdefault(k, []).append(("UPS", U.box_on_tray(k)))      # round 12: its own unit and cradle (ups.py)
-        out[k].append(("service plate", (X_FACE - PLATE_T - 60 - 120 - 18 * 5 - 4, SIDE, PLATE_Y - PLATE_L / 2,
-                                         PLATE_Y + PLATE_L / 2, V.T_FLOOR, PLATE_Z0 + PLATE_H + 30)))
+        out[k].append(("service plate", (929.0, SIDE, PLATE_Y - PLATE_L / 2 - 2.0, PLATE_Y + PLATE_L / 2 + 2.0,
+                                         V.T_FLOOR, PLATE_Z0 + PLATE_H + 30)))
     return out
 
 
@@ -2611,14 +2640,36 @@ def tray_boxes(k: str) -> dict:
     return out
 
 
+_DOCK_BOXES: dict = {}
+
+
 def dock_boxes(pos: str, u: float) -> dict:
-    """{part: box} of the dock at a slot or the bay, world; u = 0 engaged, 1 pulled back."""
+    """{part: box} of the dock at a slot or the bay, world; u = 0 engaged, 1 pulled back: the fixed frame, guides,
+    drive and valve bank, the head, the crank and rod at their pose, and the energy chain at its shape."""
     yc, zs = V.SLOTS[pos]
-    out = {}
-    for head in (False, True):
-        for n, (s, _) in dock_parts(head=head).items():
-            out.update({m: _shift(b, (STROKE * u if head else 0.0, yc, zs)) for m, b in _bboxes(n, s).items()})
-    return out
+    s = STROKE * u
+    if s not in _DOCK_BOXES:                    # slot frame, built once per travel
+        out = {}
+        for head in (False, True):
+            for n, (sh, _) in dock_parts(head=head).items():
+                out.update({m: _shift(b, (s if head else 0.0, 0.0, 0.0)) for m, b in _bboxes(n, sh).items()})
+        for k, parts in dock_crank_parts().items():
+            M = crank_pose(s)[k]
+            for n, (sh, _) in parts.items():
+                for m, b in _bboxes(n, sh).items():
+                    c = np.array([[x, y, z, 1.0] for x in b[0:2] for y in b[2:4] for z in b[4:6]]) @ M.T
+                    out[m] = np.array([c[:, 0].min(), c[:, 0].max(), c[:, 1].min(), c[:, 1].max(), c[:, 2].min(),
+                                       c[:, 2].max()])
+        out["energy chain"] = np.array(CP.chain_mesh(s).bounds, float)
+        _DOCK_BOXES[s] = out
+    return {m: _shift(b, (0.0, yc, zs)) for m, b in _DOCK_BOXES[s].items()}
+
+
+def _gaps(A: np.ndarray, B: np.ndarray) -> np.ndarray:
+    """Box-to-box distances, every box in A (..., 6) against every box in B (n, 6): (..., n)."""
+    A = A[..., None, :]
+    d = np.maximum(0.0, np.maximum(A[..., 0::2] - B[:, 1::2], B[:, 0::2] - A[..., 1::2]))
+    return np.linalg.norm(d, axis=-1)
 
 
 def dock_clearance(dz: float = 10.0) -> dict:
@@ -2641,31 +2692,35 @@ def dock_clearance(dz: float = 10.0) -> dict:
     lift = {}
     for load in ["empty"] + list(HOME):
         rows = {}
+        mv = {f"extractor: {n}": b for n, b in ext.items()}
+        if load != "empty":
+            mv.update({f"tray {load}: {n}": b for n, b in trays[load].items()})
+        mnames, marr = list(mv), np.array(list(mv.values()), float)
         for (p, u), D in docks.items():
-            best = (1e9, None, None, None)
-            for z in zz:
-                moving = {f"extractor: {n}": _shift(b, (0, 0, z)) for n, b in ext.items()}
-                if load != "empty":
-                    moving.update({f"tray {load}: {n}": _shift(b, (0, 0, z)) for n, b in trays[load].items()})
-                g, a, b = _nearest(moving, D)
-                if g < best[0]:
-                    best = (g, a, b, z)
-            rows[f"{p} {'engaged' if u == 0 else 'pulled back'}"] = dict(gap_mm=round(best[0], 1), moving=best[1],
-                                                                         dock=best[2], lift_z=float(best[3]))
+            dnames, darr = list(D), np.array(list(D.values()), float)
+            Z = marr[None, :, :] + np.array([0, 0, 0, 0, 1, 1], float)[None, None, :] * zz[:, None, None]
+            G = _gaps(Z, darr)                                   # (heights, moving, dock)
+            iz, ia, ib = np.unravel_index(int(np.argmin(G)), G.shape)
+            rows[f"{p} {'engaged' if u == 0 else 'pulled back'}"] = dict(gap_mm=round(float(G[iz, ia, ib]), 1),
+                                                                         moving=mnames[ia], dock=dnames[ib],
+                                                                         lift_z=float(zz[iz]))
         lift[load] = rows
     slide = {}
     moves = [(k, HOME[k], V.SLOTS[HOME[k]][0], 0.0, V.SLOTS[HOME[k]][1]) for k in HOME] + \
             [(k, "open", 0.0, V.Y_OPEN, V.Z_OPEN) for k in HOME]
     for k, p, y0, y1, z in moves:
-        best = (1e9, None, None)
-        for y in np.linspace(y0, y1, 121):
-            moving = {n: _shift(b, (0, y, z)) for n, b in trays[k].items()}
-            g, a, b = _nearest(moving, docks[(p, 1.0)])
-            if g < best[0]:
-                best = (g, a, b)
+        tn, ta = list(trays[k]), np.array(list(trays[k].values()), float)
+        D = docks[(p, 1.0)]
+        dn, da = list(D), np.array(list(D.values()), float)
+        ys = np.linspace(y0, y1, 121)
+        Y = ta[None, :, :] + np.array([0, 0, 1, 1, 0, 0], float)[None, None, :] * ys[:, None, None] + \
+            np.array([0, 0, 0, 0, z, z], float)
+        G = _gaps(Y, da)
+        iy, ia, ib = np.unravel_index(int(np.argmin(G)), G.shape)
         slide[f"tray {k} {'out of ' + p if p != 'open' else 'into the bay'}"] = dict(
-            gap_mm=round(best[0], 1), tray_part=best[1], dock_part=best[2])
-    plate = {n: b for n, b in trays["A"].items() if n.startswith("plate ")}
+            gap_mm=round(float(G[iy, ia, ib]), 1), tray_part=tn[ia], dock_part=dn[ib])
+    face = {n for n, (s, _) in plate_parts().items() if _bbox(s)[1] >= X_FACE - 2.0}
+    plate = {n: b for n, b in trays["A"].items() if n.split(" #")[0] in face}
     car = {n: b for n, b in ext.items() if n.startswith("extractor carriages")}
     now = _nearest(plate, car)
     flush = _nearest({n: _shift(b, (SIDE - X_FACE, 0, 0)) for n, b in plate.items()}, car)
@@ -2727,7 +2782,7 @@ def draw_clearance(res: dict | None = None, path=None):
         rect([-V.TRAY_W / 2, V.TRAY_W / 2, yc - V.TRAY_D / 2, yc + V.TRAY_D / 2], c_tray, 1.0, lw=1.2, fill=False,
              z=2, ls=ls)
         for n, b in plate.items():
-            rect(_shift(b, (0, yc, 0)), c_plate if n in ("service plate", "plate bracket") else "#e36209", 1.0, z=5)
+            rect(_shift(b, (0, yc, 0)), c_plate if n in ("tray panel", "tray bracket") else "#e36209", 1.0, z=5)
     for p, u in (("F1", 1.0), ("R2", 0.0)):
         for n, b in dock_boxes(p, u).items():
             if n.startswith("hose"):
@@ -2765,7 +2820,7 @@ def draw_clearance(res: dict | None = None, path=None):
                      f"(it was {pc['with_the_face_flush']:.1f} mm with the face flush)", color=ink, fontsize=8.5)
     ax.text(840, yr - 380, "tray in R2, docked", color=ink, fontsize=8.5)
     ax.set_title("Plan of the right-hand side at a slot's height (x stretched): the extractor (red) rides the shaft,\n"
-                 "the docks (grey) sit in the columns' side walls; plates dark, their inserts orange",
+                 "the docks (grey) sit in the columns' side walls; the tray's plate dark, its CombiTac frames orange",
                  fontsize=9.5, color=ink, loc="left")
     # each case's smallest gap
     bx = fig.add_axes([0.70, 0.16, 0.27, 0.70])
