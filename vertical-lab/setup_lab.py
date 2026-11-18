@@ -1735,7 +1735,10 @@ def tray_loads(items: dict) -> dict:
             if key == "cam":
                 continue                               # a post, a Pi and two cameras: a few kg, by hand
             m = MASS_KG.get(key)
-            if m is None:
+            if key == "ups":                           # round 12: each tray's own unit (ups.py)
+                import ups as U
+                m = (U.unit_of(k)["kg"], f"{U.unit_of(k)['model']} (ups.CATALOGUE)")
+            if m is None or m[0] is None:
                 unknown.append(nm)
                 continue
             known += m[0]

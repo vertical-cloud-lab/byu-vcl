@@ -711,7 +711,7 @@ def _studio_scene(name, size=(1600, 900)):
     from scene import Scene
     import tour
     sc = Scene(name, name, size=size, gif=False, mp4=False)
-    tour.studio(sc, size=12000.0)
+    tour.studio(sc, size=60000.0)
     return sc
 
 
@@ -832,8 +832,8 @@ def figure() -> str:
         ax1.barh(y, t["backed_rated_w"], height=0.56, color=c, alpha=0.35, lw=0)
         ax1.barh(y, t["backed_typical_w"], height=0.56, color=c, lw=0)
         ax1.plot([t["ups_w"]] * 2, [y - 0.38, y + 0.38], color=INK, lw=2.0, solid_capstyle="butt")
-        ax1.text(t["ups_w"] + 25, y, f"{t['model']}  ({t['ups_w']} W)", va="center", ha="left", fontsize=8.5,
-                 color=INK)
+        ax1.text(t["ups_w"] + 30, y, f"{CATALOGUE[t['ups']]['short']}, {t['ups_w']} W", va="center", ha="left",
+                 fontsize=8.5, color=INK)
         ax2.plot([t["runtime_min_typical"]], [y], "o", ms=8, color=c, mec=SURF, mew=2)
         ax2.text(t["runtime_min_typical"] * 1.12, y, f"{t['runtime_min_typical']:.0f} min", va="center",
                  fontsize=8.5, color=INK2)
@@ -843,7 +843,7 @@ def figure() -> str:
     ax1.set_xlabel("watts on the tray's backed branch (pale: rated, solid: typical); black tick: the UPS's rating",
                    color=INK2, fontsize=9)
     xmax = max(t["ups_w"] for t in s["trays"].values())
-    ax1.set_xlim(0, xmax * 1.75)
+    ax1.set_xlim(0, xmax * 1.42)
     ax2.set_xscale("log")
     lo = 0.08
     hi = max(t["runtime_min_typical"] for t in s["trays"].values()) * 2.2
@@ -852,7 +852,8 @@ def figure() -> str:
     ax2.text(RUNTIME_MIN * 1.06, ys[0] + 0.62, f"target: {RUNTIME_MIN:.0f} min", fontsize=8.5, color=INK2)
     ax2.axvline(TRANSIT_S / 60.0, color=INK2, lw=1.2, ls=(0, (1, 2)))
     ax2.text(TRANSIT_S / 60.0 * 1.08, ys[0] + 0.62, f"a transit: {TRANSIT_S:.0f} s", fontsize=8.5, color=INK2)
-    ax2.set_xlabel("minutes on battery at the typical draw (log scale)", color=INK2, fontsize=9)
+    ax2.set_xlabel("minutes on battery at the typical draw (log scale; below a maker's lightest published load, "
+                   "scaled as 1/W, which understates it)", color=INK2, fontsize=8.5)
     for ax in (ax1, ax2):
         ax.set_ylim(-0.7, len(order) - 0.1)
     ax1.axhline(ys[order.index("F")] - 0.5, color=GRID, lw=1.0) if "F" in order and "K" in order else None
@@ -901,17 +902,17 @@ def lineup() -> str:
         tour.contact_shadow(sc, b, name=f"shadow {i}")
     shots = []
     for d in ((-0.55, -1.6, 0.55), (0.55, 1.6, 0.55)):
-        sc.cam = tour.frame_cam(allbb, d, pad=0.62, look_z=0.42)
+        sc.cam = tour.frame_cam(allbb, d, pad=0.70, look_z=0.40)
         sc.view_angle = 30.0
         shots.append((Image.fromarray(sc.render_base()), [sc.project((xx, (b[2] + b[3]) / 2, 0.0))
                                                           for xx, b in zip(xs, bbs)]))
     sc.pl.close()
     W, H = 1920, 1080
-    cap_h = 210
-    sheet = Image.new("RGB", (W, 2 * H // 2 + cap_h + 70), SURF)
+    cap_h = 200
+    sheet = Image.new("RGB", (W, 70 + H // 2 + cap_h), SURF)
     d = ImageDraw.Draw(sheet)
-    d.text((40, 18), "The trays' UPSs, to scale: front (display, buttons) and back (receptacles, card, fans)",
-           font=font(34, bold=True), fill=INK)
+    d.text((40, 18), "The trays' three UPSs, to scale, in their cradles: front (left) and back (right)",
+           font=font(30, bold=True), fill=INK)
     for row, (im, _) in enumerate(shots):
         sheet.paste(im.resize((W // 2, H // 2)), (row * W // 2, 70))
     y0 = 70 + H // 2 + 14

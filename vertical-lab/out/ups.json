@@ -1,0 +1,1900 @@
+{
+ "what": "each powered tray's UPS, sized for what it must keep alive (ups.py)",
+ "rule": "the smallest unit that carries the tray's backed branch at its rated draw and runs at least 10 min at its typical draw; heaters and big motors on the unbacked branch",
+ "runtime_target_min": 10.0,
+ "transit_s": 8.0,
+ "family": "vertiv_li",
+ "used": {
+  "psi5_800": {
+   "trays": [
+    "B",
+    "C",
+    "F",
+    "H",
+    "G",
+    "I"
+   ],
+   "maker": "Vertiv",
+   "model": "Liebert PSI5-800SRT2ULIN",
+   "topology": "line-interactive",
+   "chemistry": "LiFePO4 lithium-ion",
+   "va": 800,
+   "w": 720,
+   "tower_mm": null,
+   "kg": 8.4,
+   "eff": [
+    [
+     0.25,
+     0.973
+    ],
+    [
+     0.5,
+     0.986
+    ],
+    [
+     0.75,
+     0.989
+    ],
+    [
+     1.0,
+     0.989
+    ]
+   ],
+   "runtime": [
+    [
+     360,
+     16.0
+    ],
+    [
+     720,
+     8.0
+    ]
+   ],
+   "transfer_ms": "4-6 typical",
+   "battery_life_y": "up to 10 (Vertiv); 5-year warranty on UPS and battery",
+   "outlets_text": "NEMA 5-15R, some programmable (load shedding)",
+   "plug": "NEMA 5-15P",
+   "price_usd": null,
+   "sources": [
+    "Vertiv product catalogue, Liebert PSI5 Lithium-Ion (vertiv.com/en-us/products-catalog/critical-power/uninterruptible-power-supplies-ups/vertiv-liebert-psi5-lithium-ion-ups/, fetched): PSI5-800SRT2ULI 800 VA / 720 W, 2U short depth, 3.39 x 17.28 x 11.81 in, 18.5 lb; its family photo",
+    "ENERGY STAR certified UPS dataset (data.energystar.gov, resource ifxy-2uty, fetched 2026-11-18): efficiency at 25/50/75/100 % load, input at no load, runtime at 50 and 100 % load (the makers' own test submissions)",
+    "Vertiv, Liebert PSI5 Lithium-Ion UPS data sheet SL-70581 (42u.com copy, fetched) and short-depth data sheet SL-70889 Rev.1 02/2025 (vertiv.com, fetched): LiFePO4, 4-6 ms transfer, 5 years on UPS and battery, RDU120 bundles ('N'), 'up to 10 years' battery life, 'up to 10x more discharge cycles'",
+    "front photos: vertiv.com GXT5LI-1500LVRT2UXL front (800 x 600) and the PSI5 Lithium-Ion short-depth family image (1000 x 1000), fetched 2026-11-18"
+   ]
+  },
+  "gxt5li_1500": {
+   "trays": [
+    "A",
+    "E",
+    "K",
+    "L",
+    "M"
+   ],
+   "maker": "Vertiv",
+   "model": "Liebert GXT5LI-1500LVRT2UXL",
+   "topology": "online double conversion",
+   "chemistry": "LiFePO4 lithium-ion",
+   "va": 1500,
+   "w": 1350,
+   "tower_mm": null,
+   "kg": 18.0,
+   "eff": [
+    [
+     0.25,
+     0.888
+    ],
+    [
+     0.5,
+     0.916
+    ],
+    [
+     0.75,
+     0.921
+    ],
+    [
+     1.0,
+     0.917
+    ]
+   ],
+   "runtime": [
+    [
+     675,
+     9.0
+    ],
+    [
+     1350,
+     3.0
+    ]
+   ],
+   "transfer_ms": "0 (online)",
+   "battery_life_y": "5-year warranty including the battery (Vertiv product page)",
+   "outlets_text": "6 x NEMA 5-15R, 4 programmable (load shedding on battery)",
+   "plug": "NEMA 5-15P",
+   "price_usd": 2707,
+   "sources": [
+    "Vertiv, Liebert GXT5 Lithium-Ion 1000-3000VA rack/tower guide specifications, REV0 04-2022 (prep.vertiv.com/491871/globalassets/products/critical-power/uninterruptible-power-supplies-ups/liebert--gxt5-lithium-ion-1000-3000va-rack-tower-guide-specifications.pdf, fetched)",
+    "Vertiv product page GXT5LI-1500LVRT2UXL (vertiv.com, fetched): 18 kg, 476 mm deep, RDU120 card, 5-year warranty including the battery, 'up to 14 minutes at full load'",
+    "ENERGY STAR certified UPS dataset (data.energystar.gov, resource ifxy-2uty, fetched 2026-11-18): efficiency at 25/50/75/100 % load, input at no load, runtime at 50 and 100 % load (the makers' own test submissions)",
+    "front photos: vertiv.com GXT5LI-1500LVRT2UXL front (800 x 600) and the PSI5 Lithium-Ion short-depth family image (1000 x 1000), fetched 2026-11-18"
+   ]
+  },
+  "gxt5li_3000": {
+   "trays": [
+    "D"
+   ],
+   "maker": "Vertiv",
+   "model": "Liebert GXT5LI-3000LVRT2UXL",
+   "topology": "online double conversion",
+   "chemistry": "LiFePO4 lithium-ion",
+   "va": 3000,
+   "w": 2700,
+   "tower_mm": null,
+   "kg": 21.5,
+   "eff": [
+    [
+     0.25,
+     0.913
+    ],
+    [
+     0.5,
+     0.927
+    ],
+    [
+     0.75,
+     0.924
+    ],
+    [
+     1.0,
+     0.916
+    ]
+   ],
+   "runtime": [
+    [
+     1350,
+     9.0
+    ],
+    [
+     2700,
+     3.0
+    ]
+   ],
+   "transfer_ms": "0 (online)",
+   "battery_life_y": "5-year warranty including the battery (Vertiv)",
+   "outlets_text": "6 x NEMA 5-15/20R and 1 x L5-30R, 4 programmable",
+   "plug": "NEMA L5-30P",
+   "price_usd": null,
+   "sources": [
+    "Vertiv, Liebert GXT5 Lithium-Ion 1000-3000VA rack/tower guide specifications, REV0 04-2022 (prep.vertiv.com/491871/globalassets/products/critical-power/uninterruptible-power-supplies-ups/liebert--gxt5-lithium-ion-1000-3000va-rack-tower-guide-specifications.pdf, fetched)",
+    "ENERGY STAR certified UPS dataset (data.energystar.gov, resource ifxy-2uty, fetched 2026-11-18): efficiency at 25/50/75/100 % load, input at no load, runtime at 50 and 100 % load (the makers' own test submissions)",
+    "front photos: vertiv.com GXT5LI-1500LVRT2UXL front (800 x 600) and the PSI5 Lithium-Ion short-depth family image (1000 x 1000), fetched 2026-11-18"
+   ]
+  }
+ },
+ "trays": {
+  "A": {
+   "slot": "R2",
+   "shuttle": 1,
+   "ups": "gxt5li_1500",
+   "model": "Vertiv Liebert GXT5LI-1500LVRT2UXL",
+   "backed_rated_w": 641,
+   "backed_typical_w": 221,
+   "unbacked_rated_w": 0,
+   "connected_w": 641,
+   "estimated_share": 0.36,
+   "ups_w": 1350,
+   "ups_va": 1500,
+   "load_pct_rated": 47,
+   "load_pct_typical": 16,
+   "runtime_min_typical": 27.5,
+   "runtime_min_rated": 9.5,
+   "transit_battery_wh": 0.49,
+   "transits_per_charge": 206,
+   "ups_loss_w": 37.9,
+   "efficiency": 0.888,
+   "mass_kg": 18.0,
+   "box_on_tray_mm": [
+    581,
+    1118,
+    251,
+    406,
+    3,
+    435
+   ],
+   "why": "1350 W covers the backed branch's 641 W at its machines' ratings (47 %); 27 min at its typical 221 W; online, as the tray holds a PC, a vacuum or a measurement",
+   "items": [
+    {
+     "key": "ot2",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 220,
+     "typical_w": 120,
+     "kind": "published",
+     "what": "Opentrons OT-2 liquid handler",
+     "cut": "Its Raspberry Pi controller reboots, up to about 45 s or longer before it is ready. A protocol in progress is lost: Opentrons documents no power-loss resume for the OT-2, and its open-loop steppers have to home before the next run (estimate). Repeated hard cuts also risk its SD-card file system (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://docs.opentrons.com/ot-2/system-description/specs/",
+      "https://docs.opentrons.com/ot-2/installation/requirements/",
+      "https://sandbox.docs.opentrons.com/docs-ot2-install-relocate/ot-2/installation/first-run"
+     ]
+    },
+    {
+     "key": "cubxl",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 100,
+     "typical_w": 30,
+     "kind": "estimate",
+     "what": "CubXL gantry on a Genmitsu PROVerXL 4030 frame (custom), Arduino Uno R3 + CH340 board",
+     "cut": "The controller resets and the open-loop steppers lose position, so it homes again after every cut. The electromagnetic capper drops whatever it holds when unpowered (estimates).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://manuals.plus/genmitsu/4030-v1-proverxl-spindle-set-manual",
+      "https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146",
+      "https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/CLAUDE.md?plain=1#L233"
+     ]
+    },
+    {
+     "key": "ezstat",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 30,
+     "typical_w": 10,
+     "kind": "estimate",
+     "what": "NuVant EZstat Pro potentiostat/galvanostat",
+     "cut": "A measurement in progress (OCP, LPR, CV) stops and leaves the cell at open circuit; EZware loses the instrument and the run has to be started again (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://www.environmental-expert.com/products/potentiostat-galvanostat-1085908"
+     ]
+    },
+    {
+     "key": "ezware_pc",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 150,
+     "typical_w": 40,
+     "kind": "estimate",
+     "what": "Windows 7 PC that runs EZware for the EZstat Pro (if it rides on the tray)",
+     "cut": "Unclean Windows shutdown and a reboot of about 2 min; EZware and any Remote Desktop session drop (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/CLAUDE.md?plain=1#L233"
+     ]
+    },
+    {
+     "key": "cubxl_pi",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 27,
+     "typical_w": 5,
+     "kind": "published",
+     "what": "the CubXL's own Raspberry Pi 5 (serial to the Arduino and CH340)",
+     "cut": "Reboots in about 30 s; the CubXL's serial sessions drop (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply",
+      "https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/CLAUDE.md?plain=1#L233"
+     ]
+    },
+    {
+     "key": "pi_unit",
+     "qty": 2,
+     "backed": true,
+     "rated_w": 54,
+     "typical_w": 8,
+     "kind": "published",
+     "what": "Raspberry Pi 5 camera unit (Pi 5 4 GB, Active Cooler, HQ Camera and Camera Module 3 Wide), x2",
+     "cut": "Reboots in about 30 s and the stream drops; repeated hard cuts put the SD card at risk (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply",
+      "https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     ]
+    },
+    {
+     "key": "poe_switch",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 60,
+     "typical_w": 8,
+     "kind": "published",
+     "what": "Small managed PoE+ switch, e.g. Ubiquiti USW-Lite-8-PoE (8 ports, 4 PoE+)",
+     "cut": "Every device on the tray loses its network link; the switch takes about a minute to boot (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe"
+     ]
+    }
+   ]
+  },
+  "B": {
+   "slot": "R3",
+   "shuttle": 1,
+   "ups": "psi5_800",
+   "model": "Vertiv Liebert PSI5-800SRT2ULIN",
+   "backed_rated_w": 493,
+   "backed_typical_w": 48,
+   "unbacked_rated_w": 950,
+   "connected_w": 1443,
+   "estimated_share": 0.0,
+   "ups_w": 720,
+   "ups_va": 800,
+   "load_pct_rated": 68,
+   "load_pct_typical": 7,
+   "runtime_min_typical": 120.0,
+   "runtime_min_rated": 11.7,
+   "transit_battery_wh": 0.11,
+   "transits_per_charge": 900,
+   "ups_loss_w": 4.3,
+   "efficiency": 0.973,
+   "mass_kg": 8.4,
+   "box_on_tray_mm": [
+    757,
+    1118,
+    250,
+    406,
+    3,
+    444
+   ],
+   "why": "720 W covers the backed branch's 493 W at its machines' ratings (68 %); 120 min at its typical 48 W; line-interactive is enough: nothing on the branch minds a 4-6 ms transfer",
+   "items": [
+    {
+     "key": "carousel",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 395,
+     "typical_w": 25,
+     "kind": "published",
+     "what": "powder-doser multi-doser, chain carousel v5 (powder-doser PR #185)",
+     "cut": "The Pi reboots; the closed-loop driver loses its encoder count, so the carousel homes again; unpowered, the NEMA 34 has only detent torque, so an unbalanced chain could creep during the lift's accelerations; the P16s (potentiometer feedback) know their position on power-up; a dose in progress is lost (all estimates).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://www.meanwell.com/Upload/PDF/LRS-350/LRS-350-SPEC.PDF",
+      "https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/multidoser/chain-carousel-v5/layout.py#L717-L725",
+      "https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     ]
+    },
+    {
+     "key": "balance",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 11,
+     "typical_w": 11,
+     "kind": "published",
+     "what": "A&D HR-202i analytical balance (220 g x 0.1 mg; 51 g x 0.01 mg)",
+     "cut": "Weighing stops. It returns in standby with its settings kept (non-volatile memory), but A&D asks for at least 1 h of warm-up before precision weighing, so every cut costs an hour.",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://www.aandd.jp/products/manual/balances/hr-i.pdf"
+     ]
+    },
+    {
+     "key": "vacuum_press",
+     "qty": 1,
+     "backed": false,
+     "rated_w": 400,
+     "typical_w": 0,
+     "kind": "estimate",
+     "what": "Specac Atlas Autotouch 15T automatic hydraulic press (GS2581X)",
+     "cut": "A program aborts. Whether the ram holds or bleeds its load, and whether the press switches itself back on, are not published (estimate). Never move the tray with a program running.",
+     "branch": "unbacked branch (if it restarts by itself; otherwise back its ~15 W controller)",
+     "sources": [
+      "https://specac.com/product/autotouch-press-high-throughput-xrf-press/"
+     ]
+    },
+    {
+     "key": "vacuum_pump",
+     "qty": 1,
+     "backed": false,
+     "rated_w": 550,
+     "typical_w": 0,
+     "kind": "published",
+     "what": "Edwards RV3 two-stage rotary-vane pump for the evacuable die (vacuum_press.md)",
+     "cut": "The pump stops and its inlet valve closes fast, so no oil sucks back; the die stays under vacuum only if V1 is shut. It restarts on its own switch when power returns (estimate).",
+     "branch": "unbacked branch",
+     "sources": [
+      "https://www.ajvs.com/library/Edwards_RV_Series_Brochure.pdf",
+      "https://www.manualslib.com/manual/2427823/Edwards-Rv3.html?page=22",
+      "https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/notes/vacuum_press.md?plain=1#L87-L88"
+     ]
+    },
+    {
+     "key": "pi_unit",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 27,
+     "typical_w": 4,
+     "kind": "published",
+     "what": "Raspberry Pi 5 camera unit (Pi 5 4 GB, Active Cooler, HQ Camera and Camera Module 3 Wide), x1",
+     "cut": "Reboots in about 30 s and the stream drops; repeated hard cuts put the SD card at risk (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply",
+      "https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     ]
+    },
+    {
+     "key": "poe_switch",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 60,
+     "typical_w": 8,
+     "kind": "published",
+     "what": "Small managed PoE+ switch, e.g. Ubiquiti USW-Lite-8-PoE (8 ports, 4 PoE+)",
+     "cut": "Every device on the tray loses its network link; the switch takes about a minute to boot (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe"
+     ]
+    }
+   ]
+  },
+  "C": {
+   "slot": "F1",
+   "shuttle": 1,
+   "ups": "psi5_800",
+   "model": "Vertiv Liebert PSI5-800SRT2ULIN",
+   "backed_rated_w": 114,
+   "backed_typical_w": 16,
+   "unbacked_rated_w": 1470,
+   "connected_w": 1584,
+   "estimated_share": 0.0,
+   "ups_w": 720,
+   "ups_va": 800,
+   "load_pct_rated": 16,
+   "load_pct_typical": 2,
+   "runtime_min_typical": 360.0,
+   "runtime_min_rated": 50.5,
+   "transit_battery_wh": 0.04,
+   "transits_per_charge": 2700,
+   "ups_loss_w": 4.1,
+   "efficiency": 0.973,
+   "mass_kg": 8.4,
+   "box_on_tray_mm": [
+    757,
+    1118,
+    250,
+    406,
+    3,
+    444
+   ],
+   "why": "720 W covers the backed branch's 114 W at its machines' ratings (16 %); 360 min at its typical 16 W; line-interactive is enough: nothing on the branch minds a 4-6 ms transfer",
+   "items": [
+    {
+     "key": "h2d",
+     "qty": 1,
+     "backed": false,
+     "rated_w": 1320,
+     "typical_w": 0,
+     "kind": "published",
+     "what": "Bambu Lab H2D",
+     "cut": "An idle printer simply reboots (about a minute; estimate). A print in progress is offered for power-loss recovery (supported), but bed and chamber cool meanwhile and owners report mixed results.",
+     "branch": "unbacked branch",
+     "sources": [
+      "https://materialpro3d.cz/user/related_files/h2d_spec.pdf",
+      "https://forum.bambulab.com/t/why-does-the-h2d-have-such-high-standby-power-consumption/172758",
+      "https://forum.bambulab.com/t/powerloss-recovery-issues/258431"
+     ]
+    },
+    {
+     "key": "a1mini",
+     "qty": 1,
+     "backed": false,
+     "rated_w": 150,
+     "typical_w": 0,
+     "kind": "published",
+     "what": "Bambu Lab A1 mini",
+     "cut": "Reboots; power-loss recovery is supported for a print in progress.",
+     "branch": "unbacked branch (cheap to back instead: 6 W in transit, 150 W docked)",
+     "sources": [
+      "https://www.3dprintergear.com.au/assets/files/A1%20Mini%20TDS.pdf",
+      "https://wiki.bambulab.com/en/a1-mini/manual/faq"
+     ]
+    },
+    {
+     "key": "pi_unit",
+     "qty": 2,
+     "backed": true,
+     "rated_w": 54,
+     "typical_w": 8,
+     "kind": "published",
+     "what": "Raspberry Pi 5 camera unit (Pi 5 4 GB, Active Cooler, HQ Camera and Camera Module 3 Wide), x2",
+     "cut": "Reboots in about 30 s and the stream drops; repeated hard cuts put the SD card at risk (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply",
+      "https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     ]
+    },
+    {
+     "key": "poe_switch",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 60,
+     "typical_w": 8,
+     "kind": "published",
+     "what": "Small managed PoE+ switch, e.g. Ubiquiti USW-Lite-8-PoE (8 ports, 4 PoE+)",
+     "cut": "Every device on the tray loses its network link; the switch takes about a minute to boot (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe"
+     ]
+    }
+   ]
+  },
+  "D": {
+   "slot": "R1",
+   "shuttle": 1,
+   "ups": "gxt5li_3000",
+   "model": "Vertiv Liebert GXT5LI-3000LVRT2UXL",
+   "backed_rated_w": 2541,
+   "backed_typical_w": 540,
+   "unbacked_rated_w": 0,
+   "connected_w": 2541,
+   "estimated_share": 0.11,
+   "ups_w": 2700,
+   "ups_va": 3000,
+   "load_pct_rated": 94,
+   "load_pct_typical": 20,
+   "runtime_min_typical": 22.5,
+   "runtime_min_rated": 3.3,
+   "transit_battery_wh": 1.2,
+   "transits_per_charge": 168,
+   "ups_loss_w": 59.4,
+   "efficiency": 0.913,
+   "mass_kg": 21.5,
+   "box_on_tray_mm": [
+    511,
+    1118,
+    251,
+    406,
+    3,
+    435
+   ],
+   "why": "2700 W covers the backed branch's 2541 W at its machines' ratings (94 %); 22 min at its typical 540 W; online, as the tray holds a PC, a vacuum or a measurement",
+   "items": [
+    {
+     "key": "sem",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 500,
+     "typical_w": 200,
+     "kind": "published",
+     "what": "Hitachi TM4000PlusII tabletop SEM, main unit",
+     "cut": "The turbo (67 L/s) and diaphragm (20 L/min) pumps stop, the beam and high voltage drop, and the chamber leaks up as the turbo coasts down. After power returns it needs a full pump-down and turbo spin-up (Hitachi: an image within several minutes of start) and the tungsten filament is heated again. Whether it restarts without a button press isn't published (estimate).",
+     "branch": "UPS-backed (evacuated standby, beam off)",
+     "sources": [
+      "https://hte.hitachi-hightech.com/hubfs/Product%20Page%20-%20TM4000/Hitachi_TM4000_Series_III_Brochure.pdf?hsLang=en",
+      "https://matcl.umd.edu/files/2022/06/TM400PlusII-2.pdf",
+      "https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     ]
+    },
+    {
+     "key": "sem_pc",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 200,
+     "typical_w": 60,
+     "kind": "estimate",
+     "what": "the SEM's PC and monitor (Hitachi-supplied)",
+     "cut": "Unclean Windows shutdown, a reboot of about 2 min, the SEM software reconnects (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://hte.hitachi-hightech.com/hubfs/Product%20Page%20-%20TM4000/Hitachi_TM4000_Series_III_Brochure.pdf?hsLang=en"
+     ]
+    },
+    {
+     "key": "eds",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 400,
+     "typical_w": 60,
+     "kind": "published",
+     "what": "Oxford Instruments AZtecOne EDS for the TM4000 (analyser unit and 30 mm\u00b2 SDD)",
+     "cut": "The SDD's two-stage thermoelectric cooler stops; it cools again 'on demand' (a few minutes; estimate) before analysis, and the analyser and its software restart.",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://matcl.umd.edu/files/2022/06/TM400PlusII-2.pdf"
+     ]
+    },
+    {
+     "key": "xrd",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 1100,
+     "typical_w": 150,
+     "kind": "published",
+     "what": "Rigaku MiniFlex (6th generation), 600 W tube",
+     "cut": "High voltage drops (safe); the goniometer and software re-initialise; on restart the tube is aged back up to 40 kV/15 mA (7.5 min in one university SOP), and it trips if the cooling water stops. Its front has separate on and off buttons, so after a cut it probably stays off until someone presses on (estimate).",
+     "branch": "UPS-backed (X-rays off)",
+     "sources": [
+      "https://resources.rigaku.com/hubfs/2024%20Rigaku%20Global%20Site/Resource%20Hub/Knowledge%20Library/Brochures/BR_23_MiniFlex_Rev0723_226325528_SinglePgs_low-res.pdf?hsLang=en",
+      "https://www.depts.ttu.edu/coe/research/mcc/brochures/MiniFlex6G.pdf",
+      "https://answers.uillinois.edu/97837"
+     ]
+    },
+    {
+     "key": "xrd_pc",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 200,
+     "typical_w": 50,
+     "kind": "published",
+     "what": "the MiniFlex's PC (SmartLab Studio II)",
+     "cut": "Unclean shutdown and reboot; the instrument reconnects (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://resources.rigaku.com/hubfs/2024%20Rigaku%20Global%20Site/Resource%20Hub/Knowledge%20Library/Brochures/BR_23_MiniFlex_Rev0723_226325528_SinglePgs_low-res.pdf?hsLang=en"
+     ]
+    },
+    {
+     "key": "pi_unit",
+     "qty": 3,
+     "backed": true,
+     "rated_w": 81,
+     "typical_w": 12,
+     "kind": "published",
+     "what": "Raspberry Pi 5 camera unit (Pi 5 4 GB, Active Cooler, HQ Camera and Camera Module 3 Wide), x3",
+     "cut": "Reboots in about 30 s and the stream drops; repeated hard cuts put the SD card at risk (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply",
+      "https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     ]
+    },
+    {
+     "key": "poe_switch",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 60,
+     "typical_w": 8,
+     "kind": "published",
+     "what": "Small managed PoE+ switch, e.g. Ubiquiti USW-Lite-8-PoE (8 ports, 4 PoE+)",
+     "cut": "Every device on the tray loses its network link; the switch takes about a minute to boot (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe"
+     ]
+    }
+   ]
+  },
+  "E": {
+   "slot": "R4",
+   "shuttle": 1,
+   "ups": "gxt5li_1500",
+   "model": "Vertiv Liebert GXT5LI-1500LVRT2UXL",
+   "backed_rated_w": 991,
+   "backed_typical_w": 325,
+   "unbacked_rated_w": 1200,
+   "connected_w": 2191,
+   "estimated_share": 0.74,
+   "ups_w": 1350,
+   "ups_va": 1500,
+   "load_pct_rated": 73,
+   "load_pct_typical": 24,
+   "runtime_min_typical": 18.7,
+   "runtime_min_rated": 4.9,
+   "transit_battery_wh": 0.72,
+   "transits_per_charge": 140,
+   "ups_loss_w": 42.1,
+   "efficiency": 0.888,
+   "mass_kg": 18.0,
+   "box_on_tray_mm": [
+    581,
+    1118,
+    251,
+    406,
+    3,
+    435
+   ],
+   "why": "1350 W covers the backed branch's 991 W at its machines' ratings (73 %); 19 min at its typical 325 W; online, as the tray holds a PC, a vacuum or a measurement",
+   "items": [
+    {
+     "key": "pip",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 200,
+     "typical_w": 80,
+     "kind": "estimate",
+     "what": "Plastometrex PLX-Benchtop indentation plastometer, with its PC",
+     "cut": "An indent or profilometer scan in progress is lost; the indenter drive and stage home again (estimate). No warm-up is published.",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://plastometrex.com/products/plx-benchtop",
+      "https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     ]
+    },
+    {
+     "key": "nanoindenter",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 300,
+     "typical_w": 120,
+     "kind": "estimate",
+     "what": "KLA iMicro nanoindenter (InQuest controller and isolation gantry in the enclosure), with its PC",
+     "cut": "Controller and PC restart and a test is lost. Worse, the electronics inside the enclosure are a heat source: a cut changes its thermal balance and drift then takes hours to settle. KLA publishes no settling time; nanoindenters generally need a stabilisation period (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://www.kla.com/products/instruments/nanoindenters/imicro",
+      "https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146",
+      "https://arxiv.org/pdf/1709.07714"
+     ]
+    },
+    {
+     "key": "mastersizer",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 200,
+     "typical_w": 65,
+     "kind": "published",
+     "what": "Malvern Mastersizer 3000 optical bench with the Aero S dry disperser",
+     "cut": "The He-Ne laser goes off, and Malvern asks for 30 min after power-on for it to stabilise before a measurement; the Aero S and the software reconnect.",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://www.malvernpanalytical.com/br/assets/MRK1872-07-EN_MS3000_Broch_BrandUpdate_LR_web_tcm55-17232.pdf",
+      "https://ougfc.montana.edu/eal-lres/documents/Mastersizer-3000-user-manual-English-MAN0474-2-1.pdf",
+      "https://brand.malvernpanalytical.com/prototype/product"
+     ]
+    },
+    {
+     "key": "mastersizer_pc",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 150,
+     "typical_w": 40,
+     "kind": "estimate",
+     "what": "the Mastersizer's PC",
+     "cut": "Unclean shutdown and reboot; the software reconnects (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://www.malvernpanalytical.com/br/assets/MRK1872-07-EN_MS3000_Broch_BrandUpdate_LR_web_tcm55-17232.pdf"
+     ]
+    },
+    {
+     "key": "ms_extractor",
+     "qty": 1,
+     "backed": false,
+     "rated_w": 1200,
+     "typical_w": 0,
+     "kind": "estimate",
+     "what": "the Aero S vacuum extractor (Malvern's 'vacuum unit'; model not named)",
+     "cut": "Stops. It only runs during a measurement.",
+     "branch": "unbacked branch",
+     "sources": [
+      "https://ougfc.montana.edu/eal-lres/documents/Mastersizer-3000-user-manual-English-MAN0474-2-1.pdf"
+     ]
+    },
+    {
+     "key": "pi_unit",
+     "qty": 3,
+     "backed": true,
+     "rated_w": 81,
+     "typical_w": 12,
+     "kind": "published",
+     "what": "Raspberry Pi 5 camera unit (Pi 5 4 GB, Active Cooler, HQ Camera and Camera Module 3 Wide), x3",
+     "cut": "Reboots in about 30 s and the stream drops; repeated hard cuts put the SD card at risk (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply",
+      "https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     ]
+    },
+    {
+     "key": "poe_switch",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 60,
+     "typical_w": 8,
+     "kind": "published",
+     "what": "Small managed PoE+ switch, e.g. Ubiquiti USW-Lite-8-PoE (8 ports, 4 PoE+)",
+     "cut": "Every device on the tray loses its network link; the switch takes about a minute to boot (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe"
+     ]
+    }
+   ]
+  },
+  "F": {
+   "slot": "F2",
+   "shuttle": 1,
+   "ups": "psi5_800",
+   "model": "Vertiv Liebert PSI5-800SRT2ULIN",
+   "backed_rated_w": 114,
+   "backed_typical_w": 16,
+   "unbacked_rated_w": 5000,
+   "connected_w": 5114,
+   "estimated_share": 0.0,
+   "ups_w": 720,
+   "ups_va": 800,
+   "load_pct_rated": 16,
+   "load_pct_typical": 2,
+   "runtime_min_typical": 360.0,
+   "runtime_min_rated": 50.5,
+   "transit_battery_wh": 0.04,
+   "transits_per_charge": 2700,
+   "ups_loss_w": 4.1,
+   "efficiency": 0.973,
+   "mass_kg": 8.4,
+   "box_on_tray_mm": [
+    757,
+    1118,
+    250,
+    406,
+    3,
+    444
+   ],
+   "why": "720 W covers the backed branch's 114 W at its machines' ratings (16 %); 360 min at its typical 16 W; line-interactive is enough: nothing on the branch minds a 4-6 ms transfer",
+   "items": [
+    {
+     "key": "polisher",
+     "qty": 1,
+     "backed": false,
+     "rated_w": 740,
+     "typical_w": 0,
+     "kind": "snippet",
+     "what": "LECO PX500 semi-automatic grinder/polisher",
+     "cut": "Wheel and head stop and the program ends; the water valve closes (estimate). Nothing to keep.",
+     "branch": "unbacked branch",
+     "sources": [
+      "https://eu.leco.com/product/px400-px500-grinder-polisher-series",
+      "https://pdf.directindustry.com/pdf/leco/px300-grinder-polisher/114499-752979.html",
+      "https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     ]
+    },
+    {
+     "key": "furnace",
+     "qty": 1,
+     "backed": false,
+     "rated_w": 2800,
+     "typical_w": 0,
+     "kind": "published",
+     "what": "Nabertherm NAT 15/65 forced-convection chamber furnace (650 \u00b0C), B500/B510 controller",
+     "cut": "Heaters and fan stop and the controller rides it out: by default a program continues if the outage is shorter than about 2 min, and outages under 5 s always continue. Modes cancel, delta-T, time and continue can be set. The chamber loses a few kelvin in 8 s (estimate).",
+     "branch": "unbacked branch",
+     "sources": [
+      "https://nabertherm.com/en/products/industrie/thermprozesstechnik/prozesse-unter-luft/forced-convection-furnaces/forced",
+      "https://nabertherm.com/sites/default/files/noindex/2024-05/M03.0022_Englisch_2024-04.pdf",
+      "https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/notes/services.md?plain=1#L139-L165"
+     ]
+    },
+    {
+     "key": "mounting_press",
+     "qty": 1,
+     "backed": false,
+     "rated_w": 1400,
+     "typical_w": 0,
+     "kind": "estimate",
+     "what": "LECO MX400 automatic mounting press (hydraulic, 1200-4300 psi; 90-200 \u00b0C)",
+     "cut": "A heat, cure and cool cycle aborts and the mount in the mold is probably spoiled; hydraulic pressure may bleed off (estimate). Cooling water from a recirculator or the dock is cut in transit anyway.",
+     "branch": "unbacked branch",
+     "sources": [
+      "https://pdf.directindustry.com/pdf/leco/mx400/114499-936234.html",
+      "https://www.labcompare.com/5207-Laboratory-Press/14224274-MX400-Mounting-Press/"
+     ]
+    },
+    {
+     "key": "quench_tank",
+     "qty": 1,
+     "backed": false,
+     "rated_w": 60,
+     "typical_w": 0,
+     "kind": "estimate",
+     "what": "quench tank with a small lift (our design)",
+     "cut": "The lift stops where it is (a leadscrew doesn't back-drive) and homes on power-up (estimate).",
+     "branch": "unbacked branch",
+     "sources": []
+    },
+    {
+     "key": "pi_unit",
+     "qty": 2,
+     "backed": true,
+     "rated_w": 54,
+     "typical_w": 8,
+     "kind": "published",
+     "what": "Raspberry Pi 5 camera unit (Pi 5 4 GB, Active Cooler, HQ Camera and Camera Module 3 Wide), x2",
+     "cut": "Reboots in about 30 s and the stream drops; repeated hard cuts put the SD card at risk (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply",
+      "https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     ]
+    },
+    {
+     "key": "poe_switch",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 60,
+     "typical_w": 8,
+     "kind": "published",
+     "what": "Small managed PoE+ switch, e.g. Ubiquiti USW-Lite-8-PoE (8 ports, 4 PoE+)",
+     "cut": "Every device on the tray loses its network link; the switch takes about a minute to boot (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe"
+     ]
+    }
+   ]
+  },
+  "K": {
+   "slot": "2R1",
+   "shuttle": 2,
+   "ups": "gxt5li_1500",
+   "model": "Vertiv Liebert GXT5LI-1500LVRT2UXL",
+   "backed_rated_w": 820,
+   "backed_typical_w": 214,
+   "unbacked_rated_w": 550,
+   "connected_w": 1370,
+   "estimated_share": 0.14,
+   "ups_w": 1350,
+   "ups_va": 1500,
+   "load_pct_rated": 61,
+   "load_pct_typical": 16,
+   "runtime_min_typical": 28.4,
+   "runtime_min_rated": 6.6,
+   "transit_battery_wh": 0.48,
+   "transits_per_charge": 212,
+   "ups_loss_w": 37.6,
+   "efficiency": 0.888,
+   "mass_kg": 18.0,
+   "box_on_tray_mm": [
+    581,
+    1118,
+    251,
+    406,
+    3,
+    435
+   ],
+   "why": "1350 W covers the backed branch's 820 W at its machines' ratings (61 %); 28 min at its typical 214 W; online, as the tray holds a PC, a vacuum or a measurement",
+   "items": [
+    {
+     "key": "glovebox_tray",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 30,
+     "typical_w": 20,
+     "kind": "estimate",
+     "what": "glovebox controller: a 24 VDC PLC with a 7 in touch HMI and its 24 V supply (our design)",
+     "cut": "Its I/O state and alarms go; kept up, the box stays sealed and logged through the move (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/notes/instruments_r7.md?plain=1#L21-L47"
+     ]
+    },
+    {
+     "key": "o2_analyzer",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 20,
+     "typical_w": 15,
+     "kind": "published",
+     "what": "Teledyne 3000TA-XL trace oxygen analyser (micro-fuel cell)",
+     "cut": "The reading and its alarms stop; the cell is unaffected but the reading takes a while to settle again (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://www.chromservis.eu/media/0/05_pdf/Catalogues/Teledyne_3000TAXL_UK.pdf"
+     ]
+    },
+    {
+     "key": "h2o_sensor",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 0.5,
+     "typical_w": 0.5,
+     "kind": "snippet",
+     "what": "Michell Easidew TX dew-point transmitter (2-wire 4-20 mA)",
+     "cut": "The reading stops and resumes with the loop (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://www.processsensing.com/docs/datasheet/Michell_Instruments_Easidew_TX_I.S._Datasheet.pdf"
+     ]
+    },
+    {
+     "key": "gb_valves",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 40,
+     "typical_w": 0,
+     "kind": "estimate",
+     "what": "glovebox solenoid valves (purge in, exhaust, antechamber evacuate and refill), 4-6 x 24 VDC",
+     "cut": "Normally closed valves shut and seal the box; the dock's N2 is cut in transit anyway (estimate).",
+     "branch": "UPS-backed (de-energised in transit)",
+     "sources": []
+    },
+    {
+     "key": "gb_antechamber_pump",
+     "qty": 1,
+     "backed": false,
+     "rated_w": 550,
+     "typical_w": 0,
+     "kind": "estimate",
+     "what": "antechamber vacuum pump (an Edwards RV3 if the same as the press's; or a diaphragm pump)",
+     "cut": "Stops; the antechamber holds what it has if its valve is shut (estimate).",
+     "branch": "unbacked branch",
+     "sources": [
+      "https://www.ajvs.com/library/Edwards_RV_Series_Brochure.pdf"
+     ]
+    },
+    {
+     "key": "gb_balance",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 11,
+     "typical_w": 11,
+     "kind": "published",
+     "what": "the balance inside the box (model not chosen; an analytical balance like the HR-202i)",
+     "cut": "Weighing stops; an analytical balance wants about 1 h of warm-up again.",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://www.aandd.jp/products/manual/balances/hr-i.pdf"
+     ]
+    },
+    {
+     "key": "gb_capper",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 60,
+     "typical_w": 10,
+     "kind": "estimate",
+     "what": "capper on a small gantry and the tipping cradle (our design)",
+     "cut": "Steppers lose torque and position; a lid held by the capper could slip (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/notes/instruments_r7.md?plain=1#L21-L47"
+     ]
+    },
+    {
+     "key": "vhx",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 430,
+     "typical_w": 120,
+     "kind": "published",
+     "what": "Keyence VHX-7000 controller (with its 27 in 4K screen), EA-300 cabled to it",
+     "cut": "A PC-based controller: unclean shutdown, a reboot of a few minutes, and the motorised stand and EA-300 re-initialise (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://www.keyence.com/products/microscope/digital-microscope/vhx-7000/models/vhx-7000/",
+      "https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/notes/instruments_r7.md?plain=1#L21-L47"
+     ]
+    },
+    {
+     "key": "vhx_stand",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 130,
+     "typical_w": 20,
+     "kind": "published",
+     "what": "Keyence VHX-S750E motorised free-angle stand",
+     "cut": "Its steppers (5-phase Z, 2-phase XY) lose position and it homes again (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://www.keyence.com/products/microscope/digital-microscope/vhx-7000/models/vhx-s750e/"
+     ]
+    },
+    {
+     "key": "ea300",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 0,
+     "typical_w": 0,
+     "kind": "estimate",
+     "what": "Keyence EA-300 LIBS head (Nd:YAG, 355 nm, Class 1)",
+     "cut": "Goes down with the controller.",
+     "branch": "UPS-backed (through the controller)",
+     "sources": [
+      "https://www.keyence.com/products/microscope/elemental-analyzer/ea-300/models/ea-300"
+     ]
+    },
+    {
+     "key": "pikvm",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 12,
+     "typical_w": 5,
+     "kind": "published",
+     "what": "PiKVM V4 Mini (KVM over IP for the VHX)",
+     "cut": "Reboots; remote control of the VHX drops (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://docs.pikvm.org/v4/v4mini_datasheet.pdf"
+     ]
+    },
+    {
+     "key": "pi_unit",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 27,
+     "typical_w": 4,
+     "kind": "published",
+     "what": "Raspberry Pi 5 camera unit (Pi 5 4 GB, Active Cooler, HQ Camera and Camera Module 3 Wide), x1",
+     "cut": "Reboots in about 30 s and the stream drops; repeated hard cuts put the SD card at risk (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply",
+      "https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     ]
+    },
+    {
+     "key": "poe_switch",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 60,
+     "typical_w": 8,
+     "kind": "published",
+     "what": "Small managed PoE+ switch, e.g. Ubiquiti USW-Lite-8-PoE (8 ports, 4 PoE+)",
+     "cut": "Every device on the tray loses its network link; the switch takes about a minute to boot (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe"
+     ]
+    }
+   ]
+  },
+  "L": {
+   "slot": "2R2",
+   "shuttle": 2,
+   "ups": "gxt5li_1500",
+   "model": "Vertiv Liebert GXT5LI-1500LVRT2UXL",
+   "backed_rated_w": 1004,
+   "backed_typical_w": 176,
+   "unbacked_rated_w": 0,
+   "connected_w": 1004,
+   "estimated_share": 0.45,
+   "ups_w": 1350,
+   "ups_va": 1500,
+   "load_pct_rated": 74,
+   "load_pct_typical": 13,
+   "runtime_min_typical": 34.5,
+   "runtime_min_rated": 4.8,
+   "transit_battery_wh": 0.39,
+   "transits_per_charge": 258,
+   "ups_loss_w": 36.1,
+   "efficiency": 0.888,
+   "mass_kg": 18.0,
+   "box_on_tray_mm": [
+    581,
+    1118,
+    251,
+    406,
+    3,
+    435
+   ],
+   "why": "1350 W covers the backed branch's 1004 W at its machines' ratings (74 %); 35 min at its typical 176 W; online, as the tray holds a PC, a vacuum or a measurement",
+   "items": [
+    {
+     "key": "tensile_h",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 500,
+     "typical_w": 40,
+     "kind": "published",
+     "what": "ZwickRoell zwickiLine Z5.0 TN (testControl II)",
+     "cut": "testControl II restarts and a test in progress is lost; testXpert loses the machine; the load cell is zeroed automatically at the start of each test; the crosshead may need re-referencing (estimate).",
+     "branch": "UPS-backed (in Eco mode)",
+     "sources": [
+      "https://www.zwickroell.com/fileadmin/content/Files/SharePoint/user_upload/PI_EN/02_396_zwickiLine_Z0_5_up_to_Z5_0_Materials_Testing_Machine_PI_EN.pdf"
+     ]
+    },
+    {
+     "key": "zwick_pc",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 150,
+     "typical_w": 40,
+     "kind": "estimate",
+     "what": "the testXpert PC",
+     "cut": "Unclean shutdown and reboot (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://www.zwickroell.com/fileadmin/content/Files/SharePoint/user_upload/PI_EN/02_396_zwickiLine_Z0_5_up_to_Z5_0_Materials_Testing_Machine_PI_EN.pdf"
+     ]
+    },
+    {
+     "key": "hardness",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 90,
+     "typical_w": 40,
+     "kind": "published",
+     "what": "Mitutoyo HM-220 Type D micro-Vickers (motorised XY stage and focus), PC-driven",
+     "cut": "Stage and focus lose position; an indent series and the AVPAK session are lost (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://www.mitutoyo.com/webfoo/wp-content/uploads/K_section.pdf"
+     ]
+    },
+    {
+     "key": "avpak_pc",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 150,
+     "typical_w": 40,
+     "kind": "estimate",
+     "what": "the AVPAK PC (Mitutoyo-specified)",
+     "cut": "Unclean shutdown and reboot (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://www.mitutoyo.com/webfoo/wp-content/uploads/K_section.pdf"
+     ]
+    },
+    {
+     "key": "pi_unit",
+     "qty": 2,
+     "backed": true,
+     "rated_w": 54,
+     "typical_w": 8,
+     "kind": "published",
+     "what": "Raspberry Pi 5 camera unit (Pi 5 4 GB, Active Cooler, HQ Camera and Camera Module 3 Wide), x2",
+     "cut": "Reboots in about 30 s and the stream drops; repeated hard cuts put the SD card at risk (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply",
+      "https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     ]
+    },
+    {
+     "key": "poe_switch",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 60,
+     "typical_w": 8,
+     "kind": "published",
+     "what": "Small managed PoE+ switch, e.g. Ubiquiti USW-Lite-8-PoE (8 ports, 4 PoE+)",
+     "cut": "Every device on the tray loses its network link; the switch takes about a minute to boot (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe"
+     ]
+    }
+   ]
+  },
+  "M": {
+   "slot": "2R3",
+   "shuttle": 2,
+   "ups": "gxt5li_1500",
+   "model": "Vertiv Liebert GXT5LI-1500LVRT2UXL",
+   "backed_rated_w": 749,
+   "backed_typical_w": 171,
+   "unbacked_rated_w": 730,
+   "connected_w": 1479,
+   "estimated_share": 0.0,
+   "ups_w": 1350,
+   "ups_va": 1500,
+   "load_pct_rated": 55,
+   "load_pct_typical": 13,
+   "runtime_min_typical": 35.5,
+   "runtime_min_rated": 7.6,
+   "transit_battery_wh": 0.38,
+   "transits_per_charge": 266,
+   "ups_loss_w": 35.9,
+   "efficiency": 0.888,
+   "mass_kg": 18.0,
+   "box_on_tray_mm": [
+    581,
+    1118,
+    251,
+    406,
+    3,
+    435
+   ],
+   "why": "1350 W covers the backed branch's 749 W at its machines' ratings (55 %); 36 min at its typical 171 W; online, as the tray holds a PC, a vacuum or a measurement",
+   "items": [
+    {
+     "key": "xrf",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 600,
+     "typical_w": 120,
+     "kind": "published",
+     "what": "Bruker S2 PUMA Series 2 EDXRF with the XY Autochanger",
+     "cut": "The tube's high voltage drops; the SDD's cooler stops and the chamber loses its vacuum or helium. After power returns the detector cools and the tube warms before results are stable; Bruker publishes no time (15-30 min, estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://technology-products.dksh.com/product/bruker-s2-puma-series-2-high-end-versatile-benchtop-edxrf/",
+      "https://www.bruker.com/en/products-and-solutions/elemental-analyzers/xrf-spectrometers/s2-puma-series2/other-applications.html"
+     ]
+    },
+    {
+     "key": "xrf_vacuum_pump",
+     "qty": 1,
+     "backed": false,
+     "rated_w": 300,
+     "typical_w": 0,
+     "kind": "estimate",
+     "what": "the S2 PUMA's optional vacuum pump (not specified by Bruker)",
+     "cut": "Stops; the chamber leaks up (estimate).",
+     "branch": "unbacked branch",
+     "sources": [
+      "https://www.bruker.com/en/products-and-solutions/elemental-analyzers/xrf-spectrometers/s2-puma-series2/other-applications.html"
+     ]
+    },
+    {
+     "key": "fumehood_tray",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 35,
+     "typical_w": 35,
+     "kind": "published",
+     "what": "Sentry Air ductless fume hood, standard 24 in, separate blower (13 x 13 x 14.5 in)",
+     "cut": "The blower stops, so there is no capture during the move (estimate).",
+     "branch": "UPS-backed (35 W keeps capture through the move)",
+     "sources": [
+      "https://www.sentryair.com/dfhapp.htm"
+     ]
+    },
+    {
+     "key": "cnc",
+     "qty": 1,
+     "backed": false,
+     "rated_w": 430,
+     "typical_w": 0,
+     "kind": "published",
+     "what": "Makera Carvera desktop CNC (200 W spindle), with our lid actuator and pneumatic vise",
+     "cut": "The job aborts; the controller resets and the machine homes again and re-probes its tool (estimate). The pneumatic vise has to hold without air, since the dock's air is cut in transit (estimate).",
+     "branch": "unbacked branch",
+     "sources": [
+      "https://www.makera.com/blogs/article/carvera-carvera-air-which-desktop-cnc-is-right-for-you",
+      "https://eu.makera.com/pages/cnc-comparison",
+      "https://carvera-community.gitbook.io/docs/anatomy-of-a-carvera"
+     ]
+    },
+    {
+     "key": "pi_unit",
+     "qty": 2,
+     "backed": true,
+     "rated_w": 54,
+     "typical_w": 8,
+     "kind": "published",
+     "what": "Raspberry Pi 5 camera unit (Pi 5 4 GB, Active Cooler, HQ Camera and Camera Module 3 Wide), x2",
+     "cut": "Reboots in about 30 s and the stream drops; repeated hard cuts put the SD card at risk (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply",
+      "https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     ]
+    },
+    {
+     "key": "poe_switch",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 60,
+     "typical_w": 8,
+     "kind": "published",
+     "what": "Small managed PoE+ switch, e.g. Ubiquiti USW-Lite-8-PoE (8 ports, 4 PoE+)",
+     "cut": "Every device on the tray loses its network link; the switch takes about a minute to boot (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe"
+     ]
+    }
+   ]
+  },
+  "H": {
+   "slot": "2R4",
+   "shuttle": 2,
+   "ups": "psi5_800",
+   "model": "Vertiv Liebert PSI5-800SRT2ULIN",
+   "backed_rated_w": 514,
+   "backed_typical_w": 56,
+   "unbacked_rated_w": 1740,
+   "connected_w": 2254,
+   "estimated_share": 0.45,
+   "ups_w": 720,
+   "ups_va": 800,
+   "load_pct_rated": 71,
+   "load_pct_typical": 8,
+   "runtime_min_typical": 102.9,
+   "runtime_min_rated": 11.2,
+   "transit_battery_wh": 0.12,
+   "transits_per_charge": 771,
+   "ups_loss_w": 4.3,
+   "efficiency": 0.973,
+   "mass_kg": 8.4,
+   "box_on_tray_mm": [
+    757,
+    1118,
+    250,
+    406,
+    3,
+    444
+   ],
+   "why": "720 W covers the backed branch's 514 W at its machines' ratings (71 %); 103 min at its typical 56 W; line-interactive is enough: nothing on the branch minds a 4-6 ms transfer",
+   "items": [
+    {
+     "key": "stencil",
+     "qty": 1,
+     "backed": false,
+     "rated_w": 240,
+     "typical_w": 0,
+     "kind": "published",
+     "what": "DDM Novastar SPR-45VA semi-automatic stencil printer",
+     "cut": "Squeegee and power frame lift stop; the optional vacuum hold-down lets go; nothing to resume (estimate).",
+     "branch": "unbacked branch",
+     "sources": [
+      "https://pentalogix.com/pdf/SPR_45VA_Stencil_Printers.pdf"
+     ]
+    },
+    {
+     "key": "lumenpnp",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 300,
+     "typical_w": 15,
+     "kind": "published",
+     "what": "Opulo LumenPnP v4 pick-and-place",
+     "cut": "Its Marlin board resets: the axes lose position and home again; OpenPnP on the host loses the serial link and any job; the 24 V vacuum pumps and valves stop (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://www.opulo.io/products/lumenpnp-24v-6a-power-supply",
+      "https://cdn.shopify.com/s/files/1/0570/4256/7355/files/Opulo_Power_Supply_Datasheet-24V_6A.pdf?v=1723229996",
+      "https://www.opulo.io/products/vacuum-pump-and-valve-set"
+     ]
+    },
+    {
+     "key": "lumenpnp_pc",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 100,
+     "typical_w": 25,
+     "kind": "estimate",
+     "what": "the OpenPnP host PC (a mini PC)",
+     "cut": "OpenPnP and its job state are lost (estimate).",
+     "branch": "UPS-backed",
+     "sources": []
+    },
+    {
+     "key": "reflow",
+     "qty": 1,
+     "backed": false,
+     "rated_w": 1500,
+     "typical_w": 0,
+     "kind": "published",
+     "what": "Puhui T-962A infrared reflow oven",
+     "cut": "Heaters and fan stop and the reflow profile aborts; it boots back to its menu (estimate).",
+     "branch": "unbacked branch",
+     "sources": [
+      "https://taianpuhui.en.made-in-china.com/product/GXLmWKoTvtUI/China-Desktop-Reflow-Oven-Puhui-T962A.html",
+      "https://wiki.bitraf.no/w/images/1/18/T962A_INFRARED_IC_HEATER_User_Manual.pdf"
+     ]
+    },
+    {
+     "key": "pi_unit",
+     "qty": 2,
+     "backed": true,
+     "rated_w": 54,
+     "typical_w": 8,
+     "kind": "published",
+     "what": "Raspberry Pi 5 camera unit (Pi 5 4 GB, Active Cooler, HQ Camera and Camera Module 3 Wide), x2",
+     "cut": "Reboots in about 30 s and the stream drops; repeated hard cuts put the SD card at risk (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply",
+      "https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     ]
+    },
+    {
+     "key": "poe_switch",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 60,
+     "typical_w": 8,
+     "kind": "published",
+     "what": "Small managed PoE+ switch, e.g. Ubiquiti USW-Lite-8-PoE (8 ports, 4 PoE+)",
+     "cut": "Every device on the tray loses its network link; the switch takes about a minute to boot (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe"
+     ]
+    }
+   ]
+  },
+  "G": {
+   "slot": "2F1",
+   "shuttle": 2,
+   "ups": "psi5_800",
+   "model": "Vertiv Liebert PSI5-800SRT2ULIN",
+   "backed_rated_w": 114,
+   "backed_typical_w": 16,
+   "unbacked_rated_w": 2810,
+   "connected_w": 2924,
+   "estimated_share": 0.0,
+   "ups_w": 720,
+   "ups_va": 800,
+   "load_pct_rated": 16,
+   "load_pct_typical": 2,
+   "runtime_min_typical": 360.0,
+   "runtime_min_rated": 50.5,
+   "transit_battery_wh": 0.04,
+   "transits_per_charge": 2700,
+   "ups_loss_w": 4.1,
+   "efficiency": 0.973,
+   "mass_kg": 8.4,
+   "box_on_tray_mm": [
+    757,
+    1118,
+    250,
+    406,
+    3,
+    444
+   ],
+   "why": "720 W covers the backed branch's 114 W at its machines' ratings (16 %); 360 min at its typical 16 W; line-interactive is enough: nothing on the branch minds a 4-6 ms transfer",
+   "items": [
+    {
+     "key": "form4",
+     "qty": 2,
+     "backed": false,
+     "rated_w": 960,
+     "typical_w": 0,
+     "kind": "published",
+     "what": "Formlabs Form 4, x2",
+     "cut": "A print in progress fails and can't be resumed (Formlabs). An idle printer reboots, and its resin heater (25-45 \u00b0C, conduction with infrared sensing) heats again before the next print.",
+     "branch": "unbacked branch",
+     "sources": [
+      "https://formlabs.com/3d-printers/resin/tech-specs/",
+      "https://formlabs.com/support/Choosing-an-Uninterruptible-Power-Supply-UPS-for-your-Formlabs-printer/"
+     ]
+    },
+    {
+     "key": "form_wash",
+     "qty": 1,
+     "backed": false,
+     "rated_w": 50,
+     "typical_w": 0,
+     "kind": "published",
+     "what": "Formlabs Form Wash (2nd Gen)",
+     "cut": "A wash stops with the basket where it is (estimate).",
+     "branch": "unbacked branch",
+     "sources": [
+      "https://formlabs.com/store/form-wash/"
+     ]
+    },
+    {
+     "key": "form_cure",
+     "qty": 1,
+     "backed": false,
+     "rated_w": 1800,
+     "typical_w": 0,
+     "kind": "estimate",
+     "what": "Formlabs Form Cure (2nd Gen)",
+     "cut": "A cure stops; the parts stay in (estimate).",
+     "branch": "unbacked branch",
+     "sources": [
+      "https://formlabs.com/store/form-cure/",
+      "https://formlabs.com/global/products/form-cure/"
+     ]
+    },
+    {
+     "key": "pi_unit",
+     "qty": 2,
+     "backed": true,
+     "rated_w": 54,
+     "typical_w": 8,
+     "kind": "published",
+     "what": "Raspberry Pi 5 camera unit (Pi 5 4 GB, Active Cooler, HQ Camera and Camera Module 3 Wide), x2",
+     "cut": "Reboots in about 30 s and the stream drops; repeated hard cuts put the SD card at risk (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply",
+      "https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     ]
+    },
+    {
+     "key": "poe_switch",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 60,
+     "typical_w": 8,
+     "kind": "published",
+     "what": "Small managed PoE+ switch, e.g. Ubiquiti USW-Lite-8-PoE (8 ports, 4 PoE+)",
+     "cut": "Every device on the tray loses its network link; the switch takes about a minute to boot (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe"
+     ]
+    }
+   ]
+  },
+  "I": {
+   "slot": "2F2",
+   "shuttle": 2,
+   "ups": "psi5_800",
+   "model": "Vertiv Liebert PSI5-800SRT2ULIN",
+   "backed_rated_w": 114,
+   "backed_typical_w": 16,
+   "unbacked_rated_w": 2500,
+   "connected_w": 2614,
+   "estimated_share": 0.0,
+   "ups_w": 720,
+   "ups_va": 800,
+   "load_pct_rated": 16,
+   "load_pct_typical": 2,
+   "runtime_min_typical": 360.0,
+   "runtime_min_rated": 50.5,
+   "transit_battery_wh": 0.04,
+   "transits_per_charge": 2700,
+   "ups_loss_w": 4.1,
+   "efficiency": 0.973,
+   "mass_kg": 8.4,
+   "box_on_tray_mm": [
+    757,
+    1118,
+    250,
+    406,
+    3,
+    444
+   ],
+   "why": "720 W covers the backed branch's 114 W at its machines' ratings (16 %); 360 min at its typical 16 W; line-interactive is enough: nothing on the branch minds a 4-6 ms transfer",
+   "items": [
+    {
+     "key": "snowpod",
+     "qty": 2,
+     "backed": false,
+     "rated_w": 2000,
+     "typical_w": 0,
+     "kind": "estimate",
+     "what": "SnowX SnowPod desktop LPBF printer, x2",
+     "cut": "A build in progress is lost (LPBF builds aren't resumable as a rule) and the chamber's gas circulation stops; the machine reboots (estimate).",
+     "branch": "unbacked branch",
+     "sources": [
+      "https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/fab_metal.py#L438-L441",
+      "https://makers101.com/snowpod-desktop-metal-3d-printer/"
+     ]
+    },
+    {
+     "key": "nitropod",
+     "qty": 1,
+     "backed": false,
+     "rated_w": 500,
+     "typical_w": 0,
+     "kind": "estimate",
+     "what": "SnowX NitroPod nitrogen generator (99.9 % at 3 L/min, made from air)",
+     "cut": "Stops; N2 flow to the printers stops with it (estimate).",
+     "branch": "unbacked branch",
+     "sources": [
+      "https://www.3dnatives.com/en/desktop-metal-3d-printer-snowpod-22102026/"
+     ]
+    },
+    {
+     "key": "pi_unit",
+     "qty": 2,
+     "backed": true,
+     "rated_w": 54,
+     "typical_w": 8,
+     "kind": "published",
+     "what": "Raspberry Pi 5 camera unit (Pi 5 4 GB, Active Cooler, HQ Camera and Camera Module 3 Wide), x2",
+     "cut": "Reboots in about 30 s and the stream drops; repeated hard cuts put the SD card at risk (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply",
+      "https://github.com/vertical-cloud-lab/byu-vcl/blob/61dbd78/vertical-lab/services.py#L116-L146"
+     ]
+    },
+    {
+     "key": "poe_switch",
+     "qty": 1,
+     "backed": true,
+     "rated_w": 60,
+     "typical_w": 8,
+     "kind": "published",
+     "what": "Small managed PoE+ switch, e.g. Ubiquiti USW-Lite-8-PoE (8 ports, 4 PoE+)",
+     "cut": "Every device on the tray loses its network link; the switch takes about a minute to boot (estimate).",
+     "branch": "UPS-backed",
+     "sources": [
+      "https://techspecs.ui.com/unifi/switching/usw-lite-8-poe"
+     ]
+    }
+   ]
+  }
+ },
+ "catalogue": {
+  "psi5_800": {
+   "maker": "Vertiv",
+   "model": "Liebert PSI5-800SRT2ULIN",
+   "short": "PSI5-800 Li",
+   "family": "psi5sd",
+   "topology": "line-interactive",
+   "chemistry": "LiFePO4 lithium-ion",
+   "chem_short": "LiFePO4",
+   "va": 800,
+   "w": 720,
+   "front_mm": [
+    439.0,
+    86.0
+   ],
+   "depth_mm": 300.0,
+   "kg": 8.4,
+   "transfer_ms": "4-6 typical",
+   "runtime": [
+    [
+     360,
+     16.0
+    ],
+    [
+     720,
+     8.0
+    ]
+   ],
+   "eff": [
+    [
+     0.25,
+     0.973
+    ],
+    [
+     0.5,
+     0.986
+    ],
+    [
+     0.75,
+     0.989
+    ],
+    [
+     1.0,
+     0.989
+    ]
+   ],
+   "idle_w": 4.0,
+   "battery_life_y": "up to 10 (Vertiv); 5-year warranty on UPS and battery",
+   "plug": "NEMA 5-15P",
+   "outlets_text": "NEMA 5-15R, some programmable (load shedding)",
+   "card": "IntelliSlot RDU120",
+   "price_usd": null,
+   "notes": [
+    "Runtime: ENERGY STAR's 16 min at 50 % and 8 min at 100 % load.",
+    "No-load input not published: 4 W assumed, as APC's line-interactive units of this size (3.6-5.3 W, ENERGY STAR)."
+   ],
+   "sources": [
+    "Vertiv product catalogue, Liebert PSI5 Lithium-Ion (vertiv.com/en-us/products-catalog/critical-power/uninterruptible-power-supplies-ups/vertiv-liebert-psi5-lithium-ion-ups/, fetched): PSI5-800SRT2ULI 800 VA / 720 W, 2U short depth, 3.39 x 17.28 x 11.81 in, 18.5 lb; its family photo",
+    "ENERGY STAR certified UPS dataset (data.energystar.gov, resource ifxy-2uty, fetched 2026-11-18): efficiency at 25/50/75/100 % load, input at no load, runtime at 50 and 100 % load (the makers' own test submissions)",
+    "Vertiv, Liebert PSI5 Lithium-Ion UPS data sheet SL-70581 (42u.com copy, fetched) and short-depth data sheet SL-70889 Rev.1 02/2025 (vertiv.com, fetched): LiFePO4, 4-6 ms transfer, 5 years on UPS and battery, RDU120 bundles ('N'), 'up to 10 years' battery life, 'up to 10x more discharge cycles'",
+    "front photos: vertiv.com GXT5LI-1500LVRT2UXL front (800 x 600) and the PSI5 Lithium-Ion short-depth family image (1000 x 1000), fetched 2026-11-18"
+   ]
+  },
+  "gxt5li_1500": {
+   "maker": "Vertiv",
+   "model": "Liebert GXT5LI-1500LVRT2UXL",
+   "short": "GXT5LI-1500",
+   "family": "gxt5li",
+   "topology": "online double conversion",
+   "chemistry": "LiFePO4 lithium-ion",
+   "chem_short": "LiFePO4",
+   "va": 1500,
+   "w": 1350,
+   "front_mm": [
+    430.0,
+    85.0
+   ],
+   "depth_mm": 476.0,
+   "kg": 18.0,
+   "transfer_ms": "0 (online)",
+   "runtime": [
+    [
+     675,
+     9.0
+    ],
+    [
+     1350,
+     3.0
+    ]
+   ],
+   "runtime_datasheet": [
+    [
+     675,
+     28.0
+    ],
+    [
+     1350,
+     14.0
+    ]
+   ],
+   "eff": [
+    [
+     0.25,
+     0.888
+    ],
+    [
+     0.5,
+     0.916
+    ],
+    [
+     0.75,
+     0.921
+    ],
+    [
+     1.0,
+     0.917
+    ]
+   ],
+   "idle_w": 29.1,
+   "battery_life_y": "5-year warranty including the battery (Vertiv product page)",
+   "plug": "NEMA 5-15P",
+   "outlets_text": "6 x NEMA 5-15R, 4 programmable (load shedding on battery)",
+   "card": "IntelliSlot RDU120",
+   "price_usd": 2707,
+   "notes": [
+    "Runtime for the sizing: ENERGY STAR's 9 min at 50 % and 3 min at 100 % load. Vertiv's guide gives 14 min at full load and a retailer 28 min at half; the lower is used.",
+    "Price: CDW, $2,706.99 (search snippet, undated)."
+   ],
+   "sources": [
+    "Vertiv, Liebert GXT5 Lithium-Ion 1000-3000VA rack/tower guide specifications, REV0 04-2022 (prep.vertiv.com/491871/globalassets/products/critical-power/uninterruptible-power-supplies-ups/liebert--gxt5-lithium-ion-1000-3000va-rack-tower-guide-specifications.pdf, fetched)",
+    "Vertiv product page GXT5LI-1500LVRT2UXL (vertiv.com, fetched): 18 kg, 476 mm deep, RDU120 card, 5-year warranty including the battery, 'up to 14 minutes at full load'",
+    "ENERGY STAR certified UPS dataset (data.energystar.gov, resource ifxy-2uty, fetched 2026-11-18): efficiency at 25/50/75/100 % load, input at no load, runtime at 50 and 100 % load (the makers' own test submissions)",
+    "front photos: vertiv.com GXT5LI-1500LVRT2UXL front (800 x 600) and the PSI5 Lithium-Ion short-depth family image (1000 x 1000), fetched 2026-11-18"
+   ]
+  },
+  "gxt5li_3000": {
+   "maker": "Vertiv",
+   "model": "Liebert GXT5LI-3000LVRT2UXL",
+   "short": "GXT5LI-3000",
+   "family": "gxt5li",
+   "topology": "online double conversion",
+   "chemistry": "LiFePO4 lithium-ion",
+   "chem_short": "LiFePO4",
+   "va": 3000,
+   "w": 2700,
+   "front_mm": [
+    430.0,
+    85.0
+   ],
+   "depth_mm": 546.0,
+   "kg": 21.5,
+   "transfer_ms": "0 (online)",
+   "runtime": [
+    [
+     1350,
+     9.0
+    ],
+    [
+     2700,
+     3.0
+    ]
+   ],
+   "runtime_datasheet": [
+    [
+     2700,
+     6.0
+    ]
+   ],
+   "eff": [
+    [
+     0.25,
+     0.913
+    ],
+    [
+     0.5,
+     0.927
+    ],
+    [
+     0.75,
+     0.924
+    ],
+    [
+     1.0,
+     0.916
+    ]
+   ],
+   "idle_w": 39.7,
+   "battery_life_y": "5-year warranty including the battery (Vertiv)",
+   "plug": "NEMA L5-30P",
+   "outlets_text": "6 x NEMA 5-15/20R and 1 x L5-30R, 4 programmable",
+   "card": "IntelliSlot RDU120",
+   "price_usd": null,
+   "notes": [
+    "Runtime for the sizing: ENERGY STAR's 9 min at 50 % and 3 min at 100 % load (Vertiv's guide: 6 min at full load).",
+    "Its L5-30P takes up to 22.5 A at 120 V: tray D's backed branch is all it feeds, inside the dock's 30 A."
+   ],
+   "sources": [
+    "Vertiv, Liebert GXT5 Lithium-Ion 1000-3000VA rack/tower guide specifications, REV0 04-2022 (prep.vertiv.com/491871/globalassets/products/critical-power/uninterruptible-power-supplies-ups/liebert--gxt5-lithium-ion-1000-3000va-rack-tower-guide-specifications.pdf, fetched)",
+    "ENERGY STAR certified UPS dataset (data.energystar.gov, resource ifxy-2uty, fetched 2026-11-18): efficiency at 25/50/75/100 % load, input at no load, runtime at 50 and 100 % load (the makers' own test submissions)",
+    "front photos: vertiv.com GXT5LI-1500LVRT2UXL front (800 x 600) and the PSI5 Lithium-Ion short-depth family image (1000 x 1000), fetched 2026-11-18"
+   ]
+  }
+ },
+ "totals": {
+  "ups_mass_kg": 161.9,
+  "ups_loss_w": 274,
+  "backed_typical_w": 1815,
+  "unbacked_rated_w": 16950
+ }
+}
