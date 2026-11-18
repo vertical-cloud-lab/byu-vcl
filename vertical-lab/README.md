@@ -63,6 +63,9 @@ load never sees a transfer.
 - **The heat budget** (`services.py`) now covers all twelve powered trays and both Shuttles: about 1.3 kW and 0.8 kW
   idle, 274 W of it the UPSs' own loss.
 - **Every tray still fits** (`setup_lab.py fit`, which now also checks each UPS against the camera posts).
+- **On screen:** the hookups clip ([`out/vlm_hookups.gif`](out/vlm_hookups.gif)) is re-rendered with tray A's
+  GXT5LI-1500 and the new CombiTac dock. The set-up movie, the chapters, the finale and the long-form are not, and
+  still show round 11's box.
 
 ## The tray coupling, part by part: Stäubli CombiTac frames on a floating dock (2026-11-18)
 

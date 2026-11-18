@@ -213,8 +213,9 @@ F` one tray with each unit at Shuttle 1's opening, and `xvfb-run -a python3 ups.
 
 ## Open
 
-- **Not yet on screen.** The set-up movie, the alloy chapters and the finale haven't been re-rendered. The hookups
-  clip will show the new units once it is re-rendered with the coupling run's new dock.
+- **Not yet on screen everywhere.** The hookups clip ([`out/vlm_hookups.gif`](../out/vlm_hookups.gif)) is
+  re-rendered with tray A's new unit and the coupling run's new dock. The set-up movie, the alloy chapters, the finale
+  and the long-form still show round 11's box until they are re-rendered.
 - **To check on the machines, before anything goes on the unbacked branch:**
   - that each restarts on its own: the Autotouch, the LECO PX500 and MX400, the Form 4 and the Carvera;
   - whether the TM4000's running turbo tolerates the lift's accelerations (translation only). That is a question for
