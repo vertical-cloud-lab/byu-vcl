@@ -63,7 +63,9 @@ TICCMD = Path.home() / ".local/opt/pololu-tic-1.8.1-linux-rpi/ticcmd"
 # may start. Two agent sessions once drove the CubXL a few minutes apart, so the newer one
 # writes its run id here, with the reason underneath, and deletes it when it is done.
 HOLD = Path.home() / "cubxl_runs/HOLD"
-LAB_UTC_OFFSET_H = -6          # lab local time, which CubOS's logs are written in
+# Lab local time, which CubOS's logs are written in. A zone rather than a fixed offset:
+# -6 was right until DST ended on 2026-11-01, then printed every "lab" time an hour late.
+LAB_TZ = "America/Denver"
 
 # gantry-file grbl_settings key -> GRBL setting
 GRBL_KEYS = {
@@ -117,7 +119,8 @@ def num(x, spec="g") -> str:
 
 
 def lab(t: dt.datetime) -> str:
-    return (t + dt.timedelta(hours=LAB_UTC_OFFSET_H)).strftime("%H:%M:%S")
+    from zoneinfo import ZoneInfo
+    return t.astimezone(ZoneInfo(LAB_TZ)).strftime("%H:%M:%S %Z")
 
 
 def sh(cmd, timeout=120, cwd=None, env=None) -> tuple[int, str]:

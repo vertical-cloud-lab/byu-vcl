@@ -38,6 +38,13 @@ steps, but the stirrer read 0 rpm and stalled
 Ben asked for then ran 45/45 with vial 1 at its new x 151, but the stirrer stalled at 0 rpm in
 all five stir windows ([`stir_transfer_5x_20261117`](../results/stir_transfer_5x_20261117/)).
 
+On 2026-11-18 Ben found the fan's ground lead disconnected and soldered it. Both runs were
+repeated with the same files: the stir-only run went 5/5 and the 5× protocol 45/45 again, and
+the stirrer still read 0 rpm and stalled in every window
+([`stir_only_check_20261118`](../results/stir_only_check_20261118/),
+[`stir_transfer_5x_20261118`](../results/stir_transfer_5x_20261118/)). So the CubOS side works
+end to end, and the stir module's wiring is still at fault.
+
 What changed on the Pi (none of it is in a repo there):
 
 - `~/CubOS`: `stirrer-approach-1.patch` applied (new files under `instruments/stirrer/`,
