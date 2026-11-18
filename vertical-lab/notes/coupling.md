@@ -21,6 +21,8 @@ every dock in the VLM scenes from it.
 ```bash
 xvfb-run -a python3 coupling.py movie json      # the close-up and the numbers
 python3 services.py clearance                    # the docks against the lift and the trays
+python3 interference.py tray_dock                # the dock's own motion in MuJoCo
+xvfb-run -a python3 tour.py tray_dock            # the dock as a tour model: head, crank, rod and chain jointed
 ```
 
 ![The tray's face](../out/vlm_coupling_still.png)
@@ -111,7 +113,7 @@ tray's side, so the stroke is 75 mm. That leaves no room for a cylinder behind t
   springs centre it, and the align pins pull it onto the tray as they enter the cones. The close-up's tray stopped
   2.5 mm off in y and 1.5 mm low (2.9 mm), inside align 4's 4 mm.
 - **Drive:** a slider-crank beside the frames: a 37.5 mm crank and a 50 mm rod, turned 180° by a 24 V worm
-  gearmotor.
+  gearmotor under the crank (the rod passes over the crank's axis when mated, so nothing can stand above it).
   - Both ends of the stroke are dead centres. Mated, the couplings' springs (175 N) can't push the head back,
     powered or not, and the worm locks itself as well.
   - The head slows into the end of the stroke on its own, as Staubli's 600 mm/min test speed (p. 135) asks.
@@ -144,6 +146,28 @@ tray's side, so the stroke is 75 mm. That leaves no room for a cylinder behind t
 
 The bay's dock is the tight one. Its drive end is 20.6 mm in front of the shutter's plane. The first layout had 3 mm,
 until the crank moved 11 mm and the frame was shortened to suit.
+
+### Checked in MuJoCo
+
+`interference.py tray_dock` plays the dock's tour (dock out, tray out and back, dock in) through MuJoCo, every frame,
+with FCL confirming each hit on the meshes. The tour model has a joint for each moving part: the head, the crank, the
+rod and each of the chain's ten links, all driven together.
+
+The first run found four real faults in our dock, all now fixed:
+- the rod's eye ran 2 mm into the back plate at full stroke, so the carriage moved 4 mm forward;
+- the crank's hub stood in the rod's path, because the rod passes over the crank's axis when mated. The gearmotor
+  went under the crank;
+- the chain's hanger stood where the head's tubes drop, so it now hangs below the chain from the valve bank;
+- the mains cable grazed the edge of the bottom plate's slot, which is now 6 mm wider.
+
+What is left is listed as intended in `interference.INTENDED`:
+- the chain's links overlap where they pivot;
+- the lines enter the chain's first link;
+- the drive pin turns in the rod's eye;
+- the two halves mate.
+
+The rest only touch (0 mm). A bug found on the way: `tour.py` and `interference.py` cached the dock on `services.py`
+alone, so a change in `coupling.py` didn't rebuild it. Both now key it on `coupling.py` and `ups.py` too.
 
 ### What is ours, what is drawn, what to ask
 

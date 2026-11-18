@@ -88,6 +88,9 @@ INTENDED = [
     ("cubxl_corrosion", "cap/pogo", "body/lids", "the cap's pogo pins compress on the lid's pads"),
     ("tray_dock", "head", "tray", "the dock's CombiTac half mates with the tray's: pins in bushings, contacts in "
                                   "contacts"),
+    ("tray_dock", "chain*", "chain*", "the energy chain's links overlap where they pivot on each other"),
+    ("tray_dock", "head", "chain0", "the dock's lines run into the chain's first link, bolted to its bracket"),
+    ("tray_dock", "head/drive pin", "crank", "the drive pin turns in the rod's eye beside the crank"),
     ("form4", "holder/carrier", "load/build platform", "the build platform's spine slots into the carrier"),
     ("form_wash", "holder/carriage", "load/build platform", "the build platform's spine slots into the elevator"),
 ]
@@ -163,6 +166,8 @@ def _sources(module: str) -> list[Path]:
         files += [HERE / "charge.py", HERE / "instruments_lab.py"]
     elif module != "instruments":
         files.append(HERE / f"{module}.py")
+    if module == "services":            # its dock and the trays' UPSs are coupling.py's and ups.py's
+        files += [HERE / "coupling.py", HERE / "ups.py"]
     return files
 
 

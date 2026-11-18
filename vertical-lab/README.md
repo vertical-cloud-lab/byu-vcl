@@ -94,6 +94,10 @@ align flyer. `services.py` takes every tray plate and dock in the VLM scenes fro
   - an energy chain down to a valve bank with the contactor and the LMFB relay.
 
   The plugging force is 286 N. It fits the 108 mm cavity behind the column's side wall.
+- **Checked in MuJoCo** (`interference.py tray_dock`): its first run found four faults in our dock (the rod into the
+  back plate, the crank's hub in the rod's path, the chain's hanger in the tubes' drop, a cable at a slot's edge),
+  all fixed. What is left is listed as intended (the chain's links pivoting, the lines entering the chain, the two
+  halves mating) or only touches.
 - **Against the lift** (re-run):
   - the extractor stays at least 96 mm from every dock (was 158);
   - a tray passes its own pulled-back dock at 18.6 mm;
@@ -106,6 +110,7 @@ align flyer. `services.py` takes every tray plate and dock in the VLM scenes fro
 ```bash
 xvfb-run -a python3 coupling.py movie json      # the close-up; out/coupling.json (parts, forces, stroke, clearances)
 python3 services.py clearance                    # the docks against the lift, re-run
+python3 interference.py tray_dock                # the dock's own motion in MuJoCo
 xvfb-run -a python3 tour.py tray_dock            # the coupling on its own, as an instrument (crank, rod, chain jointed)
 ```
 

@@ -131,7 +131,8 @@ SLIDING = {"ct3": 8.0, "pe": 8.0, "lmfb": 14.0, "gbit": 14.0}    # N per contact
 # crank turned 180 deg between two dead centres, so the coupling's springs can't push it back at either end.
 DOCK = dict(y0=YC - 110.0, y1=YC + 162.0, x0=WALL_X - 12.0, x1=CLAD_X - 2.0, z0=0.0, z1=158.0, t=6.0)   # its +y end 19 mm in front of the bay's shutter
 RAIL_Y = (YC - 60.0, YC + 60.0)
-CARRIAGE_X = 1299.0               # the carriage plate's front face when mated
+CARRIAGE_X = 1295.0               # the carriage plate's front face when mated (pulled back, the rod's eye 2 mm from
+                                  # the back plate: interference.py tray_dock, 2026-11-18)
 CRANK = dict(r=STROKE / 2, L=50.0, y=YC + 125.0, z=68.0)
 CRANK["x"] = CARRIAGE_X + 3.0 - CRANK["L"] + CRANK["r"]      # the crank's axis: the drive pin at its nearest when mated
 CHAIN = dict(x_fixed=1292.0, x_end0=1292.0, straight=73.0, r=22.0, z_up=-14.0, w=64.0, h=20.0, pitch=13.0,
@@ -576,7 +577,7 @@ def head_parts(internals=True) -> dict:
     # the carriage plate, hanging from the two guide blocks
     plate = box(xc, YC - 100.0, 22.0, xc + 6.0, YC + 100.0, 131.0)
     plate = plate.cut(box(xc - 1, YC - 52.0, 34.0, xc + 7, YC + 52.0, 112.0))       # lightening window
-    ear = box(xc, YC + 96.0, CRANK["z"] - 9.0, xc + 6.0, YC + 140.0, CRANK["z"] + 9.0)
+    ear = box(xc, YC + 96.0, CRANK["z"] - 9.0, xc + 6.0, YC + 140.0, CRANK["z"] + 7.5)
     p["carriage plate"] = (plate.union(ear), "cpl_alu_dark")
     p["drive pin"] = (zcyl(8.0, CRANK["z"] - 9.0, CRANK["z"] + 16.0, xc + 3.0, CRANK["y"]), "cpl_steel")
     blocks = None
@@ -617,7 +618,7 @@ def dock_fixed() -> dict:
     p = {}
     top = box(d["x0"], d["y0"], d["z1"] - d["t"], d["x1"], d["y1"], d["z1"])
     bottom = box(1284.0, d["y0"], d["z0"], d["x1"], d["y1"], d["z0"] + d["t"])
-    bottom = bottom.cut(box(1280.0, YC - 100.0, d["z0"] - 1, 1384.0, YC + 60.0, d["z0"] + d["t"] + 1))
+    bottom = bottom.cut(box(1280.0, YC - 106.0, d["z0"] - 1, 1384.0, YC + 60.0, d["z0"] + d["t"] + 1))
     back = box(d["x1"] - d["t"], d["y0"], d["z0"], d["x1"], d["y1"], d["z1"])
     sides = box(1282.0, d["y0"], d["z0"], d["x1"], d["y0"] + d["t"], d["z1"]).union(
         box(1282.0, d["y1"] - d["t"], d["z0"], d["x1"], d["y1"], d["z1"]))
@@ -629,11 +630,13 @@ def dock_fixed() -> dict:
     p["guide rails"] = (rails, "cpl_steel")
     # the worm gearmotor over the crank, its output shaft down to the crank; a self-locking worm, 24 V DC (ours)
     cx, cy, cz = CRANK["x"], CRANK["y"], CRANK["z"]
-    p["gearbox"] = (box(cx - 22.0, cy - 22.0, cz + 22.0, cx + 22.0, cy + 22.0, cz + 64.0), "cpl_gearbox")
-    p["motor"] = (xcyl(36.0, cx + 22.0, cx + 22.0 + 62.0, cy, cz + 43.0).union(
-        xcyl(30.0, cx + 22.0 + 62.0, cx + 22.0 + 66.0, cy, cz + 43.0)), "cpl_motor")
-    p["gearbox mount"] = (box(cx - 30.0, cy - 30.0, cz + 64.0, cx + 30.0, cy + 30.0, d["z1"] - d["t"]), "cpl_alu_dark")
-    p["output shaft"] = (zcyl(10.0, cz + 14.0, cz + 22.0, cx, cy), "cpl_steel")
+    # under the crank (the rod passes over the crank's axis when mated, L > r): the gearbox on a block on the bottom
+    # plate, its output shaft up into the crank's hub
+    p["gearbox"] = (box(cx - 22.0, cy - 22.0, cz - 56.0, cx + 22.0, cy + 22.0, cz - 14.0), "cpl_gearbox")
+    p["motor"] = (xcyl(36.0, cx + 22.0, cx + 22.0 + 62.0, cy, cz - 35.0).union(
+        xcyl(30.0, cx + 22.0 + 62.0, cx + 22.0 + 66.0, cy, cz - 35.0)), "cpl_motor")
+    p["gearbox mount"] = (box(cx - 30.0, cy - 30.0, d["z0"] + d["t"], cx + 30.0, cy + 30.0, cz - 56.0), "cpl_alu_dark")
+    p["output shaft"] = (zcyl(10.0, cz - 14.0, cz - 6.0, cx, cy), "cpl_steel")
     # two inductive end-position sensors (M8) on the top plate, looking down at the guide blocks' flag
     for k, xs in enumerate((CARRIAGE_X - 30.0, CARRIAGE_X - 30.0 + STROKE)):
         p[f"sensor {k}"] = (zcyl(8.0, 146.0, d["z1"] + 14.0, xs, RAIL_Y[0] + 24.0), "cpl_sensor")
@@ -641,8 +644,9 @@ def dock_fixed() -> dict:
     p["chain fixed bracket"] = (box(CHAIN["x_fixed"] - 8.0, CHAIN["y"] - CHAIN["w"] / 2, -2 * CHAIN["r"] + CHAIN["z_up"]
                                     - 16.0, CHAIN["x_fixed"] + 6.0, CHAIN["y"] + CHAIN["w"] / 2,
                                     -2 * CHAIN["r"] + CHAIN["z_up"] - 4.0), "cpl_alu_dark")
-    p["chain hanger"] = (box(1284.0, CHAIN["y"] - CHAIN["w"] / 2 - 6.0, VALVES_Z[1], 1290.0,
-                             CHAIN["y"] + CHAIN["w"] / 2 + 6.0, 0.0), "cpl_alu_dark")
+    p["chain hanger"] = (box(1284.0, CHAIN["y"] - CHAIN["w"] / 2 - 6.0, VALVES_Z[1],
+                             1290.0, CHAIN["y"] + CHAIN["w"] / 2 + 6.0, -2 * CHAIN["r"] + CHAIN["z_up"] - 16.0),
+                         "cpl_alu_dark")
     p.update(valve_bank())
     return p
 
@@ -689,7 +693,7 @@ def crank_parts() -> dict:
     r = CRANK["r"]
     arm = cq.Workplane("XY").slot2D(r + 18.0, 18.0).extrude(8.0).translate((cx - r / 2, cy, cz))
     pin = zcyl(7.6, cz + 8.0, cz + 16.0, cx - r, cy)            # the crank pin, through the rod's eye
-    return {"crank": (arm.union(pin), "cpl_steel"), "crank hub": (zcyl(16.0, cz, cz + 14.0, cx, cy), "cpl_steel")}
+    return {"crank": (arm.union(pin), "cpl_steel"), "crank hub": (zcyl(16.0, cz - 6.0, cz + 8.0, cx, cy), "cpl_steel")}
 
 
 def rod_parts() -> dict:
@@ -1048,7 +1052,7 @@ def movie():
              ("dock side: the pin frames on a floating\nplate, align 4 guide pins", (1240.0 + STROKE, YC + 50.0, 118.0),
               (0.62, 0.11)),
              ("carriage on two MGN12 guides", (1330.0, RAIL_Y[1], 146.0), (0.82, 0.22)),
-             ("slider-crank and worm gearmotor\n(self-locking)", (CRANK["x"], CRANK["y"], CRANK["z"] + 60.0),
+             ("slider-crank and worm gearmotor\n(self-locking)", (CRANK["x"], CRANK["y"], CRANK["z"] - 30.0),
               (0.84, 0.36)),
              ("energy chain to the valve bank", (1330.0, CHAIN["y"], -40.0), (0.80, 0.56)),
              ("column side wall (see-through)", (WALL_X + 6.0, YC - 260.0, 200.0), (0.04, 0.46)),

@@ -82,7 +82,9 @@ def _sources(module: str = "instruments") -> list[Path]:
     # lab.py has to_mesh; the OpenFlexure files feed the array in instruments_char as well as the two microscopes
     common = [HERE / "lab_models" / "common.py", HERE / "instruments.py", HERE / "lab.py", HERE / "openflexure.py",
               *sorted((HERE / "openflexure").glob("*.json"))]
-    return common if module == "instruments" else [*common, HERE / f"{module}.py"]
+    # services.py builds its dock and its trays' UPSs from coupling.py and ups.py, so a change there rebuilds it too
+    extra = {"services": [HERE / "coupling.py", HERE / "ups.py"]}.get(module, [])
+    return common if module == "instruments" else [*common, HERE / f"{module}.py", *extra]
 
 
 def load(keys=None, rebuild=False) -> dict:

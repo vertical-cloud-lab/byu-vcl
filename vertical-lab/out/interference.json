@@ -24382,48 +24382,221 @@
   "tray_dock": {
    "key": "tray_dock",
    "title": "Tray service dock",
-   "model": "Staubli CombiTac-style docking plate, actuated",
+   "model": "Staubli CombiTac frames (align 4), on a floating dock",
    "module": "services",
-   "frames": 172,
-   "parts": 34,
-   "nonconvex_parts": 15,
-   "mujoco_geoms": 87,
-   "moving_pieces": 3,
+   "frames": 196,
+   "parts": 169,
+   "nonconvex_parts": 112,
+   "mujoco_geoms": 1162,
+   "moving_pieces": 15,
    "pose_error_mm": 0.0,
-   "candidates": 827,
-   "confirmed": 252,
-   "intended_not_rechecked": 499,
-   "rejected_by_exact": 76,
+   "candidates": 3722,
+   "confirmed": 490,
+   "intended_not_rechecked": 1745,
+   "rejected_by_exact": 1487,
    "seconds": {
-    "geometry": 10.4,
-    "sweep": 0.1,
-    "loose": 0.0,
-    "total": 10.9
+    "geometry": 53.1,
+    "sweep": 2.5,
+    "loose": 1.5,
+    "total": 58.0
    },
    "findings": [
     {
-     "a": "body / dock housing",
-     "b": "head / dock rod",
+     "a": "body / side wall",
+     "b": "head / tube cws",
      "pieces": [
       "body",
       "head"
      ],
-     "level": "fault",
+     "level": "touching",
      "kind": "built in",
      "intended": null,
      "at_rest": true,
-     "all_frames": true,
-     "thickness_mm": 22.84,
-     "volume_mm3": 48608.0,
-     "mujoco_depth_mm": 62.0,
-     "frames": 172,
+     "all_frames": false,
+     "thickness_mm": 0.0,
+     "volume_mm3": 0.0,
+     "mujoco_depth_mm": 0.49,
+     "frames": 41,
      "first_frame": 0,
-     "last_frame": 211,
-     "worst_frame": 102,
+     "last_frame": 235,
+     "worst_frame": 0,
+     "at_mm": null,
+     "actions": [
+      -1,
+      0,
+      4
+     ],
+     "captions": [
+      "as modelled",
+      "In its slot the tray's half is held against the dock's: mains, Ethernet, compressed air, N",
+      "... the align 4 pins find their cones and the floating plate follows; PE makes first and t"
+     ]
+    },
+    {
+     "a": "body / side wall",
+     "b": "head / tube cwr",
+     "pieces": [
+      "body",
+      "head"
+     ],
+     "level": "touching",
+     "kind": "built in",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": false,
+     "thickness_mm": 0.0,
+     "volume_mm3": 0.0,
+     "mujoco_depth_mm": 0.41,
+     "frames": 41,
+     "first_frame": 0,
+     "last_frame": 235,
+     "worst_frame": 0,
+     "at_mm": null,
+     "actions": [
+      -1,
+      0,
+      4
+     ],
+     "captions": [
+      "as modelled",
+      "In its slot the tray's half is held against the dock's: mains, Ethernet, compressed air, N",
+      "... the align 4 pins find their cones and the floating plate follows; PE makes first and t"
+     ]
+    },
+    {
+     "a": "crank / crank",
+     "b": "rod / rod",
+     "pieces": [
+      "crank",
+      "rod"
+     ],
+     "level": "touching",
+     "kind": "guide",
+     "intended": null,
+     "at_rest": true,
+     "all_frames": true,
+     "thickness_mm": 0.0,
+     "volume_mm3": 0.0,
+     "mujoco_depth_mm": 0.88,
+     "frames": 196,
+     "first_frame": 0,
+     "last_frame": 235,
+     "worst_frame": 0,
+     "at_mm": null,
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "captions": [
+      "as modelled",
+      "In its slot the tray's half is held against the dock's: mains, Ethernet, compressed air, N",
+      "Before the tray moves: the contactor opens (the tray's UPS takes the load), air, N2 and wa",
+      "The extractor pulls the tray out, past the dock, whose align pins are now 19 mm clear of t",
+      "At the opening an identical dock waits in the bay's side wall. The tray stops in front of ",
+      "... the align 4 pins find their cones and the floating plate follows; PE makes first and t"
+     ]
+    },
+    {
+     "a": "chain1 / chain link 1",
+     "b": "chain2 / chain link 2",
+     "pieces": [
+      "chain1",
+      "chain2"
+     ],
+     "level": "fault",
+     "kind": "motion",
+     "intended": "the energy chain's links overlap where they pivot on each other",
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 2.56,
+     "volume_mm3": 166.0,
+     "mujoco_depth_mm": 4.11,
+     "frames": 15,
+     "first_frame": 69,
+     "last_frame": 220,
+     "worst_frame": 90,
      "at_mm": [
-      110.0,
-      0.0,
-      58.0
+      152.0,
+      -46.0,
+      -27.0
+     ],
+     "actions": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "captions": [
+      "Before the tray moves: the contactor opens (the tray's UPS takes the load), air, N2 and wa",
+      "The extractor pulls the tray out, past the dock, whose align pins are now 19 mm clear of t",
+      "At the opening an identical dock waits in the bay's side wall. The tray stops in front of ",
+      "... the align 4 pins find their cones and the floating plate follows; PE makes first and t"
+     ]
+    },
+    {
+     "a": "chain0 / chain link 0",
+     "b": "chain1 / chain link 1",
+     "pieces": [
+      "chain0",
+      "chain1"
+     ],
+     "level": "fault",
+     "kind": "motion",
+     "intended": "the energy chain's links overlap where they pivot on each other",
+     "at_rest": false,
+     "all_frames": false,
+     "thickness_mm": 2.56,
+     "volume_mm3": 166.0,
+     "mujoco_depth_mm": 4.11,
+     "frames": 12,
+     "first_frame": 80,
+     "last_frame": 210,
+     "worst_frame": 100,
+     "at_mm": [
+      155.1,
+      18.0,
+      -23.9
+     ],
+     "actions": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "captions": [
+      "Before the tray moves: the contactor opens (the tray's UPS takes the load), air, N2 and wa",
+      "The extractor pulls the tray out, past the dock, whose align pins are now 19 mm clear of t",
+      "At the opening an identical dock waits in the bay's side wall. The tray stops in front of ",
+      "... the align 4 pins find their cones and the floating plate follows; PE makes first and t"
+     ]
+    },
+    {
+     "a": "head / chain bracket",
+     "b": "chain0 / chain link 0",
+     "pieces": [
+      "head",
+      "chain0"
+     ],
+     "level": "fault",
+     "kind": "built in",
+     "intended": "the dock's lines run into the chain's first link, bolted to its bracket",
+     "at_rest": true,
+     "all_frames": false,
+     "thickness_mm": 3.53,
+     "volume_mm3": 1240.5,
+     "mujoco_depth_mm": 4.19,
+     "frames": 21,
+     "first_frame": 0,
+     "last_frame": 230,
+     "worst_frame": 80,
+     "at_mm": [
+      116.9,
+      -14.0,
+      -8.5
      ],
      "actions": [
       -1,
@@ -24435,36 +24608,241 @@
      ],
      "captions": [
       "as modelled",
-      "In its slot the tray's plate is held against the dock: mains, Ethernet, compressed air, N2",
-      "Before the tray moves: air, N2 and water are shut and vented (CombiTac's couplings must no",
-      "The extractor pulls the tray out of the slot, across the dock, whose pins are now 30 mm cl",
-      "At the opening an identical dock waits in the bay's side wall. The tray stops against it .",
-      "... the guide pins find the plate's bushings (4 mm of misalignment, CombiTac align), the p"
+      "In its slot the tray's half is held against the dock's: mains, Ethernet, compressed air, N",
+      "Before the tray moves: the contactor opens (the tray's UPS takes the load), air, N2 and wa",
+      "The extractor pulls the tray out, past the dock, whose align pins are now 19 mm clear of t",
+      "At the opening an identical dock waits in the bay's side wall. The tray stops in front of ",
+      "... the align 4 pins find their cones and the floating plate follows; PE makes first and t"
      ]
     },
     {
-     "a": "tray / plate bracket",
-     "b": "head / guide pins",
+     "a": "head / mains cable run",
+     "b": "chain0 / chain link 0",
      "pieces": [
-      "tray",
-      "head"
+      "head",
+      "chain0"
      ],
      "level": "fault",
      "kind": "built in",
-     "intended": "the dock's CombiTac half mates with the tray's: pins in bushings, contacts in contacts",
+     "intended": "the dock's lines run into the chain's first link, bolted to its bracket",
      "at_rest": true,
      "all_frames": false,
-     "thickness_mm": 7.87,
-     "volume_mm3": 2520.8,
-     "mujoco_depth_mm": 10.0,
-     "frames": 8,
+     "thickness_mm": 3.5,
+     "volume_mm3": 219.9,
+     "mujoco_depth_mm": 6.12,
+     "frames": 21,
      "first_frame": 0,
-     "last_frame": 210,
-     "worst_frame": 0,
+     "last_frame": 230,
+     "worst_frame": 80,
      "at_mm": [
-      -26.0,
-      85.6,
-      58.0
+      116.5,
+      -45.3,
+      -8.8
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "captions": [
+      "as modelled",
+      "In its slot the tray's half is held against the dock's: mains, Ethernet, compressed air, N",
+      "Before the tray moves: the contactor opens (the tray's UPS takes the load), air, N2 and wa",
+      "The extractor pulls the tray out, past the dock, whose align pins are now 19 mm clear of t",
+      "At the opening an identical dock waits in the bay's side wall. The tray stops in front of ",
+      "... the align 4 pins find their cones and the floating plate follows; PE makes first and t"
+     ]
+    },
+    {
+     "a": "head / Cat 6A run",
+     "b": "chain0 / chain link 0",
+     "pieces": [
+      "head",
+      "chain0"
+     ],
+     "level": "fault",
+     "kind": "built in",
+     "intended": "the dock's lines run into the chain's first link, bolted to its bracket",
+     "at_rest": true,
+     "all_frames": false,
+     "thickness_mm": 3.28,
+     "volume_mm3": 109.1,
+     "mujoco_depth_mm": 5.23,
+     "frames": 21,
+     "first_frame": 0,
+     "last_frame": 230,
+     "worst_frame": 80,
+     "at_mm": [
+      116.0,
+      -47.0,
+      -9.4
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "captions": [
+      "as modelled",
+      "In its slot the tray's half is held against the dock's: mains, Ethernet, compressed air, N",
+      "Before the tray moves: the contactor opens (the tray's UPS takes the load), air, N2 and wa",
+      "The extractor pulls the tray out, past the dock, whose align pins are now 19 mm clear of t",
+      "At the opening an identical dock waits in the bay's side wall. The tray stops in front of ",
+      "... the align 4 pins find their cones and the floating plate follows; PE makes first and t"
+     ]
+    },
+    {
+     "a": "chain2 / chain link 2",
+     "b": "chain3 / chain link 3",
+     "pieces": [
+      "chain2",
+      "chain3"
+     ],
+     "level": "fault",
+     "kind": "built in",
+     "intended": "the energy chain's links overlap where they pivot on each other",
+     "at_rest": true,
+     "all_frames": false,
+     "thickness_mm": 2.56,
+     "volume_mm3": 166.0,
+     "mujoco_depth_mm": 4.11,
+     "frames": 21,
+     "first_frame": 0,
+     "last_frame": 230,
+     "worst_frame": 100,
+     "at_mm": [
+      161.0,
+      -46.0,
+      -39.3
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "captions": [
+      "as modelled",
+      "In its slot the tray's half is held against the dock's: mains, Ethernet, compressed air, N",
+      "Before the tray moves: the contactor opens (the tray's UPS takes the load), air, N2 and wa",
+      "The extractor pulls the tray out, past the dock, whose align pins are now 19 mm clear of t",
+      "At the opening an identical dock waits in the bay's side wall. The tray stops in front of ",
+      "... the align 4 pins find their cones and the floating plate follows; PE makes first and t"
+     ]
+    },
+    {
+     "a": "chain3 / chain link 3",
+     "b": "chain4 / chain link 4",
+     "pieces": [
+      "chain3",
+      "chain4"
+     ],
+     "level": "fault",
+     "kind": "built in",
+     "intended": "the energy chain's links overlap where they pivot on each other",
+     "at_rest": true,
+     "all_frames": false,
+     "thickness_mm": 2.56,
+     "volume_mm3": 166.0,
+     "mujoco_depth_mm": 4.11,
+     "frames": 21,
+     "first_frame": 0,
+     "last_frame": 230,
+     "worst_frame": 100,
+     "at_mm": [
+      156.7,
+      18.0,
+      -46.8
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "captions": [
+      "as modelled",
+      "In its slot the tray's half is held against the dock's: mains, Ethernet, compressed air, N",
+      "Before the tray moves: the contactor opens (the tray's UPS takes the load), air, N2 and wa",
+      "The extractor pulls the tray out, past the dock, whose align pins are now 19 mm clear of t",
+      "At the opening an identical dock waits in the bay's side wall. The tray stops in front of ",
+      "... the align 4 pins find their cones and the floating plate follows; PE makes first and t"
+     ]
+    },
+    {
+     "a": "chain4 / chain link 4",
+     "b": "chain5 / chain link 5",
+     "pieces": [
+      "chain4",
+      "chain5"
+     ],
+     "level": "fault",
+     "kind": "built in",
+     "intended": "the energy chain's links overlap where they pivot on each other",
+     "at_rest": true,
+     "all_frames": false,
+     "thickness_mm": 2.56,
+     "volume_mm3": 166.0,
+     "mujoco_depth_mm": 4.11,
+     "frames": 21,
+     "first_frame": 0,
+     "last_frame": 230,
+     "worst_frame": 60,
+     "at_mm": [
+      125.1,
+      -46.0,
+      -32.7
+     ],
+     "actions": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "captions": [
+      "as modelled",
+      "In its slot the tray's half is held against the dock's: mains, Ethernet, compressed air, N",
+      "Before the tray moves: the contactor opens (the tray's UPS takes the load), air, N2 and wa",
+      "The extractor pulls the tray out, past the dock, whose align pins are now 19 mm clear of t",
+      "At the opening an identical dock waits in the bay's side wall. The tray stops in front of ",
+      "... the align 4 pins find their cones and the floating plate follows; PE makes first and t"
+     ]
+    },
+    {
+     "a": "chain5 / chain link 5",
+     "b": "chain6 / chain link 6",
+     "pieces": [
+      "chain5",
+      "chain6"
+     ],
+     "level": "fault",
+     "kind": "built in",
+     "intended": "the energy chain's links overlap where they pivot on each other",
+     "at_rest": true,
+     "all_frames": false,
+     "thickness_mm": 2.56,
+     "volume_mm3": 166.0,
+     "mujoco_depth_mm": 4.11,
+     "frames": 13,
+     "first_frame": 0,
+     "last_frame": 230,
+     "worst_frame": 80,
+     "at_mm": [
+      134.5,
+      -46.0,
+      -49.9
      ],
      "actions": [
       -1,
@@ -24474,224 +24852,88 @@
      ],
      "captions": [
       "as modelled",
-      "In its slot the tray's plate is held against the dock: mains, Ethernet, compressed air, N2",
-      "Before the tray moves: air, N2 and water are shut and vented (CombiTac's couplings must no",
-      "... the guide pins find the plate's bushings (4 mm of misalignment, CombiTac align), the p"
+      "In its slot the tray's half is held against the dock's: mains, Ethernet, compressed air, N",
+      "Before the tray moves: the contactor opens (the tray's UPS takes the load), air, N2 and wa",
+      "... the align 4 pins find their cones and the floating plate follows; PE makes first and t"
      ]
     },
     {
-     "a": "tray / plate power",
-     "b": "head / dock head",
+     "a": "chain6 / chain link 6",
+     "b": "chain7 / chain link 7",
      "pieces": [
-      "tray",
-      "head"
+      "chain6",
+      "chain7"
      ],
-     "level": "minor",
+     "level": "fault",
      "kind": "built in",
-     "intended": "the dock's CombiTac half mates with the tray's: pins in bushings, contacts in contacts",
+     "intended": "the energy chain's links overlap where they pivot on each other",
      "at_rest": true,
      "all_frames": false,
-     "thickness_mm": 1.5,
-     "volume_mm3": 1296.0,
-     "mujoco_depth_mm": 1.5,
-     "frames": 6,
+     "thickness_mm": 2.56,
+     "volume_mm3": 166.0,
+     "mujoco_depth_mm": 4.11,
+     "frames": 9,
      "first_frame": 0,
-     "last_frame": 210,
-     "worst_frame": 0,
+     "last_frame": 230,
+     "worst_frame": 60,
      "at_mm": [
-      0.8,
-      -60.0,
-      58.0
+      119.1,
+      -46.0,
+      -48.1
      ],
      "actions": [
       -1,
       0,
+      1,
       4
      ],
      "captions": [
       "as modelled",
-      "In its slot the tray's plate is held against the dock: mains, Ethernet, compressed air, N2",
-      "... the guide pins find the plate's bushings (4 mm of misalignment, CombiTac align), the p"
+      "In its slot the tray's half is held against the dock's: mains, Ethernet, compressed air, N",
+      "Before the tray moves: the contactor opens (the tray's UPS takes the load), air, N2 and wa",
+      "... the align 4 pins find their cones and the floating plate follows; PE makes first and t"
      ]
     },
     {
-     "a": "tray / plate data",
-     "b": "head / dock head",
+     "a": "chain7 / chain link 7",
+     "b": "chain8 / chain link 8",
      "pieces": [
-      "tray",
-      "head"
+      "chain7",
+      "chain8"
      ],
      "level": "minor",
      "kind": "built in",
-     "intended": "the dock's CombiTac half mates with the tray's: pins in bushings, contacts in contacts",
+     "intended": "the energy chain's links overlap where they pivot on each other",
      "at_rest": true,
      "all_frames": false,
-     "thickness_mm": 1.5,
-     "volume_mm3": 1296.0,
-     "mujoco_depth_mm": 1.5,
-     "frames": 6,
+     "thickness_mm": 1.6,
+     "volume_mm3": 71.4,
+     "mujoco_depth_mm": 2.19,
+     "frames": 7,
      "first_frame": 0,
-     "last_frame": 210,
+     "last_frame": 230,
      "worst_frame": 0,
      "at_mm": [
-      0.8,
-      -36.0,
-      58.0
+      109.8,
+      -46.0,
+      -50.9
      ],
      "actions": [
       -1,
       0,
+      1,
       4
      ],
      "captions": [
       "as modelled",
-      "In its slot the tray's plate is held against the dock: mains, Ethernet, compressed air, N2",
-      "... the guide pins find the plate's bushings (4 mm of misalignment, CombiTac align), the p"
+      "In its slot the tray's half is held against the dock's: mains, Ethernet, compressed air, N",
+      "Before the tray moves: the contactor opens (the tray's UPS takes the load), air, N2 and wa",
+      "... the align 4 pins find their cones and the floating plate follows; PE makes first and t"
      ]
     },
     {
-     "a": "tray / plate air",
-     "b": "head / dock head",
-     "pieces": [
-      "tray",
-      "head"
-     ],
-     "level": "minor",
-     "kind": "built in",
-     "intended": "the dock's CombiTac half mates with the tray's: pins in bushings, contacts in contacts",
-     "at_rest": true,
-     "all_frames": false,
-     "thickness_mm": 1.5,
-     "volume_mm3": 339.9,
-     "mujoco_depth_mm": 1.5,
-     "frames": 6,
-     "first_frame": 0,
-     "last_frame": 210,
-     "worst_frame": 0,
-     "at_mm": [
-      0.8,
-      -12.0,
-      58.0
-     ],
-     "actions": [
-      -1,
-      0,
-      4
-     ],
-     "captions": [
-      "as modelled",
-      "In its slot the tray's plate is held against the dock: mains, Ethernet, compressed air, N2",
-      "... the guide pins find the plate's bushings (4 mm of misalignment, CombiTac align), the p"
-     ]
-    },
-    {
-     "a": "tray / plate n2",
-     "b": "head / dock head",
-     "pieces": [
-      "tray",
-      "head"
-     ],
-     "level": "minor",
-     "kind": "built in",
-     "intended": "the dock's CombiTac half mates with the tray's: pins in bushings, contacts in contacts",
-     "at_rest": true,
-     "all_frames": false,
-     "thickness_mm": 1.5,
-     "volume_mm3": 339.9,
-     "mujoco_depth_mm": 1.5,
-     "frames": 6,
-     "first_frame": 0,
-     "last_frame": 210,
-     "worst_frame": 0,
-     "at_mm": [
-      0.8,
-      12.0,
-      58.0
-     ],
-     "actions": [
-      -1,
-      0,
-      4
-     ],
-     "captions": [
-      "as modelled",
-      "In its slot the tray's plate is held against the dock: mains, Ethernet, compressed air, N2",
-      "... the guide pins find the plate's bushings (4 mm of misalignment, CombiTac align), the p"
-     ]
-    },
-    {
-     "a": "tray / plate cws",
-     "b": "head / dock head",
-     "pieces": [
-      "tray",
-      "head"
-     ],
-     "level": "minor",
-     "kind": "built in",
-     "intended": "the dock's CombiTac half mates with the tray's: pins in bushings, contacts in contacts",
-     "at_rest": true,
-     "all_frames": false,
-     "thickness_mm": 1.5,
-     "volume_mm3": 339.9,
-     "mujoco_depth_mm": 1.5,
-     "frames": 6,
-     "first_frame": 0,
-     "last_frame": 210,
-     "worst_frame": 0,
-     "at_mm": [
-      0.8,
-      36.0,
-      58.0
-     ],
-     "actions": [
-      -1,
-      0,
-      4
-     ],
-     "captions": [
-      "as modelled",
-      "In its slot the tray's plate is held against the dock: mains, Ethernet, compressed air, N2",
-      "... the guide pins find the plate's bushings (4 mm of misalignment, CombiTac align), the p"
-     ]
-    },
-    {
-     "a": "tray / plate cwr",
-     "b": "head / dock head",
-     "pieces": [
-      "tray",
-      "head"
-     ],
-     "level": "minor",
-     "kind": "built in",
-     "intended": "the dock's CombiTac half mates with the tray's: pins in bushings, contacts in contacts",
-     "at_rest": true,
-     "all_frames": false,
-     "thickness_mm": 1.5,
-     "volume_mm3": 339.9,
-     "mujoco_depth_mm": 1.5,
-     "frames": 6,
-     "first_frame": 0,
-     "last_frame": 210,
-     "worst_frame": 0,
-     "at_mm": [
-      0.8,
-      60.0,
-      58.0
-     ],
-     "actions": [
-      -1,
-      0,
-      4
-     ],
-     "captions": [
-      "as modelled",
-      "In its slot the tray's plate is held against the dock: mains, Ethernet, compressed air, N2",
-      "... the guide pins find the plate's bushings (4 mm of misalignment, CombiTac align), the p"
-     ]
-    },
-    {
-     "a": "tray / plate power",
-     "b": "head / dock power",
+     "a": "tray / E sockets",
+     "b": "head / E 10 Gbit pins",
      "pieces": [
       "tray",
       "head"
@@ -24702,201 +24944,189 @@
      "at_rest": true,
      "all_frames": false,
      "thickness_mm": 1.0,
-     "volume_mm3": 864.0,
-     "mujoco_depth_mm": 1.0,
-     "frames": 6,
+     "volume_mm3": 45.2,
+     "mujoco_depth_mm": 1.01,
+     "frames": 5,
      "first_frame": 0,
-     "last_frame": 210,
+     "last_frame": 40,
      "worst_frame": 0,
      "at_mm": [
-      1.0,
-      -60.0,
-      58.0
+      -2.5,
+      20.5,
+      80.5
      ],
      "actions": [
       -1,
-      0,
-      4
+      0
      ],
      "captions": [
       "as modelled",
-      "In its slot the tray's plate is held against the dock: mains, Ethernet, compressed air, N2",
-      "... the guide pins find the plate's bushings (4 mm of misalignment, CombiTac align), the p"
+      "In its slot the tray's half is held against the dock's: mains, Ethernet, compressed air, N"
      ]
     },
     {
-     "a": "tray / plate data",
-     "b": "head / dock data",
+     "a": "tray / E end 1",
+     "b": "head / E end 1 hard stop",
      "pieces": [
       "tray",
       "head"
      ],
-     "level": "minor",
+     "level": "touching",
      "kind": "built in",
      "intended": "the dock's CombiTac half mates with the tray's: pins in bushings, contacts in contacts",
      "at_rest": true,
      "all_frames": false,
-     "thickness_mm": 1.0,
-     "volume_mm3": 864.0,
-     "mujoco_depth_mm": 1.0,
-     "frames": 6,
+     "thickness_mm": 0.56,
+     "volume_mm3": 9.7,
+     "mujoco_depth_mm": 0.5,
+     "frames": 5,
      "first_frame": 0,
-     "last_frame": 210,
+     "last_frame": 40,
      "worst_frame": 0,
      "at_mm": [
-      1.0,
-      -36.0,
-      58.0
+      -0.3,
+      49.5,
+      78.6
      ],
      "actions": [
       -1,
-      0,
-      4
+      0
      ],
      "captions": [
       "as modelled",
-      "In its slot the tray's plate is held against the dock: mains, Ethernet, compressed air, N2",
-      "... the guide pins find the plate's bushings (4 mm of misalignment, CombiTac align), the p"
+      "In its slot the tray's half is held against the dock's: mains, Ethernet, compressed air, N"
      ]
     },
     {
-     "a": "tray / plate air",
-     "b": "head / dock air",
+     "a": "tray / F end 1",
+     "b": "head / F end 1 hard stop",
      "pieces": [
       "tray",
       "head"
      ],
-     "level": "minor",
+     "level": "touching",
      "kind": "built in",
      "intended": "the dock's CombiTac half mates with the tray's: pins in bushings, contacts in contacts",
      "at_rest": true,
      "all_frames": false,
-     "thickness_mm": 1.0,
-     "volume_mm3": 226.6,
-     "mujoco_depth_mm": 1.0,
-     "frames": 6,
+     "thickness_mm": 0.56,
+     "volume_mm3": 9.7,
+     "mujoco_depth_mm": 0.5,
+     "frames": 5,
      "first_frame": 0,
-     "last_frame": 210,
+     "last_frame": 40,
      "worst_frame": 0,
      "at_mm": [
-      1.0,
-      -12.0,
-      58.0
+      -0.3,
+      53.5,
+      30.6
      ],
      "actions": [
       -1,
-      0,
-      4
+      0
      ],
      "captions": [
       "as modelled",
-      "In its slot the tray's plate is held against the dock: mains, Ethernet, compressed air, N2",
-      "... the guide pins find the plate's bushings (4 mm of misalignment, CombiTac align), the p"
+      "In its slot the tray's half is held against the dock's: mains, Ethernet, compressed air, N"
      ]
     },
     {
-     "a": "tray / plate n2",
-     "b": "head / dock n2",
+     "a": "tray / E end 0",
+     "b": "head / E end 0 hard stop",
      "pieces": [
       "tray",
       "head"
      ],
-     "level": "minor",
+     "level": "touching",
      "kind": "built in",
      "intended": "the dock's CombiTac half mates with the tray's: pins in bushings, contacts in contacts",
      "at_rest": true,
      "all_frames": false,
-     "thickness_mm": 1.0,
-     "volume_mm3": 226.6,
-     "mujoco_depth_mm": 1.0,
-     "frames": 6,
+     "thickness_mm": 0.55,
+     "volume_mm3": 9.7,
+     "mujoco_depth_mm": 0.5,
+     "frames": 5,
      "first_frame": 0,
-     "last_frame": 210,
+     "last_frame": 40,
      "worst_frame": 0,
      "at_mm": [
-      1.0,
-      12.0,
-      58.0
+      -0.3,
+      -49.5,
+      78.6
      ],
      "actions": [
       -1,
-      0,
-      4
+      0
      ],
      "captions": [
       "as modelled",
-      "In its slot the tray's plate is held against the dock: mains, Ethernet, compressed air, N2",
-      "... the guide pins find the plate's bushings (4 mm of misalignment, CombiTac align), the p"
+      "In its slot the tray's half is held against the dock's: mains, Ethernet, compressed air, N"
      ]
     },
     {
-     "a": "tray / plate cws",
-     "b": "head / dock cws",
+     "a": "tray / F end 0",
+     "b": "head / F end 0 hard stop",
      "pieces": [
       "tray",
       "head"
      ],
-     "level": "minor",
+     "level": "touching",
      "kind": "built in",
      "intended": "the dock's CombiTac half mates with the tray's: pins in bushings, contacts in contacts",
      "at_rest": true,
      "all_frames": false,
-     "thickness_mm": 1.0,
-     "volume_mm3": 226.6,
-     "mujoco_depth_mm": 1.0,
-     "frames": 6,
+     "thickness_mm": 0.55,
+     "volume_mm3": 9.7,
+     "mujoco_depth_mm": 0.5,
+     "frames": 5,
      "first_frame": 0,
-     "last_frame": 210,
+     "last_frame": 40,
      "worst_frame": 0,
      "at_mm": [
-      1.0,
-      36.0,
-      58.0
+      -0.3,
+      -53.5,
+      30.6
      ],
      "actions": [
       -1,
-      0,
-      4
+      0
      ],
      "captions": [
       "as modelled",
-      "In its slot the tray's plate is held against the dock: mains, Ethernet, compressed air, N2",
-      "... the guide pins find the plate's bushings (4 mm of misalignment, CombiTac align), the p"
+      "In its slot the tray's half is held against the dock's: mains, Ethernet, compressed air, N"
      ]
     },
     {
-     "a": "tray / plate cwr",
-     "b": "head / dock cwr",
+     "a": "head / drive pin",
+     "b": "crank / crank",
      "pieces": [
-      "tray",
-      "head"
+      "head",
+      "crank"
      ],
-     "level": "minor",
+     "level": "touching",
      "kind": "built in",
-     "intended": "the dock's CombiTac half mates with the tray's: pins in bushings, contacts in contacts",
+     "intended": "the drive pin turns in the rod's eye beside the crank",
      "at_rest": true,
      "all_frames": false,
-     "thickness_mm": 1.0,
-     "volume_mm3": 226.6,
-     "mujoco_depth_mm": 1.0,
-     "frames": 6,
+     "thickness_mm": 0.5,
+     "volume_mm3": 8.5,
+     "mujoco_depth_mm": 0.49,
+     "frames": 5,
      "first_frame": 0,
-     "last_frame": 210,
+     "last_frame": 40,
      "worst_frame": 0,
      "at_mm": [
-      1.0,
-      60.0,
-      58.0
+      75.2,
+      125.0,
+      72.0
      ],
      "actions": [
       -1,
-      0,
-      4
+      0
      ],
      "captions": [
       "as modelled",
-      "In its slot the tray's plate is held against the dock: mains, Ethernet, compressed air, N2",
-      "... the guide pins find the plate's bushings (4 mm of misalignment, CombiTac align), the p"
+      "In its slot the tray's half is held against the dock's: mains, Ethernet, compressed air, N"
      ]
     }
    ],
@@ -24904,9 +25134,9 @@
     {
      "piece": "tray",
      "gap_at_rest_mm": 0.0,
-     "worst_gap_mm": 368.0,
-     "worst_frame": 129,
-     "when": "The extractor pulls the tray out of the slot, across the dock, whose pins are now 30 mm cl"
+     "worst_gap_mm": 108.0,
+     "worst_frame": 141,
+     "when": "The extractor pulls the tray out, past the dock, whose align pins are now 19 mm clear of t"
     }
    ],
    "not_rigid_left_out": []
@@ -36127,17 +36357,17 @@
    "openflexure_delta",
    "openflexure_v7"
   ],
-  "frames": 11479,
-  "mujoco_geoms": 7284,
-  "candidates": 115806,
-  "confirmed": 54994,
-  "rejected_by_exact": 9603,
-  "faults": 366,
+  "frames": 11503,
+  "mujoco_geoms": 8359,
+  "candidates": 118701,
+  "confirmed": 55232,
+  "rejected_by_exact": 11014,
+  "faults": 365,
   "minor": 128,
   "moving_faults": 201,
-  "intended": 330,
+  "intended": 334,
   "loose": 18,
-  "seconds": 3404.7
+  "seconds": 3451.8
  },
  "method": {
   "tessellation_mm_rad": [
@@ -36162,6 +36392,8 @@
    "powder_coarse",
    "powder_fine",
    "powder_mid",
+   "r8_xray",
+   "r8_xray_d",
    "staging",
    "uv_glow",
    "water",
