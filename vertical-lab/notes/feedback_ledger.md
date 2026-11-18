@@ -261,3 +261,9 @@ Round 10's outcome for each open point is in the last column.
 | Inserting and removing the tensile bars and halves collides; the gripper's clearance | ✅ specimen fingers for the 2F-85 from a stand on the MiR; the bars straight down into jawed grips; the halves out straight after a back-off |
 | A cringy human | ✅ `people.py`: MakeHuman's CC0 base mesh, skinned in numpy, dressed; in the maintenance clip and the finale |
 | The maintenance step collides; probably other collisions and interferences | ✅ the maintenance clip's person, table and tray checked and fixed (a removable service panel on the iMicro, camera E1 moved); the stricter audit (depth-limited allowances, a movers check of everything that moves) on every arm clip, chapters 1, 2, 3, 5 and 7 re-rendered; see `notes/arm_collisions.md` and `out/collisions/round11_summary.json` |
+
+### Nov 18 21:22: real UPSs
+
+| Point | Status |
+|---|---|
+| Identify real UPSs rather than a placeholder; several types, sized by each tray's needs | ✅ `ups.py`, [`ups.md`](ups.md): every powered tray split into a backed branch (through its UPS) and an unbacked one (straight from the dock), and given the smallest real unit that carries its backed branch at rating and runs 10 min at its typical draw. Three Vertiv Liebert lithium units: PSI5-800SRT2ULIN (B, C, F, G, H, I), GXT5LI-1500LVRT2UXL (A, E, K, L, M), GXT5LI-3000LVRT2UXL (D); each drawn from the maker's photos and size, in a bolted cradle. Not yet in the set-up movie or the chapters, which aren't re-rendered |

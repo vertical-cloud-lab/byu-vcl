@@ -9,6 +9,58 @@ the way the lab's other animations are (rePowder training, sieving, atomizer cha
 models tessellated into PyVista, rendered off-screen, text drawn with PIL, written as an MP4 and a GIF. The scene
 framework, [`scene.py`](scene.py), is `atomizer-training/viz3d/scene.py` from #124's branch.
 
+## The trays' UPSs: real units, sized tray by tray (`ups.py`)
+
+Sterling, PR #318, 2026-11-18: "identify real UPS's rather than what looks like a placeholder there, and we might
+need multiple types of UPS units (i.e., multiple capacities depending on the tray requirements)". The full write-up is
+[`notes/ups.md`](notes/ups.md).
+
+![The three units, to scale](out/ups_lineup.png)
+
+**Every powered tray now has two branches.** The dock's mains go to the tray's distribution box at its back right:
+- the **backed** branch runs through the UPS: PCs, controllers, the SEM's pumps, the 0.1 mg balance (an hour's
+  warm-up), the Mastersizer's laser (30 min), the nanoindenter, the potentiostat, the cameras and the switch;
+- the **unbacked** branch comes straight from the dock: heaters, presses, vacuum pumps, the printers. They pause for
+  the 6–8 s of a transit.
+
+Before this, everything on a tray drew through one 1440 W box: 3.7 kW of it on tray F.
+
+**The rule** (`ups.choose`) is the smallest unit that carries the backed branch at its machines' rated draw and runs
+at least 10 minutes at its typical draw. Ten minutes covers a tray stranded off its dock: the network card tells the
+PCs to shut down cleanly. The six trays with a PC, a vacuum or a measurement in progress get an online unit, so their
+load never sees a transfer.
+
+| Unit (all Vertiv Liebert, LiFePO4, RDU120 card) | Rating | Kind | Standing, H x thickness x depth | kg | Trays |
+|---|---|---|---|---|---|
+| PSI5-800SRT2ULIN | 800 VA / 720 W | line-interactive | 439 x 86 x 300 mm | 8.4 | B, C, F, G, H, I |
+| GXT5LI-1500LVRT2UXL | 1500 VA / 1350 W | online | 430 x 85 x 476 mm | 18.0 | A, E, K, L, M |
+| GXT5LI-3000LVRT2UXL | 3000 VA / 2700 W | online | 430 x 85 x 546 mm | 21.5 | D |
+
+![Each tray's backed branch against its unit](out/ups_sizing.png)
+
+- **Runtime at the typical draw:**
+  - 19 min (tray E) to 36 min on the online trays;
+  - 1.7–6 h on the light ones (scaled conservatively as 1/W).
+- **Why lithium:**
+  - it tolerates the warm inside of a Shuttle;
+  - it weighs about half as much;
+  - Vertiv gives up to 10 years for the battery. A lead-acid battery would need changing every 3–5 years, and each
+    unit's front faces into its crowded tray.
+- **Why Vertiv:** one card and one spares kit, short enough to fit, and the only short lithium unit small enough for
+  the light trays. Eaton's 9PX Li-ion is the close alternative for the online trays.
+- **Each unit is drawn from the maker's photos and published size:**
+  - grille, stripe, badge and display;
+  - receptacles, card slot and the cord to the tray's distribution box;
+  - status LEDs the clips light green on mains and amber on battery;
+  - standing on its side in our bolted cradle.
+
+**Found on the way:**
+- **Tray D needs the 3 kVA unit.** Rigaku rates the MiniFlex at 1.0–1.1 kVA, not the 600 W of its tube.
+- **Tray F's unbacked branch is 5.0 kW,** at the dock's 5 kVA continuous rating, so the furnace and the MX400 must
+  take turns.
+- **The heat budget** (`services.py`) now covers all twelve powered trays and both Shuttles: about 1.3 kW and 0.8 kW
+  idle, 274 W of it the UPSs' own loss.
+
 ## Round 11: passive storage trays, the bay camera in view, specimen fingers, a real person, a stricter audit
 
 Sterling's comment of 2026-11-13 23:35 UTC on PR #318, on round 10's long-form. Five streams did the work; the split is
@@ -2431,6 +2483,8 @@ PREVIEW=1 xvfb-run -a python3 animate.py workflow        # the last frame of eac
 python3 reach.py                                          # the arm study -> out/reach.json
 xvfb-run -a python3 tour.py                               # round 3: every instrument -> out/instruments/, out/mp4/instruments/
 python3 tour.py gallery join table                        # the gallery, the joined tour MP4, out/instruments.json
+python3 ups.py                                            # each tray's UPS, sized -> out/ups.json (notes/ups.md)
+python3 ups.py figure; xvfb-run -a python3 ups.py lineup  # out/ups_sizing.png, out/ups_lineup.png
 xvfb-run -a python3 line.py                               # the trays D-F, the line and the rail -> out/vlm_line.gif
 python3 charge.py                                         # the alloy route's charge recipe -> out/alloy_recipe.json
 xvfb-run -a python3 alloy_charge.py                       # chapter 1 with the vacuum press -> out/alloy_charge_vacuum.*
