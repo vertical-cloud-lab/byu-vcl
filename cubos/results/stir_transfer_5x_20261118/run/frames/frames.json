@@ -1,0 +1,200 @@
+[
+  {
+    "tag": "step02_pick_up_tip",
+    "camera": "cam0_csi0",
+    "name": "imx708_wide",
+    "file": "step02_pick_up_tip__cam0_csi0.jpg",
+    "dt_s": 0.61,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-11-18T16:33:49",
+    "error": null
+  },
+  {
+    "tag": "step02_pick_up_tip",
+    "camera": "cam1_csi1",
+    "name": "imx708_wide",
+    "file": "step02_pick_up_tip__cam1_csi1.jpg",
+    "dt_s": 0.62,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-11-18T16:33:49",
+    "error": null
+  },
+  {
+    "tag": "step04_decap",
+    "camera": "cam0_csi0",
+    "name": "imx708_wide",
+    "file": "step04_decap__cam0_csi0.jpg",
+    "dt_s": 0.61,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-11-18T16:33:59",
+    "error": null
+  },
+  {
+    "tag": "step04_decap",
+    "camera": "cam1_csi1",
+    "name": "imx708_wide",
+    "file": "step04_decap__cam1_csi1.jpg",
+    "dt_s": 0.57,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-11-18T16:33:59",
+    "error": null
+  },
+  {
+    "tag": "step05_aspirate",
+    "camera": "cam0_csi0",
+    "name": "imx708_wide",
+    "file": "step05_aspirate__cam0_csi0.jpg",
+    "dt_s": 0.64,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-11-18T16:34:09",
+    "error": null
+  },
+  {
+    "tag": "step05_aspirate",
+    "camera": "cam1_csi1",
+    "name": "imx708_wide",
+    "file": "step05_aspirate__cam1_csi1.jpg",
+    "dt_s": 0.61,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-11-18T16:34:10",
+    "error": null
+  },
+  {
+    "tag": "step06_cap",
+    "camera": "cam0_csi0",
+    "name": "imx708_wide",
+    "file": "step06_cap__cam0_csi0.jpg",
+    "dt_s": 0.62,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-11-18T16:34:18",
+    "error": null
+  },
+  {
+    "tag": "step06_cap",
+    "camera": "cam1_csi1",
+    "name": "imx708_wide",
+    "file": "step06_cap__cam1_csi1.jpg",
+    "dt_s": 0.59,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-11-18T16:34:19",
+    "error": null
+  },
+  {
+    "tag": "step08_decap",
+    "camera": "cam0_csi0",
+    "name": "imx708_wide",
+    "file": "step08_decap__cam0_csi0.jpg",
+    "dt_s": 0.62,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-11-18T16:34:26",
+    "error": null
+  },
+  {
+    "tag": "step08_decap",
+    "camera": "cam1_csi1",
+    "name": "imx708_wide",
+    "file": "step08_decap__cam1_csi1.jpg",
+    "dt_s": 0.55,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-11-18T16:34:26",
+    "error": null
+  },
+  {
+    "tag": "step09_blowout",
+    "camera": "cam0_csi0",
+    "name": "imx708_wide",
+    "file": "step09_blowout__cam0_csi0.jpg",
+    "dt_s": 0.62,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-11-18T16:34:34",
+    "error": null
+  },
+  {
+    "tag": "step09_blowout",
+    "camera": "cam1_csi1",
+    "name": "imx708_wide",
+    "file": "step09_blowout__cam1_csi1.jpg",
+    "dt_s": 0.55,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-11-18T16:34:34",
+    "error": null
+  },
+  {
+    "tag": "step10_cap",
+    "camera": "cam0_csi0",
+    "name": "imx708_wide",
+    "file": "step10_cap__cam0_csi0.jpg",
+    "dt_s": 0.62,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-11-18T16:34:42",
+    "error": null
+  },
+  {
+    "tag": "step10_cap",
+    "camera": "cam1_csi1",
+    "name": "imx708_wide",
+    "file": "step10_cap__cam1_csi1.jpg",
+    "dt_s": 0.57,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-11-18T16:34:42",
+    "error": null
+  },
+  {
+    "tag": "step42_cap",
+    "camera": "cam0_csi0",
+    "name": "imx708_wide",
+    "file": "step42_cap__cam0_csi0.jpg",
+    "dt_s": 0.62,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-11-18T16:37:30",
+    "error": null
+  },
+  {
+    "tag": "step42_cap",
+    "camera": "cam1_csi1",
+    "name": "imx708_wide",
+    "file": "step42_cap__cam1_csi1.jpg",
+    "dt_s": 0.55,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-11-18T16:37:30",
+    "error": null
+  },
+  {
+    "tag": "step43_drop_tip",
+    "camera": "cam0_csi0",
+    "name": "imx708_wide",
+    "file": "step43_drop_tip__cam0_csi0.jpg",
+    "dt_s": 0.63,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-11-18T16:37:42",
+    "error": null
+  },
+  {
+    "tag": "step43_drop_tip",
+    "camera": "cam1_csi1",
+    "name": "imx708_wide",
+    "file": "step43_drop_tip__cam1_csi1.jpg",
+    "dt_s": 0.59,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-11-18T16:37:42",
+    "error": null
+  }
+]
