@@ -61,6 +61,53 @@ load never sees a transfer.
 - **The heat budget** (`services.py`) now covers all twelve powered trays and both Shuttles: about 1.3 kW and 0.8 kW
   idle, 274 W of it the UPSs' own loss.
 
+## The tray coupling, part by part: Stäubli CombiTac frames on a floating dock (2026-11-18)
+
+PR #318, 2026-11-18: "I think we need something more real and high-fidelity for the liquid, gas, and power transfer
+modules (quick disconnect, etc.) for the VLM". Round 4's coupling was a block with six discs and bars for its inserts.
+[`coupling.py`](coupling.py) now draws the parts from Stäubli's CombiTac uniq catalogue (CT-Main-11014009-en) and its
+align flyer. `services.py` takes every tray plate and dock in the VLM scenes from it. The full write-up is
+[`notes/coupling.md`](notes/coupling.md).
+
+- **Two frames, electrical above fluid**, as Stäubli's safety notes require (p. 137):
+  - **electrical:** an LMFB monitoring pair; PE on the long Ø3 mm pin, so it mates first; L1, L2 and N on Ø3 mm
+    contacts (39 A); a 10 Gbit module for Cat 6A Ethernet;
+  - **fluid:** SCT03 couplings for air and N₂ (G1/8), LCT06 for chilled water in and out (G1/4). All four shut off on
+    both sides behind flat faces.
+- **CombiTac align 4 end pieces.** A Ø9.8 mm pin with an insulated tip goes into a cone with a bronze bushing, taking
+  up 4 mm and ±2°.
+- **Which half goes where.** The touch-safe sockets and the cones are on the tray, 6 mm inside its side. The pins and
+  the plugs are on the dock.
+- **The order things connect:** PE first, then Ethernet and power, then the couplings open, and the LMFB pair last.
+  - The contactor closes only once the LMFB loop is closed, so no contact makes or breaks under load.
+  - The valves open only after mating, and must vent to 0 bar (pressure sensors) before the head lets go.
+- **The dock (ours):**
+  - a floating plate on four springs, on a carriage on two MGN12 guides;
+  - driven 75 mm by a slider-crank on a self-locking worm gearmotor. Both ends are dead centres, so the couplings'
+    175 N of springs can't push it back;
+  - an energy chain down to a valve bank with the contactor and the LMFB relay.
+
+  The plugging force is 286 N. It fits the 108 mm cavity behind the column's side wall.
+- **Against the lift** (re-run):
+  - the extractor stays at least 96 mm from every dock (was 158);
+  - a tray passes its own pulled-back dock at 18.6 mm;
+  - the bay's dock is 20.6 mm from the shutter.
+
+| The close-up: docking and letting go, in the order things connect | The tray's face |
+|---|---|
+| [`out/mp4/vlm_coupling.mp4`](out/mp4/vlm_coupling.mp4), [`out/vlm_coupling.gif`](out/vlm_coupling.gif) | ![](out/vlm_coupling_still.png) |
+
+```bash
+xvfb-run -a python3 coupling.py movie json      # the close-up; out/coupling.json (parts, forces, stroke, clearances)
+python3 services.py clearance                    # the docks against the lift, re-run
+xvfb-run -a python3 tour.py tray_dock            # the coupling on its own, as an instrument (crank, rod, chain jointed)
+```
+
+**Open:**
+- **Pin lengths, carrier heights and the couplings' insides are drawn.** Stäubli publishes the order things mate, not
+  the lengths. Questions for Stäubli and Kardex are in the notes.
+- **The set-up movie and the long-form still show the old plate.**
+
 ## Round 11: passive storage trays, the bay camera in view, specimen fingers, a real person, a stricter audit
 
 Sterling's comment of 2026-11-13 23:35 UTC on PR #318, on round 10's long-form. Five streams did the work; the split is

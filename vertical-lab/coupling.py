@@ -171,7 +171,8 @@ MATERIALS = {
     "cpl_nickel": (0.79, 0.79, 0.77, 1.0, 0.75),       # nickel-plated brass couplings
     "cpl_stainless": (0.70, 0.71, 0.72, 1.0, 0.7),
     "cpl_alu": (0.66, 0.68, 0.70, 1.0, 0.45),          # clear-anodised plates
-    "cpl_alu_dark": (0.30, 0.31, 0.33, 1.0, 0.4),      # the dock's frame, dark anodised
+    "cpl_alu_dark": (0.30, 0.31, 0.33, 1.0, 0.4),      # dark anodised brackets and plates
+    "cpl_frame": (0.30, 0.31, 0.33, 0.18, 0.3),        # the dock's frame plates, drawn see-through so the dock shows
     "cpl_steel": (0.55, 0.56, 0.58, 1.0, 0.6),         # rails, blocks, screws
     "cpl_spring": (0.40, 0.41, 0.43, 1.0, 0.6),
     "cpl_motor": (0.17, 0.18, 0.19, 1.0, 0.35),
@@ -620,7 +621,7 @@ def dock_fixed() -> dict:
     back = box(d["x1"] - d["t"], d["y0"], d["z0"], d["x1"], d["y1"], d["z1"])
     sides = box(1282.0, d["y0"], d["z0"], d["x1"], d["y0"] + d["t"], d["z1"]).union(
         box(1282.0, d["y1"] - d["t"], d["z0"], d["x1"], d["y1"], d["z1"]))
-    p["dock frame"] = (top.union(bottom).union(back).union(sides), "cpl_alu_dark")
+    p["dock frame"] = (top.union(bottom).union(back).union(sides), "cpl_frame")
     rails = None
     for yr in RAIL_Y:
         r = box(d["x0"] + 4.0, yr - 6.0, 142.0, d["x1"] - d["t"] - 1.0, yr + 6.0, 150.0)
@@ -632,7 +633,7 @@ def dock_fixed() -> dict:
     p["motor"] = (xcyl(36.0, cx + 22.0, cx + 22.0 + 62.0, cy, cz + 43.0).union(
         xcyl(30.0, cx + 22.0 + 62.0, cx + 22.0 + 66.0, cy, cz + 43.0)), "cpl_motor")
     p["gearbox mount"] = (box(cx - 30.0, cy - 30.0, cz + 64.0, cx + 30.0, cy + 30.0, d["z1"] - d["t"]), "cpl_alu_dark")
-    p["output shaft"] = (zcyl(10.0, cz + 8.0, cz + 22.0, cx, cy), "cpl_steel")
+    p["output shaft"] = (zcyl(10.0, cz + 14.0, cz + 22.0, cx, cy), "cpl_steel")
     # two inductive end-position sensors (M8) on the top plate, looking down at the guide blocks' flag
     for k, xs in enumerate((CARRIAGE_X - 30.0, CARRIAGE_X - 30.0 + STROKE)):
         p[f"sensor {k}"] = (zcyl(8.0, 146.0, d["z1"] + 14.0, xs, RAIL_Y[0] + 24.0), "cpl_sensor")
@@ -687,7 +688,8 @@ def crank_parts() -> dict:
     cx, cy, cz = CRANK["x"], CRANK["y"], CRANK["z"]
     r = CRANK["r"]
     arm = cq.Workplane("XY").slot2D(r + 18.0, 18.0).extrude(8.0).translate((cx - r / 2, cy, cz))
-    return {"crank": (arm, "cpl_steel"), "crank hub": (zcyl(16.0, cz, cz + 14.0, cx, cy), "cpl_steel")}
+    pin = zcyl(7.6, cz + 8.0, cz + 16.0, cx - r, cy)            # the crank pin, through the rod's eye
+    return {"crank": (arm.union(pin), "cpl_steel"), "crank hub": (zcyl(16.0, cz, cz + 14.0, cx, cy), "cpl_steel")}
 
 
 def rod_parts() -> dict:
@@ -696,6 +698,8 @@ def rod_parts() -> dict:
     r, L = CRANK["r"], CRANK["L"]
     x0 = cx - r
     rod = cq.Workplane("XY").slot2D(L + 14.0, 14.0).extrude(6.0).translate((x0 + L / 2, cy, cz + 8.0))
+    for xe in (x0, x0 + L):                                     # its two eyes, on the crank pin and the drive pin
+        rod = rod.cut(zcyl(8.4, cz + 7.0, cz + 15.0, xe, cy))
     return {"rod": (rod, "cpl_alu")}
 
 
@@ -848,8 +852,8 @@ def chain_link_shapes(s: float = 0.0) -> list:
                         sy * c["w"] / 2 + 2.5, c["h"] / 2)
             link = plate if link is None else link.union(plate)
         link = link.union(box(-3.0, -c["w"] / 2, c["h"] / 2 - 3.0, 3.0, c["w"] / 2, c["h"] / 2))
-        mat = cq.Matrix([list(map(float, m[0])), list(map(float, m[1])), list(map(float, m[2]))])
-        out.append(cq.Workplane().add(_shape(link).transformShape(mat)))
+        deg = math.degrees(math.atan2(m[0, 2], m[0, 0]))          # the link's turn about +y (chain_links)
+        out.append(link.rotate((0, 0, 0), (0, 1, 0), deg).translate(tuple(float(v) for v in m[:3, 3])))
     return out
 
 
@@ -1021,7 +1025,6 @@ def movie():
     sc.view_angle = 30.0
     shells = {"cpl_carrier", "cpl_nickel", "cpl_zinc", "cpl_alu"}
     dock_bits = ["dock", "crank", "rod", "ctx"]
-    C.ghost(["dock"], {"cpl_alu_dark"}, 0.15)
     gauge = {}
 
     def gauges(**kw):
@@ -1062,7 +1065,6 @@ def movie():
     def hide_for_tray(u):
         for g in dock_bits + head_g:
             C.ghost([g], None, 1.0 - u)
-        C.ghost(["dock"], {"cpl_alu_dark"}, 0.15 * (1.0 - u))
         sc.alpha["chain"] = 1.0 - u
         for n_ in C.leds.values():
             sc.alpha[n_] = 1.0 - u
@@ -1103,7 +1105,6 @@ def movie():
     def together(u):
         for g in dock_bits + tray_g:
             C.ghost([g], None, u)
-        C.ghost(["dock"], {"cpl_alu_dark"}, 0.15 * u)
         sc.alpha["chain"] = u
         for n_ in C.leds.values():
             sc.alpha[n_] = u
@@ -1234,6 +1235,8 @@ def _main():
     for a in args:
         if a == "movie":
             print(movie(), flush=True)
+            import services
+            services._gif("vlm_coupling")         # the PR's 4.9 MB GIF budget: re-encoded from the MP4, smaller
         elif a == "json":
             OUT.mkdir(exist_ok=True)
             d = dict(plugging=plugging(), clear=clear_mm(), stroke_mm=STROKE, crank=CRANK, chain=CHAIN,

@@ -267,3 +267,9 @@ Round 10's outcome for each open point is in the last column.
 | Point | Status |
 |---|---|
 | Identify real UPSs rather than a placeholder; several types, sized by each tray's needs | ✅ `ups.py`, [`ups.md`](ups.md): every powered tray split into a backed branch (through its UPS) and an unbacked one (straight from the dock), and given the smallest real unit that carries its backed branch at rating and runs 10 min at its typical draw. Three Vertiv Liebert lithium units: PSI5-800SRT2ULIN (B, C, F, G, H, I), GXT5LI-1500LVRT2UXL (A, E, K, L, M), GXT5LI-3000LVRT2UXL (D); each drawn from the maker's photos and size, in a bolted cradle. Not yet in the set-up movie or the chapters, which aren't re-rendered |
+
+### Nov 18 21:20: the transfer modules
+
+| Point | Status |
+|---|---|
+| "Something more real and high-fidelity for the liquid, gas, and power transfer modules (quick disconnect, etc.) for the VLM" | ✅ `coupling.py` ([`coupling.md`](coupling.md)): Stäubli CombiTac frames, electrical over fluid, align 4 pins and cones, SCT03 and LCT06 couplings that shut off on both sides, PE first and LMFB last, part by part from the catalogue; a floating dock on MGN12 guides with a self-locking slider-crank, an energy chain and a valve bank (ours); in every VLM dock (`services.py`), the lift check re-run; the close-up `vlm_coupling` |

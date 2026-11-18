@@ -32,23 +32,23 @@ the git history.
 
 ### The coupling
 
-**One plate per tray, on the back right corner, facing out through the tray's right-hand side.** Each slot a tray uses,
-and the bay, has a matching dock in its right-hand side wall. The dock pushes in 60 mm, across the tray's travel. The
-plate's face is 6 mm inside the tray's side, so nothing on a tray stands proud of it.
+**Since 2026-11-18 the coupling is drawn part by part: see [`coupling.md`](coupling.md).** PR #318 asked for
+"something more real and high-fidelity for the liquid, gas, and power transfer modules". [`coupling.py`](../coupling.py)
+draws Stäubli's CombiTac parts from the catalogue: two frames, electrical above fluid (Stäubli's rule), with align 4
+guide pins and cones, SCT03 and LCT06 couplings that shut off on both sides, PE on the long pin, an LMFB monitoring pair
+and a 10 Gbit module. The dock is ours: a floating plate on a carriage on two MGN12 guides, a self-locking slider-crank,
+an energy chain and a valve bank. `services.py` takes every plate and dock from it.
 
-Why not on the back edge itself:
-- A tray keeps its orientation. In a rear-column slot it is pushed home towards the rear wall, back edge first, so a
-  dock on the rear wall would meet it head on.
-- In a front-column slot and at the opening it is pushed home the other way, back edge last. The back edge then faces
-  the shaft.
-- A dock there would sit in the 106-146 mm between the tray and the extractor's platform. That is in the path of every
-  tray the extractor pulls out of that column. At the opening the shutter is only 35 mm behind the tray.
-- So a back-edge plate needs a different dock in each column, and the one at the opening has nowhere to go.
-
-A side plate meets the same dock everywhere: rear slots, front slots and the bay. The dock's housing sits in the
-cavity between the column's side wall and the cladding, about 108 mm in the model. It is clear of the extractor's
-guide rails and of the shutter, and pulled back its pins' tips are 22 mm clear of the tray. One plate serves both
-places.
+What stays from round 4:
+- **One coupling per tray, at its back right corner, facing out through the tray's right-hand side.** Each slot a tray
+  uses, and the bay, has a matching dock in its right-hand side wall. The faces are 6 mm inside the tray's side, so
+  nothing on a tray stands proud of it.
+- **Why not on the back edge itself.** A tray keeps its orientation. In a rear-column slot its back edge faces the
+  rear wall; in a front-column slot and at the opening it faces the shaft, where a dock would sit in the 106-146 mm
+  between the tray and the extractor's platform, in the path of every tray the extractor pulls. At the opening the
+  shutter is only 35 mm behind the tray. A side coupling meets the same dock everywhere.
+- **The stroke is across the tray's travel**, now 75 mm (it was 60): pulled back, the align pins' insulating caps are
+  18.6 mm clear of the tray's side.
 
 ### Do the docks get in the lift's way? No
 
@@ -56,85 +56,69 @@ PR #318 asked: "Are any of the docks going to interfere with the lift itself?" `
 part as its bounding box, so each gap is a lower bound:
 - the extractor (platform, carriages, tray-pull unit) runs the whole shaft, from 300 mm under the lowest slot to
   300 mm over the highest, in 10 mm steps;
-- it runs empty, and carrying each of trays A-F with its instruments, UPS, plate and cameras;
-- it passes every dock (the six slots in use and the bay's), both engaged and pulled back;
+- it runs empty, and carrying each of trays A-F with its instruments, UPS, coupling and cameras;
+- it passes every dock (the six slots in use and the bay's), both engaged and pulled back, with the crank, rod and
+  chain where they are at each end;
 - each tray slides out of its slot onto the extractor, and from the extractor into the bay, past that place's dock.
+
+Re-run on 2026-11-18 with the new dock (the numbers before are round 7's):
 
 ![The docks against the lift](../out/dock_lift_clearance.png)
 
-| Case | Smallest gap |
-|---|---|
-| The extractor past the front-column docks and the bay's, at any height, empty or loaded, docked or pulled back | 158 mm |
-| The extractor past the rear-column docks | 643 mm |
-| A tray past its own dock, pulled back (out of its slot, or into the bay) | 22 mm |
-| The bay's dock to the shutter | 81 mm |
-| The plate's inserts to the extractor's carriages, with the tray on the extractor | 9.5 mm |
+| Case | Smallest gap | Before |
+|---|---|---|
+| The extractor past the front-column docks and the bay's, at any height, empty or loaded, docked or pulled back | 96 mm | 158 mm |
+| The extractor past the rear-column docks | 683 mm | 643 mm |
+| A tray past its own dock, pulled back (out of its slot, or into the bay) | 18.6 mm | 22 mm |
+| The bay's dock to the shutter | 20.6 mm | 81 mm |
+| The tray's coupling to the extractor's carriages, with the tray on the extractor | 11.0 mm | 9.5 mm |
 
-- **The docks are in the columns and the lift is in the shaft.** The dock's stroke is along x, across the tray, so
-  whether it is engaged or pulled back makes no difference to the lift. The nearest dock is 158 mm from the
-  extractor's carriages, in y.
-- **The one tight place was the plate, not a dock.** The extractor guides a tray 5 mm from its carriages. With the
-  plate's face flush with the tray's side, its inserts stood 1.5 mm proud and passed the carriages at 3.5 mm. The face
-  is now 6 mm inside the tray's side, which gives 9.5 mm.
-- **The stroke went from 45 to 60 mm.** The guide pins are 32 mm long with their conical tips. At 45 mm, pulled back,
-  their tips were 13 mm from a passing tray; at 60 mm they are 22 mm. The housing moved out to start behind the
-  pulled-back head (1298 mm from the centre).
-- **Each dock needs a window in its side wall:** a column's perforated wall, or the bay's slatted one. The window takes
-  out the tray supports 25-100 mm over the slot on that side. Only a tray stored in that slot would use them.
+- **The docks are in the columns and the lift is in the shaft.** The nearest is the drive end of a front-column dock,
+  96 mm from the extractor's carriages, in y.
+- **The bay's dock is the tight one:** its drive end is 20.6 mm in front of the shutter's plane.
+- **Each dock needs a window in its side wall**, about 290 x 165 mm: a column's perforated wall, or the bay's slatted
+  one. Only the tray stored in that slot uses the supports there; the one it rests on stays.
 
 ### The dock's valves, and what happens at each hand-over
 
-Behind each dock, on each hose from the riser, is what switches it:
-- a solenoid valve with a vent on air, N2, chilled water in and chilled water out;
-- a contactor on the mains;
-- a link light on the Ethernet.
+Under each dock is its valve bank (coupling.py, ours):
+- a solenoid valve on air, N2, chilled water in and out (3/2 venting the coupling's side for the gases, 2/2 for
+  water), each with a pressure sensor on the coupling's side;
+- the mains contactor, and the relay on the LMFB loop that allows it to close;
+- an RJ45 coupler with a link light.
 
-In the model each has an indicator, green when open and red when shut. The tray's own lines run from the plate over
-its bracket. The mains goes into the back of the UPS, which feeds the tray's power strip. The rest run along the back
-rim, over the power strip, to a manifold left of the UPS.
+In the model each has an indicator, green when open and red when shut. The tray's own lines run from the coupling over
+its bracket: mains into the back of the UPS, which feeds the tray's power strip; the rest along the back rim, over the
+power strip, to a manifold left of the UPS.
 
 `services.py hookups` ([`out/vlm_hookups.gif`](../out/vlm_hookups.gif)) follows tray A from R2 to the bay:
 1. **Stored, docked.** All six media are live (dots running from the riser to the tray's end of each line). The UPS
-   charges; its status strip is green.
-2. **Letting go.** The four valves shut one by one and their lines vent. Then the contactor opens and the UPS takes the
-   load: its strip and the tray's lamp go amber. Then the dock pulls back 60 mm.
+   charges.
+2. **Letting go.** The four valves shut one by one and their lines vent; the pressure sensors must read 0 bar. Then
+   the contactor opens and the UPS takes the load: its LED and the tray's lamp go amber. Then the crank turns and the
+   dock pulls back 75 mm, the LMFB pair breaking first. (The close-up opens the contactor first; either order works,
+   as long as both are done before the head moves.)
 3. **In transit.** About 6 s on the UPS, with a label riding along.
-4. **At the bay.** The bay's dock pushes in, pins first. The contactor closes (the UPS recharges), then the valves open
-   and the lines fill again.
+4. **At the bay.** The bay's dock pushes in, align pins first; PE makes first and the LMFB pair last. Only then does
+   the contactor close (the UPS recharges) and the valves open.
 
 The close-ups draw tray A's instruments faint, as its OT-2 stands in front of the UPS.
 
-**The parts are Stäubli CombiTac's, from its catalogue:**
+**Stäubli's rules the dock follows** (catalogue page numbers):
+- electrical contacts above liquid couplings (p. 137);
+- no mating or parting under load (p. 137, p. 139): the LMFB loop and the contactor;
+- no coupling mated or parted under pressure (p. 73, p. 75);
+- the plugging force is 1.5 x the sliding force (p. 135): 286 N with the couplings' springs;
+- a stable guide system besides the align 4 pins (p. 81): the carriage's MGN12 guides;
+- a hard stop so the end force doesn't go through the contacts (p. 82): CT-SHR-HS screws.
 
-| Medium | Insert | Rating |
-|---|---|---|
-| Mains (L1, L2, N, PE) | 4 x Ø3 mm power units | 39 A, 600 V each |
-| Ethernet | 10 Gbit module, RJ45 | Cat 6A, 10 Gbit/s, 14 N sliding force |
-| Compressed air | RCT06 | 6 mm, shut-off on one side, 15 bar |
-| Nitrogen | SCT03 | G1/8, shut-off on both sides, 15 bar |
-| Chilled water in and out | 2 x LCT06 | G1/4, shut-off on both sides, 15 bar, 8.48 L/min at 5 m/s |
-| Docking | CombiTac align 4 | pins on one side, conical sockets on the other; 4 mm radial and ±2° misalignment; 100,000 cycles |
+Alternatives with similar figures, if Stäubli can't supply: ODU-MAC's P4+ docking frame (±4 mm radial, 1 mm axial,
+100,000 cycles) and Harting's Han docking frame (±2 mm float, ±4 mm lock-in, at least 10,000 cycles).
 
-- **The couplings must not part under pressure.** Stäubli prohibits connecting or disconnecting the pneumatic inserts
-  under pressure. So the dock shuts and vents air, N2 and water before it pulls back, and opens them only after the
-  plate is home.
-- **The dock has to press the plate home.** The largest gap Stäubli allows between mated carriers is 1-2 mm. The
-  standard frames don't float ("the customer must provide a stable guide system"); the align 4 parts add the pins and
-  the conical sockets that take up the misalignment.
-- Alternatives with similar figures:
-  - ODU-MAC's P4+ docking frame: ±4 mm radial, 1 mm axial, 100,000 cycles.
-  - Harting's Han docking frame: ±2 mm float, ±4 mm lock-in, at least 10,000 cycles.
-  - CPC's Everis BLQ6, a blind-mate water coupling that disconnects under pressure without drips (search snippet).
-- **The sequence**:
-  1. The air, N2 and water supplies shut and vent.
-  2. The UPS takes the load.
-  3. The dock pulls back.
-  4. The extractor moves the tray.
-  5. The bay dock pushes in, pins first.
-  6. The contacts mate, the supplies open, and the tray is back on mains.
 - **The transit is short.** From R2 to the opening the tray moves 2 x 1030 mm in and out at Kardex's 0.7 m/s, about
   3 s, and 246 mm down at 2 m/s, 0.1 s. With the shutter and the accelerations, which Kardex doesn't publish, that is
-  about 6 s. R4, the farthest slot, adds about 0.8 s of vertical travel.
+  about 6 s. R4, the farthest slot, adds about 0.8 s of vertical travel. Each dock's own cycle adds about 3 s at each
+  end (the crank's half turn, and the venting).
 
 ### The UPS on each tray
 
