@@ -933,6 +933,56 @@ def lineup() -> str:
     sheet.save(path, optimize=True)
     return str(path)
 
+
+def on_trays(trays=("D", "A", "F")) -> str:
+    """out/ups_on_trays.png: Shuttle 1 (services.build_vlm) with each of `trays` presented at the opening in turn, one
+    tray per unit type, the cladding see-through and the tray's own instruments faint, so its UPS shows: the unit, its
+    cradle, its cord and its asset label."""
+    from PIL import Image, ImageDraw
+    import animate as A
+    import lab
+    import services as S
+    import setup_lab
+    import vlm as V
+    from scene import font
+    data, idata = lab.meshes(), setup_lab.tour_load_safe()
+    sc, L, live = S.build_vlm("ups_on_trays", data, idata, "The trays' UPSs", mp4=False)
+    L.skin(1.0)(1.0)
+    L.lift_z = V.Z_OPEN
+    shots = []
+    for k in trays:
+        for kk, pos in S.HOME.items():
+            L.tray[kk] = list(V.SLOTS[pos])
+            L.where[kk] = pos
+        L.tray[k] = [V.Y_OPEN, V.Z_OPEN]
+        L.where[k] = "open"
+        S.set_dock(sc, "open", 0.0)
+        S.set_dock(sc, S.HOME[k], 1.0)
+        L.apply_state()
+        eq = tuple(g.split(":")[0] + ":" for g in L.eq_groups.get(k, [])) + (f"eq_{k}", f"{k}_")
+        S.ghost_prefix(sc, eq, 0.22)                     # every piece of the tray's instruments, doors and all
+        x0, x1, y0, y1, z0, z1 = box_on_tray(k)
+        tgt = A.tray_world(k, ((x0 + x1) / 2 - 60.0, (y0 + y1) / 2, (z0 + z1) / 2))
+        sc.cam = [(tgt[0] - 1050.0, tgt[1] - 1650.0, tgt[2] + 760.0), tuple(tgt), (0, 0, 1)]
+        sc.view_angle = 30.0
+        shots.append((k, sc.render_base()))
+        S.ghost_prefix(sc, eq, 1.0)
+    sc.pl.close()
+    w, h = 960, 540
+    sheet = Image.new("RGB", (w * len(shots), h + 110), SURF)
+    d = ImageDraw.Draw(sheet)
+    for i, (k, im) in enumerate(shots):
+        sheet.paste(Image.fromarray(im).resize((w, h)), (i * w, 0))
+        m = unit_of(k)
+        t = tray_load(k)
+        d.text((i * w + 24, h + 14), f"Tray {k} ({SLOT[k]}): {m['maker']} {m['model']}", font=font(22, bold=True),
+               fill=INK)
+        d.text((i * w + 24, h + 50), f"{m['va']} VA / {m['w']} W, {m['topology']}; backed branch "
+               f"{t['backed_typical_w']} W typical, {t['backed_rated_w']} W rated", font=font(18), fill=INK2)
+    path = OUT / "ups_on_trays.png"
+    sheet.save(path, optimize=True)
+    return str(path)
+
 # ===================================================================================================== data
 # ---------------------------------------------------------------------------------------------------- the units
 # Three units, one maker (Vertiv's Liebert), all lithium iron phosphate, all with Vertiv's IntelliSlot RDU120 network
@@ -1353,5 +1403,7 @@ if __name__ == "__main__":
         print(lineup(), flush=True)
     elif args and args[0] == "figure":
         print(figure(), flush=True)
+    elif args and args[0] == "trays":
+        print(on_trays(tuple(args[1:]) or ("D", "A", "F")), flush=True)
     else:
         print(table(write_json()), flush=True)

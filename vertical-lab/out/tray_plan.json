@@ -62,14 +62,14 @@
      "item": "UPS",
      "kind": "ups",
      "box_mm": [
-      609,
-      1060,
-      276,
-      362,
+      507,
+      1118,
+      251,
+      406,
       3,
-      440
+      435
      ],
-     "height_mm": 437.0,
+     "height_mm": 431.6,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -175,13 +175,13 @@
      "kind": "plate",
      "box_mm": [
       550,
-      1220,
-      180,
+      1219,
+      190,
       420,
       3,
-      166
+      182
      ],
-     "height_mm": 163.5,
+     "height_mm": 178.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -189,7 +189,7 @@
    ],
    "ok": true,
    "load": {
-    "known_kg": 157.0,
+    "known_kg": 155.5,
     "not_found": [
      "Powder prep station: XRD holder, SEM stub, XRF cup (our design)"
     ],
@@ -246,14 +246,14 @@
      "item": "UPS",
      "kind": "ups",
      "box_mm": [
-      609,
-      1060,
-      276,
-      362,
+      577,
+      1118,
+      251,
+      406,
       3,
-      440
+      435
      ],
-     "height_mm": 437.0,
+     "height_mm": 431.6,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -327,13 +327,13 @@
      "kind": "plate",
      "box_mm": [
       550,
-      1220,
-      180,
+      1219,
+      190,
       420,
       3,
-      166
+      182
      ],
-     "height_mm": 163.5,
+     "height_mm": 178.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -341,7 +341,7 @@
    ],
    "ok": true,
    "load": {
-    "known_kg": 23.0,
+    "known_kg": 18.0,
     "not_found": [
      "Opentrons OT-2",
      "CubXL + NuVant EZstat Pro"
@@ -412,14 +412,14 @@
      "item": "UPS",
      "kind": "ups",
      "box_mm": [
-      609,
-      1060,
-      276,
-      362,
+      754,
+      1120,
+      250,
+      406,
       3,
-      440
+      444
      ],
-     "height_mm": 437.0,
+     "height_mm": 440.6,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -461,13 +461,13 @@
      "kind": "plate",
      "box_mm": [
       550,
-      1220,
-      180,
+      1219,
+      190,
       420,
       3,
-      166
+      182
      ],
-     "height_mm": 163.5,
+     "height_mm": 178.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -475,7 +475,7 @@
    ],
    "ok": true,
    "load": {
-    "known_kg": 118.0,
+    "known_kg": 103.4,
     "not_found": [
      "vial rack",
      "multi-doser: chain carousel v5 on an HR-202i, 13 powders"
@@ -548,14 +548,14 @@
      "item": "UPS",
      "kind": "ups",
      "box_mm": [
-      609,
-      1060,
-      276,
-      362,
+      577,
+      1118,
+      251,
+      406,
       3,
-      440
+      435
      ],
-     "height_mm": 437.0,
+     "height_mm": 431.6,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -661,13 +661,13 @@
      "kind": "plate",
      "box_mm": [
       550,
-      1220,
-      180,
+      1219,
+      190,
       420,
       3,
-      166
+      182
      ],
-     "height_mm": 163.5,
+     "height_mm": 178.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -675,7 +675,7 @@
    ],
    "ok": true,
    "load": {
-    "known_kg": 63.5,
+    "known_kg": 58.5,
     "not_found": [
      "Plastometrex PLX-Benchtop",
      "KLA iMicro"
@@ -769,14 +769,14 @@
      "item": "UPS",
      "kind": "ups",
      "box_mm": [
-      609,
-      1060,
-      276,
-      362,
+      754,
+      1121,
+      250,
+      406,
       3,
-      440
+      444
      ],
-     "height_mm": 437.0,
+     "height_mm": 440.6,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -850,13 +850,13 @@
      "kind": "plate",
      "box_mm": [
       550,
-      1220,
-      180,
+      1219,
+      190,
       420,
       3,
-      166
+      182
      ],
-     "height_mm": 163.5,
+     "height_mm": 178.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -864,7 +864,7 @@
    ],
    "ok": true,
    "load": {
-    "known_kg": 23.0,
+    "known_kg": 8.4,
     "not_found": [
      "Bambu Lab H2D",
      "Bambu Lab A1 mini"
@@ -967,14 +967,14 @@
      "item": "UPS",
      "kind": "ups",
      "box_mm": [
-      609,
-      1060,
-      276,
-      362,
+      754,
+      1119,
+      250,
+      406,
       3,
-      440
+      444
      ],
-     "height_mm": 437.0,
+     "height_mm": 440.6,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -1048,13 +1048,13 @@
      "kind": "plate",
      "box_mm": [
       550,
-      1220,
-      180,
+      1219,
+      190,
       420,
       3,
-      166
+      182
      ],
-     "height_mm": 163.5,
+     "height_mm": 178.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -1062,7 +1062,7 @@
    ],
    "ok": true,
    "load": {
-    "known_kg": 83.0,
+    "known_kg": 68.4,
     "not_found": [
      "LECO PX500 + disc magazine",
      "LECO MX400",
@@ -1121,14 +1121,14 @@
      "item": "UPS",
      "kind": "ups",
      "box_mm": [
-      609,
-      1060,
-      276,
-      362,
+      577,
+      1118,
+      251,
+      406,
       3,
-      440
+      435
      ],
-     "height_mm": 437.0,
+     "height_mm": 431.6,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -1170,13 +1170,13 @@
      "kind": "plate",
      "box_mm": [
       550,
-      1220,
-      180,
+      1219,
+      190,
       420,
       3,
-      166
+      182
      ],
-     "height_mm": 163.5,
+     "height_mm": 178.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -1184,7 +1184,7 @@
    ],
    "ok": true,
    "load": {
-    "known_kg": 30.2,
+    "known_kg": 25.2,
     "not_found": [
      "Custom N2 glovebox (purge-only)"
     ],
@@ -1238,14 +1238,14 @@
      "item": "UPS",
      "kind": "ups",
      "box_mm": [
-      609,
-      1060,
-      276,
-      362,
+      577,
+      1118,
+      251,
+      406,
       3,
-      440
+      435
      ],
-     "height_mm": 437.0,
+     "height_mm": 431.6,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -1319,13 +1319,13 @@
      "kind": "plate",
      "box_mm": [
       550,
-      1220,
-      180,
+      1219,
+      190,
       420,
       3,
-      166
+      182
      ],
-     "height_mm": 163.5,
+     "height_mm": 178.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -1333,7 +1333,7 @@
    ],
    "ok": true,
    "load": {
-    "known_kg": 144.0,
+    "known_kg": 139.0,
     "not_found": [],
     "over_one_person": [
      "ZwickRoell zwickiLine Z5.0 TN (78 kg)",
@@ -1404,14 +1404,14 @@
      "item": "UPS",
      "kind": "ups",
      "box_mm": [
-      609,
-      1060,
-      276,
-      362,
+      577,
+      1118,
+      251,
+      406,
       3,
-      440
+      435
      ],
-     "height_mm": 437.0,
+     "height_mm": 431.6,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -1485,13 +1485,13 @@
      "kind": "plate",
      "box_mm": [
       550,
-      1220,
-      180,
+      1219,
+      190,
       420,
       3,
-      166
+      182
      ],
-     "height_mm": 163.5,
+     "height_mm": 178.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -1499,7 +1499,7 @@
    ],
    "ok": true,
    "load": {
-    "known_kg": 181.0,
+    "known_kg": 176.0,
     "not_found": [
      "Sentry Air Systems ductless hood, 24 in"
     ],
@@ -1572,14 +1572,14 @@
      "item": "UPS",
      "kind": "ups",
      "box_mm": [
-      609,
-      1060,
-      276,
-      362,
+      754,
+      1120,
+      250,
+      406,
       3,
-      440
+      444
      ],
-     "height_mm": 437.0,
+     "height_mm": 440.6,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -1653,13 +1653,13 @@
      "kind": "plate",
      "box_mm": [
       550,
-      1220,
-      180,
+      1219,
+      190,
       420,
       3,
-      166
+      182
      ],
-     "height_mm": 163.5,
+     "height_mm": 178.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -1667,7 +1667,7 @@
    ],
    "ok": true,
    "load": {
-    "known_kg": 38.0,
+    "known_kg": 23.4,
     "not_found": [
      "DDM Novastar SPR-45VA",
      "Opulo LumenPnP v4.2"
@@ -1754,14 +1754,14 @@
      "item": "UPS",
      "kind": "ups",
      "box_mm": [
-      609,
-      1060,
-      276,
-      362,
+      754,
+      1121,
+      250,
+      406,
       3,
-      440
+      444
      ],
-     "height_mm": 437.0,
+     "height_mm": 440.6,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -1835,13 +1835,13 @@
      "kind": "plate",
      "box_mm": [
       550,
-      1220,
-      180,
+      1219,
+      190,
       420,
       3,
-      166
+      182
      ],
-     "height_mm": 163.5,
+     "height_mm": 178.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -1849,7 +1849,7 @@
    ],
    "ok": true,
    "load": {
-    "known_kg": 23.0,
+    "known_kg": 8.4,
     "not_found": [
      "Formlabs Form 4",
      "Formlabs Form 4",
@@ -1906,14 +1906,14 @@
      "item": "UPS",
      "kind": "ups",
      "box_mm": [
-      609,
-      1060,
-      276,
-      362,
+      754,
+      1118,
+      250,
+      406,
       3,
-      440
+      444
      ],
-     "height_mm": 437.0,
+     "height_mm": 440.6,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -1987,13 +1987,13 @@
      "kind": "plate",
      "box_mm": [
       550,
-      1220,
-      180,
+      1219,
+      190,
       420,
       3,
-      166
+      182
      ],
-     "height_mm": 163.5,
+     "height_mm": 178.5,
      "under_goods_height": true,
      "inside_rim": true,
      "overlaps": []
@@ -2001,7 +2001,7 @@
    ],
    "ok": true,
    "load": {
-    "known_kg": 23.0,
+    "known_kg": 8.4,
     "not_found": [
      "SnowX SnowPod",
      "SnowX SnowPod"
@@ -2422,8 +2422,7 @@
   ],
   "machines_in_aisle": [],
   "ok": true,
-  "method": "Every dock: the docked MiR250, its approach along the dock line from the pivot spot at its open end, and the pivot itself (a circle of the MiR's half-diagonal), against every machine's plan rectangle and every target post's foot; and the aisle against the machines. Margin 30 mm.",
-  "note": "docks re-checked at 03:25 UTC on 2026-11-14 with check_floor's logic on the 01:48 fit's machine rectangles, after the Aconity's dock moved to chapter 5's stop (1c36cef); the machines did not move"
+  "method": "Every dock: the docked MiR250, its approach along the dock line from the pivot spot at its open end, and the pivot itself (a circle of the MiR's half-diagonal), against every machine's plan rectangle and every target post's foot; and the aisle against the machines. Margin 30 mm."
  },
  "slots": {
   "open": {

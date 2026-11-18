@@ -38,6 +38,8 @@ load never sees a transfer.
 
 ![Each tray's backed branch against its unit](out/ups_sizing.png)
 
+![One tray with each unit at the opening, its instruments faint](out/ups_on_trays.png)
+
 - **Runtime at the typical draw:**
   - 19 min (tray E) to 36 min on the online trays;
   - 1.7–6 h on the light ones (scaled conservatively as 1/W).
@@ -60,6 +62,7 @@ load never sees a transfer.
   take turns.
 - **The heat budget** (`services.py`) now covers all twelve powered trays and both Shuttles: about 1.3 kW and 0.8 kW
   idle, 274 W of it the UPSs' own loss.
+- **Every tray still fits** (`setup_lab.py fit`, which now also checks each UPS against the camera posts).
 
 ## The tray coupling, part by part: Stäubli CombiTac frames on a floating dock (2026-11-18)
 

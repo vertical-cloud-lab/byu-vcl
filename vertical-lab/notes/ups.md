@@ -15,6 +15,8 @@ the trays are:
 
 ![The three units](../out/ups_lineup.png)
 
+![One tray with each unit, at the opening, its instruments drawn faint](../out/ups_on_trays.png)
+
 ![Each tray's backed branch against its unit](../out/ups_sizing.png)
 
 ## Two branches on every tray
@@ -173,8 +175,8 @@ The two status LEDs on each front are separate parts, so a clip lights them: gre
 GXT5LI-3000LVRT2UXL", with its rating and chemistry.
 
 `python3 ups.py` writes [`out/ups.json`](../out/ups.json) and prints the table above. `python3 ups.py figure` draws
-the sizing chart, `xvfb-run -a python3 ups.py lineup` the three units to scale, and `xvfb-run -a python3 ups.py still`
-each one on its own.
+the sizing chart, `xvfb-run -a python3 ups.py lineup` the three units to scale, `xvfb-run -a python3 ups.py trays D A
+F` one tray with each unit at Shuttle 1's opening, and `xvfb-run -a python3 ups.py still` each unit on its own.
 
 ## What it changes elsewhere
 
@@ -188,7 +190,8 @@ each one on its own.
   draw (round 10's single 220 Wh figure was the old Eaton's).
 - **`setup_lab.py fit`** now checks each UPS against the tray's camera posts too: they used to be skipped as
   services.py's own parts, which was safe only while every UPS was the same box. Its loading caption gives the UPSs'
-  real masses.
+  real masses. Re-run with the new units, all fifteen trays fit, with no overlaps
+  ([`out/tray_plan.json`](../out/tray_plan.json), [`out/tray_plan.png`](../out/tray_plan.png)).
 - **The tray plan** keeps every instrument where it was. Each unit fits the room the old box had, as follows:
   - the PSI5 is 147 mm shorter than the old box;
   - the GXT5LI-1500 is 29 mm longer, within the 530 mm in front of K's and M's camera posts;
