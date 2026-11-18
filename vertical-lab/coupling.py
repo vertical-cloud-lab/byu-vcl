@@ -1044,14 +1044,14 @@ def movie():
     W = [(1035.0, -40.0, 470.0), (1300.0, 300.0, 10.0), (0, 0, 1)]
     sc.cam = W
     n = 7
-    lab_w = [("tray side: two CombiTac socket frames\nin a plate on the tray", (1205.0, YC - 70.0, 118.0), (0.04, 0.22)),
+    lab_w = [("tray side: two CombiTac socket frames\nin a plate on the tray", (1205.0, YC - 70.0, 118.0), (0.04, 0.32)),
              ("dock side: the pin frames on a floating\nplate, align 4 guide pins", (1240.0 + STROKE, YC + 50.0, 118.0),
               (0.62, 0.11)),
              ("carriage on two MGN12 guides", (1330.0, RAIL_Y[1], 146.0), (0.82, 0.22)),
              ("slider-crank and worm gearmotor\n(self-locking)", (CRANK["x"], CRANK["y"], CRANK["z"] + 60.0),
               (0.84, 0.36)),
              ("energy chain to the valve bank", (1330.0, CHAIN["y"], -40.0), (0.80, 0.56)),
-             ("column side wall (see-through)", (WALL_X + 6.0, YC - 260.0, 200.0), (0.04, 0.40)),
+             ("column side wall (see-through)", (WALL_X + 6.0, YC - 260.0, 200.0), (0.04, 0.46)),
              ("valves, contactor, LMFB relay", (1330.0, YC - 40.0, VALVES_Z[1]), (0.80, 0.70))]
     sc.step(f"1/{n}", "Each tray that needs services carries a coupling at its back right corner; a dock in the "
             "column's side wall meets it in the slot, and another in the bay. The parts are Staubli's CombiTac: two "
@@ -1071,11 +1071,11 @@ def movie():
     sc.step(f"2/{n}", "The tray's face (the dock and the wall hidden for the view).", 2.0, hide_for_tray, hold=0.2,
             cam_to=TRAYFACE)
     xf = X_M - 1.0
-    lab_t = [("PE: the socket for the long pin", (xf, mid(spanE, "CT-E3-2"), Z_E), (0.04, 0.16)),
-             ("L1, L2, N: O3 mm, 39 A (CT-E3-3)", (xf, mid(spanE, "CT-E3-3"), Z_E + 9.0), (0.04, 0.28)),
-             ("LMFB pair: monitors the mating", (xf, mid(spanE, "CT-LMFB"), Z_E + 11.0), (0.04, 0.40)),
+    lab_t = [("PE: the socket for the long pin", (xf, mid(spanE, "CT-E3-2"), Z_E), (0.04, 0.31)),
+             ("L1, L2, N: O3 mm, 39 A (CT-E3-3)", (xf, mid(spanE, "CT-E3-3"), Z_E + 9.0), (0.04, 0.40)),
+             ("LMFB pair: monitors the mating", (xf, mid(spanE, "CT-LMFB"), Z_E + 11.0), (0.04, 0.49)),
              ("Ethernet, Cat 6A, 10 Gbit/s", (xf, mid(spanE, "CT-10GBIT"), Z_E + 7.5), (0.70, 0.12)),
-             ("air and N2: SCT03, G1/8", (xf, mid(spanF, "CT-E8"), Z_F + 8.0), (0.04, 0.60)),
+             ("air and N2: SCT03, G1/8", (xf, mid(spanF, "CT-E8"), Z_F + 8.0), (0.04, 0.62)),
              ("chilled water in and out: LCT06, G1/4,\n8.5 L/min, flat faces, shut-off both sides",
               (xf, mid(spanF, "CT-E-UCT08") + 10.5, Z_F), (0.56, 0.80)),
              ("align 4 cone (CT-HME-B/4),\nbronze bushing", (xf, end_axes("E")[1][0], Z_E + 9.0), (0.80, 0.30)),
@@ -1092,11 +1092,11 @@ def movie():
     sc.step(f"2/{n}", "", 2.0, swap, hold=0.2, cam_to=DOCKFACE)
     xp = X_M + STROKE
     lab_d = [("align 4 pin (CT-HME-S/4): O9.8 mm,\n50.2 mm, insulated tip", (xp - 46.0, end_axes("E")[0][0], Z_E),
-              (0.04, 0.16)),
-             ("PE pin, the longest", (xp - 11.0, mid(spanE, "CT-E3-2"), Z_E), (0.04, 0.32)),
-             ("LMFB pins, the shortest", (xp - 6.0, mid(spanE, "CT-LMFB"), Z_E + 11.0), (0.04, 0.44)),
+              (0.04, 0.33)),
+             ("PE pin, the longest", (xp - 11.0, mid(spanE, "CT-E3-2"), Z_E), (0.04, 0.45)),
+             ("LMFB pins, the shortest", (xp - 6.0, mid(spanE, "CT-LMFB"), Z_E + 11.0), (0.04, 0.56)),
              ("10 Gbit pins", (xp - 11.0, mid(spanE, "CT-10GBIT") + 5.5, Z_E + 7.5), (0.70, 0.12)),
-             ("plug noses with flush poppets", (xp - 10.0, mid(spanF, "CT-E-UCT08") - 10.5, Z_F), (0.04, 0.70)),
+             ("plug noses with flush poppets", (xp - 10.0, mid(spanF, "CT-E-UCT08") - 10.5, Z_F), (0.04, 0.72)),
              ("floating plate on four springs", (xp + 40.0, YC + 80.0, PANEL["z1"] - 10.0), (0.72, 0.30)),
              ("hard-stop screws (CT-SHR-HS)", (xp + 0.5, end_axes("F")[1][1] - 12.0, Z_F - 9.0), (0.72, 0.84))]
     sc.step(f"2/{n}", "On the dock, the pin halves, on a plate that floats on four springs. The pins' lengths set "
@@ -1119,9 +1119,9 @@ def movie():
     lab3 = [("the crank turns 180 deg, from\none dead centre to the other", (CRANK["x"], CRANK["y"], CRANK["z"] + 8.0),
              (0.80, 0.30)),
             ("the carriage runs on two MGN12 guides", (1300.0, RAIL_Y[1], 140.0), (0.30, 0.12)),
-            ("the chain rolls at half the head's speed", (1330.0, CHAIN["y"], -40.0), (0.06, 0.62)),
+            ("the chain rolls at half the head's speed", (1330.0, CHAIN["y"], -40.0), (0.06, 0.66)),
             ("the floating plate follows the align pins\nonto the tray's 2.9 mm offset", (1240.0, YC - 60.0, 118.0),
-             (0.06, 0.30))]
+             (0.06, 0.44))]
     sc.step(f"3/{n}", "The gearmotor turns the crank and the head comes in. This tray stopped 2.5 mm off in y and "
             "1.5 mm low: the align 4 pins find their cones and the plate, floating on four springs, follows them "
             "(align 4 takes up 4 mm).", 4.5, approach, hold=0.8, labels=lab3)
@@ -1147,11 +1147,11 @@ def movie():
         mk = C.made(s)
         done = [t for s_at, k, t in sorted(events, key=lambda e: -e[0]) if mk.get(k)]
         gauges(head=f"{s:5.1f} mm to go", made=(", ".join(done) if done else "nothing yet"))
-    lab4 = [("PE pin (the longest)", (X_M - 2.0, mid(spanE, "CT-E3-2"), Z_E + 17.0), (0.04, 0.26)),
-            ("L1, L2, N pins", (X_M - 2.0, mid(spanE, "CT-E3-3"), Z_E + 17.0), (0.04, 0.38)),
-            ("LMFB pins (the shortest)", (X_M - 2.0, mid(spanE, "CT-LMFB"), Z_E + 17.0), (0.04, 0.50)),
+    lab4 = [("PE pin (the longest)", (X_M - 2.0, mid(spanE, "CT-E3-2"), Z_E + 17.0), (0.04, 0.38)),
+            ("L1, L2, N pins", (X_M - 2.0, mid(spanE, "CT-E3-3"), Z_E + 17.0), (0.04, 0.48)),
+            ("LMFB pins (the shortest)", (X_M - 2.0, mid(spanE, "CT-LMFB"), Z_E + 17.0), (0.04, 0.58)),
             ("10 Gbit contacts", (X_M - 2.0, mid(spanE, "CT-10GBIT"), Z_E + 17.0), (0.96, 0.30)),
-            ("hard-stop screw (CT-SHR-HS)", (X_M + 0.5, end_axes("E")[0][1] + 12.0, Z_E + 8.0), (0.04, 0.66))]
+            ("hard-stop screw (CT-SHR-HS)", (X_M + 0.5, end_axes("E")[0][1] + 12.0, Z_E + 8.0), (0.04, 0.72))]
     sc.step(f"4/{n}", "PE makes first, then Ethernet and L1/L2/N; the LMFB pair makes last, so it only closes once "
             "everything else is home. The hard-stop screws take the end force, not the contacts.", 4.5, last15,
             hold=1.0, labels=lab4)
@@ -1165,10 +1165,10 @@ def movie():
     sc.step(f"4/{n}", "The same 15 mm again, for the fluid frame below, its bodies see-through.", 1.6, ghost_f,
             hold=0.3, cam_to=TOPF)
     lab4b = [("LCT06 socket: the sleeve is pushed back\nby the plug's nose", (X_M - 14.0, mid(spanF, "CT-E-UCT08") - 10.5,
-                                                                               Z_F + 6.0), (0.04, 0.22)),
+                                                                               Z_F + 6.0), (0.04, 0.40)),
              ("the plug's poppet is pushed back by\nthe socket's fixed piston", (X_M + 8.0, mid(spanF, "CT-E-UCT08") + 10.5,
-                                                                                 Z_F + 6.0), (0.96, 0.22)),
-             ("SCT03, air and N2", (X_M - 10.0, mid(spanF, "CT-E8"), Z_F + 14.0), (0.04, 0.52))]
+                                                                                 Z_F + 6.0), (0.96, 0.30)),
+             ("SCT03, air and N2", (X_M - 10.0, mid(spanF, "CT-E8"), Z_F + 14.0), (0.04, 0.60))]
     sc.step(f"4/{n}", "Each plug's nose pushes the socket's sleeve back while the socket's piston pushes the plug's "
             "poppet back: the flow opens only once both seals are inside each other, and shuts again the same way.",
             4.5, last15, hold=1.0, labels=lab4b)
@@ -1192,7 +1192,7 @@ def movie():
         gauges(head="mated, held at dead centre", made="all")
     sc.step(f"5/{n}", "", 1.5, restore, hold=0.0, cam_to=LEDS)
     lab5 = [("LMFB relay: fully home", (1300.0 + 14.0 * 6, YC - 47.0, VALVES_Z[1] - 8.0), (0.84, 0.18)),
-            ("contactor: the tray's UPS\nback on mains", valve_points()["power"], (0.10, 0.30)),
+            ("contactor: the tray's UPS\nback on mains", valve_points()["power"], (0.10, 0.42)),
             ("valves: air, N2, water in, water out", valve_points()["n2"], (0.10, 0.70)),
             ("pressure sensor on each line", (1300.0 + 14.0 * 4, YC + 10.0, VALVES_Z[0] + 34.0), (0.84, 0.76))]
     sc.step(f"5/{n}", "Only with the LMFB loop closed does the dock's relay let the contactor close, so the contacts "

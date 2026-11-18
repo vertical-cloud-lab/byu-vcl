@@ -1,0 +1,107 @@
+{
+ "name": "vlm_coupling",
+ "fps": 15,
+ "n_frames": 991,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/7",
+   "caption": "Each tray that needs services carries a coupling at its back right corner; a dock in the column's side wall meets it in the slot, and another in the bay. The parts are Staubli's CombiTac: two frames, the electrical one above the fluid one, as Staubli requires.",
+   "start_frame": 0,
+   "end_frame": 110
+  },
+  {
+   "label": "2/7",
+   "caption": "The tray's face (the dock and the wall hidden for the view).",
+   "start_frame": 111,
+   "end_frame": 143
+  },
+  {
+   "label": "2/7",
+   "caption": "On the tray, the socket halves: power, its earth and a monitoring pair; Ethernet; air, nitrogen and chilled water in and out. The sockets are touch-safe and every coupling face is flat, so nothing stands proud of the tray's side.",
+   "start_frame": 144,
+   "end_frame": 224
+  },
+  {
+   "label": "2/7",
+   "caption": "",
+   "start_frame": 225,
+   "end_frame": 257
+  },
+  {
+   "label": "2/7",
+   "caption": "On the dock, the pin halves, on a plate that floats on four springs. The pins' lengths set the order things connect: PE first, the LMFB pair last.",
+   "start_frame": 258,
+   "end_frame": 338
+  },
+  {
+   "label": "2/7",
+   "caption": "",
+   "start_frame": 339,
+   "end_frame": 371
+  },
+  {
+   "label": "3/7",
+   "caption": "The gearmotor turns the crank and the head comes in. This tray stopped 2.5 mm off in y and 1.5 mm low: the align 4 pins find their cones and the plate, floating on four springs, follows them (align 4 takes up 4 mm).",
+   "start_frame": 372,
+   "end_frame": 451
+  },
+  {
+   "label": "4/7",
+   "caption": "The last 15 mm, at Staubli's mating speed (10 mm/s, shown 3 times slower): first the electrical frame, from above, its carriers drawn see-through.",
+   "start_frame": 452,
+   "end_frame": 482
+  },
+  {
+   "label": "4/7",
+   "caption": "PE makes first, then Ethernet and L1/L2/N; the LMFB pair makes last, so it only closes once everything else is home. The hard-stop screws take the end force, not the contacts.",
+   "start_frame": 483,
+   "end_frame": 565
+  },
+  {
+   "label": "4/7",
+   "caption": "The same 15 mm again, for the fluid frame below, its bodies see-through.",
+   "start_frame": 566,
+   "end_frame": 593
+  },
+  {
+   "label": "4/7",
+   "caption": "Each plug's nose pushes the socket's sleeve back while the socket's piston pushes the plug's poppet back: the flow opens only once both seals are inside each other, and shuts again the same way.",
+   "start_frame": 594,
+   "end_frame": 676
+  },
+  {
+   "label": "5/7",
+   "caption": "",
+   "start_frame": 677,
+   "end_frame": 698
+  },
+  {
+   "label": "5/7",
+   "caption": "Only with the LMFB loop closed does the dock's relay let the contactor close, so the contacts never mate or part under load; then the valves open. The crank stops at dead centre: the couplings' 175 N of springs can't push the head back, powered or not.",
+   "start_frame": 699,
+   "end_frame": 780
+  },
+  {
+   "label": "6/7",
+   "caption": "To let go, in reverse: the contactor opens first (the tray's UPS takes over), then the valves shut and vent each coupling's side of the line, and the pressure sensors confirm 0 bar: no coupling may part under pressure.",
+   "start_frame": 781,
+   "end_frame": 840
+  },
+  {
+   "label": "6/7",
+   "caption": "The head pulls back 75 mm: the LMFB pair breaks first, PE last, and each coupling's valves shut flush before its faces part. The align pins' tips end 18.8 mm clear of the tray's side.",
+   "start_frame": 841,
+   "end_frame": 912
+  },
+  {
+   "label": "7/7",
+   "caption": "The extractor takes the tray: nothing on it stands proud of its side, and its sockets are touch-safe (IP2X). In transit its UPS carries it, until the bay's dock does all this again.",
+   "start_frame": 913,
+   "end_frame": 990
+  }
+ ]
+}

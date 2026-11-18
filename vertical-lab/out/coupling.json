@@ -1,0 +1,101 @@
+{
+ "plugging": {
+  "contacts": {
+   "ct3": 3,
+   "pe": 1,
+   "lmfb": 2,
+   "gbit": 4
+  },
+  "sliding_N": 74.0,
+  "coupling_springs_N": 175.0,
+  "plugging_N": 286.0,
+  "holding_N": 175.0,
+  "crank_torque_worst_Nm": 13.93,
+  "note": "plugging = 1.5 x the contacts' sliding forces (p.135) plus the four couplings' springs (43 and 44.5 N without pressure, p.73, p.75); the couplings are vented before mating, so no pressure term; the crank's torque is the worst over the last 15 mm of travel, where everything engages"
+ },
+ "clear": {
+  "align_pin_tip_mated_x": 1168.8,
+  "align_pin_tip_pulled_back_x": 1243.8,
+  "gap_to_tray_side_pulled_back_mm": 18.8,
+  "nose_gap_pulled_back_mm": 56.5,
+  "dock_to_cladding_mm": 2.0
+ },
+ "stroke_mm": 75.0,
+ "crank": {
+  "r": 37.5,
+  "L": 50.0,
+  "y": 405.0,
+  "z": 68.0,
+  "x": 1289.5
+ },
+ "chain": {
+  "x_fixed": 1292.0,
+  "x_end0": 1292.0,
+  "straight": 73.0,
+  "r": 22.0,
+  "z_up": -14.0,
+  "w": 64.0,
+  "h": 20.0,
+  "pitch": 13.0,
+  "y": 266.0
+ },
+ "frames": {
+  "E": {
+   "modules": [
+    {
+     "type": "CT-LMFB",
+     "width_mm": 6.0
+    },
+    {
+     "type": "CT-E3-2+PE",
+     "width_mm": 10.0
+    },
+    {
+     "type": "CT-E3-3",
+     "width_mm": 10.0
+    },
+    {
+     "type": "CT-DIP4",
+     "width_mm": 4.0
+    },
+    {
+     "type": "CT-10GBIT-RJ45",
+     "width_mm": 22.0
+    }
+   ],
+   "length_with_end_pieces_mm": 138.0,
+   "centre_z_mm": 88.0
+  },
+  "F": {
+   "modules": [
+    {
+     "type": "CT-E8-2 + 2 x SCT03",
+     "width_mm": 18.0
+    },
+    {
+     "type": "CT-E-UCT08-2 + 2 x LCT06",
+     "width_mm": 42.0
+    }
+   ],
+   "length_with_end_pieces_mm": 146.0,
+   "centre_z_mm": 40.0
+  }
+ },
+ "sources": {
+  "widths": "CombiTac uniq main catalogue (CT-Main-11014009-en) p.83 'Calculation of installation dimensions': carrier widths CT-E3-3 and CT-E3-2+PE 10 mm, CT-LMFB 6 mm, CT-10GBIT 22 mm, CT-E8-2 18 mm, CT-E-UCT08-2 42 mm, spacer CT-DIP4 4 mm; recess L1 = L + 22 / L2 = L + 33 for standard end pieces.",
+  "carrier_depth": "p.22, p.74: carriers 24 mm deep (mating axis); p.48: CT-10GBIT 34.9 mm deep, 28-32 mm tall, its pins 12 mm proud on the pin side, an RJ45 jack at the back.",
+  "align4": "p.80-81 and CombiTac align flyer (11014023-en) p.12-13: CT-HME-S/4 (pin part) and CT-HME-B/4 (socket part), zinc die-cast, 18 mm thick, 34.7 mm tall, 43 mm long, pin O9.8 mm 50.2 mm proud of the body (68.2 overall) with an insulating cap, pin axis 13.5 mm and screw hole 35 mm from the carriers' end; radial misalignment 4 mm, angular +-2 deg, 100,000 mating cycles. 'In a permanent installation application, the customer must provide a stable guide system'.",
+  "cutout": "p.84: panel cut-out for high-misalignment end pieces L + 54 x 41 mm, R5 corners, 2 x O4.2 mm holes at L + 70 mm.",
+  "mated_gap": "p.86: distance between the panels when mated Z = 25 mm (+1.5); p.87: largest gap between mated carriers 1-2 mm by contact (LCT06, LMFB 1 mm; CT3, SCT03, RJ45 2 mm; 10 Gbit 1.5 mm).",
+  "ct3": "p.26-29: O3 mm power unit up to 39 A, 3-pole CT-E3-3 and CT-E3-2+PE (one pole a protective earth); average sliding force 8 N per contact; 'Longer type of pin mates first'.",
+  "lmfb": "p.40-41: Last Mate First Break module CT-LMFB/B and /S, two contacts at the carrier's edge positions, 'intended for monitoring purposes, and show whether a CombiTac is fully connected or not'; 100 mA, 14 N spring force per contact.",
+  "gbit": "p.48-49: CT-10GBIT-RJ45/B and /S, Ethernet to 10 Gbit/s (Cat6A), 14 N average sliding force per module, 100,000 mating cycles.",
+  "sct03": "p.72-73: CT-B-SCT03 and CT-S-SCT03 in carrier CT-E8-2, G1/8 internal thread, SW12, 15 + 25 mm (socket) and 10.5 + 25 + 15 mm (plug), nominal bore 3 mm, 15 bar, 'leakproof, shut-off on both sides', spring force 43 N without pressure. p.61, p.70: fluid couplings 'can also be used for pneumatic applications, if a shut-off valve on both sides is needed'.",
+  "lct06": "p.74-75: CT-B-LCT06 and CT-S-LCT06 in carrier CT-E-UCT08-2, G1/4 internal thread, SW17, 20.5 + 24 mm (socket) and 11 + 24 + 8.5 mm (plug), nominal bore 6 mm, 15 bar, 8.48 L/min at 5 m/s, spring force 44.5 N without pressure, 135 N while mated at 10 bar; 'Connecting and disconnecting under pressure is prohibited.'",
+  "safety": "p.137: 'On permanently fixed installations, electrical contacts have to be placed above liquid couplings'; 'Connecting and disconnecting when live is permitted. Connecting and disconnecting under load is not permitted.' p.139: the socket side is touch-protected (IP2X) when disconnected.",
+  "mating_speed": "p.135: 'CombiTac was tested at a mating speed of 600 mm/min by an automatic process. Plugging force is equal to 1.5 times the sliding force.'",
+  "hard_stop": "p.82: screw CT-SHR-HS (M4) gives the end pieces a hard stop 'so that the force does not impact on the contacts during the mating process'.",
+  "mgn12": "HIWIN MGN12H miniature guide: rail 12 x 8 mm, block 27 mm wide, 45.4 mm long (hiwin.com MG series).",
+  "igus": "igus E2 micro energy chains, e.g. series E2.15 (inner height 15 mm, bend radii from 18 mm): our size, not a selected part."
+ }
+}
