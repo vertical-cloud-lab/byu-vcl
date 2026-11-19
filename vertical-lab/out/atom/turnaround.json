@@ -34,7 +34,7 @@
    "source": "no 'Pressure crucible' warning (PR 178 / crucible_automation.md 13)"
   },
   {
-   "lane": "Arm 1 (front)",
+   "lane": "Arm 1 (front, right)",
    "procedure": "Latch and lid",
    "start_min": 16,
    "minutes": 3,
@@ -42,7 +42,7 @@
    "source": "clip atom_latch"
   },
   {
-   "lane": "Arm 1 (front)",
+   "lane": "Arm 1 (front, right)",
    "procedure": "Container",
    "start_min": 23,
    "minutes": 4,
@@ -50,7 +50,7 @@
    "source": "SOP Powder Collection 3: one holds, one unclamps"
   },
   {
-   "lane": "Arm 1 (front)",
+   "lane": "Arm 1 (front, right)",
    "procedure": "Container",
    "start_min": 49,
    "minutes": 4,
@@ -58,7 +58,7 @@
    "source": "SOP Powder Collection 10"
   },
   {
-   "lane": "Arm 1 (front)",
+   "lane": "Arm 1 (front, right)",
    "procedure": "Crucible out",
    "start_min": 60,
    "minutes": 10,
@@ -66,7 +66,7 @@
    "source": "clip atom_crucible_out"
   },
   {
-   "lane": "Arm 1 (front)",
+   "lane": "Arm 1 (front, right)",
    "procedure": "Crucible in",
    "start_min": 70,
    "minutes": 14,
@@ -74,7 +74,7 @@
    "source": "clip atom_crucible_in"
   },
   {
-   "lane": "Arm 1 (front)",
+   "lane": "Arm 1 (front, right)",
    "procedure": "Latch and lid",
    "start_min": 84,
    "minutes": 3,
@@ -82,7 +82,7 @@
    "source": "clip atom_latch"
   },
   {
-   "lane": "Arm 1 (front)",
+   "lane": "Arm 1 (front, right)",
    "procedure": "Clean and BN",
    "start_min": 90,
    "minutes": 26,

@@ -182,6 +182,27 @@ The lab's rules, and what each becomes when an arm does the work:
 4. The chamber door's opening angle, and whether anything may be fixed to the door (the left camera unit rides on it).
 5. The container: its mass empty, and whether a second container can be bought, so one is cleaned while the other is on.
 
+## The model, corrected on the way
+
+- **The lid is hinged on the left.** #327 had it hinged at the back, where it opened into the blue cabinet. DAL PR 189
+  measured it on the left, with the window on the front facet and the knob to its right. The latch is on the housing's
+  right face, and its bolt runs back into the cabinet ([`repowder_refine.md`](repowder_refine.md), fifth pass).
+- **The latch is built as the footage shows it:** the lever pivots at its top, and the loop has its own pivot and
+  hooks a keeper on the lid. The latch clip found three faults in the parts and draws corrected ones
+  ([`atom_latch_container.md`](atom_latch_container.md)).
+
 ## The clips
 
-Filled in as each lands: see the table at the end of PR #353's description.
+| Clip | What it shows | Notes |
+| --- | --- | --- |
+| `atom_cameras` | DAL PR 189's three viewport cameras, each with its live view on its own display; the top arm parked and back | [`atom_cameras.md`](atom_cameras.md) |
+| `atom_latch` | The latch unclamped (bolt back, lever through dead centre, loop off) and clamped; the lid about its left hinge | [`atom_latch_container.md`](atom_latch_container.md) |
+| `atom_container` | Powder brushed into the container, the dust settled, the valve shut (the removal is written but not rendered) | [`atom_latch_container.md`](atom_latch_container.md) |
+| `atom_vacuum` | The Nilfisk CFM 118EXP: continuity check, equalization touch, slow passes inside the chamber, run-on, settle | [`atom_vacuum.md`](atom_vacuum.md) |
+| `atom_plate` | The plate swapped through the open door, 50 N·m with the stack wrench, gauge plate, wet test | [`atom_plate.md`](atom_plate.md) |
+| `atom_crucible_out` | Thermocouple, rod, insulation; the crucible off its graphite nut, held from below | [`atom_crucible.md`](atom_crucible.md) |
+| `atom_bn` | The crucible cleaned and its BN coat touched up in the hood; dried overnight; checked | [`atom_bn.md`](atom_bn.md) |
+| `atom_crucible_in` | The rebuild; the nut threaded on from below while the crucible is held; snug; the thermocouple hole lined up | [`atom_crucible.md`](atom_crucible.md) |
+
+The audit numbers, the reel and the merged bill of materials (`out/atom/bom.md`) are in PR #353's description.
+`atom_timeline.py` draws the turnaround as a timeline (`out/atom/turnaround.png`); its arm times are estimates.

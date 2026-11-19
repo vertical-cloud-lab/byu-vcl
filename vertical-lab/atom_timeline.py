@@ -30,7 +30,7 @@ SURFACE, INK, INK2, GRID, NEUTRAL = "#fcfcfb", "#0b0b0b", "#52514e", "#e4e3df", 
 PROC = ["The run, watched", "Latch and lid", "Container", "Vacuum", "Plate", "Crucible out", "Clean and BN",
         "Crucible in"]
 COLOR = dict(zip(PROC, SERIES))
-LANES = ["The machine", "Arm 1 (front)", "Arm 2 (door side)", "A person"]
+LANES = ["The machine", "Arm 1 (front, right)", "Arm 2 (door side)", "A person"]
 
 # (lane, procedure or None for a machine state, start min, minutes, label, source)
 STEPS = [
@@ -38,13 +38,13 @@ STEPS = [
     ("The machine", None, 0, 14, "cools to 400 °C", "SOP: open at or below 400 °C (time estimated)"),
     ("The machine", None, 14, 46, "vented; the furnace cools until it can be touched", "SOP Cooldown 3; PR 178: 150 °C is too hot (time estimated)"),
     ("The machine", None, 88, 8, "pump-down: the joints hold", "no 'Pressure crucible' warning (PR 178 / crucible_automation.md 13)"),
-    ("Arm 1 (front)", "Latch and lid", 16, 3, "unlatch, lid up", "clip atom_latch"),
-    ("Arm 1 (front)", "Container", 23, 4, "cup off", "SOP Powder Collection 3: one holds, one unclamps"),
-    ("Arm 1 (front)", "Container", 49, 4, "clean cup on", "SOP Powder Collection 10"),
-    ("Arm 1 (front)", "Crucible out", 60, 10, "crucible out", "clip atom_crucible_out"),
-    ("Arm 1 (front)", "Crucible in", 70, 14, "spare crucible in, nut snug", "clip atom_crucible_in"),
-    ("Arm 1 (front)", "Latch and lid", 84, 3, "lid, latch", "clip atom_latch"),
-    ("Arm 1 (front)", "Clean and BN", 90, 26, "used crucible: cleaned, 3 BN passes", "clip atom_bn; DAL PR 220"),
+    ("Arm 1 (front, right)", "Latch and lid", 16, 3, "unlatch, lid up", "clip atom_latch"),
+    ("Arm 1 (front, right)", "Container", 23, 4, "cup off", "SOP Powder Collection 3: one holds, one unclamps"),
+    ("Arm 1 (front, right)", "Container", 49, 4, "clean cup on", "SOP Powder Collection 10"),
+    ("Arm 1 (front, right)", "Crucible out", 60, 10, "crucible out", "clip atom_crucible_out"),
+    ("Arm 1 (front, right)", "Crucible in", 70, 14, "spare crucible in, nut snug", "clip atom_crucible_in"),
+    ("Arm 1 (front, right)", "Latch and lid", 84, 3, "lid, latch", "clip atom_latch"),
+    ("Arm 1 (front, right)", "Clean and BN", 90, 26, "used crucible: cleaned, 3 BN passes", "clip atom_bn; DAL PR 220"),
     ("Arm 2 (door side)", "Container", 16, 6, "door; powder brushed into cup", "SOP Powder Collection 2"),
     ("Arm 2 (door side)", "Container", 23, 4, "(holds the cup)", "PR 178 Chamber and container 1"),
     ("Arm 2 (door side)", "Vacuum", 27, 10, "chamber vacuumed", "clip atom_vacuum; byu-vcl PR 80"),
@@ -90,7 +90,7 @@ def main():
         s.set_visible(False)
     ax.grid(axis="x", color=GRID, linewidth=0.8)
     ax.set_axisbelow(True)
-    ax.text(117, row["Arm 1 (front)"], "→ dries overnight", fontsize=7.2, color=INK2, ha="left", va="center")
+    ax.text(117, row["Arm 1 (front, right)"], "→ dries overnight", fontsize=7.2, color=INK2, ha="left", va="center")
     handles = [plt.Rectangle((0, 0), 1, 1, color=COLOR[p]) for p in PROC] + [plt.Rectangle((0, 0), 1, 1, color=NEUTRAL)]
     ax.legend(handles, PROC + ["the machine's own state"], loc="upper center", bbox_to_anchor=(0.5, -0.17), ncol=9,
               frameon=False, fontsize=7.5, handlelength=1.0, handleheight=0.8, columnspacing=1.0, labelcolor=INK2)
