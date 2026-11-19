@@ -812,7 +812,7 @@ def main():
             tq = 50.0 * (u ** 1.6)
             c.status(Torque=f"{tq:5.1f} N m (clutch at 50.0)", Reaction=f"{tq:5.1f} N m inside the tool")
         c.step(L(10), "The last 20 deg (ours) to 50 N m, where the clutch slips (DAL 253 step 13). The counter-hold "
-               "takes the same 50 N m, so the stack and the arm see none of it.", 2.4, tighten, hold=0.6)
+               "takes the same 50 N m, so the stack and the arm see none of it.", 2.4, tighten, hold=0.6, still=True)
         c.status(Torque="50.0 N m", Reaction="-")
         c.step(L(10), "Socket up, wrench off.", 0.6, lambda u: sock(1 - u, t0 - 20.0), hold=0.0)
         c.step(L(10), "Socket up, wrench off.", 0.8, rb.line_to(pre), hold=0.0)
@@ -1025,7 +1025,7 @@ def main():
         c.status(Door="shut, 2 bolts tight")
         c.step(L(12), f"Done: {NEW['id']} on at 50 N m, square, at the logged height, scan 40.10 kHz, wet test good. "
                "Logged for the run (DAL 253 Run Log item 3).", 1.8, rb.joint_to(q1=np.radians(AB.AA.A.PARK_DEG)),
-               hold=1.6, cam_to=cam_far, still=True)
+               hold=1.6, cam_to=cam_far)
     AB.finish(sc)
     if os.environ.get("PLATE_COMBINED") and sc.auditor is not None and not AB.AA.AUDIT:
         print(sc.auditor.save(), flush=True)
