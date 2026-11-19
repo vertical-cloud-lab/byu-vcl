@@ -87,7 +87,9 @@ CRUCIBLE_BASE = Z_CR - FLOOR_CONE_H - CRUCIBLE_BOTTOM
 HOOD_Z0, HOOD_H1, HOOD_H2 = BODY_TOP, 55.0, 126.0
 # the lid: a cast shell, round at the front left, square over the housing's flat on the right, hinged at the BACK
 # (T4 1:53, 2:28, 5:08: open, it stands up behind the furnace). Fitted with register.py.
-LID = dict(r=140.0, r1=45.0, ext=190.0, h1=55.0, h2=126.0, wall=5.0, hinge_off=14.0, latch_x=72.0, latch_len=156.0, cabinet_x=192.0)
+LID = dict(r=140.0, r1=45.0, ext=160.0, h1=55.0, h2=126.0, wall=5.0, hinge_off=14.0, latch_x=72.0, latch_len=156.0, cabinet_x=192.0)
+# ext 160 (was 190, #327's fit): turned onto the machine (LID_TURN_DEG), the lid's square side faces the blue cabinet,
+# whose face is at y = 165; 190 put the lid and the housing 25 mm into it
 HOOD_R0, HOOD_R1 = LID["r"], LID["r1"]
 LID_OPEN_DEG, LATCH_OPEN_DEG, BOLT_TRAVEL = 105.0, 150.0, 60.0
 # the latch, third pass (notes/repowder_refine.md, T4 5:29.5-5:41): the lever pivots at its TOP, on a base plate
@@ -100,8 +102,36 @@ LOOP_OPEN_DEG = 180.0
 LATCH_PIVOT_DROP = 14.0      # the lever's pivot under its top end
 LOOP_DROP, LOOP_INBOARD = 16.0, 4.0   # the loop's pivot under, and inboard of, the lever's pivot
 KEEPER_LIP_OUT = 7.0         # the keeper's bent lip, out from the lid's face, where the loop's cross bar hooks
-LID_PARTS = ("hood", "hood_window", "hood_hot_label", "hood_knob", "hood_hinge_leaf", "latch_keeper")
-HINGE = np.array([0.0, HOOD_R0 + 14.0, BODY_TOP + 6.0])   # a point on the lid's hinge axis (along x), behind the lid
+LID_PARTS = ("hood", "hood_window", "hood_window_plate", "hood_hot_label", "hood_knob", "hood_hinge_leaf",
+             "latch_keeper")
+# The lid assembly (lid, hinge, the housing's square flat, the latch, the keeper, the bolt) is built in its own frame,
+# where the hinge is at the back (+y), the knob and latch at the front (-y) and the window on the left facet, as #327
+# read the training video, and then turned LID_TURN_DEG about the furnace axis. #353 (2026-11-19) turned it 90 deg:
+# opened about a back hinge the lid runs into the blue cabinet (its face 11 mm behind the hinge: the hinge leaf at
+# ~5 deg, the shell at ~30 deg), and DAL PR 189's measurements put the hinge on the LEFT ("the lid's swing, up and
+# over to the left, ~105 deg"), the window (60 x 64 mm glass-ceramic in a plate with 8 screws) on the FRONT facet and
+# the knob to its right (frames DWH1CEygsTI 25:40, 2wMgeI-E7zw 10:00; notes/atom_cameras.md). Turned, the housing's
+# square flat faces the cabinet and the pneumatic bolt runs back into the cabinet, as it must. The functions below
+# (facet_plane, knob_centre, hinge_point, latch_geom, joints) answer in the turned frame; turned=False gives the
+# lid's own frame.
+LID_TURN_DEG = 90.0
+LID_WINDOW = dict(w=60.0, h=64.0, s=0.47, plate_w=112.0, plate_h=105.0, plate_t=4.0)   # DAL PR 189 (+-12 mm)
+_TC, _TS = math.cos(math.radians(LID_TURN_DEG)), math.sin(math.radians(LID_TURN_DEG))
+LID_TURN_T = np.array([[_TC, -_TS, 0, 0], [_TS, _TC, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]], float)
+
+
+def lid_turn(pt) -> np.ndarray:
+    """A point in the lid assembly's own frame -> the model frame."""
+    v = np.asarray(pt, float)
+    return np.array([_TC * v[0] - _TS * v[1], _TS * v[0] + _TC * v[1], v[2]])
+
+
+def lid_turn_vec(v) -> np.ndarray:
+    """A direction in the lid assembly's own frame -> the model frame."""
+    return lid_turn(v)
+
+
+HINGE = lid_turn([0.0, HOOD_R0 + 14.0, BODY_TOP + 6.0])   # a point on the lid's hinge axis (along y), left of the lid
 ARM_ANGLE = 0.0                      # sealing-rod lever post: on the right of the deck (T4 1:50, 4:28)
 ARM_DIR = np.array([math.cos(math.radians(ARM_ANGLE)), math.sin(math.radians(ARM_ANGLE)), 0.0])
 POST_R = 112.0                       # the lever pivots on top of the post, about a horizontal axis, and swings up
@@ -531,37 +561,50 @@ def lid_params() -> dict:
     return dict(LID)
 
 
-def facet_plane(p: dict, face: str, s: float) -> tuple:
-    """(origin, normal) of the lid's sloping facet at fraction s (0 = its foot, 1 = the flat top): face is 'front'
-    (-y) or 'left' (-x)."""
+def facet_plane(p: dict, face: str, s: float, turned: bool = True) -> tuple:
+    """(origin, normal) of the lid's sloping facet at fraction s (0 = its foot, 1 = the flat top). face 'front' is the
+    knob's side and 'left' the window's, named in the lid's own frame; in the model frame (turned) the knob's facet faces
+    +x (right) and the window's -y (front)."""
     r, r1, h1, h2 = p["r"], p["r1"], p["h1"], p["h2"]
     t = math.atan2(r - r1, h2)
     rr = r - (r - r1) * s
     z = BODY_TOP + h1 + h2 * s
     if face == "front":
-        return np.array([0.0, -rr, z]), np.array([0, -math.cos(t), math.sin(t)])
-    return np.array([-rr, 0.0, z]), np.array([-math.cos(t), 0, math.sin(t)])
+        o, n = np.array([0.0, -rr, z]), np.array([0, -math.cos(t), math.sin(t)])
+    else:
+        o, n = np.array([-rr, 0.0, z]), np.array([-math.cos(t), 0, math.sin(t)])
+    return (lid_turn(o), lid_turn_vec(n)) if turned else (o, n)
 
 
-def knob_centre(p: dict | None = None) -> np.ndarray:
-    """Centre of the lid's black ball knob (shut): a stalk off the front facet's foot, a little left of centre (T4 5:41)."""
+def knob_centre(p: dict | None = None, turned: bool = True) -> np.ndarray:
+    """Centre of the lid's black ball knob (shut): a stalk off the knob facet's foot (T4 5:41); in the model frame, on
+    the right, a little in front of the axis, to the right of the window (DAL PR 189)."""
     p = p or LID
-    kb, _ = facet_plane(p, "front", 0.12)
+    kb, _ = facet_plane(p, "front", 0.12, turned=False)
     kd = np.array([0.62, -0.15, 0.77])
-    return kb + np.array([-35.0, 0, 0]) + kd / np.linalg.norm(kd) * 40.0
+    c = kb + np.array([-35.0, 0, 0]) + kd / np.linalg.norm(kd) * 40.0
+    return lid_turn(c) if turned else c
 
 
-def hinge_point(p: dict | None = None) -> np.ndarray:
+def knob_stalk_dir(turned: bool = True) -> np.ndarray:
+    kd = np.array([0.62, -0.15, 0.77])
+    kd = kd / np.linalg.norm(kd)
+    return lid_turn_vec(kd) if turned else kd
+
+
+def hinge_point(p: dict | None = None, turned: bool = True) -> np.ndarray:
     p = p or LID
-    return np.array([0.0, p["r"] + p["hinge_off"], BODY_TOP + 6.0])
+    h = np.array([0.0, p["r"] + p["hinge_off"], BODY_TOP + 6.0])
+    return lid_turn(h) if turned else h
 
 
-def latch_geom(p: dict | None = None) -> dict:
+def latch_geom(p: dict | None = None, turned: bool = True) -> dict:
     """The draw latch on the housing's flat (y = -BODY_R), third pass. zf..zf+L is the lever's length (the fitted
     ``latch_len``), from its free lower end up to its top; ``pivot`` is the lever's hinge near its top, ``loop_pivot`` the
     loop's hinge on the lever (lever shut), ``hook`` where the loop's cross bar sits on the keeper's lip, ``bolt_z`` the
     height of the pneumatic bolt's rod through the base's flanges. 'foot' is the cast hold-down foot under the lever
-    (not part of the latch: T4 5:41)."""
+    (not part of the latch: T4 5:41). 'out' is the face's outward normal and 'along' the pins' axis. In the model frame
+    (turned) the latch is on the housing's right face, the bolt running back into the blue cabinet."""
     p = p or LID
     yface = -BODY_R
     zf = Z_PLATFORM[1] + 38.0
@@ -572,20 +615,37 @@ def latch_geom(p: dict | None = None) -> dict:
     loop_pivot = pivot + np.array([0.0, LOOP_INBOARD, -LOOP_DROP])
     keeper = np.array([lx, -p["r"], BODY_TOP + 26.0])
     hook = np.array([lx, -p["r"] - KEEPER_LIP_OUT, keeper[2] - 2.0])
-    return dict(pivot=pivot, loop_pivot=loop_pivot, x=lx, yface=yface, zf=zf, length=L, keeper=keeper, hook=hook,
-                loop_len=float(np.linalg.norm(hook - loop_pivot)), bolt_z=zf + 0.55 * L, cabinet_x=p["cabinet_x"],
-                foot=np.array([lx, yface - 14.0, zf - 36.0]))
+    g = dict(pivot=pivot, loop_pivot=loop_pivot, x=lx, yface=yface, zf=zf, length=L, keeper=keeper, hook=hook,
+             loop_len=float(np.linalg.norm(hook - loop_pivot)), bolt_z=zf + 0.55 * L, cabinet_x=p["cabinet_x"],
+             foot=np.array([lx, yface - 14.0, zf - 36.0]), out=np.array([0.0, -1.0, 0.0]), along=np.array([1.0, 0.0, 0.0]))
+    if turned:          # x, yface, cabinet_x stay the lid-frame numbers; points and directions are turned
+        for k in ("pivot", "loop_pivot", "keeper", "hook", "foot"):
+            g[k] = lid_turn(g[k])
+        g["out"], g["along"] = lid_turn_vec(g["out"]), lid_turn_vec(g["along"])
+    return g
+
+
+def _hinge_m(point, axis, deg) -> np.ndarray:
+    a = np.asarray(axis, float)
+    a = a / np.linalg.norm(a)
+    t = math.radians(deg)
+    K = np.array([[0, -a[2], a[1]], [a[2], 0, -a[0]], [-a[1], a[0], 0]])
+    R = np.eye(3) + math.sin(t) * K + (1 - math.cos(t)) * K @ K
+    m = np.eye(4)
+    m[:3, :3] = R
+    m[:3, 3] = np.asarray(point, float) - R @ np.asarray(point, float)
+    return m
 
 
 def latch_toggle(p: dict | None = None, n: int = 151) -> dict:
     """The over-centre sums: the loop's pivot-to-hook distance as the lever opens (deg, 0 = shut), its peak (dead
     centre) and the draw: how much further the loop would have to stretch to pass dead centre, which is what clamps
     the lid onto its O-ring. Positive torque at 0 deg = the loop's pull holds the lever shut."""
-    g = latch_geom(p)
+    g = latch_geom(p, turned=False)
     P, Q0, K = g["pivot"], g["loop_pivot"], g["hook"]
     out = []
     for d in np.linspace(0.0, LATCH_OPEN_DEG, n):
-        Q = (joint_matrix("latch", d / LATCH_OPEN_DEG) @ np.r_[Q0, 1.0])[:3]
+        Q = (_hinge_m(P, (-1.0, 0.0, 0.0), d) @ np.r_[Q0, 1.0])[:3]
         out.append((float(d), float(np.linalg.norm(K - Q))))
     ds, ls = np.array(out).T
     k = int(np.argmax(ls))
@@ -598,8 +658,8 @@ def latch_toggle(p: dict | None = None, n: int = 151) -> dict:
 def loop_aim_deg(latch_value: float, p: dict | None = None) -> float:
     """The loop's angle (deg, about its pivot, relative to the lever) that keeps its cross bar on the keeper's hook
     while the lever is at ``latch_value``: the loop is still hooked on, so it points from its pivot at the hook."""
-    g = latch_geom(p)
-    Ml = joint_matrix("latch", latch_value)
+    g = latch_geom(p, turned=False)
+    Ml = _hinge_m(g["pivot"], (-1.0, 0.0, 0.0), LATCH_OPEN_DEG * latch_value)
     Q = (Ml @ np.r_[g["loop_pivot"], 1.0])[:3]
     d_rest = g["hook"] - g["loop_pivot"]
     d_now = np.linalg.inv(Ml[:3, :3]) @ (g["hook"] - Q)          # in the lever's own (shut) frame
@@ -612,18 +672,20 @@ def joints() -> dict:
     """Every joint chapter 2 can drive. value 0 = as built (lid shut, lever shut with its loop hooked on the keeper,
     bolt in), 1 = `deg` or `vec` on. 'point' is on the axis. Lid: swing about the back hinge, on the -x axis so that
     positive opens (T4 1:53, 2:28: it stands up behind the furnace). Latch (third pass): the lever swings about its top
-    pivot, on the -x axis so that positive takes its free lower end out (-y) and up, ~150 deg. Loop: a child of the
+    pivot, so that positive takes its free lower end out (away from the face) and up, ~150 deg. Loop: a child of the
     latch (``parent``), about its own pivot on the lever; positive lifts its cross bar out off the keeper and lets it
-    fall to dangle (180 deg). Bolt: slides along +x, back towards the blue cabinet. Use ``joint_world`` to compose a
-    child with its parent."""
+    fall to dangle (180 deg). Bolt: slides back towards the blue cabinet. Use ``joint_world`` to compose a child with
+    its parent. The lid, latch, loop and bolt axes are the lid frame's, turned LID_TURN_DEG: the lid hinges on the left
+    and opens up and over to the left."""
     g = latch_geom()
     return {
-        "lid": dict(kind="hinge", point=hinge_point(), axis=(-1.0, 0.0, 0.0), deg=LID_OPEN_DEG, parts=LID_PARTS),
-        "latch": dict(kind="hinge", point=g["pivot"], axis=(-1.0, 0.0, 0.0), deg=LATCH_OPEN_DEG,
+        "lid": dict(kind="hinge", point=hinge_point(), axis=tuple(lid_turn_vec((-1.0, 0.0, 0.0))), deg=LID_OPEN_DEG,
+                    parts=LID_PARTS),
+        "latch": dict(kind="hinge", point=g["pivot"], axis=tuple(lid_turn_vec((-1.0, 0.0, 0.0))), deg=LATCH_OPEN_DEG,
                       parts=("latch_lever",)),
-        "loop": dict(kind="hinge", point=g["loop_pivot"], axis=(-1.0, 0.0, 0.0), deg=LOOP_OPEN_DEG,
-                     parts=("latch_loop",), parent="latch"),
-        "bolt": dict(kind="slide", vec=(BOLT_TRAVEL, 0.0, 0.0), parts=("latch_bolt",)),
+        "loop": dict(kind="hinge", point=g["loop_pivot"], axis=tuple(lid_turn_vec((-1.0, 0.0, 0.0))),
+                     deg=LOOP_OPEN_DEG, parts=("latch_loop",), parent="latch"),
+        "bolt": dict(kind="slide", vec=tuple(lid_turn_vec((BOLT_TRAVEL, 0.0, 0.0))), parts=("latch_bolt",)),
         # chamber door: vertical hinge at the back edge; the free (front) edge swings out to -x, hence the -z axis
         "door": dict(kind="hinge", point=(DOOR_HINGE[0], DOOR_HINGE[1], 0.0), axis=(0.0, 0.0, -1.0), deg=DOOR_OPEN_DEG,
                      parts=DOOR_PARTS),
@@ -675,28 +737,41 @@ def hood_parts(p: dict | None = None) -> list[Part]:
     outer = _prism(r, ext, BODY_TOP, h1).fuse(_prism(r, ext, BODY_TOP + h1, h2, taper=taper))
     inner = _prism(r - w, ext - w, BODY_TOP - 1, h1 + 1).fuse(_prism(r - w, ext - w, BODY_TOP + h1, h2 - w, taper=taper))
     hood = outer.cut(inner).clean()
-    o_w, n_w = facet_plane(p, "left", 0.55)
+    # the window: DAL PR 189's 60 x 64 mm glass-ceramic pane in a polished plate (~112 x 105, 4 mm proud, 8 screws),
+    # on the window facet where the top camera's line to the melt crosses it (#327 had a 26 x 84 slot from T4 5:16)
+    W_ = LID_WINDOW
+    o_w, n_w = facet_plane(p, "left", W_["s"], turned=False)
     win_plane = cq.Plane(origin=V(*(o_w - n_w * 2.0)), xDir=V(0, 1, 0), normal=V(*n_w))
-    hood = hood.cut(cq.Workplane(win_plane).rect(26, 84).extrude(6).val())
-    o_f, n_f = facet_plane(p, "front", 0.5)
+    hood = hood.cut(cq.Workplane(win_plane).rect(W_["w"], W_["h"]).extrude(6).val())
+    o_f, n_f = facet_plane(p, "front", 0.5, turned=False)
     P.append(Part("hood", hood, STEEL, "hood", tol=0.4))
-    P.append(Part("hood_window", cq.Workplane(win_plane).rect(26, 84).extrude(2.5).val(), (0.12, 0.13, 0.15), "hood",
-                  tol=0.2))
+    P.append(Part("hood_window", cq.Workplane(win_plane).rect(W_["w"], W_["h"]).extrude(2.5).val(), (0.12, 0.13, 0.15),
+                  "hood", tol=0.2))
+    pl_plane = cq.Plane(origin=V(*(o_w + n_w * 0.0)), xDir=V(0, 1, 0), normal=V(*n_w))
+    plate = cq.Workplane(pl_plane).rect(W_["plate_w"], W_["plate_h"]).extrude(W_["plate_t"]).val().cut(
+        cq.Workplane(pl_plane).rect(W_["w"] - 6, W_["h"] - 6).extrude(10).val())
+    for i in range(8):
+        a_ = 2 * math.pi * (i + 0.5) / 8
+        sx, sy = 0.5 * (W_["plate_w"] - 14) * math.cos(a_) / max(abs(math.cos(a_)), abs(math.sin(a_))), \
+            0.5 * (W_["plate_h"] - 14) * math.sin(a_) / max(abs(math.cos(a_)), abs(math.sin(a_)))
+        sp = cq.Plane(origin=V(*(o_w + n_w * W_["plate_t"])), xDir=V(0, 1, 0), normal=V(*n_w))
+        plate = plate.fuse(cq.Workplane(sp).center(sx, sy).circle(3.5).extrude(2.0).val())
+    P.append(Part("hood_window_plate", plate, (0.86, 0.87, 0.89), "hood", tol=0.2))
     lab = cq.Plane(origin=V(*(o_f + np.array([30.0, 0, 0]) - n_f * 0.5)), xDir=V(1, 0, 0), normal=V(*n_f))
     P.append(Part("hood_hot_label", cq.Workplane(lab).polygon(3, 22).extrude(2).val(), YELLOW, "hood", tol=0.1))
-    kb, _ = facet_plane(p, "front", 0.12)
+    kb, _ = facet_plane(p, "front", 0.12, turned=False)
     kb = kb + np.array([-35.0, 0, 0])
     kd = np.array([0.62, -0.15, 0.77])
     kd /= np.linalg.norm(kd)
     P.append(Part("hood_knob", fuse(along(cyl(5, 30), kb, kd), sphere(14, kb + kd * 40)), BLACK, "hood", tol=0.2))
-    hp = hinge_point(p)
+    hp = hinge_point(p, turned=False)
     barrel = cyl(8, 150, (-75, hp[1], hp[2]), (1, 0, 0))
     bracket = box(-75, 75, BODY_R - 8, hp[1] + 8, BODY_TOP - 55, BODY_TOP - 8)
     P.append(Part("hood_hinge", fuse(barrel, bracket), STEEL_DK, "furnace", tol=0.2))
     leaf = box(-75, 75, r - 3, hp[1] + 6, BODY_TOP + 2, BODY_TOP + 62)
     scr = [along(cyl(4, 3), (sx, hp[1] + 6, BODY_TOP + 40), (0, 1, 0)) for sx in (-55, 0, 55)]
     P.append(Part("hood_hinge_leaf", fuse(leaf, *scr), STEEL_DK, "hood", tol=0.2))
-    g = latch_geom(p)
+    g = latch_geom(p, turned=False)
     lx, yf, zf, L = g["x"], g["yface"], g["zf"], g["length"]
     pv, qv, hk = g["pivot"], g["loop_pivot"], g["hook"]
     # the hold-down foot (cast, with its hex bolt): fixed, under the lever's free end; not part of the latch (T4 5:41).
@@ -744,6 +819,8 @@ def hood_parts(p: dict | None = None) -> list[Part]:
     P.append(Part("latch_bolt", bolt, STEEL_DK, "latch_bolt", tol=0.1))
     P.append(Part("bolt_housing", box(g["cabinet_x"] - 6, g["cabinet_x"] + 6, yf - 20, yf - 3, g["bolt_z"] - 14, g["bolt_z"] + 14),
                   BLACK, "furnace", tol=0.2))
+    for part in P:                       # the whole assembly turned onto the machine (LID_TURN_DEG; see the constant)
+        part.shape = part.shape.rotate(V(0, 0, 0), V(0, 0, 1), LID_TURN_DEG)
     return P
 
 

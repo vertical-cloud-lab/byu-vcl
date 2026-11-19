@@ -41,10 +41,11 @@ def anchors(p: dict, pose: dict | None = None) -> dict:
     v = pose or {}
     BT, h1, h2, r, r1, ext = M.BODY_TOP, p["h1"], p["h2"], p["r"], p["r1"], p["ext"]
     zt = BT + h1 + h2
-    g = M.latch_geom(p)
-    lx, yf, zf, L = g["x"], g["yface"], g["zf"], g["length"]
+    g = M.latch_geom(p, turned=False)          # the lid assembly's own frame; every point below is turned onto the
+    lx, yf, zf, L = g["x"], g["yface"], g["zf"], g["length"]      # machine (M.lid_turn, #353) before its joint moves it
     inset = r - r1
-    lid = lambda pt: _transform(pt, v, "lid")  # noqa: E731
+    tn = M.lid_turn
+    lid = lambda pt: _transform(tn(pt), v, "lid")  # noqa: E731
     a = {
         "lid top front mid": lid((0, -r1, zt)), "lid top front right": lid((ext - inset, -r1, zt)),
         "lid top back right": lid((ext - inset, r1, zt)), "lid top left": lid((-r1, 0, zt)), 
@@ -52,20 +53,20 @@ def anchors(p: dict, pose: dict | None = None) -> dict:
         "lid foot front right": lid((ext, -r, BT)), "lid foot front mid": lid((0, -r, BT)),
         "lid foot left": lid((-r, 0, BT)), "lid foot back right": lid((ext, r, BT)),
         "lid back top": lid((0, r1, zt)),
-        "hinge barrel left": np.array([-75.0, r + p["hinge_off"], BT + 6.0]),
-        "hinge barrel right": np.array([75.0, r + p["hinge_off"], BT + 6.0]),
+        "hinge barrel left": tn([-75.0, r + p["hinge_off"], BT + 6.0]),
+        "hinge barrel right": tn([75.0, r + p["hinge_off"], BT + 6.0]),
         "viewport centre": tuple(M.VIEWPORT + M.VIEWPORT_N * 30.0),
         "door top back": np.array([M.CH_X[0], M.DOOR_OPEN_W / 2, M.DOOR_Z[1]]),
         "door top front": np.array([M.CH_X[0], -M.DOOR_OPEN_W / 2, M.DOOR_Z[1]]),
         "door bottom mid": np.array([M.CH_X[0], 0.0, M.DOOR_Z[0]]),
-        "knob ball": lid(tuple(np.array(M.facet_plane(p, "front", 0.12)[0]) + np.array([-35.0, 0, 0])
+        "knob ball": lid(tuple(np.array(M.facet_plane(p, "front", 0.12, turned=False)[0]) + np.array([-35.0, 0, 0])
                                + np.array([0.62, -0.15, 0.77]) / 0.99 * 40.0)),
-        "hinge barrel mid": np.array([0.0, r + p["hinge_off"], BT + 6.0]),
-        "latch foot": np.array([lx, yf - 14.0, zf - 36.0]),
-        "latch lever top": _transform((lx, yf - 10.0, zf + L), v, "latch"),
-        "latch lug": _transform((lx + 28.0, yf - 11.0, g["bolt_z"]), v, "latch"),
+        "hinge barrel mid": tn([0.0, r + p["hinge_off"], BT + 6.0]),
+        "latch foot": tn([lx, yf - 14.0, zf - 36.0]),
+        "latch lever top": _transform(tn((lx, yf - 10.0, zf + L)), v, "latch"),
+        "latch lug": _transform(tn((lx + 28.0, yf - 11.0, g["bolt_z"])), v, "latch"),
         "keeper top": lid((lx, -r - 4.0, g["keeper"][2] + 38.0)),
-        "bolt cabinet": _transform((g["cabinet_x"] + 30.0, yf - 11.0, g["bolt_z"]), v, "bolt"),
+        "bolt cabinet": _transform(tn((g["cabinet_x"] + 30.0, yf - 11.0, g["bolt_z"])), v, "bolt"),
         "viewport hood centre": tuple(M.VIEWPORT - M.VIEWPORT_N * 6 + M.VIEWPORT_N * 46),
         "viewport hood top": tuple(M.VIEWPORT + M.VIEWPORT_N * 40.0 + np.array([0.0, 0.0, 80.0])),
         "viewport hood left": tuple(M.VIEWPORT + M.VIEWPORT_N * 40.0 - np.array([84.0, 0.0, 0.0])),
@@ -78,7 +79,7 @@ def anchors(p: dict, pose: dict | None = None) -> dict:
         "clamp1 knob": _transform(tuple(M.CLAMP_PTS[1] + np.array([-M.CLAMP_REACH, 0.0, 0.0])), v, "clamp1"),
         "clamp1 pin": tuple(M.CLAMP_PTS[1] + np.array([0.0, -4.0, 0.0])),
         "panel lcd centre": ((M.FR_X[1] - 145.0), M.FR_Y[0] + 24.0, 1394.0),
-        "deck front right": np.array([ext - 6.0, -M.BODY_R, M.BODY_TOP]),
+        "deck front right": tn([ext - 6.0, -M.BODY_R, M.BODY_TOP]),
         "base front left": np.array([-M.BODY_R * 0.7, -M.BODY_R * 0.7, M.Z_PLATFORM[1]]),
     }
     return {k: tuple(float(c) for c in pt) for k, pt in a.items()}
