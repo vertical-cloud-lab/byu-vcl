@@ -89,7 +89,17 @@ HOOD_Z0, HOOD_H1, HOOD_H2 = BODY_TOP, 55.0, 126.0
 # (T4 1:53, 2:28, 5:08: open, it stands up behind the furnace). Fitted with register.py.
 LID = dict(r=140.0, r1=45.0, ext=190.0, h1=55.0, h2=126.0, wall=5.0, hinge_off=14.0, latch_x=72.0, latch_len=156.0, cabinet_x=192.0)
 HOOD_R0, HOOD_R1 = LID["r"], LID["r1"]
-LID_OPEN_DEG, LATCH_OPEN_DEG, BOLT_TRAVEL = 105.0, 95.0, 70.0
+LID_OPEN_DEG, LATCH_OPEN_DEG, BOLT_TRAVEL = 105.0, 150.0, 60.0
+# the latch, third pass (notes/repowder_refine.md, T4 5:29.5-5:41): the lever pivots at its TOP, on a base plate
+# just under the seam, and hangs down flat over the base; the wire loop has its own pivot on the lever's flanges and
+# its own joint ('loop', a child of 'latch'). Over-centre geometry (ours, assumed): the loop's pivot sits 4 mm
+# inboard of and 16 mm under the lever's pivot, so the loop's pull holds the lever shut against the base, and the
+# lever passes dead centre about 19 deg out (latch_toggle()). LATCH_OPEN_DEG: the lever stood up and out, ~150 deg
+# (T4 5:32-5:34, not measured). LOOP_OPEN_DEG: the loop lifted off the keeper's lip and let fall, dangling.
+LOOP_OPEN_DEG = 180.0
+LATCH_PIVOT_DROP = 14.0      # the lever's pivot under its top end
+LOOP_DROP, LOOP_INBOARD = 16.0, 4.0   # the loop's pivot under, and inboard of, the lever's pivot
+KEEPER_LIP_OUT = 7.0         # the keeper's bent lip, out from the lid's face, where the loop's cross bar hooks
 LID_PARTS = ("hood", "hood_window", "hood_hot_label", "hood_knob", "hood_hinge_leaf", "latch_keeper")
 HINGE = np.array([0.0, HOOD_R0 + 14.0, BODY_TOP + 6.0])   # a point on the lid's hinge axis (along x), behind the lid
 ARM_ANGLE = 0.0                      # sealing-rod lever post: on the right of the deck (T4 1:50, 4:28)
@@ -547,24 +557,72 @@ def hinge_point(p: dict | None = None) -> np.ndarray:
 
 
 def latch_geom(p: dict | None = None) -> dict:
+    """The draw latch on the housing's flat (y = -BODY_R), third pass. zf..zf+L is the lever's length (the fitted
+    ``latch_len``), from its free lower end up to its top; ``pivot`` is the lever's hinge near its top, ``loop_pivot`` the
+    loop's hinge on the lever (lever shut), ``hook`` where the loop's cross bar sits on the keeper's lip, ``bolt_z`` the
+    height of the pneumatic bolt's rod through the base's flanges. 'foot' is the cast hold-down foot under the lever
+    (not part of the latch: T4 5:41)."""
     p = p or LID
     yface = -BODY_R
     zf = Z_PLATFORM[1] + 38.0
-    return dict(pivot=np.array([p["latch_x"], yface - 9.0, zf]), x=p["latch_x"], yface=yface, zf=zf,
-                length=p["latch_len"], keeper=np.array([p["latch_x"], -p["r"], BODY_TOP + 26.0]),
-                bolt_z=zf + 0.55 * p["latch_len"], cabinet_x=p["cabinet_x"])
+    L = p["latch_len"]
+    lx = p["latch_x"]
+    zp = zf + L - LATCH_PIVOT_DROP
+    pivot = np.array([lx, yface - 15.0, zp])
+    loop_pivot = pivot + np.array([0.0, LOOP_INBOARD, -LOOP_DROP])
+    keeper = np.array([lx, -p["r"], BODY_TOP + 26.0])
+    hook = np.array([lx, -p["r"] - KEEPER_LIP_OUT, keeper[2] - 2.0])
+    return dict(pivot=pivot, loop_pivot=loop_pivot, x=lx, yface=yface, zf=zf, length=L, keeper=keeper, hook=hook,
+                loop_len=float(np.linalg.norm(hook - loop_pivot)), bolt_z=zf + 0.55 * L, cabinet_x=p["cabinet_x"],
+                foot=np.array([lx, yface - 14.0, zf - 36.0]))
+
+
+def latch_toggle(p: dict | None = None, n: int = 151) -> dict:
+    """The over-centre sums: the loop's pivot-to-hook distance as the lever opens (deg, 0 = shut), its peak (dead
+    centre) and the draw: how much further the loop would have to stretch to pass dead centre, which is what clamps
+    the lid onto its O-ring. Positive torque at 0 deg = the loop's pull holds the lever shut."""
+    g = latch_geom(p)
+    P, Q0, K = g["pivot"], g["loop_pivot"], g["hook"]
+    out = []
+    for d in np.linspace(0.0, LATCH_OPEN_DEG, n):
+        Q = (joint_matrix("latch", d / LATCH_OPEN_DEG) @ np.r_[Q0, 1.0])[:3]
+        out.append((float(d), float(np.linalg.norm(K - Q))))
+    ds, ls = np.array(out).T
+    k = int(np.argmax(ls))
+    r, F = Q0 - P, K - Q0
+    torque = float(r[1] * F[2] - r[2] * F[1])            # about +x; + turns the lower end inward, onto the base
+    return dict(rest_mm=float(ls[0]), dead_centre_deg=float(ds[k]), peak_mm=float(ls[k]), draw_mm=float(ls[k] - ls[0]),
+                holding_torque_sign=int(np.sign(torque)), curve=[(round(a, 1), round(b, 3)) for a, b in out[::10]])
+
+
+def loop_aim_deg(latch_value: float, p: dict | None = None) -> float:
+    """The loop's angle (deg, about its pivot, relative to the lever) that keeps its cross bar on the keeper's hook
+    while the lever is at ``latch_value``: the loop is still hooked on, so it points from its pivot at the hook."""
+    g = latch_geom(p)
+    Ml = joint_matrix("latch", latch_value)
+    Q = (Ml @ np.r_[g["loop_pivot"], 1.0])[:3]
+    d_rest = g["hook"] - g["loop_pivot"]
+    d_now = np.linalg.inv(Ml[:3, :3]) @ (g["hook"] - Q)          # in the lever's own (shut) frame
+    a0 = math.atan2(d_rest[2], d_rest[1])
+    a1 = math.atan2(d_now[2], d_now[1])
+    return math.degrees(a0 - a1)          # the 'loop' joint turns about -x
 
 
 def joints() -> dict:
-    """Every joint chapter 2 can drive. value 0 = as built (lid shut, lever hooked, bolt in), 1 = `deg` or `vec` on.
-    'point' is on the axis. Lid: swing about the back hinge, on the -x axis so that positive opens (T4 1:53, 2:28: it
-    stands up behind the furnace). Latch: the lever, with its loop, swings out about a horizontal axis at its foot.
-    Bolt: slides along +x, back into the blue cabinet. lever_post: the sealing-rod lever (as before)."""
+    """Every joint chapter 2 can drive. value 0 = as built (lid shut, lever shut with its loop hooked on the keeper,
+    bolt in), 1 = `deg` or `vec` on. 'point' is on the axis. Lid: swing about the back hinge, on the -x axis so that
+    positive opens (T4 1:53, 2:28: it stands up behind the furnace). Latch (third pass): the lever swings about its top
+    pivot, on the -x axis so that positive takes its free lower end out (-y) and up, ~150 deg. Loop: a child of the
+    latch (``parent``), about its own pivot on the lever; positive lifts its cross bar out off the keeper and lets it
+    fall to dangle (180 deg). Bolt: slides along +x, back towards the blue cabinet. Use ``joint_world`` to compose a
+    child with its parent."""
     g = latch_geom()
     return {
         "lid": dict(kind="hinge", point=hinge_point(), axis=(-1.0, 0.0, 0.0), deg=LID_OPEN_DEG, parts=LID_PARTS),
-        "latch": dict(kind="hinge", point=g["pivot"], axis=(1.0, 0.0, 0.0), deg=LATCH_OPEN_DEG,
-                      parts=("latch_lever", "latch_loop")),
+        "latch": dict(kind="hinge", point=g["pivot"], axis=(-1.0, 0.0, 0.0), deg=LATCH_OPEN_DEG,
+                      parts=("latch_lever",)),
+        "loop": dict(kind="hinge", point=g["loop_pivot"], axis=(-1.0, 0.0, 0.0), deg=LOOP_OPEN_DEG,
+                     parts=("latch_loop",), parent="latch"),
         "bolt": dict(kind="slide", vec=(BOLT_TRAVEL, 0.0, 0.0), parts=("latch_bolt",)),
         # chamber door: vertical hinge at the back edge; the free (front) edge swings out to -x, hence the -z axis
         "door": dict(kind="hinge", point=(DOOR_HINGE[0], DOOR_HINGE[1], 0.0), axis=(0.0, 0.0, -1.0), deg=DOOR_OPEN_DEG,
@@ -576,7 +634,8 @@ def joints() -> dict:
 
 
 def joint_matrix(name: str, value: float) -> np.ndarray:
-    """4x4 world transform of a joint's parts at value (0..1) of its travel."""
+    """4x4 transform of a joint's parts at value (0..1) of its travel, about its axis as built (for a child joint,
+    in its parent's frame: compose with the parent's, or use joint_world)."""
     j = joints()[name]
     m = np.eye(4)
     if j["kind"] == "slide":
@@ -589,6 +648,15 @@ def joint_matrix(name: str, value: float) -> np.ndarray:
     R = np.eye(3) + math.sin(t) * K + (1 - math.cos(t)) * K @ K
     m[:3, :3] = R
     m[:3, 3] = np.asarray(j["point"], float) - R @ np.asarray(j["point"], float)
+    return m
+
+
+def joint_world(name: str, values: dict) -> np.ndarray:
+    """The world (model-frame) transform of a joint's parts, its parents' joints composed in: values {joint: 0..1}."""
+    j = joints()[name]
+    m = joint_matrix(name, float(values.get(name, 0.0)))
+    if j.get("parent"):
+        m = joint_world(j["parent"], values) @ m
     return m
 
 
@@ -630,26 +698,49 @@ def hood_parts(p: dict | None = None) -> list[Part]:
     P.append(Part("hood_hinge_leaf", fuse(leaf, *scr), STEEL_DK, "hood", tol=0.2))
     g = latch_geom(p)
     lx, yf, zf, L = g["x"], g["yface"], g["zf"], g["length"]
-    foot = fuse(box(lx - 28, lx + 28, yf - 12, yf, zf - 22, zf + 14), box(lx - 22, lx + 22, yf - 12, yf - 2, zf - 40, zf - 22),
+    pv, qv, hk = g["pivot"], g["loop_pivot"], g["hook"]
+    # the hold-down foot (cast, with its hex bolt): fixed, under the lever's free end; not part of the latch (T4 5:41).
+    # Its old name, latch_foot, is kept for register.py's picks.
+    foot = fuse(box(lx - 28, lx + 28, yf - 12, yf, zf - 22, zf + 4), box(lx - 22, lx + 22, yf - 12, yf - 2, zf - 40, zf - 22),
                 along(cyl(8, 10), (lx, yf - 14, zf - 36), (0, 1, 0)))
     P.append(Part("latch_foot", foot, STEEL, "furnace", tol=0.2))
-    lever = fuse(box(lx - 19, lx + 19, yf - 11, yf - 9, zf - 6, zf + L),
-                 box(lx - 19, lx - 17, yf - 14, yf - 9, zf - 6, zf + L), box(lx + 17, lx + 19, yf - 14, yf - 9, zf - 6, zf + L),
-                 along(cyl(5, 38), (lx - 19, yf - 9, zf), (1, 0, 0)))
-    lug = box(lx + 19, lx + 36, yf - 13, yf - 9, g["bolt_z"] - 9, g["bolt_z"] + 9).cut(
-        along(cyl(4.2, 20), (lx + 18, yf - 11, g["bolt_z"]), (1, 0, 0)))
-    P.append(Part("latch_lever", fuse(lever, lug), STEEL, "latch_lever", tol=0.2))
-    zp = zf + L * 0.80
+    # the base: a stainless plate on the housing's flat from just under the seam down about half the lever, three
+    # screws on its centre line, two side flanges bent out 12 mm with the pivot pin at their tops and holes for the
+    # bolt's rod near their lower ends (T4 5:35.5)
+    zb0, zb1 = BODY_TOP - 0.5 * L - 8.0, BODY_TOP - 6.0
+    base = fuse(box(lx - 22, lx + 22, yf - 4, yf, zb0, zb1),
+                box(lx - 22, lx - 19.5, yf - 16, yf - 4, zb0 + 10, zb1), box(lx + 19.5, lx + 22, yf - 16, yf - 4, zb0 + 10, zb1),
+                *[along(cyl(3.2, 1.5), (lx, yf - 4, z), (0, -1, 0)) for z in np.linspace(zb0 + 14, zb1 - 14, 3)])
+    base = base.cut(along(cyl(3.4, 60), (lx - 30, yf - 11, g["bolt_z"]), (1, 0, 0)))
+    P.append(Part("latch_base", base, (0.70, 0.71, 0.73), "furnace", tol=0.15))
+    P.append(Part("latch_pin", along(cyl(3.0, 58), (lx - 29, pv[1], pv[2]), (1, 0, 0)), STEEL_DK, "furnace", tol=0.1))
+    # the lever: a channel hanging down from the pin, its web outside the base's flanges, its flanges wrapping them
+    zl0, zl1 = zf, zf + L
+    web = box(lx - 26, lx + 26, yf - 22, yf - 19.5, zl0, zl1)
+    flanges = [box(sx0, sx1, yf - 22, yf - 6, zl0 + 4, zl1) for sx0, sx1 in ((lx - 26, lx - 23.5), (lx + 23.5, lx + 26))]
+    toe = box(lx - 26, lx + 26, yf - 30, yf - 19.5, zl0, zl0 + 6)          # the free end, turned out: where it is pulled
+    lever = fuse(web, *flanges, toe).cut(along(cyl(3.4, 70), (lx - 35, pv[1], pv[2]), (1, 0, 0)))
+    P.append(Part("latch_lever", lever, STEEL, "latch_lever", tol=0.2))
+    # the loop: a wire bail, two legs from its pivot on the lever's flanges up to a cross bar that hooks over the
+    # keeper's lip; its pivot 4 mm inboard of and 16 mm under the lever's (the over-centre offset, ours)
+    up = hk - qv
+    ln = float(np.linalg.norm(up))
+    u = up / ln
+    legs = [along(cyl(2.2, ln + 2.0), (lx + sx, qv[1], qv[2]), tuple(u)) for sx in (-21.5, 21.5)]
+    bar = along(cyl(2.4, 47.0), (lx - 23.5, hk[1], hk[2]), (1, 0, 0))
+    eyes = [along(cyl(3.6, 3.0), (lx + sx, qv[1], qv[2]), (1, 0, 0)) for sx in (-23.0, 20.0)]
+    P.append(Part("latch_loop", fuse(*legs, bar, *eyes), STEEL_DK, "latch_loop", tol=0.12))
+    # the keeper, on the lid: a plate with two screws and a bent lip the cross bar hooks under
     k = g["keeper"]
-    zk = k[2] - 4.0
-    loop = fuse(box(lx - 15, lx + 15, yf - 15, yf - 11, zp - 3, zp + 3),
-                box(lx - 15, lx - 12, yf - 15, yf - 11, zp - 3, zk), box(lx + 12, lx + 15, yf - 15, yf - 11, zp - 3, zk),
-                box(lx - 15, lx + 15, yf - 15, k[1] - 3, zk - 4, zk))
-    P.append(Part("latch_loop", loop, STEEL_DK, "latch_lever", tol=0.15))
-    kp = fuse(box(lx - 26, lx + 26, k[1] - 3, k[1], k[2] - 8, k[2] + 38), box(lx - 18, lx + 18, k[1] - 9, k[1] - 3, k[2] - 10, k[2] - 6),
-              *[along(cyl(3.5, 2), (lx + sx, k[1] - 3, k[2] + 32), (0, -1, 0)) for sx in (-19, 19)])
+    kp = fuse(box(lx - 26, lx + 26, k[1] - 3, k[1], k[2] - 8, k[2] + 38),
+              box(lx - 24, lx + 24, hk[1] - 2.5, k[1] - 3, hk[2] + 2.0, hk[2] + 6.0),
+              box(lx - 24, lx + 24, hk[1] - 2.5, hk[1], hk[2] + 2.0, hk[2] + 12.0),
+              *[along(cyl(3.5, 2), (lx + sx, k[1] - 3, k[2] + 30), (0, -1, 0)) for sx in (-19, 19)])
     P.append(Part("latch_keeper", kp, STEEL, "hood", tol=0.2))
-    bolt = cyl(3.0, g["cabinet_x"] + 30 - (lx + 24), (lx + 24, yf - 11, g["bolt_z"]), (1, 0, 0))
+    # the pneumatic bolt: a rod from the blue cabinet through the base's flanges near their lower ends; in (0), its tip
+    # passes the lever's left flange so the lever can't swing; back (1), it clears the lever's right flange
+    bx0 = lx - 30.0
+    bolt = cyl(3.0, g["cabinet_x"] + 30 - bx0, (bx0, yf - 11, g["bolt_z"]), (1, 0, 0))
     P.append(Part("latch_bolt", bolt, STEEL_DK, "latch_bolt", tol=0.1))
     P.append(Part("bolt_housing", box(g["cabinet_x"] - 6, g["cabinet_x"] + 6, yf - 20, yf - 3, g["bolt_z"] - 14, g["bolt_z"] + 14),
                   BLACK, "furnace", tol=0.2))

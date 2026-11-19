@@ -25,7 +25,7 @@ REGISTRY: dict = {}
 PIECES = {"lid": M.LID_PARTS, "latch": ("latch_lever", "latch_loop"), "bolt": ("latch_bolt",),
           "door": M.DOOR_PARTS, "clamp0": ("clamp0",), "clamp1": ("clamp1",)}
 # what register.py needs to see: the furnace and everything on it, not the chamber's stack, frame and utilities
-SHOWN_GROUPS = {"furnace", "hood", "latch_lever", "latch_bolt", "machine", "rod", "arm", "arm_base", "top_ins", "tc",
+SHOWN_GROUPS = {"furnace", "hood", "latch_lever", "latch_loop", "latch_bolt", "machine", "rod", "arm", "arm_base", "top_ins", "tc",
                 "chamber", "door", "clamp0", "clamp1", "static", "switch"}
 LID_PARAMS = dict(M.LID)
 
