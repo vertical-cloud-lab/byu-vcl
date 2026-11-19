@@ -53,8 +53,8 @@ the vacuum attachment and doing an actual vacuuming of the inside of the chamber
 The tools share one collar design (a 17.4 mm spigot into the wand's 35 mm bore, a 44 mm collar ring, a 38 mm neck), so
 the rack can hold any of them. The spigot and collar sizes are estimates.
 
-**The hose** is a chain of 36 links relaxed every frame by position-based dynamics: gravity, fixed link lengths, a bend
-limit (no kink tighter than about a link, 87 mm, in radius), the floor with friction (nodes resting on it don't slide),
+**The hose** is a chain of 50 links (62 mm each) relaxed every frame by position-based dynamics: gravity, fixed link lengths, a bend
+limit (no kink tighter than about a link in radius), the floor with friction (nodes resting on it don't slide),
 and obstacles (the MiR250 and its cabinet, the vacuum, the station, the chamber, the open door and stack, the pump, the
 pail, the arm's links as capsules, the wand). Each end leaves along its fitting's axis. Its drawn length stays within
 about 3 % of 3048 mm (the links stretch a little under gravity).
@@ -70,13 +70,13 @@ about 3 % of 3048 mm (the links stretch a little under gravity).
 | 4 | Continuity: the tool tip on the bonded spring pad, three spring probes on the joints, a relay box switches the 4-wire meter; each joint <= 0.1 ohm, the hose <= 1e4 ohm, the body < 1 ohm to ground, or the run stops | arm 2 + our fixture | OEM manual (UL 1213 par. 22, accessories doc 15.1), SOP 1.1 |
 | 5 | Equalization touch on the bonded ground button, away from the powder | arm 2 | SOP 3.1 |
 | 6 | Vacuum ON before the powder (a switched outlet, ours) | the cell | SOP 3.2 |
-| 7 | Passes through the door: round the inside of the view port; down the 45 deg floor towards the outlet in two lanes; round the catch bowl's near side and into the outlet's mouth; along the front corner where the floor meets the front wall | arm 2 | DAL SOP step 7; 178 SOP T4 6:51; SOP 3.3-3.5 (slow, nozzle close, never blow) |
+| 7 | Passes through the door: round the inside of the view port; down the 45 deg floor towards the outlet in two lanes (the floor is the funnel to the outlet); along the front corner where the floor meets the front wall | arm 2 | DAL SOP step 7; 178 SOP T4 6:51; SOP 3.3-3.5 (slow, nozzle close, never blow) |
 | 8 | Tool change: the crevice tool into pocket A (its collar between two slotted plates), the wand pulled off it, the wand pushed onto the brush in pocket B, out to the front | arm 2 + our rack | ours |
 | 9 | Brush-and-capture: the brush on the plate (on the open door), then along the door's sealing face (its free edge and top) | arm 2 | SOP 3 (brush), DAL SOP step 6 (door, plate) |
 | 10 | Lift clear; run-on 20 s in clean air; OFF; wait >= 60 s; liner check <= 25 % | arm 2 + the cell | SOP 4.1-4.3 |
 | 11 | Wand back in the holster | arm 2 | ours |
 | 12 | Liner sealing (gooseneck, 2-3 turns, ESD tape or two steel ties), lifting it into the pail, lid set on, a fresh liner; wiping the tools (dry, then a barely damp 70 % IPA wipe), the session log | **a person** | SOP 4.4, 5, 10 |
-| 13 | The far side of the catch bowl and the round end, the cone taken down and its seal vacuumed from below, the view port taken out with the hook wrench | **a person** | 178 SOP T4 7:49, 8:08 |
+| 13 | The catch bowl and the round end, the cone taken down and its seal vacuumed from below, the view port taken out with the hook wrench | **a person** | 178 SOP T4 7:49, 8:08 |
 
 The arm stays outside the chamber: only the wand and the tool go through the door. The tool never touches what it
 cleans except the brush's bristles (a soft part in the audit) and the two spring contacts.
@@ -91,7 +91,10 @@ cleans except the brush's bristles (a soft part in the audit) and the two spring
   non-conductive and small; ask Nilfisk and EHS which.
 - **The station** (two: one per vacuum station): a bonded steel post with the holster, the tool rack (two keyhole
   pockets: the lower plate carries a tool by its collar, the upper plate holds it down while the wand pulls off), the
-  continuity fixture and the ground button.
+  continuity fixture (a spring pad, three spring probes on a column, a relay box) and the ground button, and the meter on
+  a shelf under the rack. The spring parts (pad, probes, button) are soft parts in the audit, as plungers are. The
+  vacuum stands to the station's left with its inlet turned to the back, so the hose runs behind the station's base and
+  rises behind its post to the holster.
 - **The automated continuity check.** The SOP's meter (EXTECH 380560 class, resolves 0.01 ohm) reads 4-wire through a
   relay box that switches its leads between the probe pairs: tool tip (pad) to the wand above the tool joint; the wand
   under the collar to the cuff; the cuff to the vacuum's inlet; the body to the ground bar. The readings on screen
@@ -139,9 +142,15 @@ our two stations.
 - `ARM_AUDIT=1`: see the result below.
 - The hose: its own FCL check every audited frame against everything but the wand, its tools, the vacuum's inlet and the
   floor's markings (`out/collisions/atom_vacuum_hose.json`).
-- The tool's reach through the door: with the crevice tool the grasp point is 648 mm behind the tip, so the gripper stays
-  outside the door for the near side of the bowl and the floor; the far side of the bowl (x > 300) would put the gripper
-  in the door, so it is left to a person (or to a second wand section, not modelled).
+- The tool's reach through the door: with the crevice tool the grasp point is 648 mm behind the tip. For the floor's
+  lanes down to x = 212 the gripper stays outside the door; the catch bowl (its near rim at x = 232, 290 mm past the
+  door at the floor's foot) put the gripper and the wrist into the door's front edge and the swung clamps in the audit
+  (it is about 650 mm from the tip to the door), so the arm does not do it: a person does, or a second wand section
+  would (not modelled).
+- The crevice tool's slot (34 x 11 mm) has a wide side: it is fitted turned 90 deg on the wand, so with the fin towards
+  the arm the slot lies across the floor's lanes; for the view port the wand is rolled so the fin is up (the gripper
+  above the wand) and the slot lies flat to the front wall. Each roll was chosen after the audit found the slot's edge
+  in the floor and the wall.
 - The dust brush cannot meet the 45 deg floor square from the door (the floor faces up and away from the door, so the
   brush would meet it at about 17 deg and its head would scrape): the floor is done with the crevice tool, which drags
   at that angle as it is meant to, and the brush is used on the plate and the door's sealing face, which face the arm.

@@ -253,7 +253,7 @@ class Hose:
     passing through what is round it. End A is the vacuum's inlet, end B the wand's cuff; each end leaves along its
     fitting's axis. Obstacles: boxes (x0, x1, y0, y1, z0, z1) and capsules (p, q, r), in the world."""
 
-    def __init__(self, a, ta, b, tb, n: int = 36, guide=None):
+    def __init__(self, a, ta, b, tb, n: int = 50, guide=None):
         self.n = n
         self.seg = HOSE_L / (n - 1)
         self.boxes: list = []
@@ -277,14 +277,14 @@ class Hose:
         p[0], p[1] = self.a, self.a + self.ta * self.seg
         p[-1], p[-2] = self.b, self.b + self.tb * self.seg
 
-    def relax(self, iters: int = 40, grav: float = 3.0, passes: int = 12):
+    def relax(self, iters: int = 40, grav: float = 2.5, passes: int = 16):
         """Gravity steps, each followed by `passes` rounds of the link lengths, the bend limit (neighbours two apart
         at least 1.8 links apart: no kink tighter than about a link's length in radius) and the pins, then the
         floor and the obstacles. Nodes resting on the floor don't slide (friction)."""
         p = self.p
         seg = self.seg
         for _ in range(iters):
-            on_floor = p[:, 2] <= HOSE_R + 0.5
+            on_floor = p[:, 2] <= HOSE_R + 1.0
             p[~on_floor, 2] -= grav
             for _k in range(passes):
                 d = p[1:] - p[:-1]
@@ -305,7 +305,7 @@ class Hose:
     def _collide(self):
         p = self.p
         r = HOSE_R
-        p[:, 2] = np.maximum(p[:, 2], r)
+        p[:, 2] = np.maximum(p[:, 2], r + 0.5)
         for (x0, x1, y0, y1, z0, z1) in self.boxes:
             lo = np.array([x0 - r, y0 - r, z0 - r])
             hi = np.array([x1 + r, y1 + r, z1 + r])
@@ -318,7 +318,7 @@ class Hose:
             k = np.argmin(pen, axis=1)
             for i, kk in enumerate(k):
                 ax = kk % 3
-                q[i, ax] = lo[ax] if kk < 3 else hi[ax]
+                q[i, ax] = lo[ax] - 8.0 if kk < 3 else hi[ax] + 8.0
             p[inside] = q
         for (a, b, rr) in self.caps:
             a, b = np.asarray(a, float), np.asarray(b, float)
@@ -330,7 +330,7 @@ class Hose:
             hit = dist < rr + r
             hit[[0, 1, -2, -1]] = False
             if hit.any():
-                p[hit] = c[hit] + (d[hit].T * ((rr + r) / dist[hit])).T
+                p[hit] = c[hit] + (d[hit].T * ((rr + r + 8.0) / dist[hit])).T
 
     def mesh(self) -> pv.PolyData:
         return pv.Spline(self.p, self.n * 6).tube(radius=HOSE_R, n_sides=14, capping=False).triangulate()
@@ -449,24 +449,25 @@ def station_meshes() -> dict:
     # the probe column: three spring probes, at the tool-to-wand joint, the wand's top and the cuff, when the wand
     # stands on the pad (heights set in the clip from the assembly's lengths)
     out["stn relay box (ours)"] = (_box(-140, -40, -150, -90, 20, 120), OURS_DK)
-    out["stn meter shelf"] = (_box(-290, -150, -190, -40, 300, 310), SS_DK)
-    out["stn meter"] = (_box(-280, -160, -175, -95, 310, 380), (0.25, 0.27, 0.30))
-    out["stn meter display"] = (_box(-265, -175, -177, -174, 335, 372), LCD)
+    # the meter's shelf under the tool rack, on a leg from the base (clear of the parked tools and of the vacuum)
+    out["stn meter shelf"] = (_box(140, 265, -200, -95, 200, 210).merge(_box(250, 262, -150, -138, 14, 200)), SS_DK)
+    out["stn meter"] = (_box(150, 255, -185, -105, 210, 280), (0.25, 0.27, 0.30))
+    out["stn meter display"] = (_box(163, 242, -187, -184, 235, 272), LCD)
     out["stn ground button (spring)"] = (_cyl((BUTTON_X, -60, fz - 6), (0, 0, 1), 12, 12), BRASS)
     out["stn ground lug"] = (_box(-20, 20, 30, 50, 20, 60), (0.55, 0.45, 0.25))
     return out
 
 
-def probe_column(joints) -> pv.PolyData:
-    """The fixture's probe column (ours): a bar beside the standing wand with a spring probe at each (height, radius
-    of what it touches), each probe's tip 2.5 mm off that surface (they are drawn short of contact)."""
+def probe_column(joints) -> tuple[pv.PolyData, pv.PolyData]:
+    """The fixture's probe column (ours): a bar beside the standing wand, and a spring probe at each (height, radius
+    of what it touches) whose tip rests on that surface (spring plungers: soft parts in the collision checks)."""
     fx = FIXTURE_X
     bar = _box(fx - 75, fx - 60, -70, -50, FIXTURE_Z - 40, max(z for z, _ in joints) + 30)
     probes = []
     for z, r in joints:
-        x0, x1 = fx - 60, fx - r - 2.5
+        x0, x1 = fx - 60, fx - r + 0.5
         probes.append(_cyl(((x0 + x1) / 2, -60, z), (1, 0, 0), 4, x1 - x0, 16))
-    return bar.merge(probes)
+    return bar, probes[0].merge(probes[1:])
 
 
 def station_points() -> dict:
@@ -476,7 +477,7 @@ def station_points() -> dict:
             "pocket_a": np.array([RACK_X[0], RACK_Y, RACK_Z + 0.5 + TOOL_COLLAR[1]]),
             "pocket_b": np.array([RACK_X[1], RACK_Y, RACK_Z + 0.5 + TOOL_COLLAR[1]]),
             "pad": np.array([FIXTURE_X, -60.0, FIXTURE_Z]), "button": np.array([BUTTON_X, -60.0, FIXTURE_Z]),
-            "meter": np.array([-220.0, -177.0, 355.0])}
+            "meter": np.array([202.0, -187.0, 255.0])}
 
 
-SOFT = ("dust brush bristles", "stn fixture pad (spring)", "stn ground button (spring)")
+SOFT = ("dust brush bristles", "stn fixture pad (spring)", "stn ground button (spring)", "stn spring probes")

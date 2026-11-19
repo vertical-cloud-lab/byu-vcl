@@ -21,12 +21,15 @@ import atom_base as AB
 import atom_nilfisk as N
 import alloy_atomize as AA
 import ur_arm
-from scene import AUDIT, OUT, T, R
+from scene import AUDIT, OUT, PREVIEW, T, R
+
+COMBINED = not AUDIT and not PREVIEW      # the final render also audits every frame (one pass: render queue)
 
 NAME = "atom_vacuum"
 M = AB.M
 VAC_AT = np.array([-1060.0, -250.0])          # the vacuum's bin axis, model frame (ours: layout)
 STN_AT = np.array([-520.0, -200.0])           # our station's post
+VAC_YAW = 90.0                                # the vacuum turned so its inlet faces back (+y), away from the station
 MIR_PARK = (-520.0, -1150.0, 0.0)             # MiR250 2 in front of the station, the arm's base at y -1020
 MIR_START = (900.0, -2300.0, 0.0)
 PAIL_AT = np.array([-1140.0, -760.0])
@@ -45,6 +48,13 @@ def place(sc, meshes, group, Mx, parent="static"):
     sc.gmat[group] = Mx
     if parent:
         sc.parent[group] = parent
+
+
+def vac_pt(name):
+    """A named point on the vacuum (atom_nilfisk.vacuum_local), in the model frame."""
+    a = math.radians(VAC_YAW)
+    x, y, z = N.vacuum_local(name)
+    return np.array([VAC_AT[0] + x * math.cos(a) - y * math.sin(a), VAC_AT[1] + x * math.sin(a) + y * math.cos(a), z])
 
 
 def W2(p):
@@ -116,13 +126,16 @@ def hose_check(sc, log):
     bvh.addSubModel(v, f)
     bvh.endModel()
     hose_obj = fcl.CollisionObject(bvh, fcl.Transform())
+    hb = collide.Body("vac hose", "static", v, f)
+    hb.src = (v, f)
+    hb.place(np.eye(4))
     lo, hi = v.min(0), v.max(0)
     skip = {"vac:wand", "vac:crevice", "vac:brush"}
     snap = w.current(skip)
     log["frames_checked"] += 1
     hit_now = []
     for b, blo, bhi, Mx in snap.items:
-        if b.name in ("vac hose", "vac:body/vac inlet") or bhi[2] <= 6.0:
+        if b.name in ("vac hose", "vac:body/vac inlet") or bhi[2] <= 6.0 or b.name.startswith("vac ground cable"):
             continue
         if (blo > hi).any() or (bhi < lo).any():
             continue
@@ -130,11 +143,13 @@ def hose_check(sc, log):
             b.ensure()
             b.place(Mx)
         if collide._hit(hose_obj, b.obj):
-            hit_now.append(b.name)
+            hit_now.append((b.name, collide.depth(hb, b, upto=3.0)))
     if hit_now:
         log["frames_with_contact"] += 1
-        for nm in hit_now:
-            log["hits"].setdefault(nm, []).append(sc.n)
+        if any(d > 3.0 for _, d in hit_now):
+            log["frames_through"] = log.get("frames_through", 0) + 1
+        for nm, d in hit_now:
+            log["hits"].setdefault(nm, []).append((sc.n, d))
 
 
 def tcp_of(wand_world) -> np.ndarray:
@@ -152,7 +167,7 @@ def main():
     sc.soft = set(getattr(sc, "soft", set()))
 
     # ---- the area: vacuum, pail, extinguisher, sign, station, ground bonds
-    place(sc, N.vacuum_meshes(), "vac:body", AB.WT(T((*VAC_AT, 0))))
+    place(sc, N.vacuum_meshes(), "vac:body", AB.WT(T((*VAC_AT, 0)) @ R((0, 0, 1), VAC_YAW)))
     place(sc, N.pail_meshes(), "vac:pail", AB.WT(T((*PAIL_AT, 0))))
     place(sc, N.extinguisher_meshes(), "vac:ext", AB.WT(T((*EXT_AT, 0)) @ R((0, 0, 1), 90)))
     place(sc, N.sign_meshes(), "vac:sign", AB.WT(T((*SIGN_AT, 0))))
@@ -162,11 +177,12 @@ def main():
         if f"vac:station/{nm}" in sc.actors:
             sc.soft.add(f"vac:station/{nm}")
     sp = {k: v + np.r_[STN_AT, 0] for k, v in N.station_points().items()}
-    lug = N.vacuum_local("ground_lug") + np.r_[VAC_AT, 0]
+    lug = vac_pt("ground_lug")
     gb = np.r_[GROUND_BAR, 0.0]
     sc.add("vac ground bar", N._box(gb[0] - 60, gb[0] + 60, gb[1] - 15, gb[1] + 15, 0, 40).translate(AB.RP, inplace=False),
            (0.55, 0.45, 0.25), "static")
-    cables = [[lug, lug + (40, 60, -90), gb + (0, -40, 8), gb + (0, -16, 25)],
+    cables = [[lug, lug + (60, -20, -95), np.array([-790.0, -480.0, 8.0]), np.array([-790.0, 30.0, 8.0]),
+               gb + (60, 0, 8), gb + (0, -16, 25)],
               [np.r_[STN_AT, 0] + (0, 40, 40), np.r_[STN_AT, 0] + (-120, 120, 6), gb + (60, -60, 6), gb + (40, -16, 25)],
               [np.r_[PAIL_AT, 0] + (90, 100, 300), np.r_[PAIL_AT, 0] + (140, 160, 6), gb + (-120, -200, 6),
                gb + (-40, -16, 25)]]
@@ -180,7 +196,7 @@ def main():
     place(sc, N.wand_meshes(), "vac:wand", wand.hanging(sp["holster"]), parent=None)
     crev, brush = N.crevice_meshes(), N.brush_meshes()
     fit = T((0, 0, -N.WAND_L - N.SEAT_GAP + N.TOOL_COLLAR[0]))
-    place(sc, crev, "vac:crevice", fit, parent="vac:wand")
+    place(sc, crev, "vac:crevice", fit @ R((0, 0, 1), 90), parent="vac:wand")   # the slot's wide side along y_w
     place(sc, brush, "vac:brush", AB.WT(T(sp["pocket_b"]) @ R((0, 0, 1), 90)), parent=None)
     sc.soft.add("vac:brush/dust brush bristles")
     # the probe column beside the pad, its probes at the joints of the wand standing on the pad with the crevice tool
@@ -189,37 +205,45 @@ def main():
     joints = [(z0 + N.tool_reach("crevice") + 14, N.WAND_OD / 2),          # the wand just above the tool joint
               (z0 + reach - N.COLLAR_AT - N.COLLAR_L / 2 - 25, N.WAND_OD / 2),   # the wand under our collar
               (z0 + reach + 30, N.CUFF_OD / 2)]                             # the cuff
-    sc.add("vac:station/probe column", N.probe_column(joints), N.OURS, "vac:station")
+    bar, probes = N.probe_column(joints)
+    sc.add("vac:station/probe column", bar, N.OURS, "vac:station")
+    sc.add("vac:station/stn spring probes", probes, N.BRASS, "vac:station")
+    sc.soft.add("vac:station/stn spring probes")
 
     # ---- the hose: from the vacuum's inlet to the wand's cuff, relaxed every frame
-    inlet = N.vacuum_local("inlet") + np.r_[VAC_AT, 0]
+    inlet = vac_pt("inlet")
+    t_in = (0.0, 1.0, 0.0)
 
     def cuff_end():
         Wd = sc.world("vac:wand")
         return (Wd @ np.r_[0, 0, N.CUFF_L - 20.0, 1.0])[:3] - AB.RP, Wd[:3, 2]
 
     b0, tb0 = cuff_end()
-    guide = [inlet, inlet + (120, 0, -300), inlet + (220, -120, -385), b0 + (-160, -60, -b0[2] + 25),
-             b0 + (0, 0, -b0[2] + 25), b0 + (0, 0, -300), b0]
-    hose = N.Hose(inlet, (1, 0, 0), b0, tb0, guide=guide)
+    guide = [inlet, inlet + (0, 130, -40), np.array([-1050.0, 140.0, 26.0]), np.array([-900.0, 70.0, 26.0]),
+             np.array([-600.0, 60.0, 26.0]), np.array([-420.0, 40.0, 26.0]), np.array([-400.0, -60.0, 600.0]),
+             np.array([-400.0, -110.0, 1180.0]), np.array([-400.0, -200.0, 1320.0]), np.array([-400.0, -300.0, 1330.0]),
+             b0 + (0, 0, 87.0), b0]
+    hose = N.Hose(inlet, t_in, b0, tb0, guide=guide)
 
     def obstacles():
         x, y = mb.x - AB.RP[0], mb.y - AB.RP[1]
         boxes = [(x - 400, x + 400, y - 290, y + 290, 0, 800),                      # MiR250 2 + cabinet
-                 (VAC_AT[0] - 230, VAC_AT[0] + 230, VAC_AT[1] - 230, VAC_AT[1] + 230, 0, 965),
+                 (VAC_AT[0] - 230, VAC_AT[0] + 230, VAC_AT[1] - 300, VAC_AT[1] + 230, 0, 1150),
                  (STN_AT[0] - 30, STN_AT[0] + 30, STN_AT[1] - 30, STN_AT[1] + 30, 0, 1090),
                  (STN_AT[0] - 300, STN_AT[0] + 300, STN_AT[1] - 200, STN_AT[1] + 120, 0, 14),
-                 (STN_AT[0] - 290, STN_AT[0] + 290, STN_AT[1] - 190, STN_AT[1] - 40, 0, 380),
-                 (STN_AT[0] + 30, STN_AT[0] + 290, STN_AT[1] - 105, STN_AT[1] + 0, 480, 625),
+                 (STN_AT[0] - 215, STN_AT[0] - 30, STN_AT[1] - 155, STN_AT[1] - 30, 0, 205),     # fixture
+                 (STN_AT[0] + 135, STN_AT[0] + 270, STN_AT[1] - 205, STN_AT[1] - 90, 0, 285),    # meter
+                 (GROUND_BAR[0] - 60, GROUND_BAR[0] + 60, GROUND_BAR[1] - 15, GROUND_BAR[1] + 15, 0, 40),
+                 (STN_AT[0] - 260, STN_AT[0] - 195, STN_AT[1] - 75, STN_AT[1] - 45, 150, 1010),  # probe column
+                 (STN_AT[0] - 55, STN_AT[0] + 55, STN_AT[1] - 190, STN_AT[1] - 30, 955, 1000),   # holster
+                 (STN_AT[0] + 30, STN_AT[0] + 290, STN_AT[1] - 105, STN_AT[1] - 15, 585, 630),   # tool rack
                  (-115, 346, -128, 128, 300, 1150), (-401, -128, -8, 390, 600, 1115),
                  (-880, -420, 120, 340, 0, 260), (PAIL_AT[0] - 150, PAIL_AT[0] + 150, PAIL_AT[1] - 150, PAIL_AT[1] + 150,
                                                   0, 360)]
         caps = []
-        fk = [sc.world(f"{rb.prefix}_{l}")[:3, 3] - AB.RP for l in ("upper_arm", "forearm", "wrist1", "wrist2", "wrist3")]
-        for a_, b_ in zip(fk[:-1], fk[1:]):
-            caps.append((a_, b_, 75.0))
-        tw = rb.tcp_world()[:3, 3] - AB.RP
-        caps.append((fk[-1], tw, 70.0))
+        for grp, a_, b_, r_ in link_caps:                  # each arm link as a capsule along its own mesh's long axis
+            Wl = sc.world(grp)
+            caps.append(((Wl @ np.r_[a_, 1.0])[:3] - AB.RP, (Wl @ np.r_[b_, 1.0])[:3] - AB.RP, r_))
         Wd = sc.world("vac:wand")
         top = Wd[:3, 3] - AB.RP
         caps.append((top - Wd[:3, 2] * 30, top - Wd[:3, 2] * (N.WAND_L + 200), 26.0))
@@ -227,18 +251,35 @@ def main():
 
     def hose_hook(_sc):
         b, tb = cuff_end()
-        hose.set_ends(inlet, (1, 0, 0), b, tb)
+        hose.set_ends(inlet, t_in, b, tb)
         hose.boxes, hose.caps = obstacles()
         hose.relax(18)
         sc.set_mesh("vac hose", hose.mesh().translate(AB.RP, inplace=False))
 
+    link_caps = []
+    for l in ("shoulder", "upper_arm", "forearm", "wrist1", "wrist2", "wrist3", "gr_base", "gr_camera"):
+        grp = f"{rb.prefix}_{l}"
+        pts = [np.asarray(sc.actors[n].GetMapper().GetInput().GetPoints().GetData()) for n in sc.members(grp)
+               if sc.actors[n].GetMapper().GetInput() is not None and sc.actors[n].GetMapper().GetInput().GetNumberOfPoints()]
+        if not pts:
+            continue
+        pts = np.vstack(pts)
+        c0 = pts.mean(0)
+        ax = np.linalg.svd(pts - c0, full_matrices=False)[2][0]
+        t = (pts - c0) @ ax
+        rad = np.linalg.norm((pts - c0) - np.outer(t, ax), axis=1)
+        link_caps.append((grp, c0 + ax * t.min(), c0 + ax * t.max(), float(np.percentile(rad, 95))))
     hose.boxes, hose.caps = obstacles()
     hose.relax(300)
     sc.add("vac hose", hose.mesh().translate(AB.RP, inplace=False), N.BLACK, "static", specular=0.2)
     sc.soft.add("vac hose")
     sc.frame_hooks.insert(0, hose_hook)
     hose_log = {"frames_checked": 0, "frames_with_contact": 0, "hits": {}}
-    if AUDIT:
+    if COMBINED:
+        import collide
+        sc.auditor = collide.Auditor(sc)
+        sc.frame_hooks.append(sc.auditor)
+    if AUDIT or COMBINED:
         sc.frame_hooks.append(lambda _sc: hose_check(sc, hose_log))
 
     def gauges(**kv):
@@ -258,12 +299,12 @@ def main():
                     ("Our station: holster, tool rack, continuity fixture", W2((STN_AT[0], STN_AT[1] - 150, 1040)),
                      (0.55, 0.22))])
     sc.step("1/10 Area", "Sign: COMBUSTIBLE METAL POWDER IN USE. Authorized personnel only. NO water, NO compressed "
-            "air (vacuum SOP 2.3). Every loose metal object in the zone is bonded or removed.", 3.0,
-            cam_to=AB.cam((-850, -2700, 1100), (-1210, -1560, 650)), hold=1.6)
+            "air (vacuum SOP 2.3). Every loose metal object in the zone is bonded or removed.", 2.4,
+            cam_to=AB.cam((-850, -2700, 1100), (-1210, -1560, 650)), hold=1.2)
     # ============================================================================ 2. the chamber
     AA.set_cut(sc, 0.0, CUT)
     sc.step("2/10 The chamber", "After a run: cold, vented, door open. The powder was already brushed into the "
-            "container and the container taken off (DAL SOP steps 2-3), so it is not drawn.", 3.5,
+            "container and the container taken off (DAL SOP steps 2-3), so it is not drawn.", 3.0,
             cam_to=AB.cam((200, -1900, 1500), (-150, 50, 850)), hold=1.6,
             labels=[("Open door with the stack", W2((-270, 120, 1110)), (0.30, 0.20)),
                     ("Container removed", W2((M.CHUTE_X, 0, 300)), (0.70, 0.70))])
@@ -292,7 +333,7 @@ def main():
     pre_pad = T((0, 0, 60)) @ tcp_of(Wpad)
     sc.step("5/10 Continuity", "To the continuity fixture (ours): the tool tip goes onto the bonded spring pad, "
             "spring probes touch each joint, a relay box switches the milliohm meter between them.", 3.2,
-            rb.joint_to(Tw=pre_pad), cam_to=AB.cam((250, -1000, 850), (-700, -250, 500)), hold=0.2)
+            rb.joint_to(Tw=pre_pad), cam_to=AB.cam((250, -1000, 850), (-650, -250, 500)), hold=0.2)
     sc.step("5/10 Continuity", "Down onto the pad.", 1.6, rb.line_to(T((0, 0, -3)) @ tcp_of(Wpad)), hold=0.2,
             labels=[("EXTECH 380560 class milliohm meter", W2(sp["meter"]), (0.12, 0.62)),
                     ("Spring pad, bonded", W2(sp["pad"]), (0.30, 0.82))])
@@ -314,10 +355,10 @@ def main():
     gauges(Vacuum="ON (130 CFM, 69 in water lift)")
     sc.step("6/10 Vacuum on", "Vacuum ON before the tool goes near the powder (SOP 3.2). The SOP's switch is on the "
             "motor head: a relay on its supply is ours, to be cleared with Nilfisk and EHS.", 0.5, hold=1.6,
-            labels=[("ON", W2(N.vacuum_local("switch") + np.r_[VAC_AT, 0]), (0.18, 0.40))])
+            labels=[("ON", W2(vac_pt("switch")), (0.18, 0.40))])
     # ============================================================================ 7. passes inside the chamber
     AA.set_cut(sc, 0.0, CUT)
-    hint = (0.0, -1.0, 0.35)
+    hint = (0.0, -1.0, 0.0)
 
     def pass_(label, caption, pts, d_of, seconds, cam=None, hint_=hint, hold=0.3, labels=()):
         poses = [wand.tcp(p, d_of(p), hint_) for p in pts]
@@ -326,7 +367,7 @@ def main():
                 hold=0.1, labels=labels)
         sc.step(label, caption, seconds, AA.follow(rb, poses), hold=hold)
 
-    def door_dir(p, pivot=(-170.0, -40.0, 930.0)):
+    def door_dir(p, pivot=(-170.0, -30.0, 965.0)):
         return unit(np.asarray(p, float) - np.asarray(pivot, float))
 
     cut_on = AA.set_cut
@@ -336,47 +377,41 @@ def main():
             cam_to=AB.cam((-30, -950, 1150), (-40, -100, 1030)), hold=0.4)
     # the view port: round its inside, the tool along the front wall, its tip 9 mm off the wall
     vp = M.VIEWPORT
-    ring = [np.array([vp[0] + 38 * math.cos(t), -103.0, vp[2] + 38 * math.sin(t)])
+    ring = [np.array([vp[0] + 34 * math.cos(t), -96.0, 1030.0 + 34 * math.sin(t)])
             for t in np.linspace(math.pi, 3 * math.pi, 25)]
     pass_("7/10 View port", "Round the inside of the view port (one of the two crevices: DAL 178 SOP, T4 6:51), "
           "slowly, the nozzle close to the wall (SOP 3.3-3.4).", ring,
-          lambda p: unit((1.0, -0.13, 0.06)), 9.0, cam=AB.cam((-30, -950, 1150), (-40, -100, 1030)),
-          hint_=(0.0, -1.0, 0.6))
+          lambda p: unit((1.0, -0.33, 0.06)), 8.0, cam=AB.cam((-30, -950, 1150), (-40, -100, 1030)),
+          hint_=(0.0, -0.15, 1.0))
     # the sloped floor down towards the outlet (the cone the powder runs down), two lanes, 8 mm off the floor
     lanes = []
-    for y in (-55.0, 25.0):
-        for x in np.linspace(-30.0, 200.0, 9):
+    for y in (-50.0, 20.0):
+        for x in np.linspace(-30.0, 212.0, 9):
             lanes.append(np.array([x, y, M.chamber_floor(x) + 16.0]))
     lane0, lane1 = lanes[:9], lanes[9:][::-1]
     sc.step("7/10 Sloped floor", "Now the chamber is shown cut open at its middle.", 1.0,
             lambda u: cut_on(sc, 0.6 + 0.4 * u, CUT), cam_to=CAM_IN, hold=0.2)
     pass_("7/10 Sloped floor", "Down the 45 deg floor towards the outlet, a lane at a time, at about 30 mm/s, the nozzle 11 mm off.",
-          lane0, door_dir, 8.0, cam=CAM_IN)
-    pass_("7/10 Sloped floor", "Back up the next lane.", lane1, door_dir, 8.0)
-    # the catch bowl: round its near half, then the outlet's mouth
-    bowl = [np.array([M.CHUTE_X + 66 * math.cos(t), 66 * math.sin(t), 452.0]) for t in np.linspace(2.2, 4.08, 12)]
-    bowl += [np.array([M.CHUTE_X - 30.0, 0.0, 440.0]), np.array([M.CHUTE_X - 24.0, 0.0, 410.0])]
-    pass_("7/10 Catch bowl", "Round the catch bowl's near side and into the outlet's mouth. The far side and the "
-          "cone's seal from below stay a person's job (the cone swings out: T4 8:08).", bowl, door_dir, 7.0,
-          cam=AB.cam((150, -1500, 1000), (110, 0, 640)))
+          lane0, door_dir, 7.0, cam=CAM_IN)
+    pass_("7/10 Sloped floor", "Back up the next lane. The catch bowl, 290 mm past the door at the floor's foot, is out "
+          "of the wand's reach with the arm outside: a person vacuums it, and the cone from below.", lane1, door_dir, 7.0)
     # the front-bottom corner along the slope
-    corner = [np.array([x, -100.0, M.chamber_floor(x) + 18.0]) for x in np.linspace(40.0, 170.0, 7)]
+    corner = [np.array([x, -86.0, M.chamber_floor(x) + 18.0]) for x in np.linspace(40.0, 170.0, 7)]
     pass_("7/10 Corners", "Along the front corner, where the sloped floor meets the front wall.", corner, door_dir, 5.0)
     # ============================================================================ 8. tool change
-    out_pose = wand.tcp(np.array([-300.0, -200.0, 900.0]), (1, 0, -0.6), hint)
-    sc.step("8/10 Tool change", "Out of the chamber and over to the tool rack.", 3.0, rb.joint_to(Tw=out_pose),
-            cam_to=AB.cam((100, -1000, 900), (-330, -270, 650)), hold=0.2)
     pa, pb = sp["pocket_a"], sp["pocket_b"]
 
     def hang_at(tool_top, dy=0.0, dz=0.0):
         """The wand upright with its fitted tool's spigot top at tool_top (+ offsets)."""
         return AB.WT(T(tool_top + np.array([0, dy, dz + N.WAND_L - N.TOOL_COLLAR[0] + N.SEAT_GAP])))
 
+    sc.step("8/10 Tool change", "Out of the chamber and over to our tool rack, the wand upright.", 3.4,
+            rb.joint_to(Tw=tcp_of(hang_at(pa, -110, 150))), cam_to=AB.cam((150, -1050, 900), (-330, -270, 650)),
+            hold=0.1)
     sc.step("8/10 Tool change", "The crevice tool goes into pocket A from the front: its collar slides between our "
-            "two slotted plates.", 2.6, rb.joint_to(Tw=tcp_of(hang_at(pa, -110, 0))), hold=0.1)
+            "two slotted plates.", 1.4, rb.line_to(tcp_of(hang_at(pa, -110, 0))), hold=0.1)
     sc.step("8/10 Tool change", "In.", 1.6, rb.line_to(tcp_of(hang_at(pa, 0, 0))), hold=0.2)
-    sc.parent.pop("vac:crevice", None)
-    rb.reparent("vac:crevice", "vac:station")
+    rb.reparent("vac:crevice", "vac:station")          # the tool stays in pocket A, where the wand left it
     refresh_held(sc, rb)
     sc.step("8/10 Tool change", "The arm pulls the wand straight up off the tool's spigot; the upper plate holds the "
             "tool down.", 1.6, rb.line_to(T((0, 0, 80)) @ tcp_of(hang_at(pa, 0, 0))), hold=0.2)
@@ -395,8 +430,8 @@ def main():
     Dm = M.joint_matrix("door", 1.0)
     plc = (Dm @ np.r_[pl, 1.0])[:3]
     nrm = Dm[:3, :3] @ M.STACK_DIR
-    along_ = Dm[:3, :3] @ M.PLATE_UP
-    strokes = [plc - nrm * 3.0 + along_ * s for s in np.linspace(-30.0, 30.0, 5)]
+    along_ = Dm[:3, :3] @ M.PLATE_ALONG                 # from the plate's fixed end (the upper sonotrode) to its free end
+    strokes = [plc - nrm * 3.0 + along_ * s for s in np.linspace(14.0, 46.0, 5)]
     pass_("9/10 Brush", "The dust brush on the plate: brush-and-capture, the bristles just kissing it while the "
           "airflow takes what they lift (SOP 3).", strokes, lambda p: -nrm, 5.0,
           cam=AB.cam((250, -900, 1250), (-280, 40, 900)), hint_=(0.0, -1.0, 0.3),
@@ -410,7 +445,7 @@ def main():
           "brush cannot meet the 45 deg floor square from the door, so the floor had the crevice tool.", seal,
           lambda p: dface, 6.0, cam=AB.cam((250, -900, 1300), (-260, 120, 980)), hint_=(0.0, -1.0, 0.5))
     # ============================================================================ 10. clear, run-on, off, settle, liner, holster
-    clear = wand.tcp(np.array([-320.0, -230.0, 1000.0]), (0.6, 0.2, -1), hint)
+    clear = T((0, -140, 300)) @ tcp_of(wand.hanging(sp["holster"]))
     sc.step("10/10 Shut down", "Lift the tool clear of the powder, into clean air.", 2.4,
             AB.both(rb.joint_to(Tw=clear), lambda u: cut_on(sc, 1.0 - u, CUT)),
             cam_to=AB.cam((500, -1700, 1500), (-560, -380, 800)), hold=0.2)
@@ -439,17 +474,23 @@ def main():
             1.4, AB.both(rb.grip_to(OPEN), lambda u: None), hold=0.2)
     sc.step("10/10 Holster", "", 1.6, rb.line_to(tcp_of(Wh) @ T((0, 0, -120))), hold=1.5)
     meta = dict(readings_illustrative=readings, hose_length_mm=round(hose.length(), 1), grip_close=GRIP_FIN)
-    if AUDIT:
-        hits = {k: dict(frames=len(v), first=v[0], last=v[-1]) for k, v in hose_log["hits"].items()}
+    if AUDIT or COMBINED:
+        hits = {k: dict(frames=len(v), first=v[0][0], last=v[-1][0], deeper_than_3mm=sum(1 for _, d in v if d > 3.0),
+                        max_depth_mm=max(d for _, d in v)) for k, v in hose_log["hits"].items()}
         (OUT / "collisions").mkdir(parents=True, exist_ok=True)
         (OUT / "collisions" / f"{NAME}_hose.json").write_text(json.dumps(dict(
             what="the hose (a relaxed chain, re-meshed every frame) against everything but the wand, its tools, the "
                  "vacuum's inlet and the floor's markings", frames_checked=hose_log["frames_checked"],
-            frames_with_contact=hose_log["frames_with_contact"], hits=hits), indent=1) + "\n")
-        print("hose check:", hose_log["frames_with_contact"], "of", hose_log["frames_checked"], "frames;", hits)
+            frames_with_contact=hose_log["frames_with_contact"], frames_through=hose_log.get("frames_through", 0),
+            depth_note="collide.depth, sampled: 1.5 or 3 = resting against it (touching), more = through it", hits=hits),
+            indent=1) + "\n")
+        print("hose check:", hose_log["frames_with_contact"], "of", hose_log["frames_checked"], "frames touching,",
+              hose_log.get("frames_through", 0), "through;", {k: (v["frames"], v["deeper_than_3mm"], v["max_depth_mm"]) for k, v in hits.items()})
     (OUT / "atom").mkdir(parents=True, exist_ok=True)
     (OUT / "atom" / f"{NAME}_meta.json").write_text(json.dumps(meta, indent=1) + "\n")
     AB.finish(sc)
+    if COMBINED:
+        sc.auditor.save()
 
 
 if __name__ == "__main__":
