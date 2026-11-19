@@ -150,6 +150,18 @@ before unclamping is an open question below.
 model's two halves that slid straight apart (ours, assumed). The lab should say what the real clamp is (a hinged KF/ISO clamp
 with a wing nut, a chain clamp, a V-band).
 
+## Audit results and what is still wrong (2026-11-19, the rendered scripts)
+
+- **atom_latch** (the turned lid, one-armed latch): LATCH_AUDIT_RESULT. Before the lid was turned, the same clip with the
+  latch on the front face audited at **0 of 1254 frames** in collision and 0 mover contacts (01:29). After the port the lever's
+  moves are clear (its grasp now comes from above and outside: under the turned latch is the chamber's top plate), but **the
+  loop's moves are not**: swinging the loop over the lever's top while holding its legs turns the gripper ~170 deg with it, and
+  the forearm sweeps into the furnace body, the chamber and the blue cabinet (the clip's branch search scored 194-210 hits on
+  that path at every MiR250 1 spot tried). The fix, not made for lack of time: lift the bar off the hook and let the loop fall
+  onto the lever's web (what T4 5:29.5-5:35 shows: "lets it fall"), then fold the lever by its free end; for hooking, raise the
+  lever with the loop on it and turn the loop over onto the plate with a regrasp, or by letting it tip past vertical.
+- **atom_container**: CONTAINER_AUDIT_RESULT (the rendered clip stops after the valve is shut; see above).
+
 ## What the audit checks, and what is assumed
 
 - `ARM_AUDIT=1` on both scripts: every frame, FCL (collide.py): the arms, the grippers and what they hold against everything,

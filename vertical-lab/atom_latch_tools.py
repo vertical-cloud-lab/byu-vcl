@@ -245,16 +245,17 @@ def lever_grasp(alpha_deg: float = 35.0, z_c: float = 1216.0, y_c: float = -155.
     return Mx
 
 
-def legs_grasp(s: float = 26.0, back: float = 15.5) -> np.ndarray:
+def legs_grasp(s: float = 26.0, back: float = 15.5, alpha_deg: float = -40.0) -> np.ndarray:
     """The 2F-85 across the loop's two legs from outside (x = LX +- 32.7), s mm up them from the pivot, approaching
     along +y (loop shut frame), the TCP `back` mm in front of the legs; model frame, loop as built. Fingers along x."""
     u = (HOOK - Q0) / LOOP_L
     p = Q0 + u * s
-    z = np.array([0.0, 1.0, 0.0])
+    a = math.radians(alpha_deg)                # in and down: the hand stands out and above the face, clear of the
+    z = np.array([0.0, math.cos(a), math.sin(a)])   # chamber's top under the latch (the lid assembly turned)
     x = np.array([1.0, 0.0, 0.0])
     y = np.cross(z, x)
     Mx = np.eye(4)
-    Mx[:3, 0], Mx[:3, 1], Mx[:3, 2], Mx[:3, 3] = x, y, z, (LX, p[1] - back, p[2])
+    Mx[:3, 0], Mx[:3, 1], Mx[:3, 2], Mx[:3, 3] = x, y, z, p - z * back
     return Mx
 
 

@@ -283,15 +283,19 @@ def main():
     sc.gmat["atc c2"] = T(seatB) @ R((0, 0, 1), 90.0) @ T((-CX, 0.0, -Z0))    # its valve 90 deg from the fork's stem, as installed
     AB.mir_at(ma, A_LEFT)
     AB.mir_at(mb, B_FRONT)
+    if __import__("os").environ.get("ATOM_COMBINED_AUDIT") and not (PREVIEW or AUDIT):
+        import collide                      # the ARM_AUDIT=1 checks run alongside the render: one pass for both
+        sc.auditor = collide.Auditor(sc)
+        sc.frame_hooks.append(sc.auditor)
 
     def rows(**kw):
         base = dict(Chamber="vented, open, cold", Container=None, Valve=None, Clamp=None, Arm_1=None, Arm_2=None)
         base.update(kw)
         AB.caption_rows(sc, **base)
 
-    CAM_DOOR = AB.cam((-1500, -1300, 1500), (-60, -20, 820))
-    CAM_IN = AB.cam((-1000, 250, 1350), (80, -20, 700))
-    CAM_CONT = AB.cam((520, -1750, 1250), (270, -40, 320))
+    CAM_DOOR = AB.cam((-950, -1550, 1700), (-250, -100, 850))
+    CAM_IN = AB.cam((120, -1350, 950), (110, 0, 640))       # the chamber's front half cut away (set_cut) to see in
+    CAM_CONT = AB.cam((480, -1500, 1300), (300, -70, 260))
     CAM_WIDE = AB.cam((900, -2800, 1800), (100, -300, 500))
     sc.cam = CAM_DOOR
 
@@ -344,7 +348,8 @@ def main():
     cap3 = ("It brushes the powder down the cone into the container, then round the catch bowl, in a circle (178_sop "
             "After a run 2; T2 43:37, T4 08:47). The view port is not brushed here: from the door the grip meets the "
             "stack on the open door.")
-    sc.step("3/5", cap3, 2.4, rb.joint_to(Tw=entry), hold=0.05, cam_to=CAM_IN)
+    sc.step("3/5", cap3, 2.4, AB.both(rb.joint_to(Tw=entry), lambda u: AA.set_cut(sc, u, AA.CH_G)), hold=0.05,
+            cam_to=CAM_IN)
     f_cone = AA.follow(rb, [entry] + cone)
 
     def brush_cone(u):
@@ -360,7 +365,9 @@ def main():
     sc.step("3/5", cap3, 1.6, rb.joint_to(Tw=entry), hold=0.05)
     # the brush back on its rest
     rows(Arm_1="brush back")
-    sc.step("3/5", "The brush goes back on its rest.", 2.2, rb.joint_to(Tw=pre), hold=0.05, cam_to=CAM_DOOR)
+    sc.step("3/5", "The brush goes back on its rest.", 2.2, AB.both(rb.joint_to(Tw=pre),
+                                                                     lambda u: AA.set_cut(sc, 1.0 - u, AA.CH_G)),
+            hold=0.05, cam_to=CAM_DOOR)
     sc.step("3/5", "The brush goes back on its rest.", 0.8, rb.line_to(brush_w), hold=0.05)
     rb.release("amr")
     sc.step("3/5", "The brush goes back on its rest.", 0.4, rb.grip_to(0.3), hold=0.05)
@@ -412,6 +419,8 @@ def main():
             (OUT / "atom").mkdir(parents=True, exist_ok=True)
             (OUT / "atom" / "atom_container_mass.json").write_text(json.dumps(sums, indent=1) + "\n")
         AB.finish(sc)
+        if getattr(sc, "auditor", None) is not None and not AUDIT:
+            sc.auditor.save()
         return
 
     # ---------------------------------------------------------------- 5. the fork under it, the clamp open

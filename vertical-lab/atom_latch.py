@@ -45,7 +45,8 @@ B_AT = (-500.0, -600.0, 0.0)           # MiR250 2 (arm 2), front left: the press
 A_SPOTS = [(650.0, -560.0, 0.0), (560.0, -640.0, 0.0), (520.0, -700.0, 25.0), (620.0, -480.0, 30.0),
            (700.0, -420.0, 50.0), (460.0, -680.0, 40.0)]       # MiR250 1's candidates, right of the furnace
 TURN = LT.TURN                         # the lid assembly's own frame -> the machine
-LEVER_ALPHA = 35.0                     # arm 1's approach to the lever: in, and up 35 deg from level
+LEVER_ALPHA = -35.0                    # arm 1's approach to the lever: in, and down 35 deg: the hand stands out and
+                                       # above the latch (under it, on the turned lid, is the chamber's top plate)
 GAP_LEVER = 52.0 + 0.8                 # the lever's flanges are 52 mm across: pads 0.4 mm off each
 GAP_LEGS = 2 * (LT.LEG_X + LT.LEG_R) + 0.8
 GAP_KNOB = 28.0 + 0.8                  # the lid's 28 mm ball knob
@@ -220,6 +221,10 @@ def main():
     swap_latch(sc)
     AB.mir_at(ma, A_AT)
     AB.mir_at(mb, B_AT)
+    if os.environ.get("ATOM_COMBINED_AUDIT") and not (PREVIEW or AUDIT):
+        import collide                      # the ARM_AUDIT=1 checks run alongside the render: one pass for both
+        sc.auditor = collide.Auditor(sc)
+        sc.frame_hooks.append(sc.auditor)
     rb, rbB = ma.rb, mb.rb
     AB.set_joints(sc, lid=0.0, latch=0.0, loop=0.0, bolt=0.0, door=0.0, clamp0=0.0, clamp1=0.0)
     state = dict(inset=False, deg=0.0, sq=0.0, taut=True)
@@ -248,8 +253,8 @@ def main():
 
     # cameras (model frame)
     CAM_WIDE = AB.cam((1300, -2300, 2050), (0, -250, 1150))
-    CAM_LATCH = AB.cam((620, -330, 1260), (165, 72, 1320))
-    CAM_LATCH2 = AB.cam((560, -120, 1560), (165, 72, 1335))
+    CAM_LATCH = AB.cam((520, 60, 1950), (165, 72, 1330))     # from above the right, over arm 1's reach
+    CAM_LATCH2 = AB.cam((430, 150, 1720), (170, 72, 1340))   # closer, in front of the cabinet's top edge
     CAM_LID = AB.cam((300, -1900, 2150), (-90, 0, 1430))
     sc.cam = CAM_WIDE
 
@@ -292,7 +297,7 @@ def main():
     q_press = rbB.q.copy()
     rows(Arm_2=f"pressing, ~{PRESS_F:.0f} N")
 
-    G_lever = TURN @ LT.lever_grasp(LEVER_ALPHA)
+    G_lever = TURN @ LT.lever_grasp(LEVER_ALPHA, z_c=1222.0)
     G_legs = TURN @ LT.legs_grasp()
     c_lever = LT.close_for_gap(GAP_LEVER)
     c_legs = LT.close_for_gap(GAP_LEGS)
@@ -608,6 +613,8 @@ def main():
                f"pressing ({PRESS_F:.0f}).")
         sc.step("9/9", cap, 0.5, None, hold=5.0)
     AB.finish(sc)
+    if getattr(sc, "auditor", None) is not None and not AUDIT:
+        sc.auditor.save()
 
 
 if __name__ == "__main__":

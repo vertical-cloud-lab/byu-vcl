@@ -1,0 +1,149 @@
+{
+ "name": "atom_container",
+ "fps": 15,
+ "n_frames": 756,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/5",
+   "caption": "After the run: cold, vented (Pressure Control off, Vent Valve), the door's two clamps swung off, then the door opened (178_sop After a run; T2 39:00). Paper under the opening catches what falls (DAL SOP 1).",
+   "start_frame": 0,
+   "end_frame": 65
+  },
+  {
+   "label": "2/5",
+   "caption": "Arm 1 takes the anti-static brush (AMAZEMET supplies a set; this long-handled one is ours) and reaches in through the door.",
+   "start_frame": 66,
+   "end_frame": 99
+  },
+  {
+   "label": "2/5",
+   "caption": "Arm 1 takes the anti-static brush (AMAZEMET supplies a set; this long-handled one is ours) and reaches in through the door.",
+   "start_frame": 100,
+   "end_frame": 112
+  },
+  {
+   "label": "2/5",
+   "caption": "Arm 1 takes the anti-static brush (AMAZEMET supplies a set; this long-handled one is ours) and reaches in through the door.",
+   "start_frame": 113,
+   "end_frame": 119
+  },
+  {
+   "label": "2/5",
+   "caption": "Arm 1 takes the anti-static brush (AMAZEMET supplies a set; this long-handled one is ours) and reaches in through the door.",
+   "start_frame": 120,
+   "end_frame": 132
+  },
+  {
+   "label": "3/5",
+   "caption": "It brushes the powder down the cone into the container, then round the catch bowl, in a circle (178_sop After a run 2; T2 43:37, T4 08:47). The view port is not brushed here: from the door the grip meets the stack on the open door.",
+   "start_frame": 133,
+   "end_frame": 169
+  },
+  {
+   "label": "3/5",
+   "caption": "It brushes the powder down the cone into the container, then round the catch bowl, in a circle (178_sop After a run 2; T2 43:37, T4 08:47). The view port is not brushed here: from the door the grip meets the stack on the open door.",
+   "start_frame": 170,
+   "end_frame": 238
+  },
+  {
+   "label": "3/5",
+   "caption": "It brushes the powder down the cone into the container, then round the catch bowl, in a circle (178_sop After a run 2; T2 43:37, T4 08:47). The view port is not brushed here: from the door the grip meets the stack on the open door.",
+   "start_frame": 239,
+   "end_frame": 293
+  },
+  {
+   "label": "3/5",
+   "caption": "It brushes the powder down the cone into the container, then round the catch bowl, in a circle (178_sop After a run 2; T2 43:37, T4 08:47). The view port is not brushed here: from the door the grip meets the stack on the open door.",
+   "start_frame": 294,
+   "end_frame": 318
+  },
+  {
+   "label": "3/5",
+   "caption": "The brush goes back on its rest.",
+   "start_frame": 319,
+   "end_frame": 352
+  },
+  {
+   "label": "3/5",
+   "caption": "The brush goes back on its rest.",
+   "start_frame": 353,
+   "end_frame": 365
+  },
+  {
+   "label": "3/5",
+   "caption": "The brush goes back on its rest.",
+   "start_frame": 366,
+   "end_frame": 372
+  },
+  {
+   "label": "3/5",
+   "caption": "The brush goes back on its rest.",
+   "start_frame": 373,
+   "end_frame": 383
+  },
+  {
+   "label": "4/5",
+   "caption": "The dust settles for a minute before anyone reaches in again (178_sop After a run 2; T2 50:32). Time-lapse.",
+   "start_frame": 384,
+   "end_frame": 425
+  },
+  {
+   "label": "4/5",
+   "caption": "MiR250 1 drives round to the container.",
+   "start_frame": 426,
+   "end_frame": 502
+  },
+  {
+   "label": "5/5",
+   "caption": "Arm 1 closes the container's valve: its lever pulled down a quarter turn (\"pull down and move\", T2 53:39). Shut, it keeps the argon in the container's bottom (T6 00:03).",
+   "start_frame": 503,
+   "end_frame": 536
+  },
+  {
+   "label": "5/5",
+   "caption": "Arm 1 closes the container's valve: its lever pulled down a quarter turn (\"pull down and move\", T2 53:39). Shut, it keeps the argon in the container's bottom (T6 00:03).",
+   "start_frame": 537,
+   "end_frame": 549
+  },
+  {
+   "label": "5/5",
+   "caption": "Arm 1 closes the container's valve: its lever pulled down a quarter turn (\"pull down and move\", T2 53:39). Shut, it keeps the argon in the container's bottom (T6 00:03).",
+   "start_frame": 550,
+   "end_frame": 556
+  },
+  {
+   "label": "5/5",
+   "caption": "Arm 1 closes the container's valve: its lever pulled down a quarter turn (\"pull down and move\", T2 53:39). Shut, it keeps the argon in the container's bottom (T6 00:03).",
+   "start_frame": 557,
+   "end_frame": 585
+  },
+  {
+   "label": "5/5",
+   "caption": "Arm 1 closes the container's valve: its lever pulled down a quarter turn (\"pull down and move\", T2 53:39). Shut, it keeps the argon in the container's bottom (T6 00:03).",
+   "start_frame": 586,
+   "end_frame": 592
+  },
+  {
+   "label": "5/5",
+   "caption": "Arm 1 closes the container's valve: its lever pulled down a quarter turn (\"pull down and move\", T2 53:39). Shut, it keeps the argon in the container's bottom (T6 00:03).",
+   "start_frame": 593,
+   "end_frame": 603
+  },
+  {
+   "label": "5/5",
+   "caption": "Arm 1 stands back.",
+   "start_frame": 604,
+   "end_frame": 627
+  },
+  {
+   "label": "5/5",
+   "caption": "Next, not animated yet: arm 2 holds the weight from below with a fork (ours; the 2F-85 opens to 85 mm, the container is 130 mm across), arm 1 opens the clamp, the container goes onto MiR250 1, capped, and a clean one with a fresh splash disc goes on. It weighs about 4.2 kg empty (the model's stainless) plus 0.14-1.6 kg of powder: under the UR10e's 12.5 kg, near or over the 2F-85's 5 kg.",
+   "start_frame": 628,
+   "end_frame": 755
+  }
+ ]
+}

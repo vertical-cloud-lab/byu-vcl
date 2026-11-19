@@ -1,0 +1,335 @@
+{
+ "name": "atom_latch",
+ "fps": 15,
+ "n_frames": 1540,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/9",
+   "caption": "After a run: below 400 C the operator turns off Melting Pressure and Pressure Control and presses Vent Valve (DAL SOP, Cooldown 2-3). The furnace's lid is held by a draw latch and a pneumatic bolt.",
+   "start_frame": 0,
+   "end_frame": 59
+  },
+  {
+   "label": "1/9",
+   "caption": "At atmosphere the bolt goes back: it locks the lever whenever the furnace is pumped or pressurised (Kalicki, AMAZEMET, install call 22:04). Its release on venting is our reading of that, not seen in a video.",
+   "start_frame": 60,
+   "end_frame": 113
+  },
+  {
+   "label": "2/9",
+   "caption": "Arm 2 holds the lid down with its closed fingertips, about 100 N, as the operator's palm does (T4 5:17-5:24): the lid can't jump when the latch lets go.",
+   "start_frame": 114,
+   "end_frame": 154
+  },
+  {
+   "label": "2/9",
+   "caption": "Arm 2 holds the lid down with its closed fingertips, about 100 N, as the operator's palm does (T4 5:17-5:24): the lid can't jump when the latch lets go.",
+   "start_frame": 155,
+   "end_frame": 173
+  },
+  {
+   "label": "3/9",
+   "caption": "Arm 1 takes the lever near its free end, the 2F-85's pads on its two side flanges, 133 mm below the pivot. The lever pivots at its top and hangs flat over its base (T4 5:35.5).",
+   "start_frame": 174,
+   "end_frame": 214
+  },
+  {
+   "label": "3/9",
+   "caption": "Arm 1 takes the lever near its free end, the 2F-85's pads on its two side flanges, 133 mm below the pivot. The lever pivots at its top and hangs flat over its base (T4 5:35.5).",
+   "start_frame": 215,
+   "end_frame": 231
+  },
+  {
+   "label": "3/9",
+   "caption": "Arm 1 takes the lever near its free end, the 2F-85's pads on its two side flanges, 133 mm below the pivot. The lever pivots at its top and hangs flat over its base (T4 5:35.5).",
+   "start_frame": 232,
+   "end_frame": 243
+  },
+  {
+   "label": "4/9",
+   "caption": "Out and up about the top pivot. The loop's pivot first draws away from the hook: the seal is squeezed 0.60 mm more at dead centre, 18 deg out; the pull peaks just before it, about 100 N (estimate; 200 N if stiff), and is zero there. Past 41 deg the loop is slack.",
+   "start_frame": 244,
+   "end_frame": 315
+  },
+  {
+   "label": "4/9",
+   "caption": "Arm 1 lets the lever back to 42 deg, where it rests on the slack loop, whose bar sits on the keeper's hook again; then it lets go.",
+   "start_frame": 316,
+   "end_frame": 339
+  },
+  {
+   "label": "4/9",
+   "caption": "Arm 1 lets the lever back to 42 deg, where it rests on the slack loop, whose bar sits on the keeper's hook again; then it lets go.",
+   "start_frame": 340,
+   "end_frame": 346
+  },
+  {
+   "label": "4/9",
+   "caption": "Arm 1 lets the lever back to 42 deg, where it rests on the slack loop, whose bar sits on the keeper's hook again; then it lets go.",
+   "start_frame": 347,
+   "end_frame": 359
+  },
+  {
+   "label": "4/9",
+   "caption": "Arm 2 lets go of the lid, which now sits free.",
+   "start_frame": 360,
+   "end_frame": 372
+  },
+  {
+   "label": "4/9",
+   "caption": "Arm 2 lets go of the lid, which now sits free.",
+   "start_frame": 373,
+   "end_frame": 397
+  },
+  {
+   "label": "5/9",
+   "caption": "Arm 1 takes the loop by its two legs, from outside, clear of the lever and the keeper. Lifting it raises the lever on the loop's pin, and the bar rides up the keeper's plate, over the hook's lip.",
+   "start_frame": 398,
+   "end_frame": 431
+  },
+  {
+   "label": "5/9",
+   "caption": "Arm 1 takes the loop by its two legs, from outside, clear of the lever and the keeper. Lifting it raises the lever on the loop's pin, and the bar rides up the keeper's plate, over the hook's lip.",
+   "start_frame": 432,
+   "end_frame": 446
+  },
+  {
+   "label": "5/9",
+   "caption": "Arm 1 takes the loop by its two legs, from outside, clear of the lever and the keeper. Lifting it raises the lever on the loop's pin, and the bar rides up the keeper's plate, over the hook's lip.",
+   "start_frame": 447,
+   "end_frame": 454
+  },
+  {
+   "label": "5/9",
+   "caption": "Arm 1 takes the loop by its two legs, from outside, clear of the lever and the keeper. Lifting it raises the lever on the loop's pin, and the bar rides up the keeper's plate, over the hook's lip.",
+   "start_frame": 455,
+   "end_frame": 483
+  },
+  {
+   "label": "5/9",
+   "caption": "It swings the loop out over the lever's top and lets the lever down with it: folded, the lever has the loop hanging over it (T4 5:08, 5:29.5; the hand's moves read backwards from 5:29.5-5:41).",
+   "start_frame": 484,
+   "end_frame": 534
+  },
+  {
+   "label": "5/9",
+   "caption": "It swings the loop out over the lever's top and lets the lever down with it: folded, the lever has the loop hanging over it (T4 5:08, 5:29.5; the hand's moves read backwards from 5:29.5-5:41).",
+   "start_frame": 535,
+   "end_frame": 541
+  },
+  {
+   "label": "5/9",
+   "caption": "It swings the loop out over the lever's top and lets the lever down with it: folded, the lever has the loop hanging over it (T4 5:08, 5:29.5; the hand's moves read backwards from 5:29.5-5:41).",
+   "start_frame": 542,
+   "end_frame": 554
+  },
+  {
+   "label": "5/9",
+   "caption": "It swings the loop out over the lever's top and lets the lever down with it: folded, the lever has the loop hanging over it (T4 5:08, 5:29.5; the hand's moves read backwards from 5:29.5-5:41).",
+   "start_frame": 555,
+   "end_frame": 579
+  },
+  {
+   "label": "7/9",
+   "caption": "Arm 2 takes the lid's knob, on its right facet, and swings the lid up and over to the left about its hinge, 105 deg (the hinge is on the left: DAL PR 189; T4 5:14.5-5:16.5 shows one rotation, no lift or slide). The lid's weight on the knob is about 58 N at the start (chapter 2's estimate).",
+   "start_frame": 580,
+   "end_frame": 620
+  },
+  {
+   "label": "7/9",
+   "caption": "Arm 2 takes the lid's knob, on its right facet, and swings the lid up and over to the left about its hinge, 105 deg (the hinge is on the left: DAL PR 189; T4 5:14.5-5:16.5 shows one rotation, no lift or slide). The lid's weight on the knob is about 58 N at the start (chapter 2's estimate).",
+   "start_frame": 621,
+   "end_frame": 635
+  },
+  {
+   "label": "7/9",
+   "caption": "Arm 2 takes the lid's knob, on its right facet, and swings the lid up and over to the left about its hinge, 105 deg (the hinge is on the left: DAL PR 189; T4 5:14.5-5:16.5 shows one rotation, no lift or slide). The lid's weight on the knob is about 58 N at the start (chapter 2's estimate).",
+   "start_frame": 636,
+   "end_frame": 643
+  },
+  {
+   "label": "7/9",
+   "caption": "Arm 2 takes the lid's knob, on its right facet, and swings the lid up and over to the left about its hinge, 105 deg (the hinge is on the left: DAL PR 189; T4 5:14.5-5:16.5 shows one rotation, no lift or slide). The lid's weight on the knob is about 58 N at the start (chapter 2's estimate).",
+   "start_frame": 644,
+   "end_frame": 707
+  },
+  {
+   "label": "7/9",
+   "caption": "Arm 2 takes the lid's knob, on its right facet, and swings the lid up and over to the left about its hinge, 105 deg (the hinge is on the left: DAL PR 189; T4 5:14.5-5:16.5 shows one rotation, no lift or slide). The lid's weight on the knob is about 58 N at the start (chapter 2's estimate).",
+   "start_frame": 708,
+   "end_frame": 714
+  },
+  {
+   "label": "7/9",
+   "caption": "Arm 2 takes the lid's knob, on its right facet, and swings the lid up and over to the left about its hinge, 105 deg (the hinge is on the left: DAL PR 189; T4 5:14.5-5:16.5 shows one rotation, no lift or slide). The lid's weight on the knob is about 58 N at the start (chapter 2's estimate).",
+   "start_frame": 715,
+   "end_frame": 727
+  },
+  {
+   "label": "7/9",
+   "caption": "Open, the furnace is rebuilt and charged (the other clips in this series). Then the same steps, backwards, close it.",
+   "start_frame": 728,
+   "end_frame": 775
+  },
+  {
+   "label": "8/9",
+   "caption": "Clamping, after IPA on the seal and the face it meets (DAL SOP, Loading the Furnace 8). Arm 2 brings the lid back down by its knob onto the O-ring.",
+   "start_frame": 776,
+   "end_frame": 812
+  },
+  {
+   "label": "8/9",
+   "caption": "Clamping, after IPA on the seal and the face it meets (DAL SOP, Loading the Furnace 8). Arm 2 brings the lid back down by its knob onto the O-ring.",
+   "start_frame": 813,
+   "end_frame": 825
+  },
+  {
+   "label": "8/9",
+   "caption": "Clamping, after IPA on the seal and the face it meets (DAL SOP, Loading the Furnace 8). Arm 2 brings the lid back down by its knob onto the O-ring.",
+   "start_frame": 826,
+   "end_frame": 832
+  },
+  {
+   "label": "8/9",
+   "caption": "Clamping, after IPA on the seal and the face it meets (DAL SOP, Loading the Furnace 8). Arm 2 brings the lid back down by its knob onto the O-ring.",
+   "start_frame": 833,
+   "end_frame": 889
+  },
+  {
+   "label": "8/9",
+   "caption": "Clamping, after IPA on the seal and the face it meets (DAL SOP, Loading the Furnace 8). Arm 2 brings the lid back down by its knob onto the O-ring.",
+   "start_frame": 890,
+   "end_frame": 896
+  },
+  {
+   "label": "8/9",
+   "caption": "Clamping, after IPA on the seal and the face it meets (DAL SOP, Loading the Furnace 8). Arm 2 brings the lid back down by its knob onto the O-ring.",
+   "start_frame": 897,
+   "end_frame": 909
+  },
+  {
+   "label": "8/9",
+   "caption": "Clamping, after IPA on the seal and the face it meets (DAL SOP, Loading the Furnace 8). Arm 2 brings the lid back down by its knob onto the O-ring.",
+   "start_frame": 910,
+   "end_frame": 934
+  },
+  {
+   "label": "8/9",
+   "caption": "Arm 1 takes the loop's legs again and swings it back over the lever's top, raising the lever with it, and lays the bar on the keeper's plate (\"hook the loop on\", T4 5:30-5:35).",
+   "start_frame": 935,
+   "end_frame": 968
+  },
+  {
+   "label": "8/9",
+   "caption": "Arm 1 takes the loop's legs again and swings it back over the lever's top, raising the lever with it, and lays the bar on the keeper's plate (\"hook the loop on\", T4 5:30-5:35).",
+   "start_frame": 969,
+   "end_frame": 983
+  },
+  {
+   "label": "8/9",
+   "caption": "Arm 1 takes the loop's legs again and swings it back over the lever's top, raising the lever with it, and lays the bar on the keeper's plate (\"hook the loop on\", T4 5:30-5:35).",
+   "start_frame": 984,
+   "end_frame": 990
+  },
+  {
+   "label": "8/9",
+   "caption": "Arm 1 takes the loop's legs again and swings it back over the lever's top, raising the lever with it, and lays the bar on the keeper's plate (\"hook the loop on\", T4 5:30-5:35).",
+   "start_frame": 991,
+   "end_frame": 1040
+  },
+  {
+   "label": "8/9",
+   "caption": "Lowered, the bar slides down the plate onto the hook; the lever rests at 42 deg on the slack loop.",
+   "start_frame": 1041,
+   "end_frame": 1069
+  },
+  {
+   "label": "8/9",
+   "caption": "Lowered, the bar slides down the plate onto the hook; the lever rests at 42 deg on the slack loop.",
+   "start_frame": 1070,
+   "end_frame": 1076
+  },
+  {
+   "label": "8/9",
+   "caption": "Lowered, the bar slides down the plate onto the hook; the lever rests at 42 deg on the slack loop.",
+   "start_frame": 1077,
+   "end_frame": 1089
+  },
+  {
+   "label": "8/9",
+   "caption": "Arm 2 presses the lid's top again, so the seal is squeezed evenly while the loop draws the lid down.",
+   "start_frame": 1090,
+   "end_frame": 1123
+  },
+  {
+   "label": "8/9",
+   "caption": "Arm 2 presses the lid's top again, so the seal is squeezed evenly while the loop draws the lid down.",
+   "start_frame": 1124,
+   "end_frame": 1139
+  },
+  {
+   "label": "8/9",
+   "caption": "Arm 1 takes the lever's free end again, at 42 deg.",
+   "start_frame": 1140,
+   "end_frame": 1170
+  },
+  {
+   "label": "8/9",
+   "caption": "Arm 1 takes the lever's free end again, at 42 deg.",
+   "start_frame": 1171,
+   "end_frame": 1183
+  },
+  {
+   "label": "8/9",
+   "caption": "Arm 1 takes the lever's free end again, at 42 deg.",
+   "start_frame": 1184,
+   "end_frame": 1190
+  },
+  {
+   "label": "9/9",
+   "caption": "Down through dead centre (18 deg): the loop goes taut, the seal takes 0.60 mm more squeeze, the pull peaks at about 100 N; past it the loop pulls the lever shut onto its base. Over centre, it stays shut.",
+   "start_frame": 1191,
+   "end_frame": 1267
+  },
+  {
+   "label": "9/9",
+   "caption": "Down through dead centre (18 deg): the loop goes taut, the seal takes 0.60 mm more squeeze, the pull peaks at about 100 N; past it the loop pulls the lever shut onto its base. Over centre, it stays shut.",
+   "start_frame": 1268,
+   "end_frame": 1274
+  },
+  {
+   "label": "9/9",
+   "caption": "Both arms let go and stand back.",
+   "start_frame": 1275,
+   "end_frame": 1287
+  },
+  {
+   "label": "9/9",
+   "caption": "Both arms let go and stand back.",
+   "start_frame": 1288,
+   "end_frame": 1316
+  },
+  {
+   "label": "9/9",
+   "caption": "Vacuum Pump and Vacuum Valve (Cold purge 7): as the pressure changes the bolt comes in and locks the lever. The check the machine allows: the furnace reaches about -850 mbar and holds, with no hiss.",
+   "start_frame": 1317,
+   "end_frame": 1388
+  },
+  {
+   "label": "9/9",
+   "caption": "If it can't reach -0.85 bar or the lid hisses (DAL SOP troubleshooting): vent, open the latch, shorten the loop half a turn at its lock nuts (an adjuster we assume: the model and the footage show none), close it and pump again.",
+   "start_frame": 1389,
+   "end_frame": 1456
+  },
+  {
+   "label": "9/9",
+   "caption": "Margins (chapter 2's stability(), 131 kg plates): MiR 1 would tip at 575 N and slide at 952 N on the lever (needs 100-200); MiR 2 at 614 / 2087 N pressing (100).",
+   "start_frame": 1457,
+   "end_frame": 1539
+  }
+ ]
+}
