@@ -119,8 +119,12 @@ over foam on a stem) and its holder. Part numbers: `out/atom/plate_bom.json`.
 ## What was checked
 
 - Every frame with `ARM_AUDIT=1` (collide.py): the arm, its gripper and what it holds against everything, and the
-  movers (the door with the stack, the bolts) against everything else. Result: see the report in
-  `out/collisions/atom_plate.json` (number in the PR comment).
+  movers (the door with the stack, the bolts) against everything else. Passes: 860 of 1973 frames in collision at the
+  first cut, 101 of 2146 after the branch look-ahead and the bores, **54 of 2146** (15 fps) before the final pass, with
+  the movers check at 0. What was left: one fingertip grazing the upper sonotrode by 3 mm while the dropper is over
+  the plate (43 frames; the dropper was then raised 25 mm), the top knob touching its lug at the 1.5 mm limit (9
+  frames; the knob was then drawn 1.5 mm off), a fingertip 3 mm into the chamber's face for 2 frames. The final
+  render audits itself at the same time (`PLATE_COMBINED=1`, 10 fps): **2 of 1407 frames** (a fingertip 3 mm into the chamber's face while the lower knob is tightened, 12/12), movers 0, in `out/collisions/atom_plate.json`.
 - The model's own door clamps were checked with FCL before redrawing them (below).
 - The wrench's clearances, by construction: the fixed head's jaws 0.3 mm off the flats, its top 2.5 mm under the
   plate (whose back face is on the sonotrode's tip face); the socket's jaws 0.3 mm off the end flats and 0.5 mm clear

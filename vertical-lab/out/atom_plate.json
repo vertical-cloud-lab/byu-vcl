@@ -1,0 +1,1505 @@
+{
+ "name": "atom_plate",
+ "fps": 10,
+ "n_frames": 1493,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/12",
+   "caption": "MiR 2 drives to the chamber's door. The chamber is vented to the room and cold (DAL 253: never open above atmosphere; the cone and chamber are water-cooled).",
+   "start_frame": 0,
+   "end_frame": 42
+  },
+  {
+   "label": "2/12",
+   "caption": "The arm takes a door bolt's star knob from the left, on its axis ...",
+   "start_frame": 43,
+   "end_frame": 52
+  },
+  {
+   "label": "2/12",
+   "caption": "The arm takes a door bolt's star knob from the left, on its axis ...",
+   "start_frame": 53,
+   "end_frame": 56
+  },
+  {
+   "label": "2/12",
+   "caption": "One turn loosens it, 1.75 mm back off the door's lug (M12 assumed), in two grasps.",
+   "start_frame": 57,
+   "end_frame": 58
+  },
+  {
+   "label": "2/12",
+   "caption": "One turn loosens it, 1.75 mm back off the door's lug (M12 assumed), in two grasps.",
+   "start_frame": 59,
+   "end_frame": 63
+  },
+  {
+   "label": "2/12",
+   "caption": "One turn loosens it, 1.75 mm back off the door's lug (M12 assumed), in two grasps.",
+   "start_frame": 64,
+   "end_frame": 66
+  },
+  {
+   "label": "2/12",
+   "caption": "One turn loosens it, 1.75 mm back off the door's lug (M12 assumed), in two grasps.",
+   "start_frame": 67,
+   "end_frame": 68
+  },
+  {
+   "label": "2/12",
+   "caption": "One turn loosens it, 1.75 mm back off the door's lug (M12 assumed), in two grasps.",
+   "start_frame": 69,
+   "end_frame": 73
+  },
+  {
+   "label": "2/12",
+   "caption": "Let go, back off.",
+   "start_frame": 74,
+   "end_frame": 77
+  },
+  {
+   "label": "2/12",
+   "caption": "From the front, it swings the bolt up out of the lug's slot ...",
+   "start_frame": 78,
+   "end_frame": 86
+  },
+  {
+   "label": "2/12",
+   "caption": "From the front, it swings the bolt up out of the lug's slot ...",
+   "start_frame": 87,
+   "end_frame": 90
+  },
+  {
+   "label": "2/12",
+   "caption": "From the front, it swings the bolt up out of the lug's slot ...",
+   "start_frame": 91,
+   "end_frame": 92
+  },
+  {
+   "label": "2/12",
+   "caption": "... and over the top, along the face (T5 27:16).",
+   "start_frame": 93,
+   "end_frame": 104
+  },
+  {
+   "label": "2/12",
+   "caption": "Bolt clear.",
+   "start_frame": 105,
+   "end_frame": 108
+  },
+  {
+   "label": "2/12",
+   "caption": "The arm takes a door bolt's star knob from the left, on its axis ...",
+   "start_frame": 109,
+   "end_frame": 118
+  },
+  {
+   "label": "2/12",
+   "caption": "The arm takes a door bolt's star knob from the left, on its axis ...",
+   "start_frame": 119,
+   "end_frame": 122
+  },
+  {
+   "label": "2/12",
+   "caption": "One turn loosens it, 1.75 mm back off the door's lug (M12 assumed), in two grasps.",
+   "start_frame": 123,
+   "end_frame": 124
+  },
+  {
+   "label": "2/12",
+   "caption": "One turn loosens it, 1.75 mm back off the door's lug (M12 assumed), in two grasps.",
+   "start_frame": 125,
+   "end_frame": 129
+  },
+  {
+   "label": "2/12",
+   "caption": "One turn loosens it, 1.75 mm back off the door's lug (M12 assumed), in two grasps.",
+   "start_frame": 130,
+   "end_frame": 132
+  },
+  {
+   "label": "2/12",
+   "caption": "One turn loosens it, 1.75 mm back off the door's lug (M12 assumed), in two grasps.",
+   "start_frame": 133,
+   "end_frame": 134
+  },
+  {
+   "label": "2/12",
+   "caption": "One turn loosens it, 1.75 mm back off the door's lug (M12 assumed), in two grasps.",
+   "start_frame": 135,
+   "end_frame": 139
+  },
+  {
+   "label": "2/12",
+   "caption": "Let go, back off.",
+   "start_frame": 140,
+   "end_frame": 143
+  },
+  {
+   "label": "2/12",
+   "caption": "From the front, it swings the bolt up out of the lug's slot ...",
+   "start_frame": 144,
+   "end_frame": 152
+  },
+  {
+   "label": "2/12",
+   "caption": "From the front, it swings the bolt up out of the lug's slot ...",
+   "start_frame": 153,
+   "end_frame": 156
+  },
+  {
+   "label": "2/12",
+   "caption": "From the front, it swings the bolt up out of the lug's slot ...",
+   "start_frame": 157,
+   "end_frame": 158
+  },
+  {
+   "label": "2/12",
+   "caption": "... the top one only 60 deg up: the viewport hood is in the way of 180 (ours).",
+   "start_frame": 159,
+   "end_frame": 167
+  },
+  {
+   "label": "2/12",
+   "caption": "Bolt clear.",
+   "start_frame": 168,
+   "end_frame": 171
+  },
+  {
+   "label": "3/12",
+   "caption": "The arm takes the door's lower lug ...",
+   "start_frame": 172,
+   "end_frame": 181
+  },
+  {
+   "label": "3/12",
+   "caption": "The arm takes the door's lower lug ...",
+   "start_frame": 182,
+   "end_frame": 185
+  },
+  {
+   "label": "3/12",
+   "caption": "The arm takes the door's lower lug ...",
+   "start_frame": 186,
+   "end_frame": 187
+  },
+  {
+   "label": "3/12",
+   "caption": "... and swings it open 100 deg on its back hinge. The stack rides on the door, so the plate comes out with it (DAL 178 step 8).",
+   "start_frame": 188,
+   "end_frame": 215
+  },
+  {
+   "label": "3/12",
+   "caption": "Open.",
+   "start_frame": 216,
+   "end_frame": 219
+  },
+  {
+   "label": "4/12",
+   "caption": "The wrist camera (D405, 7-50 cm) looks at the plate: no crack, no dark spot at an edge, metal that lifts off. A plate that fails comes off (DAL 253 Cleaning step 6).",
+   "start_frame": 220,
+   "end_frame": 243
+  },
+  {
+   "label": "5/12",
+   "caption": "It takes the stack wrench from its holder (ours: two 17 mm heads; the reaction closes inside the tool).",
+   "start_frame": 244,
+   "end_frame": 255
+  },
+  {
+   "label": "5/12",
+   "caption": "It takes the stack wrench from its holder (ours: two 17 mm heads; the reaction closes inside the tool).",
+   "start_frame": 256,
+   "end_frame": 259
+  },
+  {
+   "label": "5/12",
+   "caption": "It takes the stack wrench from its holder.",
+   "start_frame": 260,
+   "end_frame": 261
+  },
+  {
+   "label": "5/12",
+   "caption": "Lift.",
+   "start_frame": 262,
+   "end_frame": 265
+  },
+  {
+   "label": "5/12",
+   "caption": "To the stack: the fixed head goes onto the lower sonotrode's flats, behind the plate ...",
+   "start_frame": 266,
+   "end_frame": 281
+  },
+  {
+   "label": "5/12",
+   "caption": "To the stack: the fixed head goes onto the lower sonotrode's flats, behind the plate ...",
+   "start_frame": 282,
+   "end_frame": 288
+  },
+  {
+   "label": "5/12",
+   "caption": "... and the drive's slotted socket slides 15 mm down the axis onto the upper sonotrode's end flats.",
+   "start_frame": 289,
+   "end_frame": 295
+  },
+  {
+   "label": "5/12",
+   "caption": "It breaks the joint loose (about 58 N m, ours: a little over the 50 it was set to). The arm feels only the tool's weight.",
+   "start_frame": 296,
+   "end_frame": 311
+  },
+  {
+   "label": "5/12",
+   "caption": "Socket up ...",
+   "start_frame": 312,
+   "end_frame": 315
+  },
+  {
+   "label": "5/12",
+   "caption": "... and the wrench slides off.",
+   "start_frame": 316,
+   "end_frame": 321
+  },
+  {
+   "label": "5/12",
+   "caption": "Back to its holder.",
+   "start_frame": 322,
+   "end_frame": 336
+  },
+  {
+   "label": "5/12",
+   "caption": "Back to its holder.",
+   "start_frame": 337,
+   "end_frame": 340
+  },
+  {
+   "label": "5/12",
+   "caption": "Back to its holder.",
+   "start_frame": 341,
+   "end_frame": 344
+  },
+  {
+   "label": "6/12",
+   "caption": "The 2F-85 takes the upper sonotrode on its axis, below the Sharpie lines ...",
+   "start_frame": 345,
+   "end_frame": 360
+  },
+  {
+   "label": "6/12",
+   "caption": "The 2F-85 takes the upper sonotrode on its axis, below the Sharpie lines ...",
+   "start_frame": 361,
+   "end_frame": 365
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 366,
+   "end_frame": 367
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 368,
+   "end_frame": 370
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 371,
+   "end_frame": 373
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 374,
+   "end_frame": 375
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 376,
+   "end_frame": 378
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 379,
+   "end_frame": 381
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 382,
+   "end_frame": 383
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 384,
+   "end_frame": 386
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 387,
+   "end_frame": 389
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 390,
+   "end_frame": 391
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 392,
+   "end_frame": 394
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 395,
+   "end_frame": 397
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 398,
+   "end_frame": 399
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 400,
+   "end_frame": 402
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 403,
+   "end_frame": 405
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 406,
+   "end_frame": 407
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 408,
+   "end_frame": 410
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 411,
+   "end_frame": 413
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 414,
+   "end_frame": 415
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 416,
+   "end_frame": 418
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 419,
+   "end_frame": 421
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 422,
+   "end_frame": 423
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 424,
+   "end_frame": 426
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 427,
+   "end_frame": 429
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 430,
+   "end_frame": 431
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 432,
+   "end_frame": 434
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 435,
+   "end_frame": 437
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 438,
+   "end_frame": 439
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 440,
+   "end_frame": 442
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 443,
+   "end_frame": 445
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 446,
+   "end_frame": 447
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 448,
+   "end_frame": 450
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 451,
+   "end_frame": 453
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 454,
+   "end_frame": 455
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 456,
+   "end_frame": 458
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 459,
+   "end_frame": 461
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 462,
+   "end_frame": 463
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 464,
+   "end_frame": 466
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 467,
+   "end_frame": 469
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 470,
+   "end_frame": 471
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 472,
+   "end_frame": 474
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 475,
+   "end_frame": 477
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 478,
+   "end_frame": 479
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 480,
+   "end_frame": 482
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 483,
+   "end_frame": 485
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 486,
+   "end_frame": 487
+  },
+  {
+   "label": "6/12",
+   "caption": "... and unscrews it by hand: 7.6 turns of M8 on the connector, half a turn a grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).",
+   "start_frame": 488,
+   "end_frame": 490
+  },
+  {
+   "label": "6/12",
+   "caption": "Off the stud. It goes to its tray on MiR 2.",
+   "start_frame": 491,
+   "end_frame": 494
+  },
+  {
+   "label": "6/12",
+   "caption": "Off the stud. It goes to its tray on MiR 2.",
+   "start_frame": 495,
+   "end_frame": 510
+  },
+  {
+   "label": "6/12",
+   "caption": "Off the stud. It goes to its tray on MiR 2.",
+   "start_frame": 511,
+   "end_frame": 515
+  },
+  {
+   "label": "6/12",
+   "caption": "Off the stud. It goes to its tray on MiR 2.",
+   "start_frame": 516,
+   "end_frame": 519
+  },
+  {
+   "label": "7/12",
+   "caption": "It takes the old plate near its free end, the pads on its faces ...",
+   "start_frame": 520,
+   "end_frame": 535
+  },
+  {
+   "label": "7/12",
+   "caption": "It takes the old plate near its free end, the pads on its faces ...",
+   "start_frame": 536,
+   "end_frame": 540
+  },
+  {
+   "label": "7/12",
+   "caption": "It takes the old plate near its free end, the pads on its faces ...",
+   "start_frame": 541,
+   "end_frame": 542
+  },
+  {
+   "label": "7/12",
+   "caption": "... and slides it straight off the M8 stud, along the axis (14 mm), never forcing it (DAL 178 step 9: a plate snapped at its hole's edge once).",
+   "start_frame": 543,
+   "end_frame": 551
+  },
+  {
+   "label": "7/12",
+   "caption": "Into its own labelled slot: plates stay with one alloy (DAL 178, OCT2a 02:24).",
+   "start_frame": 552,
+   "end_frame": 569
+  },
+  {
+   "label": "7/12",
+   "caption": "Into its own labelled slot: plates stay with one alloy (DAL 178, OCT2a 02:24).",
+   "start_frame": 570,
+   "end_frame": 576
+  },
+  {
+   "label": "7/12",
+   "caption": "Logged.",
+   "start_frame": 577,
+   "end_frame": 586
+  },
+  {
+   "label": "8/12",
+   "caption": "The next run is copper, so a new W-coated plate (WCF-CU-07; DAL 253 Copper step 2).",
+   "start_frame": 587,
+   "end_frame": 596
+  },
+  {
+   "label": "8/12",
+   "caption": "The next run is copper, so a new W-coated plate (WCF-CU-07; DAL 253 Copper step 2).",
+   "start_frame": 597,
+   "end_frame": 600
+  },
+  {
+   "label": "8/12",
+   "caption": "It grips the plate ...",
+   "start_frame": 601,
+   "end_frame": 602
+  },
+  {
+   "label": "8/12",
+   "caption": "... lifts it out ...",
+   "start_frame": 603,
+   "end_frame": 609
+  },
+  {
+   "label": "8/12",
+   "caption": "... and slides it onto the stud, square to the axis, onto the lower sonotrode's face (the connector was threaded fully in first, step 10).",
+   "start_frame": 610,
+   "end_frame": 627
+  },
+  {
+   "label": "8/12",
+   "caption": "... and slides it onto the stud ...",
+   "start_frame": 628,
+   "end_frame": 631
+  },
+  {
+   "label": "8/12",
+   "caption": "... and slides it onto the stud ...",
+   "start_frame": 632,
+   "end_frame": 638
+  },
+  {
+   "label": "8/12",
+   "caption": "Let go.",
+   "start_frame": 639,
+   "end_frame": 641
+  },
+  {
+   "label": "8/12",
+   "caption": "The camera looks along the joint, edge on: the plate lies flat on the face with no gap (step 11).",
+   "start_frame": 642,
+   "end_frame": 659
+  },
+  {
+   "label": "9/12",
+   "caption": "The upper sonotrode from its tray ...",
+   "start_frame": 660,
+   "end_frame": 674
+  },
+  {
+   "label": "9/12",
+   "caption": "The upper sonotrode from its tray ...",
+   "start_frame": 675,
+   "end_frame": 678
+  },
+  {
+   "label": "9/12",
+   "caption": "The upper sonotrode from its tray ...",
+   "start_frame": 679,
+   "end_frame": 680
+  },
+  {
+   "label": "9/12",
+   "caption": "The upper sonotrode from its tray ...",
+   "start_frame": 681,
+   "end_frame": 684
+  },
+  {
+   "label": "9/12",
+   "caption": "... onto the stud, by hand (step 12).",
+   "start_frame": 685,
+   "end_frame": 700
+  },
+  {
+   "label": "9/12",
+   "caption": "... onto the stud, by hand (step 12).",
+   "start_frame": 701,
+   "end_frame": 704
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 705,
+   "end_frame": 706
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 707,
+   "end_frame": 709
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 710,
+   "end_frame": 712
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 713,
+   "end_frame": 714
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 715,
+   "end_frame": 717
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 718,
+   "end_frame": 720
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 721,
+   "end_frame": 722
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 723,
+   "end_frame": 725
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 726,
+   "end_frame": 728
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 729,
+   "end_frame": 730
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 731,
+   "end_frame": 733
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 734,
+   "end_frame": 736
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 737,
+   "end_frame": 738
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 739,
+   "end_frame": 741
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 742,
+   "end_frame": 744
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 745,
+   "end_frame": 746
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 747,
+   "end_frame": 749
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 750,
+   "end_frame": 752
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 753,
+   "end_frame": 754
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 755,
+   "end_frame": 757
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 758,
+   "end_frame": 760
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 761,
+   "end_frame": 762
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 763,
+   "end_frame": 765
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 766,
+   "end_frame": 768
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 769,
+   "end_frame": 770
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 771,
+   "end_frame": 773
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 774,
+   "end_frame": 776
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 777,
+   "end_frame": 778
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 779,
+   "end_frame": 781
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 782,
+   "end_frame": 784
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 785,
+   "end_frame": 786
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 787,
+   "end_frame": 789
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 790,
+   "end_frame": 792
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 793,
+   "end_frame": 794
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 795,
+   "end_frame": 797
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 798,
+   "end_frame": 800
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 801,
+   "end_frame": 802
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 803,
+   "end_frame": 805
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 806,
+   "end_frame": 808
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 809,
+   "end_frame": 810
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 811,
+   "end_frame": 813
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 814,
+   "end_frame": 816
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 817,
+   "end_frame": 818
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 819,
+   "end_frame": 821
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 822,
+   "end_frame": 824
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 825,
+   "end_frame": 826
+  },
+  {
+   "label": "9/12",
+   "caption": "Threaded down by hand, half a turn a grasp (16 grasps), until it sits on the plate.",
+   "start_frame": 827,
+   "end_frame": 829
+  },
+  {
+   "label": "9/12",
+   "caption": "Snug against the plate.",
+   "start_frame": 830,
+   "end_frame": 833
+  },
+  {
+   "label": "10/12",
+   "caption": "The stack wrench again.",
+   "start_frame": 834,
+   "end_frame": 848
+  },
+  {
+   "label": "10/12",
+   "caption": "The stack wrench again.",
+   "start_frame": 849,
+   "end_frame": 852
+  },
+  {
+   "label": "10/12",
+   "caption": "The stack wrench again.",
+   "start_frame": 853,
+   "end_frame": 854
+  },
+  {
+   "label": "10/12",
+   "caption": "The stack wrench again.",
+   "start_frame": 855,
+   "end_frame": 858
+  },
+  {
+   "label": "10/12",
+   "caption": "Counter-hold on the lower sonotrode's flats; the socket onto the upper's.",
+   "start_frame": 859,
+   "end_frame": 874
+  },
+  {
+   "label": "10/12",
+   "caption": "Counter-hold on the lower sonotrode's flats; the socket onto the upper's.",
+   "start_frame": 875,
+   "end_frame": 881
+  },
+  {
+   "label": "10/12",
+   "caption": "The drive turns its slot to the flats' angle, which the camera reads ...",
+   "start_frame": 882,
+   "end_frame": 885
+  },
+  {
+   "label": "10/12",
+   "caption": "... and the socket slides onto them.",
+   "start_frame": 886,
+   "end_frame": 891
+  },
+  {
+   "label": "10/12",
+   "caption": "The last 20 deg (ours) to 50 N m, where the clutch slips (DAL 253 step 13). The counter-hold takes the same 50 N m, so the stack and the arm see none of it.",
+   "start_frame": 892,
+   "end_frame": 913
+  },
+  {
+   "label": "10/12",
+   "caption": "Socket up, wrench off.",
+   "start_frame": 914,
+   "end_frame": 917
+  },
+  {
+   "label": "10/12",
+   "caption": "Socket up, wrench off.",
+   "start_frame": 918,
+   "end_frame": 923
+  },
+  {
+   "label": "10/12",
+   "caption": "Back to its holder.",
+   "start_frame": 924,
+   "end_frame": 938
+  },
+  {
+   "label": "10/12",
+   "caption": "Back to its holder.",
+   "start_frame": 939,
+   "end_frame": 942
+  },
+  {
+   "label": "10/12",
+   "caption": "Back to its holder.",
+   "start_frame": 943,
+   "end_frame": 946
+  },
+  {
+   "label": "11/12",
+   "caption": "The camera checks the plate is square to the hatch (step 14; within 2 deg, ours) ...",
+   "start_frame": 947,
+   "end_frame": 965
+  },
+  {
+   "label": "11/12",
+   "caption": "... and the height: the Mo gauge plate (a retired plate cut short, DAL #164).",
+   "start_frame": 966,
+   "end_frame": 980
+  },
+  {
+   "label": "11/12",
+   "caption": "... and the height: the Mo gauge plate (a retired plate cut short, DAL #164).",
+   "start_frame": 981,
+   "end_frame": 984
+  },
+  {
+   "label": "11/12",
+   "caption": "... and the height: the Mo gauge plate (a retired plate cut short, DAL #164).",
+   "start_frame": 985,
+   "end_frame": 986
+  },
+  {
+   "label": "11/12",
+   "caption": "... and the height: the Mo gauge plate (a retired plate cut short, DAL #164).",
+   "start_frame": 987,
+   "end_frame": 990
+  },
+  {
+   "label": "11/12",
+   "caption": "Laid level against the upper sonotrode: its edge falls between the Sharpie lines, so the plate is at the logged height (step 15).",
+   "start_frame": 991,
+   "end_frame": 1006
+  },
+  {
+   "label": "11/12",
+   "caption": "Laid level against the upper sonotrode: its edge falls between the Sharpie lines.",
+   "start_frame": 1007,
+   "end_frame": 1016
+  },
+  {
+   "label": "11/12",
+   "caption": "The gauge back.",
+   "start_frame": 1017,
+   "end_frame": 1031
+  },
+  {
+   "label": "11/12",
+   "caption": "The gauge back.",
+   "start_frame": 1032,
+   "end_frame": 1035
+  },
+  {
+   "label": "11/12",
+   "caption": "The gauge back.",
+   "start_frame": 1036,
+   "end_frame": 1038
+  },
+  {
+   "label": "11/12",
+   "caption": "Rescan with the plate on (step 16): one peak in 39.5-40.5 kHz; the power reads higher with the plate on (DAL 178 step 10).",
+   "start_frame": 1039,
+   "end_frame": 1064
+  },
+  {
+   "label": "11/12",
+   "caption": "Wet test: the IPA dropper ...",
+   "start_frame": 1065,
+   "end_frame": 1077
+  },
+  {
+   "label": "11/12",
+   "caption": "Wet test: the IPA dropper ...",
+   "start_frame": 1078,
+   "end_frame": 1081
+  },
+  {
+   "label": "11/12",
+   "caption": "Wet test: the IPA dropper ...",
+   "start_frame": 1082,
+   "end_frame": 1083
+  },
+  {
+   "label": "11/12",
+   "caption": "Wet test: the IPA dropper ...",
+   "start_frame": 1084,
+   "end_frame": 1087
+  },
+  {
+   "label": "11/12",
+   "caption": "... over the plate, turned nozzle-down.",
+   "start_frame": 1088,
+   "end_frame": 1105
+  },
+  {
+   "label": "11/12",
+   "caption": "Three drops of IPA with the vibration on: the whole plate atomizes them, straight off its face, so it is not cracked (step 16; DAL 178 step 10).",
+   "start_frame": 1106,
+   "end_frame": 1132
+  },
+  {
+   "label": "11/12",
+   "caption": "The dropper back.",
+   "start_frame": 1133,
+   "end_frame": 1148
+  },
+  {
+   "label": "11/12",
+   "caption": "The dropper back.",
+   "start_frame": 1149,
+   "end_frame": 1152
+  },
+  {
+   "label": "11/12",
+   "caption": "The dropper back.",
+   "start_frame": 1153,
+   "end_frame": 1155
+  },
+  {
+   "label": "12/12",
+   "caption": "The wipe pad, wet with IPA (ours) ...",
+   "start_frame": 1156,
+   "end_frame": 1168
+  },
+  {
+   "label": "12/12",
+   "caption": "The wipe pad, wet with IPA (ours) ...",
+   "start_frame": 1169,
+   "end_frame": 1172
+  },
+  {
+   "label": "12/12",
+   "caption": "The wipe pad, wet with IPA (ours) ...",
+   "start_frame": 1173,
+   "end_frame": 1174
+  },
+  {
+   "label": "12/12",
+   "caption": "The wipe pad, wet with IPA (ours) ...",
+   "start_frame": 1175,
+   "end_frame": 1178
+  },
+  {
+   "label": "12/12",
+   "caption": "... along the door's seal face (step 18; here the top and the front side, the rest the same way).",
+   "start_frame": 1179,
+   "end_frame": 1196
+  },
+  {
+   "label": "12/12",
+   "caption": "... along the door's seal face (step 18; here the top and the front side, the rest the same way).",
+   "start_frame": 1197,
+   "end_frame": 1200
+  },
+  {
+   "label": "12/12",
+   "caption": "... along the door's seal face (step 18) ...",
+   "start_frame": 1201,
+   "end_frame": 1219
+  },
+  {
+   "label": "12/12",
+   "caption": "Wipe back.",
+   "start_frame": 1220,
+   "end_frame": 1223
+  },
+  {
+   "label": "12/12",
+   "caption": "Wipe back.",
+   "start_frame": 1224,
+   "end_frame": 1239
+  },
+  {
+   "label": "12/12",
+   "caption": "Wipe back.",
+   "start_frame": 1240,
+   "end_frame": 1243
+  },
+  {
+   "label": "12/12",
+   "caption": "Wipe back.",
+   "start_frame": 1244,
+   "end_frame": 1246
+  },
+  {
+   "label": "12/12",
+   "caption": "The door shut on the wiped seal ...",
+   "start_frame": 1247,
+   "end_frame": 1261
+  },
+  {
+   "label": "12/12",
+   "caption": "The door shut on the wiped seal ...",
+   "start_frame": 1262,
+   "end_frame": 1265
+  },
+  {
+   "label": "12/12",
+   "caption": "The door shut on the wiped seal ...",
+   "start_frame": 1266,
+   "end_frame": 1267
+  },
+  {
+   "label": "12/12",
+   "caption": "The door shut on the wiped seal ...",
+   "start_frame": 1268,
+   "end_frame": 1289
+  },
+  {
+   "label": "12/12",
+   "caption": "The door shut on the wiped seal ...",
+   "start_frame": 1290,
+   "end_frame": 1293
+  },
+  {
+   "label": "12/12",
+   "caption": "Landing check, the chamber cut open here to show it: a laser in the sealing rod's place shines down the empty nozzle (DAL #164, T5 63:28) ...",
+   "start_frame": 1294,
+   "end_frame": 1305
+  },
+  {
+   "label": "12/12",
+   "caption": "... its dot lands high on the plate and centred, 7 mm clear of the upper sonotrode (step 17; the left camera sees it through the door's sight glass, DAL PR 189).",
+   "start_frame": 1306,
+   "end_frame": 1326
+  },
+  {
+   "label": "12/12",
+   "caption": "The laser comes out before heating (#164).",
+   "start_frame": 1327,
+   "end_frame": 1335
+  },
+  {
+   "label": "12/12",
+   "caption": "Both bolts back into their lugs ...",
+   "start_frame": 1336,
+   "end_frame": 1347
+  },
+  {
+   "label": "12/12",
+   "caption": "Both bolts back into their lugs ...",
+   "start_frame": 1348,
+   "end_frame": 1351
+  },
+  {
+   "label": "12/12",
+   "caption": "Both bolts back into their lugs ...",
+   "start_frame": 1352,
+   "end_frame": 1353
+  },
+  {
+   "label": "12/12",
+   "caption": "Both bolts back into their lugs ...",
+   "start_frame": 1354,
+   "end_frame": 1363
+  },
+  {
+   "label": "12/12",
+   "caption": "Both bolts back into their lugs ...",
+   "start_frame": 1364,
+   "end_frame": 1366
+  },
+  {
+   "label": "12/12",
+   "caption": "... and each knob tightened, one turn back on.",
+   "start_frame": 1367,
+   "end_frame": 1376
+  },
+  {
+   "label": "12/12",
+   "caption": "... and each knob tightened, one turn back on.",
+   "start_frame": 1377,
+   "end_frame": 1380
+  },
+  {
+   "label": "12/12",
+   "caption": "... and each knob tightened, one turn back on.",
+   "start_frame": 1381,
+   "end_frame": 1382
+  },
+  {
+   "label": "12/12",
+   "caption": "... and each knob tightened, one turn back on.",
+   "start_frame": 1383,
+   "end_frame": 1387
+  },
+  {
+   "label": "12/12",
+   "caption": "... and each knob tightened, one turn back on.",
+   "start_frame": 1388,
+   "end_frame": 1390
+  },
+  {
+   "label": "12/12",
+   "caption": "... and each knob tightened, one turn back on.",
+   "start_frame": 1391,
+   "end_frame": 1392
+  },
+  {
+   "label": "12/12",
+   "caption": "... and each knob tightened, one turn back on.",
+   "start_frame": 1393,
+   "end_frame": 1397
+  },
+  {
+   "label": "12/12",
+   "caption": "Let go, back off.",
+   "start_frame": 1398,
+   "end_frame": 1401
+  },
+  {
+   "label": "12/12",
+   "caption": "Both bolts back into their lugs ...",
+   "start_frame": 1402,
+   "end_frame": 1413
+  },
+  {
+   "label": "12/12",
+   "caption": "Both bolts back into their lugs ...",
+   "start_frame": 1414,
+   "end_frame": 1417
+  },
+  {
+   "label": "12/12",
+   "caption": "Both bolts back into their lugs ...",
+   "start_frame": 1418,
+   "end_frame": 1419
+  },
+  {
+   "label": "12/12",
+   "caption": "Both bolts back into their lugs ...",
+   "start_frame": 1420,
+   "end_frame": 1429
+  },
+  {
+   "label": "12/12",
+   "caption": "Both bolts back into their lugs ...",
+   "start_frame": 1430,
+   "end_frame": 1432
+  },
+  {
+   "label": "12/12",
+   "caption": "... and each knob tightened, one turn back on.",
+   "start_frame": 1433,
+   "end_frame": 1442
+  },
+  {
+   "label": "12/12",
+   "caption": "... and each knob tightened, one turn back on.",
+   "start_frame": 1443,
+   "end_frame": 1446
+  },
+  {
+   "label": "12/12",
+   "caption": "... and each knob tightened, one turn back on.",
+   "start_frame": 1447,
+   "end_frame": 1448
+  },
+  {
+   "label": "12/12",
+   "caption": "... and each knob tightened, one turn back on.",
+   "start_frame": 1449,
+   "end_frame": 1453
+  },
+  {
+   "label": "12/12",
+   "caption": "... and each knob tightened, one turn back on.",
+   "start_frame": 1454,
+   "end_frame": 1456
+  },
+  {
+   "label": "12/12",
+   "caption": "... and each knob tightened, one turn back on.",
+   "start_frame": 1457,
+   "end_frame": 1458
+  },
+  {
+   "label": "12/12",
+   "caption": "... and each knob tightened, one turn back on.",
+   "start_frame": 1459,
+   "end_frame": 1463
+  },
+  {
+   "label": "12/12",
+   "caption": "Let go, back off.",
+   "start_frame": 1464,
+   "end_frame": 1467
+  },
+  {
+   "label": "12/12",
+   "caption": "Done: WCF-CU-07 on at 50 N m, square, at the logged height, scan 40.10 kHz, wet test good. Logged for the run (DAL 253 Run Log item 3).",
+   "start_frame": 1468,
+   "end_frame": 1492
+  }
+ ]
+}
