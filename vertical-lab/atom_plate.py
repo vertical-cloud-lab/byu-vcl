@@ -177,6 +177,7 @@ class Clip:
             sc.add(f"{mg}/{name}", mesh, col, mg)
         for name, (mesh, col) in PT.tray_meshes().items():
             sc.add(f"{mg}/{name}", mesh, col, mg)
+        sc.add(f"{mg}/tool shelf", PT.shelf_meshes(), (0.72, 0.74, 0.77), mg)
         sc.add(f"{mg}/wrench holder", PT.wrench_holder(), (0.30, 0.32, 0.36), mg)
         sc.add(f"{mg}/gauge holder", PT.gauge_holder(), (0.30, 0.32, 0.36), mg)
         sc.add(f"{mg}/dropper holder", PT.dropper_holder(), (0.30, 0.32, 0.36), mg)
@@ -553,8 +554,7 @@ def main():
         c.step(L(6), "Off the stud. It goes to its tray on MiR 2.", 0.6, rb.line_to(rb.tcp_world() @ T((0, 0, -40))),
                hold=0.0)
         Ut = at_mir(PT.upper_in_tray(-1))
-        Grel = inv(sc.world(g("upper")) @ PT.FS) @ rb.tcp_world()    # the TCP in the sonotrode's own frame
-        Gt = Ut @ Grel
+        Gt = Ut @ Gu          # the coaxial grip leaves the sonotrode free to stand at any turn in its square socket
         c.step(L(6), "Off the stud. It goes to its tray on MiR 2.", 2.2, rb.joint_to(Tw=Gt @ T((0, 0, -50))), hold=0.0,
                cam_to=cam_deck)
         c.step(L(6), "Off the stud. It goes to its tray on MiR 2.", 0.7, rb.line_to(Gt), hold=0.0)

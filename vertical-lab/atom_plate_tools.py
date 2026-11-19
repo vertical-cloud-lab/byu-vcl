@@ -269,8 +269,22 @@ def socket_meshes() -> dict:
 WR_GRASP = np.array([0.0, (WR_HANDLE[0] + WR_HANDLE[1]) / 2, LOW_HEAD_Z[0] + 32.0])
 
 # ------------------------------------------------------------------------------------------------ fixtures on MiR 2
-# MiR-local coordinates on the cabinet top (z = TOP); the arm stands at (0, 130). Everything here is ours.
-TOP = AB.P.MIR["H"] + AB.P.CAB_H
+# MiR-local coordinates on a shelf over the cabinet top (z = TOP); the arm stands at (0, 130). Everything here is ours.
+# The shelf lifts the fixtures 150 mm: on the bare cabinet top the arm had to fold down to its own mounting plane to
+# reach them, and every IK branch put the upper arm into the cabinet.
+CAB_TOP = AB.P.MIR["H"] + AB.P.CAB_H
+RISER = 150.0
+TOP = CAB_TOP + RISER
+SHELF = dict(x=(-395.0, 395.0), y=(-288.0, -22.0))
+
+
+def shelf_meshes() -> pv.PolyData:
+    """The shelf: a 10 mm top on four legs and a back rail (ours)."""
+    (x0, x1), (y0, y1) = SHELF["x"], SHELF["y"]
+    top = box(x0, x1, y0, y1, TOP - 10.0, TOP)
+    legs = [box(x - 15, x + 15, y - 15, y + 15, CAB_TOP, TOP - 10.0) for x in (x0 + 18, x1 - 18) for y in (y0 + 18, y1 - 18)]
+    rail = box(x0 + 3, x1 - 3, y1 - 30, y1 - 3, CAB_TOP, CAB_TOP + 40)
+    return merge(top, rail, *legs)
 RACK_AT = (-215.0, -175.0)          # the plate rack's centre
 RACK_SLOTS = 5
 RACK_PITCH = 52.0                   # slot to slot (along x): room for the 2F-85's fingers either side of a plate
