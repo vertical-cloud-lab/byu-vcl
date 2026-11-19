@@ -1,0 +1,79 @@
+{
+ "issue": "https://github.com/vertical-cloud-lab/byu-vcl/issues/354",
+ "run": "https://github.com/vertical-cloud-lab/byu-vcl/actions/runs/44579476042",
+ "route": "Bambu Studio 02.08.02.61 GUI on the runner, logged in with password + authenticator code (no e-mailed code), sent through Bambu's cloud",
+ "printer": "BYU VCL H2D (Theoden)",
+ "plate": "Textured PEI",
+ "nozzles": {
+  "left": "0.4 mm hardened steel, Standard flow (USED)",
+  "right": "0.6 mm hardened steel, TPU High Flow (not used)",
+  "source": "Studio Device page > Printer Parts, and Studio's Switch diameter prompt"
+ },
+ "filament": "Bambu PLA Basic, black, AMS slot A2 (left AMS)",
+ "objects": {
+  "vial_rack_9x20mL_v2.stl": 1,
+  "deck_clip_key_v2.stl": 4,
+  "magnet_bar_v2_on_side.stl": 1
+ },
+ "source_files": "modules/electromagnetic-capper/v2/stl/print_oriented/ @ ed266db",
+ "slice": {
+  "preset": "0.20mm Standard @BBL H2D",
+  "wall_loops": 3,
+  "sparse_infill": "20% grid",
+  "brim": "none",
+  "supports": "tree(auto), bar only, threshold 35 deg",
+  "filament_grouping": "custom: filament 1 on Left",
+  "estimate": "4h 21m 38s",
+  "layers": 175,
+  "filament_g": 134.68,
+  "plate_1_gcode_md5": "7206ff87f8306f339551032c72e78669"
+ },
+ "send_options": {
+  "timelapse": "off",
+  "auto_bed_leveling": "on",
+  "flow_dynamics_calibration": "on",
+  "nozzle_offset_calibration": "off"
+ },
+ "plate_rule_2026_10_23": {
+  "frame_1": {
+   "utc": "2026-11-19T18:40:30Z",
+   "file": "20261119T184044Z_h2d_camera_studio.jpg",
+   "read": "NOT clear: previous job's part 'Part 1' still on the plate",
+   "posted": "2026-11-19T18:41:47Z"
+  },
+  "reply": {
+   "utc": "2026-11-19T18:54:28Z",
+   "by": "sgbaird",
+   "text": "Cleared thanks to Sam"
+  },
+  "frame_2": {
+   "utc": "2026-11-19T18:58:19Z",
+   "file": "20261119T185819Z_h2d_camera_live_cleared.jpg",
+   "read": "clear; faint flat first-layer outline of the last part only",
+   "posted": "2026-11-19T18:59:09Z"
+  },
+  "frame_3_presend": {
+   "utc": "2026-11-19T20:04:00Z",
+   "file": "20261119T200400Z_h2d_camera_live_presend1.jpg",
+   "read": "clear, unchanged from 18:58",
+   "posted_with_files_and_slice": "2026-11-19T20:04:42Z"
+  },
+  "hold": {
+   "from": "2026-11-19T20:04:42Z",
+   "until": "2026-11-19T20:06:38Z",
+   "new_comments": 0
+  },
+  "frame_4_right_before_send": {
+   "utc": "2026-11-19T20:08:15Z",
+   "file": "20261119T200815Z_h2d_camera_live_presend2.jpg",
+   "read": "unchanged; no new hold needed"
+  },
+  "last_thread_poll": "2026-11-19T20:08:23Z, no new comments"
+ },
+ "send_utc": "2026-11-19T20:08:58Z",
+ "started": {
+  "utc": "2026-11-19T20:09:51Z",
+  "state": "Homing toolhead, layer 0/175, left hotend 118/140 C, right 26/0 C, bed 32/55 C, ETA 00:30 UTC"
+ },
+ "sent_file": "sent/vial_rack_9x20mL_v2_H2D_0.4L_blackPLA.3mf (Studio's own upload copy from /tmp/bamboo_model; DesignerUserId blanked; plate G-code untouched)"
+}
