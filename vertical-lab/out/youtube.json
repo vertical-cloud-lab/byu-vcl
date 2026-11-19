@@ -159,6 +159,18 @@
     "privacy": "unlisted"
    }
   ],
+  "atom_reel.mp4": [
+   {
+    "id": "60cEq9odW8s",
+    "sha256": "7d752ca756a45ff41bd062fc4c57342ca049d14e4e4383952f379b06606c8f0d",
+    "bytes": 56677863,
+    "commit": "5a47920",
+    "uploaded": "2026-11-19T02:47:24Z",
+    "title": "Vertical cloud lab: automating the atomizer, the turnaround after a run (3-D animation)",
+    "privacy": "unlisted",
+    "branch": "claude/issue-303-atomizer-automation"
+   }
+  ],
   "bay_camera.mp4": [
    {
     "id": "QOtSLMDGElA",
