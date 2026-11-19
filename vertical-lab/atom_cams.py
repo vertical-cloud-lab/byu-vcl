@@ -361,16 +361,16 @@ def lid_mesh():
 # lens part (its STEP name and the unit), the field of view, the display it feeds and the Pi
 CAMERAS = {
     "top_hq": dict(unit="arm", lens="(bought) lens", near=(0.0, -204.0, 1707.0), fov="hq16",
-                   label="TOP: HQ + 16 mm C, hot mirror + ND, through the lid window",
+                   label="TOP: HQ + 16 mm, through the lid window",
                    pi="top unit's Pi 5 (CSI0)", display="top 2.8 in DSI (Waveshare, 480 x 640)"),
     "front_hq": dict(unit="front", lens="(bought) lens", near=(-30.0, -178.0, 1056.0), fov="hq16",
-                     label="FRONT: HQ (M12) + 16 mm M12, the impact zone",
+                     label="FRONT: HQ + 16 mm M12",
                      pi="front unit's Pi 5 (CSI0)", display="front 5 in HDMI (Elecrow, 800 x 480), left half"),
     "front_wide": dict(unit="front", lens="(bought) Camera Module 3 lens", near=(3.5, -186.0, 1058.0), fov="wide",
-                       label="FRONT: Camera Module 3 Wide, nozzle, plate, chamber",
+                       label="FRONT: Camera Module 3 Wide",
                        pi="front unit's Pi 5 (CSI1)", display="front 5 in HDMI, right half"),
     "left_wide": dict(unit="left", lens="(bought) Camera Module 3 lens", near=(-158.0, 20.0, 1015.0), fov="wide",
-                      label="LEFT: Camera Module 3 Wide, side view of nozzle and plate",
+                      label="LEFT: Camera Module 3 Wide, side on",
                       pi="left unit's Pi 5 (CSI0)", display="left 5 in Touch Display 2 (DSI)"),
 }
 
@@ -392,8 +392,10 @@ def _camera_onshape(key: str, parts: dict | None = None) -> dict:
     parts = parts or dal_parts()
     cam = CAMERAS[key]
     k, m = _lens_part(parts, cam)
-    pts = np.asarray(m.points)
-    c = pts.mean(0)
+    near = [mm for kk, mm in parts.items() if kk.startswith(cam["lens"])
+            and np.linalg.norm(_centre(mm) - _centre(m)) < 15.0]           # a lens drawn as two solids: both
+    pts = np.vstack([np.asarray(mm.points) for mm in near])
+    c = np.asarray(m.points).mean(0)
     if key == "top_hq":
         d = AIM - c
     elif key.startswith("front"):
@@ -438,13 +440,32 @@ def unit_poses(v_top: float = 0.0, door: float = 0.0) -> dict:
     return out
 
 
+PORT_GLASS_R = 31.5                  # the front port's glass, Ø63 (DAL measurements: ±12): the clear bore given to the nut
+SIGHT_YZ, SIGHT_R = (-45.0, 1060.0), 22.0   # this model's door sight glass (repowder/model.py: the ring's bore, r 22)
+
+
+def bore(mesh, p, n, r: float):
+    """The mesh with everything within r of the axis (p, n) clipped away: a see-through bore (no bore wall)."""
+    n = np.asarray(n, float) / np.linalg.norm(n)
+    # long edges first cut to <= 4 mm, so that no triangle spans the bore with all its corners outside it (an end cap)
+    m = mesh.triangulate().clean().subdivide_adaptive(max_edge_len=4.0)
+    rel = np.asarray(m.points) - np.asarray(p, float)
+    m.point_data["_bore"] = np.linalg.norm(rel - np.outer(rel @ n, n), axis=1) - r
+    out = m.clip_scalar(scalars="_bore", value=0.0, invert=False).extract_surface()
+    for key in list(out.point_data.keys()):
+        if key == "_bore":
+            del out.point_data[key]
+    return out
+
+
 # ------------------------------------------------------------------------------------------- into a scene
-def add_units(sc, window: bool = True, hide_model_port: bool = True) -> dict:
+def add_units(sc, window: bool = True, hide_model_port: bool = True, sight: bool = True) -> dict:
     """Add the three units to a Scene built by atom_base.build: the front unit on the chamber, the left unit on the
     door's group (it swings with the door), the top post fixed on the blue frame's top and its arm in its own group
     (``set_top_arm``). window=True also adds DAL's lid window on the lid's front facet (riding the lid), re-cuts the
     lid's mesh for it and hides the model's left-facet slot. Returns {unit: [actor names]}."""
     import atom_base as AB
+    import pyvista as pv
     parts = dal_parts()
     moves = dict(front=front_move(), left=left_move(), post=np.eye(4), arm=np.eye(4))
     if window:
@@ -457,6 +478,9 @@ def add_units(sc, window: bool = True, hide_model_port: bool = True) -> dict:
         col, op = colour_of(k)
         nm = f"cams {u}: {k}"
         mesh = m.transform(moves[u], inplace=False)
+        if k.startswith("(machine) front port nut"):       # DAL drew the nut solid: give it the glass's bore
+            pp, nn = port_axis()
+            mesh = bore(mesh, pp, nn, PORT_GLASS_R)
         kw = dict(specular=0.6) if col in (POLISH, ALU, STEEL) else {}
         if "screen" in k.lower():
             kw = dict(ambient=0.35, specular=0.9)
@@ -479,6 +503,13 @@ def add_units(sc, window: bool = True, hide_model_port: bool = True) -> dict:
             if nm in sc.actors:
                 sc.show([nm], 0.0)
                 sc.base_alpha[nm] = 0.0
+    if sight:                               # this model's door has no hole behind its sight glass: cut one here
+        M = _M()
+        for nm in ("door", "w:door"):
+            if nm in sc.actors:
+                m0 = pv.wrap(sc.actors[nm].GetMapper().GetInput())
+                sc.set_mesh(nm, bore(m0, np.array([M.CH_X[0], SIGHT_YZ[0], SIGHT_YZ[1]]), np.array([1.0, 0, 0]),
+                                     SIGHT_R))
     if hide_model_port:                     # DAL's port nut, glass and LED cover replace the model's flange and glass
         for nm in ("viewport_flange", "viewport_glass", "w:viewport_flange", "w:viewport_glass"):
             if nm in sc.actors:
@@ -502,16 +533,23 @@ def top_arm_value(sc) -> float:
 def extrusion_point(s: float, v: float = 0.0, side: float = 0.0) -> np.ndarray:
     """A point on the 2020 extrusion's centre line, s mm out from the post's axis, with the arm at v; side > 0 moves
     it that far off the line horizontally, towards the side the arm turns to when it parks (its leading face)."""
-    p = dal_parts()
-    ex = next(m for k, m in p.items() if k.startswith("(bought) 2020 extrusion"))
-    pts = np.asarray(ex.points)
-    zc = float((ex.bounds[4] + ex.bounds[5]) / 2)
-    tip = pts[np.argmin(pts[:, 1])]
-    d = np.r_[tip[:2] - POST_XY, 0.0]
-    d /= np.linalg.norm(d)
+    c, d = extrusion_axis()
     lead = np.array([-d[1], d[0], 0.0])           # +90 deg: where the arm goes when it parks
-    q = np.r_[POST_XY, zc] + d * s + lead * side
+    # s from the post's axis, measured along the extrusion's own centre line
+    foot = c + d * float(np.dot(np.r_[POST_XY, c[2]] - c, d))
+    q = foot + d * s + lead * side
     return (top_arm_matrix(v) @ np.r_[q, 1.0])[:3]
+
+
+def extrusion_axis() -> tuple[np.ndarray, np.ndarray]:
+    """The 2020 extrusion's centre line in the working position: (its centroid, its unit direction out to the tip)."""
+    ex = next(m for k, m in dal_parts().items() if k.startswith("(bought) 2020 extrusion"))
+    pts = np.asarray(ex.points)
+    c = 0.5 * (pts.min(0) + pts.max(0))
+    _, _, vt = np.linalg.svd(pts - pts.mean(0))
+    d = vt[0] * (1 if vt[0][1] < 0 else -1)
+    d[2] = 0.0
+    return c, d / np.linalg.norm(d)
 
 
 # ------------------------------------------------------------------------------------------- the live feeds
@@ -596,7 +634,7 @@ class Feeds:
         if self.off:
             return
         skip_all = {n for n in self.sc.actors if ("glass" in n.lower() and "ring" not in n.lower())
-                    or "lid window" in n.lower() or n.startswith("cams top display")}
+                    or "lid window" in n.lower() or n.startswith(("cams los", "cams lid ghost"))}
         own = {"top_hq": ("cams arm:",), "front_hq": ("cams front: front", "cams front: (bought)"),
                "front_wide": ("cams front: front", "cams front: (bought)"), "left_wide": ("cams left:",)}
         for key, (ren, _) in self.rens.items():
@@ -627,6 +665,10 @@ class Feeds:
 
     def _grab(self, img: np.ndarray):
         H0 = self.H0
+        import os
+        if os.environ.get("CAMS_DEBUG"):
+            from PIL import Image
+            Image.fromarray(img).save(f"/tmp/cams_work/full_{self.sc.n:05d}.png")
         for i, key in enumerate(self.ORDER):
             ren, h = self.rens[key]
             x0 = i * self.slot[0]
@@ -696,7 +738,7 @@ class Feeds:
                                          c0 - rt * hw + up * hh]), np.array([4, 0, 1, 2, 3]))
             quad.active_texture_coordinates = np.array([[0, 0], [1, 0], [1, 1], [0, 1]], float)
             nm = f"feedtex {disp}"
-            sc.add(nm, quad, (1, 1, 1), GROUPS[unit], ambient=1.0, diffuse=0.0, specular=0.0, smooth_shading=False)
+            sc.add(nm, quad, (1.0, 1.0, 1.0), GROUPS[unit], ambient=1.0, diffuse=0.0, specular=0.0, smooth_shading=False)
             img = np.zeros((32, 32, 3), np.uint8)
             sc.actors[nm].SetTexture(pv.Texture(img))
             self.tex_actors[disp] = sc.actors[nm]
