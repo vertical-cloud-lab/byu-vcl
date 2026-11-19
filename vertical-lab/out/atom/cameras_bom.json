@@ -1,0 +1,584 @@
+{
+ "clip": "atom_cameras",
+ "what": "the three viewport camera units of DAL PR 189 (melt chamber and melt stream), per unit",
+ "total_usd": 1217.61,
+ "dal_total_usd": 1217.61,
+ "per_unit_usd": {
+  "front": 334.2,
+  "left": 251.25,
+  "top": 484.85,
+  "shared": 147.31
+ },
+ "not_included": "an M8 stud for the post, tapping tools, the printer's hardened nozzle, the YouTube streams (DAL)",
+ "items": [
+  {
+   "item": "Raspberry Pi 5, 4 GB",
+   "maker": "Raspberry Pi",
+   "part_no": "PiShop listing raspberry-pi-5-4gb (code not given by DAL)",
+   "qty": 1,
+   "unit_usd": 110.0,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "front unit (DAL station 1)",
+   "status": "to buy",
+   "note": "Pi 5 prices have roughly doubled since late 2025: the 4 GB board is $110 at list (DAL README). Three 2 GB boards ($77.50) would save $97.50; the atomizer HMI Pi the 5 in display was bench-tested on is a 1 GB Pi 5 (DAL #258). Two 1080p30 encodes plus the two-feed display used 67 % of its 4 cores there."
+  },
+  {
+   "item": "Raspberry Pi Active Cooler",
+   "maker": "Raspberry Pi",
+   "part_no": "SC1148",
+   "qty": 1,
+   "unit_usd": 10.95,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "front unit (DAL station 1)",
+   "status": "to buy"
+  },
+  {
+   "item": "27 W USB-C power supply, white, US",
+   "maker": "Raspberry Pi",
+   "part_no": "SC1153",
+   "qty": 1,
+   "unit_usd": 12.95,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "front unit (DAL station 1)",
+   "status": "to buy"
+  },
+  {
+   "item": "microSD card, 32 GB, A2",
+   "maker": "Raspberry Pi",
+   "part_no": "SC1628",
+   "qty": 1,
+   "unit_usd": 19.95,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "front unit (DAL station 1)",
+   "status": "to buy"
+  },
+  {
+   "item": "Raspberry Pi 5, 4 GB",
+   "maker": "Raspberry Pi",
+   "part_no": "PiShop listing raspberry-pi-5-4gb (code not given by DAL)",
+   "qty": 1,
+   "unit_usd": 110.0,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "left unit (DAL station 2)",
+   "status": "to buy",
+   "note": "Pi 5 prices have roughly doubled since late 2025: the 4 GB board is $110 at list (DAL README). Three 2 GB boards ($77.50) would save $97.50; the atomizer HMI Pi the 5 in display was bench-tested on is a 1 GB Pi 5 (DAL #258). Two 1080p30 encodes plus the two-feed display used 67 % of its 4 cores there."
+  },
+  {
+   "item": "Raspberry Pi Active Cooler",
+   "maker": "Raspberry Pi",
+   "part_no": "SC1148",
+   "qty": 1,
+   "unit_usd": 10.95,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "left unit (DAL station 2)",
+   "status": "to buy"
+  },
+  {
+   "item": "27 W USB-C power supply, white, US",
+   "maker": "Raspberry Pi",
+   "part_no": "SC1153",
+   "qty": 1,
+   "unit_usd": 12.95,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "left unit (DAL station 2)",
+   "status": "to buy"
+  },
+  {
+   "item": "microSD card, 32 GB, A2",
+   "maker": "Raspberry Pi",
+   "part_no": "SC1628",
+   "qty": 1,
+   "unit_usd": 19.95,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "left unit (DAL station 2)",
+   "status": "to buy"
+  },
+  {
+   "item": "Raspberry Pi 5, 4 GB",
+   "maker": "Raspberry Pi",
+   "part_no": "PiShop listing raspberry-pi-5-4gb (code not given by DAL)",
+   "qty": 1,
+   "unit_usd": 110.0,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "top unit (DAL station 3)",
+   "status": "to buy",
+   "note": "Pi 5 prices have roughly doubled since late 2025: the 4 GB board is $110 at list (DAL README). Three 2 GB boards ($77.50) would save $97.50; the atomizer HMI Pi the 5 in display was bench-tested on is a 1 GB Pi 5 (DAL #258). Two 1080p30 encodes plus the two-feed display used 67 % of its 4 cores there."
+  },
+  {
+   "item": "Raspberry Pi Active Cooler",
+   "maker": "Raspberry Pi",
+   "part_no": "SC1148",
+   "qty": 1,
+   "unit_usd": 10.95,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "top unit (DAL station 3)",
+   "status": "to buy"
+  },
+  {
+   "item": "27 W USB-C power supply, white, US",
+   "maker": "Raspberry Pi",
+   "part_no": "SC1153",
+   "qty": 1,
+   "unit_usd": 12.95,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "top unit (DAL station 3)",
+   "status": "to buy"
+  },
+  {
+   "item": "microSD card, 32 GB, A2",
+   "maker": "Raspberry Pi",
+   "part_no": "SC1628",
+   "qty": 1,
+   "unit_usd": 19.95,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "top unit (DAL station 3)",
+   "status": "to buy"
+  },
+  {
+   "item": "HQ Camera, M12 mount (no lens)",
+   "maker": "Raspberry Pi",
+   "part_no": "SC0870",
+   "qty": 1,
+   "unit_usd": 50.0,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "front unit (DAL station 1)",
+   "status": "to buy",
+   "note": "No seller gives the M12 lenses' minimum focus; check the 16 mm focuses at ~165 mm before buying more (DAL)."
+  },
+  {
+   "item": "16 mm M12 lens, F1.9-5.6 (CIL160)",
+   "maker": "Commonlands",
+   "part_no": "CIL160",
+   "qty": 1,
+   "unit_usd": 39.0,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "front unit (DAL station 1)",
+   "status": "to buy"
+  },
+  {
+   "item": "Camera Module 3 Wide",
+   "maker": "Raspberry Pi",
+   "part_no": "PiShop listing (Camera Module 3 Wide; code not given by DAL)",
+   "qty": 1,
+   "unit_usd": 38.5,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "front unit (DAL station 1)",
+   "status": "to buy"
+  },
+  {
+   "item": "Pi 5 camera cable, 300 mm (22-15 pin)",
+   "maker": "Raspberry Pi",
+   "part_no": "camera-cable-for-raspberry-pi-5",
+   "qty": 2,
+   "unit_usd": 3.95,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "front unit (DAL station 1)",
+   "status": "to buy"
+  },
+  {
+   "item": "5 in HDMI display, 800 x 480, touch (RC050)",
+   "maker": "Elecrow",
+   "part_no": "Amazon B07FDYXPT7",
+   "qty": 1,
+   "unit_usd": 36.79,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "front unit (DAL station 1)",
+   "status": "lab has",
+   "note": "Arrived and bench-tested on the atomizer HMI Pi on 13 Nov 2026: no EDID, 800 x 480 set by hand; two feeds side by side at 30 fps, 0 dropped (DAL #258)."
+  },
+  {
+   "item": "micro-HDMI to HDMI cable, 1 ft",
+   "maker": "Twozoh",
+   "part_no": "Amazon B09L4Q2DXR",
+   "qty": 1,
+   "unit_usd": 8.16,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "front unit (DAL station 1)",
+   "status": "to buy"
+  },
+  {
+   "item": "Camera Module 3 Wide",
+   "maker": "Raspberry Pi",
+   "part_no": "PiShop listing (Camera Module 3 Wide; code not given by DAL)",
+   "qty": 1,
+   "unit_usd": 38.5,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "left unit (DAL station 2)",
+   "status": "to buy",
+   "note": "In this model the plate is 49 deg below the sight glass's axis, outside the camera's 67 deg and the door bore's ~51 deg (notes/atom_cameras.md); check before buying."
+  },
+  {
+   "item": "Pi 5 camera cable, 300 mm (22-15 pin)",
+   "maker": "Raspberry Pi",
+   "part_no": "camera-cable-for-raspberry-pi-5",
+   "qty": 1,
+   "unit_usd": 3.95,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "left unit (DAL station 2)",
+   "status": "to buy"
+  },
+  {
+   "item": "Touch Display 2, 5 in, 720 x 1280 (DSI)",
+   "maker": "Raspberry Pi",
+   "part_no": "SC1975",
+   "qty": 1,
+   "unit_usd": 54.95,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "left unit (DAL station 2)",
+   "status": "to buy",
+   "note": "Touch left off: dtoverlay=vc4-kms-dsi-ili9881-5inch,disable_touch (DAL)."
+  },
+  {
+   "item": "HQ Camera, C/CS mount",
+   "maker": "Raspberry Pi",
+   "part_no": "PiShop listing raspberry-pi-hq-camera-cs (code not given by DAL)",
+   "qty": 1,
+   "unit_usd": 55.0,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "top unit (DAL station 3)",
+   "status": "to buy"
+  },
+  {
+   "item": "16 mm C-mount telephoto lens, F1.4-16",
+   "maker": "Raspberry Pi",
+   "part_no": "16mm-telephoto-lens (PiShop)",
+   "qty": 1,
+   "unit_usd": 62.5,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "top unit (DAL station 3)",
+   "status": "to buy",
+   "note": "Check its front thread (37 mm?) before buying filters (DAL)."
+  },
+  {
+   "item": "Hot mirror (UV/IR cut), 37 mm",
+   "maker": "ICE",
+   "part_no": "ICE-CUT37 (Amazon B0DKCHT817)",
+   "qty": 1,
+   "unit_usd": 26.95,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "top unit (DAL station 3)",
+   "status": "to buy"
+  },
+  {
+   "item": "Variable ND2-400, 37 mm, slim",
+   "maker": "K&F Concept",
+   "part_no": "Amazon B085Y2HXP3",
+   "qty": 1,
+   "unit_usd": 17.84,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "top unit (DAL station 3)",
+   "status": "to buy"
+  },
+  {
+   "item": "Shade 5 welding glass, 2 x 4-1/4 in (backup)",
+   "maker": "Forney",
+   "part_no": "57005",
+   "qty": 1,
+   "unit_usd": 10.29,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "top unit (DAL station 3)",
+   "status": "to buy"
+  },
+  {
+   "item": "Pi 5 camera cable, 500 mm (22-15 pin)",
+   "maker": "Raspberry Pi",
+   "part_no": "camera-cable-for-raspberry-pi-5",
+   "qty": 1,
+   "unit_usd": 3.95,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "top unit (DAL station 3)",
+   "status": "to buy"
+  },
+  {
+   "item": "2.8 in DSI display, 480 x 640",
+   "maker": "Waveshare",
+   "part_no": "2.8inch DSI LCD",
+   "qty": 1,
+   "unit_usd": 43.99,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "top unit (DAL station 3)",
+   "status": "to buy",
+   "note": "dtoverlay=vc4-kms-dsi-waveshare-panel,2_8_inch,disable_touch (DAL)."
+  },
+  {
+   "item": "Switchable magnetic base, 80 kgf, M8 x 1.25 (2-pack)",
+   "maker": "Reallnaive",
+   "part_no": "Amazon B0DTKB62XB",
+   "qty": 1,
+   "unit_usd": 34.99,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "top unit (DAL station 3)",
+   "status": "to buy"
+  },
+  {
+   "item": "5/8 in 6061 round bar, 12 in (the post; tap M8 one end)",
+   "maker": "Online Metals",
+   "part_no": "0.625 6061-T6511 round bar",
+   "qty": 1,
+   "unit_usd": 5.53,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "top unit (DAL station 3)",
+   "status": "to buy"
+  },
+  {
+   "item": "Magic arm + super clamp kit, 9.8 in",
+   "maker": "SmallRig",
+   "part_no": "Amazon B087T4T8D5",
+   "qty": 1,
+   "unit_usd": 17.99,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "top unit (DAL station 3)",
+   "status": "to buy",
+   "note": "In DAL's priced list; the 2020-arm design doesn't use it (DAL README's top line leaves it out)."
+  },
+  {
+   "item": "2020 T-slot extrusion, 500 mm, 4 pcs (one cut to ~470 mm)",
+   "maker": "unbranded (European 2020, 6 mm slot)",
+   "part_no": "Amazon B08Y8KCJW4",
+   "qty": 1,
+   "unit_usd": 30.99,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "top unit (DAL station 3)",
+   "status": "to buy"
+  },
+  {
+   "item": "M5 drop-in T-nuts + M5 socket screws, 240 pcs",
+   "maker": "unbranded",
+   "part_no": "Amazon B0DMCS8KW4",
+   "qty": 1,
+   "unit_usd": 12.99,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "top unit (DAL station 3)",
+   "status": "to buy"
+  },
+  {
+   "item": "5/8 in double-split clamp-on shaft collars, 2 pcs",
+   "maker": "unbranded",
+   "part_no": "Amazon B07GTCZRGV",
+   "qty": 1,
+   "unit_usd": 7.99,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "top unit (DAL station 3)",
+   "status": "to buy"
+  },
+  {
+   "item": "Heat-set inserts, M2-M6, 440 pcs",
+   "maker": "INCLY",
+   "part_no": "Amazon B0D41PW4GC",
+   "qty": 1,
+   "unit_usd": 13.42,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "all three units (shared lot)",
+   "status": "to buy"
+  },
+  {
+   "item": "1/4-20 heat-set inserts, 20 pcs",
+   "maker": "ruthex",
+   "part_no": "Amazon B09MTS6ZZQ",
+   "qty": 1,
+   "unit_usd": 9.99,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "all three units (shared lot)",
+   "status": "to buy"
+  },
+  {
+   "item": "Socket-head screw kit M2-M4, 888 pcs",
+   "maker": "mxuteuk",
+   "part_no": "Amazon B0G8F366MV",
+   "qty": 1,
+   "unit_usd": 8.99,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "all three units (shared lot)",
+   "status": "to buy"
+  },
+  {
+   "item": "Ball plungers M6 x 8, 5 pcs (the front socket's and the top hub's detents)",
+   "maker": "HARFINGTON",
+   "part_no": "Amazon B0FRGL12N4",
+   "qty": 1,
+   "unit_usd": 5.26,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "all three units (shared lot)",
+   "status": "to buy"
+  },
+  {
+   "item": "Ball plungers M8 x 10, 5 pcs",
+   "maker": "HARFINGTON",
+   "part_no": "Amazon B0FRG72TS4",
+   "qty": 1,
+   "unit_usd": 5.57,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "all three units (shared lot)",
+   "status": "to buy"
+  },
+  {
+   "item": "Dowel pins 3 x 10 mm, 100 pcs",
+   "maker": "uxcell",
+   "part_no": "Amazon B0F54D5Y59",
+   "qty": 1,
+   "unit_usd": 5.03,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "all three units (shared lot)",
+   "status": "to buy"
+  },
+  {
+   "item": "Neodymium disc magnets 6 x 3 mm, 60 pcs (contingency)",
+   "maker": "unbranded",
+   "part_no": "Amazon B0BW91ZTKZ",
+   "qty": 1,
+   "unit_usd": 7.99,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "all three units (shared lot)",
+   "status": "to buy"
+  },
+  {
+   "item": "Optical flock FPR-01 (lens hoods)",
+   "maker": "Protostar",
+   "part_no": "FPR-01",
+   "qty": 1,
+   "unit_usd": 7.5,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "all three units (shared lot)",
+   "status": "to buy"
+  },
+  {
+   "item": "VHB tape 5952, 1/2 in x 15 ft",
+   "maker": "3M",
+   "part_no": "5952",
+   "qty": 1,
+   "unit_usd": 12.99,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "all three units (shared lot)",
+   "status": "to buy"
+  },
+  {
+   "item": "PETG HF black, 1 kg (front and left units)",
+   "maker": "Bambu Lab",
+   "part_no": "PETG HF",
+   "qty": 1,
+   "unit_usd": 18.99,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "all three units (shared lot)",
+   "status": "to buy"
+  },
+  {
+   "item": "ASA black, 1 kg (top pod and display box)",
+   "maker": "Polymaker",
+   "part_no": "Amazon B09DKPYYBP",
+   "qty": 1,
+   "unit_usd": 19.59,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "all three units (shared lot)",
+   "status": "to buy"
+  },
+  {
+   "item": "PA6-CF20 black, 0.5 kg (high-temperature option, top)",
+   "maker": "Polymaker",
+   "part_no": "Fiberon PA6-CF20",
+   "qty": 1,
+   "unit_usd": 31.99,
+   "source": "DAL PR 189, atomizer-viewport-cameras/shopping/shopping_2026-10-07.md, 'Recommended bill of materials' (prices 7 Oct 2026, before tax and shipping)",
+   "for": "all three units (shared lot)",
+   "status": "to buy"
+  },
+  {
+   "item": "FRONT socket + tray (12-sided socket on AMAZEMET's LED cover), ~195 g",
+   "maker": "the lab (DAL PR 189's design), printed",
+   "part_no": "STL in DAL PR 189",
+   "qty": 1,
+   "unit_usd": null,
+   "source": "DAL PR 189 exports/stl/ (Onshape 'rePowder viewport cameras (byu-vcl #198)'); README 'Printed part' table",
+   "for": "front unit (DAL station 1)",
+   "status": "ours: to make",
+   "note": "Not printed or fit-tested yet (DAL). Machine dimensions are frame estimates (+-15-25 %)."
+  },
+  {
+   "item": "FRONT face plate, ~32 g",
+   "maker": "the lab (DAL PR 189's design), printed",
+   "part_no": "STL in DAL PR 189",
+   "qty": 1,
+   "unit_usd": null,
+   "source": "DAL PR 189 exports/stl/ (Onshape 'rePowder viewport cameras (byu-vcl #198)'); README 'Printed part' table",
+   "for": "front unit (DAL station 1)",
+   "status": "ours: to make",
+   "note": "Not printed or fit-tested yet (DAL). Machine dimensions are frame estimates (+-15-25 %)."
+  },
+  {
+   "item": "LEFT collar + tray (split collar, one M4), ~173 g",
+   "maker": "the lab (DAL PR 189's design), printed",
+   "part_no": "STL in DAL PR 189",
+   "qty": 1,
+   "unit_usd": null,
+   "source": "DAL PR 189 exports/stl/ (Onshape 'rePowder viewport cameras (byu-vcl #198)'); README 'Printed part' table",
+   "for": "left unit (DAL station 2)",
+   "status": "ours: to make",
+   "note": "Not printed or fit-tested yet (DAL). Machine dimensions are frame estimates (+-15-25 %)."
+  },
+  {
+   "item": "LEFT face plate, ~38 g",
+   "maker": "the lab (DAL PR 189's design), printed",
+   "part_no": "STL in DAL PR 189",
+   "qty": 1,
+   "unit_usd": null,
+   "source": "DAL PR 189 exports/stl/ (Onshape 'rePowder viewport cameras (byu-vcl #198)'); README 'Printed part' table",
+   "for": "left unit (DAL station 2)",
+   "status": "ours: to make",
+   "note": "Not printed or fit-tested yet (DAL). Machine dimensions are frame estimates (+-15-25 %)."
+  },
+  {
+   "item": "TOP hub (M6 plunger), ~92 g",
+   "maker": "the lab (DAL PR 189's design), printed",
+   "part_no": "STL in DAL PR 189",
+   "qty": 1,
+   "unit_usd": null,
+   "source": "DAL PR 189 exports/stl/ (Onshape 'rePowder viewport cameras (byu-vcl #198)'); README 'Printed part' table",
+   "for": "top unit (DAL station 3)",
+   "status": "ours: to make",
+   "note": "Not printed or fit-tested yet (DAL). Machine dimensions are frame estimates (+-15-25 %)."
+  },
+  {
+   "item": "TOP detent collar ('working', 'parked'), ~42 g",
+   "maker": "the lab (DAL PR 189's design), printed",
+   "part_no": "STL in DAL PR 189",
+   "qty": 1,
+   "unit_usd": null,
+   "source": "DAL PR 189 exports/stl/ (Onshape 'rePowder viewport cameras (byu-vcl #198)'); README 'Printed part' table",
+   "for": "top unit (DAL station 3)",
+   "status": "ours: to make",
+   "note": "Not printed or fit-tested yet (DAL). Machine dimensions are frame estimates (+-15-25 %)."
+  },
+  {
+   "item": "TOP camera pod, ~34 g",
+   "maker": "the lab (DAL PR 189's design), printed",
+   "part_no": "STL in DAL PR 189",
+   "qty": 1,
+   "unit_usd": null,
+   "source": "DAL PR 189 exports/stl/ (Onshape 'rePowder viewport cameras (byu-vcl #198)'); README 'Printed part' table",
+   "for": "top unit (DAL station 3)",
+   "status": "ours: to make",
+   "note": "Not printed or fit-tested yet (DAL). Machine dimensions are frame estimates (+-15-25 %)."
+  },
+  {
+   "item": "TOP display box, ~112 g",
+   "maker": "the lab (DAL PR 189's design), printed",
+   "part_no": "STL in DAL PR 189",
+   "qty": 1,
+   "unit_usd": null,
+   "source": "DAL PR 189 exports/stl/ (Onshape 'rePowder viewport cameras (byu-vcl #198)'); README 'Printed part' table",
+   "for": "top unit (DAL station 3)",
+   "status": "ours: to make",
+   "note": "Not printed or fit-tested yet (DAL). Machine dimensions are frame estimates (+-15-25 %)."
+  },
+  {
+   "item": "TOP face plate, ~31 g",
+   "maker": "the lab (DAL PR 189's design), printed",
+   "part_no": "STL in DAL PR 189",
+   "qty": 1,
+   "unit_usd": null,
+   "source": "DAL PR 189 exports/stl/ (Onshape 'rePowder viewport cameras (byu-vcl #198)'); README 'Printed part' table",
+   "for": "top unit (DAL station 3)",
+   "status": "ours: to make",
+   "note": "Not printed or fit-tested yet (DAL). Machine dimensions are frame estimates (+-15-25 %)."
+  }
+ ]
+}
