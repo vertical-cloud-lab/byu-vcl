@@ -1,0 +1,18 @@
+{
+ "drawn_cm3": {
+  "container": 504.9,
+  "container_handle": 12.8,
+  "splash_plate": 20.7
+ },
+ "container_kg": 4.25,
+ "powder_kg": {
+  "four Al cups (chapter 2)": 0.143,
+  "225 cm3 crucible of Al, as Oct 27": 0.5,
+  "225 cm3 crucible of NAB bronze": 1.6
+ },
+ "fork_kg": 0.9,
+ "gripper_payload_kg": 5.0,
+ "ur10e_payload_kg": 12.5,
+ "note": "Stainless at 7.9 g/cm3 on the model's drawn volumes (a 4 mm wall; its valve drawn as a plain tube, so a real ball valve adds more); powder from chapter 2's sums.",
+ "worst_on_fork_kg": 6.75
+}

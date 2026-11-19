@@ -1,6 +1,6 @@
 # The melt-chamber and melt-stream cameras and their displays (PR #353, #303)
 
-Clip `atom_cameras` (`atom_cameras.py`). Models and API: `atom_cams.py`. Bill of materials:
+Clip `atom_cameras` (`atom_cameras.py`): 105.2 s, 1052 frames at 1280 x 720, 10 fps (the GIF 640 x 360 at 4 fps, under 4.9 MB). Models and API: `atom_cams.py`. Bill of materials:
 `out/atom/cameras_bom.json`. Camera poses as rendered: `out/atom/cameras_poses.json`.
 
 Sterling asked (PR #318, 19 Nov): "you should add in the camera / screen setups described in DAL along with the
@@ -111,7 +111,7 @@ for the whole park-and-return including the approach.
 
 ## Checks
 
-- **ARM_AUDIT=1 on the final script (turned lid, e3b1428): 0 of 1181 frames with an arm, gripper or held-part collision, 0 mover contacts
+- **The final clip's own pass (render and audit together, 10 fps, turned lid e3b1428): 0 of 788 frames with an arm, gripper or held-part collision, 0 mover contacts; ARM_AUDIT=1 at 15 fps on the same script: 0 of 1181 frames, 0 mover contacts
   (round 11 strict rules).** Getting there: the first version followed the arc with `follow()`, whose chords put the
   hub 0.3 mm into its post for 40 frames; the swing now solves the tool's pose on the exact arc each frame. The nearest
   IK branch put the upper arm through the front unit at every spot tried; the spot search now tries every branch and
