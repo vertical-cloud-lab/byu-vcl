@@ -1,0 +1,30 @@
+{
+ "E_MPa": 2600,
+ "nu": 0.35,
+ "cup_t1.7_pad_radial_1mm": {
+  "F_radial_N": 14.006008477667484,
+  "root_peak_strain_pct_per_mm": 0.63,
+  "root_peak_stress_MPa_per_mm": 19.9,
+  "n_elems": 51809
+ },
+ "cup_t2.0_pad_radial_1mm": {
+  "F_radial_N": 21.16,
+  "root_peak_strain_pct_per_mm": 0.74
+ },
+ "key_latch_t1.3_deflect_0.75mm": {
+  "F_per_arm_N": 6.600701,
+  "root_peak_strain_pct": 1.32,
+  "root_peak_stress_MPa": 40.0,
+  "n_elems": 126049
+ },
+ "key_latch_t1.5_deflect_0.85mm_first_try": {
+  "F_per_arm_N": 56.3,
+  "note": "arm free end fused to the rigid end; fixed with a 0.7 mm gap"
+ },
+ "bar_50N_down": {
+  "prong_root_peak_stress_MPa": 13.3,
+  "prong_root_peak_strain_pct": 0.38,
+  "u_max_mm": 0.32288049375646405,
+  "n_elems": 62077
+ }
+}
