@@ -1,0 +1,75 @@
+{
+ "spot_model_xy_yaw": [
+  100.0,
+  -620.0,
+  0.0
+ ],
+ "grip_s_mm": 300.0,
+ "close": 0.7831205788756961,
+ "cameras": {
+  "top_hq": {
+   "eye": [
+    -0.0,
+    -193.8,
+    1683.6
+   ],
+   "dir": [
+    0.0,
+    0.4,
+    -0.916
+   ],
+   "hfov": 22.2,
+   "vfov": 16.8,
+   "pi": "top unit's Pi 5 (CSI0)",
+   "display": "top 2.8 in DSI (Waveshare, 480 x 640)"
+  },
+  "front_hq": {
+   "eye": [
+    -35.8,
+    -165.4,
+    1050.0
+   ],
+   "dir": [
+    0.138,
+    0.92,
+    -0.368
+   ],
+   "hfov": 22.2,
+   "vfov": 16.8,
+   "pi": "front unit's Pi 5 (CSI0)",
+   "display": "front 5 in HDMI (Elecrow, 800 x 480), left half"
+  },
+  "front_wide": {
+   "eye": [
+    -4.5,
+    -182.3,
+    1056.7
+   ],
+   "dir": [
+    0.138,
+    0.92,
+    -0.368
+   ],
+   "hfov": 102.0,
+   "vfov": 67.0,
+   "pi": "front unit's Pi 5 (CSI1)",
+   "display": "front 5 in HDMI, right half"
+  },
+  "left_wide": {
+   "eye": [
+    -161.2,
+    -45.0,
+    1060.0
+   ],
+   "dir": [
+    1.0,
+    0.0,
+    0.0
+   ],
+   "hfov": 102.0,
+   "vfov": 67.0,
+   "pi": "left unit's Pi 5 (CSI0)",
+   "display": "left 5 in Touch Display 2 (DSI)"
+  }
+ }
+}
