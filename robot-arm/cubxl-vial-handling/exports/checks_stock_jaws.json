@@ -1,0 +1,118 @@
+{
+ "handle post (dia 16)": [
+  [
+   "motor housing",
+   "vial 3",
+   897.484
+  ],
+  [
+   "finger plate",
+   "vial 3",
+   2856.809
+  ],
+  [
+   "upper jaw",
+   "handle post",
+   5.854
+  ],
+  [
+   "upper jaw",
+   "vial 4",
+   466.114
+  ],
+  [
+   "upper pad",
+   "handle post",
+   2.949
+  ],
+  [
+   "upper pad",
+   "vial 4",
+   885.045
+  ],
+  [
+   "upper pad",
+   "vial 6",
+   0.415
+  ],
+  [
+   "upper carriage",
+   "vial 4",
+   31.804
+  ],
+  [
+   "lower jaw",
+   "handle post",
+   5.877
+  ],
+  [
+   "lower jaw",
+   "vial 4",
+   466.32
+  ],
+  [
+   "lower pad",
+   "handle post",
+   2.949
+  ],
+  [
+   "lower pad",
+   "vial 4",
+   868.994
+  ],
+  [
+   "lower pad",
+   "vial 6",
+   0.416
+  ],
+  [
+   "lower carriage",
+   "vial 4",
+   31.815
+  ]
+ ],
+ "vial 4": [
+  [
+   "motor housing",
+   "vial 2",
+   897.484
+  ],
+  [
+   "finger plate",
+   "vial 2",
+   2856.809
+  ],
+  [
+   "upper pad",
+   "carrier half A",
+   17.961
+  ],
+  [
+   "lower pad",
+   "carrier half A",
+   17.976
+  ]
+ ],
+ "vial 6": [
+  [
+   "motor housing",
+   "vial 4",
+   897.484
+  ],
+  [
+   "finger plate",
+   "vial 4",
+   2856.809
+  ],
+  [
+   "upper pad",
+   "carrier half B",
+   17.961
+  ],
+  [
+   "lower pad",
+   "carrier half B",
+   17.976
+  ]
+ ]
+}
