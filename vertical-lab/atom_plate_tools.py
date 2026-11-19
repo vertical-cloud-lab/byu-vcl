@@ -125,7 +125,13 @@ def upper_local() -> pv.PolyData:
     """The W-Ni-Fe upper sonotrode (19.9 x 56.6, #261) in the stack frame, its face on the plate (z = PLATE_T), with
     the 17 mm flats (ours: where) and its M8 bore."""
     z0, z1 = M.PLATE_T, M.PLATE_T + UPPER_L
-    body = cyl(UPPER_R, z0, z1, res=40)
+    zb = M.CONN_HALF + 0.6                               # the M8 bore's end (model.stack_parts)
+    body = cyl(UPPER_R, zb, z1, res=40)
+    bore = merge(pv.Cylinder(center=(0, 0, (z0 + zb) / 2), direction=(0, 0, 1), radius=UPPER_R, height=zb - z0,
+                             resolution=40, capping=False).triangulate(),
+                 pv.Cylinder(center=(0, 0, (z0 + zb) / 2), direction=(0, 0, 1), radius=M.CONN_R + 0.4, height=zb - z0,
+                             resolution=24, capping=False).triangulate(),
+                 pv.Disc(center=(0, 0, z0), inner=M.CONN_R + 0.4, outer=UPPER_R, normal=(0, 0, 1), c_res=40).triangulate())
     f0, f1 = UP_FLAT_Z
     body = body.clip_box((FLATS / 2, UPPER_R + 2, -UPPER_R - 2, UPPER_R + 2, f0, f1), invert=True)
     body = body.clip_box((-UPPER_R - 2, -FLATS / 2, -UPPER_R - 2, UPPER_R + 2, f0, f1), invert=True)
@@ -133,7 +139,7 @@ def upper_local() -> pv.PolyData:
     # the flats' faces (clip_box leaves the cut open): thin plates to close them
     faces = [box(s * FLATS / 2 - 0.3 * s, s * FLATS / 2, -math.sqrt(UPPER_R ** 2 - (FLATS / 2) ** 2),
                  math.sqrt(UPPER_R ** 2 - (FLATS / 2) ** 2), f0, f1) for s in (-1, 1)]
-    return merge(body, *faces)
+    return merge(body, bore, *faces)
 
 
 def sharpie_local() -> pv.PolyData:
@@ -144,13 +150,13 @@ def sharpie_local() -> pv.PolyData:
 
 # ------------------------------------------------------------------------------------------------ door bolts (ours)
 BOLT_Y = M.CH_Y[0] - 30.0            # the rod's axis, 30 mm in front of the face (the model's: 8)
-PIN_X = (-104.0, M.DCLAMP_X)         # top: 14 mm left of the model's -90, clear of the viewport hood; lower: -90
+PIN_X = (-112.0, M.DCLAMP_X)         # top: 22 mm left of the model's -90, clear of the viewport hood; lower: -90
 BOLT_Z = M.DCLAMP_Z                  # 1035, 840 (DAL #189 heights)
 LUG_X = (M.CH_X[0] - M.DOOR_T, M.CH_X[0] - M.DOOR_T + 8.0)   # the model's ear: x -131..-123
 KNOB_GAP = 0.0                       # the knob's face against the lug when tight
 KNOB_PITCH = 1.75                    # M12 coarse (assumed)
 KNOB_TURNS = 1.0                     # the arm backs each knob off one turn, 1.75 mm (ours)
-SWING_DEG = (90.0, 180.0)            # top: up, clear of the hood; lower: over the top (T5 27:16)
+SWING_DEG = (60.0, 180.0)            # top: 60 deg up, clear of the hood and of the lug's path; lower: over the top (T5 27:16)
 LOBES_R, LOBE_R, HUB_R, HUB_L = 13.0, 5.0, 10.0, 14.0
 
 
@@ -170,7 +176,13 @@ def bolt_meshes(k):
     c = pin + np.array([-(knob0 + KNOB_GAP), 0, 0])
     lobes = [along(cyl(LOBE_R, 0, 10), c + LOBES_R * np.array([0, math.cos(t), math.sin(t)]) + np.array([-2, 0, 0]),
                    (-1, 0, 0)) for t in np.linspace(math.pi / 2, math.pi / 2 + 2 * math.pi, 5, endpoint=False)]
-    knob = merge(along(cyl(HUB_R, 0, HUB_L), c, (-1, 0, 0)), *lobes)
+    hub = merge(pv.Cylinder(center=(0, 0, HUB_L / 2), direction=(0, 0, 1), radius=HUB_R, height=HUB_L, resolution=32,
+                            capping=False).triangulate(),
+                pv.Cylinder(center=(0, 0, HUB_L / 2), direction=(0, 0, 1), radius=4.2, height=HUB_L, resolution=24,
+                            capping=False).triangulate(),
+                pv.Disc(center=(0, 0, 0), inner=4.2, outer=HUB_R, normal=(0, 0, 1), c_res=32).triangulate(),
+                pv.Disc(center=(0, 0, HUB_L), inner=4.2, outer=HUB_R, normal=(0, 0, 1), c_res=32).triangulate())
+    knob = merge(along(hub, c, (-1, 0, 0)), *lobes)       # the hub is bored for the rod (M12 thread, assumed)
     # the bracket: a block on the face and a standoff post out to the rod, the pin through it (along y)
     y0 = M.CH_Y[0]
     bracket = merge(box(pin[0] - 14, pin[0] + 14, y0 - 6, y0, pin[2] - 14, pin[2] + 14),
@@ -291,9 +303,9 @@ RACK_PITCH = 52.0                   # slot to slot (along x): room for the 2F-85
 RACK_H = 40.0                       # the plates stand on their hole end in 40 mm deep slots
 TRAY_AT = (95.0, -210.0)            # the upper sonotrode's tray (two sockets: used, spare)
 WR_AT = (250.0, -150.0)             # the stack wrench's holder
-GAUGE_AT = (-30.0, -235.0)          # the gauge plate's holder
-DROP_AT = (-215.0, -55.0)          # the IPA dropper's holder
-WIPE_AT = (-335.0, -55.0)           # the wipe pad's holder
+GAUGE_AT = (200.0, -255.0)          # the gauge plate's holder
+DROP_AT = (345.0, -232.0)          # the IPA dropper's holder
+WIPE_AT = (345.0, -125.0)           # the wipe pad's holder
 
 SLOT_NAMES = ("Al-10Si  CF  #02", "Al-10Si  CF  #03", "NAB  W-CF  new", "NAB  W-CF  used", "spare")
 

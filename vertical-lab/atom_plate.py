@@ -129,6 +129,75 @@ def spin(rb, base_fn, deg_fn, n=48, also=None):
     return up
 
 
+def branch_for(rb, pre, grasp, path_fn, close, also=None, n=10, skip=(), back=None, pre_close=0.0):
+    """The IK solution at `grasp` from which the arm can follow path_fn(u) (u 0..1; also(u) moves the scene with it)
+    touching nothing but actors whose names contain a string in `skip`, and whose approach pose `pre` is clear too:
+    (q at the grasp, q at pre), nearest first; (None, None) if none. After alloy_atomize.arc_branch."""
+    import collide
+    if collide is None:
+        return None, None
+    chk = rb.checker()
+    Tb = inv(rb.sc.world(rb.root)) @ grasp
+    cands = collide.ik_all(rb.model, Tb, rb.q) or []
+
+    def bad(q, c):
+        return any(not any(k in h[2] for k in skip) for h in chk.collisions(q, c, chk.snapshot()))
+    best = (1e9, None, None)
+    for q in cands:
+        ok, qq, nbad = True, q.copy(), 0
+        for u in np.linspace(0.0, 1.0, n):
+            if also is not None:
+                also(u)
+            try:
+                q_new = rb.solve(path_fn(u), qq)
+            except ValueError:
+                ok = False
+                break
+            if np.abs(q_new - qq).max() > math.radians(25):
+                ok = False
+                break
+            qq = q_new
+            if bad(qq, close):
+                nbad += 1
+        if also is not None:
+            also(0.0)
+        if not ok:
+            continue
+        try:
+            q_pre = rb.solve(pre, q)
+        except ValueError:
+            continue
+        if bad(q_pre, pre_close):
+            nbad += 3
+        if nbad:
+            if nbad < best[0]:
+                best = (nbad, q, q_pre)
+            continue
+        if back is not None:
+            try:
+                q_back = rb.solve(back, qq)
+            except ValueError:
+                continue
+            if bad(q_back, 0.0):
+                continue
+        return q, q_pre
+    print(f"warning: {rb.sc.name} {rb.sc.label}: no clear IK branch for the move (best: {best[0]} bad samples)",
+          flush=True)
+    return best[1], best[2]
+
+
+def approach(c, rb, label, caption, pre, grasp, path_fn, close, also=None, skip=(), secs=(1.6, 0.6), back=None,
+             pre_close=None, **kw):
+    """Joint move to the pre-grasp in a branch that suits the move that follows, then the straight approach. The
+    fingers open only pre_close's width on the way (default: 12 mm over the part)."""
+    pc = max(0.0, close - 0.16) if pre_close is None else pre_close
+    rb.set(close=rb.close)
+    q, q_pre = branch_for(rb, pre, grasp, path_fn, close, also=also, skip=skip, back=back, pre_close=pc)
+    c.step(label, caption, secs[0], both(rb.grip_to(pc), rb.joint_to(q1=q_pre) if q_pre is not None else
+                                         rb.joint_to(Tw=pre)), hold=0.0, **kw)
+    c.step(label, caption, secs[1], rb.line_to(grasp), hold=0.0)
+
+
 def seq(*parts):
     """update(u) running parts [(weight, update)] one after another."""
     w = np.array([p[0] for p in parts], float)
@@ -259,6 +328,16 @@ class Clip:
     def set_door(self, v):
         self.door = v
         AB.set_joints(self.sc, door=v)
+        # the compressed-air hose to the transducer's cover is flexible: its last two points ride on the door (ours;
+        # the model draws it as a fixed line)
+        if "rp pipe air" in self.sc.actors:
+            r = M.pipe_routes()["air"]
+            pts = np.array(r["pts"], float)
+            Dv = Dm(v)
+            for i in (3, 4):
+                pts[i] = (Dv @ np.r_[pts[i], 1.0])[:3]
+            pts[2] = pts[2] + (pts[3] - np.array(r["pts"][3], float)) * 0.35
+            self.sc.set_mesh("rp pipe air", pv.Spline(pts, 120).tube(radius=r["r"], n_sides=14))
 
     def upper_local_M(self, rot=None, out=None) -> np.ndarray:
         rot = self.upper_rot if rot is None else rot
@@ -322,6 +401,8 @@ class Clip:
         default for these distances); holds shorten likewise but keep at least 0.4 s where one was asked for."""
         s = max(0.2, seconds * SPEED)
         h = 0.0 if hold <= 0 else max(0.4, hold * SPEED)
+        if os.environ.get("PLATE_TRACE"):
+            print(f"TRACE frame {self.sc.n} {label} {caption[:70]}", flush=True)
         self.sc.step(label, caption, s, update, hold=h, **k)
 
 
@@ -341,7 +422,45 @@ def grasp_upper_local(z=25.0) -> np.ndarray:
 
 
 def grasp_wrench_local() -> np.ndarray:
-    return local_tcp(PT.WR_GRASP, (0, 1, 0), (1, 0, 0))
+    """The handle, from behind the spine; the fingers close across it, the wrist camera on the far side from the
+    arm's forearm when the wrench is on the stack."""
+    return local_tcp(PT.WR_GRASP, (0, 1, 0), (-1, 0, 0))
+
+
+def knob_turn(c, rb, k, loosen, caption_cam, close, L):
+    """A door bolt's star knob turned one full turn on its axis, from the left, in two grasps of 180 deg, the wrist kept
+    within 90 deg either side of where the wrist camera faces the chamber (away from the arm's own forearm)."""
+    sc = c.sc
+    sgn = -1.0 if loosen else 1.0
+    t0 = 0.0 if loosen else 1.0
+    adv = PT.KNOB_PITCH * PT.KNOB_TURNS / 2           # mm along the rod per half turn (out when loosening)
+    # the pads on the lobes' outer part: the 2F-85's fingertips reach 18 mm past the grasp point, so 13 mm further
+    # out they stop 2 mm short of the lug and of the door's front edge as the wrist turns
+    G0 = AB.WT(local_tcp(PT.knob_centre(k, c.swing[k], t0), (1, 0, 0), (0, 0, 1))) @ T((0, 0, -13.0))
+    Gs = G0 @ R((0, 0, 1), -90.0 * sgn)               # the first grasp's turn: 90 deg back from centre
+    cap1 = ("The arm takes a door bolt's star knob from the left, on its axis ..." if loosen else
+            "... and each knob tightened, one turn back on.")
+    approach(c, rb, L, cap1, Gs @ T((0, 0, -70)), Gs,
+             lambda u: Gs @ T((0, 0, sgn * adv * u)) @ R((0, 0, 1), 180.0 * sgn * u), close,
+             skip=("plate bolt",), secs=(1.4, 0.6), cam_to=caption_cam if loosen else None)
+    cap2 = (f"One turn loosens it, {PT.KNOB_PITCH * PT.KNOB_TURNS:.2f} mm back off the door's lug (M12 assumed), in "
+            "two grasps." if loosen else cap1)
+    G = Gs
+    for half in range(2):
+        c.step(L, cap2, 0.3, rb.grip_to(close), hold=0.0)
+        rb.grasp(f"knob{k}")
+        c.step(L, cap2, 0.7, spin(rb, lambda u, G=G: G @ T((0, 0, sgn * adv * u)), lambda u: 180.0 * sgn * u, n=24),
+               hold=0.0)
+        rb.release(f"bolt{k}")
+        c.turn[k] = 0.5 * (half + 1) if loosen else 1.0 - 0.5 * (half + 1)
+        sc.gmat[f"knob{k}"] = PT.bolt_matrix(k, c.swing[k], c.turn[k])[1]
+        Gend = G @ T((0, 0, sgn * adv)) @ R((0, 0, 1), 180.0 * sgn)
+        if half == 0:
+            c.step(L, cap2, 0.45, both(rb.grip_to(ur_arm.close_for(46.0)),
+                                       spin(rb, lambda u, Ge=Gend: Ge, lambda u: -180.0 * sgn * u, n=24)), hold=0.0)
+            G = Gend @ R((0, 0, 1), -180.0 * sgn)
+        else:
+            c.step(L, "Let go, back off.", 0.5, both(rb.grip_to(0.0), rb.line_to(Gend @ T((0, 0, -60)))), hold=0.0)
 
 
 def main():
@@ -350,12 +469,12 @@ def main():
     close_upper = ur_arm.close_for(2 * PT.UPPER_R + 0.2)
     close_plate = ur_arm.close_for(PT.PLATE_T + 0.2)
     close_knob = ur_arm.close_for(34.0)
-    close_lug = ur_arm.close_for(8.2)
+    close_lug = ur_arm.close_for(22.2)
     close_bar = ur_arm.close_for(16.2)
     close_gauge = ur_arm.close_for(PT.GAUGE_T + 0.2)
     close_bottle = ur_arm.close_for(32.2)
     close_stem = ur_arm.close_for(12.2)
-    OPEN = 0.0
+    OPEN = ur_arm.close_for(46.0)      # let go by opening to 46 mm, not the full 85: the neighbours stay clear
     n_ch = [0]
 
     def chapter():
@@ -394,40 +513,19 @@ def main():
     # ------------------------------------------------------------------ 2: the bolts
     if chapter():
         for k in (1, 0):
-            kc = PT.knob_centre(k, 0.0, 0.0)
-            G0 = AB.WT(local_tcp(kc, (1, 0, 0), (0, 0, 1)))
-            pre = G0 @ T((0, 0, -70))
-            c.step(L(2), "The arm takes a door bolt's star knob from the left, on its axis ...", 1.6,
-                   rb.joint_to(Tw=pre), hold=0.0, cam_to=cam_bolts)
-            c.step(L(2), "The arm takes a door bolt's star knob from the left, on its axis ...", 0.7,
-                   rb.line_to(G0), hold=0.0)
-            c.step(L(2), "... and grips it.", 0.4, rb.grip_to(close_knob), hold=0.0)
-            rb.grasp(f"knob{k}")
-
-            def turn_pose(u, k=k, G0=G0):
-                back = PT.KNOB_PITCH * PT.KNOB_TURNS * u
-                return G0 @ T((0, 0, -back)) @ R((0, 0, 1), -360.0 * PT.KNOB_TURNS * u)
-            c.step(L(2), f"One turn loosens the knob, {PT.KNOB_PITCH * PT.KNOB_TURNS:.2f} mm off the door's lug "
-                   "(the wrist turns; M12 thread assumed).", 1.6,
-                   spin(rb, lambda u, G0=G0: G0 @ T((0, 0, -PT.KNOB_PITCH * PT.KNOB_TURNS * u)),
-                        lambda u: -360.0 * PT.KNOB_TURNS * u, n=60), hold=0.0)
-            rb.release(f"bolt{k}")
-            c.turn[k] = 1.0
-            sc.gmat[f"knob{k}"] = PT.bolt_matrix(k, 0.0, 1.0)[1]
-            c.step(L(2), "Let go, back off.", 0.5, both(rb.grip_to(OPEN), rb.line_to(turn_pose(1.0) @ T((0, 0, -60)))),
-                   hold=0.0)
+            knob_turn(c, rb, k, loosen=True, caption_cam=cam_bolts, close=close_knob, L=L(2))
             # swing: grip the knob from the front, the pads on its top and bottom lobes
             kc1 = PT.knob_centre(k, 0.0, 1.0) + np.array([0.0, 0.0, 1.25])
             G1 = AB.WT(local_tcp(kc1, (0, 1, 0), (0, 0, 1)))
-            c.step(L(2), "From the front, it swings the bolt up out of the lug's slot ...", 1.2,
-                   rb.joint_to(Tw=G1 @ T((0, 0, -60))), hold=0.0)
-            c.step(L(2), "From the front, it swings the bolt up out of the lug's slot ...", 0.6, rb.line_to(G1),
-                   hold=0.0)
+            pin = AB.W(PT.bolt_geom(k)[0])
+            deg = PT.SWING_DEG[k]
+            approach(c, rb, L(2), "From the front, it swings the bolt up out of the lug's slot ...",
+                     G1 @ T((0, 0, -60)), G1, lambda u, G1=G1, pin=pin, deg=deg: R((0, 1, 0), deg * u, pin) @ G1,
+                     close_knob, skip=("plate bolt", "plate door lugs"), secs=(1.2, 0.6),
+                     back=R((0, 1, 0), deg, pin) @ G1 @ T((0, 0, -60)))
             c.step(L(2), "From the front, it swings the bolt up out of the lug's slot ...", 0.3,
                    rb.grip_to(close_knob), hold=0.0)
             rb.grasp(f"bolt{k}")
-            pin = AB.W(PT.bolt_geom(k)[0])
-            deg = PT.SWING_DEG[k]
             c.step(L(2), ("... and over the top, along the face (T5 27:16)." if k == 1 else
                           "... the top one only 90 deg up: the viewport hood is in the way of 180 (ours)."),
                    1.6 if k == 1 else 1.2,
@@ -442,15 +540,18 @@ def main():
 
     # ------------------------------------------------------------------ 3: open the door
     if chapter():
-        lug = np.array([PT.LUG_X[0] + 4.0, -132.0, PT.BOLT_Z[1]])     # the lower lug's web, model frame (door shut)
-        Gl = AB.WT(local_tcp(lug, (0, 1, 0), (1, 0, 0)))
-        c.step(L(3), "The arm takes the door's lower lug ...", 1.4, rb.joint_to(Tw=Gl @ T((0, 0, -70))), hold=0.0,
-               cam_to=cam_open)
-        c.step(L(3), "The arm takes the door's lower lug ...", 0.6, rb.line_to(Gl), hold=0.0)
-        c.step(L(3), "The arm takes the door's lower lug ...", 0.3, rb.grip_to(close_lug), hold=0.0)
+        # the lower lug's web, model frame (door shut): the pads on its top and bottom faces (22 mm apart), 21 mm in
+        # front of the door so the fingertips (18 mm past the grasp point) stay clear of its edge, and clear of the
+        # lower bolt's bracket to the right
+        lug = np.array([PT.LUG_X[0] + 4.0, -139.0, PT.BOLT_Z[1]])
+        Gl = AB.WT(local_tcp(lug, (0, 1, 0), (0, 0, 1)))
 
         def door_pose(u, Gl=Gl):
             return AB.WT(Dm(u)) @ inv(AB.WT(np.eye(4))) @ Gl
+        approach(c, rb, L(3), "The arm takes the door's lower lug ...", Gl @ T((0, 0, -70)), Gl, door_pose, close_lug,
+                 also=c.set_door, skip=("door",), secs=(1.4, 0.6), back=door_pose(1.0) @ T((0, 0, -70)),
+                 cam_to=cam_open)
+        c.step(L(3), "The arm takes the door's lower lug ...", 0.3, rb.grip_to(close_lug), hold=0.0)
         opening = track(rb, door_pose, n=80, also=c.set_door)
         c.door_path = opening.path
         c.step(L(3), "... and swings it open 100 deg on its back hinge. The stack rides on the door, so the plate comes "
@@ -461,7 +562,9 @@ def main():
     # ------------------------------------------------------------------ 4: the plate's condition
     if chapter():
         Fs = c.stack_world()
-        look = Fs @ local_tcp((55.0, 0.0, 170.0), (0, 0, -1), (0, 1, 0))
+        mid = (Fs @ np.r_[55.0, 0.0, PT.PLATE_T, 1.0])[:3]
+        eye = (Fs @ np.r_[55.0, -110.0, 170.0, 1.0])[:3]
+        look = frame(eye, mid - eye, Fs[:3, 0])
         c.step(L(4), "The wrist camera (D405, 7-50 cm) looks at the plate: no crack, no dark spot at an edge, metal "
                "that lifts off. A plate that fails comes off (DAL 253 Cleaning step 6).", 2.0,
                rb.joint_to(Tw=look), hold=1.2, cam_to=cam_stack,
@@ -517,36 +620,37 @@ def main():
         def upper_world():
             return c.stack_world() @ c.upper_local_M()
         Gu = grasp_upper_local(25.0)
-        G = upper_world() @ Gu
-        c.step(L(6), "The 2F-85 takes the upper sonotrode on its axis, below the Sharpie lines ...", 2.2,
-               rb.joint_to(Tw=G @ T((0, 0, -80))), hold=0.0, cam_to=cam_stack)
-        c.step(L(6), "The 2F-85 takes the upper sonotrode on its axis, below the Sharpie lines ...", 0.7,
-               rb.line_to(G), hold=0.0)
         turns_left = PT.THREAD_TURNS - 32.0 / 360.0
-        per = 330.0
+        per = 180.0                  # a grasp turns it half a turn; the wrist stays within 90 deg of centre
         n_grasp = int(math.ceil(turns_left * 360.0 / per))
         rot0 = c.upper_rot
         done = 0.0
-        Gc = G
-        cap = (f"... and unscrews it by hand: {PT.THREAD_TURNS:.1f} turns of M8 on the connector, {per:.0f} deg a "
-               f"grasp, {n_grasp} grasps (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).")
+        Gs = c.stack_world() @ T((0, 0, c.upper_out)) @ Gu @ R((0, 0, 1), 90.0)
+        adv = per / 360.0 * PT.M8_PITCH
+        approach(c, rb, L(6), "The 2F-85 takes the upper sonotrode on its axis, below the Sharpie lines ...",
+                 Gs @ T((0, 0, -80)), Gs, lambda u: Gs @ T((0, 0, -adv * u)) @ R((0, 0, 1), -per * u), close_upper,
+                 skip=("plate upper",), secs=(2.2, 0.7), back=Gs @ T((0, 0, -adv)) @ R((0, 0, 1), -per) @
+                 T((0, 0, -80)), cam_to=cam_stack)
+        Gc = Gs
+        cap = (f"... and unscrews it by hand: {PT.THREAD_TURNS:.1f} turns of M8 on the connector, half a turn a "
+               f"grasp (the grip's friction, about 1.4 N m at 235 N, ours, turns a free thread).")
         for i in range(n_grasp):
             d = min(per, turns_left * 360.0 - done)
-            c.step(L(6), cap, 0.25, rb.grip_to(close_upper), hold=0.0)
+            c.step(L(6), cap, 0.2, rb.grip_to(close_upper), hold=0.0)
             rb.grasp(g("upper"))
 
             def turn(u, G=Gc, d=d):
                 return G @ T((0, 0, -d * u / 360.0 * PT.M8_PITCH)) @ R((0, 0, 1), -d * u)
-            c.step(L(6), cap, 0.55, spin(rb, lambda u, G=Gc, d=d: G @ T((0, 0, -d * u / 360.0 * PT.M8_PITCH)),
-                                         lambda u, d=d: -d * u, n=30), hold=0.0)
+            c.step(L(6), cap, 0.45, spin(rb, lambda u, G=Gc, d=d: G @ T((0, 0, -d * u / 360.0 * PT.M8_PITCH)),
+                                         lambda u, d=d: -d * u, n=24), hold=0.0)
             done += d
             rb.release(g("connector"))
             c.set_upper(rot=rot0 - done, out=(done + 32.0) / 360.0 * PT.M8_PITCH)
             c.status(Upper=f"{(done + 32.0) / 360.0:.1f} / {PT.THREAD_TURNS:.1f} turns off")
             Gt_ = turn(1.0)
             if i < n_grasp - 1:
-                c.step(L(6), cap, 0.45, both(rb.grip_to(ur_arm.close_for(2 * PT.UPPER_R + 8.0)),
-                                             spin(rb, lambda u, G0=Gt_: G0, lambda u, d=d: d * u, n=30)),
+                c.step(L(6), cap, 0.35, both(rb.grip_to(ur_arm.close_for(2 * PT.UPPER_R + 8.0)),
+                                             spin(rb, lambda u, G0=Gt_: G0, lambda u, d=d: d * u, n=24)),
                        hold=0.0)
                 Gc = Gt_ @ R((0, 0, 1), d)
         rb.grasp(g("upper"))
@@ -568,7 +672,7 @@ def main():
         Fs = c.stack_world()
         G = Fs @ Gp
         c.step(L(7), "It takes the old plate near its free end, the pads on its faces ...", 2.2,
-               rb.joint_to(Tw=G @ T((0, 0, -70))), hold=0.0, cam_to=cam_stack)
+               both(rb.grip_to(ur_arm.close_for(18.0)), rb.joint_to(Tw=G @ T((0, 0, -70)))), hold=0.0, cam_to=cam_stack)
         c.step(L(7), "It takes the old plate near its free end, the pads on its faces ...", 0.7, rb.line_to(G),
                hold=0.0)
         c.step(L(7), "It takes the old plate near its free end, the pads on its faces ...", 0.3,
@@ -595,7 +699,7 @@ def main():
         slot = at_mir(PT.plate_in_slot(NEW["slot"]))
         Gs = slot @ Gp
         c.step(L(8), f"The next run is copper, so a new W-coated plate ({NEW['id']}; DAL 253 Copper step 2).", 1.4,
-               rb.joint_to(Tw=Gs @ T((0, 0, -60))), hold=0.0)
+               both(rb.grip_to(ur_arm.close_for(18.0)), rb.joint_to(Tw=Gs @ T((0, 0, -60)))), hold=0.0)
         c.step(L(8), f"The next run is copper, so a new W-coated plate ({NEW['id']}; DAL 253 Copper step 2).", 0.6,
                rb.line_to(Gs), hold=0.0)
         c.step(L(8), "It grips the plate ...", 0.3, rb.grip_to(close_plate), hold=0.0)
@@ -618,48 +722,54 @@ def main():
     # ------------------------------------------------------------------ 9: upper sonotrode on by hand
     if chapter():
         Gu = grasp_upper_local(25.0)
-        Wu = sc.world(g("upper")) @ PT.FS                  # where the sonotrode stands in its tray
-        Gt = Wu @ Gu
+        Ut = at_mir(PT.upper_in_tray(-1))
+        Gt = Ut @ Gu                     # coaxial: taken at the wrist's own turn, whatever the sonotrode's
         c.step(L(9), "The upper sonotrode from its tray ...", 2.0, rb.joint_to(Tw=Gt @ T((0, 0, -60))), hold=0.0,
                cam_to=cam_deck)
         c.step(L(9), "The upper sonotrode from its tray ...", 0.6, rb.line_to(Gt), hold=0.0)
         c.step(L(9), "The upper sonotrode from its tray ...", 0.25, rb.grip_to(close_upper), hold=0.0)
         rb.grasp(g("upper"))
         c.step(L(9), "The upper sonotrode from its tray ...", 0.6, rb.line_to(Gt @ T((0, 0, -60))), hold=0.0)
-        # back on the axis, at the start of the thread, then screwed down
-        c.upper_out = PT.THREAD_TURNS * PT.M8_PITCH
-        c.upper_rot = -PT.THREAD_TURNS * 360.0
-        start = c.stack_world() @ c.upper_local_M() @ Gu       # its frame at the thread's start, the grip as taken
-        c.step(L(9), "... onto the stud, by hand (step 12).", 2.2, rb.joint_to(Tw=start @ T((0, 0, -30))), hold=0.0,
-               cam_to=cam_stack)
-        c.step(L(9), "... onto the stud, by hand (step 12).", 0.5, rb.line_to(start), hold=0.0)
-        rb.release(g("connector"))
-        per = 330.0
+        # onto the stud at the thread's start, the wrist 90 deg back from centre, then half a turn a grasp
+        per = 180.0
         total = PT.THREAD_TURNS * 360.0
         n_grasp = int(math.ceil(total / per))
+        out0 = PT.THREAD_TURNS * PT.M8_PITCH
+        adv = per / 360.0 * PT.M8_PITCH
+        Fs = c.stack_world()
+        Gs = Fs @ T((0, 0, out0)) @ Gu @ R((0, 0, 1), -90.0)
+        Grel = inv(sc.world(g("upper")) @ PT.FS) @ rb.tcp_world()        # the grip as taken in the tray
+        Pf = inv(Fs @ T((0, 0, out0))) @ Gs @ inv(Grel)                  # the sonotrode's frame at the start, stack-relative
+        rot0 = -math.degrees(math.atan2(Pf[1, 0], Pf[0, 0]))
+        approach(c, rb, L(9), "... onto the stud, by hand (step 12).", Gs @ T((0, 0, -30)), Gs,
+                 lambda u: Gs @ T((0, 0, adv * u)) @ R((0, 0, 1), per * u), close_upper, skip=("plate upper",),
+                 secs=(2.2, 0.5), pre_close=close_upper, cam_to=cam_stack)
+        rb.release(g("connector"))
+        c.set_upper(rot=rot0, out=out0)
         done = 0.0
-        Gc = start
-        cap = f"Threaded down by hand, {n_grasp} grasps of {per:.0f} deg, until it sits on the plate."
+        Gc = Gs
+        cap = f"Threaded down by hand, half a turn a grasp ({n_grasp} grasps), until it sits on the plate."
         for i in range(n_grasp):
             d = min(per, total - done)
-            c.step(L(9), cap, 0.25 if i else 0.1, rb.grip_to(close_upper), hold=0.0)
+            c.step(L(9), cap, 0.2 if i else 0.1, rb.grip_to(close_upper), hold=0.0)
             rb.grasp(g("upper"))
 
             def turn(u, G=Gc, d=d):
                 return G @ T((0, 0, d * u / 360.0 * PT.M8_PITCH)) @ R((0, 0, 1), d * u)
-            c.step(L(9), cap, 0.55, spin(rb, lambda u, G=Gc, d=d: G @ T((0, 0, d * u / 360.0 * PT.M8_PITCH)),
-                                         lambda u, d=d: d * u, n=30), hold=0.0)
+            c.step(L(9), cap, 0.45, spin(rb, lambda u, G=Gc, d=d: G @ T((0, 0, d * u / 360.0 * PT.M8_PITCH)),
+                                         lambda u, d=d: d * u, n=24), hold=0.0)
             done += d
             rb.release(g("connector"))
-            c.set_upper(rot=-total + done, out=(total - done) / 360.0 * PT.M8_PITCH)
+            c.set_upper(rot=rot0 + done, out=(total - done) / 360.0 * PT.M8_PITCH)
             c.status(Upper=f"{done / 360.0:.1f} / {PT.THREAD_TURNS:.1f} turns on")
             Gt_ = turn(1.0)
             if i < n_grasp - 1:
-                c.step(L(9), cap, 0.45, both(rb.grip_to(ur_arm.close_for(2 * PT.UPPER_R + 8.0)),
-                                             spin(rb, lambda u, G0=Gt_: G0, lambda u, d=d: -d * u, n=30)),
+                c.step(L(9), cap, 0.35, both(rb.grip_to(ur_arm.close_for(2 * PT.UPPER_R + 8.0)),
+                                             spin(rb, lambda u, G0=Gt_: G0, lambda u, d=d: -d * u, n=24)),
                        hold=0.0)
                 Gc = Gt_ @ R((0, 0, 1), -d)
-        c.set_upper(0.0, 0.0)
+        c.set_upper(rot=rot0 + total, out=0.0)
+        c.rot_hand = rot0 + total
         c.status(Upper="snug, by hand")
         c.step(L(9), "Snug against the plate.", 0.5, both(rb.grip_to(OPEN), rb.line_to(rb.tcp_world() @ T((0, 0, -70)))),
                hold=0.0)
@@ -684,25 +794,26 @@ def main():
 
         def sock(u, turn=0.0):
             sc.gmat["socket"] = T((0, 0, -PT.SOCKET_STROKE * u)) @ R((0, 0, 1), turn)
-        c.step(L(10), "Counter-hold on the lower sonotrode's flats; the socket onto the upper's.", 0.8,
-               lambda u: sock(u), hold=0.0)
-        c.set_upper(-20.0, 0.0)
+        rh = getattr(c, "rot_hand", 0.0)
+        t0 = (-rh + 90.0) % 180.0 - 90.0                 # the socket's slot to the flats' angle (they repeat every 180)
+        c.step(L(10), "The drive turns its slot to the flats' angle, which the camera reads ...", 0.6,
+               lambda u: sock(0.0, t0 * u), hold=0.0)
+        c.step(L(10), "... and the socket slides onto them.", 0.8, lambda u: sock(u, t0), hold=0.0)
 
         def tighten(u):
             a = 20.0 * u
-            sock(1.0, -a)
-            c.set_upper(rot=-20.0 + a)
+            sock(1.0, t0 - a)
+            c.set_upper(rot=rh + a)
             tq = 50.0 * (u ** 1.6)
             c.status(Torque=f"{tq:5.1f} N m (clutch at 50.0)", Reaction=f"{tq:5.1f} N m inside the tool")
-        c.set_upper(rot=-20.0)
         c.step(L(10), "The last 20 deg (ours) to 50 N m, where the clutch slips (DAL 253 step 13). The counter-hold "
                "takes the same 50 N m, so the stack and the arm see none of it.", 2.4, tighten, hold=0.6)
         c.status(Torque="50.0 N m", Reaction="-")
-        c.step(L(10), "Socket up, wrench off.", 0.6, lambda u: sock(1 - u, -20.0), hold=0.0)
+        c.step(L(10), "Socket up, wrench off.", 0.6, lambda u: sock(1 - u, t0 - 20.0), hold=0.0)
         c.step(L(10), "Socket up, wrench off.", 0.8, rb.line_to(pre), hold=0.0)
         Wh = at_mir(PT.wrench_in_holder())
         c.step(L(10), "Back to its holder.", 2.0, rb.joint_to(Tw=T((0, 0, 60)) @ Wh @ Gw), hold=0.0, cam_to=cam_deck)
-        c.step(L(10), "Back to its holder.", 0.6, both(rb.line_to(Wh @ Gw), lambda u: sock(0.0, -20.0 * (1 - u))),
+        c.step(L(10), "Back to its holder.", 0.6, both(rb.line_to(Wh @ Gw), lambda u: sock(0.0, (t0 - 20.0) * (1 - u))),
                hold=0.0)
         rb.release(mb.g)
         c.step(L(10), "Back to its holder.", 0.5, both(rb.grip_to(OPEN), rb.line_to(Wh @ Gw @ T((0, 0, -60)))),
@@ -711,7 +822,9 @@ def main():
     # ------------------------------------------------------------------ 11: orient, height, rescan, wet test
     if chapter():
         Fs = c.stack_world()
-        look = Fs @ local_tcp((55.0, 0.0, 170.0), (0, 0, -1), (0, 1, 0))
+        mid = (Fs @ np.r_[55.0, 0.0, PT.PLATE_T, 1.0])[:3]
+        eye = (Fs @ np.r_[55.0, -110.0, 170.0, 1.0])[:3]
+        look = frame(eye, mid - eye, Fs[:3, 0])
         c.step(L(11), "The camera checks the plate is square to the hatch (step 14; within 2 deg, ours) ...", 2.0,
                rb.joint_to(Tw=look), hold=0.6, cam_to=cam_stack)
         # the gauge plate: from its holder, its end laid against the upper sonotrode between the lines
@@ -772,7 +885,7 @@ def main():
         rb.grasp("dropper")
         c.step(L(11), "Wet test: the IPA dropper ...", 0.6, rb.line_to(T((0, 0, 80)) @ Dh), hold=0.0)
         Fs = c.stack_world()
-        spot = (Fs @ np.r_[55.0, 0.0, PT.PLATE_T, 1.0])[:3]
+        spot = (Fs @ np.r_[95.0, 0.0, PT.PLATE_T, 1.0])[:3]
         Bm = np.eye(4)                                  # the bottle upside down, its nozzle 52 mm over the spot
         Bm[:3, 0], Bm[:3, 1], Bm[:3, 2] = (1, 0, 0), (0, -1, 0), (0, 0, -1)
         Bm[:3, 3] = spot + np.array([0, 0, 52.0 + 90.0])
@@ -829,7 +942,7 @@ def main():
         rb.grasp("wipe")
         c.step(L(12), "The wipe pad, wet with IPA (ours) ...", 0.6, rb.line_to(T((0, 0, 80)) @ Wp), hold=0.0)
         D = AB.WT(Dm(c.door))
-        pts = [(-114.5, 95.0, 1085.0), (-114.5, -95.0, 1085.0), (-114.5, -95.0, 860.0)]
+        pts = [(-114.5, 10.0, 1080.0), (-114.5, -95.0, 1080.0), (-114.5, -95.0, 860.0)]
 
         def pad_pose(p):
             Pm = np.eye(4)                                  # the pad's face on the door's seal face, 0.5 mm off
@@ -853,14 +966,14 @@ def main():
         rb.release(mb.g)
         c.step(L(12), "Wipe back.", 0.4, both(rb.grip_to(OPEN), rb.line_to(Wp @ T((0, 0, -60)))), hold=0.0)
         # door shut
-        lug = np.array([PT.LUG_X[0] + 4.0, -132.0, PT.BOLT_Z[1]])
-        Gl0 = AB.WT(local_tcp(lug, (0, 1, 0), (1, 0, 0)))
+        lug = np.array([PT.LUG_X[0] + 4.0, -139.0, PT.BOLT_Z[1]])
+        Gl0 = AB.WT(local_tcp(lug, (0, 1, 0), (0, 0, 1)))
 
         def door_pose(u):
             return AB.WT(Dm(u)) @ inv(AB.WT(np.eye(4))) @ Gl0
         q_pre = rb.solve(door_pose(1.0) @ T((0, 0, -70)), c.door_path[-1])
         c.step(L(12), "The door shut on the wiped seal ...", 2.0, rb.joint_to(q1=q_pre), hold=0.0, cam_to=cam_open)
-        c.step(L(12), "The door shut on the wiped seal ...", 0.6, rb.line_to(door_pose(1.0)), hold=0.0)
+        c.step(L(12), "The door shut on the wiped seal ...", 0.6, rb.joint_to(q1=c.door_path[-1]), hold=0.0)
         c.step(L(12), "The door shut on the wiped seal ...", 0.3, rb.grip_to(close_lug), hold=0.0)
         c.step(L(12), "The door shut on the wiped seal ...", 3.0,
                replay(rb, np.r_[[rb.q], c.door_path[::-1]], also=lambda u: c.set_door(1.0 - u)), hold=0.0)
@@ -903,20 +1016,7 @@ def main():
             c.set_bolt(k)
             c.step(L(12), "Both bolts back into their lugs ...", 0.4, both(rb.grip_to(OPEN),
                                                                             rb.line_to(G1 @ T((0, 0, -60)))), hold=0.0)
-            kc = PT.knob_centre(k, 0.0, 1.0)
-            G0 = AB.WT(local_tcp(kc, (1, 0, 0), (0, 0, 1)))
-            c.step(L(12), "... and the knobs tightened.", 1.2, rb.joint_to(Tw=G0 @ T((0, 0, -60))), hold=0.0)
-            c.step(L(12), "... and the knobs tightened.", 0.5, rb.line_to(G0), hold=0.0)
-            c.step(L(12), "... and the knobs tightened.", 0.3, rb.grip_to(close_knob), hold=0.0)
-            rb.grasp(f"knob{k}")
-            c.step(L(12), "... and the knobs tightened.", 1.4,
-                   spin(rb, lambda u, G0=G0: G0 @ T((0, 0, PT.KNOB_PITCH * PT.KNOB_TURNS * u)),
-                        lambda u: 360.0 * PT.KNOB_TURNS * u, n=60), hold=0.0)
-            rb.release(f"bolt{k}")
-            c.turn[k] = 0.0
-            sc.gmat[f"knob{k}"] = PT.bolt_matrix(k, 0.0, 0.0)[1]
-            c.step(L(12), "... and the knobs tightened.", 0.4, both(rb.grip_to(OPEN), rb.line_to(G0 @ T((0, 0, -60)))),
-                   hold=0.0)
+            knob_turn(c, rb, k, loosen=False, caption_cam=None, close=close_knob, L=L(12))
         c.status(Door="shut, 2 bolts tight")
         c.step(L(12), f"Done: {NEW['id']} on at 50 N m, square, at the logged height, scan 40.10 kHz, wet test good. "
                "Logged for the run (DAL 253 Run Log item 3).", 1.8, rb.joint_to(q1=np.radians(AB.AA.A.PARK_DEG)),
