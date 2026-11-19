@@ -38,14 +38,26 @@ The over-centre sums are the model's (`M.latch_toggle()`): the loop's pivot is 4
 so as the lever opens the pivot-to-hook distance first grows (dead centre at 18 deg, +0.60 mm) and then shrinks. The clip
 sets the loop 0.30 mm short of the shut distance (`PRELOAD`, ours: "just tight enough to seal", 178_sop Furnace 9), so the
 loop is taut from shut to 41 deg. Past that it is slack, and since a rigid loop cannot keep its bar on the hook while its
-pivot comes closer, the bar rides up the keeper's plate (at 150 deg it sits 26 mm up it). Lifted off and let go, the loop
-lies over the lever's web, which faces the lid while the lever stands up; folded down, the lever has the loop hanging over it,
-as in T4 5:08 and 5:29.5 ("it dangles, hanging down over the lever").
+pivot comes closer, the bar rides up the keeper's plate (by 85 deg it clears the hook's 3.4 mm lip; at 150 deg it would sit
+26 mm up the plate). Let back to 41.5 deg, the lever rests on the slack loop, its bar on the hook. Swung out over the lever's
+top (the loop's legs run outside the lever's flanges, so it can), the loop lies over the lever's web; folded down, the lever
+has the loop hanging over it, as in T4 5:08 and 5:29.5 ("it dangles, hanging down over the lever").
 
 The pull at the lever's free end: the loop's tension taken proportional to the squeeze past its set length, times its line's
 moment arm about the pivot, over the 133 mm from the pivot to where the 2F-85 holds it; scaled so its peak is chapter 2's
 100 N (Kipp K0080 cover latches: 100 / 150 / 200 N for 2 / 4 / 7 kN held). It peaks a few degrees before dead centre and is
 zero at it; past it the loop pulls the lever shut. That shape is geometry; the 100 N is an estimate (200 N if stiff).
+
+## The machine as drawn now (commit e3b1428)
+
+The lid assembly is turned 90 deg about the furnace axis: hinged on the **left** (DAL PR 189 measured it there), the knob
+and the latch on the housing's **right** face, the pneumatic bolt running back into the blue cabinet. #327's back hinge swung
+the lid into the cabinet: this clip's first audit found the hinge leaf 25 mm into it 5 deg after opening, and the cameras
+stream found the same. The latch above is worked out in the lid's own frame (`M.latch_geom(turned=False)`, joints `JL`/`JO`
+in atom_latch_tools) and carried onto the machine with `M.LID_TURN_T`; the model's own joints already answer in the turned
+frame. MiR250 1 now works the latch from the right of the furnace (its spot is picked in the clip from six candidates: the
+one whose arm follows the lever and the loop with the fewest collisions); MiR250 2 stays at the front left for the palm
+press and the lid, which opens up and over to the left, 105 deg.
 
 ## Unclamping (clip `atom_latch`, steps 1-7)
 
@@ -54,29 +66,25 @@ zero at it; past it the loop pulls the lever shut. That shape is geometry; the 1
 | 1 | Below 400 C: Melting Pressure off, Pressure Control off, Vent Valve | the machine (HMI) | DAL SOP Cooldown 2-3; 178_sop After a run |
 | 2 | At atmosphere the pneumatic bolt goes back and frees the lever | the machine | Kalicki (install call 22:04): it locks "once you change the pressure"; the release on venting is our reading |
 | 3 | Closed fingertips press the lid's top, ~100 N, so it can't jump | arm 2 | T4 5:17-5:24 (a palm on the lid); chapter 2's `press_pose`, `PRESS_AT` |
-| 4 | Pads on the lever's two side flanges 133 mm under the pivot; out and up about the top pivot, through dead centre (18 deg) to 150 deg | arm 1 | T4 5:29.5-5:41 read backwards; 150 deg not measured (5:32-5:34) |
-| 5 | The loop's two legs taken from outside; the bar lifted off the keeper and the loop laid over the lever | arm 2 | T4 5:30-5:35 (the hand lifts it off) |
-| 6 | The lever folded back down, the loop hanging over it | arm 1 | T4 5:08 |
-| 7 | The lid lifted by its knob about the back hinge | arm 1 | T4 5:14.5-5:16.5 (one rotation, no lift or slide) |
+| 4 | Pads on the lever's two side flanges 133 mm under the pivot; out and up about the top pivot, through dead centre (18 deg) to 60 deg; the loop goes slack at 41 deg | arm 1 | T4 5:29.5-5:41 read backwards |
+| 5 | The lever let back to 41.5 deg, where it rests on the slack loop (its bar on the hook again), and let go | arm 1 | ours: so one hand can do the rest |
+| 6 | The loop taken by its two legs; lifting it raises the lever to 85 deg on the loop's pin, so the bar rides up the plate over the hook's lip; then the loop swung out over the lever's top while the lever folds down with it | arm 1 | T4 5:30-5:35 (the hand lifts the loop off), 5:08 (the loop hanging over the folded lever) |
+| 7 | The lid swung up and over to the left by its knob, 105 deg about the left hinge, and let go | arm 2 | T4 5:14.5-5:16.5 (one rotation, no lift or slide); DAL PR 189 (hinge on the left) |
 
-**The lid only lifts 4 deg in the clip.** In the model the blue cabinet's front is at y = 165, 11 mm behind the lid's hinge
-line; the lid's hinge leaf meets it after 5 deg and the lid itself at 28.5 deg (FCL; the audit's movers check found the leaf 25
-mm into the cabinet when the clip opened the lid to 25 deg). The footage has the lid open ~105 deg, standing up behind the
-furnace (T4 1:53, 2:28, 5:08), so the cabinet or the hinge is misplaced in the model. Not fixed here (model.py, not this
-clip's); reported. Below its balance point (about 65 deg, from the lid's drawn mass, ours) the lid falls shut if let go, so
-the arm holds it while the furnace is worked on.
+The footage has the lever stood up to ~150 deg (T4 5:32-5:34) before the loop comes off. With one 2F-85 per arm and the latch
+now on the right face, out of arm 2's reach, the clip does it the one-handed way: the lever only goes past dead centre and the
+loop's slack point, and the loop does the rest. The over-centre physics is the same.
 
 ## Clamping (clip `atom_latch`, steps 8-9)
 
 | # | Step | Who | Source |
 | --- | --- | --- | --- |
-| 1 | IPA on the seal and the face it meets; the lid down by its knob | arm 1 (IPA: not shown) | DAL SOP Loading 8; 178_sop Furnace 9 (rub flakes off the lid faces, T8 11:26) |
-| 2 | The lever raised to 150 deg, the loop lying on it | arm 1 | |
-| 3 | The loop taken by its legs and its bar laid on the keeper's plate | arm 2 | T4 5:30-5:35 ("hook the loop on") |
-| 4 | Closed fingertips on the lid's top again | arm 2 | T4 5:17-5:24 |
-| 5 | The lever swung down: the bar slides onto the ledge, the loop goes taut at 41 deg, through dead centre (+0.60 mm squeeze, the pull's peak) and flat onto the base | arm 1 | T4 5:37.5-5:41 |
-| 6 | Vacuum Pump and Vacuum Valve: as the pressure changes the bolt comes in and locks the lever | the machine | DAL SOP Cold purge 7; Kalicki 22:04 |
-| 7 | The leak check: about -850 mbar, holding, no hiss | the machine; read off the HMI | DAL SOP Loading 8 ("adjust the latch until nothing hisses"), troubleshooting ("if the furnace can't reach -0.85 bar or the lid hisses, check the sealing rod, the seals and the latch") |
+| 1 | IPA on the seal and the face it meets; the lid down by its knob | arm 2 (IPA: not shown) | DAL SOP Loading 8; 178_sop Furnace 9 (rub flakes off the lid faces, T8 11:26) |
+| 2 | The loop taken by its legs and swung back over the lever's top onto the keeper's plate, raising the lever to 85 deg; lowered, the bar slides down onto the hook and the lever rests at 41.5 deg | arm 1 | T4 5:30-5:35 ("hook the loop on") |
+| 3 | Closed fingertips on the lid's top again | arm 2 | T4 5:17-5:24 |
+| 4 | The lever's free end swung down: through dead centre (+0.60 mm squeeze, the pull's peak) and flat onto the base | arm 1 | T4 5:37.5-5:41 |
+| 5 | Vacuum Pump and Vacuum Valve: as the pressure changes the bolt comes in and locks the lever | the machine | DAL SOP Cold purge 7; Kalicki 22:04 |
+| 6 | The leak check: about -850 mbar, holding, no hiss | the machine; read off the HMI | DAL SOP Loading 8 ("adjust the latch until nothing hisses"), troubleshooting ("if the furnace can't reach -0.85 bar or the lid hisses, check the sealing rod, the seals and the latch") |
 
 **The adjuster.** "Secure the latch just tight enough to seal; if it hisses, loosen, adjust the latch and retighten" (178_sop
 Furnace 9; T4 5:17, T8 9:09). Neither the model nor the footage shows how the latch is adjusted. The clip's loop has lock nuts
@@ -98,6 +106,13 @@ Both have at least 2.5 times the stiff latch's 200 N. The numbers without the ba
 `out/atom/atom_latch_stability.json` (written by the render).
 
 ## The container (clip `atom_container`)
+
+**What the rendered clip shows: steps 1-5 below** (the state, the brushing, the dust settling, the valve shut). Steps 6-13
+are written in `atom_container.py` (`ATOM_CONTAINER_FULL=1` runs them) but their two-arm moves still collide: its audit at
+01:42 found 994 frames in collision in those steps (arm 2's forearm folding onto its own MiR250 with the fork under the
+container, arm 1 and arm 2 crowding the clamp). Not rendered; the next session should move MiR250 2 (the fork's arm) and
+re-plan them. The view port's glass is not brushed either: from the door the long brush's grip meets the ultrasonic stack on
+the open door.
 
 | # | Step | Who | Source |
 | --- | --- | --- | --- |
@@ -123,7 +138,7 @@ prongs pass under its flat bottom; the cradles have rails it stands on and a slo
 4.3 kg empty (`out/atom/atom_container_mass.json`, written by the render). A real ball valve weighs more than the drawn tube,
 so this is a floor: "it is heavier than it looks" (178_sop Chamber 1). Powder: 0.14 kg for chapter 2's four cups, about 0.5 kg
 for a 225 cm3 crucible of Al as filled on Oct 27, about 1.6 kg of NAB bronze. With the fork (~0.9 kg) that is 5.3-6.8 kg: well
-inside the UR10e's 12.5 kg, **but over the Robotiq 2F-85's 5 kg rated payload with a full crucible's powder**. For a heavy run
+inside the UR10e's 12.5 kg, **but over the Robotiq 2F-85's rated payload (5 kg form-fit, 4.7-5 kg friction at a 0.3-0.4 friction coefficient; Robotiq's product page and product sheet) with a full crucible's powder**. For a heavy run
 the fork would want a form-fit lock to the gripper's fingers, or both arms under it.
 
 **Which valve.** The model has two: the chamber's (green handle, `valve_handle`, in the fixed group "chamber") and the
@@ -150,8 +165,7 @@ with a wing nut, a chain clamp, a V-band).
 ## Open questions for the lab
 
 1. How is the furnace latch adjusted, if at all (a threaded loop, shims, a screw in the keeper)?
-2. Does the lid open to a stop at ~105 deg, and how far behind the furnace is the blue cabinet's front really (the model's 165 mm
-   from the furnace axis stops the lid at 5 deg)?
+2. Does the lid open to a stop at ~105 deg over the left, as the turned model has it?
 3. What clamp joins the container to the outlet, and how many turns free it?
 4. Is the chamber's own valve (above the clamp) shut before the container comes off, or only the container's?
 5. What does a full container weigh (valve included)? The model says at least 4.3 kg empty.

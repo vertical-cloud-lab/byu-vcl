@@ -47,7 +47,13 @@ def _model():
 
 
 M = _model()
-G = M.latch_geom()
+# Everything here is worked out in the lid assembly's own frame (the latch on its front face, y = -135, as the third
+# pass drew it) and carried onto the machine with M.LID_TURN_T: since commit e3b1428 the lid assembly is turned 90 deg
+# about the furnace axis (hinged on the left, the latch on the housing's right face, the bolt running back into the
+# cabinet). M.joint_matrix / joint_world answer in the turned frame; JL / JO below are the same joints in the lid's.
+TURN = np.asarray(M.LID_TURN_T, float)
+TURN_INV = np.linalg.inv(TURN)
+G = M.latch_geom(turned=False)
 LX = float(G["x"])
 YF = float(G["yface"])                      # the housing's flat, y = -135
 PIV = np.asarray(G["pivot"], float)         # the lever's pivot (72, -150, 1330)
@@ -136,10 +142,11 @@ def latch_meshes() -> dict:
     kp = kp.clean()
     pin = _cylx(lx - 26.5, lx + 26.5, py, pz, 3.0).fuse(_cylx(lx - 27.5, lx - 26.5, py, pz, 4.5)) \
         .fuse(_cylx(lx + 26.5, lx + 27.5, py, pz, 4.5))
-    return {"latch_lever": (_tess(lev), M.STEEL, "latch_lever"),
-            "latch_loop": (_tess(loop), M.STEEL_DK, "latch_loop"),
-            "latch_keeper": (_tess(kp), M.STEEL, "hood"),
-            "latch_pin": (_tess(pin), M.STEEL_DK, "furnace")}
+    out = {"latch_lever": (_tess(lev), M.STEEL, "latch_lever"),
+           "latch_loop": (_tess(loop), M.STEEL_DK, "latch_loop"),
+           "latch_keeper": (_tess(kp), M.STEEL, "hood"),
+           "latch_pin": (_tess(pin), M.STEEL_DK, "furnace")}
+    return {k: (m.transform(TURN, inplace=False), c, g) for k, (m, c, g) in out.items()}   # onto the machine
 
 
 # ---------------------------------------------------------------------------------------------- the loop's motion
@@ -147,15 +154,30 @@ def lever_deg(v: float) -> float:
     return float(v) * M.LATCH_OPEN_DEG
 
 
+def JL(v: float) -> np.ndarray:
+    """The lever's joint in the lid's own frame (about -x through its pivot), v = 0..1 of 150 deg."""
+    return M._hinge_m(PIV, (-1.0, 0.0, 0.0), M.LATCH_OPEN_DEG * float(v))
+
+
+def JO(t: float) -> np.ndarray:
+    """The loop's joint in the lever's frame, lid's own frame, t = 0..1 of 180 deg (any sign)."""
+    return M._hinge_m(Q0, (-1.0, 0.0, 0.0), M.LOOP_OPEN_DEG * float(t))
+
+
+def turn(p) -> np.ndarray:
+    """A lid-frame point -> the model frame."""
+    return (TURN @ np.r_[np.asarray(p, float)[:3], 1.0])[:3]
+
+
 def loop_pivot(v: float) -> np.ndarray:
-    """The loop's pivot (model frame) with the lever at v (0..1 of its 150 deg)."""
-    return (M.joint_matrix("latch", v) @ np.r_[Q0, 1.0])[:3]
+    """The loop's pivot (lid frame) with the lever at v (0..1 of its 150 deg)."""
+    return (JL(v) @ np.r_[Q0, 1.0])[:3]
 
 
 def _loop_value_for(v: float, bar: np.ndarray) -> float:
     """The 'loop' joint value (0..1 of 180 deg, any sign) that puts the bar's centre at `bar` (same distance as the
     loop) with the lever at v."""
-    Ml = M.joint_matrix("latch", v)
+    Ml = JL(v)
     Q = (Ml @ np.r_[Q0, 1.0])[:3]
     d_rest = HOOK - Q0
     d_now = np.linalg.inv(Ml[:3, :3]) @ (bar - Q)
