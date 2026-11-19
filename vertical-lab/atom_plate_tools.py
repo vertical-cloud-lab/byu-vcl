@@ -8,9 +8,9 @@ What is the lab's and what is ours (notes/atom_plate.md has the sources):
   - the door's two swing bolts are redrawn standing 22 mm further off the front face, on lugs added to the door's
     front edge. As modelled, the knob's lobes reach 10 mm behind the face plane (y -110 against the face at -120), so
     swinging the bolt along the face would cut through the chamber, and the top bolt's pin sits inside the viewport
-    hood (FCL: 8.7 mm deep shut, 37 mm at 180 deg). The top bolt here swings 90 deg up (the hood is in the way of
-    180); the lower one 180 deg over the top, as in T5 27:16. Pin heights are the model's; the top pin is 14 mm
-    further left (clear of the hood).
+    hood (FCL: 8.7 mm deep shut, 37 mm at 180 deg). The top bolt here swings 60 deg up (the hood is in the way of
+    more, and the lug's path rules out less); the lower one 180 deg over the top, as in T5 27:16. Pin heights are the
+    model's; the top pin is 22 mm further left (clear of the hood).
 * Ours, to make: the stack wrench (two coaxial 17 mm heads, one fixed to counter-hold the lower sonotrode's flats,
   one driven through a slip clutch set to 50 N m; the reaction closes inside the tool), its holder, the plate rack,
   the upper sonotrode's tray, the gauge plate's holder, the IPA dropper's holder and the wipe pad's holder.
@@ -153,7 +153,8 @@ BOLT_Y = M.CH_Y[0] - 30.0            # the rod's axis, 30 mm in front of the fac
 PIN_X = (-112.0, M.DCLAMP_X)         # top: 22 mm left of the model's -90, clear of the viewport hood; lower: -90
 BOLT_Z = M.DCLAMP_Z                  # 1035, 840 (DAL #189 heights)
 LUG_X = (M.CH_X[0] - M.DOOR_T, M.CH_X[0] - M.DOOR_T + 8.0)   # the model's ear: x -131..-123
-KNOB_GAP = 0.0                       # the knob's face against the lug when tight
+KNOB_GAP = 1.5                       # the knob's face against the lug when tight (1.5: drawn a hair off, so the mesh
+                                     # facets don't read as a contact)
 KNOB_PITCH = 1.75                    # M12 coarse (assumed)
 KNOB_TURNS = 1.0                     # the arm backs each knob off one turn, 1.75 mm (ours)
 SWING_DEG = (60.0, 180.0)            # top: 60 deg up, clear of the hood and of the lug's path; lower: over the top (T5 27:16)
@@ -278,7 +279,7 @@ def socket_meshes() -> dict:
     return {"socket": (merge(tube, inner, ring, lid, *jaws), (0.80, 0.81, 0.83)), "spindle": (stem, STEEL)}
 
 
-WR_GRASP = np.array([0.0, (WR_HANDLE[0] + WR_HANDLE[1]) / 2, LOW_HEAD_Z[0] + 32.0])
+WR_GRASP = np.array([0.0, (WR_HANDLE[0] + WR_HANDLE[1]) / 2 - 4.0, LOW_HEAD_Z[0] + 32.0])   # tips 1 mm off the spine
 
 # ------------------------------------------------------------------------------------------------ fixtures on MiR 2
 # MiR-local coordinates on a shelf over the cabinet top (z = TOP); the arm stands at (0, 130). Everything here is ours.
@@ -304,8 +305,8 @@ RACK_H = 40.0                       # the plates stand on their hole end in 40 m
 TRAY_AT = (95.0, -210.0)            # the upper sonotrode's tray (two sockets: used, spare)
 WR_AT = (250.0, -150.0)             # the stack wrench's holder
 GAUGE_AT = (200.0, -255.0)          # the gauge plate's holder
-DROP_AT = (345.0, -232.0)          # the IPA dropper's holder
-WIPE_AT = (345.0, -125.0)           # the wipe pad's holder
+DROP_AT = (345.0, -125.0)          # the IPA dropper's holder
+WIPE_AT = (345.0, -232.0)           # the wipe pad's holder
 
 SLOT_NAMES = ("Al-10Si  CF  #02", "Al-10Si  CF  #03", "NAB  W-CF  new", "NAB  W-CF  used", "spare")
 
@@ -353,8 +354,9 @@ def tray_meshes() -> dict:
     a, b = UPPER_R + 1.0, UPPER_R + 6.0          # a square socket, 1 mm round the sonotrode
     for s in (-1, 1):
         cx = x + s * 32
-        out += [box(cx - b, cx + b, y - b, y - a, TOP, TOP + 24), box(cx - b, cx + b, y + a, y + b, TOP, TOP + 24),
-                box(cx - b, cx - a, y - a, y + a, TOP, TOP + 24), box(cx + a, cx + b, y - a, y + a, TOP, TOP + 24),
+        h = TOP + 7.0                            # a 3 mm deep socket over its 4 mm floor: the fingertips stay clear
+        out += [box(cx - b, cx + b, y - b, y - a, TOP, h), box(cx - b, cx + b, y + a, y + b, TOP, h),
+                box(cx - b, cx - a, y - a, y + a, TOP, h), box(cx + a, cx + b, y - a, y + a, TOP, h),
                 box(cx - b, cx + b, y - b, y + b, TOP, TOP + 4)]
     return {"tray": (merge(*out), (0.30, 0.32, 0.36))}
 
@@ -398,18 +400,19 @@ def gauge_meshes() -> dict:
 
 
 def gauge_holder() -> pv.PolyData:
+    """A slot that holds the gauge plate on its end (ours)."""
     x, y = GAUGE_AT
-    return merge(box(x - 40, x + 40, y - 20, y + 20, TOP, TOP + 4),
-                 box(x - 34, x + 34, y - 16, y - 12.5, TOP + 4, TOP + 14),
-                 box(x - 34, x + 34, y + 12.5, y + 16, TOP + 4, TOP + 14))
+    return merge(box(x - 26, x + 26, y - 16, y + 16, TOP, TOP + 4),
+                 box(x - 14, x + 14, y + 1.5, y + 5.0, TOP + 4, TOP + 16),
+                 box(x - 14, x + 14, y - 5.0, y - 1.5, TOP + 4, TOP + 16))
 
 
 def gauge_in_holder() -> np.ndarray:
-    """The gauge plate standing on its long edge in the holder (MiR-local): its length along x, width up."""
+    """The gauge plate standing on its end in the holder (MiR-local): its length up, its width along x."""
     x, y = GAUGE_AT
     Mx = np.eye(4)
-    Mx[:3, 0], Mx[:3, 1], Mx[:3, 2] = (1, 0, 0), (0, 0, 1), (0, -1, 0)
-    Mx[:3, 3] = (x - GAUGE_L / 2, y + GAUGE_T / 2, TOP + 4 + GAUGE_W / 2)
+    Mx[:3, 0], Mx[:3, 1], Mx[:3, 2] = (0, 0, 1), (1, 0, 0), (0, 1, 0)
+    Mx[:3, 3] = (x, y - GAUGE_T / 2, TOP + 4.0)
     return Mx
 
 

@@ -491,6 +491,11 @@ def main():
     cam_deck = AB.cam((-120, -1750, 1500), (-600, -860, 820))
     sc.cam = list(cam_far)
 
+    if os.environ.get("PLATE_COMBINED") and sc.auditor is None:
+        import collide                                 # the final pass renders and audits at once (coordinator)
+        sc.auditor = collide.Auditor(sc)
+        sc.frame_hooks.append(sc.auditor)
+
     def mirw(p):
         return mb.world(np.asarray(p, float))
 
@@ -527,7 +532,7 @@ def main():
                    rb.grip_to(close_knob), hold=0.0)
             rb.grasp(f"bolt{k}")
             c.step(L(2), ("... and over the top, along the face (T5 27:16)." if k == 1 else
-                          "... the top one only 90 deg up: the viewport hood is in the way of 180 (ours)."),
+                          "... the top one only 60 deg up: the viewport hood is in the way of 180 (ours)."),
                    1.6 if k == 1 else 1.2,
                    track(rb, lambda u, G1=G1, pin=pin, deg=deg: R((0, 1, 0), deg * u, pin) @ G1, n=60), hold=0.0)
             rb.release("rp")
@@ -828,7 +833,7 @@ def main():
         c.step(L(11), "The camera checks the plate is square to the hatch (step 14; within 2 deg, ours) ...", 2.0,
                rb.joint_to(Tw=look), hold=0.6, cam_to=cam_stack)
         # the gauge plate: from its holder, its end laid against the upper sonotrode between the lines
-        Gg = local_tcp((PT.GAUGE_L - 12.0, PT.GAUGE_W / 2 - 4.0, PT.GAUGE_T / 2), (0, -1, 0), (0, 0, 1))
+        Gg = local_tcp((PT.GAUGE_L - 12.0, 0.0, PT.GAUGE_T / 2), (-1, 0, 0), (0, 0, 1))
         Gh = at_mir(PT.gauge_in_holder()) @ Gg
         c.step(L(11), "... and the height: the Mo gauge plate (a retired plate cut short, DAL #164).", 2.0,
                rb.joint_to(Tw=Gh @ T((0, 0, -60))), hold=0.0, cam_to=cam_deck)
@@ -851,7 +856,7 @@ def main():
         Gf[:3, 0], Gf[:3, 1] = side, (0, 0, 1)
         Gf[:3, 2] = np.cross(Gf[:3, 0], Gf[:3, 1])
         Gf[:3, 3] = tip - Gf[:3, 1] * (PT.GAUGE_W / 2) - Gf[:3, 2] * (PT.GAUGE_T / 2)
-        Gg2 = local_tcp((PT.GAUGE_L - 12.0, PT.GAUGE_W / 2 - 4.0, PT.GAUGE_T / 2), (0, -1, 0), (0, 0, 1))
+        Gg2 = Gg
         Gtcp = Gf @ Gg2
         c.step(L(11), "Laid level against the upper sonotrode: its edge falls between the Sharpie lines, so the plate "
                "is at the logged height (step 15).", 2.2, rb.joint_to(Tw=Gtcp @ T((0, 0, -30))), hold=0.0,
@@ -876,7 +881,7 @@ def main():
         c.status(Scan="40.10 kHz, one peak")
         c.inset = None
         # wet test: the dropper, taken from the side, then turned nozzle-down by the wrist over the plate
-        Gd = local_tcp((0.0, 0.0, 40.0), (0, -1, 0), (1, 0, 0))
+        Gd = local_tcp((0.0, 0.0, 40.0), (-1, 0, 0), (0, 1, 0))     # from the shelf's outer side, camera on top
         Dh = at_mir(T((PT.DROP_AT[0], PT.DROP_AT[1], PT.TOP + 4.0))) @ Gd
         c.step(L(11), "Wet test: the IPA dropper ...", 1.8, rb.joint_to(Tw=Dh @ T((0, 0, -60))), hold=0.0,
                cam_to=cam_deck)
@@ -886,14 +891,14 @@ def main():
         c.step(L(11), "Wet test: the IPA dropper ...", 0.6, rb.line_to(T((0, 0, 80)) @ Dh), hold=0.0)
         Fs = c.stack_world()
         spot = (Fs @ np.r_[95.0, 0.0, PT.PLATE_T, 1.0])[:3]
-        Bm = np.eye(4)                                  # the bottle upside down, its nozzle 52 mm over the spot
-        Bm[:3, 0], Bm[:3, 1], Bm[:3, 2] = (1, 0, 0), (0, -1, 0), (0, 0, -1)
-        Bm[:3, 3] = spot + np.array([0, 0, 52.0 + 90.0])
+        Bm = np.eye(4)                                  # the bottle upside down, its nozzle 77 mm over the spot
+        Bm[:3, 0], Bm[:3, 1], Bm[:3, 2] = (-1, 0, 0), (0, 1, 0), (0, 0, -1)
+        Bm[:3, 3] = spot + np.array([0, 0, 77.0 + 90.0])
         Gdrop = Bm @ Gd
         c.step(L(11), "... over the plate, turned nozzle-down.", 2.4, rb.joint_to(Tw=Gdrop), hold=0.0,
                cam_to=cam_stack)
-        drop_from = spot + np.array([0, 0, 52.0])
-        fall = math.sqrt(2 * 0.052 / 9.81)                 # s: a drop falls 52 mm in 0.10 s
+        drop_from = spot + np.array([0, 0, 77.0 - 3.0])    # a drop hangs just under the nozzle
+        fall = math.sqrt(2 * 0.074 / 9.81)                 # s: it falls 74 mm in 0.12 s
         mist0 = np.array([(Fs @ np.r_[RNG.uniform(-8, 105), RNG.uniform(-9, 9), PT.PLATE_T, 1.0])[:3]
                           for _ in range(c.mist_n)])
         vel = np.array([Fs[:3, :3] @ np.r_[RNG.normal(0, 0.15), RNG.normal(0, 0.15), 1.0] for _ in range(c.mist_n)])
@@ -932,7 +937,7 @@ def main():
 
     # ------------------------------------------------------------------ 12: seals, door shut, landing, bolts
     if chapter():
-        Gwp = local_tcp((0.0, 0.0, 55.0), (0, -1, 0), (1, 0, 0))     # the wipe's stem, from the side
+        Gwp = local_tcp((0.0, 0.0, 62.0), (0, 0, -1), (1, 0, 0))     # the wipe's stem, from above, along it
         W0 = T((PT.WIPE_AT[0], PT.WIPE_AT[1], PT.TOP + 4.0))
         Wp = at_mir(W0) @ Gwp
         c.step(L(12), "The wipe pad, wet with IPA (ours) ...", 1.8, rb.joint_to(Tw=Wp @ T((0, 0, -60))), hold=0.0,
@@ -955,9 +960,9 @@ def main():
             i = min(int(f), len(pts) - 2)
             p = np.array(pts[i], float) + (np.array(pts[i + 1], float) - np.array(pts[i], float)) * (f - i)
             return pad_pose(p)
-        c.step(L(12), "... along the door's seal face (step 18; here the top and the front side, the rest the same "
-               "way).", 2.4, rb.joint_to(Tw=loop(0.0) @ T((0, 0, -40))), hold=0.0, cam_to=cam_open)
-        c.step(L(12), "... along the door's seal face (step 18) ...", 0.5, rb.line_to(loop(0.0)), hold=0.0)
+        approach(c, rb, L(12), "... along the door's seal face (step 18; here the top and the front side, the rest the "
+                 "same way).", loop(0.0) @ T((0, 0, -40)), loop(0.0), loop, close_stem, skip=("wipe",), secs=(2.4, 0.5),
+                 pre_close=close_stem, cam_to=cam_open)
         c.step(L(12), "... along the door's seal face (step 18) ...", 2.6, track(rb, loop, n=70), hold=0.0)
         c.step(L(12), "Wipe back.", 0.5, rb.line_to(loop(1.0) @ T((0, 0, -50))), hold=0.0)
         Wp = at_mir(W0) @ Gwp
@@ -981,7 +986,7 @@ def main():
                both(rb.grip_to(OPEN), rb.line_to(door_pose(0.0) @ T((0, 0, -70)))), hold=0.0)
         c.status(Door="shut")
         # landing check: the laser down the empty nozzle
-        cam_land = AB.cam((-260, -820, 1060), (-25, 0, 930))
+        cam_land = AB.cam((90, -720, 1010), (-25, 10, 915))
 
         ours = [n for n in sc.actors if n.startswith("plate bolt") or n == "plate door lugs"]
 
@@ -1022,6 +1027,8 @@ def main():
                "Logged for the run (DAL 253 Run Log item 3).", 1.8, rb.joint_to(q1=np.radians(AB.AA.A.PARK_DEG)),
                hold=1.6, cam_to=cam_far, still=True)
     AB.finish(sc)
+    if os.environ.get("PLATE_COMBINED") and sc.auditor is not None and not AB.AA.AUDIT:
+        print(sc.auditor.save(), flush=True)
 
 
 both = AB.both

@@ -27,7 +27,7 @@ HMI; **person** = nobody in the clip (see "What a person still does").
 | # | Step | Source | Who | Clip |
 | --- | --- | --- | --- | --- |
 | 0 | Chamber vented and cold before anything opens | 253 Safety 5; 178 After a run | machine (state) | caption, 1/12 |
-| 1 | Two door bolts: knob loosened one turn, bolt swung out of its lug | model joints `clamp0/1`; T5 27:16 | arm 2 | 2/12 |
+| 1 | Two door bolts: knob loosened one turn (two half-turn grasps), bolt swung out of its lug | model joints `clamp0/1`; T5 27:16 | arm 2 | 2/12 |
 | 2 | Door open 100 deg on its back hinge; the stack rides out on it | model `door`; 178 step 8 | arm 2 | 3/12 |
 | 3 | Plate's condition: crack, dark edge spot, metal that will not lift off | 253 Cleaning 6; 178 plates (T7 50:21) | arm 2 (D405) | 4/12 |
 | 4 | Upper sonotrode broken loose (counter-held) | 253 step 13 in reverse; 178 step 5 | arm 2 + stack wrench | 5/12 |
@@ -85,23 +85,33 @@ have to share the 16 mm of axis between the lower flats and the plate, through a
   tightening torque), then the thread runs free.
 - The clutch is set and checked against the lab's own torque wrench (178 step 5).
 
-**Other fixtures (ours, all on MiR 2's cabinet top, `PT.TOP` = 780 mm):** a per-alloy plate rack with five labelled
+**Other fixtures (ours, all on a 150 mm shelf over MiR 2's cabinet top, `PT.TOP` = 930 mm; on the bare cabinet top
+the arm had to fold down to its own mounting plane and every IK branch put its upper arm into the cabinet):** a
+per-alloy plate rack with five labelled
 slots, plates standing on their hole end 52 mm apart so the 2F-85's fingers fit between them; a two-socket tray for the
 upper sonotrode; the wrench's holder; the gauge plate's holder; the IPA dropper's holder; a wipe pad (lint-free wipe
 over foam on a stem) and its holder. Part numbers: `out/atom/plate_bom.json`.
 
 ## Forces, turns and times
 
-- Knob: one turn (M12 coarse assumed, 1.75 mm back off the lug); the bolt then lifts out of the lug's slot, which is
-  open on top (ours).
+- Knob: one turn (M12 coarse assumed, 1.75 mm back off the lug) in two grasps of half a turn; the bolt then lifts out
+  of the lug's slot, which is open on top (ours). The pads grip the knob's lobes 13 mm out from its middle: the
+  2F-85's fingertips reach 18 mm past the grasp point and are 31 mm deep across the closing direction, so closer in
+  they would sweep into the door's front edge as the wrist turns.
+- The door is pulled open by the lower lug, the pads on its top and bottom faces (22 mm apart), 21 mm in front of
+  the door's edge.
 - Upper sonotrode by hand: the connector's outer half is 12 mm, less the 2.5 mm plate, so 9.5 mm of M8 coarse (1.25 mm
   pitch) = 7.6 turns. The 2F-85 grips it below the Sharpie lines (friction, ~1.4 N m available, ours) and turns it
-  330 deg a grasp with the wrist (9 grasps each way). The wrist turns about the flange's own axis, so `spin()` puts
-  the turn on joint 6 alone and the thread's advance (1.25 mm a turn) on the rest of the arm.
+  half a turn a grasp with the wrist (16 grasps each way), from 90 deg one side of centre to 90 deg the other, so
+  the wrist camera never swings round into the arm's own forearm. The wrist turns about the flange's own axis, so
+  `spin()` puts the turn on joint 6 alone and the thread's advance (1.25 mm a turn) on the rest of the arm.
+- Before each grasp-then-move (a knob, a bolt's swing, the door, the upper sonotrode), `branch_for()` tries every IK
+  branch of the grasp and follows the move from it, and the arm goes to the first branch that keeps clear (after
+  chapter 2's `arc_branch`).
 - Final torque: from snug to 50 N m over 20 deg (ours; the real angle depends on the joint's stiffness).
 - Plate off and on: straight along the axis, 14 mm, over the 12 mm stud, so it is never forced through the 8 mm ring
   (178 step 9: one snapped at its hole's edge).
-- Wet test: three drops fall 52 mm from the dropper's nozzle in 0.10 s each (free fall, drawn at that speed); the mist
+- Wet test: three drops fall 74 mm from the dropper's nozzle in 0.12 s each (free fall, drawn at that speed); the mist
   leaves the face at 20-70 mm/s (ours).
 - Clip timing: every sub-step runs at `SPEED` = 0.74 of the first cut. The arm's transfers stay under 1 m/s at the TCP.
   The real robot would also need the D405 checks to run (a few seconds each), and the vibration for the wet test.
@@ -124,8 +134,11 @@ over foam on a stem) and its holder. Part numbers: `out/atom/plate_bom.json`.
   This clip hides the model's bolts and brackets (`clamp0/1`, `clamp_body0/1`) and draws its own: the rod 30 mm in
   front of the face (not 8), on a standoff bracket, through new lugs on the door's front edge (a fork open on top). The
   lower bolt swings 180 deg over the top, along the face (T5 27:16 shows the lower one swung out to the right); the top
-  one swings 90 deg up, because the hood is in the way of 180, and its pin is 14 mm further left (x -104), clear of
-  the hood. **To fix in the model.**
+  one swings 60 deg up, because the hood is in the way of more and the lug's path (as the door opens) rules out less,
+  and its pin is 22 mm further left (x -112), clear of the hood. **To fix in the model.**
+- **Air hose.** The model draws the compressed-air line to the transducer's cover as a fixed line, so the cover swung
+  through it when the door opened (the audit's movers check: 25-50 mm). The hose is flexible; here its last two points
+  ride on the door.
 - **Upper sonotrode.** Drawn with two 17 mm flats at its free end (the SOP torques it with a 17 mm wrench; the model
   draws it round; where the real flats are is not recorded) and two Sharpie lines 36 and 42 mm from its plate face
   (#164's "optimal about 3.9 cm", with no datum given).
