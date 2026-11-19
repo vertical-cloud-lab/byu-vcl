@@ -21,7 +21,16 @@ Builds three printable parts with CadQuery and writes STEP + STL:
          slots (20 mm apart), a dovetail channel for the housing's tongue with
          a bottom stop, and a 3.2 mm cross hole to pin the housing in place.
 
-Run:  python build.py [outdir]     (needs cadquery)
+Triangle-interface versions (2026-11-19, @benwhitney5463 on #354):
+
+  key_tri   the same clip-in key with Cubware's triangular nub on top instead of
+            the stem: the stir module's nub, a sharp equilateral triangle of
+            3.1 mm circumradius (one corner toward -y) grown all round by 1.15 mm,
+            2.0 mm tall. That is 0.05 mm a side bigger than Cubware's 2.1 mm deep
+            R1.1 pocket, so it presses in. It fits every part with that pocket.
+  rack_tri  the same rack with two of those pockets in place of the stem pockets.
+
+Run:  python build.py [outdir] [rack,key,bar,rack_tri,key_tri]     (needs cadquery)
 All dimensions in mm.  Rack frame: z=0 is the rack bottom (deck top), vial 1 at
 (0,0), vials along -y.  Key frame: z=0 is the deck top.  Bar frame: y=0 is the
 backboard's front face, z=0 the bar's top.
@@ -65,6 +74,16 @@ P = dict(
     barb_top=-8.85,         # retention ramp starts here (protrusion 0) ...
     ramp_deg=30.0,          # ... at 30 deg from vertical, both ramps
     rib_h=0.35, rib_w=0.6,  # crush ribs on the stem
+    # ---- triangle interface (key_tri, rack_tri): Cubware's key nub and pocket, at the stir module's
+    # press (hardware/vial-stirrer-cubxl, fit test of 2026-10-22). Both outlines are a sharp equilateral
+    # triangle of circumradius tri_r, one corner toward -y, grown all round by a corner radius. ----
+    tri_r=3.1,              # sharp triangle's circumradius
+    tri_pocket_r=1.1,       # pocket corner radius (Cubware's): A 6.85, B 7.57 mm
+    tri_pocket_depth=2.1,
+    nub_press=0.05,         # nub = pocket grown by this all round: 0.05 mm interference a side (A 6.95, B 7.67)
+    nub_h=2.0,
+    nub_lead=0.3,           # 45-degree lead-in chamfer round the nub's top
+    mark_step=0.05,         # one dimple in the key's top face per 0.05 mm of press, at the end away from the point
     # ---- bar ----
     bar_w=13.0, bar_t=10.0, bar_len=135.0,
     prong_t=2.7, prong_h=5.6, prong_len=6.4, hook_drop=3.2, hook_t=3.0, prong_pitch=20.0, prong_top=8.0,
@@ -135,11 +154,21 @@ def cup_cuts_and_adds(p):
                 .edges("|Z").fillet(0.3))
     return cut, adds
 
+def tri_prism(r, z0, z1, cx=0.0, cy=0.0, p=P):
+    """Cubware's rounded triangle (vial_stirrer.fs mkNub): a sharp equilateral triangle of
+    circumradius tri_r, one corner toward -y, grown all round by r (straight flats, R = r
+    corners), extruded from z0 to z1 at (cx, cy)."""
+    t = p["tri_r"]
+    pts = [(cx, cy - t), (cx + t * math.sqrt(3) / 2, cy + t / 2), (cx - t * math.sqrt(3) / 2, cy + t / 2)]
+    return cq.Workplane("XY").workplane(offset=z0).polyline(pts).close().offset2D(r, "arc").extrude(z1 - z0)
+
 def stem_profile(p, grow=0.0):
     return (cq.Workplane("XY").rect(p["stem_x"] + 2 * grow, p["stem_y"] + 2 * grow)
             .extrude(1).edges("|Z").fillet(p["stem_r"]).faces("<Z").wires().toPending())
 
-def build_rack(p=P):
+def build_rack(p=P, pocket="stem"):
+    """pocket="stem": the 6.1 x 12.1 mm crush-rib stem pockets (v2, printed 2026-11-19).
+    pocket="tri": Cubware's triangular key pockets, as in 9VialHolder20mL_TightFit (rack_tri)."""
     L, W, H = p["length"], p["width"], p["height"]
     r = W / 2
     yc = [-i * p["pitch"] for i in range(p["n_vials"])]
@@ -153,7 +182,7 @@ def build_rack(p=P):
             body = body.union(a.translate((0, y, 0)))
     # key pockets (stem + clearance), from the bottom
     c = p["pocket_clear"]
-    for ky in p["key_y"]:
+    for ky in (p["key_y"] if pocket == "stem" else ()):
         pocket = (cq.Workplane("XY").rect(p["stem_x"] + 2 * c, p["stem_y"] + 2 * c).extrude(p["stem_h"] + p["pocket_extra_depth"])
                   .edges("|Z").fillet(p["stem_r"] + c).translate((0, ky, -0.01)))
         body = body.cut(pocket)
@@ -166,9 +195,17 @@ def build_rack(p=P):
         body = body.faces("<Z").edges().chamfer(0.4)
     except Exception:
         pass
+    if pocket == "tri":
+        # cut after the chamfer, so the pocket is Cubware's all the way to its mouth, like the
+        # original rack's and the stir module's (the slicer's elephant-foot compensation widens
+        # the first layer, which starts the nub)
+        for ky in p["key_y"]:
+            body = body.cut(tri_prism(p["tri_pocket_r"], -0.01, p["tri_pocket_depth"], 0.0, ky, p))
     return body
 
-def build_key(p=P):
+def build_key(p=P, top="stem"):
+    """top="stem": the 6 x 12 x 5 mm crush-rib stem (v2_1).  top="tri": Cubware's triangular nub at
+    the stir module's 0.05 mm press, with its dimple (key_tri).  Everything below z = 0 is the same."""
     w, l = p["pill_w"], p["pill_l"]
     hx = w / 2
     # rigid locating pill z in [rigid_bottom, 0]
@@ -218,6 +255,18 @@ def build_key(p=P):
         prof = [(s * (hx - 0.3), min(zt_b + 0.3, arm_top)), (s * hx, min(zt_b, arm_top)), (s * (hx + u), z_tip), (s * (hx + u), z_tip - 0.25), (s * hx, z_bot - 0.25), (s * (hx - 0.3), z_bot - 0.25)]
         barb = cq.Workplane("XZ").polyline(prof).close().extrude(-(by1 - by0)).translate((0, by0, 0))
         key = key.union(barb)
+    if top == "tri":
+        # Cubware's nub, grown by nub_press over the pocket, with a lead-in round its top
+        # (vial_stirrer.fs makeKey; the stir module's deck_key.stl)
+        nub = (tri_prism(p["tri_pocket_r"] + p["nub_press"], -0.01, p["nub_h"], 0.0, 0.0, p)
+               .faces(">Z").edges().chamfer(p["nub_lead"]))
+        key = key.union(nub)
+        # dimples, Ø1.2 x 0.4 mm, at the end away from the nub's point: one per 0.05 mm of press
+        n = int(round(p["nub_press"] / p["mark_step"]))
+        for k in range(n):
+            key = key.cut(cq.Workplane("XY").center((k - (n - 1) / 2) * 2.2, 8.5).circle(0.6).extrude(0.9)
+                          .translate((0, 0, -0.4)))
+        return key
     # top stem with crush ribs
     stem = (cq.Workplane("XY").rect(p["stem_x"], p["stem_y"]).extrude(p["stem_h"]).edges("|Z").fillet(p["stem_r"])
             .faces(">Z").edges().chamfer(0.5))
@@ -286,11 +335,16 @@ def export(obj, name, outdir):
 
 if __name__ == "__main__":
     out = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
-    which = sys.argv[2].split(",") if len(sys.argv) > 2 else ["rack", "key", "bar"]
-    builders = {"rack": build_rack, "key": build_key, "bar": build_bar}
+    which = sys.argv[2].split(",") if len(sys.argv) > 2 else ["rack", "key", "bar", "rack_tri", "key_tri"]
+    builders = {"rack": (build_rack, "vial_rack_9x20mL_v2"),
+                "key": (build_key, "deck_clip_key_v2_1"),
+                "bar": (build_bar, "magnet_bar_v2"),
+                "rack_tri": (lambda: build_rack(pocket="tri"), "vial_rack_9x20mL_v2_tri"),
+                "key_tri": (lambda: build_key(top="tri"), "deck_clip_key_v2_1_tri")}
     for nm in which:
-        o = builders[nm]()
+        fn, fname = builders[nm]
+        o = fn()
         bb = o.val().BoundingBox()
         print(nm, "valid", o.val().isValid(), "solids", len(o.solids().vals()), "bbox", [round(v, 2) for v in (bb.xmin, bb.ymin, bb.zmin, bb.xmax, bb.ymax, bb.zmax)], "vol", round(o.val().Volume(), 1))
-        export(o, {"rack": "vial_rack_9x20mL_v2", "key": "deck_clip_key_v2_1", "bar": "magnet_bar_v2"}[nm], out)
+        export(o, fname, out)
     json.dump(P, open(os.path.join(out, "cad", "params.json"), "w"), indent=1)
