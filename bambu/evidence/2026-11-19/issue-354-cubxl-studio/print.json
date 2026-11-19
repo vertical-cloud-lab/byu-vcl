@@ -9,7 +9,7 @@
   "right": "0.6 mm hardened steel, TPU High Flow (not used)",
   "source": "Studio Device page > Printer Parts, and Studio's Switch diameter prompt"
  },
- "filament": "Bambu PLA Basic, black, AMS slot A2 (left AMS)",
+ "filament": "Bambu PLA Basic profile, AMS slot A2 (left AMS). Studio lists A2 as black PLA, but the parts look white/light grey on the camera from layer 1 on, so the spool in A2 is probably white with the slot set to black",
  "objects": {
   "vial_rack_9x20mL_v2.stl": 1,
   "deck_clip_key_v2.stl": 4,
@@ -75,5 +75,6 @@
   "utc": "2026-11-19T20:09:51Z",
   "state": "Homing toolhead, layer 0/175, left hotend 118/140 C, right 26/0 C, bed 32/55 C, ETA 00:30 UTC"
  },
- "sent_file": "sent/vial_rack_9x20mL_v2_H2D_0.4L_blackPLA.3mf (Studio's own upload copy from /tmp/bamboo_model; DesignerUserId blanked; plate G-code untouched)"
+ "sent_file": "sent/vial_rack_9x20mL_v2_H2D_0.4L_blackPLA.3mf (Studio's own upload copy from /tmp/bamboo_model; DesignerUserId blanked; plate G-code untouched)",
+ "key_design_issue_found_after_send": "The v2 deck keys on this plate have latch-arm tops 0.45 mm (horizontal) under a 45-degree chamfer; the arms jam before the barbs clear a 10.0 mm slot. Fixed as deck_clip_key_v2_1 (commit 98b01a1); not printed in this run. A1 minis checked 20:45-20:47 UTC: Tinkerbell idle but its last part (AOR_tester) still on the plate; Thumbelina starting someone else's AOR_tester job. H2D print left running unchanged."
 }
