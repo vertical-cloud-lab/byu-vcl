@@ -55,6 +55,8 @@ P = dict(
     rigid_bottom=-6.0,      # rigid locating pill from z=0 down to here (full stadium)
     spine_half=1.3,         # spine half-width (x) below the rigid pill
     arm_t=1.3,              # latch arm thickness (x)
+    arm_top=-8.9,           # latch arm top (z); clears the chamfer for arm_travel of inward travel
+    arm_travel=1.2,
     arm_y=(-7.5, 6.8),      # latch arm span in y: root plane at -7.5, free end at +6.8 (0.7 gap to the rigid end)
     arm_root_fillet=1.0,
     key_bottom=-15.0,
@@ -186,7 +188,14 @@ def build_key(p=P):
     root = (cq.Workplane("XY").slot2D(l, w, angle=90).extrude(lower_top - zb).translate((0, 0, zb))
             .intersect(cq.Workplane("XY").center(0, -l / 2 - 5).rect(w + 2, 2 * (l / 2 + 5 + p["arm_y"][0])).extrude(50).translate((0, 0, -40))))
     # latch arms: x in [hx-t, hx] (and mirror), y in arm_y, z from bottom to arm_top (under the 45 chamfer)
-    arm_top = lower_top + (hx - p["arm_t"] - p["spine_half"]) - 0.45   # leave a gap under the chamfer
+    # The arms' tops must stay clear of the 45-degree chamfer above them while the arms
+    # deflect inward by up to ~1.1 mm at the free end (FEA). v2 as first printed on
+    # 2026-11-19 had them only 0.45 mm (horizontal) below the chamfer, so they would have
+    # jammed against it before the barbs could clear a 10.0 mm slot.
+    arm_top = p["arm_top"]
+    x_in = hx - p["arm_t"] - p["arm_travel"]               # arm's inner face at full travel
+    z_ch = p["rigid_bottom"] - (hx - x_in)                   # chamfer height there
+    assert arm_top <= z_ch - 0.3, (arm_top, z_ch)
     arms = cq.Workplane("XY")
     y0, y1 = p["arm_y"]
     for s in (1, -1):
@@ -206,7 +215,7 @@ def build_key(p=P):
     zt_b = p["barb_top"]; z_tip = zt_b - u / tn; z_bot = z_tip - u / tn
     by0, by1 = p["barb_y"]
     for s in (1, -1):
-        prof = [(s * (hx - 0.3), zt_b + 0.3), (s * hx, zt_b), (s * (hx + u), z_tip), (s * (hx + u), z_tip - 0.25), (s * hx, z_bot - 0.25), (s * (hx - 0.3), z_bot - 0.25)]
+        prof = [(s * (hx - 0.3), min(zt_b + 0.3, arm_top)), (s * hx, min(zt_b, arm_top)), (s * (hx + u), z_tip), (s * (hx + u), z_tip - 0.25), (s * hx, z_bot - 0.25), (s * (hx - 0.3), z_bot - 0.25)]
         barb = cq.Workplane("XZ").polyline(prof).close().extrude(-(by1 - by0)).translate((0, by0, 0))
         key = key.union(barb)
     # top stem with crush ribs
@@ -283,5 +292,5 @@ if __name__ == "__main__":
         o = builders[nm]()
         bb = o.val().BoundingBox()
         print(nm, "valid", o.val().isValid(), "solids", len(o.solids().vals()), "bbox", [round(v, 2) for v in (bb.xmin, bb.ymin, bb.zmin, bb.xmax, bb.ymax, bb.zmax)], "vol", round(o.val().Volume(), 1))
-        export(o, {"rack": "vial_rack_9x20mL_v2", "key": "deck_clip_key_v2", "bar": "magnet_bar_v2"}[nm], out)
+        export(o, {"rack": "vial_rack_9x20mL_v2", "key": "deck_clip_key_v2_1", "bar": "magnet_bar_v2"}[nm], out)
     json.dump(P, open(os.path.join(out, "cad", "params.json"), "w"), indent=1)
