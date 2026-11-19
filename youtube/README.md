@@ -53,6 +53,10 @@ private ([revision history](https://developers.google.com/youtube/v3/revision_hi
 the privacy set at upload sticks. Videos uploaded before then may still be locked. Changing
 privacy afterwards is an edit: the full token (`@claude-youtube`) or YouTube Studio.
 
+In a GitHub Actions run the helper appends `Requested in <link>` to the description: the
+exact comment, review or issue that started the run, read from `$GITHUB_EVENT_PATH`.
+`--no-source-link` (or `source_link=False`) skips it.
+
 ## The OAuth client
 
 Desktop-app OAuth client in a Cloud project owned by **vcl.hardware.streams@gmail.com**,
