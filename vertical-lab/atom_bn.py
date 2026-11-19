@@ -18,6 +18,7 @@ ours or assumed is said in notes/atom_bn.md, with the stations and tools in atom
 from __future__ import annotations
 
 import math
+import os
 import sys
 from pathlib import Path
 
@@ -299,6 +300,24 @@ def main():
     def tcp_plug(x, y, zf):
         return AB.P.tcp_frame(tuple(AB.W((x, y, zf + S.PLUG_GRIP_Z))), LEVEL, 0.0)
     AB.caption_rows(sc, Crucible="used: skull in, holder and nozzle off", Coat="fired; cracked on the floor")
+    if os.environ.get("BN_COMBINED"):                # one pass: the clip and its FCL audit together
+        import collide as _C
+        sc.auditor = _C.Auditor(sc)
+        sc.frame_hooks.append(sc.auditor)
+    if os.environ.get("BN_FROM"):                    # a quick check of one sub-step: the ones before it jump to their end
+        _orig, _on, _from = sc.step, [False], os.environ["BN_FROM"]
+
+        def _ff(label, caption, seconds, update=None, hold=1.2, cam_to=None, **kw):
+            if not _on[0] and label != _from:
+                if update is not None:
+                    update(1.0)
+                if cam_to is not None:
+                    sc.cam = list(cam_to)
+                sc.label = label
+                return None
+            _on[0] = True
+            return _orig(label, caption, seconds, update, hold=hold, cam_to=cam_to, **kw)
+        sc.step = _ff
 
     WIDE = cam((900.0, -3300.0, 2500.0), (2350.0, -250.0, 950.0))
     BENCH = cam((1520.0, -1080.0, 1650.0), (2060.0, -60.0, 1080.0))
@@ -672,11 +691,16 @@ def main():
     k.step("10/10", cap, 0.5, k.anim(jaws=0.0))
     rb.release(G_TRUN)
     k.step("10/10", cap, 0.4, rb.grip_to(0.0))
-    k.step("10/10", cap, 1.2, rb.line_to(rb.tcp_world() @ T((0, 0, -170.0))))
-    # the arm stays where it backed off; the positioner tilts the mouth 50 deg toward it, so the D405 riding on the level
-    # gripper looks 18 deg off the bore's axis, about 270 mm from its floor (in its 70-500 mm range, 58 deg field)
-    k.step("10/10", cap, 1.4, k.anim(flip=50.0 / 180.0), cam=CHUCK)
-    AB.caption_rows(sc, Light="side light on", Camera="D405, 270 mm from the floor")
+    k.step("10/10", cap, 0.8, rb.line_to(rb.tcp_world() @ T((0, 0, -60.0))))
+    # the arm moves (a planned move, elbow up) to look down into the mouth, pitched 30 deg; the positioner tilts the
+    # mouth 60 deg toward it: the D405 looks 0-30 deg off the bore's axis, about 200 mm from its floor
+    th = math.radians(60.0)
+    mouth = np.array([p["x"], p["y"] - (p["face"] + CR_H) * math.sin(th), p["axis"] + (p["face"] + CR_H) * math.cos(th)])
+    ap = np.array([0.0, math.cos(math.radians(30.0)), -math.sin(math.radians(30.0))])
+    look = AB.P.tcp_frame(tuple(AB.W(mouth - 110.0 * ap)), tuple(ap), 0.0)
+    k.step("10/10", cap, 2.0, k.low(look), cam=CHUCK)
+    k.step("10/10", cap, 1.4, k.anim(flip=60.0 / 180.0))
+    AB.caption_rows(sc, Light="side light on", Camera="D405, 200 mm from the floor")
     k.step("10/10", cap, 0.6, k.anim(light=1.0))
     a0 = k.vals["spin"]
 
@@ -696,7 +720,10 @@ def main():
     AB.caption_rows(sc, Crucible="coated, dry, checked: ready", Next="back into the furnace (atom_crucible)")
     k.step("10/10", cap, 2.0, rb.joint_to(Tw=AB.P.tcp_frame(tuple(AB.W((BENCH_SPOT[0], -265.0, 1250.0))), LEVEL, 0.0)),
            cam=BENCH, hold=1.5)
-    return AB.finish(sc)
+    out = AB.finish(sc)
+    if os.environ.get("BN_COMBINED"):
+        sc.auditor.save()
+    return out
 
 
 if __name__ == "__main__":

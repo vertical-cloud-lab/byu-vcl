@@ -67,7 +67,7 @@ hold propane or butane, and its blower would sit in the vapour.
 | 13 | The lift raises the crucible; the arm takes the plug off it (the lift lowers the crucible away from the plug) and puts it in its holster; the arm takes the crucible, turns it over in the air (a 180 deg wrist roll) and stands it upside down on the rack's three pins (9/10). | arm, lift | bronze plan ("dry overnight in the running hood, in the box or upside down") |
 | 14 | Overnight in the running hood (time-lapse with a clock, 18:30 to 07:30); the coat goes from wet to matte white (9/10). | hood | bronze plan; SOP 253 ("sprayed the night before, dry"); "never pour onto a wet coat" |
 | 15 | Morning: the arm takes it off the rack, turns it upright outside the hood, MiR 1 drives back to the bench, the arm stands it in the chuck (10/10). | arm, MiR 1 | ours |
-| 16 | The check: side light on; the arm holds still where it backed off, the positioner tilts the mouth 50 deg toward it, and the D405 on the level gripper looks 18 deg off the bore's axis, about 270 mm from the floor, while the chuck turns (10/10). | arm (camera), light, positioner | bronze plan ("look at the floor and the floor-wall corner under a strong side light for cracks, lifted edges or bare graphite") |
+| 16 | The check: the arm backs 60 mm off the chuck and makes a planned move (elbow up) to look into the mouth, pitched 30 deg down and 110 mm from it; the positioner tilts the mouth 60 deg toward it; the D405 is about 200 mm from the floor, 0-30 deg off the bore's axis; side light on; the chuck turns (10/10). | arm (camera), light, positioner | bronze plan ("look at the floor and the floor-wall corner under a strong side light for cracks, lifted edges or bare graphite") |
 | 17 | Mouth down over the dark tray and tapped once more: nothing falls (10/10). Ready; back to MiR 1 for atom_crucible. | positioner | bronze plan ("turn the crucible over a dark sheet and tap it... nothing loose near the hole") |
 | 18 | For copper runs: cure it empty under argon in the furnace before the run (a fresh coat smokes at 500 C). Caption only. | furnace | SOP 253, copper section and troubleshooting |
 
@@ -140,10 +140,8 @@ valve clear 4 s; plug out and onto the rack 1.5 min; overnight about 12 h; morni
 
 - Reach: every pose of the clip solved with the UR10e's IK from both MiR spots before building the scene.
 - Collisions: `ARM_AUDIT=1` (FCL on every frame; the arm, gripper and held parts against everything, held parts
-  allowed 1.5 mm into their own fixtures; the movers check on everything else that moves). Seven audit passes took it
-  from 518 frames in collision to the result in `out/collisions/atom_bn.json`: **112 of 2234 checked frames in collision, one run, all in the last sub-step (10/10)**: after the arm sets the
-  crucible back in the chuck and backs 170 mm away along -y, its forearm dips into MiR 1's cabinet and stays there
-  through the check and the tap (the last 8 s of the clip). Sub-steps 1/10 to 9/10: 0 frames. Movers: 0 contacts. What the passes found
+  allowed 1.5 mm into their own fixtures; the movers check on everything else that moves). Nine audit passes took it
+  from 518 frames in collision to the result in `out/collisions/atom_bn.json`: **0 of 1516 checked frames in collision**, mover contacts: 0. This is the final render's own pass (the auditor as a frame hook of the render, at 10 fps). The pass before it (2234 frames at 15 fps) had 112, all in 10/10: backing 170 mm off the chuck dropped the forearm into MiR 1's cabinet; the fix (a 60 mm back-off and a planned move to the look pose) was checked first on 10/10 alone (0 of 370 frames). What the passes found
   and fixed: the vacuum tool's cuff in the gripper (the tool redesigned: gripped 130 mm from its tip, its cuff 75 mm
   to the side, turned away from the wrist); a holster against the hood's post; the scraper's straight blade wider
   than the bore allows (now 16 mm); the crucible carried into the box below its rim (it now comes in 15 mm over the
@@ -161,13 +159,7 @@ valve clear 4 s; plug out and onto the rack 1.5 min; overnight about 12 h; morni
 
 ## Not done
 
-- **The 10/10 fault above is not fixed in the rendered clip.** The fix was found but there was no render slot left
-  before the deadline: back off only 60 mm (enough to free the fingers), then a planned move (`Clip.low`, elbow up)
-  to a look pose pitched 30 deg down, 110 mm from the mouth, with the positioner tilting the mouth 60 deg. Audit pass 6
-  ran exactly that look pose and found it, and everything after it, clean; the 170 mm back-off before it was the only
-  fault. The next render should make that change.
-- The clip is 153.9 s (2308 frames at 15 fps), 4 s over the 150 s asked; the GIF is resampled to 5 fps (330 frames,
-  3.4 MB) to stay under 4.9 MB.
+- The clip is 156.6 s (1566 frames at 10 fps, rendered at 10 fps to fit the deadline), a little over the 150 s asked; the GIF is resampled to stay under 4.9 MB.
 - The spray's mist is a cone drawn for each burst; the overspray onto the plug and the rim and the mist settling on
   the floor are in the coat colours, not drawn as particles.
 - The coat is shown by zone (12 sectors of the upper wall, the lower wall and the floor), not as a texture.

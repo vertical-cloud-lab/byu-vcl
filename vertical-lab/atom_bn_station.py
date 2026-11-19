@@ -265,7 +265,7 @@ def light_beam() -> pv.PolyData:
     """The light's cone, drawn faint, onto the crucible's mouth when the light is on."""
     x, y = LIGHT
     tip = np.array([x + 20, y - 20, BENCH["top"] + 340.0])
-    th = math.radians(50.0)
+    th = math.radians(60.0)
     to = np.array([POS["x"], POS["y"] - (POS["face"] + CR_H - 20.0) * math.sin(th),
                    POS["axis"] + (POS["face"] + CR_H - 20.0) * math.cos(th)])
     d = to - tip

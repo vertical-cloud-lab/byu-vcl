@@ -1,7 +1,7 @@
 {
  "name": "atom_bn",
- "fps": 15,
- "n_frames": 2308,
+ "fps": 10,
+ "n_frames": 1566,
  "size": [
   1280,
   720
@@ -11,1045 +11,1051 @@
    "label": "1/10",
    "caption": "MiR 1 brings the used crucible from the rePowder: the holder and nozzle are off, the skull of slag and metal is still inside (atom_crucible).",
    "start_frame": 0,
-   "end_frame": 120
+   "end_frame": 80
   },
   {
    "label": "2/10",
    "caption": "The arm lifts it out of MiR 1's cradle and stands it in the positioner's soft-jawed chuck (ours): acetal jaws on the outside, never on the bore.",
-   "start_frame": 121,
-   "end_frame": 144
+   "start_frame": 81,
+   "end_frame": 96
   },
   {
    "label": "2/10",
    "caption": "The arm lifts it out of MiR 1's cradle and stands it in the positioner's soft-jawed chuck (ours): acetal jaws on the outside, never on the bore.",
-   "start_frame": 145,
-   "end_frame": 154
+   "start_frame": 97,
+   "end_frame": 103
   },
   {
    "label": "2/10",
    "caption": "The arm lifts it out of MiR 1's cradle and stands it in the positioner's soft-jawed chuck (ours): acetal jaws on the outside, never on the bore.",
-   "start_frame": 155,
-   "end_frame": 159
+   "start_frame": 104,
+   "end_frame": 106
   },
   {
    "label": "2/10",
    "caption": "The arm lifts it out of MiR 1's cradle and stands it in the positioner's soft-jawed chuck (ours): acetal jaws on the outside, never on the bore.",
-   "start_frame": 160,
+   "start_frame": 107,
+   "end_frame": 113
+  },
+  {
+   "label": "2/10",
+   "caption": "The arm lifts it out of MiR 1's cradle and stands it in the positioner's soft-jawed chuck (ours): acetal jaws on the outside, never on the bore.",
+   "start_frame": 114,
+   "end_frame": 130
+  },
+  {
+   "label": "2/10",
+   "caption": "The arm lifts it out of MiR 1's cradle and stands it in the positioner's soft-jawed chuck (ours): acetal jaws on the outside, never on the bore.",
+   "start_frame": 131,
+   "end_frame": 138
+  },
+  {
+   "label": "2/10",
+   "caption": "The arm lifts it out of MiR 1's cradle and stands it in the positioner's soft-jawed chuck (ours): acetal jaws on the outside, never on the bore.",
+   "start_frame": 139,
+   "end_frame": 142
+  },
+  {
+   "label": "2/10",
+   "caption": "The arm lifts it out of MiR 1's cradle and stands it in the positioner's soft-jawed chuck (ours): acetal jaws on the outside, never on the bore.",
+   "start_frame": 143,
+   "end_frame": 145
+  },
+  {
+   "label": "2/10",
+   "caption": "The arm lifts it out of MiR 1's cradle and stands it in the positioner's soft-jawed chuck (ours): acetal jaws on the outside, never on the bore.",
+   "start_frame": 146,
+   "end_frame": 152
+  },
+  {
+   "label": "3/10",
+   "caption": "The positioner turns it mouth down over the dark tray, 20 mm above it, and jolts it: a 5 deg flick and a hard stop. The skull drops out. Un-atomized metal is feedstock, not waste (178 SOP).",
+   "start_frame": 153,
    "end_frame": 169
   },
   {
-   "label": "2/10",
-   "caption": "The arm lifts it out of MiR 1's cradle and stands it in the positioner's soft-jawed chuck (ours): acetal jaws on the outside, never on the bore.",
+   "label": "3/10",
+   "caption": "The positioner turns it mouth down over the dark tray, 20 mm above it, and jolts it: a 5 deg flick and a hard stop. The skull drops out. Un-atomized metal is feedstock, not waste (178 SOP).",
    "start_frame": 170,
-   "end_frame": 195
-  },
-  {
-   "label": "2/10",
-   "caption": "The arm lifts it out of MiR 1's cradle and stands it in the positioner's soft-jawed chuck (ours): acetal jaws on the outside, never on the bore.",
-   "start_frame": 196,
-   "end_frame": 207
-  },
-  {
-   "label": "2/10",
-   "caption": "The arm lifts it out of MiR 1's cradle and stands it in the positioner's soft-jawed chuck (ours): acetal jaws on the outside, never on the bore.",
-   "start_frame": 208,
-   "end_frame": 213
-  },
-  {
-   "label": "2/10",
-   "caption": "The arm lifts it out of MiR 1's cradle and stands it in the positioner's soft-jawed chuck (ours): acetal jaws on the outside, never on the bore.",
-   "start_frame": 214,
-   "end_frame": 217
-  },
-  {
-   "label": "2/10",
-   "caption": "The arm lifts it out of MiR 1's cradle and stands it in the positioner's soft-jawed chuck (ours): acetal jaws on the outside, never on the bore.",
-   "start_frame": 218,
-   "end_frame": 227
+   "end_frame": 176
   },
   {
    "label": "3/10",
    "caption": "The positioner turns it mouth down over the dark tray, 20 mm above it, and jolts it: a 5 deg flick and a hard stop. The skull drops out. Un-atomized metal is feedstock, not waste (178 SOP).",
-   "start_frame": 228,
-   "end_frame": 252
+   "start_frame": 177,
+   "end_frame": 177
   },
   {
    "label": "3/10",
    "caption": "The positioner turns it mouth down over the dark tray, 20 mm above it, and jolts it: a 5 deg flick and a hard stop. The skull drops out. Un-atomized metal is feedstock, not waste (178 SOP).",
-   "start_frame": 253,
-   "end_frame": 262
-  },
-  {
-   "label": "3/10",
-   "caption": "The positioner turns it mouth down over the dark tray, 20 mm above it, and jolts it: a 5 deg flick and a hard stop. The skull drops out. Un-atomized metal is feedstock, not waste (178 SOP).",
-   "start_frame": 263,
-   "end_frame": 264
-  },
-  {
-   "label": "3/10",
-   "caption": "The positioner turns it mouth down over the dark tray, 20 mm above it, and jolts it: a 5 deg flick and a hard stop. The skull drops out. Un-atomized metal is feedstock, not waste (178 SOP).",
-   "start_frame": 265,
-   "end_frame": 284
+   "start_frame": 178,
+   "end_frame": 191
   },
   {
    "label": "4/10",
    "caption": "A soft nylon bore brush (ours) loosens what is left, the chuck turning under it (bronze plan, step 1).",
-   "start_frame": 285,
-   "end_frame": 306
+   "start_frame": 192,
+   "end_frame": 206
   },
   {
    "label": "4/10",
    "caption": "A soft nylon bore brush (ours) loosens what is left, the chuck turning under it (bronze plan, step 1).",
-   "start_frame": 307,
-   "end_frame": 315
+   "start_frame": 207,
+   "end_frame": 212
   },
   {
    "label": "4/10",
    "caption": "A soft nylon bore brush (ours) loosens what is left, the chuck turning under it (bronze plan, step 1).",
-   "start_frame": 316,
-   "end_frame": 319
+   "start_frame": 213,
+   "end_frame": 215
   },
   {
    "label": "4/10",
    "caption": "A soft nylon bore brush (ours) loosens what is left, the chuck turning under it (bronze plan, step 1).",
-   "start_frame": 320,
-   "end_frame": 331
+   "start_frame": 216,
+   "end_frame": 223
   },
   {
    "label": "4/10",
    "caption": "A soft nylon bore brush (ours) loosens what is left, the chuck turning under it (bronze plan, step 1).",
-   "start_frame": 332,
-   "end_frame": 347
+   "start_frame": 224,
+   "end_frame": 234
   },
   {
    "label": "4/10",
    "caption": "A soft nylon bore brush (ours) loosens what is left, the chuck turning under it (bronze plan, step 1).",
-   "start_frame": 348,
+   "start_frame": 235,
+   "end_frame": 243
+  },
+  {
+   "label": "4/10",
+   "caption": "A soft nylon bore brush (ours) loosens what is left, the chuck turning under it (bronze plan, step 1).",
+   "start_frame": 244,
+   "end_frame": 254
+  },
+  {
+   "label": "4/10",
+   "caption": "A soft nylon bore brush (ours) loosens what is left, the chuck turning under it (bronze plan, step 1).",
+   "start_frame": 255,
+   "end_frame": 261
+  },
+  {
+   "label": "4/10",
+   "caption": "A soft nylon bore brush (ours) loosens what is left, the chuck turning under it (bronze plan, step 1).",
+   "start_frame": 262,
+   "end_frame": 274
+  },
+  {
+   "label": "4/10",
+   "caption": "A soft nylon bore brush (ours) loosens what is left, the chuck turning under it (bronze plan, step 1).",
+   "start_frame": 275,
+   "end_frame": 282
+  },
+  {
+   "label": "4/10",
+   "caption": "A soft nylon bore brush (ours) loosens what is left, the chuck turning under it (bronze plan, step 1).",
+   "start_frame": 283,
+   "end_frame": 285
+  },
+  {
+   "label": "4/10",
+   "caption": "A soft nylon bore brush (ours) loosens what is left, the chuck turning under it (bronze plan, step 1).",
+   "start_frame": 286,
+   "end_frame": 290
+  },
+  {
+   "label": "5/10",
+   "caption": "An acetal scraper (ours) takes off what is cracked or lifted, and stops at the thin grey layer that won't come off. It never touches the seat round the hole: the sealing rod seals there.",
+   "start_frame": 291,
+   "end_frame": 305
+  },
+  {
+   "label": "5/10",
+   "caption": "An acetal scraper (ours) takes off what is cracked or lifted, and stops at the thin grey layer that won't come off. It never touches the seat round the hole: the sealing rod seals there.",
+   "start_frame": 306,
+   "end_frame": 311
+  },
+  {
+   "label": "5/10",
+   "caption": "An acetal scraper (ours) takes off what is cracked or lifted, and stops at the thin grey layer that won't come off. It never touches the seat round the hole: the sealing rod seals there.",
+   "start_frame": 312,
+   "end_frame": 314
+  },
+  {
+   "label": "5/10",
+   "caption": "An acetal scraper (ours) takes off what is cracked or lifted, and stops at the thin grey layer that won't come off. It never touches the seat round the hole: the sealing rod seals there.",
+   "start_frame": 315,
+   "end_frame": 322
+  },
+  {
+   "label": "5/10",
+   "caption": "An acetal scraper (ours) takes off what is cracked or lifted, and stops at the thin grey layer that won't come off. It never touches the seat round the hole: the sealing rod seals there.",
+   "start_frame": 323,
+   "end_frame": 333
+  },
+  {
+   "label": "5/10",
+   "caption": "An acetal scraper (ours) takes off what is cracked or lifted, and stops at the thin grey layer that won't come off. It never touches the seat round the hole: the sealing rod seals there.",
+   "start_frame": 334,
+   "end_frame": 339
+  },
+  {
+   "label": "5/10",
+   "caption": "An acetal scraper (ours) takes off what is cracked or lifted, and stops at the thin grey layer that won't come off. It never touches the seat round the hole: the sealing rod seals there.",
+   "start_frame": 340,
+   "end_frame": 344
+  },
+  {
+   "label": "5/10",
+   "caption": "An acetal scraper (ours) takes off what is cracked or lifted, and stops at the thin grey layer that won't come off. It never touches the seat round the hole: the sealing rod seals there.",
+   "start_frame": 345,
+   "end_frame": 349
+  },
+  {
+   "label": "5/10",
+   "caption": "An acetal scraper (ours) takes off what is cracked or lifted, and stops at the thin grey layer that won't come off. It never touches the seat round the hole: the sealing rod seals there.",
+   "start_frame": 350,
+   "end_frame": 355
+  },
+  {
+   "label": "5/10",
+   "caption": "An acetal scraper (ours) takes off what is cracked or lifted, and stops at the thin grey layer that won't come off. It never touches the seat round the hole: the sealing rod seals there.",
+   "start_frame": 356,
    "end_frame": 360
   },
   {
-   "label": "4/10",
-   "caption": "A soft nylon bore brush (ours) loosens what is left, the chuck turning under it (bronze plan, step 1).",
+   "label": "5/10",
+   "caption": "An acetal scraper (ours) takes off what is cracked or lifted, and stops at the thin grey layer that won't come off. It never touches the seat round the hole: the sealing rod seals there.",
    "start_frame": 361,
+   "end_frame": 365
+  },
+  {
+   "label": "5/10",
+   "caption": "An acetal scraper (ours) takes off what is cracked or lifted, and stops at the thin grey layer that won't come off. It never touches the seat round the hole: the sealing rod seals there.",
+   "start_frame": 366,
+   "end_frame": 371
+  },
+  {
+   "label": "5/10",
+   "caption": "An acetal scraper (ours) takes off what is cracked or lifted, and stops at the thin grey layer that won't come off. It never touches the seat round the hole: the sealing rod seals there.",
+   "start_frame": 372,
    "end_frame": 376
   },
   {
-   "label": "4/10",
-   "caption": "A soft nylon bore brush (ours) loosens what is left, the chuck turning under it (bronze plan, step 1).",
+   "label": "5/10",
+   "caption": "An acetal scraper (ours) takes off what is cracked or lifted, and stops at the thin grey layer that won't come off. It never touches the seat round the hole: the sealing rod seals there.",
    "start_frame": 377,
-   "end_frame": 387
-  },
-  {
-   "label": "4/10",
-   "caption": "A soft nylon bore brush (ours) loosens what is left, the chuck turning under it (bronze plan, step 1).",
-   "start_frame": 388,
-   "end_frame": 407
-  },
-  {
-   "label": "4/10",
-   "caption": "A soft nylon bore brush (ours) loosens what is left, the chuck turning under it (bronze plan, step 1).",
-   "start_frame": 408,
-   "end_frame": 419
-  },
-  {
-   "label": "4/10",
-   "caption": "A soft nylon bore brush (ours) loosens what is left, the chuck turning under it (bronze plan, step 1).",
-   "start_frame": 420,
-   "end_frame": 423
-  },
-  {
-   "label": "4/10",
-   "caption": "A soft nylon bore brush (ours) loosens what is left, the chuck turning under it (bronze plan, step 1).",
-   "start_frame": 424,
-   "end_frame": 431
+   "end_frame": 381
   },
   {
    "label": "5/10",
    "caption": "An acetal scraper (ours) takes off what is cracked or lifted, and stops at the thin grey layer that won't come off. It never touches the seat round the hole: the sealing rod seals there.",
-   "start_frame": 432,
+   "start_frame": 382,
+   "end_frame": 394
+  },
+  {
+   "label": "5/10",
+   "caption": "An acetal scraper (ours) takes off what is cracked or lifted, and stops at the thin grey layer that won't come off. It never touches the seat round the hole: the sealing rod seals there.",
+   "start_frame": 395,
+   "end_frame": 402
+  },
+  {
+   "label": "5/10",
+   "caption": "An acetal scraper (ours) takes off what is cracked or lifted, and stops at the thin grey layer that won't come off. It never touches the seat round the hole: the sealing rod seals there.",
+   "start_frame": 403,
+   "end_frame": 405
+  },
+  {
+   "label": "5/10",
+   "caption": "An acetal scraper (ours) takes off what is cracked or lifted, and stops at the thin grey layer that won't come off. It never touches the seat round the hole: the sealing rod seals there.",
+   "start_frame": 406,
+   "end_frame": 410
+  },
+  {
+   "label": "6/10",
+   "caption": "Mouth down and tapped again: the flakes fall on the dark tray. Then the dust comes out dry: the Nilfisk's crevice tool, close to the surface, slow (vacuum SOP). No compressed air, no IPA: nothing oily.",
+   "start_frame": 411,
+   "end_frame": 422
+  },
+  {
+   "label": "6/10",
+   "caption": "Mouth down and tapped again: the flakes fall on the dark tray. Then the dust comes out dry: the Nilfisk's crevice tool, close to the surface, slow (vacuum SOP). No compressed air, no IPA: nothing oily.",
+   "start_frame": 423,
+   "end_frame": 427
+  },
+  {
+   "label": "6/10",
+   "caption": "Mouth down and tapped again: the flakes fall on the dark tray. Then the dust comes out dry: the Nilfisk's crevice tool, close to the surface, slow (vacuum SOP). No compressed air, no IPA: nothing oily.",
+   "start_frame": 428,
+   "end_frame": 438
+  },
+  {
+   "label": "6/10",
+   "caption": "Mouth down and tapped again: the flakes fall on the dark tray. Then the dust comes out dry: the Nilfisk's crevice tool, close to the surface, slow (vacuum SOP). No compressed air, no IPA: nothing oily.",
+   "start_frame": 439,
    "end_frame": 453
   },
   {
-   "label": "5/10",
-   "caption": "An acetal scraper (ours) takes off what is cracked or lifted, and stops at the thin grey layer that won't come off. It never touches the seat round the hole: the sealing rod seals there.",
+   "label": "6/10",
+   "caption": "Mouth down and tapped again: the flakes fall on the dark tray. Then the dust comes out dry: the Nilfisk's crevice tool, close to the surface, slow (vacuum SOP). No compressed air, no IPA: nothing oily.",
    "start_frame": 454,
+   "end_frame": 459
+  },
+  {
+   "label": "6/10",
+   "caption": "Mouth down and tapped again: the flakes fall on the dark tray. Then the dust comes out dry: the Nilfisk's crevice tool, close to the surface, slow (vacuum SOP). No compressed air, no IPA: nothing oily.",
+   "start_frame": 460,
    "end_frame": 462
   },
   {
-   "label": "5/10",
-   "caption": "An acetal scraper (ours) takes off what is cracked or lifted, and stops at the thin grey layer that won't come off. It never touches the seat round the hole: the sealing rod seals there.",
+   "label": "6/10",
+   "caption": "Mouth down and tapped again: the flakes fall on the dark tray. Then the dust comes out dry: the Nilfisk's crevice tool, close to the surface, slow (vacuum SOP). No compressed air, no IPA: nothing oily.",
    "start_frame": 463,
-   "end_frame": 466
-  },
-  {
-   "label": "5/10",
-   "caption": "An acetal scraper (ours) takes off what is cracked or lifted, and stops at the thin grey layer that won't come off. It never touches the seat round the hole: the sealing rod seals there.",
-   "start_frame": 467,
-   "end_frame": 478
-  },
-  {
-   "label": "5/10",
-   "caption": "An acetal scraper (ours) takes off what is cracked or lifted, and stops at the thin grey layer that won't come off. It never touches the seat round the hole: the sealing rod seals there.",
-   "start_frame": 479,
-   "end_frame": 494
-  },
-  {
-   "label": "5/10",
-   "caption": "An acetal scraper (ours) takes off what is cracked or lifted, and stops at the thin grey layer that won't come off. It never touches the seat round the hole: the sealing rod seals there.",
-   "start_frame": 495,
-   "end_frame": 503
-  },
-  {
-   "label": "5/10",
-   "caption": "An acetal scraper (ours) takes off what is cracked or lifted, and stops at the thin grey layer that won't come off. It never touches the seat round the hole: the sealing rod seals there.",
-   "start_frame": 504,
-   "end_frame": 510
-  },
-  {
-   "label": "5/10",
-   "caption": "An acetal scraper (ours) takes off what is cracked or lifted, and stops at the thin grey layer that won't come off. It never touches the seat round the hole: the sealing rod seals there.",
-   "start_frame": 511,
-   "end_frame": 518
-  },
-  {
-   "label": "5/10",
-   "caption": "An acetal scraper (ours) takes off what is cracked or lifted, and stops at the thin grey layer that won't come off. It never touches the seat round the hole: the sealing rod seals there.",
-   "start_frame": 519,
-   "end_frame": 527
-  },
-  {
-   "label": "5/10",
-   "caption": "An acetal scraper (ours) takes off what is cracked or lifted, and stops at the thin grey layer that won't come off. It never touches the seat round the hole: the sealing rod seals there.",
-   "start_frame": 528,
-   "end_frame": 534
-  },
-  {
-   "label": "5/10",
-   "caption": "An acetal scraper (ours) takes off what is cracked or lifted, and stops at the thin grey layer that won't come off. It never touches the seat round the hole: the sealing rod seals there.",
-   "start_frame": 535,
-   "end_frame": 542
-  },
-  {
-   "label": "5/10",
-   "caption": "An acetal scraper (ours) takes off what is cracked or lifted, and stops at the thin grey layer that won't come off. It never touches the seat round the hole: the sealing rod seals there.",
-   "start_frame": 543,
-   "end_frame": 551
-  },
-  {
-   "label": "5/10",
-   "caption": "An acetal scraper (ours) takes off what is cracked or lifted, and stops at the thin grey layer that won't come off. It never touches the seat round the hole: the sealing rod seals there.",
-   "start_frame": 552,
-   "end_frame": 558
-  },
-  {
-   "label": "5/10",
-   "caption": "An acetal scraper (ours) takes off what is cracked or lifted, and stops at the thin grey layer that won't come off. It never touches the seat round the hole: the sealing rod seals there.",
-   "start_frame": 559,
-   "end_frame": 566
-  },
-  {
-   "label": "5/10",
-   "caption": "An acetal scraper (ours) takes off what is cracked or lifted, and stops at the thin grey layer that won't come off. It never touches the seat round the hole: the sealing rod seals there.",
-   "start_frame": 567,
-   "end_frame": 586
-  },
-  {
-   "label": "5/10",
-   "caption": "An acetal scraper (ours) takes off what is cracked or lifted, and stops at the thin grey layer that won't come off. It never touches the seat round the hole: the sealing rod seals there.",
-   "start_frame": 587,
-   "end_frame": 598
-  },
-  {
-   "label": "5/10",
-   "caption": "An acetal scraper (ours) takes off what is cracked or lifted, and stops at the thin grey layer that won't come off. It never touches the seat round the hole: the sealing rod seals there.",
-   "start_frame": 599,
-   "end_frame": 602
-  },
-  {
-   "label": "5/10",
-   "caption": "An acetal scraper (ours) takes off what is cracked or lifted, and stops at the thin grey layer that won't come off. It never touches the seat round the hole: the sealing rod seals there.",
-   "start_frame": 603,
-   "end_frame": 610
+   "end_frame": 470
   },
   {
    "label": "6/10",
    "caption": "Mouth down and tapped again: the flakes fall on the dark tray. Then the dust comes out dry: the Nilfisk's crevice tool, close to the surface, slow (vacuum SOP). No compressed air, no IPA: nothing oily.",
-   "start_frame": 611,
-   "end_frame": 628
+   "start_frame": 471,
+   "end_frame": 482
   },
   {
    "label": "6/10",
    "caption": "Mouth down and tapped again: the flakes fall on the dark tray. Then the dust comes out dry: the Nilfisk's crevice tool, close to the surface, slow (vacuum SOP). No compressed air, no IPA: nothing oily.",
-   "start_frame": 629,
-   "end_frame": 636
+   "start_frame": 483,
+   "end_frame": 491
   },
   {
    "label": "6/10",
    "caption": "Mouth down and tapped again: the flakes fall on the dark tray. Then the dust comes out dry: the Nilfisk's crevice tool, close to the surface, slow (vacuum SOP). No compressed air, no IPA: nothing oily.",
-   "start_frame": 637,
+   "start_frame": 492,
+   "end_frame": 504
+  },
+  {
+   "label": "6/10",
+   "caption": "Mouth down and tapped again: the flakes fall on the dark tray. Then the dust comes out dry: the Nilfisk's crevice tool, close to the surface, slow (vacuum SOP). No compressed air, no IPA: nothing oily.",
+   "start_frame": 505,
+   "end_frame": 512
+  },
+  {
+   "label": "6/10",
+   "caption": "Mouth down and tapped again: the flakes fall on the dark tray. Then the dust comes out dry: the Nilfisk's crevice tool, close to the surface, slow (vacuum SOP). No compressed air, no IPA: nothing oily.",
+   "start_frame": 513,
+   "end_frame": 525
+  },
+  {
+   "label": "6/10",
+   "caption": "Mouth down and tapped again: the flakes fall on the dark tray. Then the dust comes out dry: the Nilfisk's crevice tool, close to the surface, slow (vacuum SOP). No compressed air, no IPA: nothing oily.",
+   "start_frame": 526,
+   "end_frame": 533
+  },
+  {
+   "label": "6/10",
+   "caption": "Mouth down and tapped again: the flakes fall on the dark tray. Then the dust comes out dry: the Nilfisk's crevice tool, close to the surface, slow (vacuum SOP). No compressed air, no IPA: nothing oily.",
+   "start_frame": 534,
+   "end_frame": 536
+  },
+  {
+   "label": "6/10",
+   "caption": "Mouth down and tapped again: the flakes fall on the dark tray. Then the dust comes out dry: the Nilfisk's crevice tool, close to the surface, slow (vacuum SOP). No compressed air, no IPA: nothing oily.",
+   "start_frame": 537,
+   "end_frame": 541
+  },
+  {
+   "label": "7/10",
+   "caption": "To the hood, its sash at the 18 in (457 mm) working stop. The arm works under the sash, as a person does; only the gripper and what it holds go in.",
+   "start_frame": 542,
+   "end_frame": 556
+  },
+  {
+   "label": "7/10",
+   "caption": "To the hood, its sash at the 18 in (457 mm) working stop. The arm works under the sash, as a person does; only the gripper and what it holds go in.",
+   "start_frame": 557,
+   "end_frame": 564
+  },
+  {
+   "label": "7/10",
+   "caption": "To the hood, its sash at the 18 in (457 mm) working stop. The arm works under the sash, as a person does; only the gripper and what it holds go in.",
+   "start_frame": 565,
+   "end_frame": 567
+  },
+  {
+   "label": "7/10",
+   "caption": "To the hood, its sash at the 18 in (457 mm) working stop. The arm works under the sash, as a person does; only the gripper and what it holds go in.",
+   "start_frame": 568,
+   "end_frame": 570
+  },
+  {
+   "label": "7/10",
+   "caption": "To the hood, its sash at the 18 in (457 mm) working stop. The arm works under the sash, as a person does; only the gripper and what it holds go in.",
+   "start_frame": 571,
+   "end_frame": 577
+  },
+  {
+   "label": "7/10",
+   "caption": "To the hood, its sash at the 18 in (457 mm) working stop. The arm works under the sash, as a person does; only the gripper and what it holds go in.",
+   "start_frame": 578,
+   "end_frame": 590
+  },
+  {
+   "label": "7/10",
+   "caption": "To the hood, its sash at the 18 in (457 mm) working stop. The arm works under the sash, as a person does; only the gripper and what it holds go in.",
+   "start_frame": 591,
+   "end_frame": 637
+  },
+  {
+   "label": "7/10",
+   "caption": "To the hood, its sash at the 18 in (457 mm) working stop. The arm works under the sash, as a person does; only the gripper and what it holds go in.",
+   "start_frame": 638,
    "end_frame": 652
   },
   {
-   "label": "6/10",
-   "caption": "Mouth down and tapped again: the flakes fall on the dark tray. Then the dust comes out dry: the Nilfisk's crevice tool, close to the surface, slow (vacuum SOP). No compressed air, no IPA: nothing oily.",
+   "label": "7/10",
+   "caption": "To the hood, its sash at the 18 in (457 mm) working stop. The arm works under the sash, as a person does; only the gripper and what it holds go in.",
    "start_frame": 653,
+   "end_frame": 665
+  },
+  {
+   "label": "7/10",
+   "caption": "To the hood, its sash at the 18 in (457 mm) working stop. The arm works under the sash, as a person does; only the gripper and what it holds go in.",
+   "start_frame": 666,
+   "end_frame": 671
+  },
+  {
+   "label": "7/10",
+   "caption": "To the hood, its sash at the 18 in (457 mm) working stop. The arm works under the sash, as a person does; only the gripper and what it holds go in.",
+   "start_frame": 672,
    "end_frame": 674
   },
   {
-   "label": "6/10",
-   "caption": "Mouth down and tapped again: the flakes fall on the dark tray. Then the dust comes out dry: the Nilfisk's crevice tool, close to the surface, slow (vacuum SOP). No compressed air, no IPA: nothing oily.",
+   "label": "7/10",
+   "caption": "To the hood, its sash at the 18 in (457 mm) working stop. The arm works under the sash, as a person does; only the gripper and what it holds go in.",
    "start_frame": 675,
-   "end_frame": 683
+   "end_frame": 685
   },
   {
-   "label": "6/10",
-   "caption": "Mouth down and tapped again: the flakes fall on the dark tray. Then the dust comes out dry: the Nilfisk's crevice tool, close to the surface, slow (vacuum SOP). No compressed air, no IPA: nothing oily.",
-   "start_frame": 684,
-   "end_frame": 687
+   "label": "7/10",
+   "caption": "A PTFE plug (ours) masks the nozzle seat and the hole: the arm holds it still and the lift raises the crucible onto it. Spray must stay out of the seat and bore (bronze plan).",
+   "start_frame": 686,
+   "end_frame": 690
   },
   {
-   "label": "6/10",
-   "caption": "Mouth down and tapped again: the flakes fall on the dark tray. Then the dust comes out dry: the Nilfisk's crevice tool, close to the surface, slow (vacuum SOP). No compressed air, no IPA: nothing oily.",
-   "start_frame": 688,
-   "end_frame": 699
+   "label": "7/10",
+   "caption": "A PTFE plug (ours) masks the nozzle seat and the hole: the arm holds it still and the lift raises the crucible onto it. Spray must stay out of the seat and bore (bronze plan).",
+   "start_frame": 691,
+   "end_frame": 702
   },
   {
-   "label": "6/10",
-   "caption": "Mouth down and tapped again: the flakes fall on the dark tray. Then the dust comes out dry: the Nilfisk's crevice tool, close to the surface, slow (vacuum SOP). No compressed air, no IPA: nothing oily.",
-   "start_frame": 700,
+   "label": "7/10",
+   "caption": "A PTFE plug (ours) masks the nozzle seat and the hole: the arm holds it still and the lift raises the crucible onto it. Spray must stay out of the seat and bore (bronze plan).",
+   "start_frame": 703,
+   "end_frame": 714
+  },
+  {
+   "label": "7/10",
+   "caption": "A PTFE plug (ours) masks the nozzle seat and the hole: the arm holds it still and the lift raises the crucible onto it. Spray must stay out of the seat and bore (bronze plan).",
+   "start_frame": 715,
    "end_frame": 717
   },
   {
-   "label": "6/10",
-   "caption": "Mouth down and tapped again: the flakes fall on the dark tray. Then the dust comes out dry: the Nilfisk's crevice tool, close to the surface, slow (vacuum SOP). No compressed air, no IPA: nothing oily.",
+   "label": "7/10",
+   "caption": "A PTFE plug (ours) masks the nozzle seat and the hole: the arm holds it still and the lift raises the crucible onto it. Spray must stay out of the seat and bore (bronze plan).",
    "start_frame": 718,
-   "end_frame": 731
+   "end_frame": 725
   },
   {
-   "label": "6/10",
-   "caption": "Mouth down and tapped again: the flakes fall on the dark tray. Then the dust comes out dry: the Nilfisk's crevice tool, close to the surface, slow (vacuum SOP). No compressed air, no IPA: nothing oily.",
-   "start_frame": 732,
+   "label": "7/10",
+   "caption": "A PTFE plug (ours) masks the nozzle seat and the hole: the arm holds it still and the lift raises the crucible onto it. Spray must stay out of the seat and bore (bronze plan).",
+   "start_frame": 726,
+   "end_frame": 733
+  },
+  {
+   "label": "7/10",
+   "caption": "A PTFE plug (ours) masks the nozzle seat and the hole: the arm holds it still and the lift raises the crucible onto it. Spray must stay out of the seat and bore (bronze plan).",
+   "start_frame": 734,
+   "end_frame": 740
+  },
+  {
+   "label": "7/10",
+   "caption": "A PTFE plug (ours) masks the nozzle seat and the hole: the arm holds it still and the lift raises the crucible onto it. Spray must stay out of the seat and bore (bronze plan).",
+   "start_frame": 741,
    "end_frame": 751
   },
   {
-   "label": "6/10",
-   "caption": "Mouth down and tapped again: the flakes fall on the dark tray. Then the dust comes out dry: the Nilfisk's crevice tool, close to the surface, slow (vacuum SOP). No compressed air, no IPA: nothing oily.",
+   "label": "7/10",
+   "caption": "A PTFE plug (ours) masks the nozzle seat and the hole: the arm holds it still and the lift raises the crucible onto it. Spray must stay out of the seat and bore (bronze plan).",
    "start_frame": 752,
+   "end_frame": 754
+  },
+  {
+   "label": "7/10",
+   "caption": "A PTFE plug (ours) masks the nozzle seat and the hole: the arm holds it still and the lift raises the crucible onto it. Spray must stay out of the seat and bore (bronze plan).",
+   "start_frame": 755,
    "end_frame": 763
   },
   {
-   "label": "6/10",
-   "caption": "Mouth down and tapped again: the flakes fall on the dark tray. Then the dust comes out dry: the Nilfisk's crevice tool, close to the surface, slow (vacuum SOP). No compressed air, no IPA: nothing oily.",
+   "label": "7/10",
+   "caption": "A PTFE plug (ours) masks the nozzle seat and the hole: the arm holds it still and the lift raises the crucible onto it. Spray must stay out of the seat and bore (bronze plan).",
    "start_frame": 764,
-   "end_frame": 783
+   "end_frame": 771
   },
   {
-   "label": "6/10",
-   "caption": "Mouth down and tapped again: the flakes fall on the dark tray. Then the dust comes out dry: the Nilfisk's crevice tool, close to the surface, slow (vacuum SOP). No compressed air, no IPA: nothing oily.",
-   "start_frame": 784,
-   "end_frame": 795
+   "label": "8/10",
+   "caption": "The spray tool (ours) holds the 13 oz can of Momentive BN Spray II. The arm shakes it for 90 s at about 2.5 Hz, well past the minute after the ball starts to rattle: BN settles fast.",
+   "start_frame": 772,
+   "end_frame": 786
   },
   {
-   "label": "6/10",
-   "caption": "Mouth down and tapped again: the flakes fall on the dark tray. Then the dust comes out dry: the Nilfisk's crevice tool, close to the surface, slow (vacuum SOP). No compressed air, no IPA: nothing oily.",
-   "start_frame": 796,
-   "end_frame": 799
+   "label": "8/10",
+   "caption": "The spray tool (ours) holds the 13 oz can of Momentive BN Spray II. The arm shakes it for 90 s at about 2.5 Hz, well past the minute after the ball starts to rattle: BN settles fast.",
+   "start_frame": 787,
+   "end_frame": 793
   },
   {
-   "label": "6/10",
-   "caption": "Mouth down and tapped again: the flakes fall on the dark tray. Then the dust comes out dry: the Nilfisk's crevice tool, close to the surface, slow (vacuum SOP). No compressed air, no IPA: nothing oily.",
-   "start_frame": 800,
+   "label": "8/10",
+   "caption": "The spray tool (ours) holds the 13 oz can of Momentive BN Spray II. The arm shakes it for 90 s at about 2.5 Hz, well past the minute after the ball starts to rattle: BN settles fast.",
+   "start_frame": 794,
+   "end_frame": 796
+  },
+  {
+   "label": "8/10",
+   "caption": "The spray tool (ours) holds the 13 oz can of Momentive BN Spray II. The arm shakes it for 90 s at about 2.5 Hz, well past the minute after the ball starts to rattle: BN settles fast.",
+   "start_frame": 797,
    "end_frame": 807
   },
   {
-   "label": "7/10",
-   "caption": "To the hood, its sash at the 18 in (457 mm) working stop. The arm works under the sash, as a person does; only the gripper and what it holds go in.",
+   "label": "8/10",
+   "caption": "The spray tool (ours) holds the 13 oz can of Momentive BN Spray II. The arm shakes it for 90 s at about 2.5 Hz, well past the minute after the ball starts to rattle: BN settles fast.",
    "start_frame": 808,
-   "end_frame": 829
-  },
-  {
-   "label": "7/10",
-   "caption": "To the hood, its sash at the 18 in (457 mm) working stop. The arm works under the sash, as a person does; only the gripper and what it holds go in.",
-   "start_frame": 830,
-   "end_frame": 841
-  },
-  {
-   "label": "7/10",
-   "caption": "To the hood, its sash at the 18 in (457 mm) working stop. The arm works under the sash, as a person does; only the gripper and what it holds go in.",
-   "start_frame": 842,
-   "end_frame": 846
-  },
-  {
-   "label": "7/10",
-   "caption": "To the hood, its sash at the 18 in (457 mm) working stop. The arm works under the sash, as a person does; only the gripper and what it holds go in.",
-   "start_frame": 847,
-   "end_frame": 851
-  },
-  {
-   "label": "7/10",
-   "caption": "To the hood, its sash at the 18 in (457 mm) working stop. The arm works under the sash, as a person does; only the gripper and what it holds go in.",
-   "start_frame": 852,
-   "end_frame": 861
-  },
-  {
-   "label": "7/10",
-   "caption": "To the hood, its sash at the 18 in (457 mm) working stop. The arm works under the sash, as a person does; only the gripper and what it holds go in.",
-   "start_frame": 862,
-   "end_frame": 881
-  },
-  {
-   "label": "7/10",
-   "caption": "To the hood, its sash at the 18 in (457 mm) working stop. The arm works under the sash, as a person does; only the gripper and what it holds go in.",
-   "start_frame": 882,
-   "end_frame": 951
-  },
-  {
-   "label": "7/10",
-   "caption": "To the hood, its sash at the 18 in (457 mm) working stop. The arm works under the sash, as a person does; only the gripper and what it holds go in.",
-   "start_frame": 952,
-   "end_frame": 973
-  },
-  {
-   "label": "7/10",
-   "caption": "To the hood, its sash at the 18 in (457 mm) working stop. The arm works under the sash, as a person does; only the gripper and what it holds go in.",
-   "start_frame": 974,
-   "end_frame": 993
-  },
-  {
-   "label": "7/10",
-   "caption": "To the hood, its sash at the 18 in (457 mm) working stop. The arm works under the sash, as a person does; only the gripper and what it holds go in.",
-   "start_frame": 994,
-   "end_frame": 1002
-  },
-  {
-   "label": "7/10",
-   "caption": "To the hood, its sash at the 18 in (457 mm) working stop. The arm works under the sash, as a person does; only the gripper and what it holds go in.",
-   "start_frame": 1003,
-   "end_frame": 1006
-  },
-  {
-   "label": "7/10",
-   "caption": "To the hood, its sash at the 18 in (457 mm) working stop. The arm works under the sash, as a person does; only the gripper and what it holds go in.",
-   "start_frame": 1007,
-   "end_frame": 1022
-  },
-  {
-   "label": "7/10",
-   "caption": "A PTFE plug (ours) masks the nozzle seat and the hole: the arm holds it still and the lift raises the crucible onto it. Spray must stay out of the seat and bore (bronze plan).",
-   "start_frame": 1023,
-   "end_frame": 1030
-  },
-  {
-   "label": "7/10",
-   "caption": "A PTFE plug (ours) masks the nozzle seat and the hole: the arm holds it still and the lift raises the crucible onto it. Spray must stay out of the seat and bore (bronze plan).",
-   "start_frame": 1031,
-   "end_frame": 1048
-  },
-  {
-   "label": "7/10",
-   "caption": "A PTFE plug (ours) masks the nozzle seat and the hole: the arm holds it still and the lift raises the crucible onto it. Spray must stay out of the seat and bore (bronze plan).",
-   "start_frame": 1049,
-   "end_frame": 1066
-  },
-  {
-   "label": "7/10",
-   "caption": "A PTFE plug (ours) masks the nozzle seat and the hole: the arm holds it still and the lift raises the crucible onto it. Spray must stay out of the seat and bore (bronze plan).",
-   "start_frame": 1067,
-   "end_frame": 1070
-  },
-  {
-   "label": "7/10",
-   "caption": "A PTFE plug (ours) masks the nozzle seat and the hole: the arm holds it still and the lift raises the crucible onto it. Spray must stay out of the seat and bore (bronze plan).",
-   "start_frame": 1071,
-   "end_frame": 1082
-  },
-  {
-   "label": "7/10",
-   "caption": "A PTFE plug (ours) masks the nozzle seat and the hole: the arm holds it still and the lift raises the crucible onto it. Spray must stay out of the seat and bore (bronze plan).",
-   "start_frame": 1083,
-   "end_frame": 1094
-  },
-  {
-   "label": "7/10",
-   "caption": "A PTFE plug (ours) masks the nozzle seat and the hole: the arm holds it still and the lift raises the crucible onto it. Spray must stay out of the seat and bore (bronze plan).",
-   "start_frame": 1095,
-   "end_frame": 1104
-  },
-  {
-   "label": "7/10",
-   "caption": "A PTFE plug (ours) masks the nozzle seat and the hole: the arm holds it still and the lift raises the crucible onto it. Spray must stay out of the seat and bore (bronze plan).",
-   "start_frame": 1105,
-   "end_frame": 1120
-  },
-  {
-   "label": "7/10",
-   "caption": "A PTFE plug (ours) masks the nozzle seat and the hole: the arm holds it still and the lift raises the crucible onto it. Spray must stay out of the seat and bore (bronze plan).",
-   "start_frame": 1121,
-   "end_frame": 1124
-  },
-  {
-   "label": "7/10",
-   "caption": "A PTFE plug (ours) masks the nozzle seat and the hole: the arm holds it still and the lift raises the crucible onto it. Spray must stay out of the seat and bore (bronze plan).",
-   "start_frame": 1125,
-   "end_frame": 1138
-  },
-  {
-   "label": "7/10",
-   "caption": "A PTFE plug (ours) masks the nozzle seat and the hole: the arm holds it still and the lift raises the crucible onto it. Spray must stay out of the seat and bore (bronze plan).",
-   "start_frame": 1139,
-   "end_frame": 1150
-  },
-  {
-   "label": "8/10",
-   "caption": "The spray tool (ours) holds the 13 oz can of Momentive BN Spray II. The arm shakes it for 90 s at about 2.5 Hz, well past the minute after the ball starts to rattle: BN settles fast.",
-   "start_frame": 1151,
-   "end_frame": 1172
-  },
-  {
-   "label": "8/10",
-   "caption": "The spray tool (ours) holds the 13 oz can of Momentive BN Spray II. The arm shakes it for 90 s at about 2.5 Hz, well past the minute after the ball starts to rattle: BN settles fast.",
-   "start_frame": 1173,
-   "end_frame": 1182
-  },
-  {
-   "label": "8/10",
-   "caption": "The spray tool (ours) holds the 13 oz can of Momentive BN Spray II. The arm shakes it for 90 s at about 2.5 Hz, well past the minute after the ball starts to rattle: BN settles fast.",
-   "start_frame": 1183,
-   "end_frame": 1186
-  },
-  {
-   "label": "8/10",
-   "caption": "The spray tool (ours) holds the 13 oz can of Momentive BN Spray II. The arm shakes it for 90 s at about 2.5 Hz, well past the minute after the ball starts to rattle: BN settles fast.",
-   "start_frame": 1187,
-   "end_frame": 1202
-  },
-  {
-   "label": "8/10",
-   "caption": "The spray tool (ours) holds the 13 oz can of Momentive BN Spray II. The arm shakes it for 90 s at about 2.5 Hz, well past the minute after the ball starts to rattle: BN settles fast.",
-   "start_frame": 1203,
-   "end_frame": 1247
+   "end_frame": 837
   },
   {
    "label": "8/10",
    "caption": "Short, quick bursts 15-20 cm from the wall, aimed at the walls, not the floor; the turntable turns the crucible between them. Only the scraped spots get sprayed: a touch-up, not the whole inside.",
-   "start_frame": 1248,
-   "end_frame": 1271
+   "start_frame": 838,
+   "end_frame": 853
   },
   {
    "label": "8/10",
    "caption": "Short, quick bursts 15-20 cm from the wall, aimed at the walls, not the floor; the turntable turns the crucible between them. Only the scraped spots get sprayed: a touch-up, not the whole inside.",
-   "start_frame": 1272,
-   "end_frame": 1276
+   "start_frame": 854,
+   "end_frame": 856
   },
   {
    "label": "8/10",
    "caption": "Short, quick bursts 15-20 cm from the wall, aimed at the walls, not the floor; the turntable turns the crucible between them. Only the scraped spots get sprayed: a touch-up, not the whole inside.",
-   "start_frame": 1277,
-   "end_frame": 1281
+   "start_frame": 857,
+   "end_frame": 860
   },
   {
    "label": "8/10",
    "caption": "Short, quick bursts 15-20 cm from the wall, aimed at the walls, not the floor; the turntable turns the crucible between them. Only the scraped spots get sprayed: a touch-up, not the whole inside.",
-   "start_frame": 1282,
-   "end_frame": 1286
+   "start_frame": 861,
+   "end_frame": 863
   },
   {
    "label": "8/10",
    "caption": "Short, quick bursts 15-20 cm from the wall, aimed at the walls, not the floor; the turntable turns the crucible between them. Only the scraped spots get sprayed: a touch-up, not the whole inside.",
-   "start_frame": 1287,
-   "end_frame": 1291
+   "start_frame": 864,
+   "end_frame": 867
   },
   {
    "label": "8/10",
    "caption": "Short, quick bursts 15-20 cm from the wall, aimed at the walls, not the floor; the turntable turns the crucible between them. Only the scraped spots get sprayed: a touch-up, not the whole inside.",
-   "start_frame": 1292,
-   "end_frame": 1303
+   "start_frame": 868,
+   "end_frame": 875
   },
   {
    "label": "8/10",
    "caption": "Short, quick bursts 15-20 cm from the wall, aimed at the walls, not the floor; the turntable turns the crucible between them. Only the scraped spots get sprayed: a touch-up, not the whole inside.",
-   "start_frame": 1304,
-   "end_frame": 1307
+   "start_frame": 876,
+   "end_frame": 878
   },
   {
    "label": "8/10",
    "caption": "Short, quick bursts 15-20 cm from the wall, aimed at the walls, not the floor; the turntable turns the crucible between them. Only the scraped spots get sprayed: a touch-up, not the whole inside.",
-   "start_frame": 1308,
-   "end_frame": 1312
+   "start_frame": 879,
+   "end_frame": 882
   },
   {
    "label": "8/10",
    "caption": "Short, quick bursts 15-20 cm from the wall, aimed at the walls, not the floor; the turntable turns the crucible between them. Only the scraped spots get sprayed: a touch-up, not the whole inside.",
-   "start_frame": 1313,
-   "end_frame": 1316
+   "start_frame": 883,
+   "end_frame": 885
   },
   {
    "label": "8/10",
    "caption": "Short, quick bursts 15-20 cm from the wall, aimed at the walls, not the floor; the turntable turns the crucible between them. Only the scraped spots get sprayed: a touch-up, not the whole inside.",
-   "start_frame": 1317,
-   "end_frame": 1321
+   "start_frame": 886,
+   "end_frame": 889
   },
   {
    "label": "8/10",
    "caption": "Short, quick bursts 15-20 cm from the wall, aimed at the walls, not the floor; the turntable turns the crucible between them. Only the scraped spots get sprayed: a touch-up, not the whole inside.",
-   "start_frame": 1322,
-   "end_frame": 1325
+   "start_frame": 890,
+   "end_frame": 892
   },
   {
    "label": "8/10",
    "caption": "Short, quick bursts 15-20 cm from the wall, aimed at the walls, not the floor; the turntable turns the crucible between them. Only the scraped spots get sprayed: a touch-up, not the whole inside.",
-   "start_frame": 1326,
-   "end_frame": 1330
+   "start_frame": 893,
+   "end_frame": 896
   },
   {
    "label": "8/10",
    "caption": "Short, quick bursts 15-20 cm from the wall, aimed at the walls, not the floor; the turntable turns the crucible between them. Only the scraped spots get sprayed: a touch-up, not the whole inside.",
-   "start_frame": 1331,
-   "end_frame": 1334
+   "start_frame": 897,
+   "end_frame": 899
   },
   {
    "label": "8/10",
    "caption": "Short, quick bursts 15-20 cm from the wall, aimed at the walls, not the floor; the turntable turns the crucible between them. Only the scraped spots get sprayed: a touch-up, not the whole inside.",
-   "start_frame": 1335,
-   "end_frame": 1339
+   "start_frame": 900,
+   "end_frame": 903
   },
   {
    "label": "8/10",
    "caption": "Short, quick bursts 15-20 cm from the wall, aimed at the walls, not the floor; the turntable turns the crucible between them. Only the scraped spots get sprayed: a touch-up, not the whole inside.",
-   "start_frame": 1340,
-   "end_frame": 1343
+   "start_frame": 904,
+   "end_frame": 906
   },
   {
    "label": "8/10",
    "caption": "Short, quick bursts 15-20 cm from the wall, aimed at the walls, not the floor; the turntable turns the crucible between them. Only the scraped spots get sprayed: a touch-up, not the whole inside.",
-   "start_frame": 1344,
-   "end_frame": 1348
+   "start_frame": 907,
+   "end_frame": 910
   },
   {
    "label": "8/10",
    "caption": "About 5 min between passes, longer if the last one still looks wet: the coat dries slowly in the box (bronze plan). Time-lapse.",
-   "start_frame": 1349,
-   "end_frame": 1374
+   "start_frame": 911,
+   "end_frame": 928
   },
   {
    "label": "8/10",
    "caption": "Short, quick bursts 15-20 cm from the wall, aimed at the walls, not the floor; the turntable turns the crucible between them. Only the scraped spots get sprayed: a touch-up, not the whole inside.",
-   "start_frame": 1375,
-   "end_frame": 1394
+   "start_frame": 929,
+   "end_frame": 941
   },
   {
    "label": "8/10",
    "caption": "Short, quick bursts 15-20 cm from the wall, aimed at the walls, not the floor; the turntable turns the crucible between them. Only the scraped spots get sprayed: a touch-up, not the whole inside.",
-   "start_frame": 1395,
-   "end_frame": 1399
+   "start_frame": 942,
+   "end_frame": 944
   },
   {
    "label": "8/10",
    "caption": "Short, quick bursts 15-20 cm from the wall, aimed at the walls, not the floor; the turntable turns the crucible between them. Only the scraped spots get sprayed: a touch-up, not the whole inside.",
-   "start_frame": 1400,
-   "end_frame": 1404
+   "start_frame": 945,
+   "end_frame": 948
   },
   {
    "label": "8/10",
    "caption": "Short, quick bursts 15-20 cm from the wall, aimed at the walls, not the floor; the turntable turns the crucible between them. Only the scraped spots get sprayed: a touch-up, not the whole inside.",
-   "start_frame": 1405,
-   "end_frame": 1409
+   "start_frame": 949,
+   "end_frame": 951
   },
   {
    "label": "8/10",
    "caption": "Short, quick bursts 15-20 cm from the wall, aimed at the walls, not the floor; the turntable turns the crucible between them. Only the scraped spots get sprayed: a touch-up, not the whole inside.",
-   "start_frame": 1410,
-   "end_frame": 1414
+   "start_frame": 952,
+   "end_frame": 955
   },
   {
    "label": "8/10",
    "caption": "Short, quick bursts 15-20 cm from the wall, aimed at the walls, not the floor; the turntable turns the crucible between them. Only the scraped spots get sprayed: a touch-up, not the whole inside.",
-   "start_frame": 1415,
-   "end_frame": 1426
+   "start_frame": 956,
+   "end_frame": 963
   },
   {
    "label": "8/10",
    "caption": "Short, quick bursts 15-20 cm from the wall, aimed at the walls, not the floor; the turntable turns the crucible between them. Only the scraped spots get sprayed: a touch-up, not the whole inside.",
-   "start_frame": 1427,
-   "end_frame": 1430
+   "start_frame": 964,
+   "end_frame": 966
   },
   {
    "label": "8/10",
    "caption": "Short, quick bursts 15-20 cm from the wall, aimed at the walls, not the floor; the turntable turns the crucible between them. Only the scraped spots get sprayed: a touch-up, not the whole inside.",
-   "start_frame": 1431,
-   "end_frame": 1435
+   "start_frame": 967,
+   "end_frame": 970
   },
   {
    "label": "8/10",
    "caption": "Short, quick bursts 15-20 cm from the wall, aimed at the walls, not the floor; the turntable turns the crucible between them. Only the scraped spots get sprayed: a touch-up, not the whole inside.",
-   "start_frame": 1436,
-   "end_frame": 1439
+   "start_frame": 971,
+   "end_frame": 973
   },
   {
    "label": "8/10",
    "caption": "Short, quick bursts 15-20 cm from the wall, aimed at the walls, not the floor; the turntable turns the crucible between them. Only the scraped spots get sprayed: a touch-up, not the whole inside.",
-   "start_frame": 1440,
-   "end_frame": 1444
+   "start_frame": 974,
+   "end_frame": 977
   },
   {
    "label": "8/10",
    "caption": "Short, quick bursts 15-20 cm from the wall, aimed at the walls, not the floor; the turntable turns the crucible between them. Only the scraped spots get sprayed: a touch-up, not the whole inside.",
-   "start_frame": 1445,
-   "end_frame": 1448
+   "start_frame": 978,
+   "end_frame": 980
   },
   {
    "label": "8/10",
    "caption": "Short, quick bursts 15-20 cm from the wall, aimed at the walls, not the floor; the turntable turns the crucible between them. Only the scraped spots get sprayed: a touch-up, not the whole inside.",
-   "start_frame": 1449,
-   "end_frame": 1453
+   "start_frame": 981,
+   "end_frame": 984
   },
   {
    "label": "8/10",
    "caption": "Short, quick bursts 15-20 cm from the wall, aimed at the walls, not the floor; the turntable turns the crucible between them. Only the scraped spots get sprayed: a touch-up, not the whole inside.",
-   "start_frame": 1454,
-   "end_frame": 1457
+   "start_frame": 985,
+   "end_frame": 987
   },
   {
    "label": "8/10",
    "caption": "Short, quick bursts 15-20 cm from the wall, aimed at the walls, not the floor; the turntable turns the crucible between them. Only the scraped spots get sprayed: a touch-up, not the whole inside.",
-   "start_frame": 1458,
-   "end_frame": 1462
+   "start_frame": 988,
+   "end_frame": 991
   },
   {
    "label": "8/10",
    "caption": "Short, quick bursts 15-20 cm from the wall, aimed at the walls, not the floor; the turntable turns the crucible between them. Only the scraped spots get sprayed: a touch-up, not the whole inside.",
-   "start_frame": 1463,
-   "end_frame": 1465
+   "start_frame": 992,
+   "end_frame": 993
   },
   {
    "label": "8/10",
    "caption": "Short, quick bursts 15-20 cm from the wall, aimed at the walls, not the floor; the turntable turns the crucible between them. Only the scraped spots get sprayed: a touch-up, not the whole inside.",
-   "start_frame": 1466,
-   "end_frame": 1469
+   "start_frame": 994,
+   "end_frame": 996
   },
   {
    "label": "8/10",
    "caption": "Short, quick bursts 15-20 cm from the wall, aimed at the walls, not the floor; the turntable turns the crucible between them. Only the scraped spots get sprayed: a touch-up, not the whole inside.",
-   "start_frame": 1470,
-   "end_frame": 1474
+   "start_frame": 997,
+   "end_frame": 1000
   },
   {
    "label": "8/10",
    "caption": "Then the can upside down for 4 s to clear its valve: upside down it sprays only propellant, aimed at the hood's back, away from the box.",
-   "start_frame": 1475,
-   "end_frame": 1496
+   "start_frame": 1001,
+   "end_frame": 1015
   },
   {
    "label": "8/10",
    "caption": "Then the can upside down for 4 s to clear its valve: upside down it sprays only propellant, aimed at the hood's back, away from the box.",
-   "start_frame": 1497,
-   "end_frame": 1523
+   "start_frame": 1016,
+   "end_frame": 1033
   },
   {
    "label": "8/10",
    "caption": "Then the can upside down for 4 s to clear its valve: upside down it sprays only propellant, aimed at the hood's back, away from the box.",
-   "start_frame": 1524,
-   "end_frame": 1545
+   "start_frame": 1034,
+   "end_frame": 1048
   },
   {
    "label": "8/10",
    "caption": "Then the can upside down for 4 s to clear its valve: upside down it sprays only propellant, aimed at the hood's back, away from the box.",
-   "start_frame": 1546,
-   "end_frame": 1555
+   "start_frame": 1049,
+   "end_frame": 1055
   },
   {
    "label": "8/10",
    "caption": "Then the can upside down for 4 s to clear its valve: upside down it sprays only propellant, aimed at the hood's back, away from the box.",
-   "start_frame": 1556,
-   "end_frame": 1559
+   "start_frame": 1056,
+   "end_frame": 1058
   },
   {
    "label": "8/10",
    "caption": "Then the can upside down for 4 s to clear its valve: upside down it sprays only propellant, aimed at the hood's back, away from the box.",
-   "start_frame": 1560,
-   "end_frame": 1568
+   "start_frame": 1059,
+   "end_frame": 1064
   },
   {
    "label": "9/10",
    "caption": "Plug out, and the crucible goes upside down on the drying rack in the running hood: nothing pools on the floor and the draft can't reach inside (bronze plan).",
-   "start_frame": 1569,
-   "end_frame": 1580
+   "start_frame": 1065,
+   "end_frame": 1072
   },
   {
    "label": "9/10",
    "caption": "Plug out, and the crucible goes upside down on the drying rack in the running hood: nothing pools on the floor and the draft can't reach inside (bronze plan).",
-   "start_frame": 1581,
-   "end_frame": 1600
+   "start_frame": 1073,
+   "end_frame": 1085
   },
   {
    "label": "9/10",
    "caption": "Plug out, and the crucible goes upside down on the drying rack in the running hood: nothing pools on the floor and the draft can't reach inside (bronze plan).",
-   "start_frame": 1601,
-   "end_frame": 1614
+   "start_frame": 1086,
+   "end_frame": 1094
   },
   {
    "label": "9/10",
    "caption": "Plug out, and the crucible goes upside down on the drying rack in the running hood: nothing pools on the floor and the draft can't reach inside (bronze plan).",
-   "start_frame": 1615,
-   "end_frame": 1618
+   "start_frame": 1095,
+   "end_frame": 1097
   },
   {
    "label": "9/10",
    "caption": "Plug out, and the crucible goes upside down on the drying rack in the running hood: nothing pools on the floor and the draft can't reach inside (bronze plan).",
-   "start_frame": 1619,
-   "end_frame": 1633
+   "start_frame": 1098,
+   "end_frame": 1107
   },
   {
    "label": "9/10",
    "caption": "Plug out, and the crucible goes upside down on the drying rack in the running hood: nothing pools on the floor and the draft can't reach inside (bronze plan).",
-   "start_frame": 1634,
-   "end_frame": 1643
+   "start_frame": 1108,
+   "end_frame": 1114
   },
   {
    "label": "9/10",
    "caption": "Plug out, and the crucible goes upside down on the drying rack in the running hood: nothing pools on the floor and the draft can't reach inside (bronze plan).",
-   "start_frame": 1644,
-   "end_frame": 1655
+   "start_frame": 1115,
+   "end_frame": 1122
   },
   {
    "label": "9/10",
    "caption": "Plug out, and the crucible goes upside down on the drying rack in the running hood: nothing pools on the floor and the draft can't reach inside (bronze plan).",
-   "start_frame": 1656,
-   "end_frame": 1667
+   "start_frame": 1123,
+   "end_frame": 1130
   },
   {
    "label": "9/10",
    "caption": "Plug out, and the crucible goes upside down on the drying rack in the running hood: nothing pools on the floor and the draft can't reach inside (bronze plan).",
-   "start_frame": 1668,
-   "end_frame": 1671
+   "start_frame": 1131,
+   "end_frame": 1133
   },
   {
    "label": "9/10",
    "caption": "Plug out, and the crucible goes upside down on the drying rack in the running hood: nothing pools on the floor and the draft can't reach inside (bronze plan).",
-   "start_frame": 1672,
-   "end_frame": 1685
+   "start_frame": 1134,
+   "end_frame": 1142
   },
   {
    "label": "9/10",
    "caption": "Plug out, and the crucible goes upside down on the drying rack in the running hood: nothing pools on the floor and the draft can't reach inside (bronze plan).",
-   "start_frame": 1686,
-   "end_frame": 1699
+   "start_frame": 1143,
+   "end_frame": 1151
   },
   {
    "label": "9/10",
    "caption": "Plug out, and the crucible goes upside down on the drying rack in the running hood: nothing pools on the floor and the draft can't reach inside (bronze plan).",
-   "start_frame": 1700,
-   "end_frame": 1717
+   "start_frame": 1152,
+   "end_frame": 1163
   },
   {
    "label": "9/10",
    "caption": "Plug out, and the crucible goes upside down on the drying rack in the running hood: nothing pools on the floor and the draft can't reach inside (bronze plan).",
-   "start_frame": 1718,
-   "end_frame": 1731
+   "start_frame": 1164,
+   "end_frame": 1172
   },
   {
    "label": "9/10",
    "caption": "Plug out, and the crucible goes upside down on the drying rack in the running hood: nothing pools on the floor and the draft can't reach inside (bronze plan).",
-   "start_frame": 1732,
-   "end_frame": 1735
+   "start_frame": 1173,
+   "end_frame": 1175
   },
   {
    "label": "9/10",
    "caption": "Plug out, and the crucible goes upside down on the drying rack in the running hood: nothing pools on the floor and the draft can't reach inside (bronze plan).",
-   "start_frame": 1736,
-   "end_frame": 1744
+   "start_frame": 1176,
+   "end_frame": 1181
   },
   {
    "label": "9/10",
    "caption": "Plug out, and the crucible goes upside down on the drying rack in the running hood: nothing pools on the floor and the draft can't reach inside (bronze plan).",
-   "start_frame": 1745,
-   "end_frame": 1760
+   "start_frame": 1182,
+   "end_frame": 1192
   },
   {
    "label": "9/10",
    "caption": "Plug out, and the crucible goes upside down on the drying rack in the running hood: nothing pools on the floor and the draft can't reach inside (bronze plan).",
-   "start_frame": 1761,
-   "end_frame": 1772
+   "start_frame": 1193,
+   "end_frame": 1200
   },
   {
    "label": "9/10",
    "caption": "Plug out, and the crucible goes upside down on the drying rack in the running hood: nothing pools on the floor and the draft can't reach inside (bronze plan).",
-   "start_frame": 1773,
-   "end_frame": 1792
+   "start_frame": 1201,
+   "end_frame": 1213
   },
   {
    "label": "9/10",
    "caption": "Plug out, and the crucible goes upside down on the drying rack in the running hood: nothing pools on the floor and the draft can't reach inside (bronze plan).",
-   "start_frame": 1793,
-   "end_frame": 1808
+   "start_frame": 1214,
+   "end_frame": 1224
   },
   {
    "label": "9/10",
    "caption": "Plug out, and the crucible goes upside down on the drying rack in the running hood: nothing pools on the floor and the draft can't reach inside (bronze plan).",
-   "start_frame": 1809,
-   "end_frame": 1826
+   "start_frame": 1225,
+   "end_frame": 1236
   },
   {
    "label": "9/10",
    "caption": "Plug out, and the crucible goes upside down on the drying rack in the running hood: nothing pools on the floor and the draft can't reach inside (bronze plan).",
-   "start_frame": 1827,
-   "end_frame": 1834
+   "start_frame": 1237,
+   "end_frame": 1241
   },
   {
    "label": "9/10",
    "caption": "Plug out, and the crucible goes upside down on the drying rack in the running hood: nothing pools on the floor and the draft can't reach inside (bronze plan).",
-   "start_frame": 1835,
-   "end_frame": 1838
+   "start_frame": 1242,
+   "end_frame": 1244
   },
   {
    "label": "9/10",
    "caption": "Plug out, and the crucible goes upside down on the drying rack in the running hood: nothing pools on the floor and the draft can't reach inside (bronze plan).",
-   "start_frame": 1839,
-   "end_frame": 1854
+   "start_frame": 1245,
+   "end_frame": 1255
   },
   {
    "label": "9/10",
    "caption": "Plug out, and the crucible goes upside down on the drying rack in the running hood: nothing pools on the floor and the draft can't reach inside (bronze plan).",
-   "start_frame": 1855,
-   "end_frame": 1874
+   "start_frame": 1256,
+   "end_frame": 1268
   },
   {
    "label": "9/10",
    "caption": "Overnight in the running hood, upside down. The vapour leaves the box, so nobody has to check by smell. Never pour onto a wet coat (bronze plan). Time-lapse.",
-   "start_frame": 1875,
-   "end_frame": 1922
+   "start_frame": 1269,
+   "end_frame": 1299
   },
   {
    "label": "10/10",
    "caption": "In the morning the arm takes it to the bench, upright in the chuck, and looks in with its wrist camera under a low side light: cracks, lifted edges and bare graphite cast or show dark.",
-   "start_frame": 1923,
-   "end_frame": 1942
+   "start_frame": 1300,
+   "end_frame": 1312
   },
   {
    "label": "10/10",
    "caption": "In the morning the arm takes it to the bench, upright in the chuck, and looks in with its wrist camera under a low side light: cracks, lifted edges and bare graphite cast or show dark.",
-   "start_frame": 1943,
-   "end_frame": 1958
+   "start_frame": 1313,
+   "end_frame": 1323
   },
   {
    "label": "10/10",
    "caption": "In the morning the arm takes it to the bench, upright in the chuck, and looks in with its wrist camera under a low side light: cracks, lifted edges and bare graphite cast or show dark.",
-   "start_frame": 1959,
-   "end_frame": 1962
+   "start_frame": 1324,
+   "end_frame": 1326
   },
   {
    "label": "10/10",
    "caption": "In the morning the arm takes it to the bench, upright in the chuck, and looks in with its wrist camera under a low side light: cracks, lifted edges and bare graphite cast or show dark.",
-   "start_frame": 1963,
-   "end_frame": 1970
+   "start_frame": 1327,
+   "end_frame": 1331
   },
   {
    "label": "10/10",
    "caption": "In the morning the arm takes it to the bench, upright in the chuck, and looks in with its wrist camera under a low side light: cracks, lifted edges and bare graphite cast or show dark.",
-   "start_frame": 1971,
-   "end_frame": 1986
+   "start_frame": 1332,
+   "end_frame": 1342
   },
   {
    "label": "10/10",
    "caption": "In the morning the arm takes it to the bench, upright in the chuck, and looks in with its wrist camera under a low side light: cracks, lifted edges and bare graphite cast or show dark.",
-   "start_frame": 1987,
-   "end_frame": 2006
+   "start_frame": 1343,
+   "end_frame": 1355
   },
   {
    "label": "10/10",
    "caption": "In the morning the arm takes it to the bench, upright in the chuck, and looks in with its wrist camera under a low side light: cracks, lifted edges and bare graphite cast or show dark.",
-   "start_frame": 2007,
-   "end_frame": 2022
+   "start_frame": 1356,
+   "end_frame": 1366
   },
   {
    "label": "10/10",
    "caption": "In the morning the arm takes it to the bench, upright in the chuck, and looks in with its wrist camera under a low side light: cracks, lifted edges and bare graphite cast or show dark.",
-   "start_frame": 2023,
-   "end_frame": 2092
+   "start_frame": 1367,
+   "end_frame": 1413
   },
   {
    "label": "10/10",
    "caption": "In the morning the arm takes it to the bench, upright in the chuck, and looks in with its wrist camera under a low side light: cracks, lifted edges and bare graphite cast or show dark.",
-   "start_frame": 2093,
-   "end_frame": 2114
+   "start_frame": 1414,
+   "end_frame": 1428
   },
   {
    "label": "10/10",
    "caption": "In the morning the arm takes it to the bench, upright in the chuck, and looks in with its wrist camera under a low side light: cracks, lifted edges and bare graphite cast or show dark.",
-   "start_frame": 2115,
-   "end_frame": 2126
+   "start_frame": 1429,
+   "end_frame": 1436
   },
   {
    "label": "10/10",
    "caption": "In the morning the arm takes it to the bench, upright in the chuck, and looks in with its wrist camera under a low side light: cracks, lifted edges and bare graphite cast or show dark.",
-   "start_frame": 2127,
-   "end_frame": 2134
+   "start_frame": 1437,
+   "end_frame": 1441
   },
   {
    "label": "10/10",
    "caption": "In the morning the arm takes it to the bench, upright in the chuck, and looks in with its wrist camera under a low side light: cracks, lifted edges and bare graphite cast or show dark.",
-   "start_frame": 2135,
-   "end_frame": 2139
+   "start_frame": 1442,
+   "end_frame": 1444
   },
   {
    "label": "10/10",
    "caption": "In the morning the arm takes it to the bench, upright in the chuck, and looks in with its wrist camera under a low side light: cracks, lifted edges and bare graphite cast or show dark.",
-   "start_frame": 2140,
-   "end_frame": 2143
+   "start_frame": 1445,
+   "end_frame": 1447
   },
   {
    "label": "10/10",
    "caption": "In the morning the arm takes it to the bench, upright in the chuck, and looks in with its wrist camera under a low side light: cracks, lifted edges and bare graphite cast or show dark.",
-   "start_frame": 2144,
-   "end_frame": 2155
+   "start_frame": 1448,
+   "end_frame": 1452
   },
   {
    "label": "10/10",
    "caption": "In the morning the arm takes it to the bench, upright in the chuck, and looks in with its wrist camera under a low side light: cracks, lifted edges and bare graphite cast or show dark.",
-   "start_frame": 2156,
-   "end_frame": 2169
+   "start_frame": 1453,
+   "end_frame": 1465
   },
   {
    "label": "10/10",
    "caption": "In the morning the arm takes it to the bench, upright in the chuck, and looks in with its wrist camera under a low side light: cracks, lifted edges and bare graphite cast or show dark.",
-   "start_frame": 2170,
-   "end_frame": 2175
+   "start_frame": 1466,
+   "end_frame": 1474
+  },
+  {
+   "label": "10/10",
+   "caption": "In the morning the arm takes it to the bench, upright in the chuck, and looks in with its wrist camera under a low side light: cracks, lifted edges and bare graphite cast or show dark.",
+   "start_frame": 1475,
+   "end_frame": 1478
   },
   {
    "label": "10/10",
    "caption": "The check (ours, on the D405's colour image): dark pixels on the floor and the floor-wall corner mean bare graphite; thin dark lines, cracks; a bright edge with a shadow beside it, a lifted flake.",
-   "start_frame": 2176,
-   "end_frame": 2218
+   "start_frame": 1479,
+   "end_frame": 1506
   },
   {
    "label": "10/10",
    "caption": "Then mouth down over the dark tray and tapped once more: nothing falls, so nothing can reach the 0.5 mm nozzle. Ready. For copper, it is cured empty under argon in the furnace first: a fresh coat smokes at 500 C.",
-   "start_frame": 2219,
-   "end_frame": 2223
+   "start_frame": 1507,
+   "end_frame": 1509
   },
   {
    "label": "10/10",
    "caption": "Then mouth down over the dark tray and tapped once more: nothing falls, so nothing can reach the 0.5 mm nozzle. Ready. For copper, it is cured empty under argon in the furnace first: a fresh coat smokes at 500 C.",
-   "start_frame": 2224,
-   "end_frame": 2239
+   "start_frame": 1510,
+   "end_frame": 1520
   },
   {
    "label": "10/10",
    "caption": "Then mouth down over the dark tray and tapped once more: nothing falls, so nothing can reach the 0.5 mm nozzle. Ready. For copper, it is cured empty under argon in the furnace first: a fresh coat smokes at 500 C.",
-   "start_frame": 2240,
-   "end_frame": 2247
+   "start_frame": 1521,
+   "end_frame": 1525
   },
   {
    "label": "10/10",
    "caption": "Then mouth down over the dark tray and tapped once more: nothing falls, so nothing can reach the 0.5 mm nozzle. Ready. For copper, it is cured empty under argon in the furnace first: a fresh coat smokes at 500 C.",
-   "start_frame": 2248,
-   "end_frame": 2265
+   "start_frame": 1526,
+   "end_frame": 1537
   },
   {
    "label": "10/10",
    "caption": "Then mouth down over the dark tray and tapped once more: nothing falls, so nothing can reach the 0.5 mm nozzle. Ready. For copper, it is cured empty under argon in the furnace first: a fresh coat smokes at 500 C.",
-   "start_frame": 2266,
-   "end_frame": 2307
+   "start_frame": 1538,
+   "end_frame": 1565
   }
  ]
 }
