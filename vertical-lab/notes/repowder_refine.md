@@ -377,3 +377,39 @@ been read through but not executed. A run started from #303, where interpreters 
    wide lens. In either case the lab can say which phone filmed the training videos, and whether it zoomed.
 4. Expect the pick RMS to rise where the lens was soaking up model error, the T4 1:53 check above all. That is the point: what is
    left is the model's error. Then refit the free dimensions and apply the third pass's latch changes against the new cameras.
+
+
+---
+
+# Fifth pass (#353, 2026-11-19): the latch built as the third pass read it, and the lid assembly turned 90 deg
+
+Done in the atomizer-automation PR (#353), which builds on this model.
+
+**The latch** is now built as the third pass describes (`latch_geom`, `hood_parts`, `joints`): the lever pivots at its
+top on a base plate with two side flanges and hangs down; the loop has its own joint, `loop`, a child of `latch`
+(`joint_world` composes them); the bolt runs through the base's flanges. The over-centre offset is ours: the loop's
+pivot 4 mm inboard of and 16 mm under the lever's, which holds the lever shut and passes dead centre 18 deg out with
+0.6 mm of draw (`latch_toggle`); `loop_aim_deg` keeps the loop's bar on the keeper while the lever moves. The latch
+stream of #353 (`atom_latch_tools.py`) then found three faults in these parts: the lever's top end, 14 mm above its
+pivot, swings into the base plate past ~30 deg; the loop's legs run through the base's side flanges; the keeper's
+ledge was drawn above the loop's bar instead of under it. Its clip draws corrected parts on the same joints; the model
+should take them.
+
+**The lid assembly is turned 90 deg** (`LID_TURN_DEG`, `LID_TURN_T`, `lid_turn`). Two streams of #353 found it
+independently: opened about the back hinge, the lid runs into the blue cabinet (the cabinet's face is 11 mm behind the
+hinge axis: the hinge leaf meets it at ~5 deg, the shell at ~30 deg, and at 105 deg the shell's top is ~185 mm inside),
+and DAL PR 189's measurements of the real machine put the hinge on the **left** (its design must clear "the lid's swing,
+up and over to the left, ~105 deg"), the window (a ~60 x 64 mm glass-ceramic pane in a polished plate with 8 screws) on
+the **front** facet at ~50 deg, and the knob to its right. DAL's frames DWH1CEygsTI 25:40 (the window face on, with the
+GU 500 AMA keypad on the cabinet behind it also face on) and 2wMgeI-E7zw 10:00 (the lid standing open on the furnace's
+left) agree, and the T4 frames this PR fitted are consistent with a camera on the machine's right looking left
+(notes/atom_cameras.md has the reading). Turned, the housing's square flat faces the cabinet and the pneumatic bolt runs
+back into it, as a bolt driven from the cabinet must; before, it ran to "cabinet_x" in front of the machine.
+
+What changed: the assembly (lid, hinge, housing flat, latch, keeper, bolt) is built in its own frame as before and
+turned onto the machine; `facet_plane`, `knob_centre`, `hinge_point`, `latch_geom` and `joints` answer in the turned
+frame (`turned=False` for the lid's own); `HINGE` is turned; DAL's window replaces the 26 x 84 mm slot
+(`LID_WINDOW`, part `hood_window_plate`); `ext` is 160 mm instead of the fitted 190, so the lid's square side stops
+5 mm short of the cabinet's face. `instruments_repowder.anchors` turns its points the same way. **The registration
+views (`refs/repowder/*.json`, `fit.json`) were fitted to the unturned lid and need re-solving** (`python3 register.py
+solve repowder`); their picks are unchanged.
