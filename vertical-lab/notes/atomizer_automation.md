@@ -159,6 +159,10 @@ The lab's rules, and what each becomes when an arm does the work:
   read the furnace temperature before reaching in.
 - **Alloy families are kept apart** (Al with copper oxide is a thermite pair): per-alloy plates, crucible, nozzle,
   sealing rod and sieves, and, for the vacuum, one unit per family ([`atom_vacuum.md`](atom_vacuum.md)).
+- **Powder stays at the atomizer, not on the arms.** The units go on to other workflows, so for the powder phase each
+  arm wears a dissipative, bonded sleeve that ends in the atomizer's own gripper on a tool changer, put on and taken
+  off at a stand on the tape line, one set per family ([`atom_sleeve.md`](atom_sleeve.md), with how far up the arm the
+  powder reaches in each clip).
 
 ## What stays a person's job, and why
 

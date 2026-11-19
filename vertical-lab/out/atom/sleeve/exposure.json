@@ -38,11 +38,11 @@
        "s_furnace100": 0.0
       },
       "upper_arm": {
-       "min_door_mm": 239.6,
+       "min_door_mm": 223.2,
        "min_furnace_mm": 112.5,
        "s_chamber": 0.0,
        "s_door100": 0.0,
-       "s_door300": 10.2,
+       "s_door300": 11.0,
        "s_furnace100": 0.0
       },
       "forearm": {
@@ -80,7 +80,7 @@
       "gripper": {
        "min_door_mm": 0.0,
        "min_furnace_mm": 142.4,
-       "s_chamber": 2.0,
+       "s_chamber": 2.2,
        "s_door100": 6.4,
        "s_door300": 10.4,
        "s_furnace100": 0.0
@@ -90,7 +90,7 @@
       "chamber": {
        "max_mm": 74.0,
        "at": "3/5",
-       "sustained_mm": 0.0,
+       "sustained_mm": 40.0,
        "secs_over_300": 0.0,
        "secs_over_600": 0.0,
        "secs_over_900": 0.0,
@@ -109,10 +109,10 @@
        "max_mm": 1601.0,
        "at": "3/5",
        "sustained_mm": 1601.0,
-       "secs_over_300": 12.8,
-       "secs_over_600": 10.2,
-       "secs_over_900": 10.2,
-       "secs_over_1200": 10.0
+       "secs_over_300": 13.0,
+       "secs_over_600": 11.0,
+       "secs_over_900": 11.0,
+       "secs_over_1200": 11.0
       },
       "furnace100": {
        "max_mm": 0.0,
@@ -177,7 +177,7 @@
       },
       "wrist3": {
        "min_door_mm": 828.1,
-       "min_furnace_mm": 661.3,
+       "min_furnace_mm": 661.0,
        "s_chamber": 0.0,
        "s_door100": 0.0,
        "s_door300": 0.0,
@@ -288,7 +288,7 @@
       },
       "wrist3": {
        "min_door_mm": 711.9,
-       "min_furnace_mm": 473.4,
+       "min_furnace_mm": 473.1,
        "s_chamber": 0.0,
        "s_door100": 0.0,
        "s_door300": 0.0,
@@ -404,7 +404,7 @@
        "min_door_mm": 18.8,
        "min_furnace_mm": 140.5,
        "s_chamber": 0.0,
-       "s_door100": 12.8,
+       "s_door100": 13.2,
        "s_door300": 39.6,
        "s_furnace100": 0.0
       }
@@ -420,7 +420,7 @@
        "secs_over_1200": 0.0
       },
       "door100": {
-       "max_mm": 119.0,
+       "max_mm": 120.0,
        "at": "7/10 Sloped floor",
        "sustained_mm": 112.0,
        "secs_over_300": 0.0,
@@ -429,16 +429,16 @@
        "secs_over_1200": 0.0
       },
       "door300": {
-       "max_mm": 512.0,
+       "max_mm": 537.0,
        "at": "9/10 Brush",
-       "sustained_mm": 503.0,
+       "sustained_mm": 506.0,
        "secs_over_300": 34.6,
        "secs_over_600": 0.0,
        "secs_over_900": 0.0,
        "secs_over_1200": 0.0
       },
       "furnace100": {
-       "max_mm": 391.0,
+       "max_mm": 394.0,
        "at": "9/10 Brush",
        "sustained_mm": 391.0,
        "secs_over_300": 6.2,
@@ -505,7 +505,7 @@
       },
       "wrist3": {
        "min_door_mm": 711.9,
-       "min_furnace_mm": 473.4,
+       "min_furnace_mm": 473.1,
        "s_chamber": 0.0,
        "s_door100": 0.0,
        "s_door300": 0.0,
@@ -646,11 +646,11 @@
        "secs_over_1200": 0.0
       },
       "door300": {
-       "max_mm": 1071.0,
+       "max_mm": 1177.0,
        "at": "12/12",
-       "sustained_mm": 512.0,
+       "sustained_mm": 792.0,
        "secs_over_300": 68.0,
-       "secs_over_600": 2.0,
+       "secs_over_600": 13.4,
        "secs_over_900": 1.8,
        "secs_over_1200": 0.0
       },
@@ -689,11 +689,11 @@
        "s_furnace100": 0.0
       },
       "upper_arm": {
-       "min_door_mm": 293.0,
+       "min_door_mm": 272.6,
        "min_furnace_mm": 81.0,
        "s_chamber": 0.0,
        "s_door100": 0.0,
-       "s_door300": 0.2,
+       "s_door300": 4.4,
        "s_furnace100": 5.6
       },
       "forearm": {
@@ -722,7 +722,7 @@
       },
       "wrist3": {
        "min_door_mm": 300.1,
-       "min_furnace_mm": 156.8,
+       "min_furnace_mm": 155.6,
        "s_chamber": 0.0,
        "s_door100": 0.0,
        "s_door300": 0.0,
@@ -757,17 +757,17 @@
        "secs_over_1200": 0.0
       },
       "door300": {
-       "max_mm": 1070.0,
+       "max_mm": 1298.0,
        "at": "8/8",
-       "sustained_mm": 15.0,
-       "secs_over_300": 0.2,
-       "secs_over_600": 0.2,
-       "secs_over_900": 0.2,
-       "secs_over_1200": 0.0
+       "sustained_mm": 1201.0,
+       "secs_over_300": 4.4,
+       "secs_over_600": 4.4,
+       "secs_over_900": 4.4,
+       "secs_over_1200": 4.4
       },
       "furnace100": {
-       "max_mm": 1065.0,
-       "at": "5/8",
+       "max_mm": 1067.0,
+       "at": "8/8",
        "sustained_mm": 1065.0,
        "secs_over_300": 5.8,
        "secs_over_600": 5.6,
@@ -836,7 +836,7 @@
       },
       "gripper": {
        "min_door_mm": 311.9,
-       "min_furnace_mm": 284.8,
+       "min_furnace_mm": 284.4,
        "s_chamber": 0.0,
        "s_door100": 0.0,
        "s_door300": 0.0,
@@ -906,11 +906,11 @@
        "s_furnace100": 0.0
       },
       "upper_arm": {
-       "min_door_mm": 267.6,
+       "min_door_mm": 259.2,
        "min_furnace_mm": 50.0,
        "s_chamber": 0.0,
        "s_door100": 0.0,
-       "s_door300": 0.4,
+       "s_door300": 3.0,
        "s_furnace100": 3.8
       },
       "forearm": {
@@ -939,7 +939,7 @@
       },
       "wrist3": {
        "min_door_mm": 368.8,
-       "min_furnace_mm": 177.8,
+       "min_furnace_mm": 177.7,
        "s_chamber": 0.0,
        "s_door100": 0.0,
        "s_door300": 0.0,
@@ -974,16 +974,16 @@
        "secs_over_1200": 0.0
       },
       "door300": {
-       "max_mm": 1070.0,
+       "max_mm": 1372.0,
        "at": "1/9",
-       "sustained_mm": 21.0,
-       "secs_over_300": 0.4,
-       "secs_over_600": 0.4,
-       "secs_over_900": 0.4,
-       "secs_over_1200": 0.0
+       "sustained_mm": 1210.0,
+       "secs_over_300": 3.0,
+       "secs_over_600": 3.0,
+       "secs_over_900": 3.0,
+       "secs_over_1200": 2.8
       },
       "furnace100": {
-       "max_mm": 1070.0,
+       "max_mm": 1108.0,
        "at": "1/9",
        "sustained_mm": 1050.0,
        "secs_over_300": 3.8,
@@ -1053,7 +1053,7 @@
       },
       "gripper": {
        "min_door_mm": 311.9,
-       "min_furnace_mm": 284.9,
+       "min_furnace_mm": 284.5,
        "s_chamber": 0.0,
        "s_door100": 0.0,
        "s_door300": 0.0,
@@ -1156,7 +1156,7 @@
       },
       "wrist3": {
        "min_door_mm": 408.9,
-       "min_furnace_mm": 308.8,
+       "min_furnace_mm": 308.2,
        "s_chamber": 0.0,
        "s_door100": 0.0,
        "s_door300": 0.0,
@@ -1243,7 +1243,7 @@
       },
       "forearm": {
        "min_door_mm": 0.0,
-       "min_furnace_mm": 149.0,
+       "min_furnace_mm": 100.0,
        "s_chamber": 7.4,
        "s_door100": 7.6,
        "s_door300": 7.8,
@@ -1284,34 +1284,34 @@
      },
      "reach": {
       "chamber": {
-       "max_mm": 505.0,
+       "max_mm": 649.0,
        "at": "5/9",
-       "sustained_mm": 503.0,
+       "sustained_mm": 579.0,
        "secs_over_300": 7.4,
-       "secs_over_600": 0.0,
+       "secs_over_600": 2.0,
        "secs_over_900": 0.0,
        "secs_over_1200": 0.0
       },
       "door100": {
-       "max_mm": 510.0,
-       "at": "8/9",
-       "sustained_mm": 503.0,
+       "max_mm": 649.0,
+       "at": "5/9",
+       "sustained_mm": 579.0,
        "secs_over_300": 7.8,
-       "secs_over_600": 0.0,
+       "secs_over_600": 2.0,
        "secs_over_900": 0.0,
        "secs_over_1200": 0.0
       },
       "door300": {
-       "max_mm": 512.0,
-       "at": "5/9",
-       "sustained_mm": 512.0,
+       "max_mm": 774.0,
+       "at": "8/9",
+       "sustained_mm": 658.0,
        "secs_over_300": 7.8,
-       "secs_over_600": 0.0,
+       "secs_over_600": 2.6,
        "secs_over_900": 0.0,
        "secs_over_1200": 0.0
       },
       "furnace100": {
-       "max_mm": 153.0,
+       "max_mm": 154.0,
        "at": "4/9",
        "sustained_mm": 153.0,
        "secs_over_300": 0.0,
@@ -1344,7 +1344,7 @@
        "min_furnace_mm": 161.5,
        "s_chamber": 0.0,
        "s_door100": 0.0,
-       "s_door300": 7.2,
+       "s_door300": 8.4,
        "s_furnace100": 0.0
       },
       "forearm": {
@@ -1411,10 +1411,10 @@
        "max_mm": 1601.0,
        "at": "7/9",
        "sustained_mm": 1601.0,
-       "secs_over_300": 7.2,
-       "secs_over_600": 7.2,
-       "secs_over_900": 7.2,
-       "secs_over_1200": 7.2
+       "secs_over_300": 8.4,
+       "secs_over_600": 8.4,
+       "secs_over_900": 8.4,
+       "secs_over_1200": 8.4
       },
       "furnace100": {
        "max_mm": 30.0,
@@ -1452,7 +1452,7 @@
       },
       "upper_arm": {
        "min_door_mm": 170.4,
-       "min_furnace_mm": 307.3,
+       "min_furnace_mm": 234.2,
        "s_chamber": 0.0,
        "s_door100": 0.0,
        "s_door300": 16.0,
@@ -1484,7 +1484,7 @@
       },
       "wrist3": {
        "min_door_mm": 292.5,
-       "min_furnace_mm": 129.1,
+       "min_furnace_mm": 127.9,
        "s_chamber": 0.0,
        "s_door100": 0.0,
        "s_door300": 3.0,
@@ -1590,7 +1590,7 @@
       },
       "wrist3": {
        "min_door_mm": 1394.3,
-       "min_furnace_mm": 1246.9,
+       "min_furnace_mm": 1246.7,
        "s_chamber": 0.0,
        "s_door100": 0.0,
        "s_door300": 0.0,
@@ -1598,7 +1598,7 @@
       },
       "gripper": {
        "min_door_mm": 1363.4,
-       "min_furnace_mm": 1232.1,
+       "min_furnace_mm": 1231.9,
        "s_chamber": 0.0,
        "s_door100": 0.0,
        "s_door300": 0.0,

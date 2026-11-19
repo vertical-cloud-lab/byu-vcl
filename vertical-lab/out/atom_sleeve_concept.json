@@ -1,0 +1,17 @@
+{
+ "name": "atom_sleeve_concept",
+ "fps": 5,
+ "n_frames": 6,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/1",
+   "caption": "The arm in its sleeve at the open door (the plate clip's pose): a dissipative, bonded sleeve from the tool changer to the upper arm, and the atomizer's own gripper at its end, which never leaves the cell",
+   "start_frame": 0,
+   "end_frame": 5
+  }
+ ]
+}

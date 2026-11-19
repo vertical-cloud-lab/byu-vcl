@@ -19,8 +19,9 @@ answer is in notes/atom_sleeve.md.
 The chamber is the model's (repowder/model.py): the D-shaped housing x -115..350, y -120..120, z 420..1130 in the model
 frame, its underside the 45 deg slope z = 650 - x, its right end round; the door's hole is 212 x 340 mm in its left
 wall (x = -115). Distances are measured on the arm's own mesh (collide.py's decimated links and the 2F-85 with its
-D405), vertex by vertex. Each frame's "reach" is the distance back along the arm, from the grasp point, of the farthest
-vertex in the zone (the flange is at 155 mm, wrist 1 at 391, the elbow at 989, the shoulder at 1601).
+D405): its vertices and 6000 points spread over each link's surface (surface_points). Each frame's "reach" is the
+distance back along the arm, from the grasp point, of the farthest such point in the zone (the flange is at 155 mm,
+wrist 1 at 391, the elbow at 989, the shoulder at 1601).
 """
 from __future__ import annotations
 
@@ -135,6 +136,23 @@ CATS = (("chamber", "chamber", 0.0), ("door100", "door", 100.0), ("door300", "do
 SUSTAINED_S = 2.0          # "sustained" reach: the depth up the arm that is passed for at least this long in a clip
 
 
+SAMPLES = 6000             # points per link, spread over its surface (seeded)
+
+
+def surface_points(geom):
+    """{link: (points (N x 3), None)} spread evenly over each decimated mesh's surface. The decimated meshes keep
+    vertices only where the shape needs them, so a long tube (the forearm, the upper arm) has them at its two ends and
+    none along it: measuring on vertices alone missed the tubes' middles."""
+    import numpy as np
+    import trimesh
+    out = {}
+    for k, (v, f) in geom.items():
+        m = trimesh.Trimesh(np.asarray(v, float), np.asarray(f, int), process=False)
+        pts, _ = trimesh.sample.sample_surface(m, SAMPLES, seed=7)
+        out[k] = (np.vstack([np.asarray(v, float), np.asarray(pts, float)]), None)
+    return out
+
+
 def chain_coords(links, grip):
     """For every vertex of every link (and of the gripper), its distance back along the arm from the fingertips (mm):
     the vertex projected on its link's axis (from the link's joint to the next joint, at q = 0), plus the lengths of
@@ -170,6 +188,7 @@ def analyse():
     import collide
     import ur_arm
     links, grip = collide._arm_geometry("ur10e")
+    links, grip = surface_points(links), surface_points(grip)
     names = list(collide.ARM_LINKS)
     S, s_joint = chain_coords(links, grip)
     report = {}
@@ -291,7 +310,7 @@ def figure():
             ax.plot([mx, mx], [y - 0.3, y + 0.3], color=ink2, lw=1.6, zorder=4)
         if zone == "door":
             txt = (f"gripper within 100 mm {g['s_door100']:.0f} s, within 300 mm {g['s_door300']:.0f} s"
-                   if g["s_door300"] > 0 else "nothing within 300 mm: the key is ~0.4 m long")
+                   if g["s_door300"] > 0 else "nothing within 300 mm: the key holds it 0.4-0.6 m out")
         else:
             txt = f"gripper within 100 mm of the open top {g['s_furnace100']:.0f} s"
         ax.text(1810, y, txt, va="center", ha="left", fontsize=9, color=ink2)
@@ -319,9 +338,99 @@ def figure():
     print("wrote", out)
 
 
+# ------------------------------------------------------------------------------------------------ concept still
+def concept(clip: str = "atom_plate", arm: str = "urB"):
+    """out/atom/sleeve_concept_still.png: the arm at the open door in the clip's frame where its gripper is nearest the
+    door's hole, drawn in the proposed sleeve. The sleeve is each covered link's convex hull grown 15 mm, see-through,
+    from the changer to 150 mm below the shoulder joint, with the cuff there. A sketch of the idea, not a design: the
+    tools the clip has in hand are not drawn."""
+    import math
+    import numpy as np
+    import pyvista as pv
+    import trimesh
+    sys.path.insert(0, str(HERE))
+    import atom_base as AB
+    import collide
+    import ur_arm
+    from scene import R
+    d = json.loads((OUTD / f"{clip}.json").read_text())
+    rp = np.asarray(d["rp"], float)
+    links, grip = collide._arm_geometry("ur10e")
+    links, grip = surface_points(links), surface_points(grip)
+    S, s_joint = chain_coords(links, grip)
+    best, best_d = None, 1e9
+    for row in d["rows"]:
+        for a in row["arms"]:
+            if a["p"] != arm:
+                continue
+            F = ur_arm.fk("ur10e", a["q"])
+            Wt = np.asarray(a["W"], float).reshape(4, 4) @ F["tool0"]
+            dd = float(door_distance((Wt[:3, 3] - rp)[None, :])[0])
+            if dd < best_d:
+                best, best_d = (row, a), dd
+    row, a = best
+    import scene
+    scene.encoder = lambda *args, **kw: None       # a still only: no MP4 (and no ffmpeg needed), no GIF
+    sc, ma, mb = AB.build("atom_sleeve_concept", "Vertical cloud lab: the arm in its sleeve for the powder work")
+    sc.gif = False
+    AB.set_joints(sc, door=1.0)
+    for m, pre in ((ma, "ur"), (mb, "urB")):
+        rec = next(x for x in row["arms"] if x["p"] == pre)
+        W = np.asarray(rec["W"], float).reshape(4, 4)
+        yaw = math.degrees(math.atan2(W[1, 0], W[0, 0]))
+        Rz = R((0, 0, 1), yaw)[:3, :3]
+        local = np.asarray(sc.gmat[m.rb.root], float)[:3, 3]
+        off = Rz @ local
+        m.set(W[0, 3] - off[0], W[1, 3] - off[1], yaw)
+        m.rb.set(np.asarray(rec["q"], float), rec["c"])
+        assert np.allclose(sc.world(m.rb.root), W, atol=0.5), "the MiR's pose doesn't reproduce the recorded arm base"
+    W = np.asarray(a["W"], float).reshape(4, 4)
+    F = ur_arm.fk("ur10e", a["q"])
+    cut = s_joint["shoulder"] - 150.0
+    fabric = (0.22, 0.27, 0.34)
+    AB.mir_at(ma if arm == "urB" else mb, "right")      # the other unit out of the way of the view
+    for nm in ("wrist3", "wrist2", "wrist1", "forearm", "upper_arm"):
+        v = links[nm][0][S[nm] <= cut]
+        Wl = W @ F[nm]
+        pts = (Wl[:3, :3] @ v.T).T + Wl[:3, 3]
+        h = trimesh.convex.convex_hull(pts)
+        h = trimesh.Trimesh(h.vertices + h.vertex_normals * 15.0, h.faces)
+        faces = np.hstack([np.full((len(h.faces), 1), 3), h.faces]).ravel()
+        sc.add(f"sleeve {nm}", pv.PolyData(np.asarray(h.vertices), faces), fabric, "static", opacity=0.78)
+    # the cuff: a ring round the sleeve's end on the upper arm, along the upper arm's axis
+    Fu = W @ F["upper_arm"]
+    Fe = W @ F["forearm"]
+    Fw = W @ F["wrist1"]
+    ax_u = Fe[:3, 3] - Fu[:3, 3]
+    ax_u /= np.linalg.norm(ax_u)
+    vu = links["upper_arm"][0]
+    near = vu[np.abs(S["upper_arm"] - cut) < 20.0]
+    c = ((Fu[:3, :3] @ near.T).T + Fu[:3, 3]).mean(axis=0) if len(near) else Fu[:3, 3]
+    cuff = pv.Disc(center=c, inner=82.0, outer=104.0, normal=ax_u, c_res=48).extrude(ax_u * 40.0, capping=True)
+    sc.add("sleeve cuff", cuff, (0.12, 0.12, 0.14), "static")
+    Wt = W @ F["tool0"]
+    base = W[:3, 3]
+    at = (base + Wt[:3, 3]) / 2.0 + np.array([0.0, 0.0, 150.0])
+    eye = at + np.array([450.0, -2700.0, 650.0])
+    door_c = (sc.world(AB.g("door")) @ np.array([-123.0, 0.0, 945.0, 1.0]))[:3]
+    sleeve_c = (Fe[:3, 3] + Fw[:3, 3]) / 2.0
+    sc.step("1/1", "The arm in its sleeve at the open door (the plate clip's pose): a dissipative, bonded sleeve from the "
+            "tool changer to the upper arm, and the atomizer's own gripper at its end, which never leaves the cell",
+            0.2, None, hold=0.2, cam_to=[tuple(eye), tuple(at), (0, 0, 1)],
+            labels=[("Sleeve: static-dissipative, bonded at both ends", tuple(sleeve_c), (0.04, 0.16)),
+                    ("Cuff on the upper arm, below the shoulder", tuple(c), (0.04, 0.62)),
+                    ("Tool changer, then the atomizer's own gripper", tuple(Wt[:3, 3]), (0.56, 0.12)),
+                    ("The chamber's door, open", tuple(door_c), (0.62, 0.70))],
+            still=True)
+    sc.save()
+    print("frame", row["n"], row["label"], "gripper to the door's hole", round(best_d), "mm")
+
+
 if __name__ == "__main__":
     if len(sys.argv) >= 3 and sys.argv[1] == "record":
         record(sys.argv[2])
+    elif len(sys.argv) >= 2 and sys.argv[1] == "concept":
+        concept(*sys.argv[2:4])
     elif len(sys.argv) >= 2 and sys.argv[1] == "analyse":
         analyse()
         figure()
