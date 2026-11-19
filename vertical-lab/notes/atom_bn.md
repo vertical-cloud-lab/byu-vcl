@@ -54,7 +54,7 @@ hold propane or butane, and its blower would sit in the vapour.
 |---|---|---|---|
 | 1 | MiR 1 brings the used crucible from the rePowder to the bench (1/10). | MiR 1 | atom_crucible.py hands it over |
 | 2 | The arm lifts it out of MiR 1's cradle (top grasp) and stands it in the positioner's chuck; the soft jaws close on the outside (2/10). | arm, positioner | ours; never grip the bore |
-| 3 | The positioner turns it mouth down 20 mm over the dark tray; its knocker taps the chuck; the skull falls out (free fall, 0.18 s) (3/10). | positioner | bronze plan step 1 (take out the skull); SOP 178 (slag at the bottom; un-atomized metal is feedstock) |
+| 3 | The positioner turns it mouth down 20 mm over the dark tray and jolts it (a 5 deg flick and a hard stop: the robot's tap); the skull falls out (free fall, 0.18 s) (3/10). | positioner | bronze plan step 1 (take out the skull); SOP 178 (slag at the bottom; un-atomized metal is feedstock) |
 | 4 | A soft nylon bore brush loosens what is left while the chuck turns (4/10). | arm (brush tool) | bronze plan step 1 (brush out anything loose) |
 | 5 | An acetal scraper takes off only what is cracked or lifted or has metal stuck to it, down to the thin grey layer; never the seat round the hole (5/10). | arm (scraper), positioner turns | bronze plan step 2 |
 | 6 | Mouth down and tapped again (the flakes fall on the dark tray); then the crevice tool of the Nilfisk 118EXP vacuums the bore and floor, slow and close; no compressed air; IPA only if something oily touched it (not this time) (6/10). | positioner, arm (vacuum tool) | bronze plan step 3; vacuum SOP |
@@ -67,7 +67,7 @@ hold propane or butane, and its blower would sit in the vapour.
 | 13 | The lift raises the crucible; the arm takes the plug off it (the lift lowers the crucible away from the plug) and puts it in its holster; the arm takes the crucible, turns it over in the air (a 180 deg wrist roll) and stands it upside down on the rack's three pins (9/10). | arm, lift | bronze plan ("dry overnight in the running hood, in the box or upside down") |
 | 14 | Overnight in the running hood (time-lapse with a clock, 18:30 to 07:30); the coat goes from wet to matte white (9/10). | hood | bronze plan; SOP 253 ("sprayed the night before, dry"); "never pour onto a wet coat" |
 | 15 | Morning: the arm takes it off the rack, turns it upright outside the hood, MiR 1 drives back to the bench, the arm stands it in the chuck (10/10). | arm, MiR 1 | ours |
-| 16 | The check: side light on; the D405 looks down the bore from 150 mm over the rim (250 mm from the floor) while the chuck turns (10/10). | arm (camera), light, positioner | bronze plan ("look at the floor and the floor-wall corner under a strong side light for cracks, lifted edges or bare graphite") |
+| 16 | The check: side light on; the arm holds still where it backed off, the positioner tilts the mouth 50 deg toward it, and the D405 on the level gripper looks 18 deg off the bore's axis, about 270 mm from the floor, while the chuck turns (10/10). | arm (camera), light, positioner | bronze plan ("look at the floor and the floor-wall corner under a strong side light for cracks, lifted edges or bare graphite") |
 | 17 | Mouth down over the dark tray and tapped once more: nothing falls (10/10). Ready; back to MiR 1 for atom_crucible. | positioner | bronze plan ("turn the crucible over a dark sheet and tap it... nothing loose near the hole") |
 | 18 | For copper runs: cure it empty under argon in the furnace before the run (a fresh coat smokes at 500 C). Caption only. | furnace | SOP 253, copper section and troubleshooting |
 
@@ -100,7 +100,7 @@ morning check, the answer is a third light pass, not a steeper can. Placing the 
 Ours vs bought, with part numbers and sources, are in `out/atom/bn_bom.json`. In short: bought: the BN spray
 (10515K35), the hood, the Nilfisk 118EXP with its conductive hose, cuff and the 11 in crevice tool 01768900, the
 D405 on the arm. Ours: the positioner (3-jaw chuck with acetal soft jaws on a trunnion; flip and spin; an air
-knocker), the dark tray, the holsters, the brush on our handle, the acetal scraper, the vacuum's grip clamp, the box,
+the tap as a 5 deg jolt of its flip axis), the dark tray, the holsters, the brush on our handle, the acetal scraper, the vacuum's grip clamp, the box,
 the air-driven turntable and lift, the PTFE seat plug, the spray tool (cradle, clamp bands, a 10 mm air cylinder on the
 actuator), the drying rack, the side light, MiR 1's crucible cradle. Every tool has the same 20 mm handle for the
 2F-85.
@@ -124,7 +124,7 @@ drawn here (a flat nozzle tapering to a 30 x 10 mm slot), not with that module's
 - The 2F-85 opens to 85 mm; the crucible is 75.3 mm across: 4.9 mm each side on the way down. The chuck's jaws open
   5 mm.
 - The scraper: a light scrape, 5-10 N normal at the edge, under the UR10e's force mode (assumed, to set on a scrap
-  crucible). The drawn blade stops 0.5 mm off the wall.
+  crucible). The drawn blade stops 0.2-1.4 mm off the wall (16 mm wide, straight edge).
 - The can's actuator: about 20-40 N to press (assumed); a 10 mm bore cylinder gives 47 N at 6 bar.
 - The shake: +-20 mm at 2.5 Hz is a peak acceleration of 4.9 m/s2 with about 0.6 kg in the tool (assumed): within a
   UR10e's tool speed (1 m/s) and comfortable for its payload (12.5 kg).
@@ -140,12 +140,37 @@ valve clear 4 s; plug out and onto the rack 1.5 min; overnight about 12 h; morni
 
 - Reach: every pose of the clip solved with the UR10e's IK from both MiR spots before building the scene.
 - Collisions: `ARM_AUDIT=1` (FCL on every frame; the arm, gripper and held parts against everything, held parts
-  allowed 1.5 mm into their own fixtures). The result is in `out/collisions/atom_bn.json` and in the PR comment.
+  allowed 1.5 mm into their own fixtures; the movers check on everything else that moves). Seven audit passes took it
+  from 518 frames in collision to the result in `out/collisions/atom_bn.json`: **112 of 2234 checked frames in collision, one run, all in the last sub-step (10/10)**: after the arm sets the
+  crucible back in the chuck and backs 170 mm away along -y, its forearm dips into MiR 1's cabinet and stays there
+  through the check and the tap (the last 8 s of the clip). Sub-steps 1/10 to 9/10: 0 frames. Movers: 0 contacts. What the passes found
+  and fixed: the vacuum tool's cuff in the gripper (the tool redesigned: gripped 130 mm from its tip, its cuff 75 mm
+  to the side, turned away from the wrist); a holster against the hood's post; the scraper's straight blade wider
+  than the bore allows (now 16 mm); the crucible carried into the box below its rim (it now comes in 15 mm over the
+  rim and goes down); the IK branch with the wrist over the tool, whose forearm hit the sash's edge (the hood moves
+  now pick the elbow-up branch whose wrist passes inside the opening's band, 1040-1340 mm, and enter on straight lines
+  from poses outside the sash); the plug's holster too close to the sash; the crucible turned over inside the hood
+  (now a pure roll of the last joint, outside); the lift's column through the work surface (now four nested 61 mm
+  stages that fold into the plinth); the skull landing inside the positioner's plate; a knocker that sat in the
+  trunnion's sweep (dropped: the positioner jolts instead); MiR drives that dragged the held crucible into the bench.
 - Under the sash: the elbow stays outside the hood in every hood pose; the forearm passes the sash plane under its
   1417 mm edge.
 - Clearances drawn: the brush (50 mm) in the 57.1 mm bore (3.5 mm each side; a real brush is larger and its bristles
-  bend against the wall); the scraper's edge 0.5 mm off the wall (its contact is the change of colour, scraped
+  bend against the wall); the scraper's edge 0.2-1.4 mm off the wall (its contact is the change of colour, scraped
   sector by sector); the vacuum tool 8 mm above the floor.
+
+## Not done
+
+- **The 10/10 fault above is not fixed in the rendered clip.** The fix was found but there was no render slot left
+  before the deadline: back off only 60 mm (enough to free the fingers), then a planned move (`Clip.low`, elbow up)
+  to a look pose pitched 30 deg down, 110 mm from the mouth, with the positioner tilting the mouth 60 deg. Audit pass 6
+  ran exactly that look pose and found it, and everything after it, clean; the 170 mm back-off before it was the only
+  fault. The next render should make that change.
+- The clip is 153.9 s (2308 frames at 15 fps), 4 s over the 150 s asked; the GIF is resampled to 5 fps (330 frames,
+  3.4 MB) to stay under 4.9 MB.
+- The spray's mist is a cone drawn for each burst; the overspray onto the plug and the rim and the mist settling on
+  the floor are in the coat colours, not drawn as particles.
+- The coat is shown by zone (12 sectors of the upper wall, the lower wall and the floor), not as a texture.
 
 ## Assumed (and why)
 

@@ -42,7 +42,7 @@ HOOD_SPOT = (2850.0, -1130.0, 0.0)
 C_CRU = ur_arm.close_for(2 * S.CR_RO + 0.4)
 C_TOOL = ur_arm.close_for(S.GRIP_W + 0.4)
 DOWN, LEVEL = (0.0, 0.0, -1.0), (0.0, 1.0, 0.0)
-SPEED = 0.74                            # every move's time, scaled (the bursts and the free fall are not)
+SPEED = 0.66                            # every move's time, scaled (the bursts and the free fall are not)
 
 
 def inv(M):
@@ -81,7 +81,10 @@ class Clip:
         zones = S.coat_zones()
         for z, mesh in zones.items():
             nm = f"bn coat {z[0]} {z[1]}"
-            self.add(nm, mesh, S.OLD_COAT, G_CRU, parent=None, specular=0.05, smooth_shading=False)
+            # lit mostly by ambient: the inside of a 57 mm bore gets little of the scene's lights, and the coat's
+            # colour is what this clip is about
+            self.add(nm, mesh, S.OLD_COAT, G_CRU, parent=None, specular=0.0, smooth_shading=False, ambient=0.62,
+                     diffuse=0.42)
             self.coat[z] = 0.0
             self.base_c[z] = S.SEAT_C if z[0] == "seat" else (S.DAMAGED if z in S.DAMAGE else S.OLD_COAT)
         self.add("bn skull", S.skull_mesh(), S.SKULL_C, G_SKULL, parent=None, specular=0.5)
@@ -129,6 +132,8 @@ class Clip:
                 self.add("bn " + nm, mesh, col, "bn_hoodfix", opacity=op, specular=0.3)
         for nm, (mesh, col) in S.lift_meshes().items():
             self.add("bn " + nm, mesh, col, G_TT, specular=0.4)
+        for kk in range(3):
+            self.add(f"bn lift stage {kk}", S.lift_stage(kk), (0.62, 0.63, 0.66), f"bn_st{kk}", specular=0.5)
         for nm, (mesh, col) in S.plug_meshes().items():
             self.add("bn " + nm, mesh, col, G_PLUG, specular=0.3)
         # the tools
@@ -155,17 +160,17 @@ class Clip:
         for name, grp, tip in (("brush", G_BRUSH, S.BRUSH_TIP), ("scraper", G_SCRAPER, S.SCRAPER_TIP),
                                ("vac", G_VAC, S.VAC_TIP)):
             x, y = S.HOLSTERS[name]
-            if name == "vac":
-                y = y + S.VAC_OFF                    # the crevice tool's axis is 75 mm in front of the grip point
-            pose = AB.P.tcp_frame((x, y, S.HOLSTER_SEAT[name] + tip + 0.5), DOWN, 0.0)
+            spin = 0.0
+            if name == "vac":                        # turned 180 deg: its cuff away from the arm's wrist
+                y, spin = y - S.VAC_OFF, 180.0
+            pose = AB.P.tcp_frame((x, y, S.HOLSTER_SEAT[name] + tip + 0.5), DOWN, spin)
             sc.parent[grp] = "rp"
             sc.gmat[grp] = pose
         self.home = {g: sc.gmat[g].copy() for g in (G_BRUSH, G_SCRAPER, G_VAC)}
         # the plug, standing in its holster in the hood (its spigot on the holster's floor)
         px, py = S.PLUG_HOLSTER
-        zh = S.Z_FLOOR + S.M.floor_z(S.HOLE_R)
         sc.parent[G_PLUG] = "rp"
-        sc.gmat[G_PLUG] = T((px, py, S.HOOD_Z0 + 3.0 - (zh - 9.0) + 0.3))
+        sc.gmat[G_PLUG] = T((px, py, S.PLUG_HOME_Z))
         # the spray tool, in its cradle in the hood: level, its handle just outside the sash
         cx, cy = S.CAN_CRADLE
         sc.parent[G_CAN] = "rp"
@@ -194,6 +199,8 @@ class Clip:
             sc.gmat[f"bn_jaw{k}"] = T(S.jaw_dir(k) * S.JAW_OPEN * v["jaws"])
         cx, cy = S.CRU_IN_BOX
         sc.gmat[G_TT] = T((cx, cy, S.TT_LOW + S.TT["stroke"] * v["lift"])) @ R((0, 0, 1), v["tt"])
+        for kk in range(3):                       # the column's stages share the stroke
+            sc.gmat[f"bn_st{kk}"] = T((cx, cy, S.TT_LOW - S.TT["t"] + S.TT["stroke"] * v["lift"] * kk / 3.0))
         sc.alpha["bn light beam"] = v["light"]
 
     def setv(self, **kw):
@@ -235,8 +242,9 @@ class Clip:
         self.sc.step(label, caption, max(0.2, secs * SPEED), update, hold=hold, cam_to=cam, **kw)
 
     def low(self, Tw):
-        """A joint move to Tw in the IK branch with the wrist under the tool and the elbow up: the forearm then passes
-        under the sash low, the elbow stays outside the hood (planned round anything in the way)."""
+        """A joint move to Tw in the IK branch with the elbow up and the wrist joint inside the sash opening's band
+        (1040-1340 mm): under the tool for a high grasp, over it for a low one. The forearm then passes under the sash,
+        the wrist clears the work surface, the elbow stays outside the hood (planned round anything in the way)."""
         rb, sc = self.rb, self.sc
         Wr = sc.world(rb.root)
         cands = collide.ik_all(rb.model, inv(Wr) @ Tw, rb.q) or []
@@ -246,8 +254,10 @@ class Clip:
             w1 = (Wr @ fk["wrist1"])[2, 3]
             el = (Wr @ fk["forearm"])[2, 3]
             sh = (Wr @ fk["upper_arm"])[2, 3]
-            if w1 < Tw[2, 3] - 40.0 and el > sh:
-                d = float(np.abs(q - rb.q).sum())
+            if el > sh:
+                # the wrist joint where the arm passes under the sash: inside the opening's band (1040 .. 1340)
+                band = 0.0 if 1040.0 <= w1 <= 1340.0 else 1000.0 + min(abs(w1 - 1040.0), abs(w1 - 1340.0))
+                d = band + float(np.abs(q - rb.q).sum())
                 if best is None or d < best[0]:
                     best = (d, q)
         return rb.joint_to(q1=best[1]) if best is not None else rb.joint_to(Tw=Tw)
@@ -294,13 +304,13 @@ def main():
     BENCH = cam((1520.0, -1080.0, 1650.0), (2060.0, -60.0, 1080.0))
     CHUCK = cam((1850.0, -420.0, 1720.0), (2030.0, -60.0, 1140.0))
     HOOD = cam((2420.0, -1250.0, 2250.0), (2840.0, 60.0, 1100.0))
-    BOXC = cam((3040.0, -215.0, 1500.0), (2770.0, 118.0, 1080.0))
-    RACKC = cam((2560.0, -900.0, 2050.0), (2880.0, 100.0, 1080.0))
+    BOXC = cam((2905.0, -125.0, 1398.0), (2762.0, 122.0, 1088.0))      # inside the hood, under the sash's edge
+    RACKC = cam((2700.0, -150.0, 1395.0), (2905.0, 110.0, 1085.0))
 
     # ---------------------------------------------------------------------------------- 1. arrive
     up, secs = AB.mir_drive(ma, BENCH_SPOT)
-    k.step("1/10", "MiR 1 brings the used crucible from the rePowder: the holder and nozzle are off, the skull of "
-           "slag and metal is still inside (atom_crucible).", secs, up, cam=WIDE, hold=0.6)
+    sc.step("1/10", "MiR 1 brings the used crucible from the rePowder: the holder and nozzle are off, the skull of "
+            "slag and metal is still inside (atom_crucible).", secs, up, cam_to=WIDE, hold=0.6)
 
     # ---------------------------------------------------------------------------------- 2. into the chuck
     cru_w = k.cru_world()
@@ -343,7 +353,7 @@ def main():
     zs0 = Ws[2, 3]
     # inverted, the skull's lowest point is its (now downward) top face, ~10 mm out from its frame's origin
     lowest = float(min(pv.wrap(sc.actors["bn skull"].GetMapper().GetInput()).transform(Ws, inplace=False).points[:, 2]))
-    drop = lowest - (AB.RP[2] + S.BENCH["top"] + 3.0) - 0.3
+    drop = lowest - (AB.RP[2] + S.TRAY_Z0 + 3.0) - 0.3
     t_fall = math.sqrt(2 * drop / 9810.0)
     Wland = Ws.copy()
 
@@ -395,12 +405,13 @@ def main():
            "come off. It never touches the seat round the hole: the sealing rod seals there.")
     tool_out(G_SCRAPER, "5/10", cap)
     # the blade's edge sits 19 mm out from the stem: the stem 9 mm off the axis puts it 0.5 mm off the wall
-    off = -(S.CR_RI - 0.5 - S.SCRAPER_EDGE[1])        # the edge is on the tool's +y: the world's -y, the front wall
-    hi = AB.P.tcp_frame(tuple(AB.W(axis_top + [0, off, 40.0 + S.SCRAPER_TIP])), DOWN, 0.0)
-    lo = AB.P.tcp_frame(tuple(AB.W(axis_top + [0, off, -(S.CR_H - S.Z_FLOOR) + 6.0 + S.SCRAPER_EDGE[2] - 182.0 + S.SCRAPER_TIP])), DOWN, 0.0)
+    # the tool turned 180 deg about its stem puts the blade's edge (tool +y) on the far wall, where the camera sees it
+    off = 26.6 - S.SCRAPER_EDGE[1]                   # edge 2 mm off the wall at its middle, 0.6 mm at its corners
+    hi = AB.P.tcp_frame(tuple(AB.W(axis_top + [0, off, 40.0 + S.SCRAPER_TIP])), DOWN, 180.0)
+    lo = AB.P.tcp_frame(tuple(AB.W(axis_top + [0, off, -(S.CR_H - S.Z_FLOOR) + 6.0 + S.SCRAPER_TIP])), DOWN, 180.0)
     k.step("5/10", cap, 1.6, rb.joint_to(Tw=hi), cam=CHUCK)
     seat_lab = [("seat: never scraped", tuple(AB.W(axis_top + [0, 0, -(S.CR_H - S.Z_FLOOR) - 14.0])), (0.70, 0.78)),
-                ("blade on the wall", tuple(AB.W(axis_top + [0, -S.CR_RI, -60.0])), (0.75, 0.30))]
+                ("blade on the wall", tuple(AB.W(axis_top + [0, S.CR_RI, -60.0])), (0.75, 0.30))]
     damaged = sorted(z for z in S.DAMAGE)
     for rep in range(3):
         k.step("5/10", cap, 0.9, rb.line_to(lo), labels=seat_lab if rep == 0 else ())
@@ -427,9 +438,9 @@ def main():
     k.step("6/10", cap, 0.8, knock(2))
     k.step("6/10", cap, 1.6, k.anim(flip=0.0))
     tool_out(G_VAC, "6/10", cap)
-    vo = np.array([0.0, S.VAC_OFF, 0.0])     # the grip point is 75 mm behind the crevice tool's axis (world +y)
-    over = AB.P.tcp_frame(tuple(AB.W(axis_top + vo + [0, 0, 25.0 + S.VAC_TIP])), DOWN, 0.0)
-    deep = AB.P.tcp_frame(tuple(AB.W(axis_top + vo + [0, 0, -(S.CR_H - S.Z_FLOOR) + 8.0 + S.VAC_TIP])), DOWN, 0.0)
+    vo = np.array([0.0, S.VAC_OFF, 0.0])     # the grip point 75 mm in front of the crevice tool's axis (world -y)
+    over = AB.P.tcp_frame(tuple(AB.W(axis_top - vo + [0, 0, 25.0 + S.VAC_TIP])), DOWN, 180.0)
+    deep = AB.P.tcp_frame(tuple(AB.W(axis_top - vo + [0, 0, -(S.CR_H - S.Z_FLOOR) + 8.0 + S.VAC_TIP])), DOWN, 180.0)
     k.step("6/10", cap, 1.8, rb.joint_to(Tw=over))
     k.step("6/10", cap, 1.4, rb.line_to(deep))
     a0 = k.vals["spin"]
@@ -450,10 +461,10 @@ def main():
     rb.grasp(G_CRU)
     lifted = tcp_up(p["x"], p["y"], face_z + 60.0)
     k.step("7/10", cap, 1.0, rb.line_to(lifted))
-    carry = AB.P.tcp_frame(tuple(AB.W((BENCH_SPOT[0], -235.0, 1250.0))), LEVEL, 0.0)
+    carry = AB.P.tcp_frame(tuple(AB.W((BENCH_SPOT[0], -265.0, 1250.0))), LEVEL, 0.0)
     k.step("7/10", cap, 2.0, rb.joint_to(Tw=carry))
     up, secs = AB.mir_drive(ma, HOOD_SPOT)
-    k.step("7/10", cap, secs, up, cam=HOOD)
+    sc.step("7/10", cap, secs, up, cam_to=HOOD, hold=0.0)
     cx, cy = S.CRU_IN_BOX
     base_hi = S.TT_HIGH
     over_rim = S.BOX_RIM + 15.0                 # the crucible's base 15 mm over the box's rim on the way in
@@ -469,9 +480,9 @@ def main():
     cap = ("A PTFE plug (ours) masks the nozzle seat and the hole: the arm holds it still and the lift raises the "
            "crucible onto it. Spray must stay out of the seat and bore (bronze plan).")
     k.step("7/10", cap, 0.8, k.anim(lift=0.0))
-    zf_h = S.HOOD_Z0 + 3.0 - (S.Z_FLOOR + S.M.floor_z(S.HOLE_R) - 9.0) + 0.3
+    zf_h = S.PLUG_HOME_Z
     px_, py_ = S.PLUG_HOLSTER
-    Z_HI = 1340.0 - S.PLUG_GRIP_Z               # the plug's frame high enough that it clears the box's rim
+    Z_HI = 1345.0 - S.PLUG_GRIP_Z               # high enough that the plug clears its holster's rim and the box's
     k.step("7/10", cap, 1.8, k.low(tcp_plug(px_, OUT_Y, zf_h)), cam=BOXC)
     k.step("7/10", cap, 1.8, rb.line_to(tcp_plug(px_, py_, zf_h)))
     k.step("7/10", cap, 0.4, rb.grip_to(C_TOOL))
@@ -620,9 +631,8 @@ def main():
     rx, ry = S.RACK
     zr = S.RACK_TOP + 0.3                       # the inverted crucible's rim on the pins
     k.step("9/10", cap, 1.2, rb.line_to(tcp_up(rx, OUT_Y, over_rim)), cam=RACKC)
-    k.step("9/10", cap, 2.0, rb.joint_to(Tw=AB.P.tcp_frame(tuple(AB.W((rx, OUT_Y, over_rim + S.CR_H - 20.0))), LEVEL,
-                                                           180.0)))
-    k.step("9/10", cap, 1.2, rb.line_to(tcp_inv(rx, OUT_Y, zr + 30.0)))
+    k.step("9/10", cap, 2.0, rb.joint_to(q1=rb.q + np.array([0, 0, 0, 0, 0, math.pi]), check=False))
+    k.step("9/10", cap, 1.6, k.low(tcp_inv(rx, OUT_Y, zr + 30.0)))
     k.step("9/10", cap, 1.8, rb.line_to(tcp_inv(rx, ry, zr + 30.0)))
     k.step("9/10", cap, 0.8, rb.line_to(tcp_inv(rx, ry, zr)))
     rb.release("rp")
@@ -650,21 +660,23 @@ def main():
     rb.grasp(G_CRU)
     k.step("10/10", cap, 0.8, rb.line_to(tcp_inv(rx, ry, zr + 30.0)))
     k.step("10/10", cap, 1.6, rb.line_to(tcp_inv(rx, OUT_Y, zr + 30.0)))
-    k.step("10/10", cap, 2.0, rb.joint_to(Tw=AB.P.tcp_frame(tuple(AB.W((rx, OUT_Y, zr + 50.0))), LEVEL, 0.0)))
-    k.step("10/10", cap, 1.6, rb.joint_to(Tw=AB.P.tcp_frame(tuple(AB.W((HOOD_SPOT[0], -330.0, 1250.0))), LEVEL, 0.0)))
+    k.step("10/10", cap, 2.0, rb.joint_to(q1=rb.q - np.array([0, 0, 0, 0, 0, math.pi]), check=False))
+    k.step("10/10", cap, 1.6, rb.joint_to(Tw=AB.P.tcp_frame(tuple(AB.W((HOOD_SPOT[0] - 150.0, -575.0, 1250.0))), LEVEL,
+                                                            0.0)))
     up, secs = AB.mir_drive(ma, BENCH_SPOT)
-    k.step("10/10", cap, secs, up, cam=BENCH)
+    sc.step("10/10", cap, secs, up, cam_to=BENCH, hold=0.0)
     Wc = T((p["x"], p["y"], face_z + 0.2))
-    k.step("10/10", cap, 2.2, rb.joint_to(Tw=tcp_up(p["x"], p["y"] - 160.0, face_z + 30.0)))
-    k.step("10/10", cap, 1.2, rb.line_to(tcp_up(p["x"], p["y"], face_z + 30.0)))
+    k.step("10/10", cap, 2.2, rb.joint_to(Tw=tcp_up(p["x"], p["y"] - 160.0, face_z + 48.0)))
+    k.step("10/10", cap, 1.2, rb.line_to(tcp_up(p["x"], p["y"], face_z + 48.0)))
     k.step("10/10", cap, 0.8, rb.line_to(tcp_up(p["x"], p["y"], face_z + 0.2)))
     k.step("10/10", cap, 0.5, k.anim(jaws=0.0))
     rb.release(G_TRUN)
     k.step("10/10", cap, 0.4, rb.grip_to(0.0))
     k.step("10/10", cap, 1.2, rb.line_to(rb.tcp_world() @ T((0, 0, -170.0))))
-    look = AB.P.tcp_frame(tuple(AB.W(axis_top + [0, -45.0, 150.0])), DOWN, 0.0)
-    k.step("10/10", cap, 2.2, rb.joint_to(Tw=look), cam=CHUCK)
-    AB.caption_rows(sc, Light="side light on", Camera="D405, 250 mm from the floor")
+    # the arm stays where it backed off; the positioner tilts the mouth 50 deg toward it, so the D405 riding on the level
+    # gripper looks 18 deg off the bore's axis, about 270 mm from its floor (in its 70-500 mm range, 58 deg field)
+    k.step("10/10", cap, 1.4, k.anim(flip=50.0 / 180.0), cam=CHUCK)
+    AB.caption_rows(sc, Light="side light on", Camera="D405, 270 mm from the floor")
     k.step("10/10", cap, 0.6, k.anim(light=1.0))
     a0 = k.vals["spin"]
 
@@ -678,12 +690,11 @@ def main():
     cap = ("Then mouth down over the dark tray and tapped once more: nothing falls, so nothing can reach the 0.5 mm "
            "nozzle. Ready. For copper, it is cured empty under argon in the furnace first: a fresh coat smokes at 500 C.")
     k.step("10/10", cap, 0.5, k.anim(light=0.0))
-    k.step("10/10", cap, 1.6, rb.line_to(rb.tcp_world() @ T((0, 0, -120.0))))
-    k.step("10/10", cap, 1.8, k.anim(flip=1.0))
+    k.step("10/10", cap, 1.6, k.anim(flip=1.0))
     k.step("10/10", cap, 0.8, knock(2))
     k.step("10/10", cap, 1.8, k.anim(flip=0.0))
     AB.caption_rows(sc, Crucible="coated, dry, checked: ready", Next="back into the furnace (atom_crucible)")
-    k.step("10/10", cap, 2.0, rb.joint_to(Tw=AB.P.tcp_frame(tuple(AB.W((BENCH_SPOT[0], -200.0, 1330.0))), LEVEL, 0.0)),
+    k.step("10/10", cap, 2.0, rb.joint_to(Tw=AB.P.tcp_frame(tuple(AB.W((BENCH_SPOT[0], -265.0, 1250.0))), LEVEL, 0.0)),
            cam=BENCH, hold=1.5)
     return AB.finish(sc)
 

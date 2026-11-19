@@ -6,7 +6,7 @@ station stands to the right of the atomizer's taped area (atom_base.py: the tape
 
 What is ours and what is bought (notes/atom_bn.md has the sources):
   * the bench, the two-axis positioner (a soft-jawed three-jaw chuck on a trunnion: spin and a 180 deg flip, with a
-    small knocker), the dark tray, the tool holsters, the side light: ours (a positioner like this is a small
+    5 deg jolt of the flip for a tap), the dark tray, the tool holsters, the side light: ours (a positioner like this is a small
     welding-positioner layout; sizes are ours).
   * the brush, the scraper and the seat plug: ours (a bought nylon bore brush and an acetal blade on our handles).
   * the vacuum: the lab's Nilfisk CFM 118EXP (atom_nilfisk.py's model when it exists, else a stand-in drawn here),
@@ -51,10 +51,10 @@ CR_GRIP = close = None            # set in atom_bn (ur_arm.close_for)
 # colours
 GRAPHITE = M.GRAPHITE
 OLD_COAT = (0.80, 0.80, 0.77)     # fired BN, a little grey after a run
-DAMAGED = (0.47, 0.45, 0.42)      # cracked and lifted coat, metal stuck to it
-SCRAPED = (0.36, 0.36, 0.38)      # the thin grey bonded layer left after scraping (bronze plan)
-WET = (0.66, 0.74, 0.82)          # a wet coat: darker, with a shine
-MATTE = (0.95, 0.95, 0.92)        # dry BN: matte white
+DAMAGED = (0.58, 0.50, 0.40)      # cracked and lifted coat, metal stuck to it
+SCRAPED = (0.30, 0.31, 0.34)      # the thin grey bonded layer left after scraping (bronze plan)
+WET = (0.60, 0.72, 0.86)          # a wet coat: darker, with a shine
+MATTE = (0.97, 0.97, 0.94)        # dry BN: matte white
 SKULL_C = (0.62, 0.45, 0.30)      # 630 bronze skull
 SEAT_C = (0.30, 0.30, 0.32)
 
@@ -83,7 +83,7 @@ def _patch(fn, nu, nv) -> pv.PolyData:
     for j in range(nv - 1):
         for i in range(nu - 1):
             a = j * nu + i
-            faces += [3, a, a + 1, a + nu + 1, 3, a, a + nu + 1, a + nu]
+            faces += [3, a, a + nu + 1, a + 1, 3, a, a + nu, a + nu + 1]      # facing the inside (the viewer)
     return pv.PolyData(pts, faces=np.array(faces)).compute_normals(auto_orient_normals=False)
 
 
@@ -144,13 +144,15 @@ def plug_meshes() -> dict:
 
 
 PLUG_GRIP_Z = CR_H + 23.0         # the handle's centre over the crucible's base
+PLUG_HOME_Z = None                # set below (the plug's frame in its holster)
 
 
 # ------------------------------------------------------------------------------------------------ the layout
 BENCH = dict(x0=1700.0, x1=2380.0, y0=-229.0, y1=371.0, top=900.0, t=30.0)
 POS = dict(x=2030.0, y=-60.0, axis=1070.0, face=20.0, body_r=55.0, ux=100.0)   # the positioner's trunnion
 TRAY = dict(x=2030.0, y=-60.0, w=170.0, d=170.0, h=15.0)                       # the dark tray under it
-HOLSTERS = {"brush": (2205.0, -110.0), "scraper": (2280.0, -110.0), "vac": (2240.0, 30.0)}
+TRAY_Z0 = 912.0                   # it sits on the positioner's base plate, between the uprights
+HOLSTERS = {"brush": (2205.0, -110.0), "scraper": (2280.0, -110.0), "vac": (2240.0, 80.0)}
 LIGHT = (1890.0, 40.0)            # the side light's post, behind the chuck's left upright
 HOOD_AT = (3000.0, 250.0)         # the hood's footprint centre (instruments_r7.FH: 1219 x 958; front at y = -229)
 HOOD_Z0 = 932.0                   # its work surface
@@ -160,7 +162,8 @@ BOX = dict(x=2760.0, y=105.0, inner=130.0, deep=150.0, wall=2.0, plinth=60.0, fl
 CRU_IN_BOX = (2760.0, 115.0)     # the crucible stands 10 mm behind the box centre: 47 mm in front of it for the spray
 TT = dict(r=45.0, t=8.0, stroke=152.0)  # turntable on a lift (ours): up 152 mm for the hand-over
 RACK = (2945.0, 115.0)             # the drying rack, the crucible upside down on it
-PLUG_HOLSTER = (2610.0, 60.0)
+PLUG_HOLSTER = (2590.0, 150.0)
+PLUG_STAND = 230.0                # the plug's holster stands on a post, its handle level with the box's hand-over
 CAN_CRADLE = (3180.0, -95.0)      # where the spray tool rests (the can inside, its handle at the sash)
 NILFISK_AT = (1560.0, 560.0)      # the vacuum stands behind the bench's left end, out of the arm's way
 
@@ -198,7 +201,7 @@ def bench_meshes() -> dict:
 def positioner_static() -> dict:
     """The positioner's base plate and its two uprights (ours)."""
     p = POS
-    base = _box(p["x"] - 130, p["x"] + 130, p["y"] - 45, p["y"] + 45, BENCH["top"], BENCH["top"] + 12)
+    base = _box(p["x"] - 130, p["x"] + 130, p["y"] - 92, p["y"] + 92, BENCH["top"], BENCH["top"] + 12)
     ups = None
     for s in (-1, 1):
         x = p["x"] + s * p["ux"]
@@ -240,7 +243,7 @@ def jaw_dir(k: int) -> np.ndarray:
 
 def tray_meshes() -> dict:
     t = TRAY
-    z0 = BENCH["top"]
+    z0 = TRAY_Z0
     pan = _box(t["x"] - t["w"] / 2, t["x"] + t["w"] / 2, t["y"] - t["d"] / 2, t["y"] + t["d"] / 2, z0, z0 + 3)
     for s in (-1, 1):
         pan = pan.merge(_box(t["x"] + s * t["w"] / 2 - 2 * (s > 0), t["x"] + s * t["w"] / 2 + 2 * (s < 0),
@@ -262,7 +265,9 @@ def light_beam() -> pv.PolyData:
     """The light's cone, drawn faint, onto the crucible's mouth when the light is on."""
     x, y = LIGHT
     tip = np.array([x + 20, y - 20, BENCH["top"] + 340.0])
-    to = np.array([POS["x"], POS["y"], POS["axis"] + POS["face"] + CR_H - 20.0])
+    th = math.radians(50.0)
+    to = np.array([POS["x"], POS["y"] - (POS["face"] + CR_H - 20.0) * math.sin(th),
+                   POS["axis"] + (POS["face"] + CR_H - 20.0) * math.cos(th)])
     d = to - tip
     L = float(np.linalg.norm(d))
     return pv.Cone(center=tuple(tip + d / 2), direction=tuple(-d / L), height=L, radius=34.0, resolution=32).triangulate()
@@ -289,16 +294,16 @@ BRUSH_TIP = 188.0
 
 
 def scraper_meshes() -> dict:
-    """The scraper (ours): an acetal blade 30 mm wide on a 10 mm stem, its edge rounded to the 57.1 mm bore and set
-    at 20 deg to the wall; plastic, as the bronze plan asks (a plastic or wooden edge)."""
+    """The scraper (ours): an acetal blade 16 mm wide on a 10 mm stem, set at 20 deg to the wall; narrow enough that
+    its straight edge fits the 57.1 mm bore; plastic, as the bronze plan asks (a plastic or wooden edge)."""
     stem = _cyl((0, 0, 90.0), (0, 0, 1), 5.0, 140.0, 16)
-    blade = _box(-15.0, 15.0, 0.0, 3.0, 150.0, 185.0)
+    blade = _box(-8.0, 8.0, 0.0, 3.0, 150.0, 185.0)
     blade = blade.rotate_x(-20.0, point=(0, 0, 150.0), inplace=False).translate((0, 6.0, 0), inplace=False)
     return {"scraper handle": (_handle().merge(stem), (0.20, 0.36, 0.70)), "scraper blade": (blade, (0.95, 0.95, 0.90))}
 
 
 SCRAPER_TIP = 183.0
-SCRAPER_EDGE = (0.0, 19.0, 182.0)      # the blade's edge, tool frame: 19 mm out from the stem
+SCRAPER_EDGE = (0.0, 20.8, 182.0)      # the blade's edge, tool frame: 20.8 mm out from the stem
 
 
 VAC_OFF = 75.0                    # the crevice tool's axis from the grip point, tool +y: clear of the gripper's body
@@ -418,17 +423,30 @@ def box_meshes() -> dict:
     floor = _box(x - h, x + h, y - d, y + d, BOX_FLOOR - b["floor"], BOX_FLOOR)
     floor = floor.clip_box((cx - 16, cx + 16, cy - 16, cy + 16, BOX_FLOOR - 10, BOX_FLOOR + 10), invert=True).triangulate()
     plinth = _box(x - h - w - 10, x + h + w + 10, y - d - w - 10, y + d + w + 10, HOOD_Z0, BOX_FLOOR - b["floor"])
+    plinth = plinth.clip_box((cx - 17, cx + 17, cy - 17, cy + 17, HOOD_Z0 - 5, BOX_FLOOR + 5), invert=True).triangulate()
     return {"spray box": (walls.merge(floor), (0.78, 0.80, 0.83)), "box plinth": (plinth, (0.30, 0.31, 0.33))}
 
 
+LIFT_L = 61.0                     # each stage of the telescoping column (four, 61 mm: they nest inside the plinth)
+LIFT_R = ((16.0, 14.0), (13.5, 11.5), (11.0, 9.0), (8.5, 0.0))     # outer, inner radius: stage 0 fixed .. 3 the rod
+
+
 def lift_meshes() -> dict:
-    """The turntable on its column (moves up and down, and spins): in its own frame, its top at z = 0. Both air-driven
-    (ours: an air cylinder with a mid stop, and an air indexer): the propellant and solvents pool at the bottom of the
-    box (bronze plan), right where a motor would be, so nothing under it may spark. Valves outside the hood."""
+    """The turntable on its rod (moves up and down, and spins): in its own frame, its top at z = 0. The rod is the
+    last of four nested stages (lift_stage), so the column folds into the 60 mm plinth when it is down. Both
+    air-driven (ours: an air cylinder with a mid stop, and an air indexer): the propellant and solvents pool at the
+    bottom of the box (bronze plan), right where a motor would be, so nothing under it may spark. Valves outside the
+    hood."""
     disc = _cyl((0, 0, -TT["t"] / 2), (0, 0, 1), TT["r"], TT["t"], 48)
-    col = _cyl((0, 0, -TT["t"] - 100.0), (0, 0, 1), 12.0, 200.0, 20)
+    rod = _cyl((0, 0, -TT["t"] - LIFT_L / 2), (0, 0, 1), LIFT_R[3][0], LIFT_L, 20)
     mark = _box(TT["r"] - 10, TT["r"] - 1, -3, 3, -0.6, 0.4)          # a mark, so the turning shows
-    return {"turntable": (disc.merge(col), (0.55, 0.56, 0.60)), "turntable mark": (mark, (0.95, 0.70, 0.10))}
+    return {"turntable": (disc.merge(rod), (0.55, 0.56, 0.60)), "turntable mark": (mark, (0.95, 0.70, 0.10))}
+
+
+def lift_stage(k: int) -> pv.PolyData:
+    """Stage k (0 fixed in the plinth, 1 and 2 moving) of the column: a tube, its top at z = 0 of its frame."""
+    ro, ri = LIFT_R[k]
+    return _ring(0.0, 0.0, -LIFT_L, LIFT_L, ro, ri, 32)
 
 
 def rack_meshes() -> dict:
@@ -455,7 +473,10 @@ def holster_meshes() -> dict:
         cup = _ring(x, y, top, h, r + 3.0, r).merge(_cyl((x, y, top + 1.5), (0, 0, 1), r + 3.0, 3.0))
         out[f"holster {name}"] = (cup, (0.30, 0.31, 0.33))
     x, y = PLUG_HOLSTER
-    out["holster plug"] = (_ring(x, y, HOOD_Z0, 95.0, 17.0, 14.0).merge(_cyl((x, y, HOOD_Z0 + 1.5), (0, 0, 1), 17.0, 3.0)),
+    z0 = HOOD_Z0 + PLUG_STAND
+    post = _cyl((x, y, (HOOD_Z0 + z0) / 2), (0, 0, 1), 9.0, PLUG_STAND, 20).merge(
+        _cyl((x, y, HOOD_Z0 + 4.0), (0, 0, 1), 45.0, 8.0, 32))
+    out["holster plug"] = (_ring(x, y, z0, 40.0, 17.0, 14.0).merge(_cyl((x, y, z0 + 1.5), (0, 0, 1), 17.0, 3.0)).merge(post),
                            (0.30, 0.31, 0.33))
     x, y = CAN_CRADLE
     out["can cradle stand"] = (_box(x - 45, x + 45, y + 60, y + 200, HOOD_Z0, HOOD_Z0 + 14), (0.30, 0.31, 0.33))
@@ -511,3 +532,7 @@ def add_hood(sc, parent="rp"):
     rig.v["sash"] = 1.0
     rig.apply()
     return rig
+
+
+# the plug's frame in its holster: its spigot's tip on the cup's floor (0.3 mm over it)
+PLUG_HOME_Z = HOOD_Z0 + PLUG_STAND + 3.0 - (Z_FLOOR + M.floor_z(HOLE_R) - 9.0) + 0.3

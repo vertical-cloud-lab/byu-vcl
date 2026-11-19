@@ -60,8 +60,8 @@
   "status": "to buy"
  },
  {
-  "item": "Two-axis positioner: trunnion flip 180 deg + spin, 3-jaw chuck with acetal soft jaws, air knocker",
-  "maker": "ours (an 80 mm 3-jaw chuck, two steppers with gearboxes, a small air cylinder)",
+  "item": "Two-axis positioner: trunnion flip 180 deg + spin, 3-jaw chuck with acetal soft jaws; it taps the crucible by a 5 deg jolt of the flip axis",
+  "maker": "ours (an 80 mm 3-jaw chuck, two steppers with gearboxes)",
   "part_no": null,
   "qty": 1,
   "unit_usd": null,
@@ -100,7 +100,7 @@
   "status": "ours: to make"
  },
  {
-  "item": "Scraper: acetal blade 30 mm wide, edge rounded to the 57.1 mm bore, on a 10 mm stem",
+  "item": "Scraper: acetal blade 16 mm wide (its straight edge fits the 57.1 mm bore), on a 10 mm stem",
   "maker": "ours",
   "part_no": null,
   "qty": 1,
