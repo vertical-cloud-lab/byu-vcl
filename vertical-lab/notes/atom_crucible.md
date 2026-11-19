@@ -15,7 +15,12 @@ Starts from the lab's own plan, `notes/crucible_automation.md`, and the SOPs: DA
   "Once the furnace can be touched: slag out, nozzle checked or drilled, furnace rebuilt"). The clips start below
   50 C (ours: a number for "can be touched").
 - **Lid open, latch undone.** Another clip (`atom_latch.py`) works the latch; these start with it open
-  (`set_joints(lid=1, latch=1, loop=1, bolt=1)`) and say so on screen.
+  (`set_joints(lid=1, latch=1, loop=1, bolt=1)`) and say so on screen. Since commit e3b1428 the lid is hinged on the
+  left (DAL measured a left hinge) and stands up there when open (x -375 to -152, z 1352-1637), with the latch on the
+  housing's right face. Three things below follow from that: the sealing-rod lever swings up 70 deg, not chapter 2's
+  95 (at 95 the 2F-85 holding it meets the open latch lever); the nut key's handle is 500 mm out, so arm 2's wrist
+  stays left of the lid; and every approach over the furnace picks an IK branch that is clear at the grasp, not only
+  at the pre-grasp pose (arm 1's wrist sat in the lid while it held the crucible).
 - **Door open, both clamps off** (`door=1, clamp0=1, clamp1=1`).
 - **The ultrasonic stack is out, on its bench,** not drawn: "If the furnace is being rebuilt, do it before the stack
   goes in: the graphite nut under the crucible is reached through the chamber door" (checklist, Loading the
@@ -27,8 +32,8 @@ Starts from the lab's own plan, `notes/crucible_automation.md`, and the SOPs: DA
 ### Who does what
 
 - **Arm 1**, UR10e + 2F-85 on MiR250 1 parked in front (`PARK["front"]`): everything from the top.
-- **Arm 2**, UR10e + 2F-85 on MiR250 2 parked at the left by the door (`PARK["left"]`): the nut, from below, with the
-  nut key through the open door. As the SOP says, two people make this easier (178 SOP, step 3).
+- **Arm 2**, UR10e + 2F-85 on MiR250 2 parked at the left by the door, 200 mm further out than `PARK["left"]`
+  (x -960, y -40, yaw 90): the nut, from below, with the nut key through the open door. As the SOP says, two people make this easier (178 SOP, step 3).
 - **The machine:** the SEALING ROD key, sent as a PLC input (ours; AMAZEMET would have to allow one). The other way is
   arm 1 pressing the HMI's touch key with a capacitive stylus; we did not draw it.
 - **A person:** drilling a closed nozzle by hand (0.5 or 0.7 mm; SOP 2), and anything the checks below stop on.
@@ -37,9 +42,9 @@ Starts from the lab's own plan, `notes/crucible_automation.md`, and the SOPs: DA
 
 | # | Step | Who, tool | Source | Sensed |
 |---|---|---|---|---|
-| 1 | Thermocouple drawn straight up 100 mm by its leg, into a stand on MiR250 1 | arm 1, 2F-85's pads (3.8 mm sheath) | SOP 1 (T1 35:49) | pull force, est. < 1 N |
+| 1 | Thermocouple drawn straight up 100 mm by its leg, into a stand on MiR250 1 | arm 1, tweezers on the 3.8 mm sheath | SOP 1 (T1 35:49) | pull force, est. < 1 N |
 | 2 | Safety pin out by its T-handle (48 mm pull) onto a rest | arm 1, pads on the handle's ends | SOP 1 (T1 36:24) | |
-| 3 | Lever swung up 95 deg on its post | arm 1, chapter 2's grasp and arc | SOP 1, T4 1:18-2:17 | |
+| 3 | Lever swung up 70 deg on its post (chapter 2: 95; the open latch lever is in the way), arm backs off straight up | arm 1, chapter 2's grasp and arc | SOP 1, T4 1:18-2:17 | |
 | 4 | Sealing rod out by its brass adapter, lifted 175 mm, stood in a holder | arm 1, pads on the 21.7 mm adapter | SOP 1, 6 (T4 1:41, 1:52) | |
 | 5 | Top ring out, then the side tube | arm 1, needle tool | SOP 1 (T1 37:01) | lift force |
 | 6 | Key in through the door; six pins into the nut's notches, the cup under the nut and seal | arm 2, nut key | SOP 1 ("holding the graphite nut so nothing falls") | Fz up, 3 N (assumed) |
@@ -65,7 +70,7 @@ Starts from the lab's own plan, `notes/crucible_automation.md`, and the SOPs: DA
 | 9 | Snug: the key turns the nut the last 54 deg to the limit | key motor; arm 1's FT 300-S | SOP 3 | Mz to 0.30 N m (assumed) |
 | 10 | Key drops 16 mm off the nut and goes out; crucible gripper off | arm 2, arm 1 | | |
 | 11 | Side tube down over the crucible (0.6 mm inside, 1 mm to the coil), then the top ring | arm 1, needle tool | SOP 5 (T4 0:31), checklist 4 | |
-| 12 | Thermocouple down through the top ring's hole into the crucible's wall hole | arm 1, pads | SOP 1, 5; T1 38:06 | push force, stop at 2 N (assumed) |
+| 12 | Thermocouple down through the top ring's hole into the crucible's wall hole | arm 1, tweezers | SOP 1, 5; T1 38:06 | push force, stop at 2 N (assumed) |
 | 13 | Rod stood on the nozzle (lowered until the force rises), lever down, pin in, SEALING ROD down | arm 1; PLC input | SOP 6 (T4 2:02-2:18), checklist 5 | Fz -1.5 N |
 
 Turns, from the model: the nut is 12 mm thick (`NUT_Z` 1110-1122), the shank ends at 1108 (`SHANK_Z0`) and the pitch is
@@ -99,11 +104,13 @@ tool has a 28 mm handle the 2F-85 holds (pads 28 mm apart), as chapter 2's loadi
   nothing can get beside it; its top face is all there is. Suction does not hold porous fibre. Whether needles hold
   the vacuum-formed alumina-silica pieces without crumbling them is not known: try it on a spare piece first.
   Schmalz does not publish a holding force for these. The hub stays inside r 58 (2 mm off the coil).
-- **Tweezers.** Two 1.5 mm jaws with PEEK tips; the 2F-85 squeezing the handle's halves closes them 2 mm each (as
-  the tong). For the 16 mm nozzle. The tips cannot enter the recess (0.2 mm clearance), so they let go 2 mm over its
-  floor and the nozzle slides the last 2 mm down the recess.
-- **Nut key.** A 300 mm bar through the door, under the door opening's top edge (z 1103; the bar's top at 1100 when
-  the nut is snug), a gear head under the nut, and a turning socket: six pins for the nut's six notches (r 30) and a
+- **Tweezers.** Two 1.5 mm jaws with PEEK tips, 20 mm apart at rest; a lever in the handle closes the tips 4 mm for
+  each mm the 2F-85's pads close on the handle's halves (ours). For the 16 mm nozzle and the thermocouple's 3.8 mm
+  sheath. The thermocouple's leg is only 10 mm over the top ring, so the 2F-85's own pads (38 mm tall) would go
+  12 mm into the ring; the first version tried and the audit caught it. The tips cannot enter the nozzle's recess
+  (0.2 mm clearance), so they let go 2.6 mm over its floor and the nozzle slides the rest of the way down the recess.
+- **Nut key.** A 500 mm bar through the door, under the door opening's top edge (z 1103; the bar's top at 1100 when
+  the nut is snug), its handle 500 mm out from the nut so arm 2's wrist stays clear of the open lid, a gear head under the nut, and a turning socket: six pins for the nut's six notches (r 30) and a
   cup whose rim stands 3 mm over the nut, so the nut and the lower seal cannot fall. A small gearmotor with an
   encoder in the bar turns the socket through a 1:1 bevel pair (to choose). The torque limit is read by arm 1's
   FT 300-S through the crucible (arm 1 holds it still), so the limit is set in one place, on the bench.
@@ -165,6 +172,14 @@ Bench test to set them (before anything goes near the machine):
 - Clearances by construction: crucible gripper r 46 against the coil's r 60; needle hub r 58 and heads r 59 against
   r 60; the key's bar top 3 mm under the door opening's top edge, its cup rim 1 mm under the chamber's roof; nut bore
   r 12.3 and seal bore r 12.5 on the r 12 shank; holder head r 15 in the bottom ring's r 16 bore.
+- **A fault in the shared model, worked round in this chapter only.** `model.py`'s furnace extension
+  (`hood_parts`, part `furnace_ext`) keeps a solid 5 mm floor plate (x 0-184, z 1150-1155) right across the
+  holder's shank, where the furnace floor (r 25) and the top plate (r 20) have their holes: the crucible as built
+  sits 12 mm into it, and the first audit flagged every frame the crucible moved. `atom_crucible.py` cuts a 60 mm
+  square out of that plate's mesh in its own scene (`Rig.__init__`); `model.py` is unchanged and should get the hole.
+- Wrist 3: the turns of the crucible are pure wrist-3 rotations (the gripper's handle is on the crucible's axis),
+  driven in joint space and checked against forward kinematics; the joint move before each turn picks the IK branch
+  with wrist 3 inside +-170 to +-220 deg, so the turn stays inside the UR10e's +-360 deg.
 
 ### Open questions for the lab
 

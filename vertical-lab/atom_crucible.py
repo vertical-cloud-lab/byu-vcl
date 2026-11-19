@@ -23,6 +23,7 @@ import os
 import sys
 
 import numpy as np
+import pyvista as pv
 
 import atom_base as AB
 import atom_crucible_tools as CT
@@ -46,6 +47,12 @@ TQ_BREAK = 0.55                                       # N m, an example breakawa
 HOLDER_TURNS = 1.25                                   # turns onto the holder: "just barely" (T8 2:26); assumed
 HOLDER_PITCH = 2.0                                    # assumed, as the nut's
 ALIGN_DEG = 90.0                                      # the crucible goes in 90 deg short of the port and turns to it
+BRK_DEG = 25.0                                        # the breakaway turn, arm 1's wrist
+LEVER_UP = 70.0      # the sealing-rod lever swung up 70 deg (chapter 2: 95): since the lid was turned onto the left
+                     # (model.py LID_TURN_DEG), the open latch lever stands on the housing's right face, where the 2F-85
+                     # would be at 95; at 70 the lever's eye is still 15 mm clear of the crucible gripper's plate
+MIR2_AT = (-960.0, -40.0, 90.0)   # MiR250 2: 200 mm further left than PARK["left"], so the key's handle (500 mm out)
+                                  # is a comfortable reach and arm 2's wrist stays clear of the open lid (x -375..-152)
 FT = "FT 300-S"                                       # the wrist sensor on both arms (notes: why)
 GRIP = CT.GRIP_TOOL
 GRIP_TC = CT.gripper_gap_close(3.8) + 0.004           # the 3.8 mm sheath
@@ -80,6 +87,27 @@ HANDLE = dict(cg=CT.CG_HANDLE, nt=CT.NT_HANDLE, tw=CT.TW_HANDLE)
 PARTS_CUT = ("crucible", "holder", "nozzle", "furnace", "bottom_ins", "coil", "side_ins", "top_ins", "tc", "chamber")
 
 
+def fresh_after(rb):
+    """collide.Checker caches the held group's subtree by the group's name. This chapter changes what rides on a held
+    tool (the crucible on its gripper, the nut in the key's cup) and swaps which of two nested groups is held, so the
+    cache has to be dropped after every grasp, release and reparent (here, on these two arms only; collide.py as is)."""
+    def drop():
+        sc = rb.sc
+        chks = [rb._checker] + list(getattr(getattr(sc, "auditor", None), "checkers", {}).values())
+        for chk in chks:
+            if chk is not None:
+                chk.held_group = None
+                chk.held_bodies = []
+    for name in ("grasp", "release", "reparent"):
+        orig = getattr(rb, name)
+
+        def wrapped(*a, _orig=orig, **kw):
+            out = _orig(*a, **kw)
+            drop()
+            return out
+        setattr(rb, name, wrapped)
+
+
 class Rig:
     """The scene, the two units and everything this chapter adds."""
 
@@ -90,12 +118,14 @@ class Rig:
         self.sc, self.ma, self.mb = AB.build(NAME, title)
         sc = self.sc
         self.r1, self.r2 = self.ma.rb, self.mb.rb
+        for rb in (self.r1, self.r2):
+            fresh_after(rb)
         AB.set_joints(sc, lid=1.0, latch=1.0, loop=1.0, bolt=1.0, door=1.0, clamp0=1.0, clamp1=1.0)
         for grp in ("stack", "connector", "sonotrode", "booster", "transducer", "plate", "upper", "cover"):
             sc.show(sc.members(g(grp)), 0.0)              # the stack is out, on its bench
         sc.show([n for n in sc.members("amr") if n.endswith("/cradle")], 0.0)   # chapter 2's container cradle
         AB.mir_at(self.ma, "front")
-        AB.mir_at(self.mb, "left")
+        AB.mir_at(self.mb, MIR2_AT)
         for name, (mesh, col) in CT.fixtures1().items():
             sc.add(f"amr/cr {name}", mesh, col, "amr", specular=0.2,
                    **(dict(ambient=0.95, diffuse=0.1) if "light" in name else {}))
@@ -132,6 +162,14 @@ class Rig:
             sc.add(name, mesh, col, "cr:pin", specular=0.4)
         sc.parent["cr:pin"] = g("arm")
         sc.soft = set(getattr(sc, "soft", ())) | set(sc.members("cr:pin"))
+        # the model's furnace extension (model.py hood_parts: furnace_ext) keeps a solid 5 mm floor plate across the
+        # holder's shank (x 0-184, z 1150-1155), where the furnace floor and the top plate have their holes; cut the
+        # same hole in it here (r 30), or the crucible as built already sits 12 mm into it
+        for nm in ("furnace_ext", "furnace_ext#cut", "w:furnace_ext"):
+            if nm in sc.actors:
+                pd = pv.wrap(sc.actors[nm].GetMapper().GetInput())
+                sc.set_mesh(nm, pd.clip_box((-30.0, 30.0, -30.0, 30.0, 1146.0, 1159.0), invert=True)
+                            .extract_surface(algorithm="dataset_surface").triangulate())
         self.fur_cut = [g(x) for x in PARTS_CUT]
         self.sock_deg = 0.0
         self.cr_deg = 0.0
@@ -148,8 +186,24 @@ class Rig:
 
     def tw_jaws(self, f_open):
         """f_open 1: the tweezers' tips 20 mm apart (rest); 0: on the 16 mm nozzle."""
+        self.tw_set(16.0 + 4.0 * f_open)
+
+    def tw_set(self, gap):
+        """The tweezers' tips `gap` mm apart (20 at rest). A lever in the handle: 4 mm of tip travel for each mm the
+        2F-85's pads close on the handle's halves (ours)."""
+        self.tw_gap = gap
         for s, grp in ((-1, "cr:tw_jaw_a"), (1, "cr:tw_jaw_b")):
-            self.sc.gmat[grp] = T((s * 2.0 * f_open, 0.0, 0.0))
+            self.sc.gmat[grp] = T((s * (gap / 2.0 - 8.0), 0.0, 0.0))
+
+    def tw_close_to(self, rb, gap):
+        """update(u): the 2F-85 squeezes the tweezers' handle until the tips are `gap` mm apart."""
+        g0 = getattr(self, "tw_gap", 20.0)
+        c0, c1 = rb.close, CT.gripper_gap_close(28.0 - (20.0 - gap) / 4.0)
+
+        def upd(u):
+            rb.set(close=c0 + (c1 - c0) * u)
+            self.tw_set(g0 + (gap - g0) * u)
+        return upd
 
     def sock(self, deg):
         self.sock_deg = deg
@@ -193,6 +247,17 @@ class Rig:
         return AB.WT(T((x0, 0.0, z0)) @ R((0, 0, 1), 180.0))
 
 
+def tw_on_tc(W_tc):
+    """The tweezers' frame holding the thermocouple by its leg (TC_GRIP), tips across the leg, 2 mm under its axis;
+    W_tc: the thermocouple group's world matrix."""
+    x = np.array([TC_DIR[1], -TC_DIR[0], 0.0])
+    z = np.array([0.0, 0.0, 1.0])
+    F = np.eye(4)
+    F[:3, 0], F[:3, 1], F[:3, 2] = x, np.cross(z, x), z
+    F[:3, 3] = TC_GRIP - np.array([0.0, 0.0, 2.0])
+    return W_tc @ F
+
+
 def tcp_down(p_model, spin=180.0):
     return AB.tcp(p_model, (0.0, 0.0, -1.0), spin)
 
@@ -211,6 +276,45 @@ def swap(rb, new):
     rb.reparent(new, None)
     rb.release(new)
     rb.grasp(new)
+
+
+def joint_w3(rb, Tw, lo_deg=-330.0, hi_deg=330.0, then=None):
+    """rb.joint_to(Tw) but with wrist 3 wrapped into [lo, hi] deg (the UR10e's wrist 3 turns +-360 deg), so a turn
+    that follows stays in range; among the IK branches, the nearest one clear of everything."""
+    import collide
+    sc = rb.sc
+    Tb = np.linalg.inv(sc.world(rb.root)) @ Tw
+    cands = collide.ik_all(rb.model, Tb, rb.q) or [rb.solve(Tw)]
+    lo, hi = math.radians(lo_deg), math.radians(hi_deg)
+    ok = []
+    for q in cands:
+        q = np.array(q, float)
+        while q[5] > hi:
+            q[5] -= 2 * math.pi
+        while q[5] < lo:
+            q[5] += 2 * math.pi
+        if lo <= q[5] <= hi:
+            ok.append(q)
+    chk = rb.checker()
+    world = chk.snapshot()
+
+    def clear(q):
+        if chk.collisions(q, rb.close, world, chk.touching(q, rb.close, world)):
+            return False
+        if then is None:
+            return True
+        try:                                  # the straight line that follows, in this branch: clear at its end too
+            q2 = rb.solve(then, q)            # (the lid now stands on the left, at the wrist's height)
+        except ValueError:
+            return False
+        if np.abs(q2 - q).max() > math.radians(25):
+            return False
+        return not chk.collisions(q2, rb.close, world, chk.touching(q2, rb.close, world))
+    free = [q for q in ok if clear(q)]
+    if not free:
+        print(f"warning: {rb.sc.name} {rb.sc.label}: no IK branch clear at both ends", file=sys.stderr, flush=True)
+    pick = min(free or ok or cands, key=lambda q: float(np.sum((np.asarray(q) - rb.q) ** 2)))
+    return rb.joint_to(q1=pick)
 
 
 def turn_path(rb, pivot_w, deg, axis=(0.0, 0.0, 1.0), extra_dz=0.0):
@@ -258,11 +362,11 @@ class Clip:
         self.sc.step(f"{self.k}/{self.N}", cap, secs, update, hold=hold, **kw)
 
     # tools ---------------------------------------------------------------------------------------------
-    def fetch(self, rb, key, cap, cam=None, labels=()):
+    def fetch(self, rb, key, cap, cam=None, labels=(), also=None):
         rig, sc = self.rig, self.sc
         grp = TOOLS1[key][0]
         G = rig.tool_tcp(grp, HANDLE[key])
-        self.step(cap, 1.5, both(rb.joint_to(Tw=back(G, 110.0)), rb.grip_to(0.0)), cam_to=cam, labels=labels)
+        self.step(cap, 1.5, both(rb.joint_to(Tw=back(G, 110.0)), rb.grip_to(0.0), also), cam_to=cam, labels=labels)
         self.step(cap, 0.6, rb.line_to(G))
         self.step(cap, 0.35, rb.grip_to(GRIP))
         rb.grasp(grp)
@@ -307,32 +411,39 @@ def clip_out():
     c.k = 1
     cap = ("The furnace is cold, the lid open and the chamber's door open with its clamps off; the ultrasonic stack "
            "is out, so the nut can be reached through the door. First out: the Type N thermocouple, its thin "
-           "ceramic sheath taken by its leg on the 2F-85's silicone pads and drawn straight up (SOP 1).")
-    Gtc = tcp_down(TC_GRIP, TC_SPIN)
-    c.step(cap, 2.0, both(r1.joint_to(Tw=back(Gtc, 120.0)), r1.grip_to(0.0)), hold=0.6, cam_to=C_FUR,
+           "ceramic sheath taken by its leg on tweezers and drawn straight up (SOP 1).")
+    # arm 2 goes to stand by over its key, out of arm 1's way, while arm 1 takes the tweezers
+    c.fetch(r1, "tw", cap, cam=C_MIR1, also=both(r2.joint_to(Tw=back(rig.key_tcp(), 110.0)), r2.grip_to(0.0)),
+            labels=[("tweezers", tuple(rig.mir_local(rig.ma, rig.at1("tw", CT.TW_Z + 200.0))[:3, 3]), (0.40, 0.30))])
+    Wtw = tw_on_tc(AB.WT(np.eye(4)))
+    Gtc = rig.tool_tcp("cr:tw", CT.TW_HANDLE, world=Wtw)
+    c.step(cap, 2.0, joint_w3(r1, up(Gtc, 90.0), then=Gtc), hold=0.5, cam_to=C_FUR,
            labels=[("thermocouple, Type N (back right)", tuple(AB.W(TC_GRIP + (0, 0, 10))), (0.70, 0.26)),
                    ("sealing-rod lever and pin", tuple(AB.W((40.0, -20.0, M.Z_ARM + 10))), (0.68, 0.52))])
-    c.step(cap, 0.7, r1.line_to(Gtc))
-    c.step(cap, 0.35, r1.grip_to(GRIP_TC))
-    r1.grasp(g("tc"))
-    c.gauges(**{f"Arm 1 {FT}": "pull 0.8 N (assumed: friction in the hole)"})
-    c.step(cap, 1.3, r1.line_to(up(Gtc, TC_PULL)), hold=0.2)
+    c.step(cap, 0.8, r1.line_to(Gtc))
+    c.step(cap, 0.35, rig.tw_close_to(r1, 3.8))
+    tw_tool = c.take(r1, g("tc"))
+    c.gauges(**{"F/T 1": "pull 0.8 N (assumed: friction in the hole)"})
+    c.step(cap, 1.3, r1.line_to(up(r1.tcp_world(), TC_PULL)), hold=0.2)
     # into its stand on MiR 1: the vertical part down the stand's bore
     psi = 180.0 - math.degrees(math.atan2(TC_DIR[1], TC_DIR[0]))
     tc_dest_local = rig.at1("tc", CT.TC_Z, R((0, 0, 1), psi) @ T((-TC_XY[0], -TC_XY[1], -(M.RIM - 40.0))))
     tc_dest = rig.mir_local(rig.ma, tc_dest_local)
-    Gtc_dest = tc_dest @ np.linalg.inv(AB.WT(np.eye(4))) @ Gtc
+    Gtc_dest = tc_dest @ np.linalg.inv(sc.world(g("tc"))) @ r1.tcp_world()
     c.step(cap, 1.6, r1.joint_to(Tw=up(Gtc_dest, 100.0)), cam_to=C_MIR1)
     c.step(cap, 1.0, r1.line_to(Gtc_dest))
-    r1.release("amr")
+    c.step(cap, 0.3, rig.tw_close_to(r1, 20.0))
+    c.give(r1, tw_tool, "amr")
     sc.gmat[g("tc")] = tc_dest_local
-    c.step(cap, 0.3, r1.grip_to(0.0))
-    c.gauges(**{f"Arm 1 {FT}": ""})
-    c.step(cap, 0.5, r1.line_to(back(r1.tcp_world(), 80.0)))
+    c.gauges(**{"F/T 1": ""})
+    c.step(cap, 0.5, r1.line_to(up(r1.tcp_world(), 90.0)))
+    c.stow(r1, "tw", cap, cam=C_MIR1)
+    c.rows = {"Furnace": "cold, lid open, door open"}
+    c.gauges()
     # 2 ------------------------------------------------------------------------ the pin and the lever
     c.k = 2
     cap = ("The lever's safety pin out by its T-handle, the rod still seated on the nozzle (pulled with the rod "
-           "lifted, the rod would drop 12 mm onto the nozzle), then the lever swung up on its post, as in chapter 2.")
+           "lifted, the rod would drop 12 mm onto the nozzle), then the lever swung up 70 deg on its post.")
     pin_g = np.array([0.0, CT.PIN_GRIP_Y, M.Z_ARM])
     Gp = tcp_down(pin_g, 180.0)
     c.step(cap, 1.6, both(r1.joint_to(Tw=back(Gp, 110.0)), r1.grip_to(0.0)), cam_to=C_FUR2,
@@ -355,24 +466,24 @@ def clip_out():
     piv_w = tuple(AB.W(M.PIVOT))
 
     def lev_pose(u):
-        return R(tuple(M.LEVER_AXIS), M.ARM_RAISED * u, piv_w) @ lev_g
-    q_lev = AA.arc_branch(r1, sc, lev_g, lev_pose, lambda u: AA.lever(sc, M.ARM_RAISED * u), GRIP_LEVER,
+        return R(tuple(M.LEVER_AXIS), LEVER_UP * u, piv_w) @ lev_g
+    q_lev = AA.arc_branch(r1, sc, lev_g, lev_pose, lambda u: AA.lever(sc, LEVER_UP * u), GRIP_LEVER,
                           ("holder_arm",), back=100.0)
     c.step(cap, 1.5, both(r1.joint_to(q1=r1.solve(back(lev_g, 100.0), q_lev)), r1.grip_to(0.0)), cam_to=C_FUR2)
     c.step(cap, 0.6, r1.line_to(lev_g))
     c.step(cap, 0.3, r1.grip_to(GRIP_LEVER))
     r1.events.append((sc.n, "grasp", g("arm"), None))
     arc = AA.follow(r1, [lev_pose(u) for u in np.linspace(0.0, 1.0, 12)])
-    c.step(cap, 1.6, both(arc, lambda u: AA.lever(sc, M.ARM_RAISED * u)))
+    c.step(cap, 1.6, both(arc, lambda u: AA.lever(sc, LEVER_UP * u)))
     c.step(cap, 0.3, r1.grip_to(0.0))
     r1.events.append((sc.n, "release", g("arm"), None))
-    c.step(cap, 0.5, r1.line_to(back(r1.tcp_world(), 100.0)))
+    c.step(cap, 0.6, r1.line_to(up(r1.tcp_world(), 110.0)))
     # 3 ------------------------------------------------------------------------ the rod
     c.k = 3
     cap = ("The sealing rod out by its brass adapter, never by the graphite, lifted straight up so the ball tip "
            "doesn't drag on the crucible's floor, and stood in its holder on MiR250 1 (SOP 1, 6).")
     Gr = tcp_down((0.0, 0.0, ROD_GRIP_Z), 180.0)
-    c.step(cap, 1.5, both(r1.joint_to(Tw=back(Gr, 110.0)), r1.grip_to(0.0)), cam_to=C_FUR,
+    c.step(cap, 1.5, both(joint_w3(r1, back(Gr, 110.0), then=Gr), r1.grip_to(0.0)), cam_to=C_FUR,
            labels=[("sealing rod: brass adapter", tuple(AB.W((0, 0, ROD_GRIP_Z + 20))), (0.30, 0.28))])
     c.step(cap, 0.7, r1.line_to(Gr))
     c.step(cap, 0.3, r1.grip_to(GRIP_ROD))
@@ -404,7 +515,7 @@ def clip_out():
         upd2 = None
         if name == "top_ins":
             upd2 = both(r2.joint_to(Tw=k_pre), r2.grip_to(0.0))
-        c.step(cap, 1.7, both(r1.joint_to(Tw=up(Gn, 120.0)), upd2), cam_to=C_FUR)
+        c.step(cap, 1.7, both(joint_w3(r1, up(Gn, 120.0), then=Gn), upd2), cam_to=C_FUR)
         if name == "top_ins":
             c.step(cap, 0.6, both(r1.line_to(Gn), r2.line_to(Gk)))
             c.step(cap, 0.3, r2.grip_to(GRIP))
@@ -413,7 +524,7 @@ def clip_out():
             c.step(cap, 0.7, r1.line_to(Gn))
         c.take(r1, g(name))
         c.step(cap, 0.35, lambda u: sc.show(sc.members("cr:nt_needles"), u), hold=0.1)
-        c.gauges(**{f"Arm 1 {FT}": f"lift {'2.6' if name == 'top_ins' else '1.4'} N (the part's weight, est.)"})
+        c.gauges(**{"F/T 1": f"lift {'2.6' if name == 'top_ins' else '1.4'} N (the part's weight, est.)"})
         c.step(cap, 1.0 if name == "top_ins" else 1.6, r1.line_to(up(r1.tcp_world(), lift)))
         seat = rig.seat_local(name)
         dest = AB.WT(seat)
@@ -423,7 +534,7 @@ def clip_out():
         c.step(cap, 0.3, lambda u: sc.show(sc.members("cr:nt_needles"), 1.0 - u))
         c.give(r1, "cr:nt", "rp")
         sc.gmat[g(name)] = seat
-        c.gauges(**{f"Arm 1 {FT}": ""})
+        c.gauges(**{"F/T 1": ""})
         c.step(cap, 0.6, r1.line_to(up(r1.tcp_world(), 90.0)))
     # arm 2: the key up and over to the door, while arm 1 puts the needle tool back
     k_door = AB.WT(T((-185.0, 0.0, 1080.0)) @ R((0, 0, 1), 180.0))
@@ -448,31 +559,31 @@ def clip_out():
     for grp in ("nut", "seal"):                      # the key takes them: 0.3 mm off the roof as it holds
         rb.reparent(g(grp), "cr:key_sock")
         sc.gmat[g(grp)] = T((0.0, 0.0, -0.3)) @ sc.gmat[g(grp)]
-    c.gauges(**{f"Arm 2 {FT}": "up 3 N on the nut (assumed)"})
+    c.gauges(**{"F/T 2": "up 3 N on the nut (assumed)"})
     Gc = rig.tool_tcp("cr:cg", CT.CG_HANDLE, world=AB.WT(T((0.0, 0.0, M.RIM))))
-    c.step(cap, 1.8, r1.joint_to(Tw=up(Gc, 120.0)), cam_to=C_FUR)
+    c.step(cap, 1.8, joint_w3(r1, up(Gc, 120.0), -170.0, 170.0, then=Gc), cam_to=C_FUR)
     c.step(cap, 1.0, r1.line_to(Gc))
     c.step(cap, 0.5, lambda u: rig.cg_jaws(1.0 - u))
     c.take(r1, g("crucible"))
-    cap = ("Breakaway: arm 1 turns the crucible a twelfth of a turn anticlockwise while the key holds the nut. The "
+    cap = (f"Breakaway: arm 1 turns the crucible {BRK_DEG:.0f} deg anticlockwise while the key holds the nut. The "
            f"wrist's {FT} reads the torque that breaks the joint, and the number is logged every time.")
 
     def brk(u):
         tq = TQ_BREAK * min(1.0, u / 0.25) if u < 0.4 else TQ_BREAK * max(0.15, 1.0 - (u - 0.4) * 2.5)
-        c.gauges(**{f"Arm 1 {FT}": f"Mz {tq:.2f} N m (breakaway, logged)"})
-    rot = turn_path(r1, AB.W((0.0, 0.0, M.RIM)), 30.0)
+        c.gauges(**{"F/T 1": f"Mz {tq:.2f} N m (breakaway, logged)"})
+    rot = turn_path(r1, AB.W((0.0, 0.0, M.RIM)), BRK_DEG)
     c.step(cap, 1.8, both(rot, brk), hold=0.5, cam_to=C_FUR2)
     cap = ("Then the key's motor spins the nut off: 6.9 more turns of 2.0 mm pitch, the cup following it down, while "
            "arm 1 holds the crucible still. The nut and the seal stay in the cup, so nothing falls.")
-    turns = NUT_TURNS - 30.0 / 360.0
+    turns = NUT_TURNS - BRK_DEG / 360.0
     z_off = M.NUT_Z[0] - 0.3 - turns * PITCH          # the nut's top at the shank's end: off the thread
 
     def spin(u):
         rig.sock(-360.0 * turns * u)
         c.gauges(**{"Nut": f"{turns * u:.1f} of {turns:.1f} turns off",
-                    f"Arm 1 {FT}": "Mz 0.04 N m (thread drag)"})
-    c.step(cap, 4.5, both(r2.line_to(rig.key_tcp(world=rig.key_model(z_off))), spin), cam_to=C_NUT)
-    c.gauges(**{f"Arm 1 {FT}": "Mz 0.00 N m: off"})
+                    "F/T 1": "Mz 0.04 N m (thread drag)"})
+    c.step(cap, 4.5, both(r2.line_to(rig.key_tcp(world=rig.key_model(z_off))), spin), cam_to=C_NUT, still=True)
+    c.gauges(**{"F/T 1": "Mz 0.00 N m: off"})
     c.step(cap, 0.6, r2.line_to(rig.key_tcp(world=rig.key_model(z_off - 6.0))), hold=0.4)
     # 6 ------------------------------------------------------------------------ out: the key, the crucible
     c.k = 6
@@ -487,7 +598,7 @@ def clip_out():
     sc.gmat["cr:key"] = CT.key_rack_pose()
     c.step(cap, 0.3, r2.grip_to(0.0))
     c.step(cap, 0.6, r2.line_to(back(r2.tcp_world(), 100.0)))
-    cr_dest_local = rig.at1("cradle", CT.CRADLE_Z - M.CRUCIBLE_BASE, R((0, 0, 1), 30.0))
+    cr_dest_local = rig.at1("cradle", CT.CRADLE_Z - M.CRUCIBLE_BASE, R((0, 0, 1), BRK_DEG))
     cr_dest = rig.mir_local(rig.ma, cr_dest_local)
     Gc_dest = cr_dest @ np.linalg.inv(sc.world(g("crucible"))) @ r1.tcp_world()
     c.step(cap, 2.2, both(r1.joint_to(Tw=up(Gc_dest, 120.0)), r2.joint_to(q1=r2.solve(back(Gk, 220.0)))),
@@ -496,7 +607,7 @@ def clip_out():
     c.step(cap, 0.4, lambda u: rig.cg_jaws(u))
     c.give(r1, "cr:cg", "amr")
     sc.gmat[g("crucible")] = cr_dest_local
-    c.gauges(**{f"Arm 1 {FT}": "", f"Arm 2 {FT}": "", "Nut": "in the key's cup, with the seal"})
+    c.gauges(**{"F/T 1": "", "F/T 2": "", "Nut": "in the key's cup, with the seal"})
     # 7 ------------------------------------------------------------------------ the nozzle checked
     c.k = 7
     cap = ("On the way: the cradle's backlight under the nozzle and the wrist camera looking down the bore. Light "
@@ -516,7 +627,7 @@ def clip_out():
     c.stow(r1, "cg", cap, cam=C_MIR1)
     c.fetch(r1, "nt", cap, cam=C_MIR1)
     Gn = rig.tool_tcp("cr:nt", CT.NT_HANDLE, world=AB.WT(T((0.0, 0.0, M.CRUCIBLE_BASE))))
-    c.step(cap, 1.8, r1.joint_to(Tw=up(Gn, 120.0)), cam_to=C_FUR)
+    c.step(cap, 1.8, joint_w3(r1, up(Gn, 120.0), then=Gn), cam_to=C_FUR)
     c.step(cap, 1.2, r1.line_to(Gn))
     c.take(r1, g("bottom_ins"))
     c.step(cap, 0.35, lambda u: sc.show(sc.members("cr:nt_needles"), u))
@@ -531,9 +642,7 @@ def clip_out():
     c.step(cap, 0.6, r1.line_to(up(r1.tcp_world(), 120.0)))
     c.stow(r1, "nt", cap, cam=C_WIDE)
     c.gauges(Furnace="empty: ready for the vacuum")
-    c.step(cap, 1.6, both(r1.joint_to(q1=np.radians(np.asarray(AA.A.PARK_DEG, float))),
-                          r2.joint_to(q1=np.radians(np.asarray(AA.A.PARK_DEG, float)))), hold=1.2, still=True,
-           cam_to=C_WIDE)
+    c.step(cap, 1.0, r1.line_to(up(r1.tcp_world(), 120.0)), hold=1.4, cam_to=C_WIDE)
     return AB.finish(sc)
 
 
@@ -557,7 +666,7 @@ def clip_in():
     sc.gmat[g("tc")] = rig.at1("tc", CT.TC_Z, R((0, 0, 1), psi) @ T((-TC_XY[0], -TC_XY[1], -(M.RIM - 40.0))))
     sc.parent["cr:pin"] = "amr"
     sc.gmat["cr:pin"] = rig.at1("pin", CT.PIN_Z - M.Z_ARM, T((0.0, 1.0, 0.0)))
-    AA.lever(sc, M.ARM_RAISED)
+    AA.lever(sc, LEVER_UP)
     for grp in ("nut", "seal"):
         sc.parent[g(grp)] = "cr:key_sock"
         sc.gmat[g(grp)] = R((0, 0, 1), -180.0) @ T((0.0, 0.0, -M.NUT_Z[0]))
@@ -583,12 +692,15 @@ def clip_in():
     c.step(cap, 0.8, both(r1.line_to(up(r1.tcp_world(), 220.0)), r2.line_to(up(r2.tcp_world(), 110.0))))
     Gn = rig.tool_tcp("cr:nt", CT.NT_HANDLE, world=AB.WT(T((0.0, 0.0, M.CRUCIBLE_BASE))))
     k_door = rig.key_model(1080.0, -185.0)
-    c.step(cap, 2.0, both(r1.joint_to(Tw=up(Gn, 200.0)), r2.joint_to(Tw=rig.key_tcp(world=k_door))), cam_to=C_FUR)
+    c.step(cap, 2.0, both(joint_w3(r1, up(Gn, 200.0), then=Gn), r2.joint_to(Tw=rig.key_tcp(world=k_door))),
+           cam_to=C_FUR)
     c.step(cap, 1.5, r1.line_to(Gn))
     c.step(cap, 0.3, lambda u: sc.show(sc.members("cr:nt_needles"), 1.0 - u))
     c.give(r1, "cr:nt", "rp")
     sc.gmat[g("bottom_ins")] = np.eye(4)
     c.step(cap, 1.3, r1.line_to(up(r1.tcp_world(), 220.0)))
+    c.rows = {"Furnace": "cold, empty; lid, door open"}
+    c.gauges()
     c.stow(r1, "nt", cap, cam=C_MIR1)
     # 2 ------------------------------------------------------------------------ the nozzle into the holder
     c.k = 2
@@ -600,7 +712,7 @@ def clip_in():
     for n in rig.lights:
         sc.ambient[n] = 1.0
     c.step(cap, 0.7, r1.line_to(Gtw))
-    c.step(cap, 0.35, both(r1.grip_to(CT.gripper_gap_close(24.0)), lambda u: rig.tw_jaws(1.0 - u)))
+    c.step(cap, 0.35, rig.tw_close_to(r1, 16.0))
     tool = c.take(r1, g("nozzle"))
     c.gauges(Nozzle="light through the bore: open (D405)")
     c.step(cap, 0.7, r1.line_to(up(r1.tcp_world(), 60.0)), hold=0.4,
@@ -612,7 +724,7 @@ def clip_in():
     Gtw_in = noz_in @ np.linalg.inv(sc.world(g("nozzle"))) @ r1.tcp_world()
     c.step(cap, 1.2, r1.joint_to(Tw=up(Gtw_in, 50.0)))
     c.step(cap, 0.8, r1.line_to(Gtw_in))
-    c.step(cap, 0.3, both(r1.grip_to(GRIP), lambda u: rig.tw_jaws(u)))
+    c.step(cap, 0.3, rig.tw_close_to(r1, 20.0))
     c.give(r1, tool, "amr")
     sc.gmat[g("nozzle")] = np.linalg.inv(sc.world("amr")) @ noz_in
     noz0 = sc.gmat[g("nozzle")].copy()
@@ -641,7 +753,7 @@ def clip_in():
     Gc_over = over @ np.linalg.inv(cr_now) @ r1.tcp_world()
     c.step(cap, 1.6, r1.joint_to(Tw=up(Gc_over, 60.0)), cam_to=C_CRADLE)
     c.step(cap, 1.0, r1.line_to(Gc_over))
-    c.gauges(**{f"Arm 1 {FT}": "Fz -2 N (a light push, assumed)"})
+    c.gauges(**{"F/T 1": "Fz -2 N (a light push, assumed)"})
     c.step(cap, 1.0, lambda u: rig.fix_turn(-45.0 * u))
     c.step(cap, 0.25, r1.line_to(up(r1.tcp_world(), -0.3)), hold=0.2)
     cap = (f"The fixture turns the holder {HOLDER_TURNS:g} turns while arm 1 holds the crucible still: the thread's "
@@ -650,7 +762,7 @@ def clip_in():
 
     def tq_h(u):
         tq = 0.03 if u < 0.85 else 0.03 + (TQ_HOLDER - 0.03) * (u - 0.85) / 0.15
-        c.gauges(**{f"Arm 1 {FT}": f"Mz {tq:.2f} N m" + (" (limit: stop)" if u > 0.99 else ""),
+        c.gauges(**{"F/T 1": f"Mz {tq:.2f} N m" + (" (limit: stop)" if u > 0.99 else ""),
                     "Holder": f"{HOLDER_TURNS * u:.2f} of {HOLDER_TURNS:g} turns"})
     fwd = r1.line_to(up(r1.tcp_world(), -HOLDER_TURNS * HOLDER_PITCH))
     c.step(cap, 3.2, both(fwd, tq_h, lambda u: rig.fix_turn(-45.0 + 360.0 * HOLDER_TURNS * u)), hold=0.4)
@@ -663,7 +775,7 @@ def clip_in():
     Rz = T((x_, y_, 0.0)) @ R((0, 0, 1), fdeg) @ T((-x_, -y_, 0.0))
     c.step(cap, 0.4, lambda u: [sc.gmat.__setitem__(gr, Rz @ T((s_ * CT.FIX_JAW_OPEN * u, 0.0, 0.0)))
                                 for s_, gr in ((-1, "cr:fix_a"), (1, "cr:fix_b"))])
-    c.gauges(**{f"Arm 1 {FT}": "", "Holder": f"on, {TQ_HOLDER:.2f} N m"})
+    c.gauges(**{"F/T 1": "", "Holder": f"on, {TQ_HOLDER:.2f} N m"})
     c.step(cap, 1.0, r1.line_to(up(r1.tcp_world(), 120.0)))
     # 4 ------------------------------------------------------------------------ into the furnace
     c.k = 4
@@ -672,7 +784,7 @@ def clip_in():
     cr_now = sc.world(g("crucible"))
     seated = AB.WT(R((0, 0, 1), ALIGN_DEG))
     Gseat = seated @ np.linalg.inv(cr_now) @ r1.tcp_world()
-    c.step(cap, 2.2, r1.joint_to(Tw=up(Gseat, 300.0)), cam_to=C_FUR)
+    c.step(cap, 2.2, joint_w3(r1, up(Gseat, 300.0), -220.0, 180.0, then=Gseat), cam_to=C_FUR)
     c.step(cap, 1.6, r1.line_to(up(Gseat, 30.0)))
     spiral = []
     for s in np.linspace(0.0, 1.0, 25):
@@ -681,7 +793,7 @@ def clip_in():
         spiral.append(T((rr * math.cos(a), rr * math.sin(a), 30.0 * (1.0 - s))) @ Gseat)
 
     def fz(u):
-        c.gauges(**{f"Arm 1 {FT}": f"Fz {-2.0 - 4.0 * math.sin(math.pi * min(1.0, u * 1.3)):.1f} N (limit 8 N, "
+        c.gauges(**{"F/T 1": f"Fz {-2.0 - 4.0 * math.sin(math.pi * min(1.0, u * 1.3)):.1f} N (limit 8 N, "
                                    "assumed)" if u < 0.97 else "Fz -1.0 N: seated"})
     c.step(cap, 2.4, both(AA.follow(r1, spiral), fz), hold=0.3,
            labels=[("crucible, holder's shank through the floor", tuple(AB.W((0.0, -40.0, 1250.0))), (0.66, 0.28))])
@@ -693,7 +805,7 @@ def clip_in():
            labels=[("nut key, arm 2", tuple(AB.W((-200.0, 0.0, 1090.0))), (0.18, 0.60)),
                    ("graphite nut and lower seal", tuple(AB.W((0.0, -30.0, 1090.0))), (0.60, 0.70))])
     c.step(cap, 1.6, r2.line_to(rig.key_tcp(world=rig.key_model(1080.0))))
-    c.gauges(**{f"Arm 2 {FT}": "Fz +3 N up (assumed)"})
+    c.gauges(**{"F/T 2": "Fz +3 N up (assumed)"})
     c.step(cap, 1.2, r2.line_to(rig.key_tcp(world=rig.key_model(1095.5))))
     cap = ("Thread finding, as a person does it: a light push up, the nut turned backwards until it drops onto the "
            "thread's start, then forward. Torque that rises in the first turn would mean a crossed thread: back off.")
@@ -705,7 +817,7 @@ def clip_in():
 
     def run_up(u):
         rig.sock(-120.0 + 360.0 * run * u)
-        c.gauges(Nut=f"{run * u:.1f} turns on", **{f"Arm 1 {FT}": "Mz 0.03 N m (drag)"})
+        c.gauges(Nut=f"{run * u:.1f} turns on", **{"F/T 1": "Mz 0.03 N m (drag)"})
     c.step(cap, 5.0, both(r2.line_to(rig.key_tcp(world=rig.key_model(1096.0 + run * PITCH))), run_up), hold=0.3)
     # 6 ------------------------------------------------------------------------ TC hole to the port, snug
     c.k = 6
@@ -723,7 +835,7 @@ def clip_in():
 
     def align(u):
         c.gauges(**{"TC hole": f"{M.TC_ANGLE + ALIGN_DEG * (1 - u):.0f} deg (port at {M.TC_ANGLE:.0f} deg)",
-                    f"Arm 1 {FT}": f"Mz {0.04 + 0.08 * u:.2f} N m"})
+                    "F/T 1": f"Mz {0.04 + 0.08 * u:.2f} N m"})
     rot = turn_path(r1, AB.W((0.0, 0.0, M.RIM)), -ALIGN_DEG)
     c.step(cap, 2.0, both(rot, align, r2.line_to(rig.key_tcp(world=rig.key_model(1096.0 + run * PITCH + 0.5)))),
            hold=0.4)
@@ -734,9 +846,9 @@ def clip_in():
         rig.sock(-120.0 + 360.0 * (run + 0.15 * u))
         tq = 0.04 + (TQ_NUT - 0.04) * u ** 2
         c.gauges(Nut=f"{run + 0.25 + 0.15 * u:.2f} turns: snug" if u > 0.98 else f"{run + 0.25 + 0.15 * u:.2f} turns",
-                 **{f"Arm 1 {FT}": f"Mz {tq:.2f} N m" + (" (limit: stop)" if u > 0.98 else "")})
+                 **{"F/T 1": f"Mz {tq:.2f} N m" + (" (limit: stop)" if u > 0.98 else "")})
     c.step(cap, 1.0, lambda u: AA.set_cut(sc, u, rig.fur_cut), cam_to=C_NUT)
-    c.step(cap, 1.6, both(r2.line_to(rig.key_tcp(world=rig.key_model(1109.8))), snug), hold=0.6)
+    c.step(cap, 1.6, both(r2.line_to(rig.key_tcp(world=rig.key_model(1109.8))), snug), hold=0.6, still=True)
     # 7 ------------------------------------------------------------------------ the key out, the gripper off
     c.k = 7
     cap = ("The key lets go: it drops 16 mm so the pins and the cup clear the nut, and goes out through the door. "
@@ -747,7 +859,7 @@ def clip_in():
     swap(r1, g("crucible"))
     c.step(cap, 0.6, lambda u: rig.cg_jaws(u))
     c.give(r1, "cr:cg", "rp")
-    c.gauges(**{f"Arm 1 {FT}": "", f"Arm 2 {FT}": "", "Nut": f"snug, {TQ_NUT:.2f} N m"})
+    c.gauges(**{"F/T 1": "", "F/T 2": "", "Nut": f"snug, {TQ_NUT:.2f} N m"})
     c.step(cap, 1.4, both(r2.line_to(rig.key_tcp(world=rig.key_model(1080.0))), r1.line_to(up(r1.tcp_world(), 90.0))))
     c.step(cap, 1.4, both(r2.line_to(rig.key_tcp(world=k_door)), lambda u: AA.set_cut(sc, 1.0 - u, rig.fur_cut)),
            cam_to=C_WIDE)
@@ -773,7 +885,7 @@ def clip_in():
         c.step(cap, 1.0, r1.line_to(up(r1.tcp_world(), 150.0)))
         Gd = rig.tool_tcp("cr:nt", CT.NT_HANDLE, world=AB.WT(T((0.0, 0.0, face))))
         lift = 175.0 if name == "side_ins" else 70.0
-        c.step(cap, 2.0, r1.joint_to(Tw=up(Gd, lift)), cam_to=C_FUR)
+        c.step(cap, 2.0, joint_w3(r1, up(Gd, lift), then=Gd), cam_to=C_FUR)
         c.step(cap, 1.6 if name == "side_ins" else 1.0, r1.line_to(Gd))
         c.step(cap, 0.3, lambda u: sc.show(sc.members("cr:nt_needles"), 1.0 - u))
         c.give(r1, "cr:nt", "rp")
@@ -782,22 +894,23 @@ def clip_in():
     c.stow(r1, "nt", cap, cam=C_MIR1)
     cap = ("The thermocouple back in: down through the top ring's hole into the crucible's wall hole, now at the "
            "back right. Without it the HMI raises \"master temperature sensor\" (T1 38:06).")
-    src = sc.world(g("tc"))
-    Gt_src = src @ np.linalg.inv(AB.WT(np.eye(4))) @ tcp_down(TC_GRIP, TC_SPIN)
-    c.step(cap, 1.6, both(r1.joint_to(Tw=back(Gt_src, 100.0)), r1.grip_to(0.0)), cam_to=C_MIR1)
+    c.fetch(r1, "tw", cap, cam=C_MIR1)
+    Gt_src = rig.tool_tcp("cr:tw", CT.TW_HANDLE, world=tw_on_tc(sc.world(g("tc"))))
+    c.step(cap, 1.6, r1.joint_to(Tw=up(Gt_src, 90.0)), cam_to=C_MIR1)
     c.step(cap, 0.7, r1.line_to(Gt_src))
-    c.step(cap, 0.3, r1.grip_to(GRIP_TC))
-    r1.grasp(g("tc"))
+    c.step(cap, 0.3, rig.tw_close_to(r1, 3.8))
+    tw_tool = c.take(r1, g("tc"))
     c.step(cap, 1.0, r1.line_to(up(r1.tcp_world(), 100.0)))
-    Gt = tcp_down(TC_GRIP, TC_SPIN)
-    c.step(cap, 1.8, r1.joint_to(Tw=up(Gt, TC_PULL)), cam_to=C_FUR)
-    c.gauges(**{f"Arm 1 {FT}": "push 0.5 N (stop at 2 N: the sheath cracks; assumed)"})
+    Gt = AB.WT(np.eye(4)) @ np.linalg.inv(sc.world(g("tc"))) @ r1.tcp_world()
+    c.step(cap, 1.8, joint_w3(r1, up(Gt, TC_PULL), then=Gt), cam_to=C_FUR)
+    c.gauges(**{"F/T 1": "push 0.5 N (stop at 2 N: the sheath cracks; assumed)"})
     c.step(cap, 1.4, r1.line_to(Gt))
-    r1.release("rp")
+    c.step(cap, 0.3, rig.tw_close_to(r1, 20.0))
+    c.give(r1, tw_tool, "rp")
     sc.gmat[g("tc")] = np.eye(4)
-    c.step(cap, 0.3, r1.grip_to(0.0))
-    c.gauges(**{f"Arm 1 {FT}": ""})
-    c.step(cap, 0.5, r1.line_to(back(r1.tcp_world(), 80.0)))
+    c.gauges(**{"F/T 1": ""})
+    c.step(cap, 0.5, r1.line_to(up(r1.tcp_world(), 90.0)))
+    c.stow(r1, "tw", cap, cam=C_MIR1)
     # 9 ------------------------------------------------------------------------ the rod, the lever, the pin
     c.k = 9
     cap = ("The sealing rod by its adapter, lowered until the force rises a little and the ball centres on the "
@@ -811,26 +924,28 @@ def clip_in():
     c.step(cap, 0.3, r1.grip_to(GRIP_ROD))
     r1.grasp(g("rod"))
     c.step(cap, 1.2, r1.line_to(up(r1.tcp_world(), 140.0)))
-    c.step(cap, 2.0, r1.joint_to(Tw=up(Gr, 180.0)), cam_to=C_FUR)
-    c.gauges(**{f"Arm 1 {FT}": "Fz -1.5 N on the seat (assumed)"})
+    c.step(cap, 2.0, joint_w3(r1, up(Gr, 180.0), then=Gr), cam_to=C_FUR)
+    c.gauges(**{"F/T 1": "Fz -1.5 N on the seat (assumed)"})
     c.step(cap, 1.8, r1.line_to(Gr))
     r1.release(g("arm_base"))
     sc.gmat[g("rod")] = np.eye(4)
     c.step(cap, 0.3, r1.grip_to(0.0))
-    c.gauges(**{f"Arm 1 {FT}": ""})
+    c.gauges(**{"F/T 1": ""})
     c.step(cap, 0.5, r1.line_to(back(r1.tcp_world(), 100.0)))
     lev_g = tcp_down((AA.LEVER_AT, 0.0, M.Z_ARM), 90.0)
     piv_w = tuple(AB.W(M.PIVOT))
 
     def lev_pose(u):
-        return R(tuple(M.LEVER_AXIS), M.ARM_RAISED * (1.0 - u), piv_w) @ lev_g
+        return R(tuple(M.LEVER_AXIS), LEVER_UP * (1.0 - u), piv_w) @ lev_g
     g_up = lev_pose(0.0)
-    c.step(cap, 1.5, r1.joint_to(Tw=back(g_up, 100.0)), cam_to=C_FUR2)
+    q_lev = AA.arc_branch(r1, sc, g_up, lev_pose, lambda u: AA.lever(sc, LEVER_UP * (1.0 - u)), GRIP_LEVER,
+                          ("holder_arm",), back=100.0)
+    c.step(cap, 1.5, r1.joint_to(q1=r1.solve(up(g_up, 110.0), q_lev)), cam_to=C_FUR2)
     c.step(cap, 0.6, r1.line_to(g_up))
     c.step(cap, 0.3, r1.grip_to(GRIP_LEVER))
     r1.events.append((sc.n, "grasp", g("arm"), None))
     arc = AA.follow(r1, [lev_pose(u) for u in np.linspace(0.0, 1.0, 12)])
-    c.step(cap, 1.6, both(arc, lambda u: AA.lever(sc, M.ARM_RAISED * (1.0 - u))))
+    c.step(cap, 1.6, both(arc, lambda u: AA.lever(sc, LEVER_UP * (1.0 - u))))
     c.step(cap, 0.3, r1.grip_to(0.0))
     r1.events.append((sc.n, "release", g("arm"), None))
     c.step(cap, 0.5, r1.line_to(back(r1.tcp_world(), 100.0)))
@@ -854,9 +969,7 @@ def clip_in():
     c.gauges(**{"SEALING ROD": "down (PLC input; or the arm on the HMI key)"})
     c.step(cap, 0.8, lambda u: AA.rod_lift(sc, -1.5 * u), hold=0.4)
     c.gauges(Furnace="rebuilt: next, the stack, the charge, the lid (leak check)")
-    c.step(cap, 1.8, both(r1.joint_to(q1=np.radians(np.asarray(AA.A.PARK_DEG, float))),
-                          r2.joint_to(q1=np.radians(np.asarray(AA.A.PARK_DEG, float)))), hold=1.4, still=True,
-           cam_to=C_WIDE)
+    c.step(cap, 1.0, r1.line_to(up(r1.tcp_world(), 120.0)), hold=1.4, cam_to=C_FUR2)
     return AB.finish(sc)
 
 

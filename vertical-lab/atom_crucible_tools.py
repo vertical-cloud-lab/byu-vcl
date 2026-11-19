@@ -11,7 +11,7 @@ origin at its working point; the handle's grasp point at HANDLE[name] along z (t
         3 mm stroke, 30 deg, 4-6 bar) on a hub at r 54.5, so they land on all three pieces' top faces (top ring
         r 50-98, side tube r 38-59, bottom ring r 16-59). The hub and heads stay inside r 59, 1 mm off the coil.
     TW  tweezers for the nozzle: two thin jaws that close 2 mm each when the 2F-85 squeezes the handle's halves.
-    KEY nut key for arm 2: a 300 mm bar through the chamber's door, a gear head under the nut, a turning socket with six
+    KEY nut key for arm 2: a 500 mm bar through the chamber's door, a gear head under the nut, a turning socket with six
         pins for the nut's six notches and a cup (rim 3 mm over the nut) that keeps the nut and the lower seal
         captive. A small gearmotor in the bar turns the socket through a bevel pair (ours: to choose).
     fixtures on MiR 1: the crucible cradle (a soft seat, a well for the holder's shank, a backlight under the nozzle),
@@ -49,7 +49,8 @@ CG_HANDLE = 82.0
 NT_HANDLE = 195.0
 TW_HANDLE = 170.0
 NT_R = 54.5                          # the needle heads' radius
-KEY_GRASP = np.array([300.0, 0.0, 10.0])   # the key's handle centre, key frame (x from the socket to the handle)
+KEY_GRASP = np.array([500.0, 0.0, 10.0])   # the key's handle centre, key frame (x from the socket to the handle):
+                                           # 500 mm out, so arm 2's wrist stays left of the open lid (x -375..-152)
 
 
 def cyl(c, d, r, h, res=40):
@@ -125,9 +126,9 @@ def key_meshes() -> dict:
     """The nut key, key frame: origin on the socket's axis at the cup floor's top (the nut's bottom face), z up, x from
     the socket to the handle. Parts: body (bar, gear head, motor, handle) and sock (floor, cup wall, six pins, mark)."""
     out = {"key head": (cyl((0, 0, -30), (0, 0, 1), 22.0, 25.0, 48), DARK, "body"),
-           "key bar": (box(16.0, 314.0, -12.0, 12.0, -28.0, -10.0), ALU, "body"),
+           "key bar": (box(16.0, 514.0, -12.0, 12.0, -28.0, -10.0), ALU, "body"),
            "key motor": (cyl((190, 0, -19), (1, 0, 0), 13.0, 70.0, 32), DARK, "body"),
-           "key handle": (box(280.0, 320.0, -HANDLE_T / 2, HANDLE_T / 2, -10.0, 30.0), DARK, "body")}
+           "key handle": (box(480.0, 520.0, -HANDLE_T / 2, HANDLE_T / 2, -10.0, 30.0), DARK, "body")}
     floor = C.lathe([(13.0, -5.0), (37.0, -5.0), (37.0, 0.0), (13.0, 0.0)], res=64)
     wall = tube(31.0, 36.0, 0.0, 15.0)
     out["key floor"] = (floor, ALU, "sock")
@@ -155,8 +156,8 @@ def pin_meshes(z_arm: float) -> dict:
 
 # ----------------------------------------------------------------------------------------------- fixtures
 # MiR-local positions (x, y) on MiR 1's cabinet top (the arm's base is at (0, 130)) and the heights things sit at
-LAY1 = dict(rod=(-330.0, 130.0), tc=(-300.0, -45.0), cradle=(-200.0, -155.0), cg=(-60.0, -215.0),
-            fixture=(73.0, -212.0), nozzle=(185.0, -167.0), nt=(287.0, -71.0), tw=(342.0, 57.0),
+LAY1 = dict(rod=(-330.0, 130.0), tc=(-300.0, -45.0), cradle=(-200.0, -155.0), cg=(342.0, 57.0),
+            fixture=(73.0, -212.0), nozzle=(185.0, -167.0), nt=(287.0, -71.0), tw=(-60.0, -215.0),
             pin=(345.0, 191.0))
 # every fixture on its own bearing from the arm's base, ~350 mm out, so the upper arm reaching one passes no other
 # the insulation's seats are on a small parts table beside the machine (model frame), not on the MiR
@@ -174,7 +175,7 @@ NOZ_Z = CAB_TOP + 30.0               # the nozzle's bottom in its tray
 PIN_Z = CAB_TOP + 110.0              # the pin's axis on its rest
 # MiR 2: the key on two posts
 KEY_AT2 = (-120.0, -175.0)           # the socket's axis, MiR-local; the bar along local +x
-KEY_Z2 = CAB_TOP + 45.0
+KEY_Z2 = CAB_TOP + 51.0
 
 
 def fixtures1(lay=LAY1) -> dict:
@@ -205,8 +206,14 @@ def fixtures1(lay=LAY1) -> dict:
     at("nozzle tray", C.lathe([(13.5, NOZ_Z), (22.0, NOZ_Z), (22.0, NOZ_Z + 5.0), (13.5, NOZ_Z + 5.0)], res=48)
        .merge(C.lathe([(3.0, CAB_TOP), (22.0, CAB_TOP), (22.0, NOZ_Z), (3.0, NOZ_Z)], res=48)), FIX, "nozzle")
     at("nozzle light", tube(0.0, 3.0, NOZ_Z - 2.0, NOZ_Z - 0.6, res=24), LIGHT, "nozzle")
-    at("stand tw", box(-20.0, 20.0, -12.0, 12.0, CAB_TOP, TW_Z + 50.0 - 0.2).merge(
-        box(-12.5, -12.0, -5.5, 5.5, TW_Z + 50.0 - 0.2, TW_Z + 50.0)), FIX, "tw")
+    # the tweezers' stand: a slot the jaws hang in (x +-12.5, y +-5.5), its two side walls under the bridge's ends
+    ztop = TW_Z + 50.0 - 0.2
+    stand = box(-20.0, 20.0, -12.0, 12.0, CAB_TOP, TW_Z - 3.0)
+    for x0, x1 in ((-20.0, -12.5), (12.5, 20.0)):
+        stand = stand.merge(box(x0, x1, -12.0, 12.0, TW_Z - 3.0, ztop))
+    for y0, y1 in ((-12.0, -5.5), (5.5, 12.0)):
+        stand = stand.merge(box(-12.5, 12.5, y0, y1, TW_Z - 3.0, ztop - 10.0))
+    at("stand tw", stand, FIX, "tw")
     return out
 
 
@@ -246,7 +253,7 @@ def key_posts() -> pv.PolyData:
     """Two posts under the key's bar on MiR 2 (MiR-local): the key frame at KEY_AT2, KEY_Z2, bar along local +x."""
     x, y = KEY_AT2
     m = None
-    for kx in (100.0, 230.0):
+    for kx in (60.0, 150.0, 400.0):            # clear of the motor (key x 190-260)
         p = box(x + kx - 12, x + kx + 12, y - 16, y + 16, CAB_TOP, KEY_Z2 - 28.0)
         m = p if m is None else m.merge(p)
     return m
