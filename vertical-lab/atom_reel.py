@@ -5,6 +5,7 @@ the PR's sheets and BoM.
     python3 atom_reel.py            # out/mp4/atom_reel.mp4 + out/atom/atom_reel.json (chapters), from the clips there are
     python3 atom_reel.py sheet      # out/atom/atom_sheet.png: one still per clip
     python3 atom_reel.py bom        # out/atom/bom.json and out/atom/bom.md from out/atom/*_bom.json
+    python3 atom_reel.py gifs       # any clip GIF over 4.9 MB re-made from its MP4 (640 px, fewer frames, lossy)
     python3 atom_reel.py upload     # the reel to the lab's YouTube channel, unlisted, chapters in the description,
                                     # recorded in out/youtube.json (needs YOUTUBE_UPLOAD_TOKEN_PICKLE_B64)
 
@@ -158,6 +159,27 @@ def bom():
     print(f"{len(rows)} BoM rows; to buy, priced: ${tot_buy:,.0f}")
 
 
+def gifs(limit_mb: float = 4.9):
+    """Re-make a clip's GIF from its MP4 when scene.py's GIF came out too big for GitHub to show comfortably."""
+    for c, _, _ in ORDER:
+        g, m = OUT / f"{c}.gif", OUT / "mp4" / f"{c}.mp4"
+        if not g.exists() or not m.exists() or g.stat().st_size <= limit_mb * 1e6:
+            continue
+        for w, fps, lossy in ((640, 6, 80), (560, 5, 100), (480, 4, 120)):
+            tmp = Path(tempfile.mkdtemp(prefix="atom_gif_"))
+            pal = tmp / "pal.png"
+            vf = f"fps={fps},scale={w}:-2:flags=lanczos"
+            subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(m), "-vf", vf + ",palettegen=max_colors=128",
+                            str(pal)], check=True)
+            raw = tmp / "raw.gif"
+            subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(m), "-i", str(pal), "-lavfi",
+                            vf + " [x]; [x][1:v] paletteuse=dither=bayer:bayer_scale=4", str(raw)], check=True)
+            subprocess.run(["gifsicle", "-O3", f"--lossy={lossy}", "-o", str(g), str(raw)], check=True)
+            if g.stat().st_size <= limit_mb * 1e6:
+                break
+        print(f"{g.name}: {g.stat().st_size / 1e6:.2f} MB ({w} px, {fps} fps)")
+
+
 def upload():
     import datetime as dt
     import youtube_upload as YU
@@ -205,4 +227,4 @@ def upload():
 
 
 if __name__ == "__main__":
-    {"sheet": sheet, "bom": bom, "upload": upload}.get(sys.argv[1] if len(sys.argv) > 1 else "", reel)()
+    {"sheet": sheet, "bom": bom, "upload": upload, "gifs": gifs}.get(sys.argv[1] if len(sys.argv) > 1 else "", reel)()
