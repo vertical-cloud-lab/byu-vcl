@@ -52,11 +52,13 @@ def get_youtube_service(access="upload"):
     return build("youtube", "v3", credentials=get_credentials(access))
 
 
-def upload_video(path, title, description="", privacy="private", tags=None, category_id="28", access="upload"):
+def upload_video(path, title, description="", privacy="public", tags=None, category_id="28", access="upload"):
     """Resumable upload; returns the new video id.
 
-    Defaults to private: uploads from an unaudited API project are locked
-    private by YouTube regardless, so publish from YouTube Studio.
+    Defaults to public (sgbaird, 2026-11-19); pass privacy="unlisted" or
+    "private" when asked. Since 2026-11-02 YouTube no longer locks uploads
+    from unverified API projects to private, so the privacy set here sticks:
+    https://developers.google.com/youtube/v3/revision_history
     """
     youtube = get_youtube_service(access)
     body = {
@@ -81,7 +83,7 @@ def main():
     up.add_argument("path")
     up.add_argument("--title", required=True)
     up.add_argument("--description", default="")
-    up.add_argument("--privacy", choices=["private", "unlisted", "public"], default="private")
+    up.add_argument("--privacy", choices=["private", "unlisted", "public"], default="public")
     args = parser.parse_args()
     access = "full" if args.full else "upload"
 
