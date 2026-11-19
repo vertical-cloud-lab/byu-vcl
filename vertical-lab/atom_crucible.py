@@ -54,8 +54,7 @@ LEVER_UP = 70.0      # the sealing-rod lever swung up 70 deg (chapter 2: 95): si
 ROD_SPIN = 270.0     # the rod taken with the fingers across the lever's line (y) and the wrist camera to the left
 TURN = R((0, 0, 1), 90.0)   # the tools sit turned 90 deg on what they hold, so at the furnace the 2F-85's fingers
                             # close along y, across the lever (at 70 deg its eye is 63 mm from the axis)
-TURN_OUT, ROD_SPIN_OUT = np.eye(4), 180.0   # the out clip as rendered and audited (see notes: these two
-                                            # would clear its 10 lever frames; not re-rendered in time)
+TURN_OUT, ROD_SPIN_OUT = TURN, ROD_SPIN     # the out clip with the in clip's settings (second render, 02:30)
 MIR2_AT = (-960.0, -40.0, 90.0)   # MiR250 2: 200 mm further left than PARK["left"], so the key's handle (500 mm out)
                                   # is a comfortable reach and arm 2's wrist stays clear of the open lid (x -375..-152)
 FT = "FT 300-S"                                       # the wrist sensor on both arms (notes: why)
@@ -125,6 +124,10 @@ class Rig:
         self.r1, self.r2 = self.ma.rb, self.mb.rb
         for rb in (self.r1, self.r2):
             fresh_after(rb)
+        if os.environ.get("CRUCIBLE_AUDIT_RENDER") and not AUDIT:     # one pass: render and audit together
+            import collide
+            sc.auditor = collide.Auditor(sc)
+            sc.frame_hooks.append(sc.auditor)
         AB.set_joints(sc, lid=1.0, latch=1.0, loop=1.0, bolt=1.0, door=1.0, clamp0=1.0, clamp1=1.0)
         for grp in ("stack", "connector", "sonotrode", "booster", "transducer", "plate", "upper", "cover"):
             sc.show(sc.members(g(grp)), 0.0)              # the stack is out, on its bench
@@ -649,7 +652,10 @@ def clip_out():
     c.stow(r1, "nt", cap, cam=C_WIDE)
     c.gauges(Furnace="empty: ready for the vacuum")
     c.step(cap, 1.0, r1.line_to(up(r1.tcp_world(), 120.0)), hold=1.4, cam_to=C_WIDE)
-    return AB.finish(sc)
+    out = AB.finish(sc)
+    if getattr(sc, "auditor", None) is not None and not AUDIT:
+        sc.auditor.save()
+    return out
 
 
 def clip_in():

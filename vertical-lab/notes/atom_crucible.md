@@ -167,24 +167,27 @@ Bench test to set them (before anything goes near the machine):
 
 ### Checked
 
-- **Clips** (1280 x 720, 15 fps): `atom_crucible_out` 1696 frames, 113.1 s; `atom_crucible_in` 2201 frames, 146.7 s.
+- **Clips** (1280 x 720): `atom_crucible_out` 1176 frames at 10 fps, 117.6 s (second render, 02:28-02:43, rendered and
+  audited in one pass); `atom_crucible_in` 2201 frames at 15 fps, 146.7 s.
   MP4s in `out/mp4/`, stills `out/atom_crucible_*_still.png` (the nut spun off; the nut snug), sub-step JSONs in
   `out/`. The GIFs are resampled from the MP4s to 512 px at 3 fps (out) and 2.5 fps (in) to stay under 4.9 MB; the
   scene's own were 9.6 and 9.0 MB.
 - **`ARM_AUDIT=1`, the code as rendered** (FCL on every frame; arm, gripper and held part against everything, held
-  parts at most 1.5 mm into their own fixtures; movers checked): out **13 of 1520** checked frames in collision, in
-  **16 of 1992**; 0 mover contacts in either (`out/collisions/atom_crucible_{out,in}.json`). Not 0. What is left:
+  parts at most 1.5 mm into their own fixtures; movers checked): out **0 of 1027** checked frames in collision and 0
+  mover contacts (second render, with the two fixes below); in **16 of 1992**, 0 mover contacts, as rendered
+  (`out/collisions/atom_crucible_{out,in}.json`). The out clip's first render (15 fps) had 13 of 1520. Its causes,
+  and what is left in the in clip:
   - The 2F-85's fingers graze the sealing-rod lever, 3-12 mm, at 70 deg its eye is 63 mm from the axis (out: 10
     frames, at the rod's grasp and two tool approaches; in: 3 frames, as the crucible gripper lifts off). In the in
     clip the tools now sit turned 90 deg on what they hold and the rod is taken across the lever's line (`TURN`,
-    `ROD_SPIN`), which cleared it there; the same two settings would clear the out clip's 10 frames, but there was no
-    render slot left to re-render it, so the out clip keeps the settings it was rendered with (`TURN_OUT`,
-    `ROD_SPIN_OUT`).
+    `ROD_SPIN`), which cleared it there; the out clip's second render uses the same two settings, which cleared its
+    10 frames. The in clip keeps its 3.
   - The tweezers' jaws read 12 mm into MiR250 1's group for 1-2 frames as they leave or enter their stand (out 3,
-    in 6). FCL on the jaws against the stand alone, at rest and 4 and 8 mm up, finds nothing; the body they meet was
-    not found in time.
-  - In the in clip the nozzle holder reads 12 mm into MiR250 1's group for 7 frames when the crucible, now on it,
-    leaves the holder fixture. Not found in time either.
+    in 6), and in the in clip the nozzle holder reads 12 mm into it for 7 frames as it leaves its fixture. Found
+    after the first renders: `props.mir250()`'s cabinet spans z 300-800, and this chapter put MiR250 1's fixtures on
+    780 (`CAB_TOP`), so everything stood 20 mm into the cabinet top; the jaws (bottom at 788) and the holder's shank
+    (end at 793) are the parts that reach it. `CAB_TOP` is now 800, which cleared the out clip's 3 frames. The in
+    clip was rendered and audited with 780 (`CRUCIBLE_CAB_TOP=780` repeats it), so its 13 such frames remain in it.
 - The lid moved to the left during this work (e3b1428); everything above was re-audited after it. Before that move
   the out clip was at 8 frames; the move brought it to 218 (the wrist in the lid, the fingers on the open latch
   lever) and the fixes below took it to 13.

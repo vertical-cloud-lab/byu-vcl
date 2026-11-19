@@ -21,6 +21,7 @@ origin at its working point; the handle's grasp point at HANDLE[name] along z (t
 from __future__ import annotations
 
 import math
+import os
 
 import numpy as np
 import pyvista as pv
@@ -39,7 +40,9 @@ LIGHT = (1.0, 0.98, 0.85)
 
 HANDLE_T = 28.0                      # the handle's thickness across the pads (mm)
 GRIP_TOOL = 0.70                     # ur_arm.gripper_fk: pads 28.1 mm apart
-CAB_TOP = 780.0                      # props: MIR H 300 + CAB_H 480: the cabinet's top, MiR-local z
+CAB_TOP = float(os.environ.get("CRUCIBLE_CAB_TOP", "800"))   # props.mir250: the cabinet spans z 300-800 (its
+                                     # 20 mm plate included); the first atom_crucible_in render used 780, 20 mm
+                                     # into it, which is what the audit's "in amr 12 mm" hits were: =780 repeats it
 
 # ----------------------------------------------------------------------------------------------- the crucible
 CR_R = 37.65                         # the crucible's outside radius (model.py: CRUCIBLE_ID / 2 + CRUCIBLE_WALL)
