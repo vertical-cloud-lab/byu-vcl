@@ -167,8 +167,27 @@ Bench test to set them (before anything goes near the machine):
 
 ### Checked
 
-- `ARM_AUDIT=1` on both clips (FCL on every frame; arm, gripper and held part against everything, held parts only
-  1.5 mm into their own fixtures, movers checked): see the PR comment for the numbers of this commit.
+- **Clips** (1280 x 720, 15 fps): `atom_crucible_out` 1696 frames, 113.1 s; `atom_crucible_in` 2201 frames, 146.7 s.
+  MP4s in `out/mp4/`, stills `out/atom_crucible_*_still.png` (the nut spun off; the nut snug), sub-step JSONs in
+  `out/`. The GIFs are resampled from the MP4s to 512 px at 3 fps (out) and 2.5 fps (in) to stay under 4.9 MB; the
+  scene's own were 9.6 and 9.0 MB.
+- **`ARM_AUDIT=1`, the code as rendered** (FCL on every frame; arm, gripper and held part against everything, held
+  parts at most 1.5 mm into their own fixtures; movers checked): out **13 of 1520** checked frames in collision, in
+  **16 of 1992**; 0 mover contacts in either (`out/collisions/atom_crucible_{out,in}.json`). Not 0. What is left:
+  - The 2F-85's fingers graze the sealing-rod lever, 3-12 mm, at 70 deg its eye is 63 mm from the axis (out: 10
+    frames, at the rod's grasp and two tool approaches; in: 3 frames, as the crucible gripper lifts off). In the in
+    clip the tools now sit turned 90 deg on what they hold and the rod is taken across the lever's line (`TURN`,
+    `ROD_SPIN`), which cleared it there; the same two settings would clear the out clip's 10 frames, but there was no
+    render slot left to re-render it, so the out clip keeps the settings it was rendered with (`TURN_OUT`,
+    `ROD_SPIN_OUT`).
+  - The tweezers' jaws read 12 mm into MiR250 1's group for 1-2 frames as they leave or enter their stand (out 3,
+    in 6). FCL on the jaws against the stand alone, at rest and 4 and 8 mm up, finds nothing; the body they meet was
+    not found in time.
+  - In the in clip the nozzle holder reads 12 mm into MiR250 1's group for 7 frames when the crucible, now on it,
+    leaves the holder fixture. Not found in time either.
+- The lid moved to the left during this work (e3b1428); everything above was re-audited after it. Before that move
+  the out clip was at 8 frames; the move brought it to 218 (the wrist in the lid, the fingers on the open latch
+  lever) and the fixes below took it to 13.
 - Clearances by construction: crucible gripper r 46 against the coil's r 60; needle hub r 58 and heads r 59 against
   r 60; the key's bar top 3 mm under the door opening's top edge, its cup rim 1 mm under the chamber's roof; nut bore
   r 12.3 and seal bore r 12.5 on the r 12 shank; holder head r 15 in the bottom ring's r 16 bore.

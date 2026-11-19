@@ -1,0 +1,839 @@
+{
+ "name": "atom_crucible_in",
+ "fps": 15,
+ "n_frames": 2201,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/9",
+   "caption": "The rebuild (SOP 3): the furnace is empty and vacuumed, the crucible back in its cradle, BN coated and dry. First the bottom ring, lowered into the coil on the needle tool. Arm 2 takes the nut key, the nut and the lower seal in its cup.",
+   "start_frame": 0,
+   "end_frame": 34
+  },
+  {
+   "label": "1/9",
+   "caption": "The rebuild (SOP 3): the furnace is empty and vacuumed, the crucible back in its cradle, BN coated and dry. First the bottom ring, lowered into the coil on the needle tool. Arm 2 takes the nut key, the nut and the lower seal in its cup.",
+   "start_frame": 35,
+   "end_frame": 44
+  },
+  {
+   "label": "1/9",
+   "caption": "The rebuild (SOP 3): the furnace is empty and vacuumed, the crucible back in its cradle, BN coated and dry. First the bottom ring, lowered into the coil on the needle tool. Arm 2 takes the nut key, the nut and the lower seal in its cup.",
+   "start_frame": 45,
+   "end_frame": 50
+  },
+  {
+   "label": "1/9",
+   "caption": "The rebuild (SOP 3): the furnace is empty and vacuumed, the crucible back in its cradle, BN coated and dry. First the bottom ring, lowered into the coil on the needle tool. Arm 2 takes the nut key, the nut and the lower seal in its cup.",
+   "start_frame": 51,
+   "end_frame": 61
+  },
+  {
+   "label": "1/9",
+   "caption": "The rebuild (SOP 3): the furnace is empty and vacuumed, the crucible back in its cradle, BN coated and dry. First the bottom ring, lowered into the coil on the needle tool. Arm 2 takes the nut key, the nut and the lower seal in its cup.",
+   "start_frame": 62,
+   "end_frame": 86
+  },
+  {
+   "label": "1/9",
+   "caption": "The rebuild (SOP 3): the furnace is empty and vacuumed, the crucible back in its cradle, BN coated and dry. First the bottom ring, lowered into the coil on the needle tool. Arm 2 takes the nut key, the nut and the lower seal in its cup.",
+   "start_frame": 87,
+   "end_frame": 99
+  },
+  {
+   "label": "1/9",
+   "caption": "The rebuild (SOP 3): the furnace is empty and vacuumed, the crucible back in its cradle, BN coated and dry. First the bottom ring, lowered into the coil on the needle tool. Arm 2 takes the nut key, the nut and the lower seal in its cup.",
+   "start_frame": 100,
+   "end_frame": 105
+  },
+  {
+   "label": "1/9",
+   "caption": "The rebuild (SOP 3): the furnace is empty and vacuumed, the crucible back in its cradle, BN coated and dry. First the bottom ring, lowered into the coil on the needle tool. Arm 2 takes the nut key, the nut and the lower seal in its cup.",
+   "start_frame": 106,
+   "end_frame": 118
+  },
+  {
+   "label": "1/9",
+   "caption": "The rebuild (SOP 3): the furnace is empty and vacuumed, the crucible back in its cradle, BN coated and dry. First the bottom ring, lowered into the coil on the needle tool. Arm 2 takes the nut key, the nut and the lower seal in its cup.",
+   "start_frame": 119,
+   "end_frame": 149
+  },
+  {
+   "label": "1/9",
+   "caption": "The rebuild (SOP 3): the furnace is empty and vacuumed, the crucible back in its cradle, BN coated and dry. First the bottom ring, lowered into the coil on the needle tool. Arm 2 takes the nut key, the nut and the lower seal in its cup.",
+   "start_frame": 150,
+   "end_frame": 172
+  },
+  {
+   "label": "1/9",
+   "caption": "The rebuild (SOP 3): the furnace is empty and vacuumed, the crucible back in its cradle, BN coated and dry. First the bottom ring, lowered into the coil on the needle tool. Arm 2 takes the nut key, the nut and the lower seal in its cup.",
+   "start_frame": 173,
+   "end_frame": 177
+  },
+  {
+   "label": "1/9",
+   "caption": "The rebuild (SOP 3): the furnace is empty and vacuumed, the crucible back in its cradle, BN coated and dry. First the bottom ring, lowered into the coil on the needle tool. Arm 2 takes the nut key, the nut and the lower seal in its cup.",
+   "start_frame": 178,
+   "end_frame": 198
+  },
+  {
+   "label": "1/9",
+   "caption": "The rebuild (SOP 3): the furnace is empty and vacuumed, the crucible back in its cradle, BN coated and dry. First the bottom ring, lowered into the coil on the needle tool. Arm 2 takes the nut key, the nut and the lower seal in its cup.",
+   "start_frame": 199,
+   "end_frame": 221
+  },
+  {
+   "label": "1/9",
+   "caption": "The rebuild (SOP 3): the furnace is empty and vacuumed, the crucible back in its cradle, BN coated and dry. First the bottom ring, lowered into the coil on the needle tool. Arm 2 takes the nut key, the nut and the lower seal in its cup.",
+   "start_frame": 222,
+   "end_frame": 232
+  },
+  {
+   "label": "1/9",
+   "caption": "The rebuild (SOP 3): the furnace is empty and vacuumed, the crucible back in its cradle, BN coated and dry. First the bottom ring, lowered into the coil on the needle tool. Arm 2 takes the nut key, the nut and the lower seal in its cup.",
+   "start_frame": 233,
+   "end_frame": 237
+  },
+  {
+   "label": "1/9",
+   "caption": "The rebuild (SOP 3): the furnace is empty and vacuumed, the crucible back in its cradle, BN coated and dry. First the bottom ring, lowered into the coil on the needle tool. Arm 2 takes the nut key, the nut and the lower seal in its cup.",
+   "start_frame": 238,
+   "end_frame": 246
+  },
+  {
+   "label": "2/9",
+   "caption": "The nozzle on tweezers: over its tray's backlight the wrist camera checks for light through the bore, then it goes into the holder's recess white side up (SOP 2-3). A closed one waits for a person to drill.",
+   "start_frame": 247,
+   "end_frame": 269
+  },
+  {
+   "label": "2/9",
+   "caption": "The nozzle on tweezers: over its tray's backlight the wrist camera checks for light through the bore, then it goes into the holder's recess white side up (SOP 2-3). A closed one waits for a person to drill.",
+   "start_frame": 270,
+   "end_frame": 279
+  },
+  {
+   "label": "2/9",
+   "caption": "The nozzle on tweezers: over its tray's backlight the wrist camera checks for light through the bore, then it goes into the holder's recess white side up (SOP 2-3). A closed one waits for a person to drill.",
+   "start_frame": 280,
+   "end_frame": 285
+  },
+  {
+   "label": "2/9",
+   "caption": "The nozzle on tweezers: over its tray's backlight the wrist camera checks for light through the bore, then it goes into the holder's recess white side up (SOP 2-3). A closed one waits for a person to drill.",
+   "start_frame": 286,
+   "end_frame": 296
+  },
+  {
+   "label": "2/9",
+   "caption": "The nozzle on tweezers: over its tray's backlight the wrist camera checks for light through the bore, then it goes into the holder's recess white side up (SOP 2-3). A closed one waits for a person to drill.",
+   "start_frame": 297,
+   "end_frame": 318
+  },
+  {
+   "label": "2/9",
+   "caption": "The nozzle on tweezers: over its tray's backlight the wrist camera checks for light through the bore, then it goes into the holder's recess white side up (SOP 2-3). A closed one waits for a person to drill.",
+   "start_frame": 319,
+   "end_frame": 329
+  },
+  {
+   "label": "2/9",
+   "caption": "The nozzle on tweezers: over its tray's backlight the wrist camera checks for light through the bore, then it goes into the holder's recess white side up (SOP 2-3). A closed one waits for a person to drill.",
+   "start_frame": 330,
+   "end_frame": 335
+  },
+  {
+   "label": "2/9",
+   "caption": "The nozzle on tweezers: over its tray's backlight the wrist camera checks for light through the bore, then it goes into the holder's recess white side up (SOP 2-3). A closed one waits for a person to drill.",
+   "start_frame": 336,
+   "end_frame": 351
+  },
+  {
+   "label": "2/9",
+   "caption": "The nozzle on tweezers: over its tray's backlight the wrist camera checks for light through the bore, then it goes into the holder's recess white side up (SOP 2-3). A closed one waits for a person to drill.",
+   "start_frame": 352,
+   "end_frame": 370
+  },
+  {
+   "label": "2/9",
+   "caption": "The nozzle on tweezers: over its tray's backlight the wrist camera checks for light through the bore, then it goes into the holder's recess white side up (SOP 2-3). A closed one waits for a person to drill.",
+   "start_frame": 371,
+   "end_frame": 383
+  },
+  {
+   "label": "2/9",
+   "caption": "The nozzle on tweezers: over its tray's backlight the wrist camera checks for light through the bore, then it goes into the holder's recess white side up (SOP 2-3). A closed one waits for a person to drill.",
+   "start_frame": 384,
+   "end_frame": 388
+  },
+  {
+   "label": "2/9",
+   "caption": "The nozzle on tweezers: over its tray's backlight the wrist camera checks for light through the bore, then it goes into the holder's recess white side up (SOP 2-3). A closed one waits for a person to drill.",
+   "start_frame": 389,
+   "end_frame": 393
+  },
+  {
+   "label": "2/9",
+   "caption": "The nozzle on tweezers: over its tray's backlight the wrist camera checks for light through the bore, then it goes into the holder's recess white side up (SOP 2-3). A closed one waits for a person to drill.",
+   "start_frame": 394,
+   "end_frame": 403
+  },
+  {
+   "label": "2/9",
+   "caption": "The nozzle on tweezers: over its tray's backlight the wrist camera checks for light through the bore, then it goes into the holder's recess white side up (SOP 2-3). A closed one waits for a person to drill.",
+   "start_frame": 404,
+   "end_frame": 426
+  },
+  {
+   "label": "2/9",
+   "caption": "The nozzle on tweezers: over its tray's backlight the wrist camera checks for light through the bore, then it goes into the holder's recess white side up (SOP 2-3). A closed one waits for a person to drill.",
+   "start_frame": 427,
+   "end_frame": 437
+  },
+  {
+   "label": "2/9",
+   "caption": "The nozzle on tweezers: over its tray's backlight the wrist camera checks for light through the bore, then it goes into the holder's recess white side up (SOP 2-3). A closed one waits for a person to drill.",
+   "start_frame": 438,
+   "end_frame": 442
+  },
+  {
+   "label": "2/9",
+   "caption": "The nozzle on tweezers: over its tray's backlight the wrist camera checks for light through the bore, then it goes into the holder's recess white side up (SOP 2-3). A closed one waits for a person to drill.",
+   "start_frame": 443,
+   "end_frame": 451
+  },
+  {
+   "label": "3/9",
+   "caption": "The holder fixture's soft jaws close on the shank. Arm 1 takes the crucible on its gripper's three soft jaws and sets it on the holder: a light push, turned back until the thread drops in, then forward.",
+   "start_frame": 452,
+   "end_frame": 460
+  },
+  {
+   "label": "3/9",
+   "caption": "The holder fixture's soft jaws close on the shank. Arm 1 takes the crucible on its gripper's three soft jaws and sets it on the holder: a light push, turned back until the thread drops in, then forward.",
+   "start_frame": 461,
+   "end_frame": 483
+  },
+  {
+   "label": "3/9",
+   "caption": "The holder fixture's soft jaws close on the shank. Arm 1 takes the crucible on its gripper's three soft jaws and sets it on the holder: a light push, turned back until the thread drops in, then forward.",
+   "start_frame": 484,
+   "end_frame": 493
+  },
+  {
+   "label": "3/9",
+   "caption": "The holder fixture's soft jaws close on the shank. Arm 1 takes the crucible on its gripper's three soft jaws and sets it on the holder: a light push, turned back until the thread drops in, then forward.",
+   "start_frame": 494,
+   "end_frame": 499
+  },
+  {
+   "label": "3/9",
+   "caption": "The holder fixture's soft jaws close on the shank. Arm 1 takes the crucible on its gripper's three soft jaws and sets it on the holder: a light push, turned back until the thread drops in, then forward.",
+   "start_frame": 500,
+   "end_frame": 510
+  },
+  {
+   "label": "3/9",
+   "caption": "The holder fixture's soft jaws close on the shank. Arm 1 takes the crucible on its gripper's three soft jaws and sets it on the holder: a light push, turned back until the thread drops in, then forward.",
+   "start_frame": 511,
+   "end_frame": 533
+  },
+  {
+   "label": "3/9",
+   "caption": "The holder fixture's soft jaws close on the shank. Arm 1 takes the crucible on its gripper's three soft jaws and sets it on the holder: a light push, turned back until the thread drops in, then forward.",
+   "start_frame": 534,
+   "end_frame": 548
+  },
+  {
+   "label": "3/9",
+   "caption": "The holder fixture's soft jaws close on the shank. Arm 1 takes the crucible on its gripper's three soft jaws and sets it on the holder: a light push, turned back until the thread drops in, then forward.",
+   "start_frame": 549,
+   "end_frame": 555
+  },
+  {
+   "label": "3/9",
+   "caption": "The holder fixture's soft jaws close on the shank. Arm 1 takes the crucible on its gripper's three soft jaws and sets it on the holder: a light push, turned back until the thread drops in, then forward.",
+   "start_frame": 556,
+   "end_frame": 571
+  },
+  {
+   "label": "3/9",
+   "caption": "The holder fixture's soft jaws close on the shank. Arm 1 takes the crucible on its gripper's three soft jaws and sets it on the holder: a light push, turned back until the thread drops in, then forward.",
+   "start_frame": 572,
+   "end_frame": 596
+  },
+  {
+   "label": "3/9",
+   "caption": "The holder fixture's soft jaws close on the shank. Arm 1 takes the crucible on its gripper's three soft jaws and sets it on the holder: a light push, turned back until the thread drops in, then forward.",
+   "start_frame": 597,
+   "end_frame": 612
+  },
+  {
+   "label": "3/9",
+   "caption": "The holder fixture's soft jaws close on the shank. Arm 1 takes the crucible on its gripper's three soft jaws and sets it on the holder: a light push, turned back until the thread drops in, then forward.",
+   "start_frame": 613,
+   "end_frame": 628
+  },
+  {
+   "label": "3/9",
+   "caption": "The holder fixture's soft jaws close on the shank. Arm 1 takes the crucible on its gripper's three soft jaws and sets it on the holder: a light push, turned back until the thread drops in, then forward.",
+   "start_frame": 629,
+   "end_frame": 635
+  },
+  {
+   "label": "3/9",
+   "caption": "The fixture turns the holder 1.25 turns while arm 1 holds the crucible still: the thread's engagement is tiny, \"you just barely have to get it on\" (T8 2:26). It stops at the torque limit, 0.40 N m (assumed): overtightening cracks the holder's thread (T9 33:45).",
+   "start_frame": 636,
+   "end_frame": 689
+  },
+  {
+   "label": "3/9",
+   "caption": "The fixture turns the holder 1.25 turns while arm 1 holds the crucible still: the thread's engagement is tiny, \"you just barely have to get it on\" (T8 2:26). It stops at the torque limit, 0.40 N m (assumed): overtightening cracks the holder's thread (T9 33:45).",
+   "start_frame": 690,
+   "end_frame": 696
+  },
+  {
+   "label": "3/9",
+   "caption": "The fixture turns the holder 1.25 turns while arm 1 holds the crucible still: the thread's engagement is tiny, \"you just barely have to get it on\" (T8 2:26). It stops at the torque limit, 0.40 N m (assumed): overtightening cracks the holder's thread (T9 33:45).",
+   "start_frame": 697,
+   "end_frame": 712
+  },
+  {
+   "label": "4/9",
+   "caption": "Straight down into the coil, the holder's shank through the bottom ring, the furnace floor and the chamber's top plate, with a light force limit. If it hangs, a small spiral search finds the bore.",
+   "start_frame": 713,
+   "end_frame": 746
+  },
+  {
+   "label": "4/9",
+   "caption": "Straight down into the coil, the holder's shank through the bottom ring, the furnace floor and the chamber's top plate, with a light force limit. If it hangs, a small spiral search finds the bore.",
+   "start_frame": 747,
+   "end_frame": 771
+  },
+  {
+   "label": "4/9",
+   "caption": "Straight down into the coil, the holder's shank through the bottom ring, the furnace floor and the chamber's top plate, with a light force limit. If it hangs, a small spiral search finds the bore.",
+   "start_frame": 772,
+   "end_frame": 811
+  },
+  {
+   "label": "5/9",
+   "caption": "Arm 1 holds the crucible still. Arm 2's key comes in through the door with the nut and the lower seal in its cup and lifts them under the shank; the seal slides on first (SOP 3, T1 47:02).",
+   "start_frame": 812,
+   "end_frame": 827
+  },
+  {
+   "label": "5/9",
+   "caption": "Arm 1 holds the crucible still. Arm 2's key comes in through the door with the nut and the lower seal in its cup and lifts them under the shank; the seal slides on first (SOP 3, T1 47:02).",
+   "start_frame": 828,
+   "end_frame": 852
+  },
+  {
+   "label": "5/9",
+   "caption": "Arm 1 holds the crucible still. Arm 2's key comes in through the door with the nut and the lower seal in its cup and lifts them under the shank; the seal slides on first (SOP 3, T1 47:02).",
+   "start_frame": 853,
+   "end_frame": 871
+  },
+  {
+   "label": "5/9",
+   "caption": "Thread finding, as a person does it: a light push up, the nut turned backwards until it drops onto the thread's start, then forward. Torque that rises in the first turn would mean a crossed thread: back off.",
+   "start_frame": 872,
+   "end_frame": 887
+  },
+  {
+   "label": "5/9",
+   "caption": "Thread finding, as a person does it: a light push up, the nut turned backwards until it drops onto the thread's start, then forward. Torque that rises in the first turn would mean a crossed thread: back off.",
+   "start_frame": 888,
+   "end_frame": 894
+  },
+  {
+   "label": "5/9",
+   "caption": "The key's motor runs the nut up 6.5 turns, 2.0 mm a turn (13 mm), the arm rising with it. Arm 1 holds the crucible still and reads the thread's drag.",
+   "start_frame": 895,
+   "end_frame": 973
+  },
+  {
+   "label": "6/9",
+   "caption": "Before the nut is tight, arm 1 turns the crucible 90 deg clockwise so its thermocouple hole comes to the port at the back right; the key holds the nut, so the joint draws up 0.5 mm (SOP 3).",
+   "start_frame": 974,
+   "end_frame": 989
+  },
+  {
+   "label": "6/9",
+   "caption": "Before the nut is tight, arm 1 turns the crucible 90 deg clockwise so its thermocouple hole comes to the port at the back right; the key holds the nut, so the joint draws up 0.5 mm (SOP 3).",
+   "start_frame": 990,
+   "end_frame": 1025
+  },
+  {
+   "label": "6/9",
+   "caption": "Snug: the key turns the nut the last 54 deg to the torque limit, 0.30 N m (assumed: our bench-test start value), read by arm 1's FT 300-S through the crucible. Then it stops.",
+   "start_frame": 1026,
+   "end_frame": 1041
+  },
+  {
+   "label": "6/9",
+   "caption": "Snug: the key turns the nut the last 54 deg to the torque limit, 0.30 N m (assumed: our bench-test start value), read by arm 1's FT 300-S through the crucible. Then it stops.",
+   "start_frame": 1042,
+   "end_frame": 1074
+  },
+  {
+   "label": "7/9",
+   "caption": "The key lets go: it drops 16 mm so the pins and the cup clear the nut, and goes out through the door. Arm 1 opens its jaws and lifts the gripper off; the crucible stays on its thread.",
+   "start_frame": 1075,
+   "end_frame": 1087
+  },
+  {
+   "label": "7/9",
+   "caption": "The key lets go: it drops 16 mm so the pins and the cup clear the nut, and goes out through the door. Arm 1 opens its jaws and lifts the gripper off; the crucible stays on its thread.",
+   "start_frame": 1088,
+   "end_frame": 1097
+  },
+  {
+   "label": "7/9",
+   "caption": "The key lets go: it drops 16 mm so the pins and the cup clear the nut, and goes out through the door. Arm 1 opens its jaws and lifts the gripper off; the crucible stays on its thread.",
+   "start_frame": 1098,
+   "end_frame": 1119
+  },
+  {
+   "label": "7/9",
+   "caption": "The key lets go: it drops 16 mm so the pins and the cup clear the nut, and goes out through the door. Arm 1 opens its jaws and lifts the gripper off; the crucible stays on its thread.",
+   "start_frame": 1120,
+   "end_frame": 1141
+  },
+  {
+   "label": "7/9",
+   "caption": "The key lets go: it drops 16 mm so the pins and the cup clear the nut, and goes out through the door. Arm 1 opens its jaws and lifts the gripper off; the crucible stays on its thread.",
+   "start_frame": 1142,
+   "end_frame": 1164
+  },
+  {
+   "label": "7/9",
+   "caption": "The key lets go: it drops 16 mm so the pins and the cup clear the nut, and goes out through the door. Arm 1 opens its jaws and lifts the gripper off; the crucible stays on its thread.",
+   "start_frame": 1165,
+   "end_frame": 1175
+  },
+  {
+   "label": "7/9",
+   "caption": "The key lets go: it drops 16 mm so the pins and the cup clear the nut, and goes out through the door. Arm 1 opens its jaws and lifts the gripper off; the crucible stays on its thread.",
+   "start_frame": 1176,
+   "end_frame": 1180
+  },
+  {
+   "label": "7/9",
+   "caption": "The key lets go: it drops 16 mm so the pins and the cup clear the nut, and goes out through the door. Arm 1 opens its jaws and lifts the gripper off; the crucible stays on its thread.",
+   "start_frame": 1181,
+   "end_frame": 1189
+  },
+  {
+   "label": "7/9",
+   "caption": "The key lets go: it drops 16 mm so the pins and the cup clear the nut, and goes out through the door. Arm 1 opens its jaws and lifts the gripper off; the crucible stays on its thread.",
+   "start_frame": 1190,
+   "end_frame": 1220
+  },
+  {
+   "label": "7/9",
+   "caption": "The key lets go: it drops 16 mm so the pins and the cup clear the nut, and goes out through the door. Arm 1 opens its jaws and lifts the gripper off; the crucible stays on its thread.",
+   "start_frame": 1221,
+   "end_frame": 1233
+  },
+  {
+   "label": "7/9",
+   "caption": "The key lets go: it drops 16 mm so the pins and the cup clear the nut, and goes out through the door. Arm 1 opens its jaws and lifts the gripper off; the crucible stays on its thread.",
+   "start_frame": 1234,
+   "end_frame": 1238
+  },
+  {
+   "label": "7/9",
+   "caption": "The key lets go: it drops 16 mm so the pins and the cup clear the nut, and goes out through the door. Arm 1 opens its jaws and lifts the gripper off; the crucible stays on its thread.",
+   "start_frame": 1239,
+   "end_frame": 1251
+  },
+  {
+   "label": "8/9",
+   "caption": "The side tube down over the crucible on the needle tool (0.6 mm inside, 1 mm to the coil), then the top ring. In the model the thermocouple runs through the top ring, so it goes in last (SOP: side, TC, top).",
+   "start_frame": 1252,
+   "end_frame": 1274
+  },
+  {
+   "label": "8/9",
+   "caption": "The side tube down over the crucible on the needle tool (0.6 mm inside, 1 mm to the coil), then the top ring. In the model the thermocouple runs through the top ring, so it goes in last (SOP: side, TC, top).",
+   "start_frame": 1275,
+   "end_frame": 1284
+  },
+  {
+   "label": "8/9",
+   "caption": "The side tube down over the crucible on the needle tool (0.6 mm inside, 1 mm to the coil), then the top ring. In the model the thermocouple runs through the top ring, so it goes in last (SOP: side, TC, top).",
+   "start_frame": 1285,
+   "end_frame": 1290
+  },
+  {
+   "label": "8/9",
+   "caption": "The side tube down over the crucible on the needle tool (0.6 mm inside, 1 mm to the coil), then the top ring. In the model the thermocouple runs through the top ring, so it goes in last (SOP: side, TC, top).",
+   "start_frame": 1291,
+   "end_frame": 1301
+  },
+  {
+   "label": "8/9",
+   "caption": "The side tube down over the crucible on the needle tool (0.6 mm inside, 1 mm to the coil), then the top ring. In the model the thermocouple runs through the top ring, so it goes in last (SOP: side, TC, top).",
+   "start_frame": 1302,
+   "end_frame": 1326
+  },
+  {
+   "label": "8/9",
+   "caption": "The side tube down over the crucible on the needle tool (0.6 mm inside, 1 mm to the coil), then the top ring. In the model the thermocouple runs through the top ring, so it goes in last (SOP: side, TC, top).",
+   "start_frame": 1327,
+   "end_frame": 1339
+  },
+  {
+   "label": "8/9",
+   "caption": "The side tube down over the crucible on the needle tool (0.6 mm inside, 1 mm to the coil), then the top ring. In the model the thermocouple runs through the top ring, so it goes in last (SOP: side, TC, top).",
+   "start_frame": 1340,
+   "end_frame": 1344
+  },
+  {
+   "label": "8/9",
+   "caption": "The side tube down over the crucible on the needle tool (0.6 mm inside, 1 mm to the coil), then the top ring. In the model the thermocouple runs through the top ring, so it goes in last (SOP: side, TC, top).",
+   "start_frame": 1345,
+   "end_frame": 1360
+  },
+  {
+   "label": "8/9",
+   "caption": "The side tube down over the crucible on the needle tool (0.6 mm inside, 1 mm to the coil), then the top ring. In the model the thermocouple runs through the top ring, so it goes in last (SOP: side, TC, top).",
+   "start_frame": 1361,
+   "end_frame": 1391
+  },
+  {
+   "label": "8/9",
+   "caption": "The side tube down over the crucible on the needle tool (0.6 mm inside, 1 mm to the coil), then the top ring. In the model the thermocouple runs through the top ring, so it goes in last (SOP: side, TC, top).",
+   "start_frame": 1392,
+   "end_frame": 1416
+  },
+  {
+   "label": "8/9",
+   "caption": "The side tube down over the crucible on the needle tool (0.6 mm inside, 1 mm to the coil), then the top ring. In the model the thermocouple runs through the top ring, so it goes in last (SOP: side, TC, top).",
+   "start_frame": 1417,
+   "end_frame": 1421
+  },
+  {
+   "label": "8/9",
+   "caption": "The side tube down over the crucible on the needle tool (0.6 mm inside, 1 mm to the coil), then the top ring. In the model the thermocouple runs through the top ring, so it goes in last (SOP: side, TC, top).",
+   "start_frame": 1422,
+   "end_frame": 1434
+  },
+  {
+   "label": "8/9",
+   "caption": "The side tube down over the crucible on the needle tool (0.6 mm inside, 1 mm to the coil), then the top ring. In the model the thermocouple runs through the top ring, so it goes in last (SOP: side, TC, top).",
+   "start_frame": 1435,
+   "end_frame": 1459
+  },
+  {
+   "label": "8/9",
+   "caption": "The side tube down over the crucible on the needle tool (0.6 mm inside, 1 mm to the coil), then the top ring. In the model the thermocouple runs through the top ring, so it goes in last (SOP: side, TC, top).",
+   "start_frame": 1460,
+   "end_frame": 1472
+  },
+  {
+   "label": "8/9",
+   "caption": "The side tube down over the crucible on the needle tool (0.6 mm inside, 1 mm to the coil), then the top ring. In the model the thermocouple runs through the top ring, so it goes in last (SOP: side, TC, top).",
+   "start_frame": 1473,
+   "end_frame": 1477
+  },
+  {
+   "label": "8/9",
+   "caption": "The side tube down over the crucible on the needle tool (0.6 mm inside, 1 mm to the coil), then the top ring. In the model the thermocouple runs through the top ring, so it goes in last (SOP: side, TC, top).",
+   "start_frame": 1478,
+   "end_frame": 1493
+  },
+  {
+   "label": "8/9",
+   "caption": "The side tube down over the crucible on the needle tool (0.6 mm inside, 1 mm to the coil), then the top ring. In the model the thermocouple runs through the top ring, so it goes in last (SOP: side, TC, top).",
+   "start_frame": 1494,
+   "end_frame": 1524
+  },
+  {
+   "label": "8/9",
+   "caption": "The side tube down over the crucible on the needle tool (0.6 mm inside, 1 mm to the coil), then the top ring. In the model the thermocouple runs through the top ring, so it goes in last (SOP: side, TC, top).",
+   "start_frame": 1525,
+   "end_frame": 1540
+  },
+  {
+   "label": "8/9",
+   "caption": "The side tube down over the crucible on the needle tool (0.6 mm inside, 1 mm to the coil), then the top ring. In the model the thermocouple runs through the top ring, so it goes in last (SOP: side, TC, top).",
+   "start_frame": 1541,
+   "end_frame": 1545
+  },
+  {
+   "label": "8/9",
+   "caption": "The side tube down over the crucible on the needle tool (0.6 mm inside, 1 mm to the coil), then the top ring. In the model the thermocouple runs through the top ring, so it goes in last (SOP: side, TC, top).",
+   "start_frame": 1546,
+   "end_frame": 1558
+  },
+  {
+   "label": "8/9",
+   "caption": "The side tube down over the crucible on the needle tool (0.6 mm inside, 1 mm to the coil), then the top ring. In the model the thermocouple runs through the top ring, so it goes in last (SOP: side, TC, top).",
+   "start_frame": 1559,
+   "end_frame": 1581
+  },
+  {
+   "label": "8/9",
+   "caption": "The side tube down over the crucible on the needle tool (0.6 mm inside, 1 mm to the coil), then the top ring. In the model the thermocouple runs through the top ring, so it goes in last (SOP: side, TC, top).",
+   "start_frame": 1582,
+   "end_frame": 1592
+  },
+  {
+   "label": "8/9",
+   "caption": "The side tube down over the crucible on the needle tool (0.6 mm inside, 1 mm to the coil), then the top ring. In the model the thermocouple runs through the top ring, so it goes in last (SOP: side, TC, top).",
+   "start_frame": 1593,
+   "end_frame": 1597
+  },
+  {
+   "label": "8/9",
+   "caption": "The side tube down over the crucible on the needle tool (0.6 mm inside, 1 mm to the coil), then the top ring. In the model the thermocouple runs through the top ring, so it goes in last (SOP: side, TC, top).",
+   "start_frame": 1598,
+   "end_frame": 1606
+  },
+  {
+   "label": "8/9",
+   "caption": "The thermocouple back in: down through the top ring's hole into the crucible's wall hole, now at the back right. Without it the HMI raises \"master temperature sensor\" (T1 38:06).",
+   "start_frame": 1607,
+   "end_frame": 1629
+  },
+  {
+   "label": "8/9",
+   "caption": "The thermocouple back in: down through the top ring's hole into the crucible's wall hole, now at the back right. Without it the HMI raises \"master temperature sensor\" (T1 38:06).",
+   "start_frame": 1630,
+   "end_frame": 1639
+  },
+  {
+   "label": "8/9",
+   "caption": "The thermocouple back in: down through the top ring's hole into the crucible's wall hole, now at the back right. Without it the HMI raises \"master temperature sensor\" (T1 38:06).",
+   "start_frame": 1640,
+   "end_frame": 1645
+  },
+  {
+   "label": "8/9",
+   "caption": "The thermocouple back in: down through the top ring's hole into the crucible's wall hole, now at the back right. Without it the HMI raises \"master temperature sensor\" (T1 38:06).",
+   "start_frame": 1646,
+   "end_frame": 1656
+  },
+  {
+   "label": "8/9",
+   "caption": "The thermocouple back in: down through the top ring's hole into the crucible's wall hole, now at the back right. Without it the HMI raises \"master temperature sensor\" (T1 38:06).",
+   "start_frame": 1657,
+   "end_frame": 1681
+  },
+  {
+   "label": "8/9",
+   "caption": "The thermocouple back in: down through the top ring's hole into the crucible's wall hole, now at the back right. Without it the HMI raises \"master temperature sensor\" (T1 38:06).",
+   "start_frame": 1682,
+   "end_frame": 1692
+  },
+  {
+   "label": "8/9",
+   "caption": "The thermocouple back in: down through the top ring's hole into the crucible's wall hole, now at the back right. Without it the HMI raises \"master temperature sensor\" (T1 38:06).",
+   "start_frame": 1693,
+   "end_frame": 1697
+  },
+  {
+   "label": "8/9",
+   "caption": "The thermocouple back in: down through the top ring's hole into the crucible's wall hole, now at the back right. Without it the HMI raises \"master temperature sensor\" (T1 38:06).",
+   "start_frame": 1698,
+   "end_frame": 1713
+  },
+  {
+   "label": "8/9",
+   "caption": "The thermocouple back in: down through the top ring's hole into the crucible's wall hole, now at the back right. Without it the HMI raises \"master temperature sensor\" (T1 38:06).",
+   "start_frame": 1714,
+   "end_frame": 1741
+  },
+  {
+   "label": "8/9",
+   "caption": "The thermocouple back in: down through the top ring's hole into the crucible's wall hole, now at the back right. Without it the HMI raises \"master temperature sensor\" (T1 38:06).",
+   "start_frame": 1742,
+   "end_frame": 1763
+  },
+  {
+   "label": "8/9",
+   "caption": "The thermocouple back in: down through the top ring's hole into the crucible's wall hole, now at the back right. Without it the HMI raises \"master temperature sensor\" (T1 38:06).",
+   "start_frame": 1764,
+   "end_frame": 1768
+  },
+  {
+   "label": "8/9",
+   "caption": "The thermocouple back in: down through the top ring's hole into the crucible's wall hole, now at the back right. Without it the HMI raises \"master temperature sensor\" (T1 38:06).",
+   "start_frame": 1769,
+   "end_frame": 1777
+  },
+  {
+   "label": "8/9",
+   "caption": "The thermocouple back in: down through the top ring's hole into the crucible's wall hole, now at the back right. Without it the HMI raises \"master temperature sensor\" (T1 38:06).",
+   "start_frame": 1778,
+   "end_frame": 1800
+  },
+  {
+   "label": "8/9",
+   "caption": "The thermocouple back in: down through the top ring's hole into the crucible's wall hole, now at the back right. Without it the HMI raises \"master temperature sensor\" (T1 38:06).",
+   "start_frame": 1801,
+   "end_frame": 1811
+  },
+  {
+   "label": "8/9",
+   "caption": "The thermocouple back in: down through the top ring's hole into the crucible's wall hole, now at the back right. Without it the HMI raises \"master temperature sensor\" (T1 38:06).",
+   "start_frame": 1812,
+   "end_frame": 1816
+  },
+  {
+   "label": "8/9",
+   "caption": "The thermocouple back in: down through the top ring's hole into the crucible's wall hole, now at the back right. Without it the HMI raises \"master temperature sensor\" (T1 38:06).",
+   "start_frame": 1817,
+   "end_frame": 1825
+  },
+  {
+   "label": "9/9",
+   "caption": "The sealing rod by its adapter, lowered until the force rises a little and the ball centres on the nozzle; the lever down onto it, the pin in, and SEALING ROD down (a PLC input: AMAZEMET would have to allow it).",
+   "start_frame": 1826,
+   "end_frame": 1850
+  },
+  {
+   "label": "9/9",
+   "caption": "The sealing rod by its adapter, lowered until the force rises a little and the ball centres on the nozzle; the lever down onto it, the pin in, and SEALING ROD down (a PLC input: AMAZEMET would have to allow it).",
+   "start_frame": 1851,
+   "end_frame": 1861
+  },
+  {
+   "label": "9/9",
+   "caption": "The sealing rod by its adapter, lowered until the force rises a little and the ball centres on the nozzle; the lever down onto it, the pin in, and SEALING ROD down (a PLC input: AMAZEMET would have to allow it).",
+   "start_frame": 1862,
+   "end_frame": 1866
+  },
+  {
+   "label": "9/9",
+   "caption": "The sealing rod by its adapter, lowered until the force rises a little and the ball centres on the nozzle; the lever down onto it, the pin in, and SEALING ROD down (a PLC input: AMAZEMET would have to allow it).",
+   "start_frame": 1867,
+   "end_frame": 1885
+  },
+  {
+   "label": "9/9",
+   "caption": "The sealing rod by its adapter, lowered until the force rises a little and the ball centres on the nozzle; the lever down onto it, the pin in, and SEALING ROD down (a PLC input: AMAZEMET would have to allow it).",
+   "start_frame": 1886,
+   "end_frame": 1916
+  },
+  {
+   "label": "9/9",
+   "caption": "The sealing rod by its adapter, lowered until the force rises a little and the ball centres on the nozzle; the lever down onto it, the pin in, and SEALING ROD down (a PLC input: AMAZEMET would have to allow it).",
+   "start_frame": 1917,
+   "end_frame": 1944
+  },
+  {
+   "label": "9/9",
+   "caption": "The sealing rod by its adapter, lowered until the force rises a little and the ball centres on the nozzle; the lever down onto it, the pin in, and SEALING ROD down (a PLC input: AMAZEMET would have to allow it).",
+   "start_frame": 1945,
+   "end_frame": 1949
+  },
+  {
+   "label": "9/9",
+   "caption": "The sealing rod by its adapter, lowered until the force rises a little and the ball centres on the nozzle; the lever down onto it, the pin in, and SEALING ROD down (a PLC input: AMAZEMET would have to allow it).",
+   "start_frame": 1950,
+   "end_frame": 1958
+  },
+  {
+   "label": "9/9",
+   "caption": "The sealing rod by its adapter, lowered until the force rises a little and the ball centres on the nozzle; the lever down onto it, the pin in, and SEALING ROD down (a PLC input: AMAZEMET would have to allow it).",
+   "start_frame": 1959,
+   "end_frame": 1981
+  },
+  {
+   "label": "9/9",
+   "caption": "The sealing rod by its adapter, lowered until the force rises a little and the ball centres on the nozzle; the lever down onto it, the pin in, and SEALING ROD down (a PLC input: AMAZEMET would have to allow it).",
+   "start_frame": 1982,
+   "end_frame": 1991
+  },
+  {
+   "label": "9/9",
+   "caption": "The sealing rod by its adapter, lowered until the force rises a little and the ball centres on the nozzle; the lever down onto it, the pin in, and SEALING ROD down (a PLC input: AMAZEMET would have to allow it).",
+   "start_frame": 1992,
+   "end_frame": 1996
+  },
+  {
+   "label": "9/9",
+   "caption": "The sealing rod by its adapter, lowered until the force rises a little and the ball centres on the nozzle; the lever down onto it, the pin in, and SEALING ROD down (a PLC input: AMAZEMET would have to allow it).",
+   "start_frame": 1997,
+   "end_frame": 2021
+  },
+  {
+   "label": "9/9",
+   "caption": "The sealing rod by its adapter, lowered until the force rises a little and the ball centres on the nozzle; the lever down onto it, the pin in, and SEALING ROD down (a PLC input: AMAZEMET would have to allow it).",
+   "start_frame": 2022,
+   "end_frame": 2026
+  },
+  {
+   "label": "9/9",
+   "caption": "The sealing rod by its adapter, lowered until the force rises a little and the ball centres on the nozzle; the lever down onto it, the pin in, and SEALING ROD down (a PLC input: AMAZEMET would have to allow it).",
+   "start_frame": 2027,
+   "end_frame": 2035
+  },
+  {
+   "label": "9/9",
+   "caption": "The sealing rod by its adapter, lowered until the force rises a little and the ball centres on the nozzle; the lever down onto it, the pin in, and SEALING ROD down (a PLC input: AMAZEMET would have to allow it).",
+   "start_frame": 2036,
+   "end_frame": 2060
+  },
+  {
+   "label": "9/9",
+   "caption": "The sealing rod by its adapter, lowered until the force rises a little and the ball centres on the nozzle; the lever down onto it, the pin in, and SEALING ROD down (a PLC input: AMAZEMET would have to allow it).",
+   "start_frame": 2061,
+   "end_frame": 2071
+  },
+  {
+   "label": "9/9",
+   "caption": "The sealing rod by its adapter, lowered until the force rises a little and the ball centres on the nozzle; the lever down onto it, the pin in, and SEALING ROD down (a PLC input: AMAZEMET would have to allow it).",
+   "start_frame": 2072,
+   "end_frame": 2076
+  },
+  {
+   "label": "9/9",
+   "caption": "The sealing rod by its adapter, lowered until the force rises a little and the ball centres on the nozzle; the lever down onto it, the pin in, and SEALING ROD down (a PLC input: AMAZEMET would have to allow it).",
+   "start_frame": 2077,
+   "end_frame": 2089
+  },
+  {
+   "label": "9/9",
+   "caption": "The sealing rod by its adapter, lowered until the force rises a little and the ball centres on the nozzle; the lever down onto it, the pin in, and SEALING ROD down (a PLC input: AMAZEMET would have to allow it).",
+   "start_frame": 2090,
+   "end_frame": 2117
+  },
+  {
+   "label": "9/9",
+   "caption": "The sealing rod by its adapter, lowered until the force rises a little and the ball centres on the nozzle; the lever down onto it, the pin in, and SEALING ROD down (a PLC input: AMAZEMET would have to allow it).",
+   "start_frame": 2118,
+   "end_frame": 2132
+  },
+  {
+   "label": "9/9",
+   "caption": "The sealing rod by its adapter, lowered until the force rises a little and the ball centres on the nozzle; the lever down onto it, the pin in, and SEALING ROD down (a PLC input: AMAZEMET would have to allow it).",
+   "start_frame": 2133,
+   "end_frame": 2137
+  },
+  {
+   "label": "9/9",
+   "caption": "The sealing rod by its adapter, lowered until the force rises a little and the ball centres on the nozzle; the lever down onto it, the pin in, and SEALING ROD down (a PLC input: AMAZEMET would have to allow it).",
+   "start_frame": 2138,
+   "end_frame": 2146
+  },
+  {
+   "label": "9/9",
+   "caption": "The sealing rod by its adapter, lowered until the force rises a little and the ball centres on the nozzle; the lever down onto it, the pin in, and SEALING ROD down (a PLC input: AMAZEMET would have to allow it).",
+   "start_frame": 2147,
+   "end_frame": 2164
+  },
+  {
+   "label": "9/9",
+   "caption": "The sealing rod by its adapter, lowered until the force rises a little and the ball centres on the nozzle; the lever down onto it, the pin in, and SEALING ROD down (a PLC input: AMAZEMET would have to allow it).",
+   "start_frame": 2165,
+   "end_frame": 2200
+  }
+ ]
+}

@@ -1,0 +1,659 @@
+{
+ "name": "atom_crucible_out",
+ "fps": 15,
+ "n_frames": 1696,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1/8",
+   "caption": "The furnace is cold, the lid open and the chamber's door open with its clamps off; the ultrasonic stack is out, so the nut can be reached through the door. First out: the Type N thermocouple, its thin ceramic sheath taken by its leg on tweezers and drawn straight up (SOP 1).",
+   "start_frame": 0,
+   "end_frame": 34
+  },
+  {
+   "label": "1/8",
+   "caption": "The furnace is cold, the lid open and the chamber's door open with its clamps off; the ultrasonic stack is out, so the nut can be reached through the door. First out: the Type N thermocouple, its thin ceramic sheath taken by its leg on tweezers and drawn straight up (SOP 1).",
+   "start_frame": 35,
+   "end_frame": 44
+  },
+  {
+   "label": "1/8",
+   "caption": "The furnace is cold, the lid open and the chamber's door open with its clamps off; the ultrasonic stack is out, so the nut can be reached through the door. First out: the Type N thermocouple, its thin ceramic sheath taken by its leg on tweezers and drawn straight up (SOP 1).",
+   "start_frame": 45,
+   "end_frame": 50
+  },
+  {
+   "label": "1/8",
+   "caption": "The furnace is cold, the lid open and the chamber's door open with its clamps off; the ultrasonic stack is out, so the nut can be reached through the door. First out: the Type N thermocouple, its thin ceramic sheath taken by its leg on tweezers and drawn straight up (SOP 1).",
+   "start_frame": 51,
+   "end_frame": 61
+  },
+  {
+   "label": "1/8",
+   "caption": "The furnace is cold, the lid open and the chamber's door open with its clamps off; the ultrasonic stack is out, so the nut can be reached through the door. First out: the Type N thermocouple, its thin ceramic sheath taken by its leg on tweezers and drawn straight up (SOP 1).",
+   "start_frame": 62,
+   "end_frame": 99
+  },
+  {
+   "label": "1/8",
+   "caption": "The furnace is cold, the lid open and the chamber's door open with its clamps off; the ultrasonic stack is out, so the nut can be reached through the door. First out: the Type N thermocouple, its thin ceramic sheath taken by its leg on tweezers and drawn straight up (SOP 1).",
+   "start_frame": 100,
+   "end_frame": 112
+  },
+  {
+   "label": "1/8",
+   "caption": "The furnace is cold, the lid open and the chamber's door open with its clamps off; the ultrasonic stack is out, so the nut can be reached through the door. First out: the Type N thermocouple, its thin ceramic sheath taken by its leg on tweezers and drawn straight up (SOP 1).",
+   "start_frame": 113,
+   "end_frame": 118
+  },
+  {
+   "label": "1/8",
+   "caption": "The furnace is cold, the lid open and the chamber's door open with its clamps off; the ultrasonic stack is out, so the nut can be reached through the door. First out: the Type N thermocouple, its thin ceramic sheath taken by its leg on tweezers and drawn straight up (SOP 1).",
+   "start_frame": 119,
+   "end_frame": 141
+  },
+  {
+   "label": "1/8",
+   "caption": "The furnace is cold, the lid open and the chamber's door open with its clamps off; the ultrasonic stack is out, so the nut can be reached through the door. First out: the Type N thermocouple, its thin ceramic sheath taken by its leg on tweezers and drawn straight up (SOP 1).",
+   "start_frame": 142,
+   "end_frame": 166
+  },
+  {
+   "label": "1/8",
+   "caption": "The furnace is cold, the lid open and the chamber's door open with its clamps off; the ultrasonic stack is out, so the nut can be reached through the door. First out: the Type N thermocouple, its thin ceramic sheath taken by its leg on tweezers and drawn straight up (SOP 1).",
+   "start_frame": 167,
+   "end_frame": 182
+  },
+  {
+   "label": "1/8",
+   "caption": "The furnace is cold, the lid open and the chamber's door open with its clamps off; the ultrasonic stack is out, so the nut can be reached through the door. First out: the Type N thermocouple, its thin ceramic sheath taken by its leg on tweezers and drawn straight up (SOP 1).",
+   "start_frame": 183,
+   "end_frame": 187
+  },
+  {
+   "label": "1/8",
+   "caption": "The furnace is cold, the lid open and the chamber's door open with its clamps off; the ultrasonic stack is out, so the nut can be reached through the door. First out: the Type N thermocouple, its thin ceramic sheath taken by its leg on tweezers and drawn straight up (SOP 1).",
+   "start_frame": 188,
+   "end_frame": 196
+  },
+  {
+   "label": "1/8",
+   "caption": "The furnace is cold, the lid open and the chamber's door open with its clamps off; the ultrasonic stack is out, so the nut can be reached through the door. First out: the Type N thermocouple, its thin ceramic sheath taken by its leg on tweezers and drawn straight up (SOP 1).",
+   "start_frame": 197,
+   "end_frame": 219
+  },
+  {
+   "label": "1/8",
+   "caption": "The furnace is cold, the lid open and the chamber's door open with its clamps off; the ultrasonic stack is out, so the nut can be reached through the door. First out: the Type N thermocouple, its thin ceramic sheath taken by its leg on tweezers and drawn straight up (SOP 1).",
+   "start_frame": 220,
+   "end_frame": 230
+  },
+  {
+   "label": "1/8",
+   "caption": "The furnace is cold, the lid open and the chamber's door open with its clamps off; the ultrasonic stack is out, so the nut can be reached through the door. First out: the Type N thermocouple, its thin ceramic sheath taken by its leg on tweezers and drawn straight up (SOP 1).",
+   "start_frame": 231,
+   "end_frame": 235
+  },
+  {
+   "label": "1/8",
+   "caption": "The furnace is cold, the lid open and the chamber's door open with its clamps off; the ultrasonic stack is out, so the nut can be reached through the door. First out: the Type N thermocouple, its thin ceramic sheath taken by its leg on tweezers and drawn straight up (SOP 1).",
+   "start_frame": 236,
+   "end_frame": 244
+  },
+  {
+   "label": "2/8",
+   "caption": "The lever's safety pin out by its T-handle, the rod still seated on the nozzle (pulled with the rod lifted, the rod would drop 12 mm onto the nozzle), then the lever swung up 70 deg on its post.",
+   "start_frame": 245,
+   "end_frame": 269
+  },
+  {
+   "label": "2/8",
+   "caption": "The lever's safety pin out by its T-handle, the rod still seated on the nozzle (pulled with the rod lifted, the rod would drop 12 mm onto the nozzle), then the lever swung up 70 deg on its post.",
+   "start_frame": 270,
+   "end_frame": 280
+  },
+  {
+   "label": "2/8",
+   "caption": "The lever's safety pin out by its T-handle, the rod still seated on the nozzle (pulled with the rod lifted, the rod would drop 12 mm onto the nozzle), then the lever swung up 70 deg on its post.",
+   "start_frame": 281,
+   "end_frame": 285
+  },
+  {
+   "label": "2/8",
+   "caption": "The lever's safety pin out by its T-handle, the rod still seated on the nozzle (pulled with the rod lifted, the rod would drop 12 mm onto the nozzle), then the lever swung up 70 deg on its post.",
+   "start_frame": 286,
+   "end_frame": 300
+  },
+  {
+   "label": "2/8",
+   "caption": "The lever's safety pin out by its T-handle, the rod still seated on the nozzle (pulled with the rod lifted, the rod would drop 12 mm onto the nozzle), then the lever swung up 70 deg on its post.",
+   "start_frame": 301,
+   "end_frame": 325
+  },
+  {
+   "label": "2/8",
+   "caption": "The lever's safety pin out by its T-handle, the rod still seated on the nozzle (pulled with the rod lifted, the rod would drop 12 mm onto the nozzle), then the lever swung up 70 deg on its post.",
+   "start_frame": 326,
+   "end_frame": 336
+  },
+  {
+   "label": "2/8",
+   "caption": "The lever's safety pin out by its T-handle, the rod still seated on the nozzle (pulled with the rod lifted, the rod would drop 12 mm onto the nozzle), then the lever swung up 70 deg on its post.",
+   "start_frame": 337,
+   "end_frame": 341
+  },
+  {
+   "label": "2/8",
+   "caption": "The lever's safety pin out by its T-handle, the rod still seated on the nozzle (pulled with the rod lifted, the rod would drop 12 mm onto the nozzle), then the lever swung up 70 deg on its post.",
+   "start_frame": 342,
+   "end_frame": 350
+  },
+  {
+   "label": "2/8",
+   "caption": "The lever's safety pin out by its T-handle, the rod still seated on the nozzle (pulled with the rod lifted, the rod would drop 12 mm onto the nozzle), then the lever swung up 70 deg on its post.",
+   "start_frame": 351,
+   "end_frame": 373
+  },
+  {
+   "label": "2/8",
+   "caption": "The lever's safety pin out by its T-handle, the rod still seated on the nozzle (pulled with the rod lifted, the rod would drop 12 mm onto the nozzle), then the lever swung up 70 deg on its post.",
+   "start_frame": 374,
+   "end_frame": 383
+  },
+  {
+   "label": "2/8",
+   "caption": "The lever's safety pin out by its T-handle, the rod still seated on the nozzle (pulled with the rod lifted, the rod would drop 12 mm onto the nozzle), then the lever swung up 70 deg on its post.",
+   "start_frame": 384,
+   "end_frame": 388
+  },
+  {
+   "label": "2/8",
+   "caption": "The lever's safety pin out by its T-handle, the rod still seated on the nozzle (pulled with the rod lifted, the rod would drop 12 mm onto the nozzle), then the lever swung up 70 deg on its post.",
+   "start_frame": 389,
+   "end_frame": 413
+  },
+  {
+   "label": "2/8",
+   "caption": "The lever's safety pin out by its T-handle, the rod still seated on the nozzle (pulled with the rod lifted, the rod would drop 12 mm onto the nozzle), then the lever swung up 70 deg on its post.",
+   "start_frame": 414,
+   "end_frame": 418
+  },
+  {
+   "label": "2/8",
+   "caption": "The lever's safety pin out by its T-handle, the rod still seated on the nozzle (pulled with the rod lifted, the rod would drop 12 mm onto the nozzle), then the lever swung up 70 deg on its post.",
+   "start_frame": 419,
+   "end_frame": 428
+  },
+  {
+   "label": "3/8",
+   "caption": "The sealing rod out by its brass adapter, never by the graphite, lifted straight up so the ball tip doesn't drag on the crucible's floor, and stood in its holder on MiR250 1 (SOP 1, 6).",
+   "start_frame": 429,
+   "end_frame": 451
+  },
+  {
+   "label": "3/8",
+   "caption": "The sealing rod out by its brass adapter, never by the graphite, lifted straight up so the ball tip doesn't drag on the crucible's floor, and stood in its holder on MiR250 1 (SOP 1, 6).",
+   "start_frame": 452,
+   "end_frame": 462
+  },
+  {
+   "label": "3/8",
+   "caption": "The sealing rod out by its brass adapter, never by the graphite, lifted straight up so the ball tip doesn't drag on the crucible's floor, and stood in its holder on MiR250 1 (SOP 1, 6).",
+   "start_frame": 463,
+   "end_frame": 467
+  },
+  {
+   "label": "3/8",
+   "caption": "The sealing rod out by its brass adapter, never by the graphite, lifted straight up so the ball tip doesn't drag on the crucible's floor, and stood in its holder on MiR250 1 (SOP 1, 6).",
+   "start_frame": 468,
+   "end_frame": 492
+  },
+  {
+   "label": "3/8",
+   "caption": "The sealing rod out by its brass adapter, never by the graphite, lifted straight up so the ball tip doesn't drag on the crucible's floor, and stood in its holder on MiR250 1 (SOP 1, 6).",
+   "start_frame": 493,
+   "end_frame": 520
+  },
+  {
+   "label": "3/8",
+   "caption": "The sealing rod out by its brass adapter, never by the graphite, lifted straight up so the ball tip doesn't drag on the crucible's floor, and stood in its holder on MiR250 1 (SOP 1, 6).",
+   "start_frame": 521,
+   "end_frame": 539
+  },
+  {
+   "label": "3/8",
+   "caption": "The sealing rod out by its brass adapter, never by the graphite, lifted straight up so the ball tip doesn't drag on the crucible's floor, and stood in its holder on MiR250 1 (SOP 1, 6).",
+   "start_frame": 540,
+   "end_frame": 544
+  },
+  {
+   "label": "3/8",
+   "caption": "The sealing rod out by its brass adapter, never by the graphite, lifted straight up so the ball tip doesn't drag on the crucible's floor, and stood in its holder on MiR250 1 (SOP 1, 6).",
+   "start_frame": 545,
+   "end_frame": 553
+  },
+  {
+   "label": "4/8",
+   "caption": "Insulation out: the top ring, then the side tube. The side tube has 0.6 mm to the crucible and 1 mm to the coil, so only its top face can be taken: a needle tool (four Schmalz SNG-M heads) on that face. Arm 2 takes the nut key meanwhile.",
+   "start_frame": 554,
+   "end_frame": 576
+  },
+  {
+   "label": "4/8",
+   "caption": "Insulation out: the top ring, then the side tube. The side tube has 0.6 mm to the crucible and 1 mm to the coil, so only its top face can be taken: a needle tool (four Schmalz SNG-M heads) on that face. Arm 2 takes the nut key meanwhile.",
+   "start_frame": 577,
+   "end_frame": 586
+  },
+  {
+   "label": "4/8",
+   "caption": "Insulation out: the top ring, then the side tube. The side tube has 0.6 mm to the crucible and 1 mm to the coil, so only its top face can be taken: a needle tool (four Schmalz SNG-M heads) on that face. Arm 2 takes the nut key meanwhile.",
+   "start_frame": 587,
+   "end_frame": 592
+  },
+  {
+   "label": "4/8",
+   "caption": "Insulation out: the top ring, then the side tube. The side tube has 0.6 mm to the crucible and 1 mm to the coil, so only its top face can be taken: a needle tool (four Schmalz SNG-M heads) on that face. Arm 2 takes the nut key meanwhile.",
+   "start_frame": 593,
+   "end_frame": 603
+  },
+  {
+   "label": "4/8",
+   "caption": "Insulation out: the top ring, then the side tube. The side tube has 0.6 mm to the crucible and 1 mm to the coil, so only its top face can be taken: a needle tool (four Schmalz SNG-M heads) on that face. Arm 2 takes the nut key meanwhile.",
+   "start_frame": 604,
+   "end_frame": 630
+  },
+  {
+   "label": "4/8",
+   "caption": "Insulation out: the top ring, then the side tube. The side tube has 0.6 mm to the crucible and 1 mm to the coil, so only its top face can be taken: a needle tool (four Schmalz SNG-M heads) on that face. Arm 2 takes the nut key meanwhile.",
+   "start_frame": 631,
+   "end_frame": 640
+  },
+  {
+   "label": "4/8",
+   "caption": "Insulation out: the top ring, then the side tube. The side tube has 0.6 mm to the crucible and 1 mm to the coil, so only its top face can be taken: a needle tool (four Schmalz SNG-M heads) on that face. Arm 2 takes the nut key meanwhile.",
+   "start_frame": 641,
+   "end_frame": 645
+  },
+  {
+   "label": "4/8",
+   "caption": "Insulation out: the top ring, then the side tube. The side tube has 0.6 mm to the crucible and 1 mm to the coil, so only its top face can be taken: a needle tool (four Schmalz SNG-M heads) on that face. Arm 2 takes the nut key meanwhile.",
+   "start_frame": 646,
+   "end_frame": 652
+  },
+  {
+   "label": "4/8",
+   "caption": "Insulation out: the top ring, then the side tube. The side tube has 0.6 mm to the crucible and 1 mm to the coil, so only its top face can be taken: a needle tool (four Schmalz SNG-M heads) on that face. Arm 2 takes the nut key meanwhile.",
+   "start_frame": 653,
+   "end_frame": 668
+  },
+  {
+   "label": "4/8",
+   "caption": "Insulation out: the top ring, then the side tube. The side tube has 0.6 mm to the crucible and 1 mm to the coil, so only its top face can be taken: a needle tool (four Schmalz SNG-M heads) on that face. Arm 2 takes the nut key meanwhile.",
+   "start_frame": 669,
+   "end_frame": 696
+  },
+  {
+   "label": "4/8",
+   "caption": "Insulation out: the top ring, then the side tube. The side tube has 0.6 mm to the crucible and 1 mm to the coil, so only its top face can be taken: a needle tool (four Schmalz SNG-M heads) on that face. Arm 2 takes the nut key meanwhile.",
+   "start_frame": 697,
+   "end_frame": 709
+  },
+  {
+   "label": "4/8",
+   "caption": "Insulation out: the top ring, then the side tube. The side tube has 0.6 mm to the crucible and 1 mm to the coil, so only its top face can be taken: a needle tool (four Schmalz SNG-M heads) on that face. Arm 2 takes the nut key meanwhile.",
+   "start_frame": 710,
+   "end_frame": 714
+  },
+  {
+   "label": "4/8",
+   "caption": "Insulation out: the top ring, then the side tube. The side tube has 0.6 mm to the crucible and 1 mm to the coil, so only its top face can be taken: a needle tool (four Schmalz SNG-M heads) on that face. Arm 2 takes the nut key meanwhile.",
+   "start_frame": 715,
+   "end_frame": 724
+  },
+  {
+   "label": "4/8",
+   "caption": "Insulation out: the top ring, then the side tube. The side tube has 0.6 mm to the crucible and 1 mm to the coil, so only its top face can be taken: a needle tool (four Schmalz SNG-M heads) on that face. Arm 2 takes the nut key meanwhile.",
+   "start_frame": 725,
+   "end_frame": 751
+  },
+  {
+   "label": "4/8",
+   "caption": "Insulation out: the top ring, then the side tube. The side tube has 0.6 mm to the crucible and 1 mm to the coil, so only its top face can be taken: a needle tool (four Schmalz SNG-M heads) on that face. Arm 2 takes the nut key meanwhile.",
+   "start_frame": 752,
+   "end_frame": 762
+  },
+  {
+   "label": "4/8",
+   "caption": "Insulation out: the top ring, then the side tube. The side tube has 0.6 mm to the crucible and 1 mm to the coil, so only its top face can be taken: a needle tool (four Schmalz SNG-M heads) on that face. Arm 2 takes the nut key meanwhile.",
+   "start_frame": 763,
+   "end_frame": 769
+  },
+  {
+   "label": "4/8",
+   "caption": "Insulation out: the top ring, then the side tube. The side tube has 0.6 mm to the crucible and 1 mm to the coil, so only its top face can be taken: a needle tool (four Schmalz SNG-M heads) on that face. Arm 2 takes the nut key meanwhile.",
+   "start_frame": 770,
+   "end_frame": 794
+  },
+  {
+   "label": "4/8",
+   "caption": "Insulation out: the top ring, then the side tube. The side tube has 0.6 mm to the crucible and 1 mm to the coil, so only its top face can be taken: a needle tool (four Schmalz SNG-M heads) on that face. Arm 2 takes the nut key meanwhile.",
+   "start_frame": 795,
+   "end_frame": 822
+  },
+  {
+   "label": "4/8",
+   "caption": "Insulation out: the top ring, then the side tube. The side tube has 0.6 mm to the crucible and 1 mm to the coil, so only its top face can be taken: a needle tool (four Schmalz SNG-M heads) on that face. Arm 2 takes the nut key meanwhile.",
+   "start_frame": 823,
+   "end_frame": 835
+  },
+  {
+   "label": "4/8",
+   "caption": "Insulation out: the top ring, then the side tube. The side tube has 0.6 mm to the crucible and 1 mm to the coil, so only its top face can be taken: a needle tool (four Schmalz SNG-M heads) on that face. Arm 2 takes the nut key meanwhile.",
+   "start_frame": 836,
+   "end_frame": 840
+  },
+  {
+   "label": "4/8",
+   "caption": "Insulation out: the top ring, then the side tube. The side tube has 0.6 mm to the crucible and 1 mm to the coil, so only its top face can be taken: a needle tool (four Schmalz SNG-M heads) on that face. Arm 2 takes the nut key meanwhile.",
+   "start_frame": 841,
+   "end_frame": 850
+  },
+  {
+   "label": "4/8",
+   "caption": "Insulation out: the top ring, then the side tube. The side tube has 0.6 mm to the crucible and 1 mm to the coil, so only its top face can be taken: a needle tool (four Schmalz SNG-M heads) on that face. Arm 2 takes the nut key meanwhile.",
+   "start_frame": 851,
+   "end_frame": 861
+  },
+  {
+   "label": "4/8",
+   "caption": "Insulation out: the top ring, then the side tube. The side tube has 0.6 mm to the crucible and 1 mm to the coil, so only its top face can be taken: a needle tool (four Schmalz SNG-M heads) on that face. Arm 2 takes the nut key meanwhile.",
+   "start_frame": 862,
+   "end_frame": 892
+  },
+  {
+   "label": "4/8",
+   "caption": "Insulation out: the top ring, then the side tube. The side tube has 0.6 mm to the crucible and 1 mm to the coil, so only its top face can be taken: a needle tool (four Schmalz SNG-M heads) on that face. Arm 2 takes the nut key meanwhile.",
+   "start_frame": 893,
+   "end_frame": 905
+  },
+  {
+   "label": "4/8",
+   "caption": "Insulation out: the top ring, then the side tube. The side tube has 0.6 mm to the crucible and 1 mm to the coil, so only its top face can be taken: a needle tool (four Schmalz SNG-M heads) on that face. Arm 2 takes the nut key meanwhile.",
+   "start_frame": 906,
+   "end_frame": 910
+  },
+  {
+   "label": "4/8",
+   "caption": "Insulation out: the top ring, then the side tube. The side tube has 0.6 mm to the crucible and 1 mm to the coil, so only its top face can be taken: a needle tool (four Schmalz SNG-M heads) on that face. Arm 2 takes the nut key meanwhile.",
+   "start_frame": 911,
+   "end_frame": 919
+  },
+  {
+   "label": "5/8",
+   "caption": "Arm 2 brings the key in through the door, under the nut: six pins go into the nut's six notches and its cup sits under the nut and the seal. Arm 1 sets the crucible gripper's three soft jaws on the crucible.",
+   "start_frame": 920,
+   "end_frame": 942
+  },
+  {
+   "label": "5/8",
+   "caption": "Arm 2 brings the key in through the door, under the nut: six pins go into the nut's six notches and its cup sits under the nut and the seal. Arm 1 sets the crucible gripper's three soft jaws on the crucible.",
+   "start_frame": 943,
+   "end_frame": 952
+  },
+  {
+   "label": "5/8",
+   "caption": "Arm 2 brings the key in through the door, under the nut: six pins go into the nut's six notches and its cup sits under the nut and the seal. Arm 1 sets the crucible gripper's three soft jaws on the crucible.",
+   "start_frame": 953,
+   "end_frame": 958
+  },
+  {
+   "label": "5/8",
+   "caption": "Arm 2 brings the key in through the door, under the nut: six pins go into the nut's six notches and its cup sits under the nut and the seal. Arm 1 sets the crucible gripper's three soft jaws on the crucible.",
+   "start_frame": 959,
+   "end_frame": 969
+  },
+  {
+   "label": "5/8",
+   "caption": "Arm 2 brings the key in through the door, under the nut: six pins go into the nut's six notches and its cup sits under the nut and the seal. Arm 1 sets the crucible gripper's three soft jaws on the crucible.",
+   "start_frame": 970,
+   "end_frame": 994
+  },
+  {
+   "label": "5/8",
+   "caption": "Arm 2 brings the key in through the door, under the nut: six pins go into the nut's six notches and its cup sits under the nut and the seal. Arm 1 sets the crucible gripper's three soft jaws on the crucible.",
+   "start_frame": 995,
+   "end_frame": 1010
+  },
+  {
+   "label": "5/8",
+   "caption": "Arm 2 brings the key in through the door, under the nut: six pins go into the nut's six notches and its cup sits under the nut and the seal. Arm 1 sets the crucible gripper's three soft jaws on the crucible.",
+   "start_frame": 1011,
+   "end_frame": 1038
+  },
+  {
+   "label": "5/8",
+   "caption": "Arm 2 brings the key in through the door, under the nut: six pins go into the nut's six notches and its cup sits under the nut and the seal. Arm 1 sets the crucible gripper's three soft jaws on the crucible.",
+   "start_frame": 1039,
+   "end_frame": 1054
+  },
+  {
+   "label": "5/8",
+   "caption": "Arm 2 brings the key in through the door, under the nut: six pins go into the nut's six notches and its cup sits under the nut and the seal. Arm 1 sets the crucible gripper's three soft jaws on the crucible.",
+   "start_frame": 1055,
+   "end_frame": 1063
+  },
+  {
+   "label": "5/8",
+   "caption": "Breakaway: arm 1 turns the crucible 25 deg anticlockwise while the key holds the nut. The wrist's FT 300-S reads the torque that breaks the joint, and the number is logged every time.",
+   "start_frame": 1064,
+   "end_frame": 1098
+  },
+  {
+   "label": "5/8",
+   "caption": "Then the key's motor spins the nut off: 6.9 more turns of 2.0 mm pitch, the cup following it down, while arm 1 holds the crucible still. The nut and the seal stay in the cup, so nothing falls.",
+   "start_frame": 1099,
+   "end_frame": 1167
+  },
+  {
+   "label": "5/8",
+   "caption": "Then the key's motor spins the nut off: 6.9 more turns of 2.0 mm pitch, the cup following it down, while arm 1 holds the crucible still. The nut and the seal stay in the cup, so nothing falls.",
+   "start_frame": 1168,
+   "end_frame": 1182
+  },
+  {
+   "label": "6/8",
+   "caption": "The key goes out through the door with the nut and the seal in its cup, and back onto its posts on MiR250 2. Arm 1 lifts the crucible straight up out of the coil, the holder's shank clear of the floor.",
+   "start_frame": 1183,
+   "end_frame": 1195
+  },
+  {
+   "label": "6/8",
+   "caption": "The key goes out through the door with the nut and the seal in its cup, and back onto its posts on MiR250 2. Arm 1 lifts the crucible straight up out of the coil, the holder's shank clear of the floor.",
+   "start_frame": 1196,
+   "end_frame": 1218
+  },
+  {
+   "label": "6/8",
+   "caption": "The key goes out through the door with the nut and the seal in its cup, and back onto its posts on MiR250 2. Arm 1 lifts the crucible straight up out of the coil, the holder's shank clear of the floor.",
+   "start_frame": 1219,
+   "end_frame": 1249
+  },
+  {
+   "label": "6/8",
+   "caption": "The key goes out through the door with the nut and the seal in its cup, and back onto its posts on MiR250 2. Arm 1 lifts the crucible straight up out of the coil, the holder's shank clear of the floor.",
+   "start_frame": 1250,
+   "end_frame": 1262
+  },
+  {
+   "label": "6/8",
+   "caption": "The key goes out through the door with the nut and the seal in its cup, and back onto its posts on MiR250 2. Arm 1 lifts the crucible straight up out of the coil, the holder's shank clear of the floor.",
+   "start_frame": 1263,
+   "end_frame": 1267
+  },
+  {
+   "label": "6/8",
+   "caption": "The key goes out through the door with the nut and the seal in its cup, and back onto its posts on MiR250 2. Arm 1 lifts the crucible straight up out of the coil, the holder's shank clear of the floor.",
+   "start_frame": 1268,
+   "end_frame": 1277
+  },
+  {
+   "label": "6/8",
+   "caption": "The key goes out through the door with the nut and the seal in its cup, and back onto its posts on MiR250 2. Arm 1 lifts the crucible straight up out of the coil, the holder's shank clear of the floor.",
+   "start_frame": 1278,
+   "end_frame": 1311
+  },
+  {
+   "label": "6/8",
+   "caption": "The key goes out through the door with the nut and the seal in its cup, and back onto its posts on MiR250 2. Arm 1 lifts the crucible straight up out of the coil, the holder's shank clear of the floor.",
+   "start_frame": 1312,
+   "end_frame": 1330
+  },
+  {
+   "label": "6/8",
+   "caption": "The key goes out through the door with the nut and the seal in its cup, and back onto its posts on MiR250 2. Arm 1 lifts the crucible straight up out of the coil, the holder's shank clear of the floor.",
+   "start_frame": 1331,
+   "end_frame": 1337
+  },
+  {
+   "label": "7/8",
+   "caption": "On the way: the cradle's backlight under the nozzle and the wrist camera looking down the bore. Light through the 0.5 mm bore means it is open; a closed one waits for a person to drill it by hand (SOP 2).",
+   "start_frame": 1338,
+   "end_frame": 1350
+  },
+  {
+   "label": "7/8",
+   "caption": "On the way: the cradle's backlight under the nozzle and the wrist camera looking down the bore. Light through the 0.5 mm bore means it is open; a closed one waits for a person to drill it by hand (SOP 2).",
+   "start_frame": 1351,
+   "end_frame": 1379
+  },
+  {
+   "label": "8/8",
+   "caption": "Last, the bottom ring, which sits under the crucible's base in the model and so comes out after it (the SOP lists it first). The furnace is empty for the explosion-proof vacuum (atom_vac).",
+   "start_frame": 1380,
+   "end_frame": 1402
+  },
+  {
+   "label": "8/8",
+   "caption": "Last, the bottom ring, which sits under the crucible's base in the model and so comes out after it (the SOP lists it first). The furnace is empty for the explosion-proof vacuum (atom_vac).",
+   "start_frame": 1403,
+   "end_frame": 1413
+  },
+  {
+   "label": "8/8",
+   "caption": "Last, the bottom ring, which sits under the crucible's base in the model and so comes out after it (the SOP lists it first). The furnace is empty for the explosion-proof vacuum (atom_vac).",
+   "start_frame": 1414,
+   "end_frame": 1418
+  },
+  {
+   "label": "8/8",
+   "caption": "Last, the bottom ring, which sits under the crucible's base in the model and so comes out after it (the SOP lists it first). The furnace is empty for the explosion-proof vacuum (atom_vac).",
+   "start_frame": 1419,
+   "end_frame": 1427
+  },
+  {
+   "label": "8/8",
+   "caption": "Last, the bottom ring, which sits under the crucible's base in the model and so comes out after it (the SOP lists it first). The furnace is empty for the explosion-proof vacuum (atom_vac).",
+   "start_frame": 1428,
+   "end_frame": 1450
+  },
+  {
+   "label": "8/8",
+   "caption": "Last, the bottom ring, which sits under the crucible's base in the model and so comes out after it (the SOP lists it first). The furnace is empty for the explosion-proof vacuum (atom_vac).",
+   "start_frame": 1451,
+   "end_frame": 1460
+  },
+  {
+   "label": "8/8",
+   "caption": "Last, the bottom ring, which sits under the crucible's base in the model and so comes out after it (the SOP lists it first). The furnace is empty for the explosion-proof vacuum (atom_vac).",
+   "start_frame": 1461,
+   "end_frame": 1466
+  },
+  {
+   "label": "8/8",
+   "caption": "Last, the bottom ring, which sits under the crucible's base in the model and so comes out after it (the SOP lists it first). The furnace is empty for the explosion-proof vacuum (atom_vac).",
+   "start_frame": 1467,
+   "end_frame": 1477
+  },
+  {
+   "label": "8/8",
+   "caption": "Last, the bottom ring, which sits under the crucible's base in the model and so comes out after it (the SOP lists it first). The furnace is empty for the explosion-proof vacuum (atom_vac).",
+   "start_frame": 1478,
+   "end_frame": 1505
+  },
+  {
+   "label": "8/8",
+   "caption": "Last, the bottom ring, which sits under the crucible's base in the model and so comes out after it (the SOP lists it first). The furnace is empty for the explosion-proof vacuum (atom_vac).",
+   "start_frame": 1506,
+   "end_frame": 1524
+  },
+  {
+   "label": "8/8",
+   "caption": "Last, the bottom ring, which sits under the crucible's base in the model and so comes out after it (the SOP lists it first). The furnace is empty for the explosion-proof vacuum (atom_vac).",
+   "start_frame": 1525,
+   "end_frame": 1530
+  },
+  {
+   "label": "8/8",
+   "caption": "Last, the bottom ring, which sits under the crucible's base in the model and so comes out after it (the SOP lists it first). The furnace is empty for the explosion-proof vacuum (atom_vac).",
+   "start_frame": 1531,
+   "end_frame": 1555
+  },
+  {
+   "label": "8/8",
+   "caption": "Last, the bottom ring, which sits under the crucible's base in the model and so comes out after it (the SOP lists it first). The furnace is empty for the explosion-proof vacuum (atom_vac).",
+   "start_frame": 1556,
+   "end_frame": 1583
+  },
+  {
+   "label": "8/8",
+   "caption": "Last, the bottom ring, which sits under the crucible's base in the model and so comes out after it (the SOP lists it first). The furnace is empty for the explosion-proof vacuum (atom_vac).",
+   "start_frame": 1584,
+   "end_frame": 1596
+  },
+  {
+   "label": "8/8",
+   "caption": "Last, the bottom ring, which sits under the crucible's base in the model and so comes out after it (the SOP lists it first). The furnace is empty for the explosion-proof vacuum (atom_vac).",
+   "start_frame": 1597,
+   "end_frame": 1601
+  },
+  {
+   "label": "8/8",
+   "caption": "Last, the bottom ring, which sits under the crucible's base in the model and so comes out after it (the SOP lists it first). The furnace is empty for the explosion-proof vacuum (atom_vac).",
+   "start_frame": 1602,
+   "end_frame": 1611
+  },
+  {
+   "label": "8/8",
+   "caption": "Last, the bottom ring, which sits under the crucible's base in the model and so comes out after it (the SOP lists it first). The furnace is empty for the explosion-proof vacuum (atom_vac).",
+   "start_frame": 1612,
+   "end_frame": 1634
+  },
+  {
+   "label": "8/8",
+   "caption": "Last, the bottom ring, which sits under the crucible's base in the model and so comes out after it (the SOP lists it first). The furnace is empty for the explosion-proof vacuum (atom_vac).",
+   "start_frame": 1635,
+   "end_frame": 1645
+  },
+  {
+   "label": "8/8",
+   "caption": "Last, the bottom ring, which sits under the crucible's base in the model and so comes out after it (the SOP lists it first). The furnace is empty for the explosion-proof vacuum (atom_vac).",
+   "start_frame": 1646,
+   "end_frame": 1650
+  },
+  {
+   "label": "8/8",
+   "caption": "Last, the bottom ring, which sits under the crucible's base in the model and so comes out after it (the SOP lists it first). The furnace is empty for the explosion-proof vacuum (atom_vac).",
+   "start_frame": 1651,
+   "end_frame": 1659
+  },
+  {
+   "label": "8/8",
+   "caption": "Last, the bottom ring, which sits under the crucible's base in the model and so comes out after it (the SOP lists it first). The furnace is empty for the explosion-proof vacuum (atom_vac).",
+   "start_frame": 1660,
+   "end_frame": 1695
+  }
+ ]
+}

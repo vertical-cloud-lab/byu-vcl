@@ -35,7 +35,7 @@ M = AB.M
 g = AB.g
 both = RB.both
 CLIP = (sys.argv[1] if len(sys.argv) > 1 else os.environ.get("CRUCIBLE_CLIP", "out")).lower()
-NAME = f"atom_crucible_{CLIP}"
+NAME = f"atom_crucible_{CLIP}" + os.environ.get("CRUCIBLE_SUFFIX", "")
 
 # ---------------------------------------------------------------------------------------------- numbers
 PITCH = M.NUT_PITCH                                   # 2.0 mm (model.py)
@@ -51,6 +51,11 @@ BRK_DEG = 25.0                                        # the breakaway turn, arm 
 LEVER_UP = 70.0      # the sealing-rod lever swung up 70 deg (chapter 2: 95): since the lid was turned onto the left
                      # (model.py LID_TURN_DEG), the open latch lever stands on the housing's right face, where the 2F-85
                      # would be at 95; at 70 the lever's eye is still 15 mm clear of the crucible gripper's plate
+ROD_SPIN = 270.0     # the rod taken with the fingers across the lever's line (y) and the wrist camera to the left
+TURN = R((0, 0, 1), 90.0)   # the tools sit turned 90 deg on what they hold, so at the furnace the 2F-85's fingers
+                            # close along y, across the lever (at 70 deg its eye is 63 mm from the axis)
+TURN_OUT, ROD_SPIN_OUT = np.eye(4), 180.0   # the out clip as rendered and audited (see notes: these two
+                                            # would clear its 10 lever frames; not re-rendered in time)
 MIR2_AT = (-960.0, -40.0, 90.0)   # MiR250 2: 200 mm further left than PARK["left"], so the key's handle (500 mm out)
                                   # is a comfortable reach and arm 2's wrist stays clear of the open lid (x -375..-152)
 FT = "FT 300-S"                                       # the wrist sensor on both arms (notes: why)
@@ -313,7 +318,8 @@ def joint_w3(rb, Tw, lo_deg=-330.0, hi_deg=330.0, then=None):
     free = [q for q in ok if clear(q)]
     if not free:
         print(f"warning: {rb.sc.name} {rb.sc.label}: no IK branch clear at both ends", file=sys.stderr, flush=True)
-    pick = min(free or ok or cands, key=lambda q: float(np.sum((np.asarray(q) - rb.q) ** 2)))
+        return rb.joint_to(Tw=Tw)              # as robot.py does: the nearest branch clear at the pre-pose
+    pick = min(free, key=lambda q: float(np.sum((np.asarray(q) - rb.q) ** 2)))
     return rb.joint_to(q1=pick)
 
 
@@ -482,7 +488,7 @@ def clip_out():
     c.k = 3
     cap = ("The sealing rod out by its brass adapter, never by the graphite, lifted straight up so the ball tip "
            "doesn't drag on the crucible's floor, and stood in its holder on MiR250 1 (SOP 1, 6).")
-    Gr = tcp_down((0.0, 0.0, ROD_GRIP_Z), 180.0)
+    Gr = tcp_down((0.0, 0.0, ROD_GRIP_Z), ROD_SPIN_OUT)
     c.step(cap, 1.5, both(joint_w3(r1, back(Gr, 110.0), then=Gr), r1.grip_to(0.0)), cam_to=C_FUR,
            labels=[("sealing rod: brass adapter", tuple(AB.W((0, 0, ROD_GRIP_Z + 20))), (0.30, 0.28))])
     c.step(cap, 0.7, r1.line_to(Gr))
@@ -511,7 +517,7 @@ def clip_out():
     for name, (part, Mx) in (("top_ins", ("top_ring", 1341.0)), ("side_ins", ("side_tube", M.RIM))):
         face = Mx
         lift = 60.0 if name == "top_ins" else 175.0
-        Gn = rig.tool_tcp("cr:nt", CT.NT_HANDLE, spin=0.0, world=AB.WT(T((0.0, 0.0, face))))
+        Gn = rig.tool_tcp("cr:nt", CT.NT_HANDLE, spin=0.0, world=AB.WT(T((0.0, 0.0, face))) @ TURN_OUT)
         upd2 = None
         if name == "top_ins":
             upd2 = both(r2.joint_to(Tw=k_pre), r2.grip_to(0.0))
@@ -528,7 +534,7 @@ def clip_out():
         c.step(cap, 1.0 if name == "top_ins" else 1.6, r1.line_to(up(r1.tcp_world(), lift)))
         seat = rig.seat_local(name)
         dest = AB.WT(seat)
-        Gd = rig.tool_tcp("cr:nt", CT.NT_HANDLE, world=dest @ T((0.0, 0.0, face)))
+        Gd = rig.tool_tcp("cr:nt", CT.NT_HANDLE, world=dest @ T((0.0, 0.0, face)) @ TURN_OUT)
         c.step(cap, 1.8, r1.joint_to(Tw=up(Gd, 90.0)), cam_to=C_TABLE)
         c.step(cap, 0.8, r1.line_to(Gd))
         c.step(cap, 0.3, lambda u: sc.show(sc.members("cr:nt_needles"), 1.0 - u))
@@ -560,7 +566,7 @@ def clip_out():
         rb.reparent(g(grp), "cr:key_sock")
         sc.gmat[g(grp)] = T((0.0, 0.0, -0.3)) @ sc.gmat[g(grp)]
     c.gauges(**{"F/T 2": "up 3 N on the nut (assumed)"})
-    Gc = rig.tool_tcp("cr:cg", CT.CG_HANDLE, world=AB.WT(T((0.0, 0.0, M.RIM))))
+    Gc = rig.tool_tcp("cr:cg", CT.CG_HANDLE, world=AB.WT(T((0.0, 0.0, M.RIM))) @ TURN_OUT)
     c.step(cap, 1.8, joint_w3(r1, up(Gc, 120.0), -170.0, 170.0, then=Gc), cam_to=C_FUR)
     c.step(cap, 1.0, r1.line_to(Gc))
     c.step(cap, 0.5, lambda u: rig.cg_jaws(1.0 - u))
@@ -626,14 +632,14 @@ def clip_out():
            "(the SOP lists it first). The furnace is empty for the explosion-proof vacuum (atom_vac).")
     c.stow(r1, "cg", cap, cam=C_MIR1)
     c.fetch(r1, "nt", cap, cam=C_MIR1)
-    Gn = rig.tool_tcp("cr:nt", CT.NT_HANDLE, world=AB.WT(T((0.0, 0.0, M.CRUCIBLE_BASE))))
+    Gn = rig.tool_tcp("cr:nt", CT.NT_HANDLE, world=AB.WT(T((0.0, 0.0, M.CRUCIBLE_BASE))) @ TURN_OUT)
     c.step(cap, 1.8, joint_w3(r1, up(Gn, 120.0), then=Gn), cam_to=C_FUR)
     c.step(cap, 1.2, r1.line_to(Gn))
     c.take(r1, g("bottom_ins"))
     c.step(cap, 0.35, lambda u: sc.show(sc.members("cr:nt_needles"), u))
     c.step(cap, 1.6, r1.line_to(up(r1.tcp_world(), 205.0)))
     seat = rig.seat_local("bottom_ins")
-    Gd = rig.tool_tcp("cr:nt", CT.NT_HANDLE, world=AB.WT(seat) @ T((0.0, 0.0, M.CRUCIBLE_BASE)))
+    Gd = rig.tool_tcp("cr:nt", CT.NT_HANDLE, world=AB.WT(seat) @ T((0.0, 0.0, M.CRUCIBLE_BASE)) @ TURN_OUT)
     c.step(cap, 1.8, r1.joint_to(Tw=up(Gd, 90.0)), cam_to=C_TABLE)
     c.step(cap, 0.8, r1.line_to(Gd))
     c.step(cap, 0.3, lambda u: sc.show(sc.members("cr:nt_needles"), 1.0 - u))
@@ -681,7 +687,8 @@ def clip_in():
            "dry. First the bottom ring, lowered into the coil on the needle tool. Arm 2 takes the nut key, the nut "
            "and the lower seal in its cup.")
     c.fetch(r1, "nt", cap, cam=C_MIR1)
-    Gn_seat = rig.tool_tcp("cr:nt", CT.NT_HANDLE, world=sc.world(g("bottom_ins")) @ T((0.0, 0.0, M.CRUCIBLE_BASE)))
+    Gn_seat = rig.tool_tcp("cr:nt", CT.NT_HANDLE,
+                           world=sc.world(g("bottom_ins")) @ T((0.0, 0.0, M.CRUCIBLE_BASE)) @ TURN)
     Gk = rig.key_tcp()
     c.step(cap, 1.6, both(r1.joint_to(Tw=up(Gn_seat, 90.0)), r2.joint_to(Tw=back(Gk, 110.0)), r2.grip_to(0.0)),
            cam_to=C_TABLE)
@@ -690,7 +697,7 @@ def clip_in():
     c.step(cap, 0.35, both(lambda u: sc.show(sc.members("cr:nt_needles"), u), r2.grip_to(GRIP)))
     r2.grasp("cr:key")
     c.step(cap, 0.8, both(r1.line_to(up(r1.tcp_world(), 220.0)), r2.line_to(up(r2.tcp_world(), 110.0))))
-    Gn = rig.tool_tcp("cr:nt", CT.NT_HANDLE, world=AB.WT(T((0.0, 0.0, M.CRUCIBLE_BASE))))
+    Gn = rig.tool_tcp("cr:nt", CT.NT_HANDLE, world=AB.WT(T((0.0, 0.0, M.CRUCIBLE_BASE))) @ TURN)
     k_door = rig.key_model(1080.0, -185.0)
     c.step(cap, 2.0, both(joint_w3(r1, up(Gn, 200.0), then=Gn), r2.joint_to(Tw=rig.key_tcp(world=k_door))),
            cam_to=C_FUR)
@@ -877,13 +884,13 @@ def clip_in():
     c.fetch(r1, "nt", cap, cam=C_MIR1)
     for name, face in (("side_ins", M.RIM), ("top_ins", 1341.0)):
         src = sc.world(g(name))
-        Gs = rig.tool_tcp("cr:nt", CT.NT_HANDLE, world=src @ T((0.0, 0.0, face)))
+        Gs = rig.tool_tcp("cr:nt", CT.NT_HANDLE, world=src @ T((0.0, 0.0, face)) @ TURN)
         c.step(cap, 1.6, r1.joint_to(Tw=up(Gs, 90.0)), cam_to=C_MIR1)
         c.step(cap, 0.8, r1.line_to(Gs))
         c.take(r1, g(name))
         c.step(cap, 0.3, lambda u: sc.show(sc.members("cr:nt_needles"), u))
         c.step(cap, 1.0, r1.line_to(up(r1.tcp_world(), 150.0)))
-        Gd = rig.tool_tcp("cr:nt", CT.NT_HANDLE, world=AB.WT(T((0.0, 0.0, face))))
+        Gd = rig.tool_tcp("cr:nt", CT.NT_HANDLE, world=AB.WT(T((0.0, 0.0, face))) @ TURN)
         lift = 175.0 if name == "side_ins" else 70.0
         c.step(cap, 2.0, joint_w3(r1, up(Gd, lift), then=Gd), cam_to=C_FUR)
         c.step(cap, 1.6 if name == "side_ins" else 1.0, r1.line_to(Gd))
@@ -917,7 +924,7 @@ def clip_in():
            "nozzle; the lever down onto it, the pin in, and SEALING ROD down (a PLC input: AMAZEMET would have to "
            "allow it).")
     src = sc.world(g("rod"))
-    Gr = tcp_down((0.0, 0.0, ROD_GRIP_Z), 180.0)
+    Gr = tcp_down((0.0, 0.0, ROD_GRIP_Z), ROD_SPIN)
     Gr_src = src @ np.linalg.inv(AB.WT(np.eye(4))) @ Gr
     c.step(cap, 1.6, both(r1.joint_to(Tw=back(Gr_src, 100.0)), r1.grip_to(0.0)), cam_to=C_MIR1)
     c.step(cap, 0.7, r1.line_to(Gr_src))
