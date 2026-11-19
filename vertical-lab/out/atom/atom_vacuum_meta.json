@@ -1,0 +1,11 @@
+{
+ "readings_illustrative": {
+  "tool_to_wand": "0.04",
+  "wand_to_coupling": "0.02",
+  "coupling_to_cuff": "0.03",
+  "hose": "4.1",
+  "body_to_ground": "0.2"
+ },
+ "hose_length_mm": 3135.4,
+ "grip_close": 0.6751508675483819
+}

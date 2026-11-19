@@ -137,11 +137,29 @@ are two hoses ($1,292), two wands ($350), two crevice tools ($106), three main f
 **about $5,200**, plus two dust brushes (about $20-40 each, estimated), two Class D extinguishers (Amerex B570, quote) and
 our two stations.
 
-## What was checked
+## The render and what was checked
 
-- `ARM_AUDIT=1`: see the result below.
-- The hose: its own FCL check every audited frame against everything but the wand, its tools, the vacuum's inlet and the
-  floor's markings (`out/collisions/atom_vacuum_hose.json`).
+- **The clip**: `atom_vacuum`, 142 s, 1420 frames at 10 fps (`VIZ3D_FPS=10`: the render queue was full), 1280 x 720;
+  `out/mp4/atom_vacuum.mp4` (8.0 MB); `out/atom_vacuum.gif` re-encoded to 512 px with every other frame (3.5 MB: the
+  scene's own GIF was 8.7 MB); `out/atom_vacuum_still.png` is the first floor lane (taken from the MP4 at 68 s).
+- **Arm audit** (rendered and audited in one pass, round 11 rules): **11 of 1184 motion frames in collision**, all in the
+  last holster steps: the UR10e's upper arm against the vacuum's body (frames 1346-1350, the joint move from the clear
+  pose to above the holster) and against its own wrist 2 (frames 1399-1404, the final back-off). Not fixed: there was no
+  time for another render. The fix is to back off upwards first and park the arm by a planned joint move, and to keep
+  the arm's elbow on the station's side, away from the vacuum. Everything before that (taking the wand, the
+  continuity check, the equalization touch, the passes inside the chamber, the tool change, the brush) is clear. The
+  movers check: 0 frames.
+- Earlier audits on the way, and what each fix was: 788 frames (the tool through the meter shelf at the fixture, the
+  crevice slot's edges in the floor and the wall, the tool in the outlet's cone); 232 (the gripper and wrist at the
+  door during the catch bowl); 259 and 56 (the wand and tool through the station's post on the way to the rack, from a
+  "clear" pose I had picked inside the post; the probes on the fixture); then 11.
+- The hose: its own FCL check every audited frame against everything but the wand, its tools, the vacuum's inlet, the
+  floor's markings and the ground cables (`out/collisions/atom_vacuum_hose.json`), with `collide.depth` for how deep.
+  Result: it never enters the vacuum, the chamber, the MiR or the arm's links, but it **rests on and against our
+  station** in every frame, and the drawn tube sinks 3-6 mm into the station's 14 mm base plate (890 frames), its post
+  (736) and tool rack (129), the station's ground lug (246) and the vacuum pump's casing (87); it touches the gripper's
+  fingertips in 7 frames. The links are 62 mm and the tube is drawn through a spline, which cuts the corners where the
+  hose bends over an edge. A finer chain or a route that keeps the hose off the station is the fix.
 - The tool's reach through the door: with the crevice tool the grasp point is 648 mm behind the tip. For the floor's
   lanes down to x = 212 the gripper stays outside the door; the catch bowl (its near rim at x = 232, 290 mm past the
   door at the floor's foot) put the gripper and the wrist into the door's front edge and the swung clamps in the audit

@@ -1,0 +1,121 @@
+{
+ "what": "the hose (a relaxed chain, re-meshed every frame) against everything but the wand, its tools, the vacuum's inlet and the floor's markings",
+ "frames_checked": 1184,
+ "frames_with_contact": 1184,
+ "frames_through": 1152,
+ "depth_note": "collide.depth, sampled: 1.5 or 3 = resting against it (touching), more = through it",
+ "hits": {
+  "vac:station/stn base": {
+   "frames": 1121,
+   "first": 8,
+   "last": 1404,
+   "deeper_than_3mm": 890,
+   "max_depth_mm": 6.0
+  },
+  "vac:station/stn ground lug": {
+   "frames": 264,
+   "first": 8,
+   "last": 400,
+   "deeper_than_3mm": 246,
+   "max_depth_mm": 6.0
+  },
+  "vac ground bar": {
+   "frames": 1184,
+   "first": 8,
+   "last": 1404,
+   "deeper_than_3mm": 11,
+   "max_depth_mm": 6.0
+  },
+  "vac:station/stn post": {
+   "frames": 872,
+   "first": 23,
+   "last": 1404,
+   "deeper_than_3mm": 736,
+   "max_depth_mm": 6.0
+  },
+  "vac:station/stn tool rack (ours)": {
+   "frames": 217,
+   "first": 32,
+   "last": 1368,
+   "deeper_than_3mm": 129,
+   "max_depth_mm": 6.0
+  },
+  "vac:station/stn holster (ours)": {
+   "frames": 28,
+   "first": 306,
+   "last": 1331,
+   "deeper_than_3mm": 17,
+   "max_depth_mm": 6.0
+  },
+  "urB/gr/right_knuckle/0": {
+   "frames": 1,
+   "first": 503,
+   "last": 503,
+   "deeper_than_3mm": 0,
+   "max_depth_mm": 1.5
+  },
+  "urB/gr/right_finger/0": {
+   "frames": 1,
+   "first": 503,
+   "last": 503,
+   "deeper_than_3mm": 1,
+   "max_depth_mm": 6.0
+  },
+  "urB/gr/right_finger/1": {
+   "frames": 1,
+   "first": 503,
+   "last": 503,
+   "deeper_than_3mm": 0,
+   "max_depth_mm": 1.5
+  },
+  "vacuum_pump": {
+   "frames": 90,
+   "first": 526,
+   "last": 623,
+   "deeper_than_3mm": 87,
+   "max_depth_mm": 6.0
+  },
+  "vac:station/stn fixture (ours)": {
+   "frames": 182,
+   "first": 619,
+   "last": 1366,
+   "deeper_than_3mm": 8,
+   "max_depth_mm": 6.0
+  },
+  "urB/gr/left_finger/0": {
+   "frames": 1,
+   "first": 1200,
+   "last": 1200,
+   "deeper_than_3mm": 0,
+   "max_depth_mm": 1.5
+  },
+  "urB/gr/left_finger_tip/0": {
+   "frames": 7,
+   "first": 1201,
+   "last": 1207,
+   "deeper_than_3mm": 7,
+   "max_depth_mm": 6.0
+  },
+  "urB/gr/left_finger_tip/1": {
+   "frames": 7,
+   "first": 1201,
+   "last": 1207,
+   "deeper_than_3mm": 7,
+   "max_depth_mm": 6.0
+  },
+  "urB/gr/right_finger_tip/0": {
+   "frames": 4,
+   "first": 1206,
+   "last": 1209,
+   "deeper_than_3mm": 2,
+   "max_depth_mm": 6.0
+  },
+  "urB/gr/right_finger_tip/1": {
+   "frames": 1,
+   "first": 1208,
+   "last": 1208,
+   "deeper_than_3mm": 0,
+   "max_depth_mm": 3.0
+  }
+ }
+}
