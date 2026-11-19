@@ -90,7 +90,7 @@ end = rack.slice_plane([0, -16.5, 0], [0, 1, 0], cap=True).slice_plane([0, 0, 8.
 views = ((key, 50, -90, KEY_RGB, "Key from above, −y end nearest: the nub points\nat you; the dimple (0.05 mm press) is at the far end"),
          (key, -30, -60, KEY_RGB, "Key from below: the two barbed latch arms,\nunchanged from v2_1"),
          (key, 0, 0, KEY_RGB, "Key from the side (+x): the 2.0 mm nub over\nthe pill; z = 0 is the deck top"),
-         (end, -55, -70, RACK_RGB, "Rack from below, at vial 1: the 2.1 mm\ntriangular pocket (vial 7 has the other)"))
+         (end, -55, -70, RACK_RGB, "Rack from below, at vial 1: the 2.1 mm triangular\npocket (the other is 225 mm along, near vial 8)"))
 fig, axs = plt.subplots(1, 4, figsize=(15.5, 5.0), dpi=110)
 fig.patch.set_facecolor(SURF)
 for ax, (m, e, a, rgb, title) in zip(axs, views):

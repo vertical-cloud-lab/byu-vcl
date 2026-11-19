@@ -95,9 +95,9 @@ stem versions stay, so the two interfaces can be compared on the machine.
     is the size @benwhitney5463 chose for the stir module in the 2026-10-22 fit test.
   - One dimple in its top face marks the 0.05 mm press. It sits at the end away from the nub's
     point, as on the stir module's keys.
-- **`vial_rack_9x20mL_v2_tri`** is the v2 rack with Cubware's pockets under vials 1 and 7 in place
-  of the stem pockets. They are in the same place, size and orientation as in PANDA-BEAR's
-  `9VialHolder20mL_TightFit`. Nothing else changed.
+- **`vial_rack_9x20mL_v2_tri`** is the v2 rack with Cubware's pockets in place of the stem pockets,
+  under vial 1 and 225 mm along the rack (near vial 8). They are in the same place, size and
+  orientation as in PANDA-BEAR's `9VialHolder20mL_TightFit`. Nothing else changed.
 - **The tri key fits every part with that pocket.** That means the stir module bases, the original
   9-vial holder, and the parts that take the stir module's key, so it can clip any of them to the
   deck. The two interfaces don't mix: the tri key won't go into the stem rack printed on
@@ -151,7 +151,7 @@ pull. For comparison, the stem was 5 mm deep with crush ribs, and the nub is 2 m
   and press it back into the rack.
 
 **Fitting:** turn each key so its nub points the same way as the pocket's point. Both of the
-rack's pockets point toward −y, toward the vial after them. Stand two keys nub-up on the bench,
+rack's pockets point toward −y, away from vial 1. Stand two keys nub-up on the bench,
 set the rack on them with its pockets over the nubs, and press down over each key until the
 rack's underside meets the key's top face. If a thumb isn't enough, use a vise or clamp with a
 flat block on each side. Then clip the rack onto the deck as with v2_1.
