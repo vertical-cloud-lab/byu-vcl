@@ -36,36 +36,31 @@ How each unit was put on this model (`atom_cams.py`; the same moves as DAL's `ca
 - **Top:** not moved. The Onshape arm aims at (0, 0, 1240): the crucible datum (`M.Z_CR` 1219.2) plus ~20 mm of melt,
   DAL's aim, which holds on this model too.
 
-## The lid window: DAL is right, the model's slot is not (and the model's lid is turned 90 deg)
+## The lid window: DAL was right, and the model's lid has been turned
 
-This model has a 26 x 84 mm slot on the lid's LEFT facet (#327, from T4 5:16). DAL measured a 60 x 64 mm glass-ceramic
+#327's model had a 26 x 84 mm slot on the lid's LEFT facet (from T4 5:16). DAL measured a 60 x 64 mm glass-ceramic
 window in a polished plate with 8 screws on the lid's FRONT facet, ~50 deg from level, centre about (y -94, z 1455)
-(`measure/measurements.md` section 3; frames DWH1CEygsTI 25:40, 58wJ_Khwgyk 58:06, of5-LhkX_VQ 24:18). I checked the
-frames DAL used:
+(`measure/measurements.md` section 3). I checked the frames DAL used:
 - **DWH1CEygsTI 25:40** (DAL's annotated frame): the window face on, and behind it, on the right, the GU 500 AMA
   keypad on the blue cabinet, also face on. The cabinet is behind the machine (+y), so the camera looks along +y and
   the window faces -y: the front facet. The knob is to the window's right.
 - **2wMgeI-E7zw 10:00** (the whole machine from the front left): the lid stands open on the furnace's left, its inside
   facing right; the latch is seen edge-on on the body's right side.
-- **1F9_4ccwhss (T4) 5:05 and 5:16**: these fit a camera on the machine's right looking left (the latch's bolt runs to
-  the right, into the cabinet, i.e. back). The narrow "slot" at the top left of 5:16 is the front window seen edge-on.
+- **1F9_4ccwhss (T4) 5:05 and 5:16**: these fit a camera on the machine's right looking left (the latch's bolt runs
+  into the cabinet, i.e. back). The narrow "slot" at the top left of 5:16 is the front window seen edge-on.
 
-So DAL's reading (hinge on the left, knob on the right, window on the front facet) fits all four frames. The model's
-lid (#327: hinge at the back, knob on the front, window on the left) is the same lid turned 90 deg about the furnace
-axis. A second check points the same way: **opened about its back hinge, the model's lid runs into the blue cabinet.**
-The hinge axis (y 154) is 11 mm in front of the cabinet's face (y 165): the hinge leaf's top reaches the face at about
-5 deg, the lid's shell at about 30 deg, and at the full 105 deg the shell's top is about 185 mm inside the cabinet
-(geometry; the audit's movers check on a ghost copy of the lid reported the same, more than 50 mm deep). A left hinge
-has room.
+So DAL's reading (hinge on the left, knob on the right, window on the front facet) fits all four frames, and #327's
+lid (hinge at the back, knob on the front, window on the left) was the same lid turned 90 deg. A second check agreed:
+opened about #327's back hinge, the lid ran into the blue cabinet (its hinge axis was 11 mm in front of the cabinet's
+face: the shell met it at about 30 deg, and at 105 deg the shell's top was about 185 mm inside). I reported this and
+the coordinator turned the lid in `repowder/model.py` (commit e3b1428): hinged on the left, knob and latch on the right,
+DAL's window and plate on the front facet at this camera's line (s 0.47, centre about (0, -95, 1459)).
 
-What I did, without editing `repowder/model.py`: DAL's plate and pane (STEP parts) go on the model's FRONT facet as a
-part of `atom_cams.py` riding the lid (`cams:lid_window`), centred where the camera's line crosses this facet,
-(0, -95.6, 1458.9), turned from DAL's 50 deg facet to this model's 53 deg; the lid's mesh in this scene is rebuilt with
-the model's own calls (`M._prism`) with that 60 x 64 opening cut and without the left slot; `hood_window` is hidden.
-Side effect: the knob, which the model puts at the front facet's foot, sits under the window here; on the machine it
-is to the window's right. **For the model's owner:** the lid (and the latch with it) should be turned 90 deg, hinge on
-the left (DAL: x about -160, pin along y), or measured first (DAL's guide, sheet 7). Every clip that opens the lid
-inherits this.
+This clip uses the model's lid and window as they are now. One thing is done in this scene only: the model cuts the
+window as a 2 mm pocket in the lid's 4 mm wall (as #327 cut its slot), so `add_units` opens it through (60 x 64 mm,
+`see_window`), or the top camera would see the pane's back. The pane itself is left out of the feeds, like every glass.
+(My earlier stand-in, DAL's pane re-fitted onto #327's lid with a rebuilt lid mesh, is still in `atom_cams.py` as
+`window=True`, off by default.)
 
 ## What each camera sees (rendered, and in numbers)
 
@@ -96,17 +91,17 @@ sight glass first (DAL guide, sheet 5; its y is the number the two models disagr
 | 1/6 | the three units on the machine | (installed by a person, DAL "Assembly, briefly") | DAL README |
 | 2/6 | lines of sight: the top camera's line through the window to the melt (66.4 deg below level); the front pair along the port axis; the left on the sight-glass axis | | DAL README "Design"; placement.json |
 | 3/6 | MiR250 1 drives to (100, -620) (model frame, ours: the first spot from which every pose is reachable and no link touches anything); the UR10e closes the 2F-85 on the extrusion 300 mm out from the post (top and bottom faces, closed to 20.6 mm), swings the arm +90 deg about the post until the plunger clicks into "parked", lets go and backs off 60 mm; later grips again and swings it back to "working" | arm 1 | park +90 deg: DAL `viewport_mounts.fs` (`park`, default 90); detent: DAL README "The arm" |
-| 3/6 | why it parks: in "working" the arm, pod and display box hang 1.68-1.84 m up over the front of the furnace, where the loading arm's wrist and tong come in (chapter 2's tong is held 185 mm above the cup, `TONG_GRASP`) | | DAL: "Swing the arm clear to load the crucible" |
+| 3/6 | why it parks: the lid's swing, shown as two still ghosts (52 and 105 deg, hinged on the left), passes 132.6 mm from the arm in its working dimple, so the lid alone would clear it; the loading arm's wrist and tong come in over the furnace where the arm, pod and display box hang, 1.68-1.84 m up (chapter 2's tong is held 185 mm above the cup, `TONG_GRASP`) | | DAL: "Swing the arm clear to load the crucible" |
 | 3/6 | MiR250 1 drives to its waiting spot (250, -1250) | MiR 1 | ours |
 | 4/6 | the displays, which Pi drives which; the atomizer's own HMI (Weintek cMT2166X) is separate | | DAL README "Displays"; DAL #258 |
 | 5/6 | the charge (the model's four 17 x 100 mm slugs, ours) heats and slumps into a pool about 29 mm over the crucible datum; the top feed shows it on the 2.8 in display and in a panel | the machine | chapter 2 (`alloy_atomize`) for the coil glow; DAL for the hot mirror and ND |
 | 6/6 | the pour: sealing rod up, the stream onto the plate, the spray; front and left feeds on their displays and in panels | the machine | chapter 2's stream, film and particles |
 
-Why the robot parks the arm rather than the lid needing it: in this model, if the lid could swing 105 deg back (it
-cannot, see above), it would pass 130 mm under the arm in its working dimple (at 79 deg, knob to hub); DAL gives
-118 mm for its left-hinged lid. So in neither case does the lid itself hit the arm. The arm is parked for the loading
-reach, as DAL parks it for loading by hand. I did not open the lid in this clip: in this model that motion goes
-through the blue cabinet.
+Why the robot parks the arm rather than the lid needing it: on the turned lid (e3b1428), the swing passes **132.6 mm**
+from the arm in its working dimple, at about 60 deg (the knob against the extrusion; FCL over 22 positions of the
+swing). DAL gives 118 mm for its own model. So the lid alone would clear the arm; the arm is parked for the loading
+reach, as DAL parks it for loading by hand. The lid is shown as still ghosts rather than opened: opening it needs the
+latch released and a hand on the knob, which are other clips (`atom_latch`).
 
 Forces, ours/assumed: the M6 ball plunger's spring is not published for the HARFINGTON pick; JW Winco's GN 615-M6-K
 is 11-18 N (DAL shopping list). On a 45 deg dimple at ~20 mm from the post that is ~0.4 N m, ~1.2 N at the 300 mm grip:
@@ -116,11 +111,14 @@ for the whole park-and-return including the approach.
 
 ## Checks
 
-- **ARM_AUDIT=1 on the final script: 0 of 1178 frames with an arm, gripper or held-part collision, 0 mover contacts
+- **ARM_AUDIT=1 on the final script (turned lid, e3b1428): 0 of 1181 frames with an arm, gripper or held-part collision, 0 mover contacts
   (round 11 strict rules).** Getting there: the first version followed the arc with `follow()`, whose chords put the
   hub 0.3 mm into its post for 40 frames; the swing now solves the tool's pose on the exact arc each frame. The nearest
   IK branch put the upper arm through the front unit at every spot tried; the spot search now tries every branch and
-  drives the clear one (`joint_to(q1=...)`). MiR 1's first waiting spot overlapped MiR 2 (parked at the right, out of
+  drives the clear one (`joint_to(q1=...)`). After the lid was turned, another branch passed the world check but put
+  the forearm into the held arm and the gripper on the way back; the plan now runs the whole sequence with the arm
+  actually held (self and held-part contacts checked), records the joint paths, plays them back, and returns by the
+  same path reversed. MiR 1's first waiting spot overlapped MiR 2 (parked at the right, out of
 the views; it has no part here); moved. Chapter 2's
   stream was cutting the vibrating plate by 3 mm; the vibration is not shown and the stream stops 4 mm short.
 - **Clearances (FCL, this model):**
@@ -132,15 +130,15 @@ the views; it has no part here); moved. Chapter 2's
     the same way. DAL's measurements put the bolt ~50 mm left of the cover: the model's bolt (pin at x -90) should move.
   - left unit: 3.1 mm from `clamp0` with the door shut; through the door's swing (clamps open) at least 37 mm, from
     the coil leads at full open; more than 55 mm from the stack (DAL: 61.5 mm).
-  - top unit: the magnetic base sits on the frame's top; the lens 229 mm from the lid's knob; parked, 76 mm from the
-    cabinet; working, 130 mm from where the lid's swing would pass.
+  - top unit: the magnetic base sits on the frame's top; parked, 76 mm from the cabinet; working, 132.6 mm from the
+    lid's swing (turned lid, e3b1428; DAL 118 mm).
 - The feeds were checked by casting each camera's axis: before the bores, the front pair saw DAL's solid nut 10 mm
   away and the left camera the door's plate.
 
 ## Not done
 
-- No motion of the lid (model problem above), no tilt for the front HQ or the left camera (DAL's own open item for the
-  HQ), no cable runs, no streaming.
+- The lid is not opened (ghosts only), no tilt for the front HQ or the left camera (DAL's own open item for the HQ),
+  no cable runs, no streaming.
 - The upper swing bolt's knob scrapes the front socket when it is swung open (0.09 mm at the closest sample), with
   the bolt where the model has it.
 - The left unit's view of the plate (above) needs the sight glass measured.
@@ -149,7 +147,8 @@ the views; it has no part here); moved. Chapter 2's
 
 ## Open questions for the lab
 
-1. Which way does the furnace lid hinge, left (DAL) or back (#327)? Every lid motion in this PR depends on it.
+1. The lid is now hinged on the left in the model (DAL's reading of the frames); worth confirming on the machine
+   (DAL's guide, sheet 7), with the window's size and height.
 2. Where exactly is the door's sight glass, and can a camera behind it see the plate at all?
 3. Should the front HQ get DAL's adjustable tilt (+10 to -30 deg) now that both models put the landing point 24 deg
    under the axis?

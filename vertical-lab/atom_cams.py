@@ -31,12 +31,12 @@ as DAL's ``cad/units.py`` moved it onto a model whose windows differ:
 - top: not moved. The Onshape arm aims at (0, 0, 1240), the crucible datum (``M.Z_CR`` 1219.2) plus ~20 mm of melt,
   which is DAL's aim on this model too.
 
-The lid window: this model has a 26 x 84 slot on the lid's LEFT facet (#327, read off T4 5:16); DAL measured a
-60 x 64 mm glass-ceramic window in a polished 8-screw plate on the lid's FRONT facet at ~50 deg (DWH1 25:40 and
-58wJ 58:06 face on; measurements.md section 3). The frames favour DAL (notes/atom_cameras.md, "The lid window"), and
-the top unit is designed for it, so ``add_units`` puts DAL's plate and window on this model's front facet, as a part of
-this file riding the lid's group, swaps the lid's mesh in this scene only for one with that opening cut and the slot
-closed, and hides ``hood_window``. ``repowder/model.py`` is not changed.
+The lid window: #327's model had a 26 x 84 slot on the lid's left facet; DAL measured a 60 x 64 mm glass-ceramic
+window in a polished 8-screw plate on the lid's FRONT facet. The frames favour DAL, and so does the lid's swing (hinged
+at the back, #327's lid ran into the blue cabinet), so the model's lid was turned 90 deg in commit e3b1428 (hinge on
+the left, DAL's window and plate on the front facet, at this top camera's line). ``add_units`` therefore uses the
+model's lid and window as they are; ``window=True`` (DAL's pane re-fitted onto the old lid, ``lid_mesh``) is kept only
+for the old model and is off by default.
 
 API (importable without side effects; nothing is read until called):
 
@@ -451,19 +451,53 @@ def bore(mesh, p, n, r: float):
     m = mesh.triangulate().clean().subdivide_adaptive(max_edge_len=4.0)
     rel = np.asarray(m.points) - np.asarray(p, float)
     m.point_data["_bore"] = np.linalg.norm(rel - np.outer(rel @ n, n), axis=1) - r
-    out = m.clip_scalar(scalars="_bore", value=0.0, invert=False).extract_surface()
+    out = m.clip_scalar(scalars="_bore", value=0.0, invert=False).extract_surface(algorithm="dataset_surface")
     for key in list(out.point_data.keys()):
         if key == "_bore":
             del out.point_data[key]
     return out
 
 
+def window_hole(mesh, c, n, xa, w: float, h: float, depth: float = 20.0):
+    """The mesh with a w x h rectangle clipped through it (centre c, normal n, x axis xa, +-depth along n)."""
+    n = np.asarray(n, float) / np.linalg.norm(n)
+    xa = np.asarray(xa, float) - n * float(np.dot(xa, n))
+    xa /= np.linalg.norm(xa)
+    ya = np.cross(n, xa)
+    m = mesh.triangulate().clean().subdivide_adaptive(max_edge_len=4.0)
+    rel = np.asarray(m.points) - np.asarray(c, float)
+    m.point_data["_hole"] = np.maximum.reduce([np.abs(rel @ xa) - w / 2, np.abs(rel @ ya) - h / 2,
+                                                np.abs(rel @ n) - depth])
+    out = m.clip_scalar(scalars="_hole", value=0.0, invert=False).extract_surface(algorithm="dataset_surface")
+    if "_hole" in out.point_data:
+        del out.point_data["_hole"]
+    return out
+
+
+def model_window() -> dict | None:
+    """The model's own lid window (commit e3b1428): centre on the front facet, normal, axes, size; None before it."""
+    M = _M()
+    lw = getattr(M, "LID_WINDOW", None)
+    if lw is None:
+        return None
+    # the window is on the lid's own "left" facet (repowder/model.py hood_parts); turned=True (the default) puts it in
+    # the machine's frame, where the turn has brought that facet to the front
+    o, n = M.facet_plane(M.lid_params(), "left", lw["s"])
+    n = np.asarray(n, float) / np.linalg.norm(n)
+    xa = np.cross([0.0, 0.0, 1.0], n)
+    return dict(centre=np.asarray(o, float), normal=n, x=xa / np.linalg.norm(xa), w=float(lw["w"]), h=float(lw["h"]))
+
+
 # ------------------------------------------------------------------------------------------- into a scene
-def add_units(sc, window: bool = True, hide_model_port: bool = True, sight: bool = True) -> dict:
+def add_units(sc, window: bool = False, hide_model_port: bool = True, sight: bool = True,
+              see_window: bool = True) -> dict:
     """Add the three units to a Scene built by atom_base.build: the front unit on the chamber, the left unit on the
     door's group (it swings with the door), the top post fixed on the blue frame's top and its arm in its own group
-    (``set_top_arm``). window=True also adds DAL's lid window on the lid's front facet (riding the lid), re-cuts the
-    lid's mesh for it and hides the model's left-facet slot. Returns {unit: [actor names]}."""
+    (``set_top_arm``). The model's own lid window is used (commit e3b1428); window=True re-fits DAL's pane onto the
+    pre-e3b1428 lid instead (legacy). sight=True cuts the 44 mm hole behind the door's sight glass in this scene's door
+    mesh (the model's glass is a disc on the plate); see_window=True opens the model's lid window through (it is a
+    2 mm pocket in the 4 mm wall), so the top camera can see in; DAL's port nut is bored to the glass. Returns
+    {unit: [names]}."""
     import atom_base as AB
     import pyvista as pv
     parts = dal_parts()
@@ -503,6 +537,12 @@ def add_units(sc, window: bool = True, hide_model_port: bool = True, sight: bool
             if nm in sc.actors:
                 sc.show([nm], 0.0)
                 sc.base_alpha[nm] = 0.0
+    mw = model_window() if not window else None
+    if mw is not None and see_window:       # the model cuts its window as a 2 mm pocket in a 4 mm wall: open it through
+        for nm in ("hood", "w:hood"):
+            if nm in sc.actors:
+                m0 = pv.wrap(sc.actors[nm].GetMapper().GetInput())
+                sc.set_mesh(nm, window_hole(m0, mw["centre"], mw["normal"], mw["x"], mw["w"], mw["h"]))
     if sight:                               # this model's door has no hole behind its sight glass: cut one here
         M = _M()
         for nm in ("door", "w:door"):
@@ -634,7 +674,8 @@ class Feeds:
         if self.off:
             return
         skip_all = {n for n in self.sc.actors if ("glass" in n.lower() and "ring" not in n.lower())
-                    or "lid window" in n.lower() or n.startswith(("cams los", "cams lid ghost"))}
+                    or "lid window" in n.lower() or n.split(":")[-1] == "hood_window"
+                    or n.startswith(("cams los", "cams lid ghost"))}
         own = {"top_hq": ("cams arm:",), "front_hq": ("cams front: front", "cams front: (bought)"),
                "front_wide": ("cams front: front", "cams front: (bought)"), "left_wide": ("cams left:",)}
         for key, (ren, _) in self.rens.items():
@@ -664,11 +705,7 @@ class Feeds:
             cam.SetClippingRange(2.0, max(far, 4000.0))
 
     def _grab(self, img: np.ndarray):
-        H0 = self.H0
-        import os
-        if os.environ.get("CAMS_DEBUG"):
-            from PIL import Image
-            Image.fromarray(img).save(f"/tmp/cams_work/full_{self.sc.n:05d}.png")
+
         for i, key in enumerate(self.ORDER):
             ren, h = self.rens[key]
             x0 = i * self.slot[0]

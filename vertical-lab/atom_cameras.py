@@ -120,6 +120,29 @@ AA.add_stream(sc, radius=1.4)
 spray = AA.Particles(sc, "spray", (1.0, 0.62, 0.28), size=4.0, slowmo=0.22, seed=3)
 drops = AA.Particles(sc, "drops", (1.0, 0.55, 0.20), size=5.0, slowmo=0.22, seed=4)
 
+# --------------------------------------------------------------------------------- the lid's swing, as a still ghost
+# two copies of the lid (model, e3b1428: hinged on the left) at half and full opening; they never move while shown
+GHOSTS = {}
+for tag, v_g in (("a", 0.5), ("b", 1.0)):
+    grp = f"cams:lid_ghost_{tag}"
+    for g_ in (AB.g("hood"), AB.g("knob")):
+        for n in sc.members(g_):
+            if sc.cutrole.get(n) not in (None, "whole") or sc.base_alpha.get(n, 1.0) <= 0.02 or n.endswith("#cut"):
+                continue
+            gn = f"cams lid ghost {tag} {n}"
+            sc.add(gn, pv.wrap(sc.actors[n].GetMapper().GetInput()).copy(), (0.55, 0.66, 0.90), grp, opacity=0.25,
+                   specular=0.0, ambient=0.5)
+            GHOSTS.setdefault(tag, []).append(gn)
+    sc.parent[grp] = "rp"
+    sc.gmat[grp] = M.joint_matrix("lid", v_g)
+    sc.show(GHOSTS[tag], 0.0)
+
+
+def ghosts(a: float):
+    for tag in GHOSTS:
+        sc.show(GHOSTS[tag], a)
+
+
 # --------------------------------------------------------------------------------- the live feeds
 feeds = CAMS.Feeds(sc, every=2)
 feeds.add_display_textures()
@@ -160,8 +183,10 @@ def reachable(poses) -> bool:
     return True
 
 
-# the spot MiR 1 drives to for the swing: the first (ours) from which IK reaches every pose of the sequence and no
-# link of the arm touches anything (collide.Checker against the scene as it stands, the camera arm at each end)
+# the spot MiR 1 drives to for the swing (ours): the first, over every IK branch, from which the whole sequence is
+# reachable and clean, checked as it will run: the approach line with the fingers open, the swing with the arm held
+# (held part and gripper against everything, the arm against itself and the held part), the back-off. The paths are
+# recorded and played back, and the return is the same path reversed.
 BACK = 60.0                            # mm the tool backs off along its axis before and after holding the bar
 CLOSE_BAR = UA.close_for(BAR + 0.6)
 SPOTS = [(x, y, yaw) for y in (-620.0, -680.0, -580.0, -740.0) for x in (100.0, 200.0, 0.0, 300.0, -100.0)
@@ -169,6 +194,7 @@ SPOTS = [(x, y, yaw) for y in (-620.0, -680.0, -580.0, -740.0) for x in (100.0, 
 start_xy = (ma.x, ma.y, ma.yaw)
 q_home = rb.q.copy()
 chk = rb.checker()
+ARM_G, POST_G = CAMS.GROUPS["arm"], CAMS.GROUPS["post"]
 
 
 def _inv(Mx):
@@ -178,53 +204,72 @@ def _inv(Mx):
     return Mi
 
 
-def spot_ok(spot):
-    """The joint pose at the backed-off pre-grasp (an IK branch) from which the whole sequence is reachable with no
-    link or finger touching anything but the extrusion it holds; None if no branch is."""
+def _solve_path(poses, q):
+    out = []
+    for Tw in poses:
+        q = rb.solve(Tw, q)
+        if np.linalg.norm(rb.tcp_world(q)[:3, 3] - Tw[:3, 3]) > 0.5:
+            raise ValueError("off the path")
+        out.append(q.copy())
+    return out
+
+
+def _bad(hits):
+    """Hits that count: anything but the fingers on the extrusion they hold."""
+    return [h for h in hits if not (h[0] == "gripper" and h[3] == ARM_G)]
+
+
+def plan(spot):
     import collide
     AB.mir_at(ma, spot)
     rb.q = q_home.copy()
-    seq0 = [(grip_pose(0.0, BACK), 0.0), (grip_pose(0.0), CLOSE_BAR)] + [(Tw, CLOSE_BAR) for Tw in arc(0.0, 0.5, 7)]
-    seq1 = [(Tw, CLOSE_BAR) for Tw in arc(0.5, 1.0, 7)] + [(grip_pose(1.0, BACK), 0.0)]
     try:
-        branches = collide.ik_all(rb.model, _inv(sc.world(rb.root)) @ seq0[0][0], q_home)
+        branches = collide.ik_all(rb.model, _inv(sc.world(rb.root)) @ grip_pose(0.0, BACK), q_home)
     except ValueError:
         return None
-    worlds = {}
-    for v_world in (0.0, 1.0):
-        CAMS.set_top_arm(sc, v_world)
-        worlds[v_world] = chk.snapshot()
-    CAMS.set_top_arm(sc, 0.0)
+    line0 = [grip_pose(0.0, BACK * (1 - t)) for t in np.linspace(0, 1, 21)]
+    line1 = [grip_pose(1.0, BACK * t) for t in np.linspace(0, 1, 21)]
+    vs = np.linspace(0.0, 1.0, 121)
+    ev = list(rb.events)
     for q0 in branches:
-        q, ok = np.asarray(q0, float), True
-        for v_world, seq in ((0.0, seq0), (1.0, seq1)):
-            for Tw, close in seq:
-                try:
-                    q = rb.solve(Tw, q)
-                except ValueError:
-                    ok = False
-                    break
-                if np.linalg.norm(rb.tcp_world(q)[:3, 3] - Tw[:3, 3]) > 0.5:
-                    ok = False
-                    break
-                hits = chk.collisions(q, close, worlds[v_world], allow={CAMS.GROUPS["arm"]})
-                bad = [h for h in hits if h[0] in ("arm", "gripper")]
-                if bad:
-                    if os.environ.get("CAMS_SPOT_DEBUG"):
-                        print("spot", spot, "v", v_world, "hits", [h[:4] for h in bad][:3], flush=True)
-                    ok = False
-                    break
-            if not ok:
+        CAMS.set_top_arm(sc, 0.0)
+        try:
+            p_in0 = _solve_path(line0, np.asarray(q0, float))
+            p_sw = _solve_path([grip_pose(v) for v in vs], p_in0[-1])
+            p_out1 = _solve_path(line1, p_sw[-1])
+        except ValueError:
+            continue
+        world0 = chk.snapshot()
+        if any(_bad(chk.collisions(q, 0.0, world0, allow={ARM_G})) for q in p_in0[:-1]):
+            continue
+        rb.set(p_in0[-1], CLOSE_BAR)
+        rb.grasp(ARM_G)
+        world_h = chk.snapshot()
+        ok = True
+        for v, q in zip(vs, p_sw):
+            rb.set(q)
+            if _bad(chk.collisions(q, CLOSE_BAR, world_h, allow={ARM_G})):
+                if os.environ.get("CAMS_SPOT_DEBUG"):
+                    print("spot", spot, "swing v", round(float(v), 2),
+                          _bad(chk.collisions(q, CLOSE_BAR, world_h, allow={ARM_G}))[:3], flush=True)
+                ok = False
                 break
+        rb.release("rp")
+        CAMS.set_top_arm(sc, 1.0)
         if ok:
-            return np.asarray(q0, float)
+            world1 = chk.snapshot()
+            ok = not any(_bad(chk.collisions(q, 0.0, world1, allow={ARM_G})) for q in p_out1[1:])
+        CAMS.set_top_arm(sc, 0.0)
+        rb.events[:] = ev
+        if ok:
+            return dict(q_pre=np.asarray(q0, float), in0=p_in0, sw=(vs, p_sw), out1=p_out1)
     return None
 
 
-SPOT, Q_PRE = None, None
+SPOT, PLAN = None, None
 for s_ in SPOTS:
-    Q_PRE = spot_ok(s_)
-    if Q_PRE is not None:
+    PLAN = plan(s_)
+    if PLAN is not None:
         SPOT = s_
         break
 CAMS.set_top_arm(sc, 0.0)
@@ -232,18 +277,67 @@ if SPOT is None:
     raise SystemExit("no MiR spot reaches the swing clear of the machine")
 ma.set(*start_xy)
 rb.q = q_home.copy()
-rb.set()
+rb.set(close=0.0)
+Q_PRE = PLAN["q_pre"]
 print("MiR 1 swing spot (model frame x, y, yaw):", SPOT, "branch", np.degrees(Q_PRE).round(1).tolist(), flush=True)
 
 
+def play(path):
+    """update(u): the arm through a recorded joint path (linear between its samples)."""
+    path = [np.asarray(q, float) for q in path]
+
+    def up(u):
+        x = u * (len(path) - 1)
+        i = min(int(x), len(path) - 2)
+        rb.set(path[i] + (path[i + 1] - path[i]) * (x - i))
+    return up
+
+
 def swing(v0: float, v1: float):
-    """The arm held at GRIP_S and turned about the post from v0 to v1: the tool's pose solved on the exact arc every
-    frame, so the hub turns about the post's axis and does not rub it (follow() would cut the arc's chords)."""
+    """The arm held and turned about the post from v0 to v1, through the recorded path (solved on the exact arc,
+    121 samples over the 90 deg), so the hub turns about the post's axis."""
+    vs, qs = PLAN["sw"]
+
     def up(u):
         v = v0 + (v1 - v0) * u
-        rb.set(rb.solve(grip_pose(v), rb.q))
+        x = v * (len(vs) - 1)
+        i = min(int(x), len(vs) - 2)
+        rb.set(qs[i] + (qs[i + 1] - qs[i]) * (x - i))
         sc.cams_top = v
     return up
+
+
+# the lid's swing (model, commit e3b1428: hinged on the left) against the top arm in its working dimple (FCL)
+def lid_clearance():
+    import fcl
+
+    def body(n):
+        m = pv.wrap(sc.actors[n].GetMapper().GetInput()).triangulate()
+        Wm = sc.world(sc.group_of[n])
+        v = (Wm[:3, :3] @ np.asarray(m.points).T).T + Wm[:3, 3]
+        b = fcl.BVHModel()
+        b.beginModel(len(v), m.n_cells)
+        b.addSubModel(v, m.faces.reshape(-1, 4)[:, 1:])
+        b.endModel()
+        return fcl.CollisionObject(b, fcl.Transform())
+    lid_parts = [n for g_ in (AB.g("hood"), AB.g("knob")) for n in sc.members(g_)
+                 if sc.cutrole.get(n) in (None, "whole") and not n.endswith("#cut")]
+    arm = [body(n) for n in names["arm"]]
+    best = (1e9, None, None)
+    for v in np.linspace(0.0, 1.0, 22):
+        AB.set_joints(sc, lid=float(v))
+        for n in lid_parts:
+            o = body(n)
+            for k, a in enumerate(arm):
+                d = fcl.distance(o, a, fcl.DistanceRequest(), fcl.DistanceResult())
+                if d < best[0]:
+                    best = (float(d), float(v), names["arm"][k] + " / " + n)
+    AB.set_joints(sc, lid=0.0)
+    return best
+
+
+LID_CLEAR = lid_clearance()
+print("lid swing vs the top arm (working): %.1f mm at lid %.2f, %s" % LID_CLEAR, flush=True)
 
 
 # --------------------------------------------------------------------------------- views (model frame)
@@ -273,6 +367,12 @@ def gauges(**kw):
     AB.caption_rows(sc, **kw)
 
 
+# one pass for the clip and its audit (the coordinator, 19 Nov): the collision auditor rides the render's frames
+if not (AUDIT or PREVIEW):
+    import collide
+    sc.auditor = collide.Auditor(sc)
+    sc.frame_hooks.append(sc.auditor)
+
 # ======================================================================================== 1. the three units
 gauges(Units="front, left, top (DAL PR 189)", Top_arm="working dimple", Furnace="cold, lid shut")
 cap = ("Three Pi 5 camera units from DAL PR 189, on the lab's rePowder model: one on the chamber's front view port, "
@@ -295,7 +395,7 @@ def los_in(keys):
 
 
 sc.step("2/6", cap, 3.0, los_in(["top_hq"]), hold=2.0, cam_to=V_TOP_LINE,
-        labels=[("lid window, front facet, 60 x 64 mm (DAL measured;\nthe model's left-facet slot is closed here)",
+        labels=[("lid window, front facet: DAL's 60 x 64 mm\nglass-ceramic pane in its 8-screw plate",
                  tuple(W(CAMS.window_pose()["centre"])), (0.06, 0.70)),
                 ("HQ + 16 mm C lens, hot mirror, variable ND", tuple(W(POSES0["top_hq"]["eye"])), (0.06, 0.25)),
                 ("aim: crucible datum + 20 mm of melt", tuple(W(CAMS.AIM + np.array([0, -20, 60]))), (0.70, 0.80))])
@@ -330,7 +430,7 @@ cap = ("The UR10e reaches up to the 2020 extrusion, 300 mm out from the post, an
        "bottom faces, on the side away from the way it will turn.")
 sc.step("3/6", cap, 1.0, rb.grip_to(0.0), hold=0.1)
 sc.step("3/6", cap, 2.6, rb.joint_to(q1=Q_PRE), hold=0.1)
-sc.step("3/6", cap, 1.2, rb.line_to(grip_pose(0.0)), hold=0.1)
+sc.step("3/6", cap, 1.2, play(PLAN["in0"]), hold=0.1)
 sc.step("3/6", cap, 0.7, rb.grip_to(CLOSE_BAR), hold=0.2,
         labels=[("2F-85 on the extrusion, 300 mm from the post", tuple(W(CAMS.extrusion_point(GRIP_S, 0.0))),
                  (0.70, 0.22))])
@@ -345,16 +445,22 @@ gauges(Units="front, left, top", Top_arm="parked dimple", Furnace="cold, lid shu
 sc.step("3/6", "Click: parked. The 2F-85 lets go and backs off.", 0.6, rb.grip_to(0.0), hold=0.1)
 rb.release("rp")
 CAMS.set_top_arm(sc, 1.0)
-sc.step("3/6", "Click: parked. The 2F-85 lets go and backs off.", 1.0, rb.line_to(grip_pose(1.0, BACK)), hold=0.2)
-cap = ("Why it parks. In its working dimple the arm, the pod and the display box hang 1.68-1.84 m up over the front of "
-       "the furnace, where the loading arm's wrist and tong come in. Parked, the space over the furnace is clear.")
-sc.step("3/6", cap, 2.6, None, hold=2.4, cam_to=V_LIDG,
-        labels=[("the space over the furnace, clear", tuple(W((0, -60, 1700))), (0.70, 0.62)),
+sc.step("3/6", "Click: parked. The 2F-85 lets go and backs off.", 1.0, play(PLAN["out1"]), hold=0.2)
+if LID_CLEAR[0] < 25.0:
+    cap = (f"Why it parks. The lid opens up and over to the left (ghost) and passes only {LID_CLEAR[0]:.0f} mm from the "
+           f"arm in its working dimple (DAL: 118 mm); the loading arm's wrist and tong also come in over the furnace.")
+else:
+    cap = (f"Why it parks. The lid opens up and over to the left (ghost), {LID_CLEAR[0]:.0f} mm clear of the arm in its "
+           f"working dimple (DAL: 118 mm). The loading arm's wrist and tong come in over the furnace, where the arm, "
+           f"pod and display box hang, 1.68-1.84 m up.")
+sc.step("3/6", cap, 2.0, lambda u: ghosts(u), hold=2.8, cam_to=V_LIDG,
+        labels=[("the lid's swing, hinged on the left (ghost, 52 and 105 deg)", tuple(W((-300, 0, 1560))), (0.06, 0.30)),
                 ("top arm, parked over the frame", tuple(W(CAMS.extrusion_point(300, 1.0))), (0.70, 0.30))])
+sc.step("3/6", cap, 0.8, lambda u: ghosts(1.0 - u), hold=0.1)
 gauges(Units="front, left, top", Top_arm="parked dimple", Furnace="loaded, lid shut", MiR_1="at the machine")
 cap = ("Loaded and the lid shut again (the charge and the lid are other clips). The arm grips the extrusion again "
        "and swings it back until it clicks into the 'working' dimple: the camera's aim comes back to the same place.")
-sc.step("3/6", cap, 1.4, rb.line_to(grip_pose(1.0)), hold=0.1, cam_to=V_SWING)
+sc.step("3/6", cap, 1.4, play(PLAN["out1"][::-1]), hold=0.1, cam_to=V_SWING)
 sc.step("3/6", cap, 0.7, rb.grip_to(CLOSE_BAR), hold=0.1)
 rb.grasp(CAMS.GROUPS["arm"])
 gauges(Units="front, left, top", Top_arm="swinging", Furnace="loaded, lid shut", MiR_1="at the machine")
@@ -363,7 +469,7 @@ gauges(Units="front, left, top", Top_arm="working dimple", Furnace="loaded, lid 
 sc.step("3/6", "Click: working. The 2F-85 lets go and the arm folds back.", 0.6, rb.grip_to(0.0), hold=0.1)
 rb.release("rp")
 CAMS.set_top_arm(sc, 0.0)
-sc.step("3/6", "Click: working. The 2F-85 lets go and the arm folds back.", 1.0, rb.line_to(grip_pose(0.0, BACK)),
+sc.step("3/6", "Click: working. The 2F-85 lets go and the arm folds back.", 1.0, play(PLAN["in0"][::-1]),
         hold=0.1)
 sc.step("3/6", "Click: working. The 2F-85 lets go and the arm folds back.", 2.4, rb.joint_to(q1=q_home), hold=0.2)
 up_d, secs = AB.mir_drive(ma, (250.0, -1250.0, 0.0))
@@ -490,6 +596,8 @@ cap = ("The crucible runs empty and the coil and the plate stop. Each unit also 
 sc.step("6/6", cap, 3.0, tail, hold=1.2, live=True)
 feeds.pip(None)
 AB.finish(sc)
+if not (AUDIT or PREVIEW):
+    print(sc.auditor.save(), flush=True)
 if not (AUDIT or PREVIEW):
     info = dict(spot_model_xy_yaw=SPOT, grip_s_mm=GRIP_S, close=CLOSE_BAR,
                 cameras={k: dict(eye=[round(float(x), 1) for x in p["eye"]], dir=[round(float(x), 3) for x in p["dir"]],
